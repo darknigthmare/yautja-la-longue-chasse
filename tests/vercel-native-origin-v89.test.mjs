@@ -7,8 +7,10 @@ import { execFile } from 'node:child_process';
 import { promisify } from 'node:util';
 import vm from 'node:vm';
 import ts from 'typescript';
+import { gameBuildIdentity } from '../scripts/game-build-identity.ts';
 import { productionBuildStepsV94 } from '../scripts/build-production-v94.mjs';
-import { nativeOriginFixtureV89, nativeOriginDestinationV89, runNativeOriginV89, assertNativeOutputMountsV89 } from '../scripts/vercel-native-origin-v89.mjs';
+import { nativeOriginFixtureV89, nativeOriginDestinationV89, runNativeOriginV89, assertNativeOutputMountsV89, sourceLightOriginFixtureV89 } from '../scripts/vercel-native-origin-v89.mjs';
+import { NATIVE_ASSET_MANIFEST_V1, createNativeAssetManifestV1, nativeAssetDestinationV1, readNativeAssetOriginV1, validateNativeAssetManifestV1 } from '../scripts/native-asset-origin-v1.mjs';
 const run=promisify(execFile);
 const project=process.cwd(),prefix='public/game/imports/v85';
 test('every script actually invoked by the Vercel build is retained by its deployment allowlist',async()=>{
@@ -147,24 +149,155 @@ test('local CLI refuses mutation even with VERCEL environment spoofed',async()=>
  try{assert.equal((await runNativeOriginV89()).status,'skipped');}
  finally{if(before===undefined)delete process.env.VERCEL;else process.env.VERCEL=before;}
 });
-async function configuredRoutes(env){
+async function configuredNext(env,manifestRoot=project){
  const source=await fs.readFile(path.join(project,'next.config.ts'),'utf8');
  const compiled=ts.transpileModule(source,{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022},reportDiagnostics:true});
  assert.equal(compiled.diagnostics?.length??0,0);
- const sandbox={exports:{},process:{env}};
+ const sandbox={exports:{},process:{env},require(specifier){
+  if(specifier==='./scripts/native-asset-origin-v1.mjs')return {
+   nativeAssetDestinationV1,readNativeAssetOriginV1:()=>readNativeAssetOriginV1(manifestRoot),
+  };
+  assert.equal(specifier,'./scripts/game-build-identity','Unexpected Next configuration dependency');
+  return {gameBuildIdentity:()=>gameBuildIdentity({env,gitRevision:()=>''})};
+ }};
  vm.runInNewContext(compiled.outputText,sandbox,{timeout:1000});
- return sandbox.exports.default.rewrites();
+ return sandbox.exports.default;
 }
+async function configuredRoutes(env,manifestRoot=project){return (await configuredNext(env,manifestRoot)).rewrites();}
 test('the actual Next config leaves local native files local',async()=>{
  const routes=await configuredRoutes({});
  assert.equal(JSON.stringify(routes),JSON.stringify({beforeFiles:[],afterFiles:[],fallback:[]}));
 });
-test('the actual Next config pins the public repo and commit before filesystem routing',async()=>{
+test('the actual Next config pins the public repo and commit before filesystem routing in legacy mode',async t=>{
+ const legacyRoot=await fixture(t);
  const sha='a'.repeat(40),env={VERCEL:'1',VERCEL_GIT_PROVIDER:'github',VERCEL_GIT_REPO_OWNER:'darknigthmare',VERCEL_GIT_REPO_SLUG:'yautja-la-longue-chasse',VERCEL_GIT_COMMIT_SHA:sha};
- const routes=await configuredRoutes(env);
+ const routes=await configuredRoutes(env,legacyRoot);
  assert.equal(routes.beforeFiles.length,1);
  assert.equal(routes.beforeFiles[0].source,'/game/imports/v85/:path*');
  assert.equal(routes.beforeFiles[0].destination,nativeOriginDestinationV89(sha));
- await assert.rejects(configuredRoutes({...env,VERCEL_GIT_COMMIT_SHA:'main'}),/valid release SHA/);
- await assert.rejects(configuredRoutes({...env,VERCEL_GIT_REPO_OWNER:'someone-else'}),/Unexpected published Git repository/);
+ await assert.rejects(configuredRoutes({...env,VERCEL_GIT_COMMIT_SHA:'main'},legacyRoot),/valid release SHA/);
+ await assert.rejects(configuredRoutes({...env,VERCEL_GIT_REPO_OWNER:'someone-else'},legacyRoot),/Unexpected published Git repository/);
+});
+
+async function commitDelivery(root){
+ await run('git',['add','-A','--','public/game'],{cwd:root});
+ if(await fs.stat(path.join(root,NATIVE_ASSET_MANIFEST_V1)).then(()=>true,()=>false))
+  await run('git',['add','--',NATIVE_ASSET_MANIFEST_V1],{cwd:root});
+ await run('git',['-c','user.name=Fixture','-c','user.email=fixture@example.invalid','-c','commit.gpgsign=false','-c','core.hooksPath=disabled-fixture-hooks','commit','-q','-m','native delivery fixture'],{cwd:root});
+ return (await run('git',['rev-parse','HEAD'],{cwd:root})).stdout.trim();
+}
+async function sourceLightFixture(t){
+ const root=await fixture(t),bitmap=await sprite(root,'native space.png','preserved-native-bitmap');
+ const content={
+  'data/manifest.json':'{"native":true}\n',
+  'ui/marker.svg':'<svg xmlns="http://www.w3.org/2000/svg"/>',
+  'review/index.html':'<!doctype html><title>Native review</title>',
+  'review/review.js':'window.nativeReview=true;',
+  'data/map.geojson':'{"type":"FeatureCollection","features":[]}',
+ };
+ for(const [relative,bytes] of Object.entries(content)){
+  for(const base of ['public/game','.next/output/static/game']){
+   const file=path.join(root,base,relative);await fs.mkdir(path.dirname(file),{recursive:true});await fs.writeFile(file,bytes);
+  }
+ }
+ const sourceCommit=await commitDelivery(root),manifest=createNativeAssetManifestV1({repositoryRoot:root,sourceCommit});
+ await fs.unlink(bitmap.source);await fs.unlink(bitmap.target);
+ const manifestPath=path.join(root,NATIVE_ASSET_MANIFEST_V1);
+ await fs.mkdir(path.dirname(manifestPath),{recursive:true});await fs.writeFile(manifestPath,JSON.stringify(manifest,null,2)+'\n');
+ const sha=await commitDelivery(root);
+ const env={VERCEL:'1',VERCEL_GIT_PROVIDER:'github',VERCEL_GIT_REPO_OWNER:'darknigthmare',VERCEL_GIT_REPO_SLUG:'yautja-la-longue-chasse',VERCEL_GIT_COMMIT_SHA:sha};
+ const config=await configuredNext(env,root),rewrites=await config.rewrites();
+ await fs.writeFile(path.join(root,'.next','routes-manifest.json'),JSON.stringify({rewrites}));
+ return {root,bitmap,content,manifest,manifestPath,sourceCommit,sha,env,config,rewrites};
+}
+test('source-light delivery binds complete source proof, retained files, actual build ID and afterFiles routing',async t=>{
+ const f=await sourceLightFixture(t);
+ assert.notEqual(f.sha,f.sourceCommit);
+ assert.equal(f.config.env.NEXT_PUBLIC_YAUTJA_BUILD_ID,f.sha.slice(0,8));
+ assert.equal(f.rewrites.beforeFiles.length,0);
+ assert.equal(f.rewrites.afterFiles.length,1);
+ assert.equal(f.rewrites.afterFiles[0].destination,nativeAssetDestinationV1(f.sourceCommit));
+ const result=await sourceLightOriginFixtureV89({fixtureRoot:f.root,sha:f.sha});
+ assert.equal(result.sha,f.sha);assert.equal(result.sourceCommit,f.sourceCommit);
+ assert.equal(result.retainedFiles,5);assert.equal(result.externalBitmapFiles,1);
+ assert.equal(result.verifiedOutputFiles,5);assert.equal(result.generatedFilesRemoved,0);
+ for(const [relative,bytes] of Object.entries(f.content)){
+  assert.equal(await fs.readFile(path.join(f.root,'public/game',relative),'utf8'),bytes);
+  assert.equal(await fs.readFile(path.join(f.root,'.next/output/static/game',relative),'utf8'),bytes);
+ }
+ assert.equal((await run('git',['show',f.sourceCommit+':public/game/imports/v85/native space.png'],{cwd:f.root})).stdout,'preserved-native-bitmap');
+});
+test('source-light proof rejects partial inventories, altered trees, owners, paths and encodings',async t=>{
+ const {manifest}=await sourceLightFixture(t);
+ const mutations=[
+  value=>{value.repository='someone-else/repository';},
+  value=>{value.sourceCommit='a'.repeat(40);},
+  value=>{value.sourceGameTree='a'.repeat(40);},
+  value=>{value.retainedGameTree='a'.repeat(40);},
+  value=>{value.entries.pop();},
+  value=>{value.entries[0].blob='a'.repeat(40);},
+  value=>{value.entries[0].path='../outside.json';},
+  value=>{value.entries[0].mode='120000';},
+  value=>{value.entries.push(value.entries[0]);},
+  value=>{value.gitObjects.commit+='!';},
+  value=>{value.gitObjects.publicTree=Buffer.from('other').toString('base64');},
+  value=>{value.unreviewedMode=true;},
+ ];
+ for(const mutate of mutations){const altered=structuredClone(manifest);mutate(altered);assert.throws(()=>validateNativeAssetManifestV1(altered),/Native asset provenance/);}
+});
+test('source-light requires the actual delivery HEAD and a manifest committed in it',async t=>{
+ const f=await sourceLightFixture(t);
+ await assert.rejects(sourceLightOriginFixtureV89({fixtureRoot:f.root,sha:f.sourceCommit}),/Delivery SHA differs from HEAD/);
+ const bytes=await fs.readFile(f.manifestPath);await fs.appendFile(f.manifestPath,' ');
+ await assert.rejects(sourceLightOriginFixtureV89({fixtureRoot:f.root,sha:f.sha}),/manifest differs from delivery HEAD/);
+ await fs.writeFile(f.manifestPath,bytes);
+ await run('git',['rm','--cached','--',NATIVE_ASSET_MANIFEST_V1],{cwd:f.root});
+ await run('git',['-c','user.name=Fixture','-c','user.email=fixture@example.invalid','-c','commit.gpgsign=false','-c','core.hooksPath=disabled-fixture-hooks','commit','-q','-m','untracked proof'],{cwd:f.root});
+ const untrackedSha=(await run('git',['rev-parse','HEAD'],{cwd:f.root})).stdout.trim();
+ await assert.rejects(sourceLightOriginFixtureV89({fixtureRoot:f.root,sha:untrackedSha}),/manifest differs from delivery HEAD/);
+});
+test('source-light rejects missing or changed local inputs and unproven generated bitmaps without deleting them',async t=>{
+ const f=await sourceLightFixture(t),local=path.join(f.root,'public/game/data/manifest.json'),output=path.join(f.root,'.next/output/static/game/data/manifest.json');
+ await fs.writeFile(local,'changed');
+ await assert.rejects(sourceLightOriginFixtureV89({fixtureRoot:f.root,sha:f.sha}),/retained bytes differ/);
+ await fs.unlink(local);
+ await assert.rejects(sourceLightOriginFixtureV89({fixtureRoot:f.root,sha:f.sha}),/input is missing/);
+ await fs.writeFile(local,f.content['data/manifest.json']);
+ await fs.writeFile(output,'changed output');
+ await assert.rejects(sourceLightOriginFixtureV89({fixtureRoot:f.root,sha:f.sha}),/retained bytes differ/);
+ await fs.writeFile(output,f.content['data/manifest.json']);
+ await fs.writeFile(f.bitmap.target,'unexpected generated bitmap');
+ await assert.rejects(sourceLightOriginFixtureV89({fixtureRoot:f.root,sha:f.sha}),/Unproven local native entry/);
+ assert.equal(await fs.readFile(f.bitmap.target,'utf8'),'unexpected generated bitmap');
+ assert.equal(await fs.readFile(local,'utf8'),f.content['data/manifest.json']);
+});
+test('source-light refuses bitmap additions and retained-file deletions in the committed delivery tree',async t=>{
+ const f=await sourceLightFixture(t);
+ await fs.writeFile(f.bitmap.source,'unexpected committed bitmap');
+ const withBitmap=await commitDelivery(f.root);
+ await assert.rejects(sourceLightOriginFixtureV89({fixtureRoot:f.root,sha:withBitmap}),/exactly the proven retained/);
+ await fs.unlink(f.bitmap.source);await fs.unlink(path.join(f.root,'public/game/data/manifest.json'));
+ const missingLocal=await commitDelivery(f.root);
+ await assert.rejects(sourceLightOriginFixtureV89({fixtureRoot:f.root,sha:missingLocal}),/exactly the proven retained/);
+});
+test('source-light refuses beforeFiles, the delivery SHA as asset source and conditional rewrites',async t=>{
+ const f=await sourceLightFixture(t),routePath=path.join(f.root,'.next','routes-manifest.json');
+ const changes=[
+  {beforeFiles:f.rewrites.afterFiles,afterFiles:[],fallback:[]},
+  {beforeFiles:[],afterFiles:[{...f.rewrites.afterFiles[0],destination:nativeAssetDestinationV1(f.sha)}],fallback:[]},
+  {beforeFiles:[],afterFiles:[{...f.rewrites.afterFiles[0],has:[{type:'query',key:'optional'}]}],fallback:[]},
+ ];
+ for(const rewrites of changes){
+  await fs.writeFile(routePath,JSON.stringify({rewrites}));
+  await assert.rejects(sourceLightOriginFixtureV89({fixtureRoot:f.root,sha:f.sha}),/Exact source-pinned afterFiles/);
+ }
+});
+test('source-light refuses linked manifests and local output escapes',async t=>{
+ const f=await sourceLightFixture(t),copy=path.join(f.root,'manifest-copy.json');
+ await fs.rename(f.manifestPath,copy);await fs.symlink(copy,f.manifestPath);
+ await assert.rejects(sourceLightOriginFixtureV89({fixtureRoot:f.root,sha:f.sha}),/regular manifest/);
+ await fs.unlink(f.manifestPath);await fs.rename(copy,f.manifestPath);
+ const output=path.join(f.root,'.next/output/static/game/data/manifest.json');
+ await fs.unlink(output);await fs.symlink(path.join(f.root,'public/game/data/manifest.json'),output);
+ await assert.rejects(sourceLightOriginFixtureV89({fixtureRoot:f.root,sha:f.sha}),/symlinks or junctions/);
 });

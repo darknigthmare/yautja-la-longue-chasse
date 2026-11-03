@@ -9,6 +9,7 @@ import { createHash } from 'node:crypto';
 import { execFile } from 'node:child_process';
 import { promisify } from 'node:util';
 import { fileURLToPath } from 'node:url';
+import {NATIVE_ASSET_MANIFEST_V1,externalNativeBitmapV1,gitObjectIdV1,nativeAssetDestinationV1,readNativeAssetOriginV1,validateNativeAssetManifestV1} from './native-asset-origin-v1.mjs';
 const run = promisify(execFile);
 const rootAllowed = '/vercel/path0';
 export const NATIVE_ORIGIN_PREFIX_V89 = '/game/imports/v85';
@@ -134,6 +135,69 @@ export async function nativeOriginFixtureV89({fixtureRoot,sha}){
  await checked(project,root);
  return prune(root,sha);
 }
+/** This separately admitted mode never prunes output. Native binaries are absent
+ * from its committed delivery tree; every retained local file still has to match
+ * the complete source-commit proof. Legacy V85 pruning above is unchanged.
+ */
+async function verifySourceLight(root,sha){
+ if(!/^[a-f0-9]{40}$/.test(sha??''))throw new Error('Valid delivery SHA required');
+ const {stdout:head}=await run('git',['rev-parse','--verify','HEAD^{commit}'],{cwd:root});
+ if(head.trim()!==sha)throw new Error('Delivery SHA differs from HEAD');
+ const file=path.join(root,NATIVE_ASSET_MANIFEST_V1),stat=await checked(root,file);
+ if(!stat.isFile()||(stat.mode&0o111n)!==0n||stat.size>4n*1024n*1024n)throw new Error('Regular bounded source-light manifest required');
+ const {stdout:tracked}=await run('git',['ls-tree','-z',sha,'--',NATIVE_ASSET_MANIFEST_V1],{cwd:root});
+ const match=/^100644 blob ([a-f0-9]{40})\tscripts\/native-asset-origin-v1\.json\0$/.exec(tracked);
+ const manifestHash=await digest(file,stat);
+ if(!match||manifestHash.blob!==match[1])throw new Error('Source-light manifest differs from delivery HEAD');
+ const manifestBytes=await fs.readFile(file);
+ if(gitObjectIdV1('blob',manifestBytes)!==manifestHash.blob)throw new Error('Source-light manifest changed during verification');
+ const source=validateNativeAssetManifestV1(JSON.parse(manifestBytes.toString('utf8')));
+ const {stdout:retainedTree}=await run('git',['rev-parse','--verify',sha+':public/game'],{cwd:root});
+ if(retainedTree.trim()!==source.retainedGameTree)throw new Error('Delivery must contain exactly the proven retained native files and no external bitmap');
+ const routePath=path.join(root,'.next','routes-manifest.json');
+ if(!(await checked(root,routePath)).isFile())throw new Error('Compiled route manifest required');
+ const routes=JSON.parse(await fs.readFile(routePath,'utf8')).rewrites;
+ const rewrite=routes?.afterFiles?.[0];
+ if(!Array.isArray(routes?.beforeFiles)||routes.beforeFiles.length||
+    !Array.isArray(routes?.fallback)||routes.fallback.length||
+    !Array.isArray(routes?.afterFiles)||routes.afterFiles.length!==1||
+    rewrite.source!=='/game/:path*'||rewrite.destination!==nativeAssetDestinationV1(source.sourceCommit)||
+    rewrite.has?.length||rewrite.missing?.length)throw new Error('Exact source-pinned afterFiles rewrite required');
+ const retained=new Map(source.entries.filter(entry=>!externalNativeBitmapV1(entry.path)).map(entry=>[entry.path,entry]));
+ const originals=new Map(),snapshots=[];
+ async function inspect(directory,base,output){
+  if(!(await checked(root,directory)).isDirectory())throw new Error('Native source-light directory required');
+  for(const name of await fs.readdir(directory)){
+   const absolute=path.join(directory,name),info=await checked(root,absolute);
+   if(info.isDirectory()){await inspect(absolute,base,output);continue;}
+   const relative=path.relative(base,absolute).split(path.sep).join('/'),expected=retained.get(relative);
+   if(!info.isFile()||!expected||(info.mode&0o111n)!==0n)throw new Error('Unproven local native entry: '+relative);
+   const hash=await digest(absolute,info);
+   if(hash.blob!==expected.blob)throw new Error('Native retained bytes differ from the source commit: '+relative);
+   if(output){
+    if(hash.sha256!==originals.get(relative)?.sha256)throw new Error('Generated retained bytes differ: '+relative);
+   }else originals.set(relative,hash);
+   snapshots.push({path:absolute,stat:info});
+  }
+ }
+ const originalRoot=path.join(root,'public','game');
+ await inspect(originalRoot,originalRoot,false);
+ if(originals.size!==retained.size)throw new Error('A retained native input is missing');
+ const outputRoot=path.join(root,'.next','output','static','game'),beforeOutput=snapshots.length;
+ if(await checked(root,outputRoot,true))await inspect(outputRoot,outputRoot,true);
+ for(const snapshot of snapshots)if(!same(snapshot.stat,await checked(root,snapshot.path)))throw new Error('Retained native file changed after verification');
+ if(!same(stat,await checked(root,file)))throw new Error('Source-light manifest changed after verification');
+ return {status:'source-light-native-origin',sha,sourceCommit:source.sourceCommit,sourceGameTree:source.sourceGameTree,
+  retainedGameTree:source.retainedGameTree,externalBitmapFiles:source.entries.length-retained.size,retainedFiles:retained.size,
+  verifiedOutputFiles:snapshots.length-beforeOutput,generatedFilesRemoved:0,originalSourcesPreserved:true};
+}
+export async function sourceLightOriginFixtureV89({fixtureRoot,sha}){
+ const project=await fs.realpath(process.cwd()),base=path.join(project,'work-local','v89'),root=path.resolve(fixtureRoot);
+ if(root===base||!inside(base,root)||!path.basename(root).startsWith('native-origin-fixture-'))throw new Error('Only private native origin fixtures allowed');
+ await checked(project,root);
+ if(!readNativeAssetOriginV1(root))throw new Error('Explicit source-light manifest required');
+ return verifySourceLight(root,sha);
+}
 export async function runNativeOriginV89(){
  if(process.env.VERCEL!=='1'||process.platform!=='linux'||process.cwd()!==rootAllowed||await fs.realpath(process.cwd())!==rootAllowed)
   return {status:'skipped',reason:'not-exact-linux-vercel-build-root'};
@@ -146,6 +210,7 @@ export async function runNativeOriginV89(){
  const {stdout:commonDir}=await run('git',['rev-parse','--git-common-dir'],{cwd:root});
  if(path.resolve(gitDir.trim())!==gitPath||path.resolve(root,commonDir.trim())!==gitPath)throw new Error('Shared Git metadata refused');
  for(const name of ['worktrees','commondir','modules','objects/info/alternates'])if(await checked(root,path.join(gitPath,name),true))throw new Error('External Git object stores refused');
+ if(readNativeAssetOriginV1(root))return verifySourceLight(root,process.env.VERCEL_GIT_COMMIT_SHA);
  return prune(root,process.env.VERCEL_GIT_COMMIT_SHA);
 }
 if(process.argv[1]&&path.resolve(process.argv[1])===fileURLToPath(import.meta.url)){

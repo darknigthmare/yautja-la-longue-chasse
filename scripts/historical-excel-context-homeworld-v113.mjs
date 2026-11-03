@@ -1,6 +1,7 @@
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {createHistoricalExcelContext} from './lib/historical-excel-context.mjs';
+import {HOMEWORLD_SHARED_PREIMAGES_V113,HOMEWORLD_WRITABLE_SHARED_COPIES_V113} from './historical-shared-inputs-homeworld-v113.mjs';
 
 /** The published V112 Homeworld/Pit commit: every one of its 1 813 pinned fingerprints holds here. */
 export const EXCEL_HOMEWORLD_HISTORY_COMMIT_V113 = 'a5ed39dfbed118669b2e76402c490b200136a74d';
@@ -15,6 +16,8 @@ const context = createHistoricalExcelContext({
   archiveSha256: EXCEL_HOMEWORLD_HISTORY_ARCHIVE_SHA256_V113,
   // The V112 follow-up verifies every proof as a regular local file.
   hardLinkShared: true,
+  sharedPreimages: HOMEWORLD_SHARED_PREIMAGES_V113,
+  writableSharedCopies: HOMEWORLD_WRITABLE_SHARED_COPIES_V113,
 });
 export const getHistoricalHomeworldExcelContextV113 = context.get;
 export const verifyHistoricalHomeworldExcelContextV113 = context.verify;

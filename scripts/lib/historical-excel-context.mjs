@@ -8,6 +8,7 @@ import {createHash} from 'node:crypto';
 import {gunzipSync} from 'node:zlib';
 import {execFileSync} from 'node:child_process';
 import {pathToFileURL} from 'node:url';
+import {reviewedSharedPreimages,restoreHistoricalSharedPreimages,verifyHistoricalSharedPreimages,verifyHistoricalSharedTree} from './historical-shared-inputs.mjs';
 
 const sha = bytes => createHash('sha256').update(bytes).digest('hex');
 const local = file => {
@@ -22,7 +23,7 @@ async function verifyFiles(root, rows) {
   }
 }
 
-export function createHistoricalExcelContext({repository, manifestPath, manifestSha256, archiveSha256, sourceCommit, release, hardLinkShared = false}) {
+export function createHistoricalExcelContext({repository, manifestPath, manifestSha256, archiveSha256, sourceCommit, release, hardLinkShared = false, sharedPreimages = [], writableSharedCopies = []}) {
   let pending;
   async function prepare() {
     const manifestBytes = await fsp.readFile(path.join(repository, local(manifestPath)));
@@ -42,17 +43,26 @@ export function createHistoricalExcelContext({repository, manifestPath, manifest
     assert.ok(Array.isArray(manifest.materializedShared));
     const copies = new Set(manifest.materializedShared.map(local)); assert.equal(copies.size, manifest.materializedShared.length);
     assert.ok([...copies].every(file => manifest.shared.some(row => row.path === file)));
-    await verifyFiles(repository, manifest.shared);
+    const preimages = reviewedSharedPreimages(sharedPreimages, manifest.shared);
+    const restoredPaths = new Set(preimages.map(row => row.path));
+    const fixtureInputs = reviewedSharedPreimages(writableSharedCopies, manifest.shared);
+    const writableSharedPaths = new Set(fixtureInputs.map(row => row.path));
+    assert.ok([...writableSharedPaths].every(file => copies.has(file) && !restoredPaths.has(file)), 'Writable fixture inputs must be private materialized shared copies');
+    const unchangedShared = manifest.shared.filter(row => !restoredPaths.has(row.path));
+    await verifyFiles(repository, unchangedShared);
     const root = await fsp.mkdtemp(path.join(os.tmpdir(), 'yautja-excel-history-' + release.toLowerCase() + '-'));
     try {
       for (const row of archive.files) {
         const bytes = Buffer.from(row.base64, 'base64'); assert.equal(bytes.length, row.bytes); assert.equal(sha(bytes), row.sha256);
         const target = path.join(root, row.path); await fsp.mkdir(path.dirname(target), {recursive: true}); await fsp.writeFile(target, bytes, {mode: 0o444, flag: 'wx'});
       }
+      verifyHistoricalSharedTree({root, sourceCommit, rows: fixtureInputs});
+      const restoredShared = await restoreHistoricalSharedPreimages({root, repository, sourceCommit, preimages, shared: manifest.shared});
       // Package-contained evidence rejects symlinks by design. Keep those files
       // as verified private, read-only copies; do not weaken the original guard.
       for (const row of manifest.shared) {const target = path.join(root, row.path); await fsp.mkdir(path.dirname(target), {recursive: true});
-        if (copies.has(row.path)) {await fsp.copyFile(path.join(repository, row.path), target, fs.constants.COPYFILE_EXCL); await fsp.chmod(target, 0o444);}
+        if (restoredPaths.has(row.path)) continue;
+        if (copies.has(row.path)) {await fsp.copyFile(path.join(repository, row.path), target, fs.constants.COPYFILE_EXCL); await fsp.chmod(target, writableSharedPaths.has(row.path) ? 0o644 : 0o444);}
         else if (hardLinkShared) {
           // Evidence guards that reject symlinks (verifyProof) need regular
           // files. A hard link is one, costs no space, and its bytes are the
@@ -64,18 +74,27 @@ export function createHistoricalExcelContext({repository, manifestPath, manifest
       }
       await fsp.symlink(path.join(repository, 'node_modules'), path.join(root, 'node_modules'), 'dir');
       process.once('exit', () => fs.rmSync(root, {recursive: true, force: true}));
-      return {root, manifest};
+      return {root, manifest, unchangedShared, restoredPaths, restoredShared, writableSharedPaths};
     } catch (error) {await fsp.rm(root, {recursive: true, force: true}); throw error;}
   }
   const get = () => pending ??= prepare();
   async function verify() {
-    const context = await get(); await verifyFiles(context.root, context.manifest.sources); await verifyFiles(repository, context.manifest.shared);
+    const context = await get(); await verifyFiles(context.root, context.manifest.sources); await verifyFiles(repository, context.unchangedShared);
+    await verifyHistoricalSharedPreimages({root: context.root, repository, ...context.restoredShared});
     for (const row of context.manifest.sources) {const stat = await fsp.lstat(path.join(context.root, row.path)); assert.equal(stat.isSymbolicLink(), false); assert.equal(stat.mode & 0o222, 0, 'Private historical source is writable: ' + row.path);}
     const copies = new Set(context.manifest.materializedShared);
     await verifyFiles(context.root, context.manifest.shared.filter(row => copies.has(row.path)));
     for (const row of context.manifest.shared) {
       const target = path.join(context.root, row.path);
-      if (copies.has(row.path)) {const stat = await fsp.lstat(target); assert.equal(stat.isSymbolicLink(), false); assert.equal(stat.mode & 0o222, 0, 'Private historical evidence is writable: ' + row.path);}
+      if (context.restoredPaths.has(row.path)) continue;
+      if (copies.has(row.path)) {
+        const stat = await fsp.lstat(target); assert.equal(stat.isSymbolicLink(), false);
+        if (context.writableSharedPaths.has(row.path)) {
+          assert.equal(stat.mode & 0o777, 0o644, 'Private fixture input lost its original Git checkout mode: ' + row.path);
+          const original = await fsp.stat(path.join(repository, row.path));
+          assert.ok(stat.ino !== original.ino || stat.dev !== original.dev, 'Private fixture input aliases current evidence: ' + row.path);
+        } else assert.equal(stat.mode & 0o222, 0, 'Private historical evidence is writable: ' + row.path);
+      }
       else if ((await fsp.lstat(target)).isSymbolicLink()) assert.equal(await fsp.readlink(target), path.join(repository, row.path));
       else {
         assert.ok(hardLinkShared, 'Unexpected private file for shared evidence: ' + row.path);
@@ -83,7 +102,7 @@ export function createHistoricalExcelContext({repository, manifestPath, manifest
         assert.ok(linked.ino === original.ino && linked.dev === original.dev, 'Shared evidence is not the repository file: ' + row.path);
       }
     }
-    return {sourceCommit, sourcesVerified: context.manifest.sources.length, sharedVerified: context.manifest.shared.length, evidenceCopiesVerified: copies.size, currentRuntimeCovered: false};
+    return {sourceCommit, sourcesVerified: context.manifest.sources.length, sharedVerified: context.manifest.shared.length, evidenceCopiesVerified: copies.size, restoredSharedVerified: context.restoredPaths.size, currentRuntimeCovered: false};
   }
   async function load() {const context = await get(); return import(pathToFileURL(path.join(context.root, local(context.manifest.generator.path))).href);}
   async function runTests(files) {
@@ -91,6 +110,7 @@ export function createHistoricalExcelContext({repository, manifestPath, manifest
     files ??= context.manifest.historicalTests;
     assert.ok(Array.isArray(files) && files.length && new Set(files).size === files.length);
     for (const file of files) assert.ok(context.manifest.historicalTests.includes(file), 'Unreviewed historical test');
+    if (context.restoredPaths.size) await verify();
     const env = {...process.env}; delete env.NODE_TEST_CONTEXT;
     let output;
     try {output = execFileSync(process.execPath, ['--experimental-strip-types', '--test', '--test-reporter=tap', '--test-concurrency=1', ...files], {cwd: context.root, env, encoding: 'utf8', timeout: 300000, maxBuffer: 8 * 1024 * 1024});}

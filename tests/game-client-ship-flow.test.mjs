@@ -34,6 +34,7 @@ function fixture() {
     setNurseryPersistenceError() {},
     save: { inventory: { fieldToolIds: [], harvestV112: emptyHarvestInventoryV112() }, createdAt: "2026-08-31T10:00:00Z", profile: { honor: 0, clanMarks: 0 }, settings: { difficultyId: "hunter" }, missionProgress: { first: { status: "available", attempts: 0 } } },
     selectedMission: { id: "first" }, missionSettlementRef: { current: false },
+    hunterGauntlet: { equippedId: "jungle-hunter" },
     activeHuntSessionRef: { current: null }, activeHuntWriteFailureRef: { current: null }, pendingTerminalRunRef: { current: null },
     mergeExplorationProgress, isExplorationMission, deliverHarvestV112,
     normalizeSave: (save) => structuredClone(save),
@@ -41,7 +42,7 @@ function fixture() {
     clearActiveHuntSave(options) { observations.clears++; observations.events.push(["clear", options?.expectedRunId]); observations.currentHunt = null; return { cleared: true, failure: null }; },
     loadActiveHuntSave() { return { save: observations.currentHunt ?? null, failure: null }; },
     createHuntRunId: () => `run-${++observations.sequence}`,
-    huntConfiguration: (save) => ({ difficulty: save.settings.difficultyId }),
+    huntConfiguration: (save, gauntletVariantId) => ({ difficulty: save.settings.difficultyId, gauntletVariantId }),
     playSound() {}, setSave(save) { environment.save = save; }, setSaveFailure() {},
     setResumableHunt() {}, setHuntResumePayload() {}, setHuntRuntimeSave() {}, setSelectedMission() {},
     setPendingHuntResult(value) { observations.pendingResult = value; },
@@ -69,7 +70,10 @@ test("first launch persists the campaign owner and each replay opens a fresh aut
   assert.equal(observations.screen, "mission");
   assert.equal(observations.writes, 1);
   assert.equal(environment.activeHuntSessionRef.current.ownerSaveCreatedAt, environment.save.createdAt);
+  assert.equal(environment.activeHuntSessionRef.current.configuration.gauntletVariantId, "jungle-hunter");
+  environment.hunterGauntlet.equippedId = "city-hunter";
   autosave({ elapsed: 12, snapshot: { health: 80 }, retryCheckpoint: null });
+  assert.equal(observations.sidecars[0].configuration.gauntletVariantId, "jungle-hunter", "the running hunt keeps its launch equipment snapshot");
   finish({ outcome: "failure" });
   assert.equal(observations.screen, "debrief");
   assert.equal(environment.activeHuntSessionRef.current, null);
@@ -84,6 +88,7 @@ test("first launch persists the campaign owner and each replay opens a fresh aut
   assert.equal(observations.sidecars[1].sequence, 1);
   assert.equal(observations.sidecars[1].encounterRun, 1);
   assert.equal(observations.sidecars[1].snapshot.health, 100);
+  assert.equal(observations.sidecars[1].configuration.gauntletVariantId, "city-hunter", "a deliberate replay captures the newly equipped gauntlet");
 });
 
 test("duplicate terminal callbacks settle once; a deliberate next run can earn its own result", () => {

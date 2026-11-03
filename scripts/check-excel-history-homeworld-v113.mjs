@@ -23,6 +23,7 @@ export async function checkPublishedV112InCapsuleV113({tests = false} = {}) {
   const integrity = await verifyHistoricalHomeworldExcelContextV113();
   const checks = [];
   for (const [command, ...args] of PUBLISHED_V112_CHECKS_V113) {
+    await verifyHistoricalHomeworldExcelContextV113();
     const env = {...process.env}; delete env.NODE_TEST_CONTEXT;
     let output;
     try {output = execFileSync(command, args, {cwd: context.root, env, encoding: 'utf8', timeout: 600000, maxBuffer: 16 * 1024 * 1024});}

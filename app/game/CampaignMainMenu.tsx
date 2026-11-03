@@ -1,14 +1,27 @@
 "use client";
 /* Existing project bitmap is served unchanged in web and packaged desktop builds. */
 /* eslint-disable @next/next/no-img-element */
-import {useCallback,useLayoutEffect,useRef,useState,type KeyboardEvent} from 'react';
+import {useCallback,useLayoutEffect,useRef,useState,useSyncExternalStore,type KeyboardEvent} from 'react';
 import {useMenuGamepad} from './useMenuGamepad';
 import {menuFocusIndex,type MenuDirection} from './systems/menuNavigation';
 import styles from './CampaignMainMenu.module.css';
+import GameVersionBadge from './GameVersionBadge';
 import {openCloudAccountV71} from './CloudAccountV71';
 import { MAIN_MENU_MODE_LABELS_V81, type MainMenuGameModeV81 } from './systems/mainMenuModesV81';
 import { GAME_CONTENT_VERSION } from './buildInfo';
 import { CAMPAIGN_SLOT_IMPORT_MAX_BYTES, type CampaignSlotImportPreview, type CampaignSlotImportPreparation } from './systems/campaignSlots';
+
+type MenuSection = 'campaign'|'modes'|'archives'|'system';
+type MenuView = 'main'|MenuSection|'new'|'load'|'import';
+export interface CampaignMenuEntry {section:MenuSection;action?:string}
+const SECTION_TITLES:Record<MenuSection,string>={campaign:'Campagne',modes:'Modes de jeu',archives:'Archives & chroniques',system:'Système'};
+const isMenuSection=(view:MenuView):view is MenuSection=>view in SECTION_TITLES;
+const fullscreenSnapshot=()=>typeof document==='undefined'||!document.fullscreenEnabled||!document.documentElement.requestFullscreen?'unavailable':document.fullscreenElement?'fullscreen':'window';
+const serverFullscreenSnapshot=()=>'unavailable';
+function subscribeFullscreen(changed:()=>void){
+ document.addEventListener('fullscreenchange',changed);
+ return()=>document.removeEventListener('fullscreenchange',changed);
+}
 
 export interface CampaignCheckpointView {id:string;kind:'manual'|'auto';index:number;label:string;savedAt:string;hasActiveHunt:boolean;playTimeSeconds:number;resumeLocation?:string}
 export interface CampaignSlotView {id:number;status:'empty'|'ready'|'blocked';revision:number;ownerCreatedAt:string|null;hunterName:string|null;checkpoints:readonly CampaignCheckpointView[];lastCheckpointId:string|null;recoveryAvailable?:boolean}
@@ -26,7 +39,8 @@ function navigateKeys(event:KeyboardEvent<HTMLElement>,root:HTMLElement|null,onB
  const next=menuFocusIndex(nodes.map(node=>{const r=node.getBoundingClientRect();return{x:r.x+r.width/2,y:r.y+r.height/2};}),nodes.indexOf(active),direction as MenuDirection);
  nodes[next]?.focus();
 }
-export default function CampaignMainMenu({catalog,busy,message,onRefresh,onCreate,onContinue,onLoad,onRecover,onMausoleum,onReplace,onWorkspaceRecover,onRecoverNew,modeAccess,onOpenGameMode,onOpenClanWar,onOpenSprites,onPrepareImport,onImport}:{
+export default function CampaignMainMenu({catalog,busy,message,onRefresh,onCreate,onContinue,onLoad,onRecover,onMausoleum,onReplace,onWorkspaceRecover,onRecoverNew,modeAccess,onOpenGameMode,onOpenClanWar,onOpenSprites,onPrepareImport,onImport,initialEntry}:{
+ initialEntry?:CampaignMenuEntry;
  onMausoleum?:()=>void;
  onOpenClanWar?:()=>void;
  onOpenSprites?:()=>void;
@@ -40,7 +54,7 @@ export default function CampaignMainMenu({catalog,busy,message,onRefresh,onCreat
  modeAccess?:Readonly<Record<MainMenuGameModeV81,boolean>>;
  onOpenGameMode?:(mode:MainMenuGameModeV81,spoilersConfirmed:boolean)=>void;
 }){
- const [view,setView]=useState<'main'|'new'|'load'|'import'>('main'),[selected,setSelected]=useState(1),[name,setName]=useState(''),[confirmation,setConfirmation]=useState<{slot:CampaignSlotView;checkpoint:CampaignCheckpointView}|null>(null);
+ const [view,setView]=useState<MenuView>(initialEntry?.section??'main'),[selected,setSelected]=useState(1),[name,setName]=useState(''),[confirmation,setConfirmation]=useState<{slot:CampaignSlotView;checkpoint:CampaignCheckpointView}|null>(null);
  const [importPreview,setImportPreview]=useState<CampaignSlotImportPreview|null>(null),[importConfirmation,setImportConfirmation]=useState<CampaignSlotImportPreview|null>(null);
  const [importFileName,setImportFileName]=useState(''),[importMessage,setImportMessage]=useState<string|null>(null),[importReading,setImportReading]=useState(false);
  const [importText,setImportText]=useState('');
@@ -50,14 +64,35 @@ export default function CampaignMainMenu({catalog,busy,message,onRefresh,onCreat
  const [replacement,setReplacement]=useState<{slot:CampaignSlotView;name:string;recovery?:boolean}|null>(null);
  const [spoilerMode,setSpoilerMode]=useState<MainMenuGameModeV81|'clan-war'|null>(null);
  const rootRef=useRef<HTMLElement>(null),dialogRef=useRef<HTMLElement>(null),confirmationTriggerRef=useRef<HTMLButtonElement>(null);
- const back=useCallback(()=>{if(busy)return;if(importConfirmation){importReadGeneration.current++;setImportReading(false);setImportPreview(null);setImportConfirmation(null);}else if(spoilerMode)setSpoilerMode(null);else if(replacement)setReplacement(null);else if(confirmation)setConfirmation(null);else{importReadGeneration.current++;setImportReading(false);setImportPreview(null);setImportConfirmation(null);setView('main');}},[busy,confirmation,replacement,spoilerMode,importConfirmation]);
+ const navigationFocusRef=useRef<string|null>(initialEntry?.action?`[data-menu-action="${initialEntry.action}"]`:null);
+ const campaignReturnRef=useRef('new');
+ const back=useCallback(()=>{
+  if(busy)return;
+  if(importConfirmation)setImportConfirmation(null);
+  else if(spoilerMode)setSpoilerMode(null);
+  else if(replacement)setReplacement(null);
+  else if(confirmation)setConfirmation(null);
+  else if(view!=='main'){
+   importReadGeneration.current++;setImportReading(false);setImportPreview(null);setImportConfirmation(null);
+   navigationFocusRef.current=isMenuSection(view)?`[data-menu-section="${view}"]`:`[data-menu-action="${campaignReturnRef.current}"]`;
+   setView(isMenuSection(view)?'main':'campaign');
+  }
+ },[busy,confirmation,replacement,spoilerMode,importConfirmation,view]);
  useMenuGamepad(rootRef,true,`${view}:${selected}:${Boolean(confirmation||replacement||spoilerMode||importConfirmation)}:${busy}`,back);
  useLayoutEffect(()=>{
   if(busy)return;
   // Closing a checkpoint dialog returns to its exact originating save, not the menu header.
   const trigger=confirmationTriggerRef.current;
   if(!confirmation&&!replacement&&!spoilerMode&&!importConfirmation&&trigger?.isConnected){confirmationTriggerRef.current=null;trigger.focus();return;}
-  const scope=dialogRef.current??rootRef.current;if(scope)controls(scope)[0]?.focus();
+  const scope=dialogRef.current??rootRef.current;
+  if(!scope)return;
+  const selector=navigationFocusRef.current;
+  const destination=!dialogRef.current&&selector?scope.querySelector<HTMLElement>(selector):null;
+  navigationFocusRef.current=null;
+  if(destination&&!destination.matches(':disabled')){destination.focus();return;}
+  // Enter a section on its first available action; Back remains in the tab order.
+  const firstAction=!dialogRef.current?scope.querySelector<HTMLElement>('[data-menu-action]:not(:disabled),[data-menu-section]:not(:disabled)'):null;
+  (firstAction??controls(scope)[0])?.focus();
  },[view,confirmation,replacement,spoilerMode,importConfirmation,busy]);
  const archivesBlocked=Boolean((catalog?.status&&catalog.status!=='ready')||catalog?.workspaceRecoveryAvailable);
  const canRecoverWorkspace=Boolean(catalog?.workspaceRecoveryAvailable&&onWorkspaceRecover);
@@ -66,7 +101,17 @@ export default function CampaignMainMenu({catalog,busy,message,onRefresh,onCreat
  const slot=catalog?.slots.find(slot=>slot.id===selected);
  const canRecoverNew=Boolean(catalog?.workspaceRecoveryAvailable&&ready.length===0&&slot?.status==='empty'&&onRecoverNew);
  const currentCheckpoint=current?.checkpoints.find(checkpoint=>checkpoint.id===current.lastCheckpointId)??current?.checkpoints.toSorted((a,b)=>Date.parse(b.savedAt)-Date.parse(a.savedAt))[0];
- const open=(target:'new'|'load'|'import')=>{importReadGeneration.current++;setImportPreview(null);setImportConfirmation(null);setImportFileName('');setImportText('');setImportMessage(null);setImportReading(false);setConfirmation(null);setView(target);setSelected((target==='new'||target==='import'?catalog?.slots.find(s=>s.status==='empty'):current)?.id??1);};
+ const open=(target:'new'|'load'|'import',trigger:string=target)=>{if(busy)return;campaignReturnRef.current=trigger;navigationFocusRef.current=null;importReadGeneration.current++;setImportPreview(null);setImportConfirmation(null);setImportFileName('');setImportText('');setImportMessage(null);setImportReading(false);setConfirmation(null);setView(target);setSelected((target==='new'||target==='import'?catalog?.slots.find(s=>s.status==='empty'):current)?.id??1);};
+ const openSection=(section:MenuSection)=>{if(busy)return;navigationFocusRef.current=null;setView(section);};
+ const fullscreenState=useSyncExternalStore(subscribeFullscreen,fullscreenSnapshot,serverFullscreenSnapshot);
+ const fullscreenAvailable=fullscreenState!=='unavailable',fullscreen=fullscreenState==='fullscreen';
+ const [fullscreenMessage,setFullscreenMessage]=useState<string|null>(null);
+ const toggleFullscreen=async()=>{
+  if(busy||!fullscreenAvailable)return;
+  setFullscreenMessage(null);
+  try{if(document.fullscreenElement)await document.exitFullscreen();else await document.documentElement.requestFullscreen();}
+  catch{if(importAlive.current)setFullscreenMessage('Le plein écran est indisponible pour le moment.');}
+ };
  const canImport=Boolean(onPrepareImport&&onImport&&!archivesBlocked&&slot?.status==='empty'&&slot.revision===0);
  const importAvailable=canImport&&!busy;
  const [previousImportAvailable,setPreviousImportAvailable]=useState(importAvailable);
@@ -107,25 +152,41 @@ export default function CampaignMainMenu({catalog,busy,message,onRefresh,onCreat
   <img className={styles.scenery} src="/game/prologue/v47/village.png" alt="" fetchPriority="high" decoding="async" data-campaign-scenery />
   <div className={styles.shell} inert={confirmation!==null||replacement!==null||spoilerMode!==null||importConfirmation!==null}>
    <header className={styles.header}>
-    <div className={styles.archiveBar}><p>CHRONIQUES DU CLAN</p><span>5 parties · 10 manuelles + 2 autos par partie</span></div>
+    <div className={styles.archiveBar}><p>CHRONIQUES DU CLAN</p><GameVersionBadge className={styles.versionBadge} compact /></div>
     <h1>Yautja<span>La Longue Chasse</span></h1>
    </header>
-   {view==='main'?<div className={styles.landing}>
-    <section className={styles.primary} aria-label="Menu principal">
-     <p className={styles.eyebrow}>Choisissez votre histoire</p>
-     <button className={current?styles.featured:undefined} type="button" disabled={busy||!current} onClick={()=>current&&(archivesBlocked?open('load'):onContinue(current.id))}><span className={styles.actionTitle}>Continuer</span><small>{current?`Partie ${current.id} · ${current.hunterName??'Chasseur sans nom'}`:'Aucune campagne à reprendre'}</small><span className={styles.actionArrow} aria-hidden="true">›</span></button>
-     <button className={!current?styles.featured:undefined} type="button" disabled={busy||!catalog} onClick={()=>open('new')}><span className={styles.actionTitle}>Nouvelle partie</span><small>Commencer le prologue dans la nurserie</small><span className={styles.actionArrow} aria-hidden="true">›</span></button>
-     {onPrepareImport&&onImport&&<button type="button" disabled={busy||!catalog||archivesBlocked||!catalog.slots.some(item=>item.status==='empty')} data-campaign-import-open onClick={()=>open('import')}><span className={styles.actionTitle}>Importer une campagne JSON</span><small>Archiver dans un emplacement vide, sans changer la campagne active</small><span className={styles.actionArrow} aria-hidden="true">›</span></button>}
-     {onOpenGameMode&&<>
-      <button className={styles.gameMode} type="button" disabled={busy} data-main-menu-mode="the-pit" data-story-unlocked={modeAccess?.['the-pit']===true} onClick={event=>requestGameMode('the-pit',event.currentTarget)}><span className={styles.actionTitle}>The Pit</span><small>Duels, roster, arènes et chroniques des chasseurs{!modeAccess?.['the-pit']?' · avertissement spoilers':''}</small><span className={styles.actionArrow} aria-hidden="true">›</span></button>
-      <button className={styles.gameMode} type="button" disabled={busy} data-main-menu-mode="game-reserve" data-story-unlocked={modeAccess?.['game-reserve']===true} onClick={event=>requestGameMode('game-reserve',event.currentTarget)}><span className={styles.actionTitle}>Game Reserve Planet</span><small>Expédition de chasse sur la réserve de Vharuun{!modeAccess?.['game-reserve']?' · avertissement spoilers':''}</small><span className={styles.actionArrow} aria-hidden="true">›</span></button>
+   {view==='main'||isMenuSection(view)?<div className={styles.landing} key={view}>
+    <section className={styles.primary} aria-labelledby="menu-section-title" data-menu-level={view}>
+     {view==='main'?<>
+      <div className={styles.sectionIntro}><p className={styles.eyebrow}>Menu principal</p><h2 id="menu-section-title">Choisissez votre voie</h2></div>
+      <button className={styles.featured} type="button" disabled={busy} data-menu-section="campaign" onClick={()=>openSection('campaign')}><span className={styles.actionTitle}>Campagne</span><small>{current?`Reprendre ${current.hunterName??'votre chronique'} · gérer vos parties`:'Commencer votre histoire sur Yautja Prime'}</small><span className={styles.actionArrow} aria-hidden="true">›</span></button>
+      <button type="button" disabled={busy||(!onOpenGameMode&&!onOpenClanWar)} data-menu-section="modes" onClick={()=>openSection('modes')}><span className={styles.actionTitle}>Modes de jeu</span><small>The Pit · Game Reserve Planet · Guerres des clans</small><span className={styles.actionArrow} aria-hidden="true">›</span></button>
+      <button type="button" disabled={busy||(!onOpenSprites&&!onMausoleum)} data-menu-section="archives" onClick={()=>openSection('archives')}><span className={styles.actionTitle}>Archives & chroniques</span><small>Collections visuelles et récits des Grandes Chasses</small><span className={styles.actionArrow} aria-hidden="true">›</span></button>
+      <button type="button" disabled={busy} data-menu-section="system" onClick={()=>openSection('system')}><span className={styles.actionTitle}>Système</span><small>Compte, synchronisation et affichage</small><span className={styles.actionArrow} aria-hidden="true">›</span></button>
+     </>:<>
+      <div className={styles.sectionIntro}><p className={styles.eyebrow}>Menu principal <span aria-hidden="true">/</span></p><div className={styles.sectionHeading}><h2 id="menu-section-title">{SECTION_TITLES[view]}</h2><button className={styles.backButton} type="button" disabled={busy} data-menu-back aria-label="Retour au menu principal" onClick={back}>Retour <kbd aria-hidden="true">B</kbd></button></div></div>
+      {view==='campaign'?<>
+       <button className={current?styles.featured:undefined} type="button" disabled={busy||!current} data-menu-action="continue" onClick={()=>{if(!busy&&current){if(archivesBlocked)open('load','continue');else onContinue(current.id);}}}><span className={styles.actionTitle}>Continuer</span><small>{current?`Reprendre la partie ${current.id} · ${current.hunterName??'Chasseur sans nom'}`:'Aucune campagne à reprendre'}</small><span className={styles.actionArrow} aria-hidden="true">›</span></button>
+       <button className={!current?styles.featured:undefined} type="button" disabled={busy||!catalog} data-menu-action="new" onClick={()=>open('new')}><span className={styles.actionTitle}>Nouvelle partie</span><small>Commencer le prologue dans la nurserie</small><span className={styles.actionArrow} aria-hidden="true">›</span></button>
+       <button type="button" disabled={busy||!catalog||!catalog.slots.some(s=>s.status!=='empty')} data-menu-action="load" onClick={()=>open('load')}><span className={styles.actionTitle}>Charger une partie</span><small>Retrouver une campagne et ses sauvegardes</small><span className={styles.actionArrow} aria-hidden="true">›</span></button>
+       {onPrepareImport&&onImport&&<button type="button" disabled={busy||!catalog||archivesBlocked||!catalog.slots.some(item=>item.status==='empty')} data-menu-action="import" data-campaign-import-open onClick={()=>open('import')}><span className={styles.actionTitle}>Importer une campagne JSON</span><small>Archiver dans un emplacement vide</small><span className={styles.actionArrow} aria-hidden="true">›</span></button>}
+       {catalog?.slots.every(s=>s.status!=='empty')&&<p className={styles.notice}>Les cinq emplacements sont occupés ou protégés. Nouvelle partie permet de choisir une campagne à remplacer, uniquement après confirmation.</p>}
+      </>:view==='modes'?<>
+       {onOpenGameMode&&<>
+        <button className={styles.gameMode} type="button" disabled={busy} data-menu-action="the-pit" data-main-menu-mode="the-pit" data-story-unlocked={modeAccess?.['the-pit']===true} onClick={event=>requestGameMode('the-pit',event.currentTarget)}><span className={styles.actionTitle}>The Pit</span><small>Duels, roster et arènes{!modeAccess?.['the-pit']?' · avertissement spoilers':''}</small><span className={styles.actionArrow} aria-hidden="true">›</span></button>
+        <button className={styles.gameMode} type="button" disabled={busy} data-menu-action="game-reserve" data-main-menu-mode="game-reserve" data-story-unlocked={modeAccess?.['game-reserve']===true} onClick={event=>requestGameMode('game-reserve',event.currentTarget)}><span className={styles.actionTitle}>Game Reserve Planet</span><small>Expédition sur la réserve de Vharuun{!modeAccess?.['game-reserve']?' · avertissement spoilers':''}</small><span className={styles.actionArrow} aria-hidden="true">›</span></button>
+       </>}
+       {onOpenClanWar&&<button className={styles.gameMode} type="button" disabled={busy} data-menu-action="clan-war" onClick={event=>{if(busy)return;confirmationTriggerRef.current=event.currentTarget;setSpoilerMode('clan-war');}}><span className={styles.actionTitle}>Guerres des clans</span><small>30 planètes · conquêtes libres avec spoilers</small><span className={styles.actionArrow} aria-hidden="true">›</span></button>}
+      </>:view==='archives'?<>
+       {onOpenSprites&&<button type="button" disabled={busy} data-menu-action="sprites" onClick={()=>{if(!busy)onOpenSprites();}}><span className={styles.actionTitle}>Archives visuelles</span><small>Clans, personnages, faune, vaisseaux et matériaux</small><span className={styles.actionArrow} aria-hidden="true">›</span></button>}
+       {onMausoleum&&<button type="button" disabled={busy} data-menu-action="mausoleum" onClick={()=>{if(!busy)onMausoleum();}}><span className={styles.actionTitle}>DLC / Chroniques de chasse</span><small>Visiter le Mausolée des Grandes Chasses</small><span className={styles.actionArrow} aria-hidden="true">›</span></button>}
+      </>:<>
+       <button type="button" disabled={busy} data-menu-action="account" onClick={()=>{if(!busy)openCloudAccountV71();}}><span className={styles.actionTitle}>Compte & sauvegardes</span><small>Synchroniser mobile et ordinateur</small><span className={styles.actionArrow} aria-hidden="true">›</span></button>
+       <button type="button" disabled={busy} data-menu-action="refresh" onClick={()=>{if(!busy)onRefresh();}}><span className={styles.actionTitle}>Actualiser les archives</span><small>Relire les sauvegardes de cet appareil</small><span className={styles.actionArrow} aria-hidden="true">↻</span></button>
+       {fullscreenAvailable&&<button type="button" disabled={busy} data-menu-action="fullscreen" aria-pressed={fullscreen} onClick={()=>{void toggleFullscreen();}}><span className={styles.actionTitle}>{fullscreen?'Quitter le plein écran':'Plein écran'}</span><small>{fullscreen?'Revenir à la fenêtre de jeu':'Afficher le jeu sur tout l’écran'}</small><span className={styles.actionArrow} aria-hidden="true">⛶</span></button>}
+       {fullscreenMessage&&<p role="status" className={styles.notice}>{fullscreenMessage}</p>}
+      </>}
      </>}
-     {onOpenClanWar&&<button className={styles.gameMode} type="button" disabled={busy} onClick={event=>{confirmationTriggerRef.current=event.currentTarget;setSpoilerMode('clan-war');}}><span className={styles.actionTitle}>Guerres des clans</span><small>30 planètes · mers, jungles, toundras et mondes extraterrestres · conquêtes libres avec spoilers</small><span className={styles.actionArrow} aria-hidden="true">›</span></button>}
-     {onOpenSprites&&<button type="button" disabled={busy} onClick={onOpenSprites}><span className={styles.actionTitle}>Archives visuelles</span><small>Clans, personnages, faune, vaisseaux et matériaux importés</small><span className={styles.actionArrow} aria-hidden="true">›</span></button>}
-     <button type="button" disabled={busy} onClick={openCloudAccountV71}><span className={styles.actionTitle}>Compte & sauvegardes</span><small>Synchroniser mobile et ordinateur</small><span className={styles.actionArrow} aria-hidden="true">›</span></button>
-     {onMausoleum&&<button type="button" disabled={busy} onClick={onMausoleum}><span className={styles.actionTitle}>DLC / Chroniques de chasse</span><small>Visiter le Mausolée des Grandes Chasses</small><span className={styles.actionArrow} aria-hidden="true">›</span></button>}
-     <button type="button" disabled={busy||!catalog||!catalog.slots.some(s=>s.status!=='empty')} onClick={()=>open('load')}><span className={styles.actionTitle}>Charger une partie</span><small>Retrouver une campagne et ses sauvegardes</small><span className={styles.actionArrow} aria-hidden="true">›</span></button>
-     {catalog?.slots.every(s=>s.status!=='empty')&&<p className={styles.notice}>Les cinq emplacements sont occupés ou protégés. Nouvelle partie permet de choisir une campagne à remplacer, uniquement après confirmation.</p>}
     </section>
     <aside className={styles.sceneCaption} aria-label={current?'Campagne à reprendre':'Début de la chronique'}>
      <p className={styles.eyebrow}>{current?'Votre chronique':'Prologue · Yautja Prime'}</p>
@@ -133,7 +194,7 @@ export default function CampaignMainMenu({catalog,busy,message,onRefresh,onCreat
      {current?<><p>{currentCheckpoint?place(currentCheckpoint):'Campagne enregistrée'}</p>{currentCheckpoint&&<p className={styles.checkpointSummary}>Partie {current.id} · {time(currentCheckpoint.playTimeSeconds)}<br/>Dernière sauvegarde : {date(currentCheckpoint.savedAt)}</p>}</>:<p>La nurserie, les premiers liens du clan.<br/>C’est ici que commence votre histoire.</p>}
     </aside>
    </div>:<section className={styles.manager} aria-labelledby="campaign-manager-title">
-    <div className={styles.managerHeader}><div><p className={styles.eyebrow}>Archives du clan</p><h2 id="campaign-manager-title">{view==='new'?'Nouvelle partie':view==='import'?'Importer une campagne':'Charger une partie'}</h2></div><button className={styles.backButton} type="button" disabled={busy} onClick={back}>Retour au menu · B</button></div>
+    <div className={styles.managerHeader}><div><p className={styles.eyebrow}>Archives du clan</p><h2 id="campaign-manager-title">{view==='new'?'Nouvelle partie':view==='import'?'Importer une campagne':'Charger une partie'}</h2></div><button className={styles.backButton} type="button" disabled={busy} data-menu-back aria-label="Retour à Campagne" onClick={back}>Retour à Campagne <kbd aria-hidden="true">B</kbd></button></div>
     <div className={styles.parties} aria-label="Les cinq parties">{catalog?.slots.map(item=><button type="button" key={item.id} data-campaign-slot={item.id} data-slot-state={item.status} aria-pressed={selected===item.id} disabled={busy||(view==='import'&&(importReading||item.status!=='empty'||archivesBlocked))} onClick={()=>{importReadGeneration.current++;setImportReading(false);setSelected(item.id);setImportPreview(null);setImportConfirmation(null);setImportMessage(null);}}><span>PARTIE {String(item.id).padStart(2,'0')}</span><strong>{item.status==='empty'?'Emplacement libre':item.hunterName??'Archive protégée'}</strong><small>{item.status==='blocked'?'Archive protégée':item.status==='empty'?'Nouvelle histoire':`${item.checkpoints.length} / 12 sauvegardes`}</small></button>)}</div>
     {view==='new'?<div className={styles.newGame}>
      <figure className={styles.prologuePreview}><img src="/game/prologue/v47/arena.png" alt="" decoding="async" /><figcaption><span>PROLOGUE</span><h3>La nurserie du clan</h3><p>Grandissez sur Yautja Prime : accueil Unblooded, dojo, camp, reconnaissance et patrouille du désert. La petite Fosse propose ensuite un duel de novices facultatif.</p></figcaption></figure>
@@ -169,7 +230,7 @@ export default function CampaignMainMenu({catalog,busy,message,onRefresh,onCreat
    </section>}
    <footer className={styles.footer}>
     <p className={styles.status} role="status" aria-live="polite">{busy?'Vérification et enregistrement des archives…':message}</p>
-    <div className={styles.footerRail}><p>Clavier : flèches, Entrée, Échap · Manette : directions, A, B · Tactile : toucher</p><button type="button" disabled={busy} onClick={onRefresh}>Actualiser les archives</button></div>
+    <div className={styles.footerRail}><p>Flèches / directions : naviguer · Entrée / A : choisir · Échap / B : retour</p><span>5 parties · 10 sauvegardes manuelles + 2 autos</span></div>
     <p className={styles.localNotice}>Sauvegardes locales · synchronisation avec un compte connecté.</p>
    </footer>
   </div>
@@ -183,7 +244,7 @@ export default function CampaignMainMenu({catalog,busy,message,onRefresh,onCreat
    <p className={styles.eyebrow}>Accès anticipé · spoilers</p><h2 id="game-mode-spoiler-title">Entrer dans {spoilerMode==='clan-war'?'Guerres des clans':MAIN_MENU_MODE_LABELS_V81[spoilerMode]} ?</h2>
    <p id="game-mode-spoiler-description">{spoilerMode==='clan-war'?'Ces exercices sont indépendants des mandats débloqués dans votre histoire.':'Vous n’avez pas encore atteint le palier nécessaire dans votre histoire actuelle.'} Ce mode peut révéler des chasseurs, des lieux, des armes ou des événements que vous n’avez pas encore découverts.</p>
    <p>Voulez-vous continuer malgré les spoilers ? Vous jouerez dans un profil libre local séparé. Votre campagne et ses cinq emplacements restent inchangés ; aucun palier de l’histoire ne sera débloqué.</p>
-   <div className={styles.dialogActions}><button type="button" disabled={busy} data-spoiler-cancel onClick={()=>setSpoilerMode(null)}>Revenir au menu</button><button type="button" disabled={busy} data-spoiler-confirm onClick={()=>{const mode=spoilerMode;setSpoilerMode(null);if(mode==='clan-war')onOpenClanWar?.();else onOpenGameMode?.(mode,true);}}>Accéder malgré les spoilers</button></div>
+   <div className={styles.dialogActions}><button type="button" disabled={busy} data-spoiler-cancel onClick={()=>setSpoilerMode(null)}>Revenir au menu</button><button type="button" disabled={busy} data-spoiler-confirm onClick={()=>{if(busy)return;const mode=spoilerMode;setSpoilerMode(null);if(mode==='clan-war')onOpenClanWar?.();else onOpenGameMode?.(mode,true);}}>Accéder malgré les spoilers</button></div>
   </section></div>}
   {replacement&&<div className={styles.backdrop}><section ref={dialogRef} className={styles.dialog} role="dialog" aria-modal="true" aria-labelledby="campaign-replace-title" onKeyDown={event=>{if(event.key==='Tab'){const nodes=controls(dialogRef.current!);if(event.shiftKey&&document.activeElement===nodes[0]){event.preventDefault();nodes.at(-1)?.focus();}else if(!event.shiftKey&&document.activeElement===nodes.at(-1)){event.preventDefault();nodes[0]?.focus();}}}}>
    <p className={styles.eyebrow}>{replacement.recovery?'Récupération des archives':'Remplacement d’une campagne'}</p><h2 id="campaign-replace-title">{replacement.recovery?`Repartir dans la partie ${replacement.slot.id} ?`:`Remplacer la partie ${replacement.slot.id} ?`}</h2>

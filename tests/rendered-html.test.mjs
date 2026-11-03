@@ -34,15 +34,15 @@ test("server-renders the campaign menu before local archive hydration", async ()
 
   const html = await response.text();
   assert.doesNotMatch(html, developmentPreviewMeta);
-  assert.match(html, /<title>Yautja : La Longue Chasse<\/title>/i);
+  assert.match(html, /<title>Yautja : La Longue Chasse · v1\.1\.0<\/title>/i);
   // Inspect actual SSR markup, not matching strings inside the RSC payload.
   const markup = html.replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi, "");
   const main = markup.match(/<main\b[^>]*>[\s\S]*?<\/main>/i)?.[0];
   assert.ok(main, "the initial document contains its main landmark");
   assert.match(main, /^<main\b[^>]*\bdata-campaign-menu="main"/);
   assert.match(main, /<h1>Yautja<span>La Longue Chasse<\/span><\/h1>/);
-  assert.match(main, /<section\b[^>]*\baria-label="Menu principal"/);
-  assert.match(main, /5 parties · 10 manuelles \+ 2 autos par partie/);
+  assert.match(main, /<section\b[^>]*\baria-labelledby="menu-section-title"/);
+  assert.match(main, /5 parties · 10 sauvegardes manuelles \+ 2 autos/);
   assert.match(main, /<p\b(?=[^>]*\brole="status")(?=[^>]*\baria-live="polite")[^>]*>Vérification et enregistrement des archives…<\/p>/);
 
   const buttons = [...main.matchAll(/<button\b([^>]*)>([\s\S]*?)<\/button>/gi)];
@@ -52,12 +52,11 @@ test("server-renders the campaign menu before local archive hydration", async ()
     .replace(/<span\b(?=[^>]*\baria-hidden=["']true["'])[^>]*>[\s\S]*?<\/span>/gi, "")
     .replace(/<[^>]+>/g, "").trim();
   assert.deepEqual(buttons.map(([, , content]) => actionLabel(content)), [
-    "Continuer", "Nouvelle partie", "Importer une campagne JSON", "The Pit", "Game Reserve Planet", "Guerres des clans", "Archives visuelles", "Compte &amp; sauvegardes", "DLC / Chroniques de chasse", "Charger une partie", "Actualiser les archives",
+    "Campagne", "Modes de jeu", "Archives &amp; chroniques", "Système",
   ]);
   // No local archives are available to SSR: actions stay protected until hydration.
-  for (const [, attributes, content] of buttons) {
-    // Account access is independent of archive hydration; game actions remain protected.
-    if (actionLabel(content) !== "Compte &amp; sauvegardes") assert.match(attributes, /(?:^|\s)disabled(?:\s|=|$)/);
+  for (const [, attributes] of buttons) {
+    assert.match(attributes, /(?:^|\s)disabled(?:\s|=|$)/);
   }
   assert.doesNotMatch(main, /data-campaign-session=|data-game-shell=|<canvas\b/);
 });

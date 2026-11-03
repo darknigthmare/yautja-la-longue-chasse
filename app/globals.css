@@ -376,6 +376,15 @@ select:focus-visible,
   backdrop-filter: blur(12px);
 }
 
+.brand-caption {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+  min-width: 0;
+  line-height: 1.1;
+}
+
 .brand-lockup {
   display: flex;
   min-width: max-content;
@@ -2915,9 +2924,31 @@ select:focus-visible,
   .top-bar {
     align-items: center;
     padding: 8px 12px;
+    gap: 8px;
   }
 
-  .brand-lockup > span:last-child {
+  .top-bar .brand-lockup {
+    width: auto;
+    min-width: 0;
+    flex: 0 0 auto;
+    padding: 4px;
+  }
+
+  .top-bar .brand-rune {
+    display: none;
+  }
+
+  .top-bar [data-game-version] {
+    flex-direction: column;
+    gap: 2px;
+    min-width: 56px;
+  }
+
+  .top-bar [data-game-version] > span {
+    display: none;
+  }
+
+  .brand-lockup .brand-name {
     display: none;
   }
 

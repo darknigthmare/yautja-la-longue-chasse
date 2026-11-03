@@ -311,14 +311,19 @@ async function mutation(storage: ArchiveStorage | null, operation: (storage: Arc
 }
 function importedCampaign(serialized: string): { save: SaveGame; sourceFormat: CampaignSlotImportPreview["sourceFormat"] } {
   const parsed = parseSaveImport(serialized);
-  if (!parsed.save) fail(parsed.failure === "future-version" ? "future-version" : parsed.failure === "too-large" ? "too-large" : "invalid-archive", "JSON de campagne illisible, trop volumineux ou incompatible. Aucune archive locale modifiée.");
+  const invalidArchiveMessage = "JSON de campagne illisible, trop volumineux ou incompatible. Aucune archive locale modifiée.";
+  if (!parsed.save && parsed.failure !== "invalid-save")
+    fail(parsed.failure === "future-version" ? "future-version" : parsed.failure === "too-large" ? "too-large" : "invalid-archive", invalidArchiveMessage);
   const value: unknown = JSON.parse(serialized.replace(/^\uFEFF/, ""));
   const envelope = record(value) && value.format === "yautja-long-hunt.save-export";
   const payload = envelope ? value.save : value;
-  // normalizeSave can repair a missing owner with the current time. A portable
-  // import must preserve the owner's original identity, never invent one.
-  if (!record(payload) || !iso(payload.createdAt) || parsed.save.createdAt !== payload.createdAt)
+  // Owner-bound records (including gauntlets) can fail schema validation before
+  // normalization. Keep the slot's specific owner refusal for campaign-shaped
+  // files, while still requiring full validation before offering any import.
+  if (record(payload) && record(payload.profile) && record(payload.missionProgress) &&
+      (!iso(payload.createdAt) || parsed.save && parsed.save.createdAt !== payload.createdAt))
     fail("owner-conflict", "Le fichier ne contient pas une identité de propriétaire valide et conservable. Aucun propriétaire n’est créé.");
+  if (!parsed.save) fail("invalid-archive", invalidArchiveMessage);
   return { save: parsed.save, sourceFormat: envelope ? "export-save" : "legacy-save" };
 }
 function inspectCampaignImport(data: ArchiveStorage, id: CampaignSlotId, serialized: string) {
