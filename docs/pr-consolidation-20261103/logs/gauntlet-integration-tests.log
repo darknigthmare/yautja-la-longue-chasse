@@ -1,0 +1,21 @@
+✔ Every legitimate V142 unlocked identity survives saved/reloaded sidecar configuration (1.342492ms)
+✔ Saved Wolf stays Wolf after a different cosmetic preference is equipped elsewhere (0.126558ms)
+✔ Legacy V141 sidecar without optional model preserves previous behavior (0.191895ms)
+✔ An old/future/hostile cosmetic receipt cannot unlock an unearned gauntlet (0.159657ms)
+✔ V1 active hunt sidecar roundtrip persists optional selected identity, no schema break (10.632007ms)
+✔ GameClient writes launch-time visual identity, preserves it across writes, and passes it to HuntCanvas on resume (1.961371ms)
+✔ the live mission chooses each real V139 source over the V3 fallback (4.020446ms)
+✔ missing or rejected V139 art uses old V3 only then, without throwing or awarding a game stat (0.552831ms)
+✔ unknown identity cannot inject an arbitrary asset path into active hunt (0.191394ms)
+✔ actual 12k-line HuntCanvas preloads per-hunter assets once and preserves battle rigs (3.378924ms)
+✔ V140 actual rig matches source pivots and all 54 model URLs stay owner-scoped (3.200539ms)
+✔ V140 rig study covers every pose/morph/phase/facing and keeps lid hinge fixed (13.228589ms)
+✔ V140 production rig inspector renders the actual hunter rig, never writes campaign progress (0.529195ms)
+ℹ tests 13
+ℹ suites 0
+ℹ pass 13
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2492.996261

@@ -36,7 +36,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:
-      - name: Checkout exact V115 inputs, not large art archives
+      - name: Checkout mission UI and the integrated clan engines
         uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
           persist-credentials: false
@@ -52,13 +52,7 @@ jobs:
             /app/game/ClanWarOperationsV115.module.css
             /app/game/ClanWarMissionDossiersV117.tsx
             /app/game/ClanWarMissionDossiersV117.module.css
-            /app/game/systems/clanWarMissionDossiersV117.ts
-            /app/game/systems/clanWarRtsScenariosV119.ts
-            /app/game/systems/clanWarOperationsV115.ts
-            /app/game/systems/clanWarMissionTerrainV116.ts
-            /app/game/systems/clanWarTacticalNavigationV118.ts
-            /app/game/systems/clanWarBibleV6.ts
-            /app/game/systems/clanWarV85Data.ts
+            /app/game/systems/
             /tests/clan-war-operations-v115.test.mjs
             /tests/clan-war-operation-cross-mode-v115.test.mjs
             /tests/clan-war-tactical-runtime-v115.test.mjs

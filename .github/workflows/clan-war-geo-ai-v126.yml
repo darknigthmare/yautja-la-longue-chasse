@@ -28,7 +28,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:
-      - name: Sparse checkout of exact V120/V126 sources
+      - name: Sparse checkout of geographic views and integrated clan engines
         uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
           persist-credentials: false
@@ -40,22 +40,14 @@ jobs:
             /tsconfig.json
             /tsconfig.clan-war-v126.json
             /types/clan-war-v120-css.d.ts
-            /app/game/data/clanWarOriginalPlacesV120.json
-            /app/game/data/clanWarLoreFramesV120.json
-            /app/game/data/clanWarHomageAssaultV120.json
-            /app/game/data/clanWarHomageOuterV120.json
-            /app/game/data/clanWarHomageStealthV120.json
-            /app/game/data/clanWarHomageRtsV120.json
-            /app/game/data/earthLandNaturalEarth110mV126.json
-            /app/game/systems/clanWarVariantAtlasV120.ts
-            /app/game/systems/clanWarEarthV126.ts
-            /app/game/systems/clanWarWorldClimateV126.ts
-            /app/game/systems/clanWarEnemyProfilesV126.ts
-            /app/game/systems/clanWarMultiplayerV126.ts
+            /app/game/data/
+            /app/game/systems/
             /app/game/EarthPlanetMapV126.tsx
             /app/game/EarthPlanetMapV126.module.css
             /app/game/ClanWarGeoAiV126.tsx
             /app/game/ClanWarGeoAiV126.module.css
+            /app/game/ClanWarMultiplayerPracticeV127.tsx
+            /app/game/ClanWarMultiplayerPracticeV127.module.css
             /tests/clan-war-geo-ai-multiplayer-v126.test.mjs
             /scripts/export-clan-war-geo-v126.mjs
       - name: Node 22

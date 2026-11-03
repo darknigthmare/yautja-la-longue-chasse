@@ -25,7 +25,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:
-      - name: Checkout only the atlas and its dependency manifests
+      - name: Checkout atlas views and their integrated clan engines
         uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
           persist-credentials: false
@@ -37,13 +37,8 @@ jobs:
             /tsconfig.json
             /tsconfig.clan-war-variants-v120.json
             /types/clan-war-v120-css.d.ts
-            /app/game/systems/clanWarVariantAtlasV120.ts
-            /app/game/data/clanWarOriginalPlacesV120.json
-            /app/game/data/clanWarLoreFramesV120.json
-            /app/game/data/clanWarHomageAssaultV120.json
-            /app/game/data/clanWarHomageOuterV120.json
-            /app/game/data/clanWarHomageStealthV120.json
-            /app/game/data/clanWarHomageRtsV120.json
+            /app/game/systems/
+            /app/game/data/
             /app/game/ClanWarVariantAtlasV120.tsx
             /app/game/ClanWarVariantAtlasV120.module.css
             /tests/clan-war-variants-v120.test.mjs

@@ -1,0 +1,292 @@
+TAP version 13
+# Subtest: 12 independent original props, no atlas or film fidelity claim
+ok 1 - 12 independent original props, no atlas or film fidelity claim
+  ---
+  duration_ms: 2.240636
+  type: 'test'
+  ...
+# Subtest: all 12 PNG and WebP sprites retain alpha, margins and their own pixels
+ok 2 - all 12 PNG and WebP sprites retain alpha, margins and their own pixels
+  ---
+  duration_ms: 151.495491
+  type: 'test'
+  ...
+# Subtest: AZERTY/QWERTY/arrows issue exactly one safe input with no repeat
+ok 3 - AZERTY/QWERTY/arrows issue exactly one safe input with no repeat
+  ---
+  duration_ms: 0.613991
+  type: 'test'
+  ...
+# Subtest: sprite URLs cannot become external URLs or arbitrary save-controlled paths
+ok 4 - sprite URLs cannot become external URLs or arbitrary save-controlled paths
+  ---
+  duration_ms: 0.442447
+  type: 'test'
+  ...
+# Subtest: UI wiring keeps save locks, hidden actors and action preconditions
+ok 5 - UI wiring keeps save locks, hidden actors and action preconditions
+  ---
+  duration_ms: 0.49175
+  type: 'test'
+  ...
+# Subtest: Council V146: no speculative dossier before any of the four modes has finished
+ok 6 - Council V146: no speculative dossier before any of the four modes has finished
+  ---
+  duration_ms: 25.4344
+  type: 'test'
+  ...
+# Subtest: Council V146: completed V115 assault yields one traceable, non-conquering audit dossier
+ok 7 - Council V146: completed V115 assault yields one traceable, non-conquering audit dossier
+  ---
+  duration_ms: 1.687154
+  type: 'test'
+  ...
+# Subtest: Council V146: completed V115 outer yields one traceable, non-conquering audit dossier
+ok 8 - Council V146: completed V115 outer yields one traceable, non-conquering audit dossier
+  ---
+  duration_ms: 2.031916
+  type: 'test'
+  ...
+# Subtest: Council V146: completed V115 stealth yields one traceable, non-conquering audit dossier
+ok 9 - Council V146: completed V115 stealth yields one traceable, non-conquering audit dossier
+  ---
+  duration_ms: 1.764469
+  type: 'test'
+  ...
+# Subtest: Council V146: completed V115 rts yields one traceable, non-conquering audit dossier
+ok 10 - Council V146: completed V115 rts yields one traceable, non-conquering audit dossier
+  ---
+  duration_ms: 0.753438
+  type: 'test'
+  ...
+# Subtest: Council V146: completed W3 RTS receipt carries actual source-map, unit and task evidence
+ok 11 - Council V146: completed W3 RTS receipt carries actual source-map, unit and task evidence
+  ---
+  duration_ms: 18.503463
+  type: 'test'
+  ...
+# Subtest: Council V146: a V115 and standalone W3 result coexist without duplicate ID or overwriting V85
+ok 12 - Council V146: a V115 and standalone W3 result coexist without duplicate ID or overwriting V85
+  ---
+  duration_ms: 13.804188
+  type: 'test'
+  ...
+# Subtest: Council V146: forged V115 source, missing team or duplicate report never becomes evidence
+ok 13 - Council V146: forged V115 source, missing team or duplicate report never becomes evidence
+  ---
+  duration_ms: 1.096627
+  type: 'test'
+  ...
+# Subtest: Council V146: forged W3 receipt identity, map, RAV or completed tasks is rejected
+ok 14 - Council V146: forged W3 receipt identity, map, RAV or completed tasks is rejected
+  ---
+  duration_ms: 30.392568
+  type: 'test'
+  ...
+# Subtest: Council V146: 24 source mission scripts and neutral escort provenance remain immutable
+ok 15 - Council V146: 24 source mission scripts and neutral escort provenance remain immutable
+  ---
+  duration_ms: 51.210791
+  type: 'test'
+  ...
+# Subtest: Council V146: a self-consistent receipt cannot invent a finished phase, source mission, map or unit
+ok 16 - Council V146: a self-consistent receipt cannot invent a finished phase, source mission, map or unit
+  ---
+  duration_ms: 19.652689
+  type: 'test'
+  ...
+# Subtest: Council V146 rejects source geometry, mission instructions and numeric state changed together
+ok 17 - Council V146 rejects source geometry, mission instructions and numeric state changed together
+  ---
+  duration_ms: 19.273207
+  type: 'test'
+  ...
+# Subtest: Council accepts generated retreats and defeats across all 24 missions with casualties and evacuations
+ok 18 - Council accepts generated retreats and defeats across all 24 missions with casualties and evacuations
+  ---
+  duration_ms: 219.216503
+  type: 'test'
+  ...
+# Subtest: Council V146: V6 squad identities, combat stats, PC budget and entire W3 map are source-checked
+ok 19 - Council V146: V6 squad identities, combat stats, PC budget and entire W3 map are source-checked
+  ---
+  duration_ms: 47.437861
+  type: 'test'
+  ...
+# Subtest: Council V147: a W133 casualty or evacuee cannot be both active and down
+ok 20 - Council V147: a W133 casualty or evacuee cannot be both active and down
+  ---
+  duration_ms: 19.558641
+  type: 'test'
+  ...
+# Subtest: V115 uses only V6 units, unique people and workbook RAV; it creates no V3/campaign front
+ok 21 - V115 uses only V6 units, unique people and workbook RAV; it creates no V3/campaign front
+  ---
+  duration_ms: 1.435631
+  type: 'test'
+  ...
+# Subtest: all four operation formats are dispatchable on validated passages, with single upkeep debit
+ok 22 - all four operation formats are dispatchable on validated passages, with single upkeep debit
+  ---
+  duration_ms: 10.211727
+  type: 'test'
+  ...
+# Subtest: missing routes, duplicate people, over-command formations and own home remain blocked
+ok 23 - missing routes, duplicate people, over-command formations and own home remain blocked
+  ---
+  duration_ms: 0.294697
+  type: 'test'
+  ...
+# Subtest: assault cannot spawn an unreserved unit or spend AP twice; tick advances and produces one report
+ok 24 - assault cannot spawn an unreserved unit or spend AP twice; tick advances and produces one report
+  ---
+  duration_ms: 7.470919
+  type: 'test'
+  ...
+# Subtest: stealth is grid-based: no remote sabotage, no walking through solid walls, and patrols react
+ok 25 - stealth is grid-based: no remote sabotage, no walking through solid walls, and patrols react
+  ---
+  duration_ms: 3.080322
+  type: 'test'
+  ...
+# Subtest: an actual stealth path reaches the relay, sabotages it and extracts with one unique V6 receipt
+ok 26 - an actual stealth path reaches the relay, sabotages it and extracts with one unique V6 receipt
+  ---
+  duration_ms: 5.585501
+  type: 'test'
+  ...
+# Subtest: RTS movement and enemy response are simultaneous per order, with controlled occupancy
+ok 27 - RTS movement and enemy response are simultaneous per order, with controlled occupancy
+  ---
+  duration_ms: 3.719871
+  type: 'test'
+  ...
+# Subtest: Outer Ops completes only at dueAt, reconciles missing UI time, and never awards twice
+ok 28 - Outer Ops completes only at dueAt, reconciles missing UI time, and never awards twice
+  ---
+  duration_ms: 1.116787
+  type: 'test'
+  ...
+# Subtest: up to three independent Outer Ops can run; the fourth is rejected
+ok 29 - up to three independent Outer Ops can run; the fourth is rejected
+  ---
+  duration_ms: 0.786017
+  type: 'test'
+  ...
+# Subtest: manual retreat produces a unique report and frees the same identified members
+ok 30 - manual retreat produces a unique report and frees the same identified members
+  ---
+  duration_ms: 0.62687
+  type: 'test'
+  ...
+# Subtest: archive roundtrip and source pinning reject corrupt or cross-context payloads
+ok 31 - archive roundtrip and source pinning reject corrupt or cross-context payloads
+  ---
+  duration_ms: 3.040303
+  type: 'test'
+  ...
+# Subtest: force pace preserves exact position and advances continuously on the actual V6 passages
+ok 32 - force pace preserves exact position and advances continuously on the actual V6 passages
+  ---
+  duration_ms: 5.138228
+  type: 'test'
+  ...
+# Subtest: forced pace survives save, recall and cannot be combined with other route changes
+ok 33 - forced pace survives save, recall and cannot be combined with other route changes
+  ---
+  duration_ms: 5.23409
+  type: 'test'
+  ...
+# Subtest: halt, incident, diversion, insufficient RAV and late orders cannot be accelerated
+ok 34 - halt, incident, diversion, insufficient RAV and late orders cannot be accelerated
+  ---
+  duration_ms: 0.627601
+  type: 'test'
+  ...
+# Subtest: archives generated by the real PR57 runtime retain paid pace and recall on this branch
+ok 35 - archives generated by the real PR57 runtime retain paid pace and recall on this branch
+  ---
+  duration_ms: 2.029853
+  type: 'test'
+  ...
+# Subtest: field bulletin waits for actual halfway progress after pace acceleration
+ok 36 - field bulletin waits for actual halfway progress after pace acceleration
+  ---
+  duration_ms: 6.166243
+  type: 'test'
+  ...
+# Subtest: V147 assault: one-HP guardian cannot swallow three simultaneous damage transfers
+ok 37 - V147 assault: one-HP guardian cannot swallow three simultaneous damage transfers
+  ---
+  duration_ms: 9.19605
+  type: 'test'
+  ...
+# Subtest: V147 assault: reversing actor insertion order leaves effective damage unchanged
+ok 38 - V147 assault: reversing actor insertion order leaves effective damage unchanged
+  ---
+  duration_ms: 1.018862
+  type: 'test'
+  ...
+# Subtest: V147 assault: old two-team protection and expiry remain possible without free HP
+ok 39 - V147 assault: old two-team protection and expiry remain possible without free HP
+  ---
+  duration_ms: 0.443658
+  type: 'test'
+  ...
+# Subtest: V147 cross-mode: source V6, closed receipts and V85 write protection are preserved
+ok 40 - V147 cross-mode: source V6, closed receipts and V85 write protection are preserved
+  ---
+  duration_ms: 4.286102
+  type: 'test'
+  ...
+# Subtest: primary guard investigates its last real sighting, not the hidden hunter's current location
+ok 41 - primary guard investigates its last real sighting, not the hidden hunter's current location
+  ---
+  duration_ms: 14.259747
+  type: 'test'
+  ...
+# Subtest: PR55 investigation survives reload and invalid records are rejected
+ok 42 - PR55 investigation survives reload and invalid records are rejected
+  ---
+  duration_ms: 3.847812
+  type: 'test'
+  ...
+# Subtest: an active sound decoy takes priority over the guard's stored sighting
+ok 43 - an active sound decoy takes priority over the guard's stored sighting
+  ---
+  duration_ms: 2.611235
+  type: 'test'
+  ...
+# Subtest: contact seen only by the second guard never creates a first-guard memory
+ok 44 - contact seen only by the second guard never creates a first-guard memory
+  ---
+  duration_ms: 2.179505
+  type: 'test'
+  ...
+# Subtest: V151 V115 destructive reset verifies current version BEFORE and AFTER confirmation
+ok 45 - V151 V115 destructive reset verifies current version BEFORE and AFTER confirmation
+  ---
+  duration_ms: 1.638743
+  type: 'test'
+  ...
+# Subtest: V151 operations guard re-checks local bytes on focus and visibility and ignores nonlocal storage events
+ok 46 - V151 operations guard re-checks local bytes on focus and visibility and ignores nonlocal storage events
+  ---
+  duration_ms: 232.580043
+  type: 'test'
+  ...
+# Subtest: V151 two-tab Chrome QA uses real V115 panels, refuses stale reset and reopens authoritative state
+ok 47 - V151 two-tab Chrome QA uses real V115 panels, refuses stale reset and reopens authoritative state
+  ---
+  duration_ms: 0.470679
+  type: 'test'
+  ...
+1..47
+# tests 47
+# suites 0
+# pass 47
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 3046.972085

@@ -1,0 +1,124 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> yautja-la-longue-chasse@1.0.0 lint
+> eslint . --ignore-pattern dist --ignore-pattern .next
+
+
+/workspace/scratch/29bce469d3ef/yautja/app/dialogues/page.tsx
+  30:4  warning  React Hook useEffect has a missing dependency: 'entry'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+
+/workspace/scratch/29bce469d3ef/yautja/app/game/ClanWarMissionDossiersV117.tsx
+  8:8  warning  'WarMissionSourceKindV117' is defined but never used  @typescript-eslint/no-unused-vars
+
+/workspace/scratch/29bce469d3ef/yautja/app/game/CompanionCataloguePanel.tsx
+  39:9  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+  64:9  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+/workspace/scratch/29bce469d3ef/yautja/app/game/HomeworldRetainingSupportV82.tsx
+  1:1  warning  Unused eslint-disable directive (no problems were reported from '@next/next/no-img-element')
+
+/workspace/scratch/29bce469d3ef/yautja/app/game/PlanetTraversalLabV154.tsx
+  11:3  warning  'preferredTraversalStartV154' is defined but never used  @typescript-eslint/no-unused-vars
+
+/workspace/scratch/29bce469d3ef/yautja/app/game/systems/clanWarEncounterDirectorV127.ts
+  5:32  warning  'WarAiEncounterV126' is defined but never used  @typescript-eslint/no-unused-vars
+
+/workspace/scratch/29bce469d3ef/yautja/app/game/systems/clanWarEnemyProfilesV126.ts
+  25:15  warning  '_climate' is defined but never used  @typescript-eslint/no-unused-vars
+
+/workspace/scratch/29bce469d3ef/yautja/app/game/systems/clanWarRtsScenariosV119.ts
+  402:16  warning  '_actor' is defined but never used  @typescript-eslint/no-unused-vars
+
+/workspace/scratch/29bce469d3ef/yautja/app/game/systems/clanWarWorldClimateV126.ts
+  40:7  warning  'ALIEN_TERRITORIES' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+/workspace/scratch/29bce469d3ef/yautja/docs/qa/gamedev-navigation-performance-20261029/fixture-build-run.mjs
+   2:8  warning  'test' is defined but never used                   @typescript-eslint/no-unused-vars
+  17:7  warning  'lift' is assigned a value but never used          @typescript-eslint/no-unused-vars
+  18:7  warning  'acropolis' is assigned a value but never used     @typescript-eslint/no-unused-vars
+  23:7  warning  'connectorIds' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+/workspace/scratch/29bce469d3ef/yautja/docs/qa/v112-homeworld-live-guidance/v112-route-guidance-chromium-benchmark.mjs
+  23:1008  warning  'route' is defined but never used  @typescript-eslint/no-unused-vars
+  23:1014  warning  'sink' is defined but never used   @typescript-eslint/no-unused-vars
+
+/workspace/scratch/29bce469d3ef/yautja/docs/qa/v112-integration/pit-launch-observation-r5/executed-qa-scar-feral.mjs
+  310:16  warning  'tech' is defined but never used             @typescript-eslint/no-unused-vars
+  324:16  warning  'wallWhiff' is defined but never used        @typescript-eslint/no-unused-vars
+  335:16  warning  'finishAndReplay' is defined but never used  @typescript-eslint/no-unused-vars
+
+/workspace/scratch/29bce469d3ef/yautja/docs/qa/v112-integration/pit-whiff-cadence-r6/diagnostic-sources/qa-initial-whiffs.mjs
+  224:16  warning  'explicitForwardWhileRetreatHeld' is defined but never used  @typescript-eslint/no-unused-vars
+  237:16  warning  'connected' is defined but never used                        @typescript-eslint/no-unused-vars
+  305:16  warning  'tech' is defined but never used                             @typescript-eslint/no-unused-vars
+  319:16  warning  'wallWhiff' is defined but never used                        @typescript-eslint/no-unused-vars
+  330:16  warning  'finishAndReplay' is defined but never used                  @typescript-eslint/no-unused-vars
+
+/workspace/scratch/29bce469d3ef/yautja/scripts/build-gauntlet-studies-v136.mjs
+  23:8  warning  'shift' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+/workspace/scratch/29bce469d3ef/yautja/scripts/catalogue-homeworld-native-v81.mjs
+  38:9  warning  'opaqueRowsV76' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+/workspace/scratch/29bce469d3ef/yautja/scripts/generate-preserve-grand-hunts.mjs
+  5:9  warning  'fileURLToPath' is defined but never used  @typescript-eslint/no-unused-vars
+
+/workspace/scratch/29bce469d3ef/yautja/scripts/qa-clan-war-four-modes-v147.mjs
+  8:9  warning  'readFile' is defined but never used  @typescript-eslint/no-unused-vars
+
+/workspace/scratch/29bce469d3ef/yautja/scripts/qa-clan-war-multitab-v144.mjs
+  18:7  warning  'PRESENTATION_KEY' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+/workspace/scratch/29bce469d3ef/yautja/scripts/qa-gauntlet-real-hunt-v142.mjs
+  54:27  warning  'fails' is assigned a value but never used          @typescript-eslint/no-unused-vars
+  56:7   warning  'initDrawAudit' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+/workspace/scratch/29bce469d3ef/yautja/scripts/qa-homeworld-archive-v106.mjs
+  95:47  warning  'beforeWrong' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+/workspace/scratch/29bce469d3ef/yautja/scripts/qa-pit-campaign-v108.mjs
+  38:16  warning  'approach' is defined but never used  @typescript-eslint/no-unused-vars
+
+/workspace/scratch/29bce469d3ef/yautja/scripts/qa-pit-workbook-v106.mjs
+  315:16  warning  'taunts' is defined but never used  @typescript-eslint/no-unused-vars
+
+/workspace/scratch/29bce469d3ef/yautja/scripts/qa-planet-random-v144.mjs
+  74:9  warning  'fixedSize' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+/workspace/scratch/29bce469d3ef/yautja/scripts/qa-planet-traversal-v154.mjs
+  46:9  warning  'stats' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+/workspace/scratch/29bce469d3ef/yautja/tests/browser/native-assets-v94.fixture.tsx
+  29:3  warning  React Hook useLayoutEffect contains a call to 'setSources'. Without a list of dependencies, this can lead to an infinite chain of updates. To fix this, pass [] as a second argument to the useLayoutEffect Hook  react-hooks/exhaustive-deps
+
+/workspace/scratch/29bce469d3ef/yautja/tests/browser/ship-training-ack-v94.fixture.tsx
+  9:90   warning  '_mode' is defined but never used   @typescript-eslint/no-unused-vars
+  9:114  warning  '_shown' is defined but never used  @typescript-eslint/no-unused-vars
+
+/workspace/scratch/29bce469d3ef/yautja/tests/browser/ship-training-v94.fixture.tsx
+  14:10   warning  '_v' is defined but never used  @typescript-eslint/no-unused-vars
+  14:32   warning  '_v' is defined but never used  @typescript-eslint/no-unused-vars
+  14:60   warning  '_v' is defined but never used  @typescript-eslint/no-unused-vars
+  14:88   warning  '_v' is defined but never used  @typescript-eslint/no-unused-vars
+  14:114  warning  '_v' is defined but never used  @typescript-eslint/no-unused-vars
+  15:12   warning  '_v' is defined but never used  @typescript-eslint/no-unused-vars
+
+/workspace/scratch/29bce469d3ef/yautja/tests/canopy-traversal-v112.test.mjs
+  2:10  warning  'readFile' is defined but never used  @typescript-eslint/no-unused-vars
+
+/workspace/scratch/29bce469d3ef/yautja/tests/clan-war-four-modes-pr55-v144.test.mjs
+  20:7  warning  'd' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+/workspace/scratch/29bce469d3ef/yautja/tests/gauntlet-save-roundtrip-v136.test.mjs
+  5:53  warning  'reconcileSaveWrite' is defined but never used         @typescript-eslint/no-unused-vars
+  7:35  warning  'gauntletCampaignClaimV134' is defined but never used  @typescript-eslint/no-unused-vars
+
+/workspace/scratch/29bce469d3ef/yautja/tests/planet-random-generator-v144.test.mjs
+  25:18  warning  'originalVersion' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+/workspace/scratch/29bce469d3ef/yautja/tests/planet-terrain-slope-v152.test.mjs
+  85:41  warning  'r' is defined but never used  @typescript-eslint/no-unused-vars
+
+✖ 51 problems (0 errors, 51 warnings)
+  0 errors and 1 warning potentially fixable with the `--fix` option.
+
