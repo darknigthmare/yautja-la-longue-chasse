@@ -1187,6 +1187,9 @@ jobs:
           scripts/game-build-identity.ts scripts/qa-campaign-menu-navigation.mjs
           scripts/native-asset-origin-v1.mjs scripts/vercel-native-origin-v89.mjs
           tests/vercel-native-origin-v89.test.mjs tests/production-pipeline-v94.test.mjs
+          scripts/lib/historical-git.mjs scripts/lib/historical-shared-inputs.mjs
+          scripts/historical-shared-inputs-homeworld-v113.mjs
+          tests/historical-git.test.mjs tests/historical-shared-inputs.test.mjs
           tests/campaign-menu-navigation.test.mjs tests/game-release-identity.test.mjs
           tests/campaign-front-menu-v50.test.mjs tests/main-menu-modes-v81.test.mjs
           tests/campaign-text-import-ui-v90.test.mjs tests/browser/campaign-menu-navigation.fixture.tsx
@@ -1599,6 +1602,9 @@ jobs:
         if: ${{ matrix.audit_group == 'history' && (!cancelled() && steps.dependencies.outcome == 'success') }}
         # The unchanged writer and reader run inside their pinned dated context.
         run: python3 scripts/check-resume-workbook-history-20261101.py
+      - name: Verify private restoration of exact historical shared inputs
+        if: ${{ matrix.audit_group == 'history' && (!cancelled() && steps.dependencies.outcome == 'success') }}
+        run: node --experimental-strip-types --test --test-reporter=spec --test-concurrency=1 tests/historical-shared-inputs.test.mjs
       - name: Preserve the additional original V112 Homeworld and Pit capsule
         if: ${{ matrix.audit_group == 'history' && (!cancelled() && steps.dependencies.outcome == 'success') }}
         run: |

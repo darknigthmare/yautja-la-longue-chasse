@@ -1,0 +1,13 @@
+✔ shared restoration rejects inherited Git path and config overrides before any private or external write (613.001335ms)
+✔ reviewed shared inputs restore original private bytes while preserving current evidence and frozen Git (83.962398ms)
+✔ unreviewed paths, duplicate entries and blobs outside the frozen source tree cannot restore files (77.955054ms)
+✔ every later verification rejects changed historical bytes, changed current evidence, links and aliases (79.956934ms)
+✔ only reviewed private fixture inputs retain Git0644 and permit disposable copy corruption (97.093112ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 5
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1043.620194

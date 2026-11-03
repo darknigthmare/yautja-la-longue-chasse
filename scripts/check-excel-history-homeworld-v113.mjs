@@ -8,6 +8,7 @@
  */
 import assert from 'node:assert/strict';
 import {execFileSync} from 'node:child_process';
+import {historicalGitEnvironment} from './lib/historical-git.mjs';
 import {getHistoricalHomeworldExcelContextV113, verifyHistoricalHomeworldExcelContextV113, runHistoricalHomeworldTestsV113} from './historical-excel-context-homeworld-v113.mjs';
 
 export const PUBLISHED_V112_CHECKS_V113 = [
@@ -23,7 +24,8 @@ export async function checkPublishedV112InCapsuleV113({tests = false} = {}) {
   const integrity = await verifyHistoricalHomeworldExcelContextV113();
   const checks = [];
   for (const [command, ...args] of PUBLISHED_V112_CHECKS_V113) {
-    const env = {...process.env}; delete env.NODE_TEST_CONTEXT;
+    await verifyHistoricalHomeworldExcelContextV113();
+    const env = historicalGitEnvironment(); delete env.NODE_TEST_CONTEXT;
     let output;
     try {output = execFileSync(command, args, {cwd: context.root, env, encoding: 'utf8', timeout: 600000, maxBuffer: 16 * 1024 * 1024});}
     catch (error) {throw new Error('Published V112 check failed in its capsule: ' + args.join(' ') + '\n' + String(error.stdout ?? '') + String(error.stderr ?? ''), {cause: error});}

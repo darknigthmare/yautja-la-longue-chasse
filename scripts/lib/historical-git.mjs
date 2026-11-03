@@ -46,6 +46,47 @@ export function historicalGitFailure(error,{operation,label='Historical',env=pro
  return failure;
 }
 
+/** Retrieve only authenticated blob identities, without trusting the complete
+ * object closure implied by a filtered alternate's advertised commits. */
+export function fetchHistoricalGitBlobs({root,origin,blobShas,env=historicalGitEnvironment(),timeout=45000,label='Historical'}){
+ assertNoExternalGitPathOverrides();
+ // Callers may add only the existing process-local canonical fetch credential.
+ // An explicit environment must not reintroduce an external Git path/config.
+ const checkedEnvironment={...env},token=env.GH_TOKEN??env.GITHUB_TOKEN;
+ if(token&&env.GIT_CONFIG_COUNT==='1'&&env.GIT_CONFIG_KEY_0==='http.https://github.com/.extraheader'&&
+    env.GIT_CONFIG_VALUE_0==='AUTHORIZATION: basic '+Buffer.from('x-access-token:'+token).toString('base64')){
+  for(const key of ['GIT_CONFIG_COUNT','GIT_CONFIG_KEY_0','GIT_CONFIG_VALUE_0'])delete checkedEnvironment[key];
+ }
+ assertNoExternalGitPathOverrides(checkedEnvironment);
+ const requested=[...new Set(blobShas)];
+ for(const object of requested)assert.match(object,/^[a-f0-9]{40}$/,'Invalid historical blob identity');
+ if(!requested.length)return{requestedBlobs:0,fetchedBlobs:0};
+ const privateEnvironment={...env,GIT_NO_LAZY_FETCH:'1'};
+ const git=(args,input)=>{
+  try{return execFileSync('git',['-C',root,...args],{env:privateEnvironment,input,encoding:'utf8',
+   stdio:['pipe','pipe','pipe'],timeout,maxBuffer:16*1024*1024});}
+  catch(error){throw historicalGitFailure(error,{operation:args.includes('fetch')?'fetch':args[0],label,env:privateEnvironment});}
+ };
+ const missingObjects=()=>{
+  const lines=git(['cat-file','--batch-check=%(objectname) %(objecttype)'],requested.join('\n')+'\n').trimEnd().split('\n');
+  assert.equal(lines.length,requested.length,'Historical Git object inventory changed');
+  return requested.filter((object,index)=>{
+   if(lines[index]===object+' missing')return true;
+   assert.equal(lines[index],object+' blob','Historical identity does not name a blob: '+object);
+   return false;
+  });
+ };
+ const missing=missingObjects();
+ if(missing.length){
+  // Like Git's promisor-object fetch, do not announce commits whose filtered
+  // blobs may be absent. Otherwise the server can omit the requested blobs.
+  git(['-c','fetch.negotiationAlgorithm=noop','fetch','--no-tags','--no-write-fetch-head',
+   '--no-recurse-submodules','--filter=blob:none','--stdin',origin],missing.join('\n')+'\n');
+  assert.deepEqual(missingObjects(),[],'Historical Git batch left requested blobs absent');
+ }
+ return{requestedBlobs:requested.length,fetchedBlobs:missing.length};
+}
+
 export async function attachHistoricalGitObjects({root,objectRepository}){
  const env=historicalGitEnvironment();
  const gitPath=name=>execFileSync('git',['-C',objectRepository,'rev-parse','--path-format=absolute','--git-path',name],

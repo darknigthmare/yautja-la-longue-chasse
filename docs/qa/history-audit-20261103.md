@@ -71,3 +71,112 @@ Les tests OOXML adversariaux V107 à V111 étaient déjà verts dans l'audit ini
 et n'ont pas été modifiés. La régression Git ciblée établit le correctif de
 transport R7 ; l'exécution complète de ses neuf assertions et trois CLI reste
 portée par la suite R7 existante de la CI.
+
+## PR 102 : amorçage R7 sans objets locaux
+
+Le [job historique du run 41703849013](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41703849013/job/126154212581),
+sur le head `7799c81b13e869ef7588014529f26ac0eff0a572`, confirme que la frontière
+shallow est réparée. Les six premiers tests réussissent, dont les neuf assertions
+originales et les trois CLI. Le dernier test, qui fournit volontairement un
+dépôt d'objets vide, est annulé avec `test timed out after 240000ms` ; sa durée
+observée est de 249 509 ms.
+
+Les lectures `cat-file` autorisaient alors Git à récupérer chaque blob promis
+séparément. La reproduction avec le checkout exact de la CI et son graphe
+shallow montre des allers-retours de 3,6 à 4,9 secondes pour de petits fichiers
+historiques. L'ensemble à restaurer représente seulement 2,23 Mo répartis sur
+74 blobs ; le coût venait de la succession des requêtes.
+
+`fetchHistoricalGitBlobs` sonde maintenant les objets avec les téléchargements
+implicites désactivés et récupère les blobs absents en une seule requête Git.
+R7 vérifie toujours au préalable chaque identité dans l'arbre de publication
+épinglé, puis contrôle la taille, le SHA-256 et l'identité Git des octets reçus.
+Le dépôt de récupération reste privé. Les refs, HEAD et objets du dépôt prêteur
+restent inchangés. Aucun manifeste, certificat, classeur, test original ou délai
+limite n'a été modifié.
+
+La régression de transport utilise un vrai clone filtré local avec plusieurs
+blobs absents et un blob déjà présent. Elle vérifie qu'une seule requête restaure
+les absents, qu'un second appel ne télécharge rien, que les identités de mauvais
+type sont rejetées et que les deux dépôts conservent leurs refs. La suite R7
+complète est exécutée avec la commande CI :
+
+```sh
+node --experimental-strip-types --test --test-reporter=spec --test-concurrency=1 \
+  tests/historical-git.test.mjs tests/r7-publication-history-v113.test.mjs
+```
+
+Résultat local sur les entrées du merge CI exact : huit tests réussis, aucun
+échec, abandon ou test ignoré, en 132,0 secondes. Le test d'amorçage depuis le
+dépôt d'objets vide réussit en 28,3 secondes, sous sa limite originale de
+240 secondes. Les neuf assertions et trois CLI reproduisent toujours le
+classeur R7 de 9 433 700 octets, SHA-256
+`723cc894b643d55dcd076cab8b615866c6879ecc481c55616adcdd0508d2eccc`.
+
+## Capsule V112 partagée et copies de test
+
+Le même job a révélé une seconde frontière historique : la capsule V112 attend
+son classeur de 9 383 908 octets, tandis que le fichier courant porte une
+publication ultérieure de 9 433 700 octets. L'inventaire complet identifie
+exactement 81 entrées partagées republiées, pour environ 98,62 Mo. Leurs chemins
+et blobs sont désormais épinglés dans
+`scripts/historical-shared-inputs-homeworld-v113.mjs`.
+
+La restauration est privée. Un dépôt Git temporaire séparé récupère les blobs
+exacts de la publication ; les SHA et tailles du manifeste original restent
+exigés. Les 81 préimages deviennent des copies non aliasées en lecture seule,
+et les empreintes des 81 fichiers courants sont surveillées avant et après
+chaque commande. Les 1 426 autres entrées partagées gardent leurs contrôles
+existants. Aucun classeur, manifeste, archive ou certificat publié n'est réécrit.
+
+Une ancienne différence de permissions a également été isolée dans le test de
+provenance de l'animation arrière du Pit : il copie un PNG et son receipt dans
+une fixture jetable, puis doit altérer ses propres copies. Le contexte avait
+imposé 0444 aux deux inputs, ce qui était propagé par `copyFile`. Ces deux seules
+copies privées conservent maintenant le mode 0644 de leurs entrées Git 100644,
+avec appartenance explicite à `materializedShared`, contrôle de blob, de mode,
+de non-alias et d'empreinte avant et après. Les 81 préimages restaurées restent
+en lecture seule. Les assertions d'origine ne sont pas modifiées.
+
+Validation locale : cinq CLI originaux réussis ; 21 des 22 suites d'origine
+réussies lors de la première exécution, puis les trois assertions du dernier
+fichier de provenance réussies après la correction de permissions. Les quatre
+nouveaux tests de restauration et d'intégrité passent aussi. La récupération
+groupée de 66 blobs absents parmi les 81 demandés a pris 10,074 secondes ; la
+préparation complète, 15,654 secondes. Les limites existantes de 300 secondes
+par suite et 600 secondes par CLI restent inchangées. La nouvelle opération
+réseau est bornée à 120 secondes.
+
+La CI exige désormais le test dédié `tests/historical-shared-inputs.test.mjs`
+avant d'exécuter les deux commandes historiques de la capsule.
+
+## Négociation des blobs promis : retour du run 41709313665
+
+Le run de la PR #103 a isolé un autre échec Git : le fetch groupé annonçait
+un commit emprunté à un clone filtré comme s'il en possédait déjà tous les blobs.
+Le serveur pouvait alors omettre les blobs demandés. Le diagnostic distant
+était `bad revision` sur une identité de blob, suivi de
+`did not send all necessary objects`.
+
+Une reproduction indépendante utilise trois blobs du même commit, un vrai clone
+shallow filtré et un dépôt privé avec alternates. Un blob est présent et deux
+manquent. Les anciens arguments échouent ; retirer seulement le filtre ne résout
+pas le problème. Le réglage ponctuel `fetch.negotiationAlgorithm=noop` récupère
+les deux blobs, en un seul fetch, sans modifier le dépôt prêteur. Le fetch exclut
+également les sous-modules. Cette séquence suit celle de `fetch_objects()` dans
+[le code de Git pour les objets promis](https://kernel.googlesource.com/pub/scm/git/git.git/+/2f952b81ed2c44ebce3496d659a93d82a1a2f662/promisor-remote.c).
+Les quatre variantes et leurs résultats exacts sont conservés dans
+[`r7-promised-blob-regression.json`](current-integration-20261103/r7-promised-blob-regression.json).
+
+Le helper commun conserve les refus complets de redirection Git, les identités
+de blobs contrôlées avant toute récupération, les erreurs expurgées et
+l'authentification temporaire du seul fetch canonique. Le test vérifie qu'une
+seconde demande ne déclenche aucun fetch et que HEAD, refs, FETCH_HEAD et objets
+du dépôt source restent inchangés. Les limites des assertions et commandes R7
+restent identiques.
+
+La restauration V112 reprend aussi ces protections communes. Ses tests vérifient
+séparément le classeur original privé, le classeur R7 courant intact, le refus
+d'une corruption privée et les refus d'overrides avant toute écriture. Le relevé
+de ce premier run en échec et les preuves de production sont conservés dans
+[`current-integration-20261103/README.md`](current-integration-20261103/README.md).

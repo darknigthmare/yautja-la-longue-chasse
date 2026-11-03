@@ -1,0 +1,149 @@
+2026-11-03T20:32:34.5029780Z ##[group]Run node scripts/snapshot-runtime-v113.mjs --check docs/qa/current-integration-20261103/runtime-inputs.json
+2026-11-03T20:32:34.5030496Z [36;1mnode scripts/snapshot-runtime-v113.mjs --check docs/qa/current-integration-20261103/runtime-inputs.json[0m
+2026-11-03T20:32:34.5030925Z [36;1mnode --input-type=module <<'NODE'[0m
+2026-11-03T20:32:34.5031160Z [36;1mimport fs from 'node:fs';[0m
+2026-11-03T20:32:34.5031410Z [36;1mimport {spawnSync} from 'node:child_process';[0m
+2026-11-03T20:32:34.5031667Z [36;1mconst historical = new Set([[0m
+2026-11-03T20:32:34.5032051Z [36;1m  'r7-publication-history-v113.test.mjs', 'homeworld-current-production-v113.test.mjs',[0m
+2026-11-03T20:32:34.5032854Z [36;1m  'homeworld-connector-detour-history-v113.test.mjs', 'homeworld-v112-history-v113.test.mjs',[0m
+2026-11-03T20:32:34.5033257Z [36;1m]);[0m
+2026-11-03T20:32:34.5033491Z [36;1mconst files = fs.readdirSync('tests').filter(file =>[0m
+2026-11-03T20:32:34.5034070Z [36;1m  file.endsWith('-v113.test.mjs') && !historical.has(file)[0m
+2026-11-03T20:32:34.5034367Z [36;1m).sort().map(file => 'tests/' + file);[0m
+2026-11-03T20:32:34.5034701Z [36;1mif (!files.length) throw new Error('No current V113 model tests selected');[0m
+2026-11-03T20:32:34.5035273Z [36;1mfor (const file of historical) if (!fs.statSync('tests/' + file).isFile()) throw new Error('Historical V113 test must remain available: ' + file);[0m
+2026-11-03T20:32:34.5036042Z [36;1mif (!fs.statSync('tests/v113-production-history.test.mjs').isFile()) throw new Error('The complete original V113 production assertion must be preserved');[0m
+2026-11-03T20:32:34.5036645Z [36;1mconsole.log('Current V113 application model tests:\n' + files.join('\n'));[0m
+2026-11-03T20:32:34.5037019Z [36;1mconst result = spawnSync(process.execPath, [[0m
+2026-11-03T20:32:34.5037432Z [36;1m  '--experimental-strip-types', '--test', '--test-reporter=spec', '--test-concurrency=1', ...files,[0m
+2026-11-03T20:32:34.5037827Z [36;1m], {stdio: 'inherit'});[0m
+2026-11-03T20:32:34.5038057Z [36;1mif (result.error) throw result.error;[0m
+2026-11-03T20:32:34.5038500Z [36;1mif (!Number.isInteger(result.status) || result.status < 0) throw new Error('V113 tests did not complete: ' + result.signal);[0m
+2026-11-03T20:32:34.5038944Z [36;1mprocess.exitCode = result.status;[0m
+2026-11-03T20:32:34.5039163Z [36;1mNODE[0m
+2026-11-03T20:32:34.5056906Z shell: /usr/bin/bash -e {0}
+2026-11-03T20:32:34.5057121Z env:
+2026-11-03T20:32:34.5057292Z   NEXT_TELEMETRY_DISABLED: 1
+2026-11-03T20:32:34.5057507Z   ELECTRON_SKIP_BINARY_DOWNLOAD: 1
+2026-11-03T20:32:34.5057743Z   NODE_OPTIONS: --max-old-space-size=6144
+2026-11-03T20:32:34.5057978Z   AUDIT_CHROME_CHANNEL: chrome
+2026-11-03T20:32:34.5060198Z   GH_TOKEN: ***
+2026-11-03T20:32:34.5060379Z ##[endgroup]
+2026-11-03T20:32:39.0422020Z {"status":"PASS","path":"docs/qa/current-integration-20261103/runtime-inputs.json","bytes":395379,"sha256":"77b52110875426e754d2eba27c9a930f4b41662c9e36d594277247ab6a2cb04f"}
+2026-11-03T20:32:39.1666344Z Current V113 application model tests:
+2026-11-03T20:32:39.1666740Z tests/homeworld-collision-cost-v113.test.mjs
+2026-11-03T20:32:39.1667090Z tests/homeworld-connector-detour-v113.test.mjs
+2026-11-03T20:32:39.1667425Z tests/homeworld-dressing-planner-v113.test.mjs
+2026-11-03T20:32:39.1667753Z tests/homeworld-dressing-recovery-v113.test.mjs
+2026-11-03T20:32:39.1668054Z tests/homeworld-dressing-v113.test.mjs
+2026-11-03T20:32:39.1668337Z tests/homeworld-forge-fire-v113.test.mjs
+2026-11-03T20:32:39.1668644Z tests/homeworld-marsh-ground-joints-v113.test.mjs
+2026-11-03T20:32:39.1668992Z tests/homeworld-motion-source-contracts-v113.test.mjs
+2026-11-03T20:32:39.1669323Z tests/homeworld-navigation-cost-v113.test.mjs
+2026-11-03T20:32:39.1669634Z tests/homeworld-route-cancellation-v113.test.mjs
+2026-11-03T20:32:39.1669939Z tests/hunter-chromatic-canvas-v113.test.mjs
+2026-11-03T20:32:39.1670231Z tests/hunter-chromatics-v113.test.mjs
+2026-11-03T20:32:39.1670938Z tests/hunter-material-facilities-v113.test.mjs
+2026-11-03T20:32:39.1671261Z tests/hunter-material-hunt-v113.test.mjs
+2026-11-03T20:32:39.1671545Z tests/hunter-material-preview-v113.test.mjs
+2026-11-03T20:32:39.1671818Z tests/hunter-materials-v113.test.mjs
+2026-11-03T20:32:39.1672082Z tests/production-evidence-v113.test.mjs
+2026-11-03T20:32:41.5810617Z ✔ V113 native court collision reuses its private shape without repeating support projection (6.090209ms)
+2026-11-03T20:32:41.5814575Z ℹ {"repeatedCourtQueries":100,"supportMapsAfterPreparation":0}
+2026-11-03T20:32:41.5815589Z ✔ V113 civic collision reuses bounds of its existing polygon without repeating four array maps (0.532528ms)
+2026-11-03T20:32:41.5816350Z ℹ {"repeatedCivicQueries":100,"polygonMapsAfterPreparation":0}
+2026-11-03T20:32:41.5817633Z ✔ V113 cached collision agrees with the native predicates for every mounted court and civic hull (151.486355ms)
+2026-11-03T20:32:41.5819644Z ✔ V113 court collision refreshes placement, art and in-place native geometry without changing public polygons (49.999001ms)
+2026-11-03T20:32:41.5822097Z ✔ V113 bounds follow edits to exposed legacy and civic polygons while retaining their existing cache semantics (25.509004ms)
+2026-11-03T20:32:55.3531826Z ✔ current V113 connector obstruction comes from an actual 1,394-step carry and park, with no invented placement (4112.10647ms)
+2026-11-03T20:32:55.3533706Z ✔ V113 a carried load preserves the direct Council/acropolis chain and never becomes a ground obstruction (163.222705ms)
+2026-11-03T20:32:55.3536944Z ✔ V113 a blocked departure takes the lift, reaches the real audience, and returns through an unoccupied landing (6423.896418ms)
+2026-11-03T20:32:55.3538847Z ℹ {"outward":{"planMs":312.8217110000005,"ticks":854,"walked":4315.92830795082,"rideTicks":172},"returned":{"planMs":959.5825189999996,"ticks":1929,"walked":9566.656840503012,"rideTicks":172}}
+2026-11-03T20:32:55.3543271Z ✔ V113 a free departure cannot select the Council stair when its ground arrival is occupied (92.019434ms)
+2026-11-03T20:32:55.3544029Z ✔ V113 the guide reaches a nearby safe corner when every farther candidate cuts the turn (296.400852ms)
+2026-11-03T20:32:55.3544753Z ✔ V113 the guide rejoins the nearby path after an earlier safe shortcut leaves its long lookahead blocked (7.799419ms)
+2026-11-03T20:32:55.4507184Z ✔ a failed base or retained facade stops after two checks without destroying the source plan (0.937637ms)
+2026-11-03T20:32:55.4509254Z ✔ an empty failing plan cannot enter an infinite reduction (0.139967ms)
+2026-11-03T20:32:55.4512245Z ✔ the reducer removes the actual obstruction and keeps independent fixtures, places and facades (1.04789ms)
+2026-11-03T20:32:55.4514889Z ✔ a changing runner cannot keep retrying after the initial baseline passed (0.898439ms)
+2026-11-03T20:32:55.4519976Z ✔ an already valid plan is retained without invoking a reduction baseline (0.24971ms)
+2026-11-03T20:32:58.2360178Z ✔ old supported checkpoints inside all nine new facade contacts recover on their own floor without crediting a walk (114.937225ms)
+2026-11-03T20:32:58.2365888Z ✔ new fixture checkpoints are detected on each of the six floors and remain on that floor after a real save round trip (38.258087ms)
+2026-11-03T20:32:58.2375943Z ✔ remote interrupted operations and grounded pieces recover without moving the free actor or manufacturing progress (38.429892ms)
+2026-11-03T20:32:58.2377220Z ✔ failed backup, a stale floor and another owner cannot write or apply a dressing recovery (6.369132ms)
+2026-11-03T20:32:58.2378410Z ✔ a carried piece follows its coupled checkpoint and operation without a new pickup or added walking (10.327828ms)
+2026-11-03T20:32:58.2381643Z ✔ successful confirmation stores the exact original backup before one acknowledged campaign write (6.838757ms)
+2026-11-03T20:33:23.2549506Z ✔ V113 dressing reuses existing sources only, with unique ids, a group and a stated use for every instance (1.856326ms)
+2026-11-03T20:33:23.2551542Z ✔ every V92-art place is admitted by the unchanged V92 compiler, and recompiling is stable (69.548938ms)
+2026-11-03T20:33:23.2554830Z ✔ every contact stands on supported ground, outside every reserve and older solid, without overlapping another (107.746206ms)
+2026-11-03T20:33:23.2561469Z ✔ dressing is solid for the real motor on its own floor only, and a closed facade cannot be entered (9.857202ms)
+2026-11-03T20:33:23.2562784Z ✔ door corridors, interaction points and connector ends keep their clearance (61.593019ms)
+2026-11-03T20:33:23.2563936Z ✔ the public guide still reaches every door, region and connector from the port spawn (22637.16118ms)
+2026-11-03T20:33:24.5369215Z ✖ no dressing sprite is hidden by a building or closed facade painted after it (146.242926ms)
+2026-11-03T20:33:24.5369898Z ✔ the World scene paints every dressing instance and facade on its own floor (1139.218233ms)
+2026-11-03T20:33:25.0261648Z ✔ before native images decode the building child paints no orphan flame (32.049535ms)
+2026-11-03T20:33:25.0264030Z ✔ six distinct native frames advance only with the supplied clock and hold in reduced motion (1.120487ms)
+2026-11-03T20:33:25.0268144Z ✔ binding rejects a different building, old facade, different atlas cell and nonuniform scaling (0.161549ms)
+2026-11-03T20:33:25.0269719Z ✔ native frame anchors share one physical hearth and one positive uniform image scale (0.257511ms)
+2026-11-03T20:33:25.0272324Z ✔ reused originals retain exact bytes, native dimensions and alpha without modifying Pit data (5.92123ms)
+2026-11-03T20:33:30.0081694Z ✔ the three same-level fissures produce bounded real joints without removing or changing retained support (65.428487ms)
+2026-11-03T20:33:30.0083862Z ✔ a full native actor can cross each repaired fissure and return through the actual civic controller (73.497815ms)
+2026-11-03T20:33:30.0088585Z ✔ the existing paving renderer and native exclusion mask consume every physical joint once (743.934195ms)
+2026-11-03T20:33:30.0090364Z ✔ retained objects, door approaches, solids and all sampled former support survive the added joints (1771.325826ms)
+2026-11-03T20:33:30.1553842Z ✔ identical source contracts still share one decoder in adult and youth batches (3.400401ms)
+2026-11-03T20:33:30.1557084Z ✔ conflicting dimensions cannot be hidden by source order: correct declaration last (0.705774ms)
+2026-11-03T20:33:30.1562610Z ✔ conflicting dimensions cannot be hidden by source order: incorrect declaration last (0.438889ms)
+2026-11-03T20:33:30.1565983Z ✔ a duplicate of native metadata cannot erase a contradictory consumer of the same PNG (0.489865ms)
+2026-11-03T20:33:30.1569324Z ✔ retry retains all dimension contracts and refreshes the exact renderer URL (0.800024ms)
+2026-11-03T20:33:34.4622634Z ✔ V113 a cold lift-to-steward request joins the coarse streets without a global fine-grid search (3949.475164ms)
+2026-11-03T20:33:34.4623778Z ℹ {"coldMs":2074.4296130000002,"globalFineCalls":0,"distance":7101.073952597615,"points":16}
+2026-11-03T20:33:45.2922868Z ✔ atlas button cancels the request before the parent closes or a frame runs (1130.543504ms)
+2026-11-03T20:33:45.2924180Z ✔ atlas Escape cancels the request before the parent closes or a frame runs (1064.690196ms)
+2026-11-03T20:33:45.2925854Z ✔ atlas gamepad cancels the request before the parent closes or a frame runs (1062.158622ms)
+2026-11-03T20:33:45.2927447Z ✔ an external atlas close rejects a response before the cancellation UI frame (1020.706844ms)
+2026-11-03T20:33:45.2929666Z ✔ reopening before the cancellation frame cannot revive the old request or leave planning stuck (1047.471684ms)
+2026-11-03T20:33:45.2931695Z ✔ cancelling a replacement keeps the previously confirmed route (1052.209563ms)
+2026-11-03T20:33:45.2934182Z ✔ suspension invalidates a pending replacement before RAF and preserves the confirmed route after resuming (1050.34554ms)
+2026-11-03T20:33:45.2936818Z ✔ an old cancellation frame cannot stop or clear a newer request after reopening (1052.04192ms)
+2026-11-03T20:33:45.2938986Z ✔ voluntary recalculation while the atlas is closed still installs its current result (1066.301501ms)
+2026-11-03T20:33:45.2940776Z ✔ late worker errors after cancellation cannot replace a new request notice or prevent retry (1054.957413ms)
+2026-11-03T20:33:45.4444261Z ✔ Canvas descriptor never trusts arbitrary URLs from a save (2.147541ms)
+2026-11-03T20:33:45.4459895Z ✔ Canvas registry only returns actual installed PNGs (0.184632ms)
+2026-11-03T20:33:45.4467735Z ✔ Legacy save does not allocate a canvas or touch DOM (0.240865ms)
+2026-11-03T20:33:45.5754571Z ✔ migration: old appearance without chromatics remains neutral (1.688554ms)
+2026-11-03T20:33:45.5756071Z ✔ colors are canonical hexadecimal strings; invalid values cannot enter CSS (0.346141ms)
+2026-11-03T20:33:45.5759655Z ✔ unregistered IDs, wrong channels and drive-only materials never resolve (0.274556ms)
+2026-11-03T20:33:45.5771776Z ✔ every activated material resolves to committed PNG or V125/V126 atlas WebP (2.023128ms)
+2026-11-03T20:33:45.5773071Z ✔ masked overlay keeps inherited sprite silhouette and does not fabricate one (0.3991ms)
+2026-11-03T20:33:45.5774061Z ✔ selected texture is whitelisted, never interpolated from save data (0.151904ms)
+2026-11-03T20:33:45.5775706Z ✔ V115 has five unique, accessible preset colors for each lore-friendly workshop (0.285752ms)
+2026-11-03T20:33:45.5778785Z ✔ V115 choosing a preset only changes its cosmetic channel; no PHG material is invented (0.139255ms)
+2026-11-03T20:33:45.6426032Z ✔ V118: physical Homeworld forge and medbay preserve their original IDs (2.317152ms)
+2026-11-03T20:33:45.6430824Z ✔ V118: each physical workshop exposes only its canonical chromatic channels (0.352611ms)
+2026-11-03T20:33:45.7001076Z ✔ V118: playable hunting sprites use one shared canonical RGBA composite (2.608612ms)
+2026-11-03T20:33:45.7565914Z ✔ V118: preview and Homeworld share four masked V117 chromatic channels (1.098293ms)
+2026-11-03T20:33:45.8146027Z ✔ V118: each of the 44 original V85 PHG reconstructions still exists (1.763335ms)
+2026-11-03T20:33:45.8162421Z ✔ V118: single chromatic save schema imports PR25 experimental fields, never re-saves them (2.407215ms)
+2026-11-03T20:33:46.1738964Z ✔ V113 accepts its own complete recipe and rejects historical, partial, erroneous or relabeled evidence (12.520853ms)
+2026-11-03T20:33:46.1918137Z ✔ V113 recipe inventory follows actual relative fixture imports through cycles and records JSON inputs (19.456562ms)
+2026-11-03T20:33:46.1951483Z ✔ V113 source closure refuses path escapes and symlinked evidence rather than silently omitting them (3.593007ms)
+2026-11-03T20:33:46.2104076Z ℹ tests 75
+2026-11-03T20:33:46.2104310Z ℹ suites 0
+2026-11-03T20:33:46.2104502Z ℹ pass 74
+2026-11-03T20:33:46.2104681Z ℹ fail 1
+2026-11-03T20:33:46.2104866Z ℹ cancelled 0
+2026-11-03T20:33:46.2105072Z ℹ skipped 0
+2026-11-03T20:33:46.2105244Z ℹ todo 0
+2026-11-03T20:33:46.2105456Z ℹ duration_ms 67003.227385
+2026-11-03T20:33:46.2105591Z 
+2026-11-03T20:33:46.2105691Z ✖ failing tests:
+2026-11-03T20:33:46.2105798Z 
+2026-11-03T20:33:46.2105991Z test at tests/homeworld-dressing-v113.test.mjs:109:1
+2026-11-03T20:33:46.2106571Z ✖ no dressing sprite is hidden by a building or closed facade painted after it (146.242926ms)
+2026-11-03T20:33:46.2107137Z   Error: Input file is missing: public/game/homeworld/v75/architecture/undercity-refuge.png
+2026-11-03T20:33:46.2107827Z       at Sharp.toBuffer (file:///home/runner/work/yautja-la-longue-chasse/yautja-la-longue-chasse/node_modules/sharp/dist/output.mjs:159:17)
+2026-11-03T20:33:46.2108628Z       at alphaOf (file:///home/runner/work/yautja-la-longue-chasse/yautja-la-longue-chasse/tests/homeworld-dressing-v113.test.mjs:110:124)
+2026-11-03T20:33:46.2109476Z       at TestContext.<anonymous> (file:///home/runner/work/yautja-la-longue-chasse/yautja-la-longue-chasse/tests/homeworld-dressing-v113.test.mjs:119:162)
+2026-11-03T20:33:46.2110082Z       at async Test.run (node:internal/test_runner/test:1054:7)
+2026-11-03T20:33:46.2110485Z       at async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+2026-11-03T20:33:46.2207839Z ##[error]Process completed with exit code 1.

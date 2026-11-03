@@ -97,12 +97,13 @@ observé sur le commit effectivement publié.
 
 ## Relevé et résultats locaux de cette intégration
 
-Le relevé courant `runtime-inputs.json` contient 2 123 entrées et
-1 091 644 798 octets d’entrées. Il a été régénéré puis vérifié après
+Le relevé courant `runtime-inputs.json` contient 2 124 entrées et
+1 091 654 943 octets d’entrées. Il a été régénéré puis vérifié après
 l’intégration du menu et de la version visible de la PR #102, dont le head est
 `7799c81b13e869ef7588014529f26ac0eff0a572`, puis du routage vers les images natives
-épinglées par un manifeste Git. Son SHA-256 est
-`b3f9456b0da69ba8631189ac197b758c3d1960726929a28192da5e1727c6c15b`. Il suit le périmètre déclaré par les recettes
+épinglées par un manifeste Git et de la restauration privée des preuves partagées.
+Son SHA-256 est
+`2da02ca09cf92dd4b461b58e06e151d5c5c03f1f61a75b5e5864f00780b35d4e`. Il suit le périmètre déclaré par les recettes
 Homeworld/Pit et toutes les sources applicatives. Le contrôle `--current` couvre
 également les sources suivies de construction, dont le nouveau
 `scripts/game-build-identity.ts` et `scripts/native-asset-origin-v1.mjs` ; le relevé Homeworld/Pit seul n’est pas présenté
@@ -115,6 +116,13 @@ Le relevé intermédiaire après intégration du menu reste attaché au commit
 Le nouveau relevé inclut les modifications de configuration Next et du contrôleur
 nécessaires au mode de livraison allégé ; il ne remplace aucun freeze V112/V113
 historique.
+
+Le checkpoint préparatoire `0ab40818fc0d3ff8727d853f8b552db94793c60e`
+conserve le relevé intermédiaire du mode natif : 2 123 entrées,
+1 091 644 798 octets et SHA-256
+`b3f9456b0da69ba8631189ac197b758c3d1960726929a28192da5e1727c6c15b`.
+Le relevé final ajoute le helper effectivement importé pour les préimages
+partagées et actualise ses dépendances.
 
 Le premier relevé de 2 121 entrées reste disponible dans le checkpoint d’audit
 `9e8aed40ba8cebc1382bf67bafff2e29973b21da`, arbre
@@ -179,3 +187,40 @@ La procédure de livraison et les identités Git sont détaillées dans
 [`deployment-native-assets-v1.md`](../../deployment-native-assets-v1.md).
 Les résultats distants de l'intégration finale doivent toujours être lus sur
 son propre SHA et sa propre tentative de workflow.
+
+## Retour du premier run de la PR #103
+
+`pr103-run-receipt.json` conserve le résultat terminé du run `41709313665`
+sur le head `626cf355` et le checkout de fusion `8da4169e`. Le groupe application
+a réussi et fourni sa preuve. Les groupes modèles et historique ont échoué ;
+le contrôle obligatoire a donc refusé l'intégration. Les dix workflows annexes
+ont réussi. Ce relevé décrit cette exécution antérieure, pas le résultat d'une
+révision corrigée.
+
+Les journaux associés isolent trois problèmes : le PNG du dressing absent du
+checkout, la négociation Git lors du fetch groupé de blobs R7 promis, et la
+lecture du classeur R7 courant par une capsule qui attend le classeur V112
+original. Les deux versions du classeur doivent rester distinctes :
+9 433 700 octets pour R7 et 9 383 908 pour cette capsule V112. Les corrections
+ne doivent pas remplacer les pièces courantes par les anciennes, ni retirer
+les assertions qui ont détecté ces écarts.
+
+La régression `r7-promised-blob-regression.json` reproduit le défaut du fetch
+sur un véritable alternate shallow filtré. Après correction,
+`r7-prefetch-correction.log` conserve la commande CI complète réussie :
+11 tests de premier niveau, les neuf assertions R7 et leurs trois commandes
+d'origine, ainsi que les six assertions de connecteurs. Le bootstrap depuis
+un dépôt vide récupère 75 blobs en un batch, en 28,523 secondes. La commande
+complète dure 140,314 secondes ; les limites restent inchangées.
+`r7-prefetch-correction.json` précise le commit local et l'environnement de
+cette exécution. Ce résultat n'est pas présenté comme une nouvelle CI distante.
+
+Pour la capsule V112 supplémentaire, `v112-shared-preimages-verification.json`
+lie les deux empreintes du classeur, les manifestes inchangés et les résultats
+locaux. Les journaux `v112-shared-preimages-check-green.log`,
+`v112-shared-preimages-original-tests.log` et `v112-shared-preimages-unit.log`
+conservent cinq commandes originales réussies, 26 tests enveloppants dont les
+22 suites originales, et cinq contrôles du helper. Les 1 507 fichiers partagés
+courants restent identiques. La reproduction de l'erreur initiale figure dans
+`v112-shared-preimages-red.log`. Ces preuves restent historiques, avec
+`currentRuntimeCovered: false`.

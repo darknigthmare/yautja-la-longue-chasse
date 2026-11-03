@@ -1,0 +1,41 @@
+{
+  "commit": "081ad75a764c63e7a646c2d48b929cbecd0c3ed2",
+  "base": "0f3423266575a830057ace241ba62491774b397d",
+  "dependency": "8d87ae976afe88538e3a228718931db463e6715f",
+  "sourceCommit": "a5ed39dfbed118669b2e76402c490b200136a74d",
+  "currentSharedFilesPreserved": 1507,
+  "historicalSharedPreimages": 81,
+  "currentWorkbook": {
+    "bytes": 9433700,
+    "sha256": "723cc894b643d55dcd076cab8b615866c6879ecc481c55616adcdd0508d2eccc"
+  },
+  "originalWorkbook": {
+    "bytes": 9383908,
+    "sha256": "b29aa412000717cdfd81be1a60e2c2f9d8489c0b8b2ed5d29404668d04dd1d02"
+  },
+  "preservedArchiveHashes": {
+    "tests/fixtures/excel-history-v112-homeworld-v113.json": "609f08f754b892ead3a4a19920737311da7c7cc56a5001cc6b4acd9534a614b0",
+    "tests/fixtures/excel-history-v112-homeworld-v113.json.gz": "f5a39694079995b6c168c856b2251c51d478f30d831a02ab47c3a9ed0df137ea"
+  },
+  "validation": {
+    "originalChecks": 5,
+    "originalTestFiles": 22,
+    "wrapperTestsPassed": 26,
+    "unitTestsPassed": 5,
+    "failed": 0,
+    "skipped": 0,
+    "targetedEslint": "PASS",
+    "diffCheck": "PASS"
+  },
+  "currentRuntimeCovered": false,
+  "browserCapturesReplayed": false,
+  "files": [
+    "scripts/check-excel-history-homeworld-v113.mjs",
+    "scripts/historical-excel-context-homeworld-v113.mjs",
+    "scripts/historical-shared-inputs-homeworld-v113.mjs",
+    "scripts/lib/historical-excel-context.mjs",
+    "scripts/lib/historical-shared-inputs.mjs",
+    "tests/historical-shared-inputs.test.mjs",
+    "tests/homeworld-v112-history-v113.test.mjs"
+  ]
+}

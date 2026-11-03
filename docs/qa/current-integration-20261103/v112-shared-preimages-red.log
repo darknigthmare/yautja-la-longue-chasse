@@ -1,0 +1,23 @@
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: Historical size changed: docs/YAUTJA_V112_SUIVI.xlsx
++ actual - expected
+
++ 9433700
+- 9383908
+
+    at verifyFiles (file:///workspace/scratch/0a68b97df0a6/reprise-postmerge/current-qa/scripts/lib/historical-excel-context.mjs:20:12)
+    at async prepare (file:///workspace/scratch/0a68b97df0a6/reprise-postmerge/current-qa/scripts/lib/historical-excel-context.mjs:45:5)
+    at async checkPublishedV112InCapsuleV113 (file:///workspace/scratch/0a68b97df0a6/reprise-postmerge/current-qa/scripts/check-excel-history-homeworld-v113.mjs:22:19)
+    at async file:///workspace/scratch/0a68b97df0a6/reprise-postmerge/current-qa/scripts/check-excel-history-homeworld-v113.mjs:42:30 {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: 9433700,
+  expected: 9383908,
+  operator: 'strictEqual',
+  diff: 'simple'
+}
+
+Node.js v24.22.1

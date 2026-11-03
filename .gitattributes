@@ -6,6 +6,7 @@ art-source/v100/pit/scar/specials-presentations/intake/scar-special-s3-attempt-1
 
 # Keep the captured post-consolidation audit logs byte-exact.
 docs/qa/current-integration-20261103/logs/*.log -text -whitespace
+docs/qa/current-integration-20261103/*.log -text -whitespace
 
 # --- Claude Code Game Studios (CCGS) workflow ---
 *.sh text eol=lf

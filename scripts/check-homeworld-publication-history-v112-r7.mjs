@@ -8,7 +8,7 @@ import {createHash} from 'node:crypto';
 import {execFileSync} from 'node:child_process';
 import {gunzipSync} from 'node:zlib';
 import {fileURLToPath,pathToFileURL} from 'node:url';
-import {attachHistoricalGitObjects,historicalGitFailure,assertNoExternalGitPathOverrides,historicalGitEnvironment as gitEnvironment} from './lib/historical-git.mjs';
+import {attachHistoricalGitObjects,fetchHistoricalGitBlobs,historicalGitFailure,assertNoExternalGitPathOverrides,historicalGitEnvironment as gitEnvironment} from './lib/historical-git.mjs';
 
 export const R7_PUBLICATION_COMMIT_V113='03cf51badd450338d748da55599a317a71debd28';
 export const R7_PUBLICATION_TREE_V113='8955aa3ae57f3c1c5151fc6e2980d083bbcd0aaa';
@@ -117,22 +117,10 @@ function prefetchPinnedBlobs(state){
  const required=[...new Set(state.manifest.entries.filter((row,index)=>
   !matches(state.observedCurrent[index].current,row)).map(row=>row.gitBlobSha))].sort();
  if(!required.length)return;
- const input=required.join('\n')+'\n';
- const objects=git(state.root,['cat-file','--batch-check=%(objectname) %(objecttype)'],{input}).toString().trim().split('\n');
- assert.equal(objects.length,required.length,'R7 blob availability inventory differs');
- const missing=[];
- for(const [index,line]of objects.entries()){
-  if(line===required[index]+' missing')missing.push(required[index]);
-  else assert.equal(line,required[index]+' blob','R7 preimage is not the expected blob');
- }
- if(!missing.length)return;
  assert.ok(Date.now()<state.deadline,'R7 preparation time bound exceeded');
- git(state.root,['fetch','--no-tags','--no-write-fetch-head','--filter=blob:none','--stdin',ORIGIN],
-  {input:missing.join('\n')+'\n',env:fetchEnvironment()});
- const fetched=git(state.root,['cat-file','--batch-check=%(objectname) %(objecttype)'],
-  {input:missing.join('\n')+'\n'}).toString().trim().split('\n');
- assert.deepEqual(fetched,missing.map(blob=>blob+' blob'),'R7 prefetched preimages are unavailable');
- state.prefetchedPinnedGitBlobs=missing.length;state.blobFetchBatches++;
+ const result=fetchHistoricalGitBlobs({root:state.root,origin:ORIGIN,blobShas:required,env:fetchEnvironment(),timeout:45000,label:'R7'});
+ state.prefetchedPinnedGitBlobs=result.fetchedBlobs;
+ if(result.fetchedBlobs)state.blobFetchBatches++;
 }
 export async function prepareR7PublicationV113({repository=ROOT,objectRepository=repository}={}){
  assertNoExternalGitPathOverrides();

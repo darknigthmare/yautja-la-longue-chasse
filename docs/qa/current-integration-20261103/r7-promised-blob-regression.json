@@ -1,0 +1,71 @@
+{
+  "base": "/workspace/scratch/0a68b97df0a6/reprise-postmerge/r7-promised-variants-ReCxRV",
+  "commit": "14745e647fc9927cefd6448e49c521958a6c836f",
+  "blobs": [
+    "51b825c7384d3ae06c7e82e40f5f3b5bfa410f55",
+    "e0acf1513dbf0a47846773675634b7933eecbaf1",
+    "f337c161c0b590aa5e1ef0c83148d796ce2d2288"
+  ],
+  "results": [
+    {
+      "label": "baseline",
+      "args": [
+        "fetch",
+        "--filter=blob:none",
+        "--no-tags",
+        "--no-write-fetch-head",
+        "--stdin",
+        "file:///workspace/scratch/0a68b97df0a6/reprise-postmerge/r7-promised-variants-ReCxRV/origin"
+      ],
+      "status": 1,
+      "stderr": "fatal: bad revision 'e0acf1513dbf0a47846773675634b7933eecbaf1'\nerror: file:///workspace/scratch/0a68b97df0a6/reprise-postmerge/r7-promised-variants-ReCxRV/origin did not send all necessary objects\n",
+      "after": "51b825c7384d3ae06c7e82e40f5f3b5bfa410f55 blob\ne0acf1513dbf0a47846773675634b7933eecbaf1 missing\nf337c161c0b590aa5e1ef0c83148d796ce2d2288 missing"
+    },
+    {
+      "label": "noFilter",
+      "args": [
+        "fetch",
+        "--no-tags",
+        "--no-write-fetch-head",
+        "--stdin",
+        "file:///workspace/scratch/0a68b97df0a6/reprise-postmerge/r7-promised-variants-ReCxRV/origin"
+      ],
+      "status": 1,
+      "stderr": "fatal: bad object e0acf1513dbf0a47846773675634b7933eecbaf1\nerror: file:///workspace/scratch/0a68b97df0a6/reprise-postmerge/r7-promised-variants-ReCxRV/origin did not send all necessary objects\n",
+      "after": "51b825c7384d3ae06c7e82e40f5f3b5bfa410f55 blob\ne0acf1513dbf0a47846773675634b7933eecbaf1 missing\nf337c161c0b590aa5e1ef0c83148d796ce2d2288 missing"
+    },
+    {
+      "label": "noop",
+      "args": [
+        "-c",
+        "fetch.negotiationAlgorithm=noop",
+        "fetch",
+        "--filter=blob:none",
+        "--no-tags",
+        "--no-write-fetch-head",
+        "--stdin",
+        "file:///workspace/scratch/0a68b97df0a6/reprise-postmerge/r7-promised-variants-ReCxRV/origin"
+      ],
+      "status": 0,
+      "stderr": "",
+      "after": "51b825c7384d3ae06c7e82e40f5f3b5bfa410f55 blob\ne0acf1513dbf0a47846773675634b7933eecbaf1 blob\nf337c161c0b590aa5e1ef0c83148d796ce2d2288 blob"
+    },
+    {
+      "label": "noopNoRecurse",
+      "args": [
+        "-c",
+        "fetch.negotiationAlgorithm=noop",
+        "fetch",
+        "--no-recurse-submodules",
+        "--filter=blob:none",
+        "--no-tags",
+        "--no-write-fetch-head",
+        "--stdin",
+        "file:///workspace/scratch/0a68b97df0a6/reprise-postmerge/r7-promised-variants-ReCxRV/origin"
+      ],
+      "status": 0,
+      "stderr": "",
+      "after": "51b825c7384d3ae06c7e82e40f5f3b5bfa410f55 blob\ne0acf1513dbf0a47846773675634b7933eecbaf1 blob\nf337c161c0b590aa5e1ef0c83148d796ce2d2288 blob"
+    }
+  ]
+}
