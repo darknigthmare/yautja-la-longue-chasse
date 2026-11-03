@@ -1,0 +1,85 @@
+import assert from 'node:assert/strict';
+import fs from 'node:fs/promises';
+import path from 'node:path';
+import { chromium } from 'playwright-core';
+import { campaignFixture, enterCampaignDeck } from './campaign-browser-helpers.mjs';
+import { homeworldQaModelV64 } from './homeworld-qa-model-v64.mjs';
+import { homeworldNavigatorV66 } from './homeworld-navigation-browser-v66.mjs';
+import { homeworldRegionNavigatorV68 } from './homeworld-region-navigation-browser-v68.mjs';
+const url=process.env.V69_QA_URL??'http://127.0.0.1:4187';
+const output=process.env.V69_CHAIN_QA_OUTPUT??'work-local/v69/qa/contracts';
+await fs.mkdir(output,{recursive:true});
+const api=homeworldQaModelV64(process.cwd(),['homeworld.ts','homeworldCity.ts','homeworldSpatialCodex.ts','homeworldInteriorsV64.ts','homeworldRegionsV68.ts','homeworldContractsV68.ts']);
+const fixture=await campaignFixture();
+const browser=await chromium.launch({channel:'chrome',headless:true});
+const context=await browser.newContext({viewport:{width:1440,height:1000}}),page=await context.newPage();
+const checks=[],captures=[],errors=[],network=[],regionRoutes=[];
+page.on('pageerror',error=>errors.push(error.message));page.on('response',response=>{if(response.status()>=400)network.push({status:response.status(),url:response.url()});});
+const saved=()=>page.evaluate(key=>JSON.parse(localStorage.getItem(key)),fixture.key);
+const capture=async name=>{const file=path.join(output,name+'.jpg');await page.screenshot({path:file,type:'jpeg',quality:88});captures.push(file);};
+try{
+ await page.addInitScript(({key,save})=>{
+  if(!localStorage.getItem(key))localStorage.setItem(key,JSON.stringify(save));
+  const original=Storage.prototype.setItem;Storage.prototype.setItem=function(name,value){if(window.__chainRefuseSave&&name===key)throw new DOMException('Isolated QA quota refusal','QuotaExceededError');return original.call(this,name,value);};
+ },fixture);
+ await enterCampaignDeck(page,{url});assert.equal(await page.locator('main[data-game-content-version]').getAttribute('data-game-content-version'),'V69');
+ await page.getByRole('button',{name:'Yautja Prime · monde natal',exact:true}).click();await page.locator('[data-homeworld-actor]').waitFor({state:'attached'});
+ await page.locator('[data-homeworld-hub] img').evaluateAll(images=>Promise.all(images.map(image=>image.decode())));
+ await page.evaluate(()=>new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve))));
+ await page.clock.install();await page.clock.pauseAt(new Date(Date.now()+1000));
+ const city=homeworldNavigatorV66(page,api);await city.focus();await city.openPoint('medbay-service');
+ const nextCard=page.locator('[data-contract-id="v69-return-2"]');assert.equal(await nextCard.getAttribute('data-contract-phase'),'locked');
+ assert(await nextCard.locator('[data-contract-action="accept"]').isDisabled());assert.match(await nextCard.innerText(),/Lire les deux souffles/);
+ await capture('01-commanditaire-verrouille');
+ await page.setViewportSize({width:393,height:852});await city.tick(96);await nextCard.locator('[data-contract-prerequisite-v69]').scrollIntoViewIfNeeded();
+ assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1));await capture('02-circuit-mobile-verrouille');
+ await page.setViewportSize({width:1440,height:1000});await city.tick(96);await city.exitRoom();await city.focus();await city.openPoint('market-service');
+ const board=page.locator('[data-contracts-v68]');assert.equal(await board.locator('[data-contract-id]').count(),22);
+ await board.getByRole('combobox').first().selectOption('chain');assert.equal(await board.locator('[data-contract-id]').count(),2);
+ const before=await saved();assert.equal(before.homeworld.contractsV68.version,1);assert.equal(before.homeworld.contractsV68.entries.length,0);
+ const firstCard=board.locator('[data-contract-id="v69-return-1"]'),accept=firstCard.locator('[data-contract-action="accept"]');
+ await page.evaluate(()=>{window.__chainRefuseSave=true;});await accept.click();await city.tick(96);assert.deepEqual((await saved()).homeworld.contractsV68,before.homeworld.contractsV68);
+ await page.evaluate(()=>{window.__chainRefuseSave=false;});await accept.click();await city.tick(96);
+ assert.equal((await saved()).homeworld.contractsV68.version,2);assert.equal(api.contractMarksV68((await saved()).homeworld.contractsV68),0);await capture('03-premier-chapitre-accepte');
+ checks.push({check:'physical-locked-giver-and-acceptance',status:'PASS',oldLedgerVersionPreservedUntilAcceptance:true,quotaRefusal:true,mobileLockedRoute:true});
+ await city.exitRoom();
+ for(const [index,regionId] of ['ash-marches','thermal-caves'].entries()){
+  await city.focus();const entry=api.HOMEWORLD_POINTS.find(point=>point.id===`region-${regionId}`);
+  const route=api.homeworldSpatialRoute(await city.position(),{x:entry.x,y:entry.y+42});assert.equal(route.status,'reachable');await city.follow(route.points);
+  assert.equal(api.nearestHomeworldPoint(await city.position())?.id,entry.id);await page.keyboard.press('KeyE');await city.tick(96);
+  await page.locator('[data-homeworld-hub]').getByRole('dialog').getByRole('button',{name:'Suivre le sentier vers le village',exact:true}).click();
+  const scene=page.locator(`section[data-homeworld-region-v68="${regionId}"]`);await scene.waitFor({state:'visible'});
+  const region=homeworldRegionNavigatorV68(page,api,{saveKey:fixture.key,controlledClock:true});await region.resume();await region.walkOutbound();await region.readTrails();
+  if(regionId==='ash-marches')await region.observeFauna();
+  const played=await saved(),ledger=played.homeworld.contractsV68,stage=ledger.entries[0].stages[index];
+  assert(stage.proof);assert.equal(stage.proof.action,index===0?'track':'survey');assert.equal(stage.reportTick,null);assert.equal(api.contractMarksV68(ledger),0);
+  if(index===0)assert.equal(ledger.entries[0].stages[1].runId,null,'Later biome remains unbound until the first guide return');
+  await capture(`0${index+4}-terrain-${regionId}`);await region.reportToGuide();await capture(`0${index+4}-guide-${regionId}`);
+  assert((await saved()).homeworld.contractsV68.entries[0].stages[index].reportTick!==null);
+  assert(!api.contractRequirementsV69((await saved()).homeworld.contractsV68,'v69-return-2').met,'Guide receipts never replace delivery');
+  await region.walkReturn();await scene.waitFor({state:'hidden'});await city.tick(96);assert.equal((await saved()).homeworldRegionV68,null);
+  regionRoutes.push(...region.routes);checks.push({check:`physical-ordered-stage-${regionId}`,status:'PASS',tick:stage.proof.tick,walked:stage.proof.walked,action:stage.proof.action,publicKeyboardRoute:true});
+ }
+ await city.focus();await city.openPoint('market-service');await board.getByRole('combobox').first().selectOption('chain');
+ const ready=await saved();assert.equal(ready.homeworld.contractsV68.entries[0].status,'active');assert.equal(await firstCard.getAttribute('data-contract-phase'),'return');
+ const deliver=firstCard.locator('[data-contract-action="deliver"]');await page.evaluate(()=>{window.__chainRefuseSave=true;});await deliver.click();await city.tick(96);
+ assert.deepEqual((await saved()).homeworld.contractsV68,ready.homeworld.contractsV68);assert.equal((await saved()).profile.clanMarks,before.profile.clanMarks);
+ await page.evaluate(()=>{window.__chainRefuseSave=false;});await deliver.click();await city.tick(96);
+ const delivered=await saved();assert.equal(delivered.profile.clanMarks,before.profile.clanMarks+44);assert.equal(api.contractMarksV68(delivered.homeworld.contractsV68),44);
+ assert.equal(delivered.homeworld.contractsV68.entries[0].status,'completed');assert.equal(await firstCard.locator('[data-contract-action="deliver"]').count(),0);
+ for(const field of ['inventory','trophies','missionProgress','justice','loadout'])assert.deepEqual(delivered[field],before[field]);for(const field of ['rankId','honor'])assert.equal(delivered.profile[field],before.profile[field]);
+ await board.evaluate(node=>{node.closest('[role="dialog"]').scrollTop=0;});await city.tick(32);await capture('06-remise-unique-et-relation');
+ await city.exitRoom();await city.focus();await city.openPoint('medbay-service');assert.equal(await nextCard.getAttribute('data-contract-phase'),'offer');
+ assert(await nextCard.locator('[data-contract-action="accept"]').isEnabled());await nextCard.locator('[data-contract-action="accept"]').click();await city.tick(96);
+ const followed=await saved();assert.equal(followed.homeworld.contractsV68.entries.length,2);assert.equal(followed.homeworld.contractsV68.entries[1].status,'active');assert(followed.homeworld.contractsV68.entries[1].stages.every(stage=>!stage.runId&&!stage.proof&&stage.reportTick===null));
+ assert.equal(followed.profile.clanMarks,before.profile.clanMarks+44);assert.deepEqual(followed.homeworld.contractsV68.entries[0],delivered.homeworld.contractsV68.entries[0]);await capture('07-suite-physique-debloquee');
+ await page.setViewportSize({width:393,height:852});await city.tick(96);await nextCard.locator('p').filter({hasText:'Destination :'}).scrollIntoViewIfNeeded();
+ assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1));assert.match(await nextCard.innerText(),/Destination/);assert.match(await nextCard.innerText(),/Marais Luminescents/);await capture('08-suite-mobile-destination');
+ await page.clock.resume();await page.reload({waitUntil:'networkidle'});assert.deepEqual((await saved()).homeworld.contractsV68,followed.homeworld.contractsV68);assert.equal((await saved()).profile.clanMarks,before.profile.clanMarks+44);
+ checks.push({check:'unique-payment-next-physical-giver-and-reload',status:'PASS',walletDelta:44,quotaRetry:true,noAutoProof:true,mobileDestination:true,unrelatedProgressPreserved:true});
+ assert.deepEqual(errors,[]);assert.deepEqual(network,[]);
+ await fs.writeFile(path.join(output,'report.json'),JSON.stringify({status:'PASS',url,checks,captures,cityRoutes:city.routes,regionRoutes,errors,network,
+  fixture:'Isolated declared legacy campaign, no accepted contracts or field proof. After entry all travel and action controls are public keyboard/GUI; no coordinates or receipts injected.',
+  scope:'First two-biome chapter of return-line, then actual delivery unlocking and acceptance of chapter 2 at its physical giver. Does not claim all eight chapters or a fresh youth prologue browser-playthrough.',visualReview:'pending'},null,2));
+ console.log(JSON.stringify({status:'PASS',checks:checks.length,captures:captures.length,output}));
+}catch(error){if(!page.isClosed())await page.screenshot({path:path.join(output,'failure.jpg'),type:'jpeg',quality:88}).catch(()=>{});await fs.writeFile(path.join(output,'report.json'),JSON.stringify({status:'FAIL',url,error:error.stack,checks,captures,errors,network},null,2));throw error;}finally{await browser.close();}

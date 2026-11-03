@@ -1,0 +1,13 @@
+.lab{padding:14px;background:#0b252b;color:#ddf1e8;border:1px solid #416f6a;display:grid;gap:14px;max-width:100%}
+.lab h3{font-size:1.02rem;color:#baf0df;margin:0 0 6px}
+.lab p{font-size:.78rem;line-height:1.55;margin:0;color:#b9d1c8}
+.controls{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,175px),1fr));gap:9px}
+.controls label{display:flex;flex-direction:column;gap:5px;font-size:.8rem;min-width:0}
+.controls select,.controls input,.controls button{min-height:40px;width:100%;padding:7px 10px;background:#1a3539;color:#edf8f2;border:1px solid #6f968b}
+.controls button{align-self:end}
+.controls button[aria-pressed="true"]{background:#376f68;color:#fff;border-color:#c6e5d8}
+.preview{background:radial-gradient(ellipse at 50% 45%,#374e48,#102128 65%);border:1px solid #45736e;min-height:270px;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.preview [data-hunter-rig]{max-width:100%;max-height:570px}
+.disclaimer{border-left:2px solid #bc9d70;padding:8px 10px;background:#2b2b24}
+@media(max-width:460px){.preview{min-height:230px}.lab{padding:9px}}
+@media(prefers-reduced-motion:reduce){.lab *{animation-duration:0s!important;transition:none!important}}

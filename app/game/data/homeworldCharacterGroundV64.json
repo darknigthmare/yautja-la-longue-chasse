@@ -1,0 +1,986 @@
+{
+  "alphaThreshold": 8,
+  "scope": "Read-only measurements. Modular bounds union authored body parts and selected head placement; dread tips are excluded from body height.",
+  "portraits": {
+    "jungle-hunter": {
+      "src": "/game/sprites/v5/film-plates/jungle-hunter.png",
+      "width": 775,
+      "height": 1514,
+      "alpha": {
+        "x": 81,
+        "y": 81,
+        "width": 613,
+        "height": 1352
+      },
+      "support": {
+        "x": 171.97163169723012,
+        "y": 1433
+      }
+    },
+    "city-hunter": {
+      "src": "/game/sprites/v31/film-plates/city-hunter.png",
+      "width": 987,
+      "height": 1568,
+      "alpha": {
+        "x": 84,
+        "y": 84,
+        "width": 819,
+        "height": 1400
+      },
+      "support": {
+        "x": 740.74983845753,
+        "y": 1484
+      }
+    },
+    "greyback": {
+      "src": "/game/sprites/v5/film-plates/greyback.png",
+      "width": 946,
+      "height": 1551,
+      "alpha": {
+        "x": 83,
+        "y": 83,
+        "width": 780,
+        "height": 1385
+      },
+      "support": {
+        "x": 252.13732769738488,
+        "y": 1468
+      }
+    },
+    "boar": {
+      "src": "/game/sprites/v5/film-plates/boar.png",
+      "width": 812,
+      "height": 1568,
+      "alpha": {
+        "x": 84,
+        "y": 84,
+        "width": 644,
+        "height": 1400
+      },
+      "support": {
+        "x": 328.68481465994114,
+        "y": 1484
+      }
+    },
+    "shaman": {
+      "src": "/game/sprites/v5/film-plates/shaman.png",
+      "width": 820,
+      "height": 1568,
+      "alpha": {
+        "x": 84,
+        "y": 84,
+        "width": 652,
+        "height": 1400
+      },
+      "support": {
+        "x": 220.64152795674937,
+        "y": 1484
+      }
+    },
+    "lost-borg": {
+      "src": "/game/sprites/v5/film-plates/lost-borg.png",
+      "width": 1069,
+      "height": 1568,
+      "alpha": {
+        "x": 84,
+        "y": 84,
+        "width": 901,
+        "height": 1400
+      },
+      "support": {
+        "x": 169.36516581013015,
+        "y": 1484
+      }
+    },
+    "snake": {
+      "src": "/game/sprites/v5/film-plates/snake.png",
+      "width": 1044,
+      "height": 1568,
+      "alpha": {
+        "x": 84,
+        "y": 84,
+        "width": 876,
+        "height": 1400
+      },
+      "support": {
+        "x": 397.4358107168485,
+        "y": 1484
+      }
+    },
+    "warrior": {
+      "src": "/game/sprites/v5/film-plates/warrior.png",
+      "width": 1258,
+      "height": 1280,
+      "alpha": {
+        "x": 69,
+        "y": 69,
+        "width": 1120,
+        "height": 1142
+      },
+      "support": {
+        "x": 742.5029287979069,
+        "y": 1211
+      }
+    },
+    "guardian": {
+      "src": "/game/sprites/v5/film-plates/guardian.png",
+      "width": 1098,
+      "height": 1491,
+      "alpha": {
+        "x": 80,
+        "y": 80,
+        "width": 938,
+        "height": 1331
+      },
+      "support": {
+        "x": 808.1135503356298,
+        "y": 1411
+      }
+    },
+    "lost-scout": {
+      "src": "/game/sprites/v5/film-plates/lost-scout.png",
+      "width": 1154,
+      "height": 1424,
+      "alpha": {
+        "x": 76,
+        "y": 76,
+        "width": 1002,
+        "height": 1272
+      },
+      "support": {
+        "x": 559.1360826168902,
+        "y": 1348
+      }
+    },
+    "lost-stalker": {
+      "src": "/game/sprites/v5/film-plates/lost-stalker.png",
+      "width": 915,
+      "height": 1449,
+      "alpha": {
+        "x": 78,
+        "y": 78,
+        "width": 759,
+        "height": 1293
+      },
+      "support": {
+        "x": 163.2635948068824,
+        "y": 1371
+      }
+    },
+    "scar": {
+      "src": "/game/sprites/v5/film-plates/scar.png",
+      "width": 1139,
+      "height": 1356,
+      "alpha": {
+        "x": 73,
+        "y": 73,
+        "width": 993,
+        "height": 1210
+      },
+      "support": {
+        "x": 245.0764080797286,
+        "y": 1283
+      }
+    },
+    "celtic": {
+      "src": "/game/sprites/v5/film-plates/celtic.png",
+      "width": 951,
+      "height": 1160,
+      "alpha": {
+        "x": 62,
+        "y": 62,
+        "width": 827,
+        "height": 1036
+      },
+      "support": {
+        "x": 159.75380301572025,
+        "y": 1098
+      }
+    },
+    "chopper": {
+      "src": "/game/sprites/v5/film-plates/chopper.png",
+      "width": 897,
+      "height": 1083,
+      "alpha": {
+        "x": 58,
+        "y": 58,
+        "width": 781,
+        "height": 967
+      },
+      "support": {
+        "x": 225.77448037571685,
+        "y": 1025
+      }
+    },
+    "avp-elder": {
+      "src": "/game/sprites/v5/film-plates/avp-elder.png",
+      "width": 777,
+      "height": 1159,
+      "alpha": {
+        "x": 62,
+        "y": 62,
+        "width": 653,
+        "height": 1035
+      },
+      "support": {
+        "x": 589.3754715980757,
+        "y": 1097
+      }
+    },
+    "ancient-warrior": {
+      "src": "/game/sprites/v5/film-plates/ancient-warrior.png",
+      "width": 630,
+      "height": 1045,
+      "alpha": {
+        "x": 56,
+        "y": 56,
+        "width": 518,
+        "height": 933
+      },
+      "support": {
+        "x": 143.2822698600537,
+        "y": 989
+      }
+    },
+    "temple-guard": {
+      "src": "/game/sprites/v5/film-plates/temple-guard.png",
+      "width": 803,
+      "height": 1026,
+      "alpha": {
+        "x": 55,
+        "y": 55,
+        "width": 693,
+        "height": 916
+      },
+      "support": {
+        "x": 166.83235699517573,
+        "y": 971
+      }
+    },
+    "youngblood": {
+      "src": "/game/sprites/v5/film-plates/youngblood.png",
+      "width": 931,
+      "height": 1145,
+      "alpha": {
+        "x": 61,
+        "y": 61,
+        "width": 809,
+        "height": 1023
+      },
+      "support": {
+        "x": 155.35059843514475,
+        "y": 1084
+      }
+    },
+    "wolf": {
+      "src": "/game/sprites/v5/film-plates/wolf.png",
+      "width": 804,
+      "height": 983,
+      "alpha": {
+        "x": 53,
+        "y": 53,
+        "width": 698,
+        "height": 877
+      },
+      "support": {
+        "x": 201.27058927317094,
+        "y": 930
+      }
+    },
+    "bull": {
+      "src": "/game/sprites/v5/film-plates/bull.png",
+      "width": 895,
+      "height": 1492,
+      "alpha": {
+        "x": 80,
+        "y": 80,
+        "width": 735,
+        "height": 1332
+      },
+      "support": {
+        "x": 288.3197023425612,
+        "y": 1412
+      }
+    },
+    "bonegrill": {
+      "src": "/game/sprites/v5/film-plates/bonegrill.png",
+      "width": 940,
+      "height": 1364,
+      "alpha": {
+        "x": 73,
+        "y": 73,
+        "width": 794,
+        "height": 1218
+      },
+      "support": {
+        "x": 243.5592309300794,
+        "y": 1291
+      }
+    },
+    "classic-captive": {
+      "src": "/game/sprites/v5/film-plates/classic-captive.png",
+      "width": 888,
+      "height": 1134,
+      "alpha": {
+        "x": 61,
+        "y": 61,
+        "width": 766,
+        "height": 1012
+      },
+      "support": {
+        "x": 208.33766644759305,
+        "y": 1073
+      }
+    },
+    "berserker": {
+      "src": "/game/sprites/v5/film-plates/berserker.png",
+      "width": 1055,
+      "height": 1401,
+      "alpha": {
+        "x": 75,
+        "y": 75,
+        "width": 905,
+        "height": 1251
+      },
+      "support": {
+        "x": 253.7490389554816,
+        "y": 1326
+      }
+    },
+    "falconer": {
+      "src": "/game/sprites/v5/film-plates/falconer.png",
+      "width": 974,
+      "height": 1009,
+      "alpha": {
+        "x": 54,
+        "y": 54,
+        "width": 866,
+        "height": 901
+      },
+      "support": {
+        "x": 340.80563703522637,
+        "y": 955
+      }
+    },
+    "tracker": {
+      "src": "/game/sprites/v5/film-plates/tracker.png",
+      "width": 751,
+      "height": 997,
+      "alpha": {
+        "x": 53,
+        "y": 53,
+        "width": 645,
+        "height": 891
+      },
+      "support": {
+        "x": 188.85840590586224,
+        "y": 944
+      }
+    },
+    "fugitive": {
+      "src": "/game/sprites/v5/film-plates/fugitive.png",
+      "width": 888,
+      "height": 1510,
+      "alpha": {
+        "x": 81,
+        "y": 81,
+        "width": 726,
+        "height": 1348
+      },
+      "support": {
+        "x": 375.27292404340375,
+        "y": 1429
+      }
+    },
+    "assassin": {
+      "src": "/game/sprites/v5/film-plates/assassin.png",
+      "width": 1092,
+      "height": 1568,
+      "alpha": {
+        "x": 84,
+        "y": 84,
+        "width": 924,
+        "height": 1400
+      },
+      "support": {
+        "x": 256.4820574539586,
+        "y": 1484
+      }
+    },
+    "emissary-one": {
+      "src": "/game/sprites/v5/film-plates/emissary-one.png",
+      "width": 970,
+      "height": 1458,
+      "alpha": {
+        "x": 78,
+        "y": 78,
+        "width": 814,
+        "height": 1302
+      },
+      "support": {
+        "x": 356.33031126500083,
+        "y": 1380
+      }
+    },
+    "emissary-two": {
+      "src": "/game/sprites/v5/film-plates/emissary-two.png",
+      "width": 1010,
+      "height": 1568,
+      "alpha": {
+        "x": 84,
+        "y": 84,
+        "width": 842,
+        "height": 1400
+      },
+      "support": {
+        "x": 274.49365726007096,
+        "y": 1484
+      }
+    },
+    "feral-hunter": {
+      "src": "/game/sprites/v5/film-plates/feral-hunter.png",
+      "width": 1086,
+      "height": 1479,
+      "alpha": {
+        "x": 79,
+        "y": 79,
+        "width": 928,
+        "height": 1321
+      },
+      "support": {
+        "x": 340.8155015748567,
+        "y": 1400
+      }
+    },
+    "kok-jotun": {
+      "src": "/game/sprites/v5/film-plates/kok-jotun.png",
+      "width": 1002,
+      "height": 1568,
+      "alpha": {
+        "x": 84,
+        "y": 84,
+        "width": 834,
+        "height": 1400
+      },
+      "support": {
+        "x": 222.6910080401503,
+        "y": 1484
+      }
+    },
+    "kok-oni": {
+      "src": "/game/sprites/v5/film-plates/kok-oni.png",
+      "width": 923,
+      "height": 1532,
+      "alpha": {
+        "x": 82,
+        "y": 82,
+        "width": 759,
+        "height": 1368
+      },
+      "support": {
+        "x": 291.78504250983053,
+        "y": 1450
+      }
+    },
+    "kok-pilot": {
+      "src": "/game/sprites/v5/film-plates/kok-pilot.png",
+      "width": 874,
+      "height": 1568,
+      "alpha": {
+        "x": 84,
+        "y": 84,
+        "width": 706,
+        "height": 1400
+      },
+      "support": {
+        "x": 249.4593180346072,
+        "y": 1484
+      }
+    },
+    "kok-warlord": {
+      "src": "/game/sprites/v5/film-plates/kok-warlord.png",
+      "width": 1102,
+      "height": 1219,
+      "alpha": {
+        "x": 65,
+        "y": 65,
+        "width": 972,
+        "height": 1089
+      },
+      "support": {
+        "x": 391.8767124238344,
+        "y": 1154
+      }
+    },
+    "kok-captive": {
+      "src": "/game/sprites/v5/film-plates/kok-captive.png",
+      "width": 688,
+      "height": 1547,
+      "alpha": {
+        "x": 83,
+        "y": 83,
+        "width": 522,
+        "height": 1381
+      },
+      "support": {
+        "x": 251.64436627813413,
+        "y": 1464
+      }
+    },
+    "kok-arena-guard": {
+      "src": "/game/sprites/v5/film-plates/kok-arena-guard.png",
+      "width": 829,
+      "height": 1568,
+      "alpha": {
+        "x": 84,
+        "y": 84,
+        "width": 661,
+        "height": 1400
+      },
+      "support": {
+        "x": 268.64480734291493,
+        "y": 1484
+      }
+    },
+    "dek": {
+      "src": "/game/sprites/v5/film-plates/dek.png",
+      "width": 903,
+      "height": 1175,
+      "alpha": {
+        "x": 63,
+        "y": 63,
+        "width": 777,
+        "height": 1049
+      },
+      "support": {
+        "x": 427.1040534561138,
+        "y": 1112
+      }
+    },
+    "kwei": {
+      "src": "/game/sprites/v5/film-plates/kwei.png",
+      "width": 1010,
+      "height": 1523,
+      "alpha": {
+        "x": 82,
+        "y": 82,
+        "width": 846,
+        "height": 1359
+      },
+      "support": {
+        "x": 665.3382131805585,
+        "y": 1441
+      }
+    },
+    "dek-father": {
+      "src": "/game/sprites/v5/film-plates/dek-father.png",
+      "width": 973,
+      "height": 1568,
+      "alpha": {
+        "x": 84,
+        "y": 84,
+        "width": 805,
+        "height": 1400
+      },
+      "support": {
+        "x": 495.77963324654684,
+        "y": 1484
+      }
+    },
+    "scarface": {
+      "src": "/game/sprites/v31/film-plates/scarface.png",
+      "width": 1083,
+      "height": 1568,
+      "alpha": {
+        "x": 84,
+        "y": 84,
+        "width": 915,
+        "height": 1400
+      },
+      "support": {
+        "x": 832.3453539970668,
+        "y": 1484
+      }
+    },
+    "stone-heart": {
+      "src": "/game/sprites/v31/film-plates/stone-heart.png",
+      "width": 1038,
+      "height": 1568,
+      "alpha": {
+        "x": 84,
+        "y": 84,
+        "width": 870,
+        "height": 1400
+      },
+      "support": {
+        "x": 206.04136602952113,
+        "y": 1484
+      }
+    },
+    "alpha": {
+      "src": "/game/sprites/v31/film-plates/alpha.png",
+      "width": 863,
+      "height": 1568,
+      "alpha": {
+        "x": 84,
+        "y": 84,
+        "width": 695,
+        "height": 1400
+      },
+      "support": {
+        "x": 238.4930179650834,
+        "y": 1484
+      }
+    },
+    "samurai": {
+      "src": "/game/sprites/v31/film-plates/samurai.png",
+      "width": 967,
+      "height": 1568,
+      "alpha": {
+        "x": 84,
+        "y": 84,
+        "width": 799,
+        "height": 1400
+      },
+      "support": {
+        "x": 249.20073268811666,
+        "y": 1484
+      }
+    },
+    "valkyrie": {
+      "src": "/game/sprites/v31/film-plates/valkyrie.png",
+      "width": 1047,
+      "height": 1568,
+      "alpha": {
+        "x": 84,
+        "y": 84,
+        "width": 879,
+        "height": 1400
+      },
+      "support": {
+        "x": 245.33907358812152,
+        "y": 1484
+      }
+    },
+    "cleopatra": {
+      "src": "/game/sprites/v31/film-plates/cleopatra.png",
+      "width": 691,
+      "height": 1568,
+      "alpha": {
+        "x": 84,
+        "y": 84,
+        "width": 523,
+        "height": 1400
+      },
+      "support": {
+        "x": 145.64677083813802,
+        "y": 1484
+      }
+    },
+    "bionic": {
+      "src": "/game/sprites/v31/film-plates/bionic.png",
+      "width": 874,
+      "height": 1568,
+      "alpha": {
+        "x": 84,
+        "y": 84,
+        "width": 706,
+        "height": 1400
+      },
+      "support": {
+        "x": 209.47215680670075,
+        "y": 1484
+      }
+    },
+    "witch": {
+      "src": "/game/sprites/v31/film-plates/witch.png",
+      "width": 1014,
+      "height": 1568,
+      "alpha": {
+        "x": 84,
+        "y": 84,
+        "width": 846,
+        "height": 1400
+      },
+      "support": {
+        "x": 153.928166270422,
+        "y": 1484
+      }
+    },
+    "broken-tusk": {
+      "src": "/game/sprites/v31/film-plates/broken-tusk.png",
+      "width": 738,
+      "height": 1568,
+      "alpha": {
+        "x": 84,
+        "y": 84,
+        "width": 570,
+        "height": 1400
+      },
+      "support": {
+        "x": 181.99142195267873,
+        "y": 1484
+      }
+    },
+    "ahab": {
+      "src": "/game/sprites/v31/film-plates/ahab.png",
+      "width": 869,
+      "height": 1270,
+      "alpha": {
+        "x": 68,
+        "y": 68,
+        "width": 733,
+        "height": 1134
+      },
+      "support": {
+        "x": 281.61345255264666,
+        "y": 1202
+      }
+    },
+    "big-mama": {
+      "src": "/game/sprites/v31/film-plates/big-mama.png",
+      "width": 799,
+      "height": 1568,
+      "alpha": {
+        "x": 84,
+        "y": 84,
+        "width": 631,
+        "height": 1400
+      },
+      "support": {
+        "x": 230.58834688493246,
+        "y": 1484
+      }
+    },
+    "enforcer": {
+      "src": "/game/sprites/v31/film-plates/enforcer.png",
+      "width": 1095,
+      "height": 1568,
+      "alpha": {
+        "x": 84,
+        "y": 84,
+        "width": 927,
+        "height": 1400
+      },
+      "support": {
+        "x": 266.22717111896003,
+        "y": 1484
+      }
+    },
+    "bad-blood-comic": {
+      "src": "/game/sprites/v31/film-plates/bad-blood-comic.png",
+      "width": 1054,
+      "height": 1568,
+      "alpha": {
+        "x": 84,
+        "y": 84,
+        "width": 886,
+        "height": 1400
+      },
+      "support": {
+        "x": 211.26849599291137,
+        "y": 1484
+      }
+    },
+    "hashori": {
+      "src": "/game/sprites/v31/film-plates/hashori.png",
+      "width": 726,
+      "height": 1568,
+      "alpha": {
+        "x": 84,
+        "y": 84,
+        "width": 558,
+        "height": 1400
+      },
+      "support": {
+        "x": 340.88466245129473,
+        "y": 1484
+      }
+    },
+    "unblooded-player-v47": {
+      "src": "/game/prologue/v47/unblooded-player.png",
+      "width": 1024,
+      "height": 1536,
+      "alpha": {
+        "x": 293,
+        "y": 9,
+        "width": 489,
+        "height": 1507
+      },
+      "support": {
+        "x": 360.3008134200616,
+        "y": 1516
+      }
+    }
+  },
+  "modular": {
+    "classic:reference": {
+      "width": 256,
+      "height": 384,
+      "alpha": {
+        "x": 30,
+        "y": 17.922655215311003,
+        "width": 195,
+        "height": 348.077344784689
+      },
+      "support": {
+        "x": 76.67699268804749,
+        "y": 366
+      }
+    },
+    "classic:legacy-clan": {
+      "width": 256,
+      "height": 384,
+      "alpha": {
+        "x": 30,
+        "y": 16,
+        "width": 195,
+        "height": 350
+      },
+      "support": {
+        "x": 76.67699268804749,
+        "y": 366
+      }
+    },
+    "elder:reference": {
+      "width": 256,
+      "height": 384,
+      "alpha": {
+        "x": 29,
+        "y": 17.847396555023924,
+        "width": 198,
+        "height": 348.1526034449761
+      },
+      "support": {
+        "x": 100.98853537894031,
+        "y": 366
+      }
+    },
+    "elder:legacy-clan": {
+      "width": 256,
+      "height": 384,
+      "alpha": {
+        "x": 29,
+        "y": 16,
+        "width": 198,
+        "height": 350
+      },
+      "support": {
+        "x": 100.98853537894031,
+        "y": 366
+      }
+    },
+    "super:reference": {
+      "width": 256,
+      "height": 384,
+      "alpha": {
+        "x": 19,
+        "y": 18.000004634146343,
+        "width": 218,
+        "height": 347.99999536585364
+      },
+      "support": {
+        "x": 99.76112354436141,
+        "y": 366
+      }
+    },
+    "super:legacy-clan": {
+      "width": 256,
+      "height": 384,
+      "alpha": {
+        "x": 19,
+        "y": 16,
+        "width": 218,
+        "height": 350
+      },
+      "support": {
+        "x": 99.76112354436141,
+        "y": 366
+      }
+    },
+    "feral:reference": {
+      "width": 256,
+      "height": 384,
+      "alpha": {
+        "x": 26,
+        "y": 18.000000485021395,
+        "width": 203,
+        "height": 347.9999995149786
+      },
+      "support": {
+        "x": 109.75489537070379,
+        "y": 366
+      }
+    },
+    "feral:legacy-clan": {
+      "width": 256,
+      "height": 384,
+      "alpha": {
+        "x": 26,
+        "y": 16,
+        "width": 203,
+        "height": 350
+      },
+      "support": {
+        "x": 109.75489537070379,
+        "y": 366
+      }
+    },
+    "huntress:reference": {
+      "width": 256,
+      "height": 384,
+      "alpha": {
+        "x": 32,
+        "y": 17.922655215311003,
+        "width": 193,
+        "height": 348.077344784689
+      },
+      "support": {
+        "x": 107.26882415013955,
+        "y": 366
+      }
+    },
+    "huntress:legacy-clan": {
+      "width": 256,
+      "height": 384,
+      "alpha": {
+        "x": 32,
+        "y": 16,
+        "width": 193,
+        "height": 350
+      },
+      "support": {
+        "x": 107.26882415013955,
+        "y": 366
+      }
+    },
+    "young:reference": {
+      "width": 256,
+      "height": 384,
+      "alpha": {
+        "x": 30,
+        "y": 17.922655215311003,
+        "width": 197,
+        "height": 348.077344784689
+      },
+      "support": {
+        "x": 112.2428114048371,
+        "y": 366
+      }
+    },
+    "young:legacy-clan": {
+      "width": 256,
+      "height": 384,
+      "alpha": {
+        "x": 30,
+        "y": 16,
+        "width": 197,
+        "height": 350
+      },
+      "support": {
+        "x": 112.2428114048371,
+        "y": 366
+      }
+    }
+  }
+}

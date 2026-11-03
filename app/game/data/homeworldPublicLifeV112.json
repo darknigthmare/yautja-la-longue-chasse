@@ -1,0 +1,14 @@
+{
+  "version": 112,
+  "lore": "original-local-clan-routines",
+  "coordinates": "world-v77-already-translated",
+  "inhabitants": [
+    {"id":"public-life-v112:causeway-return","label":"Courrier du chemin de retour","districtId":"esplanade","levelId":"0","civilianRole":"courier","path":[{"x":4350,"y":5480},{"x":4530,"y":5480}],"speed":30,"dwellSeconds":9,"phaseSeconds":2},
+    {"id":"public-life-v112:causeway-maintenance","label":"Artisane de la desserte","districtId":"esplanade","levelId":"0","civilianRole":"artisan","path":[{"x":5050,"y":5480},{"x":5230,"y":5480}],"speed":26,"dwellSeconds":13,"phaseSeconds":17},
+    {"id":"public-life-v112:causeway-relay","label":"Courrier du relais oriental","districtId":"esplanade","levelId":"0","civilianRole":"courier","path":[{"x":5750,"y":5480},{"x":5930,"y":5480}],"speed":32,"dwellSeconds":11,"phaseSeconds":8},
+    {"id":"public-life-v112:quay-approach","label":"Veilleuse de l’approche du quai","districtId":"port","levelId":"0","civilianRole":"dock-officer","path":[{"x":7870,"y":4850},{"x":7870,"y":5050}],"speed":27,"dwellSeconds":15,"phaseSeconds":3},
+    {"id":"public-life-v112:rampart-watch","label":"Garde du passage du rempart","districtId":"rampart-walk","levelId":"0","civilianRole":"guard","path":[{"x":5500,"y":4280},{"x":5700,"y":4280}],"speed":28,"dwellSeconds":16,"phaseSeconds":12},
+    {"id":"public-life-v112:marsh-watch","label":"Guetteur de la route des marais","districtId":"rampart-walk","levelId":"0","civilianRole":"guard","path":[{"x":6375,"y":2600},{"x":6375,"y":2800}],"speed":25,"dwellSeconds":18,"phaseSeconds":23},
+    {"id":"public-life-v112:reserve-viaduct","label":"Garde du viaduc de la Réserve","districtId":"enforcers","levelId":"+1","civilianRole":"guard","path":[{"x":5520,"y":2910},{"x":5700,"y":2977}],"speed":28,"dwellSeconds":17,"phaseSeconds":6}
+  ]
+}

@@ -1,0 +1,4 @@
+.wrapper{display:flex;flex-wrap:wrap;align-items:center;gap:8px 16px;padding:12px;border:1px solid #476f69;background:#0b2228;color:#d7ede5}
+.diagram{width:clamp(145px,25vw,220px);height:auto;max-height:330px;flex:0 0 auto;background:radial-gradient(ellipse at 28% 52%,#365249,#0c1d22 63%);border:1px solid #3e625e}
+.wrapper p{font-size:.76rem;line-height:1.6;flex:1 1 150px;margin:5px 0;color:#d5e5da}
+.wrapper small{flex-basis:100%;font-size:.69rem;color:#b3c7bc;line-height:1.5}

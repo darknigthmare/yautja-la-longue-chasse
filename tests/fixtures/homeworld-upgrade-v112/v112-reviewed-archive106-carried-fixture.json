@@ -1,0 +1,82 @@
+{
+  "owner": "2026-10-28T10:00:00.000Z",
+  "checkpoint": {
+    "version": 1,
+    "layoutRevision": 1,
+    "ownerCreatedAt": "2026-10-28T10:00:00.000Z",
+    "levelId": "0",
+    "exterior": {
+      "x": 4799.825914935707,
+      "y": 4964.21758152965
+    },
+    "interiorId": null,
+    "local": null
+  },
+  "ledgers": {
+    "archiveV106": {
+      "version": 1,
+      "ownerCreatedAt": "2026-10-28T10:00:00.000Z",
+      "revision": 4,
+      "receipt": {
+        "sceneId": "D6-W-PNJ-ROLE-03",
+        "operationId": "port-separated-study-records-v106",
+        "sourceSha256": "87ad5d1a6eaf49f2908a4457ef3f97b8f34db481a24bbc121d2e924559b19183",
+        "sourceCorpusSha256": "e36efdc3d5ac8fddb74dd683458b72873203446204e768b02aa13e4db17eed30",
+        "phase": "working",
+        "resumePhase": null,
+        "last": {
+          "x": 4799.825914935707,
+          "y": 4964.21758152965
+        },
+        "walked": 2739.4944967955985,
+        "cases": [
+          {
+            "id": "A",
+            "x": 4799.825914935707,
+            "y": 4964.21758152965,
+            "place": "carried"
+          },
+          {
+            "id": "B",
+            "x": 7610,
+            "y": 5280,
+            "place": "ground"
+          }
+        ],
+        "carrier": "A",
+        "pickupWalked": 219.5358740616211,
+        "interruptedCount": 0,
+        "uncertaintyRecorded": false
+      }
+    }
+  },
+  "actor": {
+    "x": 4799.825914935707,
+    "y": 4964.21758152965,
+    "vx": -116.49661379668032,
+    "vy": -191.4284250970195,
+    "facing": -1,
+    "grounded": true
+  },
+  "historicalActor": {
+    "x": 4799.825914935707,
+    "y": 4964.21758152965,
+    "vx": -116.49661379668032,
+    "vy": -191.4284250970195,
+    "facing": -1,
+    "grounded": true
+  },
+  "oldNativeSteps": 514,
+  "oldNativeWalkDistance": 2739.4944967955985,
+  "oldOperationWalked": 2739.4944967955985,
+  "sourceCommit": "def899ad07fea582053c5c204e4e578d8e0d7f9b",
+  "privateSourceManifestSha256": "d4bf56b2e785959bc2c0217bfd308d321707a9ecb5bc52b22dd70a1b6154572a",
+  "oldFree": true,
+  "currentBlocked": true,
+  "remote": false,
+  "groundObject": false,
+  "affected": {
+    "x": 4799.825914935707,
+    "y": 4964.21758152965
+  }
+}

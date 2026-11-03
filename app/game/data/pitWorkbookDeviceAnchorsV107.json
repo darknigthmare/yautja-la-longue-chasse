@@ -1,0 +1,137 @@
+{
+  "schemaVersion": 1,
+  "clockHz": 60,
+  "scope": "Native BODY anchors and separately admitted device visuals. Mechanical volumes, motion and physical floor snapping are original Pit adaptations, not Excel-authored hitboxes or canon certification.",
+  "mine": {
+    "actionId": "M_F006_S4",
+    "placementTick": 20,
+    "armedTick": 94,
+    "expiryTick": 154,
+    "floorSnap": true,
+    "floorSnapReason": "The small object base is drawn 14\u201316 source pixels above the BODY support reference. The independent physical mine is placed on the actual arena floor; BODY rects/pivots remain unchanged.",
+    "displayWidth": 22,
+    "displayHeight": 14.771428571428572,
+    "sourceHashes": {
+      "/game/sprites/v100/pit/feral/feral-special-s4-a-v100.png": "0eb7806546e452659c5b72ce0255d265eac4172a030bf669d1bcb6bf1fa1b7bc",
+      "/game/sprites/v100/pit/feral/feral-special-s4-b-v100.png": "05ee37080b250599bba1754a6c3908eafd95ad37cb08fc66ceee0f93ee06a830"
+    },
+    "anchors": {
+      "right": {
+        "point": [
+          447,
+          359
+        ],
+        "pivot": [
+          274,
+          376
+        ],
+        "rect": [
+          0,
+          1114,
+          544,
+          422
+        ],
+        "bodyHeightPx": 388,
+        "contactOffsetPx": 1,
+        "path": "/game/sprites/v100/pit/feral/feral-special-s4-a-v100.png",
+        "index": 2
+      },
+      "left": {
+        "point": [
+          97,
+          359
+        ],
+        "pivot": [
+          260,
+          375
+        ],
+        "rect": [
+          543,
+          1114,
+          481,
+          422
+        ],
+        "bodyHeightPx": 388,
+        "contactOffsetPx": 2,
+        "path": "/game/sprites/v100/pit/feral/feral-special-s4-a-v100.png",
+        "index": 2
+      }
+    },
+    "renderSourceTicks": {
+      "age0to13": 20,
+      "age14to43": 34,
+      "age44to73": 64,
+      "age74to133": 94
+    }
+  },
+  "shuriken": {
+    "actionId": "M_F003_S2",
+    "releaseTick": 27,
+    "releaseReason": "The two native active drawings still hold the single star. The first empty palm is native drawing4 at recovery start; autonomous flight begins there, preserving source23/4/29 and preventing a second painted weapon.",
+    "sourceBodyPath": "/game/sprites/v100/pit/scar/scar-special-s2-corrected.png",
+    "sourceBodySha256": "fa8e84622de3acde190f6cd564c28fc82dc082f681ac518ff8ff2b5c036af752",
+    "entity": {
+      "path": "/game/sprites/v107/pit/scar/scar-shuriken-flight-v107.png",
+      "sha256": "95108bf402fe76462b5963939c496531860eda613454a11b6ae52ad042c4052b",
+      "width": 1254,
+      "height": 1254,
+      "pivot": [
+        646,
+        631
+      ],
+      "alphaBounds": [
+        64,
+        75,
+        1113,
+        1106
+      ],
+      "alphaPixels": 392203,
+      "visibleBorderPixels": 0,
+      "bladeCount": 5,
+      "displaySize": 30,
+      "scope": "New independent five-bladed sprite created with image_gen using the corrected S2 BODY page as shape reference. The formerly occluded hub is an original adaptation; no native extraction1:1, circular smart-disc substitute, body part, new costume or canon certification is claimed. Rotation in its own plane does not create a second authored facing."
+    },
+    "anchors": {
+      "right": {
+        "point": [
+          277,
+          119
+        ],
+        "pivot": [
+          150,
+          288
+        ],
+        "rect": [
+          361,
+          447,
+          349,
+          339
+        ],
+        "bodyHeightPx": 233,
+        "contactOffsetPx": 0,
+        "path": "/game/sprites/v100/pit/scar/scar-special-s2-corrected.png",
+        "index": 4
+      },
+      "left": {
+        "point": [
+          71,
+          123
+        ],
+        "pivot": [
+          186,
+          283
+        ],
+        "rect": [
+          349,
+          1141,
+          353,
+          395
+        ],
+        "bodyHeightPx": 233,
+        "contactOffsetPx": 3,
+        "path": "/game/sprites/v100/pit/scar/scar-special-s2-corrected.png",
+        "index": 4
+      }
+    }
+  }
+}

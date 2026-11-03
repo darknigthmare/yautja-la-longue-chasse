@@ -1,0 +1,4 @@
+.art{width:100%;height:auto;max-height:265px;aspect-ratio:540/290;display:block;overflow:hidden;isolation:isolate}
+.cover{transform:translateX(0px);transition:transform .4s cubic-bezier(.2,.85,.25,1);transform-origin:center}
+.cover[data-cover-position="open"]{transform:translateX(102px)}
+@media(prefers-reduced-motion:reduce){.cover{transition:none}}

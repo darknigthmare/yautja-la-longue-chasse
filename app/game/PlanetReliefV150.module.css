@@ -1,0 +1,29 @@
+.panel{border:1px solid #446c62;background:#122c2b;border-radius:9px;padding:14px;color:#e3ebdf;min-width:0}
+.toggle{min-height:44px;width:100%;border:1px solid #88a58c;background:#264537;color:#e8ead3;text-align:left;padding:10px 14px;border-radius:7px;cursor:pointer;font-weight:700}
+.panel p{font-size:12px;line-height:1.6;color:#becfc9;margin:9px 0}
+.content{display:grid;gap:11px;margin-top:14px}
+.controls{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}
+.controls label{display:grid;gap:6px;font-size:12px;color:#d1dfd3}
+.controls input,.controls select{width:100%;min-height:43px;accent-color:#c2d2a6;border:1px solid #4d6e67;background:#162e31;color:#dfede2;border-radius:5px;padding:8px}
+.controls button,.actions button{min-height:44px;border:1px solid #87a185;background:#26493a;color:#e5ecd9;padding:9px 12px;border-radius:6px;cursor:pointer}
+.actions{display:flex;gap:9px;flex-wrap:wrap}
+.actions button:disabled{opacity:.55;cursor:default}
+.map{display:block;width:100%;height:auto;max-width:768px;aspect-ratio:2;image-rendering:auto;background:#16374c;border:1px solid #476963;border-radius:8px}
+.regions{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px}
+.regions article{background:#1a3c37;padding:11px;border:1px solid #426b5d;border-radius:6px;min-width:0}
+.regions strong{font-size:12px;color:#dde4cc}
+.regions p{font-size:11px}
+.panel .note{color:#e6d5a7}
+@media(max-width:820px){.regions{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:550px){.controls,.regions{grid-template-columns:1fr}.actions{display:grid;grid-template-columns:1fr}}
+
+/* V152 traversal authoring, no military mechanics are modified. */
+.terrainInfo{padding:12px;background:#1c3733;border:1px solid #63836e;border-radius:7px}
+.terrainInfo strong{font-size:12px;color:#f0e6bd}
+.terrainInfo p{margin:5px 0;font-size:11px}
+.routeGrid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
+.routeGrid article{padding:10px;background:#203a36;border:1px solid #46665e;border-radius:7px;min-width:0}
+.routeGrid strong{display:block;font-size:11px;overflow-wrap:anywhere}
+.routeGrid p{font-size:10px;line-height:1.5}
+@media(max-width:850px){.routeGrid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:480px){.routeGrid{grid-template-columns:1fr}}

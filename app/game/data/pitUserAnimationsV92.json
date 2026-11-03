@@ -1,0 +1,1187 @@
+[
+  {
+    "fighterId": "user-ahab",
+    "variantId": "ahab-avec-casque-0c8ceb1c95",
+    "bodyHeightPx": 490,
+    "atlas": {
+      "schemaVersion": 1,
+      "id": "user-ahab-masked-medium-startup-right-v92",
+      "characterId": "user-ahab",
+      "variantId": "ahab-avec-casque-0c8ceb1c95",
+      "sourceKind": "authored-frames",
+      "status": "validated",
+      "pages": [
+        {
+          "id": "user-ahab-masked-medium-startup-right-v92",
+          "src": "/game/sprites/v92/pit/ahab/003-ahab-medium-startup-right.png",
+          "width": 1536,
+          "height": 1024,
+          "status": "validated",
+          "transparency": {
+            "mode": "alpha",
+            "noiseFloor": 2
+          }
+        }
+      ],
+      "clips": [
+        {
+          "id": "pit.stand.medium.startup",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "user-ahab-masked-medium-startup-right-v92",
+              "rect": [
+                0,
+                0,
+                1536,
+                509
+              ],
+              "pivot": [
+                714,
+                503
+              ],
+              "durationTicks": 1
+            },
+            {
+              "pageId": "user-ahab-masked-medium-startup-right-v92",
+              "rect": [
+                0,
+                509,
+                1536,
+                515
+              ],
+              "pivot": [
+                701,
+                497
+              ],
+              "durationTicks": 1
+            }
+          ]
+        }
+      ]
+    },
+    "visibleFrameBounds": [
+      {
+        "pageId": "user-ahab-masked-medium-startup-right-v92",
+        "rect": [
+          0,
+          0,
+          1536,
+          509
+        ],
+        "visibleRect": [
+          388,
+          14,
+          890,
+          490
+        ]
+      },
+      {
+        "pageId": "user-ahab-masked-medium-startup-right-v92",
+        "rect": [
+          0,
+          509,
+          1536,
+          515
+        ],
+        "visibleRect": [
+          372,
+          514,
+          935,
+          493
+        ]
+      }
+    ]
+  },
+  {
+    "fighterId": "user-ahab",
+    "variantId": "ahab-avec-casque-0c8ceb1c95",
+    "bodyHeightPx": 490,
+    "atlas": {
+      "schemaVersion": 1,
+      "id": "user-ahab-masked-medium-startup-left-v92",
+      "characterId": "user-ahab",
+      "variantId": "ahab-avec-casque-0c8ceb1c95",
+      "sourceKind": "authored-frames",
+      "status": "validated",
+      "pages": [
+        {
+          "id": "user-ahab-masked-medium-startup-left-v92",
+          "src": "/game/sprites/v92/pit/ahab/004-ahab-medium-startup-left.png",
+          "width": 1536,
+          "height": 1024,
+          "status": "validated",
+          "transparency": {
+            "mode": "alpha",
+            "noiseFloor": 2
+          }
+        }
+      ],
+      "clips": [
+        {
+          "id": "pit.stand.medium.startup",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "user-ahab-masked-medium-startup-left-v92",
+              "rect": [
+                0,
+                0,
+                1536,
+                520
+              ],
+              "pivot": [
+                820,
+                518
+              ],
+              "durationTicks": 1
+            },
+            {
+              "pageId": "user-ahab-masked-medium-startup-left-v92",
+              "rect": [
+                0,
+                520,
+                1536,
+                504
+              ],
+              "pivot": [
+                845,
+                486
+              ],
+              "durationTicks": 1
+            }
+          ]
+        }
+      ]
+    },
+    "visibleFrameBounds": [
+      {
+        "pageId": "user-ahab-masked-medium-startup-left-v92",
+        "rect": [
+          0,
+          0,
+          1536,
+          520
+        ],
+        "visibleRect": [
+          313,
+          15,
+          799,
+          504
+        ]
+      },
+      {
+        "pageId": "user-ahab-masked-medium-startup-left-v92",
+        "rect": [
+          0,
+          520,
+          1536,
+          504
+        ],
+        "visibleRect": [
+          336,
+          521,
+          894,
+          486
+        ]
+      }
+    ]
+  },
+  {
+    "fighterId": "user-samurai",
+    "variantId": "samurai-avec-casque-d75f93b15e",
+    "bodyHeightPx": 483,
+    "atlas": {
+      "schemaVersion": 1,
+      "id": "user-samurai-masked-counter-startup-right-v92",
+      "characterId": "user-samurai",
+      "variantId": "samurai-avec-casque-d75f93b15e",
+      "sourceKind": "authored-frames",
+      "status": "validated",
+      "pages": [
+        {
+          "id": "user-samurai-masked-counter-startup-right-v92",
+          "src": "/game/sprites/v92/pit/samurai/007-samurai-counter-startup-right.png",
+          "width": 1536,
+          "height": 1024,
+          "status": "validated",
+          "transparency": {
+            "mode": "alpha",
+            "noiseFloor": 2
+          }
+        }
+      ],
+      "clips": [
+        {
+          "id": "pit.stand.technique.samurai-katana-contact-v92.startup",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "user-samurai-masked-counter-startup-right-v92",
+              "rect": [
+                0,
+                0,
+                1536,
+                502
+              ],
+              "pivot": [
+                768,
+                498
+              ],
+              "durationTicks": 1
+            },
+            {
+              "pageId": "user-samurai-masked-counter-startup-right-v92",
+              "rect": [
+                0,
+                502,
+                1536,
+                522
+              ],
+              "pivot": [
+                774,
+                507
+              ],
+              "durationTicks": 1
+            }
+          ]
+        }
+      ]
+    },
+    "visibleFrameBounds": [
+      {
+        "pageId": "user-samurai-masked-counter-startup-right-v92",
+        "rect": [
+          0,
+          0,
+          1536,
+          502
+        ],
+        "visibleRect": [
+          558,
+          16,
+          419,
+          483
+        ]
+      },
+      {
+        "pageId": "user-samurai-masked-counter-startup-right-v92",
+        "rect": [
+          0,
+          502,
+          1536,
+          522
+        ],
+        "visibleRect": [
+          548,
+          505,
+          452,
+          505
+        ]
+      }
+    ]
+  },
+  {
+    "fighterId": "user-samurai",
+    "variantId": "samurai-avec-casque-d75f93b15e",
+    "bodyHeightPx": 483,
+    "atlas": {
+      "schemaVersion": 1,
+      "id": "user-samurai-masked-counter-startup-left-v92",
+      "characterId": "user-samurai",
+      "variantId": "samurai-avec-casque-d75f93b15e",
+      "sourceKind": "authored-frames",
+      "status": "validated",
+      "pages": [
+        {
+          "id": "user-samurai-masked-counter-startup-left-v92",
+          "src": "/game/sprites/v92/pit/samurai/008-samurai-counter-startup-left.png",
+          "width": 1536,
+          "height": 1024,
+          "status": "validated",
+          "transparency": {
+            "mode": "alpha",
+            "noiseFloor": 2
+          }
+        }
+      ],
+      "clips": [
+        {
+          "id": "pit.stand.technique.samurai-katana-contact-v92.startup",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "user-samurai-masked-counter-startup-left-v92",
+              "rect": [
+                0,
+                0,
+                1536,
+                508
+              ],
+              "pivot": [
+                794,
+                504
+              ],
+              "durationTicks": 1
+            },
+            {
+              "pageId": "user-samurai-masked-counter-startup-left-v92",
+              "rect": [
+                0,
+                508,
+                1536,
+                516
+              ],
+              "pivot": [
+                802,
+                503
+              ],
+              "durationTicks": 1
+            }
+          ]
+        }
+      ]
+    },
+    "visibleFrameBounds": [
+      {
+        "pageId": "user-samurai-masked-counter-startup-left-v92",
+        "rect": [
+          0,
+          0,
+          1536,
+          508
+        ],
+        "visibleRect": [
+          461,
+          3,
+          556,
+          502
+        ]
+      },
+      {
+        "pageId": "user-samurai-masked-counter-startup-left-v92",
+        "rect": [
+          0,
+          508,
+          1536,
+          516
+        ],
+        "visibleRect": [
+          552,
+          512,
+          486,
+          500
+        ]
+      }
+    ]
+  },
+  {
+    "fighterId": "user-samurai",
+    "variantId": "samurai-avec-casque-d75f93b15e",
+    "bodyHeightPx": 483,
+    "atlas": {
+      "schemaVersion": 1,
+      "id": "user-samurai-masked-counter-active-right-v92",
+      "characterId": "user-samurai",
+      "variantId": "samurai-avec-casque-d75f93b15e",
+      "sourceKind": "authored-frames",
+      "status": "validated",
+      "pages": [
+        {
+          "id": "user-samurai-masked-counter-active-right-v92",
+          "src": "/game/sprites/v92/pit/samurai/009-samurai-counter-active-right.png",
+          "width": 1536,
+          "height": 1024,
+          "status": "validated",
+          "transparency": {
+            "mode": "alpha",
+            "noiseFloor": 2
+          }
+        }
+      ],
+      "clips": [
+        {
+          "id": "pit.stand.technique.samurai-katana-contact-v92.active",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "user-samurai-masked-counter-active-right-v92",
+              "rect": [
+                0,
+                0,
+                1536,
+                515
+              ],
+              "pivot": [
+                750,
+                512
+              ],
+              "durationTicks": 1
+            },
+            {
+              "pageId": "user-samurai-masked-counter-active-right-v92",
+              "rect": [
+                0,
+                515,
+                1536,
+                509
+              ],
+              "pivot": [
+                742,
+                492
+              ],
+              "durationTicks": 1
+            }
+          ]
+        }
+      ]
+    },
+    "visibleFrameBounds": [
+      {
+        "pageId": "user-samurai-masked-counter-active-right-v92",
+        "rect": [
+          0,
+          0,
+          1536,
+          515
+        ],
+        "visibleRect": [
+          504,
+          9,
+          526,
+          504
+        ]
+      },
+      {
+        "pageId": "user-samurai-masked-counter-active-right-v92",
+        "rect": [
+          0,
+          515,
+          1536,
+          509
+        ],
+        "visibleRect": [
+          465,
+          516,
+          762,
+          492
+        ]
+      }
+    ]
+  },
+  {
+    "fighterId": "user-ahab",
+    "variantId": "ahab-avec-casque-0c8ceb1c95",
+    "bodyHeightPx": 490,
+    "pageBodyHeightPx": {
+      "user-ahab-masked-medium-active-right-v92": 654
+    },
+    "atlas": {
+      "schemaVersion": 1,
+      "id": "user-ahab-masked-medium-active-right-v92",
+      "characterId": "user-ahab",
+      "variantId": "ahab-avec-casque-0c8ceb1c95",
+      "sourceKind": "authored-frames",
+      "status": "validated",
+      "pages": [
+        {
+          "id": "user-ahab-masked-medium-active-right-v92",
+          "src": "/game/sprites/v92/pit/ahab/011-ahab-medium-active-right.png",
+          "width": 1024,
+          "height": 1536,
+          "status": "validated",
+          "transparency": {
+            "mode": "alpha",
+            "noiseFloor": 2
+          }
+        }
+      ],
+      "clips": [
+        {
+          "id": "pit.stand.medium.active",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "user-ahab-masked-medium-active-right-v92",
+              "rect": [
+                0,
+                0,
+                1024,
+                768
+              ],
+              "pivot": [
+                430,
+                687
+              ],
+              "durationTicks": 1
+            },
+            {
+              "pageId": "user-ahab-masked-medium-active-right-v92",
+              "rect": [
+                0,
+                768,
+                1024,
+                768
+              ],
+              "pivot": [
+                440,
+                686
+              ],
+              "durationTicks": 1
+            }
+          ]
+        }
+      ]
+    },
+    "visibleFrameBounds": [
+      {
+        "pageId": "user-ahab-masked-medium-active-right-v92",
+        "rect": [
+          0,
+          0,
+          1024,
+          768
+        ],
+        "visibleRect": [
+          52,
+          34,
+          953,
+          654
+        ]
+      },
+      {
+        "pageId": "user-ahab-masked-medium-active-right-v92",
+        "rect": [
+          0,
+          768,
+          1024,
+          768
+        ],
+        "visibleRect": [
+          17,
+          875,
+          1004,
+          580
+        ]
+      }
+    ]
+  },
+  {
+    "fighterId": "user-ahab",
+    "variantId": "ahab-avec-casque-0c8ceb1c95",
+    "bodyHeightPx": 490,
+    "pageBodyHeightPx": {
+      "user-ahab-masked-medium-active-left-v92": 654
+    },
+    "atlas": {
+      "schemaVersion": 1,
+      "id": "user-ahab-masked-medium-active-left-v92",
+      "characterId": "user-ahab",
+      "variantId": "ahab-avec-casque-0c8ceb1c95",
+      "sourceKind": "authored-frames",
+      "status": "validated",
+      "pages": [
+        {
+          "id": "user-ahab-masked-medium-active-left-v92",
+          "src": "/game/sprites/v92/pit/ahab/012-ahab-medium-active-left.png",
+          "width": 1024,
+          "height": 1536,
+          "status": "validated",
+          "transparency": {
+            "mode": "alpha",
+            "noiseFloor": 2
+          }
+        }
+      ],
+      "clips": [
+        {
+          "id": "pit.stand.medium.active",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "user-ahab-masked-medium-active-left-v92",
+              "rect": [
+                0,
+                0,
+                1024,
+                768
+              ],
+              "pivot": [
+                620,
+                699
+              ],
+              "durationTicks": 1
+            },
+            {
+              "pageId": "user-ahab-masked-medium-active-left-v92",
+              "rect": [
+                0,
+                768,
+                1024,
+                768
+              ],
+              "pivot": [
+                615,
+                671
+              ],
+              "durationTicks": 1
+            }
+          ]
+        }
+      ]
+    },
+    "visibleFrameBounds": [
+      {
+        "pageId": "user-ahab-masked-medium-active-left-v92",
+        "rect": [
+          0,
+          0,
+          1024,
+          768
+        ],
+        "visibleRect": [
+          8,
+          51,
+          997,
+          649
+        ]
+      },
+      {
+        "pageId": "user-ahab-masked-medium-active-left-v92",
+        "rect": [
+          0,
+          768,
+          1024,
+          768
+        ],
+        "visibleRect": [
+          8,
+          892,
+          1012,
+          548
+        ]
+      }
+    ]
+  },
+  {
+    "fighterId": "user-samurai",
+    "variantId": "samurai-avec-casque-d75f93b15e",
+    "bodyHeightPx": 483,
+    "pageBodyHeightPx": {
+      "user-samurai-masked-technique-active-left-v92": 662
+    },
+    "atlas": {
+      "schemaVersion": 1,
+      "id": "user-samurai-masked-technique-active-left-v92",
+      "characterId": "user-samurai",
+      "variantId": "samurai-avec-casque-d75f93b15e",
+      "sourceKind": "authored-frames",
+      "status": "validated",
+      "pages": [
+        {
+          "id": "user-samurai-masked-technique-active-left-v92",
+          "src": "/game/sprites/v92/pit/samurai/013-samurai-counter-active-left.png",
+          "width": 1024,
+          "height": 1536,
+          "status": "validated",
+          "transparency": {
+            "mode": "alpha",
+            "noiseFloor": 2
+          }
+        }
+      ],
+      "clips": [
+        {
+          "id": "pit.stand.technique.samurai-katana-contact-v92.active",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "user-samurai-masked-technique-active-left-v92",
+              "rect": [
+                0,
+                0,
+                1024,
+                768
+              ],
+              "pivot": [
+                545,
+                711
+              ],
+              "durationTicks": 1
+            },
+            {
+              "pageId": "user-samurai-masked-technique-active-left-v92",
+              "rect": [
+                0,
+                768,
+                1024,
+                768
+              ],
+              "pivot": [
+                640,
+                710
+              ],
+              "durationTicks": 1
+            }
+          ]
+        }
+      ]
+    },
+    "visibleFrameBounds": [
+      {
+        "pageId": "user-samurai-masked-technique-active-left-v92",
+        "rect": [
+          0,
+          0,
+          1024,
+          768
+        ],
+        "visibleRect": [
+          191,
+          6,
+          710,
+          706
+        ]
+      },
+      {
+        "pageId": "user-samurai-masked-technique-active-left-v92",
+        "rect": [
+          0,
+          768,
+          1024,
+          768
+        ],
+        "visibleRect": [
+          31,
+          833,
+          960,
+          646
+        ]
+      }
+    ]
+  },
+  {
+    "fighterId": "user-ahab",
+    "variantId": "ahab-avec-casque-0c8ceb1c95",
+    "bodyHeightPx": 490,
+    "pageBodyHeightPx": {
+      "user-ahab-masked-medium-recovery-right-v92": 730
+    },
+    "atlas": {
+      "schemaVersion": 1,
+      "id": "user-ahab-masked-medium-recovery-right-v92",
+      "characterId": "user-ahab",
+      "variantId": "ahab-avec-casque-0c8ceb1c95",
+      "sourceKind": "authored-frames",
+      "status": "validated",
+      "pages": [
+        {
+          "id": "user-ahab-masked-medium-recovery-right-v92",
+          "src": "/game/sprites/v92/pit/ahab/014-ahab-medium-recovery-right.png",
+          "width": 1024,
+          "height": 1536,
+          "status": "validated",
+          "transparency": {
+            "mode": "alpha",
+            "noiseFloor": 2
+          }
+        }
+      ],
+      "clips": [
+        {
+          "id": "pit.stand.medium.recovery",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "user-ahab-masked-medium-recovery-right-v92",
+              "rect": [
+                0,
+                0,
+                1024,
+                752
+              ],
+              "pivot": [
+                397,
+                735
+              ],
+              "durationTicks": 1
+            },
+            {
+              "pageId": "user-ahab-masked-medium-recovery-right-v92",
+              "rect": [
+                0,
+                752,
+                1024,
+                784
+              ],
+              "pivot": [
+                433,
+                747
+              ],
+              "durationTicks": 1
+            }
+          ]
+        }
+      ]
+    },
+    "visibleFrameBounds": [
+      {
+        "pageId": "user-ahab-masked-medium-recovery-right-v92",
+        "rect": [
+          0,
+          0,
+          1024,
+          752
+        ],
+        "visibleRect": [
+          53,
+          21,
+          963,
+          715
+        ]
+      },
+      {
+        "pageId": "user-ahab-masked-medium-recovery-right-v92",
+        "rect": [
+          0,
+          752,
+          1024,
+          784
+        ],
+        "visibleRect": [
+          70,
+          770,
+          945,
+          730
+        ]
+      }
+    ]
+  },
+  {
+    "fighterId": "user-ahab",
+    "variantId": "ahab-avec-casque-0c8ceb1c95",
+    "bodyHeightPx": 490,
+    "pageBodyHeightPx": {
+      "user-ahab-masked-medium-recovery-left-v92": 708
+    },
+    "atlas": {
+      "schemaVersion": 1,
+      "id": "user-ahab-masked-medium-recovery-left-v92",
+      "characterId": "user-ahab",
+      "variantId": "ahab-avec-casque-0c8ceb1c95",
+      "sourceKind": "authored-frames",
+      "status": "validated",
+      "pages": [
+        {
+          "id": "user-ahab-masked-medium-recovery-left-v92",
+          "src": "/game/sprites/v92/pit/ahab/015-ahab-medium-recovery-left.png",
+          "width": 1024,
+          "height": 1536,
+          "status": "validated",
+          "transparency": {
+            "mode": "alpha",
+            "noiseFloor": 2
+          }
+        }
+      ],
+      "clips": [
+        {
+          "id": "pit.stand.medium.recovery",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "user-ahab-masked-medium-recovery-left-v92",
+              "rect": [
+                0,
+                0,
+                1024,
+                750
+              ],
+              "pivot": [
+                681,
+                713
+              ],
+              "durationTicks": 1
+            },
+            {
+              "pageId": "user-ahab-masked-medium-recovery-left-v92",
+              "rect": [
+                0,
+                750,
+                1024,
+                786
+              ],
+              "pivot": [
+                613,
+                745
+              ],
+              "durationTicks": 1
+            }
+          ]
+        }
+      ]
+    },
+    "visibleFrameBounds": [
+      {
+        "pageId": "user-ahab-masked-medium-recovery-left-v92",
+        "rect": [
+          0,
+          0,
+          1024,
+          750
+        ],
+        "visibleRect": [
+          28,
+          39,
+          970,
+          675
+        ]
+      },
+      {
+        "pageId": "user-ahab-masked-medium-recovery-left-v92",
+        "rect": [
+          0,
+          750,
+          1024,
+          786
+        ],
+        "visibleRect": [
+          65,
+          788,
+          922,
+          708
+        ]
+      }
+    ]
+  },
+  {
+    "fighterId": "user-samurai",
+    "variantId": "samurai-avec-casque-d75f93b15e",
+    "bodyHeightPx": 483,
+    "pageBodyHeightPx": {
+      "user-samurai-masked-technique-recovery-right-v92": 724
+    },
+    "atlas": {
+      "schemaVersion": 1,
+      "id": "user-samurai-masked-technique-recovery-right-v92",
+      "characterId": "user-samurai",
+      "variantId": "samurai-avec-casque-d75f93b15e",
+      "sourceKind": "authored-frames",
+      "status": "validated",
+      "pages": [
+        {
+          "id": "user-samurai-masked-technique-recovery-right-v92",
+          "src": "/game/sprites/v92/pit/samurai/016-samurai-counter-recovery-right.png",
+          "width": 1024,
+          "height": 1536,
+          "status": "validated",
+          "transparency": {
+            "mode": "alpha",
+            "noiseFloor": 2
+          }
+        }
+      ],
+      "clips": [
+        {
+          "id": "pit.stand.technique.samurai-katana-contact-v92.recovery",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "user-samurai-masked-technique-recovery-right-v92",
+              "rect": [
+                0,
+                0,
+                1024,
+                742
+              ],
+              "pivot": [
+                485,
+                729
+              ],
+              "durationTicks": 1
+            },
+            {
+              "pageId": "user-samurai-masked-technique-recovery-right-v92",
+              "rect": [
+                0,
+                742,
+                1024,
+                794
+              ],
+              "pivot": [
+                485,
+                765
+              ],
+              "durationTicks": 1
+            }
+          ]
+        }
+      ]
+    },
+    "visibleFrameBounds": [
+      {
+        "pageId": "user-samurai-masked-technique-recovery-right-v92",
+        "rect": [
+          0,
+          0,
+          1024,
+          742
+        ],
+        "visibleRect": [
+          166,
+          15,
+          691,
+          715
+        ]
+      },
+      {
+        "pageId": "user-samurai-masked-technique-recovery-right-v92",
+        "rect": [
+          0,
+          742,
+          1024,
+          794
+        ],
+        "visibleRect": [
+          162,
+          755,
+          668,
+          753
+        ]
+      }
+    ]
+  },
+  {
+    "fighterId": "user-samurai",
+    "variantId": "samurai-avec-casque-d75f93b15e",
+    "bodyHeightPx": 483,
+    "pageBodyHeightPx": {
+      "user-samurai-masked-technique-recovery-left-v92": 745
+    },
+    "atlas": {
+      "schemaVersion": 1,
+      "id": "user-samurai-masked-technique-recovery-left-v92",
+      "characterId": "user-samurai",
+      "variantId": "samurai-avec-casque-d75f93b15e",
+      "sourceKind": "authored-frames",
+      "status": "validated",
+      "pages": [
+        {
+          "id": "user-samurai-masked-technique-recovery-left-v92",
+          "src": "/game/sprites/v92/pit/samurai/017-samurai-counter-recovery-left.png",
+          "width": 1024,
+          "height": 1536,
+          "status": "validated",
+          "transparency": {
+            "mode": "alpha",
+            "noiseFloor": 2
+          }
+        }
+      ],
+      "clips": [
+        {
+          "id": "pit.stand.technique.samurai-katana-contact-v92.recovery",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "user-samurai-masked-technique-recovery-left-v92",
+              "rect": [
+                0,
+                0,
+                1024,
+                725
+              ],
+              "pivot": [
+                560,
+                720
+              ],
+              "durationTicks": 1
+            },
+            {
+              "pageId": "user-samurai-masked-technique-recovery-left-v92",
+              "rect": [
+                0,
+                725,
+                1024,
+                811
+              ],
+              "pivot": [
+                549,
+                779
+              ],
+              "durationTicks": 1
+            }
+          ]
+        }
+      ]
+    },
+    "visibleFrameBounds": [
+      {
+        "pageId": "user-samurai-masked-technique-recovery-left-v92",
+        "rect": [
+          0,
+          0,
+          1024,
+          725
+        ],
+        "visibleRect": [
+          208,
+          11,
+          694,
+          710
+        ]
+      },
+      {
+        "pageId": "user-samurai-masked-technique-recovery-left-v92",
+        "rect": [
+          0,
+          725,
+          1024,
+          811
+        ],
+        "visibleRect": [
+          220,
+          729,
+          654,
+          776
+        ]
+      }
+    ]
+  }
+]

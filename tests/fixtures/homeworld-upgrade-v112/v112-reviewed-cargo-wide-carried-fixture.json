@@ -1,0 +1,74 @@
+{
+  "owner": "2026-10-28T10:00:00.000Z",
+  "checkpoint": {
+    "version": 1,
+    "layoutRevision": 1,
+    "ownerCreatedAt": "2026-10-28T10:00:00.000Z",
+    "levelId": "0",
+    "exterior": {
+      "x": 4799.825914935707,
+      "y": 4964.21758152965
+    },
+    "interiorId": null,
+    "local": null
+  },
+  "ledgers": {
+    "cargoV108": {
+      "version": 1,
+      "ownerCreatedAt": "2026-10-28T10:00:00.000Z",
+      "revision": 5,
+      "receipt": {
+        "sceneId": "D6-W-PNJ-ROLE-19",
+        "operationId": "port-compatible-cargo-v108",
+        "sourceSha256": "87ad5d1a6eaf49f2908a4457ef3f97b8f34db481a24bbc121d2e924559b19183",
+        "sourceCorpusSha256": "e36efdc3d5ac8fddb74dd683458b72873203446204e768b02aa13e4db17eed30",
+        "phase": "working",
+        "resumePhase": null,
+        "option": "A",
+        "last": {
+          "x": 4799.825914935707,
+          "y": 4964.21758152965
+        },
+        "walked": 2535.7542202339678,
+        "lots": [
+          {
+            "id": "wide",
+            "ownerId": "local-quay-return-team",
+            "x": 4799.825914935707,
+            "y": 4964.21758152965,
+            "place": "carried"
+          },
+          {
+            "id": "narrow",
+            "ownerId": "local-quay-maintenance-team",
+            "x": 6740,
+            "y": 5420,
+            "place": "source"
+          }
+        ],
+        "carrier": "wide",
+        "ownerConsents": true,
+        "depositConsent": false,
+        "firstRackPrepared": false,
+        "passageTested": false,
+        "pickupWalked": 319.7639047502345,
+        "passageStartWalked": null,
+        "retryLineReady": false,
+        "refusals": 0,
+        "interruptedCount": 0
+      }
+    }
+  },
+  "actor": {
+    "x": 4799.825914935707,
+    "y": 4964.21758152965,
+    "vx": -116.49661379668032,
+    "vy": -191.4284250970195,
+    "facing": -1,
+    "grounded": true
+  },
+  "oldNativeWalkSteps": 485,
+  "oldNativeWalkDistance": 2535.7542202339678,
+  "sourceCommit": "def899ad07fea582053c5c204e4e578d8e0d7f9b",
+  "privateSourceManifestSha256": "d4bf56b2e785959bc2c0217bfd308d321707a9ecb5bc52b22dd70a1b6154572a"
+}

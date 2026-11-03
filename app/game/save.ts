@@ -1,5 +1,42 @@
+import {normalizeHomeworldArrivalRecoveryV111} from './systems/homeworldArrivalRecoveryLedgerV111';
+import {normalizeHomeworldArchiveContinuationV111,archiveContinuationActiveV111} from './systems/homeworldArchiveContinuationLedgerV111';
+import {emptyHarvestInventoryV112,normalizeHarvestInventoryV112,deliverHarvestV112} from "./systems/harvestInventoryV112";
+import { normalizeHuntAccessibilityV112, DEFAULT_HUNT_ACCESSIBILITY_V112 } from "./systems/huntAccessibilityV112";
+import { normalizeFieldToolIdsV111 } from "./systems/fieldToolsV111";
+import { DEFAULT_CHROMATICS_V113, hasCustomChromaticsV113, migrateLegacyPhgAppearanceV115 } from "./hunterChromaticsV113";
+import {normalizeHomeworldArchiveV106} from './systems/homeworldArchiveLedgerV106';
+import {normalizeHomeworldArchiveComparisonV107} from './systems/homeworldArchiveComparisonLedgerV107';
+import {normalizeHomeworldCargoV108} from './systems/homeworldCargoLedgerV108';
+import {normalizeHomeworldArchivePlaqueV109} from './systems/homeworldArchivePlaqueLedgerV109';
+import { normalizeYouthCampaign, youthCampaignMatchesSave } from "./systems/youthCampaign";
+import { normalizeNurseryCampaign } from "./systems/nurseryCampaign";
+import { archiveTransferPending } from "./systems/archiveTransferGuard";
+import { defaultJusticeProgress, normalizeJusticeProgress } from "./systems/justice";
+import { defaultHomeworldProgress, normalizeHomeworldProgress } from "./systems/homeworld";
+import {normalizeCntlipLedgerV77} from './systems/cntlipLedgerV77';
+import {homeworldCntlipEligibleV77} from './systems/homeworldCntlipPhysicalV77';
+import {inspectHomeworldCheckpointV77} from './systems/homeworldCheckpointV77';
+import {normalizeBibleSceneLedgerV86} from './systems/bibleSceneCulturalV86';
+import {normalizeHomeworldCartographyV104} from './systems/homeworldCartographyLedgerV104';
+import {normalizeHomeworldCartographyV105} from './systems/homeworldCartographyLedgerV105';
+import { normalizeSoloV66Campaign, soloV66MatchesSave } from "./systems/campaignSoloV66";
+import { normalizeSoloV67Campaign, soloV67MatchesSave } from "./systems/campaignSoloV67";
+import { normalizeSoloV68Campaign, soloV68MatchesSave } from "./systems/campaignSoloV68";
+import { normalizeSoloV69Campaign, soloV69MatchesSave } from "./systems/campaignSoloV69";
+import { normalizeSoloV70Campaign, soloV70MatchesSave } from "./systems/campaignSoloV70";
+import { normalizeSoloV90Campaign, soloV90MatchesSave } from "./systems/campaignSoloV90";
+import { normalizeHomeworldRegionV68, canEnterHomeworldRegionV68 } from "./systems/homeworldRegionsV68";
+import { normalizeHomeworldPassageV67, canEnterHomeworldPassageV67 } from "./systems/homeworldPassageV67";
+import { isHomeworldSideStoryV66State } from "./systems/homeworldSideStoryV66";
+import { isNpcMissionsV66 } from "./systems/homeworldNpcMissionsV66";
+import { isHomeworldContractsV68 } from "./systems/homeworldContractsV68";
+import { normalizeGameReserveV66, gameReserveV66Supported } from "./systems/gameReserveV66";
+import { normalizeShipPreparationV88 } from "./systems/shipPreparationV88";
+import { normalizeShipAcquisitionV89 } from "./systems/shipAcquisitionV89";
+import { emptyGauntletCampaignV134, normalizeGauntletCampaignV134 } from "./systems/gauntletCampaignV134";
 import {
   ARMORS,
+  CODEX_ENTRIES,
   DIFFICULTIES,
   DIFFICULTY_BY_ID,
   GEAR,
@@ -7,11 +44,32 @@ import {
   MISSION_BY_ID,
   WEAPONS,
 } from "./data";
+import {
+  HUNTER_PRESETS,
+  appearanceForPreset,
+  type HunterLorePresetId,
+} from "./hunterLore";
+import { ENEMY_V7_DEFINITIONS } from "./enemyRosterV7";
+import {
+  ECOLOGY_V8_BOSS_ENEMY_IDS,
+  ECOLOGY_V8_ENEMIES,
+} from "./ecologyV8";
+import {
+  DEFAULT_CONTROL_BINDINGS,
+  normalizeControlBindings,
+} from "./systems/controlBindings";
+import {
+  defaultExplorationProgress,
+  explorationForMission,
+  mergeExplorationProgress,
+  normalizeExplorationProgress,
+} from "./systems/explorationProgress";
 import type {
   ArmorId,
   CodexEntryId,
   DifficultyId,
   GearId,
+  HunterAppearance,
   Loadout,
   MissionId,
   MissionProgress,
@@ -19,6 +77,9 @@ import type {
   MissionResult,
   RankId,
   SaveGame,
+  TrophyClaim,
+  TrophyCondition,
+  TrophyPartId,
   TrophyQuality,
   TrophyRecord,
   UpgradeLevel,
@@ -29,8 +90,11 @@ import type {
 // Storage schema and defaults
 // ---------------------------------------------------------------------------
 
-export const SAVE_VERSION = 1;
+export const SAVE_VERSION = 13;
 export const SAVE_STORAGE_KEY = "yautja-long-hunt.save";
+export const SAVE_MAX_SERIALIZED_BYTES = 1024 * 1024;
+const SAVE_EXPORT_FORMAT = "yautja-long-hunt.save-export";
+const FINAL_STORY_MISSION_ID: MissionId = "ruins-ancient-guardian";
 
 export const RANK_THRESHOLDS: Readonly<Record<RankId, number>> = {
   "young-blood": 0,
@@ -45,11 +109,142 @@ const DEFAULT_LOADOUT: Loadout = {
   gearIds: ["motion-sensor", "audio-decoy"],
 };
 
+export const DEFAULT_HUNTER_APPEARANCE: Readonly<HunterAppearance> = {
+  presetId: "jungle-hunter",
+  bodyMorphId: "classic",
+  headStyleId: "reference",
+  skinId: "ochre-mottle",
+  biomaskId: "jungle",
+  dreadStyleId: "classic",
+  dreadTintId: "obsidian",
+  armorStyleId: "classic",
+  armorTintId: "bronze",
+  trophyAdornmentId: "skull-spine",
+  laserColorId: "crimson",
+  chromaticsV113: { ...DEFAULT_CHROMATICS_V113 },
+};
+
 const WEAPON_IDS = WEAPONS.map((weapon) => weapon.id);
 const GEAR_IDS = GEAR.map((gear) => gear.id);
 const ARMOR_IDS = ARMORS.map((armor) => armor.id);
 const DIFFICULTY_IDS = DIFFICULTIES.map((difficulty) => difficulty.id);
 const MISSION_IDS = MISSIONS.map((mission) => mission.id);
+const HUNTER_SKIN_IDS = [
+  "ochre-mottle",
+  "ashen-mottle",
+  "dark-mottle",
+] as const;
+const LASER_COLOR_IDS = [
+  "crimson",
+  "electric",
+  "amber",
+  "violet",
+  "cyan",
+] as const;
+const HUNTER_PRESET_IDS = [
+  "custom",
+  ...HUNTER_PRESETS.map(({ id }) => id),
+] as const;
+const HUNTER_BODY_MORPH_IDS = [
+  "classic",
+  "elder",
+  "super",
+  "feral",
+  "huntress",
+  "young",
+] as const;
+const HUNTER_ARMOR_STYLE_IDS = [
+  "classic",
+  "city",
+  "avp",
+  "super",
+  "feral",
+] as const;
+const BIOMASK_IDS = [
+  "jungle",
+  "city",
+  "elder",
+  "scar",
+  "celtic",
+  "chopper",
+  "wolf",
+  "feral",
+  "boar",
+  "snake",
+  "falconer",
+  "berserker",
+  "fugitive",
+  "dek",
+  "enforcer",
+  "clan-voile-argent",
+  "clan-cuivre-remparts",
+  "clan-entrelacs-forge",
+  "clan-os-grave",
+  "clan-cendre-balafree",
+  "clan-arete-acier",
+  "clan-veilleur-cendres",
+  "clan-carapace-sombre",
+  "clan-filigrane-cuivre",
+  "clan-patine-dunes",
+  "clan-gardien-ivoire",
+  "concept-v133-requiem",
+  "concept-v133-nova",
+  "concept-v133-instinct",
+  "concept-v133-glypic",
+  "concept-v133-tyrant",
+  "concept-v133-warlord",
+  "concept-v133-paroxysm",
+] as const;
+const DREAD_STYLE_IDS = [
+  "classic",
+  "ringed",
+  "braided",
+  "veteran",
+  "elder",
+  "temple",
+  "feral",
+  "huntress",
+] as const;
+const DREAD_TINT_IDS = ["obsidian", "umber", "ashen"] as const;
+const ARMOR_TINT_IDS = ["gunmetal", "bronze", "obsidian"] as const;
+const TROPHY_ADORNMENT_IDS = ["none", "skull-spine"] as const;
+const TROPHY_PART_IDS = [
+  "skull",
+  "skull-and-spine",
+  "mask",
+  "insignia",
+] as const;
+const TROPHY_CONDITIONS = ["damaged", "intact", "pristine"] as const;
+const TROPHY_WORKSHOP_ACTION_IDS = [
+  "clean",
+  "prepare",
+  "display",
+  "rite",
+] as const;
+const DISCOVERABLE_ENEMY_IDS = [
+  ...new Set([
+    ...ENEMY_V7_DEFINITIONS.map(({ id }) => id),
+    ...ECOLOGY_V8_ENEMIES.map(({ id }) => id),
+  ]),
+] as readonly string[];
+const DISCOVERABLE_ENEMY_ID_SET = new Set(DISCOVERABLE_ENEMY_IDS);
+// There cannot be more persisted discoveries than authored roster entries.
+// The wider input cap also bounds work on hostile/corrupt payloads while
+// tolerating duplicates from long mission sessions.
+const MAX_DISCOVERED_ENEMY_IDS = DISCOVERABLE_ENEMY_IDS.length;
+const MAX_DISCOVERED_ENEMY_INPUT_ITEMS = Math.max(
+  512,
+  MAX_DISCOVERED_ENEMY_IDS * 4,
+);
+// The V18 field guide exposes 228 enemy identities in addition to the eight
+// Apex claims. Keep enough physical slots to complete that collection while
+// still bounding malformed or endlessly replayed saves.
+const MAX_TROPHY_RECORDS = 500;
+const REPLAY_HONOR_BASE_RATE = 0.05;
+const REPLAY_HONOR_SCORE_RATE = 0.1;
+const REPLAY_HONOR_EVENT_RATE = 0.5;
+const REPLAY_HONOR_PROGRESS_CAP = 20;
+const REPLAY_HONOR_RAW_CAP = 40;
 
 const TROPHY_QUALITY_ORDER: Readonly<Record<TrophyQuality, number>> = {
   worthy: 1,
@@ -107,6 +302,17 @@ function emptyMissionProgress(
   };
 }
 
+function initialMissionProgress(): Record<MissionId, MissionProgress> {
+  return Object.fromEntries(
+    MISSIONS.map((mission) => [
+      mission.id,
+      emptyMissionProgress(
+        mission.prerequisiteMissionId === null ? "available" : "locked",
+      ),
+    ]),
+  ) as Record<MissionId, MissionProgress>;
+}
+
 /**
  * Create a fresh save. The optional timestamp makes deterministic tests easy
  * without forcing production callers to provide a clock.
@@ -114,6 +320,17 @@ function emptyMissionProgress(
 export function defaultSave(now = new Date().toISOString()): SaveGame {
   return {
     version: SAVE_VERSION,
+    prologue: null,
+    youthTraining: null,
+    soloV66: null,
+    soloV67: null,
+    soloV68: null,
+    soloV69: null,
+    soloV70: null,
+    homeworldRegionV68: null,
+    homeworldPassageV67: null,
+    gameReserveV66: null,
+    gauntletV134: emptyGauntletCampaignV134(now),
     createdAt: now,
     updatedAt: now,
     profile: {
@@ -124,6 +341,8 @@ export function defaultSave(now = new Date().toISOString()): SaveGame {
       playTimeSeconds: 0,
     },
     inventory: {
+      fieldToolIds: [],
+      harvestV112: emptyHarvestInventoryV112(),
       unlockedWeaponIds: [
         "wristblades",
         "combistick",
@@ -140,12 +359,10 @@ export function defaultSave(now = new Date().toISOString()): SaveGame {
       weaponIds: [...DEFAULT_LOADOUT.weaponIds],
       gearIds: [...DEFAULT_LOADOUT.gearIds],
     },
-    missionProgress: {
-      "jungle-vey": emptyMissionProgress("available"),
-      "ice-cryostalker": emptyMissionProgress("locked"),
-      "volcano-bad-blood": emptyMissionProgress("locked"),
-    },
+    appearance: { ...DEFAULT_HUNTER_APPEARANCE },
+    missionProgress: initialMissionProgress(),
     trophies: [],
+    exploration: defaultExplorationProgress(),
     codex: {
       unlockedEntryIds: [
         "yautja-honor",
@@ -153,6 +370,7 @@ export function defaultSave(now = new Date().toISOString()): SaveGame {
         "cloaking-device",
       ],
       scanCounts: {},
+      discoveredEnemyIds: [],
     },
     statistics: {
       missionsStarted: 0,
@@ -165,6 +383,7 @@ export function defaultSave(now = new Date().toISOString()): SaveGame {
       currentHuntStreak: 0,
     },
     settings: {
+      huntAccessibility: normalizeHuntAccessibilityV112(DEFAULT_HUNT_ACCESSIBILITY_V112),
       difficultyId: "hunter",
       masterVolume: 0.8,
       musicVolume: 0.65,
@@ -172,8 +391,11 @@ export function defaultSave(now = new Date().toISOString()): SaveGame {
       screenShake: true,
       reducedGore: false,
       highContrastVision: false,
+      controlBindings: DEFAULT_CONTROL_BINDINGS,
     },
     storyCompleted: false,
+    homeworld: defaultHomeworldProgress(),
+    justice: defaultJusticeProgress(),
   };
 }
 
@@ -198,7 +420,7 @@ function finiteNumber(value: unknown, fallback: number): number {
 }
 
 function nonNegativeInteger(value: unknown, fallback: number): number {
-  return Math.max(0, Math.round(finiteNumber(value, fallback)));
+  return Math.min(Number.MAX_SAFE_INTEGER, Math.max(0, Math.round(finiteNumber(value, fallback))));
 }
 
 function boundedNumber(
@@ -212,6 +434,14 @@ function boundedNumber(
 
 function stringValue(value: unknown, fallback: string): string {
   return typeof value === "string" && value.length > 0 ? value : fallback;
+}
+
+function identifierValue(value: unknown, fallback: string): string {
+  if (typeof value !== "string") {
+    return fallback;
+  }
+  const trimmed = value.trim();
+  return (trimmed.length > 0 ? trimmed : fallback).slice(0, 128);
 }
 
 function booleanValue(value: unknown, fallback: boolean): boolean {
@@ -241,6 +471,37 @@ function uniqueAllowedIds<T extends string>(
   ];
 }
 
+function normalizeDiscoveredEnemyIds(
+  value: unknown,
+  fallback: readonly string[] = [],
+): string[] {
+  const source = Array.isArray(value) ? value : fallback;
+  const discoveredEnemyIds: string[] = [];
+  const seen = new Set<string>();
+  const inputLength = Math.min(
+    source.length,
+    MAX_DISCOVERED_ENEMY_INPUT_ITEMS,
+  );
+
+  for (let index = 0; index < inputLength; index += 1) {
+    const id = source[index];
+    if (
+      typeof id !== "string" ||
+      seen.has(id) ||
+      !DISCOVERABLE_ENEMY_ID_SET.has(id)
+    ) {
+      continue;
+    }
+    seen.add(id);
+    discoveredEnemyIds.push(id);
+    if (discoveredEnemyIds.length >= MAX_DISCOVERED_ENEMY_IDS) {
+      break;
+    }
+  }
+
+  return discoveredEnemyIds;
+}
+
 function validIsoDate(value: unknown, fallback: string): string {
   if (typeof value !== "string") {
     return fallback;
@@ -258,6 +519,73 @@ const SAVE_MIGRATIONS: Readonly<
   Record<number, (input: UnknownRecord) => UnknownRecord>
 > = {
   0: (input) => ({ ...input, version: 1 }),
+  1: (input) => ({
+    ...input,
+    version: 2,
+    appearance: isRecord(input.appearance)
+      ? input.appearance
+      : { ...DEFAULT_HUNTER_APPEARANCE },
+  }),
+  2: (input) => ({
+    ...input,
+    version: 3,
+    appearance: isRecord(input.appearance)
+      ? {
+          ...input.appearance,
+          presetId: "jungle-hunter",
+          bodyMorphId: "classic",
+          armorStyleId: "classic",
+          biomaskId:
+            input.appearance.biomaskId === "scarred"
+              ? "scar"
+              : input.appearance.biomaskId,
+        }
+      : { ...DEFAULT_HUNTER_APPEARANCE },
+  }),
+  3: (input) => {
+    const missionProgress = isRecord(input.missionProgress)
+      ? input.missionProgress
+      : {};
+    const finalProgress = isRecord(missionProgress[FINAL_STORY_MISSION_ID])
+      ? missionProgress[FINAL_STORY_MISSION_ID]
+      : {};
+    return {
+      ...input,
+      version: 4,
+      // V3 ended at Cinder. V4 extends the campaign by five hunts, so the old
+      // finale flag must not skip the new progression chain.
+      storyCompleted: Number(finalProgress.completions) > 0,
+    };
+  },
+  4: (input) => ({
+    ...input,
+    version: 5,
+    // V4 had no permanent exploration. Never infer unlocks from mission wins.
+    exploration: defaultExplorationProgress(),
+  }),
+  5: (input) => ({
+    ...input,
+    version: 6,
+    // V5 authored only jungle exploration. Preserve those permanent unlocks;
+    // future/foreign ice fields cannot pre-award a newly introduced branch.
+    exploration: explorationForMission("jungle-vey", input.exploration),
+  }),
+  6: (input) => ({
+    ...input,
+    version: 7,
+    // V6 had no social world. Never infer city proofs or affiliations from rank.
+    homeworld: defaultHomeworldProgress(),
+    justice: defaultJusticeProgress(),
+  }),
+  7: (input) => ({ ...input, version: 8, prologue: null }),
+  8: (input) => ({ ...input, version: 9, youthTraining: null }),
+  9: (input) => ({ ...input, version: 10, soloV69: input.soloV69 ?? null }),
+  10: (input) => ({ ...input, version: 11, soloV70: input.soloV70 ?? null }),
+  // Preserve all existing documents. Older clients must refuse new continuation
+  // and restoration receipts instead of silently dropping their optional fields.
+  11: (input) => ({ ...input, version: 12 }),
+  // Never auto-award archive studies or fabricate research evidence in legacy V12 saves.
+  12: (input) => ({ ...input, version: 13 }),
 };
 
 function migrateSavePayload(value: unknown): UnknownRecord | null {
@@ -305,6 +633,88 @@ function normalizeUpgradeRecord<T extends string>(
       level === 1 || level === 2 ? level : level === 0 ? 0 : fallback[id];
   }
   return normalized;
+}
+
+function normalizeAppearance(source: unknown): HunterAppearance {
+  if (!isRecord(source)) {
+    return { ...DEFAULT_HUNTER_APPEARANCE };
+  }
+
+  const appearance: HunterAppearance = {
+    presetId: isOneOf(source.presetId, HUNTER_PRESET_IDS)
+      ? source.presetId
+      : DEFAULT_HUNTER_APPEARANCE.presetId,
+    bodyMorphId: isOneOf(source.bodyMorphId, HUNTER_BODY_MORPH_IDS)
+      ? source.bodyMorphId
+      : DEFAULT_HUNTER_APPEARANCE.bodyMorphId,
+    headStyleId: source.headStyleId === "legacy-clan" ? "legacy-clan" : "reference",
+    skinId: isOneOf(source.skinId, HUNTER_SKIN_IDS)
+      ? source.skinId
+      : DEFAULT_HUNTER_APPEARANCE.skinId,
+    biomaskId:
+      source.biomaskId === null
+        ? null
+        : isOneOf(source.biomaskId, BIOMASK_IDS)
+          ? source.biomaskId
+          : DEFAULT_HUNTER_APPEARANCE.biomaskId,
+    dreadStyleId: isOneOf(source.dreadStyleId, DREAD_STYLE_IDS)
+      ? source.dreadStyleId
+      : DEFAULT_HUNTER_APPEARANCE.dreadStyleId,
+    dreadTintId: isOneOf(source.dreadTintId, DREAD_TINT_IDS)
+      ? source.dreadTintId
+      : DEFAULT_HUNTER_APPEARANCE.dreadTintId,
+    armorStyleId: isOneOf(
+      source.armorStyleId,
+      HUNTER_ARMOR_STYLE_IDS,
+    )
+      ? source.armorStyleId
+      : DEFAULT_HUNTER_APPEARANCE.armorStyleId,
+    armorTintId: isOneOf(source.armorTintId, ARMOR_TINT_IDS)
+      ? source.armorTintId
+      : DEFAULT_HUNTER_APPEARANCE.armorTintId,
+    trophyAdornmentId: isOneOf(
+      source.trophyAdornmentId,
+      TROPHY_ADORNMENT_IDS,
+    )
+      ? source.trophyAdornmentId
+      : DEFAULT_HUNTER_APPEARANCE.trophyAdornmentId,
+    laserColorId: isOneOf(source.laserColorId, LASER_COLOR_IDS)
+      ? source.laserColorId
+      : DEFAULT_HUNTER_APPEARANCE.laserColorId,
+    chromaticsV113: migrateLegacyPhgAppearanceV115(source),
+  };
+
+  if (appearance.presetId !== "custom") {
+    const expected = appearanceForPreset(
+      appearance.presetId as HunterLorePresetId,
+    );
+    const matchesAuthoredModules =
+      source.presetId === expected.presetId &&
+      source.bodyMorphId === expected.bodyMorphId &&
+      // Before V63 the head choice was implicit. An invalid explicit choice
+      // must not keep a legendary label after its modules were repaired.
+      (source.headStyleId === undefined
+        ? (expected.headStyleId ?? "reference") === "reference"
+        : source.headStyleId === (expected.headStyleId ?? "reference")) &&
+      source.skinId === expected.skinId &&
+      source.biomaskId === expected.biomaskId &&
+      source.dreadStyleId === expected.dreadStyleId &&
+      source.dreadTintId === expected.dreadTintId &&
+      source.armorStyleId === expected.armorStyleId &&
+      source.armorTintId === expected.armorTintId &&
+      source.trophyAdornmentId === expected.trophyAdornmentId &&
+      // laserColorId was optional in already-written v3 saves. Its only
+      // legacy meaning is the authored crimson default.
+      (source.laserColorId === undefined
+        ? expected.laserColorId === "crimson"
+        : source.laserColorId === expected.laserColorId);
+
+    // A legendary id describes the complete authored plate, never a label
+    // that can remain attached to a manually altered combination of modules.
+    if (!matchesAuthoredModules || hasCustomChromaticsV113(appearance.chromaticsV113)) appearance.presetId = "custom";
+  }
+
+  return appearance;
 }
 
 function normalizeMissionProgress(
@@ -360,32 +770,97 @@ function normalizeMissionProgress(
 function repairMissionOrder(
   progress: Record<MissionId, MissionProgress>,
 ): Record<MissionId, MissionProgress> {
-  const repaired = {
-    "jungle-vey": { ...progress["jungle-vey"] },
-    "ice-cryostalker": { ...progress["ice-cryostalker"] },
-    "volcano-bad-blood": { ...progress["volcano-bad-blood"] },
-  };
+  const repaired = Object.fromEntries(
+    MISSIONS.map((mission) => [mission.id, { ...progress[mission.id] }]),
+  ) as Record<MissionId, MissionProgress>;
 
-  if (repaired["jungle-vey"].status === "locked") {
-    repaired["jungle-vey"].status = "available";
-  }
-  if (repaired["jungle-vey"].completions > 0) {
-    repaired["jungle-vey"].status = "completed";
-    if (repaired["ice-cryostalker"].status === "locked") {
-      repaired["ice-cryostalker"].status = "available";
+  // Run in campaign order so an imported legacy save unlocks the whole chain
+  // deterministically, including planets added after that save was written.
+  for (const mission of MISSIONS.toSorted((left, right) => left.order - right.order)) {
+    const current = repaired[mission.id];
+    if (current.completions > 0) {
+      current.status = "completed";
+      continue;
     }
-  }
-  if (repaired["ice-cryostalker"].completions > 0) {
-    repaired["ice-cryostalker"].status = "completed";
-    if (repaired["volcano-bad-blood"].status === "locked") {
-      repaired["volcano-bad-blood"].status = "available";
+    const prerequisiteId = mission.prerequisiteMissionId;
+    if (
+      prerequisiteId === null ||
+      repaired[prerequisiteId].status === "completed"
+    ) {
+      current.status = "available";
+    } else {
+      current.status = "locked";
     }
-  }
-  if (repaired["volcano-bad-blood"].completions > 0) {
-    repaired["volcano-bad-blood"].status = "completed";
   }
 
   return repaired;
+}
+
+function conditionForQuality(quality: TrophyQuality): TrophyCondition {
+  if (quality === "worthy") {
+    return "damaged";
+  }
+  if (quality === "blooded") {
+    return "intact";
+  }
+  return "pristine";
+}
+
+function qualityForCondition(condition: TrophyCondition): TrophyQuality {
+  if (condition === "damaged") {
+    return "worthy";
+  }
+  if (condition === "intact") {
+    return "blooded";
+  }
+  return "flawless";
+}
+
+function defaultTrophyPart(missionId: MissionId): TrophyPartId {
+  return MISSION_BY_ID[missionId].trophy.partId;
+}
+
+function preferredTrophy(
+  current: TrophyRecord,
+  candidate: TrophyRecord,
+): TrophyRecord {
+  const currentQuality = TROPHY_QUALITY_ORDER[current.quality];
+  const candidateQuality = TROPHY_QUALITY_ORDER[candidate.quality];
+  const preferred = candidateQuality !== currentQuality
+    ? candidateQuality > currentQuality ? candidate : current
+    : candidate.score !== current.score
+      ? candidate.score > current.score ? candidate : current
+      : Date.parse(candidate.claimedAt) >= Date.parse(current.claimedAt)
+        ? candidate
+        : current;
+  const other = preferred === current ? candidate : current;
+  if (!preferred.workshop && !other.workshop) return preferred;
+  const completedActions = [
+    ...new Set([
+      ...(preferred.workshop?.completedActions ?? []),
+      ...(other.workshop?.completedActions ?? []),
+    ]),
+  ];
+  const preferredWorkshopTime = Date.parse(
+    preferred.workshop?.lastCompletedAt ?? new Date(0).toISOString(),
+  );
+  const otherWorkshopTime = Date.parse(
+    other.workshop?.lastCompletedAt ?? new Date(0).toISOString(),
+  );
+  return {
+    ...preferred,
+    workshop: {
+      completedActions,
+      bestScore: Math.max(
+        preferred.workshop?.bestScore ?? 0,
+        other.workshop?.bestScore ?? 0,
+      ),
+      lastCompletedAt:
+        otherWorkshopTime > preferredWorkshopTime
+          ? other.workshop?.lastCompletedAt ?? preferred.claimedAt
+          : preferred.workshop?.lastCompletedAt ?? preferred.claimedAt,
+    },
+  };
 }
 
 function normalizeTrophies(source: unknown): TrophyRecord[] {
@@ -393,7 +868,7 @@ function normalizeTrophies(source: unknown): TrophyRecord[] {
     return [];
   }
 
-  const bestByMission = new Map<MissionId, TrophyRecord>();
+  const bestById = new Map<string, TrophyRecord>();
   for (const value of source) {
     if (!isRecord(value)) {
       continue;
@@ -401,45 +876,93 @@ function normalizeTrophies(source: unknown): TrophyRecord[] {
 
     if (
       !isOneOf(value.missionId, MISSION_IDS) ||
-      !isOneOf(value.difficultyId, DIFFICULTY_IDS) ||
-      (value.quality !== "worthy" &&
-        value.quality !== "blooded" &&
-        value.quality !== "elite" &&
-        value.quality !== "flawless")
+      !isOneOf(value.difficultyId, DIFFICULTY_IDS)
     ) {
       continue;
     }
 
     const mission = MISSION_BY_ID[value.missionId];
+    const id = identifierValue(value.id, mission.trophy.id);
+    const storedQuality: TrophyQuality | null =
+      value.quality === "worthy" ||
+      value.quality === "blooded" ||
+      value.quality === "elite" ||
+      value.quality === "flawless"
+        ? value.quality
+        : null;
+    const condition = isOneOf(value.condition, TROPHY_CONDITIONS)
+      ? value.condition
+      : conditionForQuality(storedQuality ?? "worthy");
+    const quality = storedQuality ?? qualityForCondition(condition);
+    const claimedAt = validIsoDate(
+      value.claimedAt,
+      new Date(0).toISOString(),
+    );
+    const rawWorkshop = isRecord(value.workshop) ? value.workshop : null;
+    const completedWorkshopActions = rawWorkshop
+      ? uniqueAllowedIds(
+          rawWorkshop.completedActions,
+          TROPHY_WORKSHOP_ACTION_IDS,
+          [],
+        )
+      : [];
     const trophy: TrophyRecord = {
-      id: stringValue(value.id, mission.trophy.id),
+      id,
+      definitionId: identifierValue(
+        value.definitionId,
+        mission.trophy.id,
+      ),
+      ...(typeof value.sourceEnemyId === "string" &&
+      value.sourceEnemyId.trim().length > 0
+        ? {
+            sourceEnemyId: value.sourceEnemyId.trim().slice(0, 128),
+          }
+        : {}),
+      targetName: stringValue(value.targetName, mission.targetName).slice(
+        0,
+        96,
+      ),
+      targetKind:
+        value.targetKind === "human" ||
+        value.targetKind === "beast" ||
+        value.targetKind === "yautja"
+          ? value.targetKind
+          : mission.targetKind,
+      partId: isOneOf(value.partId, TROPHY_PART_IDS)
+        ? value.partId
+        : defaultTrophyPart(value.missionId),
+      condition,
       missionId: value.missionId,
-      targetName: stringValue(value.targetName, mission.targetName),
-      quality: value.quality,
+      quality,
       difficultyId: value.difficultyId,
       score: boundedNumber(value.score, 0, 0, 100),
-      claimedAt: validIsoDate(
-        value.claimedAt,
-        new Date(0).toISOString(),
-      ),
+      claimedAt,
+      ...(completedWorkshopActions.length > 0
+        ? {
+            workshop: {
+              completedActions: completedWorkshopActions,
+              bestScore: boundedNumber(rawWorkshop?.bestScore, 0, 0, 10_000),
+              lastCompletedAt: validIsoDate(
+                rawWorkshop?.lastCompletedAt,
+                claimedAt,
+              ),
+            },
+          }
+        : {}),
     };
-    const existing = bestByMission.get(trophy.missionId);
-    const isBetter =
-      !existing ||
-      TROPHY_QUALITY_ORDER[trophy.quality] >
-        TROPHY_QUALITY_ORDER[existing.quality] ||
-      (trophy.quality === existing.quality &&
-        trophy.score > existing.score);
-
-    if (isBetter) {
-      bestByMission.set(trophy.missionId, trophy);
-    }
+    const existing = bestById.get(id);
+    bestById.set(
+      id,
+      existing ? preferredTrophy(existing, trophy) : trophy,
+    );
   }
 
-  return MISSIONS.flatMap((mission) => {
-    const trophy = bestByMission.get(mission.id);
-    return trophy ? [trophy] : [];
-  });
+  return [...bestById.values()]
+    .sort(
+      (left, right) =>
+        Date.parse(left.claimedAt) - Date.parse(right.claimedAt),
+    )
+    .slice(-MAX_TROPHY_RECORDS);
 }
 
 function rankForHonor(honor: number): RankId {
@@ -460,6 +983,7 @@ function normalizeLoadout(
   unlockedWeaponIds: readonly WeaponId[],
   unlockedGearIds: readonly GearId[],
   unlockedArmorIds: readonly ArmorId[],
+  armorUpgrades: Readonly<Record<ArmorId, UpgradeLevel>>,
 ): Loadout {
   if (!isRecord(source)) {
     return {
@@ -493,7 +1017,8 @@ function normalizeLoadout(
       ? [rawGear[0], rawGear[1]]
       : [...DEFAULT_LOADOUT.gearIds];
   const capacity =
-    ARMORS.find((armor) => armor.id === armorId)?.carryingCapacity ?? 8;
+    (ARMORS.find((armor) => armor.id === armorId)?.carryingCapacity ??
+      8) + armorUpgrades[armorId];
   const weight =
     weaponIds.reduce(
       (sum, id) =>
@@ -506,10 +1031,23 @@ function normalizeLoadout(
     );
 
   if (weight > capacity) {
+    // Keep the requested armor instead of silently switching back to Hunter.
+    // Wristblades have no carried weight, so replacing the heaviest selected
+    // weapon with them always yields a coherent two-weapon Scout loadout.
+    const secondaryWeapon =
+      weaponIds
+        .filter((id) => id !== "wristblades")
+        .sort(
+          (left, right) =>
+            (WEAPONS.find((weapon) => weapon.id === left)?.weight ?? 0) -
+            (WEAPONS.find((weapon) => weapon.id === right)?.weight ?? 0),
+        )[0] ??
+      unlockedWeaponIds.find((id) => id !== "wristblades") ??
+      "combistick";
     return {
-      armorId: DEFAULT_LOADOUT.armorId,
-      weaponIds: [...DEFAULT_LOADOUT.weaponIds],
-      gearIds: [...DEFAULT_LOADOUT.gearIds],
+      armorId,
+      weaponIds: ["wristblades", secondaryWeapon],
+      gearIds,
     };
   }
 
@@ -541,6 +1079,9 @@ export function normalizeSave(value: unknown): SaveGame {
     ? source.statistics
     : {};
   const rawSettings = isRecord(source.settings) ? source.settings : {};
+  const normalizedControlBindings = normalizeControlBindings(
+    rawSettings.controlBindings,
+  );
 
   // Core starter tools can never disappear from a damaged or old save.
   const unlockedWeaponIds = [
@@ -577,51 +1118,70 @@ export function normalizeSave(value: unknown): SaveGame {
     ]),
   ];
 
-  const missionProgress = repairMissionOrder({
-    "jungle-vey": normalizeMissionProgress(
-      rawMissionProgress["jungle-vey"],
-      fallback.missionProgress["jungle-vey"],
-      "jungle-vey",
-    ),
-    "ice-cryostalker": normalizeMissionProgress(
-      rawMissionProgress["ice-cryostalker"],
-      fallback.missionProgress["ice-cryostalker"],
-      "ice-cryostalker",
-    ),
-    "volcano-bad-blood": normalizeMissionProgress(
-      rawMissionProgress["volcano-bad-blood"],
-      fallback.missionProgress["volcano-bad-blood"],
-      "volcano-bad-blood",
-    ),
-  });
+  const missionProgress = repairMissionOrder(
+    Object.fromEntries(
+      MISSIONS.map((mission) => [
+        mission.id,
+        normalizeMissionProgress(
+          rawMissionProgress[mission.id],
+          fallback.missionProgress[mission.id],
+          mission.id,
+        ),
+      ]),
+    ) as Record<MissionId, MissionProgress>,
+  );
+  const storyCompleted =
+    booleanValue(source.storyCompleted, false) ||
+    missionProgress[FINAL_STORY_MISSION_ID].completions > 0;
   const honor = nonNegativeInteger(
     rawProfile.honor,
     fallback.profile.honor,
   );
-  const difficultyId = isOneOf(
+  const requestedDifficultyId = isOneOf(
     rawSettings.difficultyId,
     DIFFICULTY_IDS,
   )
     ? rawSettings.difficultyId
     : fallback.settings.difficultyId;
+  // Elder is a post-campaign rite. Legacy V3 saves can retain that setting
+  // while V4 reopens the extended story, and malformed current payloads can
+  // create the same impossible state. Keep the strongest unlocked difficulty.
+  const difficultyId =
+    requestedDifficultyId === "elder" && !storyCompleted
+      ? "elite"
+      : requestedDifficultyId;
   const unlockedEntryIds = uniqueAllowedIds(
     rawCodex.unlockedEntryIds,
-    [
-      "yautja-honor",
-      "biomask",
-      "cloaking-device",
-      "osiris-jungle",
-      "commandante-vey",
-      "nivalis-ice",
-      "cryostalker",
-      "cinder-volcano",
-      "bad-blood",
-    ] satisfies readonly CodexEntryId[],
+    CODEX_ENTRIES.map(({ id }) => id) satisfies readonly CodexEntryId[],
     fallback.codex.unlockedEntryIds,
   );
   const rawScanCounts = isRecord(rawCodex.scanCounts)
     ? rawCodex.scanCounts
     : {};
+  const completedLegacyBossEnemyIds = MISSIONS.flatMap((mission) => {
+    if (missionProgress[mission.id].completions <= 0) return [];
+    const enemyId = ECOLOGY_V8_BOSS_ENEMY_IDS[mission.id];
+    return enemyId ? [enemyId] : [];
+  });
+  const discoveredEnemyIds = normalizeDiscoveredEnemyIds(
+    rawCodex.discoveredEnemyIds,
+    completedLegacyBossEnemyIds,
+  );
+  const weaponUpgrades = normalizeUpgradeRecord(
+    rawInventory.weaponUpgrades,
+    WEAPON_IDS,
+    fallback.inventory.weaponUpgrades,
+  );
+  const gearUpgrades = normalizeUpgradeRecord(
+    rawInventory.gearUpgrades,
+    GEAR_IDS,
+    fallback.inventory.gearUpgrades,
+  );
+  const armorUpgrades = normalizeUpgradeRecord(
+    rawInventory.armorUpgrades,
+    ARMOR_IDS,
+    fallback.inventory.armorUpgrades,
+  );
   const scanCounts: Partial<Record<CodexEntryId, number>> = {};
   for (const id of unlockedEntryIds) {
     const count = nonNegativeInteger(rawScanCounts[id], 0);
@@ -651,34 +1211,30 @@ export function normalizeSave(value: unknown): SaveGame {
       ),
     },
     inventory: {
+      fieldToolIds: normalizeFieldToolIdsV111(rawInventory.fieldToolIds),
+      harvestV112: normalizeHarvestInventoryV112(rawInventory.harvestV112) ?? emptyHarvestInventoryV112(),
       unlockedWeaponIds,
       unlockedGearIds,
       unlockedArmorIds,
-      weaponUpgrades: normalizeUpgradeRecord(
-        rawInventory.weaponUpgrades,
-        WEAPON_IDS,
-        fallback.inventory.weaponUpgrades,
-      ),
-      gearUpgrades: normalizeUpgradeRecord(
-        rawInventory.gearUpgrades,
-        GEAR_IDS,
-        fallback.inventory.gearUpgrades,
-      ),
-      armorUpgrades: normalizeUpgradeRecord(
-        rawInventory.armorUpgrades,
-        ARMOR_IDS,
-        fallback.inventory.armorUpgrades,
-      ),
+      weaponUpgrades,
+      gearUpgrades,
+      armorUpgrades,
     },
     loadout: normalizeLoadout(
       source.loadout,
       unlockedWeaponIds,
       unlockedGearIds,
       unlockedArmorIds,
+      armorUpgrades,
     ),
+    appearance: normalizeAppearance(source.appearance),
     missionProgress,
     trophies: normalizeTrophies(source.trophies),
-    codex: { unlockedEntryIds, scanCounts },
+    ...(source.gauntletV134 === undefined ? {} : {
+      gauntletV134: normalizeGauntletCampaignV134(source.gauntletV134,validIsoDate(source.createdAt,fallback.createdAt)),
+    }),
+    codex: { unlockedEntryIds, scanCounts, discoveredEnemyIds },
+    exploration: normalizeExplorationProgress(source.exploration),
     statistics: {
       missionsStarted: nonNegativeInteger(
         rawStatistics.missionsStarted,
@@ -714,6 +1270,7 @@ export function normalizeSave(value: unknown): SaveGame {
       ),
     },
     settings: {
+      huntAccessibility: normalizeHuntAccessibilityV112(rawSettings.huntAccessibility),
       difficultyId,
       masterVolume: boundedNumber(
         rawSettings.masterVolume,
@@ -745,10 +1302,30 @@ export function normalizeSave(value: unknown): SaveGame {
         rawSettings.highContrastVision,
         fallback.settings.highContrastVision,
       ),
+      controlBindings: normalizedControlBindings.valid
+        ? normalizedControlBindings.bindings
+        : fallback.settings.controlBindings,
     },
-    storyCompleted:
-      booleanValue(source.storyCompleted, false) ||
-      missionProgress["volcano-bad-blood"].completions > 0,
+    storyCompleted,
+    homeworld: normalizeHomeworldProgress(source.homeworld),
+    justice: normalizeJusticeProgress(source.justice),
+    prologue: normalizeNurseryCampaign(source.prologue),
+    youthTraining: normalizeYouthCampaign(source.youthTraining),
+    soloV66: normalizeSoloV66Campaign(source.soloV66),
+    soloV67: normalizeSoloV67Campaign(source.soloV67),
+    soloV68: normalizeSoloV68Campaign(source.soloV68),
+    soloV69: normalizeSoloV69Campaign(source.soloV69),
+    soloV70: normalizeSoloV70Campaign(source.soloV70),
+    ...(source.soloV90 === undefined ? {} : { soloV90: normalizeSoloV90Campaign(source.soloV90) }),
+    homeworldRegionV68: normalizeHomeworldRegionV68(source.homeworldRegionV68),
+    homeworldPassageV67: normalizeHomeworldPassageV67(source.homeworldPassageV67),
+    gameReserveV66: normalizeGameReserveV66(source.gameReserveV66),
+    ...(source.shipPreparationV88 === undefined ? {} : {
+      shipPreparationV88: normalizeShipPreparationV88(source.shipPreparationV88, validIsoDate(source.createdAt, fallback.createdAt)),
+    }),
+    ...(source.shipAcquisitionV89 === undefined ? {} : {
+      shipAcquisitionV89: normalizeShipAcquisitionV89(source.shipAcquisitionV89, validIsoDate(source.createdAt, fallback.createdAt)),
+    }),
   };
 }
 
@@ -764,50 +1341,562 @@ function browserStorage(): Storage | null {
   }
 }
 
-/**
- * Load a save without throwing. Server rendering, privacy mode, corrupted JSON
- * and future-version saves all safely return a fresh game.
- */
+export type SaveImportFailure =
+  | "invalid-json"
+  | "invalid-save"
+  | "too-large"
+  | "future-version";
+
+export interface SaveImportParseResult {
+  save: SaveGame | null;
+  failure: SaveImportFailure | null;
+}
+
+export type SaveLoadFailure =
+  | "storage-unavailable"
+  | "read-failed"
+  | "invalid-save"
+  | "future-version"
+  | "backup-recovered";
+
+export interface SaveLoadResult {
+  save: SaveGame;
+  loaded: boolean;
+  source: "primary" | "backup" | "fresh";
+  failure: SaveLoadFailure | null;
+}
+
+export type SaveWriteFailure =
+  | "storage-unavailable"
+  | "read-failed"
+  | "protected-save"
+  | "save-conflict"
+  | "invalid-save"
+  | "write-failed";
+
+export interface SaveWriteResult {
+  save: SaveGame;
+  persisted: boolean;
+  failure: SaveWriteFailure | null;
+}
+
+export type SaveWriteReconciliation =
+  | { status: "confirmed"; save: SaveGame; failure: null }
+  | { status: "retry"; save: null; failure: null }
+  | { status: "refused"; save: null; failure: SaveWriteFailure };
+
+export interface SaveImportWriteResult {
+  save: SaveGame | null;
+  persisted: boolean;
+  failure: SaveImportFailure | SaveWriteFailure | null;
+}
+
+function saveBackupKey(key: string): string {
+  return `${key}.backup`;
+}
+
+// Each tab remembers the exact primary it loaded/wrote. A subsequent write
+// from another tab is a conflict, never an invitation to replace its progress.
+const observedCampaigns = new WeakMap<Storage, Map<string, string | null>>();
+// Only an actual attempted write can be reconciled. Keep immutable bytes here,
+// rather than trusting a caller's mutable SaveGame or accepting a newer save.
+const unconfirmedCampaignWrites = new WeakMap<SaveWriteResult, {
+  storage: Storage;
+  key: string;
+  ownerCreatedAt: string;
+  serialized: string;
+  previousSerialized: string | null;
+  observedBefore: string | null | undefined;
+}>();
+function observeCampaign(storage: Storage, key: string, serialized: string | null): void {
+  const observed = observedCampaigns.get(storage) ?? new Map<string, string | null>();
+  observed.set(key, serialized);
+  observedCampaigns.set(storage, observed);
+}
+
+/** Confirm one exact attempted primary without writing or loading another owner. */
+export function reconcileSaveWrite(
+  attempt: SaveWriteResult,
+  ownerCreatedAt: string,
+  storage: Storage | null = browserStorage(),
+  key = SAVE_STORAGE_KEY,
+): SaveWriteReconciliation {
+  const refused = (failure: SaveWriteFailure): SaveWriteReconciliation => ({ status: "refused", save: null, failure });
+  if (!storage) return refused("storage-unavailable");
+  if (archiveTransferPending(storage)) return refused("protected-save");
+  const receipt = unconfirmedCampaignWrites.get(attempt);
+  if (!receipt || receipt.storage !== storage || receipt.key !== key || receipt.ownerCreatedAt !== ownerCreatedAt) {
+    return refused("save-conflict");
+  }
+  // Another local load/write can also supersede this attempt. Do not rewind its
+  // observation, even if the primary has since been restored to older bytes.
+  if (observedCampaigns.get(storage)?.get(key) !== receipt.observedBefore) return refused("save-conflict");
+  let serialized: string | null;
+  try { serialized = storage.getItem(key); } catch { return refused("read-failed"); }
+  if (archiveTransferPending(storage)) return refused("protected-save");
+  if (serialized === receipt.serialized) {
+    const parsed = parseSaveImport(serialized);
+    if (!parsed.save || parsed.save.createdAt !== ownerCreatedAt) return refused("save-conflict");
+    observeCampaign(storage, key, serialized);
+    unconfirmedCampaignWrites.delete(attempt);
+    return { status: "confirmed", save: parsed.save, failure: null };
+  }
+  if (serialized === receipt.previousSerialized) {
+    unconfirmedCampaignWrites.delete(attempt);
+    return { status: "retry", save: null, failure: null };
+  }
+  return refused("save-conflict");
+}
+
+function inspectSavePayload(value: unknown): SaveImportParseResult {
+  if (!isRecord(value)) return { save: null, failure: "invalid-save" };
+  if (value.version !== undefined &&
+      (!Number.isInteger(value.version) || Number(value.version) < 0)) {
+    return { save: null, failure: "invalid-save" };
+  }
+  if (Number(value.version) > SAVE_VERSION) {
+    return { save: null, failure: "future-version" };
+  }
+  // Preserve incompatible inspection bytes instead of silently clearing a
+  // player's checkpoint during import, archive export or account transfer.
+  // A newer or cross-owner gauntlet receipt cannot be silently dropped during import/export.
+  if (value.gauntletV134 !== undefined && value.gauntletV134 !== null) {
+    if (isRecord(value.gauntletV134) && Number(value.gauntletV134.version) > 1)
+      return { save:null, failure:"future-version" };
+    if (typeof value.createdAt !== "string" ||
+        !normalizeGauntletCampaignV134(value.gauntletV134,value.createdAt))
+      return { save:null, failure:"invalid-save" };
+  }
+  if (value.shipPreparationV88 !== undefined && value.shipPreparationV88 !== null) {
+    const raw = value.shipPreparationV88;
+    if (isRecord(raw) && Number(raw.version) > 1) return { save: null, failure: "future-version" };
+    if (typeof value.createdAt !== "string" || !Number.isFinite(Date.parse(value.createdAt)) || !normalizeShipPreparationV88(raw, value.createdAt)) {
+      return { save: null, failure: "invalid-save" };
+    }
+  }
+  // Refuse incompatible shipyard checkpoints instead of clearing their work
+  // during local import, complete archive export or account synchronization.
+  if (value.shipAcquisitionV89 !== undefined && value.shipAcquisitionV89 !== null) {
+    const raw = value.shipAcquisitionV89;
+    if (isRecord(raw) && Number(raw.version) > 1) return { save: null, failure: "future-version" };
+    if (typeof value.createdAt !== "string" || !Number.isFinite(Date.parse(value.createdAt)) || !normalizeShipAcquisitionV89(raw, value.createdAt)) {
+      return { save: null, failure: "invalid-save" };
+    }
+  }
+  if(isRecord(value.homeworld)){
+    if(value.homeworld.arrivalRecoveryV111!==undefined){
+      const raw=value.homeworld.arrivalRecoveryV111;
+      if(isRecord(raw)&&Number(raw.version)>1)return {save:null,failure:'future-version'};
+      const recovery=normalizeHomeworldArrivalRecoveryV111(raw);
+      if(!recovery||recovery.ownerCreatedAt!==value.createdAt)return {save:null,failure:'invalid-save'};
+    }
+    if(value.homeworld.archiveContinuationV111!==undefined){
+      const raw=value.homeworld.archiveContinuationV111;
+      if(isRecord(raw)&&Number(raw.version)>1)return {save:null,failure:'future-version'};
+      const continuation=normalizeHomeworldArchiveContinuationV111(raw,value.homeworld.archivePlaqueV109);
+      if(!continuation||continuation.ownerCreatedAt!==value.createdAt)return {save:null,failure:'invalid-save'};
+      if(continuation.receipt){
+        if(!Array.isArray(value.homeworld.visitedDistrictIds)||!value.homeworld.visitedDistrictIds.includes('port'))return {save:null,failure:'invalid-save'};
+        if(archiveContinuationActiveV111(continuation)){
+          const ledgers=[normalizeHomeworldCartographyV104(value.homeworld.cartographyV104),normalizeHomeworldCartographyV105(value.homeworld.cartographyV105),normalizeHomeworldArchiveV106(value.homeworld.archiveV106),normalizeHomeworldArchiveComparisonV107(value.homeworld.archiveComparisonV107),normalizeHomeworldCargoV108(value.homeworld.cargoV108)];
+          if(ledgers.some(ledger=>ledger?.receipt&&!['offer','completed'].includes(ledger.receipt.phase)))return {save:null,failure:'invalid-save'};
+        }
+        const study=continuation.receipt.study?.receipt;
+        if(study&&(study.carrier||study.phase==='working'||study.phase==='return')){
+          const location=value.homeworld.locationV77,status=inspectHomeworldCheckpointV77(location);
+          if(status==='future-version')return {save:null,failure:'future-version'};
+          if(status!=='valid'||!isRecord(location)||!isRecord(location.exterior)||location.ownerCreatedAt!==value.createdAt||location.levelId!=='0'||location.interiorId!==null||typeof location.exterior.x!=='number'||typeof location.exterior.y!=='number'||Math.hypot(location.exterior.x-study.last.x,location.exterior.y-study.last.y)>.001)return {save:null,failure:'invalid-save'};
+        }
+      }
+    }
+    if(value.homeworld.archivePlaqueV109!==undefined){
+      const raw=value.homeworld.archivePlaqueV109;
+      if(isRecord(raw)&&Number(raw.version)>1)return {save:null,failure:'future-version'};
+      const ledger=normalizeHomeworldArchivePlaqueV109(raw);
+      if(!ledger||ledger.ownerCreatedAt!==value.createdAt)return {save:null,failure:'invalid-save'};
+      if(ledger.receipt){
+        if(!Array.isArray(value.homeworld.visitedDistrictIds)||!value.homeworld.visitedDistrictIds.includes('port'))return {save:null,failure:'invalid-save'};
+        if(!['offer','completed'].includes(ledger.receipt.phase)){
+          const a=normalizeHomeworldCartographyV104(value.homeworld.cartographyV104),b=normalizeHomeworldCartographyV105(value.homeworld.cartographyV105);
+          const c=normalizeHomeworldArchiveV106(value.homeworld.archiveV106),d=normalizeHomeworldArchiveComparisonV107(value.homeworld.archiveComparisonV107),e=normalizeHomeworldCargoV108(value.homeworld.cargoV108);
+          if([a,b,c,d,e].some(l=>l?.receipt&&l.receipt.phase!=='completed'))return {save:null,failure:'invalid-save'};
+        }
+        if(ledger.receipt.carrier||ledger.receipt.phase==='working'||ledger.receipt.phase==='return'){
+          const location=value.homeworld.locationV77,status=inspectHomeworldCheckpointV77(location);
+          if(status==='future-version')return {save:null,failure:'future-version'};
+          if(status!=='valid'||!isRecord(location)||!isRecord(location.exterior)||location.ownerCreatedAt!==value.createdAt||location.levelId!=='0'||location.interiorId!==null||typeof location.exterior.x!=='number'||typeof location.exterior.y!=='number'||Math.hypot(location.exterior.x-ledger.receipt.last.x,location.exterior.y-ledger.receipt.last.y)>.001)return {save:null,failure:'invalid-save'};
+        }
+      }
+    }
+    if(value.homeworld.cargoV108!==undefined){
+      const raw=value.homeworld.cargoV108;
+      if(isRecord(raw)&&Number(raw.version)>1)return {save:null,failure:'future-version'};
+      const ledger=normalizeHomeworldCargoV108(raw);
+      if(!ledger||ledger.ownerCreatedAt!==value.createdAt)return {save:null,failure:'invalid-save'};
+      if(ledger.receipt){
+        if(!Array.isArray(value.homeworld.visitedDistrictIds)||!value.homeworld.visitedDistrictIds.includes('port'))return {save:null,failure:'invalid-save'};
+        if(ledger.receipt.phase!=='completed'){
+          const a=normalizeHomeworldCartographyV104(value.homeworld.cartographyV104),b=normalizeHomeworldCartographyV105(value.homeworld.cartographyV105);
+          const c=normalizeHomeworldArchiveV106(value.homeworld.archiveV106),d=normalizeHomeworldArchiveComparisonV107(value.homeworld.archiveComparisonV107);
+          if(a?.receipt&&a.receipt.phase!=='completed'||b?.receipt&&b.receipt.phase!=='completed'||c?.receipt&&c.receipt.phase!=='completed'||d?.receipt&&d.receipt.phase!=='completed')return {save:null,failure:'invalid-save'};
+        }
+        if(ledger.receipt.carrier){
+          const location=value.homeworld.locationV77,status=inspectHomeworldCheckpointV77(location);
+          if(status==='future-version')return {save:null,failure:'future-version'};
+          if(status!=='valid'||!isRecord(location)||!isRecord(location.exterior)||location.ownerCreatedAt!==value.createdAt||location.levelId!=='0'||location.interiorId!==null||typeof location.exterior.x!=='number'||typeof location.exterior.y!=='number'||Math.hypot(location.exterior.x-ledger.receipt.last.x,location.exterior.y-ledger.receipt.last.y)>.001)return {save:null,failure:'invalid-save'};
+        }
+      }
+    }
+    if(value.homeworld.archiveComparisonV107!==undefined){
+      const raw=value.homeworld.archiveComparisonV107;
+      if(isRecord(raw)&&Number(raw.version)>1)return {save:null,failure:'future-version'};
+      const ledger=normalizeHomeworldArchiveComparisonV107(raw);
+      if(!ledger||ledger.ownerCreatedAt!==value.createdAt)return {save:null,failure:'invalid-save'};
+      if(ledger.receipt){
+        const deposited=normalizeHomeworldArchiveV106(value.homeworld.archiveV106);
+        if(!Array.isArray(value.homeworld.visitedDistrictIds)||!value.homeworld.visitedDistrictIds.includes('port')||!deposited?.receipt||deposited.ownerCreatedAt!==value.createdAt||deposited.receipt.phase!=='completed')return {save:null,failure:'invalid-save'};
+        if(ledger.receipt.phase!=='completed'){
+          const a=normalizeHomeworldCartographyV104(value.homeworld.cartographyV104),b=normalizeHomeworldCartographyV105(value.homeworld.cartographyV105);
+          if(a?.receipt&&a.receipt.phase!=='completed'||b?.receipt&&b.receipt.phase!=='completed')return {save:null,failure:'invalid-save'};
+        }
+        if(ledger.receipt.evidence.place==='carried'){
+          const location=value.homeworld.locationV77,status=inspectHomeworldCheckpointV77(location);
+          if(status==='future-version')return {save:null,failure:'future-version'};
+          if(status!=='valid'||!isRecord(location)||!isRecord(location.exterior)||location.ownerCreatedAt!==value.createdAt||location.levelId!=='0'||location.interiorId!==null||typeof location.exterior.x!=='number'||typeof location.exterior.y!=='number'||Math.hypot(location.exterior.x-ledger.receipt.last.x,location.exterior.y-ledger.receipt.last.y)>.001)return {save:null,failure:'invalid-save'};
+        }
+      }
+    }
+    if(value.homeworld.archiveV106!==undefined){
+      const raw=value.homeworld.archiveV106;
+      if(isRecord(raw)&&Number(raw.version)>1)return {save:null,failure:'future-version'};
+      const ledger=normalizeHomeworldArchiveV106(raw);
+      if(!ledger||ledger.ownerCreatedAt!==value.createdAt)return {save:null,failure:'invalid-save'};
+      if(ledger.receipt){
+        if(!Array.isArray(value.homeworld.visitedDistrictIds)||!value.homeworld.visitedDistrictIds.includes('port'))return {save:null,failure:'invalid-save'};
+        if(ledger.receipt.phase!=='completed'){
+          const a=normalizeHomeworldCartographyV104(value.homeworld.cartographyV104),b=normalizeHomeworldCartographyV105(value.homeworld.cartographyV105);
+          if(a?.receipt&&a.receipt.phase!=='completed'||b?.receipt&&b.receipt.phase!=='completed')return {save:null,failure:'invalid-save'};
+        }
+        if(ledger.receipt.carrier){
+          const location=value.homeworld.locationV77;
+          if(!isRecord(location)||!isRecord(location.exterior)||location.levelId!=='0'||location.interiorId!==null||typeof location.exterior.x!=='number'||typeof location.exterior.y!=='number'||!Number.isFinite(location.exterior.x)||!Number.isFinite(location.exterior.y)||Math.hypot(Number(location.exterior.x)-ledger.receipt.last.x,Number(location.exterior.y)-ledger.receipt.last.y)>.01)return {save:null,failure:'invalid-save'};
+        }
+      }
+    }
+
+    if(value.homeworld.cartographyV105!==undefined){
+      const raw=value.homeworld.cartographyV105;
+      if(isRecord(raw)&&Number(raw.version)>1)return {save:null,failure:'future-version'};
+      const ledger=normalizeHomeworldCartographyV105(raw);
+      if(!ledger||ledger.ownerCreatedAt!==value.createdAt)return {save:null,failure:'invalid-save'};
+      if(ledger.receipt&&(!Array.isArray(value.homeworld.visitedDistrictIds)||!value.homeworld.visitedDistrictIds.includes('port')))return {save:null,failure:'invalid-save'};
+      const legacy=normalizeHomeworldCartographyV104(value.homeworld.cartographyV104);
+      if(ledger.receipt&&ledger.receipt.phase!=='completed'&&legacy?.receipt&&legacy.receipt.phase!=='completed')return {save:null,failure:'invalid-save'};
+    }
+    if(value.homeworld.cartographyV104!==undefined){
+      const raw=value.homeworld.cartographyV104;
+      if(isRecord(raw)&&Number(raw.version)>1)return {save:null,failure:'future-version'};
+      const ledger=normalizeHomeworldCartographyV104(raw);
+      if(!ledger||ledger.ownerCreatedAt!==value.createdAt)return {save:null,failure:'invalid-save'};
+      if(ledger.receipt&&(!Array.isArray(value.homeworld.visitedDistrictIds)||!value.homeworld.visitedDistrictIds.includes('port')))return {save:null,failure:'invalid-save'};
+    }
+    // Optional additive ledger: reject present incompatible bytes rather than
+    // discarding a player's dialogue choices during load/export/cloud sync.
+    if(value.homeworld.bibleScenesV86!==undefined){
+      const raw=value.homeworld.bibleScenesV86;
+      if(isRecord(raw)&&Number(raw.version)>1)return {save:null,failure:'future-version'};
+      const ledger=normalizeBibleSceneLedgerV86(raw);
+      if(!ledger||ledger.ownerSaveCreatedAt!==value.createdAt)return {save:null,failure:'invalid-save'};
+      if(ledger.receipts.length&&!isRecord(value.profile))return {save:null,failure:'invalid-save'};
+      if(ledger.receipts.length&&!homeworldCntlipEligibleV77({profile:value.profile as unknown as SaveGame['profile'],prologue:normalizeNurseryCampaign(value.prologue),homeworld:normalizeHomeworldProgress(value.homeworld)}))return {save:null,failure:'invalid-save'};
+    }
+    const locationStatus=inspectHomeworldCheckpointV77(value.homeworld.locationV77);
+    if(locationStatus==='future-version'||locationStatus==='invalid-save')return {save:null,failure:locationStatus};
+    if(isRecord(value.homeworld.locationV77)&&value.homeworld.locationV77.ownerCreatedAt!==value.createdAt)return {save:null,failure:'invalid-save'};
+    if(value.homeworld.cntlipV77!==undefined){
+      const raw=value.homeworld.cntlipV77;
+      if(isRecord(raw)&&(Number(raw.version)>1||isRecord(raw.state)&&Number(raw.state.version)>1))return {save:null,failure:'future-version'};
+      const ledger=normalizeCntlipLedgerV77(raw);
+      if(!ledger)return {save:null,failure:'invalid-save'};
+      if(ledger.invitedSiteIds.length>0&&(!isRecord(value.profile)||!homeworldCntlipEligibleV77({profile:value.profile as unknown as SaveGame['profile'],prologue:normalizeNurseryCampaign(value.prologue),homeworld:normalizeHomeworldProgress(value.homeworld)})))return {save:null,failure:'invalid-save'};
+    }
+  }
+  // Homeworld evolves additively within the campaign version. A newer nested
+  // schema must retain its original bytes, not normalize into an empty dossier.
+  if (isRecord(value.homeworld) && (Number(value.homeworld.version) > 1 ||
+      (isRecord(value.homeworld.mausoleum) && Number(value.homeworld.mausoleum.version) > 1) ||
+      (isRecord(value.homeworld.inquiry) && Number(value.homeworld.inquiry.version) > 1) ||
+      (isRecord(value.homeworld.sideStoryV66) && Number(value.homeworld.sideStoryV66.version) > 1) ||
+      (isRecord(value.homeworld.npcMissionsV66) && Number(value.homeworld.npcMissionsV66.version) > 1) ||
+      (isRecord(value.homeworld.contractsV68) && Number(value.homeworld.contractsV68.version) > 2))) {
+    return { save: null, failure: "future-version" };
+  }
+  if (isRecord(value.prologue) && (Number(value.prologue.version) > 1 ||
+      (isRecord(value.prologue.chronicle) && Number(value.prologue.chronicle.version) > 1) ||
+      (isRecord(value.prologue.checkpoint) && Number(value.prologue.checkpoint.version) > 1))) {
+    return { save: null, failure: "future-version" };
+  }
+  if (value.prologue !== undefined && value.prologue !== null && !normalizeNurseryCampaign(value.prologue)) {
+    return { save: null, failure: "invalid-save" };
+  }
+  if (isRecord(value.youthTraining) && (Number(value.youthTraining.version) > 1 ||
+      (isRecord(value.youthTraining.checkpoint) && Number(value.youthTraining.checkpoint.version) > 1))) {
+    return { save: null, failure: "future-version" };
+  }
+  if (value.youthTraining !== undefined && value.youthTraining !== null && !normalizeYouthCampaign(value.youthTraining)) {
+    return { save: null, failure: "invalid-save" };
+  }
+  if (isRecord(value.soloV66) && (Number(value.soloV66.version) > 1 ||
+      (isRecord(value.soloV66.checkpoint) && Number(value.soloV66.checkpoint.version) > 1))) {
+    return { save: null, failure: "future-version" };
+  }
+  if (isRecord(value.soloV67) && (Number(value.soloV67.version) > 1 ||
+      (isRecord(value.soloV67.checkpoint) && Number(value.soloV67.checkpoint.version) > 1))) {
+    return { save: null, failure: "future-version" };
+  }
+  if (isRecord(value.soloV68) && (Number(value.soloV68.version) > 1 ||
+      isRecord(value.soloV68.checkpoint) && Number(value.soloV68.checkpoint.version) > 1) ||
+      isRecord(value.homeworldRegionV68) && Number(value.homeworldRegionV68.version) > 1) return { save: null, failure: "future-version" };
+  if (isRecord(value.soloV69) && (Number(value.soloV69.version) > 1 ||
+      isRecord(value.soloV69.checkpoint) && Number(value.soloV69.checkpoint.version) > 1)) return { save: null, failure: "future-version" };
+  if (isRecord(value.soloV70) && (Number(value.soloV70.version) > 1 ||
+      isRecord(value.soloV70.checkpoint) && Number(value.soloV70.checkpoint.version) > 1)) return { save: null, failure: "future-version" };
+  if (isRecord(value.soloV90) && (Number(value.soloV90.version) > 1 ||
+      isRecord(value.soloV90.checkpoint) && Number(value.soloV90.checkpoint.version) > 1)) return { save: null, failure: "future-version" };
+  if (!youthCampaignMatchesSave(value) || !soloV67MatchesSave(value) || !soloV68MatchesSave(value) || !soloV69MatchesSave(value) || !soloV70MatchesSave(value) || !soloV90MatchesSave(value)) return { save: null, failure: "invalid-save" };
+  if (value.homeworldRegionV68 !== undefined && value.homeworldRegionV68 !== null) {
+    const region = normalizeHomeworldRegionV68(value.homeworldRegionV68);
+    if (!region || !canEnterHomeworldRegionV68({ prologue: normalizeNurseryCampaign(value.prologue), homeworld: normalizeHomeworldProgress(value.homeworld),
+        youthTraining: normalizeYouthCampaign(value.youthTraining), soloV66: normalizeSoloV66Campaign(value.soloV66),
+        soloV67: normalizeSoloV67Campaign(value.soloV67), soloV68: normalizeSoloV68Campaign(value.soloV68) }, region.regionId).allowed ||
+        value.homeworldPassageV67 !== undefined && value.homeworldPassageV67 !== null) return { save: null, failure: "invalid-save" };
+  }
+  if (isRecord(value.homeworldPassageV67) && Number(value.homeworldPassageV67.version) > 1) return { save: null, failure: "future-version" };
+  if (value.homeworldPassageV67 !== undefined && value.homeworldPassageV67 !== null) {
+    const passage = normalizeHomeworldPassageV67(value.homeworldPassageV67);
+    if (!passage || !isRecord(value.homeworld) || !canEnterHomeworldPassageV67({
+      prologue: normalizeNurseryCampaign(value.prologue), homeworld: normalizeHomeworldProgress(value.homeworld),
+    }, passage.regionId).allowed) return { save: null, failure: "invalid-save" };
+  }
+  if (isRecord(value.gameReserveV66) && Number(value.gameReserveV66.version) > 6) return { save: null, failure: "future-version" };
+  if (!gameReserveV66Supported(value.gameReserveV66) || value.gameReserveV66 && isRecord(value.prologue)) return { save: null, failure: "invalid-save" };
+  if (!soloV66MatchesSave(value) || isRecord(value.homeworld) && (
+      value.homeworld.sideStoryV66 !== undefined && !isHomeworldSideStoryV66State(value.homeworld.sideStoryV66) ||
+      value.homeworld.npcMissionsV66 !== undefined && !isNpcMissionsV66(value.homeworld.npcMissionsV66) ||
+      value.homeworld.contractsV68 !== undefined && !isHomeworldContractsV68(value.homeworld.contractsV68))) {
+    return { save: null, failure: "invalid-save" };
+  }
+  if (isRecord(value.inventory) && value.inventory.harvestV112 !== undefined) {
+    const raw=value.inventory.harvestV112;
+    if(isRecord(raw)&&Number(raw.version)>1)return {save:null,failure:"future-version"};
+    if(!normalizeHarvestInventoryV112(raw))return {save:null,failure:"invalid-save"};
+  }
+  // Partial fields inside a campaign are repairable. An arbitrary JSON object
+  // is not a campaign and must never replace the player's existing progress.
+  if (!isRecord(value.profile) || !isRecord(value.missionProgress)) {
+    return { save: null, failure: "invalid-save" };
+  }
+  return { save: normalizeSave(value), failure: null };
+}
+
+/** Parse first, without writing anything; callers can confirm a valid import. */
+export function parseSaveImport(serialized: string): SaveImportParseResult {
+  if (typeof serialized !== "string") return { save: null, failure: "invalid-json" };
+  if (serialized.length > SAVE_MAX_SERIALIZED_BYTES ||
+      new TextEncoder().encode(serialized).byteLength > SAVE_MAX_SERIALIZED_BYTES) {
+    return { save: null, failure: "too-large" };
+  }
+  let value: unknown;
+  try {
+    value = JSON.parse(serialized.replace(/^\uFEFF/, ""));
+  } catch {
+    return { save: null, failure: "invalid-json" };
+  }
+  if (isRecord(value) && value.format === SAVE_EXPORT_FORMAT) {
+    if (value.exportVersion !== 1) return { save: null, failure: "future-version" };
+    value = value.save;
+  }
+  return inspectSavePayload(value);
+}
+
+/** Portable campaign export. Active hunts and ship sidecars are separate. */
+export function exportSave(save: SaveGame): string {
+  const validated = inspectSavePayload(save);
+  if (!validated.save) throw new Error("Cannot export an invalid campaign save");
+  const serialized = JSON.stringify({
+    format: SAVE_EXPORT_FORMAT,
+    exportVersion: 1,
+    exportedAt: new Date().toISOString(),
+    save: validated.save,
+  }, null, 2);
+  if (!parseSaveImport(serialized).save) throw new Error("Campaign export exceeds its size budget");
+  return serialized;
+}
+
+/** Read-only recovery: never erase corrupt or newer data during hydration. */
+export function loadSaveWithStatus(
+  storage: Storage | null = browserStorage(),
+  key = SAVE_STORAGE_KEY,
+): SaveLoadResult {
+  const fresh = (failure: SaveLoadFailure | null): SaveLoadResult => ({
+    save: defaultSave(), loaded: false, source: "fresh", failure,
+  });
+  if (!storage) return fresh("storage-unavailable");
+  let serialized: string | null;
+  try {
+    serialized = storage.getItem(key);
+    observeCampaign(storage, key, serialized);
+  } catch {
+    return fresh("read-failed");
+  }
+  const primary = serialized === null ? null : parseSaveImport(serialized);
+  if (primary?.save) return { save: primary.save, loaded: true, source: "primary", failure: null };
+  // Falling back to an older backup on a downgraded client could silently roll
+  // back a valid future campaign. Keep both files untouched instead.
+  if (primary?.failure === "future-version") return fresh("future-version");
+  try {
+    const backup = storage.getItem(saveBackupKey(key));
+    const recovered = backup === null ? null : parseSaveImport(backup).save;
+    if (recovered) return { save: recovered, loaded: true, source: "backup", failure: "backup-recovered" };
+  } catch {
+    return fresh(serialized === null ? "read-failed" : "invalid-save");
+  }
+  return fresh(serialized === null ? null : "invalid-save");
+}
+
 export function loadSave(
   storage: Storage | null = browserStorage(),
   key = SAVE_STORAGE_KEY,
 ): SaveGame {
-  if (!storage) {
-    return defaultSave();
+  return loadSaveWithStatus(storage, key).save;
+}
+
+function persistCampaign(
+  save: SaveGame,
+  storage: Storage | null,
+  key: string,
+  replaceExisting: boolean,
+): SaveWriteResult {
+  const validated = inspectSavePayload(save);
+  const snapshot: SaveGame = {
+    ...(validated.save ?? normalizeSave(save)),
+    updatedAt: new Date().toISOString(),
+  };
+  const failed = (failure: SaveWriteFailure): SaveWriteResult => ({ save: snapshot, persisted: false, failure });
+  if (!validated.save) return failed("invalid-save");
+  if (!storage) return failed("storage-unavailable");
+  if (archiveTransferPending(storage)) return failed("protected-save");
+
+  let previousSerialized: string | null;
+  let previousPrimarySerialized: string | null;
+  let previous: SaveGame | null = null;
+  try {
+    previousSerialized = storage.getItem(key);
+    previousPrimarySerialized = previousSerialized;
+    const observed = observedCampaigns.get(storage);
+    if (!replaceExisting && observed?.has(key) && observed.get(key) !== previousSerialized) {
+      return failed("save-conflict");
+    }
+    if (previousSerialized !== null) {
+      const parsed = parseSaveImport(previousSerialized);
+      previous = parsed.save;
+      if (!replaceExisting && !previous) {
+        if (parsed.failure === "future-version") return failed("protected-save");
+        const recovered = loadSaveWithStatus(storage, key);
+        if (recovered.source !== "backup" || recovered.save.createdAt !== snapshot.createdAt) {
+          return failed("protected-save");
+        }
+        previous = recovered.save;
+        previousSerialized = JSON.stringify(previous);
+      }
+    }
+    if (!replaceExisting && previous && previous.createdAt !== snapshot.createdAt) {
+      return failed("save-conflict");
+    }
+  } catch {
+    return failed("read-failed");
   }
 
+  const serialized = JSON.stringify(snapshot);
+  if (new TextEncoder().encode(serialized).byteLength > SAVE_MAX_SERIALIZED_BYTES) return failed("invalid-save");
+  const observedBefore = observedCampaigns.get(storage)?.get(key);
+  const unconfirmed = (): SaveWriteResult => {
+    const result = failed("write-failed");
+    unconfirmedCampaignWrites.set(result, {
+      storage, key, ownerCreatedAt: snapshot.createdAt, serialized,
+      previousSerialized: previousPrimarySerialized, observedBefore,
+    });
+    return result;
+  };
   try {
-    const serialized = storage.getItem(key);
-    return serialized ? normalizeSave(JSON.parse(serialized)) : defaultSave();
+    // A Storage setItem is atomic for this key. Do not consume quota with the
+    // optional backup until the new primary snapshot has succeeded.
+    if (archiveTransferPending(storage)) return failed("protected-save");
+    storage.setItem(key, serialized);
+    if (storage.getItem(key) !== serialized) return unconfirmed();
+    observeCampaign(storage, key, serialized);
   } catch {
-    return defaultSave();
+    return unconfirmed();
   }
+  try {
+    // A reset/import with a different owner must not resurrect the former
+    // campaign through automatic recovery. Its initial backup is the new save.
+    const backup = previous && previous.createdAt === snapshot.createdAt && previousSerialized
+      ? previousSerialized
+      : serialized;
+    if (!archiveTransferPending(storage)) storage.setItem(saveBackupKey(key), backup);
+  } catch {
+    // Preserve the recovery copy until the replacement primary is confirmed.
+    // If a reset's new backup cannot be written, retire a foreign recovery copy
+    // only now: the new campaign already has a verified durable primary.
+    if (replaceExisting && previous?.createdAt !== snapshot.createdAt) {
+      try { if (!archiveTransferPending(storage)) storage.removeItem(saveBackupKey(key)); } catch {
+        // Both cleanup operations can be blocked. Prefer retained data to loss;
+        // the old recovery copy may remain until storage access is restored.
+      }
+    }
+  }
+  return { save: snapshot, persisted: true, failure: null };
+}
+
+/** Normal gameplay writes preserve unreadable/future campaigns and owners. */
+export function writeSaveWithStatus(
+  save: SaveGame,
+  storage: Storage | null = browserStorage(),
+  key = SAVE_STORAGE_KEY,
+): SaveWriteResult {
+  return persistCampaign(save, storage, key, false);
+}
+
+/** Only for an explicit, confirmed reset or replacement chosen by the player. */
+export function replaceSaveWithStatus(
+  save: SaveGame,
+  storage: Storage | null = browserStorage(),
+  key = SAVE_STORAGE_KEY,
+): SaveWriteResult {
+  return persistCampaign(save, storage, key, true);
 }
 
 /**
- * Normalize before writing so callers cannot persist transient Canvas values.
- * The returned object is exactly the snapshot placed in localStorage.
+ * Invalid imports never write. A failed write confirmation is inconclusive:
+ * setItem may have succeeded before a readback error, so retain/export memory.
  */
+export function importSaveWithStatus(
+  serialized: string,
+  storage: Storage | null = browserStorage(),
+  key = SAVE_STORAGE_KEY,
+): SaveImportWriteResult {
+  const parsed = parseSaveImport(serialized);
+  if (!parsed.save) return { save: null, persisted: false, failure: parsed.failure };
+  return replaceSaveWithStatus(parsed.save, storage, key);
+}
+
 export function writeSave(
   save: SaveGame,
   storage: Storage | null = browserStorage(),
   key = SAVE_STORAGE_KEY,
 ): SaveGame {
-  const normalized = normalizeSave(save);
-  const snapshot: SaveGame = {
-    ...normalized,
-    updatedAt: new Date().toISOString(),
-  };
-
-  if (storage) {
-    try {
-      storage.setItem(key, JSON.stringify(snapshot));
-    } catch {
-      // The in-memory snapshot remains usable when storage is unavailable/full.
-    }
-  }
-
-  return snapshot;
+  return writeSaveWithStatus(save, storage, key).save;
 }
 
 // ---------------------------------------------------------------------------
@@ -828,48 +1917,110 @@ function betterDifficulty(
   return current;
 }
 
+function normalizeTrophyClaims(
+  source: unknown,
+  missionId: MissionId,
+  fallbackQuality: TrophyQuality | null,
+): TrophyClaim[] {
+  if (!Array.isArray(source)) {
+    return [];
+  }
+
+  const mission = MISSION_BY_ID[missionId];
+  const claimsById = new Map<string, TrophyClaim>();
+  for (const value of source) {
+    if (!isRecord(value) || typeof value.id !== "string") {
+      continue;
+    }
+    const id = value.id.trim().slice(0, 128);
+    if (!id) {
+      continue;
+    }
+    const condition = isOneOf(value.condition, TROPHY_CONDITIONS)
+      ? value.condition
+      : conditionForQuality(fallbackQuality ?? "worthy");
+    const quality: TrophyQuality =
+      value.quality === "worthy" ||
+      value.quality === "blooded" ||
+      value.quality === "elite" ||
+      value.quality === "flawless"
+        ? value.quality
+        : fallbackQuality ?? qualityForCondition(condition);
+    claimsById.set(id, {
+      id,
+      definitionId: identifierValue(
+        value.definitionId,
+        mission.trophy.id,
+      ),
+      ...(typeof value.sourceEnemyId === "string" &&
+      value.sourceEnemyId.trim().length > 0
+        ? {
+            sourceEnemyId: value.sourceEnemyId.trim().slice(0, 128),
+          }
+        : {}),
+      targetName: stringValue(value.targetName, mission.targetName).slice(
+        0,
+        96,
+      ),
+      targetKind:
+        value.targetKind === "human" ||
+        value.targetKind === "beast" ||
+        value.targetKind === "yautja"
+          ? value.targetKind
+          : mission.targetKind,
+      partId: isOneOf(value.partId, TROPHY_PART_IDS)
+        ? value.partId
+        : defaultTrophyPart(missionId),
+      condition,
+      quality,
+    });
+  }
+
+  return [...claimsById.values()].slice(-MAX_TROPHY_RECORDS);
+}
+
 function updatedTrophies(
   current: readonly TrophyRecord[],
   result: MissionResult,
 ): TrophyRecord[] {
-  if (!result.trophyQuality) {
-    return [...current];
-  }
-
   const mission = MISSION_BY_ID[result.missionId];
-  const trophy: TrophyRecord = {
-    id: mission.trophy.id,
-    missionId: mission.id,
-    targetName: mission.targetName,
-    quality: result.trophyQuality,
-    difficultyId: result.difficultyId,
-    score: clamp(Math.round(result.score), 0, 100),
-    claimedAt: validIsoDate(
-      result.completedAt,
-      new Date().toISOString(),
-    ),
-  };
-  const existing = current.find(
-    (entry) => entry.missionId === result.missionId,
+  const claims = normalizeTrophyClaims(
+    result.trophyClaims,
+    result.missionId,
+    result.trophyQuality,
   );
-  const isBetter =
-    !existing ||
-    TROPHY_QUALITY_ORDER[trophy.quality] >
-      TROPHY_QUALITY_ORDER[existing.quality] ||
-    (trophy.quality === existing.quality && trophy.score > existing.score);
 
-  if (!isBetter) {
+  // A v1 runtime supplies only trophyQuality. Keep that aggregate trophy under
+  // its historical stable id while v2 runtimes may submit many physical claims.
+  if (claims.length === 0 && result.trophyQuality) {
+    claims.push({
+      id: mission.trophy.id,
+      definitionId: mission.trophy.id,
+      targetName: mission.targetName,
+      targetKind: mission.targetKind,
+      partId: defaultTrophyPart(mission.id),
+      condition: conditionForQuality(result.trophyQuality),
+      quality: result.trophyQuality,
+    });
+  }
+  if (claims.length === 0) {
     return [...current];
   }
 
-  return [
-    ...current.filter((entry) => entry.missionId !== result.missionId),
-    trophy,
-  ].sort(
-    (left, right) =>
-      MISSION_BY_ID[left.missionId].order -
-      MISSION_BY_ID[right.missionId].order,
+  const claimedAt = validIsoDate(
+    result.completedAt,
+    new Date().toISOString(),
   );
+  const score = clamp(Math.round(result.score), 0, 100);
+  const additions: TrophyRecord[] = claims.map((claim) => ({
+    ...claim,
+    missionId: mission.id,
+    difficultyId: result.difficultyId,
+    score,
+    claimedAt,
+  }));
+
+  return normalizeTrophies([...current, ...additions]);
 }
 
 function unlockContent(
@@ -914,9 +2065,13 @@ function unlockContent(
  * Pure progression reducer. It does not touch localStorage; React can show the
  * debrief first, then explicitly pass the returned value to writeSave().
  */
+type MissionResultInput = Omit<MissionResult, "trophyClaims"> & {
+  trophyClaims?: TrophyClaim[];
+};
+
 export function applyMissionResult(
   currentSave: SaveGame,
-  rawResult: MissionResult,
+  rawResult: MissionResultInput,
 ): SaveGame {
   const save = normalizeSave(currentSave);
   const mission = MISSION_BY_ID[rawResult.missionId];
@@ -927,6 +2082,13 @@ export function applyMissionResult(
   const elapsedSeconds = nonNegativeInteger(rawResult.elapsedSeconds, 0);
   const kills = nonNegativeInteger(rawResult.kills, 0);
   const scans = nonNegativeInteger(rawResult.scans, 0);
+  const reportedDiscoveredEnemyIds = normalizeDiscoveredEnemyIds(
+    rawResult.discoveredEnemyIds,
+  );
+  const discoveredEnemyIds = normalizeDiscoveredEnemyIds([
+    ...save.codex.discoveredEnemyIds,
+    ...reportedDiscoveredEnemyIds,
+  ]);
   const previous = save.missionProgress[mission.id];
   const validObjectiveIds = mission.objectives.map(
     (objective) => objective.id,
@@ -936,16 +2098,73 @@ export function applyMissionResult(
     validObjectiveIds,
     [],
   );
+  const trophyQuality: TrophyQuality | null =
+    rawResult.trophyQuality === "worthy" ||
+    rawResult.trophyQuality === "blooded" ||
+    rawResult.trophyQuality === "elite" ||
+    rawResult.trophyQuality === "flawless"
+      ? rawResult.trophyQuality
+      : null;
+  const trophyClaims = normalizeTrophyClaims(
+    rawResult.trophyClaims,
+    mission.id,
+    trophyQuality,
+  );
   const result: MissionResult = {
     ...rawResult,
     score,
     elapsedSeconds,
     kills,
     scans,
+    discoveredEnemyIds: reportedDiscoveredEnemyIds,
     completedObjectiveIds,
+    trophyQuality,
+    trophyClaims,
     completedAt,
   };
 
+  if (result.outcome === "success") {
+    const completedObjectiveIdSet = new Set(completedObjectiveIds);
+    const missesRequiredObjective = mission.objectives.some(
+      (objective) =>
+        (objective.required || objective.kind === "extract") &&
+        !completedObjectiveIdSet.has(objective.id),
+    );
+    const hasExplicitApexClaim =
+      Array.isArray(rawResult.trophyClaims) &&
+      rawResult.trophyClaims.some(
+        (claim) =>
+          isRecord(claim) && claim.definitionId === mission.trophy.id,
+      ) &&
+      trophyClaims.some(
+        (claim) => claim.definitionId === mission.trophy.id,
+      );
+    // Legacy runtimes submitted only the aggregate quality. A modern result
+    // with an explicit claim list must always identify the Apex trophy itself.
+    const hasLegacyApexClaim =
+      rawResult.trophyClaims === undefined && trophyQuality !== null;
+
+    if (
+      previous.status === "locked" ||
+      (result.difficultyId === "elder" && !save.storyCompleted) ||
+      missesRequiredObjective ||
+      (!hasExplicitApexClaim && !hasLegacyApexClaim)
+    ) {
+      return save;
+    }
+  }
+
+  const harvestDeliveryV112=deliverHarvestV112(save,rawResult.specimensV112,rawResult.toolUseIdsV112,result.outcome==="success",mission.id,rawResult.harvestEncounterRunV112);
+  if(!harvestDeliveryV112.ok)return save;
+  save.inventory=harvestDeliveryV112.inventory;
+  const exploration = mergeExplorationProgress(
+    save.exploration,
+    // A terminal snapshot cannot discover another biome or introduce an
+    // ability that this mission does not award. Locked attempts add no unlocks.
+    previous.status !== "locked" && (result.difficultyId !== "elder" || save.storyCompleted)
+      ? explorationForMission(mission.id, rawResult.exploration)
+      : undefined,
+  );
   const baseProgress: MissionProgress = {
     ...previous,
     attempts: previous.attempts + 1,
@@ -964,6 +2183,7 @@ export function applyMissionResult(
     return {
       ...save,
       updatedAt: now,
+      exploration,
       profile: {
         ...save.profile,
         playTimeSeconds:
@@ -972,6 +2192,10 @@ export function applyMissionResult(
       missionProgress: {
         ...save.missionProgress,
         [mission.id]: baseProgress,
+      },
+      codex: {
+        ...save.codex,
+        discoveredEnemyIds,
       },
       statistics: {
         ...baseStatistics,
@@ -997,18 +2221,33 @@ export function applyMissionResult(
   const qualityBonus = result.trophyQuality
     ? TROPHY_QUALITY_ORDER[result.trophyQuality] * 10
     : 0;
+  const replayQualityBonus =
+    result.trophyQuality &&
+    !save.trophies.some(
+      (trophy) =>
+        trophy.missionId === mission.id &&
+        TROPHY_QUALITY_ORDER[trophy.quality] >=
+          TROPHY_QUALITY_ORDER[result.trophyQuality as TrophyQuality],
+    )
+      ? Math.round(qualityBonus / 2)
+      : 0;
+  const replayMasteryHonor =
+    Math.max(
+      5,
+      Math.round(mission.baseRewards.honor * REPLAY_HONOR_BASE_RATE),
+    ) +
+    Math.round(score * REPLAY_HONOR_SCORE_RATE) +
+    Math.round(eventHonor * REPLAY_HONOR_EVENT_RATE);
+  const replayProgressHonor = Math.min(
+    REPLAY_HONOR_PROGRESS_CAP,
+    scoreImprovement * 2 + replayQualityBonus,
+  );
   const rawHonorReward = firstCompletion
     ? mission.baseRewards.honor + eventHonor + qualityBonus
-    : scoreImprovement * 2 +
-      (result.trophyQuality &&
-      !save.trophies.some(
-        (trophy) =>
-          trophy.missionId === mission.id &&
-          TROPHY_QUALITY_ORDER[trophy.quality] >=
-            TROPHY_QUALITY_ORDER[result.trophyQuality as TrophyQuality],
-      )
-        ? Math.round(qualityBonus / 2)
-        : 0);
+    : Math.min(
+        REPLAY_HONOR_RAW_CAP,
+        replayMasteryHonor + replayProgressHonor,
+      );
   const honorReward = Math.round(
     Math.max(firstCompletion ? -50 : 0, rawHonorReward) *
       difficulty.rewardMultiplier,
@@ -1060,6 +2299,7 @@ export function applyMissionResult(
   const progressedSave: SaveGame = {
     ...save,
     updatedAt: now,
+    exploration,
     profile: {
       ...save.profile,
       rankId: rankForHonor(nextHonor),
@@ -1074,6 +2314,7 @@ export function applyMissionResult(
         save.codex.unlockedEntryIds,
         mission.codexUnlockIds,
       ),
+      discoveredEnemyIds,
       scanCounts: {
         ...save.codex.scanCounts,
         ...Object.fromEntries(
@@ -1094,7 +2335,7 @@ export function applyMissionResult(
       ),
     },
     storyCompleted:
-      save.storyCompleted || mission.id === "volcano-bad-blood",
+      save.storyCompleted || mission.id === FINAL_STORY_MISSION_ID,
   };
 
   return {

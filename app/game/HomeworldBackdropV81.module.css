@@ -1,0 +1,5 @@
+.sky{position:absolute;z-index:-50000;background-size:cover;background-position:center;pointer-events:none}
+.mountains{position:absolute;z-index:-47000;background-repeat:repeat-x;pointer-events:none;filter:sepia(.35) saturate(.55)}
+.farCliffs{position:absolute;z-index:-45000;background-repeat:repeat-x;pointer-events:none}
+.distantBlock,.skyTraffic{position:absolute;max-width:none;pointer-events:none;user-select:none}
+.distantBlock{filter:saturate(.72)}

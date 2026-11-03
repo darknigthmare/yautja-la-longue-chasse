@@ -1,0 +1,746 @@
+{
+  "version": "MMK-20261103-PASS6-REVIEW",
+  "date": "2026-11-03",
+  "baselineCommit": "1223042c249fab900e7fba9f49d7c78d105bd645",
+  "previousDeliveryCommit": "1223042c249fab900e7fba9f49d7c78d105bd645",
+  "status": "GENERATED_REVIEWED_SOURCE_ART_CANDIDATES",
+  "scope": "Fourteen independent native source-art components and states extending fifty-six previously selected PNGs.",
+  "reviewer": "Root coordinating assistant; every selected output directly displayed against the reference images.",
+  "humanArtReview": false,
+  "method": "Separate source/output visual inspection, byte hashes and read-only alpha measurements. No human-art approval or in-game validation.",
+  "selectedCount": 14,
+  "totalPackSelectedCount": 70,
+  "newInheritedReferenceViewCount": 14,
+  "totalInheritedReferenceViewCount": 36,
+  "assets": [
+    {
+      "id": "HWM162-S18",
+      "path": "production/homeworld-sectors-20261103/sprites/market/HWM162-S18-empty-cargo-sorting-cart.png",
+      "sha256": "71e3db9d93191e3107c760fa93de76a916ddabcec59fed67af7b8b5aee46cbab",
+      "findings": "Plateau et cadre de retenue vidés : deux coffres, trois modules et textile retirés. Châssis, roues visibles, poignée, treuil, cordage fixe et taquet conservés. Surface auparavant couverte reconstruite, identité et vue du chariot V78 cohérentes ; aucun chargement résiduel.",
+      "reviewMethod": "Source V78 chargée et sortie native S18 affichées séparément et examinées directement par l’assistant coordinateur.",
+      "decision": "KEEP_AS_SOURCE_ART_CANDIDATE",
+      "humanValidated": false,
+      "runtimeIntegrated": false,
+      "canonicalOneToOneClaimed": false,
+      "viewPolicy": "INHERIT_REFERENCE_VIEW",
+      "label": "Chariot de manutention — sans chargement",
+      "area": "market",
+      "targetIds": [
+        "target-v81-64-170"
+      ],
+      "dimensionsPixels": [
+        1536,
+        1024
+      ],
+      "bytes": 2283294,
+      "visibleMarginsAtAlpha24": [
+        38,
+        130,
+        48,
+        27
+      ],
+      "minVisibleMarginAtAlpha24": 27,
+      "generationReceipt": "production/homeworld-sectors-20261103/receipts/market.json",
+      "referenceSources": [
+        {
+          "path": "public/game/homeworld/v78/port-cargo-sorting-cart.png",
+          "sha256": "0354f5848f6a921fe8f8f16f9bcf68f73f81b3c85d665d1122cf2597a0c84e7f",
+          "sourceCommit": "1223042c249fab900e7fba9f49d7c78d105bd645",
+          "sourceState": "PUBLISHED_BASELINE_REFERENCE"
+        }
+      ],
+      "referenceSourceScope": "Design references in the approved plan; exact additional editing inputs are retained in the generation receipt."
+    },
+    {
+      "id": "HWM162-S19",
+      "path": "production/homeworld-sectors-20261103/sprites/market/HWM162-S19-hanging-net-bag.png",
+      "sha256": "d5d1c1fffb8872641c285c23a8902db63c98122dc1a91bb67783a5a1d642aa3c",
+      "findings": "Un seul sac fermé en filet, enveloppe sombre neutre et boucle entière. Aucun poteau, lampe ou second sac. Aucun contenu identifiable. Détails du petit sac de référence interprétés en vue rapprochée ; cadrage et échelle du nouvel objet ne valent pas correspondance de pixels avec le stand.",
+      "reviewMethod": "Stand V78 et sac indépendant natif S19 affichés séparément et examinés directement par l’assistant coordinateur.",
+      "decision": "KEEP_AS_SOURCE_ART_CANDIDATE",
+      "humanValidated": false,
+      "runtimeIntegrated": false,
+      "canonicalOneToOneClaimed": false,
+      "viewPolicy": "INHERIT_REFERENCE_VIEW",
+      "label": "Sac marchand suspendu en filet autonome",
+      "area": "market",
+      "targetIds": [
+        "target-v81-64-164",
+        "target-v81-64-160"
+      ],
+      "dimensionsPixels": [
+        1024,
+        1536
+      ],
+      "bytes": 1936625,
+      "visibleMarginsAtAlpha24": [
+        245,
+        74,
+        248,
+        79
+      ],
+      "minVisibleMarginAtAlpha24": 74,
+      "generationReceipt": "production/homeworld-sectors-20261103/receipts/market.json",
+      "referenceSources": [
+        {
+          "path": "public/game/homeworld/v78/market-stall-right.png",
+          "sha256": "c98a90d777cf85e921681feb36c738216d8a99a945669e670234c65b65897796",
+          "sourceCommit": "1223042c249fab900e7fba9f49d7c78d105bd645",
+          "sourceState": "PUBLISHED_BASELINE_REFERENCE"
+        }
+      ],
+      "referenceSourceScope": "Design references in the approved plan; exact additional editing inputs are retained in the generation receipt."
+    },
+    {
+      "id": "HWM162-S20",
+      "path": "production/homeworld-sectors-20261103/sprites/market/HWM162-S20-market-hall-rear-interior.png",
+      "sha256": "68c25fb9fd8bfb13a3e0391bd8478dabef0423684319867dcc2699901fb27daf",
+      "findings": "Sol continu des trois travées, seuils, maçonneries latérales/arrière et trois ouvertures arrière conservés. Toit, draperies et quatre grands piliers de façade absents. Les supports intérieurs et les surfaces auparavant masquées sont complétés dans cette couche. Aucun mobilier ajouté ; contacts avec la façade à régler.",
+      "reviewMethod": "Source S01 et sortie native S20 affichées séparément et examinées directement par l’assistant coordinateur.",
+      "decision": "KEEP_AS_SOURCE_ART_CANDIDATE",
+      "humanValidated": false,
+      "runtimeIntegrated": false,
+      "canonicalOneToOneClaimed": false,
+      "viewPolicy": "INHERIT_REFERENCE_VIEW",
+      "label": "Halle — sol et structure arrière",
+      "area": "market",
+      "targetIds": [
+        "target-v81-59-97"
+      ],
+      "dimensionsPixels": [
+        1774,
+        887
+      ],
+      "bytes": 807296,
+      "visibleMarginsAtAlpha24": [
+        279,
+        413,
+        278,
+        98
+      ],
+      "minVisibleMarginAtAlpha24": 98,
+      "generationReceipt": "production/homeworld-sectors-20261103/receipts/market.json",
+      "referenceSources": [
+        {
+          "path": "production/homeworld-sectors-20261103/sprites/market/HWM162-S01-market-hall-v2.png",
+          "sha256": "494e77092642dc46ff0ebc79e2a54040e450b1fbc1c41e434caa8498ee01ca69",
+          "sourceCommit": "1223042c249fab900e7fba9f49d7c78d105bd645",
+          "sourceState": "PUBLISHED_BASELINE_REFERENCE"
+        }
+      ],
+      "referenceSourceScope": "Design references in the approved plan; exact additional editing inputs are retained in the generation receipt."
+    },
+    {
+      "id": "HWM162-S21",
+      "path": "production/homeworld-sectors-20261103/sprites/market/HWM162-S21-market-hall-front-roof.png",
+      "sha256": "f9cdcbc832a09c0cc3dc356adc4bb712fdbcc9db5247437cafeb41b2de0a2de8",
+      "findings": "Toiture entière avec pointes et corniches, quatre piliers avant avec leurs socles, arches, lumières et draperies conservés. Trois baies dégagées ; aucun sol ni maçonnerie arrière. Aucun des supports arrière de S20 n’est repris dans cette couche. Raccord exact et occlusion en moteur non établis.",
+      "reviewMethod": "Source S01, couche S20 et sortie native S21 affichées séparément et examinées directement par l’assistant coordinateur.",
+      "decision": "KEEP_AS_SOURCE_ART_CANDIDATE",
+      "humanValidated": false,
+      "runtimeIntegrated": false,
+      "canonicalOneToOneClaimed": false,
+      "viewPolicy": "INHERIT_REFERENCE_VIEW",
+      "label": "Halle — façade et toiture au premier plan",
+      "area": "market",
+      "targetIds": [
+        "target-v81-59-97"
+      ],
+      "dimensionsPixels": [
+        1774,
+        887
+      ],
+      "bytes": 1188912,
+      "visibleMarginsAtAlpha24": [
+        199,
+        115,
+        198,
+        83
+      ],
+      "minVisibleMarginAtAlpha24": 83,
+      "generationReceipt": "production/homeworld-sectors-20261103/receipts/market.json",
+      "referenceSources": [
+        {
+          "path": "production/homeworld-sectors-20261103/sprites/market/HWM162-S01-market-hall-v2.png",
+          "sha256": "494e77092642dc46ff0ebc79e2a54040e450b1fbc1c41e434caa8498ee01ca69",
+          "sourceCommit": "1223042c249fab900e7fba9f49d7c78d105bd645",
+          "sourceState": "PUBLISHED_BASELINE_REFERENCE"
+        }
+      ],
+      "referenceSourceScope": "Design references in the approved plan; exact additional editing inputs are retained in the generation receipt."
+    },
+    {
+      "id": "HWM162-M19",
+      "path": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M19-cleared-care-workstation.png",
+      "sha256": "ee14f72f993218dc05b8ff63dd3910633331f9a477d2bedb2b2af4bac5d3c380",
+      "findings": "Meuble entier conservé avec bassin gauche, quatre tiroirs fermés, porte centrale, pieds et rails du logement central. Coussin rouge et ensemble console/bras/lampe retirés. Surfaces dégagées reconstruites sobrement ; vue et identité du meuble visuellement cohérentes avec M06. Halo natif diffus conservé ; assemblage et échelle non certifiés.",
+      "reviewMethod": "Source M06 et sortie M19 affichées séparément et examinées directement par l’assistant coordinateur.",
+      "decision": "KEEP_AS_SOURCE_ART_CANDIDATE",
+      "humanValidated": false,
+      "runtimeIntegrated": false,
+      "canonicalOneToOneClaimed": false,
+      "viewPolicy": "INHERIT_REFERENCE_VIEW",
+      "label": "Meuble du poste de soin dégagé",
+      "area": "mounts",
+      "targetIds": [
+        "target-v81-72-290"
+      ],
+      "dimensionsPixels": [
+        1536,
+        1024
+      ],
+      "bytes": 1335206,
+      "visibleMarginsAtAlpha24": [
+        293,
+        363,
+        323,
+        207
+      ],
+      "minVisibleMarginAtAlpha24": 207,
+      "generationReceipt": "production/homeworld-sectors-20261103/receipts/mounts.json",
+      "referenceSources": [
+        {
+          "path": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M06-fauna-care-workstation.png",
+          "sha256": "a1dd1b7cb81a1b80ffd929381ec26f99d3e581ff5e1db98ac3514c72bfdd67da",
+          "sourceCommit": "1223042c249fab900e7fba9f49d7c78d105bd645",
+          "sourceState": "PUBLISHED_BASELINE_REFERENCE"
+        }
+      ],
+      "referenceSourceScope": "Design references in the approved plan; exact additional editing inputs are retained in the generation receipt."
+    },
+    {
+      "id": "HWM162-M20",
+      "path": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M20-care-support-cushion.png",
+      "sha256": "187cbd9058b9d2365570e8900a2c06d3a1436bcc4e0b24dba107086c664d5a4a",
+      "findings": "Coussin rouge compact complet, segmentation et coutures conservées visuellement, sans rails ni meuble. Reste placé à petite échelle dans son grand canevas natif, proche du cadrage de M06. Dessous reconstruit ; appui physique et contact avec M19 non validés.",
+      "reviewMethod": "Source M06 et sortie M20 affichées séparément et examinées directement par l’assistant coordinateur.",
+      "decision": "KEEP_AS_SOURCE_ART_CANDIDATE",
+      "humanValidated": false,
+      "runtimeIntegrated": false,
+      "canonicalOneToOneClaimed": false,
+      "viewPolicy": "INHERIT_REFERENCE_VIEW",
+      "label": "Coussin segmenté du poste de soin",
+      "area": "mounts",
+      "targetIds": [
+        "target-v81-72-290"
+      ],
+      "dimensionsPixels": [
+        1536,
+        1024
+      ],
+      "bytes": 660687,
+      "visibleMarginsAtAlpha24": [
+        656,
+        403,
+        575,
+        508
+      ],
+      "minVisibleMarginAtAlpha24": 403,
+      "generationReceipt": "production/homeworld-sectors-20261103/receipts/mounts.json",
+      "referenceSources": [
+        {
+          "path": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M06-fauna-care-workstation.png",
+          "sha256": "a1dd1b7cb81a1b80ffd929381ec26f99d3e581ff5e1db98ac3514c72bfdd67da",
+          "sourceCommit": "1223042c249fab900e7fba9f49d7c78d105bd645",
+          "sourceState": "PUBLISHED_BASELINE_REFERENCE"
+        }
+      ],
+      "referenceSourceScope": "Design references in the approved plan; exact additional editing inputs are retained in the generation receipt."
+    },
+    {
+      "id": "HWM162-M21",
+      "path": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M21-care-light-control-module.png",
+      "sha256": "92b22307ea34aeadc1ba92c0cf1c9f8b8fbb3fcd6e81ee6a28a88d956bf19079",
+      "findings": "Correction native retenue : le plateau horizontal aux trois marques et son large chant bronze ont disparu. Console, indicateurs, étroite embase, câble, articulations et lampe restent connectés dans un seul objet. Aucun meuble ni coussin ; fonction limitée à l’éclairage et à la commande du projet, sans diagnostic attesté.",
+      "reviewMethod": "Première sortie M21 puis correction affichées et examinées directement, avec M06 et M19 comme références de partition.",
+      "decision": "KEEP_AS_SOURCE_ART_CANDIDATE",
+      "humanValidated": false,
+      "runtimeIntegrated": false,
+      "canonicalOneToOneClaimed": false,
+      "viewPolicy": "INHERIT_REFERENCE_VIEW",
+      "label": "Module d’éclairage et de commande du poste de soin",
+      "area": "mounts",
+      "targetIds": [
+        "target-v81-72-290"
+      ],
+      "dimensionsPixels": [
+        1536,
+        1024
+      ],
+      "bytes": 738561,
+      "visibleMarginsAtAlpha24": [
+        746,
+        242,
+        349,
+        513
+      ],
+      "minVisibleMarginAtAlpha24": 242,
+      "generationReceipt": "production/homeworld-sectors-20261103/receipts/mounts.json",
+      "referenceSources": [
+        {
+          "path": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M06-fauna-care-workstation.png",
+          "sha256": "a1dd1b7cb81a1b80ffd929381ec26f99d3e581ff5e1db98ac3514c72bfdd67da",
+          "sourceCommit": "1223042c249fab900e7fba9f49d7c78d105bd645",
+          "sourceState": "PUBLISHED_BASELINE_REFERENCE"
+        }
+      ],
+      "referenceSourceScope": "Design references in the approved plan; exact additional editing inputs are retained in the generation receipt."
+    },
+    {
+      "id": "HWM162-M22",
+      "path": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M22-stable-floor-rear-structure.png",
+      "sha256": "58a5d3581825510ed15508cf338df96565c6d8bfdce89e3a8ddf0214ce60e6b3",
+      "findings": "Plancher continu avec trois seuils, murs arrière et latéraux, nervures, lumières et panneaux rouges conservés. Aucun toit ni grand pilier de façade. Les raccords jusque-là masqués sont reconstruits ; couche arrière cohérente avec M01, sans validation du raccord à la façade.",
+      "reviewMethod": "Source M01 et sortie M22 affichées séparément et examinées directement par l’assistant coordinateur.",
+      "decision": "KEEP_AS_SOURCE_ART_CANDIDATE",
+      "humanValidated": false,
+      "runtimeIntegrated": false,
+      "canonicalOneToOneClaimed": false,
+      "viewPolicy": "INHERIT_REFERENCE_VIEW",
+      "label": "Abri des montures — sol et structure arrière",
+      "area": "mounts",
+      "targetIds": [
+        "hw-sector-mount-stable-building"
+      ],
+      "dimensionsPixels": [
+        1536,
+        1024
+      ],
+      "bytes": 1620045,
+      "visibleMarginsAtAlpha24": [
+        88,
+        392,
+        88,
+        183
+      ],
+      "minVisibleMarginAtAlpha24": 88,
+      "generationReceipt": "production/homeworld-sectors-20261103/receipts/mounts.json",
+      "referenceSources": [
+        {
+          "path": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M01-open-stable.png",
+          "sha256": "b2f958ccd6a992c269b94cf32900ccfc2a5b8c2063a231891c445c8396ec6518",
+          "sourceCommit": "1223042c249fab900e7fba9f49d7c78d105bd645",
+          "sourceState": "PUBLISHED_BASELINE_REFERENCE"
+        }
+      ],
+      "referenceSourceScope": "Design references in the approved plan; exact additional editing inputs are retained in the generation receipt."
+    },
+    {
+      "id": "HWM162-M23",
+      "path": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M23-stable-front-roof-structure.png",
+      "sha256": "a04d905551ca9dfe4e318ff6928bf9fb24386a49c93b1b8a54d91e68f27f917e",
+      "findings": "Toiture complète avec linteaux, quatre piliers avant et leurs pieds. Trois baies débarrassées du sol, des seuils et des parois arrière. Les éléments retirés restent dans M22. L’échantillonnage des baies dans le reçu n’observe que de l’alpha 0 ou 1 ; aucun raccord ou comportement en scène certifié.",
+      "reviewMethod": "Source M01, intérieur M22 et sortie M23 affichés séparément et examinés directement par l’assistant coordinateur.",
+      "decision": "KEEP_AS_SOURCE_ART_CANDIDATE",
+      "humanValidated": false,
+      "runtimeIntegrated": false,
+      "canonicalOneToOneClaimed": false,
+      "viewPolicy": "INHERIT_REFERENCE_VIEW",
+      "label": "Abri des montures — façade et toiture",
+      "area": "mounts",
+      "targetIds": [
+        "hw-sector-mount-stable-building"
+      ],
+      "dimensionsPixels": [
+        1536,
+        1024
+      ],
+      "bytes": 1953313,
+      "visibleMarginsAtAlpha24": [
+        97,
+        158,
+        97,
+        173
+      ],
+      "minVisibleMarginAtAlpha24": 97,
+      "generationReceipt": "production/homeworld-sectors-20261103/receipts/mounts.json",
+      "referenceSources": [
+        {
+          "path": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M01-open-stable.png",
+          "sha256": "b2f958ccd6a992c269b94cf32900ccfc2a5b8c2063a231891c445c8396ec6518",
+          "sourceCommit": "1223042c249fab900e7fba9f49d7c78d105bd645",
+          "sourceState": "PUBLISHED_BASELINE_REFERENCE"
+        }
+      ],
+      "referenceSourceScope": "Design references in the approved plan; exact additional editing inputs are retained in the generation receipt."
+    },
+    {
+      "id": "HWM162-K22",
+      "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K22-kennel-interior.png",
+      "sha256": "f8eba50ccd25e3898deba896f2e2a282938489a2c4ebb3e56825b3d00175f85b",
+      "findings": "Trois loges avec sols, drains avant, parois arrière et séparations longitudinales. Toiture et quatre piliers épais de façade retirés ; les chants minces des parois restent dans la couche intérieure. Surfaces cachées reconstruites et cadrage natif propre, sans garantie de raccord au pixel.",
+      "reviewMethod": "Source K01 et sortie K22 affichées séparément et examinées directement par l’assistant coordinateur.",
+      "decision": "KEEP_AS_SOURCE_ART_CANDIDATE",
+      "humanValidated": false,
+      "runtimeIntegrated": false,
+      "canonicalOneToOneClaimed": false,
+      "viewPolicy": "INHERIT_REFERENCE_VIEW",
+      "label": "Intérieur des loges du chenil",
+      "area": "kennels",
+      "targetIds": [
+        "hw-sector-hound-kennel-building"
+      ],
+      "dimensionsPixels": [
+        1536,
+        1024
+      ],
+      "bytes": 1598997,
+      "visibleMarginsAtAlpha24": [
+        159,
+        370,
+        155,
+        177
+      ],
+      "minVisibleMarginAtAlpha24": 155,
+      "generationReceipt": "production/homeworld-sectors-20261103/receipts/kennels.json",
+      "referenceSources": [
+        {
+          "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K01-kennel-building.png",
+          "sha256": "fedb9677d90ae72cfe2ee53e9a1f5751361ea1d88da2d9169137a22d2cd9d9a5",
+          "sourceCommit": "1223042c249fab900e7fba9f49d7c78d105bd645",
+          "sourceState": "PUBLISHED_BASELINE_REFERENCE"
+        }
+      ],
+      "referenceSourceScope": "Design references in the approved plan; exact additional editing inputs are retained in the generation receipt."
+    },
+    {
+      "id": "HWM162-K23",
+      "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K23-kennel-facade-roof.png",
+      "sha256": "193e14f23bb198efe33ecb814d80e6adbe0d1932a010342d0fb853c106450c60",
+      "findings": "Façade, toiture et quatre piliers épais avec leurs pieds conservés. Trois baies sans sol, drain ou paroi arrière ; les sols et cloisons restent K22. Silhouette entière malgré les marges latérales natives de 70 et 69 px ; traces d’alpha faible dans les ouvertures distinguées de leur structure.",
+      "reviewMethod": "Source K01, intérieur K22 et sortie K23 affichés séparément et examinés directement par l’assistant coordinateur.",
+      "decision": "KEEP_AS_SOURCE_ART_CANDIDATE",
+      "humanValidated": false,
+      "runtimeIntegrated": false,
+      "canonicalOneToOneClaimed": false,
+      "viewPolicy": "INHERIT_REFERENCE_VIEW",
+      "label": "Façade et toiture des chenils",
+      "area": "kennels",
+      "targetIds": [
+        "hw-sector-hound-kennel-building"
+      ],
+      "dimensionsPixels": [
+        1536,
+        1024
+      ],
+      "bytes": 1943134,
+      "visibleMarginsAtAlpha24": [
+        70,
+        155,
+        69,
+        175
+      ],
+      "minVisibleMarginAtAlpha24": 69,
+      "generationReceipt": "production/homeworld-sectors-20261103/receipts/kennels.json",
+      "referenceSources": [
+        {
+          "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K01-kennel-building.png",
+          "sha256": "fedb9677d90ae72cfe2ee53e9a1f5751361ea1d88da2d9169137a22d2cd9d9a5",
+          "sourceCommit": "1223042c249fab900e7fba9f49d7c78d105bd645",
+          "sourceState": "PUBLISHED_BASELINE_REFERENCE"
+        }
+      ],
+      "referenceSourceScope": "Design references in the approved plan; exact additional editing inputs are retained in the generation receipt."
+    },
+    {
+      "id": "HWM162-K24",
+      "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K24-kennel-bay-grille.png",
+      "sha256": "3e5eac4f7a3f16f9666de8bfdc4a0b258ab7d0eb20252f95ceba9f1805b3fd3a",
+      "findings": "Correction native retenue : grille plus haute et nettement moins évasée, rapprochant son contour de la baie centrale K01/K23. Cadre, barreaux et deux traverses restent un objet unique ; aucun mécanisme d’ouverture ou fixation ajouté. La grille est une création du projet absente de K01. Le cadrage propre demande encore un réglage de taille et placement. Les fenêtres échantillonnées contiennent des traces alpha 2 à 8, sans transparence strictement nulle revendiquée.",
+      "reviewMethod": "Première grille puis correction affichées et comparées directement à K01 et K23 ; K23 est une référence auxiliaire générée pendant cette passe.",
+      "decision": "KEEP_AS_SOURCE_ART_CANDIDATE",
+      "humanValidated": false,
+      "runtimeIntegrated": false,
+      "canonicalOneToOneClaimed": false,
+      "viewPolicy": "INHERIT_REFERENCE_VIEW",
+      "label": "Grille autonome de loge",
+      "area": "kennels",
+      "targetIds": [
+        "hw-sector-hound-kennel-building"
+      ],
+      "dimensionsPixels": [
+        1536,
+        1024
+      ],
+      "bytes": 853383,
+      "visibleMarginsAtAlpha24": [
+        552,
+        531,
+        552,
+        144
+      ],
+      "minVisibleMarginAtAlpha24": 144,
+      "generationReceipt": "production/homeworld-sectors-20261103/receipts/kennels.json",
+      "referenceSources": [
+        {
+          "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K01-kennel-building.png",
+          "sha256": "fedb9677d90ae72cfe2ee53e9a1f5751361ea1d88da2d9169137a22d2cd9d9a5",
+          "sourceCommit": "1223042c249fab900e7fba9f49d7c78d105bd645",
+          "sourceState": "PUBLISHED_BASELINE_REFERENCE"
+        },
+        {
+          "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K23-kennel-facade-roof.png",
+          "sha256": "193e14f23bb198efe33ecb814d80e6adbe0d1932a010342d0fb853c106450c60",
+          "sourceCommit": null,
+          "sourceState": "CURRENT_PASS_GENERATED_INPUT"
+        }
+      ],
+      "referenceSourceScope": "Design references in the approved plan; exact additional editing inputs are retained in the generation receipt."
+    },
+    {
+      "id": "HWM162-K25",
+      "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K25-medium-cage-body.png",
+      "sha256": "6c67ef40e5cca6a84515a5c33cb0a4007fd53bd697cff4d791baed02c8e1cc68",
+      "findings": "Corps de cage entier avec toit à longs barreaux, côtés, arrière, plancher, pieds et demi-façade droite fixe. Accès gauche sans panneau ni loquet, aucun panneau rétracté. Le montant boulonné bordant la partie droite est une reconstruction de raccord, pas une pièce indépendante attestée sous la trappe source. Nouveau cadrage paysage natif, marge basse visible de 32 px.",
+      "reviewMethod": "Référence 277, état ouvert K11 et sortie K25 affichés séparément et examinés directement. Trois échantillons entre barreaux arrière contrôlés à alpha 1, 0 et 0.",
+      "decision": "KEEP_AS_SOURCE_ART_CANDIDATE",
+      "humanValidated": false,
+      "runtimeIntegrated": false,
+      "canonicalOneToOneClaimed": false,
+      "viewPolicy": "INHERIT_REFERENCE_VIEW",
+      "label": "Corps de cage moyenne sans trappe mobile",
+      "area": "kennels",
+      "targetIds": [
+        "target-v81-71-277"
+      ],
+      "dimensionsPixels": [
+        1536,
+        1024
+      ],
+      "bytes": 2483688,
+      "visibleMarginsAtAlpha24": [
+        108,
+        72,
+        115,
+        32
+      ],
+      "minVisibleMarginAtAlpha24": 32,
+      "generationReceipt": "production/homeworld-sectors-20261103/receipts/kennels.json",
+      "referenceSources": [
+        {
+          "path": "production/native-open-20261102/archives/fauna-energy/cages/target-v81-71-277-cage-moyenne-native.png",
+          "sha256": "fc5e1a1a2123476f8cbb59b653e1757c5699b93d2a73b00a46ccdc74521bc8ca",
+          "sourceCommit": "1223042c249fab900e7fba9f49d7c78d105bd645",
+          "sourceState": "PUBLISHED_BASELINE_REFERENCE"
+        },
+        {
+          "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K11-medium-cage-open.png",
+          "sha256": "bfbacfe01f9b9ef08ea4397e9038dde7f6980e0951165905d725baf711b04898",
+          "sourceCommit": "1223042c249fab900e7fba9f49d7c78d105bd645",
+          "sourceState": "PUBLISHED_BASELINE_REFERENCE"
+        }
+      ],
+      "referenceSourceScope": "Design references in the approved plan; exact additional editing inputs are retained in the generation receipt."
+    },
+    {
+      "id": "HWM162-K26",
+      "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K26-medium-cage-sliding-panel.png",
+      "sha256": "cbab78e4e8df0ed7e89f3692399f6f93d54254277238649da96f7d3d86afeeea",
+      "findings": "Panneau mobile unique dans une vue diagonale cohérente avec 277, quatre coins boulonnés, barreaux verticaux, traverse centrale et loquet ambre à gauche. Aucun corps de cage, rail fixe, pilier ou plancher. Les états 277/K11 montrent que le loquet suit le panneau. Cadrage et échelle propres ; les guidages, contacts et translations restent à régler.",
+      "reviewMethod": "Référence 277, état ouvert K11, corps K25 et panneau K26 affichés séparément et examinés directement par l’assistant coordinateur.",
+      "decision": "KEEP_AS_SOURCE_ART_CANDIDATE",
+      "humanValidated": false,
+      "runtimeIntegrated": false,
+      "canonicalOneToOneClaimed": false,
+      "viewPolicy": "INHERIT_REFERENCE_VIEW",
+      "label": "Trappe coulissante de cage moyenne autonome",
+      "area": "kennels",
+      "targetIds": [
+        "target-v81-71-277"
+      ],
+      "dimensionsPixels": [
+        1536,
+        1024
+      ],
+      "bytes": 1807830,
+      "visibleMarginsAtAlpha24": [
+        327,
+        102,
+        331,
+        88
+      ],
+      "minVisibleMarginAtAlpha24": 88,
+      "generationReceipt": "production/homeworld-sectors-20261103/receipts/kennels.json",
+      "referenceSources": [
+        {
+          "path": "production/native-open-20261102/archives/fauna-energy/cages/target-v81-71-277-cage-moyenne-native.png",
+          "sha256": "fc5e1a1a2123476f8cbb59b653e1757c5699b93d2a73b00a46ccdc74521bc8ca",
+          "sourceCommit": "1223042c249fab900e7fba9f49d7c78d105bd645",
+          "sourceState": "PUBLISHED_BASELINE_REFERENCE"
+        },
+        {
+          "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K11-medium-cage-open.png",
+          "sha256": "bfbacfe01f9b9ef08ea4397e9038dde7f6980e0951165905d725baf711b04898",
+          "sourceCommit": "1223042c249fab900e7fba9f49d7c78d105bd645",
+          "sourceState": "PUBLISHED_BASELINE_REFERENCE"
+        }
+      ],
+      "referenceSourceScope": "Design references in the approved plan; exact additional editing inputs are retained in the generation receipt."
+    }
+  ],
+  "correctedAttempts": [
+    {
+      "id": "HWM162-M21",
+      "attempt": 1,
+      "path": "production/homeworld-sectors-20261103/attempts/mounts/HWM162-M21-care-light-control-module-v1.png",
+      "sha256": "241cce85dc76107b4a5adf07670cbdb029e69fb3b72c9ab43a99444e188ca546",
+      "bytes": 738534,
+      "reason": "Le bas du module inclut le plateau horizontal à trois marques et le large chant bronze déjà conservés dans M19. Correction native demandée pour retirer cette duplication tout en conservant console, bras et lampe.",
+      "reviewMethod": "Première sortie M21 affichée et comparée directement à M06 et M19.",
+      "decision": "ARCHIVE_AND_CORRECT_WITH_NATIVE_IMAGEGEN"
+    },
+    {
+      "id": "HWM162-K24",
+      "attempt": 1,
+      "path": "production/homeworld-sectors-20261103/attempts/kennels/HWM162-K24-kennel-bay-grille-v1.png",
+      "sha256": "046b1582fe1757bc57954da7028ef72bd43d6634ffd0cfc32fa70f67ef03e026",
+      "reason": "La grille est trop large par rapport à sa hauteur et son contour trop évasé comparé à la baie centrale de K01/K23. Correction native demandée pour rapprocher les proportions de la référence, en conservant matériaux et barreaux sans ajouter de mécanisme.",
+      "reviewMethod": "Première sortie K24 affichée et comparée directement à K01/K23 ; sections de transparence de K23 relevées comme aide de cadrage, pas comme mesure 3D.",
+      "decision": "ARCHIVE_AND_CORRECT_WITH_NATIVE_IMAGEGEN",
+      "bytes": 2078272
+    }
+  ],
+  "spotChecks": {
+    "kennelFacadeWindows": [
+      {
+        "box": [
+          300,
+          550,
+          470,
+          780
+        ],
+        "pixels": 39100,
+        "min": 0,
+        "max": 1,
+        "above8": 0,
+        "zero": 39081
+      },
+      {
+        "box": [
+          670,
+          550,
+          880,
+          780
+        ],
+        "pixels": 48300,
+        "min": 0,
+        "max": 1,
+        "above8": 0,
+        "zero": 47963
+      },
+      {
+        "box": [
+          1080,
+          550,
+          1240,
+          780
+        ],
+        "pixels": 36800,
+        "min": 0,
+        "max": 1,
+        "above8": 0,
+        "zero": 36797
+      }
+    ],
+    "kennelCentralOpeningRows": [
+      {
+        "y": 510,
+        "left": 643,
+        "right": 893,
+        "width": 251
+      },
+      {
+        "y": 520,
+        "left": 640,
+        "right": 897,
+        "width": 258
+      },
+      {
+        "y": 550,
+        "left": 630,
+        "right": 907,
+        "width": 278
+      },
+      {
+        "y": 650,
+        "left": 603,
+        "right": 934,
+        "width": 332
+      },
+      {
+        "y": 750,
+        "left": 607,
+        "right": 930,
+        "width": 324
+      },
+      {
+        "y": 790,
+        "left": 623,
+        "right": 915,
+        "width": 293
+      },
+      {
+        "y": 800,
+        "left": 623,
+        "right": 914,
+        "width": 292
+      }
+    ],
+    "limit": "Read-only alpha measurements on K23, used to inspect transparency and guide native grille correction. These are image coordinates, not physical measurements or a certified fit.",
+    "kennelCageRearGaps": [
+      {
+        "xy": [
+          730,
+          450
+        ],
+        "alpha": 1
+      },
+      {
+        "xy": [
+          800,
+          420
+        ],
+        "alpha": 0
+      },
+      {
+        "xy": [
+          860,
+          450
+        ],
+        "alpha": 0
+      }
+    ]
+  },
+  "limits": [
+    "All selected files preserve their native generator bytes; no scripted cleanup, crop, resize, padding or mirror.",
+    "Building layers and cage components have not been registered or tested in-engine; occluded surfaces are modest reconstructions.",
+    "K24 is a new original grille design inferred from a building opening, not a gate observed in the source or a canonical mechanism.",
+    "K24 retains alpha 2–8 in sampled gaps; other native low-alpha noise and halos are retained. Real transparent pixels do not imply all openings are strictly zero-alpha.",
+    "Visible margins below 80 px occur for HWM162-S18, HWM162-S19, HWM162-K23, HWM162-K25. The substantial silhouettes remain entirely inside their native canvases.",
+    "The historical source camera requests are inherited, not physically measured. Species fit, metric dimensions, load and clinical functionality are not certified."
+  ],
+  "canonicalOneToOneClaimed": false,
+  "runtimeIntegrated": false,
+  "previousSelectedPNGPreserved": 56,
+  "generationCallCountForPass": 16,
+  "archivedRejectedAttemptCountForPass": 2,
+  "archivedRejectedAttemptBytes": 2816806,
+  "selectedAdditionalBytes": 21210971,
+  "selectedPackBytes": 115142232,
+  "referenceFileCount": 9,
+  "baselineReferenceFileCount": 8,
+  "currentPassReferenceFileCount": 1,
+  "technicalReport": "technical-report.json",
+  "technicalSummary": {
+    "sourceIntegrity": "PASS",
+    "selectedCount": 70,
+    "rgbaWithRealTransparency": 70,
+    "mainSilhouettesInsideCanvasAtAlpha24": 70,
+    "uniqueSha256Count": 70,
+    "previousDeliveryPNGUnchanged": 56,
+    "strictClearMarginCount": 17,
+    "visibleMarginAtLeast80Count": 40,
+    "inheritedReferenceViewCount": 36
+  }
+}

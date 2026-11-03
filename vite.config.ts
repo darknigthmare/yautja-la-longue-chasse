@@ -2,6 +2,7 @@ import vinext from "vinext";
 import { defineConfig } from "vite";
 import hostingConfig from "./.openai/hosting.json";
 import { sites } from "./build/sites-vite-plugin";
+import { gameBuildIdentity } from "./scripts/game-build-identity";
 
 const SITE_CREATOR_PLACEHOLDER_DATABASE_ID =
   "00000000-0000-4000-8000-000000000000";
@@ -44,6 +45,37 @@ export default defineConfig(async () => {
   const { cloudflare } = await import("@cloudflare/vite-plugin");
 
   return {
+    define: { "process.env.NEXT_PUBLIC_YAUTJA_BUILD_ID": JSON.stringify(gameBuildIdentity()) },
+    build: {
+      // Preserve a pre-cleaned local output junction only when explicitly requested.
+      emptyOutDir: process.env.YAUTJA_KEEP_BUILD_ROOT === "1" ? false : undefined,
+      rolldownOptions: {
+        output: {
+          codeSplitting: {
+            groups: [
+              {
+                name: "environment-content",
+                test: /app[\\/]game[\\/]environmentProp(?:RuntimeData|AvailabilityData|Catalogue|Registry)\.ts$/,
+                priority: 30,
+                entriesAware: true,
+              },
+              {
+                name: "hunter-catalogue",
+                test: /app[\\/]game[\\/](?:catalogueRoster|catalogueAppearance|hunterLore)\.ts$/,
+                priority: 20,
+                entriesAware: true,
+              },
+              {
+                name: "game-content",
+                test: /app[\\/]game[\\/](?:data|ecologyV8|enemyRosterV7|save)\.ts$/,
+                priority: 10,
+                entriesAware: true,
+              },
+            ],
+          },
+        },
+      },
+    },
     server: isCodexSeatbeltSandbox
       ? { watch: { useFsEvents: false, usePolling: true } }
       : undefined,

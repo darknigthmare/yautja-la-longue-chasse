@@ -1,0 +1,20 @@
+.panel { padding: 1rem 1.2rem; color: #ebf5ed; background: linear-gradient(115deg, #081713f2, #17251cf0); border: 1px solid #536e52; border-radius: 8px; box-shadow: inset 0 0 38px #0007; }
+.panel header { display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+.panel header p { color: #c7ad76; font-size: .7rem; letter-spacing: .14em; margin: 0 0 .35rem; }
+.panel h3 { margin: 0; font-size: 1rem; }
+.panel h4 { margin: .5rem 0; color: #debf87; }
+.scope { color: #bacbbb; font-size: .8rem; line-height: 1.45; }
+.count, .ready { border: 1px solid #8d7955; padding: .4rem .65rem; white-space: nowrap; font-family: monospace; }
+.ready { color: #97f4be; border-color: #51af7b; }
+.posts { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: .35rem; padding: 0; list-style: none; }
+.posts li { display: flex; gap: .4rem; align-items: center; padding: .5rem; color: #adb8af; border: 1px solid #374338; font-size: .75rem; }
+.posts li[data-complete="true"] { color: #a8efbf; border-color: #588c62; background: #193721; }
+.posts li[data-current="true"] { outline: 2px solid #ddbe85; outline-offset: 1px; }
+.panel article { padding: .8rem 1rem; border-left: 3px solid #9b8054; background: #06130e; }
+.panel ul { padding-left: 1.2rem; line-height: 1.5; font-size: .85rem; }
+.panel button { padding: .65rem .8rem; color: #f2e4c6; background: #344738; border: 1px solid #a4ad83; cursor: pointer; }
+.panel button:disabled { opacity: .5; cursor: not-allowed; }
+.panel button:focus-visible { outline: 3px solid #e3d5a6; outline-offset: 3px; }
+.missing { color: #efc08c; }
+.status { min-height: 1.5rem; color: #dce8d5; font-size: .8rem; }
+@media (max-width: 650px) { .posts { grid-template-columns: repeat(2, minmax(0, 1fr)); } .panel { padding: .8rem; } }

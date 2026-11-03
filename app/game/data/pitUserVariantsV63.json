@@ -1,0 +1,79 @@
+{
+  "schemaVersion": 1,
+  "release": "V63",
+  "variantAdditions": [
+    {
+      "fighterId": "greyback",
+      "variants": [
+        {
+          "id": "elder-phg-official-unmasked-v63",
+          "label": "Hunting Grounds · Elder sans masque · garde native",
+          "src": "/game/sprites/v63/fighters/elder-phg/portrait.png",
+          "width": 1024,
+          "height": 1536,
+          "pivot": [
+            512,
+            1503
+          ],
+          "bodyTopY": 48,
+          "nativeFacing": "right",
+          "sha256": "e83f410692b13213c529f0125c03e689def0c67115709b677bc7cbf14bf87a86",
+          "sourceArchive": "OpenAI intégré V63 · références primaires PlayStation / IllFonic",
+          "sourceEntry": "docs/v63-generation/fighters-art.json",
+          "frameCount": 1,
+          "animated": false,
+          "identityStatus": "primary-game-appearance",
+          "canonicalFidelityCertified": false,
+          "artProvenance": "openai-primary-reference",
+          "sourceUrls": [
+            "https://blog.playstation.com/2020/06/12/june-free-update-now-live-in-predator-hunting-grounds/",
+            "https://live.staticflickr.com/65535/49996764556_c03bc385e7_h.jpg"
+          ],
+          "sourceNotes": [
+            "Game-specific appearances appended to existing identities. Original masks/portraits and default variant ordering remain unchanged.",
+            "Official game upper-body appearance is the reference; hidden shins/back and small surface details are reconstructed, not certified1:1.",
+            "Idle only: two authored6-pose facing cycles per variant. Walking/attacks/results remain incomplete and use a declared native-side held stance.",
+            "Native unequal-height cell rectangles follow the real transparent gutter at y540. No source pixels are resized, cut, recolored, mirrored or rearranged."
+          ]
+        }
+      ]
+    },
+    {
+      "fighterId": "user-classic-2010",
+      "variants": [
+        {
+          "id": "captured-phg-official-mask-v63",
+          "label": "Hunting Grounds · Captured masqué · garde native",
+          "src": "/game/sprites/v63/fighters/captured-phg/portrait.png",
+          "width": 1024,
+          "height": 1536,
+          "pivot": [
+            512,
+            1498
+          ],
+          "bodyTopY": 32,
+          "nativeFacing": "right",
+          "sha256": "c3519b5f7612732818638b2b5cb296375640a35cfdb9793f536eb8644b4baf1b",
+          "sourceArchive": "OpenAI intégré V63 · références primaires PlayStation / IllFonic",
+          "sourceEntry": "docs/v63-generation/fighters-art.json",
+          "frameCount": 1,
+          "animated": false,
+          "identityStatus": "primary-game-appearance",
+          "canonicalFidelityCertified": false,
+          "artProvenance": "openai-primary-reference",
+          "sourceUrls": [
+            "https://blog.playstation.com/2021/12/15/predator-hunting-grounds-introduces-the-hunting-party/",
+            "https://store.steampowered.com/app/1847080/Predator_Hunting_Grounds__Hunting_Party_Bundle/",
+            "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1847080/ss_4ebbc1badb9563972092231cb1e41b357a7de04e.1920x1080.jpg?t=1764097265"
+          ],
+          "sourceNotes": [
+            "Game-specific appearances appended to existing identities. Original masks/portraits and default variant ordering remain unchanged.",
+            "Official game upper-body appearance is the reference; hidden shins/back and small surface details are reconstructed, not certified1:1.",
+            "Idle only: two authored6-pose facing cycles per variant. Walking/attacks/results remain incomplete and use a declared native-side held stance.",
+            "Native unequal-height cell rectangles follow the real transparent gutter at y540. No source pixels are resized, cut, recolored, mirrored or rearranged."
+          ]
+        }
+      ]
+    }
+  ]
+}

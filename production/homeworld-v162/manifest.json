@@ -1,0 +1,307 @@
+{
+  "release": "V162",
+  "extendsCommit": "0ab844cca5f2c9b5cae28624d2c1b97fca7d5ce9",
+  "method": "Procedural Blender geometry; native renders, not image crops and not film replicas",
+  "previousPNGCount": 110,
+  "addedPNGCount": 7,
+  "combinedPNGCount": 117,
+  "assets": [
+    {
+      "id": "HWA160-N04",
+      "label": "Contrefort courbe de tour",
+      "path": "production/homeworld-v162/originals/HWA160-N04_contrefort-courbe-tour.png",
+      "reference": "REF01",
+      "targetId": "target-v81-55-17",
+      "method": "PROCEDURAL_3D_NATIVE_ORTHOGRAPHIC_RENDER",
+      "state": "PROTOTYPE_GEOMETRIQUE_NON_ADMIS",
+      "sha256": "25457ffb588ec245a11b6a5ac7142b71af132599c3f2b7afeedc3bba814028b4",
+      "bytes": 1021799,
+      "width": 1024,
+      "height": 1536,
+      "sourceBlend": "production/homeworld-v162/sources/HWA160-N04_contrefort-courbe-tour.blend",
+      "dimensionsWorldMetres": [
+        9.69346,
+        5.30527,
+        32.0
+      ],
+      "objectYawDegrees": -18,
+      "cameraPitchDegrees": 35,
+      "cameraYawDegrees": 0,
+      "orthographicScaleMetres": 24.128252029418945,
+      "canonicalCertification": false,
+      "humanValidated": false,
+      "runtimeIntegrated": false,
+      "alphaBounds": [
+        306,
+        238,
+        706,
+        1346
+      ],
+      "alphaMin": 0,
+      "marginsPixels": [
+        306,
+        238,
+        318,
+        190
+      ],
+      "alphaEdgeClear": true,
+      "nativeRevision": 2
+    },
+    {
+      "id": "HWA160-N05",
+      "label": "Paroi de falaise volcanique",
+      "path": "production/homeworld-v162/originals/HWA160-N05_paroi-falaise-volcanique.png",
+      "reference": "REF02",
+      "targetId": "target-v81-69-245",
+      "method": "PROCEDURAL_3D_NATIVE_ORTHOGRAPHIC_RENDER",
+      "state": "PROTOTYPE_GEOMETRIQUE_NON_ADMIS",
+      "sha256": "09a23ca24b96c8860dd3775771e2e66ad51b2e0fdd7276b857e43a8c8ef4c899",
+      "bytes": 2144494,
+      "width": 1536,
+      "height": 1536,
+      "sourceBlend": "production/homeworld-v162/sources/HWA160-N05_paroi-falaise-volcanique.blend",
+      "dimensionsWorldMetres": [
+        31.06211,
+        11.50904,
+        24.82106
+      ],
+      "objectYawDegrees": -15,
+      "cameraPitchDegrees": 35,
+      "cameraYawDegrees": 0,
+      "orthographicScaleMetres": 38.517024993896484,
+      "canonicalCertification": false,
+      "humanValidated": false,
+      "runtimeIntegrated": false,
+      "alphaBounds": [
+        158,
+        235,
+        1380,
+        1272
+      ],
+      "alphaMin": 0,
+      "marginsPixels": [
+        158,
+        235,
+        156,
+        264
+      ],
+      "alphaEdgeClear": true,
+      "nativeRevision": 2
+    },
+    {
+      "id": "HWA160-N06",
+      "label": "Chute d’eau indépendante",
+      "path": "production/homeworld-v162/originals/HWA160-N06_chute-eau-independante.png",
+      "reference": "REF02",
+      "targetId": "extension-hydrologie",
+      "method": "PROCEDURAL_3D_NATIVE_ORTHOGRAPHIC_RENDER",
+      "state": "PROTOTYPE_GEOMETRIQUE_NON_ADMIS",
+      "sha256": "fdd4ab8d907865fcb6997dae1f138530cabb0ae318235f83fc9f161e1ef19215",
+      "bytes": 1725348,
+      "width": 1024,
+      "height": 1536,
+      "sourceBlend": "production/homeworld-v162/sources/HWA160-N06_chute-eau-independante.blend",
+      "dimensionsWorldMetres": [
+        6.11734,
+        3.47045,
+        22.04965
+      ],
+      "objectYawDegrees": -12,
+      "cameraPitchDegrees": 35,
+      "cameraYawDegrees": 0,
+      "orthographicScaleMetres": 16.30482292175293,
+      "canonicalCertification": false,
+      "humanValidated": false,
+      "runtimeIntegrated": false,
+      "alphaBounds": [
+        325,
+        167,
+        705,
+        1392
+      ],
+      "alphaMin": 0,
+      "marginsPixels": [
+        325,
+        167,
+        319,
+        144
+      ],
+      "alphaEdgeClear": true,
+      "nativeRevision": 2
+    },
+    {
+      "id": "HWA160-N07",
+      "label": "Crevasse naturelle étroite",
+      "path": "production/homeworld-v162/originals/HWA160-N07_crevasse-naturelle-etroite.png",
+      "reference": "REF03",
+      "targetId": "target-v81-69-250",
+      "method": "PROCEDURAL_3D_NATIVE_ORTHOGRAPHIC_RENDER",
+      "state": "PROTOTYPE_GEOMETRIQUE_NON_ADMIS",
+      "sha256": "a4ab4adf597545c0b165290409699578d518528d5a40adde6d364e1f43e863e2",
+      "bytes": 1403255,
+      "width": 1920,
+      "height": 1080,
+      "sourceBlend": "production/homeworld-v162/sources/HWA160-N07_crevasse-naturelle-etroite.blend",
+      "dimensionsWorldMetres": [
+        15.53641,
+        10.13844,
+        0.70729
+      ],
+      "objectYawDegrees": 25,
+      "cameraPitchDegrees": 35,
+      "cameraYawDegrees": 0,
+      "orthographicScaleMetres": 19.265151977539062,
+      "canonicalCertification": false,
+      "humanValidated": false,
+      "runtimeIntegrated": false,
+      "alphaBounds": [
+        270,
+        298,
+        1680,
+        804
+      ],
+      "alphaMin": 0,
+      "marginsPixels": [
+        270,
+        298,
+        240,
+        276
+      ],
+      "alphaEdgeClear": true,
+      "nativeRevision": 2
+    },
+    {
+      "id": "HWA160-N08",
+      "label": "Crevasse naturelle ramifiée",
+      "path": "production/homeworld-v162/originals/HWA160-N08_crevasse-naturelle-ramifiee.png",
+      "reference": "REF03",
+      "targetId": "target-v81-69-248",
+      "method": "PROCEDURAL_3D_NATIVE_ORTHOGRAPHIC_RENDER",
+      "state": "PROTOTYPE_GEOMETRIQUE_NON_ADMIS",
+      "sha256": "835865f147f93a17d41a8c695896a50e0ed4a7be19862b2512b95feae55a9549",
+      "bytes": 1481411,
+      "width": 1536,
+      "height": 1536,
+      "sourceBlend": "production/homeworld-v162/sources/HWA160-N08_crevasse-naturelle-ramifiee.blend",
+      "dimensionsWorldMetres": [
+        19.18184,
+        18.53484,
+        0.72718
+      ],
+      "objectYawDegrees": -12,
+      "cameraPitchDegrees": 35,
+      "cameraYawDegrees": 0,
+      "orthographicScaleMetres": 23.785484313964844,
+      "canonicalCertification": false,
+      "humanValidated": false,
+      "runtimeIntegrated": false,
+      "alphaBounds": [
+        160,
+        475,
+        1206,
+        1105
+      ],
+      "alphaMin": 0,
+      "marginsPixels": [
+        160,
+        475,
+        330,
+        431
+      ],
+      "alphaEdgeClear": true,
+      "nativeRevision": 2
+    },
+    {
+      "id": "HWA160-N09",
+      "label": "Massif sombre du premier plan",
+      "path": "production/homeworld-v162/originals/HWA160-N09_massif-sombre-premier-plan.png",
+      "reference": "REF03",
+      "targetId": "target-v81-70-261",
+      "method": "PROCEDURAL_3D_NATIVE_ORTHOGRAPHIC_RENDER",
+      "state": "PROTOTYPE_GEOMETRIQUE_NON_ADMIS",
+      "sha256": "48a6a95ef6b2cca85875d739eeda3361bed7a34cefa817c850cc9a3d2ea67fb2",
+      "bytes": 903750,
+      "width": 1536,
+      "height": 1024,
+      "sourceBlend": "production/homeworld-v162/sources/HWA160-N09_massif-sombre-premier-plan.blend",
+      "dimensionsWorldMetres": [
+        5.11722,
+        4.67687,
+        2.74688
+      ],
+      "objectYawDegrees": 22,
+      "cameraPitchDegrees": 35,
+      "cameraYawDegrees": 0,
+      "orthographicScaleMetres": 8.794259071350098,
+      "canonicalCertification": false,
+      "humanValidated": false,
+      "runtimeIntegrated": false,
+      "alphaBounds": [
+        493,
+        315,
+        1069,
+        662
+      ],
+      "alphaMin": 0,
+      "marginsPixels": [
+        493,
+        315,
+        467,
+        362
+      ],
+      "alphaEdgeClear": true,
+      "nativeRevision": 2
+    },
+    {
+      "id": "HWA160-N10",
+      "label": "Amas de basalte fracturé",
+      "path": "production/homeworld-v162/originals/HWA160-N10_amas-basalte-fracture.png",
+      "reference": "REF03",
+      "targetId": "target-v81-69-243",
+      "method": "PROCEDURAL_3D_NATIVE_ORTHOGRAPHIC_RENDER",
+      "state": "PROTOTYPE_GEOMETRIQUE_NON_ADMIS",
+      "sha256": "53b7952334146be838ec87101faa575c0c498d750d8a2be76010c90c32ad1abb",
+      "bytes": 1235540,
+      "width": 1536,
+      "height": 1024,
+      "sourceBlend": "production/homeworld-v162/sources/HWA160-N10_amas-basalte-fracture.blend",
+      "dimensionsWorldMetres": [
+        4.194,
+        3.31392,
+        2.731
+      ],
+      "objectYawDegrees": 22,
+      "cameraPitchDegrees": 35,
+      "cameraYawDegrees": 0,
+      "orthographicScaleMetres": 5.722232341766357,
+      "canonicalCertification": false,
+      "humanValidated": false,
+      "runtimeIntegrated": false,
+      "alphaBounds": [
+        263,
+        218,
+        1246,
+        962
+      ],
+      "alphaMin": 0,
+      "marginsPixels": [
+        263,
+        218,
+        290,
+        62
+      ],
+      "alphaEdgeClear": true,
+      "nativeRevision": 2
+    }
+  ],
+  "limits": [
+    "Geometry and metre dimensions are project design choices, not official franchise measurements.",
+    "Camera projection is reproducible; source fidelity and integration remain unapproved.",
+    "The dark foreground thicket is an interpretation, not an identified canonical species.",
+    "No runtime, save, pathfinding, doorway or collision changes."
+  ],
+  "rejectedNativeAttempt": {
+    "attempt": 1,
+    "reason": "Horizontal crop on N07 and dim lighting; replaced by a complete camera-controlled rerender, not padded or stretched."
+  }
+}

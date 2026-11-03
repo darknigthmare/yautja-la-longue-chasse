@@ -1,0 +1,972 @@
+[
+  {
+    "fighterId": "falconer",
+    "variantId": "falconer-avec-casque-f5618ed362",
+    "bodyHeightPx": 961,
+    "atlas": {
+      "schemaVersion": 1,
+      "id": "falconer-masked-idle-right-v91",
+      "characterId": "falconer",
+      "variantId": "falconer-avec-casque-f5618ed362",
+      "sourceKind": "authored-frames",
+      "status": "validated",
+      "pages": [
+        {
+          "id": "falconer-masked-idle-right-v91",
+          "src": "/game/sprites/v91/pit/falconer/masked-idle-right.png",
+          "width": 1536,
+          "height": 1024,
+          "status": "validated",
+          "transparency": {
+            "mode": "alpha",
+            "noiseFloor": 2
+          }
+        }
+      ],
+      "clips": [
+        {
+          "id": "idle",
+          "facing": "right",
+          "status": "validated",
+          "loop": true,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "falconer-masked-idle-right-v91",
+              "rect": [
+                0,
+                0,
+                768,
+                1024
+              ],
+              "pivot": [
+                388,
+                985
+              ],
+              "durationTicks": 30
+            },
+            {
+              "pageId": "falconer-masked-idle-right-v91",
+              "rect": [
+                768,
+                0,
+                768,
+                1024
+              ],
+              "pivot": [
+                352,
+                984
+              ],
+              "durationTicks": 30
+            }
+          ]
+        }
+      ]
+    },
+    "visibleFrameBounds": [
+      {
+        "pageId": "falconer-masked-idle-right-v91",
+        "rect": [
+          0,
+          0,
+          768,
+          1024
+        ],
+        "visibleRect": [
+          86,
+          21,
+          680,
+          965
+        ]
+      },
+      {
+        "pageId": "falconer-masked-idle-right-v91",
+        "rect": [
+          768,
+          0,
+          768,
+          1024
+        ],
+        "visibleRect": [
+          823,
+          22,
+          676,
+          964
+        ]
+      }
+    ]
+  },
+  {
+    "fighterId": "scarface",
+    "variantId": "scarface-avec-casque-bca00052d4",
+    "bodyHeightPx": 868,
+    "atlas": {
+      "schemaVersion": 1,
+      "id": "scarface-masked-idle-right-v91",
+      "characterId": "scarface",
+      "variantId": "scarface-avec-casque-bca00052d4",
+      "sourceKind": "authored-frames",
+      "status": "validated",
+      "pages": [
+        {
+          "id": "scarface-masked-idle-right-v91",
+          "src": "/game/sprites/v91/pit/scarface/masked-idle-right.png",
+          "width": 1536,
+          "height": 1024,
+          "status": "validated",
+          "transparency": {
+            "mode": "alpha",
+            "noiseFloor": 2
+          }
+        }
+      ],
+      "clips": [
+        {
+          "id": "idle",
+          "facing": "right",
+          "status": "validated",
+          "loop": true,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "scarface-masked-idle-right-v91",
+              "rect": [
+                0,
+                0,
+                768,
+                1024
+              ],
+              "pivot": [
+                371,
+                1007
+              ],
+              "durationTicks": 30
+            },
+            {
+              "pageId": "scarface-masked-idle-right-v91",
+              "rect": [
+                768,
+                0,
+                768,
+                1024
+              ],
+              "pivot": [
+                373,
+                1007
+              ],
+              "durationTicks": 30
+            }
+          ]
+        }
+      ]
+    },
+    "visibleFrameBounds": [
+      {
+        "pageId": "scarface-masked-idle-right-v91",
+        "rect": [
+          0,
+          0,
+          768,
+          1024
+        ],
+        "visibleRect": [
+          49,
+          11,
+          672,
+          998
+        ]
+      },
+      {
+        "pageId": "scarface-masked-idle-right-v91",
+        "rect": [
+          768,
+          0,
+          768,
+          1024
+        ],
+        "visibleRect": [
+          818,
+          10,
+          671,
+          998
+        ]
+      }
+    ]
+  },
+  {
+    "fighterId": "scarface",
+    "variantId": "scarface-avec-casque-bca00052d4",
+    "bodyHeightPx": 882,
+    "atlas": {
+      "schemaVersion": 1,
+      "id": "scarface-masked-idle-left-v91",
+      "characterId": "scarface",
+      "variantId": "scarface-avec-casque-bca00052d4",
+      "sourceKind": "authored-frames",
+      "status": "validated",
+      "pages": [
+        {
+          "id": "scarface-masked-idle-left-v91",
+          "src": "/game/sprites/v91/pit/scarface/masked-idle-left.png",
+          "width": 1536,
+          "height": 1024,
+          "status": "validated",
+          "transparency": {
+            "mode": "alpha",
+            "noiseFloor": 2
+          }
+        }
+      ],
+      "clips": [
+        {
+          "id": "idle",
+          "facing": "left",
+          "status": "validated",
+          "loop": true,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "scarface-masked-idle-left-v91",
+              "rect": [
+                0,
+                0,
+                799,
+                1024
+              ],
+              "pivot": [
+                467,
+                1005
+              ],
+              "durationTicks": 30
+            },
+            {
+              "pageId": "scarface-masked-idle-left-v91",
+              "rect": [
+                799,
+                0,
+                737,
+                1024
+              ],
+              "pivot": [
+                369,
+                1005
+              ],
+              "durationTicks": 30
+            }
+          ]
+        }
+      ]
+    },
+    "visibleFrameBounds": [
+      {
+        "pageId": "scarface-masked-idle-left-v91",
+        "rect": [
+          0,
+          0,
+          799,
+          1024
+        ],
+        "visibleRect": [
+          122,
+          15,
+          676,
+          992
+        ]
+      },
+      {
+        "pageId": "scarface-masked-idle-left-v91",
+        "rect": [
+          799,
+          0,
+          737,
+          1024
+        ],
+        "visibleRect": [
+          836,
+          15,
+          673,
+          993
+        ]
+      }
+    ]
+  },
+  {
+    "fighterId": "enforcer",
+    "variantId": "enforcer-avec-casque-ca164d8925",
+    "bodyHeightPx": 974,
+    "atlas": {
+      "schemaVersion": 1,
+      "id": "enforcer-masked-idle-right-v91",
+      "characterId": "enforcer",
+      "variantId": "enforcer-avec-casque-ca164d8925",
+      "sourceKind": "authored-frames",
+      "status": "validated",
+      "pages": [
+        {
+          "id": "enforcer-masked-idle-right-v91",
+          "src": "/game/sprites/v91/pit/enforcer/masked-idle-right.png",
+          "width": 1536,
+          "height": 1024,
+          "status": "validated",
+          "transparency": {
+            "mode": "alpha",
+            "noiseFloor": 2
+          }
+        }
+      ],
+      "clips": [
+        {
+          "id": "idle",
+          "facing": "right",
+          "status": "validated",
+          "loop": true,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "enforcer-masked-idle-right-v91",
+              "rect": [
+                0,
+                0,
+                768,
+                1024
+              ],
+              "pivot": [
+                407,
+                987
+              ],
+              "durationTicks": 30
+            },
+            {
+              "pageId": "enforcer-masked-idle-right-v91",
+              "rect": [
+                768,
+                0,
+                768,
+                1024
+              ],
+              "pivot": [
+                351,
+                988
+              ],
+              "durationTicks": 30
+            }
+          ]
+        }
+      ]
+    },
+    "visibleFrameBounds": [
+      {
+        "pageId": "enforcer-masked-idle-right-v91",
+        "rect": [
+          0,
+          0,
+          768,
+          1024
+        ],
+        "visibleRect": [
+          77,
+          12,
+          675,
+          978
+        ]
+      },
+      {
+        "pageId": "enforcer-masked-idle-right-v91",
+        "rect": [
+          768,
+          0,
+          768,
+          1024
+        ],
+        "visibleRect": [
+          803,
+          13,
+          677,
+          978
+        ]
+      }
+    ]
+  },
+  {
+    "fighterId": "falconer",
+    "variantId": "falconer-avec-casque-f5618ed362",
+    "bodyHeightPx": 674,
+    "atlas": {
+      "schemaVersion": 1,
+      "id": "falconer-masked-idle-left-v91",
+      "characterId": "falconer",
+      "variantId": "falconer-avec-casque-f5618ed362",
+      "sourceKind": "authored-frames",
+      "status": "validated",
+      "pages": [
+        {
+          "id": "falconer-masked-idle-left-v91",
+          "src": "/game/sprites/v91/pit/falconer/masked-idle-left.png",
+          "width": 1024,
+          "height": 1536,
+          "status": "validated",
+          "transparency": {
+            "mode": "alpha",
+            "noiseFloor": 2
+          }
+        }
+      ],
+      "clips": [
+        {
+          "id": "idle",
+          "facing": "left",
+          "status": "validated",
+          "loop": true,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "falconer-masked-idle-left-v91",
+              "rect": [
+                0,
+                0,
+                1024,
+                768
+              ],
+              "pivot": [
+                484,
+                730
+              ],
+              "durationTicks": 30
+            },
+            {
+              "pageId": "falconer-masked-idle-left-v91",
+              "rect": [
+                0,
+                768,
+                1024,
+                768
+              ],
+              "pivot": [
+                486,
+                720
+              ],
+              "durationTicks": 30
+            }
+          ]
+        }
+      ]
+    },
+    "visibleFrameBounds": [
+      {
+        "pageId": "falconer-masked-idle-left-v91",
+        "rect": [
+          0,
+          0,
+          1024,
+          768
+        ],
+        "visibleRect": [
+          121,
+          53,
+          632,
+          681
+        ]
+      },
+      {
+        "pageId": "falconer-masked-idle-left-v91",
+        "rect": [
+          0,
+          768,
+          1024,
+          768
+        ],
+        "visibleRect": [
+          121,
+          800,
+          629,
+          690
+        ]
+      }
+    ]
+  },
+  {
+    "fighterId": "enforcer",
+    "variantId": "enforcer-avec-casque-ca164d8925",
+    "bodyHeightPx": 702,
+    "atlas": {
+      "schemaVersion": 1,
+      "id": "enforcer-masked-idle-left-v91",
+      "characterId": "enforcer",
+      "variantId": "enforcer-avec-casque-ca164d8925",
+      "sourceKind": "authored-frames",
+      "status": "validated",
+      "pages": [
+        {
+          "id": "enforcer-masked-idle-left-v91",
+          "src": "/game/sprites/v91/pit/enforcer/masked-idle-left.png",
+          "width": 1024,
+          "height": 1536,
+          "status": "validated",
+          "transparency": {
+            "mode": "alpha",
+            "noiseFloor": 2
+          }
+        }
+      ],
+      "clips": [
+        {
+          "id": "idle",
+          "facing": "left",
+          "status": "validated",
+          "loop": true,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "enforcer-masked-idle-left-v91",
+              "rect": [
+                0,
+                0,
+                1024,
+                768
+              ],
+              "pivot": [
+                492,
+                745
+              ],
+              "durationTicks": 30
+            },
+            {
+              "pageId": "enforcer-masked-idle-left-v91",
+              "rect": [
+                0,
+                768,
+                1024,
+                768
+              ],
+              "pivot": [
+                491,
+                731
+              ],
+              "durationTicks": 30
+            }
+          ]
+        }
+      ]
+    },
+    "visibleFrameBounds": [
+      {
+        "pageId": "enforcer-masked-idle-left-v91",
+        "rect": [
+          0,
+          0,
+          1024,
+          768
+        ],
+        "visibleRect": [
+          198,
+          41,
+          575,
+          708
+        ]
+      },
+      {
+        "pageId": "enforcer-masked-idle-left-v91",
+        "rect": [
+          0,
+          768,
+          1024,
+          768
+        ],
+        "visibleRect": [
+          196,
+          788,
+          577,
+          714
+        ]
+      }
+    ]
+  },
+  {
+    "fighterId": "wolf",
+    "variantId": "wolf-avec-casque-4261aca172",
+    "bodyHeightPx": 711,
+    "atlas": {
+      "schemaVersion": 1,
+      "id": "wolf-masked-idle-right-v91",
+      "characterId": "wolf",
+      "variantId": "wolf-avec-casque-4261aca172",
+      "sourceKind": "authored-frames",
+      "status": "validated",
+      "pages": [
+        {
+          "id": "wolf-masked-idle-right-v91",
+          "src": "/game/sprites/v91/pit/wolf/masked-idle-right.png",
+          "width": 1024,
+          "height": 1536,
+          "status": "validated",
+          "transparency": {
+            "mode": "alpha",
+            "noiseFloor": 2
+          }
+        }
+      ],
+      "clips": [
+        {
+          "id": "idle",
+          "facing": "right",
+          "status": "validated",
+          "loop": true,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "wolf-masked-idle-right-v91",
+              "rect": [
+                0,
+                0,
+                1024,
+                768
+              ],
+              "pivot": [
+                529,
+                724
+              ],
+              "durationTicks": 30
+            },
+            {
+              "pageId": "wolf-masked-idle-right-v91",
+              "rect": [
+                0,
+                768,
+                1024,
+                768
+              ],
+              "pivot": [
+                530,
+                724
+              ],
+              "durationTicks": 30
+            }
+          ]
+        }
+      ]
+    },
+    "visibleFrameBounds": [
+      {
+        "pageId": "wolf-masked-idle-right-v91",
+        "rect": [
+          0,
+          0,
+          1024,
+          768
+        ],
+        "visibleRect": [
+          305,
+          10,
+          440,
+          717
+        ]
+      },
+      {
+        "pageId": "wolf-masked-idle-right-v91",
+        "rect": [
+          0,
+          768,
+          1024,
+          768
+        ],
+        "visibleRect": [
+          305,
+          770,
+          443,
+          724
+        ]
+      }
+    ]
+  },
+  {
+    "fighterId": "wolf",
+    "variantId": "wolf-avec-casque-4261aca172",
+    "bodyHeightPx": 742,
+    "atlas": {
+      "schemaVersion": 1,
+      "id": "wolf-masked-idle-left-v91",
+      "characterId": "wolf",
+      "variantId": "wolf-avec-casque-4261aca172",
+      "sourceKind": "authored-frames",
+      "status": "validated",
+      "pages": [
+        {
+          "id": "wolf-masked-idle-left-v91",
+          "src": "/game/sprites/v91/pit/wolf/masked-idle-left.png",
+          "width": 1024,
+          "height": 1536,
+          "status": "validated",
+          "transparency": {
+            "mode": "alpha",
+            "noiseFloor": 2
+          }
+        }
+      ],
+      "clips": [
+        {
+          "id": "idle",
+          "facing": "left",
+          "status": "validated",
+          "loop": true,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "wolf-masked-idle-left-v91",
+              "rect": [
+                0,
+                0,
+                1024,
+                768
+              ],
+              "pivot": [
+                486,
+                756
+              ],
+              "durationTicks": 30
+            },
+            {
+              "pageId": "wolf-masked-idle-left-v91",
+              "rect": [
+                0,
+                768,
+                1024,
+                768
+              ],
+              "pivot": [
+                486,
+                756
+              ],
+              "durationTicks": 30
+            }
+          ]
+        }
+      ]
+    },
+    "visibleFrameBounds": [
+      {
+        "pageId": "wolf-masked-idle-left-v91",
+        "rect": [
+          0,
+          0,
+          1024,
+          768
+        ],
+        "visibleRect": [
+          298,
+          12,
+          451,
+          748
+        ]
+      },
+      {
+        "pageId": "wolf-masked-idle-left-v91",
+        "rect": [
+          0,
+          768,
+          1024,
+          768
+        ],
+        "visibleRect": [
+          298,
+          779,
+          452,
+          749
+        ]
+      }
+    ]
+  },
+  {
+    "fighterId": "wolf",
+    "variantId": "wolf-avec-casque-4261aca172",
+    "bodyHeightPx": 733,
+    "atlas": {
+      "schemaVersion": 1,
+      "id": "wolf-masked-crouch-right-v91",
+      "characterId": "wolf",
+      "variantId": "wolf-avec-casque-4261aca172",
+      "sourceKind": "authored-frames",
+      "status": "validated",
+      "pages": [
+        {
+          "id": "wolf-masked-crouch-right-v91",
+          "src": "/game/sprites/v91/pit/wolf/masked-crouch-right.png",
+          "width": 1024,
+          "height": 1536,
+          "status": "validated",
+          "transparency": {
+            "mode": "alpha",
+            "noiseFloor": 2
+          }
+        }
+      ],
+      "clips": [
+        {
+          "id": "crouch",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "wolf-masked-crouch-right-v91",
+              "rect": [
+                0,
+                0,
+                1024,
+                768
+              ],
+              "pivot": [
+                532,
+                746
+              ],
+              "durationTicks": 6
+            },
+            {
+              "pageId": "wolf-masked-crouch-right-v91",
+              "rect": [
+                0,
+                768,
+                1024,
+                768
+              ],
+              "pivot": [
+                542,
+                697
+              ],
+              "durationTicks": 12
+            }
+          ]
+        }
+      ]
+    },
+    "visibleFrameBounds": [
+      {
+        "pageId": "wolf-masked-crouch-right-v91",
+        "rect": [
+          0,
+          0,
+          1024,
+          768
+        ],
+        "visibleRect": [
+          298,
+          12,
+          460,
+          737
+        ]
+      },
+      {
+        "pageId": "wolf-masked-crouch-right-v91",
+        "rect": [
+          0,
+          768,
+          1024,
+          768
+        ],
+        "visibleRect": [
+          260,
+          842,
+          565,
+          626
+        ]
+      }
+    ]
+  },
+  {
+    "fighterId": "wolf",
+    "variantId": "wolf-avec-casque-4261aca172",
+    "bodyHeightPx": 744,
+    "atlas": {
+      "schemaVersion": 1,
+      "id": "wolf-masked-crouch-left-v91",
+      "characterId": "wolf",
+      "variantId": "wolf-avec-casque-4261aca172",
+      "sourceKind": "authored-frames",
+      "status": "validated",
+      "pages": [
+        {
+          "id": "wolf-masked-crouch-left-v91",
+          "src": "/game/sprites/v91/pit/wolf/masked-crouch-left.png",
+          "width": 1024,
+          "height": 1536,
+          "status": "validated",
+          "transparency": {
+            "mode": "alpha",
+            "noiseFloor": 2
+          }
+        }
+      ],
+      "clips": [
+        {
+          "id": "crouch",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "wolf-masked-crouch-left-v91",
+              "rect": [
+                0,
+                0,
+                1024,
+                768
+              ],
+              "pivot": [
+                486,
+                758
+              ],
+              "durationTicks": 6
+            },
+            {
+              "pageId": "wolf-masked-crouch-left-v91",
+              "rect": [
+                0,
+                768,
+                1024,
+                768
+              ],
+              "pivot": [
+                543,
+                733
+              ],
+              "durationTicks": 12
+            }
+          ]
+        }
+      ]
+    },
+    "visibleFrameBounds": [
+      {
+        "pageId": "wolf-masked-crouch-left-v91",
+        "rect": [
+          0,
+          0,
+          1024,
+          768
+        ],
+        "visibleRect": [
+          298,
+          13,
+          453,
+          747
+        ]
+      },
+      {
+        "pageId": "wolf-masked-crouch-left-v91",
+        "rect": [
+          0,
+          768,
+          1024,
+          768
+        ],
+        "visibleRect": [
+          286,
+          854,
+          543,
+          649
+        ]
+      }
+    ]
+  }
+]

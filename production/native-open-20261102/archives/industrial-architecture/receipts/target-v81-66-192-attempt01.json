@@ -1,0 +1,218 @@
+{
+  "schemaVersion": 1,
+  "targetId": "target-v81-66-192",
+  "label": "crochet",
+  "attempt": 1,
+  "family": "TROPHEES_FIXTURE",
+  "tool": "image_gen.imagegen",
+  "parameters": {
+    "transparent_background": true,
+    "referenced_image_paths": "omitted for new original generation",
+    "num_last_images_to_include": "omitted"
+  },
+  "prompt": "Draw ONE original native whole-object PNG sprite for the Yautja homeworld fan game La Longue Chasse, a lore-compatible ORIGINAL design, not a canonical film-prop assertion. The visual family has charcoal porous basalt/dark gunmetal, worn antique-bronze chamfered angular reinforcement, fine restrained geometric carving, small contained amber fittings, realistic prerendered2.5D materials, warm neutral top-left light. Readable silhouette at small game size. Three-quarter isometric, front and right side visible, camera down25-30degrees. One connected object only, all tips,base and attachments entirely visible. Keep it modestly sized centrally on the square native canvas with vast20percent empty TRANSPARENT padding on every side. Preserve native emitted dimensions. Exact alpha0 everywhere outside physical silhouette including every edge; no haze/bloom,cast shadow,ground patch,backdrop/checkerboard,scenery,text/letters/numbers/logos,people/creatures,grid/atlas/repeated views or cropping. Static candidate only; no gameplay or art admission implied. SUBJECT: one independent HEAVY WALL-MOUNTED TROPHY SUSPENSION HOOK, EMPTY. A thick curved dark-metal hook curls upward from a compact angular bronze-and-basalt mounting backplate with four clear bolt sockets. Large open hanging throat,blunt reinforced tip,heavy load-bearing root and one small engraved geometric notch. Front/right3quarter view reveals the hook protruding from the backplate. Entire backplate and curved hook visible,without an actual wall or freestanding floor base. It is an installed civic trophy-display fixture, NOT a handheld bone/red trophy weapon,carried reward,tool rack,coat rack with many hooks or decorated skull. No trophy or body fused to the hook. One useful connected suspension fixture,not a painted detail extracted from an existing rack.",
+  "nativeSourcePath": "/workspace/generated_images/exec-192dfd8d-409c-4eab-8cdd-8be53e871f48.png",
+  "candidatePath": "/workspace/native-homeworld-open-20261102/industrial-architecture/target-v81-66-192-crochet-trophees-native.png",
+  "referencesOpened": [
+    "public/game/homeworld/v80/maintenance-rack.png",
+    "public/game/homeworld/v83/cargo-rack-right.png",
+    "public/game/assets/v17/enemy-trophies/enemy-trophy-crochet-a-trophees.webp"
+  ],
+  "visualAssessment": {
+    "status": "ASSISTANT_NATIVE_VIEW_ONLY_NOT_HUMAN_APPROVAL",
+    "wholeSingleObject": true,
+    "visibleCroppedObject": false,
+    "duplicateGrid": false,
+    "materialCameraCoherent": true,
+    "functionReadable": true,
+    "notes": "One empty protruding wall hook and complete mounting backplate; distinct from the existing handheld bone reward. Attachment pivot/wall/depth are untested; diagnostic bottom-center is not a ground pivot."
+  },
+  "lore": "LORE_COMPATIBLE_ORIGINAL",
+  "humanValidated": false,
+  "pixelsEdited": false,
+  "inspection": {
+    "targetId": "target-v81-66-192",
+    "attempt": 1,
+    "path": "/workspace/native-homeworld-open-20261102/industrial-architecture/target-v81-66-192-crochet-trophees-native.png",
+    "nativeSourcePath": "/workspace/generated_images/exec-192dfd8d-409c-4eab-8cdd-8be53e871f48.png",
+    "bytes": 1037089,
+    "sha256": "d2e4404b46f48c3108996b64a92d8db69839caaf17ecbd4ab2fa82d03d30bd14",
+    "mode": "RGBA",
+    "dimensions": [
+      1254,
+      1254
+    ],
+    "alphaExtrema": [
+      0,
+      255
+    ],
+    "transparentPixels": 1198764,
+    "alpha1or2Pixels": 9041,
+    "alpha1to8Pixels": 12479,
+    "thresholdMeasurements": {
+      "0": {
+        "bboxExclusive": [
+          0,
+          36,
+          1144,
+          1214
+        ],
+        "margins": [
+          0,
+          36,
+          110,
+          40
+        ],
+        "visiblePixels": 373752,
+        "edgeVisiblePixels": 3
+      },
+      "2": {
+        "bboxExclusive": [
+          266,
+          223,
+          1108,
+          970
+        ],
+        "margins": [
+          266,
+          223,
+          146,
+          284
+        ],
+        "visiblePixels": 364711,
+        "edgeVisiblePixels": 0
+      },
+      "8": {
+        "bboxExclusive": [
+          268,
+          225,
+          1106,
+          968
+        ],
+        "margins": [
+          268,
+          225,
+          148,
+          286
+        ],
+        "visiblePixels": 361273,
+        "edgeVisiblePixels": 0
+      }
+    },
+    "strict48pxAlphaGt0MarginPass": false,
+    "diagnostic48pxAlphaGt8MarginPass": true,
+    "diagnosticImageAnchor": {
+      "x": 686,
+      "y": 967,
+      "status": "PROPOSED_BBOX_ANCHOR_NOT_RUNTIME_TESTED",
+      "rule": "Bottom-center alpha>8 enclosure. A wall-mounted object still needs an attachment pivot; this is not physical ground-contact proof."
+    },
+    "nativeByteExactCopy": true,
+    "pixelsEdited": false,
+    "runtimeIntegrated": false,
+    "humanValidated": false,
+    "status": "CANDIDAT_NON_ADMIS",
+    "limits": [
+      "All original canvas and pixels retained; no crop,resize,mirror,cleanup or compression.",
+      "Alpha thresholds2/8 are diagnostics and never replace the strict alpha>0 measurement.",
+      "Low alpha counts include antialiasing; border speckle and clipping need individual visual interpretation.",
+      "No in-game scale,collision,usage envelope,animation or artistic admission is established."
+    ]
+  },
+  "status": "CANDIDAT_NON_ADMIS",
+  "runtimeIntegrated": false,
+  "sourceClosureClaimed": false,
+  "sourceLocators": {
+    "catalogue": {
+      "path": "app/game/data/homeworldAssetCatalogueTargetV81.json",
+      "jsonPointer": "/entries/191"
+    },
+    "v111Inventory": {
+      "path": "docs/v111-homeworld-art-inventory.json",
+      "jsonPointer": "/entries/191"
+    },
+    "activeV112Followup": {
+      "path": "docs/v112-homeworld-followup.json",
+      "jsonPointer": "/artTargets/191"
+    },
+    "brief": {
+      "path": "docs/specifications/homeworld-v81/mission-grammaire-original.txt",
+      "section": 66,
+      "line": 1842
+    },
+    "workbookCells": [
+      {
+        "workbook": "docs/YAUTJA_V111_SUIVI.xlsx",
+        "sheet": "CatalogueArtV111",
+        "part": "xl/worksheets/v111-sheet-110.xml",
+        "row": 196,
+        "idCell": {
+          "cell": "A196",
+          "value": "target-v81-66-192"
+        },
+        "labelCell": {
+          "cell": "D196",
+          "value": "crochet"
+        },
+        "historicalPresenceCell": {
+          "cell": "G196",
+          "value": "MISSING"
+        },
+        "openArtCell": {
+          "cell": "F196",
+          "value": "NON_CLOTURE_ART"
+        }
+      },
+      {
+        "workbook": "docs/YAUTJA_V112_SUIVI.xlsx",
+        "sheet": "CatalogueArtV112",
+        "part": "xl/worksheets/v112-sheet-119.xml",
+        "row": 196,
+        "idCell": {
+          "cell": "A196",
+          "value": "target-v81-66-192"
+        },
+        "labelCell": {
+          "cell": "C196",
+          "value": "crochet"
+        },
+        "historicalPresenceCell": {
+          "cell": "D196",
+          "value": "MISSING"
+        },
+        "openArtCell": {
+          "cell": "E196",
+          "value": "NON_CLOTURE_ART"
+        }
+      }
+    ]
+  },
+  "sourceLocatorContext": "SNAPSHOT_HISTORIQUE: dated source audit 2026-11-02; historical V111/V112 cells are unchanged by this production.",
+  "requiredCriteriaIds": [
+    "COMMON-NATIVE",
+    "COMMON-IDENTITY",
+    "COMMON-SCALE",
+    "COMMON-CONTEXT"
+  ],
+  "targetSpecificLimits": [
+    "Independent empty wall fixture, not the existing V17 handheld trophy-hook reward.",
+    "No trophy hanging, load/support or wall attachment pivot is established."
+  ],
+  "frame": {
+    "rect": [
+      0,
+      0,
+      1254,
+      1254
+    ],
+    "grid": [
+      1,
+      1
+    ],
+    "frameCount": 1,
+    "wholeNativeCanvasRetained": true
+  },
+  "referenceUse": "Previously opened real project PNGs informed the textual brief. No source image was supplied as conditioning and no source pixels were extracted.",
+  "retryUsed": false,
+  "retryDecision": "No retry: no actual clipping or repeated-object grid observed. Padding failures and faint alpha noise remain explicit, never cleaned or force-admitted."
+}

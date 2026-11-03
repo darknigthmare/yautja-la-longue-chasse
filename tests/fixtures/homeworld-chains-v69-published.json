@@ -1,0 +1,299 @@
+{
+  "source": "d81f8b466ec2d5d0a78216e0d054aed94d24693a",
+  "definitions": [
+    {
+      "id": "v69-return-1",
+      "title": "Lire les deux souffles",
+      "giverNpcId": "market-artisan",
+      "giverName": "Artisane du marché",
+      "pointId": "market-service",
+      "buildingId": "market-armory",
+      "category": "tracking",
+      "chain": {
+        "id": "return-line",
+        "title": "Les balises du retour",
+        "chapter": 1,
+        "total": 4,
+        "relation": "L’Artisane prépare un dossier de terrain pour la Soigneuse."
+      },
+      "prerequisites": [],
+      "sequential": true,
+      "objectives": [
+        {
+          "regionId": "ash-marches",
+          "action": "track",
+          "text": "Lire les trois traces et observer le cuirassé des Cendres, puis revenir au guide."
+        },
+        {
+          "regionId": "thermal-caves",
+          "action": "survey",
+          "text": "Après ce retour, relever les trois indices des Grottes et les faire confirmer."
+        }
+      ],
+      "brief": "La cendre sèche et la vapeur brouillent les lectures de deux façons. Commence par trois traces et l’observation calme du cuirassé des Cendres, fais confirmer ce retour, puis relève les indices des Grottes. Les deux rapports remis ici permettront à la Soigneuse de préparer sa propre demande.",
+      "restriction": "Le relevé ne rend pas la région sûre et ne remplace pas une escorte. Aucun ancien rapport ne compte.",
+      "completionText": "Deux terrains comparés. La Soigneuse peut maintenant te confier la suite, en personne à la maison des délégations.",
+      "rewardMarks": 44
+    },
+    {
+      "id": "v69-return-2",
+      "title": "Les appuis de ceux qui reviennent",
+      "giverNpcId": "clan-healer",
+      "giverName": "Soigneuse des délégations",
+      "pointId": "medbay-service",
+      "buildingId": "clan-lodge",
+      "category": "npc",
+      "chain": {
+        "id": "return-line",
+        "title": "Les balises du retour",
+        "chapter": 2,
+        "total": 4,
+        "relation": "La Soigneuse s’appuie sur le dossier réellement remis à l’Artisane."
+      },
+      "prerequisites": [
+        "v69-return-1"
+      ],
+      "sequential": true,
+      "objectives": [
+        {
+          "regionId": "luminous-marshes",
+          "action": "ward",
+          "text": "Protéger les deux balises des Marais pendant les bonnes fenêtres et revenir au guide."
+        },
+        {
+          "regionId": "cold-crown",
+          "action": "recover",
+          "text": "Puis récupérer la caisse de balises de la Couronne après avoir évité le danger."
+        }
+      ],
+      "brief": "Le dossier de l’Artisane distingue déjà la cendre de la vapeur. Il manque les racines humides et les anciennes cordées. Protège le passage des Marais, puis rapporte les balises de la Couronne. Chaque guide doit confirmer sa part.",
+      "restriction": "Tu prépares des repères de retour, sans soin improvisé, sans prélèvement sur un habitant et sans promettre un convoi invulnérable.",
+      "completionText": "Les deux retours sont documentés. L’Officier des quais peut te demander de vérifier la ligne exposée au vent.",
+      "rewardMarks": 54
+    },
+    {
+      "id": "v69-return-3",
+      "title": "La ligne tenue",
+      "giverNpcId": "dock-officer",
+      "giverName": "Officier des quais",
+      "pointId": "dock-officer-point",
+      "buildingId": "dock-control",
+      "category": "npc",
+      "chain": {
+        "id": "return-line",
+        "title": "Les balises du retour",
+        "chapter": 3,
+        "total": 4,
+        "relation": "Les quais travaillent à partir des retours remis à la Soigneuse."
+      },
+      "prerequisites": [
+        "v69-return-2"
+      ],
+      "sequential": true,
+      "objectives": [
+        {
+          "regionId": "storm-chain",
+          "action": "ward",
+          "text": "Protéger les deux balises des Orages et faire confirmer l’intervention."
+        },
+        {
+          "regionId": "leviathan-coast",
+          "action": "track",
+          "text": "Puis observer la présence côtière après les trois traces du rivage."
+        }
+      ],
+      "brief": "Une ligne de retour doit rester repérable dans les rafales avant qu’on étudie son débouché sur la côte. Rejoins les Orages, stabilise leurs balises, puis observe la proie territoriale du rivage depuis la terre ferme. Reviens aux quais.",
+      "restriction": "Ce travail ne lance aucune traversée orbitale et ne prouve pas qu’un léviathan a été chassé.",
+      "completionText": "Le vent et le rivage sont comparés. La Maîtresse des parures peut préparer son relevé d’implantation des relais.",
+      "rewardMarks": 58
+    },
+    {
+      "id": "v69-return-4",
+      "title": "Des repères sans parure",
+      "giverNpcId": "forge-artisan",
+      "giverName": "Maîtresse des parures",
+      "pointId": "forge-service",
+      "buildingId": "deep-forge",
+      "category": "npc",
+      "chain": {
+        "id": "return-line",
+        "title": "Les balises du retour",
+        "chapter": 4,
+        "total": 4,
+        "relation": "La Forge termine le dossier confié successivement au marché, aux soins et aux quais."
+      },
+      "prerequisites": [
+        "v69-return-3"
+      ],
+      "sequential": true,
+      "objectives": [
+        {
+          "regionId": "thermal-caves",
+          "action": "recover",
+          "text": "Récupérer la caisse des Grottes pendant l’accalmie, puis revenir au guide."
+        },
+        {
+          "regionId": "glass-desert",
+          "action": "track",
+          "text": "Puis observer le fouisseur du Verre et faire confirmer le retour."
+        },
+        {
+          "regionId": "first-city-ruins",
+          "action": "survey",
+          "text": "Enfin relever les trois traces des Ruines sans déplacer le patrimoine."
+        }
+      ],
+      "brief": "Un relais utile ne devient pas une parure de chasse. Rapporte d’abord les boîtiers des Grottes, observe ensuite les sorties du fouisseur du Verre, puis vérifie les traces des Ruines. La Forge réunira les trois rapports, pas trois trophées inventés.",
+      "restriction": "Aucune arme, parure gratuite ou installation automatique n’est attribuée ; les vestiges restent en place.",
+      "completionText": "Le dossier des balises du retour est clos. Les quatre remises restent dans ton carnet ; aucune région entière n’est déclarée pacifiée.",
+      "rewardMarks": 72
+    },
+    {
+      "id": "v69-measure-1",
+      "title": "À la distance juste",
+      "giverNpcId": "market-artisan",
+      "giverName": "Artisane du marché",
+      "pointId": "market-service",
+      "buildingId": "market-armory",
+      "category": "tracking",
+      "chain": {
+        "id": "hunter-measure",
+        "title": "La mesure du chasseur",
+        "chapter": 1,
+        "total": 4,
+        "relation": "L’Artisane distingue une observation de chasse d’une prise proclamée."
+      },
+      "prerequisites": [],
+      "sequential": true,
+      "objectives": [
+        {
+          "regionId": "ash-marches",
+          "action": "track",
+          "text": "Observer le cuirassé des Cendres après les trois traces et revenir au guide."
+        },
+        {
+          "regionId": "glass-desert",
+          "action": "track",
+          "text": "Puis observer le fouisseur du Verre pendant une accalmie."
+        }
+      ],
+      "brief": "Deux proies, deux distances. Observe d’abord le cuirassé sans déclencher sa charge, puis le fouisseur sans marteler le sol du village. Remets les deux observations au marché avant de demander une épreuve à la Forge.",
+      "restriction": "Les animaux restent vivants. Un contrat d’observation ne prouve ni victoire ni prise de crâne.",
+      "completionText": "Les deux distances sont attestées. La Maîtresse des parures peut maintenant te proposer la confrontation mesurée.",
+      "rewardMarks": 46
+    },
+    {
+      "id": "v69-measure-2",
+      "title": "La riposte et l’empreinte",
+      "giverNpcId": "forge-artisan",
+      "giverName": "Maîtresse des parures",
+      "pointId": "forge-service",
+      "buildingId": "deep-forge",
+      "category": "npc",
+      "chain": {
+        "id": "hunter-measure",
+        "title": "La mesure du chasseur",
+        "chapter": 2,
+        "total": 4,
+        "relation": "La Forge demande une maîtrise après les observations remises au marché."
+      },
+      "prerequisites": [
+        "v69-measure-1"
+      ],
+      "sequential": true,
+      "objectives": [
+        {
+          "regionId": "glass-desert",
+          "action": "challenge",
+          "text": "Éviter deux charges du fouisseur et placer trois touches pendant sa reprise, puis revenir au guide."
+        },
+        {
+          "regionId": "cold-crown",
+          "action": "track",
+          "text": "Puis suivre les trois indices et observer le carnivore de la Couronne."
+        }
+      ],
+      "brief": "La distance observée au Verre permet d’y éprouver ta maîtrise sans poursuivre la créature après son retrait. Fais confirmer ce défi, puis pars lire l’empreinte froide : une signature thermique brouillée ne vaut pas absence de proie.",
+      "restriction": "Défi non létal contre la faune territoriale autorisée. Aucun habitant ou adversaire désarmé n’est une cible.",
+      "completionText": "Maîtrise et observation ont leurs rapports distincts. La Conservatrice peut t’apprendre ce que ces rapports ne prouvent pas.",
+      "rewardMarks": 62
+    },
+    {
+      "id": "v69-measure-3",
+      "title": "Ce que l’épreuve ne prouve pas",
+      "giverNpcId": "memory-keeper",
+      "giverName": "Conservatrice des marques",
+      "pointId": "memory-register-point",
+      "buildingId": "memory-vault",
+      "category": "npc",
+      "chain": {
+        "id": "hunter-measure",
+        "title": "La mesure du chasseur",
+        "chapter": 3,
+        "total": 4,
+        "relation": "La Conservatrice replace les faits de la Forge dans leur contexte."
+      },
+      "prerequisites": [
+        "v69-measure-2"
+      ],
+      "sequential": true,
+      "objectives": [
+        {
+          "regionId": "first-city-ruins",
+          "action": "survey",
+          "text": "Relever les traces des Ruines, puis les faire confirmer sans ouvrir d’archive scellée."
+        },
+        {
+          "regionId": "forbidden-reserve",
+          "action": "recover",
+          "text": "Puis récupérer la caisse extérieure de la Réserve après le danger du chemin."
+        }
+      ],
+      "brief": "Une épreuve réussie ne t’autorise pas à raconter une histoire qui n’a pas eu lieu. Documente d’abord les traces des Ruines, puis rapporte le relais extérieur de la Réserve. Les deux guides confirmeront des lieux précis, pas une vérité royale.",
+      "restriction": "Ne déplace pas le patrimoine, n’ouvre pas d’enclos et ne transforme pas une récupération en chasse à une créature importée.",
+      "completionText": "Les limites du témoignage sont consignées. L’Officier des quais peut te confier le dernier circuit de maîtrise et de protection.",
+      "rewardMarks": 60
+    },
+    {
+      "id": "v69-measure-4",
+      "title": "Ne pas emporter la route",
+      "giverNpcId": "dock-officer",
+      "giverName": "Officier des quais",
+      "pointId": "dock-officer-point",
+      "buildingId": "dock-control",
+      "category": "npc",
+      "chain": {
+        "id": "hunter-measure",
+        "title": "La mesure du chasseur",
+        "chapter": 4,
+        "total": 4,
+        "relation": "Les quais associent la maîtrise de la Forge aux limites établies par la Conservatrice."
+      },
+      "prerequisites": [
+        "v69-measure-3"
+      ],
+      "sequential": true,
+      "objectives": [
+        {
+          "regionId": "leviathan-coast",
+          "action": "challenge",
+          "text": "Éprouver la proie côtière : deux charges évitées et trois touches, puis retour au guide."
+        },
+        {
+          "regionId": "pillar-jungle",
+          "action": "ward",
+          "text": "Puis protéger les deux balises de la Jungle et faire confirmer l’intervention."
+        },
+        {
+          "regionId": "storm-chain",
+          "action": "track",
+          "text": "Enfin observer le planeur des Orages après les trois traces."
+        }
+      ],
+      "brief": "Engage seulement la proie territoriale de la Côte, laisse-la se retirer, puis protège les repères de la Jungle au lieu d’y chercher une autre prise. Termine par l’observation du planeur des Orages et ramène les trois rapports aux quais.",
+      "restriction": "Le chemin reste aux clans qui l’habitent. Ni léviathan tué, ni escorte inventée, ni rang supérieur n’est décerné.",
+      "completionText": "Le circuit de la mesure du chasseur est clos. Ses quatre remises documentent tes actes sans te décerner de rite ni de rang.",
+      "rewardMarks": 78
+    }
+  ]
+}

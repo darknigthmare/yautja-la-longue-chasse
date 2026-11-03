@@ -1,0 +1,484 @@
+{
+  "review": "read-only source proposal; no PNG modified. 8-connected alpha>64 cores; raster polygon measured using Pillow. Alpha2..64 at mine/toe shadows is ambiguous and not canonically separable. nearestCoreBodyAlpha16Cut is diagnostic only, not certified segmentation. Runtime Canvas clip must be checked separately for its edge rasterisation.",
+  "masks": [
+    {
+      "id": "a2-right",
+      "path": "/game/sprites/v100/pit/feral/feral-special-s4-a-v100.png",
+      "sha256": "0eb7806546e452659c5b72ce0255d265eac4172a030bf669d1bcb6bf1fa1b7bc",
+      "frameRect": [
+        0,
+        1114,
+        544,
+        422
+      ],
+      "sourcePolygon": [
+        [
+          412,
+          1431
+        ],
+        [
+          482,
+          1431
+        ],
+        [
+          482,
+          1478
+        ],
+        [
+          412,
+          1478
+        ]
+      ],
+      "cropRect": [
+        412,
+        1431,
+        71,
+        48
+      ],
+      "mineOpaqueBounds": [
+        419,
+        1443,
+        476,
+        1472
+      ],
+      "mineOpaquePixels": 1120,
+      "mineOpaquePixelsLeft": 0,
+      "bodyOpaquePixels": 48126,
+      "bodyOpaquePixelsCut": 0,
+      "maskedAlpha16Pixels": 1250,
+      "maskedFringeAlpha2to64Pixels": 539,
+      "nearestCoreBodyAlpha16Cut": 0,
+      "ambiguousGapAlpha2Pixels": 0,
+      "ambiguousGapBounds": null
+    },
+    {
+      "id": "a2-left",
+      "path": "/game/sprites/v100/pit/feral/feral-special-s4-a-v100.png",
+      "sha256": "0eb7806546e452659c5b72ce0255d265eac4172a030bf669d1bcb6bf1fa1b7bc",
+      "frameRect": [
+        543,
+        1114,
+        481,
+        422
+      ],
+      "sourcePolygon": [
+        [
+          612,
+          1437
+        ],
+        [
+          678,
+          1437
+        ],
+        [
+          675,
+          1462
+        ],
+        [
+          661,
+          1477
+        ],
+        [
+          612,
+          1477
+        ]
+      ],
+      "cropRect": [
+        612,
+        1437,
+        67,
+        41
+      ],
+      "mineOpaqueBounds": [
+        616,
+        1444,
+        672,
+        1472
+      ],
+      "mineOpaquePixels": 1106,
+      "mineOpaquePixelsLeft": 0,
+      "bodyOpaquePixels": 48917,
+      "bodyOpaquePixelsCut": 0,
+      "maskedAlpha16Pixels": 1229,
+      "maskedFringeAlpha2to64Pixels": 585,
+      "nearestCoreBodyAlpha16Cut": 0,
+      "ambiguousGapAlpha2Pixels": 26,
+      "ambiguousGapBounds": [
+        662,
+        1462,
+        675,
+        1474
+      ]
+    },
+    {
+      "id": "b3-right-amber",
+      "path": "/game/sprites/v100/pit/feral/feral-special-s4-b-v100.png",
+      "sha256": "05ee37080b250599bba1754a6c3908eafd95ad37cb08fc66ceee0f93ee06a830",
+      "frameRect": [
+        0,
+        436,
+        512,
+        355
+      ],
+      "sourcePolygon": [
+        [
+          377,
+          718
+        ],
+        [
+          440,
+          718
+        ],
+        [
+          440,
+          759
+        ],
+        [
+          377,
+          759
+        ],
+        [
+          379,
+          750
+        ],
+        [
+          381,
+          741
+        ],
+        [
+          377,
+          737
+        ]
+      ],
+      "cropRect": [
+        377,
+        718,
+        64,
+        42
+      ],
+      "mineOpaqueBounds": [
+        381,
+        723,
+        436,
+        755
+      ],
+      "mineOpaquePixels": 1334,
+      "mineOpaquePixelsLeft": 0,
+      "bodyOpaquePixels": 36280,
+      "bodyOpaquePixelsCut": 0,
+      "maskedAlpha16Pixels": 1387,
+      "maskedFringeAlpha2to64Pixels": 279,
+      "nearestCoreBodyAlpha16Cut": 0,
+      "ambiguousGapAlpha2Pixels": 13,
+      "ambiguousGapBounds": [
+        379,
+        739,
+        382,
+        750
+      ]
+    },
+    {
+      "id": "b3-left-amber",
+      "path": "/game/sprites/v100/pit/feral/feral-special-s4-b-v100.png",
+      "sha256": "05ee37080b250599bba1754a6c3908eafd95ad37cb08fc66ceee0f93ee06a830",
+      "frameRect": [
+        511,
+        436,
+        513,
+        355
+      ],
+      "sourcePolygon": [
+        [
+          582,
+          718
+        ],
+        [
+          645,
+          718
+        ],
+        [
+          645,
+          738
+        ],
+        [
+          641,
+          742
+        ],
+        [
+          641,
+          748
+        ],
+        [
+          645,
+          752
+        ],
+        [
+          645,
+          759
+        ],
+        [
+          582,
+          759
+        ]
+      ],
+      "cropRect": [
+        582,
+        718,
+        64,
+        42
+      ],
+      "mineOpaqueBounds": [
+        586,
+        723,
+        641,
+        755
+      ],
+      "mineOpaquePixels": 1313,
+      "mineOpaquePixelsLeft": 0,
+      "bodyOpaquePixels": 37012,
+      "bodyOpaquePixelsCut": 0,
+      "maskedAlpha16Pixels": 1362,
+      "maskedFringeAlpha2to64Pixels": 237,
+      "nearestCoreBodyAlpha16Cut": 0,
+      "ambiguousGapAlpha2Pixels": 22,
+      "ambiguousGapBounds": [
+        640,
+        738,
+        645,
+        750
+      ]
+    },
+    {
+      "id": "b4-right-off",
+      "path": "/game/sprites/v100/pit/feral/feral-special-s4-b-v100.png",
+      "sha256": "05ee37080b250599bba1754a6c3908eafd95ad37cb08fc66ceee0f93ee06a830",
+      "frameRect": [
+        0,
+        790,
+        513,
+        333
+      ],
+      "sourcePolygon": [
+        [
+          377,
+          1051
+        ],
+        [
+          437,
+          1051
+        ],
+        [
+          437,
+          1092
+        ],
+        [
+          377,
+          1092
+        ]
+      ],
+      "cropRect": [
+        377,
+        1051,
+        61,
+        42
+      ],
+      "mineOpaqueBounds": [
+        379,
+        1055,
+        433,
+        1088
+      ],
+      "mineOpaquePixels": 1365,
+      "mineOpaquePixelsLeft": 0,
+      "bodyOpaquePixels": 34812,
+      "bodyOpaquePixelsCut": 0,
+      "maskedAlpha16Pixels": 1427,
+      "maskedFringeAlpha2to64Pixels": 221,
+      "nearestCoreBodyAlpha16Cut": 0,
+      "ambiguousGapAlpha2Pixels": 12,
+      "ambiguousGapBounds": [
+        377,
+        1074,
+        379,
+        1084
+      ]
+    },
+    {
+      "id": "b4-left-off",
+      "path": "/game/sprites/v100/pit/feral/feral-special-s4-b-v100.png",
+      "sha256": "05ee37080b250599bba1754a6c3908eafd95ad37cb08fc66ceee0f93ee06a830",
+      "frameRect": [
+        512,
+        790,
+        512,
+        333
+      ],
+      "sourcePolygon": [
+        [
+          589,
+          1054
+        ],
+        [
+          650,
+          1054
+        ],
+        [
+          650,
+          1095
+        ],
+        [
+          589,
+          1095
+        ]
+      ],
+      "cropRect": [
+        589,
+        1054,
+        62,
+        42
+      ],
+      "mineOpaqueBounds": [
+        593,
+        1058,
+        647,
+        1091
+      ],
+      "mineOpaquePixels": 1354,
+      "mineOpaquePixelsLeft": 0,
+      "bodyOpaquePixels": 36798,
+      "bodyOpaquePixelsCut": 0,
+      "maskedAlpha16Pixels": 1414,
+      "maskedFringeAlpha2to64Pixels": 282,
+      "nearestCoreBodyAlpha16Cut": 0,
+      "ambiguousGapAlpha2Pixels": 17,
+      "ambiguousGapBounds": [
+        648,
+        1073,
+        651,
+        1083
+      ]
+    },
+    {
+      "id": "b5-right-red",
+      "path": "/game/sprites/v100/pit/feral/feral-special-s4-b-v100.png",
+      "sha256": "05ee37080b250599bba1754a6c3908eafd95ad37cb08fc66ceee0f93ee06a830",
+      "frameRect": [
+        0,
+        1122,
+        512,
+        414
+      ],
+      "sourcePolygon": [
+        [
+          376,
+          1391
+        ],
+        [
+          439,
+          1391
+        ],
+        [
+          439,
+          1431
+        ],
+        [
+          376,
+          1431
+        ]
+      ],
+      "cropRect": [
+        376,
+        1391,
+        64,
+        41
+      ],
+      "mineOpaqueBounds": [
+        380,
+        1395,
+        435,
+        1427
+      ],
+      "mineOpaquePixels": 1353,
+      "mineOpaquePixelsLeft": 0,
+      "bodyOpaquePixels": 39636,
+      "bodyOpaquePixelsCut": 0,
+      "maskedAlpha16Pixels": 1417,
+      "maskedFringeAlpha2to64Pixels": 249,
+      "nearestCoreBodyAlpha16Cut": 0,
+      "ambiguousGapAlpha2Pixels": 24,
+      "ambiguousGapBounds": [
+        376,
+        1408,
+        379,
+        1419
+      ]
+    },
+    {
+      "id": "b5-left-red",
+      "path": "/game/sprites/v100/pit/feral/feral-special-s4-b-v100.png",
+      "sha256": "05ee37080b250599bba1754a6c3908eafd95ad37cb08fc66ceee0f93ee06a830",
+      "frameRect": [
+        511,
+        1122,
+        513,
+        414
+      ],
+      "sourcePolygon": [
+        [
+          588,
+          1393
+        ],
+        [
+          650,
+          1393
+        ],
+        [
+          650,
+          1433
+        ],
+        [
+          588,
+          1433
+        ]
+      ],
+      "cropRect": [
+        588,
+        1393,
+        63,
+        41
+      ],
+      "mineOpaqueBounds": [
+        592,
+        1397,
+        648,
+        1429
+      ],
+      "mineOpaquePixels": 1385,
+      "mineOpaquePixelsLeft": 0,
+      "bodyOpaquePixels": 41420,
+      "bodyOpaquePixelsCut": 0,
+      "maskedAlpha16Pixels": 1457,
+      "maskedFringeAlpha2to64Pixels": 338,
+      "nearestCoreBodyAlpha16Cut": 0,
+      "ambiguousGapAlpha2Pixels": 15,
+      "ambiguousGapBounds": [
+        649,
+        1411,
+        651,
+        1421
+      ]
+    }
+  ],
+  "schemaVersion": 1,
+  "sourceMutation": false,
+  "runtimeAdmission": "CANVAS_NATIVE_SCALE_OPAQUE_CORE_REVIEW_PASS",
+  "runtimeReview": {
+    "renderer": "Chromium Canvas2D production clipPitWorkbookMineV107",
+    "opaqueThreshold": 64,
+    "framesChecked": 8,
+    "bodyOpaquePixelsCut": 0,
+    "mineOpaquePixelsLeft": 0,
+    "opaquePixelsPartiallyAltered": 0,
+    "ambiguousFringe": "Native alpha2..64 shadow/toe material remains ambiguous; no all-alpha source separation or canon1:1 certification."
+  }
+}

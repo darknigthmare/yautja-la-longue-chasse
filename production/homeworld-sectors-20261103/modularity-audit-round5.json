@@ -1,0 +1,2972 @@
+{
+  "version": "MMK-20261103-PASS5-AUDIT",
+  "date": "2026-11-03",
+  "baselineCommit": "7299b0fc2bd06dd53a45e3caab630bc75207d0ce",
+  "mainCommit": "f322e0cb42f2b1b7e06c3be1dcfbb23cb24f02c8",
+  "previousDeliveryCommit": "7299b0fc2bd06dd53a45e3caab630bc75207d0ce",
+  "status": "GENERATED_REVIEWED_SOURCE_ART_CANDIDATES",
+  "preservedSelectedAssets": [
+    {
+      "id": "HWM162-S01",
+      "path": "production/homeworld-sectors-20261103/sprites/market/HWM162-S01-market-hall-v2.png",
+      "sha256": "494e77092642dc46ff0ebc79e2a54040e450b1fbc1c41e434caa8498ee01ca69",
+      "bytes": 1585597
+    },
+    {
+      "id": "HWM162-S02",
+      "path": "production/homeworld-sectors-20261103/sprites/market/HWM162-S02-long-market-stall.png",
+      "sha256": "c1e353660c697180604ca6cf805ad13eb14c2009e6213f3e83233acae518b00e",
+      "bytes": 1404783
+    },
+    {
+      "id": "HWM162-S03",
+      "path": "production/homeworld-sectors-20261103/sprites/market/HWM162-S03-merchant-display.png",
+      "sha256": "9d9e720b4dc541e82fb0e3fffe73338c591fc9c39baa1fff6929617a9b3957ab",
+      "bytes": 2373548
+    },
+    {
+      "id": "HWM162-S04",
+      "path": "production/homeworld-sectors-20261103/sprites/market/HWM162-S04-trophy-platform.png",
+      "sha256": "897a4024cd04edb42b557a08f8b40ee29d80c219e2de3061106265b69208a5d4",
+      "bytes": 2722757
+    },
+    {
+      "id": "HWM162-S05",
+      "path": "production/homeworld-sectors-20261103/sprites/market/HWM162-S05-stock-shelter.png",
+      "sha256": "a8f69759564a653a6b7488e8fc1a90706a1cdd573592feb2dcfe7a855c40a866",
+      "bytes": 2903672
+    },
+    {
+      "id": "HWM162-S06",
+      "path": "production/homeworld-sectors-20261103/sprites/market/HWM162-S06-removable-display-tray.png",
+      "sha256": "8e18a6f05375ac0179c606eb6631dc5cdab60b7d47723cf5e84088da1a7f2070",
+      "bytes": 1387042
+    },
+    {
+      "id": "HWM162-S07",
+      "path": "production/homeworld-sectors-20261103/sprites/market/HWM162-S07-market-cargo-pallet.png",
+      "sha256": "f196df3b9f6729887e467ed5035487fd5f4c8aac303dfe14c9901f482045a5ff",
+      "bytes": 1734429
+    },
+    {
+      "id": "HWM162-S08",
+      "path": "production/homeworld-sectors-20261103/sprites/market/HWM162-S08-open-merchant-crate.png",
+      "sha256": "594f6e1e3918bfaf93990ab0a7b04948558c17c5c5a4d870181a02bc9b3800a4",
+      "bytes": 2161796
+    },
+    {
+      "id": "HWM162-S09",
+      "path": "production/homeworld-sectors-20261103/sprites/market/HWM162-S09-detached-storage-cylinder.png",
+      "sha256": "256a92587ab41c0aa7a2d3f62151005df766defe5185640a556c6fa89675433b",
+      "bytes": 1805155
+    },
+    {
+      "id": "HWM162-S10",
+      "path": "production/homeworld-sectors-20261103/sprites/market/HWM162-S10-free-market-canopy.png",
+      "sha256": "78347f7a7a79df9a265a38d7f2df24905626f783df371ad53ec554a05a104e93",
+      "bytes": 1863854
+    },
+    {
+      "id": "HWM162-S11",
+      "path": "production/homeworld-sectors-20261103/sprites/market/HWM162-S11-empty-merchant-counter.png",
+      "sha256": "5f3f3d7f3995bbe7e1b321ea7d8c5c11b1c351553f8bed700983e02388e5ec77",
+      "bytes": 2205367
+    },
+    {
+      "id": "HWM162-S12",
+      "path": "production/homeworld-sectors-20261103/sprites/market/HWM162-S12-empty-cargo-rack.png",
+      "sha256": "3be2caab5f363e4ca5a580457aa0ea11b1677a7386d4c2ca0c0f54f0b4c7bffb",
+      "bytes": 1128125
+    },
+    {
+      "id": "HWM162-S13",
+      "path": "production/homeworld-sectors-20261103/sprites/market/HWM162-S13-bound-cloth-roll.png",
+      "sha256": "477c5a8f4e1d7d7a19bff6b8b3bbe70523d9dd4774fb2e0cac3b25bb757ec0d9",
+      "bytes": 2150111
+    },
+    {
+      "id": "HWM162-S14",
+      "path": "production/homeworld-sectors-20261103/sprites/market/HWM162-S14-stock-shutter.png",
+      "sha256": "6cc6a0882277632aa08f4328d6e250770f954aa92b1667a842b5eb682dade7b0",
+      "bytes": 2391851
+    },
+    {
+      "id": "HWM162-M01",
+      "path": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M01-open-stable.png",
+      "sha256": "b2f958ccd6a992c269b94cf32900ccfc2a5b8c2063a231891c445c8396ec6518",
+      "bytes": 2196037
+    },
+    {
+      "id": "HWM162-M02",
+      "path": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M02-tether-station.png",
+      "sha256": "e61634fd7c5ea92792c06586e6b7edb4ed23b570084931177cb32774c80865fa",
+      "bytes": 1248514
+    },
+    {
+      "id": "HWM162-M03",
+      "path": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M03-mounting-platform.png",
+      "sha256": "c2997f12d43ba912223b9e339dca9ec5799a37d62397ee21aeef88f80f2277c7",
+      "bytes": 1479050
+    },
+    {
+      "id": "HWM162-M04",
+      "path": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M04-corral-fence.png",
+      "sha256": "4045b9d71693b66341d14b45dde68930d3664a56784d4bf1ce69c097e247a525",
+      "bytes": 1675317
+    },
+    {
+      "id": "HWM162-M05",
+      "path": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M05-training-hurdle.png",
+      "sha256": "3c5525569fdffe27192b92297476d23692f32e959c9404a91e8f64a75e9e81a2",
+      "bytes": 1318052
+    },
+    {
+      "id": "HWM162-M06",
+      "path": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M06-fauna-care-workstation.png",
+      "sha256": "a1dd1b7cb81a1b80ffd929381ec26f99d3e581ff5e1db98ac3514c72bfdd67da",
+      "bytes": 1421732
+    },
+    {
+      "id": "HWM162-M07",
+      "path": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M07-corral-corner.png",
+      "sha256": "dded60e7e63162ccc49821c124e11d501d317aa04f643663df7b553a3887dd0f",
+      "bytes": 1690323
+    },
+    {
+      "id": "HWM162-M08",
+      "path": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M08-open-gateway.png",
+      "sha256": "cd982603d1d7c51a2a88ad476fa59bfd58336f23cc30cc7ebb517917b81b212d",
+      "bytes": 1816504
+    },
+    {
+      "id": "HWM162-M09",
+      "path": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M09-sliding-gate-leaf.png",
+      "sha256": "455a9907fe96b5a73497923ae4b213fc9206aefae333638e6b420493985171f9",
+      "bytes": 1490374
+    },
+    {
+      "id": "HWM162-M10",
+      "path": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M10-empty-mount-feeder.png",
+      "sha256": "72d4f988cf024145df29ffe3f9b415437711387f9eb18ef5557e2c61fd80034e",
+      "bytes": 1096714
+    },
+    {
+      "id": "HWM162-M11",
+      "path": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M11-corral-diagonal-left-v2.png",
+      "sha256": "928ffc75d39105cc31b6562487d91212300d3d0649cb0b4849f36012f8b92ea7",
+      "bytes": 1997987
+    },
+    {
+      "id": "HWM162-M12",
+      "path": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M12-corral-diagonal-right.png",
+      "sha256": "8b24047d241df0b1849a9ef7bf98b834e29db2891ceb097d2decfceb76bd6bcd",
+      "bytes": 1427860
+    },
+    {
+      "id": "HWM162-M13",
+      "path": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M13-double-ended-tether.png",
+      "sha256": "f9636f0a0d7defd5885977758fafe54542bfb7d638bd4207d8004ea4a9c385cb",
+      "bytes": 1600052
+    },
+    {
+      "id": "HWM162-M14",
+      "path": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M14-hanging-mount-harness-v2.png",
+      "sha256": "d07668ce8a54d48cd8d5e340a5f6fb3361fa20724c4a7b84dd770d7474c9fba9",
+      "bytes": 2042441
+    },
+    {
+      "id": "HWM162-M15",
+      "path": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M15-soft-care-cradle-v2.png",
+      "sha256": "50593708ea5f1a7f2cd19c3bf537cc0b5d4a86e62e89e53cf87620e6388615dc",
+      "bytes": 1691979
+    },
+    {
+      "id": "HWM162-K01",
+      "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K01-kennel-building.png",
+      "sha256": "fedb9677d90ae72cfe2ee53e9a1f5751361ea1d88da2d9169137a22d2cd9d9a5",
+      "bytes": 2118034
+    },
+    {
+      "id": "HWM162-K02",
+      "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K02-handling-gate.png",
+      "sha256": "7d7a726ff442a711bf4212a7161d042659542d1a384056f1a1853743fa77068c",
+      "bytes": 2028210
+    },
+    {
+      "id": "HWM162-K03",
+      "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K03-training-rack.png",
+      "sha256": "95cef71793ec00c9a9d8ae8842e4e8beb3e83ac9eddf4be57820a2a965637797",
+      "bytes": 2124242
+    },
+    {
+      "id": "HWM162-K04",
+      "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K04-keeper-platform.png",
+      "sha256": "fa7bcf72db0315a379f90e5872153e75e29d9d2e893adaaac02c110d611e4a73",
+      "bytes": 1949477
+    },
+    {
+      "id": "HWM162-K05",
+      "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K05-resting-basin.png",
+      "sha256": "df1d8e518af28797dac239a4db5988bba8bd10e6eb702893833850df1ffbdecf",
+      "bytes": 2271437
+    },
+    {
+      "id": "HWM162-K06",
+      "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K06-sliding-mesh-panel.png",
+      "sha256": "1591ab6c1a112e5373c8260c2c62d5111659212b9cb219ed79f44262f6d0dee4",
+      "bytes": 1479154
+    },
+    {
+      "id": "HWM162-K07",
+      "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K07-handler-lead.png",
+      "sha256": "7b47106c7b7d92b180eb62ce496ef50883e34d83b521b4b1b912d76e0bf062d9",
+      "bytes": 1898963
+    },
+    {
+      "id": "HWM162-K08",
+      "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K08-woven-training-lure.png",
+      "sha256": "2140079cfbe57a3077add91e44152c7e32890159cf54b2dbd24c1ddacb56d698",
+      "bytes": 1389256
+    },
+    {
+      "id": "HWM162-K09",
+      "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K09-adjustable-collar.png",
+      "sha256": "97eb1a2a1ce1122604e6709f4aa61df37d4e8b9186ccca56c2bfd1251b969cb2",
+      "bytes": 2100105
+    },
+    {
+      "id": "HWM162-K10",
+      "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K10-small-cage-open.png",
+      "sha256": "75eb31d88524b14d8d3a037ef22632423e2717b0649a22595366d56321037e44",
+      "bytes": 1773286
+    },
+    {
+      "id": "HWM162-K11",
+      "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K11-medium-cage-open.png",
+      "sha256": "bfbacfe01f9b9ef08ea4397e9038dde7f6980e0951165905d725baf711b04898",
+      "bytes": 1630477
+    },
+    {
+      "id": "HWM162-K12",
+      "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K12-heavy-cage-open.png",
+      "sha256": "6aa80bb9abdf9934d3eb4ed2859a066720fb9e7f2c9e2056b83adf1608f37650",
+      "bytes": 2303040
+    },
+    {
+      "id": "HWM162-K13",
+      "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K13-energy-barrier-off.png",
+      "sha256": "8e668b68e046bc3ff5d888138ead1a1c0c4df556ad28d64ceae0c929cbd5a33c",
+      "bytes": 323930
+    },
+    {
+      "id": "HWM162-K14",
+      "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K14-empty-alien-drinker.png",
+      "sha256": "41ae672380f0ea8c9c3fa155739b0cda082f95cf63c70db4f1e45538d9c1de6a",
+      "bytes": 1996130
+    },
+    {
+      "id": "HWM162-K15",
+      "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K15-empty-hopper-feeder.png",
+      "sha256": "322c098200679914802402ec9df40374792ce9899bf55e4fedbd9836add9761e",
+      "bytes": 1378925
+    },
+    {
+      "id": "HWM162-K16",
+      "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K16-empty-training-rack.png",
+      "sha256": "a7c9909f84ec0c53cc5caee8ebdc53ca4f0c1cdbe6e71297fe940d6de7346d90",
+      "bytes": 1720354
+    },
+    {
+      "id": "HWM162-K17",
+      "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K17-danger-beacon-off.png",
+      "sha256": "7439ac5ebb4da79ab0fadea5d0117a30f5b9110273d59ae4e9a3ae4b68d705de",
+      "bytes": 1117033
+    }
+  ],
+  "previousSelectedBytes": 81613076,
+  "sectorAudits": {
+    "market": {
+      "version": "MMK-20261103-ROUND5-MARKET-AUDIT",
+      "date": "2026-11-03",
+      "baselineCommit": "7299b0fc2bd06dd53a45e3caab630bc75207d0ce",
+      "repository": "darknigthmare/yautja-la-longue-chasse",
+      "scope": "Marché,14sprites livrés et leurs sources historiques ; états/composants utiles de157 à170 et bâtiment97.",
+      "status": "APPROVED_PLAN_BEFORE_GENERATION",
+      "readOnlyRepositoryAudit": true,
+      "imagesGeneratedAtAudit": 0,
+      "trackedPathCount": 18824,
+      "trackedPathListSha256": "97f102d9239dadc920bc0c85a638c5a83f00ac075a259fc89bcadf3c395adbd4",
+      "priorAuditsRead": [
+        "modularity-audit-round2.json",
+        "modularity-audit-round3.json",
+        "modularity-audit-round4.json"
+      ],
+      "localGuidesRead": [
+        "AGENTS.md",
+        "docs/GAMEDEV_AGENT_GUIDE.md"
+      ],
+      "upstreamGuidePreviouslyRead": {
+        "repository": "gamedev-skills/awesome-gamedev-agent-skills",
+        "ref": "19d93f97c9c1ea0f8b306e77aa81e0d3e352d3e9",
+        "path": "skills/disciplines/create-game-assets/SKILL.md"
+      },
+      "examinedJSONSources": [
+        "production/homeworld-v158/manifest.json",
+        "production/homeworld-v160/catalogue.json",
+        "production/homeworld-v160/requirements-v81.json",
+        "production/homeworld-v161/manifest.json",
+        "production/homeworld-sectors-20261103/catalogue.json",
+        "production/homeworld-sectors-20261103/manifest.json"
+      ],
+      "filenameSearches": {
+        "pot_vessel": {
+          "pattern": "(?:^|[-_])(jar|urn|vase|pot|bowl|cup|vial|flask|canteen|amphor[a-z]*|vessel)(?:[-_.]|$)|jarre|amphore|flacon|bocal|récipient|recipient",
+          "hits": []
+        },
+        "cylinder_open": {
+          "pattern": "(cylinder|cylindre|canister|conteneur|container|bidon|reservoir).*(open|ouvert|lid|couvercle)|(open|ouvert).*(cylinder|cylindre|canister|conteneur|container|bidon)",
+          "hits": []
+        },
+        "rack_empty": {
+          "pattern": "(rack|presentoir|présentoir).*(empty|vide)|(empty|vide).*(rack|presentoir|présentoir)",
+          "hits": [
+            "production/homeworld-sectors-20261103/attempts/market/HWM162-S12-empty-cargo-rack-v1.png",
+            "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K16-empty-training-rack.png",
+            "production/homeworld-sectors-20261103/sprites/market/HWM162-S12-empty-cargo-rack.png"
+          ]
+        }
+      },
+      "existingMarketAssets": [
+        {
+          "id": "HWM162-S01",
+          "path": "production/homeworld-sectors-20261103/sprites/market/HWM162-S01-market-hall-v2.png",
+          "sha256": "494e77092642dc46ff0ebc79e2a54040e450b1fbc1c41e434caa8498ee01ca69",
+          "bytes": 1585597,
+          "matchesDeliveredManifest": true,
+          "targetIds": [
+            "target-v81-59-97"
+          ],
+          "decision": "PRESERVE_EXISTING_SOURCE",
+          "visuallyInspectedThisPass": false
+        },
+        {
+          "id": "HWM162-S02",
+          "path": "production/homeworld-sectors-20261103/sprites/market/HWM162-S02-long-market-stall.png",
+          "sha256": "c1e353660c697180604ca6cf805ad13eb14c2009e6213f3e83233acae518b00e",
+          "bytes": 1404783,
+          "matchesDeliveredManifest": true,
+          "targetIds": [
+            "target-v81-64-158"
+          ],
+          "decision": "PRESERVE_EXISTING_SOURCE",
+          "visuallyInspectedThisPass": true,
+          "observation": "Trois travées et comptoir long déjà vides. Pas de régénération.",
+          "inspectionPath": "/workspace/scratch/2166fec07f86/yautja-la-longue-chasse/production/homeworld-sectors-20261103/sprites/market/HWM162-S02-long-market-stall.png"
+        },
+        {
+          "id": "HWM162-S03",
+          "path": "production/homeworld-sectors-20261103/sprites/market/HWM162-S03-merchant-display.png",
+          "sha256": "9d9e720b4dc541e82fb0e3fffe73338c591fc9c39baa1fff6929617a9b3957ab",
+          "bytes": 2373548,
+          "matchesDeliveredManifest": true,
+          "targetIds": [
+            "target-v81-64-162"
+          ],
+          "decision": "PRESERVE_EXISTING_SOURCE",
+          "visuallyInspectedThisPass": true,
+          "observation": "Trois gradins libres et six crochets nus. Le masque supérieur fait partie du décor structurel. Aucun état vide manquant.",
+          "inspectionPath": "/workspace/scratch/2166fec07f86/yautja-la-longue-chasse/production/homeworld-sectors-20261103/sprites/market/HWM162-S03-merchant-display.png"
+        },
+        {
+          "id": "HWM162-S04",
+          "path": "production/homeworld-sectors-20261103/sprites/market/HWM162-S04-trophy-platform.png",
+          "sha256": "897a4024cd04edb42b557a08f8b40ee29d80c219e2de3061106265b69208a5d4",
+          "bytes": 2722757,
+          "matchesDeliveredManifest": true,
+          "targetIds": [
+            "target-v81-64-165"
+          ],
+          "decision": "PRESERVE_EXISTING_SOURCE",
+          "visuallyInspectedThisPass": true,
+          "observation": "Estrade et trois supports de trophées déjà vides. Aucun état vide manquant.",
+          "inspectionPath": "/workspace/scratch/2166fec07f86/yautja-la-longue-chasse/production/homeworld-sectors-20261103/sprites/market/HWM162-S04-trophy-platform.png"
+        },
+        {
+          "id": "HWM162-S05",
+          "path": "production/homeworld-sectors-20261103/sprites/market/HWM162-S05-stock-shelter.png",
+          "sha256": "a8f69759564a653a6b7488e8fc1a90706a1cdd573592feb2dcfe7a855c40a866",
+          "bytes": 2903672,
+          "matchesDeliveredManifest": true,
+          "targetIds": [
+            "target-v81-64-170"
+          ],
+          "decision": "PRESERVE_EXISTING_SOURCE",
+          "visuallyInspectedThisPass": false
+        },
+        {
+          "id": "HWM162-S06",
+          "path": "production/homeworld-sectors-20261103/sprites/market/HWM162-S06-removable-display-tray.png",
+          "sha256": "8e18a6f05375ac0179c606eb6631dc5cdab60b7d47723cf5e84088da1a7f2070",
+          "bytes": 1387042,
+          "matchesDeliveredManifest": true,
+          "targetIds": [
+            "target-v81-64-162"
+          ],
+          "decision": "PRESERVE_EXISTING_SOURCE",
+          "visuallyInspectedThisPass": false
+        },
+        {
+          "id": "HWM162-S07",
+          "path": "production/homeworld-sectors-20261103/sprites/market/HWM162-S07-market-cargo-pallet.png",
+          "sha256": "f196df3b9f6729887e467ed5035487fd5f4c8aac303dfe14c9901f482045a5ff",
+          "bytes": 1734429,
+          "matchesDeliveredManifest": true,
+          "targetIds": [
+            "target-v81-64-170"
+          ],
+          "decision": "PRESERVE_EXISTING_SOURCE",
+          "visuallyInspectedThisPass": false
+        },
+        {
+          "id": "HWM162-S08",
+          "path": "production/homeworld-sectors-20261103/sprites/market/HWM162-S08-open-merchant-crate.png",
+          "sha256": "594f6e1e3918bfaf93990ab0a7b04948558c17c5c5a4d870181a02bc9b3800a4",
+          "bytes": 2161796,
+          "matchesDeliveredManifest": true,
+          "targetIds": [
+            "target-v81-64-167"
+          ],
+          "decision": "PRESERVE_EXISTING_SOURCE",
+          "visuallyInspectedThisPass": false
+        },
+        {
+          "id": "HWM162-S09",
+          "path": "production/homeworld-sectors-20261103/sprites/market/HWM162-S09-detached-storage-cylinder.png",
+          "sha256": "256a92587ab41c0aa7a2d3f62151005df766defe5185640a556c6fa89675433b",
+          "bytes": 1805155,
+          "matchesDeliveredManifest": true,
+          "targetIds": [
+            "target-v81-64-166"
+          ],
+          "decision": "PRESERVE_EXISTING_SOURCE",
+          "visuallyInspectedThisPass": true,
+          "observation": "Cylindre autonome fermé avec poignée intégrée au couvercle. Conserver comme contenant ; aucun contenu attribué.",
+          "inspectionPath": "/workspace/scratch/2166fec07f86/yautja-la-longue-chasse/production/homeworld-sectors-20261103/sprites/market/HWM162-S09-detached-storage-cylinder.png"
+        },
+        {
+          "id": "HWM162-S10",
+          "path": "production/homeworld-sectors-20261103/sprites/market/HWM162-S10-free-market-canopy.png",
+          "sha256": "78347f7a7a79df9a265a38d7f2df24905626f783df371ad53ec554a05a104e93",
+          "bytes": 1863854,
+          "matchesDeliveredManifest": true,
+          "targetIds": [
+            "target-v81-64-161"
+          ],
+          "decision": "PRESERVE_EXISTING_SOURCE",
+          "visuallyInspectedThisPass": false
+        },
+        {
+          "id": "HWM162-S11",
+          "path": "production/homeworld-sectors-20261103/sprites/market/HWM162-S11-empty-merchant-counter.png",
+          "sha256": "5f3f3d7f3995bbe7e1b321ea7d8c5c11b1c351553f8bed700983e02388e5ec77",
+          "bytes": 2205367,
+          "matchesDeliveredManifest": true,
+          "targetIds": [
+            "target-v81-64-163"
+          ],
+          "decision": "PRESERVE_EXISTING_SOURCE",
+          "visuallyInspectedThisPass": true,
+          "observation": "Comptoir compact vide avec console fixe, trois cases et tablette libre. Réutilisable côté gauche sous réserve du placement.",
+          "inspectionPath": "/workspace/scratch/2166fec07f86/yautja-la-longue-chasse/production/homeworld-sectors-20261103/sprites/market/HWM162-S11-empty-merchant-counter.png"
+        },
+        {
+          "id": "HWM162-S12",
+          "path": "production/homeworld-sectors-20261103/sprites/market/HWM162-S12-empty-cargo-rack.png",
+          "sha256": "3be2caab5f363e4ca5a580457aa0ea11b1677a7386d4c2ca0c0f54f0b4c7bffb",
+          "bytes": 1128125,
+          "matchesDeliveredManifest": true,
+          "targetIds": [
+            "target-v81-64-164"
+          ],
+          "decision": "PRESERVE_EXISTING_SOURCE",
+          "visuallyInspectedThisPass": true,
+          "observation": "Rack vide à deux niveaux et tablettes porteuses, déjà autonome. Réutiliser pour le stock et ne pas créer un second rack vide sans besoin distinct.",
+          "inspectionPath": "/workspace/scratch/2166fec07f86/yautja-la-longue-chasse/production/homeworld-sectors-20261103/sprites/market/HWM162-S12-empty-cargo-rack.png"
+        },
+        {
+          "id": "HWM162-S13",
+          "path": "production/homeworld-sectors-20261103/sprites/market/HWM162-S13-bound-cloth-roll.png",
+          "sha256": "477c5a8f4e1d7d7a19bff6b8b3bbe70523d9dd4774fb2e0cac3b25bb757ec0d9",
+          "bytes": 2150111,
+          "matchesDeliveredManifest": true,
+          "targetIds": [
+            "target-v81-64-164",
+            "target-v81-64-170"
+          ],
+          "decision": "PRESERVE_EXISTING_SOURCE",
+          "visuallyInspectedThisPass": false
+        },
+        {
+          "id": "HWM162-S14",
+          "path": "production/homeworld-sectors-20261103/sprites/market/HWM162-S14-stock-shutter.png",
+          "sha256": "6cc6a0882277632aa08f4328d6e250770f954aa92b1667a842b5eb682dade7b0",
+          "bytes": 2391851,
+          "matchesDeliveredManifest": true,
+          "targetIds": [
+            "target-v81-64-170"
+          ],
+          "decision": "PRESERVE_EXISTING_SOURCE",
+          "visuallyInspectedThisPass": false
+        }
+      ],
+      "inspectedReferences": [
+        {
+          "path": "public/game/homeworld/v76/interior/rack-lateral.png",
+          "inspectionPath": "/workspace/scratch/2166fec07f86/round5-market-reference-inspection/public__game__homeworld__v76__interior__rack-lateral.png",
+          "bytes": 1196854,
+          "sha256": "441642d5ddacad9a03a45f068d0e95d588518ae18a5c02af897b2dd165436308",
+          "dimensions": [
+            1213,
+            1296
+          ],
+          "mode": "RGBA",
+          "visuallyInspectedThisPass": true,
+          "observation": "Trois tablettes chargées de rouleaux et quatre pots fermés. Le petit pot du milieu, à droite, a une forme ventrue à col court et couvercle bronze. Les pots sont incorporés au meuble ; S13 a déjà détaché le textile."
+        },
+        {
+          "path": "public/game/homeworld/v76/logistics-container-rack-native.png",
+          "inspectionPath": "/workspace/scratch/2166fec07f86/round5-market-reference-inspection/public__game__homeworld__v76__logistics-container-rack-native.png",
+          "bytes": 2074756,
+          "sha256": "e7e3097c0e665ad8a3a4c1d5dacd3f4dcffa8b01275b124895be4525d6345d90",
+          "dimensions": [
+            1312,
+            1199
+          ],
+          "mode": "RGBA",
+          "visuallyInspectedThisPass": true,
+          "observation": "Rack frontal à deux niveaux avec six cylindres retenus par sangles, et plateau inférieur chargé d’outils. Un cylindre autonome S09 existe ; S12 fournit déjà un rack porteur vide utilisable. Aucun nouveau rack retenu."
+        },
+        {
+          "path": "public/game/homeworld/v56/mask-pedestal.png",
+          "inspectionPath": "/workspace/scratch/2166fec07f86/round5-market-reference-inspection/public__game__homeworld__v56__mask-pedestal.png",
+          "bytes": 2691160,
+          "sha256": "76113c1a51b5ee6422dfdde3cc9e536de8b91d941724be939922977c4d42ba3b",
+          "dimensions": [
+            1024,
+            1536
+          ],
+          "mode": "RGBA",
+          "visuallyInspectedThisPass": true,
+          "observation": "Piédestal de masque déjà vide ; conserver. Aucun nouveau socle nécessaire."
+        },
+        {
+          "path": "production/homeworld-v160/originals/HWA160-048_presentoir-de-trophees-yautja-en-basalte.png",
+          "inspectionPath": "/workspace/scratch/2166fec07f86/round5-market-reference-inspection/production__homeworld-v160__originals__HWA160-048_presentoir-de-trophees-yautja-en-basalte.png",
+          "bytes": 1997820,
+          "sha256": "fdadb4f79a78fe9c5831dba0eb4f4c22707cc546ddf7946df4647775c694f020",
+          "dimensions": [
+            1254,
+            1254
+          ],
+          "mode": "RGBA",
+          "visuallyInspectedThisPass": true,
+          "observation": "Rack de prises et armes chargé, autonome comme ensemble. Les supports libres S03/S04 et les ressources de trophées existantes évitent de recréer un nouveau rack de présentation."
+        },
+        {
+          "path": "public/game/sprites/v33/pit-arenas/trophy-hall/p2-b-display-case-left.png",
+          "inspectionPath": "/workspace/scratch/2166fec07f86/round5-market-reference-inspection/public__game__sprites__v33__pit-arenas__trophy-hall__p2-b-display-case-left.png",
+          "bytes": 1867330,
+          "sha256": "db82e2e325488106b8af6f7e00b738bc390976592c4a100adade8c1b9532648d",
+          "dimensions": [
+            1024,
+            1536
+          ],
+          "mode": "RGBA",
+          "visuallyInspectedThisPass": true,
+          "observation": "Vitrine vide gauche existante, avec reflets dans la paroi ; source réutilisable, aucun nouveau meuble de vitrine."
+        },
+        {
+          "path": "public/game/sprites/v33/pit-arenas/trophy-hall/p2-c-display-case-right.png",
+          "inspectionPath": "/workspace/scratch/2166fec07f86/round5-market-reference-inspection/public__game__sprites__v33__pit-arenas__trophy-hall__p2-c-display-case-right.png",
+          "bytes": 1895261,
+          "sha256": "67a8a7e384fae056e816c00cdcbbc1b9626bf80bc83a5a2c8c1860c6fe73b2fa",
+          "dimensions": [
+            1024,
+            1536
+          ],
+          "mode": "RGBA",
+          "visuallyInspectedThisPass": true,
+          "observation": "Vitrine vide droite existante, avec reflets dans la paroi ; source réutilisable, aucun nouveau meuble de vitrine."
+        },
+        {
+          "path": "public/game/homeworld/v78/market-stall-right.png",
+          "inspectionPath": "/workspace/scratch/2166fec07f86/round3-market-reference-inspection/public__game__homeworld__v78__market-stall-right.png",
+          "sha256": "c98a90d777cf85e921681feb36c738216d8a99a945669e670234c65b65897796",
+          "gitBlob": "51ac4a639f41840d8e9bcd704119bff2a37b164f",
+          "currentHEADMatchesInspectedBytes": true,
+          "bytes": 2705219,
+          "dimensions": [
+            1536,
+            1024
+          ],
+          "mode": "RGBA",
+          "alpha24Box": [
+            46,
+            6,
+            1518,
+            966
+          ],
+          "alpha24Margins": [
+            46,
+            6,
+            18,
+            58
+          ],
+          "visuallyInspectedThisPass": true,
+          "observation": "Étal couvert chargé dans une vue oblique existante. Pots, bols, lots sur plateaux, textiles, peaux, deux coffres sous table et sacs suspendus occupent les surfaces. Silhouette entière, marge visible minimale 6px. Conserver le chargé et proposer seulement son état sans stock."
+        },
+        {
+          "path": "production/homeworld-v160/first-pack/HW1009_etale_marche_gauche.png",
+          "inspectionPath": "/workspace/scratch/2166fec07f86/round3-market-reference-inspection/production__homeworld-v160__first-pack__HW1009_etale_marche_gauche.png",
+          "sha256": "64bedca72cb9bc8685cda018b760f3c9995987ed5a965e9dc9ca236426c83769",
+          "gitBlob": "61b3005f35e555ca570c021a207c3364cc850b67",
+          "currentHEADMatchesInspectedBytes": true,
+          "bytes": 2432702,
+          "dimensions": [
+            1313,
+            1024
+          ],
+          "mode": "RGBA",
+          "alpha24Box": [
+            24,
+            6,
+            1289,
+            1017
+          ],
+          "alpha24Margins": [
+            24,
+            6,
+            24,
+            7
+          ],
+          "visuallyInspectedThisPass": true,
+          "observation": "Étal compact couvert chargé, vue oblique distincte du V78. Silhouette entière, marge visible minimale 6px. Source gauche conservée ; le comptoir S11 fournit déjà une option vide. Pas de nouvelle version à cette passe."
+        },
+        {
+          "path": "production/homeworld-v160/originals/HWA160-023_kiosque-marchand-yautja-en-basalte-et-bronze.png",
+          "inspectionPath": "/workspace/scratch/2166fec07f86/round3-market-reference-inspection/production__homeworld-v160__originals__HWA160-023_kiosque-marchand-yautja-en-basalte-et-bronze.png",
+          "sha256": "cff21dfa18b8d2bcaa74f8690b7a7ff1d4fc83f902f38af21c7ebc00b1dec3b3",
+          "gitBlob": "b20a7ebe4e3417cd113641696609a16fa5958429",
+          "currentHEADMatchesInspectedBytes": true,
+          "bytes": 1737441,
+          "dimensions": [
+            1254,
+            1254
+          ],
+          "mode": "RGBA",
+          "alpha24Box": [
+            202,
+            68,
+            1072,
+            1159
+          ],
+          "alpha24Margins": [
+            202,
+            68,
+            182,
+            95
+          ],
+          "visuallyInspectedThisPass": true,
+          "observation": "Petit kiosque compact autonome, contrairement au long V78. Le comptoir et les trois points de suspension sont chargés de prises/armes/pots/coffret. Silhouette entière et marge visible 68px. Un état sans ces objets permet de composer la cible157 ; conserver ses ornements de construction, les défenses de toit et les lampes."
+        }
+      ],
+      "approvedPlan": [
+        {
+          "id": "HWM162-S15",
+          "label": "Étal marchand diagonal droit — sans stock",
+          "area": "market",
+          "productionPass": 5,
+          "kind": "État vide",
+          "targetIds": [
+            "target-v81-64-160"
+          ],
+          "sourceAssetFiles": [
+            "public/game/homeworld/v78/market-stall-right.png"
+          ],
+          "expectedPath": "sprites/market/HWM162-S15-empty-market-stall-right.png",
+          "viewPolicy": "INHERIT_REFERENCE_VIEW",
+          "purpose": "Composer les marchandises séparément sur l’étal couvert diagonal droit, et montrer un stand déchargé.",
+          "placementNote": "Conserver l’accès vendeur et client ; vérifier le pivot, l’échelle et l’alignement avec la version chargée. Aucune superposition pixel par pixel garantie.",
+          "sourceRefs": [
+            "SRC-V81",
+            "SRC-CAMERA"
+          ],
+          "reason": "Le stock est fusionné au V78. S02 est frontal ; S11 ne porte pas cet auvent et cette orientation. Un état de cet objet précis est utile sans refaire son identité.",
+          "preserve": "Construction, toit, poteaux, comptoir, appuis, lampes et textiles fixes de la référence.",
+          "remove": "Marchandises sur table, coffres sous table, sacs suspendus et textiles/peaux posés comme stock.",
+          "decision": "APPROVED_BY_ROOT"
+        },
+        {
+          "id": "HWM162-S16",
+          "label": "Kiosque marchand compact — sans stock",
+          "area": "market",
+          "productionPass": 5,
+          "kind": "État vide",
+          "targetIds": [
+            "target-v81-64-157"
+          ],
+          "sourceAssetFiles": [
+            "production/homeworld-v160/originals/HWA160-023_kiosque-marchand-yautja-en-basalte-et-bronze.png"
+          ],
+          "expectedPath": "sprites/market/HWM162-S16-empty-compact-merchant-kiosk.png",
+          "viewPolicy": "INHERIT_REFERENCE_VIEW",
+          "purpose": "Libérer le comptoir et les accroches du kiosque court pour disposer des objets autonomes.",
+          "placementNote": "Conserver le gabarit visuel compact ; vérifier les points d’appui, l’accès et l’alignement avec l’état chargé avant intégration.",
+          "sourceRefs": [
+            "SRC-V81",
+            "SRC-CAMERA"
+          ],
+          "reason": "Le kiosque couvre déjà la forme courte de157, mais son stock et ses prises occupent le comptoir et les suspensions. Ni le long S02 ni le grand V78 ne remplacent cet état compact.",
+          "preserve": "Toit en peau, grandes défenses structurelles de toit, poteaux et socle, ornements gravés fixes, lampes fixes et attaches laissées nues.",
+          "remove": "Prises pendues mobiles, couteaux, pots, coffret et textile posé sur le comptoir.",
+          "decision": "APPROVED_BY_ROOT"
+        },
+        {
+          "id": "HWM162-S17",
+          "label": "Petit pot marchand fermé autonome",
+          "area": "market",
+          "productionPass": 5,
+          "kind": "Composant de stock",
+          "targetIds": [
+            "target-v81-64-166",
+            "target-v81-64-164"
+          ],
+          "sourceAssetFiles": [
+            "public/game/homeworld/v76/interior/rack-lateral.png"
+          ],
+          "expectedPath": "sprites/market/HWM162-S17-small-sealed-storage-jar.png",
+          "viewPolicy": "PROJECT_CAMERA_TARGET",
+          "purpose": "Placer un petit récipient de stock séparément sur les présentoirs, comptoirs et racks.",
+          "placementNote": "Adapter uniformément l’échelle et contrôler l’appui en scène. Aucun contenu, propriété matérielle officielle ou usage canonique attribué au récipient.",
+          "sourceRefs": [
+            "SRC-V81",
+            "SRC-CAMERA"
+          ],
+          "reason": "Les petits pots ventrus fermés du rack-lateral sont incorporés. S09 est un grand cylindre logistique différent ; aucun équivalent autonome spécifique identifié dans les chemins et catalogues inspectés.",
+          "decision": "APPROVED_BY_ROOT"
+        }
+      ],
+      "recommendedAdditionalPNGCount": 3,
+      "newBuildingCount": 0,
+      "canonicalOneToOneClaimed": false,
+      "humanValidated": false,
+      "runtimeIntegrated": false,
+      "absenceClaimLimit": "Recherche de chemins suivis, catalogues JSON cités et inspection directe des sources pertinentes. Aucune affirmation d’absence absolue de tous contenants/racks dans le jeu.",
+      "excludedOrReused": [
+        {
+          "candidate": "S03 vide / S04 vide / S02 vide",
+          "decision": "REJECT_DUPLICATE",
+          "evidence": "Les images sources sont déjà vides ; les crochets, supports et ornementations structurelles ne sont pas des marchandises."
+        },
+        {
+          "candidate": "Nouveau piédestal ou vitrine",
+          "decision": "REUSE_EXISTING",
+          "paths": [
+            "public/game/homeworld/v56/mask-pedestal.png",
+            "public/game/sprites/v33/pit-arenas/trophy-hall/p2-b-display-case-left.png",
+            "public/game/sprites/v33/pit-arenas/trophy-hall/p2-c-display-case-right.png"
+          ]
+        },
+        {
+          "candidate": "Rack logistique V76 vidé",
+          "decision": "DEFER_AS_REDUNDANT_FUNCTION",
+          "reason": "S12 possède déjà deux tablettes libres pour composer le stock. Aucun besoin distinct de géométrie ou d’état de ce second rack n’est établi à cette passe."
+        },
+        {
+          "candidate": "Nouveau stand gauche",
+          "decision": "REUSE_EXISTING",
+          "paths": [
+            "production/homeworld-v160/first-pack/HW1009_etale_marche_gauche.png",
+            "production/homeworld-sectors-20261103/sprites/market/HWM162-S11-empty-merchant-counter.png"
+          ],
+          "reason": "Deux sources conservées ; aucune coupe ou défaut d’identité qui impose une refonte. Échelle physique et raccord non certifiés."
+        },
+        {
+          "candidate": "Cylindre S09 ouvert",
+          "decision": "DEFER",
+          "reason": "Le contenant fermé autonome est déjà livré. Une nouvelle ouverture n’est pas prioritaire devant les deux surfaces de vente encore chargées ; aucun mécanisme canonique revendiqué."
+        },
+        {
+          "candidate": "Lampes, chariot, caisses, textile lié, auvent libre, volet ou nouveau bâtiment",
+          "decision": "REUSE_PREVIOUSLY_IDENTIFIED_ASSETS",
+          "reason": "Sources et composants déjà documentés aux passes2–4 ; aucun nouveau défaut constaté qui justifie une répétition."
+        }
+      ],
+      "stateAlignmentPolicy": "Les deux éditions conservent la vue visuelle de leur référence. L’orientation réelle n’est pas mesurée ; ni conversion globale à0°/35° ni superposition pixel par pixel ne sont promises.",
+      "generationPolicy": "Un appel ImageGen par sprite, fond transparent, copie des octets natifs sans retouche, reprise seulement pour un défaut concret. Préserver les14entrées et PNG antérieurs.",
+      "generationStatus": {
+        "HWM162-S15": "GENERATED_FIRST_ATTEMPT_REVIEWED_BY_GENERATOR",
+        "HWM162-S16": "GENERATED_FIRST_ATTEMPT_REVIEWED_BY_GENERATOR",
+        "HWM162-S17": "GENERATED_FIRST_ATTEMPT_REVIEWED_BY_GENERATOR"
+      },
+      "productionReceipt": "production/homeworld-sectors-20261103/receipts/market.json",
+      "selectedAssetCount": 3
+    },
+    "mounts": {
+      "schema_version": 1,
+      "scope": "mounts pass5",
+      "head": "7299b0fc2bd06dd53a45e3caab630bc75207d0ce",
+      "status": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+      "lore_status": "ORIGINAL_GAME_ADAPTATION",
+      "baseline_selected_pack_count": 46,
+      "baseline_mount_count": 15,
+      "inspected_sources": [
+        {
+          "path": "production/native-open-20261102/archives/fauna-energy/gear/target-v81-72-284-mount-saddle-native.png",
+          "local_reference": "/workspace/scratch/2166fec07f86/round3-mounts-references/target-v81-72-284-mount-saddle-native.png",
+          "sha256": "01569e77489c2296a019269eb863e7a3f48c16002991ad220b0a67b1719b4615",
+          "git_blob": "23e04a545e43cb8cfb30bc67b341cf48482cd1ef",
+          "matches_current_head": true,
+          "visual_observation": "Selle complète autonome, avec sangles et étriers ; son axe général monte vers la droite, comme le support285."
+        },
+        {
+          "path": "production/native-open-20261102/archives/fauna-energy/gear/target-v81-72-285-saddle-rack-native.png",
+          "local_reference": "/workspace/scratch/2166fec07f86/round3-mounts-references/target-v81-72-285-saddle-rack-native.png",
+          "sha256": "ea4496e16d3e74bd5beb121445a3b72451b3712ac717277112ab55c615ee834c",
+          "git_blob": "47adb345886fff058351581ae63543727cde5f9c",
+          "matches_current_head": true,
+          "visual_observation": "Support vide à deux berceaux rembourrés reliés ; aucune selle ou charge fusionnée."
+        },
+        {
+          "path": "public/game/homeworld/v84/care-cabinet-left.png",
+          "local_reference": "/workspace/scratch/2166fec07f86/round3-mounts-references/care-cabinet-left.png",
+          "sha256": "c46f74c8164af922cbbf176609adadadc1eb6522ffdbace357f3e21206e902e5",
+          "git_blob": "60c461596c5504a94ddc2fa2d030af13aa3362e8",
+          "matches_current_head": true,
+          "visual_observation": "Armoire de soins autonome fermée, à deux portes et un tiroir ; pas un kit d’outils détachés."
+        },
+        {
+          "path": "production/homeworld-v158/assets/sprites_png/HW1035_poste_soins_faune.png",
+          "local_reference": "/workspace/scratch/2166fec07f86/round3-mounts-references/HW1035_poste_soins_faune.png",
+          "sha256": "dbb7c4f30cb2dd4b31dff46049b2354962dba6eebc58f530b5a78d22c8e68656",
+          "git_blob": "7e6cde377b67d9e82b22a082e9f342f6c3477262",
+          "matches_current_head": true,
+          "visual_observation": "Petite icône composite de plateforme avec crâne/couverture ; le nom ne prouve pas un établi de soin ou un instrument autonome."
+        },
+        {
+          "path": "public/game/assets/v18/enemy-trophy-gameplay/enemy-trophy-buse-de-sterilisation.webp",
+          "local_reference": "/workspace/scratch/2166fec07f86/round4-mounts-references/enemy-trophy-buse-de-sterilisation.webp",
+          "sha256": "2f64859ef276e0676208294cb3403be612aa8b8d50179f4902f4aa1436f7051c",
+          "git_blob": "928e05636daa9dfffa7a635ee1e9b5b071781eaa",
+          "matches_current_head": true,
+          "visual_observation": "Buse métallique autonome de trophée/inventaire, identité à conserver ; aucune nouvelle utilisation vétérinaire déduite."
+        },
+        {
+          "path": "public/game/assets/v18/enemy-trophy-gameplay/enemy-trophy-injecteur-multidoses.webp",
+          "local_reference": "/workspace/scratch/2166fec07f86/round4-mounts-references/enemy-trophy-injecteur-multidoses.webp",
+          "sha256": "8413f81557a92c52d17ff86123ebb87403a0537b62c2c723eb5fc9864bbd5e11",
+          "git_blob": "c20499433476544cd122aecc48e03c254616daf8",
+          "matches_current_head": true,
+          "visual_observation": "Injecteur autonome d’inventaire, identité à conserver ; pas une absence de toute famille d’outils médicaux."
+        },
+        {
+          "id": "HWM162-M01",
+          "path": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M01-open-stable.png",
+          "sha256": "b2f958ccd6a992c269b94cf32900ccfc2a5b8c2063a231891c445c8396ec6518",
+          "visual_observation": "Écurie à trois baies ouvertes, avec fondations et toiture complets ; aucun besoin de nouveau bâtiment prouvé. Réemploi des barrières/portail existants proposé, sans fit certifié."
+        },
+        {
+          "id": "HWM162-M05",
+          "path": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M05-training-hurdle.png",
+          "sha256": "3c5525569fdffe27192b92297476d23692f32e959c9404a91e8f64a75e9e81a2",
+          "visual_observation": "Deux montants distincts reliés par une barre textile rembourrée. Chacun a son récepteur intérieur fixe, des logements de hauteur visibles et son pied. Le PNG fusionne les trois articles ; aucune pièce indépendante de cette identité trouvée."
+        },
+        {
+          "id": "HWM162-M06",
+          "path": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M06-fauna-care-workstation.png",
+          "sha256": "a1dd1b7cb81a1b80ffd929381ec26f99d3e581ff5e1db98ac3514c72bfdd67da",
+          "visual_observation": "Poste compact entier avec bassin vide, coussin fixe, lampe articulée, console, quatre tiroirs fermés et porte centrale fermée. Aucun outil détachable visible ne justifie une extraction de tiroir ou de coussin."
+        }
+      ],
+      "retained_plan": [
+        {
+          "id": "HWM162-M16",
+          "file": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M16-hurdle-left-upright-v2.png",
+          "target_id": "target-v81-72-289",
+          "component_of": "HWM162-M05",
+          "role": "Montant GAUCHE seul avec pied complet, récepteur intérieur orienté vers la droite et logements réellement visibles du M05.",
+          "source_reference": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M05-training-hurdle.png",
+          "lore_status": "ORIGINAL_GAME_ADAPTATION",
+          "status": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+          "view_policy": "INHERIT_REFERENCE_VIEW",
+          "camera_requested": {
+            "mode": "INHERIT_REFERENCE_VIEW",
+            "reference_repo_path": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M05-training-hurdle.png",
+            "source_request_if_known": {
+              "projection": "orthographic",
+              "yaw_degrees": 0,
+              "pitch_degrees": 35,
+              "authority": "Original M05 prompt request, not measured."
+            },
+            "camera_measured": false
+          },
+          "native_edit_plan": "Un objet par appel ; redessiner nativement depuis M05 sans recadrer, miroir ou rotation de pixels. Conserver sa vue, proportions, lumière, face intérieure et autant que possible sa position/échelle dans la toile1536x1024 de référence. Les autres articles sont absents et transparents.",
+          "visible_level_policy": "Conserver les logements/cotes réellement visibles ; ne pas imposer six niveaux ni inventer des logements cachés. La zone anciennement cachée par la barre reste une interprétation native limitée.",
+          "limits": [
+            "La correspondance exacte des pièces, leurs points de contact, leur espacement, hauteur réelle, charge admissible et réglage jouable ne sont pas validés.",
+            "Les deux montants ont des faces intérieures opposées et sont générés séparément ; aucune symétrie de pixels autorisée.",
+            "M05 complet reste préservé. Aucun nouveau type d’animal, règle de dressage ou canon n’est déduit."
+          ],
+          "initial_planned_file": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M16-hurdle-left-upright.png",
+          "root_visual_review_performed": true
+        },
+        {
+          "id": "HWM162-M17",
+          "file": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M17-hurdle-right-upright.png",
+          "target_id": "target-v81-72-289",
+          "component_of": "HWM162-M05",
+          "role": "Montant DROIT seul avec pied complet, récepteur intérieur orienté vers la gauche et logements réellement visibles du M05.",
+          "source_reference": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M05-training-hurdle.png",
+          "lore_status": "ORIGINAL_GAME_ADAPTATION",
+          "status": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+          "view_policy": "INHERIT_REFERENCE_VIEW",
+          "camera_requested": {
+            "mode": "INHERIT_REFERENCE_VIEW",
+            "reference_repo_path": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M05-training-hurdle.png",
+            "source_request_if_known": {
+              "projection": "orthographic",
+              "yaw_degrees": 0,
+              "pitch_degrees": 35,
+              "authority": "Original M05 prompt request, not measured."
+            },
+            "camera_measured": false
+          },
+          "native_edit_plan": "Un objet par appel ; redessiner nativement depuis M05 sans recadrer, miroir ou rotation de pixels. Conserver sa vue, proportions, lumière, face intérieure et autant que possible sa position/échelle dans la toile1536x1024 de référence. Les autres articles sont absents et transparents.",
+          "visible_level_policy": "Conserver les logements/cotes réellement visibles ; ne pas imposer six niveaux ni inventer des logements cachés. La zone anciennement cachée par la barre reste une interprétation native limitée.",
+          "limits": [
+            "La correspondance exacte des pièces, leurs points de contact, leur espacement, hauteur réelle, charge admissible et réglage jouable ne sont pas validés.",
+            "Les deux montants ont des faces intérieures opposées et sont générés séparément ; aucune symétrie de pixels autorisée.",
+            "M05 complet reste préservé. Aucun nouveau type d’animal, règle de dressage ou canon n’est déduit."
+          ],
+          "root_visual_review_performed": true
+        },
+        {
+          "id": "HWM162-M18",
+          "file": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M18-padded-training-rail.png",
+          "target_id": "target-v81-72-289",
+          "component_of": "HWM162-M05",
+          "role": "Barre rembourrée seule, habillage textile et deux embouts complets ; aucun récepteur ou morceau de montant fusionné.",
+          "source_reference": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M05-training-hurdle.png",
+          "lore_status": "ORIGINAL_GAME_ADAPTATION",
+          "status": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+          "view_policy": "INHERIT_REFERENCE_VIEW",
+          "camera_requested": {
+            "mode": "INHERIT_REFERENCE_VIEW",
+            "reference_repo_path": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M05-training-hurdle.png",
+            "source_request_if_known": {
+              "projection": "orthographic",
+              "yaw_degrees": 0,
+              "pitch_degrees": 35,
+              "authority": "Original M05 prompt request, not measured."
+            },
+            "camera_measured": false
+          },
+          "native_edit_plan": "Un objet par appel ; redessiner nativement depuis M05 sans recadrer, miroir ou rotation de pixels. Conserver sa vue, proportions, lumière, face intérieure et autant que possible sa position/échelle dans la toile1536x1024 de référence. Les autres articles sont absents et transparents.",
+          "visible_level_policy": "Conserver les logements/cotes réellement visibles ; ne pas imposer six niveaux ni inventer des logements cachés. La zone anciennement cachée par la barre reste une interprétation native limitée.",
+          "limits": [
+            "La correspondance exacte des pièces, leurs points de contact, leur espacement, hauteur réelle, charge admissible et réglage jouable ne sont pas validés.",
+            "Les deux montants ont des faces intérieures opposées et sont générés séparément ; aucune symétrie de pixels autorisée.",
+            "M05 complet reste préservé. Aucun nouveau type d’animal, règle de dressage ou canon n’est déduit."
+          ],
+          "root_visual_review_performed": true
+        }
+      ],
+      "search_evidence": {
+        "method": "Tracked filenames queried via git ls-tree and rg, current sector catalogue and receipts reviewed; this is a scoped absence claim, not proof that every visually related object in the repository was examined.",
+        "patterns": [
+          "hurdle|training|obstacle|traverse|poteau|montant|injecteur|sterilisation|pansement|suture|care[-_]|soin",
+          "medical|medic|treatment|first-aid|armoire|casier|cabinet|drawer|tiroir|barre|jump"
+        ],
+        "target_289_label": "petite zone d’entraînement",
+        "M05_original_brief": "Rounded breakaway rail held in shallow removable cradles, multiple adjustment recesses; requested4.5m clear span and1.3m height are design proposals only."
+      },
+      "rejected_or_reused": [
+        {
+          "candidate": "Nouvelle selle ou support vide285",
+          "decision": "REUSE_EXISTING",
+          "reason": "284 est déjà autonome et285 déjà vide ; leur axe général concorde. Pas de duplication ni nouvel état requis."
+        },
+        {
+          "candidate": "Nouveau bâtiment de montures",
+          "decision": "NOT_SELECTED",
+          "reason": "M01 couvre déjà l’écurie ouverte ; aucun nouveau composant architectural indispensable établi. M04/M07/M08/M09/M11/M12 restent les sources d’enclos."
+        },
+        {
+          "candidate": "Nouveaux outils de soin génériques",
+          "decision": "NOT_SELECTED",
+          "reason": "Buse et injecteur existent comme objets d’inventaire ; M06 et273/M15 fournissent poste et support. Ne pas déduire de nouvelle règle de soin ou identité vétérinaire de leur apparence."
+        },
+        {
+          "candidate": "État porte de rangement ouverte de M06",
+          "decision": "DEFERRED_LOWER_PRIORITY",
+          "reason": "La porte fermée et ses charnières sont visibles, mais aucune obligation de rangement interactif ni contenu n’est établi ; différé au profit de la modularité démontrable de M05."
+        },
+        {
+          "candidate": "M06 éteint ou autre coloration",
+          "decision": "NOT_SELECTED",
+          "reason": "Pas de nécessité d’état opérationnel démontrée ; variation de lumière seule insuffisante pour cette passe."
+        },
+        {
+          "candidate": "Conteneur de soin/eau supplémentaire",
+          "decision": "REUSE_EXISTING",
+          "reason": "S09 cylindre autonome et abreuvoirs/nourrisseurs pleins-vides existent ; contenu canonique ou clinique non attribué."
+        }
+      ],
+      "coordination": {
+        "kennels": "Agent chenils ne prévoit aucun nouvel outil de soin ; M06/M15/273 restent communs réutilisables.",
+        "root_decision": "M16 montant gauche, M17 montant droit et M18 barre seule approuvés ; génération après consignation du plan."
+      },
+      "baseline_mount_entries": [
+        {
+          "id": "HWM162-M01",
+          "file": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M01-open-stable.png",
+          "sha256": "b2f958ccd6a992c269b94cf32900ccfc2a5b8c2063a231891c445c8396ec6518",
+          "bytes": 2196037
+        },
+        {
+          "id": "HWM162-M02",
+          "file": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M02-tether-station.png",
+          "sha256": "e61634fd7c5ea92792c06586e6b7edb4ed23b570084931177cb32774c80865fa",
+          "bytes": 1248514
+        },
+        {
+          "id": "HWM162-M03",
+          "file": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M03-mounting-platform.png",
+          "sha256": "c2997f12d43ba912223b9e339dca9ec5799a37d62397ee21aeef88f80f2277c7",
+          "bytes": 1479050
+        },
+        {
+          "id": "HWM162-M04",
+          "file": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M04-corral-fence.png",
+          "sha256": "4045b9d71693b66341d14b45dde68930d3664a56784d4bf1ce69c097e247a525",
+          "bytes": 1675317
+        },
+        {
+          "id": "HWM162-M05",
+          "file": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M05-training-hurdle.png",
+          "sha256": "3c5525569fdffe27192b92297476d23692f32e959c9404a91e8f64a75e9e81a2",
+          "bytes": 1318052
+        },
+        {
+          "id": "HWM162-M06",
+          "file": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M06-fauna-care-workstation.png",
+          "sha256": "a1dd1b7cb81a1b80ffd929381ec26f99d3e581ff5e1db98ac3514c72bfdd67da",
+          "bytes": 1421732
+        },
+        {
+          "id": "HWM162-M07",
+          "file": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M07-corral-corner.png",
+          "sha256": "dded60e7e63162ccc49821c124e11d501d317aa04f643663df7b553a3887dd0f",
+          "bytes": 1690323
+        },
+        {
+          "id": "HWM162-M08",
+          "file": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M08-open-gateway.png",
+          "sha256": "cd982603d1d7c51a2a88ad476fa59bfd58336f23cc30cc7ebb517917b81b212d",
+          "bytes": 1816504
+        },
+        {
+          "id": "HWM162-M09",
+          "file": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M09-sliding-gate-leaf.png",
+          "sha256": "455a9907fe96b5a73497923ae4b213fc9206aefae333638e6b420493985171f9",
+          "bytes": 1490374
+        },
+        {
+          "id": "HWM162-M10",
+          "file": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M10-empty-mount-feeder.png",
+          "sha256": "72d4f988cf024145df29ffe3f9b415437711387f9eb18ef5557e2c61fd80034e",
+          "bytes": 1096714
+        },
+        {
+          "id": "HWM162-M11",
+          "file": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M11-corral-diagonal-left-v2.png",
+          "sha256": "928ffc75d39105cc31b6562487d91212300d3d0649cb0b4849f36012f8b92ea7",
+          "bytes": 1997987
+        },
+        {
+          "id": "HWM162-M12",
+          "file": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M12-corral-diagonal-right.png",
+          "sha256": "8b24047d241df0b1849a9ef7bf98b834e29db2891ceb097d2decfceb76bd6bcd",
+          "bytes": 1427860
+        },
+        {
+          "id": "HWM162-M13",
+          "file": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M13-double-ended-tether.png",
+          "sha256": "f9636f0a0d7defd5885977758fafe54542bfb7d638bd4207d8004ea4a9c385cb",
+          "bytes": 1600052
+        },
+        {
+          "id": "HWM162-M14",
+          "file": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M14-hanging-mount-harness-v2.png",
+          "sha256": "d07668ce8a54d48cd8d5e340a5f6fb3361fa20724c4a7b84dd770d7474c9fba9",
+          "bytes": 2042441
+        },
+        {
+          "id": "HWM162-M15",
+          "file": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M15-soft-care-cradle-v2.png",
+          "sha256": "50593708ea5f1a7f2cd19c3bf537cc0b5d4a86e62e89e53cf87620e6388615dc",
+          "bytes": 1691979
+        }
+      ],
+      "baseline_pack_selected": [
+        {
+          "id": "HWM162-S01",
+          "path": "production/homeworld-sectors-20261103/sprites/market/HWM162-S01-market-hall-v2.png",
+          "sha256": "494e77092642dc46ff0ebc79e2a54040e450b1fbc1c41e434caa8498ee01ca69",
+          "bytes": 1585597
+        },
+        {
+          "id": "HWM162-S02",
+          "path": "production/homeworld-sectors-20261103/sprites/market/HWM162-S02-long-market-stall.png",
+          "sha256": "c1e353660c697180604ca6cf805ad13eb14c2009e6213f3e83233acae518b00e",
+          "bytes": 1404783
+        },
+        {
+          "id": "HWM162-S03",
+          "path": "production/homeworld-sectors-20261103/sprites/market/HWM162-S03-merchant-display.png",
+          "sha256": "9d9e720b4dc541e82fb0e3fffe73338c591fc9c39baa1fff6929617a9b3957ab",
+          "bytes": 2373548
+        },
+        {
+          "id": "HWM162-S04",
+          "path": "production/homeworld-sectors-20261103/sprites/market/HWM162-S04-trophy-platform.png",
+          "sha256": "897a4024cd04edb42b557a08f8b40ee29d80c219e2de3061106265b69208a5d4",
+          "bytes": 2722757
+        },
+        {
+          "id": "HWM162-S05",
+          "path": "production/homeworld-sectors-20261103/sprites/market/HWM162-S05-stock-shelter.png",
+          "sha256": "a8f69759564a653a6b7488e8fc1a90706a1cdd573592feb2dcfe7a855c40a866",
+          "bytes": 2903672
+        },
+        {
+          "id": "HWM162-S06",
+          "path": "production/homeworld-sectors-20261103/sprites/market/HWM162-S06-removable-display-tray.png",
+          "sha256": "8e18a6f05375ac0179c606eb6631dc5cdab60b7d47723cf5e84088da1a7f2070",
+          "bytes": 1387042
+        },
+        {
+          "id": "HWM162-S07",
+          "path": "production/homeworld-sectors-20261103/sprites/market/HWM162-S07-market-cargo-pallet.png",
+          "sha256": "f196df3b9f6729887e467ed5035487fd5f4c8aac303dfe14c9901f482045a5ff",
+          "bytes": 1734429
+        },
+        {
+          "id": "HWM162-S08",
+          "path": "production/homeworld-sectors-20261103/sprites/market/HWM162-S08-open-merchant-crate.png",
+          "sha256": "594f6e1e3918bfaf93990ab0a7b04948558c17c5c5a4d870181a02bc9b3800a4",
+          "bytes": 2161796
+        },
+        {
+          "id": "HWM162-S09",
+          "path": "production/homeworld-sectors-20261103/sprites/market/HWM162-S09-detached-storage-cylinder.png",
+          "sha256": "256a92587ab41c0aa7a2d3f62151005df766defe5185640a556c6fa89675433b",
+          "bytes": 1805155
+        },
+        {
+          "id": "HWM162-S10",
+          "path": "production/homeworld-sectors-20261103/sprites/market/HWM162-S10-free-market-canopy.png",
+          "sha256": "78347f7a7a79df9a265a38d7f2df24905626f783df371ad53ec554a05a104e93",
+          "bytes": 1863854
+        },
+        {
+          "id": "HWM162-S11",
+          "path": "production/homeworld-sectors-20261103/sprites/market/HWM162-S11-empty-merchant-counter.png",
+          "sha256": "5f3f3d7f3995bbe7e1b321ea7d8c5c11b1c351553f8bed700983e02388e5ec77",
+          "bytes": 2205367
+        },
+        {
+          "id": "HWM162-S12",
+          "path": "production/homeworld-sectors-20261103/sprites/market/HWM162-S12-empty-cargo-rack.png",
+          "sha256": "3be2caab5f363e4ca5a580457aa0ea11b1677a7386d4c2ca0c0f54f0b4c7bffb",
+          "bytes": 1128125
+        },
+        {
+          "id": "HWM162-S13",
+          "path": "production/homeworld-sectors-20261103/sprites/market/HWM162-S13-bound-cloth-roll.png",
+          "sha256": "477c5a8f4e1d7d7a19bff6b8b3bbe70523d9dd4774fb2e0cac3b25bb757ec0d9",
+          "bytes": 2150111
+        },
+        {
+          "id": "HWM162-S14",
+          "path": "production/homeworld-sectors-20261103/sprites/market/HWM162-S14-stock-shutter.png",
+          "sha256": "6cc6a0882277632aa08f4328d6e250770f954aa92b1667a842b5eb682dade7b0",
+          "bytes": 2391851
+        },
+        {
+          "id": "HWM162-M01",
+          "path": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M01-open-stable.png",
+          "sha256": "b2f958ccd6a992c269b94cf32900ccfc2a5b8c2063a231891c445c8396ec6518",
+          "bytes": 2196037
+        },
+        {
+          "id": "HWM162-M02",
+          "path": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M02-tether-station.png",
+          "sha256": "e61634fd7c5ea92792c06586e6b7edb4ed23b570084931177cb32774c80865fa",
+          "bytes": 1248514
+        },
+        {
+          "id": "HWM162-M03",
+          "path": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M03-mounting-platform.png",
+          "sha256": "c2997f12d43ba912223b9e339dca9ec5799a37d62397ee21aeef88f80f2277c7",
+          "bytes": 1479050
+        },
+        {
+          "id": "HWM162-M04",
+          "path": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M04-corral-fence.png",
+          "sha256": "4045b9d71693b66341d14b45dde68930d3664a56784d4bf1ce69c097e247a525",
+          "bytes": 1675317
+        },
+        {
+          "id": "HWM162-M05",
+          "path": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M05-training-hurdle.png",
+          "sha256": "3c5525569fdffe27192b92297476d23692f32e959c9404a91e8f64a75e9e81a2",
+          "bytes": 1318052
+        },
+        {
+          "id": "HWM162-M06",
+          "path": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M06-fauna-care-workstation.png",
+          "sha256": "a1dd1b7cb81a1b80ffd929381ec26f99d3e581ff5e1db98ac3514c72bfdd67da",
+          "bytes": 1421732
+        },
+        {
+          "id": "HWM162-M07",
+          "path": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M07-corral-corner.png",
+          "sha256": "dded60e7e63162ccc49821c124e11d501d317aa04f643663df7b553a3887dd0f",
+          "bytes": 1690323
+        },
+        {
+          "id": "HWM162-M08",
+          "path": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M08-open-gateway.png",
+          "sha256": "cd982603d1d7c51a2a88ad476fa59bfd58336f23cc30cc7ebb517917b81b212d",
+          "bytes": 1816504
+        },
+        {
+          "id": "HWM162-M09",
+          "path": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M09-sliding-gate-leaf.png",
+          "sha256": "455a9907fe96b5a73497923ae4b213fc9206aefae333638e6b420493985171f9",
+          "bytes": 1490374
+        },
+        {
+          "id": "HWM162-M10",
+          "path": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M10-empty-mount-feeder.png",
+          "sha256": "72d4f988cf024145df29ffe3f9b415437711387f9eb18ef5557e2c61fd80034e",
+          "bytes": 1096714
+        },
+        {
+          "id": "HWM162-M11",
+          "path": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M11-corral-diagonal-left-v2.png",
+          "sha256": "928ffc75d39105cc31b6562487d91212300d3d0649cb0b4849f36012f8b92ea7",
+          "bytes": 1997987
+        },
+        {
+          "id": "HWM162-M12",
+          "path": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M12-corral-diagonal-right.png",
+          "sha256": "8b24047d241df0b1849a9ef7bf98b834e29db2891ceb097d2decfceb76bd6bcd",
+          "bytes": 1427860
+        },
+        {
+          "id": "HWM162-M13",
+          "path": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M13-double-ended-tether.png",
+          "sha256": "f9636f0a0d7defd5885977758fafe54542bfb7d638bd4207d8004ea4a9c385cb",
+          "bytes": 1600052
+        },
+        {
+          "id": "HWM162-M14",
+          "path": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M14-hanging-mount-harness-v2.png",
+          "sha256": "d07668ce8a54d48cd8d5e340a5f6fb3361fa20724c4a7b84dd770d7474c9fba9",
+          "bytes": 2042441
+        },
+        {
+          "id": "HWM162-M15",
+          "path": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M15-soft-care-cradle-v2.png",
+          "sha256": "50593708ea5f1a7f2cd19c3bf537cc0b5d4a86e62e89e53cf87620e6388615dc",
+          "bytes": 1691979
+        },
+        {
+          "id": "HWM162-K01",
+          "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K01-kennel-building.png",
+          "sha256": "fedb9677d90ae72cfe2ee53e9a1f5751361ea1d88da2d9169137a22d2cd9d9a5",
+          "bytes": 2118034
+        },
+        {
+          "id": "HWM162-K02",
+          "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K02-handling-gate.png",
+          "sha256": "7d7a726ff442a711bf4212a7161d042659542d1a384056f1a1853743fa77068c",
+          "bytes": 2028210
+        },
+        {
+          "id": "HWM162-K03",
+          "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K03-training-rack.png",
+          "sha256": "95cef71793ec00c9a9d8ae8842e4e8beb3e83ac9eddf4be57820a2a965637797",
+          "bytes": 2124242
+        },
+        {
+          "id": "HWM162-K04",
+          "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K04-keeper-platform.png",
+          "sha256": "fa7bcf72db0315a379f90e5872153e75e29d9d2e893adaaac02c110d611e4a73",
+          "bytes": 1949477
+        },
+        {
+          "id": "HWM162-K05",
+          "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K05-resting-basin.png",
+          "sha256": "df1d8e518af28797dac239a4db5988bba8bd10e6eb702893833850df1ffbdecf",
+          "bytes": 2271437
+        },
+        {
+          "id": "HWM162-K06",
+          "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K06-sliding-mesh-panel.png",
+          "sha256": "1591ab6c1a112e5373c8260c2c62d5111659212b9cb219ed79f44262f6d0dee4",
+          "bytes": 1479154
+        },
+        {
+          "id": "HWM162-K07",
+          "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K07-handler-lead.png",
+          "sha256": "7b47106c7b7d92b180eb62ce496ef50883e34d83b521b4b1b912d76e0bf062d9",
+          "bytes": 1898963
+        },
+        {
+          "id": "HWM162-K08",
+          "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K08-woven-training-lure.png",
+          "sha256": "2140079cfbe57a3077add91e44152c7e32890159cf54b2dbd24c1ddacb56d698",
+          "bytes": 1389256
+        },
+        {
+          "id": "HWM162-K09",
+          "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K09-adjustable-collar.png",
+          "sha256": "97eb1a2a1ce1122604e6709f4aa61df37d4e8b9186ccca56c2bfd1251b969cb2",
+          "bytes": 2100105
+        },
+        {
+          "id": "HWM162-K10",
+          "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K10-small-cage-open.png",
+          "sha256": "75eb31d88524b14d8d3a037ef22632423e2717b0649a22595366d56321037e44",
+          "bytes": 1773286
+        },
+        {
+          "id": "HWM162-K11",
+          "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K11-medium-cage-open.png",
+          "sha256": "bfbacfe01f9b9ef08ea4397e9038dde7f6980e0951165905d725baf711b04898",
+          "bytes": 1630477
+        },
+        {
+          "id": "HWM162-K12",
+          "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K12-heavy-cage-open.png",
+          "sha256": "6aa80bb9abdf9934d3eb4ed2859a066720fb9e7f2c9e2056b83adf1608f37650",
+          "bytes": 2303040
+        },
+        {
+          "id": "HWM162-K13",
+          "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K13-energy-barrier-off.png",
+          "sha256": "8e668b68e046bc3ff5d888138ead1a1c0c4df556ad28d64ceae0c929cbd5a33c",
+          "bytes": 323930
+        },
+        {
+          "id": "HWM162-K14",
+          "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K14-empty-alien-drinker.png",
+          "sha256": "41ae672380f0ea8c9c3fa155739b0cda082f95cf63c70db4f1e45538d9c1de6a",
+          "bytes": 1996130
+        },
+        {
+          "id": "HWM162-K15",
+          "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K15-empty-hopper-feeder.png",
+          "sha256": "322c098200679914802402ec9df40374792ce9899bf55e4fedbd9836add9761e",
+          "bytes": 1378925
+        },
+        {
+          "id": "HWM162-K16",
+          "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K16-empty-training-rack.png",
+          "sha256": "a7c9909f84ec0c53cc5caee8ebdc53ca4f0c1cdbe6e71297fe940d6de7346d90",
+          "bytes": 1720354
+        },
+        {
+          "id": "HWM162-K17",
+          "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K17-danger-beacon-off.png",
+          "sha256": "7439ac5ebb4da79ab0fadea5d0117a30f5b9110273d59ae4e9a3ae4b68d705de",
+          "bytes": 1117033
+        }
+      ],
+      "archived_mount_attempts": [
+        {
+          "owner_id": "HWM162-M11",
+          "file": "production/homeworld-sectors-20261103/attempts/mounts/HWM162-M11-corral-diagonal-left-v1.png",
+          "sha256": "e4d5ed338c745dd36b73597cafed281a2f70b1887c57dadd64b63945d5189a3a",
+          "reason": "One complete straight fence module, two vertical posts, three rails and low bracing, in the upper-left to lower-right orientation. Native generated view, no pixel rotation or mirroring. Entire feet and caps visible; top/bottom safety margins are smaller than requested. Geometry, projected rail heights, post overlap and exact join with M07 remain unverified in scene. No scripted edits, resizing or padding."
+        },
+        {
+          "owner_id": "HWM162-M14",
+          "file": "production/homeworld-sectors-20261103/attempts/mounts/HWM162-M14-hanging-mount-harness-v1.png",
+          "sha256": "55ef920fbf2dfa4ad96684823ef36cbee4b0ebf5dd54a1e9aae8cc8c62ce1b5f",
+          "reason": "Root visual review found that v1 upper loops were at the same screen height whereas support282 upper hooks define an oblique left-higher/right-lower axis."
+        },
+        {
+          "owner_id": "HWM162-M15",
+          "file": "production/homeworld-sectors-20261103/attempts/mounts/HWM162-M15-soft-care-cradle-v1.png",
+          "sha256": "3d7ddd8a125816441e057898f25371315a5d749f61461da62bb7459cde3348ee",
+          "reason": "Root visual review found that v1 long padded edges were frontal/horizontal whereas support273 has oblique rails rising toward the right."
+        }
+      ],
+      "camera_measured": false,
+      "assembly_runtime_validated": false,
+      "canon_1_to_1_claim": false,
+      "no_runtime_change": true,
+      "no_git_or_pr_action": true,
+      "baseline_46_pngs_byte_identical": true,
+      "baseline_15_receipt_entries_unchanged": true,
+      "delivery": [
+        {
+          "id": "HWM162-M16",
+          "file": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M16-hurdle-left-upright-v2.png",
+          "sha256": "344a740252dd99119e9f48a6f9fcb1c6211786667619206a218bf889007dfebd",
+          "bytes": 1089482,
+          "dimensions_px": [
+            1536,
+            1024
+          ],
+          "alpha_thresholds": {
+            "0": {
+              "comparison": "alpha > threshold",
+              "box": [
+                0,
+                53,
+                1506,
+                996
+              ],
+              "margins": [
+                0,
+                53,
+                30,
+                28
+              ],
+              "pixels": 89735
+            },
+            "8": {
+              "comparison": "alpha > threshold",
+              "box": [
+                166,
+                306,
+                470,
+                742
+              ],
+              "margins": [
+                166,
+                306,
+                1066,
+                282
+              ],
+              "pixels": 84982
+            },
+            "24": {
+              "comparison": "alpha > threshold",
+              "box": [
+                166,
+                307,
+                470,
+                742
+              ],
+              "margins": [
+                166,
+                307,
+                1066,
+                282
+              ],
+              "pixels": 84746
+            },
+            "128": {
+              "comparison": "alpha > threshold",
+              "box": [
+                167,
+                307,
+                469,
+                741
+              ],
+              "margins": [
+                167,
+                307,
+                1067,
+                283
+              ],
+              "pixels": 83935
+            }
+          },
+          "selected_attempt": 2,
+          "imagegen_calls_for_asset": 2,
+          "status": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+          "source_original": "/workspace/scratch/2166fec07f86/generated_images/exec-e8d1b6f0-546f-4487-b706-23dc136b95eb.png",
+          "camera_requested": {
+            "mode": "INHERIT_REFERENCE_VIEW",
+            "reference_repo_path": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M05-training-hurdle.png",
+            "source_request_if_known": {
+              "projection": "orthographic",
+              "yaw_degrees": 0,
+              "pitch_degrees": 35,
+              "authority": "Original M05 prompt request, not measured."
+            },
+            "actual_reference_view_inherited_requested": true,
+            "camera_measured": false,
+            "new_front_0_35_conversion_claimed": false
+          },
+          "root_visual_review_performed": true
+        },
+        {
+          "id": "HWM162-M17",
+          "file": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M17-hurdle-right-upright.png",
+          "sha256": "0a230a9593d54ab7f1e636c02e2dd77bb4af685eaa88618f410bd76d8a5e113f",
+          "bytes": 812690,
+          "dimensions_px": [
+            1536,
+            1024
+          ],
+          "alpha_thresholds": {
+            "0": {
+              "comparison": "alpha > threshold",
+              "box": [
+                31,
+                23,
+                1506,
+                957
+              ],
+              "margins": [
+                31,
+                23,
+                30,
+                67
+              ],
+              "pixels": 83838
+            },
+            "8": {
+              "comparison": "alpha > threshold",
+              "box": [
+                1073,
+                302,
+                1368,
+                739
+              ],
+              "margins": [
+                1073,
+                302,
+                168,
+                285
+              ],
+              "pixels": 80861
+            },
+            "24": {
+              "comparison": "alpha > threshold",
+              "box": [
+                1073,
+                303,
+                1367,
+                739
+              ],
+              "margins": [
+                1073,
+                303,
+                169,
+                285
+              ],
+              "pixels": 80649
+            },
+            "128": {
+              "comparison": "alpha > threshold",
+              "box": [
+                1073,
+                303,
+                1367,
+                738
+              ],
+              "margins": [
+                1073,
+                303,
+                169,
+                286
+              ],
+              "pixels": 79881
+            }
+          },
+          "selected_attempt": 1,
+          "imagegen_calls_for_asset": 1,
+          "status": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+          "source_original": "/workspace/scratch/2166fec07f86/generated_images/exec-25e39161-e719-4888-9de4-57e3a4af9969.png",
+          "camera_requested": {
+            "mode": "INHERIT_REFERENCE_VIEW",
+            "reference_repo_path": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M05-training-hurdle.png",
+            "source_request_if_known": {
+              "projection": "orthographic",
+              "yaw_degrees": 0,
+              "pitch_degrees": 35,
+              "authority": "Original M05 prompt request, not measured."
+            },
+            "actual_reference_view_inherited_requested": true,
+            "camera_measured": false,
+            "new_front_0_35_conversion_claimed": false
+          },
+          "root_visual_review_performed": true
+        },
+        {
+          "id": "HWM162-M18",
+          "file": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M18-padded-training-rail.png",
+          "sha256": "b06df21e7ff05796094c29fa790429335dc4026aeb7a9fd279af7aacdc4d81ce",
+          "bytes": 717037,
+          "dimensions_px": [
+            1536,
+            1024
+          ],
+          "alpha_thresholds": {
+            "0": {
+              "comparison": "alpha > threshold",
+              "box": [
+                219,
+                23,
+                1508,
+                892
+              ],
+              "margins": [
+                219,
+                23,
+                28,
+                132
+              ],
+              "pixels": 54347
+            },
+            "8": {
+              "comparison": "alpha > threshold",
+              "box": [
+                347,
+                479,
+                1185,
+                543
+              ],
+              "margins": [
+                347,
+                479,
+                351,
+                481
+              ],
+              "pixels": 51853
+            },
+            "24": {
+              "comparison": "alpha > threshold",
+              "box": [
+                348,
+                479,
+                1185,
+                543
+              ],
+              "margins": [
+                348,
+                479,
+                351,
+                481
+              ],
+              "pixels": 51677
+            },
+            "128": {
+              "comparison": "alpha > threshold",
+              "box": [
+                348,
+                480,
+                1184,
+                543
+              ],
+              "margins": [
+                348,
+                480,
+                352,
+                481
+              ],
+              "pixels": 50287
+            }
+          },
+          "selected_attempt": 1,
+          "imagegen_calls_for_asset": 1,
+          "status": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+          "source_original": "/workspace/scratch/2166fec07f86/generated_images/exec-f969e9e6-427a-4ab5-ab19-e0f512ab11f6.png",
+          "camera_requested": {
+            "mode": "INHERIT_REFERENCE_VIEW",
+            "reference_repo_path": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M05-training-hurdle.png",
+            "source_request_if_known": {
+              "projection": "orthographic",
+              "yaw_degrees": 0,
+              "pitch_degrees": 35,
+              "authority": "Original M05 prompt request, not measured."
+            },
+            "actual_reference_view_inherited_requested": true,
+            "camera_measured": false,
+            "new_front_0_35_conversion_claimed": false
+          },
+          "root_visual_review_performed": true
+        }
+      ],
+      "pass5_archived_attempts": [
+        {
+          "owner_id": "HWM162-M16",
+          "file": "production/homeworld-sectors-20261103/attempts/mounts/HWM162-M16-hurdle-left-upright-v1.png",
+          "sha256": "daa4d1e54bcfce7ef90d85e5908729d4850f06025ccd4aa07baec4189a7f91e8",
+          "bytes": 1226732,
+          "reason": "Root compared common-canvas heights: M16-v1 main silhouette474px high versus M17 436px, approximately8.7percent taller. One native proportion correction requested, with original M05 and M17 as guides."
+        }
+      ],
+      "generation_call_count_for_pass": 4,
+      "selected_new_count": 3,
+      "final_notes": [
+        "M16-v2 main alpha>24 silhouette is435px high versus436px for M17; v1 was474px. This bounding-size comparison is not a measured physical scale or mechanical fit.",
+        "Each upright keeps its own inward empty receiver, the rail keeps both end caps; no pixel mirroring or rotation was used.",
+        "Approximate original1536x1024 canvas placement is retained; exact spacing, receiver contacts and working height adjustment remain unverified.",
+        "Fifteen previous mount receipt entries and all46 previously selected PNGs remain unchanged."
+      ],
+      "root_visual_review": {
+        "performed": true,
+        "decision": "ALL_THREE_NEW_CANDIDATES_ACCEPTED",
+        "date": "2026-11-03",
+        "ids": [
+          "HWM162-M16",
+          "HWM162-M17",
+          "HWM162-M18"
+        ],
+        "limits_preserved": true
+      }
+    },
+    "kennels": {
+      "schemaVersion": 1,
+      "date": "2026-11-03",
+      "pass": 5,
+      "author": "kennel_references",
+      "status": "GENERATED_ROOT_REVIEW_ACCEPTED",
+      "repository": "darknigthmare/yautja-la-longue-chasse",
+      "pullRequest": 99,
+      "baselineCommit": "7299b0fc2bd06dd53a45e3caab630bc75207d0ce",
+      "scope": "Audit des17 chenils et décomposition native de266 ; quatre nouveaux composants retenus après revue racine. Les46 anciens PNG et leurs SHA sont conservés. Seuls les quatre nouveaux PNG, une archive de tentative et le reçu chenils sont écrits dans le pack par cet agent.",
+      "previousSelectedPNGCount": 46,
+      "previousKennelPNGCount": 17,
+      "preservedSelectedAssets": [
+        {
+          "id": "HWM162-S01",
+          "path": "production/homeworld-sectors-20261103/sprites/market/HWM162-S01-market-hall-v2.png",
+          "sha256": "494e77092642dc46ff0ebc79e2a54040e450b1fbc1c41e434caa8498ee01ca69",
+          "bytes": 1585597
+        },
+        {
+          "id": "HWM162-S02",
+          "path": "production/homeworld-sectors-20261103/sprites/market/HWM162-S02-long-market-stall.png",
+          "sha256": "c1e353660c697180604ca6cf805ad13eb14c2009e6213f3e83233acae518b00e",
+          "bytes": 1404783
+        },
+        {
+          "id": "HWM162-S03",
+          "path": "production/homeworld-sectors-20261103/sprites/market/HWM162-S03-merchant-display.png",
+          "sha256": "9d9e720b4dc541e82fb0e3fffe73338c591fc9c39baa1fff6929617a9b3957ab",
+          "bytes": 2373548
+        },
+        {
+          "id": "HWM162-S04",
+          "path": "production/homeworld-sectors-20261103/sprites/market/HWM162-S04-trophy-platform.png",
+          "sha256": "897a4024cd04edb42b557a08f8b40ee29d80c219e2de3061106265b69208a5d4",
+          "bytes": 2722757
+        },
+        {
+          "id": "HWM162-S05",
+          "path": "production/homeworld-sectors-20261103/sprites/market/HWM162-S05-stock-shelter.png",
+          "sha256": "a8f69759564a653a6b7488e8fc1a90706a1cdd573592feb2dcfe7a855c40a866",
+          "bytes": 2903672
+        },
+        {
+          "id": "HWM162-S06",
+          "path": "production/homeworld-sectors-20261103/sprites/market/HWM162-S06-removable-display-tray.png",
+          "sha256": "8e18a6f05375ac0179c606eb6631dc5cdab60b7d47723cf5e84088da1a7f2070",
+          "bytes": 1387042
+        },
+        {
+          "id": "HWM162-S07",
+          "path": "production/homeworld-sectors-20261103/sprites/market/HWM162-S07-market-cargo-pallet.png",
+          "sha256": "f196df3b9f6729887e467ed5035487fd5f4c8aac303dfe14c9901f482045a5ff",
+          "bytes": 1734429
+        },
+        {
+          "id": "HWM162-S08",
+          "path": "production/homeworld-sectors-20261103/sprites/market/HWM162-S08-open-merchant-crate.png",
+          "sha256": "594f6e1e3918bfaf93990ab0a7b04948558c17c5c5a4d870181a02bc9b3800a4",
+          "bytes": 2161796
+        },
+        {
+          "id": "HWM162-S09",
+          "path": "production/homeworld-sectors-20261103/sprites/market/HWM162-S09-detached-storage-cylinder.png",
+          "sha256": "256a92587ab41c0aa7a2d3f62151005df766defe5185640a556c6fa89675433b",
+          "bytes": 1805155
+        },
+        {
+          "id": "HWM162-S10",
+          "path": "production/homeworld-sectors-20261103/sprites/market/HWM162-S10-free-market-canopy.png",
+          "sha256": "78347f7a7a79df9a265a38d7f2df24905626f783df371ad53ec554a05a104e93",
+          "bytes": 1863854
+        },
+        {
+          "id": "HWM162-S11",
+          "path": "production/homeworld-sectors-20261103/sprites/market/HWM162-S11-empty-merchant-counter.png",
+          "sha256": "5f3f3d7f3995bbe7e1b321ea7d8c5c11b1c351553f8bed700983e02388e5ec77",
+          "bytes": 2205367
+        },
+        {
+          "id": "HWM162-S12",
+          "path": "production/homeworld-sectors-20261103/sprites/market/HWM162-S12-empty-cargo-rack.png",
+          "sha256": "3be2caab5f363e4ca5a580457aa0ea11b1677a7386d4c2ca0c0f54f0b4c7bffb",
+          "bytes": 1128125
+        },
+        {
+          "id": "HWM162-S13",
+          "path": "production/homeworld-sectors-20261103/sprites/market/HWM162-S13-bound-cloth-roll.png",
+          "sha256": "477c5a8f4e1d7d7a19bff6b8b3bbe70523d9dd4774fb2e0cac3b25bb757ec0d9",
+          "bytes": 2150111
+        },
+        {
+          "id": "HWM162-S14",
+          "path": "production/homeworld-sectors-20261103/sprites/market/HWM162-S14-stock-shutter.png",
+          "sha256": "6cc6a0882277632aa08f4328d6e250770f954aa92b1667a842b5eb682dade7b0",
+          "bytes": 2391851
+        },
+        {
+          "id": "HWM162-M01",
+          "path": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M01-open-stable.png",
+          "sha256": "b2f958ccd6a992c269b94cf32900ccfc2a5b8c2063a231891c445c8396ec6518",
+          "bytes": 2196037
+        },
+        {
+          "id": "HWM162-M02",
+          "path": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M02-tether-station.png",
+          "sha256": "e61634fd7c5ea92792c06586e6b7edb4ed23b570084931177cb32774c80865fa",
+          "bytes": 1248514
+        },
+        {
+          "id": "HWM162-M03",
+          "path": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M03-mounting-platform.png",
+          "sha256": "c2997f12d43ba912223b9e339dca9ec5799a37d62397ee21aeef88f80f2277c7",
+          "bytes": 1479050
+        },
+        {
+          "id": "HWM162-M04",
+          "path": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M04-corral-fence.png",
+          "sha256": "4045b9d71693b66341d14b45dde68930d3664a56784d4bf1ce69c097e247a525",
+          "bytes": 1675317
+        },
+        {
+          "id": "HWM162-M05",
+          "path": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M05-training-hurdle.png",
+          "sha256": "3c5525569fdffe27192b92297476d23692f32e959c9404a91e8f64a75e9e81a2",
+          "bytes": 1318052
+        },
+        {
+          "id": "HWM162-M06",
+          "path": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M06-fauna-care-workstation.png",
+          "sha256": "a1dd1b7cb81a1b80ffd929381ec26f99d3e581ff5e1db98ac3514c72bfdd67da",
+          "bytes": 1421732
+        },
+        {
+          "id": "HWM162-M07",
+          "path": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M07-corral-corner.png",
+          "sha256": "dded60e7e63162ccc49821c124e11d501d317aa04f643663df7b553a3887dd0f",
+          "bytes": 1690323
+        },
+        {
+          "id": "HWM162-M08",
+          "path": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M08-open-gateway.png",
+          "sha256": "cd982603d1d7c51a2a88ad476fa59bfd58336f23cc30cc7ebb517917b81b212d",
+          "bytes": 1816504
+        },
+        {
+          "id": "HWM162-M09",
+          "path": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M09-sliding-gate-leaf.png",
+          "sha256": "455a9907fe96b5a73497923ae4b213fc9206aefae333638e6b420493985171f9",
+          "bytes": 1490374
+        },
+        {
+          "id": "HWM162-M10",
+          "path": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M10-empty-mount-feeder.png",
+          "sha256": "72d4f988cf024145df29ffe3f9b415437711387f9eb18ef5557e2c61fd80034e",
+          "bytes": 1096714
+        },
+        {
+          "id": "HWM162-M11",
+          "path": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M11-corral-diagonal-left-v2.png",
+          "sha256": "928ffc75d39105cc31b6562487d91212300d3d0649cb0b4849f36012f8b92ea7",
+          "bytes": 1997987
+        },
+        {
+          "id": "HWM162-M12",
+          "path": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M12-corral-diagonal-right.png",
+          "sha256": "8b24047d241df0b1849a9ef7bf98b834e29db2891ceb097d2decfceb76bd6bcd",
+          "bytes": 1427860
+        },
+        {
+          "id": "HWM162-M13",
+          "path": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M13-double-ended-tether.png",
+          "sha256": "f9636f0a0d7defd5885977758fafe54542bfb7d638bd4207d8004ea4a9c385cb",
+          "bytes": 1600052
+        },
+        {
+          "id": "HWM162-M14",
+          "path": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M14-hanging-mount-harness-v2.png",
+          "sha256": "d07668ce8a54d48cd8d5e340a5f6fb3361fa20724c4a7b84dd770d7474c9fba9",
+          "bytes": 2042441
+        },
+        {
+          "id": "HWM162-M15",
+          "path": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M15-soft-care-cradle-v2.png",
+          "sha256": "50593708ea5f1a7f2cd19c3bf537cc0b5d4a86e62e89e53cf87620e6388615dc",
+          "bytes": 1691979
+        },
+        {
+          "id": "HWM162-K01",
+          "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K01-kennel-building.png",
+          "sha256": "fedb9677d90ae72cfe2ee53e9a1f5751361ea1d88da2d9169137a22d2cd9d9a5",
+          "bytes": 2118034
+        },
+        {
+          "id": "HWM162-K02",
+          "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K02-handling-gate.png",
+          "sha256": "7d7a726ff442a711bf4212a7161d042659542d1a384056f1a1853743fa77068c",
+          "bytes": 2028210
+        },
+        {
+          "id": "HWM162-K03",
+          "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K03-training-rack.png",
+          "sha256": "95cef71793ec00c9a9d8ae8842e4e8beb3e83ac9eddf4be57820a2a965637797",
+          "bytes": 2124242
+        },
+        {
+          "id": "HWM162-K04",
+          "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K04-keeper-platform.png",
+          "sha256": "fa7bcf72db0315a379f90e5872153e75e29d9d2e893adaaac02c110d611e4a73",
+          "bytes": 1949477
+        },
+        {
+          "id": "HWM162-K05",
+          "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K05-resting-basin.png",
+          "sha256": "df1d8e518af28797dac239a4db5988bba8bd10e6eb702893833850df1ffbdecf",
+          "bytes": 2271437
+        },
+        {
+          "id": "HWM162-K06",
+          "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K06-sliding-mesh-panel.png",
+          "sha256": "1591ab6c1a112e5373c8260c2c62d5111659212b9cb219ed79f44262f6d0dee4",
+          "bytes": 1479154
+        },
+        {
+          "id": "HWM162-K07",
+          "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K07-handler-lead.png",
+          "sha256": "7b47106c7b7d92b180eb62ce496ef50883e34d83b521b4b1b912d76e0bf062d9",
+          "bytes": 1898963
+        },
+        {
+          "id": "HWM162-K08",
+          "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K08-woven-training-lure.png",
+          "sha256": "2140079cfbe57a3077add91e44152c7e32890159cf54b2dbd24c1ddacb56d698",
+          "bytes": 1389256
+        },
+        {
+          "id": "HWM162-K09",
+          "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K09-adjustable-collar.png",
+          "sha256": "97eb1a2a1ce1122604e6709f4aa61df37d4e8b9186ccca56c2bfd1251b969cb2",
+          "bytes": 2100105
+        },
+        {
+          "id": "HWM162-K10",
+          "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K10-small-cage-open.png",
+          "sha256": "75eb31d88524b14d8d3a037ef22632423e2717b0649a22595366d56321037e44",
+          "bytes": 1773286
+        },
+        {
+          "id": "HWM162-K11",
+          "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K11-medium-cage-open.png",
+          "sha256": "bfbacfe01f9b9ef08ea4397e9038dde7f6980e0951165905d725baf711b04898",
+          "bytes": 1630477
+        },
+        {
+          "id": "HWM162-K12",
+          "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K12-heavy-cage-open.png",
+          "sha256": "6aa80bb9abdf9934d3eb4ed2859a066720fb9e7f2c9e2056b83adf1608f37650",
+          "bytes": 2303040
+        },
+        {
+          "id": "HWM162-K13",
+          "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K13-energy-barrier-off.png",
+          "sha256": "8e668b68e046bc3ff5d888138ead1a1c0c4df556ad28d64ceae0c929cbd5a33c",
+          "bytes": 323930
+        },
+        {
+          "id": "HWM162-K14",
+          "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K14-empty-alien-drinker.png",
+          "sha256": "41ae672380f0ea8c9c3fa155739b0cda082f95cf63c70db4f1e45538d9c1de6a",
+          "bytes": 1996130
+        },
+        {
+          "id": "HWM162-K15",
+          "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K15-empty-hopper-feeder.png",
+          "sha256": "322c098200679914802402ec9df40374792ce9899bf55e4fedbd9836add9761e",
+          "bytes": 1378925
+        },
+        {
+          "id": "HWM162-K16",
+          "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K16-empty-training-rack.png",
+          "sha256": "a7c9909f84ec0c53cc5caee8ebdc53ca4f0c1cdbe6e71297fe940d6de7346d90",
+          "bytes": 1720354
+        },
+        {
+          "id": "HWM162-K17",
+          "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K17-danger-beacon-off.png",
+          "sha256": "7439ac5ebb4da79ab0fadea5d0117a30f5b9110273d59ae4e9a3ae4b68d705de",
+          "bytes": 1117033
+        }
+      ],
+      "preservedKennelAssets": [
+        {
+          "id": "HWM162-K01",
+          "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K01-kennel-building.png",
+          "sha256": "fedb9677d90ae72cfe2ee53e9a1f5751361ea1d88da2d9169137a22d2cd9d9a5",
+          "bytes": 2118034,
+          "visuallyInspectedInPass5": true,
+          "finding": "Bâtiment entier à trois baies ouvertes. Ajouter une fermeture spécifique serait un composant proposé nouveau, non attesté dans le dessin ; différé."
+        },
+        {
+          "id": "HWM162-K02",
+          "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K02-handling-gate.png",
+          "sha256": "7d7a726ff442a711bf4212a7161d042659542d1a384056f1a1853743fa77068c",
+          "bytes": 2028210,
+          "visuallyInspectedInPass5": true,
+          "finding": "Portique indépendant ; fermeture indépendante K06 déjà présente."
+        },
+        {
+          "id": "HWM162-K03",
+          "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K03-training-rack.png",
+          "sha256": "95cef71793ec00c9a9d8ae8842e4e8beb3e83ac9eddf4be57820a2a965637797",
+          "bytes": 2124242,
+          "visuallyInspectedInPass5": true,
+          "finding": "Rack chargé ; état vide K16, laisse K07, leurre K08 et collier K09 déjà disponibles. Le leurre sphérique reste fusionné, mais sa fonction distincte du leurre cylindrique n’est pas démontrée."
+        },
+        {
+          "id": "HWM162-K04",
+          "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K04-keeper-platform.png",
+          "sha256": "fa7bcf72db0315a379f90e5872153e75e29d9d2e893adaaac02c110d611e4a73",
+          "bytes": 1949477,
+          "visuallyInspectedInPass5": true,
+          "finding": "Plateforme entière avec escalier utilisable. Une séparation escalier/plateforme exigerait une seconde plateforme sans escalier pour éviter le doublon ; aucun autre accès nécessaire établi."
+        },
+        {
+          "id": "HWM162-K05",
+          "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K05-resting-basin.png",
+          "sha256": "df1d8e518af28797dac239a4db5988bba8bd10e6eb702893833850df1ffbdecf",
+          "bytes": 2271437,
+          "visuallyInspectedInPass5": true,
+          "finding": "Fosse entière avec rampe et drainage ; pas de besoin autonome démontré pour la grille ou la bordure."
+        },
+        {
+          "id": "HWM162-K06",
+          "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K06-sliding-mesh-panel.png",
+          "sha256": "1591ab6c1a112e5373c8260c2c62d5111659212b9cb219ed79f44262f6d0dee4",
+          "bytes": 1479154,
+          "visuallyInspectedInPass5": true,
+          "finding": "Battant grillagé séparé du portique K02 ; n’est pas le battant à trois traverses de l’enclos 266."
+        },
+        {
+          "id": "HWM162-K07",
+          "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K07-handler-lead.png",
+          "sha256": "7b47106c7b7d92b180eb62ce496ef50883e34d83b521b4b1b912d76e0bf062d9",
+          "bytes": 1898963,
+          "visuallyInspectedInPass5": true,
+          "finding": "Laisse autonome posée. Une pose suspendue serait un complément d’orientation éventuel, mais elle n’est pas prioritaire sur la décomposition de 266."
+        },
+        {
+          "id": "HWM162-K08",
+          "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K08-woven-training-lure.png",
+          "sha256": "2140079cfbe57a3077add91e44152c7e32890159cf54b2dbd24c1ddacb56d698",
+          "bytes": 1389256,
+          "visuallyInspectedInPass5": true,
+          "finding": "Leurre cylindrique suspendu indépendant ; pas besoin démontré d’un second leurre sphérique."
+        },
+        {
+          "id": "HWM162-K09",
+          "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K09-adjustable-collar.png",
+          "sha256": "97eb1a2a1ce1122604e6709f4aa61df37d4e8b9186ccca56c2bfd1251b969cb2",
+          "bytes": 2100105,
+          "visuallyInspectedInPass5": true,
+          "finding": "Collier ouvert indépendant ; aucune compatibilité anatomique mesurée."
+        },
+        {
+          "id": "HWM162-K10",
+          "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K10-small-cage-open.png",
+          "sha256": "75eb31d88524b14d8d3a037ef22632423e2717b0649a22595366d56321037e44",
+          "bytes": 1773286,
+          "visuallyInspectedInPass5": true,
+          "finding": "Petite cage ouverte complète ; battant visible encore fusionné. Un kit modulaire exigerait corps sans battant et battant isolé, pas seulement un battant supplémentaire."
+        },
+        {
+          "id": "HWM162-K11",
+          "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K11-medium-cage-open.png",
+          "sha256": "bfbacfe01f9b9ef08ea4397e9038dde7f6980e0951165905d725baf711b04898",
+          "bytes": 1630477,
+          "visuallyInspectedInPass5": true,
+          "finding": "Cage moyenne avec trappe décalée à droite encore fusionnée. Une modularité réelle exigerait corps sans trappe + trappe ; aucun état modulaire existant retrouvé."
+        },
+        {
+          "id": "HWM162-K12",
+          "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K12-heavy-cage-open.png",
+          "sha256": "6aa80bb9abdf9934d3eb4ed2859a066720fb9e7f2c9e2056b83adf1608f37650",
+          "bytes": 2303040,
+          "visuallyInspectedInPass5": true,
+          "finding": "Cage lourde ouverte complète ; battant pivoté reste fusionné. Même besoin d’une paire corps/battant pour une décomposition ultérieure."
+        },
+        {
+          "id": "HWM162-K13",
+          "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K13-energy-barrier-off.png",
+          "sha256": "8e668b68e046bc3ff5d888138ead1a1c0c4df556ad28d64ceae0c929cbd5a33c",
+          "bytes": 323930,
+          "visuallyInspectedInPass5": true,
+          "finding": "Barrière éteinte ; la version active existe. Pas de nouvelle couleur/variante proposée."
+        },
+        {
+          "id": "HWM162-K14",
+          "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K14-empty-alien-drinker.png",
+          "sha256": "41ae672380f0ea8c9c3fa155739b0cda082f95cf63c70db4f1e45538d9c1de6a",
+          "bytes": 1996130,
+          "visuallyInspectedInPass5": true,
+          "finding": "Abreuvoir vide ; référence pleine existante. Pas de nouveau contenant identique."
+        },
+        {
+          "id": "HWM162-K15",
+          "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K15-empty-hopper-feeder.png",
+          "sha256": "322c098200679914802402ec9df40374792ce9899bf55e4fedbd9836add9761e",
+          "bytes": 1378925,
+          "visuallyInspectedInPass5": true,
+          "finding": "Bol et goulotte du nourrisseur vides ; source pleine existante. Couvercle fermé : intérieur de la trémie non attesté, pas de bac amovible déduit."
+        },
+        {
+          "id": "HWM162-K16",
+          "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K16-empty-training-rack.png",
+          "sha256": "a7c9909f84ec0c53cc5caee8ebdc53ca4f0c1cdbe6e71297fe940d6de7346d90",
+          "bytes": 1720354,
+          "visuallyInspectedInPass5": true,
+          "finding": "Rack vide ; maintien de l’état chargé et composants autonomes existants. Pas de nouveau rack."
+        },
+        {
+          "id": "HWM162-K17",
+          "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K17-danger-beacon-off.png",
+          "sha256": "7439ac5ebb4da79ab0fadea5d0117a30f5b9110273d59ae4e9a3ae4b68d705de",
+          "bytes": 1117033,
+          "visuallyInspectedInPass5": true,
+          "finding": "Balise éteinte ; référence active existante. Pas de plaque décorative ni état coloré supplémentaire."
+        }
+      ],
+      "exactReferences": [
+        {
+          "id": "enclosure266",
+          "path": "production/native-open-20261102/archives/fauna-energy/target-v81-71-266-enclosure-native.png",
+          "sha256": "b1ccdfd1407964e21498d54c3f8b9984b78e4b448cc415fdd02577762c65cdcb",
+          "gitBlobSha": "7f00ae704af5546fb1a9435ec9802291faa56904",
+          "bytes": 1029855,
+          "visuallyInspectedInPass5": true,
+          "previewPath": "/workspace/scratch/2166fec07f86/round3-references/target-v81-71-266-enclosure-native.png"
+        },
+        {
+          "id": "post267",
+          "path": "production/native-open-20261102/archives/fauna-energy/target-v81-71-267-enclosure-post-native.png",
+          "sha256": "cd67258d8e3931edc4ba42401dcdfaea41f78de3e1995b46873aebdaf0efe9b0",
+          "gitBlobSha": "ea98e8e6150b4c567a8d08ed98a06d367b7be7a1",
+          "bytes": 1293842,
+          "visuallyInspectedInPass5": true,
+          "previewPath": "/workspace/scratch/2166fec07f86/round3-references/target-v81-71-267-enclosure-post-native.png"
+        },
+        {
+          "id": "barrier268",
+          "path": "production/native-open-20261102/archives/fauna-energy/target-v81-71-268-enclosure-barrier-native-attempt02.png",
+          "sha256": "522bec7b485f7d7742f835ca8a2f609970998f906247d6258b8a5e71aff927cf",
+          "gitBlobSha": "7db657a29a8aedebdd9ed2573560da7d811b927e",
+          "bytes": 364392,
+          "visuallyInspectedInPass5": true,
+          "previewPath": "/workspace/scratch/2166fec07f86/round3-references/target-v81-71-268-enclosure-barrier-native-attempt02.png"
+        },
+        {
+          "id": "small276",
+          "path": "production/native-open-20261102/archives/fauna-energy/cages/target-v81-71-276-cage-petite-native.png",
+          "sha256": "b5e4da0ccb43732e03abde69a0eacee6a8a73c8282918aaf3bdead116c8c1073",
+          "gitBlobSha": "6f69a8cd7c14be293ec4550acdbcb7ccdef02af3",
+          "bytes": 2077790,
+          "visuallyInspectedInPass5": true,
+          "previewPath": "/workspace/scratch/2166fec07f86/round3-references/target-v81-71-276-cage-petite-native.png"
+        },
+        {
+          "id": "medium277",
+          "path": "production/native-open-20261102/archives/fauna-energy/cages/target-v81-71-277-cage-moyenne-native.png",
+          "sha256": "fc5e1a1a2123476f8cbb59b653e1757c5699b93d2a73b00a46ccdc74521bc8ca",
+          "gitBlobSha": "e39f3341adc17d16f024dabb5c4ca77f7da216e3",
+          "bytes": 1691658,
+          "visuallyInspectedInPass5": true,
+          "previewPath": "/workspace/scratch/2166fec07f86/round3-references/target-v81-71-277-cage-moyenne-native.png"
+        },
+        {
+          "id": "heavy278",
+          "path": "production/native-open-20261102/archives/fauna-energy/cages/target-v81-71-278-cage-lourde-native.png",
+          "sha256": "36ea82cb4cc0c9ed08d04e4264d4ae55ca34fd85729ed0bfeea9987f5a2f4fc0",
+          "gitBlobSha": "450677e0f8396db53ef5dc247f25b9cd83f9aae6",
+          "bytes": 2244917,
+          "visuallyInspectedInPass5": true,
+          "previewPath": "/workspace/scratch/2166fec07f86/round3-references/target-v81-71-278-cage-lourde-native.png"
+        },
+        {
+          "id": "HWM162-M04",
+          "path": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M04-corral-fence.png",
+          "sha256": "4045b9d71693b66341d14b45dde68930d3664a56784d4bf1ce69c097e247a525",
+          "bytes": 1675317,
+          "visuallyInspectedInPass5": true
+        },
+        {
+          "id": "HWM162-M07",
+          "path": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M07-corral-corner.png",
+          "sha256": "dded60e7e63162ccc49821c124e11d501d317aa04f643663df7b553a3887dd0f",
+          "bytes": 1690323,
+          "visuallyInspectedInPass5": true
+        }
+      ],
+      "referenceManifest": {
+        "path": "production/native-open-20261102/archives/fauna-energy/fauna-energy-production-manifest.json",
+        "targetId": "target-v81-71-266",
+        "promptSha256": "49917c5729aec42057dc75948707f1e06851e4a43b55b9a91e484c6a860db626",
+        "sourceFindings": "One connected empty polygon enclosure with a shut hinged front gate; transparent ground and bar gaps. Foreground/back occlusion and entry/collision would need native runtime layering design; no pixel split made."
+      },
+      "source266ObservedGeometry": {
+        "posts": 8,
+        "railSpans": 8,
+        "railsPerSpan": 3,
+        "gate": "one hinged short front-left span, closed",
+        "interior": "transparent floor, no animal, no floor plate",
+        "sourcePurpose": "original fauna containment prop; source prompt mentions large alien reptiles, not a measured 2010 or 2018 hound kennel"
+      },
+      "selectionRationale": "La séparation avant/arrière traite le manque d’occultation expressément conservé dans le manifeste source de 266 ; le battant séparé rend le passage indépendant. Ces pièces sont d’un modèle existant, sans quatrième cage ni nouveau soin.",
+      "proposedAdditionalPNGCount": 4,
+      "newAssetPlan": [
+        {
+          "area": "kennels",
+          "targetIds": [
+            "target-v81-71-266"
+          ],
+          "sourceAssetFiles": [
+            "production/native-open-20261102/archives/fauna-energy/target-v81-71-266-enclosure-native.png"
+          ],
+          "sourceAssetIds": [],
+          "sourceRefs": [
+            "SRC-V81",
+            "SRC-CAMERA"
+          ],
+          "sourceSha256": "b1ccdfd1407964e21498d54c3f8b9984b78e4b448cc415fdd02577762c65cdcb",
+          "loreStatus": "ORIGINAL_GAME_ADAPTATION",
+          "canonicalOneToOneClaimed": false,
+          "runtimeIntegrated": false,
+          "humanValidated": false,
+          "viewPolicy": "INHERIT_REFERENCE_VIEW",
+          "camera_requested": {
+            "mode": "INHERIT_REFERENCE_VIEW",
+            "sourceBriefProjection": "orthographic three-quarter",
+            "sourceBriefPitchDegrees": 32,
+            "sourceBriefPitchApproximate": true,
+            "actualCameraMeasured": false,
+            "frontal0Pitch35ConversionClaimed": false,
+            "sourcePromptSha256": "49917c5729aec42057dc75948707f1e06851e4a43b55b9a91e484c6a860db626"
+          },
+          "productionPass": 5,
+          "status": "GENERATED_ROOT_REVIEW_ACCEPTED",
+          "pixelExtractionAllowed": false,
+          "id": "HWM162-K18",
+          "label": "Arc arrière de l’enclos octogonal",
+          "kind": "Composant d’enclos",
+          "expectedPath": "sprites/kennels/HWM162-K18-enclosure-rear-arc.png",
+          "purpose": "Permettre de placer une créature devant la partie arrière, puis de placer les clôtures avant au-dessus sur une autre couche.",
+          "geometry": "Cinq travées arrière et latérales reliées, six poteaux, trois rails par travée ; aucune des deux travées avant fixes et aucun battant. Extrémités aux poteaux avant latéraux gauche et droit de la source.",
+          "generationNote": "Nouveau rendu natif indépendant à partir de la référence entière, sans découpe. Intérieur et intervalles entre les rails réellement transparents.",
+          "attachmentOwnership": "Six poteaux, dont le poteau de charnière avant gauche ; montures fixes de pivot conservées. Pas de poteau de réception de serrure avant-gauche intérieur.",
+          "selectedSha256": "6550a4e80f2fa0aaa332ff3942865ab49ce89abdf2a566592e3b01bc187349ea",
+          "selectedBytes": 608447,
+          "visualReview": "Arc arrière et retours reconnus : six poteaux, cinq travées, trois rails par travée ; façade avant, ses deux poteaux et battant absents. Charnière fixe conservée sur le poteau avant latéral gauche. Fenêtre centrale/avant de245000pixels alpha0..1. Silhouette entière, marge droite79px à alpha>24. Revue racine acceptée.",
+          "sourceSha256ByPath": {
+            "production/native-open-20261102/archives/fauna-energy/target-v81-71-266-enclosure-native.png": "b1ccdfd1407964e21498d54c3f8b9984b78e4b448cc415fdd02577762c65cdcb"
+          }
+        },
+        {
+          "area": "kennels",
+          "targetIds": [
+            "target-v81-71-266"
+          ],
+          "sourceAssetFiles": [
+            "production/native-open-20261102/archives/fauna-energy/target-v81-71-266-enclosure-native.png"
+          ],
+          "sourceAssetIds": [],
+          "sourceRefs": [
+            "SRC-V81",
+            "SRC-CAMERA"
+          ],
+          "sourceSha256": "b1ccdfd1407964e21498d54c3f8b9984b78e4b448cc415fdd02577762c65cdcb",
+          "loreStatus": "ORIGINAL_GAME_ADAPTATION",
+          "canonicalOneToOneClaimed": false,
+          "runtimeIntegrated": false,
+          "humanValidated": false,
+          "viewPolicy": "INHERIT_REFERENCE_VIEW",
+          "camera_requested": {
+            "mode": "INHERIT_REFERENCE_VIEW",
+            "sourceBriefProjection": "orthographic three-quarter",
+            "sourceBriefPitchDegrees": 32,
+            "sourceBriefPitchApproximate": true,
+            "actualCameraMeasured": false,
+            "frontal0Pitch35ConversionClaimed": false,
+            "sourcePromptSha256": "49917c5729aec42057dc75948707f1e06851e4a43b55b9a91e484c6a860db626"
+          },
+          "productionPass": 5,
+          "status": "GENERATED_ROOT_REVIEW_ACCEPTED",
+          "pixelExtractionAllowed": false,
+          "id": "HWM162-K19",
+          "label": "Arc avant fixe avec passage de portail libre",
+          "kind": "Composant d’enclos",
+          "expectedPath": "sprites/kennels/HWM162-K19-enclosure-front-arc.png",
+          "purpose": "Fournir l’occultation du premier plan tout en laissant le passage avant gauche réellement absent de clôture.",
+          "geometry": "Deux travées avant fixes reliées (frontale et diagonale droite), deux poteaux avant propres ; pas de duplication du poteau extrême droit porté par K18. Le raccord droit est une extrémité de rails sans poteau. Aucun battant ni rail dans la travée avant gauche.",
+          "generationNote": "Reconstruire nativement la pièce entière visible, garder l’inclinaison des deux segments et leur identité. Les raccords métriques restent à examiner après génération.",
+          "attachmentOwnership": "Deux poteaux avant dont le poteau de réception de serrure, fixe. Le poteau extrême droit du raccord est dans K18 et ne doit pas être répété.",
+          "selectedSha256": "e1157b98f951c2c62c71a4392ecb13b480c1bf5a7c7930510418ac879ccd225d",
+          "selectedBytes": 729832,
+          "visualReview": "Deux travées avant fixes reliées et deux poteaux propres ; trois rails par travée. Réception de serrure fixe à gauche. Extrémités de raccord à droite sans troisième poteau : le poteau correspondant appartient à K18. Pièce agrandie et recentrée nativement par rapport à266 ; pas de superposition pixel commune certifiée. Silhouette entière, marge droite75px. Revue racine acceptée.",
+          "sourceSha256ByPath": {
+            "production/native-open-20261102/archives/fauna-energy/target-v81-71-266-enclosure-native.png": "b1ccdfd1407964e21498d54c3f8b9984b78e4b448cc415fdd02577762c65cdcb"
+          }
+        },
+        {
+          "area": "kennels",
+          "targetIds": [
+            "target-v81-71-266"
+          ],
+          "sourceAssetFiles": [
+            "production/native-open-20261102/archives/fauna-energy/target-v81-71-266-enclosure-native.png"
+          ],
+          "sourceAssetIds": [],
+          "sourceRefs": [
+            "SRC-V81",
+            "SRC-CAMERA"
+          ],
+          "sourceSha256": "b1ccdfd1407964e21498d54c3f8b9984b78e4b448cc415fdd02577762c65cdcb",
+          "loreStatus": "ORIGINAL_GAME_ADAPTATION",
+          "canonicalOneToOneClaimed": false,
+          "runtimeIntegrated": false,
+          "humanValidated": false,
+          "viewPolicy": "INHERIT_REFERENCE_VIEW",
+          "camera_requested": {
+            "mode": "INHERIT_REFERENCE_VIEW",
+            "sourceBriefProjection": "orthographic three-quarter",
+            "sourceBriefPitchDegrees": 32,
+            "sourceBriefPitchApproximate": true,
+            "actualCameraMeasured": false,
+            "frontal0Pitch35ConversionClaimed": false,
+            "sourcePromptSha256": "49917c5729aec42057dc75948707f1e06851e4a43b55b9a91e484c6a860db626"
+          },
+          "productionPass": 5,
+          "status": "GENERATED_ROOT_REVIEW_ACCEPTED",
+          "pixelExtractionAllowed": false,
+          "id": "HWM162-K20",
+          "label": "Battant avant gauche indépendant de l’enclos",
+          "kind": "Battant",
+          "expectedPath": "sprites/kennels/HWM162-K20-enclosure-gate-leaf.png",
+          "purpose": "Permettre d’ajouter ou retirer la fermeture du passage séparément du corps, et disposer du battant comme pièce autonome.",
+          "geometry": "Un seul petit battant à trois traverses, cadre/paumelles/loquet visibles, dans la pose fermée diagonale avant gauche de 266 ; aucun poteau de clôture, aucune autre travée.",
+          "generationNote": "L’absence de cette pièce représente un passage dégagé sans battant représenté. Ce n’est pas une animation ni un état de battant pivoté ouvert ; cette pose n’est pas encore proposée.",
+          "attachmentOwnership": "Le battant et ses pièces mobiles seulement ; pas de poteau, pas de boîtier récepteur fixe. Les demi-paumelles mobiles restent sur le battant.",
+          "selectedSha256": "b121828ca30e8dc84249666783ccbc8a23a769d74e4586bbad160279c141a290",
+          "selectedBytes": 1663506,
+          "visualReview": "Battant seul dans le plan fermé diagonal descendant vers la droite ; trois traverses et deux vides, paumelles mobiles à gauche, loquet mobile à droite, aucun poteau. Seconde sortie retenue après suppression native de l’insert ambre copié à tort du poteau récepteur. Le loquet reste entièrement mécanique et non lumineux. Cadrage paysage et résolution propres ; raccord non certifié. Revue racine acceptée.",
+          "sourceSha256ByPath": {
+            "production/native-open-20261102/archives/fauna-energy/target-v81-71-266-enclosure-native.png": "b1ccdfd1407964e21498d54c3f8b9984b78e4b448cc415fdd02577762c65cdcb"
+          }
+        },
+        {
+          "area": "kennels",
+          "targetIds": [
+            "target-v81-71-266"
+          ],
+          "sourceAssetFiles": [
+            "production/native-open-20261102/archives/fauna-energy/target-v81-71-266-enclosure-native.png",
+            "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K20-enclosure-gate-leaf.png"
+          ],
+          "sourceAssetIds": [
+            "HWM162-K20"
+          ],
+          "sourceRefs": [
+            "SRC-V81",
+            "SRC-CAMERA"
+          ],
+          "sourceSha256": "b1ccdfd1407964e21498d54c3f8b9984b78e4b448cc415fdd02577762c65cdcb",
+          "loreStatus": "ORIGINAL_GAME_ADAPTATION",
+          "canonicalOneToOneClaimed": false,
+          "runtimeIntegrated": false,
+          "humanValidated": false,
+          "viewPolicy": "INHERIT_REFERENCE_VIEW",
+          "camera_requested": {
+            "mode": "INHERIT_REFERENCE_VIEW",
+            "sourceBriefProjection": "orthographic three-quarter",
+            "sourceBriefPitchDegrees": 32,
+            "sourceBriefPitchApproximate": true,
+            "actualCameraMeasured": false,
+            "frontal0Pitch35ConversionClaimed": false,
+            "sourcePromptSha256": "49917c5729aec42057dc75948707f1e06851e4a43b55b9a91e484c6a860db626"
+          },
+          "productionPass": 5,
+          "status": "GENERATED_ROOT_REVIEW_ACCEPTED",
+          "pixelExtractionAllowed": false,
+          "id": "HWM162-K21",
+          "label": "Battant seul ouvert vers l’extérieur",
+          "kind": "Battant",
+          "expectedPath": "sprites/kennels/HWM162-K21-enclosure-gate-leaf-open.png",
+          "purpose": "Garder visible la porte sur une couche indépendante lorsque le passage est ouvert.",
+          "geometry": "Même battant, pivoté autour de la charnière verticale visible de 266 vers l’extérieur de l’octogone ; aucun poteau, même caméra héritée.",
+          "generationNote": "Rotation de l’objet proposée ; angle et raccord non mesurés. La face jusque-là cachée est reconstruite comme adaptation originale. Aucun mécanisme nouveau.",
+          "attachmentOwnership": "Battant et demi-paumelles mobiles seuls ; poteau de charnière appartient à K18 et réception fixe à K19.",
+          "selectedSha256": "e3db8d71f15a449bbdacf717368015d3f1033dc40ca1f7eaaa632b478c4d3c3f",
+          "selectedBytes": 1697716,
+          "visualReview": "Même famille de battant, pose ouverte vers l’extérieur proposée : charnières hautes à droite et bord libre/loquet bas à gauche ; trois traverses, deux vides, aucun voyant ni poteau. Génération native à partir de266 et du K20 corrigé, sans miroir de pixels. Face nouvellement visible reconstruite comme adaptation ; angle de pivotement, position de charnière et raccord non mesurés. Silhouette entière, marges haute/basse41/42px. Revue racine acceptée.",
+          "sourceSha256ByPath": {
+            "production/native-open-20261102/archives/fauna-energy/target-v81-71-266-enclosure-native.png": "b1ccdfd1407964e21498d54c3f8b9984b78e4b448cc415fdd02577762c65cdcb",
+            "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K20-enclosure-gate-leaf.png": "b121828ca30e8dc84249666783ccbc8a23a769d74e4586bbad160279c141a290"
+          }
+        }
+      ],
+      "exclusions": [
+        {
+          "candidate": "Trois battants de cage seuls",
+          "decision": "DEFER",
+          "reason": "Les modèles 276–278 et K10–K12 conservent tous leur battant. Sans corps sans battant, trois nouveaux panneaux ne constituent pas un kit utilisable sans doublon. Les états ouverts/fermés existent déjà."
+        },
+        {
+          "candidate": "Kits corps et battant pour trois cages",
+          "decision": "DEFER",
+          "reason": "Six pièces de décomposition seraient défendables ultérieurement, mais le besoin d’occultation de 266 est plus direct et n’est pas couvert par des composants existants."
+        },
+        {
+          "candidate": "Nouvel enclos complet avec portail ouvert",
+          "decision": "DO_NOT_GENERATE_THIS_PASS",
+          "reason": "Une nouvelle image complète garderait le premier plan fusionné au fond ; la décomposition proposée traite aussi l’occultation."
+        },
+        {
+          "candidate": "Nouveau poteau ou barrière de raccord",
+          "decision": "REUSE_EXISTING_267_268",
+          "reason": "267 et 268 existent comme équipements autonomes. Leurs géométries ne reproduisent toutefois pas exactement les arcs de 266 ; aucun raccord métrique n’est certifié."
+        },
+        {
+          "candidate": "Nouvel équipement de soin chenils",
+          "decision": "REUSE_SHARED",
+          "reason": "Support faune 273, établi M06 et berceau M15 sont disponibles ; coordination avec l’agent montures pour éviter un doublon."
+        },
+        {
+          "candidate": "Nouvelles mangeoires, abreuvoirs, balises ou racks",
+          "decision": "REUSE_EXISTING_STATES",
+          "reason": "Couples plein/vide, actif/éteint et chargé/vide déjà fournis."
+        },
+        {
+          "candidate": "Portes pour les trois baies K01",
+          "decision": "DEFER_NEW_DESIGN",
+          "reason": "Aucune fermeture mobile précise visible dans K01. Une grille de baie serait une nouvelle adaptation fonctionnelle, à décider séparément plutôt que la présenter comme partie historique manquante."
+        },
+        {
+          "candidate": "Escalier de K04 séparé",
+          "decision": "DEFER",
+          "reason": "Fonction d’accès déjà couverte ; il faudrait aussi une plateforme sans escalier et un besoin d’orientation déterminé."
+        },
+        {
+          "candidate": "Leurre sphérique et variantes de couleur",
+          "decision": "NO_DISTINCT_FUNCTION_DEMONSTRATED",
+          "reason": "Autre silhouette du leurre existant, utilité modulaire inférieure à l’arc arrière/avant de l’enclos."
+        }
+      ],
+      "checksRequiredAfterGeneration": [
+        "Chaque sortie est une pièce native, sans extraction ni retouche de pixels.",
+        "Silhouette entière, vrai fond alpha, seuils 0/8/24/128 consignés.",
+        "Arc arrière : cinq travées/six poteaux ; arc avant : deux travées/deux poteaux ; aucun poteau ajouté en double.",
+        "La travée avant gauche reste libre dans les deux arcs ; le battant est un PNG distinct.",
+        "Examiner visuellement orientations, proportions et raccords ; ne pas certifier une registration pixel par pixel sans preuve.",
+        "Aucun animal, aucune anatomie ou capacité d’hébergement certifiée, aucune animation/runtime activée."
+      ],
+      "canonicalOneToOneClaimed": false,
+      "runtimeIntegrated": false,
+      "humanValidated": false,
+      "imageGenerationStarted": true,
+      "sourceViewMeasured": false,
+      "sourceSpeciesFitVerified": false,
+      "selectedAdditionalPNGCount": 4,
+      "imageGenerationComplete": true,
+      "generatedAdditionalPNGCount": 4,
+      "generationCallCount": 5,
+      "archivedUnselectedAttemptCount": 1,
+      "selectedArtifacts": [
+        {
+          "id": "HWM162-K18",
+          "path": "/workspace/scratch/2166fec07f86/yautja-la-longue-chasse/production/homeworld-sectors-20261103/sprites/kennels/HWM162-K18-enclosure-rear-arc.png",
+          "repo_path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K18-enclosure-rear-arc.png",
+          "original": "/workspace/scratch/2166fec07f86/generated_images/exec-1cc69989-0d20-41c7-b3c4-172619ee23fe.png",
+          "bytes": 608447,
+          "sha256": "6550a4e80f2fa0aaa332ff3942865ab49ce89abdf2a566592e3b01bc187349ea",
+          "dimensions": [
+            1254,
+            1254
+          ],
+          "mode": "RGBA",
+          "alpha_min": 0,
+          "alpha_max": 255,
+          "fully_transparent_pixels": 1340480,
+          "fully_opaque_pixels": 1530,
+          "alpha_bounds": {
+            "0": {
+              "bboxExclusive": [
+                25,
+                33,
+                1234,
+                1230
+              ],
+              "marginsLTRB": [
+                25,
+                33,
+                20,
+                24
+              ],
+              "occupiedPixels": 232036,
+              "canvasEdgePixels": 0
+            },
+            "8": {
+              "bboxExclusive": [
+                116,
+                296,
+                1175,
+                839
+              ],
+              "marginsLTRB": [
+                116,
+                296,
+                79,
+                415
+              ],
+              "occupiedPixels": 209366,
+              "canvasEdgePixels": 0
+            },
+            "24": {
+              "bboxExclusive": [
+                116,
+                296,
+                1175,
+                839
+              ],
+              "marginsLTRB": [
+                116,
+                296,
+                79,
+                415
+              ],
+              "occupiedPixels": 208086,
+              "canvasEdgePixels": 0
+            },
+            "128": {
+              "bboxExclusive": [
+                117,
+                297,
+                1174,
+                839
+              ],
+              "marginsLTRB": [
+                117,
+                297,
+                80,
+                415
+              ],
+              "occupiedPixels": 203801,
+              "canvasEdgePixels": 0
+            }
+          },
+          "copy_byte_identical": true,
+          "pixel_editing": false,
+          "transparency_windows": [
+            {
+              "box_xyxy_exclusive": [
+                300,
+                600,
+                1000,
+                950
+              ],
+              "pixels": 245000,
+              "alpha_min": 0,
+              "alpha_max": 1,
+              "pixels_alpha0": 244853,
+              "pixels_alpha1": 147,
+              "pixels_greater8": 0
+            }
+          ],
+          "rootVisualReview": "ACCEPTED_ART_CANDIDATE",
+          "visualReview": "Arc arrière et retours reconnus : six poteaux, cinq travées, trois rails par travée ; façade avant, ses deux poteaux et battant absents. Charnière fixe conservée sur le poteau avant latéral gauche. Fenêtre centrale/avant de245000pixels alpha0..1. Silhouette entière, marge droite79px à alpha>24. Revue racine acceptée."
+        },
+        {
+          "id": "HWM162-K19",
+          "path": "/workspace/scratch/2166fec07f86/yautja-la-longue-chasse/production/homeworld-sectors-20261103/sprites/kennels/HWM162-K19-enclosure-front-arc.png",
+          "repo_path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K19-enclosure-front-arc.png",
+          "original": "/workspace/scratch/2166fec07f86/generated_images/exec-8277f37d-5987-4f84-910b-4838856b5937.png",
+          "bytes": 729832,
+          "sha256": "e1157b98f951c2c62c71a4392ecb13b480c1bf5a7c7930510418ac879ccd225d",
+          "dimensions": [
+            1254,
+            1254
+          ],
+          "mode": "RGBA",
+          "alpha_min": 0,
+          "alpha_max": 255,
+          "fully_transparent_pixels": 1285568,
+          "fully_opaque_pixels": 726,
+          "alpha_bounds": {
+            "0": {
+              "bboxExclusive": [
+                170,
+                65,
+                1234,
+                1214
+              ],
+              "marginsLTRB": [
+                170,
+                65,
+                20,
+                40
+              ],
+              "occupiedPixels": 286948,
+              "canvasEdgePixels": 0
+            },
+            "8": {
+              "bboxExclusive": [
+                184,
+                428,
+                1179,
+                937
+              ],
+              "marginsLTRB": [
+                184,
+                428,
+                75,
+                317
+              ],
+              "occupiedPixels": 263382,
+              "canvasEdgePixels": 0
+            },
+            "24": {
+              "bboxExclusive": [
+                184,
+                428,
+                1179,
+                937
+              ],
+              "marginsLTRB": [
+                184,
+                428,
+                75,
+                317
+              ],
+              "occupiedPixels": 261956,
+              "canvasEdgePixels": 0
+            },
+            "128": {
+              "bboxExclusive": [
+                185,
+                429,
+                1179,
+                936
+              ],
+              "marginsLTRB": [
+                185,
+                429,
+                75,
+                318
+              ],
+              "occupiedPixels": 257819,
+              "canvasEdgePixels": 0
+            }
+          },
+          "copy_byte_identical": true,
+          "pixel_editing": false,
+          "rootVisualReview": "ACCEPTED_ART_CANDIDATE",
+          "visualReview": "Deux travées avant fixes reliées et deux poteaux propres ; trois rails par travée. Réception de serrure fixe à gauche. Extrémités de raccord à droite sans troisième poteau : le poteau correspondant appartient à K18. Pièce agrandie et recentrée nativement par rapport à266 ; pas de superposition pixel commune certifiée. Silhouette entière, marge droite75px. Revue racine acceptée."
+        },
+        {
+          "id": "HWM162-K20",
+          "path": "/workspace/scratch/2166fec07f86/yautja-la-longue-chasse/production/homeworld-sectors-20261103/sprites/kennels/HWM162-K20-enclosure-gate-leaf.png",
+          "repo_path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K20-enclosure-gate-leaf.png",
+          "original": "/workspace/scratch/2166fec07f86/generated_images/exec-4b3b200d-70ba-41b5-9efd-a9f679c7dde7.png",
+          "bytes": 1663506,
+          "sha256": "b121828ca30e8dc84249666783ccbc8a23a769d74e4586bbad160279c141a290",
+          "dimensions": [
+            1536,
+            1024
+          ],
+          "mode": "RGBA",
+          "alpha_min": 0,
+          "alpha_max": 254,
+          "fully_transparent_pixels": 1207473,
+          "fully_opaque_pixels": 0,
+          "alpha_bounds": {
+            "0": {
+              "bboxExclusive": [
+                75,
+                91,
+                1522,
+                992
+              ],
+              "marginsLTRB": [
+                75,
+                91,
+                14,
+                32
+              ],
+              "occupiedPixels": 365391,
+              "canvasEdgePixels": 0
+            },
+            "8": {
+              "bboxExclusive": [
+                355,
+                103,
+                1150,
+                929
+              ],
+              "marginsLTRB": [
+                355,
+                103,
+                386,
+                95
+              ],
+              "occupiedPixels": 351514,
+              "canvasEdgePixels": 0
+            },
+            "24": {
+              "bboxExclusive": [
+                355,
+                103,
+                1149,
+                928
+              ],
+              "marginsLTRB": [
+                355,
+                103,
+                387,
+                96
+              ],
+              "occupiedPixels": 350489,
+              "canvasEdgePixels": 0
+            },
+            "128": {
+              "bboxExclusive": [
+                356,
+                104,
+                1148,
+                928
+              ],
+              "marginsLTRB": [
+                356,
+                104,
+                388,
+                96
+              ],
+              "occupiedPixels": 347783,
+              "canvasEdgePixels": 0
+            }
+          },
+          "copy_byte_identical": true,
+          "pixel_editing": false,
+          "transparency_windows": [
+            {
+              "box_xyxy_exclusive": [
+                640,
+                375,
+                680,
+                395
+              ],
+              "pixels": 800,
+              "alpha_min": 0,
+              "alpha_max": 0,
+              "pixels_alpha0": 800,
+              "pixels_alpha1": 0,
+              "pixels_greater8": 0
+            },
+            {
+              "box_xyxy_exclusive": [
+                640,
+                590,
+                680,
+                610
+              ],
+              "pixels": 800,
+              "alpha_min": 0,
+              "alpha_max": 0,
+              "pixels_alpha0": 800,
+              "pixels_alpha1": 0,
+              "pixels_greater8": 0
+            }
+          ],
+          "rootVisualReview": "ACCEPTED_ART_CANDIDATE",
+          "visualReview": "Battant seul dans le plan fermé diagonal descendant vers la droite ; trois traverses et deux vides, paumelles mobiles à gauche, loquet mobile à droite, aucun poteau. Seconde sortie retenue après suppression native de l’insert ambre copié à tort du poteau récepteur. Le loquet reste entièrement mécanique et non lumineux. Cadrage paysage et résolution propres ; raccord non certifié. Revue racine acceptée."
+        },
+        {
+          "id": "HWM162-K21",
+          "path": "/workspace/scratch/2166fec07f86/yautja-la-longue-chasse/production/homeworld-sectors-20261103/sprites/kennels/HWM162-K21-enclosure-gate-leaf-open.png",
+          "repo_path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K21-enclosure-gate-leaf-open.png",
+          "original": "/workspace/scratch/2166fec07f86/generated_images/exec-82a213e7-1de2-40f5-9e3b-dc91aa87501b.png",
+          "bytes": 1697716,
+          "sha256": "e3db8d71f15a449bbdacf717368015d3f1033dc40ca1f7eaaa632b478c4d3c3f",
+          "dimensions": [
+            1536,
+            1024
+          ],
+          "mode": "RGBA",
+          "alpha_min": 0,
+          "alpha_max": 254,
+          "fully_transparent_pixels": 1188067,
+          "fully_opaque_pixels": 0,
+          "alpha_bounds": {
+            "0": {
+              "bboxExclusive": [
+                41,
+                38,
+                1518,
+                1008
+              ],
+              "marginsLTRB": [
+                41,
+                38,
+                18,
+                16
+              ],
+              "occupiedPixels": 384797,
+              "canvasEdgePixels": 0
+            },
+            "8": {
+              "bboxExclusive": [
+                384,
+                41,
+                1154,
+                983
+              ],
+              "marginsLTRB": [
+                384,
+                41,
+                382,
+                41
+              ],
+              "occupiedPixels": 368507,
+              "canvasEdgePixels": 0
+            },
+            "24": {
+              "bboxExclusive": [
+                384,
+                41,
+                1154,
+                982
+              ],
+              "marginsLTRB": [
+                384,
+                41,
+                382,
+                42
+              ],
+              "occupiedPixels": 367617,
+              "canvasEdgePixels": 0
+            },
+            "128": {
+              "bboxExclusive": [
+                385,
+                41,
+                1153,
+                982
+              ],
+              "marginsLTRB": [
+                385,
+                41,
+                383,
+                42
+              ],
+              "occupiedPixels": 365174,
+              "canvasEdgePixels": 0
+            }
+          },
+          "copy_byte_identical": true,
+          "pixel_editing": false,
+          "transparency_windows": [
+            {
+              "box_xyxy_exclusive": [
+                700,
+                420,
+                740,
+                440
+              ],
+              "pixels": 800,
+              "alpha_min": 0,
+              "alpha_max": 0,
+              "pixels_alpha0": 800,
+              "pixels_alpha1": 0,
+              "pixels_greater8": 0
+            },
+            {
+              "box_xyxy_exclusive": [
+                700,
+                635,
+                740,
+                655
+              ],
+              "pixels": 800,
+              "alpha_min": 0,
+              "alpha_max": 0,
+              "pixels_alpha0": 800,
+              "pixels_alpha1": 0,
+              "pixels_greater8": 0
+            }
+          ],
+          "rootVisualReview": "ACCEPTED_ART_CANDIDATE",
+          "visualReview": "Même famille de battant, pose ouverte vers l’extérieur proposée : charnières hautes à droite et bord libre/loquet bas à gauche ; trois traverses, deux vides, aucun voyant ni poteau. Génération native à partir de266 et du K20 corrigé, sans miroir de pixels. Face nouvellement visible reconstruite comme adaptation ; angle de pivotement, position de charnière et raccord non mesurés. Silhouette entière, marges haute/basse41/42px. Revue racine acceptée."
+        }
+      ],
+      "archivedAttempts": [
+        {
+          "id": "HWM162-K20",
+          "attempt": 1,
+          "path": "production/homeworld-sectors-20261103/attempts/kennels/HWM162-K20-enclosure-gate-leaf-v1.png",
+          "sha256": "b03b138646808b34cffa635b806ad56c7efef17d1bf516f1960851fa105599ad",
+          "bytes": 1695433,
+          "reason": "Voyant appartenant au poteau récepteur copié sur le battant ; corrigé nativement."
+        }
+      ],
+      "allPrevious46Sha256Preserved": true,
+      "allPrevious17ReceiptAssetRecordsPreserved": true,
+      "receiptPath": "production/homeworld-sectors-20261103/receipts/kennels.json",
+      "receiptSha256": "f113db8ab061068c19a5c9c6b045029bacbd364279d3304876ad575a9b0fecc2",
+      "cameraAndRegistrationLimit": "Vue héritée demandée ; échelles/cadrages natifs propres. Raccord, pivot, métrique et animation non certifiés."
+    }
+  },
+  "approvedAssetIds": [
+    "HWM162-S15",
+    "HWM162-S16",
+    "HWM162-S17",
+    "HWM162-M16",
+    "HWM162-M17",
+    "HWM162-M18",
+    "HWM162-K18",
+    "HWM162-K19",
+    "HWM162-K20",
+    "HWM162-K21"
+  ],
+  "approvedAdditionalPNGCount": 10,
+  "approvedTotalSelectedPNGCount": 56,
+  "scopeNote": "Three market, three mount and four kennel additions, selected after source inspection. Existing empty stands and saddle supports are reused. No new building or V81 identity. Layer and assembly proposals are not runtime integration.",
+  "canonicalOneToOneClaimed": false,
+  "runtimeIntegrated": false,
+  "humanValidated": false,
+  "selectedAdditionalPNGCount": 10,
+  "review": "review-round5.json"
+}

@@ -1,0 +1,37 @@
+/** Official PHG dates/names, not a certification of game texture pixels. */
+export const PHG_RECENT_RELEASES_V125 = [
+  { id:"anubis", releasedOn:"2025-02-13", patch:"3.2.0", predator:"Anubis",
+    featuredEquipment:"Eye of Ra", sourceUrl:"https://forum.predator.illfonic.com/t/patch-notes-3-2-0/36078",
+    reconstructedDriveMaterialIds:["skin_classe_anubis_base_rendu_officiel","armor_classe_anubis"],
+    fidelity:"names-and-release-verified-only", originalUVAvailable:false },
+  { id:"exalted", releasedOn:"2025-03-25", patch:"2025-03", predator:"Exalted",
+    featuredEquipment:"Dual Swords", sourceUrl:"https://forum.predator.illfonic.com/t/exalted-predator-is-here/36265",
+    reconstructedDriveMaterialIds:["skin_classe_exalted_base_rendu_officiel","armor_classe_exalted","armor_classe_exalted_tissu"],
+    fidelity:"names-and-release-verified-only", originalUVAvailable:false },
+  { id:"witch", releasedOn:"2025-04-24", patch:"2025-04", predator:"Witch",
+    featuredEquipment:"Drone", sourceUrl:"https://forum.predator.illfonic.com/t/the-witch-predator-has-arrived/36352",
+    reconstructedDriveMaterialIds:["skin_classe_witch_base_marquee_rendu_officiel","armor_classe_witch_os","armor_classe_witch_plumes"],
+    fidelity:"names-and-release-verified-only", originalUVAvailable:false },
+  { id:"oni", releasedOn:"2025-08-19", patch:"2025-08", predator:"Oni",
+    featuredEquipment:"Chain Whip", sourceUrl:"https://forum.predator.illfonic.com/t/oni-predator-is-here/36985",
+    reconstructedDriveMaterialIds:["skin_classe_oni_base_rendu_officiel","armor_classe_oni"],
+    fidelity:"names-and-release-verified-only", originalUVAvailable:false },
+  { id:"jotun", releasedOn:"2026-01-22", patch:"3.6.0", predator:"Jotun",
+    featuredEquipment:"Shock Gauntlet", sourceUrl:"https://forum.predator.illfonic.com/t/the-jotun-predator-has-arrived/37412",
+    reconstructedDriveMaterialIds:["skin_classe_jotun_base_rendu_officiel","armor_classe_jotun"],
+    fidelity:"names-and-release-verified-only", originalUVAvailable:false },
+  { id:"father", releasedOn:"2026-04-28", patch:"3.7.0", predator:"Father",
+    featuredEquipment:"Yautja Sword", sourceUrl:"https://forum.predator.illfonic.com/t/the-father-predator-joins-the-hunt/37649",
+    reconstructedDriveMaterialIds:["skin_classe_father_base_rendu_officiel_2026","armor_classe_father"],
+    fidelity:"names-and-release-verified-only", originalUVAvailable:false },
+] as const;
+
+export const PHG_FERAL_CORRECTION_V125 = {
+  date: "2026-01-22",
+  patch: "3.6.0",
+  sourceUrl: "https://forum.predator.illfonic.com/t/the-jotun-predator-has-arrived/37412",
+  oldDriveMaterialId: "skin_classe_feral_reference_2024_avant_3_6_0",
+  candidateStudyId: "phg-study-v125-feral_post_3_6_default",
+  update: "Default Skin Pattern adjusted",
+  uvPixelReferenceVerified: false,
+} as const;

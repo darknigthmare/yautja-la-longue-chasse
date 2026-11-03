@@ -1,0 +1,924 @@
+{
+  "schemaVersion": 1,
+  "release": "V106",
+  "status": "SOURCE_COORDINATES_REVIEWED_RUNTIME_SEPARATE",
+  "scope": "Two native partner-free SUPER BODY sequences, explicit source-preserving runtime choreography and spatial admission. No full-kit or mechanical validation is implied.",
+  "source": {
+    "extractionPath": "docs/v56-excel-priorities.json",
+    "extractionSha256": "fc8e1c6c81de62d8966e04746ed0751b0eeefc62f0458728c818896ad79972f4",
+    "admissionsPath": "app/game/data/pitWorkbookAnimationsV100.json",
+    "admissionsSha256": "5de70a8a5a08ac1c2bbe56f11fddfac52b6285cde4e606970141e74b8cc21956",
+    "originalWorkbookAvailable": false
+  },
+  "entries": [
+    {
+      "fighterId": "feral-hunter",
+      "actionId": "M_F006_SUPER",
+      "key": "SUPER",
+      "bodyId": "F006_ACT_SUPER",
+      "entityId": "E_F006_bolt",
+      "sourceSheet": "05_MOVES_PROPOSES",
+      "sourceCell": "T10",
+      "sourceTargets": {
+        "startup": 24,
+        "active": 8,
+        "recovery": 48,
+        "damage": 280,
+        "costPercent": 100
+      },
+      "atlasId": "feral-workbook-super-v100",
+      "newNativeDrawings": 0,
+      "partnerPainted": false,
+      "sourceHashes": {
+        "/game/sprites/v100/pit/feral/feral-special-super-a-right-v100.png": "9f232d2c2104f1c8a452ab75abb505b3438baeab46e8a5273b2f326cf560d976",
+        "/game/sprites/v100/pit/feral/feral-special-super-a-left-v100.png": "5e87eb2053b679c58fccc4bc82562460d7f2a0d777d4ffe77c45b083971e93e3",
+        "/game/sprites/v100/pit/feral/feral-special-super-b-right-v100.png": "15fc0979e956c650eed1d8594cfc2a6686c8bec3fda47a4b4dc6207fc0b92ced",
+        "/game/sprites/v100/pit/feral/feral-special-super-b-left-v100.png": "814836061d85e0b3707811a2180f074077b648b1b44f4f24976163509aabc62b"
+      },
+      "frames": [
+        {
+          "facing": "right",
+          "drawingIndex": 0,
+          "pageId": "feral-special-super-a-right-v100",
+          "path": "/game/sprites/v100/pit/feral/feral-special-super-a-right-v100.png",
+          "rect": [
+            690,
+            0,
+            846,
+            521
+          ],
+          "pivot": [
+            325,
+            498
+          ],
+          "bodyHeightPx": 494,
+          "contactOffsetPx": 2,
+          "uncertaintyPx": 4
+        },
+        {
+          "facing": "right",
+          "drawingIndex": 1,
+          "pageId": "feral-special-super-a-right-v100",
+          "path": "/game/sprites/v100/pit/feral/feral-special-super-a-right-v100.png",
+          "rect": [
+            0,
+            520,
+            776,
+            504
+          ],
+          "pivot": [
+            391,
+            471
+          ],
+          "bodyHeightPx": 494,
+          "contactOffsetPx": 2,
+          "uncertaintyPx": 4
+        },
+        {
+          "facing": "right",
+          "drawingIndex": 2,
+          "pageId": "feral-special-super-a-right-v100",
+          "path": "/game/sprites/v100/pit/feral/feral-special-super-a-right-v100.png",
+          "rect": [
+            775,
+            520,
+            761,
+            504
+          ],
+          "pivot": [
+            279,
+            473
+          ],
+          "bodyHeightPx": 494,
+          "contactOffsetPx": 1,
+          "uncertaintyPx": 4
+        },
+        {
+          "facing": "right",
+          "drawingIndex": 3,
+          "pageId": "feral-special-super-b-right-v100",
+          "path": "/game/sprites/v100/pit/feral/feral-special-super-b-right-v100.png",
+          "rect": [
+            0,
+            414,
+            543,
+            349
+          ],
+          "pivot": [
+            238,
+            341
+          ],
+          "bodyHeightPx": 372,
+          "contactOffsetPx": 2,
+          "uncertaintyPx": 4
+        },
+        {
+          "facing": "right",
+          "drawingIndex": 4,
+          "pageId": "feral-special-super-b-right-v100",
+          "path": "/game/sprites/v100/pit/feral/feral-special-super-b-right-v100.png",
+          "rect": [
+            0,
+            762,
+            578,
+            353
+          ],
+          "pivot": [
+            248,
+            346
+          ],
+          "bodyHeightPx": 372,
+          "contactOffsetPx": 2,
+          "uncertaintyPx": 4
+        },
+        {
+          "facing": "right",
+          "drawingIndex": 5,
+          "pageId": "feral-special-super-b-right-v100",
+          "path": "/game/sprites/v100/pit/feral/feral-special-super-b-right-v100.png",
+          "rect": [
+            0,
+            1114,
+            532,
+            422
+          ],
+          "pivot": [
+            291,
+            392
+          ],
+          "bodyHeightPx": 372,
+          "contactOffsetPx": 2,
+          "uncertaintyPx": 4
+        },
+        {
+          "facing": "left",
+          "drawingIndex": 0,
+          "pageId": "feral-special-super-a-left-v100",
+          "path": "/game/sprites/v100/pit/feral/feral-special-super-a-left-v100.png",
+          "rect": [
+            763,
+            0,
+            773,
+            511
+          ],
+          "pivot": [
+            449,
+            496
+          ],
+          "bodyHeightPx": 480,
+          "contactOffsetPx": 2,
+          "uncertaintyPx": 4
+        },
+        {
+          "facing": "left",
+          "drawingIndex": 1,
+          "pageId": "feral-special-super-a-left-v100",
+          "path": "/game/sprites/v100/pit/feral/feral-special-super-a-left-v100.png",
+          "rect": [
+            0,
+            510,
+            748,
+            514
+          ],
+          "pivot": [
+            501,
+            486
+          ],
+          "bodyHeightPx": 480,
+          "contactOffsetPx": 3,
+          "uncertaintyPx": 4
+        },
+        {
+          "facing": "left",
+          "drawingIndex": 2,
+          "pageId": "feral-special-super-a-left-v100",
+          "path": "/game/sprites/v100/pit/feral/feral-special-super-a-left-v100.png",
+          "rect": [
+            747,
+            510,
+            789,
+            514
+          ],
+          "pivot": [
+            524,
+            485
+          ],
+          "bodyHeightPx": 480,
+          "contactOffsetPx": 2,
+          "uncertaintyPx": 4
+        },
+        {
+          "facing": "left",
+          "drawingIndex": 3,
+          "pageId": "feral-special-super-b-left-v100",
+          "path": "/game/sprites/v100/pit/feral/feral-special-super-b-left-v100.png",
+          "rect": [
+            0,
+            514,
+            786,
+            242
+          ],
+          "pivot": [
+            502,
+            236
+          ],
+          "bodyHeightPx": 234,
+          "contactOffsetPx": 3,
+          "uncertaintyPx": 4
+        },
+        {
+          "facing": "left",
+          "drawingIndex": 4,
+          "pageId": "feral-special-super-b-left-v100",
+          "path": "/game/sprites/v100/pit/feral/feral-special-super-b-left-v100.png",
+          "rect": [
+            785,
+            514,
+            751,
+            242
+          ],
+          "pivot": [
+            410,
+            236
+          ],
+          "bodyHeightPx": 234,
+          "contactOffsetPx": 4,
+          "uncertaintyPx": 4
+        },
+        {
+          "facing": "left",
+          "drawingIndex": 5,
+          "pageId": "feral-special-super-b-left-v100",
+          "path": "/game/sprites/v100/pit/feral/feral-special-super-b-left-v100.png",
+          "rect": [
+            785,
+            755,
+            751,
+            269
+          ],
+          "pivot": [
+            373,
+            257
+          ],
+          "bodyHeightPx": 234,
+          "contactOffsetPx": 3,
+          "uncertaintyPx": 4
+        }
+      ],
+      "framePlan": {
+        "startup": [
+          {
+            "index": 0,
+            "durationTicks": 24
+          }
+        ],
+        "active": [
+          {
+            "index": 0,
+            "durationTicks": 8
+          }
+        ],
+        "recoveryMiss": [
+          {
+            "index": 0,
+            "durationTicks": 48
+          }
+        ],
+        "recoveryConfirmed": [
+          {
+            "index": 1,
+            "durationTicks": 8
+          },
+          {
+            "index": 2,
+            "durationTicks": 8
+          },
+          {
+            "index": 3,
+            "durationTicks": 8
+          },
+          {
+            "index": 4,
+            "durationTicks": 12
+          },
+          {
+            "index": 5,
+            "durationTicks": 12
+          }
+        ]
+      },
+      "mechanicalAdaptation": {
+        "opening": "A single short contact during absolute ticks24..31; blockable, no continuation on guard or miss. Existing victims remain autonomous runtime actors.",
+        "sourceTimingRetained": [
+          24,
+          8,
+          48
+        ],
+        "damageBudget": {
+          "opening": 40,
+          "continuation": [
+            80,
+            80,
+            80
+          ],
+          "total": 280
+        },
+        "continuationAbsoluteTicks": [
+          48,
+          50,
+          52
+        ],
+        "continuationWindow": "three independently owned native guided bolts emitted in the firing drawing at48/50/52",
+        "cost": "100 percent once; no free refund or new powers",
+        "camera": "Bounded following of live actors only after confirmed unguarded opening; no victim teleportation or wound reset",
+        "retiming": "Explicit phase adaptation of existing native drawings. The source workbook specifies total phases, not these intra-phase durations. No new intermediate pose or mirrored facing."
+      },
+      "geometry": [
+        {
+          "facing": "right",
+          "drawingIndex": 0,
+          "pageId": "feral-special-super-a-right-v100",
+          "path": "/game/sprites/v100/pit/feral/feral-special-super-a-right-v100.png",
+          "rect": [
+            690,
+            0,
+            846,
+            521
+          ],
+          "pivot": [
+            325,
+            498
+          ],
+          "bodyHeightPx": 494,
+          "contactOffsetPx": 2,
+          "uncertaintyPx": 4,
+          "contact": "opening",
+          "bounds": [
+            518,
+            88,
+            126,
+            214
+          ],
+          "measurement": "Enclosing native deployed forearm shield; a blockable short opener, not a guard or invulnerability admission."
+        },
+        {
+          "facing": "left",
+          "drawingIndex": 0,
+          "pageId": "feral-special-super-a-left-v100",
+          "path": "/game/sprites/v100/pit/feral/feral-special-super-a-left-v100.png",
+          "rect": [
+            763,
+            0,
+            773,
+            511
+          ],
+          "pivot": [
+            449,
+            496
+          ],
+          "bodyHeightPx": 480,
+          "contactOffsetPx": 2,
+          "uncertaintyPx": 4,
+          "contact": "opening",
+          "bounds": [
+            138,
+            78,
+            136,
+            252
+          ],
+          "measurement": "Enclosing native deployed forearm shield; a blockable short opener, not a guard or invulnerability admission."
+        }
+      ],
+      "anchors": [
+        {
+          "facing": "right",
+          "drawingIndex": 3,
+          "pageId": "feral-special-super-b-right-v100",
+          "path": "/game/sprites/v100/pit/feral/feral-special-super-b-right-v100.png",
+          "rect": [
+            0,
+            414,
+            543,
+            349
+          ],
+          "pivot": [
+            238,
+            341
+          ],
+          "bodyHeightPx": 372,
+          "contactOffsetPx": 2,
+          "uncertaintyPx": 2,
+          "activeFrameIndex": 0,
+          "point": [
+            517,
+            93
+          ],
+          "railSpacingPx": 6,
+          "bodyOcclusion": true,
+          "anchorKind": "open-rail-emission-gap",
+          "measurement": "Native SUPER firing page, independently measured gap between launcher rails; not the S1/V59 muzzle or the red receiver. Right absolute517,507; left181,591."
+        },
+        {
+          "facing": "left",
+          "drawingIndex": 3,
+          "pageId": "feral-special-super-b-left-v100",
+          "path": "/game/sprites/v100/pit/feral/feral-special-super-b-left-v100.png",
+          "rect": [
+            0,
+            514,
+            786,
+            242
+          ],
+          "pivot": [
+            502,
+            236
+          ],
+          "bodyHeightPx": 234,
+          "contactOffsetPx": 3,
+          "uncertaintyPx": 2,
+          "activeFrameIndex": 0,
+          "point": [
+            181,
+            77
+          ],
+          "railSpacingPx": 6,
+          "bodyOcclusion": true,
+          "anchorKind": "open-rail-emission-gap",
+          "measurement": "Native SUPER firing page, independently measured gap between launcher rails; not the S1/V59 muzzle or the red receiver. Right absolute517,507; left181,591."
+        }
+      ]
+    },
+    {
+      "fighterId": "scar",
+      "actionId": "M_F003_SUPER",
+      "key": "SUPER",
+      "bodyId": "F003_ACT_SUPER",
+      "entityId": null,
+      "sourceSheet": "05_MOVES_PROPOSES",
+      "sourceCell": "T7",
+      "sourceTargets": {
+        "startup": 24,
+        "active": 8,
+        "recovery": 48,
+        "damage": 280,
+        "costPercent": 100
+      },
+      "atlasId": "scar-special-super-body-v100",
+      "newNativeDrawings": 0,
+      "partnerPainted": false,
+      "sourceHashes": {
+        "/game/sprites/v100/pit/scar/scar-special-super.png": "cd81a0503a546ad34281f2b8d221763aea15bcd54d5d1c92ed583bdbfd6830c3"
+      },
+      "frames": [
+        {
+          "facing": "right",
+          "drawingIndex": 0,
+          "pageId": "scar-special-super-page-01",
+          "path": "/game/sprites/v100/pit/scar/scar-special-super.png",
+          "rect": [
+            0,
+            0,
+            534,
+            279
+          ],
+          "pivot": [
+            274,
+            255
+          ],
+          "bodyHeightPx": 205,
+          "contactOffsetPx": 3,
+          "uncertaintyPx": 4
+        },
+        {
+          "facing": "right",
+          "drawingIndex": 1,
+          "pageId": "scar-special-super-page-01",
+          "path": "/game/sprites/v100/pit/scar/scar-special-super.png",
+          "rect": [
+            533,
+            0,
+            500,
+            279
+          ],
+          "pivot": [
+            226,
+            255
+          ],
+          "bodyHeightPx": 205,
+          "contactOffsetPx": 2,
+          "uncertaintyPx": 4
+        },
+        {
+          "facing": "right",
+          "drawingIndex": 2,
+          "pageId": "scar-special-super-page-01",
+          "path": "/game/sprites/v100/pit/scar/scar-special-super.png",
+          "rect": [
+            1032,
+            0,
+            504,
+            279
+          ],
+          "pivot": [
+            213,
+            255
+          ],
+          "bodyHeightPx": 205,
+          "contactOffsetPx": 3,
+          "uncertaintyPx": 4
+        },
+        {
+          "facing": "right",
+          "drawingIndex": 3,
+          "pageId": "scar-special-super-page-01",
+          "path": "/game/sprites/v100/pit/scar/scar-special-super.png",
+          "rect": [
+            0,
+            278,
+            651,
+            239
+          ],
+          "pivot": [
+            255,
+            220
+          ],
+          "bodyHeightPx": 205,
+          "contactOffsetPx": 3,
+          "uncertaintyPx": 4
+        },
+        {
+          "facing": "right",
+          "drawingIndex": 4,
+          "pageId": "scar-special-super-page-01",
+          "path": "/game/sprites/v100/pit/scar/scar-special-super.png",
+          "rect": [
+            650,
+            278,
+            409,
+            239
+          ],
+          "pivot": [
+            128,
+            221
+          ],
+          "bodyHeightPx": 205,
+          "contactOffsetPx": 3,
+          "uncertaintyPx": 4
+        },
+        {
+          "facing": "right",
+          "drawingIndex": 5,
+          "pageId": "scar-special-super-page-01",
+          "path": "/game/sprites/v100/pit/scar/scar-special-super.png",
+          "rect": [
+            1058,
+            278,
+            478,
+            239
+          ],
+          "pivot": [
+            186,
+            220
+          ],
+          "bodyHeightPx": 205,
+          "contactOffsetPx": 2,
+          "uncertaintyPx": 4
+        },
+        {
+          "facing": "left",
+          "drawingIndex": 0,
+          "pageId": "scar-special-super-page-01",
+          "path": "/game/sprites/v100/pit/scar/scar-special-super.png",
+          "rect": [
+            0,
+            516,
+            510,
+            234
+          ],
+          "pivot": [
+            292,
+            218
+          ],
+          "bodyHeightPx": 205,
+          "contactOffsetPx": 3,
+          "uncertaintyPx": 4
+        },
+        {
+          "facing": "left",
+          "drawingIndex": 1,
+          "pageId": "scar-special-super-page-01",
+          "path": "/game/sprites/v100/pit/scar/scar-special-super.png",
+          "rect": [
+            509,
+            516,
+            455,
+            234
+          ],
+          "pivot": [
+            288,
+            218
+          ],
+          "bodyHeightPx": 205,
+          "contactOffsetPx": 3,
+          "uncertaintyPx": 4
+        },
+        {
+          "facing": "left",
+          "drawingIndex": 2,
+          "pageId": "scar-special-super-page-01",
+          "path": "/game/sprites/v100/pit/scar/scar-special-super.png",
+          "rect": [
+            963,
+            516,
+            573,
+            234
+          ],
+          "pivot": [
+            331,
+            218
+          ],
+          "bodyHeightPx": 205,
+          "contactOffsetPx": 3,
+          "uncertaintyPx": 4
+        },
+        {
+          "facing": "left",
+          "drawingIndex": 3,
+          "pageId": "scar-special-super-page-01",
+          "path": "/game/sprites/v100/pit/scar/scar-special-super.png",
+          "rect": [
+            0,
+            749,
+            554,
+            275
+          ],
+          "pivot": [
+            365,
+            213
+          ],
+          "bodyHeightPx": 205,
+          "contactOffsetPx": 2,
+          "uncertaintyPx": 4
+        },
+        {
+          "facing": "left",
+          "drawingIndex": 4,
+          "pageId": "scar-special-super-page-01",
+          "path": "/game/sprites/v100/pit/scar/scar-special-super.png",
+          "rect": [
+            553,
+            749,
+            493,
+            275
+          ],
+          "pivot": [
+            261,
+            213
+          ],
+          "bodyHeightPx": 205,
+          "contactOffsetPx": 2,
+          "uncertaintyPx": 4
+        },
+        {
+          "facing": "left",
+          "drawingIndex": 5,
+          "pageId": "scar-special-super-page-01",
+          "path": "/game/sprites/v100/pit/scar/scar-special-super.png",
+          "rect": [
+            1045,
+            749,
+            491,
+            275
+          ],
+          "pivot": [
+            243,
+            214
+          ],
+          "bodyHeightPx": 205,
+          "contactOffsetPx": 1,
+          "uncertaintyPx": 4
+        }
+      ],
+      "framePlan": {
+        "startup": [
+          {
+            "index": 0,
+            "durationTicks": 24
+          }
+        ],
+        "active": [
+          {
+            "index": 1,
+            "durationTicks": 8
+          }
+        ],
+        "recoveryMiss": [
+          {
+            "index": 5,
+            "durationTicks": 48
+          }
+        ],
+        "recoveryConfirmed": [
+          {
+            "index": 2,
+            "durationTicks": 8
+          },
+          {
+            "index": 3,
+            "durationTicks": 8
+          },
+          {
+            "index": 4,
+            "durationTicks": 16
+          },
+          {
+            "index": 5,
+            "durationTicks": 16
+          }
+        ]
+      },
+      "mechanicalAdaptation": {
+        "opening": "A single short contact during absolute ticks24..31; blockable, no continuation on guard or miss. Existing victims remain autonomous runtime actors.",
+        "sourceTimingRetained": [
+          24,
+          8,
+          48
+        ],
+        "damageBudget": {
+          "opening": 80,
+          "continuation": [
+            200
+          ],
+          "total": 280
+        },
+        "continuationAbsoluteTicks": [
+          40,
+          47
+        ],
+        "continuationWindow": "one full-thrust contact in drawing3, absolute40..47 (recovery8..15)",
+        "cost": "100 percent once; no free refund or new powers",
+        "camera": "Bounded following of live actors only after confirmed unguarded opening; no victim teleportation or wound reset",
+        "retiming": "Explicit phase adaptation of existing native drawings. The source workbook specifies total phases, not these intra-phase durations. No new intermediate pose or mirrored facing."
+      },
+      "geometry": [
+        {
+          "facing": "right",
+          "drawingIndex": 1,
+          "pageId": "scar-special-super-page-01",
+          "path": "/game/sprites/v100/pit/scar/scar-special-super.png",
+          "rect": [
+            533,
+            0,
+            500,
+            279
+          ],
+          "pivot": [
+            226,
+            255
+          ],
+          "bodyHeightPx": 205,
+          "contactOffsetPx": 2,
+          "uncertaintyPx": 4,
+          "contact": "opening",
+          "bounds": [
+            335,
+            84,
+            41,
+            27
+          ],
+          "measurement": "Short gold combistick butt cap and adjacent exposed shaft. No extended thrust before confirmation.",
+          "segment": [
+            [
+              314,
+              112
+            ],
+            [
+              367,
+              96
+            ]
+          ]
+        },
+        {
+          "facing": "right",
+          "drawingIndex": 3,
+          "pageId": "scar-special-super-page-01",
+          "path": "/game/sprites/v100/pit/scar/scar-special-super.png",
+          "rect": [
+            0,
+            278,
+            651,
+            239
+          ],
+          "pivot": [
+            255,
+            220
+          ],
+          "bodyHeightPx": 205,
+          "contactOffsetPx": 3,
+          "uncertaintyPx": 4,
+          "contact": "extension",
+          "bounds": [
+            393,
+            83,
+            225,
+            34
+          ],
+          "segment": [
+            [
+              397,
+              111
+            ],
+            [
+              614,
+              93
+            ]
+          ],
+          "measurement": "Only the native exposed combistick from front hand to tip during the full thrust. Conservative4px visual enclosure; not an Excel-authored collision rectangle."
+        },
+        {
+          "facing": "left",
+          "drawingIndex": 1,
+          "pageId": "scar-special-super-page-01",
+          "path": "/game/sprites/v100/pit/scar/scar-special-super.png",
+          "rect": [
+            509,
+            516,
+            455,
+            234
+          ],
+          "pivot": [
+            288,
+            218
+          ],
+          "bodyHeightPx": 205,
+          "contactOffsetPx": 3,
+          "uncertaintyPx": 4,
+          "contact": "opening",
+          "bounds": [
+            125,
+            50,
+            42,
+            32
+          ],
+          "measurement": "Short gold combistick butt cap and adjacent exposed shaft. No extended thrust before confirmation.",
+          "segment": [
+            [
+              184,
+              76
+            ],
+            [
+              136,
+              59
+            ]
+          ]
+        },
+        {
+          "facing": "left",
+          "drawingIndex": 3,
+          "pageId": "scar-special-super-page-01",
+          "path": "/game/sprites/v100/pit/scar/scar-special-super.png",
+          "rect": [
+            0,
+            749,
+            554,
+            275
+          ],
+          "pivot": [
+            365,
+            213
+          ],
+          "bodyHeightPx": 205,
+          "contactOffsetPx": 2,
+          "uncertaintyPx": 4,
+          "contact": "extension",
+          "bounds": [
+            28,
+            68,
+            202,
+            37
+          ],
+          "segment": [
+            [
+              227,
+              100
+            ],
+            [
+              32,
+              78
+            ]
+          ],
+          "measurement": "Only the native exposed combistick from front hand to tip during the full thrust. Conservative4px visual enclosure; not an Excel-authored collision rectangle."
+        }
+      ],
+      "anchors": []
+    }
+  ],
+  "remaining": {
+    "openAtV105": 17,
+    "specialCandidates": 3,
+    "superCandidates": 2,
+    "openIfAllFiveGameplayBindingsValidated": 12,
+    "campaignStages": 16,
+    "variantConstraints": 14
+  }
+}

@@ -1,0 +1,252 @@
+name: V112 hunt closure qualifications
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'app/game/**'
+      - 'tests/**'
+      - 'scripts/**'
+      - 'docs/hunt-mechanics-v112.*'
+      - 'docs/YAUTJA_V112_MECANIQUES_CHASSE.xlsx'
+      - 'docs/qa/v112-hunt-closure/**'
+      - '.github/workflows/hunt-closure-v112.yml'
+      - 'package*.json'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: hunt-closure-v112-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  native:
+    name: Native rules, types, CPU and reproducible workbook
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    env:
+      ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
+      NEXT_TELEMETRY_DISABLED: '1'
+      AUDIT_CHROME_CHANNEL: chrome
+    steps:
+      - name: Checkout bounded source and hunting evidence
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+          fetch-depth: 3
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /*
+            !/*/
+            /app/
+            /tests/
+            /scripts/
+            /build/
+            /.openai/hosting.json
+            /docs/hunt-mechanics-v111.json
+            /docs/YAUTJA_V111_MECANIQUES_CHASSE.xlsx
+            /docs/hunt-mechanics-v112.json
+            /docs/hunt-mechanics-v112.md
+            /docs/YAUTJA_V112_MECANIQUES_CHASSE.xlsx
+            /docs/qa/v112-hunt-closure/
+            /public/game/ui/v112/
+            /public/game/assets/v112/discovery/
+            /public/game/dialogues/v85/bible-dialogues.json
+            /public/game/homeworld/v83/basalt-planter-left.png
+            /public/game/homeworld/v83/clan-waymarker-right.png
+            /public/game/homeworld/v84/maintenance-console-right.png
+            /public/**/manifest.json
+            /public/game/sprites/v7/enemies/flora-other/xeno-drone-sheet.png
+      - name: Node 22
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+      - name: Materialize exact shared evidence for the historical Homeworld context
+        run: |
+          node --input-type=module <<'NODE'
+          import assert from 'node:assert/strict';
+          import {createHash} from 'node:crypto';
+          import {execFileSync} from 'node:child_process';
+          import {lstatSync, readFileSync} from 'node:fs';
+          const bytes = readFileSync('tests/fixtures/excel-history-v111-homeworld-v112.json');
+          assert.equal(createHash('sha256').update(bytes).digest('hex'), 'd4bf56b2e785959bc2c0217bfd308d321707a9ecb5bc52b22dd70a1b6154572a');
+          const manifest = JSON.parse(bytes);
+          assert.equal(manifest.schemaVersion, 1);
+          assert.equal(manifest.sourceCommit, 'def899ad07fea582053c5c204e4e578d8e0d7f9b');
+          assert.ok(Array.isArray(manifest.shared));
+          const paths = [], seen = new Set();
+          let alreadyIncludedTests = 0;
+          for (const row of manifest.shared) {
+            assert.ok(typeof row.path === 'string' && /^(?:public|art-source|docs|tests)\/[A-Za-z0-9._/-]+$/.test(row.path), 'Unreviewed shared prefix or Git pattern metacharacter');
+            assert.ok(row.path.split('/').every(part => part && part !== '.' && part !== '..'), 'Nonlocal shared path');
+            assert.ok(!seen.has(row.path), 'Duplicate shared path');
+            seen.add(row.path);
+            if (row.path.startsWith('tests/')) {
+              // /tests/ is already included by checkout; do not broaden another prefix.
+              const info = lstatSync(row.path);
+              assert.ok(info.isFile() && !info.isSymbolicLink(), 'Missing checked-out test fixture');
+              alreadyIncludedTests++;
+            } else paths.push('/' + row.path);
+          }
+          assert.equal(paths.length, 1173);
+          assert.equal(alreadyIncludedTests, 46);
+          assert.ok(paths.includes('/art-source/v107/enforcer-poses/augmentes-assassin--enforcers-comics-10-first-attempt.png'));
+          assert.equal(execFileSync('git', ['config', '--bool', '--default', 'false', '--get', 'core.sparseCheckoutCone'], {encoding:'utf8'}).trim(), 'false');
+          execFileSync('git', ['sparse-checkout', 'add', '--stdin'], {
+            input: paths.sort().join('\n') + '\n', stdio: ['pipe', 'inherit', 'inherit'],
+          });
+          for (const file of paths) {
+            const info = lstatSync(file.slice(1));
+            assert.ok(info.isFile() && !info.isSymbolicLink(), 'Missing shared evidence after sparse checkout');
+          }
+          console.log(JSON.stringify({historicalSharedPaths:seen.size, addedExactPatterns:paths.length, alreadyIncludedTests}));
+          NODE
+      - name: Install locked dependencies without lifecycle scripts
+        id: dependencies
+        run: npm ci --ignore-scripts --no-audit --no-fund
+      - name: Generate Next types and check complete application TypeScript
+        if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
+        run: |
+          node node_modules/next/dist/bin/next typegen
+          npm run typecheck
+      - name: Native hunting rules and transactional regressions
+        if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
+        run: >-
+          node --experimental-strip-types --test --test-reporter=spec --test-concurrency=1
+          tests/canopy-traversal-v112.test.mjs
+          tests/carcass-anatomy-v112.test.mjs
+          tests/conservation-persistence-ui-v112.test.mjs
+          tests/corpse-discovery-v112.test.mjs
+          tests/discovery-signals-hud-v112.test.mjs
+          tests/excel-history-preservation-v112.test.mjs
+          tests/field-stash-v112.test.mjs
+          tests/harvest-inventory-v112.test.mjs
+          tests/hunt-accessibility-v112.test.mjs
+          tests/hunt-canopy-runtime-v112.test.mjs
+          tests/hunt-carcass-runtime-v112.test.mjs
+          tests/hunt-field-load-v112.test.mjs
+          tests/hunt-field-stash-runtime-v112.test.mjs
+          tests/hunt-mechanics-workbook-v112.test.mjs
+          tests/hunt-review-cycle-v112.test.mjs
+          tests/hunt-carried-corpse-menu-v112.test.mjs
+          tests/hunt-catalogue-contract-v112.test.mjs
+          tests/hunt-field-guide-v112.test.mjs
+          tests/hunt-ground-recovery-v112.test.mjs
+      - name: Load immutable generator baseline for seeded source comparison
+        if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
+        run: git fetch --no-tags --depth=1 --filter=blob:none origin e1e45fbf85d843c26ac1bf4f816baf46313795b0
+      - name: Lint changed hunting controls and inherited planet consumers
+        if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
+        run: >-
+          node node_modules/eslint/bin/eslint.js --max-warnings=0
+          app/game/ConservationPanelV112.tsx app/game/HuntFieldGuideV112.tsx
+          app/game/HuntCanvas.tsx app/game/GameClient.tsx app/game/useMenuGamepad.ts
+          app/game/discoverySignalsV112.ts
+          app/game/systems/harvestInventoryV112.ts app/game/PlanetGeneratorV103.tsx
+          app/game/systems/clanWarPlanetGeneratorV115.ts app/game/systems/clanWarTextureLibraryV115.ts
+      - name: Current Homeworld position recovery and dynamic motor regressions
+        if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
+        run: >-
+          node --experimental-strip-types --test --test-reporter=spec --test-concurrency=1
+          tests/homeworld-mobility-v112.test.mjs tests/homeworld-dynamic-navigation-v109.test.mjs
+      - name: Existing V104 cartography approaches and V112 public-place collision reserves
+        if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
+        run: >-
+          node --experimental-strip-types --test --test-reporter=spec --test-concurrency=1
+          tests/homeworld-cartography-v104.test.mjs tests/homeworld-public-places-v112.test.mjs
+      - name: Legacy and current planet consumer version compatibility
+        if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
+        run: >-
+          node --experimental-strip-types --test --test-reporter=spec --test-concurrency=1
+          tests/planet-version-consumers-v115.test.mjs tests/planet-source-preservation-v115.test.mjs
+          tests/planet-generator-import-race-v103.test.mjs
+      - name: Independent workbook and generated resource checks
+        if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
+        run: |
+          node scripts/build-hunt-mechanics-workbook-v112.mjs --check
+          python3 scripts/verify-hunt-mechanics-workbook-v112.py
+          node scripts/build-discovery-signals-v112.mjs --check
+      - name: Measure native hunting CPU and bounded ecosystem under deterministic loads
+        if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
+        run: |
+          node scripts/qa-hunt-native-performance-v112.mjs --report outputs/qa-v112-followup/native-performance.json
+          node -e 'const fs=require("node:fs"); console.log("V112_NATIVE_PERFORMANCE_BEGIN:"+fs.readFileSync("outputs/qa-v112-followup/native-performance.json","utf8")+":V112_NATIVE_PERFORMANCE_END")'
+      - name: Print native CPU report
+        if: always()
+        run: >-
+          node -e 'const fs=require("node:fs");const file="outputs/qa-v112-followup/native-performance.json";if(fs.existsSync(file))console.log("V112_CLOSURE_REPORT_BEGIN:native-performance:"+fs.readFileSync(file,"utf8")+":V112_CLOSURE_REPORT_END")'
+      - name: Preserve native CPU report
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: hunt-closure-v112-native-${{ github.sha }}
+          path: outputs/qa-v112-followup/
+          if-no-files-found: warn
+          retention-days: 30
+
+  browser:
+    name: Mounted hunting controls, guide, lifecycle and durable workshop
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    env:
+      ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
+      NEXT_TELEMETRY_DISABLED: '1'
+      AUDIT_CHROME_CHANNEL: chrome
+    steps:
+      - name: Checkout bounded source and hunting evidence
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+          fetch-depth: 3
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /*
+            !/*/
+            /app/
+            /tests/
+            /scripts/
+            /build/
+            /.openai/hosting.json
+            /docs/hunt-mechanics-v111.json
+            /docs/YAUTJA_V111_MECANIQUES_CHASSE.xlsx
+            /docs/hunt-mechanics-v112.json
+            /docs/hunt-mechanics-v112.md
+            /docs/YAUTJA_V112_MECANIQUES_CHASSE.xlsx
+            /docs/qa/v112-hunt-closure/
+            /public/game/ui/v112/
+            /public/game/assets/v112/discovery/
+            /public/**/manifest.json
+            /public/game/sprites/v7/enemies/flora-other/xeno-drone-sheet.png
+      - name: Node 22
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+      - name: Install locked dependencies without lifecycle scripts
+        id: dependencies
+        run: npm ci --ignore-scripts --no-audit --no-fund
+      - name: Existing native React and hunting input browser qualification
+        if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
+        run: node scripts/qa-hunt-mechanics-browser-v112.mjs
+      - name: Mounted hunt lifecycle, extraction bridge, real storage and mapped workshop
+        if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
+        run: node scripts/qa-hunt-lifecycle-browser-v112.mjs
+      - name: Current native Atlas Worker routes and cancellation
+        if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
+        run: node scripts/qa-homeworld-atlas-browser-v109.mjs
+      - name: Print compact browser reports
+        if: always()
+        run: >-
+          node -e 'const fs=require("node:fs");for(const [name,file] of [["lifecycle","outputs/qa-hunt-lifecycle-v112/report.json"],["controls-guide","outputs/qa-hunt-v112/report.json"]])if(fs.existsSync(file))console.log("V112_CLOSURE_REPORT_BEGIN:"+name+":"+fs.readFileSync(file,"utf8")+":V112_CLOSURE_REPORT_END")'
+      - name: Preserve bounded browser reports and captures
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: hunt-closure-v112-browser-${{ github.sha }}
+          path: |
+            outputs/qa-hunt-v112/
+            outputs/qa-hunt-lifecycle-v112/
+            outputs/qa-v109-atlas-integration/
+          if-no-files-found: warn
+          retention-days: 30

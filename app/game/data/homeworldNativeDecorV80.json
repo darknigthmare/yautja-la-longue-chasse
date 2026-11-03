@@ -1,0 +1,455 @@
+{
+  "schema": 1,
+  "projection": {
+    "yawDegrees": 0,
+    "pitchDegrees": 35,
+    "depthScale": 0.573576436351046
+  },
+  "assets": {
+    "bench-left": {
+      "src": "/game/homeworld/v80/bench-left.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "sourceRect": {
+        "x": 0,
+        "y": 0,
+        "width": 1254,
+        "height": 1254
+      },
+      "alphaBounds": {
+        "x": 45,
+        "y": 225,
+        "width": 1183,
+        "height": 890
+      },
+      "pivot": {
+        "x": 669,
+        "y": 825.8333333333334
+      },
+      "heightWorld": 105,
+      "nativeGroundSupport": [
+        {
+          "x": 75,
+          "y": 958
+        },
+        {
+          "x": 285,
+          "y": 1097
+        },
+        {
+          "x": 466,
+          "y": 1049
+        },
+        {
+          "x": 1220,
+          "y": 668
+        },
+        {
+          "x": 1062,
+          "y": 570
+        },
+        {
+          "x": 906,
+          "y": 613
+        }
+      ],
+      "sha256": "f0d5e2bede8600478a4e5088f8fe2324fba52ea94dd3ca0ece2540122ea3ca7e",
+      "label": "Banc public de basalte",
+      "function": "Halte assise de cour, hors seuils et circuits de marche",
+      "lore": "Mobilier original de clan ; aucun modèle canonique ni espèce nouvelle affirmé",
+      "measurementStatus": "VISUAL_NATIVE_SUPPORT_CONSERVATIVE_HULL_NOT_CANON_METROLOGY",
+      "status": "MEASURED_NATIVE"
+    },
+    "corner-wall-left": {
+      "src": "/game/homeworld/v80/corner-wall-left.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "sourceRect": {
+        "x": 0,
+        "y": 0,
+        "width": 1254,
+        "height": 1254
+      },
+      "alphaBounds": {
+        "x": 74,
+        "y": 310,
+        "width": 1116,
+        "height": 686
+      },
+      "pivot": {
+        "x": 691.75,
+        "y": 751
+      },
+      "heightWorld": 105,
+      "nativeGroundSupport": [
+        {
+          "x": 85,
+          "y": 567
+        },
+        {
+          "x": 442,
+          "y": 974
+        },
+        {
+          "x": 1170,
+          "y": 756
+        },
+        {
+          "x": 1070,
+          "y": 707
+        }
+      ],
+      "sha256": "bbea0d159f0fddba22201d695f466dad684b17b200d35319ced7dad56f5bb013",
+      "label": "Muret de cour en retour",
+      "function": "Bordure basse massive d'une cour ; ni porte ni liaison nouvelle",
+      "lore": "Architecture originale de clan en basalte et bronze ; pas de plan canonique affirmé",
+      "measurementStatus": "VISUAL_NATIVE_SUPPORT_CONSERVATIVE_HULL_NOT_CANON_METROLOGY",
+      "status": "MEASURED_NATIVE"
+    },
+    "maintenance-rack": {
+      "src": "/game/homeworld/v80/maintenance-rack.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "sourceRect": {
+        "x": 0,
+        "y": 0,
+        "width": 1254,
+        "height": 1254
+      },
+      "alphaBounds": {
+        "x": 206,
+        "y": 30,
+        "width": 847,
+        "height": 1201
+      },
+      "pivot": {
+        "x": 588.8333333333334,
+        "y": 1089.6666666666667
+      },
+      "heightWorld": 125,
+      "nativeGroundSupport": [
+        {
+          "x": 219,
+          "y": 1009
+        },
+        {
+          "x": 298,
+          "y": 1031
+        },
+        {
+          "x": 445,
+          "y": 991
+        },
+        {
+          "x": 724,
+          "y": 1182
+        },
+        {
+          "x": 818,
+          "y": 1214
+        },
+        {
+          "x": 1029,
+          "y": 1111
+        }
+      ],
+      "sha256": "7f5e1579691085f0df4330d3c6fe8d97201e6691d0e0ca8762bd113462fd9d20",
+      "label": "Râtelier de maintenance",
+      "function": "Outillage civil près de l'atelier et du port ; accès côté travail libre",
+      "lore": "Outils utilitaires originaux de clan ; aucune nouvelle arme canonique affirmée",
+      "measurementStatus": "VISUAL_NATIVE_SUPPORT_CONSERVATIVE_HULL_NOT_CANON_METROLOGY",
+      "status": "MEASURED_NATIVE"
+    },
+    "clan-lectern-right": {
+      "src": "/game/homeworld/v80/clan-lectern-right.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "sourceRect": {
+        "x": 0,
+        "y": 0,
+        "width": 1254,
+        "height": 1254
+      },
+      "alphaBounds": {
+        "x": 317,
+        "y": 76,
+        "width": 656,
+        "height": 1081
+      },
+      "pivot": {
+        "x": 632.8333333333334,
+        "y": 1027.8333333333333
+      },
+      "heightWorld": 76,
+      "nativeGroundSupport": [
+        {
+          "x": 343,
+          "y": 969
+        },
+        {
+          "x": 461,
+          "y": 984
+        },
+        {
+          "x": 592,
+          "y": 1137
+        },
+        {
+          "x": 683,
+          "y": 1148
+        },
+        {
+          "x": 922,
+          "y": 951
+        },
+        {
+          "x": 796,
+          "y": 978
+        }
+      ],
+      "sha256": "92a8a53ca5c303d4186ff17f44beccc282de384d7cf64b4e191d79cbd766a899",
+      "label": "Pupitre de mémoire du clan",
+      "function": "Lecture et repère visuel près des archives ; sans service ni porte inventés",
+      "lore": "Mobilier original de clan ; motifs décoratifs sans traduction canonique affirmée",
+      "measurementStatus": "VISUAL_NATIVE_SUPPORT_CONSERVATIVE_HULL_NOT_CANON_METROLOGY",
+      "status": "MEASURED_NATIVE"
+    },
+    "mineral-basin-right": {
+      "src": "/game/homeworld/v80/mineral-basin-right.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "sourceRect": {
+        "x": 0,
+        "y": 0,
+        "width": 1254,
+        "height": 1254
+      },
+      "alphaBounds": {
+        "x": 81,
+        "y": 136,
+        "width": 1093,
+        "height": 965
+      },
+      "pivot": {
+        "x": 675.5,
+        "y": 953.6666666666666
+      },
+      "heightWorld": 58,
+      "nativeGroundSupport": [
+        {
+          "x": 145,
+          "y": 897
+        },
+        {
+          "x": 249,
+          "y": 912
+        },
+        {
+          "x": 703,
+          "y": 1068
+        },
+        {
+          "x": 846,
+          "y": 1050
+        },
+        {
+          "x": 1110,
+          "y": 884
+        },
+        {
+          "x": 1000,
+          "y": 911
+        }
+      ],
+      "sha256": "2bf7c4bd2c24d653a1f937a6040189aabe941cfc01393f29aee8841ef9ae2f71",
+      "label": "Vasque minérale civique",
+      "function": "Végétation basse enracinée en cour, hors des seuils et traversées",
+      "lore": "Flore décorative originale ; aucune espèce canonique ou propriété biologique affirmée",
+      "measurementStatus": "VISUAL_NATIVE_SUPPORT_CONSERVATIVE_HULL_NOT_CANON_METROLOGY",
+      "status": "MEASURED_NATIVE"
+    },
+    "amber-lamp-post": {
+      "src": "/game/homeworld/v80/amber-lamp-post.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "sourceRect": {
+        "x": 0,
+        "y": 0,
+        "width": 1254,
+        "height": 1254
+      },
+      "alphaBounds": {
+        "x": 385,
+        "y": 94,
+        "width": 487,
+        "height": 1057
+      },
+      "pivot": {
+        "x": 646.8571428571429,
+        "y": 1052.857142857143
+      },
+      "heightWorld": 70,
+      "nativeGroundSupport": [
+        {
+          "x": 399,
+          "y": 1033
+        },
+        {
+          "x": 520,
+          "y": 1144
+        },
+        {
+          "x": 677,
+          "y": 1145
+        },
+        {
+          "x": 832,
+          "y": 1060
+        },
+        {
+          "x": 855,
+          "y": 1020
+        },
+        {
+          "x": 731,
+          "y": 986
+        },
+        {
+          "x": 514,
+          "y": 982
+        }
+      ],
+      "sha256": "c89bb821c84fcb31fd633815d13001d8ef386a989f49f4383d7d0097b09dc09c",
+      "label": "Borne lumineuse ambrée",
+      "function": "Repère bas de cour et de devanture, hors chemin et seuil",
+      "lore": "Éclairage utilitaire original de clan ; aucune technologie canonique affirmée",
+      "measurementStatus": "VISUAL_NATIVE_SUPPORT_CONSERVATIVE_HULL_NOT_CANON_METROLOGY",
+      "status": "MEASURED_NATIVE"
+    },
+    "sealed-cargo-case-left": {
+      "src": "/game/homeworld/v80/sealed-cargo-case-left.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "sourceRect": {
+        "x": 0,
+        "y": 0,
+        "width": 1254,
+        "height": 1254
+      },
+      "alphaBounds": {
+        "x": 12,
+        "y": 237,
+        "width": 1232,
+        "height": 798
+      },
+      "pivot": {
+        "x": 659.75,
+        "y": 827.75
+      },
+      "heightWorld": 65,
+      "nativeGroundSupport": [
+        {
+          "x": 36,
+          "y": 772
+        },
+        {
+          "x": 177,
+          "y": 815
+        },
+        {
+          "x": 294,
+          "y": 1005
+        },
+        {
+          "x": 422,
+          "y": 965
+        },
+        {
+          "x": 1188,
+          "y": 830
+        },
+        {
+          "x": 1214,
+          "y": 769
+        },
+        {
+          "x": 1093,
+          "y": 783
+        },
+        {
+          "x": 854,
+          "y": 683
+        }
+      ],
+      "sha256": "0d27b2eec19ddbd8d1ea65a8071971b34e24d93abb0052c98e7bd32058d98012",
+      "label": "Caisse scellée de transport",
+      "function": "Entreposage civil près des ateliers, échanges et quais ; sans contenu de butin ajouté",
+      "lore": "Objet utilitaire original de clan ; aucun modèle de technologie canonique affirmé",
+      "measurementStatus": "VISUAL_NATIVE_SUPPORT_CONSERVATIVE_HULL_NOT_CANON_METROLOGY",
+      "status": "MEASURED_NATIVE"
+    },
+    "clan-banner-standard": {
+      "src": "/game/homeworld/v80/clan-banner-standard.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "sourceRect": {
+        "x": 0,
+        "y": 0,
+        "width": 1254,
+        "height": 1254
+      },
+      "alphaBounds": {
+        "x": 423,
+        "y": 33,
+        "width": 413,
+        "height": 1159
+      },
+      "pivot": {
+        "x": 613,
+        "y": 1095
+      },
+      "heightWorld": 120,
+      "nativeGroundSupport": [
+        {
+          "x": 482,
+          "y": 1082
+        },
+        {
+          "x": 514,
+          "y": 1128
+        },
+        {
+          "x": 625,
+          "y": 1172
+        },
+        {
+          "x": 728,
+          "y": 1149
+        },
+        {
+          "x": 779,
+          "y": 1099
+        },
+        {
+          "x": 745,
+          "y": 1045
+        },
+        {
+          "x": 544,
+          "y": 1030
+        },
+        {
+          "x": 487,
+          "y": 1055
+        }
+      ],
+      "sha256": "93538d8c833a6e299302784a62eb87df8ab79b14ced658bd6d85a84df458a06a",
+      "label": "Étendard civil de clan",
+      "function": "Signal de cour, d'archives ou de fret posé sur une base lestée ; aucune faction ou quête ajoutée",
+      "lore": "Ornement original de clan, pas un emblème officiel ni la preuve d'une institution canonique",
+      "measurementStatus": "VISUAL_NATIVE_SUPPORT_CONSERVATIVE_HULL_NOT_CANON_METROLOGY",
+      "status": "MEASURED_NATIVE"
+    }
+  },
+  "held": []
+}

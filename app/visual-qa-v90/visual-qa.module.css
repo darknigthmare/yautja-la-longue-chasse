@@ -1,0 +1,17 @@
+.root { min-height: 100svh; padding: 18px; background: #080c0e; color: #f1e7d7; font-family: system-ui, sans-serif; }
+.banner { padding: 14px 18px; background: #33271a; border: 1px solid #d5ac63; }
+.banner strong { font-size: 18px; }
+.banner p, .record, .note { margin: 8px 0; font-size: 12px; line-height: 1.5; }
+.controls { display: flex; flex-wrap: wrap; align-items: end; gap: 12px; margin: 16px 0; }
+.controls label { display: grid; gap: 6px; min-width: 150px; font-size: 12px; }
+.controls select, .controls button { min-height: 42px; max-width: 100%; padding: 8px; color: inherit; background: #1a2022; border: 1px solid #7c694b; border-radius: 4px; }
+.controls input[type=range] { min-height: 42px; }
+.controls .checkbox { display: flex; align-items: center; min-height: 42px; }
+.controls select:focus-visible, .controls button:focus-visible, .controls input:focus-visible { outline: 3px solid #d5ac63; outline-offset: 3px; }
+.pan { display: flex; gap: 4px; }
+.record { overflow-wrap: anywhere; }
+.viewport { position: relative; height: min(72svh, 900px); min-height: 400px; overflow: hidden; isolation: isolate; border: 1px solid #705d43; background: #11171b; }
+.world { position: absolute; left: 0; top: 0; transform-origin: 0 0; pointer-events: none; }
+.marker { position: absolute; z-index: 20000; transform: translate(-50%, -100%); padding: 4px; font-size: 11px; white-space: nowrap; color: #fff; border-bottom: 3px solid #e959ff; background: #2b083bd9; }
+.note { color: #b8b9b1; }
+@media (max-width: 600px) { .root { padding: 8px; } .controls label { min-width: 0; flex: 1 1 45%; } .viewport { min-height: 280px; height: 60svh; } }

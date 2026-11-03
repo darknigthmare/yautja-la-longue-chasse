@@ -1,0 +1,218 @@
+[
+  {
+    "fighterId": "greyback",
+    "variantId": "elder-greyback-avec-casque-eda4af4a7d",
+    "bodyHeightPx": 478,
+    "pageBodyHeightPx": {
+      "greyback-masked-victory-right-partial-v94": 478
+    },
+    "atlas": {
+      "schemaVersion": 1,
+      "id": "greyback-masked-victory-right-partial-v94",
+      "characterId": "greyback",
+      "variantId": "elder-greyback-avec-casque-eda4af4a7d",
+      "sourceKind": "authored-frames",
+      "status": "validated",
+      "pages": [
+        {
+          "id": "greyback-masked-victory-right-partial-v94",
+          "src": "/game/sprites/v94/pit/greyback/05-greyback-masked-victory-right-partial-v94.png",
+          "width": 1024,
+          "height": 1536,
+          "status": "validated",
+          "transparency": {
+            "mode": "alpha",
+            "noiseFloor": 2
+          }
+        }
+      ],
+      "clips": [
+        {
+          "id": "pit.presentation.victory",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "greyback-masked-victory-right-partial-v94",
+              "rect": [
+                0,
+                0,
+                275,
+                504
+              ],
+              "pivot": [
+                150.5,
+                492
+              ],
+              "durationTicks": 20
+            },
+            {
+              "pageId": "greyback-masked-victory-right-partial-v94",
+              "rect": [
+                275,
+                0,
+                237,
+                508
+              ],
+              "pivot": [
+                125,
+                494
+              ],
+              "durationTicks": 20
+            },
+            {
+              "pageId": "greyback-masked-victory-right-partial-v94",
+              "rect": [
+                0,
+                504,
+                275,
+                492
+              ],
+              "pivot": [
+                151,
+                478
+              ],
+              "durationTicks": 20
+            },
+            {
+              "pageId": "greyback-masked-victory-right-partial-v94",
+              "rect": [
+                275,
+                508,
+                237,
+                488
+              ],
+              "pivot": [
+                125,
+                476
+              ],
+              "durationTicks": 20
+            },
+            {
+              "pageId": "greyback-masked-victory-right-partial-v94",
+              "rect": [
+                0,
+                996,
+                275,
+                540
+              ],
+              "pivot": [
+                151,
+                485
+              ],
+              "durationTicks": 20
+            },
+            {
+              "pageId": "greyback-masked-victory-right-partial-v94",
+              "rect": [
+                275,
+                996,
+                237,
+                540
+              ],
+              "pivot": [
+                125.5,
+                483
+              ],
+              "durationTicks": 20
+            }
+          ]
+        }
+      ]
+    },
+    "visibleFrameBounds": [
+      {
+        "pageId": "greyback-masked-victory-right-partial-v94",
+        "rect": [
+          0,
+          0,
+          275,
+          504
+        ],
+        "visibleRect": [
+          41,
+          22,
+          216,
+          471
+        ]
+      },
+      {
+        "pageId": "greyback-masked-victory-right-partial-v94",
+        "rect": [
+          275,
+          0,
+          237,
+          508
+        ],
+        "visibleRect": [
+          298,
+          19,
+          204,
+          476
+        ]
+      },
+      {
+        "pageId": "greyback-masked-victory-right-partial-v94",
+        "rect": [
+          0,
+          504,
+          275,
+          492
+        ],
+        "visibleRect": [
+          38,
+          506,
+          236,
+          477
+        ]
+      },
+      {
+        "pageId": "greyback-masked-victory-right-partial-v94",
+        "rect": [
+          275,
+          508,
+          237,
+          488
+        ],
+        "visibleRect": [
+          291,
+          510,
+          211,
+          475
+        ]
+      },
+      {
+        "pageId": "greyback-masked-victory-right-partial-v94",
+        "rect": [
+          0,
+          996,
+          275,
+          540
+        ],
+        "visibleRect": [
+          45,
+          998,
+          211,
+          484
+        ]
+      },
+      {
+        "pageId": "greyback-masked-victory-right-partial-v94",
+        "rect": [
+          275,
+          996,
+          237,
+          540
+        ],
+        "visibleRect": [
+          294,
+          998,
+          209,
+          482
+        ]
+      }
+    ]
+  }
+]

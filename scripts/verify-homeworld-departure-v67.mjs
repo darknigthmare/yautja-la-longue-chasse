@@ -1,0 +1,67 @@
+import assert from 'node:assert/strict';
+import fs from 'node:fs/promises';
+import {chromium} from 'playwright-core';
+import {campaignFixture} from './campaign-browser-helpers.mjs';
+import {homeworldQaModelV64} from './homeworld-qa-model-v64.mjs';
+import {homeworldNavigatorV66} from './homeworld-navigation-browser-v66.mjs';
+
+const url=process.env.V67_QA_URL??'http://127.0.0.1:4186';
+const output=process.env.V67_DEPARTURE_OUTPUT??'work-local/v67/qa/homeworld-departure';
+await fs.mkdir(output,{recursive:true});
+const api=homeworldQaModelV64(process.cwd(),['homeworldCity.ts','homeworldSpatialCodex.ts','homeworldInteriorsV64.ts','homeworldArrivalV67.ts','homeworldPassageV67.ts']);
+const fixture=structuredClone(await campaignFixture());
+// Isolated prerequisite fixture only, never represented as an earned campaign.
+assert.equal(fixture.save.prologue,null);
+fixture.save.homeworld.evidenceIds=['suspect-trophy'];
+fixture.save.homeworldPassageV67=null;
+assert.equal(api.canEnterHomeworldPassageV67(fixture.save,'ash-marches').allowed,true);
+const rewardState=s=>Object.fromEntries(['profile','inventory','trophies','missionProgress','prologue','youthTraining','soloV66','soloV67','statistics','storyCompleted'].map(key=>[key,s[key]??null]));
+const browser=await chromium.launch({channel:'chrome',headless:true});
+const context=await browser.newContext({viewport:{width:1440,height:950}}),page=await context.newPage();
+page.setDefaultTimeout(30000);
+const checks=[],captures=[],errors=[];let route,departure,returned,firstStep;
+page.on('pageerror',e=>errors.push(e.message));
+const capture=async name=>{const file=output+'/'+name+'.jpg';await page.screenshot({path:file,type:'jpeg',quality:88});captures.push(file);};
+const saved=()=>page.evaluate(key=>JSON.parse(localStorage.getItem(key)),fixture.key);
+const pumpUntil=async predicate=>{const end=Date.now()+90000;while(!await predicate()&&Date.now()<end){await page.clock.runFor(32);await new Promise(resolve=>setTimeout(resolve,30));}assert(await predicate(),'Expected screen and native assets are ready');};
+try{
+ await page.addInitScript(({key,save})=>{if(!localStorage.getItem(key))localStorage.setItem(key,JSON.stringify(save));},fixture);
+ await page.goto(url,{waitUntil:'networkidle'});await page.getByRole('button',{name:/^Continuer/}).click();
+ await page.locator('[data-campaign-location="deck"]').waitFor();assert.equal(await page.locator('main[data-game-content-version]').getAttribute('data-game-content-version'),'V67');
+ await page.getByRole('button',{name:'Yautja Prime · monde natal',exact:true}).click();
+ await page.locator('[data-homeworld-actor]').waitFor({state:'attached'});await page.locator('[data-homeworld-hub] img').evaluateAll(images=>Promise.all(images.map(image=>image.decode())));
+ const before=await saved();assert.equal(before.homeworldPassageV67,null);const rewards=rewardState(before);
+ await page.clock.install();await page.clock.pauseAt(new Date(Date.now()+100));
+ const nav=homeworldNavigatorV66(page,api);await nav.focus();
+ const start=await nav.position(),target=api.homeworldCityArrivalV67('ash-marches');assert(target);
+ route=api.homeworldSpatialRoute(start,target);assert.equal(route.status,'reachable');await nav.follow(route.points);await nav.release();
+ const reached=await nav.position();assert(Math.hypot(reached.x-target.x,reached.y-target.y)<12);
+ await page.keyboard.press('KeyE');await nav.tick(96);
+ const leave=page.getByRole('button',{name:'Partir vers les Marches de Cendre',exact:true});assert(await leave.isEnabled());
+ await capture('01-regional-dialog');await leave.click();
+ departure=(await saved()).homeworldPassageV67;
+ assert(departure&&/^[a-f\d]{8}-(?:[a-f\d]{4}-){3}[a-f\d]{12}$/i.test(departure.journeyId));
+ assert.equal(departure.regionId,'ash-marches');assert.equal(departure.direction,'outbound');assert.equal(departure.tick,0);assert.equal(departure.walked,0);assert.deepEqual(departure.visited,[0]);
+ assert.deepEqual(rewardState(await saved()),rewards);
+ const scene=page.locator('[data-homeworld-passage-v67="ash-marches"]');
+ await pumpUntil(async()=>await scene.count()===1&&await scene.getAttribute('data-passage-assets')==='true');
+ assert.equal(await scene.getAttribute('data-passage-tick'),'0');await capture('02-new-passage-briefing');
+ checks.push('Actual city keyboard route and regional dialog call Hub→GameClient; new UUID and tick 0 acknowledged in storage before movement, no rewards.');
+ console.log('Physical departure and fresh persisted journey PASS');
+ await scene.getByRole('button',{name:'Commencer la marche',exact:true}).click();await page.clock.runFor(64);
+ const viewport=scene.getByRole('group');await viewport.focus();await page.keyboard.down('ArrowRight');await page.clock.runFor(800);await page.keyboard.up('ArrowRight');await page.clock.runFor(64);
+ const far=Number(await scene.getAttribute('data-passage-x'));assert(far>500);
+ for(let n=0;n<60&&Number(await scene.getAttribute('data-passage-x'))>340;n++){await page.keyboard.down('ArrowLeft');await page.clock.runFor(32);}await page.keyboard.up('ArrowLeft');await page.clock.runFor(64);
+ assert(Math.abs(Number(await scene.getAttribute('data-passage-x'))-320)<100);
+ await page.keyboard.down('KeyE');await page.clock.runFor(64);await page.keyboard.up('KeyE');
+ await pumpUntil(async()=>await page.locator('[data-homeworld-actor]').count()===1);
+ await page.locator('[data-homeworld-hub] img').evaluateAll(images=>Promise.all(images.map(image=>image.decode())));await page.clock.runFor(100);
+ returned=await nav.position();assert.equal((await saved()).homeworldPassageV67,null);assert(api.isHomeworldWalkable(returned));assert(Math.hypot(returned.x-target.x,returned.y-target.y)<4);
+ await nav.focus();await page.keyboard.down('ArrowDown');await page.clock.runFor(64);await page.keyboard.up('ArrowDown');await page.clock.runFor(64);firstStep=await nav.position();
+ assert(firstStep.y>returned.y);assert(Math.hypot(firstStep.x-target.x,firstStep.y-target.y)<120);assert(api.isHomeworldWalkable(firstStep));assert.deepEqual(rewardState(await saved()),rewards);await capture('03-return-first-step');
+ checks.push('Actual outward steps and keyboard retreat to the departure threshold, explicit E return, connector cleared durably, first city step remains outside beacon collider; rewards unchanged.');
+ assert.deepEqual(errors,[]);
+ await fs.writeFile(output+'/report.json',JSON.stringify({status:'PASS',url,checks,captures,errors,fixture:{kind:'adult legacy baseline',declaredPrerequisite:'suspect-trophy evidence supplied before gameplay; not claimed earned',passageBefore:null},route:{start,reached,target,points:route.points,distance:route.distance},departure,returned,firstStep,scope:'Real UI departure and short explicit retreat only; no full passage or expedition completion claimed.',visualReview:'pending'},null,2));
+ console.log(JSON.stringify({status:'PASS',checks:checks.length,captures:captures.length,output}));
+}catch(error){await page.screenshot({path:output+'/failure.jpg',type:'jpeg'}).catch(()=>{});await fs.writeFile(output+'/report.json',JSON.stringify({status:'FAIL',url,checks,captures,errors,error:error.stack,departure,returned,firstStep},null,2));throw error;}
+finally{await browser.close();}

@@ -1,0 +1,64 @@
+{
+  "schemaVersion": 1,
+  "asOf": "2026-11-02",
+  "tool": "image_gen.imagegen",
+  "parameters": {
+    "transparent_background": true,
+    "referenced_image_paths": "omitted: new independently generated original atlases",
+    "num_last_images_to_include": "omitted"
+  },
+  "targetId": "CIN_F003_FATALITE_1",
+  "sourceCell": "07_PRESENTATIONS!H7",
+  "relatedCampaignCells": [
+    "08_CAMPAGNES!E7",
+    "08_CAMPAGNES!I7"
+  ],
+  "requestedDimensions": [
+    1536,
+    1024
+  ],
+  "requestedGrid": {
+    "columns": 3,
+    "rows": 2,
+    "cellWidth": 512,
+    "cellHeight": 512
+  },
+  "sourceBodyRedrawn": false,
+  "pixelEdits": false,
+  "mirroredByAssistant": false,
+  "status": "CANDIDATE_NOT_ADMITTED",
+  "humanValidated": false,
+  "runtimeIntegrated": false,
+  "originalReferencesOpened": [
+    "public/game/sprites/v100/pit/scar/scar-special-fatalite-1-right.png",
+    "public/game/sprites/v100/pit/scar/scar-special-fatalite-1-left.png",
+    "public/game/sprites/v7/enemies/flora-other/xeno-drone-sheet.png",
+    "public/game/sprites/v8/ecology/common/wandering-xeno-drone-sheet.png"
+  ],
+  "generations": [
+    {
+      "facing": "right",
+      "src": "/workspace/generated_images/exec-ff9c35c3-b16c-4dc4-a9d4-b9aaad26793a.png",
+      "candidatePath": "/workspace/native-pit-production-20261102/scar-fatalite-1-xeno-victim-right-native.png",
+      "prompt": "Create ONE original native transparent PNG production-candidate sprite atlas for a fictional adult Xenomorph drone VICTIM, right-facing only. This is a separate actor reaction study supporting source action CIN_F003_FATALITE_1, not the attacking Predator. Requested1536x1024 landscape canvas, exact regular3columns by2rows,6equal512x512cells in reading order. Every cell contains ONE complete full-body depiction of the SAME adult dark charcoal biomechanical alien drone, facing SCREEN RIGHT, at exactly the SAME body scale and consistent ground baseline. Classic detailed2D arcade fighting-game sprite illustration, strong clean dark outlines, sharp cel-shaded metallic highlights, ribbed black exoskeleton, long smooth elongated swept-back dome, recognizable small inner jaws, dorsal tubes, long segmented bladed tail, clawed hands and digitigrade feet. Cohesive anatomy, no costume, no horns or wings. Tail entirely visible, gently curved behind toward left to fit each cell, not chopped. Side view with only very slight natural torso threequarter, no perspective turn. Neutral upper-left light. Distinct PHYSICAL reaction drawings: cell1 top-left injured upright stagger, arms low and knees soft; cell2 top-middle chest recoils backward as if pinned by an EXTERNAL spear coming from right, elbows bent, both feet planted; cell3 top-right low braced pinned hold, deeper knees and different head/hand articulation; cell4 bottom-left shoulder and upper torso twist away sharply, hands spread and tail counterbalances, same right-facing head; cell5 bottom-middle strong hit recoil folding sideways/back, noticeably different silhouette and arm angles; cell6 bottom-right gravity-driven collapse onto knees and one supporting hand, intact body entirely in frame. Six genuinely different articulated poses, never recolors or translated copies. No spear or shuriken or weapon fragment is painted: the incoming contact is external and will be rendered independently later. NO Predator, Scar, attacker or second creature in any cell. No acid, blood, dismemberment, missing head, wounds, sparks or independent effects in this first reaction atlas. Fixed intended cell ground baseline y464 and pivotaround(256,464) in each512cell; standing body crown-to-sole reference about360pixels, keep exactly that body scale through all bent and collapsed poses. At least32pixels EMPTY truly transparent gutter on all four sides of EACHcell including between cells; complete dome, hands, claws, both feet and full tail must stay well within each own cell. No overlap between cells. No visible grid lines, borders, labels, numbers, text, cast ground shadow, painted floor, scenery, gradient, black backdrop or checkerboard. Every pixel outside the actor silhouettes must have EXACT alpha0, all canvas and cell boundaries fully transparent with no faint alpha specks. Original independent native drawing only; preserve consistent charcoal metallic creature identity across all six states.",
+      "attempt": 1,
+      "selection": "RETAINED_RIGHT_CANDIDATE_STRICT_GUTTER_NOT_PASSED"
+    },
+    {
+      "facing": "left",
+      "src": "/workspace/generated_images/exec-14c701ed-4d6e-401d-bdc5-d85333931110.png",
+      "candidatePath": "/workspace/native-pit-production-20261102/scar-fatalite-1-xeno-victim-left-native.png",
+      "prompt": "Create a NEW independently drawn native transparent PNG sprite atlas, not a flip or mirror. Adult black biomechanical Xenomorph DRONE VICTIM, facing SCREEN LEFT in ALL six poses. This is a separate creature actor reaction study for CIN_F003_FATALITE_1; no Predator attacker. Requested1536x1024 LANDSCAPE canvas with EXACT regular3columns x2rows,6equal512x512cells in reading order. One complete SAME adult creature per cell, one common body scale, same intended ground baseline y464 within every cell. Make the subject noticeably smaller inside each cell: standing crown-to-sole body reference about380pixels and at least40pixels of EMPTY TRANSPARENT space around ALL complete anatomy. Entire long smooth swept-back dome, jaws, all claws, digitigrade legs, dorsal tubes and full segmented spear-tip tail must fit independently in each cell. Tail curves behind toward SCREEN RIGHT, no overlap or crossing any cell boundary. Dark charcoal metallic ribbed exoskeleton with silver-gray highlights, slight blue-grey reflections, no costume, horns, wings, chains or added devices. Classic detailed2Darcade fighting-game sprites with crisp confident black outlines and deliberate cel shading, consistent creature model. Side profile left, tiny natural torso3/4 only, neutral upper-left light. Six different articulated reactions, not recolors, translations or duplicated poses: top-left upright injured stagger with hands low; top-middle chest pulled backward by an UNPAINTED external spear coming from LEFT, arms curl upward and both feet brace; top-right deeper crouching pinned hold with lower head and independently changed claw/arm positions; bottom-left shoulder twists away under a sharp external contact, arms spread and tail counterbalances; bottom-middle strong side-hit recoil folding torso back/sideways with distinct arms/legs; bottom-right collapse onto knees and one supporting hand, intact full body, head low facing left. Keep limb lengths, dome, ribs and tail identity coherent and body scale constant even in collapse. All6silhouettes must be physically distinct; draw native LEFT views freshly, not a mirrored RIGHT sheet. NO spear, shuriken, weapon fragments, Predator, Scar, second creature, blood, acid, wound spray, removed head, dismemberment or independent effects. Those would be separate scene actors/entities. No labels, text, numbers, grid lines, frame borders, floor tile, scenery, cast ground shadow, gradient, glow halo, checkerboard or black backdrop. Strict actual PNG alpha: EVERY pixel outside silhouettes must be EXACT alpha0, including generous gutters and all canvas/cell edges, no faint alpha1/2speckles. Fixed intended placement pivotaround(256,464) in each512cell; do not vary image scale per pose or let feet drift to the cell border. Deliver only the six isolated newly authored left-facing creature reactions.",
+      "attempt": 1,
+      "selection": "REJECTED_VISIBLE_GRID_BOUNDARY_CONTACT_FRAMES_3_4"
+    },
+    {
+      "facing": "left",
+      "attempt": 2,
+      "src": "/workspace/generated_images/exec-729604bf-8dad-44cd-8eeb-03df8f62a0e4.png",
+      "candidatePath": "/workspace/native-pit-production-20261102/scar-fatalite-1-xeno-victim-left-native-attempt02.png",
+      "prompt": "Draw a fresh native LEFT-FACING adult Xenomorph-drone reaction atlas with deliberately SMALL fully-contained subjects. Requested1536x1024 landscape PNG with exactly3columns and2rows, six512x512cells. Six original separate full-body drawings in reading order, no duplication, no mirroring. CRITICAL LAYOUT: in EACHcell reserve a very large EMPTY transparent border. Keep the WHOLE creature INCLUDINGits long tail inside local rectangle x80..432,y110..442. Standing dome-to-sole body reference about300pixels ONLY, ground baseline y442. The creature must look SMALL within the512cell. Coil the full segmented tail in a compact C curve BEHIND toward screen-right, rather than letting it extend horizontally out of its cell. The full tail tip must stay x<432 of its OWNcell even during twists or collapse. No body part may approach or cross cell edges. At least64pixels truly transparent spacing on left/right and at least48top/bottom for everycell. Exact common body scale across six poses; no per-pose enlargement. Art: same recognizable adult charcoal-black biomechanical alien drone identity, long smooth swept-back dome facing LEFT, small metallic jaws, dorsal tubes, ribbed silver-gray-black exoskeleton, clawed hands/digitigrade feet, full segmented pointed tail. Clean detailed2Darcade fighting-game illustration, dark outlines and crisp metallic cel shading, upper-left light, side profile with slight torso3/4. Six DISTINCT articulated reaction states:1upright injured stagger,armslowered;2chest recoils backwardfrominvisible externalcontactcomingfromLEFT,clawsraised,bothfeetbraced;3lowerdeep-knee pinnedhold,headlowerandarmschanged;4shouldertwistsaway,armsspreadwithcompactcoiledtail;5side-hit recoil,torsoleansback,stronglydifferentleg/armarticulation;6collapseontokneesandonesupportinghand,fullintactbodywithalltailvisible. No attacker, Predator, Scar, other creature, weapon, spear, shuriken, blood, acid, detached head, wound spray or separate effect. Source action is CIN_F003_FATALITE_1 victim art study only; no existing Scar BODY is redrawn. Transparent background EXACT alpha0 outside the six creature silhouettes. NO glow halo, haze, shadow, backdrop, gradient, blackbackground, checkerboard, scenery, floor, text, numbers, labels, grid lines or border. No alpha specks on boundaries. Prioritize clean empty gutters over drawing large characters. Every entire silhouette must remain comfortably INSIDEits owncell, especially bottom-left tail and bottom-middle left hand. Native independent left orientation freshly drawn, no flip/crop/assembly.",
+      "selection": "RETAINED_LEFT_REPLACEMENT_CANDIDATE_STRICT_GUTTER_NOT_PASSED"
+    }
+  ]
+}

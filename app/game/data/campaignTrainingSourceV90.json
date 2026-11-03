@@ -1,0 +1,371 @@
+{
+  "source": {
+    "workbook": "Yautja_V6_Bible_Cumulative_et_Dialogues.xlsx",
+    "sha256": "87ad5d1a6eaf49f2908a4457ef3f97b8f34db481a24bbc121d2e924559b19183"
+  },
+  "runtimeScope": "training-only-not-R2-M018-completion",
+  "sheets": [
+    {
+      "name": "Campagne commune",
+      "rows": [
+        {
+          "number": 21,
+          "cells": [
+            {
+              "address": "A21",
+              "value": "R2-M016"
+            },
+            {
+              "address": "B21",
+              "value": "Former la triade"
+            },
+            {
+              "address": "C21",
+              "value": "Young Blood"
+            },
+            {
+              "address": "D21",
+              "value": "Young Blood acquis ; au moins deux partenaires admissibles disponibles."
+            },
+            {
+              "address": "E21",
+              "value": "Le joueur rencontre les partenaires dans leurs activités, observe leur style puis compose une triade réellement présente. Une répétition de signaux sur trois plateformes montre les rôles d’approche, d’ouverture et de frappe. Les absences réelles doivent être traitées avant départ."
+            },
+            {
+              "address": "F21",
+              "value": "Répartir les rôles par préférence ou par complémentarité change le plan initial et les réactions."
+            },
+            {
+              "address": "G21",
+              "value": "Une triade identifiée est préparée ; aucun partenaire absent n’apparaît pour remplir automatiquement une place."
+            },
+            {
+              "address": "H21",
+              "value": "Un refus laisse d’autres partenaires admissibles ou une mission de préparation, sans lancer un rite incomplet."
+            },
+            {
+              "address": "I21",
+              "value": "rite.triadRoster ; rite.triadPrepared"
+            }
+          ]
+        },
+        {
+          "number": 22,
+          "cells": [
+            {
+              "address": "A22",
+              "value": "R2-M017"
+            },
+            {
+              "address": "B22",
+              "value": "Le Temple des Trois Ombres"
+            },
+            {
+              "address": "C22",
+              "value": "Young Blood"
+            },
+            {
+              "address": "D22",
+              "value": "Triade préparée ; accès commun au temple ; équipement du rite vérifié."
+            },
+            {
+              "address": "E22",
+              "value": "À l’entrée, le joueur range les armes énergétiques exclues de cette configuration. Le temple déploie une disposition variable de passerelles, volets et chambres ; les signes permettent d’anticiper ses mouvements. La triade doit atteindre le seuil de chasse ensemble."
+            },
+            {
+              "address": "F22",
+              "value": "Choisir une route de hauteur ou une route de mécanismes change les difficultés rencontrées."
+            },
+            {
+              "address": "G22",
+              "value": "La configuration utilisée, les ressources et les positions sont sauvegardées ; le temple n’est pas une simple cinématique."
+            },
+            {
+              "address": "H22",
+              "value": "Une séparation ouvre des mécanismes de regroupement sans réinitialiser tout le temple ni téléporter les partenaires."
+            },
+            {
+              "address": "I22",
+              "value": "rite.templeConfiguration ; rite.templeThresholdReached"
+            }
+          ]
+        },
+        {
+          "number": 23,
+          "cells": [
+            {
+              "address": "A23",
+              "value": "R2-M018"
+            },
+            {
+              "address": "B23",
+              "value": "Le Quatza-Rij à trois"
+            },
+            {
+              "address": "C23",
+              "value": "Young Blood"
+            },
+            {
+              "address": "D23",
+              "value": "R2-M017 réussie ; triade présente ; règles d’équipement respectées."
+            },
+            {
+              "address": "E23",
+              "value": "La triade affronte l’épreuve Quatza-Rij dans la configuration du temple. Le joueur doit lire la cible, ouvrir une fenêtre avec les partenaires et choisir quand poursuivre ou se replier. Les contributions de chacun sont enregistrées dans la scène de combat réelle."
+            },
+            {
+              "address": "F23",
+              "value": "Exploiter une ouverture risquée ou recréer une fenêtre plus sûre modifie blessures, ressources et récit de chasse."
+            },
+            {
+              "address": "G23",
+              "value": "La réussite du rite appartient à cette mission commune et ne peut être simulée par une mission d’origine."
+            },
+            {
+              "address": "H23",
+              "value": "Un échec donne une extraction ou un repli cohérent, avec pertes persistantes et nouvelle préparation si une reprise est possible."
+            },
+            {
+              "address": "I23",
+              "value": "rite.quatzaTriadSuccess uniquement en cas de réussite"
+            }
+          ]
+        },
+        {
+          "number": 24,
+          "cells": [
+            {
+              "address": "A24",
+              "value": "R2-M019"
+            },
+            {
+              "address": "B24",
+              "value": "Revenir avec la triade"
+            },
+            {
+              "address": "C24",
+              "value": "Young Blood"
+            },
+            {
+              "address": "D24",
+              "value": "Rite tenté ; état réel des participants et du trophée connu."
+            },
+            {
+              "address": "E24",
+              "value": "La sortie du temple, le trajet de retour et l’arrivée devant les témoins sont joués. Le joueur porte ce qui a réellement été obtenu, aide les blessés et rapporte aussi une absence éventuelle. La reconnaissance dépend des faits du rite, pas d’un texte standard."
+            },
+            {
+              "address": "F24",
+              "value": "Présenter d’abord les partenaires ou la preuve de chasse change la cérémonie et les relations."
+            },
+            {
+              "address": "G24",
+              "value": "Le retour de reconnaissance est enregistré séparément de la victoire du rite."
+            },
+            {
+              "address": "H24",
+              "value": "Une évacuation incomplète ouvre une mission de secours ; le retour n’est pas validé pour des personnes encore sur place."
+            },
+            {
+              "address": "I24",
+              "value": "rite.recognitionReturn ; rite.returnRoster"
+            }
+          ]
+        },
+        {
+          "number": 25,
+          "cells": [
+            {
+              "address": "A25",
+              "value": "R2-M020"
+            },
+            {
+              "address": "B25",
+              "value": "Porter la marque Blooded"
+            },
+            {
+              "address": "C25",
+              "value": "Young Blood"
+            },
+            {
+              "address": "D25",
+              "value": "Quatza-Rij triade réussi et retour de reconnaissance validé."
+            },
+            {
+              "address": "E25",
+              "value": "Une cérémonie locale reconnaît le joueur et les participants admissibles. Le personnage accomplit le geste de marquage prévu par le projet, rend les outils de rite et reçoit l’accès aux démarches de vaisseau. Le jeu montre ce qui change dans la cité."
+            },
+            {
+              "address": "F25",
+              "value": "Choisir une célébration de cohorte ou une visite calme nuance le retour sans modifier la condition de rang."
+            },
+            {
+              "address": "G25",
+              "value": "Le rang Blooded est accordé par le parcours commun ; le vaisseau n’apparaît pas encore possédé."
+            },
+            {
+              "address": "H25",
+              "value": "Un retour manquant reporte le marquage et ouvre l’action nécessaire, sans retirer une victoire déjà acquise."
+            },
+            {
+              "address": "I25",
+              "value": "rank.Blooded=true"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Scènes de dialogue V6",
+      "rows": [
+        {
+          "number": 594,
+          "cells": [
+            {
+              "address": "A594",
+              "value": "D6-C-R2-M018"
+            },
+            {
+              "address": "B594",
+              "value": "Le Quatza-Rij à trois"
+            },
+            {
+              "address": "C594",
+              "value": "Campagne commune"
+            },
+            {
+              "address": "D594",
+              "value": "core_missions"
+            },
+            {
+              "address": "E594",
+              "value": "R2-M018"
+            },
+            {
+              "address": "F594",
+              "value": "La triade affronte l’épreuve Quatza-Rij dans la configuration du temple. Le joueur doit lire la cible, ouvrir une fenêtre avec les partenaires et choisir quand poursuivre ou se replier. Les contributions de chacun sont enregistrées dans la scène de combat réelle."
+            },
+            {
+              "address": "G594",
+              "value": "Partenaire de triade ; Joueur"
+            },
+            {
+              "address": "H594",
+              "value": "R2-M017 réussie ; triade présente ; règles d’équipement respectées. ; locuteur réellement présent ou retour effectué auprès de lui. Les scènes de résultat exigent le résultat observé correspondant."
+            },
+            {
+              "address": "I594",
+              "value": "Le locuteur ne sait que ce qu’il voit ici ou ce qui lui a été rapporté avec sa provenance. Il parle au briefing ou au retour effectif ; aucun déplacement instantané ni liaison radio inventée."
+            },
+            {
+              "address": "J594",
+              "value": "Ouverture une fois à l’entrée de l’étape ; reprise après interruption seulement ; issue une fois par résultat constaté. Attendre une nouvelle transition d’état avant de rejouer. Refus ou attente ne rejouent pas la réussite."
+            },
+            {
+              "address": "K594",
+              "value": "Dialogue V6 original. Règles et progression locales du projet ; les références filmiques ne prouvent pas ces répliques."
+            }
+          ]
+        },
+        {
+          "number": 595,
+          "cells": [
+            {
+              "address": "A595",
+              "value": "D6-C-R2-M019"
+            },
+            {
+              "address": "B595",
+              "value": "Revenir avec la triade"
+            },
+            {
+              "address": "C595",
+              "value": "Campagne commune"
+            },
+            {
+              "address": "D595",
+              "value": "core_missions"
+            },
+            {
+              "address": "E595",
+              "value": "R2-M019"
+            },
+            {
+              "address": "F595",
+              "value": "La sortie du temple, le trajet de retour et l’arrivée devant les témoins sont joués. Le joueur porte ce qui a réellement été obtenu, aide les blessés et rapporte aussi une absence éventuelle. La reconnaissance dépend des faits du rite, pas d’un texte standard."
+            },
+            {
+              "address": "G595",
+              "value": "Témoin du retour ; Joueur"
+            },
+            {
+              "address": "H595",
+              "value": "Rite tenté ; état réel des participants et du trophée connu. ; locuteur réellement présent ou retour effectué auprès de lui. Les scènes de résultat exigent le résultat observé correspondant."
+            },
+            {
+              "address": "I595",
+              "value": "Le locuteur ne sait que ce qu’il voit ici ou ce qui lui a été rapporté avec sa provenance. Il parle au briefing ou au retour effectif ; aucun déplacement instantané ni liaison radio inventée."
+            },
+            {
+              "address": "J595",
+              "value": "Ouverture une fois à l’entrée de l’étape ; reprise après interruption seulement ; issue une fois par résultat constaté. Attendre une nouvelle transition d’état avant de rejouer. Refus ou attente ne rejouent pas la réussite."
+            },
+            {
+              "address": "K595",
+              "value": "Dialogue V6 original. Règles et progression locales du projet ; les références filmiques ne prouvent pas ces répliques."
+            }
+          ]
+        },
+        {
+          "number": 596,
+          "cells": [
+            {
+              "address": "A596",
+              "value": "D6-C-R2-M020"
+            },
+            {
+              "address": "B596",
+              "value": "Porter la marque Blooded"
+            },
+            {
+              "address": "C596",
+              "value": "Campagne commune"
+            },
+            {
+              "address": "D596",
+              "value": "core_missions"
+            },
+            {
+              "address": "E596",
+              "value": "R2-M020"
+            },
+            {
+              "address": "F596",
+              "value": "Une cérémonie locale reconnaît le joueur et les participants admissibles. Le personnage accomplit le geste de marquage prévu par le projet, rend les outils de rite et reçoit l’accès aux démarches de vaisseau. Le jeu montre ce qui change dans la cité."
+            },
+            {
+              "address": "G596",
+              "value": "Saar ; Joueur"
+            },
+            {
+              "address": "H596",
+              "value": "Quatza-Rij triade réussi et retour de reconnaissance validé. ; locuteur réellement présent ou retour effectué auprès de lui. Les scènes de résultat exigent le résultat observé correspondant. Saar est vivant et réellement présent pour chacune de ses interventions. À défaut, différer cet échange nommé ou utiliser une scène distincte de remplaçant identifié ; aucune voix de Saar à distance non établie."
+            },
+            {
+              "address": "I596",
+              "value": "Le locuteur ne sait que ce qu’il voit ici ou ce qui lui a été rapporté avec sa provenance. Il parle au briefing ou au retour effectif ; aucun déplacement instantané ni liaison radio inventée."
+            },
+            {
+              "address": "J596",
+              "value": "Ouverture une fois à l’entrée de l’étape ; reprise après interruption seulement ; issue une fois par résultat constaté. Attendre une nouvelle transition d’état avant de rejouer. Refus ou attente ne rejouent pas la réussite."
+            },
+            {
+              "address": "K596",
+              "value": "Dialogue V6 original. Règles et progression locales du projet ; les références filmiques ne prouvent pas ces répliques."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

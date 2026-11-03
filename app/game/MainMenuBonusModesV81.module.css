@@ -1,0 +1,12 @@
+.root { display: grid; place-items: center; min-height: 100dvh; padding: clamp(20px, 5vw, 72px); color: #f4ead8; background: radial-gradient(ellipse at 70% 20%, #5e361b55, transparent 65%), #100c09; }
+.panel { width: min(760px, 100%); padding: clamp(20px, 4vw, 48px); border: 1px solid #ab814d; background: #17100dec; box-shadow: 0 24px 80px #0008; }
+.eyebrow { font-size: .7rem; letter-spacing: .18em; color: #e6bb80; }
+.panel h1 { font-size: clamp(2rem, 5vw, 3.5rem); margin: 16px 0 28px; }
+.panel p { line-height: 1.7; color: #ded1ba; }
+.actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+.panel button { min-height: 48px; padding: 13px 18px; border: 1px solid #ab814d; color: #f4ead8; background: #39261b; cursor: pointer; font: inherit; }
+.panel button:focus-visible { outline: 3px solid #ffe1a0; outline-offset: 4px; }
+.panel button:disabled { opacity: .45; cursor: not-allowed; }
+.confirmation { padding: 16px; margin-top: 20px; border: 1px solid #e6bb80; }
+.confirmation button { margin: 4px; }
+@media (max-width: 720px) { .actions { flex-direction: column; } .actions button { width: 100%; } }

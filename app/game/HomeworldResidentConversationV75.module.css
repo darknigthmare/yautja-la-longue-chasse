@@ -1,0 +1,7 @@
+.conversation { display:grid; gap:12px; min-width:0; }
+.topics,.places { display:flex; flex-wrap:wrap; gap:8px; }
+.topics button,.places button { min-height:44px; min-width:44px; flex:1 1 160px; white-space:normal; overflow-wrap:anywhere; text-align:left; }
+.topics button[aria-pressed='true'] { border-color:#e5c57a; background:#594525; color:#fff2cc; }
+.topics button:focus-visible,.places button:focus-visible { outline:3px solid #ffe2a3; outline-offset:3px; }
+.conversation p { margin:0; line-height:1.65; overflow-wrap:anywhere; }
+.conversation small { color:#cfba95; line-height:1.5; }

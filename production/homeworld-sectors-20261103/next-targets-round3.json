@@ -1,0 +1,318 @@
+{
+  "version": "MMK-20261103-PASS3",
+  "date": "2026-11-03",
+  "baselineCommit": "454bbc558abc9bb06141b2b77642bff1894d8cf2",
+  "previousDeliveryCommit": "a6e16334589ee8c4724bcc04da539007e669c883",
+  "status": "GENERATED_REVIEWED_SOURCE_ART_CANDIDATES",
+  "plannedAdditionalPNGCount": 10,
+  "targetTotalPNGCount": 35,
+  "newV81Targets": 0,
+  "newAssetPlan": [
+    {
+      "id": "HWM162-S08",
+      "area": "market",
+      "label": "Caisse marchande — état ouvert",
+      "kind": "État ouvert",
+      "targetIds": [
+        "target-v81-64-167"
+      ],
+      "purpose": "Montrer le contenant accessible pour le rangement et l’inspection.",
+      "placementNote": "Réserver le débattement du couvercle ; aligner les états ouvert et fermé avant intégration.",
+      "loreStatus": "ORIGINAL_GAME_ADAPTATION",
+      "canonicalOneToOne": false,
+      "generationStatus": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+      "runtimeIntegrated": false,
+      "humanValidated": false,
+      "productionPass": 3,
+      "expectedPath": "sprites/market/HWM162-S08-open-merchant-crate.png",
+      "viewPolicy": "INHERIT_REFERENCE_VIEW",
+      "sourceRefs": [
+        "SRC-V81",
+        "SRC-CAMERA"
+      ],
+      "sourceAssetFiles": [
+        "public/game/homeworld/v80/sealed-cargo-case-left.png"
+      ],
+      "complements": [],
+      "referenceViewNote": "Identité et orientation de la source conservées ; conformité à la cible Homeworld 0°/35° non mesurée."
+    },
+    {
+      "id": "HWM162-S09",
+      "area": "market",
+      "label": "Conteneur cylindrique marchand autonome",
+      "kind": "Contenant",
+      "targetIds": [
+        "target-v81-64-166"
+      ],
+      "purpose": "Disposer un cylindre de stockage indépendamment du rack.",
+      "placementNote": "Poser sur une surface stable et garder l’accès au couvercle ; échelle à vérifier sur S07 et dans S05.",
+      "loreStatus": "ORIGINAL_GAME_ADAPTATION",
+      "canonicalOneToOne": false,
+      "generationStatus": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+      "runtimeIntegrated": false,
+      "humanValidated": false,
+      "productionPass": 3,
+      "expectedPath": "sprites/market/HWM162-S09-detached-storage-cylinder.png",
+      "viewPolicy": "PROJECT_CAMERA_TARGET",
+      "sourceRefs": [
+        "SRC-V81",
+        "SRC-CAMERA"
+      ],
+      "sourceAssetFiles": [
+        "public/game/homeworld/v76/logistics-container-rack-native.png"
+      ],
+      "complements": [
+        "HWM162-S05",
+        "HWM162-S07"
+      ],
+      "referenceViewNote": "Nouvelle vue native demandée suivant la cible Homeworld orthographique yaw0/pitch35 ; résultat non mesuré comme géométrie3D."
+    },
+    {
+      "id": "HWM162-S10",
+      "area": "market",
+      "label": "Auvent marchand libre de mobilier",
+      "kind": "Structure modulaire",
+      "targetIds": [
+        "target-v81-64-161"
+      ],
+      "purpose": "Abriter des comptoirs et réserves placés séparément sous une toile libre.",
+      "placementNote": "Placer les poteaux hors des passages ; vérifier les occlusions avant/arrière en scène.",
+      "loreStatus": "ORIGINAL_GAME_ADAPTATION",
+      "canonicalOneToOne": false,
+      "generationStatus": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+      "runtimeIntegrated": false,
+      "humanValidated": false,
+      "productionPass": 3,
+      "expectedPath": "sprites/market/HWM162-S10-free-market-canopy.png",
+      "viewPolicy": "INHERIT_REFERENCE_VIEW",
+      "sourceRefs": [
+        "SRC-V81",
+        "SRC-CAMERA"
+      ],
+      "sourceAssetFiles": [
+        "public/game/homeworld/v76/merchant-canopy-diagonal-native.png"
+      ],
+      "complements": [],
+      "referenceViewNote": "Identité et orientation de la source conservées ; conformité à la cible Homeworld 0°/35° non mesurée."
+    },
+    {
+      "id": "HWM162-M10",
+      "area": "mounts",
+      "label": "Mangeoire adaptée — état vide",
+      "kind": "État vide",
+      "targetIds": [
+        "target-v81-72-288"
+      ],
+      "purpose": "Représenter un bassin vidé ou un stock de rations épuisé.",
+      "placementNote": "Conserver la source remplie et vérifier l’alignement, le pivot et les dimensions de la paire.",
+      "loreStatus": "ORIGINAL_GAME_ADAPTATION",
+      "canonicalOneToOne": false,
+      "generationStatus": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+      "runtimeIntegrated": false,
+      "humanValidated": false,
+      "productionPass": 3,
+      "expectedPath": "sprites/mounts/HWM162-M10-empty-mount-feeder.png",
+      "viewPolicy": "INHERIT_REFERENCE_VIEW",
+      "sourceRefs": [
+        "SRC-V81",
+        "SRC-CAMERA"
+      ],
+      "sourceAssetFiles": [
+        "production/native-open-20261102/archives/fauna-energy/gear/target-v81-72-288-adapted-mount-feeder-native.png"
+      ],
+      "complements": [],
+      "referenceViewNote": "Identité et orientation de la source conservées ; conformité à la cible Homeworld 0°/35° non mesurée."
+    },
+    {
+      "id": "HWM162-M11",
+      "area": "mounts",
+      "label": "Clôture — prolongement du bras gauche : haut-gauche vers bas-droite",
+      "kind": "Orientation native",
+      "targetIds": [
+        "target-v81-72-287"
+      ],
+      "purpose": "Prolonger le bras gauche de M07 avec un panneau droit de la même famille.",
+      "placementNote": "Aligner les pieds, les traverses et les recouvrements de poteaux ; raccords à vérifier en scène. Aucun miroir de pixels.",
+      "loreStatus": "ORIGINAL_GAME_ADAPTATION",
+      "canonicalOneToOne": false,
+      "generationStatus": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+      "runtimeIntegrated": false,
+      "humanValidated": false,
+      "productionPass": 3,
+      "expectedPath": "sprites/mounts/HWM162-M11-corral-diagonal-left-v2.png",
+      "viewPolicy": "PROJECT_CAMERA_TARGET",
+      "sourceRefs": [
+        "SRC-V81",
+        "SRC-CAMERA"
+      ],
+      "sourceAssetFiles": [
+        "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M04-corral-fence.png",
+        "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M07-corral-corner.png"
+      ],
+      "complements": [
+        "HWM162-M04",
+        "HWM162-M07"
+      ],
+      "sourceAssetIds": [
+        "HWM162-M04",
+        "HWM162-M07"
+      ],
+      "referenceViewNote": "Nouvelle vue native demandée suivant la cible Homeworld orthographique yaw0/pitch35 ; résultat non mesuré comme géométrie3D."
+    },
+    {
+      "id": "HWM162-M12",
+      "area": "mounts",
+      "label": "Clôture — prolongement du bras droit : bas-gauche vers haut-droite",
+      "kind": "Orientation native",
+      "targetIds": [
+        "target-v81-72-287"
+      ],
+      "purpose": "Prolonger le bras droit de M07 avec un panneau droit de la même famille.",
+      "placementNote": "Aligner les pieds, les traverses et les recouvrements de poteaux ; raccords à vérifier en scène. Aucun miroir de pixels.",
+      "loreStatus": "ORIGINAL_GAME_ADAPTATION",
+      "canonicalOneToOne": false,
+      "generationStatus": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+      "runtimeIntegrated": false,
+      "humanValidated": false,
+      "productionPass": 3,
+      "expectedPath": "sprites/mounts/HWM162-M12-corral-diagonal-right.png",
+      "viewPolicy": "PROJECT_CAMERA_TARGET",
+      "sourceRefs": [
+        "SRC-V81",
+        "SRC-CAMERA"
+      ],
+      "sourceAssetFiles": [
+        "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M04-corral-fence.png",
+        "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M07-corral-corner.png"
+      ],
+      "complements": [
+        "HWM162-M04",
+        "HWM162-M07"
+      ],
+      "sourceAssetIds": [
+        "HWM162-M04",
+        "HWM162-M07"
+      ],
+      "referenceViewNote": "Nouvelle vue native demandée suivant la cible Homeworld orthographique yaw0/pitch35 ; résultat non mesuré comme géométrie3D."
+    },
+    {
+      "id": "HWM162-K10",
+      "area": "kennels",
+      "label": "Cage petite — porte ouverte",
+      "kind": "État ouvert",
+      "targetIds": [
+        "target-v81-71-276"
+      ],
+      "purpose": "Fournir l’état de transfert de la cage petite existante.",
+      "placementNote": "Vue historique conservée ; contrôler la zone d’ouverture, la paire d’états et le gabarit de la créature prévue.",
+      "loreStatus": "ORIGINAL_GAME_ADAPTATION",
+      "canonicalOneToOne": false,
+      "generationStatus": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+      "runtimeIntegrated": false,
+      "humanValidated": false,
+      "productionPass": 3,
+      "expectedPath": "sprites/kennels/HWM162-K10-small-cage-open.png",
+      "viewPolicy": "INHERIT_REFERENCE_VIEW",
+      "sourceRefs": [
+        "SRC-V81",
+        "SRC-CAMERA"
+      ],
+      "sourceAssetFiles": [
+        "production/native-open-20261102/archives/fauna-energy/cages/target-v81-71-276-cage-petite-native.png"
+      ],
+      "complements": [],
+      "referenceViewNote": "Vue historique trois-quarts demandée vers 32° dans les briefs sources, conservée pour ces états ; angle réel non mesuré, aucune conversion frontale 0°/35° revendiquée."
+    },
+    {
+      "id": "HWM162-K11",
+      "area": "kennels",
+      "label": "Cage moyenne — trappe latérale rétractée",
+      "kind": "État ouvert",
+      "targetIds": [
+        "target-v81-71-277"
+      ],
+      "purpose": "Fournir l’état de transfert de la cage moyenne existante.",
+      "placementNote": "Vue historique conservée ; contrôler la zone d’ouverture, la paire d’états et le gabarit de la créature prévue.",
+      "loreStatus": "ORIGINAL_GAME_ADAPTATION",
+      "canonicalOneToOne": false,
+      "generationStatus": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+      "runtimeIntegrated": false,
+      "humanValidated": false,
+      "productionPass": 3,
+      "expectedPath": "sprites/kennels/HWM162-K11-medium-cage-open.png",
+      "viewPolicy": "INHERIT_REFERENCE_VIEW",
+      "sourceRefs": [
+        "SRC-V81",
+        "SRC-CAMERA"
+      ],
+      "sourceAssetFiles": [
+        "production/native-open-20261102/archives/fauna-energy/cages/target-v81-71-277-cage-moyenne-native.png"
+      ],
+      "complements": [],
+      "referenceViewNote": "Vue historique trois-quarts demandée vers 32° dans les briefs sources, conservée pour ces états ; angle réel non mesuré, aucune conversion frontale 0°/35° revendiquée."
+    },
+    {
+      "id": "HWM162-K12",
+      "area": "kennels",
+      "label": "Cage lourde — porte ouverte",
+      "kind": "État ouvert",
+      "targetIds": [
+        "target-v81-71-278"
+      ],
+      "purpose": "Fournir l’état de transfert de la cage lourde existante.",
+      "placementNote": "Vue historique conservée ; contrôler la zone d’ouverture, la paire d’états et le gabarit de la créature prévue.",
+      "loreStatus": "ORIGINAL_GAME_ADAPTATION",
+      "canonicalOneToOne": false,
+      "generationStatus": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+      "runtimeIntegrated": false,
+      "humanValidated": false,
+      "productionPass": 3,
+      "expectedPath": "sprites/kennels/HWM162-K12-heavy-cage-open.png",
+      "viewPolicy": "INHERIT_REFERENCE_VIEW",
+      "sourceRefs": [
+        "SRC-V81",
+        "SRC-CAMERA"
+      ],
+      "sourceAssetFiles": [
+        "production/native-open-20261102/archives/fauna-energy/cages/target-v81-71-278-cage-lourde-native.png"
+      ],
+      "complements": [],
+      "referenceViewNote": "Vue historique trois-quarts demandée vers 32° dans les briefs sources, conservée pour ces états ; angle réel non mesuré, aucune conversion frontale 0°/35° revendiquée."
+    },
+    {
+      "id": "HWM162-K13",
+      "area": "kennels",
+      "label": "Barrière d’énergie — désactivée",
+      "kind": "État désactivé",
+      "targetIds": [
+        "target-v81-71-270"
+      ],
+      "purpose": "Montrer la barrière hors tension avec l’espace entre supports dégagé.",
+      "placementNote": "Conserver les supports et le rail de la source active ; contrôler le passage et la transition d’état en scène.",
+      "loreStatus": "ORIGINAL_GAME_ADAPTATION",
+      "canonicalOneToOne": false,
+      "generationStatus": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+      "runtimeIntegrated": false,
+      "humanValidated": false,
+      "productionPass": 3,
+      "expectedPath": "sprites/kennels/HWM162-K13-energy-barrier-off.png",
+      "viewPolicy": "INHERIT_REFERENCE_VIEW",
+      "sourceRefs": [
+        "SRC-V81",
+        "SRC-CAMERA"
+      ],
+      "sourceAssetFiles": [
+        "production/native-open-20261102/archives/fauna-energy/target-v81-71-270-fauna-energy-barrier-native.png"
+      ],
+      "complements": [],
+      "referenceViewNote": "Vue historique trois-quarts demandée vers 32° dans les briefs sources, conservée pour ces états ; angle réel non mesuré, aucune conversion frontale 0°/35° revendiquée."
+    }
+  ],
+  "cameraDecision": "Préserver les vues héritées pour les éditions d’états ; demander la cible 0°/35° pour les nouvelles orientations, sans certification géométrique.",
+  "canonicalOneToOneClaimed": false,
+  "runtimeIntegrated": false,
+  "humanValidated": false,
+  "selectedAdditionalPNGCount": 10,
+  "selectedTotalPNGCount": 35,
+  "review": "review-round3.md"
+}

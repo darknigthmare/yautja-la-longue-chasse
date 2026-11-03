@@ -1,0 +1,44 @@
+/** Reconcile already-produced PR15 images and distinct new project poses. */
+import assert from 'node:assert/strict';
+import fs from 'node:fs/promises';
+import path from 'node:path';
+import {createHash} from 'node:crypto';
+import {gunzipSync} from 'node:zlib';
+import {fileURLToPath,pathToFileURL} from 'node:url';
+import {verifyHistoricalProductionPr15V107,PRODUCTION_HISTORY_COMMIT_PR15_V107} from './historical-production-context-pr15-v107.mjs';
+export const ROOT=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
+export const OUTPUT='docs/v107-static-production-reconciliation.json';
+const LOG='docs/qa/v107-static-reconciliation/historical-production-tests.log';
+const sha=bytes=>createHash('sha256').update(bytes).digest('hex');
+const read=file=>fs.readFile(path.join(ROOT,file));
+const json=async file=>JSON.parse(await read(file));
+const local=file=>typeof file==='string'&&!path.isAbsolute(file)&&!file.includes('\\')&&file.split('/').every(part=>part&&part!=='.'&&part!=='..');
+const pins=files=>Promise.all([...new Set(files)].sort().map(async file=>{assert.ok(local(file));const bytes=await read(file);return {path:file,sha256:sha(bytes),bytes:bytes.length};}));
+async function png(asset){const bytes=await read(asset.repoPngPath);assert.equal(sha(bytes),asset.sha256);assert.equal(bytes.length,asset.bytes);assert.equal(bytes.subarray(0,8).toString('hex'),'89504e470d0a1a0a');assert.equal(bytes.readUInt32BE(16),asset.width);assert.equal(bytes.readUInt32BE(20),asset.height);assert.equal(asset.animated,false);assert.equal(asset.canonicalFidelityCertified,false);assert.equal(asset.visualInspection.accepted,true);return bytes;}
+
+export async function collectStaticProductionReconciliationV107(){
+ const history=await verifyHistoricalProductionPr15V107();assert.equal(history.originalWorkbooksPreserved,17);
+ const log=(await read(LOG)).toString();assert.match(log,/# tests 5\n/);assert.match(log,/# pass 5\n/);assert.match(log,/# fail 0\n/);
+ const originalCounts=[...log.matchAll(/\\# tests (\d+)/g)].map(row=>Number(row[1])).sort((a,b)=>a-b);assert.deepEqual(originalCounts,[4,6,6,6]);
+ const oldPath='docs/v106-workstreams.json',original=await json(oldPath),baselinePath='docs/suivi-production/v613/data/current-master.json.gz',baseline=JSON.parse(gunzipSync(await read(baselinePath)));
+ const inputs=[oldPath,baselinePath,LOG,'tests/fixtures/production-history-pr15-v107.json','tests/fixtures/production-history-pr15-v107.json.gz','scripts/reconcile-static-productions-v107.mjs'];
+ const productions=[];
+ for(const version of ['v614','v615']){
+  const manifestPath=`docs/suivi-production/${version}/data/production-manifest.json`,manifest=await json(manifestPath);inputs.push(manifestPath);assert.equal(manifest.assets.length,18);assert.equal(manifest.summary.priorV610PngsRecovered,0);assert.equal(manifest.summary.finalReceiptsNotRecovered,0);
+  for(const asset of manifest.assets){
+   await png(asset);const receiptBytes=await read(asset.receiptPath),receipt=JSON.parse(receiptBytes);assert.equal(sha(receiptBytes),asset.receiptSha256);assert.equal(receipt.id,asset.id);assert.equal(receipt.repoPngPath,asset.repoPngPath);assert.equal(receipt.sha256,asset.sha256);assert.equal(receipt.acceptedOutputPromptExact,asset.acceptedOutputPromptExact);assert.ok(asset.acceptedOutputPromptExact.length>100);assert.equal(asset.plannedPromptIsSubmissionEvidence,false);assert.ok(receipt.attempts.some(attempt=>(attempt.accepted||attempt.acceptedForCurrentOutput)&&attempt.sha256===asset.sha256&&attempt.promptExact===asset.acceptedOutputPromptExact));inputs.push(asset.repoPngPath,asset.receiptPath);
+   if(version==='v614'){assert.ok(original.openItems.some(row=>row.id===asset.id));assert.equal(baseline.rows.find(row=>row.values.A===asset.id).values.E,'Pas faite');}
+   productions.push({id:asset.id,lot:version.toUpperCase(),scope:'STATIC_PROJECT_REFERENCE_ONLY',trackedV106OpenItem:version==='v614',priorSourceStatus:'Pas faite',status:'PRODUIT_STATIQUE_RECONCILIE',repoPngPath:asset.repoPngPath,sha256:asset.sha256,bytes:asset.bytes,width:asset.width,height:asset.height,receiptPath:asset.receiptPath,receiptSha256:asset.receiptSha256,animated:false,newMapPlacement:false,canonicalFidelityCertified:false});
+  }
+ }
+ const alternativeManifestPath='docs/suivi-production/v107-enforcer-poses/data/production-manifest.json',alternatives=await json(alternativeManifestPath);inputs.push(alternativeManifestPath);assert.equal(alternatives.assets.length,18);assert.equal(alternatives.summary.newStableIdentities,0);
+ const alternativePoses=[];
+ for(const asset of alternatives.assets){await png(asset);const receipt=await json(asset.receiptPath);assert.equal(receipt.id,asset.id);assert.equal(receipt.sha256,asset.sha256);assert.ok(receipt.nativeOutputId&&receipt.promptExact?.length>100);assert.equal(receipt.originalBytesCopied,true);assert.ok(productions.some(row=>row.lot==='V614'&&row.id===asset.id&&row.sha256!==asset.sha256));inputs.push(asset.repoPngPath,asset.receiptPath);alternativePoses.push({stableIdentityId:asset.id,repoPngPath:asset.repoPngPath,sha256:asset.sha256,bytes:asset.bytes,receiptPath:asset.receiptPath,newIdentity:false,animated:false,canonicalFidelityCertified:false});}
+ const anchorsPath='app/game/data/pitWorkbookDeviceAnchorsV107.json',anchors=await json(anchorsPath),device=anchors.shuriken.entity,deviceBytes=await read('public'+device.path);assert.equal(sha(deviceBytes),device.sha256);assert.equal(deviceBytes.readUInt32BE(16),device.width);assert.equal(deviceBytes.readUInt32BE(20),device.height);inputs.push(anchorsPath,'public'+device.path);
+ const artSourcePath='docs/v107-shuriken-art-source.json',artSource=await json(artSourcePath);assert.equal(artSource.sha256,device.sha256);assert.equal(artSource.deliveredFile,'public'+device.path);assert.equal(artSource.tool,'image_gen.imagegen');assert.ok(artSource.nativeOutputId&&artSource.prompt.length>100);assert.equal(artSource.reference.sha256,sha(await read(artSource.reference.file)));inputs.push(artSourcePath,artSource.reference.file);
+ inputs.push('docs/suivi-production/v613/data/production-manifest.json');
+ const oldManifest=await json('docs/suivi-production/v613/data/production-manifest.json');assert.equal(oldManifest.assets.filter(asset=>!asset.acceptedOutputPromptExact).length,21);
+ return {schemaVersion:1,release:'V107',status:'PASS_STATIC_PRODUCTS_RECONCILED_IN_BRANCH',sourceCommit:PRODUCTION_HISTORY_COMMIT_PR15_V107,integrationScope:'PR15 integrated into the current local branch; source workbooks retain their original historical main/branch statuses. This is no V107 gameplay/browser promotion.',historicalTests:{command:'env PATH="/workspace/.cloud-tools/node22/node_modules/node/bin:$PATH" node --test tests/production-history-pr15-v107.test.mjs tests/enforcer-production-v613.test.mjs tests/enforcer-production-v614.test.mjs tests/npc-production-v615.test.mjs',originalAssertionsExecuted:22,adaptersAndIsolationChecksPassed:5,log:(await pins([LOG]))[0],currentRuntimeCovered:false},facts:{priorPR15EnforcerPngs:18,priorPR15SucklingPngs:18,trackedV106PngRowsReconciled:18,newNativeBodyDrawings:0,newAlternativeStaticPoses:18,newIndependentDeviceSprites:1,newStableIdentities:0,newStableIdentitiesScope:'Alternative art poses only; no claim about the original adults added to Preserve.',missingV613Receipts:21,recoveredV610Pngs:0,originalWorkbooksPreserved:17},productions,alternativePoses,deviceSprite:{path:'public'+device.path,sha256:device.sha256,bytes:deviceBytes.length,width:device.width,height:device.height,scope:device.scope,artSourcePath,nativeOutputId:artSource.nativeOutputId,generationTimestampKnown:artSource.generationTimestamp!==null,mechanicsCertified:false},inputs:await pins(inputs),limits:['The18V614 Enforcer images and18V615 Sucklings existed in reviewed PR15 before V107.','The18new alternative poses reuse the same stable identities and do not complete an animation or canonical kit.','The independent star PNG is a project adaptation; creating its image does not validate its combat mechanics.','No21missing historical receipt or36missingV610PNG has been recovered by this reconciliation.','All historical workbooks and production records remain byte-exact.']};
+}
+export async function reconcileStaticProductionsV107({check=false}={}){const snapshot=await collectStaticProductionReconciliationV107(),bytes=Buffer.from(JSON.stringify(snapshot,null,2)+'\n');if(check)assert.deepEqual(await read(OUTPUT),bytes,'Static production reconciliation stale');else await fs.writeFile(path.join(ROOT,OUTPUT),bytes);return {result:snapshot.status,path:OUTPUT,sha256:sha(bytes),bytes:bytes.length,facts:snapshot.facts};}
+if(process.argv[1]&&import.meta.url===pathToFileURL(path.resolve(process.argv[1])).href){assert.ok(process.argv.slice(2).every(arg=>arg==='--check'));console.log(JSON.stringify(await reconcileStaticProductionsV107({check:process.argv.includes('--check')})));}

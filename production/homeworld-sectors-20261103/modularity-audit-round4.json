@@ -1,0 +1,1548 @@
+{
+  "version": "MMK-20261103-PASS4-AUDIT",
+  "date": "2026-11-03",
+  "baselineCommit": "c8d37c3c059021a96b071551bf9b19b09340536e",
+  "mainCommit": "f322e0cb42f2b1b7e06c3be1dcfbb23cb24f02c8",
+  "previousDeliveryCommit": "c8d37c3c059021a96b071551bf9b19b09340536e",
+  "status": "GENERATED_REVIEWED_SOURCE_ART_CANDIDATES",
+  "preservedSelectedAssets": [
+    {
+      "id": "HWM162-S01",
+      "path": "production/homeworld-sectors-20261103/sprites/market/HWM162-S01-market-hall-v2.png",
+      "sha256": "494e77092642dc46ff0ebc79e2a54040e450b1fbc1c41e434caa8498ee01ca69",
+      "bytes": 1585597
+    },
+    {
+      "id": "HWM162-S02",
+      "path": "production/homeworld-sectors-20261103/sprites/market/HWM162-S02-long-market-stall.png",
+      "sha256": "c1e353660c697180604ca6cf805ad13eb14c2009e6213f3e83233acae518b00e",
+      "bytes": 1404783
+    },
+    {
+      "id": "HWM162-S03",
+      "path": "production/homeworld-sectors-20261103/sprites/market/HWM162-S03-merchant-display.png",
+      "sha256": "9d9e720b4dc541e82fb0e3fffe73338c591fc9c39baa1fff6929617a9b3957ab",
+      "bytes": 2373548
+    },
+    {
+      "id": "HWM162-S04",
+      "path": "production/homeworld-sectors-20261103/sprites/market/HWM162-S04-trophy-platform.png",
+      "sha256": "897a4024cd04edb42b557a08f8b40ee29d80c219e2de3061106265b69208a5d4",
+      "bytes": 2722757
+    },
+    {
+      "id": "HWM162-S05",
+      "path": "production/homeworld-sectors-20261103/sprites/market/HWM162-S05-stock-shelter.png",
+      "sha256": "a8f69759564a653a6b7488e8fc1a90706a1cdd573592feb2dcfe7a855c40a866",
+      "bytes": 2903672
+    },
+    {
+      "id": "HWM162-S06",
+      "path": "production/homeworld-sectors-20261103/sprites/market/HWM162-S06-removable-display-tray.png",
+      "sha256": "8e18a6f05375ac0179c606eb6631dc5cdab60b7d47723cf5e84088da1a7f2070",
+      "bytes": 1387042
+    },
+    {
+      "id": "HWM162-S07",
+      "path": "production/homeworld-sectors-20261103/sprites/market/HWM162-S07-market-cargo-pallet.png",
+      "sha256": "f196df3b9f6729887e467ed5035487fd5f4c8aac303dfe14c9901f482045a5ff",
+      "bytes": 1734429
+    },
+    {
+      "id": "HWM162-S08",
+      "path": "production/homeworld-sectors-20261103/sprites/market/HWM162-S08-open-merchant-crate.png",
+      "sha256": "594f6e1e3918bfaf93990ab0a7b04948558c17c5c5a4d870181a02bc9b3800a4",
+      "bytes": 2161796
+    },
+    {
+      "id": "HWM162-S09",
+      "path": "production/homeworld-sectors-20261103/sprites/market/HWM162-S09-detached-storage-cylinder.png",
+      "sha256": "256a92587ab41c0aa7a2d3f62151005df766defe5185640a556c6fa89675433b",
+      "bytes": 1805155
+    },
+    {
+      "id": "HWM162-S10",
+      "path": "production/homeworld-sectors-20261103/sprites/market/HWM162-S10-free-market-canopy.png",
+      "sha256": "78347f7a7a79df9a265a38d7f2df24905626f783df371ad53ec554a05a104e93",
+      "bytes": 1863854
+    },
+    {
+      "id": "HWM162-M01",
+      "path": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M01-open-stable.png",
+      "sha256": "b2f958ccd6a992c269b94cf32900ccfc2a5b8c2063a231891c445c8396ec6518",
+      "bytes": 2196037
+    },
+    {
+      "id": "HWM162-M02",
+      "path": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M02-tether-station.png",
+      "sha256": "e61634fd7c5ea92792c06586e6b7edb4ed23b570084931177cb32774c80865fa",
+      "bytes": 1248514
+    },
+    {
+      "id": "HWM162-M03",
+      "path": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M03-mounting-platform.png",
+      "sha256": "c2997f12d43ba912223b9e339dca9ec5799a37d62397ee21aeef88f80f2277c7",
+      "bytes": 1479050
+    },
+    {
+      "id": "HWM162-M04",
+      "path": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M04-corral-fence.png",
+      "sha256": "4045b9d71693b66341d14b45dde68930d3664a56784d4bf1ce69c097e247a525",
+      "bytes": 1675317
+    },
+    {
+      "id": "HWM162-M05",
+      "path": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M05-training-hurdle.png",
+      "sha256": "3c5525569fdffe27192b92297476d23692f32e959c9404a91e8f64a75e9e81a2",
+      "bytes": 1318052
+    },
+    {
+      "id": "HWM162-M06",
+      "path": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M06-fauna-care-workstation.png",
+      "sha256": "a1dd1b7cb81a1b80ffd929381ec26f99d3e581ff5e1db98ac3514c72bfdd67da",
+      "bytes": 1421732
+    },
+    {
+      "id": "HWM162-M07",
+      "path": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M07-corral-corner.png",
+      "sha256": "dded60e7e63162ccc49821c124e11d501d317aa04f643663df7b553a3887dd0f",
+      "bytes": 1690323
+    },
+    {
+      "id": "HWM162-M08",
+      "path": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M08-open-gateway.png",
+      "sha256": "cd982603d1d7c51a2a88ad476fa59bfd58336f23cc30cc7ebb517917b81b212d",
+      "bytes": 1816504
+    },
+    {
+      "id": "HWM162-M09",
+      "path": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M09-sliding-gate-leaf.png",
+      "sha256": "455a9907fe96b5a73497923ae4b213fc9206aefae333638e6b420493985171f9",
+      "bytes": 1490374
+    },
+    {
+      "id": "HWM162-M10",
+      "path": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M10-empty-mount-feeder.png",
+      "sha256": "72d4f988cf024145df29ffe3f9b415437711387f9eb18ef5557e2c61fd80034e",
+      "bytes": 1096714
+    },
+    {
+      "id": "HWM162-M11",
+      "path": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M11-corral-diagonal-left-v2.png",
+      "sha256": "928ffc75d39105cc31b6562487d91212300d3d0649cb0b4849f36012f8b92ea7",
+      "bytes": 1997987
+    },
+    {
+      "id": "HWM162-M12",
+      "path": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M12-corral-diagonal-right.png",
+      "sha256": "8b24047d241df0b1849a9ef7bf98b834e29db2891ceb097d2decfceb76bd6bcd",
+      "bytes": 1427860
+    },
+    {
+      "id": "HWM162-K01",
+      "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K01-kennel-building.png",
+      "sha256": "fedb9677d90ae72cfe2ee53e9a1f5751361ea1d88da2d9169137a22d2cd9d9a5",
+      "bytes": 2118034
+    },
+    {
+      "id": "HWM162-K02",
+      "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K02-handling-gate.png",
+      "sha256": "7d7a726ff442a711bf4212a7161d042659542d1a384056f1a1853743fa77068c",
+      "bytes": 2028210
+    },
+    {
+      "id": "HWM162-K03",
+      "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K03-training-rack.png",
+      "sha256": "95cef71793ec00c9a9d8ae8842e4e8beb3e83ac9eddf4be57820a2a965637797",
+      "bytes": 2124242
+    },
+    {
+      "id": "HWM162-K04",
+      "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K04-keeper-platform.png",
+      "sha256": "fa7bcf72db0315a379f90e5872153e75e29d9d2e893adaaac02c110d611e4a73",
+      "bytes": 1949477
+    },
+    {
+      "id": "HWM162-K05",
+      "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K05-resting-basin.png",
+      "sha256": "df1d8e518af28797dac239a4db5988bba8bd10e6eb702893833850df1ffbdecf",
+      "bytes": 2271437
+    },
+    {
+      "id": "HWM162-K06",
+      "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K06-sliding-mesh-panel.png",
+      "sha256": "1591ab6c1a112e5373c8260c2c62d5111659212b9cb219ed79f44262f6d0dee4",
+      "bytes": 1479154
+    },
+    {
+      "id": "HWM162-K07",
+      "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K07-handler-lead.png",
+      "sha256": "7b47106c7b7d92b180eb62ce496ef50883e34d83b521b4b1b912d76e0bf062d9",
+      "bytes": 1898963
+    },
+    {
+      "id": "HWM162-K08",
+      "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K08-woven-training-lure.png",
+      "sha256": "2140079cfbe57a3077add91e44152c7e32890159cf54b2dbd24c1ddacb56d698",
+      "bytes": 1389256
+    },
+    {
+      "id": "HWM162-K09",
+      "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K09-adjustable-collar.png",
+      "sha256": "97eb1a2a1ce1122604e6709f4aa61df37d4e8b9186ccca56c2bfd1251b969cb2",
+      "bytes": 2100105
+    },
+    {
+      "id": "HWM162-K10",
+      "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K10-small-cage-open.png",
+      "sha256": "75eb31d88524b14d8d3a037ef22632423e2717b0649a22595366d56321037e44",
+      "bytes": 1773286
+    },
+    {
+      "id": "HWM162-K11",
+      "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K11-medium-cage-open.png",
+      "sha256": "bfbacfe01f9b9ef08ea4397e9038dde7f6980e0951165905d725baf711b04898",
+      "bytes": 1630477
+    },
+    {
+      "id": "HWM162-K12",
+      "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K12-heavy-cage-open.png",
+      "sha256": "6aa80bb9abdf9934d3eb4ed2859a066720fb9e7f2c9e2056b83adf1608f37650",
+      "bytes": 2303040
+    },
+    {
+      "id": "HWM162-K13",
+      "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K13-energy-barrier-off.png",
+      "sha256": "8e668b68e046bc3ff5d888138ead1a1c0c4df556ad28d64ceae0c929cbd5a33c",
+      "bytes": 323930
+    }
+  ],
+  "previousSelectedBytes": 62190708,
+  "sectorAudits": {
+    "market": {
+      "version": "ROUND4-MARKET-AUDIT",
+      "baselineCommit": "c8d37c3c059021a96b071551bf9b19b09340536e",
+      "status": "AUDIT_COMPLETE_FOUR_MARKET_ADDITIONS_APPROVED",
+      "scope": "14 cibles marché + bâtiment97 ; 10 sprites marché déjà livrés.",
+      "corePlan": [
+        {
+          "id": "HWM162-S11",
+          "label": "Comptoir marchand — stock retiré",
+          "targetIds": [
+            "target-v81-64-163"
+          ],
+          "secondaryReuseTargets": [
+            "target-v81-64-159"
+          ],
+          "sourceAssetFiles": [
+            "public/game/homeworld/v83/merchant-counter-left.png"
+          ],
+          "expectedPath": "sprites/market/HWM162-S11-empty-merchant-counter.png",
+          "viewPolicy": "INHERIT_REFERENCE_VIEW",
+          "reason": "Trois articles et un coffret incorporés dans le comptoir source. Retirer uniquement le stock mobile, conserver la console structurelle et les compartiments. Alternatives worktable/clan-table sont des ensembles chargés ; S02 long étal à trois travées."
+        },
+        {
+          "id": "HWM162-S12",
+          "label": "Rack marchand — vide",
+          "targetIds": [
+            "target-v81-64-164"
+          ],
+          "sourceAssetFiles": [
+            "public/game/homeworld/v83/cargo-rack-right.png"
+          ],
+          "expectedPath": "sprites/market/HWM162-S12-empty-cargo-rack.png",
+          "viewPolicy": "INHERIT_REFERENCE_VIEW",
+          "reason": "Six contenants incorporés aux deux étagères ; aucun état vide assorti identifié après inspection de rack-lateral, maintenance-rack, armory-rack et atlas. Armory-rack est un panneau mural à crochets sans tablettes."
+        }
+      ],
+      "canonicalOneToOneClaimed": false,
+      "runtimeIntegrated": false,
+      "humanValidated": false,
+      "scopeOfAbsenceClaim": "Absence de ces états/composants précis dans les fichiers et planches examinés, pas absence de toute famille de mobilier ou de toutes marchandises.",
+      "trackedPathCount": 18806,
+      "marketRelatedImageFilenameMatches": 185,
+      "examinedJsonSources": [
+        "production/homeworld-sectors-20261103/catalogue.json",
+        "production/homeworld-sectors-20261103/manifest.json",
+        "production/homeworld-sectors-20261103/modularity-audit-round2.json",
+        "production/homeworld-sectors-20261103/modularity-audit-round3.json"
+      ],
+      "searchPatterns": [
+        "market|marché|merchant|stall|kiosk|rack|counter|table|banner|awning|chest|stock|cargo|container",
+        "console|terminal|registre|register|ledger|transact|service",
+        "cloth|tissu|fibre|fiber|pelt|peau|bundle|rouleau|basket|panier|sack|textile",
+        "shutter|door|gate|battant|volet|porte|fermeture",
+        "empty.*(table|rack|stall)|(table|rack|stall).*empty"
+      ],
+      "inspectedReferences": [
+        {
+          "path": "public/game/homeworld/v84/maintenance-console-right.png",
+          "inspectionPath": "/workspace/scratch/2166fec07f86/round4-market-reference-inspection/public__game__homeworld__v84__maintenance-console-right.png",
+          "sha256": "a7a43de4384a75ecac48a5c8cd50bc6cd4eb82ffda47719a1022299b90bb966b",
+          "bytes": 1334645,
+          "dimensions": [
+            1254,
+            1254
+          ],
+          "mode": "RGBA",
+          "visuallyInspected": true,
+          "observation": "Console autonome sur pied, palette du Homeworld. À réemployer pour une interface/gestion si l’usage du jeu le demande ; aucun nouveau terminal généré.",
+          "alphaExtrema": [
+            0,
+            255
+          ]
+        },
+        {
+          "path": "public/game/ship-interior/v22/archive-terminal.webp",
+          "inspectionPath": "/workspace/scratch/2166fec07f86/round4-market-reference-inspection/public__game__ship-interior__v22__archive-terminal.webp",
+          "sha256": "b05026ffcb7e52fa1b4792cfda820e8ae6e7ed072359ac3e02762bacd5a34ef6",
+          "bytes": 153362,
+          "dimensions": [
+            1024,
+            1536
+          ],
+          "mode": "RGBA",
+          "visuallyInspected": true,
+          "observation": "Terminal vertical autonome de vaisseau, source existante, fonction différente. Aucun argument d’absence générale de terminal.",
+          "alphaExtrema": [
+            0,
+            255
+          ]
+        },
+        {
+          "path": "public/game/ship-interior/v21/console-navigation.webp",
+          "inspectionPath": "/workspace/scratch/2166fec07f86/round4-market-reference-inspection/public__game__ship-interior__v21__console-navigation.webp",
+          "sha256": "64091fd62bc94577fe85fe152bd64dba7cea9933eafc5a148042d1e763adbb2a",
+          "bytes": 126112,
+          "dimensions": [
+            1536,
+            1024
+          ],
+          "mode": "RGBA",
+          "visuallyInspected": true,
+          "observation": "Console large autonome de vaisseau, source existante. Aucun nouveau terminal marchand nécessaire à cette passe.",
+          "alphaExtrema": [
+            0,
+            255
+          ]
+        },
+        {
+          "path": "public/game/homeworld/v80/maintenance-rack.png",
+          "inspectionPath": "/workspace/scratch/2166fec07f86/round4-market-reference-inspection/public__game__homeworld__v80__maintenance-rack.png",
+          "sha256": "7f5e1579691085f0df4330d3c6fe8d97201e6691d0e0ca8762bd113462fd9d20",
+          "bytes": 1610167,
+          "dimensions": [
+            1254,
+            1254
+          ],
+          "mode": "RGBA",
+          "visuallyInspected": true,
+          "observation": "Rack équipé d’outils, sangles, textiles et contenants fusionnés ; aucun état vide assorti au rack cargo à deux niveaux.",
+          "alphaExtrema": [
+            0,
+            255
+          ]
+        },
+        {
+          "path": "public/game/ship-interior/v22/armory-rack.webp",
+          "inspectionPath": "/workspace/scratch/2166fec07f86/round4-market-reference-inspection/public__game__ship-interior__v22__armory-rack.webp",
+          "sha256": "b4a7f41b836e3d8db98311e87bce348b54b4831024d84141aab41dbc0e295d2f",
+          "bytes": 169014,
+          "dimensions": [
+            1536,
+            1024
+          ],
+          "mode": "RGBA",
+          "visuallyInspected": true,
+          "observation": "Panneau mural vide à crochets, pas de tablettes portantes pour caisses : conserver pour armurerie, pas un substitut au rack cargo vide.",
+          "alphaExtrema": [
+            0,
+            255
+          ]
+        },
+        {
+          "path": "public/game/homeworld/v78/clan-common-table-left.png",
+          "inspectionPath": "/workspace/scratch/2166fec07f86/round4-market-reference-inspection/public__game__homeworld__v78__clan-common-table-left.png",
+          "sha256": "b6a25d7e1763471014665b89c00ac34afad110ae108cc051990d2c5490b48311",
+          "bytes": 2221334,
+          "dimensions": [
+            1536,
+            1024
+          ],
+          "mode": "RGBA",
+          "visuallyInspected": true,
+          "observation": "Table de repas garnie. Source réutilisable pour rassemblement, pas l’état de stock vide d’un comptoir de commerce.",
+          "alphaExtrema": [
+            0,
+            254
+          ]
+        },
+        {
+          "path": "public/game/assets/v37/tribes/v4/objet-desert-table-v4--17a9324112c2c9ab.webp",
+          "inspectionPath": "/workspace/scratch/2166fec07f86/round4-market-reference-inspection/public__game__assets__v37__tribes__v4__objet-desert-table-v4--17a9324112c2c9ab.webp",
+          "sha256": "da4f3f6e531f6691be35d7fafdef42cf804a9615d853936ce3c2e50e06f2a6cb",
+          "bytes": 1942456,
+          "dimensions": [
+            1536,
+            1024
+          ],
+          "mode": "RGBA",
+          "visuallyInspected": true,
+          "observation": "Table circulaire avec compartiments et objets rituels intégrés ; autre mobilier, ne remplace pas l’état du comptoir.",
+          "alphaExtrema": [
+            0,
+            254
+          ]
+        },
+        {
+          "path": "public/game/ship-interior/v21/door-leaf.webp",
+          "inspectionPath": "/workspace/scratch/2166fec07f86/round4-market-reference-inspection/public__game__ship-interior__v21__door-leaf.webp",
+          "sha256": "a8aadccce21c3109be1b306a02fa19a6fb2216313e51aa9521c662e22c80e0b1",
+          "bytes": 122512,
+          "dimensions": [
+            941,
+            1672
+          ],
+          "mode": "RGBA",
+          "visuallyInspected": true,
+          "observation": "Battant de vaisseau haut et étroit, éclairage cyan, pas de volet large assorti à la baie S05. Le redimensionnement non uniforme serait nécessaire pour forcer la forme.",
+          "alphaExtrema": [
+            0,
+            255
+          ]
+        },
+        {
+          "path": "public/game/homeworld/v64/props-atlas.png",
+          "inspectionPath": "/workspace/scratch/2166fec07f86/round4-market-reference-inspection/public__game__homeworld__v64__props-atlas.png",
+          "sha256": "65cab4e4edb9b0e393751b20d4b8a8790f46e9206b53f2a52a58e175b03974c4",
+          "bytes": 1466252,
+          "dimensions": [
+            1254,
+            1254
+          ],
+          "mode": "RGBA",
+          "visuallyInspected": true,
+          "observation": "Planche de banc, coffre, armoire, console, petit poste de cuisine, lit, table garnie, plante et lampe. Pas de rack cargo vide ni textile lié autonome.",
+          "alphaExtrema": [
+            0,
+            255
+          ]
+        },
+        {
+          "path": "public/game/homeworld/v72/civic-furniture-kit.png",
+          "inspectionPath": "/workspace/scratch/2166fec07f86/round4-market-reference-inspection/public__game__homeworld__v72__civic-furniture-kit.png",
+          "sha256": "dd9193612dff71ddbe1a65c74ef5c55cd10a4202cabf08746ec94195a825a844",
+          "bytes": 1728885,
+          "dimensions": [
+            1448,
+            1086
+          ],
+          "mode": "RGBA",
+          "visuallyInspected": true,
+          "observation": "Planche de mobilier ; textiles et pots incorporés aux racks/tables, pas de rouleau lié détaché.",
+          "alphaExtrema": [
+            0,
+            255
+          ]
+        },
+        {
+          "path": "public/game/assets/v17/enemy-trophies/enemy-trophy-peau-prismatique.webp",
+          "inspectionPath": "/workspace/scratch/2166fec07f86/round4-market-reference-inspection/public__game__assets__v17__enemy-trophies__enemy-trophy-peau-prismatique.webp",
+          "sha256": "2c57936819e499b76c3de6c6bf8b72ea8af31349bdf56bfefe80d7e982170fed",
+          "bytes": 192712,
+          "dimensions": [
+            1411,
+            1115
+          ],
+          "mode": "RGBA",
+          "visuallyInspected": true,
+          "observation": "Peau écailleuse épineuse, partiellement roulée, déjà autonome. À conserver comme trophée/ressource spécifique ; ne pas affirmer que tous les matériaux roulés sont absents. Ce n’est pas le paquet textile lié des racks marchands.",
+          "alphaExtrema": [
+            0,
+            255
+          ]
+        },
+        {
+          "path": "public/game/assets/v17/enemy-trophies/enemy-trophy-sac-bioluminescent.webp",
+          "inspectionPath": "/workspace/scratch/2166fec07f86/round4-market-reference-inspection/public__game__assets__v17__enemy-trophies__enemy-trophy-sac-bioluminescent.webp",
+          "sha256": "3f4fedbf19ea4d7feddb948be590042d3e714b8de79c9d85206f668bbbb81aa4",
+          "bytes": 118330,
+          "dimensions": [
+            1405,
+            1120
+          ],
+          "mode": "RGBA",
+          "visuallyInspected": true,
+          "observation": "Sac biologique/trophée organique lumineux, pas un emballage textile marchand.",
+          "alphaExtrema": [
+            0,
+            255
+          ]
+        },
+        {
+          "path": "public/game/assets/v16/franchise-trophies/franchise-holiday-easter-basket.webp",
+          "inspectionPath": "/workspace/scratch/2166fec07f86/round4-market-reference-inspection/public__game__assets__v16__franchise-trophies__franchise-holiday-easter-basket.webp",
+          "sha256": "053567550c7c49fe24def3c44f48816f134779072967a58f1647f25418cf4c02",
+          "bytes": 141592,
+          "dimensions": [
+            1370,
+            1148
+          ],
+          "mode": "RGBA",
+          "visuallyInspected": true,
+          "observation": "Panier de trophée festif et œufs colorés, autonome mais thème distinct. Aucun nouveau panier imposé au marché.",
+          "alphaExtrema": [
+            0,
+            255
+          ]
+        },
+        {
+          "path": "production/homeworld-v158/assets/sprites_png/HW1034_sechoir_trophes_peaux.png",
+          "inspectionPath": "/workspace/scratch/2166fec07f86/round4-market-reference-inspection/production__homeworld-v158__assets__sprites_png__HW1034_sechoir_trophes_peaux.png",
+          "sha256": "de29209f97b960a176197dc6034762d0fb053b4754ae9299ef6dffdea074a71d",
+          "bytes": 46278,
+          "dimensions": [
+            197,
+            141
+          ],
+          "mode": "RGBA",
+          "visuallyInspected": true,
+          "observation": "Séchoir de peaux composé, pas un stock textile lié autonome.",
+          "alphaExtrema": [
+            0,
+            254
+          ]
+        },
+        {
+          "path": "public/game/homeworld/v78/market-stall-right.png",
+          "inspectionPath": "/workspace/scratch/2166fec07f86/round3-market-reference-inspection/public__game__homeworld__v78__market-stall-right.png",
+          "sha256": "c98a90d777cf85e921681feb36c738216d8a99a945669e670234c65b65897796",
+          "bytes": 2705219,
+          "dimensions": [
+            1536,
+            1024
+          ],
+          "mode": "RGBA",
+          "visuallyInspected": true,
+          "observation": "Étal marchand déjà autonome, composé d’auvent, marchandises, caisses, lampes et textile. Conserver le modèle chargé ; ne pas générer un nouveau stand arbitraire.",
+          "alphaExtrema": [
+            0,
+            254
+          ]
+        },
+        {
+          "path": "public/game/homeworld/v83/merchant-counter-left.png",
+          "inspectionPath": "/workspace/scratch/2166fec07f86/round3-market-reference-inspection/public__game__homeworld__v83__merchant-counter-left.png",
+          "sha256": "a0bf8a90c46ebd7ed1271a3a84d591856d3bed0d88b1abdde07c6fc76124f8da",
+          "bytes": 1381304,
+          "dimensions": [
+            1254,
+            1254
+          ],
+          "mode": "RGBA",
+          "visuallyInspected": true,
+          "observation": "Comptoir autonome mais trois articles de vitrine et un coffret sont fusionnés ; console structurelle conservable. État sans stock utile.",
+          "alphaExtrema": [
+            0,
+            255
+          ]
+        },
+        {
+          "path": "public/game/homeworld/v83/cargo-rack-right.png",
+          "inspectionPath": "/workspace/scratch/2166fec07f86/round3-market-reference-inspection/public__game__homeworld__v83__cargo-rack-right.png",
+          "sha256": "c6146c0577b832012a099e87b6008f5315771c72725932ce8eb850e4f9f43eb4",
+          "bytes": 1922894,
+          "dimensions": [
+            1254,
+            1254
+          ],
+          "mode": "RGBA",
+          "visuallyInspected": true,
+          "observation": "Rack porteur autonome à deux niveaux avec six contenants fusionnés. État vide utile pour placer le stock séparément.",
+          "alphaExtrema": [
+            0,
+            255
+          ]
+        },
+        {
+          "path": "public/game/homeworld/v76/interior/rack-lateral.png",
+          "inspectionPath": "/workspace/scratch/2166fec07f86/round3-market-reference-inspection/public__game__homeworld__v76__interior__rack-lateral.png",
+          "sha256": "441642d5ddacad9a03a45f068d0e95d588518ae18a5c02af897b2dd165436308",
+          "bytes": 1196854,
+          "dimensions": [
+            1213,
+            1296
+          ],
+          "mode": "RGBA",
+          "visuallyInspected": true,
+          "observation": "Rack trois niveaux chargé de textiles roulés et pots. Rouleaux incorporés ; référence principale du textile lié S13.",
+          "alphaExtrema": [
+            0,
+            255
+          ]
+        },
+        {
+          "path": "public/game/homeworld/v76/interior/worktable-right.png",
+          "inspectionPath": "/workspace/scratch/2166fec07f86/round3-market-reference-inspection/public__game__homeworld__v76__interior__worktable-right.png",
+          "sha256": "62f1a4020acb5f65d6b07486d772fa42d7d2aacd8470af43aa84e508743c319d",
+          "bytes": 1176366,
+          "dimensions": [
+            1448,
+            1086
+          ],
+          "mode": "RGBA",
+          "visuallyInspected": true,
+          "observation": "Établi chargé : étau, outils, rouleaux, petits contenants. Ne constitue pas l’état vide du comptoir marchand V83.",
+          "alphaExtrema": [
+            0,
+            255
+          ]
+        },
+        {
+          "path": "production/homeworld-v160/first-pack/HW1009_etale_marche_gauche.png",
+          "inspectionPath": "/workspace/scratch/2166fec07f86/round3-market-reference-inspection/production__homeworld-v160__first-pack__HW1009_etale_marche_gauche.png",
+          "sha256": "64bedca72cb9bc8685cda018b760f3c9995987ed5a965e9dc9ca236426c83769",
+          "bytes": 2432702,
+          "dimensions": [
+            1313,
+            1024
+          ],
+          "mode": "RGBA",
+          "visuallyInspected": true,
+          "observation": "Étal chargé autonome utile pour le stand gauche. Source conservée sans reconstitution.",
+          "alphaExtrema": [
+            0,
+            254
+          ]
+        },
+        {
+          "path": "production/homeworld-v160/originals/HWA160-023_kiosque-marchand-yautja-en-basalte-et-bronze.png",
+          "inspectionPath": "/workspace/scratch/2166fec07f86/round3-market-reference-inspection/production__homeworld-v160__originals__HWA160-023_kiosque-marchand-yautja-en-basalte-et-bronze.png",
+          "sha256": "cff21dfa18b8d2bcaa74f8690b7a7ff1d4fc83f902f38af21c7ebc00b1dec3b3",
+          "bytes": 1737441,
+          "dimensions": [
+            1254,
+            1254
+          ],
+          "mode": "RGBA",
+          "visuallyInspected": true,
+          "observation": "Petit kiosque marchand autonome déjà présent ; satisfait une source compacte apparentée à157. Aucune nouvelle construction proposée.",
+          "alphaExtrema": [
+            0,
+            255
+          ]
+        },
+        {
+          "path": "production/homeworld-sectors-20261103/sprites/market/HWM162-S02-long-market-stall.png",
+          "inspectionPath": "/workspace/scratch/2166fec07f86/yautja-la-longue-chasse/production/homeworld-sectors-20261103/sprites/market/HWM162-S02-long-market-stall.png",
+          "sha256": "c1e353660c697180604ca6cf805ad13eb14c2009e6213f3e83233acae518b00e",
+          "bytes": 1404783,
+          "dimensions": [
+            1774,
+            887
+          ],
+          "mode": "RGBA",
+          "visuallyInspected": true,
+          "observation": "Long étal vide à trois travées déjà livré. Conserver ; il ne fournit pas l’état vide du comptoir compact diagonal V83.",
+          "alphaExtrema": [
+            0,
+            255
+          ]
+        },
+        {
+          "path": "production/homeworld-sectors-20261103/sprites/market/HWM162-S03-merchant-display.png",
+          "inspectionPath": "/workspace/scratch/2166fec07f86/yautja-la-longue-chasse/production/homeworld-sectors-20261103/sprites/market/HWM162-S03-merchant-display.png",
+          "sha256": "9d9e720b4dc541e82fb0e3fffe73338c591fc9c39baa1fff6929617a9b3957ab",
+          "bytes": 2373548,
+          "dimensions": [
+            1312,
+            1199
+          ],
+          "mode": "RGBA",
+          "visuallyInspected": true,
+          "observation": "Présentoir vide à gradins et crochets, déjà livré. Conserver ; fonction de présentation différente des deux tablettes cargo.",
+          "alphaExtrema": [
+            0,
+            255
+          ]
+        },
+        {
+          "path": "production/homeworld-sectors-20261103/sprites/market/HWM162-S04-trophy-platform.png",
+          "inspectionPath": "/workspace/scratch/2166fec07f86/yautja-la-longue-chasse/production/homeworld-sectors-20261103/sprites/market/HWM162-S04-trophy-platform.png",
+          "sha256": "897a4024cd04edb42b557a08f8b40ee29d80c219e2de3061106265b69208a5d4",
+          "bytes": 2722757,
+          "dimensions": [
+            1536,
+            1024
+          ],
+          "mode": "RGBA",
+          "visuallyInspected": true,
+          "observation": "Plateforme vide déjà livrée pour exposer les prises ; aucun nouveau trophée ou podium nécessaire.",
+          "alphaExtrema": [
+            0,
+            254
+          ]
+        },
+        {
+          "path": "production/homeworld-sectors-20261103/sprites/market/HWM162-S05-stock-shelter.png",
+          "inspectionPath": "/workspace/scratch/2166fec07f86/yautja-la-longue-chasse/production/homeworld-sectors-20261103/sprites/market/HWM162-S05-stock-shelter.png",
+          "sha256": "a8f69759564a653a6b7488e8fc1a90706a1cdd573592feb2dcfe7a855c40a866",
+          "bytes": 2903672,
+          "dimensions": [
+            1536,
+            1024
+          ],
+          "mode": "RGBA",
+          "visuallyInspected": true,
+          "observation": "Abri vide avec baie entièrement ouverte entre deux piliers. Aucun vantail ni mécanisme de fermeture visible ; placementNote prévoit un accès de manutention et une fermeture. Un composant plein est proposé pour cette fonction.",
+          "alphaExtrema": [
+            0,
+            254
+          ]
+        },
+        {
+          "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K06-sliding-mesh-panel.png",
+          "inspectionPath": "/workspace/scratch/2166fec07f86/yautja-la-longue-chasse/production/homeworld-sectors-20261103/sprites/kennels/HWM162-K06-sliding-mesh-panel.png",
+          "sha256": "1591ab6c1a112e5373c8260c2c62d5111659212b9cb219ed79f44262f6d0dee4",
+          "bytes": 1479154,
+          "dimensions": [
+            1536,
+            1024
+          ],
+          "mode": "RGBA",
+          "visuallyInspected": true,
+          "observation": "Panneau de chenil grillagé, transparent entre mailles. Conserver pour son portique K02 ; pas une fermeture pleine du stock.",
+          "alphaExtrema": [
+            0,
+            254
+          ]
+        },
+        {
+          "path": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M09-sliding-gate-leaf.png",
+          "inspectionPath": "/workspace/scratch/2166fec07f86/yautja-la-longue-chasse/production/homeworld-sectors-20261103/sprites/mounts/HWM162-M09-sliding-gate-leaf.png",
+          "sha256": "455a9907fe96b5a73497923ae4b213fc9206aefae333638e6b420493985171f9",
+          "bytes": 1490374,
+          "dimensions": [
+            1536,
+            1024
+          ],
+          "mode": "RGBA",
+          "visuallyInspected": true,
+          "observation": "Battant de grand enclos à larges ajours et galets supérieurs ; pas un volet plein de réserve.",
+          "alphaExtrema": [
+            0,
+            254
+          ]
+        }
+      ],
+      "recommendedTotalNewMarketPng": 4,
+      "newBuildingCount": 0,
+      "additionalPlan": [
+        {
+          "id": "HWM162-S13",
+          "label": "Rouleau de textile lié autonome",
+          "targetIds": [
+            "target-v81-64-164",
+            "target-v81-64-170"
+          ],
+          "sourceAssetFiles": [
+            "public/game/homeworld/v76/interior/rack-lateral.png"
+          ],
+          "expectedPath": "sprites/market/HWM162-S13-bound-cloth-roll.png",
+          "viewPolicy": "PROJECT_CAMERA_TARGET",
+          "purpose": "Stocker et présenter séparément un paquet textile, en pouvant vider/remplir les racks sans fusion au mobilier.",
+          "evidence": "Rouleaux liés incorporés aux racks V76/V80 et aux étals ; peau prismatique détachée conservée comme autre ressource spécifique, sans assimilation à ce textile.",
+          "cameraNote": "Nouvelle vue demandée orthographique yaw0/pitch35 ; aucune mesure3D ni dimensions canoniques.",
+          "decision": "APPROVED_BY_ROOT"
+        },
+        {
+          "id": "HWM162-S14",
+          "label": "Volet plein de réserve autonome",
+          "targetIds": [
+            "target-v81-64-170"
+          ],
+          "sourceAssetIds": [
+            "HWM162-S05"
+          ],
+          "sourceAssetFiles": [
+            "production/homeworld-sectors-20261103/sprites/market/HWM162-S05-stock-shelter.png"
+          ],
+          "expectedPath": "sprites/market/HWM162-S14-stock-shutter.png",
+          "viewPolicy": "PROJECT_CAMERA_TARGET",
+          "purpose": "Proposer une fermeture pleine de la baie frontale du stock S05.",
+          "evidence": "La source S05 montre une baie ouverte ; aucun vantail existant. Les portes de vaisseau sont étroites, les battants K06/M09 ajourés.",
+          "mechanismStatus": "NEW_PROPOSED_COMPONENT_NOT_ATTESTED_IN_REFERENCE",
+          "placementNote": "Dimensionnement, guidage, pivot, occlusion, débattement et raccord au linteau à vérifier dans la scène. Aucun bâtiment, sol ou cadre complet fusionné au PNG.",
+          "cameraNote": "Vue frontale cohérente avec S05 demandée orthographique yaw0/pitch35 ; résultat non mesuré.",
+          "decision": "APPROVED_BY_ROOT"
+        }
+      ],
+      "reuseDecisions": [
+        {
+          "ids": [
+            "HWM162-S01",
+            "HWM162-S02",
+            "HWM162-S03",
+            "HWM162-S04",
+            "HWM162-S06",
+            "HWM162-S07",
+            "HWM162-S08",
+            "HWM162-S09",
+            "HWM162-S10"
+          ],
+          "decision": "KEEP_EXISTING_35_RELEASE_FILES_UNCHANGED"
+        },
+        {
+          "path": "public/game/homeworld/v84/maintenance-console-right.png",
+          "decision": "REUSE_IF_SERVICE_INTERFACE_NEEDED_NO_NEW_CONSOLE"
+        },
+        {
+          "paths": [
+            "public/game/sprites/v33/pit-arenas/trophy-hall/p3-c-archive-lamp-left.png",
+            "public/game/sprites/v33/pit-arenas/trophy-hall/p3-d-archive-lamp-right.png",
+            "public/game/homeworld/v80/amber-lamp-post.png"
+          ],
+          "decision": "KEEP_LAMPS_ALREADY_INSPECTED_ROUND3_NO_REGENERATION"
+        },
+        {
+          "path": "public/game/homeworld/v78/port-cargo-sorting-cart.png",
+          "decision": "KEEP_EXISTING_HANDLING_CART_NO_REGENERATION"
+        },
+        {
+          "path": "public/game/homeworld/v80/clan-banner-standard.png",
+          "decision": "KEEP_EXISTING_BANNER_NO_VARIANT_NEEDED"
+        },
+        {
+          "path": "public/game/assets/v17/enemy-trophies/enemy-trophy-peau-prismatique.webp",
+          "decision": "KEEP_SPECIFIC_RESOURCE_DISTINCT_FROM_PROJECT_TEXTILE"
+        }
+      ],
+      "deferredOrRejected": [
+        {
+          "candidate": "Nouveau bâtiment marchand",
+          "reason": "Halle S01, stock S05, auvent libre S10, kiosque HWA160-023 et étals existants couvrent les fonctions bâties identifiées. Seul composant de fermeture proposé."
+        },
+        {
+          "candidate": "Console marchande détachée supplémentaire",
+          "reason": "Console autonome V84 déjà utilisable comme source apparentée ; S11 conserve sa console structurelle."
+        },
+        {
+          "candidate": "Nouveau panier/sac marchand",
+          "reason": "Aucun besoin fonctionnel supplémentaire assez précis pour le préférer aux contenants et au textile retenus."
+        }
+      ],
+      "generationStatus": {
+        "HWM162-S11": "GENERATED_FIRST_ATTEMPT_SELECTED",
+        "HWM162-S12": "SECOND_ATTEMPT_SELECTED_AFTER_BOTTOM_CROP_FIX",
+        "HWM162-S13": "GENERATED_FIRST_ATTEMPT_SELECTED",
+        "HWM162-S14": "GENERATED_FIRST_ATTEMPT_SELECTED"
+      },
+      "productionReceipt": "production/homeworld-sectors-20261103/receipts/market.json",
+      "selectedAssetCount": 4
+    },
+    "mounts": {
+      "schema_version": 1,
+      "scope": "mounts pass4",
+      "head": "c8d37c3c059021a96b071551bf9b19b09340536e",
+      "status": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+      "lore_status": "ORIGINAL_GAME_ADAPTATION",
+      "camera_requested": {
+        "projection": "orthographic",
+        "yaw_degrees": 0,
+        "pitch_degrees": 35
+      },
+      "camera_measured": false,
+      "inspected_sources": [
+        {
+          "id": "HWM162-M01",
+          "path": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M01-open-stable.png",
+          "sha256": "b2f958ccd6a992c269b94cf32900ccfc2a5b8c2063a231891c445c8396ec6518",
+          "inspection": "visual review in passes1–4",
+          "reuse": "preserved"
+        },
+        {
+          "id": "HWM162-M02",
+          "path": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M02-tether-station.png",
+          "sha256": "e61634fd7c5ea92792c06586e6b7edb4ed23b570084931177cb32774c80865fa",
+          "inspection": "visual review in passes1–4",
+          "reuse": "preserved"
+        },
+        {
+          "id": "HWM162-M03",
+          "path": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M03-mounting-platform.png",
+          "sha256": "c2997f12d43ba912223b9e339dca9ec5799a37d62397ee21aeef88f80f2277c7",
+          "inspection": "visual review in passes1–4",
+          "reuse": "preserved"
+        },
+        {
+          "id": "HWM162-M04",
+          "path": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M04-corral-fence.png",
+          "sha256": "4045b9d71693b66341d14b45dde68930d3664a56784d4bf1ce69c097e247a525",
+          "inspection": "visual review in passes1–4",
+          "reuse": "preserved"
+        },
+        {
+          "id": "HWM162-M05",
+          "path": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M05-training-hurdle.png",
+          "sha256": "3c5525569fdffe27192b92297476d23692f32e959c9404a91e8f64a75e9e81a2",
+          "inspection": "visual review in passes1–4",
+          "reuse": "preserved"
+        },
+        {
+          "id": "HWM162-M06",
+          "path": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M06-fauna-care-workstation.png",
+          "sha256": "a1dd1b7cb81a1b80ffd929381ec26f99d3e581ff5e1db98ac3514c72bfdd67da",
+          "inspection": "visual review in passes1–4",
+          "reuse": "preserved"
+        },
+        {
+          "id": "HWM162-M07",
+          "path": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M07-corral-corner.png",
+          "sha256": "dded60e7e63162ccc49821c124e11d501d317aa04f643663df7b553a3887dd0f",
+          "inspection": "visual review in passes1–4",
+          "reuse": "preserved"
+        },
+        {
+          "id": "HWM162-M08",
+          "path": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M08-open-gateway.png",
+          "sha256": "cd982603d1d7c51a2a88ad476fa59bfd58336f23cc30cc7ebb517917b81b212d",
+          "inspection": "visual review in passes1–4",
+          "reuse": "preserved"
+        },
+        {
+          "id": "HWM162-M09",
+          "path": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M09-sliding-gate-leaf.png",
+          "sha256": "455a9907fe96b5a73497923ae4b213fc9206aefae333638e6b420493985171f9",
+          "inspection": "visual review in passes1–4",
+          "reuse": "preserved"
+        },
+        {
+          "id": "HWM162-M10",
+          "path": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M10-empty-mount-feeder.png",
+          "sha256": "72d4f988cf024145df29ffe3f9b415437711387f9eb18ef5557e2c61fd80034e",
+          "inspection": "visual review in passes1–4",
+          "reuse": "preserved"
+        },
+        {
+          "id": "HWM162-M11",
+          "path": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M11-corral-diagonal-left-v2.png",
+          "sha256": "928ffc75d39105cc31b6562487d91212300d3d0649cb0b4849f36012f8b92ea7",
+          "inspection": "visual review in passes1–4",
+          "reuse": "preserved"
+        },
+        {
+          "id": "HWM162-M12",
+          "path": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M12-corral-diagonal-right.png",
+          "sha256": "8b24047d241df0b1849a9ef7bf98b834e29db2891ceb097d2decfceb76bd6bcd",
+          "inspection": "visual review in passes1–4",
+          "reuse": "preserved"
+        },
+        {
+          "id": "target-v81-71-273",
+          "path": "production/native-open-20261102/archives/fauna-energy/gear/target-v81-71-273-fauna-harness-support-native.png",
+          "local_reference": "/workspace/scratch/2166fec07f86/round3-mounts-references/target-v81-71-273-fauna-harness-support-native.png",
+          "sha256": "92b2d4dfd704ab774f840d56c41132072fdbeb06e204e56ba1d9cf617456ee7a",
+          "inspection": "visual review",
+          "reuse": "preserved original; new independent component/pose only where approved"
+        },
+        {
+          "id": "target-v81-72-282",
+          "path": "production/native-open-20261102/archives/fauna-energy/gear/target-v81-72-282-mount-harness-support-native.png",
+          "local_reference": "/workspace/scratch/2166fec07f86/round3-mounts-references/target-v81-72-282-mount-harness-support-native.png",
+          "sha256": "e32266329f168b89f0318b0ddb666a9044bc90ee9d2677cbd02f580857bc5acc",
+          "inspection": "visual review",
+          "reuse": "preserved original; new independent component/pose only where approved"
+        },
+        {
+          "id": "target-v81-72-283",
+          "path": "production/native-open-20261102/archives/fauna-energy/gear/target-v81-72-283-mount-harness-native.png",
+          "local_reference": "/workspace/scratch/2166fec07f86/round3-mounts-references/target-v81-72-283-mount-harness-native.png",
+          "sha256": "1dd4cf02adcfc98d04529cf00d9c290016c7bac9678d7d1432bda6db583a6d45",
+          "inspection": "visual review",
+          "reuse": "preserved original; new independent component/pose only where approved"
+        },
+        {
+          "id": "target-v81-72-284",
+          "path": "production/native-open-20261102/archives/fauna-energy/gear/target-v81-72-284-mount-saddle-native.png",
+          "local_reference": "/workspace/scratch/2166fec07f86/round3-mounts-references/target-v81-72-284-mount-saddle-native.png",
+          "sha256": "01569e77489c2296a019269eb863e7a3f48c16002991ad220b0a67b1719b4615",
+          "inspection": "visual review",
+          "reuse": "preserved original; new independent component/pose only where approved"
+        },
+        {
+          "id": "target-v81-72-285",
+          "path": "production/native-open-20261102/archives/fauna-energy/gear/target-v81-72-285-saddle-rack-native.png",
+          "local_reference": "/workspace/scratch/2166fec07f86/round3-mounts-references/target-v81-72-285-saddle-rack-native.png",
+          "sha256": "ea4496e16d3e74bd5beb121445a3b72451b3712ac717277112ab55c615ee834c",
+          "inspection": "visual review",
+          "reuse": "preserved original; new independent component/pose only where approved"
+        },
+        {
+          "id": "target-v81-72-288",
+          "path": "production/native-open-20261102/archives/fauna-energy/gear/target-v81-72-288-adapted-mount-feeder-native.png",
+          "local_reference": "/workspace/scratch/2166fec07f86/round3-mounts-references/target-v81-72-288-adapted-mount-feeder-native.png",
+          "sha256": "22f2344dc1fb0c67a2ef1c28fa01a4a8998bdac18a7d5c8509c16785f89dd953",
+          "inspection": "visual review",
+          "reuse": "preserved original; new independent component/pose only where approved"
+        },
+        {
+          "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K07-handler-lead.png",
+          "local_reference": "/workspace/scratch/2166fec07f86/yautja-la-longue-chasse/production/homeworld-sectors-20261103/sprites/kennels/HWM162-K07-handler-lead.png",
+          "sha256": "7b47106c7b7d92b180eb62ce496ef50883e34d83b521b4b1b912d76e0bf062d9",
+          "inspection": "visual review pass4",
+          "observation": "K07 has a hand loop and one mechanical snap hook, distinct from fixed-point double-ended M13."
+        },
+        {
+          "path": "production/homeworld-sectors-20261103/sprites/market/HWM162-S09-detached-storage-cylinder.png",
+          "local_reference": "/workspace/scratch/2166fec07f86/yautja-la-longue-chasse/production/homeworld-sectors-20261103/sprites/market/HWM162-S09-detached-storage-cylinder.png",
+          "sha256": "256a92587ab41c0aa7a2d3f62151005df766defe5185640a556c6fa89675433b",
+          "inspection": "visual review pass4",
+          "observation": "Closed independent storage cylinder with integral lid grip; possible visual container reuse, contents unspecified."
+        },
+        {
+          "path": "public/game/assets/v18/enemy-trophy-gameplay/enemy-trophy-reservoir-hydrique.webp",
+          "local_reference": "/workspace/scratch/2166fec07f86/round4-mounts-references/enemy-trophy-reservoir-hydrique.webp",
+          "sha256": "c0eb2db05907f6548639ba0f208aef79a9d8302762cd304719197c19b85ce095",
+          "inspection": "visual review pass4",
+          "observation": "Small organic shell-shaped trophy with blue internal membrane, no handle or pouring outlet; not a portable practical canister equivalent."
+        }
+      ],
+      "retained_plan": [
+        {
+          "id": "HWM162-M13",
+          "file": "HWM162-M13-double-ended-tether.png",
+          "target_id": "target-v81-72-281",
+          "label": "Longe de liaison à deux attaches mécaniques",
+          "gap": "M02 porte un anneau et une courte chaîne captive ; aucune longe mécanique indépendante ne relie cet anneau au harnais. K07 possède une boucle de main et reste une laisse de conduite distincte.",
+          "references": [
+            "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M02-tether-station.png",
+            "production/native-open-20261102/archives/fauna-energy/gear/target-v81-72-283-mount-harness-native.png"
+          ],
+          "design": "Une chaîne lourde souple d’un seul tenant, deux embouts à axe captif, aucune poignée de main, aucun poteau fusionné.",
+          "limitations": [
+            "Dimensions et raccords mécaniques proposés visuellement seulement.",
+            "Ni effort admissible ni adaptation à une espèce validés."
+          ],
+          "status": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+          "root_visual_review_performed": true
+        },
+        {
+          "id": "HWM162-M14",
+          "file": "HWM162-M14-hanging-mount-harness-v2.png",
+          "target_id": "target-v81-72-283",
+          "label": "Harnais en pose pendante autonome",
+          "gap": "Le harnais283 existe en volume ouvert prêt à être porté ; support282 est vide. Une pose pendante complète facilite une composition de sellerie sans fusionner le support et le harnais.",
+          "references": [
+            "production/native-open-20261102/archives/fauna-energy/gear/target-v81-72-283-mount-harness-native.png",
+            "production/native-open-20261102/archives/fauna-energy/gear/target-v81-72-282-mount-harness-support-native.png"
+          ],
+          "design": "Même harnais et pièces d’identité, sangles retombant sous leur poids, anneaux supérieurs visibles ; article seul, sans support, mannequin ou animal.",
+          "limitations": [
+            "Nouvelle pose de la cible283, pas nouveau type de harnais.",
+            "Positionnement sur282 et accroches à valider en scène."
+          ],
+          "status": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+          "root_visual_review_performed": true
+        },
+        {
+          "id": "HWM162-M15",
+          "file": "HWM162-M15-soft-care-cradle-v2.png",
+          "target_id": "target-v81-72-290",
+          "label": "Berceau textile de soin pour support bas",
+          "gap": "Le support273 présente quatre berceaux rembourrés sur pieds bas et longerons mais aucune pièce souple autonome entre les appuis. M06 reste un poste de travail compact.",
+          "references": [
+            "production/native-open-20261102/archives/fauna-energy/gear/target-v81-71-273-fauna-harness-support-native.png",
+            "production/native-open-20261102/archives/fauna-energy/gear/target-v81-72-283-mount-harness-native.png"
+          ],
+          "design": "Une pièce textile souple et matelassée de faible profondeur, reposant en principe sur les quatre appuis BAS de273 via ses quatre zones de contact. Article complet indépendant sans piétement, sans palan, sans portique ni suspension à points hauts.",
+          "limitations": [
+            "Source273 ne comporte AUCUNE traverse haute. Ce complément ne constitue pas un appareil de levage.",
+            "La forme des quatre contacts, leur raccord, la stabilité, la charge et la compatibilité d’espèce ne sont pas validés.",
+            "Réemploi possible par le secteur chenils ; ne pas dupliquer."
+          ],
+          "status": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+          "root_visual_review_performed": true
+        }
+      ],
+      "rejected_or_reused": [
+        {
+          "candidate": "M16 portable water canister",
+          "decision": "NO_NEW_SPRITE",
+          "reason": "Contracts v107/v108 require a bidon with six exercise water units, not a canonical container specification. S09 is already an autonomous closed container with integral grip. Preserve and reuse this visual where appropriate; do not duplicate or assert its contents. Hydric reservoir trophy is visually unrelated.",
+          "repo_evidence": [
+            "docs/v107-clan-specialized-contract.md",
+            "docs/v108-clan-logistics-contract.md"
+          ]
+        },
+        {
+          "candidate": "saddle/support/rack duplicates",
+          "decision": "REUSE_EXISTING",
+          "reason": "Legacy284 saddle,285 rack and282 harness support are independent and usable; preserve."
+        },
+        {
+          "candidate": "extra stable/soin building",
+          "decision": "NOT_SELECTED",
+          "reason": "M01 already supplies a full open stable, M06 a workstation and273 the low support. No additional concrete architectural gap demonstrated."
+        }
+      ],
+      "ownership": {
+        "allowed_outputs": [
+          "sprites/mounts/HWM162-M13-double-ended-tether.png",
+          "sprites/mounts/HWM162-M14-hanging-mount-harness.png",
+          "sprites/mounts/HWM162-M15-soft-care-cradle.png",
+          "receipts/mounts.json"
+        ],
+        "no_runtime_change": true,
+        "no_git_or_pr_action": true,
+        "no_existing_png_edit": true
+      },
+      "baseline_mounts": [
+        {
+          "id": "HWM162-M01",
+          "path": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M01-open-stable.png",
+          "sha256": "b2f958ccd6a992c269b94cf32900ccfc2a5b8c2063a231891c445c8396ec6518",
+          "bytes": 2196037
+        },
+        {
+          "id": "HWM162-M02",
+          "path": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M02-tether-station.png",
+          "sha256": "e61634fd7c5ea92792c06586e6b7edb4ed23b570084931177cb32774c80865fa",
+          "bytes": 1248514
+        },
+        {
+          "id": "HWM162-M03",
+          "path": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M03-mounting-platform.png",
+          "sha256": "c2997f12d43ba912223b9e339dca9ec5799a37d62397ee21aeef88f80f2277c7",
+          "bytes": 1479050
+        },
+        {
+          "id": "HWM162-M04",
+          "path": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M04-corral-fence.png",
+          "sha256": "4045b9d71693b66341d14b45dde68930d3664a56784d4bf1ce69c097e247a525",
+          "bytes": 1675317
+        },
+        {
+          "id": "HWM162-M05",
+          "path": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M05-training-hurdle.png",
+          "sha256": "3c5525569fdffe27192b92297476d23692f32e959c9404a91e8f64a75e9e81a2",
+          "bytes": 1318052
+        },
+        {
+          "id": "HWM162-M06",
+          "path": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M06-fauna-care-workstation.png",
+          "sha256": "a1dd1b7cb81a1b80ffd929381ec26f99d3e581ff5e1db98ac3514c72bfdd67da",
+          "bytes": 1421732
+        },
+        {
+          "id": "HWM162-M07",
+          "path": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M07-corral-corner.png",
+          "sha256": "dded60e7e63162ccc49821c124e11d501d317aa04f643663df7b553a3887dd0f",
+          "bytes": 1690323
+        },
+        {
+          "id": "HWM162-M08",
+          "path": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M08-open-gateway.png",
+          "sha256": "cd982603d1d7c51a2a88ad476fa59bfd58336f23cc30cc7ebb517917b81b212d",
+          "bytes": 1816504
+        },
+        {
+          "id": "HWM162-M09",
+          "path": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M09-sliding-gate-leaf.png",
+          "sha256": "455a9907fe96b5a73497923ae4b213fc9206aefae333638e6b420493985171f9",
+          "bytes": 1490374
+        },
+        {
+          "id": "HWM162-M10",
+          "path": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M10-empty-mount-feeder.png",
+          "sha256": "72d4f988cf024145df29ffe3f9b415437711387f9eb18ef5557e2c61fd80034e",
+          "bytes": 1096714
+        },
+        {
+          "id": "HWM162-M11",
+          "path": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M11-corral-diagonal-left-v2.png",
+          "sha256": "928ffc75d39105cc31b6562487d91212300d3d0649cb0b4849f36012f8b92ea7",
+          "bytes": 1997987
+        },
+        {
+          "id": "HWM162-M12",
+          "path": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M12-corral-diagonal-right.png",
+          "sha256": "8b24047d241df0b1849a9ef7bf98b834e29db2891ceb097d2decfceb76bd6bcd",
+          "bytes": 1427860
+        }
+      ],
+      "native_image_policy": "One ImageGen call per complete isolated article unless a concrete defect requires a documented correction; transparent_background true; unchanged native file copy; no pixel transforms.",
+      "assembly_runtime_validated": false,
+      "canon_1_to_1_claim": false,
+      "delivery": [
+        {
+          "id": "HWM162-M13",
+          "file": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M13-double-ended-tether.png",
+          "sha256": "f9636f0a0d7defd5885977758fafe54542bfb7d638bd4207d8004ea4a9c385cb",
+          "bytes": 1600052,
+          "imagegen_calls_for_asset": 1,
+          "selected_attempt": 1,
+          "archived_attempts": [],
+          "status": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+          "root_visual_review_performed": true
+        },
+        {
+          "id": "HWM162-M14",
+          "file": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M14-hanging-mount-harness-v2.png",
+          "sha256": "d07668ce8a54d48cd8d5e340a5f6fb3361fa20724c4a7b84dd770d7474c9fba9",
+          "bytes": 2042441,
+          "imagegen_calls_for_asset": 2,
+          "selected_attempt": 2,
+          "archived_attempts": [
+            {
+              "file": "production/homeworld-sectors-20261103/attempts/mounts/HWM162-M14-hanging-mount-harness-v1.png",
+              "sha256": "55ef920fbf2dfa4ad96684823ef36cbee4b0ebf5dd54a1e9aae8cc8c62ce1b5f",
+              "bytes": 2073199
+            }
+          ],
+          "status": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+          "root_visual_review_performed": true
+        },
+        {
+          "id": "HWM162-M15",
+          "file": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M15-soft-care-cradle-v2.png",
+          "sha256": "50593708ea5f1a7f2cd19c3bf537cc0b5d4a86e62e89e53cf87620e6388615dc",
+          "bytes": 1691979,
+          "imagegen_calls_for_asset": 2,
+          "selected_attempt": 2,
+          "archived_attempts": [
+            {
+              "file": "production/homeworld-sectors-20261103/attempts/mounts/HWM162-M15-soft-care-cradle-v1.png",
+              "sha256": "3d7ddd8a125816441e057898f25371315a5d749f61461da62bb7459cde3348ee",
+              "bytes": 2000661
+            }
+          ],
+          "status": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+          "root_visual_review_performed": true
+        }
+      ],
+      "baseline_mounts_preserved": true,
+      "final_notes": [
+        "M13 retained by parent visual review.",
+        "M14-v2 retained by parent visual review; native three-quarter rerender follows left-higher/right-lower upper-hook direction of282, exact registration unverified.",
+        "M15-v2 retained by parent visual review; both long padded edges rise toward the right like273 rails. Four low contacts remain a proposed assembly; no overhead support or lifting device. Exact registration, load and species fit are not certified.",
+        "M14-v1 and M15-v1 preserved as archived attempts; only three new selected sprites."
+      ],
+      "root_visual_review": {
+        "performed": true,
+        "decision": "ALL_THREE_NEW_CANDIDATES_ACCEPTED",
+        "date": "2026-11-03",
+        "ids": [
+          "HWM162-M13",
+          "HWM162-M14",
+          "HWM162-M15"
+        ],
+        "limits_preserved": true
+      }
+    },
+    "kennels": {
+      "schema_version": 1,
+      "audit": "round4-kennels",
+      "baseline_commit": "c8d37c3c059021a96b071551bf9b19b09340536e",
+      "date": "2026-11-03",
+      "status": "GENERATED_FOUR_CANDIDATES",
+      "initial_audit_read_only": true,
+      "previous_selected_pack_png_count": 35,
+      "previous_kennel_png_count": 13,
+      "previous_kennel_sha256_preserved": [
+        {
+          "id": "HWM162-K01",
+          "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K01-kennel-building.png",
+          "sha256": "fedb9677d90ae72cfe2ee53e9a1f5751361ea1d88da2d9169137a22d2cd9d9a5"
+        },
+        {
+          "id": "HWM162-K02",
+          "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K02-handling-gate.png",
+          "sha256": "7d7a726ff442a711bf4212a7161d042659542d1a384056f1a1853743fa77068c"
+        },
+        {
+          "id": "HWM162-K03",
+          "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K03-training-rack.png",
+          "sha256": "95cef71793ec00c9a9d8ae8842e4e8beb3e83ac9eddf4be57820a2a965637797"
+        },
+        {
+          "id": "HWM162-K04",
+          "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K04-keeper-platform.png",
+          "sha256": "fa7bcf72db0315a379f90e5872153e75e29d9d2e893adaaac02c110d611e4a73"
+        },
+        {
+          "id": "HWM162-K05",
+          "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K05-resting-basin.png",
+          "sha256": "df1d8e518af28797dac239a4db5988bba8bd10e6eb702893833850df1ffbdecf"
+        },
+        {
+          "id": "HWM162-K06",
+          "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K06-sliding-mesh-panel.png",
+          "sha256": "1591ab6c1a112e5373c8260c2c62d5111659212b9cb219ed79f44262f6d0dee4"
+        },
+        {
+          "id": "HWM162-K07",
+          "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K07-handler-lead.png",
+          "sha256": "7b47106c7b7d92b180eb62ce496ef50883e34d83b521b4b1b912d76e0bf062d9"
+        },
+        {
+          "id": "HWM162-K08",
+          "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K08-woven-training-lure.png",
+          "sha256": "2140079cfbe57a3077add91e44152c7e32890159cf54b2dbd24c1ddacb56d698"
+        },
+        {
+          "id": "HWM162-K09",
+          "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K09-adjustable-collar.png",
+          "sha256": "97eb1a2a1ce1122604e6709f4aa61df37d4e8b9186ccca56c2bfd1251b969cb2"
+        },
+        {
+          "id": "HWM162-K10",
+          "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K10-small-cage-open.png",
+          "sha256": "75eb31d88524b14d8d3a037ef22632423e2717b0649a22595366d56321037e44"
+        },
+        {
+          "id": "HWM162-K11",
+          "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K11-medium-cage-open.png",
+          "sha256": "bfbacfe01f9b9ef08ea4397e9038dde7f6980e0951165905d725baf711b04898"
+        },
+        {
+          "id": "HWM162-K12",
+          "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K12-heavy-cage-open.png",
+          "sha256": "6aa80bb9abdf9934d3eb4ed2859a066720fb9e7f2c9e2056b83adf1608f37650"
+        },
+        {
+          "id": "HWM162-K13",
+          "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K13-energy-barrier-off.png",
+          "sha256": "8e668b68e046bc3ff5d888138ead1a1c0c4df556ad28d64ceae0c929cbd5a33c"
+        }
+      ],
+      "selected": [
+        {
+          "id": "HWM162-K14",
+          "area": "kennels",
+          "target_ids": [
+            "target-v81-71-271"
+          ],
+          "label": "Abreuvoir alien vidé",
+          "missing_type": "STATE",
+          "selected": true,
+          "generation_authorized": true,
+          "output_path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K14-empty-alien-drinker.png",
+          "source_repo_path": "docs/suivi-production/v113-open-production-20261102/native-candidates/target-v81-71-271-abreuvoir-alien-native-attempt02.png",
+          "source_local_path": "/workspace/scratch/2166fec07f86/round3-references/target-v81-71-271-abreuvoir-alien-native-attempt02.png",
+          "source_sha256": "644a9652da91d51ddd2e8576f786af3ba262ffc1413cabd2aa3abbd22b4e595a",
+          "source_visually_inspected": true,
+          "reason": "Les deux variantes271 ont été vues : toutes deux contiennent de l’eau. Le bassin minéral et la mangeoire M10 sont des constructions différentes. Retirer seulement l’eau et ses reflets pour montrer le fond sec intact.",
+          "viewPolicy": "INHERIT_REFERENCE_VIEW",
+          "camera_requested": {
+            "mode": "INHERIT_REFERENCE_VIEW",
+            "source_request_if_known": null,
+            "source_angle_not_inferred": true,
+            "camera_measured": false
+          },
+          "lore_status": "ORIGINAL_GAME_ADAPTATION",
+          "canonical_one_to_one_claimed": false,
+          "runtime_integrated": false,
+          "human_validated": false
+        },
+        {
+          "id": "HWM162-K15",
+          "area": "kennels",
+          "target_ids": [
+            "target-v81-71-272"
+          ],
+          "label": "Nourrisseur à trémie vidé",
+          "missing_type": "STATE",
+          "selected": true,
+          "generation_authorized": true,
+          "output_path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K15-empty-hopper-feeder.png",
+          "source_repo_path": "docs/suivi-production/v113-open-production-20261102/native-candidates/target-v81-71-272-nourrisseur-native.png",
+          "source_local_path": "/workspace/scratch/2166fec07f86/round3-references/target-v81-71-272-nourrisseur-native.png",
+          "source_sha256": "214e44126281c66f8d526e57f2cb90527c7c255c7380c516a991a0d3cc3be91b",
+          "source_visually_inspected": true,
+          "reason": "Le nourrisseur source a son bac plein de granulés/pods, sans état vide trouvé. Conserver trémie, goulotte, bac, renforts et pieds ; vider uniquement les aliments. M10 est une mangeoire basse sans cette trémie et ne remplace pas cet état.",
+          "viewPolicy": "INHERIT_REFERENCE_VIEW",
+          "camera_requested": {
+            "mode": "INHERIT_REFERENCE_VIEW",
+            "source_request_if_known": null,
+            "source_angle_not_inferred": true,
+            "camera_measured": false
+          },
+          "lore_status": "ORIGINAL_GAME_ADAPTATION",
+          "canonical_one_to_one_claimed": false,
+          "runtime_integrated": false,
+          "human_validated": false
+        },
+        {
+          "id": "HWM162-K16",
+          "area": "kennels",
+          "target_ids": [
+            "target-v81-71-274"
+          ],
+          "label": "Rack de dressage vide",
+          "missing_type": "STATE",
+          "selected": true,
+          "generation_authorized": true,
+          "output_path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K16-empty-training-rack.png",
+          "source_repo_path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K03-training-rack.png",
+          "source_local_path": "/workspace/scratch/2166fec07f86/yautja-la-longue-chasse/production/homeworld-sectors-20261103/sprites/kennels/HWM162-K03-training-rack.png",
+          "source_sha256": "95cef71793ec00c9a9d8ae8842e4e8beb3e83ac9eddf4be57820a2a965637797",
+          "source_visually_inspected": true,
+          "reason": "K03 comporte trois laisses et deux leurres fusionnés au rack ; K07/K08/K09 sont séparés, mais le support vide manque pour recomposer un équipement variable. Conserver poteaux, socles, traverse et cinq crochets vides.",
+          "viewPolicy": "INHERIT_REFERENCE_VIEW",
+          "camera_requested": {
+            "mode": "INHERIT_REFERENCE_VIEW",
+            "source_request_if_known": {
+              "yaw_degrees": 0,
+              "pitch_degrees": 35,
+              "projection": "orthographic",
+              "authority": "Original K03 receipt request, not measured."
+            },
+            "source_angle_not_inferred": true,
+            "camera_measured": false
+          },
+          "lore_status": "ORIGINAL_GAME_ADAPTATION",
+          "canonical_one_to_one_claimed": false,
+          "runtime_integrated": false,
+          "human_validated": false
+        },
+        {
+          "label": "Signal danger éteint",
+          "source_repo_path": "docs/suivi-production/v113-open-production-20261102/native-candidates/target-v81-71-280-signal-danger-native.png",
+          "source_local_path": "/workspace/scratch/2166fec07f86/round3-references/target-v81-71-280-signal-danger-native.png",
+          "source_sha256": "ffb1626d43f1b4abff1ebaf568b6e01eff18827283a40afe2bdffe11d4fc14d3",
+          "source_visually_inspected": true,
+          "reason": "La source est entièrement allumée : face à trois griffures, couronne et voyants latéraux ambre. Aucun état neutre/éteint exact retrouvé dans les noms de fichiers ni les manifestes examinés. Un état éteint donnerait une distinction de statut graphique, avec la même balise physique.",
+          "generation_authorized": true,
+          "recommended": true,
+          "viewPolicy": "INHERIT_REFERENCE_VIEW",
+          "lore_status": "ORIGINAL_GAME_ADAPTATION",
+          "limit": "Ne certifie ni le sens canonique du symbole ni un comportement d’alerte runtime.",
+          "id": "HWM162-K17",
+          "area": "kennels",
+          "target_ids": [
+            "target-v81-71-280"
+          ],
+          "missing_type": "STATE",
+          "selected": true,
+          "output_path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K17-danger-beacon-off.png",
+          "camera_requested": {
+            "mode": "INHERIT_REFERENCE_VIEW",
+            "source_request_if_known": null,
+            "source_angle_not_inferred": true,
+            "camera_measured": false
+          },
+          "canonical_one_to_one_claimed": false,
+          "runtime_integrated": false,
+          "human_validated": false,
+          "identity_constraint": "Only emission changes: body, symbol, frame placement and orientation must stay as stable as possible."
+        }
+      ],
+      "reuse": [
+        {
+          "source": "production/native-open-20261102/archives/fauna-energy/gear/target-v81-71-273-fauna-harness-support-native.png",
+          "finding": "Support bas vide à quatre berceaux rembourrés déjà disponible ; pas de nouvelle structure proposée."
+        },
+        {
+          "source": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M06-fauna-care-workstation.png",
+          "finding": "Établi de service avec évier, coussin et bras articulé déjà disponible ; composants de soin confiés au secteur montures pour éviter les doublons."
+        },
+        {
+          "source": "public/game/homeworld/v84/care-cabinet-left.png",
+          "finding": "Armoire de soin autonome fermée disponible ; pas de seconde armoire inventée."
+        },
+        {
+          "source": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K01-kennel-building.png",
+          "finding": "Bâtiment à trois baies ouvertes et sol drainé disponible."
+        },
+        {
+          "source": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K05-resting-basin.png",
+          "finding": "Fosse de repos sèche drainée disponible ; aucune nouvelle litière ou couche canonique déduite."
+        },
+        {
+          "source": "public/game/homeworld/v77/fauna-habitat-native.png",
+          "finding": "Plateforme rocheuse de terrain, pas une scène avec couche, auge ou accessoires de soin à détacher."
+        },
+        {
+          "source": "public/game/homeworld/v84/training-rack-left.png",
+          "finding": "Rack pour cibles d’entraînement différentes, pas le support vide de K03."
+        },
+        {
+          "source": "public/game/homeworld/v80/maintenance-rack.png",
+          "finding": "Rack chargé de clés, pinces, sangles et contenants d’entretien, pas le support K03 vide ; équipement de service mutualisable, sans extraction de pixels."
+        }
+      ],
+      "not_selected": [
+        {
+          "idea": "Rations dispersées autonomes",
+          "reason": "Pas prioritaire : elles n’apportent pas de contenant ni de fonction graphique distincte aux trois états validés."
+        },
+        {
+          "idea": "Bac amovible détaché du nourrisseur272 et support sans bac",
+          "reason": "Le dessin montre un bac et des jambes reliés au bâti, sans mécanisme d’amovibilité ou d’assemblage démontré. La séparation demanderait une nouvelle interprétation constructive ; non retenue à ce stade."
+        },
+        {
+          "idea": "Plaque de danger seule",
+          "reason": "Placement décoratif supplémentaire moins utile que le véritable état éteint de la balise existante."
+        },
+        {
+          "idea": "Nouvelle couche pour le repos ou nouvel abri",
+          "reason": "K01/K05 couvrent déjà l’abri et le repos ; aucune source précise établit une couche séparée manquante."
+        }
+      ],
+      "generation_rules": [
+        "One built-in imagegen call per independent state, authentic alpha.",
+        "Preserve chosen source identity/view; no generic32deg applied to K03 whose original request was0/35.",
+        "Native copy unchanged; no crop, resize, mirror, alpha cleanup or padding.",
+        "Prompt/reference/source output/sha and alpha thresholds0/8/24/128 recorded.",
+        "No canon1:1, species-scale fit, actual camera or runtime certification."
+      ],
+      "outputs": [
+        {
+          "id": "HWM162-K14",
+          "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K14-empty-alien-drinker.png",
+          "sha256": "41ae672380f0ea8c9c3fa155739b0cda082f95cf63c70db4f1e45538d9c1de6a",
+          "bytes": 1996130
+        },
+        {
+          "id": "HWM162-K15",
+          "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K15-empty-hopper-feeder.png",
+          "sha256": "322c098200679914802402ec9df40374792ce9899bf55e4fedbd9836add9761e",
+          "bytes": 1378925
+        },
+        {
+          "id": "HWM162-K16",
+          "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K16-empty-training-rack.png",
+          "sha256": "a7c9909f84ec0c53cc5caee8ebdc53ca4f0c1cdbe6e71297fe940d6de7346d90",
+          "bytes": 1720354
+        },
+        {
+          "id": "HWM162-K17",
+          "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K17-danger-beacon-off.png",
+          "sha256": "7439ac5ebb4da79ab0fadea5d0117a30f5b9110273d59ae4e9a3ae4b68d705de",
+          "bytes": 1117033
+        }
+      ]
+    }
+  },
+  "approvedAssetIds": [
+    "HWM162-S11",
+    "HWM162-S12",
+    "HWM162-S13",
+    "HWM162-S14",
+    "HWM162-M13",
+    "HWM162-M14",
+    "HWM162-M15",
+    "HWM162-K14",
+    "HWM162-K15",
+    "HWM162-K16",
+    "HWM162-K17"
+  ],
+  "canonicalOneToOneClaimed": false,
+  "runtimeIntegrated": false,
+  "humanValidated": false,
+  "approvedAdditionalPNGCount": 11,
+  "approvedTotalSelectedPNGCount": 46,
+  "scopeNote": "Four market, three mount and four kennel additions. Exact component/pose/state gaps documented; unrelated family matches are not counted as absence proof. No new building or V81 identity added.",
+  "selectedAdditionalPNGCount": 11,
+  "review": "review-round4.json"
+}
