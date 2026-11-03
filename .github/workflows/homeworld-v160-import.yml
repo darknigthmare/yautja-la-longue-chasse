@@ -1,29 +1,32 @@
-name: Homeworld V160 verified binary import
+name: Homeworld V160 PNG and workbook integrity
 
+# Binary import completed at d57b93f608a36f95557bf623a390e12a640fe947.
+# This workflow is now read-only: no remote packages, no auto-commit, no push.
 on:
-  push:
-    branches: ['codex/homeworld-v158-urban-props-intake-20261102']
-    paths: ['.github/workflows/homeworld-v160-import.yml']
+  pull_request:
+    paths:
+      - 'production/homeworld-v158/**'
+      - 'production/homeworld-v160/**'
+      - 'scripts/verify-homeworld-v158.mjs'
+      - 'tests/homeworld-v158-intake.test.mjs'
+      - 'app/game/systems/homeworldGeometryV64.ts'
+      - 'app/game/data/homeworldAssetCatalogueTargetV81.json'
+      - '.github/workflows/homeworld-v160-import.yml'
   workflow_dispatch:
 
 permissions:
-  contents: write
-
-concurrency:
-  group: homeworld-pr99-binary-import
-  cancel-in-progress: false
+  contents: read
 
 jobs:
-  import-art:
-    if: github.repository == 'darknigthmare/yautja-la-longue-chasse' && github.ref == 'refs/heads/codex/homeworld-v158-urban-props-intake-20261102'
+  verify-art-delivery:
     runs-on: ubuntu-latest
-    timeout-minutes: 12
+    timeout-minutes: 8
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: ${{ github.sha }}
           fetch-depth: 1
           lfs: false
+          persist-credentials: false
           sparse-checkout-cone-mode: false
           sparse-checkout: |
             /production/homeworld-v158/
@@ -32,93 +35,17 @@ jobs:
             /tests/homeworld-v158-intake.test.mjs
             /app/game/systems/homeworldGeometryV64.ts
             /app/game/data/homeworldAssetCatalogueTargetV81.json
-            /.github/workflows/homeworld-v160-import.yml
-            /.gitattributes
-            /.gitignore
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Install image verifier dependency only
+      - name: Install isolated image verifier dependency
         run: python -m pip install --disable-pip-version-check 'Pillow==12.0.0'
-      - name: Download pinned art packages and restrict extraction
-        shell: bash
-        run: |
-          set -euo pipefail
-          python - <<'PY'
-          from pathlib import Path, PurePosixPath
-          from urllib.request import urlopen
-          import hashlib, json, stat, zipfile
-          root=Path.cwd()
-          cache=Path('/tmp/homeworld-v160-import');cache.mkdir(exist_ok=True)
-          base='https://d2ol7oe51mr4n9.cloudfront.net/user_3JHwJlNzgmcxQy32tjF7NiVZPuH/'
-          packages=[
-            ('1217e0bc-ae5b-4472-8d7a-af73a6eb2c29.zip','38fb99471f0d8f9df34238e87c7ac732739fb95bbd641ba1d2eb95d4ca29f3b9',86893840),
-            ('13ef9fae-6cda-4833-bb40-fe2a03eee5c8.zip','2f4c0efd5add1f84686d1a77944aab408c9f8fc19795beb1ae81182d839b2103',87218838),
-            ('8ace5751-c1df-4f3e-80a1-98d3a8ef5a26.zip','7da9a2e3ce9b87fd58289f72f0576eee5ec9d63f96a3afd0730940aaeb52d89d',27564424),
-          ]
-          seen=set();total=0
-          for name,digest,size in packages:
-            dest=cache/name
-            with urlopen(base+name,timeout=90) as response,dest.open('wb') as f:
-              count=0
-              while block:=response.read(1024*1024):
-                count+=len(block)
-                if count>size:raise RuntimeError('Oversized download')
-                f.write(block)
-            assert dest.stat().st_size==size,'Transport byte count changed'
-            assert hashlib.sha256(dest.read_bytes()).hexdigest()==digest,'Transport SHA mismatch'
-            with zipfile.ZipFile(dest) as z:
-              for inf in z.infolist():
-                p=PurePosixPath(inf.filename)
-                assert not p.is_absolute() and '..' not in p.parts and '\\' not in inf.filename,'Unsafe path'
-                assert not stat.S_ISLNK(inf.external_attr>>16),'Symlink rejected'
-                allowed=inf.filename.startswith(('production/homeworld-v160/','production/homeworld-v158/assets/sprites_png/')) or inf.filename in ('scripts/verify-homeworld-v158.mjs','tests/homeworld-v158-intake.test.mjs')
-                assert allowed,'Outside art delivery: '+inf.filename
-                assert inf.filename not in seen,'Duplicate archive entry'
-                seen.add(inf.filename);total+=inf.file_size
-                assert total<300*1024*1024,'Oversized extraction'
-                dst=root/inf.filename
-                assert dst.resolve().is_relative_to(root.resolve())
-                dst.parent.mkdir(parents=True,exist_ok=True)
-                dst.write_bytes(z.read(inf))
-          assert len(seen)==119,'Unexpected package entry count'
-          manifest=json.loads((root/'production/homeworld-v160/delivery-files.json').read_text())
-          assert len(manifest['files'])==118
-          for item in manifest['files']:
-            assert item['path'] in seen
-            b=(root/item['path']).read_bytes()
-            assert len(b)==item['bytes'] and hashlib.sha256(b).hexdigest()==item['sha256'],item['path']
-          print('119 restricted entries extracted; 118 payload hashes verified.')
-          PY
-      - name: Preserve previous intake and record actual PNG delivery
-        run: python production/homeworld-v160/tools/apply_v158_delivery.py
-      - name: Verify ten original V158 PNGs against native camera
+      - name: Verify V158 actual PNGs and native camera
         run: node scripts/verify-homeworld-v158.mjs
       - name: Missing and corrupt PNG regression tests
         run: node --test tests/homeworld-v158-intake.test.mjs
-      - name: Verify all 107 PNGs, workbook and 354 inherited target identities
-        shell: bash
-        run: |
-          set -euo pipefail
-          python production/homeworld-v160/tools/verify.py | tee production/homeworld-v160/verification-report.json
-      - name: Commit verified bytes to the same PR branch without force
-        shell: bash
-        env:
-          EXPECTED_HEAD: ${{ github.sha }}
-        run: |
-          set -euo pipefail
-          BRANCH='codex/homeworld-v158-urban-props-intake-20261102'
-          ACTUAL_HEAD="$(git ls-remote origin "refs/heads/$BRANCH" | cut -f1)"
-          test "$ACTUAL_HEAD" = "$EXPECTED_HEAD" || { echo 'Branch changed concurrently; refusing to overwrite.'; exit 1; }
-          git config user.name 'github-actions[bot]'
-          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add -- production/homeworld-v158 production/homeworld-v160 scripts/verify-homeworld-v158.mjs tests/homeworld-v158-intake.test.mjs
-          if git diff --cached --quiet; then echo 'Verified sources already present.'; exit 0; fi
-          git commit -m 'art(homeworld): deliver 107 PNG sources and scale/tribe Excel without runtime admission'
-          git push origin "HEAD:refs/heads/$BRANCH"
-          echo "### V160 binary delivery" >> "$GITHUB_STEP_SUMMARY"
-          echo "Commit: $(git rev-parse HEAD)" >> "$GITHUB_STEP_SUMMARY"
-          echo '107 PNG files, 9 workbook sheets, 354 inherited targets; 0 artistic or runtime admissions.' >> "$GITHUB_STEP_SUMMARY"
+      - name: Verify 107 PNGs, nine-sheet workbook and 354 target identities
+        run: python production/homeworld-v160/tools/verify.py
