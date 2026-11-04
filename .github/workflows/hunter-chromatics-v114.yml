@@ -208,6 +208,7 @@ jobs:
             /public/game/assets/v14/hunter-kit/manifest.json
             /public/game/assets/v15/trophies/manifest.json
             /public/game/assets/v28/sprite-review/manifest.json
+            /public/game/clan-ship/props/manifest.json
       - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
         with:
           node-version: "22"

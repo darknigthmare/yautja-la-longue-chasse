@@ -37,6 +37,7 @@ jobs:
       ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
       NEXT_TELEMETRY_DISABLED: '1'
       CLAN_SHIP_SOURCE_COMMIT: ${{ github.event.pull_request.head.sha || github.sha }}
+      CLAN_SHIP_HEADLESS: '0'
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
@@ -107,7 +108,7 @@ jobs:
       - name: Install the pinned Chromium browser
         run: node node_modules/playwright-core/cli.js install --with-deps chromium
       - name: Walk the real interior and restore its clan berth
-        run: node scripts/qa-clan-ship-browser.mjs
+        run: xvfb-run -a --server-args="-screen 0 1920x1200x24" node scripts/qa-clan-ship-browser.mjs
       - name: Upload browser evidence even when a check fails
         if: always()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02

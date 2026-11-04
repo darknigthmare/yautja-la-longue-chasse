@@ -22,7 +22,8 @@ seed.profile.hunterName = 'QA Clan Ship';
 seed.settings.masterVolume = 0;
 const checkoutCommit = execFileSync('git', ['rev-parse', 'HEAD'], { cwd: root, encoding: 'utf8' }).trim();
 const workingTreeDirty = execFileSync('git', ['status', '--porcelain'], { cwd: root, encoding: 'utf8' }).trim().length > 0;
-const report = { startedAt: new Date().toISOString(), sourceCommit: process.env.CLAN_SHIP_SOURCE_COMMIT || checkoutCommit, checkoutCommit, workingTreeDirty, runtime: 'actual desktop GameClient via Vite', checks: [], errors: [], missingAssets: [], screenshots: [], walking: { samples: 0, rooms: [], transitions: [] } };
+const headless = process.env.CLAN_SHIP_HEADLESS !== '0';
+const report = { startedAt: new Date().toISOString(), sourceCommit: process.env.CLAN_SHIP_SOURCE_COMMIT || checkoutCommit, checkoutCommit, workingTreeDirty, runtime: 'actual desktop GameClient via Vite', browserMode: headless ? 'headless' : 'headed', focusTransitions: [], checks: [], errors: [], missingAssets: [], screenshots: [], walking: { samples: 0, rooms: [], transitions: [] } };
 const roomRing = ['hangar', 'armurerie', 'entrainement', 'conseil', 'archives', 'trophees', 'soins'];
 const missing = new Set();
 const loadedRoomArt = new Set();
@@ -31,7 +32,7 @@ try {
   if (process.env.CLAN_SHIP_SOURCE_COMMIT) assert.equal(checkoutCommit, process.env.CLAN_SHIP_SOURCE_COMMIT, 'Browser evidence must run the requested source commit, not an unrecorded merge checkout');
   server = await createServer({ configFile: path.join(root, 'desktop/vite.config.ts'), server: { host: '127.0.0.1', port: 4186, strictPort: true } });
   await server.listen();
-  browser = await chromium.launch({ executablePath: process.env.CHROMIUM_EXECUTABLE || undefined, headless: true, args: ['--no-sandbox', '--disable-dev-shm-usage'] });
+  browser = await chromium.launch({ executablePath: process.env.CHROMIUM_EXECUTABLE || undefined, headless, args: ['--no-sandbox', '--disable-dev-shm-usage'] });
   report.browserVersion = browser.version();
   const context = await browser.newContext({ viewport: { width: 1440, height: 1000 }, reducedMotion: 'reduce', hasTouch: true });
   await context.addInitScript(({ key, save }) => {
@@ -160,6 +161,10 @@ try {
   };
   const screenshot = async filename => {
     await page.waitForLoadState('networkidle');
+    // naturalWidth can be available before an asynchronously decoded image is
+    // painted. Capture the real, decoded room rather than a transient blank.
+    await clan().locator('img').evaluateAll(images => Promise.all(images.map(image => image.decode())));
+    await frames();
     if (await interior().count()) {
       const art = await interior().evaluate(element => ({
         missing: Array.from(element.querySelectorAll('[data-art-unavailable="true"]'), node => node.getAttribute('data-interior-art')),
@@ -408,18 +413,37 @@ try {
     await pad(1, false);
   });
   await check('Switching browser tabs clears movement and requires a fresh input on return', async () => {
+    // Playwright normally makes every page appear focused. Remove that
+    // emulation so native tab activation exercises the real blur/visibility
+    // handlers. Never replace document.hasFocus or dispatch synthetic blur.
+    const focusSession = await context.newCDPSession(page);
+    await focusSession.send('Emulation.setFocusEmulationEnabled', { enabled: false });
+    await page.bringToFront();
+    await page.waitForFunction(() => !document.hidden && document.hasFocus(), null, { polling: 50, timeout: 10000 });
+    report.focusTransitions.push(await page.evaluate(() => ({ phase: 'before', hidden: document.hidden, visibilityState: document.visibilityState, focused: document.hasFocus() })));
     await page.locator('[data-interior-world]').focus();
     await page.keyboard.down('d'); await page.waitForTimeout(120);
     const focusPage = await context.newPage();
     await focusPage.bringToFront();
+    // Headed Chromium under Xvfb supplies an actual tab focus transition. A
+    // headless target being created is not proof that the game lost focus.
+    await page.waitForFunction(() => document.hidden || !document.hasFocus(), null, { polling: 50, timeout: 10000 });
+    report.focusTransitions.push(await page.evaluate(() => ({ phase: 'background', hidden: document.hidden, visibilityState: document.visibilityState, focused: document.hasFocus() })));
+    await page.waitForFunction(() => document.querySelector('[data-clan-interior]')?.getAttribute('data-interior-moving') === 'false', null, { polling: 50, timeout: 5000 });
     await page.waitForTimeout(250);
     const stopped = await actor();
     await page.waitForTimeout(250);
     samePosition(await actor(), stopped, 'A background tab must not keep walking');
     await focusPage.close(); await page.bringToFront();
+    await page.waitForFunction(() => !document.hidden && document.hasFocus(), null, { polling: 50, timeout: 5000 });
+    report.focusTransitions.push(await page.evaluate(() => ({ phase: 'restored', hidden: document.hidden, visibilityState: document.visibilityState, focused: document.hasFocus() })));
     await page.waitForTimeout(300);
     samePosition(await actor(), stopped, 'Returning focus must not resurrect held movement');
     await page.keyboard.up('d');
+    await page.keyboard.down('d');
+    await page.waitForFunction(x => Number(document.querySelector('[data-clan-interior]')?.getAttribute('data-interior-actor-x')) > x + 25, stopped.x, { timeout: 3000 });
+    await page.keyboard.up('d'); await waitStopped();
+    await focusSession.detach();
   });
   await check('Save, main menu, reload and Continue restore the exact clan room', async () => {
     await saveAndMenu();
@@ -531,6 +555,9 @@ try {
     assert.ok(Math.hypot((await actor()).x - start.x, (await actor()).y - start.y) > 25);
     await page.emulateMedia({ reducedMotion: 'reduce' }); await frames();
     assert.equal(await page.evaluate(() => matchMedia('(prefers-reduced-motion: reduce)').matches), true);
+    const reducedStart = await actor();
+    await point(reducedStart.x + 75, reducedStart.y); await waitStopped();
+    assert.ok((await actor()).x > reducedStart.x + 25, 'Walking remains functional after enabling reduced motion');
     const looping = await interior().evaluate(element => element.getAnimations({ subtree: true }).filter(animation => animation.playState === 'running' && animation.effect?.getTiming().iterations === Infinity).length);
     assert.equal(looping, 0, 'Decorative looping animations must stop for reduced motion');
   });
