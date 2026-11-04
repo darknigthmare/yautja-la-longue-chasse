@@ -3567,7 +3567,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
     else if (screen !== "title") go(hubLocation);
   }, [archiveRecoveryIssue, archiveTransferBusy, go, hubLocation, pendingHuntResult, screen, settingsOpen, newGamePhase, returnToMainMenu, chronicleReturnScreen, archiveReturnV85]);
   useEffect(() => {
-    if (screen !== "clan-chronicle" || settingsOpen) return;
+    if (!["clan-chronicle", "clan-war", "sprite-library"].includes(screen) || settingsOpen) return;
     const onBack = (event: KeyboardEvent) => {
       if (event.key !== "Escape" || event.repeat || event.defaultPrevented) return;
       event.preventDefault();
