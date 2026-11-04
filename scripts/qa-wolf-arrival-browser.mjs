@@ -240,7 +240,10 @@ try {
     assert.deepEqual(save.clanShipDocking, beforeCastle.clanShipDocking);
   });
   await check('Walking reaches the airlock, vestibule, gallery and real archive terminal', async () => {
-    await moveRoom('royal-airlock'); await moveRoom('royal-vestibule'); await moveRoom('royal-gallery'); await moveRoom('royal-archives');
+    const beforeTravel = (await stored()).wolfCastle.revision;
+    await moveRoom('royal-airlock');
+    assert.ok((await stored()).wolfCastle.revision >= beforeTravel + 2, 'The first long walk must survive its real position checkpoint before the doorway transition');
+    await moveRoom('royal-vestibule'); await moveRoom('royal-gallery'); await moveRoom('royal-archives');
     await targetStation('archive'); await castleAction('read-archive');
     assert.equal((await stored()).wolfCastle.archiveRead, true);
     await screenshot('02-castle-archives-desktop.png');
@@ -505,6 +508,11 @@ try {
 } catch (error) {
   report.passed = false; report.failure = error.stack || String(error);
   if (page) {
+    report.failureState = await page.evaluate(key => ({ focused: document.hasFocus(), hidden: document.hidden,
+      activeElement: document.activeElement?.outerHTML.slice(0,500),
+      interior: document.querySelector('[data-wolf-castle-interior]')?.dataset,
+      castle: JSON.parse(localStorage.getItem(key) || 'null')?.wolfCastle,
+    }), SAVE_STORAGE_KEY).catch(() => null);
     await page.screenshot({ path: path.join(out, 'failure.png'), fullPage: true }).catch(() => {});
     await fs.writeFile(path.join(out, 'failure-page.txt'), await page.locator('body').innerText().catch(() => 'Unavailable'));
   }

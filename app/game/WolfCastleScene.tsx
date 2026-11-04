@@ -238,6 +238,7 @@ function CastleInterior({ visit, appearance, loadout, createSceneAudio, suspende
   const deferredCheckpointRef = useRef(false);
   const commandRef = useRef({ attack: false, parry: false, evade: false });
   const keysDownRef = useRef(new Set<string>());
+  const controlBindingsRef = useRef(controlBindings);
   const [dimensions, setDimensions] = useState({ width: 1100, height: 480 });
   const [dialog, setDialog] = useState<CastleDialog>(null);
   const [waypoint, setWaypoint] = useState<WolfCastleStation | null>(null);
@@ -273,6 +274,13 @@ function CastleInterior({ visit, appearance, loadout, createSceneAudio, suspende
     pathRef.current = [];
     gamepadReadyRef.current = false;
   }, []);
+
+  useLayoutEffect(() => {
+    // The save writer normalizes settings into fresh objects at every
+    // checkpoint. Only an actual remapping invalidates live input and routes.
+    if (JSON.stringify(controlBindingsRef.current) !== JSON.stringify(controlBindings)) clearInput();
+    controlBindingsRef.current = controlBindings;
+  }, [clearInput, controlBindings]);
 
   const flush = useCallback(() => {
     if (checkpointBlockedRef.current) { deferredCheckpointRef.current = true; return false; }
@@ -377,8 +385,8 @@ function CastleInterior({ visit, appearance, loadout, createSceneAudio, suspende
     actionRef.current = () => interact();
     menuRef.current = onMenu;
     mapRef.current = () => showDialog('map');
-    if (!activeRef.current) clearInput();
-  }, [clearInput, combat?.status, combatPaused, combatVisible, dialog, interact, onMenu, saveError, showDialog, suspended]);
+    if (!activeRef.current && !(checkpointBlocked && !pauseRequested && !dialog && !saveError)) clearInput();
+  }, [checkpointBlocked, clearInput, combat?.status, combatPaused, combatVisible, dialog, interact, onMenu, pauseRequested, saveError, showDialog, suspended]);
 
   useLayoutEffect(() => {
     if (pauseRequested && !wasSuspendedRef.current) pauseCombat();
@@ -408,10 +416,11 @@ function CastleInterior({ visit, appearance, loadout, createSceneAudio, suspende
 
   useEffect(() => {
     const change = (event: KeyboardEvent, pressed: boolean) => {
+      const bindings = controlBindingsRef.current;
       if (!pressed) {
         keysDownRef.current.delete(event.code);
         for (const [direction, action] of [['left', 'hunt.moveLeft'], ['right', 'hunt.moveRight'], ['up', 'hunt.moveUp'], ['down', 'hunt.moveDown']] as const) {
-          if (matchesControlAction(action, event, controlBindings)) heldRef.current[direction] = false;
+          if (matchesControlAction(action, event, bindings)) heldRef.current[direction] = false;
         }
         return;
       }
@@ -423,17 +432,17 @@ function CastleInterior({ visit, appearance, loadout, createSceneAudio, suspende
       if (keysDownRef.current.has(event.code)) return;
       keysDownRef.current.add(event.code);
       for (const [direction, action] of [['left', 'hunt.moveLeft'], ['right', 'hunt.moveRight'], ['up', 'hunt.moveUp'], ['down', 'hunt.moveDown']] as const) {
-        if (matchesControlAction(action, event, controlBindings)) {
+        if (matchesControlAction(action, event, bindings)) {
           pathRef.current = []; heldRef.current[direction] = true; event.preventDefault(); return;
         }
       }
       if (combatVisibleRef.current && combatRef.current?.status === 'active') {
         for (const [command, action] of [['attack', 'hunt.melee'], ['parry', 'hunt.weaponPrimary'], ['evade', 'hunt.jump']] as const) {
-          if (matchesControlAction(action, event, controlBindings)) { event.preventDefault(); event.stopPropagation(); issueCombatCommand(command); return; }
+          if (matchesControlAction(action, event, bindings)) { event.preventDefault(); event.stopPropagation(); issueCombatCommand(command); return; }
         }
       }
-      if (matchesControlAction('hunt.interact', event, controlBindings)) { event.preventDefault(); event.stopPropagation(); actionRef.current(); }
-      else if (matchesControlAction('hunt.pause', event, controlBindings)) { event.preventDefault(); event.stopPropagation(); clearInput(); menuRef.current(); }
+      if (matchesControlAction('hunt.interact', event, bindings)) { event.preventDefault(); event.stopPropagation(); actionRef.current(); }
+      else if (matchesControlAction('hunt.pause', event, bindings)) { event.preventDefault(); event.stopPropagation(); clearInput(); menuRef.current(); }
     };
     const down = (event: KeyboardEvent) => change(event, true), up = (event: KeyboardEvent) => change(event, false);
     const visibility = () => { if (document.hidden) pauseCombat(); };
@@ -445,7 +454,7 @@ function CastleInterior({ visit, appearance, loadout, createSceneAudio, suspende
       window.removeEventListener('blur', pauseCombat); window.removeEventListener('pagehide', pauseCombat);
       document.removeEventListener('visibilitychange', visibility); clearInput();
     };
-  }, [clearInput, controlBindings, issueCombatCommand, pauseCombat]);
+  }, [clearInput, issueCombatCommand, pauseCombat]);
 
   useEffect(() => {
     let request = 0, lastTime = performance.now(), lastCheckpoint = lastTime, padIdentity = '';
@@ -453,6 +462,11 @@ function CastleInterior({ visit, appearance, loadout, createSceneAudio, suspende
     const frame = (now: number) => {
       const elapsed = Math.max(0, now - lastTime), delta = Math.min(50, elapsed); lastTime = now;
       request = requestAnimationFrame(frame);
+      // Storage owns a short freeze, not a new input context. Keep the route,
+      // held directions and gamepad edges while still consuming wall-clock time.
+      // Blur, menus, remapping and failed writes retain their explicit resets.
+      if (checkpointBlockedRef.current && !wasSuspendedRef.current && !saveBlockedRef.current &&
+          !document.hidden && document.hasFocus() && rootRef.current?.contains(document.activeElement)) return;
       if (!activeRef.current || document.hidden || !document.hasFocus() || !rootRef.current?.contains(document.activeElement)) {
         if (activeRef.current && combatVisibleRef.current && combatRef.current?.status === 'active' && !pausedRef.current) pauseCombat();
         clearInput(); previousConfirm = previousBack = previousMap = previousParry = previousEvade = false;
@@ -567,6 +581,7 @@ function CastleInterior({ visit, appearance, loadout, createSceneAudio, suspende
   const overlayOpen = Boolean(dialog || combatOverlay || saveError);
 
   return <div ref={rootRef} className={styles.interior} tabIndex={-1} data-wolf-castle-interior
+    data-wolf-castle-x={motion.x.toFixed(1)} data-wolf-castle-y={motion.y.toFixed(1)} data-wolf-castle-moving={motion.moving}
     onPointerDownCapture={unlockAudio} onKeyDownCapture={event => { if (!event.repeat) unlockAudio(); }}
     data-wolf-combat-status={combatVisible ? combat?.status : undefined} data-wolf-combat-encounter={combatVisible ? combat?.encounterIndex : undefined}
     data-wolf-combat-paused={combatVisible ? combatPaused : undefined} data-wolf-combat-elapsed={combatVisible ? combat?.elapsedMs.toFixed(1) : undefined}
