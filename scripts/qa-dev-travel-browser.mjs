@@ -392,7 +392,10 @@ try {
     // The native region starts paused and exposes this entry action only after its scenery is ready.
     await page.locator('[data-region-resume]').click({ timeout: 120000 });
     await page.waitForFunction(() => Number(document.querySelector('[data-homeworld-region-v68="glass-desert"]')?.getAttribute('data-state-tick')) > 2);
-    await page.locator('[data-region-player]').waitFor();
+    // The actor anchor is intentionally 0 by 0; its positioned sprite carries the visible bounds.
+    const regionSprite = page.locator('[data-region-player] img').first();
+    await regionSprite.waitFor();
+    await regionSprite.evaluate(image => image.decode());
     await capture('05-regional-village');
     await page.locator('[data-village-open-atlas-v70]').click();
     await page.locator('[data-region-resume]').waitFor();
