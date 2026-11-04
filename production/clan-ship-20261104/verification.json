@@ -1,12 +1,12 @@
 {
-  "generatedAt": "2026-11-04T06:51:45.450Z",
+  "generatedAt": "2026-11-04T07:11:32.368Z",
   "engine": "@oai/artifact-tool",
   "sheets": 5,
   "detailRows": {
     "ClanShip": 24,
     "Assets": 26,
     "Chateau": 12,
-    "Arrivee_QA": 18
+    "Arrivee_QA": 29
   },
   "summaryCounts": [
     24,
@@ -14,7 +14,7 @@
     6,
     12,
     8,
-    6
+    10
   ],
   "expectedCounts": [
     24,
@@ -22,7 +22,7 @@
     6,
     12,
     8,
-    6
+    10
   ],
   "propagationCheck": {
     "temporaryAssetState": "À produire",
@@ -36,9 +36,9 @@
     "recordCount": 1,
     "truncated": false,
     "metadata": {
-      "revision": "1b76wu",
+      "revision": "5uc8w6",
       "target": {
-        "id": "wb/ucppik",
+        "id": "wb/18pc3t",
         "beforeLines": 0,
         "afterLines": 0
       },
@@ -61,7 +61,7 @@
     {
       "sheet": "Reprise",
       "file": "preview-Reprise.png",
-      "rows": 20
+      "rows": 24
     },
     {
       "sheet": "ClanShip",
@@ -81,15 +81,29 @@
     {
       "sheet": "Arrivee_QA",
       "file": "preview-Arrivee_QA.png",
-      "rows": 23
+      "rows": 34
     }
   ],
   "visualReview": {
     "status": "Vérifié",
-    "scope": "Cinq onglets rendus et examinés ; aucun texte tronqué observé. Synthèse et QA relues après mise à jour 184 tests / PR #104.",
-    "gameBrowserQA": "Non validée : CI en attente"
+    "scope": "Cinq onglets rendus et relus après mise à jour du run final 41789974649 ; aucune troncature matérielle observée.",
+    "browserQA": "10/10 scénarios CI ; zéro asset manquant et zéro exception JS",
+    "integrationQA": "QA05 et QA06 : tests de domaine, aucun scénario UI dédié"
   },
-  "gameQA": "Suite combinée 184/184 tests rapportés par agent principal ; ESLint strict et typecheck réussis ; navigateur CI en attente",
+  "gameQA": {
+    "automatedTests": "184/184 CI",
+    "lint": "strict CI réussi",
+    "typecheck": "CI réussi",
+    "build": "Next webpack local exit 0",
+    "browserChecks": "10/10 CI final",
+    "browserRun": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41789974649",
+    "browserHead": "9d77af88148e8ab5b2d49e64040024c57aeba67d",
+    "sharedAssets": "0 asset demandé manquant ; assertion bloquante réussie sur la route visitée",
+    "browserExceptions": 0,
+    "integrationScope": "20 tests sauvegarde ; multiowner/import ne sont pas des scénarios UI",
+    "screenshots": "Relues par root et agent UI, desktop 1440 et mobile 320 ; commandes 390 testées"
+  },
+  "nextStep": "Intérieur physique du Clan Ship et assets individuels ; château et arrivée planifiés",
   "pullRequest": "https://github.com/darknigthmare/yautja-la-longue-chasse/pull/104",
   "xlsxReadback": {
     "sheetCount": 5,
@@ -100,9 +114,9 @@
       6,
       12,
       8,
-      6
+      10
     ],
     "errorCells": [],
-    "reportedAutomatedTests": 184
+    "automatedTests": 184
   }
 }
