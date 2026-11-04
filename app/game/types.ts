@@ -680,6 +680,8 @@ export interface SaveGame {
   shipPreparationV88?: ShipPreparationStateV88 | null;
   /** Owner-bound physical shipyard work; no ownership without real rights. */
   shipAcquisitionV89?: ShipAcquisitionStateV89 | null;
+  /** Visit to the AVP clan mothership; independent from the player's selected hull. */
+  clanShipDocking?: import("./systems/clanShipDocking").ClanShipDockingState | null;
   /** V134: versioned cosmetic gauntlet, research claims and owner binding; older saves may omit. */
   gauntletV134?: import("./systems/gauntletCampaignV134").GauntletCampaignV134 | null;
   version: number;
