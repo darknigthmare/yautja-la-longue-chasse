@@ -59,6 +59,8 @@ import GameVersionBadge from "./GameVersionBadge";
 import { campaignWelcomeV69 } from "./systems/campaignWelcomeV69";
 import { useHomeworldReducedMotionV77 } from "./useHomeworldReducedMotionV77";
 import { campaignWorldResumeV70 } from "./systems/campaignWorldResumeV70";
+import { actClanShipDocking, normalizeClanShipDocking, type ClanShipDockingAction } from "./systems/clanShipDocking";
+import type { ClanShipService } from "./ClanShipHub";
 import { COMPLETE_ARCHIVE_FORMAT, COMPLETE_ARCHIVE_MAX_BYTES, createCompleteArchive, parseCompleteArchive, prepareCompleteArchiveImport, importCompleteArchive, completeArchiveSummary, type CompleteArchiveImportPlan } from "./systems/completeArchive";
 import { ARCHIVE_TRANSFER_JOURNAL_KEY, archiveTransferPending } from "./systems/archiveTransferGuard";
 import { withArchiveTransferLock } from "./systems/archiveTransaction";
@@ -297,6 +299,7 @@ const HuntCanvas = React.lazy(() => import("./HuntCanvas"));
 const PitCanvas = React.lazy(() => import("./PitExperienceV79"));
 const PitNarrativeTrials = React.lazy(() => import("./PitNarrativeTrials"));
 const ShipHub = React.lazy(() => import("./ShipHub"));
+const ClanShipHub = React.lazy(() => import("./ClanShipHub"));
 const PitHonorsPanel = React.lazy(() => import("./PitHonorsPanel"));
 const GalaxyMapPanel = React.lazy(() => import("./GalaxyMapPanel"));
 const PhysicalShipDeck = React.lazy(() => import("./PhysicalShipDeck"));
@@ -331,6 +334,7 @@ type Screen =
   | "clan-war"
   | "sprite-library"
   | "ship"
+  | "clan-ship"
   | "deck"
   | "homeworld"
   | "mausoleum"
@@ -351,12 +355,13 @@ type Screen =
   | "debrief"
   | "ending";
 
-type MapReturnScreen = Extract<Screen, "ship" | "deck" | "homeworld">;
+type HubLocation = "deck" | "homeworld" | "clan-ship";
+type MapReturnScreen = Extract<Screen, "ship" | "deck" | "homeworld" | "clan-ship">;
 type StationScreen = Extract<
   Screen,
   "armory" | "customization" | "trophies" | "codex" | "medbay" | "training" | "justice" | "mausoleum"
 >;
-type StationReturnScreen = Extract<Screen, "ship" | "deck" | "briefing" | "homeworld">;
+type StationReturnScreen = Extract<Screen, "ship" | "deck" | "briefing" | "homeworld" | "clan-ship">;
 
 const STABLE_BOOT_TIME = "2026-07-18T00:00:00.000Z";
 
@@ -1036,10 +1041,10 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
   const [campaignSaveMessage, setCampaignSaveMessage] = useState<string | null>(null);
   const campaignOperationRef = useRef(false);
   const [huntMusicContext, setHuntMusicContext] = useState<GameMusicContext | null>("exploration");
-  const [hubLocation, setHubLocation] = useState<"deck" | "homeworld">(entry.location === "homeworld" ? "homeworld" : "deck");
-  const [justiceReturnScreen, setJusticeReturnScreen] = useState<"deck" | "homeworld" | "map">("deck");
+  const [hubLocation, setHubLocation] = useState<HubLocation>(entry.location === "homeworld" ? "homeworld" : entry.location === "clan-ship" ? "clan-ship" : "deck");
+  const [justiceReturnScreen, setJusticeReturnScreen] = useState<HubLocation | "map">("deck");
   const [justiceJurisdiction, setJusticeJurisdiction] = useState<JusticeJurisdictionId>("homeworld");
-  const [pitReturnScreen, setPitReturnScreen] = useState<"deck" | "homeworld">("deck");
+  const [pitReturnScreen, setPitReturnScreen] = useState<HubLocation>("deck");
   const [save, setSave] = useState<SaveGame>(() =>
     defaultSave(entry.ownerCreatedAt || STABLE_BOOT_TIME),
   );
@@ -1126,7 +1131,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
   const stationDialogRef = useRef<HTMLDivElement | null>(null);
   const missionSettlementRef = useRef(false);
   const [quickAccessOpen, setQuickAccessOpen] = useState(false);
-  const [archiveReturnV85, setArchiveReturnV85] = useState<"deck" | "homeworld">("homeworld");
+  const [archiveReturnV85, setArchiveReturnV85] = useState<HubLocation>("homeworld");
   const [shipAcquisitionReturnV89, setShipAcquisitionReturnV89] = useState<"deck" | "homeworld">("homeworld");
   const [briefingAtAirlock, setBriefingAtAirlock] = useState(false);
   const [shipDrillActive, setShipDrillActive] = useState(false);
@@ -1135,6 +1140,11 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
     screen === "trophies" || screen === "codex" || screen === "medbay" ||
     screen === "training" || screen === "justice";
   const deckVisible = !newGamePhase && (screen === "deck" || (shipStationOpen && hubLocation === "deck"));
+  const clanShipState = normalizeClanShipDocking(save.clanShipDocking, save.createdAt, selectedShipId);
+  const clanShipVisible = screen === "clan-ship" || (shipStationOpen && hubLocation === "clan-ship");
+  // Keep the physical room and avatar alive while consulting any of its services,
+  // including the council (which has its own full-screen panel).
+  const clanShipMounted = clanShipVisible || (screen === "clan-war" && archiveReturnV85 === "clan-ship" && clanShipState?.status === "aboard");
   const homeworldMounted = screen === "homeworld" || (hubLocation === "homeworld" && (shipStationOpen || screen === "clan-war" || screen === "sprite-library" || screen === "mausoleum" || screen === "pit" || screen === "pit-narrative" || screen === "homeworld-region-v68" || screen === "homeworld-passage-v67" || screen === "homeworld-expedition" || screen === "glass-desert-expedition" || screen === "ship-acquisition-v89"));
   const previousMasterVolumeRef = useRef(
     save.settings.masterVolume > 0 ? save.settings.masterVolume : 0.8,
@@ -1184,6 +1194,15 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
       if (worldResume) {
         if (worldResume === "homeworld-expedition" || worldResume === "glass-desert-expedition" || worldResume === "homeworld-passage-v67") expeditionOwnerRef.current = loadedSave.createdAt;
         setHubLocation("homeworld"); setNewGamePhase(null); setScreen(worldResume);
+      }
+      // A stored berth is authoritative even when the last autosave still named
+      // the departure deck. Active story/travel and suspended hunts retain priority.
+      if ((!worldResume || worldResume === "homeworld") && entry.location !== "mission" && entry.location !== "new-game" &&
+          (entry.location === "clan-ship" || loadedSave.clanShipDocking?.status === "aboard" || loadedSave.clanShipDocking?.status === "approach") &&
+          (!loadedSave.prologue || (loadedSave.prologue.status === "completed" && ["blooded", "elite", "elder", "ancient"].includes(getChronicleRank(loadedSave.prologue.chronicle) ?? ""))) &&
+          !youthCampaignNeedsScene(loadedSave.youthTraining) && !soloV66NeedsScene(loadedSave.soloV66) && !soloV67NeedsScene(loadedSave.soloV67) &&
+          !soloV68NeedsScene(loadedSave.soloV68) && !soloV69NeedsScene(loadedSave.soloV69) && !soloV70NeedsScene(loadedSave.soloV70) && !soloV90NeedsScene(loadedSave.soloV90)) {
+        setHubLocation("clan-ship"); setNewGamePhase(null); setScreen("clan-ship");
       }
       setSaveLoadIssue(loaded.failure);
       // Never discard a real hunt merely because its campaign could not be read.
@@ -1373,7 +1392,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
     previousScreenRef.current = screen;
     const frame = window.requestAnimationFrame(() => {
       const activeScreen = gameShellRef.current?.querySelector<HTMLElement>(
-        ":scope > .screen",
+        ":scope > .screen:not([hidden]):not([inert])",
       );
       const station = stationDialogRef.current;
       const focusTarget =
@@ -2089,7 +2108,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
 
   // City choices are acknowledged only after durable storage confirms the write.
   // A failed write must not announce a completed investigation or apply a reward.
-  const persistSocialProgress = useCallback((update: Partial<Pick<SaveGame, "inventory" | "profile" | "homeworld" | "justice" | "gameReserveV66" | "homeworldPassageV67" | "homeworldRegionV68" | "shipPreparationV88" | "shipAcquisitionV89" | "gauntletV134">>): boolean => {
+  const persistSocialProgress = useCallback((update: Partial<Pick<SaveGame, "inventory" | "profile" | "homeworld" | "justice" | "gameReserveV66" | "homeworldPassageV67" | "homeworldRegionV68" | "shipPreparationV88" | "shipAcquisitionV89" | "gauntletV134" | "clanShipDocking">>): boolean => {
     if (!sessionAliveRef.current) return false;
     const current = saveRef.current;
     if (pendingTrophyCommitRef.current) {
@@ -2099,7 +2118,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
       setToast("Termine la sauvegarde du résultat de chasse avant de poursuivre le dossier.");
       return false;
     }
-    const updateSerialized = JSON.stringify({ inventory: update.inventory, profile: update.profile, homeworld: update.homeworld, justice: update.justice, gameReserveV66: update.gameReserveV66, homeworldPassageV67: update.homeworldPassageV67, homeworldRegionV68: update.homeworldRegionV68, shipPreparationV88: update.shipPreparationV88, shipAcquisitionV89: update.shipAcquisitionV89, gauntletV134: update.gauntletV134 });
+    const updateSerialized = JSON.stringify({ inventory: update.inventory, profile: update.profile, homeworld: update.homeworld, justice: update.justice, gameReserveV66: update.gameReserveV66, homeworldPassageV67: update.homeworldPassageV67, homeworldRegionV68: update.homeworldRegionV68, shipPreparationV88: update.shipPreparationV88, shipAcquisitionV89: update.shipAcquisitionV89, gauntletV134: update.gauntletV134, clanShipDocking: update.clanShipDocking });
     const pending = pendingSocialWriteRef.current;
     if (pending) {
       const recovered = reconcileSaveWrite(pending.attempt, current.createdAt);
@@ -2198,6 +2217,9 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
   const openShipAcquisitionV89 = () => {
     if (pendingTrophyCommitRef.current) { setToast("Le rite en attente doit être confirmé avant de rejoindre le chantier naval."); return; }
     const current = saveRef.current;
+    if (current.clanShipDocking && current.clanShipDocking.status !== "free-flight") {
+      setToast("Désamarre ton vaisseau personnel avant de rejoindre le chantier naval."); return;
+    }
     let transferPending = true;
     try { transferPending = archiveTransferPending(window.localStorage); } catch { /* Cannot attest a free archive transaction. */ }
     if (!sessionAliveRef.current || current.createdAt !== entry.ownerCreatedAt || transferPending || campaignOperationRef.current || pendingTerminalRunRef.current) {
@@ -2235,6 +2257,9 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
   const openGameReserveV66 = useCallback((fresh = false, version: GameReserveChoiceV109 = 1): boolean => {
     // The autonomous expedition cannot lend a ship or adult arsenal to a youth save.
     if (!sessionAliveRef.current || saveRef.current.createdAt !== entry.ownerCreatedAt || !mainMenuModeAccessV81(saveRef.current,mainMenuBrowserShipContextV81(saveRef.current))['game-reserve']) return false;
+    if (saveRef.current.clanShipDocking && saveRef.current.clanShipDocking.status !== "free-flight") {
+      setToast("Désamarre ton vaisseau personnel avant de partir vers une réserve de chasse."); return false;
+    }
     const existing = saveRef.current.gameReserveV66;
     const random = new Uint32Array(1); globalThis.crypto.getRandomValues(random);
     const next = fresh || !existing
@@ -2265,8 +2290,16 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
   const go = useCallback(
     (next: Screen) => {
       if (pendingTrophyCommitRef.current) { setToast("Confirmez la sauvegarde du rite ou exportez son résultat avant de changer de lieu."); return; }
+      const docking = saveRef.current.clanShipDocking;
+      if (docking && docking.status !== "free-flight" && ["homeworld", "map", "briefing", "mission", "game-reserve", "ship-acquisition-v89"].includes(next)) {
+        setToast("Désamarre le vaisseau personnel du Clan Ship avant de choisir une autre destination."); return;
+      }
+      if (docking?.status === "aboard" && (next === "deck" || next === "ship")) {
+        setHubLocation("clan-ship"); setScreen("clan-ship");
+        setToast("Rejoins le hangar du Clan Ship pour retourner dans ton vaisseau personnel."); return;
+      }
       const chronicle = saveRef.current.prologue?.chronicle;
-      if (chronicle && ["deck", "ship", "map", "mission", "briefing", "title", "armory", "customization", "training", "medbay", "pit", "pit-narrative", "game-reserve"].includes(next) &&
+      if (chronicle && ["deck", "ship", "clan-ship", "map", "mission", "briefing", "title", "armory", "customization", "training", "medbay", "pit", "pit-narrative", "game-reserve"].includes(next) &&
           !["blooded", "elite", "elder", "ancient"].includes(getChronicleRank(chronicle) ?? "")) {
         setToast("Le vaisseau personnel et les chasses autonomes attendent le rite Blooded. Ton apprentissage se poursuit sur le Homeworld."); return;
       }
@@ -2276,10 +2309,43 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
       setToast(null);
       if (next === "deck" || next === "ship") setHubLocation("deck");
       if (next === "homeworld") setHubLocation("homeworld");
+      if (next === "clan-ship") setHubLocation("clan-ship");
       setScreen(next);
     },
     [playSound],
   );
+
+  const openClanShip = useCallback(() => {
+    const current = saveRef.current;
+    if (!sessionAliveRef.current || current.createdAt !== entry.ownerCreatedAt || !gameFocusedV89 || settingsOpen || archiveTransferBusy || archiveRecoveryIssue || campaignSaveBusy || resumableHunt) return;
+    if (current.prologue && !["blooded", "elite", "elder", "ancient"].includes(getChronicleRank(current.prologue.chronicle) ?? "")) return;
+    const personalShipId = loadShipProgression(current).selectedShipId;
+    const state = normalizeClanShipDocking(current.clanShipDocking, current.createdAt, personalShipId);
+    if (!state) { setToast("L’escale ne peut pas être relue. Les données restent intactes."); return; }
+    if (!current.clanShipDocking && !persistSocialProgress({ clanShipDocking: state })) {
+      setToast("L’ouverture de l’escale n’a pas été sauvegardée. Réessaie depuis le pont."); return;
+    }
+    setSelectedShipId(personalShipId); go("clan-ship");
+  }, [archiveRecoveryIssue, archiveTransferBusy, campaignSaveBusy, entry.ownerCreatedAt, gameFocusedV89, go, persistSocialProgress, resumableHunt, settingsOpen]);
+
+  const commitClanShipAction = useCallback((action: ClanShipDockingAction): boolean => {
+    const current = saveRef.current;
+    if (!sessionAliveRef.current || current.createdAt !== entry.ownerCreatedAt || screen !== "clan-ship" || !gameFocusedV89 || settingsOpen || archiveTransferBusy || archiveRecoveryIssue || campaignSaveBusy || resumableHunt) return false;
+    const personalShipId = loadShipProgression(current).selectedShipId;
+    const state = normalizeClanShipDocking(current.clanShipDocking, current.createdAt, personalShipId);
+    if (!state) return false;
+    const result = actClanShipDocking(state, action, { ownerCreatedAt: current.createdAt, personalShipId });
+    if (!result.accepted) { setToast(result.message); return false; }
+    if (result.changed && !persistSocialProgress({ clanShipDocking: result.state })) {
+      setToast("Manœuvre non confirmée : l’escale reste à la dernière étape sauvegardée. Réessaie."); return false;
+    }
+    setSelectedShipId(personalShipId);
+    if (action.type === "return-to-personal" || action.type === "undock" || action.type === "cancel-approach") {
+      setHubLocation("deck"); setScreen("deck");
+    }
+    setToast(result.message);
+    return true;
+  }, [archiveRecoveryIssue, archiveTransferBusy, campaignSaveBusy, entry.ownerCreatedAt, gameFocusedV89, persistSocialProgress, resumableHunt, screen, settingsOpen]);
 
   const openHomeworldExpedition = useCallback((regionId: "ash-marches" | "glass-desert" = "ash-marches") => {
     const current = saveRef.current;
@@ -2418,7 +2484,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
     // Interaction hints belong to the hub that emitted them, not the duel menu.
     // Clear before loading so a new PIT storage diagnostic remains visible.
     setToast(null);
-    setPitReturnScreen(screen === "homeworld" || (shipStationOpen && hubLocation === "homeworld") ? "homeworld" : "deck");
+    setPitReturnScreen(hubLocation === "clan-ship" ? "clan-ship" : screen === "homeworld" || (shipStationOpen && hubLocation === "homeworld") ? "homeworld" : "deck");
     const ownerSaveCreatedAt = saveRef.current.createdAt;
     const loaded = loadPitSave({
       key: pitSaveStorageKey(ownerSaveCreatedAt),
@@ -2457,7 +2523,10 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
   const openMap = useCallback(
     (returnScreen: MapReturnScreen) => {
       if (pendingTrophyCommitRef.current) { setToast("Confirmez le rite en attente avant de changer de destination."); return; }
-      setHubLocation(returnScreen === "homeworld" ? "homeworld" : "deck");
+      if (saveRef.current.clanShipDocking && saveRef.current.clanShipDocking.status !== "free-flight") {
+        setToast("Désamarre d’abord ton vaisseau personnel pour ouvrir une nouvelle route."); return;
+      }
+      setHubLocation(returnScreen === "homeworld" ? "homeworld" : returnScreen === "clan-ship" ? "clan-ship" : "deck");
       setMapReturnScreen(returnScreen);
       go("map");
     },
@@ -2467,14 +2536,24 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
   const openStationScreen = useCallback(
     (next: StationScreen, returnScreen: StationReturnScreen, facility?: ChromaticFacilityV115) => {
       if (pendingTrophyCommitRef.current) { setToast("Confirmez le rite en attente avant de changer d’installation."); return; }
-      setHubLocation(returnScreen === "homeworld" ? "homeworld" : "deck");
+      setHubLocation(returnScreen === "homeworld" ? "homeworld" : returnScreen === "clan-ship" ? "clan-ship" : "deck");
       setStationReturnScreen(returnScreen);
       if (next === "customization") setChromaticFacilityV115(facility ?? (returnScreen === "homeworld" ? "forge" : "ship"));
-      if (next === "justice") setJusticeReturnScreen(returnScreen === "homeworld" ? "homeworld" : "deck");
+      if (next === "justice") setJusticeReturnScreen(returnScreen === "homeworld" ? "homeworld" : returnScreen === "clan-ship" ? "clan-ship" : "deck");
       go(next);
     },
     [go],
   );
+
+  const openClanShipService = useCallback((service: ClanShipService) => {
+    const current = saveRef.current;
+    if (!sessionAliveRef.current || current.createdAt !== entry.ownerCreatedAt || screen !== "clan-ship" ||
+        current.clanShipDocking?.status !== "aboard" || !gameFocusedV89 || settingsOpen || archiveTransferBusy || archiveRecoveryIssue || campaignSaveBusy) return;
+    const roomForService = { armory: "armurerie", trophies: "trophees", medbay: "soins", training: "entrainement", codex: "archives", "clan-war": "conseil" } as const;
+    if (current.clanShipDocking.roomId !== roomForService[service]) return;
+    if (service === "clan-war") { setArchiveReturnV85("clan-ship"); go("clan-war"); }
+    else openStationScreen(service, "clan-ship");
+  }, [archiveRecoveryIssue, archiveTransferBusy, campaignSaveBusy, entry.ownerCreatedAt, gameFocusedV89, go, openStationScreen, screen, settingsOpen]);
 
   const openHomeworldService = useCallback((service: HomeworldService) => {
     if (pendingTrophyCommitRef.current) { setToast("Confirmez le rite en attente avant d’utiliser un autre service."); return; }
@@ -2595,6 +2674,9 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
   const launchMission = useCallback(() => {
     if (pendingTrophyCommitRef.current) { setToast("Confirmez le rite en attente avant de lancer une chasse."); return; }
     if (!sessionAliveRef.current) return;
+    if (saveRef.current.clanShipDocking && saveRef.current.clanShipDocking.status !== "free-flight") {
+      setToast("La chasse attend le désamarrage de ton vaisseau personnel."); return;
+    }
     if (!selectedMission || save.missionProgress[selectedMission.id].status === "locked") return;
     // A sidecar can only survive a reload when its owning campaign snapshot is
     // durable too. Fresh profiles have not necessarily written the main save
@@ -3320,6 +3402,10 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
       } else {
         const parsed = parseSaveImport(text);
         if (!sessionAliveRef.current || selection !== archiveSelectionRef.current) return;
+        if (parsed.save?.clanShipDocking && parsed.save.clanShipDocking.status !== "free-flight" &&
+            parsed.save.clanShipDocking.personalShipId !== DEFAULT_SHIP_ID) {
+          throw new Error("Cette escale utilise une autre coque personnelle. Importe l’archive intégrale avec sa flotte pour reprendre l’amarrage.");
+        }
         setImportCandidate(parsed.save);
         setSaveTransferMessage(parsed.save ? "Archive légère vérifiée. Confirmez son remplacement ci-dessous." : `Archive refusée (${parsed.failure}). Aucune donnée remplacée.`);
       }
@@ -3375,6 +3461,10 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
   const confirmImport = useCallback(() => {
     if (pendingTrophyCommitRef.current) { setSaveTransferMessage("Confirmez le rite en attente avant de remplacer la campagne."); return; }
     if (!sessionAliveRef.current || !importCandidate || screen !== "title" || archiveTransferBusy) return;
+    if (importCandidate.clanShipDocking && importCandidate.clanShipDocking.status !== "free-flight" &&
+        importCandidate.clanShipDocking.personalShipId !== DEFAULT_SHIP_ID) {
+      setSaveTransferMessage("L’archive intégrale avec sa flotte est nécessaire pour reprendre cette escale. Aucune donnée remplacée."); return;
+    }
     let result: ReturnType<typeof importSaveWithStatus>;
     try { result = importSaveWithStatus(exportSave(importCandidate)); }
     catch { setSaveTransferMessage("Import impossible à préparer. Aucune donnée remplacée par cet import."); return; }
@@ -3423,7 +3513,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
   }, [clearHuntSession, importCandidate, screen, archiveTransferBusy]);
 
   const campaignLocation: CampaignResumeLocation = screen === "game-reserve" ? "game-reserve" : screen === "youth-training" || screen === "solo-v66" || screen === "solo-v67" || screen === "solo-v68" || screen === "solo-v69" || screen === "solo-v70" || screen === "solo-v90" || soloV90NeedsScene(save.soloV90) || soloV70NeedsScene(save.soloV70) || soloV69NeedsScene(save.soloV69) || soloV68NeedsScene(save.soloV68) || soloV67NeedsScene(save.soloV67) || soloV66NeedsScene(save.soloV66) || youthCampaignNeedsScene(save.youthTraining) ? "youth-training" : screen === "prologue" || save.prologue?.status === "active" ? "prologue" : screen === "mission" || resumableHunt ? "mission"
-    : newGamePhase ? "new-game" : hubLocation === "homeworld" ? "homeworld" : "deck";
+    : newGamePhase ? "new-game" : screen === "clan-ship" || save.clanShipDocking?.status === "aboard" || save.clanShipDocking?.status === "approach" ? "clan-ship" : hubLocation === "homeworld" ? "homeworld" : "deck";
   const checkpointBlockedReason = pendingTrophyCommit ? "Un rite attend sa sauvegarde : réessayez ou exportez son résultat avant de quitter."
     : pendingHuntResult || saveFailure ? "La progression principale attend sa sauvegarde. Réessayez avant de créer un checkpoint."
     : ["homeworld-expedition", "glass-desert-expedition"].includes(screen) ? "Rapportez ou quittez l’expédition avant de sauvegarder son retour. Une expédition non rapportée n’est pas un checkpoint."
@@ -3477,10 +3567,10 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
     else if (screen === "clan-war" || screen === "sprite-library") go(archiveReturnV85);
     else if (newGamePhase === "identity") void returnToMainMenu();
     else if (newGamePhase === "briefing") { setNewGamePhase("identity"); setScreen("customization"); }
-    else if (screen !== "title") go("deck");
-  }, [archiveRecoveryIssue, archiveTransferBusy, go, pendingHuntResult, screen, settingsOpen, newGamePhase, returnToMainMenu, chronicleReturnScreen, archiveReturnV85]);
+    else if (screen !== "title") go(hubLocation);
+  }, [archiveRecoveryIssue, archiveTransferBusy, go, hubLocation, pendingHuntResult, screen, settingsOpen, newGamePhase, returnToMainMenu, chronicleReturnScreen, archiveReturnV85]);
   useEffect(() => {
-    if (screen !== "clan-chronicle" || settingsOpen) return;
+    if (!["clan-chronicle", "clan-war", "sprite-library"].includes(screen) || settingsOpen) return;
     const onBack = (event: KeyboardEvent) => {
       if (event.key !== "Escape" || event.repeat || event.defaultPrevented) return;
       event.preventDefault();
@@ -3490,7 +3580,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
     return () => document.removeEventListener("keydown", onBack);
   }, [screen, settingsOpen, menuBack]);
   const menuGamepadEnabled = Boolean(archiveRecoveryIssue) || (!trophyWorkshop && (settingsOpen || Boolean(pendingHuntResult) ||
-    !["prologue", "youth-training", "solo-v66", "solo-v67", "solo-v68", "solo-v69", "solo-v70", "solo-v90", "homeworld-region-v68", "homeworld-passage-v67", "game-reserve", "mission", "deck", "ship", "map", "training", "pit", "pit-narrative", "mausoleum", "homeworld", "homeworld-expedition", "glass-desert-expedition"].includes(screen)));
+    !["prologue", "youth-training", "solo-v66", "solo-v67", "solo-v68", "solo-v69", "solo-v70", "solo-v90", "homeworld-region-v68", "homeworld-passage-v67", "game-reserve", "mission", "deck", "ship", "clan-ship", "map", "medbay", "training", "pit", "pit-narrative", "mausoleum", "homeworld", "homeworld-expedition", "glass-desert-expedition"].includes(screen)));
   const conservationPadButtonsV112=normalizeHuntAccessibilityV112(save.settings.huntAccessibility).gamepadButtons;
   const conservationPadActiveV112=!settingsOpen&&!pendingHuntResult&&!archiveRecoveryIssue&&(screen==="armory"||screen==="trophies");
   useMenuGamepad(gameShellRef, menuGamepadEnabled, `${screen}:${settingsOpen}:${Boolean(pendingHuntResult)}:${Boolean(archiveRecoveryIssue)}`, menuBack,
@@ -3535,10 +3625,10 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
     : null;
 
   const topBar =
-    !newGamePhase && screen !== "prologue" && screen !== "youth-training" && screen !== "solo-v66" && screen !== "solo-v67" && screen !== "solo-v68" && screen !== "solo-v69" && screen !== "solo-v70" && screen !== "solo-v90" && screen !== "homeworld-region-v68" && screen !== "homeworld-passage-v67" && screen !== "game-reserve" && screen !== "ship-acquisition-v89" && screen !== "title" && screen !== "clan-chronicle" && screen !== "mausoleum" && screen !== "mission" && screen !== "pit" && screen !== "pit-narrative" ? (
+    !newGamePhase && !clanShipVisible && screen !== "prologue" && screen !== "youth-training" && screen !== "solo-v66" && screen !== "solo-v67" && screen !== "solo-v68" && screen !== "solo-v69" && screen !== "solo-v70" && screen !== "solo-v90" && screen !== "homeworld-region-v68" && screen !== "homeworld-passage-v67" && screen !== "game-reserve" && screen !== "ship-acquisition-v89" && screen !== "title" && screen !== "clan-chronicle" && screen !== "mausoleum" && screen !== "mission" && screen !== "pit" && screen !== "pit-narrative" ? (
       <TopBar
         save={save}
-        onShip={() => go(save.prologue ? "homeworld" : "deck")}
+        onShip={() => go(save.clanShipDocking?.status === "aboard" || save.clanShipDocking?.status === "approach" ? "clan-ship" : save.prologue ? "homeworld" : "deck")}
         onSettings={() => {
           void playSound("ui");
           setSettingsOpen(true);
@@ -3721,7 +3811,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
                   className="alien-button"
                   onClick={() => {
                     void playSound("select");
-                    setScreen("deck");
+                    go(save.clanShipDocking?.status === "aboard" || save.clanShipDocking?.status === "approach" ? "clan-ship" : "deck");
                   }}
                 >
                   Jouer
@@ -3858,6 +3948,26 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
         </Suspense>
       )}
 
+      {clanShipMounted && clanShipState && (
+        <Suspense fallback={<DeferredGameScreen />}>
+          <section className="screen panel-screen" hidden={screen !== "clan-ship"} style={screen !== "clan-ship" ? { display: "none" } : undefined} inert={screen !== "clan-ship" || settingsOpen || trophyWorkshop !== null}>
+            <div className="screen-safe">
+              <ClanShipHub
+                key={save.createdAt}
+                state={clanShipState}
+                save={save}
+                selectedShipId={selectedShipId}
+                suspended={screen !== "clan-ship" || settingsOpen || trophyWorkshop !== null || archiveTransferBusy || !!archiveRecoveryIssue || campaignSaveBusy || !gameFocusedV89}
+                onAction={commitClanShipAction}
+                onService={openClanShipService}
+                onExit={() => go("deck")}
+                onOpenSettings={() => setSettingsOpen(true)}
+              />
+            </div>
+          </section>
+        </Suspense>
+      )}
+
       {deckVisible && (
         <Suspense fallback={<DeferredGameScreen />}>
           <section className="screen panel-screen physical-deck-screen" inert={shipStationOpen || settingsOpen}>
@@ -3869,6 +3979,10 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
                 </button>
                 <button type="button" className="ghost-button" onClick={() => go("ship")}>
                   Console du vaisseau
+                </button>
+                <button type="button" className="ghost-button" onClick={openClanShip}
+                  disabled={campaignSaveBusy || archiveTransferBusy || !!archiveRecoveryIssue || !!resumableHunt}>
+                  {save.clanShipDocking?.status === "docked" ? "Clan Ship AVP · amarrage en cours" : "Clan Ship AVP · vaisseau-mère"}
                 </button>
                 <button type="button" className="ghost-button" onClick={() => { setChronicleReturnScreen("deck"); go("clan-chronicle"); }}>
                   Dossier de campagne
@@ -3923,11 +4037,11 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
 
       {shipStationOpen && (
         <div className="ship-station-layer" data-station-screen={screen} role="dialog" aria-modal="true"
-          aria-label={hubLocation === "homeworld" ? "Service du monde natal" : "Installation du vaisseau"} ref={stationDialogRef} tabIndex={-1}
+          aria-label={hubLocation === "homeworld" ? "Service du monde natal" : hubLocation === "clan-ship" ? "Installation du Clan Ship AVP" : "Installation du vaisseau personnel"} ref={stationDialogRef} tabIndex={-1}
           inert={settingsOpen || trophyWorkshop !== null}>
           {!newGamePhase && <div className="ship-station-toolbar" inert={shipDrillActive}>
             <button type="button" className="ghost-button" onClick={() => go(hubLocation)}>
-              {hubLocation === "homeworld" ? "← Retour à la cité · Échap" : "← Retour au pont · Échap"}
+              {hubLocation === "homeworld" ? "← Retour à la cité · Échap" : hubLocation === "clan-ship" ? "← Retour au Clan Ship · Échap" : "← Retour au pont · Échap"}
             </button>
             <button type="button" className="ghost-button" onClick={() => setSettingsOpen(true)}>
               Réglages
@@ -3972,7 +4086,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
               className="physical-medbay-entry__back ghost-button"
               onClick={() => go(hubLocation)}
             >
-              {hubLocation === "homeworld" ? "← Retour à la cité" : "← Retour au pont physique"}
+              {hubLocation === "homeworld" ? "← Retour à la cité" : hubLocation === "clan-ship" ? "← Retour au Clan Ship" : "← Retour au pont physique"}
             </button>
             {screen === "medbay" && <aside className="pigment-lab-access" aria-label="Atelier des chromatophores">
               <strong>Maison des soins · Étude pigmentaire</strong>
@@ -3991,6 +4105,8 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
               controlBindings={save.settings.controlBindings}
               key={screen}
               initialRoomId={screen === "training" ? "training" : "medbay"}
+              installationLabel={hubLocation === "clan-ship" ? "Clan Ship AVP // Services du clan" : undefined}
+              roomLocked={hubLocation === "clan-ship"}
               onOpenDeck={() => go(hubLocation)}
               onOpenMap={() => openMap(hubLocation)}
               onOpenArmory={() => openStationScreen("armory", hubLocation)}

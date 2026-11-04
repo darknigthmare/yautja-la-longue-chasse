@@ -1,0 +1,83 @@
+{
+  "version": 1,
+  "name": "Clan Ship AVP — sept fonds intérieurs",
+  "createdOn": "2026-11-04",
+  "generationTool": "image_gen.imagegen (built-in)",
+  "familyReference": "hangar-v1.png",
+  "artDirection": "Architecture de clan Yautja inspirée AVP; scènes de jeu originales. Fonds indépendants des portes, des équipements, du vaisseau personnel et du chasseur.",
+  "referenceStatus": "Adaptation artistique de gameplay ; aucune certification de reproduction d'un plan du film.",
+  "runtime": {
+    "width": 1440,
+    "height": 800,
+    "format": "webp",
+    "quality": 90,
+    "fit": "cover",
+    "colorSpace": "srgb",
+    "alpha": false,
+    "layer": "background",
+    "collision": "none; collision footprints live in app/game/systems/clanShipInterior.ts",
+    "filtering": "browser smooth",
+    "pivot": {
+      "x": 0,
+      "y": 0
+    }
+  },
+  "assets": [
+    {
+      "id": "hangar",
+      "sourceFile": "art-source/clan-ship-v1/hangar-v1.png",
+      "runtimeFile": "public/game/clan-ship/interiors/hangar-v1.webp",
+      "prompt": "Use case: stylized-concept\nAsset type: production game background plate, one room of a Yautja clan mothership interior for Yautja The Long Hunt. It must be a usable empty environment, NOT a poster or multi-panel sheet.\nPrimary request: colossal communal AVP-inspired Predator clan HANGAR, long horizontal side-view room, industrial ceremonial alien architecture in dark weathered bronze and charcoal metal, pale turquoise guide lights, immense structural rib vaults, layered distant docking gantries and a huge starfield bay in the rear wall. Epic collective scale; this is the mothership hangar, not a personal cockpit.\nComposition/framing: single straight-on side view at low shallow perspective, landscape 16:9. Walkable flat floor fills the lower 38% of the picture, extending unobstructed from left to right. The floor-wall seam is a straight horizontal line at 61% image height. Foreground floor is horizontal, clean empty gridded dark metal deck with subtle strips, no trenches or stairs. Central 70% must remain open and low contrast so independently animated characters and objects can be composited. Rear walls and cathedral-height arch ribs occupy upper 60%; architecture cropped naturally at image bounds. Cool light from bay left rear and warm amber edge lights high overhead, dark but readable floor.\nStyle/medium: polished high-detail hand-painted 2D videogame environment, restrained materials, coherent architectural depth, crisp silhouette edges, atmospheric rear layers, realistic form but NOT photography; compatible with small 2D side-on hunter sprites.\nConstraints: empty room; no ships, no characters, no weapons, no consoles, no freestanding furniture; those are separate sprites in the engine. No door cutout at foreground level; runtime adds doors at left and right sides. No foreground pillars occluding the walking band. No text, letters, symbols resembling readable words, numbers, logos, UI, decorative border, watermark. Keep all important construction above the floor seam. The lower third must remain a continuous flat traversable surface. One image only.",
+      "status": "generated; pending in-game verification",
+      "reference": null
+    },
+    {
+      "id": "conseil",
+      "sourceFile": "art-source/clan-ship-v1/conseil-v1.png",
+      "runtimeFile": "public/game/clan-ship/interiors/conseil-v1.webp",
+      "prompt": "Use case: precise-object-edit\nAsset type: individual production background plate for a 2D side-view game, one separate room, not a collage.\nReference: image1 establishes the exact camera, floor, lighting language, materials and detail density of the clan mothership.\nPrimary request: change the HANGAR REAR ARCHITECTURE into this room: COUNCIL CHAMBER: an enormous ceremonial council room of an AVP-inspired Yautja clan mothership, curving bronze rear wall with seven tall empty alcoves and an inset wide circular star-chart relief high in the wall, distant tiered architectural galleries entirely above the flat foreground seam, restrained warm gold and turquoise lighting. Architectural authority and collective gathering; no throne, no freestanding council table, no characters, no freestanding consoles.\nInvariants: preserve the wide16:9 framing and same hand-painted game-art style; preserve the entire continuous flat uncluttered dark metal foreground floor, its level horizontal back seam around60% height and low shallow perspective. Floor from seam to bottom must remain clear and traversable at every x. Replace the starfield bay with the described room's rear walls. Architecture stays entirely behind the walking band; avoid stairs, pits, raised dais or foreground obstructions. Keep the extreme left and right floor margins clear for engine-added door sprites. Empty central band so the actual hunter and interactive props remain legible. One panoramic room only. No ships, no humans or Yautja, no text, no labels, no UI, no watermark; all active equipment and doors will be separate sprites.",
+      "status": "generated; pending in-game verification",
+      "reference": "art-source/clan-ship-v1/hangar-v1.png"
+    },
+    {
+      "id": "armurerie",
+      "sourceFile": "art-source/clan-ship-v1/armurerie-v1.png",
+      "runtimeFile": "public/game/clan-ship/interiors/armurerie-v1.webp",
+      "prompt": "Use case: precise-object-edit\nAsset type: individual production background plate for a 2D side-view game, one separate room, not a collage.\nReference: image1 establishes the exact camera, floor, lighting language, materials and detail density of the clan mothership.\nPrimary request: change the HANGAR REAR ARCHITECTURE into this room: ARMORY CHAMBER: an expansive equipment preparation room of an AVP-inspired Yautja clan mothership, dark forged alloy rear wall, three tall empty recessed equipment vaults and horizontal empty mount rails built into the wall, a few furnace-like amber lights and tiny cool turquoise guide lights. Rugged practical armory mood, no guns, no weapons, no freestanding racks, no tables, no characters; independent props will be composited.\nInvariants: preserve the wide16:9 framing and same hand-painted game-art style; preserve the entire continuous flat uncluttered dark metal foreground floor, its level horizontal back seam around60% height and low shallow perspective. Floor from seam to bottom must remain clear and traversable at every x. Replace the starfield bay with the described room's rear walls. Architecture stays entirely behind the walking band; avoid stairs, pits, raised dais or foreground obstructions. Keep the extreme left and right floor margins clear for engine-added door sprites. Empty central band so the actual hunter and interactive props remain legible. One panoramic room only. No ships, no humans or Yautja, no text, no labels, no UI, no watermark; all active equipment and doors will be separate sprites.",
+      "status": "generated; pending in-game verification",
+      "reference": "art-source/clan-ship-v1/hangar-v1.png"
+    },
+    {
+      "id": "trophees",
+      "sourceFile": "art-source/clan-ship-v1/trophees-v1.png",
+      "runtimeFile": "public/game/clan-ship/interiors/trophees-v1.webp",
+      "prompt": "Use case: precise-object-edit\nAsset type: individual production background plate for a 2D side-view game, one separate room, not a collage.\nReference: image1 establishes the exact camera, floor, lighting language, materials and detail density of the clan mothership.\nPrimary request: change the HANGAR REAR ARCHITECTURE into this room: TROPHY HALL: an ancient ceremonial trophy gallery of an AVP-inspired Yautja clan mothership, monumental ribbed bronze rear wall with high display recesses holding distant abstract weathered bone-like silhouettes, warm narrow amber spotlights, dim turquoise side lights. Subtle hunting-culture atmosphere, no readable inscriptions, no large freestanding skulls or trophy stands, no pedestal on walkable floor, no characters.\nInvariants: preserve the wide16:9 framing and same hand-painted game-art style; preserve the entire continuous flat uncluttered dark metal foreground floor, its level horizontal back seam around60% height and low shallow perspective. Floor from seam to bottom must remain clear and traversable at every x. Replace the starfield bay with the described room's rear walls. Architecture stays entirely behind the walking band; avoid stairs, pits, raised dais or foreground obstructions. Keep the extreme left and right floor margins clear for engine-added door sprites. Empty central band so the actual hunter and interactive props remain legible. One panoramic room only. No ships, no humans or Yautja, no text, no labels, no UI, no watermark; all active equipment and doors will be separate sprites.",
+      "status": "generated; pending in-game verification",
+      "reference": "art-source/clan-ship-v1/hangar-v1.png"
+    },
+    {
+      "id": "soins",
+      "sourceFile": "art-source/clan-ship-v1/soins-v1.png",
+      "runtimeFile": "public/game/clan-ship/interiors/soins-v1.webp",
+      "prompt": "Use case: precise-object-edit\nAsset type: individual production background plate for a 2D side-view game, one separate room, not a collage.\nReference: image1 establishes exact camera, foreground floor, common lighting language, materials and detail density of the clan mothership.\nPrimary request: change the HANGAR REAR ARCHITECTURE into this room: MEDICAL BAY: an advanced Yautja clan medical chamber, smooth dark bronze and charcoal rear wall with inset vertical sterile glass chambers, narrow pale green and ice-turquoise lights, clean symmetrical precision architecture and distant suspended surgical rails above head height. Restrained clinical atmosphere within alien hunter culture, no hospital red crosses, no medbeds or equipment carts, no characters or preserved bodies; the interactive medical bed is a separate sprite.\nInvariants: preserve wide16:9 framing and same polished hand-painted game-art style; preserve entire continuous flat uncluttered dark metal foreground floor and its level horizontal back seam around60% height with low shallow perspective. Floor seam to bottom stays clear and traversable at every x, with low contrast for independent character sprites. Replace starfield bay with described rear walls. Architecture remains behind walking band; no stairs, pits, raised dais or foreground obstruction. Extreme left and right floor margins stay clear for engine-added doors. Empty central band for independent hunter/equipment. One panoramic room only, no ships, no characters, no text, labels, numbers, logo, interface or watermark.",
+      "status": "generated; pending in-game verification",
+      "reference": "art-source/clan-ship-v1/hangar-v1.png"
+    },
+    {
+      "id": "archives",
+      "sourceFile": "art-source/clan-ship-v1/archives-v1.png",
+      "runtimeFile": "public/game/clan-ship/interiors/archives-v1.webp",
+      "prompt": "Use case: precise-object-edit\nAsset type: individual production background plate for a 2D side-view game, one separate room, not a collage.\nReference: image1 establishes exact camera, foreground floor, common lighting language, materials and detail density of the clan mothership.\nPrimary request: change the HANGAR REAR ARCHITECTURE into this room: ARCHIVES: a monumental clan memory vault, deep bronze wall carved into many precise thin inset archive niches, crystalline turquoise data slits and a large dim orbital-ring relief high at center. Ancient ceremonial records merged with alien technology, cool archival illumination, no readable writing, no holograms on floor, no terminal or table, no characters; runtime will add the archive console as a separate sprite.\nInvariants: preserve wide16:9 framing and same polished hand-painted game-art style; preserve entire continuous flat uncluttered dark metal foreground floor and its level horizontal back seam around60% height with low shallow perspective. Floor seam to bottom stays clear and traversable at every x, with low contrast for independent character sprites. Replace starfield bay with described rear walls. Architecture remains behind walking band; no stairs, pits, raised dais or foreground obstruction. Extreme left and right floor margins stay clear for engine-added doors. Empty central band for independent hunter/equipment. One panoramic room only, no ships, no characters, no text, labels, numbers, logo, interface or watermark.",
+      "status": "generated; pending in-game verification",
+      "reference": "art-source/clan-ship-v1/hangar-v1.png"
+    },
+    {
+      "id": "entrainement",
+      "sourceFile": "art-source/clan-ship-v1/entrainement-v1.png",
+      "runtimeFile": "public/game/clan-ship/interiors/entrainement-v1.webp",
+      "prompt": "Use case: precise-object-edit\nAsset type: individual production background plate for a 2D side-view game, one separate room, not a collage.\nReference: image1 establishes exact camera, foreground floor, common lighting language, materials and detail density of the clan mothership.\nPrimary request: change the HANGAR REAR ARCHITECTURE into this room: TRAINING HALL: spacious Yautja clan sparring chamber, formidable dark bronze ribbed rear wall with empty hanging training fixture recesses high on the wall and restrained ember-red backlights, warm brass wear marks, clear disciplined martial geometry. No weapons, no punching bags, no freestanding training equipment, no combatants. All the walkable floor stays absolutely flat, empty and uninterrupted, with subtle worn surface markings only; runtime adds training equipment independently.\nInvariants: preserve wide16:9 framing and same polished hand-painted game-art style; preserve entire continuous flat uncluttered dark metal foreground floor and its level horizontal back seam around60% height with low shallow perspective. Floor seam to bottom stays clear and traversable at every x, with low contrast for independent character sprites. Replace starfield bay with described rear walls. Architecture remains behind walking band; no stairs, pits, raised dais or foreground obstruction. Extreme left and right floor margins stay clear for engine-added doors. Empty central band for independent hunter/equipment. One panoramic room only, no ships, no characters, no text, labels, numbers, logo, interface or watermark.",
+      "status": "generated; pending in-game verification",
+      "reference": "art-source/clan-ship-v1/hangar-v1.png"
+    }
+  ]
+}

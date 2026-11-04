@@ -1,0 +1,58 @@
+{
+  "startedAt": "2026-11-04T07:09:18.251Z",
+  "sourceCommit": "9d77af88148e8ab5b2d49e64040024c57aeba67d",
+  "checkoutCommit": "cf7a2afe973c514ce39b962942102aec98e7ea1f",
+  "runtime": "actual desktop GameClient via Vite",
+  "checks": [
+    {
+      "name": "Legacy campaign migrates through the real main menu to the personal deck",
+      "passed": true
+    },
+    {
+      "name": "A held gamepad confirmation advances only one docking stage",
+      "passed": true
+    },
+    {
+      "name": "Dock and board preserve the selected personal hull",
+      "passed": true
+    },
+    {
+      "name": "Seven rooms and six existing services return to their own clan room",
+      "passed": true
+    },
+    {
+      "name": "Settings suspend the clan controller and a manual checkpoint preserves its room",
+      "passed": true
+    },
+    {
+      "name": "Save, main menu, reload and Continue restore the exact clan room",
+      "passed": true
+    },
+    {
+      "name": "Returning to the personal ship keeps the berth and blocks travel until undocking",
+      "passed": true
+    },
+    {
+      "name": "Approach cancellation is durable and never boards the clan ship",
+      "passed": true
+    },
+    {
+      "name": "Mobile room navigation works at 390px and 320px without horizontal overflow",
+      "passed": true
+    },
+    {
+      "name": "Clan ship and shared service artwork load without browser errors",
+      "passed": true
+    }
+  ],
+  "errors": [],
+  "missingAssets": [],
+  "screenshots": [
+    "01-approach-desktop.png",
+    "02-hangar-desktop.png",
+    "03-archives-resumed.png",
+    "04-hangar-mobile-320.png"
+  ],
+  "passed": true,
+  "finishedAt": "2026-11-04T07:09:40.237Z"
+}

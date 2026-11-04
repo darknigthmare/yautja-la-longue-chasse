@@ -63,6 +63,10 @@ export function parseCompleteArchive(serialized: string): { archive: CompleteArc
       bytes(JSON.stringify(ship)) > 1024 * 1024) return bad("invalid-sidecar");
   const shipProgression = validateCanonicalShipProgression(ship, campaign);
   if (!shipProgression) return bad("invalid-sidecar");
+  // An engaged visit must bring the same owned hull back with it. Lightweight
+  // imports cannot invent the missing fleet or strand the hunter aboard.
+  if (campaign.clanShipDocking && campaign.clanShipDocking.status !== "free-flight" &&
+      campaign.clanShipDocking.personalShipId !== shipProgression.selectedShipId) return bad("invalid-sidecar");
   const activeHunt = annex.activeHunt === null ? null : normalizeActiveHuntSave(annex.activeHunt, ACTIVE_HUNT_RUNTIME_REVISION);
   if (annex.activeHunt !== null && !activeHunt) return bad("invalid-sidecar");
   if (activeHunt && !activeCompatible(activeHunt, campaign)) return bad("incompatible-hunt");

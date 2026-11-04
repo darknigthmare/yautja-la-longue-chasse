@@ -33,6 +33,7 @@ import { isHomeworldContractsV68 } from "./systems/homeworldContractsV68";
 import { normalizeGameReserveV66, gameReserveV66Supported } from "./systems/gameReserveV66";
 import { normalizeShipPreparationV88 } from "./systems/shipPreparationV88";
 import { normalizeShipAcquisitionV89 } from "./systems/shipAcquisitionV89";
+import { inspectClanShipDocking } from "./systems/clanShipDocking";
 import { emptyGauntletCampaignV134, normalizeGauntletCampaignV134 } from "./systems/gauntletCampaignV134";
 import {
   ARMORS,
@@ -1233,6 +1234,9 @@ export function normalizeSave(value: unknown): SaveGame {
     ...(source.gauntletV134 === undefined ? {} : {
       gauntletV134: normalizeGauntletCampaignV134(source.gauntletV134,validIsoDate(source.createdAt,fallback.createdAt)),
     }),
+    ...(source.clanShipDocking === undefined ? {} : {
+      clanShipDocking: inspectClanShipDocking(source.clanShipDocking, validIsoDate(source.createdAt, fallback.createdAt)).state,
+    }),
     codex: { unlockedEntryIds, scanCounts, discoveredEnemyIds },
     exploration: normalizeExplorationProgress(source.exploration),
     statistics: {
@@ -1456,6 +1460,12 @@ function inspectSavePayload(value: unknown): SaveImportParseResult {
   }
   if (Number(value.version) > SAVE_VERSION) {
     return { save: null, failure: "future-version" };
+  }
+  if (value.clanShipDocking !== undefined && value.clanShipDocking !== null) {
+    const docking = inspectClanShipDocking(value.clanShipDocking, typeof value.createdAt === "string" ? value.createdAt : "");
+    if (docking.status === "future-version" || docking.status === "invalid-save") {
+      return { save: null, failure: docking.status };
+    }
   }
   // Preserve incompatible inspection bytes instead of silently clearing a
   // player's checkpoint during import, archive export or account transfer.

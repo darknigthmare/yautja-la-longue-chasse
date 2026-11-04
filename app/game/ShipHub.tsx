@@ -139,6 +139,10 @@ interface HubActionDefinition {
 
 export interface ShipHubProps {
   save: SaveGame;
+  /** Shared service panels can identify their current host without changing the personal hull. */
+  installationLabel?: string;
+  /** A remote facility exposes its own room; other rooms remain in its host hub. */
+  roomLocked?: boolean;
   controlBindings?: ControlBindings;
   /** Omit for a self-persisting sidecar; provide for controlled integration. */
   progression?: ShipProgressionState;
@@ -225,6 +229,8 @@ function formatDuration(seconds: number): string {
 }
 
 export default function ShipHub({
+  installationLabel = "Vaisseau personnel // Réseau du clan",
+  roomLocked = false,
   save,
   controlBindings = DEFAULT_CONTROL_BINDINGS,
   progression: controlledProgression,
@@ -262,7 +268,7 @@ export default function ShipHub({
       createDefaultShipProgression(save, save.updatedAt),
     );
   const [statusMessage, setStatusMessage] = useState(
-    "Console du vaisseau prête.",
+    roomLocked ? "Installation du clan prête." : "Console du vaisseau prête.",
   );
   const [hydratedOwner, setHydratedOwner] = useState<string | null>(null);
   const [staleSidecarOwner, setStaleSidecarOwner] = useState<string | null>(null);
@@ -425,12 +431,13 @@ export default function ShipHub({
 
   const selectRoom = useCallback(
     (roomId: ShipRoomId) => {
+      if (roomLocked && roomId !== initialRoomId) return;
       setActiveRoomId(roomId);
       setActionIndex(0);
       onRoomChange?.(roomId);
       notify(`${SHIP_ROOMS[roomIndex(roomId)].label} sélectionné.`);
     },
-    [notify, onRoomChange],
+    [initialRoomId, notify, onRoomChange, roomLocked],
   );
 
   const moveRoom = useCallback(
@@ -615,8 +622,9 @@ export default function ShipHub({
           );
           const unlocked = isShipUnlocked(progression, ship.id);
           const selected = progression.selectedShipId === ship.id;
+          const hullEngaged = Boolean(save.clanShipDocking && save.clanShipDocking.status !== "free-flight");
           const canSelect =
-            ship.selectable && (unlocked || availability.requirementsMet);
+            !hullEngaged && ship.selectable && (unlocked || availability.requirementsMet);
           return {
             id: `hangar-select-${ship.id}`,
             label: selected
@@ -624,7 +632,9 @@ export default function ShipHub({
               : canSelect
                 ? `Sélectionner · ${ship.shortName}`
                 : `Inspecter · ${ship.shortName}`,
-            detail: !ship.selectable
+            detail: hullEngaged && !selected
+              ? "Inspection disponible. Désamarre le vaisseau personnel avant de changer de coque."
+              : !ship.selectable
               ? `${ship.originLabel} · ${ship.deckNote}`
               : canSelect
                 ? `${ship.originLabel} · ${ship.kind} · ${ship.aliases.join(" / ")}`
@@ -637,6 +647,10 @@ export default function ShipHub({
               }
               if (selected) {
                 notify(`${ship.name} est déjà le vaisseau actif.`);
+                return;
+              }
+              if (hullEngaged) {
+                notify("Le vaisseau personnel est engagé auprès du Clan Ship. Désamarre-le avant de changer de coque.");
                 return;
               }
               const reconciled = unlockAvailableShips(progression, save);
@@ -998,7 +1012,7 @@ export default function ShipHub({
       <div className="hub-stage" inert={trainingSession?.external || undefined}>
         <header style={styles.header}>
           <div>
-            <p className="eyebrow">Vaisseau de chasse // Réseau du clan</p>
+            <p className="eyebrow">{installationLabel}</p>
             <h1 id="ship-hub-title" className="panel-title">
               {activeRoom.label}
             </h1>
@@ -1013,8 +1027,9 @@ export default function ShipHub({
 
         <nav
           aria-label="Salles du vaisseau"
-          inert={shipFlightActive}
-          style={styles.roomNavigation}
+          inert={shipFlightActive || roomLocked}
+          hidden={roomLocked}
+          style={roomLocked ? { ...styles.roomNavigation, display: "none" } : styles.roomNavigation}
         >
           {SHIP_ROOMS.map((room) => (
             <button
@@ -1102,8 +1117,8 @@ export default function ShipHub({
 
         <footer style={styles.footer}>
           <p id="ship-hub-help">
-            Clavier : {controlActionShortcut("shipHub.previousRoom", controlBindings)} / {controlActionShortcut("shipHub.nextRoom", controlBindings)} pour les salles, {controlActionShortcut("shipHub.previousAction", controlBindings)} / {controlActionShortcut("shipHub.nextAction", controlBindings)} puis {controlActionShortcut("shipHub.activate", controlBindings)} pour les actions. Manette : croix directionnelle, A pour
-            confirmer, B pour le pont. Les boutons restent tactiles.
+            Clavier : {!roomLocked && <>{controlActionShortcut("shipHub.previousRoom", controlBindings)} / {controlActionShortcut("shipHub.nextRoom", controlBindings)} pour les salles, </>}{controlActionShortcut("shipHub.previousAction", controlBindings)} / {controlActionShortcut("shipHub.nextAction", controlBindings)} puis {controlActionShortcut("shipHub.activate", controlBindings)} pour les actions. Manette : croix directionnelle, A pour
+            confirmer, B pour {roomLocked ? "revenir au Clan Ship" : "le pont"}. Les boutons restent tactiles.
           </p>
           <p role="status" aria-live="polite">
             {statusMessage}
