@@ -36,7 +36,7 @@ function fixture(playedFixture=played){
   const storage={getItem:name=>{if(name===key&&unreadable-->0)throw Error('readback unavailable once');return values.get(name)??null;},setItem(name,value){if(failure==='all-quota'||failure==='backup-quota'&&name!==key||failure==='save-quota'&&name===key)throw Error('QuotaExceededError');values.set(name,value);if(failure==='readback-once'&&name===key)unreadable=1;},removeItem:name=>values.delete(name)};
   const save=saves.defaultSave(playedFixture.owner);save.homeworld={...save.homeworld,...playedFixture.ledgers,locationV77:playedFixture.checkpoint,visitedDistrictIds:['port']};
   assert(saves.writeSaveWithStatus(save,storage,key).persisted);
-  const env={...api,saveRef:{current:save},progressRef:{current:save.homeworld},localStorage:storage,
+  const env={...api,saveRef:{current:save},progressRef:{current:save.homeworld},localStorage:storage,recoveryStorage:undefined,
     upgradeRecoveryOwnerRefV112:{current:save.createdAt},upgradeRecoveryPendingRefV112:{current:true},upgradeRecoverySubmittedRefV112:{current:null},upgradeRecoveryFinishRefV112:{current:null},cargoMigrationWriteReadyRefV108:{current:false},cargoMigrationPendingRefV108:{current:true},cargoMigrationOnlyPendingV108:false,
     actorRef:{current:structuredClone(playedFixture.remote||playedFixture.groundObject?playedFixture.historicalActor:playedFixture.expectedFallbackActor)},
     exteriorAnchorRef:{current:structuredClone(playedFixture.remote||playedFixture.groundObject?playedFixture.historicalActor:playedFixture.expectedFallbackActor)},

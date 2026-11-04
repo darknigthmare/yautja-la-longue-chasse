@@ -63,6 +63,7 @@ function fixture() {
   let cleanup, paused = false, inactive = false;
   const env = {
     ...city,
+    ephemeralSession: false,
     createHomeworldGamepadState, stepHomeworldGamepad, nextHomeworldDialogChoice,
     matchesControlAction: () => false, bindings: {}, held: { current: new Set() },
     touch: { current: { left: false, right: false, up: false, down: false, jump: false, sprint: false } },
