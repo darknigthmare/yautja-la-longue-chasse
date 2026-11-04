@@ -1,0 +1,100 @@
+{
+  "version": 1,
+  "createdOn": "2026-11-04",
+  "generationTool": "image_gen.imagegen (built-in)",
+  "referenceStatus": "Adaptations artistiques de gameplay inspirées AVP ; validation canonique 1:1 non revendiquée.",
+  "artDirection": "Bronze forgé patiné, surfaces anthracite, accents turquoise, vue frontale à faible profondeur, silhouette indépendante transparente.",
+  "runtime": {
+    "maxEdge": 1024,
+    "format": "webp",
+    "quality": 94,
+    "alphaQuality": 100,
+    "alphaThreshold": 16,
+    "filtering": "smooth",
+    "colorSpace": "srgb",
+    "layer": "fixture",
+    "collision": "authored footprints in app/game/systems/clanShipInterior.ts"
+  },
+  "assets": [
+    {
+      "id": "council-table",
+      "label": "Table stratégique du conseil",
+      "sourceFile": "art-source/clan-ship-props-v1/council-table-v1.png",
+      "runtimeFile": "public/game/clan-ship/props/council-table-v1.webp",
+      "prompt": "Use case: stylized-concept\nAsset type: one independent transparent PNG game prop sprite, not a sheet.\nPrimary request: a clan council navigation holotable for the enormous AVP-inspired Yautja mothership in Yautja The Long Hunt. Single wide low oval dark bronze ritual technological table with six splayed ribbed legs, heavy segmented gunmetal frame, narrow turquoise luminous inlays, shallow recessed black top with concentric metal star-map rings and one restrained turquoise central emitter. An adaptation for this game, not a replica claim.\nReference image: the attached room supplies materials, lighting and hand-painted finish ONLY. Do not include any of its floor, walls or surrounding scenery in output.\nView: straight-on front, very shallow perspective looking down only enough to see the elliptical top, like furniture in a 2D side-view brawler; no isometric view. Entire table visible including all feet, no cropping. Wide silhouette about 1.9 width to 1 height, short raised control lips, all feet on one flat horizontal ground line.\nStyle: polished hand-painted detailed 2D game asset, weathered forged bronze edges, charcoal faces, restrained turquoise lights, subtle warm upper-left key light, crisp legible outline at 325x195 game pixels. No thick black outline. No suspended hologram above table; engine adds effects separately. No weapon, no character, no skull or throne, no other object.\nComposition: centered isolated object with 6 percent clear margin all sides. True transparent alpha background. No ground plane, no background color, no checkerboard, no large cast shadow, no labels, readable text, logos, watermark or interface. One object, one image.",
+      "reference": "art-source/clan-ship-v1/conseil-v1.png",
+      "status": "generated; pending in-scene QA",
+      "humanArtValidation": false
+    },
+    {
+      "id": "armory-rack",
+      "label": "Râtelier de l’armurerie",
+      "sourceFile": "art-source/clan-ship-props-v1/armory-rack-v1.png",
+      "runtimeFile": "public/game/clan-ship/props/armory-rack-v1.webp",
+      "prompt": "Use case: stylized-concept\nAsset type: one independent transparent game prop sprite, not a sheet.\nPrimary request: a single freestanding Yautja clan armory equipment rack. A broad heavy bronze ribbed frame, two solid feet, dark recessed mounts displaying three recognizable long collapsible combistick spears secured vertically, two compact crescent smart discs attached to the frame and one closed biomask nestled on an upper shelf. Everything is attached to one rack as a single usable game prop, not loose separate objects or a sprite sheet. Readable whole silhouette, asymmetrical equipment arrangement but balanced structure. Wide rectangular overall aspect about 1.7 width to 1 height.\nFor the enormous AVP-inspired clan mothership in Yautja The Long Hunt. An artistic gameplay adaptation.\nReference image gives ONLY material, palette, edge finish, lighting and camera family from the newly made council table. Create the requested different prop; do not include that table.\nView: straight-on front, very shallow perspective looking down just enough to see top surfaces, compatible with a 2D side-view brawler; no isometric view. Entire object including all feet visible, no cropping, feet meet a shared horizontal ground line. No floor.\nStyle: polished detailed hand-painted 2D game art, weathered forged bronze edges and ribbed charcoal structural faces, restrained turquoise lights, subtle warm upper-left key light, crisp legible silhouette at 390x215 pixels. Same elegant heavy AVP-inspired clan architecture as reference. No thick black outlines.\nComposition: centered isolated one-piece object with 6 percent clear margins. Real transparent alpha background. No ground plane, no scenery, no background color or checkerboard, no large cast shadow, no floating holograms, no character, no additional props, no labels, readable text, logo, watermark or interface. One image only.",
+      "reference": "art-source/clan-ship-props-v1/council-table-v1.png",
+      "status": "generated; pending in-scene QA",
+      "humanArtValidation": false
+    },
+    {
+      "id": "medical-bed",
+      "label": "Couche de récupération médicale",
+      "sourceFile": "art-source/clan-ship-props-v1/medical-bed-v1.png",
+      "runtimeFile": "public/game/clan-ship/props/medical-bed-v1.webp",
+      "prompt": "Use case: stylized-concept\nAsset type: one independent transparent game prop sprite, not a sheet.\nPrimary request: one Yautja clan medical recovery bed. Wide low dark bronze segmented operating couch shaped to support a very tall alien hunter, flat padded charcoal center, inclined head cradle to the right, articulated short bronze support feet, narrow pale green and turquoise instrument lights and one small folded diagnostic arm attached to its rear edge. Empty couch, no body, blood, hospital cross, human monitor or detached objects. Horizontal overall silhouette about 1.9 width to 1 height.\nFor the enormous AVP-inspired clan mothership in Yautja The Long Hunt. An artistic gameplay adaptation.\nReference image gives ONLY material, palette, edge finish, lighting and camera family from the newly made council table. Create the requested different prop; do not include that table.\nView: straight-on front, very shallow perspective looking down just enough to see top surfaces, compatible with a 2D side-view brawler; no isometric view. Entire object including all feet visible, no cropping, feet meet a shared horizontal ground line. No floor.\nStyle: polished detailed hand-painted 2D game art, weathered forged bronze edges and ribbed charcoal structural faces, restrained turquoise lights, subtle warm upper-left key light, crisp legible silhouette at 315x175 pixels. Same elegant heavy AVP-inspired clan architecture as reference. No thick black outlines.\nComposition: centered isolated one-piece object with 6 percent clear margins. Real transparent alpha background. No ground plane, no scenery, no background color or checkerboard, no large cast shadow, no floating holograms, no character, no additional props, no labels, readable text, logo, watermark or interface. One image only.",
+      "reference": "art-source/clan-ship-props-v1/council-table-v1.png",
+      "status": "generated; pending in-scene QA",
+      "humanArtValidation": false
+    },
+    {
+      "id": "archive-terminal",
+      "label": "Borne des archives",
+      "sourceFile": "art-source/clan-ship-props-v1/archive-terminal-v1.png",
+      "runtimeFile": "public/game/clan-ship/props/archive-terminal-v1.webp",
+      "prompt": "Use case: stylized-concept\nAsset type: one independent transparent game prop sprite, one object not a sheet.\nPrimary request: a freestanding Yautja clan archive reading terminal for the enormous AVP-inspired mothership in Yautja The Long Hunt. Single tall narrow bronze and charcoal machine, ribbed sturdy plinth on two feet, vertical obelisk spine supporting a recessed oval glass reading screen on its upper half, dim turquoise concentric constellation lines with absolutely no letters, low slanted control ledge and tiny amber status slots. Ancient clan memory merged with hunter technology. Overall silhouette about 0.52 width to 1 height. Compact and legible at 135x265 game pixels.\nReference image supplies only the weathered bronze and charcoal materials, turquoise lights, finish, warm upper-left key lighting and straight-on shallow perspective of this established prop family. Create the requested terminal instead of the table.\nView: straight-on front for a 2D side-view brawler, shallow perspective with only a little top surface visible, not isometric. Whole terminal and feet fully visible on a shared horizontal ground line. Symmetrical planted stance, no levitation.\nStyle: polished detailed hand-painted 2D game art, restrained edge highlights and crisp silhouettes, no thick outlines, no photoreal studio environment.\nComposition: centered one object isolated with 7 percent clear margin. True transparent alpha background, no floor, wall or ground plane, no background colors or checkerboard, no large cast shadow, no character, no surrounding objects, no floating hologram outside screen, no logo, text, watermark, label or UI. One image only.",
+      "reference": "art-source/clan-ship-props-v1/council-table-v1.png",
+      "status": "generated; pending in-scene QA",
+      "humanArtValidation": false
+    },
+    {
+      "id": "training-station",
+      "label": "Poste d’entraînement",
+      "sourceFile": "art-source/clan-ship-props-v1/training-station-v1.png",
+      "runtimeFile": "public/game/clan-ship/props/training-station-v1.webp",
+      "prompt": "Use case: stylized-concept\nAsset type: one independent transparent game prop sprite, one object not a sheet.\nPrimary request: a Yautja clan training station for the AVP-inspired mothership in Yautja The Long Hunt. A single freestanding heavy ritual sparring target machine: tall bronze central column on a broad very stable angular foot, armored charcoal upper target plate shaped as a simple faceted shield, two short blunt jointed bronze target arms folded slightly out, lower inset turquoise control panel and four tiny amber lamps. A mechanical practice installation, no actual creature, no sentient android, no face or human anatomy, no blades or spikes protruding far beyond the arms. Weathered strike marks on dark target plate. Overall silhouette about 0.65 width to 1 height, readable at 165x245 game pixels.\nReference image supplies ONLY materials, restrained turquoise highlights, warm upper-left key lighting and hand-painted finish of established prop family. Create the training machine instead of the table.\nView: straight-on front, very shallow perspective, coherent with furniture in a 2D side-view brawler; no isometric view. Whole target, arms and foot visible with no cropping, weight resting firmly on a horizontal ground line. One complete assembled object.\nStyle: polished detailed hand-painted 2D game sprite, strong ribbed bronze structure, charcoal inset mechanical surfaces, crisp readable edges with no thick outlines, same visual family as reference.\nComposition: centered isolated object with 7 percent transparent clear margins. Real transparent alpha background. No floor or surrounding environment, no background colors, checkerboard or large cast shadows. No character, extra objects, firearms, text, number, label, logo, watermark, or UI. One image only.",
+      "reference": "art-source/clan-ship-props-v1/council-table-v1.png",
+      "status": "generated; pending in-scene QA",
+      "humanArtValidation": false
+    },
+    {
+      "id": "berth-console",
+      "label": "Console d’amarrage",
+      "sourceFile": "art-source/clan-ship-props-v1/berth-console-v1.png",
+      "runtimeFile": "public/game/clan-ship/props/berth-console-v1.webp",
+      "prompt": "Use case: stylized-concept\nAsset type: one independent transparent game prop sprite, one complete assembled object, not a sheet.\nFor the enormous AVP-inspired Yautja clan mothership in Yautja The Long Hunt. This is an artistic gameplay adaptation.\nPrimary request: a freestanding low, wide Yautja clan docking control console. Angular bronze podium with two sturdy flared supports, a slanted dark control surface containing two recessed turquoise geometric docking indicators, a narrow central brass lever, and a single low horseshoe-shaped bronze safety rail attached to its back. Industrial hangar equipment, clear geometric silhouette, not a circular holotable or throne. Overall silhouette about 1.65 width to 1 height, legible at 275x165 game pixels.\nReference image supplies ONLY the established materials, palette, warm upper-left lighting, hand-painted finish and shallow camera angle. Create the requested different prop instead of the table.\nView: straight-on front for a 2D side-view brawler, shallow perspective looking down just enough to see top surfaces; not isometric. Whole object and every foot visible on a shared horizontal ground line. Dark bronze ribbed structure, weathered golden bronze edges, charcoal faces and restrained turquoise indicators. Crisp readable silhouette with no thick black outlines.\nComposition: centered one object with 7 percent clear margins. True transparent alpha background. No floor or ground plane, surrounding scene, background colors, checkerboard or large cast shadows. No character, letters, readable text, labels, logos, watermark or interface. One object in one image.",
+      "reference": "art-source/clan-ship-props-v1/council-table-v1.png",
+      "status": "generated; pending in-scene QA",
+      "humanArtValidation": false
+    },
+    {
+      "id": "trophy-workbench",
+      "label": "Établi rituel des trophées",
+      "sourceFile": "art-source/clan-ship-props-v1/trophy-workbench-v1.png",
+      "runtimeFile": "public/game/clan-ship/props/trophy-workbench-v1.webp",
+      "prompt": "Use case: stylized-concept\nAsset type: one independent transparent game prop sprite, one complete assembled object, not a sheet.\nFor the enormous AVP-inspired Yautja clan mothership in Yautja The Long Hunt. This is an artistic gameplay adaptation.\nPrimary request: one low, wide Yautja trophy preparation workbench, a sturdy rectangular ritual bronze table on four ribbed legs with a flat inset charcoal stone surface. Attached to its rear edge is one modest upright bronze clamp holding a single clean ivory nonhuman horned prey skull, no gore. A couple of tiny secured carving tools in the table's side rail, shallow under-shelf, restrained turquoise light at each front corner. Overall silhouette about 1.7 width to 1 height, compact skull and clamp remain part of the workbench silhouette. Legible at 295x175 game pixels, clear function, not a navigation holotable.\nReference image supplies ONLY the established materials, palette, warm upper-left lighting, hand-painted finish and shallow camera angle. Create the requested different prop instead of the table.\nView: straight-on front for a 2D side-view brawler, shallow perspective looking down just enough to see top surfaces; not isometric. Whole object and every foot visible on a shared horizontal ground line. Dark bronze ribbed structure, weathered golden bronze edges, charcoal faces and restrained turquoise indicators. Crisp readable silhouette with no thick black outlines.\nComposition: centered one object with 7 percent clear margins. True transparent alpha background. No floor or ground plane, surrounding scene, background colors, checkerboard or large cast shadows. No character, letters, readable text, labels, logos, watermark or interface. One object in one image.",
+      "reference": "art-source/clan-ship-props-v1/council-table-v1.png",
+      "status": "generated; pending in-scene QA",
+      "humanArtValidation": false
+    },
+    {
+      "id": "armory-forge",
+      "label": "Forge d’entretien de l’armurerie",
+      "sourceFile": "art-source/clan-ship-props-v1/armory-forge-v1.png",
+      "runtimeFile": "public/game/clan-ship/props/armory-forge-v1.webp",
+      "prompt": "Use case: stylized-concept\nAsset type: one independent transparent game prop sprite, one complete assembled object, not a sheet.\nFor the enormous AVP-inspired Yautja clan mothership in Yautja The Long Hunt. This is an artistic gameplay adaptation.\nPrimary request: one freestanding Yautja clan equipment maintenance forge. Tall compact charcoal and ribbed bronze industrial column, stable wide foot, armored arch housing one small glowing amber recessed heating chamber at chest height, a low integrated anvil shelf immediately beneath the chamber, heavy bronze cooling ribs along both sides, small turquoise power indicators at the base. Functional hunter equipment workshop machine, not a sparring target, no humanoid face or limbs, no weapon protruding. Overall silhouette about 0.67 width to 1 height, legible at 165x245 game pixels.\nReference image supplies ONLY the established materials, palette, warm upper-left lighting, hand-painted finish and shallow camera angle. Create the requested different prop instead of the table.\nView: straight-on front for a 2D side-view brawler, shallow perspective looking down just enough to see top surfaces; not isometric. Whole object and every foot visible on a shared horizontal ground line. Dark bronze ribbed structure, weathered golden bronze edges, charcoal faces and restrained turquoise indicators. Crisp readable silhouette with no thick black outlines.\nComposition: centered one object with 7 percent clear margins. True transparent alpha background. No floor or ground plane, surrounding scene, background colors, checkerboard or large cast shadows. No character, letters, readable text, labels, logos, watermark or interface. One object in one image.",
+      "reference": "art-source/clan-ship-props-v1/council-table-v1.png",
+      "status": "generated; pending in-scene QA",
+      "humanArtValidation": false
+    }
+  ]
+}

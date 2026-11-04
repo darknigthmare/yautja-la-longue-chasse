@@ -1,19 +1,22 @@
-name: Clan Ship docking and campaign resume
+name: Clan Ship interior, docking and campaign resume
 
 on:
   pull_request:
     branches: [main]
     paths:
       - 'app/game/ClanShipHub*'
+      - 'app/game/ClanShipInterior*'
       - 'app/game/GameClient.tsx'
       - 'app/game/ShipHub.tsx'
       - 'app/game/CampaignMainMenu.tsx'
       - 'app/game/save.ts'
       - 'app/game/types.ts'
       - 'app/game/systems/clanShipDocking.ts'
+      - 'app/game/systems/clanShipInterior.ts'
       - 'app/game/systems/campaignSlots.ts'
       - 'app/game/systems/completeArchive.ts'
       - 'tests/clan-ship-*.test.mjs'
+      - 'public/game/clan-ship/**'
       - 'tests/fixtures/clan-ship-browser-assets.json'
       - 'scripts/qa-clan-ship-browser.mjs'
       - '.github/workflows/clan-ship-docking.yml'
@@ -37,6 +40,7 @@ jobs:
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
           persist-credentials: false
           filter: blob:none
           sparse-checkout-cone-mode: false
@@ -57,11 +61,11 @@ jobs:
             /public/game/ships/v13/classic-predator-spaceship-top.webp
             /public/game/backgrounds/ship-hub-v4.webp
             /public/game/ship-interior/
-      - name: Include existing artwork used by the shared ship services
+      - name: Include the interior artwork and shared ship services
         run: |
           node --input-type=module <<'NODE'
           import assert from 'node:assert/strict';
-          import { readFileSync } from 'node:fs';
+          import { existsSync, readFileSync } from 'node:fs';
           import { execFileSync } from 'node:child_process';
           const { paths } = JSON.parse(readFileSync('tests/fixtures/clan-ship-browser-assets.json', 'utf8'));
           assert.equal(new Set(paths).size, paths.length);
@@ -70,7 +74,8 @@ jobs:
             assert.ok(file.split('/').every(part => part && part !== '.' && part !== '..'));
           }
           execFileSync('git', ['sparse-checkout', 'add', '--stdin'], { input: paths.map(file => '/' + file).join('\n') + '\n', stdio: ['pipe', 'inherit', 'inherit'] });
-          console.log('Existing service assets included:', paths.length);
+          assert.deepEqual(paths.filter(file => !existsSync(file)), [], 'Every declared route asset must exist in this exact checkout');
+          console.log('Interior and shared service assets included:', paths.length);
           NODE
       - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
         with:
@@ -79,25 +84,29 @@ jobs:
       - run: npm ci --ignore-scripts --no-audit --no-fund
       - name: Typecheck
         run: npm run typecheck
-      - name: Strict lint of the docking integration
+      - name: Strict lint of the interior and docking integration
         run: >-
           node node_modules/eslint/bin/eslint.js --max-warnings=0
-          app/game/ClanShipHub.tsx app/game/GameClient.tsx app/game/ShipHub.tsx
+          app/game/ClanShipHub.tsx app/game/ClanShipInterior.tsx
+          app/game/GameClient.tsx app/game/ShipHub.tsx
           app/game/CampaignMainMenu.tsx app/game/save.ts app/game/types.ts
-          app/game/systems/clanShipDocking.ts app/game/systems/campaignSlots.ts
+          app/game/systems/clanShipDocking.ts app/game/systems/clanShipInterior.ts
+          app/game/systems/campaignSlots.ts
           app/game/systems/completeArchive.ts scripts/qa-clan-ship-browser.mjs
           tests/clan-ship-docking.test.mjs tests/clan-ship-save.test.mjs
-      - name: Docking, saves, archives and campaign regressions
+          tests/clan-ship-interior.test.mjs
+      - name: Interior geometry, docking, saves, archives and campaign regressions
         run: >-
           node --experimental-strip-types --test --test-concurrency=1
           tests/clan-ship-docking.test.mjs tests/clan-ship-save.test.mjs
+          tests/clan-ship-interior.test.mjs
           tests/complete-archive.test.mjs tests/campaign-slots.test.mjs
           tests/cloud-account-archives-v71.test.mjs
           tests/game-client-ship-flow.test.mjs tests/campaign-resume-priority-v94.test.mjs
           tests/ship-hub-input-runtime.test.mjs
       - name: Install the pinned Chromium browser
         run: node node_modules/playwright-core/cli.js install --with-deps chromium
-      - name: Play the real campaign and restore its clan berth
+      - name: Walk the real interior and restore its clan berth
         run: node scripts/qa-clan-ship-browser.mjs
       - name: Upload browser evidence even when a check fails
         if: always()

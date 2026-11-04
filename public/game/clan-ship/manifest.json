@@ -1,0 +1,167 @@
+{
+  "version": 1,
+  "createdOn": "2026-11-04",
+  "generationTool": "image_gen.imagegen (built-in)",
+  "sourceManifest": "art-source/clan-ship-v1/generation.json",
+  "artDirection": "Architecture de clan Yautja inspirée AVP; scènes de jeu originales. Fonds indépendants des portes, des équipements, du vaisseau personnel et du chasseur.",
+  "referenceStatus": "Adaptation artistique de gameplay ; aucune certification de reproduction d'un plan du film.",
+  "runtime": {
+    "width": 1440,
+    "height": 800,
+    "format": "webp",
+    "quality": 90,
+    "fit": "cover",
+    "colorSpace": "srgb",
+    "alpha": false,
+    "layer": "background",
+    "collision": "none; collision footprints live in app/game/systems/clanShipInterior.ts",
+    "filtering": "browser smooth",
+    "pivot": {
+      "x": 0,
+      "y": 0
+    }
+  },
+  "assets": [
+    {
+      "id": "hangar",
+      "url": "/game/clan-ship/interiors/hangar-v1.webp",
+      "sourceFile": "art-source/clan-ship-v1/hangar-v1.png",
+      "sourceWidth": 1672,
+      "sourceHeight": 941,
+      "sourceSha256": "39dc36dce7b0a7122903e3506247ecfe245d2decbfa938af4bd89b02746a3738",
+      "width": 1440,
+      "height": 800,
+      "format": "webp",
+      "bytes": 244498,
+      "sha256": "1bf116bf19693f5828d5a63695ecea335c0c5208e2fc1e360df9a7282a861907",
+      "alpha": false,
+      "pivot": {
+        "x": 0,
+        "y": 0
+      },
+      "layer": "background",
+      "collision": false
+    },
+    {
+      "id": "conseil",
+      "url": "/game/clan-ship/interiors/conseil-v1.webp",
+      "sourceFile": "art-source/clan-ship-v1/conseil-v1.png",
+      "sourceWidth": 1672,
+      "sourceHeight": 941,
+      "sourceSha256": "adc4ec6232ae3f0bf64c399afe8a4a159e157bc9e4e58cb5c9a4ff2272ebe5e6",
+      "width": 1440,
+      "height": 800,
+      "format": "webp",
+      "bytes": 253562,
+      "sha256": "87751d973c97ad2910c34dd02bf7286419d76e8fa7b75b5bf31806d5a06947d1",
+      "alpha": false,
+      "pivot": {
+        "x": 0,
+        "y": 0
+      },
+      "layer": "background",
+      "collision": false
+    },
+    {
+      "id": "armurerie",
+      "url": "/game/clan-ship/interiors/armurerie-v1.webp",
+      "sourceFile": "art-source/clan-ship-v1/armurerie-v1.png",
+      "sourceWidth": 1672,
+      "sourceHeight": 941,
+      "sourceSha256": "f39e818c0ae9f2fc99567c52d89a87c6b141cd52d322c33e582c404bdb27f98a",
+      "width": 1440,
+      "height": 800,
+      "format": "webp",
+      "bytes": 210174,
+      "sha256": "a11bb2ea4c9427b661c177691cd0b53df1c5ad15bde5afbfadceadcd4d58abe3",
+      "alpha": false,
+      "pivot": {
+        "x": 0,
+        "y": 0
+      },
+      "layer": "background",
+      "collision": false
+    },
+    {
+      "id": "trophees",
+      "url": "/game/clan-ship/interiors/trophees-v1.webp",
+      "sourceFile": "art-source/clan-ship-v1/trophees-v1.png",
+      "sourceWidth": 1672,
+      "sourceHeight": 941,
+      "sourceSha256": "e794ae7158efe2896ebbd245bb8b7eb6936ca73de76a7b717c8bf5b031454b65",
+      "width": 1440,
+      "height": 800,
+      "format": "webp",
+      "bytes": 234882,
+      "sha256": "85ee3c53ec09468bf56732d92faf2f7c456c562a18256529ea8ed33aaaba407e",
+      "alpha": false,
+      "pivot": {
+        "x": 0,
+        "y": 0
+      },
+      "layer": "background",
+      "collision": false
+    },
+    {
+      "id": "soins",
+      "url": "/game/clan-ship/interiors/soins-v1.webp",
+      "sourceFile": "art-source/clan-ship-v1/soins-v1.png",
+      "sourceWidth": 1672,
+      "sourceHeight": 941,
+      "sourceSha256": "457e49f7358bcd0161fa3abae96264847f4c11aa701982944f53ad01edbca8b9",
+      "width": 1440,
+      "height": 800,
+      "format": "webp",
+      "bytes": 220874,
+      "sha256": "7143eee60290235d76a1fa054e85d5b8f3db2950401861aea55953a0e8866c4d",
+      "alpha": false,
+      "pivot": {
+        "x": 0,
+        "y": 0
+      },
+      "layer": "background",
+      "collision": false
+    },
+    {
+      "id": "archives",
+      "url": "/game/clan-ship/interiors/archives-v1.webp",
+      "sourceFile": "art-source/clan-ship-v1/archives-v1.png",
+      "sourceWidth": 1672,
+      "sourceHeight": 941,
+      "sourceSha256": "d809d90446ba3282f9210200ecc19b464999e51085702742fc7713769cd21495",
+      "width": 1440,
+      "height": 800,
+      "format": "webp",
+      "bytes": 269652,
+      "sha256": "49ebe43415f47dd338034964f8533c12585eef0e69c6441c28c9d14019d042fb",
+      "alpha": false,
+      "pivot": {
+        "x": 0,
+        "y": 0
+      },
+      "layer": "background",
+      "collision": false
+    },
+    {
+      "id": "entrainement",
+      "url": "/game/clan-ship/interiors/entrainement-v1.webp",
+      "sourceFile": "art-source/clan-ship-v1/entrainement-v1.png",
+      "sourceWidth": 1672,
+      "sourceHeight": 941,
+      "sourceSha256": "9ff379f8c1e6aaf136cecdd3bf09304f96229d7f57e88a214904704d8eb8be7c",
+      "width": 1440,
+      "height": 800,
+      "format": "webp",
+      "bytes": 227810,
+      "sha256": "aad83f111beef4da543368d926b83410813ab76388c40da5b6474c316e4c233d",
+      "alpha": false,
+      "pivot": {
+        "x": 0,
+        "y": 0
+      },
+      "layer": "background",
+      "collision": false
+    }
+  ],
+  "totalBytes": 1661452
+}

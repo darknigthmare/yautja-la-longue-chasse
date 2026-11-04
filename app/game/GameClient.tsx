@@ -1142,6 +1142,9 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
   const deckVisible = !newGamePhase && (screen === "deck" || (shipStationOpen && hubLocation === "deck"));
   const clanShipState = normalizeClanShipDocking(save.clanShipDocking, save.createdAt, selectedShipId);
   const clanShipVisible = screen === "clan-ship" || (shipStationOpen && hubLocation === "clan-ship");
+  // Keep the physical room and avatar alive while consulting any of its services,
+  // including the council (which has its own full-screen panel).
+  const clanShipMounted = clanShipVisible || (screen === "clan-war" && archiveReturnV85 === "clan-ship" && clanShipState?.status === "aboard");
   const homeworldMounted = screen === "homeworld" || (hubLocation === "homeworld" && (shipStationOpen || screen === "clan-war" || screen === "sprite-library" || screen === "mausoleum" || screen === "pit" || screen === "pit-narrative" || screen === "homeworld-region-v68" || screen === "homeworld-passage-v67" || screen === "homeworld-expedition" || screen === "glass-desert-expedition" || screen === "ship-acquisition-v89"));
   const previousMasterVolumeRef = useRef(
     save.settings.masterVolume > 0 ? save.settings.masterVolume : 0.8,
@@ -1389,7 +1392,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
     previousScreenRef.current = screen;
     const frame = window.requestAnimationFrame(() => {
       const activeScreen = gameShellRef.current?.querySelector<HTMLElement>(
-        ":scope > .screen",
+        ":scope > .screen:not([hidden]):not([inert])",
       );
       const station = stationDialogRef.current;
       const focusTarget =
@@ -3945,11 +3948,12 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
         </Suspense>
       )}
 
-      {clanShipVisible && clanShipState && (
+      {clanShipMounted && clanShipState && (
         <Suspense fallback={<DeferredGameScreen />}>
-          <section className="screen panel-screen" inert={screen !== "clan-ship" || settingsOpen || trophyWorkshop !== null}>
+          <section className="screen panel-screen" hidden={screen !== "clan-ship"} style={screen !== "clan-ship" ? { display: "none" } : undefined} inert={screen !== "clan-ship" || settingsOpen || trophyWorkshop !== null}>
             <div className="screen-safe">
               <ClanShipHub
+                key={save.createdAt}
                 state={clanShipState}
                 save={save}
                 selectedShipId={selectedShipId}

@@ -3,7 +3,7 @@ export const GAME_CONTENT_VERSION = "V112";
 export const GAME_CONTENT_LABEL = "Canopée · conservation · cité vivante · duels Feral/Scar";
 
 /** Application release; independent from the historical content and save formats. */
-export const GAME_RELEASE_VERSION = "1.1.0";
+export const GAME_RELEASE_VERSION = "1.2.0";
 
 function publishedBuildId(): string {
   // Next and Vite replace this literal with the same public, non-secret Git ID.
