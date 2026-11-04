@@ -23,7 +23,7 @@ seed.settings.masterVolume = 0;
 const checkoutCommit = execFileSync('git', ['rev-parse', 'HEAD'], { cwd: root, encoding: 'utf8' }).trim();
 const workingTreeDirty = execFileSync('git', ['status', '--porcelain'], { cwd: root, encoding: 'utf8' }).trim().length > 0;
 const headless = process.env.CLAN_SHIP_HEADLESS !== '0';
-const report = { startedAt: new Date().toISOString(), sourceCommit: process.env.CLAN_SHIP_SOURCE_COMMIT || checkoutCommit, checkoutCommit, workingTreeDirty, runtime: 'actual desktop GameClient via Vite', browserMode: headless ? 'headless' : 'headed', focusTransitions: [], checks: [], errors: [], missingAssets: [], screenshots: [], walking: { samples: 0, rooms: [], transitions: [] } };
+const report = { startedAt: new Date().toISOString(), sourceCommit: process.env.CLAN_SHIP_SOURCE_COMMIT || checkoutCommit, checkoutCommit, workingTreeDirty, runtime: 'actual desktop GameClient via Vite', browserMode: headless ? 'headless' : 'headed', focusTransitions: [], pointerCommands: [], checks: [], errors: [], missingAssets: [], screenshots: [], walking: { samples: 0, rooms: [], transitions: [] } };
 const roomRing = ['hangar', 'armurerie', 'entrainement', 'conseil', 'archives', 'trophees', 'soins'];
 const missing = new Set();
 const loadedRoomArt = new Set();
@@ -121,9 +121,29 @@ try {
     // Scroll the viewport into the page, never the oversized translated world:
     // scrolling an overflow:hidden ancestor would bypass the game's camera.
     await world.locator('..').scrollIntoViewIfNeeded();
+    // ResizeObserver and React update the authored camera after the browser's
+    // viewport changes. Wait for that real transform before converting a world
+    // point into a screen tap; otherwise a 390 -> 320 resize shifts it by 35px.
+    await page.waitForFunction(() => {
+      const scene = document.querySelector('[data-clan-interior]');
+      const world = scene?.querySelector('[data-interior-world]');
+      const viewport = scene?.querySelector('[data-interior-viewport]');
+      if (!world || !viewport) return false;
+      const bounds = viewport.getBoundingClientRect();
+      const scale = Math.max(bounds.width / 1440, bounds.height / 800);
+      const x = Number(scene.getAttribute('data-interior-actor-x'));
+      const y = Number(scene.getAttribute('data-interior-actor-y'));
+      const cameraX = Math.min(0, Math.max(bounds.width - 1440 * scale, bounds.width / 2 - x * scale));
+      const cameraY = Math.min(0, Math.max(bounds.height - 800 * scale, bounds.height * 0.82 - y * scale));
+      const matrix = new DOMMatrixReadOnly(getComputedStyle(world).transform);
+      return Math.abs(matrix.a - scale) < 0.00001 && Math.abs(matrix.d - scale) < 0.00001 &&
+        Math.abs(matrix.e - cameraX) < 0.1 && Math.abs(matrix.f - cameraY) < 0.1;
+    }, null, { timeout: 5000 });
     const rect = await world.boundingBox();
     assert.ok(rect, 'The physical room must have a visible world surface');
     const screen = { x: rect.x + x / 1440 * rect.width, y: rect.y + y / 800 * rect.height };
+    const command = { viewportWidth: page.viewportSize().width, room: (await actor()).room, requested: { x, y }, screen, worldRect: rect, touch };
+    report.pointerCommands.push(command);
     if (touch) await page.touchscreen.tap(screen.x, screen.y);
     else await page.mouse.click(screen.x, screen.y);
     await frames();
@@ -134,6 +154,7 @@ try {
       const actualY = Number(scene.getAttribute('data-interior-actor-y'));
       return Math.hypot(actualX - x, actualY - y) < 0.1;
     }, { x, y }, { timeout: 45000 });
+    if (expectArrival) command.arrived = await actor();
   };
   const interact = () => page.locator('[data-interior-interact]').click();
   const continueCampaign = async () => {
