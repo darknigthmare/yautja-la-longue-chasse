@@ -16,10 +16,13 @@ const assetsRequired = process.env.WOLF_ARRIVAL_REQUIRE_ASSETS !== '0';
 const headed = process.env.WOLF_ARRIVAL_HEADED === '1';
 await fs.mkdir(out, { recursive: true });
 const bundle = await build({
-  stdin: { contents: "export {defaultSave,SAVE_STORAGE_KEY} from './app/game/save.ts'; export {ACTIVE_HUNT_STORAGE_KEY} from './app/game/systems/activeHuntSave.ts';", resolveDir: root },
+  stdin: { contents: "export {defaultSave,SAVE_STORAGE_KEY} from './app/game/save.ts'; export {ACTIVE_HUNT_STORAGE_KEY} from './app/game/systems/activeHuntSave.ts'; export {GALAXY_NAVIGATION} from './app/game/galaxyNavigation.ts';", resolveDir: root },
   bundle: true, platform: 'node', format: 'esm', write: false, logLevel: 'silent',
 });
-const { defaultSave, SAVE_STORAGE_KEY, ACTIVE_HUNT_STORAGE_KEY } = await import('data:text/javascript;base64,' + Buffer.from(bundle.outputFiles[0].text).toString('base64'));
+const { defaultSave, SAVE_STORAGE_KEY, ACTIVE_HUNT_STORAGE_KEY, GALAXY_NAVIGATION } = await import('data:text/javascript;base64,' + Buffer.from(bundle.outputFiles[0].text).toString('base64'));
+const missionRoute = GALAXY_NAVIGATION.sectors.flatMap(sector => sector.systems.flatMap(system =>
+  system.bodies.flatMap(body => body.missions.map(mission => ({ sector, system, body, mission }))))).find(route => route.mission.id === 'jungle-vey');
+assert.ok(missionRoute, 'The real navigation registry must expose the initial jungle contract');
 const seed = defaultSave('2026-11-04T10:00:00.000Z');
 seed.profile.hunterName = 'QA Château et arrivée';
 seed.settings.masterVolume = 0;
@@ -199,13 +202,29 @@ try {
     await combatDirections();
     throw new Error('The real-input royal encounter did not finish within 90 seconds');
   };
-  const launchMission = async () => {
+  const openDeparture = async () => {
     await page.locator('[data-campaign-location="deck"]').waitFor();
     const quick = page.getByRole('button', { name: 'Accès rapide aux installations', exact: true });
     if (await quick.getAttribute('aria-expanded') !== 'true') await quick.click();
     const shortcutDetails = page.locator('details.ship-level-accessibility');
     if (await shortcutDetails.getAttribute('open') === null) await shortcutDetails.locator('summary').click();
     await page.getByRole('navigation', { name: 'Accès alternatif aux interfaces, la position du chasseur est conservée', exact: true }).getByRole('button', { name: /^DÉPART/ }).click();
+  };
+  const launchMission = async () => {
+    await openDeparture();
+    // A new campaign has no selected mission. Follow the actual map and its
+    // autopilot legs, then validate the briefing before returning to the airlock.
+    await page.locator('[data-galaxy-v10-level="galaxy"]').waitFor();
+    for (const [label, nextLevel] of [[missionRoute.sector.name, 'sector'], [missionRoute.system.name, 'system'], [missionRoute.body.name, 'planet']]) {
+      await page.locator('.galaxy-v10-spatial-map button').filter({ hasText: label }).first().click();
+      await page.getByRole('button', { name: 'Entrer', exact: true }).click({ timeout: 45_000 });
+      await page.locator(`[data-galaxy-v10-level="${nextLevel}"]`).waitFor();
+    }
+    await page.locator('.galaxy-v10-dossier-nav').getByRole('button', { name: missionRoute.mission.title, exact: false }).click();
+    await page.getByRole('button', { name: 'Préparer la chasse', exact: true }).click();
+    await page.getByRole('button', { name: 'Valider la destination', exact: true }).click();
+    await page.locator('[data-galaxy-v10-level]').waitFor({ state: 'detached' });
+    await openDeparture();
     await page.getByRole('button', { name: 'Déployer le chasseur', exact: true }).click();
     await page.locator('[data-arrival-run]').waitFor({ timeout: 90_000 });
     await page.waitForFunction(() => document.querySelector('[data-arrival-run]')?.getAttribute('data-arrival-status') !== 'prepared', null, { timeout: 30_000 });
