@@ -1,0 +1,146 @@
+name: Hidden developer travel and isolated sessions
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'app/dev/**'
+      - 'app/game/HomeworldHub.tsx'
+      - 'app/game/HomeworldRegionV68.tsx'
+      - 'app/game/PhysicalShipDeck.tsx'
+      - 'app/game/ClanShipHub.tsx'
+      - 'app/game/ClanShipInterior.tsx'
+      - 'app/game/HuntCanvas.tsx'
+      - 'app/game/ShipHub.tsx'
+      - 'app/game/systems/clanShipDocking.ts'
+      - 'app/game/systems/clanShipInterior.ts'
+      - 'app/game/systems/homeworldLiftStationV83.ts'
+      - 'app/game/save.ts'
+      - 'app/game/data.ts'
+      - 'next.config.ts'
+      - 'tests/dev-travel-*.test.mjs'
+      - 'scripts/qa-dev-travel-browser.mjs'
+      - '.github/workflows/dev-travel.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: dev-travel-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  travel:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 35
+    env:
+      ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
+      NEXT_TELEMETRY_DISABLED: '1'
+      DEV_TRAVEL_QA_SOURCE_COMMIT: ${{ github.event.pull_request.head.sha || github.sha }}
+      DEV_TRAVEL_QA_START_SERVER: '1'
+      DEV_TRAVEL_QA_SERVER_MODE: production
+      DEV_TRAVEL_QA_HEADLESS: '0'
+    steps:
+      - name: Report runner space before materializing scene assets
+        run: df -h .
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          persist-credentials: false
+          filter: blob:none
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /*
+            !/*/
+            /app/
+            /scripts/
+            /tests/
+            /desktop/
+            /build/
+            /.openai/hosting.json
+            /public/**/manifest.json
+            /public/audio/
+            /public/game/homeworld/
+            /public/game/clan-ship/
+            /public/game/ship-interior/
+            /public/game/backgrounds/
+            /public/game/sprites/
+            /public/game/props/
+            /public/game/youth/
+            /public/game/prologue/
+            /public/game/dialogues/
+            /public/game/ui/
+            /public/game/vehicles/
+            /public/game/planets/v101/runtime/
+            /public/game/ships/v12/classic-predator-spaceship.webp
+            /public/game/ships/v13/classic-predator-spaceship-top.webp
+            /public/game/ships/v14/avp-predator-mothership.webp
+            /public/game/assets/v2/
+            /public/game/assets/v3/
+            /public/game/assets/v14/
+            /public/game/assets/v15/
+            /public/game/assets/v18/
+            /public/game/assets/v19/
+            /public/game/assets/v112/
+            /public/game/assets/v113/
+            /public/game/assets/v133/
+            /public/game/assets/v134/
+            /public/game/assets/v136/
+            /public/game/assets/v139/
+            /public/game/assets/clan-field-20261103/
+      - name: Include the verified Clan Ship and shared service asset paths
+        run: |
+          node --input-type=module <<'NODE'
+          import assert from 'node:assert/strict';
+          import { existsSync, readFileSync } from 'node:fs';
+          import { execFileSync } from 'node:child_process';
+          const { paths } = JSON.parse(readFileSync('tests/fixtures/clan-ship-browser-assets.json', 'utf8'));
+          assert.equal(new Set(paths).size, paths.length);
+          for (const file of paths) {
+            assert.match(file, /^public\/game\/[A-Za-z0-9._/-]+$/);
+            assert.ok(file.split('/').every(part => part && part !== '.' && part !== '..'));
+          }
+          execFileSync('git', ['sparse-checkout', 'add', '--stdin'], {
+            input: paths.map(file => '/' + file).join('\n') + '\n', stdio: ['pipe', 'inherit', 'inherit'],
+          });
+          assert.deepEqual(paths.filter(file => !existsSync(file)), [], 'Declared scene artwork must exist in the tested commit');
+          NODE
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci --ignore-scripts --no-audit --no-fund
+      - name: Generate the Next.js route and environment types
+        run: node node_modules/next/dist/bin/next typegen
+      - name: Typecheck
+        run: npm run typecheck
+      - name: Strict lint of developer travel and its controlled scenes
+        run: >-
+          node node_modules/eslint/bin/eslint.js --max-warnings=0
+          app/dev app/game/HomeworldHub.tsx
+          scripts/qa-dev-travel-browser.mjs tests/dev-travel-destinations.test.mjs
+      - name: Destination fixtures, valid spawns, storage isolation and Clan Ship regressions
+        run: >-
+          node --experimental-strip-types --test --test-concurrency=1
+          tests/dev-travel-destinations.test.mjs
+          tests/clan-ship-docking.test.mjs tests/clan-ship-save.test.mjs
+          tests/clan-ship-interior.test.mjs
+      - name: Install the pinned Chromium browser
+        run: node node_modules/playwright-core/cli.js install --with-deps chromium
+      - name: Build the actual production application
+        shell: bash
+        run: |
+          mkdir -p outputs/qa-dev-travel
+          npm run build:production 2>&1 | tee outputs/qa-dev-travel/build.log
+          df -h . | tee outputs/qa-dev-travel/runner-space.log
+      - name: Visit real scenes through the hidden production route
+        run: xvfb-run -a --server-args="-screen 0 1920x1200x24" node scripts/qa-dev-travel-browser.mjs
+      - name: Upload browser evidence and server logs even on failure
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: dev-travel-browser-${{ github.event.pull_request.head.sha || github.sha }}
+          path: outputs/qa-dev-travel/
+          if-no-files-found: warn
+          retention-days: 14

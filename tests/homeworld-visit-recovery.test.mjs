@@ -64,6 +64,7 @@ function fixture() {
   const pad = { connected: false, id: "visit-recovery-qa", index: 0, axes: [0, 0], buttons: Array.from({ length: 16 }, () => ({ pressed: false })) };
   const env = {
     ...world, createHomeworldGamepadState, stepHomeworldGamepad, nextHomeworldDialogChoice,
+    ephemeralSession: false, recoveryStorage: undefined,
     bindings: {}, held: { current: new Set() }, touch: { current: {} }, matchesControlAction: () => false,
     gamepadStateRef: { current: createHomeworldGamepadState() }, suspendedRef: { current: false },
     pausedRef: { current: false }, dialogStateRef: { current: null }, actorRef: { current: actor },
