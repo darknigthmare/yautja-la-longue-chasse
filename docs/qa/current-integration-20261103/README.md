@@ -362,3 +362,33 @@ Les freezes et certificats historiques ne sont pas modifiés. Les nouvelles
 preuves navigateur Wolf épinglent le commit demandé et exigent un checkout
 propre ; la recette Clan Ship contrôle également le blocage du départ royal
 pendant l’amarrage, sa conservation après reprise et sa levée au désamarrage.
+
+## Accès temporaires au château et aux arrivées — 4 novembre 2026
+
+La page `/dev` passe de 31 à 49 destinations depuis le `main`
+`36f765c980acdc207fe89730ab519c6f769b3881` : l’approche et les neuf salles
+du château Wolf, puis les huit arrivées planétaires natives. Les états d’arrivée
+restent dans la session temporaire ; ils ne débloquent pas les missions du
+profil de campagne. Le passage vers la chasse reprend le contexte figé du run.
+
+| Mesure du relevé courant | Valeur |
+| --- | --- |
+| Entrées | 2 151 |
+| Sources applicatives | 1 198 |
+| Octets des entrées | 1 092 126 256 |
+| Octets du document JSON | 400 042 |
+| SHA-256 du document | `97a73b2c2206a28e364dd6b3971abd150e98ce0cffea79508b3233dce681d775` |
+| Identité Git du document | `5c658832749ab720821b2d6af67fbc081bade8c3` |
+
+Ce relevé a été produit par `snapshot-runtime-v113.mjs --write`, puis accepté
+par sa commande `--check`, avec les sources et les entrées natives réellement
+matérialisées. Aucun chemin n’est ajouté ni retiré par rapport à la base ;
+seules les entrées `app/dev/client.tsx`, `app/dev/destinations.ts` et
+`app/dev/session.tsx` changent. Les documents historiques ci-dessus gardent
+leurs octets et leur portée.
+
+La recette navigateur est étendue à 20 parcours, dont les neuf salles Wolf,
+les huit cinématiques, la pause, le passage direct et la fin naturelle vers
+la chasse. Ses résultats doivent être lus sur le commit effectivement exécuté ;
+la génération de cet inventaire ne vaut pas validation de ces interactions.
+La PR de livraison conserve les résultats distants et leurs identités de source.

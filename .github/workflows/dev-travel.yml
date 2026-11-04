@@ -12,13 +12,21 @@ on:
       - 'app/game/ClanShipInterior.tsx'
       - 'app/game/HuntCanvas.tsx'
       - 'app/game/ShipHub.tsx'
+      - 'app/game/WolfCastleScene*'
+      - 'app/game/PlanetArrivalCinematic*'
       - 'app/game/systems/clanShipDocking.ts'
       - 'app/game/systems/clanShipInterior.ts'
       - 'app/game/systems/homeworldLiftStationV83.ts'
+      - 'app/game/systems/wolfCastle*.ts'
+      - 'app/game/systems/planetArrival*.ts'
       - 'app/game/save.ts'
       - 'app/game/data.ts'
       - 'next.config.ts'
       - 'tests/dev-travel-*.test.mjs'
+      - 'tests/fixtures/clan-ship-browser-assets.json'
+      - 'tests/fixtures/wolf-arrival-browser-assets.json'
+      - 'public/game/wolf-castle/**'
+      - 'public/game/planet-arrival/**'
       - 'scripts/qa-dev-travel-browser.mjs'
       - '.github/workflows/dev-travel.yml'
   workflow_dispatch:
@@ -91,14 +99,18 @@ jobs:
             /public/game/assets/clan-field-20261103/
             /public/game/imports/v85/library/9e0307785b151ef569f02344983f755fb55bb9a4f871636b6a5b2a22a05a1187.png
             /public/game/imports/v85/library/fef76897a4b581bae4bd91b49961638fcd01d97ab7b6de2470aa88df226f6e9d.png
-      - name: Include the verified Clan Ship and shared service asset paths
+      - name: Include the verified Clan Ship, Wolf castle and arrival asset paths
         run: |
           node --input-type=module <<'NODE'
           import assert from 'node:assert/strict';
           import { existsSync, readFileSync } from 'node:fs';
           import { execFileSync } from 'node:child_process';
-          const { paths } = JSON.parse(readFileSync('tests/fixtures/clan-ship-browser-assets.json', 'utf8'));
-          assert.equal(new Set(paths).size, paths.length);
+          const manifests = ['clan-ship-browser-assets.json', 'wolf-arrival-browser-assets.json'];
+          const paths = [...new Set(manifests.flatMap(name => {
+            const { paths } = JSON.parse(readFileSync('tests/fixtures/' + name, 'utf8'));
+            assert.equal(new Set(paths).size, paths.length, name + ' must not duplicate asset paths');
+            return paths;
+          }))];
           for (const file of paths) {
             assert.match(file, /^public\/game\/[A-Za-z0-9._/-]+$/);
             assert.ok(file.split('/').every(part => part && part !== '.' && part !== '..'));
@@ -121,11 +133,11 @@ jobs:
         run: >-
           node node_modules/eslint/bin/eslint.js --max-warnings=0
           app/dev app/game/HomeworldHub.tsx
-          scripts/qa-dev-travel-browser.mjs tests/dev-travel-destinations.test.mjs
-      - name: Destination fixtures, valid spawns, storage isolation and Clan Ship regressions
+          scripts/qa-dev-travel-browser.mjs tests/dev-travel-*.test.mjs
+      - name: Destination fixtures, controlled sessions, storage isolation and Clan Ship regressions
         run: >-
           node --experimental-strip-types --test --test-concurrency=1
-          tests/dev-travel-destinations.test.mjs
+          tests/dev-travel-*.test.mjs
           tests/clan-ship-docking.test.mjs tests/clan-ship-save.test.mjs
           tests/clan-ship-interior.test.mjs
       - name: Install the pinned Chromium browser

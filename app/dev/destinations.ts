@@ -4,6 +4,16 @@ import { DEFAULT_SHIP_ID } from '../game/shipCatalogue';
 import type { MissionId, SaveGame } from '../game/types';
 import { createClanShipDockingState, type ClanShipRoomId } from '../game/systems/clanShipDocking';
 import { CLAN_SHIP_INTERIOR_ROOM_ORDER, CLAN_SHIP_INTERIOR_ROOMS } from '../game/systems/clanShipInterior';
+import type { JsonObject } from '../game/systems/activeHuntSave';
+import { captureHuntGauntletV142 } from '../game/systems/huntGauntletIdentityV142';
+import {
+  createPlanetArrival, inspectPlanetArrival, type PlanetArrivalState,
+} from '../game/systems/planetArrival';
+import { inspectPlanetArrivalRun, type PlanetArrivalRun } from '../game/systems/planetArrivalRun';
+import {
+  WOLF_CASTLE_ROOMS, createWolfCastleVisit, inspectWolfCastleVisit, wolfCastleEntryPoint,
+  type WolfCastleRoomId,
+} from '../game/systems/wolfCastle';
 import { homeworldBuildingDoorwayV64 } from '../game/systems/homeworldGeometryV64';
 import { createHomeworldCheckpointV77 } from '../game/systems/homeworldLocationV77';
 import { homeworldExteriorArrivalAllowedV110 } from '../game/systems/homeworldTransitionsV110';
@@ -16,7 +26,7 @@ import {
   type HomeworldRegionIdV68,
 } from '../game/systems/homeworldRegionsV68';
 
-export type DevDestinationCategory = 'hubs' | 'clan' | 'homeworld' | 'missions';
+export type DevDestinationCategory = 'hubs' | 'clan' | 'homeworld' | 'missions' | 'wolf' | 'arrivals';
 
 interface DevDestinationDetails {
   readonly id: string;
@@ -31,7 +41,14 @@ export type DevDestination = DevDestinationDetails & (
   | { readonly kind: 'homeworld'; readonly levelId: HomeworldLevelV77; readonly point: { readonly x: number; readonly y: number } }
   | { readonly kind: 'region'; readonly regionId: HomeworldRegionIdV68 }
   | { readonly kind: 'mission'; readonly missionId: MissionId }
+  | { readonly kind: 'wolf'; readonly roomId: WolfCastleRoomId; readonly status: 'approach' | 'aboard' }
+  | { readonly kind: 'arrival'; readonly missionId: MissionId }
 );
+
+export interface DevArrivalFixture {
+  state: PlanetArrivalState;
+  run: PlanetArrivalRun;
+}
 
 /** The public doorway remains the source of truth when a building is moved. */
 function cityDoorway(id: string, label: string, description: string, buildingId: string): DevDestination {
@@ -85,20 +102,40 @@ export const DEV_DESTINATIONS: readonly DevDestination[] = [
     id: `mission-${mission.id}`, label: mission.planetName, category: 'missions', kind: 'mission', missionId: mission.id,
     description: `${mission.title} · Tester directement la chasse et son terrain.`,
   })),
+  {
+    id: 'wolf-approach', label: 'Château Wolf · approche orbitale', category: 'wolf', kind: 'wolf',
+    status: 'approach', roomId: 'royal-berth',
+    description: 'Approcher la forteresse royale, entrer dans la baie et retrouver son vaisseau personnel.',
+  },
+  ...WOLF_CASTLE_ROOMS.map((room): DevDestination => ({
+    id: `wolf-${room.id}`, label: `Château Wolf · ${room.name}`, category: 'wolf', kind: 'wolf',
+    status: 'aboard', roomId: room.id,
+    description: `Arrivée directe dans la salle, avec une invitation de test. ${room.subtitle}`,
+  })),
+  ...MISSIONS.map((mission): DevDestination => ({
+    id: `arrival-${mission.id}`, label: `Arrivée · ${mission.planetName}`, category: 'arrivals', kind: 'arrival',
+    missionId: mission.id,
+    description: `${mission.title} · Jouer la cinématique d’insertion, puis rejoindre la même chasse de test.`,
+  })),
 ];
 
 export function resolveDevDestination(id: string | null | undefined): DevDestination | undefined {
   return typeof id === 'string' ? DEV_DESTINATIONS.find(destination => destination.id === id) : undefined;
 }
 
+function devDestinationSeed(id: string) {
+  const canonical = resolveDevDestination(id);
+  if (!canonical) throw new Error('Destination de développement inconnue.');
+  const index = DEV_DESTINATIONS.indexOf(canonical);
+  const owner = new Date(Date.UTC(2000, 0, 1, 0, 0, 0, index)).toISOString();
+  return { canonical, owner };
+}
+
 /** A deterministic synthetic owner is constructed, never loaded from storage.
  * Each call owns all its nested objects, including settings and appearance.
  * Equipment and rank are test configuration; no mission result is invented. */
 export function createDevSave(destination: DevDestination): SaveGame {
-  const index = DEV_DESTINATIONS.findIndex(entry => entry.id === destination.id);
-  if (index < 0) throw new Error('Destination de développement inconnue.');
-  const canonical = DEV_DESTINATIONS[index];
-  const owner = new Date(Date.UTC(2000, 0, 1, 0, 0, 0, index)).toISOString();
+  const { canonical, owner } = devDestinationSeed(destination.id);
   const save = structuredClone(defaultSave(owner));
   save.profile = { ...save.profile, hunterName: 'Chasseur de test', rankId: 'elite', honor: RANK_THRESHOLDS.elite, clanMarks: 1000 };
   save.inventory = {
@@ -125,7 +162,63 @@ export function createDevSave(destination: DevDestination): SaveGame {
   if (canonical.kind === 'region') {
     save.homeworldRegionV68 = createHomeworldRegionV68(canonical.regionId, `dev-${canonical.regionId}`, true);
   }
+  if (canonical.kind === 'wolf') {
+    const visit = {
+      ...createWolfCastleVisit(owner, DEFAULT_SHIP_ID, {
+        mode: 'audience', invitationId: `dev-wolf:${canonical.id}:${owner}`,
+      }),
+      status: canonical.status, roomId: canonical.roomId,
+      visitedRooms: [...new Set<WolfCastleRoomId>(['royal-berth', canonical.roomId])],
+      position: { ...wolfCastleEntryPoint(canonical.roomId, null), facing: 1 as const },
+    };
+    const inspected = inspectWolfCastleVisit(visit, owner);
+    if (inspected.status !== 'valid' || !inspected.state) {
+      throw new Error(`Le point d’arrivée de ${canonical.label} ne permet pas une visite valide.`);
+    }
+    save.wolfCastle = inspected.state;
+  }
   return save;
+}
+
+/** The native montage and its frozen run stay outside the campaign document:
+ * the campaign parser rightly locks later missions until their prerequisites
+ * are completed. A developer arrival must never invent those completions. */
+export function createDevArrival(
+  destination: Extract<DevDestination, { kind: 'arrival' }>,
+  save: SaveGame,
+): DevArrivalFixture {
+  const { canonical, owner } = devDestinationSeed(destination.id);
+  if (canonical.kind !== 'arrival') throw new Error('Destination d’arrivée de développement inconnue.');
+  if (save.createdAt !== owner) throw new Error('Le contexte d’arrivée appartient à une autre session de test.');
+  const runtime = structuredClone(save);
+  const runId = `dev-arrival:${canonical.missionId}:${owner}`;
+  const state = createPlanetArrival({
+    ownerCreatedAt: owner, runId, missionId: canonical.missionId, encounterRun: 1,
+    personalShipId: DEFAULT_SHIP_ID, hunterPresetId: runtime.appearance.presetId,
+  });
+  const run: PlanetArrivalRun = {
+    version: 1, ownerCreatedAt: owner, runId, startedAt: owner, difficultyId: runtime.settings.difficultyId,
+    configuration: {
+      inventory: runtime.inventory as unknown as JsonObject,
+      loadout: runtime.loadout as unknown as JsonObject,
+      appearance: runtime.appearance as unknown as JsonObject,
+      gauntletVariantId: captureHuntGauntletV142(runtime.gauntletV134?.equippedId,
+        runtime.profile.rankId, runtime.gauntletV134?.claimedStudies ?? []),
+      visualOptions: {
+        screenShake: runtime.settings.screenShake, reducedGore: runtime.settings.reducedGore,
+        highContrastVision: runtime.settings.highContrastVision,
+        huntAccessibility: runtime.settings.huntAccessibility as unknown as JsonObject,
+      },
+      elapsedSeconds: 0,
+    },
+  };
+  const inspectedState = inspectPlanetArrival(state, owner, runId);
+  const inspectedRun = inspectPlanetArrivalRun(run, inspectedState.state);
+  if (inspectedState.status !== 'valid' || !inspectedState.state ||
+      inspectedRun.status !== 'valid' || !inspectedRun.state) {
+    throw new Error('Le contexte natif de cette arrivée de test est invalide.');
+  }
+  return { state: inspectedState.state, run: inspectedRun.state };
 }
 
 /** Host-owned backup port for controlled scenes. It neither reads a browser

@@ -1,15 +1,20 @@
 "use client";
 
-import { lazy, Suspense, useCallback, useRef, useState } from "react";
+import { lazy, Suspense, useCallback, useEffect, useLayoutEffect, useRef, useState, useSyncExternalStore } from "react";
 import { MISSION_BY_ID } from "../game/data";
 import { DEFAULT_SHIP_ID } from "../game/shipCatalogue";
+import { GameAudio } from "../game/sound";
+import { useHomeworldReducedMotionV77 } from "../game/useHomeworldReducedMotionV77";
 import { actClanShipDocking, type ClanShipDockingAction } from "../game/systems/clanShipDocking";
+import { completePlanetArrivalHandoff, inspectPlanetArrival, type PlanetArrivalState } from "../game/systems/planetArrival";
+import { inspectPlanetArrivalRun } from "../game/systems/planetArrivalRun";
 import { createDefaultShipProgression, type ShipProgressionState } from "../game/systems/progression";
+import { actWolfCastle, applyWolfCastleCheckpoint, type WolfCastleAction, type WolfCastleCheckpoint } from "../game/systems/wolfCastle";
 import type { HomeworldProgress } from "../game/systems/homeworld";
 import type { HomeworldRegionStateV68 } from "../game/systems/homeworldRegionsV68";
 import type { HuntPersistencePayload } from "../game/HuntCanvas";
 import type { MissionResult, SaveGame } from "../game/types";
-import { createDevSave, createMemoryStorage, resolveDevDestination, type DevDestination } from "./destinations";
+import { createDevArrival, createDevSave, createMemoryStorage, resolveDevDestination, type DevDestination } from "./destinations";
 import DevServices, { type DevService } from "./services";
 import styles from "./session.module.css";
 
@@ -18,6 +23,21 @@ const ClanShipHub = lazy(() => import("../game/ClanShipHub"));
 const HomeworldHub = lazy(() => import("../game/HomeworldHub"));
 const HomeworldRegionV68 = lazy(() => import("../game/HomeworldRegionV68"));
 const HuntCanvas = lazy(() => import("../game/HuntCanvas"));
+const WolfCastleScene = lazy(() => import("../game/WolfCastleScene"));
+const PlanetArrivalCinematic = lazy(() => import("../game/PlanetArrivalCinematic"));
+
+function subscribeGameFocus(notify: () => void) {
+  window.addEventListener("focus", notify);
+  window.addEventListener("blur", notify);
+  document.addEventListener("visibilitychange", notify);
+  return () => {
+    window.removeEventListener("focus", notify);
+    window.removeEventListener("blur", notify);
+    document.removeEventListener("visibilitychange", notify);
+  };
+}
+const readGameFocus = () => document.hasFocus() && document.visibilityState === "visible";
+const serverGameFocus = () => false;
 
 export interface DevTravelSessionProps {
   destination: DevDestination;
@@ -38,10 +58,29 @@ interface HuntObservation {
 export default function DevTravelSession({ destination, onTravel, onExit }: DevTravelSessionProps) {
   const [save, setSave] = useState(() => createDevSave(destination));
   const saveRef = useRef(save);
+  const ownerRef = useRef(save.createdAt);
+  const sessionAliveRef = useRef(false);
+  const audioRef = useRef<GameAudio | null>(null);
+  const sceneRef = useRef<HTMLDivElement>(null);
+  const restoreWolfFocusRef = useRef(destination.kind === "wolf");
+  const reducedMotion = useHomeworldReducedMotionV77();
   const [progression, setProgression] = useState(() => createDefaultShipProgression(save, save.createdAt));
   const [recoveryStorage] = useState(createMemoryStorage);
   const [service, setService] = useState<DevService | null>(null);
+  const serviceRef = useRef<DevService | null>(null);
+  const subscribeFocus = useCallback((notify: () => void) => subscribeGameFocus(() => {
+    if (!sessionAliveRef.current) return;
+    // Resume the shared bus before React lets a child request its room loop.
+    audioRef.current?.setPaused(serviceRef.current !== null || !readGameFocus());
+    notify();
+  }), []);
+  const gameFocused = useSyncExternalStore(subscribeFocus, readGameFocus, serverGameFocus);
   const [notice, setNotice] = useState("");
+  // This native arrival/run DTO deliberately stays outside SaveGame. Later
+  // campaign missions remain locked; a test never invents their prerequisites.
+  const [arrivalFixture] = useState(() => destination.kind === "arrival" ? createDevArrival(destination, save) : null);
+  const [arrival, setArrival] = useState(arrivalFixture?.state ?? null);
+  const arrivalRef = useRef(arrival);
   const [huntRunning, setHuntRunning] = useState(true);
   // HuntCanvas creates its simulation from these props. A discovery is reported
   // back to the owner, but must not replace the active simulation's inputs.
@@ -52,7 +91,51 @@ export default function DevTravelSession({ destination, onTravel, onExit }: DevT
   const [huntCheckpoint, setHuntCheckpoint] = useState<HuntPersistencePayload | null>(null);
   const [huntResult, setHuntResult] = useState<MissionResult | null>(null);
   const [huntObservation, setHuntObservation] = useState<HuntObservation | null>(null);
-  const selectedShipId = save.clanShipDocking?.personalShipId ?? DEFAULT_SHIP_ID;
+  const selectedShipId = save.wolfCastle?.personalShipId ?? save.clanShipDocking?.personalShipId ?? DEFAULT_SHIP_ID;
+  const nativeSceneSuspended = service !== null || !gameFocused;
+  const missionId = destination.kind === "mission" || destination.kind === "arrival" ? destination.missionId : null;
+  const inHunt = destination.kind === "mission" || (destination.kind === "arrival" && arrival?.status === "complete");
+  const arrivalGauntlet = typeof arrivalFixture?.run.configuration.gauntletVariantId === "string"
+    ? arrivalFixture.run.configuration.gauntletVariantId : undefined;
+
+  useLayoutEffect(() => {
+    sessionAliveRef.current = true;
+    return () => {
+      // Invalidate callbacks before the native children tear down their effects.
+      sessionAliveRef.current = false;
+      audioRef.current?.dispose();
+      audioRef.current = null;
+    };
+  }, []);
+  const createSceneAudio = useCallback(() => {
+    if (!sessionAliveRef.current) return null;
+    // The scene invokes this from an effect. Lazy construction also works when
+    // its chunk is cached and its effect precedes the owner's passive effects.
+    const audio = audioRef.current ?? new GameAudio();
+    audioRef.current = audio;
+    const settings = saveRef.current.settings;
+    audio.setMix({ master: settings.masterVolume, music: settings.musicVolume,
+      effects: settings.effectsVolume, muted: settings.masterVolume === 0 });
+    audio.setPaused(serviceRef.current !== null || !readGameFocus());
+    return audio.createSceneAudio();
+  }, []);
+  useEffect(() => {
+    if (!sessionAliveRef.current) return;
+    audioRef.current?.setMix({ master: save.settings.masterVolume, music: save.settings.musicVolume,
+      effects: save.settings.effectsVolume, muted: save.settings.masterVolume === 0 });
+    audioRef.current?.setPaused(serviceRef.current !== null || !readGameFocus());
+  }, [nativeSceneSuspended, save.settings.masterVolume, save.settings.musicVolume, save.settings.effectsVolume]);
+  useLayoutEffect(() => {
+    if (service !== null || !gameFocused || !restoreWolfFocusRef.current || !sessionAliveRef.current) return;
+    const root = sceneRef.current;
+    const target = root?.querySelector<HTMLElement>('[role="dialog"] button:not(:disabled)') ??
+      root?.querySelector<HTMLElement>('[data-wolf-castle-interior]') ??
+      root?.querySelector<HTMLElement>('[data-wolf-castle-action="board"]:not(:disabled)');
+    if (target) {
+      restoreWolfFocusRef.current = false;
+      target.focus({ preventScroll: true });
+    }
+  }, [gameFocused, service]);
 
   // Ref publication is synchronous because scene callbacks acknowledge a step
   // before React's next render. No acknowledgement here means durable storage.
@@ -73,9 +156,28 @@ export default function DevTravelSession({ destination, onTravel, onExit }: DevT
     // Void is the existing "delivered to host" contract. Returning persisted:
     // true would incorrectly claim a durable write for this memory-only owner.
   }, []);
-  const openService = useCallback((next: DevService) => setService(next), []);
-  const closeService = useCallback(() => setService(null), []);
-  const returnToShip = useCallback(() => onTravel("ship"), [onTravel]);
+  const openService = useCallback((next: DevService) => {
+    if (!sessionAliveRef.current) return;
+    if (destination.kind === "wolf") restoreWolfFocusRef.current = true;
+    serviceRef.current = next;
+    audioRef.current?.setPaused(true);
+    setService(next);
+  }, [destination.kind]);
+  const closeService = useCallback(() => {
+    if (!sessionAliveRef.current) return;
+    serviceRef.current = null;
+    audioRef.current?.setPaused(!readGameFocus());
+    setService(null);
+  }, []);
+  const leaveSession = useCallback((destinationId?: string) => {
+    if (!sessionAliveRef.current) return;
+    sessionAliveRef.current = false;
+    audioRef.current?.setPaused(true);
+    if (destinationId) onTravel(destinationId);
+    else onExit();
+  }, [onExit, onTravel]);
+  const exitSession = useCallback(() => leaveSession(), [leaveSession]);
+  const returnToShip = useCallback(() => leaveSession("ship"), [leaveSession]);
   const returnToCity = useCallback(() => { onTravel("homeworld-port"); return true; }, [onTravel]);
   const visitRegion = useCallback((id: string) => {
     const target = resolveDevDestination(`region-${id}`);
@@ -100,6 +202,78 @@ export default function DevTravelSession({ destination, onTravel, onExit }: DevT
     if (action.type === "return-to-personal") onTravel("ship");
     return true;
   }, [onTravel, replaceSave]);
+  const actWolf = useCallback((action: WolfCastleAction) => {
+    const current = saveRef.current;
+    if (!sessionAliveRef.current || destination.kind !== "wolf" || !readGameFocus() ||
+        serviceRef.current !== null || current.createdAt !== ownerRef.current || !current.wolfCastle) return false;
+    const result = actWolfCastle(current.wolfCastle, action,
+      { ownerCreatedAt: ownerRef.current, personalShipId: selectedShipId });
+    if (!result.accepted) { setNotice(result.message); return false; }
+    const reward = result.clanMarksReward ?? 0;
+    if (!Number.isSafeInteger(reward) || reward < 0 || (reward > 0 && (!result.changed ||
+        !Number.isSafeInteger(current.profile.clanMarks) || current.profile.clanMarks < 0 ||
+        current.profile.clanMarks > Number.MAX_SAFE_INTEGER - reward))) {
+      setNotice("Le solde temporaire ne permet pas de recevoir cette récompense. Le mandat reste disponible.");
+      return false;
+    }
+    // Native receipt and currency change together, in this owner's memory only.
+    if (result.changed) replaceSave({ ...current, wolfCastle: result.state,
+      ...(reward > 0 ? { profile: { ...current.profile, clanMarks: current.profile.clanMarks + reward } } : {}) });
+    setNotice(`${result.message} · essai temporaire`);
+    if (result.state.status === "departed") returnToShip();
+    return true;
+  }, [destination.kind, replaceSave, returnToShip, selectedShipId]);
+  const checkpointWolf = useCallback((checkpoint: WolfCastleCheckpoint) => {
+    const current = saveRef.current;
+    // A final position is valid while opening settings or losing focus. The
+    // native reducer still checks owner, ship, room and the exact revision.
+    if (!sessionAliveRef.current || destination.kind !== "wolf" ||
+        current.createdAt !== ownerRef.current || !current.wolfCastle) return false;
+    const result = applyWolfCastleCheckpoint(current.wolfCastle, checkpoint,
+      { ownerCreatedAt: ownerRef.current, personalShipId: selectedShipId });
+    if (result.accepted && result.changed) replaceSave({ ...current, wolfCastle: result.state });
+    return result.accepted;
+  }, [destination.kind, replaceSave, selectedShipId]);
+  const inspectArrivalUpdate = useCallback((next: PlanetArrivalState) => {
+    const current = arrivalRef.current;
+    if (!sessionAliveRef.current || !arrivalFixture || !current || destination.kind !== "arrival" ||
+        saveRef.current.createdAt !== ownerRef.current) return null;
+    const inspected = inspectPlanetArrival(next, ownerRef.current, arrivalFixture.state.runId);
+    const candidate = inspected.state;
+    if (inspected.status !== "valid" || !candidate || candidate.missionId !== destination.missionId ||
+        candidate.encounterRun !== arrivalFixture.state.encounterRun || candidate.personalShipId !== selectedShipId ||
+        candidate.hunterPresetId !== arrivalFixture.state.hunterPresetId || candidate.elapsedMs < current.elapsedMs ||
+        (current.completedBy !== null && candidate.completedBy !== current.completedBy)) return null;
+    return candidate;
+  }, [arrivalFixture, destination, selectedShipId]);
+  const checkpointArrival = useCallback((next: PlanetArrivalState) => {
+    const candidate = inspectArrivalUpdate(next);
+    const current = arrivalRef.current;
+    if (!candidate || !current || current.status === "complete" || candidate.status === "complete" ||
+        candidate.status === "handoff-pending" || (candidate.status === "prepared" && current.status !== "prepared")) return false;
+    arrivalRef.current = candidate;
+    setArrival(candidate);
+    return true;
+  }, [inspectArrivalUpdate]);
+  const finishArrival = useCallback((next: PlanetArrivalState) => {
+    const candidate = inspectArrivalUpdate(next);
+    const current = arrivalRef.current;
+    if (!candidate || !current || !arrivalFixture || candidate.status !== "handoff-pending") return false;
+    // A repeated acknowledgement cannot create a second HuntCanvas or rewind
+    // its runtime. Old owners fail the lifecycle/identity checks above.
+    if (current.status === "complete") {
+      return candidate.elapsedMs === current.elapsedMs && candidate.completedBy === current.completedBy;
+    }
+    if (serviceRef.current !== null || !readGameFocus() ||
+        inspectPlanetArrivalRun(arrivalFixture.run, candidate).status !== "valid") return false;
+    const completed = completePlanetArrivalHandoff(candidate);
+    arrivalRef.current = completed;
+    setArrival(completed);
+    return true;
+  }, [arrivalFixture, inspectArrivalUpdate]);
+  const exitArrival = useCallback(() => {
+    if (arrivalRef.current && arrivalRef.current.status !== "complete") exitSession();
+  }, [exitSession]);
   const finishHunt = useCallback((result: MissionResult) => {
     setHuntResult(result);
     setHuntCheckpoint(null);
@@ -145,7 +319,11 @@ export default function DevTravelSession({ destination, onTravel, onExit }: DevT
 
   return (
     <section className={styles.session} data-dev-session={destination.id} data-dev-kind={destination.kind}
-      data-dev-hunt-generation={destination.kind === "mission" ? huntGeneration.epoch : undefined}
+      data-dev-stage={inHunt ? "hunt" : destination.kind}
+      data-dev-arrival-run={arrival?.runId} data-dev-arrival-status={arrival?.status}
+      data-dev-arrival-completed-by={arrival?.completedBy ?? undefined}
+      data-dev-arrival-elapsed={arrival?.elapsedMs} data-dev-arrival-mission={arrival?.missionId}
+      data-dev-hunt-generation={inHunt ? huntGeneration.epoch : undefined}
       data-dev-hunt-x={huntObservation?.x} data-dev-hunt-y={huntObservation?.y}
       data-dev-hunt-elapsed={huntObservation?.elapsed}
       data-dev-hunt-discovered-rooms={huntObservation?.discoveredRooms}
@@ -154,7 +332,7 @@ export default function DevTravelSession({ destination, onTravel, onExit }: DevT
         {notice || "Session de test temporaire. Les déplacements et résultats de cet essai disparaissent au changement de lieu ou au rechargement."}
       </p>
       <div className={styles.viewport}>
-        <div className={styles.scene} hidden={service !== null} inert={service !== null}>
+        <div ref={sceneRef} className={styles.scene} hidden={service !== null} inert={service !== null}>
           <Suspense fallback={<div className={styles.loading} role="status">Chargement du lieu…</div>}>
             {destination.kind === "ship" && <PhysicalShipDeck
               appearance={save.appearance}
@@ -208,11 +386,38 @@ export default function DevTravelSession({ destination, onTravel, onExit }: DevT
               onReachCity={returnToCity}
               onOpenSettings={() => openService("settings")}
             />}
-            {destination.kind === "mission" && huntRunning && <HuntCanvas
-              key={huntGeneration.epoch}
-              mission={MISSION_BY_ID[destination.missionId]}
-              encounterRun={1}
+            {destination.kind === "wolf" && save.wolfCastle && <WolfCastleScene
+              visit={save.wolfCastle}
+              appearance={save.appearance}
+              loadout={save.loadout}
+              createSceneAudio={createSceneAudio}
+              suspended={nativeSceneSuspended}
+              reducedMotion={reducedMotion}
+              highContrast={save.settings.highContrastVision}
+              controlBindings={save.settings.controlBindings}
+              onAction={actWolf}
+              onCheckpoint={checkpointWolf}
+              onMenu={() => openService("settings")}
+            />}
+            {destination.kind === "arrival" && arrival && !inHunt && <PlanetArrivalCinematic
+              key={arrival.runId}
+              state={arrival}
               appearance={huntGeneration.runtimeSave.appearance}
+              loadout={huntGeneration.runtimeSave.loadout}
+              gauntletVariantId={arrivalGauntlet}
+              createSceneAudio={createSceneAudio}
+              suspended={nativeSceneSuspended}
+              reducedMotion={reducedMotion}
+              onCheckpoint={checkpointArrival}
+              onHandoff={finishArrival}
+              onExit={exitArrival}
+            />}
+            {inHunt && missionId && huntRunning && <HuntCanvas
+              key={huntGeneration.epoch}
+              mission={MISSION_BY_ID[missionId]}
+              encounterRun={arrivalFixture?.state.encounterRun ?? 1}
+              appearance={huntGeneration.runtimeSave.appearance}
+              gauntletVariantId={arrivalGauntlet}
               loadout={huntGeneration.runtimeSave.loadout}
               inventory={huntGeneration.runtimeSave.inventory}
               difficulty={huntGeneration.runtimeSave.settings.difficultyId}
@@ -232,7 +437,7 @@ export default function DevTravelSession({ destination, onTravel, onExit }: DevT
               onResumeFailure={() => { setHuntRunning(false); setNotice("Cet essai ne peut pas être repris. Recommence la chasse pour créer un nouveau point de test."); }}
             />}
           </Suspense>
-          {destination.kind === "mission" && !huntRunning && <section className={styles.summary} aria-labelledby="dev-hunt-summary">
+          {inHunt && !huntRunning && <section className={styles.summary} aria-labelledby="dev-hunt-summary">
             <span className={styles.eyebrow}>CHASSE DE TEST</span>
             <h2 id="dev-hunt-summary">{huntResult ? "Essai terminé" : "Essai suspendu"}</h2>
             {huntResult ? <p>
@@ -243,7 +448,7 @@ export default function DevTravelSession({ destination, onTravel, onExit }: DevT
             <div className={styles.actions}>
               {!huntResult && huntCheckpoint && <button type="button" onClick={resumeHunt}>Reprendre cet essai</button>}
               <button type="button" onClick={restartHunt}>Recommencer la chasse</button>
-              <button type="button" onClick={onExit}>Choisir un autre lieu</button>
+              <button type="button" onClick={exitSession}>Choisir un autre lieu</button>
               <button type="button" onClick={returnToShip}>Rejoindre mon vaisseau</button>
             </div>
           </section>}
@@ -253,7 +458,8 @@ export default function DevTravelSession({ destination, onTravel, onExit }: DevT
           service={service}
           save={save}
           progression={progression}
-          host={destination.kind === "clan" ? "Clan Ship AVP" : destination.kind === "homeworld" ? "Homeworld" : "Vaisseau personnel"}
+          host={destination.kind === "clan" ? "Clan Ship AVP" : destination.kind === "homeworld" ? "Homeworld" :
+            destination.kind === "wolf" ? "Château Wolf" : "Vaisseau personnel"}
           onSave={replaceSave}
           onProgressionChange={receiveShipProgression}
           onNotify={setNotice}
