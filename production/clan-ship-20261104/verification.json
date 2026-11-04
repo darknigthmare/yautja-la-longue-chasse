@@ -604,7 +604,7 @@
       "additionalValidation": {
         "runUrl": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41818690146",
         "jobUrl": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41818690146/job/126536529962",
-        "workflowStatus": "En cours au relevé",
+        "workflowStatus": "Job application réussi ; job modèles en échec sur l’inventaire antérieur. Contrôle strict de l’inventaire actualisé à vérifier après publication.",
         "passedSteps": [
           {
             "step": 6,
@@ -622,12 +622,36 @@
             "step": 18,
             "name": "Lint runtime"
           }
-        ]
+        ],
+        "application": {
+          "jobId": 126536529962,
+          "jobUrl": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41818690146/job/126536529962",
+          "status": "success",
+          "scope": "Toutes les étapes du job application ont réussi sur la source 22fad968311d252310fe2fde281f71564a401a64."
+        },
+        "models": {
+          "jobId": 126536529650,
+          "jobUrl": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41818690146/job/126536529650",
+          "status": "failure",
+          "cause": "Le relevé courant n’intégrait pas les six fichiers applicatifs ajoutés et les huit modifiés du Clan Ship. Le --check a refusé cet inventaire antérieur.",
+          "inventoryUpdate": {
+            "path": "docs/qa/current-integration-20261103/runtime-inputs.json",
+            "provenance": "docs/qa/current-integration-20261103/README.md#actualisation-du-relevé-pour-le-clan-ship--4-novembre-2026",
+            "sourceCommit": "22fad968311d252310fe2fde281f71564a401a64",
+            "method": "Reconstruction différentielle contrôlée depuis 6191e7b4ae7af4472e8c8c1fc242bf3d2e9e6cef ; 2 116 entrées conservées vérifiées, six ajouts et huit modifications applicatives relus et hachés.",
+            "entries": 2130,
+            "inputBytes": 1091761004,
+            "documentBytes": 396560,
+            "documentSha256": "9ac1b87a8a280c7b211c1f6b70e2ca13c768852b3787c0b1abb4d3cb98f9b96b",
+            "scope": "Actualisation documentaire et d’inventaire ; aucun changement du jeu, du contrôleur strict ou des certificats historiques.",
+            "ciCheckStatus": "À vérifier après publication ; aucune réussite du --check CI encore revendiquée."
+          }
+        }
       }
     }
   },
   "baselineSource": "9d77af8 ; run 41789974649",
-  "nextStep": "Publier le suivi avec sa source qualifiée ; rapprocher ensuite les chantiers parallèles château et arrivée de leurs briefs conservés",
+  "nextStep": "Consulter les checks actuels de la PR #104 ; code et preuve 22fad968 conservés, documents et inventaire actualisés sans changement du jeu. Le --check strict de l’inventaire doit être vérifié après publication.",
   "pullRequest": "https://github.com/darknigthmare/yautja-la-longue-chasse/pull/104",
   "xlsxSha256": "9dcc5406f867b91ae97210ccfe4b5cb2dc5eae7fe4cb5bda32e871f9d0f9dfc7",
   "xlsxBytes": 32646,

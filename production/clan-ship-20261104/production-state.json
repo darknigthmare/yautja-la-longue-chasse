@@ -474,7 +474,7 @@
     "additionalValidation": {
       "runUrl": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41818690146",
       "jobUrl": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41818690146/job/126536529962",
-      "workflowStatus": "En cours au relevé",
+      "workflowStatus": "Job application réussi ; job modèles en échec sur l’inventaire antérieur. Contrôle strict de l’inventaire actualisé à vérifier après publication.",
       "passedSteps": [
         {
           "step": 6,
@@ -492,7 +492,31 @@
           "step": 18,
           "name": "Lint runtime"
         }
-      ]
+      ],
+      "application": {
+        "jobId": 126536529962,
+        "jobUrl": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41818690146/job/126536529962",
+        "status": "success",
+        "scope": "Toutes les étapes du job application ont réussi sur la source 22fad968311d252310fe2fde281f71564a401a64."
+      },
+      "models": {
+        "jobId": 126536529650,
+        "jobUrl": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41818690146/job/126536529650",
+        "status": "failure",
+        "cause": "Le relevé courant n’intégrait pas les six fichiers applicatifs ajoutés et les huit modifiés du Clan Ship. Le --check a refusé cet inventaire antérieur.",
+        "inventoryUpdate": {
+          "path": "docs/qa/current-integration-20261103/runtime-inputs.json",
+          "provenance": "docs/qa/current-integration-20261103/README.md#actualisation-du-relevé-pour-le-clan-ship--4-novembre-2026",
+          "sourceCommit": "22fad968311d252310fe2fde281f71564a401a64",
+          "method": "Reconstruction différentielle contrôlée depuis 6191e7b4ae7af4472e8c8c1fc242bf3d2e9e6cef ; 2 116 entrées conservées vérifiées, six ajouts et huit modifications applicatives relus et hachés.",
+          "entries": 2130,
+          "inputBytes": 1091761004,
+          "documentBytes": 396560,
+          "documentSha256": "9ac1b87a8a280c7b211c1f6b70e2ca13c768852b3787c0b1abb4d3cb98f9b96b",
+          "scope": "Actualisation documentaire et d’inventaire ; aucun changement du jeu, du contrôleur strict ou des certificats historiques.",
+          "ciCheckStatus": "À vérifier après publication ; aucune réussite du --check CI encore revendiquée."
+        }
+      }
     }
   },
   "roomBackgrounds": [
@@ -505,7 +529,7 @@
       "dimensionsStatus": "Mesuré",
       "alpha": false,
       "method": "image_gen intégré",
-      "review": "Inspection isolée ; revue en scène à terminer",
+      "review": "Revue technique finale satisfaisante dans les captures du run 41818690041, source 22fad968 ; réserves levées ; approbation artistique humaine distincte",
       "source": "art-source/clan-ship-v1/hangar-v1.png",
       "bytes": 244498,
       "sha256": "1bf116bf19693f5828d5a63695ecea335c0c5208e2fc1e360df9a7282a861907",
@@ -529,7 +553,7 @@
       "dimensionsStatus": "Mesuré",
       "alpha": false,
       "method": "image_gen intégré",
-      "review": "Inspection isolée ; revue en scène à terminer",
+      "review": "Revue technique finale satisfaisante dans les captures du run 41818690041, source 22fad968 ; réserves levées ; approbation artistique humaine distincte",
       "source": "art-source/clan-ship-v1/conseil-v1.png",
       "bytes": 253562,
       "sha256": "87751d973c97ad2910c34dd02bf7286419d76e8fa7b75b5bf31806d5a06947d1",
@@ -553,7 +577,7 @@
       "dimensionsStatus": "Mesuré",
       "alpha": false,
       "method": "image_gen intégré",
-      "review": "Inspection isolée ; revue en scène à terminer",
+      "review": "Revue technique finale satisfaisante dans les captures du run 41818690041, source 22fad968 ; réserves levées ; approbation artistique humaine distincte",
       "source": "art-source/clan-ship-v1/armurerie-v1.png",
       "bytes": 210174,
       "sha256": "a11bb2ea4c9427b661c177691cd0b53df1c5ad15bde5afbfadceadcd4d58abe3",
@@ -577,7 +601,7 @@
       "dimensionsStatus": "Mesuré",
       "alpha": false,
       "method": "image_gen intégré",
-      "review": "Inspection isolée ; revue en scène à terminer",
+      "review": "Revue technique finale satisfaisante dans les captures du run 41818690041, source 22fad968 ; réserves levées ; approbation artistique humaine distincte",
       "source": "art-source/clan-ship-v1/trophees-v1.png",
       "bytes": 234882,
       "sha256": "85ee3c53ec09468bf56732d92faf2f7c456c562a18256529ea8ed33aaaba407e",
@@ -601,7 +625,7 @@
       "dimensionsStatus": "Mesuré",
       "alpha": false,
       "method": "image_gen intégré",
-      "review": "Inspection isolée ; revue en scène à terminer",
+      "review": "Revue technique finale satisfaisante dans les captures du run 41818690041, source 22fad968 ; réserves levées ; approbation artistique humaine distincte",
       "source": "art-source/clan-ship-v1/soins-v1.png",
       "bytes": 220874,
       "sha256": "7143eee60290235d76a1fa054e85d5b8f3db2950401861aea55953a0e8866c4d",
@@ -625,7 +649,7 @@
       "dimensionsStatus": "Mesuré",
       "alpha": false,
       "method": "image_gen intégré",
-      "review": "Inspection isolée ; revue en scène à terminer",
+      "review": "Revue technique finale satisfaisante dans les captures du run 41818690041, source 22fad968 ; réserves levées ; approbation artistique humaine distincte",
       "source": "art-source/clan-ship-v1/archives-v1.png",
       "bytes": 269652,
       "sha256": "49ebe43415f47dd338034964f8533c12585eef0e69c6441c28c9d14019d042fb",
@@ -649,7 +673,7 @@
       "dimensionsStatus": "Mesuré",
       "alpha": false,
       "method": "image_gen intégré",
-      "review": "Inspection isolée ; revue en scène à terminer",
+      "review": "Revue technique finale satisfaisante dans les captures du run 41818690041, source 22fad968 ; réserves levées ; approbation artistique humaine distincte",
       "source": "art-source/clan-ship-v1/entrainement-v1.png",
       "bytes": 227810,
       "sha256": "aad83f111beef4da543368d926b83410813ab76388c40da5b6474c316e4c233d",

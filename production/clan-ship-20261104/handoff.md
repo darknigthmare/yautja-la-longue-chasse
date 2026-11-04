@@ -10,7 +10,7 @@ L’intérieur physique de la source `22fad968311d252310fe2fde281f71564a401a64` 
 
 La révision finale de présentation est qualifiée sur l’arbre `3e51bbc023720057deb28696bd16bbaa6c8b6d82`. Elle comprend le libellé de coque ancré au viewport et deux cadrages complémentaires à 320 px, dont les commandes après défilement interne. Le rapport et les onze PNG finaux sont dans `qa-interior/run-41818690041/`. Le lot provisoire a été remplacé ; la baseline historique `qa/` reste intacte.
 
-Le run général `41818690146` a également réussi TypeScript (étape 6), build Next.js webpack (16), smoke HTTP et cinq routes protégées (17), puis lint runtime (18). Son job `126536529962` poursuivait les autres recettes au relevé ; ne pas confondre ces succès d’étapes avec la réussite globale du workflow.
+Le **job application `126536529962` du run `41818690146` a entièrement réussi**, incluant TypeScript, build Next.js webpack, smoke HTTP et cinq routes protégées, lint runtime et les autres recettes applicatives. Le **job modèles `126536529650` a échoué** sur l’inventaire précédent, qui ne comprenait pas les six ajouts et huit modifications applicatives du Clan Ship. Le [relevé courant actualisé](../../docs/qa/current-integration-20261103/runtime-inputs.json) contient 2 130 entrées ; sa [provenance contrôlée](../../docs/qa/current-integration-20261103/README.md#actualisation-du-relevé-pour-le-clan-ship--4-novembre-2026) explique la reconstruction différentielle, sans changement du jeu ni des certificats historiques. Son document de 396 560 octets porte le SHA-256 `9ac1b87a8a280c7b211c1f6b70e2ca13c768852b3787c0b1abb4d3cb98f9b96b`. **Le `--check` strict de cet inventaire en CI reste à vérifier après publication** ; aucune réussite n’est déduite de sa préparation.
 
 La PR #104 a effectivement été marquée **prête pour revue** (`draft=false`, ouverte, fusion possible au relevé), avec head runtime `22fad968311d252310fe2fde281f71564a401a64` et base `eeb2362`. Les onze captures ont été relues par root et un relecteur indépendant : aucun défaut visuel bloquant reproduit, réserves précédentes levées. L’approbation artistique humaine reste à examiner.
 
@@ -28,6 +28,6 @@ La perte native de focus a été observée ; le document est resté visible. Ne 
 
 ## Prochain travail utile
 
-1. Vérifier que ce lot documentaire, l’Excel et la preuve finale sont publiés dans la PR #104 déjà prête pour revue ; poursuivre cette revue et relever la conclusion du workflow général encore en cours au présent relevé.
+1. Consulter les checks actuels de la [PR #104](https://github.com/darknigthmare/yautja-la-longue-chasse/pull/104), déjà prête pour revue. Le code et les preuves `22fad968` sont conservés ; les documents et l’inventaire ultérieurs ne changent pas le jeu. Vérifier la publication de ce lot, puis le résultat du `--check` strict de l’inventaire et la conclusion des jobs de cette nouvelle exécution.
 2. Reprendre ici sans recréer les sept salles, les quinze images générées, les onze captures ni le classeur à cinq feuilles.
 3. Reprendre les chantiers château et arrivée depuis leurs propres worktrees et leur état réel. Les documents présents ici sont des briefs conservés hors du périmètre implémenté de la PR #104 ; ils ne décrivent pas l’absence de travail ailleurs. Aucune fusion de ces chantiers parallèles n’a été effectuée dans ce lot.
