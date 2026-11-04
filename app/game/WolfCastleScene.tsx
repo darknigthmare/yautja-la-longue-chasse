@@ -97,7 +97,7 @@ export default function WolfCastleScene({ visit, appearance, loadout, createScen
   const pendingRef = useRef(false);
   const mountedRef = useRef(false);
   const [busy, setBusy] = useState(false);
-  const [notice, setNotice] = useState<{ text: string; error: boolean } | null>(null);
+  const [notice, setNotice] = useState<{ text: string; error: boolean; action: WolfCastleAction['type'] } | null>(null);
   const aboard = visit.status === 'aboard';
   const currentRoom = wolfCastleRoom(visit.roomId);
 
@@ -132,7 +132,7 @@ export default function WolfCastleScene({ visit, appearance, loadout, createScen
     const current = visitRef.current;
     const result = actWolfCastle(current, action, { ownerCreatedAt: current.ownerCreatedAt, personalShipId: current.personalShipId });
     if (!result.accepted || !result.changed) {
-      setNotice({ text: result.message, error: !result.accepted });
+      setNotice({ text: result.message, error: !result.accepted, action: action.type });
       return result.accepted;
     }
     pendingRef.current = true;
@@ -144,7 +144,8 @@ export default function WolfCastleScene({ visit, appearance, loadout, createScen
       pendingRef.current = false;
       if (mountedRef.current) {
         setBusy(false);
-        setNotice(accepted ? { text: result.message, error: false } : { text: 'L’escale n’a pas pu être enregistrée. Ta position est conservée ; réessaie.', error: true });
+        setNotice(accepted ? { text: result.message, error: false, action: action.type }
+          : { text: 'L’escale n’a pas pu être enregistrée. Ta position est conservée ; réessaie.', error: true, action: action.type });
       }
     }
     return accepted;
@@ -152,6 +153,13 @@ export default function WolfCastleScene({ visit, appearance, loadout, createScen
 
   const menu = useCallback(() => { if (!suspended && !checkpointBlocked && !pendingRef.current && flushRef.current()) onMenu(); }, [checkpointBlocked, onMenu, suspended]);
   useMenuGamepad(rootRef, !aboard && !suspended && !checkpointBlocked && !busy && gamepadEnabled, `wolf-castle-${visit.status}`, menu);
+
+  const combatResult = aboard && visit.roomId === 'royal-court' && visit.combat &&
+    (visit.combat.status === 'victory' || visit.combat.status === 'defeat') ? wolfCastleCombatEventLabel(visit.combat) : null;
+  // A terminal checkpoint supersedes the round-start notice, but never a
+  // useful error or a later action performed while exploring the castle.
+  const resultReplacesNotice = !notice || (!notice.error && (notice.action === 'start-combat' || notice.action === 'next-combat'));
+  const footerMessage = combatResult && resultReplacesNotice ? combatResult : notice?.text ?? wolfCastleObjective(visit);
 
   return <section ref={rootRef} className={`${styles.castle} ${highContrast ? styles.highContrast : ''} ${reducedMotion ? styles.reducedMotion : ''}`}
     aria-label="Château du Roi — système Wolf" aria-hidden={suspended || undefined} inert={suspended || undefined}
@@ -173,7 +181,7 @@ export default function WolfCastleScene({ visit, appearance, loadout, createScen
       commit={commit} checkpoint={checkpoint} registerFlush={registerFlush} onMenu={menu} />
       : <CastleApproach visit={visit} busy={busy || suspended || checkpointBlocked} createSceneAudio={createSceneAudio} commit={commit} />}
     <footer className={`${styles.status} ${notice?.error ? styles.error : ''}`} role={notice?.error ? 'alert' : 'status'} aria-live="polite">
-      <span>{busy ? 'Enregistrement de l’escale…' : notice?.text ?? wolfCastleObjective(visit)}</span>
+      <span>{busy ? 'Enregistrement de l’escale…' : footerMessage}</span>
       <small>{aboard ? 'Ton vaisseau reste dans la baie royale.' : 'Forteresse orbitale · Destination de campagne'}</small>
     </footer>
   </section>;

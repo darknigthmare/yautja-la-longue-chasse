@@ -142,6 +142,22 @@ export function backgroundPathForBiome(biome: BiomeId): string {
   return BIOME_BACKGROUND_PATHS[biome];
 }
 
+/** Source frame used by scene previews. Only the jungle image is a room atlas. */
+export function backgroundSourceRectForBiome(biome: BiomeId, band: WorldScreenBand = "surface") {
+  const [sourceWidth, sourceHeight] = {
+    jungle: [1672, 941], ice: [1672, 941], volcano: [1672, 941],
+    swamp: [1823, 863], desert: [1823, 863],
+    ocean: [1774, 887], fungal: [1774, 887], ruins: [1774, 887],
+  }[biome];
+  // These are the same three source bands used by HuntCanvas.
+  const slice = biome === "jungle" ? {
+    surface: { y: 0, height: 430 },
+    "mid-depth": { y: 430, height: 206 },
+    understory: { y: 636, height: 305 },
+  }[band] : { y: 0, height: sourceHeight };
+  return { x: 0, y: slice.y, width: sourceWidth, height: slice.height, sourceWidth, sourceHeight };
+}
+
 function layers(
   biome: BiomeId,
   band: WorldScreenBand,

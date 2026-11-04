@@ -96,6 +96,7 @@ jobs:
           node node_modules/eslint/bin/eslint.js --max-warnings=0
           app/game/WolfCastleScene.tsx app/game/PlanetArrivalCinematic.tsx
           app/game/GameClient.tsx app/game/CampaignMainMenu.tsx app/game/save.ts app/game/types.ts
+          app/game/worldScreens.ts
           app/game/systems/wolfCastle*.ts app/game/systems/planetArrival*.ts
           app/game/systems/sceneAudio.ts app/game/sound.ts
           app/game/systems/campaignSlots.ts app/game/systems/completeArchive.ts app/game/systems/mainMenuModesV81.ts

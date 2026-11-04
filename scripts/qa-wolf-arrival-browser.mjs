@@ -502,6 +502,7 @@ try {
     await openApp(); await launchMission(); naturalRun = (await stored()).planetArrival.runId;
     assert.notEqual(naturalRun, skipRun);
     assert.equal(await page.locator('[data-arrival-run]').getAttribute('data-arrival-reduced-motion'), 'false');
+    await page.waitForTimeout(800); await screenshot('20-arrival-orbit.png');
   });
   await check('The title, actual carrier and separate capsule are presented before the descent', async () => {
     await page.locator('[data-arrival-shot="title"]').waitFor({ timeout: 25_000 });
@@ -515,6 +516,7 @@ try {
   await check('Descent reload retains mission and run, then explicitly resumes the same shot', async () => {
     await page.locator('[data-arrival-shot="descent"]').waitFor({ timeout: 15_000 });
     await page.waitForTimeout(800);
+    await screenshot('21-arrival-descent.png');
     await page.getByRole('button', { name: 'Pause', exact: true }).click();
     await page.locator('[data-arrival-status="paused"]').waitFor();
     assert.equal((await stored()).planetArrival.runId, naturalRun);

@@ -6,6 +6,7 @@ import { memo, useCallback, useEffect, useMemo, useRef, useState, type CSSProper
 import HunterRigPreview from './HunterRigPreview';
 import { HUNTER_RIG_CANVAS } from './hunterRig';
 import { shipForId } from './shipCatalogue';
+import { backgroundSourceRectForBiome, getWorldScreenAtX } from './worldScreens';
 import type { HunterAppearance, Loadout } from './types';
 import type { SceneAudioPort } from './systems/sceneAudio';
 import { useMenuGamepad } from './useMenuGamepad';
@@ -72,6 +73,8 @@ export default function PlanetArrivalCinematic({ state, appearance, loadout, gau
   const sourceKey = sources ? Object.values(sources).join('|') : '';
   const destination = useMemo(() => planetArrivalDestination(state.missionId), [state.missionId]);
   const landing = planetArrivalLanding(state);
+  const groundFrame = useMemo(() => backgroundSourceRectForBiome(state.biomeId,
+    getWorldScreenAtX(state.missionId, landing.spawnX).layers.background.band), [state.biomeId, state.missionId, landing.spawnX]);
   const motionReduced = reducedMotion || systemReducedMotion;
 
   useEffect(() => { callbackRef.current = { onCheckpoint, onHandoff, onExit, suspended, checkpointBlocked }; }, [onCheckpoint, onHandoff, onExit, suspended, checkpointBlocked]);
@@ -351,7 +354,11 @@ export default function PlanetArrivalCinematic({ state, appearance, loadout, gau
         </div>}
 
         <div className={styles.groundScene} aria-hidden="true" style={{ opacity: landed ? 1 : 0 }}>
-          {layer(sources?.ground, styles.groundBackground)}
+          {sources?.ground && !failedAssets.includes(sources.ground) && <svg className={styles.groundBackground}
+            viewBox={`${groundFrame.x} ${groundFrame.y} ${groundFrame.width} ${groundFrame.height}`} preserveAspectRatio="xMinYMid slice"
+            data-arrival-ground-frame={`${groundFrame.x},${groundFrame.y},${groundFrame.width},${groundFrame.height}`}>
+            <image href={sources.ground} width={groundFrame.sourceWidth} height={groundFrame.sourceHeight} onError={() => assetFailed(sources.ground)} />
+          </svg>}
           <div className={styles.groundShade} />
           <div className={styles.groundPlane} style={{ top: percent(landing.floorY / landing.height * 100) }} />
           <div className={styles.groundActors} style={{ transformOrigin: `${percent(landing.capsuleX / WORLD_WIDTH * 100)} ${percent(landing.floorY / landing.height * 100)}`, transform: `translateX(${percent(mix(38, 0, cameraReveal))}) scale(${mix(2.25, 1, cameraReveal)})` }}>
