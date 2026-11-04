@@ -425,7 +425,19 @@ try {
       return value;
     };
     await page.locator('[data-dev-hunt-x]').waitFor();
+    // Capture a fresh checkpoint after the first room has been discovered.
+    // The initial insertion snapshot can still have an empty room list; using
+    // it here would mistake the starting room for a second-room discovery.
+    await page.locator('.hunt-pause-button').click();
+    await page.getByRole('dialog', { name: 'Chasse en pause · Carte et sac', exact: true }).waitFor();
+    await page.waitForFunction(() => {
+      const session = document.querySelector('[data-dev-session="mission-jungle-vey"]');
+      const rooms = JSON.parse(session?.getAttribute('data-dev-hunt-discovered-rooms') || '[]');
+      return Number(session?.getAttribute('data-dev-hunt-elapsed')) > 0 && rooms.includes('jungle-pilot-approach');
+    });
     const initial = await observe();
+    assert.ok(initial.rooms.includes('jungle-pilot-approach'), 'The baseline checkpoint must include the real insertion room.');
+    await page.getByRole('button', { name: 'Reprendre', exact: true }).click();
     let discovered = initial;
     for (let attempt = 0; attempt < 10; attempt++) {
       await page.locator('.hunt-canvas').focus();
