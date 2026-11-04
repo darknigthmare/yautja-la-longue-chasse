@@ -1,0 +1,43 @@
+{
+  "scope": "Targeted local V142 regression and static checks; no browser execution",
+  "baseLocalCommit": "5daa00e1dd4d7db94656c82d71666e76af11ee21",
+  "basePublishedCommit": "a5e41f66f6c3d194afae4f6f446b6c02f213d4c4",
+  "command": "node --import tsx --test --test-reporter=spec tests/gauntlet-mission-resume-v142.test.mjs",
+  "beforeApplicationFix": {
+    "applicationBlob": "b47d2bae650fa0aa72ee54f8caff3f795958a3c9",
+    "exitCode": 1,
+    "tests": 7,
+    "passed": 6,
+    "failed": 1,
+    "skipped": 0,
+    "durationMs": 5669.658817,
+    "regression": "The actual mountArrivalHunt callback preserved wolf in the durable configuration, but the actual HuntCanvas gauntlet prop evaluated to feral after the supported legacy preference changed in another tab.",
+    "expectedVisualIdentity": "wolf",
+    "actualVisualIdentity": "feral"
+  },
+  "afterApplicationFix": {
+    "exitCode": 0,
+    "tests": 7,
+    "passed": 7,
+    "failed": 0,
+    "skipped": 0,
+    "durationMs": 3582.506782,
+    "blobs": {
+      "app/game/GameClient.tsx": "3f544116fb68488c8ac22f8192deeb4259f7aead",
+      "tests/gauntlet-mission-resume-v142.test.mjs": "4ec6908ca4d63a30c8ec3ceec05ac2bf4f098b05"
+    },
+    "strictEslintExitCode": 0,
+    "gitDiffCheckExitCode": 0,
+    "firstMountSnapshot": null,
+    "firstMountRetryCheckpoint": null,
+    "checks": [
+      "Reject another run or owner before mounting",
+      "Preserve the captured identity through the arrival handoff",
+      "Preserve the captured identity when recovering before the first world snapshot",
+      "Keep an explicit active-hunt resume identity authoritative",
+      "Retain the legitimate legacy preference fallback without an arrival run"
+    ]
+  },
+  "executionRepeatedForThisRecord": false,
+  "ciQualification": "Pending grouped publication"
+}

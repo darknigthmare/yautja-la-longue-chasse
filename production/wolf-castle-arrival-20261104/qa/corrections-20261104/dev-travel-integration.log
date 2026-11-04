@@ -1,0 +1,16 @@
+✔ developer destination IDs are unique; unknown links cannot create a fixture (35.114336ms)
+✔ fresh fixtures import through the real save parser without creating mission rewards or touching browser stores (144.240966ms)
+✔ restarting or changing a destination never shares mutable save data with an earlier run (1.202022ms)
+✔ every Homeworld start restores its exact floor and position, with a real walking exit and no migration (40.195726ms)
+✔ all seven Clan Ship room fixtures use valid clan state and a safe spawn distinct from the personal ship (3.243147ms)
+✔ mission choices come from the real catalogue and ordinary village fixtures are admitted without a campaign (4.674982ms)
+✔ each memory backup store is isolated and supports literal storage keys without prototype collisions (1.986248ms)
+✔ the actual Homeworld lift remains playable but never reads, writes or restores another session during a dev run (147.767075ms)
+ℹ tests 8
+ℹ suites 0
+ℹ pass 8
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 6655.83305

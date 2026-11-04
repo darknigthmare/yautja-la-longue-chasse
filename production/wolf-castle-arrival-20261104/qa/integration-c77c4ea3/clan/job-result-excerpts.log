@@ -1,0 +1,30 @@
+2026-11-04T18:50:48.4566766Z # tests 217
+2026-11-04T18:50:48.4567260Z # pass 217
+2026-11-04T18:50:48.4567422Z # fail 0
+2026-11-04T18:50:48.4567769Z # skipped 0
+2026-11-04T18:51:14.4351409Z PASS Legacy campaign migrates through the real main menu to the personal deck
+2026-11-04T18:51:18.7345315Z PASS A held gamepad confirmation advances only one docking stage
+2026-11-04T18:51:22.0814977Z PASS Dock and board preserve the selected personal hull
+2026-11-04T18:51:24.3188675Z PASS Keyboard movement follows the real floor and stops at the wall without crossing a door
+2026-11-04T18:51:25.8357887Z PASS Gamepad analog movement controls the hunter without selecting an outer menu button
+2026-11-04T18:51:26.6680910Z PASS Pointer movement follows a collision-safe path across the hangar
+2026-11-04T18:51:27.2648420Z PASS Choosing a room hands focus to walking and a fresh key interrupts the guided route
+2026-11-04T18:51:28.1835435Z PASS Retargeting a guided route takes effect immediately and Stop cancels it before a doorway
+2026-11-04T18:51:29.9489751Z PASS A physical doorway is reached before saving and held confirmation cannot fall through the passage
+2026-11-04T18:51:42.4019592Z PASS A distant room target walks through adjacent doors instead of teleporting
+2026-11-04T18:51:45.2750678Z PASS The rendered hunter stops at a real fixture and pointer navigation goes around it
+2026-11-04T18:51:53.3832622Z PASS The archive service requires walking into reach and a separate interaction
+2026-11-04T18:52:58.0408659Z PASS Seven physical rooms and six existing services preserve their room and return position
+2026-11-04T18:53:10.9362313Z PASS Settings suspend the clan controller and a manual checkpoint preserves its room
+2026-11-04T18:53:12.1365707Z PASS Switching browser tabs clears movement and requires a fresh input on return
+2026-11-04T18:53:14.9927140Z PASS Save, main menu, reload and Continue restore the exact clan room
+2026-11-04T18:53:21.7698261Z PASS Loading the real manual checkpoint restores Archives after a later room visit
+2026-11-04T18:53:36.3561208Z PASS Returning to the personal ship keeps the berth and blocks travel until undocking
+2026-11-04T18:53:36.6533955Z PASS Approach cancellation is durable and never boards the clan ship
+2026-11-04T18:53:53.8988878Z PASS Touch walking and room navigation work at 390px and 320px without horizontal overflow
+2026-11-04T18:53:54.7778059Z PASS Normal and reduced motion keep walking functional without looping motion in reduced mode
+2026-11-04T18:53:54.7844845Z PASS Clan ship and shared service artwork load without browser errors
+2026-11-04T18:53:55.0109258Z {"passed":true,"checks":22,"output":"/home/runner/work/yautja-la-longue-chasse/yautja-la-longue-chasse/outputs/qa-clan-ship","missingAssets":0}
+2026-11-04T18:53:56.3225095Z SHA256 digest of uploaded artifact zip is 4749b046ab0106337d58cdb344f80817ff0d1cfb301a91cebf62e1f598de5c1c
+2026-11-04T18:53:56.8158054Z Artifact clan-ship-browser-c915eb34fae6819526e4e4abe36949244a0b21ab.zip successfully finalized. Artifact ID 13352944423
+2026-11-04T18:53:56.8159344Z Artifact clan-ship-browser-c915eb34fae6819526e4e4abe36949244a0b21ab has been successfully uploaded! Final size is 11922081 bytes. Artifact ID is 13352944423

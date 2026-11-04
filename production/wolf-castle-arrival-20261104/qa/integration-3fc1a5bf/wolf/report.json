@@ -1,0 +1,625 @@
+{
+  "startedAt": "2026-11-04T18:39:44.581Z",
+  "checkoutCommit": "3fc1a5bf3b2aff1eda05cc721b46e58194dc13d3",
+  "workingTreeDirty": false,
+  "sourceCommit": "3fc1a5bf3b2aff1eda05cc721b46e58194dc13d3",
+  "runtime": "actual desktop GameClient via Vite",
+  "headed": true,
+  "assetGateRequired": true,
+  "checks": [
+    {
+      "name": "Main menu resumes the existing campaign on the personal deck",
+      "passed": true
+    },
+    {
+      "name": "The orbital castle remains separate from the personal hull and Clan Ship",
+      "passed": true
+    },
+    {
+      "name": "Walking reaches the airlock, vestibule, gallery and real archive terminal",
+      "passed": true
+    },
+    {
+      "name": "Castle room and personal hull survive menu, reload and Continue",
+      "passed": true
+    },
+    {
+      "name": "The audience and council preserve one campaign decision",
+      "passed": true
+    },
+    {
+      "name": "The three-seal court trial is traversed and completed without campaign rewards",
+      "passed": true
+    },
+    {
+      "name": "The royal court starts a real three-guard fight with damage and a saved exact position",
+      "passed": true
+    },
+    {
+      "name": "A paused fight survives menu and reload without recovering health or resetting the guard",
+      "passed": true
+    },
+    {
+      "name": "A real browser tab change pauses the fight and returning never resumes it implicitly",
+      "passed": true
+    },
+    {
+      "name": "Taking the announced hits ends in defeat, then restart creates one fresh attempt",
+      "passed": true
+    },
+    {
+      "name": "Combat controls fit 320 pixels and abandoning unlocks the same court safely",
+      "passed": true
+    },
+    {
+      "name": "Ordinary keyboard movement, timed parries, dodges and attacks defeat the three guards",
+      "passed": true
+    },
+    {
+      "name": "Castle navigation and return remain usable at 390 and 320 pixels",
+      "passed": true
+    },
+    {
+      "name": "The accepted audience grants a new mandate whose objectives require fresh station interactions",
+      "passed": true
+    },
+    {
+      "name": "A partially explored mandate survives Save, menu, reload and Continue with the same training dossier",
+      "passed": true
+    },
+    {
+      "name": "The gallery and council complete the three objectives and unlock the separate sentinel encounter",
+      "passed": true
+    },
+    {
+      "name": "The paused mandate reloads the same sentinel, damaged health, position and elapsed time before explicit resume",
+      "passed": true
+    },
+    {
+      "name": "Real movement, parries, dodges and attacks beat all sentinel phases without healing or an early reward",
+      "passed": true
+    },
+    {
+      "name": "The return guide reaches the audience and a refused reward write keeps the victory and balance unclaimed",
+      "passed": true
+    },
+    {
+      "name": "Retrying the same audience action commits exactly two marks together with the campaign receipt",
+      "passed": true
+    },
+    {
+      "name": "The completed mandate keeps one receipt and one reward after reload, another audience consultation and departure",
+      "passed": true
+    },
+    {
+      "name": "A campaign launch freezes a single run, destination, ship and hunter before any hunt mounts",
+      "passed": true
+    },
+    {
+      "name": "A real browser tab change suspends arrival and preserves the same mission on return",
+      "passed": true
+    },
+    {
+      "name": "Arrival pause freezes active time and reduced-motion keeps the same mission",
+      "passed": false,
+      "message": "locator.waitFor: Timeout 20000ms exceeded.\nCall log:\n  - waiting for locator('[data-arrival-status=\"paused\"]') to be visible\n"
+    }
+  ],
+  "errors": [],
+  "missingAssets": [],
+  "requestedAssets": [
+    "public/game/assets/v139/rig-gauntlets/jungle-hunter/base.svg",
+    "public/game/assets/v139/rig-gauntlets/jungle-hunter/lid.svg",
+    "public/game/assets/v3/actors/yautja/hunter/armor/registered/belt.webp",
+    "public/game/assets/v3/actors/yautja/hunter/armor/registered/bracer.webp",
+    "public/game/assets/v3/actors/yautja/hunter/armor/registered/chest-classic.webp",
+    "public/game/assets/v3/actors/yautja/hunter/armor/registered/knee.webp",
+    "public/game/assets/v3/actors/yautja/hunter/armor/registered/shin.webp",
+    "public/game/assets/v3/actors/yautja/hunter/armor/registered/shoulder-classic.webp",
+    "public/game/assets/v3/actors/yautja/hunter/armor/registered/thigh-lower.webp",
+    "public/game/assets/v3/actors/yautja/hunter/armor/registered/thigh.webp",
+    "public/game/assets/v3/actors/yautja/hunter/body/classic/net/parts/hand-back.webp",
+    "public/game/assets/v3/actors/yautja/hunter/body/classic/net/parts/hand-front.webp",
+    "public/game/assets/v3/actors/yautja/hunter/body/classic/net/parts/lower-arm-back.webp",
+    "public/game/assets/v3/actors/yautja/hunter/body/classic/net/parts/lower-arm-front.webp",
+    "public/game/assets/v3/actors/yautja/hunter/body/classic/net/parts/pelvis.webp",
+    "public/game/assets/v3/actors/yautja/hunter/body/classic/net/parts/shin-back.webp",
+    "public/game/assets/v3/actors/yautja/hunter/body/classic/net/parts/shin-front.webp",
+    "public/game/assets/v3/actors/yautja/hunter/body/classic/net/parts/thigh-back.webp",
+    "public/game/assets/v3/actors/yautja/hunter/body/classic/net/parts/thigh-front.webp",
+    "public/game/assets/v3/actors/yautja/hunter/body/classic/net/parts/torso.webp",
+    "public/game/assets/v3/actors/yautja/hunter/body/classic/net/parts/upper-arm-back.webp",
+    "public/game/assets/v3/actors/yautja/hunter/body/classic/net/parts/upper-arm-front.webp",
+    "public/game/assets/v3/actors/yautja/hunter/body/classic/parts/foot-back.webp",
+    "public/game/assets/v3/actors/yautja/hunter/body/classic/parts/foot-front.webp",
+    "public/game/assets/v3/actors/yautja/hunter/body/classic/parts/hand-back.webp",
+    "public/game/assets/v3/actors/yautja/hunter/body/classic/parts/hand-front.webp",
+    "public/game/assets/v3/actors/yautja/hunter/body/classic/parts/lower-arm-back.webp",
+    "public/game/assets/v3/actors/yautja/hunter/body/classic/parts/lower-arm-front.webp",
+    "public/game/assets/v3/actors/yautja/hunter/body/classic/parts/pelvis.webp",
+    "public/game/assets/v3/actors/yautja/hunter/body/classic/parts/shin-back.webp",
+    "public/game/assets/v3/actors/yautja/hunter/body/classic/parts/shin-front.webp",
+    "public/game/assets/v3/actors/yautja/hunter/body/classic/parts/thigh-back.webp",
+    "public/game/assets/v3/actors/yautja/hunter/body/classic/parts/thigh-front.webp",
+    "public/game/assets/v3/actors/yautja/hunter/body/classic/parts/torso.webp",
+    "public/game/assets/v3/actors/yautja/hunter/body/classic/parts/upper-arm-back.webp",
+    "public/game/assets/v3/actors/yautja/hunter/body/classic/parts/upper-arm-front.webp",
+    "public/game/assets/v3/actors/yautja/hunter/dreads/registered/classic.webp",
+    "public/game/assets/v3/actors/yautja/hunter/equipment/registered/barrel.webp",
+    "public/game/assets/v3/actors/yautja/hunter/equipment/registered/cannon.webp",
+    "public/game/assets/v3/actors/yautja/hunter/equipment/registered/caster-lower.webp",
+    "public/game/assets/v3/actors/yautja/hunter/equipment/registered/caster-upper.webp",
+    "public/game/assets/v3/actors/yautja/hunter/equipment/registered/laser.webp",
+    "public/game/assets/v3/actors/yautja/hunter/equipment/registered/mount.webp",
+    "public/game/assets/v3/actors/yautja/hunter/equipment/registered/muzzle.webp",
+    "public/game/assets/v3/actors/yautja/hunter/equipment/registered/yoke.webp",
+    "public/game/assets/v3/actors/yautja/hunter/gear/registered/audio-decoy.webp",
+    "public/game/assets/v3/actors/yautja/hunter/gear/registered/motion-sensor.webp",
+    "public/game/assets/v3/actors/yautja/hunter/trophies/registered/trophy-bindings.webp",
+    "public/game/assets/v3/actors/yautja/hunter/trophies/registered/trophy-skull.webp",
+    "public/game/assets/v3/actors/yautja/hunter/trophies/registered/trophy-spine.webp",
+    "public/game/assets/v3/actors/yautja/hunter/weapons/registered/combistick.webp",
+    "public/game/backgrounds/jungle-multiscreen-v6.png",
+    "public/game/backgrounds/v10/galaxy-overview-v10.webp",
+    "public/game/backgrounds/v10/sector-nebula-v10.webp",
+    "public/game/backgrounds/v11/systems/system-oseris.webp",
+    "public/game/backgrounds/v9/galaxy-sector-v9.webp",
+    "public/game/celestial/v10/belt-saal.webp",
+    "public/game/celestial/v10/moon-khepri.webp",
+    "public/game/planet-arrival/v1/atmosphere-clouds.webp",
+    "public/game/planet-arrival/v1/heat-trail.webp",
+    "public/game/planet-arrival/v1/impact-dust.webp",
+    "public/game/planet-arrival/v1/pod-door.webp",
+    "public/game/planet-arrival/v1/pod-flight.webp",
+    "public/game/planet-arrival/v1/pod-ground.webp",
+    "public/game/planet-arrival/v1/release-jet.webp",
+    "public/game/planet-arrival/v1/space.webp",
+    "public/game/planets/v10/planet-oseris-ii.webp",
+    "public/game/planets/v10/planet-oseris-iv.webp",
+    "public/game/prologue/v47/village.png",
+    "public/game/ship-interior/v20/corridor-wall.webp",
+    "public/game/ship-interior/v21/console-navigation.webp",
+    "public/game/ship-interior/v21/door-frame.webp",
+    "public/game/ship-interior/v21/door-leaf.webp",
+    "public/game/ship-interior/v21/foreground-rib.webp",
+    "public/game/ship-interior/v21/wall-machinery.webp",
+    "public/game/ship-interior/v21/wall-sanctum.webp",
+    "public/game/ship-interior/v22/floor-edge.webp",
+    "public/game/ship-interior/v22/gantry.webp",
+    "public/game/ship-interior/v22/medbay-bed.webp",
+    "public/game/ship-interior/v22/service-ladder.webp",
+    "public/game/ships/v12/classic-predator-spaceship.webp",
+    "public/game/ships/v13/classic-predator-spaceship-top.webp",
+    "public/game/sprites/v4/commandante-vey.png",
+    "public/game/sprites/v6/prey-atlas.png",
+    "public/game/sprites/v62/heads/classic-head.png",
+    "public/game/sprites/v62/masks/jungle.png",
+    "public/game/wolf-castle/v1/access-beacon.webp",
+    "public/game/wolf-castle/v1/airlock-frame.webp",
+    "public/game/wolf-castle/v1/airlock-leaf.webp",
+    "public/game/wolf-castle/v1/archive-console.webp",
+    "public/game/wolf-castle/v1/audience-wall.webp",
+    "public/game/wolf-castle/v1/bay-anchor.webp",
+    "public/game/wolf-castle/v1/berth-wall.webp",
+    "public/game/wolf-castle/v1/castle-exterior.webp",
+    "public/game/wolf-castle/v1/column.webp",
+    "public/game/wolf-castle/v1/council-table.webp",
+    "public/game/wolf-castle/v1/court-wall.webp",
+    "public/game/wolf-castle/v1/dais.webp",
+    "public/game/wolf-castle/v1/gallery-wall.webp",
+    "public/game/wolf-castle/v1/predator-king-seated.webp",
+    "public/game/wolf-castle/v1/royal-guard.webp",
+    "public/game/wolf-castle/v1/service-wall.webp",
+    "public/game/wolf-castle/v1/throne.webp",
+    "public/game/wolf-castle/v1/trophy-plinth.webp",
+    "public/game/wolf-castle/v2/royal-guard-lunge.webp",
+    "public/game/wolf-castle/v2/royal-guard-ready.webp",
+    "public/game/wolf-castle/v2/royal-guard-windup.webp"
+  ],
+  "screenshots": [
+    "01-castle-orbit-desktop.png",
+    "02-castle-archives-desktop.png",
+    "03-castle-audience-desktop.png",
+    "04-castle-court-desktop.png",
+    "16-castle-combat-paused-desktop.png",
+    "17-castle-combat-defeat.png",
+    "18-castle-combat-mobile-320.png",
+    "19-castle-combat-victory.png",
+    "05-castle-court-mobile-320.png",
+    "22-mandate-accepted-journal.png",
+    "23-mandate-partial-resume.png",
+    "24-mandate-boss-paused-resume.png",
+    "25-mandate-boss-victory.png",
+    "26-mandate-reward-refused.png",
+    "27-mandate-completed-resume.png"
+  ],
+  "focusTransitions": [
+    {
+      "phase": "before",
+      "hidden": false,
+      "focused": true
+    },
+    {
+      "phase": "background",
+      "hidden": false,
+      "focused": false
+    },
+    {
+      "phase": "restored",
+      "hidden": false,
+      "focused": true
+    },
+    {
+      "phase": "before",
+      "hidden": false,
+      "focused": true
+    },
+    {
+      "phase": "background",
+      "hidden": false,
+      "focused": false
+    },
+    {
+      "phase": "restored",
+      "hidden": false,
+      "focused": true
+    }
+  ],
+  "viewportTransitions": [
+    {
+      "width": 320,
+      "height": 844,
+      "cardWidth": 290,
+      "cardScroll": 290,
+      "padding": "14px"
+    },
+    {
+      "width": 1440,
+      "height": 1000,
+      "cardWidth": 1308,
+      "cardScroll": 1308,
+      "padding": "57.6px"
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "cardWidth": 345,
+      "cardScroll": 345,
+      "padding": "14px"
+    },
+    {
+      "width": 320,
+      "height": 844,
+      "cardWidth": 290,
+      "cardScroll": 290,
+      "padding": "14px"
+    },
+    {
+      "width": 1440,
+      "height": 1000,
+      "padding": null
+    }
+  ],
+  "passed": false,
+  "failure": "locator.waitFor: Timeout 20000ms exceeded.\nCall log:\n  - waiting for locator('[data-arrival-status=\"paused\"]') to be visible\n\n    at /home/runner/work/yautja-la-longue-chasse/yautja-la-longue-chasse/scripts/qa-wolf-arrival-browser.mjs:637:58\n    at async check (/home/runner/work/yautja-la-longue-chasse/yautja-la-longue-chasse/scripts/qa-wolf-arrival-browser.mjs:47:11)\n    at async file:///home/runner/work/yautja-la-longue-chasse/yautja-la-longue-chasse/scripts/qa-wolf-arrival-browser.mjs:635:3",
+  "failureState": {
+    "focused": true,
+    "hidden": false,
+    "activeElement": "<button type=\"button\" class=\"_quietButton_nc0jy_69\">Pause</button>",
+    "castleClicks": [
+      {
+        "target": null,
+        "interaction": "audience",
+        "action": null,
+        "disabled": false,
+        "room": "royal-audience",
+        "position": {
+          "wolfCastleInterior": "true",
+          "wolfCastleX": "801.0",
+          "wolfCastleY": "616.0",
+          "wolfCastleMoving": "false"
+        }
+      },
+      {
+        "target": "door:royal-gallery",
+        "interaction": null,
+        "action": null,
+        "disabled": false,
+        "room": "royal-audience",
+        "position": {
+          "wolfCastleInterior": "true",
+          "wolfCastleX": "801.0",
+          "wolfCastleY": "616.0",
+          "wolfCastleMoving": "false"
+        }
+      },
+      {
+        "target": null,
+        "interaction": "door:royal-gallery",
+        "action": null,
+        "disabled": false,
+        "room": "royal-audience",
+        "position": {
+          "wolfCastleInterior": "true",
+          "wolfCastleX": "135.3",
+          "wolfCastleY": "596.1",
+          "wolfCastleMoving": "false"
+        }
+      },
+      {
+        "target": "door:royal-vestibule",
+        "interaction": null,
+        "action": null,
+        "disabled": false,
+        "room": "royal-gallery",
+        "position": {
+          "wolfCastleInterior": "true",
+          "wolfCastleX": "1350.0",
+          "wolfCastleY": "612.0",
+          "wolfCastleMoving": "false"
+        }
+      },
+      {
+        "target": null,
+        "interaction": "door:royal-vestibule",
+        "action": null,
+        "disabled": false,
+        "room": "royal-gallery",
+        "position": {
+          "wolfCastleInterior": "true",
+          "wolfCastleX": "135.2",
+          "wolfCastleY": "596.0",
+          "wolfCastleMoving": "false"
+        }
+      },
+      {
+        "target": "door:royal-airlock",
+        "interaction": null,
+        "action": null,
+        "disabled": false,
+        "room": "royal-vestibule",
+        "position": {
+          "wolfCastleInterior": "true",
+          "wolfCastleX": "1350.0",
+          "wolfCastleY": "612.0",
+          "wolfCastleMoving": "false"
+        }
+      },
+      {
+        "target": null,
+        "interaction": "door:royal-airlock",
+        "action": null,
+        "disabled": false,
+        "room": "royal-vestibule",
+        "position": {
+          "wolfCastleInterior": "true",
+          "wolfCastleX": "135.2",
+          "wolfCastleY": "596.0",
+          "wolfCastleMoving": "false"
+        }
+      },
+      {
+        "target": "door:royal-berth",
+        "interaction": null,
+        "action": null,
+        "disabled": false,
+        "room": "royal-airlock",
+        "position": {
+          "wolfCastleInterior": "true",
+          "wolfCastleX": "1350.0",
+          "wolfCastleY": "612.0",
+          "wolfCastleMoving": "false"
+        }
+      },
+      {
+        "target": null,
+        "interaction": "door:royal-berth",
+        "action": null,
+        "disabled": false,
+        "room": "royal-airlock",
+        "position": {
+          "wolfCastleInterior": "true",
+          "wolfCastleX": "135.1",
+          "wolfCastleY": "596.0",
+          "wolfCastleMoving": "false"
+        }
+      },
+      {
+        "target": "personal-ship",
+        "interaction": null,
+        "action": null,
+        "disabled": false,
+        "room": "royal-berth",
+        "position": {
+          "wolfCastleInterior": "true",
+          "wolfCastleX": "1350.0",
+          "wolfCastleY": "612.0",
+          "wolfCastleMoving": "false"
+        }
+      },
+      {
+        "target": null,
+        "interaction": "personal-ship",
+        "action": null,
+        "disabled": false,
+        "room": "royal-berth",
+        "position": {
+          "wolfCastleInterior": "true",
+          "wolfCastleX": "382.6",
+          "wolfCastleY": "602.0",
+          "wolfCastleMoving": "false"
+        }
+      },
+      {
+        "target": null,
+        "interaction": null,
+        "action": "depart",
+        "disabled": false,
+        "room": "royal-berth",
+        "position": {
+          "wolfCastleInterior": "true",
+          "wolfCastleX": "382.6",
+          "wolfCastleY": "602.0",
+          "wolfCastleMoving": "false"
+        }
+      }
+    ],
+    "castle": {
+      "version": 3,
+      "ownerCreatedAt": "2026-11-04T10:00:00.000Z",
+      "locationId": "wolf-orbital-castle",
+      "personalShipId": "classic-predator-spaceship",
+      "invitationId": "wolf-protocol:2026-11-04T10:00:00.000Z",
+      "mode": "hub",
+      "status": "departed",
+      "roomId": "royal-berth",
+      "entryFrom": null,
+      "visitedRooms": [
+        "royal-berth",
+        "royal-airlock",
+        "royal-vestibule",
+        "royal-gallery",
+        "royal-archives",
+        "royal-audience",
+        "royal-council",
+        "royal-service-pass",
+        "royal-court"
+      ],
+      "audience": "accepted",
+      "archiveRead": true,
+      "trial": {
+        "status": "complete",
+        "progress": 3,
+        "attempts": 1
+      },
+      "revision": 198,
+      "position": {
+        "x": 380,
+        "y": 612,
+        "facing": 1
+      },
+      "combat": {
+        "version": 2,
+        "scenario": "training",
+        "status": "victory",
+        "attempt": 3,
+        "encounterIndex": 2,
+        "elapsedMs": 18432.6,
+        "player": {
+          "x": 777.0319500000014,
+          "y": 610,
+          "facing": 1,
+          "health": 100,
+          "stamina": 90.20160000000004,
+          "attackMs": 240,
+          "attackResolved": true,
+          "attackCooldownMs": 396.59999999999854,
+          "parryMs": 0,
+          "evadeMs": 0,
+          "evadeX": -1,
+          "evadeY": 0,
+          "defenseCooldownMs": 163.39999999999418,
+          "hurtMs": 0
+        },
+        "enemy": {
+          "x": 901.6223999999995,
+          "y": 610,
+          "facing": -1,
+          "health": 0,
+          "phase": "down",
+          "phaseMs": 0,
+          "strike": "thrust",
+          "targetX": 777.0319500000014,
+          "targetY": 610,
+          "sequence": 3,
+          "staggerMs": 0
+        },
+        "stats": {
+          "hits": 14,
+          "parries": 3,
+          "evades": 4,
+          "damageTaken": 0
+        },
+        "dossier": {
+          "victories": 1,
+          "bestTimeMs": 18432.6,
+          "bestDamageTaken": 0
+        },
+        "event": {
+          "kind": "victory",
+          "sequence": 40,
+          "remainingMs": 1800
+        }
+      },
+      "dungeon": {
+        "version": 1,
+        "questId": "wolf-castle-first-mandate",
+        "status": "completed",
+        "objectives": {
+          "archives": true,
+          "gallery": true,
+          "council": true
+        },
+        "attempts": 1,
+        "combat": {
+          "version": 2,
+          "scenario": "dungeon",
+          "status": "victory",
+          "attempt": 1,
+          "encounterIndex": 2,
+          "elapsedMs": 22365.600000000002,
+          "player": {
+            "x": 766.3859499999995,
+            "y": 610,
+            "facing": 1,
+            "health": 82,
+            "stamina": 90.19920000000008,
+            "attackMs": 240,
+            "attackResolved": true,
+            "attackCooldownMs": 396.6999999999971,
+            "parryMs": 0,
+            "evadeMs": 0,
+            "evadeX": -1,
+            "evadeY": 0,
+            "defenseCooldownMs": 113.29999999999927,
+            "hurtMs": 0
+          },
+          "enemy": {
+            "x": 889.7999999999993,
+            "y": 610,
+            "facing": -1,
+            "health": 0,
+            "phase": "down",
+            "phaseMs": 0,
+            "strike": "thrust",
+            "targetX": 766.3859499999995,
+            "targetY": 610,
+            "sequence": 3,
+            "staggerMs": 0
+          },
+          "stats": {
+            "hits": 17,
+            "parries": 3,
+            "evades": 4,
+            "damageTaken": 18
+          },
+          "dossier": {
+            "victories": 1,
+            "bestTimeMs": 22365.600000000002,
+            "bestDamageTaken": 18
+          },
+          "event": {
+            "kind": "victory",
+            "sequence": 47,
+            "remainingMs": 1800
+          }
+        },
+        "reward": {
+          "claimed": true,
+          "receipt": "wolf-castle-first-mandate:2026-11-04T10:00:00.000Z"
+        }
+      }
+    }
+  },
+  "finishedAt": "2026-11-04T18:43:56.253Z"
+}

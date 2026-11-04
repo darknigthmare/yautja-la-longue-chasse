@@ -1,0 +1,127 @@
+﻿2026-11-04T18:02:10.1444129Z Current runner version: '2.338.2'
+2026-11-04T18:02:10.1497063Z ##[group]Runner Image Provisioner
+2026-11-04T18:02:10.1497941Z Hosted Compute Agent
+2026-11-04T18:02:10.1498490Z Version: 20261028.624
+2026-11-04T18:02:10.1499189Z Commit: 54898b74c23fde5556c9b3c3a2290865feef0dfe
+2026-11-04T18:02:10.1499889Z Build Date: 2026-10-28T21:51:42Z
+2026-11-04T18:02:10.1500603Z Worker ID: {eb7c8edd-4669-46e3-ba6a-668281ff371a}
+2026-11-04T18:02:10.1501279Z Region: centralus
+2026-11-04T18:02:10.1501855Z Cloud: Azure
+2026-11-04T18:02:10.1502428Z ##[endgroup]
+2026-11-04T18:02:10.1505032Z ##[group]Operating System
+2026-11-04T18:02:10.1505733Z Ubuntu
+2026-11-04T18:02:10.1506252Z 24.04.5
+2026-11-04T18:02:10.1506747Z LTS
+2026-11-04T18:02:10.1507284Z ##[endgroup]
+2026-11-04T18:02:10.1507821Z ##[group]Runner Image
+2026-11-04T18:02:10.1508438Z Image: ubuntu-24.04
+2026-11-04T18:02:10.1508987Z Version: 20261101.360.1
+2026-11-04T18:02:10.1510208Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20261101.360/images/ubuntu/Ubuntu2404-Readme.md
+2026-11-04T18:02:10.1511718Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20261101.360
+2026-11-04T18:02:10.1512638Z ##[endgroup]
+2026-11-04T18:02:10.1513978Z ##[group]GITHUB_TOKEN Permissions
+2026-11-04T18:02:10.1516530Z Contents: read
+2026-11-04T18:02:10.1517097Z Metadata: read
+2026-11-04T18:02:10.1517618Z ##[endgroup]
+2026-11-04T18:02:10.1519708Z Secret source: Actions
+2026-11-04T18:02:10.1520595Z Cache mode: write
+2026-11-04T18:02:10.1521620Z Prepare workflow directory
+2026-11-04T18:02:10.1856745Z Prepare all required actions
+2026-11-04T18:02:10.1907379Z Getting action download info
+2026-11-04T18:02:10.4571498Z Download action repository 'actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093' (SHA:d3f86a106a0bac45b974a628896c90dbdf5c8093)
+2026-11-04T18:02:11.4939168Z Complete job name: Application compile, types, runtime lint and browser integration
+2026-11-04T18:02:11.5739107Z ##[group]Run if [ "$APPLICATION_RESULT" != "success" ]; then
+2026-11-04T18:02:11.5740292Z [36;1mif [ "$APPLICATION_RESULT" != "success" ]; then[0m
+2026-11-04T18:02:11.5741426Z [36;1m  echo "At least one application audit group failed, was cancelled, or did not run."[0m
+2026-11-04T18:02:11.5742453Z [36;1m  exit 1[0m
+2026-11-04T18:02:11.5743101Z [36;1mfi[0m
+2026-11-04T18:02:11.5761593Z shell: /usr/bin/bash -e {0}
+2026-11-04T18:02:11.5762505Z env:
+2026-11-04T18:02:11.5763202Z   APPLICATION_RESULT: success
+2026-11-04T18:02:11.5764162Z ##[endgroup]
+2026-11-04T18:02:11.6091078Z ##[group]Run actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+2026-11-04T18:02:11.6092124Z with:
+2026-11-04T18:02:11.6093113Z   name: application-audit-success-41877760809-1-7e14ce84ad01ee307e7f67a6408c8244cfe4fff8-application
+2026-11-04T18:02:11.6094779Z   path: /home/runner/work/_temp/application-audit-proofs/application
+2026-11-04T18:02:11.6095699Z   merge-multiple: false
+2026-11-04T18:02:11.6096500Z   repository: darknigthmare/yautja-la-longue-chasse
+2026-11-04T18:02:11.6097306Z   run-id: 41877760809
+2026-11-04T18:02:11.6097894Z ##[endgroup]
+2026-11-04T18:02:14.4413368Z Downloading single artifact
+2026-11-04T18:02:14.5086392Z (node:2209) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-11-04T18:02:14.5088084Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-11-04T18:02:14.7399434Z Preparing to download the following artifacts:
+2026-11-04T18:02:14.7402014Z - application-audit-success-41877760809-1-7e14ce84ad01ee307e7f67a6408c8244cfe4fff8-application (ID: 13348413871, Size: 259, Expected Digest: sha256:19ed85f70c505269db58afb8b1b4ee31be1a2d5bddd99d6907bae2ebdb24025a)
+2026-11-04T18:02:15.0333192Z Redirecting to blob download url: https://productionresultssa17.blob.core.windows.net/actions-results/ea56b222-4f19-89b4-ae52-ff4e63c17d06/workflow-job-run-509652e0-37ae-5b20-86e4-6714cef5158e/artifacts/bc1e8d6995d216f2b343d260362b92d3e57ce1998a9450bfbca8732f41e9e2f8.zip
+2026-11-04T18:02:15.0336224Z Starting download of artifact to: /home/runner/work/_temp/application-audit-proofs/application
+2026-11-04T18:02:15.2056439Z (node:2209) [DEP0005] DeprecationWarning: Buffer() is deprecated due to security and usability issues. Please use the Buffer.alloc(), Buffer.allocUnsafe(), or Buffer.from() methods instead.
+2026-11-04T18:02:15.2148831Z SHA256 digest of downloaded artifact is 19ed85f70c505269db58afb8b1b4ee31be1a2d5bddd99d6907bae2ebdb24025a
+2026-11-04T18:02:15.2149949Z Artifact download completed successfully.
+2026-11-04T18:02:15.2151287Z Total of 1 artifact(s) downloaded
+2026-11-04T18:02:15.2154494Z Download artifact has finished successfully
+2026-11-04T18:02:15.2388405Z ##[group]Run actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+2026-11-04T18:02:15.2389003Z with:
+2026-11-04T18:02:15.2389551Z   name: application-audit-success-41877760809-1-7e14ce84ad01ee307e7f67a6408c8244cfe4fff8-models
+2026-11-04T18:02:15.2390247Z   path: /home/runner/work/_temp/application-audit-proofs/models
+2026-11-04T18:02:15.2390766Z   merge-multiple: false
+2026-11-04T18:02:15.2391183Z   repository: darknigthmare/yautja-la-longue-chasse
+2026-11-04T18:02:15.2391623Z   run-id: 41877760809
+2026-11-04T18:02:15.2391943Z ##[endgroup]
+2026-11-04T18:02:15.3949181Z Downloading single artifact
+2026-11-04T18:02:15.4083423Z (node:2223) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-11-04T18:02:15.4084514Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-11-04T18:02:15.5851376Z Preparing to download the following artifacts:
+2026-11-04T18:02:15.5852894Z - application-audit-success-41877760809-1-7e14ce84ad01ee307e7f67a6408c8244cfe4fff8-models (ID: 13349707433, Size: 256, Expected Digest: sha256:b7b6a28755dcf9eeee14d98ba54786733978d7566761d5d4f0e7bcf7c7ebbc19)
+2026-11-04T18:02:15.8220860Z Redirecting to blob download url: https://productionresultssa17.blob.core.windows.net/actions-results/ea56b222-4f19-89b4-ae52-ff4e63c17d06/workflow-job-run-a33e2399-be2a-5e35-9571-3e4cb1da9f32/artifacts/6f25c464b4d2388a3b409a862cc321d5bc9e0004cc89408bf25f4b1c7346633b.zip
+2026-11-04T18:02:15.8222951Z Starting download of artifact to: /home/runner/work/_temp/application-audit-proofs/models
+2026-11-04T18:02:15.9865369Z (node:2223) [DEP0005] DeprecationWarning: Buffer() is deprecated due to security and usability issues. Please use the Buffer.alloc(), Buffer.allocUnsafe(), or Buffer.from() methods instead.
+2026-11-04T18:02:15.9900763Z SHA256 digest of downloaded artifact is b7b6a28755dcf9eeee14d98ba54786733978d7566761d5d4f0e7bcf7c7ebbc19
+2026-11-04T18:02:15.9901918Z Artifact download completed successfully.
+2026-11-04T18:02:15.9902731Z Total of 1 artifact(s) downloaded
+2026-11-04T18:02:15.9907107Z Download artifact has finished successfully
+2026-11-04T18:02:16.0087164Z ##[group]Run actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+2026-11-04T18:02:16.0087770Z with:
+2026-11-04T18:02:16.0088305Z   name: application-audit-success-41877760809-1-7e14ce84ad01ee307e7f67a6408c8244cfe4fff8-history
+2026-11-04T18:02:16.0089104Z   path: /home/runner/work/_temp/application-audit-proofs/history
+2026-11-04T18:02:16.0089626Z   merge-multiple: false
+2026-11-04T18:02:16.0089993Z   repository: darknigthmare/yautja-la-longue-chasse
+2026-11-04T18:02:16.0090476Z   run-id: 41877760809
+2026-11-04T18:02:16.0090799Z ##[endgroup]
+2026-11-04T18:02:16.1666414Z Downloading single artifact
+2026-11-04T18:02:16.1820356Z (node:2237) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-11-04T18:02:16.1821890Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-11-04T18:02:16.3956317Z Preparing to download the following artifacts:
+2026-11-04T18:02:16.3958298Z - application-audit-success-41877760809-1-7e14ce84ad01ee307e7f67a6408c8244cfe4fff8-history (ID: 13350301731, Size: 258, Expected Digest: sha256:7be15d8e635e427744285e6e7a7bc38e32e3dc13c75799d2d6268f60e68db23a)
+2026-11-04T18:02:16.5675867Z Redirecting to blob download url: https://productionresultssa17.blob.core.windows.net/actions-results/ea56b222-4f19-89b4-ae52-ff4e63c17d06/workflow-job-run-b1ba35a8-c858-58ec-98d7-c415db2ac8d9/artifacts/1df8cd4b2b2b5e6f9d6932b751e60be63fcabf6b4c84156dcbd87f8a607cf4f7.zip
+2026-11-04T18:02:16.5677495Z Starting download of artifact to: /home/runner/work/_temp/application-audit-proofs/history
+2026-11-04T18:02:16.7374417Z (node:2237) [DEP0005] DeprecationWarning: Buffer() is deprecated due to security and usability issues. Please use the Buffer.alloc(), Buffer.allocUnsafe(), or Buffer.from() methods instead.
+2026-11-04T18:02:16.7407327Z SHA256 digest of downloaded artifact is 7be15d8e635e427744285e6e7a7bc38e32e3dc13c75799d2d6268f60e68db23a
+2026-11-04T18:02:16.7408316Z Artifact download completed successfully.
+2026-11-04T18:02:16.7408900Z Total of 1 artifact(s) downloaded
+2026-11-04T18:02:16.7413158Z Download artifact has finished successfully
+2026-11-04T18:02:16.7526554Z ##[group]Run node --input-type=module <<'NODE'
+2026-11-04T18:02:16.7527174Z [36;1mnode --input-type=module <<'NODE'[0m
+2026-11-04T18:02:16.7527634Z [36;1mimport assert from 'node:assert/strict';[0m
+2026-11-04T18:02:16.7528139Z [36;1mimport {readdirSync, readFileSync} from 'node:fs';[0m
+2026-11-04T18:02:16.7528600Z [36;1mimport {join} from 'node:path';[0m
+2026-11-04T18:02:16.7529115Z [36;1mconst groups = ['application', 'history', 'models'];[0m
+2026-11-04T18:02:16.7529686Z [36;1mconst root = join(process.env.RUNNER_TEMP, 'application-audit-proofs');[0m
+2026-11-04T18:02:16.7530472Z [36;1massert.deepEqual(readdirSync(root).sort(), groups, 'All three audit groups must produce a completion proof');[0m
+2026-11-04T18:02:16.7531135Z [36;1mfor (const group of groups) {[0m
+2026-11-04T18:02:16.7531563Z [36;1m  const directory = join(root, group);[0m
+2026-11-04T18:02:16.7532365Z [36;1m  assert.deepEqual(readdirSync(directory), ['proof.json'], 'Each group must produce exactly one proof');[0m
+2026-11-04T18:02:16.7533097Z [36;1m  const proof = JSON.parse(readFileSync(join(directory, 'proof.json'), 'utf8'));[0m
+2026-11-04T18:02:16.7533899Z [36;1m  assert.deepEqual(proof, {[0m
+2026-11-04T18:02:16.7534348Z [36;1m    schemaVersion: 1, result: 'success', group,[0m
+2026-11-04T18:02:16.7534845Z [36;1m    runId: process.env.GITHUB_RUN_ID,[0m
+2026-11-04T18:02:16.7535328Z [36;1m    runAttempt: process.env.GITHUB_RUN_ATTEMPT,[0m
+2026-11-04T18:02:16.7535811Z [36;1m    commit: process.env.GITHUB_SHA,[0m
+2026-11-04T18:02:16.7536320Z [36;1m  }, 'Invalid, stale or duplicate completion proof for ' + group);[0m
+2026-11-04T18:02:16.7536843Z [36;1m}[0m
+2026-11-04T18:02:16.7537409Z [36;1mconsole.log('All three application audit groups succeeded for this run, attempt and commit.');[0m
+2026-11-04T18:02:16.7537969Z [36;1mNODE[0m
+2026-11-04T18:02:16.7552356Z shell: /usr/bin/bash -e {0}
+2026-11-04T18:02:16.7552718Z ##[endgroup]
+2026-11-04T18:02:19.2402153Z All three application audit groups succeeded for this run, attempt and commit.
+2026-11-04T18:02:19.2582357Z Cleaning up orphan processes
+2026-11-04T18:02:19.2914517Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/

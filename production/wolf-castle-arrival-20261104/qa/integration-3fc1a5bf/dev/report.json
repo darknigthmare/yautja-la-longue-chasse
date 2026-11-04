@@ -1,0 +1,419 @@
+{
+  "schema": 1,
+  "startedAt": "2026-11-04T18:41:34.308Z",
+  "sourceCommit": "3fc1a5bf3b2aff1eda05cc721b46e58194dc13d3",
+  "workingTreeDirty": false,
+  "sourceHashes": {
+    "app/dev/client.tsx": "e421bb52761bbaf9272cfe29ce3a94f2c9b50e55b171366fb4ddea206e24dc8c",
+    "app/dev/destinations.ts": "8b84455c65ff6a42c59aee906e89ac994df5aaf10209989c96342f827c7fd33f",
+    "app/dev/dev-travel.module.css": "ea1402ad8aa8ffab933699d0772022def3bb06318eabac2c1799e9422373ad99",
+    "app/dev/page.tsx": "d5d70598faf63d77755ed6c82e82459451132bf43202a2d95baa4194743c9b91",
+    "app/dev/services.tsx": "423710d5e58584813798608edd68b6fe545be577beb76614b485678cbf402d38",
+    "app/dev/session.module.css": "d877a7812000e081a71e8bff40dfab87e8fa1870c54ade01d223cae9b07fd357",
+    "app/dev/session.tsx": "5f014c4ff7b1d4ee8297ceb7207ed1d7edc1efa662406a4451f96f850f6d298e",
+    "app/game/ClanShipHub.tsx": "8de8d8c9cfa187b87423a6f5ff39dc208e614cc8e158709b60a6deff113933f7",
+    "app/game/ClanShipInterior.tsx": "6b989333ae1f8c89f45cdd4e259516b3ba8f3fd73f7f4d073c7e2920383b20cb",
+    "app/game/HomeworldHub.tsx": "1fe63077ed64a1d8e58cfbbff163b5d457702cb8b8d1fec9adb92072f7354e45",
+    "app/game/HomeworldRegionV68.tsx": "d6b94d240a09c1d835dfdebef9243f3890681cb55b0f25bc3edeaac63903f8ce",
+    "app/game/HuntCanvas.tsx": "d0981b72c2ea468f5989d768a2b29671472e7ae6ffb8ed5eb51404f87c7f7631",
+    "app/game/PhysicalShipDeck.tsx": "bf2fae1c7d79088825f48b488985bf2628968b8d402c7bcf89066fcbff4f55cf",
+    "app/game/ShipHub.tsx": "17c535e9c16b4fd984a0b7fbf083b715d5ff7db3f5c042b0cc0726e3eac368e7",
+    "scripts/qa-dev-travel-browser.mjs": "d67216b84badba50ae10fc25dcd84682a7fce0ee76c0420b35e53d5af57f2b8f"
+  },
+  "url": "http://127.0.0.1:4193/dev",
+  "runtime": "actual Next /dev route and production scene components",
+  "browserMode": "headed",
+  "scope": "Direct travel, real movement and mission startup, reset, URL entry, keyboard and touch, and campaign storage isolation. No complete campaign, art approval or performance qualification.",
+  "checks": [
+    {
+      "name": "Hidden /dev route opens directly with noindex and a complete destination catalogue",
+      "passed": true
+    },
+    {
+      "name": "Category and accent-insensitive search filter actual destination buttons",
+      "passed": true
+    },
+    {
+      "name": "Keyboard launch opens the real personal deck, movement works, and reset restores the starting point",
+      "passed": true
+    },
+    {
+      "name": "Changing equipment in the test armory stays in memory and returning preserves the personal deck",
+      "passed": true
+    },
+    {
+      "name": "All seven Clan Ship room arrivals mount the real interior and their authored scenery",
+      "passed": true
+    },
+    {
+      "name": "Approach, docking and boarding use the real Clan Ship transitions within the test session",
+      "passed": true
+    },
+    {
+      "name": "Homeworld port and market open at distinct real city positions, and city movement works",
+      "passed": true
+    },
+    {
+      "name": "A regional destination opens its live village, and F8 returns to the catalogue even from its modal",
+      "passed": true
+    },
+    {
+      "name": "A real mission keeps its position and clock after walking into a newly discovered room",
+      "passed": false,
+      "message": "The hunter did not walk at least 300 world pixels through real input."
+    }
+  ],
+  "captures": [
+    {
+      "file": "01-desktop-catalogue.png",
+      "sha256": "73a21b846235a67af3013ecda98567685e561fdc8bacbbb7d303ae0585cb2677",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "file": "02-personal-ship.png",
+      "sha256": "e2ddb831b295eaaea5ee38d29a2fc107795178f5f3c6612c71decb5385441208",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "file": "03-clan-hangar.png",
+      "sha256": "8d2c2b2392efc1990f3c805dc5b9b93261c8ebb2929a8b26aa76e3c63d7826e1",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "file": "04-homeworld-market.png",
+      "sha256": "d08f72503d516323f86377aa33e632b2638f26c21567a85b7017cd30ec1bd84f",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "file": "05-regional-village.png",
+      "sha256": "91294b6086da948d75e7118a293d4b896158f3bc3e238f59d33099171bf626e4",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "file": "failure.png",
+      "sha256": "f51307d47a385e10cb29095261887a94a9be797e0f1cc74c388563f449601deb",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    }
+  ],
+  "errors": [],
+  "consoleErrors": [],
+  "storageOperations": [],
+  "databaseOpens": [],
+  "storageChecks": [
+    {
+      "label": "Hidden /dev route opens directly with noindex and a complete destination catalogue",
+      "keys": 5,
+      "sha256": "a3f7c3d50eb920e79b9a301abec044d23f357d35eacf03418b99bb792adee375"
+    },
+    {
+      "label": "Category and accent-insensitive search filter actual destination buttons",
+      "keys": 5,
+      "sha256": "a3f7c3d50eb920e79b9a301abec044d23f357d35eacf03418b99bb792adee375"
+    },
+    {
+      "label": "Keyboard launch opens the real personal deck, movement works, and reset restores the starting point",
+      "keys": 5,
+      "sha256": "a3f7c3d50eb920e79b9a301abec044d23f357d35eacf03418b99bb792adee375"
+    },
+    {
+      "label": "Changing equipment in the test armory stays in memory and returning preserves the personal deck",
+      "keys": 5,
+      "sha256": "a3f7c3d50eb920e79b9a301abec044d23f357d35eacf03418b99bb792adee375"
+    },
+    {
+      "label": "direct-clan-hangar",
+      "keys": 5,
+      "sha256": "a3f7c3d50eb920e79b9a301abec044d23f357d35eacf03418b99bb792adee375"
+    },
+    {
+      "label": "direct-clan-armurerie",
+      "keys": 5,
+      "sha256": "a3f7c3d50eb920e79b9a301abec044d23f357d35eacf03418b99bb792adee375"
+    },
+    {
+      "label": "direct-clan-entrainement",
+      "keys": 5,
+      "sha256": "a3f7c3d50eb920e79b9a301abec044d23f357d35eacf03418b99bb792adee375"
+    },
+    {
+      "label": "direct-clan-conseil",
+      "keys": 5,
+      "sha256": "a3f7c3d50eb920e79b9a301abec044d23f357d35eacf03418b99bb792adee375"
+    },
+    {
+      "label": "direct-clan-archives",
+      "keys": 5,
+      "sha256": "a3f7c3d50eb920e79b9a301abec044d23f357d35eacf03418b99bb792adee375"
+    },
+    {
+      "label": "direct-clan-trophees",
+      "keys": 5,
+      "sha256": "a3f7c3d50eb920e79b9a301abec044d23f357d35eacf03418b99bb792adee375"
+    },
+    {
+      "label": "direct-clan-soins",
+      "keys": 5,
+      "sha256": "a3f7c3d50eb920e79b9a301abec044d23f357d35eacf03418b99bb792adee375"
+    },
+    {
+      "label": "All seven Clan Ship room arrivals mount the real interior and their authored scenery",
+      "keys": 5,
+      "sha256": "a3f7c3d50eb920e79b9a301abec044d23f357d35eacf03418b99bb792adee375"
+    },
+    {
+      "label": "Approach, docking and boarding use the real Clan Ship transitions within the test session",
+      "keys": 5,
+      "sha256": "a3f7c3d50eb920e79b9a301abec044d23f357d35eacf03418b99bb792adee375"
+    },
+    {
+      "label": "homeworld-port",
+      "keys": 5,
+      "sha256": "a3f7c3d50eb920e79b9a301abec044d23f357d35eacf03418b99bb792adee375"
+    },
+    {
+      "label": "homeworld-market",
+      "keys": 5,
+      "sha256": "a3f7c3d50eb920e79b9a301abec044d23f357d35eacf03418b99bb792adee375"
+    },
+    {
+      "label": "Homeworld port and market open at distinct real city positions, and city movement works",
+      "keys": 5,
+      "sha256": "a3f7c3d50eb920e79b9a301abec044d23f357d35eacf03418b99bb792adee375"
+    },
+    {
+      "label": "A regional destination opens its live village, and F8 returns to the catalogue even from its modal",
+      "keys": 5,
+      "sha256": "a3f7c3d50eb920e79b9a301abec044d23f357d35eacf03418b99bb792adee375"
+    }
+  ],
+  "roomVisits": [
+    {
+      "room": "hangar",
+      "x": 240,
+      "y": 645,
+      "image": "/game/clan-ship/interiors/hangar-v1.webp",
+      "unavailable": []
+    },
+    {
+      "room": "armurerie",
+      "x": 240,
+      "y": 645,
+      "image": "/game/clan-ship/interiors/armurerie-v1.webp",
+      "unavailable": []
+    },
+    {
+      "room": "entrainement",
+      "x": 240,
+      "y": 645,
+      "image": "/game/clan-ship/interiors/entrainement-v1.webp",
+      "unavailable": []
+    },
+    {
+      "room": "conseil",
+      "x": 240,
+      "y": 645,
+      "image": "/game/clan-ship/interiors/conseil-v1.webp",
+      "unavailable": []
+    },
+    {
+      "room": "archives",
+      "x": 240,
+      "y": 645,
+      "image": "/game/clan-ship/interiors/archives-v1.webp",
+      "unavailable": []
+    },
+    {
+      "room": "trophees",
+      "x": 240,
+      "y": 645,
+      "image": "/game/clan-ship/interiors/trophees-v1.webp",
+      "unavailable": []
+    },
+    {
+      "room": "soins",
+      "x": 240,
+      "y": 645,
+      "image": "/game/clan-ship/interiors/soins-v1.webp",
+      "unavailable": []
+    },
+    {
+      "room": "hangar",
+      "x": 240,
+      "y": 645,
+      "image": "/game/clan-ship/interiors/hangar-v1.webp",
+      "unavailable": []
+    },
+    {
+      "room": "hangar",
+      "x": 240,
+      "y": 645,
+      "image": "/game/clan-ship/interiors/hangar-v1.webp",
+      "unavailable": []
+    }
+  ],
+  "movement": [
+    {
+      "label": "personal-ship",
+      "before": {
+        "x": 3500,
+        "y": 1360
+      },
+      "after": {
+        "x": 3518,
+        "y": 1360
+      }
+    },
+    {
+      "label": "clan-hangar",
+      "before": {
+        "x": 240,
+        "y": 645
+      },
+      "after": {
+        "x": 259.98,
+        "y": 645
+      }
+    },
+    {
+      "label": "homeworld-port",
+      "before": {
+        "x": 7780,
+        "y": 4480
+      },
+      "after": {
+        "x": 7808,
+        "y": 4480
+      }
+    }
+  ],
+  "huntObservations": [
+    {
+      "x": 225,
+      "elapsed": 1.5499999999999994,
+      "generation": 0,
+      "rooms": [
+        "jungle-pilot-approach"
+      ]
+    },
+    {
+      "x": 247.6691395111712,
+      "elapsed": 2.499999999999996,
+      "generation": 0,
+      "rooms": [
+        "jungle-pilot-approach"
+      ]
+    },
+    {
+      "x": 270.3386049067783,
+      "elapsed": 3.4499999999999926,
+      "generation": 0,
+      "rooms": [
+        "jungle-pilot-approach"
+      ]
+    },
+    {
+      "x": 293.00807030238633,
+      "elapsed": 4.39999999999999,
+      "generation": 0,
+      "rooms": [
+        "jungle-pilot-approach"
+      ]
+    },
+    {
+      "x": 315.67753569799436,
+      "elapsed": 5.349999999999986,
+      "generation": 0,
+      "rooms": [
+        "jungle-pilot-approach"
+      ]
+    },
+    {
+      "x": 338.3470010936024,
+      "elapsed": 6.299999999999983,
+      "generation": 0,
+      "rooms": [
+        "jungle-pilot-approach"
+      ]
+    },
+    {
+      "x": 361.01582396641135,
+      "elapsed": 7.19999999999998,
+      "generation": 0,
+      "rooms": [
+        "jungle-pilot-approach"
+      ]
+    },
+    {
+      "x": 383.6859321170599,
+      "elapsed": 8.149999999999984,
+      "generation": 0,
+      "rooms": [
+        "jungle-pilot-approach"
+      ]
+    },
+    {
+      "x": 406.35539751267,
+      "elapsed": 9.100000000000032,
+      "generation": 0,
+      "rooms": [
+        "jungle-pilot-approach"
+      ]
+    },
+    {
+      "x": 429.02422038547894,
+      "elapsed": 10.000000000000076,
+      "generation": 0,
+      "rooms": [
+        "jungle-pilot-approach"
+      ]
+    },
+    {
+      "x": 451.6936864963619,
+      "elapsed": 10.850000000000119,
+      "generation": 0,
+      "rooms": [
+        "jungle-pilot-approach"
+      ]
+    }
+  ],
+  "missingAssets": [],
+  "server": {
+    "mode": "production",
+    "distDir": ".next",
+    "log": "next-server.log"
+  },
+  "browserVersion": "153.0.8010.12",
+  "protectedStorage": {
+    "keys": [
+      "qa.unrelated-preserved",
+      "yautja-long-hunt.campaign-slot.1",
+      "yautja-long-hunt.campaign-slot.legacy.2026-11-01T12%3A00%3A00.000Z",
+      "yautja-long-hunt.save",
+      "yautja-long-hunt.save.backup"
+    ],
+    "sha256": "a3f7c3d50eb920e79b9a301abec044d23f357d35eacf03418b99bb792adee375"
+  },
+  "passed": false,
+  "failure": "AssertionError [ERR_ASSERTION]: The hunter did not walk at least 300 world pixels through real input.\n    at file:///home/runner/work/yautja-la-longue-chasse/yautja-la-longue-chasse/scripts/qa-dev-travel-browser.mjs:461:12\n    at async check (file:///home/runner/work/yautja-la-longue-chasse/yautja-la-longue-chasse/scripts/qa-dev-travel-browser.mjs:183:5)\n    at async file:///home/runner/work/yautja-la-longue-chasse/yautja-la-longue-chasse/scripts/qa-dev-travel-browser.mjs:407:3",
+  "finishedAt": "2026-11-04T18:43:51.965Z",
+  "passedChecks": 8,
+  "failedChecks": 1
+}

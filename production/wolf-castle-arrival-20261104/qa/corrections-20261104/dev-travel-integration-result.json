@@ -1,0 +1,13 @@
+{
+  "command": [
+    "node",
+    "--experimental-strip-types",
+    "--test",
+    "--test-concurrency=1",
+    "tests/dev-travel-destinations.test.mjs"
+  ],
+  "localCommit": "a14983dfcc21c31bb5c99d70973cbcdcbf073fd2",
+  "exitCode": 0,
+  "durationSeconds": 7.107,
+  "log": "/workspace/scratch/7c02a162021a/yautja-integration-106/outputs/integration-a14983df/dev-travel-integration.log"
+}

@@ -1,0 +1,93 @@
+2026-11-04T19:15:34.5159249Z ##[group]Run if [ "$APPLICATION_RESULT" != "success" ]; then
+2026-11-04T19:15:34.5160087Z [36;1mif [ "$APPLICATION_RESULT" != "success" ]; then[0m
+2026-11-04T19:15:34.5160894Z [36;1m  echo "At least one application audit group failed, was cancelled, or did not run."[0m
+2026-11-04T19:15:34.5161633Z [36;1m  exit 1[0m
+2026-11-04T19:15:34.5162020Z [36;1mfi[0m
+2026-11-04T19:15:34.5182614Z shell: /usr/bin/bash -e {0}
+2026-11-04T19:15:34.5183262Z env:
+2026-11-04T19:15:34.5183761Z   APPLICATION_RESULT: success
+2026-11-04T19:15:34.5184213Z ##[endgroup]
+2026-11-04T19:15:34.5422996Z ##[group]Run actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+2026-11-04T19:15:34.5423740Z with:
+2026-11-04T19:15:34.5424459Z   name: application-audit-success-41890840607-1-c915eb34fae6819526e4e4abe36949244a0b21ab-application
+2026-11-04T19:15:34.5425394Z   path: /home/runner/work/_temp/application-audit-proofs/application
+2026-11-04T19:15:34.5426021Z   merge-multiple: false
+2026-11-04T19:15:34.5426514Z   repository: darknigthmare/yautja-la-longue-chasse
+2026-11-04T19:15:34.5427069Z   run-id: 41890840607
+2026-11-04T19:15:34.5427454Z ##[endgroup]
+2026-11-04T19:15:34.7764375Z Downloading single artifact
+2026-11-04T19:15:34.7875183Z (node:1993) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-11-04T19:15:34.7877091Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-11-04T19:15:35.0795003Z Preparing to download the following artifacts:
+2026-11-04T19:15:35.0797520Z - application-audit-success-41890840607-1-c915eb34fae6819526e4e4abe36949244a0b21ab-application (ID: 13353843789, Size: 260, Expected Digest: sha256:dd8bb34e0ce14970bf06c278c81555e9ca7bf4daa67c53279c270682d8e4ccc4)
+2026-11-04T19:15:35.3567900Z Redirecting to blob download url: https://productionresultssa14.blob.core.windows.net/actions-results/41f0168d-d0cc-8101-a997-b1f3a8a65eab/workflow-job-run-cc4b1816-3751-5c3f-b9b2-e4461d4c8026/artifacts/08d0e2a79b6ffbef7256e8ae107b05008c573c5aa73dcf5c9e59ff842b4e5bbb.zip
+2026-11-04T19:15:35.3572589Z Starting download of artifact to: /home/runner/work/_temp/application-audit-proofs/application
+2026-11-04T19:15:35.6649553Z (node:1993) [DEP0005] DeprecationWarning: Buffer() is deprecated due to security and usability issues. Please use the Buffer.alloc(), Buffer.allocUnsafe(), or Buffer.from() methods instead.
+2026-11-04T19:15:35.6679858Z SHA256 digest of downloaded artifact is dd8bb34e0ce14970bf06c278c81555e9ca7bf4daa67c53279c270682d8e4ccc4
+2026-11-04T19:15:35.6681778Z Artifact download completed successfully.
+2026-11-04T19:15:35.6682804Z Total of 1 artifact(s) downloaded
+2026-11-04T19:15:35.6684262Z Download artifact has finished successfully
+2026-11-04T19:15:35.6908061Z ##[group]Run actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+2026-11-04T19:15:35.6909766Z with:
+2026-11-04T19:15:35.6911260Z   name: application-audit-success-41890840607-1-c915eb34fae6819526e4e4abe36949244a0b21ab-models
+2026-11-04T19:15:35.6913297Z   path: /home/runner/work/_temp/application-audit-proofs/models
+2026-11-04T19:15:35.6914619Z   merge-multiple: false
+2026-11-04T19:15:35.6915623Z   repository: darknigthmare/yautja-la-longue-chasse
+2026-11-04T19:15:35.6916744Z   run-id: 41890840607
+2026-11-04T19:15:35.6917536Z ##[endgroup]
+2026-11-04T19:15:35.8237075Z Downloading single artifact
+2026-11-04T19:15:35.8356576Z (node:2006) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-11-04T19:15:35.8359300Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-11-04T19:15:36.1204071Z Preparing to download the following artifacts:
+2026-11-04T19:15:36.1207582Z - application-audit-success-41890840607-1-c915eb34fae6819526e4e4abe36949244a0b21ab-models (ID: 13353239650, Size: 257, Expected Digest: sha256:2b52a6bb61cd63c8f627f6aa493e504ca91826c592d692267a3059540b7901aa)
+2026-11-04T19:15:36.4303018Z Redirecting to blob download url: https://productionresultssa14.blob.core.windows.net/actions-results/41f0168d-d0cc-8101-a997-b1f3a8a65eab/workflow-job-run-101080a7-8fb3-5d3b-b6ec-06a56c3b2d7e/artifacts/cd273930137e4f37fd1032467c757df9b8669024a95bdd5db18deb63e71f143e.zip
+2026-11-04T19:15:36.4307933Z Starting download of artifact to: /home/runner/work/_temp/application-audit-proofs/models
+2026-11-04T19:15:36.7064613Z (node:2006) [DEP0005] DeprecationWarning: Buffer() is deprecated due to security and usability issues. Please use the Buffer.alloc(), Buffer.allocUnsafe(), or Buffer.from() methods instead.
+2026-11-04T19:15:36.7092176Z SHA256 digest of downloaded artifact is 2b52a6bb61cd63c8f627f6aa493e504ca91826c592d692267a3059540b7901aa
+2026-11-04T19:15:36.7171830Z Artifact download completed successfully.
+2026-11-04T19:15:36.7173699Z Total of 1 artifact(s) downloaded
+2026-11-04T19:15:36.7175160Z Download artifact has finished successfully
+2026-11-04T19:15:36.7351900Z ##[group]Run actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+2026-11-04T19:15:36.7353293Z with:
+2026-11-04T19:15:36.7354687Z   name: application-audit-success-41890840607-1-c915eb34fae6819526e4e4abe36949244a0b21ab-history
+2026-11-04T19:15:36.7356620Z   path: /home/runner/work/_temp/application-audit-proofs/history
+2026-11-04T19:15:36.7357843Z   merge-multiple: false
+2026-11-04T19:15:36.7359005Z   repository: darknigthmare/yautja-la-longue-chasse
+2026-11-04T19:15:36.7360160Z   run-id: 41890840607
+2026-11-04T19:15:36.7360958Z ##[endgroup]
+2026-11-04T19:15:36.8618586Z Downloading single artifact
+2026-11-04T19:15:36.8720504Z (node:2018) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-11-04T19:15:36.8722737Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-11-04T19:15:37.1457685Z Preparing to download the following artifacts:
+2026-11-04T19:15:37.1459025Z - application-audit-success-41890840607-1-c915eb34fae6819526e4e4abe36949244a0b21ab-history (ID: 13355014192, Size: 259, Expected Digest: sha256:3ec1abbad775ae673eb176bb9c2518f7f287de22ae5dacbab43958a9e4133d63)
+2026-11-04T19:15:37.3985597Z Redirecting to blob download url: https://productionresultssa14.blob.core.windows.net/actions-results/41f0168d-d0cc-8101-a997-b1f3a8a65eab/workflow-job-run-7d7edeba-7f2a-5658-b062-a74deae47d1c/artifacts/5baa9491b225c0b120e738b0970f75ae4c42d111f424b580f915bf716df0675e.zip
+2026-11-04T19:15:37.3987427Z Starting download of artifact to: /home/runner/work/_temp/application-audit-proofs/history
+2026-11-04T19:15:37.6846410Z (node:2018) [DEP0005] DeprecationWarning: Buffer() is deprecated due to security and usability issues. Please use the Buffer.alloc(), Buffer.allocUnsafe(), or Buffer.from() methods instead.
+2026-11-04T19:15:37.6874108Z SHA256 digest of downloaded artifact is 3ec1abbad775ae673eb176bb9c2518f7f287de22ae5dacbab43958a9e4133d63
+2026-11-04T19:15:37.6875198Z Artifact download completed successfully.
+2026-11-04T19:15:37.6875899Z Total of 1 artifact(s) downloaded
+2026-11-04T19:15:37.6878361Z Download artifact has finished successfully
+2026-11-04T19:15:37.7010890Z ##[group]Run node --input-type=module <<'NODE'
+2026-11-04T19:15:37.7011276Z [36;1mnode --input-type=module <<'NODE'[0m
+2026-11-04T19:15:37.7011547Z [36;1mimport assert from 'node:assert/strict';[0m
+2026-11-04T19:15:37.7011871Z [36;1mimport {readdirSync, readFileSync} from 'node:fs';[0m
+2026-11-04T19:15:37.7012177Z [36;1mimport {join} from 'node:path';[0m
+2026-11-04T19:15:37.7012499Z [36;1mconst groups = ['application', 'history', 'models'];[0m
+2026-11-04T19:15:37.7012921Z [36;1mconst root = join(process.env.RUNNER_TEMP, 'application-audit-proofs');[0m
+2026-11-04T19:15:37.7013493Z [36;1massert.deepEqual(readdirSync(root).sort(), groups, 'All three audit groups must produce a completion proof');[0m
+2026-11-04T19:15:37.7013940Z [36;1mfor (const group of groups) {[0m
+2026-11-04T19:15:37.7014217Z [36;1m  const directory = join(root, group);[0m
+2026-11-04T19:15:37.7014700Z [36;1m  assert.deepEqual(readdirSync(directory), ['proof.json'], 'Each group must produce exactly one proof');[0m
+2026-11-04T19:15:37.7015271Z [36;1m  const proof = JSON.parse(readFileSync(join(directory, 'proof.json'), 'utf8'));[0m
+2026-11-04T19:15:37.7015663Z [36;1m  assert.deepEqual(proof, {[0m
+2026-11-04T19:15:37.7015954Z [36;1m    schemaVersion: 1, result: 'success', group,[0m
+2026-11-04T19:15:37.7016257Z [36;1m    runId: process.env.GITHUB_RUN_ID,[0m
+2026-11-04T19:15:37.7016555Z [36;1m    runAttempt: process.env.GITHUB_RUN_ATTEMPT,[0m
+2026-11-04T19:15:37.7016855Z [36;1m    commit: process.env.GITHUB_SHA,[0m
+2026-11-04T19:15:37.7017201Z [36;1m  }, 'Invalid, stale or duplicate completion proof for ' + group);[0m
+2026-11-04T19:15:37.7017510Z [36;1m}[0m
+2026-11-04T19:15:37.7017860Z [36;1mconsole.log('All three application audit groups succeeded for this run, attempt and commit.');[0m
+2026-11-04T19:15:37.7018250Z [36;1mNODE[0m
+2026-11-04T19:15:37.7036149Z shell: /usr/bin/bash -e {0}
+2026-11-04T19:15:37.7036425Z ##[endgroup]
+2026-11-04T19:15:37.8216545Z All three application audit groups succeeded for this run, attempt and commit.

@@ -1,0 +1,31 @@
+{
+  "sourceCommit": "c77c4ea37e3b1b0969a33917971f38496d4ee66a",
+  "localSource": "c80fddb03ffa3b5e6c134fbb8754f0c2d169a366",
+  "tree": "a946e3d8123aaed37b417664a3de1de970232548",
+  "parent": "3fc1a5bf3b2aff1eda05cc721b46e58194dc13d3",
+  "pathsChanged": [
+    "scripts/qa-dev-travel-browser.mjs",
+    "scripts/qa-wolf-arrival-browser.mjs"
+  ],
+  "runtimeAndInventoryUnchangedSince371": true,
+  "headClean": true,
+  "sourceTreeVerifiedAgainstGitHub": true,
+  "corrections": [
+    "Wait for native enabled visible Pause focus before one Escape; record focus snapshot",
+    "Allow up to40 real650ms input pulses to reach the next native room; retain distance>=300px,new room,generation,clock and reset assertions"
+  ],
+  "unpublishedAlternative": "/workspace/scratch/7c02a162021a/dev-qa-simulated-clock-proposal.patch",
+  "ci": {
+    "wolf": 41890840615,
+    "dev": 41890840578,
+    "clan": 41890840746,
+    "v94": 41890840607,
+    "total": 16
+  },
+  "newFullCiPending": true,
+  "syntheticMerge": {
+    "sha": "c915eb34fae6819526e4e4abe36949244a0b21ab",
+    "githubCompareFileCount": 0,
+    "sourceTreeIdentical": true
+  }
+}

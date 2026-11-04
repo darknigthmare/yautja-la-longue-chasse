@@ -1,0 +1,23 @@
+2026-11-04T18:51:56.3731800Z # tests 61
+2026-11-04T18:51:56.3732550Z # pass 61
+2026-11-04T18:51:56.3732858Z # fail 0
+2026-11-04T18:51:56.3733523Z # skipped 0
+2026-11-04T18:56:29.4621386Z PASS Hidden /dev route opens directly with noindex and a complete destination catalogue
+2026-11-04T18:56:29.5714854Z PASS Category and accent-insensitive search filter actual destination buttons
+2026-11-04T18:56:30.6783879Z PASS Keyboard launch opens the real personal deck, movement works, and reset restores the starting point
+2026-11-04T18:56:30.9697463Z PASS Changing equipment in the test armory stays in memory and returning preserves the personal deck
+2026-11-04T18:56:33.1263947Z PASS All seven Clan Ship room arrivals mount the real interior and their authored scenery
+2026-11-04T18:56:33.4052730Z PASS Approach, docking and boarding use the real Clan Ship transitions within the test session
+2026-11-04T18:56:42.1012011Z PASS Homeworld port and market open at distinct real city positions, and city movement works
+2026-11-04T18:56:45.2627830Z PASS A regional destination opens its live village, and F8 returns to the catalogue even from its modal
+2026-11-04T18:59:22.2337751Z PASS A real mission keeps its position and clock after walking into a newly discovered room
+2026-11-04T18:59:24.5965712Z PASS Direct bookmarked room URLs and reload recreate a disposable session
+2026-11-04T18:59:25.9088570Z PASS Unknown destination is recoverable through the catalogue
+2026-11-04T18:59:26.6175153Z PASS Mobile catalogue and Clan Ship support touch at 390 px without horizontal overflow
+2026-11-04T18:59:28.4736213Z PASS An empty browser can visit and reset a real room without creating any save or database
+2026-11-04T18:59:28.9323503Z PASS Leaving development returns to the ordinary game menu with no developer navigation entry
+2026-11-04T18:59:28.9324305Z PASS Visited development scenes produce no missing asset, uncaught JavaScript exception or storage write
+2026-11-04T18:59:29.0634056Z {"passed":true,"checks":15,"failed":0,"missingAssets":0,"report":"/home/runner/work/yautja-la-longue-chasse/yautja-la-longue-chasse/outputs/qa-dev-travel/report.json"}
+2026-11-04T18:59:30.1851195Z SHA256 digest of uploaded artifact zip is 06610c0adb71c719e559f2a2d3f226dc7b6b1cf1beeeb4cfa1d9b850fd940b96
+2026-11-04T18:59:30.6555432Z Artifact dev-travel-browser-c77c4ea37e3b1b0969a33917971f38496d4ee66a.zip successfully finalized. Artifact ID 13354667101
+2026-11-04T18:59:30.6557790Z Artifact dev-travel-browser-c77c4ea37e3b1b0969a33917971f38496d4ee66a has been successfully uploaded! Final size is 6688622 bytes. Artifact ID is 13354667101

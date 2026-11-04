@@ -1,0 +1,816 @@
+{
+  "generatedAt": "2026-11-04T17:47:15.709Z",
+  "engine": "@oai/artifact-tool",
+  "runtimeNode": "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+  "version": "1.3.0",
+  "file": "wolf-castle-arrival-20261104.xlsx",
+  "sheets": [
+    "Synthese",
+    "Chateau",
+    "Cinematique",
+    "Sprites",
+    "Prompts",
+    "Verification",
+    "Combat",
+    "Audio"
+  ],
+  "detailCounts": {
+    "salles": 9,
+    "plans": 8,
+    "sprites": 30,
+    "prompts": 30,
+    "combatEncounters": 3,
+    "arrivalCues": 9,
+    "audioRows": 44,
+    "verification": 18,
+    "historicalVerification": 14,
+    "explorationCues": 10,
+    "mandateObjectives": 3,
+    "mandatePhases": 3
+  },
+  "summaryCounts": [
+    30,
+    22,
+    8,
+    9,
+    8,
+    62,
+    24,
+    6,
+    30,
+    0,
+    30,
+    30
+  ],
+  "expectedCounts": [
+    30,
+    22,
+    8,
+    9,
+    8,
+    62,
+    24,
+    6,
+    30,
+    0,
+    30,
+    30
+  ],
+  "continuationCounts": [
+    3,
+    9,
+    3,
+    30,
+    54.21762275695801,
+    6.973657608032227,
+    0.8713765515081116
+  ],
+  "preservation": {
+    "historicalEvidence": true,
+    "humanReviewV1": true,
+    "promptsV1": true,
+    "cinematicFormulas": true,
+    "originalPngs": true,
+    "cinematicValues": true
+  },
+  "propagationCheck": {
+    "editedCell": "Sprites!L35",
+    "temporaryHumanStatus": "Validé",
+    "observed": [
+      1,
+      29
+    ],
+    "restored": true
+  },
+  "runtimeWeightPropagation": {
+    "editedCell": "Sprites!P35",
+    "observedMiB": 6.856642723083496,
+    "restored": true,
+    "performed": true
+  },
+  "exactPromptReconstruction": {
+    "preserved": 27,
+    "checkedNew": 3,
+    "allMatch": true
+  },
+  "formulaErrorScan": {
+    "ndjson": "{\"kind\":\"notice\",\"message\":\"Cell search matched 0 entries.\"}"
+  },
+  "inspections": [
+    {
+      "sheet": "Synthese",
+      "range": "A24:C31",
+      "ndjson": "{\"kind\":\"table\",\"sheet\":\"Synthese\",\"address\":\"A24:C31\",\"rows\":8,\"cols\":3,\"values\":[[\"Reprise 1.3.0\",\"Nombre\",\"Unité\"],[\"Rencontres d’entraînement\",3,\"rencontres\"],[\"Sons ponctuels de l’arrivée\",9,\"signaux\"],[\"Nouvelles poses individuelles\",3,\"images\"],[\"Copies WebP produites\",30,\"images\"],[\"Poids des PNG originaux\",54.21762275695801,\"Mio\"],[\"Poids des copies WebP\",6.973657608032227,\"Mio\"],[\"Réduction du poids total\",0.8713765515081116,\"du lot complet\"]]}"
+    },
+    {
+      "sheet": "Sprites",
+      "range": "I32:S35",
+      "ndjson": "{\"kind\":\"table\",\"sheet\":\"Sprites\",\"address\":\"I32:S35\",\"rows\":4,\"cols\":11,\"values\":[[\"Généré\",\"Référencé\",\"Réussi\",\"À revoir\",\"/game/planet-arrival/v1/space.png\",1343.521484375,\"/game/planet-arrival/v1/space.webp\",15.2734375,0.9886317876731944,\"Vérifiés\",\"1.2.0\"],[\"Généré\",\"Référencé\",\"Réussi\",\"À revoir\",\"/game/wolf-castle/v2/royal-guard-ready.png\",1193.439453125,\"/game/wolf-castle/v2/royal-guard-ready.webp\",219.84765625,0.8157865020514172,\"Vérifiés\",\"1.3.0\"],[\"Généré\",\"Référencé\",\"Réussi\",\"À revoir\",\"/game/wolf-castle/v2/royal-guard-windup.png\",1180.150390625,\"/game/wolf-castle/v2/royal-guard-windup.webp\",228.2109375,0.8066255459364455,\"Vérifiés\",\"1.3.0\"],[\"Généré\",\"Référencé\",\"Réussi\",\"À revoir\",\"/game/wolf-castle/v2/royal-guard-lunge.png\",1260.5009765625,\"/game/wolf-castle/v2/royal-guard-lunge.webp\",239.646484375,0.8098799692892443,\"Vérifiés\",\"1.3.0\"]]}"
+    },
+    {
+      "sheet": "Combat",
+      "range": "A5:I8",
+      "ndjson": "{\"kind\":\"table\",\"sheet\":\"Combat\",\"address\":\"A5:I8\",\"rows\":4,\"cols\":9,\"values\":[[\"ID\",\"Rencontre\",\"Lecture et réponse\",\"Vie\",\"Vitesse (u/s)\",\"Anticipation (ms)\",\"Récupération (ms)\",\"Dégâts\",\"Portée (u)\"],[\"threshold-guard\",\"Sentinelle du Seuil\",\"L’estoc est annoncé en or. Pare au dernier instant ou quitte sa trajectoire.\",66,125,1050,920,20,168],[\"sweep-guard\",\"Gardien du Cercle\",\"Le balayage rouge traverse la garde. Esquive hors du cercle puis contre-attaque.\",88,148,1150,1000,26,185],[\"court-master\",\"Maître de la Cour\",\"Observe la couleur : estoc à parer, balayage à esquiver. Frappe pendant sa récupération.\",110,168,860,800,30,185]]}"
+    },
+    {
+      "sheet": "Audio",
+      "range": "A5:G14",
+      "ndjson": "{\"kind\":\"table\",\"sheet\":\"Audio\",\"address\":\"A5:G14\",\"rows\":10,\"cols\":7,\"values\":[[\"ID\",\"Type\",\"Séquence\",\"Début (s)\",\"Son ou ambiance\",\"Pause, reprise et sortie\",\"État\"],[\"destination\",\"Ponctuel\",\"Arrivée\",7,\"Accord du titre de planète\",\"Suspendu avec la séquence. Une reprise ne rejoue pas les signaux déjà consommés.\",\"Intégré et testé\"],[\"carrier\",\"Ponctuel\",\"Arrivée\",13,\"Passage grave du vaisseau\",\"Suspendu avec la séquence. Une reprise ne rejoue pas les signaux déjà consommés.\",\"Intégré et testé\"],[\"release\",\"Ponctuel\",\"Arrivée\",23,\"Déverrouillage et jet de la capsule\",\"Suspendu avec la séquence. Une reprise ne rejoue pas les signaux déjà consommés.\",\"Intégré et testé\"],[\"descent\",\"Ponctuel\",\"Arrivée\",31,\"Passage de la descente\",\"Suspendu avec la séquence. Une reprise ne rejoue pas les signaux déjà consommés.\",\"Intégré et testé\"],[\"reentry\",\"Ponctuel\",\"Arrivée\",41,\"Air et frottement de rentrée\",\"Suspendu avec la séquence. Une reprise ne rejoue pas les signaux déjà consommés.\",\"Intégré et testé\"],[\"impact\",\"Ponctuel\",\"Arrivée\",53.96,\"Choc au contact avec le sol\",\"Suspendu avec la séquence. Une reprise ne rejoue pas les signaux déjà consommés.\",\"Intégré et testé\"],[\"hatch\",\"Ponctuel\",\"Arrivée\",57,\"Ouverture de la porte\",\"Suspendu avec la séquence. Une reprise ne rejoue pas les signaux déjà consommés.\",\"Intégré et testé\"],[\"first-step\",\"Ponctuel\",\"Arrivée\",58.9,\"Premier pas au sol\",\"Suspendu avec la séquence. Une reprise ne rejoue pas les signaux déjà consommés.\",\"Intégré et testé\"],[\"second-step\",\"Ponctuel\",\"Arrivée\",60.1,\"Second pas au sol\",\"Suspendu avec la séquence. Une reprise ne rejoue pas les signaux déjà consommés.\",\"Intégré et testé\"]]}"
+    }
+  ],
+  "renders": [
+    {
+      "sheet": "Synthese",
+      "range": "A1:F22",
+      "file": "previews/Synthese.png",
+      "reused": true
+    },
+    {
+      "sheet": "Synthese",
+      "range": "A24:C31",
+      "file": "previews/Synthese-reprise.png",
+      "reused": true
+    },
+    {
+      "sheet": "Chateau",
+      "range": "A9:D14",
+      "file": "previews/Chateau-cour.png",
+      "reused": false
+    },
+    {
+      "sheet": "Chateau",
+      "range": "E9:H14",
+      "file": "previews/Chateau-cour-suite.png",
+      "reused": false
+    },
+    {
+      "sheet": "Sprites",
+      "range": "A31:H35",
+      "file": "previews/Sprites-poses.png",
+      "reused": true
+    },
+    {
+      "sheet": "Sprites",
+      "range": "I31:N35",
+      "file": "previews/Sprites-poses-suivi.png",
+      "reused": true
+    },
+    {
+      "sheet": "Sprites",
+      "range": "O5:S12",
+      "file": "previews/Sprites-WebP.png",
+      "reused": true
+    },
+    {
+      "sheet": "Sprites",
+      "range": "O31:S35",
+      "file": "previews/Sprites-WebP-poses.png",
+      "reused": true
+    },
+    {
+      "sheet": "Combat",
+      "range": "A1:D8",
+      "file": "previews/Combat-rencontres.png",
+      "reused": true
+    },
+    {
+      "sheet": "Combat",
+      "range": "E5:L8",
+      "file": "previews/Combat-valeurs.png",
+      "reused": true
+    },
+    {
+      "sheet": "Combat",
+      "range": "A11:F17",
+      "file": "previews/Combat-regles.png",
+      "reused": true
+    },
+    {
+      "sheet": "Combat",
+      "range": "A19:F24",
+      "file": "previews/Combat-mandat.png",
+      "reused": true
+    },
+    {
+      "sheet": "Audio",
+      "range": "A1:D14",
+      "file": "previews/Audio-evenements.png",
+      "reused": true
+    },
+    {
+      "sheet": "Audio",
+      "range": "E5:H14",
+      "file": "previews/Audio-cycle.png",
+      "reused": true
+    },
+    {
+      "sheet": "Audio",
+      "range": "A15:H39",
+      "file": "previews/Audio-ambiances.png",
+      "reused": true
+    },
+    {
+      "sheet": "Audio",
+      "range": "A40:D49",
+      "file": "previews/Audio-exploration.png",
+      "reused": true
+    },
+    {
+      "sheet": "Audio",
+      "range": "E40:H49",
+      "file": "previews/Audio-exploration-cycle.png",
+      "reused": true
+    },
+    {
+      "sheet": "Verification",
+      "range": "A1:I3",
+      "file": "previews/Verification-source.png",
+      "reused": false
+    },
+    {
+      "sheet": "Verification",
+      "range": "A21:I22",
+      "file": "previews/Verification-contexte.png",
+      "reused": false
+    },
+    {
+      "sheet": "Verification",
+      "range": "A23:E28",
+      "file": "previews/Verification-23-etats.png",
+      "reused": false
+    },
+    {
+      "sheet": "Verification",
+      "range": "F23:I28",
+      "file": "previews/Verification-23-preuves.png",
+      "reused": false
+    },
+    {
+      "sheet": "Verification",
+      "range": "A29:E34",
+      "file": "previews/Verification-29-etats.png",
+      "reused": false
+    },
+    {
+      "sheet": "Verification",
+      "range": "F29:I34",
+      "file": "previews/Verification-29-preuves.png",
+      "reused": false
+    },
+    {
+      "sheet": "Verification",
+      "range": "A35:E40",
+      "file": "previews/Verification-35-etats.png",
+      "reused": false
+    },
+    {
+      "sheet": "Verification",
+      "range": "F35:I40",
+      "file": "previews/Verification-35-preuves.png",
+      "reused": false
+    },
+    {
+      "sheet": "Prompts",
+      "range": "A188:H195",
+      "file": "previews/Prompt-royal-guard-ready.png",
+      "reused": true
+    },
+    {
+      "sheet": "Prompts",
+      "range": "A197:H204",
+      "file": "previews/Prompt-royal-guard-windup.png",
+      "reused": true
+    },
+    {
+      "sheet": "Prompts",
+      "range": "A206:H213",
+      "file": "previews/Prompt-royal-guard-lunge.png",
+      "reused": true
+    }
+  ],
+  "visualReview": {
+    "status": "reviewed",
+    "reviewedAt": "2026-11-04T17:49:37.901197+00:00",
+    "reviewer": "Agent classeur",
+    "sheets": [
+      "Synthese",
+      "Chateau",
+      "Combat",
+      "Audio",
+      "Verification"
+    ],
+    "renderedRangesReviewed": 17,
+    "changedPreviewFilesReviewed": [
+      "previews/Synthese.png",
+      "previews/Synthese-reprise.png",
+      "previews/Chateau-cour.png",
+      "previews/Chateau-cour-suite.png",
+      "previews/Combat-rencontres.png",
+      "previews/Combat-regles.png",
+      "previews/Combat-mandat.png",
+      "previews/Audio-evenements.png",
+      "previews/Audio-exploration.png",
+      "previews/Audio-exploration-cycle.png",
+      "previews/Verification-source.png",
+      "previews/Verification-contexte.png",
+      "previews/Verification-23-preuves.png",
+      "previews/Verification-29-etats.png",
+      "previews/Verification-29-preuves.png",
+      "previews/Verification-35-etats.png",
+      "previews/Verification-35-preuves.png"
+    ],
+    "unchangedPreviouslyReviewedPreviewFiles": [
+      "previews/Sprites-poses.png",
+      "previews/Sprites-poses-suivi.png",
+      "previews/Sprites-WebP.png",
+      "previews/Sprites-WebP-poses.png",
+      "previews/Combat-valeurs.png",
+      "previews/Audio-cycle.png",
+      "previews/Audio-ambiances.png",
+      "previews/Verification-23-etats.png",
+      "previews/Prompt-royal-guard-ready.png",
+      "previews/Prompt-royal-guard-windup.png",
+      "previews/Prompt-royal-guard-lunge.png"
+    ],
+    "unchangedPreviewsByteIdentical": true,
+    "nativeUnchangedSheets": [
+      "Cinematique",
+      "Sprites",
+      "Prompts"
+    ],
+    "reviewedXlsxSha256": "7b1c7686b69c57963f4ec4b2ad71e8f4934ed0f802667b5e64d8c8d9b5c5735e",
+    "findings": "Les 17 vues modifiées ont été relues à leur résolution d’origine. Aucun contenu coupé, débordement ou valeur #### observé. Les cellules distinguent 128 tests locaux, le build local courant, les preuves historiques 247/24 et la nouvelle CI encore en cours. Les 11 autres vues sont identiques aux vues déjà relues.",
+    "scope": "Revue de mise en page et de provenance du classeur ; aucune qualification de jeu, d’écoute ou approbation artistique humaine ajoutée.",
+    "history": [
+      {
+        "xlsxSha256": "94ffe9166afbdbdf70fa38d799e431dac53587c0fdd96310d89c56538a284c47",
+        "review": {
+          "status": "reviewed",
+          "reviewedAt": "2026-11-04T12:33:05.255675+00:00",
+          "reviewer": "assistant",
+          "sheets": [
+            "Synthese",
+            "Chateau",
+            "Sprites",
+            "Prompts",
+            "Verification",
+            "Combat",
+            "Audio"
+          ],
+          "renderedRangesReviewed": 23,
+          "changedSheetsReviewed": [
+            "Synthese",
+            "Chateau",
+            "Combat",
+            "Verification"
+          ],
+          "changedPreviewFilesReviewed": [
+            "Chateau-cour-suite.png",
+            "Combat-valeurs.png",
+            "Synthese.png",
+            "Verification-23-etats.png",
+            "Verification-23-preuves.png",
+            "Verification-29-etats.png",
+            "Verification-29-preuves.png",
+            "Verification-35-etats.png",
+            "Verification-35-preuves.png"
+          ],
+          "unchangedPreviouslyReviewedPreviewFiles": [
+            "Audio-ambiances.png",
+            "Audio-cycle.png",
+            "Audio-evenements.png",
+            "Chateau-cour.png",
+            "Combat-regles.png",
+            "Combat-rencontres.png",
+            "Prompt-royal-guard-lunge.png",
+            "Prompt-royal-guard-ready.png",
+            "Prompt-royal-guard-windup.png",
+            "Sprites-WebP-poses.png",
+            "Sprites-WebP.png",
+            "Sprites-poses-suivi.png",
+            "Sprites-poses.png",
+            "Synthese-reprise.png"
+          ],
+          "unchangedPreviewsByteIdentical": true,
+          "unchangedSheet": "Cinematique : valeurs, formules et présentation conservées. Aucun nouveau rendu nécessaire.",
+          "findings": "Les neuf aperçus modifiés ont été relus à leur résolution d’origine. Les quatorze autres sont identiques aux aperçus déjà relus. Titres, valeurs, unités, sources, limites et statuts sont lisibles, sans troncature. Les validations techniques restent distinctes des champs humains.",
+          "scope": "Revue de mise en page du classeur. Elle ne valide ni les sprites artistiques ni les parcours du jeu."
+        }
+      }
+    ]
+  },
+  "gameChecks": [
+    {
+      "id": "V2-COMBAT",
+      "subject": "Combat royal",
+      "status": "Réussi",
+      "count": 29,
+      "unit": "tests",
+      "evidence": "29 tests du château et du combat réussis dans la suite finale : trois gardes vaincus par déplacement, parade, esquive et attaque ; défaite, reprise, abandon, collisions et dossier contrôlés.",
+      "source": "qa/browser-41827785792/workflow-job.log ; tests/wolf-castle.test.mjs ; tests/wolf-castle-combat.test.mjs",
+      "limit": "Ces 29 cas sont inclus dans les 247 tests. Le parcours de la scène et la victoire par les commandes normales sont qualifiés séparément dans V2-BROWSER."
+    },
+    {
+      "id": "V2-SAVE",
+      "subject": "Checkpoints de visite V2",
+      "status": "Réussi",
+      "count": 42,
+      "unit": "tests",
+      "evidence": "42 tests réussis : sauvegarde V2, vrais callbacks GameClient, migration V1, reprise et refus des états incompatibles. Aucun échec ni test ignoré. Le run inclut 38 tests historiques et 4 nouveaux.",
+      "source": "qa/browser-41827785792/workflow-job.log ; tests/wolf-arrival-save.test.mjs ; tests/game-client-ship-flow.test.mjs",
+      "limit": "Sous-ensemble des 247 tests. La sauvegarde, le menu, le reload et la reprise de l’interface sont également qualifiés par V2-BROWSER."
+    },
+    {
+      "id": "V2-AUDIO",
+      "subject": "Cycle de vie audio",
+      "status": "Réussi",
+      "count": 32,
+      "unit": "tests",
+      "evidence": "32 tests audio réussis dans les 247 : sept tests du directeur royal et 25 tests du directeur d’arrivée, du moteur de scène et du cycle de vie commun. Aucun échec ni test ignoré.",
+      "source": "qa/browser-41827785792/workflow-job.log ; qa/audio-tests.log",
+      "limit": "Ces 32 tests sont déjà inclus dans les 247. Le journal local spécifique est conservé avec sa source initiale. L’écoute perceptive reste une revue distincte."
+    },
+    {
+      "id": "V2-REGRESSION",
+      "subject": "Régressions du chantier",
+      "status": "Réussi",
+      "count": 247,
+      "unit": "tests",
+      "evidence": "247 tests réussis dans la CI finale sur 881b66da, aucun échec ni test ignoré. Commande du workflow dédiée ; durée Node : 21,275 secondes.",
+      "source": "qa/browser-41827785792/workflow-job.log ; qa/browser-41827785792/workflow-result.json",
+      "limit": "Les sous-ensembles château, audio et sauvegarde sont inclus. Les huit tests world-screens complémentaires et les 294 tests historiques 1.2.0 restent séparés."
+    },
+    {
+      "id": "V2-TYPE",
+      "subject": "TypeScript",
+      "status": "Réussi",
+      "count": null,
+      "unit": "",
+      "evidence": "TypeScript complet réussit dans la CI finale sur 881b66da, équivalent au code local 132b2f1f.",
+      "source": "qa/browser-41827785792/workflow-job.log ; qa/browser-41827785792/workflow-result.json",
+      "limit": "Analyse statique du code qualifié. Le parcours navigateur possède son rapport distinct."
+    },
+    {
+      "id": "V2-LINT",
+      "subject": "ESLint strict de l’intégration",
+      "status": "Réussi",
+      "count": null,
+      "unit": "",
+      "evidence": "ESLint avec zéro avertissement autorisé réussit sur le périmètre du workflow : scènes, intégration, sauvegarde, audio, worldScreens, scripts et tests ciblés.",
+      "source": "qa/browser-41827785792/workflow-job.log ; qa/browser-41827785792/workflow-result.json",
+      "limit": "La commande exacte et son périmètre sont conservés dans le journal CI. Aucun audit global hors de cette commande n’est revendiqué."
+    },
+    {
+      "id": "V2-BUILD",
+      "subject": "Build local de production",
+      "status": "Réussi",
+      "count": null,
+      "unit": "",
+      "evidence": "Build local courant réussi sur a5e41f66 / 5daa00e1 en 316,430 s, code 0 : compilation Next.js webpack, TypeScript et CSS PIT. Le manifeste audio régénéré a été restauré ; les sources suivies sont propres.",
+      "source": "qa/integration-a5e41f66/production-build-result.json ; qa/integration-a5e41f66/production-build.log",
+      "limit": "Native-origin et static-output sont ignorés : not-exact-linux-vercel-build-root. Aucun déploiement, smoke test ni résultat de CI distante n’est revendiqué.",
+      "sourceCommit": "a5e41f66f6c3d194afae4f6f446b6c02f213d4c4"
+    },
+    {
+      "id": "V2-ART",
+      "subject": "PNG et copies WebP",
+      "status": "Réussi",
+      "count": 30,
+      "unit": "images",
+      "evidence": "30 PNG intacts : 56 851 298 octets. 30 WebP : 7 312 410 octets, soit 87,1377 % de réduction. Dimensions et alpha identiques sur les 30 paires.",
+      "source": "runtime-art-v2.json ; qa/browser-41827785792/workflow-job.log",
+      "limit": "24 images transparentes et six fonds opaques. Le parcours final sollicite 29 WebP du lot ; low-fog.webp n’y est pas demandé. Les 30 paires sont contrôlées techniquement."
+    },
+    {
+      "id": "V2-BROWSER",
+      "subject": "Parcours navigateur",
+      "status": "Réussi",
+      "count": 24,
+      "unit": "contrôles",
+      "evidence": "24/24 contrôles réussis sur 881b66da : château, trois gardes, sauvegarde/reprise, focus natif, mobile, huit plans et relais uniques. 21 captures, zéro exception JavaScript et zéro ressource visuelle demandée manquante.",
+      "source": "qa/browser-41827785792/report.json ; qa/browser-41827785792/workflow-result.json",
+      "limit": "Recette du vrai GameClient dans Chromium avec Vite. Les 185 ressources sollicitées sont disponibles. La revue des captures reste distincte de l’écoute physique et de la validation artistique humaine."
+    },
+    {
+      "id": "V2-HUMAN",
+      "subject": "Revue artistique humaine",
+      "status": "À faire",
+      "count": 0,
+      "unit": "approbations",
+      "evidence": "30 images conservées ou générées. Les trois poses ont été inspectées techniquement et visuellement par l’assistant.",
+      "source": "Manifestes artistiques V1 et art-manifest-combat-v2.json",
+      "limit": "Cette inspection ne vaut pas validation artistique humaine ni certification globale 1:1."
+    },
+    {
+      "id": "V2-MIX",
+      "subject": "Écoute du mixage",
+      "status": "À faire",
+      "count": null,
+      "unit": "",
+      "evidence": "Écouter la séquence complète et la cour avec plusieurs niveaux de volume.",
+      "source": "Directeurs audio du château et de l’arrivée",
+      "limit": "L’activation des signaux ne prouve pas l’équilibre sonore perçu."
+    },
+    {
+      "id": "V2-DUNGEON",
+      "subject": "Premier mandat royal",
+      "status": "Implémenté, CI en cours",
+      "count": null,
+      "unit": "",
+      "evidence": "Audience, trois repères, sentinelle en trois phases sans soins entre phases, puis retour à l’audience. Deux marques de clan accordées une seule fois avec un reçu de campagne.",
+      "source": "app/game/systems/wolfCastleDungeon.ts ; app/game/systems/wolfCastleCombat.ts ; source a5e41f66",
+      "limit": "Modèles couverts par le passage local ciblé de 60 tests. La nouvelle recette navigateur reste en cours ; les gardes d’entraînement ne distribuent pas cette récompense."
+    },
+    {
+      "id": "V2-FILM",
+      "subject": "Découpage exact du film",
+      "status": "À faire",
+      "count": null,
+      "unit": "",
+      "evidence": "Comparer la copie demandée plan par plan et relever les timecodes vérifiés.",
+      "source": "https://www.youtube.com/watch?v=43SCLM6cGTc",
+      "limit": "Les 62 secondes décrivent le montage du jeu. La vidéo n’a pas été intégralement visionnée dans le chantier historique."
+    },
+    {
+      "id": "V2-WORLD",
+      "subject": "Régression des écrans du monde",
+      "status": "Réussi",
+      "count": 8,
+      "unit": "tests complémentaires",
+      "evidence": "Huit tests world-screens réussis, aucun échec ni test ignoré. Le stdout exact et sa provenance sont conservés. La seule retouche après cette exécution raccourcit un commentaire.",
+      "source": "qa/composition-132b2f1f/world-screens.log ; qa/composition-132b2f1f/world-screens-result.json",
+      "limit": "Suite distincte de la commande des 247 tests. Les tests ne constituent pas une validation artistique du cadrage."
+    },
+    {
+      "id": "V2-FRAMES",
+      "subject": "Géométrie des fonds",
+      "status": "Réussi",
+      "count": 24,
+      "unit": "rectangles",
+      "evidence": "24 rectangles valides sur huit biomes et trois bandes. Seule la jungle est recadrée ; ses trois bandes couvrent 941 pixels. Les 21 autres rectangles conservent leur image entière. Dimensions et blobs Git vérifiés.",
+      "source": "qa/composition-132b2f1f/background-frames-audit.json ; app/game/worldScreens.ts",
+      "limit": "Le helper du commit 132b2f1f est exécuté et les huit images sont décodées. Cet audit géométrique reste distinct de la revue des captures navigateur."
+    },
+    {
+      "id": "INT-LOCAL",
+      "subject": "Modèles et contrats locaux",
+      "status": "Réussi",
+      "count": 128,
+      "unit": "tests locaux",
+      "evidence": "Deux passages distincts sur a5e41f66 / 5daa00e1 : 60 tests mandat, combat, sauvegarde et audio en 10,514 s ; 68 tests des flux communs Clan/Wolf en 26,985 s. Sept fichiers distincts, zéro échec ou test ignoré.",
+      "source": "qa/integration-a5e41f66/mandate-model-tests-result.json ; qa/integration-a5e41f66/clan-wolf-contract-tests-result.json",
+      "limit": "Tests locaux ciblés. Ne pas additionner les 247 tests historiques à ce total ni déduire une réussite de CI ou de navigateur."
+    },
+    {
+      "id": "INT-AUDIO",
+      "subject": "Exploration et mandat sonores",
+      "status": "Implémenté, CI en cours",
+      "count": 10,
+      "unit": "signaux",
+      "evidence": "Deux pas de surface, porte, audience, archives, début des sceaux, activation, remise à zéro, achèvement et remise du mandat. Les actions confirmées et la distance réellement parcourue pilotent les signaux.",
+      "source": "app/game/systems/wolfCastleAudio.ts ; tests/wolf-castle-audio.test.mjs ; Audio!A40:H49",
+      "limit": "Le directeur audio fait partie des 60 tests locaux. L’écoute du mixage et la nouvelle recette navigateur restent distinctes."
+    },
+    {
+      "id": "INT-CI",
+      "subject": "Qualification de l’intégration",
+      "status": "En cours",
+      "count": null,
+      "unit": "",
+      "evidence": "PR #106 sur main, source a5e41f66. Recettes prévues : Wolf 32 scénarios et 27 captures ; Clan Ship 22 scénarios ; régression V94 et inventaire strict. Aucun résultat courant revendiqué.",
+      "source": "qa/integration-a5e41f66/source.json ; runs Wolf 41877760754, Clan 41877760792, V94 41877760809",
+      "limit": "Les preuves 247 tests / 24 contrôles / 21 captures sur 881b66da restent historiques. Aucun résultat navigateur n’est déduit des 128 tests locaux."
+    }
+  ],
+  "limitation": "Les contrôles du classeur et de ses images ne qualifient pas le navigateur ni la fidélité artistique. Les preuves historiques restent liées à leur version.",
+  "sourceCommit": "5daa00e1dd4d7db94656c82d71666e76af11ee21",
+  "publishedCodeCommit": "a5e41f66f6c3d194afae4f6f446b6c02f213d4c4",
+  "publishedCodeTree": "48354d87cc9e8d2c16f644575ee4258d4a3d6427",
+  "productionBuildCommit": "a5e41f66f6c3d194afae4f6f446b6c02f213d4c4",
+  "historicalQualification": {
+    "version": "1.3.0",
+    "sourceCommit": "881b66dafc94ac007b7de907bc625b00af71dff8",
+    "localEquivalent": "132b2f1fa4f0fdf0de096566cc1e1e33a6286d34",
+    "sourceTree": "54804a2c3d3762f3ca3b0d621ff8401c50ab2c42",
+    "releaseStatus": "Qualifié techniquement",
+    "qualifiedAt": "2026-11-04T12:23:47.691Z",
+    "scope": "Qualification historique de la reprise 1.3.0 sur 881b66da / 132b2f1f : 247 tests, 24 contrôles navigateur et 21 captures. Elle ne qualifie pas les ajouts du mandat ni l’intégration courante a5e41f66.",
+    "featureKeys": [
+      "combat",
+      "saveV2",
+      "arrivalAudio",
+      "castleAudio",
+      "runtimeArt"
+    ]
+  },
+  "integrationQualification": {
+    "sourceCommit": "a5e41f66f6c3d194afae4f6f446b6c02f213d4c4",
+    "localEquivalent": "5daa00e1dd4d7db94656c82d71666e76af11ee21",
+    "sourceTree": "48354d87cc9e8d2c16f644575ee4258d4a3d6427",
+    "sourceProof": "qa/integration-a5e41f66/source.json",
+    "pullRequest": "https://github.com/darknigthmare/yautja-la-longue-chasse/pull/106",
+    "targetBranch": "main",
+    "mergedAtObservation": false,
+    "clanIntegration": {
+      "pullRequest": "https://github.com/darknigthmare/yautja-la-longue-chasse/pull/104",
+      "mergeCommit": "b18c79b92942f63ad885e6c90b4f2b5e90dc812c",
+      "status": "Source Clan intégrée depuis main ; nouveaux flux communs soumis à la recette de la source courante.",
+      "tracking": {
+        "pullRequest": "https://github.com/darknigthmare/yautja-la-longue-chasse/pull/107",
+        "status": "Fusionnée",
+        "mergeCommit": "c171050646c5593b0b5bf154ff9b2bbfb7a4e4ac",
+        "qualifiedSource": "62b9cb58",
+        "qualifiedRunUrl": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41876798912",
+        "qualifiedJobUrl": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41876798912/job/126738250315",
+        "changedFilesFromQualifiedSource": 0,
+        "scope": "Les six fichiers du suivi Clan sont déjà repris dans a5e41f66 par cherry-pick. Cette fusion documentaire ne qualifie pas la PR #106."
+      }
+    },
+    "mandateCommit": "3aaded18daf303f69f90f51c212f5fe4ab55d72a",
+    "status": "Qualification CI en cours",
+    "localTests": [
+      {
+        "id": "mandate-model-tests",
+        "kind": "Tests locaux ciblés",
+        "status": "Réussi",
+        "sourceCommit": "a5e41f66f6c3d194afae4f6f446b6c02f213d4c4",
+        "localEquivalent": "5daa00e1dd4d7db94656c82d71666e76af11ee21",
+        "sourceTree": "48354d87cc9e8d2c16f644575ee4258d4a3d6427",
+        "command": [
+          "node",
+          "--experimental-strip-types",
+          "--test",
+          "--test-concurrency=1",
+          "tests/wolf-castle-dungeon.test.mjs",
+          "tests/wolf-castle-combat.test.mjs",
+          "tests/wolf-arrival-save.test.mjs",
+          "tests/wolf-castle-audio.test.mjs"
+        ],
+        "tests": 60,
+        "passed": 60,
+        "failed": 0,
+        "skipped": 0,
+        "durationSeconds": 10.514,
+        "result": "qa/integration-a5e41f66/mandate-model-tests-result.json",
+        "log": "qa/integration-a5e41f66/mandate-model-tests.log",
+        "resultSha256": "a6cbd2d325958043edf69549a35a47fd348d91bda13ebcb7dbe714b5c28d427a",
+        "logSha256": "19234dfcad0c84a618f34408c6553f614843f03751c5f816e136707cd61fef1f",
+        "scope": "Exécution locale distincte de la CI et de la recette navigateur."
+      },
+      {
+        "id": "clan-wolf-contract-tests",
+        "kind": "Tests locaux ciblés",
+        "status": "Réussi",
+        "sourceCommit": "a5e41f66f6c3d194afae4f6f446b6c02f213d4c4",
+        "localEquivalent": "5daa00e1dd4d7db94656c82d71666e76af11ee21",
+        "sourceTree": "48354d87cc9e8d2c16f644575ee4258d4a3d6427",
+        "command": [
+          "node",
+          "--experimental-strip-types",
+          "--test",
+          "--test-concurrency=1",
+          "tests/game-client-ship-flow.test.mjs",
+          "tests/clan-ship-docking.test.mjs",
+          "tests/clan-ship-save.test.mjs"
+        ],
+        "tests": 68,
+        "passed": 68,
+        "failed": 0,
+        "skipped": 0,
+        "durationSeconds": 26.985,
+        "result": "qa/integration-a5e41f66/clan-wolf-contract-tests-result.json",
+        "log": "qa/integration-a5e41f66/clan-wolf-contract-tests.log",
+        "resultSha256": "21870aae0c861c0b37270625969372d3893bfdcd4e5e289b3cc10e9f7bea36b9",
+        "logSha256": "6ab97bb40b2c669b7085c46a49b05f91b616f1fb224ac768cac6d0e225809ce0",
+        "scope": "Exécution locale distincte de la CI et de la recette navigateur."
+      }
+    ],
+    "localTestTotal": 128,
+    "localTestFiles": [
+      "tests/wolf-castle-dungeon.test.mjs",
+      "tests/wolf-castle-combat.test.mjs",
+      "tests/wolf-arrival-save.test.mjs",
+      "tests/wolf-castle-audio.test.mjs",
+      "tests/game-client-ship-flow.test.mjs",
+      "tests/clan-ship-docking.test.mjs",
+      "tests/clan-ship-save.test.mjs"
+    ],
+    "ci": {
+      "status": "En attente",
+      "wolfRun": 41877760754,
+      "wolfRunUrl": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41877760754",
+      "clanRun": 41877760792,
+      "clanRunUrl": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41877760792",
+      "v94Run": 41877760809,
+      "v94RunUrl": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41877760809",
+      "expectedWolfChecks": 32,
+      "expectedWolfScreenshots": 27,
+      "expectedClanChecks": 22,
+      "inventorySha256": "b05b63ee443eb02bd88326d74ac2543a4f54ae9fc82a1e7b6a0f0306e3de5496",
+      "scope": "Exécutions lancées ou en file ; aucun résultat courant de CI ni de navigateur n’est revendiqué."
+    },
+    "localBuild": {
+      "sourceCommit": "a5e41f66f6c3d194afae4f6f446b6c02f213d4c4",
+      "localEquivalent": "5daa00e1dd4d7db94656c82d71666e76af11ee21",
+      "sourceTree": "48354d87cc9e8d2c16f644575ee4258d4a3d6427",
+      "command": "npm run build:production",
+      "kind": "Build local",
+      "exitCode": 0,
+      "durationSeconds": 316.43,
+      "audioManifestRegenerated": true,
+      "audioManifestRestored": true,
+      "remainingTrackedChanges": "",
+      "completedChecks": [
+        "Next.js webpack",
+        "TypeScript",
+        "CSS PIT"
+      ],
+      "skippedChecks": {
+        "native-origin": "not-exact-linux-vercel-build-root",
+        "static-output": "not-exact-linux-vercel-build-root"
+      },
+      "files": [
+        {
+          "path": "qa/integration-a5e41f66/production-build-result.json",
+          "sha256": "1ff6d81103f5ad7bfd137e7ca7c30e410f371f4dd1bdadeada13baeca2f35f37"
+        },
+        {
+          "path": "qa/integration-a5e41f66/production-build.log",
+          "sha256": "0bbc59ff0513e13a4d8857d204fe90a23202155e4e02c62c58d96a183f5f1d97"
+        }
+      ],
+      "scope": "Build local sur la source courante exacte. Aucun déploiement, smoke test ni résultat de CI distante n’est déduit de cette réussite."
+    }
+  },
+  "inputWorkbookSha256": "22c152fb701c5d928198480f931f72e103f254cf1400a61418e26f7bd48d1a93",
+  "outputWorkbookSha256": "7b1c7686b69c57963f4ec4b2ad71e8f4934ed0f802667b5e64d8c8d9b5c5735e",
+  "historyReport": "history/workbook-verification-1.2.0.json",
+  "nativePreservationCheck": {
+    "worksheetNames": [
+      "Synthese",
+      "Chateau",
+      "Cinematique",
+      "Sprites",
+      "Prompts",
+      "Verification",
+      "Combat",
+      "Audio"
+    ],
+    "unchangedSheets": [
+      "Cinematique",
+      "Sprites",
+      "Prompts"
+    ],
+    "formulaCount": 58,
+    "formulaErrors": 0,
+    "changedFormulas": {
+      "Synthese!B26": {
+        "before": {
+          "formula": "COUNTIFS('Audio'!B6:B39,\"Ponctuel\",'Audio'!C6:C39,\"Arrivée\")",
+          "cached": "9"
+        },
+        "after": {
+          "formula": "COUNTIFS('Audio'!B6:B49,\"Ponctuel\",'Audio'!C6:C49,\"Arrivée\")",
+          "cached": "9"
+        }
+      }
+    },
+    "cachedFormulaValuesUnchanged": true,
+    "humanReviewCellsUnchanged": 30,
+    "humanApprovals": 0,
+    "historicalWorksheetRowsUnchanged": "Verification!A6:H19",
+    "historicalProofFilesVerified": 91,
+    "historicalQaAndHistoryChanged": false,
+    "historical247TestsAnd24ChecksUnchanged": true,
+    "audioRows": 44,
+    "newExplorationCues": 10,
+    "summaryCountsUnchanged": true,
+    "changedCellCounts": {
+      "Synthese": 6,
+      "Chateau": 12,
+      "Cinematique": 0,
+      "Sprites": 0,
+      "Prompts": 0,
+      "Verification": 55,
+      "Combat": 41,
+      "Audio": 97
+    },
+    "baselineXlsxSha256": "94ffe9166afbdbdf70fa38d799e431dac53587c0fdd96310d89c56538a284c47",
+    "xlsxSha256": "7b1c7686b69c57963f4ec4b2ad71e8f4934ed0f802667b5e64d8c8d9b5c5735e",
+    "xlsxBytes": 59324,
+    "comparisonMethod": "Worksheet XML with shared strings, concrete cell/differential style definitions, relative conditional-format priority order and generated relationship identifiers resolved before comparison."
+  },
+  "pendingEvidenceUpdate": {
+    "status": "Export différé sur instruction root",
+    "xlsxSnapshotSha256": "7b1c7686b69c57963f4ec4b2ad71e8f4934ed0f802667b5e64d8c8d9b5c5735e",
+    "snapshotCiObservation": "En attente de résultats lors de cet export",
+    "latestEvidence": "workbook-evidence.json.integrationQualification.firstCiObservation",
+    "latestStatus": "Qualification complète non acquise ; corrections en cours",
+    "pendingChanges": [
+      "Premiers résultats CI Clan/Wolf sur a5e41f66",
+      "Format courant de visite V3 avec migration V1/V2",
+      "Nouvelle source corrigée et résultats encore à recevoir"
+    ],
+    "scope": "Le XLSX et ses rendus restent l’instantané précédemment relu. Aucun nouvel export ni succès général ajouté après réception des premiers rapports CI."
+  }
+}

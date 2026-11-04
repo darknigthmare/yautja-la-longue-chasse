@@ -1,0 +1,17 @@
+{
+  "command": [
+    "node",
+    "--experimental-strip-types",
+    "--test",
+    "--test-concurrency=1",
+    "tests/wolf-castle-dungeon.test.mjs",
+    "tests/wolf-castle-combat.test.mjs",
+    "tests/wolf-arrival-save.test.mjs",
+    "tests/wolf-castle-audio.test.mjs"
+  ],
+  "sourceCommit": "a5e41f66f6c3d194afae4f6f446b6c02f213d4c4",
+  "localCommit": "5daa00e1dd4d7db94656c82d71666e76af11ee21",
+  "exitCode": 0,
+  "durationSeconds": 10.514,
+  "log": "/workspace/scratch/7c02a162021a/yautja-integration-106/outputs/integration-a5e41f66/mandate-model-tests.log"
+}
