@@ -507,7 +507,8 @@ try {
     await page.locator('[data-arrival-shot="atmosphere"]').waitFor({ timeout: 16_000 });
     await page.waitForTimeout(600); await screenshot('12-arrival-atmosphere.png');
     await page.locator('[data-arrival-shot="landing"]').waitFor({ timeout: 16_000 });
-    await page.waitForTimeout(5_700); await screenshot('13-arrival-ground-impact.png');
+    await page.locator('[data-arrival-scene][data-arrival-contact="true"]').waitFor({ timeout: 16_000 });
+    await screenshot('13-arrival-ground-impact.png');
     assert.equal(await page.locator('[data-arrival-scene]').getAttribute('data-arrival-contact'), 'true');
     await page.locator('[data-arrival-ground-pod="true"]').waitFor();
     await page.locator('[data-arrival-shot="egress"]').waitFor({ timeout: 10_000 });
