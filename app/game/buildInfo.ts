@@ -1,9 +1,9 @@
 /** Visible content lot, shared by portable archive metadata and the UI. */
 export const GAME_CONTENT_VERSION = "V112";
-export const GAME_CONTENT_LABEL = "Canopée · conservation · cité vivante · duels Feral/Scar";
+export const GAME_CONTENT_LABEL = "Canopée · cité vivante · épreuves royales · arrivées orbitales";
 
 /** Application release; independent from the historical content and save formats. */
-export const GAME_RELEASE_VERSION = "1.2.0";
+export const GAME_RELEASE_VERSION = "1.3.0";
 
 function publishedBuildId(): string {
   // Next and Vite replace this literal with the same public, non-secret Git ID.

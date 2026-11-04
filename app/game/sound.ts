@@ -1,5 +1,6 @@
 // Explicit extension also works in the Node strip-types test runner.
 import { OptionalAudioFiles } from "./audioFiles.ts";
+import { GameSceneAudio } from "./systems/sceneAudio.ts";
 
 export type GameMusicContext = "menu" | "ship" | "galaxy" | "exploration" | "combat" | "boss" | "homeworld";
 
@@ -132,9 +133,22 @@ export class GameAudio {
   private requestedMusic: GameMusicContext | null = null;
   private cloakFileActive = false;
   private fileAudio: OptionalAudioFiles;
+  private readonly sceneVoices = new Set<GameSceneAudio>();
 
   constructor(options: GameAudioOptions = {}) {
     this.fileAudio = new OptionalAudioFiles(() => this.context && this.effects && this.music ? { context: this.context, effects: this.effects, music: this.music } : null, options.manifestUrl);
+  }
+
+  /** A scene owns only its voices; the existing effects/master mix stays authoritative. */
+  createSceneAudio(): GameSceneAudio {
+    const voice = new GameSceneAudio({
+      graph: () => this.readyTime() === null || !this.context || !this.effects ? null : { context: this.context, effects: this.effects },
+      unlock: () => this.unlock(),
+      released: () => this.sceneVoices.delete(voice),
+    });
+    if (this.disposed) voice.dispose();
+    else this.sceneVoices.add(voice);
+    return voice;
   }
 
   /**
@@ -226,6 +240,7 @@ export class GameAudio {
   setPaused(paused: boolean): void {
     if (this.disposed || this.paused === paused) return;
     this.paused = paused;
+    if (paused) for (const voice of this.sceneVoices) voice.stop();
     this.fileAudio.setPaused(true);
     this.applyMix();
     const context = this.context;
@@ -952,6 +967,7 @@ export class GameAudio {
     }
 
     this.disposed = true;
+    for (const voice of [...this.sceneVoices]) voice.dispose();
     this.musicRequest++; this.requestedMusic = null; this.requestedAmbience = null;
     this.fileAudio.dispose();
 
