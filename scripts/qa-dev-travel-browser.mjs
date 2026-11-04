@@ -72,7 +72,7 @@ const report = {
   scope: 'Direct travel, real movement and mission startup, Wolf castle rooms and approach, eight planetary arrivals with natural and skipped handoffs, reset, URL entry, keyboard and touch, and campaign storage isolation. No complete campaign, art approval or performance qualification.',
   checks: [], captures: [], errors: [], consoleErrors: [], storageOperations: [], databaseOpens: [],
   storageChecks: [], roomVisits: [], movement: [], huntObservations: [], missingAssets: [],
-  castleVisits: [], arrivalVisits: [], arrivalTransitions: [], arrivalResets: [], requestedAssets: [],
+  castleVisits: [], arrivalVisits: [], arrivalTransitions: [], arrivalResets: [], arrivalPauses: [], requestedAssets: [],
 };
 const missing = new Set();
 const requested = new Set();
@@ -317,9 +317,63 @@ async function observeArrival(target = page) {
   }));
 }
 
+async function pageDiagnostics(target = page) {
+  return target.evaluate(() => {
+    const arrival = document.querySelector('[data-arrival-run]');
+    const session = document.querySelector('[data-dev-session]');
+    const panel = arrival?.querySelector('[aria-labelledby="arrival-pause-title"]');
+    const active = document.activeElement;
+    return {
+      url: location.href, focused: document.hasFocus(), hidden: document.hidden, visibility: document.visibilityState,
+      activeElement: active ? { tag: active.tagName, role: active.getAttribute('role'), label: active.getAttribute('aria-label'),
+        text: active.textContent?.trim().slice(0, 160) } : null,
+      session: session ? { id: session.getAttribute('data-dev-session'), stage: session.getAttribute('data-dev-stage'),
+        arrivalStatus: session.getAttribute('data-dev-arrival-status'), arrivalElapsed: session.getAttribute('data-dev-arrival-elapsed') } : null,
+      arrival: arrival ? {
+        run: arrival.getAttribute('data-arrival-run'), shot: arrival.getAttribute('data-arrival-shot'),
+        status: arrival.getAttribute('data-arrival-status'), elapsed: Number(arrival.getAttribute('data-arrival-elapsed')),
+        heading: panel?.querySelector('h2')?.textContent?.trim() ?? '',
+        reason: Array.from(panel?.querySelectorAll('p') ?? []).at(-1)?.textContent?.trim() ?? '',
+        statusNote: arrival.querySelector('[role="status"]')?.textContent?.trim() ?? '',
+      } : null,
+    };
+  });
+}
+
 async function arrivalReady(expected, target = page) {
   await target.locator(`[data-dev-session="${expected.id}"][data-dev-stage="arrival"]`).waitFor({ timeout: 90000 });
-  await target.locator('[data-arrival-status="playing"]').waitFor({ timeout: 90000 });
+  await target.waitForFunction(() => {
+    const arrival = document.querySelector('[data-arrival-run]');
+    return arrival && arrival.getAttribute('data-arrival-status') !== 'prepared';
+  }, null, { timeout: 90000 });
+  if (await target.locator('[data-arrival-status="paused"]').count()) {
+    const before = await pageDiagnostics(target);
+    const pause = { id: expected.id, before, resumeAttempted: false };
+    report.arrivalPauses.push(pause);
+    assert.equal(before.arrival?.status, 'paused');
+    assert.doesNotMatch(`${before.arrival.reason}\n${before.arrival.statusNote}`,
+      /L’arrivée n’a pas pu être enregistrée|Le passage vers la chasse n’a pas été confirmé|visuels sont indisponibles/u,
+      'An arrival checkpoint, handoff or asset error must fail instead of being retried.');
+    if (!before.focused || before.hidden || before.visibility !== 'visible') {
+      await target.bringToFront();
+      await target.waitForFunction(() => document.hasFocus() && !document.hidden, null, { timeout: 30000 });
+      pause.afterActivation = await pageDiagnostics(target);
+    }
+    // The production arrival can start paused, as in the existing campaign QA.
+    // Use one native, actionable Resume button; never loop over further pauses.
+    pause.resumeAttempted = true;
+    await target.getByRole('button', { name: 'Reprendre l’arrivée', exact: true }).click();
+    await target.locator('[data-arrival-status="playing"]').waitFor();
+    await target.waitForFunction(({ run, elapsed }) => {
+      const arrival = document.querySelector('[data-arrival-run]');
+      if (arrival?.getAttribute('data-arrival-run') !== run || arrival.getAttribute('data-arrival-status') !== 'playing') {
+        throw new Error('The arrival changed run or paused again after its single native resume.');
+      }
+      return Number(arrival.getAttribute('data-arrival-elapsed')) > elapsed;
+    }, { run: before.arrival.run, elapsed: before.arrival.elapsed });
+    pause.afterResume = await pageDiagnostics(target);
+  }
+  await target.locator('[data-arrival-status="playing"]').waitFor();
   const value = await observeArrival(target);
   assert.ok(value.run && Number.isFinite(value.elapsed), 'The cinematic must expose a real run and a finite native timeline.');
   assert.equal(value.planet, expected.planet);
@@ -876,6 +930,8 @@ try {
   report.failure = error.stack || String(error);
   console.error(error.stack || error);
   if (page && !page.isClosed()) {
+    try { report.failureState = await pageDiagnostics(); }
+    catch (diagnosticError) { report.failureStateError = String(diagnosticError); }
     try { await capture('failure'); } catch { /* Preserve the original failure. */ }
   }
   process.exitCode = 1;
