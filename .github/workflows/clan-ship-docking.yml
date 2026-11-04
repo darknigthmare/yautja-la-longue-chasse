@@ -14,6 +14,7 @@ on:
       - 'app/game/systems/campaignSlots.ts'
       - 'app/game/systems/completeArchive.ts'
       - 'tests/clan-ship-*.test.mjs'
+      - 'tests/fixtures/clan-ship-browser-assets.json'
       - 'scripts/qa-clan-ship-browser.mjs'
       - '.github/workflows/clan-ship-docking.yml'
   workflow_dispatch:
@@ -32,6 +33,7 @@ jobs:
     env:
       ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
       NEXT_TELEMETRY_DISABLED: '1'
+      CLAN_SHIP_SOURCE_COMMIT: ${{ github.event.pull_request.head.sha || github.sha }}
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
@@ -55,6 +57,21 @@ jobs:
             /public/game/ships/v13/classic-predator-spaceship-top.webp
             /public/game/backgrounds/ship-hub-v4.webp
             /public/game/ship-interior/
+      - name: Include existing artwork used by the shared ship services
+        run: |
+          node --input-type=module <<'NODE'
+          import assert from 'node:assert/strict';
+          import { readFileSync } from 'node:fs';
+          import { execFileSync } from 'node:child_process';
+          const { paths } = JSON.parse(readFileSync('tests/fixtures/clan-ship-browser-assets.json', 'utf8'));
+          assert.equal(new Set(paths).size, paths.length);
+          for (const file of paths) {
+            assert.match(file, /^public\/game\/[A-Za-z0-9._/-]+$/);
+            assert.ok(file.split('/').every(part => part && part !== '.' && part !== '..'));
+          }
+          execFileSync('git', ['sparse-checkout', 'add', '--stdin'], { input: paths.map(file => '/' + file).join('\n') + '\n', stdio: ['pipe', 'inherit', 'inherit'] });
+          console.log('Existing service assets included:', paths.length);
+          NODE
       - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
         with:
           node-version: '22'

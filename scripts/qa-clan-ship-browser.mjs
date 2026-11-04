@@ -2,6 +2,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { execFileSync } from 'node:child_process';
 import { build } from 'esbuild';
 import { chromium } from 'playwright-core';
 import { createServer } from 'vite';
@@ -19,7 +20,8 @@ const { defaultSave, SAVE_STORAGE_KEY } = await import('data:text/javascript;bas
 const seed = defaultSave('2026-11-04T10:00:00.000Z');
 seed.profile.hunterName = 'QA Clan Ship';
 seed.settings.masterVolume = 0;
-const report = { startedAt: new Date().toISOString(), runtime: 'actual desktop GameClient via Vite', checks: [], errors: [], missingAssets: [], screenshots: [] };
+const checkoutCommit = execFileSync('git', ['rev-parse', 'HEAD'], { cwd: root, encoding: 'utf8' }).trim();
+const report = { startedAt: new Date().toISOString(), sourceCommit: process.env.CLAN_SHIP_SOURCE_COMMIT || checkoutCommit, checkoutCommit, runtime: 'actual desktop GameClient via Vite', checks: [], errors: [], missingAssets: [], screenshots: [] };
 const missing = new Set();
 let server, browser, page;
 try {
@@ -172,11 +174,13 @@ try {
     }
     await screenshot('04-hangar-mobile-320.png');
   });
-  await check('Clan ship artwork loads and no browser exception occurs', async () => {
+  await check('Clan ship and shared service artwork load without browser errors', async () => {
+    await page.waitForLoadState('networkidle');
     const images = await clan().locator('img').evaluateAll(elements => elements.map(image => ({ src: image.getAttribute('src'), complete: image.complete, width: image.naturalWidth })));
     assert.ok(images.length >= 2, 'Both clan and personal vessels must remain identifiable');
     assert.ok(images.every(image => image.complete && image.width > 0), JSON.stringify(images));
     assert.deepEqual(report.errors, []);
+    assert.deepEqual([...missing], [], 'The QA checkout must include all assets requested by this route');
   });
   report.passed = true;
 } catch (error) {
