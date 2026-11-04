@@ -105,6 +105,7 @@ try {
       const card = document.querySelector('[data-wolf-castle-status], [data-arrival-run]');
       const safe = card?.closest('.screen-safe');
       return { width: innerWidth, height: innerHeight, cardWidth: card?.clientWidth, cardScroll: card?.scrollWidth,
+        arrivalSceneWidth: card?.querySelector('[data-arrival-scene]')?.clientWidth,
         padding: safe ? getComputedStyle(safe).paddingInlineStart : null };
     }));
   };
@@ -450,10 +451,11 @@ try {
       const outer = element.getBoundingClientRect();
       const panel = element.querySelector('[aria-labelledby="arrival-pause-title"] > div');
       const children = [panel, ...panel.querySelectorAll('button')];
-      return { width: element.clientWidth, scroll: element.scrollWidth,
+      return { width: element.clientWidth, scroll: element.scrollWidth, sceneWidth: element.querySelector('[data-arrival-scene]')?.clientWidth,
         clipped: children.filter(child => { const rect = child.getBoundingClientRect(); return rect.left < outer.left || rect.right > outer.right; }).map(child => child.textContent) };
     });
     assert.ok(box.scroll <= box.width + 2, JSON.stringify(box));
+    assert.ok(box.sceneWidth <= box.width, 'The scene aspect ratio must not impose a wider canvas than the mobile card');
     assert.deepEqual(box.clipped, [], 'The mobile pause panel and its controls must remain inside the arrival card');
     await screenshot('06-arrival-pause-mobile-320.png');
     await resizeViewport({ width: 1440, height: 1000 });
