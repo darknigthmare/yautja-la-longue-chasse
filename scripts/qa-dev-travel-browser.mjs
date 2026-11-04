@@ -392,7 +392,22 @@ try {
     await page.locator('[data-region-resume]').waitFor({ timeout: 120000 });
     await page.locator('[data-region-resume]').click();
     await page.waitForFunction(() => Number(document.querySelector('[data-homeworld-region-v68="glass-desert"]')?.getAttribute('data-state-tick')) > 2);
-    await page.locator('[data-region-player]').waitFor();
+    const player = page.locator('[data-region-player]');
+    await player.waitFor({ state: 'attached' });
+    const position = await player.evaluate(element => ({
+      x: Number(element.getAttribute('data-x')), y: Number(element.getAttribute('data-y')),
+    }));
+    assert.ok(Number.isFinite(position.x) && Number.isFinite(position.y), 'The village player anchor must have finite world coordinates.');
+    // The world anchor is intentionally 0×0; its positioned child paints the hunter.
+    const renderedPlayer = player.locator(':scope > img, :scope > [data-modular-homeworld-character]');
+    await renderedPlayer.waitFor();
+    const sprites = await renderedPlayer.evaluate(async element => {
+      const images = element instanceof HTMLImageElement ? [element] : Array.from(element.querySelectorAll('img'));
+      await Promise.all(images.map(image => image.decode()));
+      return images.map(image => ({ src: new URL(image.currentSrc || image.src).pathname, width: image.naturalWidth, height: image.naturalHeight }));
+    });
+    assert.ok(sprites.length > 0 && sprites.every(sprite => sprite.width > 0 && sprite.height > 0), 'The visible village hunter must use decoded native image pixels.');
+    report.regionPlayer = { position, sprites };
     await capture('05-regional-village');
     await page.locator('[data-village-open-atlas-v70]').click();
     await page.locator('[data-region-resume]').waitFor();
