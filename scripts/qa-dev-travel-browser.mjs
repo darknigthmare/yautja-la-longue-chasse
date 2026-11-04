@@ -331,7 +331,7 @@ try {
     await page.locator('.physical-ship-deck__station-shortcuts').getByRole('button', { name: /armurerie/i }).click();
     const armory = page.locator('[data-dev-service="armory"]');
     await armory.waitFor();
-    const weapon = armory.getByLabel('Arme 1', { exact: true });
+    const weapon = armory.getByLabel(/^Arme\s+1(?=\D|$)/);
     const before = await weapon.inputValue();
     const next = await weapon.locator('option').evaluateAll((options, selected) => options.find(option => !option.disabled && option.value !== selected)?.value, before);
     assert.ok(next, 'The test armory must offer an alternative real weapon.');
@@ -340,7 +340,7 @@ try {
     await page.locator('[data-dev-service-back]').click();
     await page.locator('.physical-ship-deck[data-suspended="false"]').waitFor();
     await page.locator('.physical-ship-deck__station-shortcuts').getByRole('button', { name: /armurerie/i }).click();
-    assert.equal(await page.locator('[data-dev-service="armory"]').getByLabel('Arme 1', { exact: true }).inputValue(), next);
+    assert.equal(await page.locator('[data-dev-service="armory"]').getByLabel(/^Arme\s+1(?=\D|$)/).inputValue(), next);
     await page.locator('[data-dev-service-back]').click();
   });
 
