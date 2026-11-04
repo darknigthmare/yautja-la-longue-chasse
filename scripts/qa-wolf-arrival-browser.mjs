@@ -552,6 +552,11 @@ try {
     await page.locator('[data-wolf-dungeon-return]').click();
     // The guide walks to the next door; crossing it still requires the normal
     // contextual interaction, just as when exploring the castle manually.
+    await page.waitForFunction(() => {
+      const door = document.querySelector('[data-wolf-castle-interact="door:royal-service-pass"]');
+      const stopped = document.querySelector('[data-wolf-castle-interior]')?.getAttribute('data-wolf-castle-moving') === 'false';
+      return door && !door.disabled && stopped;
+    });
     await page.locator('[data-wolf-castle-interact="door:royal-service-pass"]').click(); await waitCastle('royal-service-pass');
     await moveRoom('royal-council'); await moveRoom('royal-audience'); await targetStation('audience');
     assert.deepEqual((await stored()).wolfCastle.dungeon, victory);

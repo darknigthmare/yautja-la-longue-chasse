@@ -24,7 +24,7 @@ const dependencies = await build({
     'export { createWolfCastleVisit, actWolfCastle, applyWolfCastleCheckpoint } from "./app/game/systems/wolfCastle.ts";',
     'export * as castle from "./app/game/systems/wolfCastle.ts";',
     'export * as castleCombat from "./app/game/systems/wolfCastleCombat.ts";',
-    'export { captureHuntGauntletV142 } from "./app/game/systems/huntGauntletIdentityV142.ts";',
+    'export { captureHuntGauntletV142, resumeHuntGauntletV142 } from "./app/game/systems/huntGauntletIdentityV142.ts";',
     'export { normalizeHuntAccessibilityV112 } from "./app/game/systems/huntAccessibilityV112.ts";',
   ].join('\n'), resolveDir: fileURLToPath(new URL('../', import.meta.url)), loader: 'ts' },
   bundle: true, write: false, format: 'iife', globalName: 'ShipFlowDependencies', platform: 'node', logLevel: 'silent',

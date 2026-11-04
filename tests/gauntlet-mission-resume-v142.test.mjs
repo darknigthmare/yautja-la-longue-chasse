@@ -4,21 +4,26 @@ import {readFileSync} from "node:fs";
 import {fileURLToPath} from "node:url";
 import {runInNewContext} from "node:vm";
 import ts from "typescript";
-import {
-  captureHuntGauntletV142,resumeHuntGauntletV142,HUNT_GAUNTLET_CONFIG_KEY_V142,
-} from "../app/game/systems/huntGauntletIdentityV142.ts";
-import {GAUNTLET_CATALOG_V132,serializeGauntletPreferenceV132} from "../app/game/systems/clanWarGauntletCatalogV132.ts";
-import {readHunterGauntletV133} from "../app/game/systems/useHunterGauntletV133.ts";
-import {normalizeHuntAccessibilityV112} from "../app/game/systems/huntAccessibilityV112.ts";
-import {createPlanetArrival,requestPlanetArrivalHandoff,completePlanetArrivalHandoff} from "../app/game/systems/planetArrival.ts";
-import {
-  defaultSave,exportSave,parseSaveImport,normalizeSave,RANK_THRESHOLDS,
-} from "../app/game/save.ts";
-import {
-  normalizeActiveHuntSave,ACTIVE_HUNT_SAVE_VERSION,ACTIVE_HUNT_RUNTIME_REVISION,
-} from "../app/game/systems/activeHuntSave.ts";
+import {homeworldSceneSsrV78} from "./helpers/homeworld-scene-ssr-v78.mjs";
 
 const root=fileURLToPath(new URL("../",import.meta.url));
+// Load the real production modules with the same TypeScript resolver as the
+// arrival suites, including their extensionless imports under plain Node.
+const qa=homeworldSceneSsrV78(root);
+const {
+  captureHuntGauntletV142,resumeHuntGauntletV142,HUNT_GAUNTLET_CONFIG_KEY_V142,
+}=qa.load("app/game/systems/huntGauntletIdentityV142.ts");
+const {GAUNTLET_CATALOG_V132,serializeGauntletPreferenceV132}=qa.load("app/game/systems/clanWarGauntletCatalogV132.ts");
+const {readHunterGauntletV133}=qa.load("app/game/systems/useHunterGauntletV133.ts");
+const {normalizeHuntAccessibilityV112}=qa.load("app/game/systems/huntAccessibilityV112.ts");
+const {createPlanetArrival,requestPlanetArrivalHandoff,completePlanetArrivalHandoff}=qa.load("app/game/systems/planetArrival.ts");
+const {
+  defaultSave,exportSave,parseSaveImport,normalizeSave,RANK_THRESHOLDS,
+}=qa.load("app/game/save.ts");
+const {
+  normalizeActiveHuntSave,ACTIVE_HUNT_SAVE_VERSION,ACTIVE_HUNT_RUNTIME_REVISION,
+}=qa.load("app/game/systems/activeHuntSave.ts");
+
 const read=path=>readFileSync(root+path,"utf8");
 const owner="2026-10-31T14:46:00.000Z";
 const rank="elite";
