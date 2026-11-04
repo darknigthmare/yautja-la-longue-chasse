@@ -281,42 +281,76 @@ courants restent identiques. La reproduction de l'erreur initiale figure dans
 ## Actualisation pour le château Wolf et le mandat royal — 4 novembre 2026
 
 Le relevé courant comprend le Clan Ship fusionné, le château Wolf, le mandat
-royal et l’arrivée planétaire. Il est reconstruit depuis la source qualifiée
+royal, l’arrivée planétaire et la page de voyage temporaire `/dev` intégrée à
+`main`. Il est reconstruit depuis la source qualifiée
 `71826ae1d02563c73facced34ec8cfaa827aeb89` et son inventaire de 2 130 entrées,
 SHA-256 `9ac1b87a8a280c7b211c1f6b70e2ca13c768852b3787c0b1abb4d3cb98f9b96b`.
 Le checkpoint local de préparation est
-`6f209b16c97f572711460f3fd483feaf3317d470`, qui reprend le code du mandat royal
-`3aaded18daf303f69f90f51c212f5fe4ab55d72a`. L’identité de ses sources applicatives
-avec la publication est contrôlée lors de l’intégration ; la recette distante
-identifie séparément son commit effectivement exécuté.
+`a14983dfcc21c31bb5c99d70973cbcdcbf073fd2`. Il reprend le mandat royal
+`3aaded18daf303f69f90f51c212f5fe4ab55d72a`, conserve le gantelet choisi au
+départ lors du premier montage de la chasse après l’arrivée, et intègre le
+`main` `91cf274a88d8e2075fddb0514626ad32d800469f` ainsi que le correctif de
+sélecteur `/dev` `9eed892c74d322d2b89296fac52ccce99cc3a62b`.
+L’identité de ses entrées avec la publication est contrôlée lors de
+l’intégration ; la recette distante identifie son commit effectivement exécuté.
 
 | Mesure du relevé | Valeur |
 | --- | --- |
-| Entrées | 2 144 |
-| Sources applicatives | 1 191 |
-| Octets des entrées | 1 092 055 158 |
-| Octets du document JSON | 398 945 |
-| SHA-256 du document | `b05b63ee443eb02bd88326d74ac2543a4f54ae9fc82a1e7b6a0f0306e3de5496` |
+| Entrées | 2 151 |
+| Sources applicatives | 1 198 |
+| Octets des entrées | 1 092 109 497 |
+| Octets du document JSON | 400 041 |
+| SHA-256 du document | `06d2bd524bbba6708a78cc45b1da6a68c4360568b8002afb55c2f2289aa0b072` |
+| Identité Git du document | `99e1d5106a6f53d0a3b6a97a8e81d96b88c0b0a5` |
 
-Les 2 120 entrées conservées ont chacune le même mode, type et identifiant de
+Les 2 118 entrées conservées ont chacune le même mode, type et identifiant de
 blob Git entre la base et le checkpoint. Les 1 177 blobs applicatifs de la base
-ont été relus et comparés à leurs tailles et SHA-256 qualifiés. Les dix sources
-applicatives modifiées et les quatorze ajouts ont été relus ; leur identifiant
+ont été relus et comparés à leurs tailles et SHA-256 qualifiés. Les onze sources
+applicatives modifiées et les vingt et un ajouts ont été relus ; leur identifiant
 Git, leur taille et leur SHA-256 ont été recalculés. Aucun chemin n’est retiré.
-La couverture correspond exactement aux 1 191 fichiers applicatifs du checkpoint.
+La couverture correspond exactement aux 1 198 fichiers applicatifs du checkpoint.
+Le blob `3f544116fb68488c8ac22f8192deeb4259f7aead` de `GameClient.tsx` fige
+notamment le gantelet du run accepté et refuse un propriétaire ou un identifiant
+de départ différent.
+
+Une seule entrée inventoriée hors `app/` change :
+`tests/homeworld-geometry-recovery-integration-v112.test.mjs` reçoit
+`recoveryStorage:undefined,` dans l’environnement de son contrôleur de test,
+soit 26 octets supplémentaires. Cette version exacte provient de `main`
+`91cf274a`. Les blobs avant et après, leurs tailles et leurs SHA-256 sont
+vérifiés. Les sept imports et les graphes de dépendances V112 et V113 restent
+identiques : chacun comporte sept chemins et huit résolutions. Aucun autre
+changement hors `app/` n’est accepté par la préparation différentielle.
 
 La portée de construction reste celle du générateur existant : les déclarations,
 générateurs, dépendances, banques natives V112 et fixtures parcourues sont
 contrôlés, ainsi que les résolutions réelles d’imports avec le parseur TypeScript
-verrouillé. Les entrées inventoriées hors `app/` sont identiques à la base.
-Le tri, l’unicité, les nombres et les sommes d’octets sont vérifiés. La méthode
-reproduit aussi l’inventaire qualifié de départ octet pour octet ; des cas ciblés
-refusent une déclaration ou une banque de fixtures élargie.
+verrouillé. Le tri, l’unicité, les nombres et les sommes d’octets sont vérifiés.
+Quatorze contrôles de préparation couvrent les reproductions exactes des
+inventaires qualifiés et les refus de changement de portée, de variante du test
+autorisé, de mode, de suppression ou d’autre entrée hors `app/`. Une revue
+indépendante confirme que l’exception de 26 octets ne modifie pas la portée.
+
+### Premier passage complet, conservé sur sa propre source
+
+Le relevé de la publication `a5e41f66f6c3d194afae4f6f446b6c02f213d4c4`
+contient 2 144 entrées et 1 092 055 158 octets. Son JSON de 398 945 octets a
+le SHA-256 `b05b63ee443eb02bd88326d74ac2543a4f54ae9fc82a1e7b6a0f0306e3de5496`.
+Le run V94 `41877760809` a réussi ses cinq jobs. Le job modèles
+`126741827533` a accepté la commande stricte et réussi les 75 tests des
+17 fichiers V113, sans échec ni test ignoré. Le job agrégateur `126759937769`
+a validé les trois preuves sur le même run et la même tentative.
+Le checkout synthétique `7e14ce84ad01ee307e7f67a6408c8244cfe4fff8` possède
+exactement les mêmes fichiers que la tête `a5e41f66` (comparaison GitHub :
+zéro fichier différent). Cette réussite ne qualifie pas les corrections et
+les nouveaux fichiers du relevé courant de 2 151 entrées.
+
+### Qualification attendue de la nouvelle publication
 
 La préparation différentielle ne constitue pas une exécution locale du générateur
 complet : les 682 fichiers historiques absents du checkout partiel représentent
 1 023 219 037 octets. Le contrôle CI suivant conserve son assertion et relit les
-fichiers réellement matérialisés sur la source publiée :
+fichiers réellement matérialisés sur la nouvelle source publiée :
 
 ```sh
 node scripts/snapshot-runtime-v113.mjs --check docs/qa/current-integration-20261103/runtime-inputs.json

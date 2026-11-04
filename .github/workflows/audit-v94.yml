@@ -1110,6 +1110,11 @@ jobs:
         run: node node_modules/next/dist/bin/next typegen
       - name: Check application TypeScript
         run: npm run typecheck
+      - name: Verify isolated developer travel fixtures and safe arrival points
+        if: ${{ matrix.audit_group == 'application' && (!cancelled() && steps.dependencies.outcome == 'success') }}
+        run: >-
+          node --experimental-strip-types --test --test-reporter=spec
+          tests/dev-travel-destinations.test.mjs
       - name: Check game release and deployed build identity
         if: ${{ matrix.audit_group == 'application' && (!cancelled() && steps.dependencies.outcome == 'success') }}
         run: node --experimental-strip-types --test --test-reporter=spec tests/game-release-identity.test.mjs

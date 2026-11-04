@@ -412,7 +412,7 @@ interface ActiveHuntSession {
 }
 
 interface HuntResumePayload {
-  snapshot: JsonObject;
+  snapshot: JsonObject | null;
   retryCheckpoint: JsonObject | null;
   /** Preserves the mission-start cosmetic; no extra reward or unlock. */
   gauntletVariantId: string;
@@ -2788,6 +2788,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
     const mission = MISSIONS.find(item => item.id === arrival.missionId);
     const runtime = normalizeHuntConfiguration(current, run);
     if (!mission || !runtime || current.createdAt !== arrival.ownerCreatedAt ||
+        run.ownerCreatedAt !== arrival.ownerCreatedAt || run.runId !== arrival.runId ||
         current.missionProgress[mission.id].attempts !== arrival.encounterRun) return false;
     arrivalMountedRunRef.current = arrival.runId;
     activeHuntSessionRef.current = {
@@ -2797,10 +2798,15 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
     };
     missionSettlementRef.current = false;
     setPendingHuntResult(null); setLastResult(null); setLastRewardSummary(null);
-    setSelectedMission(mission); setHuntRuntimeSave(runtime); setHuntResumePayload(null); setResumableHunt(null);
+    setSelectedMission(mission); setHuntRuntimeSave(runtime); setResumableHunt(null);
+    // Pin the accepted run's cosmetic without inventing a resumed world snapshot.
+    setHuntResumePayload({ snapshot: null, retryCheckpoint: null,
+      gauntletVariantId: resumeHuntGauntletV142(run.configuration, hunterGauntlet.equippedId,
+        current.profile.rankId, current.gauntletV134?.claimedStudies ?? []),
+    });
     setNewGamePhase(null); setScreen('mission');
     return true;
-  }, []);
+  }, [hunterGauntlet.equippedId]);
 
   const checkpointPlanetArrival = useCallback((state: PlanetArrivalState): boolean => {
     const current = saveRef.current;

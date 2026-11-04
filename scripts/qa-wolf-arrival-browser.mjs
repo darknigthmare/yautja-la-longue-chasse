@@ -56,7 +56,7 @@ try {
       }
       const pad = { index: 0, id: 'wolf-arrival-qa', connected: true, axes: [0, 0], buttons: Array.from({ length: 17 }, () => ({ pressed: false, value: 0, touched: false })) };
       Object.defineProperty(navigator, 'getGamepads', { configurable: true, value: () => [pad] });
-      const api = { pad, mounts: 0, canvasIdentities: new WeakSet(), activeRunIds: [], handoffWrites: [], failArrivalHandoff: false,
+      const api = { pad, mounts: 0, canvasIdentities: new WeakSet(), activeRunIds: [], handoffWrites: [], castleClicks: [], failArrivalHandoff: false,
         failMandateReward: false, mandateRewardRefusals: 0 };
       const originalSet = Storage.prototype.setItem;
       Storage.prototype.setItem = function (name, value) {
@@ -76,6 +76,17 @@ try {
         }
         return originalSet.call(this, name, value);
       };
+      document.addEventListener('click', event => {
+        const control = event.target instanceof Element ? event.target.closest('[data-wolf-castle-target], [data-wolf-castle-interact], [data-wolf-castle-action]') : null;
+        if (!control) return;
+        api.castleClicks.push({
+          target: control.getAttribute('data-wolf-castle-target'), interaction: control.getAttribute('data-wolf-castle-interact'),
+          action: control.getAttribute('data-wolf-castle-action'), disabled: control.matches(':disabled'),
+          room: document.querySelector('[data-wolf-castle-room]')?.getAttribute('data-wolf-castle-room'),
+          position: { ...document.querySelector('[data-wolf-castle-interior]')?.dataset },
+        });
+        if (api.castleClicks.length > 40) api.castleClicks.shift();
+      }, true);
       const observe = () => {
         for (const canvas of document.querySelectorAll('.hunt-screen canvas.hunt-canvas')) {
           if (!api.canvasIdentities.has(canvas)) { api.canvasIdentities.add(canvas); api.mounts += 1; }
@@ -144,7 +155,11 @@ try {
       if (document.querySelector('[data-wolf-castle-dialog]')) return true;
       if (document.querySelector('[data-wolf-castle-room]')?.getAttribute('data-wolf-castle-room') !== room) return true;
       const button = document.querySelector(`[data-wolf-castle-interact="${id}"]`);
-      return button && !button.disabled;
+      // Finish the physical route and its final position checkpoint before
+      // issuing the separate interaction. Becoming briefly in range while
+      // still walking does not mean the save has released the action yet.
+      const stopped = document.querySelector('[data-wolf-castle-interior]')?.getAttribute('data-wolf-castle-moving') === 'false';
+      return button && !button.disabled && stopped;
     }, { id, room: currentRoom });
     const stillSameRoom = await page.locator('[data-wolf-castle-room]').getAttribute('data-wolf-castle-room') === currentRoom;
     if (stillSameRoom && !await page.locator('[data-wolf-castle-dialog]').count()) {
@@ -729,6 +744,7 @@ try {
     report.failureState = await page.evaluate(key => ({ focused: document.hasFocus(), hidden: document.hidden,
       activeElement: document.activeElement?.outerHTML.slice(0,500),
       interior: document.querySelector('[data-wolf-castle-interior]')?.dataset,
+      castleClicks: window.__wolfArrivalQa?.castleClicks ?? [],
       castle: JSON.parse(localStorage.getItem(key) || 'null')?.wolfCastle,
     }), SAVE_STORAGE_KEY).catch(() => null);
     await page.screenshot({ path: path.join(out, 'failure.png'), fullPage: true }).catch(() => {});
