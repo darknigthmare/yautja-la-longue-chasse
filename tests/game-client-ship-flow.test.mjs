@@ -16,12 +16,14 @@ const MISSION_ID = "jungle-vey";
 // be rejected as non-plain objects, unlike the real single-realm application.
 const dependencies = await build({
   stdin: { contents: [
-    'export { defaultSave, normalizeSave, reconcileSaveWrite, RANK_THRESHOLDS } from "./app/game/save.ts";',
+    'export { defaultSave, normalizeSave, reconcileSaveWrite, RANK_THRESHOLDS, SAVE_STORAGE_KEY, writeSaveWithStatus as durableSaveWrite, loadSaveWithStatus } from "./app/game/save.ts";',
     'export { MISSIONS } from "./app/game/data.ts";',
     'export { loadShipProgression } from "./app/game/systems/progression.ts";',
     'export { createPlanetArrival, inspectPlanetArrival, requestPlanetArrivalHandoff, completePlanetArrivalHandoff } from "./app/game/systems/planetArrival.ts";',
     'export { inspectPlanetArrivalRun } from "./app/game/systems/planetArrivalRun.ts";',
     'export { createWolfCastleVisit, actWolfCastle, applyWolfCastleCheckpoint } from "./app/game/systems/wolfCastle.ts";',
+    'export * as castle from "./app/game/systems/wolfCastle.ts";',
+    'export * as castleCombat from "./app/game/systems/wolfCastleCombat.ts";',
     'export { captureHuntGauntletV142 } from "./app/game/systems/huntGauntletIdentityV142.ts";',
     'export { normalizeHuntAccessibilityV112 } from "./app/game/systems/huntAccessibilityV112.ts";',
   ].join('\n'), resolveDir: fileURLToPath(new URL('../', import.meta.url)), loader: 'ts' },
@@ -53,6 +55,7 @@ function namedFunction(name, environment) {
 function fixture() {
   const observations = { writes: 0, clears: 0, rewards: 0, sidecars: [], screen: "deck", sequence: 0, events: [] };
   const environment = {
+    TextEncoder,
     sessionAliveRef: { current: true },
     pendingTrophyCommitRef: { current: null },
     // Adult campaign fixture has no uncertain nursery transaction.
@@ -122,6 +125,96 @@ function castleCheckpointFixture() {
   return { ...result, checkpoint: callback('checkpointWolfCastle', environment) };
 }
 
+// This fixture earns its pending receipt through the actual authored objectives,
+// combat simulation and checkpoints. It runs in the callback's own VM realm.
+function victoriousMandate(castle, combat, ownerCreatedAt, personalShipId) {
+  const context = { ownerCreatedAt, personalShipId };
+  const act = (state, action) => {
+    const result = castle.actWolfCastle(state, action, context);
+    if (!result.accepted) throw Error(`${action.type}: ${result.reason}`);
+    return result.state;
+  };
+  const move = (state, destination) => {
+    for (const roomId of castle.wolfCastleRoute(state.roomId, destination).slice(1)) state = act(state, { type: 'move-room', roomId });
+    return state;
+  };
+  const checkpoint = (state, position, dungeonCombat = state.dungeon?.combat ?? null) => {
+    const result = castle.applyWolfCastleCheckpoint(state, { ...context, roomId: state.roomId, expectedRevision: state.revision,
+      position, combat: state.combat, dungeonCombat }, context);
+    if (!result.accepted) throw Error(`checkpoint: ${result.reason}`);
+    return result.state;
+  };
+  const station = (state, kind) => {
+    const target = castle.wolfCastleRoom(state.roomId).stations.find(item => item.kind === kind);
+    return checkpoint(state, { x: target.x, y: target.y, facing: 1 });
+  };
+  let state = act(castle.createWolfCastleVisit(ownerCreatedAt, personalShipId, { invitationId: 'wolf-protocol:introduction' }), { type: 'board' });
+  state = act(move(state, 'royal-audience'), { type: 'hear-audience' });
+  state = act(move(state, 'royal-council'), { type: 'decide-audience', decision: 'accepted' });
+  state = act(station(move(state, 'royal-audience'), 'audience'), { type: 'accept-dungeon' });
+  for (const [room, kind, type] of [['royal-archives', 'archive', 'inspect-dungeon-archive'], ['royal-gallery', 'gallery', 'inspect-dungeon-gallery'], ['royal-council', 'council', 'inspect-dungeon-council']]) {
+    state = act(station(move(state, room), kind), { type });
+  }
+  state = act(station(move(state, 'royal-court'), 'combat'), { type: 'start-dungeon-combat' });
+  for (let phase = 0; phase < 3; phase++) {
+    let live = state.dungeon.combat;
+    for (let frame = 0; frame < 20_000 && live.status === 'active'; frame++) {
+      const p = live.player, e = live.enemy, dx = e.x - p.x, dy = e.y - p.y;
+      const imminent = e.phase === 'windup' && e.phaseMs < 185 && p.attackMs === 0 && p.defenseCooldownMs === 0;
+      live = combat.stepWolfCastleCombat(live, {
+        moveX: Math.abs(dx) > 130 || Math.sign(dx) !== p.facing ? Math.sign(dx) : 0,
+        moveY: Math.abs(dy) > 10 ? Math.sign(dy) : 0,
+        attack: e.phase === 'recovery' && Math.abs(dx) < 145 && Math.abs(dy) < 35 && p.attackCooldownMs === 0,
+        parry: imminent && e.strike === 'thrust', evade: imminent && e.strike === 'sweep',
+      }, 20);
+    }
+    if (live.status !== (phase === 2 ? 'victory' : 'intermission')) throw Error('The fixture must win the real mandate fight');
+    state = checkpoint(state, { x: live.player.x, y: live.player.y, facing: live.player.facing }, live);
+    if (phase < 2) state = act(state, { type: 'next-dungeon-phase' });
+  }
+  return station(move(state, 'royal-audience'), 'audience');
+}
+
+let mandateVictorySerialized;
+function castleTransactionFixture() {
+  const result = fixture(), { environment, observations } = result;
+  const values = new Map();
+  const storage = {
+    values, writes: [], rejectPrimary: false, failReadback: false, pendingReadback: false,
+    get length() { return values.size; }, key(index) { return [...values.keys()][index] ?? null; },
+    getItem(key) {
+      if (key === environment.SAVE_STORAGE_KEY && this.pendingReadback) { this.pendingReadback = false; throw Error('readback refused'); }
+      return values.get(key) ?? null;
+    },
+    setItem(key, value) {
+      if (key === environment.SAVE_STORAGE_KEY && this.rejectPrimary) throw new DOMException('Full', 'QuotaExceededError');
+      values.set(key, value); this.writes.push({ key, value });
+      if (key === environment.SAVE_STORAGE_KEY && this.failReadback) { this.failReadback = false; this.pendingReadback = true; }
+    },
+    removeItem(key) { values.delete(key); },
+  };
+  environment.window = { localStorage: storage };
+  environment.screen = 'wolf-castle'; observations.screen = 'wolf-castle'; environment.gameFocusedV89 = true;
+  if (!mandateVictorySerialized) {
+    mandateVictorySerialized = JSON.stringify(runInNewContext(`(${victoriousMandate.toString()})(castle, castleCombat, saveRef.current.createdAt, 'classic-predator-spaceship')`, environment));
+  }
+  environment.mandateVictorySerialized = mandateVictorySerialized;
+  runInNewContext(`saveRef.current = { ...saveRef.current, profile: { ...saveRef.current.profile, clanMarks: 7 }, wolfCastle: JSON.parse(mandateVictorySerialized) }; save = saveRef.current;`, environment);
+  const initial = environment.durableSaveWrite(environment.saveRef.current);
+  assert.equal(initial.persisted, true, initial.failure);
+  environment.save = initial.save; environment.saveRef.current = initial.save;
+  storage.writes.length = 0;
+  environment.writeSaveWithStatus = save => { observations.writes++; observations.events.push('write'); return environment.durableSaveWrite(save); };
+  const handler = callback('commitWolfCastleAction', environment);
+  const commit = (action = { type: 'extract-dungeon' }) => {
+    environment.actionSerialized = JSON.stringify(action);
+    return handler(runInNewContext('JSON.parse(actionSerialized)', environment));
+  };
+  const durable = () => JSON.parse(storage.values.get(environment.SAVE_STORAGE_KEY));
+  const primaryWrites = () => storage.writes.filter(write => write.key === environment.SAVE_STORAGE_KEY);
+  return { ...result, storage, commit, durable, primaryWrites };
+}
+
 test('castle checkpoint persists the last visible position while opening settings or losing focus', () => {
   const { environment, observations, checkpoint } = castleCheckpointFixture();
   environment.settingsOpen = true;
@@ -165,6 +258,140 @@ test('an unconfirmed castle checkpoint never advances the visible saved revision
   assert.equal(JSON.stringify(environment.saveRef.current), before);
   assert.equal(observations.saveFailure, 'write-failed');
   assert.ok(environment.pendingSocialWriteRef.current, 'the existing uncertain-write recovery keeps the pending position');
+});
+
+test('the real castle commit writes the mandate receipt and two clan marks in one confirmed primary snapshot', () => {
+  const { environment, observations, commit, durable, primaryWrites } = castleTransactionFixture();
+  const before = environment.saveRef.current;
+  assert.equal(before.wolfCastle.dungeon.status, 'victory');
+  assert.equal(commit(), true);
+  const after = environment.saveRef.current;
+  assert.equal(observations.writes, 1); assert.equal(primaryWrites().length, 1);
+  for (const value of [after, durable(), JSON.parse(primaryWrites()[0].value)]) {
+    assert.equal(value.profile.clanMarks, before.profile.clanMarks + 2);
+    assert.equal(value.wolfCastle.dungeon.status, 'completed');
+    assert.equal(value.wolfCastle.dungeon.reward.claimed, true);
+    assert.ok(value.wolfCastle.dungeon.reward.receipt.endsWith(value.createdAt));
+  }
+  for (const field of ['honor', 'rankId', 'hunterName', 'playTimeSeconds']) assert.equal(after.profile[field], before.profile[field]);
+  for (const field of ['inventory', 'loadout', 'missionProgress', 'trophies']) assert.equal(JSON.stringify(after[field]), JSON.stringify(before[field]));
+  assert.equal(observations.rewards, 0, 'the mandate is not a mission-settlement reward');
+  assert.equal(commit(), true);
+  assert.equal(observations.writes, 1); assert.equal(primaryWrites().length, 1);
+  assert.equal(environment.saveRef.current.profile.clanMarks, 9);
+  const reloaded = environment.loadSaveWithStatus();
+  assert.equal(reloaded.loaded, true, reloaded.failure);
+  environment.saveRef.current = reloaded.save; environment.save = reloaded.save;
+  assert.equal(commit(), true);
+  assert.equal(observations.writes, 1, 'a restored receipt also makes the action idempotent');
+});
+
+test('quota failure before the primary write leaves both mandate and balance available until a single successful retry', () => {
+  const { environment, observations, storage, commit, durable, primaryWrites } = castleTransactionFixture();
+  const before = JSON.stringify(environment.saveRef.current), raw = storage.values.get(environment.SAVE_STORAGE_KEY);
+  storage.rejectPrimary = true;
+  assert.equal(commit(), false);
+  assert.equal(observations.writes, 1); assert.equal(primaryWrites().length, 0);
+  assert.equal(JSON.stringify(environment.saveRef.current), before);
+  assert.equal(storage.values.get(environment.SAVE_STORAGE_KEY), raw);
+  assert.equal(durable().wolfCastle.dungeon.status, 'victory');
+  assert.equal(durable().profile.clanMarks, 7);
+  assert.ok(environment.pendingSocialWriteRef.current);
+  storage.rejectPrimary = false;
+  assert.equal(commit(), true);
+  assert.equal(observations.writes, 2); assert.equal(primaryWrites().length, 1);
+  assert.equal(durable().profile.clanMarks, 9); assert.equal(durable().wolfCastle.dungeon.status, 'completed');
+  assert.equal(environment.pendingSocialWriteRef.current, null);
+  assert.equal(commit(), true); assert.equal(observations.writes, 2);
+});
+
+test('an uncertain mandate readback reconciles the exact atomic write without applying or writing the reward twice', () => {
+  const { environment, observations, storage, commit, durable, primaryWrites } = castleTransactionFixture();
+  storage.failReadback = true;
+  assert.equal(commit(), false);
+  assert.equal(observations.writes, 1); assert.equal(primaryWrites().length, 1);
+  assert.equal(environment.saveRef.current.profile.clanMarks, 7);
+  assert.equal(environment.saveRef.current.wolfCastle.dungeon.status, 'victory');
+  assert.equal(durable().profile.clanMarks, 9);
+  assert.equal(durable().wolfCastle.dungeon.status, 'completed');
+  assert.equal(environment.pendingSocialWriteRef.current.attempt.persisted, false);
+  const written = storage.values.get(environment.SAVE_STORAGE_KEY);
+  assert.equal(commit(), true);
+  assert.equal(environment.saveRef.current.profile.clanMarks, 9);
+  assert.equal(environment.saveRef.current.wolfCastle.dungeon.status, 'completed');
+  assert.equal(environment.pendingSocialWriteRef.current, null);
+  assert.equal(observations.saveFailure, null);
+  assert.equal(storage.values.get(environment.SAVE_STORAGE_KEY), written);
+  assert.equal(commit(), true);
+  assert.equal(observations.writes, 1); assert.equal(primaryWrites().length, 1);
+});
+
+test('invalid clan-mark balances are refused before writing or consuming the victorious mandate', () => {
+  for (const balance of [-1, 1.5, NaN, Number.MAX_SAFE_INTEGER - 1, Number.MAX_SAFE_INTEGER]) {
+    const { environment, observations, storage, commit, primaryWrites } = castleTransactionFixture();
+    environment.saveRef.current.profile.clanMarks = balance;
+    const before = JSON.stringify(environment.saveRef.current), raw = storage.values.get(environment.SAVE_STORAGE_KEY);
+    assert.equal(commit(), false, String(balance));
+    assert.equal(observations.writes, 0); assert.equal(primaryWrites().length, 0);
+    assert.equal(JSON.stringify(environment.saveRef.current), before);
+    assert.equal(storage.values.get(environment.SAVE_STORAGE_KEY), raw);
+    assert.equal(environment.pendingSocialWriteRef.current, null);
+  }
+});
+
+test('replaced campaigns, inactive screens and blocked writers refuse mandate settlement before touching storage', () => {
+  const blocks = [
+    env => { env.sessionAliveRef.current = false; },
+    env => { env.entry.ownerCreatedAt = 'replacement-owner'; },
+    env => { env.saveRef.current = env.defaultSave('2026-11-05T10:00:00.000Z'); },
+    env => { env.screen = 'deck'; },
+    env => { env.gameFocusedV89 = false; },
+    env => { env.settingsOpen = true; },
+    env => { env.archiveTransferBusy = true; },
+    env => { env.archiveRecoveryIssue = { reason: 'restore-required' }; },
+    env => { env.campaignSaveBusy = true; },
+    env => { env.pendingTrophyCommitRef.current = {}; },
+    env => { env.pendingTerminalRunRef.current = 'unsettled-hunt'; },
+  ];
+  for (const block of blocks) {
+    const { environment, observations, storage, commit, primaryWrites } = castleTransactionFixture();
+    block(environment);
+    const before = JSON.stringify(environment.saveRef.current), raw = storage.values.get(environment.SAVE_STORAGE_KEY);
+    assert.equal(commit(), false);
+    assert.equal(observations.writes, 0); assert.equal(primaryWrites().length, 0);
+    assert.equal(JSON.stringify(environment.saveRef.current), before);
+    assert.equal(storage.values.get(environment.SAVE_STORAGE_KEY), raw);
+  }
+});
+
+test('an uncertain mandate receipt cannot overwrite a replacement campaign on disk', () => {
+  const { environment, observations, storage, commit, primaryWrites } = castleTransactionFixture();
+  storage.failReadback = true;
+  assert.equal(commit(), false);
+  const replacement = JSON.stringify(environment.defaultSave('2026-11-05T10:00:00.000Z'));
+  storage.values.set(environment.SAVE_STORAGE_KEY, replacement);
+  const before = JSON.stringify(environment.saveRef.current);
+  assert.equal(commit(), false);
+  assert.equal(observations.saveFailure, 'save-conflict');
+  assert.equal(observations.writes, 1); assert.equal(primaryWrites().length, 1);
+  assert.equal(storage.values.get(environment.SAVE_STORAGE_KEY), replacement);
+  assert.equal(JSON.stringify(environment.saveRef.current), before);
+  assert.equal(environment.saveRef.current.wolfCastle.dungeon.reward.claimed, false);
+});
+
+test('a different action after an uncertain mandate write first recovers the receipt and leaves the new request unapplied', () => {
+  const { environment, observations, storage, commit } = castleTransactionFixture();
+  storage.failReadback = true;
+  assert.equal(commit(), false);
+  assert.equal(commit({ type: 'move-room', roomId: 'royal-council' }), false);
+  assert.equal(environment.saveRef.current.wolfCastle.roomId, 'royal-audience');
+  assert.equal(environment.saveRef.current.wolfCastle.dungeon.status, 'completed');
+  assert.equal(environment.saveRef.current.profile.clanMarks, 9);
+  assert.equal(observations.writes, 1);
+  assert.equal(commit({ type: 'move-room', roomId: 'royal-council' }), true);
+  assert.equal(environment.saveRef.current.wolfCastle.roomId, 'royal-council');
+  assert.equal(environment.saveRef.current.profile.clanMarks, 9);
+  assert.equal(observations.writes, 2);
 });
 
 test("first launch persists the campaign owner and each replay opens a fresh autosave run", () => {

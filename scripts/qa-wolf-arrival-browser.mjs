@@ -8,7 +8,7 @@ import { chromium } from 'playwright-core';
 import { createServer } from 'vite';
 
 // Actual GameClient, campaign archives, castle movement, arrival and HuntCanvas.
-// Browser storage is isolated. Only input and a deliberate storage fault are injected.
+// Browser storage is isolated. Only input and deliberate storage faults are injected.
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const out = path.resolve(root, process.env.WOLF_ARRIVAL_QA_OUTPUT || 'outputs/qa-wolf-arrival');
 const port = Number(process.env.WOLF_ARRIVAL_QA_PORT || 4187);
@@ -27,12 +27,17 @@ const seed = defaultSave('2026-11-04T10:00:00.000Z');
 seed.profile.hunterName = 'QA Château et arrivée';
 seed.settings.masterVolume = 0;
 const checkoutCommit = execFileSync('git', ['rev-parse', 'HEAD'], { cwd: root, encoding: 'utf8' }).trim();
-const report = { startedAt: new Date().toISOString(), checkoutCommit, sourceCommit: process.env.WOLF_ARRIVAL_SOURCE_COMMIT || checkoutCommit,
+const workingTreeDirty = execFileSync('git', ['status', '--porcelain'], { cwd: root, encoding: 'utf8' }).trim().length > 0;
+const report = { startedAt: new Date().toISOString(), checkoutCommit, workingTreeDirty, sourceCommit: process.env.WOLF_ARRIVAL_SOURCE_COMMIT || checkoutCommit,
   runtime: 'actual desktop GameClient via Vite', headed, assetGateRequired: assetsRequired, checks: [], errors: [], missingAssets: [], requestedAssets: [], screenshots: [], focusTransitions: [], viewportTransitions: [] };
 const missing = new Set(), requested = new Set();
 let server, browser, page;
 
 try {
+  if (process.env.WOLF_ARRIVAL_SOURCE_COMMIT) {
+    assert.equal(checkoutCommit, process.env.WOLF_ARRIVAL_SOURCE_COMMIT, 'Browser evidence must exercise the requested source commit');
+    assert.equal(workingTreeDirty, false, 'Published browser evidence requires a clean source checkout');
+  }
   server = await createServer({ configFile: path.join(root, 'desktop/vite.config.ts'), server: { host: '127.0.0.1', port, strictPort: true } });
   await server.listen();
   browser = await chromium.launch({ executablePath: process.env.CHROMIUM_EXECUTABLE || undefined, headless: !headed,
@@ -51,7 +56,8 @@ try {
       }
       const pad = { index: 0, id: 'wolf-arrival-qa', connected: true, axes: [0, 0], buttons: Array.from({ length: 17 }, () => ({ pressed: false, value: 0, touched: false })) };
       Object.defineProperty(navigator, 'getGamepads', { configurable: true, value: () => [pad] });
-      const api = { pad, mounts: 0, canvasIdentities: new WeakSet(), activeRunIds: [], handoffWrites: [], failArrivalHandoff: false };
+      const api = { pad, mounts: 0, canvasIdentities: new WeakSet(), activeRunIds: [], handoffWrites: [], failArrivalHandoff: false,
+        failMandateReward: false, mandateRewardRefusals: 0 };
       const originalSet = Storage.prototype.setItem;
       Storage.prototype.setItem = function (name, value) {
         if (this === localStorage && name === key) {
@@ -59,6 +65,10 @@ try {
           if (parsed?.planetArrival?.status === 'complete') {
             if (api.failArrivalHandoff) throw new DOMException('QA: arrival handoff quota', 'QuotaExceededError');
             api.handoffWrites.push(parsed.planetArrival.runId);
+          }
+          if (api.failMandateReward && parsed?.wolfCastle?.dungeon?.status === 'completed' && parsed.wolfCastle.dungeon.reward.claimed) {
+            api.mandateRewardRefusals += 1;
+            throw new DOMException('QA: mandate reward quota', 'QuotaExceededError');
           }
         }
         if (this === localStorage && name === huntKey) {
@@ -410,6 +420,170 @@ try {
     await page.locator('[data-campaign-location="deck"]').waitFor();
     assert.equal((await stored()).wolfCastle.status, 'departed');
     await resizeViewport({ width: 1440, height: 1000 });
+  });
+
+  const beforeMandate = await stored();
+  const waitMandate = async status => {
+    await page.waitForFunction(({ key, status }) => JSON.parse(localStorage.getItem(key))?.wolfCastle?.dungeon?.status === status,
+      { key: SAVE_STORAGE_KEY, status });
+    await page.locator(`[data-wolf-dungeon-status="${status}"]`).waitFor();
+  };
+  await check('The accepted audience grants a new mandate whose objectives require fresh station interactions', async () => {
+    await page.locator('[data-wolf-castle-entry]').click(); await waitCastle('royal-berth', 'approach');
+    await castleAction('board'); await waitCastle('royal-berth');
+    await moveRoom('royal-airlock'); await moveRoom('royal-vestibule'); await moveRoom('royal-gallery'); await moveRoom('royal-audience');
+    await targetStation('audience'); await castleAction('accept-dungeon'); await waitMandate('accepted');
+    const visit = (await stored()).wolfCastle;
+    assert.equal(visit.archiveRead, true, 'The archive was already consulted before accepting this mandate');
+    assert.equal(visit.audience, 'accepted');
+    assert.deepEqual(visit.dungeon.objectives, { archives: false, gallery: false, council: false });
+    assert.equal(visit.dungeon.attempts, 0); assert.equal(visit.dungeon.combat, null);
+    assert.deepEqual(visit.dungeon.reward, { claimed: false, receipt: null });
+    assert.deepEqual(visit.combat, beforeMandate.wolfCastle.combat);
+    await page.locator('[data-wolf-dungeon-journal]').click();
+    for (const objective of ['archives', 'gallery', 'council']) {
+      assert.equal(await page.locator(`[data-wolf-dungeon-objective="${objective}"]`).getAttribute('data-complete'), 'false');
+    }
+    await screenshot('22-mandate-accepted-journal.png');
+    await page.getByRole('button', { name: 'Fermer la consultation', exact: true }).click();
+  });
+  await check('A partially explored mandate survives Save, menu, reload and Continue with the same training dossier', async () => {
+    await moveRoom('royal-gallery'); await moveRoom('royal-archives');
+    await targetStation('archive'); await castleAction('inspect-dungeon-archive');
+    await page.locator('[data-wolf-castle-dialog]').waitFor({ state: 'detached' });
+    const before = (await stored()).wolfCastle;
+    assert.equal(before.dungeon.status, 'accepted');
+    assert.deepEqual(before.dungeon.objectives, { archives: true, gallery: false, council: false });
+    await page.locator('[data-wolf-castle-menu]').click();
+    await page.getByRole('button', { name: 'Sauvegarder et revenir au menu principal', exact: true }).click();
+    await page.locator('[data-campaign-menu]').waitFor();
+    await page.reload({ waitUntil: 'networkidle' }); await continueCampaign(); await waitCastle('royal-archives');
+    await waitMandate('accepted');
+    const resumed = await stored();
+    assert.deepEqual(resumed.wolfCastle.dungeon, before.dungeon);
+    assert.deepEqual(resumed.wolfCastle.position, before.position);
+    assert.deepEqual(resumed.wolfCastle.combat, beforeMandate.wolfCastle.combat);
+    assert.equal(resumed.profile.clanMarks, beforeMandate.profile.clanMarks);
+    await page.locator('[data-wolf-dungeon-journal]').click();
+    for (const objective of ['archives', 'gallery', 'council']) {
+      assert.equal(await page.locator(`[data-wolf-dungeon-objective="${objective}"]`).getAttribute('data-complete'), String(objective === 'archives'));
+    }
+    await screenshot('23-mandate-partial-resume.png');
+    await page.getByRole('button', { name: 'Fermer la consultation', exact: true }).click();
+  });
+  await check('The gallery and council complete the three objectives and unlock the separate sentinel encounter', async () => {
+    await moveRoom('royal-gallery'); await targetStation('gallery'); await castleAction('inspect-dungeon-gallery');
+    await page.locator('[data-wolf-castle-dialog]').waitFor({ state: 'detached' });
+    assert.deepEqual((await stored()).wolfCastle.dungeon.objectives, { archives: true, gallery: true, council: false });
+    await moveRoom('royal-audience'); await moveRoom('royal-council');
+    await targetStation('council'); await castleAction('inspect-dungeon-council'); await waitMandate('ready');
+    assert.deepEqual((await stored()).wolfCastle.dungeon.objectives, { archives: true, gallery: true, council: true });
+    await moveRoom('royal-service-pass'); await moveRoom('royal-court');
+    await targetStation('combat'); await castleAction('start-dungeon-combat'); await waitMandate('active'); await resumeCombat();
+    await page.locator('[data-wolf-combat-scenario="dungeon"][data-wolf-combat-status="active"]').waitFor();
+    assert.equal((await stored()).wolfCastle.dungeon.attempts, 1);
+    assert.deepEqual((await stored()).wolfCastle.combat, beforeMandate.wolfCastle.combat);
+    // Take one announced hit so a reload or phase transition cannot conceal a
+    // health reset behind a full-health starting state.
+    await page.waitForFunction(() => Number(document.querySelector('[data-wolf-combat-scenario="dungeon"]')?.getAttribute('data-wolf-combat-player-health')) < 100);
+    await page.locator('[data-wolf-combat-pause]').click(); await page.locator('[data-wolf-combat-resume]').waitFor();
+    const paused = (await stored()).wolfCastle.dungeon.combat;
+    assert.ok(paused.player.health > 0 && paused.player.health < 100);
+    assert.equal(paused.status, 'active'); assert.equal(paused.encounterIndex, 0);
+  });
+  await check('The paused mandate reloads the same sentinel, damaged health, position and elapsed time before explicit resume', async () => {
+    const before = (await stored()).wolfCastle;
+    await page.locator('[data-wolf-castle-menu]').click();
+    await page.getByRole('button', { name: 'Sauvegarder et revenir au menu principal', exact: true }).click();
+    await page.locator('[data-campaign-menu]').waitFor();
+    await page.reload({ waitUntil: 'networkidle' }); await continueCampaign(); await waitCastle('royal-court');
+    await page.locator('[data-wolf-combat-scenario="dungeon"][data-wolf-combat-paused="true"]').waitFor();
+    await page.locator('[data-wolf-combat-resume]').waitFor();
+    assert.deepEqual((await stored()).wolfCastle.dungeon, before.dungeon);
+    assert.deepEqual((await stored()).wolfCastle.position, before.position);
+    assert.deepEqual((await stored()).wolfCastle.combat, beforeMandate.wolfCastle.combat);
+    const pausedFrame = await combatSnapshot();
+    await page.waitForTimeout(400);
+    assert.deepEqual(await combatSnapshot(), pausedFrame);
+    assert.deepEqual((await stored()).wolfCastle.dungeon, before.dungeon);
+    await screenshot('24-mandate-boss-paused-resume.png');
+    await resumeCombat();
+  });
+  await check('Real movement, parries, dodges and attacks beat all sentinel phases without healing or an early reward', async () => {
+    for (let encounter = 0; encounter < 3; encounter++) {
+      await playRoyalEncounter();
+      const save = await stored(), dungeon = save.wolfCastle.dungeon;
+      assert.equal(dungeon.combat.scenario, 'dungeon'); assert.equal(dungeon.combat.encounterIndex, encounter);
+      assert.equal(dungeon.combat.status, encounter < 2 ? 'intermission' : 'victory');
+      assert.equal(save.profile.clanMarks, beforeMandate.profile.clanMarks);
+      assert.deepEqual(dungeon.reward, { claimed: false, receipt: null });
+      if (encounter < 2) {
+        const health = dungeon.combat.player.health;
+        await castleAction('next-dungeon-phase');
+        await page.locator(`[data-wolf-combat-scenario="dungeon"][data-wolf-combat-status="active"][data-wolf-combat-encounter="${encounter + 1}"]`).waitFor();
+        assert.equal((await stored()).wolfCastle.dungeon.combat.player.health, health, 'The sentinel must not restore health between phases');
+        await resumeCombat();
+      }
+    }
+    await waitMandate('victory');
+    const visit = (await stored()).wolfCastle;
+    assert.equal(visit.dungeon.attempts, 1); assert.equal(visit.dungeon.combat.dossier.victories, 1);
+    assert.ok(visit.dungeon.combat.stats.hits > 0 && visit.dungeon.combat.stats.parries > 0 && visit.dungeon.combat.stats.evades > 0);
+    assert.deepEqual(visit.combat, beforeMandate.wolfCastle.combat);
+    await screenshot('25-mandate-boss-victory.png');
+  });
+  await check('The return guide reaches the audience and a refused reward write keeps the victory and balance unclaimed', async () => {
+    const victory = (await stored()).wolfCastle.dungeon;
+    await page.locator('[data-wolf-dungeon-return]').click();
+    // The guide walks to the next door; crossing it still requires the normal
+    // contextual interaction, just as when exploring the castle manually.
+    await page.locator('[data-wolf-castle-interact="door:royal-service-pass"]').click(); await waitCastle('royal-service-pass');
+    await moveRoom('royal-council'); await moveRoom('royal-audience'); await targetStation('audience');
+    assert.deepEqual((await stored()).wolfCastle.dungeon, victory);
+    await page.evaluate(() => { window.__wolfArrivalQa.failMandateReward = true; });
+    await castleAction('extract-dungeon');
+    await page.locator('[data-wolf-castle-status] [role="alert"]').waitFor();
+    assert.ok(await page.evaluate(() => window.__wolfArrivalQa.mandateRewardRefusals > 0), 'The final main-save write must actually have been refused');
+    const refused = await stored();
+    assert.deepEqual(refused.wolfCastle.dungeon, victory);
+    assert.equal(refused.profile.clanMarks, beforeMandate.profile.clanMarks);
+    assert.equal(await page.locator('[data-wolf-dungeon-status]').getAttribute('data-wolf-dungeon-status'), 'victory');
+    assert.equal(await page.locator('[data-wolf-dungeon-reward]').getAttribute('data-wolf-dungeon-reward'), 'false');
+    assert.ok(await page.locator('[data-wolf-castle-action="extract-dungeon"]').isEnabled());
+    await screenshot('26-mandate-reward-refused.png');
+  });
+  let completedMandate;
+  await check('Retrying the same audience action commits exactly two marks together with the campaign receipt', async () => {
+    await page.evaluate(() => { window.__wolfArrivalQa.failMandateReward = false; });
+    await castleAction('extract-dungeon'); await waitMandate('completed');
+    const save = await stored(); completedMandate = save.wolfCastle.dungeon;
+    assert.deepEqual(completedMandate.reward, { claimed: true, receipt: `wolf-castle-first-mandate:${beforeMandate.createdAt}` });
+    assert.equal(save.profile.clanMarks, beforeMandate.profile.clanMarks + 2);
+    assert.equal(save.profile.honor, beforeMandate.profile.honor);
+    for (const key of ['inventory', 'missionProgress', 'trophies', 'clanShipDocking']) assert.deepEqual(save[key], beforeMandate[key], key);
+    assert.deepEqual(save.wolfCastle.combat, beforeMandate.wolfCastle.combat);
+    assert.deepEqual(save.wolfCastle.trial, beforeMandate.wolfCastle.trial);
+    await targetStation('audience'); await page.locator('[data-wolf-dungeon-completed]').waitFor();
+    assert.equal(await page.locator('[data-wolf-castle-action="extract-dungeon"], [data-wolf-castle-action="accept-dungeon"]').count(), 0);
+    await page.getByRole('button', { name: 'Fermer la consultation', exact: true }).click();
+  });
+  await check('The completed mandate keeps one receipt and one reward after reload, another audience consultation and departure', async () => {
+    await page.locator('[data-wolf-castle-menu]').click();
+    await page.getByRole('button', { name: 'Sauvegarder et revenir au menu principal', exact: true }).click();
+    await page.locator('[data-campaign-menu]').waitFor();
+    await page.reload({ waitUntil: 'networkidle' }); await continueCampaign(); await waitCastle('royal-audience'); await waitMandate('completed');
+    assert.deepEqual((await stored()).wolfCastle.dungeon, completedMandate);
+    assert.equal((await stored()).profile.clanMarks, beforeMandate.profile.clanMarks + 2);
+    await targetStation('audience'); await page.locator('[data-wolf-dungeon-completed]').waitFor();
+    assert.equal(await page.locator('[data-wolf-castle-action="extract-dungeon"], [data-wolf-castle-action="accept-dungeon"]').count(), 0);
+    await screenshot('27-mandate-completed-resume.png');
+    await page.getByRole('button', { name: 'Fermer la consultation', exact: true }).click();
+    await moveRoom('royal-gallery'); await moveRoom('royal-vestibule'); await moveRoom('royal-airlock'); await moveRoom('royal-berth');
+    await targetStation('personal-ship'); await castleAction('depart'); await page.locator('[data-campaign-location="deck"]').waitFor();
+    assert.equal((await stored()).wolfCastle.status, 'departed');
+    assert.deepEqual((await stored()).wolfCastle.dungeon, completedMandate);
+    assert.deepEqual((await stored()).wolfCastle.combat, beforeMandate.wolfCastle.combat);
+    assert.equal((await stored()).profile.clanMarks, beforeMandate.profile.clanMarks + 2);
   });
 
   let skipRun;

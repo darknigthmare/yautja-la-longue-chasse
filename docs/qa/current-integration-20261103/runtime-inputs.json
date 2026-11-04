@@ -5,8 +5,8 @@
     "bytes": 264999,
     "sha256": "8eee8a5f5a043f2a67477bc6bcff97fffb1ee1666864bd7aed60c7a6c21ca138"
   },
-  "files": 2124,
-  "bytes": 1091654943,
+  "files": 2144,
+  "bytes": 1092055158,
   "entries": [
     {
       "path": ".openai/hosting.json",
@@ -80,8 +80,8 @@
     },
     {
       "path": "app/game/CampaignMainMenu.tsx",
-      "bytes": 41731,
-      "sha256": "2bbb7d5db98d78935917b575e8fc48cb5500505263eaea1cc008f4d998299da9"
+      "bytes": 41953,
+      "sha256": "512a178b8bb47cfc8582e759f6c7e3fac38f8a5eb629a3032bc755c2184dfb3e"
     },
     {
       "path": "app/game/CatalogueHunterBrowser.tsx",
@@ -112,6 +112,26 @@
       "path": "app/game/ClanLogisticsV108.tsx",
       "bytes": 29904,
       "sha256": "d260f79df82016080b0ffc9d9302b754e94c0e142824864078104be3339df049"
+    },
+    {
+      "path": "app/game/ClanShipHub.module.css",
+      "bytes": 9655,
+      "sha256": "70571dace2ad5d6ce891e2c7c6b6c9c7e3c8e03d5fe6fa5768cc8434a43fb2cd"
+    },
+    {
+      "path": "app/game/ClanShipHub.tsx",
+      "bytes": 12576,
+      "sha256": "8de8d8c9cfa187b87423a6f5ff39dc208e614cc8e158709b60a6deff113933f7"
+    },
+    {
+      "path": "app/game/ClanShipInterior.module.css",
+      "bytes": 11336,
+      "sha256": "fa5803773d8dc40e14a8f849373d6a6ecf70a7b08cd6c310da4d9f2580e89c87"
+    },
+    {
+      "path": "app/game/ClanShipInterior.tsx",
+      "bytes": 30839,
+      "sha256": "6b989333ae1f8c89f45cdd4e259516b3ba8f3fd73f7f4d073c7e2920383b20cb"
     },
     {
       "path": "app/game/ClanSupplyRouteV109.module.css",
@@ -520,8 +540,8 @@
     },
     {
       "path": "app/game/GameClient.tsx",
-      "bytes": 296215,
-      "sha256": "3c0a7b0bc81470638d28aae00d47bccf50b8f0cf67129de5d6a8485249745139"
+      "bytes": 325183,
+      "sha256": "ca552bde17e6b18d77621a1830d85af0f0962736ab556fa48002465f3dcbb70a"
     },
     {
       "path": "app/game/GameReserveEntryV104.module.css",
@@ -1339,6 +1359,16 @@
       "sha256": "3ed8e30dc5f4572df40db0c1ffa1eb679e131abd5dbf6fc0cba5b8e3bbcfd1a5"
     },
     {
+      "path": "app/game/PlanetArrivalCinematic.module.css",
+      "bytes": 9539,
+      "sha256": "79ab4c8985d28cbb7b823a207d3198e5fa80ace9252fe03f4e8f7f3c96c7431c"
+    },
+    {
+      "path": "app/game/PlanetArrivalCinematic.tsx",
+      "bytes": 28688,
+      "sha256": "950d127782f12c0ae4fa8a94dc81fbc6e43005474ac4a7264b89f2aecee4a90c"
+    },
+    {
       "path": "app/game/PlanetEarthReferenceV147.module.css",
       "bytes": 2289,
       "sha256": "5e963a31081a90f71dcdf6768633330d59910118774376729309e5f5315b15f4"
@@ -1485,8 +1515,8 @@
     },
     {
       "path": "app/game/ShipHub.tsx",
-      "bytes": 56719,
-      "sha256": "0809cfd5f11b300042172e9900064b9a2074f7443cd6bb30b36be069eca846f7"
+      "bytes": 57789,
+      "sha256": "17c535e9c16b4fd984a0b7fbf083b715d5ff7db3f5c042b0cc0726e3eac368e7"
     },
     {
       "path": "app/game/ShipLevelScene.tsx",
@@ -1559,6 +1589,16 @@
       "sha256": "81884b9547e402179b790589587006404b0c58665123168b884046f3365210e6"
     },
     {
+      "path": "app/game/WolfCastleScene.module.css",
+      "bytes": 17464,
+      "sha256": "3aa9e4b87f6b7127e3a58b3fff422125e0d3c81d5c3f2eb7b1680df9e37911f4"
+    },
+    {
+      "path": "app/game/WolfCastleScene.tsx",
+      "bytes": 83934,
+      "sha256": "1ebae94444f8a0ce211fc7baae4175fe4bee2873e76a871a689b7a413a1d982a"
+    },
+    {
       "path": "app/game/YautjaTranslationV67.module.css",
       "bytes": 1715,
       "sha256": "200bf3b27ab52038f31fb33501eb2fef7e9d91d94cd047943412a5a005dd5325"
@@ -1600,8 +1640,8 @@
     },
     {
       "path": "app/game/buildInfo.ts",
-      "bytes": 932,
-      "sha256": "dec65e39efdd719eb53b9b0b39a6ed6edee51f10c72b17cdf9c781f0e19b6be1"
+      "bytes": 940,
+      "sha256": "098323dc9467e062567c012675f759f021f042743b223a3d1750dcf2f2223d4c"
     },
     {
       "path": "app/game/catalogueAppearance.ts",
@@ -3060,8 +3100,8 @@
     },
     {
       "path": "app/game/save.ts",
-      "bytes": 87382,
-      "sha256": "6e57a1c7e6f64f873d785dbf5a8dfcbdd7fa001c502604d9aa1d4088156723cd"
+      "bytes": 90109,
+      "sha256": "64f41869c5853d96679d9535528519cab9ceda53f15448deb5c910bfdf017e1d"
     },
     {
       "path": "app/game/ship-level.css",
@@ -3085,8 +3125,8 @@
     },
     {
       "path": "app/game/sound.ts",
-      "bytes": 38831,
-      "sha256": "d2deb123fa3be41f6459f0759433831c5ed91a9a2460e0f85a494a4b43fa7e38"
+      "bytes": 39587,
+      "sha256": "3fbb07aba852ebaf7854e0eed161ef3fa60068d2e43b4e0793b52a57fe1d26de"
     },
     {
       "path": "app/game/spriteContact.ts",
@@ -3160,8 +3200,8 @@
     },
     {
       "path": "app/game/systems/campaignSlots.ts",
-      "bytes": 54590,
-      "sha256": "595c61fd339260eee0be834c5ad12f6e4dd511abb578da2e1b672a0df6ecdddd"
+      "bytes": 55439,
+      "sha256": "8618e369d313558b8334025e97cfdd732ec6db84ea69f6dccfabb0d88fc75c00"
     },
     {
       "path": "app/game/systems/campaignSoloV66.ts",
@@ -3232,6 +3272,16 @@
       "path": "app/game/systems/clanLogisticsV108.ts",
       "bytes": 31921,
       "sha256": "164c846a0cb9c44e826309b0ffd8e4d31a5d2fefc22f17f477de6588578a44dd"
+    },
+    {
+      "path": "app/game/systems/clanShipDocking.ts",
+      "bytes": 11213,
+      "sha256": "adcd1bee2a92f8893e8fb31ee1df32a2b009fbaa416db66900a868dac84076cb"
+    },
+    {
+      "path": "app/game/systems/clanShipInterior.ts",
+      "bytes": 17873,
+      "sha256": "3e29fdb8539960550a8028bc79c990c818930c8b6177996e59267d7d4075d71b"
     },
     {
       "path": "app/game/systems/clanSupplyRouteV109.ts",
@@ -3820,8 +3870,8 @@
     },
     {
       "path": "app/game/systems/completeArchive.ts",
-      "bytes": 13817,
-      "sha256": "bbf724e8841c276ca53775bfa49a35ed44fe47e336e8f977c1ed2ff4915f7f5d"
+      "bytes": 14808,
+      "sha256": "77841210aaa59bcd2afa4bd5894ae3b1b2cf2518908dff18d83f28b7cd87248a"
     },
     {
       "path": "app/game/systems/controlBindings.ts",
@@ -4990,8 +5040,8 @@
     },
     {
       "path": "app/game/systems/mainMenuModesV81.ts",
-      "bytes": 3346,
-      "sha256": "0b9d18dc247c85d183d24c7c7d23624a9087a9020fd7aa56beea9937229d29ac"
+      "bytes": 3488,
+      "sha256": "03a17054d87f8fccf392a91cb3e583234982f6f9b31e2ab5c4a4dd31d0fbfd45"
     },
     {
       "path": "app/game/systems/mausoleum.ts",
@@ -5409,6 +5459,21 @@
       "sha256": "062bce6f0615036d68690761452a9205eb8f0ef6570330db6bbbb11cb1122147"
     },
     {
+      "path": "app/game/systems/planetArrival.ts",
+      "bytes": 12677,
+      "sha256": "4ac97bda5ccfac11d3e9449e69c8d911332e21feb9f2d1582b71d42395de1d7b"
+    },
+    {
+      "path": "app/game/systems/planetArrivalAudio.ts",
+      "bytes": 6716,
+      "sha256": "064998a534d4b82f4f03760dcda40ba84e88510b4b5400d610cea61643279f1c"
+    },
+    {
+      "path": "app/game/systems/planetArrivalRun.ts",
+      "bytes": 2953,
+      "sha256": "023d13ad3e2cfb02c5250e19a306effe67894e941d79a632bc908b6212a73363"
+    },
+    {
       "path": "app/game/systems/planetExportZipV114.ts",
       "bytes": 4421,
       "sha256": "09d5b6c662776c3f89a25ff360fe77e1574121cc0dce9f519d88f0b6d988167a"
@@ -5462,6 +5527,11 @@
       "path": "app/game/systems/ritesOfHuntV77.ts",
       "bytes": 19219,
       "sha256": "9142fff55727028cba870670607a0506fa42ca8303b25e0a6155481243b45e57"
+    },
+    {
+      "path": "app/game/systems/sceneAudio.ts",
+      "bytes": 7923,
+      "sha256": "959ca61dc2e373147672fb5735c7635324822a059a3af02b77b56effabb754dc"
     },
     {
       "path": "app/game/systems/shipAcquisitionV89.ts",
@@ -5544,6 +5614,36 @@
       "sha256": "4eac5387c4ae8fa1dff36b32615169ca04738aed8557c29108d4105b91b98676"
     },
     {
+      "path": "app/game/systems/wolfCastle.ts",
+      "bytes": 50479,
+      "sha256": "51147485dabf373165406efa691c83e452b72a366e069594632074ed3ff3bac7"
+    },
+    {
+      "path": "app/game/systems/wolfCastleArt.ts",
+      "bytes": 1898,
+      "sha256": "e47e97bbb888d42b205efe7cf146e0c6719c0f22e7b9c4d8bbe9e5b7588ed70c"
+    },
+    {
+      "path": "app/game/systems/wolfCastleAudio.ts",
+      "bytes": 13469,
+      "sha256": "54634a108cf999615b3c425855e40a45e99bbeb1434b45f5bbea11676d446340"
+    },
+    {
+      "path": "app/game/systems/wolfCastleCombat.ts",
+      "bytes": 21405,
+      "sha256": "ff6b4346e3bab763198b5e5b11c4ea519cce49564b40831956aaab57ed4dff8e"
+    },
+    {
+      "path": "app/game/systems/wolfCastleDungeon.ts",
+      "bytes": 8337,
+      "sha256": "614fc3dfc87e635b2259fabfbe11c3ab6946f9402a2ee08e68f8f3f8ec48b62b"
+    },
+    {
+      "path": "app/game/systems/wolfCastleRuntimeArt.ts",
+      "bytes": 4152,
+      "sha256": "865c47962ceb740722fff66c0817a8b516e627e9ab0cc9a378bc0ee1e527ad31"
+    },
+    {
       "path": "app/game/systems/worldBlueprints.ts",
       "bytes": 65335,
       "sha256": "2afc002b8d94aec6e18a6567f3127b5113a7d7b886ddcc147981f5c9e0a94f78"
@@ -5595,8 +5695,8 @@
     },
     {
       "path": "app/game/types.ts",
-      "bytes": 18675,
-      "sha256": "427668e5617fda0bea5ecc179eb8acf54f464d85971e9037114dd32a851601d5"
+      "bytes": 19255,
+      "sha256": "d971d3cba67449499671df60201ee544127ba34efbaf0671ac96095553507451"
     },
     {
       "path": "app/game/useGeneratedWarCatalogV102.ts",
@@ -5670,8 +5770,8 @@
     },
     {
       "path": "app/game/worldScreens.ts",
-      "bytes": 36431,
-      "sha256": "d9a1786d1b9d81d8672e0df926dc9e68f22933aeeb1025690ec5883ee5aa3dd8"
+      "bytes": 37207,
+      "sha256": "04854a87a575630fedcc6b0ac641de942c7f04e87e448da0767ef558e930d495"
     },
     {
       "path": "app/game/yautjaDecalsV133.ts",

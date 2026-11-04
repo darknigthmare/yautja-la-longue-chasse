@@ -182,6 +182,9 @@ try {
   };
   const screenshot = async filename => {
     await page.waitForLoadState('networkidle');
+    // Let transient status finish naturally so it cannot cover the controls
+    // being reviewed; never remove or restyle the real application for a shot.
+    await page.locator('.toast').waitFor({ state: 'hidden', timeout: 5000 });
     // naturalWidth can be available before an asynchronously decoded image is
     // painted. Capture the real, decoded room rather than a transient blank.
     await clan().locator('img').evaluateAll(images => Promise.all(images.map(image => image.decode())));
@@ -495,6 +498,7 @@ try {
     await move('hangar'); await interact();
     await page.locator('[data-campaign-location="deck"]').waitFor();
     await waitVisit('docked');
+    assert.equal(await page.locator('[data-open-wolf-castle]').isDisabled(), true, 'A clan berth must also block departure for the royal castle');
     await page.getByRole('button', { name: 'Yautja Prime · monde natal', exact: true }).click();
     await page.locator('[data-campaign-location="deck"]').waitFor();
     assert.equal((await stored()).clanShipDocking.status, 'docked');
@@ -503,8 +507,10 @@ try {
     await continueCampaign();
     await page.locator('[data-campaign-location="deck"]').waitFor();
     await waitVisit('docked');
+    assert.equal(await page.locator('[data-open-wolf-castle]').isDisabled(), true, 'Restoring the berth must preserve the royal departure lock');
     await openClan(); await action('undock'); await waitVisit('free-flight');
     await page.locator('[data-campaign-location="deck"]').waitFor();
+    await page.waitForFunction(() => document.querySelector('[data-open-wolf-castle]')?.disabled === false);
   });
   await check('Approach cancellation is durable and never boards the clan ship', async () => {
     await openClan(); await action('approach'); await waitVisit('approach');
@@ -567,6 +573,8 @@ try {
       }
     }
     await screenshot('04-hangar-mobile-320.png');
+    await page.locator('[data-interior-approach-service]').scrollIntoViewIfNeeded();
+    await screenshot('05-hangar-mobile-controls-320.png');
   });
   await check('Normal and reduced motion keep walking functional without looping motion in reduced mode', async () => {
     await page.setViewportSize({ width: 1440, height: 1000 });

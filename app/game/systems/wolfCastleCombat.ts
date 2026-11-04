@@ -1,13 +1,20 @@
 import { HUNT_MELEE_DODGE_SPEED, HUNT_MELEE_PARRY_ACTIVE_SECONDS } from './huntMeleeCombat';
 
-/** An authored, non-lethal court exercise. Its health and record never modify the campaign. */
-export const WOLF_CASTLE_COMBAT_VERSION = 1 as const;
+/** Court simulations keep their health local; only the enclosing mandate may grant its campaign reward. */
+export const WOLF_CASTLE_COMBAT_VERSION = 2 as const;
 export const WOLF_CASTLE_COMBAT_ARENA = Object.freeze({ minX: 200, maxX: 1400, minY: 550, maxY: 640 });
 export const WOLF_CASTLE_COMBAT_ENCOUNTERS = [
   { id: 'threshold-guard', name: 'Sentinelle du Seuil', lesson: 'L’estoc est annoncé en or. Pare au dernier instant ou quitte sa trajectoire.', health: 66, speed: 125, windupMs: 1050, recoveryMs: 920, damage: 20, reach: 168 },
   { id: 'sweep-guard', name: 'Gardien du Cercle', lesson: 'Le balayage rouge traverse la garde. Esquive hors du cercle puis contre-attaque.', health: 88, speed: 148, windupMs: 1150, recoveryMs: 1000, damage: 26, reach: 185 },
   { id: 'court-master', name: 'Maître de la Cour', lesson: 'Observe la couleur : estoc à parer, balayage à esquiver. Frappe pendant sa récupération.', health: 110, speed: 168, windupMs: 860, recoveryMs: 800, damage: 30, reach: 185 },
 ] as const;
+/** One authored opponent, with three postures. This is game fiction, not a canonical character. */
+export const WOLF_CASTLE_DUNGEON_PHASES = [
+  { id: 'mandate-warden', name: 'Sentinelle du mandat', phaseName: 'Garde du seuil', lesson: 'L’estoc fixe sa trajectoire. Pare face à la sentinelle, puis frappe dans l’ouverture.', health: 88, speed: 145, windupMs: 1040, recoveryMs: 1000, damage: 18, reach: 172 },
+  { id: 'mandate-warden', name: 'Sentinelle du mandat', phaseName: 'Cercle de défense', lesson: 'La sentinelle élargit sa garde. Le balayage traverse la parade : esquive et reviens au contact.', health: 110, speed: 160, windupMs: 1070, recoveryMs: 940, damage: 24, reach: 192 },
+  { id: 'mandate-warden', name: 'Sentinelle du mandat', phaseName: 'Dernière veille', lesson: 'Estoc et balayage alternent. Lis chaque annonce : aucune santé n’est rendue entre les phases.', health: 132, speed: 178, windupMs: 840, recoveryMs: 870, damage: 28, reach: 186 },
+] as const;
+export type WolfCastleCombatScenario = 'training' | 'dungeon';
 export type WolfCastleCombatCommand = 'attack' | 'parry' | 'evade';
 export type WolfCastleCombatStatus = 'active' | 'intermission' | 'victory' | 'defeat' | 'abandoned';
 export type WolfCastleCombatEvent = 'begin' | 'attack' | 'hit' | 'miss' | 'parry' | 'evade' | 'hurt' | 'exhausted' | 'intermission' | 'victory' | 'defeat' | 'abandoned';
@@ -23,7 +30,7 @@ export interface WolfCastleCombatEnemy {
   strike: 'thrust' | 'sweep'; targetX: number; targetY: number; sequence: number; staggerMs: number;
 }
 export interface WolfCastleCombatState {
-  version: 1; status: WolfCastleCombatStatus; attempt: number; encounterIndex: number; elapsedMs: number;
+  version: 2; scenario: WolfCastleCombatScenario; status: WolfCastleCombatStatus; attempt: number; encounterIndex: number; elapsedMs: number;
   player: WolfCastleCombatPlayer; enemy: WolfCastleCombatEnemy;
   stats: { hits: number; parries: number; evades: number; damageTaken: number };
   dossier: { victories: number; bestTimeMs: number | null; bestDamageTaken: number | null };
@@ -50,16 +57,20 @@ function newPlayer(health = 100): WolfCastleCombatPlayer {
   return { x: 550, y: 610, facing: 1, health, stamina: 100, attackMs: 0, attackResolved: true, attackCooldownMs: 0,
     parryMs: 0, evadeMs: 0, evadeX: 0, evadeY: 0, defenseCooldownMs: 0, hurtMs: 0 };
 }
-function newEnemy(index: number): WolfCastleCombatEnemy {
-  return { x: 1050, y: 610, facing: -1, health: WOLF_CASTLE_COMBAT_ENCOUNTERS[index].health,
+export function wolfCastleCombatSpec(state: Pick<WolfCastleCombatState, 'scenario' | 'encounterIndex'>) {
+  return state.scenario === 'dungeon' ? WOLF_CASTLE_DUNGEON_PHASES[state.encounterIndex] : WOLF_CASTLE_COMBAT_ENCOUNTERS[state.encounterIndex];
+}
+function newEnemy(index: number, scenario: WolfCastleCombatScenario): WolfCastleCombatEnemy {
+  return { x: 1050, y: 610, facing: -1, health: wolfCastleCombatSpec({ scenario, encounterIndex: index }).health,
     phase: 'approach', phaseMs: 0, strike: index === 1 ? 'sweep' : 'thrust', targetX: 550, targetY: 610, sequence: 0, staggerMs: 0 };
 }
-export function createWolfCastleCombat(previous: WolfCastleCombatState | null = null): WolfCastleCombatState {
-  if (previous && (inspectWolfCastleCombat(previous).status !== 'valid' || ['active', 'intermission'].includes(previous.status) || previous.attempt >= 9999)) {
+export function createWolfCastleCombat(previous: WolfCastleCombatState | null = null, scenario: WolfCastleCombatScenario = 'training'): WolfCastleCombatState {
+  if (!['training', 'dungeon'].includes(scenario) || (previous && (inspectWolfCastleCombat(previous).status !== 'valid' ||
+    (previous.scenario ?? 'training') !== scenario || ['active', 'intermission'].includes(previous.status) || previous.attempt >= 9999))) {
     throw new TypeError('L’épreuve précédente doit être terminée avant de recommencer.');
   }
-  return { version: WOLF_CASTLE_COMBAT_VERSION, status: 'active', attempt: (previous?.attempt ?? 0) + 1, encounterIndex: 0, elapsedMs: 0,
-    player: newPlayer(), enemy: newEnemy(0), stats: { hits: 0, parries: 0, evades: 0, damageTaken: 0 },
+  return { version: WOLF_CASTLE_COMBAT_VERSION, scenario, status: 'active', attempt: (previous?.attempt ?? 0) + 1, encounterIndex: 0, elapsedMs: 0,
+    player: newPlayer(), enemy: newEnemy(0, scenario), stats: { hits: 0, parries: 0, evades: 0, damageTaken: 0 },
     dossier: previous ? { ...previous.dossier } : { victories: 0, bestTimeMs: null, bestDamageTaken: null },
     event: { kind: 'begin', sequence: 0, remainingMs: 1800 } };
 }
@@ -68,8 +79,12 @@ export function inspectWolfCastleCombat(raw: unknown): WolfCastleCombatInspectio
   const invalid = (reason: string): WolfCastleCombatInspection => ({ status: 'invalid-save', state: null, reason });
   if (raw === null || raw === undefined) return { status: 'absent', state: null, reason: null };
   if (!record(raw)) return invalid('combat-record');
-  if (integer(raw.version, 2, Number.MAX_SAFE_INTEGER)) return { status: 'future-version', state: null, reason: 'combat-version' };
-  if (raw.version !== WOLF_CASTLE_COMBAT_VERSION || !keys(raw, ['version', 'status', 'attempt', 'encounterIndex', 'elapsedMs', 'player', 'enemy', 'stats', 'dossier', 'event'])) return invalid('combat-fields');
+  if (integer(raw.version, WOLF_CASTLE_COMBAT_VERSION + 1, Number.MAX_SAFE_INTEGER)) return { status: 'future-version', state: null, reason: 'combat-version' };
+  const legacy = raw.version === 1;
+  const fields = ['version', 'status', 'attempt', 'encounterIndex', 'elapsedMs', 'player', 'enemy', 'stats', 'dossier', 'event'];
+  if ((!legacy && raw.version !== WOLF_CASTLE_COMBAT_VERSION) || !keys(raw, legacy ? fields : [...fields, 'scenario'])) return invalid('combat-fields');
+  const scenario = legacy ? 'training' : raw.scenario;
+  if (scenario !== 'training' && scenario !== 'dungeon') return invalid('combat-scenario');
   if (!['active', 'intermission', 'victory', 'defeat', 'abandoned'].includes(raw.status as string) || !integer(raw.attempt, 1, 9999) ||
     !integer(raw.encounterIndex, 0, 2) || !finite(raw.elapsedMs, 0, MAX_TIME)) return invalid('combat-progress');
   const p = raw.player, e = raw.enemy, s = raw.stats, d = raw.dossier, event = raw.event;
@@ -81,7 +96,7 @@ export function inspectWolfCastleCombat(raw: unknown): WolfCastleCombatInspectio
   if ((p.attackMs === 0 && !p.attackResolved) || (p.parryMs > 0 && p.evadeMs > 0) ||
     (p.evadeMs > 0 && Math.abs(Math.hypot(p.evadeX, p.evadeY) - 1) > .00001)) return invalid('combat-player-phase');
   if (!record(e) || !keys(e, ['x', 'y', 'facing', 'health', 'phase', 'phaseMs', 'strike', 'targetX', 'targetY', 'sequence', 'staggerMs']) ||
-    !inside(e.x, e.y) || !direction(e.facing) || !finite(e.health, 0, WOLF_CASTLE_COMBAT_ENCOUNTERS[raw.encounterIndex].health) ||
+    !inside(e.x, e.y) || !direction(e.facing) || !finite(e.health, 0, wolfCastleCombatSpec({ scenario, encounterIndex: raw.encounterIndex }).health) ||
     !['approach', 'windup', 'recovery', 'down'].includes(e.phase as string) || !finite(e.phaseMs, 0, 1700) ||
     !['thrust', 'sweep'].includes(e.strike as string) || !inside(e.targetX, e.targetY) || !integer(e.sequence, 0, 1_000_000) || !finite(e.staggerMs, 0, 1400)) return invalid('combat-enemy');
   if ((e.phase === 'down') !== (e.health === 0) || (e.phase === 'windup' && e.phaseMs <= 0) || (e.phase === 'approach' && e.phaseMs !== 0)) return invalid('combat-enemy-phase');
@@ -97,7 +112,7 @@ export function inspectWolfCastleCombat(raw: unknown): WolfCastleCombatInspectio
     (raw.status === 'intermission' && (raw.encounterIndex === 2 || p.health <= 0 || e.health !== 0)) ||
     (raw.status === 'victory' && (raw.encounterIndex !== 2 || p.health <= 0 || e.health !== 0 || d.victories === 0)) ||
     (raw.status === 'defeat' && (p.health !== 0 || e.health <= 0))) return invalid('combat-result');
-  return { status: 'valid', state: { ...raw, player: { ...p }, enemy: { ...e }, stats: { ...s }, dossier: { ...d }, event: { ...event } } as unknown as WolfCastleCombatState, reason: null };
+  return { status: 'valid', state: { ...raw, version: WOLF_CASTLE_COMBAT_VERSION, scenario, player: { ...p }, enemy: { ...e }, stats: { ...s }, dossier: { ...d }, event: { ...event } } as unknown as WolfCastleCombatState, reason: null };
 }
 
 function event(state: WolfCastleCombatState, kind: WolfCastleCombatEvent, duration = 900) {
@@ -107,7 +122,7 @@ export function advanceWolfCastleCombatEncounter(state: WolfCastleCombatState): 
   if (inspectWolfCastleCombat(state).status !== 'valid' || state.status !== 'intermission' || state.encounterIndex >= 2) return state;
   const index = state.encounterIndex + 1;
   const next: WolfCastleCombatState = { ...state, status: 'active', encounterIndex: index,
-    player: newPlayer(Math.min(100, state.player.health + 25)), enemy: newEnemy(index), event: { ...state.event } };
+    player: newPlayer(state.scenario === 'dungeon' ? state.player.health : Math.min(100, state.player.health + 25)), enemy: newEnemy(index, state.scenario ?? 'training'), event: { ...state.event } };
   event(next, 'begin', 1800);
   return next;
 }
@@ -121,7 +136,7 @@ export function wolfCastleCombatPending(state: WolfCastleCombatState | null): bo
 
 /** The visible shape and the hit test share this exact locked footprint. */
 export function wolfCastleCombatStrikeArea(state: WolfCastleCombatState) {
-  const e = state.enemy, spec = WOLF_CASTLE_COMBAT_ENCOUNTERS[state.encounterIndex];
+  const e = state.enemy, spec = wolfCastleCombatSpec(state);
   return e.strike === 'sweep'
     ? { x: e.x, y: e.y, radiusX: spec.reach, radiusY: 82, shape: 'ellipse' as const }
     : { x: e.x + e.facing * spec.reach / 2, y: e.targetY, radiusX: spec.reach / 2 + 19, radiusY: 28, shape: 'rect' as const };
@@ -139,7 +154,7 @@ export function stepWolfCastleCombat(source: WolfCastleCombatState, input: WolfC
   const dt = Math.min(deltaMs, 50);
   const state: WolfCastleCombatState = { ...source, player: { ...source.player }, enemy: { ...source.enemy },
     stats: { ...source.stats }, dossier: { ...source.dossier }, event: { ...source.event } };
-  const p = state.player, e = state.enemy, spec = WOLF_CASTLE_COMBAT_ENCOUNTERS[state.encounterIndex];
+  const p = state.player, e = state.enemy, spec = wolfCastleCombatSpec(state);
   state.elapsedMs = Math.min(MAX_TIME, state.elapsedMs + dt);
   state.event.remainingMs = Math.max(0, state.event.remainingMs - dt);
   p.attackCooldownMs = Math.max(0, p.attackCooldownMs - dt);
@@ -236,6 +251,13 @@ export function stepWolfCastleCombat(source: WolfCastleCombatState, input: WolfC
 }
 
 export function wolfCastleCombatEventLabel(state: WolfCastleCombatState): string {
+  if (state.scenario === 'dungeon') {
+    if (state.event.kind === 'begin') return WOLF_CASTLE_DUNGEON_PHASES[state.encounterIndex].phaseName;
+    if (state.event.kind === 'intermission') return 'La sentinelle change de posture. Reprends ton souffle avant la phase suivante.';
+    if (state.event.kind === 'victory') return 'Sentinelle maîtrisée. Rapporte le mandat à l’audience.';
+    if (state.event.kind === 'defeat') return 'Mandat interrompu : retente l’affrontement ou abandonne. Les repères explorés sont conservés.';
+    if (state.event.kind === 'abandoned') return 'Mandat abandonné. Aucune récompense accordée.';
+  }
   return { begin: 'Observe la garde et prends ta distance.', attack: 'Frappe engagée', hit: 'Frappe au contact', miss: 'Hors de portée',
     parry: 'Parade réussie — ouverture !', evade: 'Esquive', hurt: 'Touché — reprends ta distance', exhausted: 'Reprends ton souffle',
     intermission: 'Garde dépassée. La cour t’accorde un répit.', victory: 'Les trois gardes sont dépassées. Épreuve consignée.',

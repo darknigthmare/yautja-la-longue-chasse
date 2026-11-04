@@ -128,18 +128,18 @@ test('remaining still causes defeat; retry, intermission and abandonment remain 
 test('invalid and future combat data are rejected before import', () => {
   const state = combat.createWolfCastleCombat();
   assert.equal(combat.inspectWolfCastleCombat(null).status, 'absent');
-  assert.equal(combat.inspectWolfCastleCombat({ ...state, version: 2 }).status, 'future-version');
+  assert.equal(combat.inspectWolfCastleCombat({ ...state, version: combat.WOLF_CASTLE_COMBAT_VERSION + 1 }).status, 'future-version');
   for (const patch of [{ extra: true }, { status: 'victory' }, { encounterIndex: 3 }, { attempt: 0 }, { elapsedMs: Infinity },
     { player: { ...state.player, x: 180 } }, { player: { ...state.player, evadeMs: 100, evadeX: 0, evadeY: 0 } },
     { enemy: { ...state.enemy, phase: 'down' } }, { enemy: { ...state.enemy, phase: 'windup', phaseMs: 0 } },
     { dossier: { victories: 1, bestTimeMs: null, bestDamageTaken: null } }]) assert.equal(combat.inspectWolfCastleCombat({ ...state, ...patch }).status, 'invalid-save');
 });
 
-test('old V1 castle saves migrate once to safe V2 positions while preserving their exploration', () => {
+test('old V1 castle saves migrate once to safe V3 positions while preserving their exploration', () => {
   const state = court(), v1 = clone(state); v1.version = 1;
-  delete v1.revision; delete v1.position; delete v1.combat;
+  delete v1.revision; delete v1.position; delete v1.combat; delete v1.dungeon;
   const loaded = castle.inspectWolfCastleVisit(v1, context.ownerCreatedAt);
-  assert.equal(loaded.status, 'valid'); assert.equal(loaded.state.version, 2); assert.equal(loaded.state.revision, 0); assert.equal(loaded.state.combat, null);
+  assert.equal(loaded.status, 'valid'); assert.equal(loaded.state.version, 3); assert.equal(loaded.state.revision, 0); assert.equal(loaded.state.combat, null); assert.equal(loaded.state.dungeon, null);
   assert.deepEqual(loaded.state.visitedRooms, state.visitedRooms); assert.ok(castle.isWolfCastlePosition(state.roomId, loaded.state.position));
   assert.deepEqual(castle.inspectWolfCastleVisit(clone(loaded.state), context.ownerCreatedAt).state, loaded.state);
 });

@@ -64,6 +64,66 @@ function castleFixture(roomId = 'royal-berth', ship = SHIP) {
   const storage = store(), state = castleAt(roomId, ship), save = write({ ...saves.defaultSave(OWNER), wolfCastle: state }, storage);
   return { state, save, storage };
 }
+function castleMove(state, destination) {
+  for (const roomId of castle.wolfCastleRoute(state.roomId, destination).slice(1)) state = step(state, { type: 'move-room', roomId });
+  return state;
+}
+function castleCheckpoint(state, position = state.position, training = state.combat, mandate = state.dungeon?.combat ?? null) {
+  const context = { ownerCreatedAt: OWNER, personalShipId: SHIP };
+  const result = castle.applyWolfCastleCheckpoint(state, { ...context, roomId: state.roomId, expectedRevision: state.revision,
+    position, combat: training, dungeonCombat: mandate }, context);
+  assert.equal(result.accepted, true, result.reason);
+  return result.state;
+}
+function castleStation(state, kind) {
+  const target = castle.wolfCastleRoom(state.roomId).stations.find(station => station.kind === kind);
+  assert.ok(target, kind);
+  return castleCheckpoint(state, { x: target.x, y: target.y, facing: 1 });
+}
+function playRoyalFight(state) {
+  for (let frame = 0; frame < 20_000 && state.status === 'active'; frame++) {
+    const p = state.player, e = state.enemy, dx = e.x - p.x, dy = e.y - p.y;
+    const imminent = e.phase === 'windup' && e.phaseMs < 185 && p.attackMs === 0 && p.defenseCooldownMs === 0;
+    state = combat.stepWolfCastleCombat(state, {
+      moveX: Math.abs(dx) > 130 || Math.sign(dx) !== p.facing ? Math.sign(dx) : 0,
+      moveY: Math.abs(dy) > 10 ? Math.sign(dy) : 0,
+      attack: e.phase === 'recovery' && Math.abs(dx) < 145 && Math.abs(dy) < 35 && p.attackCooldownMs === 0,
+      parry: imminent && e.strike === 'thrust', evade: imminent && e.strike === 'sweep',
+    }, 20);
+  }
+  assert.notEqual(state.status, 'active', 'the production simulation resolves the fixture encounter');
+  return state;
+}
+let mandateSnapshotCache;
+function mandateSnapshots() {
+  if (mandateSnapshotCache) return structuredClone(mandateSnapshotCache);
+  let state = step(castleAt('royal-audience'), { type: 'hear-audience' });
+  state = step(castleMove(state, 'royal-council'), { type: 'decide-audience', decision: 'accepted' });
+  state = step(castleStation(castleMove(state, 'royal-audience'), 'audience'), { type: 'accept-dungeon' });
+  state = step(castleStation(castleMove(state, 'royal-archives'), 'archive'), { type: 'inspect-dungeon-archive' });
+  const partial = state;
+  for (const [room, kind, type] of [['royal-gallery', 'gallery', 'inspect-dungeon-gallery'], ['royal-council', 'council', 'inspect-dungeon-council']]) {
+    state = step(castleStation(castleMove(state, room), kind), { type });
+  }
+  state = step(castleStation(castleMove(state, 'royal-court'), 'combat'), { type: 'start-dungeon-combat' });
+  const idle = { moveX: 0, moveY: 0, attack: false, parry: false, evade: false };
+  let live = state.dungeon.combat;
+  for (let frame = 0; frame < 100 && live.enemy.phase !== 'windup'; frame++) live = combat.stepWolfCastleCombat(live, idle, 50);
+  assert.equal(live.enemy.phase, 'windup');
+  live = combat.stepWolfCastleCombat(live, { ...idle, parry: true }, 20);
+  state = castleCheckpoint(state, { x: live.player.x, y: live.player.y, facing: live.player.facing }, state.combat, live);
+  const active = state;
+  for (let phase = 0; phase < 3; phase++) {
+    live = playRoyalFight(state.dungeon.combat);
+    assert.equal(live.status, phase === 2 ? 'victory' : 'intermission');
+    state = castleCheckpoint(state, { x: live.player.x, y: live.player.y, facing: live.player.facing }, state.combat, live);
+    if (phase < 2) state = step(state, { type: 'next-dungeon-phase' });
+  }
+  const victory = castleStation(castleMove(state, 'royal-audience'), 'audience');
+  const completed = step(victory, { type: 'extract-dungeon' });
+  mandateSnapshotCache = { partial, active, victory, completed };
+  return structuredClone(mandateSnapshotCache);
+}
 // This is the GameClient.huntConfiguration payload, using its production helpers.
 function frozenConfiguration(save) {
   return structuredClone({
@@ -147,7 +207,7 @@ test('existing V1 castle visits migrate through the real save loader without los
   state = step(state, { type: 'start-trial' });
   state = step(state, { type: 'activate-seal', sealId: 'threshold' });
   const legacy = { ...state, version: 1 };
-  delete legacy.position; delete legacy.combat; delete legacy.revision;
+  delete legacy.position; delete legacy.combat; delete legacy.revision; delete legacy.dungeon;
   save = { ...save, wolfCastle: legacy };
   const storage = store([[MAIN, JSON.stringify(save)]]);
   const loaded = saves.loadSaveWithStatus(storage, MAIN);
@@ -159,6 +219,7 @@ test('existing V1 castle visits migrate through the real save loader without los
   assert.deepEqual(migrated.visitedRooms, legacy.visitedRooms);
   assert.deepEqual(migrated.position, { ...castle.wolfCastleEntryPoint(legacy.roomId, legacy.entryFrom), facing: 1 });
   assert.equal(migrated.combat, null);
+  assert.equal(migrated.dungeon, null);
   assert.deepEqual(saves.parseSaveImport(saves.exportSave(loaded.save)).save.wolfCastle, migrated);
 });
 
@@ -225,6 +286,103 @@ test('a live royal fight resumes with identical health, stamina, position and en
   const failed = structuredClone(save); failed.wolfCastle.combat.version += 1;
   assert.equal(saves.parseSaveImport(JSON.stringify(failed)).failure, 'future-version');
   assert.deepEqual(saves.loadSaveWithStatus(destination, MAIN).save.wolfCastle, result.state);
+});
+
+test('a V2 castle and its V1 training combat migrate to V3 without changing the saved fight or creating a mandate', () => {
+  let state = step(castleAt('royal-court'), { type: 'start-combat' });
+  const input = { moveX: 1, moveY: 0, attack: true, parry: false, evade: false };
+  const live = combat.stepWolfCastleCombat(state.combat, input, 20);
+  state = castleCheckpoint(state, { x: live.player.x, y: live.player.y, facing: live.player.facing }, live);
+  const legacy = { ...state, version: 2, combat: { ...live, version: 1 } };
+  delete legacy.dungeon; delete legacy.combat.scenario;
+  const original = { ...saves.defaultSave(OWNER), wolfCastle: legacy };
+  const storage = store([[MAIN, JSON.stringify(original)]]), before = bytes(storage);
+  const loaded = saves.loadSaveWithStatus(storage, MAIN);
+  assert.equal(loaded.loaded, true, loaded.failure);
+  const migrated = loaded.save.wolfCastle;
+  assert.equal(migrated.version, 3); assert.equal(migrated.dungeon, null);
+  assert.deepEqual(migrated.combat, live);
+  assert.deepEqual(migrated.position, state.position);
+  assert.equal(migrated.revision, state.revision);
+  assert.deepEqual(migrated.visitedRooms, state.visitedRooms);
+  assert.deepEqual(bytes(storage), before, 'reading a legacy campaign never rewrites its primary');
+  assert.deepEqual(saves.parseSaveImport(saves.exportSave(loaded.save)).save.wolfCastle, migrated);
+  const archive = archives.createCompleteArchive(loaded.save, storage, OWNER).archive;
+  const destination = store(), imported = archives.importCompleteArchive(archives.prepareCompleteArchiveImport(archive, destination), destination);
+  assert.equal(imported.persisted, true, imported.recovery.message);
+  assert.deepEqual(saves.loadSaveWithStatus(store(bytes(destination)), MAIN).save.wolfCastle, migrated);
+});
+
+test('mandate objectives and a live boss cross durable reload, portable export and the complete archive transaction exactly', () => {
+  const snapshots = mandateSnapshots();
+  for (const state of [snapshots.partial, snapshots.active]) {
+    const storage = store(), save = write({ ...saves.defaultSave(OWNER), wolfCastle: state }, storage);
+    const before = bytes(storage), count = storage.writes.length;
+    const loaded = saves.loadSaveWithStatus(store(before), MAIN);
+    assert.equal(loaded.loaded, true, loaded.failure);
+    const portable = saves.parseSaveImport(saves.exportSave(save));
+    assert.ok(portable.save, portable.failure);
+    const complete = archives.createCompleteArchive(save, storage, OWNER);
+    const parsed = archives.parseCompleteArchive(complete.serialized);
+    assert.ok(parsed.archive, parsed.failure);
+    const destination = store(), imported = archives.importCompleteArchive(archives.prepareCompleteArchiveImport(parsed.archive, destination), destination);
+    assert.equal(imported.persisted, true, imported.recovery.message);
+    for (const restored of [loaded.save, portable.save, parsed.archive.campaign, saves.loadSaveWithStatus(store(bytes(destination)), MAIN).save]) {
+      assert.deepEqual(restored.wolfCastle, state);
+      assert.equal(restored.profile.clanMarks, save.profile.clanMarks, 'saving a live mandate grants no reward');
+      if (state.dungeon.combat) {
+        const input = { moveX: 0, moveY: 0, attack: false, parry: false, evade: false };
+        assert.deepEqual(combat.stepWolfCastleCombat(restored.wolfCastle.dungeon.combat, input, 20), combat.stepWolfCastleCombat(state.dungeon.combat, input, 20));
+      }
+    }
+    assert.deepEqual(bytes(storage), before); assert.equal(storage.writes.length, count);
+  }
+  assert.deepEqual(snapshots.partial.dungeon.objectives, { archives: true, gallery: false, council: false });
+  assert.equal(snapshots.active.dungeon.combat.enemy.phase, 'windup');
+  assert.ok(snapshots.active.dungeon.combat.player.stamina < 100);
+});
+
+test('a forged mandate receipt is refused by campaign imports, writes, exports and complete archives without touching valid bytes', () => {
+  const { active, completed } = mandateSnapshots();
+  const storage = store(), base = saves.defaultSave(OWNER);
+  const save = write({ ...base, profile: { ...base.profile, clanMarks: 2 }, wolfCastle: completed }, storage);
+  const complete = archives.createCompleteArchive(save, storage, OWNER).archive;
+  const before = bytes(storage), count = storage.writes.length;
+  const mutations = [
+    value => { value.wolfCastle.dungeon.reward.receipt = value.wolfCastle.dungeon.reward.receipt.replace(OWNER, OTHER); },
+    value => { value.wolfCastle.dungeon.reward.receipt = null; },
+    value => { value.wolfCastle.dungeon.reward.claimed = false; },
+    value => { value.wolfCastle.dungeon.combat = structuredClone(active.dungeon.combat); },
+    value => { value.wolfCastle.dungeon.status = 'victory'; },
+  ];
+  for (const mutate of mutations) {
+    const invalid = structuredClone(save); mutate(invalid);
+    assert.equal(saves.parseSaveImport(JSON.stringify(invalid)).failure, 'invalid-save');
+    assert.equal(saves.importSaveWithStatus(JSON.stringify(invalid), storage, MAIN).failure, 'invalid-save');
+    assert.equal(saves.writeSaveWithStatus(invalid, storage, MAIN).persisted, false);
+    assert.throws(() => saves.exportSave(invalid));
+    assert.equal(archives.parseCompleteArchive(JSON.stringify({ ...complete, campaign: invalid })).failure, 'invalid-save');
+    assert.deepEqual(bytes(storage), before); assert.equal(storage.writes.length, count);
+  }
+  assert.deepEqual(saves.loadSaveWithStatus(store(before), MAIN).save.wolfCastle, completed);
+});
+
+test('future mandate and boss versions protect the primary over an older valid backup and refuse archive import', () => {
+  const { active } = mandateSnapshots();
+  const source = store(), save = write({ ...saves.defaultSave(OWNER), wolfCastle: active }, source);
+  const complete = archives.createCompleteArchive(save, source, OWNER).archive;
+  for (const target of ['visit', 'mandate', 'combat']) {
+    const future = structuredClone(save);
+    const value = target === 'visit' ? future.wolfCastle : target === 'mandate' ? future.wolfCastle.dungeon : future.wolfCastle.dungeon.combat;
+    value.version += 1; value.futureProgress = { preserve: true };
+    const storage = store([[MAIN, JSON.stringify(future)], [MAIN + '.backup', JSON.stringify(save)]]), before = bytes(storage);
+    assert.equal(saves.parseSaveImport(JSON.stringify(future)).failure, 'future-version');
+    const loaded = saves.loadSaveWithStatus(storage, MAIN);
+    assert.equal(loaded.loaded, false); assert.equal(loaded.failure, 'future-version');
+    assert.equal(saves.writeSaveWithStatus(save, storage, MAIN).failure, 'protected-save');
+    assert.equal(archives.parseCompleteArchive(JSON.stringify({ ...complete, campaign: future })).failure, 'future-version');
+    assert.deepEqual(bytes(storage), before); assert.equal(storage.writes.length, 0);
+  }
 });
 
 test('foreign or future castle data cannot overwrite an existing campaign or be silently stripped', () => {

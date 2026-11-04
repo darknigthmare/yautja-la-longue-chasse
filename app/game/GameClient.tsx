@@ -2381,7 +2381,18 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
     const result = actWolfCastle(current.wolfCastle, action,
       { ownerCreatedAt: current.createdAt, personalShipId: loadShipProgression(current).selectedShipId });
     if (!result.accepted) { setToast(result.message); return false; }
-    if (result.changed && !persistSocialProgress({ wolfCastle: result.state })) return false;
+    const reward = result.clanMarksReward ?? 0;
+    if (!Number.isSafeInteger(reward) || reward < 0 || (reward > 0 && (!result.changed ||
+        !Number.isSafeInteger(current.profile.clanMarks) || current.profile.clanMarks < 0 ||
+        current.profile.clanMarks > Number.MAX_SAFE_INTEGER - reward))) {
+      setToast('Récompense non enregistrée : le solde de marques de clan est incompatible. Le mandat reste disponible.');
+      return false;
+    }
+    // The completion receipt and the existing campaign currency share one
+    // confirmed write, including recovery after an uncertain storage readback.
+    if (result.changed && !persistSocialProgress({ wolfCastle: result.state,
+      ...(reward > 0 ? { profile: { ...current.profile, clanMarks: current.profile.clanMarks + reward } } : {}),
+    })) return false;
     if (result.state.status === 'departed') { setHubLocation('deck'); setScreen('deck'); }
     return true;
   }, [archiveRecoveryIssue, archiveTransferBusy, campaignSaveBusy, entry.ownerCreatedAt, gameFocusedV89, persistSocialProgress, screen, settingsOpen]);

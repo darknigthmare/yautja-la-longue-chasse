@@ -73,6 +73,58 @@ pendant la CI. Les sources courantes doivent aussi passer `--current` après leu
 commit. Ne pas remplacer `docs/v113-runtime-freeze.json` ni les deux certificats
 historiques pour faire correspondre leurs anciennes observations au code actuel.
 
+## Actualisation du relevé pour le Clan Ship — 4 novembre 2026
+
+Le fichier courant `runtime-inputs.json` décrit désormais le périmètre du jeu
+au commit `22fad968311d252310fe2fde281f71564a401a64`. Le checkpoint local
+`83f65cb013831bdebcdc9344fa386e6f2f6be4d7` possède exactement le même arbre Git,
+`3e51bbc023720057deb28696bd16bbaa6c8b6d82`. Les captures et les 22 scénarios du
+Clan Ship conservent leur source qualifiée `22fad968`.
+
+| Mesure du relevé actualisé | Valeur |
+| --- | --- |
+| Entrées | 2 130 |
+| Octets des entrées | 1 091 761 004 |
+| Octets du document JSON | 396 560 |
+| SHA-256 du document | `9ac1b87a8a280c7b211c1f6b70e2ca13c768852b3787c0b1abb4d3cb98f9b96b` |
+
+La préparation utilise une reconstruction différentielle contrôlée depuis
+`6191e7b4ae7af4472e8c8c1fc242bf3d2e9e6cef`. L'ancien relevé contient 2 124
+entrées et son SHA-256 est
+`2da02ca09cf92dd4b461b58e06e151d5c5c03f1f61a75b5e5864f00780b35d4e`.
+Les 2 116 entrées conservées ont chacune le même mode, le même type et le même
+identifiant de blob Git dans cette base et dans la source qualifiée. Aucun de
+ces fichiers inventoriés n'avait changé sur `main` avant la PR #104. Les
+1 171 sources applicatives de la base ont aussi été relues depuis leurs blobs :
+leurs tailles et leurs SHA-256 correspondent tous au relevé précédent.
+
+Les six ajouts applicatifs et les huit sources applicatives modifiées ont été
+relus dans le checkout. Leur SHA-1 Git correspond au blob de la source qualifiée ;
+leurs tailles et leurs SHA-256 ont été recalculés. La liste résultante couvre
+exactement les 1 177 chemins applicatifs de cette source. L'unicité des chemins,
+leur tri, le nombre d'entrées et la somme des octets sont vérifiés avant écriture.
+Les déclarations d'entrées, les générateurs et leurs dépendances conservées
+restent identiques à la base.
+
+Ce checkout partiel manque 699 fichiers du relevé précédent, dont 682 blobs
+absents du magasin Git partagé, représentant 1 023 219 037 octets. Aucune
+exécution locale complète de `snapshot-runtime-v113.mjs --write` ou `--check`
+n'est revendiquée. Le run V94 `41818690146`, job `126536529650`, a atteint la
+comparaison finale du générateur après ses contrôles des sources natives ;
+il a refusé l'ancien document de 395 554 octets face au relevé courant calculé
+de 396 560 octets. Il n'est pas présenté comme une validation réussie.
+
+La commande CI stricte reste inchangée et doit valider tous les octets réellement
+matérialisés après publication de cette correction :
+
+```sh
+node scripts/snapshot-runtime-v113.mjs --check docs/qa/current-integration-20261103/runtime-inputs.json
+```
+
+Les freezes V111, V112 et V113 et les deux certificats de production V113
+conservent leurs identités Git. Cette actualisation d'inventaire ne leur attribue
+aucune nouvelle observation et ne change pas le code du jeu qualifié.
+
 ## Ressources des modèles V113
 
 Les trois suites de ressources utilisent 59 fichiers réels, soit 184 049 750
@@ -97,7 +149,8 @@ observé sur le commit effectivement publié.
 
 ## Relevé et résultats locaux de cette intégration
 
-Le relevé courant `runtime-inputs.json` contient 2 124 entrées et
+Le relevé de l’intégration du 3 novembre, conservé au commit
+`6191e7b4ae7af4472e8c8c1fc242bf3d2e9e6cef`, contient 2 124 entrées et
 1 091 654 943 octets d’entrées. Il a été régénéré puis vérifié après
 l’intégration du menu et de la version visible de la PR #102, dont le head est
 `7799c81b13e869ef7588014529f26ac0eff0a572`, puis du routage vers les images natives
@@ -224,3 +277,54 @@ conservent cinq commandes originales réussies, 26 tests enveloppants dont les
 courants restent identiques. La reproduction de l'erreur initiale figure dans
 `v112-shared-preimages-red.log`. Ces preuves restent historiques, avec
 `currentRuntimeCovered: false`.
+
+## Actualisation pour le château Wolf et le mandat royal — 4 novembre 2026
+
+Le relevé courant comprend le Clan Ship fusionné, le château Wolf, le mandat
+royal et l’arrivée planétaire. Il est reconstruit depuis la source qualifiée
+`71826ae1d02563c73facced34ec8cfaa827aeb89` et son inventaire de 2 130 entrées,
+SHA-256 `9ac1b87a8a280c7b211c1f6b70e2ca13c768852b3787c0b1abb4d3cb98f9b96b`.
+Le checkpoint local de préparation est
+`6f209b16c97f572711460f3fd483feaf3317d470`, qui reprend le code du mandat royal
+`3aaded18daf303f69f90f51c212f5fe4ab55d72a`. L’identité de ses sources applicatives
+avec la publication est contrôlée lors de l’intégration ; la recette distante
+identifie séparément son commit effectivement exécuté.
+
+| Mesure du relevé | Valeur |
+| --- | --- |
+| Entrées | 2 144 |
+| Sources applicatives | 1 191 |
+| Octets des entrées | 1 092 055 158 |
+| Octets du document JSON | 398 945 |
+| SHA-256 du document | `b05b63ee443eb02bd88326d74ac2543a4f54ae9fc82a1e7b6a0f0306e3de5496` |
+
+Les 2 120 entrées conservées ont chacune le même mode, type et identifiant de
+blob Git entre la base et le checkpoint. Les 1 177 blobs applicatifs de la base
+ont été relus et comparés à leurs tailles et SHA-256 qualifiés. Les dix sources
+applicatives modifiées et les quatorze ajouts ont été relus ; leur identifiant
+Git, leur taille et leur SHA-256 ont été recalculés. Aucun chemin n’est retiré.
+La couverture correspond exactement aux 1 191 fichiers applicatifs du checkpoint.
+
+La portée de construction reste celle du générateur existant : les déclarations,
+générateurs, dépendances, banques natives V112 et fixtures parcourues sont
+contrôlés, ainsi que les résolutions réelles d’imports avec le parseur TypeScript
+verrouillé. Les entrées inventoriées hors `app/` sont identiques à la base.
+Le tri, l’unicité, les nombres et les sommes d’octets sont vérifiés. La méthode
+reproduit aussi l’inventaire qualifié de départ octet pour octet ; des cas ciblés
+refusent une déclaration ou une banque de fixtures élargie.
+
+La préparation différentielle ne constitue pas une exécution locale du générateur
+complet : les 682 fichiers historiques absents du checkout partiel représentent
+1 023 219 037 octets. Le contrôle CI suivant conserve son assertion et relit les
+fichiers réellement matérialisés sur la source publiée :
+
+```sh
+node scripts/snapshot-runtime-v113.mjs --check docs/qa/current-integration-20261103/runtime-inputs.json
+```
+
+Les résultats de l’intégration sont attachés à leur source dans la
+[PR #106](https://github.com/darknigthmare/yautja-la-longue-chasse/pull/106).
+Les freezes et certificats historiques ne sont pas modifiés. Les nouvelles
+preuves navigateur Wolf épinglent le commit demandé et exigent un checkout
+propre ; la recette Clan Ship contrôle également le blocage du départ royal
+pendant l’amarrage, sa conservation après reprise et sa levée au désamarrage.

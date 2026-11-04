@@ -1,8 +1,41 @@
 # ShipHub — briefs de conception
 
-Ces trois briefs sont indépendants. Ils servent à produire des concepts et à préparer des assets, sans transformer une image générée en référence canonique. Aucune nouvelle image n'a été produite dans cette passe.
+Ce dossier conserve les trois briefs et le lot d'art réellement produit pour l'intérieur du Clan Ship. **Sept fonds individuels ont été générés avec l'outil image_gen intégré**, puis exportés en WebP 1440 × 800. Le hangar établit la direction commune ; les six autres pièces reprennent son cadrage, son sol et ses matériaux.
+
+Les prompts exacts de chaque génération sont conservés dans [`art-source/clan-ship-v1/generation.json`](../../art-source/clan-ship-v1/generation.json). Le [manifeste runtime](../../public/game/clan-ship/manifest.json) contient dimensions, poids et empreintes des fichiers. Les contrats du château et de l'arrivée sont détaillés dans [castle-spec.md](castle-spec.md) et [arrival-spec.md](arrival-spec.md) ; les références consultées figurent dans [references.md](references.md).
+
+Le [contrat de l’intérieur physique](interior-spec.md) décrit la circulation et la reprise. Les [32 fiches d’assets individuels](individual-asset-prompts.md) préparent la production du château et de l’arrivée. Les **huit props dédiés du Clan Ship** sont suivis dans `production-state.json.individualProps` ; leurs prompts exécutés sont conservés dans [`art-source/clan-ship-props-v1/generation.json`](../../art-source/clan-ship-props-v1/generation.json).
 
 ## 1. Clan Ship AVP — vaisseau mère et amarrage personnel
+
+### Lot produit : sept arrière-plans
+
+| Pièce | Direction propre | Fichier runtime |
+|---|---|---|
+| Hangar | Baie spatiale profonde, nervures monumentales et balises turquoise | `public/game/clan-ship/interiors/hangar-v1.webp` |
+| Conseil | Alcôves hautes, relief orbital, bronze et or retenu | `public/game/clan-ship/interiors/conseil-v1.webp` |
+| Armurerie | Parois forgées, réserves encastrées et lueurs ambre | `public/game/clan-ship/interiors/armurerie-v1.webp` |
+| Trophées | Galerie rituelle, niches hautes et éclairage chaud | `public/game/clan-ship/interiors/trophees-v1.webp` |
+| Soins | Chambres vitrées, lignes cliniques et lumière vert pâle | `public/game/clan-ship/interiors/soins-v1.webp` |
+| Archives | Niches de mémoire, données turquoise et relief annulaire | `public/game/clan-ship/interiors/archives-v1.webp` |
+| Entraînement | Grand volume martial, nervures sombres et lueurs de braise | `public/game/clan-ship/interiors/entrainement-v1.webp` |
+
+Chaque image est une plaque de fond opaque, sans chasseur, vaisseau personnel, porte active ni installation sur la bande de marche. Les portes, équipements et rig du personnage sont composés séparément par le jeu. Le fichier source individuel mesure 1672 × 941 ; `scripts/build-clan-ship-art.mjs` produit la version de jeu en sRGB, qualité WebP 90. Les sept versions runtime totalisent 1 661 452 octets. Le contrôle de chargement et la revue en scène sont consignés dans le suivi de production.
+
+### Lot produit : huit installations indépendantes
+
+| Salle | Prop individuel | Fichier runtime | Dimensions px |
+|---|---|---|---:|
+| Hangar | Console d’amarrage | `berth-console-v1.webp` | 1 024 × 614 |
+| Conseil | Table du conseil | `council-table-v1.webp` | 1 024 × 614 |
+| Armurerie | Râtelier | `armory-rack-v1.webp` | 1 024 × 614 |
+| Armurerie | Forge | `armory-forge-v1.webp` | 683 × 1 024 |
+| Trophées | Établi rituel | `trophy-workbench-v1.webp` | 1 024 × 603 |
+| Soins | Lit médical | `medical-bed-v1.webp` | 1 024 × 538 |
+| Archives | Terminal | `archive-terminal-v1.webp` | 533 × 1 024 |
+| Entraînement | Poste d’entraînement | `training-station-v1.webp` | 683 × 1 024 |
+
+Ces fichiers sont dans `public/game/clan-ship/props/`. Le lot runtime mesure **1 368 700 octets**. Chaque prop possède une transparence mesurée, des pixels visibles, une marge vide sur le bord et un pivot calculé depuis ses pixels visibles. Le manifeste conserve ces mesures et les SHA-256 des sources et exports. Les installations sont reliées à leurs propres fixtures dans `ClanShipInterior.tsx` ; leur collision et leur point d’usage restent définis dans `clanShipInterior.ts`. Les contrôles techniques ne constituent pas une approbation artistique humaine.
 
 ### Intention et limites de référence
 
@@ -32,7 +65,7 @@ Le joueur identifie son vaisseau personnel à chaque étape. L'approche peut êt
 
 ### Périmètre
 
-Le brief évoque un château orbital du Predator King dans le Wolf System et l'associe à Black Panther vs Predator. Ces noms sont conservés comme demandes de référence à vérifier. Ce dossier ne certifie ni l'emplacement, ni les titres, ni l'architecture d'un lieu canonique. La forteresse orbitale ne doit pas être confondue avec le Clan Ship jouable : destination, statut, progression et ressources d'art restent séparés.
+Le château orbital du Predator King dans le Wolf System est conservé comme destination demandée. Le contrat proposé décrit une audience de campagne, neuf lieux reliés et vingt modules individuels. Les références officielles de la série sont identifiées dans `references.md` ; la géométrie précise reste à confronter aux planches choisies. La forteresse possède sa propre identité et son propre parcours.
 
 ### Prompt concept
 
@@ -40,7 +73,7 @@ Le brief évoque un château orbital du Predator King dans le Wolf System et l'a
 
 ### Dépendances de réalisation
 
-Avant tout modèle final, vérifier le numéro, les pages et les vues de la référence invoquée, puis séparer ce qui est visible de ce qui est déduit. Décider si le lieu est accessible, seulement présenté en cinématique ou réservé à une progression ultérieure. Définir ensuite un point d'arrivée, le propriétaire des entrées, le retour au vaisseau et le modèle de sauvegarde. Aucun de ces systèmes n'est implémenté dans cette passe. Les images `royal-predator-ship` du dépôt constituent au plus une inspiration de palette ou un asset de véhicule ; elles ne démontrent pas la forme d'un château orbital.
+`castle-spec.md` fixe le premier périmètre proposé : invitation de campagne, baie, sas, chemin d'audience, conseil et retour court. Il détaille les métriques, les pivots, les collisions, les événements, la reprise et la recette à exécuter. Les images `royal-predator-ship` du dépôt restent des véhicules de catalogue ; elles ne remplacent pas l'asset extérieur de la forteresse.
 
 ## 3. Arrivée planétaire — référence Predator (1987), jusqu'à 1:02
 
@@ -65,7 +98,7 @@ La demande associe la séquence d'ouverture de Predator (1987) à une arrivée j
 | 49–57 s | Arrivée en vue latérale | Sol, capsule, poussière, caméra de gameplay |
 | 57–62 s | Ouverture et sortie | Animation chasseur, état de départ du niveau |
 
-Ces durées sont éditables. Le montage doit supporter la pause, un saut explicite et les rechargements sans attribuer deux fois une récompense ni déclencher deux spawns. Déterminer le moment exact où la simulation reprend et où l'entrée passe de la cinématique au jeu. Une destination invalide ou un asset manquant doit mener à une sortie contrôlée. Le volume sonore, les flashs et les mouvements de caméra demandent une validation propre ; aucune piste audio ou animation nouvelle n'est produite ici.
+Ces durées sont éditables et leur somme est calculée dans le classeur. `arrival-spec.md` détaille l'horloge active, la pause, le saut, la reprise par plan et le relais unique vers la chasse après confirmation durable. Douze assets ou réemplois sont spécifiés avec leurs ancres et leur plan de rendu. Les fallbacks d'assets, les réglages de mouvement et le propriétaire des entrées sont définis avant le prototype.
 
 ## Règle commune de livraison
 

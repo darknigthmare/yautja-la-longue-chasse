@@ -434,6 +434,7 @@ function InteriorRoom(props: ClanShipInteriorProps & {
         </div>
       </div>
       <div className={styles.viewportVignette} aria-hidden="true" />
+      {roomId === 'hangar' && <span className={styles.berthLabel}>Vaisseau personnel · amarré</span>}
       {suspended && <div className={styles.suspendedVeil} aria-hidden="true">Pont en pause</div>}
       <div className={styles.locationTrack} aria-label="Position dans la salle">
         <span>{ROOMS[room.doors[0].targetRoomId].label}</span><div><i style={{ left: `${actor.x / METRICS.width * 100}%` }} /></div><span>{ROOMS[room.doors[1].targetRoomId].label}</span>
@@ -517,7 +518,6 @@ const RoomScenery = memo(function RoomScenery({ roomId, personalShipId }: { room
     {roomId === 'hangar' && <div className={styles.personalShip} data-interior-personal-ship={personalShipId}>
       {!shipFailed && <img src={shipProfileAssetPath(personalShipId)} alt={shipForId(personalShipId).name} draggable={false} onError={() => setShipFailed(true)} />}
       <span className={styles.berthLight} aria-hidden="true" />
-      <span className={styles.berthLabel}>Vaisseau personnel · amarré</span>
     </div>}
     {roomId === 'entrainement' && <div className={styles.trainingCircle} aria-hidden="true" />}
     {room.fixtures.map(fixture => <Fixture key={fixture.id} fixture={fixture} />)}

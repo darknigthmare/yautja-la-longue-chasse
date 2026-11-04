@@ -10,6 +10,10 @@ import {build} from 'esbuild';
 import {chromium} from 'playwright-core';
 
 const root=fileURLToPath(new URL('../',import.meta.url));
+const releaseSource=await fs.readFile(path.join(root,'app/game/buildInfo.ts'),'utf8');
+const releaseMatch=releaseSource.match(/^export const GAME_RELEASE_VERSION = "((?:0|[1-9]\d*)\.(?:0|[1-9]\d*)\.(?:0|[1-9]\d*))";$/m);
+assert.ok(releaseMatch,'The current application release must be declared as a numeric semantic version');
+const releaseVersion=releaseMatch[1];
 const revision=execFileSync('git',['rev-parse','HEAD'],{cwd:root,encoding:'utf8'}).trim();
 const buildId=revision.slice(0,8);
 const bundle=await build({absWorkingDir:root,entryPoints:['tests/browser/campaign-menu-navigation.fixture.tsx'],outfile:'campaign-menu-fixture.js',bundle:true,write:false,external:['/game/*'],jsx:'automatic',platform:'browser',define:{'process.env':'{}','process.env.NODE_ENV':'"production"','process.env.NEXT_PUBLIC_YAUTJA_BUILD_ID':JSON.stringify(buildId)},logLevel:'silent'});
@@ -44,7 +48,7 @@ const check=(name,value)=>{assert(value,name);checks.push({name,status:'PASS'});
 const disk=page=>page.evaluate(()=>Object.fromEntries(Object.keys(localStorage).sort().map(key=>[key,localStorage.getItem(key)])));
 const view=(page,name)=>page.locator(`[data-campaign-menu="${name}"]`).waitFor();
 const focused=page=>page.evaluate(()=>({section:document.activeElement?.getAttribute('data-menu-section'),action:document.activeElement?.getAttribute('data-menu-action'),text:document.activeElement?.textContent}));
-const badge=async page=>{const node=page.locator('[data-campaign-menu] [data-game-version]');assert.equal(await node.getAttribute('data-game-version'),'1.1.0');assert.equal(await node.getAttribute('data-game-build'),buildId);assert(await node.isVisible());};
+const badge=async page=>{const node=page.locator('[data-campaign-menu] [data-game-version]');assert.equal(await node.getAttribute('data-game-version'),releaseVersion);assert.equal(await node.getAttribute('data-game-build'),buildId);assert(await node.isVisible());};
 const screenshot=async(page,name)=>{const file=path.join(output,name+'.png');await page.screenshot({path:file,fullPage:true,animations:'disabled'});screenshots.push(name+'.png');};
 const frames=page=>page.evaluate(()=>new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(()=>requestAnimationFrame(resolve)))));
 async function pad(page,button){

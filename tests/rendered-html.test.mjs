@@ -1,10 +1,14 @@
 import assert from "node:assert/strict";
-import { access } from "node:fs/promises";
+import { access, readFile } from "node:fs/promises";
 import test from "node:test";
 
 const developmentPreviewMeta =
   /<meta(?=[^>]*\bname=["']codex-preview["'])(?=[^>]*\bcontent=["']development["'])[^>]*>/i;
 const templateRoot = new URL("../", import.meta.url);
+const releaseSource = await readFile(new URL("app/game/buildInfo.ts", templateRoot), "utf8");
+const releaseMatch = releaseSource.match(/^export const GAME_RELEASE_VERSION = "((?:0|[1-9]\d*)\.(?:0|[1-9]\d*)\.(?:0|[1-9]\d*))";$/m);
+assert.ok(releaseMatch, "the current application release is declared as a numeric semantic version");
+const releasePattern = releaseMatch[1].replaceAll(".", "\\.");
 
 async function render() {
   const workerUrl = new URL("../dist/server/index.js", import.meta.url);
@@ -34,7 +38,7 @@ test("server-renders the campaign menu before local archive hydration", async ()
 
   const html = await response.text();
   assert.doesNotMatch(html, developmentPreviewMeta);
-  assert.match(html, /<title>Yautja : La Longue Chasse · v1\.1\.0<\/title>/i);
+  assert.match(html, new RegExp("<title>Yautja : La Longue Chasse · v" + releasePattern + "</title>", "i"));
   // Inspect actual SSR markup, not matching strings inside the RSC payload.
   const markup = html.replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi, "");
   const main = markup.match(/<main\b[^>]*>[\s\S]*?<\/main>/i)?.[0];

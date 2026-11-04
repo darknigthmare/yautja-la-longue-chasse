@@ -15,13 +15,14 @@ import { WolfCastleAudio } from './systems/wolfCastleAudio';
 import type { SceneAudioPort } from './systems/sceneAudio';
 import {
   WOLF_CASTLE_COMBAT_ARENA, WOLF_CASTLE_COMBAT_ENCOUNTERS, stepWolfCastleCombat,
-  wolfCastleCombatEventLabel, wolfCastleCombatPending, wolfCastleCombatStrikeArea,
+  wolfCastleCombatEventLabel, wolfCastleCombatPending, wolfCastleCombatStrikeArea, wolfCastleCombatSpec,
   type WolfCastleCombatCommand, type WolfCastleCombatState,
 } from './systems/wolfCastleCombat';
 import {
   WOLF_CASTLE_ART_ROOT, WOLF_CASTLE_ROOMS, WOLF_CASTLE_SEALS, WOLF_CASTLE_WORLD,
   actWolfCastle, applyWolfCastleCheckpoint, isWolfCastlePointWalkable, stepWolfCastleActor,
   wolfCastleNearestStation, wolfCastleObjective, wolfCastleRoom, wolfCastleRoute, wolfCastleWalkPath,
+  wolfCastleActiveCombat, wolfCastleDungeonObjective,
   type WolfCastleAction, type WolfCastleCheckpoint, type WolfCastlePoint, type WolfCastlePosition, type WolfCastleProp, type WolfCastleRoomId,
   type WolfCastleStation, type WolfCastleVisit,
 } from './systems/wolfCastle';
@@ -48,19 +49,28 @@ export interface WolfCastleSceneProps {
 }
 
 type CastleCommit = (action: WolfCastleAction) => Promise<boolean>;
-type CastleCheckpoint = (position: WolfCastlePosition, combat: WolfCastleCombatState | null) => boolean;
+type CastleCheckpoint = (position: WolfCastlePosition, combat: WolfCastleCombatState | null, dungeonCombat?: WolfCastleCombatState | null) => boolean;
 type CastleMotion = WolfCastlePoint & { phase: number; facing: -1 | 1; moving: boolean };
 type HeldDirection = 'left' | 'right' | 'up' | 'down';
-type CastleDialog = WolfCastleStation | 'map' | null;
+type CastleDialog = WolfCastleStation | 'map' | 'mandate' | null;
 const SEAL_LABELS = ['Seuil', 'Zénith', 'Retour'];
 const clamp = (value: number, low: number, high: number) => Math.max(low, Math.min(high, value));
 const blankHeld = () => ({ left: false, right: false, up: false, down: false });
 
-function useCastleAudio(createSceneAudio: WolfCastleSceneProps['createSceneAudio'], visit: WolfCastleVisit,
-  combat: WolfCastleCombatState | null, enabled: boolean) {
+function useCastleAudio(createSceneAudio: WolfCastleSceneProps['createSceneAudio'], initialVisit: WolfCastleVisit) {
   const directorRef = useRef<WolfCastleAudio | null>(null);
-  const latestRef = useRef({ visit, combat, enabled });
-  useLayoutEffect(() => { latestRef.current = { visit, combat, enabled }; }, [visit, combat, enabled]);
+  const latestRef = useRef({ visit: initialVisit, combat: wolfCastleActiveCombat(initialVisit), enabled: false });
+  // One director owns the whole visit, including cues across room changes.
+  const syncAudio = useCallback((visit: WolfCastleVisit, combat: WolfCastleCombatState | null, enabled: boolean) => {
+    latestRef.current = { visit, combat, enabled };
+    directorRef.current?.sync(visit, combat, enabled && !document.hidden);
+  }, []);
+  const motionAudio = useCallback((visit: WolfCastleVisit, from: WolfCastlePoint, to: WolfCastlePoint, enabled: boolean) => {
+    directorRef.current?.motion(visit, from, to, enabled && !document.hidden);
+  }, []);
+  const confirmedActionAudio = useCallback((before: WolfCastleVisit, action: WolfCastleAction, after: WolfCastleVisit) => {
+    directorRef.current?.confirmedAction(before, action, after);
+  }, []);
   useEffect(() => {
     const voice = createSceneAudio?.();
     if (!voice) return;
@@ -70,9 +80,6 @@ function useCastleAudio(createSceneAudio: WolfCastleSceneProps['createSceneAudio
     director.sync(latest.visit, latest.combat, latest.enabled && !document.hidden);
     return () => { director.dispose(); if (directorRef.current === director) directorRef.current = null; };
   }, [createSceneAudio]);
-  useEffect(() => {
-    directorRef.current?.sync(visit, combat, enabled && !document.hidden);
-  }, [createSceneAudio, visit, combat, enabled]);
   const suspendAudio = useCallback(() => { directorRef.current?.suspend(); }, []);
   const unlockAudio = useCallback(() => { if (!document.hidden) directorRef.current?.unlock(); }, []);
   useEffect(() => {
@@ -86,8 +93,9 @@ function useCastleAudio(createSceneAudio: WolfCastleSceneProps['createSceneAudio
       document.removeEventListener('visibilitychange', hide);
     };
   }, [suspendAudio]);
-  return { suspendAudio, unlockAudio };
+  return { syncAudio, motionAudio, confirmedActionAudio, suspendAudio, unlockAudio };
 }
+type CastleAudioController = ReturnType<typeof useCastleAudio>;
 
 export default function WolfCastleScene({ visit, appearance, loadout, createSceneAudio, suspended = false, checkpointBlocked = false, reducedMotion = false,
   highContrast = false, gamepadEnabled = true, controlBindings = DEFAULT_CONTROL_BINDINGS, onAction, onCheckpoint, onMenu }: WolfCastleSceneProps) {
@@ -98,6 +106,10 @@ export default function WolfCastleScene({ visit, appearance, loadout, createScen
   const mountedRef = useRef(false);
   const [busy, setBusy] = useState(false);
   const [notice, setNotice] = useState<{ text: string; error: boolean; action: WolfCastleAction['type'] } | null>(null);
+  const audio = useCastleAudio(createSceneAudio, visit);
+  const { syncAudio, confirmedActionAudio, suspendAudio } = audio;
+  const audioAllowedRef = useRef(!suspended && !checkpointBlocked);
+  useLayoutEffect(() => { audioAllowedRef.current = !suspended && !checkpointBlocked; }, [checkpointBlocked, suspended]);
   const aboard = visit.status === 'aboard';
   const currentRoom = wolfCastleRoom(visit.roomId);
 
@@ -106,10 +118,11 @@ export default function WolfCastleScene({ visit, appearance, loadout, createScen
     if (visit.ownerCreatedAt !== visitRef.current.ownerCreatedAt || visit.revision >= visitRef.current.revision) visitRef.current = visit;
   }, [visit]);
 
-  const checkpoint = useCallback<CastleCheckpoint>((position, combat) => {
+  const checkpoint = useCallback<CastleCheckpoint>((position, combat, dungeonCombat) => {
     const current = visitRef.current;
     const value: WolfCastleCheckpoint = { ownerCreatedAt: current.ownerCreatedAt, personalShipId: current.personalShipId,
-      roomId: current.roomId, expectedRevision: current.revision, position, combat };
+      roomId: current.roomId, expectedRevision: current.revision, position, combat,
+      ...(dungeonCombat === undefined ? {} : { dungeonCombat }) };
     const result = applyWolfCastleCheckpoint(current, value, { ownerCreatedAt: current.ownerCreatedAt, personalShipId: current.personalShipId });
     if (!result.accepted) return false;
     if (!result.changed) return true;
@@ -138,7 +151,16 @@ export default function WolfCastleScene({ visit, appearance, loadout, createScen
     pendingRef.current = true;
     setBusy(true);
     let accepted = false;
-    try { accepted = await onAction(action); if (accepted) visitRef.current = result.state; }
+    try {
+      accepted = await onAction(action);
+      if (accepted) {
+        visitRef.current = result.state;
+        if (mountedRef.current && audioAllowedRef.current && !document.hidden && document.hasFocus()) {
+          syncAudio(result.state, wolfCastleActiveCombat(result.state), true);
+        } else suspendAudio();
+        confirmedActionAudio(current, action, result.state);
+      }
+    }
     catch { accepted = false; }
     finally {
       pendingRef.current = false;
@@ -149,21 +171,23 @@ export default function WolfCastleScene({ visit, appearance, loadout, createScen
       }
     }
     return accepted;
-  }, [checkpointBlocked, onAction, suspended]);
+  }, [checkpointBlocked, confirmedActionAudio, onAction, suspendAudio, suspended, syncAudio]);
 
   const menu = useCallback(() => { if (!suspended && !checkpointBlocked && !pendingRef.current && flushRef.current()) onMenu(); }, [checkpointBlocked, onMenu, suspended]);
   useMenuGamepad(rootRef, !aboard && !suspended && !checkpointBlocked && !busy && gamepadEnabled, `wolf-castle-${visit.status}`, menu);
 
-  const combatResult = aboard && visit.roomId === 'royal-court' && visit.combat &&
-    (visit.combat.status === 'victory' || visit.combat.status === 'defeat') ? wolfCastleCombatEventLabel(visit.combat) : null;
+  const activeCombat = wolfCastleActiveCombat(visit);
+  const combatResult = aboard && visit.roomId === 'royal-court' && activeCombat &&
+    (activeCombat.status === 'victory' || activeCombat.status === 'defeat') ? wolfCastleCombatEventLabel(activeCombat) : null;
   // A terminal checkpoint supersedes the round-start notice, but never a
   // useful error or a later action performed while exploring the castle.
-  const resultReplacesNotice = !notice || (!notice.error && (notice.action === 'start-combat' || notice.action === 'next-combat'));
+  const resultReplacesNotice = !notice || (!notice.error && ['start-combat', 'next-combat', 'start-dungeon-combat', 'next-dungeon-phase', 'retry-dungeon'].includes(notice.action));
   const footerMessage = combatResult && resultReplacesNotice ? combatResult : notice?.text ?? wolfCastleObjective(visit);
 
   return <section ref={rootRef} className={`${styles.castle} ${highContrast ? styles.highContrast : ''} ${reducedMotion ? styles.reducedMotion : ''}`}
     aria-label="Château du Roi — système Wolf" aria-hidden={suspended || undefined} inert={suspended || undefined}
     data-wolf-castle-status={visit.status} data-wolf-castle-room={visit.roomId} data-wolf-castle-mode={visit.mode}
+    data-wolf-dungeon-status={visit.dungeon?.status ?? 'none'} data-wolf-dungeon-reward={visit.dungeon?.reward.claimed ?? false}
     onKeyDown={event => {
       if (!aboard && !suspended && !event.repeat && matchesControlAction('hunt.pause', event, controlBindings)) {
         event.preventDefault(); event.stopPropagation(); menu();
@@ -176,10 +200,10 @@ export default function WolfCastleScene({ visit, appearance, loadout, createScen
     </header>
     {aboard ? <CastleInterior key={`${visit.ownerCreatedAt}:${visit.roomId}:${visit.entryFrom ?? 'berth'}`}
       visit={visit} appearance={appearance} loadout={loadout} suspended={suspended || busy || checkpointBlocked} pauseRequested={suspended} checkpointBlocked={checkpointBlocked}
-      createSceneAudio={createSceneAudio}
+      audio={audio}
       reducedMotion={reducedMotion} gamepadEnabled={gamepadEnabled} controlBindings={controlBindings}
       commit={commit} checkpoint={checkpoint} registerFlush={registerFlush} onMenu={menu} />
-      : <CastleApproach visit={visit} busy={busy || suspended || checkpointBlocked} createSceneAudio={createSceneAudio} commit={commit} />}
+      : <CastleApproach visit={visit} busy={busy || suspended || checkpointBlocked} audio={audio} commit={commit} />}
     <footer className={`${styles.status} ${notice?.error ? styles.error : ''}`} role={notice?.error ? 'alert' : 'status'} aria-live="polite">
       <span>{busy ? 'Enregistrement de l’escale…' : footerMessage}</span>
       <small>{aboard ? 'Ton vaisseau reste dans la baie royale.' : 'Forteresse orbitale · Destination de campagne'}</small>
@@ -187,9 +211,10 @@ export default function WolfCastleScene({ visit, appearance, loadout, createScen
   </section>;
 }
 
-function CastleApproach({ visit, busy, createSceneAudio, commit }: { visit: WolfCastleVisit; busy: boolean; createSceneAudio: WolfCastleSceneProps['createSceneAudio']; commit: CastleCommit }) {
+function CastleApproach({ visit, busy, audio, commit }: { visit: WolfCastleVisit; busy: boolean; audio: CastleAudioController; commit: CastleCommit }) {
   const firstRef = useRef<HTMLButtonElement>(null);
-  const { unlockAudio } = useCastleAudio(createSceneAudio, visit, visit.combat, !busy);
+  const { syncAudio, unlockAudio } = audio;
+  useLayoutEffect(() => { syncAudio(visit, wolfCastleActiveCombat(visit), !busy); }, [busy, syncAudio, visit]);
   useEffect(() => { if (!busy) firstRef.current?.focus({ preventScroll: true }); }, [busy]);
   return <div className={styles.approach} onPointerDownCapture={unlockAudio} onKeyDownCapture={event => { if (!event.repeat) unlockAudio(); }}>
     <div className={styles.orbitArt} aria-label="Forteresse orbitale et vaisseau personnel">
@@ -214,7 +239,7 @@ interface CastleInteriorProps {
   visit: WolfCastleVisit;
   appearance: HunterAppearance;
   loadout: Loadout;
-  createSceneAudio: WolfCastleSceneProps['createSceneAudio'];
+  audio: CastleAudioController;
   suspended: boolean;
   pauseRequested: boolean;
   checkpointBlocked: boolean;
@@ -227,7 +252,7 @@ interface CastleInteriorProps {
   onMenu: () => void;
 }
 
-function CastleInterior({ visit, appearance, loadout, createSceneAudio, suspended, pauseRequested, checkpointBlocked, reducedMotion, gamepadEnabled, controlBindings, commit, checkpoint, registerFlush, onMenu }: CastleInteriorProps) {
+function CastleInterior({ visit, appearance, loadout, audio, suspended, pauseRequested, checkpointBlocked, reducedMotion, gamepadEnabled, controlBindings, commit, checkpoint, registerFlush, onMenu }: CastleInteriorProps) {
   const room = wolfCastleRoom(visit.roomId);
   const rootRef = useRef<HTMLDivElement>(null);
   const viewportRef = useRef<HTMLDivElement>(null);
@@ -235,11 +260,19 @@ function CastleInterior({ visit, appearance, loadout, createSceneAudio, suspende
   const dialogRef = useRef<HTMLDivElement>(null);
   const [motion, setMotion] = useState<CastleMotion>(() => ({ ...visit.position, phase: 0, moving: false }));
   const motionRef = useRef(motion);
-  const [combat, setCombat] = useState(visit.combat);
+  const [combat, setCombat] = useState(() => wolfCastleActiveCombat(visit));
   const combatRef = useRef(combat);
-  const [combatPaused, setCombatPaused] = useState(() => wolfCastleCombatPending(visit.combat));
+  const trainingCombatRef = useRef(visit.combat);
+  const liveVisitRef = useRef(visit);
+  useLayoutEffect(() => { liveVisitRef.current = visit; trainingCombatRef.current = visit.combat; }, [visit]);
+  const [combatPaused, setCombatPaused] = useState(() => wolfCastleCombatPending(wolfCastleActiveCombat(visit)));
   const pausedRef = useRef(combatPaused);
-  const [dismissedResult, setDismissedResult] = useState('');
+  const [dismissedResult, setDismissedResult] = useState(() => {
+    const previous = wolfCastleActiveCombat(visit);
+    return previous?.scenario === 'training' && !wolfCastleCombatPending(previous) &&
+      (visit.dungeon?.status === 'accepted' || visit.dungeon?.status === 'ready')
+      ? `${previous.scenario}:${previous.attempt}:${previous.encounterIndex}:${previous.status}` : '';
+  });
   const [saveError, setSaveError] = useState(false);
   const saveBlockedRef = useRef(false);
   const checkpointBlockedRef = useRef(checkpointBlocked);
@@ -259,14 +292,18 @@ function CastleInterior({ visit, appearance, loadout, createSceneAudio, suspende
   const menuRef = useRef(onMenu);
   const mapRef = useRef<() => void>(() => {});
   const flushLatestRef = useRef<() => boolean>(() => true);
+  const dungeonCombat = combat?.scenario === 'dungeon';
+  const combatTitle = dungeonCombat ? 'Le Verrou de Wolf' : 'Épreuve des trois gardes';
+  const combatResultKey = combat ? `${combat.scenario}:${combat.attempt}:${combat.encounterIndex}:${combat.status}` : '';
   const combatVisible = visit.roomId === 'royal-court' && Boolean(combat && combat.status !== 'abandoned' &&
-    (wolfCastleCombatPending(combat) || dismissedResult !== `${combat.attempt}:${combat.status}`));
+    (wolfCastleCombatPending(combat) || dismissedResult !== combatResultKey));
   const combatVisibleRef = useRef(combatVisible);
   const wasSuspendedRef = useRef(pauseRequested);
   const resultOverlay = combatVisible && combat?.status !== 'active';
   const combatOverlay = combatVisible && (combatPaused || resultOverlay);
-  const { suspendAudio, unlockAudio } = useCastleAudio(createSceneAudio, visit, combat,
-    !suspended && !dialog && !saveError && (!combatVisible || !combatPaused));
+  const { syncAudio, motionAudio, suspendAudio, unlockAudio } = audio;
+  const audioEnabled = !suspended && !dialog && !saveError && (!combatVisible || !combatPaused);
+  useLayoutEffect(() => { syncAudio(visit, combat, audioEnabled); }, [audioEnabled, combat, syncAudio, visit]);
   const nearest = combatVisible ? null : wolfCastleNearestStation(visit.roomId, motion);
   const cameraHeight = combatVisible && dimensions.width < 720 ? 540 : WOLF_CASTLE_WORLD.height;
   const baseCameraWidth = clamp(dimensions.width / dimensions.height * cameraHeight, 430, WOLF_CASTLE_WORLD.width);
@@ -293,7 +330,10 @@ function CastleInterior({ visit, appearance, loadout, createSceneAudio, suspende
   const flush = useCallback(() => {
     if (checkpointBlockedRef.current) { deferredCheckpointRef.current = true; return false; }
     const { x, y, facing } = motionRef.current;
-    const accepted = checkpoint({ x, y, facing }, combatRef.current);
+    const live = combatRef.current;
+    const accepted = live?.scenario === 'dungeon'
+      ? checkpoint({ x, y, facing }, trainingCombatRef.current, live)
+      : checkpoint({ x, y, facing }, live);
     deferredCheckpointRef.current = false;
     saveBlockedRef.current = !accepted;
     setSaveError(!accepted);
@@ -334,14 +374,14 @@ function CastleInterior({ visit, appearance, loadout, createSceneAudio, suspende
   // A checkpoint publication must not rewind a frame already simulated locally.
   // Only a new attempt/round or an explicit abandonment replaces the live engine.
   useLayoutEffect(() => {
-    const next = visit.combat, current = combatRef.current;
-    if (next?.attempt !== current?.attempt || next?.encounterIndex !== current?.encounterIndex ||
+    const next = wolfCastleActiveCombat(visit), current = combatRef.current;
+    if (next?.scenario !== current?.scenario || next?.attempt !== current?.attempt || next?.encounterIndex !== current?.encounterIndex ||
       (next?.status === 'abandoned' && current?.status !== 'abandoned')) {
       combatRef.current = next; setCombat(next);
       motionRef.current = { ...visit.position, phase: 0, moving: false }; setMotion(motionRef.current);
       clearInput();
     }
-  }, [clearInput, visit.combat, visit.position]);
+  }, [clearInput, visit]);
 
   const closeDialog = useCallback(() => {
     if (suspended) return;
@@ -476,6 +516,7 @@ function CastleInterior({ visit, appearance, loadout, createSceneAudio, suspende
       if (checkpointBlockedRef.current && !wasSuspendedRef.current && !saveBlockedRef.current &&
           !document.hidden && document.hasFocus() && rootRef.current?.contains(document.activeElement)) return;
       if (!activeRef.current || document.hidden || !document.hasFocus() || !rootRef.current?.contains(document.activeElement)) {
+        motionAudio(liveVisitRef.current, motionRef.current, motionRef.current, false);
         if (activeRef.current && combatVisibleRef.current && combatRef.current?.status === 'active' && !pausedRef.current) pauseCombat();
         clearInput(); previousConfirm = previousBack = previousMap = previousParry = previousEvade = false;
         if (motionRef.current.moving) { motionRef.current = { ...motionRef.current, moving: false }; setMotion(motionRef.current); }
@@ -528,6 +569,7 @@ function CastleInterior({ visit, appearance, loadout, createSceneAudio, suspende
       }
       const old = motionRef.current;
       if (combatVisibleRef.current && combatRef.current?.status === 'active') {
+        motionAudio(liveVisitRef.current, old, old, false);
         const previous = combatRef.current;
         const next = stepWolfCastleCombat(previous, { moveX: x, moveY: y, ...commandRef.current }, delta);
         commandRef.current = { attack: false, parry: false, evade: false };
@@ -541,6 +583,7 @@ function CastleInterior({ visit, appearance, loadout, createSceneAudio, suspende
         return;
       }
       const next = stepWolfCastleActor(visit.roomId, old, { x, y }, delta);
+      motionAudio(liveVisitRef.current, old, next, true);
       const moving = Math.hypot(next.x - old.x, next.y - old.y) > .02;
       if (moving || old.moving !== moving) {
         motionRef.current = { ...next, moving, phase: moving ? old.phase + delta / 1000 : old.phase, facing: Math.abs(x) > .05 ? (x < 0 ? -1 : 1) : old.facing };
@@ -550,7 +593,7 @@ function CastleInterior({ visit, appearance, loadout, createSceneAudio, suspende
     };
     request = requestAnimationFrame(frame);
     return () => cancelAnimationFrame(request);
-  }, [clearInput, gamepadEnabled, issueCombatCommand, pauseCombat, visit.roomId]);
+  }, [clearInput, gamepadEnabled, issueCombatCommand, motionAudio, pauseCombat, visit.roomId]);
 
   const floorPointer = (event: ReactPointerEvent<SVGSVGElement>) => {
     if (suspended || dialog || combatOverlay || saveError || event.button !== 0 || (event.target instanceof Element && event.target.closest('[data-castle-station]'))) return;
@@ -574,15 +617,24 @@ function CastleInterior({ visit, appearance, loadout, createSceneAudio, suspende
   };
   const dialogAction = async (action: WolfCastleAction) => {
     if (await commit(action)) {
-      if (action.type === 'start-combat' || action.type === 'next-combat') {
+      if (['start-combat', 'next-combat', 'start-dungeon-combat', 'next-dungeon-phase', 'retry-dungeon'].includes(action.type)) {
         pausedRef.current = false; setCombatPaused(false); setDismissedResult('');
       }
       clearInput(); setDialog(null); rootRef.current?.focus({ preventScroll: true });
     }
   };
-  const dismissCombat = () => {
+  const dismissCombat = (target?: WolfCastleRoomId) => {
     if (suspended || !combat || wolfCastleCombatPending(combat) || !flush()) return;
-    setDismissedResult(`${combat.attempt}:${combat.status}`); clearInput(); rootRef.current?.focus({ preventScroll: true });
+    setDismissedResult(combatResultKey); clearInput(); rootRef.current?.focus({ preventScroll: true });
+    if (target) {
+      const route = wolfCastleRoute(visit.roomId, target);
+      const exit = room.stations.find(station => station.targetRoom === route[1]);
+      if (exit) {
+        pathRef.current = wolfCastleWalkPath(visit.roomId, motionRef.current, exit);
+        setWaypoint(exit);
+        setGuidance(`Vers ${wolfCastleRoom(target).name} : ${route.slice(1).map(id => wolfCastleRoom(id).name).join(' → ')}`);
+      }
+    }
   };
   const combatPlayer = combatVisible ? combat?.player : undefined;
   const hunterWidth = combatVisible ? 124 : 110;
@@ -592,6 +644,7 @@ function CastleInterior({ visit, appearance, loadout, createSceneAudio, suspende
     data-wolf-castle-x={motion.x.toFixed(1)} data-wolf-castle-y={motion.y.toFixed(1)} data-wolf-castle-moving={motion.moving}
     onPointerDownCapture={unlockAudio} onKeyDownCapture={event => { if (!event.repeat) unlockAudio(); }}
     data-wolf-combat-status={combatVisible ? combat?.status : undefined} data-wolf-combat-encounter={combatVisible ? combat?.encounterIndex : undefined}
+    data-wolf-combat-scenario={combatVisible ? combat?.scenario : undefined}
     data-wolf-combat-paused={combatVisible ? combatPaused : undefined} data-wolf-combat-elapsed={combatVisible ? combat?.elapsedMs.toFixed(1) : undefined}
     data-wolf-combat-player-health={combatVisible ? combat?.player.health : undefined} data-wolf-combat-enemy-health={combatVisible ? combat?.enemy.health : undefined}
     data-wolf-combat-player-x={combatVisible ? combat?.player.x.toFixed(1) : undefined} data-wolf-combat-player-y={combatVisible ? combat?.player.y.toFixed(1) : undefined}
@@ -613,7 +666,7 @@ function CastleInterior({ visit, appearance, loadout, createSceneAudio, suspende
         }
       }
     }}>
-    <div className={styles.objective}><span className={styles.eyebrow}>OBJECTIF</span><p>{combatVisible && combat ? WOLF_CASTLE_COMBAT_ENCOUNTERS[combat.encounterIndex].lesson : wolfCastleObjective(visit)}</p></div>
+    <div className={styles.objective}><span className={styles.eyebrow}>{visit.dungeon && !['completed', 'abandoned'].includes(visit.dungeon.status) ? 'MANDAT ROYAL' : 'OBJECTIF'}</span><p>{combatVisible && combat ? wolfCastleCombatSpec(combat).lesson : wolfCastleDungeonObjective(visit) ?? wolfCastleObjective(visit)}</p></div>
     <div className={styles.playArea} inert={overlayOpen || undefined}>
       {combatVisible && combat && <CastleCombatHud combat={combat} />}
       <div ref={viewportRef} className={styles.viewport}>
@@ -668,7 +721,7 @@ function CastleInterior({ visit, appearance, loadout, createSceneAudio, suspende
           })}
           {!reducedMotion && <image href={wolfCastleRuntimeAsset(`${WOLF_CASTLE_ART_ROOT}low-fog.png`)} x={cameraX} y="590" width={cameraWidth} height="115" preserveAspectRatio="none" opacity=".1" pointerEvents="none" className={styles.fog} />}
         </svg>
-        <div className={styles.sceneCaption}><span>{String(WOLF_CASTLE_ROOMS.findIndex(entry => entry.id === room.id) + 1).padStart(2, '0')}</span><strong>{combatVisible ? 'Épreuve des trois gardes' : room.name}</strong><small>{combatVisible ? 'Coups d’entraînement · Aucun équipement consommé' : room.subtitle}</small></div>
+        <div className={styles.sceneCaption}><span>{String(WOLF_CASTLE_ROOMS.findIndex(entry => entry.id === room.id) + 1).padStart(2, '0')}</span><strong>{combatVisible ? combatTitle : room.name}</strong><small>{combatVisible ? dungeonCombat ? 'Mandat royal · Gardien du sceau' : 'Coups d’entraînement · Aucun équipement consommé' : room.subtitle}</small></div>
       </div>
       <div className={styles.controls}>
         <div className={styles.dpad} aria-label="Déplacement tactile">
@@ -690,9 +743,9 @@ function CastleInterior({ visit, appearance, loadout, createSceneAudio, suspende
           <p className={styles.guidance}>{guidance || 'Clique sur le sol pour marcher. Les installations s’utilisent à portée.'}</p>
         </div>}
         {combatVisible ? <div className={styles.utilityActions}>
-          <button type="button" className={styles.quietButton} disabled={suspended} onClick={pauseCombat} data-wolf-combat-pause>Pause de l’épreuve</button>
-          <button type="button" className={styles.quietButton} disabled={suspended} data-wolf-castle-action={overlayOpen ? undefined : 'abandon-combat'} onClick={() => void dialogAction({ type: 'abandon-combat' })}>Interrompre l’épreuve</button>
-        </div> : <div className={styles.utilityActions}><button type="button" className={styles.quietButton} disabled={suspended} onClick={() => showDialog('map')} data-wolf-castle-map>Plan du château</button><button type="button" className={styles.quietButton} disabled={suspended} onClick={() => guideToRoom('royal-berth')}>Guider vers la baie</button></div>}
+          <button type="button" className={styles.quietButton} disabled={suspended} onClick={pauseCombat} data-wolf-combat-pause>{dungeonCombat ? 'Pause du mandat' : 'Pause de l’épreuve'}</button>
+          {!dungeonCombat && <button type="button" className={styles.quietButton} disabled={suspended} data-wolf-castle-action={overlayOpen ? undefined : 'abandon-combat'} onClick={() => void dialogAction({ type: 'abandon-combat' })}>Interrompre l’épreuve</button>}
+        </div> : <div className={styles.utilityActions}><button type="button" className={styles.quietButton} disabled={suspended} onClick={() => showDialog('map')} data-wolf-castle-map>Plan du château</button><button type="button" className={styles.quietButton} disabled={suspended} onClick={() => showDialog('mandate')} data-wolf-dungeon-journal>Mandat royal</button><button type="button" className={styles.quietButton} disabled={suspended} onClick={() => guideToRoom('royal-berth')}>Guider vers la baie</button></div>}
       </div>
       {!combatVisible && <nav className={styles.nearbyLinks} aria-label="Portes et installations de la salle">
         {room.stations.map(station => <button key={station.id} type="button" disabled={suspended} aria-pressed={waypoint?.id === station.id} data-wolf-castle-target={station.id} onClick={() => selectStation(station)}>{station.kind === 'door' ? '↗ ' : ''}{station.label}</button>)}
@@ -707,28 +760,32 @@ function CastleInterior({ visit, appearance, loadout, createSceneAudio, suspende
       </div>
     </div> : combatOverlay && combat ? <div className={styles.modalBackdrop}>
       <div ref={dialogRef} role="dialog" aria-modal="true" aria-labelledby={titleId} className={styles.dialog} data-wolf-castle-dialog="combat-result">
-        <span className={styles.eyebrow}>ÉPREUVE DES TROIS GARDES · TENTATIVE {combat.attempt}</span>
-        <h2 id={titleId}>{combat.status === 'active' ? 'L’épreuve attend ton signal.' : combat.status === 'intermission' ? 'Garde dépassée.' : combat.status === 'victory' ? 'Les trois gardes sont dépassées.' : 'Le maître interrompt l’épreuve.'}</h2>
-        <p>{combat.status === 'active' ? 'Reprends exactement à la position et au temps conservés. Les attaques restent suspendues tant que tu n’as pas repris.' : combat.status === 'intermission' ? 'Prends ton souffle. La prochaine rencontre rend jusqu’à 25 points de vitalité et toute ton endurance.' : combat.status === 'victory' ? 'La cour consigne cette victoire dans ton dossier. Tu peux parcourir le château ou recommencer les trois rencontres.' : 'Cette épreuve est un entraînement : ton équipement et ta campagne restent disponibles. Recommence à la première garde ou reviens à la cour.'}</p>
-        <dl className={styles.combatResults}><div><dt>Rencontres</dt><dd>{combat.status === 'victory' ? 3 : combat.status === 'intermission' ? combat.encounterIndex + 1 : combat.encounterIndex} / 3</dd></div><div><dt>Temps</dt><dd>{(combat.elapsedMs / 1000).toFixed(1)} s</dd></div><div><dt>Parades</dt><dd>{combat.stats.parries}</dd></div><div><dt>Dégâts reçus</dt><dd>{combat.stats.damageTaken}</dd></div></dl>
+        <span className={styles.eyebrow}>{combatTitle.toUpperCase()} · TENTATIVE {combat.attempt}</span>
+        <h2 id={titleId}>{combat.status === 'active' ? dungeonCombat ? 'La sentinelle attend ton signal.' : 'L’épreuve attend ton signal.' : combat.status === 'intermission' ? dungeonCombat ? 'La sentinelle change de posture.' : 'Garde dépassée.' : combat.status === 'victory' ? dungeonCombat ? 'Le verrou est maîtrisé.' : 'Les trois gardes sont dépassées.' : dungeonCombat ? 'La sentinelle t’a repoussé.' : 'Le maître interrompt l’épreuve.'}</h2>
+        <p>{combat.status === 'active' ? 'Reprends exactement à la position et au temps conservés. Les attaques restent suspendues tant que tu n’as pas repris.' : combat.status === 'intermission' ? dungeonCombat ? 'Prends le temps de lire la prochaine posture. Ton endurance revient, mais ta vitalité ne se régénère pas entre les phases.' : 'Prends ton souffle. La prochaine rencontre rend jusqu’à 25 points de vitalité et toute ton endurance.' : combat.status === 'victory' ? dungeonCombat ? 'Les trois postures de la sentinelle sont maîtrisées. Rejoins l’audience pour remettre ton mandat et recevoir deux marques de clan. La victoire seule n’a encore attribué aucune marque.' : 'La cour consigne cette victoire dans ton dossier. Tu peux parcourir le château ou recommencer les trois rencontres.' : dungeonCombat ? 'Les trois repères restent acquis. Une nouvelle tentative recommence le combat à sa première phase, avec toute ta vitalité. Ton dossier d’entraînement reste conservé.' : 'Cette épreuve est un entraînement : ton équipement et ta campagne restent disponibles. Recommence à la première garde ou reviens à la cour.'}</p>
+        <dl className={styles.combatResults}><div><dt>{dungeonCombat ? 'Postures maîtrisées' : 'Rencontres'}</dt><dd>{combat.status === 'victory' ? 3 : combat.status === 'intermission' ? combat.encounterIndex + 1 : combat.encounterIndex} / 3</dd></div><div><dt>Temps</dt><dd>{(combat.elapsedMs / 1000).toFixed(1)} s</dd></div><div><dt>Parades</dt><dd>{combat.stats.parries}</dd></div><div><dt>Dégâts reçus</dt><dd>{combat.stats.damageTaken}</dd></div></dl>
         <div className={styles.dialogActions}>
-          {combat.status === 'active' ? <button type="button" className={styles.primaryButton} disabled={suspended} data-wolf-combat-resume onClick={resumeCombat}>Reprendre l’épreuve</button>
-            : combat.status === 'intermission' ? <button type="button" className={styles.primaryButton} disabled={suspended} data-wolf-castle-action="next-combat" onClick={() => void dialogAction({ type: 'next-combat' })}>Affronter la prochaine garde</button>
-              : <button type="button" className={styles.primaryButton} disabled={suspended || combat.attempt >= 9999} data-wolf-castle-action="start-combat" onClick={() => void dialogAction({ type: 'start-combat' })}>Recommencer l’épreuve de combat</button>}
-          {wolfCastleCombatPending(combat) ? <button type="button" className={styles.quietButton} disabled={suspended} data-wolf-castle-action="abandon-combat" onClick={() => void dialogAction({ type: 'abandon-combat' })}>Interrompre l’épreuve</button>
-            : <button type="button" className={styles.quietButton} disabled={suspended} onClick={dismissCombat}>Revenir à la cour</button>}
+          {combat.status === 'active' ? <button type="button" className={styles.primaryButton} disabled={suspended} data-wolf-combat-resume onClick={resumeCombat}>{dungeonCombat ? 'Reprendre le mandat' : 'Reprendre l’épreuve'}</button>
+            : combat.status === 'intermission' ? <button type="button" className={styles.primaryButton} disabled={suspended} data-wolf-castle-action={dungeonCombat ? 'next-dungeon-phase' : 'next-combat'} onClick={() => void dialogAction({ type: dungeonCombat ? 'next-dungeon-phase' : 'next-combat' })}>{dungeonCombat ? 'Engager la posture suivante' : 'Affronter la prochaine garde'}</button>
+              : dungeonCombat && combat.status === 'victory' ? <button type="button" className={styles.primaryButton} disabled={suspended} data-wolf-dungeon-return onClick={() => dismissCombat('royal-audience')}>Retourner à l’audience</button>
+                : <button type="button" className={styles.primaryButton} disabled={suspended || combat.attempt >= 9999} data-wolf-castle-action={dungeonCombat ? 'retry-dungeon' : 'start-combat'} onClick={() => void dialogAction({ type: dungeonCombat ? 'retry-dungeon' : 'start-combat' })}>{dungeonCombat ? 'Réessayer le mandat' : 'Recommencer l’épreuve de combat'}</button>}
+          {wolfCastleCombatPending(combat) ? <button type="button" className={styles.quietButton} disabled={suspended} data-wolf-castle-action={dungeonCombat ? 'abandon-dungeon' : 'abandon-combat'} onClick={() => void dialogAction({ type: dungeonCombat ? 'abandon-dungeon' : 'abandon-combat' })}>{dungeonCombat ? 'Abandonner le mandat' : 'Interrompre l’épreuve'}</button>
+            : <button type="button" className={styles.quietButton} disabled={suspended} onClick={() => dismissCombat()}>Revenir à la cour</button>}
         </div>
+        {dungeonCombat && wolfCastleCombatPending(combat) && <p className={styles.dialogNote}>Abandonner ferme cette tentative sans récompense. Tes repères restent conservés ; une reprise du mandat se demande à l’audience.</p>}
       </div>
     </div> : dialog && <div className={styles.modalBackdrop}>
       <div ref={dialogRef} role="dialog" aria-modal="true" aria-labelledby={titleId} className={styles.dialog} data-wolf-castle-dialog={typeof dialog === 'string' ? dialog : dialog.kind}>
-        <div className={styles.dialogHeading}><span className={styles.eyebrow}>{dialog === 'map' ? 'PARCOURS INTÉRIEUR' : room.name}</span><button type="button" className={styles.quietButton} disabled={suspended} onClick={closeDialog} aria-label="Fermer la consultation">Fermer</button></div>
-        <h2 id={titleId}>{dialog === 'map' ? 'Plan du château' : dialog.label}</h2>
+        <div className={styles.dialogHeading}><span className={styles.eyebrow}>{dialog === 'map' ? 'PARCOURS INTÉRIEUR' : dialog === 'mandate' ? 'MANDAT ROYAL' : room.name}</span><button type="button" className={styles.quietButton} disabled={suspended} onClick={closeDialog} aria-label="Fermer la consultation">Fermer</button></div>
+        <h2 id={titleId}>{dialog === 'map' ? 'Plan du château' : dialog === 'mandate' ? 'Le Verrou de Wolf' : dialog.label}</h2>
         {dialog === 'map' ? <>
           <p>Choisis une salle pour baliser la prochaine porte du parcours. Le chasseur rejoint la porte à pied.</p>
           <div className={styles.roomMap}>{WOLF_CASTLE_ROOMS.map(entry => <button key={entry.id} type="button" disabled={suspended} data-wolf-castle-map-room={entry.id} aria-current={entry.id === visit.roomId ? 'location' : undefined}
             onClick={() => guideToRoom(entry.id)}><span>{String(WOLF_CASTLE_ROOMS.indexOf(entry) + 1).padStart(2, '0')}</span><strong>{entry.name}</strong><small>{entry.id === visit.roomId ? 'Tu es ici' : visit.visitedRooms.includes(entry.id) ? 'Explorée' : 'À découvrir'}</small></button>)}</div>
           <p className={styles.dialogNote}>Chemin de retour : {wolfCastleRoute(visit.roomId, 'royal-berth').map(id => wolfCastleRoom(id).name).join(' → ')}</p>
-        </> : <StationDialog station={dialog} visit={visit} suspended={suspended} action={dialogAction} close={closeDialog} />}
+        </> : dialog === 'mandate' ? <CastleDungeonJournal visit={visit} suspended={suspended} action={dialogAction} guide={guideToRoom} />
+          : <><CastleDungeonStation station={dialog} visit={visit} suspended={suspended} action={dialogAction} />
+            <StationDialog station={dialog} visit={visit} suspended={suspended} action={dialogAction} close={closeDialog} /></>}
       </div>
     </div>}
   </div>;
@@ -743,17 +800,17 @@ function propDepthOrder(a: WolfCastleProp, b: WolfCastleProp) {
 }
 
 function CastleCombatHud({ combat }: { combat: WolfCastleCombatState }) {
-  const spec = WOLF_CASTLE_COMBAT_ENCOUNTERS[combat.encounterIndex];
+  const spec = wolfCastleCombatSpec(combat);
   const winding = combat.enemy.phase === 'windup';
   const anticipation = winding ? 1 - combat.enemy.phaseMs / spec.windupMs : 0;
   return <div className={styles.combatHud}>
-    <div className={styles.combatIdentity}><span className={styles.eyebrow}>RENCONTRE {combat.encounterIndex + 1} / 3</span><strong>{spec.name}</strong><small>{Math.floor(combat.elapsedMs / 1000)} s</small></div>
+    <div className={styles.combatIdentity}><span className={styles.eyebrow}>{combat.scenario === 'dungeon' ? 'PHASE' : 'RENCONTRE'} {combat.encounterIndex + 1} / 3</span><strong>{spec.name}{'phaseName' in spec ? ` · ${spec.phaseName}` : ''}</strong><small>{Math.floor(combat.elapsedMs / 1000)} s</small></div>
     <div className={styles.combatMeters}>
       <div><div className={styles.meterLabel}><span>Ton chasseur</span><strong>{combat.player.health} / 100</strong></div>
         <div className={styles.healthTrack} role="progressbar" aria-label="Vitalité du chasseur dans l’épreuve" aria-valuemin={0} aria-valuemax={100} aria-valuenow={combat.player.health}><span style={{ width: `${combat.player.health}%` }} /></div>
         <div className={styles.staminaTrack} role="progressbar" aria-label="Endurance" aria-valuemin={0} aria-valuemax={100} aria-valuenow={Math.round(combat.player.stamina)}><span style={{ width: `${combat.player.stamina}%` }} /></div></div>
-      <div><div className={styles.meterLabel}><span>Garde</span><strong>{combat.enemy.health} / {spec.health}</strong></div>
-        <div className={`${styles.healthTrack} ${styles.enemyTrack}`} role="progressbar" aria-label="Vitalité de la garde" aria-valuemin={0} aria-valuemax={spec.health} aria-valuenow={combat.enemy.health}><span style={{ width: `${combat.enemy.health / spec.health * 100}%` }} /></div>
+      <div><div className={styles.meterLabel}><span>{combat.scenario === 'dungeon' ? 'Sentinelle' : 'Garde'}</span><strong>{combat.enemy.health} / {spec.health}</strong></div>
+        <div className={`${styles.healthTrack} ${styles.enemyTrack}`} role="progressbar" aria-label={combat.scenario === 'dungeon' ? 'Vitalité de la sentinelle' : 'Vitalité de la garde'} aria-valuemin={0} aria-valuemax={spec.health} aria-valuenow={combat.enemy.health}><span style={{ width: `${combat.enemy.health / spec.health * 100}%` }} /></div>
         <div className={`${styles.windupTrack} ${combat.enemy.strike === 'sweep' ? styles.sweepTrack : ''}`} aria-hidden="true"><span style={{ width: `${anticipation * 100}%` }} /></div></div>
     </div>
     <div className={styles.combatReadout}><strong className={winding && combat.enemy.strike === 'sweep' ? styles.sweepText : ''}>{winding ? combat.enemy.strike === 'thrust' ? 'ESTOC — pare ou esquive' : 'BALAYAGE — esquive' : combat.enemy.phase === 'recovery' ? 'OUVERTURE — contre-attaque' : 'Garde ta distance'}</strong>
@@ -777,7 +834,7 @@ function CastleCombatTelegraph({ combat }: { combat: WolfCastleCombatState }) {
 }
 
 function CastleCombatGuard({ combat, reducedMotion }: { combat: WolfCastleCombatState; reducedMotion: boolean }) {
-  const enemy = combat.enemy, spec = WOLF_CASTLE_COMBAT_ENCOUNTERS[combat.encounterIndex];
+  const enemy = combat.enemy, spec = wolfCastleCombatSpec(combat);
   const pose = enemy.phase === 'windup' ? 'windup' : enemy.phase === 'recovery' && enemy.phaseMs > spec.recoveryMs - 210 ? 'lunge' : 'ready';
   const { asset, ...frame } = wolfCastleCombatSpriteFrame(pose, 0, 0, 184);
   const down = enemy.phase === 'down';
@@ -789,6 +846,74 @@ function CastleCombatGuard({ combat, reducedMotion }: { combat: WolfCastleCombat
     </g>
     {enemy.staggerMs > 0 && <ellipse cx={enemy.x} cy={enemy.y - 170} rx="28" ry="8" stroke="#bfe4ec" fill="none" strokeWidth="3" />}
   </g>;
+}
+
+const MANDATE_OBJECTIVES = [
+  { key: 'archives', room: 'royal-archives', label: 'Séquence des archives', detail: 'Relever le protocole sur le terminal.' },
+  { key: 'gallery', room: 'royal-gallery', label: 'Marque de la galerie', detail: 'Examiner le repère porté par les socles.' },
+  { key: 'council', room: 'royal-council', label: 'Confirmation du conseil', detail: 'Vérifier la concordance à la table tactique.' },
+] as const;
+
+function CastleDungeonJournal({ visit, suspended, action, guide }: {
+  visit: WolfCastleVisit; suspended: boolean; action: (command: WolfCastleAction) => Promise<void>; guide: (room: WolfCastleRoomId) => void;
+}) {
+  const dungeon = visit.dungeon;
+  const nextObjective = MANDATE_OBJECTIVES.find(objective => !dungeon?.objectives[objective.key]);
+  const target: WolfCastleRoomId = !dungeon || dungeon.status === 'abandoned'
+    ? visit.audience === 'pending' || visit.audience === 'deferred' ? 'royal-council' : 'royal-audience'
+    : dungeon.status === 'completed' ? 'royal-berth'
+      : dungeon.status === 'victory' ? 'royal-audience'
+        : dungeon.status === 'accepted' ? nextObjective?.room ?? 'royal-court' : 'royal-court';
+  return <div data-wolf-dungeon-journal-content>
+    <p>Le conseil te confie la vérification du protocole royal. Relève ses trois repères, puis maîtrise les trois postures de la sentinelle dans la cour. Le mandat se remet ensuite au pied de l’estrade.</p>
+    <div className={styles.mandateMeta}><span>3 repères</span><span>3 postures</span><strong>2 marques de clan à la remise</strong></div>
+    <ol className={styles.mandateChecklist} aria-label="Objectifs du mandat">
+      {MANDATE_OBJECTIVES.map(objective => <li key={objective.key} data-complete={dungeon?.objectives[objective.key] ?? false} data-wolf-dungeon-objective={objective.key}>
+        <span aria-hidden="true">{dungeon?.objectives[objective.key] ? '✓' : '○'}</span><div><strong>{objective.label}</strong><small>{objective.detail}</small></div>
+      </li>)}
+      <li data-complete={dungeon?.status === 'victory' || dungeon?.status === 'completed'}><span aria-hidden="true">{dungeon?.status === 'victory' || dungeon?.status === 'completed' ? '✓' : '○'}</span><div><strong>Sentinelle du mandat</strong><small>Une seule adversaire, trois postures. La vitalité reste conservée entre les phases.</small></div></li>
+      <li data-complete={dungeon?.reward.claimed ?? false}><span aria-hidden="true">{dungeon?.reward.claimed ? '✓' : '○'}</span><div><strong>Remise à l’audience</strong><small>{dungeon?.reward.claimed ? 'Deux marques de clan accordées. Mandat accompli.' : 'La récompense attend la victoire et la remise du mandat.'}</small></div></li>
+    </ol>
+    <p className={styles.dialogNote}>{wolfCastleDungeonObjective(visit) ?? (visit.audience === 'accepted' ? 'Ton accord est consigné. Retourne à l’audience pour recevoir ce mandat.' : 'Présente ton invitation à l’audience, puis consigne ton accord au conseil pour recevoir ce mandat.')}</p>
+    <div className={styles.dialogActions}>
+      <button type="button" className={styles.primaryButton} disabled={suspended} data-wolf-dungeon-guide onClick={() => guide(target)}>Guider vers {wolfCastleRoom(target).name.toLowerCase()}</button>
+      {dungeon && ['accepted', 'ready', 'failed'].includes(dungeon.status) && <button type="button" className={styles.quietButton} disabled={suspended} data-wolf-castle-action="abandon-dungeon" onClick={() => void action({ type: 'abandon-dungeon' })}>Abandonner le mandat</button>}
+    </div>
+    {dungeon && ['accepted', 'ready', 'failed'].includes(dungeon.status) && <p className={styles.dialogNote}>Abandonner conserve les repères et ferme la tentative sans récompense. Tu pourras demander la reprise à l’audience.</p>}
+  </div>;
+}
+
+function CastleDungeonStation({ station, visit, suspended, action }: {
+  station: WolfCastleStation; visit: WolfCastleVisit; suspended: boolean; action: (command: WolfCastleAction) => Promise<void>;
+}) {
+  const dungeon = visit.dungeon;
+  if (station.kind === 'audience') return <section className={styles.mandateCard} aria-label="Mandat royal">
+    <span className={styles.eyebrow}>MANDAT ROYAL</span><h3>Le Verrou de Wolf</h3>
+    {dungeon?.status === 'completed' ? <p data-wolf-dungeon-completed>Le mandat est remis. Les deux marques de clan ont rejoint ta réserve. La sentinelle et les repères restent consignés dans ton dossier.</p>
+      : dungeon?.status === 'victory' ? <><p>Les trois postures de la sentinelle sont maîtrisées. Remets ton rapport au Roi pour recevoir les deux marques de clan promises.</p><button type="button" className={styles.primaryButton} disabled={suspended} data-wolf-castle-action="extract-dungeon" onClick={() => void action({ type: 'extract-dungeon' })}>Remettre le mandat · 2 marques de clan</button></>
+        : !dungeon || dungeon.status === 'abandoned' ? <><p>Relève un repère dans les archives, la galerie et le conseil. Leurs indications ouvriront l’affrontement contre la sentinelle de la cour, puis la remise de ton mandat.</p>
+          {visit.invitationId && visit.audience === 'accepted' ? <button type="button" className={styles.primaryButton} disabled={suspended} data-wolf-castle-action="accept-dungeon" onClick={() => void action({ type: 'accept-dungeon' })}>{dungeon ? 'Reprendre le mandat' : 'Accepter le mandat royal'}</button>
+            : <p className={styles.dialogNote}>Présente ton invitation, consigne ton accord au conseil, puis reviens recevoir le mandat.</p>}
+          <p className={styles.dialogNote}>Deux marques de clan à la remise, après la victoire. {dungeon ? 'Les repères déjà relevés restent acquis.' : 'Tes anciennes consultations ne remplacent pas les trois relevés du mandat.'}</p></>
+          : <p>{wolfCastleDungeonObjective(visit)}</p>}
+  </section>;
+  if (!dungeon || dungeon.status === 'abandoned' || dungeon.status === 'completed') return null;
+  const objective = station.kind === 'archive' ? MANDATE_OBJECTIVES[0] : station.kind === 'gallery' ? MANDATE_OBJECTIVES[1] : station.kind === 'council' ? MANDATE_OBJECTIVES[2] : null;
+  if (objective) {
+    const done = dungeon.objectives[objective.key];
+    const command: WolfCastleAction['type'] = objective.key === 'archives' ? 'inspect-dungeon-archive' : objective.key === 'gallery' ? 'inspect-dungeon-gallery' : 'inspect-dungeon-council';
+    return <section className={styles.mandateCard} aria-label="Repère du mandat" data-wolf-dungeon-station={objective.key}>
+      <span className={styles.eyebrow}>LE VERROU DE WOLF</span><h3>{objective.label}</h3><p>{done ? 'Ce repère est relevé et conservé dans ton mandat.' : objective.detail}</p>
+      {!done && dungeon.status === 'accepted' && <button type="button" className={styles.primaryButton} disabled={suspended} data-wolf-castle-action={command} onClick={() => void action({ type: command } as WolfCastleAction)}>Relever ce repère</button>}
+    </section>;
+  }
+  if (station.kind === 'combat') return <section className={styles.mandateCard} aria-label="Sentinelle du mandat">
+    <span className={styles.eyebrow}>LE VERROU DE WOLF</span><h3>Sentinelle du mandat</h3>
+    <p>{dungeon.status === 'ready' || dungeon.status === 'failed' ? 'Tes trois repères concordent. La sentinelle éprouve successivement ta parade, ton esquive et ta lecture des deux attaques. Ta vitalité ne revient pas entre les phases ; ton endurance, elle, se recharge.' : wolfCastleDungeonObjective(visit)}</p>
+    {(dungeon.status === 'ready' || dungeon.status === 'failed') && <button type="button" className={styles.primaryButton} disabled={suspended || visit.trial.status === 'active' || dungeon.attempts >= 9999} data-wolf-castle-action={dungeon.status === 'failed' ? 'retry-dungeon' : 'start-dungeon-combat'} onClick={() => void action({ type: dungeon.status === 'failed' ? 'retry-dungeon' : 'start-dungeon-combat' })}>{dungeon.status === 'failed' ? 'Réessayer le mandat' : 'Affronter la sentinelle'}</button>}
+    {visit.trial.status === 'active' && <p className={styles.dialogNote}>Termine ou interromps les sceaux au pupitre avant d’engager ce combat.</p>}
+  </section>;
+  return null;
 }
 
 function StationDialog({ station, visit, suspended, action, close }: {
@@ -809,11 +934,14 @@ function StationDialog({ station, visit, suspended, action, close }: {
     <button className={styles.primaryButton} type="button" disabled={suspended} data-wolf-castle-action="read-archive" onClick={() => void action({ type: 'read-archive' })}>{visit.archiveRead ? 'Fermer les archives' : 'Consigner la consultation'}</button>
   </>;
   if (station.kind === 'combat') return <>
+    <h3>Entraînement de la cour</h3>
     <p>Trois gardes se succèdent dans la cour. Leurs frappes sont annoncées au sol : pare l’estoc doré ou esquive le balayage rouge, puis frappe pendant l’ouverture. Les commandes de mêlée, d’arme et de saut deviennent ici Frapper, Parer et Esquiver.</p>
     <ol className={styles.combatLessons}>{WOLF_CASTLE_COMBAT_ENCOUNTERS.map((encounter, index) => <li key={encounter.id}><strong>{index + 1}. {encounter.name}</strong><span>{encounter.lesson}</span></li>)}</ol>
     {visit.combat && <p className={styles.dialogNote}>Dossier de cour : {visit.combat.dossier.victories} victoire{visit.combat.dossier.victories === 1 ? '' : 's'} · {visit.combat.attempt} tentative{visit.combat.attempt === 1 ? '' : 's'}{visit.combat.dossier.bestTimeMs !== null ? ` · Meilleur temps : ${(visit.combat.dossier.bestTimeMs / 1000).toFixed(1)} s` : ''}.</p>}
     {visit.trial.status === 'active' && <p>Termine les sceaux ou interromps leur séquence au pupitre avant de commencer ce combat.</p>}
-    <div className={styles.dialogActions}><button type="button" className={styles.primaryButton} disabled={suspended || visit.trial.status === 'active' || (visit.combat?.attempt ?? 0) >= 9999} data-wolf-castle-action="start-combat" onClick={() => void action({ type: 'start-combat' })}>Commencer l’épreuve de combat</button><button type="button" className={styles.quietButton} disabled={suspended} onClick={close}>Poursuivre la visite</button></div>
+    {visit.dungeon?.status === 'failed' && <p>Réessaie ou abandonne le mandat avant de reprendre l’entraînement.</p>}
+    {visit.dungeon?.status === 'victory' && <p>Remets ton mandat à l’audience avant de reprendre l’entraînement.</p>}
+    <div className={styles.dialogActions}><button type="button" className={styles.primaryButton} disabled={suspended || visit.trial.status === 'active' || visit.dungeon?.status === 'active' || visit.dungeon?.status === 'failed' || visit.dungeon?.status === 'victory' || (visit.combat?.attempt ?? 0) >= 9999} data-wolf-castle-action="start-combat" onClick={() => void action({ type: 'start-combat' })}>Commencer l’épreuve de combat</button><button type="button" className={styles.quietButton} disabled={suspended} onClick={close}>Poursuivre la visite</button></div>
     <p className={styles.dialogNote}>Entraînement non létal. La victoire, le temps et les dégâts reçus sont conservés dans le dossier de cette cour. Aucun consommable ni récompense de campagne n’est attribué par cet exercice.</p>
   </>;
   if (station.kind === 'trial') return <>
