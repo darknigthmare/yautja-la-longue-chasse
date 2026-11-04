@@ -12,7 +12,9 @@ const CATEGORIES = [
   { id: "all", label: "Tous les lieux" },
   { id: "hubs", label: "Vaisseau personnel" },
   { id: "clan", label: "Clan Ship" },
+  { id: "wolf", label: "Château Wolf" },
   { id: "homeworld", label: "Homeworld" },
+  { id: "arrivals", label: "Arrivées planétaires" },
   { id: "missions", label: "Chasses" },
 ] as const;
 type Category = (typeof CATEGORIES)[number]["id"];
@@ -151,7 +153,7 @@ export default function DevTravelClient({ initialDestinationId = null }: { initi
         <div>
           <p className={styles.eyebrow}>ACCÈS DIRECT / LIEUX JOUABLES</p>
           <h1 ref={catalogueHeading} tabIndex={-1}>Choisis ton point d’arrivée.</h1>
-          <p className={styles.intro}>Explore ton vaisseau, rejoins le clan ou pars sur le terrain. Chaque lieu s’ouvre directement, sans avancer la campagne.</p>
+          <p className={styles.intro}>Explore les vaisseaux, le château Wolf et le Homeworld, ou teste une arrivée planétaire avant la chasse. Chaque essai s’ouvre directement, sans avancer la campagne.</p>
         </div>
         <aside className={styles.sessionCard}>
           <span className={styles.sessionIcon} aria-hidden="true">↺</span>
@@ -164,7 +166,7 @@ export default function DevTravelClient({ initialDestinationId = null }: { initi
         <div className={styles.categories}>
           {CATEGORIES.map(item => <button key={item.id} type="button" data-dev-category={item.id} aria-pressed={category === item.id} onClick={() => setCategory(item.id)}>{item.label}</button>)}
         </div>
-        <label className={styles.search}><span>Rechercher un lieu</span><input type="search" value={query} onChange={event => setQuery(event.target.value)} placeholder="Vaisseau, hangar, marché…" data-dev-search /></label>
+        <label className={styles.search}><span>Rechercher un lieu</span><input type="search" value={query} onChange={event => setQuery(event.target.value)} placeholder="Vaisseau, château, arrivée, marché…" data-dev-search /></label>
       </section>
       <div className={styles.listHeading}><h2>Destinations</h2><span role="status">{visible.length} lieu{visible.length > 1 ? "x" : ""}</span></div>
       <div className={styles.grid}>

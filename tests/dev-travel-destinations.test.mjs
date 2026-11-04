@@ -11,6 +11,7 @@ const api = homeworldQaModelV64(process.cwd(), [
   'clanShipDocking.ts', 'clanShipInterior.ts', 'homeworldLocationV77.ts',
   'homeworldCivicWorldV80.ts', 'homeworldTransitionsV110.ts', 'homeworldCargoArrivalV108.ts',
   'homeworldGeometryRecoveryV112.ts', 'homeworldRegionsV68.ts', 'homeworldLiftStationV83.ts', 'homeworldWorldV77.ts',
+  'wolfCastle.ts', 'planetArrival.ts', 'planetArrivalRun.ts', 'huntGauntletIdentityV142.ts',
 ]);
 
 function assertDetached(left, right, path = 'save') {
@@ -123,6 +124,156 @@ test('mission choices come from the real catalogue and ordinary village fixtures
     assert(api.isHomeworldRegionWalkableV68(state.regionId, state.zone, state.actor, state.tick, state.buildingId), destination.id);
     assert.equal(state.pendingFieldEvent, null);
     assert.deepEqual(state.eventReceipts, []);
+  }
+});
+
+test('Wolf approach and all nine rooms use native valid visits, safe movement and the real return route', () => {
+  const destinations = api.DEV_DESTINATIONS.filter(destination => destination.kind === 'wolf');
+  const rooms = destinations.filter(destination => destination.status === 'aboard');
+  assert.deepEqual(rooms.map(destination => destination.roomId).sort(), [...api.WOLF_CASTLE_ROOM_IDS].sort());
+  assert.equal(destinations.filter(destination => destination.status === 'approach').length, 1);
+  for (const destination of destinations) {
+    const save = api.createDevSave(destination), visit = save.wolfCastle;
+    assert.equal(api.inspectWolfCastleVisit(visit, save.createdAt).status, 'valid', destination.id);
+    assert.equal(visit.locationId, api.WOLF_CASTLE_LOCATION_ID);
+    assert.equal(visit.roomId, destination.roomId);
+    assert.equal(visit.status, destination.status);
+    assert.equal(visit.personalShipId, api.DEFAULT_SHIP_ID);
+    assert(visit.invitationId, 'the temporary invitation makes the real audience available without a campaign reward');
+    assert.equal(visit.audience, 'unheard');
+    assert.equal(visit.archiveRead, false);
+    assert.deepEqual(visit.trial, { status: 'idle', progress: 0, attempts: 0 });
+    assert.equal(visit.combat, null);
+    assert.equal(visit.dungeon, null);
+    assert.deepEqual(visit.position, { ...api.wolfCastleEntryPoint(destination.roomId, null), facing: 1 });
+    assert(api.isWolfCastlePosition(visit.roomId, visit.position), destination.id);
+    const imports = api.parseSaveImport(JSON.stringify(save));
+    assert.equal(imports.failure, null, destination.id);
+    assert.deepEqual(imports.save.wolfCastle, visit);
+    assert.deepEqual(api.createDevSave({ ...destination, roomId: 'unknown', status: 'departed' }).wolfCastle, visit);
+    if (destination.status === 'approach') {
+      const boarded = api.actWolfCastle(visit, { type: 'board' }, {
+        ownerCreatedAt: save.createdAt, personalShipId: api.DEFAULT_SHIP_ID,
+      });
+      assert.equal(boarded.accepted, true);
+      assert.equal(boarded.state.status, 'aboard');
+      assert.equal(boarded.state.roomId, 'royal-berth');
+    } else {
+      const exits = [[1, 0], [-1, 0], [0, 1], [0, -1]].map(([x, y]) =>
+        api.stepWolfCastleActor(visit.roomId, visit.position, { x, y }, 100));
+      assert(exits.some(point => Math.hypot(point.x - visit.position.x, point.y - visit.position.y) > 1), destination.id);
+      assert(exits.every(point => api.isWolfCastlePointWalkable(visit.roomId, point)), destination.id);
+      const route = api.wolfCastleRoute(visit.roomId, 'royal-berth');
+      assert.equal(route[0], visit.roomId);
+      assert.equal(route.at(-1), 'royal-berth');
+      for (let index = 1; index < route.length; index++) assert(api.wolfCastleNeighbours(route[index - 1]).includes(route[index]));
+    }
+  }
+});
+
+test('all eight arrivals keep the campaign unchanged and pass the native state/run boundaries separately', () => {
+  const destinations = api.DEV_DESTINATIONS.filter(destination => destination.kind === 'arrival');
+  assert.deepEqual(destinations.map(destination => destination.missionId).sort(), api.MISSIONS.map(mission => mission.id).sort());
+  const runIds = new Set();
+  for (const destination of destinations) {
+    const save = api.createDevSave(destination), before = JSON.stringify(save);
+    const { state, run } = api.createDevArrival(destination, save);
+    const canonical = api.planetArrivalDestination(destination.missionId);
+    assert(canonical, destination.id);
+    assert.equal(state.missionId, destination.missionId);
+    assert.equal(state.destinationId, canonical.body.id);
+    assert.equal(state.ownerCreatedAt, save.createdAt);
+    assert.equal(state.personalShipId, api.DEFAULT_SHIP_ID);
+    assert.equal(state.hunterPresetId, save.appearance.presetId);
+    assert.equal(state.encounterRun, 1);
+    assert.equal(state.status, 'prepared');
+    assert.equal(state.elapsedMs, 0);
+    assert.equal(state.completedBy, null);
+    assert.equal(api.inspectPlanetArrival(state, save.createdAt, run.runId).status, 'valid');
+    assert.equal(api.inspectPlanetArrivalRun(run, state).status, 'valid');
+    assert.equal(run.ownerCreatedAt, save.createdAt);
+    assert.equal(run.runId, state.runId);
+    assert.equal(run.difficultyId, save.settings.difficultyId);
+    assert.equal(run.configuration.elapsedSeconds, 0);
+    assert.deepEqual(run.configuration.inventory, save.inventory);
+    assert.deepEqual(run.configuration.loadout, save.loadout);
+    assert.deepEqual(run.configuration.appearance, save.appearance);
+    assert.equal(run.configuration.gauntletVariantId, api.captureHuntGauntletV142(
+      save.gauntletV134.equippedId, save.profile.rankId, save.gauntletV134.claimedStudies));
+    assert.equal(JSON.stringify(save), before, destination.id);
+    assert.equal(save.planetArrival ?? null, null);
+    assert.equal(save.planetArrivalRun ?? null, null);
+    assert.deepEqual(save.missionProgress, api.defaultSave(save.createdAt).missionProgress);
+    // Campaign repair must remain authoritative: later missions stay locked,
+    // and a second import must not expose a hidden invalid arrival checkpoint.
+    const imported = api.parseSaveImport(before);
+    assert.equal(imported.failure, null, destination.id);
+    const roundTrip = api.parseSaveImport(JSON.stringify(imported.save));
+    assert.equal(roundTrip.failure, null, destination.id);
+    assert.deepEqual(roundTrip.save.missionProgress, save.missionProgress, destination.id);
+    const transported = JSON.parse(JSON.stringify({ state, run }));
+    assert.equal(api.inspectPlanetArrival(transported.state, save.createdAt, state.runId).status, 'valid');
+    assert.equal(api.inspectPlanetArrivalRun(transported.run, transported.state).status, 'valid');
+    runIds.add(state.runId);
+  }
+  assert.equal(runIds.size, destinations.length);
+});
+
+test('arrival construction resolves canonical IDs and refuses a foreign owner or invalid native context', () => {
+  const destination = api.resolveDevDestination('arrival-jungle-vey');
+  const save = api.createDevSave(destination);
+  const expected = api.createDevArrival(destination, save);
+  assert.deepEqual(api.createDevArrival({ ...destination, missionId: 'unknown' }, save), expected);
+  assert.throws(() => api.createDevArrival({ ...destination, id: 'unknown' }, save), /inconnue/);
+  assert.throws(() => api.createDevArrival({ ...destination, id: 'ship' }, save), /inconnue/);
+  assert.throws(() => api.createDevArrival(destination, api.createDevSave(api.resolveDevDestination('arrival-ice-cryostalker'))), /autre session/);
+  assert.throws(() => api.createDevArrival(destination, { ...save, loadout: null }), /invalide/);
+  assert.throws(() => api.createDevArrival(destination, { ...save, appearance: { ...save.appearance, presetId: 'unknown' } }), /invalide/);
+});
+
+test('each arrival owns its full frozen equipment context independently of later mutations and resets', () => {
+  const destination = api.resolveDevDestination('arrival-jungle-vey');
+  const save = api.createDevSave(destination);
+  const first = api.createDevArrival(destination, save), second = api.createDevArrival(destination, save);
+  assertDetached(first, second);
+  for (const key of ['inventory', 'loadout', 'appearance']) assertDetached(first.run.configuration[key], save[key], key);
+  assertDetached(first.run.configuration.visualOptions.huntAccessibility, save.settings.huntAccessibility);
+  const originalFirst = JSON.stringify(first), originalSecond = JSON.stringify(second);
+  save.inventory.unlockedWeaponIds.length = 0;
+  save.loadout.weaponIds.length = 0;
+  save.appearance.presetId = 'custom';
+  save.settings.screenShake = !save.settings.screenShake;
+  assert.equal(JSON.stringify(first), originalFirst);
+  first.run.configuration.inventory.unlockedGearIds.length = 0;
+  first.run.configuration.loadout.gearIds.length = 0;
+  first.run.configuration.appearance.presetId = 'custom';
+  first.state.elapsedMs = 1234;
+  assert.equal(JSON.stringify(second), originalSecond);
+  assert.equal(JSON.stringify(api.createDevArrival(destination, api.createDevSave(destination))), originalSecond);
+});
+
+test('every fixture can finish or skip its native montage without changing the campaign or the accepted run', () => {
+  for (const destination of api.DEV_DESTINATIONS.filter(entry => entry.kind === 'arrival')) {
+    const save = api.createDevSave(destination), before = JSON.stringify(save);
+    const { state, run } = api.createDevArrival(destination, save), frozenRun = JSON.stringify(run);
+    const skipped = api.completePlanetArrivalHandoff(api.requestPlanetArrivalHandoff(state, 'skipped'));
+    assert.equal(skipped.status, 'complete');
+    assert.equal(skipped.completedBy, 'skipped');
+    assert.equal(api.inspectPlanetArrival(skipped, save.createdAt, run.runId).status, 'valid');
+    let natural = api.startPlanetArrival(state);
+    for (let elapsed = 0; elapsed < api.PLANET_ARRIVAL_DURATION_MS; elapsed += api.PLANET_ARRIVAL_MAX_STEP_MS) {
+      natural = api.advancePlanetArrival(natural, api.PLANET_ARRIVAL_MAX_STEP_MS);
+    }
+    assert.equal(natural.status, 'handoff-pending');
+    natural = api.completePlanetArrivalHandoff(natural);
+    assert.equal(natural.completedBy, 'natural');
+    assert.equal(natural.elapsedMs, api.PLANET_ARRIVAL_DURATION_MS);
+    assert.equal(api.inspectPlanetArrival(natural, save.createdAt, run.runId).status, 'valid');
+    assert.equal(api.inspectPlanetArrivalRun(run, natural).status, 'valid');
+    assert.equal(JSON.stringify(save), before);
+    assert.equal(JSON.stringify(run), frozenRun);
+    assert.equal(state.status, 'prepared');
+    assert.equal(state.elapsedMs, 0);
   }
 });
 

@@ -37,6 +37,8 @@ const sourceFiles = [
   ...(await fs.readdir(path.join(root, 'app/dev'))).filter(file => /\.(tsx?|css)$/.test(file)).map(file => `app/dev/${file}`),
   'app/game/HomeworldHub.tsx', 'app/game/HomeworldRegionV68.tsx', 'app/game/PhysicalShipDeck.tsx',
   'app/game/ClanShipHub.tsx', 'app/game/ClanShipInterior.tsx', 'app/game/HuntCanvas.tsx', 'app/game/ShipHub.tsx',
+  'app/game/WolfCastleScene.tsx', 'app/game/PlanetArrivalCinematic.tsx',
+  'app/game/systems/wolfCastle.ts', 'app/game/systems/planetArrival.ts', 'app/game/systems/planetArrivalRun.ts',
   'scripts/qa-dev-travel-browser.mjs',
 ].sort();
 const sourceHashes = Object.fromEntries(await Promise.all(sourceFiles.map(async file => [
@@ -46,7 +48,11 @@ const seedBundle = await build({
   stdin: {
     contents: `export { defaultSave, SAVE_STORAGE_KEY } from './app/game/save';
       export { migrateLegacyCampaignSlot, loadCampaignSlots } from './app/game/systems/campaignSlots';
-      export { DEV_DESTINATIONS } from './app/dev/destinations';`,
+      export { DEV_DESTINATIONS, createDevSave } from './app/dev/destinations';
+      export { DEFAULT_SHIP_ID, shipProfileAssetPath } from './app/game/shipCatalogue';
+      export { WOLF_CASTLE_ROOMS, WOLF_CASTLE_ART_ROOT } from './app/game/systems/wolfCastle';
+      export { wolfCastleRuntimeAsset } from './app/game/systems/wolfCastleRuntimeArt';
+      export { createPlanetArrival, planetArrivalAssets, planetArrivalDestination, PLANET_ARRIVAL_SHOTS } from './app/game/systems/planetArrival';`,
     resolveDir: root,
     loader: 'ts',
   },
@@ -63,11 +69,14 @@ const report = {
   url: route.href,
   runtime: 'actual Next /dev route and production scene components',
   browserMode: headless ? 'headless' : 'headed',
-  scope: 'Direct travel, real movement and mission startup, reset, URL entry, keyboard and touch, and campaign storage isolation. No complete campaign, art approval or performance qualification.',
+  scope: 'Direct travel, real movement and mission startup, Wolf castle rooms and approach, eight planetary arrivals with natural and skipped handoffs, reset, URL entry, keyboard and touch, and campaign storage isolation. No complete campaign, art approval or performance qualification.',
   checks: [], captures: [], errors: [], consoleErrors: [], storageOperations: [], databaseOpens: [],
   storageChecks: [], roomVisits: [], movement: [], huntObservations: [], missingAssets: [],
+  castleVisits: [], arrivalVisits: [], arrivalTransitions: [], arrivalResets: [], arrivalPauses: [], requestedAssets: [],
 };
 const missing = new Set();
+const requested = new Set();
+const loaded = new Set();
 let browser, page, protectedState, emptyContext, server;
 let serverExit = null;
 let currentCheck = 'setup';
@@ -161,6 +170,17 @@ async function observeContext(context, name) {
       if (observing()) void window.__devTravelQaStorageEvent({ operation: 'indexedDB.open', key: String(args[0]), url: location.href });
       return Reflect.apply(open, this, args);
     };
+    // Observe native canvas identities only; never replace a renderer, advance
+    // a clock, modify scene props or inject a gameplay checkpoint.
+    const seen = new WeakSet();
+    const observations = { huntCanvasMounts: 0 };
+    new MutationObserver(() => {
+      if (!observing()) return;
+      for (const canvas of document.querySelectorAll('.hunt-screen canvas.hunt-canvas')) {
+        if (!seen.has(canvas)) { seen.add(canvas); observations.huntCanvasMounts += 1; }
+      }
+    }).observe(document, { childList: true, subtree: true });
+    window.__devTravelQaObservations = observations;
   });
   context.on('page', target => {
     target.setDefaultTimeout(30000);
@@ -168,11 +188,16 @@ async function observeContext(context, name) {
     target.on('console', message => {
       if (message.type() === 'error') report.consoleErrors.push({ check: currentCheck, context: name, message: message.text() });
     });
+    target.on('request', request => {
+      const pathname = new URL(request.url()).pathname;
+      if (pathname.startsWith('/game/')) requested.add(pathname);
+    });
     target.on('response', response => {
       if (!response.url().includes('/game/')) return;
+      const pathname = new URL(response.url()).pathname;
       if (response.status() >= 400 || (response.request().resourceType() === 'image' && response.headers()['content-type']?.includes('text/html'))) {
-        missing.add(new URL(response.url()).pathname);
-      }
+        missing.add(pathname);
+      } else if (response.status() >= 200 && response.status() < 400) loaded.add(pathname);
     });
   });
 }
@@ -234,11 +259,191 @@ async function clanReady(room, target = page) {
   return info;
 }
 
+async function decodeRenderedImages(target, selector) {
+  const images = await target.locator(selector).evaluate(async element => {
+    const native = Array.from(element.querySelectorAll('img'));
+    await Promise.all(native.map(image => image.decode()));
+    const decoded = native.map(image => ({ src: image.currentSrc || image.src, width: image.naturalWidth, height: image.naturalHeight }));
+    // SVG image elements do not expose decode(). Their real rendered hrefs
+    // are decoded through the native image loader, without changing the scene.
+    const sources = [...new Set(Array.from(element.querySelectorAll('image'), image => image.href.baseVal).filter(Boolean))];
+    const svgImages = await Promise.all(sources.map(async src => {
+      const image = new Image(); image.src = src;
+      await image.decode();
+      return { src: image.src, width: image.naturalWidth, height: image.naturalHeight };
+    }));
+    decoded.push(...svgImages);
+    return decoded.map(image => ({ ...image, src: new URL(image.src, location.href).pathname }));
+  });
+  assert.ok(images.length > 0 && images.every(image => image.width > 0 && image.height > 0), `${selector}: native scene images must decode to nonempty pixels.`);
+  return images;
+}
+
+async function castleReady(room, target = page) {
+  const selector = `[data-wolf-castle-status="aboard"][data-wolf-castle-room="${room.id}"]`;
+  await target.locator(selector).waitFor({ timeout: 90000 });
+  await target.locator('[data-wolf-castle-interior]').waitFor();
+  const images = await decodeRenderedImages(target, selector);
+  assert.ok(images.some(image => image.src === room.background), `Wolf ${room.id} must render its authored room backdrop.`);
+  const position = await target.locator('[data-wolf-castle-interior]').evaluate(element => ({
+    x: Number(element.getAttribute('data-wolf-castle-x')),
+    y: Number(element.getAttribute('data-wolf-castle-y')),
+  }));
+  assert.ok(Number.isFinite(position.x) && Number.isFinite(position.y), 'The real Wolf actor must have finite coordinates.');
+  const info = { room: room.id, ...position, background: room.background, decodedImages: images.length };
+  report.castleVisits.push(info);
+  return info;
+}
+
+async function waitForLoadedAssets(paths, label) {
+  const deadline = Date.now() + 30000;
+  while (Date.now() < deadline && paths.some(src => !loaded.has(src))) {
+    await new Promise(resolve => setTimeout(resolve, 100));
+  }
+  assert.deepEqual(paths.filter(src => !requested.has(src)), [], `${label}: the native scene did not request its declared assets.`);
+  assert.deepEqual(paths.filter(src => !loaded.has(src) || missing.has(src)), [], `${label}: declared scene assets did not load successfully.`);
+}
+
+async function observeArrival(target = page) {
+  return target.locator('[data-arrival-run]').evaluate(element => ({
+    run: element.getAttribute('data-arrival-run'),
+    shot: element.getAttribute('data-arrival-shot'),
+    status: element.getAttribute('data-arrival-status'),
+    elapsed: Number(element.getAttribute('data-arrival-elapsed')),
+    planet: element.querySelector('[data-arrival-scene]')?.getAttribute('data-arrival-planet'),
+    ship: element.querySelector('[data-arrival-scene]')?.getAttribute('data-arrival-ship'),
+    hunter: element.querySelector('[data-arrival-hunter]')?.getAttribute('data-arrival-hunter'),
+    spawn: element.querySelector('[data-arrival-spawn]')?.getAttribute('data-arrival-spawn'),
+  }));
+}
+
+async function pageDiagnostics(target = page) {
+  return target.evaluate(() => {
+    const arrival = document.querySelector('[data-arrival-run]');
+    const session = document.querySelector('[data-dev-session]');
+    const panel = arrival?.querySelector('[aria-labelledby="arrival-pause-title"]');
+    const active = document.activeElement;
+    return {
+      url: location.href, focused: document.hasFocus(), hidden: document.hidden, visibility: document.visibilityState,
+      activeElement: active ? { tag: active.tagName, role: active.getAttribute('role'), label: active.getAttribute('aria-label'),
+        text: active.textContent?.trim().slice(0, 160) } : null,
+      session: session ? { id: session.getAttribute('data-dev-session'), stage: session.getAttribute('data-dev-stage'),
+        arrivalStatus: session.getAttribute('data-dev-arrival-status'), arrivalElapsed: session.getAttribute('data-dev-arrival-elapsed') } : null,
+      arrival: arrival ? {
+        run: arrival.getAttribute('data-arrival-run'), shot: arrival.getAttribute('data-arrival-shot'),
+        status: arrival.getAttribute('data-arrival-status'), elapsed: Number(arrival.getAttribute('data-arrival-elapsed')),
+        heading: panel?.querySelector('h2')?.textContent?.trim() ?? '',
+        reason: Array.from(panel?.querySelectorAll('p') ?? []).at(-1)?.textContent?.trim() ?? '',
+        statusNote: arrival.querySelector('[role="status"]')?.textContent?.trim() ?? '',
+      } : null,
+    };
+  });
+}
+
+async function arrivalReady(expected, target = page) {
+  await target.locator(`[data-dev-session="${expected.id}"][data-dev-stage="arrival"]`).waitFor({ timeout: 90000 });
+  await target.waitForFunction(() => {
+    const arrival = document.querySelector('[data-arrival-run]');
+    return arrival && arrival.getAttribute('data-arrival-status') !== 'prepared';
+  }, null, { timeout: 90000 });
+  if (await target.locator('[data-arrival-status="paused"]').count()) {
+    const before = await pageDiagnostics(target);
+    const pause = { id: expected.id, before, resumeAttempted: false };
+    report.arrivalPauses.push(pause);
+    assert.equal(before.arrival?.status, 'paused');
+    assert.doesNotMatch(`${before.arrival.reason}\n${before.arrival.statusNote}`,
+      /L’arrivée n’a pas pu être enregistrée|Le passage vers la chasse n’a pas été confirmé|visuels sont indisponibles/u,
+      'An arrival checkpoint, handoff or asset error must fail instead of being retried.');
+    if (!before.focused || before.hidden || before.visibility !== 'visible') {
+      await target.bringToFront();
+      await target.waitForFunction(() => document.hasFocus() && !document.hidden, null, { timeout: 30000 });
+      pause.afterActivation = await pageDiagnostics(target);
+    }
+    // The production arrival can start paused, as in the existing campaign QA.
+    // Use one native, actionable Resume button; never loop over further pauses.
+    pause.resumeAttempted = true;
+    await target.getByRole('button', { name: 'Reprendre l’arrivée', exact: true }).click();
+    await target.locator('[data-arrival-status="playing"]').waitFor();
+    await target.waitForFunction(({ run, elapsed }) => {
+      const arrival = document.querySelector('[data-arrival-run]');
+      if (arrival?.getAttribute('data-arrival-run') !== run || arrival.getAttribute('data-arrival-status') !== 'playing') {
+        throw new Error('The arrival changed run or paused again after its single native resume.');
+      }
+      return Number(arrival.getAttribute('data-arrival-elapsed')) > elapsed;
+    }, { run: before.arrival.run, elapsed: before.arrival.elapsed });
+    pause.afterResume = await pageDiagnostics(target);
+  }
+  await target.locator('[data-arrival-status="playing"]').waitFor();
+  const value = await observeArrival(target);
+  assert.ok(value.run && Number.isFinite(value.elapsed), 'The cinematic must expose a real run and a finite native timeline.');
+  assert.equal(value.planet, expected.planet);
+  assert.equal(value.ship, expected.ship);
+  assert.equal(value.hunter, expected.hunter);
+  assert.equal(value.spawn, `${expected.missionId}:spawn`);
+  assert.equal(await target.locator('[data-arrival-run] h1').textContent(), expected.name);
+  assert.ok((await target.locator('[data-arrival-run]').textContent()).includes(expected.title), 'The arrival must name its actual mission.');
+  assert.equal(await target.locator('.hunt-screen').count(), 0, 'Gameplay must not mount before arrival is handed off.');
+  const images = await decodeRenderedImages(target, '[data-arrival-run]');
+  assert.ok(images.some(image => image.src === expected.assets.ground), 'Arrival must render the native mission terrain source.');
+  await waitForLoadedAssets(Object.values(expected.assets), expected.id);
+  report.arrivalVisits.push({ id: expected.id, ...value, assets: expected.assets, decodedImages: images.length });
+  return value;
+}
+
+async function freshArrival(expected, label, target = page) {
+  await target.locator(`[data-dev-session="${expected.id}"][data-dev-stage="arrival"]`).waitFor({ timeout: 90000 });
+  await target.locator('[data-arrival-run]').waitFor({ timeout: 90000 });
+  // Read before image decoding. A cached arrival may already be playing;
+  // there is no requirement to observe its transient prepared state.
+  const value = await observeArrival(target);
+  assert.equal(value.shot, 'orbit', `${label}: the fresh arrival must begin at its first native shot.`);
+  assert.ok(value.elapsed >= 0 && value.elapsed <= 1000, `${label}: arrival must restart near zero, observed ${value.elapsed} ms.`);
+  assert.equal(await target.locator('.hunt-screen').count(), 0, `${label}: resetting the arrival must remove gameplay.`);
+  report.arrivalResets.push({ label, id: expected.id, ...value });
+  await arrivalReady(expected, target);
+  return value;
+}
+
+async function assertArrivalHandoff(expected, completion, run, mountsBefore, target = page) {
+  const session = target.locator(`[data-dev-session="${expected.id}"][data-dev-stage="hunt"]`);
+  await session.waitFor({ timeout: 180000 });
+  await target.locator('.hunt-screen canvas.hunt-canvas').waitFor({ timeout: 90000 });
+  await target.locator('[data-mission-opening-v78]').waitFor({ timeout: 90000 });
+  assert.equal(new URL(target.url()).searchParams.get('lieu'), expected.id, 'Handoff must retain the bookmarked arrival destination.');
+  assert.equal(await target.locator('[data-arrival-run]').count(), 0, 'The native arrival must unmount at handoff.');
+  assert.equal(await target.locator('.hunt-screen canvas.hunt-canvas').count(), 1);
+  assert.equal(await target.locator('.hunt-screen').getAttribute('aria-label'), `Mission ${expected.title} sur ${expected.name}`, 'The actual HuntCanvas must receive the same mission as the arrival.');
+  const handoff = await session.evaluate(element => ({
+    run: element.getAttribute('data-dev-arrival-run'),
+    status: element.getAttribute('data-dev-arrival-status'),
+    completedBy: element.getAttribute('data-dev-arrival-completed-by'),
+    elapsed: Number(element.getAttribute('data-dev-arrival-elapsed')),
+    mission: element.getAttribute('data-dev-arrival-mission'),
+    huntGeneration: Number(element.getAttribute('data-dev-hunt-generation')),
+  }));
+  assert.equal(handoff.run, run, 'Handoff must keep the native arrival run identity.');
+  assert.equal(handoff.status, 'complete');
+  assert.equal(handoff.completedBy, completion);
+  assert.equal(handoff.mission, expected.missionId);
+  if (completion === 'natural') assert.equal(handoff.elapsed, 62000, 'Natural handoff requires all 62 seconds of the real timeline.');
+  assert.equal(await target.evaluate(() => window.__devTravelQaObservations.huntCanvasMounts), mountsBefore + 1, 'One arrival must mount HuntCanvas exactly once.');
+  await target.getByRole('button', { name: 'Commencer la chasse', exact: true }).click();
+  await target.locator('[data-mission-opening-v78]').waitFor({ state: 'hidden' });
+  await target.waitForFunction(() => Array.from(document.querySelectorAll('.hunt-screen summary')).some(element => {
+    const match = element.textContent?.match(/Détails\s*·\s*(\d+):(\d+)/);
+    return match && Number(match[1]) * 60 + Number(match[2]) > 0;
+  }), null, { timeout: 30000 });
+  assert.equal(await target.evaluate(() => window.__devTravelQaObservations.huntCanvasMounts), mountsBefore + 1, 'Leaving the native briefing must preserve the same hunt canvas.');
+  assert.equal(Number(await session.getAttribute('data-dev-hunt-generation')), handoff.huntGeneration);
+  report.arrivalTransitions.push({ id: expected.id, ...handoff, huntCanvasMounts: 1 });
+}
+
 async function moveWithKeyboard(target, focusSelector, actorSelector, xAttribute, yAttribute, label) {
   const actor = () => target.locator(actorSelector).evaluate((element, fields) => ({
     x: Number(element.getAttribute(fields[0])), y: Number(element.getAttribute(fields[1])),
   }), [xAttribute, yAttribute]);
-  await target.locator(focusSelector).focus();
+  // A null selector deliberately relies on focus restored by the application.
+  if (focusSelector) await target.locator(focusSelector).focus();
   const before = await actor();
   await target.keyboard.down('ArrowRight');
   try {
@@ -283,7 +488,26 @@ try {
     const result = await api.migrateLegacyCampaignSlot();
     localStorage.setItem('qa.unrelated-preserved', 'Ce contenu ne fait pas partie du jeu.');
     sessionStorage.setItem('qa.session-preserved', 'Onglet existant');
-    return { ok: result.ok, failure: result.message, slot: result.slotId, destinations: api.DEV_DESTINATIONS.map(({ id, kind, category, roomId }) => ({ id, kind, category, roomId })) };
+    const arrivals = api.DEV_DESTINATIONS.filter(destination => destination.kind === 'arrival').map(destination => {
+      const fixture = api.createDevSave(destination);
+      const state = api.createPlanetArrival({
+        ownerCreatedAt: fixture.createdAt, runId: `qa-expected:${destination.missionId}`, missionId: destination.missionId,
+        encounterRun: 1, personalShipId: api.DEFAULT_SHIP_ID, hunterPresetId: fixture.appearance.presetId,
+      });
+      return { id: destination.id, missionId: destination.missionId, name: state.destinationDisplayName,
+        title: api.planetArrivalDestination(destination.missionId).mission.title,
+        planet: state.destinationId, ship: state.personalShipId, hunter: state.hunterPresetId,
+        assets: api.planetArrivalAssets(state) };
+    });
+    return {
+      ok: result.ok, failure: result.message, slot: result.slotId,
+      destinations: api.DEV_DESTINATIONS.map(({ id, kind, category, roomId, missionId }) => ({ id, kind, category, roomId, missionId })),
+      castleRooms: api.WOLF_CASTLE_ROOMS.map(room => ({ id: room.id,
+        background: api.wolfCastleRuntimeAsset(`${api.WOLF_CASTLE_ART_ROOT}${room.background}.png`) })),
+      castleApproachAssets: [api.wolfCastleRuntimeAsset(`${api.WOLF_CASTLE_ART_ROOT}castle-exterior.png`), api.shipProfileAssetPath(api.DEFAULT_SHIP_ID)],
+      arrivals,
+      arrivalShots: api.PLANET_ARRIVAL_SHOTS,
+    };
   });
   assert.equal(seeded.ok, true, seeded.failure);
   assert.equal(seeded.slot, 1, 'The protected fixture must contain a real migrated campaign slot.');
@@ -296,7 +520,7 @@ try {
     await page.locator('[data-dev-catalogue]').waitFor({ timeout: 120000 });
     assert.ok((await page.locator('meta[name="robots"]').getAttribute('content'))?.includes('noindex'));
     assert.equal(await page.locator('[data-dev-launch]').count(), seeded.destinations.length);
-    for (const id of ['ship', 'clan-hangar', 'homeworld-port', 'mission-jungle-vey']) {
+    for (const id of ['ship', 'clan-hangar', 'homeworld-port', 'mission-jungle-vey', 'wolf-approach', 'wolf-royal-audience', 'arrival-jungle-vey']) {
       assert.equal(await page.locator(`[data-dev-launch="${id}"]`).count(), 1, `${id} is missing from the catalogue.`);
     }
     await noHorizontalOverflow(page, 'Desktop catalogue');
@@ -402,6 +626,162 @@ try {
     await page.keyboard.press('F8');
     await page.locator('[data-dev-catalogue]').waitFor();
     assert.equal(await page.locator('[data-dev-session]').count(), 0);
+  });
+
+  await check('All nine Wolf castle arrivals render their real rooms, accept movement and reset the disposable visit', async () => {
+    assert.equal(seeded.castleRooms.length, 9);
+    assert.equal(seeded.destinations.filter(destination => destination.kind === 'wolf').length, 10);
+    await page.locator('[data-dev-category="wolf"]').click();
+    assert.equal(await page.locator('[data-dev-launch]').count(), 10);
+    await page.locator('[data-dev-category="all"]').click();
+    for (const room of seeded.castleRooms) {
+      await jump(`wolf-${room.id}`);
+      const initial = await castleReady(room);
+      if (room.id === 'royal-berth') {
+        await moveWithKeyboard(page, '[data-wolf-castle-interior]', '[data-wolf-castle-interior]',
+          'data-wolf-castle-x', 'data-wolf-castle-y', 'wolf-royal-berth');
+        await page.locator('[data-wolf-castle-interior][data-wolf-castle-moving="false"]').waitFor();
+        await page.locator('[data-dev-reset]').click();
+        await page.waitForFunction(({ x, y }) => {
+          const actor = document.querySelector('[data-wolf-castle-interior]');
+          return Number(actor?.getAttribute('data-wolf-castle-x')) === x && Number(actor?.getAttribute('data-wolf-castle-y')) === y;
+        }, initial);
+        const reset = await castleReady(room);
+        assert.equal(reset.x, initial.x); assert.equal(reset.y, initial.y);
+      }
+      if (room.id === 'royal-audience') await capture('10-wolf-castle-audience');
+      await assertStorageUnchanged(page, protectedState, `direct-wolf-${room.id}`);
+    }
+  });
+
+  await check('Wolf approach, boarding, settings and departure use native actions, and F8 escapes its real map', async () => {
+    await jump('wolf-approach');
+    await page.locator('[data-wolf-castle-status="approach"]').waitFor();
+    const approachImages = await decodeRenderedImages(page, '[data-wolf-castle-status="approach"]');
+    for (const src of seeded.castleApproachAssets) assert.ok(approachImages.some(image => image.src === src), `Wolf approach must display ${src}.`);
+    await capture('09-wolf-castle-approach');
+    await page.locator('[data-wolf-castle-action="board"]').click();
+    const berth = seeded.castleRooms.find(room => room.id === 'royal-berth');
+    const beforeSettings = await castleReady(berth);
+    await page.locator('[data-wolf-castle-menu]').click();
+    await page.locator('[data-dev-service="settings"]').waitFor();
+    await assertStorageUnchanged(page, protectedState, 'wolf-settings-open');
+    await page.locator('[data-dev-service-back]').click();
+    await page.waitForFunction(() => document.querySelector('[data-wolf-castle-interior]')?.contains(document.activeElement));
+    const afterSettings = await castleReady(berth);
+    assert.equal(afterSettings.x, beforeSettings.x); assert.equal(afterSettings.y, beforeSettings.y);
+    await moveWithKeyboard(page, null, '[data-wolf-castle-interior]',
+      'data-wolf-castle-x', 'data-wolf-castle-y', 'wolf-after-settings-native-focus');
+    await page.locator('[data-wolf-castle-interior][data-wolf-castle-moving="false"]').waitFor();
+    await page.locator('[data-wolf-castle-interact="personal-ship"]').click();
+    await page.locator('[data-wolf-castle-dialog="departure"]').waitFor();
+    await page.locator('[data-wolf-castle-action="depart"]').click();
+    await page.locator('[data-dev-session="ship"]').waitFor();
+    assert.equal(new URL(page.url()).searchParams.get('lieu'), 'ship');
+
+    await page.goto(destinationUrl('wolf-royal-archives'), { waitUntil: 'domcontentloaded', timeout: 120000 });
+    const archives = seeded.castleRooms.find(room => room.id === 'royal-archives');
+    const initial = await castleReady(archives);
+    await page.reload({ waitUntil: 'domcontentloaded', timeout: 120000 });
+    const reloaded = await castleReady(archives);
+    assert.equal(reloaded.x, initial.x); assert.equal(reloaded.y, initial.y);
+    await page.locator('[data-wolf-castle-map]').click();
+    await page.locator('[data-wolf-castle-dialog="map"]').waitFor();
+    await page.keyboard.press('F8');
+    await page.locator('[data-dev-catalogue]').waitFor();
+    assert.equal(await page.locator('[data-wolf-castle-status]').count(), 0);
+  });
+
+  await check('All eight arrival entries preload their native resources and identify the correct mission, planet, hunter and ship', async () => {
+    assert.equal(seeded.arrivals.length, 8);
+    await page.locator('[data-dev-category="arrivals"]').click();
+    assert.equal(await page.locator('[data-dev-launch]').count(), 8);
+    for (const expected of seeded.arrivals) {
+      await jump(expected.id);
+      await arrivalReady(expected);
+      await assertStorageUnchanged(page, protectedState, expected.id);
+      await page.keyboard.press('F8');
+      await page.locator('[data-dev-catalogue]').waitFor();
+      assert.equal(await page.locator('[data-arrival-run]').count(), 0);
+      assert.equal(await page.locator('.hunt-screen').count(), 0);
+    }
+    await page.locator('[data-dev-category="all"]').click();
+  });
+
+  await check('Arrival pause, mobile controls, reload, reset and native Skip preserve the campaign and enter one real hunt', async () => {
+    const expected = seeded.arrivals.find(destination => destination.missionId === 'jungle-vey');
+    await jump(expected.id);
+    await arrivalReady(expected);
+    await page.waitForFunction(() => {
+      const arrival = document.querySelector('[data-arrival-run][data-arrival-status="playing"]');
+      const active = document.activeElement;
+      return Number(arrival?.getAttribute('data-arrival-elapsed')) >= 2000 && document.hasFocus() && !document.hidden &&
+        active instanceof HTMLButtonElement && arrival.contains(active) && active.textContent?.trim() === 'Pause' && !active.disabled;
+    });
+    await page.keyboard.press('Escape');
+    await page.locator('[data-arrival-status="paused"]').waitFor();
+    const paused = await observeArrival();
+    await page.waitForTimeout(650);
+    assert.equal((await observeArrival()).elapsed, paused.elapsed, 'Native pause must freeze the arrival timeline.');
+    await page.setViewportSize({ width: 390, height: 844 });
+    await page.evaluate(() => new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve))));
+    await noHorizontalOverflow(page, 'Mobile arrival pause');
+    assert.equal(await page.locator('[data-arrival-run]').getAttribute('data-arrival-reduced-motion'), 'true');
+    await capture('11-arrival-pause-mobile');
+    await page.getByRole('button', { name: 'Reprendre l’arrivée', exact: true }).tap();
+    await page.waitForFunction(elapsed => Number(document.querySelector('[data-arrival-run]')?.getAttribute('data-arrival-elapsed')) > elapsed, paused.elapsed);
+    assert.equal((await observeArrival()).run, paused.run);
+    await page.setViewportSize({ width: 1440, height: 1000 });
+    await page.locator('[data-dev-reset]').click();
+    await freshArrival(expected, 'reset-during-arrival');
+    await page.reload({ waitUntil: 'domcontentloaded', timeout: 120000 });
+    await freshArrival(expected, 'bookmarked-arrival-reload');
+    await page.locator('[data-arrival-run]').getByRole('button', { name: 'Pause', exact: true }).click();
+    await page.locator('[data-arrival-status="paused"]').waitFor();
+    await page.locator('[data-arrival-run]').getByRole('button', { name: /revenir.*(?:menu|lieux)/i }).click();
+    await page.locator('[data-dev-catalogue]').waitFor();
+    assert.equal(await page.locator('[data-arrival-run]').count(), 0);
+    await assertStorageUnchanged(page, protectedState, 'arrival-native-exit');
+
+    await jump(expected.id);
+    const beforeSkip = await arrivalReady(expected);
+    const mountsBefore = await page.evaluate(() => window.__devTravelQaObservations.huntCanvasMounts);
+    await page.locator('[data-arrival-run]').getByRole('button', { name: /^Passer l’arrivée/ }).click();
+    await assertArrivalHandoff(expected, 'skipped', beforeSkip.run, mountsBefore);
+    await assertStorageUnchanged(page, protectedState, 'arrival-skipped-handoff');
+    await page.locator('[data-dev-reset]').click();
+    await freshArrival(expected, 'reset-after-handoff');
+  });
+
+  await check('A full natural arrival presents all eight shots and hands the same mission to one real hunt without storage writes', async () => {
+    const expected = seeded.arrivals.find(destination => destination.missionId === 'jungle-vey');
+    await page.emulateMedia({ reducedMotion: 'no-preference' });
+    await page.locator('[data-dev-reset]').click();
+    const first = await freshArrival(expected, 'natural-arrival-start');
+    await page.locator('[data-arrival-reduced-motion="false"]').waitFor();
+    assert.equal(first.shot, 'orbit');
+    const shots = [first];
+    const mountsBefore = await page.evaluate(() => window.__devTravelQaObservations.huntCanvasMounts);
+    for (const shot of seeded.arrivalShots.slice(1)) {
+      await page.locator(`[data-arrival-shot="${shot.id}"][data-arrival-status="playing"]`).waitFor({ timeout: 120000 });
+      const current = await observeArrival();
+      assert.equal(current.run, first.run, 'Natural arrival must retain its run across every native shot.');
+      assert.ok(current.elapsed > shots.at(-1).elapsed, 'The native arrival clock must advance without restarting.');
+      assert.equal(current.planet, expected.planet); assert.equal(current.ship, expected.ship);
+      shots.push(current);
+      if (shot.id === 'egress') {
+        await page.waitForFunction(start => Number(document.querySelector('[data-arrival-run]')?.getAttribute('data-arrival-elapsed')) >= start + 1000, shot.startMs);
+        await page.locator('[data-arrival-ground-pod="true"]').waitFor();
+        assert.equal(await page.locator('[data-arrival-scene]').getAttribute('data-arrival-contact'), 'true');
+        await capture('12-arrival-natural-egress');
+      }
+    }
+    assert.deepEqual(shots.map(shot => shot.shot), seeded.arrivalShots.map(shot => shot.id));
+    await assertArrivalHandoff(expected, 'natural', first.run, mountsBefore);
+    report.arrivalTransitions.at(-1).shots = shots;
+    await assertStorageUnchanged(page, protectedState, 'arrival-natural-handoff');
+    await capture('13-hunt-after-natural-arrival');
+    await page.emulateMedia({ reducedMotion: 'reduce' });
   });
 
   await check('A real mission keeps its position and clock after walking into a newly discovered room', async () => {
@@ -550,12 +930,15 @@ try {
   report.failure = error.stack || String(error);
   console.error(error.stack || error);
   if (page && !page.isClosed()) {
+    try { report.failureState = await pageDiagnostics(); }
+    catch (diagnosticError) { report.failureStateError = String(diagnosticError); }
     try { await capture('failure'); } catch { /* Preserve the original failure. */ }
   }
   process.exitCode = 1;
 } finally {
   report.finishedAt = new Date().toISOString();
   report.missingAssets = [...missing].sort();
+  report.requestedAssets = [...requested].sort();
   report.passedChecks = report.checks.filter(result => result.passed).length;
   report.failedChecks = report.checks.filter(result => !result.passed).length;
   await fs.writeFile(path.join(out, 'report.json'), JSON.stringify(report, null, 2) + '\n');
