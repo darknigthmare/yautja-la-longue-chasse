@@ -1,0 +1,1234 @@
+{
+  "version": "1.3.0",
+  "date": "2026-11-04",
+  "branch": "feat/wolf-castle-continuation-20261104",
+  "baseCommit": "f002879",
+  "previousReleaseCommit": "77fb73a",
+  "features": {
+    "combat": "Vérifié en navigateur",
+    "saveV2": "Vérifié en navigateur",
+    "arrivalAudio": "Intégré et testé",
+    "castleAudio": "Intégré et testé",
+    "runtimeArt": "Produit et contrôlé"
+  },
+  "history": [
+    {
+      "version": "1.2.0",
+      "date": "2026-11-04",
+      "branch": "feat/wolf-castle-arrival-20261104",
+      "checks": [
+        {
+          "id": "TEST-CH",
+          "subject": "Logique du château",
+          "status": "Réussi",
+          "count": 17,
+          "unit": "tests",
+          "evidence": "Transitions, audience, épreuve, graphe de retour, déplacements et collisions.",
+          "source": "tests/wolf-castle.test.mjs",
+          "limit": "Tests automatisés de domaine. Le parcours visuel relève de la recette navigateur."
+        },
+        {
+          "id": "TEST-AR",
+          "subject": "Logique de la cinématique",
+          "status": "Réussi",
+          "count": 24,
+          "unit": "tests",
+          "evidence": "Huit plans, limites temporelles, pause, saut, suspension et identités de mission.",
+          "source": "tests/planet-arrival.test.mjs",
+          "limit": "Le découpage est une adaptation du brief. Les timecodes exacts du film ne sont pas certifiés."
+        },
+        {
+          "id": "TEST-SAVE",
+          "subject": "Persistance et reprise",
+          "status": "Réussi",
+          "count": 14,
+          "unit": "tests",
+          "evidence": "Propriétaire de campagne, versions, refus des données incohérentes et relais de mission.",
+          "source": "tests/wolf-arrival-save.test.mjs",
+          "limit": "La réussite des tests de stockage ne constitue pas une recette complète dans le navigateur."
+        },
+        {
+          "id": "TEST-CLIENT",
+          "subject": "Relais GameClient",
+          "status": "Réussi",
+          "count": 22,
+          "unit": "tests",
+          "evidence": "Handlers de transition, dont six cas ajoutés pour retirer les runs morts ou refusés à la reprise.",
+          "source": "tests/game-client-ship-flow.test.mjs",
+          "limit": "Harness automatisé des handlers. Ces 22 tests sont inclus dans la suite combinée de 294 tests."
+        },
+        {
+          "id": "TYPE",
+          "subject": "TypeScript",
+          "status": "Réussi",
+          "count": null,
+          "unit": "",
+          "evidence": "Vérification de types réussie.",
+          "source": "npm run typecheck",
+          "limit": "Contrôle statique."
+        },
+        {
+          "id": "LINT",
+          "subject": "ESLint",
+          "status": "Réussi",
+          "count": null,
+          "unit": "",
+          "evidence": "Analyse stricte réussie.",
+          "source": "ESLint sur les fichiers du chantier",
+          "limit": "Contrôle statique."
+        },
+        {
+          "id": "BUILD",
+          "subject": "Build de production",
+          "status": "Réussi",
+          "count": null,
+          "unit": "",
+          "evidence": "Build complet terminé avec le code de sortie 0 : Next webpack, neuf pages et CSS PIT.",
+          "source": "npm run build",
+          "limit": "Les étapes spécifiques à Vercel sont normalement ignorées hors de cet environnement. Le build ne remplace pas la recette UI."
+        },
+        {
+          "id": "ART",
+          "subject": "Fichiers graphiques",
+          "status": "Réussi",
+          "count": 27,
+          "unit": "images",
+          "evidence": "Dimensions, alpha, empreintes SHA-256 et références de code vérifiés en lecture seule.",
+          "source": "art-audit.json",
+          "limit": "0 doublon et 0 chemin inutilisé au contrôle des sources. Ce contrôle ne prouve pas le chargement dans le navigateur."
+        },
+        {
+          "id": "BROWSER",
+          "subject": "Parcours navigateur",
+          "status": "En attente",
+          "count": null,
+          "unit": "scénarios",
+          "evidence": "Recette CI en cours ou à exécuter.",
+          "source": "scripts/qa-wolf-arrival-browser.mjs",
+          "limit": "Aucun scénario navigateur de ce chantier n’est déclaré réussi dans ce relevé provisoire."
+        },
+        {
+          "id": "REGRESSION",
+          "subject": "Suite combinée et régression",
+          "status": "Réussi",
+          "count": 294,
+          "unit": "tests",
+          "evidence": "294 tests réussis sur 15 fichiers, aucun échec ni test ignoré. Durée observée : 55,1 secondes.",
+          "source": "wolf-regression-final.log ; 15 fichiers de tests du chantier et de régression",
+          "limit": "Total incluant 17 château, 24 arrivée, 14 persistance et 22 handlers, soit 77 tests ciblés et 217 autres régressions. Ne pas additionner deux fois."
+        },
+        {
+          "id": "HUMAN",
+          "subject": "Revue artistique humaine",
+          "status": "À faire",
+          "count": 0,
+          "unit": "approbations",
+          "evidence": "Les 27 images restent à examiner et à approuver par une personne.",
+          "source": "art-manifest-castle.json et art-manifest-arrival-and-characters.json",
+          "limit": "Génération, contrôle alpha et chargement ne valent pas validation artistique."
+        },
+        {
+          "id": "DUNGEON",
+          "subject": "Donjon de combat",
+          "status": "À faire",
+          "count": null,
+          "unit": "",
+          "evidence": "La cour propose une épreuve de trois sceaux. Un véritable donjon de combat reste à développer.",
+          "source": "app/game/systems/wolfCastle.ts",
+          "limit": "Pas de boss, de vagues ennemies ni de récompense canonique ajoutés par cette épreuve."
+        },
+        {
+          "id": "AUDIO",
+          "subject": "Audio dédié",
+          "status": "À faire",
+          "count": null,
+          "unit": "",
+          "evidence": "Ambiances royales, ouverture de capsule et impacts dédiés restent à produire.",
+          "source": "Périmètre de production du château et de l’arrivée",
+          "limit": "Aucune piste extraite du film n’est incluse."
+        },
+        {
+          "id": "FILM",
+          "subject": "Découpage exact du film",
+          "status": "À faire",
+          "count": null,
+          "unit": "",
+          "evidence": "Comparer la copie demandée plan par plan et renseigner les timecodes vérifiés.",
+          "source": "https://www.youtube.com/watch?v=43SCLM6cGTc",
+          "limit": "Les 62 secondes décrivent le montage du jeu, pas une analyse certifiée de la vidéo."
+        }
+      ],
+      "sourceCommit": "77fb73a",
+      "scope": "Résultats historiques du lot 1.2.0. Ils ne qualifient pas les modifications de la reprise 1.3.0."
+    }
+  ],
+  "checks": [
+    {
+      "id": "V2-COMBAT",
+      "subject": "Combat royal",
+      "status": "Réussi",
+      "count": 29,
+      "unit": "tests",
+      "evidence": "29 tests du château et du combat réussis dans la suite finale : trois gardes vaincus par déplacement, parade, esquive et attaque ; défaite, reprise, abandon, collisions et dossier contrôlés.",
+      "source": "qa/browser-41827785792/workflow-job.log ; tests/wolf-castle.test.mjs ; tests/wolf-castle-combat.test.mjs",
+      "limit": "Ces 29 cas sont inclus dans les 247 tests. Le parcours de la scène et la victoire par les commandes normales sont qualifiés séparément dans V2-BROWSER."
+    },
+    {
+      "id": "V2-SAVE",
+      "subject": "Checkpoints de visite V2",
+      "status": "Réussi",
+      "count": 42,
+      "unit": "tests",
+      "evidence": "42 tests réussis : sauvegarde V2, vrais callbacks GameClient, migration V1, reprise et refus des états incompatibles. Aucun échec ni test ignoré. Le run inclut 38 tests historiques et 4 nouveaux.",
+      "source": "qa/browser-41827785792/workflow-job.log ; tests/wolf-arrival-save.test.mjs ; tests/game-client-ship-flow.test.mjs",
+      "limit": "Sous-ensemble des 247 tests. La sauvegarde, le menu, le reload et la reprise de l’interface sont également qualifiés par V2-BROWSER."
+    },
+    {
+      "id": "V2-AUDIO",
+      "subject": "Cycle de vie audio",
+      "status": "Réussi",
+      "count": 32,
+      "unit": "tests",
+      "evidence": "32 tests audio réussis dans les 247 : sept tests du directeur royal et 25 tests du directeur d’arrivée, du moteur de scène et du cycle de vie commun. Aucun échec ni test ignoré.",
+      "source": "qa/browser-41827785792/workflow-job.log ; qa/audio-tests.log",
+      "limit": "Ces 32 tests sont déjà inclus dans les 247. Le journal local spécifique est conservé avec sa source initiale. L’écoute perceptive reste une revue distincte."
+    },
+    {
+      "id": "V2-REGRESSION",
+      "subject": "Régressions du chantier",
+      "status": "Réussi",
+      "count": 247,
+      "unit": "tests",
+      "evidence": "247 tests réussis dans la CI finale sur 881b66da, aucun échec ni test ignoré. Commande du workflow dédiée ; durée Node : 21,275 secondes.",
+      "source": "qa/browser-41827785792/workflow-job.log ; qa/browser-41827785792/workflow-result.json",
+      "limit": "Les sous-ensembles château, audio et sauvegarde sont inclus. Les huit tests world-screens complémentaires et les 294 tests historiques 1.2.0 restent séparés."
+    },
+    {
+      "id": "V2-TYPE",
+      "subject": "TypeScript",
+      "status": "Réussi",
+      "count": null,
+      "unit": "",
+      "evidence": "TypeScript complet réussit dans la CI finale sur 881b66da, équivalent au code local 132b2f1f.",
+      "source": "qa/browser-41827785792/workflow-job.log ; qa/browser-41827785792/workflow-result.json",
+      "limit": "Analyse statique du code qualifié. Le parcours navigateur possède son rapport distinct."
+    },
+    {
+      "id": "V2-LINT",
+      "subject": "ESLint strict de l’intégration",
+      "status": "Réussi",
+      "count": null,
+      "unit": "",
+      "evidence": "ESLint avec zéro avertissement autorisé réussit sur le périmètre du workflow : scènes, intégration, sauvegarde, audio, worldScreens, scripts et tests ciblés.",
+      "source": "qa/browser-41827785792/workflow-job.log ; qa/browser-41827785792/workflow-result.json",
+      "limit": "La commande exacte et son périmètre sont conservés dans le journal CI. Aucun audit global hors de cette commande n’est revendiqué."
+    },
+    {
+      "id": "V2-BUILD",
+      "subject": "Build de production",
+      "status": "Réussi",
+      "count": null,
+      "unit": "",
+      "evidence": "Build de production terminé avec le code de sortie 0 sur 132b2f1f en 243,649 secondes : webpack, TypeScript, neuf pages et contrôle CSS PIT.",
+      "source": "qa/build-132b2f1f/build.log ; qa/build-132b2f1f/build-result.json ; npm run build:production",
+      "limit": "Les étapes native-origin et static-output sont ignorées hors de l’environnement Vercel exact. Ce build ne certifie ni un déploiement Vercel ni le parcours navigateur."
+    },
+    {
+      "id": "V2-ART",
+      "subject": "PNG et copies WebP",
+      "status": "Réussi",
+      "count": 30,
+      "unit": "images",
+      "evidence": "30 PNG intacts : 56 851 298 octets. 30 WebP : 7 312 410 octets, soit 87,1377 % de réduction. Dimensions et alpha identiques sur les 30 paires.",
+      "source": "runtime-art-v2.json ; qa/browser-41827785792/workflow-job.log",
+      "limit": "24 images transparentes et six fonds opaques. Le parcours final sollicite 29 WebP du lot ; low-fog.webp n’y est pas demandé. Les 30 paires sont contrôlées techniquement."
+    },
+    {
+      "id": "V2-BROWSER",
+      "subject": "Parcours navigateur",
+      "status": "Réussi",
+      "count": 24,
+      "unit": "contrôles",
+      "evidence": "24/24 contrôles réussis sur 881b66da : château, trois gardes, sauvegarde/reprise, focus natif, mobile, huit plans et relais uniques. 21 captures, zéro exception JavaScript et zéro ressource visuelle demandée manquante.",
+      "source": "qa/browser-41827785792/report.json ; qa/browser-41827785792/workflow-result.json",
+      "limit": "Recette du vrai GameClient dans Chromium avec Vite. Les 185 ressources sollicitées sont disponibles. La revue des captures reste distincte de l’écoute physique et de la validation artistique humaine."
+    },
+    {
+      "id": "V2-HUMAN",
+      "subject": "Revue artistique humaine",
+      "status": "À faire",
+      "count": 0,
+      "unit": "approbations",
+      "evidence": "30 images conservées ou générées. Les trois poses ont été inspectées techniquement et visuellement par l’assistant.",
+      "source": "Manifestes artistiques V1 et art-manifest-combat-v2.json",
+      "limit": "Cette inspection ne vaut pas validation artistique humaine ni certification globale 1:1."
+    },
+    {
+      "id": "V2-MIX",
+      "subject": "Écoute du mixage",
+      "status": "À faire",
+      "count": null,
+      "unit": "",
+      "evidence": "Écouter la séquence complète et la cour avec plusieurs niveaux de volume.",
+      "source": "Directeurs audio du château et de l’arrivée",
+      "limit": "L’activation des signaux ne prouve pas l’équilibre sonore perçu."
+    },
+    {
+      "id": "V2-DUNGEON",
+      "subject": "Donjon scénarisé",
+      "status": "À faire",
+      "count": null,
+      "unit": "",
+      "evidence": "L’épreuve de trois gardes reste un entraînement. Concevoir séparément rencontres scénarisées, quêtes et récompenses.",
+      "source": "app/game/systems/wolfCastleCombat.ts",
+      "limit": "Aucun boss canonique, butin ou économie de campagne n’est revendiqué par cette épreuve."
+    },
+    {
+      "id": "V2-FILM",
+      "subject": "Découpage exact du film",
+      "status": "À faire",
+      "count": null,
+      "unit": "",
+      "evidence": "Comparer la copie demandée plan par plan et relever les timecodes vérifiés.",
+      "source": "https://www.youtube.com/watch?v=43SCLM6cGTc",
+      "limit": "Les 62 secondes décrivent le montage du jeu. La vidéo n’a pas été intégralement visionnée dans le chantier historique."
+    },
+    {
+      "id": "V2-WORLD",
+      "subject": "Régression des écrans du monde",
+      "status": "Réussi",
+      "count": 8,
+      "unit": "tests complémentaires",
+      "evidence": "Huit tests world-screens réussis, aucun échec ni test ignoré. Le stdout exact et sa provenance sont conservés. La seule retouche après cette exécution raccourcit un commentaire.",
+      "source": "qa/composition-132b2f1f/world-screens.log ; qa/composition-132b2f1f/world-screens-result.json",
+      "limit": "Suite distincte de la commande des 247 tests. Les tests ne constituent pas une validation artistique du cadrage."
+    },
+    {
+      "id": "V2-FRAMES",
+      "subject": "Géométrie des fonds",
+      "status": "Réussi",
+      "count": 24,
+      "unit": "rectangles",
+      "evidence": "24 rectangles valides sur huit biomes et trois bandes. Seule la jungle est recadrée ; ses trois bandes couvrent 941 pixels. Les 21 autres rectangles conservent leur image entière. Dimensions et blobs Git vérifiés.",
+      "source": "qa/composition-132b2f1f/background-frames-audit.json ; app/game/worldScreens.ts",
+      "limit": "Le helper du commit 132b2f1f est exécuté et les huit images sont décodées. Cet audit géométrique reste distinct de la revue des captures navigateur."
+    }
+  ],
+  "runtimeIntegration": {
+    "royal-guard-ready": "Référencé",
+    "royal-guard-windup": "Référencé",
+    "royal-guard-lunge": "Référencé"
+  },
+  "courtAudio": [
+    {
+      "id": "wolf:orbit",
+      "type": "Ambiance",
+      "sequence": "Château",
+      "description": "Approche orbitale du château.",
+      "lifecycle": "Boucle unique de la salle active. Arrêt à la pause, perte de focus et sortie. Volume des effets du moteur commun.",
+      "source": "app/game/systems/wolfCastleAudio.ts"
+    },
+    {
+      "id": "wolf:berth",
+      "type": "Ambiance",
+      "sequence": "Château",
+      "description": "Baie royale et sas.",
+      "lifecycle": "Boucle unique de la salle active. Arrêt à la pause, perte de focus et sortie. Volume des effets du moteur commun.",
+      "source": "app/game/systems/wolfCastleAudio.ts"
+    },
+    {
+      "id": "wolf:gallery",
+      "type": "Ambiance",
+      "sequence": "Château",
+      "description": "Vestibule, galerie des trophées et archives.",
+      "lifecycle": "Boucle unique de la salle active. Arrêt à la pause, perte de focus et sortie. Volume des effets du moteur commun.",
+      "source": "app/game/systems/wolfCastleAudio.ts"
+    },
+    {
+      "id": "wolf:audience",
+      "type": "Ambiance",
+      "sequence": "Château",
+      "description": "Salle d’audience et conseil.",
+      "lifecycle": "Boucle unique de la salle active. Arrêt à la pause, perte de focus et sortie. Volume des effets du moteur commun.",
+      "source": "app/game/systems/wolfCastleAudio.ts"
+    },
+    {
+      "id": "wolf:court",
+      "type": "Ambiance",
+      "sequence": "Château",
+      "description": "Cour d’épreuve.",
+      "lifecycle": "Boucle unique de la salle active. Arrêt à la pause, perte de focus et sortie. Volume des effets du moteur commun.",
+      "source": "app/game/systems/wolfCastleAudio.ts"
+    },
+    {
+      "id": "wolf:service",
+      "type": "Ambiance",
+      "sequence": "Château",
+      "description": "Passage latéral de service.",
+      "lifecycle": "Boucle unique de la salle active. Arrêt à la pause, perte de focus et sortie. Volume des effets du moteur commun.",
+      "source": "app/game/systems/wolfCastleAudio.ts"
+    },
+    {
+      "id": "begin",
+      "type": "Ponctuel",
+      "sequence": "Cour",
+      "description": "Ouverture d’une rencontre de la cour.",
+      "lifecycle": "Événement consommé une seule fois. Aucun rejeu lors d’un checkpoint, d’une reprise ou d’un saut d’horloge.",
+      "source": "app/game/systems/wolfCastleAudio.ts"
+    },
+    {
+      "id": "attack",
+      "type": "Ponctuel",
+      "sequence": "Cour",
+      "description": "Mouvement d’une attaque du chasseur.",
+      "lifecycle": "Événement consommé une seule fois. Aucun rejeu lors d’un checkpoint, d’une reprise ou d’un saut d’horloge.",
+      "source": "app/game/systems/wolfCastleAudio.ts"
+    },
+    {
+      "id": "hit",
+      "type": "Ponctuel",
+      "sequence": "Cour",
+      "description": "Coup porté au garde.",
+      "lifecycle": "Événement consommé une seule fois. Aucun rejeu lors d’un checkpoint, d’une reprise ou d’un saut d’horloge.",
+      "source": "app/game/systems/wolfCastleAudio.ts"
+    },
+    {
+      "id": "miss",
+      "type": "Ponctuel",
+      "sequence": "Cour",
+      "description": "Attaque qui manque sa cible.",
+      "lifecycle": "Événement consommé une seule fois. Aucun rejeu lors d’un checkpoint, d’une reprise ou d’un saut d’horloge.",
+      "source": "app/game/systems/wolfCastleAudio.ts"
+    },
+    {
+      "id": "parry",
+      "type": "Ponctuel",
+      "sequence": "Cour",
+      "description": "Contact métallique d’une parade réussie.",
+      "lifecycle": "Événement consommé une seule fois. Aucun rejeu lors d’un checkpoint, d’une reprise ou d’un saut d’horloge.",
+      "source": "app/game/systems/wolfCastleAudio.ts"
+    },
+    {
+      "id": "evade",
+      "type": "Ponctuel",
+      "sequence": "Cour",
+      "description": "Souffle d’une esquive.",
+      "lifecycle": "Événement consommé une seule fois. Aucun rejeu lors d’un checkpoint, d’une reprise ou d’un saut d’horloge.",
+      "source": "app/game/systems/wolfCastleAudio.ts"
+    },
+    {
+      "id": "hurt",
+      "type": "Ponctuel",
+      "sequence": "Cour",
+      "description": "Impact reçu par le chasseur.",
+      "lifecycle": "Événement consommé une seule fois. Aucun rejeu lors d’un checkpoint, d’une reprise ou d’un saut d’horloge.",
+      "source": "app/game/systems/wolfCastleAudio.ts"
+    },
+    {
+      "id": "exhausted",
+      "type": "Ponctuel",
+      "sequence": "Cour",
+      "description": "Endurance insuffisante pour l’action demandée.",
+      "lifecycle": "Événement consommé une seule fois. Aucun rejeu lors d’un checkpoint, d’une reprise ou d’un saut d’horloge.",
+      "source": "app/game/systems/wolfCastleAudio.ts"
+    },
+    {
+      "id": "intermission",
+      "type": "Ponctuel",
+      "sequence": "Cour",
+      "description": "Répit entre deux gardes.",
+      "lifecycle": "Événement consommé une seule fois. Aucun rejeu lors d’un checkpoint, d’une reprise ou d’un saut d’horloge.",
+      "source": "app/game/systems/wolfCastleAudio.ts"
+    },
+    {
+      "id": "victory",
+      "type": "Ponctuel",
+      "sequence": "Cour",
+      "description": "Victoire à la fin des trois rencontres.",
+      "lifecycle": "Événement consommé une seule fois. Aucun rejeu lors d’un checkpoint, d’une reprise ou d’un saut d’horloge.",
+      "source": "app/game/systems/wolfCastleAudio.ts"
+    },
+    {
+      "id": "defeat",
+      "type": "Ponctuel",
+      "sequence": "Cour",
+      "description": "Défaite de l’épreuve non létale.",
+      "lifecycle": "Événement consommé une seule fois. Aucun rejeu lors d’un checkpoint, d’une reprise ou d’un saut d’horloge.",
+      "source": "app/game/systems/wolfCastleAudio.ts"
+    },
+    {
+      "id": "abandoned",
+      "type": "Ponctuel",
+      "sequence": "Cour",
+      "description": "Abandon de l’épreuve.",
+      "lifecycle": "Événement consommé une seule fois. Aucun rejeu lors d’un checkpoint, d’une reprise ou d’un saut d’horloge.",
+      "source": "app/game/systems/wolfCastleAudio.ts"
+    },
+    {
+      "id": "thrust-warning",
+      "type": "Ponctuel",
+      "sequence": "Cour",
+      "description": "Annonce aiguë de l’estoc : préparer la parade.",
+      "lifecycle": "Événement consommé une seule fois. Aucun rejeu lors d’un checkpoint, d’une reprise ou d’un saut d’horloge.",
+      "source": "app/game/systems/wolfCastleAudio.ts"
+    },
+    {
+      "id": "sweep-warning",
+      "type": "Ponctuel",
+      "sequence": "Cour",
+      "description": "Double annonce grave du balayage : préparer l’esquive.",
+      "lifecycle": "Événement consommé une seule fois. Aucun rejeu lors d’un checkpoint, d’une reprise ou d’un saut d’horloge.",
+      "source": "app/game/systems/wolfCastleAudio.ts"
+    }
+  ],
+  "nextSteps": "Compléments sonores portes/pas/sceaux ; donjon scénarisé ; référence film, écoute du mixage et revue humaine des 30 images.",
+  "sourceCommit": "132b2f1fa4f0fdf0de096566cc1e1e33a6286d34",
+  "finalLocalEvidence": {
+    "sourceCommit": "3a03a9449895c95a78606f951b762e9b087686a6",
+    "files": [
+      {
+        "path": "qa/regression.log",
+        "sha256": "b078ee1bac13dcf8a9f4339a7e862fca3cf664a3e73db71e54b19839d506aa5d"
+      },
+      {
+        "path": "qa/regression-result.json",
+        "sha256": "9b517e05e87fe3b5f7eac62e6dd6d06d72ee8997d697cd43874aa6d9963c2b66"
+      },
+      {
+        "path": "qa/build.log",
+        "sha256": "8569f9a14c4b1a24c9ef58a277ae7bdd90ee814e0a52f148735c8aeaa2c66d64"
+      },
+      {
+        "path": "qa/build-result.json",
+        "sha256": "99485ef146d05baf9828e25ca298fc9833e1905bf89c3ae0432c957e78fcd071"
+      },
+      {
+        "path": "qa/source.json",
+        "sha256": "d98705dd6f2f0f0b539f5428970bf5438d52808614759dcbd02dd9e9d8f02807"
+      },
+      {
+        "path": "qa/audio-manifest-restore.json",
+        "sha256": "49b12f1efcf67caa984550f06e9e3f8433edb935f4644a12f217aa16da7d283a"
+      }
+    ]
+  },
+  "currentCodeCommit": "132b2f1fa4f0fdf0de096566cc1e1e33a6286d34",
+  "currentPublishedCommit": "881b66dafc94ac007b7de907bc625b00af71dff8",
+  "browserHistory": [
+    {
+      "runId": 41818094165,
+      "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41818094165",
+      "sourceCommit": "530c6512c5c172cd577e0278b3fcd2457c2e3d80",
+      "checkoutCommit": "d5294aa2cd2c151bb6d8356f6efed609432806c8",
+      "status": "Échec",
+      "checksPassed": 2,
+      "checksAttempted": 3,
+      "javascriptErrors": 0,
+      "missingAssets": 0,
+      "failure": "Walking reaches the airlock, vestibule, gallery and real archive terminal",
+      "diagnosis": "La normalisation des commandes à chaque checkpoint démontait les listeners et effaçait le trajet en cours. Le verrou de sauvegarde doit également conserver les intentions.",
+      "fixLocalCommit": "51d3aa85d3405f615309862eb8ecd81ef9fa7c09",
+      "fixPublishedCommit": "2fbb1931bde535b34e5185ca236288e249447546",
+      "scope": "Premier parcours arrêté au déplacement dans la baie. Les compteurs zéro erreur/asset manquant ne couvrent que ce parcours.",
+      "files": [
+        {
+          "path": "qa/browser-41818094165/report.json",
+          "sha256": "bf28eaeb0876e0eb11400c498d2372d59aae2088ba2a7047442ebe07b0a27c7d"
+        },
+        {
+          "path": "qa/browser-41818094165/failure-page.txt",
+          "sha256": "1cfd969e5fdde3466fdf3662ee44772e94cc94a33c9e50b419b5bee2fd63d33a"
+        },
+        {
+          "path": "qa/browser-41818094165/observed-assets.json",
+          "sha256": "c1789c8e5339c8b92be0db47dcd6a1b1839b6a2922ae40f032f7af0d14ceaa73"
+        },
+        {
+          "path": "qa/browser-41818094165/failure.png",
+          "sha256": "6da5615a9ea20f4b6a9008575f3c58b4a18c5a05b24e7a0705a17ffaf3fa2efb"
+        },
+        {
+          "path": "qa/browser-41818094165/01-castle-orbit-desktop.png",
+          "sha256": "3a39cae5c29283116f4e93dae758fd424a8adb1d5a535f1ca88cbe3d48422596"
+        }
+      ]
+    },
+    {
+      "runId": 41819021403,
+      "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41819021403",
+      "sourceCommit": "2fbb1931bde535b34e5185ca236288e249447546",
+      "checkoutCommit": "8b40c2c01cc1ffde1e087134f722baf1ad3504d8",
+      "status": "Échec après validation du château",
+      "checksPassed": 13,
+      "checksAttempted": 14,
+      "javascriptErrors": 0,
+      "missingAssets": 1,
+      "missingAssetPaths": [
+        "/game/backgrounds/v10/galaxy-overview-v10.webp"
+      ],
+      "failure": "A campaign launch freezes a single run, destination, ship and hunter before any hunt mounts",
+      "diagnosis": "Le helper de départ attend le briefing sans avoir sélectionné une mission sur la carte. Le fond galactique est absent du checkout sparse de la fixture CI. La correction du helper doit choisir Oséris IV et inclure la ressource existante.",
+      "scope": "Les 13 parcours du château, dont victoire contre les trois gardes par les commandes normales, focus natif, sauvegarde et mobile, sont réussis. La suite arrivée reste non qualifiée.",
+      "files": [
+        {
+          "path": "qa/browser-41819021403/01-castle-orbit-desktop.png",
+          "sha256": "3a39cae5c29283116f4e93dae758fd424a8adb1d5a535f1ca88cbe3d48422596"
+        },
+        {
+          "path": "qa/browser-41819021403/02-castle-archives-desktop.png",
+          "sha256": "196266c567bf5fe2dbf67a79387fb31ce4bf9b3cc6e1220217ed68b2b9ec1de1"
+        },
+        {
+          "path": "qa/browser-41819021403/03-castle-audience-desktop.png",
+          "sha256": "af779f4b7d13c6a99c8a675c40e273e76af63329c9f3c8f3eb31357955dc87c1"
+        },
+        {
+          "path": "qa/browser-41819021403/04-castle-court-desktop.png",
+          "sha256": "bac107604d183642e4b9406b3f96bae37cb61ff138127f544553a64f3ef8a4c3"
+        },
+        {
+          "path": "qa/browser-41819021403/05-castle-court-mobile-320.png",
+          "sha256": "1689552c90c65ac82fa5fbc549984eb15024f88bf6d13b42b3353f88e1315fe7"
+        },
+        {
+          "path": "qa/browser-41819021403/16-castle-combat-paused-desktop.png",
+          "sha256": "745316ed1a9319b891927086dcfc59ab793938cc27f81b8e61d569758cfd3838"
+        },
+        {
+          "path": "qa/browser-41819021403/17-castle-combat-defeat.png",
+          "sha256": "ae6a23188273060c145ef9bfde8b6b70dc8f397de30a9e1b625bdb73491bc182"
+        },
+        {
+          "path": "qa/browser-41819021403/18-castle-combat-mobile-320.png",
+          "sha256": "41e2f3a02b340d26d3c2bb54b249996f6be7c80339ebd960f4fa7f3cadf899f1"
+        },
+        {
+          "path": "qa/browser-41819021403/19-castle-combat-victory.png",
+          "sha256": "03492c643877c5340f0928d2029cf70d43a6d4630625b2b9925ab7ad4b5d4704"
+        },
+        {
+          "path": "qa/browser-41819021403/failure-page.txt",
+          "sha256": "088f3dfa9240a6db204ae83ad8092bd7e3e676327bb25f53f3a5addec9db475b"
+        },
+        {
+          "path": "qa/browser-41819021403/failure.png",
+          "sha256": "df2828f73fa5f7062577e9c114ea2d0cae748a6a744f3434e227fb98f4bab5a8"
+        },
+        {
+          "path": "qa/browser-41819021403/observed-assets.json",
+          "sha256": "17ac65bcce6a4e4603a97774f58833c21c089c80811cdf0bb5a527d97ae3ff0c"
+        },
+        {
+          "path": "qa/browser-41819021403/report.json",
+          "sha256": "d2a0b2548867655df453fb59b3a3c0bc9819133691cb68282412c40da61da4e1"
+        }
+      ]
+    },
+    {
+      "runId": 41820692212,
+      "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41820692212",
+      "sourceCommit": "3b76108628375b569e65e47dd7c91ac6b4eab338",
+      "checkoutCommit": "58d06484f75164210b36bf16906ab717d706f818",
+      "status": "Échec sur le panneau mobile de l’arrivée",
+      "checksPassed": 15,
+      "checksAttempted": 16,
+      "javascriptErrors": 0,
+      "missingAssets": 0,
+      "failure": "Arrival pause freezes active time and reduced-motion keeps the same mission",
+      "diagnosis": "À 320 pixels, le panneau d’arrivée reste contraint à 203 pixels de largeur alors que son contenu exige 315 pixels. Corriger les contraintes CSS puis vérifier les limites du panneau et de ses boutons après redimensionnement.",
+      "scope": "Le château, le départ par la carte et le changement natif d’onglet pendant l’arrivée sont réussis. La suite de l’arrivée reste non qualifiée.",
+      "archiveScope": "Rapport, texte et capture de l’échec uniquement ; les vues château répétées ne sont pas recopiées.",
+      "files": [
+        {
+          "path": "qa/browser-41820692212/report.json",
+          "sha256": "5228c35ce0acc084ed9750b13f5187352c45feb2d7e1cb7686569d142f0f4a08"
+        },
+        {
+          "path": "qa/browser-41820692212/failure-page.txt",
+          "sha256": "2c3ecc1a7edf68cea9278024a1a2374d55c13c64e732e42f1851e9738268ef07"
+        },
+        {
+          "path": "qa/browser-41820692212/failure.png",
+          "sha256": "fbdc509f577afaeee85481e8afb93cbdb311f89496b3012ec4f646990ff89932"
+        }
+      ],
+      "fixLocalCommit": "8a47576787e668a478a53d9531d2e14bbcbf5b3d",
+      "fixPublishedCommit": "22327cc78b06a17eaf0293011ce05e18d2436175"
+    },
+    {
+      "runId": 41822095974,
+      "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41822095974",
+      "sourceCommit": "22327cc78b06a17eaf0293011ce05e18d2436175",
+      "checkoutCommit": "66a8735f6d3296475f1819d67873ee33c7122371",
+      "status": "Échec de mesure après redimensionnement",
+      "checksPassed": 10,
+      "checksAttempted": 11,
+      "javascriptErrors": 0,
+      "missingAssets": 0,
+      "failure": "Combat controls fit 320 pixels and abandoning unlocks the same court safely",
+      "diagnosis": "La mesure de largeur intervenait avant la prise en compte des media queries et unités vw. Le château, inchangé depuis ses précédents parcours réussis, tient dans la capture ultérieure. Le helper attend désormais le viewport exact puis deux requestAnimationFrame et conserve les assertions de débordement.",
+      "scope": "Dix contrôles sont réussis ; cette exécution ne qualifie pas toute la suite. La stabilisation des mesures doit être confirmée par une nouvelle CI.",
+      "archiveScope": "Rapport, texte et capture de l’échec uniquement.",
+      "fixLocalCommit": "ffa79ae4a433d65c2caef7aa65c05903681d9a98",
+      "fixPublishedCommit": "d16c2d0d452c3dae0102d9540f7ff5f96cd3adea",
+      "files": [
+        {
+          "path": "qa/browser-41822095974/report.json",
+          "sha256": "9ef2d365ca5fcde2c5fc72394c7bc431f3480ed5bab784828454399a7d327fae"
+        },
+        {
+          "path": "qa/browser-41822095974/failure-page.txt",
+          "sha256": "3a0ca63206c7b6b6f7d53d0ce9aaa04446d295254ac833500b0a04bddf6b6fce"
+        },
+        {
+          "path": "qa/browser-41822095974/failure.png",
+          "sha256": "84b3d339648c231a8a74d52058239eca22e49eb7fd342bc0cabab25bd754f9ba"
+        }
+      ]
+    },
+    {
+      "runId": 41823306155,
+      "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41823306155",
+      "sourceCommit": "d16c2d0d452c3dae0102d9540f7ff5f96cd3adea",
+      "checkoutCommit": "c5e9f8c685c94007892213ae4f8a31e2c7ac6e04",
+      "status": "Échec sur la largeur intrinsèque de la scène d’arrivée",
+      "checksPassed": 15,
+      "checksAttempted": 16,
+      "javascriptErrors": 0,
+      "missingAssets": 0,
+      "failure": "Arrival pause freezes active time and reduced-motion keeps the same mission",
+      "diagnosis": "Les dimensions du château sont stables après resize. À 320 pixels, l’arrivée garde une scène de 315 pixels dans une carte de 290 pixels : min-height 236 combinée au ratio 4/3. Le correctif fixe width:100% et min-width:0 et ajoute l’assertion de largeur scène/carte.",
+      "scope": "Quinze contrôles sont réussis, dont les parcours mobiles du château. La suite complète de l’arrivée n’est pas encore qualifiée.",
+      "archiveScope": "Rapport, texte et capture de l’échec uniquement.",
+      "fixLocalCommit": "b0bd373db78b0dd99440ec0f2c897bcafba21182",
+      "fixPublishedCommit": "157f9dd0f7b7c6c366b02037465b746c99099d6f",
+      "files": [
+        {
+          "path": "qa/browser-41823306155/report.json",
+          "sha256": "b9adc02b94a49a19e62bb32ec6a65c5b4b91700615097f25ca1c36acc9d15d9a"
+        },
+        {
+          "path": "qa/browser-41823306155/failure-page.txt",
+          "sha256": "2c3ecc1a7edf68cea9278024a1a2374d55c13c64e732e42f1851e9738268ef07"
+        },
+        {
+          "path": "qa/browser-41823306155/failure.png",
+          "sha256": "c7e9c27a9043058825f8ec6e82b273d4c3fb9606a405653e18d97cdcfca314f6"
+        }
+      ]
+    },
+    {
+      "runId": 41824682062,
+      "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41824682062",
+      "sourceCommit": "157f9dd0f7b7c6c366b02037465b746c99099d6f",
+      "checkoutCommit": "6c3662998af6a8fcc9379b259267730dfa5472c5",
+      "status": "23 parcours réussis, contrôle des ressources échoué",
+      "checksPassed": 23,
+      "checksAttempted": 24,
+      "javascriptErrors": 0,
+      "missingAssets": 1,
+      "missingAssetPaths": [
+        "/game/backgrounds/ship.webp"
+      ],
+      "failure": "The complete route has no browser exception and every requested visual is available",
+      "diagnosis": "Le parcours fonctionnel complet réussit, y compris la scène et la carte mobiles à 290 pixels, les huit plans naturels et les deux relais uniques. Seul le fond partagé /game/backgrounds/ship.webp, déjà présent dans Git, manque au checkout sparse. Ce chemin est ajouté à la fixture.",
+      "scope": "23 parcours fonctionnels réussis ; le 24e contrôle global des ressources échoue. Aucun succès global n’est encore déclaré.",
+      "archiveScope": "Rapport et inventaire des ressources observées uniquement ; les captures seront conservées avec le run globalement réussi.",
+      "fixLocalCommit": "9a875df01c63908bea18c96e63e87c9fecd779e0",
+      "fixPublishedCommit": "5098adeae56a7607c847e0b3e9bd314ea58e654d",
+      "files": [
+        {
+          "path": "qa/browser-41824682062/report.json",
+          "sha256": "dada47b2c0d38ed6d4f06afca72831e8b183a490c22f1bd881013e7924b1ffe8"
+        },
+        {
+          "path": "qa/browser-41824682062/observed-assets.json",
+          "sha256": "87b0ae05aed78b807b29fd81d14250040369fb72ddd2701db37466e64c7ab202"
+        }
+      ],
+      "visualReview": {
+        "reviewer": "Assistant art_audio_review",
+        "numberedCapturesInspected": 19,
+        "result": "Deux réserves signalées au responsable du lot",
+        "observations": [
+          "Aucun débordement horizontal visible dans les captures mobiles 05, 06 et 18.",
+          "Les états de reprise et de combat restent lisibles.",
+          "Un rectangle noir opaque entoure la planète dans les captures 10 et 11.",
+          "Le pied conserve « La prochaine garde entre dans la cour. » après la victoire 3/3 dans la capture 19 et après retour dans 05."
+        ],
+        "scope": "Revue de captures fixes par un assistant, sans validation artistique humaine. Les images 09 à 14 couvrent six plans distincts ; elles ne certifient pas isolément les huit plans, le mouvement ou l’audio.",
+        "correctiveLocalCommit": "132b2f1fa4f0fdf0de096566cc1e1e33a6286d34",
+        "correctivePublishedCommit": "881b66dafc94ac007b7de907bc625b00af71dff8",
+        "correctionStatus": "Corrections observées dans les captures de la CI finale 41827785792."
+      }
+    },
+    {
+      "runId": 41826136191,
+      "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41826136191",
+      "sourceCommit": "5098adeae56a7607c847e0b3e9bd314ea58e654d",
+      "checkoutCommit": "7c3da4208f42c9fdfb4b2ba4ea3a9899d7c88e1c",
+      "status": "Réussi avant les derniers ajustements de composition",
+      "checksPassed": 24,
+      "checksAttempted": 24,
+      "javascriptErrors": 0,
+      "missingAssets": 0,
+      "scope": "Parcours complet et ressources disponibles sur 5098adea, runtime b0bd373d. Les ajustements de composition et des annonces dans 132b2f1f doivent avoir leur propre recette.",
+      "archiveScope": "Rapport et inventaire des ressources uniquement ; les captures seront archivées avec le dernier code qualifié.",
+      "files": [
+        {
+          "path": "qa/browser-41826136191/report.json",
+          "sha256": "d306b5b557eed703eb7fcec0f429f4d260ace5e354ba750915582ba7c2d773e8"
+        },
+        {
+          "path": "qa/browser-41826136191/observed-assets.json",
+          "sha256": "87b0ae05aed78b807b29fd81d14250040369fb72ddd2701db37466e64c7ab202"
+        }
+      ]
+    },
+    {
+      "runId": 41827785792,
+      "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41827785792",
+      "jobId": 126567570188,
+      "sourceCommit": "881b66dafc94ac007b7de907bc625b00af71dff8",
+      "equivalentLocalCommit": "132b2f1fa4f0fdf0de096566cc1e1e33a6286d34",
+      "sourceTree": "54804a2c3d3762f3ca3b0d621ff8401c50ab2c42",
+      "checkoutCommit": "e46b29cecf1ba443c39d2669c31ce4c503ca4924",
+      "status": "Réussi",
+      "checksPassed": 24,
+      "checksAttempted": 24,
+      "javascriptErrors": 0,
+      "missingAssets": 0,
+      "requestedVisualAssets": 185,
+      "screenshots": 21,
+      "startedAt": "2026-11-04T12:20:18.294Z",
+      "finishedAt": "2026-11-04T12:23:47.691Z",
+      "runtime": "actual desktop GameClient via Vite",
+      "headed": true,
+      "assetGateRequired": true,
+      "scope": "Parcours complet du château et de l’arrivée sur la composition finale : 23 contrôles fonctionnels et un contrôle des exceptions et ressources sollicitées.",
+      "visualReview": {
+        "reviewer": "Assistant art_audio_review, avec revue ciblée du responsable",
+        "status": "reviewed",
+        "capturesInspected": [
+          "05-castle-court-mobile-320.png",
+          "09-arrival-destination-title.png",
+          "10-arrival-carrier.png",
+          "11-arrival-pod-release.png",
+          "12-arrival-atmosphere.png",
+          "13-arrival-ground-impact.png",
+          "14-arrival-hunter-egress.png",
+          "19-castle-combat-victory.png",
+          "20-arrival-orbit.png",
+          "21-arrival-descent.png"
+        ],
+        "findings": [
+          "Le contour de la planète est circulaire ; les angles noirs ne sont plus visibles.",
+          "La jungle forme un panorama continu, sans les trois bandes empilées.",
+          "Le pied annonce la victoire consignée après les trois gardes.",
+          "Les huit plans ont chacun une capture dans ce lot ; capsule, impact et pieds du chasseur restent alignés au sol."
+        ],
+        "scope": "Revue statique par des assistants, sans certification d’écoute, de fluidité du mouvement ou d’approbation artistique humaine."
+      },
+      "files": [
+        {
+          "path": "qa/browser-41827785792/report.json",
+          "sha256": "009494644e9da638420b8974705fadca68f3c46495552cbc694278cc3d3e8ec2"
+        },
+        {
+          "path": "qa/browser-41827785792/observed-assets.json",
+          "sha256": "87b0ae05aed78b807b29fd81d14250040369fb72ddd2701db37466e64c7ab202"
+        },
+        {
+          "path": "qa/browser-41827785792/workflow-job.log",
+          "sha256": "70f9f559495e09e8a6bae31f6fd8b9254e79f112fceb5ac7010fa7da0f19eb64"
+        },
+        {
+          "path": "qa/browser-41827785792/workflow-result.json",
+          "sha256": "14c99535b172871f2e5f0cae52b76fd510ea93219dde06c3f8f9bc9ee7fa1207"
+        },
+        {
+          "path": "qa/browser-41827785792/01-castle-orbit-desktop.png",
+          "sha256": "df867fb85ef75d2affc1a7dab7a37837dbc066459dad6d6f30e5ab8b12f26e3e"
+        },
+        {
+          "path": "qa/browser-41827785792/02-castle-archives-desktop.png",
+          "sha256": "8bfdadd8efb768c7d26ed8839e6fffe0826063269c3fc1697f6762ba4a436bc3"
+        },
+        {
+          "path": "qa/browser-41827785792/03-castle-audience-desktop.png",
+          "sha256": "470568903e06a29e11d71c1cf7bb00a657397ff1e9b7486b00cd2072dade5a6f"
+        },
+        {
+          "path": "qa/browser-41827785792/04-castle-court-desktop.png",
+          "sha256": "08fad938a163d4784e8c036c7604e5ae49d3cb661feff830da7d63e1954fcf1f"
+        },
+        {
+          "path": "qa/browser-41827785792/16-castle-combat-paused-desktop.png",
+          "sha256": "140e67d4424240aa462e61cebd2599b2139983247fc2548c0d4185c52e41b089"
+        },
+        {
+          "path": "qa/browser-41827785792/17-castle-combat-defeat.png",
+          "sha256": "3bb12c8d4aee01f516b16a481aa76e762a10f6b084f5a07b4969acfb66b4d7ab"
+        },
+        {
+          "path": "qa/browser-41827785792/18-castle-combat-mobile-320.png",
+          "sha256": "b0a4e6d1f011c18a656277dec7b347917bfcffb36f3df3982668fec983ee38ad"
+        },
+        {
+          "path": "qa/browser-41827785792/19-castle-combat-victory.png",
+          "sha256": "f2409a258fdbcf40d551339167c9fb614478b172cd2615ea64fb4b7f64eccf2d"
+        },
+        {
+          "path": "qa/browser-41827785792/05-castle-court-mobile-320.png",
+          "sha256": "3a8931d9160185417c38b8db9078bee7c66dc54caf2f01e39923989ddc827a67"
+        },
+        {
+          "path": "qa/browser-41827785792/06-arrival-pause-mobile-320.png",
+          "sha256": "8f7740d32dc31e4c0939063e489de701639d38ca66cbd6b7908e1a6d1e7d3447"
+        },
+        {
+          "path": "qa/browser-41827785792/07-arrival-handoff-recovery.png",
+          "sha256": "aae06cae9cc90f0854fd606dd4bb0b4623cb85f3f9299d932622db305d1d177a"
+        },
+        {
+          "path": "qa/browser-41827785792/08-hunt-after-skip.png",
+          "sha256": "f83a329ac22384c417bc103d7e16a5725a2056daeed0174f18024bb2525aab57"
+        },
+        {
+          "path": "qa/browser-41827785792/20-arrival-orbit.png",
+          "sha256": "87e67baa4e2eecc6d47fda25ca5d3a4de3f205b7b6b9742f1b7fba93fe87dae6"
+        },
+        {
+          "path": "qa/browser-41827785792/09-arrival-destination-title.png",
+          "sha256": "993e55fde51943ef7e946b26609bf90f7385363b172df8fb43a9626b0f244b8a"
+        },
+        {
+          "path": "qa/browser-41827785792/10-arrival-carrier.png",
+          "sha256": "36b9df7d182fde3bc029a9a66a81188963cc33ce5a976c4e422e6128a9e4c895"
+        },
+        {
+          "path": "qa/browser-41827785792/11-arrival-pod-release.png",
+          "sha256": "7cb37462dd49ec0328cd69d9bc5c358198a7daa5b00170aacbc7c5c1c6e759f7"
+        },
+        {
+          "path": "qa/browser-41827785792/21-arrival-descent.png",
+          "sha256": "7e6a9b70f4f16d250255c40a6a8f3759338674e81defe11ea84a93ecdd7bd10f"
+        },
+        {
+          "path": "qa/browser-41827785792/12-arrival-atmosphere.png",
+          "sha256": "ce78466c1b4c133a2a46349bc8f29a050150338dee52f08ac8dcf8f9ab6e07cd"
+        },
+        {
+          "path": "qa/browser-41827785792/13-arrival-ground-impact.png",
+          "sha256": "64be73c83d1c60468d7d9ef1141ef6b76d0b11b9f9270e76b26f47deb8d07f6a"
+        },
+        {
+          "path": "qa/browser-41827785792/14-arrival-hunter-egress.png",
+          "sha256": "666556e6e72f60b1e30052224a385877e0cf284960ed4157d0dda4426b7b67a3"
+        },
+        {
+          "path": "qa/browser-41827785792/15-hunt-after-natural-arrival.png",
+          "sha256": "96be9880b881254c305f98a54303a95ef04229babfdbb188668e3d1a5fc92861"
+        }
+      ]
+    }
+  ],
+  "finalRuntimeBuild": {
+    "sourceCommit": "132b2f1fa4f0fdf0de096566cc1e1e33a6286d34",
+    "equivalentPublishedCommit": "881b66dafc94ac007b7de907bc625b00af71dff8",
+    "command": "npm run build:production",
+    "startedAt": "2026-11-04T12:16:10.207402+00:00",
+    "completedAt": "2026-11-04T12:20:13.966051+00:00",
+    "durationSeconds": 243.6492,
+    "exitCode": 0,
+    "files": [
+      {
+        "path": "qa/build-132b2f1f/source.json",
+        "sha256": "8630cd7008413e7256aaf3448cad35044184287fdad8aca2960f2d954c0a41c7"
+      },
+      {
+        "path": "qa/build-132b2f1f/build.log",
+        "sha256": "2f263d68528f4804ce692b5301ca76c44584a9f3e8b35c47fc438a9ab018f4be"
+      },
+      {
+        "path": "qa/build-132b2f1f/build-result.json",
+        "sha256": "149f892a0f92a1d133b3eb62413856ae72917e50022d50cb49b7eb189b8f2037"
+      },
+      {
+        "path": "qa/build-132b2f1f/audio-manifest-restore.json",
+        "sha256": "4f10448b048192e650bd0a40908b6b1e366d9dd19bf9f3b8471d9248feee508a"
+      },
+      {
+        "path": "qa/build-132b2f1f/status-after.txt",
+        "sha256": "317030485d0c10bf4f1680675ef76eda8b92610a8a7dec66ed172c147d59d661"
+      },
+      {
+        "path": "qa/build-132b2f1f/runtime-diff-after.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    ]
+  },
+  "sourceEquivalenceHistory": [
+    {
+      "testedRuntimeLocalCommit": "51d3aa85d3405f615309862eb8ecd81ef9fa7c09",
+      "testedRuntimePublishedCommit": "2fbb1931bde535b34e5185ca236288e249447546",
+      "currentLocalCommit": "5e31cb2d6830aefe7a033f17f2d4ecb19177aa1c",
+      "currentPublishedCommit": "3b76108628375b569e65e47dd7c91ac6b4eab338",
+      "identicalPublishedTree": "22a8ed1014ddb43c30cd21e905f27977ed94c8f8",
+      "changedPathsSinceRuntimeBuild": [
+        "scripts/qa-wolf-arrival-browser.mjs",
+        "tests/fixtures/wolf-arrival-browser-assets.json"
+      ],
+      "scope": "Le runtime est inchangé. Les deux seuls fichiers modifiés sélectionnent la mission par la carte, incluent sept ressources existantes et attendent le contact au sol dans l’horloge active."
+    },
+    {
+      "testedRuntimeLocalCommit": "8a47576787e668a478a53d9531d2e14bbcbf5b3d",
+      "testedRuntimePublishedCommit": "22327cc78b06a17eaf0293011ce05e18d2436175",
+      "currentLocalCommit": "ffa79ae4a433d65c2caef7aa65c05903681d9a98",
+      "currentPublishedCommit": "d16c2d0d452c3dae0102d9540f7ff5f96cd3adea",
+      "localSourceTree": "569443dd16caae27c2ba9809172b17f9d963590b",
+      "changedPathsSinceRuntimeBuild": [
+        "scripts/qa-wolf-arrival-browser.mjs"
+      ],
+      "scope": "Le runtime est inchangé ; le helper de QA attend le viewport demandé et deux rafraîchissements avant les assertions mobiles."
+    },
+    {
+      "testedRuntimeLocalCommit": "b0bd373db78b0dd99440ec0f2c897bcafba21182",
+      "testedRuntimePublishedCommit": "157f9dd0f7b7c6c366b02037465b746c99099d6f",
+      "currentLocalCommit": "9a875df01c63908bea18c96e63e87c9fecd779e0",
+      "currentPublishedCommit": "5098adeae56a7607c847e0b3e9bd314ea58e654d",
+      "localSourceTree": "119b28f2f3c414eabb585bebfa6d23a33f38661c",
+      "changedPathsSinceRuntimeBuild": [
+        "tests/fixtures/wolf-arrival-browser-assets.json"
+      ],
+      "scope": "Le runtime est inchangé ; seule la fixture ajoute un fond partagé existant, observé à la fin du parcours complet."
+    }
+  ],
+  "currentPublishedTree": "54804a2c3d3762f3ca3b0d621ff8401c50ab2c42",
+  "previousRuntimeBuilds": [
+    {
+      "sourceCommit": "51d3aa85d3405f615309862eb8ecd81ef9fa7c09",
+      "equivalentPublishedCommit": "2fbb1931bde535b34e5185ca236288e249447546",
+      "command": [
+        "npm",
+        "run",
+        "build:production"
+      ],
+      "startedAt": "2026-11-04T11:20:23.858237+00:00",
+      "completedAt": "2026-11-04T11:21:42.365363+00:00",
+      "durationSeconds": 78.50753555200208,
+      "exitCode": 0,
+      "files": [
+        {
+          "path": "qa/build-51d3aa8/build.log",
+          "sha256": "cfc4ef68c474a5c0f98cdde3f59f29e7193230b447109cd702513692d443306a"
+        },
+        {
+          "path": "qa/build-51d3aa8/build-result.json",
+          "sha256": "39e1a9cd962a673d063faef4475a0418c99779751a15e7d5fdc909a48eed2475"
+        },
+        {
+          "path": "qa/build-51d3aa8/audio-manifest-restore.json",
+          "sha256": "ba99c46c26a1a67994ccb1d8e1c5b2cfe8bb08147f791b682e5e6d1175fb12c1"
+        }
+      ]
+    },
+    {
+      "sourceCommit": "8a47576787e668a478a53d9531d2e14bbcbf5b3d",
+      "equivalentPublishedCommit": "22327cc78b06a17eaf0293011ce05e18d2436175",
+      "command": "npm run build:production",
+      "startedAt": "2026-11-04T11:35:39.676015+00:00",
+      "completedAt": "2026-11-04T11:36:42.552784+00:00",
+      "durationSeconds": 62.8387,
+      "exitCode": 0,
+      "files": [
+        {
+          "path": "qa/build-8a475767/source.json",
+          "sha256": "476e5ffc0810909eaa48ed38397f32a46ed19b6af96918bc1605f31cd86c177d"
+        },
+        {
+          "path": "qa/build-8a475767/build.log",
+          "sha256": "982bc3fa06c0b9a51cbec2c4aadc81cad23ed6a55a5a5900e6341f9ec356ce10"
+        },
+        {
+          "path": "qa/build-8a475767/build-result.json",
+          "sha256": "c392c0261b06ea7121baed8608b4cad920912fcb1d3b9eaa0a18c4ae8f18e73a"
+        },
+        {
+          "path": "qa/build-8a475767/audio-manifest-restore.json",
+          "sha256": "360f2a6dca1799be42fb6775b21e19ced80f1fd288e19daadcc23bf9fc8fa793"
+        },
+        {
+          "path": "qa/build-8a475767/status-after.txt",
+          "sha256": "317030485d0c10bf4f1680675ef76eda8b92610a8a7dec66ed172c147d59d661"
+        }
+      ]
+    },
+    {
+      "sourceCommit": "b0bd373db78b0dd99440ec0f2c897bcafba21182",
+      "equivalentPublishedCommit": "157f9dd0f7b7c6c366b02037465b746c99099d6f",
+      "command": "npm run build:production",
+      "startedAt": "2026-11-04T11:54:09.326335+00:00",
+      "completedAt": "2026-11-04T11:54:58.903983+00:00",
+      "durationSeconds": 49.507,
+      "exitCode": 0,
+      "files": [
+        {
+          "path": "qa/build-b0bd373d/source.json",
+          "sha256": "fc9d4d32ed39513fba095af97719a7fb9ffbf2a60a3d056c26f35bfc5641e22b"
+        },
+        {
+          "path": "qa/build-b0bd373d/build.log",
+          "sha256": "18ee3f77b9ddcc650539d44652e0b764b056c17e7f615e1c1b5aac8b7c903e44"
+        },
+        {
+          "path": "qa/build-b0bd373d/build-result.json",
+          "sha256": "a796e81dc079f3adf28a1a0c3fe63e32e06d9f6768ffeed81cc9084d229412ce"
+        },
+        {
+          "path": "qa/build-b0bd373d/audio-manifest-restore.json",
+          "sha256": "d4aa99af38ac6561721641ebe3ce628b8cd2e53ab78d05d3800df9dba7e33f02"
+        },
+        {
+          "path": "qa/build-b0bd373d/status-after.txt",
+          "sha256": "317030485d0c10bf4f1680675ef76eda8b92610a8a7dec66ed172c147d59d661"
+        },
+        {
+          "path": "qa/build-b0bd373d/runtime-diff-after.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      ]
+    }
+  ],
+  "currentSourceTree": "54804a2c3d3762f3ca3b0d621ff8401c50ab2c42",
+  "compositionCorrection": {
+    "localCommit": "132b2f1fa4f0fdf0de096566cc1e1e33a6286d34",
+    "publishedCommit": "881b66dafc94ac007b7de907bc625b00af71dff8",
+    "changes": [
+      "Le cadre circulaire de la planète masque les angles noirs du catalogue RGB, sans régénérer le fichier.",
+      "Le fond jungle réutilise uniquement la bande correspondant au point d’apparition ; les sept autres biomes gardent leur image complète.",
+      "Les annonces de victoire et de défaite remplacent l’ancien message de lancement de manche ; les erreurs et actions du hub restent prioritaires."
+    ],
+    "sourcePaths": [
+      "app/game/PlanetArrivalCinematic.module.css",
+      "app/game/PlanetArrivalCinematic.tsx",
+      "app/game/worldScreens.ts",
+      "app/game/WolfCastleScene.tsx"
+    ],
+    "browserStatus": "Vérifié en navigateur",
+    "proofs": [
+      {
+        "path": "qa/composition-132b2f1f/world-screens.log",
+        "sha256": "745e4cb2de425e87e085f62772a50d291abffec641fed5825f78a12e6d0ceeba"
+      },
+      {
+        "path": "qa/composition-132b2f1f/world-screens-result.json",
+        "sha256": "8b3ae44c65c6e8df081490849c3cdaf6bce76d49581a2775779c4e9d0ed884e4"
+      },
+      {
+        "path": "qa/composition-132b2f1f/background-frames-audit.json",
+        "sha256": "7807bdbc69078304b9a74efe540c2f38f4432d8a0c53c82cd9b950cf9709fc03"
+      }
+    ],
+    "worldScreenRegression": {
+      "command": "node --experimental-strip-types --test tests/world-screens.test.mjs",
+      "exitCode": 0,
+      "tests": 8,
+      "passed": 8,
+      "failed": 0,
+      "skipped": 0,
+      "durationMs": 1142.689689,
+      "scope": "Existing world-screen regressions, separate from the 247-test castle/arrival workflow",
+      "provenance": "Exact stdout preserved from completed exec session 50760 (chunk fe2d41), before commit 132b2f1f. The helper was present; the subsequent change to worldScreens.ts only shortened its comment.",
+      "finalEquivalentSource": "132b2f1fa4f0fdf0de096566cc1e1e33a6286d34"
+    },
+    "geometrySummary": {
+      "biomes": 8,
+      "bands": 3,
+      "frames": 24,
+      "validFrames": 24,
+      "croppedFrames": 3,
+      "completeImageFrames": 21,
+      "jungleBandsPartitionImage": true
+    },
+    "visualReview": {
+      "reviewer": "Assistant art_audio_review, avec revue ciblée du responsable",
+      "status": "reviewed",
+      "capturesInspected": [
+        "05-castle-court-mobile-320.png",
+        "09-arrival-destination-title.png",
+        "10-arrival-carrier.png",
+        "11-arrival-pod-release.png",
+        "12-arrival-atmosphere.png",
+        "13-arrival-ground-impact.png",
+        "14-arrival-hunter-egress.png",
+        "19-castle-combat-victory.png",
+        "20-arrival-orbit.png",
+        "21-arrival-descent.png"
+      ],
+      "findings": [
+        "Le contour de la planète est circulaire ; les angles noirs ne sont plus visibles.",
+        "La jungle forme un panorama continu, sans les trois bandes empilées.",
+        "Le pied annonce la victoire consignée après les trois gardes.",
+        "Les huit plans ont chacun une capture dans ce lot ; capsule, impact et pieds du chasseur restent alignés au sol."
+      ],
+      "scope": "Revue statique par des assistants, sans certification d’écoute, de fluidité du mouvement ou d’approbation artistique humaine."
+    }
+  },
+  "browserQualification": {
+    "runId": 41827785792,
+    "jobId": 126567570188,
+    "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41827785792",
+    "sourceCommit": "881b66dafc94ac007b7de907bc625b00af71dff8",
+    "equivalentLocalCommit": "132b2f1fa4f0fdf0de096566cc1e1e33a6286d34",
+    "sourceTree": "54804a2c3d3762f3ca3b0d621ff8401c50ab2c42",
+    "checkoutCommit": "e46b29cecf1ba443c39d2669c31ce4c503ca4924",
+    "status": "Réussi",
+    "checksPassed": 24,
+    "checksTotal": 24,
+    "regressionTests": 247,
+    "regressionFailures": 0,
+    "regressionSkipped": 0,
+    "regressionDurationMs": 21274.993725,
+    "typecheck": "Réussi",
+    "strictLint": "Réussi",
+    "artAudit": "Réussi",
+    "javascriptErrors": 0,
+    "missingRequestedVisualAssets": 0,
+    "requestedVisualAssets": 185,
+    "screenshots": 21,
+    "runtimeWebpObserved": 29,
+    "runtimeWebpNotRequested": [
+      "public/game/wolf-castle/v1/low-fog.webp"
+    ],
+    "directory": "qa/browser-41827785792",
+    "report": "qa/browser-41827785792/report.json",
+    "workflowResult": "qa/browser-41827785792/workflow-result.json",
+    "workflowLog": "qa/browser-41827785792/workflow-job.log",
+    "visualReview": {
+      "reviewer": "Assistant art_audio_review, avec revue ciblée du responsable",
+      "status": "reviewed",
+      "capturesInspected": [
+        "05-castle-court-mobile-320.png",
+        "09-arrival-destination-title.png",
+        "10-arrival-carrier.png",
+        "11-arrival-pod-release.png",
+        "12-arrival-atmosphere.png",
+        "13-arrival-ground-impact.png",
+        "14-arrival-hunter-egress.png",
+        "19-castle-combat-victory.png",
+        "20-arrival-orbit.png",
+        "21-arrival-descent.png"
+      ],
+      "findings": [
+        "Le contour de la planète est circulaire ; les angles noirs ne sont plus visibles.",
+        "La jungle forme un panorama continu, sans les trois bandes empilées.",
+        "Le pied annonce la victoire consignée après les trois gardes.",
+        "Les huit plans ont chacun une capture dans ce lot ; capsule, impact et pieds du chasseur restent alignés au sol."
+      ],
+      "scope": "Revue statique par des assistants, sans certification d’écoute, de fluidité du mouvement ou d’approbation artistique humaine."
+    }
+  },
+  "releaseStatus": "Qualifié techniquement",
+  "qualifiedAt": "2026-11-04T12:23:47.691Z"
+}

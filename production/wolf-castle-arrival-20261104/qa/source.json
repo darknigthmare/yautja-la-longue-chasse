@@ -1,0 +1,8 @@
+{
+  "sourceCommit": "3a03a9449895c95a78606f951b762e9b087686a6",
+  "workflowSha256": "b97a3ced1492271dbf6082283808456e0ca0ae73e41b51fa4454d372d3369683",
+  "commands": {
+    "regression": "node --experimental-strip-types --test --test-concurrency=1 tests/wolf-castle*.test.mjs tests/planet-arrival*.test.mjs tests/wolf-arrival-save.test.mjs tests/scene-audio.test.mjs tests/sound-lifecycle.test.mjs tests/clan-ship-docking.test.mjs tests/clan-ship-save.test.mjs tests/complete-archive.test.mjs tests/campaign-slots.test.mjs tests/campaign-resume-priority-v94.test.mjs tests/game-client-ship-flow.test.mjs",
+    "build": "npm run build:production"
+  }
+}

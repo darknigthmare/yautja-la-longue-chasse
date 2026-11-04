@@ -1,0 +1,12 @@
+{
+  "command": "node --experimental-strip-types --test tests/world-screens.test.mjs",
+  "exitCode": 0,
+  "tests": 8,
+  "passed": 8,
+  "failed": 0,
+  "skipped": 0,
+  "durationMs": 1142.689689,
+  "scope": "Existing world-screen regressions, separate from the 247-test castle/arrival workflow",
+  "provenance": "Exact stdout preserved from completed exec session 50760 (chunk fe2d41), before commit 132b2f1f. The helper was present; the subsequent change to worldScreens.ts only shortened its comment.",
+  "finalEquivalentSource": "132b2f1fa4f0fdf0de096566cc1e1e33a6286d34"
+}

@@ -1,0 +1,37 @@
+{
+  "sourceCommit": "3a03a9449895c95a78606f951b762e9b087686a6",
+  "runs": [
+    {
+      "sourceCommit": "3a03a9449895c95a78606f951b762e9b087686a6",
+      "command": "node --experimental-strip-types --test --test-concurrency=1 tests/wolf-castle-audio.test.mjs tests/planet-arrival-audio.test.mjs tests/scene-audio.test.mjs tests/sound-lifecycle.test.mjs",
+      "exitCode": 0,
+      "log": "qa/audio-tests.log",
+      "logSha256": "72c35c65a056e7682a06f795f7fac56a1a99470526d57778526c2b1522c4f3bf",
+      "logWrittenAt": "2026-11-04T10:57:05.362Z"
+    },
+    {
+      "sourceCommit": "3a03a9449895c95a78606f951b762e9b087686a6",
+      "command": "node node_modules/eslint/bin/eslint.js --max-warnings=0 app/game/GameClient.tsx app/game/PlanetArrivalCinematic.tsx app/game/WolfCastleScene.tsx app/game/systems/wolfCastleAudio.ts tests/wolf-castle-audio.test.mjs",
+      "exitCode": 0,
+      "log": "qa/audio-lint.log",
+      "logSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "logWrittenAt": "2026-11-04T10:57:00.374Z"
+    },
+    {
+      "sourceCommit": "3a03a9449895c95a78606f951b762e9b087686a6",
+      "command": "npm run typecheck",
+      "exitCode": 0,
+      "log": "qa/audio-typecheck.log",
+      "logSha256": "47d3893bcae7bf8c9cc220e4e4e3e92979a3f8f596cddaee97fba7409251a69b",
+      "logWrittenAt": "2026-11-04T10:57:00.210Z"
+    },
+    {
+      "sourceCommit": "3a03a9449895c95a78606f951b762e9b087686a6",
+      "command": "node scripts/build-wolf-runtime-art.mjs --check",
+      "exitCode": 0,
+      "log": "qa/art-check.log",
+      "logSha256": "dea2aa26ea00194426c37eacc0d50b7ec469ed06566fc01a72014c00b6ec8414",
+      "logWrittenAt": "2026-11-04T10:57:10.250Z"
+    }
+  ]
+}

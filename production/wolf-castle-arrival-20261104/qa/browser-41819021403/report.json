@@ -1,0 +1,286 @@
+{
+  "startedAt": "2026-11-04T11:13:30.310Z",
+  "checkoutCommit": "8b40c2c01cc1ffde1e087134f722baf1ad3504d8",
+  "sourceCommit": "2fbb1931bde535b34e5185ca236288e249447546",
+  "runtime": "actual desktop GameClient via Vite",
+  "headed": true,
+  "assetGateRequired": true,
+  "checks": [
+    {
+      "name": "Main menu resumes the existing campaign on the personal deck",
+      "passed": true
+    },
+    {
+      "name": "The orbital castle remains separate from the personal hull and Clan Ship",
+      "passed": true
+    },
+    {
+      "name": "Walking reaches the airlock, vestibule, gallery and real archive terminal",
+      "passed": true
+    },
+    {
+      "name": "Castle room and personal hull survive menu, reload and Continue",
+      "passed": true
+    },
+    {
+      "name": "The audience and council preserve one campaign decision",
+      "passed": true
+    },
+    {
+      "name": "The three-seal court trial is traversed and completed without campaign rewards",
+      "passed": true
+    },
+    {
+      "name": "The royal court starts a real three-guard fight with damage and a saved exact position",
+      "passed": true
+    },
+    {
+      "name": "A paused fight survives menu and reload without recovering health or resetting the guard",
+      "passed": true
+    },
+    {
+      "name": "A real browser tab change pauses the fight and returning never resumes it implicitly",
+      "passed": true
+    },
+    {
+      "name": "Taking the announced hits ends in defeat, then restart creates one fresh attempt",
+      "passed": true
+    },
+    {
+      "name": "Combat controls fit 320 pixels and abandoning unlocks the same court safely",
+      "passed": true
+    },
+    {
+      "name": "Ordinary keyboard movement, timed parries, dodges and attacks defeat the three guards",
+      "passed": true
+    },
+    {
+      "name": "Castle navigation and return remain usable at 390 and 320 pixels",
+      "passed": true
+    },
+    {
+      "name": "A campaign launch freezes a single run, destination, ship and hunter before any hunt mounts",
+      "passed": false,
+      "message": "locator.click: Timeout 20000ms exceeded.\nCall log:\n  - waiting for getByRole('button', { name: 'Déployer le chasseur', exact: true })\n"
+    }
+  ],
+  "errors": [],
+  "missingAssets": [
+    "/game/backgrounds/v10/galaxy-overview-v10.webp"
+  ],
+  "requestedAssets": [
+    "public/game/assets/v139/rig-gauntlets/jungle-hunter/base.svg",
+    "public/game/assets/v139/rig-gauntlets/jungle-hunter/lid.svg",
+    "public/game/assets/v3/actors/yautja/hunter/armor/registered/belt.webp",
+    "public/game/assets/v3/actors/yautja/hunter/armor/registered/bracer.webp",
+    "public/game/assets/v3/actors/yautja/hunter/armor/registered/chest-classic.webp",
+    "public/game/assets/v3/actors/yautja/hunter/armor/registered/knee.webp",
+    "public/game/assets/v3/actors/yautja/hunter/armor/registered/shin.webp",
+    "public/game/assets/v3/actors/yautja/hunter/armor/registered/shoulder-classic.webp",
+    "public/game/assets/v3/actors/yautja/hunter/armor/registered/thigh-lower.webp",
+    "public/game/assets/v3/actors/yautja/hunter/armor/registered/thigh.webp",
+    "public/game/assets/v3/actors/yautja/hunter/body/classic/net/parts/hand-back.webp",
+    "public/game/assets/v3/actors/yautja/hunter/body/classic/net/parts/hand-front.webp",
+    "public/game/assets/v3/actors/yautja/hunter/body/classic/net/parts/lower-arm-back.webp",
+    "public/game/assets/v3/actors/yautja/hunter/body/classic/net/parts/lower-arm-front.webp",
+    "public/game/assets/v3/actors/yautja/hunter/body/classic/net/parts/pelvis.webp",
+    "public/game/assets/v3/actors/yautja/hunter/body/classic/net/parts/shin-back.webp",
+    "public/game/assets/v3/actors/yautja/hunter/body/classic/net/parts/shin-front.webp",
+    "public/game/assets/v3/actors/yautja/hunter/body/classic/net/parts/thigh-back.webp",
+    "public/game/assets/v3/actors/yautja/hunter/body/classic/net/parts/thigh-front.webp",
+    "public/game/assets/v3/actors/yautja/hunter/body/classic/net/parts/torso.webp",
+    "public/game/assets/v3/actors/yautja/hunter/body/classic/net/parts/upper-arm-back.webp",
+    "public/game/assets/v3/actors/yautja/hunter/body/classic/net/parts/upper-arm-front.webp",
+    "public/game/assets/v3/actors/yautja/hunter/body/classic/parts/foot-back.webp",
+    "public/game/assets/v3/actors/yautja/hunter/body/classic/parts/foot-front.webp",
+    "public/game/assets/v3/actors/yautja/hunter/body/classic/parts/hand-back.webp",
+    "public/game/assets/v3/actors/yautja/hunter/body/classic/parts/hand-front.webp",
+    "public/game/assets/v3/actors/yautja/hunter/body/classic/parts/lower-arm-back.webp",
+    "public/game/assets/v3/actors/yautja/hunter/body/classic/parts/lower-arm-front.webp",
+    "public/game/assets/v3/actors/yautja/hunter/body/classic/parts/pelvis.webp",
+    "public/game/assets/v3/actors/yautja/hunter/body/classic/parts/shin-back.webp",
+    "public/game/assets/v3/actors/yautja/hunter/body/classic/parts/shin-front.webp",
+    "public/game/assets/v3/actors/yautja/hunter/body/classic/parts/thigh-back.webp",
+    "public/game/assets/v3/actors/yautja/hunter/body/classic/parts/thigh-front.webp",
+    "public/game/assets/v3/actors/yautja/hunter/body/classic/parts/torso.webp",
+    "public/game/assets/v3/actors/yautja/hunter/body/classic/parts/upper-arm-back.webp",
+    "public/game/assets/v3/actors/yautja/hunter/body/classic/parts/upper-arm-front.webp",
+    "public/game/assets/v3/actors/yautja/hunter/dreads/registered/classic.webp",
+    "public/game/assets/v3/actors/yautja/hunter/equipment/registered/barrel.webp",
+    "public/game/assets/v3/actors/yautja/hunter/equipment/registered/cannon.webp",
+    "public/game/assets/v3/actors/yautja/hunter/equipment/registered/caster-lower.webp",
+    "public/game/assets/v3/actors/yautja/hunter/equipment/registered/caster-upper.webp",
+    "public/game/assets/v3/actors/yautja/hunter/equipment/registered/laser.webp",
+    "public/game/assets/v3/actors/yautja/hunter/equipment/registered/mount.webp",
+    "public/game/assets/v3/actors/yautja/hunter/equipment/registered/muzzle.webp",
+    "public/game/assets/v3/actors/yautja/hunter/equipment/registered/yoke.webp",
+    "public/game/assets/v3/actors/yautja/hunter/gear/registered/audio-decoy.webp",
+    "public/game/assets/v3/actors/yautja/hunter/gear/registered/motion-sensor.webp",
+    "public/game/assets/v3/actors/yautja/hunter/trophies/registered/trophy-bindings.webp",
+    "public/game/assets/v3/actors/yautja/hunter/trophies/registered/trophy-skull.webp",
+    "public/game/assets/v3/actors/yautja/hunter/trophies/registered/trophy-spine.webp",
+    "public/game/assets/v3/actors/yautja/hunter/weapons/registered/combistick.webp",
+    "public/game/backgrounds/v10/galaxy-overview-v10.webp",
+    "public/game/prologue/v47/village.png",
+    "public/game/ship-interior/v20/corridor-wall.webp",
+    "public/game/ship-interior/v21/console-navigation.webp",
+    "public/game/ship-interior/v21/door-frame.webp",
+    "public/game/ship-interior/v21/door-leaf.webp",
+    "public/game/ship-interior/v21/foreground-rib.webp",
+    "public/game/ship-interior/v21/wall-machinery.webp",
+    "public/game/ship-interior/v21/wall-sanctum.webp",
+    "public/game/ship-interior/v22/floor-edge.webp",
+    "public/game/ship-interior/v22/gantry.webp",
+    "public/game/ship-interior/v22/medbay-bed.webp",
+    "public/game/ship-interior/v22/service-ladder.webp",
+    "public/game/ships/v12/classic-predator-spaceship.webp",
+    "public/game/ships/v13/classic-predator-spaceship-top.webp",
+    "public/game/sprites/v6/prey-atlas.png",
+    "public/game/sprites/v62/heads/classic-head.png",
+    "public/game/sprites/v62/masks/jungle.png",
+    "public/game/wolf-castle/v1/access-beacon.webp",
+    "public/game/wolf-castle/v1/airlock-frame.webp",
+    "public/game/wolf-castle/v1/airlock-leaf.webp",
+    "public/game/wolf-castle/v1/archive-console.webp",
+    "public/game/wolf-castle/v1/audience-wall.webp",
+    "public/game/wolf-castle/v1/bay-anchor.webp",
+    "public/game/wolf-castle/v1/berth-wall.webp",
+    "public/game/wolf-castle/v1/castle-exterior.webp",
+    "public/game/wolf-castle/v1/column.webp",
+    "public/game/wolf-castle/v1/council-table.webp",
+    "public/game/wolf-castle/v1/court-wall.webp",
+    "public/game/wolf-castle/v1/dais.webp",
+    "public/game/wolf-castle/v1/gallery-wall.webp",
+    "public/game/wolf-castle/v1/predator-king-seated.webp",
+    "public/game/wolf-castle/v1/royal-guard.webp",
+    "public/game/wolf-castle/v1/service-wall.webp",
+    "public/game/wolf-castle/v1/throne.webp",
+    "public/game/wolf-castle/v1/trophy-plinth.webp",
+    "public/game/wolf-castle/v2/royal-guard-lunge.webp",
+    "public/game/wolf-castle/v2/royal-guard-ready.webp",
+    "public/game/wolf-castle/v2/royal-guard-windup.webp"
+  ],
+  "screenshots": [
+    "01-castle-orbit-desktop.png",
+    "02-castle-archives-desktop.png",
+    "03-castle-audience-desktop.png",
+    "04-castle-court-desktop.png",
+    "16-castle-combat-paused-desktop.png",
+    "17-castle-combat-defeat.png",
+    "18-castle-combat-mobile-320.png",
+    "19-castle-combat-victory.png",
+    "05-castle-court-mobile-320.png"
+  ],
+  "focusTransitions": [
+    {
+      "phase": "before",
+      "hidden": false,
+      "focused": true
+    },
+    {
+      "phase": "background",
+      "hidden": false,
+      "focused": false
+    },
+    {
+      "phase": "restored",
+      "hidden": false,
+      "focused": true
+    }
+  ],
+  "passed": false,
+  "failure": "locator.click: Timeout 20000ms exceeded.\nCall log:\n  - waiting for getByRole('button', { name: 'Déployer le chasseur', exact: true })\n\n    at launchMission (/home/runner/work/yautja-la-longue-chasse/yautja-la-longue-chasse/scripts/qa-wolf-arrival-browser.mjs:209:83)\n    at async file:///home/runner/work/yautja-la-longue-chasse/yautja-la-longue-chasse/scripts/qa-wolf-arrival-browser.mjs:384:5\n    at async check (/home/runner/work/yautja-la-longue-chasse/yautja-la-longue-chasse/scripts/qa-wolf-arrival-browser.mjs:39:11)\n    at async file:///home/runner/work/yautja-la-longue-chasse/yautja-la-longue-chasse/scripts/qa-wolf-arrival-browser.mjs:383:3",
+  "failureState": {
+    "focused": true,
+    "hidden": false,
+    "activeElement": "<div data-screen-focus=\"true\" class=\"galaxy-v10-stage level-galaxy\" data-galaxy-v10-level=\"galaxy\" data-selected-ship=\"classic-predator-spaceship\" role=\"region\" aria-label=\"Carte galaxy. Pilotage : Q / ←, D / →, Z / ↑, S / ↓. Cibles : Page haut / R et Page bas / E. Voyager : Entrée / Espace.\" tabindex=\"0\"><img class=\"galaxy-v10-stage-art\" alt=\"\" aria-hidden=\"true\" src=\"/game/backgrounds/v10/galaxy-overview-v10.webp\"><div class=\"galaxy-v10-stage-vignette\" aria-hidden=\"true\"></div><nav class=\"gala",
+    "castle": {
+      "version": 2,
+      "ownerCreatedAt": "2026-11-04T10:00:00.000Z",
+      "locationId": "wolf-orbital-castle",
+      "personalShipId": "classic-predator-spaceship",
+      "invitationId": "wolf-protocol:2026-11-04T10:00:00.000Z",
+      "mode": "hub",
+      "status": "departed",
+      "roomId": "royal-berth",
+      "entryFrom": null,
+      "visitedRooms": [
+        "royal-berth",
+        "royal-airlock",
+        "royal-vestibule",
+        "royal-gallery",
+        "royal-archives",
+        "royal-audience",
+        "royal-council",
+        "royal-service-pass",
+        "royal-court"
+      ],
+      "audience": "accepted",
+      "archiveRead": true,
+      "trial": {
+        "status": "complete",
+        "progress": 3,
+        "attempts": 1
+      },
+      "revision": 94,
+      "position": {
+        "x": 380,
+        "y": 612,
+        "facing": 1
+      },
+      "combat": {
+        "version": 1,
+        "status": "victory",
+        "attempt": 3,
+        "encounterIndex": 2,
+        "elapsedMs": 16599.5,
+        "player": {
+          "x": 767.9641,
+          "y": 610,
+          "facing": 1,
+          "health": 100,
+          "stamina": 90.20159999999996,
+          "attackMs": 239.90000000000146,
+          "attackResolved": true,
+          "attackCooldownMs": 396.6000000000022,
+          "parryMs": 0,
+          "evadeMs": 0,
+          "evadeX": -1,
+          "evadeY": 0,
+          "defenseCooldownMs": 96.60000000000218,
+          "hurtMs": 0
+        },
+        "enemy": {
+          "x": 890.3999999999984,
+          "y": 610,
+          "facing": -1,
+          "health": 0,
+          "phase": "down",
+          "phaseMs": 0,
+          "strike": "thrust",
+          "targetX": 767.9641,
+          "targetY": 610,
+          "sequence": 3,
+          "staggerMs": 0
+        },
+        "stats": {
+          "hits": 13,
+          "parries": 3,
+          "evades": 3,
+          "damageTaken": 0
+        },
+        "dossier": {
+          "victories": 1,
+          "bestTimeMs": 16599.5,
+          "bestDamageTaken": 0
+        },
+        "event": {
+          "kind": "victory",
+          "sequence": 37,
+          "remainingMs": 1800
+        }
+      }
+    }
+  },
+  "finishedAt": "2026-11-04T11:15:34.164Z"
+}
