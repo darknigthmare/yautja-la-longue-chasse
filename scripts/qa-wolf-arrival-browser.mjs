@@ -433,8 +433,16 @@ try {
     assert.equal(await page.locator('[data-arrival-run]').getAttribute('data-arrival-reduced-motion'), 'true');
     assert.equal((await stored()).planetArrival.runId, skipRun);
     await page.setViewportSize({ width: 320, height: 844 });
-    const box = await page.locator('[data-arrival-run]').evaluate(element => ({ width: element.clientWidth, scroll: element.scrollWidth }));
+    await page.evaluate(() => new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve))));
+    const box = await page.locator('[data-arrival-run]').evaluate(element => {
+      const outer = element.getBoundingClientRect();
+      const panel = element.querySelector('[aria-labelledby="arrival-pause-title"] > div');
+      const children = [panel, ...panel.querySelectorAll('button')];
+      return { width: element.clientWidth, scroll: element.scrollWidth,
+        clipped: children.filter(child => { const rect = child.getBoundingClientRect(); return rect.left < outer.left || rect.right > outer.right; }).map(child => child.textContent) };
+    });
     assert.ok(box.scroll <= box.width + 2, JSON.stringify(box));
+    assert.deepEqual(box.clipped, [], 'The mobile pause panel and its controls must remain inside the arrival card');
     await screenshot('06-arrival-pause-mobile-320.png');
     await page.setViewportSize({ width: 1440, height: 1000 });
   });
