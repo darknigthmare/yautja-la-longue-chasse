@@ -28,7 +28,7 @@ seed.profile.hunterName = 'QA Château et arrivée';
 seed.settings.masterVolume = 0;
 const checkoutCommit = execFileSync('git', ['rev-parse', 'HEAD'], { cwd: root, encoding: 'utf8' }).trim();
 const report = { startedAt: new Date().toISOString(), checkoutCommit, sourceCommit: process.env.WOLF_ARRIVAL_SOURCE_COMMIT || checkoutCommit,
-  runtime: 'actual desktop GameClient via Vite', headed, assetGateRequired: assetsRequired, checks: [], errors: [], missingAssets: [], requestedAssets: [], screenshots: [], focusTransitions: [] };
+  runtime: 'actual desktop GameClient via Vite', headed, assetGateRequired: assetsRequired, checks: [], errors: [], missingAssets: [], requestedAssets: [], screenshots: [], focusTransitions: [], viewportTransitions: [] };
 const missing = new Set(), requested = new Set();
 let server, browser, page;
 
@@ -95,6 +95,19 @@ try {
   };
   const openApp = async () => { await page.goto(`http://127.0.0.1:${port}`, { waitUntil: 'networkidle', timeout: 120_000 }); await continueCampaign(); };
   const screenshot = async filename => { await page.screenshot({ path: path.join(out, filename), fullPage: true }); report.screenshots.push(filename); };
+  const resizeViewport = async viewport => {
+    await page.setViewportSize(viewport);
+    await page.waitForFunction(({ width, height }) => innerWidth === width && innerHeight === height, viewport);
+    // Headed Chromium can acknowledge device metrics before the new media
+    // queries and vw padding have painted. Measure the settled layout only.
+    await page.evaluate(() => new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve))));
+    report.viewportTransitions.push(await page.evaluate(() => {
+      const card = document.querySelector('[data-wolf-castle-status], [data-arrival-run]');
+      const safe = card?.closest('.screen-safe');
+      return { width: innerWidth, height: innerHeight, cardWidth: card?.clientWidth, cardScroll: card?.scrollWidth,
+        padding: safe ? getComputedStyle(safe).paddingInlineStart : null };
+    }));
+  };
   const padButton = async (index, pressed) => {
     await page.evaluate(({ index, pressed }) => { window.__wolfArrivalQa.pad.buttons[index] = { pressed, touched: pressed, value: pressed ? 1 : 0 }; }, { index, pressed });
     await page.waitForTimeout(180);
@@ -352,7 +365,7 @@ try {
     assert.equal((await stored()).wolfCastle.combat.player.health, 100);
   });
   await check('Combat controls fit 320 pixels and abandoning unlocks the same court safely', async () => {
-    await page.setViewportSize({ width: 320, height: 844 });
+    await resizeViewport({ width: 320, height: 844 });
     const box = await page.locator('[data-wolf-castle-status]').evaluate(element => ({ client: element.clientWidth, scroll: element.scrollWidth }));
     assert.ok(box.scroll <= box.client + 2, JSON.stringify(box));
     await page.locator('[data-wolf-combat-command="attack"]').click();
@@ -363,7 +376,7 @@ try {
     await castleAction('abandon-combat');
     assert.equal((await stored()).wolfCastle.combat.status, 'abandoned');
     assert.equal((await stored()).wolfCastle.roomId, 'royal-court');
-    await page.setViewportSize({ width: 1440, height: 1000 });
+    await resizeViewport({ width: 1440, height: 1000 });
   });
   await check('Ordinary keyboard movement, timed parries, dodges and attacks defeat the three guards', async () => {
     await targetStation('combat'); await castleAction('start-combat'); await resumeCombat();
@@ -384,7 +397,7 @@ try {
   });
   await check('Castle navigation and return remain usable at 390 and 320 pixels', async () => {
     for (const width of [390, 320]) {
-      await page.setViewportSize({ width, height: 844 });
+      await resizeViewport({ width, height: 844 });
       const dimensions = await page.locator('[data-wolf-castle-status]').evaluate(element => ({ client: element.clientWidth, scroll: element.scrollWidth }));
       assert.ok(dimensions.scroll <= dimensions.client + 2, `${width}px overflow: ${JSON.stringify(dimensions)}`);
       await page.locator('[data-wolf-castle-map]').click();
@@ -395,7 +408,7 @@ try {
     await targetStation('personal-ship'); await castleAction('depart');
     await page.locator('[data-campaign-location="deck"]').waitFor();
     assert.equal((await stored()).wolfCastle.status, 'departed');
-    await page.setViewportSize({ width: 1440, height: 1000 });
+    await resizeViewport({ width: 1440, height: 1000 });
   });
 
   let skipRun;
@@ -432,8 +445,7 @@ try {
     assert.equal(await page.locator('[data-arrival-run]').getAttribute('data-arrival-elapsed'), pausedTime);
     assert.equal(await page.locator('[data-arrival-run]').getAttribute('data-arrival-reduced-motion'), 'true');
     assert.equal((await stored()).planetArrival.runId, skipRun);
-    await page.setViewportSize({ width: 320, height: 844 });
-    await page.evaluate(() => new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve))));
+    await resizeViewport({ width: 320, height: 844 });
     const box = await page.locator('[data-arrival-run]').evaluate(element => {
       const outer = element.getBoundingClientRect();
       const panel = element.querySelector('[aria-labelledby="arrival-pause-title"] > div');
@@ -444,7 +456,7 @@ try {
     assert.ok(box.scroll <= box.width + 2, JSON.stringify(box));
     assert.deepEqual(box.clipped, [], 'The mobile pause panel and its controls must remain inside the arrival card');
     await screenshot('06-arrival-pause-mobile-320.png');
-    await page.setViewportSize({ width: 1440, height: 1000 });
+    await resizeViewport({ width: 1440, height: 1000 });
   });
   await check('Arrival menu, reload and Continue retain the same run without a gameplay sidecar', async () => {
     await page.getByRole('button', { name: 'Enregistrer et revenir au menu', exact: true }).click();
