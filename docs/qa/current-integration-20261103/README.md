@@ -73,6 +73,43 @@ pendant la CI. Les sources courantes doivent aussi passer `--current` après leu
 commit. Ne pas remplacer `docs/v113-runtime-freeze.json` ni les deux certificats
 historiques pour faire correspondre leurs anciennes observations au code actuel.
 
+## Actualisation du relevé pour la page `/dev` — 4 novembre 2026
+
+Le relevé courant inclut désormais les sources de la page de voyage développeur
+livrées par la PR #108, fusionnée dans
+`91cf274a88d8e2075fddb0514626ad32d800469f`. Les sections suivantes conservent les
+observations datées des relevés précédents ; leurs empreintes et leurs preuves
+ne sont pas attribuées à cette nouvelle version.
+
+Le run V94 `41879683016`, job modèles `126749379260`, avait correctement refusé
+le document antérieur : il décrivait 2 130 fichiers et 396 560 octets JSON, alors
+que le générateur calculait le nouveau document de 397 656 octets. L'étape
+s'arrêtait à cette comparaison, avant de lancer les modèles V113 courants.
+
+Après matérialisation des 347 entrées manquantes du checkout partiel, les
+commandes officielles `snapshot-runtime-v113.mjs --write` puis `--check` ont été
+exécutées sur les fichiers réels et ont toutes deux terminé avec le code 0.
+Le second passage confirme les mêmes octets et la même empreinte que le premier.
+
+| Mesure du relevé actualisé | Valeur |
+| --- | --- |
+| Entrées | 2 137 |
+| Octets des entrées | 1 091 814 923 |
+| Octets du document JSON | 397 656 |
+| SHA-256 du document | `357786a578acc8dffbbf261b56cb720eb297662c6da4ba3637954d76b97b2dbb` |
+
+Le delta comporte les sept nouveaux fichiers `app/dev/`, la modification de
+`app/game/HomeworldHub.tsx` pour la session éphémère, et l'adaptation de sa fixture
+`tests/homeworld-geometry-recovery-integration-v112.test.mjs`. Aucune entrée n'est
+retirée. Les déclarations de périmètre et les générateurs restent inchangés.
+
+Les freezes V111/V112/V113, `local-validation.json` et les reçus de production
+du Clan Ship restent inchangés. Ces derniers désignent explicitement le relevé
+au commit `71826ae1d02563c73facced34ec8cfaa827aeb89` ; leurs anciennes empreintes
+restent donc exactes. Cette actualisation ne constitue pas une nouvelle
+attestation de ces livraisons. Le contrôle Git `--current` et les résultats
+distants sont à lire sur le commit de publication de la correction.
+
 ## Actualisation du relevé pour le Clan Ship — 4 novembre 2026
 
 Le fichier courant `runtime-inputs.json` décrit désormais le périmètre du jeu

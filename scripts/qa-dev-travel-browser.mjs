@@ -389,6 +389,8 @@ try {
   await check('A regional destination opens its live village, and F8 returns to the catalogue even from its modal', async () => {
     await jump('region-glass-desert');
     await page.locator('[data-homeworld-region-v68="glass-desert"][data-zone="village"]').waitFor({ timeout: 120000 });
+    await page.locator('[data-region-resume]').waitFor({ timeout: 120000 });
+    await page.locator('[data-region-resume]').click();
     await page.waitForFunction(() => Number(document.querySelector('[data-homeworld-region-v68="glass-desert"]')?.getAttribute('data-state-tick')) > 2);
     await page.locator('[data-region-player]').waitFor();
     await capture('05-regional-village');
