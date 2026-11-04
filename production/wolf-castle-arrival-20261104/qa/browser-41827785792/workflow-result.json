@@ -1,0 +1,135 @@
+{
+  "runId": 41827785792,
+  "jobId": 126567570188,
+  "sourceCommit": "881b66dafc94ac007b7de907bc625b00af71dff8",
+  "equivalentLocalCommit": "132b2f1fa4f0fdf0de096566cc1e1e33a6286d34",
+  "tree": "54804a2c3d3762f3ca3b0d621ff8401c50ab2c42",
+  "runUrl": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41827785792",
+  "jobs": {
+    "jobs": [
+      {
+        "id": 126567570188,
+        "name": "castle-arrival",
+        "status": "completed",
+        "conclusion": "success",
+        "run_id": 41827785792,
+        "logs_url": null,
+        "steps": [
+          {
+            "name": "Set up job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 1
+          },
+          {
+            "name": "Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 2
+          },
+          {
+            "name": "Include the castle, arrival and real campaign artwork",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 3
+          },
+          {
+            "name": "Run actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 4
+          },
+          {
+            "name": "Run npm ci --ignore-scripts --no-audit --no-fund",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 5
+          },
+          {
+            "name": "Typecheck",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 6
+          },
+          {
+            "name": "Strict lint of the castle and arrival integration",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 7
+          },
+          {
+            "name": "Audit original PNGs, exact alpha and individual WebP runtime images",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 8
+          },
+          {
+            "name": "State, saves, archives and campaign regressions",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 9
+          },
+          {
+            "name": "Install the pinned Chromium browser",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 10
+          },
+          {
+            "name": "Traverse the castle, restore an arrival and watch the complete descent",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 11
+          },
+          {
+            "name": "Upload browser evidence even when a check fails",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 12
+          },
+          {
+            "name": "Post Run actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 23
+          },
+          {
+            "name": "Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 24
+          },
+          {
+            "name": "Complete job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 25
+          }
+        ]
+      }
+    ]
+  },
+  "artifacts": {
+    "artifacts": [
+      {
+        "id": 13322820088,
+        "name": "wolf-arrival-browser-e46b29cecf1ba443c39d2669c31ce4c503ca4924",
+        "size_in_bytes": 12640828,
+        "url": "https://api.github.com/repos/darknigthmare/yautja-la-longue-chasse/actions/artifacts/13322820088",
+        "archive_download_url": "https://api.github.com/repos/darknigthmare/yautja-la-longue-chasse/actions/artifacts/13322820088/zip",
+        "expired": false,
+        "created_at": "2026-11-04T12:23:49Z",
+        "expires_at": "2026-11-18T12:23:48Z",
+        "updated_at": "2026-11-04T12:23:49Z",
+        "digest": "sha256:5aabe9f3d636f140fbb966e9b9c22b62427b151529b51ae17f5cf31bde093d07",
+        "workflow_run": {
+          "id": 41827785792,
+          "repository_id": 1305104232,
+          "head_repository_id": 1305104232,
+          "head_branch": "feat/wolf-castle-continuation-20261104",
+          "head_sha": "881b66dafc94ac007b7de907bc625b00af71dff8"
+        }
+      }
+    ]
+  }
+}

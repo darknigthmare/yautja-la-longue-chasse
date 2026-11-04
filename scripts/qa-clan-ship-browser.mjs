@@ -498,6 +498,7 @@ try {
     await move('hangar'); await interact();
     await page.locator('[data-campaign-location="deck"]').waitFor();
     await waitVisit('docked');
+    assert.equal(await page.locator('[data-open-wolf-castle]').isDisabled(), true, 'A clan berth must also block departure for the royal castle');
     await page.getByRole('button', { name: 'Yautja Prime · monde natal', exact: true }).click();
     await page.locator('[data-campaign-location="deck"]').waitFor();
     assert.equal((await stored()).clanShipDocking.status, 'docked');
@@ -506,8 +507,10 @@ try {
     await continueCampaign();
     await page.locator('[data-campaign-location="deck"]').waitFor();
     await waitVisit('docked');
+    assert.equal(await page.locator('[data-open-wolf-castle]').isDisabled(), true, 'Restoring the berth must preserve the royal departure lock');
     await openClan(); await action('undock'); await waitVisit('free-flight');
     await page.locator('[data-campaign-location="deck"]').waitFor();
+    await page.waitForFunction(() => document.querySelector('[data-open-wolf-castle]')?.disabled === false);
   });
   await check('Approach cancellation is durable and never boards the clan ship', async () => {
     await openClan(); await action('approach'); await waitVisit('approach');

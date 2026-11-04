@@ -331,7 +331,7 @@ try {
     await page.locator('.physical-ship-deck__station-shortcuts').getByRole('button', { name: /armurerie/i }).click();
     const armory = page.locator('[data-dev-service="armory"]');
     await armory.waitFor();
-    const weapon = armory.getByLabel('Arme 1', { exact: true });
+    const weapon = armory.getByLabel(/^Arme\s+1(?=\D|$)/);
     const before = await weapon.inputValue();
     const next = await weapon.locator('option').evaluateAll((options, selected) => options.find(option => !option.disabled && option.value !== selected)?.value, before);
     assert.ok(next, 'The test armory must offer an alternative real weapon.');
@@ -340,7 +340,7 @@ try {
     await page.locator('[data-dev-service-back]').click();
     await page.locator('.physical-ship-deck[data-suspended="false"]').waitFor();
     await page.locator('.physical-ship-deck__station-shortcuts').getByRole('button', { name: /armurerie/i }).click();
-    assert.equal(await page.locator('[data-dev-service="armory"]').getByLabel('Arme 1', { exact: true }).inputValue(), next);
+    assert.equal(await page.locator('[data-dev-service="armory"]').getByLabel(/^Arme\s+1(?=\D|$)/).inputValue(), next);
     await page.locator('[data-dev-service-back]').click();
   });
 
@@ -389,8 +389,13 @@ try {
   await check('A regional destination opens its live village, and F8 returns to the catalogue even from its modal', async () => {
     await jump('region-glass-desert');
     await page.locator('[data-homeworld-region-v68="glass-desert"][data-zone="village"]').waitFor({ timeout: 120000 });
+    // The native region starts paused and exposes this entry action only after its scenery is ready.
+    await page.locator('[data-region-resume]').click({ timeout: 120000 });
     await page.waitForFunction(() => Number(document.querySelector('[data-homeworld-region-v68="glass-desert"]')?.getAttribute('data-state-tick')) > 2);
-    await page.locator('[data-region-player]').waitFor();
+    // The actor anchor is intentionally 0 by 0; its positioned sprite carries the visible bounds.
+    const regionSprite = page.locator('[data-region-player] img').first();
+    await regionSprite.waitFor();
+    await regionSprite.evaluate(image => image.decode());
     await capture('05-regional-village');
     await page.locator('[data-village-open-atlas-v70]').click();
     await page.locator('[data-region-resume]').waitFor();
@@ -439,7 +444,10 @@ try {
     assert.ok(initial.rooms.includes('jungle-pilot-approach'), 'The baseline checkpoint must include the real insertion room.');
     await page.getByRole('button', { name: 'Reprendre', exact: true }).click();
     let discovered = initial;
-    for (let attempt = 0; attempt < 10; attempt++) {
+    // The next ground room starts 575 pixels beyond this fixture's insertion.
+    // The observed CI run advanced about 23 pixels per 650 ms input pulse.
+    // Bound the real-input traversal while retaining the native discovery exit.
+    for (let attempt = 0; attempt < 40; attempt++) {
       await page.locator('.hunt-canvas').focus();
       await page.keyboard.down('ArrowRight');
       try { await page.waitForTimeout(650); }
@@ -530,7 +538,8 @@ try {
     assert.equal(await page.locator('a[href^="/dev"]:visible').count(), 0);
   });
 
-  await check('Visited development scenes produce no uncaught JavaScript exception or storage write', async () => {
+  await check('Visited development scenes produce no missing asset, uncaught JavaScript exception or storage write', async () => {
+    assert.deepEqual([...missing].sort(), [], 'Every requested game asset must load successfully.');
     assert.deepEqual(report.errors, []);
     assert.deepEqual(report.storageOperations, []);
     assert.deepEqual(report.databaseOpens, []);

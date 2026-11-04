@@ -1,0 +1,40 @@
+✔ a complete montage plays each authored cue once against the real timeline (16.514055ms)
+✔ impact waits for the capsule to reach the authored floor contact (0.973097ms)
+✔ pause clears live sounds and resume cannot replay a reached impact (1.145118ms)
+✔ reloading within a shot preserves consumed sounds while future cues still play (1.126068ms)
+✔ a blocked checkpoint consumes elapsed cues without deferring a burst on resume (0.754323ms)
+✔ a large external jump discards stale cues but permits the next timely event (0.44492ms)
+✔ skip, failed handoff and completion never play or retain scene sounds (0.919921ms)
+✔ switching runs retires the old ambience and gives the new run its own cue timeline (0.39273ms)
+✔ the surface ambience follows every real mission biome (0.952646ms)
+✔ disposing an arrival is final even if its old timeline or input fires again (0.742063ms)
+✔ repeated frame requests keep one ambience and every source routes through the effects bus (14.886487ms)
+✔ changing ambience retires the old loop once and natural endings disconnect every owned node (3.544253ms)
+✔ pause immediately cancels short, delayed, live and fading voices (2.633932ms)
+✔ short sounds release their graph after normal completion without touching the ambience (0.948687ms)
+✔ a delayed autoplay unlock cannot resurrect a scene after pause or disposal (10.63183ms)
+✔ out-of-order unlocks permit only the latest ambience and never queue a blocked impact (4.704341ms)
+✔ duplicate pending unlocks still create a single persistent voice (1.540296ms)
+✔ zero-gain layers allocate no sources and authored values stay bounded before scheduling (1.730633ms)
+✔ scene sounds obey master/effects zero and mute without changing the player mix (2.545346ms)
+✔ the owning engine pauses all scene voices and disposal releases every scene exactly once (2.526287ms)
+✔ a stopped ambience cannot start after a delayed autoplay unlock (2.234109ms)
+✔ the latest location wins even when unlock promises resolve out of order (6.957222ms)
+✔ duplicate pending ambience requests create a single persistent voice (1.434837ms)
+✔ returning to the active location cancels an earlier pending replacement (0.644145ms)
+✔ disposing cancels a pending ambience and audio stays safe without a browser (1.330745ms)
+✔ the approach and all nine connected rooms select the authored ambience without combat effects (198.359748ms)
+✔ three real encounters produce attack warnings, parries, impacts and a single final victory (54.629626ms)
+✔ restoring a saved strike consumes it while the next actual action remains audible (53.148648ms)
+✔ pause and blocked checkpoints consume changes without queuing a burst when resumed (32.961312ms)
+✔ an external time jump suppresses stale events but preserves the next timely strike (16.466171ms)
+✔ changing campaign ownership consumes the incoming state and departure releases the active room (9.965229ms)
+✔ disposing the director is final even when late input or state publications arrive (0.595702ms)
+ℹ tests 32
+ℹ suites 0
+ℹ pass 32
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 5140.002416

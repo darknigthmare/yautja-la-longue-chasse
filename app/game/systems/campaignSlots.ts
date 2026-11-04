@@ -22,7 +22,7 @@ export const CAMPAIGN_MANUAL_COUNT = 10;
 export const CAMPAIGN_AUTO_COUNT = 2;
 export const CAMPAIGN_SLOT_VERSION = 1;
 export type CampaignSlotId = typeof CAMPAIGN_SLOT_IDS[number];
-export type CampaignResumeLocation = "new-game" | "prologue" | "youth-training" | "deck" | "clan-ship" | "homeworld" | "mission" | "game-reserve";
+export type CampaignResumeLocation = "new-game" | "prologue" | "youth-training" | "deck" | "clan-ship" | "wolf-castle" | "planet-arrival" | "homeworld" | "mission" | "game-reserve";
 export type CampaignCheckpointId = `manual-${number}` | `auto-${number}`;
 export type CampaignSlotFailure = "storage-unavailable" | "read-failed" | "write-failed" | "quota-exceeded" | "unconfirmed-write" | "lock-unavailable" | "protected-save" | "future-version" | "invalid-slot" | "slot-occupied" | "slots-full" | "empty-slot" | "missing-checkpoint" | "save-conflict" | "owner-conflict" | "migration-required" | "recovery-required" | "invalid-archive" | "invalid-location" | "too-large";
 export interface CampaignCheckpointSummary {
@@ -78,7 +78,7 @@ const record = (v: unknown): v is Record<string, unknown> => !!v && typeof v ===
 const bytes = (v: string) => new TextEncoder().encode(v).byteLength;
 const iso = (v: unknown): v is string => typeof v === "string" && v.length <= 128 && Number.isFinite(Date.parse(v));
 const slotIdValid = (v: unknown): v is CampaignSlotId => CAMPAIGN_SLOT_IDS.includes(v as CampaignSlotId);
-const locationValid = (v: unknown): v is CampaignResumeLocation => ["new-game", "prologue", "youth-training", "deck", "clan-ship", "homeworld", "mission", "game-reserve"].includes(v as string);
+const locationValid = (v: unknown): v is CampaignResumeLocation => ["new-game", "prologue", "youth-training", "deck", "clan-ship", "wolf-castle", "planet-arrival", "homeworld", "mission", "game-reserve"].includes(v as string);
 export const campaignSlotStorageKey = (id: CampaignSlotId): string => {
   if (!slotIdValid(id)) throw new Error("Invalid campaign slot");
   return SLOT_PREFIX + id;
@@ -115,6 +115,8 @@ function parseSlot(raw: string, id: CampaignSlotId): SlotDocument {
       (c.resumeLocation === "prologue" && archive.campaign.prologue?.status !== "active") ||
       (c.resumeLocation === "youth-training" && !archive.campaign.youthTraining) ||
       (c.resumeLocation === "clan-ship" && !archive.campaign.clanShipDocking) ||
+      (c.resumeLocation === "wolf-castle" && (!archive.campaign.wolfCastle || archive.campaign.wolfCastle.status === 'departed')) ||
+      (c.resumeLocation === "planet-arrival" && !archive.campaign.planetArrival) ||
       (c.resumeLocation === "game-reserve" && !archive.campaign.gameReserveV66)) fail("owner-conflict", "Une sauvegarde ne correspond pas à sa partie.");
     return { ...c, archive } as Checkpoint;
   });
@@ -250,6 +252,9 @@ function checkpoint(archive: CompleteArchive, kind: "manual" | "auto", index: nu
     : archive.campaign.prologue?.status === "completed" && location === "youth-training" ? "homeworld"
     : archive.campaign.prologue?.status === "completed" && (location === "prologue" || location === "new-game") ? "homeworld"
     : hasActiveHunt ? "mission"
+    : archive.campaign.planetArrival ? 'planet-arrival'
+    : archive.campaign.wolfCastle && archive.campaign.wolfCastle.status !== 'departed' ? 'wolf-castle'
+    : location === 'wolf-castle' || location === 'planet-arrival' ? 'deck'
     : archive.campaign.clanShipDocking?.status === "aboard" || archive.campaign.clanShipDocking?.status === "approach" ? "clan-ship"
     : location === "clan-ship" ? archive.campaign.clanShipDocking ? "clan-ship" : "deck"
     : location === "game-reserve" ? archive.campaign.gameReserveV66 ? "game-reserve" : "deck"

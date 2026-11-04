@@ -5,8 +5,8 @@
     "bytes": 264999,
     "sha256": "8eee8a5f5a043f2a67477bc6bcff97fffb1ee1666864bd7aed60c7a6c21ca138"
   },
-  "files": 2130,
-  "bytes": 1091761004,
+  "files": 2151,
+  "bytes": 1092109497,
   "entries": [
     {
       "path": ".openai/hosting.json",
@@ -37,6 +37,41 @@
       "path": "app/clan-war-qa-v92/page.tsx",
       "bytes": 613,
       "sha256": "73f7aeb7b1679ba817e9a4a3997d230a03c6d752d87ab209375532521bcffacd"
+    },
+    {
+      "path": "app/dev/client.tsx",
+      "bytes": 9731,
+      "sha256": "e421bb52761bbaf9272cfe29ce3a94f2c9b50e55b171366fb4ddea206e24dc8c"
+    },
+    {
+      "path": "app/dev/destinations.ts",
+      "bytes": 7726,
+      "sha256": "8b84455c65ff6a42c59aee906e89ac994df5aaf10209989c96342f827c7fd33f"
+    },
+    {
+      "path": "app/dev/dev-travel.module.css",
+      "bytes": 7595,
+      "sha256": "ea1402ad8aa8ffab933699d0772022def3bb06318eabac2c1799e9422373ad99"
+    },
+    {
+      "path": "app/dev/page.tsx",
+      "bytes": 686,
+      "sha256": "d5d70598faf63d77755ed6c82e82459451132bf43202a2d95baa4194743c9b91"
+    },
+    {
+      "path": "app/dev/services.tsx",
+      "bytes": 9703,
+      "sha256": "423710d5e58584813798608edd68b6fe545be577beb76614b485678cbf402d38"
+    },
+    {
+      "path": "app/dev/session.module.css",
+      "bytes": 3984,
+      "sha256": "d877a7812000e081a71e8bff40dfab87e8fa1870c54ade01d223cae9b07fd357"
+    },
+    {
+      "path": "app/dev/session.tsx",
+      "bytes": 13906,
+      "sha256": "5f014c4ff7b1d4ee8297ceb7207ed1d7edc1efa662406a4451f96f850f6d298e"
     },
     {
       "path": "app/dialogues/page.tsx",
@@ -80,8 +115,8 @@
     },
     {
       "path": "app/game/CampaignMainMenu.tsx",
-      "bytes": 41807,
-      "sha256": "4f334ff9c05441498f4d761230841af8462b88249f85c1c42a63968d8464739f"
+      "bytes": 41953,
+      "sha256": "512a178b8bb47cfc8582e759f6c7e3fac38f8a5eb629a3032bc755c2184dfb3e"
     },
     {
       "path": "app/game/CatalogueHunterBrowser.tsx",
@@ -540,8 +575,8 @@
     },
     {
       "path": "app/game/GameClient.tsx",
-      "bytes": 306169,
-      "sha256": "992d760e94add35d9c57d964e03a5749a68640ba059373d94fe117ca83aaa327"
+      "bytes": 325603,
+      "sha256": "a6ff19d789d8f5cc4dbc0f6a67774c946ff712a340f99733704dd809d7ee6422"
     },
     {
       "path": "app/game/GameReserveEntryV104.module.css",
@@ -875,8 +910,8 @@
     },
     {
       "path": "app/game/HomeworldHub.tsx",
-      "bytes": 183006,
-      "sha256": "baca8b4dd04a57e7e984a24dd4a33e96c35c068e1f0307371cca36f5a99ba40c"
+      "bytes": 183568,
+      "sha256": "1fe63077ed64a1d8e58cfbbff163b5d457702cb8b8d1fec9adb92072f7354e45"
     },
     {
       "path": "app/game/HomeworldInteriorDecorV76.tsx",
@@ -1359,6 +1394,16 @@
       "sha256": "3ed8e30dc5f4572df40db0c1ffa1eb679e131abd5dbf6fc0cba5b8e3bbcfd1a5"
     },
     {
+      "path": "app/game/PlanetArrivalCinematic.module.css",
+      "bytes": 9539,
+      "sha256": "79ab4c8985d28cbb7b823a207d3198e5fa80ace9252fe03f4e8f7f3c96c7431c"
+    },
+    {
+      "path": "app/game/PlanetArrivalCinematic.tsx",
+      "bytes": 28688,
+      "sha256": "950d127782f12c0ae4fa8a94dc81fbc6e43005474ac4a7264b89f2aecee4a90c"
+    },
+    {
       "path": "app/game/PlanetEarthReferenceV147.module.css",
       "bytes": 2289,
       "sha256": "5e963a31081a90f71dcdf6768633330d59910118774376729309e5f5315b15f4"
@@ -1579,6 +1624,16 @@
       "sha256": "81884b9547e402179b790589587006404b0c58665123168b884046f3365210e6"
     },
     {
+      "path": "app/game/WolfCastleScene.module.css",
+      "bytes": 17464,
+      "sha256": "3aa9e4b87f6b7127e3a58b3fff422125e0d3c81d5c3f2eb7b1680df9e37911f4"
+    },
+    {
+      "path": "app/game/WolfCastleScene.tsx",
+      "bytes": 83934,
+      "sha256": "1ebae94444f8a0ce211fc7baae4175fe4bee2873e76a871a689b7a413a1d982a"
+    },
+    {
       "path": "app/game/YautjaTranslationV67.module.css",
       "bytes": 1715,
       "sha256": "200bf3b27ab52038f31fb33501eb2fef7e9d91d94cd047943412a5a005dd5325"
@@ -1620,8 +1675,8 @@
     },
     {
       "path": "app/game/buildInfo.ts",
-      "bytes": 932,
-      "sha256": "b6bd5d9918cec5be52c103946b89d4bcc4e267d183a87dc0fd8b799c0831da7e"
+      "bytes": 940,
+      "sha256": "098323dc9467e062567c012675f759f021f042743b223a3d1750dcf2f2223d4c"
     },
     {
       "path": "app/game/catalogueAppearance.ts",
@@ -3080,8 +3135,8 @@
     },
     {
       "path": "app/game/save.ts",
-      "bytes": 87995,
-      "sha256": "6298f67c281e94b612314d397c0bb1999f6a8683ccf52334276a244a1aa95b75"
+      "bytes": 90109,
+      "sha256": "64f41869c5853d96679d9535528519cab9ceda53f15448deb5c910bfdf017e1d"
     },
     {
       "path": "app/game/ship-level.css",
@@ -3105,8 +3160,8 @@
     },
     {
       "path": "app/game/sound.ts",
-      "bytes": 38831,
-      "sha256": "d2deb123fa3be41f6459f0759433831c5ed91a9a2460e0f85a494a4b43fa7e38"
+      "bytes": 39587,
+      "sha256": "3fbb07aba852ebaf7854e0eed161ef3fa60068d2e43b4e0793b52a57fe1d26de"
     },
     {
       "path": "app/game/spriteContact.ts",
@@ -3180,8 +3235,8 @@
     },
     {
       "path": "app/game/systems/campaignSlots.ts",
-      "bytes": 54920,
-      "sha256": "d204baae306e7c5e624da573871fb3762bdd34a5f1dc31e4dfb67157e37fe612"
+      "bytes": 55439,
+      "sha256": "8618e369d313558b8334025e97cfdd732ec6db84ea69f6dccfabb0d88fc75c00"
     },
     {
       "path": "app/game/systems/campaignSoloV66.ts",
@@ -3850,8 +3905,8 @@
     },
     {
       "path": "app/game/systems/completeArchive.ts",
-      "bytes": 14170,
-      "sha256": "42faf24bc2bd1418f7744603f9fd7248d7255230a6fd4bc865a34b42bd13be52"
+      "bytes": 14808,
+      "sha256": "77841210aaa59bcd2afa4bd5894ae3b1b2cf2518908dff18d83f28b7cd87248a"
     },
     {
       "path": "app/game/systems/controlBindings.ts",
@@ -5020,8 +5075,8 @@
     },
     {
       "path": "app/game/systems/mainMenuModesV81.ts",
-      "bytes": 3346,
-      "sha256": "0b9d18dc247c85d183d24c7c7d23624a9087a9020fd7aa56beea9937229d29ac"
+      "bytes": 3488,
+      "sha256": "03a17054d87f8fccf392a91cb3e583234982f6f9b31e2ab5c4a4dd31d0fbfd45"
     },
     {
       "path": "app/game/systems/mausoleum.ts",
@@ -5439,6 +5494,21 @@
       "sha256": "062bce6f0615036d68690761452a9205eb8f0ef6570330db6bbbb11cb1122147"
     },
     {
+      "path": "app/game/systems/planetArrival.ts",
+      "bytes": 12677,
+      "sha256": "4ac97bda5ccfac11d3e9449e69c8d911332e21feb9f2d1582b71d42395de1d7b"
+    },
+    {
+      "path": "app/game/systems/planetArrivalAudio.ts",
+      "bytes": 6716,
+      "sha256": "064998a534d4b82f4f03760dcda40ba84e88510b4b5400d610cea61643279f1c"
+    },
+    {
+      "path": "app/game/systems/planetArrivalRun.ts",
+      "bytes": 2953,
+      "sha256": "023d13ad3e2cfb02c5250e19a306effe67894e941d79a632bc908b6212a73363"
+    },
+    {
       "path": "app/game/systems/planetExportZipV114.ts",
       "bytes": 4421,
       "sha256": "09d5b6c662776c3f89a25ff360fe77e1574121cc0dce9f519d88f0b6d988167a"
@@ -5492,6 +5562,11 @@
       "path": "app/game/systems/ritesOfHuntV77.ts",
       "bytes": 19219,
       "sha256": "9142fff55727028cba870670607a0506fa42ca8303b25e0a6155481243b45e57"
+    },
+    {
+      "path": "app/game/systems/sceneAudio.ts",
+      "bytes": 7923,
+      "sha256": "959ca61dc2e373147672fb5735c7635324822a059a3af02b77b56effabb754dc"
     },
     {
       "path": "app/game/systems/shipAcquisitionV89.ts",
@@ -5574,6 +5649,36 @@
       "sha256": "4eac5387c4ae8fa1dff36b32615169ca04738aed8557c29108d4105b91b98676"
     },
     {
+      "path": "app/game/systems/wolfCastle.ts",
+      "bytes": 50479,
+      "sha256": "51147485dabf373165406efa691c83e452b72a366e069594632074ed3ff3bac7"
+    },
+    {
+      "path": "app/game/systems/wolfCastleArt.ts",
+      "bytes": 1898,
+      "sha256": "e47e97bbb888d42b205efe7cf146e0c6719c0f22e7b9c4d8bbe9e5b7588ed70c"
+    },
+    {
+      "path": "app/game/systems/wolfCastleAudio.ts",
+      "bytes": 13469,
+      "sha256": "54634a108cf999615b3c425855e40a45e99bbeb1434b45f5bbea11676d446340"
+    },
+    {
+      "path": "app/game/systems/wolfCastleCombat.ts",
+      "bytes": 21405,
+      "sha256": "ff6b4346e3bab763198b5e5b11c4ea519cce49564b40831956aaab57ed4dff8e"
+    },
+    {
+      "path": "app/game/systems/wolfCastleDungeon.ts",
+      "bytes": 8337,
+      "sha256": "614fc3dfc87e635b2259fabfbe11c3ab6946f9402a2ee08e68f8f3f8ec48b62b"
+    },
+    {
+      "path": "app/game/systems/wolfCastleRuntimeArt.ts",
+      "bytes": 4152,
+      "sha256": "865c47962ceb740722fff66c0817a8b516e627e9ab0cc9a378bc0ee1e527ad31"
+    },
+    {
       "path": "app/game/systems/worldBlueprints.ts",
       "bytes": 65335,
       "sha256": "2afc002b8d94aec6e18a6567f3127b5113a7d7b886ddcc147981f5c9e0a94f78"
@@ -5625,8 +5730,8 @@
     },
     {
       "path": "app/game/types.ts",
-      "bytes": 18848,
-      "sha256": "cce04db07a11e2e828b025f17897872d6a235d8e291a46f366a9e4f232952a02"
+      "bytes": 19255,
+      "sha256": "d971d3cba67449499671df60201ee544127ba34efbaf0671ac96095553507451"
     },
     {
       "path": "app/game/useGeneratedWarCatalogV102.ts",
@@ -5700,8 +5805,8 @@
     },
     {
       "path": "app/game/worldScreens.ts",
-      "bytes": 36431,
-      "sha256": "d9a1786d1b9d81d8672e0df926dc9e68f22933aeeb1025690ec5883ee5aa3dd8"
+      "bytes": 37207,
+      "sha256": "04854a87a575630fedcc6b0ac641de942c7f04e87e448da0767ef558e930d495"
     },
     {
       "path": "app/game/yautjaDecalsV133.ts",
@@ -10425,8 +10530,8 @@
     },
     {
       "path": "tests/homeworld-geometry-recovery-integration-v112.test.mjs",
-      "bytes": 13817,
-      "sha256": "b63cd25fbe7014bfbc7fa7e5d5300aafa2750b80008e0b5442c57a9288ac7396"
+      "bytes": 13843,
+      "sha256": "eb06cf43af82df57b1b528d7eb9c4038df18c17e0a2d533afdb0bf97d02f5332"
     },
     {
       "path": "tests/homeworld-geometry-recovery-matrix-v112.test.mjs",

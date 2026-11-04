@@ -89,6 +89,8 @@ jobs:
             /public/game/assets/v136/
             /public/game/assets/v139/
             /public/game/assets/clan-field-20261103/
+            /public/game/imports/v85/library/9e0307785b151ef569f02344983f755fb55bb9a4f871636b6a5b2a22a05a1187.png
+            /public/game/imports/v85/library/fef76897a4b581bae4bd91b49961638fcd01d97ab7b6de2470aa88df226f6e9d.png
       - name: Include the verified Clan Ship and shared service asset paths
         run: |
           node --input-type=module <<'NODE'

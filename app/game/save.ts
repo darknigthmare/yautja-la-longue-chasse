@@ -34,6 +34,9 @@ import { normalizeGameReserveV66, gameReserveV66Supported } from "./systems/game
 import { normalizeShipPreparationV88 } from "./systems/shipPreparationV88";
 import { normalizeShipAcquisitionV89 } from "./systems/shipAcquisitionV89";
 import { inspectClanShipDocking } from "./systems/clanShipDocking";
+import { inspectWolfCastleVisit } from "./systems/wolfCastle";
+import { inspectPlanetArrival } from "./systems/planetArrival";
+import { inspectPlanetArrivalRun } from "./systems/planetArrivalRun";
 import { emptyGauntletCampaignV134, normalizeGauntletCampaignV134 } from "./systems/gauntletCampaignV134";
 import {
   ARMORS,
@@ -1237,6 +1240,16 @@ export function normalizeSave(value: unknown): SaveGame {
     ...(source.clanShipDocking === undefined ? {} : {
       clanShipDocking: inspectClanShipDocking(source.clanShipDocking, validIsoDate(source.createdAt, fallback.createdAt)).state,
     }),
+    ...(source.wolfCastle === undefined ? {} : {
+      wolfCastle: inspectWolfCastleVisit(source.wolfCastle, validIsoDate(source.createdAt, fallback.createdAt)).state,
+    }),
+    ...(source.planetArrival === undefined ? {} : {
+      planetArrival: inspectPlanetArrival(source.planetArrival, validIsoDate(source.createdAt, fallback.createdAt)).state,
+    }),
+    ...(source.planetArrivalRun === undefined ? {} : {
+      planetArrivalRun: inspectPlanetArrivalRun(source.planetArrivalRun,
+        inspectPlanetArrival(source.planetArrival, validIsoDate(source.createdAt, fallback.createdAt)).state).state,
+    }),
     codex: { unlockedEntryIds, scanCounts, discoveredEnemyIds },
     exploration: normalizeExplorationProgress(source.exploration),
     statistics: {
@@ -1460,6 +1473,25 @@ function inspectSavePayload(value: unknown): SaveImportParseResult {
   }
   if (Number(value.version) > SAVE_VERSION) {
     return { save: null, failure: "future-version" };
+  }
+  const castle = value.wolfCastle == null ? { status: 'absent' as const, state: null }
+    : inspectWolfCastleVisit(value.wolfCastle, typeof value.createdAt === "string" ? value.createdAt : "");
+  const arrival = inspectPlanetArrival(value.planetArrival, typeof value.createdAt === "string" ? value.createdAt : "");
+  const arrivalRun = inspectPlanetArrivalRun(value.planetArrivalRun, arrival.state);
+  for (const inspection of [castle, arrival, arrivalRun]) {
+    if (inspection.status === "future-version" || inspection.status === "invalid-save") {
+      return { save: null, failure: inspection.status };
+    }
+  }
+  if (arrival.state) {
+    const progress = isRecord(value.missionProgress) ? value.missionProgress[arrival.state.missionId] : null;
+    if (!isRecord(progress) || progress.status === "locked" || progress.attempts !== arrival.state.encounterRun ||
+        (arrivalRun.state?.difficultyId === "elder" && !value.storyCompleted)) return { save: null, failure: "invalid-save" };
+  }
+  if ((castle.state && castle.state.status !== "departed" && arrival.state) ||
+      ((castle.state && castle.state.status !== "departed" || arrival.state) &&
+       isRecord(value.clanShipDocking) && value.clanShipDocking.status !== "free-flight")) {
+    return { save: null, failure: "invalid-save" };
   }
   if (value.clanShipDocking !== undefined && value.clanShipDocking !== null) {
     const docking = inspectClanShipDocking(value.clanShipDocking, typeof value.createdAt === "string" ? value.createdAt : "");

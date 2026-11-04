@@ -10,6 +10,7 @@ export const MAIN_MENU_BONUS_OWNER_V81 = '2026-10-04T00:00:00.000Z';
 /** Narrative receipts, rather than an editable profile rank, open adult modes.
  * A null campaign is never confused with a fresh legacy adult save. */
 export function mainMenuModeAccessV81(save: SaveGame | null, context: ChronicleAccessContext = {}): Readonly<Record<MainMenuGameModeV81, boolean>> {
+  if (save?.planetArrival || (save?.wolfCastle && save.wolfCastle.status !== 'departed')) return { 'the-pit': false, 'game-reserve': false };
   const rank = save?.prologue ? getChronicleRank(save.prologue.chronicle) : null;
   const adult = Boolean(save && (!save.prologue || ['blooded', 'elite', 'elder', 'ancient'].includes(rank ?? '')));
   return { 'the-pit': adult, 'game-reserve': Boolean(save && (!save.prologue || evaluateChronicleAccess(save.prologue.chronicle, 'reserve-hunt', context).allowed)) };

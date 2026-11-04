@@ -1,0 +1,113 @@
+.arrival {
+  --arrival-accent: #d4ad73;
+  color: #eee9df;
+  background: #070a0e;
+  border: 1px solid #ad9b7629;
+  border-radius: 16px;
+  overflow: hidden;
+  width: 100%;
+  min-width: 0;
+  margin-inline: auto;
+  box-shadow: 0 28px 90px #0007;
+}
+.header { display: flex; justify-content: space-between; align-items: center; gap: 24px; padding: 22px 28px; background: linear-gradient(110deg, #171817, #0d1116 60%); }
+.header > div { min-width: 0; }
+.header h1 { margin: 4px 0 3px; color: #fff9ea; font-size: clamp(22px, 2.7vw, 32px); letter-spacing: .025em; line-height: 1.15; overflow-wrap: anywhere; }
+.eyebrow { margin: 0; color: #bcaa84; font-size: 10px; font-weight: 700; letter-spacing: .2em; line-height: 1.6; }
+.missionName { margin: 5px 0 0; color: #a4acaf; font-size: 12px; }
+.shipIdentity { text-align: right; display: grid; gap: 4px; max-width: 36%; }
+.shipIdentity span { font-size: 9px; color: #7f8b94; letter-spacing: .15em; }
+.shipIdentity strong { color: #d6d0bd; font-size: 12px; font-weight: 500; overflow-wrap: anywhere; }
+.shipIdentity small { color: #7f8b94; font-size: 11px; }
+.scene { position: relative; width: 100%; min-width: 0; aspect-ratio: 16 / 8.3; min-height: 190px; max-height: 660px; overflow: hidden; isolation: isolate; background: #020308; }
+.spaceBackdrop, .cover, .groundScene, .vignette, .groundShade { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+.spaceBackdrop { background: radial-gradient(ellipse at 66% 17%, #232b3c 0%, #0a101f 28%, #020308 68%); z-index: 0; }
+.cover { object-fit: cover; }
+.planet { position: absolute; aspect-ratio: 1; transform: translate(-50%, -50%); border-radius: 50%; overflow: hidden; box-shadow: -18px 16px 60px #557b9e14; z-index: 1; pointer-events: none; }
+.planetImage { width: 100%; height: 100%; border-radius: 50%; object-fit: contain; filter: brightness(.82) saturate(.9); }
+.carrier { position: absolute; width: 43%; height: 40%; transform-origin: 50% 50%; z-index: 3; filter: drop-shadow(-8px 14px 14px #000b); pointer-events: none; }
+.fullAsset { display: block; width: 100%; height: 100%; object-fit: contain; pointer-events: none; user-select: none; }
+.flyingPod { position: absolute; width: 7.8%; aspect-ratio: 2 / 1; z-index: 5; transform-origin: center; filter: drop-shadow(0 0 6px #e49d4838); pointer-events: none; }
+.releaseJet { position: absolute; width: 12%; height: 9%; z-index: 4; transform-origin: right center; pointer-events: none; }
+.heatTrail { position: absolute; width: 250%; height: 155%; right: 75%; top: -28%; object-fit: contain; z-index: -1; }
+.atmosphere { position: absolute; inset: 0; z-index: 2; background: linear-gradient(170deg, #3b4a66 0%, #182738 42%, #121c28 70%, #060c12); box-shadow: inset 0 120px 150px #050a18aa; pointer-events: none; }
+.atmosphereClouds { position: absolute; width: 116%; height: 116%; left: -5%; top: -5%; object-fit: cover; opacity: .62; }
+.groundScene { z-index: 6; overflow: hidden; }
+.groundBackground { position: absolute; inset: 0; width: 100%; height: 100%; overflow: hidden; filter: brightness(.67) saturate(.8); }
+.groundShade { background: linear-gradient(180deg, #030a1d8f, transparent 48%, #05070b50 85%, #030507); }
+.groundPlane { position: absolute; left: 0; width: 100%; height: 20%; border-top: 1px solid #c3c6ab33; background: linear-gradient(180deg, #151c1abd, #080b0c); z-index: 2; }
+.groundActors { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 4; pointer-events: none; }
+.groundPod { position: absolute; z-index: 4; filter: drop-shadow(0 7px 9px #0009); }
+.podDoor { position: absolute; width: 62%; height: 86%; top: 10%; left: 19%; object-fit: contain; transform-origin: bottom left; z-index: 1; }
+.impactDust { position: absolute; width: 28%; height: 22%; z-index: 5; pointer-events: none; transform-origin: 40% 100%; }
+.hunter { position: absolute; z-index: 7; pointer-events: none; filter: drop-shadow(0 3px 2px #0007); }
+.vignette { z-index: 10; background: radial-gradient(ellipse at 50% 45%, transparent 25%, #0002 75%, #0007); }
+.letterboxTop, .letterboxBottom { position: absolute; z-index: 11; left: 0; width: 100%; height: 5.3%; background: #020305; pointer-events: none; }
+.letterboxTop { top: 0; }
+.letterboxBottom { bottom: 0; }
+.titleCard { position: absolute; z-index: 12; left: 50%; top: 46%; width: 88%; display: grid; justify-items: center; gap: 20px; text-align: center; pointer-events: none; }
+.titleCard span { font-size: clamp(8px, 1vw, 13px); letter-spacing: .42em; text-transform: uppercase; color: #a3aebf; }
+.titleCard strong { display: block; font-family: Impact, 'Arial Black', sans-serif; font-size: clamp(30px, 6vw, 84px); font-weight: 900; line-height: 1.05; letter-spacing: .12em; text-transform: uppercase; color: #f5f0df; text-shadow: 0 0 22px #7d8d9e30; overflow-wrap: anywhere; max-width: 100%; }
+.titleCard small { font-size: clamp(8px, 1vw, 12px); color: #748394; letter-spacing: .08em; max-width: 70%; line-height: 1.5; }
+.shotCaption { position: absolute; z-index: 13; left: 5%; right: 5%; bottom: 10%; display: flex; gap: 14px; align-items: center; pointer-events: none; }
+.shotCaption span { color: #bba785; font-size: 10px; letter-spacing: .1em; }
+.shotCaption p { margin: 0; color: #dddcd6; font-size: clamp(10px, 1vw, 13px); letter-spacing: .04em; text-shadow: 0 2px 7px #000; }
+.overlay { position: absolute; inset: 0; display: grid; grid-template-columns: minmax(0, 1fr); grid-template-rows: minmax(0, 1fr); place-items: center; z-index: 20; padding: 18px; background: #020407ab; backdrop-filter: blur(5px); }
+.overlayPanel { width: min(100%, 450px); min-width: 0; min-height: 0; max-width: 100%; max-height: 100%; overflow-y: auto; overflow-wrap: anywhere; padding: clamp(12px, 2.8vw, 28px); border: 1px solid #bca67742; border-radius: 10px; background: #0b1115ed; box-shadow: 0 16px 55px #0007; text-align: center; }
+.overlayPanel h2 { margin: 8px 0 12px; color: #f0e9d9; font-size: clamp(18px, 2.7vw, 26px); line-height: 1.15; }
+.overlayPanel > p:not(.eyebrow) { margin: 0 0 18px; color: #9ba8b4; font-size: 13px; line-height: 1.6; }
+.overlayPanel button { width: 100%; min-width: 0; margin-top: 8px; white-space: normal; }
+.footer { display: flex; align-items: center; gap: 28px; padding: 20px 28px 18px; border-top: 1px solid #9d9c8124; background: #0b1015; }
+.progressGroup { flex: 1; min-width: 0; }
+.progressLabels { display: flex; justify-content: space-between; gap: 12px; font-size: 11px; line-height: 1.4; color: #b4bbb9; margin-bottom: 10px; }
+.progressLabels span:last-child { flex: 0 0 auto; color: #7f8b94; font-variant-numeric: tabular-nums; }
+.progressTrack { height: 3px; position: relative; overflow: hidden; background: #29313a; }
+.progressTrack > span { display: block; background: #c8ab77; height: 100%; }
+.progressTrack i { position: absolute; width: 2px; height: 100%; top: 0; background: #0b1015; }
+.assistiveNote { margin: 9px 0 0; min-height: 14px; font-size: 10px; color: #6f7e89; line-height: 1.4; }
+.controls { display: flex; align-items: center; gap: 9px; flex-shrink: 0; }
+.quietButton, .skipButton, .primaryButton { min-height: 42px; padding: 10px 16px; border: 1px solid #b5a68438; border-radius: 5px; background: #111a20; color: #d0d4cc; font: inherit; font-size: 12px; line-height: 1.3; cursor: pointer; }
+.skipButton { color: #d9c49c; background: #af8e5412; border-color: #ac8d555c; }
+.skipButton span { margin-left: 14px; font-size: 20px; line-height: 0; }
+.primaryButton { color: #1a1d20; background: #cfb786; border-color: #deca9c; font-weight: 700; }
+.quietButton:hover:not(:disabled), .skipButton:hover:not(:disabled) { background: #26312f; border-color: #d8bc81; }
+.primaryButton:hover:not(:disabled) { background: #ead1a1; }
+.arrival button:focus-visible { outline: 2px solid #f2d7a0; outline-offset: 3px; }
+.arrival button:disabled { opacity: .4; cursor: default; }
+@media (max-width: 760px) {
+  .header { padding: 17px 18px; gap: 14px; }
+  .shipIdentity { max-width: 42%; }
+  .shipIdentity span { font-size: 8px; }
+  .shipIdentity strong { font-size: 10px; }
+  .shipIdentity small { display: none; }
+  .footer { padding: 16px 18px; gap: 16px; flex-wrap: wrap; }
+  .progressGroup { flex-basis: 100%; }
+  .controls { margin-left: auto; }
+  .overlayPanel > p:not(.eyebrow) { font-size: 11px; margin-bottom: 9px; }
+  .overlayPanel h2 { font-size: 20px; margin: 5px 0 8px; }
+  .overlayPanel button { min-height: 36px; margin-top: 6px; padding: 8px 12px; font-size: 11px; }
+}
+@media (max-width: 420px) {
+  .arrival { border-radius: 9px; }
+  .header { padding: 15px 13px; align-items: flex-start; }
+  .header h1 { font-size: 21px; }
+  .eyebrow { font-size: 8px; letter-spacing: .13em; }
+  .missionName { font-size: 10px; }
+  .shipIdentity { max-width: 34%; }
+  .shipIdentity strong { font-size: 9px; line-height: 1.45; }
+  .scene { min-height: 236px; aspect-ratio: 4 / 3; }
+  .overlay { padding: 10px; }
+  .overlayPanel { padding: 12px; }
+  .overlayPanel h2 { font-size: 18px; }
+  .overlayPanel > p:not(.eyebrow) { line-height: 1.4; }
+  .footer { padding: 15px 13px; gap: 12px; }
+  .controls { width: 100%; justify-content: flex-end; }
+  .controls button { min-height: 42px; flex: 1; }
+  .titleCard { gap: 12px; }
+  .titleCard strong { font-size: 29px; letter-spacing: .08em; }
+  .titleCard small { max-width: 90%; }
+  .shotCaption { gap: 9px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .arrival *, .arrival *::before, .arrival *::after { scroll-behavior: auto !important; animation: none !important; transition: none !important; }
+}

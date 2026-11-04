@@ -1,0 +1,16 @@
+✔ each mission has six connected screens covering the expanded 8,400 px world (5.40424ms)
+✔ room lookup clamps overscan and assigns exact boundaries to the next room (0.699241ms)
+✔ every room specifies background, foreground, traversal and narrative direction (0.738797ms)
+✔ biome traversal remains specific instead of reusing a generic corridor (0.885072ms)
+✔ validator reports gaps, invalid boundaries and disconnected graphs (0.49433ms)
+✔ non-finite room anchors, boundaries and layer motion fail validation (1.54077ms)
+✔ feature identity remains unique across the whole mission (0.898156ms)
+✔ renaming a reverse connection cannot hide a duplicated physical passage (1.786702ms)
+ℹ tests 8
+ℹ suites 0
+ℹ pass 8
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1142.689689

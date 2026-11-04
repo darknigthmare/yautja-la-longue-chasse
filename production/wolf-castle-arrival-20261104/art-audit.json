@@ -1,0 +1,1673 @@
+{
+  "formatVersion": 1,
+  "checkedAtUtc": "2026-11-04T08:21:24.423744+00:00",
+  "tool": "Pillow read-only inspection",
+  "imageFilesModified": false,
+  "expectedAssetCount": 27,
+  "actualAssetCount": 27,
+  "transparentSpriteCount": 21,
+  "opaqueBackgroundCount": 6,
+  "technicalChecksPassed": true,
+  "totalBytes": 53129989,
+  "unusedPaths": [],
+  "duplicateFileGroups": [],
+  "codeReferenceCoverage": "Source-level check of all fixed and dynamically constructed references; not a browser loading claim.",
+  "sourceSnapshotSha256": {
+    "app/game/WolfCastleScene.tsx": "8b11741d84153fafe1d884ce56a34f6f32d6c978f002f6f49eae0cfa178c7831",
+    "app/game/systems/wolfCastle.ts": "4f4dbb5dbf2151685ff8da95260413e855bab51316bebc7f8cfaa64d731bc129",
+    "app/game/PlanetArrivalCinematic.tsx": "3eb4f3a368c338546d11492b631734634b17bc052d508590deaa3b34ba463266",
+    "app/game/systems/planetArrival.ts": "3644a5cda3979f373882c64d86153d483d7573309a0d0d746f8353a7a435add2"
+  },
+  "artisticValidation": "not performed by human; no asset is marked validated",
+  "records": [
+    {
+      "id": "access-beacon",
+      "path": "public/game/wolf-castle/v1/access-beacon.png",
+      "runtimePath": "/game/wolf-castle/v1/access-beacon.png",
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "bands": [
+        "R",
+        "G",
+        "B",
+        "A"
+      ],
+      "hasAlphaChannel": true,
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "fullyTransparentPixels": 1152384,
+      "transparentFraction": 0.732828,
+      "visiblePixelFractionAtAlpha128": 0.255661,
+      "alphaBoundingBox": [
+        0,
+        21,
+        1234,
+        1254
+      ],
+      "visibleBoundingBoxAtAlpha16": [
+        298,
+        45,
+        958,
+        1208
+      ],
+      "solidBoundingBoxAtAlpha128": [
+        299,
+        45,
+        957,
+        1207
+      ],
+      "opaqueEdgePixelsAtAlpha128": 0,
+      "suggestedFootAnchorNormalized": [
+        0.500797,
+        0.963317
+      ],
+      "bytes": 969306,
+      "sha256": "2f1e91bc071941c93e69d48890cf96a5448ed46b71b5ef7a0a8cb29fac5b6a60",
+      "expectedTransparency": true,
+      "technicalCheckPassed": true,
+      "edgeReview": "opaque silhouette clear of all image borders",
+      "usage": {
+        "used": true,
+        "resolution": "prop.asset is constructed through WOLF_CASTLE_ART_ROOT and rendered by CastleProp",
+        "evidence": [
+          {
+            "file": "app/game/systems/wolfCastle.ts",
+            "line": 116,
+            "expression": "props: [prop('access-console', 'archive-console', 800, 538, 162, 186, { x: 748, y: 499, width: 104, height: 40 }), prop('access-beacon', 'access-beacon', 1040, 520, 64, 96)],"
+          },
+          {
+            "file": "app/game/systems/wolfCastle.ts",
+            "line": 153,
+            "expression": "props: [prop('threshold-beacon', 'access-beacon', 416, 523, 76, 122), prop('zenith-beacon', 'access-beacon', 1210, 523, 76, 122), prop('return-beacon', 'access-beacon', 800, 487, 76, 122)],"
+          },
+          {
+            "file": "app/game/systems/wolfCastle.ts",
+            "line": 158,
+            "expression": "props: [prop('passage-beacon-west', 'access-beacon', 430, 520, 54, 86), prop('passage-beacon-east', 'access-beacon', 1170, 520, 54, 86)],"
+          }
+        ]
+      }
+    },
+    {
+      "id": "airlock-frame",
+      "path": "public/game/wolf-castle/v1/airlock-frame.png",
+      "runtimePath": "/game/wolf-castle/v1/airlock-frame.png",
+      "width": 1024,
+      "height": 1536,
+      "mode": "RGBA",
+      "bands": [
+        "R",
+        "G",
+        "B",
+        "A"
+      ],
+      "hasAlphaChannel": true,
+      "alphaMin": 0,
+      "alphaMax": 254,
+      "fullyTransparentPixels": 1087893,
+      "transparentFraction": 0.691664,
+      "visiblePixelFractionAtAlpha128": 0.276753,
+      "alphaBoundingBox": [
+        9,
+        0,
+        1013,
+        1536
+      ],
+      "visibleBoundingBoxAtAlpha16": [
+        14,
+        8,
+        1009,
+        1521
+      ],
+      "solidBoundingBoxAtAlpha128": [
+        15,
+        8,
+        1009,
+        1520
+      ],
+      "opaqueEdgePixelsAtAlpha128": 0,
+      "suggestedFootAnchorNormalized": [
+        0.499512,
+        0.990234
+      ],
+      "bytes": 1913973,
+      "sha256": "e409dc3e494aca090850d54080f3a712f3baad845a576ec97009d4ca6b2dd2a2",
+      "expectedTransparency": true,
+      "technicalCheckPassed": true,
+      "edgeReview": "opaque silhouette clear of all image borders",
+      "usage": {
+        "used": true,
+        "resolution": "direct image reference in WolfCastleScene",
+        "evidence": [
+          {
+            "file": "app/game/WolfCastleScene.tsx",
+            "line": 380,
+            "expression": "<image href={`${WOLF_CASTLE_ART_ROOT}airlock-frame.png`} x={station.x - 100} y={station.y - 274} width=\"200\" height=\"280\" preserveAspectRatio=\"xMidYMax meet\" />"
+          }
+        ]
+      }
+    },
+    {
+      "id": "airlock-leaf",
+      "path": "public/game/wolf-castle/v1/airlock-leaf.png",
+      "runtimePath": "/game/wolf-castle/v1/airlock-leaf.png",
+      "width": 1024,
+      "height": 1536,
+      "mode": "RGBA",
+      "bands": [
+        "R",
+        "G",
+        "B",
+        "A"
+      ],
+      "hasAlphaChannel": true,
+      "alphaMin": 0,
+      "alphaMax": 254,
+      "fullyTransparentPixels": 650553,
+      "transparentFraction": 0.41361,
+      "visiblePixelFractionAtAlpha128": 0.574524,
+      "alphaBoundingBox": [
+        0,
+        2,
+        1024,
+        1536
+      ],
+      "visibleBoundingBoxAtAlpha16": [
+        177,
+        90,
+        847,
+        1473
+      ],
+      "solidBoundingBoxAtAlpha128": [
+        178,
+        92,
+        846,
+        1472
+      ],
+      "opaqueEdgePixelsAtAlpha128": 0,
+      "suggestedFootAnchorNormalized": [
+        0.5,
+        0.958984
+      ],
+      "bytes": 2665589,
+      "sha256": "51a9524d0a26aed82e8eb5dd8a400de805d48608e771dbd735043c71bd31f986",
+      "expectedTransparency": true,
+      "technicalCheckPassed": true,
+      "edgeReview": "opaque silhouette clear of all image borders",
+      "usage": {
+        "used": true,
+        "resolution": "direct image reference in WolfCastleScene",
+        "evidence": [
+          {
+            "file": "app/game/WolfCastleScene.tsx",
+            "line": 379,
+            "expression": "<image href={`${WOLF_CASTLE_ART_ROOT}airlock-leaf.png`} x={station.x - 54} y={station.y - 204} width=\"108\" height=\"204\" opacity={nearest?.id === station.id ? .22 : .72} preserveAspectRatio=\"xMidYMax meet\" />"
+          }
+        ]
+      }
+    },
+    {
+      "id": "archive-console",
+      "path": "public/game/wolf-castle/v1/archive-console.png",
+      "runtimePath": "/game/wolf-castle/v1/archive-console.png",
+      "width": 1024,
+      "height": 1536,
+      "mode": "RGBA",
+      "bands": [
+        "R",
+        "G",
+        "B",
+        "A"
+      ],
+      "hasAlphaChannel": true,
+      "alphaMin": 0,
+      "alphaMax": 254,
+      "fullyTransparentPixels": 706502,
+      "transparentFraction": 0.449182,
+      "visiblePixelFractionAtAlpha128": 0.532364,
+      "alphaBoundingBox": [
+        0,
+        0,
+        1023,
+        1514
+      ],
+      "visibleBoundingBoxAtAlpha16": [
+        89,
+        10,
+        936,
+        1496
+      ],
+      "solidBoundingBoxAtAlpha128": [
+        89,
+        11,
+        935,
+        1495
+      ],
+      "opaqueEdgePixelsAtAlpha128": 0,
+      "suggestedFootAnchorNormalized": [
+        0.500488,
+        0.973958
+      ],
+      "bytes": 2385243,
+      "sha256": "2de74481ed0f365ae0a93753832ad8088716ef1805eb93f9237da6ea1e0118ca",
+      "expectedTransparency": true,
+      "technicalCheckPassed": true,
+      "edgeReview": "opaque silhouette clear of all image borders",
+      "usage": {
+        "used": true,
+        "resolution": "prop.asset is constructed through WOLF_CASTLE_ART_ROOT and rendered by CastleProp",
+        "evidence": [
+          {
+            "file": "app/game/systems/wolfCastle.ts",
+            "line": 116,
+            "expression": "props: [prop('access-console', 'archive-console', 800, 538, 162, 186, { x: 748, y: 499, width: 104, height: 40 }), prop('access-beacon', 'access-beacon', 1040, 520, 64, 96)],"
+          },
+          {
+            "file": "app/game/systems/wolfCastle.ts",
+            "line": 145,
+            "expression": "props: [prop('archive-console', 'archive-console', 800, 538, 196, 238, { x: 734, y: 500, width: 132, height: 42 }), column('archive-west', 400), column('archive-east', 1200)],"
+          }
+        ]
+      }
+    },
+    {
+      "id": "audience-wall",
+      "path": "public/game/wolf-castle/v1/audience-wall.png",
+      "runtimePath": "/game/wolf-castle/v1/audience-wall.png",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGB",
+      "bands": [
+        "R",
+        "G",
+        "B"
+      ],
+      "hasAlphaChannel": false,
+      "alphaMin": 255,
+      "alphaMax": 255,
+      "fullyTransparentPixels": 0,
+      "transparentFraction": 0.0,
+      "visiblePixelFractionAtAlpha128": 1.0,
+      "alphaBoundingBox": [
+        0,
+        0,
+        1536,
+        1024
+      ],
+      "visibleBoundingBoxAtAlpha16": [
+        0,
+        0,
+        1536,
+        1024
+      ],
+      "solidBoundingBoxAtAlpha128": [
+        0,
+        0,
+        1536,
+        1024
+      ],
+      "opaqueEdgePixelsAtAlpha128": 5120,
+      "suggestedFootAnchorNormalized": null,
+      "bytes": 2511289,
+      "sha256": "dd14d05dd6f1c0576e2bfbd81e0199ab3bfd701ff05e83834af7bae249e0f4e8",
+      "expectedTransparency": false,
+      "technicalCheckPassed": true,
+      "edgeReview": "background full bleed",
+      "usage": {
+        "used": true,
+        "resolution": "room.background is resolved through WOLF_CASTLE_ART_ROOT in WolfCastleScene",
+        "evidence": [
+          {
+            "file": "app/game/systems/wolfCastle.ts",
+            "line": 129,
+            "expression": "id: 'royal-audience', name: 'Salle d’audience', subtitle: 'Présente ton invitation au pied de l’estrade.', background: 'audience-wall',"
+          },
+          {
+            "file": "app/game/systems/wolfCastle.ts",
+            "line": 138,
+            "expression": "id: 'royal-council', name: 'Conseil royal', subtitle: 'L’ordre d’audience se décide à la table tactique.', background: 'audience-wall',"
+          }
+        ]
+      }
+    },
+    {
+      "id": "bay-anchor",
+      "path": "public/game/wolf-castle/v1/bay-anchor.png",
+      "runtimePath": "/game/wolf-castle/v1/bay-anchor.png",
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "bands": [
+        "R",
+        "G",
+        "B",
+        "A"
+      ],
+      "hasAlphaChannel": true,
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "fullyTransparentPixels": 657999,
+      "transparentFraction": 0.418437,
+      "visiblePixelFractionAtAlpha128": 0.55976,
+      "alphaBoundingBox": [
+        0,
+        0,
+        1240,
+        1254
+      ],
+      "visibleBoundingBoxAtAlpha16": [
+        15,
+        11,
+        1169,
+        1241
+      ],
+      "solidBoundingBoxAtAlpha128": [
+        16,
+        12,
+        1168,
+        1240
+      ],
+      "opaqueEdgePixelsAtAlpha128": 0,
+      "suggestedFootAnchorNormalized": [
+        0.472089,
+        0.989633
+      ],
+      "bytes": 2175897,
+      "sha256": "3425d911270c83500de3371ab778e7f3cd3008dde27da9655741e8905b8fc495",
+      "expectedTransparency": true,
+      "technicalCheckPassed": true,
+      "edgeReview": "opaque silhouette clear of all image borders",
+      "usage": {
+        "used": true,
+        "resolution": "prop.asset is constructed through WOLF_CASTLE_ART_ROOT and rendered by CastleProp",
+        "evidence": [
+          {
+            "file": "app/game/systems/wolfCastle.ts",
+            "line": 111,
+            "expression": "props: [prop('anchor-west', 'bay-anchor', 205, 526, 132, 148, { x: 172, y: 505, width: 66, height: 35 }), prop('anchor-east', 'bay-anchor', 1188, 526, 132, 148, { x: 1155, y: 505, width: 66, height: 35 })],"
+          }
+        ]
+      }
+    },
+    {
+      "id": "berth-wall",
+      "path": "public/game/wolf-castle/v1/berth-wall.png",
+      "runtimePath": "/game/wolf-castle/v1/berth-wall.png",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGB",
+      "bands": [
+        "R",
+        "G",
+        "B"
+      ],
+      "hasAlphaChannel": false,
+      "alphaMin": 255,
+      "alphaMax": 255,
+      "fullyTransparentPixels": 0,
+      "transparentFraction": 0.0,
+      "visiblePixelFractionAtAlpha128": 1.0,
+      "alphaBoundingBox": [
+        0,
+        0,
+        1536,
+        1024
+      ],
+      "visibleBoundingBoxAtAlpha16": [
+        0,
+        0,
+        1536,
+        1024
+      ],
+      "solidBoundingBoxAtAlpha128": [
+        0,
+        0,
+        1536,
+        1024
+      ],
+      "opaqueEdgePixelsAtAlpha128": 5120,
+      "suggestedFootAnchorNormalized": null,
+      "bytes": 2642891,
+      "sha256": "8311b806dfd60b8c9b7aff769d74bc1f9dce7eb995918c65b79ca1ae3e48901a",
+      "expectedTransparency": false,
+      "technicalCheckPassed": true,
+      "edgeReview": "background full bleed",
+      "usage": {
+        "used": true,
+        "resolution": "room.background is resolved through WOLF_CASTLE_ART_ROOT in WolfCastleScene",
+        "evidence": [
+          {
+            "file": "app/game/systems/wolfCastle.ts",
+            "line": 106,
+            "expression": "id: 'royal-berth', name: 'Baie royale', subtitle: 'Ton vaisseau personnel demeure amarré ici.', background: 'berth-wall',"
+          }
+        ]
+      }
+    },
+    {
+      "id": "castle-exterior",
+      "path": "public/game/wolf-castle/v1/castle-exterior.png",
+      "runtimePath": "/game/wolf-castle/v1/castle-exterior.png",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "bands": [
+        "R",
+        "G",
+        "B",
+        "A"
+      ],
+      "hasAlphaChannel": true,
+      "alphaMin": 0,
+      "alphaMax": 254,
+      "fullyTransparentPixels": 607535,
+      "transparentFraction": 0.38626,
+      "visiblePixelFractionAtAlpha128": 0.600253,
+      "alphaBoundingBox": [
+        0,
+        2,
+        1534,
+        1024
+      ],
+      "visibleBoundingBoxAtAlpha16": [
+        43,
+        15,
+        1497,
+        1009
+      ],
+      "solidBoundingBoxAtAlpha128": [
+        44,
+        16,
+        1497,
+        1009
+      ],
+      "opaqueEdgePixelsAtAlpha128": 0,
+      "suggestedFootAnchorNormalized": [
+        0.501302,
+        0.985352
+      ],
+      "bytes": 2862182,
+      "sha256": "140126ff3855d0b3820d00c9dfaef4dcc3bc8df55b2ab7ca2dd9c6f646b5bce3",
+      "expectedTransparency": true,
+      "technicalCheckPassed": true,
+      "edgeReview": "opaque silhouette clear of all image borders",
+      "usage": {
+        "used": true,
+        "resolution": "direct image reference in WolfCastleScene",
+        "evidence": [
+          {
+            "file": "app/game/WolfCastleScene.tsx",
+            "line": 112,
+            "expression": "<img src={`${WOLF_CASTLE_ART_ROOT}castle-exterior.png`} alt=\"La forteresse pyramidale du Predator King en orbite du système Wolf\" className={styles.exterior} draggable={false} />"
+          }
+        ]
+      }
+    },
+    {
+      "id": "column",
+      "path": "public/game/wolf-castle/v1/column.png",
+      "runtimePath": "/game/wolf-castle/v1/column.png",
+      "width": 1024,
+      "height": 1536,
+      "mode": "RGBA",
+      "bands": [
+        "R",
+        "G",
+        "B",
+        "A"
+      ],
+      "hasAlphaChannel": true,
+      "alphaMin": 0,
+      "alphaMax": 254,
+      "fullyTransparentPixels": 1139874,
+      "transparentFraction": 0.724712,
+      "visiblePixelFractionAtAlpha128": 0.262474,
+      "alphaBoundingBox": [
+        0,
+        3,
+        1006,
+        1536
+      ],
+      "visibleBoundingBoxAtAlpha16": [
+        280,
+        11,
+        745,
+        1524
+      ],
+      "solidBoundingBoxAtAlpha128": [
+        281,
+        12,
+        744,
+        1523
+      ],
+      "opaqueEdgePixelsAtAlpha128": 0,
+      "suggestedFootAnchorNormalized": [
+        0.500488,
+        0.992188
+      ],
+      "bytes": 1700632,
+      "sha256": "edf60681b1c5e5fe0e193c152336e0a90197a02b0bfb5d766fc354f4513adf4a",
+      "expectedTransparency": true,
+      "technicalCheckPassed": true,
+      "edgeReview": "opaque silhouette clear of all image borders",
+      "usage": {
+        "used": true,
+        "resolution": "prop.asset is constructed through WOLF_CASTLE_ART_ROOT and rendered by CastleProp",
+        "evidence": [
+          {
+            "file": "app/game/systems/wolfCastle.ts",
+            "line": 101,
+            "expression": "const column = (id: string, x: number): WolfCastleProp => prop(id, 'column', x, 521, 108, 348, { x: x - 26, y: 494, width: 52, height: 37 });"
+          }
+        ]
+      }
+    },
+    {
+      "id": "council-table",
+      "path": "public/game/wolf-castle/v1/council-table.png",
+      "runtimePath": "/game/wolf-castle/v1/council-table.png",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "bands": [
+        "R",
+        "G",
+        "B",
+        "A"
+      ],
+      "hasAlphaChannel": true,
+      "alphaMin": 0,
+      "alphaMax": 254,
+      "fullyTransparentPixels": 681616,
+      "transparentFraction": 0.43336,
+      "visiblePixelFractionAtAlpha128": 0.548247,
+      "alphaBoundingBox": [
+        0,
+        0,
+        1536,
+        1024
+      ],
+      "visibleBoundingBoxAtAlpha16": [
+        9,
+        141,
+        1529,
+        900
+      ],
+      "solidBoundingBoxAtAlpha128": [
+        9,
+        141,
+        1528,
+        900
+      ],
+      "opaqueEdgePixelsAtAlpha128": 0,
+      "suggestedFootAnchorNormalized": [
+        0.500651,
+        0.878906
+      ],
+      "bytes": 2390463,
+      "sha256": "118ff2b8d2a0e481499cb5af604c7ad91bdb0942a99a135eda93491e903d22b6",
+      "expectedTransparency": true,
+      "technicalCheckPassed": true,
+      "edgeReview": "opaque silhouette clear of all image borders",
+      "usage": {
+        "used": true,
+        "resolution": "prop.asset is constructed through WOLF_CASTLE_ART_ROOT and rendered by CastleProp",
+        "evidence": [
+          {
+            "file": "app/game/systems/wolfCastle.ts",
+            "line": 140,
+            "expression": "props: [prop('council-table', 'council-table', 800, 549, 368, 244, { x: 646, y: 494, width: 308, height: 61 }), column('council-west', 360), column('council-east', 1240)],"
+          }
+        ]
+      }
+    },
+    {
+      "id": "court-wall",
+      "path": "public/game/wolf-castle/v1/court-wall.png",
+      "runtimePath": "/game/wolf-castle/v1/court-wall.png",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGB",
+      "bands": [
+        "R",
+        "G",
+        "B"
+      ],
+      "hasAlphaChannel": false,
+      "alphaMin": 255,
+      "alphaMax": 255,
+      "fullyTransparentPixels": 0,
+      "transparentFraction": 0.0,
+      "visiblePixelFractionAtAlpha128": 1.0,
+      "alphaBoundingBox": [
+        0,
+        0,
+        1536,
+        1024
+      ],
+      "visibleBoundingBoxAtAlpha16": [
+        0,
+        0,
+        1536,
+        1024
+      ],
+      "solidBoundingBoxAtAlpha128": [
+        0,
+        0,
+        1536,
+        1024
+      ],
+      "opaqueEdgePixelsAtAlpha128": 5120,
+      "suggestedFootAnchorNormalized": null,
+      "bytes": 2491418,
+      "sha256": "ec2690c32a547fdf2d50a236cbb137919fe9bfe18b861cc2237ca7c3c2b8df69",
+      "expectedTransparency": false,
+      "technicalCheckPassed": true,
+      "edgeReview": "background full bleed",
+      "usage": {
+        "used": true,
+        "resolution": "room.background is resolved through WOLF_CASTLE_ART_ROOT in WolfCastleScene",
+        "evidence": [
+          {
+            "file": "app/game/systems/wolfCastle.ts",
+            "line": 148,
+            "expression": "id: 'royal-court', name: 'Cour d’épreuve', subtitle: 'Lis la séquence, rejoins les trois sceaux, puis reviens au pupitre.', background: 'court-wall',"
+          }
+        ]
+      }
+    },
+    {
+      "id": "dais",
+      "path": "public/game/wolf-castle/v1/dais.png",
+      "runtimePath": "/game/wolf-castle/v1/dais.png",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "bands": [
+        "R",
+        "G",
+        "B",
+        "A"
+      ],
+      "hasAlphaChannel": true,
+      "alphaMin": 0,
+      "alphaMax": 254,
+      "fullyTransparentPixels": 960044,
+      "transparentFraction": 0.61038,
+      "visiblePixelFractionAtAlpha128": 0.368366,
+      "alphaBoundingBox": [
+        0,
+        4,
+        1536,
+        1024
+      ],
+      "visibleBoundingBoxAtAlpha16": [
+        4,
+        408,
+        1533,
+        831
+      ],
+      "solidBoundingBoxAtAlpha128": [
+        5,
+        409,
+        1532,
+        830
+      ],
+      "opaqueEdgePixelsAtAlpha128": 0,
+      "suggestedFootAnchorNormalized": [
+        0.500326,
+        0.811523
+      ],
+      "bytes": 1747650,
+      "sha256": "ba2c7919d8fde26f5a3e410de4324d99dcac3b2a321712c03c9ae55319524bdd",
+      "expectedTransparency": true,
+      "technicalCheckPassed": true,
+      "edgeReview": "opaque silhouette clear of all image borders",
+      "usage": {
+        "used": true,
+        "resolution": "prop.asset is constructed through WOLF_CASTLE_ART_ROOT and rendered by CastleProp",
+        "evidence": [
+          {
+            "file": "app/game/systems/wolfCastle.ts",
+            "line": 131,
+            "expression": "props: [prop('royal-dais', 'dais', 970, 534, 454, 142, { x: 786, y: 490, width: 368, height: 64 }), prop('royal-throne', 'throne', 970, 475, 218, 304),"
+          }
+        ]
+      }
+    },
+    {
+      "id": "gallery-wall",
+      "path": "public/game/wolf-castle/v1/gallery-wall.png",
+      "runtimePath": "/game/wolf-castle/v1/gallery-wall.png",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGB",
+      "bands": [
+        "R",
+        "G",
+        "B"
+      ],
+      "hasAlphaChannel": false,
+      "alphaMin": 255,
+      "alphaMax": 255,
+      "fullyTransparentPixels": 0,
+      "transparentFraction": 0.0,
+      "visiblePixelFractionAtAlpha128": 1.0,
+      "alphaBoundingBox": [
+        0,
+        0,
+        1536,
+        1024
+      ],
+      "visibleBoundingBoxAtAlpha16": [
+        0,
+        0,
+        1536,
+        1024
+      ],
+      "solidBoundingBoxAtAlpha128": [
+        0,
+        0,
+        1536,
+        1024
+      ],
+      "opaqueEdgePixelsAtAlpha128": 5120,
+      "suggestedFootAnchorNormalized": null,
+      "bytes": 2715130,
+      "sha256": "fc58429c056d606295dfff810b74f19d81ca3a7f4e7b5b767eedb9704f08c432",
+      "expectedTransparency": false,
+      "technicalCheckPassed": true,
+      "edgeReview": "background full bleed",
+      "usage": {
+        "used": true,
+        "resolution": "room.background is resolved through WOLF_CASTLE_ART_ROOT in WolfCastleScene",
+        "evidence": [
+          {
+            "file": "app/game/systems/wolfCastle.ts",
+            "line": 119,
+            "expression": "id: 'royal-vestibule', name: 'Vestibule', subtitle: 'L’axe cérémoniel mène à l’audience. Le passage latéral rejoint la cour.', background: 'gallery-wall',"
+          },
+          {
+            "file": "app/game/systems/wolfCastle.ts",
+            "line": 124,
+            "expression": "id: 'royal-gallery', name: 'Galerie des trophées', subtitle: 'Une voie centrale libre relie les archives à la salle d’audience.', background: 'gallery-wall',"
+          },
+          {
+            "file": "app/game/systems/wolfCastle.ts",
+            "line": 143,
+            "expression": "id: 'royal-archives', name: 'Archives royales', subtitle: 'Le terminal conserve les repères de cette escale.', background: 'gallery-wall',"
+          }
+        ]
+      }
+    },
+    {
+      "id": "low-fog",
+      "path": "public/game/wolf-castle/v1/low-fog.png",
+      "runtimePath": "/game/wolf-castle/v1/low-fog.png",
+      "width": 2172,
+      "height": 724,
+      "mode": "RGBA",
+      "bands": [
+        "R",
+        "G",
+        "B",
+        "A"
+      ],
+      "hasAlphaChannel": true,
+      "alphaMin": 0,
+      "alphaMax": 244,
+      "fullyTransparentPixels": 1132951,
+      "transparentFraction": 0.720465,
+      "visiblePixelFractionAtAlpha128": 0.030232,
+      "alphaBoundingBox": [
+        0,
+        19,
+        2172,
+        724
+      ],
+      "visibleBoundingBoxAtAlpha16": [
+        19,
+        401,
+        2142,
+        686
+      ],
+      "solidBoundingBoxAtAlpha128": [
+        119,
+        531,
+        2026,
+        674
+      ],
+      "opaqueEdgePixelsAtAlpha128": 0,
+      "suggestedFootAnchorNormalized": [
+        0.497468,
+        0.947514
+      ],
+      "bytes": 817287,
+      "sha256": "0f70002bf27b31eaddf535e265b3ff5e7bce2b74f313c4592f25a1c74f45bd9d",
+      "expectedTransparency": true,
+      "technicalCheckPassed": true,
+      "edgeReview": "opaque silhouette clear of all image borders",
+      "usage": {
+        "used": true,
+        "resolution": "direct image reference in WolfCastleScene",
+        "evidence": [
+          {
+            "file": "app/game/WolfCastleScene.tsx",
+            "line": 409,
+            "expression": "{!reducedMotion && <image href={`${WOLF_CASTLE_ART_ROOT}low-fog.png`} x={cameraX} y=\"590\" width={cameraWidth} height=\"115\" preserveAspectRatio=\"none\" opacity=\".1\" pointerEvents=\"none\" className={styles.fog} />}"
+          }
+        ]
+      }
+    },
+    {
+      "id": "predator-king-seated",
+      "path": "public/game/wolf-castle/v1/predator-king-seated.png",
+      "runtimePath": "/game/wolf-castle/v1/predator-king-seated.png",
+      "width": 1199,
+      "height": 1312,
+      "mode": "RGBA",
+      "bands": [
+        "R",
+        "G",
+        "B",
+        "A"
+      ],
+      "hasAlphaChannel": true,
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "fullyTransparentPixels": 1029320,
+      "transparentFraction": 0.654331,
+      "visiblePixelFractionAtAlpha128": 0.324404,
+      "alphaBoundingBox": [
+        66,
+        39,
+        1181,
+        1312
+      ],
+      "visibleBoundingBoxAtAlpha16": [
+        157,
+        139,
+        1044,
+        1153
+      ],
+      "solidBoundingBoxAtAlpha128": [
+        158,
+        139,
+        1043,
+        1152
+      ],
+      "opaqueEdgePixelsAtAlpha128": 0,
+      "suggestedFootAnchorNormalized": [
+        0.500834,
+        0.878811
+      ],
+      "bytes": 1594688,
+      "sha256": "8e3e92e4f3b5db58c5124dc202fc7772de4c885b8cf069820ed8be4c30536df9",
+      "expectedTransparency": true,
+      "technicalCheckPassed": true,
+      "edgeReview": "opaque silhouette clear of all image borders",
+      "usage": {
+        "used": true,
+        "resolution": "prop.asset is constructed through WOLF_CASTLE_ART_ROOT and rendered by CastleProp",
+        "evidence": [
+          {
+            "file": "app/game/systems/wolfCastle.ts",
+            "line": 132,
+            "expression": "prop('predator-king', 'predator-king-seated', 970, 463, 200, 260),"
+          }
+        ]
+      }
+    },
+    {
+      "id": "royal-guard",
+      "path": "public/game/wolf-castle/v1/royal-guard.png",
+      "runtimePath": "/game/wolf-castle/v1/royal-guard.png",
+      "width": 1024,
+      "height": 1536,
+      "mode": "RGBA",
+      "bands": [
+        "R",
+        "G",
+        "B",
+        "A"
+      ],
+      "hasAlphaChannel": true,
+      "alphaMin": 0,
+      "alphaMax": 254,
+      "fullyTransparentPixels": 953704,
+      "transparentFraction": 0.606349,
+      "visiblePixelFractionAtAlpha128": 0.35471,
+      "alphaBoundingBox": [
+        0,
+        0,
+        996,
+        1517
+      ],
+      "visibleBoundingBoxAtAlpha16": [
+        134,
+        5,
+        840,
+        1511
+      ],
+      "solidBoundingBoxAtAlpha128": [
+        135,
+        6,
+        840,
+        1510
+      ],
+      "opaqueEdgePixelsAtAlpha128": 0,
+      "suggestedFootAnchorNormalized": [
+        0.475586,
+        0.983724
+      ],
+      "bytes": 2330195,
+      "sha256": "91ee4b02d82c36418f3f3ce9c81ed1d662ee664d5ce35fc56fc9eea8f18595d3",
+      "expectedTransparency": true,
+      "technicalCheckPassed": true,
+      "edgeReview": "opaque silhouette clear of all image borders",
+      "usage": {
+        "used": true,
+        "resolution": "prop.asset is constructed through WOLF_CASTLE_ART_ROOT and rendered by CastleProp",
+        "evidence": [
+          {
+            "file": "app/game/systems/wolfCastle.ts",
+            "line": 133,
+            "expression": "prop('guard-west', 'royal-guard', 646, 531, 132, 214, { x: 626, y: 512, width: 40, height: 30 }),"
+          },
+          {
+            "file": "app/game/systems/wolfCastle.ts",
+            "line": 134,
+            "expression": "prop('guard-east', 'royal-guard', 1286, 531, 132, 214, { x: 1266, y: 512, width: 40, height: 30 }),"
+          }
+        ]
+      }
+    },
+    {
+      "id": "service-wall",
+      "path": "public/game/wolf-castle/v1/service-wall.png",
+      "runtimePath": "/game/wolf-castle/v1/service-wall.png",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGB",
+      "bands": [
+        "R",
+        "G",
+        "B"
+      ],
+      "hasAlphaChannel": false,
+      "alphaMin": 255,
+      "alphaMax": 255,
+      "fullyTransparentPixels": 0,
+      "transparentFraction": 0.0,
+      "visiblePixelFractionAtAlpha128": 1.0,
+      "alphaBoundingBox": [
+        0,
+        0,
+        1536,
+        1024
+      ],
+      "visibleBoundingBoxAtAlpha16": [
+        0,
+        0,
+        1536,
+        1024
+      ],
+      "solidBoundingBoxAtAlpha128": [
+        0,
+        0,
+        1536,
+        1024
+      ],
+      "opaqueEdgePixelsAtAlpha128": 5120,
+      "suggestedFootAnchorNormalized": null,
+      "bytes": 2721792,
+      "sha256": "827ebb1049d8963139d480debe89114ae3fb2bf5204c595b20a8f95c11f8d419",
+      "expectedTransparency": false,
+      "technicalCheckPassed": true,
+      "edgeReview": "background full bleed",
+      "usage": {
+        "used": true,
+        "resolution": "room.background is resolved through WOLF_CASTLE_ART_ROOT in WolfCastleScene",
+        "evidence": [
+          {
+            "file": "app/game/systems/wolfCastle.ts",
+            "line": 114,
+            "expression": "id: 'royal-airlock', name: 'Sas royal', subtitle: 'Le contrôle d’accès précède la grande galerie.', background: 'service-wall',"
+          },
+          {
+            "file": "app/game/systems/wolfCastle.ts",
+            "line": 156,
+            "expression": "id: 'royal-service-pass', name: 'Passage latéral', subtitle: 'La liaison de service rejoint le vestibule et la cour d’épreuve.', background: 'service-wall',"
+          }
+        ]
+      }
+    },
+    {
+      "id": "throne",
+      "path": "public/game/wolf-castle/v1/throne.png",
+      "runtimePath": "/game/wolf-castle/v1/throne.png",
+      "width": 1024,
+      "height": 1536,
+      "mode": "RGBA",
+      "bands": [
+        "R",
+        "G",
+        "B",
+        "A"
+      ],
+      "hasAlphaChannel": true,
+      "alphaMin": 0,
+      "alphaMax": 254,
+      "fullyTransparentPixels": 743888,
+      "transparentFraction": 0.472951,
+      "visiblePixelFractionAtAlpha128": 0.452004,
+      "alphaBoundingBox": [
+        0,
+        19,
+        1024,
+        1536
+      ],
+      "visibleBoundingBoxAtAlpha16": [
+        9,
+        32,
+        1016,
+        1512
+      ],
+      "solidBoundingBoxAtAlpha128": [
+        10,
+        33,
+        1015,
+        1511
+      ],
+      "opaqueEdgePixelsAtAlpha128": 0,
+      "suggestedFootAnchorNormalized": [
+        0.500488,
+        0.984375
+      ],
+      "bytes": 2753646,
+      "sha256": "dc328c947aa584ec2b4f91f41e019c780f41c09be6410e2fb5b02dbb0a1542de",
+      "expectedTransparency": true,
+      "technicalCheckPassed": true,
+      "edgeReview": "opaque silhouette clear of all image borders",
+      "usage": {
+        "used": true,
+        "resolution": "prop.asset is constructed through WOLF_CASTLE_ART_ROOT and rendered by CastleProp",
+        "evidence": [
+          {
+            "file": "app/game/systems/wolfCastle.ts",
+            "line": 131,
+            "expression": "props: [prop('royal-dais', 'dais', 970, 534, 454, 142, { x: 786, y: 490, width: 368, height: 64 }), prop('royal-throne', 'throne', 970, 475, 218, 304),"
+          }
+        ]
+      }
+    },
+    {
+      "id": "trophy-plinth",
+      "path": "public/game/wolf-castle/v1/trophy-plinth.png",
+      "runtimePath": "/game/wolf-castle/v1/trophy-plinth.png",
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "bands": [
+        "R",
+        "G",
+        "B",
+        "A"
+      ],
+      "hasAlphaChannel": true,
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "fullyTransparentPixels": 1059904,
+      "transparentFraction": 0.674018,
+      "visiblePixelFractionAtAlpha128": 0.311383,
+      "alphaBoundingBox": [
+        0,
+        0,
+        1234,
+        1254
+      ],
+      "visibleBoundingBoxAtAlpha16": [
+        286,
+        86,
+        971,
+        1189
+      ],
+      "solidBoundingBoxAtAlpha128": [
+        287,
+        88,
+        970,
+        1188
+      ],
+      "opaqueEdgePixelsAtAlpha128": 0,
+      "suggestedFootAnchorNormalized": [
+        0.501196,
+        0.948166
+      ],
+      "bytes": 1247562,
+      "sha256": "8c7010d629d85efab055b093665b3c7bee96263170262fdd8c8dc454c89974e7",
+      "expectedTransparency": true,
+      "technicalCheckPassed": true,
+      "edgeReview": "opaque silhouette clear of all image borders",
+      "usage": {
+        "used": true,
+        "resolution": "prop.asset is constructed through WOLF_CASTLE_ART_ROOT and rendered by CastleProp",
+        "evidence": [
+          {
+            "file": "app/game/systems/wolfCastle.ts",
+            "line": 126,
+            "expression": "props: [prop('plinth-west', 'trophy-plinth', 450, 530, 150, 160, { x: 398, y: 499, width: 104, height: 40 }), prop('plinth-east', 'trophy-plinth', 1150, 530, 150, 160, { x: 1098, y: 499, width: 104, height: 40 })],"
+          }
+        ]
+      }
+    },
+    {
+      "id": "atmosphere-clouds",
+      "path": "public/game/planet-arrival/v1/atmosphere-clouds.png",
+      "runtimePath": "/game/planet-arrival/v1/atmosphere-clouds.png",
+      "width": 1774,
+      "height": 887,
+      "mode": "RGBA",
+      "bands": [
+        "R",
+        "G",
+        "B",
+        "A"
+      ],
+      "hasAlphaChannel": true,
+      "alphaMin": 0,
+      "alphaMax": 253,
+      "fullyTransparentPixels": 256223,
+      "transparentFraction": 0.162832,
+      "visiblePixelFractionAtAlpha128": 0.1952,
+      "alphaBoundingBox": [
+        0,
+        0,
+        1774,
+        887
+      ],
+      "visibleBoundingBoxAtAlpha16": [
+        0,
+        31,
+        1774,
+        816
+      ],
+      "solidBoundingBoxAtAlpha128": [
+        0,
+        56,
+        1774,
+        809
+      ],
+      "opaqueEdgePixelsAtAlpha128": 502,
+      "suggestedFootAnchorNormalized": [
+        0.5,
+        0.919955
+      ],
+      "bytes": 1852912,
+      "sha256": "5df9cabd9f6d2db4fab39f97221a2750c87940654d99d41a3f8bfd9bf6bfae2f",
+      "expectedTransparency": true,
+      "technicalCheckPassed": true,
+      "edgeReview": "opaque pixels meet image border; inspect crop",
+      "usage": {
+        "used": true,
+        "resolution": "PLANET_ARRIVAL_ART.clouds returned by planetArrivalAssets and rendered through sources?.clouds",
+        "evidence": [
+          {
+            "file": "app/game/PlanetArrivalCinematic.tsx",
+            "line": 293,
+            "expression": "{atmospheric && <div className={styles.atmosphere} aria-hidden=\"true\">{layer(sources?.clouds, styles.atmosphereClouds, { transform: motionReduced ? 'none' : `translate(${-p * 8}%, ${p * 6}%) scale(1.15)` })}</div>}"
+          },
+          {
+            "file": "app/game/systems/planetArrival.ts",
+            "line": 217,
+            "expression": "clouds: '/game/planet-arrival/v1/atmosphere-clouds.png',"
+          }
+        ]
+      }
+    },
+    {
+      "id": "heat-trail",
+      "path": "public/game/planet-arrival/v1/heat-trail.png",
+      "runtimePath": "/game/planet-arrival/v1/heat-trail.png",
+      "width": 2172,
+      "height": 724,
+      "mode": "RGBA",
+      "bands": [
+        "R",
+        "G",
+        "B",
+        "A"
+      ],
+      "hasAlphaChannel": true,
+      "alphaMin": 0,
+      "alphaMax": 253,
+      "fullyTransparentPixels": 734505,
+      "transparentFraction": 0.467085,
+      "visiblePixelFractionAtAlpha128": 0.195995,
+      "alphaBoundingBox": [
+        0,
+        0,
+        2172,
+        724
+      ],
+      "visibleBoundingBoxAtAlpha16": [
+        86,
+        123,
+        2072,
+        606
+      ],
+      "solidBoundingBoxAtAlpha128": [
+        92,
+        153,
+        2049,
+        594
+      ],
+      "opaqueEdgePixelsAtAlpha128": 0,
+      "suggestedFootAnchorNormalized": [
+        0.496777,
+        0.837017
+      ],
+      "bytes": 1317220,
+      "sha256": "4f5458d06b543140b1f08dde21ecb17d0966c13312bbf4a7dc6aa086d3f21615",
+      "expectedTransparency": true,
+      "technicalCheckPassed": true,
+      "edgeReview": "opaque silhouette clear of all image borders",
+      "usage": {
+        "used": true,
+        "resolution": "PLANET_ARRIVAL_ART.heatTrail returned by planetArrivalAssets and rendered through sources?.heatTrail",
+        "evidence": [
+          {
+            "file": "app/game/PlanetArrivalCinematic.tsx",
+            "line": 295,
+            "expression": "{atmospheric && layer(sources?.heatTrail, styles.heatTrail, { opacity: .65 + .25 * Math.sin(p * Math.PI), transform: 'scaleX(-1)' })}"
+          },
+          {
+            "file": "app/game/systems/planetArrival.ts",
+            "line": 216,
+            "expression": "heatTrail: '/game/planet-arrival/v1/heat-trail.png',"
+          }
+        ]
+      }
+    },
+    {
+      "id": "impact-dust",
+      "path": "public/game/planet-arrival/v1/impact-dust.png",
+      "runtimePath": "/game/planet-arrival/v1/impact-dust.png",
+      "width": 1774,
+      "height": 887,
+      "mode": "RGBA",
+      "bands": [
+        "R",
+        "G",
+        "B",
+        "A"
+      ],
+      "hasAlphaChannel": true,
+      "alphaMin": 0,
+      "alphaMax": 254,
+      "fullyTransparentPixels": 755990,
+      "transparentFraction": 0.48044,
+      "visiblePixelFractionAtAlpha128": 0.320727,
+      "alphaBoundingBox": [
+        0,
+        0,
+        1771,
+        887
+      ],
+      "visibleBoundingBoxAtAlpha16": [
+        65,
+        222,
+        1709,
+        766
+      ],
+      "solidBoundingBoxAtAlpha128": [
+        81,
+        244,
+        1698,
+        758
+      ],
+      "opaqueEdgePixelsAtAlpha128": 0,
+      "suggestedFootAnchorNormalized": [
+        0.5,
+        0.863585
+      ],
+      "bytes": 1490789,
+      "sha256": "ebb8b3ce439a355d47cc2fc862eaf246d2b090f584533eb482cd0a0e29683b65",
+      "expectedTransparency": true,
+      "technicalCheckPassed": true,
+      "edgeReview": "opaque silhouette clear of all image borders",
+      "usage": {
+        "used": true,
+        "resolution": "PLANET_ARRIVAL_ART.impactDust returned by planetArrivalAssets and rendered through sources?.impactDust",
+        "evidence": [
+          {
+            "file": "app/game/PlanetArrivalCinematic.tsx",
+            "line": 307,
+            "expression": "{landed && impact > 0 && <div className={styles.impactDust} style={{ left: percent(landing.capsuleX / WORLD_WIDTH * 100), top: percent(landing.floorY / landing.height * 100), opacity: motionReduced ? .18 : clamp01(1 - (impact - .35) / 1.5), transform: `translate(-40%,-92%) scale(${motionReduced ? 1 : .65 + Math.min(impact, 1.4) * .6})` }}>{layer(sources?.impactDust, styles.fullAsset)}</div>}"
+          },
+          {
+            "file": "app/game/systems/planetArrival.ts",
+            "line": 218,
+            "expression": "impactDust: '/game/planet-arrival/v1/impact-dust.png',"
+          }
+        ]
+      }
+    },
+    {
+      "id": "pod-door",
+      "path": "public/game/planet-arrival/v1/pod-door.png",
+      "runtimePath": "/game/planet-arrival/v1/pod-door.png",
+      "width": 1024,
+      "height": 1536,
+      "mode": "RGBA",
+      "bands": [
+        "R",
+        "G",
+        "B",
+        "A"
+      ],
+      "hasAlphaChannel": true,
+      "alphaMin": 0,
+      "alphaMax": 254,
+      "fullyTransparentPixels": 1095929,
+      "transparentFraction": 0.696773,
+      "visiblePixelFractionAtAlpha128": 0.297933,
+      "alphaBoundingBox": [
+        0,
+        17,
+        1004,
+        1536
+      ],
+      "visibleBoundingBoxAtAlpha16": [
+        264,
+        128,
+        760,
+        1411
+      ],
+      "solidBoundingBoxAtAlpha128": [
+        264,
+        128,
+        759,
+        1411
+      ],
+      "opaqueEdgePixelsAtAlpha128": 0,
+      "suggestedFootAnchorNormalized": [
+        0.5,
+        0.91862
+      ],
+      "bytes": 1823836,
+      "sha256": "74bcaded588e30cc2dbae5520288295c68a805b6cb0cfd622157735e10398518",
+      "expectedTransparency": true,
+      "technicalCheckPassed": true,
+      "edgeReview": "opaque silhouette clear of all image borders",
+      "usage": {
+        "used": true,
+        "resolution": "PLANET_ARRIVAL_ART.podDoor returned by planetArrivalAssets and rendered through sources?.podDoor",
+        "evidence": [
+          {
+            "file": "app/game/PlanetArrivalCinematic.tsx",
+            "line": 305,
+            "expression": "{layer(sources?.podDoor, styles.podDoor, { opacity: shot.id === 'egress' ? clamp01(1 - p * 4) : 1, transform: `translate(${shot.id === 'egress' && !motionReduced ? Math.min(35, p * 100) : 0}%,${shot.id === 'egress' && !motionReduced ? Math.min(30, p * 90) : 0}%) rotate(${shot.id === 'egress' && !motionReduced ? Math.min(24, p * 80) : 0}deg)` })}"
+          },
+          {
+            "file": "app/game/systems/planetArrival.ts",
+            "line": 214,
+            "expression": "podDoor: '/game/planet-arrival/v1/pod-door.png',"
+          }
+        ]
+      }
+    },
+    {
+      "id": "pod-flight",
+      "path": "public/game/planet-arrival/v1/pod-flight.png",
+      "runtimePath": "/game/planet-arrival/v1/pod-flight.png",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "bands": [
+        "R",
+        "G",
+        "B",
+        "A"
+      ],
+      "hasAlphaChannel": true,
+      "alphaMin": 0,
+      "alphaMax": 254,
+      "fullyTransparentPixels": 1182551,
+      "transparentFraction": 0.751846,
+      "visiblePixelFractionAtAlpha128": 0.238345,
+      "alphaBoundingBox": [
+        135,
+        28,
+        1434,
+        1024
+      ],
+      "visibleBoundingBoxAtAlpha16": [
+        140,
+        118,
+        1402,
+        869
+      ],
+      "solidBoundingBoxAtAlpha128": [
+        141,
+        118,
+        1401,
+        868
+      ],
+      "opaqueEdgePixelsAtAlpha128": 0,
+      "suggestedFootAnchorNormalized": [
+        0.501953,
+        0.848633
+      ],
+      "bytes": 1690608,
+      "sha256": "aa56b3aebbb87a95e18dec5e07ec714e7e6805aa846c94a9c7eca6921f2e59af",
+      "expectedTransparency": true,
+      "technicalCheckPassed": true,
+      "edgeReview": "opaque silhouette clear of all image borders",
+      "usage": {
+        "used": true,
+        "resolution": "PLANET_ARRIVAL_ART.podFlight returned by planetArrivalAssets and rendered through sources?.podFlight",
+        "evidence": [
+          {
+            "file": "app/game/PlanetArrivalCinematic.tsx",
+            "line": 296,
+            "expression": "{layer(sources?.podFlight, styles.fullAsset)}"
+          },
+          {
+            "file": "app/game/systems/planetArrival.ts",
+            "line": 212,
+            "expression": "podFlight: '/game/planet-arrival/v1/pod-flight.png',"
+          }
+        ]
+      }
+    },
+    {
+      "id": "pod-ground",
+      "path": "public/game/planet-arrival/v1/pod-ground.png",
+      "runtimePath": "/game/planet-arrival/v1/pod-ground.png",
+      "width": 1024,
+      "height": 1536,
+      "mode": "RGBA",
+      "bands": [
+        "R",
+        "G",
+        "B",
+        "A"
+      ],
+      "hasAlphaChannel": true,
+      "alphaMin": 0,
+      "alphaMax": 254,
+      "fullyTransparentPixels": 845084,
+      "transparentFraction": 0.53729,
+      "visiblePixelFractionAtAlpha128": 0.451967,
+      "alphaBoundingBox": [
+        0,
+        23,
+        1010,
+        1536
+      ],
+      "visibleBoundingBoxAtAlpha16": [
+        182,
+        40,
+        833,
+        1496
+      ],
+      "solidBoundingBoxAtAlpha128": [
+        183,
+        41,
+        833,
+        1495
+      ],
+      "opaqueEdgePixelsAtAlpha128": 0,
+      "suggestedFootAnchorNormalized": [
+        0.495605,
+        0.973958
+      ],
+      "bytes": 2030756,
+      "sha256": "41c48a1405f712adeb46161a037f7ce01b274c87cac9bed0e2c2f48ae70b4a67",
+      "expectedTransparency": true,
+      "technicalCheckPassed": true,
+      "edgeReview": "opaque silhouette clear of all image borders",
+      "usage": {
+        "used": true,
+        "resolution": "PLANET_ARRIVAL_ART.podGround returned by planetArrivalAssets and rendered through sources?.podGround",
+        "evidence": [
+          {
+            "file": "app/game/PlanetArrivalCinematic.tsx",
+            "line": 304,
+            "expression": "{layer(sources?.podGround, styles.fullAsset)}"
+          },
+          {
+            "file": "app/game/systems/planetArrival.ts",
+            "line": 213,
+            "expression": "podGround: '/game/planet-arrival/v1/pod-ground.png',"
+          }
+        ]
+      }
+    },
+    {
+      "id": "release-jet",
+      "path": "public/game/planet-arrival/v1/release-jet.png",
+      "runtimePath": "/game/planet-arrival/v1/release-jet.png",
+      "width": 1774,
+      "height": 887,
+      "mode": "RGBA",
+      "bands": [
+        "R",
+        "G",
+        "B",
+        "A"
+      ],
+      "hasAlphaChannel": true,
+      "alphaMin": 0,
+      "alphaMax": 253,
+      "fullyTransparentPixels": 1047458,
+      "transparentFraction": 0.665671,
+      "visiblePixelFractionAtAlpha128": 0.088867,
+      "alphaBoundingBox": [
+        0,
+        21,
+        1754,
+        887
+      ],
+      "visibleBoundingBoxAtAlpha16": [
+        270,
+        293,
+        1522,
+        641
+      ],
+      "solidBoundingBoxAtAlpha128": [
+        279,
+        378,
+        1128,
+        604
+      ],
+      "opaqueEdgePixelsAtAlpha128": 0,
+      "suggestedFootAnchorNormalized": [
+        0.505073,
+        0.722661
+      ],
+      "bytes": 911269,
+      "sha256": "79a11d67658dc8e4112d9930683968972a57470f5184e97f683493e4faafb3e8",
+      "expectedTransparency": true,
+      "technicalCheckPassed": true,
+      "edgeReview": "opaque silhouette clear of all image borders",
+      "usage": {
+        "used": true,
+        "resolution": "PLANET_ARRIVAL_ART.releaseJet returned by planetArrivalAssets and rendered through sources?.releaseJet",
+        "evidence": [
+          {
+            "file": "app/game/PlanetArrivalCinematic.tsx",
+            "line": 292,
+            "expression": "{shot.id === 'release' && !motionReduced && <div className={styles.releaseJet} aria-hidden=\"true\" style={{ left: percent(podX - 2), top: percent(podY - 1), opacity: clamp01(1 - p * 3), transform: 'translate(-100%,-50%) rotate(55deg) scaleX(-1)' }}>{layer(sources?.releaseJet, styles.fullAsset)}</div>}"
+          },
+          {
+            "file": "app/game/systems/planetArrival.ts",
+            "line": 215,
+            "expression": "releaseJet: '/game/planet-arrival/v1/release-jet.png',"
+          }
+        ]
+      }
+    },
+    {
+      "id": "space",
+      "path": "public/game/planet-arrival/v1/space.png",
+      "runtimePath": "/game/planet-arrival/v1/space.png",
+      "width": 1672,
+      "height": 941,
+      "mode": "RGB",
+      "bands": [
+        "R",
+        "G",
+        "B"
+      ],
+      "hasAlphaChannel": false,
+      "alphaMin": 255,
+      "alphaMax": 255,
+      "fullyTransparentPixels": 0,
+      "transparentFraction": 0.0,
+      "visiblePixelFractionAtAlpha128": 1.0,
+      "alphaBoundingBox": [
+        0,
+        0,
+        1672,
+        941
+      ],
+      "visibleBoundingBoxAtAlpha16": [
+        0,
+        0,
+        1672,
+        941
+      ],
+      "solidBoundingBoxAtAlpha128": [
+        0,
+        0,
+        1672,
+        941
+      ],
+      "opaqueEdgePixelsAtAlpha128": 5226,
+      "suggestedFootAnchorNormalized": null,
+      "bytes": 1375766,
+      "sha256": "f73bc79155acc28b8f3eafe3abc756f982434ad19fe14d4fa4b2b86ac9b0d329",
+      "expectedTransparency": false,
+      "technicalCheckPassed": true,
+      "edgeReview": "background full bleed",
+      "usage": {
+        "used": true,
+        "resolution": "PLANET_ARRIVAL_ART.space returned by planetArrivalAssets and rendered through sources?.space",
+        "evidence": [
+          {
+            "file": "app/game/PlanetArrivalCinematic.tsx",
+            "line": 285,
+            "expression": "<div className={styles.spaceBackdrop} aria-hidden=\"true\">{layer(sources?.space, styles.cover, { opacity: .85 })}</div>"
+          },
+          {
+            "file": "app/game/systems/planetArrival.ts",
+            "line": 211,
+            "expression": "space: '/game/planet-arrival/v1/space.png',"
+          }
+        ]
+      }
+    }
+  ]
+}

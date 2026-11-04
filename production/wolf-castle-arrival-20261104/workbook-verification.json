@@ -1,0 +1,470 @@
+{
+  "generatedAt": "2026-11-04T12:30:05.481Z",
+  "engine": "@oai/artifact-tool",
+  "runtimeNode": "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+  "version": "1.3.0",
+  "file": "wolf-castle-arrival-20261104.xlsx",
+  "sheets": [
+    "Synthese",
+    "Chateau",
+    "Cinematique",
+    "Sprites",
+    "Prompts",
+    "Verification",
+    "Combat",
+    "Audio"
+  ],
+  "detailCounts": {
+    "salles": 9,
+    "plans": 8,
+    "sprites": 30,
+    "prompts": 30,
+    "combatEncounters": 3,
+    "arrivalCues": 9,
+    "audioRows": 34,
+    "verification": 15,
+    "historicalVerification": 14
+  },
+  "summaryCounts": [
+    30,
+    22,
+    8,
+    9,
+    8,
+    62,
+    24,
+    6,
+    30,
+    0,
+    30,
+    30
+  ],
+  "expectedCounts": [
+    30,
+    22,
+    8,
+    9,
+    8,
+    62,
+    24,
+    6,
+    30,
+    0,
+    30,
+    30
+  ],
+  "continuationCounts": [
+    3,
+    9,
+    3,
+    30,
+    54.21762275695801,
+    6.973657608032227,
+    0.8713765515081116
+  ],
+  "preservation": {
+    "historicalEvidence": true,
+    "humanReviewV1": true,
+    "promptsV1": true,
+    "cinematicFormulas": true,
+    "originalPngs": true,
+    "cinematicValues": true
+  },
+  "propagationCheck": {
+    "editedCell": "Sprites!L35",
+    "temporaryHumanStatus": "Validé",
+    "observed": [
+      1,
+      29
+    ],
+    "restored": true
+  },
+  "runtimeWeightPropagation": {
+    "editedCell": "Sprites!P35",
+    "observedMiB": 6.856642723083496,
+    "restored": true,
+    "performed": true
+  },
+  "exactPromptReconstruction": {
+    "preserved": 27,
+    "checkedNew": 3,
+    "allMatch": true
+  },
+  "formulaErrorScan": {
+    "ndjson": "{\"kind\":\"notice\",\"message\":\"Cell search matched 0 entries.\"}"
+  },
+  "inspections": [
+    {
+      "sheet": "Synthese",
+      "range": "A24:C31",
+      "ndjson": "{\"kind\":\"table\",\"sheet\":\"Synthese\",\"address\":\"A24:C31\",\"rows\":8,\"cols\":3,\"values\":[[\"Reprise 1.3.0\",\"Nombre\",\"Unité\"],[\"Rencontres de la cour\",3,\"rencontres\"],[\"Sons ponctuels de l’arrivée\",9,\"signaux\"],[\"Nouvelles poses individuelles\",3,\"images\"],[\"Copies WebP produites\",30,\"images\"],[\"Poids des PNG originaux\",54.21762275695801,\"Mio\"],[\"Poids des copies WebP\",6.973657608032227,\"Mio\"],[\"Réduction du poids total\",0.8713765515081116,\"du lot complet\"]]}"
+    },
+    {
+      "sheet": "Sprites",
+      "range": "I32:S35",
+      "ndjson": "{\"kind\":\"table\",\"sheet\":\"Sprites\",\"address\":\"I32:S35\",\"rows\":4,\"cols\":11,\"values\":[[\"Généré\",\"Référencé\",\"Réussi\",\"À revoir\",\"/game/planet-arrival/v1/space.png\",1343.521484375,\"/game/planet-arrival/v1/space.webp\",15.2734375,0.9886317876731944,\"Vérifiés\",\"1.2.0\"],[\"Généré\",\"Référencé\",\"Réussi\",\"À revoir\",\"/game/wolf-castle/v2/royal-guard-ready.png\",1193.439453125,\"/game/wolf-castle/v2/royal-guard-ready.webp\",219.84765625,0.8157865020514172,\"Vérifiés\",\"1.3.0\"],[\"Généré\",\"Référencé\",\"Réussi\",\"À revoir\",\"/game/wolf-castle/v2/royal-guard-windup.png\",1180.150390625,\"/game/wolf-castle/v2/royal-guard-windup.webp\",228.2109375,0.8066255459364455,\"Vérifiés\",\"1.3.0\"],[\"Généré\",\"Référencé\",\"Réussi\",\"À revoir\",\"/game/wolf-castle/v2/royal-guard-lunge.png\",1260.5009765625,\"/game/wolf-castle/v2/royal-guard-lunge.webp\",239.646484375,0.8098799692892443,\"Vérifiés\",\"1.3.0\"]]}"
+    },
+    {
+      "sheet": "Combat",
+      "range": "A5:I8",
+      "ndjson": "{\"kind\":\"table\",\"sheet\":\"Combat\",\"address\":\"A5:I8\",\"rows\":4,\"cols\":9,\"values\":[[\"ID\",\"Rencontre\",\"Lecture et réponse\",\"Vie\",\"Vitesse (u/s)\",\"Anticipation (ms)\",\"Récupération (ms)\",\"Dégâts\",\"Portée (u)\"],[\"threshold-guard\",\"Sentinelle du Seuil\",\"L’estoc est annoncé en or. Pare au dernier instant ou quitte sa trajectoire.\",66,125,1050,920,20,168],[\"sweep-guard\",\"Gardien du Cercle\",\"Le balayage rouge traverse la garde. Esquive hors du cercle puis contre-attaque.\",88,148,1150,1000,26,185],[\"court-master\",\"Maître de la Cour\",\"Observe la couleur : estoc à parer, balayage à esquiver. Frappe pendant sa récupération.\",110,168,860,800,30,185]]}"
+    },
+    {
+      "sheet": "Audio",
+      "range": "A5:G14",
+      "ndjson": "{\"kind\":\"table\",\"sheet\":\"Audio\",\"address\":\"A5:G14\",\"rows\":10,\"cols\":7,\"values\":[[\"ID\",\"Type\",\"Séquence\",\"Début (s)\",\"Son ou ambiance\",\"Pause, reprise et sortie\",\"État\"],[\"destination\",\"Ponctuel\",\"Arrivée\",7,\"Accord du titre de planète\",\"Suspendu avec la séquence. Une reprise ne rejoue pas les signaux déjà consommés.\",\"Intégré et testé\"],[\"carrier\",\"Ponctuel\",\"Arrivée\",13,\"Passage grave du vaisseau\",\"Suspendu avec la séquence. Une reprise ne rejoue pas les signaux déjà consommés.\",\"Intégré et testé\"],[\"release\",\"Ponctuel\",\"Arrivée\",23,\"Déverrouillage et jet de la capsule\",\"Suspendu avec la séquence. Une reprise ne rejoue pas les signaux déjà consommés.\",\"Intégré et testé\"],[\"descent\",\"Ponctuel\",\"Arrivée\",31,\"Passage de la descente\",\"Suspendu avec la séquence. Une reprise ne rejoue pas les signaux déjà consommés.\",\"Intégré et testé\"],[\"reentry\",\"Ponctuel\",\"Arrivée\",41,\"Air et frottement de rentrée\",\"Suspendu avec la séquence. Une reprise ne rejoue pas les signaux déjà consommés.\",\"Intégré et testé\"],[\"impact\",\"Ponctuel\",\"Arrivée\",53.96,\"Choc au contact avec le sol\",\"Suspendu avec la séquence. Une reprise ne rejoue pas les signaux déjà consommés.\",\"Intégré et testé\"],[\"hatch\",\"Ponctuel\",\"Arrivée\",57,\"Ouverture de la porte\",\"Suspendu avec la séquence. Une reprise ne rejoue pas les signaux déjà consommés.\",\"Intégré et testé\"],[\"first-step\",\"Ponctuel\",\"Arrivée\",58.9,\"Premier pas au sol\",\"Suspendu avec la séquence. Une reprise ne rejoue pas les signaux déjà consommés.\",\"Intégré et testé\"],[\"second-step\",\"Ponctuel\",\"Arrivée\",60.1,\"Second pas au sol\",\"Suspendu avec la séquence. Une reprise ne rejoue pas les signaux déjà consommés.\",\"Intégré et testé\"]]}"
+    }
+  ],
+  "renders": [
+    {
+      "sheet": "Synthese",
+      "range": "A1:F22",
+      "file": "previews/Synthese.png",
+      "reused": false
+    },
+    {
+      "sheet": "Synthese",
+      "range": "A24:C31",
+      "file": "previews/Synthese-reprise.png",
+      "reused": false
+    },
+    {
+      "sheet": "Chateau",
+      "range": "A11:D14",
+      "file": "previews/Chateau-cour.png",
+      "reused": false
+    },
+    {
+      "sheet": "Chateau",
+      "range": "E11:H14",
+      "file": "previews/Chateau-cour-suite.png",
+      "reused": false
+    },
+    {
+      "sheet": "Sprites",
+      "range": "A31:H35",
+      "file": "previews/Sprites-poses.png",
+      "reused": true
+    },
+    {
+      "sheet": "Sprites",
+      "range": "I31:N35",
+      "file": "previews/Sprites-poses-suivi.png",
+      "reused": true
+    },
+    {
+      "sheet": "Sprites",
+      "range": "O5:S12",
+      "file": "previews/Sprites-WebP.png",
+      "reused": true
+    },
+    {
+      "sheet": "Sprites",
+      "range": "O31:S35",
+      "file": "previews/Sprites-WebP-poses.png",
+      "reused": true
+    },
+    {
+      "sheet": "Combat",
+      "range": "A1:D8",
+      "file": "previews/Combat-rencontres.png",
+      "reused": false
+    },
+    {
+      "sheet": "Combat",
+      "range": "E5:L8",
+      "file": "previews/Combat-valeurs.png",
+      "reused": false
+    },
+    {
+      "sheet": "Combat",
+      "range": "A11:F17",
+      "file": "previews/Combat-regles.png",
+      "reused": false
+    },
+    {
+      "sheet": "Audio",
+      "range": "A1:D14",
+      "file": "previews/Audio-evenements.png",
+      "reused": true
+    },
+    {
+      "sheet": "Audio",
+      "range": "E5:H14",
+      "file": "previews/Audio-cycle.png",
+      "reused": true
+    },
+    {
+      "sheet": "Audio",
+      "range": "A15:H39",
+      "file": "previews/Audio-ambiances.png",
+      "reused": true
+    },
+    {
+      "sheet": "Verification",
+      "range": "A23:E28",
+      "file": "previews/Verification-23-etats.png",
+      "reused": false
+    },
+    {
+      "sheet": "Verification",
+      "range": "F23:I28",
+      "file": "previews/Verification-23-preuves.png",
+      "reused": false
+    },
+    {
+      "sheet": "Verification",
+      "range": "A29:E34",
+      "file": "previews/Verification-29-etats.png",
+      "reused": false
+    },
+    {
+      "sheet": "Verification",
+      "range": "F29:I34",
+      "file": "previews/Verification-29-preuves.png",
+      "reused": false
+    },
+    {
+      "sheet": "Verification",
+      "range": "A35:E37",
+      "file": "previews/Verification-35-etats.png",
+      "reused": false
+    },
+    {
+      "sheet": "Verification",
+      "range": "F35:I37",
+      "file": "previews/Verification-35-preuves.png",
+      "reused": false
+    },
+    {
+      "sheet": "Prompts",
+      "range": "A188:H195",
+      "file": "previews/Prompt-royal-guard-ready.png",
+      "reused": true
+    },
+    {
+      "sheet": "Prompts",
+      "range": "A197:H204",
+      "file": "previews/Prompt-royal-guard-windup.png",
+      "reused": true
+    },
+    {
+      "sheet": "Prompts",
+      "range": "A206:H213",
+      "file": "previews/Prompt-royal-guard-lunge.png",
+      "reused": true
+    }
+  ],
+  "visualReview": {
+    "status": "reviewed",
+    "reviewedAt": "2026-11-04T12:33:05.255675+00:00",
+    "reviewer": "assistant",
+    "sheets": [
+      "Synthese",
+      "Chateau",
+      "Sprites",
+      "Prompts",
+      "Verification",
+      "Combat",
+      "Audio"
+    ],
+    "renderedRangesReviewed": 23,
+    "changedSheetsReviewed": [
+      "Synthese",
+      "Chateau",
+      "Combat",
+      "Verification"
+    ],
+    "changedPreviewFilesReviewed": [
+      "Chateau-cour-suite.png",
+      "Combat-valeurs.png",
+      "Synthese.png",
+      "Verification-23-etats.png",
+      "Verification-23-preuves.png",
+      "Verification-29-etats.png",
+      "Verification-29-preuves.png",
+      "Verification-35-etats.png",
+      "Verification-35-preuves.png"
+    ],
+    "unchangedPreviouslyReviewedPreviewFiles": [
+      "Audio-ambiances.png",
+      "Audio-cycle.png",
+      "Audio-evenements.png",
+      "Chateau-cour.png",
+      "Combat-regles.png",
+      "Combat-rencontres.png",
+      "Prompt-royal-guard-lunge.png",
+      "Prompt-royal-guard-ready.png",
+      "Prompt-royal-guard-windup.png",
+      "Sprites-WebP-poses.png",
+      "Sprites-WebP.png",
+      "Sprites-poses-suivi.png",
+      "Sprites-poses.png",
+      "Synthese-reprise.png"
+    ],
+    "unchangedPreviewsByteIdentical": true,
+    "unchangedSheet": "Cinematique : valeurs, formules et présentation conservées. Aucun nouveau rendu nécessaire.",
+    "findings": "Les neuf aperçus modifiés ont été relus à leur résolution d’origine. Les quatorze autres sont identiques aux aperçus déjà relus. Titres, valeurs, unités, sources, limites et statuts sont lisibles, sans troncature. Les validations techniques restent distinctes des champs humains.",
+    "scope": "Revue de mise en page du classeur. Elle ne valide ni les sprites artistiques ni les parcours du jeu."
+  },
+  "gameChecks": [
+    {
+      "id": "V2-COMBAT",
+      "subject": "Combat royal",
+      "status": "Réussi",
+      "count": 29,
+      "unit": "tests",
+      "evidence": "29 tests du château et du combat réussis dans la suite finale : trois gardes vaincus par déplacement, parade, esquive et attaque ; défaite, reprise, abandon, collisions et dossier contrôlés.",
+      "source": "qa/browser-41827785792/workflow-job.log ; tests/wolf-castle.test.mjs ; tests/wolf-castle-combat.test.mjs",
+      "limit": "Ces 29 cas sont inclus dans les 247 tests. Le parcours de la scène et la victoire par les commandes normales sont qualifiés séparément dans V2-BROWSER."
+    },
+    {
+      "id": "V2-SAVE",
+      "subject": "Checkpoints de visite V2",
+      "status": "Réussi",
+      "count": 42,
+      "unit": "tests",
+      "evidence": "42 tests réussis : sauvegarde V2, vrais callbacks GameClient, migration V1, reprise et refus des états incompatibles. Aucun échec ni test ignoré. Le run inclut 38 tests historiques et 4 nouveaux.",
+      "source": "qa/browser-41827785792/workflow-job.log ; tests/wolf-arrival-save.test.mjs ; tests/game-client-ship-flow.test.mjs",
+      "limit": "Sous-ensemble des 247 tests. La sauvegarde, le menu, le reload et la reprise de l’interface sont également qualifiés par V2-BROWSER."
+    },
+    {
+      "id": "V2-AUDIO",
+      "subject": "Cycle de vie audio",
+      "status": "Réussi",
+      "count": 32,
+      "unit": "tests",
+      "evidence": "32 tests audio réussis dans les 247 : sept tests du directeur royal et 25 tests du directeur d’arrivée, du moteur de scène et du cycle de vie commun. Aucun échec ni test ignoré.",
+      "source": "qa/browser-41827785792/workflow-job.log ; qa/audio-tests.log",
+      "limit": "Ces 32 tests sont déjà inclus dans les 247. Le journal local spécifique est conservé avec sa source initiale. L’écoute perceptive reste une revue distincte."
+    },
+    {
+      "id": "V2-REGRESSION",
+      "subject": "Régressions du chantier",
+      "status": "Réussi",
+      "count": 247,
+      "unit": "tests",
+      "evidence": "247 tests réussis dans la CI finale sur 881b66da, aucun échec ni test ignoré. Commande du workflow dédiée ; durée Node : 21,275 secondes.",
+      "source": "qa/browser-41827785792/workflow-job.log ; qa/browser-41827785792/workflow-result.json",
+      "limit": "Les sous-ensembles château, audio et sauvegarde sont inclus. Les huit tests world-screens complémentaires et les 294 tests historiques 1.2.0 restent séparés."
+    },
+    {
+      "id": "V2-TYPE",
+      "subject": "TypeScript",
+      "status": "Réussi",
+      "count": null,
+      "unit": "",
+      "evidence": "TypeScript complet réussit dans la CI finale sur 881b66da, équivalent au code local 132b2f1f.",
+      "source": "qa/browser-41827785792/workflow-job.log ; qa/browser-41827785792/workflow-result.json",
+      "limit": "Analyse statique du code qualifié. Le parcours navigateur possède son rapport distinct."
+    },
+    {
+      "id": "V2-LINT",
+      "subject": "ESLint strict de l’intégration",
+      "status": "Réussi",
+      "count": null,
+      "unit": "",
+      "evidence": "ESLint avec zéro avertissement autorisé réussit sur le périmètre du workflow : scènes, intégration, sauvegarde, audio, worldScreens, scripts et tests ciblés.",
+      "source": "qa/browser-41827785792/workflow-job.log ; qa/browser-41827785792/workflow-result.json",
+      "limit": "La commande exacte et son périmètre sont conservés dans le journal CI. Aucun audit global hors de cette commande n’est revendiqué."
+    },
+    {
+      "id": "V2-BUILD",
+      "subject": "Build de production",
+      "status": "Réussi",
+      "count": null,
+      "unit": "",
+      "evidence": "Build de production terminé avec le code de sortie 0 sur 132b2f1f en 243,649 secondes : webpack, TypeScript, neuf pages et contrôle CSS PIT.",
+      "source": "qa/build-132b2f1f/build.log ; qa/build-132b2f1f/build-result.json ; npm run build:production",
+      "limit": "Les étapes native-origin et static-output sont ignorées hors de l’environnement Vercel exact. Ce build ne certifie ni un déploiement Vercel ni le parcours navigateur."
+    },
+    {
+      "id": "V2-ART",
+      "subject": "PNG et copies WebP",
+      "status": "Réussi",
+      "count": 30,
+      "unit": "images",
+      "evidence": "30 PNG intacts : 56 851 298 octets. 30 WebP : 7 312 410 octets, soit 87,1377 % de réduction. Dimensions et alpha identiques sur les 30 paires.",
+      "source": "runtime-art-v2.json ; qa/browser-41827785792/workflow-job.log",
+      "limit": "24 images transparentes et six fonds opaques. Le parcours final sollicite 29 WebP du lot ; low-fog.webp n’y est pas demandé. Les 30 paires sont contrôlées techniquement."
+    },
+    {
+      "id": "V2-BROWSER",
+      "subject": "Parcours navigateur",
+      "status": "Réussi",
+      "count": 24,
+      "unit": "contrôles",
+      "evidence": "24/24 contrôles réussis sur 881b66da : château, trois gardes, sauvegarde/reprise, focus natif, mobile, huit plans et relais uniques. 21 captures, zéro exception JavaScript et zéro ressource visuelle demandée manquante.",
+      "source": "qa/browser-41827785792/report.json ; qa/browser-41827785792/workflow-result.json",
+      "limit": "Recette du vrai GameClient dans Chromium avec Vite. Les 185 ressources sollicitées sont disponibles. La revue des captures reste distincte de l’écoute physique et de la validation artistique humaine."
+    },
+    {
+      "id": "V2-HUMAN",
+      "subject": "Revue artistique humaine",
+      "status": "À faire",
+      "count": 0,
+      "unit": "approbations",
+      "evidence": "30 images conservées ou générées. Les trois poses ont été inspectées techniquement et visuellement par l’assistant.",
+      "source": "Manifestes artistiques V1 et art-manifest-combat-v2.json",
+      "limit": "Cette inspection ne vaut pas validation artistique humaine ni certification globale 1:1."
+    },
+    {
+      "id": "V2-MIX",
+      "subject": "Écoute du mixage",
+      "status": "À faire",
+      "count": null,
+      "unit": "",
+      "evidence": "Écouter la séquence complète et la cour avec plusieurs niveaux de volume.",
+      "source": "Directeurs audio du château et de l’arrivée",
+      "limit": "L’activation des signaux ne prouve pas l’équilibre sonore perçu."
+    },
+    {
+      "id": "V2-DUNGEON",
+      "subject": "Donjon scénarisé",
+      "status": "À faire",
+      "count": null,
+      "unit": "",
+      "evidence": "L’épreuve de trois gardes reste un entraînement. Concevoir séparément rencontres scénarisées, quêtes et récompenses.",
+      "source": "app/game/systems/wolfCastleCombat.ts",
+      "limit": "Aucun boss canonique, butin ou économie de campagne n’est revendiqué par cette épreuve."
+    },
+    {
+      "id": "V2-FILM",
+      "subject": "Découpage exact du film",
+      "status": "À faire",
+      "count": null,
+      "unit": "",
+      "evidence": "Comparer la copie demandée plan par plan et relever les timecodes vérifiés.",
+      "source": "https://www.youtube.com/watch?v=43SCLM6cGTc",
+      "limit": "Les 62 secondes décrivent le montage du jeu. La vidéo n’a pas été intégralement visionnée dans le chantier historique."
+    },
+    {
+      "id": "V2-WORLD",
+      "subject": "Régression des écrans du monde",
+      "status": "Réussi",
+      "count": 8,
+      "unit": "tests complémentaires",
+      "evidence": "Huit tests world-screens réussis, aucun échec ni test ignoré. Le stdout exact et sa provenance sont conservés. La seule retouche après cette exécution raccourcit un commentaire.",
+      "source": "qa/composition-132b2f1f/world-screens.log ; qa/composition-132b2f1f/world-screens-result.json",
+      "limit": "Suite distincte de la commande des 247 tests. Les tests ne constituent pas une validation artistique du cadrage."
+    },
+    {
+      "id": "V2-FRAMES",
+      "subject": "Géométrie des fonds",
+      "status": "Réussi",
+      "count": 24,
+      "unit": "rectangles",
+      "evidence": "24 rectangles valides sur huit biomes et trois bandes. Seule la jungle est recadrée ; ses trois bandes couvrent 941 pixels. Les 21 autres rectangles conservent leur image entière. Dimensions et blobs Git vérifiés.",
+      "source": "qa/composition-132b2f1f/background-frames-audit.json ; app/game/worldScreens.ts",
+      "limit": "Le helper du commit 132b2f1f est exécuté et les huit images sont décodées. Cet audit géométrique reste distinct de la revue des captures navigateur."
+    }
+  ],
+  "limitation": "Les contrôles du classeur et de ses images ne qualifient pas le navigateur ni la fidélité artistique. Les preuves historiques restent liées à leur version.",
+  "sourceCommit": "132b2f1fa4f0fdf0de096566cc1e1e33a6286d34",
+  "publishedCodeCommit": "881b66dafc94ac007b7de907bc625b00af71dff8",
+  "publishedCodeTree": "54804a2c3d3762f3ca3b0d621ff8401c50ab2c42",
+  "productionBuildCommit": "132b2f1fa4f0fdf0de096566cc1e1e33a6286d34",
+  "inputWorkbookSha256": "130d0eb02449fa60713dc0084f37269350222e83533d4174539a2cb4ad8e173e",
+  "outputWorkbookSha256": "94ffe9166afbdbdf70fa38d799e431dac53587c0fdd96310d89c56538a284c47",
+  "historyReport": "history/workbook-verification-1.2.0.json"
+}

@@ -1,0 +1,128 @@
+name: Wolf castle and planetary arrival
+
+on:
+  pull_request:
+    branches: [main, feat/clan-ship-docking-20261104]
+    paths:
+      - 'app/game/WolfCastleScene*'
+      - 'app/game/PlanetArrivalCinematic*'
+      - 'app/game/GameClient.tsx'
+      - 'app/game/CampaignMainMenu.tsx'
+      - 'app/game/save.ts'
+      - 'app/game/types.ts'
+      - 'app/game/sound.ts'
+      - 'app/game/systems/sceneAudio.ts'
+      - 'app/game/systems/wolfCastle*.ts'
+      - 'app/game/systems/planetArrival*.ts'
+      - 'app/game/systems/campaignSlots.ts'
+      - 'app/game/systems/completeArchive.ts'
+      - 'app/game/systems/mainMenuModesV81.ts'
+      - 'public/game/wolf-castle/**'
+      - 'public/game/planet-arrival/**'
+      - 'tests/wolf-*.test.mjs'
+      - 'tests/planet-arrival*.test.mjs'
+      - 'tests/scene-audio.test.mjs'
+      - 'tests/sound-lifecycle.test.mjs'
+      - 'tests/game-client-ship-flow.test.mjs'
+      - 'tests/fixtures/wolf-arrival-browser-assets.json'
+      - 'scripts/qa-wolf-arrival-browser.mjs'
+      - 'scripts/build-wolf-runtime-art.mjs'
+      - 'production/wolf-castle-arrival-20261104/runtime-art-v2.json'
+      - '.github/workflows/wolf-castle-arrival.yml'
+  push:
+    branches: [feat/wolf-castle-arrival-20261104, feat/wolf-castle-continuation-20261104]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: wolf-arrival-${{ github.event.pull_request.head.ref || github.ref_name }}
+  cancel-in-progress: true
+
+jobs:
+  castle-arrival:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    env:
+      ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
+      NEXT_TELEMETRY_DISABLED: '1'
+      WOLF_ARRIVAL_SOURCE_COMMIT: ${{ github.event.pull_request.head.sha || github.sha }}
+      WOLF_ARRIVAL_HEADED: '1'
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          persist-credentials: false
+          filter: blob:none
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /*
+            !/*/
+            /app/
+            /scripts/
+            /tests/
+            /desktop/
+            /build/
+            /.openai/hosting.json
+            /public/**/manifest.json
+            /public/game/ship-interior/
+            /production/wolf-castle-arrival-20261104/art-manifest*.json
+            /production/wolf-castle-arrival-20261104/runtime-art-v2.json
+      - name: Include the castle, arrival and real campaign artwork
+        run: |
+          node --input-type=module <<'NODE'
+          import assert from 'node:assert/strict';
+          import { readFileSync, existsSync } from 'node:fs';
+          import { execFileSync } from 'node:child_process';
+          const { paths } = JSON.parse(readFileSync('tests/fixtures/wolf-arrival-browser-assets.json', 'utf8'));
+          assert.equal(new Set(paths).size, paths.length);
+          for (const file of paths) {
+            assert.match(file, /^public\/game\/[A-Za-z0-9._/-]+$/);
+            assert.ok(file.split('/').every(part => part && part !== '.' && part !== '..'));
+          }
+          execFileSync('git', ['sparse-checkout', 'add', '--stdin'], { input: paths.map(file => '/' + file).join('\n') + '\n', stdio: ['pipe', 'inherit', 'inherit'] });
+          assert.deepEqual(paths.filter(file => !existsSync(file)), [], 'Every declared visual must exist');
+          console.log('Campaign assets included:', paths.length);
+          NODE
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci --ignore-scripts --no-audit --no-fund
+      - name: Typecheck
+        run: npm run typecheck
+      - name: Strict lint of the castle and arrival integration
+        run: >-
+          node node_modules/eslint/bin/eslint.js --max-warnings=0
+          app/game/WolfCastleScene.tsx app/game/PlanetArrivalCinematic.tsx
+          app/game/GameClient.tsx app/game/CampaignMainMenu.tsx app/game/save.ts app/game/types.ts
+          app/game/worldScreens.ts
+          app/game/systems/wolfCastle*.ts app/game/systems/planetArrival*.ts
+          app/game/systems/sceneAudio.ts app/game/sound.ts
+          app/game/systems/campaignSlots.ts app/game/systems/completeArchive.ts app/game/systems/mainMenuModesV81.ts
+          scripts/qa-wolf-arrival-browser.mjs scripts/build-wolf-runtime-art.mjs tests/wolf-castle*.test.mjs
+          tests/planet-arrival*.test.mjs tests/scene-audio.test.mjs tests/wolf-arrival-save.test.mjs
+          tests/game-client-ship-flow.test.mjs
+      - name: Audit original PNGs, exact alpha and individual WebP runtime images
+        run: node scripts/build-wolf-runtime-art.mjs --check
+      - name: State, saves, archives and campaign regressions
+        run: >-
+          node --experimental-strip-types --test --test-concurrency=1
+          tests/wolf-castle*.test.mjs tests/planet-arrival*.test.mjs tests/wolf-arrival-save.test.mjs
+          tests/scene-audio.test.mjs tests/sound-lifecycle.test.mjs
+          tests/clan-ship-docking.test.mjs tests/clan-ship-save.test.mjs
+          tests/complete-archive.test.mjs tests/campaign-slots.test.mjs
+          tests/campaign-resume-priority-v94.test.mjs tests/game-client-ship-flow.test.mjs
+      - name: Install the pinned Chromium browser
+        run: node node_modules/playwright-core/cli.js install --with-deps chromium
+      - name: Traverse the castle, restore an arrival and watch the complete descent
+        run: xvfb-run -a --server-args="-screen 0 1920x1200x24" node scripts/qa-wolf-arrival-browser.mjs
+      - name: Upload browser evidence even when a check fails
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: wolf-arrival-browser-${{ github.sha }}
+          path: outputs/qa-wolf-arrival/
+          if-no-files-found: warn
+          retention-days: 14

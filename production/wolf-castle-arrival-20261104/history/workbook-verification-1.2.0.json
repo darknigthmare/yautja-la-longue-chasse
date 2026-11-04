@@ -1,0 +1,435 @@
+{
+  "generatedAt": "2026-11-04T08:37:05.216Z",
+  "engine": "@oai/artifact-tool",
+  "runtimeNode": "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+  "version": "1.2.0",
+  "file": "wolf-castle-arrival-20261104.xlsx",
+  "sheets": [
+    "Synthese",
+    "Chateau",
+    "Cinematique",
+    "Sprites",
+    "Prompts",
+    "Verification"
+  ],
+  "detailCounts": {
+    "salles": 9,
+    "plans": 8,
+    "sprites": 27,
+    "prompts": 27,
+    "verification": 14
+  },
+  "summaryCounts": [
+    27,
+    19,
+    8,
+    9,
+    8,
+    62,
+    21,
+    6,
+    27,
+    0,
+    27,
+    27
+  ],
+  "expectedCounts": [
+    27,
+    19,
+    8,
+    9,
+    8,
+    62,
+    21,
+    6,
+    27,
+    0,
+    27,
+    27
+  ],
+  "shotDurations": [
+    7,
+    6,
+    10,
+    8,
+    10,
+    8,
+    8,
+    5
+  ],
+  "propagationCheck": {
+    "temporaryHumanStatus": "Validé",
+    "observed": [
+      1,
+      26
+    ],
+    "restored": true
+  },
+  "durationPropagation": {
+    "temporaryFinalTime": 63,
+    "observed": 63,
+    "restoredTo": 62
+  },
+  "exactPromptReconstruction": {
+    "checked": 27,
+    "allMatch": true
+  },
+  "formulaErrorScan": {
+    "recordCount": 1,
+    "truncated": false,
+    "metadata": {
+      "revision": "ds1m08",
+      "target": {
+        "id": "wb/jjji1s",
+        "beforeLines": 0,
+        "afterLines": 0
+      },
+      "kind": {
+        "requested": "match",
+        "tokens": [
+          "match"
+        ]
+      },
+      "include": {
+        "tokens": []
+      },
+      "exclude": {
+        "tokens": []
+      },
+      "notices": []
+    }
+  },
+  "inspections": [
+    {
+      "recordCount": 1,
+      "truncated": false,
+      "metadata": {
+        "revision": "o0oxmo",
+        "target": {
+          "id": "wb/i7uxbo",
+          "beforeLines": 0,
+          "afterLines": 0
+        },
+        "kind": {
+          "requested": "table",
+          "tokens": [
+            "table"
+          ]
+        },
+        "include": {
+          "requested": "values,formulas",
+          "tokens": [
+            "values",
+            "formulas"
+          ]
+        },
+        "exclude": {
+          "tokens": []
+        },
+        "notices": []
+      }
+    },
+    {
+      "recordCount": 1,
+      "truncated": false,
+      "metadata": {
+        "revision": "16pn6c",
+        "target": {
+          "id": "wb/r3pw1z",
+          "beforeLines": 0,
+          "afterLines": 0
+        },
+        "kind": {
+          "requested": "table",
+          "tokens": [
+            "table"
+          ]
+        },
+        "include": {
+          "requested": "values,formulas",
+          "tokens": [
+            "values",
+            "formulas"
+          ]
+        },
+        "exclude": {
+          "tokens": []
+        },
+        "notices": []
+      }
+    },
+    {
+      "recordCount": 1,
+      "truncated": false,
+      "metadata": {
+        "revision": "yk7ty1",
+        "target": {
+          "id": "wb/yoqqno",
+          "beforeLines": 0,
+          "afterLines": 0
+        },
+        "kind": {
+          "requested": "table",
+          "tokens": [
+            "table"
+          ]
+        },
+        "include": {
+          "requested": "values,formulas",
+          "tokens": [
+            "values",
+            "formulas"
+          ]
+        },
+        "exclude": {
+          "tokens": []
+        },
+        "notices": []
+      }
+    }
+  ],
+  "renders": [
+    {
+      "sheet": "Synthese",
+      "range": "A1:F22",
+      "file": "previews/Synthese.png"
+    },
+    {
+      "sheet": "Chateau",
+      "range": "A1:D14",
+      "file": "previews/Chateau-parcours.png"
+    },
+    {
+      "sheet": "Chateau",
+      "range": "E5:H14",
+      "file": "previews/Chateau-assets-sauvegarde.png"
+    },
+    {
+      "sheet": "Cinematique",
+      "range": "A1:F15",
+      "file": "previews/Cinematique-plans.png"
+    },
+    {
+      "sheet": "Cinematique",
+      "range": "G5:I13",
+      "file": "previews/Cinematique-assets.png"
+    },
+    {
+      "sheet": "Sprites",
+      "range": "A1:H32",
+      "file": "previews/Sprites-dimensions.png"
+    },
+    {
+      "sheet": "Sprites",
+      "range": "I5:N32",
+      "file": "previews/Sprites-statuts-chemins.png"
+    },
+    {
+      "sheet": "Verification",
+      "range": "A1:E19",
+      "file": "previews/Verification-etats.png"
+    },
+    {
+      "sheet": "Verification",
+      "range": "F5:H19",
+      "file": "previews/Verification-preuves.png"
+    },
+    {
+      "sheet": "Prompts",
+      "range": "A1:H11",
+      "file": "previews/Prompts-references.png"
+    },
+    {
+      "sheet": "Prompts",
+      "range": "A13:H32",
+      "file": "previews/Prompts-01-03.png"
+    },
+    {
+      "sheet": "Prompts",
+      "range": "A34:H52",
+      "file": "previews/Prompts-04-06.png"
+    },
+    {
+      "sheet": "Prompts",
+      "range": "A54:H74",
+      "file": "previews/Prompts-07-09.png"
+    },
+    {
+      "sheet": "Prompts",
+      "range": "A76:H96",
+      "file": "previews/Prompts-10-12.png"
+    },
+    {
+      "sheet": "Prompts",
+      "range": "A98:H115",
+      "file": "previews/Prompts-13-15.png"
+    },
+    {
+      "sheet": "Prompts",
+      "range": "A117:H136",
+      "file": "previews/Prompts-16-18.png"
+    },
+    {
+      "sheet": "Prompts",
+      "range": "A138:H153",
+      "file": "previews/Prompts-19-21.png"
+    },
+    {
+      "sheet": "Prompts",
+      "range": "A155:H170",
+      "file": "previews/Prompts-22-24.png"
+    },
+    {
+      "sheet": "Prompts",
+      "range": "A172:H186",
+      "file": "previews/Prompts-25-27.png"
+    }
+  ],
+  "visualReview": {
+    "status": "pending",
+    "sheets": []
+  },
+  "gameChecks": [
+    {
+      "id": "TEST-CH",
+      "subject": "Logique du château",
+      "status": "Réussi",
+      "count": 17,
+      "unit": "tests",
+      "evidence": "Transitions, audience, épreuve, graphe de retour, déplacements et collisions.",
+      "source": "tests/wolf-castle.test.mjs",
+      "limit": "Tests automatisés de domaine. Le parcours visuel relève de la recette navigateur."
+    },
+    {
+      "id": "TEST-AR",
+      "subject": "Logique de la cinématique",
+      "status": "Réussi",
+      "count": 24,
+      "unit": "tests",
+      "evidence": "Huit plans, limites temporelles, pause, saut, suspension et identités de mission.",
+      "source": "tests/planet-arrival.test.mjs",
+      "limit": "Le découpage est une adaptation du brief. Les timecodes exacts du film ne sont pas certifiés."
+    },
+    {
+      "id": "TEST-SAVE",
+      "subject": "Persistance et reprise",
+      "status": "Réussi",
+      "count": 14,
+      "unit": "tests",
+      "evidence": "Propriétaire de campagne, versions, refus des données incohérentes et relais de mission.",
+      "source": "tests/wolf-arrival-save.test.mjs",
+      "limit": "La réussite des tests de stockage ne constitue pas une recette complète dans le navigateur."
+    },
+    {
+      "id": "TEST-CLIENT",
+      "subject": "Relais GameClient",
+      "status": "Réussi",
+      "count": 22,
+      "unit": "tests",
+      "evidence": "Handlers de transition, dont six cas ajoutés pour retirer les runs morts ou refusés à la reprise.",
+      "source": "tests/game-client-ship-flow.test.mjs",
+      "limit": "Harness automatisé des handlers. Ces 22 tests sont inclus dans la suite combinée de 294 tests."
+    },
+    {
+      "id": "TYPE",
+      "subject": "TypeScript",
+      "status": "Réussi",
+      "count": null,
+      "unit": "",
+      "evidence": "Vérification de types réussie.",
+      "source": "npm run typecheck",
+      "limit": "Contrôle statique."
+    },
+    {
+      "id": "LINT",
+      "subject": "ESLint",
+      "status": "Réussi",
+      "count": null,
+      "unit": "",
+      "evidence": "Analyse stricte réussie.",
+      "source": "ESLint sur les fichiers du chantier",
+      "limit": "Contrôle statique."
+    },
+    {
+      "id": "BUILD",
+      "subject": "Build de production",
+      "status": "Réussi",
+      "count": null,
+      "unit": "",
+      "evidence": "Build complet terminé avec le code de sortie 0 : Next webpack, neuf pages et CSS PIT.",
+      "source": "npm run build",
+      "limit": "Les étapes spécifiques à Vercel sont normalement ignorées hors de cet environnement. Le build ne remplace pas la recette UI."
+    },
+    {
+      "id": "ART",
+      "subject": "Fichiers graphiques",
+      "status": "Réussi",
+      "count": 27,
+      "unit": "images",
+      "evidence": "Dimensions, alpha, empreintes SHA-256 et références de code vérifiés en lecture seule.",
+      "source": "art-audit.json",
+      "limit": "0 doublon et 0 chemin inutilisé au contrôle des sources. Ce contrôle ne prouve pas le chargement dans le navigateur."
+    },
+    {
+      "id": "BROWSER",
+      "subject": "Parcours navigateur",
+      "status": "En attente",
+      "count": null,
+      "unit": "scénarios",
+      "evidence": "Recette CI en cours ou à exécuter.",
+      "source": "scripts/qa-wolf-arrival-browser.mjs",
+      "limit": "Aucun scénario navigateur de ce chantier n’est déclaré réussi dans ce relevé provisoire."
+    },
+    {
+      "id": "REGRESSION",
+      "subject": "Suite combinée et régression",
+      "status": "Réussi",
+      "count": 294,
+      "unit": "tests",
+      "evidence": "294 tests réussis sur 15 fichiers, aucun échec ni test ignoré. Durée observée : 55,1 secondes.",
+      "source": "wolf-regression-final.log ; 15 fichiers de tests du chantier et de régression",
+      "limit": "Total incluant 17 château, 24 arrivée, 14 persistance et 22 handlers, soit 77 tests ciblés et 217 autres régressions. Ne pas additionner deux fois."
+    },
+    {
+      "id": "HUMAN",
+      "subject": "Revue artistique humaine",
+      "status": "À faire",
+      "count": 0,
+      "unit": "approbations",
+      "evidence": "Les 27 images restent à examiner et à approuver par une personne.",
+      "source": "art-manifest-castle.json et art-manifest-arrival-and-characters.json",
+      "limit": "Génération, contrôle alpha et chargement ne valent pas validation artistique."
+    },
+    {
+      "id": "DUNGEON",
+      "subject": "Donjon de combat",
+      "status": "À faire",
+      "count": null,
+      "unit": "",
+      "evidence": "La cour propose une épreuve de trois sceaux. Un véritable donjon de combat reste à développer.",
+      "source": "app/game/systems/wolfCastle.ts",
+      "limit": "Pas de boss, de vagues ennemies ni de récompense canonique ajoutés par cette épreuve."
+    },
+    {
+      "id": "AUDIO",
+      "subject": "Audio dédié",
+      "status": "À faire",
+      "count": null,
+      "unit": "",
+      "evidence": "Ambiances royales, ouverture de capsule et impacts dédiés restent à produire.",
+      "source": "Périmètre de production du château et de l’arrivée",
+      "limit": "Aucune piste extraite du film n’est incluse."
+    },
+    {
+      "id": "FILM",
+      "subject": "Découpage exact du film",
+      "status": "À faire",
+      "count": null,
+      "unit": "",
+      "evidence": "Comparer la copie demandée plan par plan et renseigner les timecodes vérifiés.",
+      "source": "https://www.youtube.com/watch?v=43SCLM6cGTc",
+      "limit": "Les 62 secondes décrivent le montage du jeu, pas une analyse certifiée de la vidéo."
+    }
+  ],
+  "limitation": "Les références de code et contrôles d’images ne constituent pas une validation artistique humaine. Les résultats navigateur figurent uniquement avec leur preuve dans Verification."
+}
