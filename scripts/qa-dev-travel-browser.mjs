@@ -444,7 +444,10 @@ try {
     assert.ok(initial.rooms.includes('jungle-pilot-approach'), 'The baseline checkpoint must include the real insertion room.');
     await page.getByRole('button', { name: 'Reprendre', exact: true }).click();
     let discovered = initial;
-    for (let attempt = 0; attempt < 10; attempt++) {
+    // The next ground room starts 575 pixels beyond this fixture's insertion.
+    // The observed CI run advanced about 23 pixels per 650 ms input pulse.
+    // Bound the real-input traversal while retaining the native discovery exit.
+    for (let attempt = 0; attempt < 40; attempt++) {
       await page.locator('.hunt-canvas').focus();
       await page.keyboard.down('ArrowRight');
       try { await page.waitForTimeout(650); }

@@ -633,6 +633,19 @@ try {
     await page.locator('[data-arrival-status="playing"]').waitFor();
   });
   await check('Arrival pause freezes active time and reduced-motion keeps the same mission', async () => {
+    // Resume disappears before the scene focuses Pause on its next animation
+    // frame. Wait for that focus before sending the single keyboard pause.
+    await page.waitForFunction(() => {
+      const arrival = document.querySelector('[data-arrival-run][data-arrival-status="playing"]');
+      const active = document.activeElement;
+      return document.hasFocus() && !document.hidden && active instanceof HTMLButtonElement &&
+        arrival?.contains(active) && active.textContent?.trim() === 'Pause' && !active.disabled && active.getClientRects().length > 0;
+    });
+    report.focusTransitions.push(await page.evaluate(() => ({
+      phase: 'before-arrival-escape', focused: document.hasFocus(), hidden: document.hidden,
+      arrivalStatus: document.querySelector('[data-arrival-run]')?.getAttribute('data-arrival-status'),
+      activeElement: document.activeElement?.outerHTML.slice(0,500),
+    })));
     await page.keyboard.press('Escape');
     await page.locator('[data-arrival-status="paused"]').waitFor();
     const pausedTime = await page.locator('[data-arrival-run]').getAttribute('data-arrival-elapsed');
