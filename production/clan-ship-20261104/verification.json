@@ -1,122 +1,649 @@
 {
-  "generatedAt": "2026-11-04T07:11:32.368Z",
+  "generatedAt": "2026-11-04T11:16:53.206Z",
   "engine": "@oai/artifact-tool",
   "sheets": 5,
   "detailRows": {
-    "ClanShip": 24,
-    "Assets": 26,
-    "Chateau": 12,
-    "Arrivee_QA": 29
+    "ClanShip": 40,
+    "Assets": 67,
+    "Chateau": 33,
+    "Arrivee_QA": 61
   },
   "summaryCounts": [
-    24,
+    40,
     20,
-    6,
-    12,
+    32,
+    33,
     8,
-    10
+    22
   ],
   "expectedCounts": [
-    24,
+    40,
     20,
-    6,
-    12,
+    32,
+    33,
     8,
-    10
+    22
   ],
+  "additionalCounts": {
+    "roomBackgrounds": 7,
+    "individualProps": 8,
+    "arrivalSeconds": 62,
+    "castleRooms": 9,
+    "generationRequests": 30,
+    "reuseInstructions": 2
+  },
+  "inventoryCheck": {
+    "files": 15,
+    "sha256": "Conformes",
+    "bytes": "Conformes",
+    "roomBackgroundBytes": 1661452,
+    "propBytes": 1368700
+  },
   "propagationCheck": {
-    "temporaryAssetState": "À produire",
+    "temporaryAssetState": "Spécifié",
     "observed": [
       19,
-      7
+      33
     ],
-    "restored": true
+    "restored": true,
+    "durationBefore": 62,
+    "changedDuration": 63,
+    "durationRestored": 62
   },
-  "formulaInspection": {
-    "recordCount": 1,
-    "truncated": false,
-    "metadata": {
-      "revision": "5uc8w6",
-      "target": {
-        "id": "wb/18pc3t",
-        "beforeLines": 0,
-        "afterLines": 0
-      },
-      "kind": {
-        "requested": "match",
-        "tokens": [
-          "match"
-        ]
-      },
-      "include": {
-        "tokens": []
-      },
-      "exclude": {
-        "tokens": []
-      },
-      "notices": []
-    }
-  },
+  "formulaInspection": "{\"kind\":\"notice\",\"message\":\"Cell search matched 0 entries.\"}",
   "renders": [
     {
       "sheet": "Reprise",
-      "file": "preview-Reprise.png",
-      "rows": 24
+      "file": "preview-Reprise-1.png",
+      "range": "A1:F24"
     },
     {
       "sheet": "ClanShip",
-      "file": "preview-ClanShip.png",
-      "rows": 29
+      "file": "preview-ClanShip-1.png",
+      "range": "A1:G28"
+    },
+    {
+      "sheet": "ClanShip",
+      "file": "preview-ClanShip-2.png",
+      "range": "A29:G45"
     },
     {
       "sheet": "Assets",
-      "file": "preview-Assets.png",
-      "rows": 31
+      "file": "preview-Assets-1-1.png",
+      "range": "A1:G28"
+    },
+    {
+      "sheet": "Assets",
+      "file": "preview-Assets-1-2.png",
+      "range": "H1:K28"
+    },
+    {
+      "sheet": "Assets",
+      "file": "preview-Assets-2-1.png",
+      "range": "A29:G56"
+    },
+    {
+      "sheet": "Assets",
+      "file": "preview-Assets-2-2.png",
+      "range": "H29:K56"
+    },
+    {
+      "sheet": "Assets",
+      "file": "preview-Assets-3-1.png",
+      "range": "A57:G72"
+    },
+    {
+      "sheet": "Assets",
+      "file": "preview-Assets-3-2.png",
+      "range": "H57:K72"
     },
     {
       "sheet": "Chateau",
-      "file": "preview-Chateau.png",
-      "rows": 17
+      "file": "preview-Chateau-1.png",
+      "range": "A1:F28"
+    },
+    {
+      "sheet": "Chateau",
+      "file": "preview-Chateau-2.png",
+      "range": "A29:F38"
     },
     {
       "sheet": "Arrivee_QA",
-      "file": "preview-Arrivee_QA.png",
-      "rows": 34
+      "file": "preview-Arrivee_QA-1.png",
+      "range": "A1:H28"
+    },
+    {
+      "sheet": "Arrivee_QA",
+      "file": "preview-Arrivee_QA-2.png",
+      "range": "A29:H56"
+    },
+    {
+      "sheet": "Arrivee_QA",
+      "file": "preview-Arrivee_QA-3.png",
+      "range": "A57:H66"
     }
   ],
   "visualReview": {
-    "status": "Vérifié",
-    "scope": "Cinq onglets rendus et relus après mise à jour du run final 41789974649 ; aucune troncature matérielle observée.",
-    "browserQA": "10/10 scénarios CI ; zéro asset manquant et zéro exception JS",
-    "integrationQA": "QA05 et QA06 : tests de domaine, aucun scénario UI dédié"
+    "status": "Relu",
+    "reviewers": [
+      "Agent classeur",
+      "Root et relecteur sur les sections signalées"
+    ],
+    "scope": "14 sections des cinq feuilles relues ; relecture finale des vues Reprise, ClanShip, Assets et Arrivee_QA modifiées après qualification finale",
+    "result": "Libellés, retours à la ligne, compteurs et sources lisibles ; aucune troncature de contenu observée. Revue artistique humaine inchangée.",
+    "reviewedXlsxSha256": "9dcc5406f867b91ae97210ccfe4b5cb2dc5eae7fe4cb5bda32e871f9d0f9dfc7"
   },
   "gameQA": {
-    "automatedTests": "184/184 CI",
-    "lint": "strict CI réussi",
-    "typecheck": "CI réussi",
-    "build": "Next webpack local exit 0",
-    "browserChecks": "10/10 CI final",
-    "browserRun": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41789974649",
-    "browserHead": "9d77af88148e8ab5b2d49e64040024c57aeba67d",
-    "sharedAssets": "0 asset demandé manquant ; assertion bloquante réussie sur la route visitée",
-    "browserExceptions": 0,
-    "integrationScope": "20 tests sauvegarde ; multiowner/import ne sont pas des scénarios UI",
-    "screenshots": "Relues par root et agent UI, desktop 1440 et mobile 320 ; commandes 390 testées"
+    "baseline": {
+      "label": "Plan de visite initial",
+      "sourceCommit": "9d77af88148e8ab5b2d49e64040024c57aeba67d",
+      "runUrl": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41789974649",
+      "automatedTests": 184,
+      "browserPassed": 10,
+      "browserTotal": 10,
+      "missingAssets": 0,
+      "exceptions": 0,
+      "proofDirectory": "qa",
+      "scope": "Amarrage, sept salles par navigation, six services, reprise. Preuve antérieure à l’intérieur physique."
+    },
+    "current": {
+      "label": "Intérieur physique",
+      "status": "Validé CI",
+      "sourceCommit": "22fad968311d252310fe2fde281f71564a401a64",
+      "runUrl": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41818690041",
+      "automatedTests": 201,
+      "browserPassed": 22,
+      "browserTotal": 22,
+      "missingAssets": 0,
+      "exceptions": 0,
+      "proofDirectory": "qa-interior/run-41818690041",
+      "lint": "Réussi en CI ; ESLint strict",
+      "typecheck": "Réussi en CI",
+      "build": {
+        "status": "Réussi CI",
+        "kind": "Next.js webpack",
+        "sourceCommit": "22fad968311d252310fe2fde281f71564a401a64",
+        "runUrl": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41818690146",
+        "jobUrl": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41818690146/job/126536529962",
+        "step": 16,
+        "scope": "Étape build réussie ; aucune réussite globale du workflow déduite."
+      },
+      "checks": [
+        {
+          "name": "Legacy campaign migrates through the real main menu to the personal deck",
+          "label": "Ancienne campagne : menu principal puis pont personnel",
+          "status": "Validé CI",
+          "passed": true,
+          "scope": "GameClient réel",
+          "source": "22fad96 ; scénario 1 ; qa-interior/run-41818690041/report.json"
+        },
+        {
+          "name": "A held gamepad confirmation advances only one docking stage",
+          "label": "Confirmation maintenue : une seule étape d’amarrage",
+          "status": "Validé CI",
+          "passed": true,
+          "scope": "GameClient réel",
+          "source": "22fad96 ; scénario 2 ; qa-interior/run-41818690041/report.json"
+        },
+        {
+          "name": "Dock and board preserve the selected personal hull",
+          "label": "Amarrage et entrée conservent la coque personnelle",
+          "status": "Validé CI",
+          "passed": true,
+          "scope": "GameClient réel",
+          "source": "22fad96 ; scénario 3 ; qa-interior/run-41818690041/report.json"
+        },
+        {
+          "name": "Keyboard movement follows the real floor and stops at the wall without crossing a door",
+          "label": "Marche clavier, limites du sol et porte non franchie par accident",
+          "status": "Validé CI",
+          "passed": true,
+          "scope": "GameClient réel",
+          "source": "22fad96 ; scénario 4 ; qa-interior/run-41818690041/report.json"
+        },
+        {
+          "name": "Gamepad analog movement controls the hunter without selecting an outer menu button",
+          "label": "Stick analogique : déplacement du chasseur seul",
+          "status": "Validé CI",
+          "passed": true,
+          "scope": "GameClient réel",
+          "source": "22fad96 ; scénario 5 ; qa-interior/run-41818690041/report.json"
+        },
+        {
+          "name": "Pointer movement follows a collision-safe path across the hangar",
+          "label": "Trajet au pointeur sans traverser les obstacles du hangar",
+          "status": "Validé CI",
+          "passed": true,
+          "scope": "GameClient réel",
+          "source": "22fad96 ; scénario 6 ; qa-interior/run-41818690041/report.json"
+        },
+        {
+          "name": "Choosing a room hands focus to walking and a fresh key interrupts the guided route",
+          "label": "Choix de salle, attribution du focus et interruption manuelle",
+          "status": "Validé CI",
+          "passed": true,
+          "scope": "GameClient réel",
+          "source": "22fad96 ; scénario 7 ; qa-interior/run-41818690041/report.json"
+        },
+        {
+          "name": "Retargeting a guided route takes effect immediately and Stop cancels it before a doorway",
+          "label": "Changer de destination en marche puis arrêter avant la porte",
+          "status": "Validé CI",
+          "passed": true,
+          "scope": "GameClient réel",
+          "source": "22fad96 ; scénario 8 ; qa-interior/run-41818690041/report.json"
+        },
+        {
+          "name": "A physical doorway is reached before saving and held confirmation cannot fall through the passage",
+          "label": "Porte atteinte avant écriture ; confirmation tenue sans double passage",
+          "status": "Validé CI",
+          "passed": true,
+          "scope": "GameClient réel",
+          "source": "22fad96 ; scénario 9 ; qa-interior/run-41818690041/report.json"
+        },
+        {
+          "name": "A distant room target walks through adjacent doors instead of teleporting",
+          "label": "Salle éloignée rejointe par les portes successives",
+          "status": "Validé CI",
+          "passed": true,
+          "scope": "GameClient réel",
+          "source": "22fad96 ; scénario 10 ; qa-interior/run-41818690041/report.json"
+        },
+        {
+          "name": "The rendered hunter stops at a real fixture and pointer navigation goes around it",
+          "label": "Collision avec une installation puis contournement au pointeur",
+          "status": "Validé CI",
+          "passed": true,
+          "scope": "GameClient réel",
+          "source": "22fad96 ; scénario 11 ; qa-interior/run-41818690041/report.json"
+        },
+        {
+          "name": "The archive service requires walking into reach and a separate interaction",
+          "label": "Archives : atteindre la portée puis confirmer séparément",
+          "status": "Validé CI",
+          "passed": true,
+          "scope": "GameClient réel",
+          "source": "22fad96 ; scénario 12 ; qa-interior/run-41818690041/report.json"
+        },
+        {
+          "name": "Seven physical rooms and six existing services preserve their room and return position",
+          "label": "Sept salles et six services : même salle et même position au retour",
+          "status": "Validé CI",
+          "passed": true,
+          "scope": "GameClient réel",
+          "source": "22fad96 ; scénario 13 ; qa-interior/run-41818690041/report.json"
+        },
+        {
+          "name": "Settings suspend the clan controller and a manual checkpoint preserves its room",
+          "label": "Paramètres : déplacement suspendu et salle du checkpoint conservée",
+          "status": "Validé CI",
+          "passed": true,
+          "scope": "GameClient réel",
+          "source": "22fad96 ; scénario 14 ; qa-interior/run-41818690041/report.json"
+        },
+        {
+          "name": "Switching browser tabs clears movement and requires a fresh input on return",
+          "label": "Changement d’onglet : commandes effacées puis nouvelle pression",
+          "status": "Validé CI",
+          "passed": true,
+          "scope": "Perte native du focus mesurée : true → false → true ; document visible, hidden=false",
+          "source": "22fad96 ; scénario 15 ; qa-interior/run-41818690041/report.json"
+        },
+        {
+          "name": "Save, main menu, reload and Continue restore the exact clan room",
+          "label": "Sauvegarder, menu, recharger et Continuer dans la salle exacte",
+          "status": "Validé CI",
+          "passed": true,
+          "scope": "GameClient réel",
+          "source": "22fad96 ; scénario 16 ; qa-interior/run-41818690041/report.json"
+        },
+        {
+          "name": "Loading the real manual checkpoint restores Archives after a later room visit",
+          "label": "Checkpoint manuel : restaurer les Archives après une autre visite",
+          "status": "Validé CI",
+          "passed": true,
+          "scope": "GameClient réel",
+          "source": "22fad96 ; scénario 17 ; qa-interior/run-41818690041/report.json"
+        },
+        {
+          "name": "Returning to the personal ship keeps the berth and blocks travel until undocking",
+          "label": "Retour personnel : amarrage conservé et voyage bloqué avant départ",
+          "status": "Validé CI",
+          "passed": true,
+          "scope": "GameClient réel",
+          "source": "22fad96 ; scénario 18 ; qa-interior/run-41818690041/report.json"
+        },
+        {
+          "name": "Approach cancellation is durable and never boards the clan ship",
+          "label": "Annulation d’approche durable sans entrer à bord",
+          "status": "Validé CI",
+          "passed": true,
+          "scope": "GameClient réel",
+          "source": "22fad96 ; scénario 19 ; qa-interior/run-41818690041/report.json"
+        },
+        {
+          "name": "Touch walking and room navigation work at 390px and 320px without horizontal overflow",
+          "label": "Marche tactile et navigation à 390 et 320 px",
+          "status": "Validé CI",
+          "passed": true,
+          "scope": "GameClient réel",
+          "source": "22fad96 ; scénario 20 ; qa-interior/run-41818690041/report.json"
+        },
+        {
+          "name": "Normal and reduced motion keep walking functional without looping motion in reduced mode",
+          "label": "Mouvements normaux et réduits : contrôle conservé",
+          "status": "Validé CI",
+          "passed": true,
+          "scope": "GameClient réel",
+          "source": "22fad96 ; scénario 21 ; qa-interior/run-41818690041/report.json"
+        },
+        {
+          "name": "Clan ship and shared service artwork load without browser errors",
+          "label": "Décors et services : sept fonds chargés, aucune erreur navigateur",
+          "status": "Validé CI",
+          "passed": true,
+          "scope": "GameClient réel",
+          "source": "22fad96 ; scénario 22 ; qa-interior/run-41818690041/report.json"
+        }
+      ],
+      "testSource": "CI 22fad96 ; run 41818690041 ; 201/201 tests dont 17 du contrôleur physique",
+      "previousLocalEvidence": {
+        "automatedTests": 201,
+        "interiorTests": 17,
+        "scope": "Résultat de la reprise précédente, avant les derniers raccordements de props et de guidage",
+        "sourceCommit": null
+      },
+      "coverage": {
+        "CL-25": {
+          "status": "Validé CI",
+          "source": "22fad96 ; scénarios 4, 6, 10, 13 ; qa-interior/report du run 41818690041"
+        },
+        "CL-26": {
+          "status": "Validé CI",
+          "source": "22fad96 ; scénarios 4, 6, 11 ; qa-interior/report du run 41818690041"
+        },
+        "CL-27": {
+          "status": "Validé CI",
+          "source": "22fad96 ; scénarios 7, 8, 9, 10, 13 ; qa-interior/report du run 41818690041"
+        },
+        "CL-28": {
+          "status": "Validé CI",
+          "source": "22fad96 ; scénarios 12, 13 ; qa-interior/report du run 41818690041"
+        },
+        "CL-32": {
+          "status": "Validé CI",
+          "source": "22fad96 ; scénarios 2, 5, 9, 14, 15 ; qa-interior/report du run 41818690041"
+        },
+        "CL-01": {
+          "status": "Validé CI",
+          "source": "22fad96 ; scénarios 3, 18 ; qa-interior/report du run 41818690041"
+        },
+        "CL-02": {
+          "status": "Validé CI",
+          "source": "22fad96 ; scénarios 2, 3 ; qa-interior/report du run 41818690041"
+        },
+        "CL-03": {
+          "status": "Validé CI",
+          "source": "22fad96 ; scénarios 19 ; qa-interior/report du run 41818690041"
+        },
+        "CL-04": {
+          "status": "Validé CI",
+          "source": "22fad96 ; scénarios 3 ; qa-interior/report du run 41818690041"
+        },
+        "CL-05": {
+          "status": "Validé CI",
+          "source": "22fad96 ; scénarios 3 ; qa-interior/report du run 41818690041"
+        },
+        "CL-06": {
+          "status": "Validé CI",
+          "source": "22fad96 ; scénarios 3, 13, 22 ; qa-interior/report du run 41818690041"
+        },
+        "CL-07": {
+          "status": "Validé CI",
+          "source": "22fad96 ; scénarios 13 ; qa-interior/report du run 41818690041"
+        },
+        "CL-08": {
+          "status": "Validé CI",
+          "source": "22fad96 ; scénarios 13 ; qa-interior/report du run 41818690041"
+        },
+        "CL-09": {
+          "status": "Validé CI",
+          "source": "22fad96 ; scénarios 13 ; qa-interior/report du run 41818690041"
+        },
+        "CL-10": {
+          "status": "Validé CI",
+          "source": "22fad96 ; scénarios 13 ; qa-interior/report du run 41818690041"
+        },
+        "CL-11": {
+          "status": "Validé CI",
+          "source": "22fad96 ; scénarios 12, 13, 16, 17 ; qa-interior/report du run 41818690041"
+        },
+        "CL-12": {
+          "status": "Validé CI",
+          "source": "22fad96 ; scénarios 13 ; qa-interior/report du run 41818690041"
+        },
+        "CL-13": {
+          "status": "Validé CI",
+          "source": "22fad96 ; scénarios 9, 10, 13 ; qa-interior/report du run 41818690041"
+        },
+        "CL-14": {
+          "status": "Validé CI",
+          "source": "22fad96 ; scénarios 18 ; qa-interior/report du run 41818690041"
+        },
+        "CL-15": {
+          "status": "Validé CI",
+          "source": "22fad96 ; scénarios 18 ; qa-interior/report du run 41818690041"
+        },
+        "CL-18": {
+          "status": "Validé CI",
+          "source": "22fad96 ; scénarios 16, 17 ; qa-interior/report du run 41818690041"
+        },
+        "CL-20": {
+          "status": "Validé CI",
+          "source": "22fad96 ; scénarios 1 ; qa-interior/report du run 41818690041"
+        },
+        "CL-22": {
+          "status": "Validé CI",
+          "source": "22fad96 ; scénarios 2, 9, 14, 15 ; qa-interior/report du run 41818690041"
+        },
+        "CL-23": {
+          "status": "Validé CI",
+          "source": "22fad96 ; scénarios 20 ; qa-interior/report du run 41818690041"
+        },
+        "CL-31": {
+          "status": "Validé CI",
+          "source": "22fad96 ; scénarios 4, 6, 7 ; qa-interior/report du run 41818690041"
+        },
+        "CL-33": {
+          "status": "Validé CI",
+          "source": "22fad96 ; scénarios 20 ; qa-interior/report du run 41818690041"
+        },
+        "CL-34": {
+          "status": "Validé CI",
+          "source": "22fad96 ; scénarios 13, 14, 15 ; qa-interior/report du run 41818690041 ; focus natif, document visible"
+        },
+        "CL-35": {
+          "status": "Validé CI",
+          "source": "22fad96 ; scénarios 16, 17 ; qa-interior/report du run 41818690041"
+        },
+        "CL-37": {
+          "status": "Validé CI",
+          "source": "22fad96 ; scénarios 21 ; qa-interior/report du run 41818690041"
+        },
+        "CL-38": {
+          "status": "Validé CI",
+          "source": "22fad96 ; scénarios 22 ; qa-interior/report du run 41818690041"
+        },
+        "CL-39": {
+          "status": "Validé CI",
+          "source": "22fad96 ; scénarios 13 ; qa-interior/report du run 41818690041"
+        },
+        "CL-40": {
+          "status": "Validé CI",
+          "source": "22fad96 ; scénarios 20 ; qa-interior/report du run 41818690041 ; revue desktop et deux cadrages complémentaires à 320 px"
+        },
+        "CL-29": {
+          "status": "Implémenté",
+          "source": "tests/clan-ship-save.test.mjs : quota refusé, salle confirmée conservée, réessai ; pas d’injection de quota en navigateur ni de preuve UI de la position après refus"
+        },
+        "CL-30": {
+          "status": "Implémenté",
+          "source": "app/game/ClanShipInterior.tsx ; rig du chasseur revu dans les captures des sept salles ; approbation artistique distincte"
+        },
+        "CL-36": {
+          "status": "Intégré",
+          "source": "ClanShipInterior.tsx ; manifestes fonds/props ; fond, portes, installations et acteur séparés, revus dans les captures ; approbation artistique distincte"
+        }
+      },
+      "checkoutCommit": "22fad968311d252310fe2fde281f71564a401a64",
+      "workingTreeDirty": false,
+      "sourceTree": "3e51bbc023720057deb28696bd16bbaa6c8b6d82",
+      "jobUrl": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41818690041/job/126535991676",
+      "browserVersion": "153.0.8010.12",
+      "browserMode": "headed",
+      "finishedAt": "2026-11-04T11:12:23.359Z",
+      "runtime": "actual desktop GameClient via Vite",
+      "focusTransitions": [
+        {
+          "phase": "before",
+          "hidden": false,
+          "visibilityState": "visible",
+          "focused": true
+        },
+        {
+          "phase": "background",
+          "hidden": false,
+          "visibilityState": "visible",
+          "focused": false
+        },
+        {
+          "phase": "restored",
+          "hidden": false,
+          "visibilityState": "visible",
+          "focused": true
+        }
+      ],
+      "fixtureAssetCount": 161,
+      "proofFiles": {
+        "report.json": {
+          "bytes": 9218,
+          "sha256": "0d58d4119a4384516565ff52598ef06d908144f4494ced43efa1623bf3df5de8"
+        },
+        "01-approach-desktop.png": {
+          "bytes": 639450,
+          "sha256": "d5b5b8bdd4235316250b7b1fcb94d6efd2b11629dfc9dfcf84d04c3d692eaaa7"
+        },
+        "02-hangar-desktop.png": {
+          "bytes": 1360503,
+          "sha256": "a9e941cd74d23ccafe2ea44ba1db924c6c196eabbbca74caa07396b3d47273ea"
+        },
+        "interior-conseil-desktop.png": {
+          "bytes": 1387996,
+          "sha256": "00362bc4e8a11eb6344872172fb5b454245ae7d92dbed63909bb5f6eaa74ddc9"
+        },
+        "interior-armurerie-desktop.png": {
+          "bytes": 1329144,
+          "sha256": "f68000dfec36533eac6f9460db428ff9812050b30d8832a4354099ed278d2387"
+        },
+        "interior-trophees-desktop.png": {
+          "bytes": 1348675,
+          "sha256": "614023577ce02960794b6e0158f9ad169639e49f8a10e03f5befd534d042b046"
+        },
+        "interior-soins-desktop.png": {
+          "bytes": 1306677,
+          "sha256": "2c3397df3d2e83187e29c38fcdde95e8e46d5bae8f62b2effaa1870b5488c87e"
+        },
+        "interior-archives-desktop.png": {
+          "bytes": 1426563,
+          "sha256": "4ff3eae96e03a5fde6862dbfc5745548d9e12c3a4e40a70522a6a14ccb1d9e4a"
+        },
+        "interior-entrainement-desktop.png": {
+          "bytes": 1332732,
+          "sha256": "1034f64247874d617110512893331e52bffaf72202a888c4471634261597fe88"
+        },
+        "03-archives-resumed.png": {
+          "bytes": 1389885,
+          "sha256": "4d9dcbb429c1acd653aeb63dbfef3140ca9e4d5f33a51e7393fec844687d2a08"
+        },
+        "04-hangar-mobile-320.png": {
+          "bytes": 209556,
+          "sha256": "8b6c4662440f9362c4cdfcd1780e82c9374f8c8e82ace2c28bf26216e9e0e951"
+        },
+        "05-hangar-mobile-controls-320.png": {
+          "bytes": 209640,
+          "sha256": "e3439354efdeadb054098beb6ae1d561a906ef4e1a2b6a2bbe1605d3473f06dd"
+        }
+      },
+      "reviewScreenshots": {
+        "status": "Revue technique satisfaisante",
+        "reviewers": [
+          "Root",
+          "Relecteur indépendant"
+        ],
+        "reviewedFiles": [
+          "01-approach-desktop.png",
+          "02-hangar-desktop.png",
+          "interior-conseil-desktop.png",
+          "interior-armurerie-desktop.png",
+          "interior-trophees-desktop.png",
+          "interior-soins-desktop.png",
+          "interior-archives-desktop.png",
+          "interior-entrainement-desktop.png",
+          "03-archives-resumed.png",
+          "04-hangar-mobile-320.png",
+          "05-hangar-mobile-controls-320.png"
+        ],
+        "note": "Onze captures relues ; aucun défaut visuel bloquant reproduit. Réserves précédentes levées : libellé de coque visible, portes complètes après reprise, toast absent et commandes tactiles lisibles. 04/05 sont deux cadrages complémentaires à 320 px de la zone à défilement interne. Approbation artistique humaine distincte, non accordée par cette revue."
+      },
+      "artifact": {
+        "id": 13316725372,
+        "zipSha256": "6741e49318cfa591c45b35e58fcf45b85d411829858e987044a9e172bfa7fc76",
+        "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41818690041/artifacts/13316725372"
+      },
+      "qualificationScope": "Source citée uniquement ; aucun résultat étendu à une révision ultérieure. Services : ouverture, retour et position, sans qualification globale des coûts ou récompenses.",
+      "additionalValidation": {
+        "runUrl": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41818690146",
+        "jobUrl": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41818690146/job/126536529962",
+        "workflowStatus": "En cours au relevé",
+        "passedSteps": [
+          {
+            "step": 6,
+            "name": "TypeScript"
+          },
+          {
+            "step": 16,
+            "name": "Build Next.js webpack"
+          },
+          {
+            "step": 17,
+            "name": "Smoke HTTP : serveur compilé et cinq routes protégées"
+          },
+          {
+            "step": 18,
+            "name": "Lint runtime"
+          }
+        ]
+      }
+    }
   },
-  "nextStep": "Intérieur physique du Clan Ship et assets individuels ; château et arrivée planifiés",
+  "baselineSource": "9d77af8 ; run 41789974649",
+  "nextStep": "Publier le suivi avec sa source qualifiée ; rapprocher ensuite les chantiers parallèles château et arrivée de leurs briefs conservés",
   "pullRequest": "https://github.com/darknigthmare/yautja-la-longue-chasse/pull/104",
-  "xlsxReadback": {
-    "sheetCount": 5,
-    "formulaCount": 6,
-    "cachedCounts": [
-      24,
-      20,
-      6,
-      12,
-      8,
-      10
+  "xlsxSha256": "9dcc5406f867b91ae97210ccfe4b5cb2dc5eae7fe4cb5bda32e871f9d0f9dfc7",
+  "xlsxBytes": 32646,
+  "exportCheck": {
+    "worksheetNames": [
+      "Reprise",
+      "ClanShip",
+      "Assets",
+      "Chateau",
+      "Arrivee_QA"
     ],
-    "errorCells": [],
-    "automatedTests": 184
+    "formulaCount": 10,
+    "cachedFormulaErrors": 0,
+    "tables": 4,
+    "detailSheetsWithFrozenPanes": 4,
+    "humanReviewValidationLists": 1,
+    "baselineQaChanged": false
   }
 }
