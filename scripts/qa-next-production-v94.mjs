@@ -8,6 +8,11 @@ import {fileURLToPath} from 'node:url';
 import {resolve} from 'node:path';
 
 const root=fileURLToPath(new URL('..',import.meta.url));
+const releaseSource=await readFile(resolve(root,'app/game/buildInfo.ts'),'utf8');
+const releaseMatch=releaseSource.match(/^export const GAME_RELEASE_VERSION = "((?:0|[1-9]\d*)\.(?:0|[1-9]\d*)\.(?:0|[1-9]\d*))";$/m);
+assert.ok(releaseMatch,'The current application release must be declared as a numeric semantic version');
+const releaseVersion=releaseMatch[1];
+const releasePattern=releaseVersion.replaceAll('.','\\.');
 const pkg=JSON.parse(await readFile(resolve(root,'package.json'),'utf8'));
 assert.equal(pkg.scripts['start:production'],'next start','Next and vinext launchers must be explicit');
 const buildId=(await readFile(resolve(root,'.next/BUILD_ID'),'utf8')).trim();
@@ -39,8 +44,8 @@ try {
   assert.match(page.headers.get('content-type')??'',/text\/html/);
   const html=await page.text();
   assert.match(html,/Yautja/,'The compiled game shell must be served');
-  assert.match(html,/<title>Yautja : La Longue Chasse · v1\.1\.0<\/title>/,'The page title identifies this release');
-  assert.match(html,/data-game-version="1\.1\.0"/,'The main menu renders the release before hydration');
+  assert.match(html,new RegExp('<title>Yautja : La Longue Chasse · v'+releasePattern+'</title>'),'The page title identifies this release');
+  assert.match(html,new RegExp('data-game-version="'+releasePattern+'"'),'The main menu renders the release before hydration');
   assert.match(html,/data-game-build="[a-f0-9]{8}"/,'A Git checkout compiles its actual build identifier');
   for(const section of ['campaign','modes','archives','system'])
     assert.ok(html.includes('data-menu-section="'+section+'"'),'The compiled main menu exposes '+section);

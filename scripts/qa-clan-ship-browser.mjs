@@ -182,6 +182,9 @@ try {
   };
   const screenshot = async filename => {
     await page.waitForLoadState('networkidle');
+    // Let transient status finish naturally so it cannot cover the controls
+    // being reviewed; never remove or restyle the real application for a shot.
+    await page.locator('.toast').waitFor({ state: 'hidden', timeout: 5000 });
     // naturalWidth can be available before an asynchronously decoded image is
     // painted. Capture the real, decoded room rather than a transient blank.
     await clan().locator('img').evaluateAll(images => Promise.all(images.map(image => image.decode())));
@@ -567,6 +570,8 @@ try {
       }
     }
     await screenshot('04-hangar-mobile-320.png');
+    await page.locator('[data-interior-approach-service]').scrollIntoViewIfNeeded();
+    await screenshot('05-hangar-mobile-controls-320.png');
   });
   await check('Normal and reduced motion keep walking functional without looping motion in reduced mode', async () => {
     await page.setViewportSize({ width: 1440, height: 1000 });
