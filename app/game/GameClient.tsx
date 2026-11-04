@@ -3622,7 +3622,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
     : null;
 
   const topBar =
-    !newGamePhase && screen !== "prologue" && screen !== "youth-training" && screen !== "solo-v66" && screen !== "solo-v67" && screen !== "solo-v68" && screen !== "solo-v69" && screen !== "solo-v70" && screen !== "solo-v90" && screen !== "homeworld-region-v68" && screen !== "homeworld-passage-v67" && screen !== "game-reserve" && screen !== "ship-acquisition-v89" && screen !== "title" && screen !== "clan-chronicle" && screen !== "mausoleum" && screen !== "mission" && screen !== "pit" && screen !== "pit-narrative" ? (
+    !newGamePhase && !clanShipVisible && screen !== "prologue" && screen !== "youth-training" && screen !== "solo-v66" && screen !== "solo-v67" && screen !== "solo-v68" && screen !== "solo-v69" && screen !== "solo-v70" && screen !== "solo-v90" && screen !== "homeworld-region-v68" && screen !== "homeworld-passage-v67" && screen !== "game-reserve" && screen !== "ship-acquisition-v89" && screen !== "title" && screen !== "clan-chronicle" && screen !== "mausoleum" && screen !== "mission" && screen !== "pit" && screen !== "pit-narrative" ? (
       <TopBar
         save={save}
         onShip={() => go(save.clanShipDocking?.status === "aboard" || save.clanShipDocking?.status === "approach" ? "clan-ship" : save.prologue ? "homeworld" : "deck")}

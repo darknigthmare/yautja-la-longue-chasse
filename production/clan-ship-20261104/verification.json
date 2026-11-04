@@ -1,0 +1,108 @@
+{
+  "generatedAt": "2026-11-04T06:51:45.450Z",
+  "engine": "@oai/artifact-tool",
+  "sheets": 5,
+  "detailRows": {
+    "ClanShip": 24,
+    "Assets": 26,
+    "Chateau": 12,
+    "Arrivee_QA": 18
+  },
+  "summaryCounts": [
+    24,
+    20,
+    6,
+    12,
+    8,
+    6
+  ],
+  "expectedCounts": [
+    24,
+    20,
+    6,
+    12,
+    8,
+    6
+  ],
+  "propagationCheck": {
+    "temporaryAssetState": "À produire",
+    "observed": [
+      19,
+      7
+    ],
+    "restored": true
+  },
+  "formulaInspection": {
+    "recordCount": 1,
+    "truncated": false,
+    "metadata": {
+      "revision": "1b76wu",
+      "target": {
+        "id": "wb/ucppik",
+        "beforeLines": 0,
+        "afterLines": 0
+      },
+      "kind": {
+        "requested": "match",
+        "tokens": [
+          "match"
+        ]
+      },
+      "include": {
+        "tokens": []
+      },
+      "exclude": {
+        "tokens": []
+      },
+      "notices": []
+    }
+  },
+  "renders": [
+    {
+      "sheet": "Reprise",
+      "file": "preview-Reprise.png",
+      "rows": 20
+    },
+    {
+      "sheet": "ClanShip",
+      "file": "preview-ClanShip.png",
+      "rows": 29
+    },
+    {
+      "sheet": "Assets",
+      "file": "preview-Assets.png",
+      "rows": 31
+    },
+    {
+      "sheet": "Chateau",
+      "file": "preview-Chateau.png",
+      "rows": 17
+    },
+    {
+      "sheet": "Arrivee_QA",
+      "file": "preview-Arrivee_QA.png",
+      "rows": 23
+    }
+  ],
+  "visualReview": {
+    "status": "Vérifié",
+    "scope": "Cinq onglets rendus et examinés ; aucun texte tronqué observé. Synthèse et QA relues après mise à jour 184 tests / PR #104.",
+    "gameBrowserQA": "Non validée : CI en attente"
+  },
+  "gameQA": "Suite combinée 184/184 tests rapportés par agent principal ; ESLint strict et typecheck réussis ; navigateur CI en attente",
+  "pullRequest": "https://github.com/darknigthmare/yautja-la-longue-chasse/pull/104",
+  "xlsxReadback": {
+    "sheetCount": 5,
+    "formulaCount": 6,
+    "cachedCounts": [
+      24,
+      20,
+      6,
+      12,
+      8,
+      6
+    ],
+    "errorCells": [],
+    "reportedAutomatedTests": 184
+  }
+}
