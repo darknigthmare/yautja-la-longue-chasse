@@ -16,6 +16,9 @@ const design = JSON.parse(await fs.readFile(path.join(production, 'design-data.j
 const state = JSON.parse(await fs.readFile(path.join(production, 'production-state.json'), 'utf8'));
 const current = state.current;
 const qualified = current.status === 'Validé CI';
+const publication = state.publicationValidation;
+const publicationQualified = publication?.status === 'success' && publication.workflowsPassed === publication.workflowsTotal;
+const integrated = state.delivery?.merged === true;
 const currentSource = qualified ? `${current.sourceCommit?.slice(0, 7)} ; ${current.runUrl}` : 'Intérieur physique en cours de vérification';
 const currentChecks = current.checks ?? [];
 const baselineSource = `${state.baseline.sourceCommit.slice(0, 7)} ; run ${state.baseline.runUrl.split('/').at(-1)}`;
@@ -349,25 +352,25 @@ setup('Arrivee_QA','Arrivée et recette — suivi de production','Storyboard de 
 const overview=[
  ['Clan Ship','Exigences d’amarrage, intérieur, services et reprise.',current.status,null,'Preuve par ligne dans ClanShip','interior-spec.md et tests du module'],
  ['Assets existants','Fichiers du catalogue et du kit déjà présents.','Existant',null,'Réemploi détaillé, revue artistique distincte','Feuille Assets ; catalogue et kits du dépôt'],
- ['Lots futurs spécifiés',`${design.castle.assets.length} modules château et ${design.arrival.assets.length} assets/réemplois d’arrivée.`,'Spécifié',null,`${generationRequests} générations futures ; ${reuseInstructions} réemplois à raccorder`,'individual-asset-prompts.md ; design-data.json'],
+ ['Briefs conservés',`${design.castle.assets.length} modules château et ${design.arrival.assets.length} assets/réemplois d’arrivée.`,'Spécifié',null,'Production suivie séparément dans la PR #106','individual-asset-prompts.md ; design-data.json'],
  ['Château orbital','Exigences et lieux d’une audience de campagne.','Spécifié',null,'Brief conservé ; hors implémentation PR #104','Feuille Chateau ; sources dans references.md'],
  ['Arrivée planétaire','Huit plans, capsule distincte et relais unique.','Spécifié',null,'Brief conservé ; hors implémentation PR #104','Feuille Arrivee_QA ; arrival-spec.md'],
  ['Scénarios actuels qualifiés','Recette de l’intérieur physique avec le vrai GameClient.',qualified ? 'Validé CI' : 'À exécuter',null,qualified ? `${current.browserPassed}/${current.browserTotal} réussis` : 'Le plan initial a une preuve séparée','Arrivee_QA : Scénario CI ; source actuelle ci-dessous'],
- ['Tests automatiques actuels','Suite ciblée, géométrie et sauvegarde.',qualified ? 'Validé CI' : current.automatedTests ? 'Testé (domaine)' : 'À vérifier',current.automatedTests,current.automatedTests ? `${current.automatedTests} réussis` : 'Résultat final à reporter',current.testSource ?? currentSource],
+ ['Tests de publication',publicationQualified ? `Clan Ship sur la livraison ${publication.sourceCommit.slice(0,7)}.` : 'Suite ciblée, géométrie et sauvegarde.',publicationQualified || qualified ? 'Validé CI' : current.automatedTests ? 'Testé (domaine)' : 'À vérifier',publicationQualified ? publication.clan.automatedTestsPassed : current.automatedTests,publicationQualified ? `${publication.workflowsPassed} workflows réussis. Inventaire PASS et ${publication.regression.v113Tests.passed} tests V113.` : current.automatedTests ? `${current.automatedTests} réussis` : 'Résultat final à reporter',publicationQualified ? `Clan : run ${publication.clan.runUrl.split('/').at(-1)}. V94 : run ${publication.regression.runUrl.split('/').at(-1)}. Détail : production-state.json.` : current.testSource ?? currentSource],
  ['Fonds du Clan Ship','Images individuelles 1440 × 800 pour les sept salles.',backgroundCount === state.roomBackgrounds.length ? 'Généré' : 'En cours',null,'Objets, portes et chasseur restent séparés','public/game/clan-ship/manifest.json'],
  ['Durée du storyboard (s)','Somme des durées des huit plans proposés.','Spécifié',null,'Durée modifiable dans Arrivee_QA','H6:H13 ; contrat de séquence dans arrival-spec.md'],
  ['Lieux du château','Graphe de circulation avec retour court.','Spécifié',null,'Huit lieux accessibles et une extension prévue','Chateau : CH-R01 à CH-R09'],
  ['Preuve initiale conservée','Plan de visite sur source 9d77af8.','Historique',184,'184 tests ; 10 scénarios ; aucun asset manquant',state.baseline.runUrl],
- ['Source actuelle',current.sourceCommit ?? 'Intérieur physique en cours de vérification',current.status,null,qualified ? `${current.missingAssets} asset manquant ; ${current.exceptions} exception JS` : 'Qualification à terminer',current.runUrl ?? 'production-state.json'],
+ ['Source des captures',current.sourceCommit ?? 'Intérieur physique en cours de vérification',current.status,null,qualified ? `${current.missingAssets} asset manquant ; ${current.exceptions} exception JS` : 'Qualification à terminer',current.runUrl ?? 'production-state.json'],
  ['Reprise de visite','La pièce est durable ; la position fine reste transitoire.','Contrat défini',null,'Après recharge, apparition sûre dans la pièce','interior-spec.md ; clanShipDocking.ts'],
  ['Commandes','Clavier, pointeur, manette et croix tactile.','Implémenté',null,'Une seule scène propriétaire des entrées','ClanShipInterior.tsx ; recette actuelle'],
  ['Production artistique',`${backgroundCount} fonds et ${propCount} props dédiés générés ; rig du joueur réemployé.`,backgroundCount === state.roomBackgrounds.length && propCount === props.length ? 'Généré' : 'En cours',null,'Revue en scène séparée de la validation humaine','Manifestes clan-ship-v1 et clan-ship-props-v1'],
- ['PR et branche',`${state.branch} ; version ${state.releaseVersions?.branchGameReleaseVersion ?? 'à vérifier'}.`,state.delivery?.status ?? 'PR brouillon',null,state.delivery?.note ?? 'Fusion et production suivies séparément',state.pullRequest],
- ['Suite du projet','Reprendre les chantiers château et arrivée depuis leur état propre.','Spécifié',null,'Contrats conservés ; travaux parallèles à rapprocher','castle-spec.md ; arrival-spec.md'],
+ ['Intégration du lot',integrated ? `main ; commit ${state.delivery.mergeCommit.slice(0,7)} ; version ${state.releaseVersions?.branchGameReleaseVersion ?? 'à vérifier'}.` : `${state.branch} ; version ${state.releaseVersions?.branchGameReleaseVersion ?? 'à vérifier'}.`,state.delivery?.status ?? 'PR brouillon',null,state.delivery?.note ?? 'Fusion et production suivies séparément',state.pullRequest],
+ ['Suite du projet','PR #106 : château, arrivée et mandat royal.',state.followup?.status ?? 'Spécifié',null,'Base main. Nouvelle qualification avant fusion.',state.followup?.pullRequest ?? 'castle-spec.md ; arrival-spec.md'],
  ['Props dédiés générés','Installations propres aux salles du Clan Ship.','Production individuelle',null,'Un fichier par prop ; statut réel dans Assets','public/game/clan-ship/props/manifest.json'],
  ['Usages du château','Audience de campagne, hub royal et instance.','Spécifié',3,'Trois contrats ; hors implémentation PR #104','castle-spec.md §8'],
 ];
-const summary=setup('Reprise','ShipHub — production du 4 novembre 2026','Intérieur physique, assets et contrats des deux chantiers suivants',
+const summary=setup('Reprise','ShipHub — production du 4 novembre 2026',integrated ? 'Clan Ship intégré à main le 4 novembre. Suite distincte dans la PR #106.' : 'Intérieur physique, assets et contrats des deux chantiers suivants',
  ['Volet','Périmètre / décision','État','Nombre suivi','QA / limite','Source ou prochain jalon'],overview);
 summary.getRange('D6').formulas=[[`=COUNTA(ClanShip!A6:A${lastRows.ClanShip})`]];
 summary.getRange('D7').formulas=[[`=COUNTIFS(Assets!D6:D${lastRows.Assets},"Existant")`]];
@@ -428,7 +431,10 @@ if (!formulaInspection.includes('Cell search matched 0 entries.')) throw new Err
 const keyValues=await workbook.inspect({kind:'table',range:'Reprise!A5:F24',include:'values,formulas',tableMaxRows:20,tableMaxCols:6,maxChars:5000});
 await fs.writeFile(path.join(output,'key-values.ndjson'),keyValues.ndjson);
 const renders=[];
+const renderSheets = process.env.SHIPHUB_RENDER_SHEETS?.split(',').filter(Boolean) ?? Object.keys(sheets);
+if (renderSheets.some(name => !sheets[name])) throw new Error('Feuille de rendu inconnue');
 for(const name of Object.keys(sheets)){
+ if (!renderSheets.includes(name)) continue;
  const last=columns(widths[name].length);
  for(let first=1,part=1;first<=lastRows[name];first+=28,part++){
   const final=Math.min(lastRows[name],first+27);
@@ -446,7 +452,7 @@ const filename='shiphub-reprise-20261104.xlsx';
 const file=await SpreadsheetFile.exportXlsx(workbook);
 await file.save(path.join(output,filename));
 await fs.copyFile(path.join(output,filename),path.join(production,filename));
-const verification={generatedAt:new Date().toISOString(),engine:'@oai/artifact-tool',sheets:5,detailRows:{ClanShip:clan.length,Assets:assets.length,Chateau:castle.length,Arrivee_QA:arrivalQa.length},summaryCounts:summary.getRange('D6:D11').values.map(r=>r[0]),expectedCounts:expected,additionalCounts:{roomBackgrounds:summary.getRange('D13').values[0][0],individualProps:summary.getRange('D23').values[0][0],arrivalSeconds:summary.getRange('D14').values[0][0],castleRooms:summary.getRange('D15').values[0][0],generationRequests,reuseInstructions},inventoryCheck:{files:backgroundCount+propCount,sha256:'Conformes',bytes:'Conformes',roomBackgroundBytes:state.art.totalBytes,propBytes:state.art.propTotalBytes},propagationCheck:{temporaryAssetState:'Spécifié',observed:perturbed,restored:true,durationBefore,changedDuration,durationRestored:summary.getRange('D14').values[0][0]},formulaInspection,renders,visualReview:'À effectuer sur les cinq onglets rendus',gameQA:{baseline:state.baseline,current},baselineSource,nextStep:qualified?'Publier le suivi avec sa source qualifiée ; rapprocher ensuite les chantiers parallèles château et arrivée de leurs briefs conservés':'Terminer la recette de la source courante avant qualification',pullRequest:state.pullRequest};
+const verification={generatedAt:new Date().toISOString(),engine:'@oai/artifact-tool',sheets:5,detailRows:{ClanShip:clan.length,Assets:assets.length,Chateau:castle.length,Arrivee_QA:arrivalQa.length},summaryCounts:summary.getRange('D6:D11').values.map(r=>r[0]),expectedCounts:expected,additionalCounts:{roomBackgrounds:summary.getRange('D13').values[0][0],individualProps:summary.getRange('D23').values[0][0],arrivalSeconds:summary.getRange('D14').values[0][0],castleRooms:summary.getRange('D15').values[0][0],generationRequests,reuseInstructions},inventoryCheck:{files:backgroundCount+propCount,sha256:'Conformes',bytes:'Conformes',roomBackgroundBytes:state.art.totalBytes,propBytes:state.art.propTotalBytes},propagationCheck:{temporaryAssetState:'Spécifié',observed:perturbed,restored:true,durationBefore,changedDuration,durationRestored:summary.getRange('D14').values[0][0]},formulaInspection,renders,visualReview:'À effectuer sur les vues rendues',gameQA:{baseline:state.baseline,current,publication},delivery:state.delivery,followup:state.followup,baselineSource,nextStep:state.followup?.nextStep ?? (qualified?'Publier le suivi avec sa source qualifiée ; rapprocher ensuite les chantiers parallèles château et arrivée de leurs briefs conservés':'Terminer la recette de la source courante avant qualification'),pullRequest:state.pullRequest};
 const xlsxBytes=await fs.readFile(path.join(output,filename));
 verification.xlsxSha256=createHash('sha256').update(xlsxBytes).digest('hex');
 verification.xlsxBytes=xlsxBytes.length;

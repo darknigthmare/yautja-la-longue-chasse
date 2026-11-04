@@ -474,7 +474,7 @@
     "additionalValidation": {
       "runUrl": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41818690146",
       "jobUrl": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41818690146/job/126536529962",
-      "workflowStatus": "Job application réussi ; job modèles en échec sur l’inventaire antérieur. Contrôle strict de l’inventaire actualisé à vérifier après publication.",
+      "workflowStatus": "Résultat historique 22fad968 : job application réussi et job modèles en échec sur l’inventaire antérieur. La publication 71826ae a ensuite passé le contrôle strict et tous les workflows ; voir publicationValidation.",
       "passedSteps": [
         {
           "step": 6,
@@ -514,9 +514,23 @@
           "documentBytes": 396560,
           "documentSha256": "9ac1b87a8a280c7b211c1f6b70e2ca13c768852b3787c0b1abb4d3cb98f9b96b",
           "scope": "Actualisation documentaire et d’inventaire ; aucun changement du jeu, du contrôleur strict ou des certificats historiques.",
-          "ciCheckStatus": "À vérifier après publication ; aucune réussite du --check CI encore revendiquée."
+          "ciCheckStatus": "Réussi en CI sur la publication 71826ae ; attente clôturée par le run 41822330491, job 126548272182.",
+          "initialCiCheckStatus": "À vérifier après publication ; aucune réussite du --check CI encore revendiquée.",
+          "ciCheck": {
+            "status": "PASS",
+            "sourceCommit": "71826ae1d02563c73facced34ec8cfaa827aeb89",
+            "runUrl": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41822330491",
+            "jobUrl": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41822330491/job/126548272182",
+            "documentBytes": 396560,
+            "documentSha256": "9ac1b87a8a280c7b211c1f6b70e2ca13c768852b3787c0b1abb4d3cb98f9b96b",
+            "command": "node scripts/snapshot-runtime-v113.mjs --check docs/qa/current-integration-20261103/runtime-inputs.json"
+          },
+          "publicationCommit": "71826ae1d02563c73facced34ec8cfaa827aeb89",
+          "documentUrl": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/71826ae1d02563c73facced34ec8cfaa827aeb89/docs/qa/current-integration-20261103/runtime-inputs.json",
+          "provenanceUrl": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/71826ae1d02563c73facced34ec8cfaa827aeb89/docs/qa/current-integration-20261103/README.md#actualisation-du-relevé-pour-le-clan-ship--4-novembre-2026"
         }
-      }
+      },
+      "sourceCommit": "22fad968311d252310fe2fde281f71564a401a64"
     }
   },
   "roomBackgrounds": [
@@ -992,17 +1006,100 @@
   "releaseVersions": {
     "branchGameReleaseVersion": "1.2.0",
     "previousProductionVersion": "1.1.0",
-    "scope": "Version de la branche qualifiée ; aucun déploiement de production déduit de cette CI."
+    "scope": "Version 1.2.0 intégrée dans main par la PR #104 au commit b18c79b. Le déploiement de production reste distinct de cette observation."
   },
   "delivery": {
-    "status": "Prête pour revue",
-    "note": "PR ouverte et prête pour revue ; fusion et publication de production suivies séparément.",
+    "status": "Fusionnée dans main",
+    "note": "Fusion du 04/11 à 17 h 39 (Paris). Fichiers identiques à la source qualifiée 71826ae.",
     "draft": false,
-    "open": true,
-    "mergeableAtObservation": true,
-    "observedHead": "22fad968311d252310fe2fde281f71564a401a64",
-    "observedBase": "eeb2362",
-    "observedAt": "2026-11-04T11:16:36.373206+00:00",
-    "observationSource": "État GitHub vérifié par root après passage réel en revue"
+    "open": false,
+    "merged": true,
+    "mergedAt": "2026-11-04T16:39:06Z",
+    "mergeMethod": "merge",
+    "mergeCommit": "b18c79b92942f63ad885e6c90b4f2b5e90dc812c",
+    "mergeUrl": "https://github.com/darknigthmare/yautja-la-longue-chasse/commit/b18c79b92942f63ad885e6c90b4f2b5e90dc812c",
+    "observedHead": "71826ae1d02563c73facced34ec8cfaa827aeb89",
+    "observedBase": "eeb2362726743534d6902648e67298bbb9094b56",
+    "targetBranch": "main",
+    "observationSource": "Fusion de la PR #104 et identité des fichiers vérifiées sur GitHub.",
+    "comparison": {
+      "base": "71826ae1d02563c73facced34ec8cfaa827aeb89",
+      "head": "b18c79b92942f63ad885e6c90b4f2b5e90dc812c",
+      "changedFiles": 0
+    },
+    "testsAfterMergeRun": false,
+    "deploymentStatus": "Non évalué dans cette livraison",
+    "history": [
+      {
+        "status": "Prête pour revue",
+        "note": "PR ouverte et prête pour revue ; fusion et publication de production suivies séparément.",
+        "draft": false,
+        "open": true,
+        "mergeableAtObservation": true,
+        "observedHead": "22fad968311d252310fe2fde281f71564a401a64",
+        "observedBase": "eeb2362",
+        "observedAt": "2026-11-04T11:16:36.373206+00:00",
+        "observationSource": "État GitHub vérifié par root après passage réel en revue"
+      }
+    ]
+  },
+  "publicationValidation": {
+    "status": "success",
+    "sourceCommit": "71826ae1d02563c73facced34ec8cfaa827aeb89",
+    "sourceTree": "fbabe9bdc101cac6cbd6cb5abb76c6c88ea77ca1",
+    "workflowsPassed": 13,
+    "workflowsTotal": 13,
+    "observationSource": "Résultats GitHub vérifiés après publication de la source 71826ae, avant la fusion dans main.",
+    "clan": {
+      "runUrl": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41822330488",
+      "jobUrl": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41822330488/job/126548271979",
+      "sourceCommit": "71826ae1d02563c73facced34ec8cfaa827aeb89",
+      "checkoutCommit": "71826ae1d02563c73facced34ec8cfaa827aeb89",
+      "automatedTestsPassed": 201,
+      "automatedTestsTotal": 201,
+      "browserPassed": 22,
+      "browserTotal": 22,
+      "missingAssets": 0,
+      "exceptions": 0
+    },
+    "regression": {
+      "runUrl": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41822330491",
+      "status": "success",
+      "checkoutCommit": "84c72dadce0f90d69043ce6a9ab4d347d6b08222",
+      "checkoutKind": "Fusion synthétique de la PR GitHub",
+      "applicationStatus": "success",
+      "modelsStatus": "success",
+      "historyStatus": "success",
+      "aggregateStatus": "success",
+      "modelsJobUrl": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41822330491/job/126548272182",
+      "currentInventory": {
+        "path": "docs/qa/current-integration-20261103/runtime-inputs.json",
+        "status": "PASS",
+        "entries": 2130,
+        "inputBytes": 1091761004,
+        "documentBytes": 396560,
+        "documentSha256": "9ac1b87a8a280c7b211c1f6b70e2ca13c768852b3787c0b1abb4d3cb98f9b96b",
+        "documentUrl": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/71826ae1d02563c73facced34ec8cfaa827aeb89/docs/qa/current-integration-20261103/runtime-inputs.json"
+      },
+      "v113Tests": {
+        "passed": 75,
+        "total": 75,
+        "failed": 0,
+        "skipped": 0
+      }
+    },
+    "archivedCaptureSource": "22fad968311d252310fe2fde281f71564a401a64",
+    "archivedCaptureDirectory": "qa-interior/run-41818690041",
+    "scope": "La recette de publication confirme 201 tests et 22 scénarios. Les captures archivées restent rattachées à 22fad968. Les commits de suivi et d’inventaire entre les deux sources ne changent pas les fichiers du jeu."
+  },
+  "followup": {
+    "pullRequest": "https://github.com/darknigthmare/yautja-la-longue-chasse/pull/106",
+    "branch": "feat/wolf-castle-continuation-20261104",
+    "base": "main",
+    "status": "En cours",
+    "mergedAtObservation": false,
+    "observedOn": "2026-11-04",
+    "scope": "Château Wolf et arrivée planétaire dans leur chantier existant. Réconciliation du Clan Ship, compléments audio et donjon scénarisé en cours.",
+    "nextStep": "Poursuivre la PR #106 depuis son état existant, puis qualifier sa nouvelle source sur main avec l’inventaire strict, V94, la recette complète Clan Ship et Wolf avant fusion."
   }
 }
