@@ -457,9 +457,44 @@ try {
     await page.getByRole('button', { name: 'Reprendre', exact: true }).click();
     let discovered = initial;
     for (let attempt = 0; attempt < 10; attempt++) {
+      await page.getByRole('dialog', { name: 'Chasse en pause · Carte et sac', exact: true }).waitFor({ state: 'hidden' });
+      await page.waitForFunction(() => {
+        const canvas = document.querySelector('.hunt-canvas');
+        return canvas && !canvas.closest('[inert]');
+      });
       await page.locator('.hunt-canvas').focus();
+      await page.waitForFunction(() => document.activeElement === document.querySelector('.hunt-canvas'));
+      const clockBefore = await page.evaluate(() => {
+        const match = Array.from(document.querySelectorAll('.hunt-screen summary'))
+          .map(element => element.textContent?.match(/Détails\s*·\s*(\d+):(\d+)/)).find(Boolean);
+        return match ? Number(match[1]) * 60 + Number(match[2]) : null;
+      });
+      assert.ok(Number.isFinite(clockBefore), 'The live hunt clock must be readable before applying movement input.');
       await page.keyboard.down('ArrowRight');
-      try { await page.waitForTimeout(650); }
+      try {
+        // A slow runner can render only a few simulation steps in 650 ms.
+        // Hold real input for two displayed game-clock seconds; never advance
+        // the clock, and reject a regression instead of letting it catch up.
+        await page.waitForFunction(({ clockBefore, checkpointBefore, generation }) => {
+          const session = document.querySelector('[data-dev-session="mission-jungle-vey"]');
+          if (Number(session?.getAttribute('data-dev-hunt-generation')) !== generation) {
+            throw new Error('The hunt generation changed while movement input was held.');
+          }
+          const checkpointElapsed = Number(session?.getAttribute('data-dev-hunt-elapsed'));
+          if (!Number.isFinite(checkpointElapsed) || checkpointElapsed < checkpointBefore) {
+            throw new Error(`The native hunt checkpoint clock regressed from ${checkpointBefore} to ${checkpointElapsed}.`);
+          }
+          if (document.querySelector('[data-mission-opening-v78]')) {
+            throw new Error('The mission briefing reopened while movement input was held.');
+          }
+          const match = Array.from(document.querySelectorAll('.hunt-screen summary'))
+            .map(element => element.textContent?.match(/Détails\s*·\s*(\d+):(\d+)/)).find(Boolean);
+          if (!match) throw new Error('The live hunt clock disappeared while movement input was held.');
+          const elapsed = Number(match[1]) * 60 + Number(match[2]);
+          if (elapsed < clockBefore) throw new Error(`The live hunt clock regressed from ${clockBefore} to ${elapsed}.`);
+          return elapsed >= clockBefore + 2;
+        }, { clockBefore, checkpointBefore: discovered.elapsed, generation: initial.generation }, { timeout: 60000 });
+      }
       finally { await page.keyboard.up('ArrowRight'); }
       await page.locator('.hunt-pause-button').click();
       await page.getByRole('dialog', { name: 'Chasse en pause · Carte et sac', exact: true }).waitFor();
