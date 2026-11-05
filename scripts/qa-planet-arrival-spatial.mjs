@@ -57,8 +57,8 @@ const report = {
   workingTreeDirty: git('status', '--porcelain').length > 0, sourceHashes,
   browserMode: headed ? 'headed' : 'headless',
   scope: 'Actual component rendering at native shot boundaries on desktop/mobile; all eight destinations; seven representative orbital hulls; four insertion combinations plus paid optical camouflage, and three grounded hull profiles; natural production /dev arrival and real hunt handoffs. Spatial evidence is distinct from artistic or canonical approval. Ship contact and exit points follow source composition, without a claim about canonical landing gear or release bays.',
-  timing: 'Unmodified native requestAnimationFrame. Samples wait for elapsed-time thresholds and retain observed times; no virtual or accelerated clock. Dense egress geometry is measured without PNG encoding; its photographs use independent playbacks from the same native shot boundary.',
-  nativeUrl: nativeUrl.href, checks: [], samples: [], movement: [], captures: [],
+  timing: 'Unmodified native requestAnimationFrame. Samples wait for elapsed-time thresholds and retain observed times; no virtual or accelerated clock. Dense egress geometry is measured without PNG encoding; its photographs use independent playbacks from the same native shot boundary. Final trio details allow at most three native playbacks solely when screenshot acquisition crosses completion; every rejected PNG and interval is retained separately.',
+  nativeUrl: nativeUrl.href, checks: [], samples: [], movement: [], captures: [], rejectedCaptures: [],
   resizes: [], ships: [], insertions: [], native: {}, errors: [], consoleErrors: [], missingAssets: [], requestedAssets: [],
 };
 const requested = new Set(), missing = new Set();
@@ -671,61 +671,138 @@ async function capture(label, target = page, options = {}) {
 // Read the live clock and stage tags, capture the unchanged visible rectangle,
 // bracket that PNG with another light clock read, then measure the complete
 // geometry. PNG compression is optimized for speed but remains lossless.
+// The final trio has only 250 ms before completion. Its detail photograph uses
+// a native, unscaled clip of all three rigs, including overflowing equipment,
+// labels and ground supports. The preceding walking image supplies full-scene
+// context; the same before/after timing gates still reject a late detail PNG.
 const momentCaptureSessions = new WeakMap();
-async function captureMoment(label, prepared, target = page) {
-  const before = await target.locator('[data-arrival-run]').evaluate(root => ({
-    elapsedMs: Number(root.getAttribute('data-arrival-elapsed')),
-    shot: root.getAttribute('data-arrival-shot'), status: root.getAttribute('data-arrival-status'),
-    cloakPhase: root.querySelector('[data-arrival-scene]')?.getAttribute('data-arrival-cloak-phase'),
-    contact: root.querySelector('[data-arrival-scene]')?.getAttribute('data-arrival-contact') === 'true',
-    cloakHulls: [...root.querySelectorAll('[data-arrival-cloak-strength]')].map(hull => ({
-      strength: Number(hull.getAttribute('data-arrival-cloak-strength')),
-      bodyOpacity: hull.querySelector('[data-arrival-cloak-body]')
-        ? Number(getComputedStyle(hull.querySelector('[data-arrival-cloak-body]')).opacity) : null,
-      lens: !!hull.querySelector('[data-arrival-cloak-refraction]'), rim: !!hull.querySelector('[data-arrival-cloak-rim]'),
-    })),
-    members: [...root.querySelectorAll('[data-arrival-hunter]')].map(member => ({
-      id: member.getAttribute('data-arrival-member'), stage: member.getAttribute('data-arrival-hunter-stage'),
-      contact: member.getAttribute('data-arrival-hunter-contact'),
-    })),
-  }));
+async function readMoment(target, region) {
+  return target.locator('[data-arrival-run]').evaluate((root, region) => {
+    const rect = element => {
+      const bounds = element.getBoundingClientRect();
+      return { x: bounds.x, y: bounds.y, right: bounds.right, bottom: bounds.bottom };
+    };
+    const union = bounds => ({
+      x: Math.min(...bounds.map(item => item.x)), y: Math.min(...bounds.map(item => item.y)),
+      right: Math.max(...bounds.map(item => item.right)), bottom: Math.max(...bounds.map(item => item.bottom)),
+    });
+    const members = [...root.querySelectorAll('[data-arrival-hunter]')].map(member => {
+      // Rigs deliberately overflow their parent. Include the actual transformed
+      // layer boxes, not only the nominal 2:3 canvas; transparent padding may
+      // enlarge this conservative envelope but cannot crop a visible weapon.
+      const layers = region === 'formation-detail'
+        ? [...new Set([member, ...member.children, ...member.querySelectorAll('img, svg, image')])]
+          .map(rect).filter(bounds => bounds.right > bounds.x && bounds.bottom > bounds.y) : [];
+      return {
+        id: member.getAttribute('data-arrival-member'), stage: member.getAttribute('data-arrival-hunter-stage'),
+        contact: member.getAttribute('data-arrival-hunter-contact'),
+        ...(region === 'formation-detail' ? {
+          portal: member.getAttribute('data-arrival-hunter-portal'), opacity: Number(getComputedStyle(member).opacity),
+          bounds: union(layers), coveredLayers: layers.length,
+        } : {}),
+      };
+    });
+    const supports = region === 'formation-detail'
+      ? [...root.querySelectorAll('[data-arrival-anchor$="hunter-feet"], [data-arrival-anchor$="hunter-support"]')]
+        .map(element => ({ id: element.getAttribute('data-arrival-anchor'), ...rect(element) })) : [];
+    return {
+      run: root.getAttribute('data-arrival-run'),
+      elapsedMs: Number(root.getAttribute('data-arrival-elapsed')),
+      shot: root.getAttribute('data-arrival-shot'), status: root.getAttribute('data-arrival-status'),
+      cloakPhase: root.querySelector('[data-arrival-scene]')?.getAttribute('data-arrival-cloak-phase'),
+      contact: root.querySelector('[data-arrival-scene]')?.getAttribute('data-arrival-contact') === 'true',
+      cloakHulls: [...root.querySelectorAll('[data-arrival-cloak-strength]')].map(hull => ({
+        strength: Number(hull.getAttribute('data-arrival-cloak-strength')),
+        bodyOpacity: hull.querySelector('[data-arrival-cloak-body]')
+          ? Number(getComputedStyle(hull.querySelector('[data-arrival-cloak-body]')).opacity) : null,
+        lens: !!hull.querySelector('[data-arrival-cloak-refraction]'), rim: !!hull.querySelector('[data-arrival-cloak-rim]'),
+      })),
+      members, ...(region === 'formation-detail' ? { supports } : {}),
+    };
+  }, region);
+}
+
+async function captureMoment(label, prepared, target = page, attempt = 1, validateFrame) {
+  const before = await readMoment(target, prepared.region);
   assert.equal(before.status, 'playing', `${label}: a visual evidence capture must precede the terminal overlay.`);
-  const { x, y, width, height } = prepared.scene;
+  let { x, y, width, height } = prepared.scene;
+  const contextFile = prepared.region === 'formation-detail' ? label.replace(/-egress-final-detail$/, '-egress-walking.png') : null;
   assert.ok(x >= 0 && y >= 0 && x + width <= target.viewportSize().width + 1 &&
     y + height <= target.viewportSize().height + 1, `${label}: the unmodified scene must fit the screenshot viewport.`);
+  if (prepared.region === 'formation-detail') {
+    assert.equal(typeof validateFrame, 'function', `${label}: every final attempt needs the original formation and grounded-hull checks.`);
+    assert.ok(report.captures.some(capture => capture.file === contextFile && capture.region === 'scene'),
+      `${label}: a separate full-scene walking photograph must provide the actual formation context.`);
+    assert.deepEqual(before.members.map(member => member.id), ['player', 'karhek', 'saketh'],
+      `${label}: the detail must include the complete real trio.`);
+    assert.ok(before.members.every(member => member.stage === 'standing' && member.contact === 'ground' &&
+      member.portal === 'clear' && member.opacity > .02 && member.coveredLayers > 1),
+    `${label}: all three visible hunters must have cleared their exits and reached their final ground pose.`);
+    assert.deepEqual(before.supports.map(support => support.id).sort(),
+      ['hunter-feet', 'hunter-support', 'karhek-hunter-feet', 'karhek-hunter-support', 'saketh-hunter-feet', 'saketh-hunter-support'].sort(),
+      `${label}: the detail must include each actual foot and support anchor.`);
+    const coverage = [...before.members.map(member => member.bounds), ...before.supports];
+    assert.ok(coverage.every(bounds => Object.values(bounds).filter(value => typeof value === 'number').every(Number.isFinite)),
+      `${label}: native detail coordinates must be finite.`);
+    // Include a 20 CSS-pixel margin for shadows, labels and visible local floor.
+    const left = Math.max(Math.ceil(x), Math.floor(Math.min(...coverage.map(bounds => bounds.x)) - 20));
+    const top = Math.max(Math.ceil(y), Math.floor(Math.min(...coverage.map(bounds => bounds.y)) - 20));
+    const right = Math.min(Math.floor(x + width), Math.ceil(Math.max(...coverage.map(bounds => bounds.right)) + 20));
+    const bottom = Math.min(Math.floor(y + height), Math.ceil(Math.max(...coverage.map(bounds => bounds.bottom)) + 20));
+    assert.ok(coverage.every(bounds => bounds.x >= left && bounds.y >= top && bounds.right <= right && bounds.bottom <= bottom),
+      `${label}: no hunter layer or ground support may be cropped by the native detail rectangle.`);
+    x = left; y = top; width = right - left; height = bottom - top;
+    assert.ok(width > 0 && height > 0 && width * height < prepared.scene.width * prepared.scene.height,
+      `${label}: the final formation detail must be a smaller native region, without rescaling.`);
+  }
+  const clip = { x, y, width, height, scale: 1 };
   const screenshot = await prepared.captureSession.send('Page.captureScreenshot', {
-    format: 'png', clip: { x, y, width, height, scale: 1 }, fromSurface: true,
+    format: 'png', clip, fromSurface: true,
     captureBeyondViewport: false, optimizeForSpeed: true,
   });
-  const after = await target.locator('[data-arrival-run]').evaluate(root => ({
-    elapsedMs: Number(root.getAttribute('data-arrival-elapsed')),
-    shot: root.getAttribute('data-arrival-shot'), status: root.getAttribute('data-arrival-status'),
-    cloakPhase: root.querySelector('[data-arrival-scene]')?.getAttribute('data-arrival-cloak-phase'),
-    contact: root.querySelector('[data-arrival-scene]')?.getAttribute('data-arrival-contact') === 'true',
-  }));
-  assert.equal(after.status, 'playing', `${label}: a terminal or paused overlay invalidates the photograph.`);
+  const after = await readMoment(target, prepared.region);
+  assert.equal(after.run, before.run, `${label}: the photograph must retain the same native arrival run.`);
   assert.equal(after.shot, before.shot, `${label}: the photograph must stay within its actual native shot.`);
   assert.equal(after.cloakPhase, before.cloakPhase, `${label}: optical phase must remain unambiguous across the photograph.`);
   assert.equal(after.contact, before.contact, `${label}: the photograph cannot cross the native ground-contact boundary.`);
   assert.ok(after.elapsedMs >= before.elapsedMs, `${label}: the native clock cannot be rewound for a picture.`);
+  if (prepared.region === 'formation-detail') {
+    const identityAndPose = members => members.map(({ id, stage, contact, portal, opacity }) => ({ id, stage, contact, portal, opacity }));
+    assert.deepEqual(identityAndPose(after.members), identityAndPose(before.members),
+      `${label}: the entire native detail capture must retain the same visible standing trio.`);
+    assert.deepEqual(after.supports.map(support => support.id), before.supports.map(support => support.id));
+    assert.ok([...after.members.map(member => member.bounds), ...after.supports].every(bounds =>
+      bounds.x >= x && bounds.y >= y && bounds.right <= x + width && bounds.bottom <= y + height),
+    `${label}: native movement during capture must not crop a hunter layer or ground support.`);
+  }
+  // A late detail remains rejected evidence. It can only request another
+  // native playback when all identity, geometry and phase gates still hold.
+  // Pauses, asset failures, rewinds or any other state mismatch remain fatal.
+  const lateCompletion = prepared.region === 'formation-detail' && after.status === 'complete' && after.elapsedMs === 62_000;
+  if (!lateCompletion) assert.equal(after.status, 'playing', `${label}: a terminal or paused overlay invalidates the photograph.`);
   const bytes = Buffer.from(screenshot.data, 'base64');
   const measured = { ...await readFrame(target), decodedSvg: prepared.decodedSvg };
   assertSpatial(measured, label);
-  const file = label + '.png';
+  validateFrame?.(measured);
+  const photographLabel = label + (lateCompletion ? `-rejected-attempt-${attempt}` : '');
+  const file = photographLabel + '.png';
   await fs.writeFile(path.join(out, file), bytes);
-  report.captures.push({ file, sha256: sha256(bytes), viewport: target.viewportSize(), shot: before.shot,
+  (lateCompletion ? report.rejectedCaptures : report.captures).push({ file, sha256: sha256(bytes), viewport: target.viewportSize(), shot: before.shot,
+    region: prepared.region, clip, ...(contextFile ? { contextFile } : {}),
+    attempt, accepted: !lateCompletion, ...(lateCompletion ? { rejection: 'Native completion during PNG acquisition; no visual proof accepted.' } : {}),
     elapsedBefore: before.elapsedMs, elapsedAfter: after.elapsedMs, measuredAt: measured.elapsedMs,
     observation: 'Live clock immediately before and after lossless PNG capture; native playing status, shot and optical phase must survive both observations. Complete geometry measured afterwards.' });
-  report.samples.push({ label, ...measured, capturedBefore: before, capturedAfter: after });
-  return { frame: measured, capturedBefore: before };
+  report.samples.push({ label: photographLabel, ...measured, photoAccepted: !lateCompletion, capturedBefore: before, capturedAfter: after });
+  return lateCompletion ? null : { frame: measured, capturedBefore: before, file, attempt };
 }
 
-async function prepareMoment(target = page) {
+async function prepareMoment(target = page, region = 'scene') {
+  assert.ok(['scene', 'formation-detail'].includes(region));
   const decodedSvg = await decodeSceneImages(target);
   const scene = await target.locator('[data-arrival-scene]').boundingBox();
   assert.ok(scene);
   if (!momentCaptureSessions.has(target)) momentCaptureSessions.set(target, await target.context().newCDPSession(target));
-  return { decodedSvg, scene, captureSession: momentCaptureSessions.get(target) };
+  return { decodedSvg, scene, region, captureSession: momentCaptureSessions.get(target) };
 }
 
 async function waitElapsed(milliseconds, shotId, target = page, allowComplete = false) {
@@ -1010,20 +1087,29 @@ try {
         const walking = await captureMoment(`${viewport.id}-${variant.id}-egress-walking`, walkingPrepared);
         assert.ok(walking.capturedBefore.members.some(member => member.stage === 'walking'),
           'The walking PNG must be requested while a real formation member is walking.');
-        await openShot(primaryMission.id, 'egress', false, api.DEFAULT_SHIP_ID, variant.plan);
-        const finalPrepared = await prepareMoment();
+        const finalDetail = variant.plan.team === 'triad';
         const finalTime = api.ARRIVAL_HUNTER_MOVE_END_MS + Math.max(...api.arrivalFormationSlots(variant.plan.team).map(slot => slot.delayMs)) + 10;
-        await waitElapsed(finalTime, egress.id);
-        const finalCapture = await captureMoment(`${viewport.id}-${variant.id}-egress-final`, finalPrepared);
+        const validateFinalFrame = frame => {
+          assertFinalFormation(frame, variant.plan, `${viewport.id}-${variant.id}`);
+          if (variant.plan.method === 'ship') assert.ok(
+            distance(groundPoint(grounded, 'ship-ground-contact'), groundPoint(frame, 'ship-ground-contact')) <= 1.5,
+            'The landed hull must remain stationary throughout disembarkation, including rejected photographic attempts.');
+        };
+        let finalCapture = null;
+        for (let attempt = 1; attempt <= (finalDetail ? 3 : 1); attempt += 1) {
+          await openShot(primaryMission.id, 'egress', false, api.DEFAULT_SHIP_ID, variant.plan);
+          const finalPrepared = await prepareMoment(page, finalDetail ? 'formation-detail' : 'scene');
+          await waitElapsed(finalTime, egress.id);
+          finalCapture = await captureMoment(`${viewport.id}-${variant.id}-egress-final${finalDetail ? '-detail' : ''}`,
+            finalPrepared, page, attempt, validateFinalFrame);
+          if (finalCapture) break;
+        }
+        assert.ok(finalCapture, 'Every final trio PNG crossed completion; all attempts remain rejected and no final visual proof is available.');
         assert.ok(finalCapture.capturedBefore.members.every(member => member.stage === 'standing' && member.contact === 'ground'),
           'The final PNG must be requested after every hunter is standing on the floor and before completion.');
         const final = finalCapture.frame;
-        assertFinalFormation(final, variant.plan, `${viewport.id}-${variant.id}`);
-        if (variant.plan.method === 'ship') {
-          assert.ok(distance(groundPoint(grounded, 'ship-ground-contact'), groundPoint(final, 'ship-ground-contact')) <= 1.5,
-            'The landed hull must remain stationary throughout disembarkation.');
-        }
         report.insertions.push({ viewport: viewport.id, ...variant, ship: api.DEFAULT_SHIP_ID,
+          finalPhotograph: { file: finalCapture.file, attempts: finalCapture.attempt, rejectedAttempts: finalCapture.attempt - 1 },
           finalMembers: final.members.map(member => ({ id: member.id, stage: member.stage, contact: member.contact })),
           finalAnchors: Object.fromEntries(Object.entries(final.anchors).filter(([id]) => /hunter-feet$|ship-ground-contact/.test(id))),
         });

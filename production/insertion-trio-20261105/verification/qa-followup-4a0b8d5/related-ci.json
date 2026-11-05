@@ -1,0 +1,460 @@
+{
+  "observedAt": "2026-11-05T10:01:41.407989+00:00",
+  "headSha": "4a0b8d58cdfadf642d6c897c32980b7a8586f4dd",
+  "runtimeCommit": "a54ec1bec2b80e9d9ce229285ebb1ad92cf33864",
+  "headTree": "9b64f036ca97247ef7a131566705df7e1c472325",
+  "runtimeTree": "9b64f036ca97247ef7a131566705df7e1c472325",
+  "appFilesChangedFrom66f": [],
+  "workflows": [
+    {
+      "id": 42003800577,
+      "name": "V136 Full Gauntlet Campaign and Build Integration",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 42003800202,
+      "name": "V131 Gauntlet hologram dual-view checks",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 42003800093,
+      "name": "V94 ship training persistence",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 42003800304,
+      "name": "V112 hunt closure qualifications",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 42003800028,
+      "name": "V94 transactional exercises and trophy confirmation",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 42003800233,
+      "name": "V94 campaign routes and bounded cloud transport",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 42003800118,
+      "name": "V94 regression tests",
+      "status": "completed",
+      "conclusion": "success"
+    }
+  ],
+  "jobs": [
+    {
+      "runId": 42003800202,
+      "id": 127165374992,
+      "name": "Single live atlas, preference fallback and projector typecheck",
+      "status": "completed",
+      "conclusion": "success",
+      "failedSteps": []
+    },
+    {
+      "runId": 42003800577,
+      "id": 127165374789,
+      "name": "Full repository typecheck and production frontend build",
+      "status": "completed",
+      "conclusion": "success",
+      "failedSteps": []
+    },
+    {
+      "runId": 42003800304,
+      "id": 127165374223,
+      "name": "Native rules, types, CPU and reproducible workbook",
+      "status": "completed",
+      "conclusion": "success",
+      "failedSteps": []
+    },
+    {
+      "runId": 42003800304,
+      "id": 127165374702,
+      "name": "Mounted hunting controls, guide, lifecycle and durable workshop",
+      "status": "completed",
+      "conclusion": "success",
+      "failedSteps": []
+    },
+    {
+      "runId": 42003800118,
+      "id": 127165373668,
+      "name": "Application audit (history)",
+      "status": "completed",
+      "conclusion": "success",
+      "failedSteps": []
+    },
+    {
+      "runId": 42003800118,
+      "id": 127165373806,
+      "name": "Targeted V94 regressions (not full game QA)",
+      "status": "completed",
+      "conclusion": "success",
+      "failedSteps": []
+    },
+    {
+      "runId": 42003800118,
+      "id": 127165373938,
+      "name": "Application audit (application)",
+      "status": "completed",
+      "conclusion": "success",
+      "failedSteps": []
+    },
+    {
+      "runId": 42003800118,
+      "id": 127165374213,
+      "name": "Application audit (models)",
+      "status": "completed",
+      "conclusion": "success",
+      "failedSteps": []
+    },
+    {
+      "runId": 42003800118,
+      "id": 127175980454,
+      "name": "Application compile, types, runtime lint and browser integration",
+      "status": "completed",
+      "conclusion": "success",
+      "failedSteps": []
+    },
+    {
+      "runId": 42003800028,
+      "id": 127165372887,
+      "name": "persistence",
+      "status": "completed",
+      "conclusion": "success",
+      "failedSteps": []
+    },
+    {
+      "runId": 42003800233,
+      "id": 127165373525,
+      "name": "gameplay-cloud",
+      "status": "completed",
+      "conclusion": "success",
+      "failedSteps": []
+    },
+    {
+      "runId": 42003800093,
+      "id": 127165372764,
+      "name": "ship-training",
+      "status": "completed",
+      "conclusion": "success",
+      "failedSteps": []
+    }
+  ],
+  "watchedV94Steps": [
+    {
+      "jobId": 127165373938,
+      "name": "Application audit (application)",
+      "steps": [
+        {
+          "number": 73,
+          "name": "Exercise actual clan-war panel and native locked storage",
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ]
+    },
+    {
+      "jobId": 127165374213,
+      "name": "Application audit (models)",
+      "steps": [
+        {
+          "number": 67,
+          "name": "Verify the consolidated runtime inventory and every current V113 model",
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ]
+    }
+  ],
+  "allWorkflowConclusions": [
+    {
+      "id": 42003800577,
+      "name": "V136 Full Gauntlet Campaign and Build Integration",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 42003800112,
+      "name": "V113 native PHG-inspired materials and renderer wiring",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 42003800202,
+      "name": "V131 Gauntlet hologram dual-view checks",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 42003800214,
+      "name": "V114 Yautja PHG material integrity and channel contract",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 42003800075,
+      "name": "Clan field props — individual sprites and controls",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 42003800266,
+      "name": "V113/V114 candidate production and immutable workbooks",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 42003800093,
+      "name": "V94 ship training persistence",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 42003800188,
+      "name": "Consolidated Homeworld saves and planetary layouts",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 42003800304,
+      "name": "V112 hunt closure qualifications",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 42003800028,
+      "name": "V94 transactional exercises and trophy confirmation",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 42003800233,
+      "name": "V94 campaign routes and bounded cloud transport",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 42003800111,
+      "name": "Wolf castle and planetary arrival",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 42003800301,
+      "name": "Planetary arrival spatial audit",
+      "status": "completed",
+      "conclusion": "failure"
+    },
+    {
+      "id": 42003800348,
+      "name": "Planet V114 focused regressions",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 42003800064,
+      "name": "Hidden developer travel and isolated sessions",
+      "status": "completed",
+      "conclusion": "failure"
+    },
+    {
+      "id": 42003800119,
+      "name": "Clan Ship campaign, interior, crew and tactical operations",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 42003800118,
+      "name": "V94 regression tests",
+      "status": "completed",
+      "conclusion": "success"
+    }
+  ],
+  "artifacts": [
+    {
+      "artifactId": 13403776895,
+      "artifactName": "yautja-gauntlet-v136-browser-qa",
+      "runId": 42003800202,
+      "headSha": "4a0b8d58cdfadf642d6c897c32980b7a8586f4dd",
+      "runtimeCommit": "a54ec1bec2b80e9d9ce229285ebb1ad92cf33864",
+      "runtimeTree": "9b64f036ca97247ef7a131566705df7e1c472325",
+      "sizeInBytes": 1472857,
+      "sha256": "5de369258dde15f002de3ea9dcd453b273e15a454309ce068e45b921b4f26bfb",
+      "filesInArchive": [
+        "gauntlet-browser-v136-jungle-hunter.png",
+        "gauntlet-browser-v136-single.png",
+        "gauntlet-browser-v136-comparison.png"
+      ],
+      "originalReceiptSha256": "9a68133a2cad6607114fa7ecc8b7604f38de466b79c30978d4ea788e26042a53"
+    },
+    {
+      "artifactId": 13404146052,
+      "artifactName": "hunt-closure-v112-browser-a54ec1bec2b80e9d9ce229285ebb1ad92cf33864",
+      "runId": 42003800304,
+      "headSha": "4a0b8d58cdfadf642d6c897c32980b7a8586f4dd",
+      "runtimeCommit": "a54ec1bec2b80e9d9ce229285ebb1ad92cf33864",
+      "runtimeTree": "9b64f036ca97247ef7a131566705df7e1c472325",
+      "sizeInBytes": 608373,
+      "sha256": "07ecd273a687346e6de4aa70c7152f271e61f45b3ef64401f681aac30cce399b",
+      "filesInArchive": [
+        "qa-hunt-v112/accessibility-phone.png",
+        "qa-hunt-v112/corpse-rites-gamepad.png",
+        "qa-hunt-v112/canopy-native-release.png",
+        "qa-hunt-v112/corpse-rites.png",
+        "qa-hunt-v112/field-guide-readable.png",
+        "qa-hunt-v112/report.json",
+        "qa-hunt-v112/workshop-cleaned.png",
+        "qa-hunt-lifecycle-v112/mapped-workshop-phone.png",
+        "qa-hunt-lifecycle-v112/mounted-conservation.png",
+        "qa-hunt-lifecycle-v112/mounted-harvest.png",
+        "qa-hunt-lifecycle-v112/report.json",
+        "qa-v109-atlas-integration/run-iSKQbU/actual-worker-cargo-detour.png",
+        "qa-v109-atlas-integration/run-iSKQbU/mobile-cargo-register.png",
+        "qa-v109-atlas-integration/run-iSKQbU/result.json"
+      ],
+      "originalReceiptSha256": "f9ea6a072aefb0f85b99f06a23712379f53e4c8329b2f2fad45293df63e32f5d"
+    },
+    {
+      "artifactId": 13403932092,
+      "artifactName": "hunt-closure-v112-native-a54ec1bec2b80e9d9ce229285ebb1ad92cf33864",
+      "runId": 42003800304,
+      "headSha": "4a0b8d58cdfadf642d6c897c32980b7a8586f4dd",
+      "runtimeCommit": "a54ec1bec2b80e9d9ce229285ebb1ad92cf33864",
+      "runtimeTree": "9b64f036ca97247ef7a131566705df7e1c472325",
+      "sizeInBytes": 7481,
+      "sha256": "c51f3199b8429ccb8211d4ed85ae5bb722888e780bc16bcc674abc34605c86fe",
+      "filesInArchive": [
+        "native-performance.json"
+      ],
+      "originalReceiptSha256": "eb1491cb24872ca7137d27c60f13893145368a3285de591a916416c8d93ad1d8"
+    },
+    {
+      "artifactId": 13403707134,
+      "artifactName": "yautja-v142-real-hunt-suspend-resume-chrome",
+      "runId": 42003800577,
+      "headSha": "4a0b8d58cdfadf642d6c897c32980b7a8586f4dd",
+      "runtimeCommit": "a54ec1bec2b80e9d9ce229285ebb1ad92cf33864",
+      "runtimeTree": "9b64f036ca97247ef7a131566705df7e1c472325",
+      "sizeInBytes": 778987,
+      "sha256": "89236ec76aa878603dfd8d36cdfdb13da2e2991ae6fdec053f45959e4b1e9624",
+      "filesInArchive": [
+        "01-wolf-in-real-hunt.png",
+        "03-missing-wolf-base-v3-fallback.png",
+        "02-wolf-restored-despite-feral-in-other-tab.png",
+        "v142-real-hunt-browser-evidence.json"
+      ],
+      "originalReceiptSha256": "085f40b59c7a883f61661c359f2d0101e95445301d3477c8374ef501f9663903"
+    },
+    {
+      "artifactId": 13403729995,
+      "artifactName": "application-audit-success-42003800118-1-a54ec1bec2b80e9d9ce229285ebb1ad92cf33864-models",
+      "runId": 42003800118,
+      "headSha": "4a0b8d58cdfadf642d6c897c32980b7a8586f4dd",
+      "runtimeCommit": "a54ec1bec2b80e9d9ce229285ebb1ad92cf33864",
+      "runtimeTree": "9b64f036ca97247ef7a131566705df7e1c472325",
+      "sizeInBytes": 256,
+      "sha256": "7c5ca9360ad55144eefecef569759fd61aba5e4813d2c7c20772f8f48f7dcf82",
+      "filesInArchive": [
+        "proof.json"
+      ],
+      "originalReceiptSha256": "b5057bce830312033c52c2d17eb99b1c69b834086d882b4ab5b74bb211d844fa",
+      "proof": {
+        "schemaVersion": 1,
+        "result": "success",
+        "group": "models",
+        "runId": "42003800118",
+        "runAttempt": "1",
+        "commit": "a54ec1bec2b80e9d9ce229285ebb1ad92cf33864"
+      },
+      "proofSha256": "6920de1a046f53087129f9e81cb6c38d55d246ec30e781fd735924ae06ce9067"
+    },
+    {
+      "artifactId": 13404729154,
+      "artifactName": "application-audit-success-42003800118-1-a54ec1bec2b80e9d9ce229285ebb1ad92cf33864-history",
+      "runId": 42003800118,
+      "headSha": "4a0b8d58cdfadf642d6c897c32980b7a8586f4dd",
+      "runtimeCommit": "a54ec1bec2b80e9d9ce229285ebb1ad92cf33864",
+      "runtimeTree": "9b64f036ca97247ef7a131566705df7e1c472325",
+      "sizeInBytes": 259,
+      "sha256": "6323f3419d5890f18cf8ba2a786bab3c4de1369eaaccf6fdd5ebc8955ea15b2f",
+      "filesInArchive": [
+        "proof.json"
+      ],
+      "originalReceiptSha256": "4e5678c212a467c06494811e4fcd60fd22bc18048b7b14f18eaeb37e22bed394",
+      "proof": {
+        "schemaVersion": 1,
+        "result": "success",
+        "group": "history",
+        "runId": "42003800118",
+        "runAttempt": "1",
+        "commit": "a54ec1bec2b80e9d9ce229285ebb1ad92cf33864"
+      },
+      "proofSha256": "1dffe5ba69b0b1f39874728bd37cdf6bf0181b29157406fe90b33e9e3f8df47f"
+    },
+    {
+      "artifactId": 13405231041,
+      "artifactName": "application-audit-success-42003800118-1-a54ec1bec2b80e9d9ce229285ebb1ad92cf33864-application",
+      "runId": 42003800118,
+      "headSha": "4a0b8d58cdfadf642d6c897c32980b7a8586f4dd",
+      "runtimeCommit": "a54ec1bec2b80e9d9ce229285ebb1ad92cf33864",
+      "runtimeTree": "9b64f036ca97247ef7a131566705df7e1c472325",
+      "sizeInBytes": 259,
+      "sha256": "74a33194676e5a055c8cd507686acd232f74c1bb567ce9976cfcfb5619062279",
+      "filesInArchive": [
+        "proof.json"
+      ],
+      "originalReceiptSha256": "88566b59c591a91dfc6ba6be99a151d9071c9f6e8285a4098db979f631b4d422",
+      "proof": {
+        "schemaVersion": 1,
+        "result": "success",
+        "group": "application",
+        "runId": "42003800118",
+        "runAttempt": "1",
+        "commit": "a54ec1bec2b80e9d9ce229285ebb1ad92cf33864"
+      },
+      "proofSha256": "d5c66792fd273c5d3aead7d34ed3b5a3ae8ee60949e9a23803aa764ebc097684"
+    }
+  ],
+  "v142UnitTests": {
+    "tests": 7,
+    "passed": 7,
+    "failed": 0,
+    "skipped": 0,
+    "evidence": "v142-tests.log"
+  },
+  "v142Browser": {
+    "checks": 4,
+    "passed": 4,
+    "errors": 0,
+    "scope": "Isolated production HuntCanvas mission with real V1 sidecar and two tabs; sparse checkout excludes unrelated world art.",
+    "evidence": "v142-hunt-report.json"
+  },
+  "v112Browser": {
+    "lifecycle": {
+      "checks": 12,
+      "passed": 12,
+      "errors": 0
+    },
+    "controlsGuide": {
+      "checks": 22,
+      "passed": 22,
+      "errors": 0
+    },
+    "lifecycleEvidence": "v112-lifecycle-report.json",
+    "controlsEvidence": "v112-controls-report.json"
+  },
+  "copiedEvidenceSha256": {
+    "v142-tests.log": "5fe7f253fd04e36d90fa039fe0b24180b92bc3272626642058102d8941ded2c3",
+    "v112-controls-report.json": "b2d4e2a47b07cf3d999c6a7c3e46a476f2ff3d06e45b0e3fb58c8db8a4ad8905",
+    "v112-lifecycle-report.json": "c34bdeff78b0f8b70526b549c3a31ae0f3a9da8472d7cad2fb4e1464c0cd635b",
+    "v142-hunt-report.json": "cd5fa9d738f47fdaddcfe18be2b234ae77e2e256a4f085a24c9b88a304cbe8bd"
+  },
+  "scope": "Read-only monitoring of V131, V136, V112 and four V94 workflows for the exact head SHA. Other workflow conclusions are inventory only."
+}

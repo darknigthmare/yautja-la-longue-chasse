@@ -1,0 +1,262 @@
+{
+  "schema": 1,
+  "recordedAt": "2026-11-05T10:06:49.255941+00:00",
+  "headSha": "4a0b8d58cdfadf642d6c897c32980b7a8586f4dd",
+  "headTree": "9b64f036ca97247ef7a131566705df7e1c472325",
+  "mergeCheckout": {
+    "sha": "a54ec1bec2b80e9d9ce229285ebb1ad92cf33864",
+    "tree": "9b64f036ca97247ef7a131566705df7e1c472325",
+    "parents": [
+      "23b48e127e8d058da110f391c7ac3a4b9ef17aad",
+      "4a0b8d58cdfadf642d6c897c32980b7a8586f4dd"
+    ],
+    "treesIdentical": true
+  },
+  "runtimeApplicationIdenticalTo": "66f57a147d3e17aca592d62f3aadbb35ec702db8",
+  "workflowTotals": {
+    "completed": 17,
+    "success": 15,
+    "failure": 2,
+    "inProgress": 0
+  },
+  "browserArtifacts": [
+    {
+      "recipe": "spatial",
+      "runId": 42003800301,
+      "jobId": 127165374284,
+      "workflowUrl": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/42003800301",
+      "artifactId": 13403832614,
+      "artifactName": "planet-arrival-spatial-4a0b8d58cdfadf642d6c897c32980b7a8586f4dd",
+      "sizeInBytes": 50585190,
+      "sha256": "b610ade4097c95cc9fc0096027284f0ef8f1907d40cd167d4121c2f54d2ba455",
+      "sourceCommit": "4a0b8d58cdfadf642d6c897c32980b7a8586f4dd",
+      "checkoutCommit": null,
+      "workingTreeDirty": false,
+      "reportSha256": "20dbf045b8dcb34985d239533e80a2a0c5038e8758e7b1ea42431622de9b5f85",
+      "checks": {
+        "passed": 22,
+        "total": 23,
+        "failed": 1
+      },
+      "failures": [
+        {
+          "check": "desktop: pod-triad real flight, contact and complete disembarkation",
+          "message": "desktop-pod-triad-egress-final: a terminal or paused overlay invalidates the photograph.\n+ actual - expected\n\n+ 'complete'\n- 'playing'\n",
+          "stack": "AssertionError [ERR_ASSERTION]: desktop-pod-triad-egress-final: a terminal or paused overlay invalidates the photograph.\n+ actual - expected\n\n+ 'complete'\n- 'playing'\n\n    at captureMoment (file:///home/runner/work/yautja-la-longue-chasse/yautja-la-longue-chasse/scripts/qa-planet-arrival-spatial.mjs:706:10)\n    at async file:///home/runner/work/yautja-la-longue-chasse/yautja-la-longue-chasse/scripts/qa-planet-arrival-spatial.mjs:1017:30\n    at async check (file:///home/runner/work/yautja-la-longue-chasse/yautja-la-longue-chasse/scripts/qa-planet-arrival-spatial.mjs:205:9)\n    at async file:///home/runner/work/yautja-la-longue-chasse/yautja-la-longue-chasse/scripts/qa-planet-arrival-spatial.mjs:938:7"
+        }
+      ],
+      "browserErrors": 0,
+      "consoleErrors": 0,
+      "consoleErrorsCollected": true,
+      "missingAssets": 0
+    },
+    {
+      "recipe": "wolf",
+      "runId": 42003800111,
+      "jobId": 127165372462,
+      "workflowUrl": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/42003800111",
+      "artifactId": 13404910489,
+      "artifactName": "wolf-arrival-browser-a54ec1bec2b80e9d9ce229285ebb1ad92cf33864",
+      "sizeInBytes": 16217044,
+      "sha256": "7f02a07063aec282731c8266de1d584479b03171b7245da730d3dd2d0ee70214",
+      "sourceCommit": "4a0b8d58cdfadf642d6c897c32980b7a8586f4dd",
+      "checkoutCommit": "4a0b8d58cdfadf642d6c897c32980b7a8586f4dd",
+      "workingTreeDirty": false,
+      "reportSha256": "f303cd68f66fc6bce6ca2b1a3b7fc2d7b495dd466b9a12e1e8c3af21f636566e",
+      "checks": {
+        "passed": 32,
+        "total": 32,
+        "failed": 0
+      },
+      "failures": [],
+      "browserErrors": 0,
+      "consoleErrors": null,
+      "consoleErrorsCollected": false,
+      "missingAssets": 0
+    },
+    {
+      "recipe": "dev",
+      "runId": 42003800064,
+      "jobId": 127165373537,
+      "workflowUrl": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/42003800064",
+      "artifactId": 13404412213,
+      "artifactName": "dev-travel-browser-4a0b8d58cdfadf642d6c897c32980b7a8586f4dd",
+      "sizeInBytes": 9691581,
+      "sha256": "376aafda0f5b27a12d8bdf8ebbb6064fd92b99409f7add831d1159a3986a3246",
+      "sourceCommit": "4a0b8d58cdfadf642d6c897c32980b7a8586f4dd",
+      "checkoutCommit": null,
+      "workingTreeDirty": false,
+      "reportSha256": "cc4852ec3ee49fd84b857e9b901b5ddbda26f00372c003ca91d0e7c96b7bb719",
+      "checks": {
+        "passed": 14,
+        "total": 15,
+        "failed": 1
+      },
+      "failures": [
+        {
+          "name": "Direct bookmarked room URLs and reload recreate a disposable session",
+          "message": "locator.waitFor: Error: strict mode violation: locator('[data-clan-ship-status=\"aboard\"][data-clan-ship-room=\"trophees\"]') resolved to 2 elements:\n    1) <section data-clan-ship-status=\"aboard\" data-clan-ship-room=\"trophees\" aria-label=\"Clan Ship — vaisseau-mère AVP\" class=\"ClanShipHub_hub__Xgxu5 ClanShipHub_hubAboard__4oFg7\">…</section> aka getByRole('region', { name: 'Clan Ship — vaisseau-mère AVP' })\n    2) <section data-clan-ship-status=\"aboard\" data-clan-ship-room=\"trophees\" aria-label=\"Clan Ship — vaisseau-mère AVP\" class=\"ClanShipHub_hub__Xgxu5 ClanShipHub_hubAboard__4oFg7\">…</section> aka getByLabel('Clan Ship — vaisseau-mère AVP').nth(1)\n\nCall log:\n  - waiting for locator('[data-clan-ship-status=\"aboard\"][data-clan-ship-room=\"trophees\"]') to be visible\n    - locator resolved to hidden <section data-clan-ship-status=\"aboard\" data-clan-ship-room=\"trophees\" aria-label=\"Clan Ship — vaisseau-mère AVP\" class=\"ClanShipHub_hub__Xgxu5 ClanShipHub_hubAboard__4oFg7\">…</section>\n"
+        }
+      ],
+      "browserErrors": 0,
+      "consoleErrors": 0,
+      "consoleErrorsCollected": true,
+      "missingAssets": 0
+    }
+  ],
+  "wolf": {
+    "report": "wolf-report.json",
+    "runtime": "actual desktop GameClient via Vite",
+    "briefing": {
+      "enabled": true,
+      "chargeBefore": 100,
+      "previewAfter": 70
+    },
+    "handoff": {
+      "runId": "cbabc98a-89d3-4640-9c00-9eec14a154c7",
+      "plan": {
+        "version": 1,
+        "method": "ship",
+        "team": "triad",
+        "shipCloak": true
+      },
+      "companions": [
+        {
+          "id": "karhek",
+          "x": 389,
+          "y": 512,
+          "width": 64,
+          "height": 112,
+          "health": 100,
+          "maxHealth": 100,
+          "velocityX": 0,
+          "velocityY": 0,
+          "facing": -1,
+          "grounded": true,
+          "climbing": false,
+          "order": "follow",
+          "status": "active",
+          "attackCooldown": 0.7,
+          "attackFlash": 0,
+          "invulnerability": 0,
+          "blockedSeconds": 0,
+          "jumpTargetX": null
+        },
+        {
+          "id": "saketh",
+          "x": 549,
+          "y": 512,
+          "width": 64,
+          "height": 112,
+          "health": 120,
+          "maxHealth": 120,
+          "velocityX": 0,
+          "velocityY": 0,
+          "facing": 1,
+          "grounded": true,
+          "climbing": false,
+          "order": "follow",
+          "status": "active",
+          "attackCooldown": 0.7,
+          "attackFlash": 0,
+          "invulnerability": 0,
+          "blockedSeconds": 0,
+          "jumpTargetX": null
+        }
+      ],
+      "energy": {
+        "charge": 70,
+        "runId": "cbabc98a-89d3-4640-9c00-9eec14a154c7",
+        "departures": 1
+      },
+      "patrolIds": [
+        "jungle-vey:0:insertion-patrol-0"
+      ],
+      "searchUntil": 18,
+      "realPatrolCount": 1
+    },
+    "verifiedRecovery": "The passed native checks cover tab suspension, pause, menu/reload/Continue, refused handoff and retry, and fresh Hunt resume with the original paid run and exactly one debit.",
+    "visualOpticalApproval": false
+  },
+  "dev": {
+    "acceptedChecks": [
+      "Hidden /dev route opens directly with noindex and a complete destination catalogue",
+      "Category and accent-insensitive search filter actual destination buttons",
+      "Keyboard launch opens the real personal deck, movement works, and reset restores the starting point",
+      "Changing equipment in the test armory stays in memory and returning preserves the personal deck",
+      "All seven Clan Ship room arrivals mount the real interior and their authored scenery",
+      "Approach, docking and boarding use the real Clan Ship transitions within the test session",
+      "Homeworld port and market open at distinct real city positions, and city movement works",
+      "A regional destination opens its live village, and F8 returns to the catalogue even from its modal",
+      "All nine Wolf castle arrivals render their real rooms, accept movement and reset the disposable visit",
+      "Wolf approach, boarding, settings and departure use native actions, and F8 escapes its real map",
+      "Eight destination arrivals and four insertion variants preload their real resources and preserve their paid identities",
+      "Arrival pause, mobile controls, reload, reset and native Skip preserve the campaign and enter one real hunt",
+      "A full natural arrival presents all eight shots and hands the same mission to one real hunt without storage writes",
+      "A real mission keeps its position and clock after walking into a newly discovered room"
+    ],
+    "failureState": {
+      "url": "http://127.0.0.1:4193/dev?lieu=clan-trophees",
+      "focused": true,
+      "hidden": false,
+      "visibility": "visible",
+      "activeElement": {
+        "tag": "DIV",
+        "role": null,
+        "label": "Pont explorable. Flèches ou ZQSD/WASD pour marcher, E pour interagir.",
+        "text": "‹Archives du clan›Baie médicaleOuvrir l’atelier des trophées\n          @keyframes hunter-rig-v3-reticle {\n            0%, 100% { opacity: .48; scale: .88; }\n   "
+      },
+      "session": {
+        "id": "clan-trophees",
+        "stage": "clan",
+        "arrivalStatus": null,
+        "arrivalElapsed": null
+      },
+      "arrival": null
+    },
+    "classification": "The CSS locator matched the real accessible Clan Ship plus a hidden streamed copy; the URL, active session and visible room were correct.",
+    "repair": "Intersect the accessible named region with the exact URL session, status and room; scope native images/actions/movement. Apply the same discipline to the arrival helpers and read the clock on the strictly resolved element.",
+    "browserResultOfRepair": "pending CI"
+  },
+  "spatial": {
+    "acceptedChecks": [
+      "desktop: orbit actual layers, anchors and motion",
+      "desktop: title actual layers, anchors and motion",
+      "desktop: carrier actual layers, anchors and motion",
+      "desktop: release actual layers, anchors and motion",
+      "desktop: descent actual layers, anchors and motion",
+      "desktop: atmosphere actual layers, anchors and motion",
+      "desktop: landing actual layers, anchors and motion",
+      "desktop: egress actual layers, anchors and motion",
+      "desktop: Nivalis-K own planet, landscape and grounded emergence",
+      "desktop: Cinder-12 own planet, landscape and grounded emergence",
+      "desktop: Naraka-Delta own planet, landscape and grounded emergence",
+      "desktop: Serekh-9 own planet, landscape and grounded emergence",
+      "desktop: Pelagos-M own planet, landscape and grounded emergence",
+      "desktop: Mycora-V own planet, landscape and grounded emergence",
+      "desktop: Acheron-Sigma own planet, landscape and grounded emergence",
+      "desktop: avp-predator-mothership source orientation and attached release effect",
+      "desktop: avpr-scout-ship source orientation and attached release effect",
+      "desktop: wolf-ship source orientation and attached release effect",
+      "desktop: fugitive-spaceship source orientation and attached release effect",
+      "desktop: upgrade-spaceship source orientation and attached release effect",
+      "desktop: feral-spaceship source orientation and attached release effect",
+      "desktop: ship-solo real flight, contact and complete disembarkation"
+    ],
+    "classification": "Native PNG acquisition outlasted the 250 ms final-triad interval; the required post-capture playing assertion refused the photograph.",
+    "camouflageReached": false,
+    "mobileReached": false,
+    "acceptedFinalTriadPhotograph": false,
+    "evidence": "spatial-captures.json",
+    "browserResultOfRepair": "pending CI"
+  },
+  "relatedCi": "related-ci.json",
+  "sourceVerification": "source-hashes.json",
+  "localFollowup": "local-validation.json",
+  "scope": "Compact evidence for the exact published head. The full images and Spatial/Dev reports remain in the Actions artifacts identified above. Current QA repairs are separate from these observed results.",
+  "limits": [
+    "No shader pixel approval or final-triad photograph approval is claimed from this run.",
+    "Browser qualification of the current Dev locator and Spatial final-detail acquisition is pending a subsequent publication.",
+    "The application, workflows and runtime inventory are unchanged by this follow-up."
+  ]
+}

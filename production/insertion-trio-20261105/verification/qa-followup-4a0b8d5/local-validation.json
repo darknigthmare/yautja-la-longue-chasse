@@ -1,0 +1,80 @@
+{
+  "checks": [
+    {
+      "command": [
+        "node",
+        "--check",
+        "scripts/qa-planet-arrival-spatial.mjs"
+      ],
+      "exitCode": 0,
+      "log": "local-check-1.log",
+      "sha256": "916d32fe2f904fefbded0238b16ceb6b06bcd2c5e5b6d9760b08b674a8afad70"
+    },
+    {
+      "command": [
+        "node",
+        "--check",
+        "scripts/qa-dev-travel-browser.mjs"
+      ],
+      "exitCode": 0,
+      "log": "local-check-2.log",
+      "sha256": "1bcc029d0d3a70eebb388e11b70846a3f4e9cf5e30d1da9f36d16953c7457ccc"
+    },
+    {
+      "command": [
+        "node",
+        "node_modules/eslint/bin/eslint.js",
+        "scripts/qa-planet-arrival-spatial.mjs",
+        "scripts/qa-dev-travel-browser.mjs",
+        "--max-warnings=0"
+      ],
+      "exitCode": 0,
+      "log": "local-check-3.log",
+      "sha256": "17cb4be0669487c44240123def8e9cbf236cff2d1ee176007f4b62690b029c58"
+    },
+    {
+      "command": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "exitCode": 0,
+      "log": "local-check-4.log",
+      "sha256": "9c714e264701a0be98321b8291c1d7b31cd42fa43ca79d922fab677f739b3fdd"
+    }
+  ],
+  "sourceSha256": {
+    "scripts/qa-planet-arrival-spatial.mjs": "2eaffbbd588921aea6387ba10ed7ae4bfc891f69fbc5fa82cc82766ba0c9e0c7",
+    "scripts/qa-dev-travel-browser.mjs": "97acd80c86c9e2f67964c4acecea41364b904262a056183427de399b25f14c0d"
+  },
+  "basisPublishedHead": "4a0b8d58cdfadf642d6c897c32980b7a8586f4dd",
+  "browserStatus": "Pending publication and CI of the follow-up. These local checks do not validate its screenshots or navigation.",
+  "independentReview": {
+    "status": "passed",
+    "mode": "read-only",
+    "additionalAgentTests": false,
+    "note": "The final correction checks the actual variant formation and landed-hull immobility on each accepted or rejected attempt before archiving or returning null."
+  },
+  "productionAndWorkflowFilesChanged": [],
+  "runtimeInventoryRegenerated": false,
+  "priorApplicationValidation": "../local-validation.json",
+  "scope": "Only two browser QA scripts changed. Product tests, global typecheck and build were not repeated because the application is unchanged.",
+  "formationDetail": {
+    "nativePngScale": 1,
+    "includes": [
+      "player, karhek and saketh rigs, painted child layers and labels",
+      "all six actual hunter-feet/hunter-support anchors"
+    ],
+    "marginCssPixels": 20,
+    "marginClampedToScene": true,
+    "requiresFullSceneContextPhotograph": true,
+    "maxNativeAttempts": 3,
+    "onlyRetryReason": "Native completion at 62000 ms during PNG acquisition after all identity, geometry and optical-phase checks pass.",
+    "rejectedPhotographsArchived": true,
+    "acceptedPhotographRequiresPlayingBeforeAndAfter": true,
+    "otherErrorsFatal": true,
+    "clockOrDomMutation": false,
+    "allAttemptsCheckLandedHullImmobility": true,
+    "validatorUsesActualVariantPlan": true
+  }
+}
