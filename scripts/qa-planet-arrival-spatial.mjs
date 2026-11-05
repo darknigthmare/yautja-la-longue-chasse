@@ -1139,7 +1139,7 @@ async function capturePreparedMoment(label, prepared, target = page, attempt = 1
     // must still leave the exact native bytes and their identity in the report.
     acquisition.sourceCapture = { file, sha256: sha256(bytes), bytes: bytes.length,
       kind: 'native-prepared-roi-png', backend: 'native-surface-with-preconfigured-roi', fromSurface: true,
-      roi: prepared.sourceRoi, cssViewport: target.viewportSize(),
+      roi: prepared.sourceRoi, sourceRoi: prepared.sourceRoi, targetRoi: prepared.targetRoi, cssViewport: target.viewportSize(),
       preparation: prepared.roiPreparation,
       width: null, height: null };
     startStage('nativeSourceMetadata');
@@ -1196,6 +1196,10 @@ async function capturePreparedMoment(label, prepared, target = page, attempt = 1
   const preparedRoiSource = prepared.region === 'formation-detail';
   const sourceClip = preparedRoiSource ? { ...clip, x: x - prepared.sourceRoi.x, y: y - prepared.sourceRoi.y } : clip;
   if (preparedRoiSource) {
+    assert.ok(x >= prepared.targetRoi.x && y >= prepared.targetRoi.y &&
+      x + width <= prepared.targetRoi.x + prepared.targetRoi.width &&
+      y + height <= prepared.targetRoi.y + prepared.targetRoi.height,
+    `${label}: the complete final detail must remain inside the original, pixel-calibrated lower-scene target.`);
     assert.ok(sourceClip.x >= 0 && sourceClip.y >= 0 &&
       sourceClip.x + width <= prepared.sourceRoi.width && sourceClip.y + height <= prepared.sourceRoi.height,
     `${label}: every final layer and the existing detail margin must fit the ROI prepared before the interval.`);
@@ -1347,11 +1351,31 @@ async function prepareMoment(target = page, region = 'scene', captureAtMs) {
   prepared.layout = captureLayout(before);
   assertCaptureLayout(before, prepared.layout, target.viewportSize(), 'ROI preparation');
   const x = Math.ceil(scene.x), y = Math.floor(scene.y + scene.height / 2);
-  prepared.sourceRoi = { x, y, width: Math.floor(scene.x + scene.width) - x,
+  prepared.targetRoi = { x, y, width: Math.floor(scene.x + scene.width) - x,
     height: Math.floor(scene.y + scene.height) - y, scale: 1 };
+  // Keep every pixel of the original lower-scene calibration target. The
+  // larger native source supplies context and removes whole 64-pixel strips
+  // relative to the viewport edges. Filter-phase fidelity remains a hypothesis,
+  // qualified by exact target-pixel equality
+  // in the paused preflight, never by a tolerance or a smaller target.
+  const viewport = target.viewportSize();
+  const contextPadding = 192, edgeAlignment = 64;
+  const sourceTop = Math.max(0, Math.floor((prepared.targetRoi.y - contextPadding) / edgeAlignment) * edgeAlignment);
+  const targetBottom = prepared.targetRoi.y + prepared.targetRoi.height;
+  const sourceBottom = viewport.height - Math.max(0,
+    Math.floor((viewport.height - targetBottom - contextPadding) / edgeAlignment)) * edgeAlignment;
+  prepared.sourceRoi = { x: 0, y: sourceTop, width: viewport.width, height: sourceBottom - sourceTop, scale: 1 };
   assert.ok(prepared.sourceRoi.width > 0 && prepared.sourceRoi.height > 0);
+  assert.ok(prepared.targetRoi.width > 0 && prepared.targetRoi.height > 0);
+  assert.ok(prepared.targetRoi.x >= prepared.sourceRoi.x && prepared.targetRoi.y >= prepared.sourceRoi.y &&
+    prepared.targetRoi.x + prepared.targetRoi.width <= prepared.sourceRoi.x + prepared.sourceRoi.width &&
+    targetBottom <= sourceBottom, 'The native source must preserve every pixel of the original calibration target.');
+  assert.equal(sourceTop % edgeAlignment, 0);
+  assert.equal((viewport.height - sourceBottom) % edgeAlignment, 0);
   prepared.roiPreparation = { elapsedBefore: before.elapsedMs, sourceRoi: prepared.sourceRoi,
-    cssViewport: target.viewportSize(), layout: prepared.layout };
+    targetRoi: prepared.targetRoi, contextPadding, edgeAlignment,
+    contextPurpose: 'Filter-context and edge-phase hypothesis; all original target pixels require exact native preflight equality.',
+    cssViewport: viewport, layout: prepared.layout };
   const startedAtMs = performance.now();
   // Mark before sending: even a failed command may have changed the target.
   sessions.activeRoi = prepared.sourceRoi;
@@ -1375,7 +1399,7 @@ async function prepareMoment(target = page, region = 'scene', captureAtMs) {
 
 async function preflightMomentRoi(viewport, target = page) {
   const calibration = { viewport: viewport.id, kind: 'paused-capture-calibration-only', passed: false,
-    scope: 'Native Pause control; full source, prepared ROI and restored full source. Never final-formation visual evidence.',
+    scope: 'Native Pause control; full source, expanded prepared source and restored full source. Every original lower-scene target pixel is compared exactly. Never final-formation visual evidence.',
     images: [], observations: [] };
   report.capturePreflights.push(calibration);
   const observe = async label => {
@@ -1430,6 +1454,8 @@ async function preflightMomentRoi(viewport, target = page) {
     try {
       prepared = await prepareMoment(target, 'formation-detail');
       calibration.sourceRoi = prepared.sourceRoi;
+      calibration.targetRoi = prepared.targetRoi;
+      calibration.roiPreparation = prepared.roiPreparation;
       assert.deepEqual(pausedState(await observe('roi-before')), expected,
         'Preparing the native output ROI must preserve paused clock, focus, viewport and every observed native box.');
       roi = await source('roi', sessions.captureSession, prepared.sourceRoi);
@@ -1439,9 +1465,13 @@ async function preflightMomentRoi(viewport, target = page) {
       'Restoring the complete viewport must preserve the same paused native observation.');
     const restored = await source('restored', sessions.captureSession, target.viewportSize());
     assert.deepEqual(pausedState(await observe('restored-after')), expected);
-    const expectedRoi = await losslessNativeDetailCrop(normal, prepared.sourceRoi, target.viewportSize());
+    const expectedRoi = await losslessNativeDetailCrop(normal, prepared.targetRoi, target.viewportSize());
+    const targetSourceClip = { ...prepared.targetRoi,
+      x: prepared.targetRoi.x - prepared.sourceRoi.x, y: prepared.targetRoi.y - prepared.sourceRoi.y };
+    const actualRoi = await losslessNativeDetailCrop(roi, targetSourceClip, prepared.sourceRoi);
+    calibration.targetSourceClip = targetSourceClip;
     const expectedPixels = await sharp(expectedRoi.bytes).ensureAlpha().raw().toBuffer();
-    const roiPixels = await sharp(roi).ensureAlpha().raw().toBuffer();
+    const roiPixels = await sharp(actualRoi.bytes).ensureAlpha().raw().toBuffer();
     assert.ok(roiPixels.equals(expectedPixels), 'The prepared native ROI must equal the same integer pixels of the normal native image, without tolerance.');
     const normalPixels = await sharp(normal).ensureAlpha().raw().toBuffer();
     const restoredPixels = await sharp(restored).ensureAlpha().raw().toBuffer();
