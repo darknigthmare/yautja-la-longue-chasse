@@ -316,7 +316,7 @@ const WolfCastleScene = React.lazy(() => import("./WolfCastleScene"));
 const PlanetArrivalCinematic = React.lazy(() => import("./PlanetArrivalCinematic"));
 const PitHonorsPanel = React.lazy(() => import("./PitHonorsPanel"));
 const GalaxyMapPanel = React.lazy(() => import("./GalaxyMapPanel"));
-const PhysicalShipDeck = React.lazy(() => import("./PhysicalShipDeck"));
+const ShipInterior25D = React.lazy(() => import("./ShipInterior25D"));
 const ShipAcquisitionV89 = React.lazy(() => import("./ShipAcquisitionV89"));
 const TrophyWorkshop = React.lazy(() => import("./TrophyWorkshop"));
 const EnemyBestiaryV8 = React.lazy(() => import("./EnemyBestiaryV8"));
@@ -4450,7 +4450,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
                   Pause / réglages
                 </button>
               </div>
-              <PhysicalShipDeck
+              <ShipInterior25D
                 appearance={save.appearance}
                 loadout={save.loadout}
                 trophyDisplays={deckTrophyDisplays}

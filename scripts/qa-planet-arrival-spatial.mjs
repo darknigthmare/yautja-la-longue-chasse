@@ -57,7 +57,7 @@ const report = {
   workingTreeDirty: git('status', '--porcelain').length > 0, sourceHashes,
   browserMode: headed ? 'headed' : 'headless',
   scope: 'Actual component rendering at native shot boundaries on desktop/mobile; all eight destinations; seven representative orbital hulls; four insertion combinations plus paid optical camouflage, and three grounded hull profiles; natural production /dev arrival and real hunt handoffs. Spatial evidence is distinct from artistic or canonical approval. Ship contact and exit points follow source composition, without a claim about canonical landing gear or release bays.',
-  timing: 'Unmodified native requestAnimationFrame. Samples wait for elapsed-time thresholds and retain observed times; no virtual or accelerated clock. Dense egress geometry is measured without PNG encoding; its photographs use independent playbacks from the same native shot boundary.',
+  timing: 'Unmodified native requestAnimationFrame. Samples wait for elapsed-time thresholds and retain observed times; no virtual or accelerated clock. Dense egress geometry is measured without PNG encoding; its photographs use independent playbacks from the same native shot boundary. The final formation has only 250 ms before the handoff: its exact live geometry is observed separately from the earlier grounded-disembarkation PNG, which is not a photograph of the final standing pose.',
   nativeUrl: nativeUrl.href, checks: [], samples: [], movement: [], captures: [],
   resizes: [], ships: [], insertions: [], native: {}, errors: [], consoleErrors: [], missingAssets: [], requestedAssets: [],
 };
@@ -209,8 +209,30 @@ async function check(name, run) {
   }
 }
 
-async function readFrame(target = page) {
-  return target.locator('[data-arrival-run]').evaluate(root => {
+async function readFrame(target = page, nativeMoment = null) {
+  return target.locator('[data-arrival-run]').evaluate(async (root, moment) => {
+    // Wait and read inside the same browser task chain. A driver round-trip
+    // after waitForFunction can miss the trio's 250 ms final standing window.
+    // This observer neither writes the DOM nor pauses/rewinds the native clock.
+    if (moment) await new Promise((resolve, reject) => {
+      let request;
+      const timer = setTimeout(() => {
+        cancelAnimationFrame(request);
+        reject(new Error('The native arrival never reached the requested observation.'));
+      }, 25000);
+      const observe = () => {
+        const status = root.getAttribute('data-arrival-status');
+        const elapsedMs = Number(root.getAttribute('data-arrival-elapsed'));
+        if (!root.isConnected || status !== 'playing' || elapsedMs >= moment.beforeMs) {
+          clearTimeout(timer);
+          reject(new Error(`Native observation missed its playing window: ${status} at ${elapsedMs} ms.`));
+        } else if (elapsedMs >= moment.atMs && root.getAttribute('data-arrival-shot') === moment.shot) {
+          clearTimeout(timer);
+          resolve();
+        } else request = requestAnimationFrame(observe);
+      };
+      observe();
+    });
     const rect = element => {
       if (!element) return null;
       const r = element.getBoundingClientRect();
@@ -373,7 +395,7 @@ async function readFrame(target = page) {
       viewport: { width: innerWidth, height: innerHeight },
       overflow: { document: document.documentElement.scrollWidth, body: document.body.scrollWidth },
     };
-  });
+  }, nativeMoment);
 }
 
 async function decodeSceneImages(target = page) {
@@ -1006,24 +1028,36 @@ try {
         // on CI; their execution must not decide when these PNGs are taken.
         await openShot(primaryMission.id, 'egress', false, api.DEFAULT_SHIP_ID, variant.plan);
         const walkingPrepared = await prepareMoment();
-        await waitElapsed(60_250, egress.id);
-        const walking = await captureMoment(`${viewport.id}-${variant.id}-egress-walking`, walkingPrepared);
+        // At 60 s every hunter has reached the ground and is still walking.
+        // Leave two seconds for a real PNG; the all-standing trio interval is
+        // only 61.75–62 s and cannot reliably contain a CI image encode.
+        await waitElapsed(60_000, egress.id);
+        const walkingLabel = `${viewport.id}-${variant.id}-egress-walking`;
+        const walking = await captureMoment(walkingLabel, walkingPrepared);
         assert.ok(walking.capturedBefore.members.some(member => member.stage === 'walking'),
           'The walking PNG must be requested while a real formation member is walking.');
+        assert.ok(walking.capturedBefore.members.every(member => member.contact === 'ground'),
+          'The disembarkation PNG must show that every hunter has reached the real floor.');
         await openShot(primaryMission.id, 'egress', false, api.DEFAULT_SHIP_ID, variant.plan);
-        const finalPrepared = await prepareMoment();
+        const finalDecodedSvg = await decodeSceneImages();
         const finalTime = api.ARRIVAL_HUNTER_MOVE_END_MS + Math.max(...api.arrivalFormationSlots(variant.plan.team).map(slot => slot.delayMs)) + 10;
-        await waitElapsed(finalTime, egress.id);
-        const finalCapture = await captureMoment(`${viewport.id}-${variant.id}-egress-final`, finalPrepared);
-        assert.ok(finalCapture.capturedBefore.members.every(member => member.stage === 'standing' && member.contact === 'ground'),
-          'The final PNG must be requested after every hunter is standing on the floor and before completion.');
-        const final = finalCapture.frame;
+        const finalLabel = `${viewport.id}-${variant.id}-egress-final-measured`;
+        const final = { ...await readFrame(page, { atMs: finalTime, beforeMs: egress.endMs, shot: egress.id }),
+          decodedSvg: finalDecodedSvg };
+        assert.equal(final.status, 'playing', 'Final formation must be observed before the terminal overlay.');
+        assert.ok(final.elapsedMs >= finalTime && final.elapsedMs < egress.endMs,
+          'The exact final formation must be observed inside its native pre-handoff interval.');
+        assertSpatial(final, finalLabel);
+        report.samples.push({ label: finalLabel, ...final,
+          observation: 'Exact final standing geometry observed in one native browser callback before handoff; no final-pose PNG is claimed. The separate earlier walking PNG verifies visible grounded disembarkation.' });
         assertFinalFormation(final, variant.plan, `${viewport.id}-${variant.id}`);
         if (variant.plan.method === 'ship') {
           assert.ok(distance(groundPoint(grounded, 'ship-ground-contact'), groundPoint(final, 'ship-ground-contact')) <= 1.5,
             'The landed hull must remain stationary throughout disembarkation.');
         }
         report.insertions.push({ viewport: viewport.id, ...variant, ship: api.DEFAULT_SHIP_ID,
+          disembarkationPhotograph: { file: walkingLabel + '.png', exactFinalStandingPose: false },
+          finalObservation: { label: finalLabel, elapsedMs: final.elapsedMs, status: final.status, kind: 'native-rendered-geometry' },
           finalMembers: final.members.map(member => ({ id: member.id, stage: member.stage, contact: member.contact })),
           finalAnchors: Object.fromEntries(Object.entries(final.anchors).filter(([id]) => /hunter-feet$|ship-ground-contact/.test(id))),
         });

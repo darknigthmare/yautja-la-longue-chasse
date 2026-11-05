@@ -35,7 +35,8 @@ if (process.env.DEV_TRAVEL_QA_SOURCE_COMMIT) {
 }
 const sourceFiles = [
   ...(await fs.readdir(path.join(root, 'app/dev'))).filter(file => /\.(tsx?|css)$/.test(file)).map(file => `app/dev/${file}`),
-  'app/game/HomeworldHub.tsx', 'app/game/HomeworldRegionV68.tsx', 'app/game/PhysicalShipDeck.tsx',
+  'app/game/HomeworldHub.tsx', 'app/game/HomeworldRegionV68.tsx',
+  'app/game/ShipInterior25D.tsx', 'app/game/ShipInterior25D.module.css', 'app/game/systems/shipInterior25d.ts',
   'app/game/ClanShipHub.tsx', 'app/game/ClanShipInterior.tsx', 'app/game/HuntCanvas.tsx', 'app/game/ShipHub.tsx',
   'app/game/WolfCastleScene.tsx', 'app/game/PlanetArrivalCinematic.tsx',
   'app/game/systems/wolfCastle.ts', 'app/game/systems/planetArrival.ts', 'app/game/systems/planetArrivalRun.ts',
@@ -240,14 +241,27 @@ async function jump(id, target = page) {
 }
 
 async function clanReady(room, target = page) {
-  await target.locator(`[data-clan-ship-status="aboard"][data-clan-ship-room="${room}"]`).waitFor();
-  await target.locator(`[data-clan-interior][data-interior-room="${room}"]`).waitFor();
-  await target.waitForFunction(() => {
-    const image = document.querySelector('[data-interior-background]');
-    return image instanceof HTMLImageElement && image.complete && image.naturalWidth > 0;
+  const destination = new URL(target.url()).searchParams.get('lieu');
+  assert.match(destination ?? '', /^[a-z0-9-]+$/, 'Clan Ship readiness requires an explicit developer destination.');
+  // During a streamed direct URL/reload, Next may retain a hidden scene copy.
+  // Resolve every observation through the visible session for this URL. Two
+  // visible candidates still fail strict locators; never choose the first one.
+  const session = target.locator(`[data-dev-session="${destination}"]:visible:not([inert]):not([aria-hidden="true"])`);
+  await session.waitFor({ timeout: 90000 });
+  const clan = session.locator(`[data-clan-ship-status="aboard"][data-clan-ship-room="${room}"]:visible:not([inert]):not([aria-hidden="true"])`);
+  await clan.waitFor();
+  assert.equal(await clan.evaluate(element => element.closest('[data-dev-session]')?.getAttribute('data-dev-session')),
+    destination, 'The active Clan Ship must belong to the requested developer destination.');
+  const interior = clan.locator(`[data-clan-interior][data-interior-room="${room}"]:visible`);
+  await interior.waitFor();
+  const background = interior.locator('[data-interior-background]');
+  await background.evaluate(async image => {
+    if (!(image instanceof HTMLImageElement)) throw new Error('The active Clan Ship backdrop must be a real image.');
+    await image.decode();
+    if (!image.complete || image.naturalWidth <= 0 || image.naturalHeight <= 0) throw new Error('The active Clan Ship backdrop did not decode.');
   });
-  await target.locator('[data-interior-background]').evaluate(image => image.decode());
-  const info = await target.locator('[data-clan-interior]').evaluate(element => ({
+  const info = await interior.evaluate(element => ({
+    destination: element.closest('[data-dev-session]')?.getAttribute('data-dev-session'),
     room: element.getAttribute('data-interior-room'),
     x: Number(element.getAttribute('data-interior-actor-x')),
     y: Number(element.getAttribute('data-interior-actor-y')),
@@ -466,11 +480,13 @@ async function moveWithKeyboard(target, focusSelector, actorSelector, xAttribute
   // A null selector deliberately relies on focus restored by the application.
   if (focusSelector) await target.locator(focusSelector).focus();
   const before = await actor();
+  const element = await target.locator(actorSelector).elementHandle();
+  assert.ok(element, `${label}: the active actor must exist before keyboard input.`);
   await target.keyboard.down('ArrowRight');
   try {
-    await target.waitForFunction(({ selector, field, x }) => Number(document.querySelector(selector)?.getAttribute(field)) > x + 12,
-      { selector: actorSelector, field: xAttribute, x: before.x }, { timeout: 10000 });
-  } finally { await target.keyboard.up('ArrowRight'); }
+    await target.waitForFunction(({ element, field, x }) => element.isConnected && Number(element.getAttribute(field)) > x + 12,
+      { element, field: xAttribute, x: before.x }, { timeout: 10000 });
+  } finally { await target.keyboard.up('ArrowRight'); await element.dispose(); }
   const after = await actor();
   report.movement.push({ label, before, after });
   return { before, after };
@@ -561,19 +577,19 @@ try {
   await check('Keyboard launch opens the real personal deck, movement works, and reset restores the starting point', async () => {
     await page.locator('[data-dev-launch="ship"]').focus();
     await page.keyboard.press('Enter');
-    await page.locator('[data-dev-session="ship"] .physical-ship-deck').waitFor({ timeout: 120000 });
-    const moved = await moveWithKeyboard(page, '.physical-ship-deck', '.physical-ship-deck', 'data-player-x', 'data-player-y', 'personal-ship');
+    await page.locator('[data-dev-session="ship"] [data-ship-interior="2.5d"]:visible').waitFor({ timeout: 120000 });
+    const moved = await moveWithKeyboard(page, '[data-ship-interior="2.5d"]:visible', '[data-ship-interior="2.5d"]:visible', 'data-player-x', 'data-player-y', 'personal-ship');
     await page.locator('[data-dev-reset]').click();
     await page.waitForFunction(({ x, y }) => {
-      const deck = document.querySelector('.physical-ship-deck');
+      const deck = document.querySelector('[data-dev-session="ship"] [data-ship-interior="2.5d"]');
       return Number(deck?.getAttribute('data-player-x')) === x && Number(deck?.getAttribute('data-player-y')) === y;
     }, moved.before);
     await capture('02-personal-ship');
   });
 
   await check('Changing equipment in the test armory stays in memory and returning preserves the personal deck', async () => {
-    await page.locator('.ship-level-accessibility > summary').click();
-    await page.locator('.physical-ship-deck__station-shortcuts').getByRole('button', { name: /armurerie/i }).click();
+    await page.locator('[data-ship-shortcuts] > summary').click();
+    await page.locator('[data-ship-shortcut="wall-armory"]').click();
     const armory = page.locator('[data-dev-service="armory"]');
     await armory.waitFor();
     const weapon = armory.getByLabel(/^Arme\s+1(?=\D|$)/);
@@ -583,8 +599,8 @@ try {
     await weapon.selectOption(next);
     assert.equal(await weapon.inputValue(), next);
     await page.locator('[data-dev-service-back]').click();
-    await page.locator('.physical-ship-deck[data-suspended="false"]').waitFor();
-    await page.locator('.physical-ship-deck__station-shortcuts').getByRole('button', { name: /armurerie/i }).click();
+    await page.locator('[data-ship-interior="2.5d"][data-suspended="false"]:visible').waitFor();
+    await page.locator('[data-ship-shortcut="wall-armory"]').click();
     assert.equal(await page.locator('[data-dev-service="armory"]').getByLabel(/^Arme\s+1(?=\D|$)/).inputValue(), next);
     await page.locator('[data-dev-service-back]').click();
   });
@@ -898,7 +914,7 @@ try {
     assert.equal(await page.locator('[data-dev-session]').count(), 0);
     assert.match(await page.locator('[data-dev-notice]').innerText(), /inconnu/i);
     await page.locator('[data-dev-launch="ship"]').click();
-    await page.locator('.physical-ship-deck').waitFor();
+    await page.locator('[data-ship-interior="2.5d"]:visible').waitFor();
     await page.locator('[data-dev-back]').click();
     await page.locator('[data-dev-catalogue]').waitFor();
     await page.waitForFunction(() => document.activeElement?.getAttribute('data-dev-launch') === 'ship');

@@ -67,7 +67,7 @@ function cityDoorway(id: string, label: string, description: string, buildingId:
 export const DEV_DESTINATIONS: readonly DevDestination[] = [
   {
     id: 'ship', label: 'Mon vaisseau', category: 'hubs', kind: 'ship',
-    description: 'Intérieur parcourable du vaisseau personnel : huit salles reliées sur deux ponts.',
+    description: 'Intérieur en 2,5D du vaisseau personnel : circulation en profondeur, huit salles et deux ponts.',
   },
   {
     id: 'clan-docking', label: 'Clan Ship · approche et amarrage', category: 'clan', kind: 'clan',
