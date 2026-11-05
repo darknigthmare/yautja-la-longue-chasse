@@ -1,0 +1,105 @@
+{
+  "schemaVersion": 1,
+  "release": "1.6.0",
+  "runtimeCommit": "86f593bad2c7d00259dc4cf0a7d1ad40eac1d719",
+  "runtimeTree": "21052551ce3b80c57f70a8695a86d601e87e5e20",
+  "repository": "darknigthmare/yautja-la-longue-chasse",
+  "branch": "feat/ship-interior-25d-20261105",
+  "mergedBase": "1951e17f01f1951d7c961b4ed3938741966e3007",
+  "verification": {
+    "workflowRun": 42013765672,
+    "job": 127199019545,
+    "status": "completed",
+    "conclusion": "success",
+    "lint": "passed",
+    "productionBuild": "passed",
+    "typeScript": "passed",
+    "unitTests": {
+      "passed": 14,
+      "failed": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "scope": [
+        "tests/ship-interior-25d.test.mjs",
+        "tests/game-client-code-splitting.test.mjs"
+      ]
+    },
+    "browser": {
+      "passed": 17,
+      "failed": 0,
+      "missingAssets": 0,
+      "javaScriptErrors": 0,
+      "consoleErrors": 0,
+      "checks": [
+        "The real developer URL mounts the 2.5D room and preserves an existing campaign",
+        "Keyboard movement uses both ground axes, native depth projection and released input",
+        "Furniture blocks native movement and fades only when the hunter really walks behind it",
+        "A real floor click walks around the console to its service without crossing the solid",
+        "Walk the connected ship to Passerelle de navigation, use its service and return at the same position",
+        "Walk the connected ship to Armurerie, use its service and return at the same position",
+        "Walk the connected ship to Archives du chasseur, use its service and return at the same position",
+        "Walk the connected ship to Forge des parures, use its service and return at the same position",
+        "Walk the connected ship to Galerie des trophées, use its service and return at the same position",
+        "Walk the connected ship to Baie médicale, use its service and return at the same position",
+        "Walk the connected ship to Cercle d’entraînement, use its service and return at the same position",
+        "Walk the connected ship to Sas de chasse, use its service and return at the same position",
+        "The aft lift also requires a walked threshold and supports the reverse journey",
+        "Mobile 390 px keeps the camera readable, touch movement working and swipe separate from walking",
+        "Mobile 320 px keeps the camera readable, touch movement working and swipe separate from walking",
+        "F8 unmounts the test and a real URL reload recreates the initial ship without changing the campaign",
+        "Every requested asset exists and the actual scene produces no browser or console exception"
+      ],
+      "route": "/dev?lieu=ship",
+      "mobileWidths": [
+        390,
+        320
+      ],
+      "scope": "Native production Next developer route. All eight personal rooms and the isolated developer service panels; medical and training use the native shared ShipHub. This does not assert a complete campaign playthrough or physical gamepad testing."
+    }
+  },
+  "priorLocalChecks": {
+    "initialDistinctTests": 168,
+    "initialFiles": 11,
+    "finalGeometryPreparationSaveSubset": 34,
+    "combinedTotalsMustNotBeAdded": true,
+    "note": "The 168 tests were run on the initial conversion. The 34-test geometry/preparation/save subset was rerun after furniture calibration before environment loss. Final commit evidence is the remote 14-test and 17-check run above."
+  },
+  "artifact": {
+    "id": 13408631794,
+    "name": "ship-interior-25d-86f593bad2c7d00259dc4cf0a7d1ad40eac1d719",
+    "files": 18,
+    "bytes": 28133732,
+    "sha256": "79efaea2a7a0fe3f8c2fc8800089eca38ad5f587de0e90b45421498e9a2a09d5",
+    "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/42013765672/artifacts/13408631794",
+    "digestEvidence": "GitHub Actions upload log and artifact metadata"
+  },
+  "art": {
+    "generatedImages": 7,
+    "integratedRuntimeImages": 7,
+    "originalSources": 7,
+    "runtimeBytes": 9487066,
+    "formats": {
+      "webp": 6,
+      "png": 1
+    },
+    "humanArtValidation": false,
+    "sourceVisualInspection": "All seven generated images were inspected before the environment became unavailable.",
+    "finalSceneCaptureInspection": "Not completed: final captures were produced and archived, but could not be opened after environment loss.",
+    "floor": "The original opaque PNG was recovered unchanged from the imagegen result; the renderer applies the Homeworld ground projection once."
+  },
+  "boundaries": {
+    "personalShip": true,
+    "clanShipConversion": false,
+    "canonicalFloorPlan": false,
+    "physicalGamepadTest": false,
+    "fullCampaignPlaythrough": false,
+    "positionPreservedAcrossService": true,
+    "positionRestoredAfterFullReload": false,
+    "transitionAnimations": false,
+    "finalWorkbookExportAvailable": false
+  },
+  "sources": {
+    "workflow": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/42013765672",
+    "jobLogs": "https://api.github.com/repos/darknigthmare/yautja-la-longue-chasse/actions/jobs/127199019545/logs"
+  }
+}

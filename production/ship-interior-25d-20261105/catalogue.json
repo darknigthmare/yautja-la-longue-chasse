@@ -1,0 +1,1991 @@
+{
+  "schemaVersion": 2,
+  "id": "ship-interior-25d-20261105",
+  "asOfDate": "2026-11-05",
+  "release": "1.6.0",
+  "repository": "https://github.com/darknigthmare/yautja-la-longue-chasse",
+  "branch": "feat/ship-interior-25d-20261105",
+  "base": {
+    "pr": 114,
+    "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/pull/114",
+    "commit": "1951e17f01f1951d7c961b4ed3938741966e3007",
+    "tree": "4f6b3e4a785951286efbf0deafa29b843df40150"
+  },
+  "initialBase": {
+    "commit": "4a0b8d58cdfadf642d6c897c32980b7a8586f4dd",
+    "tree": "9b64f036ca97247ef7a131566705df7e1c472325"
+  },
+  "publication": {
+    "pr": 115,
+    "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/pull/115",
+    "runtimeCommit": "86f593bad2c7d00259dc4cf0a7d1ad40eac1d719",
+    "runtimeTree": "21052551ce3b80c57f70a8695a86d601e87e5e20",
+    "parents": [
+      "0e374e16976b4634830459c6fc27e9b6c14c9c21",
+      "1951e17f01f1951d7c961b4ed3938741966e3007"
+    ],
+    "ciAttempt": 3,
+    "ciRun": 42013765672,
+    "ciStatus": "completed/success",
+    "scope": "Code, sept ressources runtime, sources et provenance publiés. CI3 réussie pour le nouvel intérieur. PR 115 proposée en revue sur la base 114 ; qualification globale de la base encore ouverte. Catalogue et README publiés dans un lot documentaire séparé.",
+    "ciJob": 127199019545,
+    "ciUrl": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/42013765672",
+    "browserPassed": 17,
+    "browserFailed": 0
+  },
+  "scope": "Conversion du vaisseau personnel en intérieur parcourable en 2,5D. Le Clan Ship reste un lieu distinct.",
+  "artReview": "Comparaison artistique et canonique 1:1 ouverte. Toutes les images conservent humanArtValidation:false.",
+  "reconstruction": {
+    "method": "Reconstruction textuelle depuis les données exactes observées avant interruption, puis rapprochement du code et du manifeste effectivement publiés sur GitHub. Aucune image régénérée.",
+    "environment": "Environnement local indisponible avant actualisation du classeur.",
+    "sourceOfTruth": "Code publié au runtimeCommit, manifeste artistique et reçus de CI.",
+    "publishedSourceChecks": {
+      "runtimeCommit": "86f593bad2c7d00259dc4cf0a7d1ad40eac1d719",
+      "geometryBlobSha": "9714465194b35357354eb2d9d5e814e9cc1fb6a3",
+      "artManifestBlobSha": "99e773f43a6b9ff125c8cc33c7b87eb84082d065",
+      "fixturesMatched": 17,
+      "approachesMatched": 8,
+      "artMeasurementsMatched": 7,
+      "thresholdsMatched": 16
+    }
+  },
+  "spreadsheet": {
+    "status": "Mise à jour finale non exportée",
+    "deliveredAsCurrent": false,
+    "priorCheckpoint": {
+      "generatedAssets": 3,
+      "description": "Un classeur de travail avait été exporté et inspecté avant les quatre dernières ressources. Il est obsolète et n’est pas livré comme état final."
+    },
+    "bytesRecovered": false,
+    "next": "Régénérer les quatre onglets avec artifact-tool à partir de ce catalogue, recalculer et réinspecter chaque aperçu lorsque le runtime est disponible."
+  },
+  "verification": {
+    "subsystemTests": {
+      "passed": 34,
+      "failed": 0,
+      "files": 3,
+      "includedInHistoricalTargetedTotal": true
+    },
+    "targetedTests": {
+      "passed": 150,
+      "failed": 0,
+      "files": 9,
+      "scope": "Checkpoint antérieur à l’intégration artistique finale"
+    },
+    "testRuns": [
+      {
+        "label": "Sous-systèmes ciblés",
+        "passed": 150,
+        "evidence": "S06"
+      },
+      {
+        "label": "Routes et chargement différé",
+        "passed": 18,
+        "evidence": "S06"
+      }
+    ],
+    "historicalDistinctTests": 168,
+    "historicalDistinctTestFiles": 11,
+    "finalGeometryTests": {
+      "passed": 34,
+      "failed": 0,
+      "evidence": "production/ship-interior-25d-20261105/verification/final-geometry-tests.log",
+      "localLogRecovered": false,
+      "localLogPublished": false,
+      "proof": "Résultat observé et confirmé par l’intégrateur ; ne pas additionner à CI3 ou au socle historique."
+    },
+    "typecheck": "Réussi dans la construction Next de CI3 sur le commit 86f593bad2c7d00259dc4cf0a7d1ad40eac1d719",
+    "lint": "Réussi en CI3. Contrôle local strict des six sources et recettes également réussi après les derniers réglages, 0 avertissement.",
+    "build": "Construction de production Next et TypeScript réussis dans CI3.",
+    "browser": "Recette native du nouvel intérieur réussie : 17/17 contrôles, 0 échec, 0 ressource manquante, 0 erreur console/page. Revue visuelle finale des captures non effectuée.",
+    "publication": "PR 115 publiée ; CI3 du nouvel intérieur réussie sur le runtimeCommit. PR proposée en revue, qualification globale de la base 114 encore ouverte.",
+    "browserRuns": [
+      {
+        "id": 42009181765,
+        "sha": "5d50b0a812d579ed1ef27519ae69484de85b6022",
+        "checksPassed": 1,
+        "complete": false,
+        "failure": "Attente visible erronée sur pivot 0x0 ; favicon sparse absent",
+        "pageErrors": 0,
+        "fixPrepared": true
+      },
+      {
+        "id": 42010453420,
+        "sha": "0e374e16976b4634830459c6fc27e9b6c14c9c21",
+        "checksPassed": 5,
+        "complete": false,
+        "failure": "Deux sprites registered/blade-housing.webp et registered/blades.webp non matérialisés par le sparse",
+        "pageErrors": 0,
+        "fixPrepared": true
+      },
+      {
+        "id": 42013765672,
+        "jobId": 127199019545,
+        "sha": "86f593bad2c7d00259dc4cf0a7d1ad40eac1d719",
+        "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/42013765672",
+        "status": "completed",
+        "conclusion": "success",
+        "checksPassed": 17,
+        "checksFailed": 0,
+        "complete": true,
+        "missingAssets": 0,
+        "consoleErrors": 0,
+        "pageErrors": 0,
+        "artifact": {
+          "id": 13408631794,
+          "bytes": 28133732,
+          "sha256": "79efaea2a7a0fe3f8c2fc8800089eca38ad5f587de0e90b45421498e9a2a09d5",
+          "fileCount": 18,
+          "capturesArchived": true,
+          "finalCapturesVisuallyInspected": false
+        },
+        "coverage": [
+          "Huit salles et huit services avec retour à la position exacte",
+          "Deux liaisons entre ponts, aller et retour",
+          "Marche X/Y et projection de profondeur",
+          "Collision et occlusion",
+          "Chemin au clic autour du mobilier",
+          "Mobile 390 et 320 pixels et glissement tactile",
+          "F8 et rechargement",
+          "Protection du stockage de campagne"
+        ],
+        "excluded": [
+          "Revue visuelle finale des PNG archivés",
+          "Manette matérielle",
+          "Validation artistique ou canonique humaine 1:1",
+          "Qualification globale de tous les workflows du projet"
+        ]
+      }
+    ],
+    "finalArtisticValidation": false,
+    "ciUnitTests": {
+      "passed": 14,
+      "failed": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0,
+      "groups": [
+        {
+          "label": "Géométrie du vaisseau",
+          "passed": 11
+        },
+        {
+          "label": "Chargement différé",
+          "passed": 3
+        }
+      ],
+      "distinctFromHistoricalCounts": false,
+      "evidence": "S16"
+    },
+    "finalArtifact": {
+      "id": 13408631794,
+      "bytes": 28133732,
+      "sha256": "79efaea2a7a0fe3f8c2fc8800089eca38ad5f587de0e90b45421498e9a2a09d5",
+      "fileCount": 18,
+      "capturesArchived": true,
+      "finalCapturesVisuallyInspected": false
+    },
+    "finalCapturesVisuallyInspected": false,
+    "gamepadHardwareTested": false,
+    "parentBaseChecks": {
+      "commit": "1951e17f01f1951d7c961b4ed3938741966e3007",
+      "workflowsTotal": 17,
+      "passed": 14,
+      "failed": 3,
+      "failedRuns": [
+        {
+          "label": "Dev",
+          "id": 42009684967,
+          "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/42009684967"
+        },
+        {
+          "label": "Wolf",
+          "id": 42009684875,
+          "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/42009684875"
+        },
+        {
+          "label": "Spatial",
+          "id": 42009684795,
+          "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/42009684795"
+        }
+      ],
+      "globalProductionReady": false
+    },
+    "historicalLocalLogsRecovered": false,
+    "historicalLocalLogsPublished": false,
+    "artTechnicalScope": "Partiel : mesures alpha/dimensions disponibles, ressources chargées et assertions automatisées réussies ; pivots physiques, précision de perspective et captures finales non inspectés humainement.",
+    "finalBrowserCounts": {
+      "passed": 17,
+      "failed": 0,
+      "missingAssets": 0,
+      "consoleErrors": 0,
+      "pageErrors": 0
+    }
+  },
+  "geometryMetrics": {
+    "width": 1200,
+    "depth": 800,
+    "floorInset": 24,
+    "actorHalfWidth": 24,
+    "actorHalfDepth": 14,
+    "speed": 260,
+    "interactionReach": 64,
+    "doorReach": 56,
+    "maxFrameSeconds": 0.05,
+    "depthScale": 0.573576436351046
+  },
+  "modelCalibration": [
+    {
+      "artKey": "navigationConsole",
+      "width": 250,
+      "height": 138,
+      "footprintWidth": 220,
+      "footprintDepth": 85,
+      "instances": 3
+    },
+    {
+      "artKey": "medbayBed",
+      "width": 225,
+      "height": 120,
+      "footprintWidth": 205,
+      "footprintDepth": 70,
+      "instances": 1
+    },
+    {
+      "artKey": "armoryRack",
+      "width": 370,
+      "height": 196,
+      "footprintWidth": 340,
+      "footprintDepth": 65,
+      "instances": 3
+    },
+    {
+      "artKey": "trophyPlinth",
+      "width": 190,
+      "height": 140,
+      "footprintWidth": 160,
+      "footprintDepth": 80,
+      "instances": 3
+    },
+    {
+      "artKey": "forgeStation",
+      "width": 225,
+      "height": 280,
+      "footprintWidth": 170,
+      "footprintDepth": 95,
+      "instances": 2
+    },
+    {
+      "artKey": "trainingEmitter",
+      "width": 170,
+      "height": 210,
+      "footprintWidth": 100,
+      "footprintDepth": 75,
+      "instances": 1
+    },
+    {
+      "artKey": "archiveTerminal",
+      "width": 125,
+      "height": 230,
+      "footprintWidth": 80,
+      "footprintDepth": 55,
+      "instances": 4
+    }
+  ],
+  "features": [
+    {
+      "id": "SHIP25-01",
+      "domain": "Continuité",
+      "feature": "Reprise de la PR 114, puis intégration de sa mise à jour 1951e17f",
+      "implementation": "Intégré",
+      "validation": "Tests verts",
+      "next": "Qualifier le lot publié après fusion de la base et intégration artistique.",
+      "sources": "S01, S08, S15"
+    },
+    {
+      "id": "SHIP25-02",
+      "domain": "Level design",
+      "feature": "Huit salles personnelles réparties sur deux ponts",
+      "implementation": "Intégré",
+      "validation": "Tests verts",
+      "next": "Inspecter les captures finales des huit salles ; ne pas confondre parcours automatisé et revue visuelle.",
+      "sources": "S02, S15, S16"
+    },
+    {
+      "id": "SHIP25-03",
+      "domain": "Projection",
+      "feature": "Sol orthographique à 35 degrés et sprites verticaux",
+      "implementation": "Intégré",
+      "validation": "Tests verts",
+      "next": "Comparer l’appui au sol et la caméra des sept nouvelles ressources.",
+      "sources": "S02, S03, S05"
+    },
+    {
+      "id": "SHIP25-04",
+      "domain": "Déplacements",
+      "feature": "Marche libre sur deux axes et diagonales normalisées",
+      "implementation": "Intégré",
+      "validation": "Tests verts",
+      "next": "Compléter la qualification sur manette matérielle ; clavier et tactile vérifiés en CI3.",
+      "sources": "S02, S03, S16"
+    },
+    {
+      "id": "SHIP25-05",
+      "domain": "Collisions",
+      "feature": "Empreintes distinctes des images, marche sans traversée",
+      "implementation": "Intégré",
+      "validation": "Tests verts",
+      "next": "Inspecter les captures finales et les contacts visuels du mobilier.",
+      "sources": "S02, S15, S16"
+    },
+    {
+      "id": "SHIP25-06",
+      "domain": "Navigation",
+      "feature": "Chemins au clic contournant le mobilier solide",
+      "implementation": "Intégré",
+      "validation": "Tests verts",
+      "next": "Conserver les garanties du trajet natif au clic lors des futures retouches artistiques.",
+      "sources": "S02, S03, S16"
+    },
+    {
+      "id": "SHIP25-07",
+      "domain": "Passages",
+      "feature": "Seize seuils appariés, dont deux liaisons entre ponts",
+      "implementation": "Intégré",
+      "validation": "Tests verts",
+      "next": "Revoir visuellement les seuils ; les deux liaisons sont parcourues dans les deux sens.",
+      "sources": "S02, S15, S16"
+    },
+    {
+      "id": "SHIP25-08",
+      "domain": "Services",
+      "feature": "Huit installations conservant leurs fonctions existantes",
+      "implementation": "Intégré",
+      "validation": "Tests verts",
+      "next": "Conserver les huit services et les retours à la position exacte ; achever la revue visuelle.",
+      "sources": "S03, S04, S16"
+    },
+    {
+      "id": "SHIP25-09",
+      "domain": "Préparation",
+      "feature": "Inspections fondées sur la vraie position dans la bonne salle",
+      "implementation": "Intégré",
+      "validation": "Tests verts",
+      "next": "Rejouer les inspections physiques dans le parcours campagne.",
+      "sources": "S04, S15"
+    },
+    {
+      "id": "SHIP25-10",
+      "domain": "Sauvegarde",
+      "feature": "Compatibilité des reçus et absence de double inspection",
+      "implementation": "Intégré",
+      "validation": "Tests verts",
+      "next": "Conserver les garanties de reprise et d’échec d’écriture.",
+      "sources": "S04, S06, S15"
+    },
+    {
+      "id": "SHIP25-11",
+      "domain": "Chasseur",
+      "feature": "Apparence, armes, armure et équipements du joueur conservés",
+      "implementation": "Intégré",
+      "validation": "Partielle",
+      "next": "Ressources présentes et changement d’arme vérifiés ; inspecter les silhouettes et l’équipement sur les captures finales.",
+      "sources": "S03, S05, S16"
+    },
+    {
+      "id": "SHIP25-12",
+      "domain": "Interfaces",
+      "feature": "Position conservée pendant la consultation des services",
+      "implementation": "Intégré",
+      "validation": "Tests verts",
+      "next": "Préserver les positions et la suspension des commandes dans les évolutions des services.",
+      "sources": "S03, S16"
+    },
+    {
+      "id": "SHIP25-13",
+      "domain": "Commandes",
+      "feature": "Tap distinct du défilement tactile et annulation du guidage manuel",
+      "implementation": "Intégré",
+      "validation": "Tests verts",
+      "next": "Conserver la distinction tap/glissement observée aux largeurs 390 et 320 pixels.",
+      "sources": "S03, S16"
+    },
+    {
+      "id": "SHIP25-14",
+      "domain": "Profondeur",
+      "feature": "Ordre par profondeur et atténuation des objets masquants",
+      "implementation": "Intégré",
+      "validation": "Partielle",
+      "next": "Occlusion automatique vérifiée ; revoir humainement pivots, contacts et masquages des images finales.",
+      "sources": "S03, S05, S16"
+    },
+    {
+      "id": "SHIP25-15",
+      "domain": "Ressources",
+      "feature": "Sept ressources individuelles générées et reliées à la scène",
+      "implementation": "Intégré",
+      "validation": "Partielle",
+      "next": "Qualifier les échelles, points de contact, angles et raccords du sol.",
+      "sources": "S05, S03"
+    },
+    {
+      "id": "SHIP25-16",
+      "domain": "Orientation",
+      "feature": "Plan du vaisseau et guidage physique vers les installations",
+      "implementation": "Intégré",
+      "validation": "Tests verts",
+      "next": "Revoir la lisibilité visuelle du plan ; guidage et liaisons natifs vérifiés.",
+      "sources": "S03, S16"
+    },
+    {
+      "id": "SHIP25-17",
+      "domain": "Campagne",
+      "feature": "Raccord au sas, au briefing et aux choix d’insertion",
+      "implementation": "Intégré",
+      "validation": "Tests verts",
+      "next": "Rejouer vaisseau, mission, arrivée et retour sur la révision finale.",
+      "sources": "S04, S06, S08"
+    },
+    {
+      "id": "SHIP25-18",
+      "domain": "Clan Ship",
+      "feature": "Projection complète du Clan Ship sur le même plan au sol",
+      "implementation": "À faire",
+      "validation": "À vérifier",
+      "next": "Adapter ses sept salles et leurs décors sans modifier les opérations de clan.",
+      "sources": "S09"
+    },
+    {
+      "id": "SHIP25-19",
+      "domain": "Reprise",
+      "feature": "Salle et position personnelles conservées après rechargement",
+      "implementation": "À faire",
+      "validation": "À vérifier",
+      "next": "Ajouter une persistance versionnée ; le rechargement revient actuellement à la passerelle.",
+      "sources": "S03"
+    },
+    {
+      "id": "SHIP25-20",
+      "domain": "Animation",
+      "feature": "Animations de franchissement et de liaison entre les ponts",
+      "implementation": "Prévu",
+      "validation": "À vérifier",
+      "next": "Animer les passages après validation de leurs seuils et pivots.",
+      "sources": "S02, S03"
+    },
+    {
+      "id": "SHIP25-21",
+      "domain": "Fidélité",
+      "feature": "Revue humaine des silhouettes, matières et références 1:1",
+      "implementation": "À faire",
+      "validation": "Revue ouverte",
+      "next": "Comparer à des références identifiées et consigner une décision par ressource.",
+      "sources": "S05, S10"
+    },
+    {
+      "id": "SHIP25-22",
+      "domain": "Qualification",
+      "feature": "Parcours navigateur desktop, mobile et campagne",
+      "implementation": "Partiel",
+      "validation": "Partielle",
+      "next": "Recette vaisseau desktop/mobile 17/17 réussie ; inspecter les captures finales et poursuivre la qualification globale de campagne.",
+      "sources": "S07, S16, S17"
+    },
+    {
+      "id": "SHIP25-23",
+      "domain": "Livraison",
+      "feature": "Publication, CI et raccord à la branche principale",
+      "implementation": "Partiel",
+      "validation": "Partielle",
+      "next": "PR 115 proposée en revue sur 114 ; traiter les workflows de base encore rouges avant qualification globale.",
+      "sources": "S01, S07, S12, S16, S17"
+    }
+  ],
+  "rooms": [
+    {
+      "id": "galaxy-map",
+      "label": "Passerelle de navigation",
+      "deck": "upper",
+      "width": 1200,
+      "depth": 800,
+      "wallArt": "observatory",
+      "accent": "#8ce0ce",
+      "spawn": {
+        "x": 600,
+        "y": 660,
+        "facing": 1
+      },
+      "station": {
+        "id": "galaxy-map",
+        "label": "Passerelle de navigation",
+        "x": 600,
+        "y": 340,
+        "approach": {
+          "x": 600,
+          "y": 395
+        }
+      },
+      "fixtures": [
+        {
+          "id": "navigation-console",
+          "artKey": "navigationConsole",
+          "x": 600,
+          "y": 340,
+          "width": 250,
+          "height": 138,
+          "footprint": {
+            "x": 490,
+            "y": 255,
+            "width": 220,
+            "depth": 85
+          }
+        },
+        {
+          "id": "navigation-records",
+          "artKey": "archiveTerminal",
+          "x": 940,
+          "y": 260,
+          "width": 125,
+          "height": 230,
+          "footprint": {
+            "x": 900,
+            "y": 205,
+            "width": 80,
+            "depth": 55
+          }
+        }
+      ],
+      "doors": [
+        {
+          "id": "galaxy-map:east",
+          "label": "Armurerie",
+          "side": "east",
+          "kind": "bulkhead",
+          "x": 1112,
+          "y": 620,
+          "targetRoomId": "wall-armory",
+          "targetDoorId": "wall-armory:west",
+          "entry": {
+            "x": 1030,
+            "y": 620
+          }
+        },
+        {
+          "id": "galaxy-map:north",
+          "label": "Galerie des trophées",
+          "side": "north",
+          "kind": "lift",
+          "x": 190,
+          "y": 80,
+          "targetRoomId": "trophy-hall",
+          "targetDoorId": "trophy-hall:north",
+          "entry": {
+            "x": 190,
+            "y": 162
+          }
+        }
+      ]
+    },
+    {
+      "id": "wall-armory",
+      "label": "Armurerie",
+      "deck": "upper",
+      "width": 1200,
+      "depth": 800,
+      "wallArt": "machinery",
+      "accent": "#e7b675",
+      "spawn": {
+        "x": 600,
+        "y": 660,
+        "facing": 1
+      },
+      "station": {
+        "id": "wall-armory",
+        "label": "Armurerie",
+        "x": 590,
+        "y": 300,
+        "approach": {
+          "x": 590,
+          "y": 355
+        }
+      },
+      "fixtures": [
+        {
+          "id": "armory-rack",
+          "artKey": "armoryRack",
+          "x": 590,
+          "y": 300,
+          "width": 370,
+          "height": 196,
+          "footprint": {
+            "x": 420,
+            "y": 235,
+            "width": 340,
+            "depth": 65
+          }
+        },
+        {
+          "id": "armory-service-forge",
+          "artKey": "forgeStation",
+          "x": 950,
+          "y": 500,
+          "width": 225,
+          "height": 280,
+          "footprint": {
+            "x": 865,
+            "y": 405,
+            "width": 170,
+            "depth": 95
+          }
+        }
+      ],
+      "doors": [
+        {
+          "id": "wall-armory:west",
+          "label": "Passerelle de navigation",
+          "side": "west",
+          "kind": "bulkhead",
+          "x": 88,
+          "y": 620,
+          "targetRoomId": "galaxy-map",
+          "targetDoorId": "galaxy-map:east",
+          "entry": {
+            "x": 170,
+            "y": 620
+          }
+        },
+        {
+          "id": "wall-armory:east",
+          "label": "Archives du chasseur",
+          "side": "east",
+          "kind": "bulkhead",
+          "x": 1112,
+          "y": 620,
+          "targetRoomId": "clan-archives",
+          "targetDoorId": "clan-archives:west",
+          "entry": {
+            "x": 1030,
+            "y": 620
+          }
+        }
+      ]
+    },
+    {
+      "id": "clan-archives",
+      "label": "Archives du chasseur",
+      "deck": "upper",
+      "width": 1200,
+      "depth": 800,
+      "wallArt": "sanctum",
+      "accent": "#91c7e5",
+      "spawn": {
+        "x": 600,
+        "y": 660,
+        "facing": 1
+      },
+      "station": {
+        "id": "clan-archives",
+        "label": "Archives du chasseur",
+        "x": 650,
+        "y": 300,
+        "approach": {
+          "x": 650,
+          "y": 355
+        }
+      },
+      "fixtures": [
+        {
+          "id": "archive-terminal",
+          "artKey": "archiveTerminal",
+          "x": 650,
+          "y": 300,
+          "width": 125,
+          "height": 230,
+          "footprint": {
+            "x": 610,
+            "y": 245,
+            "width": 80,
+            "depth": 55
+          }
+        },
+        {
+          "id": "archive-console",
+          "artKey": "navigationConsole",
+          "x": 310,
+          "y": 430,
+          "width": 250,
+          "height": 138,
+          "footprint": {
+            "x": 200,
+            "y": 345,
+            "width": 220,
+            "depth": 85
+          }
+        }
+      ],
+      "doors": [
+        {
+          "id": "clan-archives:west",
+          "label": "Armurerie",
+          "side": "west",
+          "kind": "bulkhead",
+          "x": 88,
+          "y": 620,
+          "targetRoomId": "wall-armory",
+          "targetDoorId": "wall-armory:east",
+          "entry": {
+            "x": 170,
+            "y": 620
+          }
+        },
+        {
+          "id": "clan-archives:east",
+          "label": "Forge des parures",
+          "side": "east",
+          "kind": "bulkhead",
+          "x": 1112,
+          "y": 620,
+          "targetRoomId": "appearance-forge",
+          "targetDoorId": "appearance-forge:west",
+          "entry": {
+            "x": 1030,
+            "y": 620
+          }
+        }
+      ]
+    },
+    {
+      "id": "appearance-forge",
+      "label": "Forge des parures",
+      "deck": "upper",
+      "width": 1200,
+      "depth": 800,
+      "wallArt": "machinery",
+      "accent": "#e7a276",
+      "spawn": {
+        "x": 600,
+        "y": 660,
+        "facing": 1
+      },
+      "station": {
+        "id": "appearance-forge",
+        "label": "Forge des parures",
+        "x": 600,
+        "y": 330,
+        "approach": {
+          "x": 600,
+          "y": 385
+        }
+      },
+      "fixtures": [
+        {
+          "id": "appearance-forge",
+          "artKey": "forgeStation",
+          "x": 600,
+          "y": 330,
+          "width": 225,
+          "height": 280,
+          "footprint": {
+            "x": 515,
+            "y": 235,
+            "width": 170,
+            "depth": 95
+          }
+        },
+        {
+          "id": "parure-rack",
+          "artKey": "armoryRack",
+          "x": 950,
+          "y": 420,
+          "width": 370,
+          "height": 196,
+          "footprint": {
+            "x": 780,
+            "y": 355,
+            "width": 340,
+            "depth": 65
+          }
+        }
+      ],
+      "doors": [
+        {
+          "id": "appearance-forge:west",
+          "label": "Archives du chasseur",
+          "side": "west",
+          "kind": "bulkhead",
+          "x": 88,
+          "y": 620,
+          "targetRoomId": "clan-archives",
+          "targetDoorId": "clan-archives:east",
+          "entry": {
+            "x": 170,
+            "y": 620
+          }
+        },
+        {
+          "id": "appearance-forge:north",
+          "label": "Sas de chasse",
+          "side": "north",
+          "kind": "lift",
+          "x": 1010,
+          "y": 80,
+          "targetRoomId": "launch-airlock",
+          "targetDoorId": "launch-airlock:north",
+          "entry": {
+            "x": 1010,
+            "y": 162
+          }
+        }
+      ]
+    },
+    {
+      "id": "trophy-hall",
+      "label": "Galerie des trophées",
+      "deck": "lower",
+      "width": 1200,
+      "depth": 800,
+      "wallArt": "sanctum",
+      "accent": "#dec186",
+      "spawn": {
+        "x": 600,
+        "y": 660,
+        "facing": 1
+      },
+      "station": {
+        "id": "trophy-hall",
+        "label": "Galerie des trophées",
+        "x": 600,
+        "y": 350,
+        "approach": {
+          "x": 600,
+          "y": 405
+        }
+      },
+      "fixtures": [
+        {
+          "id": "trophy-workbench",
+          "artKey": "trophyPlinth",
+          "x": 600,
+          "y": 350,
+          "width": 190,
+          "height": 140,
+          "footprint": {
+            "x": 520,
+            "y": 270,
+            "width": 160,
+            "depth": 80
+          }
+        },
+        {
+          "id": "trophy-west-plinth",
+          "artKey": "trophyPlinth",
+          "x": 310,
+          "y": 280,
+          "width": 190,
+          "height": 140,
+          "footprint": {
+            "x": 230,
+            "y": 200,
+            "width": 160,
+            "depth": 80
+          }
+        },
+        {
+          "id": "trophy-east-plinth",
+          "artKey": "trophyPlinth",
+          "x": 890,
+          "y": 280,
+          "width": 190,
+          "height": 140,
+          "footprint": {
+            "x": 810,
+            "y": 200,
+            "width": 160,
+            "depth": 80
+          }
+        }
+      ],
+      "doors": [
+        {
+          "id": "trophy-hall:east",
+          "label": "Baie médicale",
+          "side": "east",
+          "kind": "bulkhead",
+          "x": 1112,
+          "y": 620,
+          "targetRoomId": "medical-bay",
+          "targetDoorId": "medical-bay:west",
+          "entry": {
+            "x": 1030,
+            "y": 620
+          }
+        },
+        {
+          "id": "trophy-hall:north",
+          "label": "Passerelle de navigation",
+          "side": "north",
+          "kind": "lift",
+          "x": 190,
+          "y": 80,
+          "targetRoomId": "galaxy-map",
+          "targetDoorId": "galaxy-map:north",
+          "entry": {
+            "x": 190,
+            "y": 162
+          }
+        }
+      ]
+    },
+    {
+      "id": "medical-bay",
+      "label": "Baie médicale",
+      "deck": "lower",
+      "width": 1200,
+      "depth": 800,
+      "wallArt": "machinery",
+      "accent": "#91d5b6",
+      "spawn": {
+        "x": 600,
+        "y": 660,
+        "facing": 1
+      },
+      "station": {
+        "id": "medical-bay",
+        "label": "Baie médicale",
+        "x": 600,
+        "y": 345,
+        "approach": {
+          "x": 600,
+          "y": 395
+        }
+      },
+      "fixtures": [
+        {
+          "id": "medical-bed",
+          "artKey": "medbayBed",
+          "x": 600,
+          "y": 345,
+          "width": 225,
+          "height": 120,
+          "footprint": {
+            "x": 497.5,
+            "y": 275,
+            "width": 205,
+            "depth": 70
+          }
+        },
+        {
+          "id": "medical-terminal",
+          "artKey": "archiveTerminal",
+          "x": 950,
+          "y": 280,
+          "width": 125,
+          "height": 230,
+          "footprint": {
+            "x": 910,
+            "y": 225,
+            "width": 80,
+            "depth": 55
+          }
+        }
+      ],
+      "doors": [
+        {
+          "id": "medical-bay:west",
+          "label": "Galerie des trophées",
+          "side": "west",
+          "kind": "bulkhead",
+          "x": 88,
+          "y": 620,
+          "targetRoomId": "trophy-hall",
+          "targetDoorId": "trophy-hall:east",
+          "entry": {
+            "x": 170,
+            "y": 620
+          }
+        },
+        {
+          "id": "medical-bay:east",
+          "label": "Cercle d’entraînement",
+          "side": "east",
+          "kind": "bulkhead",
+          "x": 1112,
+          "y": 620,
+          "targetRoomId": "training-arena",
+          "targetDoorId": "training-arena:west",
+          "entry": {
+            "x": 1030,
+            "y": 620
+          }
+        }
+      ]
+    },
+    {
+      "id": "training-arena",
+      "label": "Cercle d’entraînement",
+      "deck": "lower",
+      "width": 1200,
+      "depth": 800,
+      "wallArt": "sanctum",
+      "accent": "#d9bf86",
+      "spawn": {
+        "x": 600,
+        "y": 660,
+        "facing": 1
+      },
+      "station": {
+        "id": "training-arena",
+        "label": "Cercle d’entraînement",
+        "x": 950,
+        "y": 320,
+        "approach": {
+          "x": 950,
+          "y": 375
+        }
+      },
+      "fixtures": [
+        {
+          "id": "training-emitter",
+          "artKey": "trainingEmitter",
+          "x": 950,
+          "y": 320,
+          "width": 170,
+          "height": 210,
+          "footprint": {
+            "x": 900,
+            "y": 245,
+            "width": 100,
+            "depth": 75
+          }
+        },
+        {
+          "id": "training-rack",
+          "artKey": "armoryRack",
+          "x": 300,
+          "y": 260,
+          "width": 370,
+          "height": 196,
+          "footprint": {
+            "x": 130,
+            "y": 195,
+            "width": 340,
+            "depth": 65
+          }
+        }
+      ],
+      "doors": [
+        {
+          "id": "training-arena:west",
+          "label": "Baie médicale",
+          "side": "west",
+          "kind": "bulkhead",
+          "x": 88,
+          "y": 620,
+          "targetRoomId": "medical-bay",
+          "targetDoorId": "medical-bay:east",
+          "entry": {
+            "x": 170,
+            "y": 620
+          }
+        },
+        {
+          "id": "training-arena:east",
+          "label": "Sas de chasse",
+          "side": "east",
+          "kind": "bulkhead",
+          "x": 1112,
+          "y": 620,
+          "targetRoomId": "launch-airlock",
+          "targetDoorId": "launch-airlock:west",
+          "entry": {
+            "x": 1030,
+            "y": 620
+          }
+        }
+      ]
+    },
+    {
+      "id": "launch-airlock",
+      "label": "Sas de chasse",
+      "deck": "lower",
+      "width": 1200,
+      "depth": 800,
+      "wallArt": "machinery",
+      "accent": "#91d5d7",
+      "spawn": {
+        "x": 600,
+        "y": 660,
+        "facing": 1
+      },
+      "station": {
+        "id": "launch-airlock",
+        "label": "Sas de chasse",
+        "x": 850,
+        "y": 340,
+        "approach": {
+          "x": 850,
+          "y": 395
+        }
+      },
+      "fixtures": [
+        {
+          "id": "airlock-console",
+          "artKey": "navigationConsole",
+          "x": 850,
+          "y": 340,
+          "width": 250,
+          "height": 138,
+          "footprint": {
+            "x": 740,
+            "y": 255,
+            "width": 220,
+            "depth": 85
+          }
+        },
+        {
+          "id": "airlock-terminal",
+          "artKey": "archiveTerminal",
+          "x": 300,
+          "y": 280,
+          "width": 125,
+          "height": 230,
+          "footprint": {
+            "x": 260,
+            "y": 225,
+            "width": 80,
+            "depth": 55
+          }
+        }
+      ],
+      "doors": [
+        {
+          "id": "launch-airlock:west",
+          "label": "Cercle d’entraînement",
+          "side": "west",
+          "kind": "bulkhead",
+          "x": 88,
+          "y": 620,
+          "targetRoomId": "training-arena",
+          "targetDoorId": "training-arena:east",
+          "entry": {
+            "x": 170,
+            "y": 620
+          }
+        },
+        {
+          "id": "launch-airlock:north",
+          "label": "Forge des parures",
+          "side": "north",
+          "kind": "lift",
+          "x": 1010,
+          "y": 80,
+          "targetRoomId": "appearance-forge",
+          "targetDoorId": "appearance-forge:north",
+          "entry": {
+            "x": 1010,
+            "y": 162
+          }
+        }
+      ]
+    }
+  ],
+  "assets": [
+    {
+      "id": "navigation-console",
+      "label": "Console personnelle de navigation",
+      "artKey": "navigationConsole",
+      "file": "v23/navigation-console.webp",
+      "generation": "Généré",
+      "integration": "Intégré",
+      "technical": "Partiel",
+      "humanReview": "À revoir",
+      "humanArtValidation": false,
+      "source": "S05",
+      "runtime": {
+        "path": "public/game/ship-interior/v23/navigation-console.webp",
+        "bytes": 1326022,
+        "sha256": "863ffedfa629e0e9e90538469a858d46fe20249a01a5bce51da7b6ea910ad1af",
+        "gitBlobSha": "8be8f94e5373421bb41db6c9f28f479ce932423a"
+      },
+      "original": {
+        "path": "production/ship-interior-25d-20261105/art/source/navigation-console.png",
+        "bytes": 2537892,
+        "sha256": "ac370fc6b86c6319f9fd9676ccd77f2cad6df12b7e3f7641ea7b1dc91235b916",
+        "gitBlobSha": "3221b0968754ae3d80c6d013dc158600cb33d0d6"
+      },
+      "sourceWidth": 1536,
+      "sourceHeight": 1024,
+      "alphaBounds": {
+        "x": 40,
+        "y": 131,
+        "width": 1456,
+        "height": 801
+      },
+      "alphaThreshold": 8,
+      "pivot": {
+        "x": 768,
+        "y": 931,
+        "method": "alpha-bounds-bottom-center"
+      },
+      "alpha": {
+        "minimum": 0,
+        "maximum": 254,
+        "fullyTransparentPixels": 722444,
+        "visiblePixels": 828238,
+        "visibleBorderPixels": 0
+      },
+      "reference": "public/game/ship-interior/v21/console-navigation.webp",
+      "projection": "Target 35 degrees; exact camera alignment unvalidated",
+      "conversion": "Lossless WebP via Sharp; no resize, crop, recolor or alpha normalization.",
+      "limits": "Measured silhouette pivot. CI3 automatic path, collision and occlusion checks passed. Physical floor contact, final in-game appearance and exact camera angle remain open for visual/human review.",
+      "calibration": {
+        "width": 250,
+        "height": 138,
+        "footprintWidth": 220,
+        "footprintDepth": 85
+      }
+    },
+    {
+      "id": "medbay-bed",
+      "label": "Table de soin",
+      "artKey": "medbayBed",
+      "file": "v23/medbay-bed.webp",
+      "generation": "Généré",
+      "integration": "Intégré",
+      "technical": "Partiel",
+      "humanReview": "À revoir",
+      "humanArtValidation": false,
+      "source": "S05",
+      "runtime": {
+        "path": "public/game/ship-interior/v23/medbay-bed.webp",
+        "bytes": 956502,
+        "sha256": "36d2acae1f8d0d4eefa91bf334430d6a84ef928a65b74f7e03b22b1cda42ad95",
+        "gitBlobSha": "18d444728dbe03681053ddb5bd2995d8cb320bcf"
+      },
+      "original": {
+        "path": "production/ship-interior-25d-20261105/art/source/medbay-bed.png",
+        "bytes": 1481552,
+        "sha256": "9d12d2d6bd4857d9b74d9ca75972918bed752ae5e16ae6ab57e7dcfeb7308627",
+        "gitBlobSha": "0df069722511ea7cb12609937b3f49bdce343de0"
+      },
+      "sourceWidth": 1774,
+      "sourceHeight": 887,
+      "alphaBounds": {
+        "x": 111,
+        "y": 35,
+        "width": 1551,
+        "height": 828
+      },
+      "alphaThreshold": 8,
+      "pivot": {
+        "x": 886.5,
+        "y": 862,
+        "method": "alpha-bounds-bottom-center"
+      },
+      "alpha": {
+        "minimum": 0,
+        "maximum": 255,
+        "fullyTransparentPixels": 896592,
+        "visiblePixels": 651008,
+        "visibleBorderPixels": 0
+      },
+      "reference": "public/game/ship-interior/v22/medbay-bed.webp",
+      "projection": "Target 35 degrees; exact camera alignment unvalidated",
+      "conversion": "Lossless WebP via Sharp; no resize, crop, recolor or alpha normalization.",
+      "limits": "Measured silhouette pivot. CI3 automatic path, collision and occlusion checks passed. Physical floor contact, final in-game appearance and exact camera angle remain open for visual/human review.",
+      "calibration": {
+        "width": 225,
+        "height": 120,
+        "footprintWidth": 205,
+        "footprintDepth": 70
+      }
+    },
+    {
+      "id": "armory-rack",
+      "label": "Râtelier d’armurerie",
+      "artKey": "armoryRack",
+      "file": "v23/armory-rack.webp",
+      "generation": "Généré",
+      "integration": "Intégré",
+      "technical": "Partiel",
+      "humanReview": "À revoir",
+      "humanArtValidation": false,
+      "source": "S05",
+      "runtime": {
+        "path": "public/game/ship-interior/v23/armory-rack.webp",
+        "bytes": 1472372,
+        "sha256": "85f09935c6b1264dc3697029e50c7a05f35987aa5b37e54bb6ac0558d8971b1c",
+        "gitBlobSha": "c81dd22c3df6da35f985bb27f37e4b98c6622b7a"
+      },
+      "original": {
+        "path": "production/ship-interior-25d-20261105/art/source/armory-rack.png",
+        "bytes": 2416290,
+        "sha256": "c85393b633c964303ac6daf49eb6177b48a21d13100c5342e593fd007f184050",
+        "gitBlobSha": "c8304f13592444e741e093a4d04f5eab8ffb3da0"
+      },
+      "sourceWidth": 1536,
+      "sourceHeight": 1024,
+      "alphaBounds": {
+        "x": 35,
+        "y": 130,
+        "width": 1465,
+        "height": 776
+      },
+      "alphaThreshold": 8,
+      "pivot": {
+        "x": 767.5,
+        "y": 905,
+        "method": "alpha-bounds-bottom-center"
+      },
+      "alpha": {
+        "minimum": 0,
+        "maximum": 254,
+        "fullyTransparentPixels": 434954,
+        "visiblePixels": 1106920,
+        "visibleBorderPixels": 0
+      },
+      "reference": "public/game/ship-interior/v22/armory-rack.webp",
+      "projection": "Target 35 degrees; exact camera alignment unvalidated",
+      "conversion": "Lossless WebP via Sharp; no resize, crop, recolor or alpha normalization.",
+      "limits": "Measured silhouette pivot. CI3 automatic path, collision and occlusion checks passed. Physical floor contact, final in-game appearance and exact camera angle remain open for visual/human review.",
+      "calibration": {
+        "width": 370,
+        "height": 196,
+        "footprintWidth": 340,
+        "footprintDepth": 65
+      }
+    },
+    {
+      "id": "forge-station",
+      "label": "Atelier de parures",
+      "artKey": "forgeStation",
+      "file": "v23/forge-station.webp",
+      "generation": "Généré",
+      "integration": "Intégré",
+      "technical": "Partiel",
+      "humanReview": "À revoir",
+      "humanArtValidation": false,
+      "source": "S05",
+      "runtime": {
+        "path": "public/game/ship-interior/v23/forge-station.webp",
+        "bytes": 1445088,
+        "sha256": "c8e7046b1203c2d971bf941560bb34f84e8a6b8c20a90c61d194a4411a9a2c48",
+        "gitBlobSha": "3e491bf0ab26cc8a094a7866f60358762cdb6ceb"
+      },
+      "original": {
+        "path": "production/ship-interior-25d-20261105/art/source/forge-station.png",
+        "bytes": 2625880,
+        "sha256": "e6ecb07947042dadf22410079b56c1787ac59eaf63cd6aeb22e27824ae9b5933",
+        "gitBlobSha": "acdaff0f064a727c0dfdf642f086a0e595658aa7"
+      },
+      "sourceWidth": 1024,
+      "sourceHeight": 1536,
+      "alphaBounds": {
+        "x": 33,
+        "y": 66,
+        "width": 959,
+        "height": 1422
+      },
+      "alphaThreshold": 8,
+      "pivot": {
+        "x": 512.5,
+        "y": 1487,
+        "method": "alpha-bounds-bottom-center"
+      },
+      "alpha": {
+        "minimum": 0,
+        "maximum": 254,
+        "fullyTransparentPixels": 634545,
+        "visiblePixels": 904892,
+        "visibleBorderPixels": 0
+      },
+      "reference": "public/game/ship-interior/v22/forge-station.webp",
+      "projection": "Target 35 degrees; exact camera alignment unvalidated",
+      "conversion": "Lossless WebP via Sharp; no resize, crop, recolor or alpha normalization.",
+      "limits": "Measured silhouette pivot. CI3 automatic path, collision and occlusion checks passed. Physical floor contact, final in-game appearance and exact camera angle remain open for visual/human review.",
+      "calibration": {
+        "width": 225,
+        "height": 280,
+        "footprintWidth": 170,
+        "footprintDepth": 95
+      }
+    },
+    {
+      "id": "trophy-plinth",
+      "label": "Socle de trophée",
+      "artKey": "trophyPlinth",
+      "file": "v23/trophy-plinth.webp",
+      "generation": "Généré",
+      "integration": "Intégré",
+      "technical": "Partiel",
+      "humanReview": "À revoir",
+      "humanArtValidation": false,
+      "source": "S05",
+      "runtime": {
+        "path": "public/game/ship-interior/v23/trophy-plinth.webp",
+        "bytes": 766328,
+        "sha256": "a92dc32d62fcea1c0494e3d870cceb35888d676d2966c3790f4790fc77f9f7f4",
+        "gitBlobSha": "a77f292a3632e830852effc5bd727758e7a951d3"
+      },
+      "original": {
+        "path": "production/ship-interior-25d-20261105/art/source/trophy-plinth.png",
+        "bytes": 1807508,
+        "sha256": "eafae692f2c5c1bf34a53ff3306460069210f967b91ec2d1428dde5062dda542",
+        "gitBlobSha": "29ee5c90450b4db914e23d3e00ce3e2412a00460"
+      },
+      "sourceWidth": 1536,
+      "sourceHeight": 1024,
+      "alphaBounds": {
+        "x": 305,
+        "y": 217,
+        "width": 925,
+        "height": 681
+      },
+      "alphaThreshold": 8,
+      "pivot": {
+        "x": 767.5,
+        "y": 897,
+        "method": "alpha-bounds-bottom-center"
+      },
+      "alpha": {
+        "minimum": 0,
+        "maximum": 254,
+        "fullyTransparentPixels": 1039067,
+        "visiblePixels": 515877,
+        "visibleBorderPixels": 0
+      },
+      "reference": "public/game/ship-interior/v21/console-navigation.webp",
+      "projection": "Target 35 degrees; exact camera alignment unvalidated",
+      "conversion": "Lossless WebP via Sharp; no resize, crop, recolor or alpha normalization.",
+      "limits": "Measured silhouette pivot. CI3 automatic path, collision and occlusion checks passed. Physical floor contact, final in-game appearance and exact camera angle remain open for visual/human review.",
+      "calibration": {
+        "width": 190,
+        "height": 140,
+        "footprintWidth": 160,
+        "footprintDepth": 80
+      }
+    },
+    {
+      "id": "training-emitter",
+      "label": "Émetteur d’entraînement",
+      "artKey": "trainingEmitter",
+      "file": "v23/training-emitter.webp",
+      "generation": "Généré",
+      "integration": "Intégré",
+      "technical": "Partiel",
+      "humanReview": "À revoir",
+      "humanArtValidation": false,
+      "source": "S05",
+      "runtime": {
+        "path": "public/game/ship-interior/v23/training-emitter.webp",
+        "bytes": 671344,
+        "sha256": "6fad177f693d9e38c1788b201610b2a0feca51f438a32fda4225febafbb80648",
+        "gitBlobSha": "623f7a07c153c5e728eeeaca105dc53c775d1101"
+      },
+      "original": {
+        "path": "production/ship-interior-25d-20261105/art/source/training-emitter.png",
+        "bytes": 1675824,
+        "sha256": "fe0277bb00d643fbe723ad9deb6b31bae4b815056dc07ad3c0b241992544eb6e",
+        "gitBlobSha": "3d6d08e43b84fb3edc9d0f2a001d4bfc21c465a0"
+      },
+      "sourceWidth": 1024,
+      "sourceHeight": 1536,
+      "alphaBounds": {
+        "x": 178,
+        "y": 267,
+        "width": 669,
+        "height": 1126
+      },
+      "alphaThreshold": 8,
+      "pivot": {
+        "x": 512.5,
+        "y": 1392,
+        "method": "alpha-bounds-bottom-center"
+      },
+      "alpha": {
+        "minimum": 0,
+        "maximum": 254,
+        "fullyTransparentPixels": 1121938,
+        "visiblePixels": 440827,
+        "visibleBorderPixels": 0
+      },
+      "reference": "public/game/ship-interior/v22/forge-station.webp",
+      "projection": "Target 35 degrees; exact camera alignment unvalidated",
+      "conversion": "Lossless WebP via Sharp; no resize, crop, recolor or alpha normalization.",
+      "limits": "Measured silhouette pivot. CI3 automatic path, collision and occlusion checks passed. Physical floor contact, final in-game appearance and exact camera angle remain open for visual/human review.",
+      "calibration": {
+        "width": 170,
+        "height": 210,
+        "footprintWidth": 100,
+        "footprintDepth": 75
+      }
+    },
+    {
+      "id": "floor-panel",
+      "label": "Panneau de sol projeté une seule fois",
+      "artKey": "floorPanel",
+      "file": "v23/floor-panel.png",
+      "generation": "Généré",
+      "integration": "Intégré",
+      "technical": "Partiel",
+      "humanReview": "À revoir",
+      "humanArtValidation": false,
+      "source": "S05",
+      "runtime": {
+        "path": "public/game/ship-interior/v23/floor-panel.png",
+        "bytes": 2849410,
+        "sha256": "414e75e8c33ffda7b31a382163bceeef1cf680324ef27d5a8d75f68ac9e088b4",
+        "gitBlobSha": "7457bed609652d7b6fa81ada3994938eec7e2f9f"
+      },
+      "original": {
+        "path": "production/ship-interior-25d-20261105/art/source/floor-panel.png",
+        "bytes": 2849410,
+        "sha256": "414e75e8c33ffda7b31a382163bceeef1cf680324ef27d5a8d75f68ac9e088b4",
+        "gitBlobSha": "7457bed609652d7b6fa81ada3994938eec7e2f9f"
+      },
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "alphaBounds": {
+        "x": 0,
+        "y": 0,
+        "width": 1254,
+        "height": 1254
+      },
+      "alphaThreshold": 8,
+      "pivot": null,
+      "alpha": {
+        "minimum": 255,
+        "maximum": 255,
+        "fullyTransparentPixels": 0,
+        "visiblePixels": 1572516,
+        "visibleBorderPixels": 5012
+      },
+      "reference": null,
+      "projection": "top-down",
+      "conversion": "Original PNG reused byte for byte as runtime after environment interruption.",
+      "limits": "Source PNG unchanged. Opposite-edge seamlessness and final visual floor contact are not human validated. Final captures are archived but have not been visually inspected.",
+      "calibration": null
+    },
+    {
+      "id": "archive-terminal-v22",
+      "label": "Terminal d’archives existant",
+      "artKey": "archiveTerminal",
+      "file": "v22/archive-terminal.webp",
+      "generation": "Existant",
+      "integration": "Réemployé",
+      "technical": "Partiel",
+      "humanReview": "À revoir",
+      "humanArtValidation": false,
+      "source": "S11"
+    },
+    {
+      "id": "door-frame-v21",
+      "label": "Encadrement de passage existant",
+      "artKey": "doorFrame",
+      "file": "v21/door-frame.webp",
+      "generation": "Existant",
+      "integration": "Réemployé",
+      "technical": "Partiel",
+      "humanReview": "À revoir",
+      "humanArtValidation": false,
+      "source": "S11"
+    },
+    {
+      "id": "wall-observatory-v21",
+      "label": "Paroi de passerelle existante",
+      "artKey": "wallObservatory",
+      "file": "v21/wall-observatory.webp",
+      "generation": "Existant",
+      "integration": "Réemployé",
+      "technical": "Partiel",
+      "humanReview": "À revoir",
+      "humanArtValidation": false,
+      "source": "S11"
+    },
+    {
+      "id": "wall-sanctum-v21",
+      "label": "Paroi de sanctuaire existante",
+      "artKey": "wallSanctum",
+      "file": "v21/wall-sanctum.webp",
+      "generation": "Existant",
+      "integration": "Réemployé",
+      "technical": "Partiel",
+      "humanReview": "À revoir",
+      "humanArtValidation": false,
+      "source": "S11"
+    },
+    {
+      "id": "wall-machinery-v21",
+      "label": "Paroi technique existante",
+      "artKey": "wallMachinery",
+      "file": "v21/wall-machinery.webp",
+      "generation": "Existant",
+      "integration": "Réemployé",
+      "technical": "Partiel",
+      "humanReview": "À revoir",
+      "humanArtValidation": false,
+      "source": "S11"
+    },
+    {
+      "id": "floor-edge-v22",
+      "label": "Bordure de pont existante",
+      "artKey": "floorEdge",
+      "file": "v22/floor-edge.webp",
+      "generation": "Existant",
+      "integration": "Réemployé",
+      "technical": "Partiel",
+      "humanReview": "À revoir",
+      "humanArtValidation": false,
+      "source": "S11"
+    }
+  ],
+  "qa": [
+    {
+      "id": "QA25-01",
+      "criterion": "Projection et déprojection du sol",
+      "expected": "Projection à 35 degrés commune à Homeworld, inverse stable avec élévation.",
+      "result": "Réussi",
+      "level": "Comportement",
+      "sources": "S02, S15"
+    },
+    {
+      "id": "QA25-02",
+      "criterion": "Services et passages accessibles",
+      "expected": "Apparitions et entrées reliées aux services et sorties sans traverser les solides.",
+      "result": "Réussi",
+      "level": "Comportement",
+      "sources": "S02, S15"
+    },
+    {
+      "id": "QA25-03",
+      "criterion": "Contournement du mobilier",
+      "expected": "Le contrôleur suit un chemin libre jusqu’à l’autre côté de l’installation.",
+      "result": "Réussi",
+      "level": "Comportement",
+      "sources": "S02, S14, S15"
+    },
+    {
+      "id": "QA25-04",
+      "criterion": "Diagonales, pauses et trames longues",
+      "expected": "Vitesse bornée, pause immobile, aucune traversée à la reprise.",
+      "result": "Réussi",
+      "level": "Comportement",
+      "sources": "S02, S15"
+    },
+    {
+      "id": "QA25-05",
+      "criterion": "Huit salles et deux ponts",
+      "expected": "Circuit complet par seuils réciproques ; arrivée hors du déclencheur de retour.",
+      "result": "Réussi",
+      "level": "Comportement",
+      "sources": "S02, S15"
+    },
+    {
+      "id": "QA25-06",
+      "criterion": "Inspection réellement proche",
+      "expected": "Refus des mauvaises salles, anciennes coordonnées substituées et positions dans un meuble.",
+      "result": "Réussi",
+      "level": "Comportement",
+      "sources": "S04, S15"
+    },
+    {
+      "id": "QA25-07",
+      "criterion": "Reçus et échecs de sauvegarde",
+      "expected": "Reprise des inspections, refus de données étrangères, absence de double attribution.",
+      "result": "Réussi",
+      "level": "Persistance",
+      "sources": "S04, S15"
+    },
+    {
+      "id": "QA25-08",
+      "criterion": "Régressions d’insertion et d’énergie",
+      "expected": "Conservation de l’insertion, de la réserve par coque et des reçus de départ.",
+      "result": "Réussi",
+      "level": "Régression au checkpoint antérieur",
+      "sources": "S06, S08"
+    },
+    {
+      "id": "QA25-09",
+      "criterion": "TypeScript et lint du lot",
+      "expected": "Aucune erreur après intégration finale du code et des ressources.",
+      "result": "Réussi",
+      "level": "Source : CI3",
+      "sources": "S15, S16"
+    },
+    {
+      "id": "QA25-10",
+      "criterion": "Construction de production",
+      "expected": "Compilation Next complète avec le code et les ressources finaux.",
+      "result": "Réussi",
+      "level": "Construction : CI3",
+      "sources": "S16"
+    },
+    {
+      "id": "QA25-11",
+      "criterion": "Parcours navigateur desktop",
+      "expected": "Visiter huit salles, ouvrir leurs services, conserver la position et vérifier les commandes.",
+      "result": "Réussi",
+      "level": "Navigateur automatisé : CI3",
+      "sources": "S16"
+    },
+    {
+      "id": "QA25-12",
+      "criterion": "Parcours mobile 390 et 320 pixels",
+      "expected": "Caméra lisible, commandes accessibles, glissement distinct du tap, aucune ressource absente.",
+      "result": "Réussi",
+      "level": "Navigateur avec tactile simulé : CI3",
+      "sources": "S16"
+    },
+    {
+      "id": "QA25-13",
+      "criterion": "Occlusion et appui des pieds",
+      "expected": "Passer devant et derrière les équipements sans flottement ni double projection.",
+      "result": "Partiel",
+      "level": "Occlusion automatisée réussie ; captures non inspectées",
+      "sources": "S03, S05, S16"
+    },
+    {
+      "id": "QA25-14",
+      "criterion": "Commandes manette",
+      "expected": "Neutralisation initiale, interaction unique par pression et arrêt lors de la pause.",
+      "result": "À exécuter",
+      "level": "Matériel : manette non mesurée",
+      "sources": "S03"
+    },
+    {
+      "id": "QA25-15",
+      "criterion": "Références et fidélité artistique 1:1",
+      "expected": "Décision humaine par ressource sur silhouette, perspective, matière et éclairage.",
+      "result": "À revoir",
+      "level": "Artistique",
+      "sources": "S05, S10"
+    },
+    {
+      "id": "QA25-16",
+      "criterion": "État après rechargement",
+      "expected": "Limite documentée : retour à la passerelle, position exacte non persistée.",
+      "result": "Documenté",
+      "level": "Limite",
+      "sources": "S03"
+    },
+    {
+      "id": "QA25-17",
+      "criterion": "Livraison GitHub et CI",
+      "expected": "Commit et lien de PR exacts, résultats rattachés à la même révision publiée.",
+      "result": "Réussi",
+      "level": "Livraison de ce runtime et CI3 ; qualification globale exclue",
+      "sources": "S12, S16, S17"
+    }
+  ],
+  "sources": [
+    {
+      "id": "S01",
+      "label": "Base PR 114 mise à jour",
+      "reference": "https://github.com/darknigthmare/yautja-la-longue-chasse/pull/114",
+      "revision": "1951e17f01f1951d7c961b4ed3938741966e3007",
+      "detail": "Arbre 4f6b3e4a785951286efbf0deafa29b843df40150. Base fusionnée dans le commit du lot. Reprise initiale 4a0b8d58cdfadf642d6c897c32980b7a8586f4dd, arbre 9b64f036ca97247ef7a131566705df7e1c472325."
+    },
+    {
+      "id": "S02",
+      "label": "Géométrie et contrôleur au sol",
+      "reference": "app/game/systems/shipInterior25d.ts",
+      "revision": "86f593bad2c7d00259dc4cf0a7d1ad40eac1d719",
+      "detail": "Huit salles, 17 meubles, 16 seuils. Tailles uniformes par modèle et approches recalibrées."
+    },
+    {
+      "id": "S03",
+      "label": "Scène du vaisseau personnel",
+      "reference": "app/game/ShipInterior25D.tsx",
+      "revision": "86f593bad2c7d00259dc4cf0a7d1ad40eac1d719",
+      "detail": "Rendu, commandes, occlusion, interfaces et observation de la position réelle. Sol PNG original."
+    },
+    {
+      "id": "S04",
+      "label": "Contrat des inspections",
+      "reference": "app/game/systems/shipPreparationV88.ts",
+      "revision": "Lot 1.6.0 ; compatibilité V88",
+      "detail": "Observation ship-ground-v1 et contrat historique ship-side-v21. Reçus durables conservés."
+    },
+    {
+      "id": "S05",
+      "label": "Production artistique individuelle",
+      "reference": "production/ship-interior-25d-20261105/art/assets.json",
+      "revision": "7 ressources ; humanArtValidation false",
+      "detail": "Prompts et provenance : art/PROVENANCE.md. Six WebP et un PNG runtime, sept sources PNG. Mesures exactes et empreintes conservées après interruption du runtime."
+    },
+    {
+      "id": "S06",
+      "label": "Tests ciblés réellement exécutés",
+      "reference": "production/ship-interior-25d-20261105/verification/targeted-tests.log\nproduction/ship-interior-25d-20261105/verification/route-checks.log",
+      "revision": "150 + 18 réussis au checkpoint antérieur",
+      "detail": "168 tests distincts dans 11 fichiers avant intégration artistique finale. Journaux 150/18 observés localement, non récupérés après l’interruption et non publiés. Les 34 géométrie/prévol/sauvegarde sont inclus."
+    },
+    {
+      "id": "S07",
+      "label": "Qualification finale du lot",
+      "reference": "production/ship-interior-25d-20261105/verification/final-runtime-validation.json\nproduction/ship-interior-25d-20261105/verification/final-ci-excerpt.log",
+      "revision": "CI3 completed/success",
+      "detail": "Reçu de qualification du commit 86f593bad2c7d00259dc4cf0a7d1ad40eac1d719 : 14 tests unitaires et 17 contrôles navigateur réussis, 0 ressource manquante et 0 erreur console/page. Captures finales archivées, non inspectées visuellement."
+    },
+    {
+      "id": "S08",
+      "label": "Arrivées, triade et camouflage conservés",
+      "reference": "production/insertion-trio-20261105/README.md",
+      "revision": "Base PR 114 mise à jour",
+      "detail": "Insertion et réserve énergétique par coque restent des contrats de campagne distincts de l’intérieur."
+    },
+    {
+      "id": "S09",
+      "label": "Intérieur existant du Clan Ship",
+      "reference": "app/game/systems/clanShipInterior.ts",
+      "revision": "Hors conversion actuelle",
+      "detail": "Marche X/Y existante. Projection Homeworld complète et adaptation de ses sept salles restent ouvertes."
+    },
+    {
+      "id": "S10",
+      "label": "Règle de revue artistique",
+      "reference": "docs/GAMEDEV_AGENT_GUIDE.md",
+      "revision": "Guide du projet",
+      "detail": "Génération, intégration et contrôle technique sont distincts d’une validation humaine 1:1."
+    },
+    {
+      "id": "S11",
+      "label": "Ressources historiques réemployées",
+      "reference": "app/game/shipInteriorKit.ts\napp/game/shipInteriorV22.ts",
+      "revision": "V21 et V22",
+      "detail": "Fichiers individuels sous public/game/ship-interior/. Contrôle spécifique dans la nouvelle scène encore ouvert."
+    },
+    {
+      "id": "S12",
+      "label": "Publication du code et des sept ressources",
+      "reference": "https://github.com/darknigthmare/yautja-la-longue-chasse/pull/115",
+      "revision": "86f593bad2c7d00259dc4cf0a7d1ad40eac1d719",
+      "detail": "Arbre 21052551ce3b80c57f70a8695a86d601e87e5e20. Parents 0e374e16976b4634830459c6fc27e9b6c14c9c21 et 1951e17f01f1951d7c961b4ed3938741966e3007."
+    },
+    {
+      "id": "S13",
+      "label": "Première recette navigateur interrompue",
+      "reference": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/42009181765",
+      "revision": "5d50b0a812d579ed1ef27519ae69484de85b6022",
+      "detail": "Un contrôle réussi puis attente visible erronée sur pivot 0×0. Favicon absent du sparse. Corrections intégrées. Aucun pageerror ; suite complète non validée."
+    },
+    {
+      "id": "S14",
+      "label": "Deuxième recette navigateur partielle",
+      "reference": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/42010453420",
+      "revision": "0e374e16976b4634830459c6fc27e9b6c14c9c21",
+      "detail": "Cinq contrôles natifs réussis. Arrêt au retour armurerie : blade-housing.webp et blades.webp absents du sparse. Corrections intégrées. Aucun pageerror ; suite complète non validée."
+    },
+    {
+      "id": "S15",
+      "label": "Contrôles locaux après tous les recalibrages",
+      "reference": "Confirmation de l’intégrateur, 5 novembre 2026 ; journal local final-geometry-tests.log",
+      "revision": "34/34 réussis ; ESLint strict sans avertissement",
+      "detail": "Trois suites géométrie/prévol/sauvegarde repassées après les derniers réglages : 34/34. Six sources et recettes lintées. Journal local non récupéré, résultat confirmé par l’intégrateur. CI3 documente séparément 14 tests unitaires et 17 contrôles navigateur."
+    },
+    {
+      "id": "S16",
+      "label": "CI3 : qualification du nouvel intérieur",
+      "reference": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/42013765672",
+      "revision": "86f593bad2c7d00259dc4cf0a7d1ad40eac1d719",
+      "detail": "Run 42013765672, job 127199019545 completed/success. 14/14 tests unitaires (11 géométrie + 3 chargement différé), 17/17 navigateur. Archive 13408631794, 28 133 732 octets, SHA256 79efaea2a7a0fe3f8c2fc8800089eca38ad5f587de0e90b45421498e9a2a09d5, 18 fichiers. Pas de revue visuelle finale."
+    },
+    {
+      "id": "S17",
+      "label": "Qualification globale de la base encore ouverte",
+      "reference": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/42009684967\nhttps://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/42009684875\nhttps://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/42009684795",
+      "revision": "Base PR 114 / 1951e17f01f1951d7c961b4ed3938741966e3007",
+      "detail": "14 workflows réussis sur 17 ; Dev, Wolf et Spatial encore rouges. La réussite de CI3 du nouvel intérieur ne clôt pas la qualification globale et ne vaut pas approbation de fusion."
+    }
+  ],
+  "recoveredArtFiles": [
+    {
+      "path": "public/game/ship-interior/v23/navigation-console.webp",
+      "bytes": 1326022,
+      "gitBlobSha": "8be8f94e5373421bb41db6c9f28f479ce932423a"
+    },
+    {
+      "path": "public/game/ship-interior/v23/medbay-bed.webp",
+      "bytes": 956502,
+      "gitBlobSha": "18d444728dbe03681053ddb5bd2995d8cb320bcf"
+    },
+    {
+      "path": "public/game/ship-interior/v23/armory-rack.webp",
+      "bytes": 1472372,
+      "gitBlobSha": "c81dd22c3df6da35f985bb27f37e4b98c6622b7a"
+    },
+    {
+      "path": "production/ship-interior-25d-20261105/art/source/navigation-console.png",
+      "bytes": 2537892,
+      "gitBlobSha": "3221b0968754ae3d80c6d013dc158600cb33d0d6"
+    },
+    {
+      "path": "production/ship-interior-25d-20261105/art/source/medbay-bed.png",
+      "bytes": 1481552,
+      "gitBlobSha": "0df069722511ea7cb12609937b3f49bdce343de0"
+    },
+    {
+      "path": "production/ship-interior-25d-20261105/art/source/armory-rack.png",
+      "bytes": 2416290,
+      "gitBlobSha": "c8304f13592444e741e093a4d04f5eab8ffb3da0"
+    },
+    {
+      "path": "public/game/ship-interior/v23/forge-station.webp",
+      "bytes": 1445088,
+      "gitBlobSha": "3e491bf0ab26cc8a094a7866f60358762cdb6ceb"
+    },
+    {
+      "path": "public/game/ship-interior/v23/trophy-plinth.webp",
+      "bytes": 766328,
+      "gitBlobSha": "a77f292a3632e830852effc5bd727758e7a951d3"
+    },
+    {
+      "path": "public/game/ship-interior/v23/training-emitter.webp",
+      "bytes": 671344,
+      "gitBlobSha": "623f7a07c153c5e728eeeaca105dc53c775d1101"
+    },
+    {
+      "path": "production/ship-interior-25d-20261105/art/source/forge-station.png",
+      "bytes": 2625880,
+      "gitBlobSha": "acdaff0f064a727c0dfdf642f086a0e595658aa7"
+    },
+    {
+      "path": "production/ship-interior-25d-20261105/art/source/trophy-plinth.png",
+      "bytes": 1807508,
+      "gitBlobSha": "29ee5c90450b4db914e23d3e00ce3e2412a00460"
+    },
+    {
+      "path": "production/ship-interior-25d-20261105/art/source/training-emitter.png",
+      "bytes": 1675824,
+      "gitBlobSha": "3d6d08e43b84fb3edc9d0f2a001d4bfc21c465a0"
+    },
+    {
+      "path": "production/ship-interior-25d-20261105/art/source/floor-panel.png",
+      "bytes": 2849410,
+      "gitBlobSha": "7457bed609652d7b6fa81ada3994938eec7e2f9f"
+    },
+    {
+      "path": "public/game/ship-interior/v23/floor-panel.png",
+      "bytes": 2849410,
+      "gitBlobSha": "7457bed609652d7b6fa81ada3994938eec7e2f9f"
+    }
+  ],
+  "resourceCounts": {
+    "newGenerated": 7,
+    "newIntegrated": 7,
+    "legacyReused": 6,
+    "humanReviewsOpen": 13,
+    "runtimeBytes": 9487066
+  },
+  "openWork": [
+    "Inspecter visuellement les captures finales archivées, y compris pivots, contacts, perspectives et occlusion.",
+    "Mesurer le comportement sur une manette matérielle.",
+    "Projection complète et décors du Clan Ship.",
+    "Persistance durable de la salle et de la position après rechargement.",
+    "Animations de franchissement et de liaison.",
+    "Revue humaine des références et de la fidélité 1:1.",
+    "Qualification globale de la base 114 : workflows Dev, Wolf et Spatial encore rouges.",
+    "Export final et revue visuelle du classeur à jour, non livré dans cet état."
+  ],
+  "defaultRoom": "galaxy-map"
+}
