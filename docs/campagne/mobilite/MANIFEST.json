@@ -1,0 +1,71 @@
+{
+  "schema": "yautja-mobility-docs/1",
+  "pull_request": 116,
+  "branch": "claude/bible-de-campagne",
+  "audited_head": "d3a289f738c9f33305a3564adf4141060f76d9d0",
+  "production_status": "design-only",
+  "runtime_enabled": false,
+  "expected_count": 50,
+  "expected_groups": [
+    24,
+    10,
+    16
+  ],
+  "semantic_items_sha256": "5b4a52efeb5e4589fbf9eca72636bd410bca79c261327af2bceb925d0aff6e7c",
+  "source_files": {
+    "BIBLE_PRODUCTION_50_VEHICULES_MONTURES.md": {
+      "bytes": 86148,
+      "sha256": "8f7a76fc6e4d4d17769992f91697f92b7bd70216df77e6022d7a2377fa207461"
+    },
+    "PROMPT_CODEX_implementation_mobility.md": {
+      "bytes": 12802,
+      "sha256": "3310feef829dc986bec5fd354042de2204e6d1b7ef08ff65a352a46926a83273"
+    },
+    "index_50_mobility.csv": {
+      "bytes": 9721,
+      "sha256": "7647547bf9521dbeef4f3c842a403d5d92f293b1e530a7f248774c29fc3fcc0d"
+    },
+    "prompts_images_50_vehicules_montures.md": {
+      "bytes": 53946,
+      "sha256": "1fc8b803a29c96af7a4e5e35ba6ac91da1f46583033fd0611848207e714ccce5"
+    },
+    "yautja_mobility_catalog_v1.json": {
+      "bytes": 103394,
+      "sha256": "2e1c39db4e2a5e67e30fd8a9601d199296ce562b57d419bd7c57116cc1c5f415"
+    }
+  },
+  "catalogue_blocks": [
+    {
+      "path": "catalogue/01-10.json",
+      "count": 10,
+      "git_blob_sha1": "e93abcabb1d42e5ebf90bdc6f9b1933fcc3a5209",
+      "sha256": "97af9eab8764b3041e748ee80b708c9fe77ea384da50df9d988573943c435818"
+    },
+    {
+      "path": "catalogue/11-20.json",
+      "count": 10,
+      "git_blob_sha1": "bd40f9ce6eb528a743c75c1011929bbe36848edb",
+      "sha256": "934b3b6e920a552349cf5fbfb5e7807b0a893ac25caa4fe6751270af30e138f8"
+    },
+    {
+      "path": "catalogue/21-30.json",
+      "count": 10,
+      "git_blob_sha1": "d04aeaeb07cd1b386d88d19b755f93aeb9cf5972",
+      "sha256": "250cf5e274dfe7b48cecbfcbcf17051f9ab3bc93d3192d2e8f3193bca4276443"
+    },
+    {
+      "path": "catalogue/31-40.json",
+      "count": 10,
+      "git_blob_sha1": "3c72fc25a210d11bc21779ebeb6c3391549255b5",
+      "sha256": "fc75f13109611d9fd94e91f8485fc4484f588a0e926db5910c583b2419df0064"
+    },
+    {
+      "path": "catalogue/41-50.json",
+      "count": 10,
+      "git_blob_sha1": "7fe8e044221736d351cc2f82f8204df072a14dd0",
+      "sha256": "a885da26d73d11465abc2ab508e3d5ccc79356f75f4507a01f6d31050ed23e7b"
+    }
+  ],
+  "note": "Les cinq fichiers de contenu source sont tracés par empreinte, pas recopiés comme cinq exports concurrents. Toutes les fiches et animations communes sont conservées ; les textes partagés sont harmonisés dans README, PROMPT_CODEX et PRODUCTION_VISUELLE. Les exports sont dérivés localement.",
+  "reconciled_head": "22f5b174b3d37e1e51f831bb75447376650a5569"
+}

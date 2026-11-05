@@ -77,6 +77,36 @@ explicite pour sa présence à bord. Les inventaires d'instance, droits de repr�
 et récompenses sont distincts des individus vivants ; aucun clone de compagnon n'est
 créé en terminant un film. Cette règle concorde avec la section 7 de Warp Universe.
 
+## Complément demandé le 5 novembre 2026 : véhicules et destriers
+
+| Document | Contenu |
+| --- | --- |
+| [Mobilité : contrat de raccord](mobilite/README.md) | Progression L-01 à L-10, huit chasses, garage/écuries, hangar du Clan Ship, BOND, combat, cargo, poursuites, insertion, justice et sauvegardes. |
+| [Index des 50 fiches](mobilite/INDEX.md) | 24 machines/utilitaires/insertion, 10 engins Bad Blood/Enforcer, 16 montures ; toutes les caractéristiques originales conservées dans cinq blocs JSON. |
+| [Prompt Codex](mobilite/PROMPT_CODEX.md) | Futur raccord à l'architecture réelle ; trois boucles pilotes avant généralisation ; aucune implémentation déclarée par la spécification. |
+| [Production visuelle et sonore](mobilite/PRODUCTION_VISUELLE.md) | Briefs individuels, socles d'animations, vues séparées, cavalier entier, VFX/SFX et validation humaine. |
+| [Vérification](mobilite/VERIFICATION.md) · [manifeste](mobilite/MANIFEST.json) | Conservation des données source, empreintes, contrôles documentaires et limites explicites. |
+
+La mobilité complète les annexes précédentes sans les remplacer. Les rites du trio
+et du solitaire ne sont pas contournables ; aucun véhicule ne donne un rang. Les
+animaux respectent ALL-01 à ALL-10 : pas d'habitat ni de présence à bord avant
+acquisition/recrutement, affectation et compatibilité réelle. Bastion, Tranchevent,
+Nacre et les autres individus ne sont pas dupliqués par les définitions de montures.
+Le catalogue de production ne dévoile pas les inconnus dans le codex joueur.
+
+Réutiliser le hangar et la table holo du Clan Ship, le quartier des Forges et le
+spatioport existants. Aucun nouveau monde, second registre de trophées ou transfert
+Warp n'est accordé automatiquement. Les références Kenner/Badlands sont distinguées
+des extrapolations et créations originales ; la fidélité 1:1 reste à valider sur
+références primaires. Les 50 fiches ne signifient pas 50 engins jouables.
+
+Les exports bible détaillée, JSON complet, 50 prompts et CSV sont reproductibles
+sans dépendance réseau avec l'outil documentaire :
+
+```sh
+python3 docs/campagne/mobilite/export_catalogue.py --out /tmp/yautja-mobilite
+```
+
 ## Statut de production
 
 Les éléments marqués « proposé » sont des propositions de conception à valider.
@@ -85,7 +115,7 @@ comportements, modules et assets nouveaux restent à produire ou à intégrer se
 leur état propre. Les références de lore du catalogue nécessitent leur dossier
 d'œuvre/continuité avant production des héros Héritage.
 
-Aucun code, asset binaire ou fichier de sauvegarde n'est modifié par ces ajouts documentaires.
+Aucun code de jeu, asset binaire ou fichier de sauvegarde n'est modifié par ces ajouts documentaires.
 Aucun build, parcours en jeu, test comportemental ou validation artistique n'est
 revendiqué par leur seule présence dans cette PR. Le contrôle des archives Warp
 est une vérification de fichiers sources, distincte d'une QA du jeu.
