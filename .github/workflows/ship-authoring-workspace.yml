@@ -55,7 +55,7 @@ jobs:
             /public/game/ships/v13/classic-predator-spaceship-top.webp
             /production/ship-interior-25d-20261105/
             /production/clan-ship-20261104/
-            /production/clan-ship-incidents-20261105/
+            /production/clan-ship-20261105-incidents/
       - name: Materialize the exact native rig and Clan Ship service fixtures
         run: |
           node --input-type=module <<'NODE'
@@ -74,43 +74,83 @@ jobs:
           });
           assert.deepEqual(paths.filter(file => !existsSync(file)), []);
           NODE
-      - name: Archive tracked authoring files and credential-free Git metadata
+      - name: Archive tracked authoring files without Git object history
         run: |
           mkdir -p outputs/ship-authoring-workspace
           python3 - <<'PY'
           from pathlib import Path
-          import hashlib, io, json, os, subprocess, tarfile
+          import hashlib, json, subprocess, tarfile
           root = Path.cwd()
           target = root / 'outputs/ship-authoring-workspace'
           tracked = subprocess.check_output(['git', 'ls-files', '-z']).decode().split('\0')
           selected = [p for p in tracked if p and (root/p).is_file() and Path(p).name not in ('.env', '.env.local', '.env.production', '.env.development', '.npmrc')]
           assert all((root/p).resolve().is_relative_to(root) for p in selected), 'Tracked source symlink escapes the repository'
-          metadata = ['.git/HEAD', '.git/index', '.git/packed-refs', '.git/shallow', '.git/refs', '.git/objects', '.git/info/sparse-checkout']
+          index = {}
+          for entry in subprocess.check_output(['git','ls-files','--stage','-z']).decode().split('\0'):
+              if entry:
+                  info, path = entry.split('\t',1)
+                  mode, blob, stage = info.split()
+                  assert stage == '0'
+                  index[path] = {'mode':mode, 'gitBlobSha':blob}
           manifest = {'sourceCommit': subprocess.check_output(['git','rev-parse','HEAD']).decode().strip(),
+            'sourceTree': subprocess.check_output(['git','rev-parse','HEAD^{tree}']).decode().strip(),
             'trackedMaterializedFiles': len(selected), 'excludedUnmaterializedFiles': sum(bool(p) for p in tracked)-len(selected),
             'repository': 'darknigthmare/yautja-la-longue-chasse',
             'credentialsIncluded': False,
-            'entries': [{'path':p,'bytes':(root/p).stat().st_size,'sha256':hashlib.sha256((root/p).read_bytes()).hexdigest()} for p in selected]}
-          config = b'[core]\nrepositoryformatversion = 1\nbare = false\nfilemode = true\nsparseCheckout = true\nsparseCheckoutCone = false\n[extensions]\npartialClone = origin\n[remote "origin"]\nurl = https://github.com/darknigthmare/yautja-la-longue-chasse.git\nfetch = +refs/heads/*:refs/remotes/origin/*\npromisor = true\npartialclonefilter = blob:none\n'
+            'entries': [{'path':p,'bytes':(root/p).stat().st_size,'sha256':hashlib.sha256((root/p).read_bytes()).hexdigest(), **index[p]} for p in selected]}
           archive = target/'ship-authoring-source.tar.gz'
           with tarfile.open(archive,'w:gz',compresslevel=3) as out:
               for p in selected: out.add(root/p,arcname='repo/'+p,recursive=False)
-              for p in metadata:
-                  if (root/p).exists(): out.add(root/p,arcname='repo/'+p,recursive=True)
-              info=tarfile.TarInfo('repo/.git/config');info.size=len(config);info.mode=0o600
-              out.addfile(info,io.BytesIO(config))
+          manifest['materializedBytes']=sum(entry['bytes'] for entry in manifest['entries'])
+          manifest['gitHistoryIncluded']=False
           manifest['archiveBytes']=archive.stat().st_size
           manifest['archiveSha256']=hashlib.sha256(archive.read_bytes()).hexdigest()
+          manifest['archiveParts'] = []
+          with archive.open('rb') as src:
+              i = 0
+              while chunk := src.read(400*1024*1024):
+                  part = target / (archive.name + '.part' + str(i).zfill(2))
+                  part.write_bytes(chunk)
+                  manifest['archiveParts'].append({'name':part.name,'bytes':len(chunk),'sha256':hashlib.sha256(chunk).hexdigest()})
+                  i += 1
+          assert i <= 4, 'Increase explicit artifact parts before exporting larger source worktrees'
           (target/'source-manifest.json').write_text(json.dumps(manifest,indent=2)+'\n')
           print(json.dumps({k:v for k,v in manifest.items() if k!='entries'}))
           PY
-      - name: Preserve the authoring source snapshot
+      - name: Preserve authoring source part 00
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         with:
-          name: ship-authoring-source-${{ github.sha }}
+          name: ship-authoring-source-part00-${{ github.sha }}
           path: |
-            outputs/ship-authoring-workspace/ship-authoring-source.tar.gz
+            outputs/ship-authoring-workspace/ship-authoring-source.tar.gz.part00
             outputs/ship-authoring-workspace/source-manifest.json
+          compression-level: 0
+          retention-days: 3
+      - name: Preserve authoring source part 01
+        if: ${{ hashFiles('outputs/ship-authoring-workspace/ship-authoring-source.tar.gz.part01') != '' }}
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: ship-authoring-source-part01-${{ github.sha }}
+          path: |
+            outputs/ship-authoring-workspace/ship-authoring-source.tar.gz.part01
+          compression-level: 0
+          retention-days: 3
+      - name: Preserve authoring source part 02
+        if: ${{ hashFiles('outputs/ship-authoring-workspace/ship-authoring-source.tar.gz.part02') != '' }}
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: ship-authoring-source-part02-${{ github.sha }}
+          path: |
+            outputs/ship-authoring-workspace/ship-authoring-source.tar.gz.part02
+          compression-level: 0
+          retention-days: 3
+      - name: Preserve authoring source part 03
+        if: ${{ hashFiles('outputs/ship-authoring-workspace/ship-authoring-source.tar.gz.part03') != '' }}
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: ship-authoring-source-part03-${{ github.sha }}
+          path: |
+            outputs/ship-authoring-workspace/ship-authoring-source.tar.gz.part03
           compression-level: 0
           retention-days: 3
       - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
