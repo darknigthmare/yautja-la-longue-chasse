@@ -60,6 +60,7 @@ import { campaignWelcomeV69 } from "./systems/campaignWelcomeV69";
 import { useHomeworldReducedMotionV77 } from "./useHomeworldReducedMotionV77";
 import { campaignWorldResumeV70 } from "./systems/campaignWorldResumeV70";
 import { actClanShipDocking, normalizeClanShipDocking, type ClanShipDockingAction } from "./systems/clanShipDocking";
+import { actClanShipOperations, bindClanShipMission, clanShipContract, createClanShipOperations, inspectClanShipOperations, releaseClanShipMissionBinding, settleClanShipMission, type ClanShipOperationsAction } from "./systems/clanShipOperations";
 import type { ClanShipService } from "./ClanShipHub";
 import { createWolfCastleVisit, inspectWolfCastleVisit, actWolfCastle, applyWolfCastleCheckpoint, type WolfCastleAction, type WolfCastleCheckpoint } from "./systems/wolfCastle";
 import { createPlanetArrival, inspectPlanetArrival, completePlanetArrivalHandoff, type PlanetArrivalState } from "./systems/planetArrival";
@@ -262,6 +263,7 @@ import type {
   LaserColorId,
   Loadout,
   MissionDefinition,
+  MissionId,
   MissionResult,
   SaveGame,
   WeaponId,
@@ -1151,6 +1153,8 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
     screen === "training" || screen === "justice";
   const deckVisible = !newGamePhase && (screen === "deck" || (shipStationOpen && hubLocation === "deck"));
   const clanShipState = normalizeClanShipDocking(save.clanShipDocking, save.createdAt, selectedShipId);
+  const clanShipActiveContract = save.clanShipOperations?.activeContract
+    ? clanShipContract(save.clanShipOperations.activeContract.contractId) : null;
   const clanShipVisible = screen === "clan-ship" || (shipStationOpen && hubLocation === "clan-ship");
   // Keep the physical room and avatar alive while consulting any of its services,
   // including the council (which has its own full-screen panel).
@@ -2127,7 +2131,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
 
   // City choices are acknowledged only after durable storage confirms the write.
   // A failed write must not announce a completed investigation or apply a reward.
-  const persistSocialProgress = useCallback((update: Partial<Pick<SaveGame, "inventory" | "profile" | "homeworld" | "justice" | "gameReserveV66" | "homeworldPassageV67" | "homeworldRegionV68" | "shipPreparationV88" | "shipAcquisitionV89" | "gauntletV134" | "clanShipDocking" | "wolfCastle" | "planetArrival" | "planetArrivalRun">>): boolean => {
+  const persistSocialProgress = useCallback((update: Partial<Pick<SaveGame, "inventory" | "profile" | "homeworld" | "justice" | "gameReserveV66" | "homeworldPassageV67" | "homeworldRegionV68" | "shipPreparationV88" | "shipAcquisitionV89" | "gauntletV134" | "clanShipDocking" | "clanShipOperations" | "wolfCastle" | "planetArrival" | "planetArrivalRun">>): boolean => {
     if (!sessionAliveRef.current) return false;
     const current = saveRef.current;
     if (pendingTrophyCommitRef.current) {
@@ -2137,7 +2141,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
       setToast("Termine la sauvegarde du résultat de chasse avant de poursuivre le dossier.");
       return false;
     }
-    const updateSerialized = JSON.stringify({ inventory: update.inventory, profile: update.profile, homeworld: update.homeworld, justice: update.justice, gameReserveV66: update.gameReserveV66, homeworldPassageV67: update.homeworldPassageV67, homeworldRegionV68: update.homeworldRegionV68, shipPreparationV88: update.shipPreparationV88, shipAcquisitionV89: update.shipAcquisitionV89, gauntletV134: update.gauntletV134, clanShipDocking: update.clanShipDocking, wolfCastle: update.wolfCastle, planetArrival: update.planetArrival, planetArrivalRun: update.planetArrivalRun });
+    const updateSerialized = JSON.stringify({ inventory: update.inventory, profile: update.profile, homeworld: update.homeworld, justice: update.justice, gameReserveV66: update.gameReserveV66, homeworldPassageV67: update.homeworldPassageV67, homeworldRegionV68: update.homeworldRegionV68, shipPreparationV88: update.shipPreparationV88, shipAcquisitionV89: update.shipAcquisitionV89, gauntletV134: update.gauntletV134, clanShipDocking: update.clanShipDocking, clanShipOperations: update.clanShipOperations, wolfCastle: update.wolfCastle, planetArrival: update.planetArrival, planetArrivalRun: update.planetArrivalRun });
     const pending = pendingSocialWriteRef.current;
     if (pending) {
       const recovered = reconcileSaveWrite(pending.attempt, current.createdAt);
@@ -2428,6 +2432,34 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
     return true;
   }, [archiveRecoveryIssue, archiveTransferBusy, campaignSaveBusy, entry.ownerCreatedAt, gameFocusedV89, persistSocialProgress, resumableHunt, screen, settingsOpen]);
 
+  const commitClanShipOperations = useCallback((action: ClanShipOperationsAction): boolean => {
+    const current = saveRef.current;
+    if (!sessionAliveRef.current || current.createdAt !== entry.ownerCreatedAt || screen !== "clan-ship" ||
+        current.clanShipDocking?.status !== "aboard" || !gameFocusedV89 || settingsOpen ||
+        archiveTransferBusy || archiveRecoveryIssue || campaignSaveBusy || resumableHunt) return false;
+    const inspection = inspectClanShipOperations(current.clanShipOperations, current.createdAt);
+    if (inspection.status === "invalid-save" || inspection.status === "future-version") return false;
+    const state = inspection.state ?? createClanShipOperations(current.createdAt);
+    const result = actClanShipOperations(state, action, {
+      ownerCreatedAt: current.createdAt, docking: current.clanShipDocking, campaign: current,
+    });
+    if (!result.accepted) { setToast(result.message); return false; }
+    const reward = result.clanMarksReward;
+    if (!Number.isSafeInteger(reward) || reward < 0 || (reward > 0 && (!result.changed ||
+        !Number.isSafeInteger(current.profile.clanMarks) || current.profile.clanMarks < 0 ||
+        current.profile.clanMarks > Number.MAX_SAFE_INTEGER - reward))) {
+      setToast("Le solde ne permet pas d’enregistrer cette récompense. Le dossier reste disponible."); return false;
+    }
+    if (result.changed && !persistSocialProgress({ clanShipOperations: result.state,
+      ...(reward > 0 ? { profile: { ...current.profile, clanMarks: current.profile.clanMarks + reward } } : {}),
+    })) {
+      setToast("L’opération attend la confirmation de sauvegarde. Aucune progression supplémentaire n’a été accordée.");
+      return false;
+    }
+    setToast(result.message);
+    return true;
+  }, [archiveRecoveryIssue, archiveTransferBusy, campaignSaveBusy, entry.ownerCreatedAt, gameFocusedV89, persistSocialProgress, resumableHunt, screen, settingsOpen]);
+
   const openHomeworldExpedition = useCallback((regionId: "ash-marches" | "glass-desert" = "ash-marches") => {
     const current = saveRef.current;
     if (!sessionAliveRef.current || current.createdAt !== entry.ownerCreatedAt) return;
@@ -2695,14 +2727,18 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
   // Retire it before deleting a snapshot, otherwise a reload could interpret
   // a dead/rejected hunt as the crash window immediately after arrival.
   const retireArrivalRecovery = useCallback((expected: Pick<ActiveHuntSession,
-    'ownerSaveCreatedAt' | 'missionId' | 'encounterRun' | 'runId' | 'sequence'> | null = activeHuntSessionRef.current): boolean => {
+    'ownerSaveCreatedAt' | 'missionId' | 'encounterRun' | 'runId' | 'sequence'> | null = activeHuntSessionRef.current,
+    releaseContract = false): boolean => {
     if (!sessionAliveRef.current) return false;
     const current = saveRef.current;
-    if (!current.planetArrival && !current.planetArrivalRun) return true;
+    const hasArrival = !!(current.planetArrival || current.planetArrivalRun);
+    const operations = current.clanShipOperations;
+    const needsRelease = releaseContract && !!operations?.activeContract && operations.activeContract.missionEncounterRun !== null;
+    if (!hasArrival && !needsRelease) return true;
     const arrival = current.planetArrival;
-    if (!expected || !arrival || arrival.status !== 'complete' ||
-        current.createdAt !== expected.ownerSaveCreatedAt || arrival.ownerCreatedAt !== current.createdAt ||
-        arrival.missionId !== expected.missionId || arrival.encounterRun !== expected.encounterRun) {
+    if (!expected || current.createdAt !== expected.ownerSaveCreatedAt ||
+        (hasArrival && (!arrival || arrival.status !== 'complete' || arrival.ownerCreatedAt !== current.createdAt ||
+        arrival.missionId !== expected.missionId || arrival.encounterRun !== expected.encounterRun))) {
       setSaveFailure('save-conflict'); return false;
     }
     const latest = reconcileHuntWrite();
@@ -2713,7 +2749,14 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
         : latest.failure === 'read-failed' ? 'read-failed' : 'save-conflict');
       return false;
     }
-    return persistSocialProgress({ planetArrival: null, planetArrivalRun: null });
+    const released = needsRelease && operations ? releaseClanShipMissionBinding(operations, {
+      ownerCreatedAt: current.createdAt, missionId: expected.missionId as MissionId,
+      encounterRun: expected.encounterRun, expectedRevision: operations.revision,
+    }) : null;
+    if (released && !released.accepted) { setSaveFailure('save-conflict'); setToast(released.message); return false; }
+    return persistSocialProgress({ planetArrival: null, planetArrivalRun: null,
+      ...(released?.changed ? { clanShipOperations: released.state } : {}),
+    });
   }, [persistSocialProgress, reconcileHuntWrite]);
 
   const invalidateActiveHuntPersistence = useCallback(() => {
@@ -2730,7 +2773,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
   }, [reconcileHuntWrite, retireArrivalRecovery]);
 
   const rejectActiveHuntResume = useCallback(() => {
-    if (!retireArrivalRecovery() || !clearHuntSession()) {
+    if (!retireArrivalRecovery(activeHuntSessionRef.current, true) || !clearHuntSession()) {
       setToast('La reprise ne peut pas encore être écartée durablement. Les archives sont conservées.'); return;
     }
     setSelectedMission(null);
@@ -2883,7 +2926,15 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
     } catch { setToast('Cette mission ne possède pas encore de destination d’arrivée valide.'); return; }
     const run: PlanetArrivalRun = { version: 1, ownerCreatedAt: runtimeSave.createdAt, runId, startedAt: now,
       difficultyId: runtimeSave.settings.difficultyId, configuration: huntConfiguration(runtimeSave, hunterGauntlet.equippedId) };
-    if (!persistSocialProgress({ planetArrival: arrival, planetArrivalRun: run })) {
+    const operations = runtimeSave.clanShipOperations;
+    const acceptedContract = operations?.activeContract ? clanShipContract(operations.activeContract.contractId) : null;
+    const binding = operations && acceptedContract?.kind === 'field' && acceptedContract.missionId === selectedMission.id
+      ? bindClanShipMission(operations, { ownerCreatedAt: runtimeSave.createdAt, missionId: selectedMission.id,
+        encounterRun: runtimeSave.missionProgress[selectedMission.id].attempts, expectedRevision: operations.revision }) : null;
+    if (binding && !binding.accepted) { setToast(binding.message); return; }
+    if (!persistSocialProgress({ planetArrival: arrival, planetArrivalRun: run,
+      ...(binding?.changed ? { clanShipOperations: binding.state } : {}),
+    })) {
       setToast('Le départ n’a pas été confirmé dans la campagne. Réessaie depuis le briefing.'); return;
     }
     arrivalStartupRef.current = true;
@@ -2932,7 +2983,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
       ? normalizeHuntConfiguration(save, resumableHunt)
       : null;
     if (!mission || !compatibility.compatible || !runtimeSave) {
-      if (!retireArrivalRecovery(resumableHunt)) {
+      if (!retireArrivalRecovery(resumableHunt, true)) {
         setToast('Cette reprise est incompatible mais sa clôture n’a pas pu être confirmée. Les archives restent conservées.'); return;
       }
       clearHuntSession();
@@ -3126,10 +3177,29 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
       if(!delivery.ok) {
         setPendingHuntResult({result,returnToDeck});setToast(delivery.reason);return;
       }
+      const current = saveRef.current;
+      let next = { ...applyMissionResult(current, result), planetArrival: null, planetArrivalRun: null };
+      const session = activeHuntSessionRef.current;
+      if (current.clanShipOperations && session) {
+        const settlement = settleClanShipMission(current.clanShipOperations, current, next, result, session);
+        const reward = settlement.clanMarksReward;
+        if (!settlement.accepted) {
+          setPendingHuntResult({ result, returnToDeck });
+          setToast(settlement.message); return;
+        }
+        if (!Number.isSafeInteger(reward) || reward < 0 || (reward > 0 && (!settlement.changed ||
+            !Number.isSafeInteger(next.profile.clanMarks) || next.profile.clanMarks < 0 ||
+            next.profile.clanMarks > Number.MAX_SAFE_INTEGER - reward))) {
+          setPendingHuntResult({ result, returnToDeck });
+          setToast('Le résultat reste en attente : le solde ne permet pas de confirmer la récompense du clan.'); return;
+        }
+        if (settlement.changed) {
+          next = { ...next, clanShipOperations: settlement.state,
+            ...(reward > 0 ? { profile: { ...next.profile, clanMarks: next.profile.clanMarks + reward } } : {}) };
+        }
+      }
       setPendingHuntResult(null);
       missionSettlementRef.current = true;
-      const current = saveRef.current;
-      const next = { ...applyMissionResult(current, result), planetArrival: null, planetArrivalRun: null };
       const written = writeSaveWithStatus(next);
       saveRef.current = written.save;
       setSave(written.save);
@@ -4215,6 +4285,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
                 selectedShipId={selectedShipId}
                 suspended={screen !== "clan-ship" || settingsOpen || trophyWorkshop !== null || archiveTransferBusy || !!archiveRecoveryIssue || campaignSaveBusy || !gameFocusedV89}
                 onAction={commitClanShipAction}
+                onOperations={commitClanShipOperations}
                 onService={openClanShipService}
                 onExit={() => go("deck")}
                 onOpenSettings={() => setSettingsOpen(true)}
@@ -4240,6 +4311,16 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
                   disabled={campaignSaveBusy || archiveTransferBusy || !!archiveRecoveryIssue || !!resumableHunt}>
                   {save.clanShipDocking?.status === "docked" ? "Clan Ship AVP · amarrage en cours" : "Clan Ship AVP · vaisseau-mère"}
                 </button>
+                {clanShipActiveContract?.kind === 'field' && <button type="button" className="ghost-button"
+                  data-clan-contract-briefing
+                  disabled={campaignSaveBusy || archiveTransferBusy || !!archiveRecoveryIssue || !!resumableHunt ||
+                    !!(save.clanShipDocking && save.clanShipDocking.status !== 'free-flight')}
+                  onClick={() => {
+                    const mission = MISSIONS.find(candidate => candidate.id === clanShipActiveContract.missionId);
+                    if (mission) chooseMission(mission);
+                  }}>
+                  Contrat du clan · {clanShipActiveContract.name}
+                </button>}
                 <button type="button" className="ghost-button" onClick={openWolfCastle} data-open-wolf-castle data-wolf-castle-entry
                   disabled={campaignSaveBusy || archiveTransferBusy || !!archiveRecoveryIssue || !!resumableHunt ||
                     !!save.planetArrival || !!(save.clanShipDocking && save.clanShipDocking.status !== 'free-flight')}>
@@ -5758,6 +5839,11 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
               </details>
             )}
             <div className="debrief-actions">
+              {save.clanShipOperations?.mandateAccepted && <button type="button" className="ghost-button"
+                data-clan-contract-return onClick={openClanShip}
+                disabled={campaignSaveBusy || archiveTransferBusy || !!archiveRecoveryIssue || !!resumableHunt}>
+                Présenter le rapport au Clan Ship
+              </button>}
               <button
                 type="button"
                 className="alien-button"

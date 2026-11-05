@@ -103,6 +103,22 @@ try {
   }));
   const waitStopped = () => page.waitForFunction(() => document.querySelector('[data-clan-interior]')?.getAttribute('data-interior-moving') === 'false', null, { timeout: 45000 });
   const frames = () => page.evaluate(() => new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve))));
+  const holdKeyUntilMovement = async (key, axis, direction, start, minimum) => {
+    await page.keyboard.down(key);
+    try {
+      // CI frame delivery varies. Keep the real key held until the rendered
+      // hunter crosses the same distance required by the assertion below.
+      await page.waitForFunction(({ axis, direction, start, minimum }) => {
+        const scene = document.querySelector('[data-clan-interior]');
+        if (!scene) return false;
+        const position = Number(scene.getAttribute(`data-interior-actor-${axis}`));
+        return direction * (position - start) > minimum;
+      }, { axis, direction, start, minimum }, { timeout: 5000 });
+    } finally {
+      await page.keyboard.up(key);
+    }
+    await waitStopped(); await frames();
+  };
   const samePosition = (actual, expected, message) => {
     assert.equal(actual.room, expected.room, message);
     assert.ok(Math.hypot(actual.x - expected.x, actual.y - expected.y) < 0.1, `${message}: ${JSON.stringify({ expected, actual })}`);
@@ -245,13 +261,13 @@ try {
     const clamped = await actor();
     assert.ok(clamped.x >= 82 - 0.02 && clamped.x <= wall.x + 0.02 && wall.x - clamped.x < 9.1, 'Continuous input must stop within one controller substep of the hull wall');
     assert.equal((await stored()).clanShipDocking.roomId, 'hangar', 'Being near a door must not silently cross it');
-    await page.keyboard.down('d'); await page.waitForTimeout(250); await page.keyboard.up('d');
+    await holdKeyUntilMovement('d', 'x', 1, wall.x, 30);
     const right = await actor();
     assert.ok(right.x > wall.x + 30, 'D moves right');
-    await page.keyboard.down('q'); await page.waitForTimeout(150); await page.keyboard.up('q');
+    await holdKeyUntilMovement('q', 'x', -1, right.x, 15);
     assert.ok((await actor()).x < right.x - 15, 'AZERTY Q moves left');
     const beforeUp = await actor();
-    await page.keyboard.down('z'); await page.waitForTimeout(150); await page.keyboard.up('z');
+    await holdKeyUntilMovement('z', 'y', -1, beforeUp.y, 15);
     assert.ok((await actor()).y < beforeUp.y - 15, 'AZERTY Z moves up the walkable floor');
     await page.keyboard.down('s'); await page.waitForTimeout(150); await page.keyboard.up('s');
   });
@@ -348,16 +364,16 @@ try {
     report.walking.transitions.push({ purpose: 'soins-to-conseil', rooms, samples: samples.length });
   });
   await check('The rendered hunter stops at a real fixture and pointer navigation goes around it', async () => {
-    await point(560, 560);
+    await point(450, 560);
     await page.keyboard.down('ArrowRight'); await page.waitForTimeout(300); await page.keyboard.up('ArrowRight');
     await waitStopped();
     const againstTable = await actor();
-    assert.ok(againstTable.x >= 560 && againstTable.x < 572, 'The council table footprint must stop direct input');
+    assert.ok(againstTable.x >= 450 && againstTable.x < 462, 'The massive council table footprint must stop direct input');
     await point(620, 540, false, false);
     await page.waitForTimeout(200);
     samePosition(await actor(), againstTable, 'An occupied destination must be refused instead of moving or snapping');
-    await point(910, 560);
-    assert.ok((await actor()).x > 900, 'The pointer route must reach the far side of the table');
+    await point(1020, 560);
+    assert.ok((await actor()).x > 1000, 'The pointer route must reach the far side of the table');
   });
   await check('The archive service requires walking into reach and a separate interaction', async () => {
     await move('archives');
@@ -387,6 +403,9 @@ try {
       await screenshot(`interior-${room}-desktop.png`);
       await interact();
       if (service === 'clan-war') {
+        await page.locator('[data-clan-operations]').waitFor();
+        await page.locator('[data-clan-operations-tab="post"]').click();
+        await page.locator('[data-clan-general-war]').click();
         await page.locator('[data-clan-war-v85]').waitFor();
         await page.keyboard.press('Escape');
       } else {
@@ -611,6 +630,10 @@ try {
       return {
         visit: JSON.parse(localStorage.getItem(key) || 'null')?.clanShipDocking ?? null,
         scene: scene ? Object.fromEntries(Array.from(scene.attributes).filter(attribute => attribute.name.startsWith('data-')).map(attribute => [attribute.name, attribute.value])) : null,
+        documentFocused: document.hasFocus(),
+        hidden: document.hidden,
+        visibilityState: document.visibilityState,
+        activeElement: document.activeElement?.outerHTML?.slice(0, 1000) ?? null,
         recentWalking: window.__clanShipQaWalk?.slice(-12) ?? [],
       };
     }, SAVE_STORAGE_KEY).catch(() => null);

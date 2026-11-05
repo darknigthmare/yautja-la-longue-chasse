@@ -1,0 +1,172 @@
+{
+  "generatedAt": "2026-11-05T04:43:26.056Z",
+  "asOf": "2026-11-05T12:00:00.000Z",
+  "timezone": "Europe/Paris",
+  "catalogueSourceDigest": "a696209c55003e9b9d8878eb07e7b180f84f5f8b71a8fc02930b48a5b7498aa7",
+  "checkoutCommit": "b2b03caca80cc782ee11aa3472bff058fbb23fe1",
+  "sourceHasUncommittedChanges": true,
+  "worksheets": [
+    "Opérations",
+    "Contrats",
+    "Étapes à bord",
+    "Équipage",
+    "Espace",
+    "Ressources",
+    "Recette",
+    "Lore"
+  ],
+  "features": 63,
+  "observedCode": 48,
+  "futureFeatures": 15,
+  "contracts": 12,
+  "interiorSteps": 16,
+  "crew": 6,
+  "uniquePossibleClanMarks": 485,
+  "sourceResources": 28,
+  "codeResources": 2,
+  "futureResourceRows": 19,
+  "recipeCriteria": 30,
+  "passedRecipeCriteria": 3,
+  "changedInputCheck": "Technical verification leaves art approval pending; qualified only after both inputs, then inputs restored",
+  "formulaErrorScan": [
+    {
+      "kind": "notice",
+      "message": "Cell search matched 0 entries."
+    }
+  ],
+  "workbook": {
+    "filename": "clan-ship-operations-20261105.xlsx",
+    "bytes": 53861,
+    "sha256": "b3cf5c405e63584e327385584a2e37f614e8ba9e1758c6b097b6c9e07ff3f476"
+  },
+  "renders": [
+    {
+      "sheetName": "Opérations",
+      "range": "A1:I15",
+      "filename": "01-operations.png",
+      "sha256": "c1a3aad50fe2e6a7ee8341c1d26560949ee28d86fc23a891ad9832486bc8cf58"
+    },
+    {
+      "sheetName": "Opérations",
+      "range": "A67:L72",
+      "filename": "01b-suites.png",
+      "sha256": "1f5149609d6ae700ee458e387fec55d95060d3d0e80a0653e377b6e06a15e6b3"
+    },
+    {
+      "sheetName": "Contrats",
+      "range": "A1:J14",
+      "filename": "02-contracts.png",
+      "sha256": "84ebb8c68a4a5d597d15f19c7fadac8c9565408a1a7f91c23244a171af3efb92"
+    },
+    {
+      "sheetName": "Contrats",
+      "range": "K9:N16",
+      "filename": "02b-contract-controls.png",
+      "sha256": "8fc938ce03141b965fd993b608f5106df0f88943f8b1cd21d6cab59135ca7ed8"
+    },
+    {
+      "sheetName": "Contrats",
+      "range": "A14:F19",
+      "filename": "02c-contract-names.png",
+      "sha256": "f920bfae7d8318b59e77503914965eab96872fecc3db1e8f736a51dc5e3e2600"
+    },
+    {
+      "sheetName": "Étapes à bord",
+      "range": "A1:I11",
+      "filename": "03-interior-steps.png",
+      "sha256": "50a569f74d2290b974ea2f8b288ea985896ae43c54b14b04b3c7a8438c82ba10"
+    },
+    {
+      "sheetName": "Équipage",
+      "range": "A1:F13",
+      "filename": "04-crew.png",
+      "sha256": "7680a392b75dd2009b6234e404947c8de6448822f929887b60eb70667d581b4a"
+    },
+    {
+      "sheetName": "Équipage",
+      "range": "G7:L13",
+      "filename": "04b-crew-art.png",
+      "sha256": "7d3a9936da25f38bbf20acb47f5f2504d77a770747643d0e366ac685168d4244"
+    },
+    {
+      "sheetName": "Espace",
+      "range": "A1:H10",
+      "filename": "05-space.png",
+      "sha256": "d1b2b5af333d7edf759c83d9235d4a276e3a7a9e7af3ffdbfd607f44acf0771d"
+    },
+    {
+      "sheetName": "Espace",
+      "range": "A13:H24",
+      "filename": "05b-space-orders.png",
+      "sha256": "9191cf88ee2f3f41249c6727d7594a73079e64bbdc7cf27065ae3c9b103c5f0a"
+    },
+    {
+      "sheetName": "Ressources",
+      "range": "A1:H14",
+      "filename": "06-assets.png",
+      "sha256": "57f578afc2bd7603106b2d96e42f284f555e92b8fcef2dec38ce6b697acf6ceb"
+    },
+    {
+      "sheetName": "Ressources",
+      "range": "A52:K58",
+      "filename": "06b-asset-needs.png",
+      "sha256": "078ef37f3b3fd0c1cd8f20bf3320c5ede2b168abe77fd39a20d028c7f0191b9d"
+    },
+    {
+      "sheetName": "Recette",
+      "range": "A1:F15",
+      "filename": "07-recipes.png",
+      "sha256": "8eb981d31f8c9ed3a9075908e32f6d70cd7171624dc5ce48ad54ece7e39ab1ed"
+    },
+    {
+      "sheetName": "Recette",
+      "range": "A30:F34",
+      "filename": "07b-recipe-evidence.png",
+      "sha256": "29c6553740b1fed09e2ef55c8af233eab3a08757cd64c4f0c74f50cbe2608282"
+    },
+    {
+      "sheetName": "Lore",
+      "range": "A1:G12",
+      "filename": "08-lore.png",
+      "sha256": "ab1878547b148ca438af44781947d346a0918630847ff95368dd2d765d3e2adc"
+    },
+    {
+      "sheetName": "Lore",
+      "range": "A22:I28",
+      "filename": "08b-references.png",
+      "sha256": "9a1b06fc2f18800cb5899ff9631e5e545c7828abdf397c01b389d86cec481e6f"
+    }
+  ],
+  "visualReview": {
+    "status": "reviewed",
+    "at": "2026-11-05T04:44:00.174371+00:00",
+    "reviewer": "Assistant — inspection des aperçus rendus",
+    "scope": "Les 15 plages précédemment inspectées ont des empreintes strictement identiques. Nouvelle plage Contrats!A14:F19 inspectée pour le libellé Oseris-IV.",
+    "findings": "Nom corrigé lisible, aucun débordement ; compteurs et autres rendus inchangés.",
+    "limits": "Revue du classeur uniquement ; avis humain 1:1 du jeu et recette navigateur toujours distincts."
+  },
+  "exportPackageVerification": {
+    "crc": "passed",
+    "worksheets": 8,
+    "formulaCount": 84,
+    "errorTypedCells": 0,
+    "correctedNamePresent": true,
+    "oldNameAbsent": true
+  },
+  "authoringScriptsLint": {
+    "command": "node node_modules/eslint/bin/eslint.js production/clan-ship-20261104/build-operations-workbook.mjs production/clan-ship-20261104/export-operations-catalogue.mjs --max-warnings=0",
+    "exitCode": 0,
+    "output": "empty",
+    "sha256": {
+      "build-operations-workbook.mjs": "9f45842d131f4a109df7b55fb26f28b40a41d541d4e4bb57683ea3a6742b6a81",
+      "export-operations-catalogue.mjs": "f34ff554f385b223ebd327a27c50342ab7e2e09036b39761fb5db582bf9365df"
+    }
+  },
+  "previewLocation": "Generated by build-operations-workbook.mjs in its CLAN_OPERATIONS_OUTPUT directory; review records retained here.",
+  "revisionScope": {
+    "change": "field-jungle-survey.name: Les traces d’Oseris-IV",
+    "catalogueSourceDigest": "a696209c55003e9b9d8878eb07e7b180f84f5f8b71a8fc02930b48a5b7498aa7",
+    "historicalTestSourceDigest": "c8a06e7f59bb4c798ca154011b7adc03724fe4e219ac3f8c454c199926bc22af",
+    "note": "Historical local test evidence keeps its original digest; no old log reassigned to changed source bytes. Workbook recalculation and export were rerun for this revision."
+  }
+}

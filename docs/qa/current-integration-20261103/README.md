@@ -392,3 +392,40 @@ les huit cinématiques, la pause, le passage direct et la fin naturelle vers
 la chasse. Ses résultats doivent être lus sur le commit effectivement exécuté ;
 la génération de cet inventaire ne vaut pas validation de ces interactions.
 La PR de livraison conserve les résultats distants et leurs identités de source.
+
+## Opérations du Clan Ship — 5 novembre 2026
+
+Le relevé courant intègre les opérations de campagne, l’équipage et le modèle
+tactique spatial de la version applicative 1.4.0, depuis le `main`
+`9653e2e287e522ebf8867209a594033f8c1fb89b`. Les sept nouvelles sources
+applicatives s’ajoutent aux 2 151 entrées précédentes. Les publications
+historiques ci-dessus restent inchangées.
+
+| Mesure du relevé courant | Valeur |
+| --- | --- |
+| Entrées | 2 158 |
+| Sources applicatives | 1 205 |
+| Octets des entrées | 1 092 273 567 |
+| Octets du document JSON | 401 252 |
+| SHA-256 du document | `b6a6e6f603aa1846da741329a183dbf1cc68eb3feff8f788e87f90471b23e612` |
+
+Les 682 entrées historiques absentes du checkout partiel ont été matérialisées
+depuis leurs objets Git déjà disponibles, après contrôle individuel de taille et
+de SHA-256. Le générateur officiel `--write`, puis sa vérification `--check`,
+ont donc relu les fichiers réels. Aucune substitution différentielle du
+générateur n’est utilisée pour ce relevé.
+
+La suite locale combinée, sur les sources publiées dans `f38446f4c049e2f0eb1878de881793398f3f4bbb`,
+a réussi 296 tests sans échec ni test ignoré. Le seul changement applicatif
+suivant corrige le nom du contrat en « Les traces d’Oseris-IV », conformément à
+`mission.planetName` ; la CI suivante doit qualifier cette nouvelle tête. Le lint
+strict des fichiers touchés et `npm run build:production` ont réussi. Le détail,
+les empreintes des sources et les limites sont conservés dans
+[`local-verification.json`](../../../production/clan-ship-20261104/qa-operations/local-verification.json).
+Ces résultats ne remplacent pas les parcours dans Chromium : la recette
+`qa-clan-ship-operations.mjs` prévoit 27 contrôles distincts, et le workflow
+continue à exercer les 22 contrôles d’amarrage et d’intérieur existants. Les
+preuves finales conservent le commit réellement exécuté et déclarent les
+fixtures initiales, dont les deux résultats de chasse synthétiques du contexte
+d’équipage complet. Aucune approbation artistique humaine n’est déduite de ces
+contrôles.

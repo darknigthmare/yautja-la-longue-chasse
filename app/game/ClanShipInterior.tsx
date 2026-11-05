@@ -3,6 +3,9 @@
 /* eslint-disable @next/next/no-img-element -- independent game bitmaps keep their authored alpha and foot anchors */
 import { memo, useEffect, useLayoutEffect, useRef, useState, type CSSProperties, type PointerEvent } from 'react';
 import HunterRigPreview from './HunterRigPreview';
+import HomeworldNpcSpriteV84 from './HomeworldNpcSpriteV84';
+import { CLAN_SHIP_CREW_ART_ROLES, clanShipCrewArtIdentity } from './clanShipCrew';
+import { CLAN_SHIP_RECRUITS, evaluateClanShipRecruit, type ClanShipNpcId } from './systems/clanShipOperations';
 import { HUNTER_RIG_CANVAS } from './hunterRig';
 import { SHIP_LEVEL_ART } from './shipInteriorKit';
 import { SHIP_LEVEL_ART_V22 } from './shipInteriorV22';
@@ -36,6 +39,7 @@ export interface ClanShipInteriorProps {
   suspended: boolean;
   onRoomChange: (roomId: ClanShipRoomId) => boolean;
   onService: () => void;
+  onOperations?: (npcId?: ClanShipNpcId) => void;
   onReturnToPersonal: () => void;
   targetRoomId?: ClanShipRoomId | null;
   onNavigateTarget?: (roomId: ClanShipRoomId) => void;
@@ -59,12 +63,13 @@ interface Commands {
   point: (point: ClanShipInteriorPoint) => void;
   door: (door: ClanShipInteriorDoor) => void;
   service: () => void;
+  operations: (npcId?: ClanShipNpcId) => void;
   interact: () => void;
   cancel: () => void;
   target: (target: ClanShipRoomId | null) => void;
   touch: (direction: Direction, held: boolean) => void;
 }
-const emptyCommands = (): Commands => ({ point: () => {}, door: () => {}, service: () => {}, interact: () => {}, cancel: () => {}, target: () => {}, touch: () => {} });
+const emptyCommands = (): Commands => ({ point: () => {}, door: () => {}, service: () => {}, operations: () => {}, interact: () => {}, cancel: () => {}, target: () => {}, touch: () => {} });
 const distance = (a: ClanShipInteriorPoint, b: ClanShipInteriorPoint) => Math.hypot(a.x - b.x, a.y - b.y);
 const MOVE_KEYS: Readonly<Record<string, Direction>> = {
   ArrowUp: 'up', KeyW: 'up', KeyZ: 'up', ArrowDown: 'down', KeyS: 'down',
@@ -217,6 +222,18 @@ function InteriorRoom(props: ClanShipInteriorProps & {
       plan(room.servicePoint, { kind: 'service' }, `${room.serviceLabel} · marche jusqu’à l’installation, puis interagis.`);
       worldRef.current?.focus({ preventScroll: true });
     };
+    const operations = (npcId?: ClanShipNpcId) => {
+      if (!active() || !latestRef.current.onOperations) return;
+      if (distance(actor, room.servicePoint) > METRICS.interactionReach) {
+        cancel(false);
+        plan(room.servicePoint, { kind: 'service' }, 'Approche du poste de clan. Confirme ensuite « Dossier du poste ».');
+        worldRef.current?.focus({ preventScroll: true });
+        return;
+      }
+      waypoints = []; goal = null; moving = false; clearHeld();
+      latestRef.current.onTargetReached?.(); publish();
+      latestRef.current.onOperations(npcId);
+    };
     const settings = () => {
       if (!active()) return;
       clearHeld(); moving = false; publish();
@@ -239,7 +256,7 @@ function InteriorRoom(props: ClanShipInteriorProps & {
         plan(door, { kind: 'door', door }, `Passage vers ${ROOMS[door.targetRoomId].label}.`);
         worldRef.current?.focus({ preventScroll: true });
       },
-      service, interact, cancel, target: setTarget,
+      service, operations, interact, cancel, target: setTarget,
       touch: (direction, held) => { if (held && active()) touch.add(direction); else touch.delete(direction); },
     };
 
@@ -255,6 +272,9 @@ function InteriorRoom(props: ClanShipInteriorProps & {
       } else if (event.code === 'Escape') {
         event.preventDefault(); event.stopPropagation();
         if (!event.repeat) settings();
+      } else if (event.code === 'KeyR' && latestRef.current.onOperations) {
+        event.preventDefault(); event.stopPropagation();
+        if (!event.repeat) operations();
       } else if (event.code === 'KeyE' || event.code === 'Enter' || event.code === 'Space') {
         if (element?.closest('button,a[href]') && event.code !== 'KeyE') return;
         event.preventDefault(); event.stopPropagation();
@@ -279,12 +299,13 @@ function InteriorRoom(props: ClanShipInteriorProps & {
         identity: `${pad.index}:${pad.id}`,
         x: pressed(14) || pressed(15) ? Number(pressed(15)) - Number(pressed(14)) : pad.axes[0] ?? 0,
         y: pressed(12) || pressed(13) ? Number(pressed(13)) - Number(pressed(12)) : pad.axes[1] ?? 0,
-        confirm: pressed(0), back: pressed(1), start: pressed(9),
+        confirm: pressed(0), operations: pressed(2), back: pressed(1), start: pressed(9),
       } : null;
       const input = stepClanShipInteriorPad(padState, sample);
       padState = input.state;
       if (input.settings) { settings(); return; }
       if (input.back) { back(); return; }
+      if (input.operations) { operations(); return; }
       if (input.interact) { interact(); return; }
       const held = new Set<Direction>([...touch, ...Array.from(keys, key => MOVE_KEYS[key])]);
       const x = Number(held.has('right')) - Number(held.has('left')) || input.x;
@@ -351,6 +372,8 @@ function InteriorRoom(props: ClanShipInteriorProps & {
   const actorFootY = HUNTER_RIG_CANVAS.groundY / HUNTER_RIG_CANVAS.width * actorWidth;
   const marker = presentation.waypoints.at(-1);
   const interactLabel = nearby?.type === 'door' ? `Entrer : ${ROOMS[nearby.point.targetRoomId].label}` : nearby?.type === 'service' ? room.serviceLabel : 'Approche d’une installation';
+  const crew = save.clanShipOperations ? CLAN_SHIP_RECRUITS.filter(npc => npc.roomId === roomId &&
+    (save.clanShipOperations!.recruitedNpcIds.includes(npc.id) || evaluateClanShipRecruit(save.clanShipOperations!, npc.id).allowed)) : [];
 
   const pointerWalk = (event: PointerEvent<HTMLDivElement>) => {
     if (suspended || event.button !== 0 || (event.target instanceof HTMLElement && event.target.closest('button'))) return;
@@ -401,6 +424,22 @@ function InteriorRoom(props: ClanShipInteriorProps & {
         onPointerDown={startFloorPointer} onPointerUp={finishFloorPointer}
         onPointerCancel={() => { floorTouchRef.current = null; }}>
         <RoomScenery roomId={roomId} personalShipId={selectedShipId} />
+        {crew.map(npc => {
+          const recruited = save.clanShipOperations?.recruitedNpcIds.includes(npc.id) ?? false;
+          // Feet stand on the raised service gallery behind the walkable floor;
+          // the player cannot cross a stationary actor's authored footprint.
+          const x = roomId === 'conseil' ? 1120 : Math.min(1160, room.servicePoint.x + 180);
+          return <div key={npc.id} className={styles.crewActor} data-clan-crew={npc.id}
+            data-clan-crew-recruited={recruited} style={{ left: x, top: 500, zIndex: 500 }}>
+            <span className={styles.crewPlatform} aria-hidden="true" />
+            <HomeworldNpcSpriteV84 npcId={clanShipCrewArtIdentity(npc.id)} role={CLAN_SHIP_CREW_ART_ROLES[npc.id]} height={190} facing={-1} />
+            <button type="button" className={styles.crewLabel} disabled={suspended || !props.onOperations}
+              tabIndex={suspended || !controlInView(x, 200) ? -1 : 0}
+              data-clan-crew-talk={npc.id} onClick={() => commandsRef.current.operations(npc.id)}>
+              <strong>{npc.name}</strong><span>{recruited ? npc.role : 'Entretien disponible'}</span>
+            </button>
+          </div>;
+        })}
         <div className={styles.floorGuide} aria-hidden="true" />
         {room.doors.map(door => {
           const open = distance(actor, door) < 160;
@@ -450,13 +489,17 @@ function InteriorRoom(props: ClanShipInteriorProps & {
           data-interior-interact data-interior-ready={!!nearby}
           onClick={() => commandsRef.current.interact()}><span className={styles.keycap}>E / A</span><span>{interactLabel}</span></button>
         <div className={styles.secondaryControls}>
+          {props.onOperations && <button type="button" disabled={suspended} data-interior-operations
+            data-interior-operations-ready={serviceReady} onClick={() => commandsRef.current.operations()}>
+            {serviceReady ? (roomId === 'conseil' ? 'R / X · Table holo du clan' : 'R / X · Dossier du poste') : 'R / X · Rejoindre le poste de clan'}
+          </button>}
           <button type="button" disabled={suspended || (!presentation.navigating && !targetRoomId)} data-interior-cancel
             onClick={() => commandsRef.current.cancel()}>Arrêter le trajet</button>
           {!serviceReady && <button type="button" disabled={suspended} data-interior-approach-service onClick={() => commandsRef.current.service()}>
             {roomId === 'hangar' ? 'Rejoindre la passerelle' : 'Approcher l’installation'}</button>}
         </div>
       </div>
-      <p className={styles.keyHelp}><span>Sol : cliquer pour marcher</span><span>Flèches / ZQSD / WASD · E : interagir</span><span>Manette : stick, A · B : retour au hangar · Start : réglages</span></p>
+      <p className={styles.keyHelp}><span>Sol : cliquer pour marcher</span><span>Flèches / ZQSD / WASD · E : service · R : dossier du poste</span><span>Manette : stick, A : service · X : dossier · B : hangar · Start : réglages</span></p>
     </div>
     <p className={styles.status} role="status" aria-live="polite">{suspended ? 'Déplacements suspendus pendant la consultation.' : status}</p>
   </section>;
@@ -501,6 +544,14 @@ const Fixture = memo(function Fixture({ fixture }: { fixture: ClanShipInteriorFi
   return <div className={styles.fixture} data-interior-fixture={fixture.id} style={{ left: fixture.x, top: fixture.y, zIndex: Math.round(fixture.y) }}>
     <span className={styles.fixtureShadow} style={{ width: fixture.footprint.width, height: fixture.footprint.height }} />
     <NativeArt asset={CLAN_FIXTURE_ART[fixture.id] ?? FIXTURE_ART[fixture.art]} x={0} y={0} width={fixture.width} height={fixture.height} />
+    {fixture.id === 'council-table' && <svg className={styles.holoProjection} viewBox="0 0 560 280" aria-hidden="true" data-clan-holo-projection>
+      <ellipse cx="280" cy="195" rx="240" ry="62" /><ellipse cx="280" cy="150" rx="195" ry="54" />
+      <path d="M40 195 280 22 520 195M95 150 280 245 475 150M280 22V245M75 195H485" />
+      <circle cx="280" cy="112" r="58" /><ellipse cx="280" cy="112" rx="58" ry="19" />
+      <ellipse cx="280" cy="112" rx="21" ry="58" />
+      <path d="m127 142 24-12-5 20-19-8m275-55 20-9-6 20-14-11M330 198l16-17 5 21-21-4" />
+      <text x="40" y="264">CONSEIL · OPÉRATIONS DU CLAN</text>
+    </svg>}
   </div>;
 });
 

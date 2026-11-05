@@ -18,6 +18,11 @@
 .hub *, .hub *::before, .hub *::after { box-sizing: border-box; }
 :where(.hub) button { font: inherit; cursor: pointer; }
 .hub button:disabled { opacity: .5; cursor: default; }
+.operationObjective { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 14px 18px; margin: 14px 0; border: 1px solid #5f7552; border-radius: 8px; background: linear-gradient(110deg, #263424, #14231d); }
+.operationObjective strong { display: block; font-size: 14px; font-weight: 550; margin-top: 4px; color: #e1edcc; }
+.operationObjective p { font-size: 11px; color: #b7c2aa; margin: 5px 0 0; }
+.operationObjective button { min-height: 44px; padding: 10px 14px; color: #dce8c1; background: #293c26; border: 1px solid #71855b; border-radius: 5px; font-size: 11px; }
+@media (max-width: 600px) { .operationObjective { align-items: stretch; flex-direction: column; } }
 .hub button:focus-visible { outline: 3px solid #a3e5df; outline-offset: 4px; }
 :where(.hub) button { touch-action: manipulation; }
 .header { display: flex; justify-content: space-between; align-items: center; gap: 24px; padding: 26px 4.5%; border-bottom: 1px solid var(--clan-line); }

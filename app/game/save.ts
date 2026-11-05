@@ -34,6 +34,7 @@ import { normalizeGameReserveV66, gameReserveV66Supported } from "./systems/game
 import { normalizeShipPreparationV88 } from "./systems/shipPreparationV88";
 import { normalizeShipAcquisitionV89 } from "./systems/shipAcquisitionV89";
 import { inspectClanShipDocking } from "./systems/clanShipDocking";
+import { evaluateClanShipOperationsCampaign, inspectClanShipOperations } from "./systems/clanShipOperations";
 import { inspectWolfCastleVisit } from "./systems/wolfCastle";
 import { inspectPlanetArrival } from "./systems/planetArrival";
 import { inspectPlanetArrivalRun } from "./systems/planetArrivalRun";
@@ -1240,6 +1241,9 @@ export function normalizeSave(value: unknown): SaveGame {
     ...(source.clanShipDocking === undefined ? {} : {
       clanShipDocking: inspectClanShipDocking(source.clanShipDocking, validIsoDate(source.createdAt, fallback.createdAt)).state,
     }),
+    ...(source.clanShipOperations === undefined ? {} : {
+      clanShipOperations: inspectClanShipOperations(source.clanShipOperations, validIsoDate(source.createdAt, fallback.createdAt)).state,
+    }),
     ...(source.wolfCastle === undefined ? {} : {
       wolfCastle: inspectWolfCastleVisit(source.wolfCastle, validIsoDate(source.createdAt, fallback.createdAt)).state,
     }),
@@ -1497,6 +1501,15 @@ function inspectSavePayload(value: unknown): SaveImportParseResult {
     const docking = inspectClanShipDocking(value.clanShipDocking, typeof value.createdAt === "string" ? value.createdAt : "");
     if (docking.status === "future-version" || docking.status === "invalid-save") {
       return { save: null, failure: docking.status };
+    }
+  }
+  if (value.clanShipOperations !== undefined && value.clanShipOperations !== null) {
+    const operations = inspectClanShipOperations(value.clanShipOperations, typeof value.createdAt === "string" ? value.createdAt : "");
+    if (operations.status === "future-version" || operations.status === "invalid-save") {
+      return { save: null, failure: operations.status };
+    }
+    if (operations.state && !evaluateClanShipOperationsCampaign(operations.state, value).allowed) {
+      return { save: null, failure: "invalid-save" };
     }
   }
   // Preserve incompatible inspection bytes instead of silently clearing a

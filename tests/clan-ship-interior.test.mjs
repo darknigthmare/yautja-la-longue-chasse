@@ -113,8 +113,8 @@ test('route planner refuses occupied and off-deck targets instead of silently sn
 });
 
 test('a route across an actual fixture uses clear corners and is followed without cutting through its footprint', () => {
-  const from = { x: 560, y: 560 };
-  const to = { x: 910, y: 560 };
+  const from = { x: 450, y: 560 };
+  const to = { x: 1020, y: 560 };
   assert(api.isClanShipInteriorWalkable('conseil', from));
   assert(api.isClanShipInteriorWalkable('conseil', to));
   assert.equal(api.isClanShipInteriorSegmentWalkable('conseil', from, to), false);
@@ -140,14 +140,14 @@ test('direct movement cannot leave any of the four floor boundaries, including a
 });
 
 test('manual motion stops at a fixture and can slide along its side without tunnelling', () => {
-  let actor = { x: 550, y: 555, facing: 1 };
+  let actor = { x: 440, y: 555, facing: 1 };
   for (let index = 0; index < 90; index++) {
     const before = actor;
     actor = api.stepClanShipInteriorActor('conseil', actor, { x: 1, y: 0 }, 1 / 60);
     assert(api.isClanShipInteriorWalkable('conseil', actor));
     assert(api.isClanShipInteriorSegmentWalkable('conseil', before, actor));
   }
-  assert(actor.x < 590 - metrics.actorRadius);
+  assert(actor.x < 480 - metrics.actorRadius);
   const stopped = actor;
   for (let index = 0; index < 90; index++) actor = api.stepClanShipInteriorActor('conseil', actor, { x: 1, y: 1 }, 1 / 60);
   assert(actor.x > stopped.x + 100, 'foreground lane permits a genuine detour');
@@ -193,9 +193,10 @@ test('service and door interactions require measured physical proximity; a dista
 
 test('paths and actor stepping do not mutate room definitions, caller positions or previous routes', () => {
   const before = JSON.stringify(rooms);
-  const from = Object.freeze({ x: 560, y: 560 });
-  const to = Object.freeze({ x: 910, y: 560 });
+  const from = Object.freeze({ x: 450, y: 560 });
+  const to = Object.freeze({ x: 1020, y: 560 });
   const route = api.planClanShipInteriorPath('conseil', from, to);
+  assert.ok(route, 'The walkable endpoints route around the expanded clan table');
   const original = structuredClone(route);
   api.stepClanShipInteriorPath('conseil', { ...from, facing: 1 }, route.points, 1 / 60);
   assert.deepEqual(route, original);
