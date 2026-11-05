@@ -218,5 +218,74 @@
     "formulaErrors": 0,
     "previewsInspected": 9,
     "nativeExcelExecuted": false
+  },
+  "latestQualification": {
+    "schemaVersion": 1,
+    "sourceCommit": "5f9dd187a52575719cada89bb184c03bcfe14bc1",
+    "sourceTree": "64a94b64d0775ef80c21950a5285569140dc544c",
+    "run": 42020235758,
+    "job": 127220855535,
+    "attempt": 1,
+    "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/42020235758",
+    "status": "completed",
+    "conclusion": "success",
+    "completedAt": "2026-11-05T11:42:29Z",
+    "checks": {
+      "canonicalRuntimeInventory": "passed",
+      "strictLint": "passed",
+      "productionBuild": "passed",
+      "typeScript": "passed",
+      "unitTests": {
+        "passed": 14,
+        "failed": 0
+      },
+      "browser": {
+        "passed": 17,
+        "failed": 0,
+        "missingAssets": 0,
+        "javaScriptErrors": 0,
+        "consoleErrors": 0
+      }
+    },
+    "canonicalInventory": {
+      "path": "docs/qa/current-integration-20261103/runtime-inputs.json",
+      "entries": 2171,
+      "bytes": 403483,
+      "sha256": "043ea4a9f7c431df625f826b818efdca73d24e79cbc19a35e87e76ff8974e4c9"
+    },
+    "artifact": {
+      "id": 13411571937,
+      "bytes": 28138263,
+      "sha256": "f3bdffd210f60633d69e091f0e2e833605b7ab4707fb1c28648e21464cdd4b96",
+      "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/42020235758/artifacts/13411571937",
+      "metadataAndUploadDigestMatch": true
+    },
+    "visualReview": {
+      "sourceCommit": "86f593bad2c7d00259dc4cf0a7d1ad40eac1d719",
+      "artifactId": 13408631794,
+      "capturesInspected": 14,
+      "archiveDigestVerified": true,
+      "reviewers": "Main assistant and art-review agent",
+      "humanCanonicalApproval": false,
+      "applicationAndImagesUnchangedFromReviewedRevision": true,
+      "newArchiveDownloadedAgain": false
+    },
+    "workbook": {
+      "path": "production/ship-interior-25d-20261105/yautja-interieur-25d-v1.6.0.xlsx",
+      "bytes": 25233,
+      "sha256": "3aeda622cdeb39b24c04f925fb32270acdb9f913750e90e99633aa90caf396b4",
+      "sheets": 4,
+      "formulaErrors": 0
+    },
+    "scope": "The dedicated personal-ship route, its real movement and developer services. General campaign/Clan Ship/arrival qualification is separate.",
+    "laterBaseSynchronization": {
+      "baseCommit": "94b5e0f156c8eff9cbbc03bcf2088d3b96db03ea",
+      "baseTree": "710c3831a1b4981a474ed764678153b1ca1b6332",
+      "scope": "Two general QA scripts and five upstream proof files. The developer recipe preserves the six ship adaptations.",
+      "applicationChanges": false,
+      "assetChanges": false,
+      "dedicatedRecipeChanges": false,
+      "canonicalInventoryChanges": false
+    }
   }
 }

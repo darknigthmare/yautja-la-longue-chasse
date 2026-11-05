@@ -58,7 +58,7 @@ const report = {
   browserMode: headed ? 'headed' : 'headless',
   scope: 'Actual component rendering at native shot boundaries on desktop/mobile; all eight destinations; seven representative orbital hulls; four insertion combinations plus paid optical camouflage, and three grounded hull profiles; natural production /dev arrival and real hunt handoffs. Spatial evidence is distinct from artistic or canonical approval. Ship contact and exit points follow source composition, without a claim about canonical landing gear or release bays.',
   timing: 'Unmodified native requestAnimationFrame. Samples wait for elapsed-time thresholds and retain observed times; no virtual or accelerated clock. Dense egress geometry is measured without PNG encoding; its photographs use independent playbacks from the same native shot boundary. Final trio details allow at most three native playbacks solely when screenshot acquisition crosses completion; every rejected PNG and interval is retained separately.',
-  nativeUrl: nativeUrl.href, checks: [], samples: [], movement: [], captures: [], rejectedCaptures: [], captureAttempts: [],
+  nativeUrl: nativeUrl.href, checks: [], samples: [], movement: [], captures: [], rejectedCaptures: [], captureAttempts: [], contactObservations: [],
   resizes: [], ships: [], insertions: [], native: {}, errors: [], consoleErrors: [], missingAssets: [], requestedAssets: [],
 };
 const requested = new Set(), missing = new Set();
@@ -72,7 +72,8 @@ const fixtureBundle = await build({
       export { defaultSave } from './app/game/save';
       export { DEFAULT_SHIP_ID, isShipId, shipProfileAssetPath } from './app/game/shipCatalogue';
       export { carrierArtForShip } from './app/game/systems/planetArrivalArt';
-      export { ARRIVAL_CONTACT_MS, ARRIVAL_HUNTER_MOVE_END_MS, arrivalFormationSlots,
+      export { ARRIVAL_CONTACT_MS, ARRIVAL_HUNTER_MOVE_END_MS, ARRIVAL_HUNTER_THRESHOLD_LEAVE_MS,
+        ARRIVAL_HUNTER_GROUND_CONTACT_MS, arrivalFormationSlots,
         arrivalShipCloakFrame } from './app/game/systems/planetArrivalPresentation';
       export { arrivalSurfaceShipGeometry } from './app/game/systems/planetArrivalSpatial';
       export { expeditionMemberAppearance, expeditionMemberLoadout } from './app/game/systems/planetInsertion';
@@ -209,8 +210,52 @@ async function check(name, run) {
   }
 }
 
-async function readFrame(target = page) {
-  return target.locator('[data-arrival-run]').evaluate(root => {
+async function readFrame(target = page, contactObservation) {
+  return target.locator('[data-arrival-run]').evaluate(async (root, contactObservation) => {
+    if (contactObservation) {
+      const initialRun = root.getAttribute('data-arrival-run');
+      // Arm at the native shot boundary, before the short contact interval.
+      // Resolve and measure in this browser task; no Node round trip, clock
+      // override, pause, input or DOM change is involved in the observation.
+      await new Promise((resolve, reject) => {
+        const observer = new MutationObserver(inspect);
+        const timer = setTimeout(() => finish(new Error('The native contact interval was not observed within 25 seconds.')), 25_000);
+        function finish(error) {
+          observer.disconnect(); clearTimeout(timer);
+          if (error) reject(error); else resolve();
+        }
+        function inspect() {
+          const roots = document.querySelectorAll('[data-arrival-run]');
+          if (!root.isConnected || roots.length !== 1 || roots[0] !== root ||
+              root.getAttribute('data-arrival-run') !== initialRun) {
+            finish(new Error('The arrival root or run changed before the native contact measurement.')); return;
+          }
+          if (root.getAttribute('data-arrival-status') !== 'playing' ||
+              root.getAttribute('data-arrival-shot') !== contactObservation.shot) {
+            finish(new Error('The native contact measurement left its playing shot.')); return;
+          }
+          const elapsed = Number(root.getAttribute('data-arrival-elapsed'));
+          if (!Number.isFinite(elapsed) || elapsed >= contactObservation.endMs) {
+            finish(new Error('The native contact interval ended before its geometry was observed.')); return;
+          }
+          const members = [...root.querySelectorAll('[data-arrival-hunter]')]
+            .filter(member => member.getAttribute('data-arrival-member') === contactObservation.member);
+          if (members.length !== 1) {
+            finish(new Error('A native contact measurement requires exactly one requested hunter.')); return;
+          }
+          if (elapsed >= contactObservation.atMs &&
+              members[0].getAttribute('data-arrival-hunter-contact') === contactObservation.contact &&
+              Number(getComputedStyle(members[0]).opacity) > .02) finish();
+        }
+        observer.observe(root, { attributes: true, subtree: true,
+          attributeFilter: ['data-arrival-elapsed', 'data-arrival-status', 'data-arrival-shot',
+            'data-arrival-run', 'data-arrival-hunter-contact', 'style'] });
+        inspect();
+      });
+      if (!root.isConnected || root.getAttribute('data-arrival-run') !== initialRun) {
+        throw new Error('The native contact root changed before its geometry snapshot.');
+      }
+    }
     const rect = element => {
       if (!element) return null;
       const r = element.getBoundingClientRect();
@@ -373,7 +418,7 @@ async function readFrame(target = page) {
       viewport: { width: innerWidth, height: innerHeight },
       overflow: { document: document.documentElement.scrollWidth, body: document.body.scrollWidth },
     };
-  });
+  }, contactObservation);
 }
 
 async function decodeSceneImages(target = page) {
@@ -1123,6 +1168,36 @@ try {
           assertSpatial(measured, label);
           report.samples.push({ label, ...measured });
         }
+        // The four overview samples can straddle a companion's 500 ms step
+        // down when a full geometry read is expensive. Fill only an actually
+        // missing airborne observation, once per member, in an independent
+        // native playback. The original overview samples and final coverage
+        // assertions remain unchanged.
+        for (const slot of api.arrivalFormationSlots(variant.plan.team)) {
+          const measuredPrefix = `${viewport.id}-${variant.id}-egress-measured-`;
+          if (report.samples.some(sample => sample.label.startsWith(measuredPrefix) &&
+              sample.members?.some(member => member.id === slot.id && member.opacity > .02 && member.contact === 'airborne'))) continue;
+          await openShot(primaryMission.id, 'egress', false, api.DEFAULT_SHIP_ID, variant.plan);
+          const decodedContactSvg = await decodeSceneImages();
+          const startMs = api.ARRIVAL_HUNTER_THRESHOLD_LEAVE_MS + slot.delayMs;
+          const endMs = api.ARRIVAL_HUNTER_GROUND_CONTACT_MS + slot.delayMs;
+          const requestedContact = { member: slot.id, contact: 'airborne', shot: egress.id,
+            atMs: startMs + (endMs - startMs) / 2, endMs };
+          const label = `${viewport.id}-${variant.id}-egress-contact-${slot.id}-airborne`;
+          const observation = { label, requestedContact, measuredAt: null, accepted: false };
+          report.contactObservations.push(observation);
+          const measured = { ...await readFrame(page, requestedContact), decodedSvg: decodedContactSvg };
+          assert.equal(measured.status, 'playing'); assert.equal(measured.shot, egress.id);
+          assert.equal(measured.method, variant.plan.method); assert.equal(measured.team, variant.plan.team);
+          assert.equal(measured.shipCloak, !!variant.plan.shipCloak);
+          assert.ok(measured.elapsedMs >= requestedContact.atMs && measured.elapsedMs < endMs,
+            'Supplemental geometry must actually belong to the requested native contact interval.');
+          assert.ok(measured.members.some(member => member.id === slot.id && member.opacity > .02 && member.contact === 'airborne'),
+            'The requested visible hunter must actually be airborne in the complete geometry snapshot.');
+          assertSpatial(measured, label);
+          report.samples.push({ label, ...measured, requestedContact });
+          observation.measuredAt = measured.elapsedMs; observation.accepted = true;
+        }
         // Start fresh native egress shots for visual evidence. The dense
         // geometry samples above can consume the brief walking/final windows
         // on CI; their execution must not decide when these PNGs are taken.
@@ -1471,7 +1546,7 @@ try {
   // Duplicate compact, existing evidence after the browser has closed so a
   // remote review can inspect CI output without changing any native capture.
   if (process.env.GITHUB_ACTIONS === 'true') {
-    const review = JSON.stringify(Object.fromEntries(["schema","startedAt","finishedAt","sourceCommit","workingTreeDirty","sourceHashes","browserVersion","browserMode","scope","timing","passed","checks","captures","rejectedCaptures","captureAttempts","resizes","ships","insertions","native","errors","consoleErrors","missingAssets","failure"]
+    const review = JSON.stringify(Object.fromEntries(["schema","startedAt","finishedAt","sourceCommit","workingTreeDirty","sourceHashes","browserVersion","browserMode","scope","timing","passed","checks","captures","rejectedCaptures","captureAttempts","contactObservations","resizes","ships","insertions","native","errors","consoleErrors","missingAssets","failure"]
       .filter(key => report[key] !== undefined).map(key => [key, report[key]])));
     const chunkSize = 12_000, parts = Math.ceil(review.length / chunkSize);
     for (let part = 0; part < parts; part++) console.log('QA_REVIEW_JSON ' + JSON.stringify({

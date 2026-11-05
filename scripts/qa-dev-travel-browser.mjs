@@ -80,7 +80,7 @@ const report = {
 const missing = new Set();
 const requested = new Set();
 const loaded = new Set();
-let browser, page, protectedState, emptyContext, server;
+let browser, page, protectedState, emptyContext, server, diagnosticPage;
 let serverExit = null;
 let currentCheck = 'setup';
 
@@ -271,7 +271,9 @@ async function clanReady(room, target = page) {
   await clan.waitFor();
   const interior = clan.locator(`[data-clan-interior][data-interior-room="${room}"]`);
   await interior.waitFor();
-  const destination = await clan.evaluate(element => element.closest('[data-dev-session]')?.getAttribute('data-dev-session'));
+  // Resolve ownership in the same live locator chain, without a separately
+  // resolved DOM element between matching the region and reading its owner.
+  const destination = await clan.locator('xpath=ancestor::*[@data-dev-session][1]').getAttribute('data-dev-session');
   assert.equal(destination, new URL(target.url()).searchParams.get('lieu'), 'The active Clan Ship must belong to the requested developer destination.');
   await interior.locator('[data-interior-background]').evaluate(image => image.decode());
   const info = await interior.evaluate(element => ({
@@ -962,6 +964,7 @@ try {
     emptyContext = await browser.newContext({ viewport: { width: 1280, height: 900 }, reducedMotion: 'reduce' });
     await observeContext(emptyContext, 'empty-browser');
     const blankPage = await emptyContext.newPage();
+    diagnosticPage = blankPage;
     await blankPage.goto(destinationUrl('clan-hangar'), { waitUntil: 'domcontentloaded', timeout: 120000 });
     await clanReady('hangar', blankPage);
     await blankPage.locator('[data-dev-reset]').click();
@@ -969,7 +972,7 @@ try {
     await blankPage.locator('[data-dev-back]').click();
     await blankPage.locator('[data-dev-catalogue]').waitFor();
     await assertStorageUnchanged(blankPage, { local: {}, session: {} }, 'empty-browser-after-reset-and-return');
-    await emptyContext.close(); emptyContext = null;
+    await emptyContext.close(); emptyContext = null; diagnosticPage = null;
   });
 
   await check('Leaving development returns to the ordinary game menu with no developer navigation entry', async () => {
@@ -993,10 +996,11 @@ try {
   report.passed = false;
   report.failure = error.stack || String(error);
   console.error(error.stack || error);
-  if (page && !page.isClosed()) {
-    try { report.failureState = await pageDiagnostics(); }
+  const diagnosticTarget = diagnosticPage ?? page;
+  if (diagnosticTarget && !diagnosticTarget.isClosed()) {
+    try { report.failureState = { context: diagnosticPage ? 'empty-browser' : 'existing-campaign', ...await pageDiagnostics(diagnosticTarget) }; }
     catch (diagnosticError) { report.failureStateError = String(diagnosticError); }
-    try { await capture('failure'); } catch { /* Preserve the original failure. */ }
+    try { await capture('failure', diagnosticTarget); } catch { /* Preserve the original failure. */ }
   }
   process.exitCode = 1;
 } finally {
