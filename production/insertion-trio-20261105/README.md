@@ -16,12 +16,35 @@ Le briefing comporte un panneau « Choisir l'approche », avec deux choix indép
 | Capsule | Trio | 1 | 10 s | 0,18 |
 | Vaisseau posé | Solo | 3 | 35 s | 0,64 |
 | Vaisseau posé | Trio | 4 | 35 s | 0,72 |
+| Vaisseau posé, approche camouflée | Solo | 1 | 18 s | 0,32 |
+| Vaisseau posé, approche camouflée | Trio | 2 | 18 s | 0,40 |
 
-La suspicion est un état de l'IA, pas une probabilité de détection. Les ennemis habituels restent présents dans les quatre cas. Le nombre supplémentaire est un plafond : un emplacement dangereux, occupé ou trop proche d'un autre patrouilleur est écarté. Les renforts utilisent les espèces du véritable secteur, des identifiants déterministes et des positions éloignées du point de sortie des chasseurs.
+La suspicion est un état de l'IA, pas une probabilité de détection. Les ennemis habituels restent présents dans les six cas. Le nombre supplémentaire est un plafond : un emplacement dangereux, occupé ou trop proche d'un autre patrouilleur est écarté. Les renforts utilisent les espèces du véritable secteur, des identifiants déterministes et des positions éloignées du point de sortie des chasseurs.
 
 Les ennemis alertés connaissent le point d'insertion. Leur recherche initiale vise cette position fixe ; les perceptions effectives prennent ensuite le relais. La position actuelle du joueur n'est pas transmise par une alerte permanente. Quitter le secteur et rompre la ligne de vue ont donc un effet réel.
 
 Le trio est recommandé pour les missions **fungal-hivemind**, **ruins-ancient-guardian** et **volcano-bad-blood**, tout en restant facultatif. Le choix solo reste accessible. Les épreuves solo des parcours narratifs conservent leurs propres contrats.
+
+## Camouflage optique et réserve du vaisseau
+
+À la demande suivante de l'utilisateur, le briefing permet d'activer le **camouflage optique du vaisseau avant la descente**. Le choix est optionnel et ne s'applique qu'à une insertion par vaisseau posé. Il atténue la signature visuelle ; les moteurs restent audibles et les patrouilles peuvent encore rechercher la zone d'arrivée. Le tableau ci-dessus donne les valeurs initiales d'équilibrage.
+
+La campagne ne possédait pas de stock d'énergie de vaisseau exploitable pour cette action. Le nouveau budget est donc une **réserve auxiliaire par coque**, distincte de l'énergie personnelle du chasseur et des exercices historiques de carburant. Les paramètres sont centralisés dans `SHIP_INSERTION_ENERGY` :
+
+| Règle de jeu | Valeur |
+| --- | ---: |
+| Capacité et dotation initiale du nouveau budget | 100 unités |
+| Coût d'un cycle d'approche camouflée | 30 unités |
+| Réserve minimale à conserver | 20 unités |
+| Recharge à 100, payée au briefing | 20 marques du clan |
+
+Deux cycles font passer une coque de 100 à 70 puis à 40. Le troisième est refusé tant qu'une recharge n'est pas confirmée ; une approche sans camouflage reste possible. Sélectionner une autre coque puis revenir ne recharge pas la première. La dotation initiale d'une coque sans registre est une règle de migration du nouveau budget, pas une preuve d'acquisition, une attribution de carburant ou une spécification canonique de son équipement.
+
+Le débit et son reçu sont enregistrés dans **la même écriture de campagne que le départ et son plan figé**. Sélectionner la case ne consomme rien. Un départ refusé ou une écriture non confirmée n'accorde pas d'approche camouflée. Une fois l'approche engagée, passer, mettre en pause, recharger la partie ou reprendre la chasse ne débite pas une seconde fois. La réserve reste consommée après l'interruption de la chasse. La recharge débite ses marques seulement lorsque l'écriture est confirmée ; une demande répétée depuis un ancien solde est refusée.
+
+`shipInsertionEnergy` est lié au propriétaire et conserve les réserves de chaque coque ainsi que les reçus récents de départ. `configuration.insertionEnergyRunId` conserve l'identifiant du départ payé, même si la reprise de chasse renouvelle son identifiant de session. Une arrivée camouflée sans reçu correspondant, un registre étranger ou une version future est refusé à l'import. Les anciennes sauvegardes sans ce champ gardent leur comportement et ne subissent aucun débit automatique.
+
+Le rendu de la coque traduit le camouflage pendant l'approche, puis le coupe progressivement entre 52,3 et 53,3 secondes, avant le contact à 53,960 secondes. Le vaisseau garde ses dimensions, sa trajectoire et ses appuis. Ces réglages, coûts et effets sont des règles originales du projet ; ils n'ajoutent pas de nouveaux malus de bouclier, de propulsion ou de carburant non simulés.
 
 ## Préparation, commandes et retour
 
@@ -69,6 +92,8 @@ Le mode vaisseau dispose de sons de réacteur, d'une réduction de régime penda
 
 Les événements du trio suivent les trois séquences décalées. Pause, rechargement, mouvement réduit, désactivation audio et passage de la séquence gardent les protections contre les sons périmés. Les sons sont des créations synthétiques du projet.
 
+L'approche camouflée ajoute une activation du champ à 100 ms et sa désactivation à 52,3 s, pendant une seconde. Le niveau sonore des moteurs reste identique à celui de l'approche visible. Les événements du champ ne sont pas multipliés par le nombre de chasseurs.
+
 ## Persistance et validation
 
 Le plan est figé dans `planetArrival.insertion` et `planetArrivalRun.configuration.insertion`, avec la coque dans `configuration.insertionShipId`. Le contrôle de transition refuse un changement de plan entre briefing, checkpoint, fin de cinématique et reprise de chasse.
@@ -77,9 +102,11 @@ Les instantanés du runtime conservent les patrouilles déjà créées, l'alerte
 
 Une archive ancienne sans plan reste une arrivée capsule/solo. L'absence de registre ne crée aucun compagnon. Les registres d'un autre propriétaire, versions futures ou données malformées sont refusés avant de remplacer la campagne. Un résultat répété ne soigne ni ne perd une seconde fois le même groupe.
 
-Les suites dédiées sont `planet-insertion.test.mjs`, `hunt-insertion.test.mjs`, les suites spatiales/présentation/audio et les régressions de sauvegarde, d'archives et de voyage développeur. La recette navigateur exerce le vrai panneau de briefing, le passage de la cinématique, les quatre variantes et le raccord à HuntCanvas. Les comptes et les SHA réellement testés sont consignés dans `verification/` après exécution.
+Les suites dédiées sont `planet-insertion.test.mjs`, `ship-insertion-energy.test.mjs`, `hunt-insertion.test.mjs`, les suites spatiales/présentation/audio et les régressions de sauvegarde, d'archives et de voyage développeur. La recette navigateur couvre les quatre variantes initiales et ajoute le vaisseau camouflé en trio, le vrai panneau de briefing et le raccord à HuntCanvas. Les valeurs solo/trio du camouflage sont également exercées dans le moteur. Les comptes et les SHA réellement testés sont consignés dans `verification/` après exécution ; les captures antérieures au camouflage ne valident pas son rendu.
 
-La revue indépendante a reproduit puis fait corriger quatre cas : coup à travers un couvert opaque, transfert d'une attaque annoncée vers le joueur après perte du compagnon visé, immobilisation dans la lave finale et faux embarquement injecté dans un checkpoint. Les 25 tests moteur comprennent ces régressions et les vrais round-trips d'embarquement/départ. Les essais de déplacement utilisent le monde réellement transformé par `applyExplorationWorld`, et pas seulement son blueprint brut.
+La revue indépendante a reproduit puis fait corriger quatre cas : coup à travers un couvert opaque, transfert d'une attaque annoncée vers le joueur après perte du compagnon visé, immobilisation dans la lave finale et faux embarquement injecté dans un checkpoint. Les 27 tests moteur comprennent ces régressions, le camouflage et les vrais round-trips d'embarquement/départ. Les essais de déplacement utilisent le monde réellement transformé par `applyExplorationWorld`, et pas seulement son blueprint brut.
+
+La revue du nouveau budget a également reproduit un conflit de reprise après une écriture de départ incertaine. Le départ réconcilie désormais cette écriture avant de créer une nouvelle base. Les tests utilisent les vrais handlers et writers pour le refus avant écriture et pour une écriture effectuée dont la confirmation manque : la reprise aboutit avec 70 unités et un seul reçu. La recharge vérifie la coque affichée et le solde attendu pour refuser une demande devenue périmée.
 
 L'escorte reste une navigation locale guidée : elle n'atteste pas une recherche autonome de chemin pour toutes les combinaisons d'étages. Un passage impraticable est annoncé et peut nécessiter une autre approche du joueur.
 
@@ -87,10 +114,17 @@ Des harness historiques ont également été remis en cohérence avec les foncti
 
 ### Accès de recette
 
-Dans `/dev`, les huit destinations `arrival-<mission>` restent les parcours historiques. Trois destinations supplémentaires permettent de cibler l'extension :
+Dans `/dev`, les huit destinations `arrival-<mission>` restent les parcours historiques. Quatre destinations supplémentaires permettent de cibler l'extension :
 
 - `arrival-ship-jungle-vey` : vaisseau, solo ;
 - `arrival-triad-jungle-vey` : capsules, trio ;
 - `arrival-ship-triad-jungle-vey` : vaisseau, trio.
+- `arrival-ship-cloaked-triad-jungle-vey` : vaisseau camouflé, trio, avec un vrai reçu d'approche et une réserve de 70 dans la session temporaire.
 
 La fidélité 1:1 à la discussion reste la règle de continuité. La validation technique mesure le rendu, les appuis, les mouvements, les événements et les conséquences jouables ; la comparaison artistique humaine avec chaque référence et l'écoute finale du mix restent des étapes de revue distinctes.
+
+### Validation locale du lot camouflage
+
+Le passage final réussit **397 tests dans 25 fichiers**, sans échec ni test ignoré. Il couvre l'arrivée, les effets sonores, les six plans d'insertion, le vrai moteur de chasse, l'énergie, les sauvegardes et archives, les reprises transactionnelles et les fixtures de voyage. Les contrôles historiques du gantelet et de persistance utilisent les fonctions réellement présentes. Le lint strict des 28 sources modifiées, `npm run typecheck` et `npm run build:production` réussissent.
+
+Les commandes exactes, journaux, empreintes de sources et limites figurent dans [`verification/local-validation.json`](verification/local-validation.json). L'inventaire courant a été régénéré avec le générateur officiel puis vérifié de nouveau après la construction de production ; les preuves historiques restent distinctes. Le nouveau shader et les interactions navigateur doivent encore être qualifiés sur le commit publié. Le reçu [`browser-34f1387`](verification/browser-34f1387/receipt.json) conserve le passage antérieur : 56 contrôles spatiaux réussis sur 57, avec un sélecteur de commandes de triade corrigé dans le présent lot.

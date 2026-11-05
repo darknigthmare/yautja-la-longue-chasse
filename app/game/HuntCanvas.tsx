@@ -1698,7 +1698,9 @@ function applyHuntInsertion(state: GameState, mission: MissionDefinition, diffic
     state.insertion.alertedIds.push(enemy.id);
   }
   state.message = state.insertion.plan.method === 'ship'
-    ? 'Vaisseau repéré. Des patrouilles cherchent le point d’atterrissage.'
+    ? state.insertion.plan.shipCloak
+      ? 'Approche camouflée terminée. Des patrouilles enquêtent sur le bruit des moteurs.'
+      : 'Vaisseau repéré. Des patrouilles cherchent le point d’atterrissage.'
     : 'La triade est au sol. Les chasseurs attendent tes ordres.';
   state.messageTimer = 5;
 }

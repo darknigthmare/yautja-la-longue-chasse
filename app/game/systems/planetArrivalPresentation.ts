@@ -15,6 +15,9 @@ export const ARRIVAL_HUNTER_LEVEL_THRESHOLD_STEP_MS = ARRIVAL_HUNTER_MOVE_START_
 export const ARRIVAL_HUNTER_MOVE_END_MS = PLANET_ARRIVAL_SHOTS[7].startMs + 4_250;
 export const ARRIVAL_TRIAD_SPACING = 160;
 export const ARRIVAL_TRIAD_DELAY_MS = 250;
+export const ARRIVAL_SHIP_CLOAK_ACTIVATION_MS = 100;
+export const ARRIVAL_SHIP_CLOAK_RELEASE_START_MS = 52_300;
+export const ARRIVAL_SHIP_CLOAK_RELEASE_END_MS = 53_300;
 
 export const ARRIVAL_FORMATION_SLOTS = Object.freeze([
   { id: 'player', name: 'Chasseur', index: 0, offsetX: 0, delayMs: 0, color: null },
@@ -37,6 +40,30 @@ const clamp = (n: number, low = 0, high = 1) => Math.max(low, Math.min(high, Num
 const smooth = (n: number) => { const p = clamp(n); return p * p * (3 - 2 * p); };
 const mix = (from: number, to: number, p: number) => from + (to - from) * clamp(p);
 type LightColor = readonly [number, number, number];
+
+/** Optical concealment changes only the surface treatment, never the hull or its sockets.
+ * It is already engaged before the visible approach, then releases before setdown.
+ * Distortion follows the saved clock, so a pause also freezes the optical field. */
+export function arrivalShipCloakFrame(elapsedMs: number,
+  plan?: Pick<PlanetInsertionPlan, 'method' | 'shipCloak'>, reducedMotion = false) {
+  const time = clamp(elapsedMs, 0, 62_000);
+  const requested = plan?.method === 'ship' && plan.shipCloak === true;
+  const strength = requested ? 1 - smooth((time - ARRIVAL_SHIP_CLOAK_RELEASE_START_MS) /
+    (ARRIVAL_SHIP_CLOAK_RELEASE_END_MS - ARRIVAL_SHIP_CLOAK_RELEASE_START_MS)) : 0;
+  const moving = !reducedMotion && strength > 0;
+  return {
+    requested,
+    phase: strength === 0 ? 'off' : time < ARRIVAL_SHIP_CLOAK_RELEASE_START_MS ? 'active' : 'releasing',
+    strength,
+    // A residual hull and a thin source-alpha rim preserve a readable silhouette.
+    hullOpacity: 1 - .76 * strength,
+    refractionOpacity: .86 * strength,
+    rimOpacity: .42 * strength,
+    distortionScale: moving ? strength * (2.8 + .45 * Math.sin(time / 660) + .2 * Math.sin(time / 980)) : 0,
+    noiseOffsetX: moving ? strength * 9 * Math.sin(time / 1_300) : 0,
+    noiseOffsetY: moving ? strength * 6 * Math.sin(time / 1_700) : 0,
+  };
+}
 
 /**
  * The hunter first stands on the raised cabin threshold, then steps down and

@@ -7,6 +7,8 @@ export interface PlanetInsertionPlan {
   version: 1;
   method: 'pod' | 'ship';
   team: 'solo' | 'triad';
+  /** Optional on earlier archives; an optical approach never silences the engines. */
+  shipCloak?: boolean;
 }
 
 export const DEFAULT_PLAN: Readonly<PlanetInsertionPlan> = Object.freeze({ version: 1, method: 'pod', team: 'solo' });
@@ -44,19 +46,26 @@ const exact = (value: Record<string, unknown>, keys: readonly string[]) => Refle
 
 export function normalizePlanetInsertionPlan(value: unknown): PlanetInsertionPlan | null {
   if (value === undefined) return { ...DEFAULT_PLAN };
-  if (!record(value) || !exact(value, ['version', 'method', 'team']) || value.version !== 1 ||
-      (value.method !== 'pod' && value.method !== 'ship') || (value.team !== 'solo' && value.team !== 'triad')) return null;
-  return { version: 1, method: value.method as PlanetInsertionPlan['method'], team: value.team as PlanetInsertionPlan['team'] };
+  if (!record(value) || !(exact(value, ['version', 'method', 'team']) ||
+      exact(value, ['version', 'method', 'team', 'shipCloak'])) || value.version !== 1 ||
+      (value.method !== 'pod' && value.method !== 'ship') || (value.team !== 'solo' && value.team !== 'triad') ||
+      (Object.hasOwn(value, 'shipCloak') && typeof value.shipCloak !== 'boolean') ||
+      (value.shipCloak === true && value.method !== 'ship')) return null;
+  return { version: 1, method: value.method as PlanetInsertionPlan['method'], team: value.team as PlanetInsertionPlan['team'],
+    ...(value.shipCloak === true ? { shipCloak: true } : {}) };
 }
 
 export function samePlanetInsertion(left: unknown, right: unknown): boolean {
   const a = normalizePlanetInsertionPlan(left), b = normalizePlanetInsertionPlan(right);
-  return !!a && !!b && a.method === b.method && a.team === b.team;
+  return !!a && !!b && a.method === b.method && a.team === b.team && !!a.shipCloak === !!b.shipCloak;
 }
 
 /** Balance rules for this game, not claims about the dimensions of film spacecraft. */
 export function planetInsertionPressure(plan: PlanetInsertionPlan) {
   const triad = plan.team === 'triad';
+  if (plan.method === 'ship' && plan.shipCloak) {
+    return { initialSuspicion: triad ? .40 : .32, extraPatrols: triad ? 2 : 1, searchSeconds: 18 };
+  }
   return plan.method === 'ship'
     ? { initialSuspicion: triad ? .72 : .64, extraPatrols: triad ? 4 : 3, searchSeconds: 35 }
     : { initialSuspicion: triad ? .18 : 0, extraPatrols: triad ? 1 : 0, searchSeconds: triad ? 10 : 0 };

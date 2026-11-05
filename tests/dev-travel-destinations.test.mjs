@@ -12,6 +12,7 @@ const api = homeworldQaModelV64(process.cwd(), [
   'homeworldCivicWorldV80.ts', 'homeworldTransitionsV110.ts', 'homeworldCargoArrivalV108.ts',
   'homeworldGeometryRecoveryV112.ts', 'homeworldRegionsV68.ts', 'homeworldLiftStationV83.ts', 'homeworldWorldV77.ts',
   'wolfCastle.ts', 'planetArrival.ts', 'planetArrivalRun.ts', 'huntGauntletIdentityV142.ts',
+  'planetInsertion.ts', 'shipInsertionEnergy.ts',
 ]);
 
 function assertDetached(left, right, path = 'save') {
@@ -227,6 +228,7 @@ test('explicit ship and triad destinations freeze one matching plan through the 
     ['arrival-ship-jungle-vey', { version: 1, method: 'ship', team: 'solo' }],
     ['arrival-triad-jungle-vey', { version: 1, method: 'pod', team: 'triad' }],
     ['arrival-ship-triad-jungle-vey', { version: 1, method: 'ship', team: 'triad' }],
+    ['arrival-ship-cloaked-triad-jungle-vey', { version: 1, method: 'ship', team: 'triad', shipCloak: true }],
   ];
   assert.equal(api.DEV_DESTINATIONS.filter(destination => destination.kind === 'arrival' && destination.insertion).length, variants.length);
   for (const [id, plan] of variants) {
@@ -237,6 +239,12 @@ test('explicit ship and triad destinations freeze one matching plan through the 
     assert.deepEqual(first.state.insertion, plan);
     assert.deepEqual(first.run.configuration.insertion, plan);
     assert.equal(first.run.configuration.insertionShipId, first.state.personalShipId);
+    if (plan.shipCloak) {
+      assert.equal(first.run.configuration.insertionEnergyRunId, first.state.runId);
+      assert.equal(api.shipInsertionCharge(save.shipInsertionEnergy, save.createdAt, api.DEFAULT_SHIP_ID), 70);
+      assert.equal(api.hasShipInsertionDebit(save.shipInsertionEnergy, save.createdAt, first.state.runId, api.DEFAULT_SHIP_ID), true);
+      assert.equal(save.shipInsertionEnergy.departures.length, 1);
+    } else assert.equal(Object.hasOwn(first.run.configuration, 'insertionEnergyRunId'), false);
     assert.notEqual(first.state.insertion, first.run.configuration.insertion);
     assert.notEqual(first.state.insertion, destination.insertion);
     assert.equal(api.inspectPlanetArrivalRun(first.run, first.state).status, 'valid');
@@ -254,6 +262,21 @@ test('explicit ship and triad destinations freeze one matching plan through the 
     assert.deepEqual(api.createDevArrival(destination, save), second);
     assert.equal(JSON.stringify(save), before);
   }
+});
+
+test('the cloaked developer fixture pays the real auxiliary budget once and refuses an unpaid arrival context', () => {
+  const destination = api.resolveDevDestination('arrival-ship-cloaked-triad-jungle-vey');
+  const save = api.createDevSave(destination), initial = JSON.stringify(save.shipInsertionEnergy);
+  const first = api.createDevArrival(destination, save);
+  api.createDevArrival(destination, save);
+  assert.equal(JSON.stringify(save.shipInsertionEnergy), initial);
+  assert.equal(api.expeditionTrioReady(save.expeditionRoster, save.createdAt, api.DEFAULT_SHIP_ID), true);
+  assert.equal(api.parseSaveImport(JSON.stringify(save)).failure, null);
+  assert.throws(() => api.createDevArrival(destination, { ...save, shipInsertionEnergy: null }), /débit d’énergie/);
+  const reset = api.createDevSave(destination);
+  assertDetached(save.shipInsertionEnergy, reset.shipInsertionEnergy);
+  assert.deepEqual(reset.shipInsertionEnergy, save.shipInsertionEnergy);
+  assert.equal(api.createDevArrival(destination, reset).state.runId, first.state.runId);
 });
 
 test('arrival construction resolves canonical IDs and refuses a foreign owner or invalid native context', () => {

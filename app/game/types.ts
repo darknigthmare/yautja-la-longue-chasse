@@ -693,6 +693,7 @@ export interface SaveGame {
   planetArrivalRun?: import("./systems/planetArrivalRun").PlanetArrivalRun | null;
   /** Explicit campaign recruitment and readiness; never the tutorial's Saar/Vek duo. */
   expeditionRoster?: import("./systems/planetInsertion").ExpeditionRoster | null;
+  shipInsertionEnergy?: import("./systems/shipInsertionEnergy").ShipInsertionEnergy | null;
   /** V134: versioned cosmetic gauntlet, research claims and owner binding; older saves may omit. */
   gauntletV134?: import("./systems/gauntletCampaignV134").GauntletCampaignV134 | null;
   version: number;

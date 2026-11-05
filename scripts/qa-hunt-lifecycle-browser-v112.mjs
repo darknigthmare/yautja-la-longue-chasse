@@ -40,6 +40,9 @@ const bundle=await build({absWorkingDir:root,entryPoints:['tests/browser/hunt-li
    const declarations=names.map(name=>'const '+name+'='+extractCallback(source,name)+';').join('\n');
    return{loader:'tsx',resolveDir,contents:
     'import {applyMissionResult,writeSaveWithStatus,reconcileSaveWrite} from "./save";\n'+
+    'import {normalizePlanetInsertionPlan,settleExpeditionOutcome} from "./systems/planetInsertion";\n'+
+    'import {isShipId} from "./shipCatalogue";\n'+
+    'import {settleClanShipMission} from "./systems/clanShipOperations";\n'+
     'import {deliverHarvestV112,startConservationV112,workConservationV112,repairFieldToolV112,pauseConservationV112,resumeConservationV112,archiveMountedSpecimenV112} from "./systems/harvestInventoryV112";\n'+
     'export function makeGameClientCallbacksV112(h){\n'+
     'const {saveRef,sessionAliveRef,setSave,setScreen,setToast,setSaveFailure,setLastResult,clearHuntSession}=h;\n'+

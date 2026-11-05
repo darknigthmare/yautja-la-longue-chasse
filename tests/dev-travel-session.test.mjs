@@ -138,11 +138,12 @@ test('arrival checkpoints reject another owner, run, mission, ship, preset, enco
 });
 
 test('a ship or triad session rejects a substituted insertion plan at checkpoint and handoff', () => {
-  for (const id of ['arrival-ship-jungle-vey', 'arrival-triad-jungle-vey', 'arrival-ship-triad-jungle-vey']) {
+  for (const id of ['arrival-ship-jungle-vey', 'arrival-triad-jungle-vey', 'arrival-ship-triad-jungle-vey', 'arrival-ship-cloaked-triad-jungle-vey']) {
     const run = mountSession(id), host = run.environment;
     const initial = run.arrival;
-    for (const insertion of [undefined, { ...initial.insertion, method: initial.insertion.method === 'ship' ? 'pod' : 'ship' },
-      { ...initial.insertion, team: initial.insertion.team === 'solo' ? 'triad' : 'solo' }]) {
+    for (const insertion of [undefined, { version: 1, method: initial.insertion.method === 'ship' ? 'pod' : 'ship', team: initial.insertion.team },
+      { ...initial.insertion, team: initial.insertion.team === 'solo' ? 'triad' : 'solo' },
+      ...(initial.insertion.shipCloak ? [{ ...initial.insertion, shipCloak: false }] : [])]) {
       const substituted = api.startPlanetArrival(api.createPlanetArrival({ ...initial, insertion }));
       assert.equal(api.inspectPlanetArrival(substituted).status, 'valid');
       assert.equal(host.checkpointArrival(substituted), false, id);

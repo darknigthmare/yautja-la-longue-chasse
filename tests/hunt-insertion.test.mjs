@@ -23,7 +23,7 @@ export { arrivalSurfaceShipGeometry } from './systems/planetArrivalSpatial';
 export { createDropShipArrival, stepDropShip } from './systems/trophyRitual';
 export { defaultSave } from './save';
 export { MISSION_BY_ID } from './data';
-export const testPlan = (method='pod', team='solo') => ({version:1,method,team});
+export const testPlan = (method='pod', team='solo', shipCloak=false) => ({version:1,method,team,...(shipCloak?{shipCloak:true}:{})});
 export const testJson = text => JSON.parse(text);
 `, resolveDir: fileURLToPath(new URL('../app/game/', import.meta.url)), sourcefile: fileURLToPath(sourceUrl), loader: 'tsx' },
 bundle: true, write: false, format: 'cjs', platform: 'node', jsx: 'automatic', loader: { '.module.css': 'empty' },
@@ -35,10 +35,10 @@ const r = compiled.exports;
 const plain = value => JSON.parse(JSON.stringify(value));
 const detached = value => r.testJson(JSON.stringify(value));
 const close = (actual, expected, tolerance = .01) => assert.ok(Math.abs(actual - expected) <= tolerance, `${actual} ≠ ${expected}`);
-function fixture(method = 'ship', team = 'triad', missionId = 'jungle-vey', liveId = 'live-session') {
+function fixture(method = 'ship', team = 'triad', missionId = 'jungle-vey', liveId = 'live-session', shipCloak = false) {
   const save = r.defaultSave('2026-11-05T00:00:00.000Z'), mission = r.MISSION_BY_ID[missionId];
   const state = r.makeGameState(mission, save.loadout, save.inventory, 'hunter', save.appearance, false, false, 44,
-    save.exploration, r.testPlan(method, team), liveId, 'wolf-ship');
+    save.exploration, r.testPlan(method, team, shipCloak), liveId, 'wolf-ship');
   return { save, mission, state };
 }
 function arena() {
@@ -103,37 +103,94 @@ test('ship patrols are deterministic, bounded, away from spawn, and applied exac
   assert.equal(quiet.state.insertion.companions.length, 0);
 });
 
-test('insertion awareness searches the landing site and cannot reveal the moved hidden player', () => {
-  const f = fixture('ship', 'solo'), id = f.state.insertion.patrolIds[0];
-  const enemy = f.state.enemies.find(entry => entry.id === id);
-  f.state.player.x = f.state.world.width - 250; f.state.player.cloaked = true;
-  f.state.noiseEvents = []; f.state.tracks = []; f.state.scentNodes = [];
-  const expected = { x: f.state.insertion.origin.x, y: f.state.insertion.origin.y - 60 };
-  const start = enemy.x;
-  for (let i = 0; i < 60; i++) { f.state.elapsed += 1 / 60; r.updateRegularEnemy(f.state, enemy, f.mission, 1 / 60); }
-  assert.deepEqual(plain(f.state.aiBrains[id].lastKnownTarget), expected);
-  assert.equal(f.state.aiBrains[id].mode, 'search'); assert.ok(enemy.x < start); assert.equal(enemy.pendingAttackId, null);
-  f.state.player.x -= 1_500;
-  r.updateRegularEnemy(f.state, enemy, f.mission, .05);
-  assert.deepEqual(plain(f.state.aiBrains[id].lastKnownTarget), expected);
+test('camouflaged approaches reduce real patrol bodies and awareness across the authored worlds without hiding the hunter', () => {
+  for (const team of ['solo', 'triad']) {
+    let fewerPatrols = 0;
+    for (const missionId of Object.keys(r.WORLD_BLUEPRINTS_BY_MISSION)) {
+      const normal = fixture('ship', team, missionId), cloaked = fixture('ship', team, missionId, 'live-session', true);
+      const ids = cloaked.state.insertion.patrolIds;
+      assert.ok(ids.length <= (team === 'triad' ? 2 : 1), `${missionId}/${team}`);
+      assert.ok(ids.every(id => normal.state.insertion.patrolIds.includes(id)), 'camouflage removes pressure, not unrelated world actors');
+      if (ids.length < normal.state.insertion.patrolIds.length) fewerPatrols += 1;
+      assert.equal(cloaked.state.enemies.length, normal.state.enemies.length - normal.state.insertion.patrolIds.length + ids.length);
+      for (const id of ids) {
+        const enemy = cloaked.state.enemies.find(entry => entry.id === id);
+        assert.ok(enemy?.alive && enemy.active && enemy.health > 0, 'the advertised patrol is a living simulation body');
+        assert.ok(enemy.x + enemy.width / 2 >= cloaked.state.world.spawn.x + 950);
+        close(cloaked.state.aiBrains[id].suspicion, team === 'triad' ? .40 : .32);
+        close(normal.state.aiBrains[id].suspicion, team === 'triad' ? .72 : .64);
+      }
+      assert.equal(cloaked.state.insertion.searchUntil, 18); assert.equal(normal.state.insertion.searchUntil, 35);
+      assert.equal(cloaked.state.player.cloaked, false, 'ship camouflage does not grant player invisibility');
+      assert.equal(cloaked.state.player.energy, normal.state.player.energy, 'ship auxiliary power is separate from hunter armor');
+      assert.deepEqual(plain(cloaked.state.insertion.companions), plain(normal.state.insertion.companions));
+      assert.match(cloaked.state.message, /Approche camouflée terminée.*bruit des moteurs/);
+      assert.doesNotMatch(cloaked.state.message, /Vaisseau repéré/);
+    }
+    assert.ok(fewerPatrols > 0, `the ${team} route must reduce actual patrol count, not only its UI ceiling`);
+  }
 });
 
-test('save, retry, and resume preserve orders, wounds, patrol identities and the live session runId', () => {
-  const f = fixture();
-  f.state.insertion.companions[0].order = 'hold';
-  r.hurtHuntCompanion(f.state.insertion.companions[1], 29);
-  const checkpoint = r.captureCheckpoint(f.state, 'resume');
-  const archive = r.serializeActiveHuntCheckpoint(checkpoint, 0);
-  const decoded = r.deserializeActiveHuntCheckpoint(archive); assert.ok(decoded);
-  const renewed = fixture('ship', 'triad', 'jungle-vey', 'renewed-live-session');
-  for (const mode of ['resume', 'retry']) {
-    const restored = r.restoreCheckpoint(renewed.state, decoded.checkpoint, mode);
-    assert.deepEqual(plain(restored.insertion), plain(f.state.insertion));
-    assert.equal(restored.enemies.length, f.state.enemies.length);
-    assert.equal(new Set(restored.enemies.map(enemy => enemy.id)).size, restored.enemies.length);
-    assert.equal(r.resultFor(restored, renewed.mission, 'hunter', 'abandoned').insertionOutcome.runId, 'renewed-live-session');
-    restored.insertion.companions[0].health = 1;
-    assert.equal(decoded.checkpoint.insertion.companions[0].health, 100);
+test('normal and camouflaged arrivals search the landing site and cannot reveal the moved hidden player', () => {
+  for (const shipCloak of [false, true]) {
+    const f = fixture('ship', 'solo', 'jungle-vey', 'live-session', shipCloak), id = f.state.insertion.patrolIds[0];
+    const enemy = f.state.enemies.find(entry => entry.id === id);
+    f.state.player.x = f.state.world.width - 250; f.state.player.cloaked = true;
+    f.state.noiseEvents = []; f.state.tracks = []; f.state.scentNodes = [];
+    const expected = { x: f.state.insertion.origin.x, y: f.state.insertion.origin.y - 60 };
+    const start = enemy.x;
+    for (let i = 0; i < 60; i++) { f.state.elapsed += 1 / 60; r.updateRegularEnemy(f.state, enemy, f.mission, 1 / 60); }
+    assert.deepEqual(plain(f.state.aiBrains[id].lastKnownTarget), expected);
+    assert.equal(f.state.aiBrains[id].mode, 'search'); assert.ok(enemy.x < start); assert.equal(enemy.pendingAttackId, null);
+    f.state.player.x -= 1_500;
+    r.updateRegularEnemy(f.state, enemy, f.mission, .05);
+    assert.deepEqual(plain(f.state.aiBrains[id].lastKnownTarget), expected);
+  }
+});
+
+test('save, retry, and resume preserve the cloaked choice, expired investigation, orders, wounds and live session runId', () => {
+  for (const shipCloak of [false, true]) {
+    const f = fixture('ship', 'triad', 'jungle-vey', 'live-session', shipCloak);
+    f.state.insertion.companions[0].order = 'hold';
+    r.hurtHuntCompanion(f.state.insertion.companions[1], 29);
+    f.state.elapsed = f.state.insertion.searchUntil + 3;
+    const patrol = f.state.enemies.find(enemy => enemy.id === f.state.insertion.patrolIds[0]);
+    patrol.health -= 9; f.state.aiBrains[patrol.id].suspicion = .07;
+    const checkpoint = r.captureCheckpoint(f.state, 'resume');
+    const archive = r.serializeActiveHuntCheckpoint(checkpoint, 0);
+    const decoded = r.deserializeActiveHuntCheckpoint(archive); assert.ok(decoded);
+    const renewed = fixture('ship', 'triad', 'jungle-vey', 'renewed-live-session', shipCloak);
+    for (const mode of ['resume', 'retry']) {
+      const restored = r.restoreCheckpoint(renewed.state, decoded.checkpoint, mode);
+      assert.deepEqual(plain(restored.insertion), plain(f.state.insertion));
+      assert.equal(restored.elapsed, f.state.elapsed); assert.ok(restored.elapsed > restored.insertion.searchUntil);
+      assert.equal(restored.enemies.length, f.state.enemies.length);
+      assert.equal(new Set(restored.enemies.map(enemy => enemy.id)).size, restored.enemies.length);
+      assert.equal(restored.enemies.find(enemy => enemy.id === patrol.id).health, patrol.health);
+      assert.deepEqual(plain(restored.aiBrains), plain(f.state.aiBrains));
+      r.applyHuntInsertion(restored, f.mission, 'hunter');
+      assert.equal(restored.enemies.length, f.state.enemies.length);
+      assert.deepEqual(plain(restored.aiBrains), plain(f.state.aiBrains), 'a repeated setup cannot re-alert the existing patrols');
+      assert.ok(restored.elapsed > restored.insertion.searchUntil, 'an expired investigation is never renewed by setup');
+      const outcome = r.resultFor(restored, renewed.mission, 'hunter', 'abandoned').insertionOutcome;
+      assert.equal(outcome.runId, 'renewed-live-session'); assert.equal(!!outcome.plan.shipCloak, shipCloak);
+      restored.insertion.companions[0].health = 1;
+      assert.equal(decoded.checkpoint.insertion.companions[0].health, 100);
+    }
+  }
+});
+
+test('a valid hunt archive cannot add or remove camouflage from the frozen departure plan', () => {
+  for (const shipCloak of [false, true]) {
+    const archived = fixture('ship', 'triad', 'jungle-vey', 'prior-session', shipCloak);
+    const decoded = r.deserializeActiveHuntCheckpoint(r.serializeActiveHuntCheckpoint(r.captureCheckpoint(archived.state, 'resume'), 0));
+    assert.ok(decoded, 'each unchanged departure choice is a valid archive');
+    const other = fixture('ship', 'triad', 'jungle-vey', 'claimed-session', !shipCloak);
+    const rejected = r.restoreCheckpoint(other.state, decoded.checkpoint, 'resume');
+    assert.equal(rejected.paused, true); assert.match(rejected.message, /reprise refusée/);
+    assert.equal(!!rejected.insertion.plan.shipCloak, !shipCloak);
+    assert.deepEqual(plain(rejected.enemies), plain(other.state.enemies));
+    assert.deepEqual(plain(rejected.aiBrains), plain(other.state.aiBrains));
   }
 });
 

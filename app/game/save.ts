@@ -39,6 +39,7 @@ import { inspectWolfCastleVisit } from "./systems/wolfCastle";
 import { inspectPlanetArrival } from "./systems/planetArrival";
 import { inspectPlanetArrivalRun } from "./systems/planetArrivalRun";
 import { expeditionTrioReady, inspectExpeditionRoster } from "./systems/planetInsertion";
+import { hasShipInsertionDebit, inspectShipInsertionEnergy } from "./systems/shipInsertionEnergy";
 import { emptyGauntletCampaignV134, normalizeGauntletCampaignV134 } from "./systems/gauntletCampaignV134";
 import {
   ARMORS,
@@ -1258,6 +1259,9 @@ export function normalizeSave(value: unknown): SaveGame {
     ...(source.expeditionRoster === undefined ? {} : {
       expeditionRoster: inspectExpeditionRoster(source.expeditionRoster, validIsoDate(source.createdAt, fallback.createdAt)).state,
     }),
+    ...(source.shipInsertionEnergy === undefined ? {} : {
+      shipInsertionEnergy: inspectShipInsertionEnergy(source.shipInsertionEnergy, validIsoDate(source.createdAt, fallback.createdAt)).state,
+    }),
     codex: { unlockedEntryIds, scanCounts, discoveredEnemyIds },
     exploration: normalizeExplorationProgress(source.exploration),
     statistics: {
@@ -1487,12 +1491,15 @@ function inspectSavePayload(value: unknown): SaveImportParseResult {
   const arrival = inspectPlanetArrival(value.planetArrival, typeof value.createdAt === "string" ? value.createdAt : "");
   const arrivalRun = inspectPlanetArrivalRun(value.planetArrivalRun, arrival.state);
   const expedition = inspectExpeditionRoster(value.expeditionRoster, typeof value.createdAt === 'string' ? value.createdAt : '');
-  for (const inspection of [castle, arrival, arrivalRun, expedition]) {
+  const shipEnergy = inspectShipInsertionEnergy(value.shipInsertionEnergy, typeof value.createdAt === 'string' ? value.createdAt : '');
+  for (const inspection of [castle, arrival, arrivalRun, expedition, shipEnergy]) {
     if (inspection.status === "future-version" || inspection.status === "invalid-save") {
       return { save: null, failure: inspection.status };
     }
   }
-  if (((expedition.state?.members.length ?? 0) > 0 || arrival.state?.insertion?.method === 'ship' ||
+  if (arrival.state?.insertion?.shipCloak && !hasShipInsertionDebit(shipEnergy.state, arrival.state.ownerCreatedAt,
+      arrival.state.runId, arrival.state.personalShipId)) return { save: null, failure: 'invalid-save' };
+  if (((expedition.state?.members.length ?? 0) > 0 || (shipEnergy.state?.hulls.length ?? 0) > 0 || arrival.state?.insertion?.method === 'ship' ||
        arrival.state?.insertion?.team === 'triad') &&
       !evaluateClanShipAccess(value as unknown as Pick<SaveGame, 'prologue'>).allowed) return { save: null, failure: 'invalid-save' };
   if (arrival.state?.insertion?.team === 'triad' && !expeditionTrioReady(expedition.state,

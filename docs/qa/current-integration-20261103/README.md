@@ -429,3 +429,37 @@ preuves finales conservent le commit réellement exécuté et déclarent les
 fixtures initiales, dont les deux résultats de chasse synthétiques du contexte
 d’équipage complet. Aucune approbation artistique humaine n’est déduite de ces
 contrôles.
+
+## Cinématiques, incursions et camouflage d’approche — 5 novembre 2026
+
+Le relevé courant est actualisé pour la version applicative 1.5.0 de la
+PR [#114](https://github.com/darknigthmare/yautja-la-longue-chasse/pull/114).
+Il comprend les compléments audiovisuels de l’arrivée, les insertions par
+capsule ou vaisseau posé, la triade et l’option de camouflage du vaisseau avec
+sa réserve auxiliaire persistante. La base locale `57ccc1daf60643c8cc752981d58ae2e6c363992d`
+et la publication précédente `34f1387144906696d4977120113a616a5d4d8709`
+partagent l’arbre `cbbf116e5a3808ff8402f468f148e966ebede695` ; le présent
+relevé inclut les modifications de camouflage qui les suivent.
+
+| Mesure du relevé courant | Valeur |
+| --- | --- |
+| Entrées | 2 167 |
+| Sources applicatives | 1 214 |
+| Octets des entrées | 1 092 461 217 |
+| Octets du document JSON | 402 812 |
+| SHA-256 du document | `b292753aaaab82578d1526aa183711cd22dfb27077bcd4c21f2b441f310877e7` |
+| Identité Git du document | `35bbc81036853017e13f14bdeac68b017d27ec4d` |
+
+Le générateur officiel `snapshot-runtime-v113.mjs --write`, puis sa commande
+`--check`, ont relu les sources et les entrées natives réellement présentes.
+Les freezes, certificats et classeurs historiques conservent leur contenu.
+Le script de recette V112 inventorié importe désormais les helpers réels
+utilisés par les callbacks du cycle de chasse, sans remplacer les assertions
+de conservation ni simuler leur résultat.
+
+Les preuves de ce lot sont conservées dans
+[`production/insertion-trio-20261105/`](../../../production/insertion-trio-20261105/README.md).
+Le reçu navigateur `browser-34f1387` identifie explicitement le lot précédent,
+antérieur au camouflage. Les nouveaux contrôles navigateur doivent qualifier
+le commit publié avec le présent relevé ; la génération de cet inventaire
+ne vaut pas validation du shader, des interactions ou du mix sonore.

@@ -7,18 +7,18 @@ npm warn Unknown env config "http-proxy". This will stop working in the next maj
 [audio] 37 slots, 22 supplied, 0 ignored
 [production] next
 ▲ Next.js 16.3.5 (webpack)
-✓ Running next.config.ts took 109ms
+✓ Running next.config.ts took 520ms
 
   Creating an optimized production build ...
-✓ Compiled successfully in 32.3s
+✓ Compiled successfully in 29.0s
   Running TypeScript ...
-  Finished TypeScript in 2.1min ...
+  Finished TypeScript in 2.2min ...
   Collecting page data using 8 workers ...
   Generating static pages using 8 workers (0/10) ...
   Generating static pages using 8 workers (2/10)
   Generating static pages using 8 workers (4/10)
   Generating static pages using 8 workers (7/10)
-✓ Generating static pages using 8 workers (10/10) in 2.8s
+✓ Generating static pages using 8 workers (10/10) in 3.1s
   Finalizing page optimization ...
   Collecting build traces ...
 
@@ -46,7 +46,7 @@ Route (app)
 [production] pit-css
 {
   "status": "PASS",
-  "checkedAt": "2026-11-05T07:43:17.916Z",
+  "checkedAt": "2026-11-05T08:57:17.178Z",
   "nextDir": "/workspace/scratch/b1715bb19272/yautja-cinematics/.next",
   "scope": "Root game route compiled CSS referenced by its webpack client manifest; no source CSS is read.",
   "files": [
@@ -56,9 +56,9 @@ Route (app)
       "sha256": "053231816bc5d1e52053366abb77656f3f32f730835c893e72a316e3832fdb77"
     },
     {
-      "path": "static/css/3773898599742ecc.css",
-      "bytes": 40199,
-      "sha256": "8fcde4515ab0f68bbd41b7b05c3f880e131ee3ffb1fd4a7a5336ebff039067ce"
+      "path": "static/css/2848da2a7409f8bd.css",
+      "bytes": 41055,
+      "sha256": "11232ba50fa63312f346f95ada1ebfce56720559ee6e803633d7e212b0dfdc42"
     }
   ],
   "checks": [

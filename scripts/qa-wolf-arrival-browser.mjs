@@ -16,15 +16,15 @@ const assetsRequired = process.env.WOLF_ARRIVAL_REQUIRE_ASSETS !== '0';
 const headed = process.env.WOLF_ARRIVAL_HEADED === '1';
 await fs.mkdir(out, { recursive: true });
 const bundle = await build({
-  stdin: { contents: "export {defaultSave,SAVE_STORAGE_KEY} from './app/game/save.ts'; export {ACTIVE_HUNT_STORAGE_KEY} from './app/game/systems/activeHuntSave.ts'; export {GALAXY_NAVIGATION} from './app/game/galaxyNavigation.ts';", resolveDir: root },
+  stdin: { contents: "export {defaultSave,SAVE_STORAGE_KEY} from './app/game/save.ts'; export {ACTIVE_HUNT_STORAGE_KEY} from './app/game/systems/activeHuntSave.ts'; export {GALAXY_NAVIGATION} from './app/game/galaxyNavigation.ts'; export {shipInsertionCharge,hasShipInsertionDebit} from './app/game/systems/shipInsertionEnergy.ts';", resolveDir: root },
   bundle: true, platform: 'node', format: 'esm', write: false, logLevel: 'silent',
 });
-const { defaultSave, SAVE_STORAGE_KEY, ACTIVE_HUNT_STORAGE_KEY, GALAXY_NAVIGATION } = await import('data:text/javascript;base64,' + Buffer.from(bundle.outputFiles[0].text).toString('base64'));
+const { defaultSave, SAVE_STORAGE_KEY, ACTIVE_HUNT_STORAGE_KEY, GALAXY_NAVIGATION, shipInsertionCharge, hasShipInsertionDebit } = await import('data:text/javascript;base64,' + Buffer.from(bundle.outputFiles[0].text).toString('base64'));
 const missionRoute = GALAXY_NAVIGATION.sectors.flatMap(sector => sector.systems.flatMap(system =>
   system.bodies.flatMap(body => body.missions.map(mission => ({ sector, system, body, mission }))))).find(route => route.mission.id === 'jungle-vey');
 assert.ok(missionRoute, 'The real navigation registry must expose the initial jungle contract');
 const seed = defaultSave('2026-11-04T10:00:00.000Z');
-const shipTriadPlan = { version: 1, method: 'ship', team: 'triad' };
+const shipTriadPlan = { version: 1, method: 'ship', team: 'triad', shipCloak: true };
 seed.profile.hunterName = 'QA Château et arrivée';
 seed.settings.masterVolume = 0;
 const checkoutCommit = execFileSync('git', ['rev-parse', 'HEAD'], { cwd: root, encoding: 'utf8' }).trim();
@@ -109,6 +109,14 @@ try {
   };
   const stored = () => page.evaluate(key => JSON.parse(localStorage.getItem(key)), SAVE_STORAGE_KEY);
   const huntStored = () => page.evaluate(key => JSON.parse(localStorage.getItem(key)), ACTIVE_HUNT_STORAGE_KEY);
+  const assertCloakEnergy = async runId => {
+    const save = await stored(), shipId = 'classic-predator-spaceship';
+    assert.equal(shipInsertionCharge(save.shipInsertionEnergy, save.createdAt, shipId), 70);
+    assert.equal(hasShipInsertionDebit(save.shipInsertionEnergy, save.createdAt, runId, shipId), true);
+    assert.equal(save.shipInsertionEnergy.departures.length, 1, 'Pause, reload, failed handoff and Skip share one departure debit.');
+    assert.equal(save.shipInsertionEnergy.departures[0].runId, runId);
+    return { charge: 70, runId, departures: save.shipInsertionEnergy.departures.length };
+  };
   const continueCampaign = async () => {
     await page.locator('[data-campaign-menu]').waitFor();
     if (await page.locator('[data-menu-section="campaign"]').isVisible()) await page.locator('[data-menu-section="campaign"]').click();
@@ -118,18 +126,38 @@ try {
   const openApp = async () => { await page.goto(`http://127.0.0.1:${port}`, { waitUntil: 'networkidle', timeout: 120_000 }); await continueCampaign(); };
   const screenshot = async filename => { await page.screenshot({ path: path.join(out, filename), fullPage: true }); report.screenshots.push(filename); };
   const resizeViewport = async viewport => {
-    await page.setViewportSize(viewport);
-    await page.waitForFunction(({ width, height }) => innerWidth === width && innerHeight === height, viewport);
-    // Headed Chromium can acknowledge device metrics before the new media
-    // queries and vw padding have painted. Measure the settled layout only.
-    await page.evaluate(() => new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve))));
-    report.viewportTransitions.push(await page.evaluate(() => {
-      const card = document.querySelector('[data-wolf-castle-status], [data-arrival-run]');
-      const safe = card?.closest('.screen-safe');
-      return { width: innerWidth, height: innerHeight, cardWidth: card?.clientWidth, cardScroll: card?.scrollWidth,
-        arrivalSceneWidth: card?.querySelector('[data-arrival-scene]')?.clientWidth,
-        padding: safe ? getComputedStyle(safe).paddingInlineStart : null };
-    }));
+    await page.evaluate(() => {
+      const probe = document.createElement('div');
+      probe.dataset.wolfArrivalViewportProbe = '';
+      probe.style.cssText = 'position:fixed;left:0;top:0;width:100vw;height:100vh;visibility:hidden;pointer-events:none';
+      document.body.append(probe);
+    });
+    try {
+      await page.setViewportSize(viewport);
+      // Device metrics and two animation frames can precede the viewport-unit
+      // and media-query recalculation in headed Chromium. Wait for actual CSS
+      // dimensions and the panel's screen-safe padding, never for overflow to disappear.
+      await page.waitForFunction(({ width, height }) => {
+        const rect = document.querySelector('[data-wolf-arrival-viewport-probe]')?.getBoundingClientRect();
+        const safe = document.querySelector('[data-wolf-castle-status], [data-arrival-run]')?.closest('.screen-safe');
+        const expectedPadding = width <= 760 ? 14 : Math.min(64, Math.max(18, width * .04));
+        return innerWidth === width && innerHeight === height && rect &&
+          Math.abs(rect.width - width) < 1 && Math.abs(rect.height - height) < 1 &&
+          matchMedia('(max-width: 760px)').matches === (width <= 760) && safe &&
+          Math.abs(parseFloat(getComputedStyle(safe).paddingInlineStart) - expectedPadding) < .1;
+      }, viewport);
+      report.viewportTransitions.push(await page.evaluate(() => {
+        const card = document.querySelector('[data-wolf-castle-status], [data-arrival-run]');
+        const safe = card?.closest('.screen-safe');
+        const rect = document.querySelector('[data-wolf-arrival-viewport-probe]').getBoundingClientRect();
+        return { width: innerWidth, height: innerHeight, cssWidth: rect.width, cssHeight: rect.height,
+          cardWidth: card?.clientWidth, cardScroll: card?.scrollWidth,
+          arrivalSceneWidth: card?.querySelector('[data-arrival-scene]')?.clientWidth,
+          padding: safe ? getComputedStyle(safe).paddingInlineStart : null };
+      }));
+    } finally {
+      await page.locator('[data-wolf-arrival-viewport-probe]').evaluateAll(probes => probes.forEach(probe => probe.remove()));
+    }
   };
   const padButton = async (index, pressed) => {
     await page.evaluate(({ index, pressed }) => { window.__wolfArrivalQa.pad.buttons[index] = { pressed, touched: pressed, value: pressed ? 1 : 0 }; }, { index, pressed });
@@ -280,6 +308,19 @@ try {
       await panel.locator(`input[name="insertion-method"][value="${plan.method}"]`).check();
       await panel.locator(`input[name="insertion-team"][value="${plan.team}"]`).check();
       assert.equal(await panel.getAttribute('data-insertion-plan'), `${plan.method}-${plan.team}`);
+      if (plan.shipCloak) {
+        const energy = panel.locator('[data-insertion-energy]');
+        assert.equal(await energy.getAttribute('data-charge'), '100');
+        assert.equal(await energy.getAttribute('data-after-cloak'), '70');
+        const control = panel.getByRole('checkbox', { name: 'Camouflage optique du vaisseau', exact: true });
+        await control.check();
+        await panel.getByText('Signature visuelle atténuée', { exact: true }).waitFor();
+        assert.equal(await control.isChecked(), true);
+        const campaign = await stored();
+        assert.equal(shipInsertionCharge(campaign.shipInsertionEnergy, campaign.createdAt, 'classic-predator-spaceship'), 100,
+          'Selecting camouflage previews the cost; the real deployment commits it.');
+        report.cloakBriefing = { enabled: true, chargeBefore: 100, previewAfter: 70 };
+      }
     }
     await page.getByRole('button', { name: 'Valider la destination', exact: true }).click();
     await page.locator('[data-galaxy-v10-level]').waitFor({ state: 'detached' });
@@ -627,7 +668,7 @@ try {
   });
 
   let skipRun;
-  await check('Real recruitment and a ship-triad briefing freeze one campaign run before any hunt mounts', async () => {
+  await check('Real recruitment and a cloaked ship-triad briefing freeze one paid campaign run before any hunt mounts', async () => {
     await launchMission(shipTriadPlan);
     const save = await stored();
     skipRun = save.planetArrival.runId;
@@ -638,6 +679,8 @@ try {
     assert.deepEqual(save.planetArrival.insertion, shipTriadPlan);
     assert.deepEqual(save.planetArrivalRun.configuration.insertion, shipTriadPlan);
     assert.equal(save.planetArrivalRun.configuration.insertionShipId, save.planetArrival.personalShipId);
+    assert.equal(save.planetArrivalRun.configuration.insertionEnergyRunId, skipRun);
+    await assertCloakEnergy(skipRun);
     assert.equal(await page.locator('.hunt-screen').count(), 0);
     assert.equal(await huntStored(), null);
   });
@@ -652,6 +695,7 @@ try {
     await page.waitForTimeout(300);
     assert.equal(await page.locator('[data-arrival-run]').getAttribute('data-arrival-elapsed'), elapsed);
     assert.equal((await stored()).planetArrival.runId, skipRun);
+    await assertCloakEnergy(skipRun);
     await page.getByRole('button', { name: 'Reprendre l’arrivée', exact: true }).click();
     await page.locator('[data-arrival-status="playing"]').waitFor();
   });
@@ -697,6 +741,7 @@ try {
     await page.locator('[data-arrival-status="paused"]').waitFor({ timeout: 90_000 });
     assert.equal((await stored()).planetArrival.runId, skipRun);
     assert.equal((await stored()).planetArrivalRun.runId, skipRun);
+    await assertCloakEnergy(skipRun);
     assert.equal(await huntStored(), null);
   });
   await check('A refused handoff leaves the hunt unmounted and can retry the same run once', async () => {
@@ -706,6 +751,7 @@ try {
     assert.equal(await page.locator('.hunt-screen').count(), 0);
     assert.equal(await huntStored(), null);
     assert.notEqual((await stored()).planetArrival.status, 'complete');
+    await assertCloakEnergy(skipRun);
     await screenshot('07-arrival-handoff-recovery.png');
     await page.evaluate(() => { window.__wolfArrivalQa.failArrivalHandoff = false; });
     await page.getByRole('button', { name: 'Réessayer le départ', exact: true }).focus();
@@ -718,20 +764,21 @@ try {
     const hunt = await huntStored(), insertion = hunt.snapshot.checkpoint.insertion;
     assert.deepEqual(hunt.configuration.insertion, shipTriadPlan);
     assert.equal(hunt.configuration.insertionShipId, 'classic-predator-spaceship');
+    assert.equal(hunt.configuration.insertionEnergyRunId, skipRun);
     assert.deepEqual(insertion.plan, shipTriadPlan);
     assert.deepEqual(insertion.companions.map(member => member.id), ['karhek', 'saketh']);
-    assert.deepEqual(insertion.patrolIds, [`${insertion.runId}:insertion-patrol-0`, `${insertion.runId}:insertion-patrol-2`],
-      'The initial jungle encounter has exactly two safe patrol placements.');
-    assert.equal(insertion.searchUntil, 35);
+    assert.deepEqual(insertion.patrolIds, [`${insertion.runId}:insertion-patrol-0`],
+      'Camouflage requests fewer patrols; only the first safe jungle placement is available among those two attempts.');
+    assert.equal(insertion.searchUntil, 18);
     const enemyIds = new Set(hunt.snapshot.checkpoint.enemies.map(enemy => enemy.id));
-    assert.ok(insertion.patrolIds.every(id => enemyIds.has(id)), 'The noisy insertion must create the actual patrol enemies.');
+    assert.ok(insertion.patrolIds.every(id => enemyIds.has(id)), 'The cloaked insertion still creates its actual patrol enemy.');
     await page.locator('[data-hunt-surface-ship-ready="true"]').waitFor({ timeout: 90000 });
     assert.equal(await page.locator('.hunt-screen').getAttribute('data-hunt-insertion-method'), 'ship');
     assert.equal(await page.locator('.hunt-screen').getAttribute('data-hunt-insertion-team'), 'triad');
     assert.equal(await page.locator('.hunt-screen').getAttribute('data-hunt-insertion-run-id'), skipRun);
     assert.equal(await page.locator('.hunt-screen').getAttribute('data-hunt-insertion-ship-id'), 'classic-predator-spaceship');
     assert.deepEqual((await stored()).expeditionRoster.members.map(member => member.id), ['karhek', 'saketh']);
-    report.shipTriadHandoff = { runId: skipRun, plan: insertion.plan, companions: insertion.companions,
+    report.shipTriadHandoff = { runId: skipRun, plan: insertion.plan, companions: insertion.companions, energy: await assertCloakEnergy(skipRun),
       patrolIds: insertion.patrolIds, searchUntil: insertion.searchUntil, realPatrolCount: insertion.patrolIds.length };
     await page.waitForTimeout(450);
     assert.equal(await page.evaluate(() => window.__wolfArrivalQa.mounts), 1);
@@ -746,6 +793,8 @@ try {
     assert.deepEqual((await huntStored()).configuration.insertion, shipTriadPlan);
     assert.deepEqual((await huntStored()).snapshot.checkpoint.insertion.plan, shipTriadPlan);
     assert.equal((await huntStored()).snapshot.checkpoint.insertion.companions.length, 2);
+    assert.equal((await huntStored()).configuration.insertionEnergyRunId, skipRun);
+    await assertCloakEnergy(skipRun);
     assert.equal(await page.evaluate(() => window.__wolfArrivalQa.mounts), 1);
   });
   await first.context.close();

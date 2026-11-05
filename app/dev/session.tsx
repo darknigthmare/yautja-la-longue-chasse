@@ -10,6 +10,7 @@ import { actClanShipOperations, createClanShipOperations, inspectClanShipOperati
 import { completePlanetArrivalHandoff, inspectPlanetArrival, type PlanetArrivalState } from "../game/systems/planetArrival";
 import { inspectPlanetArrivalRun } from "../game/systems/planetArrivalRun";
 import { samePlanetInsertion } from "../game/systems/planetInsertion";
+import { shipInsertionCharge } from "../game/systems/shipInsertionEnergy";
 import { createDefaultShipProgression, type ShipProgressionState } from "../game/systems/progression";
 import { actWolfCastle, applyWolfCastleCheckpoint, type WolfCastleAction, type WolfCastleCheckpoint } from "../game/systems/wolfCastle";
 import type { HomeworldProgress } from "../game/systems/homeworld";
@@ -356,6 +357,10 @@ export default function DevTravelSession({ destination, onTravel, onExit }: DevT
       data-dev-arrival-elapsed={arrival?.elapsedMs} data-dev-arrival-mission={arrival?.missionId}
       data-dev-insertion-method={arrivalFixture?.state.insertion?.method}
       data-dev-insertion-team={arrivalFixture?.state.insertion?.team}
+      data-dev-insertion-ship-cloak={arrivalFixture ? !!arrivalFixture.state.insertion?.shipCloak : undefined}
+      data-dev-insertion-energy={arrivalFixture ? shipInsertionCharge(save.shipInsertionEnergy, save.createdAt, selectedShipId) ?? undefined : undefined}
+      data-dev-insertion-energy-run={typeof arrivalFixture?.run.configuration.insertionEnergyRunId === "string"
+        ? arrivalFixture.run.configuration.insertionEnergyRunId : undefined}
       data-dev-hunt-generation={inHunt ? huntGeneration.epoch : undefined}
       data-dev-hunt-x={huntObservation?.x} data-dev-hunt-y={huntObservation?.y}
       data-dev-hunt-elapsed={huntObservation?.elapsed}

@@ -1,6 +1,6 @@
 /** Visible content lot, shared by portable archive metadata and the UI. */
 export const GAME_CONTENT_VERSION = "V112";
-export const GAME_CONTENT_LABEL = "Canopée · cité vivante · épreuves royales · Clan Ship · incursions de la triade";
+export const GAME_CONTENT_LABEL = "Canopée · cité vivante · épreuves royales · Clan Ship · triade et approches camouflées";
 
 /** Application release; independent from the historical content and save formats. */
 export const GAME_RELEASE_VERSION = "1.5.0";

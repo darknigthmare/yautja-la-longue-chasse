@@ -15,7 +15,7 @@ import { ARRIVAL_COMPLETION_SPRITES, ARRIVAL_SPRITES, arrivalImpactArtForBiome, 
 import { ARRIVAL_STAGE, arrivalCarrierPose, arrivalFormationFlightPose, arrivalGroundCamera, arrivalInsertionShipPose,
   arrivalShipGroundPose, arrivalSurfaceShipGeometry, attachmentToStage, fitArrivalStage } from './systems/planetArrivalSpatial';
 import { ARRIVAL_CONTACT_MS, arrivalEffectsFrame, arrivalFormationSlots, arrivalHunterEgress, arrivalImpactDebris,
-  arrivalLightGradient, arrivalLighting, arrivalRgba, arrivalShotLabel } from './systems/planetArrivalPresentation';
+  arrivalLightGradient, arrivalLighting, arrivalRgba, arrivalShipCloakFrame, arrivalShotLabel } from './systems/planetArrivalPresentation';
 import { DEFAULT_PLAN, EXPEDITION_MEMBER_SIZE, expeditionMemberAppearance, expeditionMemberLoadout, normalizePlanetInsertionPlan,
   type ExpeditionMemberId } from './systems/planetInsertion';
 import {
@@ -81,6 +81,7 @@ export default function PlanetArrivalCinematic({ state, appearance, loadout, gau
   const [pauseReason, setPauseReason] = useState('');
   const [stageFit, setStageFit] = useState(() => fitArrivalStage(0, 0));
   const hunterPortalId = `arrival-portal-${useId().replace(/[^a-zA-Z0-9_-]/g, '')}`;
+  const cloakFilterId = `arrival-cloak-${useId().replace(/[^a-zA-Z0-9_-]/g, '')}`;
   const callbackRef = useRef({ onCheckpoint, onHandoff, onExit, suspended, checkpointBlocked });
   const sources = useMemo(() => planetArrivalAssets(state), [state]);
   const sourceKey = sources ? Object.values(sources).join('|') : '';
@@ -375,6 +376,7 @@ export default function PlanetArrivalCinematic({ state, appearance, loadout, gau
   const titleOpacity = shot.id === 'title' ? motionReduced ? 1 : Math.min(clamp01(p * 4), clamp01((1 - p) * 5)) : 0;
   const sceneStyle = { '--arrival-accent': destination?.mission.palette.accent ?? '#d4ad73' } as CSSProperties;
   const lighting = arrivalLighting(state.biomeId, shot.id, timeline.elapsedMs, motionReduced);
+  const shipCloak = arrivalShipCloakFrame(timeline.elapsedMs, insertion, motionReduced);
   const impactArt = arrivalImpactArtForBiome(state.biomeId);
 
   const layer = (path: string | undefined, className: string, style?: CSSProperties, alt = '') => path && !failedAssets.includes(path)
@@ -394,6 +396,27 @@ export default function PlanetArrivalCinematic({ state, appearance, loadout, gau
       <div className={styles.surfaceLight} data-arrival-light-mask="true" style={{
         background: light.background, maskImage: `url("${path}")`, WebkitMaskImage: `url("${path}")`,
       }} />
+    </div>;
+  };
+
+  const shipLayer = (role: 'carrier' | 'ground-ship', rotation: number, fillAngle = 32) => {
+    const path = sources?.carrier;
+    const hull = litLayer(path, styles.fullAsset, role, rotation, carrierFacing < 0, fillAngle);
+    if (!shipCloak.requested || !path || !hull) return hull;
+    return <div className={styles.shipOptics} data-arrival-cloak-hull={role}>
+      <div className={styles.shipHull} data-arrival-cloak-body="true" style={{ opacity: shipCloak.hullOpacity }}>{hull}</div>
+      {shipCloak.strength > 0 && <>
+        <div className={styles.shipRefraction} data-arrival-cloak-refraction={path} style={{
+          opacity: shipCloak.refractionOpacity, maskImage: `url("${path}")`, WebkitMaskImage: `url("${path}")`,
+          backdropFilter: `url("#${cloakFilterId}-lens") blur(.65px)`,
+          WebkitBackdropFilter: `url("#${cloakFilterId}-lens") blur(.65px)`,
+        }} />
+        <svg className={styles.shipCloakRim} data-arrival-cloak-rim={path} style={{ opacity: shipCloak.rimOpacity }}
+          viewBox={`0 0 ${carrierArt.width} ${carrierArt.height}`}>
+          <image href={path} width={carrierArt.width} height={carrierArt.height} filter={`url(#${cloakFilterId}-rim)`}
+            onError={() => assetFailed(path)} />
+        </svg>
+      </>}
     </div>;
   };
 
@@ -577,16 +600,36 @@ export default function PlanetArrivalCinematic({ state, appearance, loadout, gau
       onPointerDownCapture={() => { keyboardArmedRef.current = true; if (!suspended && !checkpointBlocked) audioDirectorRef.current?.unlock(); }}
       data-arrival-run={state.runId} data-arrival-shot={shot.id} data-arrival-status={timeline.status}
       data-arrival-elapsed={Math.round(timeline.elapsedMs)} data-arrival-reduced-motion={motionReduced}
-      data-arrival-method={insertion.method} data-arrival-team={insertion.team}>
+      data-arrival-method={insertion.method} data-arrival-team={insertion.team} data-arrival-ship-cloak={shipCloak.requested}>
       <header className={styles.header}>
         <div><p className={styles.eyebrow}>TRAJECTOIRE D’INSERTION</p><h1>{state.destinationDisplayName}</h1><p className={styles.missionName}>{destination?.mission.title}</p></div>
-        <div className={styles.shipIdentity}><span>VAISSEAU ENGAGÉ</span><strong>{shipForId(state.personalShipId).name}</strong><small>{destination?.system.name}</small></div>
+        <div className={styles.shipIdentity}><span>VAISSEAU ENGAGÉ</span><strong>{shipForId(state.personalShipId).name}</strong><small>{destination?.system.name}</small>
+          {shipCloak.requested && <small className={styles.cloakStatus}>{shipCloak.phase === 'active' ? 'Camouflage optique actif'
+            : shipCloak.phase === 'releasing' ? 'Désactivation du camouflage' : 'Camouflage désactivé'}</small>}
+        </div>
       </header>
 
       <div ref={sceneRef} className={styles.scene} role="group" aria-label={`${shotLabel}. Destination ${state.destinationDisplayName}.`}
-        data-arrival-scene="true" data-arrival-planet={state.destinationId} data-arrival-ship={state.personalShipId} data-arrival-contact={surfaceContact}>
+        data-arrival-scene="true" data-arrival-planet={state.destinationId} data-arrival-ship={state.personalShipId} data-arrival-contact={surfaceContact}
+        data-arrival-ship-cloak={shipCloak.requested} data-arrival-cloak-phase={shipCloak.phase}>
         <div className={styles.stage} data-arrival-stage="true" aria-hidden="true"
           style={{ width: ARRIVAL_STAGE.width, height: ARRIVAL_STAGE.height, transform: `translate(${stageFit.left}px, ${stageFit.top}px) scale(${stageFit.scale})` }}>
+        {shipCloak.requested && <svg className={styles.clipDefinitions} aria-hidden="true">
+          <defs>
+            <filter id={`${cloakFilterId}-lens`} x="-3%" y="-3%" width="106%" height="106%" colorInterpolationFilters="sRGB">
+              <feTurbulence type="fractalNoise" baseFrequency=".017 .055" numOctaves="1" seed={state.seed % 97}
+                stitchTiles="stitch" result="cloak-noise" />
+              <feOffset in="cloak-noise" dx={shipCloak.noiseOffsetX} dy={shipCloak.noiseOffsetY} result="cloak-field" />
+              <feDisplacementMap in="SourceGraphic" in2="cloak-field" scale={shipCloak.distortionScale} xChannelSelector="R" yChannelSelector="G" />
+            </filter>
+            <filter id={`${cloakFilterId}-rim`} x="-3%" y="-3%" width="106%" height="106%" colorInterpolationFilters="sRGB">
+              <feMorphology in="SourceAlpha" operator="dilate" radius={carrierArt.width * .0018} result="expanded" />
+              <feComposite in="expanded" in2="SourceAlpha" operator="out" result="outline" />
+              <feFlood floodColor="#b0d5d8" result="rim-color" />
+              <feComposite in="rim-color" in2="outline" operator="in" />
+            </filter>
+          </defs>
+        </svg>}
         <div className={styles.spaceBackdrop} aria-hidden="true">{layer(sources?.space, styles.cover, { opacity: .85,
           transform: motionReduced ? 'none' : `translate(${-Math.min(timeline.elapsedMs, 41_000) / 4_000}px, ${Math.min(timeline.elapsedMs, 41_000) / 8_000}px) scale(1.04)` })}</div>
         {!landed && !atmospheric && <div className={styles.orbitalLight} />}
@@ -598,10 +641,12 @@ export default function PlanetArrivalCinematic({ state, appearance, loadout, gau
             <image href={sources.planet} width={planetArt.width} height={planetArt.height} onError={() => assetFailed(sources.planet)} />
           </svg> : layer(sources?.planet, styles.planetImage)}
         </div>}
-        {carrierVisible && <div className={styles.carrier} data-arrival-carrier="true" style={{ left: carrierPose.x, top: carrierPose.y, width: CARRIER_WIDTH, height: carrierHeight,
+        {carrierVisible && <div className={styles.carrier} data-arrival-carrier="true"
+          data-arrival-cloak-strength={shipInsertion ? shipCloak.strength : undefined}
+          style={{ left: carrierPose.x, top: carrierPose.y, width: CARRIER_WIDTH, height: carrierHeight,
           transform: `translate(-50%,-50%) rotate(${carrierRotation}deg) scale(${carrierPose.scale})` }}>
           <div className={styles.carrierArt} style={{ transform: `scaleX(${carrierFacing})` }}>
-            {litLayer(sources?.carrier, styles.fullAsset, 'carrier', carrierRotation, carrierFacing < 0,
+            {shipLayer('carrier', carrierRotation,
               Math.atan2(ARRIVAL_STAGE.height * .12 - carrierPose.y, ARRIVAL_STAGE.width * .73 - carrierPose.x) * 180 / Math.PI)}
             {anchor('carrier-nose', carrierArt.nose.x * CARRIER_WIDTH, carrierArt.nose.y * carrierHeight)}
             {anchor('carrier-tail', carrierArt.tail.x * CARRIER_WIDTH, carrierArt.tail.y * carrierHeight)}
@@ -657,11 +702,12 @@ export default function PlanetArrivalCinematic({ state, appearance, loadout, gau
                 transform: `translate(-50%,-50%) scale(${mix(.4, 1, shipGroundPose.descent)})` }} />
             {(!motionReduced || shipGroundPose.contact) && <div className={styles.groundShip}
               data-arrival-ground-ship={state.personalShipId} data-arrival-ship-contact={shipGroundPose.contact}
+              data-arrival-cloak-strength={shipCloak.strength}
               style={{ left: shipGroundPose.x, top: shipGroundPose.y, width: shipGround.width, height: shipGround.height,
                 transformOrigin: `${shipGround.foot.x * 100}% ${shipGround.foot.y * 100}%`,
                 transform: `translate(-${shipGround.foot.x * 100}%,-${shipGround.foot.y * 100}%) rotate(${shipGroundPose.angle}deg)` }}>
               <div className={styles.carrierArt} style={{ transform: `scaleX(${carrierFacing})` }}>
-                {litLayer(sources?.carrier, styles.fullAsset, 'ground-ship', shipGroundPose.angle, carrierFacing < 0)}
+                {shipLayer('ground-ship', shipGroundPose.angle)}
                 {anchor('ship-ground-contact', carrierArt.groundContact.x * shipGround.width, carrierArt.groundContact.y * shipGround.height)}
                 {anchor('ship-ground-exit', carrierArt.groundExit.x * shipGround.width, carrierArt.groundExit.y * shipGround.height)}
               </div>

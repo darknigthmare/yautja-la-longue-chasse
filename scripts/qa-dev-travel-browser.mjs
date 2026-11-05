@@ -39,6 +39,7 @@ const sourceFiles = [
   'app/game/ClanShipHub.tsx', 'app/game/ClanShipInterior.tsx', 'app/game/HuntCanvas.tsx', 'app/game/ShipHub.tsx',
   'app/game/WolfCastleScene.tsx', 'app/game/PlanetArrivalCinematic.tsx',
   'app/game/systems/wolfCastle.ts', 'app/game/systems/planetArrival.ts', 'app/game/systems/planetArrivalRun.ts',
+  'app/game/systems/planetInsertion.ts', 'app/game/systems/shipInsertionEnergy.ts', 'app/game/systems/huntInsertion.ts',
   'scripts/qa-dev-travel-browser.mjs',
 ].sort();
 const sourceHashes = Object.fromEntries(await Promise.all(sourceFiles.map(async file => [
@@ -50,6 +51,7 @@ const seedBundle = await build({
       export { migrateLegacyCampaignSlot, loadCampaignSlots } from './app/game/systems/campaignSlots';
       export { DEV_DESTINATIONS, createDevSave, createDevArrival } from './app/dev/destinations';
       export { DEFAULT_SHIP_ID, shipProfileAssetPath } from './app/game/shipCatalogue';
+      export { shipInsertionCharge } from './app/game/systems/shipInsertionEnergy';
       export { WOLF_CASTLE_ROOMS, WOLF_CASTLE_ART_ROOT } from './app/game/systems/wolfCastle';
       export { wolfCastleRuntimeAsset } from './app/game/systems/wolfCastleRuntimeArt';
       export { planetArrivalAssets, planetArrivalDestination, PLANET_ARRIVAL_SHOTS } from './app/game/systems/planetArrival';`,
@@ -69,7 +71,7 @@ const report = {
   url: route.href,
   runtime: 'actual Next /dev route and production scene components',
   browserMode: headless ? 'headless' : 'headed',
-  scope: 'Direct travel, real movement and mission startup, Wolf castle rooms and approach, eight destination arrivals and three explicit insertion variants, natural and skipped handoffs, reset, URL entry, keyboard and touch, and campaign storage isolation. No complete campaign, art approval or performance qualification.',
+  scope: 'Direct travel, real movement and mission startup, Wolf castle rooms and approach, eight destination arrivals and four explicit insertion variants including a paid cloaked approach, natural and skipped handoffs, reset, URL entry, keyboard and touch, and campaign storage isolation. No complete campaign, art approval or performance qualification.',
   checks: [], captures: [], errors: [], consoleErrors: [], storageOperations: [], databaseOpens: [],
   storageChecks: [], roomVisits: [], movement: [], huntObservations: [], missingAssets: [],
   castleVisits: [], arrivalVisits: [], arrivalTransitions: [], arrivalResets: [], arrivalPauses: [], requestedAssets: [],
@@ -312,6 +314,9 @@ async function observeArrival(target = page) {
     elapsed: Number(element.getAttribute('data-arrival-elapsed')),
     method: element.getAttribute('data-arrival-method'),
     team: element.getAttribute('data-arrival-team'),
+    shipCloak: element.getAttribute('data-arrival-ship-cloak') === 'true',
+    energy: Number(element.closest('[data-dev-session]')?.getAttribute('data-dev-insertion-energy')),
+    energyRun: element.closest('[data-dev-session]')?.getAttribute('data-dev-insertion-energy-run'),
     planet: element.querySelector('[data-arrival-scene]')?.getAttribute('data-arrival-planet'),
     ship: element.querySelector('[data-arrival-scene]')?.getAttribute('data-arrival-ship'),
     hunter: element.querySelector('[data-arrival-hunter]')?.getAttribute('data-arrival-hunter'),
@@ -383,6 +388,9 @@ async function arrivalReady(expected, target = page) {
   assert.equal(value.hunter, expected.hunter);
   assert.equal(value.method, expected.insertion.method);
   assert.equal(value.team, expected.insertion.team);
+  assert.equal(value.shipCloak, !!expected.insertion.shipCloak);
+  assert.equal(value.energy, expected.energy);
+  assert.equal(value.energyRun, expected.insertion.shipCloak ? value.run : null);
   assert.equal(value.spawn, `${expected.missionId}:spawn`);
   assert.equal(await target.locator('[data-arrival-run] h1').textContent(), expected.name);
   assert.ok((await target.locator('[data-arrival-run]').textContent()).includes(expected.title), 'The arrival must name its actual mission.');
@@ -500,6 +508,7 @@ try {
         planet: state.destinationId, ship: state.personalShipId, hunter: state.hunterPresetId,
         explicitInsertion: state.insertion !== undefined,
         insertion: state.insertion ?? { version: 1, method: 'pod', team: 'solo' },
+        energy: api.shipInsertionCharge(fixture.shipInsertionEnergy, fixture.createdAt, state.personalShipId),
         assets: api.planetArrivalAssets(state) };
     });
     return {
@@ -695,9 +704,9 @@ try {
     assert.equal(await page.locator('[data-wolf-castle-status]').count(), 0);
   });
 
-  await check('Eight destination arrivals and three insertion variants preload their real resources and preserve their identities', async () => {
+  await check('Eight destination arrivals and four insertion variants preload their real resources and preserve their paid identities', async () => {
     assert.equal(seeded.arrivals.filter(arrival => !arrival.explicitInsertion).length, 8);
-    assert.equal(seeded.arrivals.filter(arrival => arrival.explicitInsertion).length, 3);
+    assert.equal(seeded.arrivals.filter(arrival => arrival.explicitInsertion).length, 4);
     await page.locator('[data-dev-category="arrivals"]').click();
     assert.equal(await page.locator('[data-dev-launch]').count(), seeded.arrivals.length);
     for (const expected of seeded.arrivals) {

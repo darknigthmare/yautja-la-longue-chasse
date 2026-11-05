@@ -31,7 +31,7 @@ test("GameClient freezes one departure before mounting its monotonic hunt sessio
   assert.ok(mountBlock);
   assert.match(
     launchBlock,
-    /const runtimeWrite = writeSaveWithStatus\(normalizeSave\(save\)\)/,
+    /const runtimeWrite = writeSaveWithStatus\(normalizeSave\(saveRef\.current\)\)/,
   );
   assert.match(launchBlock, /const runtimeSave = runtimeWrite\.save/);
   assert.match(launchBlock, /setSave\(runtimeSave\)/);

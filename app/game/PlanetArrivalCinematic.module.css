@@ -19,6 +19,7 @@
 .shipIdentity span { font-size: 9px; color: #7f8b94; letter-spacing: .15em; }
 .shipIdentity strong { color: #d6d0bd; font-size: 12px; font-weight: 500; overflow-wrap: anywhere; }
 .shipIdentity small { color: #7f8b94; font-size: 11px; }
+.shipIdentity .cloakStatus { display: block; color: #9ac6cc; font-size: 10px; line-height: 1.4; }
 .scene { position: relative; width: 100%; min-width: 0; aspect-ratio: 16 / 9; min-height: 190px; max-height: 660px; overflow: hidden; isolation: isolate; background: #020308; }
 .stage { position: absolute; left: 0; top: 0; transform-origin: 0 0; overflow: hidden; isolation: isolate; pointer-events: none; }
 .spatialAnchor { position: absolute; display: block; width: 0; height: 0; pointer-events: none; }
@@ -29,6 +30,12 @@
 .planetImage { width: 100%; height: 100%; border-radius: 50%; object-fit: contain; filter: brightness(.82) saturate(.9); }
 .carrier { position: absolute; transform-origin: 50% 50%; z-index: 4; pointer-events: none; }
 .carrierArt { position: relative; width: 100%; height: 100%; }
+/* The field samples the scene behind the real alpha silhouette. Only its paint
+   changes: the hull box, source orientation and every socket keep their geometry. */
+.shipOptics { position: relative; width: 100%; height: 100%; }
+.shipHull { position: relative; width: 100%; height: 100%; z-index: 2; }
+.shipRefraction { position: absolute; inset: 0; z-index: 1; pointer-events: none; mask-size: 100% 100%; -webkit-mask-size: 100% 100%; mask-repeat: no-repeat; -webkit-mask-repeat: no-repeat; backdrop-filter: blur(.65px); -webkit-backdrop-filter: blur(.65px); background: linear-gradient(120deg, #c7e5e50c, transparent 45%, #a9d9e012); }
+.shipCloakRim { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 3; pointer-events: none; }
 /* Every sprite box uses the source aspect ratio; source-pixel pivots remain exact. */
 .fullAsset { display: block; width: 100%; height: 100%; pointer-events: none; user-select: none; }
 .litSprite { position: relative; isolation: isolate; }

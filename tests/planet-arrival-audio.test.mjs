@@ -20,7 +20,7 @@ const state = (elapsedMs = 0, overrides = {}) =>
   ({ ...arrival.startPlanetArrival(arrival.createPlanetArrival(input)), elapsedMs, ...overrides });
 
 function harness(saved = state(0)) {
-  const played = [], sounds = [], transitions = [], calls = [];
+  const played = [], sounds = [], transitions = [], ambiences = [], calls = [];
   let activeLoop = null, observed = saved, available = true;
   const voice = {
     play(sound) {
@@ -34,8 +34,8 @@ function harness(saved = state(0)) {
       sounds.push(sound);
       return true;
     },
-    loop(key) {
-      if (activeLoop !== key) transitions.push(key);
+    loop(key, sound) {
+      if (activeLoop !== key) { transitions.push(key); ambiences.push({ key, sound }); }
       activeLoop = key;
       calls.push('loop');
     },
@@ -45,7 +45,7 @@ function harness(saved = state(0)) {
   };
   const director = new PlanetArrivalAudio(voice, saved);
   return {
-    director, played, sounds, transitions, calls,
+    director, played, sounds, transitions, ambiences, calls,
     sync(next, ...options) { observed = next; director.sync(next, ...options); },
     setAvailable(value) { available = value; },
     get activeLoop() { return activeLoop; },
@@ -473,4 +473,91 @@ test('ship/trio pause, reload, external jumps and reduced motion cannot queue a 
     assert.deepEqual(reduced.played, cues.filter(cue => !cue.motionOnly).map(cue => cue.id));
     reduced.director.dispose();
   }
+});
+
+test('only an opted-in ship sounds the optical field, once for the shared hull even with a trio', () => {
+  for (const insertion of [undefined, { version: 1, method: 'ship', team: 'solo' },
+    { version: 1, method: 'ship', team: 'triad', shipCloak: false },
+    { version: 1, method: 'pod', team: 'triad', shipCloak: true }]) {
+    assert.ok(planetArrivalSoundCues(state(0, { insertion })).every(cue => !cue.id.startsWith('ship-cloak-')));
+  }
+  for (const team of ['solo', 'triad']) {
+    const insertion = { version: 1, method: 'ship', team, shipCloak: true };
+    const cues = planetArrivalSoundCues(state(0, { insertion })).filter(cue => cue.id.startsWith('ship-cloak-'));
+    assert.deepEqual(cues.map(cue => [cue.id, cue.atMs]), [
+      ['ship-cloak-on', presentation.ARRIVAL_SHIP_CLOAK_ACTIVATION_MS],
+      ['ship-cloak-off', presentation.ARRIVAL_SHIP_CLOAK_RELEASE_START_MS],
+    ]);
+    assert.ok(cues[0].atMs > 0 && cues[0].atMs < arrival.PLANET_ARRIVAL_SHOTS.find(shot => shot.id === 'carrier').startMs);
+    const off = cues[1], layers = [...off.sound.tones, ...off.sound.noises];
+    const endMs = off.atMs + 1_000 * Math.max(...layers.map(layer => (layer.delay ?? 0) + layer.duration));
+    assert.equal(endMs, presentation.ARRIVAL_SHIP_CLOAK_RELEASE_END_MS);
+    assert.ok(endMs < presentation.ARRIVAL_CONTACT_MS);
+    assert.ok(cues.every(cue => !cue.motionOnly), 'the optical release remains visible in reduced-motion mode');
+  }
+});
+
+test('cloaked solo and trio play each optical event once and retain the exact audible engine mix', () => {
+  for (const team of ['solo', 'triad']) for (const reduced of [false, true]) {
+    const insertion = { version: 1, method: 'ship', team, shipCloak: true };
+    const uncloaked = { version: 1, method: 'ship', team };
+    const f = harness(state(0, { insertion })), baseline = harness(state(0, { insertion: uncloaked }));
+    let timeline = state(0, { insertion });
+    while (timeline.status === 'playing') {
+      timeline = arrival.advancePlanetArrival(timeline, 100);
+      f.sync(timeline, true, reduced);
+      baseline.sync({ ...timeline, insertion: uncloaked }, true, reduced);
+    }
+    assert.deepEqual(f.played, planetArrivalSoundCues(timeline).filter(cue => !reduced || !cue.motionOnly).map(cue => cue.id));
+    assert.deepEqual(f.played.filter(id => id.startsWith('ship-cloak-')), ['ship-cloak-on', 'ship-cloak-off']);
+    assert.deepEqual(f.ambiences, baseline.ambiences, 'optical camouflage must never silence or attenuate the reactor');
+    const reactor = f.ambiences.find(ambient => ambient.key === 'ship:atmosphere').sound;
+    assert.ok(reactor.tones.some(tone => tone.gain > 0) && reactor.noises.some(noise => noise.gain > 0));
+    assert.equal(f.activeLoop, null); assert.equal(baseline.activeLoop, null);
+    f.director.dispose(); baseline.director.dispose();
+  }
+});
+
+test('pausing, a blocked checkpoint or a delayed audio unlock cannot repeat either optical transition', () => {
+  const insertion = { version: 1, method: 'ship', team: 'triad', shipCloak: true };
+  const cues = planetArrivalSoundCues(state(0, { insertion })).filter(cue => cue.id.startsWith('ship-cloak-'));
+  for (const cue of cues) {
+    const f = harness(state(cue.atMs - 1, { insertion }));
+    f.sync(state(cue.atMs, { insertion }));
+    f.sync(state(cue.atMs, { insertion, status: 'paused' }));
+    assert.equal(f.activeLoop, null);
+    f.director.unlock(); f.sync(state(cue.atMs, { insertion })); f.sync(state(cue.atMs + 1, { insertion }));
+    assert.deepEqual(f.played, [cue.id]); f.director.dispose();
+    for (const blocked of ['checkpoint', 'unlock']) {
+      const g = harness(state(cue.atMs - 1, { insertion }));
+      g.sync(state(cue.atMs - 1, { insertion }));
+      if (blocked === 'unlock') g.setAvailable(false);
+      g.sync(state(cue.atMs, { insertion }), blocked !== 'checkpoint');
+      g.setAvailable(true); g.director.unlock(); g.sync(state(cue.atMs + 1, { insertion }));
+      assert.deepEqual(g.played, [], `${cue.id}/${blocked}`); g.director.dispose();
+    }
+  }
+});
+
+test('skip, external seeks and a restored landing never replay an already consumed cloak event', () => {
+  const insertion = { version: 1, method: 'ship', team: 'solo', shipCloak: true };
+  for (const status of ['handoff-pending', 'recoverable-error', 'complete']) {
+    const f = harness(state(0, { insertion }));
+    f.sync(state(0, { insertion }));
+    f.sync(state(62_000, { insertion, status }));
+    assert.deepEqual(f.played, []); assert.equal(f.activeLoop, null); f.director.dispose();
+  }
+  const seek = harness(state(0, { insertion }));
+  seek.sync(state(presentation.ARRIVAL_SHIP_CLOAK_RELEASE_END_MS, { insertion }));
+  assert.deepEqual(seek.played, []); seek.director.dispose();
+  const saved = state(52_800, { insertion });
+  const f = harness(saved);
+  let timeline = arrival.startPlanetArrival(arrival.resumePlanetArrival(saved));
+  while (timeline.status === 'playing') {
+    timeline = arrival.advancePlanetArrival(timeline, 100);
+    f.sync(timeline);
+  }
+  assert.ok(f.played.includes('ship-setdown'));
+  assert.ok(f.played.every(id => !id.startsWith('ship-cloak-')));
+  f.director.dispose();
 });

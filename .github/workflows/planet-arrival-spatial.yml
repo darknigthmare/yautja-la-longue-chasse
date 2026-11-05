@@ -7,6 +7,7 @@ on:
       - 'app/game/PlanetArrivalCinematic*'
       - 'app/game/systems/planetArrival*.ts'
       - 'app/game/systems/planetInsertion.ts'
+      - 'app/game/systems/shipInsertionEnergy.ts'
       - 'app/game/systems/huntInsertion.ts'
       - 'app/game/InsertionPlanPanel*'
       - 'app/game/HunterRigPreview.tsx'
@@ -21,6 +22,7 @@ on:
       - 'public/game/planet-arrival/**'
       - 'tests/planet-arrival*.test.mjs'
       - 'tests/planet-insertion.test.mjs'
+      - 'tests/ship-insertion-energy.test.mjs'
       - 'tests/hunt-insertion.test.mjs'
       - 'tests/fixtures/wolf-arrival-browser-assets.json'
       - 'tests/fixtures/clan-ship-browser-assets.json'
@@ -135,9 +137,9 @@ jobs:
         run: |
           node node_modules/next/dist/bin/next typegen
           npm run typecheck
-          node node_modules/eslint/bin/eslint.js --max-warnings=0 app/game/PlanetArrivalCinematic.tsx app/game/InsertionPlanPanel.tsx app/game/systems/planetArrival*.ts app/game/systems/planetInsertion.ts app/game/systems/huntInsertion.ts scripts/qa-planet-arrival-spatial.mjs tests/planet-arrival*.test.mjs tests/planet-insertion.test.mjs tests/hunt-insertion.test.mjs
+          node node_modules/eslint/bin/eslint.js --max-warnings=0 app/game/PlanetArrivalCinematic.tsx app/game/InsertionPlanPanel.tsx app/game/systems/planetArrival*.ts app/game/systems/planetInsertion.ts app/game/systems/shipInsertionEnergy.ts app/game/systems/huntInsertion.ts scripts/qa-planet-arrival-spatial.mjs tests/planet-arrival*.test.mjs tests/planet-insertion.test.mjs tests/ship-insertion-energy.test.mjs tests/hunt-insertion.test.mjs
       - name: Geometry, timeline and audio regressions
-        run: node --experimental-strip-types --test --test-concurrency=1 tests/planet-arrival*.test.mjs tests/planet-insertion.test.mjs tests/hunt-insertion.test.mjs
+        run: node --experimental-strip-types --test --test-concurrency=1 tests/planet-arrival*.test.mjs tests/planet-insertion.test.mjs tests/ship-insertion-energy.test.mjs tests/hunt-insertion.test.mjs
       - name: Build the production application used by the native route
         shell: bash
         run: |

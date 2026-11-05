@@ -15,6 +15,7 @@ on:
       - 'app/game/systems/wolfCastle*.ts'
       - 'app/game/systems/planetArrival*.ts'
       - 'app/game/systems/planetInsertion.ts'
+      - 'app/game/systems/shipInsertionEnergy.ts'
       - 'app/game/systems/huntInsertion.ts'
       - 'app/game/InsertionPlanPanel*'
       - 'app/game/systems/campaignSlots.ts'
@@ -25,6 +26,7 @@ on:
       - 'tests/wolf-*.test.mjs'
       - 'tests/planet-arrival*.test.mjs'
       - 'tests/planet-insertion.test.mjs'
+      - 'tests/ship-insertion-energy.test.mjs'
       - 'tests/hunt-insertion.test.mjs'
       - 'tests/scene-audio.test.mjs'
       - 'tests/sound-lifecycle.test.mjs'
@@ -105,12 +107,12 @@ jobs:
           app/game/GameClient.tsx app/game/CampaignMainMenu.tsx app/game/save.ts app/game/types.ts
           app/game/worldScreens.ts
           app/game/systems/wolfCastle*.ts app/game/systems/planetArrival*.ts
-          app/game/systems/planetInsertion.ts app/game/systems/huntInsertion.ts app/game/InsertionPlanPanel.tsx
+          app/game/systems/planetInsertion.ts app/game/systems/shipInsertionEnergy.ts app/game/systems/huntInsertion.ts app/game/InsertionPlanPanel.tsx
           app/game/systems/sceneAudio.ts app/game/sound.ts
           app/game/systems/campaignSlots.ts app/game/systems/completeArchive.ts app/game/systems/mainMenuModesV81.ts
           scripts/qa-wolf-arrival-browser.mjs scripts/build-wolf-runtime-art.mjs tests/wolf-castle*.test.mjs
           tests/planet-arrival*.test.mjs tests/scene-audio.test.mjs tests/wolf-arrival-save.test.mjs
-          tests/planet-insertion.test.mjs tests/hunt-insertion.test.mjs
+          tests/planet-insertion.test.mjs tests/ship-insertion-energy.test.mjs tests/hunt-insertion.test.mjs
           tests/game-client-ship-flow.test.mjs
       - name: Audit original PNGs, exact alpha and individual WebP runtime images
         run: node scripts/build-wolf-runtime-art.mjs --check
@@ -118,7 +120,7 @@ jobs:
         run: >-
           node --experimental-strip-types --test --test-concurrency=1
           tests/wolf-castle*.test.mjs tests/planet-arrival*.test.mjs tests/wolf-arrival-save.test.mjs
-          tests/planet-insertion.test.mjs tests/hunt-insertion.test.mjs
+          tests/planet-insertion.test.mjs tests/ship-insertion-energy.test.mjs tests/hunt-insertion.test.mjs
           tests/scene-audio.test.mjs tests/sound-lifecycle.test.mjs
           tests/clan-ship-docking.test.mjs tests/clan-ship-save.test.mjs
           tests/complete-archive.test.mjs tests/campaign-slots.test.mjs

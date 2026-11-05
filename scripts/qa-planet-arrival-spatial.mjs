@@ -43,7 +43,7 @@ await fs.mkdir(out, { recursive: true });
 const sourceFiles = [
   'app/game/PlanetArrivalCinematic.tsx', 'app/game/PlanetArrivalCinematic.module.css',
   'app/game/HunterRigPreview.tsx', 'app/game/hunterRig.ts', 'app/game/worldScreens.ts', 'app/game/shipCatalogue.ts',
-  'app/game/HuntCanvas.tsx', 'app/game/systems/planetInsertion.ts', 'app/game/systems/huntInsertion.ts',
+  'app/game/HuntCanvas.tsx', 'app/game/systems/planetInsertion.ts', 'app/game/systems/shipInsertionEnergy.ts', 'app/game/systems/huntInsertion.ts',
   'app/dev/session.tsx', 'app/dev/destinations.ts', 'app/dev/client.tsx',
   'scripts/qa-planet-arrival-spatial.mjs',
   ...(await fs.readdir(path.join(root, 'app/game/systems')))
@@ -56,7 +56,7 @@ const report = {
   schema: 1, startedAt: new Date().toISOString(), sourceCommit,
   workingTreeDirty: git('status', '--porcelain').length > 0, sourceHashes,
   browserMode: headed ? 'headed' : 'headless',
-  scope: 'Actual component rendering at native shot boundaries on desktop/mobile; all eight destinations; seven representative orbital hulls; four insertion combinations and three grounded hull profiles; natural production /dev arrival and real hunt handoffs. Spatial evidence is distinct from artistic or canonical approval. Ship contact and exit points follow source composition, without a claim about canonical landing gear or release bays.',
+  scope: 'Actual component rendering at native shot boundaries on desktop/mobile; all eight destinations; seven representative orbital hulls; four insertion combinations plus paid optical camouflage, and three grounded hull profiles; natural production /dev arrival and real hunt handoffs. Spatial evidence is distinct from artistic or canonical approval. Ship contact and exit points follow source composition, without a claim about canonical landing gear or release bays.',
   timing: 'Unmodified native requestAnimationFrame. Samples wait for elapsed-time thresholds and retain observed times; no virtual or accelerated clock.',
   nativeUrl: nativeUrl.href, checks: [], samples: [], movement: [], captures: [],
   resizes: [], ships: [], insertions: [], native: {}, errors: [], consoleErrors: [], missingAssets: [], requestedAssets: [],
@@ -72,7 +72,8 @@ const fixtureBundle = await build({
       export { defaultSave } from './app/game/save';
       export { DEFAULT_SHIP_ID, isShipId, shipProfileAssetPath } from './app/game/shipCatalogue';
       export { carrierArtForShip } from './app/game/systems/planetArrivalArt';
-      export { ARRIVAL_CONTACT_MS, arrivalFormationSlots } from './app/game/systems/planetArrivalPresentation';
+      export { ARRIVAL_CONTACT_MS, ARRIVAL_HUNTER_MOVE_END_MS, arrivalFormationSlots,
+        arrivalShipCloakFrame } from './app/game/systems/planetArrivalPresentation';
       export { arrivalSurfaceShipGeometry } from './app/game/systems/planetArrivalSpatial';
       export { expeditionMemberAppearance, expeditionMemberLoadout } from './app/game/systems/planetInsertion';
       export { hunterDreadPath, HUNTER_GEAR_V3 } from './app/game/hunterVisuals';`,
@@ -98,6 +99,7 @@ const insertionVariants = [
   { id: 'ship-solo', plan: { version: 1, method: 'ship', team: 'solo' } },
   { id: 'pod-triad', plan: { version: 1, method: 'pod', team: 'triad' } },
   { id: 'ship-triad', plan: { version: 1, method: 'ship', team: 'triad' } },
+  { id: 'ship-cloaked-triad', plan: { version: 1, method: 'ship', team: 'triad', shipCloak: true } },
 ];
 
 async function startHarness() {
@@ -126,6 +128,7 @@ async function startHarness() {
     const ship = query.get('ship') ?? DEFAULT_SHIP_ID;
     const insertion = query.has('method') || query.has('team') ? normalizePlanetInsertionPlan({
       version: 1, method: query.get('method'), team: query.get('team'),
+      ...(query.get('cloak') === '1' ? { shipCloak: true } : {}),
     }) : undefined;
     if (!mission || !shot || !isShipId(ship)) throw new Error('Unknown spatial-audit fixture.');
     if (insertion === null) throw new Error('Unknown insertion plan.');
@@ -265,6 +268,31 @@ async function readFrame(target = page) {
     });
     const groundShip = root.querySelector('[data-arrival-ground-ship]');
     const shipImage = groundShip?.querySelector('img');
+    const cloakHulls = [...root.querySelectorAll('[data-arrival-cloak-strength]')].map(element => {
+      const body = element.querySelector('[data-arrival-cloak-body]');
+      const lens = element.querySelector('[data-arrival-cloak-refraction]');
+      const rim = element.querySelector('[data-arrival-cloak-rim]');
+      const lensStyle = lens ? getComputedStyle(lens) : null;
+      const filterId = lensStyle?.backdropFilter.match(/#([^"')]+)/)?.[1];
+      const filter = filterId ? document.getElementById(decodeURIComponent(filterId)) : null;
+      const offset = filter?.querySelector('feOffset');
+      const displacement = filter?.querySelector('feDisplacementMap');
+      const image = element.querySelector('img');
+      return {
+        role: element.hasAttribute('data-arrival-ground-ship') ? 'ground-ship' : 'carrier',
+        strength: Number(element.getAttribute('data-arrival-cloak-strength')), opacity: opacity(element),
+        source: image?.getAttribute('src'), image: rect(image),
+        body: body ? { opacity: Number(getComputedStyle(body).opacity), ...rect(body) } : null,
+        lens: lens ? { source: lens.getAttribute('data-arrival-cloak-refraction'), ...rect(lens),
+          opacity: Number(lensStyle.opacity), mask: lensStyle.maskImage, size: lensStyle.maskSize,
+          repeat: lensStyle.maskRepeat, filter: lensStyle.backdropFilter,
+          animation: lensStyle.animationName, transition: lensStyle.transitionDuration } : null,
+        rim: rim ? { source: rim.getAttribute('data-arrival-cloak-rim'), ...rect(rim),
+          opacity: Number(getComputedStyle(rim).opacity), href: rim.querySelector('image')?.getAttribute('href') } : null,
+        distortion: offset && displacement ? { x: Number(offset.getAttribute('dx')), y: Number(offset.getAttribute('dy')),
+          scale: Number(displacement.getAttribute('scale')) } : null,
+      };
+    });
     const lights = [...root.querySelectorAll('[data-arrival-lit]')].map(element => {
       const mask = element.querySelector('[data-arrival-light-mask]');
       const style = mask ? getComputedStyle(mask) : null;
@@ -294,6 +322,9 @@ async function readFrame(target = page) {
       status: root.getAttribute('data-arrival-status'), elapsedMs: Number(root.getAttribute('data-arrival-elapsed')),
       reducedMotion: root.getAttribute('data-arrival-reduced-motion') === 'true',
       method: root.getAttribute('data-arrival-method'), team: root.getAttribute('data-arrival-team'),
+      shipCloak: root.getAttribute('data-arrival-ship-cloak') === 'true',
+      sceneShipCloak: root.querySelector('[data-arrival-scene]')?.getAttribute('data-arrival-ship-cloak') === 'true',
+      cloakPhase: root.querySelector('[data-arrival-scene]')?.getAttribute('data-arrival-cloak-phase'), cloakHulls,
       contact: root.querySelector('[data-arrival-scene]')?.getAttribute('data-arrival-contact') === 'true',
       scene: rect(root.querySelector('[data-arrival-scene]')), stage: rect(stage),
       stageLayout: stage ? { width: stage.offsetWidth, height: stage.offsetHeight, transform: getComputedStyle(stage).transform } : null,
@@ -391,6 +422,39 @@ function assertSpatial(frame, label) {
   assert.doesNotMatch(frame.statusText, /indisponible|n’a pas pu|pas été confirmé/i, `${label}: scene reported a runtime failure.`);
   assert.ok(['pod', 'ship'].includes(frame.method), `${label}: insertion method must be explicit.`);
   assert.ok(['solo', 'triad'].includes(frame.team), `${label}: expedition size must be explicit.`);
+  assert.equal(frame.sceneShipCloak, frame.shipCloak, `${label}: the scene must retain the accepted optical mode.`);
+  if (frame.shipCloak) assert.equal(frame.method, 'ship', `${label}: capsules cannot inherit ship camouflage.`);
+  const cloak = api.arrivalShipCloakFrame(frame.elapsedMs,
+    { version: 1, method: frame.method, team: frame.team, ...(frame.shipCloak ? { shipCloak: true } : {}) }, frame.reducedMotion);
+  assert.equal(frame.cloakPhase, cloak.phase, `${label}: optical release must follow the saved cinematic clock.`);
+  for (const hull of frame.cloakHulls) {
+    assert.ok(Math.abs(hull.strength - cloak.strength) < .002, `${label}: hull camouflage must follow its real elapsed time.`);
+    assert.equal(hull.source, api.shipProfileAssetPath(frame.ship), `${label}: camouflage must retain the selected real hull.`);
+    if (!frame.shipCloak) {
+      assert.equal(hull.body, null); assert.equal(hull.lens, null); assert.equal(hull.rim, null);
+      continue;
+    }
+    assert.ok(hull.body && hull.image, `${label}: camouflage needs the real body beneath its optical layers.`);
+    assert.ok(Math.abs(hull.body.opacity - cloak.hullOpacity) < .002, `${label}: the partially visible hull must use the saved optical envelope.`);
+    if (hull.strength === 0) {
+      assert.equal(hull.body.opacity, 1, `${label}: the full opaque hull must return before ground contact.`);
+      assert.equal(hull.lens, null); assert.equal(hull.rim, null);
+      continue;
+    }
+    assert.ok(hull.lens && hull.rim && hull.distortion, `${label}: active camouflage needs actual masked refraction, rim and SVG displacement.`);
+    assert.equal(hull.lens.source, hull.source); assert.equal(hull.rim.source, hull.source); assert.equal(hull.rim.href, hull.source);
+    assert.ok(hull.lens.mask.includes(hull.source), `${label}: refraction must be masked to the same painted silhouette.`);
+    assert.equal(hull.lens.size, '100% 100%'); assert.equal(hull.lens.repeat, 'no-repeat');
+    assert.equal(hull.lens.animation, 'none'); assert.equal(hull.lens.transition, '0s');
+    for (const layer of [hull.body, hull.lens, hull.rim]) assert.ok(['x', 'y', 'width', 'height'].every(key =>
+      Math.abs(layer[key] - hull.image[key]) < 1), `${label}: an optical layer drifted away from the real ship rectangle.`);
+    assert.ok(Math.abs(hull.lens.opacity - cloak.refractionOpacity) < .002);
+    assert.ok(Math.abs(hull.rim.opacity - cloak.rimOpacity) < .002);
+    for (const [key, expected] of [['x', cloak.noiseOffsetX], ['y', cloak.noiseOffsetY], ['scale', cloak.distortionScale]]) {
+      assert.ok(Math.abs(hull.distortion[key] - expected) < .02, `${label}: optical turbulence must be derived from the saved clock.`);
+      if (frame.reducedMotion) assert.equal(hull.distortion[key], 0, `${label}: reduced motion must stop optical turbulence.`);
+    }
+  }
   assert.equal(new Set(frame.anchorIds).size, frame.anchorIds.length, `${label}: formation anchors must not overwrite one another.`);
   const formation = api.arrivalFormationSlots(frame.team);
   assert.deepEqual(frame.members.map(member => member.id), formation.map(slot => slot.id),
@@ -588,8 +652,8 @@ function assertSpatial(frame, label) {
     `${label}: ballistic debris must not precede impact or override reduced motion.`);
 }
 
-async function capture(label, target = page) {
-  const decodedSvg = await decodeSceneImages(target);
+async function capture(label, target = page, options = {}) {
+  const decodedSvg = options.decodedSvg ?? await decodeSceneImages(target);
   const before = { ...await readFrame(target), decodedSvg };
   assertSpatial(before, label);
   const file = label + '.png';
@@ -600,6 +664,50 @@ async function capture(label, target = page) {
     shot: before.shot, elapsedBefore: before.elapsedMs, elapsedAfter: after.elapsedMs });
   report.samples.push({ label, ...before });
   return before;
+}
+
+// Narrow native intervals must not spend their remaining time decoding images
+// or walking hundreds of computed-style ancestors before requesting the PNG.
+// Read the live clock and stage tags, capture the unchanged visible rectangle,
+// then measure the complete geometry. The report preserves both observations.
+async function captureMoment(label, prepared, target = page) {
+  const before = await target.locator('[data-arrival-run]').evaluate(root => ({
+    elapsedMs: Number(root.getAttribute('data-arrival-elapsed')),
+    shot: root.getAttribute('data-arrival-shot'), status: root.getAttribute('data-arrival-status'),
+    cloakPhase: root.querySelector('[data-arrival-scene]')?.getAttribute('data-arrival-cloak-phase'),
+    contact: root.querySelector('[data-arrival-scene]')?.getAttribute('data-arrival-contact') === 'true',
+    cloakHulls: [...root.querySelectorAll('[data-arrival-cloak-strength]')].map(hull => ({
+      strength: Number(hull.getAttribute('data-arrival-cloak-strength')),
+      bodyOpacity: hull.querySelector('[data-arrival-cloak-body]')
+        ? Number(getComputedStyle(hull.querySelector('[data-arrival-cloak-body]')).opacity) : null,
+      lens: !!hull.querySelector('[data-arrival-cloak-refraction]'), rim: !!hull.querySelector('[data-arrival-cloak-rim]'),
+    })),
+    members: [...root.querySelectorAll('[data-arrival-hunter]')].map(member => ({
+      id: member.getAttribute('data-arrival-member'), stage: member.getAttribute('data-arrival-hunter-stage'),
+      contact: member.getAttribute('data-arrival-hunter-contact'),
+    })),
+  }));
+  assert.equal(before.status, 'playing', `${label}: a visual evidence capture must precede the terminal overlay.`);
+  const { x, y, width, height } = prepared.scene;
+  assert.ok(x >= 0 && y >= 0 && x + width <= target.viewportSize().width + 1 &&
+    y + height <= target.viewportSize().height + 1, `${label}: the unmodified scene must fit the screenshot viewport.`);
+  const bytes = await target.screenshot({ clip: { x, y, width, height }, animations: 'allow' });
+  const measured = { ...await readFrame(target), decodedSvg: prepared.decodedSvg };
+  assertSpatial(measured, label);
+  const file = label + '.png';
+  await fs.writeFile(path.join(out, file), bytes);
+  report.captures.push({ file, sha256: sha256(bytes), viewport: target.viewportSize(), shot: before.shot,
+    elapsedBefore: before.elapsedMs, elapsedAfter: measured.elapsedMs,
+    observation: 'Live clock immediately before screenshot; complete geometry measured after screenshot.' });
+  report.samples.push({ label, ...measured, capturedBefore: before });
+  return { frame: measured, capturedBefore: before };
+}
+
+async function prepareMoment(target = page) {
+  const decodedSvg = await decodeSceneImages(target);
+  const scene = await target.locator('[data-arrival-scene]').boundingBox();
+  assert.ok(scene);
+  return { decodedSvg, scene };
 }
 
 async function waitElapsed(milliseconds, shotId, target = page, allowComplete = false) {
@@ -636,7 +744,10 @@ async function openShot(missionId, shotId, reducedMotion = false, shipId = api.D
   const url = new URL(`http://127.0.0.1:${harnessPort}/`);
   url.searchParams.set('mission', missionId); url.searchParams.set('shot', shotId);
   url.searchParams.set('ship', shipId);
-  if (insertion) { url.searchParams.set('method', insertion.method); url.searchParams.set('team', insertion.team); }
+  if (insertion) {
+    url.searchParams.set('method', insertion.method); url.searchParams.set('team', insertion.team);
+    if (insertion.shipCloak) url.searchParams.set('cloak', '1');
+  }
   if (reducedMotion) url.searchParams.set('reduced', '1');
   await page.goto(url.href, { waitUntil: 'domcontentloaded', timeout: 60000 });
   await ready();
@@ -781,12 +892,13 @@ try {
     }
     for (const variant of insertionVariants) {
       await check(`${viewport.id}: ${variant.id} real flight, contact and complete disembarkation`, async () => {
-        for (const shotId of ['release', 'atmosphere']) {
+        for (const shotId of variant.plan.shipCloak ? ['carrier', 'release', 'atmosphere'] : ['release', 'atmosphere']) {
           await openShot(primaryMission.id, shotId, false, api.DEFAULT_SHIP_ID, variant.plan);
           const shot = api.PLANET_ARRIVAL_SHOTS.find(candidate => candidate.id === shotId);
           await waitElapsed(shot.startMs + (shot.endMs - shot.startMs) * (shotId === 'release' ? .12 : .55), shotId);
           const frame = await capture(`${viewport.id}-${variant.id}-${shotId}`);
           assert.equal(frame.method, variant.plan.method); assert.equal(frame.team, variant.plan.team);
+          assert.equal(frame.shipCloak, !!variant.plan.shipCloak);
           if (variant.plan.method === 'pod') {
             assert.deepEqual(frame.flightPods.map(pod => pod.member), ['player', 'karhek', 'saketh']);
             if (shotId === 'atmosphere') for (const id of ['karhek', 'saketh']) {
@@ -799,9 +911,28 @@ try {
         }
         await openShot(primaryMission.id, 'landing', false, api.DEFAULT_SHIP_ID, variant.plan);
         const landing = api.PLANET_ARRIVAL_SHOTS.find(shot => shot.id === 'landing');
-        await waitElapsed(landing.startMs + (landing.endMs - landing.startMs) * .35, landing.id);
-        const approaching = await capture(`${viewport.id}-${variant.id}-before-contact`);
-        assert.equal(approaching.contact, false);
+        if (variant.plan.shipCloak) {
+          const prepared = await prepareMoment();
+          await waitElapsed(52_800, landing.id);
+          const releasing = await captureMoment(`${viewport.id}-${variant.id}-decloaking`, prepared);
+          assert.ok(releasing.capturedBefore.elapsedMs >= 52_300 && releasing.capturedBefore.elapsedMs < 53_300,
+            'The photographed release must actually occur within the one-second optical envelope.');
+          assert.equal(releasing.capturedBefore.cloakPhase, 'releasing');
+          assert.ok(releasing.capturedBefore.cloakHulls.some(hull => hull.strength > 0 && hull.strength < 1 &&
+            hull.bodyOpacity > .24 && hull.bodyOpacity < 1 && hull.lens && hull.rim));
+          // Re-enter at the native shot boundary so encoding the release PNG
+          // cannot consume the independent pre-contact evidence window.
+          await openShot(primaryMission.id, 'landing', false, api.DEFAULT_SHIP_ID, variant.plan);
+          const visiblePrepared = await prepareMoment();
+          await waitElapsed(53_400, landing.id);
+          const visible = await captureMoment(`${viewport.id}-${variant.id}-visible-before-contact`, visiblePrepared);
+          assert.equal(visible.capturedBefore.cloakPhase, 'off'); assert.equal(visible.capturedBefore.contact, false);
+          assert.ok(visible.capturedBefore.cloakHulls.some(hull => hull.strength === 0 && hull.bodyOpacity === 1 && !hull.lens && !hull.rim));
+        } else {
+          await waitElapsed(landing.startMs + (landing.endMs - landing.startMs) * .35, landing.id);
+          const approaching = await capture(`${viewport.id}-${variant.id}-before-contact`);
+          assert.equal(approaching.contact, false);
+        }
         await waitElapsed(landing.startMs + (landing.endMs - landing.startMs) * .75, landing.id);
         const grounded = await capture(`${viewport.id}-${variant.id}-grounded`);
         assert.equal(grounded.contact, true);
@@ -826,12 +957,23 @@ try {
           assertSpatial(measured, label);
           report.samples.push({ label, ...measured });
         }
-        await capture(`${viewport.id}-${variant.id}-egress-walking`);
-        const finalTime = egress.startMs + (egress.endMs - egress.startMs) * .96;
-        // The harness keeps the completed scene mounted. If encoding spans
-        // the final instant, retain that actual completed pose as evidence.
-        await waitElapsed(finalTime, egress.id, page, true);
-        const final = await capture(`${viewport.id}-${variant.id}-egress-final`);
+        // Start fresh native egress shots for visual evidence. The dense
+        // geometry samples above can consume the brief walking/final windows
+        // on CI; their execution must not decide when these PNGs are taken.
+        await openShot(primaryMission.id, 'egress', false, api.DEFAULT_SHIP_ID, variant.plan);
+        const walkingPrepared = await prepareMoment();
+        await waitElapsed(60_250, egress.id);
+        const walking = await captureMoment(`${viewport.id}-${variant.id}-egress-walking`, walkingPrepared);
+        assert.ok(walking.capturedBefore.members.some(member => member.stage === 'walking'),
+          'The walking PNG must be requested while a real formation member is walking.');
+        await openShot(primaryMission.id, 'egress', false, api.DEFAULT_SHIP_ID, variant.plan);
+        const finalPrepared = await prepareMoment();
+        const finalTime = api.ARRIVAL_HUNTER_MOVE_END_MS + Math.max(...api.arrivalFormationSlots(variant.plan.team).map(slot => slot.delayMs)) + 10;
+        await waitElapsed(finalTime, egress.id);
+        const finalCapture = await captureMoment(`${viewport.id}-${variant.id}-egress-final`, finalPrepared);
+        assert.ok(finalCapture.capturedBefore.members.every(member => member.stage === 'standing' && member.contact === 'ground'),
+          'The final PNG must be requested after every hunter is standing on the floor and before completion.');
+        const final = finalCapture.frame;
         assertFinalFormation(final, variant.plan, `${viewport.id}-${variant.id}`);
         if (variant.plan.method === 'ship') {
           assert.ok(distance(groundPoint(grounded, 'ship-ground-contact'), groundPoint(final, 'ship-ground-contact')) <= 1.5,
@@ -884,6 +1026,23 @@ try {
       assert.equal(frame.reducedMotion, true);
       assertFinalFormation(frame, variant.plan, `reduced-${variant.id}`);
     }
+  });
+  await check('Optical camouflage pauses with the real clock and keeps reduced-motion refraction static', async () => {
+    const variant = insertionVariants.find(item => item.plan.shipCloak);
+    await openShot(primaryMission.id, 'atmosphere', true, api.DEFAULT_SHIP_ID, variant.plan);
+    const frame = await capture('mobile-reduced-motion-ship-cloaked-triad-active');
+    assert.equal(frame.cloakPhase, 'active');
+    assert.ok(frame.cloakHulls.some(hull => hull.opacity > .02 && hull.strength === 1 && hull.body.opacity === .24));
+    await page.getByRole('button', { name: 'Pause', exact: true }).click();
+    await page.locator('[data-arrival-status="paused"]').waitFor();
+    const paused = await readFrame();
+    await page.waitForTimeout(200);
+    const held = await readFrame();
+    assert.equal(held.elapsedMs, paused.elapsedMs);
+    assert.deepEqual(held.cloakHulls, paused.cloakHulls, 'A real pause must freeze the complete optical surface.');
+    await page.getByRole('button', { name: 'Reprendre l’arrivée', exact: true }).click();
+    await waitElapsed(paused.elapsedMs + 100, 'atmosphere');
+    assert.equal((await readFrame()).cloakPhase, 'active');
   });
   await context.close();
 
@@ -990,61 +1149,73 @@ try {
     assert.deepEqual(await storageSnapshot(page), protectedStorage);
     report.native.skip = { runId: before.run, completedBy: 'skipped', huntCanvases: 1 };
   });
-  await check('Native ship and triad Skip preserves the actual hull, formation, patrols and usable companion orders', async () => {
-    await page.keyboard.press('F8');
-    await page.locator('[data-dev-catalogue]').waitFor();
-    await page.locator('[data-dev-category="arrivals"]').click();
-    await page.locator('[data-dev-launch="arrival-ship-triad-jungle-vey"]').click();
-    await ready();
-    const before = await capture('native-ship-triad-orbit');
-    assert.equal(before.method, 'ship'); assert.equal(before.team, 'triad');
-    const mounts = await page.evaluate(() => window.__arrivalSpatialObservations.huntMounts);
-    await page.getByRole('button', { name: /^Passer l’arrivée/ }).tap();
-    const session = page.locator('[data-dev-session="arrival-ship-triad-jungle-vey"]');
-    await session.locator('.hunt-screen canvas.hunt-canvas').waitFor({ timeout: 90000 });
-    await page.locator('[data-mission-opening-v78]').waitFor({ timeout: 90000 });
-    await session.locator('[data-hunt-surface-ship-ready="true"]').waitFor({ timeout: 90000 });
-    await page.waitForFunction(() => document.querySelector('[data-dev-session="arrival-ship-triad-jungle-vey"]')
-      ?.hasAttribute('data-dev-hunt-insertion'), null, { timeout: 30000 });
-    const snapshot = JSON.parse(await session.getAttribute('data-dev-hunt-insertion'));
-    assert.deepEqual(snapshot.plan, { version: 1, method: 'ship', team: 'triad' });
-    assert.deepEqual(snapshot.companions.map(member => member.id), ['karhek', 'saketh']);
-    assert.deepEqual(snapshot.patrolIds, [`${snapshot.runId}:insertion-patrol-0`, `${snapshot.runId}:insertion-patrol-2`],
-      'This real jungle entry has exactly two safe patrol placements; the other two are obstructed.');
-    assert.deepEqual(JSON.parse(await session.getAttribute('data-dev-hunt-insertion-patrols')), snapshot.patrolIds,
-      'Every declared insertion patrol must be present in the real persisted enemy snapshot.');
-    assert.equal(snapshot.searchUntil, 35);
-    for (const member of snapshot.companions) {
-      const slot = api.arrivalFormationSlots('triad').find(candidate => candidate.id === member.id);
-      assert.equal(member.x + member.width / 2, snapshot.origin.x + slot.offsetX,
-        'Skip must create the same exact formation centers as the final cinematic frame.');
-      assert.equal(member.y + member.height, snapshot.origin.y);
-      assert.equal(member.status, 'active'); assert.equal(member.grounded, true);
-    }
-    const hunt = session.locator('.hunt-screen');
-    assert.equal(await hunt.getAttribute('data-hunt-insertion-method'), 'ship');
-    assert.equal(await hunt.getAttribute('data-hunt-insertion-team'), 'triad');
-    assert.equal(await hunt.getAttribute('data-hunt-insertion-run-id'), before.run);
-    assert.equal(await hunt.getAttribute('data-hunt-insertion-ship-id'), before.ship);
-    assert.equal(await session.getAttribute('data-dev-arrival-completed-by'), 'skipped');
-    assert.equal(await session.getAttribute('data-dev-arrival-run'), before.run);
-    assert.equal(await page.evaluate(() => window.__arrivalSpatialObservations.huntMounts), mounts + 1);
-    await page.getByRole('button', { name: 'Commencer la chasse', exact: true }).click();
-    await page.locator('[data-mission-opening-v78]').waitFor({ state: 'hidden' });
-    await session.locator('canvas.hunt-canvas').screenshot({ path: path.join(out, 'native-ship-triad-hunt-canvas.png') });
-    const details = page.locator('.hunt-screen details').filter({ has: page.locator('summary').filter({ hasText: /^Détails/ }) });
-    if (await details.getAttribute('open') === null) await details.locator('summary').click();
-    await page.getByRole('button', { name: 'Ka’rhek : tenir la position', exact: true }).click();
-    await page.locator('[data-hunt-companion-id="karhek"][data-hunt-companion-order="hold"]').waitFor();
-    await page.getByRole('button', { name: 'Ka’rhek : suivre', exact: true }).click();
-    await page.locator('[data-hunt-companion-id="karhek"][data-hunt-companion-order="follow"]').waitFor();
-    await page.screenshot({ path: path.join(out, 'native-ship-triad-hunt-orders.png'), fullPage: false });
-    assert.equal(await page.evaluate(() => window.__arrivalSpatialObservations.huntMounts), mounts + 1,
-      'Real companion commands must preserve the same running hunt.');
-    assert.deepEqual(await storageSnapshot(page), protectedStorage);
-    report.native.shipTriad = { runId: before.run, completedBy: 'skipped', huntCanvases: 1, snapshot,
-      observedOrders: ['hold', 'follow'], surfaceShip: before.ship };
-  });
+  for (const variant of insertionVariants.filter(item => item.plan.method === 'ship' && item.plan.team === 'triad')) {
+    await check(`Native ${variant.id} Skip preserves the actual hull, paid plan, pressure and usable companion orders`, async () => {
+      const destinationId = `arrival-${variant.id}-jungle-vey`;
+      await page.keyboard.press('F8');
+      await page.locator('[data-dev-catalogue]').waitFor();
+      await page.locator('[data-dev-category="arrivals"]').click();
+      await page.locator(`[data-dev-launch="${destinationId}"]`).click();
+      await ready();
+      const before = await capture(`native-${variant.id}-orbit`);
+      assert.equal(before.method, 'ship'); assert.equal(before.team, 'triad');
+      assert.equal(before.shipCloak, !!variant.plan.shipCloak);
+      const session = page.locator(`[data-dev-session="${destinationId}"]`);
+      const expectedEnergy = variant.plan.shipCloak ? 70 : 100;
+      assert.equal(await session.getAttribute('data-dev-insertion-energy'), String(expectedEnergy));
+      assert.equal(await session.getAttribute('data-dev-insertion-energy-run'), variant.plan.shipCloak ? before.run : null);
+      const mounts = await page.evaluate(() => window.__arrivalSpatialObservations.huntMounts);
+      await page.getByRole('button', { name: /^Passer l’arrivée/ }).tap();
+      await session.locator('.hunt-screen canvas.hunt-canvas').waitFor({ timeout: 90000 });
+      await page.locator('[data-mission-opening-v78]').waitFor({ timeout: 90000 });
+      await session.locator('[data-hunt-surface-ship-ready="true"]').waitFor({ timeout: 90000 });
+      await page.waitForFunction(id => document.querySelector(`[data-dev-session="${id}"]`)
+        ?.hasAttribute('data-dev-hunt-insertion'), destinationId, { timeout: 30000 });
+      const snapshot = JSON.parse(await session.getAttribute('data-dev-hunt-insertion'));
+      assert.deepEqual(snapshot.plan, variant.plan);
+      assert.deepEqual(snapshot.companions.map(member => member.id), ['karhek', 'saketh']);
+      assert.deepEqual(snapshot.patrolIds, (variant.plan.shipCloak ? [0] : [0, 2]).map(index => `${snapshot.runId}:insertion-patrol-${index}`),
+        'The real jungle entry must create one cloaked patrol or two uncloaked patrols at its unobstructed placements.');
+      assert.deepEqual(JSON.parse(await session.getAttribute('data-dev-hunt-insertion-patrols')), snapshot.patrolIds,
+        'Every declared insertion patrol must be present in the real persisted enemy snapshot.');
+      assert.equal(snapshot.searchUntil, variant.plan.shipCloak ? 18 : 35);
+      assert.equal(await session.getAttribute('data-dev-insertion-energy'), String(expectedEnergy), 'Skip cannot repeat the paid departure debit.');
+      assert.equal(await session.getAttribute('data-dev-insertion-energy-run'), variant.plan.shipCloak ? before.run : null);
+      for (const member of snapshot.companions) {
+        const slot = api.arrivalFormationSlots('triad').find(candidate => candidate.id === member.id);
+        assert.equal(member.x + member.width / 2, snapshot.origin.x + slot.offsetX,
+          'Skip must create the same exact formation centers as the final cinematic frame.');
+        assert.equal(member.y + member.height, snapshot.origin.y);
+        assert.equal(member.status, 'active'); assert.equal(member.grounded, true);
+      }
+      const hunt = session.locator('.hunt-screen');
+      assert.equal(await hunt.getAttribute('data-hunt-insertion-method'), 'ship');
+      assert.equal(await hunt.getAttribute('data-hunt-insertion-team'), 'triad');
+      assert.equal(await hunt.getAttribute('data-hunt-insertion-run-id'), before.run);
+      assert.equal(await hunt.getAttribute('data-hunt-insertion-ship-id'), before.ship);
+      assert.equal(await session.getAttribute('data-dev-arrival-completed-by'), 'skipped');
+      assert.equal(await session.getAttribute('data-dev-arrival-run'), before.run);
+      assert.equal(await page.evaluate(() => window.__arrivalSpatialObservations.huntMounts), mounts + 1);
+      await page.getByRole('button', { name: 'Commencer la chasse', exact: true }).click();
+      await page.locator('[data-mission-opening-v78]').waitFor({ state: 'hidden' });
+      await session.locator('canvas.hunt-canvas').screenshot({ path: path.join(out, `native-${variant.id}-hunt-canvas.png`) });
+      const details = page.locator('.hunt-screen details').filter({ has: page.locator('summary').filter({ hasText: /Triade · ordres et état/ }) });
+      if (await details.getAttribute('open') === null) await details.locator('summary').click();
+      await page.getByRole('button', { name: 'Ka’rhek : tenir la position', exact: true }).click();
+      await page.locator('[data-hunt-companion-id="karhek"][data-hunt-companion-order="hold"]').waitFor();
+      await page.getByRole('button', { name: 'Ka’rhek : suivre', exact: true }).click();
+      await page.locator('[data-hunt-companion-id="karhek"][data-hunt-companion-order="follow"]').waitFor();
+      await page.screenshot({ path: path.join(out, `native-${variant.id}-hunt-orders.png`), fullPage: false });
+      assert.equal(await page.evaluate(() => window.__arrivalSpatialObservations.huntMounts), mounts + 1,
+        'Real companion commands must preserve the same running hunt.');
+      assert.deepEqual(await storageSnapshot(page), protectedStorage);
+      report.native[variant.plan.shipCloak ? 'shipCloakedTriad' : 'shipTriad'] = {
+        runId: before.run, completedBy: 'skipped', huntCanvases: 1, snapshot,
+        observedOrders: ['hold', 'follow'], surfaceShip: before.ship, energy: expectedEnergy,
+        energyRun: await session.getAttribute('data-dev-insertion-energy-run'),
+      };
+    });
+  }
   await nativeContext.close();
   if (nativeVideo) {
     const savedPath = await nativeVideo.path();
@@ -1080,6 +1251,16 @@ try {
           `${viewport.id}: ${method} ${id} must actually be observed at ${contact} contact.`);
         }
       }
+      const cloaked = samples.filter(sample => sample.shipCloak && !sample.reducedMotion);
+      assert.ok(cloaked.some(sample => sample.cloakPhase === 'active' && sample.cloakHulls.some(hull =>
+        hull.opacity > .02 && hull.strength === 1 && hull.body?.opacity === .24 && hull.lens && hull.rim)),
+      `${viewport.id}: active camouflage must actually be seen on the selected visible hull.`);
+      assert.ok(cloaked.some(sample => sample.capturedBefore?.cloakPhase === 'releasing' &&
+        sample.capturedBefore.cloakHulls.some(hull => hull.strength > 0 && hull.strength < 1)),
+      `${viewport.id}: the real decloaking envelope must be photographed before restoration.`);
+      assert.ok(cloaked.some(sample => sample.capturedBefore?.cloakPhase === 'off' && !sample.capturedBefore.contact &&
+        sample.capturedBefore.cloakHulls.some(hull => hull.strength === 0 && hull.bodyOpacity === 1)),
+      `${viewport.id}: the actual hull must be fully opaque before its ground contact.`);
     }
   });
   report.passed = true;

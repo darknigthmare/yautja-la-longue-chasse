@@ -38,7 +38,8 @@ export function inspectPlanetArrivalRun(value: unknown, arrival: PlanetArrivalSt
       typeof config.gauntletVariantId !== 'string' || config.gauntletVariantId.length > 160 ||
       config.elapsedSeconds !== 0 || !samePlanetInsertion(config.insertion, arrival.insertion) ||
       (config.insertion !== undefined && config.insertionShipId !== arrival.personalShipId) ||
-      (config.insertionShipId !== undefined && config.insertionShipId !== arrival.personalShipId)) return invalid;
+      (config.insertionShipId !== undefined && config.insertionShipId !== arrival.personalShipId) ||
+      (arrival.insertion?.shipCloak ? config.insertionEnergyRunId !== arrival.runId : config.insertionEnergyRunId !== undefined)) return invalid;
   try {
     // Bound the frozen equipment snapshot and reject values that cannot survive JSON storage.
     const serialized = JSON.stringify(config);

@@ -11,7 +11,8 @@ const {
   ARRIVAL_HUNTER_CYCLE_MS, ARRIVAL_HUNTER_MOVE_START_MS, ARRIVAL_HUNTER_THRESHOLD_LEAVE_MS,
   ARRIVAL_HUNTER_GROUND_CONTACT_MS, ARRIVAL_HUNTER_MOVE_END_MS,
   arrivalHunterMotion, arrivalHunterEgress, arrivalLighting, arrivalLocalLightAngle,
-  arrivalImpactDebris, arrivalEffectsFrame, ARRIVAL_CONTACT_MS,
+  arrivalImpactDebris, arrivalEffectsFrame, ARRIVAL_CONTACT_MS, arrivalShipCloakFrame,
+  ARRIVAL_SHIP_CLOAK_RELEASE_START_MS, ARRIVAL_SHIP_CLOAK_RELEASE_END_MS,
 } = qa.load('app/game/systems/planetArrivalPresentation.ts');
 const near = (actual, expected, tolerance = 1e-7) =>
   assert.ok(Math.abs(actual - expected) < tolerance, `Expected ${actual} ≈ ${expected} (±${tolerance})`);
@@ -318,4 +319,110 @@ test('pod trio renders distinct launches, ground anchors and authored modular co
   const reduced = render(61_900, true);
   assert.equal((reduced.match(/data-arrival-hunter-stage="standing"/g) ?? []).length, 3);
   assert.equal((reduced.match(/data-arrival-hunter-contact="ground"/g) ?? []).length, 3);
+});
+
+test('optical concealment is opt-in for the ship and is engaged before its visible approach', () => {
+  for (const plan of [undefined, { method: 'ship' }, { method: 'ship', shipCloak: false },
+    { method: 'pod', shipCloak: true }]) {
+    for (const time of [0, 13_000, 45_000, 52_800, 62_000]) {
+      const frame = arrivalShipCloakFrame(time, plan);
+      assert.equal(frame.requested, false); assert.equal(frame.phase, 'off');
+      assert.equal(frame.strength, 0); assert.equal(frame.hullOpacity, 1);
+      assert.equal(frame.refractionOpacity, 0); assert.equal(frame.rimOpacity, 0);
+      assert.equal(frame.distortionScale, 0);
+    }
+  }
+  const plan = { method: 'ship', shipCloak: true };
+  for (const time of [0, 7_000, 13_000, 23_000, 31_000, 41_000, 49_000, 52_299]) {
+    const frame = arrivalShipCloakFrame(time, plan);
+    assert.equal(frame.phase, 'active'); assert.equal(frame.strength, 1);
+    assert.ok(frame.hullOpacity >= .2 && frame.hullOpacity < .5, 'the selected hull stays readable through the field');
+    assert.ok(frame.refractionOpacity > 0 && frame.rimOpacity > 0);
+    assert.ok(frame.distortionScale > 0 && frame.distortionScale < 4);
+  }
+});
+
+test('the optical field releases continuously and is completely gone before the physical setdown', () => {
+  const plan = { method: 'ship', shipCloak: true };
+  assert.equal(ARRIVAL_SHIP_CLOAK_RELEASE_START_MS, 52_300);
+  assert.equal(ARRIVAL_SHIP_CLOAK_RELEASE_END_MS, 53_300);
+  assert.ok(ARRIVAL_SHIP_CLOAK_RELEASE_END_MS < ARRIVAL_CONTACT_MS);
+  let previous = arrivalShipCloakFrame(ARRIVAL_SHIP_CLOAK_RELEASE_START_MS, plan);
+  for (let time = ARRIVAL_SHIP_CLOAK_RELEASE_START_MS + 10; time <= ARRIVAL_SHIP_CLOAK_RELEASE_END_MS; time += 10) {
+    const frame = arrivalShipCloakFrame(time, plan);
+    assert.ok(frame.strength <= previous.strength && frame.strength >= 0);
+    assert.ok(previous.strength - frame.strength < .02, 'no one-frame disappearance');
+    assert.ok(frame.hullOpacity >= previous.hullOpacity);
+    assert.ok(frame.refractionOpacity <= previous.refractionOpacity && frame.rimOpacity <= previous.rimOpacity);
+    previous = frame;
+  }
+  near(arrivalShipCloakFrame(52_800, plan).strength, .5);
+  for (const time of [53_300, ARRIVAL_CONTACT_MS, 57_000, 61_900, 62_000]) {
+    const frame = arrivalShipCloakFrame(time, plan);
+    assert.equal(frame.phase, 'off'); assert.equal(frame.strength, 0);
+    assert.equal(frame.hullOpacity, 1); assert.equal(frame.refractionOpacity, 0); assert.equal(frame.rimOpacity, 0);
+    assert.equal(frame.distortionScale, 0); assert.equal(frame.noiseOffsetX, 0); assert.equal(frame.noiseOffsetY, 0);
+  }
+});
+
+test('the saved arrival clock freezes optical distortion and reduced motion removes its moving field', () => {
+  const arrival = qa.load('app/game/systems/planetArrival.ts');
+  const insertion = { version: 1, method: 'ship', team: 'triad', shipCloak: true };
+  const fresh = arrival.createPlanetArrival({ ownerCreatedAt: '2026-11-05T12:00:00.000Z', runId: 'cloak-clock',
+    missionId: 'jungle-vey', encounterRun: 1, personalShipId: 'wolf-ship', hunterPresetId: 'wolf', insertion });
+  const paused = arrival.pausePlanetArrival({ ...arrival.startPlanetArrival(fresh), elapsedMs: 52_800 });
+  const expected = arrivalShipCloakFrame(paused.elapsedMs, paused.insertion);
+  const later = arrival.advancePlanetArrival(paused, 10_000);
+  assert.deepEqual(arrivalShipCloakFrame(later.elapsedMs, later.insertion), expected);
+  const resumed = arrival.advancePlanetArrival(arrival.startPlanetArrival(paused), 100);
+  assert.ok(arrivalShipCloakFrame(resumed.elapsedMs, resumed.insertion).strength < expected.strength);
+  for (const time of [NaN, Infinity, -Infinity, -1, 13_000, 45_000, 52_800, 53_300]) {
+    const reduced = arrivalShipCloakFrame(time, insertion, true);
+    const normal = arrivalShipCloakFrame(time, insertion);
+    assert.equal(reduced.strength, normal.strength); assert.equal(reduced.hullOpacity, normal.hullOpacity);
+    assert.equal(reduced.distortionScale, 0); assert.equal(reduced.noiseOffsetX, 0); assert.equal(reduced.noiseOffsetY, 0);
+    for (const value of Object.values(reduced).filter(value => typeof value === 'number')) assert.ok(Number.isFinite(value));
+  }
+});
+
+test('the actual cloaked ship keeps its source, transforms and sockets while the alpha-masked field follows the clock', () => {
+  const arrival = qa.load('app/game/systems/planetArrival.ts');
+  const { appearanceForPreset } = qa.load('app/game/hunterLore.ts');
+  const { shipProfileAssetPath } = qa.load('app/game/shipCatalogue.ts');
+  const render = (personalShipId, elapsedMs, shipCloak, reducedMotion = false) => {
+    const state = arrival.createPlanetArrival({ ownerCreatedAt: '2026-11-05T12:00:00.000Z', runId: 'cloak-render',
+      missionId: 'jungle-vey', encounterRun: 1, personalShipId, hunterPresetId: 'wolf',
+      insertion: { version: 1, method: 'ship', team: 'triad', ...(shipCloak ? { shipCloak: true } : {}) } });
+    return qa.render('app/game/PlanetArrivalCinematic.tsx', {
+      state: arrival.requestPlanetArrivalHandoff({ ...arrival.startPlanetArrival(state), elapsedMs }, 'skipped'),
+      appearance: appearanceForPreset('wolf'), loadout: { armorId: 'hunter', weaponIds: ['wristblades'], gearIds: [] },
+      reducedMotion, onCheckpoint: () => true, onHandoff: () => true, onExit: () => {},
+    });
+  };
+  for (const ship of ['classic-predator-spaceship', 'wolf-ship', 'avpr-scout-ship']) {
+    for (const time of [13_000, 23_000, 41_000, 52_300, 52_800, 53_300, ARRIVAL_CONTACT_MS, 61_900]) {
+      const html = render(ship, time, true), normal = render(ship, time, false);
+      const expected = arrivalShipCloakFrame(time, { method: 'ship', shipCloak: true });
+      const hullTag = markup => markup.match(/<div[^>]*data-arrival-(?:carrier|ground-ship)="[^"]+"[^>]*>/)?.[0];
+      const style = tag => tag?.match(/style="([^"]+)"/)?.[1];
+      assert.equal(style(hullTag(html)), style(hullTag(normal)), `${ship} transform at ${time}`);
+      assert.deepEqual(html.match(/<span[^>]*data-arrival-anchor="[^"]+"[^>]*>/g),
+        normal.match(/<span[^>]*data-arrival-anchor="[^"]+"[^>]*>/g), `${ship} sockets at ${time}`);
+      assert.ok(html.includes(`data-arrival-light-source="${shipProfileAssetPath(ship)}"`));
+      assert.ok(html.includes(`data-arrival-cloak-strength="${expected.strength}"`));
+      const opacity = Number(html.match(/data-arrival-cloak-body="true" style="opacity:([\d.]+)"/)?.[1]);
+      near(opacity, expected.hullOpacity);
+      if (expected.strength > 0) {
+        assert.ok(html.includes(`data-arrival-cloak-refraction="${shipProfileAssetPath(ship)}"`));
+        assert.ok(html.includes(`data-arrival-cloak-rim="${shipProfileAssetPath(ship)}"`));
+        assert.match(html, /backdrop-filter:url\(/);
+        assert.match(html, /<feDisplacementMap[^>]+in="SourceGraphic"/);
+        assert.match(html, /<feMorphology[^>]+in="SourceAlpha"/);
+      } else assert.doesNotMatch(html, /data-arrival-cloak-(?:refraction|rim)=/);
+      assert.doesNotMatch(normal, /data-arrival-cloak-(?:body|refraction|rim)=/);
+    }
+    const reduced = render(ship, 41_000, true, true);
+    assert.match(reduced, /<feOffset[^>]+dx="0" dy="0"/);
+    assert.match(reduced, /<feDisplacementMap[^>]+scale="0"/);
+  }
 });

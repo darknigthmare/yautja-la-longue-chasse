@@ -6,6 +6,7 @@ import { arrivalImpactArtForBiome, carrierArtForShip } from './planetArrivalArt'
 import {
   ARRIVAL_CONTACT_MS, ARRIVAL_HUNTER_CYCLE_MS, ARRIVAL_HUNTER_GROUND_CONTACT_MS, ARRIVAL_HUNTER_MOVE_END_MS,
   ARRIVAL_HUNTER_LEVEL_THRESHOLD_STEP_MS, ARRIVAL_VENT_START_MS, ARRIVAL_VENT_DURATION_MS,
+  ARRIVAL_SHIP_CLOAK_ACTIVATION_MS, ARRIVAL_SHIP_CLOAK_RELEASE_START_MS, ARRIVAL_SHIP_CLOAK_RELEASE_END_MS,
   arrivalFormationSlots, arrivalImpactDebris,
 } from './planetArrivalPresentation';
 import { DEFAULT_PLAN, normalizePlanetInsertionPlan, type PlanetInsertionPlan } from './planetInsertion';
@@ -96,6 +97,21 @@ export const PLANET_ARRIVAL_SHIP_SOUND_CUES: readonly PlanetArrivalSoundCue[] = 
   } },
 ];
 
+/** The field is audible when engaged/released; it never suppresses the reactor. */
+export const PLANET_ARRIVAL_SHIP_CLOAK_SOUND_CUES: readonly PlanetArrivalSoundCue[] = [
+  { id: 'ship-cloak-on', atMs: ARRIVAL_SHIP_CLOAK_ACTIVATION_MS, sound: {
+    tones: [{ frequency: 240, endFrequency: 980, duration: .32, gain: .025 },
+      { frequency: 96, endFrequency: 192, duration: .5, delay: .1, gain: .018, type: 'triangle', filterFrequency: 450 }],
+    noises: [{ duration: .35, gain: .012, filterFrequency: 1_800, endFilterFrequency: 3_800 }],
+  } },
+  { id: 'ship-cloak-off', atMs: ARRIVAL_SHIP_CLOAK_RELEASE_START_MS, sound: {
+    tones: [{ frequency: 980, endFrequency: 160,
+      duration: (ARRIVAL_SHIP_CLOAK_RELEASE_END_MS - ARRIVAL_SHIP_CLOAK_RELEASE_START_MS) / 1_000, gain: .028 },
+    { frequency: 220, endFrequency: 70, duration: .65, delay: .2, gain: .017, type: 'triangle', filterFrequency: 400 }],
+    noises: [{ duration: .85, delay: .05, gain: .018, filterFrequency: 2_400, endFilterFrequency: 300 }],
+  } },
+];
+
 type ArrivalSurfaceMaterial = 'dry' | 'ice' | 'wet';
 
 /** Keep the capsule's low hull impact; change only the contacted surface layer. */
@@ -158,7 +174,7 @@ export function planetArrivalSoundCues(state: Pick<PlanetArrivalState, 'biomeId'
   const ship = plan.method === 'ship';
   const hull = ship && state.personalShipId ? carrierArtForShip(state.personalShipId) : null;
   const levelThreshold = !!hull && Math.abs(hull.groundContact.y - hull.groundExit.y) <= 1e-7;
-  const cues: PlanetArrivalSoundCue[] = [];
+  const cues: PlanetArrivalSoundCue[] = ship && plan.shipCloak ? [...PLANET_ARRIVAL_SHIP_CLOAK_SOUND_CUES] : [];
   const halfCycleMs = ARRIVAL_HUNTER_CYCLE_MS / 2;
   for (const slot of arrivalFormationSlots(plan.team)) {
     const add = (cue: PlanetArrivalSoundCue) => cues.push({
@@ -268,7 +284,7 @@ export class PlanetArrivalAudio {
     }
     this.active = true;
     const plan = normalizePlanetInsertionPlan(state.insertion) ?? DEFAULT_PLAN;
-    const cueIdentity = `${state.biomeId}:${state.seed}:${plan.method}:${plan.team}:${state.personalShipId}`;
+    const cueIdentity = `${state.biomeId}:${state.seed}:${plan.method}:${plan.team}:${plan.shipCloak === true}:${state.personalShipId}`;
     if (this.cueIdentity !== cueIdentity) {
       this.cueIdentity = cueIdentity;
       this.cues = planetArrivalSoundCues(state);
