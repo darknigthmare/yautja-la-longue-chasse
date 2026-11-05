@@ -72,7 +72,7 @@ const fixtureBundle = await build({
       export { defaultSave } from './app/game/save';
       export { DEFAULT_SHIP_ID, isShipId, shipProfileAssetPath } from './app/game/shipCatalogue';
       export { carrierArtForShip } from './app/game/systems/planetArrivalArt';
-      export { ARRIVAL_CONTACT_MS, ARRIVAL_HUNTER_MOVE_END_MS, ARRIVAL_HUNTER_THRESHOLD_LEAVE_MS,
+      export { ARRIVAL_CONTACT_MS, ARRIVAL_HUNTER_MOVE_START_MS, ARRIVAL_HUNTER_MOVE_END_MS, ARRIVAL_HUNTER_THRESHOLD_LEAVE_MS,
         ARRIVAL_HUNTER_GROUND_CONTACT_MS, arrivalFormationSlots,
         arrivalShipCloakFrame } from './app/game/systems/planetArrivalPresentation';
       export { arrivalSurfaceShipGeometry } from './app/game/systems/planetArrivalSpatial';
@@ -1168,35 +1168,43 @@ try {
           assertSpatial(measured, label);
           report.samples.push({ label, ...measured });
         }
-        // The four overview samples can straddle a companion's 500 ms step
-        // down when a full geometry read is expensive. Fill only an actually
-        // missing airborne observation, once per member, in an independent
-        // native playback. The original overview samples and final coverage
-        // assertions remain unchanged.
+        // A full geometry read can straddle a short contact interval. Retain
+        // the four overview samples, then fill only missing required contacts.
+        // Every extra snapshot comes from one independent native playback,
+        // prearmed at the midpoint of that member's real production window.
         for (const slot of api.arrivalFormationSlots(variant.plan.team)) {
-          const measuredPrefix = `${viewport.id}-${variant.id}-egress-measured-`;
-          if (report.samples.some(sample => sample.label.startsWith(measuredPrefix) &&
-              sample.members?.some(member => member.id === slot.id && member.opacity > .02 && member.contact === 'airborne'))) continue;
-          await openShot(primaryMission.id, 'egress', false, api.DEFAULT_SHIP_ID, variant.plan);
-          const decodedContactSvg = await decodeSceneImages();
-          const startMs = api.ARRIVAL_HUNTER_THRESHOLD_LEAVE_MS + slot.delayMs;
-          const endMs = api.ARRIVAL_HUNTER_GROUND_CONTACT_MS + slot.delayMs;
-          const requestedContact = { member: slot.id, contact: 'airborne', shot: egress.id,
-            atMs: startMs + (endMs - startMs) / 2, endMs };
-          const label = `${viewport.id}-${variant.id}-egress-contact-${slot.id}-airborne`;
-          const observation = { label, requestedContact, measuredAt: null, accepted: false };
-          report.contactObservations.push(observation);
-          const measured = { ...await readFrame(page, requestedContact), decodedSvg: decodedContactSvg };
-          assert.equal(measured.status, 'playing'); assert.equal(measured.shot, egress.id);
-          assert.equal(measured.method, variant.plan.method); assert.equal(measured.team, variant.plan.team);
-          assert.equal(measured.shipCloak, !!variant.plan.shipCloak);
-          assert.ok(measured.elapsedMs >= requestedContact.atMs && measured.elapsedMs < endMs,
-            'Supplemental geometry must actually belong to the requested native contact interval.');
-          assert.ok(measured.members.some(member => member.id === slot.id && member.opacity > .02 && member.contact === 'airborne'),
-            'The requested visible hunter must actually be airborne in the complete geometry snapshot.');
-          assertSpatial(measured, label);
-          report.samples.push({ label, ...measured, requestedContact });
-          observation.measuredAt = measured.elapsedMs; observation.accepted = true;
+          const contactWindows = [
+            { contact: 'threshold', startMs: api.ARRIVAL_HUNTER_MOVE_START_MS + slot.delayMs,
+              endMs: api.ARRIVAL_HUNTER_THRESHOLD_LEAVE_MS + slot.delayMs },
+            { contact: 'airborne', startMs: api.ARRIVAL_HUNTER_THRESHOLD_LEAVE_MS + slot.delayMs,
+              endMs: api.ARRIVAL_HUNTER_GROUND_CONTACT_MS + slot.delayMs },
+            { contact: 'ground', startMs: api.ARRIVAL_HUNTER_GROUND_CONTACT_MS + slot.delayMs,
+              endMs: egress.endMs },
+          ];
+          for (const contactWindow of contactWindows) {
+            const measuredPrefix = `${viewport.id}-${variant.id}-egress-`;
+            if (report.samples.some(sample => sample.label.startsWith(measuredPrefix) &&
+                sample.members?.some(member => member.id === slot.id && member.opacity > .02 && member.contact === contactWindow.contact))) continue;
+            await openShot(primaryMission.id, 'egress', false, api.DEFAULT_SHIP_ID, variant.plan);
+            const decodedContactSvg = await decodeSceneImages();
+            const requestedContact = { member: slot.id, contact: contactWindow.contact, shot: egress.id,
+              startMs: contactWindow.startMs, atMs: contactWindow.startMs + (contactWindow.endMs - contactWindow.startMs) / 2,
+              endMs: contactWindow.endMs };
+            const label = `${viewport.id}-${variant.id}-egress-contact-${slot.id}-${contactWindow.contact}`;
+            const observation = { label, requestedContact, measuredAt: null, accepted: false };
+            report.contactObservations.push(observation);
+            const measured = { ...await readFrame(page, requestedContact), decodedSvg: decodedContactSvg };
+            assert.equal(measured.status, 'playing'); assert.equal(measured.shot, egress.id);
+            assert.equal(measured.method, variant.plan.method); assert.equal(measured.team, variant.plan.team);
+            assert.equal(measured.shipCloak, !!variant.plan.shipCloak);
+            assert.ok(measured.elapsedMs >= requestedContact.atMs && measured.elapsedMs < requestedContact.endMs,
+              'Supplemental geometry must actually belong to the requested native contact interval.');
+            assert.ok(measured.members.some(member => member.id === slot.id && member.opacity > .02 && member.contact === requestedContact.contact),
+              'The requested visible hunter must have the requested contact in the complete geometry snapshot.');
+            assertSpatial(measured, label);
+            report.samples.push({ label, ...measured, requestedContact });
+            observation.measuredAt = measured.elapsedMs; observation.accepted = true;
+          }
         }
         // Start fresh native egress shots for visual evidence. The dense
         // geometry samples above can consume the brief walking/final windows
