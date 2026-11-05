@@ -532,6 +532,33 @@ Source : [types de Predators](https://avpcentral.com/predator-types).
 - **Cleaner :** fonction ouverte à Elite, sur le modèle de Wolf (*AVP: Requiem*) : effacer les preuves d'une chasse ratée, détruire les Xénomorphes échappés, récupérer la technologie.
 - **Vieillissement :** à chaque ellipse, l'apparence vieillit (dreadlocks, cicatrices, peau) et les caractéristiques changent un peu *(proposé : plus de précision et d'endurance mentale, un peu moins de vitesse)*.
 
+### Ellipses, compagnons, personnages des films
+
+- **Entre deux rangs :** des chasses libres. Le joueur enchaîne contrats, événements spatiaux et chasses ; le temps avance avec elles, et la mission de rang suivante se déclenche quand il est prêt. *(Proposé : chaque chasse libre fait avancer le calendrier de quelques mois à quelques années ; un écran de date le montre au retour.)*
+- **Compagnons :** ils vieillissent et changent. Saar vieillit puis meurt de vieillesse ou en chasse ; Yena, Tov et Harek deviennent Elites, chefs ou Bad Bloods selon les actes ; les anciens du pack mènent leurs propres vies.
+- **Personnages des films, trois façons en parallèle :**
+  - **Après-coups :** le joueur croise les traces et conséquences des films (pyramide détruite de l'île Bouvet, Los Angeles 1997) ;
+  - **Chroniques et Warp :** les personnages apparaissent dans les chroniques cinéma et dans les branches Warp ;
+  - **Rencontres et événements :** rencontres possibles en marge des films, sans changer leur fin ; exemple : Dutch âgé, qui traque les Predators vers 2025 dans *Predator: Hunting Grounds*.
+
+### Nom du clan d'origine : cinq propositions
+
+**Décision :** le nom du clan d'origine est tiré au hasard à chaque nouvelle partie, pour que chaque partie soit unique. Les cinq noms ci-dessous forment la première liste du tirage *(proposé : un générateur de syllabes complète la liste, avec un filtre contre les noms déjà utilisés dans le jeu)*. Noms inventés pour le projet, aucun n'est un mot de la langue yautja canon, vérifiés absents du dépôt.
+
+| Nom | Sens dans le jeu | Symbole proposé |
+| --- | --- | --- |
+| Kel'thuun | « Ceux qui reviennent » : le clan ramène toujours ses morts et sa technologie | un cercle ouvert qui se referme sur lui-même |
+| Drakhar | « La Longue Chasse » : une chasse qui dure une vie, comme le titre du jeu | une ligne brisée en trois segments, de plus en plus longs |
+| Ysh'tarv | « Les Ombres du Temple » : gardiens du monde-temple aux pyramides | trois cercles sous un triangle |
+| Nakh'ar | « La Marque Triple » : issu du symbole des trois cercles du Quatza-Rij | trois cercles reliés par un trait |
+| Rhazk'ai | « La Lame Patiente » : attendre l'ouverture plutôt que frapper le premier | une lame verticale coupée par deux traits |
+
+**Autres décisions :**
+
+- **Rythme entre les rangs :** chaque rang demande un seuil d'honneur ; le joueur choisit librement ses chasses pour l'atteindre, sans nombre fixe.
+- **Fidélité aux films :** dans la campagne principale, le joueur ne peut pas changer ce que montrent les films (une tentative échoue de façon cohérente) ; dans les branches Warp, continuité séparée, tout est possible.
+- **Représentation des personnages des films :** reconnaissables par leur rôle, leur équipement et leur nom, sans copier le visage ni la voix d'un acteur.
+
 Sources : [équipes humaines qui chassent les Predators](https://avpcentral.com/predator-hunter-teams).
 
 ### Crossover : USS Tantalus
