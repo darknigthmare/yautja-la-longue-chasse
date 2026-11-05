@@ -216,6 +216,9 @@ async function check(name, run) {
 
 async function readFrame(target = page, contactObservation) {
   return target.locator('[data-arrival-run]').evaluate(async (root, contactObservation) => {
+    // Thresholds and snapshots share one exact clock. Rounded display values
+    // can enter a short contact interval before its real lower boundary.
+    const readElapsedMs = () => Number(root.getAttribute('data-arrival-elapsed-exact') ?? root.getAttribute('data-arrival-elapsed'));
     if (contactObservation) {
       const initialRun = root.getAttribute('data-arrival-run');
       // Arm at the native shot boundary, before the short contact interval.
@@ -238,7 +241,7 @@ async function readFrame(target = page, contactObservation) {
               root.getAttribute('data-arrival-shot') !== contactObservation.shot) {
             finish(new Error('The native contact measurement left its playing shot.')); return;
           }
-          const elapsed = Number(root.getAttribute('data-arrival-elapsed'));
+          const elapsed = readElapsedMs();
           if (!Number.isFinite(elapsed) || elapsed >= contactObservation.endMs) {
             finish(new Error('The native contact interval ended before its geometry was observed.')); return;
           }
@@ -252,7 +255,7 @@ async function readFrame(target = page, contactObservation) {
               Number(getComputedStyle(members[0]).opacity) > .02) finish();
         }
         observer.observe(root, { attributes: true, subtree: true,
-          attributeFilter: ['data-arrival-elapsed', 'data-arrival-status', 'data-arrival-shot',
+          attributeFilter: ['data-arrival-elapsed-exact', 'data-arrival-elapsed', 'data-arrival-status', 'data-arrival-shot',
             'data-arrival-run', 'data-arrival-hunter-contact', 'style'] });
         inspect();
       });
@@ -384,7 +387,7 @@ async function readFrame(target = page, contactObservation) {
     return {
       run: root.getAttribute('data-arrival-run'), shot: root.getAttribute('data-arrival-shot'),
       status: root.getAttribute('data-arrival-status'),
-      elapsedMs: Number(root.getAttribute('data-arrival-elapsed-exact') ?? root.getAttribute('data-arrival-elapsed')),
+      elapsedMs: readElapsedMs(),
       reducedMotion: root.getAttribute('data-arrival-reduced-motion') === 'true',
       method: root.getAttribute('data-arrival-method'), team: root.getAttribute('data-arrival-team'),
       shipCloak: root.getAttribute('data-arrival-ship-cloak') === 'true',
@@ -826,8 +829,9 @@ async function readMoment(target, region, schedule) {
     const roots = document.querySelectorAll('[data-arrival-run]');
     if (roots.length !== 1) throw new Error('A native moment observation requires exactly one arrival root.');
     const root = roots[0];
+    const readElapsedMs = () => Number(root.getAttribute('data-arrival-elapsed-exact') ?? root.getAttribute('data-arrival-elapsed'));
     const initialRun = root.getAttribute('data-arrival-run');
-    const armedAt = Number(root.getAttribute('data-arrival-elapsed'));
+    const armedAt = readElapsedMs();
     const read = () => {
       const current = document.querySelectorAll('[data-arrival-run]');
       if (current.length !== 1 || current[0] !== root || root.getAttribute('data-arrival-run') !== initialRun) {
@@ -865,7 +869,7 @@ async function readMoment(target, region, schedule) {
           .map(element => ({ id: element.getAttribute('data-arrival-anchor'), ...rect(element) })) : [];
       return {
         run: root.getAttribute('data-arrival-run'), armedAt,
-        elapsedMs: Number(root.getAttribute('data-arrival-elapsed')),
+        elapsedMs: readElapsedMs(),
         shot: root.getAttribute('data-arrival-shot'), status: root.getAttribute('data-arrival-status'),
         cloakPhase: root.querySelector('[data-arrival-scene]')?.getAttribute('data-arrival-cloak-phase'),
         contact: root.querySelector('[data-arrival-scene]')?.getAttribute('data-arrival-contact') === 'true',
@@ -894,14 +898,14 @@ async function readMoment(target, region, schedule) {
         const standing = region !== 'formation-detail' || members.length === 3 && members.every(member =>
           member.getAttribute('data-arrival-hunter-stage') === 'standing' && member.getAttribute('data-arrival-hunter-contact') === 'ground');
         if (!root.isConnected || status !== 'playing' || root.getAttribute('data-arrival-shot') !== schedule.shot ||
-          Number(root.getAttribute('data-arrival-elapsed')) >= threshold && standing) {
+          readElapsedMs() >= threshold && standing) {
           observer.disconnect(); clearTimeout(timer);
           if (!root.isConnected) { reject(new Error('Arrival unmounted while awaiting its native final formation.')); return; }
           try { resolve(read()); } catch (error) { reject(error); }
         }
       }
       observer.observe(root, { attributes: true, subtree: true,
-        attributeFilter: ['data-arrival-elapsed', 'data-arrival-status', 'data-arrival-hunter-stage', 'data-arrival-hunter-contact'] });
+        attributeFilter: ['data-arrival-elapsed-exact', 'data-arrival-elapsed', 'data-arrival-status', 'data-arrival-hunter-stage', 'data-arrival-hunter-contact'] });
       inspect();
     });
   }, { region, schedule });
@@ -1001,7 +1005,7 @@ async function waitElapsed(milliseconds, shotId, target = page, allowComplete = 
     const status = root.getAttribute('data-arrival-status');
     if (status === 'paused' || status === 'recoverable-error') throw new Error(`Arrival unexpectedly ${status}.`);
     return (status === 'playing' || (allowComplete && status === 'complete')) && root.getAttribute('data-arrival-shot') === shotId &&
-      Number(root.getAttribute('data-arrival-elapsed')) >= milliseconds;
+      Number(root.getAttribute('data-arrival-elapsed-exact') ?? root.getAttribute('data-arrival-elapsed')) >= milliseconds;
   }, { milliseconds, shotId, allowComplete }, { timeout: 25000, polling: 'raf' });
 }
 
@@ -1293,6 +1297,7 @@ try {
             const observation = { label, requestedContact, measuredAt: null, accepted: false };
             report.contactObservations.push(observation);
             const measured = { ...await readFrame(page, requestedContact), decodedSvg: decodedContactSvg };
+            observation.measuredAt = measured.elapsedMs;
             assert.equal(measured.status, 'playing'); assert.equal(measured.shot, egress.id);
             assert.equal(measured.method, variant.plan.method); assert.equal(measured.team, variant.plan.team);
             assert.equal(measured.shipCloak, !!variant.plan.shipCloak);
@@ -1302,7 +1307,7 @@ try {
               'The requested visible hunter must have the requested contact in the complete geometry snapshot.');
             assertSpatial(measured, label);
             report.samples.push({ label, ...measured, requestedContact });
-            observation.measuredAt = measured.elapsedMs; observation.accepted = true;
+            observation.accepted = true;
           }
         }
         // Start fresh native egress shots for visual evidence. The dense

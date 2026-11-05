@@ -33,6 +33,7 @@ const sourceFiles = [
   'app/game/PlanetArrivalCinematic.tsx', 'app/game/PlanetArrivalCinematic.module.css', 'app/game/sound.ts',
   'app/game/systems/huntPodRecovery.ts', 'app/game/systems/huntInsertion.ts',
   'app/game/systems/controlBindings.ts', 'app/game/systems/planetInsertion.ts',
+  'app/game/systems/worldBlueprints.ts',
   'app/game/systems/planetArrival.ts', 'app/game/systems/planetArrivalPodFlight.ts',
   'app/game/systems/planetArrivalPodArt.ts', 'scripts/qa-pod-systems.mjs', '.github/workflows/pod-systems.yml',
 ].sort();
@@ -40,7 +41,9 @@ const sourceHashes = Object.fromEntries(await Promise.all(sourceFiles.map(async 
 const compiled = await build({
   stdin: { contents: `export { resolveDevDestination } from './app/dev/destinations';
     export { PLANET_ARRIVAL_DURATION_MS, PLANET_ARRIVAL_SHOTS } from './app/game/systems/planetArrival';
-    export { HUNT_POD_RECOVERY } from './app/game/systems/huntPodRecovery';`, resolveDir: root, loader: 'ts' },
+    export { HUNT_POD_RECOVERY, huntPodAnchors, huntPodBodyDistance } from './app/game/systems/huntPodRecovery';
+    export { EXPEDITION_MEMBER_SIZE } from './app/game/systems/planetInsertion';
+    export { WORLD_BLUEPRINTS_BY_MISSION } from './app/game/systems/worldBlueprints';`, resolveDir: root, loader: 'ts' },
   bundle: true, platform: 'node', format: 'esm', write: false, logLevel: 'silent',
 });
 const api = await import('data:text/javascript;base64,' + Buffer.from(compiled.outputFiles[0].text).toString('base64'));
@@ -57,7 +60,7 @@ const report = {
   runtime: 'Production Next /dev, native arrival and HuntCanvas; no injected gameplay state or clock',
   scope: 'Atmospheric shutters and heating, natural triad handoff, safe remote pod controls, native in-memory suspend/resume, single-pod and ship exclusions, isolated reset/reload. No campaign durability, art approval or performance qualification.',
   checks: [], captures: [], arrivalFrames: [], arrivalObservations: [], huntObservations: [],
-  movement: [], persistence: [], storageChecks: [], storageOperations: [], databaseOpens: [],
+  movement: [], armingPreparations: [], armingCommands: [], persistence: [], storageChecks: [], storageOperations: [], databaseOpens: [],
   errors: [], consoleErrors: [], failedRequests: [],
 };
 const requested = new Set(), missing = new Set();
@@ -280,17 +283,49 @@ async function observeCheckpoint() {
 }
 
 async function observeHunt(label) {
-  const live = await hunt().evaluate(element => ({
-    state: element.getAttribute('data-hunt-pod-state'), reason: element.getAttribute('data-hunt-pod-safety'),
-    remaining: Number(element.getAttribute('data-hunt-pod-remaining')), count: Number(element.getAttribute('data-hunt-pod-count')),
-    distance: Number(element.getAttribute('data-hunt-pod-distance')), radioDistance: Number(element.getAttribute('data-hunt-pod-radio-distance')),
-    run: element.getAttribute('data-hunt-insertion-run-id'), method: element.getAttribute('data-hunt-insertion-method'),
-    team: element.getAttribute('data-hunt-insertion-team'), assetsReady: element.getAttribute('data-hunt-pod-assets-ready'),
-  }));
-  const checkpoint = await observeCheckpoint();
+  // Read the live actor diagnostics together. The persistence observation is
+  // retained separately and must never supply a current actor position.
+  const observed = await session().evaluate(owner => {
+    const element = owner.querySelector('.hunt-screen');
+    if (!element) throw new Error('The live hunt disappeared before its observation.');
+    const number = name => owner.hasAttribute(name) ? Number(owner.getAttribute(name)) : null;
+    const command = element.querySelector('[data-hunt-pod-command]');
+    return { live: {
+      observedAt: performance.now(), state: element.getAttribute('data-hunt-pod-state'),
+      reason: element.getAttribute('data-hunt-pod-safety'),
+      remaining: Number(element.getAttribute('data-hunt-pod-remaining')), count: Number(element.getAttribute('data-hunt-pod-count')),
+      distance: Number(element.getAttribute('data-hunt-pod-distance')), radioDistance: Number(element.getAttribute('data-hunt-pod-radio-distance')),
+      run: element.getAttribute('data-hunt-insertion-run-id'), method: element.getAttribute('data-hunt-insertion-method'),
+      team: element.getAttribute('data-hunt-insertion-team'), assetsReady: element.getAttribute('data-hunt-pod-assets-ready'),
+      commandEnabled: Boolean(command && !command.disabled), focused: document.hasFocus(), hidden: document.hidden,
+      canvasFocused: document.activeElement === element.querySelector('.hunt-canvas'),
+      companions: Array.from(element.querySelectorAll('[data-hunt-companion-id]'), member => ({
+        id: member.getAttribute('data-hunt-companion-id'), x: Number(member.getAttribute('data-hunt-companion-x')),
+        y: Number(member.getAttribute('data-hunt-companion-y')), order: member.getAttribute('data-hunt-companion-order'),
+        status: member.getAttribute('data-hunt-companion-status'), health: Number(member.getAttribute('data-hunt-companion-health')),
+      })),
+    }, checkpoint: { generation: Number(owner.getAttribute('data-dev-hunt-generation')),
+      elapsed: number('data-dev-hunt-elapsed'), x: number('data-dev-hunt-x'), y: number('data-dev-hunt-y'),
+      insertion: JSON.parse(owner.getAttribute('data-dev-hunt-insertion') || 'null') },
+    canvasMounts: window.__podQaAudit.huntCanvasMounts };
+  });
+  const { live, checkpoint } = observed;
   assert.ok([live.remaining, live.distance, live.radioDistance, checkpoint.generation].every(Number.isFinite));
   if (checkpoint.insertion !== null) assert.ok([checkpoint.elapsed, checkpoint.x, checkpoint.y].every(Number.isFinite));
-  const observed = { label, live, checkpoint, canvasMounts: await page.evaluate(() => window.__podQaAudit.huntCanvasMounts) };
+  const world = api.WORLD_BLUEPRINTS_BY_MISSION[api.resolveDevDestination(destinationId).missionId];
+  const anchors = api.huntPodAnchors({ version: 1, method: live.method, team: live.team }, world);
+  observed.label = label; observed.podAnchors = anchors;
+  live.companions = live.companions.map(member => {
+    assert.ok([member.x, member.y, member.health].every(Number.isFinite));
+    const body = { ...member, ...api.EXPEDITION_MEMBER_SIZE };
+    const distances = anchors.map(pod => ({ pod: pod.id, body: api.huntPodBodyDistance(pod, body),
+      horizontal: api.huntPodBodyDistance(pod, { ...body, y: pod.y }) }));
+    // This preparation uses the existing floor. Exploration may replace the
+    // blueprint's upper platforms, so they cannot prove a current support.
+    const feet = body.y + body.height;
+    const groundedOnFloor = Math.abs(feet - world.floorY) <= 1e-7;
+    return { ...body, groundedOnFloor, distances, horizontalDistance: distances.length ? Math.min(...distances.map(distance => distance.horizontal)) : null };
+  });
   report.huntObservations.push(observed); return observed;
 }
 
@@ -309,24 +344,95 @@ async function companionOrder(id, order) {
   await setFieldOpen(false);
 }
 
-async function walkUntil(reason, label) {
+const preparationMargin = 48;
+function formationClear(observed, held = false, margin = preparationMargin) {
+  const members = observed.live.companions;
+  return members.length === (observed.live.team === 'triad' ? 2 : 0) && members.every(member =>
+    member.status === 'active' && member.groundedOnFloor && member.horizontalDistance >= api.HUNT_POD_RECOVERY.safeRadius + margin &&
+    (!held || member.order === 'hold'));
+}
+
+async function walkUntil(reason, label, budget = { remaining: 140 }, margin = preparationMargin) {
   // A bounded real-input walk; no actor teleport, artificial checkpoint, health
   // change, obstacle removal or virtual time is allowed to rescue a failing route.
   const start = await observeHunt(`${label}-start`);
-  for (let pulse = 0; pulse < 140; pulse++) {
+  for (let pulse = 0; pulse <= 140; pulse++) {
     const state = await observeHunt(`${label}-${pulse}`);
-    if (state.live.reason === reason && state.live.distance >= api.HUNT_POD_RECOVERY.safeRadius + 48) {
+    if (state.live.reason === reason && state.live.distance >= api.HUNT_POD_RECOVERY.safeRadius + preparationMargin &&
+        (reason !== 'ready' || formationClear(state, false, margin))) {
       report.movement.push({ label, pulses: pulse, start, finish: state }); return state;
     }
     assert.notEqual(state.live.reason, 'out-of-range', 'The walk lost radio contact before it reached a safe formation.');
     assert.equal(state.live.state, 'ready', 'The traversal unexpectedly armed or destroyed a pod.');
+    if (budget.remaining === 0) break;
+    budget.remaining -= 1;
     const canvas = hunt().locator('.hunt-canvas');
     await canvas.scrollIntoViewIfNeeded(); await canvas.focus();
     await page.keyboard.down('ArrowRight');
     try { await page.waitForTimeout(650); }
     finally { await page.keyboard.up('ArrowRight'); }
   }
-  throw new Error(`The native ground traversal did not reach ${reason} within 140 real input pulses (${label}).`);
+  throw new Error(`The native ground traversal did not reach ${reason} within its 140 cumulative real input pulses (${label}).`);
+}
+
+async function prepareAndPressArm(label) {
+  const budget = { remaining: 140 };
+  let preparation;
+  for (let attempt = 1; attempt <= 3; attempt++) {
+    const initial = await observeHunt(`${label}-preparation-${attempt}-start`);
+    const margin = preparationMargin * attempt;
+    preparation = { label, attempt, margin, initial, accepted: false };
+    report.armingPreparations.push(preparation);
+    assert.equal(initial.live.state, 'ready', 'Only an unarmed pod may enter arming preparation.');
+    assert.ok(['ready', 'unsafe-player', 'unsafe-companion'].includes(initial.live.reason),
+      'Arming preparation requires an operational hunt within radio range.');
+    if (formationClear(initial, true) && initial.live.reason === 'ready') {
+      preparation.reusedHeldFormation = true;
+      break;
+    }
+    for (const member of initial.live.companions) {
+      if (member.order !== 'follow') await companionOrder(member.id, 'follow');
+    }
+    const clear = await walkUntil('ready', `${label}-preparation-${attempt}-walk`, budget, margin);
+    preparation.beforeHold = clear;
+    // Hold the nearest body first, before another order can let it retreat.
+    for (const member of [...clear.live.companions].sort((a, b) => a.horizontalDistance - b.horizontalDistance)) {
+      await companionOrder(member.id, 'hold');
+    }
+    preparation.afterHold = await observeHunt(`${label}-preparation-${attempt}-after-hold`);
+    await page.waitForTimeout(250);
+    preparation.settled = await observeHunt(`${label}-preparation-${attempt}-settled`);
+    preparation.pulsesUsed = 140 - budget.remaining;
+    const positions = sample => sample.live.companions.map(({ id, x, y }) => ({ id, x, y }));
+    preparation.stable = JSON.stringify(positions(preparation.afterHold)) === JSON.stringify(positions(preparation.settled));
+    const ready = [preparation.afterHold, preparation.settled].every(sample =>
+      formationClear(sample, true) && sample.live.reason === 'ready');
+    if (ready && preparation.stable) break;
+    preparation.rejection = 'Native formation moved or lost its floor clearance before any arming input.';
+    for (const sample of [preparation.afterHold, preparation.settled]) {
+      assert.equal(sample.live.state, 'ready');
+      assert.ok(['ready', 'unsafe-player', 'unsafe-companion'].includes(sample.live.reason),
+        'Preparation may only continue for a positional safety loss, not a pause, unavailable command or lost radio.');
+      assert.ok(sample.live.companions.every(member => member.status === 'active'));
+    }
+    assert.ok(attempt < 3, 'The native formation did not remain safely held after three bounded preparations.');
+  }
+  await setFieldOpen(true);
+  const canvas = hunt().locator('.hunt-canvas');
+  await canvas.scrollIntoViewIfNeeded(); await canvas.focus();
+  // All panel, focus and scroll actions precede this last live safety read.
+  const before = await observeHunt(`${label}-before-X`);
+  const command = { label, before, sent: false };
+  report.armingCommands.push(command);
+  assert.equal(before.live.state, 'ready'); assert.equal(before.live.reason, 'ready');
+  assert.ok(before.live.commandEnabled && before.live.focused && before.live.canvasFocused && !before.live.hidden,
+    'The real arming button and focused keyboard target must be ready immediately before X.');
+  assert.ok(formationClear(before, true), 'Every companion must still be held, on the floor and clear immediately before X.');
+  assert.ok(before.live.distance >= api.HUNT_POD_RECOVERY.safeRadius + preparationMargin &&
+    before.live.radioDistance <= api.HUNT_POD_RECOVERY.radioRange);
+  preparation.accepted = true;
+  await page.keyboard.press('x'); command.sent = true;
+  return command;
 }
 
 async function suspendAndResume(label, expectedPhase) {
@@ -461,19 +567,19 @@ try {
   });
 
   await check('Walking the whole triad away enables arming and a second X cancels', async () => {
-    const safe = await walkUntil('ready', 'move-whole-triad-to-safety');
-    assert.ok(safe.live.radioDistance <= api.HUNT_POD_RECOVERY.radioRange);
-    await companionOrder('karhek', 'hold'); await companionOrder('saketh', 'hold');
-    await pressX();
+    const command = await prepareAndPressArm('first-arm');
     await hunt().and(page.locator('[data-hunt-pod-state="countdown"]')).waitFor();
     const armed = await observeHunt('first-arm'); assert.ok(armed.live.remaining > 0 && armed.live.remaining <= 3);
+    command.after = armed;
     await pressX(); await hunt().and(page.locator('[data-hunt-pod-state="ready"]')).waitFor();
     assert.equal((await observeHunt('manual-cancel')).live.remaining, 0);
   });
 
   await check('Native pause and in-memory suspend/resume conserve the exact countdown', async () => {
-    await pressX(); await hunt().and(page.locator('[data-hunt-pod-state="countdown"]')).waitFor();
+    const command = await prepareAndPressArm('pause-arm');
+    await hunt().and(page.locator('[data-hunt-pod-state="countdown"]')).waitFor();
     await pauseHunt(); countdownBeforePause = await observeHunt('armed-paused');
+    command.after = countdownBeforePause;
     assert.ok(countdownBeforePause.live.remaining > 0);
     await page.waitForTimeout(1200);
     const still = await observeHunt('armed-still-paused');
