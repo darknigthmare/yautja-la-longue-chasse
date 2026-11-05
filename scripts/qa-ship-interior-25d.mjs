@@ -152,6 +152,7 @@ async function observe(element = ship()) {
 async function ready(roomId) {
   await ship().waitFor({ timeout: 120000 });
   if (roomId) await page.locator(activeShip + '[data-ship-room="' + roomId + '"]').waitFor();
+  await ship().locator('[data-ship-actor] [data-hunter-rig]').waitFor();
   const images = await ship().evaluate(async root => {
     const images = [...root.querySelectorAll('img')];
     await Promise.all(images.map(image => image.decode()));
@@ -193,7 +194,9 @@ async function keyboardTo(key, field, value, relation, label) {
   await page.keyboard.down(key);
   try { await waitGround(field, value, relation); }
   finally { await page.keyboard.up(key); }
-  await page.locator(activeShip + ' [data-ship-actor][data-actor-moving="false"]').waitFor();
+  // The foot anchor is intentionally 0×0; its rendered rig has dimensions.
+  // Check the stopped anchor's presence inside the strictly visible scene.
+  await page.locator(activeShip + ' [data-ship-actor][data-actor-moving="false"]').waitFor({ state: 'attached' });
   const after = await observe();
   assert.equal(after.room, before.room, 'Walking alone must not cross a room boundary.');
   assert.ok(distance(before, after) > 5, label + ': native input did not move the actor.');
@@ -203,7 +206,7 @@ async function keyboardTo(key, field, value, relation, label) {
 
 async function settled(roomId) {
   await page.locator(activeShip + '[data-ship-room="' + roomId + '"][data-ship-navigation="false"]').waitFor({ timeout: 25000 });
-  await page.locator(activeShip + ' [data-ship-actor][data-actor-moving="false"]').waitFor();
+  await page.locator(activeShip + ' [data-ship-actor][data-actor-moving="false"]').waitFor({ state: 'attached' });
   return observe();
 }
 
@@ -244,9 +247,31 @@ async function serviceAndReturn(roomId) {
   const service = page.locator('[data-dev-service="' + serviceId + '"]:visible');
   await service.waitFor({ timeout: 90000 });
   assert.equal(await originalRoot.getAttribute('data-suspended'), 'true');
+  let nativePanelEvidence;
+  const nativePanel = ['medbay', 'training'].includes(serviceId)
+    ? service.locator('[data-ship-embedded="true"][data-ship-room="' + serviceId + '"]:visible') : null;
+  if (nativePanel) {
+    // The host heading and Suspense placeholder are not proof that ShipHub
+    // mounted. Wait for its actual room, live controls and decoded hunter rig.
+    await nativePanel.waitFor({ timeout: 90000 });
+    nativePanelEvidence = await nativePanel.evaluate(async panel => {
+      const images = [...panel.querySelectorAll('img')];
+      await Promise.all(images.map(image => image.decode()));
+      return { room: panel.getAttribute('data-ship-room'),
+        actions: panel.querySelectorAll('[aria-label="Actions disponibles"] button').length,
+        images: images.map(image => ({ src: image.currentSrc || image.src,
+          width: image.naturalWidth, height: image.naturalHeight })),
+        background: getComputedStyle(panel).backgroundImage };
+    });
+    assert.ok(nativePanelEvidence.actions > 0 && nativePanelEvidence.images.length > 0);
+    assert.ok(nativePanelEvidence.images.every(image => image.width > 0 && image.height > 0));
+    assert.ok(nativePanelEvidence.background.includes('/game/backgrounds/ship-hub-v4.webp'));
+    await nativePanel.focus();
+  }
   assert.ok((await service.innerText()).trim().length > 30, 'The service must mount its actual controls.');
   await page.keyboard.down('ArrowRight');
   try { await page.waitForTimeout(160); } finally { await page.keyboard.up('ArrowRight'); }
+  if (nativePanel) assert.equal(await nativePanel.getAttribute('data-ship-room'), serviceId, 'A locked native service cannot change rooms.');
   const hidden = await observe(originalRoot);
   assert.equal(hidden.x, before.x); assert.equal(hidden.y, before.y); assert.equal(hidden.room, before.room);
   let selectedWeapon;
@@ -273,7 +298,7 @@ async function serviceAndReturn(roomId) {
   await originalRoot.dispose();
   await assertStorage('service-' + roomId);
   report.services.push({ room: roomId, service: serviceId, before: { x: before.x, y: before.y },
-    after: { x: after.x, y: after.y }, nativeSharedPanel: ['medbay', 'training'].includes(serviceId), selectedWeapon });
+    after: { x: after.x, y: after.y }, nativeSharedPanel: !!nativePanel, nativePanelEvidence, selectedWeapon });
 }
 
 async function verifyMotion(label) {
@@ -312,7 +337,7 @@ async function touchHold(cdp, direction, field, delta) {
   await cdp.send('Input.dispatchTouchEvent', { type: 'touchStart', touchPoints: [point] });
   try { await waitGround(field, before[field] + delta, delta > 0 ? 'greater' : 'less'); }
   finally { await cdp.send('Input.dispatchTouchEvent', { type: 'touchEnd', touchPoints: [] }); }
-  await page.locator(activeShip + ' [data-ship-actor][data-actor-moving="false"]').waitFor();
+  await page.locator(activeShip + ' [data-ship-actor][data-actor-moving="false"]').waitFor({ state: 'attached' });
   return { direction, before, after: await observe() };
 }
 
@@ -484,12 +509,24 @@ try {
   });
   const cdp = await context.newCDPSession(page);
   for (const width of [390, 320]) {
-    await check('Mobile ' + width + ' px keeps the camera readable, touch movement working and scroll separate from walking', async () => {
+    await check('Mobile ' + width + ' px keeps the camera readable, touch movement working and swipe separate from walking', async () => {
       await page.setViewportSize({ width, height: 844 });
       await page.locator('[data-dev-reset]').click();
       await ready('galaxy-map');
       const viewport = ship().locator('[data-ship-viewport]');
       await viewport.scrollIntoViewIfNeeded();
+      const scrollState = () => viewport.evaluate(viewport => {
+        const ancestors = [];
+        for (let element = viewport.parentElement; element; element = element.parentElement) {
+          const overflow = getComputedStyle(element).overflowY;
+          if (element === document.scrollingElement || /^(auto|scroll)$/.test(overflow)) {
+            ancestors.push({ tag: element.tagName, top: element.scrollTop,
+              maximum: element.scrollHeight - element.clientHeight });
+          }
+        }
+        return ancestors;
+      });
+      const scrollBefore = await scrollState();
       const before = await observe(), box = await viewport.boundingBox(); assert.ok(box);
       const swipeX = box.x + box.width * .5, startY = Math.min(box.y + box.height * .75, 700);
       await cdp.send('Input.dispatchTouchEvent', { type: 'touchStart', touchPoints: [{ x: swipeX, y: startY, id: 0 }] });
@@ -501,6 +538,11 @@ try {
       await page.waitForTimeout(120);
       const afterSwipe = await observe();
       assert.equal(afterSwipe.x, before.x); assert.equal(afterSwipe.y, before.y); assert.equal(afterSwipe.navigation, false);
+      const scrollAfter = await scrollState();
+      const scrollProven = scrollAfter.some((item, index) => item.top > scrollBefore[index].top + 1);
+      if (scrollBefore.some(item => item.maximum - item.top > 10)) {
+        assert.equal(scrollProven, true, 'A real upward touch swipe must scroll an ancestor when downward scroll space is available.');
+      }
       const horizontal = await touchHold(cdp, 'right', 'x', 25);
       const vertical = await touchHold(cdp, 'up', 'y', -25);
       await guideTo('wall-armory'); await ready('wall-armory'); await serviceAndReturn('wall-armory');
@@ -509,7 +551,7 @@ try {
       assert.ok(scale > .5 && scale <= 1.1, 'Mobile camera must preserve a readable physical scale.');
       assert.ok(camera.actor.x >= camera.viewport.x && camera.actor.x <= camera.viewport.right &&
         camera.actor.y >= camera.viewport.y && camera.actor.y <= camera.viewport.bottom, 'The camera must retain the hunter inside the real viewport.');
-      report.mobile.push({ width, swipe: { before, after: afterSwipe }, horizontal, vertical, camera });
+      report.mobile.push({ width, swipe: { before, after: afterSwipe, scrollBefore, scrollAfter, scrollProven }, horizontal, vertical, camera });
       await capture('mobile-' + width + '-armory'); await assertStorage('mobile-' + width);
       await page.evaluate(() => { window.__shipInteriorQaMotion.length = 0; });
     });
