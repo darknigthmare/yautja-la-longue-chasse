@@ -1,0 +1,17 @@
+$ node --experimental-strip-types --test tests/gauntlet-mission-resume-v142.test.mjs
+
+✔ Every legitimate V142 unlocked identity survives saved/reloaded sidecar configuration (2.394268ms)
+✔ Saved Wolf stays Wolf after a different cosmetic preference is equipped elsewhere (0.266286ms)
+✔ Legacy V141 sidecar without optional model preserves previous behavior (0.185447ms)
+✔ An old/future/hostile cosmetic receipt cannot unlock an unearned gauntlet (0.221087ms)
+✔ V1 active hunt sidecar roundtrip persists optional selected identity, no schema break (17.733106ms)
+✔ GameClient writes launch-time visual identity, preserves it across writes, and passes it to HuntCanvas on resume (109.267493ms)
+✔ Arrival handoff and first-mount recovery retain the captured gauntlet after another tab changes a legacy preference (108.297798ms)
+ℹ tests 7
+ℹ suites 0
+ℹ pass 7
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 4170.240744

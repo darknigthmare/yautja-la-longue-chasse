@@ -57,7 +57,7 @@ const report = {
   workingTreeDirty: git('status', '--porcelain').length > 0, sourceHashes,
   browserMode: headed ? 'headed' : 'headless',
   scope: 'Actual component rendering at native shot boundaries on desktop/mobile; all eight destinations; seven representative orbital hulls; four insertion combinations plus paid optical camouflage, and three grounded hull profiles; natural production /dev arrival and real hunt handoffs. Spatial evidence is distinct from artistic or canonical approval. Ship contact and exit points follow source composition, without a claim about canonical landing gear or release bays.',
-  timing: 'Unmodified native requestAnimationFrame. Samples wait for elapsed-time thresholds and retain observed times; no virtual or accelerated clock.',
+  timing: 'Unmodified native requestAnimationFrame. Samples wait for elapsed-time thresholds and retain observed times; no virtual or accelerated clock. Dense egress geometry is measured without PNG encoding; its photographs use independent playbacks from the same native shot boundary.',
   nativeUrl: nativeUrl.href, checks: [], samples: [], movement: [], captures: [],
   resizes: [], ships: [], insertions: [], native: {}, errors: [], consoleErrors: [], missingAssets: [], requestedAssets: [],
 };
@@ -669,7 +669,9 @@ async function capture(label, target = page, options = {}) {
 // Narrow native intervals must not spend their remaining time decoding images
 // or walking hundreds of computed-style ancestors before requesting the PNG.
 // Read the live clock and stage tags, capture the unchanged visible rectangle,
-// then measure the complete geometry. The report preserves both observations.
+// bracket that PNG with another light clock read, then measure the complete
+// geometry. PNG compression is optimized for speed but remains lossless.
+const momentCaptureSessions = new WeakMap();
 async function captureMoment(label, prepared, target = page) {
   const before = await target.locator('[data-arrival-run]').evaluate(root => ({
     elapsedMs: Number(root.getAttribute('data-arrival-elapsed')),
@@ -691,15 +693,30 @@ async function captureMoment(label, prepared, target = page) {
   const { x, y, width, height } = prepared.scene;
   assert.ok(x >= 0 && y >= 0 && x + width <= target.viewportSize().width + 1 &&
     y + height <= target.viewportSize().height + 1, `${label}: the unmodified scene must fit the screenshot viewport.`);
-  const bytes = await target.screenshot({ clip: { x, y, width, height }, animations: 'allow' });
+  const screenshot = await prepared.captureSession.send('Page.captureScreenshot', {
+    format: 'png', clip: { x, y, width, height, scale: 1 }, fromSurface: true,
+    captureBeyondViewport: false, optimizeForSpeed: true,
+  });
+  const after = await target.locator('[data-arrival-run]').evaluate(root => ({
+    elapsedMs: Number(root.getAttribute('data-arrival-elapsed')),
+    shot: root.getAttribute('data-arrival-shot'), status: root.getAttribute('data-arrival-status'),
+    cloakPhase: root.querySelector('[data-arrival-scene]')?.getAttribute('data-arrival-cloak-phase'),
+    contact: root.querySelector('[data-arrival-scene]')?.getAttribute('data-arrival-contact') === 'true',
+  }));
+  assert.equal(after.status, 'playing', `${label}: a terminal or paused overlay invalidates the photograph.`);
+  assert.equal(after.shot, before.shot, `${label}: the photograph must stay within its actual native shot.`);
+  assert.equal(after.cloakPhase, before.cloakPhase, `${label}: optical phase must remain unambiguous across the photograph.`);
+  assert.equal(after.contact, before.contact, `${label}: the photograph cannot cross the native ground-contact boundary.`);
+  assert.ok(after.elapsedMs >= before.elapsedMs, `${label}: the native clock cannot be rewound for a picture.`);
+  const bytes = Buffer.from(screenshot.data, 'base64');
   const measured = { ...await readFrame(target), decodedSvg: prepared.decodedSvg };
   assertSpatial(measured, label);
   const file = label + '.png';
   await fs.writeFile(path.join(out, file), bytes);
   report.captures.push({ file, sha256: sha256(bytes), viewport: target.viewportSize(), shot: before.shot,
-    elapsedBefore: before.elapsedMs, elapsedAfter: measured.elapsedMs,
-    observation: 'Live clock immediately before screenshot; complete geometry measured after screenshot.' });
-  report.samples.push({ label, ...measured, capturedBefore: before });
+    elapsedBefore: before.elapsedMs, elapsedAfter: after.elapsedMs, measuredAt: measured.elapsedMs,
+    observation: 'Live clock immediately before and after lossless PNG capture; native playing status, shot and optical phase must survive both observations. Complete geometry measured afterwards.' });
+  report.samples.push({ label, ...measured, capturedBefore: before, capturedAfter: after });
   return { frame: measured, capturedBefore: before };
 }
 
@@ -707,7 +724,8 @@ async function prepareMoment(target = page) {
   const decodedSvg = await decodeSceneImages(target);
   const scene = await target.locator('[data-arrival-scene]').boundingBox();
   assert.ok(scene);
-  return { decodedSvg, scene };
+  if (!momentCaptureSessions.has(target)) momentCaptureSessions.set(target, await target.context().newCDPSession(target));
+  return { decodedSvg, scene, captureSession: momentCaptureSessions.get(target) };
 }
 
 async function waitElapsed(milliseconds, shotId, target = page, allowComplete = false) {
@@ -826,6 +844,30 @@ try {
         if (shot.id === 'landing') samples.splice(2, 0, ['impact', .66]);
         if (shot.id === 'egress') samples.splice(1, 0,
           ['vent-dissipation', .26], ['threshold', .32], ['step-down', .40]);
+        if (shot.id === 'egress') {
+          // Six PNG encodes cannot share this five-second native window: the
+          // audited 66f run spent 1.534 s on one image and reached completion
+          // before its last sample. Keep the dense geometry observations in
+          // one unchanged playback, without image encoding between them.
+          const decodedSvg = await decodeSceneImages();
+          for (const [position, progress] of samples) {
+            await waitElapsed(shot.startMs + duration * progress, shot.id);
+            const label = `${viewport.id}-${shot.id}-${position}`;
+            const measured = { ...await readFrame(), decodedSvg };
+            assertSpatial(measured, label);
+            report.samples.push({ label, ...measured });
+          }
+          // Each picture starts at the real shot boundary and requests its
+          // PNG before the expensive complete geometry read. No pause overlay,
+          // forced clock, or completed frame is substituted for emergence.
+          for (const [position, progress] of samples) {
+            await openShot(primaryMission.id, shot.id);
+            const prepared = await prepareMoment();
+            await waitElapsed(shot.startMs + duration * progress, shot.id);
+            await captureMoment(`${viewport.id}-${shot.id}-${position}-image`, prepared);
+          }
+          return;
+        }
         for (const [position, progress] of samples) {
           await waitElapsed(shot.startMs + duration * progress, shot.id);
           await capture(`${viewport.id}-${shot.id}-${position}`);
@@ -843,8 +885,10 @@ try {
         for (const [shotId, progress] of [['carrier', .18], ['landing', .72], ['egress', .72]]) {
           const shot = api.PLANET_ARRIVAL_SHOTS.find(candidate => candidate.id === shotId);
           await openShot(mission.id, shotId);
+          const prepared = shotId === 'egress' ? await prepareMoment() : null;
           await waitElapsed(shot.startMs + (shot.endMs - shot.startMs) * progress, shotId);
-          const frame = await capture(`${viewport.id}-${mission.id}-${shotId}`);
+          const label = `${viewport.id}-${mission.id}-${shotId}`;
+          const frame = prepared ? (await captureMoment(label, prepared)).frame : await capture(label);
           assert.equal(frame.planet, expected.destinationId);
           if (shotId === 'carrier') {
             assert.equal(frame.planetImage, assets.planet, 'Planet calibration must retain the registered source path.');
@@ -993,12 +1037,18 @@ try {
         await waitElapsed(landing.startMs + (landing.endMs - landing.startMs) * .75, landing.id);
         const grounded = await capture(`${viewport.id}-${shipId}-surface-contact`);
         assert.equal(grounded.groundShip.contact, true);
-        await openShot(primaryMission.id, 'egress', false, shipId, plan);
         const egress = api.PLANET_ARRIVAL_SHOTS.find(shot => shot.id === 'egress');
         for (const progress of [.32, .42, .96]) {
-          await waitElapsed(egress.startMs + (egress.endMs - egress.startMs) * progress, egress.id);
-          const frame = await capture(`${viewport.id}-${shipId}-surface-egress-${Math.round(progress * 100)}`);
+          await openShot(primaryMission.id, 'egress', false, shipId, plan);
+          const prepared = await prepareMoment();
+          const atMs = progress === .96 ? api.ARRIVAL_HUNTER_MOVE_END_MS + 10
+            : egress.startMs + (egress.endMs - egress.startMs) * progress;
+          await waitElapsed(atMs, egress.id);
+          const photographed = await captureMoment(`${viewport.id}-${shipId}-surface-egress-${Math.round(progress * 100)}`, prepared);
+          const frame = photographed.frame;
           if (progress === .96) {
+            assert.ok(photographed.capturedBefore.members.every(member => member.stage === 'standing' && member.contact === 'ground'),
+              'The actual final support must be photographed before the terminal overlay.');
             assertFinalFormation(frame, plan, `${viewport.id}-${shipId}`);
             assert.ok(distance(groundPoint(grounded, 'ship-ground-contact'), groundPoint(frame, 'ship-ground-contact')) <= 1.5);
           }

@@ -126,26 +126,28 @@ try {
   const openApp = async () => { await page.goto(`http://127.0.0.1:${port}`, { waitUntil: 'networkidle', timeout: 120_000 }); await continueCampaign(); };
   const screenshot = async filename => { await page.screenshot({ path: path.join(out, filename), fullPage: true }); report.screenshots.push(filename); };
   const resizeViewport = async viewport => {
-    await page.evaluate(() => {
+    const requirePanel = await page.evaluate(() => {
       const probe = document.createElement('div');
       probe.dataset.wolfArrivalViewportProbe = '';
       probe.style.cssText = 'position:fixed;left:0;top:0;width:100vw;height:100vh;visibility:hidden;pointer-events:none';
       document.body.append(probe);
+      return !!document.querySelector('[data-wolf-castle-status], [data-arrival-run]');
     });
     try {
       await page.setViewportSize(viewport);
       // Device metrics and two animation frames can precede the viewport-unit
       // and media-query recalculation in headed Chromium. Wait for actual CSS
-      // dimensions and the panel's screen-safe padding, never for overflow to disappear.
-      await page.waitForFunction(({ width, height }) => {
+      // dimensions and, when resizing a panel, its screen-safe padding. Returning
+      // to the personal deck has no castle/arrival panel. Never wait for overflow to disappear.
+      await page.waitForFunction(({ width, height, requirePanel }) => {
         const rect = document.querySelector('[data-wolf-arrival-viewport-probe]')?.getBoundingClientRect();
         const safe = document.querySelector('[data-wolf-castle-status], [data-arrival-run]')?.closest('.screen-safe');
         const expectedPadding = width <= 760 ? 14 : Math.min(64, Math.max(18, width * .04));
         return innerWidth === width && innerHeight === height && rect &&
           Math.abs(rect.width - width) < 1 && Math.abs(rect.height - height) < 1 &&
-          matchMedia('(max-width: 760px)').matches === (width <= 760) && safe &&
-          Math.abs(parseFloat(getComputedStyle(safe).paddingInlineStart) - expectedPadding) < .1;
-      }, viewport);
+          matchMedia('(max-width: 760px)').matches === (width <= 760) &&
+          (!requirePanel || safe && Math.abs(parseFloat(getComputedStyle(safe).paddingInlineStart) - expectedPadding) < .1);
+      }, { ...viewport, requirePanel });
       report.viewportTransitions.push(await page.evaluate(() => {
         const card = document.querySelector('[data-wolf-castle-status], [data-arrival-run]');
         const safe = card?.closest('.screen-safe');

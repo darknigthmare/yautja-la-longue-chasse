@@ -281,18 +281,27 @@ async function decodeRenderedImages(target, selector) {
   return images;
 }
 
+const activeCastleSelector = '[data-wolf-castle-status]:not([inert]):not([aria-hidden="true"])';
+const activeCastleInteriorSelector = `${activeCastleSelector} [data-wolf-castle-interior]`;
+
 async function castleReady(room, target = page) {
-  const selector = `[data-wolf-castle-status="aboard"][data-wolf-castle-room="${room.id}"]`;
-  await target.locator(selector).waitFor({ timeout: 90000 });
-  await target.locator('[data-wolf-castle-interior]').waitFor();
+  // A streamed URL entry can briefly retain an explicitly suspended copy.
+  // Follow the same active/non-inert scene that can receive native input;
+  // two active candidates still fail Playwright's strict locator checks.
+  const selector = `${activeCastleSelector}[data-wolf-castle-status="aboard"][data-wolf-castle-room="${room.id}"]`;
+  const castle = target.locator(selector);
+  await castle.waitFor({ timeout: 90000 });
+  await castle.locator('[data-wolf-castle-interior]').waitFor();
+  const destination = await castle.evaluate(element => element.closest('[data-dev-session]')?.getAttribute('data-dev-session'));
+  assert.equal(destination, new URL(target.url()).searchParams.get('lieu'), 'The active castle must belong to the requested developer destination.');
   const images = await decodeRenderedImages(target, selector);
   assert.ok(images.some(image => image.src === room.background), `Wolf ${room.id} must render its authored room backdrop.`);
-  const position = await target.locator('[data-wolf-castle-interior]').evaluate(element => ({
+  const position = await castle.locator('[data-wolf-castle-interior]').evaluate(element => ({
     x: Number(element.getAttribute('data-wolf-castle-x')),
     y: Number(element.getAttribute('data-wolf-castle-y')),
   }));
   assert.ok(Number.isFinite(position.x) && Number.isFinite(position.y), 'The real Wolf actor must have finite coordinates.');
-  const info = { room: room.id, ...position, background: room.background, decodedImages: images.length };
+  const info = { room: room.id, destination, ...position, background: room.background, decodedImages: images.length };
   report.castleVisits.push(info);
   return info;
 }
@@ -650,14 +659,14 @@ try {
       await jump(`wolf-${room.id}`);
       const initial = await castleReady(room);
       if (room.id === 'royal-berth') {
-        await moveWithKeyboard(page, '[data-wolf-castle-interior]', '[data-wolf-castle-interior]',
+        await moveWithKeyboard(page, activeCastleInteriorSelector, activeCastleInteriorSelector,
           'data-wolf-castle-x', 'data-wolf-castle-y', 'wolf-royal-berth');
-        await page.locator('[data-wolf-castle-interior][data-wolf-castle-moving="false"]').waitFor();
+        await page.locator(`${activeCastleInteriorSelector}[data-wolf-castle-moving="false"]`).waitFor();
         await page.locator('[data-dev-reset]').click();
-        await page.waitForFunction(({ x, y }) => {
-          const actor = document.querySelector('[data-wolf-castle-interior]');
+        await page.waitForFunction(({ selector, x, y }) => {
+          const actor = document.querySelector(selector);
           return Number(actor?.getAttribute('data-wolf-castle-x')) === x && Number(actor?.getAttribute('data-wolf-castle-y')) === y;
-        }, initial);
+        }, { ...initial, selector: activeCastleInteriorSelector });
         const reset = await castleReady(room);
         assert.equal(reset.x, initial.x); assert.equal(reset.y, initial.y);
       }
@@ -668,26 +677,27 @@ try {
 
   await check('Wolf approach, boarding, settings and departure use native actions, and F8 escapes its real map', async () => {
     await jump('wolf-approach');
-    await page.locator('[data-wolf-castle-status="approach"]').waitFor();
-    const approachImages = await decodeRenderedImages(page, '[data-wolf-castle-status="approach"]');
+    const activeCastle = page.locator(activeCastleSelector);
+    await page.locator(`${activeCastleSelector}[data-wolf-castle-status="approach"]`).waitFor();
+    const approachImages = await decodeRenderedImages(page, `${activeCastleSelector}[data-wolf-castle-status="approach"]`);
     for (const src of seeded.castleApproachAssets) assert.ok(approachImages.some(image => image.src === src), `Wolf approach must display ${src}.`);
     await capture('09-wolf-castle-approach');
-    await page.locator('[data-wolf-castle-action="board"]').click();
+    await activeCastle.locator('[data-wolf-castle-action="board"]').click();
     const berth = seeded.castleRooms.find(room => room.id === 'royal-berth');
     const beforeSettings = await castleReady(berth);
-    await page.locator('[data-wolf-castle-menu]').click();
+    await activeCastle.locator('[data-wolf-castle-menu]').click();
     await page.locator('[data-dev-service="settings"]').waitFor();
     await assertStorageUnchanged(page, protectedState, 'wolf-settings-open');
     await page.locator('[data-dev-service-back]').click();
-    await page.waitForFunction(() => document.querySelector('[data-wolf-castle-interior]')?.contains(document.activeElement));
+    await page.waitForFunction(selector => document.querySelector(selector)?.contains(document.activeElement), activeCastleInteriorSelector);
     const afterSettings = await castleReady(berth);
     assert.equal(afterSettings.x, beforeSettings.x); assert.equal(afterSettings.y, beforeSettings.y);
-    await moveWithKeyboard(page, null, '[data-wolf-castle-interior]',
+    await moveWithKeyboard(page, null, activeCastleInteriorSelector,
       'data-wolf-castle-x', 'data-wolf-castle-y', 'wolf-after-settings-native-focus');
-    await page.locator('[data-wolf-castle-interior][data-wolf-castle-moving="false"]').waitFor();
-    await page.locator('[data-wolf-castle-interact="personal-ship"]').click();
-    await page.locator('[data-wolf-castle-dialog="departure"]').waitFor();
-    await page.locator('[data-wolf-castle-action="depart"]').click();
+    await page.locator(`${activeCastleInteriorSelector}[data-wolf-castle-moving="false"]`).waitFor();
+    await activeCastle.locator('[data-wolf-castle-interact="personal-ship"]').click();
+    await activeCastle.locator('[data-wolf-castle-dialog="departure"]').waitFor();
+    await activeCastle.locator('[data-wolf-castle-action="depart"]').click();
     await page.locator('[data-dev-session="ship"]').waitFor();
     assert.equal(new URL(page.url()).searchParams.get('lieu'), 'ship');
 
@@ -697,8 +707,8 @@ try {
     await page.reload({ waitUntil: 'domcontentloaded', timeout: 120000 });
     const reloaded = await castleReady(archives);
     assert.equal(reloaded.x, initial.x); assert.equal(reloaded.y, initial.y);
-    await page.locator('[data-wolf-castle-map]').click();
-    await page.locator('[data-wolf-castle-dialog="map"]').waitFor();
+    await activeCastle.locator('[data-wolf-castle-map]').click();
+    await activeCastle.locator('[data-wolf-castle-dialog="map"]').waitFor();
     await page.keyboard.press('F8');
     await page.locator('[data-dev-catalogue]').waitFor();
     assert.equal(await page.locator('[data-wolf-castle-status]').count(), 0);
