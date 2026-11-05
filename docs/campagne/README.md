@@ -4,7 +4,8 @@
 
 - [BIBLE_DE_CAMPAGNE.md](BIBLE_DE_CAMPAGNE.md) : export du 5 novembre 2026 du document vivant
   https://claude.ai/artifact/XidnmiofkYMgRZKGLEWD52 (version de travail ; le
-  document en ligne fait foi s'il évolue).
+  document en ligne fait foi s'il évolue, sous réserve de réconcilier les décisions
+  explicites des compléments ci-dessous plutôt que les écraser silencieusement).
 - [note-rangs-2022-06-27.jpg](note-rangs-2022-06-27.jpg) : note d'origine sur l'échelle des rangs
   (Level 0 → 10), reprise et complétée dans la section « Échelle des rangs ».
 
@@ -43,14 +44,24 @@ de ces décisions ; elle ne doit pas réintroduire silencieusement des compagnon
 compartiments personnels par défaut. Les personnages déjà établis, dont Saar et Vek,
 ne sont ni remplacés ni dupliqués par les propositions du catalogue.
 
-## Articulation avec le complément Warp Universe
+## Complément demandé le 5 novembre 2026 : Warp Universe
 
-Les ajouts Warp présents sur la même PR sont conservés :
+Les documents Warp font partie de cette même bible et de cette même PR :
 
-- [WARP_UNIVERSE.md](WARP_UNIVERSE.md) : accès Adjutant, expéditions, Chroniques cinéma,
-  Réécritures et raccords à la campagne.
-- [WARP_UNIVERSE_ASSETS.md](WARP_UNIVERSE_ASSETS.md) : catalogue et état des ressources
-  du chantier Warp ; distinct des besoins d'assets nouveaux du catalogue compagnons.
+| Document | Contenu |
+| --- | --- |
+| [WARP_UNIVERSE.md](WARP_UNIVERSE.md) | Accès Adjutant après plusieurs planètes, raccord aux M029–M034 et à l'arc du prototype ; Expéditions, Chroniques cinéma et Réécritures ; 12 familles d'époques, 36 propositions de missions et 9 chroniques terrestres ; sauvegardes, justice, récompenses, portail, véhicules et besoins d'animation/audio. |
+| [WARP_UNIVERSE_ASSETS.md](WARP_UNIVERSE_ASSETS.md) | Inventaire exact des 170 PNG des cinq archives récupérées : noms, dimensions, SHA-256 des archives, provenance et limites. 146 sprites transparents et 24 fonds opaques contrôlés techniquement ; aucune intégration runtime ou certification artistique prétendue. |
+| [WARP_UNIVERSE_REPRISE.md](WARP_UNIVERSE_REPRISE.md) | 40 images non livrées, identifiants conservés, priorités proposées, travaux de gameplay/animation/audio distincts et 28 contrôles d'acceptation Warp encore ouverts. |
+
+Les valeurs « 12 missions / 4 planètes » restent une proposition d'équilibrage,
+pas un verrou ajouté aux huit chasses existantes. Le Warp reste facultatif et
+n'exige pas de clan ship. Les 36 propositions n'augmentent pas le compte des
+68 fiches historiques en missions déjà jouables. Les binaires PNG restent dans
+les archives sources : cette PR en ajoute le catalogue et la traçabilité, pas
+une importation sous `public/`.
+
+### Articulation avec les compagnons
 
 **Précision de portée pour l'annexe compagnons :** la restriction de L-10 concernant
 les personnages des films s'applique aux expéditions originales, et non aux Chroniques
@@ -69,10 +80,12 @@ créé en terminant un film. Cette règle concorde avec la section 7 de Warp Uni
 ## Statut de production
 
 Les éléments marqués « proposé » sont des propositions de conception à valider.
-Les règles de recrutement demandées sont documentées ; les quêtes, comportements,
-modules et assets nouveaux restent à produire. Les références de lore du catalogue
-nécessitent leur dossier d'œuvre/continuité avant production des héros Héritage.
+Les règles de recrutement et de Warp demandées sont documentées ; les quêtes,
+comportements, modules et assets nouveaux restent à produire ou à intégrer selon
+leur état propre. Les références de lore du catalogue nécessitent leur dossier
+d'œuvre/continuité avant production des héros Héritage.
 
-Aucun code, asset ou fichier de sauvegarde n'est modifié par ces ajouts documentaires.
+Aucun code, asset binaire ou fichier de sauvegarde n'est modifié par ces ajouts documentaires.
 Aucun build, parcours en jeu, test comportemental ou validation artistique n'est
-revendiqué par leur seule présence dans cette PR.
+revendiqué par leur seule présence dans cette PR. Le contrôle des archives Warp
+est une vérification de fichiers sources, distincte d'une QA du jeu.
