@@ -1467,7 +1467,7 @@ try {
       await waitElapsed(api.ARRIVAL_POD_SHUTTERS_OPEN_START_MS + 350, 'atmosphere');
       await page.getByRole('button', { name: 'Pause', exact: true }).click();
       await page.locator('[data-arrival-status="paused"]').waitFor();
-      const paused = await readFrame();
+      const paused = { ...await readFrame(), decodedSvg: await decodeSceneImages() };
       assertSpatial(paused, `${viewport.id}-pod-petals-paused`);
       assert.ok(paused.flightPods.some(pod => pod.deployment > 0 && pod.deployment < 1),
         'The real Pause button must freeze an observed mechanical deployment, not only an endpoint.');
