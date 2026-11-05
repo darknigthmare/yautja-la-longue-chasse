@@ -348,16 +348,16 @@ try {
     report.walking.transitions.push({ purpose: 'soins-to-conseil', rooms, samples: samples.length });
   });
   await check('The rendered hunter stops at a real fixture and pointer navigation goes around it', async () => {
-    await point(560, 560);
+    await point(450, 560);
     await page.keyboard.down('ArrowRight'); await page.waitForTimeout(300); await page.keyboard.up('ArrowRight');
     await waitStopped();
     const againstTable = await actor();
-    assert.ok(againstTable.x >= 560 && againstTable.x < 572, 'The council table footprint must stop direct input');
+    assert.ok(againstTable.x >= 450 && againstTable.x < 462, 'The massive council table footprint must stop direct input');
     await point(620, 540, false, false);
     await page.waitForTimeout(200);
     samePosition(await actor(), againstTable, 'An occupied destination must be refused instead of moving or snapping');
-    await point(910, 560);
-    assert.ok((await actor()).x > 900, 'The pointer route must reach the far side of the table');
+    await point(1020, 560);
+    assert.ok((await actor()).x > 1000, 'The pointer route must reach the far side of the table');
   });
   await check('The archive service requires walking into reach and a separate interaction', async () => {
     await move('archives');
@@ -387,6 +387,9 @@ try {
       await screenshot(`interior-${room}-desktop.png`);
       await interact();
       if (service === 'clan-war') {
+        await page.locator('[data-clan-operations]').waitFor();
+        await page.locator('[data-clan-operations-tab="post"]').click();
+        await page.locator('[data-clan-general-war]').click();
         await page.locator('[data-clan-war-v85]').waitFor();
         await page.keyboard.press('Escape');
       } else {

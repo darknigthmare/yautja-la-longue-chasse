@@ -26,6 +26,8 @@ const dependencies = await build({
     'export * as castleCombat from "./app/game/systems/wolfCastleCombat.ts";',
     'export { captureHuntGauntletV142, resumeHuntGauntletV142 } from "./app/game/systems/huntGauntletIdentityV142.ts";',
     'export { normalizeHuntAccessibilityV112 } from "./app/game/systems/huntAccessibilityV112.ts";',
+    'export { actClanShipOperations, bindClanShipMission, clanShipContract, createClanShipOperations, inspectClanShipOperations, releaseClanShipMissionBinding, settleClanShipMission, CLAN_SHIP_ONBOARDING_STEPS } from "./app/game/systems/clanShipOperations.ts";',
+    'export { applyMissionResult as applyRealMissionResult } from "./app/game/save.ts";',
   ].join('\n'), resolveDir: fileURLToPath(new URL('../', import.meta.url)), loader: 'ts' },
   bundle: true, write: false, format: 'iife', globalName: 'ShipFlowDependencies', platform: 'node', logLevel: 'silent',
 });
@@ -56,6 +58,7 @@ function fixture() {
   const observations = { writes: 0, clears: 0, rewards: 0, sidecars: [], screen: "deck", sequence: 0, events: [] };
   const environment = {
     TextEncoder,
+    cloneJsonDto: value => JSON.stringify(structuredClone(value)),
     sessionAliveRef: { current: true },
     pendingTrophyCommitRef: { current: null },
     // Adult campaign fixture has no uncertain nursery transaction.
@@ -87,6 +90,9 @@ function fixture() {
     writeActiveHuntSave(value) { observations.currentHunt = value; observations.sidecars.push(value); return { persisted: true, save: value, failure: null }; },
   };
   Object.assign(environment, runInNewContext(`(() => { ${dependencyScript}; return ShipFlowDependencies; })()`, environment));
+  // Node VM contexts omit the browser's structuredClone global. Use the native
+  // clone for these JSON DTOs, then reconstruct their prototypes in this realm.
+  runInNewContext('globalThis.structuredClone = value => JSON.parse(cloneJsonDto(value));', environment);
   environment.save = environment.defaultSave("2026-08-31T10:00:00.000Z");
   environment.save.settings.difficultyId = 'hunter';
   environment.selectedMission = environment.MISSIONS.find(item => item.id === MISSION_ID);
@@ -781,4 +787,145 @@ test('arrival recovery before the first canvas snapshot can be retired by its ow
   assert.equal(environment.save.planetArrival, null);
   assert.equal(environment.save.planetArrivalRun, null);
   assert.equal(observations.rewards, 0);
+});
+
+function clanContractFixture() {
+  const result = fixture(), { environment } = result;
+  runInNewContext(`
+    let operations = createClanShipOperations(save.createdAt);
+    const operate = (type, detail = {}, roomId = 'conseil') => {
+      const outcome = actClanShipOperations(operations, { type, expectedRevision: operations.revision, ...detail }, {
+        ownerCreatedAt: save.createdAt, campaign: save,
+        docking: { ownerCreatedAt: save.createdAt, status: 'aboard', roomId },
+      });
+      if (!outcome.accepted) throw Error(outcome.message);
+      operations = outcome.state;
+    };
+    for (const step of CLAN_SHIP_ONBOARDING_STEPS) operate('onboard-step', { stepId: step.id }, step.roomId);
+    operate('accept-mandate');
+    operate('accept-contract', { contractId: 'field-jungle-survey' });
+    save = { ...save, clanShipOperations: operations };
+    saveRef.current = save;
+    applyMissionResult = applyRealMissionResult;
+    makeClanMissionResult = (outcome = 'success', score = 80, scans = 3) => ({
+      missionId: selectedMission.id, difficultyId: 'hunter', outcome, score, scans, elapsedSeconds: 180,
+      completedObjectiveIds: selectedMission.objectives.filter(item => item.required || item.kind === 'extract').map(item => item.id),
+      honorEvents: [], trophyQuality: 'elite', kills: 3, secondWindUsed: false,
+      completedAt: '2026-11-05T14:00:00.000Z',
+    });
+  `, environment);
+  return result;
+}
+
+test('the real departure and result callbacks bind one clan encounter and commit its reward with the accepted hunt', () => {
+  const { environment, observations, depart, arrive, finish } = clanContractFixture();
+  depart();
+  const arrival = environment.save.planetArrival;
+  assert.equal(environment.save.clanShipOperations.activeContract.missionEncounterRun, arrival.encounterRun);
+  assert.equal(environment.save.clanShipOperations.completedContracts.length, 1, 'only onboarding is complete at departure');
+  assert.equal(arrive(), true);
+  const before = environment.save, result = environment.makeClanMissionResult();
+  const regularReward = environment.applyRealMissionResult(before, result).profile.clanMarks;
+  finish(result);
+  assert.equal(environment.save.clanShipOperations.activeContract, null);
+  const receipt = environment.save.clanShipOperations.completedContracts.find(item => item.contractId === 'field-jungle-survey');
+  assert.equal(receipt.proof.encounterRun, arrival.encounterRun);
+  assert.equal(environment.save.profile.clanMarks, regularReward + 40);
+  assert.equal(environment.save.planetArrival, null);
+  assert.equal(environment.activeHuntSessionRef.current, null);
+  const writes = observations.writes, finalSave = environment.save;
+  finish(result);
+  assert.equal(observations.writes, writes);
+  assert.equal(environment.save, finalSave, 'a duplicate result cannot pay twice');
+});
+
+test('failed, abandoned and insufficient clan sorties release their binding and accept a new actual departure', () => {
+  for (const outcome of ['failed', 'abandoned', 'success']) {
+    const { environment, launch, finish } = clanContractFixture();
+    launch();
+    const before = environment.save;
+    const result = environment.makeClanMissionResult(outcome, outcome === 'success' ? 20 : 80);
+    const ordinary = environment.applyRealMissionResult(before, result);
+    finish(result);
+    assert.equal(environment.save.clanShipOperations.activeContract.contractId, 'field-jungle-survey');
+    assert.equal(environment.save.clanShipOperations.activeContract.missionEncounterRun, null);
+    assert.equal(environment.save.clanShipOperations.completedContracts.length, 1);
+    assert.equal(environment.save.profile.clanMarks, ordinary.profile.clanMarks, 'no clan bonus without its requirements');
+    launch();
+    assert.equal(environment.save.clanShipOperations.activeContract.missionEncounterRun, 1);
+    assert.equal(environment.activeHuntSessionRef.current.encounterRun, 1);
+  }
+});
+
+test('a refused clan result retains the session and the result for a valid retry without consuming the hunt', () => {
+  const { environment, observations, launch, finish } = clanContractFixture();
+  launch();
+  const badResult = environment.makeClanMissionResult(); badResult.completedObjectiveIds = [];
+  const before = environment.save, session = environment.activeHuntSessionRef.current;
+  const writes = observations.writes, clears = observations.clears;
+  finish(badResult);
+  assert.equal(environment.save, before);
+  assert.equal(environment.activeHuntSessionRef.current, session);
+  assert.equal(environment.missionSettlementRef.current, false);
+  assert.equal(observations.pendingResult.result, badResult);
+  assert.equal(observations.writes, writes);
+  assert.equal(observations.clears, clears);
+  finish(environment.makeClanMissionResult());
+  assert.equal(environment.save.clanShipOperations.activeContract, null);
+  assert.equal(observations.pendingResult, null);
+});
+
+test('an impossible clan balance leaves the whole mission pending until it can be recorded', () => {
+  const { environment, observations, launch, finish } = clanContractFixture();
+  launch();
+  runInNewContext(`
+    applyMissionResult = (current, result) => {
+      const next = applyRealMissionResult(current, result);
+      return { ...next, profile: { ...next.profile, clanMarks: Number.MAX_SAFE_INTEGER - 1 } };
+    };
+  `, environment);
+  const before = environment.save, session = environment.activeHuntSessionRef.current, writes = observations.writes;
+  finish(environment.makeClanMissionResult());
+  assert.equal(environment.save, before);
+  assert.equal(environment.activeHuntSessionRef.current, session);
+  assert.equal(environment.missionSettlementRef.current, false);
+  assert.equal(observations.writes, writes);
+  assert.ok(observations.pendingResult);
+  environment.applyMissionResult = environment.applyRealMissionResult;
+  finish(observations.pendingResult.result);
+  assert.equal(environment.save.clanShipOperations.activeContract, null);
+});
+
+test('rejected clan hunt recovery releases its contract atomically, while death preserves it for the same-run retry', () => {
+  for (const handler of ['invalidateActiveHuntPersistence', 'rejectActiveHuntResume']) {
+    const { environment, observations, launch, autosave } = clanContractFixture();
+    launch(); autosave({ elapsed: 12, snapshot: { health: 1 }, retryCheckpoint: null });
+    const beforeMarks = environment.save.profile.clanMarks;
+    const run = environment.activeHuntSessionRef.current.encounterRun;
+    callback(handler, environment)();
+    assert.equal(environment.save.planetArrival, null);
+    assert.equal(environment.save.profile.clanMarks, beforeMarks);
+    assert.equal(environment.save.clanShipOperations.activeContract.missionEncounterRun,
+      handler === 'rejectActiveHuntResume' ? null : run);
+    assert.equal(environment.save.clanShipOperations.completedContracts.length, 1);
+    if (handler === 'rejectActiveHuntResume') assert.equal(observations.screen, 'title');
+  }
+});
+
+test('clan contract release waits for a confirmed campaign write before deleting its recoverable hunt', () => {
+  const { environment, observations, launch, autosave } = clanContractFixture();
+  launch(); autosave({ elapsed: 12, snapshot: { health: 1 }, retryCheckpoint: null });
+  const before = environment.save, sidecar = observations.currentHunt, clears = observations.clears;
+  const writer = environment.writeSaveWithStatus;
+  environment.writeSaveWithStatus = save => ({ save, persisted: false, failure: 'write-failed' });
+  callback('rejectActiveHuntResume', environment)();
+  assert.equal(environment.save, before);
+  assert.equal(environment.save.clanShipOperations.activeContract.missionEncounterRun, 0);
+  assert.equal(observations.currentHunt, sidecar);
+  assert.equal(observations.clears, clears);
+  environment.pendingSocialWriteRef.current = null; // Refusal fixture wrote no bytes; model the confirmed failed-write recovery.
+  environment.writeSaveWithStatus = writer;
+  callback('rejectActiveHuntResume', environment)();
+  assert.equal(environment.save.clanShipOperations.activeContract.missionEncounterRun, null);
+  assert.equal(environment.activeHuntSessionRef.current, null);
 });
