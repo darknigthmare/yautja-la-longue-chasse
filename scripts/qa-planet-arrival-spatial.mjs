@@ -58,7 +58,7 @@ const report = {
   browserMode: headed ? 'headed' : 'headless',
   scope: 'Actual component rendering at native shot boundaries on desktop/mobile; all eight destinations; seven representative orbital hulls; four insertion combinations plus paid optical camouflage, and three grounded hull profiles; natural production /dev arrival and real hunt handoffs. Spatial evidence is distinct from artistic or canonical approval. Ship contact and exit points follow source composition, without a claim about canonical landing gear or release bays.',
   timing: 'Unmodified native requestAnimationFrame. Samples wait for elapsed-time thresholds and retain observed times; no virtual or accelerated clock. Dense egress geometry is measured without PNG encoding; its photographs use independent playbacks from the same native shot boundary. Final trio details allow at most three native playbacks solely when screenshot acquisition crosses completion; every rejected PNG and interval is retained separately.',
-  nativeUrl: nativeUrl.href, checks: [], samples: [], movement: [], captures: [], rejectedCaptures: [],
+  nativeUrl: nativeUrl.href, checks: [], samples: [], movement: [], captures: [], rejectedCaptures: [], captureAttempts: [],
   resizes: [], ships: [], insertions: [], native: {}, errors: [], consoleErrors: [], missingAssets: [], requestedAssets: [],
 };
 const requested = new Set(), missing = new Set();
@@ -676,54 +676,97 @@ async function capture(label, target = page, options = {}) {
 // labels and ground supports. The preceding walking image supplies full-scene
 // context; the same before/after timing gates still reject a late detail PNG.
 const momentCaptureSessions = new WeakMap();
-async function readMoment(target, region) {
-  return target.locator('[data-arrival-run]').evaluate((root, region) => {
-    const rect = element => {
-      const bounds = element.getBoundingClientRect();
-      return { x: bounds.x, y: bounds.y, right: bounds.right, bottom: bounds.bottom };
-    };
-    const union = bounds => ({
-      x: Math.min(...bounds.map(item => item.x)), y: Math.min(...bounds.map(item => item.y)),
-      right: Math.max(...bounds.map(item => item.right)), bottom: Math.max(...bounds.map(item => item.bottom)),
-    });
-    const members = [...root.querySelectorAll('[data-arrival-hunter]')].map(member => {
-      // Rigs deliberately overflow their parent. Include the actual transformed
-      // layer boxes, not only the nominal 2:3 canvas; transparent padding may
-      // enlarge this conservative envelope but cannot crop a visible weapon.
-      const layers = region === 'formation-detail'
-        ? [...new Set([member, ...member.children, ...member.querySelectorAll('img, svg, image')])]
-          .map(rect).filter(bounds => bounds.right > bounds.x && bounds.bottom > bounds.y) : [];
-      return {
-        id: member.getAttribute('data-arrival-member'), stage: member.getAttribute('data-arrival-hunter-stage'),
-        contact: member.getAttribute('data-arrival-hunter-contact'),
-        ...(region === 'formation-detail' ? {
-          portal: member.getAttribute('data-arrival-hunter-portal'), opacity: Number(getComputedStyle(member).opacity),
-          bounds: union(layers), coveredLayers: layers.length,
-        } : {}),
+async function readMoment(target, region, schedule) {
+  return target.evaluate(({ region, schedule }) => {
+    const threshold = schedule?.atMs;
+    const roots = document.querySelectorAll('[data-arrival-run]');
+    if (roots.length !== 1) throw new Error('A native moment observation requires exactly one arrival root.');
+    const root = roots[0];
+    const initialRun = root.getAttribute('data-arrival-run');
+    const armedAt = Number(root.getAttribute('data-arrival-elapsed'));
+    const read = () => {
+      const current = document.querySelectorAll('[data-arrival-run]');
+      if (current.length !== 1 || current[0] !== root || root.getAttribute('data-arrival-run') !== initialRun) {
+        throw new Error('The native arrival root or run changed during a moment observation.');
+      }
+      if (schedule && root.getAttribute('data-arrival-shot') !== schedule.shot) {
+        throw new Error('The native moment observation reached a different shot than requested.');
+      }
+      const rect = element => {
+        const bounds = element.getBoundingClientRect();
+        return { x: bounds.x, y: bounds.y, right: bounds.right, bottom: bounds.bottom };
       };
-    });
-    const supports = region === 'formation-detail'
-      ? [...root.querySelectorAll('[data-arrival-anchor$="hunter-feet"], [data-arrival-anchor$="hunter-support"]')]
-        .map(element => ({ id: element.getAttribute('data-arrival-anchor'), ...rect(element) })) : [];
-    return {
-      run: root.getAttribute('data-arrival-run'),
-      elapsedMs: Number(root.getAttribute('data-arrival-elapsed')),
-      shot: root.getAttribute('data-arrival-shot'), status: root.getAttribute('data-arrival-status'),
-      cloakPhase: root.querySelector('[data-arrival-scene]')?.getAttribute('data-arrival-cloak-phase'),
-      contact: root.querySelector('[data-arrival-scene]')?.getAttribute('data-arrival-contact') === 'true',
-      cloakHulls: [...root.querySelectorAll('[data-arrival-cloak-strength]')].map(hull => ({
-        strength: Number(hull.getAttribute('data-arrival-cloak-strength')),
-        bodyOpacity: hull.querySelector('[data-arrival-cloak-body]')
-          ? Number(getComputedStyle(hull.querySelector('[data-arrival-cloak-body]')).opacity) : null,
-        lens: !!hull.querySelector('[data-arrival-cloak-refraction]'), rim: !!hull.querySelector('[data-arrival-cloak-rim]'),
-      })),
-      members, ...(region === 'formation-detail' ? { supports } : {}),
+      const union = bounds => ({
+        x: Math.min(...bounds.map(item => item.x)), y: Math.min(...bounds.map(item => item.y)),
+        right: Math.max(...bounds.map(item => item.right)), bottom: Math.max(...bounds.map(item => item.bottom)),
+      });
+      const members = [...root.querySelectorAll('[data-arrival-hunter]')].map(member => {
+        // Rigs deliberately overflow their parent. Include the actual transformed
+        // layer boxes, not only the nominal 2:3 canvas; transparent padding may
+        // enlarge this conservative envelope but cannot crop a visible weapon.
+        const layers = region === 'formation-detail'
+          ? [...new Set([member, ...member.children, ...member.querySelectorAll('img, svg, image')])]
+            .map(rect).filter(bounds => bounds.right > bounds.x && bounds.bottom > bounds.y) : [];
+        return {
+          id: member.getAttribute('data-arrival-member'), stage: member.getAttribute('data-arrival-hunter-stage'),
+          contact: member.getAttribute('data-arrival-hunter-contact'),
+          ...(region === 'formation-detail' ? {
+            portal: member.getAttribute('data-arrival-hunter-portal'), opacity: Number(getComputedStyle(member).opacity),
+            bounds: union(layers), coveredLayers: layers.length,
+          } : {}),
+        };
+      });
+      const supports = region === 'formation-detail'
+        ? [...root.querySelectorAll('[data-arrival-anchor$="hunter-feet"], [data-arrival-anchor$="hunter-support"]')]
+          .map(element => ({ id: element.getAttribute('data-arrival-anchor'), ...rect(element) })) : [];
+      return {
+        run: root.getAttribute('data-arrival-run'), armedAt,
+        elapsedMs: Number(root.getAttribute('data-arrival-elapsed')),
+        shot: root.getAttribute('data-arrival-shot'), status: root.getAttribute('data-arrival-status'),
+        cloakPhase: root.querySelector('[data-arrival-scene]')?.getAttribute('data-arrival-cloak-phase'),
+        contact: root.querySelector('[data-arrival-scene]')?.getAttribute('data-arrival-contact') === 'true',
+        cloakHulls: [...root.querySelectorAll('[data-arrival-cloak-strength]')].map(hull => ({
+          strength: Number(hull.getAttribute('data-arrival-cloak-strength')),
+          bodyOpacity: hull.querySelector('[data-arrival-cloak-body]')
+            ? Number(getComputedStyle(hull.querySelector('[data-arrival-cloak-body]')).opacity) : null,
+          lens: !!hull.querySelector('[data-arrival-cloak-refraction]'), rim: !!hull.querySelector('[data-arrival-cloak-rim]'),
+        })),
+        members, ...(region === 'formation-detail' ? { supports } : {}),
+      };
     };
-  }, region);
+    if (!Number.isFinite(threshold)) return read();
+    // Arm before the final interval. Observe the actual React commit locally,
+    // rather than returning waitElapsed to Node and resolving another locator
+    // after the 250 ms standing interval has already begun. This observer only
+    // reads the scene; it neither advances nor pauses its native clock.
+    return new Promise((resolve, reject) => {
+      const observer = new MutationObserver(inspect);
+      const timer = setTimeout(() => {
+        observer.disconnect(); reject(new Error('The native final formation was not observed within 25 seconds.'));
+      }, 25_000);
+      function inspect() {
+        const status = root.getAttribute('data-arrival-status');
+        const members = [...root.querySelectorAll('[data-arrival-hunter]')];
+        const standing = region !== 'formation-detail' || members.length === 3 && members.every(member =>
+          member.getAttribute('data-arrival-hunter-stage') === 'standing' && member.getAttribute('data-arrival-hunter-contact') === 'ground');
+        if (!root.isConnected || status !== 'playing' || root.getAttribute('data-arrival-shot') !== schedule.shot ||
+          Number(root.getAttribute('data-arrival-elapsed')) >= threshold && standing) {
+          observer.disconnect(); clearTimeout(timer);
+          if (!root.isConnected) { reject(new Error('Arrival unmounted while awaiting its native final formation.')); return; }
+          try { resolve(read()); } catch (error) { reject(error); }
+        }
+      }
+      observer.observe(root, { attributes: true, subtree: true,
+        attributeFilter: ['data-arrival-elapsed', 'data-arrival-status', 'data-arrival-hunter-stage', 'data-arrival-hunter-contact'] });
+      inspect();
+    });
+  }, { region, schedule });
 }
 
-async function captureMoment(label, prepared, target = page, attempt = 1, validateFrame) {
-  const before = await readMoment(target, prepared.region);
+async function captureMoment(label, prepared, target = page, attempt = 1, validateFrame, schedule) {
+  const before = await readMoment(target, prepared.region, schedule);
+  const acquisition = { label, attempt, schedule: schedule ?? null, before };
+  report.captureAttempts.push(acquisition);
   assert.equal(before.status, 'playing', `${label}: a visual evidence capture must precede the terminal overlay.`);
   let { x, y, width, height } = prepared.scene;
   const contextFile = prepared.region === 'formation-detail' ? label.replace(/-egress-final-detail$/, '-egress-walking.png') : null;
@@ -761,6 +804,7 @@ async function captureMoment(label, prepared, target = page, attempt = 1, valida
     captureBeyondViewport: false, optimizeForSpeed: true,
   });
   const after = await readMoment(target, prepared.region);
+  acquisition.after = after;
   assert.equal(after.run, before.run, `${label}: the photograph must retain the same native arrival run.`);
   assert.equal(after.shot, before.shot, `${label}: the photograph must stay within its actual native shot.`);
   assert.equal(after.cloakPhase, before.cloakPhase, `${label}: optical phase must remain unambiguous across the photograph.`);
@@ -793,6 +837,7 @@ async function captureMoment(label, prepared, target = page, attempt = 1, valida
     elapsedBefore: before.elapsedMs, elapsedAfter: after.elapsedMs, measuredAt: measured.elapsedMs,
     observation: 'Live clock immediately before and after lossless PNG capture; native playing status, shot and optical phase must survive both observations. Complete geometry measured afterwards.' });
   report.samples.push({ label: photographLabel, ...measured, photoAccepted: !lateCompletion, capturedBefore: before, capturedAfter: after });
+  acquisition.accepted = !lateCompletion; acquisition.file = file;
   return lateCompletion ? null : { frame: measured, capturedBefore: before, file, attempt };
 }
 
@@ -1099,9 +1144,8 @@ try {
         for (let attempt = 1; attempt <= (finalDetail ? 3 : 1); attempt += 1) {
           await openShot(primaryMission.id, 'egress', false, api.DEFAULT_SHIP_ID, variant.plan);
           const finalPrepared = await prepareMoment(page, finalDetail ? 'formation-detail' : 'scene');
-          await waitElapsed(finalTime, egress.id);
           finalCapture = await captureMoment(`${viewport.id}-${variant.id}-egress-final${finalDetail ? '-detail' : ''}`,
-            finalPrepared, page, attempt, validateFinalFrame);
+            finalPrepared, page, attempt, validateFinalFrame, { atMs: finalTime, shot: egress.id });
           if (finalCapture) break;
         }
         assert.ok(finalCapture, 'Every final trio PNG crossed completion; all attempts remain rejected and no final visual proof is available.');
@@ -1424,4 +1468,38 @@ try {
   }
   if (harnessDir) await fs.rm(harnessDir, { recursive: true, force: true });
   console.log(`Spatial evidence: ${path.relative(root, out)}/report.json`);
+  // Duplicate compact, existing evidence after the browser has closed so a
+  // remote review can inspect CI output without changing any native capture.
+  if (process.env.GITHUB_ACTIONS === 'true') {
+    const review = JSON.stringify(Object.fromEntries(["schema","startedAt","finishedAt","sourceCommit","workingTreeDirty","sourceHashes","browserVersion","browserMode","scope","timing","passed","checks","captures","rejectedCaptures","captureAttempts","resizes","ships","insertions","native","errors","consoleErrors","missingAssets","failure"]
+      .filter(key => report[key] !== undefined).map(key => [key, report[key]])));
+    const chunkSize = 12_000, parts = Math.ceil(review.length / chunkSize);
+    for (let part = 0; part < parts; part++) console.log('QA_REVIEW_JSON ' + JSON.stringify({
+      suite: 'spatial', sourceCommit: report.sourceCommit, part, parts, characters: review.length,
+      text: review.slice(part * chunkSize, (part + 1) * chunkSize),
+    }));
+  }
+  // Export only existing accepted PNG bytes, after every browser operation.
+  // The artifact files, native timing gates and original resolutions remain
+  // authoritative; this log copy permits remote pixel review without a ZIP tool.
+  if (process.env.GITHUB_ACTIONS === 'true') {
+    const selectedFiles = new Set(viewports.flatMap(viewport => [
+      ...['pod-triad', 'ship-triad', 'ship-cloaked-triad'].flatMap(variant =>
+        ['egress-walking', 'egress-final-detail'].map(moment => `${viewport.id}-${variant}-${moment}.png`)),
+      ...['atmosphere', 'decloaking', 'visible-before-contact'].map(moment =>
+        `${viewport.id}-ship-cloaked-triad-${moment}.png`),
+    ]));
+    console.log('::group::Original native arrival PNGs for remote review');
+    for (const capture of report.captures.filter(item => selectedFiles.has(item.file))) {
+      const bytes = await fs.readFile(path.join(out, capture.file));
+      assert.equal(sha256(bytes), capture.sha256, 'The review log must copy exactly the recorded PNG.');
+      const data = bytes.toString('base64'), chunkSize = 12_000, parts = Math.ceil(data.length / chunkSize);
+      for (let part = 0; part < parts; part++) console.log('QA_REVIEW_PNG ' + JSON.stringify({
+        suite: 'spatial', sourceCommit: report.sourceCommit, file: capture.file,
+        sha256: capture.sha256, bytes: bytes.length, part, parts,
+        data: data.slice(part * chunkSize, (part + 1) * chunkSize),
+      }));
+    }
+    console.log('::endgroup::');
+  }
 }

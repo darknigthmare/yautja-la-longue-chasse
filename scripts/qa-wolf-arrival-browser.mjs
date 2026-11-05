@@ -30,7 +30,7 @@ seed.settings.masterVolume = 0;
 const checkoutCommit = execFileSync('git', ['rev-parse', 'HEAD'], { cwd: root, encoding: 'utf8' }).trim();
 const workingTreeDirty = execFileSync('git', ['status', '--porcelain'], { cwd: root, encoding: 'utf8' }).trim().length > 0;
 const report = { startedAt: new Date().toISOString(), checkoutCommit, workingTreeDirty, sourceCommit: process.env.WOLF_ARRIVAL_SOURCE_COMMIT || checkoutCommit,
-  runtime: 'actual desktop GameClient via Vite', headed, assetGateRequired: assetsRequired, checks: [], errors: [], missingAssets: [], requestedAssets: [], screenshots: [], focusTransitions: [], viewportTransitions: [] };
+  runtime: 'actual desktop GameClient via Vite', headed, assetGateRequired: assetsRequired, checks: [], errors: [], missingAssets: [], requestedAssets: [], screenshots: [], focusTransitions: [], viewportTransitions: [], stationClickAttempts: [] };
 const missing = new Set(), requested = new Set();
 let server, browser, page;
 
@@ -57,7 +57,7 @@ try {
       }
       const pad = { index: 0, id: 'wolf-arrival-qa', connected: true, axes: [0, 0], buttons: Array.from({ length: 17 }, () => ({ pressed: false, value: 0, touched: false })) };
       Object.defineProperty(navigator, 'getGamepads', { configurable: true, value: () => [pad] });
-      const api = { pad, mounts: 0, canvasIdentities: new WeakSet(), activeRunIds: [], handoffWrites: [], castleClicks: [], failArrivalHandoff: false,
+      const api = { pad, mounts: 0, canvasIdentities: new WeakSet(), activeRunIds: [], handoffWrites: [], clickSequence: 0, lastClick: null, castleClicks: [], failArrivalHandoff: false,
         failMandateReward: false, mandateRewardRefusals: 0 };
       const originalSet = Storage.prototype.setItem;
       Storage.prototype.setItem = function (name, value) {
@@ -78,14 +78,21 @@ try {
         return originalSet.call(this, name, value);
       };
       document.addEventListener('click', event => {
+        if (!event.isTrusted) return;
+        // Count every native click before filtering castle controls. A click on
+        // another element must never be mistaken for an undelivered press.
+        const sequence = ++api.clickSequence;
         const control = event.target instanceof Element ? event.target.closest('[data-wolf-castle-target], [data-wolf-castle-interact], [data-wolf-castle-action]') : null;
-        if (!control) return;
-        api.castleClicks.push({
-          target: control.getAttribute('data-wolf-castle-target'), interaction: control.getAttribute('data-wolf-castle-interact'),
-          action: control.getAttribute('data-wolf-castle-action'), disabled: control.matches(':disabled'),
+        const observation = {
+          sequence, at: performance.now(), element: event.target instanceof Element ? event.target.tagName : null,
+          target: control?.getAttribute('data-wolf-castle-target') ?? null, interaction: control?.getAttribute('data-wolf-castle-interact') ?? null,
+          action: control?.getAttribute('data-wolf-castle-action') ?? null, disabled: control?.matches(':disabled') ?? false,
           room: document.querySelector('[data-wolf-castle-room]')?.getAttribute('data-wolf-castle-room'),
           position: { ...document.querySelector('[data-wolf-castle-interior]')?.dataset },
-        });
+        };
+        api.lastClick = observation;
+        if (!control) return;
+        api.castleClicks.push(observation);
         if (api.castleClicks.length > 40) api.castleClicks.shift();
       }, true);
       const observe = () => {
@@ -181,7 +188,53 @@ try {
       await immediate.click();
       return;
     }
-    await page.locator(`[data-wolf-castle-target="${id}"]`).click();
+    const target = page.locator(`[data-wolf-castle-target="${id}"]`);
+    const observeClick = () => page.evaluate(id => {
+      const api = window.__wolfArrivalQa;
+      const room = document.querySelector('[data-wolf-castle-room]');
+      const interior = document.querySelector('[data-wolf-castle-interior]');
+      const button = document.querySelector(`[data-wolf-castle-target="${id}"]`);
+      const box = button?.getBoundingClientRect(), style = button ? getComputedStyle(button) : null;
+      return { sequence: api.clickSequence, lastClick: api.lastClick, documentTimeOrigin: performance.timeOrigin,
+        room: room?.getAttribute('data-wolf-castle-room'), status: room?.getAttribute('data-wolf-castle-status'),
+        x: interior?.getAttribute('data-wolf-castle-x'), y: interior?.getAttribute('data-wolf-castle-y'),
+        stopped: interior?.getAttribute('data-wolf-castle-moving') === 'false',
+        dialog: !!document.querySelector('[data-wolf-castle-dialog], [role="dialog"], [role="alertdialog"]'),
+        error: !!room?.querySelector('[role="alert"]'), focused: document.hasFocus(), hidden: document.hidden,
+        targetReady: button instanceof HTMLButtonElement && !button.disabled && !button.closest('[inert]') &&
+          box.width > 0 && box.height > 0 && style.visibility === 'visible' && style.pointerEvents !== 'none' };
+    }, id);
+    const initial = await observeClick();
+    const mayRepeatUndeliveredPress = state => state.documentTimeOrigin === initial.documentTimeOrigin &&
+      state.sequence === initial.sequence && state.room === currentRoom && state.status === 'aboard' &&
+      initial.room === currentRoom && initial.status === 'aboard' && initial.stopped && state.stopped &&
+      initial.x !== null && initial.x !== undefined && initial.y !== null && initial.y !== undefined &&
+      state.x === initial.x && state.y === initial.y && !initial.dialog && !initial.error && !state.dialog && !state.error &&
+      state.focused && !state.hidden && state.targetReady;
+    for (let attempt = 1; attempt <= 2; attempt++) {
+      const before = attempt === 1 ? initial : await observeClick();
+      if (attempt === 2) assert.ok(mayRepeatUndeliveredPress(before), `Castle target ${id}: scene changed before the single native re-emission`);
+      const entry = { id, room: currentRoom, attempt,
+        reason: attempt === 1 ? 'initial-native-press' : 'previous-press-produced-no-document-click', before };
+      report.stationClickAttempts.push(entry);
+      try { await target.click(); }
+      catch (error) { entry.error = error.message; entry.after = await observeClick().catch(() => null); throw error; }
+      const after = await observeClick(); entry.after = after;
+      if (after.sequence !== before.sequence) {
+        entry.outcome = 'click-observed';
+        assert.equal(after.documentTimeOrigin, before.documentTimeOrigin, 'The native click must remain in the same document');
+        assert.equal(after.sequence, before.sequence + 1, `Castle target ${id}: unexpected additional document clicks`);
+        assert.equal(after.lastClick?.sequence, after.sequence, 'The native click receipt must match the monotone counter');
+        assert.deepEqual({ target: after.lastClick?.target, interaction: after.lastClick?.interaction, action: after.lastClick?.action,
+          room: after.lastClick?.room, disabled: after.lastClick?.disabled },
+        { target: id, interaction: null, action: null, room: currentRoom, disabled: false }, `Castle target ${id}: native click reached the wrong control or room`);
+        break;
+      }
+      entry.outcome = 'no-document-click';
+      assert.equal(attempt, 1, `Castle target ${id}: the single native re-emission also produced no click`);
+      entry.retryAllowed = mayRepeatUndeliveredPress(after);
+      assert.ok(entry.retryAllowed, `Castle target ${id}: no click was delivered and the scene is no longer unchanged and ready`);
+    }
     await page.waitForFunction(({ id, room }) => {
       if (document.querySelector('[data-wolf-castle-dialog]')) return true;
       if (document.querySelector('[data-wolf-castle-room]')?.getAttribute('data-wolf-castle-room') !== room) return true;
@@ -863,6 +916,7 @@ try {
     report.failureState = await page.evaluate(key => ({ focused: document.hasFocus(), hidden: document.hidden,
       activeElement: document.activeElement?.outerHTML.slice(0,500),
       interior: document.querySelector('[data-wolf-castle-interior]')?.dataset,
+      clickSequence: window.__wolfArrivalQa?.clickSequence, lastClick: window.__wolfArrivalQa?.lastClick,
       castleClicks: window.__wolfArrivalQa?.castleClicks ?? [],
       castle: JSON.parse(localStorage.getItem(key) || 'null')?.wolfCastle,
     }), SAVE_STORAGE_KEY).catch(() => null);
@@ -876,4 +930,15 @@ try {
   await fs.writeFile(path.join(out, 'observed-assets.json'), JSON.stringify({ source: 'Observed requests from real GameClient wolf-castle and planet-arrival browser route', paths: report.requestedAssets }, null, 2) + '\n');
   if (browser) await browser.close(); if (server) await server.close();
   console.log(JSON.stringify({ passed: report.passed, checks: report.checks.length, output: out, missingAssets: missing.size, assetGateRequired: assetsRequired }));
+  // Duplicate compact, existing evidence after the browser has closed so a
+  // remote review can inspect CI output without changing any native capture.
+  if (process.env.GITHUB_ACTIONS === 'true') {
+    const review = JSON.stringify(Object.fromEntries(["startedAt","finishedAt","sourceCommit","checkoutCommit","workingTreeDirty","headed","assetGateRequired","passed","checks","cloakBriefing","shipTriadHandoff","focusTransitions","viewportTransitions","stationClickAttempts","errors","missingAssets","failure","failureState"]
+      .filter(key => report[key] !== undefined).map(key => [key, report[key]])));
+    const chunkSize = 12_000, parts = Math.ceil(review.length / chunkSize);
+    for (let part = 0; part < parts; part++) console.log('QA_REVIEW_JSON ' + JSON.stringify({
+      suite: 'wolf', sourceCommit: report.sourceCommit, part, parts, characters: review.length,
+      text: review.slice(part * chunkSize, (part + 1) * chunkSize),
+    }));
+  }
 }

@@ -461,7 +461,12 @@ async function assertArrivalHandoff(expected, completion, run, mountsBefore, tar
   const hunt = target.getByRole('region', { name: `Mission ${expected.title} sur ${expected.name}`, exact: true })
     .and(session.locator('.hunt-screen'));
   await hunt.locator('canvas.hunt-canvas').waitFor({ timeout: 90000 });
-  await hunt.locator('[data-mission-opening-v78]').waitFor({ timeout: 90000 });
+  // HuntViewportDialogV79 portals the native briefing to document.body, outside
+  // the Hunt region. Resolve that accessible dialog itself; retain the exact
+  // Hunt/session scope and global instance counts for the handoff assertions.
+  const opening = target.getByRole('dialog', { name: expected.title, exact: true })
+    .and(target.locator('[data-mission-opening-v78] [role="dialog"]'));
+  await opening.waitFor({ timeout: 90000 });
   assert.equal(new URL(target.url()).searchParams.get('lieu'), expected.id, 'Handoff must retain the bookmarked arrival destination.');
   assert.equal(await target.locator('[data-arrival-run]').count(), 0, 'The native arrival must unmount at handoff.');
   assert.equal(await target.locator('.hunt-screen canvas.hunt-canvas').count(), 1);
@@ -480,8 +485,8 @@ async function assertArrivalHandoff(expected, completion, run, mountsBefore, tar
   assert.equal(handoff.mission, expected.missionId);
   if (completion === 'natural') assert.equal(handoff.elapsed, 62000, 'Natural handoff requires all 62 seconds of the real timeline.');
   assert.equal(await target.evaluate(() => window.__devTravelQaObservations.huntCanvasMounts), mountsBefore + 1, 'One arrival must mount HuntCanvas exactly once.');
-  await hunt.getByRole('button', { name: 'Commencer la chasse', exact: true }).click();
-  await hunt.locator('[data-mission-opening-v78]').waitFor({ state: 'hidden' });
+  await opening.getByRole('button', { name: 'Commencer la chasse', exact: true }).click();
+  await opening.waitFor({ state: 'hidden' });
   await target.waitForFunction(() => Array.from(document.querySelectorAll('.hunt-screen summary')).some(element => {
     const match = element.textContent?.match(/Détails\s*·\s*(\d+):(\d+)/);
     return match && Number(match[1]) * 60 + Number(match[2]) > 0;
@@ -1004,4 +1009,15 @@ try {
   await browser?.close();
   await stopServer();
   console.log(JSON.stringify({ passed: report.passed, checks: report.passedChecks, failed: report.failedChecks, missingAssets: report.missingAssets.length, report: path.join(out, 'report.json') }));
+  // Duplicate compact, existing evidence after the browser has closed so a
+  // remote review can inspect CI output without changing any native capture.
+  if (process.env.GITHUB_ACTIONS === 'true') {
+    const review = JSON.stringify(Object.fromEntries(["schema","startedAt","finishedAt","sourceCommit","checkoutCommit","workingTreeDirty","sourceHashes","browserVersion","passed","passedChecks","failedChecks","checks","arrivalVisits","arrivalPauses","arrivalResets","arrivalTransitions","huntObservations","storageChecks","storageOperations","databaseOpens","errors","consoleErrors","missingAssets","failure","failureState","failureStateError"]
+      .filter(key => report[key] !== undefined).map(key => [key, report[key]])));
+    const chunkSize = 12_000, parts = Math.ceil(review.length / chunkSize);
+    for (let part = 0; part < parts; part++) console.log('QA_REVIEW_JSON ' + JSON.stringify({
+      suite: 'dev', sourceCommit: report.sourceCommit, part, parts, characters: review.length,
+      text: review.slice(part * chunkSize, (part + 1) * chunkSize),
+    }));
+  }
 }
