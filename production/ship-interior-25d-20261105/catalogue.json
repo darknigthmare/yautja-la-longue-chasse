@@ -8,8 +8,8 @@
   "base": {
     "pr": 114,
     "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/pull/114",
-    "commit": "1951e17f01f1951d7c961b4ed3938741966e3007",
-    "tree": "4f6b3e4a785951286efbf0deafa29b843df40150"
+    "commit": "8cee6ec4d7a1334ffd74af6eb9b29b161f561b15",
+    "tree": "4867642315ea924f4c6f1037aa8e253d6e86b776"
   },
   "initialBase": {
     "commit": "4a0b8d58cdfadf642d6c897c32980b7a8586f4dd",
@@ -31,7 +31,14 @@
     "ciJob": 127199019545,
     "ciUrl": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/42013765672",
     "browserPassed": 17,
-    "browserFailed": 0
+    "browserFailed": 0,
+    "baseSynchronization": {
+      "baseCommit": "8cee6ec4d7a1334ffd74af6eb9b29b161f561b15",
+      "priorBaseCommit": "1951e17f01f1951d7c961b4ed3938741966e3007",
+      "scope": "Trois scripts QA et cinq fichiers de preuves hérités de la base 114. Les adaptations de la recette Dev au nouvel intérieur sont conservées. Aucun changement des sources applicatives, images ou recette dédiée de l’intérieur par rapport au runtimeCommit testé.",
+      "runtimeRevalidated": false,
+      "reason": "La comparaison de fichiers confirme que cette synchronisation ne touche que les recettes générales et les preuves. Les résultats 14/14 et 17/17 restent attachés au runtimeCommit 86f593ba."
+    }
   },
   "scope": "Conversion du vaisseau personnel en intérieur parcourable en 2,5D. Le Clan Ship reste un lieu distinct.",
   "artReview": "Comparaison artistique et canonique 1:1 ouverte. Toutes les images conservent humanArtValidation:false.",
@@ -50,14 +57,40 @@
     }
   },
   "spreadsheet": {
-    "status": "Mise à jour finale non exportée",
-    "deliveredAsCurrent": false,
+    "status": "Export final disponible et vérifié",
+    "deliveredAsCurrent": true,
+    "file": "production/ship-interior-25d-20261105/yautja-interieur-25d-v1.6.0.xlsx",
+    "builder": "production/ship-interior-25d-20261105/build-workbook.mjs",
+    "verification": "production/ship-interior-25d-20261105/verification/workbook-verification.json",
+    "exactInputSnapshot": "production/ship-interior-25d-20261105/verification/workbook-input.json",
+    "sheets": [
+      "Suivi",
+      "Salles",
+      "Ressources",
+      "QA"
+    ],
+    "records": {
+      "actions": 23,
+      "rooms": 8,
+      "thresholds": 16,
+      "resources": 13,
+      "criteria": 17,
+      "sources": 17
+    },
+    "boundedFormulas": 19,
+    "formulaErrors": 0,
+    "statusVariationsVerified": 4,
+    "tablesWithFilters": 8,
+    "editableStatusRanges": 7,
+    "frozenWorksheets": 4,
+    "previewsInspected": 9,
+    "nativeExcelExecuted": false,
+    "runtime": "@oai/artifact-tool",
+    "sourceSnapshotNote": "Le classeur est construit depuis le snapshot exact joint. Le catalogue courant ajoute ensuite les métadonnées de livraison et de suivi CI, sans modifier les dimensions ni le contenu des salles/ressources du classeur.",
     "priorCheckpoint": {
       "generatedAssets": 3,
-      "description": "Un classeur de travail avait été exporté et inspecté avant les quatre dernières ressources. Il est obsolète et n’est pas livré comme état final."
-    },
-    "bytesRecovered": false,
-    "next": "Régénérer les quatre onglets avec artifact-tool à partir de ce catalogue, recalculer et réinspecter chaque aperçu lorsque le runtime est disponible."
+      "description": "L’ancien classeur partiel n’est pas livré. Ce fichier est un export neuf correspondant aux sept images intégrées."
+    }
   },
   "verification": {
     "subsystemTests": {
@@ -97,7 +130,7 @@
     "typecheck": "Réussi dans la construction Next de CI3 sur le commit 86f593bad2c7d00259dc4cf0a7d1ad40eac1d719",
     "lint": "Réussi en CI3. Contrôle local strict des six sources et recettes également réussi après les derniers réglages, 0 avertissement.",
     "build": "Construction de production Next et TypeScript réussis dans CI3.",
-    "browser": "Recette native du nouvel intérieur réussie : 17/17 contrôles, 0 échec, 0 ressource manquante, 0 erreur console/page. Revue visuelle finale des captures non effectuée.",
+    "browser": "Recette native du nouvel intérieur réussie : 17/17 contrôles, 0 échec, 0 ressource manquante, 0 erreur console/page. Les 14 PNG finaux ont ensuite été inspectés par les agents ; comparaison artistique humaine 1:1 ouverte.",
     "publication": "PR 115 publiée ; CI3 du nouvel intérieur réussie sur le runtimeCommit. PR proposée en revue, qualification globale de la base 114 encore ouverte.",
     "browserRuns": [
       {
@@ -137,7 +170,7 @@
           "sha256": "79efaea2a7a0fe3f8c2fc8800089eca38ad5f587de0e90b45421498e9a2a09d5",
           "fileCount": 18,
           "capturesArchived": true,
-          "finalCapturesVisuallyInspected": false
+          "finalCapturesVisuallyInspected": true
         },
         "coverage": [
           "Huit salles et huit services avec retour à la position exacte",
@@ -150,7 +183,6 @@
           "Protection du stockage de campagne"
         ],
         "excluded": [
-          "Revue visuelle finale des PNG archivés",
           "Manette matérielle",
           "Validation artistique ou canonique humaine 1:1",
           "Qualification globale de tous les workflows du projet"
@@ -183,9 +215,9 @@
       "sha256": "79efaea2a7a0fe3f8c2fc8800089eca38ad5f587de0e90b45421498e9a2a09d5",
       "fileCount": 18,
       "capturesArchived": true,
-      "finalCapturesVisuallyInspected": false
+      "finalCapturesVisuallyInspected": true
     },
-    "finalCapturesVisuallyInspected": false,
+    "finalCapturesVisuallyInspected": true,
     "gamepadHardwareTested": false,
     "parentBaseChecks": {
       "commit": "1951e17f01f1951d7c961b4ed3938741966e3007",
@@ -209,17 +241,79 @@
           "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/42009684795"
         }
       ],
-      "globalProductionReady": false
+      "globalProductionReady": false,
+      "historical": true,
+      "supersededBy": "8cee6ec4d7a1334ffd74af6eb9b29b161f561b15"
     },
     "historicalLocalLogsRecovered": false,
     "historicalLocalLogsPublished": false,
-    "artTechnicalScope": "Partiel : mesures alpha/dimensions disponibles, ressources chargées et assertions automatisées réussies ; pivots physiques, précision de perspective et captures finales non inspectés humainement.",
+    "artTechnicalScope": "Partiel : dimensions/alpha mesurés, ressources chargées, assertions automatiques réussies et 14 PNG finaux inspectés par les agents. Perspectives canoniques et pivots physiques précis restent à confirmer par comparaison de références.",
     "finalBrowserCounts": {
       "passed": 17,
       "failed": 0,
       "missingAssets": 0,
       "consoleErrors": 0,
       "pageErrors": 0
+    },
+    "parentBaseFollowup": {
+      "commit": "8cee6ec4d7a1334ffd74af6eb9b29b161f561b15",
+      "qualification": "Wolf complet réussi ; Dev et Spatial conservent deux nouveaux échecs de recette distincts de l’intérieur personnel. Qualification globale ouverte.",
+      "scope": "Dev : dialogue de briefing accessible rendu par portail. Wolf : observation des clics natifs et un seul renvoi si aucun clic n’est parvenu au document inchangé. Spatial : observation native préarmée avant capture, gardes photographiques conservées.",
+      "applicationSourcesChanged": false,
+      "evidence": "https://github.com/darknigthmare/yautja-la-longue-chasse/pull/114",
+      "globalProductionReady": false,
+      "observedRuns": [
+        {
+          "label": "Wolf",
+          "id": 42015349691,
+          "passed": 32,
+          "failed": 0,
+          "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/42015349691"
+        },
+        {
+          "label": "Dev",
+          "id": 42015349452,
+          "passed": 17,
+          "failed": 1,
+          "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/42015349452",
+          "failure": "clanReady sur navigateur vierge : ancêtre de session absent au moment de l’observation ; cause sous-jacente indéterminée."
+        },
+        {
+          "label": "Spatial",
+          "id": 42015349423,
+          "passed": 62,
+          "failed": 1,
+          "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/42015349423",
+          "failure": "Échantillon airborne de Saketh absent en vaisseau desktop ; les huit captures finales sont acceptées."
+        }
+      ]
+    },
+    "finalVisualReview": {
+      "sourceCommit": "86f593bad2c7d00259dc4cf0a7d1ad40eac1d719",
+      "artifactId": 13408631794,
+      "archiveSha256": "79efaea2a7a0fe3f8c2fc8800089eca38ad5f587de0e90b45421498e9a2a09d5",
+      "captureCount": 14,
+      "inspected": true,
+      "reviewers": "Assistant principal et agent de revue artistique",
+      "humanArtValidation": false,
+      "result": "Aucun découpage d’objet, fond opaque parasite ou halo bleu visible dans les captures inspectées. Les contacts au sol et l’ordre avant/arrière sont plausibles aux positions observées. Le chasseur et les commandes restent lisibles ; le mobile utilise la caméra rapprochée et le défilement vertical.",
+      "limitations": [
+        "La console et le râtelier restent assez frontaux : leur perspective ne constitue pas un alignement canonique 1:1 à 35°.",
+        "Le chasseur masque partiellement les installations actives lorsqu’il se tient au point d’usage ; la forge est une machine haute et l’émetteur est partiellement occulté.",
+        "Les passages latéraux conservent des rectangles translucides ; leur finition et leurs animations restent à compléter.",
+        "Les captures seules ne qualifient ni tous les contacts pendant le mouvement, ni une manette physique, ni une campagne complète.",
+        "La revue effectuée par les agents ne constitue pas une approbation artistique humaine."
+      ]
+    },
+    "runtimeInventory": {
+      "path": "docs/qa/current-integration-20261103/runtime-inputs.json",
+      "entries": 2171,
+      "bytes": 403483,
+      "sha256": "043ea4a9f7c431df625f826b818efdca73d24e79cbc19a35e87e76ff8974e4c9",
+      "generator": "scripts/snapshot-runtime-v113.mjs",
+      "generationRun": 42019629253,
+      "canonicalCheck": "À vérifier sur le commit intégrant les octets officiels",
+      "receipt": "production/ship-interior-25d-20261105/verification/runtime-inventory-refresh.json"
     }
   },
   "geometryMetrics": {
@@ -497,7 +591,7 @@
       "feature": "Publication, CI et raccord à la branche principale",
       "implementation": "Partiel",
       "validation": "Partielle",
-      "next": "PR 115 proposée en revue sur 114 ; traiter les workflows de base encore rouges avant qualification globale.",
+      "next": "PR 115 proposée en revue sur 114 ; terminer la qualification des recettes générales du suivi 8cee et la revue artistique avant validation globale.",
       "sources": "S01, S07, S12, S16, S17"
     }
   ],
@@ -1741,7 +1835,7 @@
       "criterion": "Occlusion et appui des pieds",
       "expected": "Passer devant et derrière les équipements sans flottement ni double projection.",
       "result": "Partiel",
-      "level": "Occlusion automatisée réussie ; captures non inspectées",
+      "level": "Occlusion automatisée réussie ; 14 PNG finaux inspectés par les agents, contacts plausibles aux positions observées. Comparaison précise des pivots et perspectives encore ouverte.",
       "sources": "S03, S05, S16"
     },
     {
@@ -1825,7 +1919,7 @@
       "label": "Qualification finale du lot",
       "reference": "production/ship-interior-25d-20261105/verification/final-runtime-validation.json\nproduction/ship-interior-25d-20261105/verification/final-ci-excerpt.log",
       "revision": "CI3 completed/success",
-      "detail": "Reçu de qualification du commit 86f593bad2c7d00259dc4cf0a7d1ad40eac1d719 : 14 tests unitaires et 17 contrôles navigateur réussis, 0 ressource manquante et 0 erreur console/page. Captures finales archivées, non inspectées visuellement."
+      "detail": "Reçu du commit 86f593bad2c7d00259dc4cf0a7d1ad40eac1d719 : 14 tests unitaires et 17 contrôles navigateur réussis, 0 ressource manquante et 0 erreur console/page. Archive finale récupérée avec SHA256 vérifié ; 14 PNG inspectés par les agents. Fidélité artistique humaine 1:1 ouverte."
     },
     {
       "id": "S08",
@@ -1895,7 +1989,7 @@
       "label": "Qualification globale de la base encore ouverte",
       "reference": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/42009684967\nhttps://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/42009684875\nhttps://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/42009684795",
       "revision": "Base PR 114 / 1951e17f01f1951d7c961b4ed3938741966e3007",
-      "detail": "14 workflows réussis sur 17 ; Dev, Wolf et Spatial encore rouges. La réussite de CI3 du nouvel intérieur ne clôt pas la qualification globale et ne vaut pas approbation de fusion."
+      "detail": "Bilan historique de 1951 : 14 workflows réussis sur 17, avec échecs Dev, Wolf et Spatial. La base a ensuite reçu le suivi QA 8cee ; ce bilan historique ne décrit pas ses résultats. La réussite de l’intérieur ne clôt pas la qualification globale."
     }
   ],
   "recoveredArtFiles": [
@@ -1978,14 +2072,19 @@
     "runtimeBytes": 9487066
   },
   "openWork": [
-    "Inspecter visuellement les captures finales archivées, y compris pivots, contacts, perspectives et occlusion.",
+    "Revoir artistiquement les perspectives des meubles et les finitions de passages à partir des 14 captures désormais inspectées.",
     "Mesurer le comportement sur une manette matérielle.",
     "Projection complète et décors du Clan Ship.",
     "Persistance durable de la salle et de la position après rechargement.",
     "Animations de franchissement et de liaison.",
     "Revue humaine des références et de la fidélité 1:1.",
-    "Qualification globale de la base 114 : workflows Dev, Wolf et Spatial encore rouges.",
-    "Export final et revue visuelle du classeur à jour, non livré dans cet état."
+    "Qualification globale de la base 114 : suivi QA publié sur 8cee6ec4 après les trois échecs historiques de 1951 ; attendre et inspecter ses propres résultats."
   ],
-  "defaultRoom": "galaxy-map"
+  "defaultRoom": "galaxy-map",
+  "priorBase": {
+    "pr": 114,
+    "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/pull/114",
+    "commit": "1951e17f01f1951d7c961b4ed3938741966e3007",
+    "tree": "4f6b3e4a785951286efbf0deafa29b843df40150"
+  }
 }

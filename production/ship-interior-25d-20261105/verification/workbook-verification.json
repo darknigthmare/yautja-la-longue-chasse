@@ -1,0 +1,299 @@
+{
+  "createdAt": "2026-11-05T11:27:44.739Z",
+  "engine": "@oai/artifact-tool",
+  "runtime": "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+  "input": {
+    "path": "/workspace/scratch/30b4dd7183ed/ship-final-review/catalogue.json",
+    "bytes": 68632,
+    "sha256": "ee7b64ae891c2858f3ec26143b3fdcbcec13fbaf344a599584ca3710358ef036",
+    "modified": false,
+    "publishedSnapshot": "production/ship-interior-25d-20261105/verification/workbook-input.json",
+    "catalogueLaterMetadata": "Le catalogue courant ajoute la livraison et les vérifications ultérieures ; ce snapshot conserve les octets exacts effectivement lus par le générateur."
+  },
+  "workbook": {
+    "path": "/workspace/scratch/30b4dd7183ed/ship-final-review/deliverables/yautja-interieur-25d-v1.6.0.xlsx",
+    "outputPath": "/workspace/scratch/30b4dd7183ed/outputs/ship-final-workbook-20261105/yautja-interieur-25d-v1.6.0.xlsx",
+    "bytes": 25233,
+    "sha256": "3aeda622cdeb39b24c04f925fb32270acdb9f913750e90e99633aa90caf396b4",
+    "gitBlobSha": "b0b27260252c5cfa8fa01d6d7cdd2fbe6910b004"
+  },
+  "worksheets": [
+    "Suivi",
+    "Salles",
+    "Ressources",
+    "QA"
+  ],
+  "records": {
+    "actions": 23,
+    "rooms": 8,
+    "thresholds": 16,
+    "resources": 13,
+    "criteria": 17,
+    "sources": 17
+  },
+  "expectedCounts": {
+    "B7": 23,
+    "D7": 17,
+    "F7": 4,
+    "B8": 7,
+    "D8": 7,
+    "F8": 13
+  },
+  "actualCounts": {
+    "B7": 23,
+    "D7": 17,
+    "F7": 4,
+    "B8": 7,
+    "D8": 7,
+    "F8": 13
+  },
+  "recalculationChecks": [
+    {
+      "values": [
+        "Généré",
+        "En attente",
+        "Partiel",
+        "À revoir"
+      ],
+      "expected": "Intégrer au rendu",
+      "actual": "Intégrer au rendu",
+      "passed": true
+    },
+    {
+      "values": [
+        "Généré",
+        "Intégré",
+        "Partiel",
+        "À revoir"
+      ],
+      "expected": "Vérifier perspective et pivot",
+      "actual": "Vérifier perspective et pivot",
+      "passed": true
+    },
+    {
+      "values": [
+        "Généré",
+        "Intégré",
+        "Contrôlé",
+        "À revoir"
+      ],
+      "expected": "Comparer aux références 1:1",
+      "actual": "Comparer aux références 1:1",
+      "passed": true
+    },
+    {
+      "values": [
+        "Généré",
+        "Intégré",
+        "Contrôlé",
+        ""
+      ],
+      "expected": "Compléter les statuts",
+      "actual": "Compléter les statuts",
+      "passed": true
+    }
+  ],
+  "sourceStatusesRestored": true,
+  "formulaErrors": 0,
+  "evidenceGroups": {
+    "ciUnitTests": 14,
+    "browserControls": 17,
+    "localRerun": 34,
+    "historicalDistinct": 168,
+    "addedTogether": false
+  },
+  "agentCaptureReview": {
+    "captures": 14,
+    "inspected": true,
+    "humanArtValidation": false,
+    "technicalArtStatus": "Partiel"
+  },
+  "displayUpdates": {
+    "SHIP25-02": "Quatorze captures finales inspectées par les agents. Comparaison humaine 1:1 ouverte.",
+    "SHIP25-05": "Revoir les contacts précis pendant le mouvement. Les captures observées sont plausibles.",
+    "SHIP25-11": "Captures et ressources contrôlées par les agents. Comparaison humaine des silhouettes ouverte.",
+    "SHIP25-14": "Occlusion et captures vérifiées par les agents. Perspectives et pivots précis restent à qualifier.",
+    "SHIP25-22": "Recette 17/17 et revue des captures par les agents effectuées. Qualification globale ouverte.",
+    "SHIP25-23": "PR 115 en revue sur 114. Consulter la PR 114 pour sa qualification globale."
+  },
+  "parentBaseQualification": "Open; consult PR 114. Historical figures are not current overall qualification.",
+  "sourceDisplayUpdates": {
+    "S01": "Revision shows catalogue.base.commit, the current 8cee QA synchronization; the scope preserves prior history.",
+    "S06": "Historical paths explicitly prefixed as unrecovered logs; no hyperlinks created."
+  },
+  "renders": [
+    {
+      "sheet": "Suivi",
+      "range": "A1:G20",
+      "path": "/workspace/scratch/30b4dd7183ed/ship-final-review/deliverables/qa/suivi.png",
+      "bytes": 246500,
+      "sha256": "47f228b4b5b7ede76316883904d1f59da8ac19161247a51717f45783398d5597",
+      "gitBlobSha": "4efcf8508b4b13850c6744bb3e86d443c2aeb2ed",
+      "inspected": true
+    },
+    {
+      "sheet": "Suivi",
+      "range": "A21:G44",
+      "path": "/workspace/scratch/30b4dd7183ed/ship-final-review/deliverables/qa/suivi-suite.png",
+      "bytes": 333221,
+      "sha256": "f193a96fee3707482c22fa81759036732b092c4c652889ae5e9374da87065370",
+      "gitBlobSha": "2d902ee5a3af2aac867bc2c3e2b5c2a4519fd529",
+      "inspected": true
+    },
+    {
+      "sheet": "Salles",
+      "range": "A1:H16",
+      "path": "/workspace/scratch/30b4dd7183ed/ship-final-review/deliverables/qa/salles.png",
+      "bytes": 151686,
+      "sha256": "0058e991ab461152ae00bab0fb2769b39ce8480d46b92fd8af6e7f631e34bb3f",
+      "gitBlobSha": "7eed95502b7cf806736aeef2437e80e862df9b68",
+      "inspected": true
+    },
+    {
+      "sheet": "Salles",
+      "range": "A17:H38",
+      "path": "/workspace/scratch/30b4dd7183ed/ship-final-review/deliverables/qa/passages.png",
+      "bytes": 157152,
+      "sha256": "f4350d50358c07da7ddc1bbde6ad25385288e80d5c56968696e4a4f061f279b6",
+      "gitBlobSha": "2da682b449972049763ad7a866432d7a0d773b5b",
+      "inspected": true
+    },
+    {
+      "sheet": "Ressources",
+      "range": "A1:I20",
+      "path": "/workspace/scratch/30b4dd7183ed/ship-final-review/deliverables/qa/ressources.png",
+      "bytes": 227537,
+      "sha256": "5b6853040c2ffa814e8c063981d116918c0cf1055dd550672a5c74364181ceb3",
+      "gitBlobSha": "e9f29e91516eb98705959f05256231ed43b1ec83",
+      "inspected": true
+    },
+    {
+      "sheet": "Ressources",
+      "range": "A22:I34",
+      "path": "/workspace/scratch/30b4dd7183ed/ship-final-review/deliverables/qa/calibrage.png",
+      "bytes": 78512,
+      "sha256": "6a2f723f22d29405f900783a2943fd30e0bd80d9e79e00a50de884afdebf83b6",
+      "gitBlobSha": "512a00bc10b0fe7118010db347ca9baff4575213",
+      "inspected": true
+    },
+    {
+      "sheet": "QA",
+      "range": "A1:F24",
+      "path": "/workspace/scratch/30b4dd7183ed/ship-final-review/deliverables/qa/qa.png",
+      "bytes": 342640,
+      "sha256": "6729f437a0daf4120daedceca9faff2137a25e871873be6b1eedbc321ee7c275",
+      "gitBlobSha": "a4f4ab116ab66f33c0840ee43dc22f2e1e037121",
+      "inspected": true
+    },
+    {
+      "sheet": "QA",
+      "range": "A26:F36",
+      "path": "/workspace/scratch/30b4dd7183ed/ship-final-review/deliverables/qa/references-1.png",
+      "bytes": 232519,
+      "sha256": "7fd790f6d6649ab5dba1847290f8840174965bb10be63bd70edafe642647cf54",
+      "gitBlobSha": "c5a5c3281b1c8d22378dc1c9819c4a06e1d2b23d",
+      "inspected": true
+    },
+    {
+      "sheet": "QA",
+      "range": "A37:F47",
+      "path": "/workspace/scratch/30b4dd7183ed/ship-final-review/deliverables/qa/references-2.png",
+      "bytes": 284000,
+      "sha256": "d8dd962172e1e2829a247cd813ccafb1d623a60284f8565f8dad9a6b3f5fcf42",
+      "gitBlobSha": "aa960036ac6b66244103224c3ec23eb4824f6d51",
+      "inspected": true
+    }
+  ],
+  "visualReview": {
+    "inspected": true,
+    "previewCount": 9,
+    "reviewer": "Agent interior_audit",
+    "method": "All nine artifact-tool PNG previews viewed at final export, after fixing the summary label and numeric spacing.",
+    "outcome": "Readable wrapped text, complete headers and reference paths, no observed clipping or overlapping content.",
+    "nativeExcelExecuted": false
+  },
+  "nativeExcelExecuted": false,
+  "xlsxStructure": {
+    "method": "Read-only XLSX ZIP/XML inspection",
+    "sheetNames": [
+      "Suivi",
+      "Salles",
+      "Ressources",
+      "QA"
+    ],
+    "formulas": 19,
+    "formulaRangesBounded": true,
+    "formulaErrors": [],
+    "filters": [
+      "A11:G34",
+      "A38:E42",
+      "A7:H15",
+      "A19:H35",
+      "A7:I20",
+      "A27:F34",
+      "A7:F24",
+      "A28:F45"
+    ],
+    "editableStatusValidations": [
+      "D12:D34",
+      "E12:E34",
+      "D8:D20",
+      "E8:E20",
+      "F8:F20",
+      "G8:G20",
+      "D8:D24"
+    ],
+    "frozenPanes": [
+      {
+        "xSplit": "1",
+        "ySplit": "11",
+        "topLeftCell": "B12",
+        "activePane": "bottomRight",
+        "state": "frozen"
+      },
+      {
+        "xSplit": "1",
+        "ySplit": "7",
+        "topLeftCell": "B8",
+        "activePane": "bottomRight",
+        "state": "frozen"
+      },
+      {
+        "xSplit": "2",
+        "ySplit": "7",
+        "topLeftCell": "C8",
+        "activePane": "bottomRight",
+        "state": "frozen"
+      },
+      {
+        "xSplit": "1",
+        "ySplit": "7",
+        "topLeftCell": "B8",
+        "activePane": "bottomRight",
+        "state": "frozen"
+      }
+    ],
+    "cachedCounters": {
+      "B7": "23",
+      "D7": "17",
+      "F7": "4",
+      "B8": "7",
+      "D8": "7",
+      "F8": "13"
+    },
+    "passed": true,
+    "nativeExcelExecuted": false
+  },
+  "builder": {
+    "path": "/workspace/scratch/30b4dd7183ed/ship-final-review/deliverables/build-workbook.mjs",
+    "bytes": 21509,
+    "sha256": "634f1658fb268d4377ae7b0641905536b433eb4c4bc609387dcb4fa778a71c7e",
+    "gitBlobSha": "db352e140bf2323b2141c190c17b4ae6a0d02389"
+  },
+  "githubBlob": {
+    "repository": "darknigthmare/yautja-la-longue-chasse",
+    "sha": "b0b27260252c5cfa8fa01d6d7cdd2fbe6910b004",
+    "matchesLocalGitObject": true,
+    "refsChanged": false
+  }
+}

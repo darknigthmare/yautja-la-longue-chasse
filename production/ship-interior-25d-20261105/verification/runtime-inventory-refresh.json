@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "generator": "scripts/snapshot-runtime-v113.mjs",
+  "generatedCommit": "9fc54afe684cd0f404f2a04bd58236640ee072fa",
+  "generationRun": 42019629253,
+  "generationJob": 127218831230,
+  "generationUrl": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/42019629253",
+  "command": "node scripts/snapshot-runtime-v113.mjs --write outputs/qa-ship-interior-25d/runtime-inputs.json",
+  "canonicalCheckCommand": "node scripts/snapshot-runtime-v113.mjs --check docs/qa/current-integration-20261103/runtime-inputs.json",
+  "canonicalPath": "docs/qa/current-integration-20261103/runtime-inputs.json",
+  "previousEntries": 2167,
+  "officialEntries": 2171,
+  "outputBytes": 403483,
+  "outputSha256": "043ea4a9f7c431df625f826b818efdca73d24e79cbc19a35e87e76ff8974e4c9",
+  "gitBlob": "305268f083492331dcb61a62c3ca936dabdea85e",
+  "contentUnmodifiedFromOfficialGenerator": true,
+  "delta": {
+    "added": 4,
+    "removed": 0,
+    "changed": 5,
+    "runtimeBytesAdded": 68393
+  },
+  "generationArtifact": {
+    "id": 13410478719,
+    "bytes": 115212,
+    "sha256": "b5f50d4dca8798db1c47082b316c7c59390da855855d4c3f0cace18cbe5f6e21"
+  },
+  "firstRunResult": "The official generator wrote its copy. The strict check then rejected the old canonical file. Subsequent lint/tests/build/browser steps were skipped; this run is an extraction receipt, not a new gameplay qualification.",
+  "nextVerification": "The branch commit integrating these exact bytes will trigger the same strict check followed by the full dedicated ship recipe.",
+  "frozenHistoricalInventoriesChanged": false
+}

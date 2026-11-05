@@ -4,9 +4,9 @@
 
 La version **1.6.0** transforme le vaisseau personnel en huit salles parcourables sur deux ponts. Le code, les sept nouvelles ressources, leurs sources et leur provenance sont publiés dans la [PR 115](https://github.com/darknigthmare/yautja-la-longue-chasse/pull/115), au commit **`86f593bad2c7d00259dc4cf0a7d1ad40eac1d719`**, arbre `21052551ce3b80c57f70a8695a86d601e87e5e20`.
 
-**La troisième recette de CI est réussie : 14/14 tests unitaires et 17/17 contrôles navigateur, sans ressource manquante ni erreur de console ou de page. La fidélité artistique et canonique 1:1 reste ouverte.** Les sept images sont générées et reliées à la scène. Le contrôle artistique technique demeure partiel pour les perspectives, les pivots et l’examen des captures finales ; toutes conservent `humanArtValidation: false`.
+**La troisième recette de CI est réussie : 14/14 tests unitaires et 17/17 contrôles navigateur, sans ressource manquante ni erreur de console ou de page. La fidélité artistique et canonique 1:1 reste ouverte.** Les sept images sont générées et reliées à la scène. Le contrôle artistique technique demeure partiel pour les perspectives et les pivots précis. Les 14 captures finales ont été inspectées par les agents après récupération de l’archive ; toutes les ressources conservent `humanArtValidation: false`.
 
-La PR 115 reste proposée en revue sur la base 114 : sa qualification globale n’est pas close, avec 14 workflows réussis sur 17 et les runs [Dev](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/42009684967), [Wolf](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/42009684875) et [Spatial](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/42009684795) encore rouges. La réussite du nouvel intérieur ne vaut pas approbation de fusion globale.
+La PR 115 reste proposée en revue sur la base 114. La révision historique `1951e17` a terminé avec **14 workflows réussis sur 17** : Dev, Wolf et Spatial ont échoué dans trois parcours distincts du nouvel intérieur. La base a depuis reçu le suivi QA **`8cee6ec4`**, repris ici : il corrige le périmètre du dialogue de briefing et l’acquisition finale du trio, et observe les clics natifs du retour Wolf. Ses résultats doivent être lus sur la [PR 114](https://github.com/darknigthmare/yautja-la-longue-chasse/pull/114) ; l’ancien bilan 14/17 ne décrit pas cette nouvelle révision. L’[audit de la base et de sa synchronisation](verification/parent-base-audit.md) précise les causes et les limites. La réussite du nouvel intérieur ne vaut pas approbation de fusion globale.
 
 Le [catalogue JSON](catalogue.json) suit **23 actions, 8 salles, 13 ressources et 17 critères QA**. Il fournit les tailles recalibrées, les positions d’approche, les 16 seuils et les références des preuves déjà observées. Ce README et ce catalogue constituent une mise à jour documentaire séparée du commit de code et d’images indiqué ci-dessus.
 
@@ -15,6 +15,8 @@ Le [catalogue JSON](catalogue.json) suit **23 actions, 8 salles, 13 ressources e
 Le travail a commencé sur la [PR 114](https://github.com/darknigthmare/yautja-la-longue-chasse/pull/114), commit `4a0b8d58cdfadf642d6c897c32980b7a8586f4dd`, arbre `9b64f036ca97247ef7a131566705df7e1c472325`. Sa mise à jour `1951e17f01f1951d7c961b4ed3938741966e3007`, arbre `4f6b3e4a785951286efbf0deafa29b843df40150`, a ensuite été fusionnée dans ce lot.
 
 Le commit publié possède les deux parents `0e374e16976b4634830459c6fc27e9b6c14c9c21` et `1951e17f01f1951d7c961b4ed3938741966e3007`. Les arrivées planétaires, la triade, les reçus de départ et la réserve énergétique du camouflage sont conservés. Le Clan Ship demeure un lieu distinct : sa conversion complète n’est pas revendiquée par ce lot.
+
+La synchronisation suivante reprend `8cee6ec4d7a1334ffd74af6eb9b29b161f561b15`, arbre `4867642315ea924f4c6f1037aa8e253d6e86b776`. Elle ajoute seulement les trois recettes générales et les cinq fichiers de preuves de la base, avec conservation des adaptations du parcours Dev au nouvel intérieur. Les sources applicatives, les sept images et la recette dédiée du vaisseau restent ceux du commit testé `86f593ba`. Les résultats 14/14 et 17/17 demeurent attachés à ce commit précis.
 
 ## Huit salles, deux ponts et des passages explicites
 
@@ -51,7 +53,7 @@ Les dimensions ont été recalibrées par rapport au chasseur. Toutes les répé
 | `trainingEmitter` | 170 × 210 | 100 × 75 | 1 |
 | `archiveTerminal` | 125 × 230 | 80 × 55 | 4 |
 
-La console et le lit ont été réduits, leurs empreintes ajustées et les points de service rapprochés du mobilier. Les anciennes coordonnées d’approche ne doivent pas être réutilisées : celles du tableau des salles et du catalogue correspondent au code publié. Les points de contact, les perspectives et l’équilibre visuel restent à observer sur les captures finales, archivées mais non inspectées après l’indisponibilité de l’environnement.
+La console et le lit ont été réduits, leurs empreintes ajustées et les points de service rapprochés du mobilier. Les anciennes coordonnées d’approche ne doivent pas être réutilisées : celles du tableau des salles et du catalogue correspondent au code publié. Les 14 captures finales ont été inspectées après le rétablissement de l’environnement : les contacts et les superpositions sont plausibles aux positions observées, sans sprite tronqué ni fond opaque parasite. Les perspectives exactes, les pivots et l’équilibre visuel restent à comparer à des références précises.
 
 Les [inspections de préparation](../../app/game/systems/shipPreparationV88.ts) reçoivent une observation discriminée `space: 'ship-ground-v1'`, avec salle, service et position physique. Les coordonnées historiques ne peuvent pas servir de preuve à la place de la vraie position dans cette scène. Le contrat historique et ses reçus restent compatibles. L’interface conserve le personnage équipé et suspend son mouvement pendant la consultation d’un service.
 
@@ -124,27 +126,44 @@ Le [run 42013765672](https://github.com/darknigthmare/yautja-la-longue-chasse/ac
 
 Les **14 tests unitaires** sont réussis, ainsi que le lint, la construction de production Next et TypeScript. Les **17 contrôles navigateur** sont réussis. Le parcours couvre les huit salles et leurs huit services, le retour à la position exacte, les deux liaisons entre ponts dans les deux sens, la marche X/Y et la projection, la collision et l’occlusion, le trajet au clic autour d’un meuble, les largeurs mobiles 390 et 320 pixels avec glissement tactile, F8, le rechargement et la protection du stockage de campagne. Le résultat final indique **0 ressource manquante, 0 erreur console et 0 pageerror**.
 
-L’archive **13408631794** contient **18 fichiers**, pour **28 133 732 octets**, avec le SHA256 `79efaea2a7a0fe3f8c2fc8800089eca38ad5f587de0e90b45421498e9a2a09d5`. Les captures finales y sont conservées. **Leur revue visuelle n’a pas été effectuée**, l’environnement restant indisponible ; la réussite des assertions d’occlusion ne remplace pas l’examen humain des perspectives, pivots et pieds. La qualification d’une manette physique reste également ouverte.
+L’archive **13408631794** contient **18 fichiers**, pour **28 133 732 octets**, avec le SHA256 `79efaea2a7a0fe3f8c2fc8800089eca38ad5f587de0e90b45421498e9a2a09d5`. Les captures finales y sont conservées. Après le rétablissement de l’environnement, l’archive a été récupérée, son SHA256 vérifié et **ses 14 PNG ont été ouverts et inspectés par les agents**. Le rapport JSON natif confirme directement les 17 succès et les listes vides d’erreurs. Le [reçu de revue visuelle](verification/final-visual-review.json) conserve les empreintes des captures et les observations. Cette inspection ne constitue pas une approbation artistique humaine 1:1. La qualification d’une manette physique reste également ouverte.
+
+### Observations de la revue visuelle
+
+La passerelle, la baie médicale, l’armurerie, les cinq autres salles, les vues de collision/occlusion et les deux captures mobiles ont été ouvertes. Les sprites conservent leurs volumes, les pieds et bases rejoignent visuellement le sol, et aucun halo bleu ni rectangle opaque parasite n’a été observé. La vue mobile garde une caméra rapprochée et des commandes accessibles par défilement vertical.
+
+La console et le râtelier restent assez frontaux. Le chasseur masque partiellement le centre des postes lorsqu’il est au point d’usage ; l’émetteur est particulièrement occulté. La forge se lit comme une machine haute. Les trois socles de la galerie sont vides dans cette scène de test. Les passages latéraux gardent des zones translucides et ne constituent pas encore des ouvertures architecturales finies. Ces observations sont des limites de lisibilité et de finition à reprendre, sans défaut bloquant constaté dans les captures examinées.
+
+## Inventaire courant de contrôle V94
+
+Le contrôle de livraison a révélé que l’inventaire courant ne recensait pas encore les quatre nouveaux modules et conservait cinq anciennes empreintes. Le workflow dédié matérialise désormais **toutes les entrées natives** du registre, puis exécute le générateur officiel après installation des dépendances. Il écrit une copie dans les preuves et lance le contrôle strict du fichier canonique.
+
+Le [run 42019629253](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/42019629253), sur `9fc54afe684cd0f404f2a04bd58236640ee072fa`, a produit **2 171 entrées**, contre 2 167 auparavant : quatre ajouts, aucune suppression et cinq empreintes actualisées. La sortie de **403 483 octets**, SHA256 `043ea4a9f7c431df625f826b818efdca73d24e79cbc19a35e87e76ff8974e4c9`, est intégrée **sans modification de ses octets**. Les inventaires historiques gelés restent intacts.
+
+Ce premier passage s’est arrêté au contrôle du canonique obsolète, après production de la copie ; ses étapes de lint, tests, build et navigateur n’ont pas été exécutées. Le [reçu de génération et de vérification](verification/runtime-inventory-refresh.json) et le [delta exact](verification/runtime-inventory-delta.json) distinguent cette extraction de la recette de jeu. La nouvelle exécution doit vérifier le registre intégré, puis reprendre la recette complète de l’intérieur.
 
 ## Travail encore ouvert
 
 | Point | Étape suivante |
 | --- | --- |
-| Revue du résultat final | Inspecter les captures archivées ; la recette automatique 17/17 et ses preuves sont désormais enregistrées |
+| Revue artistique du résultat | Confronter les références aux 14 captures désormais inspectées ; la recette automatique 17/17 et l’examen visuel par les agents sont enregistrés |
 | Mobilier et sol | Revoir humainement pieds, pivots, perspectives et échelles des sept ressources ; l’occlusion automatique est vérifiée |
 | Manette | Mesurer le comportement sur une manette matérielle |
 | Clan Ship | Adapter sa projection réelle et ses sept décors au même contrat de sol |
 | Persistance de position | Enregistrer durablement salle et position ; le rechargement revient actuellement à la passerelle |
 | Liaisons | Ajouter les animations de franchissement et de déplacement entre les ponts |
 | Fidélité 1:1 | Retenir des références précises et consigner la revue humaine par ressource |
-| Classeur | Régénérer et inspecter la version correspondant au catalogue actuel |
 
 ## Suivi documentaire et état du classeur
 
 Le catalogue JSON constitue le suivi actuel : **23 actions**, **8 salles**, **17 meubles**, **16 seuils**, **13 ressources**, **17 critères QA** et **17 références**. Les états d’implémentation et de validation sont séparés. Les dimensions et liaisons ont été reconstruites à partir des lectures exactes du code, puis comparées aux fichiers effectivement publiés au commit indiqué : **17 meubles, 8 approches, 16 seuils et 7 ensembles de mesures artistiques concordent**. Le code publié, le manifeste artistique et les reçus de CI demeurent les sources de référence.
 
-Un premier classeur de travail avait été exporté avec quatre onglets, contrôlé par recalcul et inspecté visuellement. Il ne comptait alors que trois nouvelles images. **La version finale du classeur n’a pas été réexportée après l’arrivée des sept ressources et les recalibrages. Ses octets n’ont pas été récupérés ; aucun classeur obsolète n’est fourni comme livrable actuel.**
+Le [classeur final V1.6](yautja-interieur-25d-v1.6.0.xlsx) est désormais exporté avec **Suivi, Salles, Ressources et QA**. Il reprend 23 actions, 8 salles, 13 ressources et 17 critères, avec les 16 seuils et les références détaillées. Sa taille est de **25 233 octets** et son SHA256 vaut `3aeda622cdeb39b24c04f925fb32270acdb9f913750e90e99633aa90caf396b4`.
 
-Le format prévu pour une reprise documentaire comprend quatre onglets : **Suivi** pour les actions et résultats ; **Salles** pour les approches et seuils ; **Ressources** pour les fichiers, tailles et quatre statuts ; **QA** pour les critères et références complètes. Il devra être généré avec `@oai/artifact-tool` depuis le catalogue, avec formules bornées, filtres, statuts éditables et volets figés, puis recalculé et inspecté visuellement avant livraison.
+Les **19 formules bornées** ont été recalculées. Quatre variations de statuts donnent les résultats attendus, puis les données ont été restaurées. Aucun défaut de formule n’a été détecté. Le fichier possède huit tableaux filtrables, sept plages de statuts éditables et des volets figés sur les quatre feuilles. Neuf aperçus ont été inspectés, puis la structure XML du XLSX a été relue. Aucun passage dans Excel natif n’est revendiqué.
 
-La recette automatique du nouvel intérieur est réussie pour cette révision. La revue visuelle finale, l’évaluation sur manette matérielle et la comparaison artistique humaine 1:1 restent ouvertes.
+Le [générateur du classeur](build-workbook.mjs) utilise `@oai/artifact-tool`. Le [rapport de vérification](verification/workbook-verification.json) donne ses empreintes et contrôles. Le [snapshot exact du catalogue utilisé pour l’export](verification/workbook-input.json) permet de retrouver les données d’entrée ; le catalogue courant ajoute ensuite les métadonnées de livraison et les nouveaux reçus de contrôle. L’ancien classeur partiel à trois images n’est pas fourni.
+
+Pour le reconstruire dans le runtime primaire, appeler le générateur avec le chemin absolu du snapshot JSON et un dossier de sortie absolu, en utilisant `CODEX_PRIMARY_RUNTIME_NODE` et le module `@oai/artifact-tool` du runtime. Les quatre onglets conservent séparément les états de génération, intégration, contrôle technique et revue humaine.
+
+La recette automatique du nouvel intérieur est réussie pour cette révision, et les 14 captures finales ont été inspectées par les agents. L’évaluation sur manette matérielle et la comparaison artistique humaine 1:1 restent ouvertes.
