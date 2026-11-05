@@ -462,6 +462,66 @@ La note parlait de « Glacier Moon » et « Swamp Moon » : elles deviennent des
 - **Symbole et couleurs du clan :** dessinés par le joueur dans un éditeur de glyphes à la fondation ; le clan d'origine garde un symbole fixe. Le symbole tracé à l'acide à Blooded est celui du clan d'origine ; le joueur fondateur trace ensuite le sien sur ses trophées et son navire.
 - **Ordre de production :** dans l'ordre (1) pack, régions et Quatza-Rij ; (2) pyramide ; (3) chasses non linéaires ; (4) honneur, Bad Blood et Enforcer.
 
+### Époque, cités, Matriarches, races
+
+**Époque :** la campagne se déroule à l'époque des films (1987-2025). Weyland est encore Weyland Industries. Le futur (crossover *Tantalus* en 2204, Xeno Prime à l'époque coloniale, OWLF héritière, synthétiques de Weyland-Yutani) n'est accessible que par le Warp.
+
+**Cités :** chaque clan a sa cité sur Yautja Prime. La cité déjà construite (12 quartiers) devient celle du clan d'origine du joueur ; les cités des clans alliés et rivaux se visitent par les régions et les skiffs. *(Proposé : 3 cités visitables au départ, plus la cité du clan fondé par le joueur.)*
+
+**Matriarches :** pouvoir politique. Les Matriarches arbitrent les clans et choisissent les alliances ; la fondation d'un clan, le titre de King et l'entrée en guerre passent par leur reconnaissance. Canon : la Matriarche est la consort du Roi et gère les affaires internes (*Prey*, *The Hunt Begins*) ; la mère de Dek commande son propre vaisseau (*Badlands*).
+
+**Langue :** les Yautja parlent leur langue (cliquetis et voix yautja), sous-titrée en français ; les humains parlent normalement.
+
+**Chiens et montures :** compagnons de chasse dressés qui pistent et rabattent (modèle : chiens des Super Predators, *Predators*) ; montures pour traverser les régions. Le marché des montures et les chenils déjà dans le jeu servent de base.
+
+**Races jouables :** toutes celles connues du lore. La race décide des relations de départ entre clans.
+
+| Race | Source | Relations et particularités *(proposées)* |
+| --- | --- | --- |
+| Yautja classique (Jungle Hunter) | *Predator* (1987) | querelle de sang avec les Super Predators ; race par défaut |
+| Lost Tribe | *Predator 2* | proche des classiques ; lien avec Greyback et le Warp |
+| Super Predator | *Predators* (2010) | querelle de sang avec les classiques ; chiens de chasse et réserves |
+| Feral | *Prey* (2022) | lignée d'un autre hémisphère, armes en os ; méprisée par les clans technologiques |
+| Assassin (hybride) | *The Predator* (2018) | l'hybridation est interdite par le code : départ sous surveillance des Enforcers |
+| Fugitive | *The Predator* (2018) | traqué par les Assassins dès le début |
+| Hish-Qu-Ten | *Forever Midnight* (roman) | race ancestrale jugée sans honneur ; départ très difficile, voie Bad Blood naturelle |
+| Cyborg | *Hunting Grounds* | technologie interdite tolérée ; proche de la Rogue Space Tribe |
+| Exiled | *Predator: Hunters* (comics) | équipement en bois, en os et en pierre ; départ isolé |
+| Emissary | *The Predator* (version alternative), NECA | armure de style militaire humain ; contacts avec les humains |
+| Infected | *Fire and Stone* | muté par le Black Goo ; déblocage tardif, hors campagne principale |
+| Four-Armed | *Preserve the Game* (comics) | hybride rare et indiscipliné ; déblocage tardif |
+| Meta | *JLA vs. Predator* | super-pouvoirs : réservé à un mode bonus, non canon pour la campagne |
+
+Styles historiques (Samurai, Viking, Pirate, Valkyrie, Anubis, Cleopatra, *Hunting Grounds*) : apparences et armures, pas des races. Une femelle de grande taille (« Big Mama », comics) est couverte par l'éditeur.
+
+Source : [types de Predators](https://avpcentral.com/predator-types).
+
+### Fin de jeu : Reine Mère, Adjudicator, Black God
+
+**La Reine Mère (mission d'Adjudicator), opération en 3 phases :**
+
+1. **Débarquement :** plusieurs clans posent leurs vaisseaux sur le monde-ruche ; le joueur répartit les équipes et tient la tête de pont.
+2. **Percée en surface :** les clans alliés tiennent des fronts pendant que le joueur ouvre le chemin vers le cœur de la ruche.
+3. **Descente :** chasse en 2,5D jusqu'à la Reine Mère. Sa mort valide Adjudicator.
+
+**Adjudicator (Level 8) :** juge entre clans. Il tranche les différends, déclare un Bad Blood hors de son propre clan et commande les Enforcers.
+
+**Black God (Level 10), la proie mythique :** une Ancienne déchue qui a modifié son propre ADN jusqu'à devenir une abomination aux yeux des Yautja (l'hybridation est interdite par le code). Elle tient deux reines en laisse.
+
+- **Révélation finale :** l'Ancienne est devenue folle sous l'emprise télépathique de la ruche de la Reine Mère, et cette ruche est devenue une planète vivante.
+- **Lien avec le Level 8 :** tuer la Reine Mère n'a pas tué la ruche ; la planète elle-même pensait à travers elle. *(Proposé :)* les rêves et visions du Philosopher (Level 9) annoncent cette présence.
+- **Déroulé *(proposé)* :** retour sur le monde-ruche, devenu vivant ; combat contre l'Ancienne et ses deux reines en trois phases (reines libérées, Ancienne seule, la planète intervient) ; la victoire donne le statut quasi divin, puis le sacrifice ultime reste au choix du joueur.
+- **Canon :** une ruche devenue planète vivante et télépathe est une invention du projet, à annoncer comme telle.
+
+**Humains alliés :** rares et mérités. Un humain qui a tué un Xénomorphe et reçu la marque peut rejoindre le clan, comme Machiko Noguchi (*Hunter's Planet*) ; certains clans le voient d'un mauvais œil (coût en honneur auprès d'eux).
+
+### Pack, Harek, O1, interface
+
+- **Proies du pack Unblooded :** selon la planète d'entraînement, soit la faune locale, soit des drones Xénomorphes sans reine élevés par le clan (précédent canon : le clan de Top-Knot captive une reine, *Aliens vs. Predator: War*). Tuer ces drones ne donne pas le rang Blooded : seule la pyramide le donne.
+- **Harek :** sa fin dépend des actes du joueur : allié qui rejoint le clan, Bad Blood traqué par le joueur Enforcer, ou chef du clan rival dans l'arc de guerre.
+- **Départ O1 :** la parenté avec *Predator: Badlands* est assumée, avec des clins d'œil (Genna, le Kalisk), sans reprendre Dek ni l'intrigue du film.
+- **Interface en chasse :** au choix du joueur dans les options : interface dans le biomask et le gantelet (glyphes, vision, minuteurs) ou interface classique (barres, minicarte, icônes).
+
 Sources : [équipes humaines qui chassent les Predators](https://avpcentral.com/predator-hunter-teams).
 
 ### Crossover : USS Tantalus
