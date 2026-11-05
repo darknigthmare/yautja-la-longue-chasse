@@ -12,6 +12,8 @@ on:
       - 'app/game/GameClient.tsx'
       - 'public/game/ship-interior/**'
       - 'scripts/qa-ship-interior-25d.mjs'
+      - 'scripts/snapshot-runtime-v113.mjs'
+      - 'docs/qa/current-integration-20261103/runtime-inputs.json'
       - 'tests/ship-interior-25d.test.mjs'
       - 'tests/game-client-code-splitting.test.mjs'
       - 'tests/fixtures/clan-ship-browser-assets.json'
@@ -52,6 +54,7 @@ jobs:
             /build/
             /.github/workflows/ship-interior-25d.yml
             /.openai/hosting.json
+            /docs/qa/current-integration-20261103/runtime-inputs.json
             /public/**/manifest.json
             /public/audio/
             /public/game/ship-interior/
@@ -61,7 +64,7 @@ jobs:
             /public/game/assets/v3/actors/yautja/hunter/equipment/registered/blades.webp
             /public/game/ships/v12/classic-predator-spaceship.webp
             /public/game/ships/v13/classic-predator-spaceship-top.webp
-      - name: Materialize the existing real rig and shared service asset fixture
+      - name: Materialize real service assets and every canonical runtime input
         run: |
           node --input-type=module <<'NODE'
           import assert from 'node:assert/strict';
@@ -73,16 +76,31 @@ jobs:
             assert.match(file, /^public\/game\/[A-Za-z0-9._/-]+$/);
             assert.ok(file.split('/').every(part => part && part !== '.' && part !== '..'));
           }
+          const { entries, files: canonicalCount } = JSON.parse(readFileSync('docs/qa/current-integration-20261103/runtime-inputs.json', 'utf8'));
+          assert.ok(Array.isArray(entries), 'The canonical snapshot must expose its exact runtime inputs');
+          const canonicalPaths = entries.map(entry => entry.path);
+          assert.equal(canonicalPaths.length, canonicalCount, 'The canonical runtime count must match its native entries');
+          assert.equal(new Set(canonicalPaths).size, canonicalPaths.length, 'Canonical runtime inputs must be unique');
+          for (const file of canonicalPaths) {
+            assert.match(file, /^[A-Za-z0-9._/-]+$/);
+            assert.ok(file.split('/').every(part => part && part !== '.' && part !== '..'));
+          }
+          const requiredPaths = [...new Set([...paths, ...canonicalPaths])];
           execFileSync('git', ['sparse-checkout', 'add', '--stdin'], {
-            input: paths.map(file => '/' + file).join('\n') + '\n', stdio: ['pipe', 'inherit', 'inherit'],
+            input: requiredPaths.map(file => '/' + file).join('\n') + '\n', stdio: ['pipe', 'inherit', 'inherit'],
           });
-          assert.deepEqual(paths.filter(file => !existsSync(file)), [], 'Every fixture source must exist in this exact commit');
+          assert.deepEqual(requiredPaths.filter(file => !existsSync(file)), [], 'Every fixture and canonical runtime input must exist in this exact commit');
           NODE
       - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
         with:
           node-version: '22'
           cache: npm
       - run: npm ci --ignore-scripts --no-audit --no-fund
+      - name: Generate and verify the canonical runtime inventory with the official script
+        run: |
+          mkdir -p outputs/qa-ship-interior-25d
+          node scripts/snapshot-runtime-v113.mjs --write outputs/qa-ship-interior-25d/runtime-inputs.json
+          node scripts/snapshot-runtime-v113.mjs --check docs/qa/current-integration-20261103/runtime-inputs.json
       - name: Strictly lint the new scene, geometry, browser recipe and loading contract
         run: >-
           node node_modules/eslint/bin/eslint.js --max-warnings=0
