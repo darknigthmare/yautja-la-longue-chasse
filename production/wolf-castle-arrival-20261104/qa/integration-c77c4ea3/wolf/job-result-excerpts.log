@@ -1,0 +1,40 @@
+2026-11-04T18:53:07.9671139Z # tests 278
+2026-11-04T18:53:07.9671923Z # pass 278
+2026-11-04T18:53:07.9672233Z # fail 0
+2026-11-04T18:53:07.9672751Z # skipped 0
+2026-11-04T18:59:09.9162336Z PASS Main menu resumes the existing campaign on the personal deck
+2026-11-04T18:59:11.2053207Z PASS The orbital castle remains separate from the personal hull and Clan Ship
+2026-11-04T18:59:29.9254785Z PASS Walking reaches the airlock, vestibule, gallery and real archive terminal
+2026-11-04T18:59:32.5351412Z PASS Castle room and personal hull survive menu, reload and Continue
+2026-11-04T18:59:45.3880598Z PASS The audience and council preserve one campaign decision
+2026-11-04T18:59:59.8968675Z PASS The three-seal court trial is traversed and completed without campaign rewards
+2026-11-04T19:00:06.1285895Z PASS The royal court starts a real three-guard fight with damage and a saved exact position
+2026-11-04T19:00:09.2311264Z PASS A paused fight survives menu and reload without recovering health or resetting the guard
+2026-11-04T19:00:10.2278535Z PASS A real browser tab change pauses the fight and returning never resumes it implicitly
+2026-11-04T19:00:19.0126222Z PASS Taking the announced hits ends in defeat, then restart creates one fresh attempt
+2026-11-04T19:00:19.9968325Z PASS Combat controls fit 320 pixels and abandoning unlocks the same court safely
+2026-11-04T19:00:38.2935978Z PASS Ordinary keyboard movement, timed parries, dodges and attacks defeat the three guards
+2026-11-04T19:00:55.0853478Z PASS Castle navigation and return remain usable at 390 and 320 pixels
+2026-11-04T19:01:16.9938168Z PASS The accepted audience grants a new mandate whose objectives require fresh station interactions
+2026-11-04T19:01:27.0910708Z PASS A partially explored mandate survives Save, menu, reload and Continue with the same training dossier
+2026-11-04T19:01:51.5133557Z PASS The gallery and council complete the three objectives and unlock the separate sentinel encounter
+2026-11-04T19:01:54.9406480Z PASS The paused mandate reloads the same sentinel, damaged health, position and elapsed time before explicit resume
+2026-11-04T19:02:14.5969310Z PASS Real movement, parries, dodges and attacks beat all sentinel phases without healing or an early reward
+2026-11-04T19:02:27.1536391Z PASS The return guide reaches the audience and a refused reward write keeps the victory and balance unclaimed
+2026-11-04T19:02:27.4269563Z PASS Retrying the same audience action commits exactly two marks together with the campaign receipt
+2026-11-04T19:02:51.0381484Z PASS The completed mandate keeps one receipt and one reward after reload, another audience consultation and departure
+2026-11-04T19:03:00.2059726Z PASS A campaign launch freezes a single run, destination, ship and hunter before any hunt mounts
+2026-11-04T19:03:01.0585802Z PASS A real browser tab change suspends arrival and preserves the same mission on return
+2026-11-04T19:03:01.9652911Z PASS Arrival pause freezes active time and reduced-motion keeps the same mission
+2026-11-04T19:03:04.3686118Z PASS Arrival menu, reload and Continue retain the same run without a gameplay sidecar
+2026-11-04T19:03:09.4602687Z PASS A refused handoff leaves the hunt unmounted and can retry the same run once
+2026-11-04T19:03:12.5113712Z PASS Reload after handoff resumes the real hunt and never replays arrival
+2026-11-04T19:03:25.9514971Z PASS A second isolated campaign launches the full moving arrival
+2026-11-04T19:03:49.7587680Z PASS The title, actual carrier and separate capsule are presented before the descent
+2026-11-04T19:04:00.6096622Z PASS Descent reload retains mission and run, then explicitly resumes the same shot
+2026-11-04T19:04:34.0386992Z PASS Atmosphere, ground impact and the selected hunter lead to exactly one natural handoff
+2026-11-04T19:04:34.0402002Z PASS The complete route has no browser exception and every requested visual is available
+2026-11-04T19:04:34.2377147Z {"passed":true,"checks":32,"output":"/home/runner/work/yautja-la-longue-chasse/yautja-la-longue-chasse/outputs/qa-wolf-arrival","missingAssets":0,"assetGateRequired":true}
+2026-11-04T19:04:36.4248592Z SHA256 digest of uploaded artifact zip is 0078e4fc4c2108278057593b9f820854459608e52b8211a398275559dbff4d42
+2026-11-04T19:04:36.9093129Z Artifact wolf-arrival-browser-c915eb34fae6819526e4e4abe36949244a0b21ab.zip successfully finalized. Artifact ID 13354368053
+2026-11-04T19:04:36.9095873Z Artifact wolf-arrival-browser-c915eb34fae6819526e4e4abe36949244a0b21ab has been successfully uploaded! Final size is 16199990 bytes. Artifact ID is 13354368053

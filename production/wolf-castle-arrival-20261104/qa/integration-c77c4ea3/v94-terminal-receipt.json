@@ -1,0 +1,253 @@
+{
+  "schemaVersion": 1,
+  "kind": "V94_TERMINAL_RECEIPT",
+  "repository": "darknigthmare/yautja-la-longue-chasse",
+  "status": "PASS",
+  "run": {
+    "id": 41890840607,
+    "name": "V94 regression tests",
+    "event": "pull_request",
+    "workflow_id": 386493354,
+    "path": ".github/workflows/audit-v94.yml",
+    "run_number": 523,
+    "run_attempt": 1,
+    "head_sha": "c77c4ea37e3b1b0969a33917971f38496d4ee66a",
+    "head_branch": "feat/wolf-castle-continuation-20261104",
+    "created_at": "2026-11-04T18:49:01Z",
+    "run_started_at": "2026-11-04T18:49:01Z",
+    "updated_at": "2026-11-04T19:15:40Z",
+    "status": "completed",
+    "conclusion": "success",
+    "html_url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41890840607",
+    "check_suite_id": 113516060351
+  },
+  "source": {
+    "headCommit": "c77c4ea37e3b1b0969a33917971f38496d4ee66a",
+    "checkoutCommit": "c915eb34fae6819526e4e4abe36949244a0b21ab",
+    "tree": "a946e3d8123aaed37b417664a3de1de970232548",
+    "syntheticMergeHasIdenticalTrackedFiles": true,
+    "sourceEvidence": {
+      "file": "source.json",
+      "sha256": "046ed15177f9ac12f90170ba4de604d425f68078553f2a7c56e80836a2f9890e"
+    },
+    "comparisonEvidence": {
+      "file": "synthetic-merge-identity.json",
+      "sha256": "3eceb9b72dfef38323966498d4ad20442b92df47a49c8a5b889f663f0ddcb778",
+      "base": "c77c4ea37e3b1b0969a33917971f38496d4ee66a",
+      "head": "c915eb34fae6819526e4e4abe36949244a0b21ab",
+      "filesChanged": 0,
+      "verifiedAt": "2026-11-04T19:13:07Z"
+    }
+  },
+  "jobs": [
+    {
+      "id": 126788294143,
+      "name": "Targeted V94 regressions (not full game QA)",
+      "status": "completed",
+      "conclusion": "success",
+      "head_sha": "c77c4ea37e3b1b0969a33917971f38496d4ee66a",
+      "run_id": 41890840607,
+      "run_attempt": 1,
+      "started_at": "2026-11-04T18:50:30Z",
+      "completed_at": "2026-11-04T18:50:38Z",
+      "html_url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41890840607/job/126788294143"
+    },
+    {
+      "id": 126788294680,
+      "name": "Application audit (models)",
+      "status": "completed",
+      "conclusion": "success",
+      "head_sha": "c77c4ea37e3b1b0969a33917971f38496d4ee66a",
+      "run_id": 41890840607,
+      "run_attempt": 1,
+      "started_at": "2026-11-04T18:50:33Z",
+      "completed_at": "2026-11-04T19:09:21Z",
+      "html_url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41890840607/job/126788294680"
+    },
+    {
+      "id": 126788295004,
+      "name": "Application audit (application)",
+      "status": "completed",
+      "conclusion": "success",
+      "head_sha": "c77c4ea37e3b1b0969a33917971f38496d4ee66a",
+      "run_id": 41890840607,
+      "run_attempt": 1,
+      "started_at": "2026-11-04T18:50:30Z",
+      "completed_at": "2026-11-04T19:07:10Z",
+      "html_url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41890840607/job/126788295004"
+    },
+    {
+      "id": 126788295108,
+      "name": "Application audit (history)",
+      "status": "completed",
+      "conclusion": "success",
+      "head_sha": "c77c4ea37e3b1b0969a33917971f38496d4ee66a",
+      "run_id": 41890840607,
+      "run_attempt": 1,
+      "started_at": "2026-11-04T18:50:34Z",
+      "completed_at": "2026-11-04T19:15:29Z",
+      "html_url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41890840607/job/126788295108"
+    },
+    {
+      "id": 126802688091,
+      "name": "Application compile, types, runtime lint and browser integration",
+      "status": "completed",
+      "conclusion": "success",
+      "head_sha": "c77c4ea37e3b1b0969a33917971f38496d4ee66a",
+      "run_id": 41890840607,
+      "run_attempt": 1,
+      "started_at": "2026-11-04T19:15:32Z",
+      "completed_at": "2026-11-04T19:15:40Z",
+      "html_url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41890840607/job/126802688091"
+    }
+  ],
+  "strict": {
+    "jobId": 126788294680,
+    "step": {
+      "name": "Verify the consolidated runtime inventory and every current V113 model",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 67,
+      "started_at": "2026-11-04T19:08:08Z",
+      "completed_at": "2026-11-04T19:09:16Z"
+    },
+    "snapshot": {
+      "status": "PASS",
+      "path": "docs/qa/current-integration-20261103/runtime-inputs.json",
+      "bytes": 400041,
+      "sha256": "06d2bd524bbba6708a78cc45b1da6a68c4360568b8002afb55c2f2289aa0b072"
+    },
+    "inventoryEntries": 2151,
+    "inventoryInputBytes": 1092109497,
+    "modelTestFiles": [
+      "tests/homeworld-collision-cost-v113.test.mjs",
+      "tests/homeworld-connector-detour-v113.test.mjs",
+      "tests/homeworld-dressing-planner-v113.test.mjs",
+      "tests/homeworld-dressing-recovery-v113.test.mjs",
+      "tests/homeworld-dressing-v113.test.mjs",
+      "tests/homeworld-forge-fire-v113.test.mjs",
+      "tests/homeworld-marsh-ground-joints-v113.test.mjs",
+      "tests/homeworld-motion-source-contracts-v113.test.mjs",
+      "tests/homeworld-navigation-cost-v113.test.mjs",
+      "tests/homeworld-route-cancellation-v113.test.mjs",
+      "tests/hunter-chromatic-canvas-v113.test.mjs",
+      "tests/hunter-chromatics-v113.test.mjs",
+      "tests/hunter-material-facilities-v113.test.mjs",
+      "tests/hunter-material-hunt-v113.test.mjs",
+      "tests/hunter-material-preview-v113.test.mjs",
+      "tests/hunter-materials-v113.test.mjs",
+      "tests/production-evidence-v113.test.mjs"
+    ],
+    "modelTestResults": {
+      "tests": 75,
+      "suites": 0,
+      "pass": 75,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "todo": 0
+    },
+    "excerptFile": "v94-strict-excerpt.log"
+  },
+  "aggregate": {
+    "jobId": 126802688091,
+    "status": "completed",
+    "conclusion": "success",
+    "requiredGroups": [
+      "application",
+      "history",
+      "models"
+    ],
+    "runId": "41890840607",
+    "runAttempt": "1",
+    "checkoutCommit": "c915eb34fae6819526e4e4abe36949244a0b21ab",
+    "sameRunAttemptCommitValidatedInCI": true,
+    "downloadedProofFieldsAndZipDigestsVerifiedAtArchival": true,
+    "excerptFile": "v94-aggregate-excerpt.log"
+  },
+  "proofs": [
+    {
+      "group": "application",
+      "artifactId": 13353843789,
+      "artifactName": "application-audit-success-41890840607-1-c915eb34fae6819526e4e4abe36949244a0b21ab-application",
+      "artifactUrl": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41890840607/artifacts/13353843789",
+      "zipFile": "v94-application-proof.zip",
+      "zipBytes": 260,
+      "zipSha256": "dd8bb34e0ce14970bf06c278c81555e9ca7bf4daa67c53279c270682d8e4ccc4",
+      "proofFile": "v94-application-proof.json",
+      "proofBytes": 152,
+      "proofSha256": "d3ff3cd4c38ec6e8fa1b4218b71097d83af7983f61ac11fb6c263e3cc3987c00",
+      "proof": {
+        "schemaVersion": 1,
+        "result": "success",
+        "group": "application",
+        "runId": "41890840607",
+        "runAttempt": "1",
+        "commit": "c915eb34fae6819526e4e4abe36949244a0b21ab"
+      }
+    },
+    {
+      "group": "models",
+      "artifactId": 13353239650,
+      "artifactName": "application-audit-success-41890840607-1-c915eb34fae6819526e4e4abe36949244a0b21ab-models",
+      "artifactUrl": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41890840607/artifacts/13353239650",
+      "zipFile": "v94-models-proof.zip",
+      "zipBytes": 257,
+      "zipSha256": "2b52a6bb61cd63c8f627f6aa493e504ca91826c592d692267a3059540b7901aa",
+      "proofFile": "v94-models-proof.json",
+      "proofBytes": 147,
+      "proofSha256": "a68f230c3152dc9646d05079d91134c8d1dd3b9655b5cf92324b3c8f4c0669c9",
+      "proof": {
+        "schemaVersion": 1,
+        "result": "success",
+        "group": "models",
+        "runId": "41890840607",
+        "runAttempt": "1",
+        "commit": "c915eb34fae6819526e4e4abe36949244a0b21ab"
+      }
+    },
+    {
+      "group": "history",
+      "artifactId": 13355014192,
+      "artifactName": "application-audit-success-41890840607-1-c915eb34fae6819526e4e4abe36949244a0b21ab-history",
+      "artifactUrl": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41890840607/artifacts/13355014192",
+      "zipFile": "v94-history-proof.zip",
+      "zipBytes": 259,
+      "zipSha256": "3ec1abbad775ae673eb176bb9c2518f7f287de22ae5dacbab43958a9e4133d63",
+      "proofFile": "v94-history-proof.json",
+      "proofBytes": 148,
+      "proofSha256": "2ef8579096c5f651c7bb0b12b2b42a73038c9f8b88c03977ce48b6496611a59f",
+      "proof": {
+        "schemaVersion": 1,
+        "result": "success",
+        "group": "history",
+        "runId": "41890840607",
+        "runAttempt": "1",
+        "commit": "c915eb34fae6819526e4e4abe36949244a0b21ab"
+      }
+    }
+  ],
+  "excerpts": [
+    {
+      "path": "v94-strict-excerpt.log",
+      "bytes": 15233,
+      "sha256": "a514bc96bc3e914fd95a131b4f7e95e61f91ff7ddb820d18c6765a3c059c2e46"
+    },
+    {
+      "path": "v94-aggregate-excerpt.log",
+      "bytes": 9294,
+      "sha256": "9a7071514586344a7fe99602e3bdbcb948e0c0ad9a63ded090f4481efc418a21"
+    },
+    {
+      "path": "v94-models-checkout-excerpt.log",
+      "bytes": 140,
+      "sha256": "a877f58700a3b7ff95e00821b1bc886478a5334d3ff5949e63fc4441e3f13679"
+    }
+  ],
+  "collection": {
+    "newTestExecution": false,
+    "githubMutation": false,
+    "partialRerun": false,
+    "previousCancelledRunsExcluded": true
+  }
+}

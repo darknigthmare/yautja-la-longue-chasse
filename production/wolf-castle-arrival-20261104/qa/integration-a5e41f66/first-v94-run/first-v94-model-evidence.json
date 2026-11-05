@@ -1,0 +1,27 @@
+{
+  "schema": "integration-evidence-excerpt-v1",
+  "observedSource": "a5e41f66f6c3d194afae4f6f446b6c02f213d4c4",
+  "checkout": "7e14ce84ad01ee307e7f67a6408c8244cfe4fff8",
+  "checkoutDiffFilesFromSource": 0,
+  "run": 41877760809,
+  "modelsJob": 126741827533,
+  "aggregateJob": 126759937769,
+  "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41877760809",
+  "jobLogUrl": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41877760809/job/126741827533",
+  "allFiveJobs": "success",
+  "inventory": {
+    "passed": true,
+    "entries": 2144,
+    "documentBytes": 398945,
+    "sha256": "b05b63ee443eb02bd88326d74ac2543a4f54ae9fc82a1e7b6a0f0306e3de5496"
+  },
+  "v113": {
+    "files": 17,
+    "pass": 75,
+    "fail": 0,
+    "skipped": 0
+  },
+  "rawLogExcerpt": "2026-11-04T18:00:27.1751600Z ℹ skipped 0\n2026-11-04T18:00:27.1751809Z ℹ todo 0\n2026-11-04T18:00:27.1752053Z ℹ duration_ms 84067.152054\n2026-11-04T18:00:27.1925064Z ##[group]Run node scripts/snapshot-runtime-v113.mjs --check docs/qa/current-integration-20261103/runtime-inputs.json\n2026-11-04T18:00:27.1925965Z \u001b[36;1mnode scripts/snapshot-runtime-v113.mjs --check docs/qa/current-integration-20261103/runtime-inputs.json\u001b[0m\n2026-11-04T18:00:27.1926531Z \u001b[36;1mnode --input-type=module <<'NODE'\u001b[0m\n2026-11-04T18:00:27.1926821Z \u001b[36;1mimport fs from 'node:fs';\u001b[0m\n2026-11-04T18:00:27.1927134Z \u001b[36;1mimport {spawnSync} from 'node:child_process';\u001b[0m\n2026-11-04T18:00:27.1927449Z \u001b[36;1mconst historical = new Set([\u001b[0m\n2026-11-04T18:00:27.1927913Z \u001b[36;1m  'r7-publication-history-v113.test.mjs', 'homeworld-current-production-v113.test.mjs',\u001b[0m\n2026-11-04T18:00:27.1928606Z \u001b[36;1m  'homeworld-connector-detour-history-v113.test.mjs', 'homeworld-v112-history-v113.test.mjs',\u001b[0m\n2026-11-04T18:00:27.1929084Z \u001b[36;1m]);\u001b[0m\n2026-11-04T18:00:27.1929360Z \u001b[36;1mconst files = fs.readdirSync('tests').filter(file =>\u001b[0m\n2026-11-04T18:00:27.1929823Z \u001b[36;1m  file.endsWith('-v113.test.mjs') && !historical.has(file)\u001b[0m\n2026-11-04T18:00:27.1930204Z \u001b[36;1m).sort().map(file => 'tests/' + file);\u001b[0m\n2026-11-04T18:00:27.1930617Z \u001b[36;1mif (!files.length) throw new Error('No current V113 model tests selected');\u001b[0m\n2026-11-04T18:00:27.1931368Z \u001b[36;1mfor (const file of historical) if (!fs.statSync('tests/' + file).isFile()) throw new Error('Historical V113 test must remain available: ' + file);\u001b[0m\n2026-11-04T18:00:27.1958454Z   AUDIT_CHROME_CHANNEL: chrome\n2026-11-04T18:00:27.1961034Z   GH_TOKEN: ***\n2026-11-04T18:00:27.1961243Z ##[endgroup]\n2026-11-04T18:00:32.4482935Z {\"status\":\"PASS\",\"path\":\"docs/qa/current-integration-20261103/runtime-inputs.json\",\"bytes\":398945,\"sha256\":\"b05b63ee443eb02bd88326d74ac2543a4f54ae9fc82a1e7b6a0f0306e3de5496\"}\n2026-11-04T18:00:32.5917791Z Current V113 application model tests:\n2026-11-04T18:00:32.5918692Z tests/homeworld-collision-cost-v113.test.mjs\n2026-11-04T18:00:32.5919540Z tests/homeworld-connector-detour-v113.test.mjs\n2026-11-04T18:00:32.5920399Z tests/homeworld-dressing-planner-v113.test.mjs\n2026-11-04T18:00:32.5921243Z tests/homeworld-dressing-recovery-v113.test.mjs\n2026-11-04T18:00:32.5921919Z tests/homeworld-dressing-v113.test.mjs\n2026-11-04T18:00:32.5922392Z tests/homeworld-forge-fire-v113.test.mjs\n2026-11-04T18:00:32.5923335Z tests/homeworld-marsh-ground-joints-v113.test.mjs\n2026-11-04T18:00:32.5923947Z tests/homeworld-motion-source-contracts-v113.test.mjs\n2026-11-04T18:00:32.5924558Z tests/homeworld-navigation-cost-v113.test.mjs\n2026-11-04T18:00:32.5925115Z tests/homeworld-route-cancellation-v113.test.mjs\n2026-11-04T18:00:32.5925610Z tests/hunter-chromatic-canvas-v113.test.mjs\n2026-11-04T18:00:32.5925996Z tests/hunter-chromatics-v113.test.mjs\n2026-11-04T18:01:59.6391040Z ✔ V113 accepts its own complete recipe and rejects historical, partial, erroneous or relabeled evidence (16.481019ms)\n2026-11-04T18:01:59.6614454Z ✔ V113 recipe inventory follows actual relative fixture imports through cycles and records JSON inputs (24.854236ms)\n2026-11-04T18:01:59.6663289Z ✔ V113 source closure refuses path escapes and symlinked evidence rather than silently omitting them (4.515604ms)\n2026-11-04T18:01:59.6813878Z ℹ tests 75\n2026-11-04T18:01:59.6814307Z ℹ suites 0\n2026-11-04T18:01:59.6814662Z ℹ pass 75\n2026-11-04T18:01:59.6814905Z ℹ fail 0\n2026-11-04T18:01:59.6815130Z ℹ cancelled 0\n2026-11-04T18:01:59.6815363Z ℹ skipped 0\n2026-11-04T18:01:59.6815577Z ℹ todo 0\n2026-11-04T18:01:59.6815847Z ℹ duration_ms 87039.783918\n2026-11-04T18:01:59.6982371Z ##[group]Run node --experimental-strip-types --test --test-reporter=spec --test-concurrency=1 tests/trophy-workshop-lifecycle-v94.test.mjs tests/trophy-workshop.test.mjs tests/trophy-ritual.test.mjs\n2026-11-04T18:01:59.6984130Z \u001b[36;1mnode --experimental-strip-types --test --test-reporter=spec --test-concurrency=1 tests/trophy-workshop-lifecycle-v94.test.mjs tests/trophy-workshop.test.mjs tests/trophy-ritual.test.mjs\u001b[0m\n2026-11-04T18:01:59.7004381Z shell: /usr/bin/bash -e {0}\n2026-11-04T18:01:59.7004629Z env:\n2026-11-04T18:01:59.7004824Z   NEXT_TELEMETRY_DISABLED: 1\n2026-11-04T18:01:59.7005079Z   ELECTRON_SKIP_BINARY_DOWNLOAD: 1",
+  "fullLogCharacters": 414766,
+  "scope": "Historical first combined source only; current2151 inventory requires a new strict CI result"
+}

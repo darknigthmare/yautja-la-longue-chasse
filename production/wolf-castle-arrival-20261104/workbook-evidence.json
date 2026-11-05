@@ -1,7 +1,7 @@
 {
   "version": "1.3.0",
   "date": "2026-11-04",
-  "branch": "feat/wolf-castle-continuation-20261104",
+  "branch": "main",
   "baseCommit": "f002879",
   "previousReleaseCommit": "77fb73a",
   "features": {
@@ -9,7 +9,10 @@
     "saveV2": "Vérifié en navigateur",
     "arrivalAudio": "Intégré et testé",
     "castleAudio": "Intégré et testé",
-    "runtimeArt": "Produit et contrôlé"
+    "runtimeArt": "Produit et contrôlé",
+    "mandate": "Vérifié en navigateur",
+    "explorationAudio": "Intégré et testé",
+    "saveV3": "Vérifié en navigateur"
   },
   "history": [
     {
@@ -160,6 +163,174 @@
       ],
       "sourceCommit": "77fb73a",
       "scope": "Résultats historiques du lot 1.2.0. Ils ne qualifient pas les modifications de la reprise 1.3.0."
+    },
+    {
+      "version": "1.3.0",
+      "sourceCommit": "881b66dafc94ac007b7de907bc625b00af71dff8",
+      "localEquivalent": "132b2f1fa4f0fdf0de096566cc1e1e33a6286d34",
+      "sourceTree": "54804a2c3d3762f3ca3b0d621ff8401c50ab2c42",
+      "releaseStatus": "Qualifié techniquement",
+      "qualifiedAt": "2026-11-04T12:23:47.691Z",
+      "features": {
+        "combat": "Vérifié en navigateur",
+        "saveV2": "Vérifié en navigateur",
+        "arrivalAudio": "Intégré et testé",
+        "castleAudio": "Intégré et testé",
+        "runtimeArt": "Produit et contrôlé"
+      },
+      "checks": [
+        {
+          "id": "V2-COMBAT",
+          "subject": "Combat royal",
+          "status": "Réussi",
+          "count": 29,
+          "unit": "tests",
+          "evidence": "29 tests du château et du combat réussis dans la suite finale : trois gardes vaincus par déplacement, parade, esquive et attaque ; défaite, reprise, abandon, collisions et dossier contrôlés.",
+          "source": "qa/browser-41827785792/workflow-job.log ; tests/wolf-castle.test.mjs ; tests/wolf-castle-combat.test.mjs",
+          "limit": "Ces 29 cas sont inclus dans les 247 tests. Le parcours de la scène et la victoire par les commandes normales sont qualifiés séparément dans V2-BROWSER."
+        },
+        {
+          "id": "V2-SAVE",
+          "subject": "Checkpoints de visite V2",
+          "status": "Réussi",
+          "count": 42,
+          "unit": "tests",
+          "evidence": "42 tests réussis : sauvegarde V2, vrais callbacks GameClient, migration V1, reprise et refus des états incompatibles. Aucun échec ni test ignoré. Le run inclut 38 tests historiques et 4 nouveaux.",
+          "source": "qa/browser-41827785792/workflow-job.log ; tests/wolf-arrival-save.test.mjs ; tests/game-client-ship-flow.test.mjs",
+          "limit": "Sous-ensemble des 247 tests. La sauvegarde, le menu, le reload et la reprise de l’interface sont également qualifiés par V2-BROWSER."
+        },
+        {
+          "id": "V2-AUDIO",
+          "subject": "Cycle de vie audio",
+          "status": "Réussi",
+          "count": 32,
+          "unit": "tests",
+          "evidence": "32 tests audio réussis dans les 247 : sept tests du directeur royal et 25 tests du directeur d’arrivée, du moteur de scène et du cycle de vie commun. Aucun échec ni test ignoré.",
+          "source": "qa/browser-41827785792/workflow-job.log ; qa/audio-tests.log",
+          "limit": "Ces 32 tests sont déjà inclus dans les 247. Le journal local spécifique est conservé avec sa source initiale. L’écoute perceptive reste une revue distincte."
+        },
+        {
+          "id": "V2-REGRESSION",
+          "subject": "Régressions du chantier",
+          "status": "Réussi",
+          "count": 247,
+          "unit": "tests",
+          "evidence": "247 tests réussis dans la CI finale sur 881b66da, aucun échec ni test ignoré. Commande du workflow dédiée ; durée Node : 21,275 secondes.",
+          "source": "qa/browser-41827785792/workflow-job.log ; qa/browser-41827785792/workflow-result.json",
+          "limit": "Les sous-ensembles château, audio et sauvegarde sont inclus. Les huit tests world-screens complémentaires et les 294 tests historiques 1.2.0 restent séparés."
+        },
+        {
+          "id": "V2-TYPE",
+          "subject": "TypeScript",
+          "status": "Réussi",
+          "count": null,
+          "unit": "",
+          "evidence": "TypeScript complet réussit dans la CI finale sur 881b66da, équivalent au code local 132b2f1f.",
+          "source": "qa/browser-41827785792/workflow-job.log ; qa/browser-41827785792/workflow-result.json",
+          "limit": "Analyse statique du code qualifié. Le parcours navigateur possède son rapport distinct."
+        },
+        {
+          "id": "V2-LINT",
+          "subject": "ESLint strict de l’intégration",
+          "status": "Réussi",
+          "count": null,
+          "unit": "",
+          "evidence": "ESLint avec zéro avertissement autorisé réussit sur le périmètre du workflow : scènes, intégration, sauvegarde, audio, worldScreens, scripts et tests ciblés.",
+          "source": "qa/browser-41827785792/workflow-job.log ; qa/browser-41827785792/workflow-result.json",
+          "limit": "La commande exacte et son périmètre sont conservés dans le journal CI. Aucun audit global hors de cette commande n’est revendiqué."
+        },
+        {
+          "id": "V2-BUILD",
+          "subject": "Build de production",
+          "status": "Réussi",
+          "count": null,
+          "unit": "",
+          "evidence": "Build de production terminé avec le code de sortie 0 sur 132b2f1f en 243,649 secondes : webpack, TypeScript, neuf pages et contrôle CSS PIT.",
+          "source": "qa/build-132b2f1f/build.log ; qa/build-132b2f1f/build-result.json ; npm run build:production",
+          "limit": "Les étapes native-origin et static-output sont ignorées hors de l’environnement Vercel exact. Ce build ne certifie ni un déploiement Vercel ni le parcours navigateur."
+        },
+        {
+          "id": "V2-ART",
+          "subject": "PNG et copies WebP",
+          "status": "Réussi",
+          "count": 30,
+          "unit": "images",
+          "evidence": "30 PNG intacts : 56 851 298 octets. 30 WebP : 7 312 410 octets, soit 87,1377 % de réduction. Dimensions et alpha identiques sur les 30 paires.",
+          "source": "runtime-art-v2.json ; qa/browser-41827785792/workflow-job.log",
+          "limit": "24 images transparentes et six fonds opaques. Le parcours final sollicite 29 WebP du lot ; low-fog.webp n’y est pas demandé. Les 30 paires sont contrôlées techniquement."
+        },
+        {
+          "id": "V2-BROWSER",
+          "subject": "Parcours navigateur",
+          "status": "Réussi",
+          "count": 24,
+          "unit": "contrôles",
+          "evidence": "24/24 contrôles réussis sur 881b66da : château, trois gardes, sauvegarde/reprise, focus natif, mobile, huit plans et relais uniques. 21 captures, zéro exception JavaScript et zéro ressource visuelle demandée manquante.",
+          "source": "qa/browser-41827785792/report.json ; qa/browser-41827785792/workflow-result.json",
+          "limit": "Recette du vrai GameClient dans Chromium avec Vite. Les 185 ressources sollicitées sont disponibles. La revue des captures reste distincte de l’écoute physique et de la validation artistique humaine."
+        },
+        {
+          "id": "V2-HUMAN",
+          "subject": "Revue artistique humaine",
+          "status": "À faire",
+          "count": 0,
+          "unit": "approbations",
+          "evidence": "30 images conservées ou générées. Les trois poses ont été inspectées techniquement et visuellement par l’assistant.",
+          "source": "Manifestes artistiques V1 et art-manifest-combat-v2.json",
+          "limit": "Cette inspection ne vaut pas validation artistique humaine ni certification globale 1:1."
+        },
+        {
+          "id": "V2-MIX",
+          "subject": "Écoute du mixage",
+          "status": "À faire",
+          "count": null,
+          "unit": "",
+          "evidence": "Écouter la séquence complète et la cour avec plusieurs niveaux de volume.",
+          "source": "Directeurs audio du château et de l’arrivée",
+          "limit": "L’activation des signaux ne prouve pas l’équilibre sonore perçu."
+        },
+        {
+          "id": "V2-DUNGEON",
+          "subject": "Donjon scénarisé",
+          "status": "À faire",
+          "count": null,
+          "unit": "",
+          "evidence": "L’épreuve de trois gardes reste un entraînement. Concevoir séparément rencontres scénarisées, quêtes et récompenses.",
+          "source": "app/game/systems/wolfCastleCombat.ts",
+          "limit": "Aucun boss canonique, butin ou économie de campagne n’est revendiqué par cette épreuve."
+        },
+        {
+          "id": "V2-FILM",
+          "subject": "Découpage exact du film",
+          "status": "À faire",
+          "count": null,
+          "unit": "",
+          "evidence": "Comparer la copie demandée plan par plan et relever les timecodes vérifiés.",
+          "source": "https://www.youtube.com/watch?v=43SCLM6cGTc",
+          "limit": "Les 62 secondes décrivent le montage du jeu. La vidéo n’a pas été intégralement visionnée dans le chantier historique."
+        },
+        {
+          "id": "V2-WORLD",
+          "subject": "Régression des écrans du monde",
+          "status": "Réussi",
+          "count": 8,
+          "unit": "tests complémentaires",
+          "evidence": "Huit tests world-screens réussis, aucun échec ni test ignoré. Le stdout exact et sa provenance sont conservés. La seule retouche après cette exécution raccourcit un commentaire.",
+          "source": "qa/composition-132b2f1f/world-screens.log ; qa/composition-132b2f1f/world-screens-result.json",
+          "limit": "Suite distincte de la commande des 247 tests. Les tests ne constituent pas une validation artistique du cadrage."
+        },
+        {
+          "id": "V2-FRAMES",
+          "subject": "Géométrie des fonds",
+          "status": "Réussi",
+          "count": 24,
+          "unit": "rectangles",
+          "evidence": "24 rectangles valides sur huit biomes et trois bandes. Seule la jungle est recadrée ; ses trois bandes couvrent 941 pixels. Les 21 autres rectangles conservent leur image entière. Dimensions et blobs Git vérifiés.",
+          "source": "qa/composition-132b2f1f/background-frames-audit.json ; app/game/worldScreens.ts",
+          "limit": "Le helper du commit 132b2f1f est exécuté et les huit images sont décodées. Cet audit géométrique reste distinct de la revue des captures navigateur."
+        }
+      ],
+      "scope": "Qualification historique de la reprise 1.3.0 sur 881b66da / 132b2f1f : 247 tests, 24 contrôles navigateur et 21 captures. Elle ne qualifie pas les ajouts du mandat ni l’intégration courante a5e41f66."
     }
   ],
   "checks": [
@@ -225,13 +396,14 @@
     },
     {
       "id": "V2-BUILD",
-      "subject": "Build de production",
+      "subject": "Build local de production",
       "status": "Réussi",
       "count": null,
       "unit": "",
-      "evidence": "Build de production terminé avec le code de sortie 0 sur 132b2f1f en 243,649 secondes : webpack, TypeScript, neuf pages et contrôle CSS PIT.",
-      "source": "qa/build-132b2f1f/build.log ; qa/build-132b2f1f/build-result.json ; npm run build:production",
-      "limit": "Les étapes native-origin et static-output sont ignorées hors de l’environnement Vercel exact. Ce build ne certifie ni un déploiement Vercel ni le parcours navigateur."
+      "evidence": "Build local historique réussi sur a5e41f66 / 5daa00e1 en 316,430 s, code 0 : compilation Next.js webpack, TypeScript et CSS PIT. Le manifeste audio régénéré a été restauré ; les sources suivies sont propres.",
+      "source": "qa/integration-a5e41f66/production-build-result.json ; qa/integration-a5e41f66/production-build.log",
+      "limit": "Native-origin et static-output sont ignorés : not-exact-linux-vercel-build-root. Aucun déploiement, smoke test ni résultat de CI distante n’est revendiqué.",
+      "sourceCommit": "a5e41f66f6c3d194afae4f6f446b6c02f213d4c4"
     },
     {
       "id": "V2-ART",
@@ -275,13 +447,14 @@
     },
     {
       "id": "V2-DUNGEON",
-      "subject": "Donjon scénarisé",
-      "status": "À faire",
-      "count": null,
-      "unit": "",
-      "evidence": "L’épreuve de trois gardes reste un entraînement. Concevoir séparément rencontres scénarisées, quêtes et récompenses.",
-      "source": "app/game/systems/wolfCastleCombat.ts",
-      "limit": "Aucun boss canonique, butin ou économie de campagne n’est revendiqué par cette épreuve."
+      "subject": "Premier mandat royal",
+      "status": "Réussi",
+      "count": 8,
+      "unit": "contrôles inclus",
+      "evidence": "Audience, trois repères, trois phases sans soins, reprise exacte et remise unique de deux marques. Refus d’écriture puis nouvelle tentative et reload contrôlés.",
+      "source": "qa/integration-c77c4ea3/wolf/report.json ; app/game/systems/wolfCastleDungeon.ts",
+      "limit": "Huit contrôles du mandat inclus dans les 32 Wolf, pas un total supplémentaire. Entraînement distinct ; aucune validation artistique humaine.",
+      "sourceCommit": "c77c4ea37e3b1b0969a33917971f38496d4ee66a"
     },
     {
       "id": "V2-FILM",
@@ -312,6 +485,94 @@
       "evidence": "24 rectangles valides sur huit biomes et trois bandes. Seule la jungle est recadrée ; ses trois bandes couvrent 941 pixels. Les 21 autres rectangles conservent leur image entière. Dimensions et blobs Git vérifiés.",
       "source": "qa/composition-132b2f1f/background-frames-audit.json ; app/game/worldScreens.ts",
       "limit": "Le helper du commit 132b2f1f est exécuté et les huit images sont décodées. Cet audit géométrique reste distinct de la revue des captures navigateur."
+    },
+    {
+      "id": "INT-LOCAL",
+      "subject": "Modèles et contrats locaux",
+      "status": "Réussi",
+      "count": 128,
+      "unit": "tests locaux",
+      "evidence": "Deux passages distincts sur a5e41f66 / 5daa00e1 : 60 tests mandat, combat, sauvegarde et audio en 10,514 s ; 68 tests des flux communs Clan/Wolf en 26,985 s. Sept fichiers distincts, zéro échec ou test ignoré.",
+      "source": "qa/integration-a5e41f66/mandate-model-tests-result.json ; qa/integration-a5e41f66/clan-wolf-contract-tests-result.json",
+      "limit": "Tests locaux ciblés. Ne pas additionner les 247 tests historiques à ce total ni déduire une réussite de CI ou de navigateur.",
+      "sourceCommit": "a5e41f66f6c3d194afae4f6f446b6c02f213d4c4"
+    },
+    {
+      "id": "INT-AUDIO",
+      "subject": "Exploration et mandat sonores",
+      "status": "Réussi",
+      "count": 10,
+      "unit": "signaux",
+      "evidence": "Dix signaux d’exploration et de mandat : pas, portes, audience, archives et sceaux. Le directeur audio est couvert par la suite Wolf de 278 tests réussis sur c77.",
+      "source": "qa/integration-c77c4ea3/wolf/job-result-excerpts.log ; tests/wolf-castle-audio.test.mjs ; Audio!A40:H49",
+      "limit": "Les tests audio sont inclus dans les 278 ; aucun sous-total audio nouveau déduit. L’écoute du mixage reste ouverte.",
+      "sourceCommit": "c77c4ea37e3b1b0969a33917971f38496d4ee66a"
+    },
+    {
+      "id": "INT-CI",
+      "subject": "Première CI historique a5",
+      "status": "Historique partiel",
+      "count": null,
+      "unit": "",
+      "evidence": "Premier passage historique sur a5e41f66 : 12 workflows réussis sur 15. Clan : 217 tests et 22 parcours réussis. V94 : inventaire strict de 2 144 entrées PASS, 75/75 V113 et trois groupes concordants. Wolf : 18 contrôles réussis sur 19 exécutés, sur 32 prévus ; délai au retour conseil → audience.",
+      "source": "qa/integration-a5e41f66/first-clan-run/report.json ; qa/integration-a5e41f66/first-wolf-run/report.json ; qa/integration-a5e41f66/first-v94-run/first-v94-model-evidence.json ; qa/integration-a5e41f66/first-v94-run/aggregate-job.log",
+      "limit": "Qualification complète non acquise sur a5. Corrections locales et preuves terminales c77 séparées ; aucun compte interversion additionné.",
+      "sourceCommit": "a5e41f66f6c3d194afae4f6f446b6c02f213d4c4"
+    },
+    {
+      "id": "INT-WOLF",
+      "subject": "Wolf : intégration qualifiée",
+      "status": "Réussi",
+      "count": 32,
+      "unit": "contrôles",
+      "sourceCommit": "c77c4ea37e3b1b0969a33917971f38496d4ee66a",
+      "evidence": "278/278 tests et 32/32 contrôles. Mandat, récompense unique, reprise, focus, mobile et arrivée. 27 captures, 185 assets, zéro erreur ou asset manquant ; checkout c77 propre.",
+      "source": "qa/integration-c77c4ea3/wolf/report.json ; qa/integration-c77c4ea3/wolf/job-result-excerpts.log",
+      "limit": "Les 27 captures c77 restent dans l’artefact vérifié. Les 27 PNG archivés sous 9da gardent leur source. Revue technique ciblée, aucune approbation artistique."
+    },
+    {
+      "id": "INT-CLAN",
+      "subject": "Clan : flux communs intégrés",
+      "status": "Réussi",
+      "count": 22,
+      "unit": "parcours",
+      "sourceCommit": "c77c4ea37e3b1b0969a33917971f38496d4ee66a",
+      "evidence": "217/217 tests et 22/22 parcours ; 11 captures recensées. Source et checkout c77 propres, zéro erreur et ressource manquante. Code #104 et clôture #107 déjà fusionnés.",
+      "source": "qa/integration-c77c4ea3/clan/report.json ; qa/integration-c77c4ea3/clan/job-result-excerpts.log",
+      "limit": "Suite distincte avec des tests communs à Wolf : ne pas additionner les 217 aux 278. Les PNG Clan ne sont pas dupliqués."
+    },
+    {
+      "id": "INT-DEV",
+      "subject": "/dev : chasse et isolation",
+      "status": "Réussi",
+      "count": 15,
+      "unit": "scénarios",
+      "sourceCommit": "c77c4ea37e3b1b0969a33917971f38496d4ee66a",
+      "evidence": "61/61 tests, 15/15 scénarios. Marche x225→799,845, underpass découvert, génération 0 et horloge conservées sans reset implicite ; reset explicite x225/0.",
+      "source": "qa/integration-c77c4ea3/dev/report.json ; qa/integration-c77c4ea3/dev/job-result-excerpts.log",
+      "limit": "16 impulsions sur 40. Zéro erreur, écriture stockage ou ouverture IndexedDB observée. Huit captures recensées, sans duplication."
+    },
+    {
+      "id": "INT-V94",
+      "subject": "V94 : inventaire et agrégat",
+      "status": "Réussi",
+      "count": 2151,
+      "unit": "entrées strictes",
+      "sourceCommit": "c77c4ea37e3b1b0969a33917971f38496d4ee66a",
+      "evidence": "Strict PASS : 2 151 entrées, 400 041 octets, empreinte 06d2bd52… ; 75/75 V113. Cinq jobs réussis ; application, models et history concordent au run 41890840607, tentative 1.",
+      "source": "qa/integration-c77c4ea3/v94-terminal-receipt.json ; qa/integration-c77c4ea3/v94-strict-excerpt.log",
+      "limit": "Checkout synthétique c915, zéro fichier différent de c77. Les trois preuves et leur agrégat sont archivés. Aucun total ajouté aux autres suites."
+    },
+    {
+      "id": "INT-MAIN",
+      "subject": "Fusion #106 dans main",
+      "status": "Intégré",
+      "count": 16,
+      "unit": "workflows réussis",
+      "sourceCommit": "c77c4ea37e3b1b0969a33917971f38496d4ee66a",
+      "evidence": "#106 fusionnée le 4 novembre à 19:17:40 UTC : main 36f765c9, arbre a946e3d8 identique à c77/c80. Les 16 workflows sont réussis avant fusion.",
+      "source": "qa/integration-c77c4ea3/final-integration-result.json ; qa/integration-c77c4ea3/synthetic-merge-identity.json",
+      "limit": "Identité de contenu, sans nouvelle exécution après fusion. Vercel : build-rate-limit ; aucun déploiement attesté. Les 30 revues humaines restent ouvertes."
     }
   ],
   "runtimeIntegration": {
@@ -479,10 +740,130 @@
       "description": "Double annonce grave du balayage : préparer l’esquive.",
       "lifecycle": "Événement consommé une seule fois. Aucun rejeu lors d’un checkpoint, d’une reprise ou d’un saut d’horloge.",
       "source": "app/game/systems/wolfCastleAudio.ts"
+    },
+    {
+      "id": "step-stone",
+      "type": "Ponctuel",
+      "sequence": "Château",
+      "description": "Pas d’exploration sur pierre.",
+      "lifecycle": "Distance réellement parcourue après collisions ; aucun pas à l’arrêt. Pause, déplacement discontinu et reprise effacent la distance partielle.",
+      "status": "Intégré et testé",
+      "source": "app/game/systems/wolfCastleAudio.ts ; tests/wolf-castle-audio.test.mjs",
+      "sourceCommit": "a5e41f66f6c3d194afae4f6f446b6c02f213d4c4",
+      "qualificationSourceCommit": "c77c4ea37e3b1b0969a33917971f38496d4ee66a",
+      "qualificationProof": "qa/integration-c77c4ea3/wolf/job-result-excerpts.log"
+    },
+    {
+      "id": "step-metal",
+      "type": "Ponctuel",
+      "sequence": "Château",
+      "description": "Pas d’exploration sur métal dans la baie, le sas et le passage de service.",
+      "lifecycle": "Distance réellement parcourue après collisions ; aucun pas d’exploration pendant un combat. Les retours périmés d’une autre campagne sont ignorés.",
+      "status": "Intégré et testé",
+      "source": "app/game/systems/wolfCastleAudio.ts ; tests/wolf-castle-audio.test.mjs",
+      "sourceCommit": "a5e41f66f6c3d194afae4f6f446b6c02f213d4c4",
+      "qualificationSourceCommit": "c77c4ea37e3b1b0969a33917971f38496d4ee66a",
+      "qualificationProof": "qa/integration-c77c4ea3/wolf/job-result-excerpts.log"
+    },
+    {
+      "id": "door",
+      "type": "Ponctuel",
+      "sequence": "Château",
+      "description": "Embarquement et franchissement d’une porte confirmés.",
+      "lifecycle": "Émis après confirmation du changement de salle. Refus de porte, snapshot reçu et confirmation répétée restent silencieux.",
+      "status": "Intégré et testé",
+      "source": "app/game/systems/wolfCastleAudio.ts ; tests/wolf-castle-audio.test.mjs",
+      "sourceCommit": "a5e41f66f6c3d194afae4f6f446b6c02f213d4c4",
+      "qualificationSourceCommit": "c77c4ea37e3b1b0969a33917971f38496d4ee66a",
+      "qualificationProof": "qa/integration-c77c4ea3/wolf/job-result-excerpts.log"
+    },
+    {
+      "id": "audience",
+      "type": "Ponctuel",
+      "sequence": "Château",
+      "description": "Présentation, décision d’audience et acceptation du mandat.",
+      "lifecycle": "Transition confirmée, consommée une seule fois. Une confirmation achevée pendant la pause ne rejoue pas au retour.",
+      "status": "Intégré et testé",
+      "source": "app/game/systems/wolfCastleAudio.ts ; tests/wolf-castle-audio.test.mjs",
+      "sourceCommit": "a5e41f66f6c3d194afae4f6f446b6c02f213d4c4",
+      "qualificationSourceCommit": "c77c4ea37e3b1b0969a33917971f38496d4ee66a",
+      "qualificationProof": "qa/integration-c77c4ea3/wolf/job-result-excerpts.log"
+    },
+    {
+      "id": "archive",
+      "type": "Ponctuel",
+      "sequence": "Château",
+      "description": "Lecture initiale des archives et relevé des trois repères du mandat.",
+      "lifecycle": "Chaque objectif confirmé sonne lors de son acquisition. Relire un objectif conservé ne rejoue pas son acquisition.",
+      "status": "Intégré et testé",
+      "source": "app/game/systems/wolfCastleAudio.ts ; tests/wolf-castle-audio.test.mjs",
+      "sourceCommit": "a5e41f66f6c3d194afae4f6f446b6c02f213d4c4",
+      "qualificationSourceCommit": "c77c4ea37e3b1b0969a33917971f38496d4ee66a",
+      "qualificationProof": "qa/integration-c77c4ea3/wolf/job-result-excerpts.log"
+    },
+    {
+      "id": "trial-begin",
+      "type": "Ponctuel",
+      "sequence": "Château",
+      "description": "Ouverture de l’épreuve des sceaux.",
+      "lifecycle": "Nouvelle tentative confirmée. Le checkpoint seul ne rejoue pas le signal.",
+      "status": "Intégré et testé",
+      "source": "app/game/systems/wolfCastleAudio.ts ; tests/wolf-castle-audio.test.mjs",
+      "sourceCommit": "a5e41f66f6c3d194afae4f6f446b6c02f213d4c4",
+      "qualificationSourceCommit": "c77c4ea37e3b1b0969a33917971f38496d4ee66a",
+      "qualificationProof": "qa/integration-c77c4ea3/wolf/job-result-excerpts.log"
+    },
+    {
+      "id": "seal",
+      "type": "Ponctuel",
+      "sequence": "Château",
+      "description": "Activation correcte du prochain sceau.",
+      "lifecycle": "Progression confirmée dans la même tentative ; les répétitions sans progrès restent silencieuses.",
+      "status": "Intégré et testé",
+      "source": "app/game/systems/wolfCastleAudio.ts ; tests/wolf-castle-audio.test.mjs",
+      "sourceCommit": "a5e41f66f6c3d194afae4f6f446b6c02f213d4c4",
+      "qualificationSourceCommit": "c77c4ea37e3b1b0969a33917971f38496d4ee66a",
+      "qualificationProof": "qa/integration-c77c4ea3/wolf/job-result-excerpts.log"
+    },
+    {
+      "id": "seal-reset",
+      "type": "Ponctuel",
+      "sequence": "Château",
+      "description": "Remise à zéro après un sceau hors ordre.",
+      "lifecycle": "Émis seulement lorsque la progression confirmée revient à zéro.",
+      "status": "Intégré et testé",
+      "source": "app/game/systems/wolfCastleAudio.ts ; tests/wolf-castle-audio.test.mjs",
+      "sourceCommit": "a5e41f66f6c3d194afae4f6f446b6c02f213d4c4",
+      "qualificationSourceCommit": "c77c4ea37e3b1b0969a33917971f38496d4ee66a",
+      "qualificationProof": "qa/integration-c77c4ea3/wolf/job-result-excerpts.log"
+    },
+    {
+      "id": "trial-complete",
+      "type": "Ponctuel",
+      "sequence": "Château",
+      "description": "Achèvement confirmé de l’épreuve des sceaux.",
+      "lifecycle": "Transition unique vers l’épreuve terminée ; aucun rejeu au checkpoint.",
+      "status": "Intégré et testé",
+      "source": "app/game/systems/wolfCastleAudio.ts ; tests/wolf-castle-audio.test.mjs",
+      "sourceCommit": "a5e41f66f6c3d194afae4f6f446b6c02f213d4c4",
+      "qualificationSourceCommit": "c77c4ea37e3b1b0969a33917971f38496d4ee66a",
+      "qualificationProof": "qa/integration-c77c4ea3/wolf/job-result-excerpts.log"
+    },
+    {
+      "id": "mandate-complete",
+      "type": "Ponctuel",
+      "sequence": "Mandat",
+      "description": "Remise du mandat et confirmation de sa récompense unique.",
+      "lifecycle": "Émis après confirmation du reçu. Un refus d’écriture ne récompense pas et ne déclenche pas l’achèvement.",
+      "status": "Intégré et testé",
+      "source": "app/game/systems/wolfCastleAudio.ts ; tests/wolf-castle-audio.test.mjs",
+      "sourceCommit": "a5e41f66f6c3d194afae4f6f446b6c02f213d4c4",
+      "qualificationSourceCommit": "c77c4ea37e3b1b0969a33917971f38496d4ee66a",
+      "qualificationProof": "qa/integration-c77c4ea3/wolf/job-result-excerpts.log"
     }
   ],
-  "nextSteps": "Compléments sonores portes/pas/sceaux ; donjon scénarisé ; référence film, écoute du mixage et revue humaine des 30 images.",
-  "sourceCommit": "132b2f1fa4f0fdf0de096566cc1e1e33a6286d34",
+  "nextSteps": "Écouter le mixage, comparer le film plan par plan et poursuivre les 30 revues artistiques humaines. Aucun déploiement Vercel attesté.",
+  "sourceCommit": "c80fddb03ffa3b5e6c134fbb8754f0c2d169a366",
   "finalLocalEvidence": {
     "sourceCommit": "3a03a9449895c95a78606f951b762e9b087686a6",
     "files": [
@@ -512,8 +893,8 @@
       }
     ]
   },
-  "currentCodeCommit": "132b2f1fa4f0fdf0de096566cc1e1e33a6286d34",
-  "currentPublishedCommit": "881b66dafc94ac007b7de907bc625b00af71dff8",
+  "currentCodeCommit": "c80fddb03ffa3b5e6c134fbb8754f0c2d169a366",
+  "currentPublishedCommit": "c77c4ea37e3b1b0969a33917971f38496d4ee66a",
   "browserHistory": [
     {
       "runId": 41818094165,
@@ -934,39 +1315,36 @@
     }
   ],
   "finalRuntimeBuild": {
-    "sourceCommit": "132b2f1fa4f0fdf0de096566cc1e1e33a6286d34",
-    "equivalentPublishedCommit": "881b66dafc94ac007b7de907bc625b00af71dff8",
+    "sourceCommit": "a5e41f66f6c3d194afae4f6f446b6c02f213d4c4",
+    "localEquivalent": "5daa00e1dd4d7db94656c82d71666e76af11ee21",
+    "sourceTree": "48354d87cc9e8d2c16f644575ee4258d4a3d6427",
     "command": "npm run build:production",
-    "startedAt": "2026-11-04T12:16:10.207402+00:00",
-    "completedAt": "2026-11-04T12:20:13.966051+00:00",
-    "durationSeconds": 243.6492,
+    "kind": "Build local",
     "exitCode": 0,
+    "durationSeconds": 316.43,
+    "audioManifestRegenerated": true,
+    "audioManifestRestored": true,
+    "remainingTrackedChanges": "",
+    "completedChecks": [
+      "Next.js webpack",
+      "TypeScript",
+      "CSS PIT"
+    ],
+    "skippedChecks": {
+      "native-origin": "not-exact-linux-vercel-build-root",
+      "static-output": "not-exact-linux-vercel-build-root"
+    },
     "files": [
       {
-        "path": "qa/build-132b2f1f/source.json",
-        "sha256": "8630cd7008413e7256aaf3448cad35044184287fdad8aca2960f2d954c0a41c7"
+        "path": "qa/integration-a5e41f66/production-build-result.json",
+        "sha256": "1ff6d81103f5ad7bfd137e7ca7c30e410f371f4dd1bdadeada13baeca2f35f37"
       },
       {
-        "path": "qa/build-132b2f1f/build.log",
-        "sha256": "2f263d68528f4804ce692b5301ca76c44584a9f3e8b35c47fc438a9ab018f4be"
-      },
-      {
-        "path": "qa/build-132b2f1f/build-result.json",
-        "sha256": "149f892a0f92a1d133b3eb62413856ae72917e50022d50cb49b7eb189b8f2037"
-      },
-      {
-        "path": "qa/build-132b2f1f/audio-manifest-restore.json",
-        "sha256": "4f10448b048192e650bd0a40908b6b1e366d9dd19bf9f3b8471d9248feee508a"
-      },
-      {
-        "path": "qa/build-132b2f1f/status-after.txt",
-        "sha256": "317030485d0c10bf4f1680675ef76eda8b92610a8a7dec66ed172c147d59d661"
-      },
-      {
-        "path": "qa/build-132b2f1f/runtime-diff-after.txt",
-        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        "path": "qa/integration-a5e41f66/production-build.log",
+        "sha256": "0bbc59ff0513e13a4d8857d204fe90a23202155e4e02c62c58d96a183f5f1d97"
       }
-    ]
+    ],
+    "scope": "Build local historique sur a5e41f66 / 5daa00e1. Aucun déploiement, smoke test ni résultat de CI distante n’est déduit de cette réussite."
   },
   "sourceEquivalenceHistory": [
     {
@@ -1004,7 +1382,7 @@
       "scope": "Le runtime est inchangé ; seule la fixture ajoute un fond partagé existant, observé à la fin du parcours complet."
     }
   ],
-  "currentPublishedTree": "54804a2c3d3762f3ca3b0d621ff8401c50ab2c42",
+  "currentPublishedTree": "a946e3d8123aaed37b417664a3de1de970232548",
   "previousRuntimeBuilds": [
     {
       "sourceCommit": "51d3aa85d3405f615309862eb8ecd81ef9fa7c09",
@@ -1098,9 +1476,44 @@
           "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
         }
       ]
+    },
+    {
+      "sourceCommit": "132b2f1fa4f0fdf0de096566cc1e1e33a6286d34",
+      "equivalentPublishedCommit": "881b66dafc94ac007b7de907bc625b00af71dff8",
+      "command": "npm run build:production",
+      "startedAt": "2026-11-04T12:16:10.207402+00:00",
+      "completedAt": "2026-11-04T12:20:13.966051+00:00",
+      "durationSeconds": 243.6492,
+      "exitCode": 0,
+      "files": [
+        {
+          "path": "qa/build-132b2f1f/source.json",
+          "sha256": "8630cd7008413e7256aaf3448cad35044184287fdad8aca2960f2d954c0a41c7"
+        },
+        {
+          "path": "qa/build-132b2f1f/build.log",
+          "sha256": "2f263d68528f4804ce692b5301ca76c44584a9f3e8b35c47fc438a9ab018f4be"
+        },
+        {
+          "path": "qa/build-132b2f1f/build-result.json",
+          "sha256": "149f892a0f92a1d133b3eb62413856ae72917e50022d50cb49b7eb189b8f2037"
+        },
+        {
+          "path": "qa/build-132b2f1f/audio-manifest-restore.json",
+          "sha256": "4f10448b048192e650bd0a40908b6b1e366d9dd19bf9f3b8471d9248feee508a"
+        },
+        {
+          "path": "qa/build-132b2f1f/status-after.txt",
+          "sha256": "317030485d0c10bf4f1680675ef76eda8b92610a8a7dec66ed172c147d59d661"
+        },
+        {
+          "path": "qa/build-132b2f1f/runtime-diff-after.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      ]
     }
   ],
-  "currentSourceTree": "54804a2c3d3762f3ca3b0d621ff8401c50ab2c42",
+  "currentSourceTree": "a946e3d8123aaed37b417664a3de1de970232548",
   "compositionCorrection": {
     "localCommit": "132b2f1fa4f0fdf0de096566cc1e1e33a6286d34",
     "publishedCommit": "881b66dafc94ac007b7de907bc625b00af71dff8",
@@ -1229,6 +1642,1841 @@
       "scope": "Revue statique par des assistants, sans certification d’écoute, de fluidité du mouvement ou d’approbation artistique humaine."
     }
   },
-  "releaseStatus": "Qualifié techniquement",
-  "qualifiedAt": "2026-11-04T12:23:47.691Z"
+  "releaseStatus": "PR #106 fusionnée ; 16 workflows réussis sur c77, arbre identique dans main",
+  "historicalQualification": {
+    "version": "1.3.0",
+    "sourceCommit": "881b66dafc94ac007b7de907bc625b00af71dff8",
+    "localEquivalent": "132b2f1fa4f0fdf0de096566cc1e1e33a6286d34",
+    "sourceTree": "54804a2c3d3762f3ca3b0d621ff8401c50ab2c42",
+    "releaseStatus": "Qualifié techniquement",
+    "qualifiedAt": "2026-11-04T12:23:47.691Z",
+    "scope": "Qualification historique de la reprise 1.3.0 sur 881b66da / 132b2f1f : 247 tests, 24 contrôles navigateur et 21 captures. Elle ne qualifie pas les ajouts du mandat ni l’intégration courante a5e41f66.",
+    "featureKeys": [
+      "combat",
+      "saveV2",
+      "arrivalAudio",
+      "castleAudio",
+      "runtimeArt"
+    ]
+  },
+  "integrationQualification": {
+    "sourceCommit": "a5e41f66f6c3d194afae4f6f446b6c02f213d4c4",
+    "localEquivalent": "5daa00e1dd4d7db94656c82d71666e76af11ee21",
+    "sourceTree": "48354d87cc9e8d2c16f644575ee4258d4a3d6427",
+    "sourceProof": "qa/integration-a5e41f66/source.json",
+    "pullRequest": "https://github.com/darknigthmare/yautja-la-longue-chasse/pull/106",
+    "targetBranch": "main",
+    "mergedAtObservation": false,
+    "clanIntegration": {
+      "pullRequest": "https://github.com/darknigthmare/yautja-la-longue-chasse/pull/104",
+      "mergeCommit": "b18c79b92942f63ad885e6c90b4f2b5e90dc812c",
+      "status": "Source Clan intégrée depuis main ; nouveaux flux communs soumis à la recette de la source courante.",
+      "tracking": {
+        "pullRequest": "https://github.com/darknigthmare/yautja-la-longue-chasse/pull/107",
+        "status": "Fusionnée",
+        "mergeCommit": "c171050646c5593b0b5bf154ff9b2bbfb7a4e4ac",
+        "qualifiedSource": "62b9cb58",
+        "qualifiedRunUrl": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41876798912",
+        "qualifiedJobUrl": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41876798912/job/126738250315",
+        "changedFilesFromQualifiedSource": 0,
+        "scope": "Les six fichiers du suivi Clan sont déjà repris dans a5e41f66 par cherry-pick. Cette fusion documentaire ne qualifie pas la PR #106."
+      }
+    },
+    "mandateCommit": "3aaded18daf303f69f90f51c212f5fe4ab55d72a",
+    "status": "Première CI : Clan et V94 réussis, Wolf interrompu ; corrections locales documentées",
+    "localTests": [
+      {
+        "id": "mandate-model-tests",
+        "kind": "Tests locaux ciblés",
+        "status": "Réussi",
+        "sourceCommit": "a5e41f66f6c3d194afae4f6f446b6c02f213d4c4",
+        "localEquivalent": "5daa00e1dd4d7db94656c82d71666e76af11ee21",
+        "sourceTree": "48354d87cc9e8d2c16f644575ee4258d4a3d6427",
+        "command": [
+          "node",
+          "--experimental-strip-types",
+          "--test",
+          "--test-concurrency=1",
+          "tests/wolf-castle-dungeon.test.mjs",
+          "tests/wolf-castle-combat.test.mjs",
+          "tests/wolf-arrival-save.test.mjs",
+          "tests/wolf-castle-audio.test.mjs"
+        ],
+        "tests": 60,
+        "passed": 60,
+        "failed": 0,
+        "skipped": 0,
+        "durationSeconds": 10.514,
+        "result": "qa/integration-a5e41f66/mandate-model-tests-result.json",
+        "log": "qa/integration-a5e41f66/mandate-model-tests.log",
+        "resultSha256": "a6cbd2d325958043edf69549a35a47fd348d91bda13ebcb7dbe714b5c28d427a",
+        "logSha256": "19234dfcad0c84a618f34408c6553f614843f03751c5f816e136707cd61fef1f",
+        "scope": "Exécution locale distincte de la CI et de la recette navigateur."
+      },
+      {
+        "id": "clan-wolf-contract-tests",
+        "kind": "Tests locaux ciblés",
+        "status": "Réussi",
+        "sourceCommit": "a5e41f66f6c3d194afae4f6f446b6c02f213d4c4",
+        "localEquivalent": "5daa00e1dd4d7db94656c82d71666e76af11ee21",
+        "sourceTree": "48354d87cc9e8d2c16f644575ee4258d4a3d6427",
+        "command": [
+          "node",
+          "--experimental-strip-types",
+          "--test",
+          "--test-concurrency=1",
+          "tests/game-client-ship-flow.test.mjs",
+          "tests/clan-ship-docking.test.mjs",
+          "tests/clan-ship-save.test.mjs"
+        ],
+        "tests": 68,
+        "passed": 68,
+        "failed": 0,
+        "skipped": 0,
+        "durationSeconds": 26.985,
+        "result": "qa/integration-a5e41f66/clan-wolf-contract-tests-result.json",
+        "log": "qa/integration-a5e41f66/clan-wolf-contract-tests.log",
+        "resultSha256": "21870aae0c861c0b37270625969372d3893bfdcd4e5e289b3cc10e9f7bea36b9",
+        "logSha256": "6ab97bb40b2c669b7085c46a49b05f91b616f1fb224ac768cac6d0e225809ce0",
+        "scope": "Exécution locale distincte de la CI et de la recette navigateur."
+      }
+    ],
+    "localTestTotal": 128,
+    "localTestFiles": [
+      "tests/wolf-castle-dungeon.test.mjs",
+      "tests/wolf-castle-combat.test.mjs",
+      "tests/wolf-arrival-save.test.mjs",
+      "tests/wolf-castle-audio.test.mjs",
+      "tests/game-client-ship-flow.test.mjs",
+      "tests/clan-ship-docking.test.mjs",
+      "tests/clan-ship-save.test.mjs"
+    ],
+    "ci": {
+      "status": "Correction en cours",
+      "wolfRun": 41877760754,
+      "wolfRunUrl": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41877760754",
+      "clanRun": 41877760792,
+      "clanRunUrl": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41877760792",
+      "v94Run": 41877760809,
+      "v94RunUrl": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41877760809",
+      "expectedWolfChecks": 32,
+      "expectedWolfScreenshots": 27,
+      "expectedClanChecks": 22,
+      "inventorySha256": "b05b63ee443eb02bd88326d74ac2543a4f54ae9fc82a1e7b6a0f0306e3de5496",
+      "scope": "Premier passage a5e41f66 archivé : 12 workflows réussis sur 15, Clan et V94 réussis, Wolf incomplet. Nouvelle source corrigée et nouvelle qualification attendues."
+    },
+    "localBuild": {
+      "sourceCommit": "a5e41f66f6c3d194afae4f6f446b6c02f213d4c4",
+      "localEquivalent": "5daa00e1dd4d7db94656c82d71666e76af11ee21",
+      "sourceTree": "48354d87cc9e8d2c16f644575ee4258d4a3d6427",
+      "command": "npm run build:production",
+      "kind": "Build local",
+      "exitCode": 0,
+      "durationSeconds": 316.43,
+      "audioManifestRegenerated": true,
+      "audioManifestRestored": true,
+      "remainingTrackedChanges": "",
+      "completedChecks": [
+        "Next.js webpack",
+        "TypeScript",
+        "CSS PIT"
+      ],
+      "skippedChecks": {
+        "native-origin": "not-exact-linux-vercel-build-root",
+        "static-output": "not-exact-linux-vercel-build-root"
+      },
+      "files": [
+        {
+          "path": "qa/integration-a5e41f66/production-build-result.json",
+          "sha256": "1ff6d81103f5ad7bfd137e7ca7c30e410f371f4dd1bdadeada13baeca2f35f37"
+        },
+        {
+          "path": "qa/integration-a5e41f66/production-build.log",
+          "sha256": "0bbc59ff0513e13a4d8857d204fe90a23202155e4e02c62c58d96a183f5f1d97"
+        }
+      ],
+      "scope": "Build local sur la source courante exacte. Aucun déploiement, smoke test ni résultat de CI distante n’est déduit de cette réussite."
+    },
+    "firstCiObservation": {
+      "sourceCommit": "a5e41f66f6c3d194afae4f6f446b6c02f213d4c4",
+      "qualificationStatus": "Qualification complète non acquise ; corrections en cours",
+      "clan": {
+        "status": "Réussi",
+        "runId": 41877760792,
+        "jobId": 126741826613,
+        "runUrl": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41877760792",
+        "jobUrl": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41877760792/job/126741826613",
+        "automatedTestsPassed": 217,
+        "automatedTestsTotal": 217,
+        "browserPassed": 22,
+        "browserTotal": 22,
+        "errors": 0,
+        "missingRequestedAssets": 0,
+        "checkoutCommit": "a5e41f66f6c3d194afae4f6f446b6c02f213d4c4",
+        "workingTreeDirty": false,
+        "report": "qa/integration-a5e41f66/first-clan-run/report.json",
+        "reportSha256": "e5842bfe497fe07110d321d6c3948a1bada153345bae30f1b344da8fd206abd4",
+        "artifactId": 13348102149,
+        "artifactSha256": "36a3f065729d5ed16b689b13de24b3adf92b7589f43809e074a0a65de4700db4",
+        "scope": "217 tests confirmés par le job CI communiqué par root ; 22 parcours et état source vérifiés dans le rapport copié."
+      },
+      "wolf": {
+        "status": "Échec",
+        "runId": 41877760754,
+        "jobId": 126742547100,
+        "runUrl": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41877760754",
+        "jobUrl": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41877760754/job/126742547100",
+        "browserPassed": 18,
+        "browserExecuted": 19,
+        "browserPlanned": 32,
+        "browserFailed": 1,
+        "screenshotsReported": 13,
+        "errors": 0,
+        "missingRequestedAssets": 0,
+        "checkoutCommit": "a5e41f66f6c3d194afae4f6f446b6c02f213d4c4",
+        "workingTreeDirty": false,
+        "failureCheck": "The return guide reaches the audience and a refused reward write keeps the victory and balance unclaimed",
+        "failure": "page.waitForFunction: Timeout 20000ms exceeded.\n    at waitCastle (/home/runner/work/yautja-la-longue-chasse/yautja-la-longue-chasse/scripts/qa-wolf-arrival-browser.mjs:127:16)\n    at moveRoom (/home/runner/work/yautja-la-longue-chasse/yautja-la-longue-chasse/scripts/qa-wolf-arrival-browser.mjs:154:75)\n    at async file:///home/runner/work/yautja-la-longue-chasse/yautja-la-longue-chasse/scripts/qa-wolf-arrival-browser.mjs:541:38\n    at async check (/home/runner/work/yautja-la-longue-chasse/yautja-la-longue-chasse/scripts/qa-wolf-arrival-browser.mjs:47:11)\n    at async file:///home/runner/work/yautja-la-longue-chasse/yautja-la-longue-chasse/scripts/qa-wolf-arrival-browser.mjs:535:3",
+        "failureRoom": "royal-council",
+        "report": "qa/integration-a5e41f66/first-wolf-run/report.json",
+        "reportSha256": "c9d2e4b706b05f398059fc0da645f1e57d91ae52b53593b5957f1638fb52b26f",
+        "failureScreenshot": "qa/integration-a5e41f66/first-wolf-run/failure.png",
+        "failurePage": "qa/integration-a5e41f66/first-wolf-run/failure-page.txt",
+        "artifactId": 13348182785,
+        "artifactSha256": "b3bb96b1338bfe7d1cb741fd8816c3b0e63fc50a696238169513d896f13302e4",
+        "scope": "Les trois phases de la sentinelle passent, puis le retour conseil → audience atteint le délai d’attente. Les 18 réussites sur 19 contrôles exécutés ne valent pas 32/32 ; la suite prévue n’est pas achevée."
+      },
+      "nextStep": "Le propriétaire corrige la navigation de recette et le gantelet ; attendre sa nouvelle source et ses nouvelles preuves avant qualification finale.",
+      "classification": "Historique de la première intégration",
+      "scope": "Résultats observés sur a5e41f66 uniquement. Les corrections locales et la nouvelle source combinée ont leurs preuves séparées ; aucune qualification ne leur est transférée.",
+      "workflowSummary": {
+        "sourceCommit": "a5e41f66f6c3d194afae4f6f446b6c02f213d4c4",
+        "total": 15,
+        "passed": 12,
+        "failed": 3,
+        "failedGroups": [
+          {
+            "kind": "Gates V142",
+            "count": 2,
+            "reason": "Ancienne expression régulière de contrôle source, selon le diagnostic du responsable."
+          },
+          {
+            "kind": "Recette navigateur Wolf",
+            "count": 1,
+            "reason": "Délai au retour conseil → audience après les trois phases de la sentinelle."
+          }
+        ],
+        "provenance": "État des quinze workflows communiqué par le responsable ; rapports Clan/Wolf et preuves V94 archivés séparément ci-dessous.",
+        "scope": "Résumé du premier passage seulement ; aucune réussite globale de la PR #106."
+      },
+      "v94": {
+        "status": "Réussi",
+        "sourceCommit": "a5e41f66f6c3d194afae4f6f446b6c02f213d4c4",
+        "checkoutCommit": "7e14ce84ad01ee307e7f67a6408c8244cfe4fff8",
+        "checkoutDiffFilesFromSource": 0,
+        "runId": 41877760809,
+        "runAttempt": 1,
+        "runUrl": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41877760809",
+        "modelsJobId": 126741827533,
+        "modelsJobUrl": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41877760809/job/126741827533",
+        "aggregateJobId": 126759937769,
+        "aggregateJobUrl": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41877760809/job/126759937769",
+        "workflowJobsPassed": 5,
+        "workflowJobsTotal": 5,
+        "inventory": {
+          "status": "PASS",
+          "entries": 2144,
+          "documentBytes": 398945,
+          "sha256": "b05b63ee443eb02bd88326d74ac2543a4f54ae9fc82a1e7b6a0f0306e3de5496",
+          "command": "node scripts/snapshot-runtime-v113.mjs --check docs/qa/current-integration-20261103/runtime-inputs.json",
+          "sourceUrl": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/a5e41f66f6c3d194afae4f6f446b6c02f213d4c4/docs/qa/current-integration-20261103/runtime-inputs.json"
+        },
+        "currentV113": {
+          "files": 17,
+          "tests": 75,
+          "passed": 75,
+          "failed": 0,
+          "skipped": 0
+        },
+        "aggregate": {
+          "status": "Réussi",
+          "groups": [
+            "application",
+            "history",
+            "models"
+          ],
+          "groupsPassed": 3,
+          "groupsTotal": 3,
+          "sameRunAttemptAndCheckoutVerified": true
+        },
+        "modelEvidence": "qa/integration-a5e41f66/first-v94-run/first-v94-model-evidence.json",
+        "modelEvidenceSha256": "51d867d4a36ca01c563f47f0965701d8d767b0156518d948ddc1dd53221c46ad",
+        "aggregateLog": "qa/integration-a5e41f66/first-v94-run/aggregate-job.log",
+        "aggregateLogSha256": "def541695b70f328c4ba4bdfdf8a85387a31f006911b9abe83669c432e75543a",
+        "provenance": {
+          "models": "Reçu et extraits bruts du journal CI fournis par le responsable ; le journal complet n’est pas recopié ici.",
+          "aggregate": "Journal décodé du job 126759937769 récupéré directement via github_fetch_workflow_job_logs.",
+          "checkoutEquivalence": "Comparaison checkout/source sans fichier différent, consignée dans le reçu du responsable."
+        },
+        "scope": "Historique V94 de la première intégration a5e41f66 : inventaire strict de 2 144 entrées, distinct de l’inventaire préparé de 2 151 entrées. Aucun résultat de cette exécution ne qualifie la source corrigée."
+      }
+    }
+  },
+  "mandate": {
+    "id": "wolf-castle-first-mandate",
+    "status": "Vérifié en navigateur",
+    "sourceCommit": "a5e41f66f6c3d194afae4f6f446b6c02f213d4c4",
+    "implementationCommit": "3aaded18daf303f69f90f51c212f5fe4ab55d72a",
+    "objectives": [
+      "archives",
+      "gallery",
+      "council"
+    ],
+    "opponent": "Sentinelle du mandat",
+    "phases": 3,
+    "healingBetweenPhases": false,
+    "rewardClanMarks": 2,
+    "rewardOncePerCampaign": true,
+    "returnRoom": "royal-audience",
+    "sources": [
+      "app/game/systems/wolfCastleDungeon.ts",
+      "app/game/systems/wolfCastleCombat.ts",
+      "app/game/systems/wolfCastle.ts",
+      "app/game/WolfCastleScene.tsx"
+    ],
+    "scope": "Premier mandat de campagne scénarisé. Les trois gardes d’entraînement gardent leur dossier distinct sans récompense de campagne ; aucun boss canonique n’est revendiqué.",
+    "visitVersion": 3,
+    "legacyVisitVersionsMigrated": [
+      1,
+      2
+    ],
+    "qualificationSourceCommit": "c77c4ea37e3b1b0969a33917971f38496d4ee66a",
+    "qualificationProof": "qa/integration-c77c4ea3/wolf/report.json"
+  },
+  "pendingIntegrationUpdate": {
+    "status": "Clôturée : source c77 qualifiée et PR #106 fusionnée",
+    "localSourceCommit": "c80fddb03ffa3b5e6c134fbb8754f0c2d169a366",
+    "localSourceTree": "a946e3d8123aaed37b417664a3de1de970232548",
+    "qualificationTransferredFromPreviousSource": false,
+    "gauntletRegression": {
+      "kind": "Test local de reproduction et correction",
+      "basePublishedCommit": "a5e41f66f6c3d194afae4f6f446b6c02f213d4c4",
+      "baseLocalCommit": "5daa00e1dd4d7db94656c82d71666e76af11ee21",
+      "executionSource": "Base 5daa00e1 / a5e41f66 avec les modifications locales identifiées par leurs blobs dans le reçu ; aucun checkout propre au commit suivant n’est revendiqué pour cette exécution.",
+      "command": "node --import tsx --test --test-reporter=spec tests/gauntlet-mission-resume-v142.test.mjs",
+      "beforeApplicationFix": {
+        "applicationBlob": "b47d2bae650fa0aa72ee54f8caff3f795958a3c9",
+        "exitCode": 1,
+        "tests": 7,
+        "passed": 6,
+        "failed": 1,
+        "skipped": 0,
+        "durationMs": 5669.658817,
+        "regression": "The actual mountArrivalHunt callback preserved wolf in the durable configuration, but the actual HuntCanvas gauntlet prop evaluated to feral after the supported legacy preference changed in another tab.",
+        "expectedVisualIdentity": "wolf",
+        "actualVisualIdentity": "feral"
+      },
+      "afterApplicationFix": {
+        "exitCode": 0,
+        "tests": 7,
+        "passed": 7,
+        "failed": 0,
+        "skipped": 0,
+        "durationMs": 3582.506782,
+        "blobs": {
+          "app/game/GameClient.tsx": "3f544116fb68488c8ac22f8192deeb4259f7aead",
+          "tests/gauntlet-mission-resume-v142.test.mjs": "4ec6908ca4d63a30c8ec3ceec05ac2bf4f098b05"
+        },
+        "strictEslintExitCode": 0,
+        "gitDiffCheckExitCode": 0,
+        "firstMountSnapshot": null,
+        "firstMountRetryCheckpoint": null,
+        "checks": [
+          "Reject another run or owner before mounting",
+          "Preserve the captured identity through the arrival handoff",
+          "Preserve the captured identity when recovering before the first world snapshot",
+          "Keep an explicit active-hunt resume identity authoritative",
+          "Retain the legitimate legacy preference fallback without an arrival run"
+        ]
+      },
+      "afterFixBlobsVerifiedInCommits": [
+        "aa17b1bc0c1e544a5cacdc26bf539327c3306b84",
+        "a14983dfcc21c31bb5c99d70973cbcdcbf073fd2"
+      ],
+      "executionRepeatedForThisRecord": false,
+      "result": "qa/corrections-20261104/gauntlet-fix-local-result.json",
+      "resultSha256": "9a330ef79909fe17e5c9e72db04330da7bb672c0f99dbc9815500defe0039c67",
+      "scope": "Sept cas locaux : six réussites et une divergence réelle feral au lieu de wolf avant correction, puis sept réussites. Cette preuve ne vaut ni exécution navigateur ni réussite des gates distantes sur une nouvelle source."
+    },
+    "devTravelRegression": {
+      "kind": "Tests locaux ciblés",
+      "status": "Réussi",
+      "localSourceCommit": "a14983dfcc21c31bb5c99d70973cbcdcbf073fd2",
+      "localSourceTree": "ff33a26719d3319c5f5aa902a3c9ad6e719c3ae3",
+      "command": [
+        "node",
+        "--experimental-strip-types",
+        "--test",
+        "--test-concurrency=1",
+        "tests/dev-travel-destinations.test.mjs"
+      ],
+      "exitCode": 0,
+      "tests": 8,
+      "passed": 8,
+      "failed": 0,
+      "skipped": 0,
+      "durationSeconds": 7.107,
+      "nodeDurationMs": 6655.83305,
+      "result": "qa/corrections-20261104/dev-travel-integration-result.json",
+      "resultSha256": "2335787db113556d114436959d2287e0387796d2e0d68d92efc9d94307f5039f",
+      "log": "qa/corrections-20261104/dev-travel-integration.log",
+      "logSha256": "f99bfd279d5d424ec66784edcdc0bec92f577dbf1aa478614e0b103c1f01ebff",
+      "scope": "Huit tests du modèle de destinations /dev et de son isolation sur a14983df. Aucun parcours navigateur /dev, build, strict inventaire ou succès CI n’en est déduit."
+    },
+    "countingScope": "Les deux passages locaux de 7 cas du gantelet et les 8 cas /dev restent séparés par exécution et source. Aucun total n’est ajouté aux 128 tests locaux de a5e41f66, aux 217 tests Clan, aux 75 V113 ou aux 247 tests historiques.",
+    "exportStatus": "Terminé : huit feuilles recalculées, 58 formules sans erreur ; 15 vues modifiées relues, 15 vues identiques. Voir workbook-verification.json.",
+    "nextStep": "Écouter le mixage, comparer le film plan par plan et poursuivre les 30 revues artistiques humaines. Aucun déploiement Vercel attesté.",
+    "publishedSourceCommit": "c77c4ea37e3b1b0969a33917971f38496d4ee66a",
+    "pullRequest": "https://github.com/darknigthmare/yautja-la-longue-chasse/pull/106",
+    "sourceProvenance": {
+      "publishedSourceAndTree": "Correction parallèle adoptée et équivalence locale communiquées par le responsable.",
+      "localTreeVerified": true,
+      "comparisonFromPublishedSource": "3fc1a5bf3b2aff1eda05cc721b46e58194dc13d3",
+      "comparisonFromLocalSource": "356f630279db72c4013c301e25e9242d5ac4fe7c",
+      "changedPaths": [
+        "scripts/qa-dev-travel-browser.mjs",
+        "scripts/qa-wolf-arrival-browser.mjs"
+      ],
+      "changedApplicationFiles": 0,
+      "changedInventoryFiles": 0,
+      "corrections": [
+        "Wolf : attendre le focus natif sur Pause après Resume avant d’envoyer Escape ; consigner le focus observé.",
+        "/dev : porter la borne de marche réelle de dix à quarante impulsions, avec sortie sur découverte native et assertions de parcours conservées."
+      ],
+      "scope": "Deux scripts QA seulement depuis 3fc. Les succès courants proviennent de leurs propres runs c77 ; aucun succès historique transféré."
+    },
+    "preparedInventory": {
+      "entries": 2151,
+      "sha256": "06d2bd524bbba6708a78cc45b1da6a68c4360568b8002afb55c2f2289aa0b072",
+      "documentBytes": 400041,
+      "sourceCommit": "c77c4ea37e3b1b0969a33917971f38496d4ee66a",
+      "localEquivalent": "c80fddb03ffa3b5e6c134fbb8754f0c2d169a366",
+      "status": "PASS",
+      "sourceUrl": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/c77c4ea37e3b1b0969a33917971f38496d4ee66a/docs/qa/current-integration-20261103/runtime-inputs.json",
+      "scope": "Contrôle strict exécuté dans V94 sur le checkout synthétique c915, identique en fichiers à c77.",
+      "sameDocumentAsPublishedSource": "37128ba9b8ad48a91ff20a3548238bd3a1418fbc",
+      "proof": "qa/integration-c77c4ea3/v94-terminal-receipt.json"
+    },
+    "sourceHistory": [
+      {
+        "localSourceCommit": "a14983dfcc21c31bb5c99d70973cbcdcbf073fd2",
+        "localSourceTree": "ff33a26719d3319c5f5aa902a3c9ad6e719c3ae3",
+        "status": "Étape locale des tests /dev ; résultats conservés avec leur source."
+      },
+      {
+        "publishedSourceCommit": "37128ba9b8ad48a91ff20a3548238bd3a1418fbc",
+        "localSourceCommit": "d1867b43795255fc995491d118d74dea8438077f",
+        "localSourceTree": "5ec934cad90499b81d134a8b0b1ed5b9ece1fe15",
+        "ciStatus": "Runs annulés après remplacement de la source",
+        "completeWolfQualification": false,
+        "completeDevQualification": false,
+        "strictInventoryQualification": false,
+        "proof": "qa/integration-9da27c2a/source-and-corrections.json"
+      },
+      {
+        "publishedSourceCommit": "fcd77668390babfbb1799ba9ccd2a720f8dfdf8c",
+        "localSourceCommit": "7575782a75451ff124cd41c24c8ae1d9e7aca231",
+        "status": "Corrections QA adoptées ; V131 échoue faute du helper dans le checkout, puis source remplacée.",
+        "v131RunId": 41886345401,
+        "v131JobId": 126771719639,
+        "proof": "qa/integration-9da27c2a/source-and-corrections.json"
+      },
+      {
+        "publishedSourceCommit": "9da27c2a8de483a73b81fc8cf0599be6a2e8c1f4",
+        "localSourceCommit": "e98df7f959375e1850cdd07b1b51bdc013d50217",
+        "localSourceTree": "22bb7ab0dd3b944715ddf00b8f6d4754631bab24",
+        "status": "Wolf et Clan qualifiés ; /dev interrompu, qualification complète non acquise",
+        "ci": {
+          "sourceCommit": "9da27c2a8de483a73b81fc8cf0599be6a2e8c1f4",
+          "workflowCount": 16,
+          "status": "Wolf et Clan réussis ; /dev en échec, autres preuves terminales non ajoutées",
+          "runs": {
+            "wolf": {
+              "runId": 41886852346,
+              "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41886852346",
+              "status": "Réussi",
+              "provenance": "Rapport source 9da archivé dans qa/integration-9da27c2a/."
+            },
+            "dev": {
+              "runId": 41886852485,
+              "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41886852485",
+              "status": "Échec",
+              "provenance": "Rapport source 9da archivé dans qa/integration-9da27c2a/."
+            },
+            "clan": {
+              "runId": 41886852455,
+              "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41886852455",
+              "status": "Réussi",
+              "provenance": "Rapport source 9da archivé dans qa/integration-9da27c2a/."
+            },
+            "v94": {
+              "runId": 41886852457,
+              "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41886852457",
+              "status": "Résultat final attendu",
+              "provenance": "Identifiant du reçu ; preuve terminale encore attendue."
+            },
+            "v131": {
+              "runId": 41886852405,
+              "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41886852405",
+              "status": "Réussi",
+              "provenance": "Succès du run communiqué par le responsable après le reçu initial."
+            },
+            "v136": {
+              "runId": 41886852297,
+              "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41886852297",
+              "status": "Résultat final attendu",
+              "provenance": "Identifiant du reçu ; preuve terminale encore attendue."
+            }
+          },
+          "expectedWolfChecks": 32,
+          "expectedWolfScreenshots": 27,
+          "scope": "V131 est déclaré réussi selon le relevé des runs fourni par le responsable. Aucun succès global Wolf, /dev, Clan, V94 strict ou de la CI complète n’est déduit."
+        },
+        "evidence": "workbook-evidence.json.integrationObservations",
+        "nextSource": "3fc1a5bf3b2aff1eda05cc721b46e58194dc13d3"
+      },
+      {
+        "publishedSourceCommit": "3fc1a5bf3b2aff1eda05cc721b46e58194dc13d3",
+        "localSourceCommit": "356f630279db72c4013c301e25e9242d5ac4fe7c",
+        "localSourceTree": "46bfaf1a79c4324f8d7a81c877baeb7d49c9e241",
+        "status": "Recettes /dev et Wolf interrompues ; V94 annulé avant strict",
+        "evidence": "workbook-evidence.json.integrationObservations",
+        "reportFiles": [
+          "qa/integration-3fc1a5bf/wolf/report.json",
+          "qa/integration-3fc1a5bf/dev/report.json"
+        ],
+        "nextSource": "c77c4ea37e3b1b0969a33917971f38496d4ee66a"
+      }
+    ],
+    "qualificationLabel": "CI réussie ; intégré à main",
+    "sourceAndCorrectionsProof": {
+      "path": "qa/integration-9da27c2a/source-and-corrections.json",
+      "sha256": "b94b2b631b40ee8894c02f59a503e094d965015fdc748553a686c9ae1e6e871a",
+      "sourceCommit": "9da27c2a8de483a73b81fc8cf0599be6a2e8c1f4",
+      "scope": "Reçu initial d’adoption QA sur 9da ; les corrections suivantes sont consignées séparément."
+    },
+    "localV142AfterAdoption": {
+      "kind": "Tests locaux ciblés après adoption QA",
+      "sourceCommit": "7575782a75451ff124cd41c24c8ae1d9e7aca231",
+      "publishedEquivalent": "fcd77668390babfbb1799ba9ccd2a720f8dfdf8c",
+      "workingTreePatch": "Only workflow checkout/trigger lines, no test or application changes",
+      "command": "node --import tsx --test --test-reporter=spec tests/gauntlet-mission-resume-v142.test.mjs",
+      "exitCode": 0,
+      "tests": 7,
+      "passed": 7,
+      "failed": 0,
+      "skipped": 0,
+      "durationMs": 5270.366521,
+      "proof": "qa/integration-9da27c2a/source-and-corrections.json",
+      "scope": "Passage local distinct des 7 cas de reproduction/correction sur la base a5 ; aucune addition de comptes entre ces exécutions ni qualification navigateur."
+    },
+    "currentCi": {
+      "sourceCommit": "c77c4ea37e3b1b0969a33917971f38496d4ee66a",
+      "status": "Réussi : 16 workflows sur 16",
+      "runs": {
+        "wolf": {
+          "runId": 41890840615,
+          "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41890840615",
+          "status": "Réussi",
+          "provenance": "Rapport terminal et extraits archivés ; résultat propre à cette source.",
+          "proof": "qa/integration-c77c4ea3/wolf/report.json"
+        },
+        "dev": {
+          "runId": 41890840578,
+          "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41890840578",
+          "status": "Réussi",
+          "provenance": "Rapport terminal et extraits archivés ; résultat propre à cette source.",
+          "proof": "qa/integration-c77c4ea3/dev/report.json"
+        },
+        "clan": {
+          "runId": 41890840746,
+          "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41890840746",
+          "status": "Réussi",
+          "provenance": "Rapport terminal et extraits archivés ; résultat propre à cette source.",
+          "proof": "qa/integration-c77c4ea3/clan/report.json"
+        },
+        "v94": {
+          "runId": 41890840607,
+          "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41890840607",
+          "status": "Réussi",
+          "provenance": "Rapport terminal et extraits archivés ; résultat propre à cette source.",
+          "proof": "qa/integration-c77c4ea3/v94-terminal-receipt.json"
+        }
+      },
+      "expectedWolfChecks": 32,
+      "expectedWolfScreenshots": 27,
+      "scope": "Qualifications Wolf, Clan, /dev et V94 propres à c77 ; reçu terminal des 16 workflows archivé. Fusion #106 au même arbre.",
+      "workflowCount": 16,
+      "workflowsPassed": 16
+    },
+    "expectedEvidenceDirectory": "qa/integration-c77c4ea3",
+    "previousXlsxSnapshotSha256": "7b1c7686b69c57963f4ec4b2ad71e8f4934ed0f802667b5e64d8c8d9b5c5735e",
+    "finalQualification": "workbook-evidence.json.currentQualification",
+    "sourceFiles": [
+      {
+        "path": "qa/integration-c77c4ea3/source.json",
+        "sha256": "046ed15177f9ac12f90170ba4de604d425f68078553f2a7c56e80836a2f9890e",
+        "bytes": 1121
+      },
+      {
+        "path": "qa/integration-c77c4ea3/synthetic-merge-identity.json",
+        "sha256": "3eceb9b72dfef38323966498d4ad20442b92df47a49c8a5b889f663f0ddcb778",
+        "bytes": 1134
+      },
+      {
+        "path": "qa/integration-c77c4ea3/final-integration-result.json",
+        "sha256": "0982b5669e7eb0f5e0ea2110a4683b5e88f25554572bcbb3981b9b15ca91800f",
+        "bytes": 4990
+      }
+    ],
+    "completedWorkbookSha256": "0eec2649633d36be6ed5753f1b3c6336e1772c250e51d04584e91f4b940324f9"
+  },
+  "integrationObservations": [
+    {
+      "sourceCommit": "9da27c2a8de483a73b81fc8cf0599be6a2e8c1f4",
+      "localEquivalent": "e98df7f959375e1850cdd07b1b51bdc013d50217",
+      "sourceTree": "22bb7ab0dd3b944715ddf00b8f6d4754631bab24",
+      "status": "Wolf et Clan qualifiés ; /dev interrompu, qualification complète non acquise",
+      "wolf": {
+        "status": "Réussi",
+        "runId": 41886852346,
+        "runUrl": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41886852346",
+        "sourceCommit": "9da27c2a8de483a73b81fc8cf0599be6a2e8c1f4",
+        "checkoutCommit": "9da27c2a8de483a73b81fc8cf0599be6a2e8c1f4",
+        "workingTreeDirty": false,
+        "tests": 278,
+        "testsPassed": 278,
+        "testsFailed": 0,
+        "testsSkipped": 0,
+        "browserPassed": 32,
+        "browserTotal": 32,
+        "screenshots": 27,
+        "requestedVisualAssets": 185,
+        "errors": 0,
+        "missingRequestedAssets": 0,
+        "artifactId": 13352572686,
+        "artifactZipSha256": "4cef3f501f68b4de3269f8ff96097e289fe1e8671fb26f9991e88b1f8cc3db90",
+        "artifactZipBytes": 16171872,
+        "files": [
+          {
+            "path": "qa/integration-9da27c2a/wolf/report.json",
+            "sha256": "037d9fbe85ba64dcaf4f5312549dd2f6ce3602ee5c007ae8d676abdf950abc2c",
+            "bytes": 20438
+          },
+          {
+            "path": "qa/integration-9da27c2a/wolf/job-result-excerpts.log",
+            "sha256": "8eb2f5453ed7204b31cbed02c78bab797da8a2bfee1b87f7fd4469ba07abf7e5",
+            "bytes": 4588
+          },
+          {
+            "path": "qa/integration-9da27c2a/wolf/observed-assets.json",
+            "sha256": "87b0ae05aed78b807b29fd81d14250040369fb72ddd2701db37466e64c7ab202",
+            "bytes": 13326
+          }
+        ],
+        "captures": [
+          {
+            "path": "qa/integration-9da27c2a/wolf/01-castle-orbit-desktop.png",
+            "sha256": "3a39cae5c29283116f4e93dae758fd424a8adb1d5a535f1ca88cbe3d48422596",
+            "bytes": 667541,
+            "width": 1440,
+            "height": 1000
+          },
+          {
+            "path": "qa/integration-9da27c2a/wolf/02-castle-archives-desktop.png",
+            "sha256": "ff61563b3802fc96d3394cc2cc1d237fb03cf9e6bba34b3bc00b6b4d941f85e3",
+            "bytes": 1019126,
+            "width": 1425,
+            "height": 1071
+          },
+          {
+            "path": "qa/integration-9da27c2a/wolf/03-castle-audience-desktop.png",
+            "sha256": "34592994f1d326bec00eb2460728b9b70c3700245688c2097dab9c3f36651345",
+            "bytes": 1124023,
+            "width": 1425,
+            "height": 1071
+          },
+          {
+            "path": "qa/integration-9da27c2a/wolf/04-castle-court-desktop.png",
+            "sha256": "0fe807627804dd8445b590d09a91db51274e466743e57ad8b53b36995f14aab7",
+            "bytes": 928535,
+            "width": 1425,
+            "height": 1071
+          },
+          {
+            "path": "qa/integration-9da27c2a/wolf/16-castle-combat-paused-desktop.png",
+            "sha256": "745316ed1a9319b891927086dcfc59ab793938cc27f81b8e61d569758cfd3838",
+            "bytes": 550057,
+            "width": 1425,
+            "height": 1113
+          },
+          {
+            "path": "qa/integration-9da27c2a/wolf/17-castle-combat-defeat.png",
+            "sha256": "3bb12c8d4aee01f516b16a481aa76e762a10f6b084f5a07b4969acfb66b4d7ab",
+            "bytes": 551645,
+            "width": 1425,
+            "height": 1113
+          },
+          {
+            "path": "qa/integration-9da27c2a/wolf/18-castle-combat-mobile-320.png",
+            "sha256": "d0786d14a6b06b4e33a14a398f1ceaf2efbd8357ad2aea9cdaba2d9b9e4b68ef",
+            "bytes": 145044,
+            "width": 320,
+            "height": 1077
+          },
+          {
+            "path": "qa/integration-9da27c2a/wolf/19-castle-combat-victory.png",
+            "sha256": "b89a05b9facce6dfd53d18280485faa6fc5906de3361fd9f49fd2b613c4bf4c7",
+            "bytes": 552370,
+            "width": 1425,
+            "height": 1113
+          },
+          {
+            "path": "qa/integration-9da27c2a/wolf/05-castle-court-mobile-320.png",
+            "sha256": "71c2e0ab724606725814a65aecc38bea875c6415edbe942c395e5cdbde3aee8e",
+            "bytes": 237828,
+            "width": 320,
+            "height": 1208
+          },
+          {
+            "path": "qa/integration-9da27c2a/wolf/22-mandate-accepted-journal.png",
+            "sha256": "811cc9627fe09ad43bb9c23f414482953408a4e00ad9e776615e2451633f8a9e",
+            "bytes": 611571,
+            "width": 1425,
+            "height": 1071
+          },
+          {
+            "path": "qa/integration-9da27c2a/wolf/23-mandate-partial-resume.png",
+            "sha256": "a422951ff040d4ffa3638fa70df631c49ba0ed7a27a61fcde6aabd506296049d",
+            "bytes": 586043,
+            "width": 1425,
+            "height": 1071
+          },
+          {
+            "path": "qa/integration-9da27c2a/wolf/24-mandate-boss-paused-resume.png",
+            "sha256": "28cc93fea6628dcef2e65c391ce66aeb3c10e4b1a665cedab3dac758ce01dee5",
+            "bytes": 553944,
+            "width": 1425,
+            "height": 1113
+          },
+          {
+            "path": "qa/integration-9da27c2a/wolf/25-mandate-boss-victory.png",
+            "sha256": "61fad35b35181ef0a92eb496444253125efa5d461e8bddaf11c9c376a3f75902",
+            "bytes": 554168,
+            "width": 1425,
+            "height": 1113
+          },
+          {
+            "path": "qa/integration-9da27c2a/wolf/26-mandate-reward-refused.png",
+            "sha256": "c6098eab2c4f055b8d87a13031f6562e9b0f8c203120c7e6bd76c6b46e7e8824",
+            "bytes": 627711,
+            "width": 1425,
+            "height": 1071
+          },
+          {
+            "path": "qa/integration-9da27c2a/wolf/27-mandate-completed-resume.png",
+            "sha256": "260a66c444ba99852132e564689e50a795aa5926e8acd4f03b55ea5cdc5e1639",
+            "bytes": 634359,
+            "width": 1425,
+            "height": 1071
+          },
+          {
+            "path": "qa/integration-9da27c2a/wolf/06-arrival-pause-mobile-320.png",
+            "sha256": "8f7740d32dc31e4c0939063e489de701639d38ca66cbd6b7908e1a6d1e7d3447",
+            "bytes": 63085,
+            "width": 320,
+            "height": 844
+          },
+          {
+            "path": "qa/integration-9da27c2a/wolf/07-arrival-handoff-recovery.png",
+            "sha256": "aae06cae9cc90f0854fd606dd4bb0b4623cb85f3f9299d932622db305d1d177a",
+            "bytes": 174832,
+            "width": 1425,
+            "height": 1006
+          },
+          {
+            "path": "qa/integration-9da27c2a/wolf/08-hunt-after-skip.png",
+            "sha256": "f83a329ac22384c417bc103d7e16a5725a2056daeed0174f18024bb2525aab57",
+            "bytes": 644241,
+            "width": 1425,
+            "height": 1384
+          },
+          {
+            "path": "qa/integration-9da27c2a/wolf/20-arrival-orbit.png",
+            "sha256": "6ee3e26f98de3a6a18fb292f8845366cb242a02af5969d82b2c5b3fd651c33b2",
+            "bytes": 332337,
+            "width": 1425,
+            "height": 1006
+          },
+          {
+            "path": "qa/integration-9da27c2a/wolf/09-arrival-destination-title.png",
+            "sha256": "a2464c99b756cf32fe82a67b76b59c8fc6eb36cd053c8b908feee4a43618e297",
+            "bytes": 360365,
+            "width": 1425,
+            "height": 1006
+          },
+          {
+            "path": "qa/integration-9da27c2a/wolf/10-arrival-carrier.png",
+            "sha256": "5aa3addd5cefe880a67b4bbc08c4acf7b62c3e395ec87f22c91a27a95cdaaf2f",
+            "bytes": 576185,
+            "width": 1425,
+            "height": 1006
+          },
+          {
+            "path": "qa/integration-9da27c2a/wolf/11-arrival-pod-release.png",
+            "sha256": "af98eb9f9fe4ffe408e0e69d2ae04c0c880782dc6cf3cfcd28e9a69b69ced69e",
+            "bytes": 599662,
+            "width": 1425,
+            "height": 1006
+          },
+          {
+            "path": "qa/integration-9da27c2a/wolf/21-arrival-descent.png",
+            "sha256": "6359f621c65eea19241629a1a432b13b50dbb65c10b2eb04e8ddefd4d6fedee2",
+            "bytes": 581547,
+            "width": 1425,
+            "height": 1006
+          },
+          {
+            "path": "qa/integration-9da27c2a/wolf/12-arrival-atmosphere.png",
+            "sha256": "aec60ea256216dd5f284856b8ffabeebd75d1e3ab8a4e68a9473d21e8124b193",
+            "bytes": 681018,
+            "width": 1425,
+            "height": 1006
+          },
+          {
+            "path": "qa/integration-9da27c2a/wolf/13-arrival-ground-impact.png",
+            "sha256": "082606b24b13203fec90614b3db3eda6d58427853fe30c1a7a8f054996a7826b",
+            "bytes": 1128560,
+            "width": 1425,
+            "height": 1006
+          },
+          {
+            "path": "qa/integration-9da27c2a/wolf/14-arrival-hunter-egress.png",
+            "sha256": "913d6620828f554520fd992388edfc8b436cb33175291d9b025476d9f318705c",
+            "bytes": 1116455,
+            "width": 1425,
+            "height": 1006
+          },
+          {
+            "path": "qa/integration-9da27c2a/wolf/15-hunt-after-natural-arrival.png",
+            "sha256": "96be9880b881254c305f98a54303a95ef04229babfdbb188668e3d1a5fc92861",
+            "bytes": 645005,
+            "width": 1425,
+            "height": 1384
+          }
+        ],
+        "captureReviewStatus": "Cinq captures relues par le responsable sur les 27 archivées ; revue artistique humaine ouverte",
+        "scope": "Rapport et 27 PNG vérifiés contre le ZIP reçu. Les 278 tests sont attestés par les extraits de job fournis par le responsable. Preuve attribuée à 9da27c2a, sans transfert de qualification CI à 3fc1a5bf.",
+        "visualReview": {
+          "status": "reviewed",
+          "reviewer": "Responsable",
+          "capturesInspected": [
+            "22-mandate-accepted-journal.png",
+            "24-mandate-boss-paused-resume.png",
+            "26-mandate-reward-refused.png",
+            "27-mandate-completed-resume.png",
+            "18-castle-combat-mobile-320.png"
+          ],
+          "capturesInspectedCount": 5,
+          "capturesArchivedCount": 27,
+          "findings": [
+            "Journal du mandat, reprise avec 82 PV et 18 dégâts, refus de récompense, mandat terminé après reprise et modal de combat à 320 px relus.",
+            "Aucune coupure ni incohérence repérée dans ces cinq vues ; les textes restent lisibles."
+          ],
+          "humanApproved": false,
+          "scope": "Revue statique ciblée communiquée par le responsable ; aucune revue globale des 27 images ni approbation artistique humaine n’est déduite."
+        }
+      },
+      "clan": {
+        "status": "Réussi",
+        "runId": 41886852455,
+        "jobId": 126773886257,
+        "runUrl": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41886852455",
+        "sourceCommit": "9da27c2a8de483a73b81fc8cf0599be6a2e8c1f4",
+        "checkoutCommit": "9da27c2a8de483a73b81fc8cf0599be6a2e8c1f4",
+        "workingTreeDirty": false,
+        "tests": 217,
+        "testsPassed": 217,
+        "testsFailed": 0,
+        "testsSkipped": 0,
+        "browserPassed": 22,
+        "browserTotal": 22,
+        "screenshotsReported": 11,
+        "screenshotsCopied": 0,
+        "errors": 0,
+        "missingRequestedAssets": 0,
+        "artifactId": 13352876057,
+        "artifactZipSha256": "eedaa91ddcc414909a6cb31409f1b89d6d447ca0a4322c49b13b63d0a658537b",
+        "syntheticMerge": "463a3c1550dd6aff368e6384caba6b327ebea5ca",
+        "mergeCompareChangedFiles": 0,
+        "files": [
+          {
+            "path": "qa/integration-9da27c2a/clan/report.json",
+            "sha256": "ecbc3ada06e8b063369a72c7f31493349b0ebf515fb06f73915f2b19999da697",
+            "bytes": 9214
+          },
+          {
+            "path": "qa/integration-9da27c2a/clan/clan-result.json",
+            "sha256": "ebe96144f3f8aeb96c8f2560193dd836bad6655d00e49fd2460e14d4a236a368",
+            "bytes": 3855
+          }
+        ],
+        "visualReview": {
+          "reviewer": "Responsable ; observation conservée dans le reçu",
+          "captures": [
+            "05-hangar-mobile-controls-320.png",
+            "03-archives-resumed.png"
+          ],
+          "finding": "Hunter and interactive controls readable in the sampled320px and desktop views; no new clipping found. Vertical continuation remains available. No human artistic approval assigned.",
+          "humanApproved": false
+        },
+        "scope": "Rapport vérifié contre le ZIP reçu ; reçu du responsable copié à l’identique. Les 11 PNG ne sont pas dupliqués dans ce dossier."
+      },
+      "dev": {
+        "status": "Échec",
+        "runId": 41886852485,
+        "runUrl": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41886852485",
+        "sourceCommit": "9da27c2a8de483a73b81fc8cf0599be6a2e8c1f4",
+        "workingTreeDirty": false,
+        "browserPassed": 7,
+        "browserExecuted": 8,
+        "browserFailed": 1,
+        "failureCheck": "A regional destination opens its live village, and F8 returns to the catalogue even from its modal",
+        "failure": "locator.waitFor: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator('[data-region-player]') to be visible\n    58 × locator resolved to hidden <span data-x=\"520\" data-y=\"2800\" data-region-player=\"true\" data-youth-appearance=\"false\" class=\"HomeworldRegionV68_actor__iqj9Q\">…</span>\n\n    at /home/runner/work/yautja-la-longue-chasse/yautja-la-longue-chasse/scripts/qa-dev-travel-browser.mjs:395:48\n    at async check (/home/runner/work/yautja-la-longue-chasse/yautja-la-longue-chasse/scripts/qa-dev-travel-browser.mjs:183:5)\n    at async file:///home/runner/work/yautja-la-longue-chasse/yautja-la-longue-chasse/scripts/qa-dev-travel-browser.mjs:389:3",
+        "errors": 0,
+        "consoleErrors": 0,
+        "missingRequestedAssets": 0,
+        "artifactId": 13352880787,
+        "artifactZipSha256": "bc36cfd3a9f58f7939002f90ed3b155d035d462aa270a60ff9cf3f90c258660a",
+        "file": {
+          "path": "qa/integration-9da27c2a/dev/report.json",
+          "sha256": "185f5e05063cab46e13790aba8439c96034a50d42a3cfe3c18c03a35e9d2992a",
+          "bytes": 10826
+        },
+        "capturesReported": 5,
+        "capturesCopied": 0,
+        "sourceHashesVerified": true,
+        "correctionSource": "3fc1a5bf3b2aff1eda05cc721b46e58194dc13d3",
+        "scope": "Rapport d’échec vérifié contre le ZIP et ses empreintes de sources vérifiées sur e98df7f9. Le test attendait la visibilité d’une ancre 0 × 0 ; 3fc1a5bf attend le sprite visible et son décodage. La nouvelle recette reste en cours."
+      },
+      "v131": {
+        "runId": 41886852405,
+        "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41886852405",
+        "status": "Réussi",
+        "provenance": "Succès du run communiqué par le responsable après le reçu initial."
+      },
+      "otherTerminalProofs": "Les autres preuves terminales de cette source ne sont pas ajoutées sans réception.",
+      "scope": "Exécutions 9da conservées séparément de a5 et de la nouvelle CI 3fc. Les comptes des tests et des recettes ne sont pas additionnés entre sources."
+    },
+    {
+      "sourceCommit": "3fc1a5bf3b2aff1eda05cc721b46e58194dc13d3",
+      "localEquivalent": "356f630279db72c4013c301e25e9242d5ac4fe7c",
+      "sourceTree": "46bfaf1a79c4324f8d7a81c877baeb7d49c9e241",
+      "status": "Recettes /dev et Wolf interrompues ; V94 annulé avant strict",
+      "wolf": {
+        "status": "Échec",
+        "sourceCommit": "3fc1a5bf3b2aff1eda05cc721b46e58194dc13d3",
+        "checkoutCommit": "3fc1a5bf3b2aff1eda05cc721b46e58194dc13d3",
+        "workingTreeDirty": false,
+        "browserPassed": 23,
+        "browserExecuted": 24,
+        "browserPlanned": 32,
+        "browserFailed": 1,
+        "failureCheck": "Arrival pause freezes active time and reduced-motion keeps the same mission",
+        "failure": "locator.waitFor: Timeout 20000ms exceeded.\nCall log:\n  - waiting for locator('[data-arrival-status=\"paused\"]') to be visible\n\n    at /home/runner/work/yautja-la-longue-chasse/yautja-la-longue-chasse/scripts/qa-wolf-arrival-browser.mjs:637:58\n    at async check (/home/runner/work/yautja-la-longue-chasse/yautja-la-longue-chasse/scripts/qa-wolf-arrival-browser.mjs:47:11)\n    at async file:///home/runner/work/yautja-la-longue-chasse/yautja-la-longue-chasse/scripts/qa-wolf-arrival-browser.mjs:635:3",
+        "errors": 0,
+        "missingRequestedAssets": 0,
+        "mandateAndRewardChecksPassed": 8,
+        "mandateAndRewardChecksTotal": 8,
+        "mandateAndRewardChecks": [
+          "The accepted audience grants a new mandate whose objectives require fresh station interactions",
+          "A partially explored mandate survives Save, menu, reload and Continue with the same training dossier",
+          "The gallery and council complete the three objectives and unlock the separate sentinel encounter",
+          "The paused mandate reloads the same sentinel, damaged health, position and elapsed time before explicit resume",
+          "Real movement, parries, dodges and attacks beat all sentinel phases without healing or an early reward",
+          "The return guide reaches the audience and a refused reward write keeps the victory and balance unclaimed",
+          "Retrying the same audience action commits exactly two marks together with the campaign receipt",
+          "The completed mandate keeps one receipt and one reward after reload, another audience consultation and departure"
+        ],
+        "file": {
+          "path": "qa/integration-3fc1a5bf/wolf/report.json",
+          "sha256": "2dd150ee93475327d78f278568308d168dd9222837b2bd4f3152c490ed298c67",
+          "bytes": 21883,
+          "sourceArtifactZipSha256": "e2a6dd65087e1c0bdfd1ab5b544b10d5e118749b7e5d11209a41bb30622be9cc"
+        },
+        "screenshotsReported": 15,
+        "screenshotsCopied": 0,
+        "diagnosis": "Selon le responsable et le correctif adopté, Escape partait après Resume avant le transfert natif de focus vers Pause.",
+        "scope": "Les huit contrôles du mandat et de la récompense réussissent. Le parcours complet de 32 contrôles échoue ensuite sur la pause d’arrivée ; aucun succès complet n’est déduit des 23 réussites."
+      },
+      "dev": {
+        "status": "Échec",
+        "sourceCommit": "3fc1a5bf3b2aff1eda05cc721b46e58194dc13d3",
+        "workingTreeDirty": false,
+        "browserPassed": 8,
+        "browserExecuted": 9,
+        "browserFailed": 1,
+        "failureCheck": "A real mission keeps its position and clock after walking into a newly discovered room",
+        "failure": "AssertionError [ERR_ASSERTION]: The hunter did not walk at least 300 world pixels through real input.\n    at file:///home/runner/work/yautja-la-longue-chasse/yautja-la-longue-chasse/scripts/qa-dev-travel-browser.mjs:461:12\n    at async check (file:///home/runner/work/yautja-la-longue-chasse/yautja-la-longue-chasse/scripts/qa-dev-travel-browser.mjs:183:5)\n    at async file:///home/runner/work/yautja-la-longue-chasse/yautja-la-longue-chasse/scripts/qa-dev-travel-browser.mjs:407:3",
+        "errors": 0,
+        "consoleErrors": 0,
+        "missingRequestedAssets": 0,
+        "file": {
+          "path": "qa/integration-3fc1a5bf/dev/report.json",
+          "sha256": "566570af3c41e53beacd0521f58bf8c92593f2e53d7e9ebe388079396d9201a4",
+          "bytes": 12719,
+          "sourceArtifactZipSha256": "376ed9d6b19db3e996eb0ba69386065c4b2b49e538c91af8a69ae9edf5516e85"
+        },
+        "capturesReported": 6,
+        "capturesCopied": 0,
+        "sourceHashesVerified": true,
+        "diagnosis": "Selon le responsable, le trajet clavier borné à dix impulsions restait trop court sur ce runner, sans reset ni erreur observés.",
+        "scope": "Échec sur la distance minimale de 300 pixels du monde. Le correctif allonge la borne à quarante impulsions, conserve la sortie sur découverte native et laisse les assertions existantes intactes."
+      },
+      "v94": {
+        "status": "Annulé avant le contrôle strict",
+        "sourceCommit": "3fc1a5bf3b2aff1eda05cc721b46e58194dc13d3",
+        "strictInventoryQualified": false,
+        "provenance": "Annulation communiquée par le responsable ; aucune réussite du strict n’est ajoutée."
+      },
+      "nextSource": "c77c4ea37e3b1b0969a33917971f38496d4ee66a",
+      "scope": "Deux rapports conservés à l’identique, sans nouvelles copies de captures. Les succès Wolf et Clan de 9da restent des preuves distinctes et inchangées."
+    },
+    {
+      "sourceCommit": "c77c4ea37e3b1b0969a33917971f38496d4ee66a",
+      "localEquivalent": "c80fddb03ffa3b5e6c134fbb8754f0c2d169a366",
+      "sourceTree": "a946e3d8123aaed37b417664a3de1de970232548",
+      "status": "Qualification complète réussie ; PR #106 fusionnée",
+      "dev": {
+        "status": "Réussi",
+        "runId": 41890840578,
+        "runUrl": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41890840578",
+        "sourceCommit": "c77c4ea37e3b1b0969a33917971f38496d4ee66a",
+        "workingTreeDirty": false,
+        "sourceHashesVerified": true,
+        "tests": 61,
+        "testsPassed": 61,
+        "testsFailed": 0,
+        "testsSkipped": 0,
+        "browserPassed": 15,
+        "browserTotal": 15,
+        "browserFailed": 0,
+        "errors": 0,
+        "consoleErrors": 0,
+        "missingRequestedAssets": 0,
+        "storageWrites": 0,
+        "indexedDbOpens": 0,
+        "capturesReported": 8,
+        "capturesCopied": 0,
+        "artifactId": 13354667101,
+        "artifactZipSha256": "06610c0adb71c719e559f2a2d3f226dc7b6b1cf1beeeb4cfa1d9b850fd940b96",
+        "artifactZipBytes": 6688622,
+        "files": [
+          {
+            "path": "qa/integration-c77c4ea3/dev/report.json",
+            "sha256": "eabd91fb4096ec7a0b5287971839953b8e92c9c41e1396ab1b28a2aa4e1d1a99",
+            "bytes": 16738
+          },
+          {
+            "path": "qa/integration-c77c4ea3/dev/job-result-excerpts.log",
+            "sha256": "1a6b145639fdc1e137f592f73d2be8e4552d1d4fed67ada6e22818a18bb9ab1e",
+            "bytes": 2623
+          }
+        ],
+        "huntContinuity": {
+          "initial": {
+            "x": 225,
+            "elapsed": 1.5499999999999994,
+            "generation": 0,
+            "rooms": [
+              "jungle-pilot-approach"
+            ]
+          },
+          "discovery": {
+            "x": 799.8451540440631,
+            "elapsed": 16.800000000000328,
+            "generation": 0,
+            "rooms": [
+              "jungle-pilot-approach",
+              "jungle-pilot-underpass"
+            ]
+          },
+          "afterDiscovery": {
+            "x": 799.8457156172817,
+            "elapsed": 17.600000000000282,
+            "generation": 0,
+            "rooms": [
+              "jungle-pilot-approach",
+              "jungle-pilot-underpass"
+            ]
+          },
+          "afterExplicitReset": {
+            "x": 225,
+            "elapsed": 0,
+            "generation": 0,
+            "rooms": []
+          },
+          "inputPulsesUsed": 16,
+          "inputPulsesAllowed": 40,
+          "generationThroughout": 0,
+          "scope": "La position et l’horloge continuent après découverte de jungle-pilot-underpass sans reset implicite. Seule la commande explicite de reset ramène x à 225 et l’horloge à zéro."
+        },
+        "scope": "Résultat du workflow /dev sur c77c4ea3. Le rapport est identique à celui du ZIP et ses sources ont été vérifiées sur c80fddb0. Les 61 tests viennent des extraits de job ; les 15 parcours, l’absence d’erreur et l’isolation du stockage viennent du rapport. Aucun total interversion ni succès Wolf/V94 n’en est déduit."
+      },
+      "scope": "Résultats propres à c77 ; les observations 9da et 3fc restent inchangées. Les 27 PNG conservés sous 9da ne sont pas réattribués à c77.",
+      "wolf": {
+        "status": "Réussi",
+        "runId": 41890840615,
+        "jobId": 126788337343,
+        "runUrl": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41890840615",
+        "sourceCommit": "c77c4ea37e3b1b0969a33917971f38496d4ee66a",
+        "checkoutCommit": "c77c4ea37e3b1b0969a33917971f38496d4ee66a",
+        "workingTreeDirty": false,
+        "tests": 278,
+        "testsPassed": 278,
+        "testsFailed": 0,
+        "testsSkipped": 0,
+        "browserPassed": 32,
+        "browserTotal": 32,
+        "browserFailed": 0,
+        "errors": 0,
+        "missingRequestedAssets": 0,
+        "capturesReported": 27,
+        "capturesCopied": 0,
+        "artifactId": 13354368053,
+        "artifactZipSha256": "0078e4fc4c2108278057593b9f820854459608e52b8211a398275559dbff4d42",
+        "artifactZipBytes": 16199990,
+        "reportVerifiedAgainstArtifact": true,
+        "files": [
+          {
+            "path": "qa/integration-c77c4ea3/wolf/report.json",
+            "sha256": "c3db54a7147f087d35c6df074d70d6ff6d9ba6c7fc77b70bd0289997b6574df1",
+            "bytes": 20667
+          },
+          {
+            "path": "qa/integration-c77c4ea3/wolf/job-result-excerpts.log",
+            "sha256": "b16eceb38e92a6c946857313c76e2af98aa0d48551367acf6052464134ad3780",
+            "bytes": 4588
+          }
+        ],
+        "scope": "Tests et recette CI sur c77. Le nom du ZIP contient le merge synthétique c915 ; le rapport atteste le checkout réel c77. Aucun compte ajouté à une autre suite ou version.",
+        "requestedVisualAssets": 185,
+        "mandateChecksIncluded": [
+          "The accepted audience grants a new mandate whose objectives require fresh station interactions",
+          "A partially explored mandate survives Save, menu, reload and Continue with the same training dossier",
+          "The gallery and council complete the three objectives and unlock the separate sentinel encounter",
+          "The paused mandate reloads the same sentinel, damaged health, position and elapsed time before explicit resume",
+          "Real movement, parries, dodges and attacks beat all sentinel phases without healing or an early reward",
+          "The return guide reaches the audience and a refused reward write keeps the victory and balance unclaimed",
+          "Retrying the same audience action commits exactly two marks together with the campaign receipt",
+          "The completed mandate keeps one receipt and one reward after reload, another audience consultation and departure"
+        ],
+        "technicalVisualReview": {
+          "reviewer": "Responsable du chantier",
+          "captures": [
+            "06",
+            "26",
+            "27"
+          ],
+          "sourceCommit": "c77c4ea37e3b1b0969a33917971f38496d4ee66a",
+          "scope": "Pause à 320 px, refus de récompense, mandat terminé et reprise. Textes et commandes lisibles, états cohérents dans ces trois vues uniquement.",
+          "humanArtisticApproval": false
+        }
+      },
+      "clan": {
+        "status": "Réussi",
+        "runId": 41890840746,
+        "jobId": 126787495021,
+        "runUrl": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41890840746",
+        "sourceCommit": "c77c4ea37e3b1b0969a33917971f38496d4ee66a",
+        "checkoutCommit": "c77c4ea37e3b1b0969a33917971f38496d4ee66a",
+        "workingTreeDirty": false,
+        "tests": 217,
+        "testsPassed": 217,
+        "testsFailed": 0,
+        "testsSkipped": 0,
+        "browserPassed": 22,
+        "browserTotal": 22,
+        "browserFailed": 0,
+        "errors": 0,
+        "missingRequestedAssets": 0,
+        "capturesReported": 11,
+        "capturesCopied": 0,
+        "artifactId": 13352944423,
+        "artifactZipSha256": "4749b046ab0106337d58cdb344f80817ff0d1cfb301a91cebf62e1f598de5c1c",
+        "artifactZipBytes": 11922081,
+        "reportVerifiedAgainstArtifact": true,
+        "files": [
+          {
+            "path": "qa/integration-c77c4ea3/clan/report.json",
+            "sha256": "66fbd0e7a35c7770655a2ec19115c838a5e1fde993444aebcb6eebbb88937f31",
+            "bytes": 9211
+          },
+          {
+            "path": "qa/integration-c77c4ea3/clan/job-result-excerpts.log",
+            "sha256": "48cb8fece6136319e0ad85814706cae2e68c1f9217cc362898c2a06e14656454",
+            "bytes": 3243
+          },
+          {
+            "path": "qa/integration-c77c4ea3/clan/artifact-metadata.json",
+            "sha256": "ba492b7a94e7ee5189767f44d60a7f5bad190735872ea3342d0ef940856ec1d8",
+            "bytes": 830
+          },
+          {
+            "path": "qa/integration-c77c4ea3/clan/artifact-members.json",
+            "sha256": "7350f8e1bd82e5f0e4164c5767022228d0a44de1d77e86cb910a28bb88d0b089",
+            "bytes": 859
+          }
+        ],
+        "scope": "Tests et recette CI sur c77. Le nom du ZIP contient le merge synthétique c915 ; le rapport atteste le checkout réel c77. Aucun compte ajouté à une autre suite ou version."
+      },
+      "v94": {
+        "status": "Réussi",
+        "runId": 41890840607,
+        "runAttempt": 1,
+        "sourceCommit": "c77c4ea37e3b1b0969a33917971f38496d4ee66a",
+        "checkoutCommit": "c915eb34fae6819526e4e4abe36949244a0b21ab",
+        "checkoutHasIdenticalTrackedFiles": true,
+        "jobsPassed": 5,
+        "jobsTotal": 5,
+        "modelsJobId": 126788294680,
+        "historyJobId": 126788295108,
+        "aggregateJobId": 126802688091,
+        "aggregateProofGroups": [
+          "application",
+          "history",
+          "models"
+        ],
+        "sameRunAttemptCommit": true,
+        "inventory": {
+          "entries": 2151,
+          "sha256": "06d2bd524bbba6708a78cc45b1da6a68c4360568b8002afb55c2f2289aa0b072",
+          "documentBytes": 400041,
+          "sourceCommit": "c77c4ea37e3b1b0969a33917971f38496d4ee66a",
+          "localEquivalent": "c80fddb03ffa3b5e6c134fbb8754f0c2d169a366",
+          "status": "PASS",
+          "sourceUrl": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/c77c4ea37e3b1b0969a33917971f38496d4ee66a/docs/qa/current-integration-20261103/runtime-inputs.json",
+          "scope": "Contrôle strict exécuté dans V94 sur le checkout synthétique c915, identique en fichiers à c77.",
+          "sameDocumentAsPublishedSource": "37128ba9b8ad48a91ff20a3548238bd3a1418fbc",
+          "proof": "qa/integration-c77c4ea3/v94-terminal-receipt.json"
+        },
+        "v113Tests": 75,
+        "v113TestsPassed": 75,
+        "v113TestsFailed": 0,
+        "v113TestsSkipped": 0,
+        "proof": "qa/integration-c77c4ea3/v94-terminal-receipt.json",
+        "files": [
+          {
+            "path": "qa/integration-c77c4ea3/v94-aggregate-excerpt.log",
+            "sha256": "9a7071514586344a7fe99602e3bdbcb948e0c0ad9a63ded090f4481efc418a21",
+            "bytes": 9294
+          },
+          {
+            "path": "qa/integration-c77c4ea3/v94-application-proof.json",
+            "sha256": "d3ff3cd4c38ec6e8fa1b4218b71097d83af7983f61ac11fb6c263e3cc3987c00",
+            "bytes": 152
+          },
+          {
+            "path": "qa/integration-c77c4ea3/v94-application-proof.zip",
+            "sha256": "dd8bb34e0ce14970bf06c278c81555e9ca7bf4daa67c53279c270682d8e4ccc4",
+            "bytes": 260
+          },
+          {
+            "path": "qa/integration-c77c4ea3/v94-history-proof.json",
+            "sha256": "2ef8579096c5f651c7bb0b12b2b42a73038c9f8b88c03977ce48b6496611a59f",
+            "bytes": 148
+          },
+          {
+            "path": "qa/integration-c77c4ea3/v94-history-proof.zip",
+            "sha256": "3ec1abbad775ae673eb176bb9c2518f7f287de22ae5dacbab43958a9e4133d63",
+            "bytes": 259
+          },
+          {
+            "path": "qa/integration-c77c4ea3/v94-models-checkout-excerpt.log",
+            "sha256": "a877f58700a3b7ff95e00821b1bc886478a5334d3ff5949e63fc4441e3f13679",
+            "bytes": 140
+          },
+          {
+            "path": "qa/integration-c77c4ea3/v94-models-proof.json",
+            "sha256": "a68f230c3152dc9646d05079d91134c8d1dd3b9655b5cf92324b3c8f4c0669c9",
+            "bytes": 147
+          },
+          {
+            "path": "qa/integration-c77c4ea3/v94-models-proof.zip",
+            "sha256": "2b52a6bb61cd63c8f627f6aa493e504ca91826c592d692267a3059540b7901aa",
+            "bytes": 257
+          },
+          {
+            "path": "qa/integration-c77c4ea3/v94-strict-excerpt.log",
+            "sha256": "a514bc96bc3e914fd95a131b4f7e95e61f91ff7ddb820d18c6765a3c059c2e46",
+            "bytes": 15233
+          },
+          {
+            "path": "qa/integration-c77c4ea3/v94-terminal-receipt.json",
+            "sha256": "75f6d18f6e9ee477e3454f8e0b1794f019cd613bcfde45b3576189f5ece43b89",
+            "bytes": 9453
+          },
+          {
+            "path": "qa/integration-c77c4ea3/v94-evidence-manifest.json",
+            "sha256": "244f1723f43345507e8c49557664d7f9ad9c74fecb1123c979921f837c26745f",
+            "bytes": 1815
+          }
+        ],
+        "scope": "Trois preuves concordantes du même run, de la même tentative et du checkout c915. Les 75 tests V113 ne sont pas ajoutés aux autres suites."
+      }
+    }
+  ],
+  "trackingBeforeFinalQualification": {
+    "xlsxSha256": "7b1c7686b69c57963f4ec4b2ad71e8f4934ed0f802667b5e64d8c8d9b5c5735e",
+    "verification": "history/workbook-verification-before-c77-7b1c7686.json",
+    "releaseStatus": "Source c77c4ea3 : /dev qualifié ; Wolf et V94 encore en cours",
+    "sourceCommit": "5daa00e1dd4d7db94656c82d71666e76af11ee21",
+    "currentCodeCommit": "5daa00e1dd4d7db94656c82d71666e76af11ee21",
+    "currentPublishedCommit": "a5e41f66f6c3d194afae4f6f446b6c02f213d4c4",
+    "currentPublishedTree": "48354d87cc9e8d2c16f644575ee4258d4a3d6427",
+    "features": {
+      "combat": "Vérifié en navigateur",
+      "saveV2": "Vérifié en navigateur",
+      "arrivalAudio": "Intégré et testé",
+      "castleAudio": "Intégré et testé",
+      "runtimeArt": "Produit et contrôlé",
+      "mandate": "Implémenté, CI en cours",
+      "explorationAudio": "Implémenté, CI en cours"
+    },
+    "checksReplaced": [
+      {
+        "id": "V2-DUNGEON",
+        "subject": "Premier mandat royal",
+        "status": "Implémenté, CI en cours",
+        "count": null,
+        "unit": "",
+        "evidence": "Audience, trois repères, sentinelle en trois phases sans soins entre phases, puis retour à l’audience. Deux marques de clan accordées une seule fois avec un reçu de campagne.",
+        "source": "app/game/systems/wolfCastleDungeon.ts ; app/game/systems/wolfCastleCombat.ts ; source a5e41f66",
+        "limit": "Modèles couverts par le passage local ciblé de 60 tests. La nouvelle recette navigateur reste en cours ; les gardes d’entraînement ne distribuent pas cette récompense.",
+        "sourceCommit": "a5e41f66f6c3d194afae4f6f446b6c02f213d4c4"
+      },
+      {
+        "id": "INT-AUDIO",
+        "subject": "Exploration et mandat sonores",
+        "status": "Implémenté, CI en cours",
+        "count": 10,
+        "unit": "signaux",
+        "evidence": "Deux pas de surface, porte, audience, archives, début des sceaux, activation, remise à zéro, achèvement et remise du mandat. Les actions confirmées et la distance réellement parcourue pilotent les signaux.",
+        "source": "app/game/systems/wolfCastleAudio.ts ; tests/wolf-castle-audio.test.mjs ; Audio!A40:H49",
+        "limit": "Le directeur audio fait partie des 60 tests locaux. L’écoute du mixage et la nouvelle recette navigateur restent distinctes.",
+        "sourceCommit": "a5e41f66f6c3d194afae4f6f446b6c02f213d4c4"
+      },
+      {
+        "id": "INT-CI",
+        "subject": "Qualification de l’intégration",
+        "status": "À corriger",
+        "count": null,
+        "unit": "",
+        "evidence": "Premier passage historique sur a5e41f66 : 12 workflows réussis sur 15. Clan : 217 tests et 22 parcours réussis. V94 : inventaire strict de 2 144 entrées PASS, 75/75 V113 et trois groupes concordants. Wolf : 18 contrôles réussis sur 19 exécutés, sur 32 prévus ; délai au retour conseil → audience.",
+        "source": "qa/integration-a5e41f66/first-clan-run/report.json ; qa/integration-a5e41f66/first-wolf-run/report.json ; qa/integration-a5e41f66/first-v94-run/first-v94-model-evidence.json ; qa/integration-a5e41f66/first-v94-run/aggregate-job.log",
+        "limit": "Qualification complète non acquise sur a5. Les corrections locales 7/7 et /dev 8/8 ont leurs sources distinctes ; aucun compte interversion additionné. Le XLSX reste le dernier instantané relu, avant ces résultats.",
+        "sourceCommit": "a5e41f66f6c3d194afae4f6f446b6c02f213d4c4"
+      }
+    ],
+    "audioStatusesReplaced": [
+      {
+        "id": "wolf:orbit",
+        "type": "Ambiance",
+        "sequence": "Château",
+        "description": "Approche orbitale du château.",
+        "lifecycle": "Boucle unique de la salle active. Arrêt à la pause, perte de focus et sortie. Volume des effets du moteur commun.",
+        "source": "app/game/systems/wolfCastleAudio.ts"
+      },
+      {
+        "id": "wolf:berth",
+        "type": "Ambiance",
+        "sequence": "Château",
+        "description": "Baie royale et sas.",
+        "lifecycle": "Boucle unique de la salle active. Arrêt à la pause, perte de focus et sortie. Volume des effets du moteur commun.",
+        "source": "app/game/systems/wolfCastleAudio.ts"
+      },
+      {
+        "id": "wolf:gallery",
+        "type": "Ambiance",
+        "sequence": "Château",
+        "description": "Vestibule, galerie des trophées et archives.",
+        "lifecycle": "Boucle unique de la salle active. Arrêt à la pause, perte de focus et sortie. Volume des effets du moteur commun.",
+        "source": "app/game/systems/wolfCastleAudio.ts"
+      },
+      {
+        "id": "wolf:audience",
+        "type": "Ambiance",
+        "sequence": "Château",
+        "description": "Salle d’audience et conseil.",
+        "lifecycle": "Boucle unique de la salle active. Arrêt à la pause, perte de focus et sortie. Volume des effets du moteur commun.",
+        "source": "app/game/systems/wolfCastleAudio.ts"
+      },
+      {
+        "id": "wolf:court",
+        "type": "Ambiance",
+        "sequence": "Château",
+        "description": "Cour d’épreuve.",
+        "lifecycle": "Boucle unique de la salle active. Arrêt à la pause, perte de focus et sortie. Volume des effets du moteur commun.",
+        "source": "app/game/systems/wolfCastleAudio.ts"
+      },
+      {
+        "id": "wolf:service",
+        "type": "Ambiance",
+        "sequence": "Château",
+        "description": "Passage latéral de service.",
+        "lifecycle": "Boucle unique de la salle active. Arrêt à la pause, perte de focus et sortie. Volume des effets du moteur commun.",
+        "source": "app/game/systems/wolfCastleAudio.ts"
+      },
+      {
+        "id": "step-stone",
+        "type": "Ponctuel",
+        "sequence": "Château",
+        "description": "Pas d’exploration sur pierre.",
+        "lifecycle": "Distance réellement parcourue après collisions ; aucun pas à l’arrêt. Pause, déplacement discontinu et reprise effacent la distance partielle.",
+        "status": "Implémenté, CI en cours",
+        "source": "app/game/systems/wolfCastleAudio.ts ; tests/wolf-castle-audio.test.mjs",
+        "sourceCommit": "a5e41f66f6c3d194afae4f6f446b6c02f213d4c4"
+      },
+      {
+        "id": "step-metal",
+        "type": "Ponctuel",
+        "sequence": "Château",
+        "description": "Pas d’exploration sur métal dans la baie, le sas et le passage de service.",
+        "lifecycle": "Distance réellement parcourue après collisions ; aucun pas d’exploration pendant un combat. Les retours périmés d’une autre campagne sont ignorés.",
+        "status": "Implémenté, CI en cours",
+        "source": "app/game/systems/wolfCastleAudio.ts ; tests/wolf-castle-audio.test.mjs",
+        "sourceCommit": "a5e41f66f6c3d194afae4f6f446b6c02f213d4c4"
+      },
+      {
+        "id": "door",
+        "type": "Ponctuel",
+        "sequence": "Château",
+        "description": "Embarquement et franchissement d’une porte confirmés.",
+        "lifecycle": "Émis après confirmation du changement de salle. Refus de porte, snapshot reçu et confirmation répétée restent silencieux.",
+        "status": "Implémenté, CI en cours",
+        "source": "app/game/systems/wolfCastleAudio.ts ; tests/wolf-castle-audio.test.mjs",
+        "sourceCommit": "a5e41f66f6c3d194afae4f6f446b6c02f213d4c4"
+      },
+      {
+        "id": "audience",
+        "type": "Ponctuel",
+        "sequence": "Château",
+        "description": "Présentation, décision d’audience et acceptation du mandat.",
+        "lifecycle": "Transition confirmée, consommée une seule fois. Une confirmation achevée pendant la pause ne rejoue pas au retour.",
+        "status": "Implémenté, CI en cours",
+        "source": "app/game/systems/wolfCastleAudio.ts ; tests/wolf-castle-audio.test.mjs",
+        "sourceCommit": "a5e41f66f6c3d194afae4f6f446b6c02f213d4c4"
+      },
+      {
+        "id": "archive",
+        "type": "Ponctuel",
+        "sequence": "Château",
+        "description": "Lecture initiale des archives et relevé des trois repères du mandat.",
+        "lifecycle": "Chaque objectif confirmé sonne lors de son acquisition. Relire un objectif conservé ne rejoue pas son acquisition.",
+        "status": "Implémenté, CI en cours",
+        "source": "app/game/systems/wolfCastleAudio.ts ; tests/wolf-castle-audio.test.mjs",
+        "sourceCommit": "a5e41f66f6c3d194afae4f6f446b6c02f213d4c4"
+      },
+      {
+        "id": "trial-begin",
+        "type": "Ponctuel",
+        "sequence": "Château",
+        "description": "Ouverture de l’épreuve des sceaux.",
+        "lifecycle": "Nouvelle tentative confirmée. Le checkpoint seul ne rejoue pas le signal.",
+        "status": "Implémenté, CI en cours",
+        "source": "app/game/systems/wolfCastleAudio.ts ; tests/wolf-castle-audio.test.mjs",
+        "sourceCommit": "a5e41f66f6c3d194afae4f6f446b6c02f213d4c4"
+      },
+      {
+        "id": "seal",
+        "type": "Ponctuel",
+        "sequence": "Château",
+        "description": "Activation correcte du prochain sceau.",
+        "lifecycle": "Progression confirmée dans la même tentative ; les répétitions sans progrès restent silencieuses.",
+        "status": "Implémenté, CI en cours",
+        "source": "app/game/systems/wolfCastleAudio.ts ; tests/wolf-castle-audio.test.mjs",
+        "sourceCommit": "a5e41f66f6c3d194afae4f6f446b6c02f213d4c4"
+      },
+      {
+        "id": "seal-reset",
+        "type": "Ponctuel",
+        "sequence": "Château",
+        "description": "Remise à zéro après un sceau hors ordre.",
+        "lifecycle": "Émis seulement lorsque la progression confirmée revient à zéro.",
+        "status": "Implémenté, CI en cours",
+        "source": "app/game/systems/wolfCastleAudio.ts ; tests/wolf-castle-audio.test.mjs",
+        "sourceCommit": "a5e41f66f6c3d194afae4f6f446b6c02f213d4c4"
+      },
+      {
+        "id": "trial-complete",
+        "type": "Ponctuel",
+        "sequence": "Château",
+        "description": "Achèvement confirmé de l’épreuve des sceaux.",
+        "lifecycle": "Transition unique vers l’épreuve terminée ; aucun rejeu au checkpoint.",
+        "status": "Implémenté, CI en cours",
+        "source": "app/game/systems/wolfCastleAudio.ts ; tests/wolf-castle-audio.test.mjs",
+        "sourceCommit": "a5e41f66f6c3d194afae4f6f446b6c02f213d4c4"
+      },
+      {
+        "id": "mandate-complete",
+        "type": "Ponctuel",
+        "sequence": "Mandat",
+        "description": "Remise du mandat et confirmation de sa récompense unique.",
+        "lifecycle": "Émis après confirmation du reçu. Un refus d’écriture ne récompense pas et ne déclenche pas l’achèvement.",
+        "status": "Implémenté, CI en cours",
+        "source": "app/game/systems/wolfCastleAudio.ts ; tests/wolf-castle-audio.test.mjs",
+        "sourceCommit": "a5e41f66f6c3d194afae4f6f446b6c02f213d4c4"
+      }
+    ],
+    "scope": "États de suivi antérieurs à la qualification finale. Les pièces sources a5, 9da et 3fc restent inchangées."
+  },
+  "currentQualification": {
+    "status": "Qualifié techniquement et intégré à main",
+    "sourceCommit": "c77c4ea37e3b1b0969a33917971f38496d4ee66a",
+    "localEquivalent": "c80fddb03ffa3b5e6c134fbb8754f0c2d169a366",
+    "sourceTree": "a946e3d8123aaed37b417664a3de1de970232548",
+    "qualificationLabel": "CI réussie ; intégré à main",
+    "pullRequest": "https://github.com/darknigthmare/yautja-la-longue-chasse/pull/106",
+    "pullRequestNumber": 106,
+    "merged": true,
+    "mergedAt": "2026-11-04T19:17:40Z",
+    "mergeCommit": "36f765c980acdc207fe89730ab519c6f769b3881",
+    "mergeTree": "a946e3d8123aaed37b417664a3de1de970232548",
+    "sameTrackedTreeAsQualifiedSource": true,
+    "syntheticCheckout": "c915eb34fae6819526e4e4abe36949244a0b21ab",
+    "syntheticCheckoutFilesChanged": 0,
+    "workflowCount": 16,
+    "workflowsPassed": 16,
+    "allWorkflowsSuccessful": true,
+    "workflowReceipt": "qa/integration-c77c4ea3/final-integration-result.json",
+    "sourceFiles": [
+      {
+        "path": "qa/integration-c77c4ea3/source.json",
+        "sha256": "046ed15177f9ac12f90170ba4de604d425f68078553f2a7c56e80836a2f9890e",
+        "bytes": 1121
+      },
+      {
+        "path": "qa/integration-c77c4ea3/synthetic-merge-identity.json",
+        "sha256": "3eceb9b72dfef38323966498d4ad20442b92df47a49c8a5b889f663f0ddcb778",
+        "bytes": 1134
+      },
+      {
+        "path": "qa/integration-c77c4ea3/final-integration-result.json",
+        "sha256": "0982b5669e7eb0f5e0ea2110a4683b5e88f25554572bcbb3981b9b15ca91800f",
+        "bytes": 4990
+      }
+    ],
+    "wolf": {
+      "status": "Réussi",
+      "runId": 41890840615,
+      "jobId": 126788337343,
+      "runUrl": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41890840615",
+      "sourceCommit": "c77c4ea37e3b1b0969a33917971f38496d4ee66a",
+      "checkoutCommit": "c77c4ea37e3b1b0969a33917971f38496d4ee66a",
+      "workingTreeDirty": false,
+      "tests": 278,
+      "testsPassed": 278,
+      "testsFailed": 0,
+      "testsSkipped": 0,
+      "browserPassed": 32,
+      "browserTotal": 32,
+      "browserFailed": 0,
+      "errors": 0,
+      "missingRequestedAssets": 0,
+      "capturesReported": 27,
+      "capturesCopied": 0,
+      "artifactId": 13354368053,
+      "artifactZipSha256": "0078e4fc4c2108278057593b9f820854459608e52b8211a398275559dbff4d42",
+      "artifactZipBytes": 16199990,
+      "reportVerifiedAgainstArtifact": true,
+      "files": [
+        {
+          "path": "qa/integration-c77c4ea3/wolf/report.json",
+          "sha256": "c3db54a7147f087d35c6df074d70d6ff6d9ba6c7fc77b70bd0289997b6574df1",
+          "bytes": 20667
+        },
+        {
+          "path": "qa/integration-c77c4ea3/wolf/job-result-excerpts.log",
+          "sha256": "b16eceb38e92a6c946857313c76e2af98aa0d48551367acf6052464134ad3780",
+          "bytes": 4588
+        }
+      ],
+      "scope": "Tests et recette CI sur c77. Le nom du ZIP contient le merge synthétique c915 ; le rapport atteste le checkout réel c77. Aucun compte ajouté à une autre suite ou version.",
+      "requestedVisualAssets": 185,
+      "mandateChecksIncluded": [
+        "The accepted audience grants a new mandate whose objectives require fresh station interactions",
+        "A partially explored mandate survives Save, menu, reload and Continue with the same training dossier",
+        "The gallery and council complete the three objectives and unlock the separate sentinel encounter",
+        "The paused mandate reloads the same sentinel, damaged health, position and elapsed time before explicit resume",
+        "Real movement, parries, dodges and attacks beat all sentinel phases without healing or an early reward",
+        "The return guide reaches the audience and a refused reward write keeps the victory and balance unclaimed",
+        "Retrying the same audience action commits exactly two marks together with the campaign receipt",
+        "The completed mandate keeps one receipt and one reward after reload, another audience consultation and departure"
+      ],
+      "technicalVisualReview": {
+        "reviewer": "Responsable du chantier",
+        "captures": [
+          "06",
+          "26",
+          "27"
+        ],
+        "sourceCommit": "c77c4ea37e3b1b0969a33917971f38496d4ee66a",
+        "scope": "Pause à 320 px, refus de récompense, mandat terminé et reprise. Textes et commandes lisibles, états cohérents dans ces trois vues uniquement.",
+        "humanArtisticApproval": false
+      }
+    },
+    "clan": {
+      "status": "Réussi",
+      "runId": 41890840746,
+      "jobId": 126787495021,
+      "runUrl": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41890840746",
+      "sourceCommit": "c77c4ea37e3b1b0969a33917971f38496d4ee66a",
+      "checkoutCommit": "c77c4ea37e3b1b0969a33917971f38496d4ee66a",
+      "workingTreeDirty": false,
+      "tests": 217,
+      "testsPassed": 217,
+      "testsFailed": 0,
+      "testsSkipped": 0,
+      "browserPassed": 22,
+      "browserTotal": 22,
+      "browserFailed": 0,
+      "errors": 0,
+      "missingRequestedAssets": 0,
+      "capturesReported": 11,
+      "capturesCopied": 0,
+      "artifactId": 13352944423,
+      "artifactZipSha256": "4749b046ab0106337d58cdb344f80817ff0d1cfb301a91cebf62e1f598de5c1c",
+      "artifactZipBytes": 11922081,
+      "reportVerifiedAgainstArtifact": true,
+      "files": [
+        {
+          "path": "qa/integration-c77c4ea3/clan/report.json",
+          "sha256": "66fbd0e7a35c7770655a2ec19115c838a5e1fde993444aebcb6eebbb88937f31",
+          "bytes": 9211
+        },
+        {
+          "path": "qa/integration-c77c4ea3/clan/job-result-excerpts.log",
+          "sha256": "48cb8fece6136319e0ad85814706cae2e68c1f9217cc362898c2a06e14656454",
+          "bytes": 3243
+        },
+        {
+          "path": "qa/integration-c77c4ea3/clan/artifact-metadata.json",
+          "sha256": "ba492b7a94e7ee5189767f44d60a7f5bad190735872ea3342d0ef940856ec1d8",
+          "bytes": 830
+        },
+        {
+          "path": "qa/integration-c77c4ea3/clan/artifact-members.json",
+          "sha256": "7350f8e1bd82e5f0e4164c5767022228d0a44de1d77e86cb910a28bb88d0b089",
+          "bytes": 859
+        }
+      ],
+      "scope": "Tests et recette CI sur c77. Le nom du ZIP contient le merge synthétique c915 ; le rapport atteste le checkout réel c77. Aucun compte ajouté à une autre suite ou version."
+    },
+    "dev": {
+      "status": "Réussi",
+      "runId": 41890840578,
+      "runUrl": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41890840578",
+      "sourceCommit": "c77c4ea37e3b1b0969a33917971f38496d4ee66a",
+      "workingTreeDirty": false,
+      "sourceHashesVerified": true,
+      "tests": 61,
+      "testsPassed": 61,
+      "testsFailed": 0,
+      "testsSkipped": 0,
+      "browserPassed": 15,
+      "browserTotal": 15,
+      "browserFailed": 0,
+      "errors": 0,
+      "consoleErrors": 0,
+      "missingRequestedAssets": 0,
+      "storageWrites": 0,
+      "indexedDbOpens": 0,
+      "capturesReported": 8,
+      "capturesCopied": 0,
+      "artifactId": 13354667101,
+      "artifactZipSha256": "06610c0adb71c719e559f2a2d3f226dc7b6b1cf1beeeb4cfa1d9b850fd940b96",
+      "artifactZipBytes": 6688622,
+      "files": [
+        {
+          "path": "qa/integration-c77c4ea3/dev/report.json",
+          "sha256": "eabd91fb4096ec7a0b5287971839953b8e92c9c41e1396ab1b28a2aa4e1d1a99",
+          "bytes": 16738
+        },
+        {
+          "path": "qa/integration-c77c4ea3/dev/job-result-excerpts.log",
+          "sha256": "1a6b145639fdc1e137f592f73d2be8e4552d1d4fed67ada6e22818a18bb9ab1e",
+          "bytes": 2623
+        }
+      ],
+      "huntContinuity": {
+        "initial": {
+          "x": 225,
+          "elapsed": 1.5499999999999994,
+          "generation": 0,
+          "rooms": [
+            "jungle-pilot-approach"
+          ]
+        },
+        "discovery": {
+          "x": 799.8451540440631,
+          "elapsed": 16.800000000000328,
+          "generation": 0,
+          "rooms": [
+            "jungle-pilot-approach",
+            "jungle-pilot-underpass"
+          ]
+        },
+        "afterDiscovery": {
+          "x": 799.8457156172817,
+          "elapsed": 17.600000000000282,
+          "generation": 0,
+          "rooms": [
+            "jungle-pilot-approach",
+            "jungle-pilot-underpass"
+          ]
+        },
+        "afterExplicitReset": {
+          "x": 225,
+          "elapsed": 0,
+          "generation": 0,
+          "rooms": []
+        },
+        "inputPulsesUsed": 16,
+        "inputPulsesAllowed": 40,
+        "generationThroughout": 0,
+        "scope": "La position et l’horloge continuent après découverte de jungle-pilot-underpass sans reset implicite. Seule la commande explicite de reset ramène x à 225 et l’horloge à zéro."
+      },
+      "scope": "Résultat du workflow /dev sur c77c4ea3. Le rapport est identique à celui du ZIP et ses sources ont été vérifiées sur c80fddb0. Les 61 tests viennent des extraits de job ; les 15 parcours, l’absence d’erreur et l’isolation du stockage viennent du rapport. Aucun total interversion ni succès Wolf/V94 n’en est déduit."
+    },
+    "v94": {
+      "status": "Réussi",
+      "runId": 41890840607,
+      "runAttempt": 1,
+      "sourceCommit": "c77c4ea37e3b1b0969a33917971f38496d4ee66a",
+      "checkoutCommit": "c915eb34fae6819526e4e4abe36949244a0b21ab",
+      "checkoutHasIdenticalTrackedFiles": true,
+      "jobsPassed": 5,
+      "jobsTotal": 5,
+      "modelsJobId": 126788294680,
+      "historyJobId": 126788295108,
+      "aggregateJobId": 126802688091,
+      "aggregateProofGroups": [
+        "application",
+        "history",
+        "models"
+      ],
+      "sameRunAttemptCommit": true,
+      "inventory": {
+        "entries": 2151,
+        "sha256": "06d2bd524bbba6708a78cc45b1da6a68c4360568b8002afb55c2f2289aa0b072",
+        "documentBytes": 400041,
+        "sourceCommit": "c77c4ea37e3b1b0969a33917971f38496d4ee66a",
+        "localEquivalent": "c80fddb03ffa3b5e6c134fbb8754f0c2d169a366",
+        "status": "PASS",
+        "sourceUrl": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/c77c4ea37e3b1b0969a33917971f38496d4ee66a/docs/qa/current-integration-20261103/runtime-inputs.json",
+        "scope": "Contrôle strict exécuté dans V94 sur le checkout synthétique c915, identique en fichiers à c77.",
+        "sameDocumentAsPublishedSource": "37128ba9b8ad48a91ff20a3548238bd3a1418fbc",
+        "proof": "qa/integration-c77c4ea3/v94-terminal-receipt.json"
+      },
+      "v113Tests": 75,
+      "v113TestsPassed": 75,
+      "v113TestsFailed": 0,
+      "v113TestsSkipped": 0,
+      "proof": "qa/integration-c77c4ea3/v94-terminal-receipt.json",
+      "files": [
+        {
+          "path": "qa/integration-c77c4ea3/v94-aggregate-excerpt.log",
+          "sha256": "9a7071514586344a7fe99602e3bdbcb948e0c0ad9a63ded090f4481efc418a21",
+          "bytes": 9294
+        },
+        {
+          "path": "qa/integration-c77c4ea3/v94-application-proof.json",
+          "sha256": "d3ff3cd4c38ec6e8fa1b4218b71097d83af7983f61ac11fb6c263e3cc3987c00",
+          "bytes": 152
+        },
+        {
+          "path": "qa/integration-c77c4ea3/v94-application-proof.zip",
+          "sha256": "dd8bb34e0ce14970bf06c278c81555e9ca7bf4daa67c53279c270682d8e4ccc4",
+          "bytes": 260
+        },
+        {
+          "path": "qa/integration-c77c4ea3/v94-history-proof.json",
+          "sha256": "2ef8579096c5f651c7bb0b12b2b42a73038c9f8b88c03977ce48b6496611a59f",
+          "bytes": 148
+        },
+        {
+          "path": "qa/integration-c77c4ea3/v94-history-proof.zip",
+          "sha256": "3ec1abbad775ae673eb176bb9c2518f7f287de22ae5dacbab43958a9e4133d63",
+          "bytes": 259
+        },
+        {
+          "path": "qa/integration-c77c4ea3/v94-models-checkout-excerpt.log",
+          "sha256": "a877f58700a3b7ff95e00821b1bc886478a5334d3ff5949e63fc4441e3f13679",
+          "bytes": 140
+        },
+        {
+          "path": "qa/integration-c77c4ea3/v94-models-proof.json",
+          "sha256": "a68f230c3152dc9646d05079d91134c8d1dd3b9655b5cf92324b3c8f4c0669c9",
+          "bytes": 147
+        },
+        {
+          "path": "qa/integration-c77c4ea3/v94-models-proof.zip",
+          "sha256": "2b52a6bb61cd63c8f627f6aa493e504ca91826c592d692267a3059540b7901aa",
+          "bytes": 257
+        },
+        {
+          "path": "qa/integration-c77c4ea3/v94-strict-excerpt.log",
+          "sha256": "a514bc96bc3e914fd95a131b4f7e95e61f91ff7ddb820d18c6765a3c059c2e46",
+          "bytes": 15233
+        },
+        {
+          "path": "qa/integration-c77c4ea3/v94-terminal-receipt.json",
+          "sha256": "75f6d18f6e9ee477e3454f8e0b1794f019cd613bcfde45b3576189f5ece43b89",
+          "bytes": 9453
+        },
+        {
+          "path": "qa/integration-c77c4ea3/v94-evidence-manifest.json",
+          "sha256": "244f1723f43345507e8c49557664d7f9ad9c74fecb1123c979921f837c26745f",
+          "bytes": 1815
+        }
+      ],
+      "scope": "Trois preuves concordantes du même run, de la même tentative et du checkout c915. Les 75 tests V113 ne sont pas ajoutés aux autres suites."
+    },
+    "vercel": {
+      "context": "Vercel",
+      "state": "failure",
+      "reason": "build-rate-limit",
+      "target_url": "https://vercel.com/darknigthmares-projects?upgradeToPro=build-rate-limit",
+      "newDeploymentAttested": false
+    },
+    "humanArtisticApproval": false,
+    "humanReviewPending": 30,
+    "historicalScreenshotSet": {
+      "sourceCommit": "9da27c2a8de483a73b81fc8cf0599be6a2e8c1f4",
+      "directory": "qa/integration-9da27c2a/wolf",
+      "captures": 27,
+      "bytes": 16247257
+    },
+    "scope": "Qualifications exécutées avant fusion sur c77 ; V94 utilise c915 au contenu identique. Le reçu de fusion atteste le même arbre dans main. Aucun nouveau test après fusion ni déploiement Vercel n’est revendiqué. Suites et versions non additionnées."
+  },
+  "integratedMainCommit": "36f765c980acdc207fe89730ab519c6f769b3881",
+  "qualifiedSourceBranch": "feat/wolf-castle-continuation-20261104",
+  "workbookArtifact": {
+    "file": "wolf-castle-arrival-20261104.xlsx",
+    "sha256": "0eec2649633d36be6ed5753f1b3c6336e1772c250e51d04584e91f4b940324f9",
+    "bytes": 60621,
+    "verification": "workbook-verification.json",
+    "sourceCommit": "c77c4ea37e3b1b0969a33917971f38496d4ee66a",
+    "scope": "Export documentaire après qualification et fusion ; aucune nouvelle exécution du jeu."
+  }
 }

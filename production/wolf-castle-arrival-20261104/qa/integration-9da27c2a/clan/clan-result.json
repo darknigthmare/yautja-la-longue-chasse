@@ -1,0 +1,31 @@
+{
+  "schema": "combined-clan-qualification-v1",
+  "sourceCommit": "9da27c2a8de483a73b81fc8cf0599be6a2e8c1f4",
+  "checkoutCommit": "9da27c2a8de483a73b81fc8cf0599be6a2e8c1f4",
+  "workingTreeDirty": false,
+  "run": 41886852455,
+  "job": 126773886257,
+  "artifact": 13352876057,
+  "artifactZipSha256": "eedaa91ddcc414909a6cb31409f1b89d6d447ca0a4322c49b13b63d0a658537b",
+  "artifactName": "clan-ship-browser-463a3c1550dd6aff368e6384caba6b327ebea5ca",
+  "syntheticMerge": "463a3c1550dd6aff368e6384caba6b327ebea5ca",
+  "mergeCompareChangedFiles": 0,
+  "tests": {
+    "pass": 217,
+    "fail": 0,
+    "skipped": 0
+  },
+  "browser": {
+    "pass": 22,
+    "fail": 0,
+    "errors": 0,
+    "missingAssets": 0,
+    "screenshots": 11
+  },
+  "inspectedCaptures": [
+    "05-hangar-mobile-controls-320.png",
+    "03-archives-resumed.png"
+  ],
+  "visualReview": "Hunter and interactive controls readable in the sampled320px and desktop views; no new clipping found. Vertical continuation remains available. No human artistic approval assigned.",
+  "logExcerpt": "2026-11-04T18:28:35.3244149Z # tests 217\n2026-11-04T18:28:35.3244708Z # pass 217\n2026-11-04T18:28:35.3244967Z # fail 0\n2026-11-04T18:28:35.3245423Z # skipped 0\n2026-11-04T18:29:04.7032831Z PASS Legacy campaign migrates through the real main menu to the personal deck\n2026-11-04T18:29:09.1262511Z PASS A held gamepad confirmation advances only one docking stage\n2026-11-04T18:29:12.6741581Z PASS Dock and board preserve the selected personal hull\n2026-11-04T18:29:14.9548840Z PASS Keyboard movement follows the real floor and stops at the wall without crossing a door\n2026-11-04T18:29:16.4682545Z PASS Gamepad analog movement controls the hunter without selecting an outer menu button\n2026-11-04T18:29:17.2962341Z PASS Pointer movement follows a collision-safe path across the hangar\n2026-11-04T18:29:17.9141076Z PASS Choosing a room hands focus to walking and a fresh key interrupts the guided route\n2026-11-04T18:29:18.8933333Z PASS Retargeting a guided route takes effect immediately and Stop cancels it before a doorway\n2026-11-04T18:29:20.7379124Z PASS A physical doorway is reached before saving and held confirmation cannot fall through the passage\n2026-11-04T18:29:33.9746696Z PASS A distant room target walks through adjacent doors instead of teleporting\n2026-11-04T18:29:36.9689511Z PASS The rendered hunter stops at a real fixture and pointer navigation goes around it\n2026-11-04T18:29:45.3385990Z PASS The archive service requires walking into reach and a separate interaction\n2026-11-04T18:30:51.5341974Z PASS Seven physical rooms and six existing services preserve their room and return position\n2026-11-04T18:31:04.5274387Z PASS Settings suspend the clan controller and a manual checkpoint preserves its room\n2026-11-04T18:31:05.7441060Z PASS Switching browser tabs clears movement and requires a fresh input on return\n2026-11-04T18:31:08.9275568Z PASS Save, main menu, reload and Continue restore the exact clan room\n2026-11-04T18:31:15.9514286Z PASS Loading the real manual checkpoint restores Archives after a later room visit\n2026-11-04T18:31:30.7046299Z PASS Returning to the personal ship keeps the berth and blocks travel until undocking\n2026-11-04T18:31:30.9772581Z PASS Approach cancellation is durable and never boards the clan ship\n2026-11-04T18:31:48.3301912Z PASS Touch walking and room navigation work at 390px and 320px without horizontal overflow\n2026-11-04T18:31:49.2358797Z PASS Normal and reduced motion keep walking functional without looping motion in reduced mode\n2026-11-04T18:31:49.2434447Z PASS Clan ship and shared service artwork load without browser errors\n2026-11-04T18:31:49.5009379Z {\"passed\":true,\"checks\":22,\"output\":\"/home/runner/work/yautja-la-longue-chasse/yautja-la-longue-chasse/outputs/qa-clan-ship\",\"missingAssets\":0}"
+}

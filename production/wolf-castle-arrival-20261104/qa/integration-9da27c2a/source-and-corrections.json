@@ -1,0 +1,44 @@
+{
+  "schema": "parallel-correction-adoption-v1",
+  "publishedSource": "9da27c2a8de483a73b81fc8cf0599be6a2e8c1f4",
+  "localSource": "e98df7f959375e1850cdd07b1b51bdc013d50217",
+  "tree": "22bb7ab0dd3b944715ddf00b8f6d4754631bab24",
+  "previousPublishedSource": "37128ba9b8ad48a91ff20a3548238bd3a1418fbc",
+  "intermediateSource": "fcd77668390babfbb1799ba9ccd2a720f8dfdf8c",
+  "intermediateLocalSource": "7575782a75451ff124cd41c24c8ae1d9e7aca231",
+  "applicationDiffFilesSince371": 0,
+  "inventoryDiffFilesSince371": 0,
+  "adoptedChanges": [
+    "Import real resumeHuntGauntletV142 into GameClient VM dependencies",
+    "Resolve V142 production modules via existing TypeScript helper",
+    "Wait for real guided return walk before contextual door action",
+    "Materialize helper in V131 sparse checkout"
+  ],
+  "fcdV131": {
+    "run": 41886345401,
+    "job": 126771719639,
+    "status": "failure",
+    "errorExcerpt": "2026-11-04T18:22:19.7595202Z \n2026-11-04T18:22:19.7599220Z node:internal/modules/run_main:123\n2026-11-04T18:22:19.7600116Z     triggerUncaughtException(\n2026-11-04T18:22:19.7600984Z     ^\n2026-11-04T18:22:19.7604026Z Error [ERR_MODULE_NOT_FOUND]: Cannot find module '/home/runner/work/yautja-la-longue-chasse/yautja-la-longue-chasse/tests/helpers/homeworld-scene-ssr-v78.mjs' imported from /home/runner/work/yautja-la-longue-chasse/yautja-la-longue-chasse/tests/gauntlet-mission-resume-v142.test.mjs\n2026-11-04T18:22:19.7612912Z     at finalizeResolution (node:internal/modules/esm/resolve:275:11)\n2026-11-04T18:22:19.7614745Z     at moduleResolve (node:internal/modules/esm/resolve:865:10)\n2026-11-04T18:22:19.7615969Z     at defaultResolve (node:internal/modules/esm/resolve:989:11)\n2026-11-04T18:22:19.7616963Z     at nextResolve (node:internal/modules/esm/hooks:748:28)\n2026-11-04T18:22:19.7618669Z     at resolveBase (file:///home/runner/work/yautja-la-longue-chasse/yautja-la-longue-chasse/node_modules/tsx/dist/register-BmBLtb39.mjs:2:6834)\n2026-11-04T18:22:19.7620980Z     at async resolveDirectory (file:///home/runner/work/yautja-la-longue-chasse/yautja-la-longue-chasse/node_modules/tsx/dist/register-BmBLtb39.mjs:2:7915)\n2026-11-04T18:22:19.7623389Z     at async resolve2 (file:///home/runner/work/yautja-la-longue-chasse/yautja-la-longue-chasse/node_modules/tsx/dist/register-BmBLtb39.mjs:2:10301)\n2026-11-04T18:22:19.7625300Z     at async nextResolve (node:internal/modules/esm/hooks:748:22)\n2026-11-04T18:22:19.7626372Z     at async Hooks.resolve (node:internal/modules/esm/hooks:240:24)\n2026-11-04T18:22:19.7655591Z     at async handleMessage (node:internal/modules/esm/worker:199:18) {\n2026-11-04T18:22:19.7675778Z   code: 'ERR_MODULE_NOT_FOUND',\n2026-11-04T18:22:19.7685924Z   url: 'file:///home/runner/work/yautja-la-longue-chasse/yautja-la-longue-chasse/tests/helpers/homeworld-scene-ssr-v78.mjs'\n2026-11-04T18:22:19.7715945Z }\n2026-11-04T18:22:19.7728520Z \n2026-11-04T18:22:19.7730119Z Node.js v22.23.4\n2026-11-04T18:22:19.7731430Z ✖ tests/gauntlet-mission-resume-v142.test.mjs (192.025317ms)\n2026-11-04T18:22:19.7732452Z ℹ tests 1\n2026-11-04T18:22:19.7733105Z ℹ suites 0\n2026-11-04T18:22:19.7733712Z ℹ pass 0",
+    "correctedBy": "9da27c2a8de483a73b81fc8cf0599be6a2e8c1f4"
+  },
+  "localV142": {
+    "command": "node --import tsx --test --test-reporter=spec tests/gauntlet-mission-resume-v142.test.mjs",
+    "source": "7575782a75451ff124cd41c24c8ae1d9e7aca231",
+    "workingTreePatch": "Only workflow checkout/trigger lines, no test or application changes",
+    "exitCode": 0,
+    "pass": 7,
+    "fail": 0,
+    "skipped": 0,
+    "durationMs": 5270.366521,
+    "log": "✔ Every legitimate V142 unlocked identity survives saved/reloaded sidecar configuration (1.595671ms)\n✔ Saved Wolf stays Wolf after a different cosmetic preference is equipped elsewhere (0.188877ms)\n✔ Legacy V141 sidecar without optional model preserves previous behavior (0.157618ms)\n✔ An old/future/hostile cosmetic receipt cannot unlock an unearned gauntlet (0.247748ms)\n✔ V1 active hunt sidecar roundtrip persists optional selected identity, no schema break (13.445271ms)\n✔ GameClient writes launch-time visual identity, preserves it across writes, and passes it to HuntCanvas on resume (13.829752ms)\n✔ Arrival handoff and first-mount recovery retain the captured gauntlet after another tab changes a legacy preference (172.894565ms)\nℹ tests 7\nℹ suites 0\nℹ pass 7\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 5270.366521\n"
+  },
+  "newRuns": {
+    "wolf": 41886852346,
+    "dev": 41886852485,
+    "clan": 41886852455,
+    "v94": 41886852457,
+    "v131": 41886852405,
+    "v136": 41886852297
+  },
+  "status": "Current browser, strict inventory and complete CI pending; superseded371 runs cancelled"
+}
