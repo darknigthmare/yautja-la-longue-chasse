@@ -43,6 +43,29 @@ de ces décisions ; elle ne doit pas réintroduire silencieusement des compagnon
 compartiments personnels par défaut. Les personnages déjà établis, dont Saar et Vek,
 ne sont ni remplacés ni dupliqués par les propositions du catalogue.
 
+## Articulation avec le complément Warp Universe
+
+Les ajouts Warp présents sur la même PR sont conservés :
+
+- [WARP_UNIVERSE.md](WARP_UNIVERSE.md) : accès Adjutant, expéditions, Chroniques cinéma,
+  Réécritures et raccords à la campagne.
+- [WARP_UNIVERSE_ASSETS.md](WARP_UNIVERSE_ASSETS.md) : catalogue et état des ressources
+  du chantier Warp ; distinct des besoins d'assets nouveaux du catalogue compagnons.
+
+**Précision de portée pour l'annexe compagnons :** la restriction de L-10 concernant
+les personnages des films s'applique aux expéditions originales, et non aux Chroniques
+cinéma séparées définies dans Warp Universe. M058 demeure une chronique avancée, pas
+un verrou global au rang Ancient pour toutes les Chroniques déjà ouvertes à Adjutant.
+Le complément Warp fait foi sur ces modes ; le complément compagnons fait foi sur
+le recrutement, l'affectation et les quartiers personnels.
+
+Débloquer un avatar de Chronique ou conclure une Réécriture ne recrute personne
+automatiquement. Un héros ne devient un allié de campagne qu'après une mission
+spécifique, un accord et une issue de continuité compatibles, puis une affectation
+explicite pour sa présence à bord. Les inventaires d'instance, droits de représentation
+et récompenses sont distincts des individus vivants ; aucun clone de compagnon n'est
+créé en terminant un film. Cette règle concorde avec la section 7 de Warp Universe.
+
 ## Statut de production
 
 Les éléments marqués « proposé » sont des propositions de conception à valider.
