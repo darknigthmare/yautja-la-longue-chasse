@@ -559,6 +559,18 @@ Source : [types de Predators](https://avpcentral.com/predator-types).
 - **Fidélité aux films :** dans la campagne principale, le joueur ne peut pas changer ce que montrent les films (une tentative échoue de façon cohérente) ; dans les branches Warp, continuité séparée, tout est possible.
 - **Représentation des personnages des films :** reconnaissables par leur rôle, leur équipement et leur nom, sans copier le visage ni la voix d'un acteur.
 
+### Encore à développer
+
+Sujets peu développés, à traiter dans les prochains lots de questions :
+
+- [ ] Progression des armes et des armures, arbre d'améliorations de l'atelier
+- [ ] IA des proies humaines et réactions au camouflage
+- [ ] Déroulé détaillé des 6 à 8 missions de l'arc de guerre
+- [ ] Noms et rôles des personnages de la Lost Tribe, du Serpent Clan et des Matriarches
+- [ ] Musique et ambiance propres à chaque race
+- [ ] Noms des cités des clans et des trois cités visitables au départ
+- [ ] Dates exactes des ellipses et seuils d'honneur par rang
+
 Sources : [équipes humaines qui chassent les Predators](https://avpcentral.com/predator-hunter-teams).
 
 ### Crossover : USS Tantalus
