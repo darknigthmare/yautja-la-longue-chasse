@@ -1363,8 +1363,17 @@ try {
               assert.ok(distance(frame.anchors['pod-nose'], frame.anchors[`${id}-pod-nose`]) > 1,
                 'Every companion capsule must travel on its own visible trajectory.');
             }
-          } else assert.ok(frame.images.some(image => image.path === api.shipProfileAssetPath(api.DEFAULT_SHIP_ID)),
-            'Controlled descent must retain the actual selected hull.');
+          } else {
+            assert.equal(frame.ship, api.DEFAULT_SHIP_ID, 'Controlled descent must retain the actual selected hull.');
+            const carriers = frame.cloakHulls.filter(hull => hull.role === 'carrier');
+            assert.equal(carriers.length, 1, 'Controlled descent requires exactly one actual carrier hull.');
+            const carrier = carriers[0];
+            // capture() already checked each actual view source, imageSource
+            // and mixture against this hull's exact native motion frame.
+            assert.ok(carrier.opacity > .02 && carrier.views.length > 0 && carrier.views.every(view =>
+              view.opacity > 0 && view.image?.width > 0 && view.image.height > 0),
+            'Controlled descent must paint the selected carrier in visible real view images.');
+          }
           await measureMovement(`${viewport.id}-${variant.id}-${shotId}`);
         }
         await openShot(primaryMission.id, 'landing', false, api.DEFAULT_SHIP_ID, variant.plan);
