@@ -341,6 +341,118 @@ Le Warp n'est plus une invention isolée : il s'appuie sur les bios des figurine
 
 Source : [bios NECA](https://avp.fandom.com/wiki/User_blog:Fox357magnum/NECA_Figures_Biographies). Référence confirmée le 5 novembre 2026 : l'Armored Lost Predator.
 
+## Décisions de conception (5 novembre 2026)
+
+Réponses aux 16 questions sur les parties faibles du jeu. Chaque décision est suivie de sa mise en œuvre *(proposée)*.
+
+### Monde natal et hub
+
+**Décision :** les six zones de la note sont des régions de Yautja Prime, distinctes des 8 planètes de chasse, reliées à la cité par des chemins physiques.
+
+| Région | Rang d'accès | Liaison depuis la cité | Rôle |
+| --- | --- | --- | --- |
+| Désert | Unblooded | porte sud, à pied | pistes, faune de base, reconnaissance V49 |
+| Slums | Unblooded | rues basses, à pied | contrats, informateurs, premiers signes de Bad Bloods |
+| Jungle humide | Unblooded | pont de lianes | territoire du Quatza-Rij (L-02) |
+| Lave | Young Blood | pont de basalte | forges, épreuves de résistance |
+| Glacier | Young Blood | skiff des hauts plateaux | chasse froide, ruines anciennes |
+| Marais | Young Blood | skiff fluvial | faune amphibie, sanctuaire de la Reserve |
+
+La note parlait de « Glacier Moon » et « Swamp Moon » : elles deviennent des régions de la planète. Les liaisons sont des scènes jouables (traversée de pont, pilotage de skiff), avec des rencontres possibles.
+
+### Personnage
+
+**Décision :** éditeur complet (sexe, morphologie, masque, armure, couleurs), sur la base de l'éditeur PHG existant. En suivant le canon, une femelle est plus grande et plus forte ; les scènes de vie diffèrent (femelles sur les mondes arides, mâles à bord des vaisseaux de clan), sans fermer aucun rang ni aucune voie.
+
+### Mort et difficulté
+
+| Mode | Mort en chasse | Mort pendant un rite |
+| --- | --- | --- |
+| Normal | reprise au point de contrôle ; pertes, blessures et déshonneur conservés | idem |
+| Option Réalisme | idem | le chapitre du rite recommence en entier |
+| Hardcore | mort définitive : la partie suivante hérite du masque et de la légende au mausolée | idem |
+
+### Structure du jeu
+
+**Décision :** hubs et contrats, plus exploration ouverte dans l'espace et sur les planètes. Les hubs (cité, vaisseau, navire de clan) proposent missions principales, contrats annexes, Queen Hunt, guerre et Warp. Dans l'espace, la carte galactique fait naître des événements et des découvertes ; sur une planète visitée, des lieux annexes se découvrent sur place.
+
+**Événements spatiaux (les quatre types retenus) :**
+
+- épaves et stations abandonnées (humaines ou yautja) : trophées, technologie, matériaux ;
+- appels de détresse : frères tombés et technologie à récupérer (règle canon) ;
+- rencontres de clans : défis, duels, échanges (Temple Guards, Serpent Clan, Super Predators) ;
+- mondes à découvrir : planètes et lunes générées avec faune propre (réutilise le générateur de planètes V103 du dépôt).
+
+### Chasses non linéaires
+
+**Décision :** structures propres à chaque planète, 2 à 3 objectifs d'honneur facultatifs, et une forme de niveau différente d'une planète à l'autre (2,5D, passages vers d'autres lieux, jamais une seule ligne droite).
+
+| Planète | Forme | Sous-zones et passages | Objectifs d'honneur facultatifs |
+| --- | --- | --- | --- |
+| Oseris-IV | metroidvania (cible 48 salles du pilote) | canopée, grottes, ravin, camp de Vey, temple englouti ; raccourcis par capacités | tuer Vey sans plasma ; laisser fuir les non-combattants du camp ; reprendre le transpondeur sans alerte |
+| Nivalis-K | sous-zones connectées | banquise, mine (intérieur), galeries, nid ; ascenseur de mine et puits | briser les 3 plaques ; sauver les mineurs survivants ; aucune mort par le froid |
+| Cinder-12 | profondeur (avant / arrière) + intérieur | plaine, sanctuaire intérieur sur 3 niveaux, aqueduc en arrière-plan | honorer les 3 morts avant tout combat ; duel sans arme à distance ; couper la purge en moins de 30 s |
+| Naraka-Delta | sous-zones liées par la marée | mangrove basse, couronnes, nourricerie immergée, fosse ; chemins ouverts ou fermés selon la marée | ne pas tuer de juvénile ; couper les trois têtes avant le corps ; aucune capsule brisée |
+| Serekh-9 | profondeur large + souterrain | dunes en 3 plans, mine vitrifiée, tunnels de la Sandmaw | traverser la mer de silice sans être entendu ; sauver la caravane ; mandibules intactes |
+| Pelagos-M | vertical | arches, station (intérieur pressurisé), fosses, grotte bioluminescente | réactiver la station sans dégât ; aucune chute dans la fosse ; harpons du clan tous repris |
+| Mycora-V | metroidvania en réseau | tours, relais, archives racinaires, cavité ; le réseau ferme des passages selon vos routes | ne jamais répéter une route ; détruire les 6 relais ; aucune arme à feu |
+| Acheron-Sigma | sous-zones de cité | seuil, pont, galerie mimétique, chambre des prismes, noyau ; portes à stèles | aucune arme répétée 3 fois ; lire toutes les stèles ; vaincre le Gardien au corps à corps |
+
+### Proies humaines
+
+**Décision :** à partir de Blooded, avec le code. Seuls les humains armés et dignes sont des proies ; tuer des désarmés, des enfants ou des femmes enceintes est une infraction jugée au tribunal.
+
+### Économie
+
+**Décision :** un mélange, chaque système ayant son rôle.
+
+| Système | Sert à |
+| --- | --- |
+| Rang | débloquer les familles d'armes et d'outils (note de 2022) |
+| Honneur | payer les améliorations à l'atelier et les faveurs du clan |
+| Trophées | prestige, exposition, échanges avec d'autres clans ; une crête de reine compte pour les rangs |
+| Matériaux | forger les variantes d'armes et d'armures (récolte en chasse, épaves, ruines) |
+
+### Multijoueur
+
+**Décision :** campagne solo, avec coopération possible en rejoignant une partie, et modes multijoueur dédiés :
+
+- **The Pit :** duels et tournois en ligne ;
+- **Guerre des clans :** affrontements entre clans de joueurs ;
+- **Chasse aux Bad Bloods :** si l'option est activée, un joueur Enforcer peut envahir la partie d'un joueur Bad Blood, à la manière de *Dark Souls*.
+
+### Compagnons
+
+**Décision :** mort définitive selon les actes. Un compagnon tué pendant un rite ou une chasse, à cause d'un choix ou d'un échec, ne revient pas (règle CORE-R17). Son absence change les scènes suivantes ; son masque peut être porté au mausolée.
+
+### Ruches et Reine Mère
+
+**Décision :** ruches écrites pour les étapes de rang (3 pour Clan Leader, 5 pour Adjudicator), ruches procédurales rejouables dans le mode Queen Hunt. La Reine Mère est sur un monde-ruche dédié, entièrement colonisé ; le joueur y mène une expédition de plusieurs clans (navires, équipes, front commun).
+
+### Guerre des clans
+
+**Décision :** un arc narratif contre le clan rival, puis le mode libre sur les 30 planètes.
+
+### Antagonistes
+
+**Décision :** plusieurs fils en parallèle, chacun propre à un pan du jeu.
+
+| Antagoniste | Canon | Fil proposé dans la campagne |
+| --- | --- | --- |
+| Weyland-Yutani | synthétiques, Iron Bears d'AVP 2 | récupère la technologie yautja laissée sur les 8 planètes ; synthétiques dans les épaves et stations |
+| Super Predators | clan rival, querelle de sang avec les Jungle Hunters (*Predators*) | clan ennemi de l'arc de guerre |
+| Rogue Space Tribe | bios NECA | Warp, Bad Bloods, voie Enforcer |
+| Harek | rival du départ O6 | Bad Blood possible ou chef du clan rival |
+| OWLF, époque future | unité secrète de la CIA de *Predator 2* (Other Worldly Life Forms) | descendants de l'OWLF qui traquent les Yautja à l'époque du jeu |
+| Chasseurs humains de Yautja | Project Stargazer (*The Predator*), Reapers (roman *Hunters and Hunted*), Predator Hunters de Jaya Soames (comics), Spearhead (*Xenogenesis*) | contrats et embuscades contre le joueur, captures et évasions |
+| USS Tentalus (crossover) | ton jeu *Alien USS Tentalus* | mission annexe : le joueur rencontre l'USS Tentalus ; détails à reprendre de ta bible d'*Alien USS Tentalus*, que je n'ai pas ici |
+
+### Modes annexes
+
+**Décision :** The Pit et Game Reserve restent des modes à part, débloqués par la campagne. Proposition : The Pit s'ouvre à Young Blood (premiers duels) ; Game Reserve s'ouvre à Unblooded (chasses d'entraînement du pack).
+
+Sources : [équipes humaines qui chassent les Predators](https://avpcentral.com/predator-hunter-teams).
+
 ## Acte I — Youngling (R2-M001 → M006)
 
 L'enfance dans la cour, la cité et les premiers ateliers ; l'acte se termine au rang Unblooded. Aucune fiche n'est jouable telle quelle ; V47 (nurserie) et V48 (dojo, accueil) jouent une enfance différente.

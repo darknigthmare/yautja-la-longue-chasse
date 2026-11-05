@@ -9,7 +9,7 @@
 Contenu : 68 missions (60 fiches « Campagne commune » du classeur V6 + 8 chasses),
 référentiel lore 1:1 avec sources, campagne révisée (L-01 → L-10), échelle des
 rangs, influence des six départs, honneur / Bad Blood / Enforcer, Warp d'après le
-lore NECA, besoins props / VFX / SFX par mission et 48 prompts musicaux Flow Music.
+lore NECA, besoins props / VFX / SFX par mission et 48 prompts musicaux Flow Music, et les décisions de conception du 5 novembre 2026.
 
 Les éléments marqués « proposé » sont des propositions de conception à valider.
 Aucun code ni aucun asset n'est modifié par ce dossier.
