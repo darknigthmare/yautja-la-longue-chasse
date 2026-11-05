@@ -413,7 +413,7 @@ try {
     await capture('02-atmosphere-shutters-open', { run: triadRun, status: 'paused', shot: 'atmosphere' });
     const frames = await page.evaluate(() => window.__podQaAudit.frames);
     report.arrivalFrames.push(...frames);
-    for (const id of ['hunter', 'karhek', 'saketh']) {
+    for (const id of ['player', 'karhek', 'saketh']) {
       const observations = frames.filter(frame => frame.run === triadRun && frame.status === 'playing')
         .flatMap(frame => frame.pods.filter(pod => pod.id === id).map(pod => ({ ...pod, elapsed: frame.elapsed })));
       const space = observations.find(pod => pod.phase === 'space' && pod.shutters === 'closed');
