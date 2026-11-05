@@ -263,6 +263,52 @@ async function readFrame(target = page, contactObservation) {
         throw new Error('The native contact root changed before its geometry snapshot.');
       }
     }
+    // A keyed step effect can mount after the shot's initial image preparation.
+    // Let that actual DOM image reach its native ready state before taking one
+    // synchronous geometry snapshot. No source, DOM, clock or input is changed.
+    const imageReady = image => image.complete && image.naturalWidth > 0 && image.naturalHeight > 0;
+    const imageState = image => ({ path: image.getAttribute('src'), complete: image.complete,
+      width: image.naturalWidth, height: image.naturalHeight, connected: image.isConnected });
+    const pendingImages = new Set([...root.querySelectorAll('img')].filter(image => !imageReady(image)));
+    const imageReadiness = { budgetMs: 500, startedAt: readElapsedMs(), endedAt: readElapsedMs(),
+      waitedMs: 0, reason: 'ready', initialInvalidImages: [...pendingImages].map(imageState), invalidImages: [] };
+    if (pendingImages.size) {
+      const started = performance.now();
+      const initialRun = root.getAttribute('data-arrival-run');
+      const initialShot = root.getAttribute('data-arrival-shot');
+      const initialStatus = root.getAttribute('data-arrival-status');
+      while (true) {
+        // Revalidate after every await, including the last one. A ready result
+        // is followed immediately by the geometry reads in this browser task.
+        const roots = document.querySelectorAll('[data-arrival-run]');
+        if (!root.isConnected || roots.length !== 1 || roots[0] !== root ||
+            root.getAttribute('data-arrival-run') !== initialRun ||
+            root.getAttribute('data-arrival-shot') !== initialShot ||
+            root.getAttribute('data-arrival-status') !== initialStatus) {
+          imageReadiness.reason = 'native-context-changed'; break;
+        }
+        if (contactObservation && (readElapsedMs() < contactObservation.atMs || readElapsedMs() >= contactObservation.endMs)) {
+          imageReadiness.reason = 'native-contact-window-ended'; break;
+        }
+        const remaining = imageReadiness.budgetMs - (performance.now() - started);
+        if (remaining <= 0) { imageReadiness.reason = 'timeout'; break; }
+        // Retain every unready node even if React removes it: disappearance
+        // must not turn a genuinely broken image into a successful sample.
+        for (const image of root.querySelectorAll('img')) if (!imageReady(image)) pendingImages.add(image);
+        if ([...pendingImages].some(image => image.complete && !imageReady(image))) {
+          imageReadiness.reason = 'image-error'; break;
+        }
+        if ([...pendingImages].every(imageReady)) break;
+        await new Promise(resolve => {
+          let frame = 0;
+          const timer = setTimeout(() => { cancelAnimationFrame(frame); resolve(); }, remaining);
+          frame = requestAnimationFrame(() => { clearTimeout(timer); resolve(); });
+        });
+      }
+      imageReadiness.waitedMs = performance.now() - started;
+      imageReadiness.endedAt = readElapsedMs();
+      imageReadiness.invalidImages = [...pendingImages].filter(image => !imageReady(image)).map(imageState);
+    }
     const rect = element => {
       if (!element) return null;
       const r = element.getBoundingClientRect();
@@ -388,6 +434,7 @@ async function readFrame(target = page, contactObservation) {
       run: root.getAttribute('data-arrival-run'), shot: root.getAttribute('data-arrival-shot'),
       status: root.getAttribute('data-arrival-status'),
       elapsedMs: readElapsedMs(),
+      imageReadiness,
       reducedMotion: root.getAttribute('data-arrival-reduced-motion') === 'true',
       method: root.getAttribute('data-arrival-method'), team: root.getAttribute('data-arrival-team'),
       shipCloak: root.getAttribute('data-arrival-ship-cloak') === 'true',
@@ -495,6 +542,8 @@ function assertSpatial(frame, label) {
   `${label}: fitted stage must remain inside the scene.`);
   assert.ok(frame.overflow.document <= frame.viewport.width + 1 && frame.overflow.body <= frame.viewport.width + 1,
     `${label}: horizontal page overflow.`);
+  assert.equal(frame.imageReadiness.reason, 'ready', `${label}: native image readiness failed (${frame.imageReadiness.reason}).`);
+  assert.deepEqual(frame.imageReadiness.invalidImages, [], `${label}: an observed image failed even if its node was removed.`);
   assert.deepEqual(frame.images.filter(image => !image.complete || image.width === 0 || image.height === 0), [],
     `${label}: undecoded or missing scene image.`);
   assert.ok(frame.svgImages.every(image => image.path && image.width > 0 && image.height > 0 &&
@@ -951,42 +1000,78 @@ async function captureMoment(label, prepared, target = page, attempt = 1, valida
     format: 'png', clip, fromSurface: true,
     captureBeyondViewport: false, optimizeForSpeed: true,
   });
-  const after = await readMoment(target, prepared.region);
-  acquisition.after = after;
-  assert.equal(after.run, before.run, `${label}: the photograph must retain the same native arrival run.`);
-  assert.equal(after.shot, before.shot, `${label}: the photograph must stay within its actual native shot.`);
-  assert.equal(after.cloakPhase, before.cloakPhase, `${label}: optical phase must remain unambiguous across the photograph.`);
-  assert.equal(after.contact, before.contact, `${label}: the photograph cannot cross the native ground-contact boundary.`);
-  assert.ok(after.elapsedMs >= before.elapsedMs, `${label}: the native clock cannot be rewound for a picture.`);
-  if (prepared.region === 'formation-detail') {
-    const identityAndPose = members => members.map(({ id, stage, contact, portal, opacity }) => ({ id, stage, contact, portal, opacity }));
-    assert.deepEqual(identityAndPose(after.members), identityAndPose(before.members),
-      `${label}: the entire native detail capture must retain the same visible standing trio.`);
-    assert.deepEqual(after.supports.map(support => support.id), before.supports.map(support => support.id));
-    assert.ok([...after.members.map(member => member.bounds), ...after.supports].every(bounds =>
-      bounds.x >= x && bounds.y >= y && bounds.right <= x + width && bounds.bottom <= y + height),
-    `${label}: native movement during capture must not crop a hunter layer or ground support.`);
+  let after, measured;
+  try {
+    after = await readMoment(target, prepared.region);
+    acquisition.after = after;
+    measured = { ...await readFrame(target), decodedSvg: prepared.decodedSvg };
+    acquisition.measuredAt = measured.elapsedMs;
+    acquisition.invalidImages = measured.images.filter(image => !image.complete || image.width === 0 || image.height === 0);
+    acquisition.imageReadiness = measured.imageReadiness;
+    const lateCompletion = prepared.region === 'formation-detail' && after.status === 'complete' && after.elapsedMs === 62_000;
+    const photographLabel = label + (lateCompletion ? `-rejected-attempt-${attempt}` : '');
+    const file = photographLabel + '.png';
+    const bytes = Buffer.from(screenshot.data, 'base64');
+    // Both photograph times and the exact geometry are already observed. Save
+    // the original bytes before assertions so a rejected measurement cannot
+    // erase its photograph or be replaced by a later failure-frame snapshot.
+    await fs.writeFile(path.join(out, file), bytes);
+    acquisition.file = file; acquisition.sha256 = sha256(bytes);
+    assert.equal(after.run, before.run, `${label}: the photograph must retain the same native arrival run.`);
+    assert.equal(after.shot, before.shot, `${label}: the photograph must stay within its actual native shot.`);
+    assert.equal(after.cloakPhase, before.cloakPhase, `${label}: optical phase must remain unambiguous across the photograph.`);
+    assert.equal(after.contact, before.contact, `${label}: the photograph cannot cross the native ground-contact boundary.`);
+    assert.ok(after.elapsedMs >= before.elapsedMs, `${label}: the native clock cannot be rewound for a picture.`);
+    assert.equal(measured.run, after.run, `${label}: subsequent geometry must retain the photographed native run.`);
+    assert.equal(measured.shot, after.shot, `${label}: subsequent geometry must retain the photographed native shot.`);
+    assert.equal(measured.cloakPhase, after.cloakPhase, `${label}: subsequent geometry must retain the photographed optical phase.`);
+    assert.equal(measured.contact, after.contact, `${label}: subsequent geometry must retain the photographed ground-contact phase.`);
+    assert.ok(measured.elapsedMs >= after.elapsedMs, `${label}: subsequent geometry must not rewind the native clock.`);
+    if (prepared.region === 'formation-detail') {
+      const identityAndPose = members => members.map(({ id, stage, contact, portal, opacity }) => ({ id, stage, contact, portal, opacity }));
+      assert.deepEqual(identityAndPose(after.members), identityAndPose(before.members),
+        `${label}: the entire native detail capture must retain the same visible standing trio.`);
+      assert.deepEqual(after.supports.map(support => support.id), before.supports.map(support => support.id));
+      assert.ok([...after.members.map(member => member.bounds), ...after.supports].every(bounds =>
+        bounds.x >= x && bounds.y >= y && bounds.right <= x + width && bounds.bottom <= y + height),
+      `${label}: native movement during capture must not crop a hunter layer or ground support.`);
+    }
+    // A late detail remains rejected evidence. Only the existing native
+    // playback retry may handle completion; other mismatches remain fatal.
+    if (!lateCompletion) assert.equal(after.status, 'playing', `${label}: a terminal or paused overlay invalidates the photograph.`);
+    assertSpatial(measured, label);
+    validateFrame?.(measured);
+    (lateCompletion ? report.rejectedCaptures : report.captures).push({ file, sha256: sha256(bytes), viewport: target.viewportSize(), shot: before.shot,
+      region: prepared.region, clip, ...(contextFile ? { contextFile } : {}),
+      attempt, accepted: !lateCompletion, ...(lateCompletion ? { rejection: 'Native completion during PNG acquisition; no visual proof accepted.' } : {}),
+      elapsedBefore: before.elapsedMs, elapsedAfter: after.elapsedMs, measuredAt: measured.elapsedMs,
+      observation: 'Live clock immediately before and after lossless PNG capture; native playing status, shot and optical phase must survive both observations. Complete geometry measured afterwards.' });
+    report.samples.push({ label: photographLabel, ...measured, photoAccepted: !lateCompletion, capturedBefore: before, capturedAfter: after });
+    acquisition.accepted = !lateCompletion; acquisition.file = file;
+    return lateCompletion ? null : { frame: measured, capturedBefore: before, file, attempt };
+  } catch (error) {
+    acquisition.accepted = false; acquisition.rejection = error.message;
+    if (measured) acquisition.failedMeasurement = measured;
+    // readMoment/readFrame can themselves reject before the regular write.
+    // This still preserves the PNG already acquired, without another capture.
+    if (!acquisition.file) {
+      try {
+        const bytes = Buffer.from(screenshot.data, 'base64');
+        const file = `${label}-failed-attempt-${attempt}.png`;
+        await fs.writeFile(path.join(out, file), bytes);
+        acquisition.file = file; acquisition.sha256 = sha256(bytes);
+      } catch (preservationError) { acquisition.preservationError = preservationError.message; }
+    }
+    report.rejectedCaptures.push({ file: acquisition.file ?? null, sha256: acquisition.sha256 ?? null,
+      viewport: target.viewportSize(), shot: before.shot, region: prepared.region, clip,
+      attempt, accepted: false, rejection: error.message,
+      elapsedBefore: before.elapsedMs, elapsedAfter: after?.elapsedMs ?? null,
+      measuredAt: acquisition.measuredAt ?? null, invalidImages: acquisition.invalidImages ?? null,
+      imageReadiness: acquisition.imageReadiness ?? null,
+      ...(acquisition.preservationError ? { preservationError: acquisition.preservationError } : {}),
+      observation: 'Original PNG retained after a failed observation or assertion; not accepted visual evidence.' });
+    throw error;
   }
-  // A late detail remains rejected evidence. It can only request another
-  // native playback when all identity, geometry and phase gates still hold.
-  // Pauses, asset failures, rewinds or any other state mismatch remain fatal.
-  const lateCompletion = prepared.region === 'formation-detail' && after.status === 'complete' && after.elapsedMs === 62_000;
-  if (!lateCompletion) assert.equal(after.status, 'playing', `${label}: a terminal or paused overlay invalidates the photograph.`);
-  const bytes = Buffer.from(screenshot.data, 'base64');
-  const measured = { ...await readFrame(target), decodedSvg: prepared.decodedSvg };
-  assertSpatial(measured, label);
-  validateFrame?.(measured);
-  const photographLabel = label + (lateCompletion ? `-rejected-attempt-${attempt}` : '');
-  const file = photographLabel + '.png';
-  await fs.writeFile(path.join(out, file), bytes);
-  (lateCompletion ? report.rejectedCaptures : report.captures).push({ file, sha256: sha256(bytes), viewport: target.viewportSize(), shot: before.shot,
-    region: prepared.region, clip, ...(contextFile ? { contextFile } : {}),
-    attempt, accepted: !lateCompletion, ...(lateCompletion ? { rejection: 'Native completion during PNG acquisition; no visual proof accepted.' } : {}),
-    elapsedBefore: before.elapsedMs, elapsedAfter: after.elapsedMs, measuredAt: measured.elapsedMs,
-    observation: 'Live clock immediately before and after lossless PNG capture; native playing status, shot and optical phase must survive both observations. Complete geometry measured afterwards.' });
-  report.samples.push({ label: photographLabel, ...measured, photoAccepted: !lateCompletion, capturedBefore: before, capturedAfter: after });
-  acquisition.accepted = !lateCompletion; acquisition.file = file;
-  return lateCompletion ? null : { frame: measured, capturedBefore: before, file, attempt };
 }
 
 async function prepareMoment(target = page, region = 'scene') {

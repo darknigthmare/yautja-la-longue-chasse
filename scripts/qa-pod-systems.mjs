@@ -60,12 +60,43 @@ const report = {
   runtime: 'Production Next /dev, native arrival and HuntCanvas; no injected gameplay state or clock',
   scope: 'Atmospheric shutters and heating, natural triad handoff, safe remote pod controls, native in-memory suspend/resume, single-pod and ship exclusions, isolated reset/reload. No campaign durability, art approval or performance qualification.',
   checks: [], captures: [], arrivalFrames: [], arrivalObservations: [], huntObservations: [],
-  movement: [], armingPreparations: [], armingCommands: [], persistence: [], storageChecks: [], storageOperations: [], databaseOpens: [],
+  movement: [], armingPreparations: [], armingCommands: [], progress: [], persistence: [], storageChecks: [], storageOperations: [], databaseOpens: [],
   errors: [], consoleErrors: [], failedRequests: [],
 };
 const requested = new Set(), missing = new Set();
 let browser, context, page, server, serverExit = null;
 let currentCheck = 'setup', destinationId = null;
+const recipeStartedAt = performance.now();
+
+async function recordProgress(phase, details = {}) {
+  const event = { at: new Date().toISOString(), elapsedWallMs: performance.now() - recipeStartedAt,
+    check: currentCheck, phase, ...details };
+  report.progress.push(event);
+  const writeStartedAt = performance.now();
+  // A cancelled CI job may never reach finally. Keep an atomic, explicitly
+  // partial report with the last live read, not a stale persistence position.
+  const partial = { schema: report.schema, partial: true,
+    status: report.passed === false || report.checks.some(check => !check.passed) ? 'failed' : 'running',
+    startedAt: report.startedAt, updatedAt: event.at,
+    sourceCommit, sourceHashes, workingTreeDirty: report.workingTreeDirty, workingTreeStatus,
+    url: route.href, browserMode: report.browserMode, browserVersion: report.browserVersion,
+    runtime: report.runtime, scope: report.scope, currentCheck, destinationId, latestProgress: event,
+    checks: report.checks, captures: report.captures, movement: report.movement,
+    armingPreparations: report.armingPreparations, armingCommands: report.armingCommands,
+    latestHuntObservation: report.huntObservations.at(-1) ?? null,
+    latestArrivalObservation: report.arrivalObservations.at(-1) ?? null,
+    errors: report.errors, consoleErrors: report.consoleErrors, failedRequests: report.failedRequests,
+    missingAssets: [...missing].sort(), requestedAssets: [...requested].sort(),
+    passed: report.passed ?? null, failure: report.failure ?? null };
+  const temporary = path.join(out, 'report.partial.json.tmp');
+  await fs.writeFile(temporary, JSON.stringify(partial, null, 2) + '\n');
+  await fs.rename(temporary, path.join(out, 'report.partial.json'));
+  // This completed duration appears in the log/final report and in the next
+  // movement snapshot. Do not rewrite a snapshot just to time its own write.
+  event.progressWriteMs = performance.now() - writeStartedAt;
+  console.log('PROGRESS', JSON.stringify(event));
+  return event;
+}
 
 async function startServer() {
   if (process.env.POD_SYSTEMS_START_SERVER !== '1') return;
@@ -196,11 +227,14 @@ async function assertIsolated(label) {
 async function check(name, run) {
   currentCheck = name;
   try {
+    await recordProgress('check-start');
     await run();
     if (page && new URL(page.url()).pathname === '/dev') await assertIsolated(name);
     report.checks.push({ name, passed: true }); console.log('PASS', name);
+    await recordProgress('check-pass');
   } catch (error) {
-    report.checks.push({ name, passed: false, message: error.message }); throw error;
+    report.checks.push({ name, passed: false, message: error.message });
+    await recordProgress('check-fail', { message: error.message }); throw error;
   }
 }
 
@@ -345,6 +379,8 @@ async function companionOrder(id, order) {
 }
 
 const preparationMargin = 48;
+const walkObservationLimit = 140, walkHeldLimitMs = 140 * 650;
+const walkBudget = () => ({ remaining: walkObservationLimit, heldMs: 0 });
 function formationClear(observed, held = false, margin = preparationMargin) {
   const members = observed.live.companions;
   return members.length === (observed.live.team === 'triad' ? 2 : 0) && members.every(member =>
@@ -352,37 +388,119 @@ function formationClear(observed, held = false, margin = preparationMargin) {
     (!held || member.order === 'hold'));
 }
 
-async function walkUntil(reason, label, budget = { remaining: 140 }, margin = preparationMargin) {
-  // A bounded real-input walk; no actor teleport, artificial checkpoint, health
-  // change, obstacle removal or virtual time is allowed to rescue a failing route.
-  const start = await observeHunt(`${label}-start`);
-  for (let pulse = 0; pulse <= 140; pulse++) {
-    const state = await observeHunt(`${label}-${pulse}`);
-    if (state.live.reason === reason && state.live.distance >= api.HUNT_POD_RECOVERY.safeRadius + preparationMargin &&
-        (reason !== 'ready' || formationClear(state, false, margin))) {
-      report.movement.push({ label, pulses: pulse, start, finish: state }); return state;
+async function walkUntil(reason, label, budget = walkBudget(), margin = preparationMargin) {
+  // Keep the real direction held while reading the live DOM. Releasing it for
+  // each RPC artificially stops the walk; no gameplay clock or actor is changed.
+  const movement = { label, target: reason, margin, startedAt: new Date().toISOString(),
+    limits: { observations: walkObservationLimit, heldMs: walkHeldLimitMs }, budgetBefore: { ...budget },
+    observations: [], start: null, finish: null, input: null };
+  report.movement.push(movement);
+  const holdAllowance = Math.max(0, walkHeldLimitMs - budget.heldMs);
+  let holdStartedAt = null, holdTimer, releasePromise, deadlineReached = false, failure = null;
+  const holdElapsedMs = () => holdStartedAt === null ? 0 : movement.input.heldMs ?? performance.now() - holdStartedAt;
+  const release = releaseReason => {
+    if (holdStartedAt === null) return Promise.resolve();
+    if (!releasePromise) {
+      const requestedAt = performance.now();
+      movement.input.releaseReason = releaseReason;
+      movement.input.upRequestedAt = new Date().toISOString();
+      movement.input.holdUntilReleaseRequestMs = requestedAt - holdStartedAt;
+      releasePromise = page.keyboard.up('ArrowRight').then(() => {
+        movement.input.upAcknowledgedAt = new Date().toISOString();
+        // Conservatively include transport before down and through up: even
+        // time spent in a slow observation consumes this shared real-time limit.
+        movement.input.heldMs = performance.now() - holdStartedAt;
+        movement.input.releaseLatencyMs = performance.now() - requestedAt;
+      });
     }
-    assert.notEqual(state.live.reason, 'out-of-range', 'The walk lost radio contact before it reached a safe formation.');
-    assert.equal(state.live.state, 'ready', 'The traversal unexpectedly armed or destroyed a pod.');
-    if (budget.remaining === 0) break;
-    budget.remaining -= 1;
+    return releasePromise;
+  };
+  const withinHoldBudget = () => {
+    assert.ok(!deadlineReached && (holdStartedAt === null || holdElapsedMs() < holdAllowance),
+      `The native ground traversal exhausted its 91-second cumulative held-input budget (${label}).`);
+  };
+  try {
+    await recordProgress('walk-start', { label, reason, margin, budget: { ...budget } });
     const canvas = hunt().locator('.hunt-canvas');
     await canvas.scrollIntoViewIfNeeded(); await canvas.focus();
-    await page.keyboard.down('ArrowRight');
-    try { await page.waitForTimeout(650); }
-    finally { await page.keyboard.up('ArrowRight'); }
+    while (budget.remaining > 0) {
+      withinHoldBudget();
+      budget.remaining -= 1;
+      const readStartedAt = performance.now();
+      const state = await observeHunt(`${label}-${movement.observations.length}`);
+      movement.start ??= state;
+      const sample = { observation: movement.observations.length + 1, at: new Date().toISOString(),
+        readMs: performance.now() - readStartedAt, heldMs: budget.heldMs + holdElapsedMs(),
+        browserObservedAt: state.live.observedAt, reason: state.live.reason, state: state.live.state,
+        distance: state.live.distance, radioDistance: state.live.radioDistance,
+        focused: state.live.focused, canvasFocused: state.live.canvasFocused, hidden: state.live.hidden,
+        companions: state.live.companions.map(({ id, x, y, order, status, groundedOnFloor, horizontalDistance }) =>
+          ({ id, x, y, order, status, groundedOnFloor, horizontalDistance })) };
+      movement.observations.push(sample);
+      withinHoldBudget();
+      assert.ok(state.live.focused && state.live.canvasFocused && !state.live.hidden,
+        'The native walk lost its visible, focused canvas; it must not silently resume or refocus.');
+      assert.equal(state.live.run, movement.start.live.run, 'The native walk changed insertion run.');
+      assert.equal(state.canvasMounts, movement.start.canvasMounts, 'The native walk remounted its canvas.');
+      assert.notEqual(state.live.reason, 'out-of-range', 'The walk lost radio contact before it reached a safe formation.');
+      assert.ok(state.live.radioDistance <= api.HUNT_POD_RECOVERY.radioRange, 'The walk exceeded the real radio range.');
+      assert.equal(state.live.state, 'ready', 'The traversal unexpectedly armed or destroyed a pod.');
+      assert.ok(['ready', 'unsafe-player', 'unsafe-companion'].includes(state.live.reason),
+        'The traversal requires an operational hunt; a pause, death or unavailable command must stop it.');
+      if (state.live.reason === reason && state.live.distance >= api.HUNT_POD_RECOVERY.safeRadius + preparationMargin &&
+          (reason !== 'ready' || formationClear(state, false, margin))) {
+        movement.finish = state; break;
+      }
+      const progress = await recordProgress('walk-observation', { label, ...sample, observationsRemaining: budget.remaining });
+      sample.progressWriteMs = progress.progressWriteMs;
+      withinHoldBudget();
+      assert.ok(budget.remaining > 0, `The native traversal exhausted its 140 cumulative observations (${label}).`);
+      assert.ok(holdAllowance > 0, `The native traversal has no held-input budget remaining (${label}).`);
+      if (holdStartedAt === null) {
+        holdStartedAt = performance.now();
+        movement.input = { downRequestedAt: new Date().toISOString() };
+        // This deadline releases the key independently of a pending browser RPC.
+        holdTimer = setTimeout(() => {
+          deadlineReached = true;
+          void release('held-time-limit').catch(error => { movement.releaseError = String(error); });
+        }, holdAllowance);
+        await page.keyboard.down('ArrowRight');
+        movement.input.downAcknowledgedAt = new Date().toISOString();
+      }
+      withinHoldBudget();
+      await new Promise(resolve => setTimeout(resolve, Math.min(650, Math.max(0, holdAllowance - holdElapsedMs()))));
+    }
+    assert.ok(movement.finish, `The native traversal did not reach ${reason} within its bounded observations (${label}).`);
+  } catch (error) {
+    failure = error; movement.failure = error.stack || String(error);
+  } finally {
+    try { await release(movement.finish ? 'condition-reached' : 'walk-stopped'); }
+    catch (error) { movement.releaseError = String(error); failure ??= error; }
+    clearTimeout(holdTimer);
+    if (holdStartedAt !== null) budget.heldMs += movement.input.heldMs ?? holdElapsedMs();
+    movement.finishedAt = new Date().toISOString();
+    movement.budgetAfter = { ...budget };
   }
-  throw new Error(`The native ground traversal did not reach ${reason} within its 140 cumulative real input pulses (${label}).`);
+  if (!failure && budget.heldMs > walkHeldLimitMs) {
+    failure = new Error(`The native key release exceeded the 91-second cumulative held-input limit (${label}).`);
+    movement.failure = failure.stack;
+  }
+  await recordProgress('walk-end', { label, reached: Boolean(movement.finish) && !failure,
+    observations: movement.observations.length, heldMs: movement.input?.heldMs ?? 0,
+    budget: { ...budget }, failure: failure?.message ?? null });
+  if (failure) throw failure;
+  return movement.finish;
 }
 
 async function prepareAndPressArm(label) {
-  const budget = { remaining: 140 };
+  const budget = walkBudget();
   let preparation;
   for (let attempt = 1; attempt <= 3; attempt++) {
     const initial = await observeHunt(`${label}-preparation-${attempt}-start`);
     const margin = preparationMargin * attempt;
     preparation = { label, attempt, margin, initial, accepted: false };
     report.armingPreparations.push(preparation);
+    await recordProgress('arming-preparation-start', { label, attempt, margin, budget: { ...budget } });
     assert.equal(initial.live.state, 'ready', 'Only an unarmed pod may enter arming preparation.');
     assert.ok(['ready', 'unsafe-player', 'unsafe-companion'].includes(initial.live.reason),
       'Arming preparation requires an operational hunt within radio range.');
@@ -402,11 +520,14 @@ async function prepareAndPressArm(label) {
     preparation.afterHold = await observeHunt(`${label}-preparation-${attempt}-after-hold`);
     await page.waitForTimeout(250);
     preparation.settled = await observeHunt(`${label}-preparation-${attempt}-settled`);
-    preparation.pulsesUsed = 140 - budget.remaining;
+    preparation.observationsUsed = walkObservationLimit - budget.remaining;
+    preparation.heldMs = budget.heldMs;
     const positions = sample => sample.live.companions.map(({ id, x, y }) => ({ id, x, y }));
     preparation.stable = JSON.stringify(positions(preparation.afterHold)) === JSON.stringify(positions(preparation.settled));
     const ready = [preparation.afterHold, preparation.settled].every(sample =>
       formationClear(sample, true) && sample.live.reason === 'ready');
+    await recordProgress('arming-preparation-settled', { label, attempt, ready, stable: preparation.stable,
+      observationsUsed: preparation.observationsUsed, heldMs: preparation.heldMs });
     if (ready && preparation.stable) break;
     preparation.rejection = 'Native formation moved or lost its floor clearance before any arming input.';
     for (const sample of [preparation.afterHold, preparation.settled]) {
@@ -417,6 +538,9 @@ async function prepareAndPressArm(label) {
     }
     assert.ok(attempt < 3, 'The native formation did not remain safely held after three bounded preparations.');
   }
+  // Persist the preparation before panel/focus work and the final live guard;
+  // no disk write is inserted between that guard, X, cancellation or pause.
+  await recordProgress('arming-preparation-ready', { label, attempt: preparation.attempt, budget: { ...budget } });
   await setFieldOpen(true);
   const canvas = hunt().locator('.hunt-canvas');
   await canvas.scrollIntoViewIfNeeded(); await canvas.focus();
@@ -478,6 +602,7 @@ async function suspendAndResume(label, expectedPhase) {
 
 try {
   if (process.env.POD_SYSTEMS_REQUIRE_CLEAN === '1') assert.equal(report.workingTreeDirty, false, 'The reviewed checkout must be clean.');
+  await recordProgress('setup');
   await startServer();
   browser = await chromium.launch({ headless, ...(process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH
     ? { executablePath: process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH } : {}) });
@@ -658,6 +783,7 @@ try {
 } catch (error) {
   report.passed = false; report.failure = error.stack || String(error);
   console.error(error.stack || error);
+  await recordProgress('failure', { message: error.message || String(error) });
   if (page) {
     try {
       report.failureState = await page.evaluate(() => ({ url: location.href, hidden: document.hidden, focused: document.hasFocus(),
