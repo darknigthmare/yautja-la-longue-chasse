@@ -60,7 +60,7 @@ const report = {
   browserMode: headed ? 'headed' : 'headless',
   scope: 'Actual component rendering at native shot boundaries on desktop/mobile; all eight destinations; seven representative orbital hulls; four insertion combinations plus paid optical camouflage, and three grounded hull profiles; natural production /dev arrival and real hunt handoffs. Spatial evidence is distinct from artistic or canonical approval. Ship contact and exit points follow source composition, without a claim about canonical landing gear or release bays.',
   timing: 'Unmodified native requestAnimationFrame. Samples wait for elapsed-time thresholds and retain observed times; no virtual or accelerated clock. Dense egress geometry is measured without PNG encoding; its photographs use independent playbacks from the same native shot boundary. Final trio details allow at most three native playbacks solely when screenshot acquisition crosses completion; every rejected PNG and interval is retained separately.',
-  nativeUrl: nativeUrl.href, checks: [], samples: [], movement: [], captures: [], rejectedCaptures: [], captureAttempts: [], contactObservations: [],
+  nativeUrl: nativeUrl.href, checks: [], samples: [], movement: [], captures: [], rejectedCaptures: [], captureAttempts: [], capturePreflights: [], contactObservations: [],
   resizes: [], ships: [], insertions: [], native: {}, errors: [], consoleErrors: [], missingAssets: [], requestedAssets: [],
 };
 const requested = new Set(), missing = new Set();
@@ -880,15 +880,75 @@ async function capture(label, target = page, options = {}) {
 // bracket that PNG with another light clock read, then measure the complete
 // geometry. PNG compression is optimized for speed but remains lossless.
 // The final trio has only 250 ms before completion. Its detail photograph uses
-// a native renderer-view whole-viewport PNG (fromSurface: false), then a
+// a native surface PNG of a ROI prepared before the final interval, then a
 // verified lossless integer crop containing
 // all three rigs, overflowing equipment, labels and ground supports. The source
 // PNG is retained; all cropping happens after the temporal/geometry reads.
-// Other captures keep the surface backend. Neither backend supplies an exact
+// A dedicated metrics session prepares the output ROI while retaining the full
+// CSS viewport. A separate capture-only session avoids screenshot-time device
+// emulation resize/restoration. Ordinary captures keep their existing clip on
+// the metrics-owning session, so they restore its complete baseline instead of
+// an unrelated empty emulation state. The capture-only session never gets a clip.
+// Neither capture mode supplies an exact
 // frame timestamp; the unchanged before/after observations remain mandatory.
 // The preceding walking image supplies full-scene
 // context; the same before/after timing gates still reject a late detail PNG.
 const momentCaptureSessions = new WeakMap();
+async function momentSessions(target) {
+  if (!momentCaptureSessions.has(target)) {
+    const metricsSession = await target.context().newCDPSession(target);
+    const captureSession = await target.context().newCDPSession(target);
+    momentCaptureSessions.set(target, { metricsSession, captureSession, baseline: null, activeRoi: null });
+  }
+  return momentCaptureSessions.get(target);
+}
+
+async function syncMomentViewport(target) {
+  const sessions = await momentSessions(target);
+  assert.equal(sessions.activeRoi, null, 'A prepared ROI must be restored before viewport changes or navigation.');
+  const viewport = target.viewportSize();
+  assert.ok(viewport?.width > 0 && viewport.height > 0);
+  // Match the locked Playwright 1.63.0 non-mobile context exactly. Keep this
+  // session attached until context.close(); clear/detach could undo Playwright.
+  sessions.baseline = { width: viewport.width, height: viewport.height,
+    screenWidth: viewport.width, screenHeight: viewport.height, deviceScaleFactor: 1,
+    mobile: false, screenOrientation: { angle: 0, type: 'landscapePrimary' }, dontSetVisibleSize: false };
+  await sessions.metricsSession.send('Emulation.setDeviceMetricsOverride', sessions.baseline);
+  return sessions;
+}
+
+async function restoreMomentViewport(prepared) {
+  if (!prepared?.sessions?.activeRoi) return;
+  // Omit viewport to restore the complete baseline; never clear another
+  // session's effective metrics. This runs after the capture observations.
+  await prepared.sessions.metricsSession.send('Emulation.setDeviceMetricsOverride', prepared.sessions.baseline);
+  prepared.sessions.activeRoi = null;
+}
+
+function captureLayout(moment) {
+  return { viewport: moment.captureViewport, layout: moment.captureLayout };
+}
+
+function assertCaptureLayout(moment, expected, viewport, label) {
+  assert.deepEqual(captureLayout(moment), expected, `${label}: prepared capture must preserve the native CSS viewport and scene boxes.`);
+  assert.equal(moment.captureViewport.innerWidth, viewport.width);
+  assert.equal(moment.captureViewport.innerHeight, viewport.height);
+  assert.equal(moment.captureViewport.devicePixelRatio, 1);
+  assert.equal(moment.captureViewport.screen.width, viewport.width);
+  assert.equal(moment.captureViewport.screen.height, viewport.height);
+  assert.equal(moment.captureViewport.screen.orientation.angle, 0);
+  assert.equal(moment.captureViewport.screen.orientation.type, 'landscape-primary');
+  assert.equal(moment.captureViewport.visualViewport.scale, 1);
+  assert.equal(moment.captureViewport.visualViewport.width, viewport.width);
+  assert.equal(moment.captureViewport.visualViewport.height, viewport.height);
+  assert.equal(moment.captureViewport.scrollX, 0);
+  assert.equal(moment.captureViewport.scrollY, 0);
+  assert.equal(moment.captureViewport.visualViewport.offsetLeft, 0);
+  assert.equal(moment.captureViewport.visualViewport.offsetTop, 0);
+  assert.equal(moment.captureViewport.visualViewport.pageLeft, 0);
+  assert.equal(moment.captureViewport.visualViewport.pageTop, 0);
+}
+
 async function readMoment(target, region, schedule) {
   return target.evaluate(({ region, schedule }) => {
     const evaluationStartedAtMs = performance.now();
@@ -949,7 +1009,24 @@ async function readMoment(target, region, schedule) {
             ? Number(getComputedStyle(hull.querySelector('[data-arrival-cloak-body]')).opacity) : null,
           lens: !!hull.querySelector('[data-arrival-cloak-refraction]'), rim: !!hull.querySelector('[data-arrival-cloak-rim]'),
         })),
-        members, ...(region === 'formation-detail' ? { supports } : {}),
+        members, ...(region === 'formation-detail' ? {
+          supports,
+          captureViewport: {
+            innerWidth, innerHeight, devicePixelRatio, scrollX, scrollY,
+            documentElement: { clientWidth: document.documentElement.clientWidth,
+              clientHeight: document.documentElement.clientHeight },
+            screen: { width: screen.width, height: screen.height,
+              orientation: { angle: screen.orientation.angle, type: screen.orientation.type } },
+            visualViewport: { offsetLeft: visualViewport.offsetLeft, offsetTop: visualViewport.offsetTop,
+              pageLeft: visualViewport.pageLeft, pageTop: visualViewport.pageTop,
+              width: visualViewport.width, height: visualViewport.height, scale: visualViewport.scale },
+          },
+          captureLayout: { root: rect(root), scene: rect(root.querySelector('[data-arrival-scene]')),
+            stage: rect(root.querySelector('[data-arrival-stage]')) },
+          focus: { document: document.hasFocus(), tag: document.activeElement?.tagName,
+            id: document.activeElement?.id, ariaLabel: document.activeElement?.getAttribute('aria-label'),
+            text: document.activeElement?.textContent.trim(), withinArrival: root.contains(document.activeElement) },
+        } : {}),
       };
       const finishedAtMs = performance.now();
       moment.observationTiming = { clock: 'browser performance.now()', evaluationStartedAtMs, readStartedAtMs,
@@ -1023,6 +1100,11 @@ async function losslessNativeDetailCrop(sourceBytes, clip, viewport) {
 }
 
 async function captureMoment(label, prepared, target = page, attempt = 1, validateFrame, schedule) {
+  try { return await capturePreparedMoment(label, prepared, target, attempt, validateFrame, schedule); }
+  finally { await restoreMomentViewport(prepared); }
+}
+
+async function capturePreparedMoment(label, prepared, target = page, attempt = 1, validateFrame, schedule) {
   const acquisition = { label, attempt, schedule: schedule ?? null, before: null,
     timings: { clock: 'Node performance.now(); origin differs from browser performance.now()',
       startedAtMs: performance.now(), stages: {} } };
@@ -1056,13 +1138,17 @@ async function captureMoment(label, prepared, target = page, attempt = 1, valida
     // Publish the retained source before decoding/cropping: any later failure
     // must still leave the exact native bytes and their identity in the report.
     acquisition.sourceCapture = { file, sha256: sha256(bytes), bytes: bytes.length,
-      kind: 'native-whole-viewport-png', backend: 'native-renderer-view', fromSurface: false,
+      kind: 'native-prepared-roi-png', backend: 'native-surface-with-preconfigured-roi', fromSurface: true,
+      roi: prepared.sourceRoi, cssViewport: target.viewportSize(),
+      preparation: prepared.roiPreparation,
       width: null, height: null };
     startStage('nativeSourceMetadata');
     try {
       const metadata = await sharp(bytes).metadata();
       assert.equal(metadata.format, 'png');
       acquisition.sourceCapture.width = metadata.width; acquisition.sourceCapture.height = metadata.height;
+      assert.equal(metadata.width, prepared.sourceRoi.width);
+      assert.equal(metadata.height, prepared.sourceRoi.height);
     } finally { finishStage('nativeSourceMetadata'); }
   };
   report.captureAttempts.push(acquisition);
@@ -1078,6 +1164,9 @@ async function captureMoment(label, prepared, target = page, attempt = 1, valida
   assert.ok(x >= 0 && y >= 0 && x + width <= target.viewportSize().width + 1 &&
     y + height <= target.viewportSize().height + 1, `${label}: the unmodified scene must fit the screenshot viewport.`);
   if (prepared.region === 'formation-detail') {
+    assertCaptureLayout(before, prepared.layout, target.viewportSize(), label);
+    assert.ok(prepared.roiPreparation.elapsedAfter < schedule.atMs,
+      `${label}: the output ROI must be fully prepared before the unchanged final capture threshold.`);
     assert.equal(typeof validateFrame, 'function', `${label}: every final attempt needs the original formation and grounded-hull checks.`);
     assert.ok(report.captures.some(capture => capture.file === contextFile && capture.region === 'scene'),
       `${label}: a separate full-scene walking photograph must provide the actual formation context.`);
@@ -1104,10 +1193,18 @@ async function captureMoment(label, prepared, target = page, attempt = 1, valida
       `${label}: the final formation detail must be a smaller native region, without rescaling.`);
   }
   const clip = { x, y, width, height, scale: 1 };
-  const wholeViewportSource = prepared.region === 'formation-detail';
-  acquisition.captureMode = wholeViewportSource ? 'native-view-whole-viewport-then-lossless-detail' : 'native-clipped-png';
-  acquisition.fromSurface = !wholeViewportSource;
+  const preparedRoiSource = prepared.region === 'formation-detail';
+  const sourceClip = preparedRoiSource ? { ...clip, x: x - prepared.sourceRoi.x, y: y - prepared.sourceRoi.y } : clip;
+  if (preparedRoiSource) {
+    assert.ok(sourceClip.x >= 0 && sourceClip.y >= 0 &&
+      sourceClip.x + width <= prepared.sourceRoi.width && sourceClip.y + height <= prepared.sourceRoi.height,
+    `${label}: every final layer and the existing detail margin must fit the ROI prepared before the interval.`);
+  }
+  acquisition.captureMode = preparedRoiSource ? 'native-preconfigured-roi-then-lossless-detail' : 'native-clipped-png';
+  acquisition.captureSessionRole = preparedRoiSource ? 'capture-only-session' : 'metrics-baseline-owner';
+  acquisition.fromSurface = true;
   acquisition.clip = clip;
+  if (preparedRoiSource) acquisition.sourceClip = sourceClip;
   finishStage('validationAndClip');
   // This span includes dispatch, native acquisition/encoding and return. It
   // must not be described as an isolated PNG-encoding or transport duration.
@@ -1115,7 +1212,7 @@ async function captureMoment(label, prepared, target = page, attempt = 1, valida
   let screenshot;
   try {
     screenshot = await prepared.captureSession.send('Page.captureScreenshot', {
-      format: 'png', ...(wholeViewportSource ? {} : { clip }), fromSurface: acquisition.fromSurface,
+      format: 'png', ...(preparedRoiSource ? {} : { clip }), fromSurface: acquisition.fromSurface,
       captureBeyondViewport: false, optimizeForSpeed: true,
     });
   } finally { finishStage('screenshotRpc'); }
@@ -1138,19 +1235,19 @@ async function captureMoment(label, prepared, target = page, attempt = 1, valida
     const file = photographLabel + '.png';
     let bytes = Buffer.from(screenshot.data, 'base64');
     finishStage('pngMaterialization');
-    if (wholeViewportSource) {
+    if (preparedRoiSource) {
       await preserveNativeSource(`${photographLabel}-source-native.png`, bytes);
       startStage('losslessDetailPostprocessing');
       try {
-        const cropped = await losslessNativeDetailCrop(bytes, clip, target.viewportSize());
+        const cropped = await losslessNativeDetailCrop(bytes, sourceClip, prepared.sourceRoi);
         bytes = cropped.bytes;
         acquisition.pixelEquality = cropped.pixelEquality;
         acquisition.cropProcessingTiming = cropped.processingTiming;
       } finally { finishStage('losslessDetailPostprocessing'); }
     }
     // Both photograph times and exact geometry are already observed. Save the
-    // native scene or verified derivative before assertions. The whole native
-    // source for a detail was saved first and survives every crop/assert failure.
+    // native scene or verified derivative before assertions. The native source ROI
+    // for a detail was saved first and survives every crop/assert failure.
     startStage('pngWrite');
     try { await fs.writeFile(path.join(out, file), bytes); }
     finally { finishStage('pngWrite'); }
@@ -1167,6 +1264,7 @@ async function captureMoment(label, prepared, target = page, attempt = 1, valida
     assert.equal(measured.contact, after.contact, `${label}: subsequent geometry must retain the photographed ground-contact phase.`);
     assert.ok(measured.elapsedMs >= after.elapsedMs, `${label}: subsequent geometry must not rewind the native clock.`);
     if (prepared.region === 'formation-detail') {
+      if (!lateCompletion) assertCaptureLayout(after, prepared.layout, target.viewportSize(), label);
       const identityAndPose = members => members.map(({ id, stage, contact, portal, opacity }) => ({ id, stage, contact, portal, opacity }));
       assert.deepEqual(identityAndPose(after.members), identityAndPose(before.members),
         `${label}: the entire native detail capture must retain the same visible standing trio.`);
@@ -1182,7 +1280,7 @@ async function captureMoment(label, prepared, target = page, attempt = 1, valida
     validateFrame?.(measured);
     (lateCompletion ? report.rejectedCaptures : report.captures).push({ file, sha256: sha256(bytes), viewport: target.viewportSize(), shot: before.shot,
       region: prepared.region, clip, ...(contextFile ? { contextFile } : {}),
-      ...(wholeViewportSource ? { evidenceKind: 'verified-lossless-integer-rgba-crop', sourceCapture: acquisition.sourceCapture,
+      ...(preparedRoiSource ? { evidenceKind: 'verified-lossless-integer-rgba-crop', sourceCapture: acquisition.sourceCapture, sourceClip,
         pixelEquality: acquisition.pixelEquality } : { evidenceKind: 'native-clipped-png' }),
       attempt, accepted: !lateCompletion, ...(lateCompletion ? { rejection: 'Native completion during PNG acquisition; no visual proof accepted.' } : {}),
       elapsedBefore: before.elapsedMs, elapsedAfter: after.elapsedMs, measuredAt: measured.elapsedMs,
@@ -1203,7 +1301,7 @@ async function captureMoment(label, prepared, target = page, attempt = 1, valida
       startStage('failedPngPreservation');
       try {
         const bytes = Buffer.from(screenshot.data, 'base64');
-        if (wholeViewportSource) {
+        if (preparedRoiSource) {
           if (!acquisition.sourceCapture) await preserveNativeSource(`${label}-failed-attempt-${attempt}-source-native.png`, bytes);
         } else {
           const file = `${label}-failed-attempt-${attempt}.png`;
@@ -1216,8 +1314,8 @@ async function captureMoment(label, prepared, target = page, attempt = 1, valida
     report.rejectedCaptures.push({ file: acquisition.file ?? acquisition.sourceCapture?.file ?? null,
       sha256: acquisition.sha256 ?? acquisition.sourceCapture?.sha256 ?? null,
       viewport: target.viewportSize(), shot: before.shot, region: prepared.region, clip,
-      ...(wholeViewportSource ? { evidenceKind: acquisition.file ? 'verified-lossless-integer-rgba-crop' : 'native-whole-viewport-source',
-        sourceCapture: acquisition.sourceCapture ?? null, pixelEquality: acquisition.pixelEquality ?? null } : { evidenceKind: 'native-clipped-png' }),
+      ...(preparedRoiSource ? { evidenceKind: acquisition.file ? 'verified-lossless-integer-rgba-crop' : 'native-prepared-roi-source',
+        sourceCapture: acquisition.sourceCapture ?? null, sourceClip, pixelEquality: acquisition.pixelEquality ?? null } : { evidenceKind: 'native-clipped-png' }),
       attempt, accepted: false, rejection: error.message,
       elapsedBefore: before.elapsedMs, elapsedAfter: after?.elapsedMs ?? null,
       measuredAt: acquisition.measuredAt ?? null, invalidImages: acquisition.invalidImages ?? null,
@@ -1229,13 +1327,134 @@ async function captureMoment(label, prepared, target = page, attempt = 1, valida
   }
 }
 
-async function prepareMoment(target = page, region = 'scene') {
+async function prepareMoment(target = page, region = 'scene', captureAtMs) {
   assert.ok(['scene', 'formation-detail'].includes(region));
   const decodedSvg = await decodeSceneImages(target);
   const scene = await target.locator('[data-arrival-scene]').boundingBox();
   assert.ok(scene);
-  if (!momentCaptureSessions.has(target)) momentCaptureSessions.set(target, await target.context().newCDPSession(target));
-  return { decodedSvg, scene, region, captureSession: momentCaptureSessions.get(target) };
+  const sessions = await momentSessions(target);
+  assert.ok(sessions.baseline, 'The metrics session must have the current full CSS viewport baseline.');
+  const prepared = { decodedSvg, scene, region, sessions,
+    captureSession: region === 'formation-detail' ? sessions.captureSession : sessions.metricsSession };
+  if (region !== 'formation-detail') {
+    assert.equal(sessions.activeRoi, null, 'Ordinary clipped captures require the complete metrics baseline.');
+    return prepared;
+  }
+  assert.equal(sessions.activeRoi, null);
+  const before = await readMoment(target, region);
+  if (before.status === 'playing') assert.ok(Number.isFinite(captureAtMs) && before.elapsedMs < captureAtMs,
+    'A native output ROI must be configured before the final capture interval starts.');
+  prepared.layout = captureLayout(before);
+  assertCaptureLayout(before, prepared.layout, target.viewportSize(), 'ROI preparation');
+  const x = Math.ceil(scene.x), y = Math.floor(scene.y + scene.height / 2);
+  prepared.sourceRoi = { x, y, width: Math.floor(scene.x + scene.width) - x,
+    height: Math.floor(scene.y + scene.height) - y, scale: 1 };
+  assert.ok(prepared.sourceRoi.width > 0 && prepared.sourceRoi.height > 0);
+  prepared.roiPreparation = { elapsedBefore: before.elapsedMs, sourceRoi: prepared.sourceRoi,
+    cssViewport: target.viewportSize(), layout: prepared.layout };
+  const startedAtMs = performance.now();
+  // Mark before sending: even a failed command may have changed the target.
+  sessions.activeRoi = prepared.sourceRoi;
+  try {
+    await sessions.metricsSession.send('Emulation.setDeviceMetricsOverride', { ...sessions.baseline, viewport: prepared.sourceRoi });
+    const after = await readMoment(target, region);
+    assertCaptureLayout(after, prepared.layout, target.viewportSize(), 'ROI configuration');
+    assert.equal(after.run, before.run); assert.equal(after.shot, before.shot);
+    assert.equal(after.status, before.status, 'Preparing the output ROI must preserve the native playback status.');
+    assert.ok(after.elapsedMs >= before.elapsedMs, 'Preparing the output ROI must not rewind the native clock.');
+    if (after.status === 'playing') assert.ok(after.elapsedMs < captureAtMs,
+      'The native output ROI must finish configuration before the unchanged final capture interval.');
+    prepared.roiPreparation.elapsedAfter = after.elapsedMs;
+    prepared.roiPreparation.durationMs = performance.now() - startedAtMs;
+    return prepared;
+  } catch (error) {
+    await restoreMomentViewport(prepared);
+    throw error;
+  }
+}
+
+async function preflightMomentRoi(viewport, target = page) {
+  const calibration = { viewport: viewport.id, kind: 'paused-capture-calibration-only', passed: false,
+    scope: 'Native Pause control; full source, prepared ROI and restored full source. Never final-formation visual evidence.',
+    images: [], observations: [] };
+  report.capturePreflights.push(calibration);
+  const observe = async label => {
+    const moment = await readMoment(target, 'formation-detail');
+    calibration.observations.push({ label, ...moment });
+    return moment;
+  };
+  const pausedState = moment => ({ run: moment.run, shot: moment.shot, status: moment.status,
+    elapsedMs: moment.elapsedMs, cloakPhase: moment.cloakPhase, contact: moment.contact,
+    members: moment.members, supports: moment.supports, cloakHulls: moment.cloakHulls,
+    ...captureLayout(moment), focus: moment.focus });
+  const source = async (suffix, session, size) => {
+    const screenshot = await session.send('Page.captureScreenshot', {
+      format: 'png', fromSurface: true, captureBeyondViewport: false, optimizeForSpeed: true,
+    });
+    const bytes = Buffer.from(screenshot.data, 'base64');
+    const file = `${viewport.id}-roi-calibration-${suffix}.png`;
+    await fs.writeFile(path.join(out, file), bytes);
+    const item = { file, sha256: sha256(bytes), bytes: bytes.length, evidenceKind: 'calibration-only-native-png' };
+    calibration.images.push(item);
+    const metadata = await sharp(bytes).metadata();
+    Object.assign(item, { width: metadata.width, height: metadata.height });
+    assert.equal(metadata.format, 'png');
+    assert.equal(metadata.width, size.width); assert.equal(metadata.height, size.height);
+    return bytes;
+  };
+  let prepared;
+  try {
+    await openShot(primaryMission.id, 'egress', false, api.DEFAULT_SHIP_ID, { version: 1, method: 'pod', team: 'triad' });
+    await target.getByRole('button', { name: 'Pause', exact: true }).click();
+    await target.locator('[data-arrival-status="paused"]').waitFor();
+    const paused = await observe('paused-before-neutral-pointer');
+    const finalAtMs = api.ARRIVAL_HUNTER_MOVE_END_MS + Math.max(...api.arrivalFormationSlots('triad').map(slot => slot.delayMs)) + 10;
+    assert.ok(paused.elapsedMs < finalAtMs, 'Capture calibration must pause before the final visual evidence interval.');
+    const bounds = paused.captureLayout.root;
+    assert.ok(1 < bounds.x || 1 < bounds.y || 1 >= bounds.right || 1 >= bounds.bottom,
+      'The native pointer position must be in neutral harness padding outside the component.');
+    await target.mouse.move(1, 1);
+    calibration.decodedSvg = await decodeSceneImages(target);
+    // Pause transfers focus to its primary Resume button in a native rAF.
+    // Observe that effect; do not manufacture focus for the calibration.
+    await target.waitForFunction(() => document.activeElement?.matches('button') &&
+      document.activeElement.closest('[data-arrival-status="paused"]') &&
+      document.activeElement.textContent.trim() === 'Reprendre l’arrivée', null, { polling: 'raf' });
+    const before = await observe('normal-before');
+    assert.equal(before.status, 'paused');
+    const expected = pausedState(before);
+    const sessions = await momentSessions(target);
+    const normal = await source('normal', sessions.captureSession, target.viewportSize());
+    assert.deepEqual(pausedState(await observe('normal-after')), expected);
+    let roi;
+    try {
+      prepared = await prepareMoment(target, 'formation-detail');
+      calibration.sourceRoi = prepared.sourceRoi;
+      assert.deepEqual(pausedState(await observe('roi-before')), expected,
+        'Preparing the native output ROI must preserve paused clock, focus, viewport and every observed native box.');
+      roi = await source('roi', sessions.captureSession, prepared.sourceRoi);
+      assert.deepEqual(pausedState(await observe('roi-after')), expected);
+    } finally { await restoreMomentViewport(prepared); }
+    assert.deepEqual(pausedState(await observe('restored-before')), expected,
+      'Restoring the complete viewport must preserve the same paused native observation.');
+    const restored = await source('restored', sessions.captureSession, target.viewportSize());
+    assert.deepEqual(pausedState(await observe('restored-after')), expected);
+    const expectedRoi = await losslessNativeDetailCrop(normal, prepared.sourceRoi, target.viewportSize());
+    const expectedPixels = await sharp(expectedRoi.bytes).ensureAlpha().raw().toBuffer();
+    const roiPixels = await sharp(roi).ensureAlpha().raw().toBuffer();
+    assert.ok(roiPixels.equals(expectedPixels), 'The prepared native ROI must equal the same integer pixels of the normal native image, without tolerance.');
+    const normalPixels = await sharp(normal).ensureAlpha().raw().toBuffer();
+    const restoredPixels = await sharp(restored).ensureAlpha().raw().toBuffer();
+    assert.ok(restoredPixels.equals(normalPixels), 'The restored complete native image must retain every original RGBA pixel, without tolerance.');
+    calibration.pixelEquality = { roiMatched: true, roiBytes: roiPixels.length,
+      expectedRoiRgbaSha256: sha256(expectedPixels), actualRoiRgbaSha256: sha256(roiPixels),
+      restoredMatched: true, fullBytes: normalPixels.length,
+      normalRgbaSha256: sha256(normalPixels), restoredRgbaSha256: sha256(restoredPixels) };
+    calibration.passed = true;
+  } catch (error) {
+    calibration.error = error.message;
+    throw error;
+  } finally { await restoreMomentViewport(prepared); }
 }
 
 async function waitElapsed(milliseconds, shotId, target = page, allowComplete = false) {
@@ -1269,6 +1488,7 @@ async function ready(target = page) {
 
 async function openShot(missionId, shotId, reducedMotion = false, shipId = api.DEFAULT_SHIP_ID, insertion) {
   assert.ok(api.isShipId(shipId), 'Spatial fixtures must use a registered hull.');
+  await syncMomentViewport(page);
   const url = new URL(`http://127.0.0.1:${harnessPort}/`);
   url.searchParams.set('mission', missionId); url.searchParams.set('shot', shotId);
   url.searchParams.set('ship', shipId);
@@ -1346,6 +1566,9 @@ try {
 
   for (const viewport of viewports) {
     await page.setViewportSize({ width: viewport.width, height: viewport.height });
+    await syncMomentViewport(page);
+    await check(`${viewport.id}: prepared native ROI preserves paused pixels and CSS geometry`,
+      () => preflightMomentRoi(viewport));
     // Exercise narrow formation photographs first. This changes cache warmup
     // relative to older recipes; all other controls and coverage still run.
     for (const variant of insertionVariants) {
@@ -1483,7 +1706,7 @@ try {
         let finalCapture = null;
         for (let attempt = 1; attempt <= (finalDetail ? 3 : 1); attempt += 1) {
           await openShot(primaryMission.id, 'egress', false, api.DEFAULT_SHIP_ID, variant.plan);
-          const finalPrepared = await prepareMoment(page, finalDetail ? 'formation-detail' : 'scene');
+          const finalPrepared = await prepareMoment(page, finalDetail ? 'formation-detail' : 'scene', finalTime);
           finalCapture = await captureMoment(`${viewport.id}-${variant.id}-egress-final${finalDetail ? '-detail' : ''}`,
             finalPrepared, page, attempt, validateFinalFrame, { atMs: finalTime, shot: egress.id });
           if (finalCapture) break;
@@ -1628,6 +1851,7 @@ try {
   for (const viewport of viewports) {
     await check(`${viewport.id}: pod petals stay attached through deployment, pause and reduced motion`, async () => {
       await page.setViewportSize({ width: viewport.width, height: viewport.height });
+      await syncMomentViewport(page);
       const plan = { version: 1, method: 'pod', team: 'triad' };
       await openShot(primaryMission.id, 'atmosphere', false, api.DEFAULT_SHIP_ID, plan);
       await waitElapsed(api.ARRIVAL_POD_SHUTTERS_OPEN_START_MS + 350, 'atmosphere');
@@ -1944,7 +2168,7 @@ try {
   // Duplicate compact, existing evidence after the browser has closed so a
   // remote review can inspect CI output without changing any native capture.
   if (process.env.GITHUB_ACTIONS === 'true') {
-    const review = JSON.stringify(Object.fromEntries(["schema","startedAt","finishedAt","sourceCommit","workingTreeDirty","workingTreeStatus","sourceHashes","browserVersion","browserMode","scope","timing","passed","checks","captures","rejectedCaptures","captureAttempts","contactObservations","resizes","ships","insertions","native","errors","consoleErrors","missingAssets","failure"]
+    const review = JSON.stringify(Object.fromEntries(["schema","startedAt","finishedAt","sourceCommit","workingTreeDirty","workingTreeStatus","sourceHashes","browserVersion","browserMode","scope","timing","passed","checks","captures","rejectedCaptures","captureAttempts","capturePreflights","contactObservations","resizes","ships","insertions","native","errors","consoleErrors","missingAssets","failure"]
       .filter(key => report[key] !== undefined).map(key => [key, report[key]])));
     const chunkSize = 12_000, parts = Math.ceil(review.length / chunkSize);
     for (let part = 0; part < parts; part++) console.log('QA_REVIEW_JSON ' + JSON.stringify({
@@ -1971,7 +2195,7 @@ try {
         suite: 'spatial', sourceCommit: report.sourceCommit, file: capture.file,
         sha256: capture.sha256, bytes: bytes.length, part, parts,
         evidenceKind: capture.evidenceKind ?? 'native-png',
-        ...(capture.sourceCapture ? { sourceCapture: capture.sourceCapture, pixelEquality: capture.pixelEquality } : {}),
+        ...(capture.sourceCapture ? { sourceCapture: capture.sourceCapture, sourceClip: capture.sourceClip, pixelEquality: capture.pixelEquality } : {}),
         data: data.slice(part * chunkSize, (part + 1) * chunkSize),
       }));
     }
