@@ -1,0 +1,143 @@
+name: Ship authoring workspace
+
+on:
+  push:
+    branches: [feat/clan-ship-25d-props-20261105]
+    paths: ['.github/workflows/ship-authoring-workspace.yml']
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ship-authoring-workspace-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  workspace:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    env:
+      ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
+      NEXT_TELEMETRY_DISABLED: '1'
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ github.sha }}
+          persist-credentials: false
+          fetch-depth: 2
+          filter: blob:none
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /*
+            !/*/
+            !/.env
+            !/.env.*
+            !/.npmrc
+            /app/
+            /scripts/
+            /tests/
+            /desktop/
+            /build/
+            /docs/
+            /.github/
+            /.ai-tools/
+            /.openai/hosting.json
+            /public/**/manifest.json
+            /public/audio/
+            /public/game/clan-ship/
+            /public/game/ship-interior/
+            /public/game/backgrounds/ship-hub-v4.webp
+            /public/game/sprites/hunter.webp
+            /public/game/assets/v3/actors/yautja/hunter/equipment/registered/blade-housing.webp
+            /public/game/assets/v3/actors/yautja/hunter/equipment/registered/blades.webp
+            /public/game/ships/v12/classic-predator-spaceship.webp
+            /public/game/ships/v13/classic-predator-spaceship-top.webp
+            /production/ship-interior-25d-20261105/
+            /production/clan-ship-20261104/
+            /production/clan-ship-incidents-20261105/
+      - name: Materialize the exact native rig and Clan Ship service fixtures
+        run: |
+          node --input-type=module <<'NODE'
+          import assert from 'node:assert/strict';
+          import { existsSync, readFileSync } from 'node:fs';
+          import { execFileSync } from 'node:child_process';
+          const fixture = JSON.parse(readFileSync('tests/fixtures/clan-ship-browser-assets.json', 'utf8'));
+          const paths = fixture.paths;
+          assert.equal(new Set(paths).size, paths.length);
+          for (const file of paths) {
+            assert.match(file, /^public\/game\/[A-Za-z0-9._/-]+$/);
+            assert.ok(file.split('/').every(part => part && part !== '.' && part !== '..'));
+          }
+          execFileSync('git', ['sparse-checkout', 'add', '--stdin'], {
+            input: paths.map(file => '/' + file).join('\n') + '\n', stdio: ['pipe', 'inherit', 'inherit'],
+          });
+          assert.deepEqual(paths.filter(file => !existsSync(file)), []);
+          NODE
+      - name: Archive tracked authoring files and credential-free Git metadata
+        run: |
+          mkdir -p outputs/ship-authoring-workspace
+          python3 - <<'PY'
+          from pathlib import Path
+          import hashlib, io, json, os, subprocess, tarfile
+          root = Path.cwd()
+          target = root / 'outputs/ship-authoring-workspace'
+          tracked = subprocess.check_output(['git', 'ls-files', '-z']).decode().split('\0')
+          selected = [p for p in tracked if p and (root/p).is_file() and Path(p).name not in ('.env', '.env.local', '.env.production', '.env.development', '.npmrc')]
+          assert all((root/p).resolve().is_relative_to(root) for p in selected), 'Tracked source symlink escapes the repository'
+          metadata = ['.git/HEAD', '.git/index', '.git/packed-refs', '.git/shallow', '.git/refs', '.git/objects', '.git/info/sparse-checkout']
+          manifest = {'sourceCommit': subprocess.check_output(['git','rev-parse','HEAD']).decode().strip(),
+            'trackedMaterializedFiles': len(selected), 'excludedUnmaterializedFiles': sum(bool(p) for p in tracked)-len(selected),
+            'repository': 'darknigthmare/yautja-la-longue-chasse',
+            'credentialsIncluded': False,
+            'entries': [{'path':p,'bytes':(root/p).stat().st_size,'sha256':hashlib.sha256((root/p).read_bytes()).hexdigest()} for p in selected]}
+          config = b'[core]\nrepositoryformatversion = 1\nbare = false\nfilemode = true\nsparseCheckout = true\nsparseCheckoutCone = false\n[extensions]\npartialClone = origin\n[remote "origin"]\nurl = https://github.com/darknigthmare/yautja-la-longue-chasse.git\nfetch = +refs/heads/*:refs/remotes/origin/*\npromisor = true\npartialclonefilter = blob:none\n'
+          archive = target/'ship-authoring-source.tar.gz'
+          with tarfile.open(archive,'w:gz',compresslevel=3) as out:
+              for p in selected: out.add(root/p,arcname='repo/'+p,recursive=False)
+              for p in metadata:
+                  if (root/p).exists(): out.add(root/p,arcname='repo/'+p,recursive=True)
+              info=tarfile.TarInfo('repo/.git/config');info.size=len(config);info.mode=0o600
+              out.addfile(info,io.BytesIO(config))
+          manifest['archiveBytes']=archive.stat().st_size
+          manifest['archiveSha256']=hashlib.sha256(archive.read_bytes()).hexdigest()
+          (target/'source-manifest.json').write_text(json.dumps(manifest,indent=2)+'\n')
+          print(json.dumps({k:v for k,v in manifest.items() if k!='entries'}))
+          PY
+      - name: Preserve the authoring source snapshot
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: ship-authoring-source-${{ github.sha }}
+          path: |
+            outputs/ship-authoring-workspace/ship-authoring-source.tar.gz
+            outputs/ship-authoring-workspace/source-manifest.json
+          compression-level: 0
+          retention-days: 3
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci --ignore-scripts --no-audit --no-fund
+      - name: Archive dependencies installed from the unchanged lockfile
+        run: |
+          tar -czf outputs/ship-authoring-workspace/locked-node-modules.tar.gz node_modules
+          node --input-type=module <<'NODE'
+          import { createHash } from 'node:crypto';
+          import { readFileSync, statSync, writeFileSync } from 'node:fs';
+          const sha256 = file => createHash('sha256').update(readFileSync(file)).digest('hex');
+          const archive = 'outputs/ship-authoring-workspace/locked-node-modules.tar.gz';
+          const receipt = {node:process.version, packageLockSha256:sha256('package-lock.json'),
+            archiveBytes:statSync(archive).size, archiveSha256:sha256(archive),
+            install:'npm ci --ignore-scripts --no-audit --no-fund'};
+          writeFileSync('outputs/ship-authoring-workspace/dependencies.json', JSON.stringify(receipt,null,2)+'\n');
+          console.log(receipt);
+          NODE
+      - name: Preserve the locked authoring dependencies
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: ship-authoring-dependencies-${{ github.sha }}
+          path: |
+            outputs/ship-authoring-workspace/locked-node-modules.tar.gz
+            outputs/ship-authoring-workspace/dependencies.json
+          compression-level: 0
+          retention-days: 3

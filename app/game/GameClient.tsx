@@ -61,6 +61,7 @@ import { useHomeworldReducedMotionV77 } from "./useHomeworldReducedMotionV77";
 import { campaignWorldResumeV70 } from "./systems/campaignWorldResumeV70";
 import { actClanShipDocking, normalizeClanShipDocking, type ClanShipDockingAction } from "./systems/clanShipDocking";
 import { actClanShipOperations, bindClanShipMission, clanShipContract, createClanShipOperations, evaluateClanShipAccess, inspectClanShipOperations, releaseClanShipMissionBinding, settleClanShipMission, type ClanShipOperationsAction } from "./systems/clanShipOperations";
+import { actClanShipIncidents, createClanShipIncidents, inspectClanShipIncidents, type ClanShipIncidentAction, type ClanShipIncidentPhysicalContext } from "./systems/clanShipIncidents";
 import type { ClanShipService } from "./ClanShipHub";
 import { createWolfCastleVisit, inspectWolfCastleVisit, actWolfCastle, applyWolfCastleCheckpoint, type WolfCastleAction, type WolfCastleCheckpoint } from "./systems/wolfCastle";
 import { createPlanetArrival, inspectPlanetArrival, completePlanetArrivalHandoff, type PlanetArrivalState } from "./systems/planetArrival";
@@ -2151,7 +2152,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
 
   // City choices are acknowledged only after durable storage confirms the write.
   // A failed write must not announce a completed investigation or apply a reward.
-  const persistSocialProgress = useCallback((update: Partial<Pick<SaveGame, "inventory" | "profile" | "homeworld" | "justice" | "gameReserveV66" | "homeworldPassageV67" | "homeworldRegionV68" | "shipPreparationV88" | "shipAcquisitionV89" | "gauntletV134" | "clanShipDocking" | "clanShipOperations" | "wolfCastle" | "planetArrival" | "planetArrivalRun" | "expeditionRoster" | "shipInsertionEnergy">>): boolean => {
+  const persistSocialProgress = useCallback((update: Partial<Pick<SaveGame, "inventory" | "profile" | "homeworld" | "justice" | "gameReserveV66" | "homeworldPassageV67" | "homeworldRegionV68" | "shipPreparationV88" | "shipAcquisitionV89" | "gauntletV134" | "clanShipDocking" | "clanShipOperations" | "clanShipIncidents" | "wolfCastle" | "planetArrival" | "planetArrivalRun" | "expeditionRoster" | "shipInsertionEnergy">>): boolean => {
     if (!sessionAliveRef.current) return false;
     const current = saveRef.current;
     if (pendingTrophyCommitRef.current) {
@@ -2161,7 +2162,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
       setToast("Termine la sauvegarde du résultat de chasse avant de poursuivre le dossier.");
       return false;
     }
-    const updateSerialized = JSON.stringify({ inventory: update.inventory, profile: update.profile, homeworld: update.homeworld, justice: update.justice, gameReserveV66: update.gameReserveV66, homeworldPassageV67: update.homeworldPassageV67, homeworldRegionV68: update.homeworldRegionV68, shipPreparationV88: update.shipPreparationV88, shipAcquisitionV89: update.shipAcquisitionV89, gauntletV134: update.gauntletV134, clanShipDocking: update.clanShipDocking, clanShipOperations: update.clanShipOperations, wolfCastle: update.wolfCastle, planetArrival: update.planetArrival, planetArrivalRun: update.planetArrivalRun, expeditionRoster: update.expeditionRoster, shipInsertionEnergy: update.shipInsertionEnergy });
+    const updateSerialized = JSON.stringify({ inventory: update.inventory, profile: update.profile, homeworld: update.homeworld, justice: update.justice, gameReserveV66: update.gameReserveV66, homeworldPassageV67: update.homeworldPassageV67, homeworldRegionV68: update.homeworldRegionV68, shipPreparationV88: update.shipPreparationV88, shipAcquisitionV89: update.shipAcquisitionV89, gauntletV134: update.gauntletV134, clanShipDocking: update.clanShipDocking, clanShipOperations: update.clanShipOperations, clanShipIncidents: update.clanShipIncidents, wolfCastle: update.wolfCastle, planetArrival: update.planetArrival, planetArrivalRun: update.planetArrivalRun, expeditionRoster: update.expeditionRoster, shipInsertionEnergy: update.shipInsertionEnergy });
     const pending = pendingSocialWriteRef.current;
     if (pending) {
       const recovered = reconcileSaveWrite(pending.attempt, current.createdAt);
@@ -2494,6 +2495,9 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
     if (!sessionAliveRef.current || current.createdAt !== entry.ownerCreatedAt || screen !== "clan-ship" ||
         current.clanShipDocking?.status !== "aboard" || !gameFocusedV89 || settingsOpen ||
         archiveTransferBusy || archiveRecoveryIssue || campaignSaveBusy || resumableHunt) return false;
+    if (action.type === "accept-contract" && current.clanShipIncidents?.activeIncident) {
+      setToast("Termine ou clos l’intervention à bord avant d’accepter un autre départ."); return false;
+    }
     const inspection = inspectClanShipOperations(current.clanShipOperations, current.createdAt);
     if (inspection.status === "invalid-save" || inspection.status === "future-version") return false;
     const state = inspection.state ?? createClanShipOperations(current.createdAt);
@@ -2511,6 +2515,35 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
       ...(reward > 0 ? { profile: { ...current.profile, clanMarks: current.profile.clanMarks + reward } } : {}),
     })) {
       setToast("L’opération attend la confirmation de sauvegarde. Aucune progression supplémentaire n’a été accordée.");
+      return false;
+    }
+    setToast(result.message);
+    return true;
+  }, [archiveRecoveryIssue, archiveTransferBusy, campaignSaveBusy, entry.ownerCreatedAt, gameFocusedV89, persistSocialProgress, resumableHunt, screen, settingsOpen]);
+
+  const commitClanShipIncident = useCallback((action: ClanShipIncidentAction, physical?: ClanShipIncidentPhysicalContext): boolean => {
+    const current = saveRef.current;
+    if (!sessionAliveRef.current || current.createdAt !== entry.ownerCreatedAt || screen !== "clan-ship" ||
+        current.clanShipDocking?.status !== "aboard" || !gameFocusedV89 || settingsOpen ||
+        archiveTransferBusy || archiveRecoveryIssue || campaignSaveBusy || resumableHunt) return false;
+    const inspection = inspectClanShipIncidents(current.clanShipIncidents, current.createdAt);
+    const operations = inspectClanShipOperations(current.clanShipOperations, current.createdAt);
+    if (inspection.status === "invalid-save" || inspection.status === "future-version" || !operations.state) return false;
+    const result = actClanShipIncidents(inspection.state ?? createClanShipIncidents(current.createdAt), action, {
+      ownerCreatedAt: current.createdAt, docking: current.clanShipDocking, campaign: current,
+      operations: operations.state, ...physical,
+    });
+    if (!result.accepted) { setToast(result.message); return false; }
+    const reward = result.clanMarksReward;
+    if (!Number.isSafeInteger(reward) || reward < 0 || (reward > 0 && (!result.changed ||
+        !Number.isSafeInteger(current.profile.clanMarks) || current.profile.clanMarks < 0 ||
+        current.profile.clanMarks > Number.MAX_SAFE_INTEGER - reward))) {
+      setToast("Le solde ne permet pas d’enregistrer cette récompense. L’intervention reste à sa dernière étape."); return false;
+    }
+    if (result.changed && !persistSocialProgress({ clanShipIncidents: result.state,
+      ...(reward > 0 ? { profile: { ...current.profile, clanMarks: current.profile.clanMarks + reward } } : {}),
+    })) {
+      setToast("L’intervention attend la confirmation de sauvegarde. Les indices et la récompense restent à leur dernier état confirmé.");
       return false;
     }
     setToast(result.message);
@@ -4389,6 +4422,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
                 suspended={screen !== "clan-ship" || settingsOpen || trophyWorkshop !== null || archiveTransferBusy || !!archiveRecoveryIssue || campaignSaveBusy || !gameFocusedV89}
                 onAction={commitClanShipAction}
                 onOperations={commitClanShipOperations}
+                onIncident={commitClanShipIncident}
                 onService={openClanShipService}
                 onExit={() => go("deck")}
                 onOpenSettings={() => setSettingsOpen(true)}

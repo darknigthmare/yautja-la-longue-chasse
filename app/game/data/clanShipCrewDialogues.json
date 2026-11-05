@@ -1,0 +1,365 @@
+{
+  "version": 1,
+  "provenance": "Original dialogue for this clan; no canonical or mechanical claims. Authored 2026-11-05.",
+  "npcs": [
+    {
+      "id": "ash-scar",
+      "name": "Balafre de Cendre",
+      "fallback": "Un geste préparé laisse de la place au retour. Les exercices reprennent quand tu le souhaites.",
+      "lines": [
+        {
+          "id": "ash-provenance-before-testimony",
+          "priority": 80,
+          "when": {
+            "activeIncidentId": "trophy-provenance",
+            "currentStepIds": [
+              "provenance-support",
+              "provenance-record-a",
+              "provenance-record-b"
+            ]
+          },
+          "text": "Lis les deux relevés. Je te dirai ensuite ce que j’ai vu au retour ; mon souvenir doit pouvoir être confronté à leurs marques."
+        },
+        {
+          "id": "ash-provenance-testimony",
+          "priority": 90,
+          "when": {
+            "activeIncidentId": "trophy-provenance",
+            "currentStepIds": [
+              "provenance-testimony"
+            ]
+          },
+          "text": "Approche du cercle. J’ai vu la sangle changer de porteur après la chasse ; nous pouvons établir ce moment sans effacer la prise."
+        },
+        {
+          "id": "ash-provenance-conclusion",
+          "priority": 95,
+          "when": {
+            "activeIncidentId": "trophy-provenance",
+            "currentStepIds": [
+              "provenance-conclusion",
+              "provenance-register"
+            ]
+          },
+          "text": "Tu as les relevés et mon témoignage. Donne à chacun la place que les preuves lui accordent."
+        },
+        {
+          "id": "ash-provenance-complete",
+          "priority": 45,
+          "when": {
+            "completedIncidentId": "trophy-provenance"
+          },
+          "text": "La notice conserve la chasse et le retour. Nous pourrons transmettre cette histoire sans confondre leurs auteurs."
+        },
+        {
+          "id": "ash-return-active",
+          "priority": 70,
+          "when": {
+            "activeIncidentId": "return-transfer"
+          },
+          "text": "Un groupe avance à l’allure de celui qui suit. Attends-le au seuil avant de franchir la porte."
+        }
+      ]
+    },
+    {
+      "id": "star-watch",
+      "name": "Veille des Astres",
+      "fallback": "La table garde les routes préparées. Quand ton cercle sera prêt, nous reprendrons l’observation des contacts.",
+      "lines": [
+        {
+          "id": "star-relay-diagnostic",
+          "priority": 80,
+          "when": {
+            "activeIncidentId": "relay-flicker",
+            "currentStepIds": [
+              "relay-cycle",
+              "relay-reference",
+              "relay-isolate"
+            ]
+          },
+          "text": "La projection locale hésite, mais le reste du conseil répond. Compare les deux cycles avant de toucher à une branche."
+        },
+        {
+          "id": "star-relay-module",
+          "priority": 85,
+          "when": {
+            "activeIncidentId": "relay-flicker",
+            "currentStepIds": [
+              "relay-component",
+              "relay-permutation",
+              "relay-signal"
+            ]
+          },
+          "text": "Le repère stable doit rester visible pendant le remplacement. Reviens au relais avec le module et l’ordre des contacts."
+        },
+        {
+          "id": "star-relay-complete",
+          "priority": 40,
+          "when": {
+            "completedIncidentId": "relay-flicker"
+          },
+          "text": "Les deux cycles concordent maintenant. Je peux lire cette projection sans son interruption précédente."
+        },
+        {
+          "id": "star-return-report",
+          "priority": 90,
+          "when": {
+            "activeIncidentId": "return-transfer",
+            "currentStepIds": [
+              "return-report"
+            ]
+          },
+          "text": "Le transfert aux soins est confirmé. Approche de la table pour consigner les passages du groupe."
+        },
+        {
+          "id": "star-return-complete",
+          "priority": 45,
+          "when": {
+            "completedIncidentId": "return-transfer"
+          },
+          "text": "Le relevé de retour est au conseil. La récupération et l’arrivée à bord ont maintenant chacune leur trace."
+        }
+      ]
+    },
+    {
+      "id": "iron-claw",
+      "name": "Griffe de Fer",
+      "fallback": "Les pièces confiées doivent pouvoir être retrouvées. Dis-moi quel équipement tu prépares pour la prochaine sortie.",
+      "lines": [
+        {
+          "id": "iron-relay-before-module",
+          "priority": 85,
+          "when": {
+            "activeIncidentId": "relay-flicker",
+            "currentStepIds": [
+              "relay-cycle",
+              "relay-reference",
+              "relay-isolate"
+            ]
+          },
+          "text": "Le module restera ici tant que sa branche n’est pas isolée. Commence par les deux témoins et le schéma."
+        },
+        {
+          "id": "iron-relay-module",
+          "priority": 90,
+          "when": {
+            "activeIncidentId": "relay-flicker",
+            "currentStepIds": [
+              "relay-component"
+            ]
+          },
+          "text": "La cartouche de remplacement est réservée à ce relais. Approche du support et relève son identification avant de l’emporter."
+        },
+        {
+          "id": "iron-relay-fitting",
+          "priority": 85,
+          "when": {
+            "activeIncidentId": "relay-flicker",
+            "currentStepIds": [
+              "relay-permutation",
+              "relay-signal"
+            ]
+          },
+          "text": "Tu as le module prévu. Un raccordement refusé se corrige avec le schéma ; il ne demande pas une seconde cartouche."
+        },
+        {
+          "id": "iron-relay-complete",
+          "priority": 45,
+          "when": {
+            "completedIncidentId": "relay-flicker"
+          },
+          "text": "Le module a été posé et son signal contrôlé. Le remplacement est clos dans mon relevé."
+        },
+        {
+          "id": "iron-seal-active",
+          "priority": 65,
+          "when": {
+            "activeIncidentId": "seal-discrepancy"
+          },
+          "text": "Une fermeture solide ne suffit pas à identifier sa voie. Compare ses marques avec celles du registre."
+        }
+      ]
+    },
+    {
+      "id": "cold-trace",
+      "name": "Trace Froide",
+      "fallback": "Une trace gagne en valeur quand on sait d’où elle vient. Les archives sont prêtes pour tes prochains relevés.",
+      "lines": [
+        {
+          "id": "cold-seal-active",
+          "priority": 75,
+          "when": {
+            "activeIncidentId": "seal-discrepancy"
+          },
+          "text": "Le manifeste distingue le lot de retour de son voisin. Lis l’identité entière avant de choisir l’isolateur."
+        },
+        {
+          "id": "cold-provenance-records",
+          "priority": 85,
+          "when": {
+            "activeIncidentId": "trophy-provenance",
+            "currentStepIds": [
+              "provenance-support",
+              "provenance-record-a",
+              "provenance-record-b"
+            ]
+          },
+          "text": "Le relevé de prise et le registre de transfert parlent de moments différents. Garde les deux ouverts dans ton enquête."
+        },
+        {
+          "id": "cold-provenance-witness",
+          "priority": 85,
+          "when": {
+            "activeIncidentId": "trophy-provenance",
+            "currentStepIds": [
+              "provenance-testimony",
+              "provenance-conclusion",
+              "provenance-register"
+            ]
+          },
+          "text": "La marque de ma sangle concerne le retour. Confronte-la au témoignage et conserve aussi la marque de la chasse."
+        },
+        {
+          "id": "cold-provenance-complete",
+          "priority": 45,
+          "when": {
+            "completedIncidentId": "trophy-provenance"
+          },
+          "text": "Mon nom désigne désormais le portage du retour. La notice conserve séparément l’auteur de la prise."
+        },
+        {
+          "id": "cold-relay-active",
+          "priority": 70,
+          "when": {
+            "activeIncidentId": "relay-flicker"
+          },
+          "text": "Le schéma donne le cycle attendu et l’ordre des contacts. Prends le temps de comparer ; la lecture n’exige aucune course."
+        }
+      ]
+    },
+    {
+      "id": "black-suture",
+      "name": "Suture Noire",
+      "fallback": "Le poste reste prêt. Préparer l’arrivée d’un membre compte autant que choisir son point de départ.",
+      "lines": [
+        {
+          "id": "suture-seal-pressure",
+          "priority": 80,
+          "when": {
+            "activeIncidentId": "seal-discrepancy",
+            "currentStepIds": [
+              "seal-pressure"
+            ]
+          },
+          "text": "L’isolateur du lot est fermé. Approche du témoin pour relever la pression après cette fermeture."
+        },
+        {
+          "id": "suture-return-prepare",
+          "priority": 85,
+          "when": {
+            "activeIncidentId": "return-transfer",
+            "currentStepIds": [
+              "return-prepare",
+              "return-transfer-choice",
+              "return-pickup"
+            ]
+          },
+          "text": "Prépare l’accueil ici, puis choisis le passage proche des soins. Notre contrôle de retour commence par une voie libre."
+        },
+        {
+          "id": "suture-return-escort",
+          "priority": 90,
+          "when": {
+            "activeIncidentId": "return-transfer",
+            "currentStepIds": [
+              "hangar-door",
+              "medical-entry",
+              "medical-station"
+            ]
+          },
+          "text": "Laisse au membre accompagné le temps de te rejoindre. Le transfert sera confirmé quand vous serez tous deux au poste."
+        },
+        {
+          "id": "suture-return-report",
+          "priority": 90,
+          "when": {
+            "activeIncidentId": "return-transfer",
+            "currentStepIds": [
+              "return-report"
+            ]
+          },
+          "text": "Il est arrivé au poste préparé. Tu peux porter le relevé au conseil ; je poursuis l’accueil ici."
+        },
+        {
+          "id": "suture-return-complete",
+          "priority": 45,
+          "when": {
+            "completedIncidentId": "return-transfer"
+          },
+          "text": "L’arrivée est consignée et l’accueil terminé. Merci d’avoir gardé le groupe ensemble jusqu’au poste."
+        }
+      ]
+    },
+    {
+      "id": "threshold-guard",
+      "name": "Garde du Seuil",
+      "fallback": "Le seuil reste praticable. Chaque lot et chaque retour doivent garder une identité claire jusqu’à leur destination.",
+      "lines": [
+        {
+          "id": "guard-seal-diagnosis",
+          "priority": 85,
+          "when": {
+            "activeIncidentId": "seal-discrepancy",
+            "currentStepIds": [
+              "seal-witness",
+              "seal-record",
+              "seal-isolation"
+            ]
+          },
+          "text": "Le lot reste sous restriction. Ses marques, celles du registre et celles de l’isolateur doivent correspondre."
+        },
+        {
+          "id": "guard-seal-control",
+          "priority": 90,
+          "when": {
+            "activeIncidentId": "seal-discrepancy",
+            "currentStepIds": [
+              "seal-pressure",
+              "seal-closure"
+            ]
+          },
+          "text": "L’isolateur a été choisi. Il reste à confronter le contrôle de pression au témoin de fermeture du conteneur."
+        },
+        {
+          "id": "guard-seal-complete",
+          "priority": 40,
+          "when": {
+            "completedIncidentId": "seal-discrepancy"
+          },
+          "text": "Les marques et les témoins concordent. Le lot peut rejoindre la réserve et le passage reste dégagé."
+        },
+        {
+          "id": "guard-return-active",
+          "priority": 80,
+          "when": {
+            "activeIncidentId": "return-transfer",
+            "currentStepIds": [
+              "return-transfer-choice",
+              "return-pickup",
+              "hangar-door"
+            ]
+          },
+          "text": "Le point proche des soins garde le groupe hors du trajet de fret. Attends le suiveur avant d’engager le seuil."
+        },
+        {
+          "id": "guard-return-complete",
+          "priority": 45,
+          "when": {
+            "completedIncidentId": "return-transfer"
+          },
+          "text": "Le départ du hangar et l’arrivée aux soins sont tous deux relevés. Aucun passage du groupe ne manque."
+        }
+      ]
+    }
+  ]
+}

@@ -11,6 +11,9 @@ import {
   type ClanShipNpcId, type ClanShipOperationsAction, type ClanShipOperationsState,
 } from './systems/clanShipOperations';
 import ClanShipSpaceEncounter from './ClanShipSpaceEncounter';
+import ClanShipIncidentsBoard from './ClanShipIncidentsBoard';
+import ClanShipCrewConversation from './ClanShipCrewConversation';
+import { CLAN_SHIP_INCIDENTS, type ClanShipIncidentAction, type ClanShipIncidentsState } from './systems/clanShipIncidents';
 import HomeworldNpcSpriteV84 from './HomeworldNpcSpriteV84';
 import { CLAN_SHIP_CREW_ART_ROLES, clanShipCrewArtIdentity } from './clanShipCrew';
 import { useMenuGamepad } from './useMenuGamepad';
@@ -24,13 +27,16 @@ interface Props {
   temporarySession?: boolean;
   crewFocus?: ClanShipNpcId | null;
   onAction: (action: ClanShipOperationsAction) => boolean;
+  incidents?: ClanShipIncidentsState | null;
+  onIncident?: (action: ClanShipIncidentAction) => boolean;
   onClose: () => void;
   onNavigate: (roomId: ClanShipRoomId) => void;
   onClanWar: () => void;
 }
-type Tab = 'post' | 'contracts' | 'crew' | 'journal';
+type Tab = 'post' | 'contracts' | 'incidents' | 'crew' | 'journal';
 const TABS: { id: Tab; label: string }[] = [
   { id: 'post', label: 'Poste & mandat' }, { id: 'contracts', label: 'Opérations' },
+  { id: 'incidents', label: 'Vie à bord' },
   { id: 'crew', label: 'Équipage' }, { id: 'journal', label: 'Chronique' },
 ];
 const KINDS = { onboarding: 'Accueil du clan', interior: 'Mission à bord', field: 'Chasse de clan', space: 'Opération spatiale' };
@@ -41,10 +47,10 @@ const PHASES = {
 
 /** Controlled campaign terminal. Only the parent can acknowledge a durable
  * command; closing, tabbing or looking at a card never grants progression. */
-export default function ClanShipOperationsPanel({ state, save, roomId, suspended, crewFocus, temporarySession = false, onAction, onClose, onNavigate, onClanWar }: Props) {
+export default function ClanShipOperationsPanel({ state, save, roomId, suspended, crewFocus, temporarySession = false, onAction, incidents, onIncident, onClose, onNavigate, onClanWar }: Props) {
   const rootRef = useRef<HTMLElement>(null);
   const closeRef = useRef<HTMLButtonElement>(null);
-  const [tab, setTab] = useState<Tab>(crewFocus ? 'crew' : roomId === 'conseil' && state.mandateAccepted ? 'contracts' : 'post');
+  const [tab, setTab] = useState<Tab>(crewFocus ? 'crew' : incidents?.activeIncident ? 'incidents' : roomId === 'conseil' && state.mandateAccepted ? 'contracts' : 'post');
   const [selectedId, setSelectedId] = useState(state.activeContract?.contractId ?? 'space-screening');
   const [feedback, setFeedback] = useState('');
   const phase = evaluateClanShipOperationsPhase(save, state);
@@ -81,7 +87,7 @@ export default function ClanShipOperationsPanel({ state, save, roomId, suspended
     if (event.defaultPrevented || suspended) return;
     if (event.key === 'Escape' && !event.repeat) { event.preventDefault(); event.stopPropagation(); onClose(); return; }
     if (event.key !== 'Tab') return;
-    const buttons = Array.from(rootRef.current?.querySelectorAll<HTMLElement>('button:not(:disabled),a[href],[tabindex="0"]') ?? [])
+    const buttons = Array.from(rootRef.current?.querySelectorAll<HTMLElement>('button:not(:disabled),a[href],summary,[tabindex="0"]') ?? [])
       .filter(element => !element.closest('[hidden],[inert]') && element.getClientRects().length > 0);
     const first = buttons[0], last = buttons.at(-1);
     if (event.shiftKey && document.activeElement === first && last) { event.preventDefault(); last.focus(); }
@@ -186,13 +192,17 @@ export default function ClanShipOperationsPanel({ state, save, roomId, suspended
               {selection.steps.length > 0 && <ol className={styles.missionSteps}>{selection.steps.map(step => <li key={step.id}><strong>{step.label}</strong><span>{CLAN_SHIP_INTERIOR_ROOMS[step.roomId].label}</span></li>)}</ol>}
               {selection.kind === 'field' && <p className={styles.notice}>Objectif : {selection.minimumScans} analyse(s) au cours de la chasse, score d’au moins {selection.minimumScore}. Un ancien record ne valide pas ce contrat.</p>}
               <p className={styles.availability}>{selectionAccess?.reason}</p>
-              {atCouncil ? <button type="button" className={styles.primary} disabled={suspended || !selectionAccess?.allowed}
+              {atCouncil ? <button type="button" className={styles.primary} disabled={suspended || !selectionAccess?.allowed || !!incidents?.activeIncident}
                 data-clan-accept-contract={selection.id} onClick={() => act({ type: 'accept-contract', contractId: selection.id, expectedRevision: state.revision })}>
                 {completed.has(selection.id) ? 'Dossier accompli' : activeContract?.id === selection.id ? 'Ordre en cours' : 'Accepter cette opération'}
               </button> : routeButton('conseil', 'Rejoindre la table du conseil pour accepter')}
             </article>}
           </div>
         </>}
+
+        {tab === 'incidents' && (incidents && onIncident ? <ClanShipIncidentsBoard state={incidents} save={save} roomId={roomId}
+          suspended={suspended} onAction={onIncident} onNavigate={onNavigate} />
+          : <p className={styles.notice}>Le dossier des interventions ne peut pas être relu. Les données conservées n’ont pas été remplacées.</p>)}
 
         {tab === 'crew' && <section aria-label="Équipage du Clan Ship">
           <div className={styles.sectionLead}><h3>Des alliés qui prennent leur place à bord</h3><p>Accomplis leur dossier, puis rencontre-les dans leur salle pour leur proposer une affectation. Leurs compétences sont mobilisées au départ des opérations spatiales.</p></div>
@@ -203,7 +213,7 @@ export default function ClanShipOperationsPanel({ state, save, roomId, suspended
               <div className={styles.portrait} aria-hidden="true"><div><HomeworldNpcSpriteV84 npcId={clanShipCrewArtIdentity(npc.id)} role={CLAN_SHIP_CREW_ART_ROLES[npc.id]} height={150} /></div></div>
               <div><span className={styles.eyebrow}>{npc.role}</span><h4>{npc.name}</h4><p>{npc.summary}</p>
                 <p className={styles.crewEffect}>{npc.effect}</p><small>Poste : {CLAN_SHIP_INTERIOR_ROOMS[npc.roomId].label}</small>
-                {joined ? <p className={styles.joined}>« {npc.joinLine} »</p> : <><p className={styles.availability}>{access.reason}</p>
+                {joined ? <ClanShipCrewConversation npc={npc} roomId={roomId} incidents={incidents} suspended={suspended} onNavigate={onNavigate} /> : <><p className={styles.availability}>{access.reason}</p>
                   {access.allowed && (roomId === npc.roomId ? <button type="button" className={styles.primary} disabled={suspended}
                     data-clan-recruit-action={npc.id} onClick={() => act({ type: 'recruit', npcId: npc.id, expectedRevision: state.revision })}>Proposer une place dans l’équipage</button>
                     : routeButton(npc.roomId, `Rencontrer ${npc.name}`))}</>}
@@ -222,10 +232,16 @@ export default function ClanShipOperationsPanel({ state, save, roomId, suspended
             {state.completedContracts.length ? <ol className={styles.receipts}>{state.completedContracts.map(receipt => <li key={receipt.contractId}>
               <span aria-hidden="true">✓</span><div><strong>{clanShipContract(receipt.contractId)?.name}</strong><p>{KINDS[receipt.proof.kind]} · récompense déjà attribuée</p></div>
             </li>)}</ol> : <p>Aucun dossier achevé. L’accueil du bord ouvre le premier chapitre.</p>}
+            {!!incidents?.completedIncidents.length && <><h3>Interventions à bord</h3><ol className={styles.receipts}>
+              {incidents.completedIncidents.map(receipt => <li key={receipt.incidentId} data-clan-incident-receipt={receipt.incidentId}>
+                <span aria-hidden="true">✓</span><div><strong>{CLAN_SHIP_INCIDENTS.find(incident => incident.id === receipt.incidentId)?.name}</strong>
+                  <p>Intervention et rapport confirmés · récompense déjà attribuée</p></div>
+              </li>)}
+            </ol></>}
           </section>
           <section className={styles.lore}><span className={styles.eyebrow}>REPÈRES DE LORE</span><h3>La doctrine de ce clan</h3>
             <p>Le rite initiatique, le rôle d’un Ancien et les projections à bord s’appuient sur <cite>Alien vs. Predator</cite>. Les affrontements entre vaisseaux apparaissent aussi dans <cite>The Predator</cite>.</p>
-            <p>Cette table, le mandat, les contrats et les six membres d’équipage sont des adaptations originales du projet. Les jauges tactiques servent le jeu ; elles ne décrivent pas les performances canoniques du vaisseau AVP.</p>
+            <p>Cette table, le mandat, les contrats, les interventions et les six membres d’équipage sont des adaptations originales du projet. Les jauges tactiques servent le jeu ; elles ne décrivent pas les performances canoniques du vaisseau AVP.</p>
             <p>Le conseil t’accorde des responsabilités. Le Clan Ship reste collectif, ton vaisseau reste personnel et le château orbital de Wolf conserve son propre parcours.</p>
             {state.circleConfirmed && <div className={styles.notice}><strong>Cercle confirmé</strong><p>Le conseil reconnaît les opérations accomplies et l’équipage rassemblé.</p></div>}
           </section>

@@ -35,6 +35,7 @@ import { normalizeShipPreparationV88 } from "./systems/shipPreparationV88";
 import { normalizeShipAcquisitionV89 } from "./systems/shipAcquisitionV89";
 import { inspectClanShipDocking } from "./systems/clanShipDocking";
 import { evaluateClanShipAccess, evaluateClanShipOperationsCampaign, inspectClanShipOperations } from "./systems/clanShipOperations";
+import { evaluateClanShipIncidentsCampaign, inspectClanShipIncidents } from "./systems/clanShipIncidents";
 import { inspectWolfCastleVisit } from "./systems/wolfCastle";
 import { inspectPlanetArrival } from "./systems/planetArrival";
 import { inspectPlanetArrivalRun } from "./systems/planetArrivalRun";
@@ -1246,6 +1247,12 @@ export function normalizeSave(value: unknown): SaveGame {
     ...(source.clanShipOperations === undefined ? {} : {
       clanShipOperations: inspectClanShipOperations(source.clanShipOperations, validIsoDate(source.createdAt, fallback.createdAt)).state,
     }),
+    ...(source.clanShipIncidents === undefined ? {} : {
+      // Keep explicit incompatible evidence available to the save inspector.
+      // Normalization cannot silently turn a future/foreign dossier into a new one.
+      clanShipIncidents: inspectClanShipIncidents(source.clanShipIncidents, validIsoDate(source.createdAt, fallback.createdAt)).state
+        ?? source.clanShipIncidents as SaveGame["clanShipIncidents"],
+    }),
     ...(source.wolfCastle === undefined ? {} : {
       wolfCastle: inspectWolfCastleVisit(source.wolfCastle, validIsoDate(source.createdAt, fallback.createdAt)).state,
     }),
@@ -1526,6 +1533,15 @@ function inspectSavePayload(value: unknown): SaveImportParseResult {
       return { save: null, failure: operations.status };
     }
     if (operations.state && !evaluateClanShipOperationsCampaign(operations.state, value).allowed) {
+      return { save: null, failure: "invalid-save" };
+    }
+  }
+  if (value.clanShipIncidents !== undefined && value.clanShipIncidents !== null) {
+    const incidents = inspectClanShipIncidents(value.clanShipIncidents, typeof value.createdAt === "string" ? value.createdAt : "");
+    if (incidents.status === "future-version" || incidents.status === "invalid-save") {
+      return { save: null, failure: incidents.status };
+    }
+    if (incidents.state && !evaluateClanShipIncidentsCampaign(incidents.state, value).allowed) {
       return { save: null, failure: "invalid-save" };
     }
   }

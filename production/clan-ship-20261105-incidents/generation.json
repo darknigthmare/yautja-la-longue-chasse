@@ -1,0 +1,63 @@
+{
+  "version": 1,
+  "createdOn": "2026-11-05",
+  "project": "Yautja The Long Hunt",
+  "batch": "clan-ship-incidents-20261105",
+  "sourceBaseline": {
+    "remoteCommit": "23b48e127e8d058da110f391c7ac3a4b9ef17aad",
+    "localEquivalentCommit": "796a0b72d88b97e5a3a8843d749305148ff2196b"
+  },
+  "generationTool": "image_gen.imagegen (built-in)",
+  "referenceStatus": "Trois adaptations originales de gameplay. Cohérence recherchée avec les ressources du Clan Ship existant ; fidélité canonique 1:1 et validation artistique humaine non revendiquées.",
+  "technicalFrame": {
+    "engine": "React/Next, scène DOM/CSS 2.5D existante",
+    "camera": "Vue de face avec légère vue du dessus, prop vertical ancré au sol.",
+    "format": "PNG RGBA natif, un seul objet par fichier",
+    "alphaThreshold": 16,
+    "editHistory": "Copie byte-identique des trois sorties générées. Aucune retouche, recoloration, conversion, découpe ou redimensionnement."
+  },
+  "references": {
+    "role": "Références locales inspectées avec view_image avant génération ; leurs formes et matériaux ont été décrits dans les prompts. Aucun chemin de référence n’a été passé aux appels de création d’images nouvelles.",
+    "paths": [
+      "public/game/clan-ship/props/berth-console-v1.webp",
+      "public/game/clan-ship/props/trophy-workbench-v1.webp",
+      "public/game/clan-ship/interiors/hangar-v1.webp"
+    ],
+    "gameAssetGuidance": "https://github.com/gamedev-skills/awesome-gamedev-agent-skills/blob/19d93f97c9c1ea0f8b306e77aa81e0d3e352d3e9/skills/disciplines/create-game-assets/SKILL.md"
+  },
+  "rightsAndLore": {
+    "provenance": "Images générées pour le projet ; aucune illustration tierce importée dans ces trois fichiers.",
+    "commercialLicenseDetermination": "non évaluée ; ce manifeste est un registre de génération, pas une autorisation de la franchise.",
+    "franchise": "Éléments originaux inspirés de la direction artistique déjà utilisée par le projet Predator/AVP ; ni objets vus à l’écran ni langue Yautja attestée.",
+    "canonicalDetails": "Aucun mécanisme de confinement, symbole gravé, format de cartouche ou fonction de tablette déclaré canonique."
+  },
+  "assets": [
+    {
+      "id": "sealed-return-cargo",
+      "destination": "public/game/clan-ship/incidents/sealed-return-cargo.png",
+      "generatorOutputFile": "exec-cc9c7dd5-92f6-49da-b5ac-356852f3636a.png",
+      "purpose": "Cargaison fermée pour l’enquête de scellé ; aucun contenu vivant supposé.",
+      "prompt": "Use case: stylized-concept.\nAsset type: ONE individual transparent 2.5D game prop for Yautja The Long Hunt, a clan ship interior incident.\nPrimary request: a sealed expedition cargo cassette, a low broad metal chest for inspection and safe cargo handling. It must look like a practical ancient alien hunting-clan vessel device, an original gameplay adaptation, with no claim of being a screen-used canon prop.\nComposition and view: entire single object, front-facing with a modest view of the top, shallow 2.5D perspective like a painted game inventory world prop; symmetrical broad chest with two ground contact feet. Center the full silhouette on a square transparent canvas with clear empty padding all around; do not crop anything. Clearly readable at roughly 180 pixels across in the game.\nArt direction: polished hand-painted realism and crisp sculpted beveled edges. Heavy dark charcoal gunmetal body, aged burnished bronze ribs with warm edge highlights, a few small restrained cyan status lamps. The existing clan-ship furniture has dark bronze arch-shaped ribs, black inset panels, sharp angular geometry and turquoise slots; match that shape and material language. Keep lighting from upper left, not photographic glossy chrome. The chest has three distinct latch shapes on the front, a single central cyan status strip and a heavy intact seal across the upper seam. No readable writing or numbered labels; labels are added by game UI.\nConstraints: one chest only, closed and sealed, no visible creature, no egg, no skull, no corpse, no human military logo, no modern computer screen. No extra objects, floor, scenery, room, platform, cast shadow plate, frame, text or watermark. Genuinely transparent background with clean alpha, no baked checkerboard. Whole feet and handles visible, no detached floating fragments.",
+      "transparent_background": true,
+      "humanArtValidation": false
+    },
+    {
+      "id": "relay-cartridge",
+      "destination": "public/game/clan-ship/incidents/relay-cartridge.png",
+      "generatorOutputFile": "exec-6ce6d668-9f91-4839-846a-9cb304bb1c52.png",
+      "purpose": "Module visible récupéré puis installé dans le parcours de réparation du relais.",
+      "prompt": "Use case: stylized-concept.\nAsset type: ONE individual transparent 2.5D game prop for Yautja The Long Hunt, a clan ship interior relay-repair incident.\nPrimary request: a removable compact alien relay cartridge in a small stable maintenance cradle. One connected practical device only: a thick dark rectangular core, aged bronze armored collar, a recessed cyan pulse window, two clearly different connector sockets on its front end and a short firmly attached insulated coupling loop. Original gameplay adaptation inspired by the established clan-ship furniture, not a replica or a claim about a canon screen-used device.\nComposition and view: entire single object with cradle, front-facing with a modest view of the top; shallow 2.5D game prop perspective, broad readable silhouette, centered with comfortable transparent padding all around. It should read as a replaceable maintenance module, distinct from a chest, at about 130 pixels across in play.\nArt direction: polished hand-painted realism, crisp sculpted bevels, dark charcoal gunmetal, worn burnished bronze ribs with warm edge highlights, restrained turquoise status slit. Use angular notched shapes, arch-like bronze reinforcement over black inset panels. Lighting from upper left. Enough contrast for a dim bronze spaceship room. Use broad meaningful details, no clutter of wires.\nConstraints: genuinely transparent background with clean alpha; no room, floor, shadow plate, plinth or scenery. No detached spare parts or exploded view, no human industrial brand, no keyboard, no readable writing, symbols or digits; UI supplies labels. Entire object including cradle feet and coupling loop visible, no crops, no mockup sheet, no second object, no extra viewpoints, no border or watermark.",
+      "transparent_background": true,
+      "humanArtValidation": false
+    },
+    {
+      "id": "trophy-memory-tablet",
+      "destination": "public/game/clan-ship/incidents/trophy-memory-tablet.png",
+      "generatorOutputFile": "exec-e38646d6-89ed-439d-93c0-2246ff387798.png",
+      "purpose": "Support matériel d’une enquête sur la provenance d’un trophée ; marques abstraites, sans traduction canonique.",
+      "prompt": "Use case: stylized-concept.\nAsset type: ONE individual transparent 2.5D game prop for Yautja The Long Hunt, a clan ship trophy-provenance investigation.\nPrimary request: a portable upright trophy memory tablet held in a small attached metal stand. One narrow plaque made from a weathered ivory-bone center mounted in an aged bronze and dark gunmetal frame. Its broad central face carries a few shallow abstract notches and interlocking geometric marks, deliberately not readable writing or a real language. A single small cyan light slit at the base suggests a record interface. It is an original gameplay prop, not a known canonical Yautja artifact.\nComposition and view: entire individual tablet and its attached two-foot stand, front-facing with a slight view of the upper edge, shallow 2.5D scene-prop perspective. The tablet is subtly angled backward in the stand. Center it on transparent canvas with generous clear margins, all corners and feet included. Distinct readable silhouette at around 95 pixels wide and 135 pixels tall in play.\nArt direction: polished hand-painted realism with crisp sculpted edges and careful value grouping. Match heavy dark-bronze alien clan-ship furniture: black inset panels, burnished warm bronze ribs and angular arch-shaped supports, pale aged bone focal surface, restrained turquoise lamp. Soft light from upper left, warm highlights, no chrome mirror reflection. Modest broad carved abstract marks only, no tiny illegible text texture.\nConstraints: one connected object only, genuine transparent alpha, no background, no floor, no shadow plate, no scene or scenery. No skull or body, no hands, no weapon, no separate objects, no text, no digits, no recognizable cultural or religious icon, no frame sheet, no extra views, no watermark. No cropped edges.",
+      "transparent_background": true,
+      "humanArtValidation": false
+    }
+  ]
+}

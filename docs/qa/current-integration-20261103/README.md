@@ -463,3 +463,38 @@ Le reçu navigateur `browser-34f1387` identifie explicitement le lot précédent
 antérieur au camouflage. Les nouveaux contrôles navigateur doivent qualifier
 le commit publié avec le présent relevé ; la génération de cet inventaire
 ne vaut pas validation du shader, des interactions ou du mix sonore.
+
+## Interventions et vie à bord — 5 novembre 2026
+
+Le candidat applicatif 1.5.0 prolonge la livraison 1.4.0 fusionnée dans
+`23b48e127e8d058da110f391c7ac3a4b9ef17aad`. Il ajoute quatre interventions,
+24 étapes, 16 cibles physiques, un accompagnement du hangar aux soins et des
+conversations contextuelles pour les six membres recrutés. Les huit nouvelles
+sources applicatives entrent dans le relevé courant ; aucun certificat
+historique n’est réattribué à ce candidat.
+
+| Mesure du relevé courant | Valeur |
+| --- | --- |
+| Entrées | 2 166 |
+| Sources applicatives | 1 213 |
+| Octets des entrées | 1 092 388 442 |
+| Octets du document JSON | 402 633 |
+| SHA-256 du document | `5f8f17528da4318878ddfacdac56125b42d050ae441bf24cc45b62c6c5e7e69c` |
+
+Les commandes officielles `--write` puis `--check` ont relu les fichiers
+matérialisés. Les trois nouveaux PNG et leur alpha disposent en complément
+de leur propre manifeste et audit dans
+`production/clan-ship-20261105-incidents/` ; le relevé V113 conserve sa portée
+déclarée de sources applicatives et d’entrées natives héritées.
+
+La suite locale de régression a réussi 317 tests, suivie des quatre tests
+des callbacks réels campagne et `/dev`, ainsi que de 19 tests des destinations
+et sessions temporaires. La construction de production et le lint ciblé
+réussissent. La nouvelle recette `qa-clan-ship-incidents.mjs` prévoit
+20 contrôles Chromium supplémentaires, avec prérequis synthétiques déclarés
+et aucun incident préaccompli. Son résultat doit être lu sur le commit
+effectivement exécuté ; les résultats locaux ne constituent pas sa validation.
+
+Les illustrations, les incidents, les répliques et leurs règles de progression
+sont des adaptations originales du projet. Le contrôle technique des PNG
+ne clôt ni la revue artistique humaine ni la conformité canonique 1:1.
