@@ -52,7 +52,7 @@ const report = {
   browserMode: headed ? 'headed' : 'headless',
   video: { requested: recordVideo, supported: null, files: [] },
   checks: [], frames: [], captures: [], launchObservations: [], registrationObservations: [],
-  pageErrors: [], consoleErrors: [], missingAssets: [], requests: [],
+  pageErrors: [], consoleErrors: [], missingAssets: [], requests: [], readinessFailures: [],
   sourceHashes: {}, assetHashes: {},
 };
 let browser, server, hostDir, api;
@@ -207,12 +207,49 @@ async function openShot(page, shot, method = 'pod', cloak = false, resume = true
   const button = page.getByRole('button', { name: 'Reprendre l’arrivée', exact: true });
   await button.waitFor({ state: 'visible', timeout: 30_000 });
   assert.equal(await button.isEnabled(), true);
-  const expectedTotal = api.arrivalShipMotionAssetPaths(api.DEFAULT_SHIP_ID).length;
-  await page.waitForFunction(({ total, unavailable }) => {
-    const root = document.querySelector('[data-arrival-run]');
-    return root && Number(root.getAttribute('data-arrival-ship-motion-ready')) === total - unavailable &&
-      Number(root.getAttribute('data-arrival-ship-motion-unavailable')) === unavailable;
-  }, { total: expectedTotal, unavailable: unavailable.size ? expectedTotal : 0 }, { timeout: 15_000, polling: 'raf' });
+  const expectedPaths = api.arrivalShipMotionAssetPaths(api.DEFAULT_SHIP_ID);
+  const expectedTotal = expectedPaths.length;
+  try {
+    await page.waitForFunction(({ total, unavailable }) => {
+      const root = document.querySelector('[data-arrival-run]');
+      return root && Number(root.getAttribute('data-arrival-ship-motion-ready')) === total - unavailable &&
+        Number(root.getAttribute('data-arrival-ship-motion-unavailable')) === unavailable;
+    }, { total: expectedTotal, unavailable: unavailable.size ? expectedTotal : 0 }, { timeout: 15_000, polling: 'raf' });
+  } catch (error) {
+    if (error.name !== 'TimeoutError') throw error;
+    const diagnostic = { shot, method, cloak, expectedReady: unavailable.size ? 0 : expectedTotal,
+      expectedUnavailable: unavailable.size ? expectedTotal : 0 };
+    report.readinessFailures.push(diagnostic);
+    try {
+      diagnostic.observed = await page.evaluate(paths => {
+        const root = document.querySelector('[data-arrival-run]');
+        const resources = performance.getEntriesByType('resource');
+        return {
+          performanceMs: performance.now(), visibility: document.visibilityState,
+          ready: root?.getAttribute('data-arrival-ship-motion-ready') ?? null,
+          unavailable: root?.getAttribute('data-arrival-ship-motion-unavailable') ?? null,
+          status: root?.getAttribute('data-arrival-status') ?? null,
+          elapsedMs: root?.getAttribute('data-arrival-elapsed-exact') ?? root?.getAttribute('data-arrival-elapsed') ?? null,
+          resources: paths.map(path => ({ path, entries: resources.filter(entry => new URL(entry.name).pathname === path)
+            .map(entry => ({ initiatorType: entry.initiatorType, startTime: entry.startTime, fetchStart: entry.fetchStart,
+              responseStart: entry.responseStart, responseEnd: entry.responseEnd, duration: entry.duration,
+              transferSize: entry.transferSize, encodedBodySize: entry.encodedBodySize,
+              decodedBodySize: entry.decodedBodySize, responseStatus: entry.responseStatus })) })),
+          imageStatesScope: 'Mounted DOM images only; detached production preload images are not exposed.',
+          mountedImages: [...document.images].map(image => ({ source: image.currentSrc || image.src,
+            complete: image.complete, naturalWidth: image.naturalWidth, naturalHeight: image.naturalHeight })),
+        };
+      }, expectedPaths);
+    } catch (observationError) { diagnostic.observationError = observationError.message; }
+    try {
+      const file = `readiness-failure-${report.readinessFailures.length}.png`;
+      const bytes = await page.screenshot({ animations: 'allow', fullPage: true });
+      await fs.writeFile(path.join(out, file), bytes);
+      diagnostic.capture = { file, sha256: sha256(bytes) };
+    } catch (captureError) { diagnostic.captureError = captureError.message; }
+    if (diagnostic.observed) error.message += ` Readiness at timeout: ready=${diagnostic.observed.ready}, unavailable=${diagnostic.observed.unavailable}, status=${diagnostic.observed.status}, elapsedMs=${diagnostic.observed.elapsedMs}.`;
+    throw error;
+  }
   if (resume) {
     await button.click();
     await page.locator('[data-arrival-status="playing"]').waitFor();
