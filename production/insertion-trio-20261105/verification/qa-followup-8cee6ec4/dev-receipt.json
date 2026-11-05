@@ -1,0 +1,248 @@
+{
+  "schema": 1,
+  "recordedAt": "2026-11-05T11:18:45.018Z",
+  "scope": "Dev travel workflow only. This does not supply a conclusion for the other workflows in this publication.",
+  "source": {
+    "headSha": "8cee6ec4d7a1334ffd74af6eb9b29b161f561b15",
+    "headTree": "4867642315ea924f4c6f1037aa8e253d6e86b776",
+    "headParents": [
+      "1951e17f01f1951d7c961b4ed3938741966e3007"
+    ],
+    "reportedSourceCommit": "8cee6ec4d7a1334ffd74af6eb9b29b161f561b15",
+    "sourceMethod": "git rev-parse HEAD, checked against DEV_TRAVEL_QA_SOURCE_COMMIT",
+    "workingTreeDirty": false,
+    "mergeSha": "bc0581d6717fca3e6fe6020db5b2200e0477301f",
+    "mergeTree": "4867642315ea924f4c6f1037aa8e253d6e86b776",
+    "mergeParents": [
+      "23b48e127e8d058da110f391c7ac3a4b9ef17aad",
+      "8cee6ec4d7a1334ffd74af6eb9b29b161f561b15"
+    ],
+    "headAndMergeTreesIdentical": true
+  },
+  "workflow": {
+    "runId": 42015349452,
+    "jobId": 127204422830,
+    "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/42015349452",
+    "conclusion": "failure",
+    "startedAt": "2026-11-05T11:05:46.447Z",
+    "finishedAt": "2026-11-05T11:09:34.162Z",
+    "browserVersion": "153.0.8010.12",
+    "priorGates": [
+      {
+        "number": 8,
+        "name": "Typecheck",
+        "conclusion": "success"
+      },
+      {
+        "number": 9,
+        "name": "Strict lint of developer travel and its controlled scenes",
+        "conclusion": "success"
+      },
+      {
+        "number": 10,
+        "name": "Destination fixtures, controlled sessions, storage isolation and Clan Ship regressions",
+        "conclusion": "success"
+      },
+      {
+        "number": 11,
+        "name": "Install the pinned Chromium browser",
+        "conclusion": "success"
+      },
+      {
+        "number": 12,
+        "name": "Build the actual production application",
+        "conclusion": "success"
+      }
+    ],
+    "tests": {
+      "total": 75,
+      "passed": 75,
+      "failed": 0,
+      "skipped": 0
+    }
+  },
+  "checks": {
+    "passed": 17,
+    "failed": 1,
+    "executed": 18,
+    "planned": 20,
+    "notReached": [
+      "Leaving development returns to the ordinary game menu with no developer navigation entry",
+      "Visited development scenes produce no missing asset, uncaught JavaScript exception or storage write"
+    ]
+  },
+  "transport": {
+    "suite": "dev",
+    "sourceCommit": "8cee6ec4d7a1334ffd74af6eb9b29b161f561b15",
+    "parts": 4,
+    "charactersUtf16": 44706,
+    "chunkCharacters": 12000,
+    "indices": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "lines": [
+      1333,
+      1334,
+      1335,
+      1336
+    ],
+    "allMetadataConsistent": true,
+    "allChunksPresent": true,
+    "compactSha256": "dc003aabd7b40879dac597d047f6063d0d75b67af8fa726a7a61947b2cd91425",
+    "reviewFile": "dev-review.json",
+    "reviewBlob": "0f66989cd4b376d53807bd9e3f801bc3d415ffaf",
+    "reviewBytesUtf8": 44739,
+    "reviewSha256": "dc003aabd7b40879dac597d047f6063d0d75b67af8fa726a7a61947b2cd91425",
+    "scope": "Exact compact JSON emitted from selected report fields; this is not a byte-identical copy of the full pretty-printed artifact report."
+  },
+  "sourceHashVerification": {
+    "expectedCount": 23,
+    "actualCount": 23,
+    "mismatches": [],
+    "missing": [],
+    "extras": [],
+    "scope": "The 23 emitted hashes match the previously verified unchanged application files and the independently fetched final Dev source blob for 8cee6ec4."
+  },
+  "observations": {
+    "errors": 0,
+    "consoleErrors": 0,
+    "missingAssets": 0,
+    "storageOperations": 0,
+    "databaseOpens": 0,
+    "storageChecks": 51,
+    "storageSnapshotsUnique": 1,
+    "scope": "Observed arrays at the point of abort. The final aggregate browser assertion and the empty-browser reset/storage assertion were not reached.",
+    "arrivalVisitRecords": 18,
+    "arrivalTransitions": [
+      {
+        "id": "arrival-jungle-vey",
+        "run": "dev-arrival:jungle-vey:2000-01-01T00:00:00.041Z",
+        "completedBy": "skipped",
+        "elapsed": 149.93400000000008,
+        "huntCanvasMounts": 1,
+        "huntGeneration": 0
+      },
+      {
+        "id": "arrival-jungle-vey",
+        "run": "dev-arrival:jungle-vey:2000-01-01T00:00:00.041Z",
+        "completedBy": "natural",
+        "elapsed": 62000,
+        "huntCanvasMounts": 1,
+        "huntGeneration": 0,
+        "shots": [
+          "orbit",
+          "title",
+          "carrier",
+          "release",
+          "descent",
+          "atmosphere",
+          "landing",
+          "egress"
+        ]
+      }
+    ],
+    "cloakedFixture": [
+      {
+        "id": "arrival-ship-cloaked-triad-jungle-vey",
+        "run": "dev-arrival:jungle-vey:2000-01-01T00:00:00.052Z",
+        "shot": "orbit",
+        "status": "playing",
+        "method": "ship",
+        "team": "triad",
+        "shipCloak": true,
+        "energy": 70,
+        "energyRun": "dev-arrival:jungle-vey:2000-01-01T00:00:00.052Z"
+      }
+    ],
+    "visualCloakQualification": false
+  },
+  "failure": {
+    "name": "An empty browser can visit and reset a real room without creating any save or database",
+    "message": "The active Clan Ship must belong to the requested developer destination.\n+ actual - expected\n\n+ undefined\n- 'clan-hangar'\n",
+    "callsite": "First clanReady('hangar', blankPage) after blankPage.goto, line 965. Reset at line 966 was not reached.",
+    "failureStateScope": "The failure handler calls pageDiagnostics() and capture('failure') with the default global page, not blankPage. Its catalogue state does not describe the failed blank browser context.",
+    "detachmentHypothesis": "Possible hydration/streaming replacement between locator resolution and evaluate callback; not proved because the failed read does not include isConnected.",
+    "stack": "AssertionError [ERR_ASSERTION]: The active Clan Ship must belong to the requested developer destination.\n+ actual - expected\n\n+ undefined\n- 'clan-hangar'\n\n    at clanReady (file:///home/runner/work/yautja-la-longue-chasse/yautja-la-longue-chasse/scripts/qa-dev-travel-browser.mjs:274:10)\n    at async file:///home/runner/work/yautja-la-longue-chasse/yautja-la-longue-chasse/scripts/qa-dev-travel-browser.mjs:965:5\n    at async check (file:///home/runner/work/yautja-la-longue-chasse/yautja-la-longue-chasse/scripts/qa-dev-travel-browser.mjs:210:5)\n    at async file:///home/runner/work/yautja-la-longue-chasse/yautja-la-longue-chasse/scripts/qa-dev-travel-browser.mjs:960:3",
+    "reportedFailureState": {
+      "url": "http://127.0.0.1:4193/dev",
+      "focused": true,
+      "hidden": false,
+      "visibility": "visible",
+      "activeElement": {
+        "tag": "BUTTON",
+        "role": null,
+        "label": "Entrer : Clan Ship · Hangar du clan",
+        "text": "Entrer ici ↗"
+      },
+      "session": null,
+      "arrival": null,
+      "activeSessionCount": 0,
+      "activeArrivalCount": 0
+    },
+    "rootCause": "Not established. No product fault is attributed by this receipt.",
+    "sourceFacts": [
+      "The failure is in the first clanReady call after blankPage.goto with waitUntil=domcontentloaded, before reset.",
+      "clanRegion requires the named accessible region below the exact URL session, and clanReady requires the requested aboard room.",
+      "The later locator.evaluate callback returned no nearest data-dev-session ancestor.",
+      "The source uses nested lazy/Suspense boundaries; neither a detached node nor a hydration replacement was measured in the failed callback.",
+      "The original failure handler reported the main catalogue page, not the failing blankPage."
+    ]
+  },
+  "artifact": {
+    "id": 13409367381,
+    "name": "dev-travel-browser-8cee6ec4d7a1334ffd74af6eb9b29b161f561b15",
+    "sizeInBytes": 9888253,
+    "declaredDigest": "sha256:1784b2f05e4244477cea941e701f4a7bc11a28a5ff81205af2be8bc581409229",
+    "zipDownloaded": false,
+    "zipDigestIndependentlyVerified": false
+  },
+  "preparedQaCorrection": {
+    "path": "scripts/qa-dev-travel-browser.mjs",
+    "baseBlobSha": "0814a8971971bafeaadd9e6fa5b757f73e475c4e",
+    "blobSha": "c08da6bad7851d50906a1023e0119b055acf63c4",
+    "sha256": "1c919aa6cff9168feaf6e3e3f7e6cb361595c4ef63fce9fd8d6cc3b38ba2a787",
+    "bytes": 64529,
+    "changes": [
+      "Resolve the nearest owner through clan.locator('xpath=ancestor::*[@data-dev-session][1]').getAttribute, retaining the exact URL equality.",
+      "Keep the existing strict waits for the named region and its requested room interior.",
+      "Select blankPage for failure diagnostics and capture only during the empty-browser test; otherwise retain the existing campaign page."
+    ],
+    "validation": {
+      "nonExecutingV8Parse": "PASS",
+      "parseCopyStaticImportsOmitted": 9,
+      "parseCopyImportMetaUrlsSubstituted": 2,
+      "nodeSyntax": "PASS",
+      "eslint": "NOT RUN: ESLint absent from the restored executor",
+      "browser": "NOT RUN: browser not executed",
+      "checkNamesUnchanged": 20,
+      "timeoutValuesUnchanged": true,
+      "nodeSyntaxExecution": {
+        "command": "node --check /workspace/scratch/62884fa4f584/qa-recovery/qa-dev-travel-browser.mjs",
+        "nodeVersion": "v24.22.1",
+        "exitCode": 0,
+        "result": "PASS",
+        "file": "/workspace/scratch/62884fa4f584/qa-recovery/qa-dev-travel-browser.mjs",
+        "sha256": "1c919aa6cff9168feaf6e3e3f7e6cb361595c4ef63fce9fd8d6cc3b38ba2a787",
+        "bytes": 64529,
+        "executedBy": "root",
+        "environment": "Executor restored with a different filesystem; the exact prepared source was materialized and its SHA256 and length verified before syntax checking.",
+        "scope": "Node syntax only; no dependency loading, ESLint or browser execution."
+      }
+    },
+    "remoteReadback": "Exact UTF-8 blob content verified",
+    "productChanged": false,
+    "workflowsChanged": false,
+    "inventoryChanged": false,
+    "testsReissued": false,
+    "timeoutsExtended": false
+  },
+  "limits": [
+    "The workflow remains failed: 17 passed and 1 failed among 18 executed browser checks; 2 planned checks were not reached.",
+    "The prepared locator change is not a proven runtime fix and has not yet been exercised in Chromium.",
+    "The artifact digest is GitHub-declared metadata. No ZIP was downloaded or independently hashed for this run.",
+    "The previous failureState describes the main page; no state or screenshot of blankPage at the failure was recorded."
+  ]
+}

@@ -1,0 +1,1211 @@
+{
+  "schema": 1,
+  "recordedAt": "2026-11-05T11:36:27.947Z",
+  "source": {
+    "headSha": "8cee6ec4d7a1334ffd74af6eb9b29b161f561b15",
+    "tree": "4867642315ea924f4c6f1037aa8e253d6e86b776",
+    "parents": [
+      "1951e17f01f1951d7c961b4ed3938741966e3007"
+    ],
+    "mergeCheckout": {
+      "sha": "bc0581d6717fca3e6fe6020db5b2200e0477301f",
+      "tree": "4867642315ea924f4c6f1037aa8e253d6e86b776",
+      "parents": [
+        "23b48e127e8d058da110f391c7ac3a4b9ef17aad",
+        "8cee6ec4d7a1334ffd74af6eb9b29b161f561b15"
+      ]
+    },
+    "treesIdentical": true,
+    "applicationSourcesIdenticalTo": "66f57a147d3e17aca592d62f3aadbb35ec702db8",
+    "applicationAndWorkflowChangesInThisQaFollowup": false
+  },
+  "workflowTotals": {
+    "total": 17,
+    "completed": 17,
+    "success": 15,
+    "failure": 2,
+    "cancelled": 0,
+    "inProgress": 0
+  },
+  "workflows": [
+    {
+      "id": 42015349514,
+      "name": "V113 native PHG-inspired materials and renderer wiring",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/42015349514"
+    },
+    {
+      "id": 42015349416,
+      "name": "V113/V114 candidate production and immutable workbooks",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/42015349416"
+    },
+    {
+      "id": 42015349418,
+      "name": "V114 Yautja PHG material integrity and channel contract",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/42015349418"
+    },
+    {
+      "id": 42015349633,
+      "name": "Clan field props — individual sprites and controls",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/42015349633"
+    },
+    {
+      "id": 42015349623,
+      "name": "Clan Ship campaign, interior, crew and tactical operations",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/42015349623"
+    },
+    {
+      "id": 42015349423,
+      "name": "Planetary arrival spatial audit",
+      "status": "completed",
+      "conclusion": "failure",
+      "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/42015349423"
+    },
+    {
+      "id": 42015349452,
+      "name": "Hidden developer travel and isolated sessions",
+      "status": "completed",
+      "conclusion": "failure",
+      "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/42015349452"
+    },
+    {
+      "id": 42015349410,
+      "name": "Planet V114 focused regressions",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/42015349410"
+    },
+    {
+      "id": 42015349593,
+      "name": "V136 Full Gauntlet Campaign and Build Integration",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/42015349593"
+    },
+    {
+      "id": 42015349409,
+      "name": "Consolidated Homeworld saves and planetary layouts",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/42015349409"
+    },
+    {
+      "id": 42015349498,
+      "name": "V112 hunt closure qualifications",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/42015349498"
+    },
+    {
+      "id": 42015349426,
+      "name": "V131 Gauntlet hologram dual-view checks",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/42015349426"
+    },
+    {
+      "id": 42015349468,
+      "name": "V94 transactional exercises and trophy confirmation",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/42015349468"
+    },
+    {
+      "id": 42015349460,
+      "name": "V94 ship training persistence",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/42015349460"
+    },
+    {
+      "id": 42015349414,
+      "name": "V94 campaign routes and bounded cloud transport",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/42015349414"
+    },
+    {
+      "id": 42015349691,
+      "name": "Wolf castle and planetary arrival",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/42015349691"
+    },
+    {
+      "id": 42015349420,
+      "name": "V94 regression tests",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/42015349420"
+    }
+  ],
+  "spatial": {
+    "runId": 42015349423,
+    "jobId": 127204424251,
+    "conclusion": "failure",
+    "checks": {
+      "passed": 62,
+      "failed": 1,
+      "total": 63
+    },
+    "checkResults": [
+      {
+        "name": "desktop: orbit actual layers, anchors and motion",
+        "passed": true
+      },
+      {
+        "name": "desktop: title actual layers, anchors and motion",
+        "passed": true
+      },
+      {
+        "name": "desktop: carrier actual layers, anchors and motion",
+        "passed": true
+      },
+      {
+        "name": "desktop: release actual layers, anchors and motion",
+        "passed": true
+      },
+      {
+        "name": "desktop: descent actual layers, anchors and motion",
+        "passed": true
+      },
+      {
+        "name": "desktop: atmosphere actual layers, anchors and motion",
+        "passed": true
+      },
+      {
+        "name": "desktop: landing actual layers, anchors and motion",
+        "passed": true
+      },
+      {
+        "name": "desktop: egress actual layers, anchors and motion",
+        "passed": true
+      },
+      {
+        "name": "desktop: Nivalis-K own planet, landscape and grounded emergence",
+        "passed": true
+      },
+      {
+        "name": "desktop: Cinder-12 own planet, landscape and grounded emergence",
+        "passed": true
+      },
+      {
+        "name": "desktop: Naraka-Delta own planet, landscape and grounded emergence",
+        "passed": true
+      },
+      {
+        "name": "desktop: Serekh-9 own planet, landscape and grounded emergence",
+        "passed": true
+      },
+      {
+        "name": "desktop: Pelagos-M own planet, landscape and grounded emergence",
+        "passed": true
+      },
+      {
+        "name": "desktop: Mycora-V own planet, landscape and grounded emergence",
+        "passed": true
+      },
+      {
+        "name": "desktop: Acheron-Sigma own planet, landscape and grounded emergence",
+        "passed": true
+      },
+      {
+        "name": "desktop: avp-predator-mothership source orientation and attached release effect",
+        "passed": true
+      },
+      {
+        "name": "desktop: avpr-scout-ship source orientation and attached release effect",
+        "passed": true
+      },
+      {
+        "name": "desktop: wolf-ship source orientation and attached release effect",
+        "passed": true
+      },
+      {
+        "name": "desktop: fugitive-spaceship source orientation and attached release effect",
+        "passed": true
+      },
+      {
+        "name": "desktop: upgrade-spaceship source orientation and attached release effect",
+        "passed": true
+      },
+      {
+        "name": "desktop: feral-spaceship source orientation and attached release effect",
+        "passed": true
+      },
+      {
+        "name": "desktop: ship-solo real flight, contact and complete disembarkation",
+        "passed": true
+      },
+      {
+        "name": "desktop: pod-triad real flight, contact and complete disembarkation",
+        "passed": true
+      },
+      {
+        "name": "desktop: ship-triad real flight, contact and complete disembarkation",
+        "passed": true
+      },
+      {
+        "name": "desktop: ship-cloaked-triad real flight, contact and complete disembarkation",
+        "passed": true
+      },
+      {
+        "name": "desktop: wolf-ship measured hull support and attached exit on the real surface",
+        "passed": true
+      },
+      {
+        "name": "desktop: avpr-scout-ship measured hull support and attached exit on the real surface",
+        "passed": true
+      },
+      {
+        "name": "mobile: orbit actual layers, anchors and motion",
+        "passed": true
+      },
+      {
+        "name": "mobile: title actual layers, anchors and motion",
+        "passed": true
+      },
+      {
+        "name": "mobile: carrier actual layers, anchors and motion",
+        "passed": true
+      },
+      {
+        "name": "mobile: release actual layers, anchors and motion",
+        "passed": true
+      },
+      {
+        "name": "mobile: descent actual layers, anchors and motion",
+        "passed": true
+      },
+      {
+        "name": "mobile: atmosphere actual layers, anchors and motion",
+        "passed": true
+      },
+      {
+        "name": "mobile: landing actual layers, anchors and motion",
+        "passed": true
+      },
+      {
+        "name": "mobile: egress actual layers, anchors and motion",
+        "passed": true
+      },
+      {
+        "name": "mobile: Nivalis-K own planet, landscape and grounded emergence",
+        "passed": true
+      },
+      {
+        "name": "mobile: Cinder-12 own planet, landscape and grounded emergence",
+        "passed": true
+      },
+      {
+        "name": "mobile: Naraka-Delta own planet, landscape and grounded emergence",
+        "passed": true
+      },
+      {
+        "name": "mobile: Serekh-9 own planet, landscape and grounded emergence",
+        "passed": true
+      },
+      {
+        "name": "mobile: Pelagos-M own planet, landscape and grounded emergence",
+        "passed": true
+      },
+      {
+        "name": "mobile: Mycora-V own planet, landscape and grounded emergence",
+        "passed": true
+      },
+      {
+        "name": "mobile: Acheron-Sigma own planet, landscape and grounded emergence",
+        "passed": true
+      },
+      {
+        "name": "mobile: avp-predator-mothership source orientation and attached release effect",
+        "passed": true
+      },
+      {
+        "name": "mobile: avpr-scout-ship source orientation and attached release effect",
+        "passed": true
+      },
+      {
+        "name": "mobile: wolf-ship source orientation and attached release effect",
+        "passed": true
+      },
+      {
+        "name": "mobile: fugitive-spaceship source orientation and attached release effect",
+        "passed": true
+      },
+      {
+        "name": "mobile: upgrade-spaceship source orientation and attached release effect",
+        "passed": true
+      },
+      {
+        "name": "mobile: feral-spaceship source orientation and attached release effect",
+        "passed": true
+      },
+      {
+        "name": "mobile: ship-solo real flight, contact and complete disembarkation",
+        "passed": true
+      },
+      {
+        "name": "mobile: pod-triad real flight, contact and complete disembarkation",
+        "passed": true
+      },
+      {
+        "name": "mobile: ship-triad real flight, contact and complete disembarkation",
+        "passed": true
+      },
+      {
+        "name": "mobile: ship-cloaked-triad real flight, contact and complete disembarkation",
+        "passed": true
+      },
+      {
+        "name": "mobile: wolf-ship measured hull support and attached exit on the real surface",
+        "passed": true
+      },
+      {
+        "name": "mobile: avpr-scout-ship measured hull support and attached exit on the real surface",
+        "passed": true
+      },
+      {
+        "name": "Reduced motion preserves sockets, ground contact and the native cut duration",
+        "passed": true
+      },
+      {
+        "name": "Reduced motion preserves every explicit insertion method and complete formation",
+        "passed": true
+      },
+      {
+        "name": "Optical camouflage pauses with the real clock and keeps reduced-motion refraction static",
+        "passed": true
+      },
+      {
+        "name": "Production /dev runs all eight shots naturally, with real resize and exactly one hunt",
+        "passed": true
+      },
+      {
+        "name": "Native Reset and Skip retain the same destination and mount one real hunt",
+        "passed": true
+      },
+      {
+        "name": "Native ship-triad Skip preserves the actual hull, paid plan, pressure and usable companion orders",
+        "passed": true
+      },
+      {
+        "name": "Native ship-cloaked-triad Skip preserves the actual hull, paid plan, pressure and usable companion orders",
+        "passed": true
+      },
+      {
+        "name": "All requested artwork loads and neither renderer reports a browser exception",
+        "passed": true
+      },
+      {
+        "name": "Independent impact fragments, vent phases and world-aligned masked light were actually observed",
+        "passed": false,
+        "message": "desktop: ship saketh must actually be observed at airborne contact."
+      }
+    ],
+    "sourceCommit": "8cee6ec4d7a1334ffd74af6eb9b29b161f561b15",
+    "workingTreeDirty": false,
+    "browserVersion": "153.0.8010.12",
+    "browserMode": "headed",
+    "report": {
+      "file": "report.json",
+      "bytes": 9245622,
+      "sha256": "df7d912755d01211a3de825b3a6b44351fead133f1399a05f709576b5231df9f",
+      "copiedIntoRepository": false
+    },
+    "artifact": {
+      "id": 13410491059,
+      "name": "planet-arrival-spatial-8cee6ec4d7a1334ffd74af6eb9b29b161f561b15",
+      "sizeInBytes": 89118766,
+      "declaredSha256": "ae038ae652c12a5fbe51258c578f6b2636a41c3e842dba12459783477a87063c",
+      "headSha": "8cee6ec4d7a1334ffd74af6eb9b29b161f561b15",
+      "zipDownloaded": true,
+      "zipDigestVerifiedBy": "root",
+      "reportAndSelectedPngHashesVerifiedBy": "ci_repair"
+    },
+    "counts": {
+      "captures": 208,
+      "rejectedCaptures": 0,
+      "captureAttempts": 58,
+      "resizes": 1,
+      "errors": 0,
+      "consoleErrors": 0,
+      "missingAssets": 0
+    },
+    "samples": 252,
+    "insertionVariants": 8,
+    "sourceHashes": {
+      "expectedCount": 21,
+      "actualCount": 21,
+      "mismatches": [],
+      "missing": [],
+      "extra": [],
+      "files": {
+        "app/dev/client.tsx": "d0039f33b6b242058828f91a7099902a4ccee3116eda1ec658ff34dfc0971dde",
+        "app/dev/destinations.ts": "dbd23830a61bca9c70fcb5fffebfb56426fff2354e9871c8ce0554174851f32e",
+        "app/dev/session.tsx": "9a8deef175790e2aacbd5825212f21b282ea947554f9f6afa352839580780b0b",
+        "app/game/HuntCanvas.tsx": "b401fcc2c2e5dbdb5ddb8601aaba1ff1efde12a9fb064e783010a621fbc1e59a",
+        "app/game/HunterRigPreview.tsx": "f9a7fb5029f08d0deec205af1fbfe5172d0bb5c32f6885c5424479886a6f876c",
+        "app/game/PlanetArrivalCinematic.module.css": "f4a4bb6e952f8ecc9b3519bb8e4151428dca9062e2095f504e3b84fff4a9f00a",
+        "app/game/PlanetArrivalCinematic.tsx": "01803c35cb795744b0a72a06fcea57ad2e7123e85e0eefeb456d06f1f522d9d7",
+        "app/game/hunterRig.ts": "653c03db8a3cc2ad6664725d501ac58866ff58097239aab50e880d019cd14904",
+        "app/game/shipCatalogue.ts": "458d077948c3f3e2f867fdc441e64423808cfb0cea54582b0c61762b1705d396",
+        "app/game/systems/huntInsertion.ts": "f283d44d6876a7afd14d4f6cb922b325c0a48aeb79347d8d73aec8f1d0cc38ec",
+        "app/game/systems/planetArrival.ts": "2d0ce19e0b1d11b64af56c0a5058bc30e4b8d5a018fe17e222457f2f055e9fb4",
+        "app/game/systems/planetArrivalArt.ts": "28f50705db61616c632b9ed2ec39298012b893204f1a7bc4ac1fd2d4caea64a4",
+        "app/game/systems/planetArrivalAudio.ts": "add38c7f8107d5c88852d1bff06b1f339de52fc74d78ccf3ffc6c7bc712b44ec",
+        "app/game/systems/planetArrivalGroundArt.ts": "d0d7f257757c458b8944a8ddd95dc9bea9cc250083899918fc6f5ccaab421e22",
+        "app/game/systems/planetArrivalPresentation.ts": "20789a02f321f4533e48408663a81140273b78d74c52f57e60ed4967fce75831",
+        "app/game/systems/planetArrivalRun.ts": "81fde7e75834779c9cde9b57836de6260aa1db24fe3b5671bb36950db2251bd4",
+        "app/game/systems/planetArrivalSpatial.ts": "bce53ce72cff85bdef9d9351066f70d1920a385d131751bf0bf71da430a7c020",
+        "app/game/systems/planetInsertion.ts": "f3be5ddd744e8a5d621a4e9291c3b9dc0aaa8818d5d034e13a66bf4e94743d5a",
+        "app/game/systems/shipInsertionEnergy.ts": "00e9a554acee76c3f0e186ad376dc87bf46b4f0bc8b5999815716109080380ca",
+        "app/game/worldScreens.ts": "04854a87a575630fedcc6b0ac641de942c7f04e87e448da0767ef558e930d495",
+        "scripts/qa-planet-arrival-spatial.mjs": "41794249e583113a80dfc5f94d12c3f3048f4e56597667fc1d43e5229b288031"
+      }
+    },
+    "failure": {
+      "check": "Independent impact fragments, vent phases and world-aligned masked light were actually observed",
+      "message": "desktop: ship saketh must actually be observed at airborne contact.",
+      "stack": "AssertionError [ERR_ASSERTION]: desktop: ship saketh must actually be observed at airborne contact.\n    at file:///home/runner/work/yautja-la-longue-chasse/yautja-la-longue-chasse/scripts/qa-planet-arrival-spatial.mjs:1429:18\n    at check (file:///home/runner/work/yautja-la-longue-chasse/yautja-la-longue-chasse/scripts/qa-planet-arrival-spatial.mjs:205:15)\n    at file:///home/runner/work/yautja-la-longue-chasse/yautja-la-longue-chasse/scripts/qa-planet-arrival-spatial.mjs:1409:9"
+    },
+    "failureScope": "The final aggregate stopped because desktop ship Sa’keth had not been sampled with airborne contact. The 62 preceding checks passed. Assertions later in that final aggregate were not reached.",
+    "correctionScope": "Root prepared one additional prearmed native observation for each member whose airborne contact was not covered. Ordinary samples and final assertions remain unchanged; method, team and shipCloak must match the requested plan.",
+    "native": {
+      "runId": "dev-arrival:jungle-vey:2000-01-01T00:00:00.041Z",
+      "shots": [
+        "orbit",
+        "title",
+        "carrier",
+        "release",
+        "descent",
+        "atmosphere",
+        "landing",
+        "egress"
+      ],
+      "completedBy": "natural",
+      "skip": {
+        "runId": "dev-arrival:jungle-vey:2000-01-01T00:00:00.041Z",
+        "completedBy": "skipped",
+        "huntCanvases": 1
+      },
+      "shipTriad": {
+        "runId": "dev-arrival:jungle-vey:2000-01-01T00:00:00.051Z",
+        "completedBy": "skipped",
+        "huntCanvases": 1,
+        "observedOrders": [
+          "hold",
+          "follow"
+        ],
+        "surfaceShip": "classic-predator-spaceship",
+        "energy": 100,
+        "energyRun": null,
+        "snapshot": {
+          "version": 1,
+          "runId": "jungle-vey:1",
+          "plan": {
+            "version": 1,
+            "method": "ship",
+            "team": "triad"
+          },
+          "origin": {
+            "x": 261,
+            "y": 624
+          },
+          "searchUntil": 35,
+          "patrolIds": [
+            "jungle-vey:1:insertion-patrol-0",
+            "jungle-vey:1:insertion-patrol-2"
+          ],
+          "alertedIds": [
+            "jungle-patrol-0",
+            "jungle-patrol-1",
+            "jungle-patrol-3",
+            "jungle-vey:1:insertion-patrol-0",
+            "jungle-vey:1:insertion-patrol-2"
+          ],
+          "companions": [
+            {
+              "id": "karhek",
+              "health": 100,
+              "maxHealth": 100,
+              "status": "active",
+              "order": "follow",
+              "x": 389,
+              "y": 512,
+              "grounded": true
+            },
+            {
+              "id": "saketh",
+              "health": 120,
+              "maxHealth": 120,
+              "status": "active",
+              "order": "follow",
+              "x": 549,
+              "y": 512,
+              "grounded": true
+            }
+          ]
+        }
+      },
+      "shipCloakedTriad": {
+        "runId": "dev-arrival:jungle-vey:2000-01-01T00:00:00.052Z",
+        "completedBy": "skipped",
+        "huntCanvases": 1,
+        "observedOrders": [
+          "hold",
+          "follow"
+        ],
+        "surfaceShip": "classic-predator-spaceship",
+        "energy": 70,
+        "energyRun": "dev-arrival:jungle-vey:2000-01-01T00:00:00.052Z",
+        "snapshot": {
+          "version": 1,
+          "runId": "jungle-vey:1",
+          "plan": {
+            "version": 1,
+            "method": "ship",
+            "team": "triad",
+            "shipCloak": true
+          },
+          "origin": {
+            "x": 261,
+            "y": 624
+          },
+          "searchUntil": 18,
+          "patrolIds": [
+            "jungle-vey:1:insertion-patrol-0"
+          ],
+          "alertedIds": [
+            "jungle-patrol-0",
+            "jungle-patrol-3",
+            "jungle-vey:1:insertion-patrol-0"
+          ],
+          "companions": [
+            {
+              "id": "karhek",
+              "health": 100,
+              "maxHealth": 100,
+              "status": "active",
+              "order": "follow",
+              "x": 389,
+              "y": 512,
+              "grounded": true
+            },
+            {
+              "id": "saketh",
+              "health": 120,
+              "maxHealth": 120,
+              "status": "active",
+              "order": "follow",
+              "x": 549,
+              "y": 512,
+              "grounded": true
+            }
+          ]
+        }
+      }
+    },
+    "photoEvidence": "spatial-captures.json",
+    "individualPathsPassed": [
+      "All desktop and mobile insertion variants",
+      "Six trio final detail photographs before the native 62000 ms end",
+      "Cloaked desktop and mobile paths",
+      "Reduced-motion insertion paths",
+      "Clock-bound pause and static reduced-motion refraction",
+      "Natural and skipped native handoffs",
+      "Actual hold and follow companion orders in ship-triad and cloaked ship-triad"
+    ]
+  },
+  "wolf": {
+    "runId": 42015349691,
+    "jobId": 127204423400,
+    "conclusion": "success",
+    "checks": {
+      "passed": 32,
+      "failed": 0,
+      "total": 32
+    },
+    "checkResults": [
+      {
+        "name": "Main menu resumes the existing campaign on the personal deck",
+        "passed": true
+      },
+      {
+        "name": "The orbital castle remains separate from the personal hull and Clan Ship",
+        "passed": true
+      },
+      {
+        "name": "Walking reaches the airlock, vestibule, gallery and real archive terminal",
+        "passed": true
+      },
+      {
+        "name": "Castle room and personal hull survive menu, reload and Continue",
+        "passed": true
+      },
+      {
+        "name": "The audience and council preserve one campaign decision",
+        "passed": true
+      },
+      {
+        "name": "The three-seal court trial is traversed and completed without campaign rewards",
+        "passed": true
+      },
+      {
+        "name": "The royal court starts a real three-guard fight with damage and a saved exact position",
+        "passed": true
+      },
+      {
+        "name": "A paused fight survives menu and reload without recovering health or resetting the guard",
+        "passed": true
+      },
+      {
+        "name": "A real browser tab change pauses the fight and returning never resumes it implicitly",
+        "passed": true
+      },
+      {
+        "name": "Taking the announced hits ends in defeat, then restart creates one fresh attempt",
+        "passed": true
+      },
+      {
+        "name": "Combat controls fit 320 pixels and abandoning unlocks the same court safely",
+        "passed": true
+      },
+      {
+        "name": "Ordinary keyboard movement, timed parries, dodges and attacks defeat the three guards",
+        "passed": true
+      },
+      {
+        "name": "Castle navigation and return remain usable at 390 and 320 pixels",
+        "passed": true
+      },
+      {
+        "name": "The accepted audience grants a new mandate whose objectives require fresh station interactions",
+        "passed": true
+      },
+      {
+        "name": "A partially explored mandate survives Save, menu, reload and Continue with the same training dossier",
+        "passed": true
+      },
+      {
+        "name": "The gallery and council complete the three objectives and unlock the separate sentinel encounter",
+        "passed": true
+      },
+      {
+        "name": "The paused mandate reloads the same sentinel, damaged health, position and elapsed time before explicit resume",
+        "passed": true
+      },
+      {
+        "name": "Real movement, parries, dodges and attacks beat all sentinel phases without healing or an early reward",
+        "passed": true
+      },
+      {
+        "name": "The return guide reaches the audience and a refused reward write keeps the victory and balance unclaimed",
+        "passed": true
+      },
+      {
+        "name": "Retrying the same audience action commits exactly two marks together with the campaign receipt",
+        "passed": true
+      },
+      {
+        "name": "The completed mandate keeps one receipt and one reward after reload, another audience consultation and departure",
+        "passed": true
+      },
+      {
+        "name": "Real recruitment and a cloaked ship-triad briefing freeze one paid campaign run before any hunt mounts",
+        "passed": true
+      },
+      {
+        "name": "A real browser tab change suspends arrival and preserves the same mission on return",
+        "passed": true
+      },
+      {
+        "name": "Arrival pause freezes active time and reduced-motion keeps the same mission",
+        "passed": true
+      },
+      {
+        "name": "Arrival menu, reload and Continue retain the same run without a gameplay sidecar",
+        "passed": true
+      },
+      {
+        "name": "A refused handoff leaves the hunt unmounted and can retry the same run once",
+        "passed": true
+      },
+      {
+        "name": "Reload after handoff resumes the real hunt and never replays arrival",
+        "passed": true
+      },
+      {
+        "name": "A second isolated campaign launches the full moving arrival",
+        "passed": true
+      },
+      {
+        "name": "The title, actual carrier and separate capsule are presented before the descent",
+        "passed": true
+      },
+      {
+        "name": "Descent reload retains mission and run, then explicitly resumes the same shot",
+        "passed": true
+      },
+      {
+        "name": "Atmosphere, ground impact and the selected hunter lead to exactly one natural handoff",
+        "passed": true
+      },
+      {
+        "name": "The complete route has no browser exception and every requested visual is available",
+        "passed": true
+      }
+    ],
+    "sourceCommit": "8cee6ec4d7a1334ffd74af6eb9b29b161f561b15",
+    "checkoutCommit": "8cee6ec4d7a1334ffd74af6eb9b29b161f561b15",
+    "workingTreeDirty": false,
+    "qaSource": {
+      "blobSha": "624a01995e1dc2155e6598fbb863f736e8c7af76",
+      "sha256": "a3f9d0a340b76377e5eac7e1e995c3d5a1c3e36f7078f4b4fb22ded42869f029"
+    },
+    "artifact": {
+      "id": 13409815952,
+      "name": "wolf-arrival-browser-bc0581d6717fca3e6fe6020db5b2200e0477301f",
+      "sizeInBytes": 16230253,
+      "declaredSha256": "4acb1b245da06d3e964ae54fd6f69058429331e85ad37508c287ccf77776b850",
+      "headSha": "8cee6ec4d7a1334ffd74af6eb9b29b161f561b15",
+      "zipDownloaded": false,
+      "zipDigestVerifiedLocally": false
+    },
+    "transport": {
+      "suite": "wolf",
+      "sourceCommit": "8cee6ec4d7a1334ffd74af6eb9b29b161f561b15",
+      "parts": 6,
+      "charactersUtf16": 60082,
+      "chunkCharacters": 12000,
+      "indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "lines": [
+        3079,
+        3080,
+        3081,
+        3082,
+        3083,
+        3084
+      ],
+      "allMetadataConsistent": true,
+      "allChunksPresent": true,
+      "compactSha256": "809b5566d63791d07d20f1054f484a7894316f8b77666fe22a8507f87bcf7f28",
+      "bytesUtf8": 60082,
+      "scope": "Complete reconstruction of the selected report fields emitted to logs; not the full artifact report."
+    },
+    "cloakBriefing": {
+      "enabled": true,
+      "chargeBefore": 100,
+      "previewAfter": 70
+    },
+    "handoff": {
+      "runId": "6571ab0c-c2c7-4374-b8a7-d17eff848e96",
+      "plan": {
+        "version": 1,
+        "method": "ship",
+        "team": "triad",
+        "shipCloak": true
+      },
+      "companions": [
+        {
+          "id": "karhek",
+          "health": 100,
+          "maxHealth": 100,
+          "status": "active",
+          "order": "follow",
+          "grounded": true
+        },
+        {
+          "id": "saketh",
+          "health": 120,
+          "maxHealth": 120,
+          "status": "active",
+          "order": "follow",
+          "grounded": true
+        }
+      ],
+      "energy": {
+        "charge": 70,
+        "runId": "6571ab0c-c2c7-4374-b8a7-d17eff848e96",
+        "departures": 1
+      },
+      "patrolIds": [
+        "jungle-vey:0:insertion-patrol-0"
+      ],
+      "searchUntil": 18,
+      "realPatrolCount": 1
+    },
+    "stationClicks": {
+      "records": 48,
+      "allAttemptOne": true,
+      "allClickObserved": true,
+      "reissuedActions": 0
+    },
+    "errors": [],
+    "missingAssets": [],
+    "consoleErrorsCollected": false
+  },
+  "dev": {
+    "runId": 42015349452,
+    "jobId": 127204422830,
+    "conclusion": "failure",
+    "checks": {
+      "passed": 17,
+      "failed": 1,
+      "executed": 18,
+      "planned": 20,
+      "notReached": [
+        "Leaving development returns to the ordinary game menu with no developer navigation entry",
+        "Visited development scenes produce no missing asset, uncaught JavaScript exception or storage write"
+      ]
+    },
+    "sourceCommit": "8cee6ec4d7a1334ffd74af6eb9b29b161f561b15",
+    "workingTreeDirty": false,
+    "artifact": {
+      "id": 13409367381,
+      "name": "dev-travel-browser-8cee6ec4d7a1334ffd74af6eb9b29b161f561b15",
+      "sizeInBytes": 9888253,
+      "declaredDigest": "sha256:1784b2f05e4244477cea941e701f4a7bc11a28a5ff81205af2be8bc581409229",
+      "zipDownloaded": false,
+      "zipDigestIndependentlyVerified": false
+    },
+    "receipt": "dev-receipt.json",
+    "receiptBlob": "fde668ca7996745dbcdc775735334f2e15522c3e",
+    "review": "dev-review.json",
+    "reviewBlob": "0f66989cd4b376d53807bd9e3f801bc3d415ffaf",
+    "transport": {
+      "suite": "dev",
+      "sourceCommit": "8cee6ec4d7a1334ffd74af6eb9b29b161f561b15",
+      "parts": 4,
+      "charactersUtf16": 44706,
+      "chunkCharacters": 12000,
+      "indices": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "lines": [
+        1333,
+        1334,
+        1335,
+        1336
+      ],
+      "allMetadataConsistent": true,
+      "allChunksPresent": true,
+      "compactSha256": "dc003aabd7b40879dac597d047f6063d0d75b67af8fa726a7a61947b2cd91425",
+      "reviewFile": "dev-review.json",
+      "reviewBlob": "0f66989cd4b376d53807bd9e3f801bc3d415ffaf",
+      "reviewBytesUtf8": 44739,
+      "reviewSha256": "dc003aabd7b40879dac597d047f6063d0d75b67af8fa726a7a61947b2cd91425",
+      "scope": "Exact compact JSON emitted from selected report fields; this is not a byte-identical copy of the full pretty-printed artifact report."
+    },
+    "failureScope": "The first clanReady call in the separate empty browser observed no owner through its evaluated element. Its original diagnostics mistakenly described the existing campaign page. The cause of the missing owner remains unestablished."
+  },
+  "relatedCi": {
+    "workflows": [
+      {
+        "id": 42015349426,
+        "label": "V131",
+        "name": "V131 Gauntlet hologram dual-view checks",
+        "status": "completed",
+        "conclusion": "success",
+        "jobs": [
+          {
+            "id": 127204422547,
+            "status": "completed",
+            "conclusion": "success"
+          }
+        ]
+      },
+      {
+        "id": 42015349593,
+        "label": "V136",
+        "name": "V136 Full Gauntlet Campaign and Build Integration",
+        "status": "completed",
+        "conclusion": "success",
+        "jobs": [
+          {
+            "id": 127204423013,
+            "status": "completed",
+            "conclusion": "success"
+          }
+        ]
+      },
+      {
+        "id": 42015349498,
+        "label": "V112",
+        "name": "V112 hunt closure qualifications",
+        "status": "completed",
+        "conclusion": "success",
+        "jobs": [
+          {
+            "id": 127204423336,
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "id": 127204423638,
+            "status": "completed",
+            "conclusion": "success"
+          }
+        ]
+      },
+      {
+        "id": 42015349420,
+        "label": "V94 general",
+        "name": "V94 regression tests",
+        "status": "completed",
+        "conclusion": "success",
+        "jobs": [
+          {
+            "id": 127204423819,
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "id": 127204424297,
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "id": 127204424307,
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "id": 127204424594,
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "id": 127216104536,
+            "status": "completed",
+            "conclusion": "success"
+          }
+        ]
+      },
+      {
+        "id": 42015349414,
+        "label": "V94 routes",
+        "name": "V94 campaign routes and bounded cloud transport",
+        "status": "completed",
+        "conclusion": "success",
+        "jobs": [
+          {
+            "id": 127204422479,
+            "status": "completed",
+            "conclusion": "success"
+          }
+        ]
+      },
+      {
+        "id": 42015349460,
+        "label": "V94 training",
+        "name": "V94 ship training persistence",
+        "status": "completed",
+        "conclusion": "success",
+        "jobs": [
+          {
+            "id": 127204423073,
+            "status": "completed",
+            "conclusion": "success"
+          }
+        ]
+      },
+      {
+        "id": 42015349468,
+        "label": "V94 transactions",
+        "name": "V94 transactional exercises and trophy confirmation",
+        "status": "completed",
+        "conclusion": "success",
+        "jobs": [
+          {
+            "id": 127204422647,
+            "status": "completed",
+            "conclusion": "success"
+          }
+        ]
+      }
+    ],
+    "source": "Workflow conclusions independently queried by ci_repair; job conclusions and watched steps supplied from audio_sync's final GitHub API observations.",
+    "watchedSteps": [
+      {
+        "jobId": 127204424297,
+        "number": 67,
+        "name": "Current runtime inventory",
+        "conclusion": "success"
+      },
+      {
+        "jobId": 127204424307,
+        "number": 73,
+        "name": "Native ClanWar panel",
+        "conclusion": "success"
+      },
+      {
+        "jobId": 127204423013,
+        "number": 5,
+        "name": "Full TypeScript graph",
+        "conclusion": "success"
+      },
+      {
+        "jobId": 127204423013,
+        "number": 13,
+        "name": "V142",
+        "conclusion": "success"
+      },
+      {
+        "jobId": 127204423013,
+        "number": 27,
+        "name": "Frontend production build (code-only checkout, diagnostic)",
+        "conclusion": "success"
+      }
+    ],
+    "metadataOnlyArtifacts": [
+      {
+        "group": "models",
+        "id": 13410352352,
+        "declaredSha256": "4509c2b7e476839eb1e0da462bf64d9514c337ece7a727180f114d0161b7e3f6",
+        "downloaded": false,
+        "digestVerifiedLocally": false
+      },
+      {
+        "group": "application",
+        "id": 13409513979,
+        "declaredSha256": "dc4212a59ad378080634d7f1741aa8b2de96de0f54a43d5cd4a8f25c8f63611e",
+        "downloaded": false,
+        "digestVerifiedLocally": false
+      },
+      {
+        "group": "history",
+        "id": 13409479190,
+        "declaredSha256": "efb86cc9000ccb2a98b017713e8b461688a58d94d67f432c50dab13970da8e62",
+        "downloaded": false,
+        "digestVerifiedLocally": false
+      }
+    ]
+  },
+  "independentVisualReview": {
+    "reviewer": "cinematic_review",
+    "method": "Read-only opening of the original PNGs",
+    "opened": {
+      "finalDetails": 6,
+      "fullSceneContexts": 6,
+      "cloakImages": 6
+    },
+    "result": "No blocking visible defect in the 18 reviewed images.",
+    "findings": [
+      "All three rigs remain complete inside each final detail, with visible heads, limbs, weapons and feet on the same ground; Ka’rhek and Sa’keth remain distinct.",
+      "No terminal overlay or character clipping was visible in the final details.",
+      "In atmosphere, the hull remains identifiable but clearly attenuated with a thin contour and no visible mask rectangle.",
+      "During cloak release the hull returns, and it is opaque before ground contact.",
+      "No capsule or crash VFX were visible in the inspected ship images."
+    ],
+    "limits": [
+      "Still PNGs do not prove temporal refraction, motion smoothness or audio.",
+      "Final images are native-scale details; full-scene walking context was captured earlier.",
+      "The native handoff Canvas is substantially obscured by the arrival message, so it does not provide a complete visual proof of all three ground supports.",
+      "This is not a global canonical 1:1 art qualification."
+    ],
+    "additionalConfirmation": {
+      "reviewer": "root",
+      "method": "Read-only opening of the original PNGs",
+      "files": [
+        "desktop-ship-cloaked-triad-egress-final-detail.png",
+        "mobile-ship-cloaked-triad-egress-final-detail.png",
+        "desktop-ship-cloaked-triad-atmosphere.png",
+        "desktop-ship-cloaked-triad-decloaking.png",
+        "desktop-ship-cloaked-triad-visible-before-contact.png"
+      ],
+      "findings": "The two final details show all three silhouettes and feet without the terminal panel; the three desktop optical phases were also inspected.",
+      "scope": "A subset of the same 18 images, not additional unique screenshots."
+    }
+  },
+  "preparedQaCorrections": {
+    "dev": {
+      "path": "scripts/qa-dev-travel-browser.mjs",
+      "baseBlobSha": "0814a8971971bafeaadd9e6fa5b757f73e475c4e",
+      "blobSha": "c08da6bad7851d50906a1023e0119b055acf63c4",
+      "sha256": "1c919aa6cff9168feaf6e3e3f7e6cb361595c4ef63fce9fd8d6cc3b38ba2a787",
+      "bytes": 64529,
+      "changes": [
+        "Resolve the nearest owner through clan.locator('xpath=ancestor::*[@data-dev-session][1]').getAttribute, retaining the exact URL equality.",
+        "Keep the existing strict waits for the named region and its requested room interior.",
+        "Select blankPage for failure diagnostics and capture only during the empty-browser test; otherwise retain the existing campaign page."
+      ],
+      "validation": {
+        "nonExecutingV8Parse": "PASS",
+        "parseCopyStaticImportsOmitted": 9,
+        "parseCopyImportMetaUrlsSubstituted": 2,
+        "nodeSyntax": "PASS",
+        "eslint": "NOT RUN: ESLint absent from the restored executor",
+        "browser": "NOT RUN: browser not executed",
+        "checkNamesUnchanged": 20,
+        "timeoutValuesUnchanged": true,
+        "nodeSyntaxExecution": {
+          "command": "node --check /workspace/scratch/62884fa4f584/qa-recovery/qa-dev-travel-browser.mjs",
+          "nodeVersion": "v24.22.1",
+          "exitCode": 0,
+          "result": "PASS",
+          "file": "/workspace/scratch/62884fa4f584/qa-recovery/qa-dev-travel-browser.mjs",
+          "sha256": "1c919aa6cff9168feaf6e3e3f7e6cb361595c4ef63fce9fd8d6cc3b38ba2a787",
+          "bytes": 64529,
+          "executedBy": "root",
+          "environment": "Executor restored with a different filesystem; the exact prepared source was materialized and its SHA256 and length verified before syntax checking.",
+          "scope": "Node syntax only; no dependency loading, ESLint or browser execution."
+        }
+      },
+      "remoteReadback": "Exact UTF-8 blob content verified",
+      "productChanged": false,
+      "workflowsChanged": false,
+      "inventoryChanged": false,
+      "testsReissued": false,
+      "timeoutsExtended": false
+    },
+    "spatial": {
+      "path": "scripts/qa-planet-arrival-spatial.mjs",
+      "baseBlobSha": "6b410ce9baa4ed4fd0a885fe0b2f4808aa375238",
+      "sha256": "7d5847a3aafff0ef28974afc8719a68cf28db351f3362eb09e6e4f1af6696618",
+      "bytes": 109211,
+      "independentReview": "PASS: the final blob and its unique explicit shipCloak equality were independently reviewed after the preceding candidate's favorable review.",
+      "validation": {
+        "nonExecutingV8Parse": "PASS",
+        "parseCopyStaticImportsOmitted": 11,
+        "parseCopyImportMetaUrlsSubstituted": 2,
+        "nodeSyntax": "PASS",
+        "nodeVersion": "v24.22.1",
+        "command": "node --check /workspace/scratch/62884fa4f584/qa-recovery/qa-planet-arrival-spatial.mjs",
+        "executedBy": "root",
+        "eslint": "NOT RUN: awaiting CI",
+        "browser": "NOT RUN: awaiting CI"
+      },
+      "scope": "One prearmed native read only for a member missing the existing airborne observation, with exact method/team/shipCloak plan validation. Four ordinary readings, product, timeline, clock, threshold, PNG acquisition and final assertions are unchanged.",
+      "blobSha": "b059905622a95a45f6119d969507687bc7069b59",
+      "remoteReadback": "Git SHA, SHA256 and byte length verified from exact fetched content."
+    }
+  },
+  "limits": [
+    "The publication remains 15 successful workflows and 2 failed workflows; later QA candidates do not change these conclusions.",
+    "The six final trio images are native-scale details with earlier full-scene walking context. PNG timing and later full geometry reads are separate evidence.",
+    "Still-image review does not prove temporal refraction, motion smoothness or audio.",
+    "The native handoff Canvas is largely covered by the arrival message and is not a complete visual proof of all three ground supports.",
+    "No global canonical 1:1 art qualification is claimed.",
+    "New QA sources require their subsequent CI gates. Node syntax and nonexecuting V8 parsing do not establish browser success."
+  ]
+}
