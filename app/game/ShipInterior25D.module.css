@@ -20,7 +20,9 @@
 .world { position: absolute; left: 0; top: 0; transform-origin: 0 0; background: #0b1213; contain: layout style; cursor: crosshair; }
 .wall { position: absolute; top: 0; left: 0; width: 100%; z-index: 0; background-size: 600px 400px; background-position: center bottom; background-repeat: repeat-x; box-shadow: inset 0 30px 60px #0008; filter: brightness(.72) saturate(.7); pointer-events: none; }
 .wall::after { content: ''; position: absolute; inset: 0; background: linear-gradient(0deg,#080e0fdd,transparent 35%),repeating-linear-gradient(90deg,transparent 0 390px,#090e12bb 391px 400px); }
-.floor { position: absolute; left: 0; z-index: 1; transform-origin: 0 0; background-color: #222928; background-image: repeating-linear-gradient(90deg,transparent 0 197px,#060e13 198px 201px),repeating-linear-gradient(0deg,transparent 0 197px,#0c1417 198px 201px),radial-gradient(ellipse at 50% 40%,#55503b77,transparent 65%); box-shadow: inset 0 0 80px #000d; pointer-events: none; }
+.floor { position: absolute; left: 0; z-index: 1; transform-origin: 0 0; background-color: #222928; pointer-events: none; }
+.floor > img { display: block; width: 100%; height: 100%; object-fit: cover; filter: brightness(.58) saturate(.72); }
+.floor::after { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 40%,#ac926b10,#07101370); box-shadow: inset 0 0 80px #000b; }
 .wallLight { position: absolute; left: 42px; right: 42px; height: 4px; z-index: 2; background: linear-gradient(90deg,transparent,#d9a96877 15%,#658c8055 50%,#d9a96877 85%,transparent); box-shadow: 0 9px 26px #c5a36335; pointer-events: none; }
 .floorRim { position: absolute; left: 0; width: 100%; height: 22px; z-index: 1000; border-top: 2px solid #74613a; background: url('/game/ship-interior/v22/floor-edge.webp') center 43% / 400px 268px repeat-x; pointer-events: none; }
 .roomGlyph { position: absolute; top: 93px; left: 65px; font: 600 36px monospace; letter-spacing: .12em; color: #b8ab7f50; z-index: 3; pointer-events: none; }

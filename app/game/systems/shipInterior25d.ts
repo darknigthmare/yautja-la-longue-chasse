@@ -141,42 +141,43 @@ function room(id: ShipInterior25dRoomId, deck: ShipInterior25dRoom['deck'],
     fixtures, doors: doorsFor(id) };
 }
 
-/** Art pivots sit on the front edge of each physical footprint. All approaches
- * are on free floor; the rear and side lanes remain independently traversable. */
+/** Art pivots sit on the front edge of each physical footprint. Furniture is
+ * calibrated against the upright hunter, with one scale per reused model.
+ * All approaches are on free floor; rear and side lanes remain traversable. */
 export const SHIP_INTERIOR_25D_ROOMS: Readonly<Record<ShipInterior25dRoomId, ShipInterior25dRoom>> = {
   'galaxy-map': room('galaxy-map', 'upper', 'observatory', '#8ce0ce', [
-    fixture('navigation-console', 'navigationConsole', 600, 340, 350, 190, 290, 105),
-    fixture('navigation-records', 'archiveTerminal', 940, 260, 125, 240, 80, 55),
-  ], { x: 600, y: 430 }),
+    fixture('navigation-console', 'navigationConsole', 600, 340, 250, 138, 220, 85),
+    fixture('navigation-records', 'archiveTerminal', 940, 260, 125, 230, 80, 55),
+  ], { x: 600, y: 395 }),
   'wall-armory': room('wall-armory', 'upper', 'machinery', '#e7b675', [
-    fixture('armory-rack', 'armoryRack', 590, 300, 430, 220, 390, 65),
-    fixture('armory-service-forge', 'forgeStation', 950, 500, 165, 235, 100, 60),
-  ], { x: 590, y: 390 }),
+    fixture('armory-rack', 'armoryRack', 590, 300, 370, 196, 340, 65),
+    fixture('armory-service-forge', 'forgeStation', 950, 500, 225, 280, 170, 95),
+  ], { x: 590, y: 355 }),
   'clan-archives': room('clan-archives', 'upper', 'sanctum', '#91c7e5', [
-    fixture('archive-terminal', 'archiveTerminal', 650, 300, 145, 260, 100, 60),
-    fixture('archive-console', 'navigationConsole', 310, 430, 270, 155, 220, 70),
-  ], { x: 650, y: 390 }),
+    fixture('archive-terminal', 'archiveTerminal', 650, 300, 125, 230, 80, 55),
+    fixture('archive-console', 'navigationConsole', 310, 430, 250, 138, 220, 85),
+  ], { x: 650, y: 355 }),
   'appearance-forge': room('appearance-forge', 'upper', 'machinery', '#e7a276', [
     fixture('appearance-forge', 'forgeStation', 600, 330, 225, 280, 170, 95),
-    fixture('parure-rack', 'armoryRack', 950, 420, 280, 170, 240, 45),
-  ], { x: 600, y: 420 }),
+    fixture('parure-rack', 'armoryRack', 950, 420, 370, 196, 340, 65),
+  ], { x: 600, y: 385 }),
   'trophy-hall': room('trophy-hall', 'lower', 'sanctum', '#dec186', [
-    fixture('trophy-workbench', 'trophyPlinth', 600, 350, 190, 230, 160, 80),
-    fixture('trophy-west-plinth', 'trophyPlinth', 310, 280, 150, 185, 115, 65),
-    fixture('trophy-east-plinth', 'trophyPlinth', 890, 280, 150, 185, 115, 65),
-  ], { x: 600, y: 440 }),
+    fixture('trophy-workbench', 'trophyPlinth', 600, 350, 190, 140, 160, 80),
+    fixture('trophy-west-plinth', 'trophyPlinth', 310, 280, 190, 140, 160, 80),
+    fixture('trophy-east-plinth', 'trophyPlinth', 890, 280, 190, 140, 160, 80),
+  ], { x: 600, y: 405 }),
   'medical-bay': room('medical-bay', 'lower', 'machinery', '#91d5b6', [
-    fixture('medical-bed', 'medbayBed', 600, 345, 355, 200, 320, 115),
+    fixture('medical-bed', 'medbayBed', 600, 345, 225, 120, 205, 70),
     fixture('medical-terminal', 'archiveTerminal', 950, 280, 125, 230, 80, 55),
-  ], { x: 600, y: 435 }),
+  ], { x: 600, y: 395 }),
   'training-arena': room('training-arena', 'lower', 'sanctum', '#d9bf86', [
     fixture('training-emitter', 'trainingEmitter', 950, 320, 170, 210, 100, 75),
-    fixture('training-rack', 'armoryRack', 300, 260, 260, 175, 200, 55),
-  ], { x: 950, y: 410 }),
+    fixture('training-rack', 'armoryRack', 300, 260, 370, 196, 340, 65),
+  ], { x: 950, y: 375 }),
   'launch-airlock': room('launch-airlock', 'lower', 'machinery', '#91d5d7', [
-    fixture('airlock-console', 'navigationConsole', 850, 340, 320, 175, 270, 80),
-    fixture('airlock-terminal', 'archiveTerminal', 300, 280, 125, 240, 80, 55),
-  ], { x: 850, y: 430 }),
+    fixture('airlock-console', 'navigationConsole', 850, 340, 250, 138, 220, 85),
+    fixture('airlock-terminal', 'archiveTerminal', 300, 280, 125, 230, 80, 55),
+  ], { x: 850, y: 395 }),
 };
 
 export const projectShipInterior25d = homeworldProjectGroundV64;

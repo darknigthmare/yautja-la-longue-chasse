@@ -12,6 +12,7 @@ import { DEFAULT_CONTROL_BINDINGS, matchesControlAction } from "./systems/contro
 import ShipPreparationPanelV88 from "./ShipPreparationPanelV88";
 import { SHIP_LEVEL_ART } from "./shipInteriorKit";
 import { SHIP_LEVEL_ART_V22 } from "./shipInteriorV22";
+import { SHIP_INTERIOR_25D_ART, SHIP_INTERIOR_25D_FLOOR } from "./shipInterior25dArt";
 import {
   SHIP_INTERIOR_25D_METRICS as METRICS, SHIP_INTERIOR_25D_ROOMS as ROOMS,
   SHIP_INTERIOR_25D_ROOM_ORDER as ROOM_ORDER, SHIP_INTERIOR_25D_DEFAULT_ROOM as DEFAULT_ROOM,
@@ -19,7 +20,7 @@ import {
   stepShipInterior25dActor, planShipInterior25dPath, stepShipInterior25dPath,
   nearbyShipInterior25dInteraction, shipInterior25dTransition, shipInterior25dRoomRoute,
   type ShipInterior25dActor, type ShipInterior25dPoint, type ShipInterior25dFixture,
-  type ShipInterior25dDoor,
+  type ShipInterior25dDoor, type ShipInterior25dArtKey,
 } from "./systems/shipInterior25d";
 import styles from "./ShipInterior25D.module.css";
 
@@ -38,15 +39,10 @@ interface NativeArt {
   src: string; sourceWidth: number; sourceHeight: number;
   alphaBounds: { x: number; y: number; width: number; height: number };
 }
-const LEGACY_ART: Record<string, NativeArt> = {
-  navigationConsole: SHIP_LEVEL_ART.navigationConsole,
-  medbayBed: SHIP_LEVEL_ART_V22.medbayBed,
-  armoryRack: SHIP_LEVEL_ART_V22.armoryRack,
+const FIXTURE_ART = {
+  ...SHIP_INTERIOR_25D_ART,
   archiveTerminal: SHIP_LEVEL_ART_V22.archiveTerminal,
-  forgeStation: SHIP_LEVEL_ART_V22.forgeStation,
-  trophyPlinth: SHIP_LEVEL_ART_V22.archiveTerminal,
-  trainingEmitter: SHIP_LEVEL_ART_V22.forgeStation,
-};
+} satisfies Record<ShipInterior25dArtKey, NativeArt>;
 
 const freshControls = (): Record<Direction, boolean> => ({ up: false, down: false, left: false, right: false });
 const clamp = (value: number, min: number, max: number) => Math.max(min, Math.min(max, value));
@@ -356,7 +352,9 @@ export default function ShipInterior25D(props: PhysicalShipDeckProps) {
       onPointerUp={floorPointerUp} onPointerCancel={() => { tapRef.current = null; }} aria-label="Salle parcourable en profondeur, caméra suivant le chasseur">
       <div ref={worldRef} className={styles.world} data-ship-world style={{ width: room.width, height: roomHeight, transform: "translate(" + -camera.x * zoom + "px," + -camera.y * zoom + "px) scale(" + zoom + ")" }}>
         <div className={styles.wall} style={{ height: WALL_HEIGHT, backgroundImage: "url('" + wall.src + "')" }} aria-hidden="true" />
-        <div className={styles.floor} style={{ top: WALL_HEIGHT, width: room.width, height: room.depth, transform: "scaleY(" + projectShipInterior25d({ x: 0, y: 1 }).y + ")" }} aria-hidden="true" />
+        <div className={styles.floor} style={{ top: WALL_HEIGHT, width: room.width, height: room.depth, transform: "scaleY(" + projectShipInterior25d({ x: 0, y: 1 }).y + ")" }} aria-hidden="true">
+          <img data-ship-floor src={SHIP_INTERIOR_25D_FLOOR.src} alt="" draggable={false} />
+        </div>
         <div className={styles.wallLight} style={{ top: WALL_HEIGHT - 4 }} aria-hidden="true" />
         <div className={styles.floorRim} style={{ top: roomHeight - 26 }} aria-hidden="true" />
         <div className={styles.roomGlyph} aria-hidden="true">{String(ROOM_ORDER.indexOf(frame.roomId) + 1).padStart(2, "0")}</div>
@@ -445,6 +443,6 @@ function Fixture({ fixture, actor }: { fixture: ShipInterior25dFixture; actor: S
   return <div className={styles.fixture} data-ship-fixture={fixture.id} data-occluding={occludes} data-fixture-depth={Math.round(fixture.y)}
     style={{ left: point.x, top: point.y, zIndex: 20 + Math.round(fixture.y) }}>
     <span className={styles.fixtureShadow} style={{ width: fixture.footprint.width, height: projectShipInterior25d({ x: 0, y: fixture.footprint.depth }).y }} />
-    <div className={styles.fixtureBody} style={{ opacity: occludes ? .28 : 1 }}><Art asset={LEGACY_ART[fixture.artKey] ?? SHIP_LEVEL_ART.navigationConsole} width={fixture.width} height={fixture.height} /></div>
+    <div className={styles.fixtureBody} style={{ opacity: occludes ? .28 : 1 }}><Art asset={FIXTURE_ART[fixture.artKey]} width={fixture.width} height={fixture.height} /></div>
   </div>;
 }
