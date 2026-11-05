@@ -4,6 +4,8 @@
 
 **Branche de travail :** `feat/clan-ship-operations-20261105`. **Base distante :** `9653e2e287e522ebf8867209a594033f8c1fb89b`. **Checkpoint local initial de même arbre :** `f623fefeb4987d725c369da646af0e5b9753f47f` ; cet identifiant local ne désigne pas la source publiée sur GitHub. Les références de lore et leurs limites sont regroupées dans [references.md](references.md#extension-des-opérations-du-clan-ship--5-novembre-2026).
 
+**Source des recettes finales :** [`1137faaf80051b37fa2205af73414bed099024a9`](https://github.com/darknigthmare/yautja-la-longue-chasse/commit/1137faaf80051b37fa2205af73414bed099024a9), [PR112](https://github.com/darknigthmare/yautja-la-longue-chasse/pull/112). Les preuves ciblées et leurs limites figurent au §18 ; la qualification artistique humaine reste séparée.
+
 ## 1. Portée et état de réalisation
 
 Le Clan Ship reste le vaisseau collectif `avp-clan-mothership`, auquel la coque personnelle du joueur s'amarre. Le château orbital du Wolf System et son mandat royal conservent leur identité et leur progression. La nouvelle campagne donne au joueur un **mandat opérationnel du clan**, jamais la propriété automatique du vaisseau collectif.
@@ -15,15 +17,19 @@ Les statuts de ce document ont un sens de production précis :
 | `baseline` | Fonction déjà présente dans la base inspectée ; sa preuve antérieure reste dans le suivi du lot correspondant. |
 | `proposed` | Exigence de cette spécification, sans constat d'intégration ni réussite revendiquée. |
 | `implemented-pending` | Code d'intégration observé, mais qualification comportementale ou visuelle de cette extension encore attendue. |
+| `partial` | Code présent et preuves partielles obtenues ; le manque concret est nommé, sans transformer la portion vérifiée en validation complète. |
 | `verified` | Réservé à une preuve réelle identifiant source, scénario, résultat et limites. Aucune ligne nouvelle n'obtient ce statut par la seule présence de ce document. |
 
 | Ensemble | État à la rédaction | Ce que cet état permet d'affirmer |
 |---|---|---|
-| Amarrage, sept pièces, déplacement, six services, retour personnel | `baseline` | Les modules et la recette historique existent ; les nouveaux raccordements doivent préserver leur comportement. |
-| Accueil, mandat, douze contrats, six recrutements | `implemented-pending` | Catalogue et transitions observés dans `clanShipOperations.ts` ; raccordement et recette en cours. |
-| Modèle tactique des opérations spatiales | `implemented-pending` | Actions, effets et relecture de l'historique observés dans `clanShipSpaceEncounter.ts` ; aucune réussite de test n'est déduite de cette lecture. |
-| Grande projection de guerre, terminal et équipage au poste | `implemented-pending` | Table agrandie, projection SVG, quatre rubriques et personnages raccordés dans les composants ; parcours et captures de cette extension à qualifier. |
-| Fidélité artistique des nouveaux usages et PNJ | `proposed` | Revue humaine à mener sur les références précises et le rendu réel. |
+| Amarrage, sept pièces, déplacement, six services, retour personnel | `verified` | 22 checks navigateur historiques réussis sur la tête finale, dont parcours physique, services, amarrage et reprise. |
+| Accueil, mandat, quatre contrats internes et quatre accords | `verified` | 27 checks d’opérations : accueil et mandat gagnés, quatre circuits joués, accords explicites et recrues conservées après recharge. |
+| Quatre affectations terrain et deux recrues associées | `partial` | Domaine et callbacks vérifiés ; aucune chasse de terrain jouée dans Chromium. Les deux preuves terrain du contexte de six recrues sont préparées et divulguées. |
+| Trois engagements spatiaux | `verified` | Escorte, interception et récupération gagnées par commandes réelles ; refus d’écriture, réessai unique, retrait et défaite au tour 16 exercés. |
+| Ensemble des neuf ordres spatiaux | `partial` | Les neuf ordres sont testés dans le domaine ; 49 commandes de huit types ont été envoyées dans Chromium. `recharge` n’a pas été cliqué. |
+| Grande projection, terminal et équipage aux postes | `partial` | Présence, proximité, focus et vues à 390/320 px contrôlés ; six PNJ visibles. Le bouton de guidage propre au terminal reste sans parcours navigateur dédié. |
+| Fichiers graphiques réemployés | `verified` | Audit technique de 28 fichiers : SHA, décodage, dimensions et alpha ; aucun asset modifié ou créé. |
+| Fidélité artistique des usages et PNJ | `proposed` | Revue humaine à mener sur les références précises et le rendu réel ; aucune validation 1:1 déduite des tests. |
 
 Les preuves historiques du lot du 4 novembre ne qualifient pas les contrats, l'équipage ou le combat spatial ajoutés ici. `design-data.json`, le classeur existant et leurs compteurs conservent leurs états. Le nouveau [classeur d'opérations](clan-ship-operations-20261105.xlsx) porte son propre inventaire de code, ses critères de recette et les suites prévues. Ses sources sont [operations-production.json](operations-production.json) et [operations-catalogue.json](operations-catalogue.json).
 
@@ -68,6 +74,18 @@ Le mandat n'est pas une nouvelle barrière devant l'équipement, les trophées, 
 Le premier retour à bord établit les lieux et leur utilité ; le conseil donne ensuite une responsabilité limitée. Les premiers contrats intérieurs conduisent le joueur d'un poste à l'autre et présentent des candidats. Les chasses terrain apportent des preuves nouvelles et des compétences complémentaires. Les opérations spatiales exploitent l'équipe ainsi réunie. La confirmation finale récompense la cohérence de l'ensemble, sans faire du joueur le chef absolu de tous les clans.
 
 Les durées ne sont pas fixées arbitrairement dans la progression. L'accueil et les contrôles intérieurs doivent rester brefs ; les chasses conservent leur durée et leurs conditions réelles ; les engagements spatiaux constituent des opérations tactiques bornées.
+
+### 3.4 Prise en main dans le jeu
+
+> **Rejoindre le Clan Ship.** Sur le pont personnel, sélectionne **« Clan Ship AVP · vaisseau-mère »**, puis **« Approcher le Clan Ship »** → **« Amarrer le vaisseau »** → **« Entrer dans le Clan Ship »**.
+>
+> **Obtenir le mandat.** Accomplis l’accueil au **hangar**, aux **soins**, puis aux **archives**. Rejoins ensuite le **conseil** et accepte le mandat d’opération. La campagne initiatique doit avoir obtenu son rite Blooded ; les anciennes campagnes adultes conservent leur accès compatible.
+>
+> **Utiliser les postes.** **E au clavier / A à la manette** active le service proche. **R au clavier / X à la manette** ouvre le dossier du poste ou la table holo du conseil ; à distance, cette commande te conduit d’abord au poste. Choisis ensuite un contrat ou une fiche d’équipage.
+>
+> **Partir en chasse de clan.** Accepte le contrat terrain au conseil, rejoins le **hangar**, puis **« Rejoindre mon vaisseau »**. Désamarre avant d’utiliser **« Contrat du clan · [nom du contrat] »** sur le pont personnel pour ouvrir le briefing et partir.
+
+Libellés et commandes relus dans `GameClient.tsx`, `ClanShipHub.tsx` et `ClanShipInterior.tsx`. Le mandat n’accorde ni rang Elder ni propriété du vaisseau collectif.
 
 ## 4. Usage des sept pièces
 
@@ -416,12 +434,12 @@ Le suivi utilise une source de conception modifiable et un catalogue extrait du 
 3. Exécuter `build-operations-workbook.mjs` avec le runtime primaire d'Artifact Tool, depuis un dossier temporaire configuré pour ce runtime. L'export se fait d'abord dans `outputs/<identifiant>/`, puis la copie destinée à Git est placée dans ce dossier de production.
 4. Recalculer, inspecter les erreurs de formule, tester une entrée de statut modifiable et vérifier les rendus des huit feuilles. L'export valide sa propre cohérence ; il ne valide pas le gameplay.
 
-Une ligne passe de « À vérifier » à « Vérifié » uniquement lorsque sa preuve couvre le critère écrit. Une ligne visuelle conserve « Revue artistique attendue » tant que la revue humaine n'est pas validée, même si sa recette technique passe. Les références exactes du commit publié et de la PR sont renseignées après publication, sans les déduire de la branche locale.
+Une ligne passe de « À vérifier » à « Vérifié » uniquement lorsque sa preuve couvre le critère écrit. L’état « Partiel » conserve un résultat déjà obtenu tout en nommant le parcours ou la commande encore non vérifiés. Une ligne visuelle conserve « Revue artistique attendue » tant que la revue humaine n'est pas validée, même si sa recette technique passe. Les références exactes du commit publié et de la PR sont renseignées après publication, sans les déduire de la branche locale.
 
 
-## 17. Preuves locales de cette extension
+## 17. Preuves locales historiques de cette extension
 
-La source vérifiée est enregistrée fichier par fichier dans [qa-operations/local-verification.json](qa-operations/local-verification.json), avec les empreintes des journaux. Le catalogue de contenu possède sa propre empreinte couvrant ses vingt-deux fichiers d’entrée ; ces périmètres sont explicites. Les preuves locales conservent leur empreinte historique `c8a06e7f…`. La révision de libellé « Les traces d’Oseris-IV » change uniquement le nom du contrat `field-jungle-survey` et l’empreinte de `clanShipOperations.ts` dans le nouveau catalogue ; aucun ancien journal n’est réattribué à ces nouveaux octets. Aucun de ces identifiants n’est présenté comme le futur commit publié.
+La source vérifiée est enregistrée fichier par fichier dans [qa-operations/local-verification.json](qa-operations/local-verification.json), avec les empreintes des journaux. Le catalogue de contenu possède sa propre empreinte couvrant ses vingt-deux fichiers d’entrée ; ces périmètres sont explicites. Les preuves locales conservent leur empreinte historique `c8a06e7f…`. La révision de libellé « Les traces d’Oseris-IV » change uniquement le nom du contrat `field-jungle-survey` et l’empreinte de `clanShipOperations.ts` dans le nouveau catalogue ; aucun ancien journal n’est réattribué à ces nouveaux octets. Ces journaux gardent leur qualification historique ; ils ne sont pas réattribués à la source finale publiée décrite au §18.
 
 | Vérification réellement obtenue | Résultat local | Limite conservée |
 |---|---|---|
@@ -431,4 +449,41 @@ La source vérifiée est enregistrée fichier par fichier dans [qa-operations/lo
 | Inventaire runtime courant | 2 158 entrées, 1 092 273 564 octets de sources, document de 401 252 octets | Inventaire global du runtime, distinct des 28 fichiers d’image réemployés par ce sous-ensemble. |
 | Classeur d’opérations | 8 feuilles ; recalcul, formules, entrées de suivi et aperçus de toutes les feuilles inspectés | Revue du classeur, sans validation humaine de l’art du jeu. |
 
-La recette navigateur de l’extension se trouve dans `scripts/qa-clan-ship-operations.mjs`. Ses vingt-sept contrôles prévus restent **à exécuter** tant qu’une preuve réelle n’est pas attachée. La source déclare ses amorces de test, notamment les preuves terrain synthétiques utilisées pour préparer six recrues ; elles ne doivent pas être décrites comme six chasses jouées. Les validations CI, la publication et la comparaison artistique 1:1 restent séparées. Le suivi Excel qualifie uniquement les critères entièrement couverts à ce stade et conserve les autres ouverts.
+Les preuves locales ci-dessus restent conservées avec leurs sources d’origine. Les recettes finales ont ensuite été exécutées en CI sur la tête publiée ; leur qualification et leurs limites sont consignées ci-dessous. Le [suivi par critère](operations-production.json) conserve les deux niveaux de provenance.
+
+## 18. Recettes finales et limites de qualification
+
+Les [22 checks d’intérieur](qa-operations/browser-final/clan-ship-report.json) et les [27 checks d’opérations](qa-operations/browser-final/operations-report.json) sont réussis sur **`1137faaf80051b37fa2205af73414bed099024a9`**, avec le même `checkoutCommit` et un checkout propre. La [synthèse et ses empreintes](qa-operations/browser-final/clan-ship-verification.json) les relie au [job CI](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41972172619) et à ses **277 tests de domaine/régression réussis, sans échec ni test ignoré**. Le [journal compressé](qa-operations/browser-final/clan-ship-job-127062712758.log.gz) conserve les octets du journal original ; la [liste des copies et empreintes](qa-operations/browser-final/copied-artifacts.json) distingue cette copie de l’archive CI complète.
+
+| Preuve finale | Résultat vérifié | Portée et limite |
+|---|---|---|
+| Intérieur historique | 22/22 checks ; sept salles et six services | Marche, collision, manette, focus réel, checkpoint et retour personnel. |
+| Opérations | 27/27 checks ; 49 commandes ; 4 862 échantillons de marche ; 23 captures produites | Quatre recrutements réellement gagnés ; trois engagements spatiaux joués. Huit types d’ordre sur neuf exécutés. |
+| `/dev` | 20/20 checks navigateur ; 50 contrôles de stockage ; aucune écriture persistante ni ouverture IndexedDB | Les sept salles du Clan Ship et les scènes temporaires sont exercées. Preuve exacte de cette tête dans [dev-wolf-verification.json](qa-operations/browser-final/dev-wolf-verification.json). |
+| Wolf et arrivées | 32/32 checks navigateur | Régression de l’autre vaisseau/château et des arrivées, conservée séparément ; aucune fusion de sa progression avec le Clan Ship. |
+| Images réemployées | 28/28 fichiers réussis dans [asset-audit.json](qa-operations/asset-audit.json) | Audit exécuté antérieurement sur `5b56b189…`, avec le même sous-ensemble d’images. Ses SHA et sa date restent inchangés ; il ne s’agit pas d’une nouvelle exécution CI. |
+| Compilation, lint, publication | 15/15 workflows terminés avec succès, dont les cinq jobs V94 ; preview Vercel prête sur la source finale | La [matrice CI finale](qa-operations/browser-final/ci-workflows-final.json) et le [README de preuve](qa-operations/browser-final/README.md) identifient leurs sources. Une preview prête ne prouve pas une recette navigateur contre son URL. |
+
+### 18.1 État initial divulgué et progression effectivement jouée
+
+Le premier contexte démarre avec une ancienne campagne adulte déjà à bord, sans opération, récompense ni recrue préparée. Il accomplit l’accueil, le mandat, les quatre circuits intérieurs et leurs quatre recrutements, puis gagne escorte, interception et récupération. Son journal comporte **huit reçus obtenus par l’interface**, dont aucun reçu de chasse terrain.
+
+Le second contexte part d’une [fixture explicitement déclarée](qa-operations/browser-final/fixture-disclosure.json) contenant deux preuves de terrain synthétiques et six recrutements. Il vérifie les six présences, les effets du groupe au départ, l’escorte mobile, puis une confirmation unique du cercle. **Les deux chasses et les six accords préparés ne sont pas décrits comme joués dans Chromium.** Les règles de preuve, de tentative et de récompense terrain sont couvertes par les tests de domaine et les vrais callbacks de `GameClient`.
+
+### 18.2 Couvertures partielles conservées
+
+| Critère | Ce qui est obtenu | Ce qui demeure hors du parcours navigateur |
+|---|---|---|
+| Q04 — Table et proximité | Approche, ouverture/fermeture, focus, collision et chemins autour de la grande table | Clic du bouton de guidage propre au terminal ; les recettes utilisent le sélecteur extérieur de salles. |
+| Q07 — Preuve terrain | Validation par mission/tentative, refus, récompense atomique et callbacks | Chasse de terrain réellement jouée jusqu’à son reçu de clan. |
+| Q14 — Ordres et résultats | Neuf ordres dans le domaine ; huit dans Chromium, retrait et défaite au tour 16 | Clic de « Répartir l’énergie » ; la défaite navigateur est une limite de temps tactique et non une coque épuisée. |
+| Q23 — Fidélité 1:1 | Références, limites, assets et captures disponibles | Comparaison et approbation artistiques humaines. |
+| Q26 à Q30 — Suites conçues | Spécifications, besoins et critères écrits | Incidents dynamiques, vie/animation des PNJ, nouveaux objectifs stratégiques, véritable scène d’abordage/flotte et audio spécifique. |
+
+Les autres critères mixtes nomment aussi leur méthode : l’annulation du contrat est vérifiée dans le domaine ; l’import/export d’opérations est testé dans le domaine tandis que Chromium couvre sauvegarde/reprise et le checkpoint historique ; les appuis maintenus et la perte de focus s’appuient principalement sur la recette d’intérieur. Une réussite de critère ne signifie pas que chaque variante a été rejouée à chaque couche.
+
+### 18.3 Captures représentatives
+
+Six captures originales sont conservées dans ce dossier : [grande table du conseil](qa-operations/browser-final/captures/02-council-massive-table.png), [escorte au tour 2](qa-operations/browser-final/captures/04-escort-turn-two.png), [Garde du Seuil à son poste](qa-operations/browser-final/captures/crew-threshold-guard-at-post.png), [quatre recrues à 390 px](qa-operations/browser-final/captures/13-earned-crew-mobile-390.png), [commandes tactiques à 320 px](qa-operations/browser-final/captures/15-tactical-controls-mobile-320.png) et [cercle confirmé dans le contexte préparé](qa-operations/browser-final/captures/17-fixture-circle-confirmed-mobile-320.png).
+
+Elles ont été relues pour leur lisibilité technique. La production et les captures complètes de l’exécution sont identifiées dans les rapports et l’archive CI ; les six images jointes ne sont pas présentées comme l’archive entière. **Aucune de ces inspections n’accorde la validation humaine de lore ou d’art 1:1.**

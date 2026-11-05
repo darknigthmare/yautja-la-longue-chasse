@@ -1,0 +1,1802 @@
+{
+  "schema": 1,
+  "startedAt": "2026-11-05T05:13:13.826Z",
+  "sourceCommit": "1137faaf80051b37fa2205af73414bed099024a9",
+  "workingTreeDirty": false,
+  "sourceHashes": {
+    "app/dev/client.tsx": "d0039f33b6b242058828f91a7099902a4ccee3116eda1ec658ff34dfc0971dde",
+    "app/dev/destinations.ts": "97bc2687cecee02e4de0485d461ac6a9caf1a2f6af1ab51318f968051bdea51b",
+    "app/dev/dev-travel.module.css": "ea1402ad8aa8ffab933699d0772022def3bb06318eabac2c1799e9422373ad99",
+    "app/dev/page.tsx": "d5d70598faf63d77755ed6c82e82459451132bf43202a2d95baa4194743c9b91",
+    "app/dev/services.tsx": "423710d5e58584813798608edd68b6fe545be577beb76614b485678cbf402d38",
+    "app/dev/session.module.css": "d877a7812000e081a71e8bff40dfab87e8fa1870c54ade01d223cae9b07fd357",
+    "app/dev/session.tsx": "ecda890cbd07b3ba7b80b55cbfcd5877252e6b3802225261ab4fbefae7020623",
+    "app/game/ClanShipHub.tsx": "d77dd3fb94577ee0ad2e38fe14bb0af83714152bd3f2418b0777ffa08dda672b",
+    "app/game/ClanShipInterior.tsx": "be082652a8c60f1b8dc89e47542c81903cef060629748c90570f9239b4c83711",
+    "app/game/HomeworldHub.tsx": "1fe63077ed64a1d8e58cfbbff163b5d457702cb8b8d1fec9adb92072f7354e45",
+    "app/game/HomeworldRegionV68.tsx": "d6b94d240a09c1d835dfdebef9243f3890681cb55b0f25bc3edeaac63903f8ce",
+    "app/game/HuntCanvas.tsx": "d0981b72c2ea468f5989d768a2b29671472e7ae6ffb8ed5eb51404f87c7f7631",
+    "app/game/PhysicalShipDeck.tsx": "bf2fae1c7d79088825f48b488985bf2628968b8d402c7bcf89066fcbff4f55cf",
+    "app/game/PlanetArrivalCinematic.tsx": "950d127782f12c0ae4fa8a94dc81fbc6e43005474ac4a7264b89f2aecee4a90c",
+    "app/game/ShipHub.tsx": "17c535e9c16b4fd984a0b7fbf083b715d5ff7db3f5c042b0cc0726e3eac368e7",
+    "app/game/WolfCastleScene.tsx": "1ebae94444f8a0ce211fc7baae4175fe4bee2873e76a871a689b7a413a1d982a",
+    "app/game/systems/planetArrival.ts": "4ac97bda5ccfac11d3e9449e69c8d911332e21feb9f2d1582b71d42395de1d7b",
+    "app/game/systems/planetArrivalRun.ts": "023d13ad3e2cfb02c5250e19a306effe67894e941d79a632bc908b6212a73363",
+    "app/game/systems/wolfCastle.ts": "51147485dabf373165406efa691c83e452b72a366e069594632074ed3ff3bac7",
+    "scripts/qa-dev-travel-browser.mjs": "37259f1f352c896172d85f83a59447e60592926578394830a37925a209c7810b"
+  },
+  "url": "http://127.0.0.1:4193/dev",
+  "runtime": "actual Next /dev route and production scene components",
+  "browserMode": "headed",
+  "scope": "Direct travel, real movement and mission startup, Wolf castle rooms and approach, eight planetary arrivals with natural and skipped handoffs, reset, URL entry, keyboard and touch, and campaign storage isolation. No complete campaign, art approval or performance qualification.",
+  "checks": [
+    {
+      "name": "Hidden /dev route opens directly with noindex and a complete destination catalogue",
+      "passed": true
+    },
+    {
+      "name": "Category and accent-insensitive search filter actual destination buttons",
+      "passed": true
+    },
+    {
+      "name": "Keyboard launch opens the real personal deck, movement works, and reset restores the starting point",
+      "passed": true
+    },
+    {
+      "name": "Changing equipment in the test armory stays in memory and returning preserves the personal deck",
+      "passed": true
+    },
+    {
+      "name": "All seven Clan Ship room arrivals mount the real interior and their authored scenery",
+      "passed": true
+    },
+    {
+      "name": "Approach, docking and boarding use the real Clan Ship transitions within the test session",
+      "passed": true
+    },
+    {
+      "name": "Homeworld port and market open at distinct real city positions, and city movement works",
+      "passed": true
+    },
+    {
+      "name": "A regional destination opens its live village, and F8 returns to the catalogue even from its modal",
+      "passed": true
+    },
+    {
+      "name": "All nine Wolf castle arrivals render their real rooms, accept movement and reset the disposable visit",
+      "passed": true
+    },
+    {
+      "name": "Wolf approach, boarding, settings and departure use native actions, and F8 escapes its real map",
+      "passed": true
+    },
+    {
+      "name": "All eight arrival entries preload their native resources and identify the correct mission, planet, hunter and ship",
+      "passed": true
+    },
+    {
+      "name": "Arrival pause, mobile controls, reload, reset and native Skip preserve the campaign and enter one real hunt",
+      "passed": true
+    },
+    {
+      "name": "A full natural arrival presents all eight shots and hands the same mission to one real hunt without storage writes",
+      "passed": true
+    },
+    {
+      "name": "A real mission keeps its position and clock after walking into a newly discovered room",
+      "passed": true
+    },
+    {
+      "name": "Direct bookmarked room URLs and reload recreate a disposable session",
+      "passed": true
+    },
+    {
+      "name": "Unknown destination is recoverable through the catalogue",
+      "passed": true
+    },
+    {
+      "name": "Mobile catalogue and Clan Ship support touch at 390 px without horizontal overflow",
+      "passed": true
+    },
+    {
+      "name": "An empty browser can visit and reset a real room without creating any save or database",
+      "passed": true
+    },
+    {
+      "name": "Leaving development returns to the ordinary game menu with no developer navigation entry",
+      "passed": true
+    },
+    {
+      "name": "Visited development scenes produce no missing asset, uncaught JavaScript exception or storage write",
+      "passed": true
+    }
+  ],
+  "captures": [
+    {
+      "file": "01-desktop-catalogue.png",
+      "sha256": "470f930e8660d5baca20395801b969bdee2287d91a254a1ec2f90433b939a912",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "file": "02-personal-ship.png",
+      "sha256": "45b0de69f8e7ab30693896f013df5a086e5b2d530936b3597b2ead213167bfff",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "file": "03-clan-hangar.png",
+      "sha256": "249f1a39fb2222073848688c54c27d8622c857904083142e4da1777e66cd88ca",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "file": "04-homeworld-market.png",
+      "sha256": "a6e943234501d9bcd9268aa4f83c67f86b8aeb98f7a9796415a8a3d22cafd1c3",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "file": "05-regional-village.png",
+      "sha256": "8e06a4b8a592dff230b0b20a618cea6b7667e6b95f898e0a9492dd16b613549c",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "file": "10-wolf-castle-audience.png",
+      "sha256": "65e3c808b341389409ebdc2351d2e6f2c16a1b334c2e6d252ac46288ee433113",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "file": "09-wolf-castle-approach.png",
+      "sha256": "bcc38450b5c5bc5d3df0c83f2e25a48a5ddd0f774b3e5d20c2bb7d8768a03d56",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "file": "11-arrival-pause-mobile.png",
+      "sha256": "873d50d2a9b2dd02a6afe07f02f8f401c2724eee0d1a8249a7ae748d86451468",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "file": "12-arrival-natural-egress.png",
+      "sha256": "3800ba2bae580221fa9a5433f64a542c32f0667ce8c3a25f9c665b9ba925137d",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "file": "13-hunt-after-natural-arrival.png",
+      "sha256": "28303bea85c8dc181f3225e5388ca693cb452b8b933629cc4dc46334b5e57ff5",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "file": "06-hunt-active.png",
+      "sha256": "e61ec0fa042bcd26f8b542407f865b1f56fc4f11cd4ce2e7504d2f6d80b17126",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "file": "07-mobile-catalogue.png",
+      "sha256": "2e55555321b289c3aa14cc91d09024511d62a58c5f0e15db1a4bef178a7ed78b",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "file": "08-mobile-clan.png",
+      "sha256": "1e942125d7bdd47d823dad421e8d208afa1d91c9cc567b7e69d15cc4e31a7d7a",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    }
+  ],
+  "errors": [],
+  "consoleErrors": [],
+  "storageOperations": [],
+  "databaseOpens": [],
+  "storageChecks": [
+    {
+      "label": "Hidden /dev route opens directly with noindex and a complete destination catalogue",
+      "keys": 5,
+      "sha256": "c95a0b2380277a064bf658d2b32dbb4447a631e166e214532ee760d29e3f423f"
+    },
+    {
+      "label": "Category and accent-insensitive search filter actual destination buttons",
+      "keys": 5,
+      "sha256": "c95a0b2380277a064bf658d2b32dbb4447a631e166e214532ee760d29e3f423f"
+    },
+    {
+      "label": "Keyboard launch opens the real personal deck, movement works, and reset restores the starting point",
+      "keys": 5,
+      "sha256": "c95a0b2380277a064bf658d2b32dbb4447a631e166e214532ee760d29e3f423f"
+    },
+    {
+      "label": "Changing equipment in the test armory stays in memory and returning preserves the personal deck",
+      "keys": 5,
+      "sha256": "c95a0b2380277a064bf658d2b32dbb4447a631e166e214532ee760d29e3f423f"
+    },
+    {
+      "label": "direct-clan-hangar",
+      "keys": 5,
+      "sha256": "c95a0b2380277a064bf658d2b32dbb4447a631e166e214532ee760d29e3f423f"
+    },
+    {
+      "label": "direct-clan-armurerie",
+      "keys": 5,
+      "sha256": "c95a0b2380277a064bf658d2b32dbb4447a631e166e214532ee760d29e3f423f"
+    },
+    {
+      "label": "direct-clan-entrainement",
+      "keys": 5,
+      "sha256": "c95a0b2380277a064bf658d2b32dbb4447a631e166e214532ee760d29e3f423f"
+    },
+    {
+      "label": "direct-clan-conseil",
+      "keys": 5,
+      "sha256": "c95a0b2380277a064bf658d2b32dbb4447a631e166e214532ee760d29e3f423f"
+    },
+    {
+      "label": "direct-clan-archives",
+      "keys": 5,
+      "sha256": "c95a0b2380277a064bf658d2b32dbb4447a631e166e214532ee760d29e3f423f"
+    },
+    {
+      "label": "direct-clan-trophees",
+      "keys": 5,
+      "sha256": "c95a0b2380277a064bf658d2b32dbb4447a631e166e214532ee760d29e3f423f"
+    },
+    {
+      "label": "direct-clan-soins",
+      "keys": 5,
+      "sha256": "c95a0b2380277a064bf658d2b32dbb4447a631e166e214532ee760d29e3f423f"
+    },
+    {
+      "label": "All seven Clan Ship room arrivals mount the real interior and their authored scenery",
+      "keys": 5,
+      "sha256": "c95a0b2380277a064bf658d2b32dbb4447a631e166e214532ee760d29e3f423f"
+    },
+    {
+      "label": "Approach, docking and boarding use the real Clan Ship transitions within the test session",
+      "keys": 5,
+      "sha256": "c95a0b2380277a064bf658d2b32dbb4447a631e166e214532ee760d29e3f423f"
+    },
+    {
+      "label": "homeworld-port",
+      "keys": 5,
+      "sha256": "c95a0b2380277a064bf658d2b32dbb4447a631e166e214532ee760d29e3f423f"
+    },
+    {
+      "label": "homeworld-market",
+      "keys": 5,
+      "sha256": "c95a0b2380277a064bf658d2b32dbb4447a631e166e214532ee760d29e3f423f"
+    },
+    {
+      "label": "Homeworld port and market open at distinct real city positions, and city movement works",
+      "keys": 5,
+      "sha256": "c95a0b2380277a064bf658d2b32dbb4447a631e166e214532ee760d29e3f423f"
+    },
+    {
+      "label": "A regional destination opens its live village, and F8 returns to the catalogue even from its modal",
+      "keys": 5,
+      "sha256": "c95a0b2380277a064bf658d2b32dbb4447a631e166e214532ee760d29e3f423f"
+    },
+    {
+      "label": "direct-wolf-royal-berth",
+      "keys": 5,
+      "sha256": "c95a0b2380277a064bf658d2b32dbb4447a631e166e214532ee760d29e3f423f"
+    },
+    {
+      "label": "direct-wolf-royal-airlock",
+      "keys": 5,
+      "sha256": "c95a0b2380277a064bf658d2b32dbb4447a631e166e214532ee760d29e3f423f"
+    },
+    {
+      "label": "direct-wolf-royal-vestibule",
+      "keys": 5,
+      "sha256": "c95a0b2380277a064bf658d2b32dbb4447a631e166e214532ee760d29e3f423f"
+    },
+    {
+      "label": "direct-wolf-royal-gallery",
+      "keys": 5,
+      "sha256": "c95a0b2380277a064bf658d2b32dbb4447a631e166e214532ee760d29e3f423f"
+    },
+    {
+      "label": "direct-wolf-royal-audience",
+      "keys": 5,
+      "sha256": "c95a0b2380277a064bf658d2b32dbb4447a631e166e214532ee760d29e3f423f"
+    },
+    {
+      "label": "direct-wolf-royal-council",
+      "keys": 5,
+      "sha256": "c95a0b2380277a064bf658d2b32dbb4447a631e166e214532ee760d29e3f423f"
+    },
+    {
+      "label": "direct-wolf-royal-archives",
+      "keys": 5,
+      "sha256": "c95a0b2380277a064bf658d2b32dbb4447a631e166e214532ee760d29e3f423f"
+    },
+    {
+      "label": "direct-wolf-royal-court",
+      "keys": 5,
+      "sha256": "c95a0b2380277a064bf658d2b32dbb4447a631e166e214532ee760d29e3f423f"
+    },
+    {
+      "label": "direct-wolf-royal-service-pass",
+      "keys": 5,
+      "sha256": "c95a0b2380277a064bf658d2b32dbb4447a631e166e214532ee760d29e3f423f"
+    },
+    {
+      "label": "All nine Wolf castle arrivals render their real rooms, accept movement and reset the disposable visit",
+      "keys": 5,
+      "sha256": "c95a0b2380277a064bf658d2b32dbb4447a631e166e214532ee760d29e3f423f"
+    },
+    {
+      "label": "wolf-settings-open",
+      "keys": 5,
+      "sha256": "c95a0b2380277a064bf658d2b32dbb4447a631e166e214532ee760d29e3f423f"
+    },
+    {
+      "label": "Wolf approach, boarding, settings and departure use native actions, and F8 escapes its real map",
+      "keys": 5,
+      "sha256": "c95a0b2380277a064bf658d2b32dbb4447a631e166e214532ee760d29e3f423f"
+    },
+    {
+      "label": "arrival-jungle-vey",
+      "keys": 5,
+      "sha256": "c95a0b2380277a064bf658d2b32dbb4447a631e166e214532ee760d29e3f423f"
+    },
+    {
+      "label": "arrival-ice-cryostalker",
+      "keys": 5,
+      "sha256": "c95a0b2380277a064bf658d2b32dbb4447a631e166e214532ee760d29e3f423f"
+    },
+    {
+      "label": "arrival-volcano-bad-blood",
+      "keys": 5,
+      "sha256": "c95a0b2380277a064bf658d2b32dbb4447a631e166e214532ee760d29e3f423f"
+    },
+    {
+      "label": "arrival-swamp-hydra",
+      "keys": 5,
+      "sha256": "c95a0b2380277a064bf658d2b32dbb4447a631e166e214532ee760d29e3f423f"
+    },
+    {
+      "label": "arrival-desert-sandmaw",
+      "keys": 5,
+      "sha256": "c95a0b2380277a064bf658d2b32dbb4447a631e166e214532ee760d29e3f423f"
+    },
+    {
+      "label": "arrival-ocean-leviathan",
+      "keys": 5,
+      "sha256": "c95a0b2380277a064bf658d2b32dbb4447a631e166e214532ee760d29e3f423f"
+    },
+    {
+      "label": "arrival-fungal-hivemind",
+      "keys": 5,
+      "sha256": "c95a0b2380277a064bf658d2b32dbb4447a631e166e214532ee760d29e3f423f"
+    },
+    {
+      "label": "arrival-ruins-ancient-guardian",
+      "keys": 5,
+      "sha256": "c95a0b2380277a064bf658d2b32dbb4447a631e166e214532ee760d29e3f423f"
+    },
+    {
+      "label": "All eight arrival entries preload their native resources and identify the correct mission, planet, hunter and ship",
+      "keys": 5,
+      "sha256": "c95a0b2380277a064bf658d2b32dbb4447a631e166e214532ee760d29e3f423f"
+    },
+    {
+      "label": "arrival-native-exit",
+      "keys": 5,
+      "sha256": "c95a0b2380277a064bf658d2b32dbb4447a631e166e214532ee760d29e3f423f"
+    },
+    {
+      "label": "arrival-skipped-handoff",
+      "keys": 5,
+      "sha256": "c95a0b2380277a064bf658d2b32dbb4447a631e166e214532ee760d29e3f423f"
+    },
+    {
+      "label": "Arrival pause, mobile controls, reload, reset and native Skip preserve the campaign and enter one real hunt",
+      "keys": 5,
+      "sha256": "c95a0b2380277a064bf658d2b32dbb4447a631e166e214532ee760d29e3f423f"
+    },
+    {
+      "label": "arrival-natural-handoff",
+      "keys": 5,
+      "sha256": "c95a0b2380277a064bf658d2b32dbb4447a631e166e214532ee760d29e3f423f"
+    },
+    {
+      "label": "A full natural arrival presents all eight shots and hands the same mission to one real hunt without storage writes",
+      "keys": 5,
+      "sha256": "c95a0b2380277a064bf658d2b32dbb4447a631e166e214532ee760d29e3f423f"
+    },
+    {
+      "label": "A real mission keeps its position and clock after walking into a newly discovered room",
+      "keys": 5,
+      "sha256": "c95a0b2380277a064bf658d2b32dbb4447a631e166e214532ee760d29e3f423f"
+    },
+    {
+      "label": "Direct bookmarked room URLs and reload recreate a disposable session",
+      "keys": 5,
+      "sha256": "c95a0b2380277a064bf658d2b32dbb4447a631e166e214532ee760d29e3f423f"
+    },
+    {
+      "label": "Unknown destination is recoverable through the catalogue",
+      "keys": 5,
+      "sha256": "c95a0b2380277a064bf658d2b32dbb4447a631e166e214532ee760d29e3f423f"
+    },
+    {
+      "label": "Mobile catalogue and Clan Ship support touch at 390 px without horizontal overflow",
+      "keys": 5,
+      "sha256": "c95a0b2380277a064bf658d2b32dbb4447a631e166e214532ee760d29e3f423f"
+    },
+    {
+      "label": "empty-browser-after-reset-and-return",
+      "keys": 0,
+      "sha256": "43562eae6647a8177bc36000b2cb66721b6832a2425d55b66d3f78cedb628988"
+    },
+    {
+      "label": "An empty browser can visit and reset a real room without creating any save or database",
+      "keys": 5,
+      "sha256": "c95a0b2380277a064bf658d2b32dbb4447a631e166e214532ee760d29e3f423f"
+    },
+    {
+      "label": "before-leaving-dev",
+      "keys": 5,
+      "sha256": "c95a0b2380277a064bf658d2b32dbb4447a631e166e214532ee760d29e3f423f"
+    }
+  ],
+  "roomVisits": [
+    {
+      "room": "hangar",
+      "x": 240,
+      "y": 645,
+      "image": "/game/clan-ship/interiors/hangar-v1.webp",
+      "unavailable": []
+    },
+    {
+      "room": "armurerie",
+      "x": 240,
+      "y": 645,
+      "image": "/game/clan-ship/interiors/armurerie-v1.webp",
+      "unavailable": []
+    },
+    {
+      "room": "entrainement",
+      "x": 240,
+      "y": 645,
+      "image": "/game/clan-ship/interiors/entrainement-v1.webp",
+      "unavailable": []
+    },
+    {
+      "room": "conseil",
+      "x": 240,
+      "y": 645,
+      "image": "/game/clan-ship/interiors/conseil-v1.webp",
+      "unavailable": []
+    },
+    {
+      "room": "archives",
+      "x": 240,
+      "y": 645,
+      "image": "/game/clan-ship/interiors/archives-v1.webp",
+      "unavailable": []
+    },
+    {
+      "room": "trophees",
+      "x": 240,
+      "y": 645,
+      "image": "/game/clan-ship/interiors/trophees-v1.webp",
+      "unavailable": []
+    },
+    {
+      "room": "soins",
+      "x": 240,
+      "y": 645,
+      "image": "/game/clan-ship/interiors/soins-v1.webp",
+      "unavailable": []
+    },
+    {
+      "room": "hangar",
+      "x": 240,
+      "y": 645,
+      "image": "/game/clan-ship/interiors/hangar-v1.webp",
+      "unavailable": []
+    },
+    {
+      "room": "hangar",
+      "x": 240,
+      "y": 645,
+      "image": "/game/clan-ship/interiors/hangar-v1.webp",
+      "unavailable": []
+    },
+    {
+      "room": "trophees",
+      "x": 240,
+      "y": 645,
+      "image": "/game/clan-ship/interiors/trophees-v1.webp",
+      "unavailable": []
+    },
+    {
+      "room": "trophees",
+      "x": 240,
+      "y": 645,
+      "image": "/game/clan-ship/interiors/trophees-v1.webp",
+      "unavailable": []
+    },
+    {
+      "room": "hangar",
+      "x": 240,
+      "y": 645,
+      "image": "/game/clan-ship/interiors/hangar-v1.webp",
+      "unavailable": []
+    },
+    {
+      "room": "hangar",
+      "x": 240,
+      "y": 645,
+      "image": "/game/clan-ship/interiors/hangar-v1.webp",
+      "unavailable": []
+    },
+    {
+      "room": "hangar",
+      "x": 240,
+      "y": 645,
+      "image": "/game/clan-ship/interiors/hangar-v1.webp",
+      "unavailable": []
+    }
+  ],
+  "movement": [
+    {
+      "label": "personal-ship",
+      "before": {
+        "x": 3500,
+        "y": 1360
+      },
+      "after": {
+        "x": 3518,
+        "y": 1360
+      }
+    },
+    {
+      "label": "clan-hangar",
+      "before": {
+        "x": 240,
+        "y": 645
+      },
+      "after": {
+        "x": 255.03,
+        "y": 645
+      }
+    },
+    {
+      "label": "homeworld-port",
+      "before": {
+        "x": 7780,
+        "y": 4480
+      },
+      "after": {
+        "x": 7813,
+        "y": 4480
+      }
+    },
+    {
+      "label": "wolf-royal-berth",
+      "before": {
+        "x": 380,
+        "y": 612
+      },
+      "after": {
+        "x": 398,
+        "y": 612
+      }
+    },
+    {
+      "label": "wolf-after-settings-native-focus",
+      "before": {
+        "x": 380,
+        "y": 612
+      },
+      "after": {
+        "x": 398,
+        "y": 612
+      }
+    }
+  ],
+  "huntObservations": [
+    {
+      "x": 225,
+      "elapsed": 1.5499999999999994,
+      "generation": 0,
+      "rooms": [
+        "jungle-pilot-approach"
+      ]
+    },
+    {
+      "x": 273.38814165987543,
+      "elapsed": 2.6499999999999955,
+      "generation": 0,
+      "rooms": [
+        "jungle-pilot-approach"
+      ]
+    },
+    {
+      "x": 321.7766454039017,
+      "elapsed": 3.7499999999999916,
+      "generation": 0,
+      "rooms": [
+        "jungle-pilot-approach"
+      ]
+    },
+    {
+      "x": 370.165149147928,
+      "elapsed": 4.849999999999988,
+      "generation": 0,
+      "rooms": [
+        "jungle-pilot-approach"
+      ]
+    },
+    {
+      "x": 418.5536528919543,
+      "elapsed": 5.949999999999984,
+      "generation": 0,
+      "rooms": [
+        "jungle-pilot-approach"
+      ]
+    },
+    {
+      "x": 473.599665253374,
+      "elapsed": 7.04999999999998,
+      "generation": 0,
+      "rooms": [
+        "jungle-pilot-approach"
+      ]
+    },
+    {
+      "x": 557.0280234157163,
+      "elapsed": 8.149999999999984,
+      "generation": 0,
+      "rooms": [
+        "jungle-pilot-approach"
+      ]
+    },
+    {
+      "x": 640.4564782802989,
+      "elapsed": 9.250000000000039,
+      "generation": 0,
+      "rooms": [
+        "jungle-pilot-approach"
+      ]
+    },
+    {
+      "x": 723.8849331448815,
+      "elapsed": 10.350000000000094,
+      "generation": 0,
+      "rooms": [
+        "jungle-pilot-approach"
+      ]
+    },
+    {
+      "x": 792.402051947251,
+      "elapsed": 11.400000000000146,
+      "generation": 0,
+      "rooms": [
+        "jungle-pilot-approach",
+        "jungle-pilot-underpass"
+      ]
+    },
+    {
+      "x": 792.4026674658928,
+      "elapsed": 12.350000000000193,
+      "generation": 0,
+      "rooms": [
+        "jungle-pilot-approach",
+        "jungle-pilot-underpass"
+      ]
+    },
+    {
+      "x": 225,
+      "elapsed": 0,
+      "generation": 0,
+      "rooms": []
+    }
+  ],
+  "missingAssets": [],
+  "castleVisits": [
+    {
+      "room": "royal-berth",
+      "x": 380,
+      "y": 612,
+      "background": "/game/wolf-castle/v1/berth-wall.webp",
+      "decodedImages": 64
+    },
+    {
+      "room": "royal-berth",
+      "x": 380,
+      "y": 612,
+      "background": "/game/wolf-castle/v1/berth-wall.webp",
+      "decodedImages": 64
+    },
+    {
+      "room": "royal-airlock",
+      "x": 380,
+      "y": 612,
+      "background": "/game/wolf-castle/v1/service-wall.webp",
+      "decodedImages": 64
+    },
+    {
+      "room": "royal-vestibule",
+      "x": 380,
+      "y": 612,
+      "background": "/game/wolf-castle/v1/gallery-wall.webp",
+      "decodedImages": 63
+    },
+    {
+      "room": "royal-gallery",
+      "x": 380,
+      "y": 612,
+      "background": "/game/wolf-castle/v1/gallery-wall.webp",
+      "decodedImages": 63
+    },
+    {
+      "room": "royal-audience",
+      "x": 380,
+      "y": 612,
+      "background": "/game/wolf-castle/v1/audience-wall.webp",
+      "decodedImages": 67
+    },
+    {
+      "room": "royal-council",
+      "x": 380,
+      "y": 612,
+      "background": "/game/wolf-castle/v1/audience-wall.webp",
+      "decodedImages": 64
+    },
+    {
+      "room": "royal-archives",
+      "x": 380,
+      "y": 612,
+      "background": "/game/wolf-castle/v1/gallery-wall.webp",
+      "decodedImages": 64
+    },
+    {
+      "room": "royal-court",
+      "x": 380,
+      "y": 612,
+      "background": "/game/wolf-castle/v1/court-wall.webp",
+      "decodedImages": 63
+    },
+    {
+      "room": "royal-service-pass",
+      "x": 380,
+      "y": 612,
+      "background": "/game/wolf-castle/v1/service-wall.webp",
+      "decodedImages": 63
+    },
+    {
+      "room": "royal-berth",
+      "x": 380,
+      "y": 612,
+      "background": "/game/wolf-castle/v1/berth-wall.webp",
+      "decodedImages": 64
+    },
+    {
+      "room": "royal-berth",
+      "x": 380,
+      "y": 612,
+      "background": "/game/wolf-castle/v1/berth-wall.webp",
+      "decodedImages": 64
+    },
+    {
+      "room": "royal-archives",
+      "x": 380,
+      "y": 612,
+      "background": "/game/wolf-castle/v1/gallery-wall.webp",
+      "decodedImages": 64
+    },
+    {
+      "room": "royal-archives",
+      "x": 380,
+      "y": 612,
+      "background": "/game/wolf-castle/v1/gallery-wall.webp",
+      "decodedImages": 64
+    }
+  ],
+  "arrivalVisits": [
+    {
+      "id": "arrival-jungle-vey",
+      "run": "dev-arrival:jungle-vey:2000-01-01T00:00:00.041Z",
+      "shot": "orbit",
+      "status": "playing",
+      "elapsed": 17,
+      "planet": "planet-oseris-iv",
+      "ship": "classic-predator-spaceship",
+      "hunter": "jungle-hunter",
+      "spawn": "jungle-vey:spawn",
+      "assets": {
+        "space": "/game/planet-arrival/v1/space.webp",
+        "podFlight": "/game/planet-arrival/v1/pod-flight.webp",
+        "podGround": "/game/planet-arrival/v1/pod-ground.webp",
+        "podDoor": "/game/planet-arrival/v1/pod-door.webp",
+        "releaseJet": "/game/planet-arrival/v1/release-jet.webp",
+        "heatTrail": "/game/planet-arrival/v1/heat-trail.webp",
+        "clouds": "/game/planet-arrival/v1/atmosphere-clouds.webp",
+        "impactDust": "/game/planet-arrival/v1/impact-dust.webp",
+        "carrier": "/game/ships/v12/classic-predator-spaceship.webp",
+        "planet": "/game/planets/v10/planet-oseris-iv.webp",
+        "ground": "/game/backgrounds/jungle-multiscreen-v6.png"
+      },
+      "decodedImages": 61
+    },
+    {
+      "id": "arrival-ice-cryostalker",
+      "run": "dev-arrival:ice-cryostalker:2000-01-01T00:00:00.042Z",
+      "shot": "orbit",
+      "status": "playing",
+      "elapsed": 83,
+      "planet": "planet-nivalis-k",
+      "ship": "classic-predator-spaceship",
+      "hunter": "jungle-hunter",
+      "spawn": "ice-cryostalker:spawn",
+      "assets": {
+        "space": "/game/planet-arrival/v1/space.webp",
+        "podFlight": "/game/planet-arrival/v1/pod-flight.webp",
+        "podGround": "/game/planet-arrival/v1/pod-ground.webp",
+        "podDoor": "/game/planet-arrival/v1/pod-door.webp",
+        "releaseJet": "/game/planet-arrival/v1/release-jet.webp",
+        "heatTrail": "/game/planet-arrival/v1/heat-trail.webp",
+        "clouds": "/game/planet-arrival/v1/atmosphere-clouds.webp",
+        "impactDust": "/game/planet-arrival/v1/impact-dust.webp",
+        "carrier": "/game/ships/v12/classic-predator-spaceship.webp",
+        "planet": "/game/planets/v10/planet-nivalis-k.webp",
+        "ground": "/game/backgrounds/ice-depth-v4.webp"
+      },
+      "decodedImages": 61
+    },
+    {
+      "id": "arrival-volcano-bad-blood",
+      "run": "dev-arrival:volcano-bad-blood:2000-01-01T00:00:00.043Z",
+      "shot": "orbit",
+      "status": "playing",
+      "elapsed": 83,
+      "planet": "planet-cinder-12",
+      "ship": "classic-predator-spaceship",
+      "hunter": "jungle-hunter",
+      "spawn": "volcano-bad-blood:spawn",
+      "assets": {
+        "space": "/game/planet-arrival/v1/space.webp",
+        "podFlight": "/game/planet-arrival/v1/pod-flight.webp",
+        "podGround": "/game/planet-arrival/v1/pod-ground.webp",
+        "podDoor": "/game/planet-arrival/v1/pod-door.webp",
+        "releaseJet": "/game/planet-arrival/v1/release-jet.webp",
+        "heatTrail": "/game/planet-arrival/v1/heat-trail.webp",
+        "clouds": "/game/planet-arrival/v1/atmosphere-clouds.webp",
+        "impactDust": "/game/planet-arrival/v1/impact-dust.webp",
+        "carrier": "/game/ships/v12/classic-predator-spaceship.webp",
+        "planet": "/game/planets/v10/planet-cinder-12.webp",
+        "ground": "/game/backgrounds/volcanic-depth-v4.webp"
+      },
+      "decodedImages": 61
+    },
+    {
+      "id": "arrival-swamp-hydra",
+      "run": "dev-arrival:swamp-hydra:2000-01-01T00:00:00.044Z",
+      "shot": "orbit",
+      "status": "playing",
+      "elapsed": 67,
+      "planet": "planet-naraka-delta",
+      "ship": "classic-predator-spaceship",
+      "hunter": "jungle-hunter",
+      "spawn": "swamp-hydra:spawn",
+      "assets": {
+        "space": "/game/planet-arrival/v1/space.webp",
+        "podFlight": "/game/planet-arrival/v1/pod-flight.webp",
+        "podGround": "/game/planet-arrival/v1/pod-ground.webp",
+        "podDoor": "/game/planet-arrival/v1/pod-door.webp",
+        "releaseJet": "/game/planet-arrival/v1/release-jet.webp",
+        "heatTrail": "/game/planet-arrival/v1/heat-trail.webp",
+        "clouds": "/game/planet-arrival/v1/atmosphere-clouds.webp",
+        "impactDust": "/game/planet-arrival/v1/impact-dust.webp",
+        "carrier": "/game/ships/v12/classic-predator-spaceship.webp",
+        "planet": "/game/planets/v10/planet-naraka-delta.webp",
+        "ground": "/game/backgrounds/swamp-depth-v8.png"
+      },
+      "decodedImages": 61
+    },
+    {
+      "id": "arrival-desert-sandmaw",
+      "run": "dev-arrival:desert-sandmaw:2000-01-01T00:00:00.045Z",
+      "shot": "orbit",
+      "status": "playing",
+      "elapsed": 100,
+      "planet": "planet-serekh-9",
+      "ship": "classic-predator-spaceship",
+      "hunter": "jungle-hunter",
+      "spawn": "desert-sandmaw:spawn",
+      "assets": {
+        "space": "/game/planet-arrival/v1/space.webp",
+        "podFlight": "/game/planet-arrival/v1/pod-flight.webp",
+        "podGround": "/game/planet-arrival/v1/pod-ground.webp",
+        "podDoor": "/game/planet-arrival/v1/pod-door.webp",
+        "releaseJet": "/game/planet-arrival/v1/release-jet.webp",
+        "heatTrail": "/game/planet-arrival/v1/heat-trail.webp",
+        "clouds": "/game/planet-arrival/v1/atmosphere-clouds.webp",
+        "impactDust": "/game/planet-arrival/v1/impact-dust.webp",
+        "carrier": "/game/ships/v12/classic-predator-spaceship.webp",
+        "planet": "/game/planets/v10/planet-serekh-9.webp",
+        "ground": "/game/backgrounds/desert-depth-v8.png"
+      },
+      "decodedImages": 61
+    },
+    {
+      "id": "arrival-ocean-leviathan",
+      "run": "dev-arrival:ocean-leviathan:2000-01-01T00:00:00.046Z",
+      "shot": "orbit",
+      "status": "playing",
+      "elapsed": 17,
+      "planet": "planet-pelagos-m",
+      "ship": "classic-predator-spaceship",
+      "hunter": "jungle-hunter",
+      "spawn": "ocean-leviathan:spawn",
+      "assets": {
+        "space": "/game/planet-arrival/v1/space.webp",
+        "podFlight": "/game/planet-arrival/v1/pod-flight.webp",
+        "podGround": "/game/planet-arrival/v1/pod-ground.webp",
+        "podDoor": "/game/planet-arrival/v1/pod-door.webp",
+        "releaseJet": "/game/planet-arrival/v1/release-jet.webp",
+        "heatTrail": "/game/planet-arrival/v1/heat-trail.webp",
+        "clouds": "/game/planet-arrival/v1/atmosphere-clouds.webp",
+        "impactDust": "/game/planet-arrival/v1/impact-dust.webp",
+        "carrier": "/game/ships/v12/classic-predator-spaceship.webp",
+        "planet": "/game/planets/v10/planet-pelagos-m.webp",
+        "ground": "/game/backgrounds/ocean-depth-v8.png"
+      },
+      "decodedImages": 61
+    },
+    {
+      "id": "arrival-fungal-hivemind",
+      "run": "dev-arrival:fungal-hivemind:2000-01-01T00:00:00.047Z",
+      "shot": "orbit",
+      "status": "playing",
+      "elapsed": 33,
+      "planet": "planet-mycora-v",
+      "ship": "classic-predator-spaceship",
+      "hunter": "jungle-hunter",
+      "spawn": "fungal-hivemind:spawn",
+      "assets": {
+        "space": "/game/planet-arrival/v1/space.webp",
+        "podFlight": "/game/planet-arrival/v1/pod-flight.webp",
+        "podGround": "/game/planet-arrival/v1/pod-ground.webp",
+        "podDoor": "/game/planet-arrival/v1/pod-door.webp",
+        "releaseJet": "/game/planet-arrival/v1/release-jet.webp",
+        "heatTrail": "/game/planet-arrival/v1/heat-trail.webp",
+        "clouds": "/game/planet-arrival/v1/atmosphere-clouds.webp",
+        "impactDust": "/game/planet-arrival/v1/impact-dust.webp",
+        "carrier": "/game/ships/v12/classic-predator-spaceship.webp",
+        "planet": "/game/planets/v10/planet-mycora-v.webp",
+        "ground": "/game/backgrounds/fungal-depth-v8.png"
+      },
+      "decodedImages": 61
+    },
+    {
+      "id": "arrival-ruins-ancient-guardian",
+      "run": "dev-arrival:ruins-ancient-guardian:2000-01-01T00:00:00.048Z",
+      "shot": "orbit",
+      "status": "playing",
+      "elapsed": 67,
+      "planet": "planet-acheron-sigma",
+      "ship": "classic-predator-spaceship",
+      "hunter": "jungle-hunter",
+      "spawn": "ruins-ancient-guardian:spawn",
+      "assets": {
+        "space": "/game/planet-arrival/v1/space.webp",
+        "podFlight": "/game/planet-arrival/v1/pod-flight.webp",
+        "podGround": "/game/planet-arrival/v1/pod-ground.webp",
+        "podDoor": "/game/planet-arrival/v1/pod-door.webp",
+        "releaseJet": "/game/planet-arrival/v1/release-jet.webp",
+        "heatTrail": "/game/planet-arrival/v1/heat-trail.webp",
+        "clouds": "/game/planet-arrival/v1/atmosphere-clouds.webp",
+        "impactDust": "/game/planet-arrival/v1/impact-dust.webp",
+        "carrier": "/game/ships/v12/classic-predator-spaceship.webp",
+        "planet": "/game/planets/v10/planet-acheron-sigma.webp",
+        "ground": "/game/backgrounds/ruins-depth-v8.png"
+      },
+      "decodedImages": 61
+    },
+    {
+      "id": "arrival-jungle-vey",
+      "run": "dev-arrival:jungle-vey:2000-01-01T00:00:00.041Z",
+      "shot": "orbit",
+      "status": "playing",
+      "elapsed": 50,
+      "planet": "planet-oseris-iv",
+      "ship": "classic-predator-spaceship",
+      "hunter": "jungle-hunter",
+      "spawn": "jungle-vey:spawn",
+      "assets": {
+        "space": "/game/planet-arrival/v1/space.webp",
+        "podFlight": "/game/planet-arrival/v1/pod-flight.webp",
+        "podGround": "/game/planet-arrival/v1/pod-ground.webp",
+        "podDoor": "/game/planet-arrival/v1/pod-door.webp",
+        "releaseJet": "/game/planet-arrival/v1/release-jet.webp",
+        "heatTrail": "/game/planet-arrival/v1/heat-trail.webp",
+        "clouds": "/game/planet-arrival/v1/atmosphere-clouds.webp",
+        "impactDust": "/game/planet-arrival/v1/impact-dust.webp",
+        "carrier": "/game/ships/v12/classic-predator-spaceship.webp",
+        "planet": "/game/planets/v10/planet-oseris-iv.webp",
+        "ground": "/game/backgrounds/jungle-multiscreen-v6.png"
+      },
+      "decodedImages": 61
+    },
+    {
+      "id": "arrival-jungle-vey",
+      "run": "dev-arrival:jungle-vey:2000-01-01T00:00:00.041Z",
+      "shot": "orbit",
+      "status": "playing",
+      "elapsed": 50,
+      "planet": "planet-oseris-iv",
+      "ship": "classic-predator-spaceship",
+      "hunter": "jungle-hunter",
+      "spawn": "jungle-vey:spawn",
+      "assets": {
+        "space": "/game/planet-arrival/v1/space.webp",
+        "podFlight": "/game/planet-arrival/v1/pod-flight.webp",
+        "podGround": "/game/planet-arrival/v1/pod-ground.webp",
+        "podDoor": "/game/planet-arrival/v1/pod-door.webp",
+        "releaseJet": "/game/planet-arrival/v1/release-jet.webp",
+        "heatTrail": "/game/planet-arrival/v1/heat-trail.webp",
+        "clouds": "/game/planet-arrival/v1/atmosphere-clouds.webp",
+        "impactDust": "/game/planet-arrival/v1/impact-dust.webp",
+        "carrier": "/game/ships/v12/classic-predator-spaceship.webp",
+        "planet": "/game/planets/v10/planet-oseris-iv.webp",
+        "ground": "/game/backgrounds/jungle-multiscreen-v6.png"
+      },
+      "decodedImages": 61
+    },
+    {
+      "id": "arrival-jungle-vey",
+      "run": "dev-arrival:jungle-vey:2000-01-01T00:00:00.041Z",
+      "shot": "orbit",
+      "status": "playing",
+      "elapsed": 83,
+      "planet": "planet-oseris-iv",
+      "ship": "classic-predator-spaceship",
+      "hunter": "jungle-hunter",
+      "spawn": "jungle-vey:spawn",
+      "assets": {
+        "space": "/game/planet-arrival/v1/space.webp",
+        "podFlight": "/game/planet-arrival/v1/pod-flight.webp",
+        "podGround": "/game/planet-arrival/v1/pod-ground.webp",
+        "podDoor": "/game/planet-arrival/v1/pod-door.webp",
+        "releaseJet": "/game/planet-arrival/v1/release-jet.webp",
+        "heatTrail": "/game/planet-arrival/v1/heat-trail.webp",
+        "clouds": "/game/planet-arrival/v1/atmosphere-clouds.webp",
+        "impactDust": "/game/planet-arrival/v1/impact-dust.webp",
+        "carrier": "/game/ships/v12/classic-predator-spaceship.webp",
+        "planet": "/game/planets/v10/planet-oseris-iv.webp",
+        "ground": "/game/backgrounds/jungle-multiscreen-v6.png"
+      },
+      "decodedImages": 61
+    },
+    {
+      "id": "arrival-jungle-vey",
+      "run": "dev-arrival:jungle-vey:2000-01-01T00:00:00.041Z",
+      "shot": "orbit",
+      "status": "playing",
+      "elapsed": 67,
+      "planet": "planet-oseris-iv",
+      "ship": "classic-predator-spaceship",
+      "hunter": "jungle-hunter",
+      "spawn": "jungle-vey:spawn",
+      "assets": {
+        "space": "/game/planet-arrival/v1/space.webp",
+        "podFlight": "/game/planet-arrival/v1/pod-flight.webp",
+        "podGround": "/game/planet-arrival/v1/pod-ground.webp",
+        "podDoor": "/game/planet-arrival/v1/pod-door.webp",
+        "releaseJet": "/game/planet-arrival/v1/release-jet.webp",
+        "heatTrail": "/game/planet-arrival/v1/heat-trail.webp",
+        "clouds": "/game/planet-arrival/v1/atmosphere-clouds.webp",
+        "impactDust": "/game/planet-arrival/v1/impact-dust.webp",
+        "carrier": "/game/ships/v12/classic-predator-spaceship.webp",
+        "planet": "/game/planets/v10/planet-oseris-iv.webp",
+        "ground": "/game/backgrounds/jungle-multiscreen-v6.png"
+      },
+      "decodedImages": 61
+    },
+    {
+      "id": "arrival-jungle-vey",
+      "run": "dev-arrival:jungle-vey:2000-01-01T00:00:00.041Z",
+      "shot": "orbit",
+      "status": "playing",
+      "elapsed": 67,
+      "planet": "planet-oseris-iv",
+      "ship": "classic-predator-spaceship",
+      "hunter": "jungle-hunter",
+      "spawn": "jungle-vey:spawn",
+      "assets": {
+        "space": "/game/planet-arrival/v1/space.webp",
+        "podFlight": "/game/planet-arrival/v1/pod-flight.webp",
+        "podGround": "/game/planet-arrival/v1/pod-ground.webp",
+        "podDoor": "/game/planet-arrival/v1/pod-door.webp",
+        "releaseJet": "/game/planet-arrival/v1/release-jet.webp",
+        "heatTrail": "/game/planet-arrival/v1/heat-trail.webp",
+        "clouds": "/game/planet-arrival/v1/atmosphere-clouds.webp",
+        "impactDust": "/game/planet-arrival/v1/impact-dust.webp",
+        "carrier": "/game/ships/v12/classic-predator-spaceship.webp",
+        "planet": "/game/planets/v10/planet-oseris-iv.webp",
+        "ground": "/game/backgrounds/jungle-multiscreen-v6.png"
+      },
+      "decodedImages": 61
+    },
+    {
+      "id": "arrival-jungle-vey",
+      "run": "dev-arrival:jungle-vey:2000-01-01T00:00:00.041Z",
+      "shot": "orbit",
+      "status": "playing",
+      "elapsed": 67,
+      "planet": "planet-oseris-iv",
+      "ship": "classic-predator-spaceship",
+      "hunter": "jungle-hunter",
+      "spawn": "jungle-vey:spawn",
+      "assets": {
+        "space": "/game/planet-arrival/v1/space.webp",
+        "podFlight": "/game/planet-arrival/v1/pod-flight.webp",
+        "podGround": "/game/planet-arrival/v1/pod-ground.webp",
+        "podDoor": "/game/planet-arrival/v1/pod-door.webp",
+        "releaseJet": "/game/planet-arrival/v1/release-jet.webp",
+        "heatTrail": "/game/planet-arrival/v1/heat-trail.webp",
+        "clouds": "/game/planet-arrival/v1/atmosphere-clouds.webp",
+        "impactDust": "/game/planet-arrival/v1/impact-dust.webp",
+        "carrier": "/game/ships/v12/classic-predator-spaceship.webp",
+        "planet": "/game/planets/v10/planet-oseris-iv.webp",
+        "ground": "/game/backgrounds/jungle-multiscreen-v6.png"
+      },
+      "decodedImages": 61
+    }
+  ],
+  "arrivalTransitions": [
+    {
+      "id": "arrival-jungle-vey",
+      "run": "dev-arrival:jungle-vey:2000-01-01T00:00:00.041Z",
+      "status": "complete",
+      "completedBy": "skipped",
+      "elapsed": 133.30000000000007,
+      "mission": "jungle-vey",
+      "huntGeneration": 0,
+      "huntCanvasMounts": 1
+    },
+    {
+      "id": "arrival-jungle-vey",
+      "run": "dev-arrival:jungle-vey:2000-01-01T00:00:00.041Z",
+      "status": "complete",
+      "completedBy": "natural",
+      "elapsed": 62000,
+      "mission": "jungle-vey",
+      "huntGeneration": 0,
+      "huntCanvasMounts": 1,
+      "shots": [
+        {
+          "run": "dev-arrival:jungle-vey:2000-01-01T00:00:00.041Z",
+          "shot": "orbit",
+          "status": "playing",
+          "elapsed": 33,
+          "planet": "planet-oseris-iv",
+          "ship": "classic-predator-spaceship",
+          "hunter": "jungle-hunter",
+          "spawn": "jungle-vey:spawn"
+        },
+        {
+          "run": "dev-arrival:jungle-vey:2000-01-01T00:00:00.041Z",
+          "shot": "title",
+          "status": "playing",
+          "elapsed": 7450,
+          "planet": "planet-oseris-iv",
+          "ship": "classic-predator-spaceship",
+          "hunter": "jungle-hunter",
+          "spawn": "jungle-vey:spawn"
+        },
+        {
+          "run": "dev-arrival:jungle-vey:2000-01-01T00:00:00.041Z",
+          "shot": "carrier",
+          "status": "playing",
+          "elapsed": 13250,
+          "planet": "planet-oseris-iv",
+          "ship": "classic-predator-spaceship",
+          "hunter": "jungle-hunter",
+          "spawn": "jungle-vey:spawn"
+        },
+        {
+          "run": "dev-arrival:jungle-vey:2000-01-01T00:00:00.041Z",
+          "shot": "release",
+          "status": "playing",
+          "elapsed": 23082,
+          "planet": "planet-oseris-iv",
+          "ship": "classic-predator-spaceship",
+          "hunter": "jungle-hunter",
+          "spawn": "jungle-vey:spawn"
+        },
+        {
+          "run": "dev-arrival:jungle-vey:2000-01-01T00:00:00.041Z",
+          "shot": "descent",
+          "status": "playing",
+          "elapsed": 31399,
+          "planet": "planet-oseris-iv",
+          "ship": "classic-predator-spaceship",
+          "hunter": "jungle-hunter",
+          "spawn": "jungle-vey:spawn"
+        },
+        {
+          "run": "dev-arrival:jungle-vey:2000-01-01T00:00:00.041Z",
+          "shot": "atmosphere",
+          "status": "playing",
+          "elapsed": 41232,
+          "planet": "planet-oseris-iv",
+          "ship": "classic-predator-spaceship",
+          "hunter": "jungle-hunter",
+          "spawn": "jungle-vey:spawn"
+        },
+        {
+          "run": "dev-arrival:jungle-vey:2000-01-01T00:00:00.041Z",
+          "shot": "landing",
+          "status": "playing",
+          "elapsed": 49048,
+          "planet": "planet-oseris-iv",
+          "ship": "classic-predator-spaceship",
+          "hunter": "jungle-hunter",
+          "spawn": "jungle-vey:spawn"
+        },
+        {
+          "run": "dev-arrival:jungle-vey:2000-01-01T00:00:00.041Z",
+          "shot": "egress",
+          "status": "playing",
+          "elapsed": 57531,
+          "planet": "planet-oseris-iv",
+          "ship": "classic-predator-spaceship",
+          "hunter": "jungle-hunter",
+          "spawn": "jungle-vey:spawn"
+        }
+      ]
+    }
+  ],
+  "arrivalResets": [
+    {
+      "label": "reset-during-arrival",
+      "id": "arrival-jungle-vey",
+      "run": "dev-arrival:jungle-vey:2000-01-01T00:00:00.041Z",
+      "shot": "orbit",
+      "status": "playing",
+      "elapsed": 17,
+      "planet": "planet-oseris-iv",
+      "ship": "classic-predator-spaceship",
+      "hunter": "jungle-hunter",
+      "spawn": "jungle-vey:spawn"
+    },
+    {
+      "label": "bookmarked-arrival-reload",
+      "id": "arrival-jungle-vey",
+      "run": "dev-arrival:jungle-vey:2000-01-01T00:00:00.041Z",
+      "shot": "orbit",
+      "status": "playing",
+      "elapsed": 17,
+      "planet": "planet-oseris-iv",
+      "ship": "classic-predator-spaceship",
+      "hunter": "jungle-hunter",
+      "spawn": "jungle-vey:spawn"
+    },
+    {
+      "label": "reset-after-handoff",
+      "id": "arrival-jungle-vey",
+      "run": "dev-arrival:jungle-vey:2000-01-01T00:00:00.041Z",
+      "shot": "orbit",
+      "status": "playing",
+      "elapsed": 50,
+      "planet": "planet-oseris-iv",
+      "ship": "classic-predator-spaceship",
+      "hunter": "jungle-hunter",
+      "spawn": "jungle-vey:spawn"
+    },
+    {
+      "label": "natural-arrival-start",
+      "id": "arrival-jungle-vey",
+      "run": "dev-arrival:jungle-vey:2000-01-01T00:00:00.041Z",
+      "shot": "orbit",
+      "status": "playing",
+      "elapsed": 33,
+      "planet": "planet-oseris-iv",
+      "ship": "classic-predator-spaceship",
+      "hunter": "jungle-hunter",
+      "spawn": "jungle-vey:spawn"
+    }
+  ],
+  "arrivalPauses": [
+    {
+      "id": "arrival-fungal-hivemind",
+      "before": {
+        "url": "http://127.0.0.1:4193/dev?lieu=arrival-fungal-hivemind",
+        "focused": true,
+        "hidden": false,
+        "visibility": "visible",
+        "activeElement": {
+          "tag": "BUTTON",
+          "role": null,
+          "label": null,
+          "text": "Reprendre l’arrivée"
+        },
+        "session": {
+          "id": "arrival-fungal-hivemind",
+          "stage": "arrival",
+          "arrivalStatus": "paused",
+          "arrivalElapsed": "0"
+        },
+        "arrival": {
+          "run": "dev-arrival:fungal-hivemind:2000-01-01T00:00:00.047Z",
+          "shot": "orbit",
+          "status": "paused",
+          "elapsed": 0,
+          "heading": "La chasse peut attendre",
+          "reason": "La fenêtre est inactive.",
+          "statusNote": "Mouvements réduits : tableaux fixes, durée et destination conservées."
+        }
+      },
+      "resumeAttempted": true,
+      "afterResume": {
+        "url": "http://127.0.0.1:4193/dev?lieu=arrival-fungal-hivemind",
+        "focused": true,
+        "hidden": false,
+        "visibility": "visible",
+        "activeElement": {
+          "tag": "BUTTON",
+          "role": null,
+          "label": null,
+          "text": "Pause"
+        },
+        "session": {
+          "id": "arrival-fungal-hivemind",
+          "stage": "arrival",
+          "arrivalStatus": "playing",
+          "arrivalElapsed": "0"
+        },
+        "arrival": {
+          "run": "dev-arrival:fungal-hivemind:2000-01-01T00:00:00.047Z",
+          "shot": "orbit",
+          "status": "playing",
+          "elapsed": 33,
+          "heading": "",
+          "reason": "",
+          "statusNote": "Mouvements réduits : tableaux fixes, durée et destination conservées."
+        }
+      }
+    }
+  ],
+  "requestedAssets": [
+    "/game/assets/v139/rig-gauntlets/jungle-hunter/base.svg",
+    "/game/assets/v139/rig-gauntlets/jungle-hunter/lid.svg",
+    "/game/assets/v15/trophies/trophy-vey.webp",
+    "/game/assets/v18/enemy-trophy-gameplay/enemy-trophy-balise-de-clan-profanee.webp",
+    "/game/assets/v18/enemy-trophy-gameplay/enemy-trophy-c-ur-ligneux-spirale.webp",
+    "/game/assets/v18/enemy-trophy-gameplay/enemy-trophy-glande-a-aiguillons.webp",
+    "/game/assets/v18/enemy-trophy-gameplay/enemy-trophy-iris-thermosensible.webp",
+    "/game/assets/v18/enemy-trophy-gameplay/enemy-trophy-n-ud-sensoriel.webp",
+    "/game/assets/v18/enemy-trophy-gameplay/enemy-trophy-noyau-mnesique.webp",
+    "/game/assets/v18/enemy-trophy-gameplay/enemy-trophy-noyau-racinaire.webp",
+    "/game/assets/v18/enemy-trophy-gameplay/enemy-trophy-rostre-fouisseur.webp",
+    "/game/assets/v18/enemy-trophy-gameplay/enemy-trophy-vertebres-articulees.webp",
+    "/game/assets/v19/biome-decor/jungle/clm/clm-buttress-trunk-01-straight.webp",
+    "/game/assets/v19/biome-decor/jungle/clm/clm-buttress-trunk-04-interrupted.webp",
+    "/game/assets/v19/biome-decor/jungle/clm/clm-field-ladder-01-straight.webp",
+    "/game/assets/v19/biome-decor/jungle/clm/clm-field-ladder-02-hooked.webp",
+    "/game/assets/v19/biome-decor/jungle/clm/clm-field-ladder-03-forked.webp",
+    "/game/assets/v19/biome-decor/jungle/clm/clm-field-ladder-05-paired.webp",
+    "/game/assets/v19/biome-decor/jungle/clm/clm-hanging-vine-02-hooked.webp",
+    "/game/assets/v19/biome-decor/jungle/clm/clm-hanging-vine-05-paired.webp",
+    "/game/assets/v19/biome-decor/jungle/cov/cov-strangler-root-wall-03-pierced.webp",
+    "/game/assets/v19/biome-decor/jungle/cov/cov-supply-palisade-02-broad.webp",
+    "/game/assets/v19/biome-decor/jungle/haz/haz-spectral-flare-tripwire-05-unstable.webp",
+    "/game/assets/v19/biome-decor/jungle/orn/orn-storm-flower-02-pair.webp",
+    "/game/assets/v19/biome-decor/jungle/orn/orn-storm-flower-03-cluster.webp",
+    "/game/assets/v19/biome-decor/jungle/orn/orn-storm-flower-04-fallen.webp",
+    "/game/assets/v19/biome-decor/jungle/orn/orn-transponder-debris-03-cluster.webp",
+    "/game/assets/v19/biome-decor/jungle/orn/orn-vine-curtain-02-pair.webp",
+    "/game/assets/v19/biome-decor/jungle/orn/orn-vine-curtain-03-cluster.webp",
+    "/game/assets/v19/biome-decor/jungle/orn/orn-vine-curtain-04-fallen.webp",
+    "/game/assets/v19/biome-decor/jungle/orn/orn-vine-curtain-05-evidence.webp",
+    "/game/assets/v19/biome-decor/jungle/plt/plt-canopy-crown-01-low-wide.webp",
+    "/game/assets/v19/biome-decor/jungle/plt/plt-canopy-crown-05-tiered.webp",
+    "/game/assets/v19/biome-decor/jungle/plt/plt-expedition-deck-02-high-narrow.webp",
+    "/game/assets/v19/biome-decor/jungle/plt/plt-expedition-deck-04-broken.webp",
+    "/game/assets/v19/biome-decor/jungle/plt/plt-expedition-deck-05-tiered.webp",
+    "/game/assets/v19/biome-decor/jungle/plt/plt-mossy-ruin-slab-02-high-narrow.webp",
+    "/game/assets/v19/biome-decor/jungle/plt/plt-mossy-ruin-slab-04-broken.webp",
+    "/game/assets/v19/biome-decor/jungle/plt/plt-mossy-ruin-slab-05-tiered.webp",
+    "/game/assets/v19/biome-decor/jungle/plt/plt-root-bridge-03-forked.webp",
+    "/game/assets/v19/biome-decor/jungle/plt/plt-root-bridge-04-broken.webp",
+    "/game/assets/v19/biome-decor/jungle/srf/srf-footprint-mud-04-crater.webp",
+    "/game/assets/v19/biome-decor/jungle/srf/srf-rain-puddle-02-trail.webp",
+    "/game/assets/v19/biome-decor/jungle/srf/srf-rain-puddle-03-ridge.webp",
+    "/game/assets/v2/environments/jungle/climbables/vine-ladder.webp",
+    "/game/assets/v2/environments/jungle/layers/far-lake.webp",
+    "/game/assets/v3/actors/yautja/hunter/armor/registered/belt.webp",
+    "/game/assets/v3/actors/yautja/hunter/armor/registered/bracer.webp",
+    "/game/assets/v3/actors/yautja/hunter/armor/registered/chest-classic.webp",
+    "/game/assets/v3/actors/yautja/hunter/armor/registered/knee.webp",
+    "/game/assets/v3/actors/yautja/hunter/armor/registered/shin.webp",
+    "/game/assets/v3/actors/yautja/hunter/armor/registered/shoulder-classic.webp",
+    "/game/assets/v3/actors/yautja/hunter/armor/registered/thigh-lower.webp",
+    "/game/assets/v3/actors/yautja/hunter/armor/registered/thigh.webp",
+    "/game/assets/v3/actors/yautja/hunter/body/classic/full.webp",
+    "/game/assets/v3/actors/yautja/hunter/body/classic/net/full.webp",
+    "/game/assets/v3/actors/yautja/hunter/body/classic/net/parts/hand-back.webp",
+    "/game/assets/v3/actors/yautja/hunter/body/classic/net/parts/hand-front.webp",
+    "/game/assets/v3/actors/yautja/hunter/body/classic/net/parts/lower-arm-back.webp",
+    "/game/assets/v3/actors/yautja/hunter/body/classic/net/parts/lower-arm-front.webp",
+    "/game/assets/v3/actors/yautja/hunter/body/classic/net/parts/pelvis.webp",
+    "/game/assets/v3/actors/yautja/hunter/body/classic/net/parts/shin-back.webp",
+    "/game/assets/v3/actors/yautja/hunter/body/classic/net/parts/shin-front.webp",
+    "/game/assets/v3/actors/yautja/hunter/body/classic/net/parts/thigh-back.webp",
+    "/game/assets/v3/actors/yautja/hunter/body/classic/net/parts/thigh-front.webp",
+    "/game/assets/v3/actors/yautja/hunter/body/classic/net/parts/torso.webp",
+    "/game/assets/v3/actors/yautja/hunter/body/classic/net/parts/upper-arm-back.webp",
+    "/game/assets/v3/actors/yautja/hunter/body/classic/net/parts/upper-arm-front.webp",
+    "/game/assets/v3/actors/yautja/hunter/body/classic/parts/foot-back.webp",
+    "/game/assets/v3/actors/yautja/hunter/body/classic/parts/foot-front.webp",
+    "/game/assets/v3/actors/yautja/hunter/body/classic/parts/hand-back.webp",
+    "/game/assets/v3/actors/yautja/hunter/body/classic/parts/hand-front.webp",
+    "/game/assets/v3/actors/yautja/hunter/body/classic/parts/lower-arm-back.webp",
+    "/game/assets/v3/actors/yautja/hunter/body/classic/parts/lower-arm-front.webp",
+    "/game/assets/v3/actors/yautja/hunter/body/classic/parts/pelvis.webp",
+    "/game/assets/v3/actors/yautja/hunter/body/classic/parts/shin-back.webp",
+    "/game/assets/v3/actors/yautja/hunter/body/classic/parts/shin-front.webp",
+    "/game/assets/v3/actors/yautja/hunter/body/classic/parts/thigh-back.webp",
+    "/game/assets/v3/actors/yautja/hunter/body/classic/parts/thigh-front.webp",
+    "/game/assets/v3/actors/yautja/hunter/body/classic/parts/torso.webp",
+    "/game/assets/v3/actors/yautja/hunter/body/classic/parts/upper-arm-back.webp",
+    "/game/assets/v3/actors/yautja/hunter/body/classic/parts/upper-arm-front.webp",
+    "/game/assets/v3/actors/yautja/hunter/body/elder/full.webp",
+    "/game/assets/v3/actors/yautja/hunter/body/elder/net/full.webp",
+    "/game/assets/v3/actors/yautja/hunter/body/elder/parts/foot-back.webp",
+    "/game/assets/v3/actors/yautja/hunter/body/elder/parts/foot-front.webp",
+    "/game/assets/v3/actors/yautja/hunter/body/elder/parts/hand-back.webp",
+    "/game/assets/v3/actors/yautja/hunter/body/elder/parts/hand-front.webp",
+    "/game/assets/v3/actors/yautja/hunter/body/elder/parts/lower-arm-back.webp",
+    "/game/assets/v3/actors/yautja/hunter/body/elder/parts/lower-arm-front.webp",
+    "/game/assets/v3/actors/yautja/hunter/body/elder/parts/pelvis.webp",
+    "/game/assets/v3/actors/yautja/hunter/body/elder/parts/shin-back.webp",
+    "/game/assets/v3/actors/yautja/hunter/body/elder/parts/shin-front.webp",
+    "/game/assets/v3/actors/yautja/hunter/body/elder/parts/thigh-back.webp",
+    "/game/assets/v3/actors/yautja/hunter/body/elder/parts/thigh-front.webp",
+    "/game/assets/v3/actors/yautja/hunter/body/elder/parts/torso.webp",
+    "/game/assets/v3/actors/yautja/hunter/body/elder/parts/upper-arm-back.webp",
+    "/game/assets/v3/actors/yautja/hunter/body/elder/parts/upper-arm-front.webp",
+    "/game/assets/v3/actors/yautja/hunter/body/huntress/full.webp",
+    "/game/assets/v3/actors/yautja/hunter/body/huntress/net/full.webp",
+    "/game/assets/v3/actors/yautja/hunter/body/huntress/parts/foot-back.webp",
+    "/game/assets/v3/actors/yautja/hunter/body/huntress/parts/foot-front.webp",
+    "/game/assets/v3/actors/yautja/hunter/body/huntress/parts/hand-back.webp",
+    "/game/assets/v3/actors/yautja/hunter/body/huntress/parts/hand-front.webp",
+    "/game/assets/v3/actors/yautja/hunter/body/huntress/parts/lower-arm-back.webp",
+    "/game/assets/v3/actors/yautja/hunter/body/huntress/parts/lower-arm-front.webp",
+    "/game/assets/v3/actors/yautja/hunter/body/huntress/parts/pelvis.webp",
+    "/game/assets/v3/actors/yautja/hunter/body/huntress/parts/shin-back.webp",
+    "/game/assets/v3/actors/yautja/hunter/body/huntress/parts/shin-front.webp",
+    "/game/assets/v3/actors/yautja/hunter/body/huntress/parts/thigh-back.webp",
+    "/game/assets/v3/actors/yautja/hunter/body/huntress/parts/thigh-front.webp",
+    "/game/assets/v3/actors/yautja/hunter/body/huntress/parts/torso.webp",
+    "/game/assets/v3/actors/yautja/hunter/body/huntress/parts/upper-arm-back.webp",
+    "/game/assets/v3/actors/yautja/hunter/body/huntress/parts/upper-arm-front.webp",
+    "/game/assets/v3/actors/yautja/hunter/body/super/full.webp",
+    "/game/assets/v3/actors/yautja/hunter/body/super/net/full.webp",
+    "/game/assets/v3/actors/yautja/hunter/body/super/parts/foot-back.webp",
+    "/game/assets/v3/actors/yautja/hunter/body/super/parts/foot-front.webp",
+    "/game/assets/v3/actors/yautja/hunter/body/super/parts/hand-back.webp",
+    "/game/assets/v3/actors/yautja/hunter/body/super/parts/hand-front.webp",
+    "/game/assets/v3/actors/yautja/hunter/body/super/parts/lower-arm-back.webp",
+    "/game/assets/v3/actors/yautja/hunter/body/super/parts/lower-arm-front.webp",
+    "/game/assets/v3/actors/yautja/hunter/body/super/parts/pelvis.webp",
+    "/game/assets/v3/actors/yautja/hunter/body/super/parts/shin-back.webp",
+    "/game/assets/v3/actors/yautja/hunter/body/super/parts/shin-front.webp",
+    "/game/assets/v3/actors/yautja/hunter/body/super/parts/thigh-back.webp",
+    "/game/assets/v3/actors/yautja/hunter/body/super/parts/thigh-front.webp",
+    "/game/assets/v3/actors/yautja/hunter/body/super/parts/torso.webp",
+    "/game/assets/v3/actors/yautja/hunter/body/super/parts/upper-arm-back.webp",
+    "/game/assets/v3/actors/yautja/hunter/body/super/parts/upper-arm-front.webp",
+    "/game/assets/v3/actors/yautja/hunter/body/young/full.webp",
+    "/game/assets/v3/actors/yautja/hunter/body/young/net/full.webp",
+    "/game/assets/v3/actors/yautja/hunter/body/young/parts/foot-back.webp",
+    "/game/assets/v3/actors/yautja/hunter/body/young/parts/foot-front.webp",
+    "/game/assets/v3/actors/yautja/hunter/body/young/parts/hand-back.webp",
+    "/game/assets/v3/actors/yautja/hunter/body/young/parts/hand-front.webp",
+    "/game/assets/v3/actors/yautja/hunter/body/young/parts/lower-arm-back.webp",
+    "/game/assets/v3/actors/yautja/hunter/body/young/parts/lower-arm-front.webp",
+    "/game/assets/v3/actors/yautja/hunter/body/young/parts/pelvis.webp",
+    "/game/assets/v3/actors/yautja/hunter/body/young/parts/shin-back.webp",
+    "/game/assets/v3/actors/yautja/hunter/body/young/parts/shin-front.webp",
+    "/game/assets/v3/actors/yautja/hunter/body/young/parts/thigh-back.webp",
+    "/game/assets/v3/actors/yautja/hunter/body/young/parts/thigh-front.webp",
+    "/game/assets/v3/actors/yautja/hunter/body/young/parts/torso.webp",
+    "/game/assets/v3/actors/yautja/hunter/body/young/parts/upper-arm-back.webp",
+    "/game/assets/v3/actors/yautja/hunter/body/young/parts/upper-arm-front.webp",
+    "/game/assets/v3/actors/yautja/hunter/dreads/registered/classic.webp",
+    "/game/assets/v3/actors/yautja/hunter/dreads/registered/elder.webp",
+    "/game/assets/v3/actors/yautja/hunter/dreads/registered/huntress.webp",
+    "/game/assets/v3/actors/yautja/hunter/dreads/registered/veteran.webp",
+    "/game/assets/v3/actors/yautja/hunter/equipment/registered/barrel.webp",
+    "/game/assets/v3/actors/yautja/hunter/equipment/registered/blade-housing.webp",
+    "/game/assets/v3/actors/yautja/hunter/equipment/registered/blades.webp",
+    "/game/assets/v3/actors/yautja/hunter/equipment/registered/cannon.webp",
+    "/game/assets/v3/actors/yautja/hunter/equipment/registered/caster-lower.webp",
+    "/game/assets/v3/actors/yautja/hunter/equipment/registered/caster-upper.webp",
+    "/game/assets/v3/actors/yautja/hunter/equipment/registered/laser.webp",
+    "/game/assets/v3/actors/yautja/hunter/equipment/registered/mount.webp",
+    "/game/assets/v3/actors/yautja/hunter/equipment/registered/muzzle.webp",
+    "/game/assets/v3/actors/yautja/hunter/equipment/registered/yoke.webp",
+    "/game/assets/v3/actors/yautja/hunter/gear/motion-sensor.webp",
+    "/game/assets/v3/actors/yautja/hunter/gear/registered/audio-decoy.webp",
+    "/game/assets/v3/actors/yautja/hunter/gear/registered/motion-sensor.webp",
+    "/game/assets/v3/actors/yautja/hunter/trophies/registered/trophy-bindings.webp",
+    "/game/assets/v3/actors/yautja/hunter/trophies/registered/trophy-skull.webp",
+    "/game/assets/v3/actors/yautja/hunter/trophies/registered/trophy-spine.webp",
+    "/game/assets/v3/actors/yautja/hunter/weapons/registered/combistick-folded.webp",
+    "/game/assets/v3/actors/yautja/hunter/weapons/registered/combistick.webp",
+    "/game/backgrounds/desert-depth-v8.png",
+    "/game/backgrounds/fungal-depth-v8.png",
+    "/game/backgrounds/ice-depth-v4.webp",
+    "/game/backgrounds/jungle-multiscreen-v6.png",
+    "/game/backgrounds/ocean-depth-v8.png",
+    "/game/backgrounds/ruins-depth-v8.png",
+    "/game/backgrounds/ship.webp",
+    "/game/backgrounds/swamp-depth-v8.png",
+    "/game/backgrounds/volcanic-depth-v4.webp",
+    "/game/clan-ship/interiors/archives-v1.webp",
+    "/game/clan-ship/interiors/armurerie-v1.webp",
+    "/game/clan-ship/interiors/conseil-v1.webp",
+    "/game/clan-ship/interiors/entrainement-v1.webp",
+    "/game/clan-ship/interiors/hangar-v1.webp",
+    "/game/clan-ship/interiors/soins-v1.webp",
+    "/game/clan-ship/interiors/trophees-v1.webp",
+    "/game/clan-ship/props/archive-terminal-v1.webp",
+    "/game/clan-ship/props/armory-forge-v1.webp",
+    "/game/clan-ship/props/armory-rack-v1.webp",
+    "/game/clan-ship/props/berth-console-v1.webp",
+    "/game/clan-ship/props/council-table-v1.webp",
+    "/game/clan-ship/props/medical-bed-v1.webp",
+    "/game/clan-ship/props/training-station-v1.webp",
+    "/game/clan-ship/props/trophy-workbench-v1.webp",
+    "/game/homeworld/v109/archive-plaque-atlas-v109.png",
+    "/game/homeworld/v111/archivist-conversation/explain.png",
+    "/game/homeworld/v111/archivist-conversation/indicate.png",
+    "/game/homeworld/v111/archivist-conversation/listen.png",
+    "/game/homeworld/v111/archivist-conversation/return.png",
+    "/game/homeworld/v64/civic-forge.png",
+    "/game/homeworld/v64/civic-hall.png",
+    "/game/homeworld/v64/clan-shuttle.png",
+    "/game/homeworld/v64/house-a-basalt.png",
+    "/game/homeworld/v64/house-b-basalt.png",
+    "/game/homeworld/v64/house-c-ribbed.png",
+    "/game/homeworld/v64/interior-panels.png",
+    "/game/homeworld/v64/landing-pad.png",
+    "/game/homeworld/v64/pavement.png",
+    "/game/homeworld/v64/props-atlas.png",
+    "/game/homeworld/v67/glass-processional-vista.png",
+    "/game/homeworld/v67/processional-bridge.png",
+    "/game/homeworld/v69/clan-brazier.png",
+    "/game/homeworld/v71/cinder-ground.png",
+    "/game/homeworld/v71/outskirts-kit.png",
+    "/game/homeworld/v72/civic-furniture-kit.png",
+    "/game/homeworld/v72/civic-identity-atlas.png",
+    "/game/homeworld/v72/civic-specialists-spaced-atlas.png",
+    "/game/homeworld/v72/civilian-roles-atlas.png",
+    "/game/homeworld/v74/01-chief-artisan-walk-corrected.png",
+    "/game/homeworld/v74/01-chief-artisan-walk-final.png",
+    "/game/homeworld/v74/02-healer-archivist-walk-spaced.png",
+    "/game/homeworld/v74/03-guard-courier-walk-spaced-left-fixed.png",
+    "/game/homeworld/v74/04-instructor-apprentice-walk.png",
+    "/game/homeworld/v74/05-dock-forge-walk-spaced.png",
+    "/game/homeworld/v74/06-witness-herald-walk.png",
+    "/game/homeworld/v74/07-arena-rite-walk.png",
+    "/game/homeworld/v75/architecture/market-canopy.png",
+    "/game/homeworld/v75/landscape-ground-materials-native.png",
+    "/game/homeworld/v76/architecture/convoy-store.png",
+    "/game/homeworld/v76/architecture/convoy-workshop.png",
+    "/game/homeworld/v76/architecture/dock-control.png",
+    "/game/homeworld/v76/architecture/rampart-watch.png",
+    "/game/homeworld/v76/architecture/rite-sanctum.png",
+    "/game/homeworld/v76/architecture/trophy-mausoleum.png",
+    "/game/homeworld/v76/interior/bench-left.png",
+    "/game/homeworld/v76/interior/chest-diagonal.png",
+    "/game/homeworld/v76/interior/rack-lateral.png",
+    "/game/homeworld/v76/interior/worktable-right.png",
+    "/game/homeworld/v76/logistics-container-rack-native.png",
+    "/game/homeworld/v76/merchant-canopy-diagonal-native.png",
+    "/game/homeworld/v76/mineral-planter-left-native.png",
+    "/game/homeworld/v76/terrace-bench-right-native.png",
+    "/game/homeworld/v77/council-stair-native.png",
+    "/game/homeworld/v77/lava-transit-skiff.png",
+    "/game/homeworld/v77/lava-warrior-left.png",
+    "/game/homeworld/v77/lava-warrior-right.png",
+    "/game/homeworld/v78/archive-shelf-right.png",
+    "/game/homeworld/v78/civic-water-cistern-right.png",
+    "/game/homeworld/v78/clan-common-table-left.png",
+    "/game/homeworld/v78/forge-workstation-left.png",
+    "/game/homeworld/v78/market-stall-right.png",
+    "/game/homeworld/v78/port-cargo-sorting-cart.png",
+    "/game/homeworld/v78/terrace-retaining-front.png",
+    "/game/homeworld/v80/amber-lamp-post.png",
+    "/game/homeworld/v80/bench-left.png",
+    "/game/homeworld/v80/clan-banner-standard.png",
+    "/game/homeworld/v80/clan-lectern-right.png",
+    "/game/homeworld/v80/corner-wall-left.png",
+    "/game/homeworld/v80/maintenance-rack.png",
+    "/game/homeworld/v80/mineral-basin-right.png",
+    "/game/homeworld/v80/sealed-cargo-case-left.png",
+    "/game/homeworld/v81/basalt-city-foundation.png",
+    "/game/homeworld/v81/clan-residence-left.png",
+    "/game/homeworld/v81/council-hall-left.png",
+    "/game/homeworld/v81/distant-city-terraces.png",
+    "/game/homeworld/v81/industrial-residence-right.png",
+    "/game/homeworld/v81/paving-civic.png",
+    "/game/homeworld/v81/paving-council.png",
+    "/game/homeworld/v81/paving-undercity.png",
+    "/game/homeworld/v81/prime-sky.png",
+    "/game/homeworld/v81/royal-pyramid-front.png",
+    "/game/homeworld/v81/spaceport-gantry.png",
+    "/game/homeworld/v82/acropolis-stair.png",
+    "/game/homeworld/v82/clan-lift-cabin.png",
+    "/game/homeworld/v82/clan-lift-gantry-adult.png",
+    "/game/homeworld/v82/diagonal-service-ramp.png",
+    "/game/homeworld/v82/industrial-distant-quarter.png",
+    "/game/homeworld/v82/industrial-ramp.png",
+    "/game/homeworld/v82/lower-gallery-stair.png",
+    "/game/homeworld/v82/port-distant-quarter.png",
+    "/game/homeworld/v83/basalt-planter-left.png",
+    "/game/homeworld/v83/cargo-rack-right.png",
+    "/game/homeworld/v83/clan-waymarker-right.png",
+    "/game/homeworld/v83/forge-bench-right.png",
+    "/game/homeworld/v83/merchant-counter-left.png",
+    "/game/homeworld/v84/care-cabinet-left.png",
+    "/game/homeworld/v84/maintenance-console-right.png",
+    "/game/homeworld/v84/npcs/hunter/12.png",
+    "/game/homeworld/v84/ritual-brazier-right.png",
+    "/game/homeworld/v84/training-rack-left.png",
+    "/game/imports/v85/library/9e0307785b151ef569f02344983f755fb55bb9a4f871636b6a5b2a22a05a1187.png",
+    "/game/imports/v85/library/fef76897a4b581bae4bd91b49961638fcd01d97ab7b6de2470aa88df226f6e9d.png",
+    "/game/planet-arrival/v1/atmosphere-clouds.webp",
+    "/game/planet-arrival/v1/heat-trail.webp",
+    "/game/planet-arrival/v1/impact-dust.webp",
+    "/game/planet-arrival/v1/pod-door.webp",
+    "/game/planet-arrival/v1/pod-flight.webp",
+    "/game/planet-arrival/v1/pod-ground.webp",
+    "/game/planet-arrival/v1/release-jet.webp",
+    "/game/planet-arrival/v1/space.webp",
+    "/game/planets/v10/planet-acheron-sigma.webp",
+    "/game/planets/v10/planet-cinder-12.webp",
+    "/game/planets/v10/planet-mycora-v.webp",
+    "/game/planets/v10/planet-naraka-delta.webp",
+    "/game/planets/v10/planet-nivalis-k.webp",
+    "/game/planets/v10/planet-oseris-iv.webp",
+    "/game/planets/v10/planet-pelagos-m.webp",
+    "/game/planets/v10/planet-serekh-9.webp",
+    "/game/prologue/v47/village.png",
+    "/game/props/v4/crown-platform.png",
+    "/game/props/v4/expedition-platform.png",
+    "/game/props/v4/foreground-ferns.png",
+    "/game/props/v4/root-platform.png",
+    "/game/props/v4/ruin-platform.png",
+    "/game/props/v4/tree-trunk.png",
+    "/game/ship-interior/v20/corridor-wall.webp",
+    "/game/ship-interior/v21/console-navigation.webp",
+    "/game/ship-interior/v21/door-frame.webp",
+    "/game/ship-interior/v21/door-leaf.webp",
+    "/game/ship-interior/v21/foreground-rib.webp",
+    "/game/ship-interior/v21/wall-machinery.webp",
+    "/game/ship-interior/v21/wall-sanctum.webp",
+    "/game/ship-interior/v22/archive-terminal.webp",
+    "/game/ship-interior/v22/armory-rack.webp",
+    "/game/ship-interior/v22/floor-edge.webp",
+    "/game/ship-interior/v22/gantry.webp",
+    "/game/ship-interior/v22/service-ladder.webp",
+    "/game/ships/v12/classic-predator-spaceship.webp",
+    "/game/ships/v14/avp-predator-mothership.webp",
+    "/game/sprites/bad-blood.webp",
+    "/game/sprites/cryostalker.webp",
+    "/game/sprites/hunter.webp",
+    "/game/sprites/mercenary.webp",
+    "/game/sprites/v33/pit-arenas/the-pit/p3-c-brazier-flame-f00.png",
+    "/game/sprites/v33/pit-arenas/the-pit/p3-c-brazier-flame-f01.png",
+    "/game/sprites/v33/pit-arenas/the-pit/p3-c-brazier-flame-f02.png",
+    "/game/sprites/v33/pit-arenas/the-pit/p3-c-brazier-flame-f03.png",
+    "/game/sprites/v33/pit-arenas/the-pit/p3-c-brazier-flame-f04.png",
+    "/game/sprites/v33/pit-arenas/the-pit/p3-c-brazier-flame-f05.png",
+    "/game/sprites/v4/bad-blood-initiate.png",
+    "/game/sprites/v4/commandante-vey.png",
+    "/game/sprites/v4/cryostalker-brute.png",
+    "/game/sprites/v4/cryostalker-runner.png",
+    "/game/sprites/v4/heavy.png",
+    "/game/sprites/v4/rifle-soldier.png",
+    "/game/sprites/v4/scout.png",
+    "/game/sprites/v5/film-plates/jungle-hunter.png",
+    "/game/sprites/v6/masks-trophies-atlas.png",
+    "/game/sprites/v6/prey-atlas.png",
+    "/game/sprites/v6/ranks-lasers-atlas.png",
+    "/game/sprites/v6/ships-atlas.png",
+    "/game/sprites/v62/heads/classic-head.png",
+    "/game/sprites/v62/heads/elder-head.png",
+    "/game/sprites/v62/heads/super-head.png",
+    "/game/sprites/v62/masks/jungle.png",
+    "/game/sprites/v8/ecology/common/bad-blood-scout-sheet.png",
+    "/game/sprites/v8/ecology/common/weyland-security-synth-sheet.png",
+    "/game/sprites/v8/ecology/oseris-iv/carnivore-vine-sheet.png",
+    "/game/sprites/v8/ecology/oseris-iv/coil-serpent-sheet.png",
+    "/game/sprites/v8/ecology/oseris-iv/needle-frog-sheet.png",
+    "/game/sprites/v8/ecology/oseris-iv/root-burrower-sheet.png",
+    "/game/sprites/v8/ecology/oseris-iv/sentinel-orchid-sheet.png",
+    "/game/sprites/v8/ecology/oseris-iv/strangler-fig-sheet.png",
+    "/game/sprites/v8/ecology/oseris-iv/walking-mangrove-sheet.png",
+    "/game/sprites/v8/ecology/serekh-9/burrow-snake-sheet.png",
+    "/game/wolf-castle/v1/access-beacon.webp",
+    "/game/wolf-castle/v1/airlock-frame.webp",
+    "/game/wolf-castle/v1/airlock-leaf.webp",
+    "/game/wolf-castle/v1/archive-console.webp",
+    "/game/wolf-castle/v1/audience-wall.webp",
+    "/game/wolf-castle/v1/bay-anchor.webp",
+    "/game/wolf-castle/v1/berth-wall.webp",
+    "/game/wolf-castle/v1/castle-exterior.webp",
+    "/game/wolf-castle/v1/column.webp",
+    "/game/wolf-castle/v1/council-table.webp",
+    "/game/wolf-castle/v1/court-wall.webp",
+    "/game/wolf-castle/v1/dais.webp",
+    "/game/wolf-castle/v1/gallery-wall.webp",
+    "/game/wolf-castle/v1/low-fog.webp",
+    "/game/wolf-castle/v1/predator-king-seated.webp",
+    "/game/wolf-castle/v1/royal-guard.webp",
+    "/game/wolf-castle/v1/service-wall.webp",
+    "/game/wolf-castle/v1/throne.webp",
+    "/game/wolf-castle/v1/trophy-plinth.webp"
+  ],
+  "server": {
+    "mode": "production",
+    "distDir": ".next",
+    "log": "next-server.log"
+  },
+  "browserVersion": "153.0.8010.12",
+  "protectedStorage": {
+    "keys": [
+      "qa.unrelated-preserved",
+      "yautja-long-hunt.campaign-slot.1",
+      "yautja-long-hunt.campaign-slot.legacy.2026-11-01T12%3A00%3A00.000Z",
+      "yautja-long-hunt.save",
+      "yautja-long-hunt.save.backup"
+    ],
+    "sha256": "c95a0b2380277a064bf658d2b32dbb4447a631e166e214532ee760d29e3f423f"
+  },
+  "passed": true,
+  "finishedAt": "2026-11-05T05:16:04.909Z",
+  "passedChecks": 20,
+  "failedChecks": 0
+}

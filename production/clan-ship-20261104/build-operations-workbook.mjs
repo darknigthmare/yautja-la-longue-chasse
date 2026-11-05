@@ -21,6 +21,22 @@ const outputDir = process.env.CLAN_OPERATIONS_OUTPUT || path.join(root, 'outputs
 await fs.mkdir(outputDir, { recursive: true });
 const catalogue = JSON.parse(await fs.readFile(path.join(directory, 'operations-catalogue.json'), 'utf8'));
 const data = JSON.parse(await fs.readFile(path.join(directory, 'operations-production.json'), 'utf8'));
+const assetAudit = JSON.parse(await fs.readFile(path.join(directory, 'qa-operations/asset-audit.json'), 'utf8'));
+const operationsReport = JSON.parse(await fs.readFile(path.join(directory, 'qa-operations/browser-final/operations-report.json'), 'utf8'));
+assert.equal(assetAudit.status, 'passed', 'The dimension source must be an actual completed audit');
+assert.equal(assetAudit.source.catalogueSourceDigest, catalogue.sourceDigest, 'Asset audit applies to the same runtime source digest');
+assert.equal(operationsReport.sourceCommit, data.publication.commit, 'Browser evidence source must remain explicit');
+assert.equal(operationsReport.passed, true);
+const auditedImages = new Map(assetAudit.assets.map(item => [item.path, item]));
+const executedOrderTypes = new Set(operationsReport.commands.map(item => item.type));
+const fixtureOnlyRecruitIds = new Set(['cold-trace', 'star-watch']);
+const auditedDimensions = item => {
+  const audited = auditedImages.get(`public${item.src}`);
+  assert.ok(audited, `Missing audited image: ${item.src}`);
+  assert.equal(audited.sha256, item.sha256, `Audit image changed: ${item.src}`);
+  assert.equal(audited.status, 'passed');
+  return { width: audited.decoded.width, height: audited.decoded.height };
+};
 const sha256 = bytes => createHash('sha256').update(bytes).digest('hex');
 assert.equal(sha256(JSON.stringify(catalogue.sourceFiles)), catalogue.sourceDigest, 'catalogue source digest');
 for (const item of catalogue.sourceFiles) {
@@ -28,13 +44,16 @@ for (const item of catalogue.sourceFiles) {
   assert.equal(sha256(bytes), item.sha256, `Source changed: re-run export-operations-catalogue.mjs (${item.path})`);
 }
 for (const record of data.qa) {
-  if (record.result === 'Réussi') assert.ok(record.evidence && record.sourceDigest, `A successful recipe needs evidence and source: ${record.id}`);
+  if (record.result === 'Réussi' || record.result === 'Partiel') assert.ok(record.evidence && record.sourceDigest, `A successful recipe needs evidence and source: ${record.id}`);
 }
 const contracts = catalogue.contracts;
 const steps = contracts.flatMap(contract => contract.steps.map((step, index) => ({ ...step, contractId: contract.id, index: index + 1, next: contract.steps[index + 1] })));
 const roomName = id => catalogue.rooms.find(room => room.id === id)?.label ?? id;
 const kindName = { onboarding: 'Accueil', interior: 'À bord', field: 'Chasse', space: 'Espace' };
-const qualified = id => data.qa.filter(row => row.id === id).every(row => row.result === 'Réussi') && data.qa.some(row => row.id === id) ? 'Vérifié' : 'À vérifier';
+const qualified = id => {
+  const result = data.qa.find(row => row.id === id)?.result;
+  return result === 'Réussi' ? 'Vérifié' : result === 'Partiel' ? 'Partiel' : 'À vérifier';
+};
 const sourceDate = new Date(`${data.asOf}T12:00:00Z`);
 
 const wb = Workbook.create();
@@ -92,7 +111,7 @@ function statuses(sheet, range, values, editable = true) {
   const target = sheet.getRange(range);
   target.dataValidation = { rule: { type: 'list', values } };
   if (editable) target.format.fill = colors.input;
-  for (const value of ['À revoir', 'À vérifier', 'À exécuter', 'À développer', 'Prévu', 'À produire', 'Réemploi à étudier']) {
+  for (const value of ['À revoir', 'À vérifier', 'À exécuter', 'À développer', 'Prévu', 'À produire', 'Réemploi à étudier', 'Partiel']) {
     target.conditionalFormats.add('containsText', { text: value, format: { fill: colors.pending, font: { color: '#6C471A' } } });
   }
   target.conditionalFormats.add('containsText', { text: 'Échec', format: { fill: colors.error, font: { color: '#9F2424', bold: true } } });
@@ -114,16 +133,16 @@ const featureRows = data.features.map(item => [item.id, item.area, item.name, it
 const f = table(featureSheet, 'ClanOperationsTracker', 9, ['ID', 'Domaine', 'Fonction', 'Critère observable', 'Priorité', 'Réalisation', 'Vérification', 'Revue artistique', 'État de livraison', 'Prochaine action', 'Source du projet', 'Recette'], featureRows, featureWidths);
 featureSheet.getRange(`I${f.first}:I${f.last}`).formulas = data.features.map((item, index) => {
   const row = f.first + index;
-  return [`=IF(F${row}="Prévu","À développer",IF(G${row}<>"Vérifié","À vérifier",IF(OR(H${row}="Validé",H${row}="Sans revue"),"Qualifié","Revue artistique attendue")))`];
+  return [`=IF(F${row}="Prévu","À développer",IF(G${row}="Partiel","Vérification partielle",IF(G${row}<>"Vérifié","À vérifier",IF(OR(H${row}="Validé",H${row}="Sans revue"),"Qualifié","Revue artistique attendue"))))`];
 });
 statuses(featureSheet, `F${f.first}:F${f.last}`, ['Code présent', 'Prévu']);
-statuses(featureSheet, `G${f.first}:G${f.last}`, ['À vérifier', 'Vérifié', 'Échec']);
+statuses(featureSheet, `G${f.first}:G${f.last}`, ['À vérifier', 'Partiel', 'Vérifié', 'Échec']);
 statuses(featureSheet, `H${f.first}:H${f.last}`, ['À revoir', 'Validé', 'Sans revue']);
 featureSheet.getRange(`E${f.first}:E${f.last}`).dataValidation = { rule: { type: 'list', values: ['P0', 'P1', 'P2'] } };
 featureSheet.getRange(`I${f.first}:I${f.last}`).conditionalFormats.add('containsText', { text: 'Revue artistique attendue', format: { fill: colors.pending, font: { color: '#6C471A' } } });
-metricBlock(featureSheet, ['Fonctions et suites', 'Code présent', 'Vérifiées', 'À développer', 'Art à revoir', 'Qualifiées'], [
+metricBlock(featureSheet, ['Fonctions et suites', 'Code présent', 'Vérifiées', 'Partielles', 'À développer', 'Art à revoir', 'Qualifiées'], [
   `=COUNTA(A${f.first}:A${f.last})`, `=COUNTIFS(F${f.first}:F${f.last},"Code présent")`, `=COUNTIFS(G${f.first}:G${f.last},"Vérifié")`,
-  `=COUNTIFS(F${f.first}:F${f.last},"Prévu")`, `=COUNTIFS(H${f.first}:H${f.last},"À revoir")`, `=COUNTIFS(I${f.first}:I${f.last},"Qualifié")`,
+  `=COUNTIFS(G${f.first}:G${f.last},"Partiel")`, `=COUNTIFS(F${f.first}:F${f.last},"Prévu")`, `=COUNTIFS(H${f.first}:H${f.last},"À revoir")`, `=COUNTIFS(I${f.first}:I${f.last},"Qualifié")`,
 ]);
 featureSheet.getRange(`A${f.last + 3}`).values = [['Code présent : intégration observée dans la source. La preuve et la revue artistique sont renseignées séparément.']];
 featureSheet.getRange(`A${f.last + 4}`).values = [['Champs de suivi modifiables : cellules ambrées. Le catalogue chiffré se régénère depuis les définitions du jeu.']];
@@ -136,13 +155,13 @@ const c = table(contractSheet, 'ClanContracts', 9,
     item.missionId || (item.spaceKind ? catalogue.space.scenarios.find(s => s.id === item.spaceKind).title : roomName(item.roomId)), item.steps.length,
     item.kind === 'field' ? item.minimumScore : null, item.kind === 'field' ? item.minimumScans : null, item.clanMarksReward,
     catalogue.crew.filter(npc => npc.requiredContractIds.includes(item.id)).map(npc => npc.name).join('\n') || 'Aucune',
-    'Code présent', 'À vérifier', 'clanShipOperations.ts']), contractWidths);
+    'Code présent', qualified(item.kind === 'onboarding' ? 'OPS-Q02' : item.kind === 'interior' ? 'OPS-Q06' : item.kind === 'space' ? 'OPS-Q11' : 'OPS-Q07'), 'clanShipOperations.ts']), contractWidths);
 contractSheet.getRange(`G${c.first}:J${c.last}`).setNumberFormat('#,##0');
 contractSheet.getRange(`G${c.first}:J${c.last}`).format.horizontalAlignment = 'right';
 metricBlock(contractSheet, ['Dossiers', 'À bord', 'Chasses', 'Espace', 'Marques possibles'], [
   `=COUNTA(A${c.first}:A${c.last})`, `=COUNTIFS(B${c.first}:B${c.last},"À bord")`, `=COUNTIFS(B${c.first}:B${c.last},"Chasse")`, `=COUNTIFS(B${c.first}:B${c.last},"Espace")`, `=SUM(J${c.first}:J${c.last})`,
 ]);
-statuses(contractSheet, `M${c.first}:M${c.last}`, ['À vérifier', 'Vérifié', 'Échec']);
+statuses(contractSheet, `M${c.first}:M${c.last}`, ['À vérifier', 'Partiel', 'Vérifié', 'Échec']);
 
 const stepWidths = [28, 10, 27, 43, 67, 42, 38, 20, 20];
 const stepSheet = base('Étapes à bord', 'Seize interactions intérieures', 'Chaque validation dépend du contrat, de l’ordre et de la salle réelle', stepWidths, steps.length + 11);
@@ -150,18 +169,19 @@ const s = table(stepSheet, 'ClanInteriorSteps', 7, ['Contrat', 'Ordre', 'Salle',
   steps.map(item => [item.contractId, item.index, roomName(item.roomId), item.label, item.description,
     item.next ? `${roomName(item.next.roomId)} : ${item.next.label}` : item.contractId === 'welcome-aboard' ? 'Audience de mandat au conseil' : 'Reçu unique du contrat',
     item.next ? 'Conserver l’étape ; aucun paiement intermédiaire' : item.contractId === 'welcome-aboard' ? 'Accueil conservé ; 0 marque' : 'Dernière étape et reçu enregistrés avec le gain',
-    'Code présent', qualified('OPS-Q06')]), stepWidths);
+    'Code présent', qualified(item.contractId === 'welcome-aboard' ? 'OPS-Q02' : 'OPS-Q06')]), stepWidths);
 stepSheet.getRange(`B${s.first}:B${s.last}`).setNumberFormat('0');
-statuses(stepSheet, `I${s.first}:I${s.last}`, ['À vérifier', 'Vérifié', 'Échec']);
+statuses(stepSheet, `I${s.first}:I${s.last}`, ['À vérifier', 'Partiel', 'Vérifié', 'Échec']);
 
 const crewWidths = [26, 27, 28, 28, 29, 63, 65, 27, 65, 20, 20, 22];
 const crewSheet = base('Équipage', 'Six membres visibles à bord', 'Accord après preuve, poste permanent, compétence active au prochain départ spatial', crewWidths, catalogue.crew.length + 11);
 const n = table(crewSheet, 'ClanCrew', 7, ['ID', 'Nom original', 'Rôle', 'Poste', 'Preuve requise', 'Contribution tactique', 'Réplique d’accord', 'Variante réemployée', 'Dessin individuel', 'Réalisation', 'Vérification', 'Revue artistique'],
   catalogue.crew.map(item => [item.id, item.name, item.role, roomName(item.roomId), item.requiredContractIds.join('\n'), item.tacticalEffect.effect, item.joinLine,
-    item.art.variantId, `public${item.art.src}`, 'Code présent', qualified('OPS-Q09'), 'À revoir']), crewWidths);
-statuses(crewSheet, `K${n.first}:K${n.last}`, ['À vérifier', 'Vérifié', 'Échec']);
+    item.art.variantId, `public${item.art.src}`, 'Code présent', fixtureOnlyRecruitIds.has(item.id) ? 'Partiel' : qualified('OPS-Q09'), 'À revoir']), crewWidths);
+statuses(crewSheet, `K${n.first}:K${n.last}`, ['À vérifier', 'Partiel', 'Vérifié', 'Échec']);
 statuses(crewSheet, `L${n.first}:L${n.last}`, ['À revoir', 'Validé']);
 crewSheet.getRange(`A${n.last + 3}`).values = [['Les six dessins sont réemployés. Les routines, gestes animés et dialogues de retour sont suivis dans les suites à développer.']];
+crewSheet.getRange(`A${n.last + 4}`).values = [['Quatre accords sont joués dans Chromium. Trace Froide et Veille des Astres sont visibles avec des preuves et accords préparés, explicitement divulgués.']];
 
 const spaceWidths = [21, 31, 16, 67, 63, 43, 20, 20];
 const spaceSheet = base('Espace', 'Commandement spatial', 'Jauges originales de gameplay. L’écran défensif représente une formation de couverture.', spaceWidths, 43);
@@ -182,7 +202,7 @@ const orderRules = {
 };
 const o = table(spaceSheet, 'ClanSpaceOrders', 15, ['ID', 'Ordre', 'Coût nominal', 'Effet', 'Condition', 'Résultat', 'Réalisation', 'Vérification'],
   catalogue.space.orders.map(item => [item.id, item.label, item.id === 'recharge' ? -4 : item.id === 'brace' ? -2 : item.cost,
-    item.detail, orderRules[item.id][0], orderRules[item.id][1], 'Code présent', qualified('OPS-Q14')]), spaceWidths, false);
+    item.detail, orderRules[item.id][0], orderRules[item.id][1], 'Code présent', executedOrderTypes.has(item.id) ? qualified('OPS-Q11') : qualified('OPS-Q14')]), spaceWidths, false);
 spaceSheet.getRange(`C${o.first}:C${o.last}`).setNumberFormat('0;[Red](0);0');
 spaceSheet.getRange('A27').values = [['Coût négatif : énergie récupérée, limitée au plafond. L’abordage coûte 1 avec le gardien, 2 sans lui.']];
 spaceSheet.getRange('A29:C29').values = [['Tours maximum', 'Énergie au départ', 'Plafond énergie']];
@@ -190,15 +210,16 @@ spaceSheet.getRange('A30:C30').values = [[catalogue.space.maxTurns, catalogue.sp
 spaceSheet.getRange('A29:C29').format = { fill: colors.paper, font: { name: 'Arial', size: 11, bold: true }, horizontalAlignment: 'center', wrapText: true, rowHeight: 32 };
 spaceSheet.getRange('A30:C30').format = { horizontalAlignment: 'center', rowHeight: 30 };
 spaceSheet.getRange('A32').values = [['Source : app/game/systems/clanShipSpaceEncounter.ts. Les valeurs ne sont pas des performances filmiques du vaisseau AVP.']];
+spaceSheet.getRange('A34').values = [['49 commandes de huit types dans Chromium. Répartir l’énergie : domaine/SSR vérifiés, bouton non cliqué. Les recrues complètes du second contexte sont préparées.']];
 
 const resources = [
-  ...catalogue.backgrounds.map(item => ({ id: item.id, category: 'Décor', name: roomName(item.roomId), production: 'Réemployé et raccordé', source: `public${item.src}`, bytes: item.bytes, width: null, height: null,
+  ...catalogue.backgrounds.map(item => ({ id: item.id, category: 'Décor', name: roomName(item.roomId), production: 'Réemployé et raccordé', source: `public${item.src}`, bytes: item.bytes, ...auditedDimensions(item),
     use: 'Fond propre à la salle ; aucune collision déduite du décor.', artReview: 'À revoir', nextAction: 'Comparer aux références et au rendu réel.' })),
-  ...catalogue.props.map(item => ({ id: item.id, category: 'Prop dédié', name: item.id, production: 'Réemployé et raccordé', source: `public${item.src}`, bytes: item.bytes, width: item.sourceWidth, height: item.sourceHeight,
+  ...catalogue.props.map(item => ({ id: item.id, category: 'Prop dédié', name: item.id, production: 'Réemployé et raccordé', source: `public${item.src}`, bytes: item.bytes, ...auditedDimensions(item),
     use: item.id === 'council-table' ? '560 × 325 unités affichées ; empreinte et accès définis séparément.' : 'Installation existante ; identité et point d’usage conservés.', artReview: 'À revoir', nextAction: 'Relire l’asset dans sa nouvelle fonction.' })),
-  ...catalogue.crew.map(item => ({ id: item.id, category: 'PNJ individuel', name: item.name, production: 'Réemployé et raccordé', source: `public${item.art.src}`, bytes: item.art.bytes, width: item.art.sourceWidth, height: item.art.sourceHeight,
+  ...catalogue.crew.map(item => ({ id: item.id, category: 'PNJ individuel', name: item.name, production: 'Réemployé et raccordé', source: `public${item.art.src}`, bytes: item.art.bytes, ...auditedDimensions(item.art),
     use: `Poste ${roomName(item.roomId)} ; pose fixe ${item.art.motionStatus}.`, artReview: 'À revoir', nextAction: 'Valider silhouette, rôle et lisibilité à l’échelle.' })),
-  ...catalogue.sharedArt.map(item => ({ id: item.id, category: 'Art partagé', name: item.name, production: 'Réemployé et raccordé', source: `public${item.src}`, bytes: item.bytes, width: item.sourceWidth ?? null, height: item.sourceHeight ?? null,
+  ...catalogue.sharedArt.map(item => ({ id: item.id, category: 'Art partagé', name: item.name, production: 'Réemployé et raccordé', source: `public${item.src}`, bytes: item.bytes, ...auditedDimensions(item),
     use: item.use, artReview: 'À revoir', nextAction: 'Conserver les références et l’identité de l’installation.' })),
   { id: 'OPS-CODE-01', category: 'Projection SVG', name: 'Projection au-dessus de la table', production: 'Rendu en code', source: 'app/game/ClanShipInterior.tsx', bytes: null, width: null, height: null, use: 'Calque distinct du prop et de la collision.', artReview: 'À revoir', nextAction: 'Contrôler lisibilité et portée visuelle.' },
   { id: 'OPS-CODE-02', category: 'Projection SVG', name: 'Situation tactique spatiale', production: 'Rendu en code', source: 'app/game/ClanShipSpaceEncounter.tsx', bytes: null, width: null, height: null, use: 'Symboles abstraits, portée, cible et progression.', artReview: 'À revoir', nextAction: 'Contrôler les états et la version mobile.' },
@@ -215,18 +236,18 @@ statuses(resourceSheet, `J${a.first}:J${a.last}`, ['À revoir', 'Validé']);
 metricBlock(resourceSheet, ['Réemplois de fichiers', 'Rendus en code', 'À produire', 'Réemploi à étudier', 'Octets réemployés'], [
   `=COUNTIFS(D${a.first}:D${a.last},"Réemployé et raccordé")`, `=COUNTIFS(D${a.first}:D${a.last},"Rendu en code")`, `=COUNTIFS(D${a.first}:D${a.last},"À produire")`, `=COUNTIFS(D${a.first}:D${a.last},"Réemploi à étudier")`, `=SUM(F${a.first}:F${a.last})`,
 ]);
-resourceSheet.getRange(`A${a.last + 3}`).values = [['Les dimensions laissées vides ne sont pas affirmées par le catalogue. Les besoins futurs ne sont pas des fichiers générés.']];
+resourceSheet.getRange(`A${a.last + 3}`).values = [['Les 28 dimensions source proviennent de l’audit technique conservé dans qa-operations/asset-audit.json. Les besoins futurs ne sont pas des fichiers générés.']];
 
 const qaWidths = [17, 28, 38, 76, 22, 76, 72, 25, 70];
 const qaSheet = base('Recette', 'Recette des opérations', 'Les critères sont distincts des résultats. Une preuve doit identifier sa version.', qaWidths, data.qa.length + 12);
 const q = table(qaSheet, 'ClanOperationRecipes', 9, ['ID', 'Type de preuve', 'Parcours', 'Résultat attendu', 'État', 'Preuve obtenue', 'Source vérifiée', 'Responsable', 'Scénario / point d’entrée'],
-  data.qa.map(item => [item.id, item.type, item.name, item.criterion, item.result, item.evidence || 'Non renseignée', item.sourceDigest || 'Non renseignée', item.reviewer || 'Non renseigné', item.source]), qaWidths);
-statuses(qaSheet, `E${q.first}:E${q.last}`, ['À exécuter', 'Réussi', 'Échec', 'À développer']);
+  data.qa.map(item => [item.id, item.type, item.name, item.criterion, item.result, [item.evidence, item.limitation ? `Limite : ${item.limitation}` : '', item.proofFiles?.length ? `Preuves : ${item.proofFiles.join(' ; ')}` : ''].filter(Boolean).join('\n') || 'Non renseignée', [item.sourceCommit ? `Commit : ${item.sourceCommit}` : '', item.sourceDigest ? `Empreinte : ${item.sourceDigest}` : ''].filter(Boolean).join('\n') || 'Non renseignée', item.reviewer || 'Non renseigné', item.source]), qaWidths);
+statuses(qaSheet, `E${q.first}:E${q.last}`, ['À exécuter', 'Partiel', 'Réussi', 'Échec', 'À développer']);
 qaSheet.getRange(`F${q.first}:H${q.last}`).format.fill = colors.input;
-metricBlock(qaSheet, ['Critères', 'Réussis', 'À exécuter', 'À développer', 'Échecs'], [
-  `=COUNTA(A${q.first}:A${q.last})`, `=COUNTIFS(E${q.first}:E${q.last},"Réussi")`, `=COUNTIFS(E${q.first}:E${q.last},"À exécuter")`, `=COUNTIFS(E${q.first}:E${q.last},"À développer")`, `=COUNTIFS(E${q.first}:E${q.last},"Échec")`,
+metricBlock(qaSheet, ['Critères', 'Réussis', 'Partiels', 'À exécuter', 'À développer', 'Échecs'], [
+  `=COUNTA(A${q.first}:A${q.last})`, `=COUNTIFS(E${q.first}:E${q.last},"Réussi")`, `=COUNTIFS(E${q.first}:E${q.last},"Partiel")`, `=COUNTIFS(E${q.first}:E${q.last},"À exécuter")`, `=COUNTIFS(E${q.first}:E${q.last},"À développer")`, `=COUNTIFS(E${q.first}:E${q.last},"Échec")`,
 ]);
-qaSheet.getRange(`A${q.last + 3}`).values = [['Les validations historiques Clan Ship restent dans le dossier du lot précédent. Elles ne sont pas attribuées à cette extension.']];
+qaSheet.getRange(`A${q.last + 3}`).values = [['Les journaux locaux et l’audit images gardent leurs sources d’origine. Les recettes CI exactes et leurs fixtures sont dans qa-operations/browser-final/.']];
 
 const loreWidths = [19, 31, 29, 79, 43, 28, 73, 34, 85];
 const loreSheet = base('Lore', 'Lore et décisions de production', 'Œuvre précise, adaptation et création originale gardent une provenance distincte', loreWidths, data.loreReviews.length + data.references.length + 22);
@@ -276,7 +297,7 @@ const renderRanges = [
   ['Équipage', 'A1:F13', '04-crew'], ['Équipage', 'G7:L13', '04b-crew-art'],
   ['Espace', 'A1:H10', '05-space'], ['Espace', 'A13:H24', '05b-space-orders'],
   ['Ressources', 'A1:H14', '06-assets'], ['Ressources', `A${a.last - 6}:K${a.last}`, '06b-asset-needs'],
-  ['Recette', 'A1:F15', '07-recipes'], ['Recette', 'A30:F34', '07b-recipe-evidence'],
+  ['Recette', 'A1:F15', '07-recipes'], ['Recette', 'A30:F34', '07b-recipe-evidence'], ['Recette', 'G30:I34', '07c-recipe-source'],
   ['Lore', 'A1:G12', '08-lore'], ['Lore', `A${refsTitle}:I${refsHeader + 4}`, '08b-references'],
 ];
 for (const [sheetName, range, stem] of renderRanges) {
@@ -298,6 +319,11 @@ const result = {
   uniquePossibleClanMarks: expectedReward, sourceResources: resources.filter(item => item.production === 'Réemployé et raccordé').length,
   codeResources: resources.filter(item => item.production === 'Rendu en code').length, futureResourceRows: data.futureResources.length,
   recipeCriteria: data.qa.length, passedRecipeCriteria: data.qa.filter(item => item.result === 'Réussi').length,
+  partialRecipeCriteria: data.qa.filter(item => item.result === 'Partiel').length,
+  testedSourceCommit: data.publication.commit,
+  verifiedFeatures: data.features.filter(item => item.verification === 'Vérifié').length,
+  partiallyVerifiedFeatures: data.features.filter(item => item.verification === 'Partiel').length,
+  assetAudit: { path: 'qa-operations/asset-audit.json', originalSourceCommit: assetAudit.source.remoteCommit, auditedAt: assetAudit.auditedAt, images: auditedImages.size, rerun: false },
   changedInputCheck: 'Technical verification leaves art approval pending; qualified only after both inputs, then inputs restored',
   formulaErrorScan: errorRecords, workbook: { filename: path.basename(target), bytes: bytes.length, sha256: sha256(bytes) },
   renders: previews, visualReview: 'Pending inspection of rendered files',

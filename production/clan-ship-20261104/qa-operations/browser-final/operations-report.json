@@ -1,0 +1,1328 @@
+{
+  "startedAt": "2026-11-05T05:14:46.314Z",
+  "sourceCommit": "1137faaf80051b37fa2205af73414bed099024a9",
+  "checkoutCommit": "1137faaf80051b37fa2205af73414bed099024a9",
+  "workingTreeDirty": false,
+  "runtime": "actual desktop GameClient via Vite",
+  "headed": true,
+  "assetGateRequired": true,
+  "fixtures": [
+    {
+      "id": "adult-aboard",
+      "filename": "initial-adult-aboard.json",
+      "disclosure": "Default adult campaign with boarding prepared by the docking reducer. No operations, rewards, contracts or crew are pre-completed.",
+      "ownerCreatedAt": "2026-11-05T09:00:00.000Z",
+      "sha256": "f12f44a490dae1024f2f4921cfa1db76af056cc37fccc291c4e165b914f9c403"
+    },
+    {
+      "id": "six-crew-fixture",
+      "filename": "initial-six-crew-fixture.json",
+      "disclosure": "Synthetic fixture prepared by production reducers: onboarding, four internal contracts, jungle/ice field results and six recruits. Those field hunts are NOT played by this browser recipe. No spatial victory or circle recognition is seeded.",
+      "ownerCreatedAt": "2026-11-05T10:00:00.000Z",
+      "sha256": "d9ff3f8d5e93001f0e931e6e95384dd6fc90723109040bc99da8193f78bcaf93"
+    }
+  ],
+  "checks": [
+    {
+      "name": "A disclosed adult campaign resumes aboard with no pre-completed operations",
+      "context": "adult-aboard",
+      "passed": true,
+      "durationMs": 4836
+    },
+    {
+      "name": "The first dossier requires physical approach; closing or browsing grants nothing",
+      "context": "adult-aboard",
+      "passed": true,
+      "durationMs": 3084
+    },
+    {
+      "name": "The first onboarding checkpoint survives a real reload without granting the mandate",
+      "context": "adult-aboard",
+      "passed": true,
+      "durationMs": 4338
+    },
+    {
+      "name": "Onboarding walks to medical and archives, validates the ordered posts and awards no marks",
+      "context": "adult-aboard",
+      "passed": true,
+      "durationMs": 12770
+    },
+    {
+      "name": "The massive council projection grants one mandate without changing rank or hull ownership",
+      "context": "adult-aboard",
+      "passed": true,
+      "durationMs": 9437
+    },
+    {
+      "name": "Keyboard focus remains in the table and walking keys cannot move the suspended hunter",
+      "context": "adult-aboard",
+      "passed": true,
+      "durationMs": 796
+    },
+    {
+      "name": "A partial internal circuit persists and the other dossiers cannot replace it",
+      "context": "adult-aboard",
+      "passed": true,
+      "durationMs": 21597
+    },
+    {
+      "name": "Finishing confinement awards once, then the warden explicitly joins at the hangar",
+      "context": "adult-aboard",
+      "passed": true,
+      "durationMs": 24016
+    },
+    {
+      "name": "The complete ship-armory-audit circuit awards one receipt and its stationed recruit joins",
+      "context": "adult-aboard",
+      "passed": true,
+      "durationMs": 48030
+    },
+    {
+      "name": "The complete ship-triage-route circuit awards one receipt and its stationed recruit joins",
+      "context": "adult-aboard",
+      "passed": true,
+      "durationMs": 33380
+    },
+    {
+      "name": "The complete ship-training-circuit circuit awards one receipt and its stationed recruit joins",
+      "context": "adult-aboard",
+      "passed": true,
+      "durationMs": 41280
+    },
+    {
+      "name": "Four earned recruits remain visible at their posts after reload and open their own dossier",
+      "context": "adult-aboard",
+      "passed": true,
+      "durationMs": 32468
+    },
+    {
+      "name": "A real escort binds the four earned roles and advances only through actual tactical orders",
+      "context": "adult-aboard",
+      "passed": true,
+      "durationMs": 12464
+    },
+    {
+      "name": "Refusing the final escort write preserves the active turn, the receipt count and the balance",
+      "context": "adult-aboard",
+      "passed": true,
+      "durationMs": 3893
+    },
+    {
+      "name": "Retrying the same extraction pays the unique reward and completed dossiers cannot be paid twice",
+      "context": "adult-aboard",
+      "passed": true,
+      "durationMs": 7463
+    },
+    {
+      "name": "Withdrawing from interception ends the contact without a proof or reward and permits a new departure",
+      "context": "adult-aboard",
+      "passed": true,
+      "durationMs": 4407
+    },
+    {
+      "name": "Sixteen defensive orders exhaust the tactical window without granting a victory",
+      "context": "adult-aboard",
+      "passed": true,
+      "durationMs": 6550
+    },
+    {
+      "name": "A fresh interception is won through identification, approach, energy and actual fire orders",
+      "context": "adult-aboard",
+      "passed": true,
+      "durationMs": 5560
+    },
+    {
+      "name": "Recovery requires analysis, disabled propulsion and boarding before the final extraction",
+      "context": "adult-aboard",
+      "passed": true,
+      "durationMs": 10457
+    },
+    {
+      "name": "The journal records eight real UI receipts and checkpointing preserves them with four crew",
+      "context": "adult-aboard",
+      "passed": true,
+      "durationMs": 1468
+    },
+    {
+      "name": "At 390 px the four real recruits and all dossier tabs remain reachable by touch without overflow",
+      "context": "adult-aboard",
+      "passed": true,
+      "durationMs": 2588
+    },
+    {
+      "name": "The disclosed six-crew fixture imports normally and each ally is rendered at their distinct post",
+      "context": "six-crew-fixture",
+      "passed": true,
+      "durationMs": 40548
+    },
+    {
+      "name": "On mobile 390 the six actual crew effects are fixed at departure and tactical orders are usable touch targets",
+      "context": "six-crew-fixture",
+      "passed": true,
+      "durationMs": 19073
+    },
+    {
+      "name": "At 320 px tactical commands scroll, disclose their real forecast and complete by touch after reload",
+      "context": "six-crew-fixture",
+      "passed": true,
+      "durationMs": 3748
+    },
+    {
+      "name": "With disclosed field proofs, six agreements and a browser-won escort the council confirms the circle once",
+      "context": "six-crew-fixture",
+      "passed": true,
+      "durationMs": 5104
+    },
+    {
+      "name": "The second isolated campaign cannot change the first campaign’s crew, receipts or currency",
+      "context": "six-crew-fixture",
+      "passed": true,
+      "durationMs": 28
+    },
+    {
+      "name": "All requested assets and actual room/crew images load without uncaught browser errors",
+      "context": "six-crew-fixture",
+      "passed": true,
+      "durationMs": 13
+    }
+  ],
+  "errors": [],
+  "missingAssets": [],
+  "requestedAssets": [
+    "public/game/assets/v139/rig-gauntlets/jungle-hunter/base.svg",
+    "public/game/assets/v139/rig-gauntlets/jungle-hunter/lid.svg",
+    "public/game/assets/v3/actors/yautja/hunter/armor/registered/belt.webp",
+    "public/game/assets/v3/actors/yautja/hunter/armor/registered/bracer.webp",
+    "public/game/assets/v3/actors/yautja/hunter/armor/registered/chest-classic.webp",
+    "public/game/assets/v3/actors/yautja/hunter/armor/registered/knee.webp",
+    "public/game/assets/v3/actors/yautja/hunter/armor/registered/shin.webp",
+    "public/game/assets/v3/actors/yautja/hunter/armor/registered/shoulder-classic.webp",
+    "public/game/assets/v3/actors/yautja/hunter/armor/registered/thigh-lower.webp",
+    "public/game/assets/v3/actors/yautja/hunter/armor/registered/thigh.webp",
+    "public/game/assets/v3/actors/yautja/hunter/body/classic/net/parts/hand-back.webp",
+    "public/game/assets/v3/actors/yautja/hunter/body/classic/net/parts/hand-front.webp",
+    "public/game/assets/v3/actors/yautja/hunter/body/classic/net/parts/lower-arm-back.webp",
+    "public/game/assets/v3/actors/yautja/hunter/body/classic/net/parts/lower-arm-front.webp",
+    "public/game/assets/v3/actors/yautja/hunter/body/classic/net/parts/pelvis.webp",
+    "public/game/assets/v3/actors/yautja/hunter/body/classic/net/parts/shin-back.webp",
+    "public/game/assets/v3/actors/yautja/hunter/body/classic/net/parts/shin-front.webp",
+    "public/game/assets/v3/actors/yautja/hunter/body/classic/net/parts/thigh-back.webp",
+    "public/game/assets/v3/actors/yautja/hunter/body/classic/net/parts/thigh-front.webp",
+    "public/game/assets/v3/actors/yautja/hunter/body/classic/net/parts/torso.webp",
+    "public/game/assets/v3/actors/yautja/hunter/body/classic/net/parts/upper-arm-back.webp",
+    "public/game/assets/v3/actors/yautja/hunter/body/classic/net/parts/upper-arm-front.webp",
+    "public/game/assets/v3/actors/yautja/hunter/body/classic/parts/foot-back.webp",
+    "public/game/assets/v3/actors/yautja/hunter/body/classic/parts/foot-front.webp",
+    "public/game/assets/v3/actors/yautja/hunter/body/classic/parts/hand-back.webp",
+    "public/game/assets/v3/actors/yautja/hunter/body/classic/parts/hand-front.webp",
+    "public/game/assets/v3/actors/yautja/hunter/body/classic/parts/lower-arm-back.webp",
+    "public/game/assets/v3/actors/yautja/hunter/body/classic/parts/lower-arm-front.webp",
+    "public/game/assets/v3/actors/yautja/hunter/body/classic/parts/pelvis.webp",
+    "public/game/assets/v3/actors/yautja/hunter/body/classic/parts/shin-back.webp",
+    "public/game/assets/v3/actors/yautja/hunter/body/classic/parts/shin-front.webp",
+    "public/game/assets/v3/actors/yautja/hunter/body/classic/parts/thigh-back.webp",
+    "public/game/assets/v3/actors/yautja/hunter/body/classic/parts/thigh-front.webp",
+    "public/game/assets/v3/actors/yautja/hunter/body/classic/parts/torso.webp",
+    "public/game/assets/v3/actors/yautja/hunter/body/classic/parts/upper-arm-back.webp",
+    "public/game/assets/v3/actors/yautja/hunter/body/classic/parts/upper-arm-front.webp",
+    "public/game/assets/v3/actors/yautja/hunter/dreads/registered/classic.webp",
+    "public/game/assets/v3/actors/yautja/hunter/equipment/registered/barrel.webp",
+    "public/game/assets/v3/actors/yautja/hunter/equipment/registered/cannon.webp",
+    "public/game/assets/v3/actors/yautja/hunter/equipment/registered/caster-lower.webp",
+    "public/game/assets/v3/actors/yautja/hunter/equipment/registered/caster-upper.webp",
+    "public/game/assets/v3/actors/yautja/hunter/equipment/registered/laser.webp",
+    "public/game/assets/v3/actors/yautja/hunter/equipment/registered/mount.webp",
+    "public/game/assets/v3/actors/yautja/hunter/equipment/registered/muzzle.webp",
+    "public/game/assets/v3/actors/yautja/hunter/equipment/registered/yoke.webp",
+    "public/game/assets/v3/actors/yautja/hunter/gear/registered/audio-decoy.webp",
+    "public/game/assets/v3/actors/yautja/hunter/gear/registered/motion-sensor.webp",
+    "public/game/assets/v3/actors/yautja/hunter/trophies/registered/trophy-bindings.webp",
+    "public/game/assets/v3/actors/yautja/hunter/trophies/registered/trophy-skull.webp",
+    "public/game/assets/v3/actors/yautja/hunter/trophies/registered/trophy-spine.webp",
+    "public/game/assets/v3/actors/yautja/hunter/weapons/registered/combistick.webp",
+    "public/game/clan-ship/interiors/archives-v1.webp",
+    "public/game/clan-ship/interiors/armurerie-v1.webp",
+    "public/game/clan-ship/interiors/conseil-v1.webp",
+    "public/game/clan-ship/interiors/entrainement-v1.webp",
+    "public/game/clan-ship/interiors/hangar-v1.webp",
+    "public/game/clan-ship/interiors/soins-v1.webp",
+    "public/game/clan-ship/interiors/trophees-v1.webp",
+    "public/game/clan-ship/props/archive-terminal-v1.webp",
+    "public/game/clan-ship/props/armory-forge-v1.webp",
+    "public/game/clan-ship/props/armory-rack-v1.webp",
+    "public/game/clan-ship/props/berth-console-v1.webp",
+    "public/game/clan-ship/props/council-table-v1.webp",
+    "public/game/clan-ship/props/medical-bed-v1.webp",
+    "public/game/clan-ship/props/training-station-v1.webp",
+    "public/game/clan-ship/props/trophy-workbench-v1.webp",
+    "public/game/homeworld/v84/npcs/dock-officer/13.png",
+    "public/game/homeworld/v84/npcs/forge-master/05.png",
+    "public/game/homeworld/v84/npcs/guard/10.png",
+    "public/game/homeworld/v84/npcs/guide/17.png",
+    "public/game/homeworld/v84/npcs/healer/07.png",
+    "public/game/homeworld/v84/npcs/instructor/01.png",
+    "public/game/prologue/v47/village.png",
+    "public/game/ship-interior/v21/console-navigation.webp",
+    "public/game/ship-interior/v21/door-frame.webp",
+    "public/game/ship-interior/v21/door-leaf.webp",
+    "public/game/ship-interior/v22/archive-terminal.webp",
+    "public/game/ship-interior/v22/armory-rack.webp",
+    "public/game/ship-interior/v22/floor-edge.webp",
+    "public/game/ships/v12/classic-predator-spaceship.webp",
+    "public/game/sprites/v62/heads/classic-head.png",
+    "public/game/sprites/v62/masks/jungle.png"
+  ],
+  "screenshots": [
+    {
+      "filename": "01-welcome-hangar.png",
+      "context": "adult-aboard",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "filename": "02-council-massive-table.png",
+      "context": "adult-aboard",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "filename": "03-mandate-granted.png",
+      "context": "adult-aboard",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "filename": "crew-threshold-guard-at-post.png",
+      "context": "adult-aboard",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "filename": "crew-iron-claw-at-post.png",
+      "context": "adult-aboard",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "filename": "crew-black-suture-at-post.png",
+      "context": "adult-aboard",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "filename": "crew-ash-scar-at-post.png",
+      "context": "adult-aboard",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "filename": "04-escort-turn-two.png",
+      "context": "adult-aboard",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "filename": "05-escort-write-refused.png",
+      "context": "adult-aboard",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "filename": "06-escort-reward-confirmed.png",
+      "context": "adult-aboard",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "filename": "07-contact-withdrawn.png",
+      "context": "adult-aboard",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "filename": "08-tactical-window-lost.png",
+      "context": "adult-aboard",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "filename": "09-interception-completed.png",
+      "context": "adult-aboard",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "filename": "10-capsule-awaiting-extraction.png",
+      "context": "adult-aboard",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "filename": "11-recovery-completed.png",
+      "context": "adult-aboard",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "filename": "12-operation-journal.png",
+      "context": "adult-aboard",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "filename": "13-earned-crew-mobile-390.png",
+      "context": "adult-aboard",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "filename": "fixture-star-watch-dossier.png",
+      "context": "six-crew-fixture",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "filename": "fixture-cold-trace-dossier.png",
+      "context": "six-crew-fixture",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "filename": "14-six-crew-escort-mobile-390.png",
+      "context": "six-crew-fixture",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "filename": "15-tactical-controls-mobile-320.png",
+      "context": "six-crew-fixture",
+      "viewport": {
+        "width": 320,
+        "height": 844
+      }
+    },
+    {
+      "filename": "16-mobile-escort-reward.png",
+      "context": "six-crew-fixture",
+      "viewport": {
+        "width": 320,
+        "height": 844
+      }
+    },
+    {
+      "filename": "17-fixture-circle-confirmed-mobile-320.png",
+      "context": "six-crew-fixture",
+      "viewport": {
+        "width": 320,
+        "height": 844
+      }
+    }
+  ],
+  "commands": [
+    {
+      "context": "adult-aboard",
+      "contractId": "space-screening",
+      "type": "scan",
+      "touch": false,
+      "beforeTurn": 0,
+      "afterTurn": 1,
+      "status": "active",
+      "marks": 75
+    },
+    {
+      "context": "adult-aboard",
+      "contractId": "space-screening",
+      "type": "manoeuvre",
+      "touch": false,
+      "beforeTurn": 1,
+      "afterTurn": 2,
+      "status": "active",
+      "marks": 75
+    },
+    {
+      "context": "adult-aboard",
+      "contractId": "space-screening",
+      "type": "brace",
+      "touch": false,
+      "beforeTurn": 2,
+      "afterTurn": 3,
+      "status": "active",
+      "marks": 75
+    },
+    {
+      "context": "adult-aboard",
+      "contractId": "space-screening",
+      "type": "brace",
+      "touch": false,
+      "beforeTurn": 3,
+      "afterTurn": 4,
+      "status": "active",
+      "marks": 75
+    },
+    {
+      "context": "adult-aboard",
+      "contractId": "space-screening",
+      "type": "extract",
+      "touch": false,
+      "beforeTurn": 4,
+      "afterTurn": 5,
+      "status": "victory",
+      "marks": 120
+    },
+    {
+      "context": "adult-aboard",
+      "contractId": "space-interception",
+      "type": "scan",
+      "touch": false,
+      "beforeTurn": 0,
+      "afterTurn": 1,
+      "status": "active",
+      "marks": 120
+    },
+    {
+      "context": "adult-aboard",
+      "contractId": "space-interception",
+      "type": "withdraw",
+      "touch": false,
+      "beforeTurn": 1,
+      "afterTurn": 2,
+      "status": "withdrawn",
+      "marks": 120
+    },
+    {
+      "context": "adult-aboard",
+      "contractId": "space-interception",
+      "type": "brace",
+      "touch": false,
+      "beforeTurn": 0,
+      "afterTurn": 1,
+      "status": "active",
+      "marks": 120
+    },
+    {
+      "context": "adult-aboard",
+      "contractId": "space-interception",
+      "type": "brace",
+      "touch": false,
+      "beforeTurn": 1,
+      "afterTurn": 2,
+      "status": "active",
+      "marks": 120
+    },
+    {
+      "context": "adult-aboard",
+      "contractId": "space-interception",
+      "type": "brace",
+      "touch": false,
+      "beforeTurn": 2,
+      "afterTurn": 3,
+      "status": "active",
+      "marks": 120
+    },
+    {
+      "context": "adult-aboard",
+      "contractId": "space-interception",
+      "type": "brace",
+      "touch": false,
+      "beforeTurn": 3,
+      "afterTurn": 4,
+      "status": "active",
+      "marks": 120
+    },
+    {
+      "context": "adult-aboard",
+      "contractId": "space-interception",
+      "type": "brace",
+      "touch": false,
+      "beforeTurn": 4,
+      "afterTurn": 5,
+      "status": "active",
+      "marks": 120
+    },
+    {
+      "context": "adult-aboard",
+      "contractId": "space-interception",
+      "type": "brace",
+      "touch": false,
+      "beforeTurn": 5,
+      "afterTurn": 6,
+      "status": "active",
+      "marks": 120
+    },
+    {
+      "context": "adult-aboard",
+      "contractId": "space-interception",
+      "type": "brace",
+      "touch": false,
+      "beforeTurn": 6,
+      "afterTurn": 7,
+      "status": "active",
+      "marks": 120
+    },
+    {
+      "context": "adult-aboard",
+      "contractId": "space-interception",
+      "type": "brace",
+      "touch": false,
+      "beforeTurn": 7,
+      "afterTurn": 8,
+      "status": "active",
+      "marks": 120
+    },
+    {
+      "context": "adult-aboard",
+      "contractId": "space-interception",
+      "type": "brace",
+      "touch": false,
+      "beforeTurn": 8,
+      "afterTurn": 9,
+      "status": "active",
+      "marks": 120
+    },
+    {
+      "context": "adult-aboard",
+      "contractId": "space-interception",
+      "type": "brace",
+      "touch": false,
+      "beforeTurn": 9,
+      "afterTurn": 10,
+      "status": "active",
+      "marks": 120
+    },
+    {
+      "context": "adult-aboard",
+      "contractId": "space-interception",
+      "type": "brace",
+      "touch": false,
+      "beforeTurn": 10,
+      "afterTurn": 11,
+      "status": "active",
+      "marks": 120
+    },
+    {
+      "context": "adult-aboard",
+      "contractId": "space-interception",
+      "type": "brace",
+      "touch": false,
+      "beforeTurn": 11,
+      "afterTurn": 12,
+      "status": "active",
+      "marks": 120
+    },
+    {
+      "context": "adult-aboard",
+      "contractId": "space-interception",
+      "type": "brace",
+      "touch": false,
+      "beforeTurn": 12,
+      "afterTurn": 13,
+      "status": "active",
+      "marks": 120
+    },
+    {
+      "context": "adult-aboard",
+      "contractId": "space-interception",
+      "type": "brace",
+      "touch": false,
+      "beforeTurn": 13,
+      "afterTurn": 14,
+      "status": "active",
+      "marks": 120
+    },
+    {
+      "context": "adult-aboard",
+      "contractId": "space-interception",
+      "type": "brace",
+      "touch": false,
+      "beforeTurn": 14,
+      "afterTurn": 15,
+      "status": "active",
+      "marks": 120
+    },
+    {
+      "context": "adult-aboard",
+      "contractId": "space-interception",
+      "type": "brace",
+      "touch": false,
+      "beforeTurn": 15,
+      "afterTurn": 16,
+      "status": "defeat",
+      "marks": 120
+    },
+    {
+      "context": "adult-aboard",
+      "contractId": "space-interception",
+      "type": "scan",
+      "touch": false,
+      "beforeTurn": 0,
+      "afterTurn": 1,
+      "status": "active",
+      "marks": 120
+    },
+    {
+      "context": "adult-aboard",
+      "contractId": "space-interception",
+      "type": "manoeuvre",
+      "touch": false,
+      "beforeTurn": 1,
+      "afterTurn": 2,
+      "status": "active",
+      "marks": 120
+    },
+    {
+      "context": "adult-aboard",
+      "contractId": "space-interception",
+      "type": "fire",
+      "touch": false,
+      "beforeTurn": 2,
+      "afterTurn": 3,
+      "status": "active",
+      "marks": 120
+    },
+    {
+      "context": "adult-aboard",
+      "contractId": "space-interception",
+      "type": "brace",
+      "touch": false,
+      "beforeTurn": 3,
+      "afterTurn": 4,
+      "status": "active",
+      "marks": 120
+    },
+    {
+      "context": "adult-aboard",
+      "contractId": "space-interception",
+      "type": "brace",
+      "touch": false,
+      "beforeTurn": 4,
+      "afterTurn": 5,
+      "status": "active",
+      "marks": 120
+    },
+    {
+      "context": "adult-aboard",
+      "contractId": "space-interception",
+      "type": "fire",
+      "touch": false,
+      "beforeTurn": 5,
+      "afterTurn": 6,
+      "status": "active",
+      "marks": 120
+    },
+    {
+      "context": "adult-aboard",
+      "contractId": "space-interception",
+      "type": "brace",
+      "touch": false,
+      "beforeTurn": 6,
+      "afterTurn": 7,
+      "status": "active",
+      "marks": 120
+    },
+    {
+      "context": "adult-aboard",
+      "contractId": "space-interception",
+      "type": "fire",
+      "touch": false,
+      "beforeTurn": 7,
+      "afterTurn": 8,
+      "status": "victory",
+      "marks": 185
+    },
+    {
+      "context": "adult-aboard",
+      "contractId": "space-recovery",
+      "type": "scan",
+      "touch": false,
+      "beforeTurn": 0,
+      "afterTurn": 1,
+      "status": "active",
+      "marks": 185
+    },
+    {
+      "context": "adult-aboard",
+      "contractId": "space-recovery",
+      "type": "scan",
+      "touch": false,
+      "beforeTurn": 1,
+      "afterTurn": 2,
+      "status": "active",
+      "marks": 185
+    },
+    {
+      "context": "adult-aboard",
+      "contractId": "space-recovery",
+      "type": "manoeuvre",
+      "touch": false,
+      "beforeTurn": 2,
+      "afterTurn": 3,
+      "status": "active",
+      "marks": 185
+    },
+    {
+      "context": "adult-aboard",
+      "contractId": "space-recovery",
+      "type": "brace",
+      "touch": false,
+      "beforeTurn": 3,
+      "afterTurn": 4,
+      "status": "active",
+      "marks": 185
+    },
+    {
+      "context": "adult-aboard",
+      "contractId": "space-recovery",
+      "type": "disrupt",
+      "touch": false,
+      "beforeTurn": 4,
+      "afterTurn": 5,
+      "status": "active",
+      "marks": 185
+    },
+    {
+      "context": "adult-aboard",
+      "contractId": "space-recovery",
+      "type": "brace",
+      "touch": false,
+      "beforeTurn": 5,
+      "afterTurn": 6,
+      "status": "active",
+      "marks": 185
+    },
+    {
+      "context": "adult-aboard",
+      "contractId": "space-recovery",
+      "type": "disrupt",
+      "touch": false,
+      "beforeTurn": 6,
+      "afterTurn": 7,
+      "status": "active",
+      "marks": 185
+    },
+    {
+      "context": "adult-aboard",
+      "contractId": "space-recovery",
+      "type": "brace",
+      "touch": false,
+      "beforeTurn": 7,
+      "afterTurn": 8,
+      "status": "active",
+      "marks": 185
+    },
+    {
+      "context": "adult-aboard",
+      "contractId": "space-recovery",
+      "type": "manoeuvre",
+      "touch": false,
+      "beforeTurn": 8,
+      "afterTurn": 9,
+      "status": "active",
+      "marks": 185
+    },
+    {
+      "context": "adult-aboard",
+      "contractId": "space-recovery",
+      "type": "brace",
+      "touch": false,
+      "beforeTurn": 9,
+      "afterTurn": 10,
+      "status": "active",
+      "marks": 185
+    },
+    {
+      "context": "adult-aboard",
+      "contractId": "space-recovery",
+      "type": "board",
+      "touch": false,
+      "beforeTurn": 10,
+      "afterTurn": 11,
+      "status": "active",
+      "marks": 185
+    },
+    {
+      "context": "adult-aboard",
+      "contractId": "space-recovery",
+      "type": "brace",
+      "touch": false,
+      "beforeTurn": 11,
+      "afterTurn": 12,
+      "status": "active",
+      "marks": 185
+    },
+    {
+      "context": "adult-aboard",
+      "contractId": "space-recovery",
+      "type": "extract",
+      "touch": false,
+      "beforeTurn": 12,
+      "afterTurn": 13,
+      "status": "victory",
+      "marks": 240
+    },
+    {
+      "context": "six-crew-fixture",
+      "contractId": "space-screening",
+      "type": "scan",
+      "touch": true,
+      "beforeTurn": 0,
+      "afterTurn": 1,
+      "status": "active",
+      "marks": 912
+    },
+    {
+      "context": "six-crew-fixture",
+      "contractId": "space-screening",
+      "type": "manoeuvre",
+      "touch": true,
+      "beforeTurn": 1,
+      "afterTurn": 2,
+      "status": "active",
+      "marks": 912
+    },
+    {
+      "context": "six-crew-fixture",
+      "contractId": "space-screening",
+      "type": "brace",
+      "touch": true,
+      "beforeTurn": 2,
+      "afterTurn": 3,
+      "status": "active",
+      "marks": 912
+    },
+    {
+      "context": "six-crew-fixture",
+      "contractId": "space-screening",
+      "type": "brace",
+      "touch": true,
+      "beforeTurn": 3,
+      "afterTurn": 4,
+      "status": "active",
+      "marks": 912
+    },
+    {
+      "context": "six-crew-fixture",
+      "contractId": "space-screening",
+      "type": "extract",
+      "touch": true,
+      "beforeTurn": 4,
+      "afterTurn": 5,
+      "status": "victory",
+      "marks": 957
+    }
+  ],
+  "walking": {
+    "samples": 4862,
+    "rooms": [
+      "hangar",
+      "soins",
+      "trophees",
+      "archives",
+      "conseil",
+      "entrainement",
+      "armurerie"
+    ],
+    "transitions": [
+      {
+        "context": "adult-aboard",
+        "from": "hangar",
+        "to": "soins",
+        "rooms": [
+          "hangar",
+          "soins"
+        ],
+        "samples": 80
+      },
+      {
+        "context": "adult-aboard",
+        "from": "soins",
+        "to": "archives",
+        "rooms": [
+          "soins",
+          "trophees",
+          "archives"
+        ],
+        "samples": 152
+      },
+      {
+        "context": "adult-aboard",
+        "from": "archives",
+        "to": "conseil",
+        "rooms": [
+          "archives",
+          "conseil"
+        ],
+        "samples": 80
+      },
+      {
+        "context": "adult-aboard",
+        "from": "conseil",
+        "to": "hangar",
+        "rooms": [
+          "conseil",
+          "entrainement",
+          "armurerie",
+          "hangar"
+        ],
+        "samples": 213
+      },
+      {
+        "context": "adult-aboard",
+        "from": "hangar",
+        "to": "soins",
+        "rooms": [
+          "hangar",
+          "soins"
+        ],
+        "samples": 77
+      },
+      {
+        "context": "adult-aboard",
+        "from": "soins",
+        "to": "archives",
+        "rooms": [
+          "soins",
+          "trophees",
+          "archives"
+        ],
+        "samples": 148
+      },
+      {
+        "context": "adult-aboard",
+        "from": "archives",
+        "to": "hangar",
+        "rooms": [
+          "archives",
+          "trophees",
+          "soins",
+          "hangar"
+        ],
+        "samples": 231
+      },
+      {
+        "context": "adult-aboard",
+        "from": "hangar",
+        "to": "conseil",
+        "rooms": [
+          "hangar",
+          "armurerie",
+          "entrainement",
+          "conseil"
+        ],
+        "samples": 221
+      },
+      {
+        "context": "adult-aboard",
+        "from": "conseil",
+        "to": "armurerie",
+        "rooms": [
+          "conseil",
+          "entrainement",
+          "armurerie"
+        ],
+        "samples": 152
+      },
+      {
+        "context": "adult-aboard",
+        "from": "armurerie",
+        "to": "archives",
+        "rooms": [
+          "armurerie",
+          "entrainement",
+          "conseil",
+          "archives"
+        ],
+        "samples": 235
+      },
+      {
+        "context": "adult-aboard",
+        "from": "archives",
+        "to": "armurerie",
+        "rooms": [
+          "archives",
+          "conseil",
+          "entrainement",
+          "armurerie"
+        ],
+        "samples": 232
+      },
+      {
+        "context": "adult-aboard",
+        "from": "armurerie",
+        "to": "conseil",
+        "rooms": [
+          "armurerie",
+          "entrainement",
+          "conseil"
+        ],
+        "samples": 155
+      },
+      {
+        "context": "adult-aboard",
+        "from": "conseil",
+        "to": "soins",
+        "rooms": [
+          "conseil",
+          "archives",
+          "trophees",
+          "soins"
+        ],
+        "samples": 227
+      },
+      {
+        "context": "adult-aboard",
+        "from": "soins",
+        "to": "hangar",
+        "rooms": [
+          "soins",
+          "hangar"
+        ],
+        "samples": 80
+      },
+      {
+        "context": "adult-aboard",
+        "from": "hangar",
+        "to": "soins",
+        "rooms": [
+          "hangar",
+          "soins"
+        ],
+        "samples": 81
+      },
+      {
+        "context": "adult-aboard",
+        "from": "soins",
+        "to": "conseil",
+        "rooms": [
+          "soins",
+          "trophees",
+          "archives",
+          "conseil"
+        ],
+        "samples": 224
+      },
+      {
+        "context": "adult-aboard",
+        "from": "conseil",
+        "to": "entrainement",
+        "rooms": [
+          "conseil",
+          "entrainement"
+        ],
+        "samples": 54
+      },
+      {
+        "context": "adult-aboard",
+        "from": "entrainement",
+        "to": "trophees",
+        "rooms": [
+          "entrainement",
+          "conseil",
+          "archives",
+          "trophees"
+        ],
+        "samples": 211
+      },
+      {
+        "context": "adult-aboard",
+        "from": "trophees",
+        "to": "entrainement",
+        "rooms": [
+          "trophees",
+          "archives",
+          "conseil",
+          "entrainement"
+        ],
+        "samples": 210
+      },
+      {
+        "context": "adult-aboard",
+        "from": "entrainement",
+        "to": "hangar",
+        "rooms": [
+          "entrainement",
+          "armurerie",
+          "hangar"
+        ],
+        "samples": 107
+      },
+      {
+        "context": "adult-aboard",
+        "from": "hangar",
+        "to": "armurerie",
+        "rooms": [
+          "hangar",
+          "armurerie"
+        ],
+        "samples": 65
+      },
+      {
+        "context": "adult-aboard",
+        "from": "armurerie",
+        "to": "soins",
+        "rooms": [
+          "armurerie",
+          "hangar",
+          "soins"
+        ],
+        "samples": 149
+      },
+      {
+        "context": "adult-aboard",
+        "from": "soins",
+        "to": "entrainement",
+        "rooms": [
+          "soins",
+          "hangar",
+          "armurerie",
+          "entrainement"
+        ],
+        "samples": 237
+      },
+      {
+        "context": "adult-aboard",
+        "from": "entrainement",
+        "to": "conseil",
+        "rooms": [
+          "entrainement",
+          "conseil"
+        ],
+        "samples": 57
+      },
+      {
+        "context": "six-crew-fixture",
+        "from": "conseil",
+        "to": "entrainement",
+        "rooms": [
+          "conseil",
+          "entrainement"
+        ],
+        "samples": 22
+      },
+      {
+        "context": "six-crew-fixture",
+        "from": "entrainement",
+        "to": "conseil",
+        "rooms": [
+          "entrainement",
+          "conseil"
+        ],
+        "samples": 55
+      },
+      {
+        "context": "six-crew-fixture",
+        "from": "conseil",
+        "to": "armurerie",
+        "rooms": [
+          "conseil",
+          "entrainement",
+          "armurerie"
+        ],
+        "samples": 159
+      },
+      {
+        "context": "six-crew-fixture",
+        "from": "armurerie",
+        "to": "archives",
+        "rooms": [
+          "armurerie",
+          "entrainement",
+          "conseil",
+          "archives"
+        ],
+        "samples": 233
+      },
+      {
+        "context": "six-crew-fixture",
+        "from": "archives",
+        "to": "soins",
+        "rooms": [
+          "archives",
+          "trophees",
+          "soins"
+        ],
+        "samples": 146
+      },
+      {
+        "context": "six-crew-fixture",
+        "from": "soins",
+        "to": "hangar",
+        "rooms": [
+          "soins",
+          "hangar"
+        ],
+        "samples": 81
+      },
+      {
+        "context": "six-crew-fixture",
+        "from": "hangar",
+        "to": "conseil",
+        "rooms": [
+          "hangar",
+          "armurerie",
+          "entrainement",
+          "conseil"
+        ],
+        "samples": 219
+      }
+    ]
+  },
+  "contexts": [
+    {
+      "id": "adult-aboard",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "id": "six-crew-fixture",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    }
+  ],
+  "browserVersion": "153.0.8010.12",
+  "passed": true,
+  "finishedAt": "2026-11-05T05:20:46.386Z"
+}
