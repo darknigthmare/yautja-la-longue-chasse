@@ -464,7 +464,7 @@ La note parlait de « Glacier Moon » et « Swamp Moon » : elles deviennent des
 
 ### Époque, cités, Matriarches, races
 
-**Époque :** la campagne se déroule à l'époque des films (1987-2025). Weyland est encore Weyland Industries. Le futur (crossover *Tantalus* en 2204, Xeno Prime à l'époque coloniale, OWLF héritière, synthétiques de Weyland-Yutani) n'est accessible que par le Warp.
+**Époque (révisée) :** la campagne suit toute la vie du Yautja, sur des siècles. Le joueur naît à l'époque des films (1987-2025) ; des ellipses de plusieurs décennies séparent les rangs. La fin de jeu (Elder et au-delà) atteint naturellement l'époque coloniale et 2204 (crossover *Tantalus*, Weyland-Yutani et ses synthétiques, OWLF héritière). Le Warp sert aux époques passées. Canon : Greyback vient sur Terre au XVIIIe siècle puis en 1997 (bio NECA), ce qui situe l'échelle d'une vie. *(Proposé : dates indicatives Youngling → Blooded 1990-2025 ; Elite vers 2050-2100 ; Clan Leader à Adjudicator 2100-2200 ; Philosopher et Black God après 2204.)*
 
 **Cités :** chaque clan a sa cité sur Yautja Prime. La cité déjà construite (12 quartiers) devient celle du clan d'origine du joueur ; les cités des clans alliés et rivaux se visitent par les régions et les skiffs. *(Proposé : 3 cités visitables au départ, plus la cité du clan fondé par le joueur.)*
 
@@ -521,6 +521,16 @@ Source : [types de Predators](https://avpcentral.com/predator-types).
 - **Harek :** sa fin dépend des actes du joueur : allié qui rejoint le clan, Bad Blood traqué par le joueur Enforcer, ou chef du clan rival dans l'arc de guerre.
 - **Départ O1 :** la parenté avec *Predator: Badlands* est assumée, avec des clins d'œil (Genna, le Kalisk), sans reprendre Dek ni l'intrigue du film.
 - **Interface en chasse :** au choix du joueur dans les options : interface dans le biomask et le gantelet (glyphes, vision, minuteurs) ou interface classique (barres, minicarte, icônes).
+
+### Clans, pyramide, guerre, contrats, vieillissement
+
+- **Clans :** clans canon réutilisés (Lost Tribe, Serpent Clan, Elite Clan, Super Predators, Rogue Space Tribe) ; le clan d'origine du joueur et ses cités sont inventés *(noms à créer)*.
+- **Pyramide :** un monde-temple dédié du clan, où dorment plusieurs pyramides, une par génération ; les humains sont attirés depuis une colonie proche par un signal, comme dans AVP 2004.
+- **Arc de guerre :** 6 à 8 missions scénarisées avant le mode libre *(proposé : escarmouches de frontière, raid sur un dépôt, défense de la cité, siège de la cité rivale, duel des chefs dans The Pit, arbitrage des Matriarches)*, avec mêlées en 2,5D et phases RTS.
+- **Chiens et bêtes de chasse :** capturés en chasse ou achetés au dresseur du chenil.
+- **Contrats annexes (tous retenus) :** chasses de trophée, récupération de technologie ou de frères tombés, escorte et formation de jeunes du pack, nettoyage.
+- **Cleaner :** fonction ouverte à Elite, sur le modèle de Wolf (*AVP: Requiem*) : effacer les preuves d'une chasse ratée, détruire les Xénomorphes échappés, récupérer la technologie.
+- **Vieillissement :** à chaque ellipse, l'apparence vieillit (dreadlocks, cicatrices, peau) et les caractéristiques changent un peu *(proposé : plus de précision et d'endurance mentale, un peu moins de vitesse)*.
 
 Sources : [équipes humaines qui chassent les Predators](https://avpcentral.com/predator-hunter-teams).
 
