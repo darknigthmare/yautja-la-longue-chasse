@@ -5,8 +5,8 @@
     "bytes": 264999,
     "sha256": "8eee8a5f5a043f2a67477bc6bcff97fffb1ee1666864bd7aed60c7a6c21ca138"
   },
-  "files": 2167,
-  "bytes": 1092461217,
+  "files": 2174,
+  "bytes": 1092607309,
   "entries": [
     {
       "path": ".openai/hosting.json",
@@ -1195,8 +1195,8 @@
     },
     {
       "path": "app/game/HuntCanvas.tsx",
-      "bytes": 443870,
-      "sha256": "b401fcc2c2e5dbdb5ddb8601aaba1ff1efde12a9fb064e783010a621fbc1e59a"
+      "bytes": 460807,
+      "sha256": "1b4b58c0b4ee93580cc4a5ed50aa6be9b418be0dc78159c3bdcb40b395d4b415"
     },
     {
       "path": "app/game/HuntFieldGuideV112.tsx",
@@ -1425,13 +1425,13 @@
     },
     {
       "path": "app/game/PlanetArrivalCinematic.module.css",
-      "bytes": 13622,
-      "sha256": "f4a4bb6e952f8ecc9b3519bb8e4151428dca9062e2095f504e3b84fff4a9f00a"
+      "bytes": 15090,
+      "sha256": "0bd5474c4ad4eee7697c530832ebe182ad9b1ea7175ed1abc1151fa097e2d668"
     },
     {
       "path": "app/game/PlanetArrivalCinematic.tsx",
-      "bytes": 53574,
-      "sha256": "01803c35cb795744b0a72a06fcea57ad2e7123e85e0eefeb456d06f1f522d9d7"
+      "bytes": 72130,
+      "sha256": "69cdab643a229d7aeed59cd35f9185f6bc633a31e830f0a8be380bf62f6577b4"
     },
     {
       "path": "app/game/PlanetEarthReferenceV147.module.css",
@@ -1705,8 +1705,8 @@
     },
     {
       "path": "app/game/buildInfo.ts",
-      "bytes": 965,
-      "sha256": "dea7cd3bb989be4f51e39e7833046d01a031be6dfdcabc4f1b034371ada593f4"
+      "bytes": 976,
+      "sha256": "20e95fab834dafbc0887b421605c349724253a55d703fc2dde5d5a0916f0919d"
     },
     {
       "path": "app/game/catalogueAppearance.ts",
@@ -3195,8 +3195,8 @@
     },
     {
       "path": "app/game/sound.ts",
-      "bytes": 39587,
-      "sha256": "3fbb07aba852ebaf7854e0eed161ef3fa60068d2e43b4e0793b52a57fe1d26de"
+      "bytes": 40926,
+      "sha256": "cf0e124639cb3541cdb43453344fee051fa90dd08b8f2c2c18b64f6541b9b138"
     },
     {
       "path": "app/game/spriteContact.ts",
@@ -3955,8 +3955,8 @@
     },
     {
       "path": "app/game/systems/controlBindings.ts",
-      "bytes": 32661,
-      "sha256": "75d493beb7c72279152408ab1903d0537c9544ce1fecf23220e7c9d36583a51e"
+      "bytes": 32816,
+      "sha256": "00ee70764f70a45f8408b8a76df251f44a8bdde6023d2489c2d6a5087e8ece8d"
     },
     {
       "path": "app/game/systems/corpseDiscoveryV112.ts",
@@ -5075,8 +5075,8 @@
     },
     {
       "path": "app/game/systems/huntInsertion.ts",
-      "bytes": 23025,
-      "sha256": "f283d44d6876a7afd14d4f6cb922b325c0a48aeb79347d8d73aec8f1d0cc38ec"
+      "bytes": 23602,
+      "sha256": "91aeec51e6ca303589328e6a35d93ca2e1193a23d7b8f70c27d8ef17fbf83aab"
     },
     {
       "path": "app/game/systems/huntLevelCoherenceV157.ts",
@@ -5087,6 +5087,11 @@
       "path": "app/game/systems/huntMeleeCombat.ts",
       "bytes": 30249,
       "sha256": "de0d351da0b00cad82ff2b45aad3b00196faa4b80e2df303771b65484b0938a4"
+    },
+    {
+      "path": "app/game/systems/huntPodRecovery.ts",
+      "bytes": 8576,
+      "sha256": "a6be60b6bf1eb155c2878fa90b54d6cc2ca93a86d5ecfba17a7541b81ba02332"
     },
     {
       "path": "app/game/systems/huntRitesRuntimeV77.ts",
@@ -5545,23 +5550,33 @@
     },
     {
       "path": "app/game/systems/planetArrival.ts",
-      "bytes": 13408,
-      "sha256": "2d0ce19e0b1d11b64af56c0a5058bc30e4b8d5a018fe17e222457f2f055e9fb4"
+      "bytes": 13603,
+      "sha256": "ee21998d76714956e10bdebc3b25c36238ee7f0e67940a032fea87eb9b799259"
     },
     {
       "path": "app/game/systems/planetArrivalArt.ts",
-      "bytes": 12051,
-      "sha256": "28f50705db61616c632b9ed2ec39298012b893204f1a7bc4ac1fd2d4caea64a4"
+      "bytes": 11957,
+      "sha256": "f72ceaa2b6ae8e350ab76a74e61dd11d70fe9a92a95afd5e56df363057277c99"
     },
     {
       "path": "app/game/systems/planetArrivalAudio.ts",
-      "bytes": 17822,
-      "sha256": "add38c7f8107d5c88852d1bff06b1f339de52fc74d78ccf3ffc6c7bc712b44ec"
+      "bytes": 18649,
+      "sha256": "7ce287c0bda6938fb13d91f849d13730e71b449d8c92f771619552c966ce8992"
     },
     {
       "path": "app/game/systems/planetArrivalGroundArt.ts",
       "bytes": 6820,
       "sha256": "d0d7f257757c458b8944a8ddd95dc9bea9cc250083899918fc6f5ccaab421e22"
+    },
+    {
+      "path": "app/game/systems/planetArrivalPodArt.ts",
+      "bytes": 1907,
+      "sha256": "d056258f7aef9421f8a6c777e6c657c1d3917be7d691bbbfe00a97a56889f5c7"
+    },
+    {
+      "path": "app/game/systems/planetArrivalPodFlight.ts",
+      "bytes": 5354,
+      "sha256": "991ee6e31a3b0a25e59c7e89296a69e5073159e7fa98158c777ddb2c0f77d3dd"
     },
     {
       "path": "app/game/systems/planetArrivalPresentation.ts",
@@ -5574,9 +5589,29 @@
       "sha256": "81fde7e75834779c9cde9b57836de6260aa1db24fe3b5671bb36950db2251bd4"
     },
     {
+      "path": "app/game/systems/planetArrivalShipEffects.ts",
+      "bytes": 2849,
+      "sha256": "ed77b5c8757cc7c6b78e63339564c7107058eb6fa37c97d621347031ce8f63e6"
+    },
+    {
+      "path": "app/game/systems/planetArrivalShipMotion.ts",
+      "bytes": 19636,
+      "sha256": "7569574b2027c3136452059fe69f423c58f08c3188e51d0d9d435f3d61b379cc"
+    },
+    {
       "path": "app/game/systems/planetArrivalSpatial.ts",
       "bytes": 9326,
       "sha256": "bce53ce72cff85bdef9d9351066f70d1920a385d131751bf0bf71da430a7c020"
+    },
+    {
+      "path": "app/game/systems/planetArrivalVfx.ts",
+      "bytes": 5643,
+      "sha256": "b576480a7cd167df926b22d0c3d4fcddfda5084388e89d07e86c946235947c6c"
+    },
+    {
+      "path": "app/game/systems/planetArrivalVfxArt.ts",
+      "bytes": 62156,
+      "sha256": "65a5c4ccaa2b554dfa95465bcec7c544c9d04982837d3ce2ec2d20dabde7ecab"
     },
     {
       "path": "app/game/systems/planetExportZipV114.ts",

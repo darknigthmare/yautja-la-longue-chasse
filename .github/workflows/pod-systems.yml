@@ -14,8 +14,10 @@ on:
       - 'app/game/systems/controlBindings.ts'
       - 'public/game/cinematics/batch-01-20261105/**'
       - 'public/game/planet-arrival/**'
+      - 'public/audio/manifest.json'
       - 'tests/planet-arrival*.test.mjs'
       - 'tests/hunt-pod-recovery.test.mjs'
+      - 'tests/control-bindings.test.mjs'
       - 'tests/pod-audio.test.mjs'
       - 'scripts/qa-pod-systems.mjs'
       - 'docs/qa/current-integration-20261103/runtime-inputs.json'
@@ -116,9 +118,10 @@ jobs:
           assert.deepEqual(paths.filter(file => !existsSync(file)), [], 'Original runtime sources must be present');
           console.log('Materialized sources and assets:', paths.length);
           NODE
-      - name: Generate an official current-inventory candidate without changing the reviewed register
+      - name: Check the reviewed current inventory and preserve an official candidate
         run: |
           mkdir -p outputs/qa-pod-systems
+          node scripts/snapshot-runtime-v113.mjs --check docs/qa/current-integration-20261103/runtime-inputs.json
           node scripts/snapshot-runtime-v113.mjs --write outputs/qa-pod-systems/runtime-inputs.candidate.json
           git diff --exit-code -- docs/qa/current-integration-20261103/runtime-inputs.json
       - name: Typecheck and lint the implemented systems

@@ -52,9 +52,10 @@ const sourceFiles = [
 const sourceCommit = git('rev-parse', 'HEAD');
 const sourceHashes = Object.fromEntries(await Promise.all(sourceFiles.map(async file =>
   [file, sha256(await fs.readFile(path.join(root, file)))])));
+const workingTreeStatus = git('status', '--porcelain');
 const report = {
   schema: 1, startedAt: new Date().toISOString(), sourceCommit,
-  workingTreeDirty: git('status', '--porcelain').length > 0, sourceHashes,
+  workingTreeDirty: workingTreeStatus.length > 0, workingTreeStatus, sourceHashes,
   browserMode: headed ? 'headed' : 'headless',
   scope: 'Actual component rendering at native shot boundaries on desktop/mobile; all eight destinations; seven representative orbital hulls; four insertion combinations plus paid optical camouflage, and three grounded hull profiles; natural production /dev arrival and real hunt handoffs. Spatial evidence is distinct from artistic or canonical approval. Ship contact and exit points follow source composition, without a claim about canonical landing gear or release bays.',
   timing: 'Unmodified native requestAnimationFrame. Samples wait for elapsed-time thresholds and retain observed times; no virtual or accelerated clock. Dense egress geometry is measured without PNG encoding; its photographs use independent playbacks from the same native shot boundary. Final trio details allow at most three native playbacks solely when screenshot acquisition crosses completion; every rejected PNG and interval is retained separately.',
@@ -618,7 +619,10 @@ function assertSpatial(frame, label) {
     const prefix = pod.member === 'player' ? '' : pod.member + '-';
     for (const panel of pod.panels) {
       const art = api.ARRIVAL_POD_FLIGHT_PANELS.find(part => part.id === panel.id);
-      assert.equal(panel.angle, api.arrivalPodPanelAngle(art, entry.shuttersOpen));
+      // DOM attributes serialize both signed zeroes as "0". They are the same
+      // mechanical angle; keep exact numeric equality for every other value.
+      assert.ok(panel.angle === api.arrivalPodPanelAngle(art, entry.shuttersOpen),
+        `${label}: the petal angle must follow its saved deployment state.`);
       assert.ok(Math.abs(panel.renderedAngle - panel.angle) < .001,
         `${label}: the browser must render the panel's mechanical angle.`);
       assert.notEqual(panel.clip, 'none', `${label}: the petal must be isolated from the original hull.`);
@@ -1684,7 +1688,7 @@ try {
   // Duplicate compact, existing evidence after the browser has closed so a
   // remote review can inspect CI output without changing any native capture.
   if (process.env.GITHUB_ACTIONS === 'true') {
-    const review = JSON.stringify(Object.fromEntries(["schema","startedAt","finishedAt","sourceCommit","workingTreeDirty","sourceHashes","browserVersion","browserMode","scope","timing","passed","checks","captures","rejectedCaptures","captureAttempts","contactObservations","resizes","ships","insertions","native","errors","consoleErrors","missingAssets","failure"]
+    const review = JSON.stringify(Object.fromEntries(["schema","startedAt","finishedAt","sourceCommit","workingTreeDirty","workingTreeStatus","sourceHashes","browserVersion","browserMode","scope","timing","passed","checks","captures","rejectedCaptures","captureAttempts","contactObservations","resizes","ships","insertions","native","errors","consoleErrors","missingAssets","failure"]
       .filter(key => report[key] !== undefined).map(key => [key, report[key]])));
     const chunkSize = 12_000, parts = Math.ceil(review.length / chunkSize);
     for (let part = 0; part < parts; part++) console.log('QA_REVIEW_JSON ' + JSON.stringify({

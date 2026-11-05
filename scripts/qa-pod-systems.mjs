@@ -49,9 +49,10 @@ for (const id of ['arrival-triad-jungle-vey', 'mission-jungle-vey', 'arrival-shi
 }
 
 const headless = process.env.POD_SYSTEMS_HEADED !== '1';
+const workingTreeStatus = git('status', '--porcelain', '--untracked-files=no');
 const report = {
   schema: 1, startedAt: new Date().toISOString(), sourceCommit, sourceHashes,
-  workingTreeDirty: git('status', '--porcelain', '--untracked-files=no').length > 0,
+  workingTreeDirty: workingTreeStatus.length > 0, workingTreeStatus,
   url: route.href, browserMode: headless ? 'headless' : 'headed',
   runtime: 'Production Next /dev, native arrival and HuntCanvas; no injected gameplay state or clock',
   scope: 'Atmospheric shutters and heating, natural triad handoff, safe remote pod controls, native in-memory suspend/resume, single-pod and ship exclusions, isolated reset/reload. No campaign durability, art approval or performance qualification.',

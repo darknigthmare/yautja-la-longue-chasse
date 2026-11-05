@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "version": "8fc91660f981314e26f3da696c7a9f0c8ce1c21bd132cfa8df4e9dacf5332e6f",
+  "version": "81e264223d71364cc12a97d30d6ffc99e6f05b158bbe8752e2cb57de2a1332a3",
   "entries": [
     {
       "id": "ui",
@@ -126,6 +126,27 @@
           "sha256": "d1b347e76fe796e4776bf235eb49b2c5becb3e868dfd9bd7045eefdcfe773815"
         }
       ],
+      "fallback": "procedural"
+    },
+    {
+      "id": "pod-arm",
+      "category": "sfx",
+      "folder": "sfx/pod-arm",
+      "sources": [],
+      "fallback": "procedural"
+    },
+    {
+      "id": "pod-cancel",
+      "category": "sfx",
+      "folder": "sfx/pod-cancel",
+      "sources": [],
+      "fallback": "procedural"
+    },
+    {
+      "id": "pod-detonate",
+      "category": "sfx",
+      "folder": "sfx/pod-detonate",
+      "sources": [],
       "fallback": "procedural"
     },
     {
