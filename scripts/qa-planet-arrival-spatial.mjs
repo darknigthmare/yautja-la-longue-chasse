@@ -880,9 +880,12 @@ async function capture(label, target = page, options = {}) {
 // bracket that PNG with another light clock read, then measure the complete
 // geometry. PNG compression is optimized for speed but remains lossless.
 // The final trio has only 250 ms before completion. Its detail photograph uses
-// a native whole-viewport PNG, then a verified lossless integer crop containing
+// a native renderer-view whole-viewport PNG (fromSurface: false), then a
+// verified lossless integer crop containing
 // all three rigs, overflowing equipment, labels and ground supports. The source
 // PNG is retained; all cropping happens after the temporal/geometry reads.
+// Other captures keep the surface backend. Neither backend supplies an exact
+// frame timestamp; the unchanged before/after observations remain mandatory.
 // The preceding walking image supplies full-scene
 // context; the same before/after timing gates still reject a late detail PNG.
 const momentCaptureSessions = new WeakMap();
@@ -1040,7 +1043,8 @@ async function captureMoment(label, prepared, target = page, attempt = 1, valida
     console.log('QA_CAPTURE_TIMING ' + JSON.stringify({ sourceCommit, label, attempt, accepted: acquisition.accepted ?? false,
       elapsedBefore: acquisition.before?.elapsedMs ?? null, elapsedAfter: acquisition.after?.elapsedMs ?? null,
       afterStatus: acquisition.after?.status ?? null, measuredAt: acquisition.measuredAt ?? null,
-      captureMode: acquisition.captureMode, sourceCapture: acquisition.sourceCapture ?? null,
+      captureMode: acquisition.captureMode, fromSurface: acquisition.fromSurface,
+      sourceCapture: acquisition.sourceCapture ?? null,
       nodeStageMs: Object.fromEntries(Object.entries(acquisition.timings.stages).map(([name, stage]) => [name, stage.durationMs ?? null])),
       browserBefore: acquisition.before?.observationTiming ?? null, browserAfter: acquisition.after?.observationTiming ?? null,
       browserGeometry: acquisition.geometryObservationTiming ?? null, rejection: acquisition.rejection ?? null }));
@@ -1052,7 +1056,8 @@ async function captureMoment(label, prepared, target = page, attempt = 1, valida
     // Publish the retained source before decoding/cropping: any later failure
     // must still leave the exact native bytes and their identity in the report.
     acquisition.sourceCapture = { file, sha256: sha256(bytes), bytes: bytes.length,
-      kind: 'native-whole-viewport-png', width: null, height: null };
+      kind: 'native-whole-viewport-png', backend: 'native-renderer-view', fromSurface: false,
+      width: null, height: null };
     startStage('nativeSourceMetadata');
     try {
       const metadata = await sharp(bytes).metadata();
@@ -1100,7 +1105,8 @@ async function captureMoment(label, prepared, target = page, attempt = 1, valida
   }
   const clip = { x, y, width, height, scale: 1 };
   const wholeViewportSource = prepared.region === 'formation-detail';
-  acquisition.captureMode = wholeViewportSource ? 'native-whole-viewport-then-lossless-detail' : 'native-clipped-png';
+  acquisition.captureMode = wholeViewportSource ? 'native-view-whole-viewport-then-lossless-detail' : 'native-clipped-png';
+  acquisition.fromSurface = !wholeViewportSource;
   acquisition.clip = clip;
   finishStage('validationAndClip');
   // This span includes dispatch, native acquisition/encoding and return. It
@@ -1109,7 +1115,7 @@ async function captureMoment(label, prepared, target = page, attempt = 1, valida
   let screenshot;
   try {
     screenshot = await prepared.captureSession.send('Page.captureScreenshot', {
-      format: 'png', ...(wholeViewportSource ? {} : { clip }), fromSurface: true,
+      format: 'png', ...(wholeViewportSource ? {} : { clip }), fromSurface: acquisition.fromSurface,
       captureBeyondViewport: false, optimizeForSpeed: true,
     });
   } finally { finishStage('screenshotRpc'); }
