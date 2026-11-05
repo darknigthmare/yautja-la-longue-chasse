@@ -7,9 +7,13 @@ on:
       - 'app/game/PlanetArrivalCinematic*'
       - 'app/game/systems/planetArrival*.ts'
       - 'app/game/HunterRigPreview.tsx'
+      - 'app/game/HuntCanvas.tsx'
+      - 'app/game/environmentProp*.ts'
+      - 'app/game/gameReserveV66Rendering.ts'
       - 'app/game/hunterRig.ts'
       - 'app/game/shipCatalogue.ts'
       - 'app/game/worldScreens.ts'
+      - 'app/game/systems/worldBlueprints.ts'
       - 'app/dev/**'
       - 'public/game/planet-arrival/**'
       - 'tests/planet-arrival*.test.mjs'
@@ -70,7 +74,11 @@ jobs:
           import { build } from 'esbuild';
           const compiled = await build({
             stdin: { contents: `export { MISSIONS } from './app/game/data';
-              export { createPlanetArrival, planetArrivalAssets } from './app/game/systems/planetArrival';
+              export { createPlanetArrival, planetArrivalAssets, planetArrivalLanding } from './app/game/systems/planetArrival';
+              export { createDevArrival, createDevSave, resolveDevDestination } from './app/dev/destinations';
+              export { environmentPropRuntimeUrlsForSector } from './app/game/environmentPropRegistry';
+              export { getWorldScreenAtX, worldScreensFor } from './app/game/worldScreens';
+              export { GAME_RESERVE_V66_ART } from './app/game/gameReserveV66Rendering';
               export { defaultSave } from './app/game/save';
               export { DEFAULT_SHIP_ID, isShipId, shipProfileAssetPath } from './app/game/shipCatalogue';`, resolveDir: process.cwd(), loader: 'ts' },
             bundle: true, platform: 'node', format: 'esm', write: false, logLevel: 'silent',
@@ -87,12 +95,27 @@ jobs:
           ];
           assert.ok(representativeShipIds.every(shipId => api.isShipId(shipId)));
           const carrierPaths = representativeShipIds.map(shipId => 'public' + api.shipProfileAssetPath(shipId));
+          // The /dev handoff starts encounter 1. The shared fixture misses some
+          // of its variants; derive this run's adjacent-sector streaming from
+          // the real registry instead of copying the entire V19 art catalogue.
+          const nativeDestination = api.resolveDevDestination('arrival-jungle-vey');
+          assert.equal(nativeDestination?.kind, 'arrival');
+          const nativeArrival = api.createDevArrival(nativeDestination, api.createDevSave(nativeDestination)).state;
+          const nativeLanding = api.planetArrivalLanding(nativeArrival);
+          const screens = api.worldScreensFor(nativeArrival.missionId).screens;
+          const activeId = api.getWorldScreenAtX(nativeArrival.missionId, nativeLanding.spawnX).id;
+          const activeIndex = screens.findIndex(screen => screen.id === activeId);
+          assert.ok(activeIndex >= 0, 'The native hunt must have a registered entry sector');
+          const streamedSectors = screens.slice(Math.max(0, activeIndex - 1), Math.min(screens.length, activeIndex + 2));
+          const nativePaths = [api.GAME_RESERVE_V66_ART.hunter, ...streamedSectors.flatMap(screen =>
+            api.environmentPropRuntimeUrlsForSector(nativeArrival.missionId, screen.id, nativeArrival.encounterRun),
+          )].map(asset => 'public' + asset);
           const existingPaths = ['wolf-arrival-browser-assets.json', 'clan-ship-browser-assets.json'].flatMap(name => {
             const { paths } = JSON.parse(readFileSync('tests/fixtures/' + name, 'utf8'));
             assert.equal(new Set(paths).size, paths.length, name + ' duplicates asset paths');
             return paths;
           });
-          const paths = [...new Set([...existingPaths, ...arrivalPaths, ...carrierPaths])].sort();
+          const paths = [...new Set([...existingPaths, ...arrivalPaths, ...carrierPaths, ...nativePaths])].sort();
           for (const file of paths) {
             assert.match(file, /^public\/game\/[A-Za-z0-9._/-]+$/);
             assert.ok(file.split('/').every(part => part && part !== '.' && part !== '..'));

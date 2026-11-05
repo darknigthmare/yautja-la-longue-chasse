@@ -5,9 +5,11 @@ import type { KeyboardEvent } from "react";
 import type { SaveGame } from "./types";
 import { shipForId, shipProfileAssetPath, type ShipId } from "./shipCatalogue";
 import type { ClanShipDockingState, ClanShipDockingAction, ClanShipRoomId } from "./systems/clanShipDocking";
-import { CLAN_SHIP_INTERIOR_ROOM_ORDER } from "./systems/clanShipInterior";
+import { CLAN_SHIP_INTERIOR_ROOM_ORDER, CLAN_SHIP_INTERIOR_ROOMS } from "./systems/clanShipInterior";
 import { useMenuGamepad } from "./useMenuGamepad";
 import ClanShipInterior from "./ClanShipInterior";
+import ClanShipOperationsPanel from "./ClanShipOperationsPanel";
+import { CLAN_SHIP_ONBOARDING_STEPS, clanShipContract, createClanShipOperations, getClanShipActiveStep, inspectClanShipOperations, type ClanShipNpcId, type ClanShipOperationsAction } from "./systems/clanShipOperations";
 import styles from "./ClanShipHub.module.css";
 
 export type ClanShipService = "armory" | "trophies" | "medbay" | "training" | "codex" | "clan-war";
@@ -17,7 +19,9 @@ export interface ClanShipHubProps {
   save: SaveGame;
   selectedShipId: ShipId;
   suspended: boolean;
+  temporarySession?: boolean;
   onAction: (action: ClanShipDockingAction) => boolean;
+  onOperations?: (action: ClanShipOperationsAction) => boolean;
   onService: (service: ClanShipService) => void;
   onExit: () => void;
   onOpenSettings: () => void;
@@ -28,7 +32,7 @@ const ROOM_DETAILS: Readonly<Record<ClanShipRoomId, Omit<Room, "id" | "number">>
   hangar: { name: "Hangar", detail: "Ton vaisseau personnel reste amarré ici. Rejoins son pont avant de reprendre le vol.", action: "Rejoindre mon vaisseau" },
   armurerie: { name: "Armurerie", detail: "Prépare ton équipement et consulte les armes disponibles pour ta prochaine chasse.", action: "Ouvrir l’armurerie", service: "armory" },
   entrainement: { name: "Entraînement", detail: "Rejoins l’espace d’entraînement pour préparer tes prochains combats.", action: "Commencer l’entraînement", service: "training" },
-  conseil: { name: "Conseil du clan", detail: "Consulte la guerre des clans et les opérations de ton clan.", action: "Accéder à la guerre des clans", service: "clan-war" },
+  conseil: { name: "Conseil du clan", detail: "La table holo rassemble les contrats, les engagements spatiaux, l’équipage et la guerre des clans.", action: "Ouvrir la table holo du clan", service: "clan-war" },
   archives: { name: "Archives", detail: "Consulte le codex et les connaissances réunies au fil de tes chasses.", action: "Ouvrir le codex", service: "codex" },
   trophees: { name: "Salle des trophées", detail: "Retrouve les trophées et les traces de tes chasses.", action: "Voir mes trophées", service: "trophies" },
   soins: { name: "Baie médicale", detail: "Consulte ton état et les soins disponibles avant de repartir.", action: "Accéder aux soins", service: "medbay" },
@@ -44,11 +48,17 @@ const STATUS = {
 } as const;
 const STEPS = ["Approche", "Amarrage", "À bord"];
 
-export default function ClanShipHub({ state, save, selectedShipId, suspended, onAction, onService, onExit, onOpenSettings }: ClanShipHubProps) {
+export default function ClanShipHub({ state, save, selectedShipId, suspended, temporarySession = false, onAction, onOperations, onService, onExit, onOpenSettings }: ClanShipHubProps) {
   const rootRef = useRef<HTMLElement>(null);
   const primaryRef = useRef<HTMLButtonElement>(null);
   const [failure, setFailure] = useState<{ signature: string; message: string } | null>(null);
   const [targetRoomId, setTargetRoomId] = useState<ClanShipRoomId | null>(null);
+  const [operationsOpen, setOperationsOpen] = useState(false);
+  const [crewFocus, setCrewFocus] = useState<ClanShipNpcId | null>(null);
+  const operationsInspection = inspectClanShipOperations(save.clanShipOperations, save.createdAt);
+  const operations = operationsInspection.state ?? (operationsInspection.status === 'absent' ? createClanShipOperations(save.createdAt) : null);
+  const operationStep = operations ? CLAN_SHIP_ONBOARDING_STEPS[operations.onboardingStep] ?? getClanShipActiveStep(operations) : null;
+  const activeContract = operations?.activeContract ? clanShipContract(operations.activeContract.contractId) : null;
   const signature = `${state.ownerCreatedAt}:${state.status}:${state.roomId}:${state.personalShipId}`;
   const error = failure?.signature === signature ? failure.message : "";
   const aboard = state.status === "aboard";
@@ -94,8 +104,18 @@ export default function ClanShipHub({ state, save, selectedShipId, suspended, on
 
   const enterRoomService = useCallback(() => {
     if (suspended) return;
+    if (state.roomId === 'conseil' && onOperations && operations) { setCrewFocus(null); setOperationsOpen(true); return; }
     if (room.service) onService(room.service);
-  }, [onService, room.service, suspended]);
+  }, [onService, onOperations, operations, room.service, state.roomId, suspended]);
+  const openOperations = useCallback((npcId?: ClanShipNpcId) => {
+    if (!suspended && onOperations && operations) { setCrewFocus(npcId ?? null); setOperationsOpen(true); }
+  }, [onOperations, operations, suspended]);
+  const closeOperations = useCallback(() => setOperationsOpen(false), []);
+  useEffect(() => {
+    if (suspended || operationsOpen || !aboard) return;
+    const frame = requestAnimationFrame(() => rootRef.current?.querySelector<HTMLElement>('[data-interior-world]')?.focus({ preventScroll: true }));
+    return () => cancelAnimationFrame(frame);
+  }, [aboard, operationsOpen, suspended]);
   const changeInteriorRoom = useCallback((roomId: ClanShipRoomId) => act({ type: "move-room", roomId }), [act]);
   const returnToPersonal = useCallback(() => { act({ type: "return-to-personal" }); }, [act]);
   const clearTarget = useCallback(() => setTargetRoomId(null), []);
@@ -103,7 +123,7 @@ export default function ClanShipHub({ state, save, selectedShipId, suspended, on
 
   return (
     <section ref={rootRef} className={`${styles.hub} ${aboard ? styles.hubAboard : ""}`} aria-label="Clan Ship — vaisseau-mère AVP" aria-hidden={suspended || undefined} data-clan-ship-status={state.status} data-clan-ship-room={state.roomId} data-clan-ship-target={targetRoomId ?? undefined} onKeyDown={onKeyDown}>
-      <header className={styles.header}>
+      <header className={styles.header} inert={operationsOpen || suspended}>
         <div className={styles.identity}>
           <span className={styles.eyebrow}>CLAN SHIP · VAISSEAU DU CLAN</span>
           <h1>{aboard ? room.name : "Vaisseau-mère AVP"}</h1>
@@ -115,7 +135,7 @@ export default function ClanShipHub({ state, save, selectedShipId, suspended, on
         </div>
       </header>
 
-      <div className={aboard ? styles.aboardBody : styles.body}>
+      <div className={aboard ? styles.aboardBody : styles.body} inert={operationsOpen || suspended}>
         {!aboard && <div className={styles.overview}>
           <div className={styles.shipScene}>
             <div className={styles.sceneHeading}><span className={styles.eyebrow}>DESTINATION</span><span className={styles.statusBadge}>{status.label}</span></div>
@@ -140,13 +160,23 @@ export default function ClanShipHub({ state, save, selectedShipId, suspended, on
             <nav className={styles.roomNavigation} aria-label="Salles du Clan Ship">
               {ROOMS.map((entry) => <button key={entry.id} type="button" className={`${styles.roomButton} ${room.id === entry.id ? styles.roomSelected : ""} ${targetRoomId === entry.id ? styles.roomTarget : ""}`} disabled={suspended} aria-pressed={room.id === entry.id} aria-label={`${entry.name} · itinéraire à pied`} data-clan-ship-room-target={entry.id} onClick={() => setTargetRoomId(entry.id)}><span className={styles.roomNumber}>{entry.number}</span><span>{entry.name}</span><span className={styles.roomMarker} aria-hidden="true">{targetRoomId === entry.id ? "↗" : room.id === entry.id ? "●" : ""}</span></button>)}
             </nav>
+            {onOperations && operations && <div className={styles.operationObjective} data-clan-operation-objective>
+              <div><span className={styles.eyebrow}>{operations.mandateAccepted ? 'OPÉRATIONS DU CLAN' : 'ACCUEIL DU BORD'}</span>
+                <strong>{operationStep?.label ?? activeContract?.name ?? (operations.mandateAccepted ? 'Choisir un dossier à la table du conseil' : 'Recevoir le mandat du conseil')}</strong>
+                <p>{operationStep ? CLAN_SHIP_INTERIOR_ROOMS[operationStep.roomId].label : activeContract?.kind === 'field' ? 'Retour au hangar, puis désamarrage avant la chasse.' : `${operations.recruitedNpcIds.length} membres affectés · ${operations.completedContracts.length} dossiers accomplis`}</p>
+              </div>
+              <button type="button" disabled={suspended} onClick={() => setTargetRoomId(operationStep?.roomId ?? (activeContract?.kind === 'field' ? 'hangar' : 'conseil'))}>
+                Rejoindre le prochain poste
+              </button>
+            </div>}
             <ClanShipInterior
               roomId={state.roomId}
               save={save}
               personalShipId={personalId}
-              suspended={suspended}
+              suspended={suspended || operationsOpen}
               onRoomChange={changeInteriorRoom}
               onService={enterRoomService}
+              onOperations={onOperations && operations ? openOperations : undefined}
               onReturnToPersonal={returnToPersonal}
               onOpenSettings={onOpenSettings}
               targetRoomId={targetRoomId}
@@ -165,7 +195,13 @@ export default function ClanShipHub({ state, save, selectedShipId, suspended, on
           </section>
         )}
       </div>
-      <footer className={styles.footer}><p role="status" aria-live="polite">{error || (aboard ? `${room.detail} Ta salle est sauvegardée à chaque passage.` : status.label)}</p>{!aboard && <span>Tab · Naviguer <b>↵</b> Valider <b>Échap</b> Retour</span>}</footer>
+      <footer className={styles.footer} inert={operationsOpen || suspended}><p role="status" aria-live="polite">{error || (aboard ? `${room.detail} ${temporarySession ? 'Ta salle est conservée pendant cet essai.' : 'Ta salle est sauvegardée à chaque passage.'}` : status.label)}</p>{!aboard && <span>Tab · Naviguer <b>↵</b> Valider <b>Échap</b> Retour</span>}</footer>
+      {aboard && operationsOpen && operations && onOperations && <ClanShipOperationsPanel
+        state={operations} save={save} roomId={state.roomId} suspended={suspended} crewFocus={crewFocus} temporarySession={temporarySession}
+        onAction={onOperations} onClose={closeOperations}
+        onNavigate={roomId => { setOperationsOpen(false); setTargetRoomId(roomId); }}
+        onClanWar={() => { if (!suspended && state.roomId === 'conseil') { setOperationsOpen(false); onService('clan-war'); } }}
+      />}
     </section>
   );
 }

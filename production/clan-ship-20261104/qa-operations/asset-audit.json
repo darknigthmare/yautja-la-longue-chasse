@@ -1,0 +1,1858 @@
+{
+  "schemaVersion": 1,
+  "criterion": "OPS-Q24",
+  "auditedAt": "2026-11-05T04:59:06.136611+00:00",
+  "status": "passed",
+  "scope": "Read-only technical audit of the 28 existing image files reused by the Clan Ship operations catalogue. No raster altered or created.",
+  "source": {
+    "remoteCommit": "5b56b18926cb66b3158daeea6cff63a387e871fb",
+    "localCommit": "61d299c1ee575a183ea0788eb787f7f81fdecde4",
+    "tree": "601a3437efd90c966045185bc58026be8434e051",
+    "cataloguePath": "production/clan-ship-20261104/operations-catalogue.json",
+    "catalogueSha256": "6ed3a035aa7d6252abd7823dcc921f7da7d76d8470c9f79054640d49f426bb08",
+    "catalogueSourceDigest": "a696209c55003e9b9d8878eb07e7b180f84f5f8b71a8fc02930b48a5b7498aa7",
+    "catalogueSourceFilesStillMatch": true,
+    "changedSourceFiles": []
+  },
+  "method": {
+    "decoder": "Pillow",
+    "decoderVersion": "13.0.0",
+    "readMode": "Read bytes; verify container; fully decode first frame; inspect alpha in memory; rehash original file afterward.",
+    "pixelDefinitions": {
+      "visible": "Effective alpha > 0",
+      "fullyTransparent": "Effective alpha = 0",
+      "partiallyTransparent": "0 < effective alpha < 255",
+      "fullyOpaque": "Effective alpha = 255"
+    },
+    "opaqueFiles": "For files with no stored alpha/transparency, effective alpha is 255 for analysis only. No channel is written to disk.",
+    "dimensions": "Decoded source pixel dimensions; never the displayed CSS width/height.",
+    "declaredAlphaBounds": "Compared only where the source explicitly declares an alpha threshold; these observations do not impose a new artistic threshold."
+  },
+  "categoryExpectations": {
+    "room-background": {
+      "label": "Fond de salle",
+      "transparencyRequired": false,
+      "opaqueAllowed": true,
+      "reason": "Décor de fond : un fichier RGB opaque est valide."
+    },
+    "clan-prop": {
+      "label": "Prop dédié du Clan Ship",
+      "transparencyRequired": true,
+      "opaqueAllowed": false,
+      "reason": "Objet découpé superposé au décor ; alpha visible et pixels transparents attendus."
+    },
+    "crew-sprite": {
+      "label": "Dessin individuel de PNJ",
+      "transparencyRequired": true,
+      "opaqueAllowed": false,
+      "reason": "Personnage découpé superposé à la salle ; alpha visible et pixels transparents attendus."
+    },
+    "shared-prop": {
+      "label": "Prop ou porte partagé",
+      "transparencyRequired": true,
+      "opaqueAllowed": false,
+      "reason": "Objet/porte existant superposé à la salle ; attente identique à celle des autres props."
+    },
+    "ship-profile": {
+      "label": "Profil de vaisseau réemployé",
+      "transparencyRequired": false,
+      "opaqueAllowed": true,
+      "reason": "Profil existant : transparence mesurée, sans ajouter de nouvelle contrainte de production au cadrage."
+    }
+  },
+  "summary": {
+    "files": 28,
+    "uniquePaths": 28,
+    "passed": 28,
+    "failed": 0,
+    "bytes": 17281294,
+    "categories": {
+      "room-background": 7,
+      "clan-prop": 8,
+      "crew-sprite": 6,
+      "shared-prop": 5,
+      "ship-profile": 2
+    },
+    "formats": {
+      "WEBP": 22,
+      "PNG": 6
+    },
+    "withVisiblePixels": 28,
+    "withTransparency": 21,
+    "sha256Matches": 28,
+    "unchangedAfterReading": 28
+  },
+  "failures": [],
+  "assets": [
+    {
+      "id": "room-hangar",
+      "label": "hangar",
+      "category": "room-background",
+      "path": "public/game/clan-ship/interiors/hangar-v1.webp",
+      "expectation": {
+        "label": "Fond de salle",
+        "transparencyRequired": false,
+        "opaqueAllowed": true,
+        "reason": "Décor de fond : un fichier RGB opaque est valide."
+      },
+      "catalogue": {
+        "sha256": "1bf116bf19693f5828d5a63695ecea335c0c5208e2fc1e360df9a7282a861907",
+        "bytes": 244498,
+        "sourceWidth": null,
+        "sourceHeight": null,
+        "alphaBounds": null,
+        "alphaThreshold": null
+      },
+      "exists": true,
+      "issues": [],
+      "bytes": 244498,
+      "sha256": "1bf116bf19693f5828d5a63695ecea335c0c5208e2fc1e360df9a7282a861907",
+      "sha256MatchesCatalogue": true,
+      "bytesMatchCatalogue": true,
+      "decoded": {
+        "status": "passed",
+        "format": "WEBP",
+        "mode": "RGB",
+        "width": 1440,
+        "height": 800,
+        "frames": 1,
+        "pixelCount": 1152000,
+        "hasStoredAlphaOrTransparency": false,
+        "alpha": {
+          "minimum": 255,
+          "maximum": 255,
+          "fullyTransparentPixels": 0,
+          "partiallyTransparentPixels": 0,
+          "fullyOpaquePixels": 1152000,
+          "visiblePixels": 1152000,
+          "hasVisiblePixels": true,
+          "hasAnyTransparency": false,
+          "visibleBoundsAlphaGreaterThanZero": {
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 800
+          }
+        },
+        "formatMatchesExtension": true,
+        "dimensionsMatchDeclaredSource": null
+      },
+      "unchangedAfterReading": true,
+      "status": "passed"
+    },
+    {
+      "id": "room-armurerie",
+      "label": "armurerie",
+      "category": "room-background",
+      "path": "public/game/clan-ship/interiors/armurerie-v1.webp",
+      "expectation": {
+        "label": "Fond de salle",
+        "transparencyRequired": false,
+        "opaqueAllowed": true,
+        "reason": "Décor de fond : un fichier RGB opaque est valide."
+      },
+      "catalogue": {
+        "sha256": "a11bb2ea4c9427b661c177691cd0b53df1c5ad15bde5afbfadceadcd4d58abe3",
+        "bytes": 210174,
+        "sourceWidth": null,
+        "sourceHeight": null,
+        "alphaBounds": null,
+        "alphaThreshold": null
+      },
+      "exists": true,
+      "issues": [],
+      "bytes": 210174,
+      "sha256": "a11bb2ea4c9427b661c177691cd0b53df1c5ad15bde5afbfadceadcd4d58abe3",
+      "sha256MatchesCatalogue": true,
+      "bytesMatchCatalogue": true,
+      "decoded": {
+        "status": "passed",
+        "format": "WEBP",
+        "mode": "RGB",
+        "width": 1440,
+        "height": 800,
+        "frames": 1,
+        "pixelCount": 1152000,
+        "hasStoredAlphaOrTransparency": false,
+        "alpha": {
+          "minimum": 255,
+          "maximum": 255,
+          "fullyTransparentPixels": 0,
+          "partiallyTransparentPixels": 0,
+          "fullyOpaquePixels": 1152000,
+          "visiblePixels": 1152000,
+          "hasVisiblePixels": true,
+          "hasAnyTransparency": false,
+          "visibleBoundsAlphaGreaterThanZero": {
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 800
+          }
+        },
+        "formatMatchesExtension": true,
+        "dimensionsMatchDeclaredSource": null
+      },
+      "unchangedAfterReading": true,
+      "status": "passed"
+    },
+    {
+      "id": "room-entrainement",
+      "label": "entrainement",
+      "category": "room-background",
+      "path": "public/game/clan-ship/interiors/entrainement-v1.webp",
+      "expectation": {
+        "label": "Fond de salle",
+        "transparencyRequired": false,
+        "opaqueAllowed": true,
+        "reason": "Décor de fond : un fichier RGB opaque est valide."
+      },
+      "catalogue": {
+        "sha256": "aad83f111beef4da543368d926b83410813ab76388c40da5b6474c316e4c233d",
+        "bytes": 227810,
+        "sourceWidth": null,
+        "sourceHeight": null,
+        "alphaBounds": null,
+        "alphaThreshold": null
+      },
+      "exists": true,
+      "issues": [],
+      "bytes": 227810,
+      "sha256": "aad83f111beef4da543368d926b83410813ab76388c40da5b6474c316e4c233d",
+      "sha256MatchesCatalogue": true,
+      "bytesMatchCatalogue": true,
+      "decoded": {
+        "status": "passed",
+        "format": "WEBP",
+        "mode": "RGB",
+        "width": 1440,
+        "height": 800,
+        "frames": 1,
+        "pixelCount": 1152000,
+        "hasStoredAlphaOrTransparency": false,
+        "alpha": {
+          "minimum": 255,
+          "maximum": 255,
+          "fullyTransparentPixels": 0,
+          "partiallyTransparentPixels": 0,
+          "fullyOpaquePixels": 1152000,
+          "visiblePixels": 1152000,
+          "hasVisiblePixels": true,
+          "hasAnyTransparency": false,
+          "visibleBoundsAlphaGreaterThanZero": {
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 800
+          }
+        },
+        "formatMatchesExtension": true,
+        "dimensionsMatchDeclaredSource": null
+      },
+      "unchangedAfterReading": true,
+      "status": "passed"
+    },
+    {
+      "id": "room-conseil",
+      "label": "conseil",
+      "category": "room-background",
+      "path": "public/game/clan-ship/interiors/conseil-v1.webp",
+      "expectation": {
+        "label": "Fond de salle",
+        "transparencyRequired": false,
+        "opaqueAllowed": true,
+        "reason": "Décor de fond : un fichier RGB opaque est valide."
+      },
+      "catalogue": {
+        "sha256": "87751d973c97ad2910c34dd02bf7286419d76e8fa7b75b5bf31806d5a06947d1",
+        "bytes": 253562,
+        "sourceWidth": null,
+        "sourceHeight": null,
+        "alphaBounds": null,
+        "alphaThreshold": null
+      },
+      "exists": true,
+      "issues": [],
+      "bytes": 253562,
+      "sha256": "87751d973c97ad2910c34dd02bf7286419d76e8fa7b75b5bf31806d5a06947d1",
+      "sha256MatchesCatalogue": true,
+      "bytesMatchCatalogue": true,
+      "decoded": {
+        "status": "passed",
+        "format": "WEBP",
+        "mode": "RGB",
+        "width": 1440,
+        "height": 800,
+        "frames": 1,
+        "pixelCount": 1152000,
+        "hasStoredAlphaOrTransparency": false,
+        "alpha": {
+          "minimum": 255,
+          "maximum": 255,
+          "fullyTransparentPixels": 0,
+          "partiallyTransparentPixels": 0,
+          "fullyOpaquePixels": 1152000,
+          "visiblePixels": 1152000,
+          "hasVisiblePixels": true,
+          "hasAnyTransparency": false,
+          "visibleBoundsAlphaGreaterThanZero": {
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 800
+          }
+        },
+        "formatMatchesExtension": true,
+        "dimensionsMatchDeclaredSource": null
+      },
+      "unchangedAfterReading": true,
+      "status": "passed"
+    },
+    {
+      "id": "room-archives",
+      "label": "archives",
+      "category": "room-background",
+      "path": "public/game/clan-ship/interiors/archives-v1.webp",
+      "expectation": {
+        "label": "Fond de salle",
+        "transparencyRequired": false,
+        "opaqueAllowed": true,
+        "reason": "Décor de fond : un fichier RGB opaque est valide."
+      },
+      "catalogue": {
+        "sha256": "49ebe43415f47dd338034964f8533c12585eef0e69c6441c28c9d14019d042fb",
+        "bytes": 269652,
+        "sourceWidth": null,
+        "sourceHeight": null,
+        "alphaBounds": null,
+        "alphaThreshold": null
+      },
+      "exists": true,
+      "issues": [],
+      "bytes": 269652,
+      "sha256": "49ebe43415f47dd338034964f8533c12585eef0e69c6441c28c9d14019d042fb",
+      "sha256MatchesCatalogue": true,
+      "bytesMatchCatalogue": true,
+      "decoded": {
+        "status": "passed",
+        "format": "WEBP",
+        "mode": "RGB",
+        "width": 1440,
+        "height": 800,
+        "frames": 1,
+        "pixelCount": 1152000,
+        "hasStoredAlphaOrTransparency": false,
+        "alpha": {
+          "minimum": 255,
+          "maximum": 255,
+          "fullyTransparentPixels": 0,
+          "partiallyTransparentPixels": 0,
+          "fullyOpaquePixels": 1152000,
+          "visiblePixels": 1152000,
+          "hasVisiblePixels": true,
+          "hasAnyTransparency": false,
+          "visibleBoundsAlphaGreaterThanZero": {
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 800
+          }
+        },
+        "formatMatchesExtension": true,
+        "dimensionsMatchDeclaredSource": null
+      },
+      "unchangedAfterReading": true,
+      "status": "passed"
+    },
+    {
+      "id": "room-trophees",
+      "label": "trophees",
+      "category": "room-background",
+      "path": "public/game/clan-ship/interiors/trophees-v1.webp",
+      "expectation": {
+        "label": "Fond de salle",
+        "transparencyRequired": false,
+        "opaqueAllowed": true,
+        "reason": "Décor de fond : un fichier RGB opaque est valide."
+      },
+      "catalogue": {
+        "sha256": "85ee3c53ec09468bf56732d92faf2f7c456c562a18256529ea8ed33aaaba407e",
+        "bytes": 234882,
+        "sourceWidth": null,
+        "sourceHeight": null,
+        "alphaBounds": null,
+        "alphaThreshold": null
+      },
+      "exists": true,
+      "issues": [],
+      "bytes": 234882,
+      "sha256": "85ee3c53ec09468bf56732d92faf2f7c456c562a18256529ea8ed33aaaba407e",
+      "sha256MatchesCatalogue": true,
+      "bytesMatchCatalogue": true,
+      "decoded": {
+        "status": "passed",
+        "format": "WEBP",
+        "mode": "RGB",
+        "width": 1440,
+        "height": 800,
+        "frames": 1,
+        "pixelCount": 1152000,
+        "hasStoredAlphaOrTransparency": false,
+        "alpha": {
+          "minimum": 255,
+          "maximum": 255,
+          "fullyTransparentPixels": 0,
+          "partiallyTransparentPixels": 0,
+          "fullyOpaquePixels": 1152000,
+          "visiblePixels": 1152000,
+          "hasVisiblePixels": true,
+          "hasAnyTransparency": false,
+          "visibleBoundsAlphaGreaterThanZero": {
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 800
+          }
+        },
+        "formatMatchesExtension": true,
+        "dimensionsMatchDeclaredSource": null
+      },
+      "unchangedAfterReading": true,
+      "status": "passed"
+    },
+    {
+      "id": "room-soins",
+      "label": "soins",
+      "category": "room-background",
+      "path": "public/game/clan-ship/interiors/soins-v1.webp",
+      "expectation": {
+        "label": "Fond de salle",
+        "transparencyRequired": false,
+        "opaqueAllowed": true,
+        "reason": "Décor de fond : un fichier RGB opaque est valide."
+      },
+      "catalogue": {
+        "sha256": "7143eee60290235d76a1fa054e85d5b8f3db2950401861aea55953a0e8866c4d",
+        "bytes": 220874,
+        "sourceWidth": null,
+        "sourceHeight": null,
+        "alphaBounds": null,
+        "alphaThreshold": null
+      },
+      "exists": true,
+      "issues": [],
+      "bytes": 220874,
+      "sha256": "7143eee60290235d76a1fa054e85d5b8f3db2950401861aea55953a0e8866c4d",
+      "sha256MatchesCatalogue": true,
+      "bytesMatchCatalogue": true,
+      "decoded": {
+        "status": "passed",
+        "format": "WEBP",
+        "mode": "RGB",
+        "width": 1440,
+        "height": 800,
+        "frames": 1,
+        "pixelCount": 1152000,
+        "hasStoredAlphaOrTransparency": false,
+        "alpha": {
+          "minimum": 255,
+          "maximum": 255,
+          "fullyTransparentPixels": 0,
+          "partiallyTransparentPixels": 0,
+          "fullyOpaquePixels": 1152000,
+          "visiblePixels": 1152000,
+          "hasVisiblePixels": true,
+          "hasAnyTransparency": false,
+          "visibleBoundsAlphaGreaterThanZero": {
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 800
+          }
+        },
+        "formatMatchesExtension": true,
+        "dimensionsMatchDeclaredSource": null
+      },
+      "unchangedAfterReading": true,
+      "status": "passed"
+    },
+    {
+      "id": "council-table",
+      "label": "council-table",
+      "category": "clan-prop",
+      "path": "public/game/clan-ship/props/council-table-v1.webp",
+      "expectation": {
+        "label": "Prop dédié du Clan Ship",
+        "transparencyRequired": true,
+        "opaqueAllowed": false,
+        "reason": "Objet découpé superposé au décor ; alpha visible et pixels transparents attendus."
+      },
+      "catalogue": {
+        "sha256": "ad9f1452c0dac3b460923b9e2d301d98a94c344be37f7f48a5c270147244fc7a",
+        "bytes": 144870,
+        "sourceWidth": 1024,
+        "sourceHeight": 614,
+        "alphaBounds": {
+          "x": 34,
+          "y": 122,
+          "width": 957,
+          "height": 351
+        },
+        "alphaThreshold": 16
+      },
+      "exists": true,
+      "issues": [],
+      "bytes": 144870,
+      "sha256": "ad9f1452c0dac3b460923b9e2d301d98a94c344be37f7f48a5c270147244fc7a",
+      "sha256MatchesCatalogue": true,
+      "bytesMatchCatalogue": true,
+      "decoded": {
+        "status": "passed",
+        "format": "WEBP",
+        "mode": "RGBA",
+        "width": 1024,
+        "height": 614,
+        "frames": 1,
+        "pixelCount": 628736,
+        "hasStoredAlphaOrTransparency": true,
+        "alpha": {
+          "minimum": 0,
+          "maximum": 255,
+          "fullyTransparentPixels": 408495,
+          "partiallyTransparentPixels": 219093,
+          "fullyOpaquePixels": 1148,
+          "visiblePixels": 220241,
+          "hasVisiblePixels": true,
+          "hasAnyTransparency": true,
+          "visibleBoundsAlphaGreaterThanZero": {
+            "x": 23,
+            "y": 11,
+            "width": 991,
+            "height": 603
+          }
+        },
+        "formatMatchesExtension": true,
+        "dimensionsMatchDeclaredSource": true,
+        "declaredThresholdObservation": {
+          "threshold": 16,
+          "comparison": "alpha > threshold",
+          "visiblePixels": 212238,
+          "visibleBounds": {
+            "x": 34,
+            "y": 122,
+            "width": 957,
+            "height": 351
+          },
+          "matchesDeclaredBounds": true
+        }
+      },
+      "unchangedAfterReading": true,
+      "status": "passed"
+    },
+    {
+      "id": "armory-rack",
+      "label": "armory-rack",
+      "category": "clan-prop",
+      "path": "public/game/clan-ship/props/armory-rack-v1.webp",
+      "expectation": {
+        "label": "Prop dédié du Clan Ship",
+        "transparencyRequired": true,
+        "opaqueAllowed": false,
+        "reason": "Objet découpé superposé au décor ; alpha visible et pixels transparents attendus."
+      },
+      "catalogue": {
+        "sha256": "e94a37c54d70030760792c91ce31c916a50fee656dbc663c7120820fda2148ae",
+        "bytes": 213156,
+        "sourceWidth": 1024,
+        "sourceHeight": 614,
+        "alphaBounds": {
+          "x": 59,
+          "y": 14,
+          "width": 906,
+          "height": 575
+        },
+        "alphaThreshold": 16
+      },
+      "exists": true,
+      "issues": [],
+      "bytes": 213156,
+      "sha256": "e94a37c54d70030760792c91ce31c916a50fee656dbc663c7120820fda2148ae",
+      "sha256MatchesCatalogue": true,
+      "bytesMatchCatalogue": true,
+      "decoded": {
+        "status": "passed",
+        "format": "WEBP",
+        "mode": "RGBA",
+        "width": 1024,
+        "height": 614,
+        "frames": 1,
+        "pixelCount": 628736,
+        "hasStoredAlphaOrTransparency": true,
+        "alpha": {
+          "minimum": 0,
+          "maximum": 255,
+          "fullyTransparentPixels": 261901,
+          "partiallyTransparentPixels": 365911,
+          "fullyOpaquePixels": 924,
+          "visiblePixels": 366835,
+          "hasVisiblePixels": true,
+          "hasAnyTransparency": true,
+          "visibleBoundsAlphaGreaterThanZero": {
+            "x": 0,
+            "y": 11,
+            "width": 1010,
+            "height": 603
+          }
+        },
+        "formatMatchesExtension": true,
+        "dimensionsMatchDeclaredSource": true,
+        "declaredThresholdObservation": {
+          "threshold": 16,
+          "comparison": "alpha > threshold",
+          "visiblePixels": 359227,
+          "visibleBounds": {
+            "x": 59,
+            "y": 14,
+            "width": 906,
+            "height": 575
+          },
+          "matchesDeclaredBounds": true
+        }
+      },
+      "unchangedAfterReading": true,
+      "status": "passed"
+    },
+    {
+      "id": "medical-bed",
+      "label": "medical-bed",
+      "category": "clan-prop",
+      "path": "public/game/clan-ship/props/medical-bed-v1.webp",
+      "expectation": {
+        "label": "Prop dédié du Clan Ship",
+        "transparencyRequired": true,
+        "opaqueAllowed": false,
+        "reason": "Objet découpé superposé au décor ; alpha visible et pixels transparents attendus."
+      },
+      "catalogue": {
+        "sha256": "b291617187af6d05b33fd8740621ede91d1856b9058db85ca0cc17847026de0f",
+        "bytes": 137336,
+        "sourceWidth": 1024,
+        "sourceHeight": 538,
+        "alphaBounds": {
+          "x": 24,
+          "y": 101,
+          "width": 977,
+          "height": 333
+        },
+        "alphaThreshold": 16
+      },
+      "exists": true,
+      "issues": [],
+      "bytes": 137336,
+      "sha256": "b291617187af6d05b33fd8740621ede91d1856b9058db85ca0cc17847026de0f",
+      "sha256MatchesCatalogue": true,
+      "bytesMatchCatalogue": true,
+      "decoded": {
+        "status": "passed",
+        "format": "WEBP",
+        "mode": "RGBA",
+        "width": 1024,
+        "height": 538,
+        "frames": 1,
+        "pixelCount": 550912,
+        "hasStoredAlphaOrTransparency": true,
+        "alpha": {
+          "minimum": 0,
+          "maximum": 255,
+          "fullyTransparentPixels": 334995,
+          "partiallyTransparentPixels": 214330,
+          "fullyOpaquePixels": 1587,
+          "visiblePixels": 215917,
+          "hasVisiblePixels": true,
+          "hasAnyTransparency": true,
+          "visibleBoundsAlphaGreaterThanZero": {
+            "x": 21,
+            "y": 5,
+            "width": 988,
+            "height": 533
+          }
+        },
+        "formatMatchesExtension": true,
+        "dimensionsMatchDeclaredSource": true,
+        "declaredThresholdObservation": {
+          "threshold": 16,
+          "comparison": "alpha > threshold",
+          "visiblePixels": 205998,
+          "visibleBounds": {
+            "x": 24,
+            "y": 101,
+            "width": 977,
+            "height": 333
+          },
+          "matchesDeclaredBounds": true
+        }
+      },
+      "unchangedAfterReading": true,
+      "status": "passed"
+    },
+    {
+      "id": "archive-terminal",
+      "label": "archive-terminal",
+      "category": "clan-prop",
+      "path": "public/game/clan-ship/props/archive-terminal-v1.webp",
+      "expectation": {
+        "label": "Prop dédié du Clan Ship",
+        "transparencyRequired": true,
+        "opaqueAllowed": false,
+        "reason": "Objet découpé superposé au décor ; alpha visible et pixels transparents attendus."
+      },
+      "catalogue": {
+        "sha256": "a8f2e997c3b1c5023f703dfa8f8b5c678387a14f66a7943e9ab7cef406bb767b",
+        "bytes": 144098,
+        "sourceWidth": 533,
+        "sourceHeight": 1024,
+        "alphaBounds": {
+          "x": 70,
+          "y": 29,
+          "width": 395,
+          "height": 969
+        },
+        "alphaThreshold": 16
+      },
+      "exists": true,
+      "issues": [],
+      "bytes": 144098,
+      "sha256": "a8f2e997c3b1c5023f703dfa8f8b5c678387a14f66a7943e9ab7cef406bb767b",
+      "sha256MatchesCatalogue": true,
+      "bytesMatchCatalogue": true,
+      "decoded": {
+        "status": "passed",
+        "format": "WEBP",
+        "mode": "RGBA",
+        "width": 533,
+        "height": 1024,
+        "frames": 1,
+        "pixelCount": 545792,
+        "hasStoredAlphaOrTransparency": true,
+        "alpha": {
+          "minimum": 0,
+          "maximum": 255,
+          "fullyTransparentPixels": 303894,
+          "partiallyTransparentPixels": 240465,
+          "fullyOpaquePixels": 1433,
+          "visiblePixels": 241898,
+          "hasVisiblePixels": true,
+          "hasAnyTransparency": true,
+          "visibleBoundsAlphaGreaterThanZero": {
+            "x": 0,
+            "y": 14,
+            "width": 520,
+            "height": 994
+          }
+        },
+        "formatMatchesExtension": true,
+        "dimensionsMatchDeclaredSource": true,
+        "declaredThresholdObservation": {
+          "threshold": 16,
+          "comparison": "alpha > threshold",
+          "visiblePixels": 234910,
+          "visibleBounds": {
+            "x": 70,
+            "y": 29,
+            "width": 395,
+            "height": 969
+          },
+          "matchesDeclaredBounds": true
+        }
+      },
+      "unchangedAfterReading": true,
+      "status": "passed"
+    },
+    {
+      "id": "training-station",
+      "label": "training-station",
+      "category": "clan-prop",
+      "path": "public/game/clan-ship/props/training-station-v1.webp",
+      "expectation": {
+        "label": "Prop dédié du Clan Ship",
+        "transparencyRequired": true,
+        "opaqueAllowed": false,
+        "reason": "Objet découpé superposé au décor ; alpha visible et pixels transparents attendus."
+      },
+      "catalogue": {
+        "sha256": "32e7ed6b4d3b612f1317cbd3265d71fa030c5bb1efb81f5b63ceb6f72a13f037",
+        "bytes": 177044,
+        "sourceWidth": 683,
+        "sourceHeight": 1024,
+        "alphaBounds": {
+          "x": 39,
+          "y": 68,
+          "width": 606,
+          "height": 892
+        },
+        "alphaThreshold": 16
+      },
+      "exists": true,
+      "issues": [],
+      "bytes": 177044,
+      "sha256": "32e7ed6b4d3b612f1317cbd3265d71fa030c5bb1efb81f5b63ceb6f72a13f037",
+      "sha256MatchesCatalogue": true,
+      "bytesMatchCatalogue": true,
+      "decoded": {
+        "status": "passed",
+        "format": "WEBP",
+        "mode": "RGBA",
+        "width": 683,
+        "height": 1024,
+        "frames": 1,
+        "pixelCount": 699392,
+        "hasStoredAlphaOrTransparency": true,
+        "alpha": {
+          "minimum": 0,
+          "maximum": 255,
+          "fullyTransparentPixels": 443886,
+          "partiallyTransparentPixels": 253882,
+          "fullyOpaquePixels": 1624,
+          "visiblePixels": 255506,
+          "hasVisiblePixels": true,
+          "hasAnyTransparency": true,
+          "visibleBoundsAlphaGreaterThanZero": {
+            "x": 0,
+            "y": 6,
+            "width": 671,
+            "height": 1018
+          }
+        },
+        "formatMatchesExtension": true,
+        "dimensionsMatchDeclaredSource": true,
+        "declaredThresholdObservation": {
+          "threshold": 16,
+          "comparison": "alpha > threshold",
+          "visiblePixels": 245230,
+          "visibleBounds": {
+            "x": 39,
+            "y": 68,
+            "width": 606,
+            "height": 892
+          },
+          "matchesDeclaredBounds": true
+        }
+      },
+      "unchangedAfterReading": true,
+      "status": "passed"
+    },
+    {
+      "id": "berth-console",
+      "label": "berth-console",
+      "category": "clan-prop",
+      "path": "public/game/clan-ship/props/berth-console-v1.webp",
+      "expectation": {
+        "label": "Prop dédié du Clan Ship",
+        "transparencyRequired": true,
+        "opaqueAllowed": false,
+        "reason": "Objet découpé superposé au décor ; alpha visible et pixels transparents attendus."
+      },
+      "catalogue": {
+        "sha256": "b60d71e8c511164faf71bb215ed1ed84047f7b1852b1bf44a51498b0265418f7",
+        "bytes": 174630,
+        "sourceWidth": 1024,
+        "sourceHeight": 614,
+        "alphaBounds": {
+          "x": 34,
+          "y": 93,
+          "width": 961,
+          "height": 453
+        },
+        "alphaThreshold": 16
+      },
+      "exists": true,
+      "issues": [],
+      "bytes": 174630,
+      "sha256": "b60d71e8c511164faf71bb215ed1ed84047f7b1852b1bf44a51498b0265418f7",
+      "sha256MatchesCatalogue": true,
+      "bytesMatchCatalogue": true,
+      "decoded": {
+        "status": "passed",
+        "format": "WEBP",
+        "mode": "RGBA",
+        "width": 1024,
+        "height": 614,
+        "frames": 1,
+        "pixelCount": 628736,
+        "hasStoredAlphaOrTransparency": true,
+        "alpha": {
+          "minimum": 0,
+          "maximum": 255,
+          "fullyTransparentPixels": 342403,
+          "partiallyTransparentPixels": 284707,
+          "fullyOpaquePixels": 1626,
+          "visiblePixels": 286333,
+          "hasVisiblePixels": true,
+          "hasAnyTransparency": true,
+          "visibleBoundsAlphaGreaterThanZero": {
+            "x": 0,
+            "y": 6,
+            "width": 1013,
+            "height": 593
+          }
+        },
+        "formatMatchesExtension": true,
+        "dimensionsMatchDeclaredSource": true,
+        "declaredThresholdObservation": {
+          "threshold": 16,
+          "comparison": "alpha > threshold",
+          "visiblePixels": 275961,
+          "visibleBounds": {
+            "x": 34,
+            "y": 93,
+            "width": 961,
+            "height": 453
+          },
+          "matchesDeclaredBounds": true
+        }
+      },
+      "unchangedAfterReading": true,
+      "status": "passed"
+    },
+    {
+      "id": "trophy-workbench",
+      "label": "trophy-workbench",
+      "category": "clan-prop",
+      "path": "public/game/clan-ship/props/trophy-workbench-v1.webp",
+      "expectation": {
+        "label": "Prop dédié du Clan Ship",
+        "transparencyRequired": true,
+        "opaqueAllowed": false,
+        "reason": "Objet découpé superposé au décor ; alpha visible et pixels transparents attendus."
+      },
+      "catalogue": {
+        "sha256": "b3d0241516aa530ebd60a9c74e7aca05115ac1bc97535cbb6274f6b3e9e63aed",
+        "bytes": 160024,
+        "sourceWidth": 1024,
+        "sourceHeight": 603,
+        "alphaBounds": {
+          "x": 52,
+          "y": 25,
+          "width": 919,
+          "height": 519
+        },
+        "alphaThreshold": 16
+      },
+      "exists": true,
+      "issues": [],
+      "bytes": 160024,
+      "sha256": "b3d0241516aa530ebd60a9c74e7aca05115ac1bc97535cbb6274f6b3e9e63aed",
+      "sha256MatchesCatalogue": true,
+      "bytesMatchCatalogue": true,
+      "decoded": {
+        "status": "passed",
+        "format": "WEBP",
+        "mode": "RGBA",
+        "width": 1024,
+        "height": 603,
+        "frames": 1,
+        "pixelCount": 617472,
+        "hasStoredAlphaOrTransparency": true,
+        "alpha": {
+          "minimum": 0,
+          "maximum": 255,
+          "fullyTransparentPixels": 371967,
+          "partiallyTransparentPixels": 243499,
+          "fullyOpaquePixels": 2006,
+          "visiblePixels": 245505,
+          "hasVisiblePixels": true,
+          "hasAnyTransparency": true,
+          "visibleBoundsAlphaGreaterThanZero": {
+            "x": 16,
+            "y": 16,
+            "width": 997,
+            "height": 576
+          }
+        },
+        "formatMatchesExtension": true,
+        "dimensionsMatchDeclaredSource": true,
+        "declaredThresholdObservation": {
+          "threshold": 16,
+          "comparison": "alpha > threshold",
+          "visiblePixels": 233323,
+          "visibleBounds": {
+            "x": 52,
+            "y": 25,
+            "width": 919,
+            "height": 519
+          },
+          "matchesDeclaredBounds": true
+        }
+      },
+      "unchangedAfterReading": true,
+      "status": "passed"
+    },
+    {
+      "id": "armory-forge",
+      "label": "armory-forge",
+      "category": "clan-prop",
+      "path": "public/game/clan-ship/props/armory-forge-v1.webp",
+      "expectation": {
+        "label": "Prop dédié du Clan Ship",
+        "transparencyRequired": true,
+        "opaqueAllowed": false,
+        "reason": "Objet découpé superposé au décor ; alpha visible et pixels transparents attendus."
+      },
+      "catalogue": {
+        "sha256": "d4d2f985ecede36d12d5138047a215e2b524133dbbf5aaa14c505cba9198588e",
+        "bytes": 217542,
+        "sourceWidth": 683,
+        "sourceHeight": 1024,
+        "alphaBounds": {
+          "x": 29,
+          "y": 72,
+          "width": 626,
+          "height": 885
+        },
+        "alphaThreshold": 16
+      },
+      "exists": true,
+      "issues": [],
+      "bytes": 217542,
+      "sha256": "d4d2f985ecede36d12d5138047a215e2b524133dbbf5aaa14c505cba9198588e",
+      "sha256MatchesCatalogue": true,
+      "bytesMatchCatalogue": true,
+      "decoded": {
+        "status": "passed",
+        "format": "WEBP",
+        "mode": "RGBA",
+        "width": 683,
+        "height": 1024,
+        "frames": 1,
+        "pixelCount": 699392,
+        "hasStoredAlphaOrTransparency": true,
+        "alpha": {
+          "minimum": 0,
+          "maximum": 255,
+          "fullyTransparentPixels": 317197,
+          "partiallyTransparentPixels": 381191,
+          "fullyOpaquePixels": 1004,
+          "visiblePixels": 382195,
+          "hasVisiblePixels": true,
+          "hasAnyTransparency": true,
+          "visibleBoundsAlphaGreaterThanZero": {
+            "x": 0,
+            "y": 15,
+            "width": 682,
+            "height": 996
+          }
+        },
+        "formatMatchesExtension": true,
+        "dimensionsMatchDeclaredSource": true,
+        "declaredThresholdObservation": {
+          "threshold": 16,
+          "comparison": "alpha > threshold",
+          "visiblePixels": 373368,
+          "visibleBounds": {
+            "x": 29,
+            "y": 72,
+            "width": 626,
+            "height": 885
+          },
+          "matchesDeclaredBounds": true
+        }
+      },
+      "unchangedAfterReading": true,
+      "status": "passed"
+    },
+    {
+      "id": "ash-scar",
+      "label": "Balafre de Cendre",
+      "category": "crew-sprite",
+      "path": "public/game/homeworld/v84/npcs/instructor/01.png",
+      "expectation": {
+        "label": "Dessin individuel de PNJ",
+        "transparencyRequired": true,
+        "opaqueAllowed": false,
+        "reason": "Personnage découpé superposé à la salle ; alpha visible et pixels transparents attendus."
+      },
+      "catalogue": {
+        "sha256": "474f1a3dca5c80ac69224f20c69942e3a85d41d390bf320c3a28eb2b345ca4c6",
+        "bytes": 2140901,
+        "sourceWidth": 1024,
+        "sourceHeight": 1536,
+        "alphaBounds": {
+          "x": 239,
+          "y": 11,
+          "width": 698,
+          "height": 1514
+        },
+        "alphaThreshold": null
+      },
+      "exists": true,
+      "issues": [],
+      "bytes": 2140901,
+      "sha256": "474f1a3dca5c80ac69224f20c69942e3a85d41d390bf320c3a28eb2b345ca4c6",
+      "sha256MatchesCatalogue": true,
+      "bytesMatchCatalogue": true,
+      "decoded": {
+        "status": "passed",
+        "format": "PNG",
+        "mode": "RGBA",
+        "width": 1024,
+        "height": 1536,
+        "frames": 1,
+        "pixelCount": 1572864,
+        "hasStoredAlphaOrTransparency": true,
+        "alpha": {
+          "minimum": 0,
+          "maximum": 254,
+          "fullyTransparentPixels": 1038687,
+          "partiallyTransparentPixels": 534177,
+          "fullyOpaquePixels": 0,
+          "visiblePixels": 534177,
+          "hasVisiblePixels": true,
+          "hasAnyTransparency": true,
+          "visibleBoundsAlphaGreaterThanZero": {
+            "x": 25,
+            "y": 8,
+            "width": 985,
+            "height": 1519
+          }
+        },
+        "formatMatchesExtension": true,
+        "dimensionsMatchDeclaredSource": true
+      },
+      "unchangedAfterReading": true,
+      "status": "passed"
+    },
+    {
+      "id": "star-watch",
+      "label": "Veille des Astres",
+      "category": "crew-sprite",
+      "path": "public/game/homeworld/v84/npcs/dock-officer/13.png",
+      "expectation": {
+        "label": "Dessin individuel de PNJ",
+        "transparencyRequired": true,
+        "opaqueAllowed": false,
+        "reason": "Personnage découpé superposé à la salle ; alpha visible et pixels transparents attendus."
+      },
+      "catalogue": {
+        "sha256": "f141467282af538a58072f16ee80479dfd0bac71131d8acaf4cc4bf5b023093d",
+        "bytes": 2214699,
+        "sourceWidth": 1024,
+        "sourceHeight": 1536,
+        "alphaBounds": {
+          "x": 171,
+          "y": 20,
+          "width": 732,
+          "height": 1475
+        },
+        "alphaThreshold": null
+      },
+      "exists": true,
+      "issues": [],
+      "bytes": 2214699,
+      "sha256": "f141467282af538a58072f16ee80479dfd0bac71131d8acaf4cc4bf5b023093d",
+      "sha256MatchesCatalogue": true,
+      "bytesMatchCatalogue": true,
+      "decoded": {
+        "status": "passed",
+        "format": "PNG",
+        "mode": "RGBA",
+        "width": 1024,
+        "height": 1536,
+        "frames": 1,
+        "pixelCount": 1572864,
+        "hasStoredAlphaOrTransparency": true,
+        "alpha": {
+          "minimum": 0,
+          "maximum": 254,
+          "fullyTransparentPixels": 973164,
+          "partiallyTransparentPixels": 599700,
+          "fullyOpaquePixels": 0,
+          "visiblePixels": 599700,
+          "hasVisiblePixels": true,
+          "hasAnyTransparency": true,
+          "visibleBoundsAlphaGreaterThanZero": {
+            "x": 0,
+            "y": 15,
+            "width": 944,
+            "height": 1482
+          }
+        },
+        "formatMatchesExtension": true,
+        "dimensionsMatchDeclaredSource": true
+      },
+      "unchangedAfterReading": true,
+      "status": "passed"
+    },
+    {
+      "id": "iron-claw",
+      "label": "Griffe de Fer",
+      "category": "crew-sprite",
+      "path": "public/game/homeworld/v84/npcs/forge-master/05.png",
+      "expectation": {
+        "label": "Dessin individuel de PNJ",
+        "transparencyRequired": true,
+        "opaqueAllowed": false,
+        "reason": "Personnage découpé superposé à la salle ; alpha visible et pixels transparents attendus."
+      },
+      "catalogue": {
+        "sha256": "dd06e20ec327d1303b8bf5da63572c8604ab68b3ba30172762e0f54b0717061a",
+        "bytes": 2226217,
+        "sourceWidth": 1024,
+        "sourceHeight": 1536,
+        "alphaBounds": {
+          "x": 208,
+          "y": 44,
+          "width": 741,
+          "height": 1435
+        },
+        "alphaThreshold": null
+      },
+      "exists": true,
+      "issues": [],
+      "bytes": 2226217,
+      "sha256": "dd06e20ec327d1303b8bf5da63572c8604ab68b3ba30172762e0f54b0717061a",
+      "sha256MatchesCatalogue": true,
+      "bytesMatchCatalogue": true,
+      "decoded": {
+        "status": "passed",
+        "format": "PNG",
+        "mode": "RGBA",
+        "width": 1024,
+        "height": 1536,
+        "frames": 1,
+        "pixelCount": 1572864,
+        "hasStoredAlphaOrTransparency": true,
+        "alpha": {
+          "minimum": 0,
+          "maximum": 254,
+          "fullyTransparentPixels": 991276,
+          "partiallyTransparentPixels": 581588,
+          "fullyOpaquePixels": 0,
+          "visiblePixels": 581588,
+          "hasVisiblePixels": true,
+          "hasAnyTransparency": true,
+          "visibleBoundsAlphaGreaterThanZero": {
+            "x": 49,
+            "y": 40,
+            "width": 961,
+            "height": 1478
+          }
+        },
+        "formatMatchesExtension": true,
+        "dimensionsMatchDeclaredSource": true
+      },
+      "unchangedAfterReading": true,
+      "status": "passed"
+    },
+    {
+      "id": "cold-trace",
+      "label": "Trace Froide",
+      "category": "crew-sprite",
+      "path": "public/game/homeworld/v84/npcs/guide/17.png",
+      "expectation": {
+        "label": "Dessin individuel de PNJ",
+        "transparencyRequired": true,
+        "opaqueAllowed": false,
+        "reason": "Personnage découpé superposé à la salle ; alpha visible et pixels transparents attendus."
+      },
+      "catalogue": {
+        "sha256": "376d3c7fae52e7e58c8f9aaa681b3b0371124775a9397e1b62dedbca713164eb",
+        "bytes": 2162015,
+        "sourceWidth": 1024,
+        "sourceHeight": 1536,
+        "alphaBounds": {
+          "x": 217,
+          "y": 20,
+          "width": 625,
+          "height": 1437
+        },
+        "alphaThreshold": null
+      },
+      "exists": true,
+      "issues": [],
+      "bytes": 2162015,
+      "sha256": "376d3c7fae52e7e58c8f9aaa681b3b0371124775a9397e1b62dedbca713164eb",
+      "sha256MatchesCatalogue": true,
+      "bytesMatchCatalogue": true,
+      "decoded": {
+        "status": "passed",
+        "format": "PNG",
+        "mode": "RGBA",
+        "width": 1024,
+        "height": 1536,
+        "frames": 1,
+        "pixelCount": 1572864,
+        "hasStoredAlphaOrTransparency": true,
+        "alpha": {
+          "minimum": 0,
+          "maximum": 254,
+          "fullyTransparentPixels": 1043707,
+          "partiallyTransparentPixels": 529157,
+          "fullyOpaquePixels": 0,
+          "visiblePixels": 529157,
+          "hasVisiblePixels": true,
+          "hasAnyTransparency": true,
+          "visibleBoundsAlphaGreaterThanZero": {
+            "x": 65,
+            "y": 16,
+            "width": 921,
+            "height": 1443
+          }
+        },
+        "formatMatchesExtension": true,
+        "dimensionsMatchDeclaredSource": true
+      },
+      "unchangedAfterReading": true,
+      "status": "passed"
+    },
+    {
+      "id": "black-suture",
+      "label": "Suture Noire",
+      "category": "crew-sprite",
+      "path": "public/game/homeworld/v84/npcs/healer/07.png",
+      "expectation": {
+        "label": "Dessin individuel de PNJ",
+        "transparencyRequired": true,
+        "opaqueAllowed": false,
+        "reason": "Personnage découpé superposé à la salle ; alpha visible et pixels transparents attendus."
+      },
+      "catalogue": {
+        "sha256": "dc792af1b9c348796e5f65e1d8e1374e201b17d0b5e592809e2ce235bf3742f8",
+        "bytes": 2322347,
+        "sourceWidth": 1024,
+        "sourceHeight": 1536,
+        "alphaBounds": {
+          "x": 164,
+          "y": 11,
+          "width": 757,
+          "height": 1514
+        },
+        "alphaThreshold": null
+      },
+      "exists": true,
+      "issues": [],
+      "bytes": 2322347,
+      "sha256": "dc792af1b9c348796e5f65e1d8e1374e201b17d0b5e592809e2ce235bf3742f8",
+      "sha256MatchesCatalogue": true,
+      "bytesMatchCatalogue": true,
+      "decoded": {
+        "status": "passed",
+        "format": "PNG",
+        "mode": "RGBA",
+        "width": 1024,
+        "height": 1536,
+        "frames": 1,
+        "pixelCount": 1572864,
+        "hasStoredAlphaOrTransparency": true,
+        "alpha": {
+          "minimum": 0,
+          "maximum": 254,
+          "fullyTransparentPixels": 975215,
+          "partiallyTransparentPixels": 597649,
+          "fullyOpaquePixels": 0,
+          "visiblePixels": 597649,
+          "hasVisiblePixels": true,
+          "hasAnyTransparency": true,
+          "visibleBoundsAlphaGreaterThanZero": {
+            "x": 65,
+            "y": 0,
+            "width": 909,
+            "height": 1527
+          }
+        },
+        "formatMatchesExtension": true,
+        "dimensionsMatchDeclaredSource": true
+      },
+      "unchangedAfterReading": true,
+      "status": "passed"
+    },
+    {
+      "id": "threshold-guard",
+      "label": "Garde du Seuil",
+      "category": "crew-sprite",
+      "path": "public/game/homeworld/v84/npcs/guard/10.png",
+      "expectation": {
+        "label": "Dessin individuel de PNJ",
+        "transparencyRequired": true,
+        "opaqueAllowed": false,
+        "reason": "Personnage découpé superposé à la salle ; alpha visible et pixels transparents attendus."
+      },
+      "catalogue": {
+        "sha256": "5be9a2dfc5f4ffb49119ccbff675b96884f5e84684638f2c3a7adbe968f69e8e",
+        "bytes": 2297091,
+        "sourceWidth": 1024,
+        "sourceHeight": 1536,
+        "alphaBounds": {
+          "x": 241,
+          "y": 7,
+          "width": 580,
+          "height": 1520
+        },
+        "alphaThreshold": null
+      },
+      "exists": true,
+      "issues": [],
+      "bytes": 2297091,
+      "sha256": "5be9a2dfc5f4ffb49119ccbff675b96884f5e84684638f2c3a7adbe968f69e8e",
+      "sha256MatchesCatalogue": true,
+      "bytesMatchCatalogue": true,
+      "decoded": {
+        "status": "passed",
+        "format": "PNG",
+        "mode": "RGBA",
+        "width": 1024,
+        "height": 1536,
+        "frames": 1,
+        "pixelCount": 1572864,
+        "hasStoredAlphaOrTransparency": true,
+        "alpha": {
+          "minimum": 0,
+          "maximum": 254,
+          "fullyTransparentPixels": 987559,
+          "partiallyTransparentPixels": 585305,
+          "fullyOpaquePixels": 0,
+          "visiblePixels": 585305,
+          "hasVisiblePixels": true,
+          "hasAnyTransparency": true,
+          "visibleBoundsAlphaGreaterThanZero": {
+            "x": 57,
+            "y": 0,
+            "width": 953,
+            "height": 1529
+          }
+        },
+        "formatMatchesExtension": true,
+        "dimensionsMatchDeclaredSource": true
+      },
+      "unchangedAfterReading": true,
+      "status": "passed"
+    },
+    {
+      "id": "shared-navigation-console",
+      "label": "Console de navigation réemployée",
+      "category": "shared-prop",
+      "path": "public/game/ship-interior/v21/console-navigation.webp",
+      "expectation": {
+        "label": "Prop ou porte partagé",
+        "transparencyRequired": true,
+        "opaqueAllowed": false,
+        "reason": "Objet/porte existant superposé à la salle ; attente identique à celle des autres props."
+      },
+      "catalogue": {
+        "sha256": "64091fd62bc94577fe85fe152bd64dba7cea9933eafc5a148042d1e763adbb2a",
+        "bytes": 126112,
+        "sourceWidth": 1536,
+        "sourceHeight": 1024,
+        "alphaBounds": {
+          "x": 103,
+          "y": 282,
+          "width": 1316,
+          "height": 629
+        },
+        "alphaThreshold": null
+      },
+      "exists": true,
+      "issues": [],
+      "bytes": 126112,
+      "sha256": "64091fd62bc94577fe85fe152bd64dba7cea9933eafc5a148042d1e763adbb2a",
+      "sha256MatchesCatalogue": true,
+      "bytesMatchCatalogue": true,
+      "decoded": {
+        "status": "passed",
+        "format": "WEBP",
+        "mode": "RGBA",
+        "width": 1536,
+        "height": 1024,
+        "frames": 1,
+        "pixelCount": 1572864,
+        "hasStoredAlphaOrTransparency": true,
+        "alpha": {
+          "minimum": 0,
+          "maximum": 255,
+          "fullyTransparentPixels": 1030795,
+          "partiallyTransparentPixels": 0,
+          "fullyOpaquePixels": 542069,
+          "visiblePixels": 542069,
+          "hasVisiblePixels": true,
+          "hasAnyTransparency": true,
+          "visibleBoundsAlphaGreaterThanZero": {
+            "x": 103,
+            "y": 282,
+            "width": 1316,
+            "height": 629
+          }
+        },
+        "formatMatchesExtension": true,
+        "dimensionsMatchDeclaredSource": true
+      },
+      "unchangedAfterReading": true,
+      "status": "passed"
+    },
+    {
+      "id": "shared-archive-terminal",
+      "label": "Terminal de poste réemployé",
+      "category": "shared-prop",
+      "path": "public/game/ship-interior/v22/archive-terminal.webp",
+      "expectation": {
+        "label": "Prop ou porte partagé",
+        "transparencyRequired": true,
+        "opaqueAllowed": false,
+        "reason": "Objet/porte existant superposé à la salle ; attente identique à celle des autres props."
+      },
+      "catalogue": {
+        "sha256": "b05026ffcb7e52fa1b4792cfda820e8ae6e7ed072359ac3e02762bacd5a34ef6",
+        "bytes": 153362,
+        "sourceWidth": 1024,
+        "sourceHeight": 1536,
+        "alphaBounds": {
+          "x": 144,
+          "y": 47,
+          "width": 734,
+          "height": 1428
+        },
+        "alphaThreshold": null
+      },
+      "exists": true,
+      "issues": [],
+      "bytes": 153362,
+      "sha256": "b05026ffcb7e52fa1b4792cfda820e8ae6e7ed072359ac3e02762bacd5a34ef6",
+      "sha256MatchesCatalogue": true,
+      "bytesMatchCatalogue": true,
+      "decoded": {
+        "status": "passed",
+        "format": "WEBP",
+        "mode": "RGBA",
+        "width": 1024,
+        "height": 1536,
+        "frames": 1,
+        "pixelCount": 1572864,
+        "hasStoredAlphaOrTransparency": true,
+        "alpha": {
+          "minimum": 0,
+          "maximum": 255,
+          "fullyTransparentPixels": 802998,
+          "partiallyTransparentPixels": 0,
+          "fullyOpaquePixels": 769866,
+          "visiblePixels": 769866,
+          "hasVisiblePixels": true,
+          "hasAnyTransparency": true,
+          "visibleBoundsAlphaGreaterThanZero": {
+            "x": 144,
+            "y": 47,
+            "width": 734,
+            "height": 1428
+          }
+        },
+        "formatMatchesExtension": true,
+        "dimensionsMatchDeclaredSource": true
+      },
+      "unchangedAfterReading": true,
+      "status": "passed"
+    },
+    {
+      "id": "shared-armory-rack",
+      "label": "Râtelier réemployé",
+      "category": "shared-prop",
+      "path": "public/game/ship-interior/v22/armory-rack.webp",
+      "expectation": {
+        "label": "Prop ou porte partagé",
+        "transparencyRequired": true,
+        "opaqueAllowed": false,
+        "reason": "Objet/porte existant superposé à la salle ; attente identique à celle des autres props."
+      },
+      "catalogue": {
+        "sha256": "b4a7f41b836e3d8db98311e87bce348b54b4831024d84141aab41dbc0e295d2f",
+        "bytes": 169014,
+        "sourceWidth": 1536,
+        "sourceHeight": 1024,
+        "alphaBounds": {
+          "x": 38,
+          "y": 137,
+          "width": 1459,
+          "height": 734
+        },
+        "alphaThreshold": null
+      },
+      "exists": true,
+      "issues": [],
+      "bytes": 169014,
+      "sha256": "b4a7f41b836e3d8db98311e87bce348b54b4831024d84141aab41dbc0e295d2f",
+      "sha256MatchesCatalogue": true,
+      "bytesMatchCatalogue": true,
+      "decoded": {
+        "status": "passed",
+        "format": "WEBP",
+        "mode": "RGBA",
+        "width": 1536,
+        "height": 1024,
+        "frames": 1,
+        "pixelCount": 1572864,
+        "hasStoredAlphaOrTransparency": true,
+        "alpha": {
+          "minimum": 0,
+          "maximum": 255,
+          "fullyTransparentPixels": 518073,
+          "partiallyTransparentPixels": 0,
+          "fullyOpaquePixels": 1054791,
+          "visiblePixels": 1054791,
+          "hasVisiblePixels": true,
+          "hasAnyTransparency": true,
+          "visibleBoundsAlphaGreaterThanZero": {
+            "x": 38,
+            "y": 137,
+            "width": 1459,
+            "height": 734
+          }
+        },
+        "formatMatchesExtension": true,
+        "dimensionsMatchDeclaredSource": true
+      },
+      "unchangedAfterReading": true,
+      "status": "passed"
+    },
+    {
+      "id": "shared-door-frame",
+      "label": "Cadre de porte",
+      "category": "shared-prop",
+      "path": "public/game/ship-interior/v21/door-frame.webp",
+      "expectation": {
+        "label": "Prop ou porte partagé",
+        "transparencyRequired": true,
+        "opaqueAllowed": false,
+        "reason": "Objet/porte existant superposé à la salle ; attente identique à celle des autres props."
+      },
+      "catalogue": {
+        "sha256": "7ad88ed29fb78b84cab555bc110793ed600e0024249410937903361a183934ab",
+        "bytes": 72468,
+        "sourceWidth": 1023,
+        "sourceHeight": 1537,
+        "alphaBounds": {
+          "x": 97,
+          "y": 41,
+          "width": 827,
+          "height": 1450
+        },
+        "alphaThreshold": null
+      },
+      "exists": true,
+      "issues": [],
+      "bytes": 72468,
+      "sha256": "7ad88ed29fb78b84cab555bc110793ed600e0024249410937903361a183934ab",
+      "sha256MatchesCatalogue": true,
+      "bytesMatchCatalogue": true,
+      "decoded": {
+        "status": "passed",
+        "format": "WEBP",
+        "mode": "RGBA",
+        "width": 1023,
+        "height": 1537,
+        "frames": 1,
+        "pixelCount": 1572351,
+        "hasStoredAlphaOrTransparency": true,
+        "alpha": {
+          "minimum": 0,
+          "maximum": 255,
+          "fullyTransparentPixels": 1113673,
+          "partiallyTransparentPixels": 0,
+          "fullyOpaquePixels": 458678,
+          "visiblePixels": 458678,
+          "hasVisiblePixels": true,
+          "hasAnyTransparency": true,
+          "visibleBoundsAlphaGreaterThanZero": {
+            "x": 97,
+            "y": 41,
+            "width": 827,
+            "height": 1450
+          }
+        },
+        "formatMatchesExtension": true,
+        "dimensionsMatchDeclaredSource": true
+      },
+      "unchangedAfterReading": true,
+      "status": "passed"
+    },
+    {
+      "id": "shared-door-leaf",
+      "label": "Battant de porte",
+      "category": "shared-prop",
+      "path": "public/game/ship-interior/v21/door-leaf.webp",
+      "expectation": {
+        "label": "Prop ou porte partagé",
+        "transparencyRequired": true,
+        "opaqueAllowed": false,
+        "reason": "Objet/porte existant superposé à la salle ; attente identique à celle des autres props."
+      },
+      "catalogue": {
+        "sha256": "a8aadccce21c3109be1b306a02fa19a6fb2216313e51aa9521c662e22c80e0b1",
+        "bytes": 122512,
+        "sourceWidth": 941,
+        "sourceHeight": 1672,
+        "alphaBounds": {
+          "x": 201,
+          "y": 30,
+          "width": 537,
+          "height": 1616
+        },
+        "alphaThreshold": null
+      },
+      "exists": true,
+      "issues": [],
+      "bytes": 122512,
+      "sha256": "a8aadccce21c3109be1b306a02fa19a6fb2216313e51aa9521c662e22c80e0b1",
+      "sha256MatchesCatalogue": true,
+      "bytesMatchCatalogue": true,
+      "decoded": {
+        "status": "passed",
+        "format": "WEBP",
+        "mode": "RGBA",
+        "width": 941,
+        "height": 1672,
+        "frames": 1,
+        "pixelCount": 1573352,
+        "hasStoredAlphaOrTransparency": true,
+        "alpha": {
+          "minimum": 0,
+          "maximum": 255,
+          "fullyTransparentPixels": 710678,
+          "partiallyTransparentPixels": 0,
+          "fullyOpaquePixels": 862674,
+          "visiblePixels": 862674,
+          "hasVisiblePixels": true,
+          "hasAnyTransparency": true,
+          "visibleBoundsAlphaGreaterThanZero": {
+            "x": 201,
+            "y": 30,
+            "width": 537,
+            "height": 1616
+          }
+        },
+        "formatMatchesExtension": true,
+        "dimensionsMatchDeclaredSource": true
+      },
+      "unchangedAfterReading": true,
+      "status": "passed"
+    },
+    {
+      "id": "shared-mothership",
+      "label": "Vaisseau mère AVP",
+      "category": "ship-profile",
+      "path": "public/game/ships/v14/avp-predator-mothership.webp",
+      "expectation": {
+        "label": "Profil de vaisseau réemployé",
+        "transparencyRequired": false,
+        "opaqueAllowed": true,
+        "reason": "Profil existant : transparence mesurée, sans ajouter de nouvelle contrainte de production au cadrage."
+      },
+      "catalogue": {
+        "sha256": "7bd67240d2ef6f4df2717219420aeea9083a1a5395e994c98cb0bcc4c824c907",
+        "bytes": 89754,
+        "sourceWidth": null,
+        "sourceHeight": null,
+        "alphaBounds": null,
+        "alphaThreshold": null
+      },
+      "exists": true,
+      "issues": [],
+      "bytes": 89754,
+      "sha256": "7bd67240d2ef6f4df2717219420aeea9083a1a5395e994c98cb0bcc4c824c907",
+      "sha256MatchesCatalogue": true,
+      "bytesMatchCatalogue": true,
+      "decoded": {
+        "status": "passed",
+        "format": "WEBP",
+        "mode": "RGBA",
+        "width": 1774,
+        "height": 887,
+        "frames": 1,
+        "pixelCount": 1573538,
+        "hasStoredAlphaOrTransparency": true,
+        "alpha": {
+          "minimum": 0,
+          "maximum": 255,
+          "fullyTransparentPixels": 1103199,
+          "partiallyTransparentPixels": 5513,
+          "fullyOpaquePixels": 464826,
+          "visiblePixels": 470339,
+          "hasVisiblePixels": true,
+          "hasAnyTransparency": true,
+          "visibleBoundsAlphaGreaterThanZero": {
+            "x": 62,
+            "y": 221,
+            "width": 1632,
+            "height": 501
+          }
+        },
+        "formatMatchesExtension": true,
+        "dimensionsMatchDeclaredSource": null
+      },
+      "unchangedAfterReading": true,
+      "status": "passed"
+    },
+    {
+      "id": "shared-personal-classic",
+      "label": "Coque personnelle classique",
+      "category": "ship-profile",
+      "path": "public/game/ships/v12/classic-predator-spaceship.webp",
+      "expectation": {
+        "label": "Profil de vaisseau réemployé",
+        "transparencyRequired": false,
+        "opaqueAllowed": true,
+        "reason": "Profil existant : transparence mesurée, sans ajouter de nouvelle contrainte de production au cadrage."
+      },
+      "catalogue": {
+        "sha256": "bb374f95f28dad53ce8ed745dde6f6a18c4f9038e0181b1714eec2f6c5991f7a",
+        "bytes": 154650,
+        "sourceWidth": null,
+        "sourceHeight": null,
+        "alphaBounds": null,
+        "alphaThreshold": null
+      },
+      "exists": true,
+      "issues": [],
+      "bytes": 154650,
+      "sha256": "bb374f95f28dad53ce8ed745dde6f6a18c4f9038e0181b1714eec2f6c5991f7a",
+      "sha256MatchesCatalogue": true,
+      "bytesMatchCatalogue": true,
+      "decoded": {
+        "status": "passed",
+        "format": "WEBP",
+        "mode": "RGBA",
+        "width": 1536,
+        "height": 1024,
+        "frames": 1,
+        "pixelCount": 1572864,
+        "hasStoredAlphaOrTransparency": true,
+        "alpha": {
+          "minimum": 0,
+          "maximum": 255,
+          "fullyTransparentPixels": 1112067,
+          "partiallyTransparentPixels": 17237,
+          "fullyOpaquePixels": 443560,
+          "visiblePixels": 460797,
+          "hasVisiblePixels": true,
+          "hasAnyTransparency": true,
+          "visibleBoundsAlphaGreaterThanZero": {
+            "x": 126,
+            "y": 213,
+            "width": 1287,
+            "height": 656
+          }
+        },
+        "formatMatchesExtension": true,
+        "dimensionsMatchDeclaredSource": null
+      },
+      "unchangedAfterReading": true,
+      "status": "passed"
+    }
+  ],
+  "limits": [
+    "No human artistic or lore 1:1 approval is claimed.",
+    "A non-empty alpha mask and transparency do not prove clean edges, correct silhouette, scale, anatomy or visual fidelity.",
+    "No browser rendering, interaction, sound, animation, collision, rights or licence qualification is inferred from this decode audit.",
+    "Only the 28 catalogue image files are covered. Code SVG projections and future resources are outside this image-file audit.",
+    "An opaque room background is accepted; absence of a stored alpha channel is not reported as a defect for that category."
+  ],
+  "humanArtReview": {
+    "status": "pending",
+    "unchangedByThisAudit": true
+  }
+}

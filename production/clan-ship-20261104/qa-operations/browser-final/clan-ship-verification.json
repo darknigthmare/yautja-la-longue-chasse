@@ -1,0 +1,97 @@
+{
+  "sourceCommit": "1137faaf80051b37fa2205af73414bed099024a9",
+  "runId": 41972172619,
+  "jobId": 127062712758,
+  "artifactId": 13390568123,
+  "runUrl": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41972172619",
+  "artifactSha256": "ff135d1179628c401439eeef0ed34b4f72f65b8779021b0bff826d0584e122a1",
+  "domainTests": {
+    "tests": 277,
+    "pass": 277,
+    "fail": 0,
+    "cancelled": 0,
+    "skipped": 0
+  },
+  "reports": {
+    "qa-clan-ship": {
+      "path": "qa-clan-ship/report.json",
+      "sha256": "b29e5ab813aa0d8497d2744d9fa476b92dd55c28ef8cfee0c8852a7a6a8db991",
+      "passed": true,
+      "checks": 22,
+      "errors": 0,
+      "missingAssets": 0,
+      "workingTreeDirty": false,
+      "screenshots": 11,
+      "walkingSamples": 2522,
+      "walkingRooms": 7
+    },
+    "qa-clan-ship-operations": {
+      "path": "qa-clan-ship-operations/report.json",
+      "sha256": "fbdb33e632c462803739c244da7db9e07d1df1b2a06249dedeecab5c7cc78f11",
+      "passed": true,
+      "checks": 27,
+      "errors": 0,
+      "missingAssets": 0,
+      "workingTreeDirty": false,
+      "screenshots": 23,
+      "walkingSamples": 4862,
+      "walkingRooms": 7
+    }
+  },
+  "commands": {
+    "count": 49,
+    "byContext": {
+      "adult-aboard": 44,
+      "six-crew-fixture": 5
+    },
+    "types": [
+      "board",
+      "brace",
+      "disrupt",
+      "extract",
+      "fire",
+      "manoeuvre",
+      "scan",
+      "withdraw"
+    ],
+    "typesExecuted": 8,
+    "typesAvailable": 9
+  },
+  "visualReview": {
+    "reviewedBy": "space_encounters",
+    "captures": [
+      "02-council-massive-table.png",
+      "04-escort-turn-two.png",
+      "05-escort-write-refused.png",
+      "13-earned-crew-mobile-390.png",
+      "14-six-crew-escort-mobile-390.png",
+      "15-tactical-controls-mobile-320.png",
+      "16-mobile-escort-reward.png",
+      "17-fixture-circle-confirmed-mobile-320.png"
+    ],
+    "assessment": "Desktop council, command forecasts, storage refusal, recruited crew, mobile projection, 320px controls and circle confirmation are legible. No horizontal overflow observed in inspected views.",
+    "captureLimitation": "16-mobile-escort-reward.png shows the catalogue at its retained scroll position; the victory, turn 5 and unique +45 reward are proven by browser check 24 and the command log."
+  },
+  "limits": [
+    "The primary browser context starts from a disclosed adult campaign already aboard; it earns the welcome, mandate, four interior contracts and four recruits through UI.",
+    "The six-crew context is an isolated disclosed fixture prepared by production reducers with two synthetic field-hunt receipts. These hunts are not browser-played.",
+    "Eight of nine order types are exercised in the browser. Recharge is model-tested but not clicked in this browser path.",
+    "The browser defeat path is tactical timeout at turn 16. It is not a hull-exhaustion defeat proof."
+  ],
+  "fixtures": [
+    {
+      "id": "adult-aboard",
+      "filename": "initial-adult-aboard.json",
+      "disclosure": "Default adult campaign with boarding prepared by the docking reducer. No operations, rewards, contracts or crew are pre-completed.",
+      "ownerCreatedAt": "2026-11-05T09:00:00.000Z",
+      "sha256": "f12f44a490dae1024f2f4921cfa1db76af056cc37fccc291c4e165b914f9c403"
+    },
+    {
+      "id": "six-crew-fixture",
+      "filename": "initial-six-crew-fixture.json",
+      "disclosure": "Synthetic fixture prepared by production reducers: onboarding, four internal contracts, jungle/ice field results and six recruits. Those field hunts are NOT played by this browser recipe. No spatial victory or circle recognition is seeded.",
+      "ownerCreatedAt": "2026-11-05T10:00:00.000Z",
+      "sha256": "d9ff3f8d5e93001f0e931e6e95384dd6fc90723109040bc99da8193f78bcaf93"
+    }
+  ]
+}

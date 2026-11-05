@@ -1,0 +1,145 @@
+{
+  "date": "2026-11-05",
+  "remoteBase": "9653e2e287e522ebf8867209a594033f8c1fb89b",
+  "localBase": "f623fefeb4987d725c369da646af0e5b9753f47f",
+  "release": "1.4.0",
+  "sourceFiles": [
+    {
+      "path": "app/dev/session.tsx",
+      "sha256": "ecda890cbd07b3ba7b80b55cbfcd5877252e6b3802225261ab4fbefae7020623"
+    },
+    {
+      "path": "app/game/ClanShipHub.module.css",
+      "sha256": "dce81e3bc9b5eca6c1c74798099fd1bd26567de2974a2aad169c38ee5229d89c"
+    },
+    {
+      "path": "app/game/ClanShipHub.tsx",
+      "sha256": "d77dd3fb94577ee0ad2e38fe14bb0af83714152bd3f2418b0777ffa08dda672b"
+    },
+    {
+      "path": "app/game/ClanShipInterior.module.css",
+      "sha256": "be3baff226c7e8575f5eef6a66e81d86a4a4180beb92bee9385d893e2cd3a7bd"
+    },
+    {
+      "path": "app/game/ClanShipInterior.tsx",
+      "sha256": "be082652a8c60f1b8dc89e47542c81903cef060629748c90570f9239b4c83711"
+    },
+    {
+      "path": "app/game/ClanShipOperationsPanel.module.css",
+      "sha256": "2f21cf66851e43f490033e077b2d3f714255c6d803de5c23c565ab3a8013872d"
+    },
+    {
+      "path": "app/game/ClanShipOperationsPanel.tsx",
+      "sha256": "eed9111fe4c3088f7b12a18876f064bca3bbe517575b620c9e8c3807db79c34b"
+    },
+    {
+      "path": "app/game/ClanShipSpaceEncounter.module.css",
+      "sha256": "01295ca35430852d9feb1394c70bb7dd9c9a3e7a4b4457bc757d3c49d5018274"
+    },
+    {
+      "path": "app/game/ClanShipSpaceEncounter.tsx",
+      "sha256": "1ea3ab789ad2045bb402994d9cb51e019a83247eb4dbd15f0fe6cf903c97c8f6"
+    },
+    {
+      "path": "app/game/GameClient.tsx",
+      "sha256": "73eef05f5d9ec1cadfa289b94f18ba06a1765beb82469d746ca5e825adb2712c"
+    },
+    {
+      "path": "app/game/buildInfo.ts",
+      "sha256": "600fbc6a87e43e9344edabedf3b5885d7226f7d9b1365e54c596e3ef82195c91"
+    },
+    {
+      "path": "app/game/clanShipCrew.ts",
+      "sha256": "4ec420a7d38b4c58862937cc6ec57f5ea4d171b458b67d16f5420cb4dbadb2f0"
+    },
+    {
+      "path": "app/game/save.ts",
+      "sha256": "78c7c745a8ceb7151889563cd54a2d1246e5fbd3bbca7131804a64dc13627c20"
+    },
+    {
+      "path": "app/game/systems/clanShipInterior.ts",
+      "sha256": "2cfab1522c07cfb171527f3f3e2257dbd44be9bb9c50fbcdbff8df55ad44d93d"
+    },
+    {
+      "path": "app/game/systems/clanShipOperations.ts",
+      "sha256": "4232c2eba3d7c57f79ff0835161ea8c8bae3608a815e49fcbf6131df69a8ae2c"
+    },
+    {
+      "path": "app/game/systems/clanShipSpaceEncounter.ts",
+      "sha256": "fc83b432bf63fb6ce006ae5b6460c67b389ec4ce113c72d527c9e749a6b0f3a0"
+    },
+    {
+      "path": "app/game/types.ts",
+      "sha256": "dd82b8db49fa7ca7e31d8d0a414a993272d436cbbf5d84564eaa3e4c17bdfe67"
+    }
+  ],
+  "runtimeInventory": {
+    "path": "docs/qa/current-integration-20261103/runtime-inputs.json",
+    "sha256": "a25c000689257c36258adf2014463e592b7df4bdd8c91a43c66dfd138b7cd161",
+    "files": 2158,
+    "sourceBytes": 1092273564,
+    "documentBytes": 401252
+  },
+  "checks": [
+    {
+      "name": "Clan Ship, campaign, archive and dev regression suite",
+      "status": "passed",
+      "tests": 296,
+      "failed": 0,
+      "skipped": 0,
+      "log": "local-tests.log"
+    },
+    {
+      "name": "Strict lint of changed runtime, recipes and tests",
+      "status": "passed",
+      "warnings": 0,
+      "log": "local-lint.log"
+    },
+    {
+      "name": "npm run build:production",
+      "status": "passed",
+      "log": "local-production-build.log",
+      "limits": [
+        "Native-origin and static-output stages are specific to the exact Vercel build root and were skipped by their existing guards.",
+        "This build is not a deployed browser test."
+      ]
+    },
+    {
+      "name": "Current runtime inventory --check",
+      "status": "passed"
+    }
+  ],
+  "browser": {
+    "status": "pending",
+    "recipe": "scripts/qa-clan-ship-operations.mjs",
+    "expectedChecks": 27,
+    "limits": [
+      "Initial seeds and the six-crew synthetic field proofs are declared by the recipe.",
+      "Local Chromium could not launch; no local browser execution is claimed."
+    ]
+  },
+  "artReview": {
+    "status": "pending",
+    "limits": [
+      "No human 1:1 approval is claimed for reused artwork, enlarged table or original crew."
+    ]
+  },
+  "logDigests": {
+    "local-tests.log": "db34d6e3565a9ed6d240b90d0eed83d6fb2c2d8f98da4c5cb1afa47e26692027",
+    "local-lint.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "local-production-build.log": "6e8f30ba93d0a25c9ea555512a390779e52d6ac37641e4a5884b9e509ae0bf7d"
+  },
+  "logNormalization": {
+    "local-production-build.log": {
+      "sourceSha256": "c934188f1137bb406d1bf778e0fe388a10b0633d93383ced43891bf2c726c685",
+      "change": "Terminal carriage returns and trailing whitespace removed; all lines and result content retained."
+    }
+  },
+  "qualifiedRemoteCommit": "f38446f4c049e2f0eb1878de881793398f3f4bbb",
+  "qualifiedTree": "e8324fd15adaf4979ed07e64826fba685fc77fb7",
+  "subsequentSourceChange": {
+    "path": "app/game/systems/clanShipOperations.ts",
+    "change": "Contract label corrected from Les traces d’Osiris to Les traces d’Oseris-IV to match the native planet name; no rule, ID, save or reward change.",
+    "qualification": "The recorded local run retains the original source hashes. The following CI run must qualify the corrected commit."
+  }
+}

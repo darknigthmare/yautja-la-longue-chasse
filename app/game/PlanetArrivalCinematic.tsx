@@ -2,7 +2,7 @@
 
 /* eslint-disable @next/next/no-img-element -- scene layers use registered local raster art */
 
-import { memo, useCallback, useEffect, useMemo, useRef, useState, type CSSProperties, type KeyboardEvent } from 'react';
+import { memo, useCallback, useEffect, useId, useMemo, useRef, useState, type CSSProperties, type KeyboardEvent } from 'react';
 import HunterRigPreview from './HunterRigPreview';
 import { HUNTER_RIG_CANVAS } from './hunterRig';
 import { shipForId } from './shipCatalogue';
@@ -11,8 +11,9 @@ import type { HunterAppearance, Loadout } from './types';
 import type { SceneAudioPort } from './systems/sceneAudio';
 import { useMenuGamepad } from './useMenuGamepad';
 import { PlanetArrivalAudio } from './systems/planetArrivalAudio';
-import { ARRIVAL_SPRITES, carrierArtForShip, planetArtForDestination } from './systems/planetArrivalArt';
+import { ARRIVAL_COMPLETION_SPRITES, ARRIVAL_SPRITES, arrivalImpactArtForBiome, carrierArtForShip, planetArtForDestination } from './systems/planetArrivalArt';
 import { ARRIVAL_STAGE, arrivalCarrierPose, arrivalFlightPose, arrivalGroundCamera, attachmentToStage, fitArrivalStage } from './systems/planetArrivalSpatial';
+import { arrivalEffectsFrame, arrivalHunterEgress, arrivalImpactDebris, arrivalLightGradient, arrivalLighting, arrivalRgba } from './systems/planetArrivalPresentation';
 import {
   PLANET_ARRIVAL_CONTACT_PROGRESS, PLANET_ARRIVAL_DURATION_MS, PLANET_ARRIVAL_SHOTS, advancePlanetArrival,
   completePlanetArrivalHandoff, failPlanetArrivalHandoff, pausePlanetArrival,
@@ -75,6 +76,7 @@ export default function PlanetArrivalCinematic({ state, appearance, loadout, gau
   const [systemReducedMotion, setSystemReducedMotion] = useState(false);
   const [pauseReason, setPauseReason] = useState('');
   const [stageFit, setStageFit] = useState(() => fitArrivalStage(0, 0));
+  const hunterPortalId = `arrival-portal-${useId().replace(/[^a-zA-Z0-9_-]/g, '')}`;
   const callbackRef = useRef({ onCheckpoint, onHandoff, onExit, suspended, checkpointBlocked });
   const sources = useMemo(() => planetArrivalAssets(state), [state]);
   const sourceKey = sources ? Object.values(sources).join('|') : '';
@@ -114,8 +116,8 @@ export default function PlanetArrivalCinematic({ state, appearance, loadout, gau
   }, [createSceneAudio]);
 
   useEffect(() => {
-    audioDirectorRef.current?.sync(timeline, !loading && !suspended && !checkpointBlocked && !document.hidden);
-  }, [createSceneAudio, timeline, loading, suspended, checkpointBlocked]);
+    audioDirectorRef.current?.sync(timeline, !loading && !suspended && !checkpointBlocked && !document.hidden, motionReduced);
+  }, [createSceneAudio, timeline, loading, suspended, checkpointBlocked, motionReduced]);
 
   const publish = useCallback((next: PlanetArrivalState) => {
     timelineRef.current = next;
@@ -351,21 +353,57 @@ export default function PlanetArrivalCinematic({ state, appearance, loadout, gau
   const dustOpacity = motionReduced ? .16 : clamp01(impactAge / 100) * clamp01(1 - impactAge / 2_600);
   const dustScale = motionReduced ? 1 : .65 + clamp01(impactAge / 1_800) * .85;
   const doorOpen = shot.id === 'egress' ? motionReduced ? 1 : smooth(p / .28) : 0;
-  // The hunter appears only once the physical hinged panel has cleared the exit.
-  const egress = shot.id === 'egress' ? smooth((p - .30) / .55) : 0;
-  const hunterOpacity = shot.id === 'egress' ? motionReduced ? 1 : clamp01((p - .30) / .10) : 0;
   const cameraReveal = motionReduced ? 1 : shot.id === 'egress' ? smooth((p - .55) / .45) : 0;
-  const hunterCenterX = mix(landing.capsuleX + 12, landing.spawnX + landing.hunterWidth / 2, egress);
   const hunterWidth = landing.hunterHeight * HUNTER_RIG_CANVAS.width / HUNTER_RIG_CANVAS.height;
   const groundCamera = arrivalGroundCamera(cameraReveal, landing.floorY);
   const capsuleHeight = landing.capsuleWidth * ARRIVAL_SPRITES.podGround.height / ARRIVAL_SPRITES.podGround.width;
+  const capsuleOrigin = {
+    x: landing.capsuleX - ARRIVAL_SPRITES.podGround.foot.x * landing.capsuleWidth,
+    y: landing.floorY - ARRIVAL_SPRITES.podGround.foot.y * capsuleHeight,
+  };
+  const threshold = {
+    x: capsuleOrigin.x + ARRIVAL_SPRITES.podGround.threshold.x * landing.capsuleWidth,
+    y: capsuleOrigin.y + ARRIVAL_SPRITES.podGround.threshold.y * capsuleHeight,
+  };
+  const hunterPose = arrivalHunterEgress(timeline.elapsedMs, {
+    threshold, floorY: landing.floorY, clearanceX: landing.capsuleX + landing.capsuleWidth * .42,
+    destinationX: landing.spawnX + landing.hunterWidth / 2,
+  }, motionReduced);
+  const hunterGroundY = landing.hunterHeight * HUNTER_RIG_CANVAS.groundY / HUNTER_RIG_CANVAS.height;
+  const hunterPortalActive = hunterPose.portalReveal < 1 && hunterPose.opacity > 0;
+  const doorwayClip = ARRIVAL_SPRITES.podGround.doorway.map(point => {
+    const x = capsuleOrigin.x + point.x * landing.capsuleWidth;
+    const y = capsuleOrigin.y + point.y * capsuleHeight;
+    return `${(x - hunterPose.x) / hunterPose.scale + hunterWidth / 2},${(y - hunterPose.y) / hunterPose.scale + hunterGroundY}`;
+  }).join(' ');
   const doorWidth = landing.capsuleWidth * ARRIVAL_SPRITES.podDoor.widthInGround;
   const doorHeight = doorWidth * ARRIVAL_SPRITES.podDoor.height / ARRIVAL_SPRITES.podDoor.width;
   const titleOpacity = shot.id === 'title' ? motionReduced ? 1 : Math.min(clamp01(p * 4), clamp01((1 - p) * 5)) : 0;
   const sceneStyle = { '--arrival-accent': destination?.mission.palette.accent ?? '#d4ad73' } as CSSProperties;
+  const lighting = arrivalLighting(state.biomeId, shot.id, timeline.elapsedMs, motionReduced);
+  const effectsFrame = arrivalEffectsFrame(timeline.elapsedMs, motionReduced);
+  const impactDebris = arrivalImpactDebris(effectsFrame.impactAge, state.seed, motionReduced);
+  const impactArt = arrivalImpactArtForBiome(state.biomeId);
 
   const layer = (path: string | undefined, className: string, style?: CSSProperties, alt = '') => path && !failedAssets.includes(path)
     ? <img src={path} className={className} style={style} alt={alt} draggable={false} onError={() => assetFailed(path)} /> : null;
+
+  const litLayer = (path: string | undefined, className: string, role: string, rotation = 0, mirrored = false, fillAngle = 32) => {
+    if (!path || failedAssets.includes(path)) return null;
+    const faceLighting = role === 'hatch-interior'
+      ? { ...lighting, keyStrength: lighting.keyStrength * .35, fillStrength: lighting.fillStrength * .65 } : lighting;
+    const light = arrivalLightGradient(faceLighting, rotation, mirrored, fillAngle,
+      role === 'flight-pod' ? ARRIVAL_SPRITES.podFlight.nose : undefined);
+    return <div className={`${styles.litSprite} ${className}`} data-arrival-lit={role}
+      data-arrival-light-source={path} data-arrival-light-environment={lighting.environment}
+      data-arrival-light-world-angle={lighting.keyAngle} data-arrival-light-local-angle={light.localKeyAngle}
+      data-arrival-light-rotation={rotation} data-arrival-light-mirrored={mirrored}>
+      {layer(path, styles.fullAsset, { filter: `brightness(${lighting.brightness * (role === 'hatch' ? 1 - doorOpen * .16 : role === 'hatch-interior' ? .7 : 1)}) saturate(.88)` })}
+      <div className={styles.surfaceLight} data-arrival-light-mask="true" style={{
+        background: light.background, maskImage: `url("${path}")`, WebkitMaskImage: `url("${path}")`,
+      }} />
+    </div>;
+  };
 
   const anchor = (name: string, x = 0, y = 0) => <span className={styles.spatialAnchor} data-arrival-anchor={name} style={{ left: x, top: y }} />;
   const effect = (kind: 'releaseJet' | 'heatTrail', source: 'pod-tail' | 'pod-nose', width: number, opacity: number) => {
@@ -375,7 +413,7 @@ export default function PlanetArrivalCinematic({ state, appearance, loadout, gau
     const artHeading = angleBetween(art.origin, art.end, art.width, art.height);
     return <div className={styles.effectSocket} data-arrival-vfx-source={source}
       style={{ left: socket.x * FLIGHT_WIDTH, top: socket.y * flightHeight, opacity }}>
-      <div className={styles.effectRotation} style={{ transform: `rotate(${180 + flightHeading - artHeading}deg)` }}>
+      <div className={styles.effectRotation} style={{ transform: `rotate(${180 + flightHeading - artHeading}deg) scaleX(${kind === 'heatTrail' && !motionReduced ? 1 + .045 * Math.sin(timeline.elapsedMs / 170) : 1})` }}>
         <div className={styles.effectSprite} style={{ width, height, left: -art.origin.x * width, top: -art.origin.y * height }}>
           {layer(sources?.[kind], styles.fullAsset)}
           {anchor(kind === 'heatTrail' ? 'trail-origin' : 'release-origin', art.origin.x * width, art.origin.y * height)}
@@ -400,7 +438,9 @@ export default function PlanetArrivalCinematic({ state, appearance, loadout, gau
         data-arrival-scene="true" data-arrival-planet={state.destinationId} data-arrival-ship={state.personalShipId} data-arrival-contact={surfaceContact}>
         <div className={styles.stage} data-arrival-stage="true" aria-hidden="true"
           style={{ width: ARRIVAL_STAGE.width, height: ARRIVAL_STAGE.height, transform: `translate(${stageFit.left}px, ${stageFit.top}px) scale(${stageFit.scale})` }}>
-        <div className={styles.spaceBackdrop} aria-hidden="true">{layer(sources?.space, styles.cover, { opacity: .85 })}</div>
+        <div className={styles.spaceBackdrop} aria-hidden="true">{layer(sources?.space, styles.cover, { opacity: .85,
+          transform: motionReduced ? 'none' : `translate(${-Math.min(timeline.elapsedMs, 41_000) / 4_000}px, ${Math.min(timeline.elapsedMs, 41_000) / 8_000}px) scale(1.04)` })}</div>
+        {!landed && !atmospheric && <div className={styles.orbitalLight} />}
         {planetVisible && <div className={styles.planet} aria-hidden="true" style={{ left: motionReduced ? '70%' : percent(shot.id === 'descent' ? mix(73, 68, p) : 73), top: motionReduced ? '31%' : percent(shot.id === 'descent' ? mix(12, 3, p) : 12), width: motionReduced ? '55%' : percent(shot.id === 'descent' ? mix(56, 145, smooth(p)) : 56),
           aspectRatio: planetArt ? planetArt.radiusX * planetArt.width / (planetArt.radiusY * planetArt.height) : 1 }}>
           {planetArt && sources?.planet && !failedAssets.includes(sources.planet) ? <svg className={styles.planetImage} data-arrival-planet-image={sources.planet}
@@ -412,20 +452,23 @@ export default function PlanetArrivalCinematic({ state, appearance, loadout, gau
         {carrierVisible && <div className={styles.carrier} data-arrival-carrier="true" style={{ left: carrierPose.x, top: carrierPose.y, width: CARRIER_WIDTH, height: carrierHeight,
           transform: `translate(-50%,-50%) rotate(${carrierRotation}deg) scale(${carrierPose.scale})` }}>
           <div className={styles.carrierArt} style={{ transform: `scaleX(${carrierFacing})` }}>
-            {layer(sources?.carrier, styles.fullAsset)}
+            {litLayer(sources?.carrier, styles.fullAsset, 'carrier', carrierRotation, carrierFacing < 0,
+              Math.atan2(ARRIVAL_STAGE.height * .12 - carrierPose.y, ARRIVAL_STAGE.width * .73 - carrierPose.x) * 180 / Math.PI)}
             {anchor('carrier-nose', carrierArt.nose.x * CARRIER_WIDTH, carrierArt.nose.y * carrierHeight)}
             {anchor('carrier-tail', carrierArt.tail.x * CARRIER_WIDTH, carrierArt.tail.y * carrierHeight)}
             {anchor('carrier-release', carrierArt.release.x * CARRIER_WIDTH, carrierArt.release.y * carrierHeight)}
           </div>
         </div>}
-        {atmospheric && <div className={styles.atmosphere}>
+        {atmospheric && <div className={styles.atmosphere} style={{ backgroundColor: '#101923',
+          backgroundImage: `linear-gradient(170deg,${arrivalRgba(lighting.haze, .5)},${arrivalRgba(lighting.fill, .18)} 65%,#060c12)` }}>
           {layer(sources?.clouds, styles.atmosphereClouds, { transform: motionReduced ? 'none' : `translate(${-p * 42}px, ${-p * 30}px) scale(1.15)` })}
+          <div className={styles.atmosphereTint} style={{ background: `linear-gradient(180deg,${arrivalRgba(lighting.haze, .35)},${arrivalRgba(lighting.fill, .25)})` }} />
         </div>}
         {flightVisible && <div className={styles.flyingPod} data-arrival-flight-pod="true" style={{ left: flightPose.x, top: flightPose.y, width: FLIGHT_WIDTH, height: flightHeight,
           zIndex: shot.id === 'release' ? 3 : 5, transform: `translate(-50%,-50%) rotate(${flightPose.angle - flightHeading}deg) scale(${flightPose.scale})` }}>
           {shot.id === 'release' && !motionReduced && effect('releaseJet', 'pod-tail', 180, clamp01(1 - p / .24))}
           {atmospheric && effect('heatTrail', 'pod-nose', 310, motionReduced ? .65 : .68 + .18 * Math.sin(p * Math.PI))}
-          {layer(sources?.podFlight, styles.podFlightImage)}
+          {litLayer(sources?.podFlight, styles.podFlightImage, 'flight-pod', flightPose.angle - flightHeading)}
           {anchor('pod-nose', ARRIVAL_SPRITES.podFlight.nose.x * FLIGHT_WIDTH, ARRIVAL_SPRITES.podFlight.nose.y * flightHeight)}
           {anchor('pod-tail', ARRIVAL_SPRITES.podFlight.tail.x * FLIGHT_WIDTH, ARRIVAL_SPRITES.podFlight.tail.y * flightHeight)}
         </div>}
@@ -446,13 +489,22 @@ export default function PlanetArrivalCinematic({ state, appearance, loadout, gau
           <div className={styles.groundPlane} style={{ top: landing.floorY }} />
           {anchor('ground-reference', 0, landing.floorY)}
           {anchor('ground-capsule-reference', landing.capsuleX, landing.floorY)}
+          {anchor('capsule-threshold', threshold.x, threshold.y)}
+          {anchor('hunter-support', hunterPose.x, hunterPose.y)}
           <div className={styles.groundActors}>
+          {landed && <div className={styles.floorLight} data-arrival-floor-light="true" style={{ left: landing.capsuleX + 12, top: landing.floorY,
+            opacity: effectsFrame.interiorLight + effectsFrame.impactLight,
+            background: `radial-gradient(ellipse,${arrivalRgba(lighting.key, .8)},rgba(255,153,75,.3) 45%,transparent 72%)` }} />}
+          {landed && surfaceContact && effectsFrame.shockOpacity > 0 && <div className={styles.impactRing}
+            data-arrival-impact-ring="true" style={{ left: landing.capsuleX, top: landing.floorY, opacity: effectsFrame.shockOpacity,
+              transform: `translate(-50%,-50%) scale(${.25 + effectsFrame.shockProgress * 1.3})`, borderColor: arrivalRgba(lighting.dust, .8) }} />}
           {landed && <div className={styles.groundShadow} style={{ left: landing.capsuleX, top: landing.floorY, width: 92, height: 15,
             opacity: motionReduced ? .32 : .4 * fallProgress ** 4, transform: `translate(-50%,-50%) scale(${motionReduced ? 1 : mix(.35, 1, fallProgress)})` }} />}
           {landed && (!motionReduced || surfaceContact) && <div className={styles.groundPod} data-arrival-ground-pod="true" style={{ left: landing.capsuleX,
             top: motionReduced ? landing.floorY : mix(-190, landing.floorY, groundProgress), width: landing.capsuleWidth, height: capsuleHeight,
             transform: `translate(-${ARRIVAL_SPRITES.podGround.foot.x * 100}%,-${ARRIVAL_SPRITES.podGround.foot.y * 100}%)` }}>
-            {layer(sources?.podGround, styles.fullAsset)}
+            {litLayer(sources?.podGround, styles.fullAsset, 'ground-pod')}
+            <div className={styles.cabinLight} style={{ opacity: effectsFrame.interiorLight }} />
             {anchor('pod-ground', ARRIVAL_SPRITES.podGround.foot.x * landing.capsuleWidth, ARRIVAL_SPRITES.podGround.foot.y * capsuleHeight)}
             <div className={styles.doorSocket} style={{ left: ARRIVAL_SPRITES.podGround.doorHinge.x * landing.capsuleWidth,
               top: ARRIVAL_SPRITES.podGround.doorHinge.y * capsuleHeight }}>
@@ -460,29 +512,84 @@ export default function PlanetArrivalCinematic({ state, appearance, loadout, gau
               <div className={styles.doorRotation} style={{ transform: `perspective(600px) rotateX(${108 * doorOpen}deg)` }}>
                 <div className={styles.podDoor} style={{ width: doorWidth, height: doorHeight,
                   left: -ARRIVAL_SPRITES.podDoor.hinge.x * doorWidth, top: -ARRIVAL_SPRITES.podDoor.hinge.y * doorHeight }}>
-                  {layer(sources?.podDoor, styles.fullAsset)}
+                  <div className={styles.hatchFace} data-arrival-hatch-face="exterior">
+                    {litLayer(sources?.podDoor, styles.fullAsset, 'hatch')}
+                  </div>
+                  <div className={`${styles.hatchFace} ${styles.hatchInterior}`} data-arrival-hatch-face="interior">
+                    <div className={styles.hatchInteriorRegistration} style={{
+                      maskImage: sources?.podDoor ? `url("${sources.podDoor}")` : undefined,
+                      WebkitMaskImage: sources?.podDoor ? `url("${sources.podDoor}")` : undefined,
+                    }}>
+                      {litLayer(sources?.podDoorInterior, styles.fullAsset, 'hatch-interior')}
+                    </div>
+                  </div>
                   {anchor('door-hinge', ARRIVAL_SPRITES.podDoor.hinge.x * doorWidth, ARRIVAL_SPRITES.podDoor.hinge.y * doorHeight)}
                 </div>
               </div>
             </div>
+            {effectsFrame.ventOpacity > 0 && (['left', 'right'] as const).map(side => {
+              const art = ARRIVAL_COMPLETION_SPRITES.vapor;
+              const socket = ARRIVAL_COMPLETION_SPRITES.vents[side];
+              const width = 110;
+              const height = width * art.height / art.width;
+              return <div key={side} className={styles.ventSocket} data-arrival-vent={side}
+                style={{ left: socket.x * landing.capsuleWidth, top: socket.y * capsuleHeight, opacity: effectsFrame.ventOpacity }}>
+                {anchor(`vent-${side}`)}
+                <div className={styles.vaporRotation} style={{ transform: `scale(${effectsFrame.ventScale}) scaleX(${side === 'left' ? -1 : 1})` }}>
+                  <div className={styles.vaporSprite} style={{ width, height, left: -art.origin.x * width, top: -art.origin.y * height,
+                    filter: `brightness(${lighting.brightness}) saturate(.4)` }}>
+                    {layer(sources?.vapor, styles.fullAsset, { opacity: 1 - effectsFrame.ventThinMix })}
+                    {layer(sources?.vaporThin, styles.vaporThin, { opacity: effectsFrame.ventThinMix })}
+                    {anchor(`vapor-${side}-origin`, art.origin.x * width, art.origin.y * height)}
+                  </div>
+                </div>
+              </div>;
+            })}
           </div>}
           {landed && surfaceContact && <div className={styles.dustSocket} style={{ left: landing.capsuleX, top: landing.floorY, opacity: dustOpacity, transform: `scale(${dustScale})` }}>
-            <div className={styles.impactDust} style={{ width: 340, height: 340 * ARRIVAL_SPRITES.impactDust.height / ARRIVAL_SPRITES.impactDust.width,
-              transform: `translate(-${ARRIVAL_SPRITES.impactDust.foot.x * 100}%,-${ARRIVAL_SPRITES.impactDust.foot.y * 100}%)` }}>
-              {layer(sources?.impactDust, styles.fullAsset)}
-              {anchor('dust-ground', ARRIVAL_SPRITES.impactDust.foot.x * 340, ARRIVAL_SPRITES.impactDust.foot.y * 340 * ARRIVAL_SPRITES.impactDust.height / ARRIVAL_SPRITES.impactDust.width)}
+            <div className={styles.impactDust} data-arrival-impact-material={impactArt.material}
+              style={{ width: 340, height: 340 * impactArt.height / impactArt.width,
+                transform: `translate(-${impactArt.foot.x * 100}%,-${impactArt.foot.y * 100}%)` }}>
+              {litLayer(sources?.impactDust, styles.fullAsset, 'impact-dust')}
+              {anchor('dust-ground', impactArt.foot.x * 340, impactArt.foot.y * 340 * impactArt.height / impactArt.width)}
             </div>
           </div>}
-          <div className={styles.groundShadow} style={{ left: motionReduced ? landing.spawnX + landing.hunterWidth / 2 : hunterCenterX,
-            top: landing.floorY, width: 48, height: 8, opacity: hunterOpacity * .45, transform: 'translate(-50%,-50%)' }} />
+          {landed && impactDebris.map(piece => <div key={piece.id} className={styles.debrisSocket}
+            data-arrival-debris={piece.id} style={{ left: landing.capsuleX + piece.x, top: landing.floorY + piece.y,
+              opacity: piece.opacity, transform: `rotate(${piece.angle}deg)` }}>
+            <div className={styles.debrisSprite} style={{ width: piece.size, height: piece.size,
+              left: -ARRIVAL_COMPLETION_SPRITES.impactFragment.pivot.x * piece.size,
+              top: -ARRIVAL_COMPLETION_SPRITES.impactFragment.pivot.y * piece.size,
+              filter: `brightness(${lighting.brightness})` }}>
+              {layer(sources?.impactFragment, styles.fullAsset)}
+            </div>
+          </div>)}
+          <div className={styles.groundShadow} style={{ left: hunterPose.x,
+            top: landing.floorY, width: 48 * hunterPose.scale, height: 8,
+            opacity: hunterPose.opacity * .45 * clamp01(1 - (landing.floorY - hunterPose.y) / 80), transform: 'translate(-50%,-50%)' }} />
+          <svg className={styles.clipDefinitions} width="0" height="0" aria-hidden="true" focusable="false">
+            <defs><clipPath id={hunterPortalId} clipPathUnits="userSpaceOnUse">
+              {/* Cabin pixels remain inside the aperture. The advancing front
+                  crosses its rim progressively; the actor is rendered once. */}
+              <polygon points={doorwayClip} />
+              <rect x={mix(hunterWidth + 4, -4, hunterPose.portalReveal)} y={-landing.hunterHeight}
+                width={hunterWidth * 3} height={landing.hunterHeight * 3} />
+            </clipPath></defs>
+          </svg>
           {/* Always mounted, including orbit: the actual selected rig preloads its own layers. */}
           <div className={styles.hunter} data-arrival-hunter={appearance.presetId} data-arrival-spawn={state.spawnId}
-            style={{ left: motionReduced ? landing.spawnX + landing.hunterWidth / 2 : hunterCenterX, top: landing.floorY,
-              width: hunterWidth, opacity: hunterOpacity, transform: `translate(-50%, -${HUNTER_RIG_CANVAS.groundY / HUNTER_RIG_CANVAS.height * 100}%)` }}>
+            data-arrival-hunter-stage={hunterPose.stage} data-arrival-hunter-contact={hunterPose.contact}
+            data-arrival-hunter-portal={hunterPortalActive ? 'active' : 'clear'}
+            style={{ left: hunterPose.x, top: hunterPose.y,
+              width: hunterWidth, opacity: hunterPose.opacity,
+              transform: `translate(-50%, -${HUNTER_RIG_CANVAS.groundY / HUNTER_RIG_CANVAS.height * 100}%) scale(${hunterPose.scale})`,
+              transformOrigin: `50% ${HUNTER_RIG_CANVAS.groundY / HUNTER_RIG_CANVAS.height * 100}%`,
+              clipPath: hunterPortalActive ? `url(#${hunterPortalId})` : undefined,
+              filter: `brightness(${lighting.brightness + effectsFrame.interiorLight * .25}) saturate(.9) drop-shadow(-.6px -.8px 1px ${arrivalRgba(lighting.key, .16)})` }}>
             <ArrivalHunter appearance={appearance} armorId={loadout.armorId} weaponIds={loadout.weaponIds} gearIds={loadout.gearIds}
-              gauntletVariantId={gauntletVariantId} size="100%" style={ARRIVAL_RIG_STYLE} pose={!motionReduced && egress > 0 && egress < 1 ? 'run' : 'idle'}
-              phase={motionReduced || shot.id !== 'egress' ? 0 : timeline.elapsedMs / 800} speed={!motionReduced && egress > 0 && egress < 1 ? 65 : 0} facing={1} />
-            {anchor('hunter-feet', hunterWidth / 2, landing.hunterHeight * HUNTER_RIG_CANVAS.groundY / HUNTER_RIG_CANVAS.height)}
+              gauntletVariantId={gauntletVariantId} size="100%" style={ARRIVAL_RIG_STYLE} pose={hunterPose.pose}
+              phase={hunterPose.phase} speed={hunterPose.speed} verticalVelocity={hunterPose.verticalVelocity} facing={1} />
+            {anchor('hunter-feet', hunterWidth / 2, hunterGroundY)}
           </div>
           </div>
           </div>

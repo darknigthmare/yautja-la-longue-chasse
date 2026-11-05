@@ -65,6 +65,14 @@
 .floorEdge { position: absolute; left: 64px; top: 712px; width: 1312px; height: 22px; z-index: 720; pointer-events: none; background: url('/game/ship-interior/v22/floor-edge.webp') center 43% / 380px 150px repeat-x; opacity: .65; }
 .fixture { position: absolute; width: 0; height: 0; pointer-events: none; }
 .fixtureShadow { position: absolute; transform: translate(-50%, -70%); border-radius: 50%; background: #0009; filter: blur(7px); }
+.holoProjection { position: absolute; left: -280px; top: -370px; width: 560px; height: 280px; fill: none; stroke: #b5ffd1; stroke-width: 1.25; opacity: .64; filter: drop-shadow(0 0 8px #5ceeab); pointer-events: none; }
+.holoProjection text { fill: #d2ffe3; stroke: none; font: 12px monospace; letter-spacing: 3px; }
+.crewActor { position: absolute; width: 0; height: 0; }
+.crewPlatform { position: absolute; width: 110px; height: 22px; left: -55px; top: -6px; border-radius: 50%; border: 1px solid #6b9286; background: #102628; box-shadow: 0 8px 7px #0008; }
+.crewLabel { position: absolute; width: 200px; min-height: 48px; left: -100px; top: -250px; display: grid; gap: 4px; text-align: center; border: 1px solid #8fbea772; border-radius: 6px; background: #061613eb; color: #e3f3dd; padding: 8px; font: 14px var(--font-ui, Arial, sans-serif); cursor: pointer; }
+.crewLabel strong { font-weight: 600; }
+.crewLabel span { font-size: 12px; color: #b2c7bd; }
+.crewLabel:focus-visible { outline: 3px solid var(--room-accent); outline-offset: 3px; }
 
 .personalShip { position: absolute; left: 270px; top: 112px; width: 680px; height: 340px; z-index: 10; pointer-events: none; }
 .personalShip > img { width: 100%; height: 100%; object-fit: contain; filter: drop-shadow(0 20px 13px #000c); }

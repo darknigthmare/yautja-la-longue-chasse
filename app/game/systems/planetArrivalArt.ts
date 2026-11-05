@@ -1,4 +1,5 @@
 import { shipProfileAssetPath, type ShipId } from '../shipCatalogue';
+import type { BiomeId } from '../types';
 
 /**
  * Screen-space calibration of the existing, individually authored artwork.
@@ -52,20 +53,51 @@ export const ARRIVAL_SPRITES = Object.freeze({
   podGround: {
     width: 1024, height: 1536,
     foot: normalized(507.5, 1496, 1024, 1536),
-    doorHinge: normalized(500, 430, 1024, 1536),
+    doorHinge: normalized(500, 490, 1024, 1536),
+    threshold: normalized(500, 1176, 1024, 1536),
+    // The visible opening excludes the opaque frame and raised lower shell.
+    doorway: [[500, 490], [558, 516], [604, 558], [633, 638], [645, 1060],
+      [626, 1138], [598, 1178], [398, 1178], [365, 1138], [351, 1060],
+      [347, 638], [372, 558], [436, 516]].map(([x, y]) => normalized(x, y, 1024, 1536)),
   },
   podDoor: {
-    width: 1024, height: 1536,
-    hinge: normalized(512, 160, 1024, 1536),
+    width: 887, height: 1774,
+    hinge: normalized(444, 108, 887, 1774),
     // Ratio of the full door image width to the full ground-pod image width.
     // Includes both alpha margins. The hinge stays attached while it opens.
-    widthInGround: .8,
+    widthInGround: .385,
   },
   impactDust: {
     width: 1774, height: 887,
     foot: normalized(887, 760, 1774, 887),
   },
 });
+
+/** Independent parts and two genuinely separate vapor phases; originals remain in V1. */
+export const ARRIVAL_COMPLETION_ART = Object.freeze({
+  podDoor: '/game/planet-arrival/v2/pod-hatch.webp',
+  podDoorInterior: '/game/planet-arrival/v2/pod-hatch-interior.webp',
+  vapor: '/game/planet-arrival/v2/vent-vapor.webp',
+  vaporThin: '/game/planet-arrival/v2/vent-vapor-thin.webp',
+  impactFragment: '/game/planet-arrival/v2/impact-fragment.webp',
+});
+
+export const ARRIVAL_COMPLETION_SPRITES = Object.freeze({
+  vapor: { width: 1254, height: 1254, origin: normalized(384, 1117, 1254, 1254) },
+  impactFragment: { width: 1254, height: 1254, pivot: normalized(584, 834, 1254, 1254) },
+  // The two doorway lip seams are part of the existing shell, not detached emitters.
+  vents: { left: normalized(332, 570, 1024, 1536), right: normalized(655, 570, 1024, 1536) },
+});
+
+const IMPACT_ART = Object.freeze({
+  dry: { ...ARRIVAL_SPRITES.impactDust, path: '/game/planet-arrival/v1/impact-dust.webp', material: 'dry' },
+  ice: { width: 1774, height: 887, foot: normalized(887, 835, 1774, 887), path: '/game/planet-arrival/v2/impact-ice-powder.webp', material: 'ice' },
+  wet: { width: 1774, height: 887, foot: normalized(887, 824, 1774, 887), path: '/game/planet-arrival/v2/impact-water-spray.webp', material: 'wet' },
+});
+
+export function arrivalImpactArtForBiome(biome: BiomeId) {
+  return biome === 'ice' ? IMPACT_ART.ice : biome === 'ocean' || biome === 'swamp' ? IMPACT_ART.wet : IMPACT_ART.dry;
+}
 
 const globe = (cx: number, cy: number, rx: number, ry: number): ArrivalPlanetArt => ({
   width: 256, height: 256, center: normalized(cx, cy, 256, 256),

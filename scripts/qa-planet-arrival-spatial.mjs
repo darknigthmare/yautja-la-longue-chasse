@@ -198,21 +198,60 @@ async function readFrame(target = page) {
       const r = element.getBoundingClientRect();
       return { x: r.x, y: r.y, width: r.width, height: r.height, right: r.right, bottom: r.bottom };
     };
-    const anchors = {};
-    for (const element of root.querySelectorAll('[data-arrival-anchor]')) {
-      let opacity = 1;
+    const opacity = element => {
+      let value = 1;
       for (let parent = element; parent && parent !== root; parent = parent.parentElement) {
         const style = getComputedStyle(parent);
-        if (style.display === 'none' || style.visibility === 'hidden') opacity = 0;
-        opacity *= Number(style.opacity);
+        if (style.display === 'none' || style.visibility === 'hidden') return 0;
+        value *= Number(style.opacity);
       }
+      return value;
+    };
+    const transformToRoot = element => {
+      let matrix = new DOMMatrix();
+      for (let parent = element; parent && parent !== root; parent = parent.parentElement) {
+        const transform = getComputedStyle(parent).transform;
+        if (transform !== 'none') matrix = new DOMMatrix(transform).multiply(matrix);
+      }
+      return matrix;
+    };
+    const anchors = {};
+    for (const element of root.querySelectorAll('[data-arrival-anchor]')) {
       anchors[element.getAttribute('data-arrival-anchor')] = {
-        ...rect(element), opacity,
+        ...rect(element), opacity: opacity(element),
         vfxSource: element.closest('[data-arrival-vfx-source]')?.getAttribute('data-arrival-vfx-source') ?? null,
       };
     }
     const stage = root.querySelector('[data-arrival-stage]');
     const camera = root.querySelector('[data-arrival-ground-camera]');
+    const hunter = root.querySelector('[data-arrival-hunter]');
+    const hunterClip = hunter ? getComputedStyle(hunter).clipPath : 'none';
+    const clipId = hunterClip.match(/#([^"')]+)/)?.[1];
+    const clip = clipId ? document.getElementById(decodeURIComponent(clipId)) : null;
+    const lights = [...root.querySelectorAll('[data-arrival-lit]')].map(element => {
+      const mask = element.querySelector('[data-arrival-light-mask]');
+      const style = mask ? getComputedStyle(mask) : null;
+      // Read the browser's gradient and actual transform chain, not the source
+      // rotation attributes: a reversed hull must retain a fixed world light.
+      const gradient = style?.backgroundImage.match(/linear-gradient\(([-\d.]+)deg/);
+      const matrix = transformToRoot(mask);
+      const radians = gradient ? (Number(gradient[1]) - 270) * Math.PI / 180 : NaN;
+      const direction = matrix.transformPoint(new DOMPoint(Math.cos(radians), Math.sin(radians), 0, 0));
+      const face = element.closest('[data-arrival-hatch-face]');
+      const faceBackVisibility = face ? getComputedStyle(face).backfaceVisibility : null;
+      const faceTowardCamera = face ? transformToRoot(face).m33 > 0 : true;
+      return {
+        role: element.getAttribute('data-arrival-lit'),
+        source: element.getAttribute('data-arrival-light-source'),
+        imageSource: element.querySelector('img')?.getAttribute('src') ?? null,
+        environment: element.getAttribute('data-arrival-light-environment'),
+        expectedWorldAngle: Number(element.getAttribute('data-arrival-light-world-angle')),
+        renderedWorldAngle: gradient ? Math.atan2(direction.y, direction.x) * 180 / Math.PI : null,
+        mask: style ? { image: style.maskImage, size: style.maskSize, repeat: style.maskRepeat, ...rect(mask) } : null,
+        image: rect(element.querySelector('img')), faceBackVisibility, faceTowardCamera,
+        opacity: opacity(element) * (faceBackVisibility === 'hidden' && !faceTowardCamera ? 0 : 1),
+      };
+    });
     return {
       run: root.getAttribute('data-arrival-run'), shot: root.getAttribute('data-arrival-shot'),
       status: root.getAttribute('data-arrival-status'), elapsedMs: Number(root.getAttribute('data-arrival-elapsed')),
@@ -221,7 +260,22 @@ async function readFrame(target = page) {
       scene: rect(root.querySelector('[data-arrival-scene]')), stage: rect(stage),
       stageLayout: stage ? { width: stage.offsetWidth, height: stage.offsetHeight, transform: getComputedStyle(stage).transform } : null,
       camera: rect(camera), cameraTransform: camera ? getComputedStyle(camera).transform : null,
-      flightPod: rect(root.querySelector('[data-arrival-flight-pod]')), anchors,
+      flightPod: rect(root.querySelector('[data-arrival-flight-pod]')), anchors, lights,
+      hunterStage: root.querySelector('[data-arrival-hunter-stage]')?.getAttribute('data-arrival-hunter-stage') ?? null,
+      hunterContact: root.querySelector('[data-arrival-hunter-contact]')?.getAttribute('data-arrival-hunter-contact') ?? null,
+      hunterPortal: root.querySelector('[data-arrival-hunter-portal]')?.getAttribute('data-arrival-hunter-portal') ?? null,
+      hunterClip: { value: hunterClip, target: clip?.tagName ?? null, parts: clip?.children.length ?? 0 },
+      impactMaterial: root.querySelector('[data-arrival-impact-material]')?.getAttribute('data-arrival-impact-material') ?? null,
+      vents: [...root.querySelectorAll('[data-arrival-vent]')].map(element => ({
+        side: element.getAttribute('data-arrival-vent'), opacity: opacity(element),
+        phases: [...element.querySelectorAll('img')].map(image => ({
+          source: image.getAttribute('src'), opacity: Number(getComputedStyle(image).opacity),
+        })),
+      })),
+      debris: [...root.querySelectorAll('[data-arrival-debris]')].map(element => ({
+        id: Number(element.getAttribute('data-arrival-debris')), ...rect(element), opacity: opacity(element),
+        source: element.querySelector('img')?.getAttribute('src') ?? null,
+      })),
       planet: root.querySelector('[data-arrival-scene]')?.getAttribute('data-arrival-planet'),
       ship: root.querySelector('[data-arrival-scene]')?.getAttribute('data-arrival-ship'),
       planetImage: root.querySelector('[data-arrival-planet-image]')?.getAttribute('data-arrival-planet-image') ?? null,
@@ -280,6 +334,23 @@ function assertSpatial(frame, label) {
     frame.decodedSvg.some(decoded => decoded.path === image.path && decoded.complete && decoded.width > 0 && decoded.height > 0)),
   `${label}: every declared SVG source must be a decoded real image.`);
   assert.doesNotMatch(frame.statusText, /indisponible|n’a pas pu|pas été confirmé/i, `${label}: scene reported a runtime failure.`);
+  for (const light of frame.lights) {
+    assert.ok(light.mask && light.image && light.source, `${label}: ${light.role} needs an image and its alpha mask.`);
+    assert.equal(light.imageSource, light.source, `${label}: lighting must follow the actual sprite source.`);
+    assert.ok(light.mask.image.includes(light.source), `${label}: ${light.role} mask must use the same silhouette.`);
+    assert.equal(light.mask.size, '100% 100%', `${label}: mask must cover the source at its native aspect ratio.`);
+    assert.equal(light.mask.repeat, 'no-repeat', `${label}: lighting must not tile beyond the sprite.`);
+    assert.ok(['x', 'y', 'width', 'height'].every(key => Math.abs(light.mask[key] - light.image[key]) < 1),
+      `${label}: ${light.role} mask is detached from the rendered sprite.`);
+    if (['carrier', 'flight-pod'].includes(light.role)) {
+      assert.notEqual(light.renderedWorldAngle, null, `${label}: orbital sprites need a rendered key light.`);
+      const delta = (light.renderedWorldAngle - light.expectedWorldAngle) * Math.PI / 180;
+      assert.ok(Math.cos(delta) > .999, `${label}: ${light.role} light rotated with the hull or its source mirror.`);
+    }
+    if (['hatch', 'hatch-interior'].includes(light.role)) {
+      assert.equal(light.faceBackVisibility, 'hidden', `${label}: only the correctly facing side of the rigid hatch may be visible.`);
+    }
+  }
   const a = frame.anchors;
   for (const effect of ['release-origin', 'trail-origin']) {
     if (!a[effect] || a[effect].opacity < .02) continue;
@@ -297,7 +368,7 @@ function assertSpatial(frame, label) {
       `${label}: grounded frame needs ground and capsule contact anchors.`);
     assert.ok(distance(a['pod-ground'], a['ground-capsule-reference']) <= 1.5,
       `${label}: capsule contact floats above or penetrates its projected surface.`);
-    for (const id of ['pod-ground', 'dust-ground', 'hunter-feet']) {
+    for (const id of ['pod-ground', 'dust-ground']) {
       if (!a[id] || a[id].opacity < .02) continue;
       assert.ok(Math.abs(a[id].y - a['ground-reference'].y) <= 1.5,
         `${label}: ${id} differs from the projected floor by ${(a[id].y - a['ground-reference'].y).toFixed(3)} px.`);
@@ -306,7 +377,57 @@ function assertSpatial(frame, label) {
       assert.ok(distance(a['door-hinge'], a['door-hinge-reference']) <= 1.5,
         `${label}: opening door detached from its physical hinge.`);
     }
+    if (a['hunter-feet']?.opacity > .02) {
+      assert.ok(a['hunter-support'] && a['capsule-threshold'], `${label}: emerging hunter needs its real support and doorway threshold.`);
+      assert.ok(distance(a['hunter-feet'], a['hunter-support']) <= 1.5,
+        `${label}: hunter feet detached from their projected support.`);
+      assert.ok(a['capsule-threshold'].y < a['ground-reference'].y,
+        `${label}: the capsule threshold must sit above the world surface.`);
+      if (frame.hunterPortal === 'active') {
+        assert.notEqual(frame.hunterClip.value, 'none', `${label}: hunter in the opening must be occluded by the real doorway.`);
+        assert.equal(frame.hunterClip.target, 'clipPath', `${label}: hunter clipping must resolve to a real SVG aperture.`);
+        assert.ok(frame.hunterClip.parts > 0, `${label}: the doorway aperture must contain rendered clipping geometry.`);
+      } else {
+        assert.equal(frame.hunterPortal, 'clear', `${label}: visible hunter needs an explicit doorway transition.`);
+        assert.equal(frame.hunterClip.value, 'none', `${label}: hunter must be unclipped after clearing the capsule.`);
+      }
+      if (frame.hunterContact === 'threshold') {
+        assert.equal(frame.hunterStage, 'cabin');
+        assert.ok(Math.abs(a['hunter-feet'].y - a['capsule-threshold'].y) <= 1.5,
+          `${label}: the hunter must stand on the doorway threshold before stepping down.`);
+      } else if (frame.hunterContact === 'airborne') {
+        assert.equal(frame.hunterStage, 'step-down');
+        assert.ok(a['hunter-feet'].y >= a['capsule-threshold'].y - 1.5 &&
+          a['hunter-feet'].y <= a['ground-reference'].y + 1.5,
+        `${label}: the step down must remain between the threshold and the shared ground.`);
+      } else {
+        assert.equal(frame.hunterContact, 'ground', `${label}: visible hunter needs a known physical contact.`);
+        assert.ok(['walking', 'standing'].includes(frame.hunterStage));
+        assert.ok(Math.abs(a['hunter-feet'].y - a['ground-reference'].y) <= 1.5,
+          `${label}: hunter must land on the world floor after the step down.`);
+      }
+    }
+    for (const side of ['left', 'right']) {
+      const vapor = a[`vapor-${side}-origin`];
+      if (!vapor || vapor.opacity < .02) continue;
+      assert.ok(a[`vent-${side}`], `${label}: ${side} vapor needs a physical capsule vent.`);
+      assert.ok(distance(vapor, a[`vent-${side}`]) <= 1.5,
+        `${label}: ${side} vapor detached while scaling or cross-fading.`);
+    }
+    for (const piece of frame.debris) {
+      assert.ok(piece.source && piece.y <= a['ground-reference'].y + 1.5,
+        `${label}: a visible independent fragment penetrates the shared ground.`);
+    }
+    for (const vent of frame.vents) {
+      assert.equal(vent.phases.length, 2, `${label}: ${vent.side} vent must cross-fade two independent sprite phases.`);
+      assert.equal(new Set(vent.phases.map(phase => phase.source)).size, 2,
+        `${label}: dissipation cannot reuse the dense phase image.`);
+      assert.ok(Math.abs(vent.phases.reduce((sum, phase) => sum + phase.opacity, 0) - 1) < .001,
+        `${label}: the two phases must share one opacity envelope.`);
+    }
   }
+  if (!frame.contact || frame.reducedMotion) assert.equal(frame.debris.length, 0,
+    `${label}: ballistic debris must not precede impact or override reduced motion.`);
 }
 
 async function capture(label, target = page) {
@@ -409,7 +530,11 @@ try {
       await check(`${viewport.id}: ${shot.id} actual layers, anchors and motion`, async () => {
         await openShot(primaryMission.id, shot.id);
         const duration = shot.endMs - shot.startMs;
-        for (const [position, progress] of [['early', .1], ['middle', .5], ['late', .88]]) {
+        const samples = [['early', .1], ['middle', .5], ['late', .88]];
+        if (shot.id === 'landing') samples.splice(2, 0, ['impact', .66]);
+        if (shot.id === 'egress') samples.splice(1, 0,
+          ['vent-dissipation', .26], ['threshold', .32], ['step-down', .40]);
+        for (const [position, progress] of samples) {
           await waitElapsed(shot.startMs + duration * progress, shot.id);
           await capture(`${viewport.id}-${shot.id}-${position}`);
           if (position === 'middle') await measureMovement(`${viewport.id}-${shot.id}`);
@@ -437,6 +562,12 @@ try {
           else {
             assert.ok(frame.groundFrame, 'Destination must use the native biome crop.');
             assert.equal(await page.locator('[data-arrival-ground-frame] image').getAttribute('href'), assets.ground);
+            if (shotId === 'landing') {
+              assert.ok(frame.images.some(image => image.path === assets.impactDust),
+                'Impact must render the actual destination material, including wet and ice variants.');
+              assert.equal(frame.impactMaterial, mission.biome === 'ice' ? 'ice' :
+                ['ocean', 'swamp'].includes(mission.biome) ? 'wet' : 'dry');
+            }
           }
         }
       });
@@ -555,6 +686,18 @@ try {
     await page.screenshot({ path: path.join(out, 'native-hunt-after-arrival.png'), fullPage: false });
   });
   await check('Native Reset and Skip retain the same destination and mount one real hunt', async () => {
+    // Arrival hands off to the real modal briefing. Complete that user step
+    // before using the toolbar behind it; never force a click through a modal.
+    await page.locator('[data-mission-opening-v78]').waitFor({ timeout: 90000 });
+    await page.getByRole('button', { name: 'Commencer la chasse', exact: true }).click();
+    await page.locator('[data-mission-opening-v78]').waitFor({ state: 'hidden' });
+    await page.waitForFunction(() => [...document.querySelectorAll('.hunt-screen summary')].some(element => {
+      const match = element.textContent?.match(/Détails\s*·\s*(\d+):(\d+)/);
+      return match && Number(match[1]) * 60 + Number(match[2]) > 0;
+    }), null, { timeout: 30000 });
+    assert.equal(await page.evaluate(() => window.__arrivalSpatialObservations.huntMounts), 1,
+      'Dismissing the briefing must preserve the natural arrival hunt.');
+    assert.deepEqual(await storageSnapshot(page), protectedStorage);
     await page.locator('[data-dev-reset]').click();
     await ready();
     const before = await readFrame();
@@ -581,6 +724,25 @@ try {
     assert.deepEqual([...missing], []);
     assert.deepEqual(report.errors, []);
     assert.deepEqual(report.consoleErrors, []);
+  });
+  await check('Independent impact fragments, vent phases and world-aligned masked light were actually observed', async () => {
+    for (const viewport of viewports) {
+      const samples = report.samples.filter(sample => sample.label.startsWith(viewport.id + '-'));
+      assert.ok(samples.some(sample => sample.debris.length === 9 && sample.debris.every(piece => piece.opacity > .02)),
+        `${viewport.id}: the real impact burst must be sampled while active.`);
+      assert.ok(samples.some(sample => sample.label === `${viewport.id}-egress-vent-dissipation` &&
+        ['left', 'right'].every(side => sample.anchors[`vapor-${side}-origin`]?.opacity > .02) &&
+        sample.vents.every(vent => vent.phases[1].opacity > vent.phases[0].opacity)),
+      `${viewport.id}: both real vent emitters must be observed during dissipation.`);
+      for (const contact of ['threshold', 'airborne', 'ground']) {
+        assert.ok(samples.some(sample => sample.anchors['hunter-feet']?.opacity > .02 && sample.hunterContact === contact),
+          `${viewport.id}: the real hunter must be observed with ${contact} contact during emergence.`);
+      }
+      for (const role of ['carrier', 'flight-pod', 'ground-pod', 'hatch', 'hatch-interior', 'impact-dust']) {
+        assert.ok(samples.some(sample => sample.lights.some(light => light.role === role && light.opacity > .02)),
+          `${viewport.id}: the ${role} source mask must be observed on an active sprite.`);
+      }
+    }
   });
   report.passed = true;
 } catch (error) {

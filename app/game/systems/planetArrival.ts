@@ -7,6 +7,7 @@ import type { BiomeId, HunterPresetId, MissionId } from '../types';
 import { backgroundPathForBiome } from '../worldScreens';
 import { worldBlueprintFor } from './worldBlueprints';
 import { wolfCastleRuntimeAsset } from './wolfCastleRuntimeArt';
+import { ARRIVAL_COMPLETION_ART, arrivalImpactArtForBiome } from './planetArrivalArt';
 
 /** The montage has no gameplay clock, resource cost or reward of its own. */
 export const PLANET_ARRIVAL_VERSION = 1 as const;
@@ -221,15 +222,17 @@ export const PLANET_ARRIVAL_ART = {
   impactDust: '/game/planet-arrival/v1/impact-dust.png',
 } as const;
 
-const PLANET_ARRIVAL_RUNTIME_ART = Object.fromEntries(
-  Object.entries(PLANET_ARRIVAL_ART).map(([key, source]) => [key, wolfCastleRuntimeAsset(source)]),
-) as Record<keyof typeof PLANET_ARRIVAL_ART, string>;
+const PLANET_ARRIVAL_RUNTIME_ART = {
+  ...Object.fromEntries(Object.entries(PLANET_ARRIVAL_ART).map(([key, source]) => [key, wolfCastleRuntimeAsset(source)])) as Record<keyof typeof PLANET_ARRIVAL_ART, string>,
+  ...ARRIVAL_COMPLETION_ART,
+};
 
 export function planetArrivalAssets(state: PlanetArrivalState) {
   const destination = planetArrivalDestination(state.missionId);
   if (!destination || destination.body.id !== state.destinationId) return null;
   return {
     ...PLANET_ARRIVAL_RUNTIME_ART,
+    impactDust: arrivalImpactArtForBiome(state.biomeId).path,
     carrier: shipProfileAssetPath(state.personalShipId),
     planet: galaxyBodyVisualPath(destination.body),
     ground: backgroundPathForBiome(destination.mission.biome),

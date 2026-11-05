@@ -1,0 +1,338 @@
+{
+  "schema": 1,
+  "release": "1.4.1",
+  "generatedAt": "2026-11-05T06:41:34.484Z",
+  "scope": "Seven individually authored parts and VFX, PNG masters and WebP runtime exports. No sprite sheet.",
+  "review": "Technical alpha, bounds, size and registration checks. Not proof of frame-by-frame film fidelity.",
+  "panelRegistration": {
+    "source": "public/game/planet-arrival/v2/pod-hatch-interior-source.png",
+    "sourceSha256": "c6038ef144fc12726494f3e7a040b6620613144a909a083d56547fa042f8c547",
+    "crop": {
+      "left": 117,
+      "top": 62,
+      "width": 720,
+      "height": 1538
+    },
+    "registeredContentSize": [
+      716,
+      1645
+    ],
+    "transparentPadding": {
+      "left": 83,
+      "right": 88,
+      "top": 69,
+      "bottom": 60
+    },
+    "note": "The original generated reverse is retained. The production export registers its bounds to the existing rigid outer panel."
+  },
+  "assets": [
+    {
+      "id": "pod-hatch",
+      "role": "Panneau extérieur, charnière haute",
+      "pivot": {
+        "x": 0.5005636978579482,
+        "y": 0.060879368658399095
+      },
+      "provenance": "image_gen.imagegen, original project adaptation",
+      "artisticHumanApproval": false,
+      "files": {
+        "png": {
+          "path": "public/game/planet-arrival/v2/pod-hatch.png",
+          "bytes": 2351711,
+          "sha256": "34ad8fba84efaceccbfb0d34b9b2327008132e9a4c6bf56791f54b5ada3e1499",
+          "width": 887,
+          "height": 1774,
+          "visiblePixelsAbove16": 1019321,
+          "fullyTransparentPixels": 542521,
+          "boundsAbove16": [
+            91,
+            77,
+            790,
+            1705
+          ],
+          "edgePixelsAbove16": 0
+        },
+        "webp": {
+          "path": "public/game/planet-arrival/v2/pod-hatch.webp",
+          "bytes": 312836,
+          "sha256": "3e2578693156589fc4270a0179d15acf1186fe4df0f8996131072ea96cf4093d",
+          "width": 887,
+          "height": 1774,
+          "visiblePixelsAbove16": 1019321,
+          "fullyTransparentPixels": 542521,
+          "boundsAbove16": [
+            91,
+            77,
+            790,
+            1705
+          ],
+          "edgePixelsAbove16": 0
+        }
+      }
+    },
+    {
+      "id": "pod-hatch-interior",
+      "role": "Face intérieure distincte du même panneau",
+      "pivot": {
+        "x": 0.5005636978579482,
+        "y": 0.060879368658399095
+      },
+      "provenance": "image_gen.imagegen, original project adaptation",
+      "artisticHumanApproval": false,
+      "files": {
+        "png": {
+          "path": "public/game/planet-arrival/v2/pod-hatch-interior.png",
+          "bytes": 2149339,
+          "sha256": "81954c2b61b599a6ba6b2faa6d5f61c046c1150a84630d6385d43773c5f7b06c",
+          "width": 887,
+          "height": 1774,
+          "visiblePixelsAbove16": 1031515,
+          "fullyTransparentPixels": 527889,
+          "boundsAbove16": [
+            91,
+            78,
+            790,
+            1705
+          ],
+          "edgePixelsAbove16": 0
+        },
+        "webp": {
+          "path": "public/game/planet-arrival/v2/pod-hatch-interior.webp",
+          "bytes": 230332,
+          "sha256": "85f60f652647a6d09e880c1ed9c5cdf6eb37a4a9097cad6fa0a91f5b4096f0d9",
+          "width": 887,
+          "height": 1774,
+          "visiblePixelsAbove16": 1031515,
+          "fullyTransparentPixels": 527889,
+          "boundsAbove16": [
+            91,
+            78,
+            790,
+            1705
+          ],
+          "edgePixelsAbove16": 0
+        }
+      }
+    },
+    {
+      "id": "vent-vapor",
+      "role": "Vapeur dense, émission à chaque joint de porte",
+      "pivot": {
+        "x": 0.3062200956937799,
+        "y": 0.8907496012759171
+      },
+      "provenance": "image_gen.imagegen, original project adaptation",
+      "artisticHumanApproval": false,
+      "files": {
+        "png": {
+          "path": "public/game/planet-arrival/v2/vent-vapor.png",
+          "bytes": 897385,
+          "sha256": "6a43a86e6a6d67efd0dfac152b9f38370badd94f46432173be3ca2a43aeb6ff6",
+          "width": 1254,
+          "height": 1254,
+          "visiblePixelsAbove16": 310455,
+          "fullyTransparentPixels": 1105287,
+          "boundsAbove16": [
+            332,
+            163,
+            1160,
+            1146
+          ],
+          "edgePixelsAbove16": 0
+        },
+        "webp": {
+          "path": "public/game/planet-arrival/v2/vent-vapor.webp",
+          "bytes": 201862,
+          "sha256": "db1db63fd3fae21f0050f14c0fbb41b03d609ac9ab416f5182e5aba2372d72fa",
+          "width": 1254,
+          "height": 1254,
+          "visiblePixelsAbove16": 310455,
+          "fullyTransparentPixels": 1105287,
+          "boundsAbove16": [
+            332,
+            163,
+            1160,
+            1146
+          ],
+          "edgePixelsAbove16": 0
+        }
+      }
+    },
+    {
+      "id": "vent-vapor-thin",
+      "role": "Phase dissipée sur le même émetteur",
+      "pivot": {
+        "x": 0.3062200956937799,
+        "y": 0.8907496012759171
+      },
+      "provenance": "image_gen.imagegen, original project adaptation",
+      "artisticHumanApproval": false,
+      "files": {
+        "png": {
+          "path": "public/game/planet-arrival/v2/vent-vapor-thin.png",
+          "bytes": 915265,
+          "sha256": "4adb357142fcec9598ebb40ef21258e86352f8af3ca2f2bc0f872d885dbaa12d",
+          "width": 1254,
+          "height": 1254,
+          "visiblePixelsAbove16": 313980,
+          "fullyTransparentPixels": 1150645,
+          "boundsAbove16": [
+            318,
+            152,
+            1185,
+            1150
+          ],
+          "edgePixelsAbove16": 0
+        },
+        "webp": {
+          "path": "public/game/planet-arrival/v2/vent-vapor-thin.webp",
+          "bytes": 230286,
+          "sha256": "aca054af39d484a7d1050ce877955b90102ddb85271615916ee2cdc079be6335",
+          "width": 1254,
+          "height": 1254,
+          "visiblePixelsAbove16": 313980,
+          "fullyTransparentPixels": 1150645,
+          "boundsAbove16": [
+            318,
+            152,
+            1185,
+            1150
+          ],
+          "edgePixelsAbove16": 0
+        }
+      }
+    },
+    {
+      "id": "impact-fragment",
+      "role": "Une pierre, neuf trajectoires indépendantes",
+      "pivot": {
+        "x": 0.46570972886762363,
+        "y": 0.6650717703349283
+      },
+      "provenance": "image_gen.imagegen, original project adaptation",
+      "artisticHumanApproval": false,
+      "files": {
+        "png": {
+          "path": "public/game/planet-arrival/v2/impact-fragment.png",
+          "bytes": 303979,
+          "sha256": "77479c1749a44c410ba14af5ff9875fa2b8586abde3b42bf3fffbf85735946aa",
+          "width": 1254,
+          "height": 1254,
+          "visiblePixelsAbove16": 117395,
+          "fullyTransparentPixels": 1451432,
+          "boundsAbove16": [
+            369,
+            416,
+            823,
+            857
+          ],
+          "edgePixelsAbove16": 0
+        },
+        "webp": {
+          "path": "public/game/planet-arrival/v2/impact-fragment.webp",
+          "bytes": 36310,
+          "sha256": "e505b0a3adc6d9a629e94a3bb25e6ed4eb6a6e870a8e88ac1f4a326c6ca84c3b",
+          "width": 1254,
+          "height": 1254,
+          "visiblePixelsAbove16": 117395,
+          "fullyTransparentPixels": 1451432,
+          "boundsAbove16": [
+            369,
+            416,
+            823,
+            857
+          ],
+          "edgePixelsAbove16": 0
+        }
+      }
+    },
+    {
+      "id": "impact-ice-powder",
+      "role": "Poudre de glace au contact sur Nivalis-K",
+      "pivot": {
+        "x": 0.5,
+        "y": 0.9413754227733935
+      },
+      "provenance": "image_gen.imagegen, original project adaptation",
+      "artisticHumanApproval": false,
+      "files": {
+        "png": {
+          "path": "public/game/planet-arrival/v2/impact-ice-powder.png",
+          "bytes": 1063458,
+          "sha256": "1c78bcfc67920ea31bcb4e85894de72419bb0b9ebc5a6536a48880e68719b888",
+          "width": 1774,
+          "height": 887,
+          "visiblePixelsAbove16": 341622,
+          "fullyTransparentPixels": 1056753,
+          "boundsAbove16": [
+            91,
+            475,
+            1656,
+            839
+          ],
+          "edgePixelsAbove16": 0
+        },
+        "webp": {
+          "path": "public/game/planet-arrival/v2/impact-ice-powder.webp",
+          "bytes": 281244,
+          "sha256": "a4ccef30afd2d13248846b8b8d8ea858f3182da009ef047319899ed6fa0a5c88",
+          "width": 1774,
+          "height": 887,
+          "visiblePixelsAbove16": 341622,
+          "fullyTransparentPixels": 1056753,
+          "boundsAbove16": [
+            91,
+            475,
+            1656,
+            839
+          ],
+          "edgePixelsAbove16": 0
+        }
+      }
+    },
+    {
+      "id": "impact-water-spray",
+      "role": "Projection humide pour océan et marais",
+      "pivot": {
+        "x": 0.5,
+        "y": 0.9289740698985344
+      },
+      "provenance": "image_gen.imagegen, original project adaptation",
+      "artisticHumanApproval": false,
+      "files": {
+        "png": {
+          "path": "public/game/planet-arrival/v2/impact-water-spray.png",
+          "bytes": 1398531,
+          "sha256": "5324b3c0062a463a5535006ea88b6fb8c7c85888929261b4580064e0124c5e1e",
+          "width": 1774,
+          "height": 887,
+          "visiblePixelsAbove16": 357522,
+          "fullyTransparentPixels": 923057,
+          "boundsAbove16": [
+            113,
+            443,
+            1667,
+            827
+          ],
+          "edgePixelsAbove16": 0
+        },
+        "webp": {
+          "path": "public/game/planet-arrival/v2/impact-water-spray.webp",
+          "bytes": 383254,
+          "sha256": "dcc063ce0ac476b9f59c26736711c33293642dffbb6963f2c5e23a3d812a350b",
+          "width": 1774,
+          "height": 887,
+          "visiblePixelsAbove16": 357522,
+          "fullyTransparentPixels": 923057,
+          "boundsAbove16": [
+            113,
+            443,
+            1667,
+            827
+          ],
+          "edgePixelsAbove16": 0
+        }
+      }
+    }
+  ]
+}

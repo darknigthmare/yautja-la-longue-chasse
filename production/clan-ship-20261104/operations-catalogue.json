@@ -1,0 +1,1593 @@
+{
+  "version": 1,
+  "extractedAt": "2026-11-05T05:29:57.000Z",
+  "timezone": "Europe/Paris",
+  "branch": "feat/clan-ship-operations-20261105",
+  "checkoutCommit": "a8a472977c17345e4d7548c9acd3f8154525217c",
+  "sourceDigest": "a696209c55003e9b9d8878eb07e7b180f84f5f8b71a8fc02930b48a5b7498aa7",
+  "sourceFiles": [
+    {
+      "path": "app/dev/session.tsx",
+      "bytes": 27408,
+      "sha256": "ecda890cbd07b3ba7b80b55cbfcd5877252e6b3802225261ab4fbefae7020623"
+    },
+    {
+      "path": "app/game/ClanShipHub.tsx",
+      "bytes": 16291,
+      "sha256": "d77dd3fb94577ee0ad2e38fe14bb0af83714152bd3f2418b0777ffa08dda672b"
+    },
+    {
+      "path": "app/game/ClanShipInterior.module.css",
+      "bytes": 12381,
+      "sha256": "be3baff226c7e8575f5eef6a66e81d86a4a4180beb92bee9385d893e2cd3a7bd"
+    },
+    {
+      "path": "app/game/ClanShipInterior.tsx",
+      "bytes": 34572,
+      "sha256": "be082652a8c60f1b8dc89e47542c81903cef060629748c90570f9239b4c83711"
+    },
+    {
+      "path": "app/game/ClanShipOperationsPanel.module.css",
+      "bytes": 8826,
+      "sha256": "2f21cf66851e43f490033e077b2d3f714255c6d803de5c23c565ab3a8013872d"
+    },
+    {
+      "path": "app/game/ClanShipOperationsPanel.tsx",
+      "bytes": 19857,
+      "sha256": "eed9111fe4c3088f7b12a18876f064bca3bbe517575b620c9e8c3807db79c34b"
+    },
+    {
+      "path": "app/game/ClanShipSpaceEncounter.module.css",
+      "bytes": 12555,
+      "sha256": "01295ca35430852d9feb1394c70bb7dd9c9a3e7a4b4457bc757d3c49d5018274"
+    },
+    {
+      "path": "app/game/ClanShipSpaceEncounter.tsx",
+      "bytes": 14907,
+      "sha256": "1ea3ab789ad2045bb402994d9cb51e019a83247eb4dbd15f0fe6cf903c97c8f6"
+    },
+    {
+      "path": "app/game/GameClient.tsx",
+      "bytes": 331743,
+      "sha256": "73eef05f5d9ec1cadfa289b94f18ba06a1765beb82469d746ca5e825adb2712c"
+    },
+    {
+      "path": "app/game/clanShipCrew.ts",
+      "bytes": 671,
+      "sha256": "4ec420a7d38b4c58862937cc6ec57f5ea4d171b458b67d16f5420cb4dbadb2f0"
+    },
+    {
+      "path": "app/game/data.ts",
+      "bytes": 57549,
+      "sha256": "fd8fbe2b1cc51f31bf5573a88a1187e709f2ae3fa1664b8bb55ef0a6530b35f6"
+    },
+    {
+      "path": "app/game/data/homeworldNpcVariantsV84.json",
+      "bytes": 550770,
+      "sha256": "a61de4c3c0b52aa19a485209b4b94beceec54c46bfc3d7f39053e351efe1c0f7"
+    },
+    {
+      "path": "app/game/save.ts",
+      "bytes": 90960,
+      "sha256": "78c7c745a8ceb7151889563cd54a2d1246e5fbd3bbca7131804a64dc13627c20"
+    },
+    {
+      "path": "app/game/shipCatalogue.ts",
+      "bytes": 38039,
+      "sha256": "458d077948c3f3e2f867fdc441e64423808cfb0cea54582b0c61762b1705d396"
+    },
+    {
+      "path": "app/game/shipInteriorKit.ts",
+      "bytes": 4087,
+      "sha256": "b208843fe445af3ceb21504586685645631c4dc58a599b10a5f69bcbfc63d68c"
+    },
+    {
+      "path": "app/game/shipInteriorV22.ts",
+      "bytes": 2998,
+      "sha256": "57c6374f77f60408a7274ab03cfbb80d6b6f685a05284e5437fb90772d83d00b"
+    },
+    {
+      "path": "app/game/systems/clanShipDocking.ts",
+      "bytes": 11213,
+      "sha256": "adcd1bee2a92f8893e8fb31ee1df32a2b009fbaa416db66900a868dac84076cb"
+    },
+    {
+      "path": "app/game/systems/clanShipInterior.ts",
+      "bytes": 18139,
+      "sha256": "2cfab1522c07cfb171527f3f3e2257dbd44be9bb9c50fbcdbff8df55ad44d93d"
+    },
+    {
+      "path": "app/game/systems/clanShipOperations.ts",
+      "bytes": 49521,
+      "sha256": "88b7ce64f121e5f608d754fce8927681d3f705de9f5a66b77d5879c632da3a3b"
+    },
+    {
+      "path": "app/game/systems/clanShipSpaceEncounter.ts",
+      "bytes": 22676,
+      "sha256": "fc83b432bf63fb6ce006ae5b6460c67b389ec4ce113c72d527c9e749a6b0f3a0"
+    },
+    {
+      "path": "app/game/types.ts",
+      "bytes": 19442,
+      "sha256": "dd82b8db49fa7ca7e31d8d0a414a993272d436cbbf5d84564eaa3e4c17bdfe67"
+    },
+    {
+      "path": "public/game/clan-ship/props/manifest.json",
+      "bytes": 7359,
+      "sha256": "a00424abd463b6285b07e34e2547030c4c50279caa180eb92990473ca9a64790"
+    }
+  ],
+  "sourceHasUncommittedChanges": false,
+  "contracts": [
+    {
+      "clanMarksReward": 0,
+      "roomId": "hangar",
+      "prerequisiteIds": [],
+      "steps": [
+        {
+          "id": "berth-register",
+          "roomId": "hangar",
+          "label": "Enregistrer ton poste d’amarrage",
+          "description": "Contrôle le repère de ton vaisseau personnel avec le registre du hangar."
+        },
+        {
+          "id": "medical-baseline",
+          "roomId": "soins",
+          "label": "Effectuer le contrôle de retour",
+          "description": "Vérifie le poste de contrôle et dépose ton relevé médical initial."
+        },
+        {
+          "id": "archive-orientation",
+          "roomId": "archives",
+          "label": "Consulter la doctrine de ce clan",
+          "description": "Lis les règles d’expédition et identifie les responsabilités du visiteur."
+        }
+      ],
+      "missionId": null,
+      "minimumScore": 0,
+      "minimumScans": 0,
+      "spaceKind": null,
+      "id": "welcome-aboard",
+      "kind": "onboarding",
+      "name": "Une place à bord",
+      "summary": "Enregistre ton arrivée, puis rencontre les responsables des soins et des archives.",
+      "briefing": "Fais enregistrer ton arrivée, prends connaissance des usages de bord, puis présente-toi au conseil. Le clan te confiera tes premières responsabilités.",
+      "mission": null
+    },
+    {
+      "clanMarksReward": 15,
+      "roomId": "conseil",
+      "prerequisiteIds": [],
+      "steps": [
+        {
+          "id": "seal-read",
+          "roomId": "hangar",
+          "label": "Lire les témoins du sas",
+          "description": "Relève la position des verrous sur le pupitre du hangar."
+        },
+        {
+          "id": "seal-compare",
+          "roomId": "soins",
+          "label": "Comparer le relevé sanitaire",
+          "description": "Vérifie la correspondance du lot avec le registre des soins."
+        },
+        {
+          "id": "seal-register",
+          "roomId": "archives",
+          "label": "Enregistrer la chaîne de contrôle",
+          "description": "Reporte les deux relevés dans le journal de confinement."
+        },
+        {
+          "id": "seal-close",
+          "roomId": "hangar",
+          "label": "Confirmer la fermeture du circuit",
+          "description": "Contrôle de nouveau les témoins au poste du sas."
+        }
+      ],
+      "missionId": null,
+      "minimumScore": 0,
+      "minimumScans": 0,
+      "spaceKind": null,
+      "id": "ship-seal-check",
+      "kind": "interior",
+      "name": "Le seuil demeure fermé",
+      "summary": "Contrôle une chaîne de confinement entre le hangar, les soins et les archives.",
+      "briefing": "Garde du Seuil attend une procédure complète : un témoin isolé ne prouve pas la fermeture du circuit.",
+      "mission": null
+    },
+    {
+      "clanMarksReward": 20,
+      "roomId": "conseil",
+      "prerequisiteIds": [],
+      "steps": [
+        {
+          "id": "armory-inventory",
+          "roomId": "armurerie",
+          "label": "Inspecter les scellés du râtelier",
+          "description": "Relève les marques des emplacements de l’arsenal."
+        },
+        {
+          "id": "armory-compare",
+          "roomId": "archives",
+          "label": "Comparer les signatures du registre",
+          "description": "Vérifie les correspondances dans le dossier des équipements."
+        },
+        {
+          "id": "armory-reconcile",
+          "roomId": "armurerie",
+          "label": "Clore l’audit du râtelier",
+          "description": "Valide les emplacements concordants auprès de Griffe de Fer."
+        }
+      ],
+      "missionId": null,
+      "minimumScore": 0,
+      "minimumScans": 0,
+      "spaceKind": null,
+      "id": "ship-armory-audit",
+      "kind": "interior",
+      "name": "Les armes répondent de leur porteur",
+      "summary": "Réconcilie un râtelier et son registre avec Griffe de Fer.",
+      "briefing": "Chaque pièce porte une marque. Relève celles du râtelier, compare-les au registre et rends compte à Griffe de Fer.",
+      "mission": null
+    },
+    {
+      "clanMarksReward": 20,
+      "roomId": "conseil",
+      "prerequisiteIds": [],
+      "steps": [
+        {
+          "id": "triage-prepare",
+          "roomId": "soins",
+          "label": "Préparer le poste de triage",
+          "description": "Vérifie les emplacements du nécessaire d’accueil."
+        },
+        {
+          "id": "triage-route",
+          "roomId": "hangar",
+          "label": "Contrôler le point de transfert",
+          "description": "Vérifie le passage prévu depuis le vaisseau personnel."
+        },
+        {
+          "id": "triage-confirm",
+          "roomId": "soins",
+          "label": "Confirmer le parcours médical",
+          "description": "Rends le relevé de préparation au poste de soins."
+        }
+      ],
+      "missionId": null,
+      "minimumScore": 0,
+      "minimumScans": 0,
+      "spaceKind": null,
+      "id": "ship-triage-route",
+      "kind": "interior",
+      "name": "Le chemin du retour",
+      "summary": "Prépare et vérifie la route entre le débarquement et le poste de soins.",
+      "briefing": "Suture Noire veut préparer le prochain retour de chasse. Vérifie le poste de soins et le passage depuis le hangar avant de lui remettre ton relevé.",
+      "mission": null
+    },
+    {
+      "clanMarksReward": 20,
+      "roomId": "conseil",
+      "prerequisiteIds": [],
+      "steps": [
+        {
+          "id": "training-set",
+          "roomId": "entrainement",
+          "label": "Préparer les repères de l’exercice",
+          "description": "Contrôle la disposition des cibles au poste d’entraînement."
+        },
+        {
+          "id": "training-study",
+          "roomId": "trophees",
+          "label": "Étudier la trace d’une chasse",
+          "description": "Lis le dossier d’exposition et relève les limites de l’exercice."
+        },
+        {
+          "id": "training-brief",
+          "roomId": "entrainement",
+          "label": "Présenter la préparation au vétéran",
+          "description": "Expose les repères retenus à Balafre de Cendre."
+        }
+      ],
+      "missionId": null,
+      "minimumScore": 0,
+      "minimumScans": 0,
+      "spaceKind": null,
+      "id": "ship-training-circuit",
+      "kind": "interior",
+      "name": "La trace et le geste",
+      "summary": "Prépare un exercice et confronte son objectif aux archives des trophées.",
+      "briefing": "Balafre de Cendre te confie la préparation d’un exercice. Observe une trace de chasse dans la galerie et choisis les repères que tu présenteras au vétéran.",
+      "mission": null
+    },
+    {
+      "clanMarksReward": 40,
+      "roomId": "conseil",
+      "prerequisiteIds": [],
+      "steps": [],
+      "missionId": "jungle-vey",
+      "minimumScore": 50,
+      "minimumScans": 1,
+      "spaceKind": null,
+      "id": "field-jungle-survey",
+      "kind": "field",
+      "name": "Les traces d’Oseris-IV",
+      "summary": "Termine « Sang dans la canopée » avec au moins un scan et 50 points.",
+      "briefing": "Trace Froide attend des observations fraîches. Accepte ce mandat, puis repars dans la jungle ; le pisteur examinera tes relevés après une extraction réussie.",
+      "mission": {
+        "id": "jungle-vey",
+        "name": "Sang dans la canopée",
+        "targetName": "Commandante Vey"
+      }
+    },
+    {
+      "clanMarksReward": 50,
+      "roomId": "conseil",
+      "prerequisiteIds": [],
+      "steps": [],
+      "missionId": "ice-cryostalker",
+      "minimumScore": 50,
+      "minimumScans": 1,
+      "spaceKind": null,
+      "id": "field-ice-route",
+      "kind": "field",
+      "name": "La route sous la glace",
+      "summary": "Termine « Chaleur sous la glace » avec au moins un scan et 50 points.",
+      "briefing": "Veille des Astres prépare les prochaines routes du clan. Après avoir accepté son mandat, rapporte une nouvelle chasse réussie et tes observations du terrain gelé.",
+      "mission": {
+        "id": "ice-cryostalker",
+        "name": "Chaleur sous la glace",
+        "targetName": "Cryostalker Alpha"
+      }
+    },
+    {
+      "clanMarksReward": 65,
+      "roomId": "conseil",
+      "prerequisiteIds": [
+        "field-jungle-survey"
+      ],
+      "steps": [],
+      "missionId": "volcano-bad-blood",
+      "minimumScore": 60,
+      "minimumScans": 0,
+      "spaceKind": null,
+      "id": "field-bad-blood",
+      "kind": "field",
+      "name": "Le dossier des cendres",
+      "summary": "Termine « Le dernier rite » avec au moins 60 points.",
+      "briefing": "Le conseil te confie un mandat contre le Bad Blood. Reparcours sa piste après avoir accepté le dossier et rapporte le résultat de cette nouvelle chasse.",
+      "mission": {
+        "id": "volcano-bad-blood",
+        "name": "Le dernier rite",
+        "targetName": "Le Bad Blood"
+      }
+    },
+    {
+      "clanMarksReward": 90,
+      "roomId": "conseil",
+      "prerequisiteIds": [
+        "field-ice-route"
+      ],
+      "steps": [],
+      "missionId": "ruins-ancient-guardian",
+      "minimumScore": 60,
+      "minimumScans": 2,
+      "spaceKind": null,
+      "id": "field-ruins-memory",
+      "kind": "field",
+      "name": "Ce que gardent les ruines",
+      "summary": "Termine « Les chasseurs de pierre » avec deux scans et au moins 60 points.",
+      "briefing": "Les archives gardent encore des questions sur les ruines. Accepte ce mandat, observe leurs gardiens et reviens avec les relevés de ta nouvelle expédition.",
+      "mission": {
+        "id": "ruins-ancient-guardian",
+        "name": "Les chasseurs de pierre",
+        "targetName": "Gardien d'obsidienne"
+      }
+    },
+    {
+      "clanMarksReward": 45,
+      "roomId": "conseil",
+      "prerequisiteIds": [],
+      "steps": [],
+      "missionId": null,
+      "minimumScore": 0,
+      "minimumScans": 0,
+      "spaceKind": "escort",
+      "id": "space-screening",
+      "kind": "space",
+      "name": "Ouvrir un passage sûr",
+      "summary": "Conduis une escorte tactique depuis la table du conseil.",
+      "briefing": "Des chasseurs reviennent au vaisseau. Identifie la menace, couvre trois segments de leur route puis ordonne l’extraction. Les membres de ton cercle prépareront la formation avec toi.",
+      "mission": null
+    },
+    {
+      "clanMarksReward": 65,
+      "roomId": "conseil",
+      "prerequisiteIds": [
+        "space-screening"
+      ],
+      "steps": [],
+      "missionId": null,
+      "minimumScore": 0,
+      "minimumScans": 0,
+      "spaceKind": "interception",
+      "id": "space-interception",
+      "kind": "space",
+      "name": "L’interception mesurée",
+      "summary": "Intercepte un bâtiment hostile avant qu’il ne compromette les routes du clan.",
+      "briefing": "Identifie le contact et maîtrise la distance. Réserve assez d’énergie pour neutraliser le bâtiment ou permettre à ton équipe de l’aborder.",
+      "mission": null
+    },
+    {
+      "clanMarksReward": 55,
+      "roomId": "conseil",
+      "prerequisiteIds": [
+        "space-screening"
+      ],
+      "steps": [],
+      "missionId": null,
+      "minimumScore": 0,
+      "minimumScans": 0,
+      "spaceKind": "recovery",
+      "id": "space-recovery",
+      "kind": "space",
+      "name": "Ramener le signal",
+      "summary": "Mène une récupération sous pression puis confirme l’extraction.",
+      "briefing": "Une capsule dérive sous la menace d’un bâtiment hostile. Prépare l’approche de l’équipe, sécurise la récupération puis donne le signal d’extraction.",
+      "mission": null
+    }
+  ],
+  "crew": [
+    {
+      "id": "ash-scar",
+      "name": "Balafre de Cendre",
+      "role": "Vétéran des exercices",
+      "roomId": "entrainement",
+      "summary": "Il demande une préparation complète avant de rejoindre ton cercle.",
+      "effect": "À l’entraînement ; sa coordination réduit les pertes de la formation pendant les opérations spatiales.",
+      "requiredContractIds": [
+        "ship-training-circuit"
+      ],
+      "spaceCrewRole": "veteran",
+      "joinLine": "Tes gestes ont un but. Je préparerai les prochaines sorties avec toi.",
+      "tacticalEffect": {
+        "label": "Vétéran",
+        "effect": "La coordination réduit les pertes de la formation de 2 points par tour."
+      },
+      "art": {
+        "identity": "clan-ship-crew:ash-scar",
+        "role": "instructor",
+        "variantId": "instructor-01",
+        "sourceWidth": 1024,
+        "sourceHeight": 1536,
+        "alphaBounds": {
+          "x": 239,
+          "y": 11,
+          "width": 698,
+          "height": 1514
+        },
+        "motionStatus": "single-pose-static",
+        "src": "/game/homeworld/v84/npcs/instructor/01.png",
+        "materialized": true,
+        "bytes": 2140901,
+        "sha256": "474f1a3dca5c80ac69224f20c69942e3a85d41d390bf320c3a28eb2b345ca4c6"
+      }
+    },
+    {
+      "id": "star-watch",
+      "name": "Veille des Astres",
+      "role": "Navigatrice",
+      "roomId": "conseil",
+      "summary": "Elle attend les données confirmées d’une chasse sur glace.",
+      "effect": "Au conseil ; sa première manœuvre place la formation à portée rapprochée.",
+      "requiredContractIds": [
+        "field-ice-route"
+      ],
+      "spaceCrewRole": "navigator",
+      "joinLine": "Ces relevés méritent une route. Je prendrai place à ta table.",
+      "tacticalEffect": {
+        "label": "Navigation",
+        "effect": "La première manœuvre atteint directement la portée rapprochée."
+      },
+      "art": {
+        "identity": "clan-ship-crew:star-watch",
+        "role": "dock-officer",
+        "variantId": "dock-officer-13",
+        "sourceWidth": 1024,
+        "sourceHeight": 1536,
+        "alphaBounds": {
+          "x": 171,
+          "y": 20,
+          "width": 732,
+          "height": 1475
+        },
+        "motionStatus": "single-pose-static",
+        "src": "/game/homeworld/v84/npcs/dock-officer/13.png",
+        "materialized": true,
+        "bytes": 2214699,
+        "sha256": "f141467282af538a58072f16ee80479dfd0bac71131d8acaf4cc4bf5b023093d"
+      }
+    },
+    {
+      "id": "iron-claw",
+      "name": "Griffe de Fer",
+      "role": "Armurier",
+      "roomId": "armurerie",
+      "summary": "Il vérifie que tu rends compte des équipements confiés.",
+      "effect": "À l’armurerie ; sa préparation renforce les tirs et la neutralisation des moteurs.",
+      "requiredContractIds": [
+        "ship-armory-audit"
+      ],
+      "spaceCrewRole": "armorer",
+      "joinLine": "Tu as rendu leurs marques aux armes. Je suivrai leur préparation.",
+      "tacticalEffect": {
+        "label": "Armurerie",
+        "effect": "Les tirs et la neutralisation infligent 10 points supplémentaires."
+      },
+      "art": {
+        "identity": "clan-ship-crew:iron-claw",
+        "role": "forge-master",
+        "variantId": "forge-master-05",
+        "sourceWidth": 1024,
+        "sourceHeight": 1536,
+        "alphaBounds": {
+          "x": 208,
+          "y": 44,
+          "width": 741,
+          "height": 1435
+        },
+        "motionStatus": "single-pose-static",
+        "src": "/game/homeworld/v84/npcs/forge-master/05.png",
+        "materialized": true,
+        "bytes": 2226217,
+        "sha256": "dd06e20ec327d1303b8bf5da63572c8604ab68b3ba30172762e0f54b0717061a"
+      }
+    },
+    {
+      "id": "cold-trace",
+      "name": "Trace Froide",
+      "role": "Pisteur des archives",
+      "roomId": "archives",
+      "summary": "Il attend une extraction et des observations récentes de la jungle.",
+      "effect": "Aux archives ; il identifie le contact et prépare l’abordage en une seule analyse.",
+      "requiredContractIds": [
+        "field-jungle-survey"
+      ],
+      "spaceCrewRole": "tracker",
+      "joinLine": "La trace subsiste dans ton rapport. Je l’étudierai avec ton cercle.",
+      "tacticalEffect": {
+        "label": "Pistage",
+        "effect": "Une seule analyse révèle l’identification et la solution d’abordage."
+      },
+      "art": {
+        "identity": "clan-ship-crew:cold-trace",
+        "role": "guide",
+        "variantId": "guide-17",
+        "sourceWidth": 1024,
+        "sourceHeight": 1536,
+        "alphaBounds": {
+          "x": 217,
+          "y": 20,
+          "width": 625,
+          "height": 1437
+        },
+        "motionStatus": "single-pose-static",
+        "src": "/game/homeworld/v84/npcs/guide/17.png",
+        "materialized": true,
+        "bytes": 2162015,
+        "sha256": "376d3c7fae52e7e58c8f9aaa681b3b0371124775a9397e1b62dedbca713164eb"
+      }
+    },
+    {
+      "id": "black-suture",
+      "name": "Suture Noire",
+      "role": "Responsable des soins",
+      "roomId": "soins",
+      "summary": "Elle demande un parcours médical préparé jusqu’au hangar.",
+      "effect": "Aux soins ; son assistance réduit les pertes de la formation pendant les engagements.",
+      "requiredContractIds": [
+        "ship-triage-route"
+      ],
+      "spaceCrewRole": "medic",
+      "joinLine": "Tu prépares aussi le retour. Je veillerai sur ce passage.",
+      "tacticalEffect": {
+        "label": "Soins",
+        "effect": "Les pertes subies par la formation sont réduites de 2 points par tour."
+      },
+      "art": {
+        "identity": "clan-ship-crew:black-suture",
+        "role": "healer",
+        "variantId": "healer-07",
+        "sourceWidth": 1024,
+        "sourceHeight": 1536,
+        "alphaBounds": {
+          "x": 164,
+          "y": 11,
+          "width": 757,
+          "height": 1514
+        },
+        "motionStatus": "single-pose-static",
+        "src": "/game/homeworld/v84/npcs/healer/07.png",
+        "materialized": true,
+        "bytes": 2322347,
+        "sha256": "dc792af1b9c348796e5f65e1d8e1374e201b17d0b5e592809e2ce235bf3742f8"
+      }
+    },
+    {
+      "id": "threshold-guard",
+      "name": "Garde du Seuil",
+      "role": "Responsable du confinement",
+      "roomId": "hangar",
+      "summary": "Il exige que toute la chaîne de confinement ait été contrôlée.",
+      "effect": "Au hangar ; il réduit le coût d’abordage et les pertes du transport ou de la capsule.",
+      "requiredContractIds": [
+        "ship-seal-check"
+      ],
+      "spaceCrewRole": "warden",
+      "joinLine": "Aucun témoin n’a été oublié. Nous garderons ensemble ce seuil.",
+      "tacticalEffect": {
+        "label": "Confinement",
+        "effect": "L’abordage coûte 1 énergie ; le transport ou la capsule perd 2 points de moins par attaque."
+      },
+      "art": {
+        "identity": "clan-ship-crew:threshold-guard",
+        "role": "guard",
+        "variantId": "guard-10",
+        "sourceWidth": 1024,
+        "sourceHeight": 1536,
+        "alphaBounds": {
+          "x": 241,
+          "y": 7,
+          "width": 580,
+          "height": 1520
+        },
+        "motionStatus": "single-pose-static",
+        "src": "/game/homeworld/v84/npcs/guard/10.png",
+        "materialized": true,
+        "bytes": 2297091,
+        "sha256": "5be9a2dfc5f4ffb49119ccbff675b96884f5e84684638f2c3a7adbe968f69e8e"
+      }
+    }
+  ],
+  "rooms": [
+    {
+      "id": "hangar",
+      "label": "Hangar du clan",
+      "subtitle": "Baie d’amarrage · vaisseau personnel à quai",
+      "serviceLabel": "Rejoindre le vaisseau personnel",
+      "accent": "#83e3cd",
+      "servicePoint": {
+        "x": 820,
+        "y": 650
+      },
+      "doors": [
+        {
+          "targetRoomId": "soins",
+          "side": "left",
+          "x": 128,
+          "y": 635
+        },
+        {
+          "targetRoomId": "armurerie",
+          "side": "right",
+          "x": 1312,
+          "y": 635
+        }
+      ],
+      "fixtures": [
+        {
+          "id": "berth-console",
+          "art": "console",
+          "x": 625,
+          "y": 575,
+          "width": 275,
+          "height": 165,
+          "footprint": {
+            "x": 515,
+            "y": 530,
+            "width": 220,
+            "height": 45
+          }
+        },
+        {
+          "id": "berth-terminal",
+          "art": "terminal",
+          "x": 1060,
+          "y": 560,
+          "width": 110,
+          "height": 210,
+          "footprint": {
+            "x": 1020,
+            "y": 525,
+            "width": 80,
+            "height": 35
+          }
+        }
+      ]
+    },
+    {
+      "id": "armurerie",
+      "label": "Armurerie",
+      "subtitle": "Râteliers · préparation de l’équipement",
+      "serviceLabel": "Préparer l’équipement",
+      "accent": "#edba7c",
+      "servicePoint": {
+        "x": 700,
+        "y": 635
+      },
+      "doors": [
+        {
+          "targetRoomId": "hangar",
+          "side": "left",
+          "x": 128,
+          "y": 635
+        },
+        {
+          "targetRoomId": "entrainement",
+          "side": "right",
+          "x": 1312,
+          "y": 635
+        }
+      ],
+      "fixtures": [
+        {
+          "id": "armory-rack",
+          "art": "rack",
+          "x": 665,
+          "y": 555,
+          "width": 390,
+          "height": 215,
+          "footprint": {
+            "x": 500,
+            "y": 520,
+            "width": 330,
+            "height": 35
+          }
+        },
+        {
+          "id": "armory-forge",
+          "art": "forge",
+          "x": 1010,
+          "y": 580,
+          "width": 165,
+          "height": 245,
+          "footprint": {
+            "x": 950,
+            "y": 540,
+            "width": 120,
+            "height": 40
+          }
+        }
+      ]
+    },
+    {
+      "id": "entrainement",
+      "label": "Cercle d’entraînement",
+      "subtitle": "Espace de pratique · épreuves du chasseur",
+      "serviceLabel": "Ouvrir l’entraînement",
+      "accent": "#e1bd81",
+      "servicePoint": {
+        "x": 1010,
+        "y": 650
+      },
+      "doors": [
+        {
+          "targetRoomId": "armurerie",
+          "side": "left",
+          "x": 128,
+          "y": 635
+        },
+        {
+          "targetRoomId": "conseil",
+          "side": "right",
+          "x": 1312,
+          "y": 635
+        }
+      ],
+      "fixtures": [
+        {
+          "id": "training-rack",
+          "art": "rack",
+          "x": 410,
+          "y": 565,
+          "width": 300,
+          "height": 170,
+          "footprint": {
+            "x": 280,
+            "y": 535,
+            "width": 260,
+            "height": 30
+          }
+        },
+        {
+          "id": "training-station",
+          "art": "forge",
+          "x": 1000,
+          "y": 575,
+          "width": 165,
+          "height": 245,
+          "footprint": {
+            "x": 940,
+            "y": 535,
+            "width": 120,
+            "height": 40
+          }
+        }
+      ]
+    },
+    {
+      "id": "conseil",
+      "label": "Salle du conseil",
+      "subtitle": "Table stratégique · campagnes du clan",
+      "serviceLabel": "Ouvrir la table holo de guerre du clan",
+      "accent": "#b9dc8b",
+      "servicePoint": {
+        "x": 740,
+        "y": 650
+      },
+      "doors": [
+        {
+          "targetRoomId": "entrainement",
+          "side": "left",
+          "x": 128,
+          "y": 635
+        },
+        {
+          "targetRoomId": "archives",
+          "side": "right",
+          "x": 1312,
+          "y": 635
+        }
+      ],
+      "fixtures": [
+        {
+          "id": "council-table",
+          "art": "console",
+          "x": 730,
+          "y": 580,
+          "width": 560,
+          "height": 325,
+          "footprint": {
+            "x": 480,
+            "y": 515,
+            "width": 500,
+            "height": 65
+          }
+        },
+        {
+          "id": "council-terminal",
+          "art": "terminal",
+          "x": 350,
+          "y": 550,
+          "width": 105,
+          "height": 205,
+          "footprint": {
+            "x": 310,
+            "y": 520,
+            "width": 80,
+            "height": 30
+          }
+        }
+      ]
+    },
+    {
+      "id": "archives",
+      "label": "Archives du clan",
+      "subtitle": "Mémoire · codex et chroniques",
+      "serviceLabel": "Consulter les archives",
+      "accent": "#94ccec",
+      "servicePoint": {
+        "x": 790,
+        "y": 645
+      },
+      "doors": [
+        {
+          "targetRoomId": "conseil",
+          "side": "left",
+          "x": 128,
+          "y": 635
+        },
+        {
+          "targetRoomId": "trophees",
+          "side": "right",
+          "x": 1312,
+          "y": 635
+        }
+      ],
+      "fixtures": [
+        {
+          "id": "archive-terminal",
+          "art": "terminal",
+          "x": 790,
+          "y": 575,
+          "width": 135,
+          "height": 265,
+          "footprint": {
+            "x": 740,
+            "y": 530,
+            "width": 100,
+            "height": 45
+          }
+        },
+        {
+          "id": "archive-console",
+          "art": "console",
+          "x": 390,
+          "y": 555,
+          "width": 265,
+          "height": 160,
+          "footprint": {
+            "x": 280,
+            "y": 520,
+            "width": 220,
+            "height": 35
+          }
+        }
+      ]
+    },
+    {
+      "id": "trophees",
+      "label": "Galerie des trophées",
+      "subtitle": "Mémoire des chasses · atelier rituel",
+      "serviceLabel": "Ouvrir l’atelier des trophées",
+      "accent": "#dcc387",
+      "servicePoint": {
+        "x": 830,
+        "y": 650
+      },
+      "doors": [
+        {
+          "targetRoomId": "archives",
+          "side": "left",
+          "x": 128,
+          "y": 635
+        },
+        {
+          "targetRoomId": "soins",
+          "side": "right",
+          "x": 1312,
+          "y": 635
+        }
+      ],
+      "fixtures": [
+        {
+          "id": "trophy-workbench",
+          "art": "console",
+          "x": 820,
+          "y": 580,
+          "width": 295,
+          "height": 175,
+          "footprint": {
+            "x": 700,
+            "y": 535,
+            "width": 240,
+            "height": 45
+          }
+        },
+        {
+          "id": "trophy-catalogue",
+          "art": "terminal",
+          "x": 400,
+          "y": 565,
+          "width": 115,
+          "height": 225,
+          "footprint": {
+            "x": 355,
+            "y": 530,
+            "width": 90,
+            "height": 35
+          }
+        }
+      ]
+    },
+    {
+      "id": "soins",
+      "label": "Baie médicale",
+      "subtitle": "Soins · récupération entre les chasses",
+      "serviceLabel": "Accéder aux soins",
+      "accent": "#8ce5bd",
+      "servicePoint": {
+        "x": 740,
+        "y": 655
+      },
+      "doors": [
+        {
+          "targetRoomId": "trophees",
+          "side": "left",
+          "x": 128,
+          "y": 635
+        },
+        {
+          "targetRoomId": "hangar",
+          "side": "right",
+          "x": 1312,
+          "y": 635
+        }
+      ],
+      "fixtures": [
+        {
+          "id": "medical-bed",
+          "art": "bed",
+          "x": 730,
+          "y": 585,
+          "width": 315,
+          "height": 175,
+          "footprint": {
+            "x": 590,
+            "y": 530,
+            "width": 280,
+            "height": 55
+          }
+        },
+        {
+          "id": "medical-terminal",
+          "art": "terminal",
+          "x": 1030,
+          "y": 550,
+          "width": 105,
+          "height": 205,
+          "footprint": {
+            "x": 990,
+            "y": 520,
+            "width": 80,
+            "height": 30
+          }
+        }
+      ]
+    }
+  ],
+  "geometry": {
+    "width": 1440,
+    "height": 800,
+    "actorRadius": 18,
+    "speed": 300,
+    "interactionReach": 64,
+    "maxFrameSeconds": 0.05,
+    "floor": {
+      "x": 64,
+      "y": 490,
+      "width": 1312,
+      "height": 218
+    }
+  },
+  "space": {
+    "maxTurns": 16,
+    "maxEnergy": 8,
+    "initialEnergy": 5,
+    "scenarios": [
+      {
+        "id": "interception",
+        "title": "Interception du signal hostile",
+        "briefing": "Un bâtiment armé suit les routes du clan. Identifie sa signature et intercepte-le avant qu’il ne transmette la position du convoi.",
+        "objective": "Neutraliser le bâtiment ou couper ses moteurs puis envoyer une équipe d’abordage.",
+        "assetLabel": "Route du clan"
+      },
+      {
+        "id": "escort",
+        "title": "Écran de retour",
+        "briefing": "Des chasseurs regagnent le vaisseau après une expédition. Couvre leur passage pendant qu’un assaillant cherche à isoler le transport.",
+        "objective": "Identifier le contact, rejoindre la couverture, protéger 3 segments de route puis extraire le transport.",
+        "assetLabel": "Transport allié"
+      },
+      {
+        "id": "recovery",
+        "title": "Capsule dans les débris",
+        "briefing": "Une capsule de l’expédition dérive entre les débris. Un bâtiment hostile verrouille la zone : ouvre un passage pour l’équipe de récupération.",
+        "objective": "Analyser le contact, neutraliser sa propulsion ou l’affaiblir, aborder à courte portée puis extraire la capsule.",
+        "assetLabel": "Capsule à récupérer"
+      }
+    ],
+    "orders": [
+      {
+        "id": "scan",
+        "label": "Analyser le contact",
+        "detail": "Révèle la signature, puis prépare la solution d’abordage. Le contact réagit pendant l’analyse.",
+        "cost": 1
+      },
+      {
+        "id": "manoeuvre",
+        "label": "Manœuvrer",
+        "detail": "Resserre la formation et réduit les pertes de ce tour. À portée courte, revient en couverture tactique.",
+        "cost": 1
+      },
+      {
+        "id": "recharge",
+        "label": "Répartir l’énergie",
+        "detail": "Récupère 4 unités d’énergie. L’exposition accrue rend la prochaine attaque plus dangereuse.",
+        "cost": 0
+      },
+      {
+        "id": "brace",
+        "label": "Former un écran",
+        "detail": "Récupère jusqu’à 2 unités d’énergie et couvre le groupe. En escorte, protège un segment après identification et rapprochement.",
+        "cost": 0
+      },
+      {
+        "id": "disrupt",
+        "label": "Neutraliser les moteurs",
+        "detail": "Endommage la propulsion du contact identifié. À 0, l’adversaire est neutralisé et l’abordage devient possible.",
+        "cost": 3
+      },
+      {
+        "id": "fire",
+        "label": "Tir concentré",
+        "detail": "Frappe le bâtiment identifié. En interception, sa neutralisation complète conclut l’opération.",
+        "cost": 3
+      },
+      {
+        "id": "board",
+        "label": "Envoyer l’abordage",
+        "detail": "À courte portée, engage l’équipe après une analyse complète et une neutralisation suffisante.",
+        "cost": 2
+      },
+      {
+        "id": "extract",
+        "label": "Extraire l’équipe",
+        "detail": "Récupère le transport ou la capsule lorsque son objectif est sécurisé.",
+        "cost": 2
+      },
+      {
+        "id": "withdraw",
+        "label": "Rompre le contact",
+        "detail": "Rappelle la formation. L’opération se termine sans victoire ni récompense.",
+        "cost": 0
+      }
+    ]
+  },
+  "backgrounds": [
+    {
+      "id": "room-hangar",
+      "roomId": "hangar",
+      "src": "/game/clan-ship/interiors/hangar-v1.webp",
+      "materialized": true,
+      "bytes": 244498,
+      "sha256": "1bf116bf19693f5828d5a63695ecea335c0c5208e2fc1e360df9a7282a861907"
+    },
+    {
+      "id": "room-armurerie",
+      "roomId": "armurerie",
+      "src": "/game/clan-ship/interiors/armurerie-v1.webp",
+      "materialized": true,
+      "bytes": 210174,
+      "sha256": "a11bb2ea4c9427b661c177691cd0b53df1c5ad15bde5afbfadceadcd4d58abe3"
+    },
+    {
+      "id": "room-entrainement",
+      "roomId": "entrainement",
+      "src": "/game/clan-ship/interiors/entrainement-v1.webp",
+      "materialized": true,
+      "bytes": 227810,
+      "sha256": "aad83f111beef4da543368d926b83410813ab76388c40da5b6474c316e4c233d"
+    },
+    {
+      "id": "room-conseil",
+      "roomId": "conseil",
+      "src": "/game/clan-ship/interiors/conseil-v1.webp",
+      "materialized": true,
+      "bytes": 253562,
+      "sha256": "87751d973c97ad2910c34dd02bf7286419d76e8fa7b75b5bf31806d5a06947d1"
+    },
+    {
+      "id": "room-archives",
+      "roomId": "archives",
+      "src": "/game/clan-ship/interiors/archives-v1.webp",
+      "materialized": true,
+      "bytes": 269652,
+      "sha256": "49ebe43415f47dd338034964f8533c12585eef0e69c6441c28c9d14019d042fb"
+    },
+    {
+      "id": "room-trophees",
+      "roomId": "trophees",
+      "src": "/game/clan-ship/interiors/trophees-v1.webp",
+      "materialized": true,
+      "bytes": 234882,
+      "sha256": "85ee3c53ec09468bf56732d92faf2f7c456c562a18256529ea8ed33aaaba407e"
+    },
+    {
+      "id": "room-soins",
+      "roomId": "soins",
+      "src": "/game/clan-ship/interiors/soins-v1.webp",
+      "materialized": true,
+      "bytes": 220874,
+      "sha256": "7143eee60290235d76a1fa054e85d5b8f3db2950401861aea55953a0e8866c4d"
+    }
+  ],
+  "props": [
+    {
+      "id": "council-table",
+      "src": "/game/clan-ship/props/council-table-v1.webp",
+      "sourceWidth": 1024,
+      "sourceHeight": 614,
+      "alphaBounds": {
+        "x": 34,
+        "y": 122,
+        "width": 957,
+        "height": 351
+      },
+      "pivot": {
+        "x": 512.5,
+        "y": 473
+      },
+      "originalFile": "art-source/clan-ship-props-v1/council-table-v1.png",
+      "originalWidth": 1620,
+      "originalHeight": 971,
+      "sourceSha256": "2987d182ac6c8e0eec1a88b5f5fa42f97180caefc91a5610ea69abd6605c90aa",
+      "sha256": "ad9f1452c0dac3b460923b9e2d301d98a94c344be37f7f48a5c270147244fc7a",
+      "bytes": 144870,
+      "format": "webp",
+      "alpha": true,
+      "alphaThreshold": 16,
+      "transparentPixels": 408495,
+      "visiblePixels": 212238,
+      "edgeVisiblePixels": 0,
+      "layer": "fixture",
+      "humanArtValidation": false,
+      "materialized": true
+    },
+    {
+      "id": "armory-rack",
+      "src": "/game/clan-ship/props/armory-rack-v1.webp",
+      "sourceWidth": 1024,
+      "sourceHeight": 614,
+      "alphaBounds": {
+        "x": 59,
+        "y": 14,
+        "width": 906,
+        "height": 575
+      },
+      "pivot": {
+        "x": 512,
+        "y": 589
+      },
+      "originalFile": "art-source/clan-ship-props-v1/armory-rack-v1.png",
+      "originalWidth": 1619,
+      "originalHeight": 971,
+      "sourceSha256": "d21a5c7c121852d2f1ebbdfc68d13855edb2d3284d232507ec8b18a0cb8fa57c",
+      "sha256": "e94a37c54d70030760792c91ce31c916a50fee656dbc663c7120820fda2148ae",
+      "bytes": 213156,
+      "format": "webp",
+      "alpha": true,
+      "alphaThreshold": 16,
+      "transparentPixels": 261901,
+      "visiblePixels": 359227,
+      "edgeVisiblePixels": 0,
+      "layer": "fixture",
+      "humanArtValidation": false,
+      "materialized": true
+    },
+    {
+      "id": "medical-bed",
+      "src": "/game/clan-ship/props/medical-bed-v1.webp",
+      "sourceWidth": 1024,
+      "sourceHeight": 538,
+      "alphaBounds": {
+        "x": 24,
+        "y": 101,
+        "width": 977,
+        "height": 333
+      },
+      "pivot": {
+        "x": 512.5,
+        "y": 434
+      },
+      "originalFile": "art-source/clan-ship-props-v1/medical-bed-v1.png",
+      "originalWidth": 1730,
+      "originalHeight": 909,
+      "sourceSha256": "0dc45e893dd032c81061e6cf4da2b84f370dd1f174c3a666dcd486ab469cf0a4",
+      "sha256": "b291617187af6d05b33fd8740621ede91d1856b9058db85ca0cc17847026de0f",
+      "bytes": 137336,
+      "format": "webp",
+      "alpha": true,
+      "alphaThreshold": 16,
+      "transparentPixels": 334995,
+      "visiblePixels": 205998,
+      "edgeVisiblePixels": 0,
+      "layer": "fixture",
+      "humanArtValidation": false,
+      "materialized": true
+    },
+    {
+      "id": "archive-terminal",
+      "src": "/game/clan-ship/props/archive-terminal-v1.webp",
+      "sourceWidth": 533,
+      "sourceHeight": 1024,
+      "alphaBounds": {
+        "x": 70,
+        "y": 29,
+        "width": 395,
+        "height": 969
+      },
+      "pivot": {
+        "x": 267.5,
+        "y": 998
+      },
+      "originalFile": "art-source/clan-ship-props-v1/archive-terminal-v1.png",
+      "originalWidth": 905,
+      "originalHeight": 1738,
+      "sourceSha256": "65f12e69aed25a5b09bda536cff80c714a144c32be72e642c120cab66b6c25b4",
+      "sha256": "a8f2e997c3b1c5023f703dfa8f8b5c678387a14f66a7943e9ab7cef406bb767b",
+      "bytes": 144098,
+      "format": "webp",
+      "alpha": true,
+      "alphaThreshold": 16,
+      "transparentPixels": 303894,
+      "visiblePixels": 234910,
+      "edgeVisiblePixels": 0,
+      "layer": "fixture",
+      "humanArtValidation": false,
+      "materialized": true
+    },
+    {
+      "id": "training-station",
+      "src": "/game/clan-ship/props/training-station-v1.webp",
+      "sourceWidth": 683,
+      "sourceHeight": 1024,
+      "alphaBounds": {
+        "x": 39,
+        "y": 68,
+        "width": 606,
+        "height": 892
+      },
+      "pivot": {
+        "x": 342,
+        "y": 960
+      },
+      "originalFile": "art-source/clan-ship-props-v1/training-station-v1.png",
+      "originalWidth": 1024,
+      "originalHeight": 1536,
+      "sourceSha256": "4a51ed89d8e422f96217c0d529f6925216e23d6b11be15fbf4aea5228b2ae1f4",
+      "sha256": "32e7ed6b4d3b612f1317cbd3265d71fa030c5bb1efb81f5b63ceb6f72a13f037",
+      "bytes": 177044,
+      "format": "webp",
+      "alpha": true,
+      "alphaThreshold": 16,
+      "transparentPixels": 443886,
+      "visiblePixels": 245230,
+      "edgeVisiblePixels": 0,
+      "layer": "fixture",
+      "humanArtValidation": false,
+      "materialized": true
+    },
+    {
+      "id": "berth-console",
+      "src": "/game/clan-ship/props/berth-console-v1.webp",
+      "sourceWidth": 1024,
+      "sourceHeight": 614,
+      "alphaBounds": {
+        "x": 34,
+        "y": 93,
+        "width": 961,
+        "height": 453
+      },
+      "pivot": {
+        "x": 514.5,
+        "y": 546
+      },
+      "originalFile": "art-source/clan-ship-props-v1/berth-console-v1.png",
+      "originalWidth": 1620,
+      "originalHeight": 971,
+      "sourceSha256": "1be5243d83a25f3d0a6f17877d26bde6a164144ae1663209234aec634696f34b",
+      "sha256": "b60d71e8c511164faf71bb215ed1ed84047f7b1852b1bf44a51498b0265418f7",
+      "bytes": 174630,
+      "format": "webp",
+      "alpha": true,
+      "alphaThreshold": 16,
+      "transparentPixels": 342403,
+      "visiblePixels": 275961,
+      "edgeVisiblePixels": 0,
+      "layer": "fixture",
+      "humanArtValidation": false,
+      "materialized": true
+    },
+    {
+      "id": "trophy-workbench",
+      "src": "/game/clan-ship/props/trophy-workbench-v1.webp",
+      "sourceWidth": 1024,
+      "sourceHeight": 603,
+      "alphaBounds": {
+        "x": 52,
+        "y": 25,
+        "width": 919,
+        "height": 519
+      },
+      "pivot": {
+        "x": 511.5,
+        "y": 544
+      },
+      "originalFile": "art-source/clan-ship-props-v1/trophy-workbench-v1.png",
+      "originalWidth": 1635,
+      "originalHeight": 962,
+      "sourceSha256": "08f331370a3ad9266a6bd48cb41a36ee604179527856686333571f484670b9fa",
+      "sha256": "b3d0241516aa530ebd60a9c74e7aca05115ac1bc97535cbb6274f6b3e9e63aed",
+      "bytes": 160024,
+      "format": "webp",
+      "alpha": true,
+      "alphaThreshold": 16,
+      "transparentPixels": 371967,
+      "visiblePixels": 233323,
+      "edgeVisiblePixels": 0,
+      "layer": "fixture",
+      "humanArtValidation": false,
+      "materialized": true
+    },
+    {
+      "id": "armory-forge",
+      "src": "/game/clan-ship/props/armory-forge-v1.webp",
+      "sourceWidth": 683,
+      "sourceHeight": 1024,
+      "alphaBounds": {
+        "x": 29,
+        "y": 72,
+        "width": 626,
+        "height": 885
+      },
+      "pivot": {
+        "x": 342,
+        "y": 957
+      },
+      "originalFile": "art-source/clan-ship-props-v1/armory-forge-v1.png",
+      "originalWidth": 1024,
+      "originalHeight": 1536,
+      "sourceSha256": "d5f080f7a7295488ff240b3cc6cd9b8c1ae30a29f290bb18cec32b1d1cc9151a",
+      "sha256": "d4d2f985ecede36d12d5138047a215e2b524133dbbf5aaa14c505cba9198588e",
+      "bytes": 217542,
+      "format": "webp",
+      "alpha": true,
+      "alphaThreshold": 16,
+      "transparentPixels": 317197,
+      "visiblePixels": 373368,
+      "edgeVisiblePixels": 0,
+      "layer": "fixture",
+      "humanArtValidation": false,
+      "materialized": true
+    }
+  ],
+  "sharedArt": [
+    {
+      "id": "shared-navigation-console",
+      "name": "Console de navigation réemployée",
+      "use": "archives",
+      "src": "/game/ship-interior/v21/console-navigation.webp",
+      "sourceWidth": 1536,
+      "sourceHeight": 1024,
+      "width": 240,
+      "height": 160,
+      "pivot": {
+        "x": 120,
+        "y": 160
+      },
+      "alphaBounds": {
+        "x": 103,
+        "y": 282,
+        "width": 1316,
+        "height": 629
+      },
+      "layer": "fixtures",
+      "materialized": true,
+      "bytes": 126112,
+      "sha256": "64091fd62bc94577fe85fe152bd64dba7cea9933eafc5a148042d1e763adbb2a"
+    },
+    {
+      "id": "shared-archive-terminal",
+      "name": "Terminal de poste réemployé",
+      "use": "hangar, conseil, trophées et soins",
+      "src": "/game/ship-interior/v22/archive-terminal.webp",
+      "sourceWidth": 1024,
+      "sourceHeight": 1536,
+      "alphaBounds": {
+        "x": 144,
+        "y": 47,
+        "width": 734,
+        "height": 1428
+      },
+      "width": 128.50140056022408,
+      "height": 249.99999999999997,
+      "pivot": {
+        "x": 64.25070028011204,
+        "y": 249.99999999999997
+      },
+      "sizeBasis": "alpha-bounds",
+      "layer": "fixtures",
+      "materialized": true,
+      "bytes": 153362,
+      "sha256": "b05026ffcb7e52fa1b4792cfda820e8ae6e7ed072359ac3e02762bacd5a34ef6"
+    },
+    {
+      "id": "shared-armory-rack",
+      "name": "Râtelier réemployé",
+      "use": "entraînement",
+      "src": "/game/ship-interior/v22/armory-rack.webp",
+      "sourceWidth": 1536,
+      "sourceHeight": 1024,
+      "alphaBounds": {
+        "x": 38,
+        "y": 137,
+        "width": 1459,
+        "height": 734
+      },
+      "width": 437.30245231607626,
+      "height": 220,
+      "pivot": {
+        "x": 218.65122615803813,
+        "y": 220
+      },
+      "sizeBasis": "alpha-bounds",
+      "layer": "fixtures",
+      "materialized": true,
+      "bytes": 169014,
+      "sha256": "b4a7f41b836e3d8db98311e87bce348b54b4831024d84141aab41dbc0e295d2f"
+    },
+    {
+      "id": "shared-door-frame",
+      "name": "Cadre de porte",
+      "use": "portes des sept salles",
+      "src": "/game/ship-interior/v21/door-frame.webp",
+      "sourceWidth": 1023,
+      "sourceHeight": 1537,
+      "width": 146,
+      "height": 220,
+      "pivot": {
+        "x": 73,
+        "y": 220
+      },
+      "alphaBounds": {
+        "x": 97,
+        "y": 41,
+        "width": 827,
+        "height": 1450
+      },
+      "aperture": {
+        "x": 243,
+        "y": 175,
+        "width": 536,
+        "height": 1316
+      },
+      "layer": "foreground",
+      "materialized": true,
+      "bytes": 72468,
+      "sha256": "7ad88ed29fb78b84cab555bc110793ed600e0024249410937903361a183934ab"
+    },
+    {
+      "id": "shared-door-leaf",
+      "name": "Battant de porte",
+      "use": "portes des sept salles",
+      "src": "/game/ship-interior/v21/door-leaf.webp",
+      "sourceWidth": 941,
+      "sourceHeight": 1672,
+      "width": 101,
+      "height": 180,
+      "pivot": {
+        "x": 50.5,
+        "y": 180
+      },
+      "alphaBounds": {
+        "x": 201,
+        "y": 30,
+        "width": 537,
+        "height": 1616
+      },
+      "layer": "interactive",
+      "materialized": true,
+      "bytes": 122512,
+      "sha256": "a8aadccce21c3109be1b306a02fa19a6fb2216313e51aa9521c662e22c80e0b1"
+    },
+    {
+      "id": "shared-mothership",
+      "name": "Vaisseau mère AVP",
+      "use": "approche collective",
+      "src": "/game/ships/v14/avp-predator-mothership.webp",
+      "materialized": true,
+      "bytes": 89754,
+      "sha256": "7bd67240d2ef6f4df2717219420aeea9083a1a5395e994c98cb0bcc4c824c907"
+    },
+    {
+      "id": "shared-personal-classic",
+      "name": "Coque personnelle classique",
+      "use": "exemple de coque personnelle ; le rendu réel suit la coque possédée",
+      "src": "/game/ships/v12/classic-predator-spaceship.webp",
+      "materialized": true,
+      "bytes": 154650,
+      "sha256": "bb374f95f28dad53ce8ed745dde6f6a18c4f9038e0181b1714eec2f6c5991f7a"
+    }
+  ]
+}

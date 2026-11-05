@@ -682,6 +682,8 @@ export interface SaveGame {
   shipAcquisitionV89?: ShipAcquisitionStateV89 | null;
   /** Visit to the AVP clan mothership; independent from the player's selected hull. */
   clanShipDocking?: import("./systems/clanShipDocking").ClanShipDockingState | null;
+  /** Clan mandate, accepted contracts and recruited crew share the campaign transaction. */
+  clanShipOperations?: import("./systems/clanShipOperations").ClanShipOperationsState | null;
   /** Separate orbital castle visit, bound to this campaign and its personal hull. */
   wolfCastle?: import("./systems/wolfCastle").WolfCastleVisit | null;
   /** Arrival and frozen start configuration are written in one campaign transaction. */
