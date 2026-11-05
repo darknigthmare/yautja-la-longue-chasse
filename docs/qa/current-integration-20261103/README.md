@@ -405,9 +405,9 @@ historiques ci-dessus restent inchangées.
 | --- | --- |
 | Entrées | 2 158 |
 | Sources applicatives | 1 205 |
-| Octets des entrées | 1 092 273 564 |
+| Octets des entrées | 1 092 273 567 |
 | Octets du document JSON | 401 252 |
-| SHA-256 du document | `a25c000689257c36258adf2014463e592b7df4bdd8c91a43c66dfd138b7cd161` |
+| SHA-256 du document | `b6a6e6f603aa1846da741329a183dbf1cc68eb3feff8f788e87f90471b23e612` |
 
 Les 682 entrées historiques absentes du checkout partiel ont été matérialisées
 depuis leurs objets Git déjà disponibles, après contrôle individuel de taille et
@@ -415,7 +415,10 @@ de SHA-256. Le générateur officiel `--write`, puis sa vérification `--check`,
 ont donc relu les fichiers réels. Aucune substitution différentielle du
 générateur n’est utilisée pour ce relevé.
 
-La suite locale combinée a réussi 296 tests sans échec ni test ignoré. Le lint
+La suite locale combinée, sur les sources publiées dans `f38446f4c049e2f0eb1878de881793398f3f4bbb`,
+a réussi 296 tests sans échec ni test ignoré. Le seul changement applicatif
+suivant corrige le nom du contrat en « Les traces d’Oseris-IV », conformément à
+`mission.planetName` ; la CI suivante doit qualifier cette nouvelle tête. Le lint
 strict des fichiers touchés et `npm run build:production` ont réussi. Le détail,
 les empreintes des sources et les limites sont conservés dans
 [`local-verification.json`](../../../production/clan-ship-20261104/qa-operations/local-verification.json).

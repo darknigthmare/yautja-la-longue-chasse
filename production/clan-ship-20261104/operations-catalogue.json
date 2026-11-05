@@ -1,10 +1,10 @@
 {
   "version": 1,
-  "extractedAt": "2026-11-05T04:34:14.150Z",
+  "extractedAt": "2026-11-05T04:42:46.293Z",
   "timezone": "Europe/Paris",
   "branch": "feat/clan-ship-operations-20261105",
-  "checkoutCommit": "f623fefeb4987d725c369da646af0e5b9753f47f",
-  "sourceDigest": "c8a06e7f59bb4c798ca154011b7adc03724fe4e219ac3f8c454c199926bc22af",
+  "checkoutCommit": "b2b03caca80cc782ee11aa3472bff058fbb23fe1",
+  "sourceDigest": "a696209c55003e9b9d8878eb07e7b180f84f5f8b71a8fc02930b48a5b7498aa7",
   "sourceFiles": [
     {
       "path": "app/dev/session.tsx",
@@ -98,8 +98,8 @@
     },
     {
       "path": "app/game/systems/clanShipOperations.ts",
-      "bytes": 49518,
-      "sha256": "4232c2eba3d7c57f79ff0835161ea8c8bae3608a815e49fcbf6131df69a8ae2c"
+      "bytes": 49521,
+      "sha256": "88b7ce64f121e5f608d754fce8927681d3f705de9f5a66b77d5879c632da3a3b"
     },
     {
       "path": "app/game/systems/clanShipSpaceEncounter.ts",
@@ -311,7 +311,7 @@
       "spaceKind": null,
       "id": "field-jungle-survey",
       "kind": "field",
-      "name": "Les traces d’Osiris",
+      "name": "Les traces d’Oseris-IV",
       "summary": "Termine « Sang dans la canopée » avec au moins un scan et 50 points.",
       "briefing": "Trace Froide attend des observations fraîches. Accepte ce mandat, puis repars dans la jungle ; le pisteur examinera tes relevés après une extraction réussie.",
       "mission": {

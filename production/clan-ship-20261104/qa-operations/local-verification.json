@@ -134,5 +134,12 @@
       "sourceSha256": "c934188f1137bb406d1bf778e0fe388a10b0633d93383ced43891bf2c726c685",
       "change": "Terminal carriage returns and trailing whitespace removed; all lines and result content retained."
     }
+  },
+  "qualifiedRemoteCommit": "f38446f4c049e2f0eb1878de881793398f3f4bbb",
+  "qualifiedTree": "e8324fd15adaf4979ed07e64826fba685fc77fb7",
+  "subsequentSourceChange": {
+    "path": "app/game/systems/clanShipOperations.ts",
+    "change": "Contract label corrected from Les traces d’Osiris to Les traces d’Oseris-IV to match the native planet name; no rule, ID, save or reward change.",
+    "qualification": "The recorded local run retains the original source hashes. The following CI run must qualify the corrected commit."
   }
 }

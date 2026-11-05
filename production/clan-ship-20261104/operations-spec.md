@@ -110,7 +110,7 @@ Tous les IDs sont stables. Les intitulés narratifs ci-dessous peuvent être aju
 | `ship-armory-audit` | Les armes répondent de leur porteur / intérieur | Armurerie → archives → armurerie ; comparer matériel et relevés | Preuve de Griffe de Fer |
 | `ship-triage-route` | Le chemin du retour / intérieur | Soins → hangar → soins ; vérifier une procédure de retour | Preuve de Suture Noire |
 | `ship-training-circuit` | La trace et le geste / intérieur | Entraînement → trophées → entraînement ; préparer et commenter le circuit | Preuve de Balafre de Cendre |
-| `field-jungle-survey` | Les traces d'Osiris / terrain | Chasse `jungle-vey` réussie ; score ≥ 50, au moins 1 scan réel | Preuve de Trace Froide |
+| `field-jungle-survey` | Les traces d’Oseris-IV / terrain | Chasse `jungle-vey` réussie ; score ≥ 50, au moins 1 scan réel | Preuve de Trace Froide |
 | `field-ice-route` | La route sous la glace / terrain | Chasse `ice-cryostalker` réussie ; score ≥ 50, au moins 1 scan réel | Preuve de Veille des Astres |
 | `field-bad-blood` | Le dossier des cendres / terrain | Chasse `volcano-bad-blood` réussie ; score ≥ 60 ; aucun scan supplémentaire imposé | Contrat spécial de clan ; aucun statut universel de caste inventé |
 | `field-ruins-memory` | Ce que gardent les ruines / terrain | Chasse `ruins-ancient-guardian` réussie ; score ≥ 60, au moins 2 scans réels | Contrat secondaire de mémoire et de relevé |
@@ -421,7 +421,7 @@ Une ligne passe de « À vérifier » à « Vérifié » uniquement lorsque sa p
 
 ## 17. Preuves locales de cette extension
 
-La source vérifiée est enregistrée fichier par fichier dans [qa-operations/local-verification.json](qa-operations/local-verification.json), avec les empreintes des journaux. Le catalogue de contenu possède sa propre empreinte couvrant ses vingt-deux fichiers d’entrée ; ces périmètres sont explicites et leurs sources communes concordent. Aucun de ces identifiants n’est présenté comme le futur commit publié.
+La source vérifiée est enregistrée fichier par fichier dans [qa-operations/local-verification.json](qa-operations/local-verification.json), avec les empreintes des journaux. Le catalogue de contenu possède sa propre empreinte couvrant ses vingt-deux fichiers d’entrée ; ces périmètres sont explicites. Les preuves locales conservent leur empreinte historique `c8a06e7f…`. La révision de libellé « Les traces d’Oseris-IV » change uniquement le nom du contrat `field-jungle-survey` et l’empreinte de `clanShipOperations.ts` dans le nouveau catalogue ; aucun ancien journal n’est réattribué à ces nouveaux octets. Aucun de ces identifiants n’est présenté comme le futur commit publié.
 
 | Vérification réellement obtenue | Résultat local | Limite conservée |
 |---|---|---|

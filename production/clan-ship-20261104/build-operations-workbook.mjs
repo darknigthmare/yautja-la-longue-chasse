@@ -271,7 +271,7 @@ await fs.writeFile(path.join(outputDir, 'summary-inspection.ndjson'), summary.nd
 
 const renderRanges = [
   ['Opérations', 'A1:I15', '01-operations'], ['Opérations', `A${f.last - 5}:L${f.last}`, '01b-suites'],
-  ['Contrats', 'A1:J14', '02-contracts'], ['Contrats', 'K9:N16', '02b-contract-controls'],
+  ['Contrats', 'A1:J14', '02-contracts'], ['Contrats', 'K9:N16', '02b-contract-controls'], ['Contrats', 'A14:F19', '02c-contract-names'],
   ['Étapes à bord', 'A1:I11', '03-interior-steps'],
   ['Équipage', 'A1:F13', '04-crew'], ['Équipage', 'G7:L13', '04b-crew-art'],
   ['Espace', 'A1:H10', '05-space'], ['Espace', 'A13:H24', '05b-space-orders'],

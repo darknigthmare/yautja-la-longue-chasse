@@ -83,7 +83,7 @@ export const CLAN_SHIP_CONTRACTS: readonly ClanShipContractDefinition[] = [
       { id: 'training-study', roomId: 'trophees', label: 'Étudier la trace d’une chasse', description: 'Lis le dossier d’exposition et relève les limites de l’exercice.' },
       { id: 'training-brief', roomId: 'entrainement', label: 'Présenter la préparation au vétéran', description: 'Expose les repères retenus à Balafre de Cendre.' },
     ] }),
-  contract({ id: 'field-jungle-survey', kind: 'field', name: 'Les traces d’Osiris',
+  contract({ id: 'field-jungle-survey', kind: 'field', name: 'Les traces d’Oseris-IV',
     summary: 'Termine « Sang dans la canopée » avec au moins un scan et 50 points.',
     briefing: 'Trace Froide attend des observations fraîches. Accepte ce mandat, puis repars dans la jungle ; le pisteur examinera tes relevés après une extraction réussie.',
     clanMarksReward: 40, missionId: 'jungle-vey', minimumScore: 50, minimumScans: 1 }),
