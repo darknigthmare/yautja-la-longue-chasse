@@ -445,13 +445,38 @@ La note parlait de « Glacier Moon » et « Swamp Moon » : elles deviennent des
 | Harek | rival du départ O6 | Bad Blood possible ou chef du clan rival |
 | OWLF, époque future | unité secrète de la CIA de *Predator 2* (Other Worldly Life Forms) | descendants de l'OWLF qui traquent les Yautja à l'époque du jeu |
 | Chasseurs humains de Yautja | Project Stargazer (*The Predator*), Reapers (roman *Hunters and Hunted*), Predator Hunters de Jaya Soames (comics), Spearhead (*Xenogenesis*) | contrats et embuscades contre le joueur, captures et évasions |
-| USS Tentalus (crossover) | ton jeu *Alien USS Tentalus* | mission annexe : le joueur rencontre l'USS Tentalus ; détails à reprendre de ta bible d'*Alien USS Tentalus*, que je n'ai pas ici |
+| USS Tentalus (crossover) | ton jeu *Alien USS Tentalus* | *mission annexe « Le silence d'Asphodèle », détaillée ci-dessous* |
 
 ### Modes annexes
 
 **Décision :** The Pit et Game Reserve restent des modes à part, débloqués par la campagne. Proposition : The Pit s'ouvre à Young Blood (premiers duels) ; Game Reserve s'ouvre à Unblooded (chasses d'entraînement du pack).
 
+### Quatza-Rij, symbole de clan, ordre de production
+
+- **Design du Quatza-Rij :** silhouette déduite du masque cérémoniel de Steve Wang (forme du crâne, cornes, texture de peau), en grand quadrupède prédateur. Le masque des Anciens doit pouvoir être lu comme taillé dans sa tête.
+- **Symbole et couleurs du clan :** dessinés par le joueur dans un éditeur de glyphes à la fondation ; le clan d'origine garde un symbole fixe. Le symbole tracé à l'acide à Blooded est celui du clan d'origine ; le joueur fondateur trace ensuite le sien sur ses trophées et son navire.
+- **Ordre de production :** dans l'ordre (1) pack, régions et Quatza-Rij ; (2) pyramide ; (3) chasses non linéaires ; (4) honneur, Bad Blood et Enforcer.
+
 Sources : [équipes humaines qui chassent les Predators](https://avpcentral.com/predator-hunter-teams).
+
+### Crossover : USS Tantalus
+
+Source : la bible de campagne d'*Aliens: Tantalus Frontier* (dépôt `darknigthmare/aliens-tantalus-frontier`, `docs/narrative/CAMPAGNE_PRINCIPALE.md`). Le vaisseau s'y écrit **USS Tantalus**.
+
+**Ce que dit cette bible :** en 2204, dans le Tantalus Reach, l'USS *Tantalus* (Marines coloniaux) enquête sur un trafic d'organismes vivants de Weyland-Yutani transitant par le réseau de relais QZ de Lethe. La station Asphodèle, en orbite, est silencieuse depuis des mois : un conteneur QZ17 s'est ouvert dans son laboratoire, l'intelligence CASSIUS maintient la quarantaine, l'Echo-8 a barricadé les survivants dans les ponts inférieurs puis a disparu. Sa plaque est retrouvée, jamais son corps.
+
+**Mission annexe *(proposée)* : « Le silence d'Asphodèle »**
+
+- **Accès :** Blooded ou plus, vaisseau personnel ; événement spatial (signal de ruche capté dans le Tantalus Reach). Pour respecter 2204, l'événement s'ouvre dans la chronologie du jeu, ou par une branche Warp si l'époque du jeu est différente.
+- **Déroulé :** le chasseur aborde Asphodèle par l'anneau extérieur, avant l'arrivée du *Tantalus*. Il chasse les Xénomorphes nés du conteneur dans les ponts inférieurs, en restant caché des récupérateurs Crucible et de CASSIUS. Il trouve l'Echo-8 mourant ou mort au combat contre les Xénomorphes.
+- **Choix d'honneur :** l'Echo-8 a combattu en guerrier ; le chasseur peut emporter son corps pour lui rendre honneur (ce qui explique, côté *Tantalus*, qu'on ne retrouve que la plaque), ou le laisser avec une marque d'honneur gravée, comme l'Ancien d'AVP 2004 honore Lex. Le prendre comme trophée est une infraction : il n'a pas été tué par le joueur.
+- **Voie Bad Blood :** la Rogue Space Tribe chasse les IA ; elle peut proposer de « chasser » CASSIUS (cœur de la station comme trophée).
+- **Sortie :** le chasseur part au moment où le *Tantalus* approche ; les Marines trouvent les traces sans comprendre.
+- **Lien retour dans *Tantalus Frontier* :** l'annexe `station-a-echo8` peut montrer la marque yautja ou l'absence du corps, en clin d'œil.
+
+*Production (proposé)* — **Props :** anneau extérieur, pont de contrôle, laboratoire, berceaux QZ17, barricades de l'Echo-8 (réutiliser les assets de *Tantalus Frontier* si les licences des deux dépôts le permettent). **SFX :** alarme de quarantaine, voix de CASSIUS, détecteur de mouvement des Marines. **Musique :** MUS-41.
+
+**À décider :** l'époque du jeu Yautja par rapport à 2204, et le sort de l'Echo-8 (emporté ou laissé), compatible avec le point ouvert n°5 de la bible *Tantalus* (« le fil Echo-8 est-il conservé ? »).
 
 ## Acte I — Youngling (R2-M001 → M006)
 
