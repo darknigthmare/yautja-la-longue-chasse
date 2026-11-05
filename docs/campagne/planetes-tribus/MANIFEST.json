@@ -1,0 +1,124 @@
+{
+  "schema_version": 1,
+  "project": "Yautja : La Longue Chasse",
+  "scope": "Raccord documentaire planètes/tribus V2–V5 à la PR de la bible",
+  "requested_date": "2026-11-05",
+  "repository": "darknigthmare/yautja-la-longue-chasse",
+  "pull_request": 116,
+  "target_branch": "claude/bible-de-campagne",
+  "source_snapshot_commit": "04a14cce268a1572092269fb281304ac10294725",
+  "published_paths_including_this_manifest": 18,
+  "source_counts": {
+    "png_v2": 119,
+    "png_v3": 45,
+    "png_v4": 40,
+    "png_v5": 0,
+    "v5_prepared_jobs": 40,
+    "v37_source_matches": 204,
+    "planet_directions": 15,
+    "community_families": 5
+  },
+  "archive_sha256": {
+    "V2": "7559df362413f29769b358fbd15649cc08736c01afb0996f6064e36f8e4ed4bd",
+    "V3": "1b74f4c3948077b1a6a98903ae51f0daaa349a59d923a1967bb8e57818b04c74",
+    "V4": "5298de3424ea4b3adbcb9b6d2819076339797fd91e87acb845ea8819baca71af",
+    "V5": "f14d66fcf1cfab9bb85b938e9aeb2e721e197ac169fd80c938b12e6b0a178fe4"
+  },
+  "verification": {
+    "documentary_checks_passed": 30,
+    "documentary_checks_failed": 0,
+    "code_changed": false,
+    "binary_assets_changed": false,
+    "new_image_generation_performed": false,
+    "gameplay_executed": false,
+    "human_art_approval_granted": false
+  },
+  "files": [
+    {
+      "path": "docs/campagne/README.md",
+      "bytes": 17076,
+      "sha256": "37100a2282c1a4aa743fd5337da25c586537f59205a2b12da0f1e279adc660cf"
+    },
+    {
+      "path": "docs/campagne/planetes-tribus/ASSETS.md",
+      "bytes": 38788,
+      "sha256": "e4275f16f344b54822414a952b18114f41d21bfde818c7dd8aa2c50b6cafe9bc"
+    },
+    {
+      "path": "docs/campagne/planetes-tribus/DONNEES_ASSETS.json",
+      "bytes": 987650,
+      "sha256": "be4836edf13d89b6cdc43491eb87b706dacf7020cd0a79ce3716a1de45a71363"
+    },
+    {
+      "path": "docs/campagne/planetes-tribus/PLANETES.md",
+      "bytes": 13617,
+      "sha256": "21cdd76027b94beeb8adf9e00c1c3748052bdd9eda2ecdbd17c7b57b29f74b3c"
+    },
+    {
+      "path": "docs/campagne/planetes-tribus/RACCORD_EXISTANT.json",
+      "bytes": 413249,
+      "sha256": "6b29ad162e4751745f620d304f96d07887296f89cb24fac3d3b1598af2d3a3eb"
+    },
+    {
+      "path": "docs/campagne/planetes-tribus/RACCORD_EXISTANT.md",
+      "bytes": 17138,
+      "sha256": "ee48a8ab27eab0c2b72eac39dd479f0c7763e6f1819d7aae283d6e8aa4ba2e29"
+    },
+    {
+      "path": "docs/campagne/planetes-tribus/README.md",
+      "bytes": 8822,
+      "sha256": "8c9c210ee6b019418c7f12b566e0a67d440f0daabe455546821fd3963972be1f"
+    },
+    {
+      "path": "docs/campagne/planetes-tribus/REPRISE.md",
+      "bytes": 20398,
+      "sha256": "fc4aa46f9581bd34ac9eaab9134d0d5d8ce550fa3e85cd2b2bfbe4bd035df1bc"
+    },
+    {
+      "path": "docs/campagne/planetes-tribus/REPRISE_V5.json",
+      "bytes": 154895,
+      "sha256": "692e0faa67abd8d93baa08749931e95ec9aa5e68155cf0848e88112235ff69cf"
+    },
+    {
+      "path": "docs/campagne/planetes-tribus/SCENARIOS_CIVILS.md",
+      "bytes": 44201,
+      "sha256": "7fe982b411a61a8216b94a84c4251109b36744becd73c989c38c681ef00cc34d"
+    },
+    {
+      "path": "docs/campagne/planetes-tribus/SOURCES_LORE.json",
+      "bytes": 13507,
+      "sha256": "e0a542ee1290d178b0d315bf98a64d1b8d68c46dddd7a69248dbd48d1f583a27"
+    },
+    {
+      "path": "docs/campagne/planetes-tribus/SOURCES_LORE.md",
+      "bytes": 12741,
+      "sha256": "024009961e42aa9a8053dc85467d993d1e6ee1c602abe41232ad0f47d8025d28"
+    },
+    {
+      "path": "docs/campagne/planetes-tribus/TEXTES_SOURCE.json",
+      "bytes": 62173,
+      "sha256": "27f9bc00b27c1d230dd44fc0e43d4f96f70bc14e283327e435d4f5e124f7c0b8"
+    },
+    {
+      "path": "docs/campagne/planetes-tribus/TRIBUS.md",
+      "bytes": 18626,
+      "sha256": "f0c21ebd98236776b9ebf77b77de7d9ebfeeaccbcc5a233606d32ee2ac5f28e2"
+    },
+    {
+      "path": "docs/campagne/planetes-tribus/VERIFICATION.md",
+      "bytes": 7683,
+      "sha256": "dd3e283263ffe560634759ae8aa0a7e1eba7a6f9357fb15fec63023adc26d1ea"
+    },
+    {
+      "path": "docs/campagne/planetes-tribus/VERIFICATION_ARCHIVES.json",
+      "bytes": 9090,
+      "sha256": "eefc6b0e45a7c64a7ab7db13bc116707bbbc8b59329d053a60d8c17e48e3d4bd"
+    },
+    {
+      "path": "docs/campagne/planetes-tribus/VERIFICATION_DOCUMENTAIRE.json",
+      "bytes": 3739,
+      "sha256": "b2f19d69e4ae5f46435a802bf3f5260581b25464bd603eac96f8124ce63634b0"
+    }
+  ],
+  "self_hash_note": "Ce manifeste ne contient pas sa propre empreinte ; le commit Git fixe son identité."
+}

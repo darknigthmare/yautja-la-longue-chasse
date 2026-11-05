@@ -146,6 +146,60 @@ remplace ni Cœur-Mère de Mycora-V, ni la reine de la pyramide, ni la Reine Mè
 la planète vivante des arcs ultérieurs. Les influences visuelles demandées sont
 identifiées comme inspirations d’une création originale du projet.
 
+<!-- planetes-tribus-bible:start -->
+## Complément demandé le 5 novembre 2026 : planètes et tribus — V2 à V5
+
+Le contenu de la conversation sur les planètes, les cinq communautés du monde natal,
+leurs membres, trônes, textures, décors et services rejoint cette même bible et cette
+même PR. L'inventaire rapproche les archives effectivement livrées des registres du
+dépôt, puis conserve séparément les sujets préparés et les usages restant à réaliser.
+
+| Document | Contenu |
+| --- | --- |
+| [Contrat de raccord](planetes-tribus/README.md) | Douze décisions PT-01 à PT-12 ; rangs, identité, géographie, compagnons, mobilité, Warp et distinction des états de production. |
+| [Quinze directions planétaires](planetes-tribus/PLANETES.md) | Cinq chasses existantes, six corps galactiques répertoriés sans mission, trois directions artistiques et Xeno Prime / PLAN08 ; usages des six images par monde. |
+| [Cinq communautés](planetes-tribus/TRIBUS.md) · [scénarios civils](planetes-tribus/SCENARIOS_CIVILS.md) | Citernes, Hautes Branches, Cour des Forges Basses, Caldeira et Veilleurs ; architecture, trônes, membres, fonctions locales, vingt situations V4, cinq enchaînements V4 et cinq boucles V5. |
+| [Images et archives](planetes-tribus/ASSETS.md) · [données complètes](planetes-tribus/DONNEES_ASSETS.json) | 204 PNG V2–V4 vérifiés sur les archives : 143 avec transparence effective, 41 scènes opaques et 20 matières ; prompts, dimensions, empreintes et variantes conservés. |
+| [Raccord à l'existant](planetes-tribus/RACCORD_EXISTANT.md) · [concordance structurée](planetes-tribus/RACCORD_EXISTANT.json) | Correspondance exacte des 204 sources avec V37, dérivés présents, usages relevés dans le code, identités et divergences de régions/accessibilité. |
+| [Reprise](planetes-tribus/REPRISE.md) · [40 consignes V5](planetes-tribus/REPRISE_V5.json) | Dix membres, quinze objets, dix lieux et cinq matières encore sans PNG ; corrections ciblées, travail de jeu et 24 contrôles d'acceptation ouverts. |
+| [Références de franchise](planetes-tribus/SOURCES_LORE.md) · [textes source conservés](planetes-tribus/TEXTES_SOURCE.json) | Sept sources NECA attribuées avec leurs limites ; œuvres/produits sous licence séparés des créations originales et des anciens textes de production. |
+| [Vérification et limites](planetes-tribus/VERIFICATION.md) | Audit des quatre archives, conservation des données, rapprochement au dépôt et revue visuelle ponctuelle ; aucune nouvelle validation artistique humaine ou jouabilité déduite. |
+
+**Les 204 sources V2–V4 sont déjà enregistrées comme références statiques dans V37.**
+Leurs 204 WebP principaux et 204 vignettes ne sont pas des images supplémentaires.
+Quelques usages et variantes dérivées sont déjà référencés dans le code ; cela
+ne signifie pas que les cinq communautés soient entièrement jouables. Ce complément
+réutilise ces identifiants et ne réimporte pas une seconde copie des binaires.
+
+**V5 reste une préparation de 40 sujets et de zéro PNG.** La mention de quota
+contenue dans l'archive appartient au 17 septembre 2026 ; elle ne décrit pas
+la disponibilité actuelle du service. Les deux citernes anciennes à bassin ouvert
+sont signalées comme sources à corriger pour respecter la contrainte d'eau protégée,
+sans prétendre que leurs images ont été retouchées.
+
+### Concordance de géographie, d'identité et de lore
+
+Les cinq communautés originales ne remplacent ni les six départs O1–O6, ni les
+six régions cibles de Yautja Prime, ni les dix identifiants régionaux V68 existants.
+Glacier et Marais restent conservés. La Cour des Forges Basses et l'Enclave des
+Forges Basses gardent des identités distinctes ; le Refuge des Veilleurs exige un
+raccord souterrain explicite, sans absorber les autres groupes nommés Veilleurs.
+Les verrous de régions Young Blood écrits en novembre restent à rapprocher du
+comportement actuel, sans migration silencieuse des sauvegardes.
+
+Les huit chasses et les 68 fiches restent le socle. Mycora-Nox n'est pas Mycora-V ;
+Nivalis-C n'est pas Nivalis-K ; aucun `PLANxx` n'est attribué par ressemblance de
+biome. Xeno Prime conserve PLAN08, XP-Z11 → XP-Z12 et la tête morte de XP-Z09 ;
+les six visuels généraux V2/V3 ne remplacent pas les ressources propres au Berceau.
+
+La fidélité 1:1 est une exigence de comparaison avec une œuvre ou un produit précis,
+pas une certification globale des créations du projet. Les professions et les
+sièges communaux n'accordent aucun rang, recrutement, trophée ou titre royal.
+Les règles ALL-01 à ALL-10, la mort définitive, les huit salles, la mobilité et
+les modes Warp restent applicables. Les personnages déjà nommés, dont Saar et Vek,
+ne sont ni remplacés par des portraits de métier ni dupliqués par leurs variantes.
+<!-- planetes-tribus-bible:end -->
+
 ## Statut de production
 
 Les éléments marqués « proposé » sont des propositions de conception à valider.
