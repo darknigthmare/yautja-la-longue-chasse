@@ -7,8 +7,12 @@ on:
       - 'app/game/ClanShipHub*'
       - 'app/game/ClanShipInterior*'
       - 'app/game/ClanShipOperationsPanel*'
+      - 'app/game/ClanShipIncident*'
+      - 'app/game/ClanShipCrewConversation*'
       - 'app/game/ClanShipSpaceEncounter*'
       - 'app/game/clanShipCrew.ts'
+      - 'app/game/clanShipCrewDialogues.ts'
+      - 'app/game/data/clanShipCrewDialogues.json'
       - 'app/game/GameClient.tsx'
       - 'app/game/ShipHub.tsx'
       - 'app/game/CampaignMainMenu.tsx'
@@ -17,14 +21,19 @@ on:
       - 'app/game/systems/clanShipDocking.ts'
       - 'app/game/systems/clanShipInterior.ts'
       - 'app/game/systems/clanShipOperations.ts'
+      - 'app/game/systems/clanShipIncident*'
       - 'app/game/systems/clanShipSpaceEncounter.ts'
       - 'app/game/systems/campaignSlots.ts'
       - 'app/game/systems/completeArchive.ts'
       - 'tests/clan-ship-*.test.mjs'
       - 'public/game/clan-ship/**'
+      - 'production/clan-ship-20261105-incidents/audit-assets.mjs'
+      - 'production/clan-ship-20261105-incidents/generation.json'
+      - 'production/clan-ship-20261105-incidents/asset-audit.json'
       - 'tests/fixtures/clan-ship-browser-assets.json'
       - 'scripts/qa-clan-ship-browser.mjs'
       - 'scripts/qa-clan-ship-operations.mjs'
+      - 'scripts/qa-clan-ship-incidents.mjs'
       - '.github/workflows/clan-ship-docking.yml'
   workflow_dispatch:
 
@@ -38,7 +47,7 @@ concurrency:
 jobs:
   docking:
     runs-on: ubuntu-24.04
-    timeout-minutes: 35
+    timeout-minutes: 45
     env:
       ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
       NEXT_TELEMETRY_DISABLED: '1'
@@ -46,6 +55,8 @@ jobs:
       CLAN_SHIP_HEADLESS: '0'
       CLAN_OPERATIONS_SOURCE_COMMIT: ${{ github.event.pull_request.head.sha || github.sha }}
       CLAN_OPERATIONS_HEADED: '1'
+      CLAN_INCIDENTS_SOURCE_COMMIT: ${{ github.event.pull_request.head.sha || github.sha }}
+      CLAN_INCIDENTS_HEADED: '1'
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
@@ -70,6 +81,9 @@ jobs:
             /public/game/ships/v13/classic-predator-spaceship-top.webp
             /public/game/backgrounds/ship-hub-v4.webp
             /public/game/ship-interior/
+            /production/clan-ship-20261105-incidents/audit-assets.mjs
+            /production/clan-ship-20261105-incidents/generation.json
+            /production/clan-ship-20261105-incidents/asset-audit.json
       - name: Include the interior artwork and shared ship services
         run: |
           node --input-type=module <<'NODE'
@@ -91,6 +105,8 @@ jobs:
           node-version: '22'
           cache: npm
       - run: npm ci --ignore-scripts --no-audit --no-fund
+      - name: Verify the three original incident sprites, alpha bounds and provenance
+        run: node production/clan-ship-20261105-incidents/audit-assets.mjs
       - name: Typecheck
         run: npm run typecheck
       - name: Strict lint of the interior and docking integration
@@ -98,22 +114,27 @@ jobs:
           node node_modules/eslint/bin/eslint.js --max-warnings=0
           app/game/ClanShipHub.tsx app/game/ClanShipInterior.tsx
           app/game/ClanShipOperationsPanel.tsx app/game/ClanShipSpaceEncounter.tsx
-          app/game/clanShipCrew.ts
+          app/game/ClanShipIncidentPanel.tsx app/game/ClanShipIncidentsBoard.tsx app/game/ClanShipCrewConversation.tsx
+          app/game/clanShipCrew.ts app/game/clanShipCrewDialogues.ts
           app/game/GameClient.tsx app/game/ShipHub.tsx
           app/game/CampaignMainMenu.tsx app/game/save.ts app/game/types.ts
           app/game/systems/clanShipDocking.ts app/game/systems/clanShipInterior.ts
           app/game/systems/clanShipOperations.ts app/game/systems/clanShipSpaceEncounter.ts
+          app/game/systems/clanShipIncidents.ts app/game/systems/clanShipIncidentEscort.ts
           app/game/systems/campaignSlots.ts
           app/game/systems/completeArchive.ts scripts/qa-clan-ship-browser.mjs scripts/qa-clan-ship-operations.mjs
+          scripts/qa-clan-ship-incidents.mjs
           tests/clan-ship-docking.test.mjs tests/clan-ship-save.test.mjs
           tests/clan-ship-interior.test.mjs
           tests/clan-ship-operations.test.mjs tests/clan-ship-space-encounter.test.mjs tests/clan-ship-operations-save.test.mjs
+          tests/clan-ship-incidents.test.mjs tests/clan-ship-incident-escort.test.mjs tests/clan-ship-crew-dialogues.test.mjs tests/clan-ship-incidents-host.test.mjs
       - name: Interior geometry, docking, saves, archives and campaign regressions
         run: >-
           node --experimental-strip-types --test --test-concurrency=1
           tests/clan-ship-docking.test.mjs tests/clan-ship-save.test.mjs
           tests/clan-ship-interior.test.mjs
           tests/clan-ship-operations.test.mjs tests/clan-ship-space-encounter.test.mjs tests/clan-ship-operations-save.test.mjs
+          tests/clan-ship-incidents.test.mjs tests/clan-ship-incident-escort.test.mjs tests/clan-ship-crew-dialogues.test.mjs tests/clan-ship-incidents-host.test.mjs
           tests/complete-archive.test.mjs tests/campaign-slots.test.mjs
           tests/cloud-account-archives-v71.test.mjs
           tests/game-client-ship-flow.test.mjs tests/campaign-resume-priority-v94.test.mjs
@@ -124,6 +145,8 @@ jobs:
         run: xvfb-run -a --server-args="-screen 0 1920x1200x24" node scripts/qa-clan-ship-browser.mjs
       - name: Earn the mandate, recruit crew and command the three tactical operations
         run: xvfb-run -a --server-args="-screen 0 1920x1200x24" node scripts/qa-clan-ship-operations.mjs
+      - name: Investigate four incidents, escort the returning hunter and resume their saved evidence
+        run: xvfb-run -a --server-args="-screen 0 1920x1200x24" node scripts/qa-clan-ship-incidents.mjs
       - name: Upload browser evidence even when a check fails
         if: always()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
@@ -132,5 +155,6 @@ jobs:
           path: |
             outputs/qa-clan-ship/
             outputs/qa-clan-ship-operations/
+            outputs/qa-clan-ship-incidents/
           if-no-files-found: warn
           retention-days: 14

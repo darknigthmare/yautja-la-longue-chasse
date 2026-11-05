@@ -15,7 +15,7 @@ export const CLAN_SHIP_INTERIOR_METRICS = Object.freeze({
 export interface ClanShipInteriorPoint { x: number; y: number }
 export interface ClanShipInteriorRect extends ClanShipInteriorPoint { width: number; height: number }
 export interface ClanShipInteriorActor extends ClanShipInteriorPoint { facing: -1 | 1 }
-export type ClanShipInteriorArt = 'console' | 'rack' | 'bed' | 'terminal' | 'forge';
+export type ClanShipInteriorArt = 'console' | 'rack' | 'bed' | 'terminal' | 'forge' | 'cargo' | 'tablet';
 export interface ClanShipInteriorFixture {
   id: string;
   art: ClanShipInteriorArt;
@@ -58,6 +58,7 @@ export const CLAN_SHIP_INTERIOR_ROOMS: Readonly<Record<ClanShipRoomId, ClanShipI
     id: 'hangar', label: 'Hangar du clan', subtitle: 'Baie d’amarrage · vaisseau personnel à quai',
     serviceLabel: 'Rejoindre le vaisseau personnel', accent: '#83e3cd', servicePoint: { x: 820, y: 650 }, doors: doorsFor('hangar'),
     fixtures: [
+      { id: 'return-cargo', art: 'cargo', x: 410, y: 575, width: 205, height: 115, footprint: { x: 320, y: 535, width: 180, height: 40 } },
       { id: 'berth-console', art: 'console', x: 625, y: 575, width: 275, height: 165, footprint: { x: 515, y: 530, width: 220, height: 45 } },
       { id: 'berth-terminal', art: 'terminal', x: 1060, y: 560, width: 110, height: 210, footprint: { x: 1020, y: 525, width: 80, height: 35 } },
     ],
@@ -92,6 +93,7 @@ export const CLAN_SHIP_INTERIOR_ROOMS: Readonly<Record<ClanShipRoomId, ClanShipI
     fixtures: [
       { id: 'archive-terminal', art: 'terminal', x: 790, y: 575, width: 135, height: 265, footprint: { x: 740, y: 530, width: 100, height: 45 } },
       { id: 'archive-console', art: 'console', x: 390, y: 555, width: 265, height: 160, footprint: { x: 280, y: 520, width: 220, height: 35 } },
+      { id: 'archive-incident-tablet', art: 'tablet', x: 1040, y: 570, width: 95, height: 125, footprint: { x: 1000, y: 535, width: 80, height: 35 } },
     ],
   },
   trophees: {

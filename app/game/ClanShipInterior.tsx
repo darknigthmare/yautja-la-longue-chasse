@@ -1,18 +1,30 @@
 "use client";
 
 /* eslint-disable @next/next/no-img-element -- independent game bitmaps keep their authored alpha and foot anchors */
-import { memo, useEffect, useLayoutEffect, useRef, useState, type CSSProperties, type PointerEvent } from 'react';
+import { memo, useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState, type CSSProperties, type PointerEvent } from 'react';
 import HunterRigPreview from './HunterRigPreview';
 import HomeworldNpcSpriteV84 from './HomeworldNpcSpriteV84';
+import ClanShipIncidentPanel from './ClanShipIncidentPanel';
 import { CLAN_SHIP_CREW_ART_ROLES, clanShipCrewArtIdentity } from './clanShipCrew';
 import { CLAN_SHIP_RECRUITS, evaluateClanShipRecruit, type ClanShipNpcId } from './systems/clanShipOperations';
 import { HUNTER_RIG_CANVAS } from './hunterRig';
 import { SHIP_LEVEL_ART } from './shipInteriorKit';
 import { SHIP_LEVEL_ART_V22 } from './shipInteriorV22';
 import clanPropManifest from '../../public/game/clan-ship/props/manifest.json';
+import incidentPropManifest from '../../public/game/clan-ship/incidents/manifest.json';
 import { shipForId, shipProfileAssetPath, type ShipId } from './shipCatalogue';
-import type { SaveGame } from './types';
+import type { HunterAppearance, SaveGame } from './types';
 import type { ClanShipRoomId } from './systems/clanShipDocking';
+import {
+  clanShipIncidentTarget, getClanShipIncidentEscort, getClanShipIncidentStep, getClanShipIncidentTargets,
+  inspectClanShipIncidents,
+  type ClanShipIncidentAction, type ClanShipIncidentPhysicalContext, type ClanShipIncidentTarget,
+} from './systems/clanShipIncidents';
+import {
+  CLAN_SHIP_ESCORT_MOTION, clanShipIncidentEscortDoorAccess, clanShipIncidentEscortScene,
+  createClanShipEscortMotion, stepClanShipEscortMotion,
+  type ClanShipEscortMotion, type ClanShipEscortScene,
+} from './systems/clanShipIncidentEscort';
 import {
   CLAN_SHIP_INTERIOR_METRICS as METRICS,
   CLAN_SHIP_INTERIOR_ROOM_ORDER as ROOM_ORDER,
@@ -40,6 +52,8 @@ export interface ClanShipInteriorProps {
   onRoomChange: (roomId: ClanShipRoomId) => boolean;
   onService: () => void;
   onOperations?: (npcId?: ClanShipNpcId) => void;
+  onIncident?: (action: ClanShipIncidentAction, physical: ClanShipIncidentPhysicalContext) => boolean;
+  onIncidentPanelOpenChange?: (open: boolean) => void;
   onReturnToPersonal: () => void;
   targetRoomId?: ClanShipRoomId | null;
   onNavigateTarget?: (roomId: ClanShipRoomId) => void;
@@ -51,31 +65,43 @@ export interface ClanShipInteriorProps {
 
 type Direction = 'up' | 'down' | 'left' | 'right';
 type Goal = { kind: 'walk' } | { kind: 'door'; door: ClanShipInteriorDoor; requestedRoomId?: ClanShipRoomId } |
-  { kind: 'service'; requestedRoomId?: ClanShipRoomId };
+  { kind: 'service'; requestedRoomId?: ClanShipRoomId } |
+  { kind: 'incident'; targetId: string; openOnArrival: boolean; requestedRoomId?: ClanShipRoomId };
 interface Presentation {
   actor: ClanShipInteriorActor;
   phase: number;
   moving: boolean;
   waypoints: ClanShipInteriorPoint[];
   navigating: boolean;
+  escort: ClanShipEscortMotion | null;
+  escortScene: ClanShipEscortScene | null;
 }
 interface Commands {
   point: (point: ClanShipInteriorPoint) => void;
   door: (door: ClanShipInteriorDoor) => void;
   service: () => void;
   operations: (npcId?: ClanShipNpcId) => void;
+  incident: (targetId: string) => void;
+  incidentAction: (action: ClanShipIncidentAction) => boolean;
   interact: () => void;
   cancel: () => void;
   target: (target: ClanShipRoomId | null) => void;
   touch: (direction: Direction, held: boolean) => void;
 }
-const emptyCommands = (): Commands => ({ point: () => {}, door: () => {}, service: () => {}, operations: () => {}, interact: () => {}, cancel: () => {}, target: () => {}, touch: () => {} });
+const emptyCommands = (): Commands => ({ point: () => {}, door: () => {}, service: () => {}, operations: () => {}, incident: () => {}, incidentAction: () => false, interact: () => {}, cancel: () => {}, target: () => {}, touch: () => {} });
 const distance = (a: ClanShipInteriorPoint, b: ClanShipInteriorPoint) => Math.hypot(a.x - b.x, a.y - b.y);
 const MOVE_KEYS: Readonly<Record<string, Direction>> = {
   ArrowUp: 'up', KeyW: 'up', KeyZ: 'up', ArrowDown: 'down', KeyS: 'down',
   ArrowLeft: 'left', KeyA: 'left', KeyQ: 'left', ArrowRight: 'right', KeyD: 'right',
 };
 const INTERACTIVE_TARGET = 'input,textarea,select,[contenteditable="true"]';
+// A fixed returning scout uses the existing articulated rig. Its identity is
+// independent of player customisation and is not a new recruited roster entry.
+const RETURNING_SCOUT_APPEARANCE: HunterAppearance = {
+  presetId: 'jungle-hunter', bodyMorphId: 'classic', headStyleId: 'reference', skinId: 'ashen-mottle',
+  biomaskId: 'jungle', dreadStyleId: 'classic', dreadTintId: 'obsidian', armorStyleId: 'classic',
+  armorTintId: 'gunmetal', trophyAdornmentId: 'none', laserColorId: 'cyan',
+};
 
 /** Each accepted room transition creates a new local controller at the paired
  * doorway. Service/settings overlays leave that controller mounted and paused.
@@ -102,22 +128,39 @@ function InteriorRoom(props: ClanShipInteriorProps & {
   enteredFrom?: ClanShipRoomId;
   onNavigateTarget: (roomId: ClanShipRoomId) => void;
 }) {
-  const { roomId, save, suspended, targetRoomId, enteredFrom } = props;
+  const { roomId, save, targetRoomId, enteredFrom } = props;
   const room = ROOMS[roomId];
   const rootRef = useRef<HTMLElement | null>(null);
   const viewportRef = useRef<HTMLDivElement | null>(null);
   const worldRef = useRef<HTMLDivElement | null>(null);
   const floorTouchRef = useRef<{ pointerId: number; x: number; y: number } | null>(null);
   const latestRef = useRef(props);
+  const incidentInspection = useMemo(() => inspectClanShipIncidents(save.clanShipIncidents, save.createdAt), [save.clanShipIncidents, save.createdAt]);
+  const incidentState = incidentInspection.state;
+  const incidentStateRef = useRef(incidentState);
+  const incidentPanelTargetRef = useRef<string | null>(null);
+  const [incidentPanelTargetId, setIncidentPanelTargetId] = useState<string | null>(null);
+  const suspended = props.suspended || incidentPanelTargetId !== null;
+  const focusRestoreFrameRef = useRef(0);
   const commandsRef = useRef<Commands>(emptyCommands());
-  const [presentation, setPresentation] = useState<Presentation>(() => ({
-    actor: clanShipInteriorSpawn(roomId, enteredFrom), phase: 0, moving: false, waypoints: [], navigating: false,
-  }));
+  const [presentation, setPresentation] = useState<Presentation>(() => {
+    const escortScene = clanShipIncidentEscortScene(incidentState, roomId);
+    return { actor: clanShipInteriorSpawn(roomId, enteredFrom), phase: 0, moving: false, waypoints: [], navigating: false,
+      escortScene, escort: escortScene ? createClanShipEscortMotion(escortScene.position) : null };
+  });
   const [viewport, setViewport] = useState({ width: 1100, height: 560 });
   const [status, setStatus] = useState('Clique sur le sol pour marcher. Approche d’une installation pour interagir.');
   const [reducedMotion, setReducedMotion] = useState(false);
 
-  useLayoutEffect(() => { latestRef.current = props; });
+  useLayoutEffect(() => { latestRef.current = props; incidentStateRef.current = incidentState; });
+
+  const closeIncidentPanel = useCallback(() => {
+    incidentPanelTargetRef.current = null;
+    setIncidentPanelTargetId(null);
+    latestRef.current.onIncidentPanelOpenChange?.(false);
+    window.cancelAnimationFrame(focusRestoreFrameRef.current);
+    focusRestoreFrameRef.current = window.requestAnimationFrame(() => worldRef.current?.focus({ preventScroll: true }));
+  }, []);
 
   useEffect(() => {
     const viewportNode = viewportRef.current;
@@ -147,20 +190,35 @@ function InteriorRoom(props: ClanShipInteriorProps & {
     let frameId = 0;
     let pendingTransition = false;
     let wasActive = false;
+    let escortScene = clanShipIncidentEscortScene(incidentStateRef.current, roomId);
+    let escort = escortScene ? createClanShipEscortMotion(escortScene.position) : null;
+    let paintedEscortMoving = false;
+    let waitingIncidentId: string | null = null;
     let padState = freshClanShipInteriorPad();
     const keys = new Set<string>();
     const touch = new Set<Direction>();
 
-    const active = () => !pendingTransition && !latestRef.current.suspended && !document.hidden && document.hasFocus() &&
+    const active = () => !pendingTransition && !latestRef.current.suspended && !incidentPanelTargetRef.current && !document.hidden && document.hasFocus() &&
       !!rootRef.current && !rootRef.current.closest('[inert],[aria-hidden="true"],[hidden]');
     const clearHeld = () => { keys.clear(); touch.clear(); padState = freshClanShipInteriorPad(); lastFrame = 0; };
     const publish = () => {
       paintedMoving = moving;
-      setPresentation({ actor: { ...actor }, phase, moving, waypoints: waypoints.map(point => ({ ...point })), navigating: goal !== null });
+      paintedEscortMoving = escort?.moving ?? false;
+      setPresentation({ actor: { ...actor }, phase, moving, waypoints: waypoints.map(point => ({ ...point })), navigating: goal !== null, escort, escortScene });
+    };
+    const syncEscort = () => {
+      const next = clanShipIncidentEscortScene(incidentStateRef.current, roomId);
+      const changed = next?.key !== escortScene?.key || next?.checkpointId !== escortScene?.checkpointId ||
+        next?.follows !== escortScene?.follows || next?.arrived !== escortScene?.arrived;
+      if (!next) escort = null;
+      else if (!escort || next.key !== escortScene?.key) escort = createClanShipEscortMotion(next.position);
+      escortScene = next;
+      return changed;
     };
     const cancel = (announce = true) => {
       const hadRoute = goal !== null || !!latestRef.current.targetRoomId;
       waypoints = []; goal = null; moving = false;
+      waitingIncidentId = null;
       latestRef.current.onTargetCancelled?.();
       if (announce && hadRoute) setStatus('Trajet interrompu. Tu contrôles le chasseur.');
       publish();
@@ -175,6 +233,8 @@ function InteriorRoom(props: ClanShipInteriorProps & {
     };
     const enterDoor = (door: ClanShipInteriorDoor) => {
       if (!active() || !canClanShipInteriorTransition(roomId, door.targetRoomId, actor)) return;
+      const access = clanShipIncidentEscortDoorAccess(incidentStateRef.current, roomId, door.targetRoomId, actor, escort?.actor ?? null);
+      if (!access.allowed) { cancel(false); setStatus(access.message); return; }
       clearHeld(); moving = false;
       if (latestRef.current.onRoomChange(door.targetRoomId)) {
         pendingTransition = true; waypoints = []; goal = null;
@@ -184,17 +244,70 @@ function InteriorRoom(props: ClanShipInteriorProps & {
       }
       publish();
     };
-    const interact = () => {
-      if (!active() || performance.now() - lastActivation < 250) return;
-      const nearby = nearbyClanShipInteriorInteraction(roomId, actor);
-      if (!nearby) { setStatus('Approche-toi d’une porte ou de l’installation éclairée avant d’interagir.'); return; }
-      lastActivation = performance.now();
-      if (nearby.type === 'door') { enterDoor(nearby.point); return; }
+    const activateService = () => {
+      if (!active() || distance(actor, room.servicePoint) > METRICS.interactionReach) return;
+      if (roomId === 'hangar' && getClanShipIncidentEscort(incidentStateRef.current)?.follows) {
+        setStatus('Accompagne le membre de l’équipe jusqu’au poste médical avant de rejoindre ton vaisseau.'); return;
+      }
       waypoints = []; goal = null; moving = false; clearHeld();
       latestRef.current.onTargetReached?.();
       publish();
       if (roomId === 'hangar') latestRef.current.onReturnToPersonal();
       else latestRef.current.onService();
+    };
+    const escortAtTarget = (target: ClanShipIncidentTarget) => !!escort && distance(escort.actor, target.position) <= METRICS.interactionReach;
+    const currentIncidentTarget = () => {
+      const step = getClanShipIncidentStep(incidentStateRef.current);
+      return step ? clanShipIncidentTarget(step.targetId) : null;
+    };
+    const openIncident = (target: ClanShipIncidentTarget) => {
+      if (!active() || !latestRef.current.onIncident || target.roomId !== roomId ||
+          target.incidentId !== incidentStateRef.current?.activeIncident?.incidentId || distance(actor, target.position) > METRICS.interactionReach) return false;
+      const step = getClanShipIncidentStep(incidentStateRef.current);
+      if (step?.targetId === target.id && step.kind === 'escort-checkpoint' && !escortAtTarget(target)) return false;
+      waypoints = []; goal = null; moving = false; clearHeld();
+      if (escort) escort = { ...escort, moving: false };
+      incidentPanelTargetRef.current = target.id;
+      setIncidentPanelTargetId(target.id);
+      latestRef.current.onTargetReached?.();
+      latestRef.current.onIncidentPanelOpenChange?.(true);
+      publish();
+      return true;
+    };
+    const incident = (targetId: string) => {
+      const target = clanShipIncidentTarget(targetId);
+      if (!active() || !latestRef.current.onIncident || !target || target.roomId !== roomId ||
+          target.incidentId !== incidentStateRef.current?.activeIncident?.incidentId) return;
+      if (distance(actor, target.position) <= METRICS.interactionReach && openIncident(target)) return;
+      cancel(false);
+      plan(target.position, { kind: 'incident', targetId, openOnArrival: true }, `${target.label} · approche en cours. Le groupe attend ensemble aux points de passage.`);
+      worldRef.current?.focus({ preventScroll: true });
+    };
+    const incidentAction = (action: ClanShipIncidentAction) => {
+      // The panel deliberately pauses active(). It may submit only its own
+      // object command, using feet from this still-mounted controller.
+      if (pendingTransition || latestRef.current.suspended || document.hidden || !document.hasFocus() ||
+          !latestRef.current.onIncident || !incidentPanelTargetRef.current) return false;
+      const step = getClanShipIncidentStep(incidentStateRef.current);
+      const targetId = action.type === 'interact' || action.type === 'choose' ? action.targetId
+        : action.type === 'escort-checkpoint' && action.checkpointId === step?.id ? step.targetId : null;
+      if (targetId !== incidentPanelTargetRef.current) return false;
+      return latestRef.current.onIncident(action, {
+        actor: { x: actor.x, y: actor.y },
+        escort: escort ? { roomId, position: { x: escort.actor.x, y: escort.actor.y } } : null,
+      });
+    };
+    const interact = () => {
+      if (!active() || performance.now() - lastActivation < 250) return;
+      const target = currentIncidentTarget();
+      if (latestRef.current.onIncident && target?.roomId === roomId && distance(actor, target.position) <= METRICS.interactionReach) {
+        lastActivation = performance.now(); incident(target.id); return;
+      }
+      const nearby = nearbyClanShipInteriorInteraction(roomId, actor);
+      if (!nearby) { setStatus('Approche-toi d’une porte, d’un objet du dossier ou de l’installation éclairée avant d’interagir.'); return; }
+      lastActivation = performance.now();
+      if (nearby.type === 'door') { enterDoor(nearby.point); return; }
+      activateService();
     };
     const setTarget = (target: ClanShipRoomId | null) => {
       if (!target) {
@@ -205,7 +318,10 @@ function InteriorRoom(props: ClanShipInteriorProps & {
       if (!route.length) return;
       let planned = false;
       if (route.length === 1) {
-        planned = plan(room.servicePoint, { kind: 'service', requestedRoomId: target }, `${room.serviceLabel} · approche en cours.`);
+        const incidentTarget = latestRef.current.onIncident ? currentIncidentTarget() : null;
+        planned = incidentTarget?.roomId === target
+          ? plan(incidentTarget.position, { kind: 'incident', targetId: incidentTarget.id, openOnArrival: false, requestedRoomId: target }, `${incidentTarget.label} · approche du point d’intervention.`)
+          : plan(room.servicePoint, { kind: 'service', requestedRoomId: target }, `${room.serviceLabel} · approche en cours.`);
       } else {
         const door = room.doors.find(candidate => candidate.targetRoomId === route[1]);
         if (door) planned = plan(door, { kind: 'door', door, requestedRoomId: target }, `Vers ${ROOMS[target].label} · suivre le passage vers ${ROOMS[door.targetRoomId].label}.`);
@@ -217,7 +333,7 @@ function InteriorRoom(props: ClanShipInteriorProps & {
     };
     const service = () => {
       if (!active()) return;
-      if (distance(actor, room.servicePoint) <= METRICS.interactionReach) { interact(); return; }
+      if (distance(actor, room.servicePoint) <= METRICS.interactionReach) { activateService(); return; }
       cancel(false);
       plan(room.servicePoint, { kind: 'service' }, `${room.serviceLabel} · marche jusqu’à l’installation, puis interagis.`);
       worldRef.current?.focus({ preventScroll: true });
@@ -256,7 +372,7 @@ function InteriorRoom(props: ClanShipInteriorProps & {
         plan(door, { kind: 'door', door }, `Passage vers ${ROOMS[door.targetRoomId].label}.`);
         worldRef.current?.focus({ preventScroll: true });
       },
-      service, operations, interact, cancel, target: setTarget,
+      service, operations, incident, incidentAction, interact, cancel, target: setTarget,
       touch: (direction, held) => { if (held && active()) touch.add(direction); else touch.delete(direction); },
     };
 
@@ -282,12 +398,21 @@ function InteriorRoom(props: ClanShipInteriorProps & {
       }
     };
     const onKeyUp = (event: KeyboardEvent) => { keys.delete(event.code); };
-    const onBlur = () => { clearHeld(); wasActive = false; moving = false; publish(); };
+    const onBlur = () => {
+      clearHeld(); wasActive = false; moving = false;
+      if (escort) escort = { ...escort, moving: false };
+      publish();
+    };
     const onVisibility = () => { if (document.hidden) onBlur(); };
     const tick = (now: number) => {
       frameId = window.requestAnimationFrame(tick);
+      const escortChanged = syncEscort();
       if (!active()) {
-        if (wasActive) { moving = false; publish(); }
+        if (wasActive || escortChanged || escort?.moving) {
+          moving = false;
+          if (escort) escort = { ...escort, moving: false };
+          publish();
+        }
         clearHeld(); wasActive = false; return;
       }
       const seconds = lastFrame === 0 ? 0 : Math.min(METRICS.maxFrameSeconds, Math.max(0, (now - lastFrame) / 1000));
@@ -311,6 +436,7 @@ function InteriorRoom(props: ClanShipInteriorProps & {
       const x = Number(held.has('right')) - Number(held.has('left')) || input.x;
       const y = Number(held.has('down')) - Number(held.has('up')) || input.y;
       const before = actor;
+      let arrivedGoal: Goal | null = null;
       if (Math.abs(x) > 0.001 || Math.abs(y) > 0.001) {
         if (goal || latestRef.current.targetRoomId) cancel(false);
         actor = stepClanShipInteriorActor(roomId, actor, { x, y }, seconds);
@@ -318,24 +444,42 @@ function InteriorRoom(props: ClanShipInteriorProps & {
         const step = stepClanShipInteriorPath(roomId, actor, waypoints, seconds);
         actor = step.actor; waypoints = step.remaining;
         if (step.blocked) { cancel(false); setStatus('Le passage est bloqué. Choisis un autre point sur le sol.'); }
-        else if (step.arrived) {
-          const reached = goal; goal = null; moving = false;
-          if (reached.kind === 'door') { enterDoor(reached.door); return; }
-          if (reached.kind === 'service') {
-            if (reached.requestedRoomId) latestRef.current.onTargetReached?.();
-            setStatus(`${room.serviceLabel} · à portée. Appuie sur E / A ou sur Interagir.`);
-          } else setStatus('Position atteinte.');
-          // Always paint the final foot position, including paths shorter
-          // than a render interval. Otherwise diagnostics/camera could retain
-          // the last moving frame while the controller already stood still.
-          if (distance(actor, before) > 0.001) phase = (phase + distance(actor, before) / 130) % 1;
-          lastPaint = now; publish();
-          return;
-        }
+        else if (step.arrived) arrivedGoal = goal;
       }
       moving = distance(actor, before) > 0.001;
       if (moving) phase = (phase + distance(actor, before) / 130) % 1;
-      if ((moving && now - lastPaint >= 1000 / 30) || moving !== paintedMoving) { lastPaint = now; publish(); }
+      if (escort) escort = stepClanShipEscortMotion(roomId, escort, actor, seconds, escortScene?.follows ?? false);
+      if (arrivedGoal) {
+        if (arrivedGoal.kind === 'door') { goal = null; moving = false; enterDoor(arrivedGoal.door); return; }
+        if (arrivedGoal.kind === 'incident') {
+          const target = clanShipIncidentTarget(arrivedGoal.targetId);
+          if (arrivedGoal.openOnArrival && target) {
+            // Do not freeze a slower follower outside the checkpoint by
+            // opening a modal as soon as only the player's feet arrive.
+            if (openIncident(target)) { lastPaint = now; return; }
+            if (waitingIncidentId !== target.id) {
+              waitingIncidentId = target.id;
+              setStatus('Le membre accompagné rejoint le point. Le relevé s’ouvrira quand le groupe sera réuni.');
+            }
+          } else {
+            goal = null; moving = false;
+            if (arrivedGoal.requestedRoomId) latestRef.current.onTargetReached?.();
+            setStatus(`${target?.label ?? 'Point d’intervention'} · à portée. Appuie sur E / A pour examiner.`);
+          }
+        } else {
+          goal = null; moving = false;
+          if (arrivedGoal.kind === 'service') {
+            if (arrivedGoal.requestedRoomId) latestRef.current.onTargetReached?.();
+            setStatus(`${room.serviceLabel} · à portée. Appuie sur E / A ou sur Interagir.`);
+          } else setStatus('Position atteinte.');
+        }
+        if (!goal || now - lastPaint >= 1000 / 30 || moving !== paintedMoving || !!escort?.moving !== paintedEscortMoving) {
+          lastPaint = now; publish();
+        }
+        return;
+      }
+      if (((moving || escort?.moving) && now - lastPaint >= 1000 / 30) || moving !== paintedMoving ||
+          !!escort?.moving !== paintedEscortMoving || escortChanged) { lastPaint = now; publish(); }
     };
     window.addEventListener('keydown', onKeyDown);
     window.addEventListener('keyup', onKeyUp);
@@ -344,7 +488,9 @@ function InteriorRoom(props: ClanShipInteriorProps & {
     frameId = window.requestAnimationFrame(tick);
     if (!latestRef.current.suspended) worldRef.current?.focus({ preventScroll: true });
     return () => {
-      window.cancelAnimationFrame(frameId); clearHeld(); commandsRef.current = emptyCommands();
+      window.cancelAnimationFrame(frameId); window.cancelAnimationFrame(focusRestoreFrameRef.current);
+      clearHeld(); commandsRef.current = emptyCommands();
+      latestRef.current.onIncidentPanelOpenChange?.(false);
       window.removeEventListener('keydown', onKeyDown); window.removeEventListener('keyup', onKeyUp);
       window.removeEventListener('blur', onBlur); document.removeEventListener('visibilitychange', onVisibility);
     };
@@ -367,13 +513,20 @@ function InteriorRoom(props: ClanShipInteriorProps & {
   };
   const nearby = nearbyClanShipInteriorInteraction(roomId, actor);
   const serviceReady = distance(actor, room.servicePoint) <= METRICS.interactionReach;
+  const incidentStep = getClanShipIncidentStep(incidentState);
+  const stepTarget = incidentStep ? clanShipIncidentTarget(incidentStep.targetId) : null;
+  const incidentTargets = props.onIncident ? getClanShipIncidentTargets(incidentState).filter(target => target.roomId === roomId) : [];
+  const nearbyIncident = props.onIncident && stepTarget?.roomId === roomId && distance(actor, stepTarget.position) <= METRICS.interactionReach ? stepTarget : null;
+  const serviceOccupiedByIncident = incidentTargets.some(target => distance(target.position, room.servicePoint) < 110);
+  const openedTarget = incidentPanelTargetId ? clanShipIncidentTarget(incidentPanelTargetId) : null;
   const selectedShipId = props.personalShipId ?? save.clanShipDocking?.personalShipId ?? 'classic-predator-spaceship';
   const actorWidth = 122;
   const actorFootY = HUNTER_RIG_CANVAS.groundY / HUNTER_RIG_CANVAS.width * actorWidth;
   const marker = presentation.waypoints.at(-1);
-  const interactLabel = nearby?.type === 'door' ? `Entrer : ${ROOMS[nearby.point.targetRoomId].label}` : nearby?.type === 'service' ? room.serviceLabel : 'Approche d’une installation';
+  const interactLabel = nearbyIncident ? `Examiner : ${nearbyIncident.label}` : nearby?.type === 'door' ? `Entrer : ${ROOMS[nearby.point.targetRoomId].label}` : nearby?.type === 'service' ? room.serviceLabel : 'Approche d’une installation';
+  const witnessHere = incidentTargets.some(target => target.id === 'provenance-veteran');
   const crew = save.clanShipOperations ? CLAN_SHIP_RECRUITS.filter(npc => npc.roomId === roomId &&
-    (save.clanShipOperations!.recruitedNpcIds.includes(npc.id) || evaluateClanShipRecruit(save.clanShipOperations!, npc.id).allowed)) : [];
+    ((witnessHere && npc.id === 'ash-scar') || save.clanShipOperations!.recruitedNpcIds.includes(npc.id) || evaluateClanShipRecruit(save.clanShipOperations!, npc.id).allowed)) : [];
 
   const pointerWalk = (event: PointerEvent<HTMLDivElement>) => {
     if (suspended || event.button !== 0 || (event.target instanceof HTMLElement && event.target.closest('button'))) return;
@@ -408,11 +561,13 @@ function InteriorRoom(props: ClanShipInteriorProps & {
     onBlur={() => commandsRef.current.touch(direction, false)}
   ><span aria-hidden="true">{glyph}</span></button>;
 
-  return <section ref={rootRef} className={styles.interior} aria-label={`Intérieur du Clan Ship : ${room.label}`}
+  return <><section ref={rootRef} className={styles.interior} aria-label={`Intérieur du Clan Ship : ${room.label}`}
+    inert={!!openedTarget} aria-hidden={openedTarget ? true : undefined}
     data-clan-interior data-interior-room={roomId}
     data-interior-actor-x={actor.x.toFixed(2)} data-interior-actor-y={actor.y.toFixed(2)}
     data-interior-moving={!suspended && presentation.moving} data-interior-suspended={suspended}
-    data-interior-target-room={targetRoomId ?? ''} style={{ '--room-accent': room.accent } as CSSProperties}>
+    data-interior-target-room={targetRoomId ?? ''} data-interior-incident-step={incidentStep?.id ?? ''}
+    style={{ '--room-accent': room.accent } as CSSProperties}>
     <div className={styles.roomHeading}>
       <div><span className={styles.eyebrow}>PONT DU CLAN · {String(ROOM_ORDER.indexOf(roomId) + 1).padStart(2, '0')} / 07</span><h3>{room.label}</h3></div>
       <p>{room.subtitle}</p>
@@ -428,15 +583,16 @@ function InteriorRoom(props: ClanShipInteriorProps & {
           const recruited = save.clanShipOperations?.recruitedNpcIds.includes(npc.id) ?? false;
           // Feet stand on the raised service gallery behind the walkable floor;
           // the player cannot cross a stationary actor's authored footprint.
-          const x = roomId === 'conseil' ? 1120 : Math.min(1160, room.servicePoint.x + 180);
+          const isWitness = witnessHere && npc.id === 'ash-scar';
+          const x = isWitness ? clanShipIncidentTarget('provenance-veteran')!.position.x : roomId === 'conseil' ? 1120 : Math.min(1160, room.servicePoint.x + 180);
           return <div key={npc.id} className={styles.crewActor} data-clan-crew={npc.id}
             data-clan-crew-recruited={recruited} style={{ left: x, top: 500, zIndex: 500 }}>
             <span className={styles.crewPlatform} aria-hidden="true" />
             <HomeworldNpcSpriteV84 npcId={clanShipCrewArtIdentity(npc.id)} role={CLAN_SHIP_CREW_ART_ROLES[npc.id]} height={190} facing={-1} />
-            <button type="button" className={styles.crewLabel} disabled={suspended || !props.onOperations}
+            <button type="button" className={styles.crewLabel} disabled={suspended || (!props.onOperations && !isWitness)}
               tabIndex={suspended || !controlInView(x, 200) ? -1 : 0}
-              data-clan-crew-talk={npc.id} onClick={() => commandsRef.current.operations(npc.id)}>
-              <strong>{npc.name}</strong><span>{recruited ? npc.role : 'Entretien disponible'}</span>
+              data-clan-crew-talk={npc.id} onClick={() => isWitness ? commandsRef.current.incident('provenance-veteran') : commandsRef.current.operations(npc.id)}>
+              <strong>{npc.name}</strong><span>{isWitness ? 'Témoin du retour' : recruited ? npc.role : 'Entretien disponible'}</span>
             </button>
           </div>;
         })}
@@ -453,14 +609,47 @@ function InteriorRoom(props: ClanShipInteriorProps & {
             </button>
           </div>;
         })}
-        <button type="button" className={styles.serviceBeacon} disabled={suspended}
+        {!serviceOccupiedByIncident && <button type="button" className={styles.serviceBeacon} disabled={suspended}
           tabIndex={suspended || !controlInView(room.servicePoint.x, 88) ? -1 : 0}
           data-interior-service={roomId} data-interior-ready={serviceReady}
           style={{ left: room.servicePoint.x, top: room.servicePoint.y, zIndex: Math.round(room.servicePoint.y) - 1 }}
           onClick={() => commandsRef.current.service()} aria-label={`${serviceReady ? '' : 'Approcher : '}${room.serviceLabel}`}>
           <span className={styles.beaconRing} aria-hidden="true" /><span className={styles.beaconLabel}>{serviceReady ? 'E / A · ' : ''}{room.serviceLabel}</span>
-        </button>
+        </button>}
+        {incidentTargets.map(target => {
+          const near = distance(actor, target.position) <= METRICS.interactionReach;
+          const current = incidentStep?.targetId === target.id;
+          const escortReady = !current || incidentStep.kind !== 'escort-checkpoint' ||
+            !!presentation.escort && distance(presentation.escort.actor, target.position) <= METRICS.interactionReach;
+          return <div key={target.id} className={styles.incidentObject} data-clan-incident-object={target.id}
+            data-current-incident-target={current}>
+            <IncidentObjectArt target={target} />
+            <button type="button" className={styles.incidentTarget} disabled={suspended}
+              tabIndex={suspended || !controlInView(target.position.x, 216) ? -1 : 0}
+              style={{ left: target.position.x, top: target.position.y, zIndex: Math.round(target.position.y) + 2 }}
+              data-clan-incident-target={target.id} data-clan-incident-ready={near && escortReady}
+              data-target-room={target.roomId} data-target-x={target.position.x} data-target-y={target.position.y}
+              aria-label={`${near ? 'Examiner' : 'Approcher'} : ${target.label}`}
+              onClick={() => commandsRef.current.incident(target.id)}>
+              <span className={styles.incidentRing} aria-hidden="true" />
+              <span className={styles.incidentLabel}><small>{current ? 'INTERVENTION · PROCHAIN POINT' : 'OBJET DU DOSSIER'}</small><strong>{target.label}</strong></span>
+            </button>
+          </div>;
+        })}
         {marker && <div className={styles.destination} aria-hidden="true" style={{ left: marker.x, top: marker.y }} />}
+        {presentation.escort && presentation.escortScene && <div className={styles.escortActor}
+          data-clan-incident-escort data-escort-room={roomId}
+          data-escort-x={presentation.escort.actor.x.toFixed(2)} data-escort-y={presentation.escort.actor.y.toFixed(2)}
+          data-escort-moving={!suspended && presentation.escort.moving} data-escort-follows={presentation.escortScene.follows}
+          data-escort-checkpoint={presentation.escortScene.checkpointId} data-escort-path-builds={presentation.escort.pathBuilds}
+          style={{ left: presentation.escort.actor.x, top: presentation.escort.actor.y, zIndex: Math.round(presentation.escort.actor.y) + 1 }}>
+          <span className={styles.actorShadow} aria-hidden="true" />
+          <HunterRigPreview appearance={RETURNING_SCOUT_APPEARANCE} armorId="scout" weaponIds={[]} gearIds={[]}
+            size={112} label="Éclaireur de retour" pose={!suspended && presentation.escort.moving && !reducedMotion ? 'run' : 'idle'}
+            phase={reducedMotion ? 0 : presentation.escort.phase} speed={!suspended && presentation.escort.moving ? CLAN_SHIP_ESCORT_MOTION.speed : 0}
+            facing={presentation.escort.actor.facing} style={{ position: 'absolute', left: -56, top: -HUNTER_RIG_CANVAS.groundY / HUNTER_RIG_CANVAS.width * 112 }} />
+          <span className={styles.escortLabel}>ÉCLAIREUR DE RETOUR<small>{presentation.escortScene.arrived ? 'Arrivée consignée' : presentation.escortScene.follows ? 'Accompagnement en cours' : 'Au point de transfert'}</small></span>
+        </div>}
         <div className={styles.actor} data-interior-hunter data-interior-facing={actor.facing}
           style={{ left: actor.x, top: actor.y, zIndex: Math.round(actor.y) }}>
           <span className={styles.actorShadow} aria-hidden="true" />
@@ -485,8 +674,8 @@ function InteriorRoom(props: ClanShipInteriorProps & {
         {touchButton('down', 'Marcher vers l’avant', '↓')}{touchButton('right', 'Marcher à droite', '→')}
       </div>
       <div className={styles.actionGroup}>
-        <button type="button" className={styles.interactButton} disabled={suspended || !nearby}
-          data-interior-interact data-interior-ready={!!nearby}
+        <button type="button" className={styles.interactButton} disabled={suspended || (!nearby && !nearbyIncident)}
+          data-interior-interact data-interior-ready={!!nearby || !!nearbyIncident}
           onClick={() => commandsRef.current.interact()}><span className={styles.keycap}>E / A</span><span>{interactLabel}</span></button>
         <div className={styles.secondaryControls}>
           {props.onOperations && <button type="button" disabled={suspended} data-interior-operations
@@ -495,14 +684,19 @@ function InteriorRoom(props: ClanShipInteriorProps & {
           </button>}
           <button type="button" disabled={suspended || (!presentation.navigating && !targetRoomId)} data-interior-cancel
             onClick={() => commandsRef.current.cancel()}>Arrêter le trajet</button>
-          {!serviceReady && <button type="button" disabled={suspended} data-interior-approach-service onClick={() => commandsRef.current.service()}>
-            {roomId === 'hangar' ? 'Rejoindre la passerelle' : 'Approcher l’installation'}</button>}
+          {(!serviceReady || serviceOccupiedByIncident) && <button type="button" disabled={suspended} data-interior-approach-service onClick={() => commandsRef.current.service()}>
+            {serviceReady ? room.serviceLabel : roomId === 'hangar' ? 'Rejoindre la passerelle' : 'Approcher l’installation'}</button>}
         </div>
       </div>
       <p className={styles.keyHelp}><span>Sol : cliquer pour marcher</span><span>Flèches / ZQSD / WASD · E : service · R : dossier du poste</span><span>Manette : stick, A : service · X : dossier · B : hangar · Start : réglages</span></p>
     </div>
     <p className={styles.status} role="status" aria-live="polite">{suspended ? 'Déplacements suspendus pendant la consultation.' : status}</p>
-  </section>;
+  </section>
+    {openedTarget && incidentState && <ClanShipIncidentPanel target={openedTarget} state={incidentState} suspended={props.suspended}
+      escortReady={!!presentation.escort && distance(presentation.escort.actor, openedTarget.position) <= METRICS.interactionReach}
+      onAction={action => commandsRef.current.incidentAction(action)} onClose={closeIncidentPanel}
+      onNavigate={target => { closeIncidentPanel(); props.onNavigateTarget(target.roomId); }} />}
+  </>;
 }
 
 interface AlphaArt {
@@ -527,7 +721,26 @@ function NativeArt({ asset, x, y, width, height, className }: {
 const FIXTURE_ART = {
   console: SHIP_LEVEL_ART.navigationConsole, rack: SHIP_LEVEL_ART_V22.armoryRack,
   bed: SHIP_LEVEL_ART_V22.medbayBed, terminal: SHIP_LEVEL_ART_V22.archiveTerminal, forge: SHIP_LEVEL_ART_V22.forgeStation,
+  cargo: incidentPropManifest.assets['sealed-return-cargo'], tablet: incidentPropManifest.assets['trophy-memory-tablet'],
 };
+
+/** Modules are attached to existing blocked console/forge sockets. Cargo and
+ * the freestanding archive tablet are permanent physical fixtures above; their
+ * footprints are authored in the same geometry used by both actors. */
+const IncidentObjectArt = memo(function IncidentObjectArt({ target }: { target: ClanShipIncidentTarget }) {
+  if (target.art !== 'relay' && target.art !== 'tablet') return null;
+  if (target.id === 'relay-reference' || target.id === 'provenance-record-b') return null;
+  const relay = target.art === 'relay';
+  const footY = target.id === 'relay-component' ? 575 : target.id === 'relay-console' ? 549
+    : target.id === 'provenance-support' ? 550 : 540;
+  const layer = target.id === 'relay-component' ? 581 : target.id === 'relay-console' ? 551
+    : target.id === 'provenance-support' ? 566 : 556;
+  return <div className={styles.fixture} data-clan-incident-prop={target.id}
+    style={{ left: target.position.x, top: footY, zIndex: layer }}>
+    <NativeArt asset={incidentPropManifest.assets[relay ? 'relay-cartridge' : 'trophy-memory-tablet']}
+      x={0} y={0} width={relay ? target.id === 'relay-console' ? 100 : 115 : 84} height={relay ? 78 : 112} />
+  </div>;
+});
 // Dedicated clan fixtures replace only their matching instances. A council
 // holotable must not silently turn every berth/trophy console into that table.
 const CLAN_FIXTURE_ART: Partial<Record<string, AlphaArt>> = {

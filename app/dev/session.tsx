@@ -7,6 +7,7 @@ import { GameAudio } from "../game/sound";
 import { useHomeworldReducedMotionV77 } from "../game/useHomeworldReducedMotionV77";
 import { actClanShipDocking, type ClanShipDockingAction } from "../game/systems/clanShipDocking";
 import { actClanShipOperations, createClanShipOperations, inspectClanShipOperations, type ClanShipOperationsAction } from "../game/systems/clanShipOperations";
+import { actClanShipIncidents, createClanShipIncidents, inspectClanShipIncidents, type ClanShipIncidentAction, type ClanShipIncidentPhysicalContext } from "../game/systems/clanShipIncidents";
 import { completePlanetArrivalHandoff, inspectPlanetArrival, type PlanetArrivalState } from "../game/systems/planetArrival";
 import { inspectPlanetArrivalRun } from "../game/systems/planetArrivalRun";
 import { createDefaultShipProgression, type ShipProgressionState } from "../game/systems/progression";
@@ -207,6 +208,9 @@ export default function DevTravelSession({ destination, onTravel, onExit }: DevT
     const current = saveRef.current;
     if (!sessionAliveRef.current || destination.kind !== "clan" || !readGameFocus() ||
         serviceRef.current !== null || current.createdAt !== ownerRef.current || current.clanShipDocking?.status !== "aboard") return false;
+    if (action.type === "accept-contract" && current.clanShipIncidents?.activeIncident) {
+      setNotice("Termine ou clos l’intervention à bord avant d’accepter un autre départ."); return false;
+    }
     const inspection = inspectClanShipOperations(current.clanShipOperations, current.createdAt);
     if (inspection.status === "future-version" || inspection.status === "invalid-save") return false;
     const result = actClanShipOperations(inspection.state ?? createClanShipOperations(current.createdAt), action,
@@ -217,6 +221,25 @@ export default function DevTravelSession({ destination, onTravel, onExit }: DevT
         current.profile.clanMarks > Number.MAX_SAFE_INTEGER - reward) return false;
     if (result.changed) replaceSave({ ...current, clanShipOperations: result.state,
       profile: { ...current.profile, clanMarks: current.profile.clanMarks + reward } });
+    setNotice(`${result.message} · essai temporaire, aucune campagne modifiée`);
+    return true;
+  }, [destination.kind, replaceSave]);
+  const actClanIncident = useCallback((action: ClanShipIncidentAction, physical?: ClanShipIncidentPhysicalContext): boolean => {
+    const current = saveRef.current;
+    if (!sessionAliveRef.current || destination.kind !== "clan" || !readGameFocus() || serviceRef.current !== null ||
+        current.createdAt !== ownerRef.current || current.clanShipDocking?.status !== "aboard") return false;
+    const inspection = inspectClanShipIncidents(current.clanShipIncidents, current.createdAt);
+    const operations = inspectClanShipOperations(current.clanShipOperations, current.createdAt);
+    if (inspection.status === "future-version" || inspection.status === "invalid-save" || !operations.state) return false;
+    const result = actClanShipIncidents(inspection.state ?? createClanShipIncidents(current.createdAt), action,
+      { ownerCreatedAt: current.createdAt, docking: current.clanShipDocking, campaign: current, operations: operations.state, ...physical });
+    if (!result.accepted) { setNotice(result.message); return false; }
+    const reward = result.clanMarksReward;
+    if (!Number.isSafeInteger(reward) || reward < 0 || (reward > 0 && (!result.changed ||
+        !Number.isSafeInteger(current.profile.clanMarks) || current.profile.clanMarks < 0 ||
+        current.profile.clanMarks > Number.MAX_SAFE_INTEGER - reward))) return false;
+    if (result.changed) replaceSave({ ...current, clanShipIncidents: result.state,
+      ...(reward > 0 ? { profile: { ...current.profile, clanMarks: current.profile.clanMarks + reward } } : {}) });
     setNotice(`${result.message} · essai temporaire, aucune campagne modifiée`);
     return true;
   }, [destination.kind, replaceSave]);
@@ -374,10 +397,11 @@ export default function DevTravelSession({ destination, onTravel, onExit }: DevT
               state={save.clanShipDocking}
               save={save}
               selectedShipId={selectedShipId}
-              suspended={service !== null}
+              suspended={nativeSceneSuspended}
               temporarySession
               onAction={actClanShip}
               onOperations={actClanOperations}
+              onIncident={actClanIncident}
               onService={openService}
               onExit={returnToShip}
               onOpenSettings={() => openService("settings")}

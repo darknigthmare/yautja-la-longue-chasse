@@ -684,6 +684,8 @@ export interface SaveGame {
   clanShipDocking?: import("./systems/clanShipDocking").ClanShipDockingState | null;
   /** Clan mandate, accepted contracts and recruited crew share the campaign transaction. */
   clanShipOperations?: import("./systems/clanShipOperations").ClanShipOperationsState | null;
+  /** Physical incident evidence, decisions and safe escort checkpoints, in the campaign transaction. */
+  clanShipIncidents?: import("./systems/clanShipIncidents").ClanShipIncidentsState | null;
   /** Separate orbital castle visit, bound to this campaign and its personal hull. */
   wolfCastle?: import("./systems/wolfCastle").WolfCastleVisit | null;
   /** Arrival and frozen start configuration are written in one campaign transaction. */

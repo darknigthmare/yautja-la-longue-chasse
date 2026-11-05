@@ -73,6 +73,18 @@
 .crewLabel strong { font-weight: 600; }
 .crewLabel span { font-size: 12px; color: #b2c7bd; }
 .crewLabel:focus-visible { outline: 3px solid var(--room-accent); outline-offset: 3px; }
+.incidentObject { position: static; }
+.incidentTarget { position: absolute; width: 88px; height: 44px; margin-left: -44px; margin-top: -22px; padding: 0; border: 0; border-radius: 50%; color: #e9efd8; background: transparent; cursor: pointer; }
+.incidentRing { position: absolute; inset: 2px; border: 2px dashed #d1cd88; border-radius: 50%; background: #b9c66d1c; box-shadow: 0 0 18px #c3d78835; pointer-events: none; }
+.incidentLabel { position: absolute; bottom: 58px; left: 50%; transform: translateX(-50%); width: 216px; display: grid; gap: 6px; border: 1px solid #8f9c60; border-radius: 5px; padding: 9px 10px; background: #182316f0; box-shadow: 0 6px 18px #0009; text-align: center; pointer-events: auto; }
+.incidentLabel small { color: #c4d398; font: 9px var(--font-ui, Arial, sans-serif); letter-spacing: .08em; }
+.incidentLabel strong { font: 600 14px/1.25 var(--font-ui, Arial, sans-serif); }
+.incidentTarget[data-clan-incident-ready='true'] .incidentRing { border-style: solid; border-color: #e9f5bb; background: #cbe2983d; }
+.incidentTarget:hover .incidentLabel, .incidentTarget:focus-visible .incidentLabel { border-color: #e2edb3; background: #304125; }
+.incidentObject[data-current-incident-target='true'] .incidentLabel { border-color: #d6dba2; }
+.escortActor { position: absolute; width: 0; height: 0; pointer-events: none; }
+.escortLabel { position: absolute; left: -92px; top: -245px; width: 184px; color: #d7e8c9; text-shadow: 0 2px 5px #000, 0 0 7px #000; text-align: center; font-size: 10px; font-weight: 650; letter-spacing: .07em; }
+.escortLabel small { display: block; margin-top: 5px; color: #a4c6b6; font-size: 9px; font-weight: 400; letter-spacing: 0; }
 
 .personalShip { position: absolute; left: 270px; top: 112px; width: 680px; height: 340px; z-index: 10; pointer-events: none; }
 .personalShip > img { width: 100%; height: 100%; object-fit: contain; filter: drop-shadow(0 20px 13px #000c); }

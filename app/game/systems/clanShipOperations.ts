@@ -164,6 +164,7 @@ export interface ClanShipOperationsState {
 export interface ClanShipCampaignEvidence {
   createdAt: string;
   prologue?: { status?: string; chronicle: unknown } | null;
+  clanShipIncidents?: { activeIncident: unknown } | null;
   missionProgress: Partial<Record<MissionId, { status: string; attempts: number; completions: number }>>;
 }
 export interface ClanShipOperationsContext {
@@ -378,6 +379,7 @@ export function evaluateClanShipContract(state: ClanShipOperationsState, id: Cla
   if (!evaluateClanShipAccess(campaign).allowed || !state.mandateAccepted) return access(false, 'Reçois le mandat du conseil après l’accueil à bord.');
   if (completed(state, id)) return access(false, 'Ce contrat est déjà accompli.');
   if (state.activeContract) return access(false, 'Un contrat est déjà suivi. Termine-le ou retire-le au conseil.');
+  if (campaign.clanShipIncidents?.activeIncident) return access(false, 'Termine ou clos l’intervention à bord avant d’accepter un autre départ.');
   const missing = definition.prerequisiteIds.find(required => !completed(state, required));
   if (missing) return access(false, `Dossier requis : ${clanShipContract(missing)?.name ?? missing}.`);
   if (definition.missionId) {
