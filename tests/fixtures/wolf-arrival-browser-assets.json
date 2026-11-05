@@ -1,5 +1,5 @@
 {
-  "source": "Static dependencies resolved from the current castle, all eight arrival destinations, default hunter, jungle HuntCanvas loaders, and the actual galaxy / Oseris sector / Oseris system / Oseris-IV / jungle-vey preparation route, combined with the existing observed Clan Ship shared-service fixture. Galaxy route images were enumerated from the rendered GalaxyMapPanel states and verified in Git. Browser confirmation is recorded separately by CI; this file is not a successful browser-run claim.",
+  "source": "Static dependencies resolved from the current castle, all eight arrival destinations, default hunter, jungle HuntCanvas loaders, and the actual galaxy / Oseris sector / Oseris system / Oseris-IV / jungle-vey preparation route, combined with the existing observed Clan Ship shared-service fixture. Galaxy route images were enumerated from the rendered GalaxyMapPanel states and verified in Git. Browser confirmation is recorded separately by CI; this file is not a successful browser-run claim. The two original expedition companions are resolved from the actual HunterRigPreview SSR using expeditionMemberAppearance/Loadout; this adds only their registered source dependencies.",
   "paths": [
     "public/game/assets/clan-field-20261103/medical-empty.svg",
     "public/game/assets/v134/gauntlets/jungle-hunter/01-arm.svg",
@@ -107,6 +107,7 @@
     "public/game/assets/v3/actors/yautja/hunter/body/classic/parts/foot-front.webp",
     "public/game/assets/v3/actors/yautja/hunter/body/classic/parts/hand-back.webp",
     "public/game/assets/v3/actors/yautja/hunter/body/classic/parts/hand-front.webp",
+    "public/game/assets/v3/actors/yautja/hunter/body/classic/parts/head.webp",
     "public/game/assets/v3/actors/yautja/hunter/body/classic/parts/lower-arm-back.webp",
     "public/game/assets/v3/actors/yautja/hunter/body/classic/parts/lower-arm-front.webp",
     "public/game/assets/v3/actors/yautja/hunter/body/classic/parts/pelvis.webp",
@@ -117,7 +118,9 @@
     "public/game/assets/v3/actors/yautja/hunter/body/classic/parts/torso.webp",
     "public/game/assets/v3/actors/yautja/hunter/body/classic/parts/upper-arm-back.webp",
     "public/game/assets/v3/actors/yautja/hunter/body/classic/parts/upper-arm-front.webp",
+    "public/game/assets/v3/actors/yautja/hunter/dreads/registered/braided.webp",
     "public/game/assets/v3/actors/yautja/hunter/dreads/registered/classic.webp",
+    "public/game/assets/v3/actors/yautja/hunter/dreads/registered/ringed.webp",
     "public/game/assets/v3/actors/yautja/hunter/equipment/registered/barrel.webp",
     "public/game/assets/v3/actors/yautja/hunter/equipment/registered/blade-housing.webp",
     "public/game/assets/v3/actors/yautja/hunter/equipment/registered/blades.webp",
@@ -133,6 +136,7 @@
     "public/game/assets/v3/actors/yautja/hunter/gear/motion-sensor.webp",
     "public/game/assets/v3/actors/yautja/hunter/gear/registered/audio-decoy.webp",
     "public/game/assets/v3/actors/yautja/hunter/gear/registered/motion-sensor.webp",
+    "public/game/assets/v3/actors/yautja/hunter/gear/registered/snare.webp",
     "public/game/assets/v3/actors/yautja/hunter/masks/berserker.webp",
     "public/game/assets/v3/actors/yautja/hunter/masks/celtic.webp",
     "public/game/assets/v3/actors/yautja/hunter/masks/chopper.webp",

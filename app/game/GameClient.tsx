@@ -60,11 +60,15 @@ import { campaignWelcomeV69 } from "./systems/campaignWelcomeV69";
 import { useHomeworldReducedMotionV77 } from "./useHomeworldReducedMotionV77";
 import { campaignWorldResumeV70 } from "./systems/campaignWorldResumeV70";
 import { actClanShipDocking, normalizeClanShipDocking, type ClanShipDockingAction } from "./systems/clanShipDocking";
-import { actClanShipOperations, bindClanShipMission, clanShipContract, createClanShipOperations, inspectClanShipOperations, releaseClanShipMissionBinding, settleClanShipMission, type ClanShipOperationsAction } from "./systems/clanShipOperations";
+import { actClanShipOperations, bindClanShipMission, clanShipContract, createClanShipOperations, evaluateClanShipAccess, inspectClanShipOperations, releaseClanShipMissionBinding, settleClanShipMission, type ClanShipOperationsAction } from "./systems/clanShipOperations";
 import type { ClanShipService } from "./ClanShipHub";
 import { createWolfCastleVisit, inspectWolfCastleVisit, actWolfCastle, applyWolfCastleCheckpoint, type WolfCastleAction, type WolfCastleCheckpoint } from "./systems/wolfCastle";
 import { createPlanetArrival, inspectPlanetArrival, completePlanetArrivalHandoff, type PlanetArrivalState } from "./systems/planetArrival";
 import { inspectPlanetArrivalRun, type PlanetArrivalRun } from "./systems/planetArrivalRun";
+import { DEFAULT_PLAN, TRIO_MEMBERS, assignExpeditionMember, careForExpeditionMember, expeditionTrioReady,
+  normalizePlanetInsertionPlan, samePlanetInsertion, settleExpeditionOutcome, shipSupportsSurfaceInsertion,
+  type ExpeditionMemberId, type PlanetInsertionPlan } from "./systems/planetInsertion";
+import InsertionPlanPanel from "./InsertionPlanPanel";
 import { COMPLETE_ARCHIVE_FORMAT, COMPLETE_ARCHIVE_MAX_BYTES, createCompleteArchive, parseCompleteArchive, prepareCompleteArchiveImport, importCompleteArchive, completeArchiveSummary, type CompleteArchiveImportPlan } from "./systems/completeArchive";
 import { ARCHIVE_TRANSFER_JOURNAL_KEY, archiveTransferPending } from "./systems/archiveTransferGuard";
 import { withArchiveTransferLock } from "./systems/archiveTransaction";
@@ -105,6 +109,7 @@ import { PIT_FIRST_EDITION_FIGHTER_IDS } from "./systems/pitFirstEdition";
 import V6AtlasSprite from "./V6AtlasSprite";
 import {
   DEFAULT_SHIP_ID,
+  isShipId,
   type ShipId,
 } from "./shipCatalogue";
 import {
@@ -416,6 +421,9 @@ interface ActiveHuntSession {
 interface HuntResumePayload {
   snapshot: JsonObject | null;
   retryCheckpoint: JsonObject | null;
+  insertionPlan?: PlanetInsertionPlan;
+  insertionRunId?: string;
+  insertionShipId?: ShipId;
   /** Preserves the mission-start cosmetic; no extra reward or unlock. */
   gauntletVariantId: string;
 }
@@ -475,6 +483,7 @@ function normalizeHuntConfiguration(
   const loadout = configuration.loadout;
   const appearance = configuration.appearance;
   const visualOptions = configuration.visualOptions;
+  const insertion = normalizePlanetInsertionPlan(configuration.insertion);
   if (
     !isJsonObject(inventory) ||
     !isJsonObject(loadout) ||
@@ -482,7 +491,13 @@ function normalizeHuntConfiguration(
     !isJsonObject(visualOptions) ||
     typeof visualOptions.screenShake !== "boolean" ||
     typeof visualOptions.reducedGore !== "boolean" ||
-    typeof visualOptions.highContrastVision !== "boolean"
+    typeof visualOptions.highContrastVision !== "boolean" ||
+    !insertion ||
+    (configuration.insertion !== undefined && !isShipId(configuration.insertionShipId)) ||
+    ((insertion.method === 'ship' || insertion.team === 'triad') && !evaluateClanShipAccess(baseSave).allowed) ||
+    (insertion.method === 'ship' && (!isShipId(configuration.insertionShipId) || !shipSupportsSurfaceInsertion(configuration.insertionShipId))) ||
+    (insertion.team === 'triad' && (!isShipId(configuration.insertionShipId) ||
+      !expeditionTrioReady(baseSave.expeditionRoster, baseSave.createdAt, configuration.insertionShipId)))
   ) {
     return null;
   }
@@ -1071,6 +1086,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
     useState<GalaxyNavigationState>(createGalaxyNavigationState);
   const [selectedShipId, setSelectedShipId] =
     useState<ShipId>(DEFAULT_SHIP_ID);
+  const [insertionPlan, setInsertionPlan] = useState<PlanetInsertionPlan>(() => ({ ...DEFAULT_PLAN }));
   const [mapReturnScreen, setMapReturnScreen] =
     useState<MapReturnScreen>("deck");
   const [stationReturnScreen, setStationReturnScreen] =
@@ -2131,7 +2147,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
 
   // City choices are acknowledged only after durable storage confirms the write.
   // A failed write must not announce a completed investigation or apply a reward.
-  const persistSocialProgress = useCallback((update: Partial<Pick<SaveGame, "inventory" | "profile" | "homeworld" | "justice" | "gameReserveV66" | "homeworldPassageV67" | "homeworldRegionV68" | "shipPreparationV88" | "shipAcquisitionV89" | "gauntletV134" | "clanShipDocking" | "clanShipOperations" | "wolfCastle" | "planetArrival" | "planetArrivalRun">>): boolean => {
+  const persistSocialProgress = useCallback((update: Partial<Pick<SaveGame, "inventory" | "profile" | "homeworld" | "justice" | "gameReserveV66" | "homeworldPassageV67" | "homeworldRegionV68" | "shipPreparationV88" | "shipAcquisitionV89" | "gauntletV134" | "clanShipDocking" | "clanShipOperations" | "wolfCastle" | "planetArrival" | "planetArrivalRun" | "expeditionRoster">>): boolean => {
     if (!sessionAliveRef.current) return false;
     const current = saveRef.current;
     if (pendingTrophyCommitRef.current) {
@@ -2141,7 +2157,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
       setToast("Termine la sauvegarde du résultat de chasse avant de poursuivre le dossier.");
       return false;
     }
-    const updateSerialized = JSON.stringify({ inventory: update.inventory, profile: update.profile, homeworld: update.homeworld, justice: update.justice, gameReserveV66: update.gameReserveV66, homeworldPassageV67: update.homeworldPassageV67, homeworldRegionV68: update.homeworldRegionV68, shipPreparationV88: update.shipPreparationV88, shipAcquisitionV89: update.shipAcquisitionV89, gauntletV134: update.gauntletV134, clanShipDocking: update.clanShipDocking, clanShipOperations: update.clanShipOperations, wolfCastle: update.wolfCastle, planetArrival: update.planetArrival, planetArrivalRun: update.planetArrivalRun });
+    const updateSerialized = JSON.stringify({ inventory: update.inventory, profile: update.profile, homeworld: update.homeworld, justice: update.justice, gameReserveV66: update.gameReserveV66, homeworldPassageV67: update.homeworldPassageV67, homeworldRegionV68: update.homeworldRegionV68, shipPreparationV88: update.shipPreparationV88, shipAcquisitionV89: update.shipAcquisitionV89, gauntletV134: update.gauntletV134, clanShipDocking: update.clanShipDocking, clanShipOperations: update.clanShipOperations, wolfCastle: update.wolfCastle, planetArrival: update.planetArrival, planetArrivalRun: update.planetArrivalRun, expeditionRoster: update.expeditionRoster });
     const pending = pendingSocialWriteRef.current;
     if (pending) {
       const recovered = reconcileSaveWrite(pending.attempt, current.createdAt);
@@ -2179,6 +2195,27 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
     setSave(result.save);
     return true;
   }, [reconcileHuntWrite]);
+
+  const assignExpeditionHunter = useCallback((id: ExpeditionMemberId) => {
+    const current = saveRef.current;
+    if (screen !== 'briefing' || settingsOpen || archiveTransferBusy || archiveRecoveryIssue || campaignSaveBusy ||
+        activeHuntSessionRef.current || resumableHunt || current.planetArrival || !evaluateClanShipAccess(current).allowed) return;
+    const shipId = loadShipProgression(current).selectedShipId;
+    const roster = assignExpeditionMember(current.expeditionRoster, current.createdAt, shipId, id);
+    if (persistSocialProgress({ expeditionRoster: roster })) setToast(`${TRIO_MEMBERS.find(member => member.id === id)?.name} : affectation au vaisseau confirmée.`);
+  }, [archiveRecoveryIssue, archiveTransferBusy, campaignSaveBusy, persistSocialProgress, resumableHunt, screen, settingsOpen]);
+
+  const careForExpeditionHunter = useCallback((id: ExpeditionMemberId, expectedAvailability: 'recovering' | 'missing') => {
+    const current = saveRef.current;
+    if (screen !== 'briefing' || settingsOpen || archiveTransferBusy || archiveRecoveryIssue || campaignSaveBusy ||
+        activeHuntSessionRef.current || resumableHunt || current.planetArrival || !evaluateClanShipAccess(current).allowed) return;
+    const before = current.expeditionRoster?.members.find(member => member.id === id);
+    const service = careForExpeditionMember(current.expeditionRoster, current.createdAt, id, current.profile.clanMarks, expectedAvailability);
+    if (!service) { setToast('Les marques disponibles ou l’état du compagnon ne permettent pas cette intervention.'); return; }
+    if (persistSocialProgress({ expeditionRoster: service.roster, profile: { ...current.profile, clanMarks: service.clanMarks } }))
+      setToast(before?.availability === 'missing' ? 'Rapatriement du clan confirmé. Le compagnon doit recevoir ses soins avant de repartir.'
+        : 'Soins confirmés. Le compagnon peut rejoindre la prochaine incursion.');
+  }, [archiveRecoveryIssue, archiveTransferBusy, campaignSaveBusy, persistSocialProgress, resumableHunt, screen, settingsOpen]);
 
   // Research is awarded only from a real trophy/rite/mission receipt and
   // confirmed by the existing transactional campaign-save writer.
@@ -2844,6 +2881,9 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
     setSelectedMission(mission); setHuntRuntimeSave(runtime); setResumableHunt(null);
     // Pin the accepted run's cosmetic without inventing a resumed world snapshot.
     setHuntResumePayload({ snapshot: null, retryCheckpoint: null,
+      insertionPlan: normalizePlanetInsertionPlan(run.configuration.insertion) ?? undefined,
+      insertionRunId: arrival.runId,
+      insertionShipId: isShipId(run.configuration.insertionShipId) ? run.configuration.insertionShipId : undefined,
       gauntletVariantId: resumeHuntGauntletV142(run.configuration, hunterGauntlet.equippedId,
         current.profile.rankId, current.gauntletV134?.claimedStudies ?? []),
     });
@@ -2858,7 +2898,8 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
         settingsOpen || archiveTransferBusy || archiveRecoveryIssue || campaignSaveBusy || !before || before.status === 'complete' ||
         inspectPlanetArrival(state, current.createdAt, before.runId).status !== 'valid' ||
         state.missionId !== before.missionId || state.encounterRun !== before.encounterRun ||
-        state.personalShipId !== before.personalShipId || state.hunterPresetId !== before.hunterPresetId) return false;
+        state.personalShipId !== before.personalShipId || state.hunterPresetId !== before.hunterPresetId ||
+        !samePlanetInsertion(state.insertion, before.insertion)) return false;
     return persistSocialProgress({ planetArrival: state });
   }, [archiveRecoveryIssue, archiveTransferBusy, campaignSaveBusy, entry.ownerCreatedAt, persistSocialProgress, screen, settingsOpen]);
 
@@ -2870,6 +2911,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
         inspectPlanetArrival(state, current.createdAt, before.runId).status !== 'valid' ||
         state.missionId !== before.missionId || state.personalShipId !== before.personalShipId ||
         state.hunterPresetId !== before.hunterPresetId || state.encounterRun !== before.encounterRun ||
+        !samePlanetInsertion(state.insertion, before.insertion) ||
         !['handoff-pending', 'complete'].includes(state.status)) return false;
     const run = inspectPlanetArrivalRun(current.planetArrivalRun, before).state;
     if (!run) return false;
@@ -2897,6 +2939,18 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
       setToast("La chasse attend le désamarrage de ton vaisseau personnel."); return;
     }
     if (!selectedMission || save.missionProgress[selectedMission.id].status === "locked") return;
+    const chosenInsertion = normalizePlanetInsertionPlan(insertionPlan);
+    const chosenShip = loadShipProgression(saveRef.current).selectedShipId;
+    if (!chosenInsertion) { setToast('Le plan d’insertion doit être vérifié avant le départ.'); return; }
+    if ((chosenInsertion.method === 'ship' || chosenInsertion.team === 'triad') && !evaluateClanShipAccess(saveRef.current).allowed) {
+      setToast('Le rite Blooded doit être reconnu avant une incursion autonome en trio ou un atterrissage personnel.'); return;
+    }
+    if (chosenInsertion.method === 'ship' && !shipSupportsSurfaceInsertion(chosenShip)) {
+      setToast('Cette coque reste en orbite. Choisis une capsule ou une coque compatible avec l’atterrissage.'); return;
+    }
+    if (chosenInsertion.team === 'triad' && !expeditionTrioReady(saveRef.current.expeditionRoster, saveRef.current.createdAt, chosenShip)) {
+      setToast('Ka’rhek et Sa’keth doivent être aptes et affectés à ce vaisseau pour partir en trio.'); return;
+    }
     // A sidecar can only survive a reload when its owning campaign snapshot is
     // durable too. Fresh profiles have not necessarily written the main save
     // yet, so establish that owner before the first hunt autosave.
@@ -2922,10 +2976,11 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
     try {
       arrival = createPlanetArrival({ ownerCreatedAt: runtimeSave.createdAt, runId, missionId: selectedMission.id,
         encounterRun: runtimeSave.missionProgress[selectedMission.id].attempts, personalShipId,
-        hunterPresetId: runtimeSave.appearance.presetId });
+        hunterPresetId: runtimeSave.appearance.presetId, insertion: chosenInsertion });
     } catch { setToast('Cette mission ne possède pas encore de destination d’arrivée valide.'); return; }
     const run: PlanetArrivalRun = { version: 1, ownerCreatedAt: runtimeSave.createdAt, runId, startedAt: now,
-      difficultyId: runtimeSave.settings.difficultyId, configuration: huntConfiguration(runtimeSave, hunterGauntlet.equippedId) };
+      difficultyId: runtimeSave.settings.difficultyId, configuration: { ...huntConfiguration(runtimeSave, hunterGauntlet.equippedId),
+        insertion: chosenInsertion as unknown as JsonObject, insertionShipId: personalShipId } };
     const operations = runtimeSave.clanShipOperations;
     const acceptedContract = operations?.activeContract ? clanShipContract(operations.activeContract.contractId) : null;
     const binding = operations && acceptedContract?.kind === 'field' && acceptedContract.missionId === selectedMission.id
@@ -2953,7 +3008,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
     void playSound("select");
     setNewGamePhase(null);
     setScreen("planet-arrival");
-  }, [hunterGauntlet.equippedId, persistSocialProgress, playSound, save, selectedMission]);
+  }, [hunterGauntlet.equippedId, insertionPlan, persistSocialProgress, playSound, save, selectedMission]);
 
   const resumeActiveHunt = useCallback(() => {
     if (!sessionAliveRef.current) return;
@@ -3018,6 +3073,9 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
     setHuntResumePayload({
       snapshot: resumed.snapshot,
       retryCheckpoint: resumed.retryCheckpoint,
+      insertionPlan: normalizePlanetInsertionPlan(resumed.configuration.insertion) ?? undefined,
+      insertionRunId: resumed.runId,
+      insertionShipId: isShipId(resumed.configuration.insertionShipId) ? resumed.configuration.insertionShipId : undefined,
       gauntletVariantId: resumeHuntGauntletV142(
         resumed.configuration,
         hunterGauntlet.equippedId,
@@ -3180,6 +3238,17 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
       const current = saveRef.current;
       let next = { ...applyMissionResult(current, result), planetArrival: null, planetArrivalRun: null };
       const session = activeHuntSessionRef.current;
+      const runInsertion = normalizePlanetInsertionPlan(session?.configuration.insertion);
+      if (runInsertion?.team === 'triad' && session) {
+        const shipId = session.configuration.insertionShipId;
+        const roster = isShipId(shipId) ? settleExpeditionOutcome(current.expeditionRoster, current.createdAt,
+          session.runId, runInsertion, shipId, result.insertionOutcome) : null;
+        if (!roster) {
+          setPendingHuntResult({ result, returnToDeck });
+          setToast('Le bilan de la triade doit être confirmé avant de clôturer cette chasse.'); return;
+        }
+        next = { ...next, expeditionRoster: roster };
+      }
       if (current.clanShipOperations && session) {
         const settlement = settleClanShipMission(current.clanShipOperations, current, next, result, session);
         const reward = settlement.clanMarksReward;
@@ -4628,6 +4697,11 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
                   </div>
                 </div>
                 </details>
+                <InsertionPlanPanel plan={insertionPlan} missionId={selectedMission.id} shipId={selectedShipId}
+                  ownerCreatedAt={save.createdAt} roster={save.expeditionRoster} clanMarks={save.profile.clanMarks}
+                  campaignAccess={evaluateClanShipAccess(save)}
+                  busy={settingsOpen || archiveTransferBusy || !!archiveRecoveryIssue || campaignSaveBusy || !!resumableHunt}
+                  onChange={setInsertionPlan} onAssign={assignExpeditionHunter} onCare={careForExpeditionHunter} />
                 <div className="briefing-actions">
                   <button
                     type="button"
@@ -5746,6 +5820,9 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
             mission={selectedMission}
             firstHuntGuideEnabled={selectedMission.id === "jungle-vey" && save.missionProgress["jungle-vey"].status !== "completed"}
             encounterRun={save.missionProgress[selectedMission.id].attempts}
+            insertionPlan={huntResumePayload?.insertionPlan}
+            insertionRunId={huntResumePayload?.insertionRunId}
+            insertionShipId={huntResumePayload?.insertionShipId}
             loadout={activeMissionSave.loadout}
             inventory={activeMissionSave.inventory}
             explorationProgress={activeMissionSave.exploration}
@@ -5825,6 +5902,12 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
                 value={`+${lastRewardSummary?.clanMarks ?? 0}`}
               />
             </div>
+            {lastResult.insertionOutcome?.plan.team === 'triad' && <section aria-label="Bilan de la triade" className="source-badge">
+              <h2>Retour de la triade</h2>
+              {TRIO_MEMBERS.map(member => <p key={member.id}>{member.name} : {lastResult.insertionOutcome?.leftBehind.includes(member.id)
+                ? 'resté sur le terrain — rapatriement du clan nécessaire'
+                : lastResult.insertionOutcome?.injured.includes(member.id) ? 'extrait — soins nécessaires' : 'extrait — apte au prochain départ'}</p>)}
+            </section>}
             {lastResult.honorEvents.length > 0 && (
               <details>
                 <summary>Journal d’honneur</summary>

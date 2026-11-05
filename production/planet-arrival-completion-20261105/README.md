@@ -34,6 +34,8 @@ Les sources des vaisseaux et de la capsule V1 ne sont pas remplacées. Les deux 
 
 ## Vérification
 
+Le workflow spatial [41983920400](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41983920400) a réussi sur le commit exact `c1266f07182c355dd670b321d767a3ea6d9140d5` : **47/47 contrôles navigateur**, 133 captures, 20 mesures de mouvement, aucune exception, erreur console ou ressource manquante. Le [reçu](verification/browser-c1266/receipt.json), le [rapport](verification/browser-c1266/report.json) et trois captures représentatives sont conservés avec ce SHA. Cette preuve couvre le premier lot capsule/solo ; l'extension trio et atterrissage dispose d'un dossier distinct.
+
 Les contrôles techniques, les tests comportementaux, la construction et la recette navigateur sont consignés séparément dans le dossier `verification/` de ce lot. Un succès TypeScript ne remplace pas le parcours animé. Les rapports navigateur conservent le commit testé, les empreintes de source, les instants effectivement capturés et les ressources demandées.
 
 Les deux problèmes de la recette précédente et leur correction sont expliqués dans [qa-recipe-notes.md](qa-recipe-notes.md) : attendre la sortie du vrai briefing avant de recommencer, puis matérialiser les seize ressources réelles nécessaires au secteur de chasse utilisé en CI. Aucune assertion de ressource manquante n'est supprimée.

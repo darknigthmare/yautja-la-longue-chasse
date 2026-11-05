@@ -10,6 +10,7 @@ import {
   createPlanetArrival, inspectPlanetArrival, type PlanetArrivalState,
 } from '../game/systems/planetArrival';
 import { inspectPlanetArrivalRun, type PlanetArrivalRun } from '../game/systems/planetArrivalRun';
+import type { PlanetInsertionPlan } from '../game/systems/planetInsertion';
 import {
   WOLF_CASTLE_ROOMS, createWolfCastleVisit, inspectWolfCastleVisit, wolfCastleEntryPoint,
   type WolfCastleRoomId,
@@ -42,7 +43,7 @@ export type DevDestination = DevDestinationDetails & (
   | { readonly kind: 'region'; readonly regionId: HomeworldRegionIdV68 }
   | { readonly kind: 'mission'; readonly missionId: MissionId }
   | { readonly kind: 'wolf'; readonly roomId: WolfCastleRoomId; readonly status: 'approach' | 'aboard' }
-  | { readonly kind: 'arrival'; readonly missionId: MissionId }
+  | { readonly kind: 'arrival'; readonly missionId: MissionId; readonly insertion?: Readonly<PlanetInsertionPlan> }
 );
 
 export interface DevArrivalFixture {
@@ -117,6 +118,21 @@ export const DEV_DESTINATIONS: readonly DevDestination[] = [
     missionId: mission.id,
     description: `${mission.title} · Jouer la cinématique d’insertion, puis rejoindre la même chasse de test.`,
   })),
+  {
+    id: 'arrival-ship-jungle-vey', label: 'Arrivée · posé du vaisseau en solo', category: 'arrivals', kind: 'arrival',
+    missionId: 'jungle-vey', insertion: { version: 1, method: 'ship', team: 'solo' },
+    description: 'Poser le vaisseau personnel sur Vey, puis rejoindre la chasse avec la pression de cette insertion.',
+  },
+  {
+    id: 'arrival-triad-jungle-vey', label: 'Arrivée · capsules de la triade', category: 'arrivals', kind: 'arrival',
+    missionId: 'jungle-vey', insertion: { version: 1, method: 'pod', team: 'triad' },
+    description: 'Rejoindre Vey avec Ka’rhek et Sa’keth, puis retrouver les trois chasseurs dans la même simulation.',
+  },
+  {
+    id: 'arrival-ship-triad-jungle-vey', label: 'Arrivée · vaisseau et triade', category: 'arrivals', kind: 'arrival',
+    missionId: 'jungle-vey', insertion: { version: 1, method: 'ship', team: 'triad' },
+    description: 'Poser le vaisseau et faire sortir la triade avant de rejoindre la chasse et ses patrouilles alertées.',
+  },
 ];
 
 export function resolveDevDestination(id: string | null | undefined): DevDestination | undefined {
@@ -191,10 +207,12 @@ export function createDevArrival(
   if (canonical.kind !== 'arrival') throw new Error('Destination d’arrivée de développement inconnue.');
   if (save.createdAt !== owner) throw new Error('Le contexte d’arrivée appartient à une autre session de test.');
   const runtime = structuredClone(save);
+  const insertion = canonical.insertion ? structuredClone(canonical.insertion) : undefined;
   const runId = `dev-arrival:${canonical.missionId}:${owner}`;
   const state = createPlanetArrival({
     ownerCreatedAt: owner, runId, missionId: canonical.missionId, encounterRun: 1,
     personalShipId: DEFAULT_SHIP_ID, hunterPresetId: runtime.appearance.presetId,
+    ...(insertion ? { insertion } : {}),
   });
   const run: PlanetArrivalRun = {
     version: 1, ownerCreatedAt: owner, runId, startedAt: owner, difficultyId: runtime.settings.difficultyId,
@@ -210,6 +228,7 @@ export function createDevArrival(
         huntAccessibility: runtime.settings.huntAccessibility as unknown as JsonObject,
       },
       elapsedSeconds: 0,
+      ...(insertion ? { insertion: structuredClone(insertion) as unknown as JsonObject, insertionShipId: DEFAULT_SHIP_ID } : {}),
     },
   };
   const inspectedState = inspectPlanetArrival(state, owner, runId);

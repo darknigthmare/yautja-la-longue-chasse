@@ -1,0 +1,2627 @@
+{
+  "coordinateSystem": "Full source canvas; x right, y down; normalized by width and height; contact lies on lower pixel edge.",
+  "alphaThreshold": 192,
+  "minimumContiguousSupportPixels": 3,
+  "sourceSelection": "Exact shipProfileAssetPath for every identity allowed by shipSupportsSurfaceInsertion; roles mothership/carrier/fleet/escape-pod excluded. Final gameplay excludes the individual AVP pod and its project-original variant as well; their already-inspected art remains documented.",
+  "visualInspection": [
+    "ship-ground-three-sources.jpg",
+    "ship-ground-sheet-1.jpg",
+    "ship-ground-sheet-2.jpg",
+    "ship-ground-sheet-3.jpg",
+    "ship-ground-sheet-4.jpg"
+  ],
+  "limitations": [
+    "These are source-art support contacts. A lower fin, rib or ornament can be the contact; no canonical landing gear is inferred.",
+    "groundExit retains the authored underside release socket. It does not establish a canonical door, ramp, or human-scale internal geometry.",
+    "Royal and shell thin antialiased extremities below the significant support are excluded by alpha >= 192 and the minimum three-pixel contiguous run.",
+    "Some catalogue-allowed hulls are depicted obliquely or as horizontal drop pods; no source rotation or redraw is introduced here."
+  ],
+  "excluded": [
+    {
+      "shipId": "lost-tribe-spaceship",
+      "role": "carrier"
+    },
+    {
+      "shipId": "avp-predator-mothership",
+      "role": "mothership"
+    },
+    {
+      "shipId": "feral-clan-ships",
+      "role": "fleet"
+    },
+    {
+      "shipId": "collector-ship",
+      "role": "carrier"
+    },
+    {
+      "shipId": "emergency-escape-pod",
+      "role": "escape-pod"
+    },
+    {
+      "shipId": "dek-mother-ship",
+      "role": "mothership"
+    },
+    {
+      "shipId": "avp-2010-mothership",
+      "role": "mothership"
+    },
+    {
+      "shipId": "huntmaster-ship",
+      "role": "carrier"
+    },
+    {
+      "shipId": "cold-war-ship",
+      "role": "carrier"
+    },
+    {
+      "shipId": "golden-mothership",
+      "role": "mothership"
+    },
+    {
+      "shipId": "gotham-city-ship",
+      "role": "carrier"
+    },
+    {
+      "shipId": "nedtesei",
+      "role": "carrier"
+    },
+    {
+      "shipId": "lunar-mothership",
+      "role": "mothership"
+    },
+    {
+      "shipId": "predator-fleet",
+      "role": "fleet"
+    },
+    {
+      "shipId": "project-original-avp-predator-mothership",
+      "role": "mothership"
+    }
+  ],
+  "profiles": [
+    {
+      "shipId": "classic-predator-spaceship",
+      "role": "scout",
+      "assetPath": "/game/ships/v12/classic-predator-spaceship.webp",
+      "sha256": "bb374f95f28dad53ce8ed745dde6f6a18c4f9038e0181b1714eec2f6c5991f7a",
+      "width": 1536,
+      "height": 1024,
+      "contactPixelEdge": {
+        "x": 1034.0,
+        "y": 867
+      },
+      "supportRow": 866,
+      "supportFirstX": 1022,
+      "supportLastX": 1045,
+      "supportAlphaMinimum": 197,
+      "mainComponentAreaAt192": 450494,
+      "groundExitPixel": {
+        "x": 544.0,
+        "y": 655.0
+      },
+      "boundsByAlphaThreshold": {
+        "1": {
+          "left": 126,
+          "top": 213,
+          "rightExclusive": 1413,
+          "bottomExclusive": 869
+        },
+        "32": {
+          "left": 127,
+          "top": 214,
+          "rightExclusive": 1411,
+          "bottomExclusive": 868
+        },
+        "128": {
+          "left": 128,
+          "top": 215,
+          "rightExclusive": 1411,
+          "bottomExclusive": 868
+        },
+        "192": {
+          "left": 128,
+          "top": 215,
+          "rightExclusive": 1410,
+          "bottomExclusive": 867
+        },
+        "224": {
+          "left": 128,
+          "top": 215,
+          "rightExclusive": 1410,
+          "bottomExclusive": 867
+        },
+        "250": {
+          "left": 129,
+          "top": 216,
+          "rightExclusive": 1409,
+          "bottomExclusive": 866
+        },
+        "255": {
+          "left": 130,
+          "top": 217,
+          "rightExclusive": 1409,
+          "bottomExclusive": 866
+        }
+      }
+    },
+    {
+      "shipId": "avp-predator-drop-pod",
+      "role": "drop-ship",
+      "assetPath": "/game/ships/v14/avp-predator-drop-pod.webp",
+      "sha256": "8364c02ee79e473b639ad2da608437fdb06c69a7483033db22e252b164824f53",
+      "width": 1536,
+      "height": 1024,
+      "contactPixelEdge": {
+        "x": 789.0,
+        "y": 842
+      },
+      "supportRow": 841,
+      "supportFirstX": 785,
+      "supportLastX": 792,
+      "supportAlphaMinimum": 198,
+      "mainComponentAreaAt192": 277628,
+      "groundExitPixel": {
+        "x": 1000.0,
+        "y": 614.0
+      },
+      "boundsByAlphaThreshold": {
+        "1": {
+          "left": 264,
+          "top": 148,
+          "rightExclusive": 1368,
+          "bottomExclusive": 843
+        },
+        "32": {
+          "left": 264,
+          "top": 149,
+          "rightExclusive": 1368,
+          "bottomExclusive": 843
+        },
+        "128": {
+          "left": 264,
+          "top": 149,
+          "rightExclusive": 1368,
+          "bottomExclusive": 842
+        },
+        "192": {
+          "left": 264,
+          "top": 149,
+          "rightExclusive": 1368,
+          "bottomExclusive": 842
+        },
+        "224": {
+          "left": 264,
+          "top": 149,
+          "rightExclusive": 1368,
+          "bottomExclusive": 842
+        },
+        "250": {
+          "left": 264,
+          "top": 149,
+          "rightExclusive": 1368,
+          "bottomExclusive": 842
+        },
+        "255": {
+          "left": 264,
+          "top": 149,
+          "rightExclusive": 1368,
+          "bottomExclusive": 842
+        }
+      }
+    },
+    {
+      "shipId": "avpr-scout-ship",
+      "role": "scout",
+      "assetPath": "/game/ships/v14/avpr-scout-ship.webp",
+      "sha256": "b787eb8f6a8a0eb1e5d075bce7503bc1f7e54f452e490d82959e93aa1a38c306",
+      "width": 1536,
+      "height": 1024,
+      "contactPixelEdge": {
+        "x": 959.5,
+        "y": 704
+      },
+      "supportRow": 703,
+      "supportFirstX": 951,
+      "supportLastX": 967,
+      "supportAlphaMinimum": 196,
+      "mainComponentAreaAt192": 342414,
+      "groundExitPixel": {
+        "x": 850.0,
+        "y": 702.0
+      },
+      "boundsByAlphaThreshold": {
+        "1": {
+          "left": 128,
+          "top": 306,
+          "rightExclusive": 1413,
+          "bottomExclusive": 705
+        },
+        "32": {
+          "left": 129,
+          "top": 307,
+          "rightExclusive": 1413,
+          "bottomExclusive": 705
+        },
+        "128": {
+          "left": 129,
+          "top": 308,
+          "rightExclusive": 1413,
+          "bottomExclusive": 704
+        },
+        "192": {
+          "left": 129,
+          "top": 308,
+          "rightExclusive": 1413,
+          "bottomExclusive": 704
+        },
+        "224": {
+          "left": 129,
+          "top": 308,
+          "rightExclusive": 1413,
+          "bottomExclusive": 704
+        },
+        "250": {
+          "left": 129,
+          "top": 308,
+          "rightExclusive": 1413,
+          "bottomExclusive": 704
+        },
+        "255": {
+          "left": 129,
+          "top": 308,
+          "rightExclusive": 1413,
+          "bottomExclusive": 704
+        }
+      }
+    },
+    {
+      "shipId": "wolf-ship",
+      "role": "recon",
+      "assetPath": "/game/ships/v14/wolf-ship.webp",
+      "sha256": "8697aff1379201f33aba393871a24780098dcb8f2268424c56912fac9470eed8",
+      "width": 1761,
+      "height": 893,
+      "contactPixelEdge": {
+        "x": 277.5,
+        "y": 737
+      },
+      "supportRow": 736,
+      "supportFirstX": 265,
+      "supportLastX": 289,
+      "supportAlphaMinimum": 194,
+      "mainComponentAreaAt192": 609729,
+      "groundExitPixel": {
+        "x": 850.0,
+        "y": 666.0
+      },
+      "boundsByAlphaThreshold": {
+        "1": {
+          "left": 69,
+          "top": 154,
+          "rightExclusive": 1680,
+          "bottomExclusive": 738
+        },
+        "32": {
+          "left": 69,
+          "top": 154,
+          "rightExclusive": 1680,
+          "bottomExclusive": 738
+        },
+        "128": {
+          "left": 70,
+          "top": 155,
+          "rightExclusive": 1679,
+          "bottomExclusive": 737
+        },
+        "192": {
+          "left": 70,
+          "top": 155,
+          "rightExclusive": 1679,
+          "bottomExclusive": 737
+        },
+        "224": {
+          "left": 70,
+          "top": 155,
+          "rightExclusive": 1679,
+          "bottomExclusive": 737
+        },
+        "250": {
+          "left": 70,
+          "top": 155,
+          "rightExclusive": 1679,
+          "bottomExclusive": 736
+        },
+        "255": {
+          "left": 70,
+          "top": 155,
+          "rightExclusive": 1679,
+          "bottomExclusive": 736
+        }
+      }
+    },
+    {
+      "shipId": "game-preserve-ship",
+      "role": "scout",
+      "assetPath": "/game/ships/v12/game-preserve-ship.webp",
+      "sha256": "1e0b54c5ca88b193a4a7ef6cdbc32134ea9d3021868b2b1a673ca2493b37a115",
+      "width": 1693,
+      "height": 929,
+      "contactPixelEdge": {
+        "x": 640.0,
+        "y": 738
+      },
+      "supportRow": 737,
+      "supportFirstX": 627,
+      "supportLastX": 652,
+      "supportAlphaMinimum": 193,
+      "mainComponentAreaAt192": 565141,
+      "groundExitPixel": {
+        "x": 870.0,
+        "y": 648.0
+      },
+      "boundsByAlphaThreshold": {
+        "1": {
+          "left": 59,
+          "top": 163,
+          "rightExclusive": 1627,
+          "bottomExclusive": 741
+        },
+        "32": {
+          "left": 60,
+          "top": 164,
+          "rightExclusive": 1620,
+          "bottomExclusive": 739
+        },
+        "128": {
+          "left": 61,
+          "top": 165,
+          "rightExclusive": 1619,
+          "bottomExclusive": 739
+        },
+        "192": {
+          "left": 62,
+          "top": 165,
+          "rightExclusive": 1618,
+          "bottomExclusive": 738
+        },
+        "224": {
+          "left": 62,
+          "top": 166,
+          "rightExclusive": 1618,
+          "bottomExclusive": 738
+        },
+        "250": {
+          "left": 66,
+          "top": 166,
+          "rightExclusive": 1617,
+          "bottomExclusive": 737
+        },
+        "255": {
+          "left": 66,
+          "top": 167,
+          "rightExclusive": 1614,
+          "bottomExclusive": 737
+        }
+      }
+    },
+    {
+      "shipId": "fugitive-spaceship",
+      "role": "recon",
+      "assetPath": "/game/ships/v14/fugitive-spaceship.webp",
+      "sha256": "643ae874e41a68f130e55aa472bc473dc21b4f7216357dcb87d320c7e88a6bc0",
+      "width": 1693,
+      "height": 929,
+      "contactPixelEdge": {
+        "x": 429.5,
+        "y": 689
+      },
+      "supportRow": 688,
+      "supportFirstX": 418,
+      "supportLastX": 440,
+      "supportAlphaMinimum": 194,
+      "mainComponentAreaAt192": 455610,
+      "groundExitPixel": {
+        "x": 1080.0,
+        "y": 668.0
+      },
+      "boundsByAlphaThreshold": {
+        "1": {
+          "left": 90,
+          "top": 190,
+          "rightExclusive": 1548,
+          "bottomExclusive": 689
+        },
+        "32": {
+          "left": 96,
+          "top": 191,
+          "rightExclusive": 1548,
+          "bottomExclusive": 689
+        },
+        "128": {
+          "left": 114,
+          "top": 191,
+          "rightExclusive": 1547,
+          "bottomExclusive": 689
+        },
+        "192": {
+          "left": 120,
+          "top": 191,
+          "rightExclusive": 1547,
+          "bottomExclusive": 689
+        },
+        "224": {
+          "left": 120,
+          "top": 192,
+          "rightExclusive": 1547,
+          "bottomExclusive": 688
+        },
+        "250": {
+          "left": 120,
+          "top": 192,
+          "rightExclusive": 1547,
+          "bottomExclusive": 688
+        },
+        "255": {
+          "left": 120,
+          "top": 192,
+          "rightExclusive": 1547,
+          "bottomExclusive": 688
+        }
+      }
+    },
+    {
+      "shipId": "upgrade-spaceship",
+      "role": "raider",
+      "assetPath": "/game/ships/v14/upgrade-spaceship.webp",
+      "sha256": "6e8c05489366124e93b0fe6ab18450d44de9d2ac1e9943640ebe3dfbc37702f3",
+      "width": 1672,
+      "height": 941,
+      "contactPixelEdge": {
+        "x": 452.0,
+        "y": 700
+      },
+      "supportRow": 699,
+      "supportFirstX": 447,
+      "supportLastX": 456,
+      "supportAlphaMinimum": 193,
+      "mainComponentAreaAt192": 424298,
+      "groundExitPixel": {
+        "x": 1000.0,
+        "y": 580.0
+      },
+      "boundsByAlphaThreshold": {
+        "1": {
+          "left": 90,
+          "top": 181,
+          "rightExclusive": 1614,
+          "bottomExclusive": 701
+        },
+        "32": {
+          "left": 90,
+          "top": 181,
+          "rightExclusive": 1614,
+          "bottomExclusive": 701
+        },
+        "128": {
+          "left": 90,
+          "top": 182,
+          "rightExclusive": 1613,
+          "bottomExclusive": 701
+        },
+        "192": {
+          "left": 91,
+          "top": 182,
+          "rightExclusive": 1613,
+          "bottomExclusive": 700
+        },
+        "224": {
+          "left": 91,
+          "top": 182,
+          "rightExclusive": 1613,
+          "bottomExclusive": 700
+        },
+        "250": {
+          "left": 91,
+          "top": 182,
+          "rightExclusive": 1613,
+          "bottomExclusive": 700
+        },
+        "255": {
+          "left": 91,
+          "top": 182,
+          "rightExclusive": 1613,
+          "bottomExclusive": 700
+        }
+      }
+    },
+    {
+      "shipId": "feral-spaceship",
+      "role": "drop-ship",
+      "assetPath": "/game/ships/v14/feral-spaceship.webp",
+      "sha256": "ff8147412252c56e5e810e5e1a6ea610d1ec01f5044ce892a677529863fb4a7d",
+      "width": 1672,
+      "height": 941,
+      "contactPixelEdge": {
+        "x": 1040.5,
+        "y": 695
+      },
+      "supportRow": 694,
+      "supportFirstX": 1038,
+      "supportLastX": 1042,
+      "supportAlphaMinimum": 216,
+      "mainComponentAreaAt192": 496619,
+      "groundExitPixel": {
+        "x": 900.0,
+        "y": 666.0
+      },
+      "boundsByAlphaThreshold": {
+        "1": {
+          "left": 20,
+          "top": 207,
+          "rightExclusive": 1655,
+          "bottomExclusive": 696
+        },
+        "32": {
+          "left": 21,
+          "top": 207,
+          "rightExclusive": 1655,
+          "bottomExclusive": 696
+        },
+        "128": {
+          "left": 21,
+          "top": 208,
+          "rightExclusive": 1655,
+          "bottomExclusive": 696
+        },
+        "192": {
+          "left": 21,
+          "top": 208,
+          "rightExclusive": 1654,
+          "bottomExclusive": 695
+        },
+        "224": {
+          "left": 21,
+          "top": 208,
+          "rightExclusive": 1654,
+          "bottomExclusive": 695
+        },
+        "250": {
+          "left": 21,
+          "top": 208,
+          "rightExclusive": 1654,
+          "bottomExclusive": 695
+        },
+        "255": {
+          "left": 21,
+          "top": 208,
+          "rightExclusive": 1654,
+          "bottomExclusive": 695
+        }
+      }
+    },
+    {
+      "shipId": "brute-jotunn-scout",
+      "role": "scout",
+      "assetPath": "/game/ships/v12/brute-jotunn-scout.webp",
+      "sha256": "e8e5ecc3b51b5fadcb2c67f2b703cbb0a2d8d5811cf835961e6b87affaced6d0",
+      "width": 1536,
+      "height": 1024,
+      "contactPixelEdge": {
+        "x": 881.5,
+        "y": 820
+      },
+      "supportRow": 819,
+      "supportFirstX": 880,
+      "supportLastX": 882,
+      "supportAlphaMinimum": 216,
+      "mainComponentAreaAt192": 557546,
+      "groundExitPixel": {
+        "x": 850.0,
+        "y": 703.0
+      },
+      "boundsByAlphaThreshold": {
+        "1": {
+          "left": 76,
+          "top": 178,
+          "rightExclusive": 1445,
+          "bottomExclusive": 823
+        },
+        "32": {
+          "left": 78,
+          "top": 179,
+          "rightExclusive": 1444,
+          "bottomExclusive": 821
+        },
+        "128": {
+          "left": 78,
+          "top": 180,
+          "rightExclusive": 1443,
+          "bottomExclusive": 821
+        },
+        "192": {
+          "left": 79,
+          "top": 181,
+          "rightExclusive": 1443,
+          "bottomExclusive": 820
+        },
+        "224": {
+          "left": 79,
+          "top": 181,
+          "rightExclusive": 1443,
+          "bottomExclusive": 820
+        },
+        "250": {
+          "left": 80,
+          "top": 182,
+          "rightExclusive": 1442,
+          "bottomExclusive": 819
+        },
+        "255": {
+          "left": 80,
+          "top": 182,
+          "rightExclusive": 1441,
+          "bottomExclusive": 818
+        }
+      }
+    },
+    {
+      "shipId": "wwii-cyborg-pilot-ship",
+      "role": "fighter",
+      "assetPath": "/game/ships/v12/wwii-cyborg-pilot-ship.webp",
+      "sha256": "4878fcef094b23a98f537a0813a23dd8507b6c87d4d827b8954b33f4ed905a73",
+      "width": 1536,
+      "height": 1024,
+      "contactPixelEdge": {
+        "x": 1327.0,
+        "y": 815
+      },
+      "supportRow": 814,
+      "supportFirstX": 1325,
+      "supportLastX": 1328,
+      "supportAlphaMinimum": 208,
+      "mainComponentAreaAt192": 397235,
+      "groundExitPixel": {
+        "x": 800.0,
+        "y": 692.0
+      },
+      "boundsByAlphaThreshold": {
+        "1": {
+          "left": 37,
+          "top": 110,
+          "rightExclusive": 1512,
+          "bottomExclusive": 818
+        },
+        "32": {
+          "left": 38,
+          "top": 111,
+          "rightExclusive": 1510,
+          "bottomExclusive": 816
+        },
+        "128": {
+          "left": 39,
+          "top": 112,
+          "rightExclusive": 1506,
+          "bottomExclusive": 816
+        },
+        "192": {
+          "left": 43,
+          "top": 112,
+          "rightExclusive": 1504,
+          "bottomExclusive": 815
+        },
+        "224": {
+          "left": 45,
+          "top": 112,
+          "rightExclusive": 1503,
+          "bottomExclusive": 815
+        },
+        "250": {
+          "left": 49,
+          "top": 113,
+          "rightExclusive": 1498,
+          "bottomExclusive": 814
+        },
+        "255": {
+          "left": 53,
+          "top": 114,
+          "rightExclusive": 1495,
+          "bottomExclusive": 813
+        }
+      }
+    },
+    {
+      "shipId": "grendel-king-ship",
+      "role": "fighter",
+      "assetPath": "/game/ships/v12/grendel-king-ship.webp",
+      "sha256": "e88ac3c56642b6899d0a4c7676d8887197015d7977698e7e09f2fce8eaa943d9",
+      "width": 1536,
+      "height": 1024,
+      "contactPixelEdge": {
+        "x": 702.5,
+        "y": 819
+      },
+      "supportRow": 818,
+      "supportFirstX": 701,
+      "supportLastX": 703,
+      "supportAlphaMinimum": 199,
+      "mainComponentAreaAt192": 361895,
+      "groundExitPixel": {
+        "x": 910.0,
+        "y": 734.0
+      },
+      "boundsByAlphaThreshold": {
+        "1": {
+          "left": 107,
+          "top": 139,
+          "rightExclusive": 1462,
+          "bottomExclusive": 822
+        },
+        "32": {
+          "left": 109,
+          "top": 140,
+          "rightExclusive": 1460,
+          "bottomExclusive": 821
+        },
+        "128": {
+          "left": 109,
+          "top": 141,
+          "rightExclusive": 1460,
+          "bottomExclusive": 820
+        },
+        "192": {
+          "left": 110,
+          "top": 142,
+          "rightExclusive": 1459,
+          "bottomExclusive": 819
+        },
+        "224": {
+          "left": 110,
+          "top": 145,
+          "rightExclusive": 1459,
+          "bottomExclusive": 819
+        },
+        "250": {
+          "left": 111,
+          "top": 152,
+          "rightExclusive": 1456,
+          "bottomExclusive": 815
+        },
+        "255": {
+          "left": 111,
+          "top": 157,
+          "rightExclusive": 1452,
+          "bottomExclusive": 813
+        }
+      }
+    },
+    {
+      "shipId": "kwei-ship",
+      "role": "scout",
+      "assetPath": "/game/ships/v12/kwei-ship.webp",
+      "sha256": "06a41cd1eb1c6cbf8fd2ba56fb075a5af71aaa71ac3c6b6f6de0770029bbe646",
+      "width": 1536,
+      "height": 1024,
+      "contactPixelEdge": {
+        "x": 671.5,
+        "y": 733
+      },
+      "supportRow": 732,
+      "supportFirstX": 664,
+      "supportLastX": 678,
+      "supportAlphaMinimum": 192,
+      "mainComponentAreaAt192": 393129,
+      "groundExitPixel": {
+        "x": 900.0,
+        "y": 733.0
+      },
+      "boundsByAlphaThreshold": {
+        "1": {
+          "left": 55,
+          "top": 197,
+          "rightExclusive": 1517,
+          "bottomExclusive": 735
+        },
+        "32": {
+          "left": 56,
+          "top": 199,
+          "rightExclusive": 1515,
+          "bottomExclusive": 734
+        },
+        "128": {
+          "left": 57,
+          "top": 199,
+          "rightExclusive": 1514,
+          "bottomExclusive": 733
+        },
+        "192": {
+          "left": 58,
+          "top": 200,
+          "rightExclusive": 1514,
+          "bottomExclusive": 733
+        },
+        "224": {
+          "left": 58,
+          "top": 200,
+          "rightExclusive": 1513,
+          "bottomExclusive": 733
+        },
+        "250": {
+          "left": 59,
+          "top": 201,
+          "rightExclusive": 1510,
+          "bottomExclusive": 732
+        },
+        "255": {
+          "left": 62,
+          "top": 201,
+          "rightExclusive": 1509,
+          "bottomExclusive": 731
+        }
+      }
+    },
+    {
+      "shipId": "chicken-ship",
+      "role": "scout",
+      "assetPath": "/game/ships/v12/chicken-ship.webp",
+      "sha256": "486101a06a8e60994beaf2630ab93eea886632759efc040dfbdf49035ae88e1f",
+      "width": 1536,
+      "height": 1024,
+      "contactPixelEdge": {
+        "x": 1125.5,
+        "y": 889
+      },
+      "supportRow": 888,
+      "supportFirstX": 1119,
+      "supportLastX": 1131,
+      "supportAlphaMinimum": 193,
+      "mainComponentAreaAt192": 394192,
+      "groundExitPixel": {
+        "x": 770.0,
+        "y": 842.0
+      },
+      "boundsByAlphaThreshold": {
+        "1": {
+          "left": 172,
+          "top": 133,
+          "rightExclusive": 1410,
+          "bottomExclusive": 891
+        },
+        "32": {
+          "left": 173,
+          "top": 135,
+          "rightExclusive": 1409,
+          "bottomExclusive": 889
+        },
+        "128": {
+          "left": 174,
+          "top": 135,
+          "rightExclusive": 1409,
+          "bottomExclusive": 889
+        },
+        "192": {
+          "left": 174,
+          "top": 136,
+          "rightExclusive": 1408,
+          "bottomExclusive": 889
+        },
+        "224": {
+          "left": 175,
+          "top": 136,
+          "rightExclusive": 1408,
+          "bottomExclusive": 888
+        },
+        "250": {
+          "left": 176,
+          "top": 137,
+          "rightExclusive": 1407,
+          "bottomExclusive": 888
+        },
+        "255": {
+          "left": 176,
+          "top": 137,
+          "rightExclusive": 1407,
+          "bottomExclusive": 887
+        }
+      }
+    },
+    {
+      "shipId": "royal-predator-ship",
+      "role": "recon",
+      "assetPath": "/game/ships/v12/royal-predator-ship.webp",
+      "sha256": "76bd9d349496c5371d360a85aea08242ec6452c41746fecd0f6a6764a1c3d79e",
+      "width": 1774,
+      "height": 887,
+      "contactPixelEdge": {
+        "x": 1145.5,
+        "y": 652
+      },
+      "supportRow": 651,
+      "supportFirstX": 1144,
+      "supportLastX": 1146,
+      "supportAlphaMinimum": 205,
+      "mainComponentAreaAt192": 150428,
+      "groundExitPixel": {
+        "x": 880.0,
+        "y": 499.0
+      },
+      "boundsByAlphaThreshold": {
+        "1": {
+          "left": 43,
+          "top": 240,
+          "rightExclusive": 1738,
+          "bottomExclusive": 659
+        },
+        "32": {
+          "left": 44,
+          "top": 242,
+          "rightExclusive": 1737,
+          "bottomExclusive": 658
+        },
+        "128": {
+          "left": 50,
+          "top": 245,
+          "rightExclusive": 1736,
+          "bottomExclusive": 657
+        },
+        "192": {
+          "left": 55,
+          "top": 246,
+          "rightExclusive": 1734,
+          "bottomExclusive": 655
+        },
+        "224": {
+          "left": 56,
+          "top": 247,
+          "rightExclusive": 1733,
+          "bottomExclusive": 654
+        },
+        "250": {
+          "left": 73,
+          "top": 252,
+          "rightExclusive": 1730,
+          "bottomExclusive": 649
+        },
+        "255": {
+          "left": 79,
+          "top": 253,
+          "rightExclusive": 1727,
+          "bottomExclusive": 648
+        }
+      }
+    },
+    {
+      "shipId": "hunting-grounds-ship",
+      "role": "scout",
+      "assetPath": "/game/ships/v12/hunting-grounds-ship.webp",
+      "sha256": "0fcccabcc770b6b727297a4a2411e5ef4e08ee37abe6f96611d588a2a098529f",
+      "width": 1774,
+      "height": 887,
+      "contactPixelEdge": {
+        "x": 1410.5,
+        "y": 738
+      },
+      "supportRow": 737,
+      "supportFirstX": 1401,
+      "supportLastX": 1419,
+      "supportAlphaMinimum": 202,
+      "mainComponentAreaAt192": 439414,
+      "groundExitPixel": {
+        "x": 750.0,
+        "y": 598.0
+      },
+      "boundsByAlphaThreshold": {
+        "1": {
+          "left": 129,
+          "top": 142,
+          "rightExclusive": 1623,
+          "bottomExclusive": 741
+        },
+        "32": {
+          "left": 130,
+          "top": 143,
+          "rightExclusive": 1621,
+          "bottomExclusive": 739
+        },
+        "128": {
+          "left": 131,
+          "top": 144,
+          "rightExclusive": 1621,
+          "bottomExclusive": 739
+        },
+        "192": {
+          "left": 131,
+          "top": 144,
+          "rightExclusive": 1620,
+          "bottomExclusive": 738
+        },
+        "224": {
+          "left": 131,
+          "top": 144,
+          "rightExclusive": 1620,
+          "bottomExclusive": 738
+        },
+        "250": {
+          "left": 132,
+          "top": 145,
+          "rightExclusive": 1619,
+          "bottomExclusive": 737
+        },
+        "255": {
+          "left": 133,
+          "top": 145,
+          "rightExclusive": 1619,
+          "bottomExclusive": 737
+        }
+      }
+    },
+    {
+      "shipId": "evolution-scout-ship",
+      "role": "scout",
+      "assetPath": "/game/ships/v12/evolution-scout-ship.webp",
+      "sha256": "322a97a498fc897fd55b403b274eeaa894377c3242fd1db97ab8387c60681f8b",
+      "width": 1536,
+      "height": 1024,
+      "contactPixelEdge": {
+        "x": 1143.5,
+        "y": 781
+      },
+      "supportRow": 780,
+      "supportFirstX": 1141,
+      "supportLastX": 1145,
+      "supportAlphaMinimum": 202,
+      "mainComponentAreaAt192": 524518,
+      "groundExitPixel": {
+        "x": 630.0,
+        "y": 761.0
+      },
+      "boundsByAlphaThreshold": {
+        "1": {
+          "left": 22,
+          "top": 192,
+          "rightExclusive": 1506,
+          "bottomExclusive": 784
+        },
+        "32": {
+          "left": 24,
+          "top": 193,
+          "rightExclusive": 1505,
+          "bottomExclusive": 783
+        },
+        "128": {
+          "left": 24,
+          "top": 193,
+          "rightExclusive": 1504,
+          "bottomExclusive": 782
+        },
+        "192": {
+          "left": 25,
+          "top": 194,
+          "rightExclusive": 1504,
+          "bottomExclusive": 782
+        },
+        "224": {
+          "left": 25,
+          "top": 194,
+          "rightExclusive": 1504,
+          "bottomExclusive": 782
+        },
+        "250": {
+          "left": 26,
+          "top": 195,
+          "rightExclusive": 1503,
+          "bottomExclusive": 781
+        },
+        "255": {
+          "left": 26,
+          "top": 196,
+          "rightExclusive": 1502,
+          "bottomExclusive": 780
+        }
+      }
+    },
+    {
+      "shipId": "yautja-gunship",
+      "role": "fighter",
+      "assetPath": "/game/ships/v12/yautja-gunship.webp",
+      "sha256": "cf0d5d78e26955ce76b632aecc66d46a2b1562a9a7f91983aa55b3b6730dfdda",
+      "width": 1624,
+      "height": 969,
+      "contactPixelEdge": {
+        "x": 1348.5,
+        "y": 829
+      },
+      "supportRow": 828,
+      "supportFirstX": 1310,
+      "supportLastX": 1386,
+      "supportAlphaMinimum": 194,
+      "mainComponentAreaAt192": 593117,
+      "groundExitPixel": {
+        "x": 820.0,
+        "y": 765.0
+      },
+      "boundsByAlphaThreshold": {
+        "1": {
+          "left": 113,
+          "top": 111,
+          "rightExclusive": 1483,
+          "bottomExclusive": 831
+        },
+        "32": {
+          "left": 114,
+          "top": 113,
+          "rightExclusive": 1482,
+          "bottomExclusive": 830
+        },
+        "128": {
+          "left": 115,
+          "top": 113,
+          "rightExclusive": 1481,
+          "bottomExclusive": 829
+        },
+        "192": {
+          "left": 115,
+          "top": 113,
+          "rightExclusive": 1481,
+          "bottomExclusive": 829
+        },
+        "224": {
+          "left": 116,
+          "top": 114,
+          "rightExclusive": 1481,
+          "bottomExclusive": 828
+        },
+        "250": {
+          "left": 116,
+          "top": 114,
+          "rightExclusive": 1480,
+          "bottomExclusive": 828
+        },
+        "255": {
+          "left": 117,
+          "top": 115,
+          "rightExclusive": 1479,
+          "bottomExclusive": 827
+        }
+      }
+    },
+    {
+      "shipId": "blade-fighter",
+      "role": "fighter",
+      "assetPath": "/game/ships/v12/blade-fighter.webp",
+      "sha256": "1d7852a5e71ca89fa102c9d3f9ae529eb5cd714cdd70e46b21be3654a392df5a",
+      "width": 1693,
+      "height": 929,
+      "contactPixelEdge": {
+        "x": 755.0,
+        "y": 665
+      },
+      "supportRow": 664,
+      "supportFirstX": 747,
+      "supportLastX": 762,
+      "supportAlphaMinimum": 196,
+      "mainComponentAreaAt192": 312153,
+      "groundExitPixel": {
+        "x": 900.0000000000001,
+        "y": 641.0
+      },
+      "boundsByAlphaThreshold": {
+        "1": {
+          "left": 59,
+          "top": 266,
+          "rightExclusive": 1630,
+          "bottomExclusive": 667
+        },
+        "32": {
+          "left": 60,
+          "top": 267,
+          "rightExclusive": 1629,
+          "bottomExclusive": 666
+        },
+        "128": {
+          "left": 61,
+          "top": 268,
+          "rightExclusive": 1628,
+          "bottomExclusive": 666
+        },
+        "192": {
+          "left": 61,
+          "top": 268,
+          "rightExclusive": 1628,
+          "bottomExclusive": 665
+        },
+        "224": {
+          "left": 62,
+          "top": 268,
+          "rightExclusive": 1628,
+          "bottomExclusive": 665
+        },
+        "250": {
+          "left": 66,
+          "top": 269,
+          "rightExclusive": 1627,
+          "bottomExclusive": 664
+        },
+        "255": {
+          "left": 69,
+          "top": 270,
+          "rightExclusive": 1626,
+          "bottomExclusive": 664
+        }
+      }
+    },
+    {
+      "shipId": "fortnite-predator-ship",
+      "role": "drop-ship",
+      "assetPath": "/game/ships/v12/fortnite-predator-ship.webp",
+      "sha256": "686b3e32a0d270560da45ff2904a682656dd8dabe45265904a542ddad9b9279e",
+      "width": 1693,
+      "height": 929,
+      "contactPixelEdge": {
+        "x": 1012.5,
+        "y": 685
+      },
+      "supportRow": 684,
+      "supportFirstX": 993,
+      "supportLastX": 1031,
+      "supportAlphaMinimum": 196,
+      "mainComponentAreaAt192": 388015,
+      "groundExitPixel": {
+        "x": 880.0,
+        "y": 672.0
+      },
+      "boundsByAlphaThreshold": {
+        "1": {
+          "left": 214,
+          "top": 210,
+          "rightExclusive": 1467,
+          "bottomExclusive": 687
+        },
+        "32": {
+          "left": 215,
+          "top": 211,
+          "rightExclusive": 1466,
+          "bottomExclusive": 686
+        },
+        "128": {
+          "left": 216,
+          "top": 212,
+          "rightExclusive": 1465,
+          "bottomExclusive": 685
+        },
+        "192": {
+          "left": 217,
+          "top": 212,
+          "rightExclusive": 1465,
+          "bottomExclusive": 685
+        },
+        "224": {
+          "left": 217,
+          "top": 212,
+          "rightExclusive": 1465,
+          "bottomExclusive": 685
+        },
+        "250": {
+          "left": 218,
+          "top": 213,
+          "rightExclusive": 1464,
+          "bottomExclusive": 684
+        },
+        "255": {
+          "left": 218,
+          "top": 214,
+          "rightExclusive": 1463,
+          "bottomExclusive": 683
+        }
+      }
+    },
+    {
+      "shipId": "big-game-saucer",
+      "role": "scout",
+      "assetPath": "/game/ships/v12/big-game-saucer.webp",
+      "sha256": "d0d3b02f674ef9d422235b8c304fd825fab5273d1b2b6681c1fcb491763eb458",
+      "width": 1693,
+      "height": 929,
+      "contactPixelEdge": {
+        "x": 879.0,
+        "y": 639
+      },
+      "supportRow": 638,
+      "supportFirstX": 842,
+      "supportLastX": 915,
+      "supportAlphaMinimum": 193,
+      "mainComponentAreaAt192": 422979,
+      "groundExitPixel": {
+        "x": 846.0,
+        "y": 639.0
+      },
+      "boundsByAlphaThreshold": {
+        "1": {
+          "left": 45,
+          "top": 241,
+          "rightExclusive": 1648,
+          "bottomExclusive": 642
+        },
+        "32": {
+          "left": 46,
+          "top": 243,
+          "rightExclusive": 1646,
+          "bottomExclusive": 640
+        },
+        "128": {
+          "left": 47,
+          "top": 243,
+          "rightExclusive": 1646,
+          "bottomExclusive": 640
+        },
+        "192": {
+          "left": 47,
+          "top": 244,
+          "rightExclusive": 1645,
+          "bottomExclusive": 639
+        },
+        "224": {
+          "left": 47,
+          "top": 244,
+          "rightExclusive": 1645,
+          "bottomExclusive": 639
+        },
+        "250": {
+          "left": 48,
+          "top": 245,
+          "rightExclusive": 1644,
+          "bottomExclusive": 638
+        },
+        "255": {
+          "left": 48,
+          "top": 245,
+          "rightExclusive": 1644,
+          "bottomExclusive": 638
+        }
+      }
+    },
+    {
+      "shipId": "bad-blood-ship",
+      "role": "raider",
+      "assetPath": "/game/ships/v12/bad-blood-ship.webp",
+      "sha256": "ee60971652a2a3c147cadeafaaba3961de9adbb93d94695a202e2ffd9fc18b16",
+      "width": 1536,
+      "height": 1024,
+      "contactPixelEdge": {
+        "x": 967.5,
+        "y": 840
+      },
+      "supportRow": 839,
+      "supportFirstX": 953,
+      "supportLastX": 981,
+      "supportAlphaMinimum": 193,
+      "mainComponentAreaAt192": 549692,
+      "groundExitPixel": {
+        "x": 810.0,
+        "y": 819.0
+      },
+      "boundsByAlphaThreshold": {
+        "1": {
+          "left": 61,
+          "top": 162,
+          "rightExclusive": 1481,
+          "bottomExclusive": 843
+        },
+        "32": {
+          "left": 62,
+          "top": 163,
+          "rightExclusive": 1480,
+          "bottomExclusive": 841
+        },
+        "128": {
+          "left": 63,
+          "top": 164,
+          "rightExclusive": 1479,
+          "bottomExclusive": 841
+        },
+        "192": {
+          "left": 63,
+          "top": 164,
+          "rightExclusive": 1479,
+          "bottomExclusive": 840
+        },
+        "224": {
+          "left": 64,
+          "top": 164,
+          "rightExclusive": 1478,
+          "bottomExclusive": 840
+        },
+        "250": {
+          "left": 64,
+          "top": 165,
+          "rightExclusive": 1476,
+          "bottomExclusive": 839
+        },
+        "255": {
+          "left": 65,
+          "top": 166,
+          "rightExclusive": 1475,
+          "bottomExclusive": 839
+        }
+      }
+    },
+    {
+      "shipId": "enforcer-ship",
+      "role": "recon",
+      "assetPath": "/game/ships/v12/enforcer-ship.webp",
+      "sha256": "9ddb16c7383bba9af2d74a2c21c6adc223f565df7b1dd5b30c01737aeb7482e6",
+      "width": 1693,
+      "height": 929,
+      "contactPixelEdge": {
+        "x": 1250.5,
+        "y": 769
+      },
+      "supportRow": 768,
+      "supportFirstX": 1228,
+      "supportLastX": 1272,
+      "supportAlphaMinimum": 195,
+      "mainComponentAreaAt192": 590811,
+      "groundExitPixel": {
+        "x": 740.0,
+        "y": 659.0
+      },
+      "boundsByAlphaThreshold": {
+        "1": {
+          "left": 33,
+          "top": 116,
+          "rightExclusive": 1660,
+          "bottomExclusive": 771
+        },
+        "32": {
+          "left": 34,
+          "top": 117,
+          "rightExclusive": 1658,
+          "bottomExclusive": 770
+        },
+        "128": {
+          "left": 35,
+          "top": 121,
+          "rightExclusive": 1658,
+          "bottomExclusive": 769
+        },
+        "192": {
+          "left": 35,
+          "top": 138,
+          "rightExclusive": 1657,
+          "bottomExclusive": 769
+        },
+        "224": {
+          "left": 36,
+          "top": 147,
+          "rightExclusive": 1657,
+          "bottomExclusive": 769
+        },
+        "250": {
+          "left": 36,
+          "top": 155,
+          "rightExclusive": 1656,
+          "bottomExclusive": 768
+        },
+        "255": {
+          "left": 37,
+          "top": 159,
+          "rightExclusive": 1656,
+          "bottomExclusive": 767
+        }
+      }
+    },
+    {
+      "shipId": "bullet-ship",
+      "role": "scout",
+      "assetPath": "/game/ships/v12/bullet-ship.webp",
+      "sha256": "3d920ffb8fe06b3adf31eeb0b42b223d8df17bdc38192b6cc5782b7d8765f8ec",
+      "width": 1847,
+      "height": 852,
+      "contactPixelEdge": {
+        "x": 1496.5,
+        "y": 601
+      },
+      "supportRow": 600,
+      "supportFirstX": 1489,
+      "supportLastX": 1503,
+      "supportAlphaMinimum": 193,
+      "mainComponentAreaAt192": 371903,
+      "groundExitPixel": {
+        "x": 900.0,
+        "y": 560.0
+      },
+      "boundsByAlphaThreshold": {
+        "1": {
+          "left": 85,
+          "top": 246,
+          "rightExclusive": 1735,
+          "bottomExclusive": 603
+        },
+        "32": {
+          "left": 86,
+          "top": 247,
+          "rightExclusive": 1734,
+          "bottomExclusive": 602
+        },
+        "128": {
+          "left": 87,
+          "top": 248,
+          "rightExclusive": 1733,
+          "bottomExclusive": 601
+        },
+        "192": {
+          "left": 87,
+          "top": 248,
+          "rightExclusive": 1733,
+          "bottomExclusive": 601
+        },
+        "224": {
+          "left": 88,
+          "top": 248,
+          "rightExclusive": 1733,
+          "bottomExclusive": 600
+        },
+        "250": {
+          "left": 89,
+          "top": 249,
+          "rightExclusive": 1732,
+          "bottomExclusive": 600
+        },
+        "255": {
+          "left": 90,
+          "top": 249,
+          "rightExclusive": 1732,
+          "bottomExclusive": 599
+        }
+      }
+    },
+    {
+      "shipId": "safari-ship",
+      "role": "scout",
+      "assetPath": "/game/ships/v12/safari-ship.webp",
+      "sha256": "942abb74abaa440b1c415b33866ea76109e6e0e414c13d5e8389e2f4a5a0f12b",
+      "width": 1693,
+      "height": 929,
+      "contactPixelEdge": {
+        "x": 1325.0,
+        "y": 805
+      },
+      "supportRow": 804,
+      "supportFirstX": 1303,
+      "supportLastX": 1346,
+      "supportAlphaMinimum": 193,
+      "mainComponentAreaAt192": 544167,
+      "groundExitPixel": {
+        "x": 850.0000000000001,
+        "y": 664.0
+      },
+      "boundsByAlphaThreshold": {
+        "1": {
+          "left": 93,
+          "top": 112,
+          "rightExclusive": 1566,
+          "bottomExclusive": 807
+        },
+        "32": {
+          "left": 95,
+          "top": 113,
+          "rightExclusive": 1565,
+          "bottomExclusive": 806
+        },
+        "128": {
+          "left": 95,
+          "top": 114,
+          "rightExclusive": 1564,
+          "bottomExclusive": 806
+        },
+        "192": {
+          "left": 96,
+          "top": 115,
+          "rightExclusive": 1564,
+          "bottomExclusive": 805
+        },
+        "224": {
+          "left": 96,
+          "top": 115,
+          "rightExclusive": 1564,
+          "bottomExclusive": 805
+        },
+        "250": {
+          "left": 97,
+          "top": 116,
+          "rightExclusive": 1561,
+          "bottomExclusive": 804
+        },
+        "255": {
+          "left": 97,
+          "top": 116,
+          "rightExclusive": 1559,
+          "bottomExclusive": 804
+        }
+      }
+    },
+    {
+      "shipId": "predator-dropship",
+      "role": "drop-ship",
+      "assetPath": "/game/ships/v12/predator-dropship.webp",
+      "sha256": "6f69221b274eaa42980216dde7146091d0d5db4a427b9c104abf61ea2261a510",
+      "width": 1536,
+      "height": 1024,
+      "contactPixelEdge": {
+        "x": 739.0,
+        "y": 810
+      },
+      "supportRow": 809,
+      "supportFirstX": 605,
+      "supportLastX": 872,
+      "supportAlphaMinimum": 205,
+      "mainComponentAreaAt192": 645085,
+      "groundExitPixel": {
+        "x": 800.0,
+        "y": 811.0
+      },
+      "boundsByAlphaThreshold": {
+        "1": {
+          "left": 99,
+          "top": 196,
+          "rightExclusive": 1459,
+          "bottomExclusive": 813
+        },
+        "32": {
+          "left": 100,
+          "top": 197,
+          "rightExclusive": 1458,
+          "bottomExclusive": 811
+        },
+        "128": {
+          "left": 101,
+          "top": 198,
+          "rightExclusive": 1457,
+          "bottomExclusive": 811
+        },
+        "192": {
+          "left": 101,
+          "top": 198,
+          "rightExclusive": 1457,
+          "bottomExclusive": 810
+        },
+        "224": {
+          "left": 102,
+          "top": 198,
+          "rightExclusive": 1457,
+          "bottomExclusive": 810
+        },
+        "250": {
+          "left": 103,
+          "top": 199,
+          "rightExclusive": 1456,
+          "bottomExclusive": 809
+        },
+        "255": {
+          "left": 103,
+          "top": 200,
+          "rightExclusive": 1456,
+          "bottomExclusive": 809
+        }
+      }
+    },
+    {
+      "shipId": "predator-shuttle",
+      "role": "shuttle",
+      "assetPath": "/game/ships/v12/predator-shuttle.webp",
+      "sha256": "dc2adcf34099c463fa25a0597d0db8c5ac74b0587528166b8065c8a68d4eaa89",
+      "width": 1693,
+      "height": 929,
+      "contactPixelEdge": {
+        "x": 1465.0,
+        "y": 754
+      },
+      "supportRow": 753,
+      "supportFirstX": 1448,
+      "supportLastX": 1481,
+      "supportAlphaMinimum": 193,
+      "mainComponentAreaAt192": 558434,
+      "groundExitPixel": {
+        "x": 800.0,
+        "y": 723.0
+      },
+      "boundsByAlphaThreshold": {
+        "1": {
+          "left": 121,
+          "top": 134,
+          "rightExclusive": 1571,
+          "bottomExclusive": 756
+        },
+        "32": {
+          "left": 122,
+          "top": 135,
+          "rightExclusive": 1570,
+          "bottomExclusive": 755
+        },
+        "128": {
+          "left": 123,
+          "top": 136,
+          "rightExclusive": 1570,
+          "bottomExclusive": 754
+        },
+        "192": {
+          "left": 123,
+          "top": 136,
+          "rightExclusive": 1569,
+          "bottomExclusive": 754
+        },
+        "224": {
+          "left": 123,
+          "top": 136,
+          "rightExclusive": 1569,
+          "bottomExclusive": 753
+        },
+        "250": {
+          "left": 124,
+          "top": 137,
+          "rightExclusive": 1568,
+          "bottomExclusive": 753
+        },
+        "255": {
+          "left": 125,
+          "top": 138,
+          "rightExclusive": 1568,
+          "bottomExclusive": 752
+        }
+      }
+    },
+    {
+      "shipId": "hook-predator-ship",
+      "role": "raider",
+      "assetPath": "/game/ships/v12/hook-predator-ship.webp",
+      "sha256": "c16cfac87717c45fb5e4ddf172d9a7868ea66d1144a9304acd4da44d933c4609",
+      "width": 1693,
+      "height": 929,
+      "contactPixelEdge": {
+        "x": 1261.0,
+        "y": 710
+      },
+      "supportRow": 709,
+      "supportFirstX": 1240,
+      "supportLastX": 1281,
+      "supportAlphaMinimum": 192,
+      "mainComponentAreaAt192": 473430,
+      "groundExitPixel": {
+        "x": 900.0000000000001,
+        "y": 628.0
+      },
+      "boundsByAlphaThreshold": {
+        "1": {
+          "left": 54,
+          "top": 209,
+          "rightExclusive": 1628,
+          "bottomExclusive": 712
+        },
+        "32": {
+          "left": 55,
+          "top": 210,
+          "rightExclusive": 1627,
+          "bottomExclusive": 711
+        },
+        "128": {
+          "left": 56,
+          "top": 211,
+          "rightExclusive": 1626,
+          "bottomExclusive": 710
+        },
+        "192": {
+          "left": 57,
+          "top": 212,
+          "rightExclusive": 1626,
+          "bottomExclusive": 710
+        },
+        "224": {
+          "left": 57,
+          "top": 212,
+          "rightExclusive": 1625,
+          "bottomExclusive": 710
+        },
+        "250": {
+          "left": 58,
+          "top": 213,
+          "rightExclusive": 1619,
+          "bottomExclusive": 709
+        },
+        "255": {
+          "left": 58,
+          "top": 213,
+          "rightExclusive": 1617,
+          "bottomExclusive": 709
+        }
+      }
+    },
+    {
+      "shipId": "gotham-enforcer-ship",
+      "role": "recon",
+      "assetPath": "/game/ships/v12/gotham-enforcer-ship.webp",
+      "sha256": "041e5d6cbcd2342858a84c7911027523151ad5092d6aaecd74743ba495620940",
+      "width": 1693,
+      "height": 929,
+      "contactPixelEdge": {
+        "x": 1503.5,
+        "y": 680
+      },
+      "supportRow": 679,
+      "supportFirstX": 1488,
+      "supportLastX": 1518,
+      "supportAlphaMinimum": 194,
+      "mainComponentAreaAt192": 391262,
+      "groundExitPixel": {
+        "x": 850.0000000000001,
+        "y": 641.0
+      },
+      "boundsByAlphaThreshold": {
+        "1": {
+          "left": 92,
+          "top": 226,
+          "rightExclusive": 1570,
+          "bottomExclusive": 682
+        },
+        "32": {
+          "left": 93,
+          "top": 227,
+          "rightExclusive": 1569,
+          "bottomExclusive": 681
+        },
+        "128": {
+          "left": 94,
+          "top": 228,
+          "rightExclusive": 1568,
+          "bottomExclusive": 680
+        },
+        "192": {
+          "left": 95,
+          "top": 228,
+          "rightExclusive": 1568,
+          "bottomExclusive": 680
+        },
+        "224": {
+          "left": 95,
+          "top": 229,
+          "rightExclusive": 1568,
+          "bottomExclusive": 679
+        },
+        "250": {
+          "left": 96,
+          "top": 230,
+          "rightExclusive": 1567,
+          "bottomExclusive": 679
+        },
+        "255": {
+          "left": 96,
+          "top": 230,
+          "rightExclusive": 1566,
+          "bottomExclusive": 678
+        }
+      }
+    },
+    {
+      "shipId": "new-york-enforcer-ship",
+      "role": "glider",
+      "assetPath": "/game/ships/v12/new-york-enforcer-ship.webp",
+      "sha256": "a038fcaf251ef609fa327ee70ee83576f3fb973c785f3b836b07839b8c83fb71",
+      "width": 1536,
+      "height": 1024,
+      "contactPixelEdge": {
+        "x": 1472.5,
+        "y": 755
+      },
+      "supportRow": 754,
+      "supportFirstX": 1467,
+      "supportLastX": 1477,
+      "supportAlphaMinimum": 198,
+      "mainComponentAreaAt192": 258641,
+      "groundExitPixel": {
+        "x": 800.0,
+        "y": 656.0
+      },
+      "boundsByAlphaThreshold": {
+        "1": {
+          "left": 20,
+          "top": 296,
+          "rightExclusive": 1509,
+          "bottomExclusive": 758
+        },
+        "32": {
+          "left": 21,
+          "top": 298,
+          "rightExclusive": 1507,
+          "bottomExclusive": 756
+        },
+        "128": {
+          "left": 22,
+          "top": 298,
+          "rightExclusive": 1507,
+          "bottomExclusive": 756
+        },
+        "192": {
+          "left": 23,
+          "top": 299,
+          "rightExclusive": 1506,
+          "bottomExclusive": 755
+        },
+        "224": {
+          "left": 23,
+          "top": 299,
+          "rightExclusive": 1506,
+          "bottomExclusive": 755
+        },
+        "250": {
+          "left": 24,
+          "top": 300,
+          "rightExclusive": 1505,
+          "bottomExclusive": 754
+        },
+        "255": {
+          "left": 28,
+          "top": 300,
+          "rightExclusive": 1505,
+          "bottomExclusive": 754
+        }
+      }
+    },
+    {
+      "shipId": "dog-ship",
+      "role": "scout",
+      "assetPath": "/game/ships/v12/dog-ship.webp",
+      "sha256": "c1631c0d09e01758fecada7a428a7d843549bd507c0c3ad423c0ea194c78941c",
+      "width": 1536,
+      "height": 1024,
+      "contactPixelEdge": {
+        "x": 729.0,
+        "y": 752
+      },
+      "supportRow": 751,
+      "supportFirstX": 720,
+      "supportLastX": 737,
+      "supportAlphaMinimum": 192,
+      "mainComponentAreaAt192": 416605,
+      "groundExitPixel": {
+        "x": 850.0,
+        "y": 742.0
+      },
+      "boundsByAlphaThreshold": {
+        "1": {
+          "left": 51,
+          "top": 132,
+          "rightExclusive": 1476,
+          "bottomExclusive": 755
+        },
+        "32": {
+          "left": 53,
+          "top": 133,
+          "rightExclusive": 1474,
+          "bottomExclusive": 753
+        },
+        "128": {
+          "left": 53,
+          "top": 134,
+          "rightExclusive": 1474,
+          "bottomExclusive": 753
+        },
+        "192": {
+          "left": 54,
+          "top": 135,
+          "rightExclusive": 1473,
+          "bottomExclusive": 752
+        },
+        "224": {
+          "left": 54,
+          "top": 136,
+          "rightExclusive": 1473,
+          "bottomExclusive": 752
+        },
+        "250": {
+          "left": 55,
+          "top": 137,
+          "rightExclusive": 1472,
+          "bottomExclusive": 751
+        },
+        "255": {
+          "left": 55,
+          "top": 138,
+          "rightExclusive": 1472,
+          "bottomExclusive": 751
+        }
+      }
+    },
+    {
+      "shipId": "shell-ship",
+      "role": "scout",
+      "assetPath": "/game/ships/v12/shell-ship.webp",
+      "sha256": "b973c85210c6a0512f04de259b8170b136e04c4113548b0ceaaaad09d3af49c9",
+      "width": 1536,
+      "height": 1024,
+      "contactPixelEdge": {
+        "x": 645.5,
+        "y": 893
+      },
+      "supportRow": 892,
+      "supportFirstX": 644,
+      "supportLastX": 646,
+      "supportAlphaMinimum": 192,
+      "mainComponentAreaAt192": 652128,
+      "groundExitPixel": {
+        "x": 760.0,
+        "y": 803.0
+      },
+      "boundsByAlphaThreshold": {
+        "1": {
+          "left": 23,
+          "top": 67,
+          "rightExclusive": 1499,
+          "bottomExclusive": 923
+        },
+        "32": {
+          "left": 24,
+          "top": 68,
+          "rightExclusive": 1498,
+          "bottomExclusive": 922
+        },
+        "128": {
+          "left": 25,
+          "top": 69,
+          "rightExclusive": 1498,
+          "bottomExclusive": 921
+        },
+        "192": {
+          "left": 26,
+          "top": 69,
+          "rightExclusive": 1497,
+          "bottomExclusive": 896
+        },
+        "224": {
+          "left": 26,
+          "top": 70,
+          "rightExclusive": 1497,
+          "bottomExclusive": 894
+        },
+        "250": {
+          "left": 27,
+          "top": 70,
+          "rightExclusive": 1496,
+          "bottomExclusive": 884
+        },
+        "255": {
+          "left": 29,
+          "top": 72,
+          "rightExclusive": 1496,
+          "bottomExclusive": 861
+        }
+      }
+    },
+    {
+      "shipId": "cursed-earth-ship",
+      "role": "scout",
+      "assetPath": "/game/ships/v12/cursed-earth-ship.webp",
+      "sha256": "67d718135a1f12524f9af8bb6d25ee7332b71eea0c3ccba66f763ce248acd347",
+      "width": 1774,
+      "height": 887,
+      "contactPixelEdge": {
+        "x": 984.5,
+        "y": 692
+      },
+      "supportRow": 691,
+      "supportFirstX": 977,
+      "supportLastX": 991,
+      "supportAlphaMinimum": 210,
+      "mainComponentAreaAt192": 522570,
+      "groundExitPixel": {
+        "x": 840.0,
+        "y": 665.0
+      },
+      "boundsByAlphaThreshold": {
+        "1": {
+          "left": 56,
+          "top": 197,
+          "rightExclusive": 1695,
+          "bottomExclusive": 693
+        },
+        "32": {
+          "left": 56,
+          "top": 197,
+          "rightExclusive": 1694,
+          "bottomExclusive": 693
+        },
+        "128": {
+          "left": 57,
+          "top": 198,
+          "rightExclusive": 1694,
+          "bottomExclusive": 693
+        },
+        "192": {
+          "left": 57,
+          "top": 198,
+          "rightExclusive": 1694,
+          "bottomExclusive": 692
+        },
+        "224": {
+          "left": 57,
+          "top": 198,
+          "rightExclusive": 1694,
+          "bottomExclusive": 692
+        },
+        "250": {
+          "left": 57,
+          "top": 198,
+          "rightExclusive": 1694,
+          "bottomExclusive": 692
+        },
+        "255": {
+          "left": 57,
+          "top": 198,
+          "rightExclusive": 1694,
+          "bottomExclusive": 692
+        }
+      }
+    },
+    {
+      "shipId": "advanced-predator-ship",
+      "role": "recon",
+      "assetPath": "/game/ships/v12/advanced-predator-ship.webp",
+      "sha256": "580959306fb1376361fa33689eadb72d998cee0744215fd076af44616956015a",
+      "width": 1666,
+      "height": 944,
+      "contactPixelEdge": {
+        "x": 1246.5,
+        "y": 763
+      },
+      "supportRow": 762,
+      "supportFirstX": 1218,
+      "supportLastX": 1274,
+      "supportAlphaMinimum": 194,
+      "mainComponentAreaAt192": 505750,
+      "groundExitPixel": {
+        "x": 700.0,
+        "y": 619.0
+      },
+      "boundsByAlphaThreshold": {
+        "1": {
+          "left": 64,
+          "top": 160,
+          "rightExclusive": 1563,
+          "bottomExclusive": 764
+        },
+        "32": {
+          "left": 65,
+          "top": 160,
+          "rightExclusive": 1563,
+          "bottomExclusive": 764
+        },
+        "128": {
+          "left": 65,
+          "top": 160,
+          "rightExclusive": 1563,
+          "bottomExclusive": 764
+        },
+        "192": {
+          "left": 66,
+          "top": 161,
+          "rightExclusive": 1562,
+          "bottomExclusive": 763
+        },
+        "224": {
+          "left": 66,
+          "top": 161,
+          "rightExclusive": 1562,
+          "bottomExclusive": 763
+        },
+        "250": {
+          "left": 67,
+          "top": 161,
+          "rightExclusive": 1562,
+          "bottomExclusive": 763
+        },
+        "255": {
+          "left": 67,
+          "top": 161,
+          "rightExclusive": 1562,
+          "bottomExclusive": 763
+        }
+      }
+    },
+    {
+      "shipId": "project-original-avpr-scout-ship",
+      "role": "scout",
+      "assetPath": "/game/ships/v12/avpr-scout-ship.webp",
+      "sha256": "83d7a5d9174e9d0c3c3aea3fcdcf9d6c31ca30559787ca703c5e970d2b97c62e",
+      "width": 1536,
+      "height": 1024,
+      "contactPixelEdge": {
+        "x": 1261.0,
+        "y": 824
+      },
+      "supportRow": 823,
+      "supportFirstX": 1251,
+      "supportLastX": 1270,
+      "supportAlphaMinimum": 196,
+      "mainComponentAreaAt192": 475607,
+      "groundExitPixel": {
+        "x": 650.0,
+        "y": 710.0
+      },
+      "boundsByAlphaThreshold": {
+        "1": {
+          "left": 100,
+          "top": 168,
+          "rightExclusive": 1405,
+          "bottomExclusive": 826
+        },
+        "32": {
+          "left": 102,
+          "top": 170,
+          "rightExclusive": 1404,
+          "bottomExclusive": 825
+        },
+        "128": {
+          "left": 102,
+          "top": 170,
+          "rightExclusive": 1403,
+          "bottomExclusive": 824
+        },
+        "192": {
+          "left": 102,
+          "top": 171,
+          "rightExclusive": 1403,
+          "bottomExclusive": 824
+        },
+        "224": {
+          "left": 103,
+          "top": 171,
+          "rightExclusive": 1402,
+          "bottomExclusive": 824
+        },
+        "250": {
+          "left": 103,
+          "top": 172,
+          "rightExclusive": 1400,
+          "bottomExclusive": 823
+        },
+        "255": {
+          "left": 104,
+          "top": 172,
+          "rightExclusive": 1398,
+          "bottomExclusive": 822
+        }
+      }
+    },
+    {
+      "shipId": "project-original-wolf-ship",
+      "role": "recon",
+      "assetPath": "/game/ships/v12/wolf-ship.webp",
+      "sha256": "5942da5c9e2306553d31e7e609df0c5e302738a4629948332b4344bac25a4f54",
+      "width": 1693,
+      "height": 929,
+      "contactPixelEdge": {
+        "x": 1319.0,
+        "y": 829
+      },
+      "supportRow": 828,
+      "supportFirstX": 1312,
+      "supportLastX": 1325,
+      "supportAlphaMinimum": 194,
+      "mainComponentAreaAt192": 480460,
+      "groundExitPixel": {
+        "x": 790.0,
+        "y": 649.0
+      },
+      "boundsByAlphaThreshold": {
+        "1": {
+          "left": 155,
+          "top": 102,
+          "rightExclusive": 1542,
+          "bottomExclusive": 832
+        },
+        "32": {
+          "left": 156,
+          "top": 104,
+          "rightExclusive": 1541,
+          "bottomExclusive": 830
+        },
+        "128": {
+          "left": 157,
+          "top": 104,
+          "rightExclusive": 1540,
+          "bottomExclusive": 830
+        },
+        "192": {
+          "left": 157,
+          "top": 105,
+          "rightExclusive": 1540,
+          "bottomExclusive": 829
+        },
+        "224": {
+          "left": 157,
+          "top": 105,
+          "rightExclusive": 1540,
+          "bottomExclusive": 829
+        },
+        "250": {
+          "left": 158,
+          "top": 106,
+          "rightExclusive": 1539,
+          "bottomExclusive": 828
+        },
+        "255": {
+          "left": 160,
+          "top": 106,
+          "rightExclusive": 1538,
+          "bottomExclusive": 828
+        }
+      }
+    },
+    {
+      "shipId": "project-original-fugitive-spaceship",
+      "role": "recon",
+      "assetPath": "/game/ships/v12/fugitive-spaceship.webp",
+      "sha256": "f1d68260bc324b698408a541edb4a6737f1fd8219242c9c86b2a041f2b9d6aee",
+      "width": 1625,
+      "height": 968,
+      "contactPixelEdge": {
+        "x": 1245.0,
+        "y": 712
+      },
+      "supportRow": 711,
+      "supportFirstX": 1237,
+      "supportLastX": 1252,
+      "supportAlphaMinimum": 194,
+      "mainComponentAreaAt192": 477983,
+      "groundExitPixel": {
+        "x": 830.0,
+        "y": 656.0
+      },
+      "boundsByAlphaThreshold": {
+        "1": {
+          "left": 66,
+          "top": 231,
+          "rightExclusive": 1565,
+          "bottomExclusive": 714
+        },
+        "32": {
+          "left": 67,
+          "top": 232,
+          "rightExclusive": 1557,
+          "bottomExclusive": 713
+        },
+        "128": {
+          "left": 68,
+          "top": 233,
+          "rightExclusive": 1549,
+          "bottomExclusive": 712
+        },
+        "192": {
+          "left": 68,
+          "top": 233,
+          "rightExclusive": 1545,
+          "bottomExclusive": 712
+        },
+        "224": {
+          "left": 69,
+          "top": 233,
+          "rightExclusive": 1544,
+          "bottomExclusive": 711
+        },
+        "250": {
+          "left": 70,
+          "top": 234,
+          "rightExclusive": 1540,
+          "bottomExclusive": 711
+        },
+        "255": {
+          "left": 70,
+          "top": 234,
+          "rightExclusive": 1538,
+          "bottomExclusive": 710
+        }
+      }
+    },
+    {
+      "shipId": "project-original-upgrade-spaceship",
+      "role": "raider",
+      "assetPath": "/game/ships/v12/upgrade-spaceship.webp",
+      "sha256": "31ae9fce07d1aabb06e4594795048eeabd17b3175a99c2c2495b172d904c2c99",
+      "width": 1536,
+      "height": 1024,
+      "contactPixelEdge": {
+        "x": 920.0,
+        "y": 820
+      },
+      "supportRow": 819,
+      "supportFirstX": 917,
+      "supportLastX": 922,
+      "supportAlphaMinimum": 219,
+      "mainComponentAreaAt192": 376402,
+      "groundExitPixel": {
+        "x": 830.0,
+        "y": 676.0
+      },
+      "boundsByAlphaThreshold": {
+        "1": {
+          "left": 42,
+          "top": 224,
+          "rightExclusive": 1493,
+          "bottomExclusive": 822
+        },
+        "32": {
+          "left": 43,
+          "top": 225,
+          "rightExclusive": 1491,
+          "bottomExclusive": 820
+        },
+        "128": {
+          "left": 44,
+          "top": 226,
+          "rightExclusive": 1490,
+          "bottomExclusive": 820
+        },
+        "192": {
+          "left": 45,
+          "top": 226,
+          "rightExclusive": 1490,
+          "bottomExclusive": 820
+        },
+        "224": {
+          "left": 46,
+          "top": 226,
+          "rightExclusive": 1489,
+          "bottomExclusive": 820
+        },
+        "250": {
+          "left": 50,
+          "top": 227,
+          "rightExclusive": 1488,
+          "bottomExclusive": 819
+        },
+        "255": {
+          "left": 54,
+          "top": 228,
+          "rightExclusive": 1476,
+          "bottomExclusive": 818
+        }
+      }
+    },
+    {
+      "shipId": "project-original-feral-spaceship",
+      "role": "drop-ship",
+      "assetPath": "/game/ships/v12/feral-spaceship.webp",
+      "sha256": "0e6b5c62e40422893279820f3ee07eb157f0291eeec72e3282a3149b3bccdd79",
+      "width": 1700,
+      "height": 925,
+      "contactPixelEdge": {
+        "x": 582.5,
+        "y": 713
+      },
+      "supportRow": 712,
+      "supportFirstX": 561,
+      "supportLastX": 603,
+      "supportAlphaMinimum": 193,
+      "mainComponentAreaAt192": 534267,
+      "groundExitPixel": {
+        "x": 880.0000000000001,
+        "y": 656.0
+      },
+      "boundsByAlphaThreshold": {
+        "1": {
+          "left": 89,
+          "top": 205,
+          "rightExclusive": 1608,
+          "bottomExclusive": 716
+        },
+        "32": {
+          "left": 91,
+          "top": 207,
+          "rightExclusive": 1607,
+          "bottomExclusive": 714
+        },
+        "128": {
+          "left": 91,
+          "top": 207,
+          "rightExclusive": 1606,
+          "bottomExclusive": 714
+        },
+        "192": {
+          "left": 92,
+          "top": 208,
+          "rightExclusive": 1606,
+          "bottomExclusive": 713
+        },
+        "224": {
+          "left": 92,
+          "top": 208,
+          "rightExclusive": 1606,
+          "bottomExclusive": 713
+        },
+        "250": {
+          "left": 93,
+          "top": 209,
+          "rightExclusive": 1605,
+          "bottomExclusive": 712
+        },
+        "255": {
+          "left": 93,
+          "top": 209,
+          "rightExclusive": 1604,
+          "bottomExclusive": 712
+        }
+      }
+    },
+    {
+      "shipId": "project-original-avp-predator-drop-pod",
+      "role": "drop-ship",
+      "assetPath": "/game/ships/v12/avp-predator-drop-pod.webp",
+      "sha256": "48ac92e8f1cff684144991bddd3b10e487730ef29082c5c74f6f7bb596fad488",
+      "width": 1774,
+      "height": 887,
+      "contactPixelEdge": {
+        "x": 1362.0,
+        "y": 758
+      },
+      "supportRow": 757,
+      "supportFirstX": 1360,
+      "supportLastX": 1363,
+      "supportAlphaMinimum": 199,
+      "mainComponentAreaAt192": 313919,
+      "groundExitPixel": {
+        "x": 880.0,
+        "y": 577.0
+      },
+      "boundsByAlphaThreshold": {
+        "1": {
+          "left": 275,
+          "top": 120,
+          "rightExclusive": 1493,
+          "bottomExclusive": 760
+        },
+        "32": {
+          "left": 276,
+          "top": 122,
+          "rightExclusive": 1488,
+          "bottomExclusive": 759
+        },
+        "128": {
+          "left": 277,
+          "top": 122,
+          "rightExclusive": 1486,
+          "bottomExclusive": 758
+        },
+        "192": {
+          "left": 277,
+          "top": 123,
+          "rightExclusive": 1486,
+          "bottomExclusive": 758
+        },
+        "224": {
+          "left": 277,
+          "top": 123,
+          "rightExclusive": 1485,
+          "bottomExclusive": 757
+        },
+        "250": {
+          "left": 278,
+          "top": 124,
+          "rightExclusive": 1485,
+          "bottomExclusive": 756
+        },
+        "255": {
+          "left": 279,
+          "top": 124,
+          "rightExclusive": 1483,
+          "bottomExclusive": 756
+        }
+      }
+    }
+  ],
+  "finalGameplayExclusions": [
+    "avp-predator-drop-pod",
+    "project-original-avp-predator-drop-pod"
+  ],
+  "physicalExitCorrection": {
+    "assetPath": "/game/ships/v12/predator-dropship.webp",
+    "deltaSourcePixels": 1,
+    "reason": "Ground exit bounded to significant silhouette support; original release anchor retained in the evidence below."
+  }
+}

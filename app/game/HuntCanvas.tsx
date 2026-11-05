@@ -190,6 +190,7 @@ import {
   trophyRitualReadyRemaining,
   trophyVictoryPose,
   TROPHY_RITUAL_TIMING,
+  DROP_SHIP_TIMING,
   type DropShipState,
   type TrophyRitualAction,
   type TrophyRitualState,
@@ -262,6 +263,20 @@ import {
   honorRuleEventId,
 } from "./honorRules";
 import type { GameSfxId, GameMusicContext } from "./sound";
+import { shipProfileAssetPath, type ShipId } from "./shipCatalogue";
+import { carrierArtForShip } from "./systems/planetArrivalArt";
+import { arrivalSurfaceShipGeometry } from "./systems/planetArrivalSpatial";
+import {
+  DEFAULT_PLAN, TRIO_MEMBERS, expeditionMemberAppearance, expeditionMemberLoadout,
+  normalizePlanetInsertionPlan, planetInsertionPressure, samePlanetInsertion,
+  type ExpeditionMemberId, type PlanetInsertionPlan,
+} from "./systems/planetInsertion";
+import {
+  aidHuntCompanion, beginHuntCompanionBoarding, canAidHuntCompanion, cloneHuntInsertion,
+  completeHuntCompanionBoarding, createHuntInsertion, huntInsertionLineOfSight, huntInsertionOutcome, huntInsertionPatrols,
+  hurtHuntCompanion, missingHuntCompanions, restoreHuntInsertion, stepHuntCompanions,
+  type HuntCompanion, type HuntInsertionState,
+} from "./systems/huntInsertion";
 import type {
   DifficultyId,
   ExplorationProgress,
@@ -287,6 +302,10 @@ interface HuntCanvasProps {
   firstHuntGuideEnabled?: boolean;
   mission: MissionDefinition;
   encounterRun: number;
+  insertionPlan?: PlanetInsertionPlan;
+  /** Session identity is renewed when ownership of a suspended hunt is claimed. */
+  insertionRunId?: string;
+  insertionShipId?: ShipId;
   loadout: Loadout;
   inventory: PlayerInventory;
   difficulty: DifficultyId;
@@ -431,6 +450,7 @@ interface EnemyState extends Vec2 {
   attackCooldown: number;
   telegraph: number;
   pendingAttackId: string | null;
+  pendingAttackTargetId?: 'hunter' | ExpeditionMemberId;
   restrainedUntil: number;
   hitFlash: number;
   hitStunSeconds: number;
@@ -528,6 +548,7 @@ interface GearSlotSnapshot {
 }
 
 interface MissionCheckpointPayload {
+  insertion?: HuntInsertionState;
   ecosystem?: CorpseDiscoveryStateV112;
   huntRites?: RitesOfHuntV77;
   riteOperationDamageStart?: number | null;
@@ -654,6 +675,8 @@ function selectedHandWeapon(
 }
 
 interface AssetBank {
+  insertionShip?: HTMLImageElement | null;
+  insertionCompanions?: Partial<Record<ExpeditionMemberId, { appearance: HunterAppearance; loadout: Loadout; assets: AssetBank }>>;
   background: HTMLImageElement | null;
   farLake: HTMLImageElement | null;
   hunterBodyFull: HTMLImageElement | null;
@@ -723,6 +746,10 @@ interface InputHub {
 }
 
 interface GameState {
+  insertion: HuntInsertionState;
+  /** Live session identity, deliberately outside checkpoint authority. */
+  insertionRunId: string;
+  insertionShipId?: ShipId;
   ecosystem: CorpseDiscoveryStateV112;
   huntAccessibility?: HuntAccessibilityV112;
   ritualAssistV112?: RitualAssistStateV112;
@@ -814,6 +841,12 @@ interface GameState {
 }
 
 interface UiSnapshot {
+  insertion: {
+    method: PlanetInsertionPlan['method']; searchRemaining: number;
+    team: PlanetInsertionPlan['team']; runId: string; shipId: ShipId | null;
+    members: (Pick<HuntCompanion, 'id' | 'health' | 'maxHealth' | 'order' | 'status' | 'x' | 'y' | 'blockedSeconds'> &
+      { distance: number; canAid: boolean; canLeave: boolean })[];
+  };
   fieldPackV112: {
     carried:import("./systems/harvestInventoryV112").FieldSpecimenV112[];
     nearby:Array<{item:import("./systems/harvestInventoryV112").FieldSpecimenV112;distance:number;canTake:boolean}>;
@@ -921,6 +954,7 @@ function isHeldKeyboardAction(action: Action): boolean {
 const DEFAULT_HUNT_ACCESSIBILITY_CANVAS_V112 = normalizeHuntAccessibilityV112(undefined);
 
 const EMPTY_UI: UiSnapshot = {
+  insertion: { method: 'pod', team: 'solo', runId: '', shipId: null, searchRemaining: 0, members: [] },
   fieldPackV112:{carried:[],nearby:[],canDrop:false},
   fieldLoadV112: fieldLoadV112([], "hunter"),
   toolConditionV112: 100,
@@ -1314,6 +1348,9 @@ function makeGameState(
   screenShakeEnabled: boolean,
   ecologyRunSeed: string | number = `${Date.now()}-${Math.random()}`,
   explorationProgress?: ExplorationProgress,
+  insertionPlan: PlanetInsertionPlan = DEFAULT_PLAN,
+  insertionRunId?: string,
+  insertionShipId?: ShipId,
 ): GameState {
   const exploration = normalizeExplorationProgress(explorationProgress);
   const world = applyExplorationWorld(worldBlueprintFor(mission.id), exploration);
@@ -1402,6 +1439,9 @@ function makeGameState(
     world.bossArena.x + world.bossArena.width - bossWidth - 30;
 
   const state: GameState = {
+    insertion: createHuntInsertion(insertionPlan, huntRitesRunIdV77(mission.id, ecologyRunSeed), world),
+    insertionRunId: insertionRunId ?? huntRitesRunIdV77(mission.id, ecologyRunSeed),
+    insertionShipId,
     ecosystem: createCorpseDiscoveryV112(huntRitesRunIdV77(mission.id, ecologyRunSeed)),
     flayingToolOwned: ownsFieldToolV111(inventory, "flaying-tool"),
     harvestArmorIdV112: loadout.armorId,
@@ -1607,8 +1647,125 @@ function makeGameState(
     screenShakeEnabled,
   };
 
+  if (state.insertion.plan.method === 'ship' && state.insertionShipId) {
+    const art = carrierArtForShip(state.insertionShipId);
+    const facing = art.nose.x < art.tail.x ? -1 : 1;
+    const exitX = arrivalSurfaceShipGeometry(art, facing, state.world.floorY).exit.x;
+    state.player.facing = state.player.x + state.player.width / 2 < exitX ? -1 : 1;
+    for (const member of state.insertion.companions) member.facing = member.x + member.width / 2 < exitX ? -1 : 1;
+  }
   spawnEligibleWaves(state, mission, difficulty, "start", null);
+  applyHuntInsertion(state, mission, difficulty);
   return state;
+}
+
+/** Applied only to a new simulation; restored enemies and awareness are never reinserted. */
+function applyHuntInsertion(state: GameState, mission: MissionDefinition, difficulty: DifficultyId): void {
+  const pressure = planetInsertionPressure(state.insertion.plan);
+  const template = mission.enemyWaves.find(wave => wave.trigger === 'start') ?? mission.enemyWaves[0];
+  const originalEnemies = state.enemies.filter(enemy => {
+    const ecology = ecologyV8EnemyForId(enemy.archetype);
+    return !ecology || ecologyV8RuntimeProfile(ecology).mobility !== 'stationary';
+  });
+  const actualPatrolIds: string[] = [];
+  if (template) for (const [index, placement] of huntInsertionPatrols(state.insertion.plan, state.world, state.insertion.runId).entries()) {
+    if (state.enemies.some(enemy => enemy.id === placement.id)) { actualPatrolIds.push(placement.id); continue; }
+    // Reuse this encounter's already loaded species, without consuming its scripted ecology deck.
+    const archetype = originalEnemies[index % Math.max(1, originalEnemies.length)]?.archetype ?? template.archetype;
+    const enemy = makeEnemy(placement.id, archetype, mission.id, placement.centerX, state.world.width,
+      template.health, template.damage, template.moveSpeed, DIFFICULTY_BY_ID[difficulty].enemyHealthMultiplier,
+      DIFFICULTY_BY_ID[difficulty].enemyDamageMultiplier);
+    const centerX = resolveNearestSafeGroundX(state.world, placement.centerX,
+      { minX: state.world.spawn.x + 950, maxX: state.world.bossArena.x - 200 }, enemy.width / 2 + 28);
+    if (centerX === null) continue;
+    enemy.x = centerX - enemy.width / 2; enemy.y = state.world.floorY - enemy.height;
+    enemy.knockbackRestY = enemy.y;
+    enemy.patrolLeft = Math.max(state.world.spawn.x + 850, enemy.x - 220);
+    enemy.patrolRight = Math.min(state.world.width - enemy.width - 40, enemy.x + 220);
+    enemy.facing = -1;
+    state.enemies.push(enemy);
+    state.aiBrains[enemy.id] = createAiBrain(enemy.id, enemy.kind);
+    actualPatrolIds.push(enemy.id);
+  }
+  state.insertion.patrolIds = actualPatrolIds;
+  if (pressure.initialSuspicion <= 0) return;
+  for (const enemy of state.enemies) {
+    if (enemy.boss || state.insertion.alertedIds.includes(enemy.id) ||
+        (!actualPatrolIds.includes(enemy.id) && Math.abs(enemy.x - state.insertion.origin.x) > 2_200)) continue;
+    const brain = state.aiBrains[enemy.id] ?? createAiBrain(enemy.id, enemy.kind);
+    state.aiBrains[enemy.id] = { ...brain, mode: 'search', suspicion: Math.max(brain.suspicion, pressure.initialSuspicion),
+      lastKnownTarget: { x: state.insertion.origin.x, y: state.insertion.origin.y - 60 }, timeInMode: 0 };
+    state.insertion.alertedIds.push(enemy.id);
+  }
+  state.message = state.insertion.plan.method === 'ship'
+    ? 'Vaisseau repéré. Des patrouilles cherchent le point d’atterrissage.'
+    : 'La triade est au sol. Les chasseurs attendent tes ordres.';
+  state.messageTimer = 5;
+}
+
+function companionPlayerState(player: PlayerState, member: HuntCompanion): PlayerState {
+  return { ...player, ...member, previousY: member.y, cloaked: false, maskOn: true, aiming: false,
+    aimAngle: member.facing > 0 ? 0 : Math.PI, aimPoint: { x: member.x + member.facing * 100, y: member.y + 45 },
+    climbZoneId: null, canopySwing: null, activeWeaponSlot: 0, gauntletOpen: 0,
+    bladeExtension: member.attackFlash > 0 ? 1 : .25, weaponCooldown: 0, weaponChargeSeconds: 0,
+    melee: createHuntMeleeState(), dreadAngles: Array.from({ length: 8 }, () => 0),
+    dreadVelocities: Array.from({ length: 8 }, () => 0) };
+}
+
+/** Hostiles choose a physically visible escort, never a remote off-screen roster entry. */
+function visibleHuntCompanionTarget(state: GameState, enemy: EnemyState): HuntCompanion | null {
+  const self = { x: enemy.x + enemy.width / 2, y: enemy.y + enemy.height / 2 };
+  const player = { x: state.player.x + state.player.width / 2, y: state.player.y + state.player.height / 2 };
+  const covers = state.world.covers.filter(cover => !state.brokenPillarIds.has(cover.id));
+  const playerVisible = !state.player.cloaked && huntInsertionLineOfSight(self, player, state.world, covers);
+  const playerDistance = playerVisible ? distance(self, player) : Infinity;
+  return (state.insertion?.companions ?? []).filter(member => {
+    const center = { x: member.x + member.width / 2, y: member.y + member.height / 2 };
+    const range = distance(self, center);
+    return member.status === 'active' && range < Math.min(460, playerDistance) &&
+      ((center.x - self.x) * enemy.facing >= 0 || range <= 145) &&
+      huntInsertionLineOfSight(self, center, state.world, covers);
+  }).sort((a, b) => distance(self, a) - distance(self, b))[0] ?? null;
+}
+
+function updateHuntInsertionCompanions(state: GameState, mission: MissionDefinition, delta: number): void {
+  if (!state.insertion || state.paused || state.player.health <= 0 || state.phase === 'dead' || state.phase === 'finished') return;
+  const strikes = stepHuntCompanions(state.insertion, { delta, elapsed: state.elapsed, world: state.world,
+    player: state.player, enemies: state.enemies, extracting: state.phase === 'extraction',
+    covers: state.world.covers.filter(cover => !state.brokenPillarIds.has(cover.id)),
+    boardingProgress: state.dropShip ? dropShipVisual(state.dropShip, state.world.extraction.x).boardingProgress : 0 });
+  for (const strike of strikes) {
+    const enemy = state.enemies.find(target => target.id === strike.enemyId && target.active && target.alive && !target.boss);
+    if (!enemy) continue;
+    damageEnemy(state, mission, enemy, strike.damage, 'melee');
+    const member = state.insertion.companions.find(entry => entry.id === strike.memberId)!;
+    emitNoise(state, 'melee', .46, 250, { x: member.x + member.width / 2, y: member.y + member.height / 2 }, member.id);
+  }
+}
+
+type HuntCompanionCommand = 'follow' | 'hold' | 'aid' | 'leave';
+function commandHuntCompanion(state: GameState, id: ExpeditionMemberId, command: HuntCompanionCommand): boolean {
+  if (!state.insertion || state.player.health <= 0 || state.phase === 'dead' || state.phase === 'finished' ||
+      state.trophyExtracting || state.dropShip?.phase === 'boarding' || state.dropShip?.phase === 'departure') return false;
+  const member = state.insertion.companions.find(entry => entry.id === id);
+  if (!member) return false;
+  const name = TRIO_MEMBERS.find(entry => entry.id === id)!.name;
+  if (command === 'aid') {
+    if (!aidHuntCompanion(member, state.player, state.world, state.world.covers.filter(cover => !state.brokenPillarIds.has(cover.id)))) return false;
+    announce(state, `${name} stabilisé : une charge de médicomp utilisée.`, 3);
+  } else if (command === 'leave') {
+    if (state.phase !== 'extraction' || !state.player.grounded ||
+        Math.abs(state.player.x + state.player.width / 2 - state.world.extraction.x) > 115 ||
+        !missingHuntCompanions(state.insertion, state.world).some(entry => entry.id === id)) return false;
+    member.status = 'left-behind'; member.velocityX = 0; member.velocityY = 0; member.climbing = false;
+    announce(state, `${name} reste sur place. Son rapatriement devra être organisé au vaisseau.`, 5);
+  } else {
+    if (member.status !== 'active') return false;
+    member.order = command;
+    if (command === 'hold') member.velocityX = 0;
+    announce(state, `${name} : ${command === 'follow' ? 'je te suis.' : 'je tiens la position.'}`, 2.2);
+  }
+  return true;
 }
 
 function clonePlayerState(player: PlayerState): PlayerState {
@@ -1731,6 +1888,7 @@ function captureCheckpoint(
     );
   }
   return {
+    insertion: state.insertion ? cloneHuntInsertion(state.insertion) : undefined,
     ecosystem: state.ecosystem ? JSON.parse(JSON.stringify(state.ecosystem)) : undefined,
     huntRites: state.huntRites ? JSON.parse(JSON.stringify(state.huntRites)) : undefined,
     riteOperationDamageStart: state.riteOperationDamageStart ?? null,
@@ -1907,6 +2065,26 @@ function serializeActiveHuntCheckpoint(
   }
 }
 
+/** Active archives cannot claim an evacuation or start hoisting actors toward an absent ship. */
+function insertionCheckpointConsistent(checkpoint: MissionCheckpointPayload, insertion: HuntInsertionState, world: WorldBlueprint): boolean {
+  if (!insertion.companions.length) return true;
+  if (insertion.companions.some(member => member.status === 'extracted' ||
+      member.status === 'left-behind' && checkpoint.phase !== 'extraction')) return false;
+  const ship = checkpoint.dropShip;
+  if (ship?.phase === 'complete') return false;
+  const boarding = ship?.phase === 'boarding' || ship?.phase === 'departure';
+  if (!boarding) return insertion.companions.every(member => member.status !== 'boarding');
+  if (checkpoint.phase !== 'extraction' || !ship || !Number.isFinite(ship.phaseElapsedSeconds) ||
+      !Number.isFinite(ship.totalElapsedSeconds) || ship.phaseElapsedSeconds < 0 ||
+      ship.phaseElapsedSeconds > (ship.phase === 'boarding' ? DROP_SHIP_TIMING.boardingSeconds : DROP_SHIP_TIMING.departureSeconds) ||
+      ship.totalElapsedSeconds < DROP_SHIP_TIMING.approachSeconds - .01 || ship.totalElapsedSeconds < ship.phaseElapsedSeconds) return false;
+  const progress = dropShipVisual(ship, world.extraction.x).boardingProgress;
+  return insertion.companions.every(member => member.status === 'left-behind' || member.status === 'boarding' &&
+    Math.abs(member.x + member.width / 2 - world.extraction.x) <= 130 &&
+    Math.abs(member.y + member.height - (world.floorY - progress * 335)) <= 2 &&
+    member.velocityX === 0 && member.velocityY === 0 && !member.climbing);
+}
+
 function deserializeActiveHuntCheckpoint(
   snapshot: JsonObject | null | undefined,
 ): RestoredActiveHuntSnapshot | null {
@@ -2068,7 +2246,8 @@ function deserializeActiveHuntCheckpoint(
   if (
     !(checkpoint.enemies as JsonObject[]).every(enemy =>
       typeof enemy.id === "string" && typeof enemy.alive === "boolean" &&
-      typeof enemy.active === "boolean" && isValidSerializedHuntActor(enemy)) ||
+      typeof enemy.active === "boolean" && isValidSerializedHuntActor(enemy) &&
+      (enemy.pendingAttackTargetId === undefined || ['hunter', 'karhek', 'saketh'].includes(enemy.pendingAttackTargetId as string))) ||
     !(checkpoint.projectiles as JsonObject[]).every(isValidSerializedHuntProjectile)
   ) return null;
 
@@ -2085,6 +2264,16 @@ function deserializeActiveHuntCheckpoint(
       !restoreCorpseDiscoveryV112(checkpoint.ecosystem,checkpoint.huntRites.runId as string,
         checkpoint.huntRites.corpses as unknown as RitesOfHuntV77["corpses"],
         discoveryActorsV112(checkpoint.enemies as unknown as EnemyState[]),checkpoint.elapsed as number))return null;
+  }
+  if (checkpoint.insertion !== undefined) {
+    if (!isJsonObject(checkpoint.huntRites) || typeof checkpoint.huntRites.runId !== 'string' ||
+      typeof checkpoint.huntRites.missionId !== 'string' || !restoreHuntInsertion(checkpoint.insertion, checkpoint.huntRites.runId,
+        applyExplorationWorld(worldBlueprintFor(checkpoint.huntRites.missionId as MissionDefinition['id']), normalizeExplorationProgress(checkpoint.exploration)))) return null;
+    const insertion = checkpoint.insertion as unknown as HuntInsertionState;
+    if (!insertionCheckpointConsistent(checkpoint as unknown as MissionCheckpointPayload, insertion,
+      applyExplorationWorld(worldBlueprintFor(checkpoint.huntRites.missionId as MissionDefinition['id']), normalizeExplorationProgress(checkpoint.exploration)))) return null;
+    const enemyIds = new Set((checkpoint.enemies as JsonObject[]).map(enemy => enemy.id));
+    if (insertion.patrolIds.some(id => !enemyIds.has(id)) || insertion.alertedIds.some(id => !enemyIds.has(id))) return null;
   }
   const {
     spawnedWaves,
@@ -2135,6 +2324,10 @@ function restoreCheckpoint(
 ): GameState {
   const restoredWorldV112=applyExplorationWorld(worldBlueprintFor(state.world.missionId),
     mergeExplorationProgress(state.exploration,explorationForMission(state.world.missionId,checkpoint.exploration)));
+  const restoredInsertion = state.insertion ? restoreHuntInsertion(checkpoint.insertion, state.insertion.runId, restoredWorldV112) : undefined;
+  if (state.insertion && (!restoredInsertion || !samePlanetInsertion(restoredInsertion.plan, state.insertion.plan) ||
+    !insertionCheckpointConsistent(checkpoint, restoredInsertion, restoredWorldV112))) return { ...state, paused: true,
+    message: 'La triade ne correspond pas à cette rencontre ; reprise refusée.', messageTimer: 5 };
   const restoredRites = checkpoint.huntRites===undefined
     ? state.huntRites ? {...state.huntRites,elapsed:checkpoint.elapsed,corpses:[],operation:null,honorDelta:0,awareness:0,fear:0,completedEventIds:[],carryingCorpseId:null,specimensV112:[],stashedSpecimensV112:[]} : undefined
     : restoreRitesRuntimeV77(checkpoint.huntRites, state.huntRites.runId,
@@ -2206,6 +2399,7 @@ function restoreCheckpoint(
 
   return {
     ...state,
+    insertion: restoredInsertion ?? state.insertion,
     ecosystem: restoredEcosystem,
     huntRites: restoredRites ?? state.huntRites,
     riteMenuCorpseId: null,
@@ -2795,6 +2989,21 @@ function snapshot(state: GameState, mission: MissionDefinition): UiSnapshot {
   const fieldItems=carriedFieldSpecimensV112(state.huntRites);
   const actorAt={x:state.player.x+state.player.width/2,y:state.player.y+state.player.height/2};
   return {
+    insertion: {
+      method: state.insertion?.plan.method ?? 'pod',
+      team: state.insertion?.plan.team ?? 'solo', runId: state.insertionRunId ?? '',
+      shipId: state.insertion?.plan.method === 'ship' ? state.insertionShipId ?? null : null,
+      searchRemaining: Math.max(0, (state.insertion?.searchUntil ?? 0) - state.elapsed),
+      members: (state.insertion?.companions ?? []).map(member => ({
+        id: member.id, health: member.health, maxHealth: member.maxHealth, order: member.order, status: member.status,
+        x: member.x, y: member.y, blockedSeconds: member.blockedSeconds,
+        distance: Math.round(distance({ x: member.x + member.width / 2, y: member.y + member.height / 2 },
+          { x: state.player.x + state.player.width / 2, y: state.player.y + state.player.height / 2 })),
+        canAid: canAidHuntCompanion(member, state.player, state.world, state.world.covers.filter(cover => !state.brokenPillarIds.has(cover.id))),
+        canLeave: state.phase === 'extraction' && Math.abs(state.player.x + state.player.width / 2 - state.world.extraction.x) <= 115 &&
+          missingHuntCompanions(state.insertion, state.world).some(missing => missing.id === member.id),
+      })),
+    },
     fieldPackV112:{
       carried:fieldItems,
       nearby:(state.huntRites.stashedSpecimensV112??[]).flatMap(entry=>{
@@ -2967,6 +3176,7 @@ function resultFor(
 
   return {
     missionId: mission.id,
+    insertionOutcome: state.insertion ? huntInsertionOutcome(state.insertion, state.insertionRunId) : undefined,
     exploration: normalizeExplorationProgress(state.exploration),
     difficultyId: difficulty,
     outcome,
@@ -3615,6 +3825,41 @@ function drawExtractingTrophyLayers(
     }
   }
   context.restore();
+}
+
+function drawHuntCompanions(context: CanvasRenderingContext2D, state: GameState, assets: AssetBank): void {
+  for (const member of state.insertion?.companions ?? []) {
+    const visual = assets.insertionCompanions?.[member.id];
+    if (!visual || member.status === 'extracted' || member.x + member.width < state.cameraX - 100 ||
+        member.x > state.cameraX + VIEW_WIDTH + 100) continue;
+    const boarding = member.status === 'boarding' && state.dropShip ? dropShipVisual(state.dropShip, state.world.extraction.x) : null;
+    if (boarding && boarding.boardingProgress > .93) continue;
+    const player = companionPlayerState(state.player, member);
+    const renderState = { ...state, player, trophyExtracting: false, trophyExtraction: 0, trophyVictory: null, trophyCarried: false };
+    const definition = TRIO_MEMBERS.find(entry => entry.id === member.id)!;
+    const centerX = member.x + member.width / 2;
+    context.save();
+    if (member.status === 'downed' || member.status === 'left-behind' && member.health === 0) {
+      context.translate(centerX, member.y + member.height - 8);
+      context.rotate(-Math.PI / 2);
+      context.translate(-centerX, -member.y - member.height);
+    }
+    drawHunterLayered(context, renderState, visual.loadout, visual.appearance, visual.assets, member.status === 'left-behind' ? .6 : 1);
+    context.restore();
+    context.save();
+    context.fillStyle = '#07100fd9'; context.fillRect(centerX - 38, member.y - 25, 76, 5);
+    context.fillStyle = member.status === 'downed' ? '#ff7e6a' : definition.color;
+    context.fillRect(centerX - 38, member.y - 25, 76 * member.health / member.maxHealth, 5);
+    context.font = '700 11px system-ui, sans-serif'; context.textAlign = 'center';
+    context.fillText(definition.name, centerX, member.y - 32);
+    if (member.attackFlash > 0) {
+      context.strokeStyle = definition.color; context.lineWidth = 3; context.beginPath();
+      context.arc(centerX + member.facing * 38, member.y + 52, 46,
+        member.facing > 0 ? -.8 : Math.PI - .8, member.facing > 0 ? .8 : Math.PI + .8);
+      context.stroke();
+    }
+    context.restore();
+  }
 }
 
 function drawHunterLayered(
@@ -4638,6 +4883,20 @@ function renderGame(
     cameraX,
   );
   // Authoring passage markers stay out of the commercial presentation.
+  if (state.insertion?.plan.method === 'ship' && state.insertionShipId && assets.insertionShip) {
+    const art = carrierArtForShip(state.insertionShipId);
+    const facing = art.nose.x < art.tail.x ? -1 : 1;
+    const geometry = arrivalSurfaceShipGeometry(art, facing, state.world.floorY);
+    if (geometry.origin.x + geometry.width >= cameraX && geometry.origin.x <= cameraX + VIEW_WIDTH) {
+      context.save(); context.fillStyle = '#0206067a'; context.beginPath();
+      context.ellipse(geometry.origin.x + geometry.width / 2, state.world.floorY, geometry.width * .36, 18, 0, 0, Math.PI * 2);
+      context.fill();
+      context.translate(geometry.origin.x + geometry.width / 2, geometry.origin.y);
+      context.scale(facing, 1);
+      context.drawImage(assets.insertionShip, -geometry.width / 2, 0, geometry.width, geometry.height);
+      context.restore();
+    }
+  }
 
   for (const surface of state.world.surfaces) {
     const assignment = environmentGameplayPropForGeometryId(
@@ -5385,6 +5644,7 @@ function renderGame(
   }
 
   // Chasseur assemblé en couches indépendantes.
+  drawHuntCompanions(context, state, assets);
   const hunterAlpha = state.player.cloaked
     ? 0.24 + Math.sin(state.elapsed * 8) * 0.07
     : 1;
@@ -7444,6 +7704,12 @@ function interact(
       return;
     }
     state.dropShip ??= createDropShipArrival();
+    const missing = state.insertion ? missingHuntCompanions(state.insertion, state.world) : [];
+    if (missing.length) {
+      announce(state, `Triade incomplète : ${missing.map(member => TRIO_MEMBERS.find(entry => entry.id === member.id)!.name).join(', ')}. ` +
+        'Rassemble-les à la balise, stabilise un blessé à portée, ou choisis « Extraire sans lui » dans les ordres.', 5);
+      return;
+    }
     const shipStep = stepDropShip(state.dropShip, {
       deltaSeconds: 0,
       playerAtBeacon: true,
@@ -7451,6 +7717,7 @@ function interact(
     });
     state.dropShip = shipStep.state;
     if (shipStep.boardingAccepted) {
+      if (state.insertion) beginHuntCompanionBoarding(state.insertion, state.world);
       forceDecloak(state);
       state.player.invulnerability = Math.max(
         state.player.invulnerability,
@@ -7875,6 +8142,7 @@ function updatePlayer(
     });
     state.dropShip = shipStep.state;
     if (shipStep.completed) {
+      if (state.insertion) completeHuntCompanionBoarding(state.insertion);
       completeObjective(
         state,
         mission,
@@ -8294,11 +8562,12 @@ function fireHostileProjectile(
   color: string,
   source: "enemy" | "boss",
   vertical = 0,
+  target: Vec2 = { x: state.player.x + state.player.width / 2, y: state.player.y + state.player.height * 0.4 },
 ): void {
   const originX = enemy.x + enemy.width / 2;
   const originY = enemy.y + enemy.height * 0.35;
-  const targetX = state.player.x + state.player.width / 2;
-  const targetY = state.player.y + state.player.height * 0.4;
+  const targetX = target.x;
+  const targetY = target.y;
   const angle = Math.atan2(targetY - originY, targetX - originX);
   state.projectiles.push({
     id: state.nextProjectileId++,
@@ -8370,6 +8639,7 @@ function updateRegularEnemy(
   if (!enemy.alive) {
     enemy.telegraph = 0;
     enemy.pendingAttackId = null;
+    enemy.pendingAttackTargetId = undefined;
     enemy.deathAnimation = Math.max(0, enemy.deathAnimation - delta);
     if(enemy.riteDefeatedAt!==undefined&&!state.huntRites.corpses.some(c=>c.id===enemy.id&&c.supportId)&&state.huntRites.carryingCorpseId!==enemy.id){
       const velocity=Math.min(1200,(enemy.riteFallVelocity??0)+GRAVITY*delta);
@@ -8410,11 +8680,25 @@ function updateRegularEnemy(
     enemy.attackCooldown = cancelledAttack.state.cooldownSeconds;
     enemy.telegraph = cancelledAttack.state.telegraphSeconds;
     enemy.pendingAttackId = cancelledAttack.state.pendingAttackId;
+    enemy.pendingAttackTargetId = undefined;
     enemy.velocityX = 0;
     return;
   }
 
-  const player = state.player;
+  let targetCompanion = state.insertion ? visibleHuntCompanionTarget(state, enemy) : null;
+  let lostCompanionTarget = false;
+  const lockedTargetId = enemy.pendingAttackId ? enemy.pendingAttackTargetId : undefined;
+  if (lockedTargetId === 'hunter') targetCompanion = null;
+  else if (lockedTargetId) {
+    const locked = state.insertion?.companions.find(member => member.id === lockedTargetId);
+    const visible = locked && locked.status === 'active' && huntInsertionLineOfSight(
+      { x: enemy.x + enemy.width / 2, y: enemy.y + enemy.height / 2 },
+      { x: locked.x + locked.width / 2, y: locked.y + locked.height / 2 }, state.world,
+      state.world.covers.filter(cover => !state.brokenPillarIds.has(cover.id)));
+    targetCompanion = visible ? locked : null;
+    lostCompanionTarget = !visible;
+  }
+  const player = targetCompanion ? companionPlayerState(state.player, targetCompanion) : state.player;
   const ecologyDefinition = ecologyV8EnemyForId(enemy.archetype);
   const ecologyProfile = ecologyDefinition
     ? ecologyV8RuntimeProfile(ecologyDefinition)
@@ -8449,6 +8733,7 @@ function updateRegularEnemy(
       (cover) => !state.brokenPillarIds.has(cover.id),
     ),
   );
+  const structuralOcclusion = huntStructuralBarrierV94(selfPosition, targetPosition, state.world.platforms);
   const targetDirection =
     targetPosition.x >= selfPosition.x ? 1 : -1;
   const targetInFront = targetDirection === enemy.facing;
@@ -8461,14 +8746,14 @@ function updateRegularEnemy(
     clamp(1 - targetDistance / visionRange, 0, 1) *
     cloakVisibility *
     facingVisibility *
-    (1 - coverOcclusion * 0.9);
+    (1 - coverOcclusion * 0.9) * (structuralOcclusion ? 0 : 1);
   const thermalContact =
     enemy.kind === "human"
       ? 0
       : clamp(1 - targetDistance / (visionRange * 1.15), 0, 1) *
-        state.mud.thermalVisibility *
+        (targetCompanion ? 1 : state.mud.thermalVisibility) *
         (targetInFront ? 1 : 0.42) *
-        (1 - coverOcclusion * 0.66);
+        (1 - coverOcclusion * 0.66) * (structuralOcclusion ? 0 : 1);
 
   const wind = sampleWind(state.world.wind, state.elapsed, selfPosition.x);
   let heardNoise: ReturnType<typeof perceivedNoise> = null;
@@ -8539,8 +8824,17 @@ function updateRegularEnemy(
         ),
       };
     });
-  const previousBrain =
+  let previousBrain =
     state.aiBrains[enemy.id] ?? createAiBrain(enemy.id, enemy.kind);
+  // The insertion supplies a fixed place to investigate. Actual sight, scent,
+  // tracks or noise can supersede it; merely moving the player cannot.
+  const investigatingInsertion = !!state.insertion && state.elapsed < state.insertion.searchUntil &&
+    state.insertion.alertedIds.includes(enemy.id) && ['patrol', 'suspicion', 'search'].includes(previousBrain.mode) &&
+    visualContact < .34 && thermalContact < .34 && !heardNoise && track.strength < .18 && scent.strength < .18 &&
+    (!previousBrain.lastKnownTarget || Math.abs(previousBrain.lastKnownTarget.x - state.insertion.origin.x) < 1);
+  if (investigatingInsertion) previousBrain = { ...previousBrain, mode: 'search',
+    suspicion: Math.max(previousBrain.suspicion, planetInsertionPressure(state.insertion.plan).initialSuspicion),
+    lastKnownTarget: { x: state.insertion.origin.x, y: state.insertion.origin.y - 60 } };
   const aiStep = stepAiBrain(previousBrain, {
     deltaSeconds: delta,
     elapsedSeconds: state.elapsed,
@@ -8611,6 +8905,7 @@ function updateRegularEnemy(
   if(riteInvestigation&&riteInvestigation.until<=state.elapsed&&aiStep.brain.mode==='patrol')enemy.riteInvestigate=undefined;
   const moveIntent = ecologyProfile?.mobility === "stationary" ? 0 : inspectingRite
     ? discoveryMove
+    : investigatingInsertion ? Math.abs(selfPosition.x - state.insertion.origin.x) < 80 ? 0 : state.insertion.origin.x < selfPosition.x ? -1 : 1
     : aiStep.intent.moveX;
   if (moveIntent !== 0) {
     enemy.facing = moveIntent;
@@ -8621,7 +8916,8 @@ function updateRegularEnemy(
   const rangedAttack =
     enemy.kind === "human" || ecologyProfile?.attackStyle === "ranged";
   const meleeRange = enemy.width * 0.8 + player.width * 0.55 + 52;
-  const wantsAttack = !inspectingRite && (
+  const attackTargetVisible = !state.insertion?.companions.length || Math.max(visualContact, thermalContact * .82) >= .34;
+  const wantsAttack = !inspectingRite && !investigatingInsertion && !lostCompanionTarget && attackTargetVisible && (
     aiStep.intent.action === "attack" ||
     aiStep.intent.action === "suppress");
   const requestedAttackId =
@@ -8630,6 +8926,7 @@ function updateRegularEnemy(
       : wantsAttack && !rangedAttack && targetDistance < meleeRange
         ? REGULAR_MELEE_ATTACK_ID
         : null;
+  const wasPendingAttack = Boolean(enemy.pendingAttackId);
   const attackStep = stepRegularAttackTelegraph(
     {
       cooldownSeconds: enemy.attackCooldown,
@@ -8638,7 +8935,7 @@ function updateRegularEnemy(
     },
     {
       deltaSeconds: delta,
-      cancelled: inspectingRite,
+      cancelled: inspectingRite || investigatingInsertion || lostCompanionTarget || Boolean(lockedTargetId && !attackTargetVisible),
       request: requestedAttackId
         ? regularEnemyAttackRequest(enemy, requestedAttackId)
         : null,
@@ -8647,6 +8944,9 @@ function updateRegularEnemy(
   enemy.attackCooldown = attackStep.state.cooldownSeconds;
   enemy.telegraph = attackStep.state.telegraphSeconds;
   enemy.pendingAttackId = attackStep.state.pendingAttackId;
+  if (enemy.pendingAttackId && !wasPendingAttack && state.insertion?.companions.length)
+    enemy.pendingAttackTargetId = targetCompanion?.id ?? 'hunter';
+  else if (!enemy.pendingAttackId) enemy.pendingAttackTargetId = undefined;
   if (attackStep.immobilized) {
     enemy.velocityX = 0;
   }
@@ -8672,6 +8972,8 @@ function updateRegularEnemy(
         560,
         projectileColor,
         "enemy",
+        0,
+        targetPosition,
       );
     }
   } else if (
@@ -8679,7 +8981,9 @@ function updateRegularEnemy(
   ) {
     if (targetDistance < meleeRange &&
         !huntStructuralBarrierV94(selfPosition, targetPosition, state.world.platforms)) {
-      if (!resolvePlayerMeleeParry(state, enemy)) {
+      if (targetCompanion) {
+        hurtHuntCompanion(targetCompanion, enemy.damage);
+      } else if (!resolvePlayerMeleeParry(state, enemy)) {
         hurtPlayer(state, enemy.damage, mission);
       }
       emitNoise(state, "melee", 0.6, 360, selfPosition, enemy.id);
@@ -8693,11 +8997,13 @@ function updateRegularEnemy(
     state.world.width,
     enemy.width,
   );
-  enemy.x = clamp(
-    enemy.x + enemy.velocityX * delta,
-    movementLeash.left,
-    movementLeash.right,
-  );
+  const nextX = clamp(enemy.x + enemy.velocityX * delta,
+    investigatingInsertion ? Math.min(movementLeash.left, state.insertion.origin.x - enemy.width / 2) : movementLeash.left,
+    investigatingInsertion ? Math.max(movementLeash.right, state.insertion.origin.x + enemy.width / 2) : movementLeash.right);
+  if (investigatingInsertion) {
+    const moved = resolvePlatformMotion({ ...enemy, velocityY: 0 }, { x: nextX, y: enemy.y }, state.world.platforms, state.world.floorY);
+    enemy.x = moved.x; enemy.velocityX = moved.velocityX;
+  } else enemy.x = nextX;
   if (ecologyProfile?.mobility === "flying") {
     const flightPhase = state.elapsed * 2.1 + enemy.id.length * 0.47;
     enemy.y =
@@ -9540,10 +9846,17 @@ function updateProjectiles(
     const blockingCover = coverImpact?.cover;
     const firstCoverTime = coverImpact?.time ?? Infinity;
     if (!consumed && projectile.hostile) {
-      const playerImpact = sweptProjectileImpactTime(movementStart, movementEnd, projectile.radius, state.player);
-      if (playerImpact !== null && playerImpact < firstCoverTime) {
-        placeAtImpact(playerImpact);
-        hurtPlayer(state, projectile.damage, mission);
+      const impacts = [
+        { companion: null as HuntCompanion | null, body: state.player },
+        ...(state.insertion?.companions ?? []).filter(member => member.status === 'active').map(member => ({ companion: member, body: member })),
+      ].map(target => ({ ...target, time: sweptProjectileImpactTime(movementStart, movementEnd, projectile.radius, target.body) }))
+        .filter((hit): hit is typeof hit & { time: number } => hit.time !== null && hit.time < firstCoverTime)
+        .sort((a, b) => a.time - b.time);
+      const impact = impacts[0];
+      if (impact) {
+        placeAtImpact(impact.time);
+        if (impact.companion) hurtHuntCompanion(impact.companion, projectile.damage);
+        else hurtPlayer(state, projectile.damage, mission);
         consumed = true;
       }
     } else if (!consumed) {
@@ -9978,6 +10291,7 @@ function stepGame(
     finish,
   );
   if (state.paused) return;
+  if (state.insertion?.companions.length) updateHuntInsertionCompanions(state, mission, delta);
   updateHuntTraps(state, delta);
   updateHuntSignals(state, mission, delta);
   if (state.player.health <= 0) return;
@@ -10038,6 +10352,9 @@ export default function HuntCanvas({
   firstHuntGuideEnabled = false,
   mission,
   encounterRun,
+  insertionPlan,
+  insertionRunId,
+  insertionShipId,
   loadout,
   inventory,
   difficulty,
@@ -10064,6 +10381,8 @@ export default function HuntCanvas({
   // Freeze the model for the current hunt. An external-tab cosmetic preference
   // update must not restart the same simulation or replace assets mid-combat.
   const [gauntletVisualId]=useState(()=>gauntletVariantId ?? "jungle-hunter");
+  const [frozenInsertion] = useState(() => normalizePlanetInsertionPlan(insertionPlan) ?? { ...DEFAULT_PLAN });
+  const [frozenInsertionShipId] = useState(insertionShipId);
   const activeBindings = controlBindings ?? DEFAULT_CONTROL_BINDINGS;
   const activeAccessibility = huntAccessibility ?? DEFAULT_HUNT_ACCESSIBILITY_CANVAS_V112;
   const huntRootRef = useRef<HTMLElement | null>(null);
@@ -10085,6 +10404,7 @@ export default function HuntCanvas({
   const requestSuspendRef = useRef<() => void>(() => undefined);
   const ritualAssistRefV112 = useRef<(event:RitualAssistEventV112|"abort")=>void>(()=>undefined);
   const fieldPackActionRefV112=useRef<(action:"drop"|"take",id:string)=>void>(()=>undefined);
+  const companionCommandRef = useRef<(id: ExpeditionMemberId, command: HuntCompanionCommand) => void>(() => undefined);
   const riteMenuActionRef = useRef<(action:HuntRiteActionV77|'open'|'close')=>void>(()=>undefined);
   const dismissMissionOpeningRef = useRef<() => void>(() => undefined);
   const missionOpeningActiveRef = useRef(false);
@@ -10102,6 +10422,7 @@ export default function HuntCanvas({
   });
   const [ui, setUi] = useState<UiSnapshot>(EMPTY_UI);
   const [assetsReady, setAssetsReady] = useState(false);
+  const [surfaceShipReady, setSurfaceShipReady] = useState(false);
   const [missionOpeningOpen, setMissionOpeningOpen] = useState(false);
   const [openingHint, setOpeningHint] = useState<FirstHuntHint | null>(null);
   const [openingGuideCollapsed, setOpeningGuideCollapsed] = useState(true);
@@ -10242,6 +10563,9 @@ export default function HuntCanvas({
       screenShake,
       ecologyRunSeed,
       explorationProgress,
+      frozenInsertion,
+      insertionRunId,
+      frozenInsertionShipId,
     );
     game.huntAccessibility=normalizeHuntAccessibilityV112(activeAccessibility);
     const restoredHunt = deserializeActiveHuntCheckpoint(resumeSnapshot);
@@ -10251,6 +10575,9 @@ export default function HuntCanvas({
     const invalidResume =
       (resumeSnapshot != null && !restoredHunt) ||
       (resumeRetryCheckpoint != null && !restoredRetry) ||
+      [restoredHunt, restoredRetry].some(saved => saved && (
+        !restoreHuntInsertion(saved.checkpoint.insertion, game.insertion.runId, game.world) ||
+        !samePlanetInsertion(saved.checkpoint.insertion?.plan, game.insertion.plan))) ||
       (restoredHunt && !restoreRitesRuntimeV77(restoredHunt.checkpoint.huntRites,game.huntRites.runId,mission.id,
         restoredHunt.checkpoint.enemies,restoredHunt.checkpoint.elapsed,riteSourceLabelV77,{flayingToolOwned:game.flayingToolOwned,maximumSpecimens:game.harvestDepotFreeV112,...carcassGeometryV112(game.world)})) ||
       (restoredRetry && !restoreRitesRuntimeV77(restoredRetry.checkpoint.huntRites,game.huntRites.runId,mission.id,
@@ -10401,6 +10728,7 @@ export default function HuntCanvas({
     input.gamepadDialogActions = [];
     input.pointerScreen = null;
     setAssetsReady(false);
+    setSurfaceShipReady(false);
     setUi(snapshot(game, mission));
 
     const resize = () => {
@@ -10504,6 +10832,40 @@ export default function HuntCanvas({
       queueImage(hunterMaskRigPath(appearance.biomaskId), (image) => {
         assets.hunterMask = image;
       });
+    }
+
+    if (game.insertion.plan.method === 'ship' && game.insertionShipId) {
+      queueImage(shipProfileAssetPath(game.insertionShipId), image => { assets.insertionShip = image; });
+    }
+    // Each original campaign companion owns its anatomy/armor bank. Sharing the
+    // player's appearance would turn a save or equipment change into an identity swap.
+    assets.insertionCompanions = {};
+    for (const member of game.insertion.companions) {
+      const look = expeditionMemberAppearance(member.id), kit = expeditionMemberLoadout(member.id);
+      const bank: AssetBank = { ...assets, insertionCompanions: undefined, hunterBodyFull: null, hunterMask: null, hunterDreads: null,
+        hunterBodyParts: { ...assets.hunterBodyParts }, hunterNetParts: { ...assets.hunterNetParts },
+        hunterArmor: { ...assets.hunterArmor }, hunterGauntlet: { base: null, lid: null } };
+      assets.insertionCompanions[member.id] = { appearance: look, loadout: kit, assets: bank };
+      queueImage(hunterBodyFullPath(look.bodyMorphId), image => { bank.hunterBodyFull = image; });
+      for (const partId of HUNTER_BODY_PART_IDS) {
+        queueImage(hunterBodyPartPath(look.bodyMorphId, partId, look.headStyleId), image => { bank.hunterBodyParts[partId] = image; });
+        if (hunterBodyPartHasNet(look.bodyMorphId, partId))
+          queueImage(hunterNetPartPath(look.bodyMorphId, partId), image => { bank.hunterNetParts[partId] = image; });
+      }
+      queueImage(hunterDreadPath(look.dreadStyleId), image => { bank.hunterDreads = image; });
+      if (look.biomaskId) queueImage(hunterMaskRigPath(look.biomaskId), image => { bank.hunterMask = image; });
+      const modules = HUNTER_ARMOR_MODULES[look.armorStyleId];
+      const paths: Record<HunterArmorAssetId, string> = { chest: hunterArmorPath(modules.chest), shoulder: hunterArmorPath(modules.shoulder),
+        belt: hunterArmorPath('belt'), bracer: hunterArmorPath('bracer'), thigh: hunterArmorPath('thigh'), knee: hunterArmorPath('knee'),
+        thighLower: hunterArmorPath('thigh-lower'), shin: hunterArmorPath('shin') };
+      for (const [part, path] of Object.entries(paths) as [HunterArmorAssetId, string][])
+        queueImage(path, image => { bank.hunterArmor[part] = image; });
+      for (const [part, path] of Object.entries(HUNTER_EQUIPMENT_V3.gauntlet) as [HunterGauntletAssetId, string][])
+        queueImage(path, image => { bank.hunterGauntlet[part] = image; });
+      for (const weapon of ['combistick', 'combistick-folded'] as const)
+        queueImage(hunterRegisteredAssetPath('weapons', weapon), image => { bank.hunterWeapons[weapon] = image; });
+      for (const gear of kit.gearIds)
+        queueImage(hunterRegisteredAssetPath('gear', gear), image => { bank.hunterGear[gear] = image; });
     }
 
     const armorModules = HUNTER_ARMOR_MODULES[appearance.armorStyleId];
@@ -10743,6 +11105,7 @@ export default function HuntCanvas({
         lastTime = performance.now();
         accumulator = 0;
         setAssetsReady(true);
+        setSurfaceShipReady(Boolean(assets.insertionShip));
       }
     });
 
@@ -10762,6 +11125,9 @@ export default function HuntCanvas({
             screenShake,
             ecologyRunSeed,
             explorationBeforeRetry,
+            game.insertion.plan,
+            game.insertionRunId,
+            game.insertionShipId,
           );
       if(input.accessibility){
         game.huntAccessibility=input.accessibility;
@@ -10839,6 +11205,12 @@ export default function HuntCanvas({
       game.jumpAssist = freshJumpAssistState({ requireRelease: true });
       lastObservedPaused = true;
       emitPersistence(suspendHuntRef.current);
+    };
+    companionCommandRef.current = (id, command) => {
+      if (openingActive || !commandHuntCompanion(game, id, command)) return;
+      input.pressed.clear();
+      setUi(snapshot(game, mission));
+      emitPersistence(persistHuntRef.current);
     };
 
     ritualAssistRefV112.current=(event)=>{
@@ -11104,10 +11476,14 @@ export default function HuntCanvas({
       reportFailureRef.current = () => undefined;
       requestAbortRef.current = () => undefined;
       requestSuspendRef.current = () => undefined;
+      companionCommandRef.current = () => undefined;
     };
   }, [
     firstHuntGuideEnabled,
     gauntletVisualId,
+    frozenInsertion,
+    frozenInsertionShipId,
+    insertionRunId,
     activeBindings,
     activeAccessibility,
     appearance,
@@ -11199,6 +11575,45 @@ export default function HuntCanvas({
   } as CSSProperties;
   const hasLocalMap = mission.id === PILOT_MISSION_ID || mission.id === ICE_MISSION_ID ||
     isExpansionExplorationMission(mission.id);
+  const dispatchCompanionCommand = useCallback((id: ExpeditionMemberId, command: HuntCompanionCommand) => {
+    companionCommandRef.current(id, command);
+  }, []);
+  const companionOrders = () => ui.insertion.members.length > 0 ? (
+    <div role="group" aria-label="Ordres de la triade" data-hunt-trio="true" style={{ display: 'grid', gap: 12, margin: '12px 0' }}>
+      {ui.insertion.members.map(member => {
+        const definition = TRIO_MEMBERS.find(entry => entry.id === member.id)!;
+        const unavailable = !assetsReady || missionOpeningOpen || ui.phase === 'dead' || ui.phase === 'finished' ||
+          ui.dropShipPhase === 'boarding' || ui.dropShipPhase === 'departure';
+        const stateLabel = member.status === 'downed' ? 'À stabiliser' : member.status === 'boarding' ? 'Embarque' :
+          member.status === 'extracted' ? 'Évacué' : member.status === 'left-behind' ? 'Laissé sur place' :
+          member.blockedSeconds > 1 ? 'Passage bloqué' : member.order === 'hold' ? 'Tient la position' : 'Te suit';
+        return <div key={member.id} data-hunt-companion-id={member.id} data-hunt-companion-status={member.status}
+          data-hunt-companion-health={member.health} data-hunt-companion-x={member.x} data-hunt-companion-y={member.y}
+          data-hunt-companion-order={member.order} style={{ borderLeft: `3px solid ${definition.color}`, paddingLeft: 10 }}>
+          <strong style={{ color: definition.color }}>{definition.name}</strong>{' · '}{stateLabel}{' · '}
+          {Math.ceil(member.health)}/{member.maxHealth}{' · '}{member.distance <= 125 ? 'à portée' : member.distance < 350 ? 'près de toi' : 'éloigné'}
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8, marginTop: 7 }}>
+            <button type="button" style={styles.secondaryButton} disabled={unavailable || member.status !== 'active'}
+              aria-label={`${definition.name} : suivre`} aria-pressed={member.order === 'follow'}
+              onClick={() => dispatchCompanionCommand(member.id, 'follow')}>Suivre</button>
+            <button type="button" style={styles.secondaryButton} disabled={unavailable || member.status !== 'active'}
+              aria-label={`${definition.name} : tenir la position`} aria-pressed={member.order === 'hold'}
+              onClick={() => dispatchCompanionCommand(member.id, 'hold')}>Tenir</button>
+            {member.health < member.maxHealth && member.status !== 'left-behind' && <button type="button" style={styles.secondaryButton}
+              disabled={unavailable || !member.canAid} onClick={() => dispatchCompanionCommand(member.id, 'aid')}
+              aria-label={`Stabiliser ${definition.name} : une charge de médicomp`}>Stabiliser · 1 médicomp</button>}
+            {member.canLeave && <button type="button" style={styles.ghostButton} disabled={unavailable}
+              aria-label={`Extraire sans ${definition.name} : le laisser sur place`}
+              onClick={() => dispatchCompanionCommand(member.id, 'leave')}>Extraire sans lui</button>}
+          </div>
+          {member.status === 'downed' && <p style={{ margin: '6px 0', fontSize: 12 }}>Rejoins-le sur un appui dégagé et utilise une charge pour le remettre en mouvement.</p>}
+          {member.blockedSeconds > 1 && member.status === 'active' && <p style={{ margin: '6px 0', fontSize: 12 }}>Il attend devant l’obstacle. Reviens vers un passage praticable pour le guider.</p>}
+          {member.canLeave && <p style={{ margin: '6px 0', fontSize: 12 }}>Partir sans lui le laisse indisponible. Un rapatriement devra être organisé au vaisseau.</p>}
+        </div>;
+      })}
+    </div>
+  ) : null;
+
   const phaseLabel =
     ui.phase === "tracking"
       ? "TRAQUE"
@@ -11219,6 +11634,11 @@ export default function HuntCanvas({
       data-screen-focus
       tabIndex={-1}
       aria-label={`Mission ${mission.title} sur ${mission.planetName}`}
+      data-hunt-insertion-method={ui.insertion.method}
+      data-hunt-insertion-team={ui.insertion.team}
+      data-hunt-insertion-run-id={ui.insertion.runId}
+      data-hunt-insertion-ship-id={ui.insertion.shipId ?? undefined}
+      data-hunt-surface-ship-ready={surfaceShipReady}
       style={{
         ...styles.shell,
         "--hunt-accent": mission.palette.accent,
@@ -11272,6 +11692,14 @@ export default function HuntCanvas({
           {ui.paused ? "▶" : "Ⅱ"}
         </button>
       </header>
+
+      {(ui.insertion.members.length > 0 || ui.insertion.method === 'ship') && <details className={presentationStyles.fieldLoadV112}
+        open={ui.phase === 'extraction' ? true : undefined}>
+        <summary>{ui.insertion.method === 'ship' ? 'Vaisseau posé' : 'Capsules au sol'}{' · '}
+          {ui.insertion.members.length > 0 ? 'Triade · ordres et état' : 'Chasseur seul'}
+          {ui.insertion.searchRemaining > 0 ? ` · Point d’insertion recherché ${Math.ceil(ui.insertion.searchRemaining)} s` : ''}</summary>
+        {!huntDialogOpen && companionOrders()}
+      </details>}
 
       <details className={presentationStyles.fieldLoadV112}>
         <summary>Emport {ui.fieldLoadV112.massKg.toFixed(1)} / {ui.fieldLoadV112.capacityMassKg} kg
@@ -11448,6 +11876,7 @@ export default function HuntCanvas({
                 rite.
               </p>
               <FieldPackV112 {...ui.fieldPackV112} onAction={(action,id)=>fieldPackActionRefV112.current(action,id)}/>
+              {companionOrders()}
               <div style={styles.modalActions}>
                 <button
                   type="button"

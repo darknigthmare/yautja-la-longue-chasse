@@ -24,6 +24,7 @@ const missionRoute = GALAXY_NAVIGATION.sectors.flatMap(sector => sector.systems.
   system.bodies.flatMap(body => body.missions.map(mission => ({ sector, system, body, mission }))))).find(route => route.mission.id === 'jungle-vey');
 assert.ok(missionRoute, 'The real navigation registry must expose the initial jungle contract');
 const seed = defaultSave('2026-11-04T10:00:00.000Z');
+const shipTriadPlan = { version: 1, method: 'ship', team: 'triad' };
 seed.profile.hunterName = 'QA Château et arrivée';
 seed.settings.masterVolume = 0;
 const checkoutCommit = execFileSync('git', ['rev-parse', 'HEAD'], { cwd: root, encoding: 'utf8' }).trim();
@@ -249,7 +250,7 @@ try {
     if (await shortcutDetails.getAttribute('open') === null) await shortcutDetails.locator('summary').click();
     await page.getByRole('navigation', { name: 'Accès alternatif aux interfaces, la position du chasseur est conservée', exact: true }).getByRole('button', { name: /^DÉPART/ }).click();
   };
-  const launchMission = async () => {
+  const launchMission = async plan => {
     await openDeparture();
     // A new campaign has no selected mission. Follow the actual map and its
     // autopilot legs, then validate the briefing before returning to the airlock.
@@ -261,6 +262,25 @@ try {
     }
     await page.locator('.galaxy-v10-dossier-nav').getByRole('button', { name: missionRoute.mission.title, exact: false }).click();
     await page.getByRole('button', { name: 'Préparer la chasse', exact: true }).click();
+    if (plan) {
+      const panel = page.locator('[data-insertion-plan]');
+      await panel.waitFor();
+      if (plan.team === 'triad') {
+        await panel.getByRole('button', { name: 'Recruter Ka’rhek', exact: true }).click();
+        await panel.locator('[data-expedition-member="karhek"][data-availability="ready"]').waitFor();
+        await panel.getByRole('button', { name: 'Recruter Sa’keth', exact: true }).click();
+        await panel.locator('[data-expedition-member="saketh"][data-availability="ready"]').waitFor();
+        const roster = (await stored()).expeditionRoster;
+        assert.equal(roster.ownerCreatedAt, seed.createdAt);
+        assert.deepEqual(roster.members.map(member => ({ id: member.id, ship: member.assignedShipId, availability: member.availability })), [
+          { id: 'karhek', ship: 'classic-predator-spaceship', availability: 'ready' },
+          { id: 'saketh', ship: 'classic-predator-spaceship', availability: 'ready' },
+        ], 'The real recruitment buttons must durably assign both hunters to the selected hull.');
+      }
+      await panel.locator(`input[name="insertion-method"][value="${plan.method}"]`).check();
+      await panel.locator(`input[name="insertion-team"][value="${plan.team}"]`).check();
+      assert.equal(await panel.getAttribute('data-insertion-plan'), `${plan.method}-${plan.team}`);
+    }
     await page.getByRole('button', { name: 'Valider la destination', exact: true }).click();
     await page.locator('[data-galaxy-v10-level]').waitFor({ state: 'detached' });
     await openDeparture();
@@ -607,14 +627,17 @@ try {
   });
 
   let skipRun;
-  await check('A campaign launch freezes a single run, destination, ship and hunter before any hunt mounts', async () => {
-    await launchMission();
+  await check('Real recruitment and a ship-triad briefing freeze one campaign run before any hunt mounts', async () => {
+    await launchMission(shipTriadPlan);
     const save = await stored();
     skipRun = save.planetArrival.runId;
     assert.equal(save.planetArrival.personalShipId, 'classic-predator-spaceship');
     assert.equal(save.planetArrival.destinationId, 'planet-oseris-iv');
     assert.equal(save.planetArrival.hunterPresetId, seed.appearance.presetId);
     assert.equal(save.planetArrivalRun.runId, skipRun);
+    assert.deepEqual(save.planetArrival.insertion, shipTriadPlan);
+    assert.deepEqual(save.planetArrivalRun.configuration.insertion, shipTriadPlan);
+    assert.equal(save.planetArrivalRun.configuration.insertionShipId, save.planetArrival.personalShipId);
     assert.equal(await page.locator('.hunt-screen').count(), 0);
     assert.equal(await huntStored(), null);
   });
@@ -688,6 +711,28 @@ try {
     await page.getByRole('button', { name: 'Réessayer le départ', exact: true }).focus();
     await padButton(0, false); await padButton(0, true);
     await assertSingleHunt(skipRun);
+    await page.waitForFunction(key => {
+      const snapshot = JSON.parse(localStorage.getItem(key))?.snapshot;
+      return snapshot?.checkpoint?.insertion?.companions?.length === 2;
+    }, ACTIVE_HUNT_STORAGE_KEY, { timeout: 30000 });
+    const hunt = await huntStored(), insertion = hunt.snapshot.checkpoint.insertion;
+    assert.deepEqual(hunt.configuration.insertion, shipTriadPlan);
+    assert.equal(hunt.configuration.insertionShipId, 'classic-predator-spaceship');
+    assert.deepEqual(insertion.plan, shipTriadPlan);
+    assert.deepEqual(insertion.companions.map(member => member.id), ['karhek', 'saketh']);
+    assert.deepEqual(insertion.patrolIds, [`${insertion.runId}:insertion-patrol-0`, `${insertion.runId}:insertion-patrol-2`],
+      'The initial jungle encounter has exactly two safe patrol placements.');
+    assert.equal(insertion.searchUntil, 35);
+    const enemyIds = new Set(hunt.snapshot.checkpoint.enemies.map(enemy => enemy.id));
+    assert.ok(insertion.patrolIds.every(id => enemyIds.has(id)), 'The noisy insertion must create the actual patrol enemies.');
+    await page.locator('[data-hunt-surface-ship-ready="true"]').waitFor({ timeout: 90000 });
+    assert.equal(await page.locator('.hunt-screen').getAttribute('data-hunt-insertion-method'), 'ship');
+    assert.equal(await page.locator('.hunt-screen').getAttribute('data-hunt-insertion-team'), 'triad');
+    assert.equal(await page.locator('.hunt-screen').getAttribute('data-hunt-insertion-run-id'), skipRun);
+    assert.equal(await page.locator('.hunt-screen').getAttribute('data-hunt-insertion-ship-id'), 'classic-predator-spaceship');
+    assert.deepEqual((await stored()).expeditionRoster.members.map(member => member.id), ['karhek', 'saketh']);
+    report.shipTriadHandoff = { runId: skipRun, plan: insertion.plan, companions: insertion.companions,
+      patrolIds: insertion.patrolIds, searchUntil: insertion.searchUntil, realPatrolCount: insertion.patrolIds.length };
     await page.waitForTimeout(450);
     assert.equal(await page.evaluate(() => window.__wolfArrivalQa.mounts), 1);
     await padButton(0, false);
@@ -698,6 +743,9 @@ try {
     await page.locator('.hunt-screen canvas.hunt-canvas').waitFor({ timeout: 90_000 });
     assert.equal(await page.locator('[data-arrival-run]').count(), 0);
     assert.equal((await huntStored()).missionId, 'jungle-vey');
+    assert.deepEqual((await huntStored()).configuration.insertion, shipTriadPlan);
+    assert.deepEqual((await huntStored()).snapshot.checkpoint.insertion.plan, shipTriadPlan);
+    assert.equal((await huntStored()).snapshot.checkpoint.insertion.companions.length, 2);
     assert.equal(await page.evaluate(() => window.__wolfArrivalQa.mounts), 1);
   });
   await first.context.close();
@@ -709,6 +757,8 @@ try {
     await openApp(); await launchMission(); naturalRun = (await stored()).planetArrival.runId;
     assert.notEqual(naturalRun, skipRun);
     assert.equal(await page.locator('[data-arrival-run]').getAttribute('data-arrival-reduced-motion'), 'false');
+    assert.equal(await page.locator('[data-arrival-run]').getAttribute('data-arrival-method'), 'pod');
+    assert.equal(await page.locator('[data-arrival-run]').getAttribute('data-arrival-team'), 'solo');
     await page.waitForTimeout(800); await screenshot('20-arrival-orbit.png');
   });
   await check('The title, actual carrier and separate capsule are presented before the descent', async () => {

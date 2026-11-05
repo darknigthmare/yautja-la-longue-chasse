@@ -34,10 +34,11 @@ import { normalizeGameReserveV66, gameReserveV66Supported } from "./systems/game
 import { normalizeShipPreparationV88 } from "./systems/shipPreparationV88";
 import { normalizeShipAcquisitionV89 } from "./systems/shipAcquisitionV89";
 import { inspectClanShipDocking } from "./systems/clanShipDocking";
-import { evaluateClanShipOperationsCampaign, inspectClanShipOperations } from "./systems/clanShipOperations";
+import { evaluateClanShipAccess, evaluateClanShipOperationsCampaign, inspectClanShipOperations } from "./systems/clanShipOperations";
 import { inspectWolfCastleVisit } from "./systems/wolfCastle";
 import { inspectPlanetArrival } from "./systems/planetArrival";
 import { inspectPlanetArrivalRun } from "./systems/planetArrivalRun";
+import { expeditionTrioReady, inspectExpeditionRoster } from "./systems/planetInsertion";
 import { emptyGauntletCampaignV134, normalizeGauntletCampaignV134 } from "./systems/gauntletCampaignV134";
 import {
   ARMORS,
@@ -1254,6 +1255,9 @@ export function normalizeSave(value: unknown): SaveGame {
       planetArrivalRun: inspectPlanetArrivalRun(source.planetArrivalRun,
         inspectPlanetArrival(source.planetArrival, validIsoDate(source.createdAt, fallback.createdAt)).state).state,
     }),
+    ...(source.expeditionRoster === undefined ? {} : {
+      expeditionRoster: inspectExpeditionRoster(source.expeditionRoster, validIsoDate(source.createdAt, fallback.createdAt)).state,
+    }),
     codex: { unlockedEntryIds, scanCounts, discoveredEnemyIds },
     exploration: normalizeExplorationProgress(source.exploration),
     statistics: {
@@ -1482,11 +1486,17 @@ function inspectSavePayload(value: unknown): SaveImportParseResult {
     : inspectWolfCastleVisit(value.wolfCastle, typeof value.createdAt === "string" ? value.createdAt : "");
   const arrival = inspectPlanetArrival(value.planetArrival, typeof value.createdAt === "string" ? value.createdAt : "");
   const arrivalRun = inspectPlanetArrivalRun(value.planetArrivalRun, arrival.state);
-  for (const inspection of [castle, arrival, arrivalRun]) {
+  const expedition = inspectExpeditionRoster(value.expeditionRoster, typeof value.createdAt === 'string' ? value.createdAt : '');
+  for (const inspection of [castle, arrival, arrivalRun, expedition]) {
     if (inspection.status === "future-version" || inspection.status === "invalid-save") {
       return { save: null, failure: inspection.status };
     }
   }
+  if (((expedition.state?.members.length ?? 0) > 0 || arrival.state?.insertion?.method === 'ship' ||
+       arrival.state?.insertion?.team === 'triad') &&
+      !evaluateClanShipAccess(value as unknown as Pick<SaveGame, 'prologue'>).allowed) return { save: null, failure: 'invalid-save' };
+  if (arrival.state?.insertion?.team === 'triad' && !expeditionTrioReady(expedition.state,
+      arrival.state.ownerCreatedAt, arrival.state.personalShipId)) return { save: null, failure: 'invalid-save' };
   if (arrival.state) {
     const progress = isRecord(value.missionProgress) ? value.missionProgress[arrival.state.missionId] : null;
     if (!isRecord(progress) || progress.status === "locked" || progress.attempts !== arrival.state.encounterRun ||

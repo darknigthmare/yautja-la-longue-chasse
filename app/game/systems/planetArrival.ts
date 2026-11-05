@@ -8,6 +8,7 @@ import { backgroundPathForBiome } from '../worldScreens';
 import { worldBlueprintFor } from './worldBlueprints';
 import { wolfCastleRuntimeAsset } from './wolfCastleRuntimeArt';
 import { ARRIVAL_COMPLETION_ART, arrivalImpactArtForBiome } from './planetArrivalArt';
+import { normalizePlanetInsertionPlan, shipSupportsSurfaceInsertion, type PlanetInsertionPlan } from './planetInsertion';
 
 /** The montage has no gameplay clock, resource cost or reward of its own. */
 export const PLANET_ARRIVAL_VERSION = 1 as const;
@@ -53,6 +54,8 @@ export interface PlanetArrivalState {
   elapsedMs: number;
   status: PlanetArrivalStatus;
   completedBy: PlanetArrivalCompletion | null;
+  /** Missing on V1 archives means the original solo capsule sequence. */
+  insertion?: PlanetInsertionPlan;
 }
 
 export interface PlanetArrivalInput {
@@ -62,6 +65,7 @@ export interface PlanetArrivalInput {
   encounterRun: number;
   personalShipId: ShipId;
   hunterPresetId: HunterPresetId;
+  insertion?: PlanetInsertionPlan;
 }
 
 export interface PlanetArrivalInspection {
@@ -102,10 +106,12 @@ export function planetArrivalDestination(missionId: MissionId) {
 
 export function createPlanetArrival(input: PlanetArrivalInput): PlanetArrivalState {
   const destination = planetArrivalDestination(input.missionId);
+  const insertion = normalizePlanetInsertionPlan(input.insertion);
   if (!destination || !identity(input.ownerCreatedAt) || !identity(input.runId) ||
       !Number.isInteger(input.encounterRun) || input.encounterRun < 0 || input.encounterRun > 1_000_000_000 ||
       !isShipId(input.personalShipId) || !identity(input.hunterPresetId) ||
-      (input.hunterPresetId !== 'custom' && !Object.hasOwn(HUNTER_PRESET_BY_ID, input.hunterPresetId))) {
+      (input.hunterPresetId !== 'custom' && !Object.hasOwn(HUNTER_PRESET_BY_ID, input.hunterPresetId)) ||
+      !insertion || (insertion.method === 'ship' && !shipSupportsSurfaceInsertion(input.personalShipId))) {
     throw new TypeError('Identité, mission, coque ou apparence d’arrivée invalide.');
   }
   return {
@@ -124,6 +130,7 @@ export function createPlanetArrival(input: PlanetArrivalInput): PlanetArrivalSta
     elapsedMs: 0,
     status: 'prepared',
     completedBy: null,
+    ...(input.insertion === undefined ? {} : { insertion }),
   };
 }
 
@@ -134,7 +141,7 @@ export function inspectPlanetArrival(value: unknown, expectedOwnerCreatedAt?: st
   if (typeof value.version === 'number' && value.version > PLANET_ARRIVAL_VERSION) {
     return { status: 'future-version', state: null, reason: 'version' };
   }
-  if (value.version !== PLANET_ARRIVAL_VERSION || Object.keys(value).length !== KEYS.length ||
+  if (value.version !== PLANET_ARRIVAL_VERSION || Object.keys(value).length !== KEYS.length + (Object.hasOwn(value, 'insertion') ? 1 : 0) ||
       !KEYS.every(key => Object.hasOwn(value, key))) return invalid('structure');
   if (!identity(value.ownerCreatedAt) || !identity(value.runId)) return invalid('identity');
   if (expectedOwnerCreatedAt !== undefined && value.ownerCreatedAt !== expectedOwnerCreatedAt) return invalid('owner');

@@ -1,0 +1,42 @@
+{
+  "baseCommit": "44ac0d0bb",
+  "scope": "Repairs of two pre-existing test harness failures; no gameplay or world changes",
+  "changedFiles": [
+    "tests/guardian-adaptation.test.mjs",
+    "tests/hunt-systems.test.mjs"
+  ],
+  "before": {
+    "guardianProof": "guardian-baseline.log",
+    "guardianFailure": "ReferenceError: restoreCorpseDiscoveryV112 is not defined",
+    "worldProof": "world-routes-baseline.json",
+    "worldFailure": "The test expected three routes; all eight unchanged worlds already register four valid routes"
+  },
+  "repairs": {
+    "guardian": "The save probe bundles makeGameState, captureCheckpoint and restoreCheckpoint with their real production dependencies. It starts from the real factory, removes legacy optional fields and still verifies both retry/resume stale-lock removal, input immutability and preservation of a living boss field.",
+    "worlds": "The test explicitly requires four routes with distinct identities and the authored canopy-transfer route. Existing geometry validation, physical feature completeness, safe extraction lane, hazard overlap and surface coverage constraints remain."
+  },
+  "after": {
+    "testCommand": "node --experimental-strip-types --test --test-concurrency=1 tests/guardian-adaptation.test.mjs tests/hunt-systems.test.mjs",
+    "testExitCode": 0,
+    "tests": 30,
+    "passed": 30,
+    "failed": 0,
+    "guardianTests": 12,
+    "huntSystemsTests": 18,
+    "lintCommand": "npx eslint tests/guardian-adaptation.test.mjs tests/hunt-systems.test.mjs",
+    "lintExitCode": 0,
+    "diffCheckCommand": "git diff --check",
+    "diffCheckExitCode": 0
+  },
+  "noSharedBuildOrTypecheck": true,
+  "additionalFixtureCorrection": {
+    "file": "tests/hunt-insertion.test.mjs",
+    "change": "Replaced invalid wolf-raider fixture ID with the actual catalogue ID wolf-ship; no runtime change",
+    "testCommand": "node --experimental-strip-types --test --test-concurrency=1 tests/hunt-insertion.test.mjs",
+    "passed": 25,
+    "failed": 0,
+    "testExitCode": 0,
+    "lintAndDiffCheckExitCode": 0
+  },
+  "filesFrozen": true
+}

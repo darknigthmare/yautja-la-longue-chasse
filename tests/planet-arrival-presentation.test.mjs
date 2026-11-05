@@ -201,3 +201,121 @@ test('every impact fragment settles at its reported sound event and remains on t
   assert.equal(arrivalEffectsFrame(ARRIVAL_CONTACT_MS + 130, true).impactLight, 0);
   assert.equal(arrivalEffectsFrame(ARRIVAL_CONTACT_MS + 130, true).shockOpacity, 0);
 });
+
+test('the three named hunters have staggered physical exits and reach their exact gameplay formation before handoff', () => {
+  const { arrivalFormationSlots } = qa.load('app/game/systems/planetArrivalPresentation.ts');
+  const slots = arrivalFormationSlots('triad');
+  assert.deepEqual(slots.map(({ id, offsetX, delayMs }) => ({ id, offsetX, delayMs })), [
+    { id: 'player', offsetX: 0, delayMs: 0 }, { id: 'karhek', offsetX: 160, delayMs: 250 },
+    { id: 'saketh', offsetX: 320, delayMs: 500 },
+  ]);
+  assert.equal(arrivalFormationSlots('solo').length, 1);
+  for (const mission of MISSIONS) for (const slot of slots) {
+    const base = geometryFor(mission.id);
+    const geometry = { ...base, threshold: { x: base.threshold.x + slot.offsetX, y: base.threshold.y },
+      clearanceX: base.clearanceX + slot.offsetX, destinationX: base.destinationX + slot.offsetX };
+    for (const reduced of [false, true]) {
+      const end = arrivalHunterEgress(62_000 - slot.delayMs, geometry, reduced);
+      near(end.x, geometry.destinationX); near(end.y, geometry.floorY);
+      assert.equal(end.stage, 'standing'); assert.equal(end.speed, 0);
+    }
+    const receivedAt = ARRIVAL_HUNTER_GROUND_CONTACT_MS + slot.delayMs;
+    assert.equal(arrivalHunterEgress(receivedAt - slot.delayMs - 1, geometry).contact, 'airborne');
+    assert.equal(arrivalHunterEgress(receivedAt - slot.delayMs, geometry).contact, 'ground');
+    assert.ok(ARRIVAL_HUNTER_MOVE_END_MS + slot.delayMs < 62_000);
+  }
+});
+
+test('every ship exit supports left and right disembarkation without passing below the floor or reversing its path', () => {
+  const { SHIP_IDS } = qa.load('app/game/shipCatalogue.ts');
+  const { carrierArtForShip } = qa.load('app/game/systems/planetArrivalArt.ts');
+  const { shipSupportsSurfaceInsertion } = qa.load('app/game/systems/planetInsertion.ts');
+  const { arrivalSurfaceShipGeometry } = qa.load('app/game/systems/planetArrivalSpatial.ts');
+  const { arrivalFormationSlots } = qa.load('app/game/systems/planetArrivalPresentation.ts');
+  for (const id of SHIP_IDS.filter(shipSupportsSurfaceInsertion)) for (const slot of arrivalFormationSlots('triad')) {
+    const landing = planetArrivalLanding({ missionId: 'jungle-vey' });
+    const art = carrierArtForShip(id), facing = art.nose.x < art.tail.x ? -1 : 1;
+    const ship = arrivalSurfaceShipGeometry(art, facing, landing.floorY);
+    const destinationX = landing.spawnX + landing.hunterWidth / 2 + slot.offsetX;
+    const direction = destinationX >= ship.exit.x ? 1 : -1;
+    const geometry = { threshold: ship.exit, floorY: landing.floorY, destinationX,
+      clearanceX: ship.exit.x + direction * Math.min(60, Math.abs(destinationX - ship.exit.x) * .4) };
+    let previous = arrivalHunterEgress(ARRIVAL_HUNTER_MOVE_START_MS, geometry);
+    for (let time = ARRIVAL_HUNTER_MOVE_START_MS + 10; time <= ARRIVAL_HUNTER_MOVE_END_MS; time += 10) {
+      const pose = arrivalHunterEgress(time, geometry);
+      assert.ok((pose.x - previous.x) * direction >= -1e-7, `${id}/${slot.id}: reverses at ${time}`);
+      assert.ok(pose.y <= geometry.floorY + 1e-7 && pose.y >= ship.exit.y - 1e-7);
+      assert.equal(pose.facing, direction);
+      if (Math.abs(geometry.floorY - ship.exit.y) < 1e-7 && time < ARRIVAL_HUNTER_GROUND_CONTACT_MS) {
+        assert.equal(pose.contact, 'threshold'); assert.equal(pose.pose, 'run');
+        near(pose.y, geometry.floorY);
+      }
+      previous = pose;
+    }
+    near(previous.x, destinationX); near(previous.y, geometry.floorY);
+  }
+});
+
+test('the real ship renderer keeps its selected hull and omits all capsule mechanisms in every flight and surface shot', () => {
+  const arrival = qa.load('app/game/systems/planetArrival.ts');
+  const { appearanceForPreset } = qa.load('app/game/hunterLore.ts');
+  const { shipProfileAssetPath } = qa.load('app/game/shipCatalogue.ts');
+  for (const team of ['solo', 'triad']) for (const elapsedMs of [24_000, 36_000, 45_000, 54_200, 60_000, 61_900]) {
+    const fresh = arrival.createPlanetArrival({ ownerCreatedAt: '2026-11-05T12:00:00.000Z', runId: `ship:${team}`,
+      missionId: 'jungle-vey', encounterRun: 1, personalShipId: 'wolf-ship', hunterPresetId: 'wolf',
+      insertion: { version: 1, method: 'ship', team } });
+    const state = arrival.requestPlanetArrivalHandoff({ ...arrival.startPlanetArrival(fresh), elapsedMs }, 'skipped');
+    const before = JSON.stringify(state);
+    const html = qa.render('app/game/PlanetArrivalCinematic.tsx', { state, appearance: appearanceForPreset('wolf'),
+      loadout: { armorId: 'hunter', weaponIds: ['wristblades'], gearIds: [] },
+      onCheckpoint: () => true, onHandoff: () => true, onExit: () => {} });
+    assert.match(html, new RegExp(`data-arrival-method="ship" data-arrival-team="${team}"`));
+    assert.ok(html.includes(`data-arrival-light-source="${shipProfileAssetPath('wolf-ship')}"`));
+    assert.doesNotMatch(html, /data-arrival-(flight-pod|ground-pod|vfx-source|impact-material|impact-ring|vent|debris|hatch-face)=/);
+    assert.equal((html.match(/data-arrival-hunter="/g) ?? []).length, team === 'triad' ? 3 : 1);
+    if (elapsedMs >= 49_000) {
+      assert.match(html, /data-arrival-ground-ship="wolf-ship" data-arrival-ship-contact="true"/);
+      assert.match(html, /data-arrival-anchor="ship-ground-contact"/);
+      assert.match(html, /data-arrival-anchor="ship-ground-exit"/);
+    }
+    if (team === 'triad') {
+      assert.match(html, /data-arrival-member-name="Ka’rhek"/); assert.match(html, /data-arrival-member-name="Sa’keth"/);
+      assert.doesNotMatch(html, /data-arrival-member-name="(?:Saar|Vek)"/);
+    }
+    assert.equal(JSON.stringify(state), before, 'rendering must not modify the saved run');
+  }
+});
+
+test('pod trio renders distinct launches, ground anchors and authored modular companion rigs', () => {
+  const arrival = qa.load('app/game/systems/planetArrival.ts');
+  const { appearanceForPreset } = qa.load('app/game/hunterLore.ts');
+  const fresh = arrival.createPlanetArrival({ ownerCreatedAt: '2026-11-05T12:00:00.000Z', runId: 'pod-triad',
+    missionId: 'jungle-vey', encounterRun: 1, personalShipId: 'wolf-ship', hunterPresetId: 'wolf',
+    insertion: { version: 1, method: 'pod', team: 'triad' } });
+  const render = (elapsedMs, reducedMotion = false) => qa.render('app/game/PlanetArrivalCinematic.tsx', {
+    state: arrival.requestPlanetArrivalHandoff({ ...arrival.startPlanetArrival(fresh), elapsedMs }, 'skipped'),
+    appearance: appearanceForPreset('wolf'), loadout: { armorId: 'hunter', weaponIds: ['wristblades'], gearIds: [] },
+    reducedMotion, onCheckpoint: () => true, onHandoff: () => true, onExit: () => {} });
+  for (const [time, count] of [[23_000, 1], [23_250, 2], [23_500, 3], [45_000, 3]]) {
+    assert.equal((render(time).match(/data-arrival-flight-pod="true"/g) ?? []).length, count);
+  }
+  const html = render(61_900);
+  assert.equal((html.match(/data-arrival-ground-pod="true"/g) ?? []).length, 3);
+  for (const id of ['player', 'karhek', 'saketh']) {
+    const prefix = id === 'player' ? '' : id + '-';
+    for (const anchor of ['pod-ground', 'hunter-feet', 'hunter-support', 'capsule-threshold']) {
+      assert.equal((html.match(new RegExp(`data-arrival-anchor="${prefix}${anchor}"`, 'g')) ?? []).length, 1);
+    }
+  }
+  assert.equal((html.match(/data-hunter-rig=""/g) ?? []).length, 3);
+  assert.equal((html.match(/data-preset="custom"/g) ?? []).length, 2);
+  const { EXPEDITION_MEMBER_SIZE } = qa.load('app/game/systems/planetInsertion.ts');
+  for (const id of ['karhek', 'saketh']) {
+    const tag = html.match(new RegExp(`<div class="hunter"[^>]*data-arrival-member="${id}"[^>]*>`))?.[0];
+    assert.ok(tag, id);
+    near(Number(tag.match(/width:([\d.]+)px/)?.[1]), EXPEDITION_MEMBER_SIZE.height * 256 / 384);
+  }
+  const reduced = render(61_900, true);
+  assert.equal((reduced.match(/data-arrival-hunter-stage="standing"/g) ?? []).length, 3);
+  assert.equal((reduced.match(/data-arrival-hunter-contact="ground"/g) ?? []).length, 3);
+});

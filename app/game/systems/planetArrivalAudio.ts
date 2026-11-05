@@ -2,11 +2,13 @@ import {
   PLANET_ARRIVAL_DURATION_MS, PLANET_ARRIVAL_SHOTS,
   planetArrivalShotAt, type PlanetArrivalState, type PlanetArrivalShotId,
 } from './planetArrival';
-import { arrivalImpactArtForBiome } from './planetArrivalArt';
+import { arrivalImpactArtForBiome, carrierArtForShip } from './planetArrivalArt';
 import {
   ARRIVAL_CONTACT_MS, ARRIVAL_HUNTER_CYCLE_MS, ARRIVAL_HUNTER_GROUND_CONTACT_MS, ARRIVAL_HUNTER_MOVE_END_MS,
-  ARRIVAL_VENT_START_MS, ARRIVAL_VENT_DURATION_MS, arrivalImpactDebris,
+  ARRIVAL_HUNTER_LEVEL_THRESHOLD_STEP_MS, ARRIVAL_VENT_START_MS, ARRIVAL_VENT_DURATION_MS,
+  arrivalFormationSlots, arrivalImpactDebris,
 } from './planetArrivalPresentation';
+import { DEFAULT_PLAN, normalizePlanetInsertionPlan, type PlanetInsertionPlan } from './planetInsertion';
 import type { BiomeId } from '../types';
 import type { SceneAudioPort, SceneAudioSound } from './sceneAudio';
 
@@ -65,6 +67,35 @@ export const PLANET_ARRIVAL_SOUND_CUES: readonly PlanetArrivalSoundCue[] = [
   } },
 ];
 
+/** Controlled ship operations have no capsule ejection, impact burst or hatch hiss. */
+export const PLANET_ARRIVAL_SHIP_SOUND_CUES: readonly PlanetArrivalSoundCue[] = [
+  ...PLANET_ARRIVAL_SOUND_CUES.filter(cue => cue.id === 'destination' || cue.id === 'carrier'),
+  { id: 'ship-deorbit', atMs: at('release'), sound: {
+    tones: [{ frequency: 64, endFrequency: 98, duration: 1.4, gain: .055, type: 'triangle', filterFrequency: 360 }],
+    noises: [{ duration: 1.1, gain: .032, filterType: 'lowpass', filterFrequency: 420, endFilterFrequency: 610 }],
+  } },
+  { id: 'ship-descent', atMs: at('descent'), sound: {
+    tones: [{ frequency: 86, endFrequency: 62, duration: 1.2, gain: .04, type: 'triangle', filterFrequency: 280 }],
+  } },
+  { id: 'ship-atmosphere', atMs: at('atmosphere'), sound: {
+    tones: [{ frequency: 72, endFrequency: 54, duration: 1.1, gain: .035, type: 'triangle', filterFrequency: 250 }],
+    noises: [{ duration: 1.4, gain: .045, filterType: 'lowpass', filterFrequency: 1_200, endFilterFrequency: 680 }],
+  } },
+  { id: 'ship-braking', atMs: at('landing'), sound: {
+    tones: [{ frequency: 98, endFrequency: 36, duration: 3.8, gain: .035, type: 'triangle', filterFrequency: 260 }],
+    noises: [{ duration: 2.4, gain: .025, filterType: 'lowpass', filterFrequency: 550, endFilterFrequency: 170 }],
+  } },
+  { id: 'ship-setdown', atMs: ARRIVAL_CONTACT_MS, sound: {
+    tones: [{ frequency: 49, endFrequency: 31, duration: .2, gain: .065 }],
+    noises: [{ duration: .24, gain: .035, filterType: 'lowpass', filterFrequency: 280, endFilterFrequency: 90 }],
+  } },
+  { id: 'ship-disembark', atMs: at('egress'), sound: {
+    // A quiet readiness signal, not an invented animated hatch or pressure mechanism.
+    tones: [{ frequency: 440, endFrequency: 390, duration: .12, gain: .018 },
+      { frequency: 330, duration: .12, delay: .15, gain: .014 }],
+  } },
+];
+
 type ArrivalSurfaceMaterial = 'dry' | 'ice' | 'wet';
 
 /** Keep the capsule's low hull impact; change only the contacted surface layer. */
@@ -119,27 +150,45 @@ function surfaceDebris(material: ArrivalSurfaceMaterial, size: number): SceneAud
  * Every contact is an immediate cue on the saved timeline, never a wall-clock
  * timeout or a whole delayed cluster scheduled at the capsule impact.
  */
-export function planetArrivalSoundCues(state: Pick<PlanetArrivalState, 'biomeId' | 'seed'>): readonly PlanetArrivalSoundCue[] {
+export function planetArrivalSoundCues(state: Pick<PlanetArrivalState, 'biomeId' | 'seed' | 'insertion'> &
+  Partial<Pick<PlanetArrivalState, 'personalShipId'>>): readonly PlanetArrivalSoundCue[] {
   const renderedMaterial = arrivalImpactArtForBiome(state.biomeId).material;
   const material: ArrivalSurfaceMaterial = renderedMaterial === 'ice' || renderedMaterial === 'wet' ? renderedMaterial : 'dry';
-  const cues: PlanetArrivalSoundCue[] = PLANET_ARRIVAL_SOUND_CUES.map(cue => cue.id === 'impact'
-    ? { ...cue, sound: surfaceImpact(cue.sound, material) } : cue);
-  for (const piece of arrivalImpactDebris(0, state.seed)) cues.push({
-    id: `debris-${piece.id}`, atMs: ARRIVAL_CONTACT_MS + piece.settleAgeMs,
-    sound: surfaceDebris(material, piece.size), motionOnly: true,
-  });
+  const plan = normalizePlanetInsertionPlan(state.insertion) ?? DEFAULT_PLAN;
+  const ship = plan.method === 'ship';
+  const hull = ship && state.personalShipId ? carrierArtForShip(state.personalShipId) : null;
+  const levelThreshold = !!hull && Math.abs(hull.groundContact.y - hull.groundExit.y) <= 1e-7;
+  const cues: PlanetArrivalSoundCue[] = [];
   const halfCycleMs = ARRIVAL_HUNTER_CYCLE_MS / 2;
-  for (let index = 0, atMs = ARRIVAL_HUNTER_GROUND_CONTACT_MS; atMs < ARRIVAL_HUNTER_MOVE_END_MS; index += 1, atMs += halfCycleMs) {
-    cues.push({
-      id: index === 0 ? 'hunter-touchdown' : `footstep-${index}`, atMs,
-      sound: surfaceFootstep(material, index), motionOnly: true,
+  for (const slot of arrivalFormationSlots(plan.team)) {
+    const add = (cue: PlanetArrivalSoundCue) => cues.push({
+      ...cue, id: slot.index ? `${slot.id}:${cue.id}` : cue.id, atMs: cue.atMs + slot.delayMs,
+      // Separate restrained levels keep the three simultaneous bodies audible
+      // without tripling the player's mix or merging their contact identities.
+      sound: slot.index ? {
+        tones: cue.sound.tones?.map(tone => ({ ...tone, gain: (tone.gain ?? .08) * (slot.index === 1 ? .66 : .58) })),
+        noises: cue.sound.noises?.map(noise => ({ ...noise, gain: (noise.gain ?? .08) * (slot.index === 1 ? .66 : .58) })),
+      } : cue.sound,
     });
+    if (!slot.index) cues.push(...(ship ? PLANET_ARRIVAL_SHIP_SOUND_CUES : PLANET_ARRIVAL_SOUND_CUES)
+      .map(cue => cue.id === 'impact' ? { ...cue, sound: surfaceImpact(cue.sound, material) } : cue));
+    else if (!ship) for (const cue of PLANET_ARRIVAL_SOUND_CUES.filter(cue => ['release', 'impact', 'hatch', 'vent'].includes(cue.id))) {
+      add(cue.id === 'impact' ? { ...cue, sound: surfaceImpact(cue.sound, material) } : cue);
+    }
+    if (!ship) for (const piece of arrivalImpactDebris(0, state.seed + slot.index)) add({
+      id: `debris-${piece.id}`, atMs: ARRIVAL_CONTACT_MS + piece.settleAgeMs,
+      sound: surfaceDebris(material, piece.size), motionOnly: true,
+    });
+    if (levelThreshold) add({ id: 'hunter-threshold-step', atMs: ARRIVAL_HUNTER_LEVEL_THRESHOLD_STEP_MS,
+      sound: surfaceFootstep(material, 1), motionOnly: true });
+    for (let index = 0, atMs = ARRIVAL_HUNTER_GROUND_CONTACT_MS; atMs < ARRIVAL_HUNTER_MOVE_END_MS; index += 1, atMs += halfCycleMs) add({
+      id: index === 0 ? levelThreshold ? 'hunter-step-out' : 'hunter-touchdown' : `footstep-${index}`, atMs,
+      sound: surfaceFootstep(material, levelThreshold && index === 0 ? 2 : index), motionOnly: true,
+    });
+    // The shortened final half-stride closes on a planted foot as the rig stops.
+    add({ id: 'hunter-settle', atMs: ARRIVAL_HUNTER_MOVE_END_MS,
+      sound: surfaceFootstep(material, 0, true), motionOnly: true });
   }
-  // The shortened final half-stride closes on a planted foot as the rig stops.
-  cues.push({
-    id: 'hunter-settle', atMs: ARRIVAL_HUNTER_MOVE_END_MS,
-    sound: surfaceFootstep(material, 0, true), motionOnly: true,
-  });
   return cues.sort((left, right) => left.atMs - right.atMs);
 }
 
@@ -157,7 +206,24 @@ const SURFACE_FREQUENCIES: Readonly<Record<BiomeId, number>> = {
   ocean: 460, fungal: 730, ruins: 960,
 };
 
-export function planetArrivalAmbience(shot: PlanetArrivalShotId, biome: BiomeId): { key: string; sound: SceneAudioSound } {
+export function planetArrivalAmbience(shot: PlanetArrivalShotId, biome: BiomeId,
+  method: PlanetInsertionPlan['method'] = 'pod', elapsedMs = 0): { key: string; sound: SceneAudioSound } {
+  if (method === 'ship') {
+    if (shot === 'release' || shot === 'descent' || shot === 'atmosphere') return {
+      key: `ship:${shot}`, sound: {
+        tones: [{ frequency: shot === 'atmosphere' ? 62 : 50, type: 'triangle', filterFrequency: 280, gain: .048 }],
+        noises: [{ filterType: 'lowpass', filterFrequency: shot === 'atmosphere' ? 950 : 320, gain: shot === 'atmosphere' ? .055 : .025 }],
+      },
+    };
+    if (shot === 'landing' && elapsedMs < ARRIVAL_CONTACT_MS) {
+      const progress = Math.max(0, Math.min(1, (elapsedMs - at('landing')) / (ARRIVAL_CONTACT_MS - at('landing'))));
+      const braking = Math.min(3, Math.floor(progress * 4));
+      return { key: `ship:braking:${braking}`, sound: {
+        tones: [{ frequency: [72, 56, 42, 31][braking], type: 'triangle', filterFrequency: 250, gain: [.055, .04, .026, .012][braking] }],
+        noises: [{ filterType: 'lowpass', filterFrequency: 360, gain: [.033, .025, .017, .008][braking] }],
+      } };
+    }
+  }
   if (shot === 'orbit' || shot === 'title') return { key: 'orbit', sound: ORBIT };
   if (shot === 'carrier' || shot === 'release') return { key: 'carrier', sound: CARRIER };
   if (shot === 'descent') return { key: 'descent', sound: DESCENT };
@@ -201,12 +267,13 @@ export class PlanetArrivalAudio {
       return;
     }
     this.active = true;
-    const cueIdentity = `${state.biomeId}:${state.seed}`;
+    const plan = normalizePlanetInsertionPlan(state.insertion) ?? DEFAULT_PLAN;
+    const cueIdentity = `${state.biomeId}:${state.seed}:${plan.method}:${plan.team}:${state.personalShipId}`;
     if (this.cueIdentity !== cueIdentity) {
       this.cueIdentity = cueIdentity;
       this.cues = planetArrivalSoundCues(state);
     }
-    const ambience = planetArrivalAmbience(planetArrivalShotAt(elapsedMs).id, state.biomeId);
+    const ambience = planetArrivalAmbience(planetArrivalShotAt(elapsedMs).id, state.biomeId, plan.method, elapsedMs);
     this.voice.loop(ambience.key, ambience.sound);
     for (const cue of this.cues) {
       // A seek must not squeeze several missed footsteps/debris contacts into one frame.

@@ -1,5 +1,6 @@
 import type { BiomeId } from '../types';
 import { PLANET_ARRIVAL_CONTACT_PROGRESS, PLANET_ARRIVAL_SHOTS, type PlanetArrivalShotId } from './planetArrival';
+import { TRIO_INSERTION_OFFSETS, TRIO_MEMBERS, type PlanetInsertionPlan } from './planetInsertion';
 
 /** Presentation values are driven by the saved cinematic clock, never wall time. */
 export const ARRIVAL_CONTACT_MS = PLANET_ARRIVAL_SHOTS[6].startMs +
@@ -10,7 +11,27 @@ export const ARRIVAL_HUNTER_CYCLE_MS = 800;
 export const ARRIVAL_HUNTER_MOVE_START_MS = PLANET_ARRIVAL_SHOTS[7].startMs + 1_500;
 export const ARRIVAL_HUNTER_THRESHOLD_LEAVE_MS = ARRIVAL_HUNTER_MOVE_START_MS + 300;
 export const ARRIVAL_HUNTER_GROUND_CONTACT_MS = ARRIVAL_HUNTER_THRESHOLD_LEAVE_MS + 500;
+export const ARRIVAL_HUNTER_LEVEL_THRESHOLD_STEP_MS = ARRIVAL_HUNTER_MOVE_START_MS + ARRIVAL_HUNTER_CYCLE_MS / 2;
 export const ARRIVAL_HUNTER_MOVE_END_MS = PLANET_ARRIVAL_SHOTS[7].startMs + 4_250;
+export const ARRIVAL_TRIAD_SPACING = 160;
+export const ARRIVAL_TRIAD_DELAY_MS = 250;
+
+export const ARRIVAL_FORMATION_SLOTS = Object.freeze([
+  { id: 'player', name: 'Chasseur', index: 0, offsetX: 0, delayMs: 0, color: null },
+  ...TRIO_MEMBERS.map((member, index) => ({ id: member.id, name: member.name, index: index + 1,
+    offsetX: TRIO_INSERTION_OFFSETS[member.id], delayMs: ARRIVAL_TRIAD_DELAY_MS * (index + 1), color: member.color })),
+]);
+
+/** The same formation survives a skipped montage and is handed to HuntCanvas. */
+export function arrivalFormationSlots(team: PlanetInsertionPlan['team']) {
+  return team === 'triad' ? ARRIVAL_FORMATION_SLOTS : ARRIVAL_FORMATION_SLOTS.slice(0, 1);
+}
+
+export function arrivalShotLabel(shot: PlanetArrivalShotId, fallback: string, method: PlanetInsertionPlan['method']) {
+  if (method !== 'ship') return fallback;
+  return ({ release: 'Désorbitation du vaisseau', descent: 'Approche de la zone de pose',
+    atmosphere: 'Descente atmosphérique contrôlée', landing: 'Posé du vaisseau', egress: 'Débarquement de la chasse' } as Partial<Record<PlanetArrivalShotId, string>>)[shot] ?? fallback;
+}
 
 const clamp = (n: number, low = 0, high = 1) => Math.max(low, Math.min(high, Number.isFinite(n) ? n : low));
 const smooth = (n: number) => { const p = clamp(n); return p * p * (3 - 2 * p); };
@@ -68,7 +89,7 @@ export function arrivalHunterMotion(elapsedMs: number, reducedMotion = false) {
 export interface ArrivalHunterEgressGeometry {
   threshold: { x: number; y: number };
   floorY: number;
-  /** The first planted foot is beyond the capsule's front/right rim. */
+  /** The first planted foot is beyond the egress threshold, toward the destination. */
   clearanceX: number;
   destinationX: number;
 }
@@ -76,7 +97,11 @@ export interface ArrivalHunterEgressGeometry {
 /** World-space support of the feet; the shared ground camera projects it once. */
 export function arrivalHunterEgress(elapsedMs: number, geometry: ArrivalHunterEgressGeometry, reducedMotion = false) {
   const motion = arrivalHunterMotion(elapsedMs, reducedMotion);
-  const clearanceX = Math.min(geometry.destinationX, Math.max(geometry.threshold.x, geometry.clearanceX));
+  const facing: 1 | -1 = geometry.destinationX >= geometry.threshold.x ? 1 : -1;
+  const clearanceX = geometry.threshold.x + facing * Math.min(
+    Math.abs(geometry.destinationX - geometry.threshold.x),
+    Math.max(0, (geometry.clearanceX - geometry.threshold.x) * facing),
+  );
   const walkDistance = geometry.destinationX - clearanceX;
   const walkSeconds = ARRIVAL_HUNTER_CYCLE_MS * 2.5 / 1_000;
   const walkSpeed = walkDistance / walkSeconds;
@@ -85,12 +110,21 @@ export function arrivalHunterEgress(elapsedMs: number, geometry: ArrivalHunterEg
   // Cubic Hermite, initially at rest and matching the subsequent walk velocity.
   const crossingX = geometry.threshold.x + (clearanceX - geometry.threshold.x) * (3 * p * p - 2 * p * p * p) +
     walkSpeed * crossingSeconds * (p * p * p - p * p);
+  // Some inspected under-hull exits are already on the floor. Walk across that
+  // level threshold instead of inventing a jump with no vertical displacement.
+  const levelCrossing = !reducedMotion && geometry.floorY - geometry.threshold.y <= 1e-7 &&
+    motion.opacity > 0 && motion.contact !== 'ground';
+  const crossingSpeed = ((clearanceX - geometry.threshold.x) * (6 * p - 6 * p * p) +
+    walkSpeed * crossingSeconds * (3 * p * p - 2 * p)) / crossingSeconds;
   return {
     ...motion,
+    ...(levelCrossing ? { contact: 'threshold', stage: 'cabin', pose: 'run' as const, walking: true,
+      phase: clamp((elapsedMs - ARRIVAL_HUNTER_MOVE_START_MS) / ARRIVAL_HUNTER_CYCLE_MS) } : {}),
+    facing,
     x: reducedMotion ? geometry.destinationX : motion.contact === 'ground'
       ? mix(clearanceX, geometry.destinationX, motion.walkProgress) : crossingX,
     y: reducedMotion ? geometry.floorY : mix(geometry.threshold.y, geometry.floorY, motion.dropProgress),
-    speed: Math.abs(walkSpeed) * motion.speedFactor,
+    speed: levelCrossing ? Math.abs(crossingSpeed) : Math.abs(walkSpeed) * motion.speedFactor,
     verticalVelocity: motion.pose === 'fall'
       ? 2 * Math.max(0, geometry.floorY - geometry.threshold.y) * motion.verticalProgress /
         ((ARRIVAL_HUNTER_GROUND_CONTACT_MS - ARRIVAL_HUNTER_THRESHOLD_LEAVE_MS) / 1_000) : 0,

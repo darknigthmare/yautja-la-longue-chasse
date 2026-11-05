@@ -1,0 +1,28 @@
+.panel { margin: 22px 0; padding: 22px; border: 1px solid #4a6553; border-radius: 8px; color: #dfebd9; background: linear-gradient(125deg, #1c3024dc, #091410ee); }
+.panel * { box-sizing: border-box; }
+.panel header > span { color: #b8c99b; font-size: 11px; letter-spacing: .12em; text-transform: uppercase; }
+.panel h2 { margin: 8px 0; font-size: 25px; }
+.panel p { margin: 8px 0; color: #b7c9b8; font-size: 13px; line-height: 1.65; }
+.choices { min-width: 0; padding: 0; border: 0; margin: 20px 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+.choices legend { margin-bottom: 10px; color: #d4e0cb; font-size: 14px; }
+.choices label { min-width: 0; display: flex; align-items: flex-start; gap: 12px; padding: 15px 12px; border: 1px solid #415d49; border-radius: 5px; cursor: pointer; background: #102117; }
+.choices label[data-selected='true'] { border-color: #b9cf8e; background: #2c3f25; box-shadow: inset 0 0 0 1px #a5b57a; }
+.choices label:has(input:disabled) { opacity: .55; cursor: default; }
+.choices input { accent-color: #c6db9f; margin-top: 4px; width: 18px; height: 18px; flex: 0 0 auto; }
+.choices strong, .choices small { display: block; }
+.choices strong { font-size: 14px; margin-bottom: 6px; }
+.choices small { color: #b2c3ab; font-size: 12px; line-height: 1.6; }
+.choices input:focus-visible { outline: 3px solid #e5efbc; outline-offset: 5px; }
+.pressure { padding: 15px 17px; border-left: 3px solid #b99c5b; background: #3a34225e; }
+.pressure > strong { color: #e4d6aa; font-size: 14px; }
+.notice { color: #e6c98d !important; padding: 10px 0; }
+.recommendation { color: #d0dcaf !important; }
+.roster { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin-top: 18px; }
+.roster article { min-width: 0; padding: 16px; border: 1px solid #3a5441; background: #0a1912; border-radius: 5px; }
+.roster h3 { margin: 0; font-size: 17px; color: #e1e9d3; }
+.roster h3 small { display: block; color: #9eb492; font-size: 11px; margin-top: 5px; font-weight: 400; }
+.roster button { min-height: 44px; font-size: 12px; line-height: 1.45; white-space: normal; max-width: 100%; }
+.roster > p { grid-column: 1 / -1; }
+.ready { display: block; margin-top: 14px; color: #b6d59d; font-size: 12px; }
+.care { border-top: 1px solid #3d5140; padding-top: 12px; }
+@media (max-width: 650px) { .panel { padding: 15px; } .choices, .roster { grid-template-columns: minmax(0, 1fr); } }

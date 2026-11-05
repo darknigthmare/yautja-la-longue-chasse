@@ -1,0 +1,54 @@
+{
+  "completedAt": "2026-11-05T07:49:27.200250+00:00",
+  "tests": {
+    "passed": 346,
+    "failed": 0,
+    "skipped": 0,
+    "command": "node --experimental-strip-types --test --test-concurrency=1 (18 related suite patterns; see tests.log)"
+  },
+  "eslint": {
+    "status": "PASS",
+    "maxWarnings": 0
+  },
+  "typescript": {
+    "status": "PASS",
+    "finalSourceCheckedBy": "Next production build TypeScript step"
+  },
+  "productionBuild": {
+    "command": "npm run build:production",
+    "exitCode": 0,
+    "localVercelOnlyStages": "native-origin/static-output correctly skipped outside Vercel"
+  },
+  "baseLocalCommit": "44ac0d0bb231029307c439b8074cb6a025ae517d",
+  "baseRemoteCommit": "c1266f07182c355dd670b321d767a3ea6d9140d5",
+  "sourceSha256": {
+    "app/dev/destinations.ts": "585d61047ae63e9c3ec70bbad7f52176f0eadfd4a9b438fdeb38026ef170ee98",
+    "app/dev/session.tsx": "be55d5d4e77fbd4220cc2646e36624c33efd039ec0c84a0ae5e1de280d1cb3e1",
+    "app/game/GameClient.tsx": "767afb6f11197b1faf8b8a65985bf26398a3d283ce8890898e35a791c4f5cee6",
+    "app/game/HuntCanvas.tsx": "839a76cae4b9c73fcd885982b35cd6af6b7f115e249323037795e6304e51fe5f",
+    "app/game/InsertionPlanPanel.module.css": "7c87faa98c8a18ee82082069601892cba92ab668e5697753ad56ffbefd4712b1",
+    "app/game/InsertionPlanPanel.tsx": "c0fe94705bd87dd264ef602ecabd88e7238f5fc69ef365aa60b97d7bc48365a4",
+    "app/game/PlanetArrivalCinematic.module.css": "d1e1e73ef6285f910d539cb54cafba040b5a546d93da70058e0be53cf5094129",
+    "app/game/PlanetArrivalCinematic.tsx": "b35e36ab8728b272bbfe56d7880048c8dfa3fd3ce640ab7a8bc6549d434e9ee1",
+    "app/game/buildInfo.ts": "d32e58f09839864aa8b4a2ecd8a64df2e0d2182b7af6871326a2a2bbec4999a3",
+    "app/game/save.ts": "bc8808d136032449d495314a80fe48d952f695e6a3ffacc48247068fa39afc60",
+    "app/game/systems/huntInsertion.ts": "f283d44d6876a7afd14d4f6cb922b325c0a48aeb79347d8d73aec8f1d0cc38ec",
+    "app/game/systems/planetArrival.ts": "2d0ce19e0b1d11b64af56c0a5058bc30e4b8d5a018fe17e222457f2f055e9fb4",
+    "app/game/systems/planetArrivalArt.ts": "28f50705db61616c632b9ed2ec39298012b893204f1a7bc4ac1fd2d4caea64a4",
+    "app/game/systems/planetArrivalAudio.ts": "f93257cd351910496ca83849128e7df36946fb2a9aa77601560fa8d1b119b443",
+    "app/game/systems/planetArrivalGroundArt.ts": "d0d7f257757c458b8944a8ddd95dc9bea9cc250083899918fc6f5ccaab421e22",
+    "app/game/systems/planetArrivalPresentation.ts": "c0db85998b87ac32fe18ef5ed7bef50034d306677b96f5c80e38d5a11e8d6727",
+    "app/game/systems/planetArrivalRun.ts": "da41776733aecdfc9ac14fd332f6f3f803e83791fad7f9320e4e1c415959249b",
+    "app/game/systems/planetArrivalSpatial.ts": "bce53ce72cff85bdef9d9351066f70d1920a385d131751bf0bf71da430a7c020",
+    "app/game/systems/planetInsertion.ts": "dc30d8679f5f930eeb7e5d2334161595105fcf6cf3dc7362e87cc964f2694222",
+    "app/game/types.ts": "758ea0022692cf91128d24aaa120913ad203070e31f4238d13f919783fbd9d9c"
+  },
+  "browser": {
+    "status": "pending exact committed extension",
+    "priorPodSoloEvidence": "../../planet-arrival-completion-20261105/verification/browser-c1266/receipt.json"
+  },
+  "reviewLimits": [
+    "Local escort navigation is guided; not autonomous pathfinding over every storey combination.",
+    "Source-art sockets are composition references; no claim of canonical landing-gear geometry or human artistic 1:1 approval."
+  ]
+}

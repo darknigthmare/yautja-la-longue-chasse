@@ -19,6 +19,10 @@ const dependencies = await build({
     'export { defaultSave, normalizeSave, reconcileSaveWrite, RANK_THRESHOLDS, SAVE_STORAGE_KEY, writeSaveWithStatus as durableSaveWrite, loadSaveWithStatus } from "./app/game/save.ts";',
     'export { MISSIONS } from "./app/game/data.ts";',
     'export { loadShipProgression } from "./app/game/systems/progression.ts";',
+    'export { isShipId } from "./app/game/shipCatalogue.ts";',
+    'export { assignExpeditionMember, expeditionTrioReady, normalizePlanetInsertionPlan, samePlanetInsertion, settleExpeditionOutcome, shipSupportsSurfaceInsertion } from "./app/game/systems/planetInsertion.ts";',
+    'export { createHuntInsertion, hurtHuntCompanion, beginHuntCompanionBoarding, completeHuntCompanionBoarding, huntInsertionOutcome } from "./app/game/systems/huntInsertion.ts";',
+    'export { worldBlueprintFor } from "./app/game/systems/worldBlueprints.ts";',
     'export { createPlanetArrival, inspectPlanetArrival, requestPlanetArrivalHandoff, completePlanetArrivalHandoff } from "./app/game/systems/planetArrival.ts";',
     'export { inspectPlanetArrivalRun } from "./app/game/systems/planetArrivalRun.ts";',
     'export { createWolfCastleVisit, actWolfCastle, applyWolfCastleCheckpoint } from "./app/game/systems/wolfCastle.ts";',
@@ -26,7 +30,7 @@ const dependencies = await build({
     'export * as castleCombat from "./app/game/systems/wolfCastleCombat.ts";',
     'export { captureHuntGauntletV142, resumeHuntGauntletV142 } from "./app/game/systems/huntGauntletIdentityV142.ts";',
     'export { normalizeHuntAccessibilityV112 } from "./app/game/systems/huntAccessibilityV112.ts";',
-    'export { actClanShipOperations, bindClanShipMission, clanShipContract, createClanShipOperations, inspectClanShipOperations, releaseClanShipMissionBinding, settleClanShipMission, CLAN_SHIP_ONBOARDING_STEPS } from "./app/game/systems/clanShipOperations.ts";',
+    'export { actClanShipOperations, bindClanShipMission, clanShipContract, createClanShipOperations, evaluateClanShipAccess, inspectClanShipOperations, releaseClanShipMissionBinding, settleClanShipMission, CLAN_SHIP_ONBOARDING_STEPS } from "./app/game/systems/clanShipOperations.ts";',
     'export { applyMissionResult as applyRealMissionResult } from "./app/game/save.ts";',
   ].join('\n'), resolveDir: fileURLToPath(new URL('../', import.meta.url)), loader: 'ts' },
   bundle: true, write: false, format: 'iife', globalName: 'ShipFlowDependencies', platform: 'node', logLevel: 'silent',
@@ -76,7 +80,7 @@ function fixture() {
     loadActiveHuntSave() { return { save: observations.currentHunt ?? null, failure: null }; },
     createHuntRunId: () => `run-${++observations.sequence}`,
     playSound() {}, setSave(save) { environment.save = save; }, setSaveFailure(value) { observations.saveFailure = value; },
-    setResumableHunt() {}, setHuntResumePayload() {}, setHuntRuntimeSave() {}, setSelectedMission() {},
+    setResumableHunt() {}, setHuntResumePayload(value) { observations.huntResumePayload = value; }, setHuntRuntimeSave() {}, setSelectedMission() {},
     setPendingHuntResult(value) { observations.pendingResult = value; },
     setLastResult(value) { observations.lastResult = value; }, setLastRewardSummary(value) { observations.lastRewardSummary = value; }, setToast(value) { observations.toast = value; },
     setNewGamePhase() {}, setSelectedShipId() {},
@@ -94,6 +98,7 @@ function fixture() {
   // clone for these JSON DTOs, then reconstruct their prototypes in this realm.
   runInNewContext('globalThis.structuredClone = value => JSON.parse(cloneJsonDto(value));', environment);
   environment.save = environment.defaultSave("2026-08-31T10:00:00.000Z");
+  environment.insertionPlan = environment.normalizePlanetInsertionPlan(undefined);
   environment.save.settings.difficultyId = 'hunter';
   environment.selectedMission = environment.MISSIONS.find(item => item.id === MISSION_ID);
   environment.entry = { ownerCreatedAt: environment.save.createdAt };
@@ -114,6 +119,42 @@ function fixture() {
   // departure and handoff callbacks; no fake active session is injected.
   const launch = () => { depart(); arrive(); };
   return { observations, environment, depart, arrive, launch, finish: callback("completeMission", environment), autosave: callback("persistActiveHunt", environment) };
+}
+
+function insertionFixture(method = 'ship', team = 'triad') {
+  const result = fixture(), { environment } = result;
+  environment.fixtureMethod = method; environment.fixtureTeam = team;
+  runInNewContext(`
+    insertionPlan = { version: 1, method: fixtureMethod, team: fixtureTeam };
+    if (insertionPlan.team === 'triad') {
+      const shipId = loadShipProgression(save).selectedShipId;
+      let roster = assignExpeditionMember(save.expeditionRoster, save.createdAt, shipId, 'karhek');
+      roster = assignExpeditionMember(roster, save.createdAt, shipId, 'saketh');
+      save = { ...save, expeditionRoster: roster };
+      saveRef.current = save;
+    }
+    applyMissionResult = applyRealMissionResult;
+    makeInsertionResult = (outcome = 'success') => {
+      const session = activeHuntSessionRef.current;
+      const world = worldBlueprintFor(selectedMission.id);
+      const insertion = createHuntInsertion(session.configuration.insertion, session.runId, world);
+      hurtHuntCompanion(insertion.companions[0], 30);
+      if (outcome === 'success') {
+        // This transaction fixture positions both bodies at the authored return
+        // point; the actual boarding and outcome functions decide their status.
+        for (const member of insertion.companions) member.x = world.extraction.x - member.width / 2;
+        if (!beginHuntCompanionBoarding(insertion, world)) throw Error('The real extraction must accept these bodies');
+        completeHuntCompanionBoarding(insertion);
+      }
+      return {
+        missionId: selectedMission.id, difficultyId: 'hunter', outcome, score: 80, scans: 3, elapsedSeconds: 180,
+        completedObjectiveIds: selectedMission.objectives.filter(item => item.required || item.kind === 'extract').map(item => item.id),
+        honorEvents: [], trophyQuality: 'elite', kills: 3, secondWindUsed: false,
+        completedAt: '2026-11-05T14:00:00.000Z', insertionOutcome: huntInsertionOutcome(insertion, session.runId),
+      };
+    };
+  `, environment);
+  return result;
 }
 
 function castleCheckpointFixture() {
@@ -444,6 +485,122 @@ test("duplicate terminal callbacks settle once; a deliberate next run can earn i
   launch(); finish({ outcome: "success" });
   assert.equal(observations.rewards, 2);
   assert.equal(environment.save.profile.honor, 10);
+});
+
+test('all four insertion choices freeze the accepted plan and hull through arrival, mounting and the first autosave', () => {
+  for (const method of ['pod', 'ship']) for (const team of ['solo', 'triad']) {
+    const { environment, observations, depart, arrive, autosave } = insertionFixture(method, team);
+    const plan = { version: 1, method, team };
+    depart();
+    assert.equal(observations.screen, 'planet-arrival');
+    const run = environment.save.planetArrivalRun;
+    assert.deepEqual(JSON.parse(JSON.stringify(environment.save.planetArrival.insertion)), plan);
+    assert.deepEqual(JSON.parse(JSON.stringify(run.configuration.insertion)), plan);
+    assert.equal(run.configuration.insertionShipId, 'classic-predator-spaceship');
+    runInNewContext(`insertionPlan.method = insertionPlan.method === 'pod' ? 'ship' : 'pod';
+      insertionPlan.team = insertionPlan.team === 'solo' ? 'triad' : 'solo';`, environment);
+    assert.equal(arrive(), true, 'later briefing changes cannot replace the accepted departure');
+    assert.deepEqual(JSON.parse(JSON.stringify(observations.huntResumePayload.insertionPlan)), plan);
+    assert.equal(observations.huntResumePayload.insertionRunId, run.runId);
+    assert.equal(observations.huntResumePayload.insertionShipId, run.configuration.insertionShipId);
+    autosave({ elapsed: 1, snapshot: { health: 100 }, retryCheckpoint: null });
+    assert.deepEqual(JSON.parse(JSON.stringify(observations.sidecars[0].configuration.insertion)), plan);
+    assert.equal(observations.sidecars[0].configuration.insertionShipId, run.configuration.insertionShipId);
+  }
+});
+
+test('the real departure refuses an absent, incomplete, reassigned or recovering triad before any write', () => {
+  for (const change of [
+    'save.expeditionRoster = null;',
+    'save.expeditionRoster.members.pop();',
+    "save.expeditionRoster = assignExpeditionMember(save.expeditionRoster, save.createdAt, 'wolf-ship', 'saketh');",
+    "save.expeditionRoster.members[0].availability = 'recovering';",
+  ]) {
+    const { environment, observations, depart } = insertionFixture();
+    runInNewContext(change, environment);
+    const before = JSON.stringify(environment.save);
+    depart();
+    assert.equal(observations.writes, 0, change);
+    assert.equal(observations.clears, 0, change);
+    assert.equal(environment.activeHuntSessionRef.current, null);
+    assert.equal(observations.screen, 'deck');
+    assert.match(observations.toast, /aptes et affectés/);
+    assert.equal(JSON.stringify(environment.save), before);
+  }
+});
+
+test('arrival checkpoint and handoff reject a substituted insertion plan without replacing the frozen run', () => {
+  const { environment, observations, depart, arrive } = insertionFixture();
+  depart();
+  const before = environment.save, run = before.planetArrivalRun, writes = observations.writes;
+  runInNewContext(`
+    substitutedArrival = { ...save.planetArrival, insertion: { version: 1, method: 'pod', team: 'solo' } };
+    substitutedHandoff = requestPlanetArrivalHandoff(substitutedArrival, 'skipped');
+  `, environment);
+  assert.equal(callback('checkpointPlanetArrival', environment)(environment.substitutedArrival), false);
+  assert.equal(callback('finishPlanetArrival', environment)(environment.substitutedHandoff), false);
+  assert.equal(environment.save, before);
+  assert.equal(environment.save.planetArrivalRun, run);
+  assert.equal(observations.writes, writes);
+  assert.equal(environment.activeHuntSessionRef.current, null);
+  assert.equal(arrive(), true, 'the original accepted plan remains recoverable');
+});
+
+test('real triad extraction or abandonment settles availability with mission rewards once in the same campaign write', () => {
+  for (const outcome of ['success', 'abandoned']) {
+    const { environment, observations, launch, finish } = insertionFixture();
+    launch();
+    const before = environment.save, runId = environment.activeHuntSessionRef.current.runId;
+    const result = environment.makeInsertionResult(outcome);
+    const ordinary = environment.applyRealMissionResult(before, result);
+    const written = [];
+    const write = environment.writeSaveWithStatus;
+    environment.writeSaveWithStatus = save => { written.push(save); return write(save); };
+    observations.events.length = 0;
+    finish(result);
+    assert.equal(written.length, 1);
+    assert.equal(written[0], environment.save);
+    assert.equal(environment.save.profile.honor, ordinary.profile.honor);
+    assert.equal(environment.save.profile.clanMarks, ordinary.profile.clanMarks);
+    assert.deepEqual(JSON.parse(JSON.stringify(environment.save.expeditionRoster.members.map(member => member.availability))),
+      outcome === 'success' ? ['recovering', 'ready'] : ['missing', 'missing']);
+    assert.deepEqual([...environment.save.expeditionRoster.settledRunIds], [runId]);
+    assert.equal(environment.save.planetArrival, null);
+    assert.equal(environment.save.planetArrivalRun, null);
+    assert.deepEqual(observations.events, ['write', ['clear', runId]]);
+    const accepted = environment.save;
+    finish(result);
+    assert.equal(written.length, 1);
+    assert.equal(environment.save, accepted);
+  }
+});
+
+test('a missing or mismatched triad report retains the live hunt and campaign until a matching actual outcome arrives', () => {
+  const { environment, observations, launch, finish } = insertionFixture();
+  launch();
+  environment.validInsertionResult = environment.makeInsertionResult();
+  const before = environment.save, session = environment.activeHuntSessionRef.current;
+  const writes = observations.writes, clears = observations.clears;
+  for (const change of [
+    'delete candidate.insertionOutcome;',
+    "candidate.insertionOutcome.runId = 'another-run';",
+    "candidate.insertionOutcome.plan.method = 'pod';",
+    'candidate.insertionOutcome.members.pop();',
+    'candidate.insertionOutcome.injured = [];',
+  ]) {
+    const candidate = runInNewContext(`(() => { const candidate = structuredClone(validInsertionResult); ${change} return candidate; })()`, environment);
+    finish(candidate);
+    assert.equal(environment.save, before, change);
+    assert.equal(environment.activeHuntSessionRef.current, session);
+    assert.equal(environment.missionSettlementRef.current, false);
+    assert.equal(observations.pendingResult.result, candidate);
+    assert.equal(observations.writes, writes);
+    assert.equal(observations.clears, clears);
+  }
+  finish(environment.validInsertionResult);
+  assert.equal(observations.pendingResult, null);
+  assert.equal(environment.activeHuntSessionRef.current, null);
+  assert.deepEqual([...environment.save.expeditionRoster.settledRunIds], [session.runId]);
 });
 
 test("a locked destination cannot create or replace an active session", () => {

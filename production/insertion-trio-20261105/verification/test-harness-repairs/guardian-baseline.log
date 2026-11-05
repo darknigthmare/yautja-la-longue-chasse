@@ -1,0 +1,26 @@
+base=44ac0d0bb
+baseCanvasSha256=d0981b72c2ea468f5989d768a2b29671472e7ae6ffb8ed5eb51404f87c7f7631
+baseGuardianTestSha256=a0e53e1e8b6c7252503302aed1adf8d99a8e052a8168731571c441ea39bb0f94
+currentGuardianTestSame=true
+exitCode=1
+✖ restoring an old dead-boss checkpoint releases its stale energy lock (42.831849ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 0
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 52.294196
+
+✖ failing tests:
+
+test at [eval1]:141:1
+✖ restoring an old dead-boss checkpoint releases its stale energy lock (42.831849ms)
+  ReferenceError: restoreCorpseDiscoveryV112 is not defined
+      at restoreCheckpoint (evalmachine.<anonymous>:8:31)
+      at TestContext.<anonymous> (file:///workspace/scratch/b1715bb19272/yautja-cinematics/[eval1]:165:22)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.start (node:internal/test_runner/test:1262:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17)

@@ -1,5 +1,6 @@
 import { shipProfileAssetPath, type ShipId } from '../shipCatalogue';
 import type { BiomeId } from '../types';
+import { ARRIVAL_GROUND_ART } from './planetArrivalGroundArt';
 
 /**
  * Screen-space calibration of the existing, individually authored artwork.
@@ -17,6 +18,9 @@ export interface ArrivalCarrierArt {
   tail: ArrivalArtPoint;
   /** Authored cinematic underside contact; not a newly asserted canon bay. */
   release: ArrivalArtPoint;
+  /** Visible hull support and compositional exit, calibrated for surface-capable hulls. */
+  groundContact: ArrivalArtPoint;
+  groundExit: ArrivalArtPoint;
   review: 'inspected-source-art' | 'unreviewed';
   directionBasis: 'visible-hull' | 'symmetric-screen-convention' | 'authored-view-with-perspective' | 'unreviewed';
 }
@@ -130,6 +134,8 @@ const carrier = (
   nose: normalized(noseX, noseY, width, height),
   tail: normalized(tailX, tailY, width, height),
   release: normalized(releaseX, releaseY, width, height),
+  groundContact: normalized(releaseX, releaseY, width, height),
+  groundExit: normalized(releaseX, releaseY, width, height),
   review: 'inspected-source-art', directionBasis,
 });
 
@@ -196,9 +202,12 @@ const CARRIER_ART_BY_ASSET: Readonly<Record<string, ArrivalCarrierArt>> = Object
 const UNREVIEWED_CARRIER: ArrivalCarrierArt = {
   width: 1536, height: 1024,
   nose: { x: .75, y: .5 }, tail: { x: .25, y: .5 }, release: { x: .5, y: .7 },
+  groundContact: { x: .5, y: .7 }, groundExit: { x: .5, y: .7 },
   review: 'unreviewed', directionBasis: 'unreviewed',
 };
 
 export function carrierArtForShip(shipId: ShipId): ArrivalCarrierArt {
-  return CARRIER_ART_BY_ASSET[shipProfileAssetPath(shipId)] ?? UNREVIEWED_CARRIER;
+  const path = shipProfileAssetPath(shipId);
+  const art = CARRIER_ART_BY_ASSET[path] ?? UNREVIEWED_CARRIER;
+  return ARRIVAL_GROUND_ART[path] ? { ...art, ...ARRIVAL_GROUND_ART[path] } : art;
 }
