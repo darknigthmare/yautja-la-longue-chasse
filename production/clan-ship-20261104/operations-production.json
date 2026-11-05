@@ -17,11 +17,11 @@
       "acceptance": "L’honneur chiffré ne remplace pas le rite Blooded de la chronique.",
       "priority": "P0",
       "implementation": "Code présent",
-      "verification": "À vérifier",
+      "verification": "Vérifié",
       "artReview": "Sans revue",
       "source": "clanShipOperations.ts; clanChronicle.ts",
       "qa": "OPS-Q01",
-      "nextAction": "Exécuter la recette correspondante et lier sa preuve"
+      "nextAction": "Conserver les preuves et rejouer si les sources concernées changent."
     },
     {
       "id": "OPS-F02",
@@ -30,11 +30,11 @@
       "acceptance": "Une sauvegarde sans prologue conserve son accès et peut initialiser le nouveau dossier.",
       "priority": "P0",
       "implementation": "Code présent",
-      "verification": "À vérifier",
+      "verification": "Vérifié",
       "artReview": "Sans revue",
       "source": "clanShipOperations.ts; save.ts",
       "qa": "OPS-Q01; OPS-Q17",
-      "nextAction": "Exécuter la recette correspondante et lier sa preuve"
+      "nextAction": "Conserver les preuves et rejouer si les sources concernées changent."
     },
     {
       "id": "OPS-F03",
@@ -43,11 +43,11 @@
       "acceptance": "Hangar, soins et archives dans l’ordre. Une mauvaise salle ne valide aucune étape.",
       "priority": "P0",
       "implementation": "Code présent",
-      "verification": "À vérifier",
+      "verification": "Vérifié",
       "artReview": "Sans revue",
       "source": "clanShipOperations.ts; ClanShipOperationsPanel.tsx",
       "qa": "OPS-Q02",
-      "nextAction": "Exécuter la recette correspondante et lier sa preuve"
+      "nextAction": "Conserver les preuves et rejouer si les sources concernées changent."
     },
     {
       "id": "OPS-F04",
@@ -56,11 +56,11 @@
       "acceptance": "Le mandat exige l’accueil achevé et une action explicite dans le conseil.",
       "priority": "P0",
       "implementation": "Code présent",
-      "verification": "À vérifier",
+      "verification": "Vérifié",
       "artReview": "Sans revue",
       "source": "clanShipOperations.ts; GameClient.tsx",
       "qa": "OPS-Q03",
-      "nextAction": "Exécuter la recette correspondante et lier sa preuve"
+      "nextAction": "Conserver les preuves et rejouer si les sources concernées changent."
     },
     {
       "id": "OPS-F05",
@@ -69,11 +69,11 @@
       "acceptance": "Armes, entraînement, codex, soins, trophées et ancien conseil restent accessibles.",
       "priority": "P0",
       "implementation": "Code présent",
-      "verification": "À vérifier",
+      "verification": "Vérifié",
       "artReview": "Sans revue",
       "source": "ClanShipHub.tsx; ClanShipOperationsPanel.tsx",
       "qa": "OPS-Q12",
-      "nextAction": "Exécuter la recette correspondante et lier sa preuve"
+      "nextAction": "Conserver les preuves et rejouer si les sources concernées changent."
     },
     {
       "id": "OPS-F06",
@@ -82,11 +82,11 @@
       "acceptance": "Six recrutements, une preuve terrain et une victoire spatiale puis confirmation au conseil.",
       "priority": "P1",
       "implementation": "Code présent",
-      "verification": "À vérifier",
+      "verification": "Vérifié",
       "artReview": "Sans revue",
       "source": "clanShipOperations.ts; ClanShipOperationsPanel.tsx",
       "qa": "OPS-Q15",
-      "nextAction": "Exécuter la recette correspondante et lier sa preuve"
+      "nextAction": "Conserver les preuves et rejouer si les sources concernées changent."
     },
     {
       "id": "OPS-F07",
@@ -95,11 +95,11 @@
       "acceptance": "Aucun changement de rang, propriété du Clan Ship ou mandat royal Wolf.",
       "priority": "P0",
       "implementation": "Code présent",
-      "verification": "À vérifier",
+      "verification": "Vérifié",
       "artReview": "Sans revue",
       "source": "clanShipOperations.ts; GameClient.tsx",
       "qa": "OPS-Q01; OPS-Q12",
-      "nextAction": "Exécuter la recette correspondante et lier sa preuve"
+      "nextAction": "Conserver les preuves et rejouer si les sources concernées changent."
     },
     {
       "id": "OPS-F08",
@@ -108,11 +108,11 @@
       "acceptance": "La table du conseil est agrandie, avec projection et accès au sol praticables.",
       "priority": "P1",
       "implementation": "Code présent",
-      "verification": "À vérifier",
+      "verification": "Partiel",
       "artReview": "À revoir",
       "source": "clanShipInterior.ts; ClanShipInterior.tsx",
       "qa": "OPS-Q04; OPS-Q13",
-      "nextAction": "Exécuter la recette correspondante et lier sa preuve"
+      "nextAction": "Le bouton de guidage propre au terminal data-clan-operation-route n’a pas été cliqué ; les trajets passent par le sélecteur extérieur de salles."
     },
     {
       "id": "OPS-F09",
@@ -121,11 +121,11 @@
       "acceptance": "Ouvrir le dossier marche jusqu’au poste. Les ordres restent liés à la salle réelle.",
       "priority": "P0",
       "implementation": "Code présent",
-      "verification": "À vérifier",
+      "verification": "Partiel",
       "artReview": "Sans revue",
       "source": "ClanShipInterior.tsx; ClanShipHub.tsx",
       "qa": "OPS-Q04",
-      "nextAction": "Exécuter la recette correspondante et lier sa preuve"
+      "nextAction": "Le bouton de guidage propre au terminal data-clan-operation-route n’a pas été cliqué ; les trajets passent par le sélecteur extérieur de salles."
     },
     {
       "id": "OPS-F10",
@@ -134,11 +134,11 @@
       "acceptance": "Poste et mandat, opérations, équipage et chronique servent des décisions distinctes.",
       "priority": "P1",
       "implementation": "Code présent",
-      "verification": "À vérifier",
+      "verification": "Partiel",
       "artReview": "À revoir",
       "source": "ClanShipOperationsPanel.tsx",
       "qa": "OPS-Q04; OPS-Q13",
-      "nextAction": "Exécuter la recette correspondante et lier sa preuve"
+      "nextAction": "Le bouton de guidage propre au terminal data-clan-operation-route n’a pas été cliqué ; les trajets passent par le sélecteur extérieur de salles."
     },
     {
       "id": "OPS-F11",
@@ -147,11 +147,11 @@
       "acceptance": "Chaque dossier explique les prérequis, son objectif, sa récompense et sa disponibilité.",
       "priority": "P1",
       "implementation": "Code présent",
-      "verification": "À vérifier",
+      "verification": "Vérifié",
       "artReview": "Sans revue",
       "source": "ClanShipOperationsPanel.tsx; clanShipOperations.ts",
       "qa": "OPS-Q03; OPS-Q05",
-      "nextAction": "Exécuter la recette correspondante et lier sa preuve"
+      "nextAction": "Conserver les preuves et rejouer si les sources concernées changent."
     },
     {
       "id": "OPS-F12",
@@ -160,11 +160,11 @@
       "acceptance": "La table ouvre les opérations de guerre des clans déjà existantes puis rend la visite.",
       "priority": "P0",
       "implementation": "Code présent",
-      "verification": "À vérifier",
+      "verification": "Vérifié",
       "artReview": "Sans revue",
       "source": "ClanShipHub.tsx; ClanShipOperationsPanel.tsx",
       "qa": "OPS-Q12",
-      "nextAction": "Exécuter la recette correspondante et lier sa preuve"
+      "nextAction": "Conserver les preuves et rejouer si les sources concernées changent."
     },
     {
       "id": "OPS-F13",
@@ -173,11 +173,11 @@
       "acceptance": "L’acceptation n’écrase pas un contrat actif et les missions accomplies ne sont pas repaiées.",
       "priority": "P0",
       "implementation": "Code présent",
-      "verification": "À vérifier",
+      "verification": "Vérifié",
       "artReview": "Sans revue",
       "source": "clanShipOperations.ts",
       "qa": "OPS-Q05",
-      "nextAction": "Exécuter la recette correspondante et lier sa preuve"
+      "nextAction": "Conserver les preuves et rejouer si les sources concernées changent."
     },
     {
       "id": "OPS-F14",
@@ -186,11 +186,11 @@
       "acceptance": "Quatre interventions dans hangar, soins, archives et retour au hangar.",
       "priority": "P1",
       "implementation": "Code présent",
-      "verification": "À vérifier",
+      "verification": "Vérifié",
       "artReview": "Sans revue",
       "source": "clanShipOperations.ts",
       "qa": "OPS-Q06",
-      "nextAction": "Exécuter la recette correspondante et lier sa preuve"
+      "nextAction": "Conserver les preuves et rejouer si les sources concernées changent."
     },
     {
       "id": "OPS-F15",
@@ -199,11 +199,11 @@
       "acceptance": "Relever le râtelier, comparer aux archives puis clore auprès de l’armurier.",
       "priority": "P1",
       "implementation": "Code présent",
-      "verification": "À vérifier",
+      "verification": "Vérifié",
       "artReview": "Sans revue",
       "source": "clanShipOperations.ts",
       "qa": "OPS-Q06",
-      "nextAction": "Exécuter la recette correspondante et lier sa preuve"
+      "nextAction": "Conserver les preuves et rejouer si les sources concernées changent."
     },
     {
       "id": "OPS-F16",
@@ -212,11 +212,11 @@
       "acceptance": "Préparer les soins, contrôler le transfert au hangar puis confirmer le retour.",
       "priority": "P1",
       "implementation": "Code présent",
-      "verification": "À vérifier",
+      "verification": "Vérifié",
       "artReview": "Sans revue",
       "source": "clanShipOperations.ts",
       "qa": "OPS-Q06",
-      "nextAction": "Exécuter la recette correspondante et lier sa preuve"
+      "nextAction": "Conserver les preuves et rejouer si les sources concernées changent."
     },
     {
       "id": "OPS-F17",
@@ -225,11 +225,11 @@
       "acceptance": "Interventions à l’entraînement et aux trophées, sans victoire de duel attribuée.",
       "priority": "P1",
       "implementation": "Code présent",
-      "verification": "À vérifier",
+      "verification": "Vérifié",
       "artReview": "Sans revue",
       "source": "clanShipOperations.ts",
       "qa": "OPS-Q06",
-      "nextAction": "Exécuter la recette correspondante et lier sa preuve"
+      "nextAction": "Conserver les preuves et rejouer si les sources concernées changent."
     },
     {
       "id": "OPS-F18",
@@ -238,11 +238,11 @@
       "acceptance": "Jungle, glace, Bad Blood et ruines utilisent leurs vraies sessions de chasse.",
       "priority": "P0",
       "implementation": "Code présent",
-      "verification": "À vérifier",
+      "verification": "Partiel",
       "artReview": "Sans revue",
       "source": "clanShipOperations.ts; GameClient.tsx",
       "qa": "OPS-Q07",
-      "nextAction": "Exécuter la recette correspondante et lier sa preuve"
+      "nextAction": "Aucune chasse de terrain n’a été jouée dans Chromium ; ce parcours réel reste ouvert."
     },
     {
       "id": "OPS-F19",
@@ -251,11 +251,11 @@
       "acceptance": "Mission, tentative, complétion acceptée, score et scans doivent correspondre au contrat.",
       "priority": "P0",
       "implementation": "Code présent",
-      "verification": "À vérifier",
+      "verification": "Partiel",
       "artReview": "Sans revue",
       "source": "clanShipOperations.ts; GameClient.tsx",
       "qa": "OPS-Q07; OPS-Q08",
-      "nextAction": "Exécuter la recette correspondante et lier sa preuve"
+      "nextAction": "Aucune chasse de terrain n’a été jouée dans Chromium ; ce parcours réel reste ouvert."
     },
     {
       "id": "OPS-F20",
@@ -268,7 +268,7 @@
       "artReview": "Sans revue",
       "source": "clanShipOperations.ts; GameClient.tsx",
       "qa": "OPS-Q08",
-      "nextAction": "Conserver les preuves et rejouer si les sources concernées changent"
+      "nextAction": "Conserver les preuves et rejouer si les sources concernées changent."
     },
     {
       "id": "OPS-F21",
@@ -277,11 +277,11 @@
       "acceptance": "Une preuve donne un entretien. Le joueur recrute ensuite dans la bonne salle.",
       "priority": "P0",
       "implementation": "Code présent",
-      "verification": "À vérifier",
+      "verification": "Vérifié",
       "artReview": "Sans revue",
       "source": "clanShipOperations.ts; ClanShipOperationsPanel.tsx",
       "qa": "OPS-Q09",
-      "nextAction": "Exécuter la recette correspondante et lier sa preuve"
+      "nextAction": "Conserver les preuves et rejouer si les sources concernées changent."
     },
     {
       "id": "OPS-F22",
@@ -290,11 +290,11 @@
       "acceptance": "Les candidats éligibles et les membres recrutés apparaissent à leur poste avec leur identité.",
       "priority": "P0",
       "implementation": "Code présent",
-      "verification": "À vérifier",
+      "verification": "Vérifié",
       "artReview": "À revoir",
       "source": "ClanShipInterior.tsx; clanShipCrew.ts",
       "qa": "OPS-Q09; OPS-Q10",
-      "nextAction": "Exécuter la recette correspondante et lier sa preuve"
+      "nextAction": "Revue artistique humaine encore attendue."
     },
     {
       "id": "OPS-F23",
@@ -303,11 +303,11 @@
       "acceptance": "Chaque identité utilise un dessin existant de son rôle, sans compter une pose fixe comme animation.",
       "priority": "P1",
       "implementation": "Code présent",
-      "verification": "À vérifier",
+      "verification": "Vérifié",
       "artReview": "À revoir",
       "source": "clanShipCrew.ts; homeworldNpcVariantsV84.ts",
       "qa": "OPS-Q10; OPS-Q24",
-      "nextAction": "Exécuter la recette correspondante et lier sa preuve"
+      "nextAction": "Revue artistique humaine encore attendue."
     },
     {
       "id": "OPS-F24",
@@ -316,11 +316,11 @@
       "acceptance": "Navigation, armurerie, soins, pistage, expérience et confinement modifient les opérations suivantes.",
       "priority": "P1",
       "implementation": "Code présent",
-      "verification": "À vérifier",
+      "verification": "Vérifié",
       "artReview": "Sans revue",
       "source": "clanShipSpaceEncounter.ts",
       "qa": "OPS-Q11",
-      "nextAction": "Exécuter la recette correspondante et lier sa preuve"
+      "nextAction": "Conserver les preuves et rejouer si les sources concernées changent."
     },
     {
       "id": "OPS-F25",
@@ -329,11 +329,11 @@
       "acceptance": "Recruter après le lancement ne modifie pas rétroactivement l’équipage de l’engagement actif.",
       "priority": "P0",
       "implementation": "Code présent",
-      "verification": "À vérifier",
+      "verification": "Vérifié",
       "artReview": "Sans revue",
       "source": "clanShipOperations.ts; clanShipSpaceEncounter.ts",
       "qa": "OPS-Q11",
-      "nextAction": "Exécuter la recette correspondante et lier sa preuve"
+      "nextAction": "Conserver les preuves et rejouer si les sources concernées changent."
     },
     {
       "id": "OPS-F26",
@@ -342,11 +342,11 @@
       "acceptance": "Identifier, couvrir trois segments puis extraire. Détruire le contact ne suffit pas.",
       "priority": "P0",
       "implementation": "Code présent",
-      "verification": "À vérifier",
+      "verification": "Vérifié",
       "artReview": "Sans revue",
       "source": "clanShipSpaceEncounter.ts",
       "qa": "OPS-Q11",
-      "nextAction": "Exécuter la recette correspondante et lier sa preuve"
+      "nextAction": "Conserver les preuves et rejouer si les sources concernées changent."
     },
     {
       "id": "OPS-F27",
@@ -355,11 +355,11 @@
       "acceptance": "Victoire par neutralisation de l’intégrité adverse ou abordage préparé.",
       "priority": "P0",
       "implementation": "Code présent",
-      "verification": "À vérifier",
+      "verification": "Vérifié",
       "artReview": "Sans revue",
       "source": "clanShipSpaceEncounter.ts",
       "qa": "OPS-Q11",
-      "nextAction": "Exécuter la recette correspondante et lier sa preuve"
+      "nextAction": "Conserver les preuves et rejouer si les sources concernées changent."
     },
     {
       "id": "OPS-F28",
@@ -368,11 +368,11 @@
       "acceptance": "Identifier, affaiblir, rapprocher, aborder puis extraire la capsule.",
       "priority": "P0",
       "implementation": "Code présent",
-      "verification": "À vérifier",
+      "verification": "Vérifié",
       "artReview": "Sans revue",
       "source": "clanShipSpaceEncounter.ts",
       "qa": "OPS-Q11",
-      "nextAction": "Exécuter la recette correspondante et lier sa preuve"
+      "nextAction": "Conserver les preuves et rejouer si les sources concernées changent."
     },
     {
       "id": "OPS-F29",
@@ -381,11 +381,11 @@
       "acceptance": "Énergie, portée et identification déterminent les actions possibles. Refus sans tour consommé.",
       "priority": "P0",
       "implementation": "Code présent",
-      "verification": "À vérifier",
+      "verification": "Partiel",
       "artReview": "Sans revue",
       "source": "clanShipSpaceEncounter.ts; ClanShipSpaceEncounter.tsx",
       "qa": "OPS-Q11; OPS-Q14",
-      "nextAction": "Exécuter la recette correspondante et lier sa preuve"
+      "nextAction": "Répartir l’énergie (recharge) n’est pas cliqué dans Chromium. La défaite navigateur est un épuisement du temps tactique, pas de l’intégrité de coque."
     },
     {
       "id": "OPS-F30",
@@ -394,11 +394,11 @@
       "acceptance": "Acquisition, salve et contournement sont annoncés avant la décision.",
       "priority": "P1",
       "implementation": "Code présent",
-      "verification": "À vérifier",
+      "verification": "Partiel",
       "artReview": "À revoir",
       "source": "clanShipSpaceEncounter.ts; ClanShipSpaceEncounter.tsx",
       "qa": "OPS-Q14",
-      "nextAction": "Exécuter la recette correspondante et lier sa preuve"
+      "nextAction": "Répartir l’énergie (recharge) n’est pas cliqué dans Chromium. La défaite navigateur est un épuisement du temps tactique, pas de l’intégrité de coque."
     },
     {
       "id": "OPS-F31",
@@ -407,11 +407,11 @@
       "acceptance": "Formation, contact, objectif, portée et progression sont visibles dans une projection SVG.",
       "priority": "P1",
       "implementation": "Code présent",
-      "verification": "À vérifier",
+      "verification": "Partiel",
       "artReview": "À revoir",
       "source": "ClanShipSpaceEncounter.tsx",
       "qa": "OPS-Q13; OPS-Q14",
-      "nextAction": "Exécuter la recette correspondante et lier sa preuve"
+      "nextAction": "Répartir l’énergie (recharge) n’est pas cliqué dans Chromium. La défaite navigateur est un épuisement du temps tactique, pas de l’intégrité de coque."
     },
     {
       "id": "OPS-F32",
@@ -420,11 +420,11 @@
       "acceptance": "Victoire, défaite et retraite ont un résultat propre. Aucune récompense sur échec.",
       "priority": "P0",
       "implementation": "Code présent",
-      "verification": "À vérifier",
+      "verification": "Partiel",
       "artReview": "Sans revue",
       "source": "clanShipSpaceEncounter.ts; clanShipOperations.ts",
       "qa": "OPS-Q14",
-      "nextAction": "Exécuter la recette correspondante et lier sa preuve"
+      "nextAction": "Répartir l’énergie (recharge) n’est pas cliqué dans Chromium. La défaite navigateur est un épuisement du temps tactique, pas de l’intégrité de coque."
     },
     {
       "id": "OPS-F33",
@@ -433,11 +433,11 @@
       "acceptance": "Seize ordres au maximum. Fermer la table ou changer d’onglet ne consomme pas un tour.",
       "priority": "P0",
       "implementation": "Code présent",
-      "verification": "À vérifier",
+      "verification": "Partiel",
       "artReview": "Sans revue",
       "source": "clanShipSpaceEncounter.ts; ClanShipOperationsPanel.tsx",
       "qa": "OPS-Q14; OPS-Q18",
-      "nextAction": "Exécuter la recette correspondante et lier sa preuve"
+      "nextAction": "Répartir l’énergie (recharge) n’est pas cliqué dans Chromium. La défaite navigateur est un épuisement du temps tactique, pas de l’intégrité de coque."
     },
     {
       "id": "OPS-F34",
@@ -446,11 +446,11 @@
       "acceptance": "Reçu, progression et marques passent par la même persistance. Pas de gain en cas de refus.",
       "priority": "P0",
       "implementation": "Code présent",
-      "verification": "À vérifier",
+      "verification": "Vérifié",
       "artReview": "Sans revue",
       "source": "GameClient.tsx; save.ts",
       "qa": "OPS-Q16",
-      "nextAction": "Exécuter la recette correspondante et lier sa preuve"
+      "nextAction": "Conserver les preuves et rejouer si les sources concernées changent."
     },
     {
       "id": "OPS-F35",
@@ -459,11 +459,11 @@
       "acceptance": "Les ordres périmés, doubles confirmations et récompenses répétées sont refusés.",
       "priority": "P0",
       "implementation": "Code présent",
-      "verification": "À vérifier",
+      "verification": "Vérifié",
       "artReview": "Sans revue",
       "source": "clanShipOperations.ts; clanShipSpaceEncounter.ts",
       "qa": "OPS-Q16; OPS-Q20",
-      "nextAction": "Exécuter la recette correspondante et lier sa preuve"
+      "nextAction": "Conserver les preuves et rejouer si les sources concernées changent."
     },
     {
       "id": "OPS-F36",
@@ -476,7 +476,7 @@
       "artReview": "Sans revue",
       "source": "clanShipOperations.ts; save.ts",
       "qa": "OPS-Q17",
-      "nextAction": "Conserver les preuves et rejouer si les sources concernées changent"
+      "nextAction": "Conserver les preuves et rejouer si les sources concernées changent."
     },
     {
       "id": "OPS-F37",
@@ -489,7 +489,7 @@
       "artReview": "Sans revue",
       "source": "clanShipOperations.ts; save.ts",
       "qa": "OPS-Q17",
-      "nextAction": "Conserver les preuves et rejouer si les sources concernées changent"
+      "nextAction": "Conserver les preuves et rejouer si les sources concernées changent."
     },
     {
       "id": "OPS-F38",
@@ -498,11 +498,11 @@
       "acceptance": "L’historique spatial est rejoué pour vérifier santé, énergie, rôles et issue sauvegardés.",
       "priority": "P0",
       "implementation": "Code présent",
-      "verification": "À vérifier",
+      "verification": "Vérifié",
       "artReview": "Sans revue",
       "source": "clanShipSpaceEncounter.ts",
       "qa": "OPS-Q18",
-      "nextAction": "Exécuter la recette correspondante et lier sa preuve"
+      "nextAction": "Conserver les preuves et rejouer si les sources concernées changent."
     },
     {
       "id": "OPS-F39",
@@ -511,11 +511,11 @@
       "acceptance": "Accueil partiel, contrat actif, engagement et recrues survivent aux parcours de reprise.",
       "priority": "P0",
       "implementation": "Code présent",
-      "verification": "À vérifier",
+      "verification": "Vérifié",
       "artReview": "Sans revue",
       "source": "save.ts; GameClient.tsx",
       "qa": "OPS-Q18; OPS-Q19",
-      "nextAction": "Exécuter la recette correspondante et lier sa preuve"
+      "nextAction": "Conserver les preuves et rejouer si les sources concernées changent."
     },
     {
       "id": "OPS-F40",
@@ -524,11 +524,11 @@
       "acceptance": "Les entrées du terminal et celles du déplacement ont un propriétaire actif distinct.",
       "priority": "P0",
       "implementation": "Code présent",
-      "verification": "À vérifier",
+      "verification": "Vérifié",
       "artReview": "Sans revue",
       "source": "ClanShipOperationsPanel.tsx; ClanShipInterior.tsx",
       "qa": "OPS-Q13; OPS-Q20",
-      "nextAction": "Exécuter la recette correspondante et lier sa preuve"
+      "nextAction": "Conserver les preuves et rejouer si les sources concernées changent."
     },
     {
       "id": "OPS-F41",
@@ -537,11 +537,11 @@
       "acceptance": "À 320/390 px : lire objectifs, défiler, agir, fermer et retrouver le mouvement.",
       "priority": "P0",
       "implementation": "Code présent",
-      "verification": "À vérifier",
+      "verification": "Vérifié",
       "artReview": "À revoir",
       "source": "ClanShipOperationsPanel.module.css; ClanShipSpaceEncounter.module.css",
       "qa": "OPS-Q13",
-      "nextAction": "Exécuter la recette correspondante et lier sa preuve"
+      "nextAction": "Revue artistique humaine encore attendue."
     },
     {
       "id": "OPS-F42",
@@ -550,11 +550,11 @@
       "acceptance": "La fermeture du terminal rend le focus à la scène et ne déclenche pas une seconde action.",
       "priority": "P0",
       "implementation": "Code présent",
-      "verification": "À vérifier",
+      "verification": "Vérifié",
       "artReview": "Sans revue",
       "source": "ClanShipHub.tsx; ClanShipOperationsPanel.tsx",
       "qa": "OPS-Q20",
-      "nextAction": "Exécuter la recette correspondante et lier sa preuve"
+      "nextAction": "Conserver les preuves et rejouer si les sources concernées changent."
     },
     {
       "id": "OPS-F43",
@@ -563,11 +563,11 @@
       "acceptance": "Tester le Clan Ship dans la session temporaire sans écrire les dossiers de campagne.",
       "priority": "P0",
       "implementation": "Code présent",
-      "verification": "À vérifier",
+      "verification": "Vérifié",
       "artReview": "Sans revue",
       "source": "app/dev/session.tsx",
       "qa": "OPS-Q21",
-      "nextAction": "Exécuter la recette correspondante et lier sa preuve"
+      "nextAction": "Conserver les preuves et rejouer si les sources concernées changent."
     },
     {
       "id": "OPS-F44",
@@ -580,7 +580,7 @@
       "artReview": "Sans revue",
       "source": "operations-spec.md; references.md",
       "qa": "OPS-Q23",
-      "nextAction": "Exécuter la recette correspondante et lier sa preuve"
+      "nextAction": "Mener la comparaison humaine sur références et rendu réel."
     },
     {
       "id": "OPS-F45",
@@ -589,11 +589,11 @@
       "acceptance": "Sept décors, huit props et six dessins de recrues sont localisables et identifiés.",
       "priority": "P1",
       "implementation": "Code présent",
-      "verification": "À vérifier",
+      "verification": "Vérifié",
       "artReview": "Sans revue",
       "source": "operations-catalogue.json",
       "qa": "OPS-Q24",
-      "nextAction": "Exécuter la recette correspondante et lier sa preuve"
+      "nextAction": "Conserver les preuves et rejouer si les sources concernées changent."
     },
     {
       "id": "OPS-F46",
@@ -606,7 +606,7 @@
       "artReview": "Sans revue",
       "source": "operations-production.json; build-operations-workbook.mjs",
       "qa": "OPS-Q25",
-      "nextAction": "Conserver les preuves et rejouer si les sources concernées changent"
+      "nextAction": "Conserver les preuves et rejouer si les sources concernées changent."
     },
     {
       "id": "OPS-F47",
@@ -615,11 +615,11 @@
       "acceptance": "L’issue terminale et ses ordres restent consultables à la table après attribution du reçu.",
       "priority": "P1",
       "implementation": "Code présent",
-      "verification": "À vérifier",
+      "verification": "Partiel",
       "artReview": "Sans revue",
       "source": "ClanShipOperationsPanel.tsx; clanShipOperations.ts",
       "qa": "OPS-Q14; OPS-Q18",
-      "nextAction": "Exercer la victoire puis fermer, rouvrir et recharger le dossier."
+      "nextAction": "Répartir l’énergie (recharge) n’est pas cliqué dans Chromium. La défaite navigateur est un épuisement du temps tactique, pas de l’intégrité de coque."
     },
     {
       "id": "OPS-F48",
@@ -628,11 +628,11 @@
       "acceptance": "Afficher les effets calculés avant confirmation sans avancer le tour ni écrire de sauvegarde.",
       "priority": "P1",
       "implementation": "Code présent",
-      "verification": "À vérifier",
+      "verification": "Partiel",
       "artReview": "Sans revue",
       "source": "clanShipSpaceEncounter.ts; ClanShipSpaceEncounter.tsx",
       "qa": "OPS-Q14",
-      "nextAction": "Comparer l’aperçu et la commande réellement appliquée."
+      "nextAction": "Répartir l’énergie (recharge) n’est pas cliqué dans Chromium. La défaite navigateur est un épuisement du temps tactique, pas de l’intégrité de coque."
     },
     {
       "id": "OPS-B01",
@@ -837,10 +837,35 @@
       "name": "Accès de campagne",
       "criterion": "Tester Unblooded, Blooded et adulte historique ; vérifier absence de rang offert.",
       "source": "tests/clan-ship-operations.test.mjs",
-      "result": "À exécuter",
-      "evidence": "",
-      "reviewer": "",
-      "sourceDigest": ""
+      "result": "Réussi",
+      "evidence": "N01/N05 + H01 et test de domaine des trois états : adulte historique parcouru ; Unblooded/Blooded contrôlés par chronique ; mandat sans rang offert.",
+      "reviewer": "CI automatisée ; preuves et limites relues",
+      "sourceDigest": "a696209c55003e9b9d8878eb07e7b180f84f5f8b71a8fc02930b48a5b7498aa7",
+      "limitation": "Les trois états ne sont pas trois campagnes initiatiques jouées dans Chromium.",
+      "sourceCommit": "1137faaf80051b37fa2205af73414bed099024a9",
+      "browserChecks": {
+        "operations": [
+          {
+            "index": 1,
+            "name": "A disclosed adult campaign resumes aboard with no pre-completed operations"
+          },
+          {
+            "index": 5,
+            "name": "The massive council projection grants one mandate without changing rank or hull ownership"
+          }
+        ],
+        "historical": [
+          {
+            "index": 1,
+            "name": "Legacy campaign migrates through the real main menu to the personal deck"
+          }
+        ]
+      },
+      "proofFiles": [
+        "qa-operations/browser-final/clan-ship-verification.json",
+        "qa-operations/browser-final/operations-report.json",
+        "qa-operations/browser-final/clan-ship-report.json"
+      ]
     },
     {
       "id": "OPS-Q02",
@@ -848,10 +873,33 @@
       "name": "Accueil et reprise",
       "criterion": "Marcher aux trois postes, recharger après une étape, refuser la mauvaise pièce.",
       "source": "scripts/qa-clan-ship-operations.mjs",
-      "result": "À exécuter",
-      "evidence": "",
-      "reviewer": "",
-      "sourceDigest": ""
+      "result": "Réussi",
+      "evidence": "N02–N04 : marche aux trois postes, recharge après la première étape, action suivante absente dans la mauvaise salle.",
+      "reviewer": "CI automatisée ; preuves et limites relues",
+      "sourceDigest": "a696209c55003e9b9d8878eb07e7b180f84f5f8b71a8fc02930b48a5b7498aa7",
+      "limitation": "",
+      "sourceCommit": "1137faaf80051b37fa2205af73414bed099024a9",
+      "browserChecks": {
+        "operations": [
+          {
+            "index": 2,
+            "name": "The first dossier requires physical approach; closing or browsing grants nothing"
+          },
+          {
+            "index": 3,
+            "name": "The first onboarding checkpoint survives a real reload without granting the mandate"
+          },
+          {
+            "index": 4,
+            "name": "Onboarding walks to medical and archives, validates the ordered posts and awards no marks"
+          }
+        ],
+        "historical": []
+      },
+      "proofFiles": [
+        "qa-operations/browser-final/clan-ship-verification.json",
+        "qa-operations/browser-final/operations-report.json"
+      ]
     },
     {
       "id": "OPS-Q03",
@@ -859,10 +907,35 @@
       "name": "Mandat du conseil",
       "criterion": "Refus avant accueil ; action unique au conseil ; services conservés.",
       "source": "tests/clan-ship-operations.test.mjs",
-      "result": "À exécuter",
-      "evidence": "",
-      "reviewer": "",
-      "sourceDigest": ""
+      "result": "Réussi",
+      "evidence": "N04/N05 + H13 et domaine : accueil préalable, mandat unique au conseil, rang/coque/solde inchangés, six services conservés.",
+      "reviewer": "CI automatisée ; preuves et limites relues",
+      "sourceDigest": "a696209c55003e9b9d8878eb07e7b180f84f5f8b71a8fc02930b48a5b7498aa7",
+      "limitation": "",
+      "sourceCommit": "1137faaf80051b37fa2205af73414bed099024a9",
+      "browserChecks": {
+        "operations": [
+          {
+            "index": 4,
+            "name": "Onboarding walks to medical and archives, validates the ordered posts and awards no marks"
+          },
+          {
+            "index": 5,
+            "name": "The massive council projection grants one mandate without changing rank or hull ownership"
+          }
+        ],
+        "historical": [
+          {
+            "index": 13,
+            "name": "Seven physical rooms and six existing services preserve their room and return position"
+          }
+        ]
+      },
+      "proofFiles": [
+        "qa-operations/browser-final/clan-ship-verification.json",
+        "qa-operations/browser-final/operations-report.json",
+        "qa-operations/browser-final/clan-ship-report.json"
+      ]
     },
     {
       "id": "OPS-Q04",
@@ -870,10 +943,59 @@
       "name": "Table et proximité",
       "criterion": "Approcher, ouvrir, fermer, guider vers une autre salle ; table sans porte obstruée.",
       "source": "scripts/qa-clan-ship-operations.mjs",
-      "result": "À exécuter",
-      "evidence": "",
-      "reviewer": "",
-      "sourceDigest": ""
+      "result": "Partiel",
+      "evidence": "N02/N05/N06 + H07–H12 : approche, ouverture/fermeture, focus, déplacement et collision de la grande table vérifiés.",
+      "reviewer": "CI automatisée ; preuves et limites relues",
+      "sourceDigest": "a696209c55003e9b9d8878eb07e7b180f84f5f8b71a8fc02930b48a5b7498aa7",
+      "limitation": "Le bouton de guidage propre au terminal data-clan-operation-route n’a pas été cliqué ; les trajets passent par le sélecteur extérieur de salles.",
+      "sourceCommit": "1137faaf80051b37fa2205af73414bed099024a9",
+      "browserChecks": {
+        "operations": [
+          {
+            "index": 2,
+            "name": "The first dossier requires physical approach; closing or browsing grants nothing"
+          },
+          {
+            "index": 5,
+            "name": "The massive council projection grants one mandate without changing rank or hull ownership"
+          },
+          {
+            "index": 6,
+            "name": "Keyboard focus remains in the table and walking keys cannot move the suspended hunter"
+          }
+        ],
+        "historical": [
+          {
+            "index": 7,
+            "name": "Choosing a room hands focus to walking and a fresh key interrupts the guided route"
+          },
+          {
+            "index": 8,
+            "name": "Retargeting a guided route takes effect immediately and Stop cancels it before a doorway"
+          },
+          {
+            "index": 9,
+            "name": "A physical doorway is reached before saving and held confirmation cannot fall through the passage"
+          },
+          {
+            "index": 10,
+            "name": "A distant room target walks through adjacent doors instead of teleporting"
+          },
+          {
+            "index": 11,
+            "name": "The rendered hunter stops at a real fixture and pointer navigation goes around it"
+          },
+          {
+            "index": 12,
+            "name": "The archive service requires walking into reach and a separate interaction"
+          }
+        ]
+      },
+      "proofFiles": [
+        "qa-operations/browser-final/clan-ship-verification.json",
+        "qa-operations/browser-final/operations-report.json",
+        "qa-operations/browser-final/clan-ship-report.json"
+      ]
     },
     {
       "id": "OPS-Q05",
@@ -881,10 +1003,49 @@
       "name": "Catalogue de contrats",
       "criterion": "Verrou préalable, un seul actif, annulation et récompense unique.",
       "source": "tests/clan-ship-operations.test.mjs",
-      "result": "À exécuter",
-      "evidence": "",
-      "reviewer": "",
-      "sourceDigest": ""
+      "result": "Réussi",
+      "evidence": "N07–N11/N15/N16 + domaine : un seul contrat actif, prérequis, paiement unique et annulation sans gain.",
+      "reviewer": "CI automatisée ; preuves et limites relues",
+      "sourceDigest": "a696209c55003e9b9d8878eb07e7b180f84f5f8b71a8fc02930b48a5b7498aa7",
+      "limitation": "L’annulation de contrat est testée dans le domaine ; son bouton n’est pas actionné dans Chromium. Le retrait spatial est distinct.",
+      "sourceCommit": "1137faaf80051b37fa2205af73414bed099024a9",
+      "browserChecks": {
+        "operations": [
+          {
+            "index": 7,
+            "name": "A partial internal circuit persists and the other dossiers cannot replace it"
+          },
+          {
+            "index": 8,
+            "name": "Finishing confinement awards once, then the warden explicitly joins at the hangar"
+          },
+          {
+            "index": 9,
+            "name": "The complete ship-armory-audit circuit awards one receipt and its stationed recruit joins"
+          },
+          {
+            "index": 10,
+            "name": "The complete ship-triage-route circuit awards one receipt and its stationed recruit joins"
+          },
+          {
+            "index": 11,
+            "name": "The complete ship-training-circuit circuit awards one receipt and its stationed recruit joins"
+          },
+          {
+            "index": 15,
+            "name": "Retrying the same extraction pays the unique reward and completed dossiers cannot be paid twice"
+          },
+          {
+            "index": 16,
+            "name": "Withdrawing from interception ends the contact without a proof or reward and permits a new departure"
+          }
+        ],
+        "historical": []
+      },
+      "proofFiles": [
+        "qa-operations/browser-final/clan-ship-verification.json",
+        "qa-operations/browser-final/operations-report.json"
+      ]
     },
     {
       "id": "OPS-Q06",
@@ -892,10 +1053,41 @@
       "name": "Quatre missions intérieures",
       "criterion": "Chaque étape doit être accomplie dans sa pièce et dans l’ordre ; reprise intermédiaire.",
       "source": "tests/clan-ship-operations.test.mjs",
-      "result": "À exécuter",
-      "evidence": "",
-      "reviewer": "",
-      "sourceDigest": ""
+      "result": "Réussi",
+      "evidence": "N07–N11 : quatre circuits complets au poste, récompense à la dernière étape ; confinement partiel repris après recharge. Domaine : mauvais ordre et mauvaise salle refusés.",
+      "reviewer": "CI automatisée ; preuves et limites relues",
+      "sourceDigest": "a696209c55003e9b9d8878eb07e7b180f84f5f8b71a8fc02930b48a5b7498aa7",
+      "limitation": "La recharge intermédiaire navigateur porte sur le confinement ; les autres circuits sont parcourus en continu.",
+      "sourceCommit": "1137faaf80051b37fa2205af73414bed099024a9",
+      "browserChecks": {
+        "operations": [
+          {
+            "index": 7,
+            "name": "A partial internal circuit persists and the other dossiers cannot replace it"
+          },
+          {
+            "index": 8,
+            "name": "Finishing confinement awards once, then the warden explicitly joins at the hangar"
+          },
+          {
+            "index": 9,
+            "name": "The complete ship-armory-audit circuit awards one receipt and its stationed recruit joins"
+          },
+          {
+            "index": 10,
+            "name": "The complete ship-triage-route circuit awards one receipt and its stationed recruit joins"
+          },
+          {
+            "index": 11,
+            "name": "The complete ship-training-circuit circuit awards one receipt and its stationed recruit joins"
+          }
+        ],
+        "historical": []
+      },
+      "proofFiles": [
+        "qa-operations/browser-final/clan-ship-verification.json",
+        "qa-operations/browser-final/operations-report.json"
+      ]
     },
     {
       "id": "OPS-Q07",
@@ -903,10 +1095,19 @@
       "name": "Preuve de terrain",
       "criterion": "Une nouvelle chasse valide seulement le contrat de sa mission et de sa tentative.",
       "source": "tests/clan-ship-operations.test.mjs",
-      "result": "À exécuter",
-      "evidence": "",
-      "reviewer": "",
-      "sourceDigest": ""
+      "result": "Partiel",
+      "evidence": "277 tests du job : liaison de mission/tentative, callbacks réels de départ/résultat et reçu atomique contrôlés. Les deux preuves terrain du second contexte sont déclarées dans fixture-disclosure.json.",
+      "reviewer": "CI automatisée ; preuves et limites relues",
+      "sourceDigest": "a696209c55003e9b9d8878eb07e7b180f84f5f8b71a8fc02930b48a5b7498aa7",
+      "limitation": "Aucune chasse de terrain n’a été jouée dans Chromium ; ce parcours réel reste ouvert.",
+      "sourceCommit": "1137faaf80051b37fa2205af73414bed099024a9",
+      "browserChecks": {
+        "operations": [],
+        "historical": []
+      },
+      "proofFiles": [
+        "qa-operations/browser-final/clan-ship-verification.json"
+      ]
     },
     {
       "id": "OPS-Q08",
@@ -915,9 +1116,18 @@
       "criterion": "Ancien record, score bas, scans insuffisants, autre mission, défaite et abandon.",
       "source": "tests/clan-ship-operations.test.mjs",
       "result": "Réussi",
-      "evidence": "qa-operations/local-tests.log et local-verification.json ; suite locale 296/296, dont les scénarios de refus et de protection concernés. Aucun parcours navigateur déduit.",
-      "reviewer": "Tests locaux automatisés",
-      "sourceDigest": "c8a06e7f59bb4c798ca154011b7adc03724fe4e219ac3f8c454c199926bc22af"
+      "evidence": "277 tests du job, dont anciens records, autre mission/tentative, score bas, scans insuffisants, défaite, abandon et reprise de chasse.",
+      "reviewer": "CI automatisée ; preuves et limites relues",
+      "sourceDigest": "a696209c55003e9b9d8878eb07e7b180f84f5f8b71a8fc02930b48a5b7498aa7",
+      "limitation": "Résultats de domaine et callbacks ; aucune chasse jouée dans Chromium.",
+      "sourceCommit": "1137faaf80051b37fa2205af73414bed099024a9",
+      "browserChecks": {
+        "operations": [],
+        "historical": []
+      },
+      "proofFiles": [
+        "qa-operations/browser-final/clan-ship-verification.json"
+      ]
     },
     {
       "id": "OPS-Q09",
@@ -925,10 +1135,45 @@
       "name": "Recrutement explicite",
       "criterion": "Éligibilité puis retour au poste, dialogue, accord et personnage visible après recharge.",
       "source": "scripts/qa-clan-ship-operations.mjs",
-      "result": "À exécuter",
-      "evidence": "",
-      "reviewer": "",
-      "sourceDigest": ""
+      "result": "Réussi",
+      "evidence": "N08–N12 : quatre accords gagnés par l’interface, au bon poste, puis personnages conservés après recharge ; N22 complète les six présences.",
+      "reviewer": "CI automatisée ; preuves et limites relues",
+      "sourceDigest": "a696209c55003e9b9d8878eb07e7b180f84f5f8b71a8fc02930b48a5b7498aa7",
+      "limitation": "Trace Froide et Veille des Astres sont prérecrutés dans le second contexte ; leurs chasses et accords ne sont pas joués par cette recette.",
+      "sourceCommit": "1137faaf80051b37fa2205af73414bed099024a9",
+      "browserChecks": {
+        "operations": [
+          {
+            "index": 8,
+            "name": "Finishing confinement awards once, then the warden explicitly joins at the hangar"
+          },
+          {
+            "index": 9,
+            "name": "The complete ship-armory-audit circuit awards one receipt and its stationed recruit joins"
+          },
+          {
+            "index": 10,
+            "name": "The complete ship-triage-route circuit awards one receipt and its stationed recruit joins"
+          },
+          {
+            "index": 11,
+            "name": "The complete ship-training-circuit circuit awards one receipt and its stationed recruit joins"
+          },
+          {
+            "index": 12,
+            "name": "Four earned recruits remain visible at their posts after reload and open their own dossier"
+          },
+          {
+            "index": 22,
+            "name": "The disclosed six-crew fixture imports normally and each ally is rendered at their distinct post"
+          }
+        ],
+        "historical": []
+      },
+      "proofFiles": [
+        "qa-operations/browser-final/clan-ship-verification.json",
+        "qa-operations/browser-final/operations-report.json"
+      ]
     },
     {
       "id": "OPS-Q10",
@@ -936,10 +1181,33 @@
       "name": "Présence des six rôles",
       "criterion": "Nom, silhouette, poste, non-duplication et chargement de chaque image individuelle.",
       "source": "scripts/qa-clan-ship-operations.mjs",
-      "result": "À exécuter",
-      "evidence": "",
-      "reviewer": "",
-      "sourceDigest": ""
+      "result": "Réussi",
+      "evidence": "N12/N22/N27 : six PNJ chargés à leur poste, interaction vers leur propre fiche ; six fichiers distincts dans le catalogue. Captures contrôlées techniquement.",
+      "reviewer": "CI automatisée ; preuves et limites relues",
+      "sourceDigest": "a696209c55003e9b9d8878eb07e7b180f84f5f8b71a8fc02930b48a5b7498aa7",
+      "limitation": "Présence visuelle et lisibilité seulement ; avis artistique humain 1:1 toujours ouvert.",
+      "sourceCommit": "1137faaf80051b37fa2205af73414bed099024a9",
+      "browserChecks": {
+        "operations": [
+          {
+            "index": 12,
+            "name": "Four earned recruits remain visible at their posts after reload and open their own dossier"
+          },
+          {
+            "index": 22,
+            "name": "The disclosed six-crew fixture imports normally and each ally is rendered at their distinct post"
+          },
+          {
+            "index": 27,
+            "name": "All requested assets and actual room/crew images load without uncaught browser errors"
+          }
+        ],
+        "historical": []
+      },
+      "proofFiles": [
+        "qa-operations/browser-final/clan-ship-verification.json",
+        "qa-operations/browser-final/operations-report.json"
+      ]
     },
     {
       "id": "OPS-Q11",
@@ -947,10 +1215,41 @@
       "name": "Trois engagements et rôles",
       "criterion": "Gagner escorte/interception/récupération ; contrôler les effets des six rôles.",
       "source": "tests/clan-ship-space-encounter.test.mjs",
-      "result": "À exécuter",
-      "evidence": "",
-      "reviewer": "",
-      "sourceDigest": ""
+      "result": "Réussi",
+      "evidence": "N13/N18/N19 : escorte, interception et récupération gagnées ; N23/N24 : six rôles au départ et effets contrôlés. Domaine : chacun des six effets isolé.",
+      "reviewer": "CI automatisée ; preuves et limites relues",
+      "sourceDigest": "a696209c55003e9b9d8878eb07e7b180f84f5f8b71a8fc02930b48a5b7498aa7",
+      "limitation": "Les six rôles complets du second contexte reposent sur des recrutements préparés et divulgués.",
+      "sourceCommit": "1137faaf80051b37fa2205af73414bed099024a9",
+      "browserChecks": {
+        "operations": [
+          {
+            "index": 13,
+            "name": "A real escort binds the four earned roles and advances only through actual tactical orders"
+          },
+          {
+            "index": 18,
+            "name": "A fresh interception is won through identification, approach, energy and actual fire orders"
+          },
+          {
+            "index": 19,
+            "name": "Recovery requires analysis, disabled propulsion and boarding before the final extraction"
+          },
+          {
+            "index": 23,
+            "name": "On mobile 390 the six actual crew effects are fixed at departure and tactical orders are usable touch targets"
+          },
+          {
+            "index": 24,
+            "name": "At 320 px tactical commands scroll, disclose their real forecast and complete by touch after reload"
+          }
+        ],
+        "historical": []
+      },
+      "proofFiles": [
+        "qa-operations/browser-final/clan-ship-verification.json",
+        "qa-operations/browser-final/operations-report.json"
+      ]
     },
     {
       "id": "OPS-Q12",
@@ -958,10 +1257,37 @@
       "name": "Services, coques et voyage",
       "criterion": "Parcourir sept salles/six services ; revenir au personnel ; désamarrer avant le voyage.",
       "source": "scripts/qa-clan-ship-browser.mjs",
-      "result": "À exécuter",
-      "evidence": "",
-      "reviewer": "",
-      "sourceDigest": ""
+      "result": "Réussi",
+      "evidence": "H02/H03/H13/H18 : sept salles, six services, coques distinctes, retour personnel et voyage verrouillé avant désamarrage.",
+      "reviewer": "CI automatisée ; preuves et limites relues",
+      "sourceDigest": "a696209c55003e9b9d8878eb07e7b180f84f5f8b71a8fc02930b48a5b7498aa7",
+      "limitation": "Le déverrouillage du départ est exercé ; ce check ne termine pas une nouvelle chasse.",
+      "sourceCommit": "1137faaf80051b37fa2205af73414bed099024a9",
+      "browserChecks": {
+        "operations": [],
+        "historical": [
+          {
+            "index": 2,
+            "name": "A held gamepad confirmation advances only one docking stage"
+          },
+          {
+            "index": 3,
+            "name": "Dock and board preserve the selected personal hull"
+          },
+          {
+            "index": 13,
+            "name": "Seven physical rooms and six existing services preserve their room and return position"
+          },
+          {
+            "index": 18,
+            "name": "Returning to the personal ship keeps the berth and blocks travel until undocking"
+          }
+        ]
+      },
+      "proofFiles": [
+        "qa-operations/browser-final/clan-ship-verification.json",
+        "qa-operations/browser-final/clan-ship-report.json"
+      ]
     },
     {
       "id": "OPS-Q13",
@@ -969,10 +1295,47 @@
       "name": "Clavier et mobile",
       "criterion": "Terminal à 320/390 px ; déplacement suspendu ; boutons/focus/scroll accessibles.",
       "source": "scripts/qa-clan-ship-operations.mjs",
-      "result": "À exécuter",
-      "evidence": "",
-      "reviewer": "",
-      "sourceDigest": ""
+      "result": "Réussi",
+      "evidence": "N06/N21/N23/N24 + H20/H21 : focus, déplacement suspendu, tactile, défilement et absence de débordement à 390/320 px ; captures inspectées.",
+      "reviewer": "CI automatisée ; preuves et limites relues",
+      "sourceDigest": "a696209c55003e9b9d8878eb07e7b180f84f5f8b71a8fc02930b48a5b7498aa7",
+      "limitation": "Inspection technique des captures, sans qualification artistique humaine.",
+      "sourceCommit": "1137faaf80051b37fa2205af73414bed099024a9",
+      "browserChecks": {
+        "operations": [
+          {
+            "index": 6,
+            "name": "Keyboard focus remains in the table and walking keys cannot move the suspended hunter"
+          },
+          {
+            "index": 21,
+            "name": "At 390 px the four real recruits and all dossier tabs remain reachable by touch without overflow"
+          },
+          {
+            "index": 23,
+            "name": "On mobile 390 the six actual crew effects are fixed at departure and tactical orders are usable touch targets"
+          },
+          {
+            "index": 24,
+            "name": "At 320 px tactical commands scroll, disclose their real forecast and complete by touch after reload"
+          }
+        ],
+        "historical": [
+          {
+            "index": 20,
+            "name": "Touch walking and room navigation work at 390px and 320px without horizontal overflow"
+          },
+          {
+            "index": 21,
+            "name": "Normal and reduced motion keep walking functional without looping motion in reduced mode"
+          }
+        ]
+      },
+      "proofFiles": [
+        "qa-operations/browser-final/clan-ship-verification.json",
+        "qa-operations/browser-final/operations-report.json",
+        "qa-operations/browser-final/clan-ship-report.json"
+      ]
     },
     {
       "id": "OPS-Q14",
@@ -980,10 +1343,57 @@
       "name": "Ordres et résultats",
       "criterion": "Neuf ordres, refus sans tour, intention ennemie, défaite/retrait, limite de tours.",
       "source": "tests/clan-ship-space-encounter.test.mjs",
-      "result": "À exécuter",
-      "evidence": "",
-      "reviewer": "",
-      "sourceDigest": ""
+      "result": "Partiel",
+      "evidence": "49 commandes navigateur, huit types sur neuf ; retrait, victoire, refus d’écriture, prévision et défaite par limite de 16 tours exercés. Le domaine teste les neuf ordres.",
+      "reviewer": "CI automatisée ; preuves et limites relues",
+      "sourceDigest": "a696209c55003e9b9d8878eb07e7b180f84f5f8b71a8fc02930b48a5b7498aa7",
+      "limitation": "Répartir l’énergie (recharge) n’est pas cliqué dans Chromium. La défaite navigateur est un épuisement du temps tactique, pas de l’intégrité de coque.",
+      "sourceCommit": "1137faaf80051b37fa2205af73414bed099024a9",
+      "browserChecks": {
+        "operations": [
+          {
+            "index": 13,
+            "name": "A real escort binds the four earned roles and advances only through actual tactical orders"
+          },
+          {
+            "index": 14,
+            "name": "Refusing the final escort write preserves the active turn, the receipt count and the balance"
+          },
+          {
+            "index": 15,
+            "name": "Retrying the same extraction pays the unique reward and completed dossiers cannot be paid twice"
+          },
+          {
+            "index": 16,
+            "name": "Withdrawing from interception ends the contact without a proof or reward and permits a new departure"
+          },
+          {
+            "index": 17,
+            "name": "Sixteen defensive orders exhaust the tactical window without granting a victory"
+          },
+          {
+            "index": 18,
+            "name": "A fresh interception is won through identification, approach, energy and actual fire orders"
+          },
+          {
+            "index": 19,
+            "name": "Recovery requires analysis, disabled propulsion and boarding before the final extraction"
+          },
+          {
+            "index": 23,
+            "name": "On mobile 390 the six actual crew effects are fixed at departure and tactical orders are usable touch targets"
+          },
+          {
+            "index": 24,
+            "name": "At 320 px tactical commands scroll, disclose their real forecast and complete by touch after reload"
+          }
+        ],
+        "historical": []
+      },
+      "proofFiles": [
+        "qa-operations/browser-final/clan-ship-verification.json",
+        "qa-operations/browser-final/operations-report.json"
+      ]
     },
     {
       "id": "OPS-Q15",
@@ -991,10 +1401,29 @@
       "name": "Cercle confirmé",
       "criterion": "Les six accords et deux types de preuve sont requis ; confirmation unique au conseil.",
       "source": "tests/clan-ship-operations.test.mjs",
-      "result": "À exécuter",
-      "evidence": "",
-      "reviewer": "",
-      "sourceDigest": ""
+      "result": "Réussi",
+      "evidence": "N25 : après escorte gagnée, confirmation unique du cercle au conseil puis recharge ; rang, coque et marques inchangés. Domaine : prérequis refusés lorsqu’incomplets.",
+      "reviewer": "CI automatisée ; preuves et limites relues",
+      "sourceDigest": "a696209c55003e9b9d8878eb07e7b180f84f5f8b71a8fc02930b48a5b7498aa7",
+      "limitation": "Les six accords et les deux preuves terrain sont préparés dans ce contexte et divulgués ; l’escorte et la confirmation sont jouées.",
+      "sourceCommit": "1137faaf80051b37fa2205af73414bed099024a9",
+      "browserChecks": {
+        "operations": [
+          {
+            "index": 12,
+            "name": "Four earned recruits remain visible at their posts after reload and open their own dossier"
+          },
+          {
+            "index": 25,
+            "name": "With disclosed field proofs, six agreements and a browser-won escort the council confirms the circle once"
+          }
+        ],
+        "historical": []
+      },
+      "proofFiles": [
+        "qa-operations/browser-final/clan-ship-verification.json",
+        "qa-operations/browser-final/operations-report.json"
+      ]
     },
     {
       "id": "OPS-Q16",
@@ -1002,10 +1431,29 @@
       "name": "Écriture refusée et réessai",
       "criterion": "Refuser localStorage sur une action rémunérée ; solde/reçu antérieurs ; réessai unique.",
       "source": "tests/clan-ship-operations.test.mjs; GameClient.tsx",
-      "result": "À exécuter",
-      "evidence": "",
-      "reviewer": "",
-      "sourceDigest": ""
+      "result": "Réussi",
+      "evidence": "N14/N15 : localStorage refuse l’extraction ; tour 4, solde et absence de reçu conservés ; réessai réussi une seule fois. Domaine : quota, lecture incertaine et concurrence.",
+      "reviewer": "CI automatisée ; preuves et limites relues",
+      "sourceDigest": "a696209c55003e9b9d8878eb07e7b180f84f5f8b71a8fc02930b48a5b7498aa7",
+      "limitation": "",
+      "sourceCommit": "1137faaf80051b37fa2205af73414bed099024a9",
+      "browserChecks": {
+        "operations": [
+          {
+            "index": 14,
+            "name": "Refusing the final escort write preserves the active turn, the receipt count and the balance"
+          },
+          {
+            "index": 15,
+            "name": "Retrying the same extraction pays the unique reward and completed dossiers cannot be paid twice"
+          }
+        ],
+        "historical": []
+      },
+      "proofFiles": [
+        "qa-operations/browser-final/clan-ship-verification.json",
+        "qa-operations/browser-final/operations-report.json"
+      ]
     },
     {
       "id": "OPS-Q17",
@@ -1014,9 +1462,24 @@
       "criterion": "Absent, invalide, futur, propriétaire distinct ; aucune réinitialisation silencieuse.",
       "source": "tests/clan-ship-operations.test.mjs; tests/clan-ship-operations-save.test.mjs",
       "result": "Réussi",
-      "evidence": "qa-operations/local-tests.log et local-verification.json ; suite locale 296/296, dont les scénarios de refus et de protection concernés. Aucun parcours navigateur déduit.",
-      "reviewer": "Tests locaux automatisés",
-      "sourceDigest": "c8a06e7f59bb4c798ca154011b7adc03724fe4e219ac3f8c454c199926bc22af"
+      "evidence": "277 tests du job : absent/null, invalide, futur, propriétaire étranger, archives et copie de secours protégés. N26 : deux contextes de campagne isolés.",
+      "reviewer": "CI automatisée ; preuves et limites relues",
+      "sourceDigest": "a696209c55003e9b9d8878eb07e7b180f84f5f8b71a8fc02930b48a5b7498aa7",
+      "limitation": "N26 n’est pas un conflit entre deux onglets partageant la même campagne ; ce cas est contrôlé par les tests de domaine.",
+      "sourceCommit": "1137faaf80051b37fa2205af73414bed099024a9",
+      "browserChecks": {
+        "operations": [
+          {
+            "index": 26,
+            "name": "The second isolated campaign cannot change the first campaign’s crew, receipts or currency"
+          }
+        ],
+        "historical": []
+      },
+      "proofFiles": [
+        "qa-operations/browser-final/clan-ship-verification.json",
+        "qa-operations/browser-final/operations-report.json"
+      ]
     },
     {
       "id": "OPS-Q18",
@@ -1024,10 +1487,37 @@
       "name": "Reprise spatiale",
       "criterion": "Fermer/recharger à plusieurs tours ; conserver les mêmes jauges et la même suite.",
       "source": "tests/clan-ship-space-encounter.test.mjs",
-      "result": "À exécuter",
-      "evidence": "",
-      "reviewer": "",
-      "sourceDigest": ""
+      "result": "Réussi",
+      "evidence": "N13/N15/N23/N24 : fermeture et recharge du tour actif 2, reprise puis résultat conservé. Domaine : chaque tour rejoué conserve les jauges et la même branche.",
+      "reviewer": "CI automatisée ; preuves et limites relues",
+      "sourceDigest": "a696209c55003e9b9d8878eb07e7b180f84f5f8b71a8fc02930b48a5b7498aa7",
+      "limitation": "La recharge Chromium n’est pas exécutée à tous les tours ; cette exhaustivité appartient au domaine.",
+      "sourceCommit": "1137faaf80051b37fa2205af73414bed099024a9",
+      "browserChecks": {
+        "operations": [
+          {
+            "index": 13,
+            "name": "A real escort binds the four earned roles and advances only through actual tactical orders"
+          },
+          {
+            "index": 15,
+            "name": "Retrying the same extraction pays the unique reward and completed dossiers cannot be paid twice"
+          },
+          {
+            "index": 23,
+            "name": "On mobile 390 the six actual crew effects are fixed at departure and tactical orders are usable touch targets"
+          },
+          {
+            "index": 24,
+            "name": "At 320 px tactical commands scroll, disclose their real forecast and complete by touch after reload"
+          }
+        ],
+        "historical": []
+      },
+      "proofFiles": [
+        "qa-operations/browser-final/clan-ship-verification.json",
+        "qa-operations/browser-final/operations-report.json"
+      ]
     },
     {
       "id": "OPS-Q19",
@@ -1035,10 +1525,39 @@
       "name": "Import, export et checkpoint",
       "criterion": "Même dossier et campagne après reprise, inventaire et amarrage cohérents.",
       "source": "tests/clan-ship-operations-save.test.mjs; tests/clan-ship-save.test.mjs",
-      "result": "À exécuter",
-      "evidence": "",
-      "reviewer": "",
-      "sourceDigest": ""
+      "result": "Réussi",
+      "evidence": "N20 : huit reçus et quatre recrues conservés au retour du menu. H14/H16/H17 : checkpoint manuel de salle. Domaine : import/export/archives et reprise du dossier d’opérations.",
+      "reviewer": "CI automatisée ; preuves et limites relues",
+      "sourceDigest": "a696209c55003e9b9d8878eb07e7b180f84f5f8b71a8fc02930b48a5b7498aa7",
+      "limitation": "L’import/export d’opérations est testé dans le domaine, sans parcours de ses boutons dans Chromium.",
+      "sourceCommit": "1137faaf80051b37fa2205af73414bed099024a9",
+      "browserChecks": {
+        "operations": [
+          {
+            "index": 20,
+            "name": "The journal records eight real UI receipts and checkpointing preserves them with four crew"
+          }
+        ],
+        "historical": [
+          {
+            "index": 14,
+            "name": "Settings suspend the clan controller and a manual checkpoint preserves its room"
+          },
+          {
+            "index": 16,
+            "name": "Save, main menu, reload and Continue restore the exact clan room"
+          },
+          {
+            "index": 17,
+            "name": "Loading the real manual checkpoint restores Archives after a later room visit"
+          }
+        ]
+      },
+      "proofFiles": [
+        "qa-operations/browser-final/clan-ship-verification.json",
+        "qa-operations/browser-final/operations-report.json",
+        "qa-operations/browser-final/clan-ship-report.json"
+      ]
     },
     {
       "id": "OPS-Q20",
@@ -1046,10 +1565,43 @@
       "name": "Double entrée et focus",
       "criterion": "Révisions/tours périmés refusés ; appui maintenu ne traverse pas deux étapes.",
       "source": "tests/clan-ship-operations.test.mjs; tests/clan-ship-space-encounter.test.mjs",
-      "result": "À exécuter",
-      "evidence": "",
-      "reviewer": "",
-      "sourceDigest": ""
+      "result": "Réussi",
+      "evidence": "N06 + H02/H09/H14/H15 : focus, suspension et appuis maintenus sans traversée d’étapes ; domaine : révisions/tours périmés refusés.",
+      "reviewer": "CI automatisée ; preuves et limites relues",
+      "sourceDigest": "a696209c55003e9b9d8878eb07e7b180f84f5f8b71a8fc02930b48a5b7498aa7",
+      "limitation": "Le maintien manette est surtout vérifié sur l’amarrage et l’intérieur historiques, pas sur chaque nouvelle commande du terminal.",
+      "sourceCommit": "1137faaf80051b37fa2205af73414bed099024a9",
+      "browserChecks": {
+        "operations": [
+          {
+            "index": 6,
+            "name": "Keyboard focus remains in the table and walking keys cannot move the suspended hunter"
+          }
+        ],
+        "historical": [
+          {
+            "index": 2,
+            "name": "A held gamepad confirmation advances only one docking stage"
+          },
+          {
+            "index": 9,
+            "name": "A physical doorway is reached before saving and held confirmation cannot fall through the passage"
+          },
+          {
+            "index": 14,
+            "name": "Settings suspend the clan controller and a manual checkpoint preserves its room"
+          },
+          {
+            "index": 15,
+            "name": "Switching browser tabs clears movement and requires a fresh input on return"
+          }
+        ]
+      },
+      "proofFiles": [
+        "qa-operations/browser-final/clan-ship-verification.json",
+        "qa-operations/browser-final/operations-report.json",
+        "qa-operations/browser-final/clan-ship-report.json"
+      ]
     },
     {
       "id": "OPS-Q21",
@@ -1057,10 +1609,20 @@
       "name": "Isolation /dev",
       "criterion": "Visiter les scènes dans l’état temporaire puis retrouver une campagne inchangée.",
       "source": "scripts/qa-dev-travel-browser.mjs",
-      "result": "À exécuter",
-      "evidence": "",
-      "reviewer": "",
-      "sourceDigest": ""
+      "result": "Réussi",
+      "evidence": "Recette /dev exacte : 20/20 checks navigateur, sept salles, 50 contrôles de stockage, aucune écriture persistante ni ouverture IndexedDB ; campagne protégée.",
+      "reviewer": "CI automatisée ; preuves et limites relues",
+      "sourceDigest": "a696209c55003e9b9d8878eb07e7b180f84f5f8b71a8fc02930b48a5b7498aa7",
+      "limitation": "Recette bornée de développement ; aucune qualification de campagne complète.",
+      "sourceCommit": "1137faaf80051b37fa2205af73414bed099024a9",
+      "browserChecks": {
+        "operations": [],
+        "historical": []
+      },
+      "proofFiles": [
+        "qa-operations/browser-final/dev-travel-report.json",
+        "qa-operations/browser-final/dev-wolf-verification.json"
+      ]
     },
     {
       "id": "OPS-Q22",
@@ -1068,10 +1630,20 @@
       "name": "Types, lint et build",
       "criterion": "Exécuter les portes applicables sur la version candidate publiée.",
       "source": "package.json; .github/workflows",
-      "result": "À exécuter",
-      "evidence": "Local : lint strict et build production réussis ; qa-operations/local-verification.json, local-lint.log et local-production-build.log. CI de la version publiée encore attendue.",
-      "reviewer": "Intégration locale",
-      "sourceDigest": "c8a06e7f59bb4c798ca154011b7adc03724fe4e219ac3f8c454c199926bc22af"
+      "result": "Réussi",
+      "evidence": "Compilation, lint et build acquis sur la tête 1137faaf ; 15/15 workflows terminés avec succès, dont les cinq jobs du garde V94 global. Preview Vercel prête sur cette source.",
+      "reviewer": "Intégration CI ; 15/15 workflows réussis",
+      "sourceDigest": "a696209c55003e9b9d8878eb07e7b180f84f5f8b71a8fc02930b48a5b7498aa7",
+      "limitation": "La preview prête confirme le déploiement de la source ; elle ne constitue pas une recette navigateur contre son URL.",
+      "sourceCommit": "1137faaf80051b37fa2205af73414bed099024a9",
+      "browserChecks": {
+        "operations": [],
+        "historical": []
+      },
+      "proofFiles": [
+        "qa-operations/browser-final/ci-workflows-final.json",
+        "qa-operations/browser-final/README.md"
+      ]
     },
     {
       "id": "OPS-Q23",
@@ -1080,9 +1652,18 @@
       "criterion": "Œuvre/plan/page observé, extrapolation écrite, contrôle humain sur le rendu réellement affiché.",
       "source": "references.md; operations-spec.md",
       "result": "À exécuter",
-      "evidence": "",
-      "reviewer": "",
-      "sourceDigest": ""
+      "evidence": "Références et extrapolations documentées ; captures finales disponibles pour la comparaison.",
+      "reviewer": "Revue humaine attendue",
+      "sourceDigest": "",
+      "limitation": "Revue humaine œuvre/plan/page et avis artistique 1:1 toujours attendus.",
+      "sourceCommit": "",
+      "browserChecks": {
+        "operations": [],
+        "historical": []
+      },
+      "proofFiles": [
+        "references.md"
+      ]
     },
     {
       "id": "OPS-Q24",
@@ -1090,10 +1671,29 @@
       "name": "Sources graphiques",
       "criterion": "Fichiers séparés présents, dimensions/alpha et empreintes ; aucun nouveau dessin déclaré.",
       "source": "operations-catalogue.json",
-      "result": "À exécuter",
-      "evidence": "28 réemplois présents et empreintes enregistrées ; inventaire global vérifié dans qa-operations/local-verification.json. Revue exhaustive dimensions/alpha du sous-ensemble encore attendue.",
-      "reviewer": "",
-      "sourceDigest": "c8a06e7f59bb4c798ca154011b7adc03724fe4e219ac3f8c454c199926bc22af"
+      "result": "Réussi",
+      "evidence": "asset-audit.json : 28/28 fichiers présents, décodés et non vides ; SHA concordants ; dimensions mesurées ; 21 transparences et 7 fonds opaques valides.",
+      "reviewer": "Audit technique des fichiers, Pillow 13.0.0",
+      "sourceDigest": "a696209c55003e9b9d8878eb07e7b180f84f5f8b71a8fc02930b48a5b7498aa7",
+      "limitation": "Audit exécuté sur la source 5b56b189, conservée dans son rapport ; fichiers réemployés inchangés. Ce contrôle technique ne vaut pas avis humain.",
+      "sourceCommit": "5b56b18926cb66b3158daeea6cff63a387e871fb",
+      "browserChecks": {
+        "operations": [
+          {
+            "index": 27,
+            "name": "All requested assets and actual room/crew images load without uncaught browser errors"
+          }
+        ],
+        "historical": [
+          {
+            "index": 22,
+            "name": "Clan ship and shared service artwork load without browser errors"
+          }
+        ]
+      },
+      "proofFiles": [
+        "qa-operations/asset-audit.json"
+      ]
     },
     {
       "id": "OPS-Q25",
@@ -1102,9 +1702,18 @@
       "criterion": "Recalculer, vérifier formules et entrées modifiables, rendre toutes les feuilles et exporter.",
       "source": "build-operations-workbook.mjs",
       "result": "Réussi",
-      "evidence": "operations-workbook-verification.json ; recalcul, compteurs, modification puis restauration des entrées, absence d’erreur de formule, rendus inspectés couvrant les 8 feuilles.",
-      "reviewer": "Contrôles automatisés et revue visuelle du classeur",
-      "sourceDigest": "a696209c55003e9b9d8878eb07e7b180f84f5f8b71a8fc02930b48a5b7498aa7"
+      "evidence": "operations-workbook-verification.json : recalcul, compteurs, entrées de suivi, formules, export et revue des plages modifiées du classeur.",
+      "reviewer": "Contrôles automatisés et revue technique du classeur",
+      "sourceDigest": "a696209c55003e9b9d8878eb07e7b180f84f5f8b71a8fc02930b48a5b7498aa7",
+      "limitation": "Le contrôle du classeur ne valide ni gameplay supplémentaire ni art 1:1.",
+      "sourceCommit": "1137faaf80051b37fa2205af73414bed099024a9",
+      "browserChecks": {
+        "operations": [],
+        "historical": []
+      },
+      "proofFiles": [
+        "operations-workbook-verification.json"
+      ]
     },
     {
       "id": "OPS-Q26",
@@ -1577,12 +2186,25 @@
     }
   ],
   "publication": {
-    "status": "Vérifications locales terminées ; publication et recette navigateur attendues",
-    "pullRequest": null,
-    "commit": null,
-    "verifiedAt": null,
+    "status": "Source de PR112 vérifiée ; 15/15 workflows réussis ; documentation finale",
+    "pullRequest": "https://github.com/darknigthmare/yautja-la-longue-chasse/pull/112",
+    "commit": "1137faaf80051b37fa2205af73414bed099024a9",
+    "verifiedAt": "2026-11-05T05:35:17.497798+00:00",
     "remoteBase": "9653e2e287e522ebf8867209a594033f8c1fb89b",
-    "localCheckpoint": "f623fefeb4987d725c369da646af0e5b9753f47f"
+    "localCheckpoint": "f623fefeb4987d725c369da646af0e5b9753f47f",
+    "workflowSummary": {
+      "passed": 15,
+      "total": 15,
+      "pending": [],
+      "manifest": "qa-operations/browser-final/ci-workflows-final.json"
+    },
+    "preview": {
+      "status": "READY",
+      "sourceCommit": "1137faaf80051b37fa2205af73414bed099024a9",
+      "deploymentId": "dpl_9kEF8mB7Dkbxabc3F5pjJ9r7uhJR",
+      "url": "https://yautja-la-longue-chasse-gxkssu99y-darknigthmares-projects.vercel.app",
+      "limit": "Déploiement de la source confirmé ; aucune recette navigateur contre cette URL déduite."
+    }
   },
   "verificationRuns": [
     {
@@ -1619,6 +2241,80 @@
           "status": "passed"
         }
       ]
+    },
+    {
+      "id": "ci-1137faaf",
+      "date": "2026-11-05",
+      "scope": "Recettes ciblées de la tête publiée ; portée et fixtures explicites",
+      "sourceCommit": "1137faaf80051b37fa2205af73414bed099024a9",
+      "sourceDigest": "a696209c55003e9b9d8878eb07e7b180f84f5f8b71a8fc02930b48a5b7498aa7",
+      "manifest": "qa-operations/browser-final/clan-ship-verification.json",
+      "runUrl": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41972172619",
+      "checks": [
+        {
+          "name": "Domaine Clan Ship/campagne/archives/callbacks",
+          "status": "passed",
+          "tests": 277,
+          "failed": 0,
+          "skipped": 0
+        },
+        {
+          "name": "Navigateur intérieur historique",
+          "status": "passed",
+          "checks": 22
+        },
+        {
+          "name": "Navigateur opérations",
+          "status": "passed",
+          "checks": 27,
+          "orders": 49,
+          "orderTypes": 8,
+          "availableOrderTypes": 9
+        },
+        {
+          "name": "Navigateur /dev",
+          "status": "passed",
+          "checks": 20,
+          "manifest": "qa-operations/browser-final/dev-wolf-verification.json"
+        },
+        {
+          "name": "Navigateur Wolf/arrivées",
+          "status": "passed",
+          "checks": 32,
+          "manifest": "qa-operations/browser-final/dev-wolf-verification.json"
+        },
+        {
+          "name": "Workflows GitHub de la tête finale",
+          "status": "passed",
+          "workflows": 15,
+          "manifest": "qa-operations/browser-final/ci-workflows-final.json"
+        }
+      ],
+      "limits": [
+        "The primary browser context starts from a disclosed adult campaign already aboard; it earns the welcome, mandate, four interior contracts and four recruits through UI.",
+        "The six-crew context is an isolated disclosed fixture prepared by production reducers with two synthetic field-hunt receipts. These hunts are not browser-played.",
+        "Eight of nine order types are exercised in the browser. Recharge is model-tested but not clicked in this browser path.",
+        "The browser defeat path is tactical timeout at turn 16. It is not a hull-exhaustion defeat proof.",
+        "Revue artistique humaine non acquise."
+      ]
+    },
+    {
+      "id": "asset-audit-5b56b189",
+      "date": "2026-11-05T04:59:06.136611+00:00",
+      "scope": "Audit technique historique des 28 images réemployées ; empreintes inchangées",
+      "sourceCommit": "5b56b18926cb66b3158daeea6cff63a387e871fb",
+      "sourceDigest": "a696209c55003e9b9d8878eb07e7b180f84f5f8b71a8fc02930b48a5b7498aa7",
+      "manifest": "qa-operations/asset-audit.json",
+      "status": "passed",
+      "files": 28,
+      "reportSha256": "5692da7b005ea3a34801d9d7eab3a9309924ebb0962a11a9d77219448529e323",
+      "humanArtReview": "pending"
     }
+  ],
+  "gettingStarted": [
+    "Pont personnel : Clan Ship AVP · vaisseau-mère → Approcher le Clan Ship → Amarrer le vaisseau → Entrer dans le Clan Ship.",
+    "Accueil : hangar, soins, archives ; rejoindre ensuite le conseil et accepter le mandat.",
+    "E au clavier / A à la manette : service proche. R au clavier / X à la manette : dossier du poste ou table holo du conseil.",
+    "Contrat terrain : accepter au conseil, rejoindre le hangar et son vaisseau personnel, désamarrer, puis ouvrir Contrat du clan · nom du contrat sur le pont."
   ]
 }

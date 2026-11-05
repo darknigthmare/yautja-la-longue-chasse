@@ -1,0 +1,347 @@
+{
+  "schema": 1,
+  "expectedSourceCommit": "1137faaf80051b37fa2205af73414bed099024a9",
+  "repository": "darknigthmare/yautja-la-longue-chasse",
+  "checks": [
+    {
+      "label": "dev-travel",
+      "runId": 41972172707,
+      "jobId": 127062713220,
+      "workflowUrl": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41972172707",
+      "jobConclusion": "success",
+      "jobStatus": "completed",
+      "reportPath": "outputs/ci-final-1137faaf/dev-travel/report.json",
+      "sourceCommit": "1137faaf80051b37fa2205af73414bed099024a9",
+      "reportedCheckoutCommit": null,
+      "exactCheckoutConfirmedFromJobLog": true,
+      "workingTreeDirty": false,
+      "passed": true,
+      "browserChecks": 20,
+      "passedBrowserChecks": 20,
+      "failedBrowserChecks": [],
+      "nodeTests": {
+        "tests": 72,
+        "pass": 72,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      },
+      "uncaughtErrors": [],
+      "missingAssets": [],
+      "consoleErrors": [],
+      "requestedAssets": 382,
+      "screenshots": 13,
+      "runtime": "actual Next /dev route and production scene components",
+      "headed": true,
+      "sourceHashesCount": 20,
+      "sourceHashMismatches": [],
+      "captureHashesCount": 13,
+      "captureHashMismatches": [],
+      "artifactId": 13389893059,
+      "artifactName": "dev-travel-browser-1137faaf80051b37fa2205af73414bed099024a9",
+      "verifiedZipDigest": "sha256:04d553bcb2e4661a96e1b063f59af02cd0f297d70f459fc8843f584d28489034",
+      "browserChecksDetails": [
+        {
+          "name": "Hidden /dev route opens directly with noindex and a complete destination catalogue",
+          "passed": true
+        },
+        {
+          "name": "Category and accent-insensitive search filter actual destination buttons",
+          "passed": true
+        },
+        {
+          "name": "Keyboard launch opens the real personal deck, movement works, and reset restores the starting point",
+          "passed": true
+        },
+        {
+          "name": "Changing equipment in the test armory stays in memory and returning preserves the personal deck",
+          "passed": true
+        },
+        {
+          "name": "All seven Clan Ship room arrivals mount the real interior and their authored scenery",
+          "passed": true
+        },
+        {
+          "name": "Approach, docking and boarding use the real Clan Ship transitions within the test session",
+          "passed": true
+        },
+        {
+          "name": "Homeworld port and market open at distinct real city positions, and city movement works",
+          "passed": true
+        },
+        {
+          "name": "A regional destination opens its live village, and F8 returns to the catalogue even from its modal",
+          "passed": true
+        },
+        {
+          "name": "All nine Wolf castle arrivals render their real rooms, accept movement and reset the disposable visit",
+          "passed": true
+        },
+        {
+          "name": "Wolf approach, boarding, settings and departure use native actions, and F8 escapes its real map",
+          "passed": true
+        },
+        {
+          "name": "All eight arrival entries preload their native resources and identify the correct mission, planet, hunter and ship",
+          "passed": true
+        },
+        {
+          "name": "Arrival pause, mobile controls, reload, reset and native Skip preserve the campaign and enter one real hunt",
+          "passed": true
+        },
+        {
+          "name": "A full natural arrival presents all eight shots and hands the same mission to one real hunt without storage writes",
+          "passed": true
+        },
+        {
+          "name": "A real mission keeps its position and clock after walking into a newly discovered room",
+          "passed": true
+        },
+        {
+          "name": "Direct bookmarked room URLs and reload recreate a disposable session",
+          "passed": true
+        },
+        {
+          "name": "Unknown destination is recoverable through the catalogue",
+          "passed": true
+        },
+        {
+          "name": "Mobile catalogue and Clan Ship support touch at 390 px without horizontal overflow",
+          "passed": true
+        },
+        {
+          "name": "An empty browser can visit and reset a real room without creating any save or database",
+          "passed": true
+        },
+        {
+          "name": "Leaving development returns to the ordinary game menu with no developer navigation entry",
+          "passed": true
+        },
+        {
+          "name": "Visited development scenes produce no missing asset, uncaught JavaScript exception or storage write",
+          "passed": true
+        }
+      ],
+      "storageOperations": 0,
+      "databaseOpens": 0,
+      "storageCheckCount": 50,
+      "protectedStorageChecks": 49,
+      "emptyContextChecks": [
+        {
+          "label": "empty-browser-after-reset-and-return",
+          "keys": 0,
+          "sha256": "43562eae6647a8177bc36000b2cb66721b6832a2425d55b66d3f78cedb628988"
+        }
+      ],
+      "clanRoomsVisited": [
+        "archives",
+        "armurerie",
+        "conseil",
+        "entrainement",
+        "hangar",
+        "soins",
+        "trophees"
+      ],
+      "unavailableRoomAssets": [],
+      "arrivalHandoffs": [
+        {
+          "id": "arrival-jungle-vey",
+          "run": "dev-arrival:jungle-vey:2000-01-01T00:00:00.041Z",
+          "status": "complete",
+          "completedBy": "skipped",
+          "elapsed": 133.30000000000007,
+          "mission": "jungle-vey",
+          "huntGeneration": 0,
+          "huntCanvasMounts": 1
+        },
+        {
+          "id": "arrival-jungle-vey",
+          "run": "dev-arrival:jungle-vey:2000-01-01T00:00:00.041Z",
+          "status": "complete",
+          "completedBy": "natural",
+          "elapsed": 62000,
+          "mission": "jungle-vey",
+          "huntGeneration": 0,
+          "huntCanvasMounts": 1
+        }
+      ],
+      "scope": "Direct travel, real movement and mission startup, Wolf castle rooms and approach, eight planetary arrivals with natural and skipped handoffs, reset, URL entry, keyboard and touch, and campaign storage isolation. No complete campaign, art approval or performance qualification."
+    },
+    {
+      "label": "wolf-arrival",
+      "runId": 41972172611,
+      "jobId": 127062712793,
+      "workflowUrl": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41972172611",
+      "jobConclusion": "success",
+      "jobStatus": "completed",
+      "reportPath": "outputs/ci-final-1137faaf/wolf-arrival/report.json",
+      "sourceCommit": "1137faaf80051b37fa2205af73414bed099024a9",
+      "reportedCheckoutCommit": "1137faaf80051b37fa2205af73414bed099024a9",
+      "exactCheckoutConfirmedFromJobLog": true,
+      "workingTreeDirty": false,
+      "passed": true,
+      "browserChecks": 32,
+      "passedBrowserChecks": 32,
+      "failedBrowserChecks": [],
+      "nodeTests": {
+        "tests": 284,
+        "pass": 284,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      },
+      "uncaughtErrors": [],
+      "missingAssets": [],
+      "consoleErrors": null,
+      "requestedAssets": 185,
+      "screenshots": 27,
+      "runtime": "actual desktop GameClient via Vite",
+      "headed": true,
+      "sourceHashesCount": 0,
+      "sourceHashMismatches": [],
+      "captureHashesCount": 0,
+      "captureHashMismatches": [],
+      "artifactId": 13389824349,
+      "artifactName": "wolf-arrival-browser-008220ca7289d3e0bf9f62ee7bf47b4b5d17dc63",
+      "verifiedZipDigest": "sha256:2bfada4d7493533e7cdcc7ab99b8aaf25be6fc6cb8074342aea5543e308cd9df",
+      "browserChecksDetails": [
+        {
+          "name": "Main menu resumes the existing campaign on the personal deck",
+          "passed": true
+        },
+        {
+          "name": "The orbital castle remains separate from the personal hull and Clan Ship",
+          "passed": true
+        },
+        {
+          "name": "Walking reaches the airlock, vestibule, gallery and real archive terminal",
+          "passed": true
+        },
+        {
+          "name": "Castle room and personal hull survive menu, reload and Continue",
+          "passed": true
+        },
+        {
+          "name": "The audience and council preserve one campaign decision",
+          "passed": true
+        },
+        {
+          "name": "The three-seal court trial is traversed and completed without campaign rewards",
+          "passed": true
+        },
+        {
+          "name": "The royal court starts a real three-guard fight with damage and a saved exact position",
+          "passed": true
+        },
+        {
+          "name": "A paused fight survives menu and reload without recovering health or resetting the guard",
+          "passed": true
+        },
+        {
+          "name": "A real browser tab change pauses the fight and returning never resumes it implicitly",
+          "passed": true
+        },
+        {
+          "name": "Taking the announced hits ends in defeat, then restart creates one fresh attempt",
+          "passed": true
+        },
+        {
+          "name": "Combat controls fit 320 pixels and abandoning unlocks the same court safely",
+          "passed": true
+        },
+        {
+          "name": "Ordinary keyboard movement, timed parries, dodges and attacks defeat the three guards",
+          "passed": true
+        },
+        {
+          "name": "Castle navigation and return remain usable at 390 and 320 pixels",
+          "passed": true
+        },
+        {
+          "name": "The accepted audience grants a new mandate whose objectives require fresh station interactions",
+          "passed": true
+        },
+        {
+          "name": "A partially explored mandate survives Save, menu, reload and Continue with the same training dossier",
+          "passed": true
+        },
+        {
+          "name": "The gallery and council complete the three objectives and unlock the separate sentinel encounter",
+          "passed": true
+        },
+        {
+          "name": "The paused mandate reloads the same sentinel, damaged health, position and elapsed time before explicit resume",
+          "passed": true
+        },
+        {
+          "name": "Real movement, parries, dodges and attacks beat all sentinel phases without healing or an early reward",
+          "passed": true
+        },
+        {
+          "name": "The return guide reaches the audience and a refused reward write keeps the victory and balance unclaimed",
+          "passed": true
+        },
+        {
+          "name": "Retrying the same audience action commits exactly two marks together with the campaign receipt",
+          "passed": true
+        },
+        {
+          "name": "The completed mandate keeps one receipt and one reward after reload, another audience consultation and departure",
+          "passed": true
+        },
+        {
+          "name": "A campaign launch freezes a single run, destination, ship and hunter before any hunt mounts",
+          "passed": true
+        },
+        {
+          "name": "A real browser tab change suspends arrival and preserves the same mission on return",
+          "passed": true
+        },
+        {
+          "name": "Arrival pause freezes active time and reduced-motion keeps the same mission",
+          "passed": true
+        },
+        {
+          "name": "Arrival menu, reload and Continue retain the same run without a gameplay sidecar",
+          "passed": true
+        },
+        {
+          "name": "A refused handoff leaves the hunt unmounted and can retry the same run once",
+          "passed": true
+        },
+        {
+          "name": "Reload after handoff resumes the real hunt and never replays arrival",
+          "passed": true
+        },
+        {
+          "name": "A second isolated campaign launches the full moving arrival",
+          "passed": true
+        },
+        {
+          "name": "The title, actual carrier and separate capsule are presented before the descent",
+          "passed": true
+        },
+        {
+          "name": "Descent reload retains mission and run, then explicitly resumes the same shot",
+          "passed": true
+        },
+        {
+          "name": "Atmosphere, ground impact and the selected hunter lead to exactly one natural handoff",
+          "passed": true
+        },
+        {
+          "name": "The complete route has no browser exception and every requested visual is available",
+          "passed": true
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "Bounded browser automation; no whole-campaign, performance or complete visual approval.",
+    "Wolf records uncaught page errors but does not expose a consoleErrors collection.",
+    "Only /dev provides per-source-file hashes and per-capture hashes; all ZIP bytes for both artifacts match GitHub's digest.",
+    "Wolf artifact name uses github.sha (PR merge ref); the checkout and reported runtime both use the exact PR head."
+  ]
+}
