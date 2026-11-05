@@ -11,6 +11,8 @@ import type { HunterAppearance, Loadout } from './types';
 import type { SceneAudioPort } from './systems/sceneAudio';
 import { useMenuGamepad } from './useMenuGamepad';
 import { PlanetArrivalAudio } from './systems/planetArrivalAudio';
+import { ARRIVAL_SPRITES, carrierArtForShip, planetArtForDestination } from './systems/planetArrivalArt';
+import { ARRIVAL_STAGE, arrivalCarrierPose, arrivalFlightPose, arrivalGroundCamera, attachmentToStage, fitArrivalStage } from './systems/planetArrivalSpatial';
 import {
   PLANET_ARRIVAL_CONTACT_PROGRESS, PLANET_ARRIVAL_DURATION_MS, PLANET_ARRIVAL_SHOTS, advancePlanetArrival,
   completePlanetArrivalHandoff, failPlanetArrivalHandoff, pausePlanetArrival,
@@ -43,7 +45,10 @@ const clamp01 = (value: number) => Math.max(0, Math.min(1, value));
 const mix = (from: number, to: number, progress: number) => from + (to - from) * clamp01(progress);
 const smooth = (progress: number) => { const p = clamp01(progress); return p * p * (3 - 2 * p); };
 const percent = (value: number) => `${value}%`;
-const WORLD_WIDTH = 1280;
+const CARRIER_WIDTH = 550;
+const FLIGHT_WIDTH = 112;
+const angleBetween = (from: { x: number; y: number }, to: { x: number; y: number }, width: number, height: number) =>
+  Math.atan2((to.y - from.y) * height, (to.x - from.x) * width) * 180 / Math.PI;
 // The selected rig is preloaded from orbit but animates only once the door opens.
 // Memoization avoids rebuilding its many image layers during the other seven shots.
 const ArrivalHunter = memo(HunterRigPreview);
@@ -57,6 +62,7 @@ export default function PlanetArrivalCinematic({ state, appearance, loadout, gau
   const busyRef = useRef(false);
   const lastFrameRef = useRef<number | null>(null);
   const rootRef = useRef<HTMLElement>(null);
+  const sceneRef = useRef<HTMLDivElement>(null);
   const primaryRef = useRef<HTMLButtonElement>(null);
   const keyboardArmedRef = useRef(false);
   const keyboardDownRef = useRef(new Set<string>());
@@ -68,6 +74,7 @@ export default function PlanetArrivalCinematic({ state, appearance, loadout, gau
   const [failedAssets, setFailedAssets] = useState<readonly string[]>([]);
   const [systemReducedMotion, setSystemReducedMotion] = useState(false);
   const [pauseReason, setPauseReason] = useState('');
+  const [stageFit, setStageFit] = useState(() => fitArrivalStage(0, 0));
   const callbackRef = useRef({ onCheckpoint, onHandoff, onExit, suspended, checkpointBlocked });
   const sources = useMemo(() => planetArrivalAssets(state), [state]);
   const sourceKey = sources ? Object.values(sources).join('|') : '';
@@ -76,6 +83,21 @@ export default function PlanetArrivalCinematic({ state, appearance, loadout, gau
   const groundFrame = useMemo(() => backgroundSourceRectForBiome(state.biomeId,
     getWorldScreenAtX(state.missionId, landing.spawnX).layers.background.band), [state.biomeId, state.missionId, landing.spawnX]);
   const motionReduced = reducedMotion || systemReducedMotion;
+
+  // One film plane, uniformly scaled on every viewport. A portrait layout must
+  // never stretch a trajectory, an asset or its attachment points independently.
+  useEffect(() => {
+    const scene = sceneRef.current;
+    if (!scene) return;
+    const update = () => {
+      const next = fitArrivalStage(scene.clientWidth, scene.clientHeight);
+      setStageFit(previous => previous.scale === next.scale && previous.left === next.left && previous.top === next.top ? previous : next);
+    };
+    update();
+    const observer = new ResizeObserver(update);
+    observer.observe(scene);
+    return () => observer.disconnect();
+  }, []);
 
   useEffect(() => { callbackRef.current = { onCheckpoint, onHandoff, onExit, suspended, checkpointBlocked }; }, [onCheckpoint, onHandoff, onExit, suspended, checkpointBlocked]);
   useEffect(() => { mountedRef.current = true; return () => { mountedRef.current = false; }; }, []);
@@ -303,28 +325,65 @@ export default function PlanetArrivalCinematic({ state, appearance, loadout, gau
   const paused = timeline.status === 'paused' || timeline.status === 'prepared';
   const showOverlay = paused || terminal || loading;
   const planetVisible = !landed && !atmospheric && shot.id !== 'orbit' && shot.id !== 'title';
-  const carrierX = shot.id === 'release' ? mix(54, 83, smooth(p)) : mix(12, 54, smooth(p));
-  const carrierY = shot.id === 'release' ? mix(42, 23, smooth(p)) : mix(57, 42, smooth(p));
-  const carrierScale = shot.id === 'release' ? mix(1, .52, p) : mix(.22, 1, p);
-  const podX = shot.id === 'release' ? mix(54, 64, smooth(p)) : shot.id === 'descent' ? mix(64, 69, p) : mix(64, 54, p);
-  const podY = shot.id === 'release' ? mix(45, 65, smooth(p)) : shot.id === 'descent' ? mix(65, 85, p) : mix(23, 62, p);
-  // Flight art is authored nose-right. Orient it along the screen trajectory;
-  // the separate trail is flipped so its origin stays at the capsule's rear.
-  const flightAngle = atmospheric ? 116 : shot.id === 'descent' ? 64 : 46;
-  const flightScale = shot.id === 'release' ? mix(.42, .8, p) : shot.id === 'descent' ? mix(.8, 1.3, p) : mix(1.1, 1.4, p);
-  const groundProgress = shot.id === 'landing' ? smooth(p / PLANET_ARRIVAL_CONTACT_PROGRESS) : 1;
+  const carrierArt = carrierArtForShip(state.personalShipId);
+  const carrierHeight = CARRIER_WIDTH * carrierArt.height / carrierArt.width;
+  // Mirror a left-facing source, then rotate the complete hull and its sockets.
+  // Rotating the source by 180 degrees would put the ship upside down.
+  const carrierFacing = carrierArt.nose.x < carrierArt.tail.x ? -1 : 1;
+  const carrierHeading = angleBetween({ x: carrierArt.tail.x * carrierFacing, y: carrierArt.tail.y },
+    { x: carrierArt.nose.x * carrierFacing, y: carrierArt.nose.y }, carrierArt.width, carrierArt.height);
+  const carrierPose = arrivalCarrierPose(shot.id, motionReduced ? .5 : p);
+  const carrierRotation = carrierPose.angle - carrierHeading;
+  const launchPose = arrivalCarrierPose('release', 0);
+  const launchOrigin = attachmentToStage({ ...launchPose, angle: launchPose.angle - carrierHeading },
+    (carrierArt.release.x - .5) * CARRIER_WIDTH * carrierFacing, (carrierArt.release.y - .5) * carrierHeight);
+  const flightPose = arrivalFlightPose(shot.id, motionReduced ? .55 : p, launchOrigin);
+  const flightHeight = FLIGHT_WIDTH * ARRIVAL_SPRITES.podFlight.height / ARRIVAL_SPRITES.podFlight.width;
+  const flightHeading = angleBetween(ARRIVAL_SPRITES.podFlight.tail, ARRIVAL_SPRITES.podFlight.nose,
+    ARRIVAL_SPRITES.podFlight.width, ARRIVAL_SPRITES.podFlight.height);
+  const planetArt = planetArtForDestination(state.destinationId);
+  const fallProgress = shot.id === 'landing' ? clamp01(p / PLANET_ARRIVAL_CONTACT_PROGRESS) : 1;
+  // Accelerate into contact; an ease-out before impact made the crash hover.
+  const groundProgress = fallProgress * fallProgress;
   // Reduced motion cuts directly to the grounded pose at the same impact cue.
   const surfaceContact = shot.id === 'egress' || (shot.id === 'landing' && p >= PLANET_ARRIVAL_CONTACT_PROGRESS);
-  const impact = shot.id === 'landing' ? clamp01((p - PLANET_ARRIVAL_CONTACT_PROGRESS) / (1 - PLANET_ARRIVAL_CONTACT_PROGRESS)) : shot.id === 'egress' ? 1 + p : 0;
-  const egress = shot.id === 'egress' ? smooth((p - .12) / .7) : 0;
+  const impactAge = timeline.elapsedMs - (49_000 + 8_000 * PLANET_ARRIVAL_CONTACT_PROGRESS);
+  const dustOpacity = motionReduced ? .16 : clamp01(impactAge / 100) * clamp01(1 - impactAge / 2_600);
+  const dustScale = motionReduced ? 1 : .65 + clamp01(impactAge / 1_800) * .85;
+  const doorOpen = shot.id === 'egress' ? motionReduced ? 1 : smooth(p / .28) : 0;
+  // The hunter appears only once the physical hinged panel has cleared the exit.
+  const egress = shot.id === 'egress' ? smooth((p - .30) / .55) : 0;
+  const hunterOpacity = shot.id === 'egress' ? motionReduced ? 1 : clamp01((p - .30) / .10) : 0;
   const cameraReveal = motionReduced ? 1 : shot.id === 'egress' ? smooth((p - .55) / .45) : 0;
   const hunterCenterX = mix(landing.capsuleX + 12, landing.spawnX + landing.hunterWidth / 2, egress);
   const hunterWidth = landing.hunterHeight * HUNTER_RIG_CANVAS.width / HUNTER_RIG_CANVAS.height;
+  const groundCamera = arrivalGroundCamera(cameraReveal, landing.floorY);
+  const capsuleHeight = landing.capsuleWidth * ARRIVAL_SPRITES.podGround.height / ARRIVAL_SPRITES.podGround.width;
+  const doorWidth = landing.capsuleWidth * ARRIVAL_SPRITES.podDoor.widthInGround;
+  const doorHeight = doorWidth * ARRIVAL_SPRITES.podDoor.height / ARRIVAL_SPRITES.podDoor.width;
   const titleOpacity = shot.id === 'title' ? motionReduced ? 1 : Math.min(clamp01(p * 4), clamp01((1 - p) * 5)) : 0;
   const sceneStyle = { '--arrival-accent': destination?.mission.palette.accent ?? '#d4ad73' } as CSSProperties;
 
   const layer = (path: string | undefined, className: string, style?: CSSProperties, alt = '') => path && !failedAssets.includes(path)
     ? <img src={path} className={className} style={style} alt={alt} draggable={false} onError={() => assetFailed(path)} /> : null;
+
+  const anchor = (name: string, x = 0, y = 0) => <span className={styles.spatialAnchor} data-arrival-anchor={name} style={{ left: x, top: y }} />;
+  const effect = (kind: 'releaseJet' | 'heatTrail', source: 'pod-tail' | 'pod-nose', width: number, opacity: number) => {
+    const art = ARRIVAL_SPRITES[kind];
+    const socket = source === 'pod-tail' ? ARRIVAL_SPRITES.podFlight.tail : ARRIVAL_SPRITES.podFlight.nose;
+    const height = width * art.height / art.width;
+    const artHeading = angleBetween(art.origin, art.end, art.width, art.height);
+    return <div className={styles.effectSocket} data-arrival-vfx-source={source}
+      style={{ left: socket.x * FLIGHT_WIDTH, top: socket.y * flightHeight, opacity }}>
+      <div className={styles.effectRotation} style={{ transform: `rotate(${180 + flightHeading - artHeading}deg)` }}>
+        <div className={styles.effectSprite} style={{ width, height, left: -art.origin.x * width, top: -art.origin.y * height }}>
+          {layer(sources?.[kind], styles.fullAsset)}
+          {anchor(kind === 'heatTrail' ? 'trail-origin' : 'release-origin', art.origin.x * width, art.origin.y * height)}
+          {anchor(kind === 'heatTrail' ? 'trail-end' : 'release-end', art.end.x * width, art.end.y * height)}
+        </div>
+      </div>
+    </div>;
+  };
 
   return (
     <section ref={rootRef} className={styles.arrival} style={sceneStyle} aria-label={`Arrivée sur ${state.destinationDisplayName}`}
@@ -337,48 +396,101 @@ export default function PlanetArrivalCinematic({ state, appearance, loadout, gau
         <div className={styles.shipIdentity}><span>VAISSEAU ENGAGÉ</span><strong>{shipForId(state.personalShipId).name}</strong><small>{destination?.system.name}</small></div>
       </header>
 
-      <div className={styles.scene} role="group" aria-label={`${shot.label}. Destination ${state.destinationDisplayName}.`}
+      <div ref={sceneRef} className={styles.scene} role="group" aria-label={`${shot.label}. Destination ${state.destinationDisplayName}.`}
         data-arrival-scene="true" data-arrival-planet={state.destinationId} data-arrival-ship={state.personalShipId} data-arrival-contact={surfaceContact}>
+        <div className={styles.stage} data-arrival-stage="true" aria-hidden="true"
+          style={{ width: ARRIVAL_STAGE.width, height: ARRIVAL_STAGE.height, transform: `translate(${stageFit.left}px, ${stageFit.top}px) scale(${stageFit.scale})` }}>
         <div className={styles.spaceBackdrop} aria-hidden="true">{layer(sources?.space, styles.cover, { opacity: .85 })}</div>
-        {planetVisible && <div className={styles.planet} aria-hidden="true" style={{ left: motionReduced ? '70%' : percent(shot.id === 'descent' ? mix(73, 68, p) : 73), top: motionReduced ? '31%' : percent(shot.id === 'descent' ? mix(12, 3, p) : 12), width: motionReduced ? '55%' : percent(shot.id === 'descent' ? mix(56, 145, smooth(p)) : 56) }}>
-          {layer(sources?.planet, styles.planetImage)}
+        {planetVisible && <div className={styles.planet} aria-hidden="true" style={{ left: motionReduced ? '70%' : percent(shot.id === 'descent' ? mix(73, 68, p) : 73), top: motionReduced ? '31%' : percent(shot.id === 'descent' ? mix(12, 3, p) : 12), width: motionReduced ? '55%' : percent(shot.id === 'descent' ? mix(56, 145, smooth(p)) : 56),
+          aspectRatio: planetArt ? planetArt.radiusX * planetArt.width / (planetArt.radiusY * planetArt.height) : 1 }}>
+          {planetArt && sources?.planet && !failedAssets.includes(sources.planet) ? <svg className={styles.planetImage} data-arrival-planet-image={sources.planet}
+            viewBox={`${(planetArt.center.x - planetArt.radiusX) * planetArt.width} ${(planetArt.center.y - planetArt.radiusY) * planetArt.height} ${2 * planetArt.radiusX * planetArt.width} ${2 * planetArt.radiusY * planetArt.height}`}
+            preserveAspectRatio="none">
+            <image href={sources.planet} width={planetArt.width} height={planetArt.height} onError={() => assetFailed(sources.planet)} />
+          </svg> : layer(sources?.planet, styles.planetImage)}
         </div>}
-        {carrierVisible && <div className={styles.carrier} aria-hidden="true" style={{ left: percent(motionReduced ? 48 : carrierX), top: percent(motionReduced ? 48 : carrierY), transform: `translate(-50%,-50%) scale(${motionReduced ? .82 : carrierScale})` }}>
-          {layer(sources?.carrier, styles.fullAsset)}
+        {carrierVisible && <div className={styles.carrier} data-arrival-carrier="true" style={{ left: carrierPose.x, top: carrierPose.y, width: CARRIER_WIDTH, height: carrierHeight,
+          transform: `translate(-50%,-50%) rotate(${carrierRotation}deg) scale(${carrierPose.scale})` }}>
+          <div className={styles.carrierArt} style={{ transform: `scaleX(${carrierFacing})` }}>
+            {layer(sources?.carrier, styles.fullAsset)}
+            {anchor('carrier-nose', carrierArt.nose.x * CARRIER_WIDTH, carrierArt.nose.y * carrierHeight)}
+            {anchor('carrier-tail', carrierArt.tail.x * CARRIER_WIDTH, carrierArt.tail.y * carrierHeight)}
+            {anchor('carrier-release', carrierArt.release.x * CARRIER_WIDTH, carrierArt.release.y * carrierHeight)}
+          </div>
         </div>}
-        {shot.id === 'release' && !motionReduced && <div className={styles.releaseJet} aria-hidden="true" style={{ left: percent(podX - 2), top: percent(podY - 1), opacity: clamp01(1 - p * 3), transform: 'translate(-100%,-50%) rotate(55deg) scaleX(-1)' }}>{layer(sources?.releaseJet, styles.fullAsset)}</div>}
-        {atmospheric && <div className={styles.atmosphere} aria-hidden="true">{layer(sources?.clouds, styles.atmosphereClouds, { transform: motionReduced ? 'none' : `translate(${-p * 8}%, ${p * 6}%) scale(1.15)` })}</div>}
-        {flightVisible && <div className={styles.flyingPod} aria-hidden="true" style={{ left: percent(motionReduced ? 55 : podX), top: percent(motionReduced ? 53 : podY), transform: `translate(-50%,-50%) rotate(${flightAngle}deg) scale(${motionReduced ? 1 : flightScale})` }}>
-          {atmospheric && layer(sources?.heatTrail, styles.heatTrail, { opacity: motionReduced ? .75 : .65 + .25 * Math.sin(p * Math.PI), transform: 'scaleX(-1)' })}
-          {layer(sources?.podFlight, styles.fullAsset)}
+        {atmospheric && <div className={styles.atmosphere}>
+          {layer(sources?.clouds, styles.atmosphereClouds, { transform: motionReduced ? 'none' : `translate(${-p * 42}px, ${-p * 30}px) scale(1.15)` })}
+        </div>}
+        {flightVisible && <div className={styles.flyingPod} data-arrival-flight-pod="true" style={{ left: flightPose.x, top: flightPose.y, width: FLIGHT_WIDTH, height: flightHeight,
+          zIndex: shot.id === 'release' ? 3 : 5, transform: `translate(-50%,-50%) rotate(${flightPose.angle - flightHeading}deg) scale(${flightPose.scale})` }}>
+          {shot.id === 'release' && !motionReduced && effect('releaseJet', 'pod-tail', 180, clamp01(1 - p / .24))}
+          {atmospheric && effect('heatTrail', 'pod-nose', 310, motionReduced ? .65 : .68 + .18 * Math.sin(p * Math.PI))}
+          {layer(sources?.podFlight, styles.podFlightImage)}
+          {anchor('pod-nose', ARRIVAL_SPRITES.podFlight.nose.x * FLIGHT_WIDTH, ARRIVAL_SPRITES.podFlight.nose.y * flightHeight)}
+          {anchor('pod-tail', ARRIVAL_SPRITES.podFlight.tail.x * FLIGHT_WIDTH, ARRIVAL_SPRITES.podFlight.tail.y * flightHeight)}
+        </div>}
+        {atmospheric && <div className={styles.nearClouds}>
+          {layer(sources?.clouds, styles.nearCloudImage, { opacity: motionReduced ? .12 : .12 + .08 * Math.sin(p * Math.PI),
+            transform: motionReduced ? 'scale(1.65)' : `translate(${-p * 180}px, ${-p * 120}px) scale(1.65)` })}
         </div>}
 
         <div className={styles.groundScene} aria-hidden="true" style={{ opacity: landed ? 1 : 0 }}>
+          <div className={styles.groundCamera} data-arrival-ground-camera="true"
+            style={{ transform: `translate(${groundCamera.x}px, ${groundCamera.y}px) scale(${groundCamera.scale})` }}>
           {sources?.ground && !failedAssets.includes(sources.ground) && <svg className={styles.groundBackground}
             viewBox={`${groundFrame.x} ${groundFrame.y} ${groundFrame.width} ${groundFrame.height}`} preserveAspectRatio="xMinYMid slice"
             data-arrival-ground-frame={`${groundFrame.x},${groundFrame.y},${groundFrame.width},${groundFrame.height}`}>
             <image href={sources.ground} width={groundFrame.sourceWidth} height={groundFrame.sourceHeight} onError={() => assetFailed(sources.ground)} />
           </svg>}
           <div className={styles.groundShade} />
-          <div className={styles.groundPlane} style={{ top: percent(landing.floorY / landing.height * 100) }} />
-          <div className={styles.groundActors} style={{ transformOrigin: `${percent(landing.capsuleX / WORLD_WIDTH * 100)} ${percent(landing.floorY / landing.height * 100)}`, transform: `translateX(${percent(mix(38, 0, cameraReveal))}) scale(${mix(2.25, 1, cameraReveal)})` }}>
-          {landed && (!motionReduced || surfaceContact) && <div className={styles.groundPod} data-arrival-ground-pod="true" style={{ left: percent(landing.capsuleX / WORLD_WIDTH * 100), top: percent((motionReduced ? landing.floorY : mix(-190, landing.floorY, groundProgress)) / landing.height * 100), width: percent(landing.capsuleWidth / WORLD_WIDTH * 100), height: percent(landing.capsuleHeight / landing.height * 100), transform: 'translate(-50%,-100%)' }}>
+          <div className={styles.groundPlane} style={{ top: landing.floorY }} />
+          {anchor('ground-reference', 0, landing.floorY)}
+          {anchor('ground-capsule-reference', landing.capsuleX, landing.floorY)}
+          <div className={styles.groundActors}>
+          {landed && <div className={styles.groundShadow} style={{ left: landing.capsuleX, top: landing.floorY, width: 92, height: 15,
+            opacity: motionReduced ? .32 : .4 * fallProgress ** 4, transform: `translate(-50%,-50%) scale(${motionReduced ? 1 : mix(.35, 1, fallProgress)})` }} />}
+          {landed && (!motionReduced || surfaceContact) && <div className={styles.groundPod} data-arrival-ground-pod="true" style={{ left: landing.capsuleX,
+            top: motionReduced ? landing.floorY : mix(-190, landing.floorY, groundProgress), width: landing.capsuleWidth, height: capsuleHeight,
+            transform: `translate(-${ARRIVAL_SPRITES.podGround.foot.x * 100}%,-${ARRIVAL_SPRITES.podGround.foot.y * 100}%)` }}>
             {layer(sources?.podGround, styles.fullAsset)}
-            {layer(sources?.podDoor, styles.podDoor, { opacity: shot.id === 'egress' ? motionReduced ? 0 : clamp01(1 - p * 4) : 1, transform: `translate(${shot.id === 'egress' && !motionReduced ? Math.min(35, p * 100) : 0}%,${shot.id === 'egress' && !motionReduced ? Math.min(30, p * 90) : 0}%) rotate(${shot.id === 'egress' && !motionReduced ? Math.min(24, p * 80) : 0}deg)` })}
+            {anchor('pod-ground', ARRIVAL_SPRITES.podGround.foot.x * landing.capsuleWidth, ARRIVAL_SPRITES.podGround.foot.y * capsuleHeight)}
+            <div className={styles.doorSocket} style={{ left: ARRIVAL_SPRITES.podGround.doorHinge.x * landing.capsuleWidth,
+              top: ARRIVAL_SPRITES.podGround.doorHinge.y * capsuleHeight }}>
+              {anchor('door-hinge-reference')}
+              <div className={styles.doorRotation} style={{ transform: `perspective(600px) rotateX(${108 * doorOpen}deg)` }}>
+                <div className={styles.podDoor} style={{ width: doorWidth, height: doorHeight,
+                  left: -ARRIVAL_SPRITES.podDoor.hinge.x * doorWidth, top: -ARRIVAL_SPRITES.podDoor.hinge.y * doorHeight }}>
+                  {layer(sources?.podDoor, styles.fullAsset)}
+                  {anchor('door-hinge', ARRIVAL_SPRITES.podDoor.hinge.x * doorWidth, ARRIVAL_SPRITES.podDoor.hinge.y * doorHeight)}
+                </div>
+              </div>
+            </div>
           </div>}
-          {landed && impact > 0 && <div className={styles.impactDust} style={{ left: percent(landing.capsuleX / WORLD_WIDTH * 100), top: percent(landing.floorY / landing.height * 100), opacity: motionReduced ? .18 : clamp01(1 - (impact - .35) / 1.5), transform: `translate(-40%,-92%) scale(${motionReduced ? 1 : .65 + Math.min(impact, 1.4) * .6})` }}>{layer(sources?.impactDust, styles.fullAsset)}</div>}
+          {landed && surfaceContact && <div className={styles.dustSocket} style={{ left: landing.capsuleX, top: landing.floorY, opacity: dustOpacity, transform: `scale(${dustScale})` }}>
+            <div className={styles.impactDust} style={{ width: 340, height: 340 * ARRIVAL_SPRITES.impactDust.height / ARRIVAL_SPRITES.impactDust.width,
+              transform: `translate(-${ARRIVAL_SPRITES.impactDust.foot.x * 100}%,-${ARRIVAL_SPRITES.impactDust.foot.y * 100}%)` }}>
+              {layer(sources?.impactDust, styles.fullAsset)}
+              {anchor('dust-ground', ARRIVAL_SPRITES.impactDust.foot.x * 340, ARRIVAL_SPRITES.impactDust.foot.y * 340 * ARRIVAL_SPRITES.impactDust.height / ARRIVAL_SPRITES.impactDust.width)}
+            </div>
+          </div>}
+          <div className={styles.groundShadow} style={{ left: motionReduced ? landing.spawnX + landing.hunterWidth / 2 : hunterCenterX,
+            top: landing.floorY, width: 48, height: 8, opacity: hunterOpacity * .45, transform: 'translate(-50%,-50%)' }} />
           {/* Always mounted, including orbit: the actual selected rig preloads its own layers. */}
           <div className={styles.hunter} data-arrival-hunter={appearance.presetId} data-arrival-spawn={state.spawnId}
-            style={{ left: percent((motionReduced ? landing.spawnX + landing.hunterWidth / 2 : hunterCenterX) / WORLD_WIDTH * 100), top: percent(landing.floorY / landing.height * 100), width: percent(hunterWidth / WORLD_WIDTH * 100), opacity: shot.id === 'egress' ? motionReduced ? 1 : clamp01(p * 8) : 0, transform: `translate(-50%, -${HUNTER_RIG_CANVAS.groundY / HUNTER_RIG_CANVAS.height * 100}%)` }}>
+            style={{ left: motionReduced ? landing.spawnX + landing.hunterWidth / 2 : hunterCenterX, top: landing.floorY,
+              width: hunterWidth, opacity: hunterOpacity, transform: `translate(-50%, -${HUNTER_RIG_CANVAS.groundY / HUNTER_RIG_CANVAS.height * 100}%)` }}>
             <ArrivalHunter appearance={appearance} armorId={loadout.armorId} weaponIds={loadout.weaponIds} gearIds={loadout.gearIds}
               gauntletVariantId={gauntletVariantId} size="100%" style={ARRIVAL_RIG_STYLE} pose={!motionReduced && egress > 0 && egress < 1 ? 'run' : 'idle'}
               phase={motionReduced || shot.id !== 'egress' ? 0 : timeline.elapsedMs / 800} speed={!motionReduced && egress > 0 && egress < 1 ? 65 : 0} facing={1} />
+            {anchor('hunter-feet', hunterWidth / 2, landing.hunterHeight * HUNTER_RIG_CANVAS.groundY / HUNTER_RIG_CANVAS.height)}
+          </div>
           </div>
           </div>
         </div>
 
         <div className={styles.vignette} aria-hidden="true" />
         <div className={styles.letterboxTop} aria-hidden="true" /><div className={styles.letterboxBottom} aria-hidden="true" />
+        </div>
         {shot.id === 'title' && <div className={styles.titleCard} style={{ opacity: titleOpacity, transform: `translate(-50%,-50%) scale(${motionReduced ? 1 : mix(1.06, 1, p)})` }} aria-hidden="true"><span>{destination?.system.name}</span><strong>{state.destinationDisplayName}</strong><small>{destination?.mission.subtitle}</small></div>}
         {!showOverlay && <div className={styles.shotCaption}><span>{String(shot.index + 1).padStart(2, '0')} / 08</span><p>{shot.label}</p></div>}
 

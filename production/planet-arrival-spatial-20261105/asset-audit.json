@@ -1,0 +1,2296 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-11-05",
+  "title": "Planet arrival: source-image orientation, pivots and composition audit",
+  "sourceSnapshotCommit": "9653e2e287e522ebf8867209a594033f8c1fb89b",
+  "scope": "Existing arrival sprites, all 55 V12/V14 profile source images, and 8 campaign globe sources. Read-only asset inspection; new calibration code only.",
+  "sourceAssetFilesModified": 0,
+  "newRuntimeCalibrationFile": "app/game/systems/planetArrivalArt.ts",
+  "authoredContractSources": [
+    "AGENTS.md",
+    "docs/GAMEDEV_AGENT_GUIDE.md",
+    "docs/gamedev-skill-sources.json",
+    "production/wolf-castle-arrival-20261104/art-manifest-arrival-and-characters.json",
+    "art-source/v14/ships/ship-generation-prompts.jsonl",
+    "art-source/v14/ships/ship-asset-manifest.json",
+    "art-source/v14/ships/README.md",
+    "app/game/shipCatalogue.ts"
+  ],
+  "inspectionMethod": {
+    "visual": "All 55 ship profiles inspected: 47 V12 profiles on 4 labelled contact sheets composited onto an opaque dark background, 8 V14 profiles individually. All 8 globe sources on one sheet; 6 arrival sprites individually; 4 door fit composites compared.",
+    "pixel": "Pillow and NumPy read native dimensions, alpha bounds and source hashes. A ship release contact is the last alpha > 128 pixel plus one at a manually selected underside column.",
+    "warning": "Raw RGB in fully transparent pixels can contain coloured bands. Alpha inspection confirmed those pixels have alpha 0; they are not reported as visible source defects.",
+    "humanValidation": "Not performed. Existing source human-validation/provenance contracts unchanged."
+  },
+  "historicalBrowserCapturesInspected": {
+    "directory": "production/wolf-castle-arrival-20261104/qa/browser-41827785792",
+    "files": [
+      "10-arrival-carrier.png",
+      "11-arrival-pod-release.png",
+      "21-arrival-descent.png",
+      "12-arrival-atmosphere.png",
+      "13-arrival-ground-impact.png",
+      "14-arrival-hunter-egress.png",
+      "06-arrival-pause-mobile-320.png"
+    ],
+    "meaning": "Evidence of baseline composition only. These old captures do not attest the new implementation."
+  },
+  "findings": [
+    {
+      "id": "ART-01",
+      "severity": "high",
+      "subject": "Carrier heading",
+      "observed": "The baseline moves the classic ship right while its forked prow points left. V12 and V14 sources for the same family may have opposite headings.",
+      "evidence": "public/game/ships/v12/classic-predator-spaceship.webp; historical capture 10-arrival-carrier.png",
+      "correction": "Resolve profile first; preserve native dimensions and calibrate individual forward axis before applying trajectory heading.",
+      "status": "calibration supplied; rendered fix must be verified separately"
+    },
+    {
+      "id": "ART-02",
+      "severity": "high",
+      "subject": "Flight capsule aspect and sockets",
+      "observed": "Baseline container is 2:1 while pod-flight is 1536x1024. object-fit:contain puts additional horizontal margins around the actual 3:2 image. A percentage of the container does not identify a source nozzle or nose.",
+      "correction": "Draw source with native aspect, then transform source-normalized nose, tail and effect origins through the same parent.",
+      "status": "calibration supplied"
+    },
+    {
+      "id": "ART-03",
+      "severity": "high",
+      "subject": "Atmospheric plasma origin and direction",
+      "observed": "The hot source head is near (100,505), not (0,362). The source wake axis is sloped from this point toward (1950,165), approximately -10.4 degrees. A horizontal flip alone neither aligns it to the source axis nor attaches it to the capsule.",
+      "correction": "Anchor the bow shock to the leading nose and rotate its measured source vector opposite projected velocity. Keep the wake behind the capsule body.",
+      "status": "calibration supplied"
+    },
+    {
+      "id": "ART-04",
+      "severity": "high",
+      "subject": "Ejection plume attachment",
+      "observed": "Release-jet is 1774x887 with origin near (280,500). Baseline releaseJet is an independent screen element with constant rotation and its own transform, not a child socket. Historical release capture shows plume below the pod rather than clearly opposite ejection.",
+      "correction": "Use the source emitter pivot and an explicit bay or pod socket with inherited scale/orientation; define the emitting owner so the effect cannot drift.",
+      "status": "calibration supplied"
+    },
+    {
+      "id": "ART-05",
+      "severity": "high",
+      "subject": "Hatch hinge and fit",
+      "observed": "Source depicts an upper hinge; manifest marks hinge-top. Baseline uses transform-origin:bottom left plus translation. Its contain box does not fit the ground opening.",
+      "correction": "Anchor pod hinge at (500,430), door hinge at (512,160), full door width ratio .8. Open around the fixed upper hinge; choose outward perspective rotation explicitly.",
+      "status": "source composite diagnostic compared four fits; final animation requires browser review"
+    },
+    {
+      "id": "ART-06",
+      "severity": "high",
+      "subject": "Ground contact",
+      "observed": "Source pod foot is (507.5,1496) on 1024x1536, but baseline anchors the outer canvas at 100%. contain adds more padding. Historical capture 14 shows visible pod-to-ground gap while hunter feet contact the line.",
+      "correction": "Use measured source foot and uniform world projection shared with contact effects.",
+      "status": "calibration supplied"
+    },
+    {
+      "id": "ART-07",
+      "severity": "medium",
+      "subject": "Dust baseline",
+      "observed": "Impact dust ends near source y760/887; baseline uses a container at translate(-40%,-92%) and aspect-constrained contain. Its visible base can float above the contact line.",
+      "correction": "Use source foot (887,760), scale around that ground point, and assign foreground/background depth deliberately.",
+      "status": "calibration supplied"
+    },
+    {
+      "id": "ART-08",
+      "severity": "medium",
+      "subject": "Opaque globe margins",
+      "observed": "All eight V10 planet plates are opaque 256x256 with black margins and off-centre disks. Border-radius:50% removes a rectangle but retains a broad black disk around the actual planet. This annulus is visible on historical carrier/release/descent captures.",
+      "correction": "Clip each measured ellipse rather than the full square; preserve the existing globe identity and dark limb.",
+      "status": "eight ellipses supplied"
+    },
+    {
+      "id": "ART-09",
+      "severity": "art-review",
+      "subject": "Hatch shape conformity",
+      "observed": "The pointed leaf hatch and the rounded nearly rectangular cavity are not pixel-identical silhouettes. The .8 source-width fit reads better than .62 in static composites, but a transform is not a re-authoring of the panel.",
+      "correction": "Keep this as an artistic adaptation and inspect opening at game scale. Do not declare the sprite canonically reconstructed or human validated.",
+      "status": "remaining artistic limitation"
+    },
+    {
+      "id": "ART-10",
+      "severity": "art-review",
+      "subject": "Strong perspective in some ship profiles",
+      "observed": "Some existing profiles are three-quarter views, especially Upgrade V14. Its historical profile contract requests nose-right, but the raster has pronounced perspective and multiple visible exhausts. Big Game is axis-symmetric; a unique bow cannot be read from that profile.",
+      "correction": "Preserve the source and clearly label authored-view or symmetric screen conventions. A 2D heading fix cannot certify a strict side or 3D reconstruction.",
+      "status": "explicit metadata limitations; no source identity substituted"
+    }
+  ],
+  "arrivalSprites": [
+    {
+      "path": "public/game/planet-arrival/v1/pod-flight.png",
+      "sha256": "aa56b3aebbb87a95e18dec5e07ec714e7e6805aa846c94a9c7eca6921f2e59af",
+      "width": 1536,
+      "height": 1024,
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "visibleBoundsAlpha16": [
+        140,
+        118,
+        1401,
+        869
+      ],
+      "calibration": {
+        "noseSource": [
+          1400,
+          506
+        ],
+        "tailSource": [
+          185,
+          515
+        ],
+        "pivotSource": [
+          768,
+          512
+        ],
+        "role": "capsule in closed flight pose; forward points right"
+      },
+      "sourceModified": false,
+      "review": "source raster visually inspected and dimensions/alpha measured; not human artistic approval"
+    },
+    {
+      "path": "public/game/planet-arrival/v1/heat-trail.png",
+      "sha256": "4f5458d06b543140b1f08dde21ecb17d0966c13312bbf4a7dc6aa086d3f21615",
+      "width": 2172,
+      "height": 724,
+      "alphaExtrema": [
+        0,
+        253
+      ],
+      "visibleBoundsAlpha16": [
+        86,
+        124,
+        2069,
+        606
+      ],
+      "calibration": {
+        "originSource": [
+          100,
+          505
+        ],
+        "endSource": [
+          1950,
+          165
+        ],
+        "role": "leading plasma bow shock and trailing wake; head must attach to the pod nose, not an exhaust nozzle"
+      },
+      "sourceModified": false,
+      "review": "source raster visually inspected and dimensions/alpha measured; not human artistic approval"
+    },
+    {
+      "path": "public/game/planet-arrival/v1/release-jet.png",
+      "sha256": "79a11d67658dc8e4112d9930683968972a57470f5184e97f683493e4faafb3e8",
+      "width": 1774,
+      "height": 887,
+      "alphaExtrema": [
+        0,
+        253
+      ],
+      "visibleBoundsAlpha16": [
+        271,
+        295,
+        1521,
+        641
+      ],
+      "calibration": {
+        "originSource": [
+          280,
+          500
+        ],
+        "endSource": [
+          1420,
+          490
+        ],
+        "role": "ejection plume; emitter has transparent margins and is not on the image edge"
+      },
+      "sourceModified": false,
+      "review": "source raster visually inspected and dimensions/alpha measured; not human artistic approval"
+    },
+    {
+      "path": "public/game/planet-arrival/v1/pod-ground.png",
+      "sha256": "41c48a1405f712adeb46161a037f7ce01b274c87cac9bed0e2c2f48ae70b4a67",
+      "width": 1024,
+      "height": 1536,
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "visibleBoundsAlpha16": [
+        182,
+        40,
+        833,
+        1496
+      ],
+      "calibration": {
+        "footSource": [
+          507.5,
+          1496
+        ],
+        "doorHingeSource": [
+          500,
+          430
+        ],
+        "role": "upright nose-down ground pose; existing front opening is a gameplay adaptation"
+      },
+      "sourceModified": false,
+      "review": "source raster visually inspected and dimensions/alpha measured; not human artistic approval"
+    },
+    {
+      "path": "public/game/planet-arrival/v1/pod-door.png",
+      "sha256": "74bcaded588e30cc2dbae5520288295c68a805b6cb0cfd622157735e10398518",
+      "width": 1024,
+      "height": 1536,
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "visibleBoundsAlpha16": [
+        264,
+        128,
+        760,
+        1411
+      ],
+      "calibration": {
+        "hingeSource": [
+          512,
+          160
+        ],
+        "widthInGround": 0.8,
+        "role": "upper hinge; width ratio uses full source canvases, not visible bounding boxes"
+      },
+      "sourceModified": false,
+      "review": "source raster visually inspected and dimensions/alpha measured; not human artistic approval"
+    },
+    {
+      "path": "public/game/planet-arrival/v1/impact-dust.png",
+      "sha256": "ebb8b3ce439a355d47cc2fc862eaf246d2b090f584533eb482cd0a0e29683b65",
+      "width": 1774,
+      "height": 887,
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "visibleBoundsAlpha16": [
+        66,
+        223,
+        1709,
+        765
+      ],
+      "calibration": {
+        "footSource": [
+          887,
+          760
+        ],
+        "role": "grounded dust expansion, baseline is inside source alpha margins"
+      },
+      "sourceModified": false,
+      "review": "source raster visually inspected and dimensions/alpha measured; not human artistic approval"
+    }
+  ],
+  "planets": [
+    {
+      "destinationId": "planet-oseris-iv",
+      "path": "public/game/planets/v10/planet-oseris-iv.webp",
+      "sha256": "02a43c0f4454017f938b9fbbb1cfcb9b37c48ee4d1a04ffee51f585c8eaecb34",
+      "width": 256,
+      "height": 256,
+      "opaqueBackground": true,
+      "visibleNonBlackBoundsAtRGBMax10": [
+        20,
+        30,
+        240,
+        255
+      ],
+      "calibratedEllipseSource": {
+        "centerX": 130,
+        "centerY": 142,
+        "radiusX": 110,
+        "radiusY": 112
+      },
+      "calibrationMethod": "manual source-raster silhouette review with non-black bounds as supporting measurement; eclipse shadow remains part of globe",
+      "sourceModified": false
+    },
+    {
+      "destinationId": "planet-nivalis-k",
+      "path": "public/game/planets/v10/planet-nivalis-k.webp",
+      "sha256": "be6a183732ef354613ae925fa9270e2b4f0316116bc27b817d17f766bfb7a9fe",
+      "width": 256,
+      "height": 256,
+      "opaqueBackground": true,
+      "visibleNonBlackBoundsAtRGBMax10": [
+        16,
+        29,
+        237,
+        255
+      ],
+      "calibratedEllipseSource": {
+        "centerX": 126,
+        "centerY": 142,
+        "radiusX": 110,
+        "radiusY": 113
+      },
+      "calibrationMethod": "manual source-raster silhouette review with non-black bounds as supporting measurement; eclipse shadow remains part of globe",
+      "sourceModified": false
+    },
+    {
+      "destinationId": "planet-cinder-12",
+      "path": "public/game/planets/v10/planet-cinder-12.webp",
+      "sha256": "26135f5c422df242751d323c1d6c30f0a119de31780d577063fd3086e107cd61",
+      "width": 256,
+      "height": 256,
+      "opaqueBackground": true,
+      "visibleNonBlackBoundsAtRGBMax10": [
+        14,
+        31,
+        233,
+        255
+      ],
+      "calibratedEllipseSource": {
+        "centerX": 123,
+        "centerY": 143,
+        "radiusX": 110,
+        "radiusY": 112
+      },
+      "calibrationMethod": "manual source-raster silhouette review with non-black bounds as supporting measurement; eclipse shadow remains part of globe",
+      "sourceModified": false
+    },
+    {
+      "destinationId": "planet-naraka-delta",
+      "path": "public/game/planets/v10/planet-naraka-delta.webp",
+      "sha256": "617970fc2b5caf955febc8a4ed1b2974eca2e72c0c3ac36c6c05433ce291c7c6",
+      "width": 256,
+      "height": 256,
+      "opaqueBackground": true,
+      "visibleNonBlackBoundsAtRGBMax10": [
+        11,
+        30,
+        231,
+        254
+      ],
+      "calibratedEllipseSource": {
+        "centerX": 121,
+        "centerY": 142,
+        "radiusX": 110,
+        "radiusY": 112
+      },
+      "calibrationMethod": "manual source-raster silhouette review with non-black bounds as supporting measurement; eclipse shadow remains part of globe",
+      "sourceModified": false
+    },
+    {
+      "destinationId": "planet-serekh-9",
+      "path": "public/game/planets/v10/planet-serekh-9.webp",
+      "sha256": "4ae7cb12427dc2bf67112784dc6a40ec0f8cf2075e3facccc2a3fb159357c2df",
+      "width": 256,
+      "height": 256,
+      "opaqueBackground": true,
+      "visibleNonBlackBoundsAtRGBMax10": [
+        13,
+        29,
+        232,
+        255
+      ],
+      "calibratedEllipseSource": {
+        "centerX": 122,
+        "centerY": 142,
+        "radiusX": 110,
+        "radiusY": 113
+      },
+      "calibrationMethod": "manual source-raster silhouette review with non-black bounds as supporting measurement; eclipse shadow remains part of globe",
+      "sourceModified": false
+    },
+    {
+      "destinationId": "planet-pelagos-m",
+      "path": "public/game/planets/v10/planet-pelagos-m.webp",
+      "sha256": "884e1bbd6c8d81f7b570189a92d4cda606602959a012a54234058405fc4ca80f",
+      "width": 256,
+      "height": 256,
+      "opaqueBackground": true,
+      "visibleNonBlackBoundsAtRGBMax10": [
+        6,
+        29,
+        227,
+        254
+      ],
+      "calibratedEllipseSource": {
+        "centerX": 116,
+        "centerY": 142,
+        "radiusX": 110,
+        "radiusY": 112
+      },
+      "calibrationMethod": "manual source-raster silhouette review with non-black bounds as supporting measurement; eclipse shadow remains part of globe",
+      "sourceModified": false
+    },
+    {
+      "destinationId": "planet-mycora-v",
+      "path": "public/game/planets/v10/planet-mycora-v.webp",
+      "sha256": "6c29f777143cb86f5ef2c8b692db15264f96b006488d0d5c94284809cb444f26",
+      "width": 256,
+      "height": 256,
+      "opaqueBackground": true,
+      "visibleNonBlackBoundsAtRGBMax10": [
+        18,
+        21,
+        239,
+        247
+      ],
+      "calibratedEllipseSource": {
+        "centerX": 129,
+        "centerY": 134,
+        "radiusX": 111,
+        "radiusY": 113
+      },
+      "calibrationMethod": "manual source-raster silhouette review with non-black bounds as supporting measurement; eclipse shadow remains part of globe",
+      "sourceModified": false
+    },
+    {
+      "destinationId": "planet-acheron-sigma",
+      "path": "public/game/planets/v10/planet-acheron-sigma.webp",
+      "sha256": "4d1d71e0a6ac701767c6194e9ff4762e6e1a90264b6b75b20fcc37c58aef8385",
+      "width": 256,
+      "height": 256,
+      "opaqueBackground": true,
+      "visibleNonBlackBoundsAtRGBMax10": [
+        16,
+        22,
+        237,
+        240
+      ],
+      "calibratedEllipseSource": {
+        "centerX": 127,
+        "centerY": 134,
+        "radiusX": 111,
+        "radiusY": 112
+      },
+      "calibrationMethod": "manual source-raster silhouette review with non-black bounds as supporting measurement; eclipse shadow remains part of globe",
+      "sourceModified": false
+    }
+  ],
+  "shipProfiles": [
+    {
+      "path": "/game/ships/v12/advanced-predator-ship.webp",
+      "sha256": "580959306fb1376361fa33689eadb72d998cee0744215fd076af44616956015a",
+      "width": 1666,
+      "height": 944,
+      "alpha128Bounds": [
+        65,
+        161,
+        1563,
+        764
+      ],
+      "nose": {
+        "x": 0.04201681,
+        "y": 0.49258475
+      },
+      "tail": {
+        "x": 0.92436975,
+        "y": 0.49258475
+      },
+      "release": {
+        "x": 0.42016807,
+        "y": 0.65572034
+      },
+      "releaseSourcePixels": [
+        700,
+        619
+      ],
+      "releaseMethod": "alpha128 lower outline at a manually selected underside column; screen-space adaptation, not a canonical port",
+      "directionBasis": "visible-hull",
+      "sourceInspection": "agent inspected the actual raster on an opaque background",
+      "humanArtValidation": "Not modified; this source-art inspection is not human validation.",
+      "runtimePriority": "preserve shipCatalogue.ts resolver"
+    },
+    {
+      "path": "/game/ships/v12/avp-2010-mothership.webp",
+      "sha256": "5cba287a764963312eddc6a3c7cf73a276fd42eecf789d812bd5f3f313730bf8",
+      "width": 1774,
+      "height": 887,
+      "alpha128Bounds": [
+        65,
+        133,
+        1723,
+        765
+      ],
+      "nose": {
+        "x": 0.05073281,
+        "y": 0.49605411
+      },
+      "tail": {
+        "x": 0.95264938,
+        "y": 0.49605411
+      },
+      "release": {
+        "x": 0.44532131,
+        "y": 0.80608794
+      },
+      "releaseSourcePixels": [
+        790,
+        715
+      ],
+      "releaseMethod": "alpha128 lower outline at a manually selected underside column; screen-space adaptation, not a canonical port",
+      "directionBasis": "visible-hull",
+      "sourceInspection": "agent inspected the actual raster on an opaque background",
+      "humanArtValidation": "Not modified; this source-art inspection is not human validation.",
+      "runtimePriority": "preserve shipCatalogue.ts resolver"
+    },
+    {
+      "path": "/game/ships/v12/avp-predator-drop-pod.webp",
+      "sha256": "48ac92e8f1cff684144991bddd3b10e487730ef29082c5c74f6f7bb596fad488",
+      "width": 1774,
+      "height": 887,
+      "alpha128Bounds": [
+        277,
+        122,
+        1486,
+        758
+      ],
+      "nose": {
+        "x": 0.1578354,
+        "y": 0.50169109
+      },
+      "tail": {
+        "x": 0.82863585,
+        "y": 0.50169109
+      },
+      "release": {
+        "x": 0.49605411,
+        "y": 0.65050733
+      },
+      "releaseSourcePixels": [
+        880,
+        577
+      ],
+      "releaseMethod": "alpha128 lower outline at a manually selected underside column; screen-space adaptation, not a canonical port",
+      "directionBasis": "visible-hull",
+      "sourceInspection": "agent inspected the actual raster on an opaque background",
+      "humanArtValidation": "Not modified; this source-art inspection is not human validation.",
+      "runtimePriority": "preserve shipCatalogue.ts resolver"
+    },
+    {
+      "path": "/game/ships/v12/avp-predator-mothership.webp",
+      "sha256": "b3a1f965a6a6c11f4be288f2237a6fc2ab31f74932b639e77a1143b71d55831d",
+      "width": 1536,
+      "height": 1024,
+      "alpha128Bounds": [
+        26,
+        203,
+        1508,
+        790
+      ],
+      "nose": {
+        "x": 0.01953125,
+        "y": 0.55664062
+      },
+      "tail": {
+        "x": 0.96354167,
+        "y": 0.55664062
+      },
+      "release": {
+        "x": 0.390625,
+        "y": 0.67285156
+      },
+      "releaseSourcePixels": [
+        600,
+        689
+      ],
+      "releaseMethod": "alpha128 lower outline at a manually selected underside column; screen-space adaptation, not a canonical port",
+      "directionBasis": "visible-hull",
+      "sourceInspection": "agent inspected the actual raster on an opaque background",
+      "humanArtValidation": "Not modified; this source-art inspection is not human validation.",
+      "runtimePriority": "preserve shipCatalogue.ts resolver"
+    },
+    {
+      "path": "/game/ships/v12/avpr-scout-ship.webp",
+      "sha256": "83d7a5d9174e9d0c3c3aea3fcdcf9d6c31ca30559787ca703c5e970d2b97c62e",
+      "width": 1536,
+      "height": 1024,
+      "alpha128Bounds": [
+        102,
+        170,
+        1403,
+        824
+      ],
+      "nose": {
+        "x": 0.0703125,
+        "y": 0.51269531
+      },
+      "tail": {
+        "x": 0.8984375,
+        "y": 0.51269531
+      },
+      "release": {
+        "x": 0.42317708,
+        "y": 0.69335938
+      },
+      "releaseSourcePixels": [
+        650,
+        710
+      ],
+      "releaseMethod": "alpha128 lower outline at a manually selected underside column; screen-space adaptation, not a canonical port",
+      "directionBasis": "visible-hull",
+      "sourceInspection": "agent inspected the actual raster on an opaque background",
+      "humanArtValidation": "Not modified; this source-art inspection is not human validation.",
+      "runtimePriority": "preserve shipCatalogue.ts resolver"
+    },
+    {
+      "path": "/game/ships/v12/bad-blood-ship.webp",
+      "sha256": "ee60971652a2a3c147cadeafaaba3961de9adbb93d94695a202e2ffd9fc18b16",
+      "width": 1536,
+      "height": 1024,
+      "alpha128Bounds": [
+        63,
+        164,
+        1479,
+        841
+      ],
+      "nose": {
+        "x": 0.04231771,
+        "y": 0.48828125
+      },
+      "tail": {
+        "x": 0.95052083,
+        "y": 0.48828125
+      },
+      "release": {
+        "x": 0.52734375,
+        "y": 0.79980469
+      },
+      "releaseSourcePixels": [
+        810,
+        819
+      ],
+      "releaseMethod": "alpha128 lower outline at a manually selected underside column; screen-space adaptation, not a canonical port",
+      "directionBasis": "visible-hull",
+      "sourceInspection": "agent inspected the actual raster on an opaque background",
+      "humanArtValidation": "Not modified; this source-art inspection is not human validation.",
+      "runtimePriority": "preserve shipCatalogue.ts resolver"
+    },
+    {
+      "path": "/game/ships/v12/big-game-saucer.webp",
+      "sha256": "d0d3b02f674ef9d422235b8c304fd825fab5273d1b2b6681c1fcb491763eb458",
+      "width": 1693,
+      "height": 929,
+      "alpha128Bounds": [
+        47,
+        243,
+        1646,
+        640
+      ],
+      "nose": {
+        "x": 0.96869462,
+        "y": 0.47362756
+      },
+      "tail": {
+        "x": 0.02953337,
+        "y": 0.47362756
+      },
+      "release": {
+        "x": 0.49970467,
+        "y": 0.68783638
+      },
+      "releaseSourcePixels": [
+        846,
+        639
+      ],
+      "releaseMethod": "alpha128 lower outline at a manually selected underside column; screen-space adaptation, not a canonical port",
+      "directionBasis": "symmetric-screen-convention",
+      "sourceInspection": "agent inspected the actual raster on an opaque background",
+      "humanArtValidation": "Not modified; this source-art inspection is not human validation.",
+      "runtimePriority": "preserve shipCatalogue.ts resolver"
+    },
+    {
+      "path": "/game/ships/v12/blade-fighter.webp",
+      "sha256": "1d7852a5e71ca89fa102c9d3f9ae529eb5cd714cdd70e46b21be3654a392df5a",
+      "width": 1693,
+      "height": 929,
+      "alpha128Bounds": [
+        61,
+        268,
+        1628,
+        666
+      ],
+      "nose": {
+        "x": 0.03839338,
+        "y": 0.49515608
+      },
+      "tail": {
+        "x": 0.9509746,
+        "y": 0.49515608
+      },
+      "release": {
+        "x": 0.53160071,
+        "y": 0.68998924
+      },
+      "releaseSourcePixels": [
+        900,
+        641
+      ],
+      "releaseMethod": "alpha128 lower outline at a manually selected underside column; screen-space adaptation, not a canonical port",
+      "directionBasis": "visible-hull",
+      "sourceInspection": "agent inspected the actual raster on an opaque background",
+      "humanArtValidation": "Not modified; this source-art inspection is not human validation.",
+      "runtimePriority": "preserve shipCatalogue.ts resolver"
+    },
+    {
+      "path": "/game/ships/v12/brute-jotunn-scout.webp",
+      "sha256": "e8e5ecc3b51b5fadcb2c67f2b703cbb0a2d8d5811cf835961e6b87affaced6d0",
+      "width": 1536,
+      "height": 1024,
+      "alpha128Bounds": [
+        78,
+        180,
+        1443,
+        821
+      ],
+      "nose": {
+        "x": 0.06510417,
+        "y": 0.5078125
+      },
+      "tail": {
+        "x": 0.91145833,
+        "y": 0.5078125
+      },
+      "release": {
+        "x": 0.55338542,
+        "y": 0.68652344
+      },
+      "releaseSourcePixels": [
+        850,
+        703
+      ],
+      "releaseMethod": "alpha128 lower outline at a manually selected underside column; screen-space adaptation, not a canonical port",
+      "directionBasis": "visible-hull",
+      "sourceInspection": "agent inspected the actual raster on an opaque background",
+      "humanArtValidation": "Not modified; this source-art inspection is not human validation.",
+      "runtimePriority": "preserve shipCatalogue.ts resolver"
+    },
+    {
+      "path": "/game/ships/v12/bullet-ship.webp",
+      "sha256": "3d920ffb8fe06b3adf31eeb0b42b223d8df17bdc38192b6cc5782b7d8765f8ec",
+      "width": 1847,
+      "height": 852,
+      "alpha128Bounds": [
+        87,
+        248,
+        1733,
+        601
+      ],
+      "nose": {
+        "x": 0.05414185,
+        "y": 0.49295775
+      },
+      "tail": {
+        "x": 0.92582566,
+        "y": 0.49295775
+      },
+      "release": {
+        "x": 0.48727666,
+        "y": 0.657277
+      },
+      "releaseSourcePixels": [
+        900,
+        560
+      ],
+      "releaseMethod": "alpha128 lower outline at a manually selected underside column; screen-space adaptation, not a canonical port",
+      "directionBasis": "visible-hull",
+      "sourceInspection": "agent inspected the actual raster on an opaque background",
+      "humanArtValidation": "Not modified; this source-art inspection is not human validation.",
+      "runtimePriority": "preserve shipCatalogue.ts resolver"
+    },
+    {
+      "path": "/game/ships/v12/chicken-ship.webp",
+      "sha256": "486101a06a8e60994beaf2630ab93eea886632759efc040dfbdf49035ae88e1f",
+      "width": 1536,
+      "height": 1024,
+      "alpha128Bounds": [
+        174,
+        135,
+        1409,
+        889
+      ],
+      "nose": {
+        "x": 0.12044271,
+        "y": 0.34179688
+      },
+      "tail": {
+        "x": 0.90494792,
+        "y": 0.703125
+      },
+      "release": {
+        "x": 0.50130208,
+        "y": 0.82226562
+      },
+      "releaseSourcePixels": [
+        770,
+        842
+      ],
+      "releaseMethod": "alpha128 lower outline at a manually selected underside column; screen-space adaptation, not a canonical port",
+      "directionBasis": "visible-hull",
+      "sourceInspection": "agent inspected the actual raster on an opaque background",
+      "humanArtValidation": "Not modified; this source-art inspection is not human validation.",
+      "runtimePriority": "preserve shipCatalogue.ts resolver"
+    },
+    {
+      "path": "/game/ships/v12/classic-predator-spaceship.webp",
+      "sha256": "bb374f95f28dad53ce8ed745dde6f6a18c4f9038e0181b1714eec2f6c5991f7a",
+      "width": 1536,
+      "height": 1024,
+      "alpha128Bounds": [
+        128,
+        215,
+        1411,
+        868
+      ],
+      "nose": {
+        "x": 0.08658854,
+        "y": 0.47363281
+      },
+      "tail": {
+        "x": 0.91145833,
+        "y": 0.47363281
+      },
+      "release": {
+        "x": 0.35416667,
+        "y": 0.63964844
+      },
+      "releaseSourcePixels": [
+        544,
+        655
+      ],
+      "releaseMethod": "alpha128 lower outline at a manually selected underside column; screen-space adaptation, not a canonical port",
+      "directionBasis": "visible-hull",
+      "sourceInspection": "agent inspected the actual raster on an opaque background",
+      "humanArtValidation": "Not modified; this source-art inspection is not human validation.",
+      "runtimePriority": "preserve shipCatalogue.ts resolver"
+    },
+    {
+      "path": "/game/ships/v12/cold-war-ship.webp",
+      "sha256": "fd476925a77d3477c4dcabfe33fd16bd1860263c2b436bc6e2fa065e28e598fe",
+      "width": 1693,
+      "height": 929,
+      "alpha128Bounds": [
+        61,
+        239,
+        1636,
+        676
+      ],
+      "nose": {
+        "x": 0.04134672,
+        "y": 0.50376749
+      },
+      "tail": {
+        "x": 0.94506793,
+        "y": 0.50376749
+      },
+      "release": {
+        "x": 0.41346722,
+        "y": 0.62648009
+      },
+      "releaseSourcePixels": [
+        700,
+        582
+      ],
+      "releaseMethod": "alpha128 lower outline at a manually selected underside column; screen-space adaptation, not a canonical port",
+      "directionBasis": "visible-hull",
+      "sourceInspection": "agent inspected the actual raster on an opaque background",
+      "humanArtValidation": "Not modified; this source-art inspection is not human validation.",
+      "runtimePriority": "preserve shipCatalogue.ts resolver"
+    },
+    {
+      "path": "/game/ships/v12/collector-ship.webp",
+      "sha256": "7c9197434089741111907edf45d04b92c19a095c0c7ca333696fad7e5f8fb498",
+      "width": 1536,
+      "height": 1024,
+      "alpha128Bounds": [
+        34,
+        64,
+        1516,
+        963
+      ],
+      "nose": {
+        "x": 0.02604167,
+        "y": 0.45703125
+      },
+      "tail": {
+        "x": 0.97005208,
+        "y": 0.45703125
+      },
+      "release": {
+        "x": 0.38411458,
+        "y": 0.76074219
+      },
+      "releaseSourcePixels": [
+        590,
+        779
+      ],
+      "releaseMethod": "alpha128 lower outline at a manually selected underside column; screen-space adaptation, not a canonical port",
+      "directionBasis": "visible-hull",
+      "sourceInspection": "agent inspected the actual raster on an opaque background",
+      "humanArtValidation": "Not modified; this source-art inspection is not human validation.",
+      "runtimePriority": "preserve shipCatalogue.ts resolver"
+    },
+    {
+      "path": "/game/ships/v12/cursed-earth-ship.webp",
+      "sha256": "67d718135a1f12524f9af8bb6d25ee7332b71eea0c3ccba66f763ce248acd347",
+      "width": 1774,
+      "height": 887,
+      "alpha128Bounds": [
+        57,
+        198,
+        1694,
+        693
+      ],
+      "nose": {
+        "x": 0.03664036,
+        "y": 0.50169109
+      },
+      "tail": {
+        "x": 0.94137542,
+        "y": 0.50169109
+      },
+      "release": {
+        "x": 0.4735062,
+        "y": 0.74971815
+      },
+      "releaseSourcePixels": [
+        840,
+        665
+      ],
+      "releaseMethod": "alpha128 lower outline at a manually selected underside column; screen-space adaptation, not a canonical port",
+      "directionBasis": "visible-hull",
+      "sourceInspection": "agent inspected the actual raster on an opaque background",
+      "humanArtValidation": "Not modified; this source-art inspection is not human validation.",
+      "runtimePriority": "preserve shipCatalogue.ts resolver"
+    },
+    {
+      "path": "/game/ships/v12/dek-mother-ship.webp",
+      "sha256": "d74cbc593aed37a6578202493859255ad1ef1b92b875322e65ce0421751cdbf1",
+      "width": 1536,
+      "height": 1024,
+      "alpha128Bounds": [
+        97,
+        121,
+        1469,
+        930
+      ],
+      "nose": {
+        "x": 0.06510417,
+        "y": 0.48828125
+      },
+      "tail": {
+        "x": 0.9375,
+        "y": 0.48828125
+      },
+      "release": {
+        "x": 0.63802083,
+        "y": 0.57519531
+      },
+      "releaseSourcePixels": [
+        980,
+        589
+      ],
+      "releaseMethod": "alpha128 lower outline at a manually selected underside column; screen-space adaptation, not a canonical port",
+      "directionBasis": "visible-hull",
+      "sourceInspection": "agent inspected the actual raster on an opaque background",
+      "humanArtValidation": "Not modified; this source-art inspection is not human validation.",
+      "runtimePriority": "preserve shipCatalogue.ts resolver"
+    },
+    {
+      "path": "/game/ships/v12/dog-ship.webp",
+      "sha256": "c1631c0d09e01758fecada7a428a7d843549bd507c0c3ad423c0ea194c78941c",
+      "width": 1536,
+      "height": 1024,
+      "alpha128Bounds": [
+        53,
+        134,
+        1474,
+        753
+      ],
+      "nose": {
+        "x": 0.04231771,
+        "y": 0.6171875
+      },
+      "tail": {
+        "x": 0.95377604,
+        "y": 0.6171875
+      },
+      "release": {
+        "x": 0.55338542,
+        "y": 0.72460938
+      },
+      "releaseSourcePixels": [
+        850,
+        742
+      ],
+      "releaseMethod": "alpha128 lower outline at a manually selected underside column; screen-space adaptation, not a canonical port",
+      "directionBasis": "visible-hull",
+      "sourceInspection": "agent inspected the actual raster on an opaque background",
+      "humanArtValidation": "Not modified; this source-art inspection is not human validation.",
+      "runtimePriority": "preserve shipCatalogue.ts resolver"
+    },
+    {
+      "path": "/game/ships/v12/emergency-escape-pod.webp",
+      "sha256": "9a5fd6998bcce004bba6b65e24c66e0fa8934ceec4d36efbef97350da1392abb",
+      "width": 1536,
+      "height": 1024,
+      "alpha128Bounds": [
+        278,
+        60,
+        1210,
+        940
+      ],
+      "nose": {
+        "x": 0.18554688,
+        "y": 0.60546875
+      },
+      "tail": {
+        "x": 0.78125,
+        "y": 0.60546875
+      },
+      "release": {
+        "x": 0.5078125,
+        "y": 0.78808594
+      },
+      "releaseSourcePixels": [
+        780,
+        807
+      ],
+      "releaseMethod": "alpha128 lower outline at a manually selected underside column; screen-space adaptation, not a canonical port",
+      "directionBasis": "visible-hull",
+      "sourceInspection": "agent inspected the actual raster on an opaque background",
+      "humanArtValidation": "Not modified; this source-art inspection is not human validation.",
+      "runtimePriority": "preserve shipCatalogue.ts resolver"
+    },
+    {
+      "path": "/game/ships/v12/enforcer-ship.webp",
+      "sha256": "9ddb16c7383bba9af2d74a2c21c6adc223f565df7b1dd5b30c01737aeb7482e6",
+      "width": 1693,
+      "height": 929,
+      "alpha128Bounds": [
+        35,
+        121,
+        1658,
+        769
+      ],
+      "nose": {
+        "x": 0.0236267,
+        "y": 0.58127018
+      },
+      "tail": {
+        "x": 0.96278795,
+        "y": 0.58127018
+      },
+      "release": {
+        "x": 0.43709392,
+        "y": 0.70936491
+      },
+      "releaseSourcePixels": [
+        740,
+        659
+      ],
+      "releaseMethod": "alpha128 lower outline at a manually selected underside column; screen-space adaptation, not a canonical port",
+      "directionBasis": "visible-hull",
+      "sourceInspection": "agent inspected the actual raster on an opaque background",
+      "humanArtValidation": "Not modified; this source-art inspection is not human validation.",
+      "runtimePriority": "preserve shipCatalogue.ts resolver"
+    },
+    {
+      "path": "/game/ships/v12/evolution-scout-ship.webp",
+      "sha256": "322a97a498fc897fd55b403b274eeaa894377c3242fd1db97ab8387c60681f8b",
+      "width": 1536,
+      "height": 1024,
+      "alpha128Bounds": [
+        24,
+        193,
+        1504,
+        782
+      ],
+      "nose": {
+        "x": 0.01953125,
+        "y": 0.53710938
+      },
+      "tail": {
+        "x": 0.96354167,
+        "y": 0.53710938
+      },
+      "release": {
+        "x": 0.41015625,
+        "y": 0.74316406
+      },
+      "releaseSourcePixels": [
+        630,
+        761
+      ],
+      "releaseMethod": "alpha128 lower outline at a manually selected underside column; screen-space adaptation, not a canonical port",
+      "directionBasis": "visible-hull",
+      "sourceInspection": "agent inspected the actual raster on an opaque background",
+      "humanArtValidation": "Not modified; this source-art inspection is not human validation.",
+      "runtimePriority": "preserve shipCatalogue.ts resolver"
+    },
+    {
+      "path": "/game/ships/v12/feral-clan-ships.webp",
+      "sha256": "9a5918ef2ce8fb4934cd193750296dc267c7389c11aa727a306d81c93b4387b7",
+      "width": 1591,
+      "height": 989,
+      "alpha128Bounds": [
+        95,
+        38,
+        1436,
+        935
+      ],
+      "nose": {
+        "x": 0.06285355,
+        "y": 0.57128413
+      },
+      "tail": {
+        "x": 0.89252043,
+        "y": 0.57128413
+      },
+      "release": {
+        "x": 0.56568196,
+        "y": 0.69464105
+      },
+      "releaseSourcePixels": [
+        900,
+        687
+      ],
+      "releaseMethod": "alpha128 lower outline at a manually selected underside column; screen-space adaptation, not a canonical port",
+      "directionBasis": "visible-hull",
+      "sourceInspection": "agent inspected the actual raster on an opaque background",
+      "humanArtValidation": "Not modified; this source-art inspection is not human validation.",
+      "runtimePriority": "preserve shipCatalogue.ts resolver"
+    },
+    {
+      "path": "/game/ships/v12/feral-spaceship.webp",
+      "sha256": "0e6b5c62e40422893279820f3ee07eb157f0291eeec72e3282a3149b3bccdd79",
+      "width": 1700,
+      "height": 925,
+      "alpha128Bounds": [
+        91,
+        207,
+        1606,
+        714
+      ],
+      "nose": {
+        "x": 0.05588235,
+        "y": 0.4972973
+      },
+      "tail": {
+        "x": 0.93529412,
+        "y": 0.4972973
+      },
+      "release": {
+        "x": 0.51764706,
+        "y": 0.70918919
+      },
+      "releaseSourcePixels": [
+        880,
+        656
+      ],
+      "releaseMethod": "alpha128 lower outline at a manually selected underside column; screen-space adaptation, not a canonical port",
+      "directionBasis": "visible-hull",
+      "sourceInspection": "agent inspected the actual raster on an opaque background",
+      "humanArtValidation": "Not modified; this source-art inspection is not human validation.",
+      "runtimePriority": "preserve shipCatalogue.ts resolver"
+    },
+    {
+      "path": "/game/ships/v12/fortnite-predator-ship.webp",
+      "sha256": "686b3e32a0d270560da45ff2904a682656dd8dabe45265904a542ddad9b9279e",
+      "width": 1693,
+      "height": 929,
+      "alpha128Bounds": [
+        216,
+        212,
+        1465,
+        685
+      ],
+      "nose": {
+        "x": 0.12994684,
+        "y": 0.50592034
+      },
+      "tail": {
+        "x": 0.85646781,
+        "y": 0.50592034
+      },
+      "release": {
+        "x": 0.51978736,
+        "y": 0.72335845
+      },
+      "releaseSourcePixels": [
+        880,
+        672
+      ],
+      "releaseMethod": "alpha128 lower outline at a manually selected underside column; screen-space adaptation, not a canonical port",
+      "directionBasis": "visible-hull",
+      "sourceInspection": "agent inspected the actual raster on an opaque background",
+      "humanArtValidation": "Not modified; this source-art inspection is not human validation.",
+      "runtimePriority": "preserve shipCatalogue.ts resolver"
+    },
+    {
+      "path": "/game/ships/v12/fugitive-spaceship.webp",
+      "sha256": "f1d68260bc324b698408a541edb4a6737f1fd8219242c9c86b2a041f2b9d6aee",
+      "width": 1625,
+      "height": 968,
+      "alpha128Bounds": [
+        68,
+        233,
+        1549,
+        712
+      ],
+      "nose": {
+        "x": 0.04615385,
+        "y": 0.54235537
+      },
+      "tail": {
+        "x": 0.93538462,
+        "y": 0.54235537
+      },
+      "release": {
+        "x": 0.51076923,
+        "y": 0.67768595
+      },
+      "releaseSourcePixels": [
+        830,
+        656
+      ],
+      "releaseMethod": "alpha128 lower outline at a manually selected underside column; screen-space adaptation, not a canonical port",
+      "directionBasis": "visible-hull",
+      "sourceInspection": "agent inspected the actual raster on an opaque background",
+      "humanArtValidation": "Not modified; this source-art inspection is not human validation.",
+      "runtimePriority": "preserve shipCatalogue.ts resolver"
+    },
+    {
+      "path": "/game/ships/v12/game-preserve-ship.webp",
+      "sha256": "1e0b54c5ca88b193a4a7ef6cdbc32134ea9d3021868b2b1a673ca2493b37a115",
+      "width": 1693,
+      "height": 929,
+      "alpha128Bounds": [
+        61,
+        165,
+        1619,
+        739
+      ],
+      "nose": {
+        "x": 0.03839338,
+        "y": 0.5489774
+      },
+      "tail": {
+        "x": 0.93325458,
+        "y": 0.5489774
+      },
+      "release": {
+        "x": 0.51388069,
+        "y": 0.69752422
+      },
+      "releaseSourcePixels": [
+        870,
+        648
+      ],
+      "releaseMethod": "alpha128 lower outline at a manually selected underside column; screen-space adaptation, not a canonical port",
+      "directionBasis": "visible-hull",
+      "sourceInspection": "agent inspected the actual raster on an opaque background",
+      "humanArtValidation": "Not modified; this source-art inspection is not human validation.",
+      "runtimePriority": "preserve shipCatalogue.ts resolver"
+    },
+    {
+      "path": "/game/ships/v12/golden-mothership.webp",
+      "sha256": "bd6274212e9946f0f8ec32ba218dae83a6e78cdd79f62468ec8368b4ca669bf0",
+      "width": 1774,
+      "height": 887,
+      "alpha128Bounds": [
+        26,
+        132,
+        1748,
+        721
+      ],
+      "nose": {
+        "x": 0.01972943,
+        "y": 0.52423901
+      },
+      "tail": {
+        "x": 0.96956032,
+        "y": 0.52423901
+      },
+      "release": {
+        "x": 0.51860203,
+        "y": 0.80270575
+      },
+      "releaseSourcePixels": [
+        920,
+        712
+      ],
+      "releaseMethod": "alpha128 lower outline at a manually selected underside column; screen-space adaptation, not a canonical port",
+      "directionBasis": "visible-hull",
+      "sourceInspection": "agent inspected the actual raster on an opaque background",
+      "humanArtValidation": "Not modified; this source-art inspection is not human validation.",
+      "runtimePriority": "preserve shipCatalogue.ts resolver"
+    },
+    {
+      "path": "/game/ships/v12/gotham-city-ship.webp",
+      "sha256": "8166660f989b805f40583cd5be0e9c7508fe9de08549d53a1ce238a2609dd7b6",
+      "width": 1774,
+      "height": 887,
+      "alpha128Bounds": [
+        57,
+        194,
+        1709,
+        672
+      ],
+      "nose": {
+        "x": 0.03382187,
+        "y": 0.46223224
+      },
+      "tail": {
+        "x": 0.9470124,
+        "y": 0.46223224
+      },
+      "release": {
+        "x": 0.47914318,
+        "y": 0.6843292
+      },
+      "releaseSourcePixels": [
+        850,
+        607
+      ],
+      "releaseMethod": "alpha128 lower outline at a manually selected underside column; screen-space adaptation, not a canonical port",
+      "directionBasis": "visible-hull",
+      "sourceInspection": "agent inspected the actual raster on an opaque background",
+      "humanArtValidation": "Not modified; this source-art inspection is not human validation.",
+      "runtimePriority": "preserve shipCatalogue.ts resolver"
+    },
+    {
+      "path": "/game/ships/v12/gotham-enforcer-ship.webp",
+      "sha256": "041e5d6cbcd2342858a84c7911027523151ad5092d6aaecd74743ba495620940",
+      "width": 1693,
+      "height": 929,
+      "alpha128Bounds": [
+        94,
+        228,
+        1568,
+        680
+      ],
+      "nose": {
+        "x": 0.05906675,
+        "y": 0.51130248
+      },
+      "tail": {
+        "x": 0.91553455,
+        "y": 0.51130248
+      },
+      "release": {
+        "x": 0.50206734,
+        "y": 0.68998924
+      },
+      "releaseSourcePixels": [
+        850,
+        641
+      ],
+      "releaseMethod": "alpha128 lower outline at a manually selected underside column; screen-space adaptation, not a canonical port",
+      "directionBasis": "visible-hull",
+      "sourceInspection": "agent inspected the actual raster on an opaque background",
+      "humanArtValidation": "Not modified; this source-art inspection is not human validation.",
+      "runtimePriority": "preserve shipCatalogue.ts resolver"
+    },
+    {
+      "path": "/game/ships/v12/grendel-king-ship.webp",
+      "sha256": "e88ac3c56642b6899d0a4c7676d8887197015d7977698e7e09f2fce8eaa943d9",
+      "width": 1536,
+      "height": 1024,
+      "alpha128Bounds": [
+        109,
+        141,
+        1460,
+        820
+      ],
+      "nose": {
+        "x": 0.07161458,
+        "y": 0.64453125
+      },
+      "tail": {
+        "x": 0.94401042,
+        "y": 0.64453125
+      },
+      "release": {
+        "x": 0.59244792,
+        "y": 0.71679688
+      },
+      "releaseSourcePixels": [
+        910,
+        734
+      ],
+      "releaseMethod": "alpha128 lower outline at a manually selected underside column; screen-space adaptation, not a canonical port",
+      "directionBasis": "visible-hull",
+      "sourceInspection": "agent inspected the actual raster on an opaque background",
+      "humanArtValidation": "Not modified; this source-art inspection is not human validation.",
+      "runtimePriority": "preserve shipCatalogue.ts resolver"
+    },
+    {
+      "path": "/game/ships/v12/hook-predator-ship.webp",
+      "sha256": "c16cfac87717c45fb5e4ddf172d9a7868ea66d1144a9304acd4da44d933c4609",
+      "width": 1693,
+      "height": 929,
+      "alpha128Bounds": [
+        56,
+        211,
+        1626,
+        710
+      ],
+      "nose": {
+        "x": 0.03544005,
+        "y": 0.55435953
+      },
+      "tail": {
+        "x": 0.9509746,
+        "y": 0.55435953
+      },
+      "release": {
+        "x": 0.53160071,
+        "y": 0.67599569
+      },
+      "releaseSourcePixels": [
+        900,
+        628
+      ],
+      "releaseMethod": "alpha128 lower outline at a manually selected underside column; screen-space adaptation, not a canonical port",
+      "directionBasis": "visible-hull",
+      "sourceInspection": "agent inspected the actual raster on an opaque background",
+      "humanArtValidation": "Not modified; this source-art inspection is not human validation.",
+      "runtimePriority": "preserve shipCatalogue.ts resolver"
+    },
+    {
+      "path": "/game/ships/v12/hunting-grounds-ship.webp",
+      "sha256": "0fcccabcc770b6b727297a4a2411e5ef4e08ee37abe6f96611d588a2a098529f",
+      "width": 1774,
+      "height": 887,
+      "alpha128Bounds": [
+        131,
+        144,
+        1621,
+        739
+      ],
+      "nose": {
+        "x": 0.07609921,
+        "y": 0.50507328
+      },
+      "tail": {
+        "x": 0.90755355,
+        "y": 0.50507328
+      },
+      "release": {
+        "x": 0.42277339,
+        "y": 0.67418264
+      },
+      "releaseSourcePixels": [
+        750,
+        598
+      ],
+      "releaseMethod": "alpha128 lower outline at a manually selected underside column; screen-space adaptation, not a canonical port",
+      "directionBasis": "visible-hull",
+      "sourceInspection": "agent inspected the actual raster on an opaque background",
+      "humanArtValidation": "Not modified; this source-art inspection is not human validation.",
+      "runtimePriority": "preserve shipCatalogue.ts resolver"
+    },
+    {
+      "path": "/game/ships/v12/huntmaster-ship.webp",
+      "sha256": "207a7485ea46e3c52bd1ce6295c15999865afb8dea68d294a939cc5bcda3dd59",
+      "width": 1774,
+      "height": 887,
+      "alpha128Bounds": [
+        56,
+        114,
+        1718,
+        699
+      ],
+      "nose": {
+        "x": 0.03382187,
+        "y": 0.50169109
+      },
+      "tail": {
+        "x": 0.95264938,
+        "y": 0.50169109
+      },
+      "release": {
+        "x": 0.47914318,
+        "y": 0.75873732
+      },
+      "releaseSourcePixels": [
+        850,
+        673
+      ],
+      "releaseMethod": "alpha128 lower outline at a manually selected underside column; screen-space adaptation, not a canonical port",
+      "directionBasis": "visible-hull",
+      "sourceInspection": "agent inspected the actual raster on an opaque background",
+      "humanArtValidation": "Not modified; this source-art inspection is not human validation.",
+      "runtimePriority": "preserve shipCatalogue.ts resolver"
+    },
+    {
+      "path": "/game/ships/v12/kwei-ship.webp",
+      "sha256": "06a41cd1eb1c6cbf8fd2ba56fb075a5af71aaa71ac3c6b6f6de0770029bbe646",
+      "width": 1536,
+      "height": 1024,
+      "alpha128Bounds": [
+        57,
+        199,
+        1514,
+        733
+      ],
+      "nose": {
+        "x": 0.0390625,
+        "y": 0.55664062
+      },
+      "tail": {
+        "x": 0.9765625,
+        "y": 0.55664062
+      },
+      "release": {
+        "x": 0.5859375,
+        "y": 0.71582031
+      },
+      "releaseSourcePixels": [
+        900,
+        733
+      ],
+      "releaseMethod": "alpha128 lower outline at a manually selected underside column; screen-space adaptation, not a canonical port",
+      "directionBasis": "visible-hull",
+      "sourceInspection": "agent inspected the actual raster on an opaque background",
+      "humanArtValidation": "Not modified; this source-art inspection is not human validation.",
+      "runtimePriority": "preserve shipCatalogue.ts resolver"
+    },
+    {
+      "path": "/game/ships/v12/lost-tribe-spaceship.webp",
+      "sha256": "aea9ef3573660fd84d2192158c9e8977a58871f2f46c80117a0950ba3bc37c6d",
+      "width": 1728,
+      "height": 910,
+      "alpha128Bounds": [
+        77,
+        155,
+        1626,
+        745
+      ],
+      "nose": {
+        "x": 0.0462963,
+        "y": 0.51648352
+      },
+      "tail": {
+        "x": 0.93171296,
+        "y": 0.51648352
+      },
+      "release": {
+        "x": 0.45717593,
+        "y": 0.66043956
+      },
+      "releaseSourcePixels": [
+        790,
+        601
+      ],
+      "releaseMethod": "alpha128 lower outline at a manually selected underside column; screen-space adaptation, not a canonical port",
+      "directionBasis": "visible-hull",
+      "sourceInspection": "agent inspected the actual raster on an opaque background",
+      "humanArtValidation": "Not modified; this source-art inspection is not human validation.",
+      "runtimePriority": "preserve shipCatalogue.ts resolver"
+    },
+    {
+      "path": "/game/ships/v12/lunar-mothership.webp",
+      "sha256": "215a47babf21da442b282267c1d312c5f38e10b1d087b152aa4be1810ea2d906",
+      "width": 1774,
+      "height": 887,
+      "alpha128Bounds": [
+        32,
+        181,
+        1719,
+        679
+      ],
+      "nose": {
+        "x": 0.01972943,
+        "y": 0.50169109
+      },
+      "tail": {
+        "x": 0.95828636,
+        "y": 0.50169109
+      },
+      "release": {
+        "x": 0.50732807,
+        "y": 0.73506201
+      },
+      "releaseSourcePixels": [
+        900,
+        652
+      ],
+      "releaseMethod": "alpha128 lower outline at a manually selected underside column; screen-space adaptation, not a canonical port",
+      "directionBasis": "visible-hull",
+      "sourceInspection": "agent inspected the actual raster on an opaque background",
+      "humanArtValidation": "Not modified; this source-art inspection is not human validation.",
+      "runtimePriority": "preserve shipCatalogue.ts resolver"
+    },
+    {
+      "path": "/game/ships/v12/nedtesei.webp",
+      "sha256": "e62700efc29ae6746a2f5f425b42376fb259043a27f81bb999261f93627d4b64",
+      "width": 1693,
+      "height": 929,
+      "alpha128Bounds": [
+        68,
+        63,
+        1627,
+        825
+      ],
+      "nose": {
+        "x": 0.04430006,
+        "y": 0.61356297
+      },
+      "tail": {
+        "x": 0.94506793,
+        "y": 0.61356297
+      },
+      "release": {
+        "x": 0.51388069,
+        "y": 0.88159311
+      },
+      "releaseSourcePixels": [
+        870,
+        819
+      ],
+      "releaseMethod": "alpha128 lower outline at a manually selected underside column; screen-space adaptation, not a canonical port",
+      "directionBasis": "visible-hull",
+      "sourceInspection": "agent inspected the actual raster on an opaque background",
+      "humanArtValidation": "Not modified; this source-art inspection is not human validation.",
+      "runtimePriority": "preserve shipCatalogue.ts resolver"
+    },
+    {
+      "path": "/game/ships/v12/new-york-enforcer-ship.webp",
+      "sha256": "a038fcaf251ef609fa327ee70ee83576f3fb973c785f3b836b07839b8c83fb71",
+      "width": 1536,
+      "height": 1024,
+      "alpha128Bounds": [
+        22,
+        298,
+        1507,
+        756
+      ],
+      "nose": {
+        "x": 0.01627604,
+        "y": 0.59570312
+      },
+      "tail": {
+        "x": 0.96679688,
+        "y": 0.59570312
+      },
+      "release": {
+        "x": 0.52083333,
+        "y": 0.640625
+      },
+      "releaseSourcePixels": [
+        800,
+        656
+      ],
+      "releaseMethod": "alpha128 lower outline at a manually selected underside column; screen-space adaptation, not a canonical port",
+      "directionBasis": "visible-hull",
+      "sourceInspection": "agent inspected the actual raster on an opaque background",
+      "humanArtValidation": "Not modified; this source-art inspection is not human validation.",
+      "runtimePriority": "preserve shipCatalogue.ts resolver"
+    },
+    {
+      "path": "/game/ships/v12/predator-dropship.webp",
+      "sha256": "6f69221b274eaa42980216dde7146091d0d5db4a427b9c104abf61ea2261a510",
+      "width": 1536,
+      "height": 1024,
+      "alpha128Bounds": [
+        101,
+        198,
+        1457,
+        811
+      ],
+      "nose": {
+        "x": 0.06835938,
+        "y": 0.51269531
+      },
+      "tail": {
+        "x": 0.94075521,
+        "y": 0.51269531
+      },
+      "release": {
+        "x": 0.52083333,
+        "y": 0.79199219
+      },
+      "releaseSourcePixels": [
+        800,
+        811
+      ],
+      "releaseMethod": "alpha128 lower outline at a manually selected underside column; screen-space adaptation, not a canonical port",
+      "directionBasis": "visible-hull",
+      "sourceInspection": "agent inspected the actual raster on an opaque background",
+      "humanArtValidation": "Not modified; this source-art inspection is not human validation.",
+      "runtimePriority": "preserve shipCatalogue.ts resolver"
+    },
+    {
+      "path": "/game/ships/v12/predator-fleet.webp",
+      "sha256": "14dc1401c5e83f716708771fa43519a25cd01b0fedde007976f33ce89fefc6c3",
+      "width": 1536,
+      "height": 1024,
+      "alpha128Bounds": [
+        124,
+        148,
+        1427,
+        840
+      ],
+      "nose": {
+        "x": 0.08072917,
+        "y": 0.50097656
+      },
+      "tail": {
+        "x": 0.92447917,
+        "y": 0.50097656
+      },
+      "release": {
+        "x": 0.52083333,
+        "y": 0.63574219
+      },
+      "releaseSourcePixels": [
+        800,
+        651
+      ],
+      "releaseMethod": "alpha128 lower outline at a manually selected underside column; screen-space adaptation, not a canonical port",
+      "directionBasis": "visible-hull",
+      "sourceInspection": "agent inspected the actual raster on an opaque background",
+      "humanArtValidation": "Not modified; this source-art inspection is not human validation.",
+      "runtimePriority": "preserve shipCatalogue.ts resolver"
+    },
+    {
+      "path": "/game/ships/v12/predator-shuttle.webp",
+      "sha256": "dc2adcf34099c463fa25a0597d0db8c5ac74b0587528166b8065c8a68d4eaa89",
+      "width": 1693,
+      "height": 929,
+      "alpha128Bounds": [
+        123,
+        136,
+        1570,
+        754
+      ],
+      "nose": {
+        "x": 0.07383343,
+        "y": 0.48439182
+      },
+      "tail": {
+        "x": 0.92144123,
+        "y": 0.48439182
+      },
+      "release": {
+        "x": 0.47253396,
+        "y": 0.77825619
+      },
+      "releaseSourcePixels": [
+        800,
+        723
+      ],
+      "releaseMethod": "alpha128 lower outline at a manually selected underside column; screen-space adaptation, not a canonical port",
+      "directionBasis": "visible-hull",
+      "sourceInspection": "agent inspected the actual raster on an opaque background",
+      "humanArtValidation": "Not modified; this source-art inspection is not human validation.",
+      "runtimePriority": "preserve shipCatalogue.ts resolver"
+    },
+    {
+      "path": "/game/ships/v12/royal-predator-ship.webp",
+      "sha256": "76bd9d349496c5371d360a85aea08242ec6452c41746fecd0f6a6764a1c3d79e",
+      "width": 1774,
+      "height": 887,
+      "alpha128Bounds": [
+        50,
+        245,
+        1736,
+        657
+      ],
+      "nose": {
+        "x": 0.02818489,
+        "y": 0.51296505
+      },
+      "tail": {
+        "x": 0.95828636,
+        "y": 0.51296505
+      },
+      "release": {
+        "x": 0.49605411,
+        "y": 0.56257046
+      },
+      "releaseSourcePixels": [
+        880,
+        499
+      ],
+      "releaseMethod": "alpha128 lower outline at a manually selected underside column; screen-space adaptation, not a canonical port",
+      "directionBasis": "visible-hull",
+      "sourceInspection": "agent inspected the actual raster on an opaque background",
+      "humanArtValidation": "Not modified; this source-art inspection is not human validation.",
+      "runtimePriority": "preserve shipCatalogue.ts resolver"
+    },
+    {
+      "path": "/game/ships/v12/safari-ship.webp",
+      "sha256": "942abb74abaa440b1c415b33866ea76109e6e0e414c13d5e8389e2f4a5a0f12b",
+      "width": 1693,
+      "height": 929,
+      "alpha128Bounds": [
+        95,
+        114,
+        1564,
+        806
+      ],
+      "nose": {
+        "x": 0.05906675,
+        "y": 0.52206674
+      },
+      "tail": {
+        "x": 0.91553455,
+        "y": 0.52206674
+      },
+      "release": {
+        "x": 0.50206734,
+        "y": 0.71474704
+      },
+      "releaseSourcePixels": [
+        850,
+        664
+      ],
+      "releaseMethod": "alpha128 lower outline at a manually selected underside column; screen-space adaptation, not a canonical port",
+      "directionBasis": "visible-hull",
+      "sourceInspection": "agent inspected the actual raster on an opaque background",
+      "humanArtValidation": "Not modified; this source-art inspection is not human validation.",
+      "runtimePriority": "preserve shipCatalogue.ts resolver"
+    },
+    {
+      "path": "/game/ships/v12/shell-ship.webp",
+      "sha256": "b973c85210c6a0512f04de259b8170b136e04c4113548b0ceaaaad09d3af49c9",
+      "width": 1536,
+      "height": 1024,
+      "alpha128Bounds": [
+        25,
+        69,
+        1498,
+        921
+      ],
+      "nose": {
+        "x": 0.01953125,
+        "y": 0.60546875
+      },
+      "tail": {
+        "x": 0.96679688,
+        "y": 0.60546875
+      },
+      "release": {
+        "x": 0.49479167,
+        "y": 0.78417969
+      },
+      "releaseSourcePixels": [
+        760,
+        803
+      ],
+      "releaseMethod": "alpha128 lower outline at a manually selected underside column; screen-space adaptation, not a canonical port",
+      "directionBasis": "visible-hull",
+      "sourceInspection": "agent inspected the actual raster on an opaque background",
+      "humanArtValidation": "Not modified; this source-art inspection is not human validation.",
+      "runtimePriority": "preserve shipCatalogue.ts resolver"
+    },
+    {
+      "path": "/game/ships/v12/upgrade-spaceship.webp",
+      "sha256": "31ae9fce07d1aabb06e4594795048eeabd17b3175a99c2c2495b172d904c2c99",
+      "width": 1536,
+      "height": 1024,
+      "alpha128Bounds": [
+        44,
+        226,
+        1490,
+        820
+      ],
+      "nose": {
+        "x": 0.03255208,
+        "y": 0.50292969
+      },
+      "tail": {
+        "x": 0.95703125,
+        "y": 0.50292969
+      },
+      "release": {
+        "x": 0.54036458,
+        "y": 0.66015625
+      },
+      "releaseSourcePixels": [
+        830,
+        676
+      ],
+      "releaseMethod": "alpha128 lower outline at a manually selected underside column; screen-space adaptation, not a canonical port",
+      "directionBasis": "visible-hull",
+      "sourceInspection": "agent inspected the actual raster on an opaque background",
+      "humanArtValidation": "Not modified; this source-art inspection is not human validation.",
+      "runtimePriority": "preserve shipCatalogue.ts resolver"
+    },
+    {
+      "path": "/game/ships/v12/wolf-ship.webp",
+      "sha256": "5942da5c9e2306553d31e7e609df0c5e302738a4629948332b4344bac25a4f54",
+      "width": 1693,
+      "height": 929,
+      "alpha128Bounds": [
+        157,
+        104,
+        1540,
+        830
+      ],
+      "nose": {
+        "x": 0.09450679,
+        "y": 0.50053821
+      },
+      "tail": {
+        "x": 0.9037212,
+        "y": 0.50053821
+      },
+      "release": {
+        "x": 0.46662729,
+        "y": 0.69860065
+      },
+      "releaseSourcePixels": [
+        790,
+        649
+      ],
+      "releaseMethod": "alpha128 lower outline at a manually selected underside column; screen-space adaptation, not a canonical port",
+      "directionBasis": "visible-hull",
+      "sourceInspection": "agent inspected the actual raster on an opaque background",
+      "humanArtValidation": "Not modified; this source-art inspection is not human validation.",
+      "runtimePriority": "preserve shipCatalogue.ts resolver"
+    },
+    {
+      "path": "/game/ships/v12/wwii-cyborg-pilot-ship.webp",
+      "sha256": "4878fcef094b23a98f537a0813a23dd8507b6c87d4d827b8954b33f4ed905a73",
+      "width": 1536,
+      "height": 1024,
+      "alpha128Bounds": [
+        39,
+        112,
+        1506,
+        816
+      ],
+      "nose": {
+        "x": 0.02929688,
+        "y": 0.56640625
+      },
+      "tail": {
+        "x": 0.96354167,
+        "y": 0.56640625
+      },
+      "release": {
+        "x": 0.52083333,
+        "y": 0.67578125
+      },
+      "releaseSourcePixels": [
+        800,
+        692
+      ],
+      "releaseMethod": "alpha128 lower outline at a manually selected underside column; screen-space adaptation, not a canonical port",
+      "directionBasis": "visible-hull",
+      "sourceInspection": "agent inspected the actual raster on an opaque background",
+      "humanArtValidation": "Not modified; this source-art inspection is not human validation.",
+      "runtimePriority": "preserve shipCatalogue.ts resolver"
+    },
+    {
+      "path": "/game/ships/v12/yautja-gunship.webp",
+      "sha256": "cf0d5d78e26955ce76b632aecc66d46a2b1562a9a7f91983aa55b3b6730dfdda",
+      "width": 1624,
+      "height": 969,
+      "alpha128Bounds": [
+        115,
+        113,
+        1481,
+        829
+      ],
+      "nose": {
+        "x": 0.07389163,
+        "y": 0.55727554
+      },
+      "tail": {
+        "x": 0.90517241,
+        "y": 0.55727554
+      },
+      "release": {
+        "x": 0.50492611,
+        "y": 0.78947368
+      },
+      "releaseSourcePixels": [
+        820,
+        765
+      ],
+      "releaseMethod": "alpha128 lower outline at a manually selected underside column; screen-space adaptation, not a canonical port",
+      "directionBasis": "visible-hull",
+      "sourceInspection": "agent inspected the actual raster on an opaque background",
+      "humanArtValidation": "Not modified; this source-art inspection is not human validation.",
+      "runtimePriority": "preserve shipCatalogue.ts resolver"
+    },
+    {
+      "path": "/game/ships/v14/avp-predator-drop-pod.webp",
+      "sha256": "8364c02ee79e473b639ad2da608437fdb06c69a7483033db22e252b164824f53",
+      "width": 1536,
+      "height": 1024,
+      "alpha128Bounds": [
+        264,
+        149,
+        1368,
+        842
+      ],
+      "nose": {
+        "x": 0.88541667,
+        "y": 0.49609375
+      },
+      "tail": {
+        "x": 0.1953125,
+        "y": 0.50292969
+      },
+      "release": {
+        "x": 0.65104167,
+        "y": 0.59960938
+      },
+      "releaseSourcePixels": [
+        1000,
+        614
+      ],
+      "releaseMethod": "alpha128 lower outline at a manually selected underside column; screen-space adaptation, not a canonical port",
+      "directionBasis": "visible-hull",
+      "sourceInspection": "agent inspected the actual raster on an opaque background",
+      "humanArtValidation": "Not modified; this source-art inspection is not human validation.",
+      "runtimePriority": "preserve shipCatalogue.ts resolver"
+    },
+    {
+      "path": "/game/ships/v14/avp-predator-mothership.webp",
+      "sha256": "7bd67240d2ef6f4df2717219420aeea9083a1a5395e994c98cb0bcc4c824c907",
+      "width": 1774,
+      "height": 887,
+      "alpha128Bounds": [
+        63,
+        222,
+        1693,
+        721
+      ],
+      "nose": {
+        "x": 0.92728298,
+        "y": 0.51296505
+      },
+      "tail": {
+        "x": 0.05129651,
+        "y": 0.61555806
+      },
+      "release": {
+        "x": 0.48478016,
+        "y": 0.81285231
+      },
+      "releaseSourcePixels": [
+        860,
+        721
+      ],
+      "releaseMethod": "alpha128 lower outline at a manually selected underside column; screen-space adaptation, not a canonical port",
+      "directionBasis": "visible-hull",
+      "sourceInspection": "agent inspected the actual raster on an opaque background",
+      "humanArtValidation": "Not modified; this source-art inspection is not human validation.",
+      "runtimePriority": "preserve shipCatalogue.ts resolver"
+    },
+    {
+      "path": "/game/ships/v14/avpr-scout-ship.webp",
+      "sha256": "b787eb8f6a8a0eb1e5d075bce7503bc1f7e54f452e490d82959e93aa1a38c306",
+      "width": 1536,
+      "height": 1024,
+      "alpha128Bounds": [
+        129,
+        308,
+        1413,
+        704
+      ],
+      "nose": {
+        "x": 0.90494792,
+        "y": 0.61035156
+      },
+      "tail": {
+        "x": 0.13020833,
+        "y": 0.49804688
+      },
+      "release": {
+        "x": 0.55338542,
+        "y": 0.68554688
+      },
+      "releaseSourcePixels": [
+        850,
+        702
+      ],
+      "releaseMethod": "alpha128 lower outline at a manually selected underside column; screen-space adaptation, not a canonical port",
+      "directionBasis": "visible-hull",
+      "sourceInspection": "agent inspected the actual raster on an opaque background",
+      "humanArtValidation": "Not modified; this source-art inspection is not human validation.",
+      "runtimePriority": "preserve shipCatalogue.ts resolver"
+    },
+    {
+      "path": "/game/ships/v14/feral-spaceship.webp",
+      "sha256": "ff8147412252c56e5e810e5e1a6ea610d1ec01f5044ce892a677529863fb4a7d",
+      "width": 1672,
+      "height": 941,
+      "alpha128Bounds": [
+        21,
+        208,
+        1655,
+        696
+      ],
+      "nose": {
+        "x": 0.96889952,
+        "y": 0.5738576
+      },
+      "tail": {
+        "x": 0.06578947,
+        "y": 0.5738576
+      },
+      "release": {
+        "x": 0.53827751,
+        "y": 0.7077577
+      },
+      "releaseSourcePixels": [
+        900,
+        666
+      ],
+      "releaseMethod": "alpha128 lower outline at a manually selected underside column; screen-space adaptation, not a canonical port",
+      "directionBasis": "visible-hull",
+      "sourceInspection": "agent inspected the actual raster on an opaque background",
+      "humanArtValidation": "Not modified; this source-art inspection is not human validation.",
+      "runtimePriority": "preserve shipCatalogue.ts resolver"
+    },
+    {
+      "path": "/game/ships/v14/fugitive-spaceship.webp",
+      "sha256": "643ae874e41a68f130e55aa472bc473dc21b4f7216357dcb87d320c7e88a6bc0",
+      "width": 1693,
+      "height": 929,
+      "alpha128Bounds": [
+        114,
+        191,
+        1547,
+        689
+      ],
+      "nose": {
+        "x": 0.90962788,
+        "y": 0.43595264
+      },
+      "tail": {
+        "x": 0.14766686,
+        "y": 0.50053821
+      },
+      "release": {
+        "x": 0.63792085,
+        "y": 0.71905274
+      },
+      "releaseSourcePixels": [
+        1080,
+        668
+      ],
+      "releaseMethod": "alpha128 lower outline at a manually selected underside column; screen-space adaptation, not a canonical port",
+      "directionBasis": "visible-hull",
+      "sourceInspection": "agent inspected the actual raster on an opaque background",
+      "humanArtValidation": "Not modified; this source-art inspection is not human validation.",
+      "runtimePriority": "preserve shipCatalogue.ts resolver"
+    },
+    {
+      "path": "/game/ships/v14/game-preserve-ship.webp",
+      "sha256": "cce2adbdc45991fa2c5764d5de74bda3cf96403da7b13c5bbb05a5ccd441f8e2",
+      "width": 1735,
+      "height": 906,
+      "alpha128Bounds": [
+        152,
+        147,
+        1537,
+        671
+      ],
+      "nose": {
+        "x": 0.87896254,
+        "y": 0.62362031
+      },
+      "tail": {
+        "x": 0.09221902,
+        "y": 0.49116998
+      },
+      "release": {
+        "x": 0.57636888,
+        "y": 0.66335541
+      },
+      "releaseSourcePixels": [
+        1000,
+        601
+      ],
+      "releaseMethod": "alpha128 lower outline at a manually selected underside column; screen-space adaptation, not a canonical port",
+      "directionBasis": "visible-hull",
+      "sourceInspection": "agent inspected the actual raster on an opaque background",
+      "humanArtValidation": "Not modified; this source-art inspection is not human validation.",
+      "runtimePriority": "rejected noncanonical supplementary study only"
+    },
+    {
+      "path": "/game/ships/v14/upgrade-spaceship.webp",
+      "sha256": "6e8c05489366124e93b0fe6ab18450d44de9d2ac1e9943640ebe3dfbc37702f3",
+      "width": 1672,
+      "height": 941,
+      "alpha128Bounds": [
+        90,
+        182,
+        1613,
+        701
+      ],
+      "nose": {
+        "x": 0.95095694,
+        "y": 0.5738576
+      },
+      "tail": {
+        "x": 0.13157895,
+        "y": 0.49946865
+      },
+      "release": {
+        "x": 0.59808612,
+        "y": 0.61636557
+      },
+      "releaseSourcePixels": [
+        1000,
+        580
+      ],
+      "releaseMethod": "alpha128 lower outline at a manually selected underside column; screen-space adaptation, not a canonical port",
+      "directionBasis": "authored-view-with-perspective",
+      "sourceInspection": "agent inspected the actual raster on an opaque background",
+      "humanArtValidation": "Not modified; this source-art inspection is not human validation.",
+      "runtimePriority": "preserve shipCatalogue.ts resolver"
+    },
+    {
+      "path": "/game/ships/v14/wolf-ship.webp",
+      "sha256": "8697aff1379201f33aba393871a24780098dcb8f2268424c56912fac9470eed8",
+      "width": 1761,
+      "height": 893,
+      "alpha128Bounds": [
+        70,
+        155,
+        1679,
+        737
+      ],
+      "nose": {
+        "x": 0.93128904,
+        "y": 0.48152296
+      },
+      "tail": {
+        "x": 0.13344691,
+        "y": 0.55431131
+      },
+      "release": {
+        "x": 0.4826803,
+        "y": 0.74580067
+      },
+      "releaseSourcePixels": [
+        850,
+        666
+      ],
+      "releaseMethod": "alpha128 lower outline at a manually selected underside column; screen-space adaptation, not a canonical port",
+      "directionBasis": "visible-hull",
+      "sourceInspection": "agent inspected the actual raster on an opaque background",
+      "humanArtValidation": "Not modified; this source-art inspection is not human validation.",
+      "runtimePriority": "preserve shipCatalogue.ts resolver"
+    }
+  ],
+  "limits": [
+    "Calibration and source inspection are not human artistic validation.",
+    "No new claim about a canon docking bay: release points are cinematic underside contacts on the existing artwork.",
+    "Game Preserve V14 remains a rejected supplementary study; shipProfileAssetPath still resolves its existing V12 profile.",
+    "Current approved V14 identities and explicit project-original V12 identities preserve separate paths and calibrated axes.",
+    "Final motion, occlusion, pause/resume, reduced motion and responsive output belong to the new browser verification, not to this source report."
+  ]
+}
