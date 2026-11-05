@@ -107,6 +107,45 @@ sans dépendance réseau avec l'outil documentaire :
 python3 docs/campagne/mobilite/export_catalogue.py --out /tmp/yautja-mobilite
 ```
 
+## Complément demandé le 5 novembre 2026 : Xeno Prime — Le Berceau enfoui
+
+Le secteur, les sprites individuels et les compositions du Berceau font partie de
+cette même bible. Le complément rassemble la conception du niveau, son boss final,
+les ressources effectivement produites et le travail restant.
+
+| Document | Contenu |
+| --- | --- |
+| [Secteur et boss](xeno-prime/README.md) | Douze tableaux locaux, itinéraire principal, détours, raccourcis, trois balises physiques et Matriarche enracinée révélée au dernier tableau ; progression, extraction et raccords aux autres annexes. |
+| [Catalogue des ressources](xeno-prime/ASSETS.md) · [données](xeno-prime/DONNEES_ASSETS.json) | 85 sprites transparents et six fonds opaques, dimensions et empreintes ; liens vers les archives téléchargeables. 25 exports de scènes, dont 23 images distinctes, sans les compter comme de nouveaux sprites. |
+| [Compositions](xeno-prime/SCENES_ILLUSTREES.json) · [souffle du boss](xeno-prime/COMPOSITION_SOUFFLE.json) | Douze scènes et 312 placements d’origine conservés, états avant/après et démonstration du jet rattaché à la bouche ; données d’illustration, sans collisions ni comportements déjà intégrés. |
+| [Reprise de production](xeno-prime/REPRISE.md) · [prompts et dépendances](xeno-prime/REPRISE_ASSETS.json) | 23 sprites non produits sur les 108 prévus, références disponibles et ordre de génération. Sept poses de tête disponibles ; agonie 097 et bulbe rompu 098 encore absents. |
+| [Contrat d’intégration et QA](xeno-prime/INTEGRATION_ET_QA.md) · [vérification](xeno-prime/VERIFICATION.md) | États de mission, preuve de crête, sauvegardes, compagnons, mobilité, caméra et 28 contrôles de jeu à exécuter ; vérifications documentaires et concordance avec le classeur V6. |
+
+### Concordance avec Xeno Prime et la progression
+
+**Décision de raccord : le Berceau développe localement PLAN08 / XP-Z12, Arène de
+la reine active, depuis XP-Z11.** Les identifiants `XENO-BE-T01` à `XENO-BE-T12`
+désignent les douze tableaux de ce secteur, pas les douze zones globales de la
+planète. **XP-Z09 reste la tête de reine morte, inerte et sans validation de
+victoire** du classeur. T09 reste une pouponnière locale ; seule T12 révèle la
+tête entière de la Matriarche active du Berceau. Les trois hauteurs, deux refuges
+et l’extraction de secours prévus pour XP-Z12 restent des contraintes à réaliser.
+
+Le raccord conserve R2-M025 (préparer), R2-M026 / L-07 (vaincre et prélever) et
+R2-M027 (rapporter et débriefer). Xeno Prime est l’arc écrit après les huit
+chasses ; ces tableaux ne deviennent pas douze missions supplémentaires dans
+les 68 fiches historiques. L’accès Blooded n’exige pas déjà Élite. Le rang Élite
+demande toujours le Quatza-Rij solitaire de L-05, les rites de L-06, la victoire
+sur la reine et une crête réellement extraite et rapportée. Une image de trophée
+ne valide aucune de ces étapes.
+
+Les règles ALL-01 à ALL-10, les limites des montures et véhicules et la présence
+réelle au vaisseau restent applicables. Le vaisseau personnel suffit ; ni Clan
+Ship ni Warp ne sont nécessaires à cette expédition physique. Le boss local ne
+remplace ni Cœur-Mère de Mycora-V, ni la reine de la pyramide, ni la Reine Mère ou
+la planète vivante des arcs ultérieurs. Les influences visuelles demandées sont
+identifiées comme inspirations d’une création originale du projet.
+
 ## Statut de production
 
 Les éléments marqués « proposé » sont des propositions de conception à valider.
@@ -117,5 +156,7 @@ d'œuvre/continuité avant production des héros Héritage.
 
 Aucun code de jeu, asset binaire ou fichier de sauvegarde n'est modifié par ces ajouts documentaires.
 Aucun build, parcours en jeu, test comportemental ou validation artistique n'est
-revendiqué par leur seule présence dans cette PR. Le contrôle des archives Warp
-est une vérification de fichiers sources, distincte d'une QA du jeu.
+revendiqué par leur seule présence dans cette PR. Les contrôles des archives Warp
+et du pack Xeno Prime vérifient les fichiers sources ; ils restent distincts d’une
+QA du jeu. Les PNG Xeno restent dans leurs archives : cette PR les référence avec
+leur statut réel, sans les importer dans `public/`.
