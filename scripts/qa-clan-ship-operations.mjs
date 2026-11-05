@@ -694,7 +694,7 @@ try {
   await check('At 320 px tactical commands scroll, disclose their real forecast and complete by touch after reload', async () => {
     await page.setViewportSize({ width: 320, height: 844 }); await frames(); await assertNoOverflow();
     await page.locator('[data-clan-space-order="brace"]').scrollIntoViewIfNeeded();
-    assert.match(await page.locator('[data-clan-space-forecast="brace"]').innerText(), /Prévision/);
+    assert.match(await page.locator('[data-clan-space-forecast="brace"]').innerText(), /Prévision/iu);
     await screenshot('15-tactical-controls-mobile-320.png');
     const marks = (await stored()).profile.clanMarks;
     for (const order of ['brace', 'brace', 'extract']) await spaceOrder(order, true);
