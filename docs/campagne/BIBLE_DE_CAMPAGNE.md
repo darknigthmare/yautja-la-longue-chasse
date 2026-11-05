@@ -449,7 +449,12 @@ La note parlait de « Glacier Moon » et « Swamp Moon » : elles deviennent des
 
 ### Modes annexes
 
-**Décision :** The Pit et Game Reserve restent des modes à part, débloqués par la campagne. Proposition : The Pit s'ouvre à Young Blood (premiers duels) ; Game Reserve s'ouvre à Unblooded (chasses d'entraînement du pack).
+**Décision (révisée) :** The Pit et Game Preserve sont intégrés à la campagne avec le personnage du joueur, et leurs modes complets se débloquent à un rang donné. La Preserve revient en fin de jeu. *(Rangs et missions proposés.)*
+
+|  | Dans la campagne (personnage du joueur) | Mode complet |
+| --- | --- | --- |
+| **The Pit** | Le joueur y combat avec son personnage : petite Fosse de jeunesse (V53, déjà jouable) ; duels sanctionnés pour régler un différend (JUST-13) ; duels de rang ; défi du chef et défis des Élites dans les voies de clan Défi et Succession (L-08) | ouvert à Blooded : roster complet, arènes, tournois, et The Pit en ligne |
+| **Game Preserve** | Chasses d'entraînement du pack d'Unblooded ; contrats de trophées rares ; en fin de jeu, le joueur gère sa propre réserve sur le modèle de la planète-réserve des Super Predators (*Predators*, 2010), alimente ses arènes de Warlord et la défend contre les intrus | ouvert à Elite : grandes traques (V6), toutes les réserves, réglages libres |
 
 ### Quatza-Rij, symbole de clan, ordre de production
 
