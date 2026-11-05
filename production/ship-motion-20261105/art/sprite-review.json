@@ -1,0 +1,619 @@
+{
+  "inspectedOn": "2026-11-05",
+  "canvas": [
+    1536,
+    1024
+  ],
+  "reference": "public/game/ships/v12/classic-predator-spaceship.webp",
+  "measurementBasis": {
+    "nose": "Midpoint of the two leading-prong tip positions measured at alpha>128, manually checked on full-color composited art. Midpoint lies in the fork opening intentionally.",
+    "tail": "Center of outermost terminal engine rim silhouette, using rightmost 6 opaque columns; x inset3px from opaque extent. This is not the visible nozzle center on rear-quarter views.",
+    "pivot": "Authored registration point derived from nose-to-tail axis, preserving the original profile center longitudinal fraction (~0.5012) and ~26px down-axis offset. Not an exact 3D center of mass.",
+    "release": "Inspected lower shell boundary near homologous brow/forward lower hull seam. Compositional contact, not assertion of a canonical pod bay; active launches remain on original profile.",
+    "exhaust": "The same single terminal motor. Two rear views show its chamber/rings; all other views expose only housing/flank and the face is treated as occulted. Coordinates on occulted views remain rim landmarks, with visibility0.",
+    "angles": "Exhaust axis projects almost horizontally right in source art, angle0deg. Authored camera attitudes are not measured 3D angles."
+  },
+  "profileExhaust": {
+    "point": [
+      1405,
+      486
+    ],
+    "visibility": 0,
+    "review": "inspected-source-art",
+    "angle": 0
+  },
+  "views": {
+    "forward-quarter-shallow": {
+      "nose": [
+        140.5,
+        507
+      ],
+      "tail": [
+        1394,
+        493
+      ],
+      "release": [
+        600,
+        670
+      ],
+      "pivot": [
+        769,
+        526
+      ],
+      "exhaust": [
+        1394,
+        493
+      ],
+      "exhaustVisibility": 0,
+      "calibration": "inspected-source-art",
+      "exhaustReview": "inspected-source-art",
+      "exhaustAngleDeg": 0
+    },
+    "forward-quarter": {
+      "nose": [
+        142.5,
+        505.75
+      ],
+      "tail": [
+        1402,
+        478
+      ],
+      "release": [
+        650,
+        683
+      ],
+      "pivot": [
+        774,
+        517
+      ],
+      "exhaust": [
+        1402,
+        478
+      ],
+      "exhaustVisibility": 0,
+      "calibration": "inspected-source-art",
+      "exhaustReview": "inspected-source-art",
+      "exhaustAngleDeg": 0
+    },
+    "bank-dorsal-shallow": {
+      "nose": [
+        121,
+        520.75
+      ],
+      "tail": [
+        1426,
+        516.5
+      ],
+      "release": [
+        550,
+        682
+      ],
+      "pivot": [
+        775,
+        544
+      ],
+      "exhaust": [
+        1426,
+        516.5
+      ],
+      "exhaustVisibility": 0,
+      "calibration": "inspected-source-art",
+      "exhaustReview": "inspected-source-art",
+      "exhaustAngleDeg": 0
+    },
+    "bank-dorsal": {
+      "nose": [
+        117.5,
+        494.5
+      ],
+      "tail": [
+        1430,
+        472.5
+      ],
+      "release": [
+        550,
+        669
+      ],
+      "pivot": [
+        775,
+        509
+      ],
+      "exhaust": [
+        1430,
+        472.5
+      ],
+      "exhaustVisibility": 0,
+      "calibration": "inspected-source-art",
+      "exhaustReview": "inspected-source-art",
+      "exhaustAngleDeg": 0
+    },
+    "bank-ventral-shallow": {
+      "nose": [
+        106.5,
+        479.25
+      ],
+      "tail": [
+        1430,
+        500
+      ],
+      "release": [
+        550,
+        640
+      ],
+      "pivot": [
+        770,
+        515
+      ],
+      "exhaust": [
+        1430,
+        500
+      ],
+      "exhaustVisibility": 0,
+      "calibration": "inspected-source-art",
+      "exhaustReview": "inspected-source-art",
+      "exhaustAngleDeg": 0
+    },
+    "bank-ventral": {
+      "nose": [
+        122.5,
+        453
+      ],
+      "tail": [
+        1414,
+        504.5
+      ],
+      "release": [
+        550,
+        652
+      ],
+      "pivot": [
+        770,
+        505
+      ],
+      "exhaust": [
+        1414,
+        504.5
+      ],
+      "exhaustVisibility": 0,
+      "calibration": "inspected-source-art",
+      "exhaustReview": "inspected-source-art",
+      "exhaustAngleDeg": 0
+    },
+    "rear-quarter-shallow": {
+      "nose": [
+        164,
+        469
+      ],
+      "tail": [
+        1392,
+        481
+      ],
+      "release": [
+        470,
+        652
+      ],
+      "pivot": [
+        779,
+        501
+      ],
+      "exhaust": [
+        1364,
+        482
+      ],
+      "exhaustVisibility": 1,
+      "calibration": "inspected-source-art",
+      "exhaustReview": "inspected-source-art",
+      "exhaustAngleDeg": 0
+    },
+    "rear-quarter": {
+      "nose": [
+        132.5,
+        475.25
+      ],
+      "tail": [
+        1420,
+        490.5
+      ],
+      "release": [
+        425,
+        652
+      ],
+      "pivot": [
+        778,
+        509
+      ],
+      "exhaust": [
+        1378,
+        491
+      ],
+      "exhaustVisibility": 1,
+      "calibration": "inspected-source-art",
+      "exhaustReview": "inspected-source-art",
+      "exhaustAngleDeg": 0
+    }
+  },
+  "limitations": [
+    "Technical registration review only; no canonical film/model matching or human artistic validation.",
+    "Generated variants share identity landmarks but cannot be claimed to be exact renders of a single 3D model.",
+    "Minor generator framing/volume shifts need inspection at transition midpoints in browser.",
+    "All 8 runtime WebP alpha channels match their source PNGs exactly. Transparent RGB artifacts are invisible after correct RGBA compositing; residual remote-edge alpha is at most1/255."
+  ],
+  "schemaVersion": 1,
+  "reviewScope": "Source artwork, runtime exports and 2D attachment calibration; browser validation belongs to the separate cinematic QA run.",
+  "canonicalArtApproval": false,
+  "humanArtApproval": false,
+  "referenceGuide": "https://github.com/gamedev-skills/awesome-gamedev-agent-skills/blob/19d93f97c9c1ea0f8b306e77aa81e0d3e352d3e9/skills/disciplines/create-game-assets/SKILL.md",
+  "provenance": {
+    "viewsManifest": "production/ship-motion-20261105/art/generation-jobs.json",
+    "engineManifest": "production/ship-motion-20261105/art/engine-generation-jobs.json",
+    "generationTool": "built-in image_gen",
+    "referenceLocked": "Existing classic hull V12; no canonical film model was provided for the hidden surfaces."
+  },
+  "nozzleFaces": {
+    "rear-quarter-shallow": {
+      "center": [
+        1364,
+        482
+      ],
+      "innerOpeningBounds": [
+        1339,
+        432,
+        1389,
+        533
+      ],
+      "widthSpan": 50,
+      "heightSpan": 101,
+      "measurement": "manual source-art inspection; approximately +/-6 px"
+    },
+    "rear-quarter": {
+      "center": [
+        1378,
+        491
+      ],
+      "illuminatedRingBounds": [
+        1329,
+        416,
+        1407,
+        566
+      ],
+      "widthSpan": 78,
+      "heightSpan": 150,
+      "measurement": "manual source-art inspection; approximately +/-6 px"
+    }
+  },
+  "vfx": {
+    "classic-engine-core": {
+      "canvas": [
+        1254,
+        1254
+      ],
+      "origin": [
+        621,
+        632
+      ],
+      "originNormalized": [
+        0.49521531100478466,
+        0.5039872408293461
+      ],
+      "premultipliedLuminanceCentroid": [
+        620.61952,
+        631.92809
+      ],
+      "boundsAlpha128": [
+        439,
+        306,
+        801,
+        957
+      ],
+      "boundsAlpha16": [
+        396,
+        261,
+        837,
+        1001
+      ],
+      "directionDegrees": 0,
+      "note": "The bright ellipse occupies only part of a square source canvas. Size the useful ellipse to the visible chamber and retain source margins; the center is not exactly canvas center."
+    },
+    "classic-engine-plume": {
+      "canvas": [
+        2172,
+        724
+      ],
+      "origin": [
+        448,
+        363
+      ],
+      "originNormalized": [
+        0.20626151012891344,
+        0.5013812154696132
+      ],
+      "axisEnd": [
+        1805,
+        363
+      ],
+      "directionDegrees": 0,
+      "boundsAlpha128": [
+        442,
+        267,
+        1485,
+        452
+      ],
+      "boundsAlpha16": [
+        434,
+        237,
+        1757,
+        469
+      ],
+      "note": "Attach the left leading luminous tip, not the canvas center or the flux centroid. The plume extends rightwards in source space."
+    }
+  },
+  "assets": [
+    {
+      "id": "classic-bank-dorsal-shallow",
+      "runtimePath": "public/game/planet-arrival/ship-motion-v1/classic-bank-dorsal-shallow.webp",
+      "sourcePath": "production/ship-motion-20261105/art/sources/classic-bank-dorsal-shallow.png",
+      "runtimeSha256": "ac5604e9658f4051732fb6427d2bf72c764afb69ff242347a6781f41bfb59fb6",
+      "sourceSha256": "e13cfb700e4ae450d96212ede8f1111915f6517c740b32db547aa64fc773ffbc",
+      "canvas": [
+        1536,
+        1024
+      ],
+      "alpha128Bounds": [
+        119,
+        223,
+        1429,
+        858
+      ],
+      "fullyTransparentFraction": 0.669245,
+      "edgeAlphaMaximum": 1,
+      "alphaMatchesSource": true,
+      "premultipliedRgbMaximumDifference": 0.0,
+      "inspection": "composited over opaque blue-grey; complete source silhouette, no baked scenery or runtime blue streaks"
+    },
+    {
+      "id": "classic-bank-dorsal",
+      "runtimePath": "public/game/planet-arrival/ship-motion-v1/classic-bank-dorsal.webp",
+      "sourcePath": "production/ship-motion-20261105/art/sources/classic-bank-dorsal.png",
+      "runtimeSha256": "1fa19eed577e792615075d55a073f45b02b63ad95e16a223520f81ec141115ea",
+      "sourceSha256": "4ff4917b7fc37a69d97705cdf81d08b72c5c91f0e78890451b9d418d390dfbbe",
+      "canvas": [
+        1536,
+        1024
+      ],
+      "alpha128Bounds": [
+        117,
+        210,
+        1433,
+        860
+      ],
+      "fullyTransparentFraction": 0.662792,
+      "edgeAlphaMaximum": 1,
+      "alphaMatchesSource": true,
+      "premultipliedRgbMaximumDifference": 0.0,
+      "inspection": "composited over opaque blue-grey; complete source silhouette, no baked scenery or runtime blue streaks"
+    },
+    {
+      "id": "classic-bank-ventral-shallow",
+      "runtimePath": "public/game/planet-arrival/ship-motion-v1/classic-bank-ventral-shallow.webp",
+      "sourcePath": "production/ship-motion-20261105/art/sources/classic-bank-ventral-shallow.png",
+      "runtimeSha256": "71ad4f03ed09d65e08c41048b6f1fe6520f8468bd6e6748577826c5c3f281373",
+      "sourceSha256": "54c9b02b4f162ea6055b226b7b1b72c08bb1d020e94eed3e348b270488c66cf1",
+      "canvas": [
+        1536,
+        1024
+      ],
+      "alpha128Bounds": [
+        105,
+        260,
+        1433,
+        848
+      ],
+      "fullyTransparentFraction": 0.710646,
+      "edgeAlphaMaximum": 1,
+      "alphaMatchesSource": true,
+      "premultipliedRgbMaximumDifference": 0.0,
+      "inspection": "composited over opaque blue-grey; complete source silhouette, no baked scenery or runtime blue streaks"
+    },
+    {
+      "id": "classic-bank-ventral",
+      "runtimePath": "public/game/planet-arrival/ship-motion-v1/classic-bank-ventral.webp",
+      "sourcePath": "production/ship-motion-20261105/art/sources/classic-bank-ventral.png",
+      "runtimeSha256": "caa21f490484c0b0b26c5ba8dff06ef8ada4c8789333804145a7f32a95495ee6",
+      "sourceSha256": "3025744c9ba174df974945780ea5fa9d87ab2caa4ba8dec27b3fcccfea91cffc",
+      "canvas": [
+        1536,
+        1024
+      ],
+      "alpha128Bounds": [
+        119,
+        239,
+        1417,
+        842
+      ],
+      "fullyTransparentFraction": 0.700261,
+      "edgeAlphaMaximum": 1,
+      "alphaMatchesSource": true,
+      "premultipliedRgbMaximumDifference": 0.0,
+      "inspection": "composited over opaque blue-grey; complete source silhouette, no baked scenery or runtime blue streaks"
+    },
+    {
+      "id": "classic-engine-core",
+      "runtimePath": "public/game/planet-arrival/ship-motion-v1/classic-engine-core.webp",
+      "sourcePath": "production/ship-motion-20261105/art/sources/classic-engine-core.png",
+      "runtimeSha256": "e87ebec40dcb5fcaa20935b94a2dd22c77e18dbf36618ebc36a2d804523e320c",
+      "sourceSha256": "eaf513287d55b74a78317c85ec0c3c64cb6a30bb233d7117ff2d75d73a9ce663",
+      "canvas": [
+        1254,
+        1254
+      ],
+      "alpha128Bounds": [
+        439,
+        306,
+        801,
+        957
+      ],
+      "fullyTransparentFraction": 0.466093,
+      "edgeAlphaMaximum": 1,
+      "alphaMatchesSource": true,
+      "premultipliedRgbMaximumDifference": 0.0,
+      "inspection": "composited over opaque blue-grey; complete source silhouette, no baked scenery or runtime blue streaks"
+    },
+    {
+      "id": "classic-engine-plume",
+      "runtimePath": "public/game/planet-arrival/ship-motion-v1/classic-engine-plume.webp",
+      "sourcePath": "production/ship-motion-20261105/art/sources/classic-engine-plume.png",
+      "runtimeSha256": "bfc0a271beaa3fa4f2af2072ae47f39bfa8c0cf688483319bfed1c07dd8df528",
+      "sourceSha256": "15de86db919c5b0848fc869df9cccb12d2a64df032d967b47767f642b1f635c6",
+      "canvas": [
+        2172,
+        724
+      ],
+      "alpha128Bounds": [
+        442,
+        267,
+        1485,
+        452
+      ],
+      "fullyTransparentFraction": 0.841471,
+      "edgeAlphaMaximum": 0,
+      "alphaMatchesSource": true,
+      "premultipliedRgbMaximumDifference": 0.0,
+      "inspection": "composited over opaque blue-grey; complete source silhouette, no baked scenery or runtime blue streaks"
+    },
+    {
+      "id": "classic-forward-quarter-shallow",
+      "runtimePath": "public/game/planet-arrival/ship-motion-v1/classic-forward-quarter-shallow.webp",
+      "sourcePath": "production/ship-motion-20261105/art/sources/classic-forward-quarter-shallow.png",
+      "runtimeSha256": "ebfeed7ccdcf9e1d0371d5c0db27dd4860083c609a68da89b0e2da36a07c21e2",
+      "sourceSha256": "675d137951c0809e93c94f05d0a75ddffd7820557cd03ef8bf128edd775f92f9",
+      "canvas": [
+        1536,
+        1024
+      ],
+      "alpha128Bounds": [
+        140,
+        212,
+        1397,
+        870
+      ],
+      "fullyTransparentFraction": 0.692959,
+      "edgeAlphaMaximum": 1,
+      "alphaMatchesSource": true,
+      "premultipliedRgbMaximumDifference": 0.0,
+      "inspection": "composited over opaque blue-grey; complete source silhouette, no baked scenery or runtime blue streaks"
+    },
+    {
+      "id": "classic-forward-quarter",
+      "runtimePath": "public/game/planet-arrival/ship-motion-v1/classic-forward-quarter.webp",
+      "sourcePath": "production/ship-motion-20261105/art/sources/classic-forward-quarter.png",
+      "runtimeSha256": "4a85daf4c5dd7452dcebbe9df6de9a2778b7c4ac1397294007d54686a1a2e673",
+      "sourceSha256": "d88fe1d4a989f863c51455219ac1f0711e6204beaa5774e5c0f61a1f7f8a3c7b",
+      "canvas": [
+        1536,
+        1024
+      ],
+      "alpha128Bounds": [
+        132,
+        198,
+        1405,
+        890
+      ],
+      "fullyTransparentFraction": 0.667435,
+      "edgeAlphaMaximum": 0,
+      "alphaMatchesSource": true,
+      "premultipliedRgbMaximumDifference": 0.0,
+      "inspection": "composited over opaque blue-grey; complete source silhouette, no baked scenery or runtime blue streaks"
+    },
+    {
+      "id": "classic-rear-quarter-shallow",
+      "runtimePath": "public/game/planet-arrival/ship-motion-v1/classic-rear-quarter-shallow.webp",
+      "sourcePath": "production/ship-motion-20261105/art/sources/classic-rear-quarter-shallow.png",
+      "runtimeSha256": "8e0940c26757b1fc66e071bc155e778cd30c70e9a2a4aa0da254477b4975e4ab",
+      "sourceSha256": "1ea52d5f966e5e4f408f250cc16fe768dde8ec40c596f9fb5e8a6e13b08fb4f6",
+      "canvas": [
+        1536,
+        1024
+      ],
+      "alpha128Bounds": [
+        146,
+        186,
+        1396,
+        871
+      ],
+      "fullyTransparentFraction": 0.687344,
+      "edgeAlphaMaximum": 0,
+      "alphaMatchesSource": true,
+      "premultipliedRgbMaximumDifference": 0.0,
+      "inspection": "composited over opaque blue-grey; complete source silhouette, no baked scenery or runtime blue streaks"
+    },
+    {
+      "id": "classic-rear-quarter",
+      "runtimePath": "public/game/planet-arrival/ship-motion-v1/classic-rear-quarter.webp",
+      "sourcePath": "production/ship-motion-20261105/art/sources/classic-rear-quarter.png",
+      "runtimeSha256": "3e19e37fd35f99ac6ffa8a809a11db917737b87645f4f7948fe9c3b177b86ed9",
+      "sourceSha256": "7b18a2d94aa019282ff7eb4fd90f456071a1013c6bbbd99c4accb5db008e57c7",
+      "canvas": [
+        1536,
+        1024
+      ],
+      "alpha128Bounds": [
+        128,
+        159,
+        1424,
+        898
+      ],
+      "fullyTransparentFraction": 0.654022,
+      "edgeAlphaMaximum": 1,
+      "alphaMatchesSource": true,
+      "premultipliedRgbMaximumDifference": 0.0,
+      "inspection": "composited over opaque blue-grey; complete source silhouette, no baked scenery or runtime blue streaks"
+    }
+  ],
+  "findings": [
+    {
+      "id": "F01",
+      "severity": "fixed-by-calibration",
+      "finding": "All variant calibration values were staging estimates. The source silhouettes have different bow, engine and lower-shell positions; the measured table replaces those estimates."
+    },
+    {
+      "id": "F02",
+      "severity": "integration-requirement",
+      "finding": "An inspected engine socket is not necessarily visible. The chamber is only visibly exposed in the two rear views; the other views and original profile require visibility 0."
+    },
+    {
+      "id": "F03",
+      "severity": "non-issue-after-compositing",
+      "finding": "Unpremultiplied inspection displays brown/blue RGB data in transparent background pixels. Correct RGBA composites are clean and runtime exports preserve the source alpha."
+    },
+    {
+      "id": "F04",
+      "severity": "artistic-review-open",
+      "finding": "The variants preserve fork, ribbed hull, dorsal spines, ventral blade and olive-bronze/orange material family. Small rib and internal engine details vary because these are generated projections, not renders of a shared 3D mesh. Exact canonical 1:1 is not established."
+    },
+    {
+      "id": "F05",
+      "severity": "browser-review-required",
+      "finding": "The reviewed renderer uses plus-lighter in an isolated paint group to prevent overlap-opacity loss. Independent generated silhouettes still require browser inspection for double contours, and cloak-field continuity at transition midpoints. Static inspection does not establish transition quality."
+    },
+    {
+      "id": "F06",
+      "severity": "scope",
+      "finding": "Eight alternate views cover the classic-predator-spaceship hull only. Other selected hulls retain their own profile and must never silently receive this hull."
+    }
+  ],
+  "rendererSourceReview": {
+    "files": [
+      "app/game/PlanetArrivalCinematic.tsx",
+      "app/game/PlanetArrivalCinematic.module.css",
+      "app/game/systems/planetArrivalShipEffects.ts"
+    ],
+    "observations": [
+      "plus-lighter is applied to the isolated weighted hull layers",
+      "body, light masks, refraction and rim share registration transforms and pivots",
+      "plume and core are children of each registered view; plume behind hull and core in front",
+      "engine origins and dimensions match the inspected source-art measurements"
+    ],
+    "remainingConfirmedRegistrationErrors": [],
+    "evidenceType": "source inspection, not browser rendering"
+  }
+}

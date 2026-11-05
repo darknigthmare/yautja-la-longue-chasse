@@ -1,0 +1,48 @@
+{
+  "id": "arrival-ship-ground-wash-ruins",
+  "family": "ship-ground-wash",
+  "biome": "ruins",
+  "prompt": "Use case: stylized-concept. ONE independent production 2D cinematic VFX sprite for Yautja The Long Hunt.\nAsset ID: arrival-ship-ground-wash-ruins; biome ruins.\nInput image 1 is a material/palette/style reference only; input image 2 is a phase/scale/style reference only. Make ONE new standalone effect matching the restrained semi-realistic hand-painted 2.5D finish. Do not reproduce or combine whole reference images.\nSubject: A low, wide, asymmetrical horizontal flow of fine weathered masonry dust, tiny limestone granules and a few very small flat stone slivers displaced by the gentle ground wash of an unseen landing craft. Pale warm-grey/buff mineral fines, weighty few little chips moving close to ground, subdued natural dusty beige; no architecture or glyphs.\nMorphology: A sustained low-speed lateral ground wash: two unequal very low lateral veils with shallow rolling wisps and a mostly clear center. Only suspended moving dust and tiny particles, no ground or rubble ridge. At least four times wider than tall. No explosion, no impact spike, no tall central column, no engine exhaust, no fire. Use the second reference for this narrow low shape.\nCamera: near-ground side view, with very slight view of the top of the spread. Subtle neutral upper-left light. Clear centre for compositing the existing capsule or ship behind. No scene geometry.\nComposition: 1536x1024 landscape canvas. Unseen contact origin is full-frame x50%, y78% (768,799). All visible material should stay within x20%..80%, y52%..81%; all particles are in a shallow irregular band. All pixels in the outer 15% strips at left and right, and outer 13% at top and bottom MUST have zero alpha. Do not fill the frame or zoom in. Every wisp fades into genuinely transparent alpha and stays away from edges.\nOutput ONE individual RGBA PNG with TRUE TRANSPARENT BACKGROUND. No floor, terrain, pile, ground surface, painted shadow disc, backdrop, horizon, ship, capsule, engines, characters, creature, magic, glow, words, labels, grid, sprite sheet, frames, contact sheet, watermark, baked checkerboard, black or white background, cropped particles. Keep clean transparent separation.",
+  "generatedSource": "/workspace/scratch/1221b6b0a2c1/generated_images/exec-cadf4f68-7319-4522-92ab-1183e4e87976.png",
+  "file": "public/game/cinematics/batch-01-20261105/arrival-ship-ground-wash-ruins.png",
+  "referenceImages": [
+    "/workspace/scratch/1221b6b0a2c1/cinematic-assets-batch-01-20261105/public/game/cinematics/batch-01-20261105/arrival-impact-front-ruins.png",
+    "/workspace/scratch/1221b6b0a2c1/cinematic-assets-batch-01-20261105/public/game/cinematics/batch-01-20261105/arrival-ship-ground-wash-desert.png"
+  ],
+  "generationMode": "builtin-imagegen-reference",
+  "transparentBackgroundRequested": true,
+  "intendedAnchor": {
+    "name": "ground-wash-origin",
+    "normalized": [
+      0.5,
+      0.78
+    ],
+    "basis": "Common intended contact from prompt; visually reviewed standalone, runtime calibration pending."
+  },
+  "generated": true,
+  "integrated": false,
+  "testedInEngine": false,
+  "artisticHumanApproval": false,
+  "visualReview": {
+    "reviewer": "assistant",
+    "result": "pass-with-integration-pending",
+    "notes": "Clear centre, restrained material palette, sparse downward aftermath for settle; low lateral flow for wash. Entire significant effect inside canvas."
+  },
+  "technicalQA": {
+    "mode": "RGBA",
+    "width": 1536,
+    "height": 1024,
+    "fullyTransparentFraction": 0.9098504384358724,
+    "visibleAlphaOver16Pixels": 68893,
+    "visibleBoundsAlphaOver16": [
+      226,
+      657,
+      1260,
+      819
+    ],
+    "bytes": 883915,
+    "sha256": "4cf92eafdbe6e032d6585e6970931021c7f6e6f141db953e3ba04c9656625f62",
+    "borderPass": true,
+    "passed": true
+  }
+}

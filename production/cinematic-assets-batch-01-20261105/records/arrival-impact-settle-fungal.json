@@ -1,0 +1,48 @@
+{
+  "id": "arrival-impact-settle-fungal",
+  "family": "impact-settle",
+  "biome": "fungal",
+  "prompt": "Use case: stylized-concept. ONE independent production 2D cinematic VFX sprite for Yautja The Long Hunt.\nAsset ID: arrival-impact-settle-fungal; biome fungal.\nInput image 1 is a material/palette/style reference only; input image 2 is a phase/scale/style reference only. Make ONE new standalone effect matching the restrained semi-realistic hand-painted 2.5D finish. Do not reproduce or combine whole reference images.\nSubject: A sparse late falling aftermath of tiny earthy umber/taupe fungal-soil grains, a few delicate torn papery mushroom-skin flecks and short mycelium fibres curling DOWNWARD, with faint broken wisps of nonluminous natural spores. Heavy tiny grains below lighter suspended fines. Natural muted grey-brown and ochre, no intact mushroom, no cap, no purple cloud, no bioluminescence.\nMorphology: Sparse DISCONNECTED falling particles and very short descending trails, large transparent gaps between the small groups. Far less dense and much lower than the impact-front reference. No outward/upward eruption or mirrored rising wings, no solid material pile. This is a distinct later falling aftermath, not a recolour or lower-opacity copy of the first reference.\nCamera: near-ground side view, with very slight view of the top of the spread. Subtle neutral upper-left light. Clear centre for compositing the existing capsule or ship behind. No scene geometry.\nComposition: 1536x1024 landscape canvas. Unseen contact origin is full-frame x50%, y78% (768,799). All visible material should stay within x20%..80%, y52%..81%; all particles are in a shallow irregular band. All pixels in the outer 15% strips at left and right, and outer 13% at top and bottom MUST have zero alpha. Do not fill the frame or zoom in. Every wisp fades into genuinely transparent alpha and stays away from edges.\nOutput ONE individual RGBA PNG with TRUE TRANSPARENT BACKGROUND. No floor, terrain, pile, ground surface, painted shadow disc, backdrop, horizon, ship, capsule, engines, characters, creature, magic, glow, words, labels, grid, sprite sheet, frames, contact sheet, watermark, baked checkerboard, black or white background, cropped particles. Keep clean transparent separation.",
+  "generatedSource": "/workspace/scratch/1221b6b0a2c1/generated_images/exec-3a65e017-a5f2-4662-af34-4cd5afdc732a.png",
+  "file": "public/game/cinematics/batch-01-20261105/arrival-impact-settle-fungal.png",
+  "referenceImages": [
+    "/workspace/scratch/1221b6b0a2c1/cinematic-assets-batch-01-20261105/public/game/cinematics/batch-01-20261105/arrival-impact-front-fungal.png",
+    "/workspace/scratch/1221b6b0a2c1/cinematic-assets-batch-01-20261105/public/game/cinematics/batch-01-20261105/arrival-impact-settle-jungle.png"
+  ],
+  "generationMode": "builtin-imagegen-reference",
+  "transparentBackgroundRequested": true,
+  "intendedAnchor": {
+    "name": "ground-capsule-reference",
+    "normalized": [
+      0.5,
+      0.78
+    ],
+    "basis": "Common intended contact from prompt; visually reviewed standalone, runtime calibration pending."
+  },
+  "generated": true,
+  "integrated": false,
+  "testedInEngine": false,
+  "artisticHumanApproval": false,
+  "visualReview": {
+    "reviewer": "assistant",
+    "result": "pass-with-integration-pending",
+    "notes": "Clear centre, restrained material palette, sparse downward aftermath for settle; low lateral flow for wash. Entire significant effect inside canvas."
+  },
+  "technicalQA": {
+    "mode": "RGBA",
+    "width": 1536,
+    "height": 1024,
+    "fullyTransparentFraction": 0.9570598602294922,
+    "visibleAlphaOver16Pixels": 8845,
+    "visibleBoundsAlphaOver16": [
+      301,
+      540,
+      1229,
+      834
+    ],
+    "bytes": 782643,
+    "sha256": "ec2f88e7733b510a5308836feea8bacb84ce27194a8ab6a0f94fdbfb4d1280aa",
+    "borderPass": true,
+    "passed": true
+  }
+}

@@ -1,0 +1,1373 @@
+{
+  "schemaVersion": 1,
+  "batchId": "cinematic-assets-batch-01-20261105",
+  "checkedAt": "2026-11-05T14:01:55.035971+00:00",
+  "method": "Original files decoded with Pillow; alpha metrics, encoded/decoded SHA256 and source-art review. No PNG modification.",
+  "thresholds": {
+    "significantAlpha": "alpha > 16/255",
+    "minimumTransparentFraction": 0.05,
+    "minimumVisiblePixels": 500
+  },
+  "results": {
+    "expected": 50,
+    "present": 50,
+    "technicalPassed": 50,
+    "technicalFailed": [],
+    "uniqueEncodedSHA256": true,
+    "uniqueDecodedRGBA": true,
+    "visualSourceReviewed": 50,
+    "integratedClaimed": 0,
+    "engineTestsClaimed": 0,
+    "humanApprovalsClaimed": 0,
+    "totalPngBytes": 39350472,
+    "totalWebpBytes": 14196210,
+    "webpAlphaExactlyPreservedCount": 50,
+    "webpVisibleRgbaExactlyPreservedCount": 50,
+    "maximumBorderAlpha": 4
+  },
+  "limitations": [
+    "Source-level QA does not establish in-engine attachment, animation, performance or canonical 1:1 artistic fidelity.",
+    "Transient low-alpha edge residues are measured and retained; no claim of alpha=0 at every edge.",
+    "Visual review is performed by an assistant, not a human artistic sign-off."
+  ],
+  "warningDefinitions": {
+    "LOW_ALPHA_BORDER_RESIDUE": "Les bords peuvent contenir un résidu alpha de 1 à 4/255. Aucun pixel significatif (alpha>16) ne touche un bord. Les PNG originaux sont conservés sans nettoyage automatique.",
+    "FLIGHT_GLOW_BROAD_ALPHA_1_TO_4_RESIDUE": "Le renfort de vol contient un résidu alpha très faible sur une grande partie du canevas; vérifier l'absence de voile visible avec le mode de fusion réel et un gain lumineux mesuré.",
+    "FINE_FALLOUT_REQUIRES_NATIVE_SCALE_REVIEW": "La retombée est volontairement bien plus fine que l'impact initial; sa présence et sa lisibilité à l'échelle du jeu doivent être vérifiées en mouvement."
+  },
+  "assets": [
+    {
+      "id": "arrival-pod-flight-glow-reinforcement",
+      "checks": {
+        "rgbaPng": true,
+        "hasTransparentBackground": true,
+        "hasVisibleContent": true,
+        "noSignificantBorderClipping": true,
+        "significantContentInsideCanvas": true,
+        "passed": true,
+        "webpDimensionsPreserved": true,
+        "webpAlphaPreservedExactly": true,
+        "webpVisibleRgbaPreservedExactly": true,
+        "webpLosslessBitstream": true
+      },
+      "visualReview": {
+        "status": "reviewed-source-art",
+        "reviewer": "independent-assistant",
+        "notes": "Trois foyers ambre distincts et compacts, décentrés conformément au canevas source. Aucun rectangle visible sur les trois fonds examinés; le résidu alpha 1-4/255 reste documenté.",
+        "humanApproved": false,
+        "runtimeApproved": false,
+        "method": "Original PNGs placed unchanged on dark, white and checker backgrounds in a QA document; all 50 inspected after Poppler rendering. Browser launch was unavailable in this sandbox.",
+        "reviewedSha256": "47814836cc10b5343914d28dd5a4342b7100da4c27ed14d0fbd13627cc7f71b4"
+      },
+      "warnings": [
+        "LOW_ALPHA_BORDER_RESIDUE",
+        "FLIGHT_GLOW_BROAD_ALPHA_1_TO_4_RESIDUE"
+      ]
+    },
+    {
+      "id": "arrival-pod-ground-glow-reinforcement",
+      "checks": {
+        "rgbaPng": true,
+        "hasTransparentBackground": true,
+        "hasVisibleContent": true,
+        "noSignificantBorderClipping": true,
+        "significantContentInsideCanvas": true,
+        "passed": true,
+        "webpDimensionsPreserved": true,
+        "webpAlphaPreservedExactly": true,
+        "webpVisibleRgbaPreservedExactly": true,
+        "webpLosslessBitstream": true
+      },
+      "visualReview": {
+        "status": "reviewed-source-art",
+        "reviewer": "independent-assistant",
+        "notes": "Trois petits foyers ambre en triangle au sommet du canevas portrait. Espacement et absence de coque conservés; vérification de superposition réelle encore distincte.",
+        "humanApproved": false,
+        "runtimeApproved": false,
+        "method": "Original PNGs placed unchanged on dark, white and checker backgrounds in a QA document; all 50 inspected after Poppler rendering. Browser launch was unavailable in this sandbox.",
+        "reviewedSha256": "345cb95a0bbf7f27457ac070595a062e4c3330358e539c5b0579d48f7adb86c0"
+      },
+      "warnings": []
+    },
+    {
+      "id": "arrival-impact-front-jungle",
+      "checks": {
+        "rgbaPng": true,
+        "hasTransparentBackground": true,
+        "hasVisibleContent": true,
+        "noSignificantBorderClipping": true,
+        "significantContentInsideCanvas": true,
+        "passed": true,
+        "webpDimensionsPreserved": true,
+        "webpAlphaPreservedExactly": true,
+        "webpVisibleRgbaPreservedExactly": true,
+        "webpLosslessBitstream": true
+      },
+      "visualReview": {
+        "status": "reviewed-source-art",
+        "reviewer": "independent-assistant",
+        "notes": "Deux bras terreux irréguliers et centre dégagé; contour doux et petites particules isolées, sans sol ajouté.",
+        "humanApproved": false,
+        "runtimeApproved": false,
+        "method": "Original PNGs placed unchanged on dark, white and checker backgrounds in a QA document; all 50 inspected after Poppler rendering. Browser launch was unavailable in this sandbox.",
+        "reviewedSha256": "6d72877bd07e7c8791deb0245239a9ec4f3bae721e8c4916522975649909274a"
+      },
+      "warnings": [
+        "LOW_ALPHA_BORDER_RESIDUE"
+      ]
+    },
+    {
+      "id": "arrival-impact-front-ice",
+      "checks": {
+        "rgbaPng": true,
+        "hasTransparentBackground": true,
+        "hasVisibleContent": true,
+        "noSignificantBorderClipping": true,
+        "significantContentInsideCanvas": true,
+        "passed": true,
+        "webpDimensionsPreserved": true,
+        "webpAlphaPreservedExactly": true,
+        "webpVisibleRgbaPreservedExactly": true,
+        "webpLosslessBitstream": true
+      },
+      "visualReview": {
+        "status": "reviewed-source-art",
+        "reviewer": "independent-assistant",
+        "notes": "Éventail clair et froid, bordure en grains et jets asymétriques; pas de halo magique ni de plaque de terrain.",
+        "humanApproved": false,
+        "runtimeApproved": false,
+        "method": "Original PNGs placed unchanged on dark, white and checker backgrounds in a QA document; all 50 inspected after Poppler rendering. Browser launch was unavailable in this sandbox.",
+        "reviewedSha256": "3e2aa0202f46947a160de26f93824b96905a2d40d204809591dd5a0977778c78"
+      },
+      "warnings": [
+        "LOW_ALPHA_BORDER_RESIDUE"
+      ]
+    },
+    {
+      "id": "arrival-impact-front-volcano",
+      "checks": {
+        "rgbaPng": true,
+        "hasTransparentBackground": true,
+        "hasVisibleContent": true,
+        "noSignificantBorderClipping": true,
+        "significantContentInsideCanvas": true,
+        "passed": true,
+        "webpDimensionsPreserved": true,
+        "webpAlphaPreservedExactly": true,
+        "webpVisibleRgbaPreservedExactly": true,
+        "webpLosslessBitstream": true
+      },
+      "visualReview": {
+        "status": "reviewed-source-art",
+        "reviewer": "independent-assistant",
+        "notes": "Cendre gris sombre et grains minéraux; deux branches asymétriques sans lave ni flamme.",
+        "humanApproved": false,
+        "runtimeApproved": false,
+        "method": "Original PNGs placed unchanged on dark, white and checker backgrounds in a QA document; all 50 inspected after Poppler rendering. Browser launch was unavailable in this sandbox.",
+        "reviewedSha256": "69fb0a1b232fc64068c7dd9f1837a2eaf11545506d1911d28429222d5f66e525"
+      },
+      "warnings": [
+        "LOW_ALPHA_BORDER_RESIDUE"
+      ]
+    },
+    {
+      "id": "arrival-impact-front-swamp",
+      "checks": {
+        "rgbaPng": true,
+        "hasTransparentBackground": true,
+        "hasVisibleContent": true,
+        "noSignificantBorderClipping": true,
+        "significantContentInsideCanvas": true,
+        "passed": true,
+        "webpDimensionsPreserved": true,
+        "webpAlphaPreservedExactly": true,
+        "webpVisibleRgbaPreservedExactly": true,
+        "webpLosslessBitstream": true
+      },
+      "visualReview": {
+        "status": "reviewed-source-art",
+        "reviewer": "independent-assistant",
+        "notes": "Boue brune en rubans lourds et gouttes séparées; centre ouvert et silhouette distincte de la poussière sèche.",
+        "humanApproved": false,
+        "runtimeApproved": false,
+        "method": "Original PNGs placed unchanged on dark, white and checker backgrounds in a QA document; all 50 inspected after Poppler rendering. Browser launch was unavailable in this sandbox.",
+        "reviewedSha256": "f223b363006ca54c60313f1a39bcce01793ea6a62fe65eee27d06495ec5dd7e2"
+      },
+      "warnings": []
+    },
+    {
+      "id": "arrival-impact-front-desert",
+      "checks": {
+        "rgbaPng": true,
+        "hasTransparentBackground": true,
+        "hasVisibleContent": true,
+        "noSignificantBorderClipping": true,
+        "significantContentInsideCanvas": true,
+        "passed": true,
+        "webpDimensionsPreserved": true,
+        "webpAlphaPreservedExactly": true,
+        "webpVisibleRgbaPreservedExactly": true,
+        "webpLosslessBitstream": true
+      },
+      "visualReview": {
+        "status": "reviewed-source-art",
+        "reviewer": "independent-assistant",
+        "notes": "Sable ocre en filaments et grains fins; grand jet latéral asymétrique, centre lisible.",
+        "humanApproved": false,
+        "runtimeApproved": false,
+        "method": "Original PNGs placed unchanged on dark, white and checker backgrounds in a QA document; all 50 inspected after Poppler rendering. Browser launch was unavailable in this sandbox.",
+        "reviewedSha256": "6b1e88357bc4031da539d2a8ab5b4f72b4fbdbdb0c400a515887d663b716b447"
+      },
+      "warnings": [
+        "LOW_ALPHA_BORDER_RESIDUE"
+      ]
+    },
+    {
+      "id": "arrival-impact-front-ocean",
+      "checks": {
+        "rgbaPng": true,
+        "hasTransparentBackground": true,
+        "hasVisibleContent": true,
+        "noSignificantBorderClipping": true,
+        "significantContentInsideCanvas": true,
+        "passed": true,
+        "webpDimensionsPreserved": true,
+        "webpAlphaPreservedExactly": true,
+        "webpVisibleRgbaPreservedExactly": true,
+        "webpLosslessBitstream": true
+      },
+      "visualReview": {
+        "status": "reviewed-source-art",
+        "reviewer": "independent-assistant",
+        "notes": "Rubans d’eau et gouttes gris-bleu, centre ouvert; pas de disque de sol ni de fond océan peint.",
+        "humanApproved": false,
+        "runtimeApproved": false,
+        "method": "Original PNGs placed unchanged on dark, white and checker backgrounds in a QA document; all 50 inspected after Poppler rendering. Browser launch was unavailable in this sandbox.",
+        "reviewedSha256": "b69c7a6b4d02fb0c7900f679e41f38aac3f1e41dbd454b1e7d25831b362d6dc9"
+      },
+      "warnings": [
+        "LOW_ALPHA_BORDER_RESIDUE"
+      ]
+    },
+    {
+      "id": "arrival-impact-front-fungal",
+      "checks": {
+        "rgbaPng": true,
+        "hasTransparentBackground": true,
+        "hasVisibleContent": true,
+        "noSignificantBorderClipping": true,
+        "significantContentInsideCanvas": true,
+        "passed": true,
+        "webpDimensionsPreserved": true,
+        "webpAlphaPreservedExactly": true,
+        "webpVisibleRgbaPreservedExactly": true,
+        "webpLosslessBitstream": true
+      },
+      "visualReview": {
+        "status": "reviewed-source-art",
+        "reviewer": "independent-assistant",
+        "notes": "Matière organique brune et fibreuse en deux bras irréguliers; spores discrètes et non lumineuses.",
+        "humanApproved": false,
+        "runtimeApproved": false,
+        "method": "Original PNGs placed unchanged on dark, white and checker backgrounds in a QA document; all 50 inspected after Poppler rendering. Browser launch was unavailable in this sandbox.",
+        "reviewedSha256": "c4f86bf814485ecec5d44cc42bef015f8189e52653377752812b18e6165b265a"
+      },
+      "warnings": [
+        "LOW_ALPHA_BORDER_RESIDUE"
+      ]
+    },
+    {
+      "id": "arrival-impact-front-ruins",
+      "checks": {
+        "rgbaPng": true,
+        "hasTransparentBackground": true,
+        "hasVisibleContent": true,
+        "noSignificantBorderClipping": true,
+        "significantContentInsideCanvas": true,
+        "passed": true,
+        "webpDimensionsPreserved": true,
+        "webpAlphaPreservedExactly": true,
+        "webpVisibleRgbaPreservedExactly": true,
+        "webpLosslessBitstream": true
+      },
+      "visualReview": {
+        "status": "reviewed-source-art",
+        "reviewer": "independent-assistant",
+        "notes": "Poussière minérale beige avec petits éclats anguleux; silhouettes et valeurs distinctes de la boue.",
+        "humanApproved": false,
+        "runtimeApproved": false,
+        "method": "Original PNGs placed unchanged on dark, white and checker backgrounds in a QA document; all 50 inspected after Poppler rendering. Browser launch was unavailable in this sandbox.",
+        "reviewedSha256": "d1c28f52682a1ba30b00bb315959a1fee533c84af65fef7972b8e3a1654bc43f"
+      },
+      "warnings": [
+        "LOW_ALPHA_BORDER_RESIDUE"
+      ]
+    },
+    {
+      "id": "arrival-impact-settle-jungle",
+      "checks": {
+        "rgbaPng": true,
+        "hasTransparentBackground": true,
+        "hasVisibleContent": true,
+        "noSignificantBorderClipping": true,
+        "significantContentInsideCanvas": true,
+        "passed": true,
+        "webpDimensionsPreserved": true,
+        "webpAlphaPreservedExactly": true,
+        "webpVisibleRgbaPreservedExactly": true,
+        "webpLosslessBitstream": true
+      },
+      "visualReview": {
+        "status": "reviewed-source-art",
+        "reviewer": "independent-assistant",
+        "notes": "Retombée distincte de l'impact initial; détails fins et espacés à vérifier à l'échelle finale.",
+        "humanApproved": false,
+        "runtimeApproved": false,
+        "method": "Original PNGs placed unchanged on dark, white and checker backgrounds in a QA document; all 50 inspected after Poppler rendering. Browser launch was unavailable in this sandbox.",
+        "reviewedSha256": "be7a34c6ccc8aa3d258cadf436a3d9fe9ac3ab94845d8b70866e93d2e059aeb2"
+      },
+      "warnings": [
+        "LOW_ALPHA_BORDER_RESIDUE",
+        "FINE_FALLOUT_REQUIRES_NATIVE_SCALE_REVIEW"
+      ]
+    },
+    {
+      "id": "arrival-impact-settle-ice",
+      "checks": {
+        "rgbaPng": true,
+        "hasTransparentBackground": true,
+        "hasVisibleContent": true,
+        "noSignificantBorderClipping": true,
+        "significantContentInsideCanvas": true,
+        "passed": true,
+        "webpDimensionsPreserved": true,
+        "webpAlphaPreservedExactly": true,
+        "webpVisibleRgbaPreservedExactly": true,
+        "webpLosslessBitstream": true
+      },
+      "visualReview": {
+        "status": "reviewed-source-art",
+        "reviewer": "independent-assistant",
+        "notes": "Retombée distincte de l'impact initial; détails fins et espacés à vérifier à l'échelle finale.",
+        "humanApproved": false,
+        "runtimeApproved": false,
+        "method": "Original PNGs placed unchanged on dark, white and checker backgrounds in a QA document; all 50 inspected after Poppler rendering. Browser launch was unavailable in this sandbox.",
+        "reviewedSha256": "52c99256029e45ea6046b7c47fb09879ca89a88b53ed3dbfc8b0bbf4a5fd8545"
+      },
+      "warnings": [
+        "LOW_ALPHA_BORDER_RESIDUE",
+        "FINE_FALLOUT_REQUIRES_NATIVE_SCALE_REVIEW"
+      ]
+    },
+    {
+      "id": "arrival-impact-settle-volcano",
+      "checks": {
+        "rgbaPng": true,
+        "hasTransparentBackground": true,
+        "hasVisibleContent": true,
+        "noSignificantBorderClipping": true,
+        "significantContentInsideCanvas": true,
+        "passed": true,
+        "webpDimensionsPreserved": true,
+        "webpAlphaPreservedExactly": true,
+        "webpVisibleRgbaPreservedExactly": true,
+        "webpLosslessBitstream": true
+      },
+      "visualReview": {
+        "status": "reviewed-source-art",
+        "reviewer": "independent-assistant",
+        "notes": "Retombée distincte de l'impact initial; détails fins et espacés à vérifier à l'échelle finale.",
+        "humanApproved": false,
+        "runtimeApproved": false,
+        "method": "Original PNGs placed unchanged on dark, white and checker backgrounds in a QA document; all 50 inspected after Poppler rendering. Browser launch was unavailable in this sandbox.",
+        "reviewedSha256": "87965a3312d315cb5722bad9ba21347c5e5eec7ca05406bb49291d0e3cbc5964"
+      },
+      "warnings": [
+        "LOW_ALPHA_BORDER_RESIDUE",
+        "FINE_FALLOUT_REQUIRES_NATIVE_SCALE_REVIEW"
+      ]
+    },
+    {
+      "id": "arrival-impact-settle-swamp",
+      "checks": {
+        "rgbaPng": true,
+        "hasTransparentBackground": true,
+        "hasVisibleContent": true,
+        "noSignificantBorderClipping": true,
+        "significantContentInsideCanvas": true,
+        "passed": true,
+        "webpDimensionsPreserved": true,
+        "webpAlphaPreservedExactly": true,
+        "webpVisibleRgbaPreservedExactly": true,
+        "webpLosslessBitstream": true
+      },
+      "visualReview": {
+        "status": "reviewed-source-art",
+        "reviewer": "independent-assistant",
+        "notes": "Retombée distincte de l'impact initial; détails fins et espacés à vérifier à l'échelle finale.",
+        "humanApproved": false,
+        "runtimeApproved": false,
+        "method": "Original PNGs placed unchanged on dark, white and checker backgrounds in a QA document; all 50 inspected after Poppler rendering. Browser launch was unavailable in this sandbox.",
+        "reviewedSha256": "a81150e91632a3aea5b248327f76c7a7df458720c422fdfe5edf3b9949605697"
+      },
+      "warnings": [
+        "LOW_ALPHA_BORDER_RESIDUE",
+        "FINE_FALLOUT_REQUIRES_NATIVE_SCALE_REVIEW"
+      ]
+    },
+    {
+      "id": "arrival-impact-settle-desert",
+      "checks": {
+        "rgbaPng": true,
+        "hasTransparentBackground": true,
+        "hasVisibleContent": true,
+        "noSignificantBorderClipping": true,
+        "significantContentInsideCanvas": true,
+        "passed": true,
+        "webpDimensionsPreserved": true,
+        "webpAlphaPreservedExactly": true,
+        "webpVisibleRgbaPreservedExactly": true,
+        "webpLosslessBitstream": true
+      },
+      "visualReview": {
+        "status": "reviewed-source-art",
+        "reviewer": "independent-assistant",
+        "notes": "Retombée distincte de l'impact initial; détails fins et espacés à vérifier à l'échelle finale.",
+        "humanApproved": false,
+        "runtimeApproved": false,
+        "method": "Original PNGs placed unchanged on dark, white and checker backgrounds in a QA document; all 50 inspected after Poppler rendering. Browser launch was unavailable in this sandbox.",
+        "reviewedSha256": "c02ba8ea8eb8d6d7bef22c49d8eecb79d8ba4c0b7e3433b4027d1f7b3821fb55"
+      },
+      "warnings": [
+        "LOW_ALPHA_BORDER_RESIDUE",
+        "FINE_FALLOUT_REQUIRES_NATIVE_SCALE_REVIEW"
+      ]
+    },
+    {
+      "id": "arrival-impact-settle-ocean",
+      "checks": {
+        "rgbaPng": true,
+        "hasTransparentBackground": true,
+        "hasVisibleContent": true,
+        "noSignificantBorderClipping": true,
+        "significantContentInsideCanvas": true,
+        "passed": true,
+        "webpDimensionsPreserved": true,
+        "webpAlphaPreservedExactly": true,
+        "webpVisibleRgbaPreservedExactly": true,
+        "webpLosslessBitstream": true
+      },
+      "visualReview": {
+        "status": "reviewed-source-art",
+        "reviewer": "independent-assistant",
+        "notes": "Gouttes d’eau très espacées; silhouette volontairement légère. Vérifier sa lisibilité à la taille réelle et pendant le mouvement.",
+        "humanApproved": false,
+        "runtimeApproved": false,
+        "method": "Original PNGs placed unchanged on dark, white and checker backgrounds in a QA document; all 50 inspected after Poppler rendering. Browser launch was unavailable in this sandbox.",
+        "reviewedSha256": "edf53ae4e417cda6fdc869b2db1fc4a3b162caa9c9613c8da003a54e21881336"
+      },
+      "warnings": [
+        "FINE_FALLOUT_REQUIRES_NATIVE_SCALE_REVIEW"
+      ]
+    },
+    {
+      "id": "arrival-impact-settle-fungal",
+      "checks": {
+        "rgbaPng": true,
+        "hasTransparentBackground": true,
+        "hasVisibleContent": true,
+        "noSignificantBorderClipping": true,
+        "significantContentInsideCanvas": true,
+        "passed": true,
+        "webpDimensionsPreserved": true,
+        "webpAlphaPreservedExactly": true,
+        "webpVisibleRgbaPreservedExactly": true,
+        "webpLosslessBitstream": true
+      },
+      "visualReview": {
+        "status": "reviewed-source-art",
+        "reviewer": "independent-assistant",
+        "notes": "Fines particules fibreuses et petits débris bruns espacés; centre transparent, aucune émission lumineuse.",
+        "humanApproved": false,
+        "runtimeApproved": false,
+        "method": "Original PNGs placed unchanged on dark, white and checker backgrounds in a QA document; all 50 inspected after Poppler rendering. Browser launch was unavailable in this sandbox.",
+        "reviewedSha256": "ec2f88e7733b510a5308836feea8bacb84ce27194a8ab6a0f94fdbfb4d1280aa"
+      },
+      "warnings": [
+        "FINE_FALLOUT_REQUIRES_NATIVE_SCALE_REVIEW"
+      ]
+    },
+    {
+      "id": "arrival-impact-settle-ruins",
+      "checks": {
+        "rgbaPng": true,
+        "hasTransparentBackground": true,
+        "hasVisibleContent": true,
+        "noSignificantBorderClipping": true,
+        "significantContentInsideCanvas": true,
+        "passed": true,
+        "webpDimensionsPreserved": true,
+        "webpAlphaPreservedExactly": true,
+        "webpVisibleRgbaPreservedExactly": true,
+        "webpLosslessBitstream": true
+      },
+      "visualReview": {
+        "status": "reviewed-source-art",
+        "reviewer": "independent-assistant",
+        "notes": "Petits éclats de pierre et traces de poussière descendante; une retombée distincte de l’éventail initial.",
+        "humanApproved": false,
+        "runtimeApproved": false,
+        "method": "Original PNGs placed unchanged on dark, white and checker backgrounds in a QA document; all 50 inspected after Poppler rendering. Browser launch was unavailable in this sandbox.",
+        "reviewedSha256": "0c96b94298242a34dbe628afd472d0dc949352546ca0faee70d58db00e8526b4"
+      },
+      "warnings": [
+        "LOW_ALPHA_BORDER_RESIDUE",
+        "FINE_FALLOUT_REQUIRES_NATIVE_SCALE_REVIEW"
+      ]
+    },
+    {
+      "id": "arrival-ship-ground-wash-jungle",
+      "checks": {
+        "rgbaPng": true,
+        "hasTransparentBackground": true,
+        "hasVisibleContent": true,
+        "noSignificantBorderClipping": true,
+        "significantContentInsideCanvas": true,
+        "passed": true,
+        "webpDimensionsPreserved": true,
+        "webpAlphaPreservedExactly": true,
+        "webpVisibleRgbaPreservedExactly": true,
+        "webpLosslessBitstream": true
+      },
+      "visualReview": {
+        "status": "reviewed-source-art",
+        "reviewer": "independent-assistant",
+        "notes": "Souffle bas et latéral, moins haut que l'impact; ne pas le rendre comme une explosion.",
+        "humanApproved": false,
+        "runtimeApproved": false,
+        "method": "Original PNGs placed unchanged on dark, white and checker backgrounds in a QA document; all 50 inspected after Poppler rendering. Browser launch was unavailable in this sandbox.",
+        "reviewedSha256": "745272b9ba2e33d7e01bab2fe32524b58de43649f36362851a739363e56e806b"
+      },
+      "warnings": [
+        "LOW_ALPHA_BORDER_RESIDUE"
+      ]
+    },
+    {
+      "id": "arrival-ship-ground-wash-ice",
+      "checks": {
+        "rgbaPng": true,
+        "hasTransparentBackground": true,
+        "hasVisibleContent": true,
+        "noSignificantBorderClipping": true,
+        "significantContentInsideCanvas": true,
+        "passed": true,
+        "webpDimensionsPreserved": true,
+        "webpAlphaPreservedExactly": true,
+        "webpVisibleRgbaPreservedExactly": true,
+        "webpLosslessBitstream": true
+      },
+      "visualReview": {
+        "status": "reviewed-source-art",
+        "reviewer": "independent-assistant",
+        "notes": "Souffle bas et latéral, moins haut que l'impact; ne pas le rendre comme une explosion.",
+        "humanApproved": false,
+        "runtimeApproved": false,
+        "method": "Original PNGs placed unchanged on dark, white and checker backgrounds in a QA document; all 50 inspected after Poppler rendering. Browser launch was unavailable in this sandbox.",
+        "reviewedSha256": "3e2df6fe896b352c7a32fc9f54c2ba9fb9eec6ad0b1c19e9faa2292d22262149"
+      },
+      "warnings": [
+        "LOW_ALPHA_BORDER_RESIDUE"
+      ]
+    },
+    {
+      "id": "arrival-ship-ground-wash-volcano",
+      "checks": {
+        "rgbaPng": true,
+        "hasTransparentBackground": true,
+        "hasVisibleContent": true,
+        "noSignificantBorderClipping": true,
+        "significantContentInsideCanvas": true,
+        "passed": true,
+        "webpDimensionsPreserved": true,
+        "webpAlphaPreservedExactly": true,
+        "webpVisibleRgbaPreservedExactly": true,
+        "webpLosslessBitstream": true
+      },
+      "visualReview": {
+        "status": "reviewed-source-art",
+        "reviewer": "independent-assistant",
+        "notes": "Souffle bas et latéral, moins haut que l'impact; ne pas le rendre comme une explosion.",
+        "humanApproved": false,
+        "runtimeApproved": false,
+        "method": "Original PNGs placed unchanged on dark, white and checker backgrounds in a QA document; all 50 inspected after Poppler rendering. Browser launch was unavailable in this sandbox.",
+        "reviewedSha256": "c3cf9cf5a5fab1309e433d14419f51197969b3c459ec20c6e99847f4f2d13338"
+      },
+      "warnings": [
+        "LOW_ALPHA_BORDER_RESIDUE"
+      ]
+    },
+    {
+      "id": "arrival-ship-ground-wash-swamp",
+      "checks": {
+        "rgbaPng": true,
+        "hasTransparentBackground": true,
+        "hasVisibleContent": true,
+        "noSignificantBorderClipping": true,
+        "significantContentInsideCanvas": true,
+        "passed": true,
+        "webpDimensionsPreserved": true,
+        "webpAlphaPreservedExactly": true,
+        "webpVisibleRgbaPreservedExactly": true,
+        "webpLosslessBitstream": true
+      },
+      "visualReview": {
+        "status": "reviewed-source-art",
+        "reviewer": "independent-assistant",
+        "notes": "Souffle bas et latéral, moins haut que l'impact; ne pas le rendre comme une explosion.",
+        "humanApproved": false,
+        "runtimeApproved": false,
+        "method": "Original PNGs placed unchanged on dark, white and checker backgrounds in a QA document; all 50 inspected after Poppler rendering. Browser launch was unavailable in this sandbox.",
+        "reviewedSha256": "0b85e8cbb405f1a9b7cced41e842a1c5bc300fc9878c637d57769cbfd6b1f35c"
+      },
+      "warnings": [
+        "LOW_ALPHA_BORDER_RESIDUE"
+      ]
+    },
+    {
+      "id": "arrival-ship-ground-wash-desert",
+      "checks": {
+        "rgbaPng": true,
+        "hasTransparentBackground": true,
+        "hasVisibleContent": true,
+        "noSignificantBorderClipping": true,
+        "significantContentInsideCanvas": true,
+        "passed": true,
+        "webpDimensionsPreserved": true,
+        "webpAlphaPreservedExactly": true,
+        "webpVisibleRgbaPreservedExactly": true,
+        "webpLosslessBitstream": true
+      },
+      "visualReview": {
+        "status": "reviewed-source-art",
+        "reviewer": "independent-assistant",
+        "notes": "Souffle bas et latéral, moins haut que l'impact; ne pas le rendre comme une explosion.",
+        "humanApproved": false,
+        "runtimeApproved": false,
+        "method": "Original PNGs placed unchanged on dark, white and checker backgrounds in a QA document; all 50 inspected after Poppler rendering. Browser launch was unavailable in this sandbox.",
+        "reviewedSha256": "5b642c1114e910ae42ca6b280efbdd58cecef52e97559761b478db89e1ea56d7"
+      },
+      "warnings": [
+        "LOW_ALPHA_BORDER_RESIDUE"
+      ]
+    },
+    {
+      "id": "arrival-ship-ground-wash-ocean",
+      "checks": {
+        "rgbaPng": true,
+        "hasTransparentBackground": true,
+        "hasVisibleContent": true,
+        "noSignificantBorderClipping": true,
+        "significantContentInsideCanvas": true,
+        "passed": true,
+        "webpDimensionsPreserved": true,
+        "webpAlphaPreservedExactly": true,
+        "webpVisibleRgbaPreservedExactly": true,
+        "webpLosslessBitstream": true
+      },
+      "visualReview": {
+        "status": "reviewed-source-art",
+        "reviewer": "independent-assistant",
+        "notes": "Souffle bas et latéral, moins haut que l'impact; ne pas le rendre comme une explosion.",
+        "humanApproved": false,
+        "runtimeApproved": false,
+        "method": "Original PNGs placed unchanged on dark, white and checker backgrounds in a QA document; all 50 inspected after Poppler rendering. Browser launch was unavailable in this sandbox.",
+        "reviewedSha256": "f2fcf71f1836c5819e1bcfa444de07bcf001c4ff5b33c6e89769f3ee14dc3503"
+      },
+      "warnings": []
+    },
+    {
+      "id": "arrival-ship-ground-wash-fungal",
+      "checks": {
+        "rgbaPng": true,
+        "hasTransparentBackground": true,
+        "hasVisibleContent": true,
+        "noSignificantBorderClipping": true,
+        "significantContentInsideCanvas": true,
+        "passed": true,
+        "webpDimensionsPreserved": true,
+        "webpAlphaPreservedExactly": true,
+        "webpVisibleRgbaPreservedExactly": true,
+        "webpLosslessBitstream": true
+      },
+      "visualReview": {
+        "status": "reviewed-source-art",
+        "reviewer": "independent-assistant",
+        "notes": "Souffle bas et latéral, moins haut que l'impact; ne pas le rendre comme une explosion.",
+        "humanApproved": false,
+        "runtimeApproved": false,
+        "method": "Original PNGs placed unchanged on dark, white and checker backgrounds in a QA document; all 50 inspected after Poppler rendering. Browser launch was unavailable in this sandbox.",
+        "reviewedSha256": "303ca23d82924a541454c73be6c83767242d7df3ee85f3c6678a46b54b2ef708"
+      },
+      "warnings": [
+        "LOW_ALPHA_BORDER_RESIDUE"
+      ]
+    },
+    {
+      "id": "arrival-ship-ground-wash-ruins",
+      "checks": {
+        "rgbaPng": true,
+        "hasTransparentBackground": true,
+        "hasVisibleContent": true,
+        "noSignificantBorderClipping": true,
+        "significantContentInsideCanvas": true,
+        "passed": true,
+        "webpDimensionsPreserved": true,
+        "webpAlphaPreservedExactly": true,
+        "webpVisibleRgbaPreservedExactly": true,
+        "webpLosslessBitstream": true
+      },
+      "visualReview": {
+        "status": "reviewed-source-art",
+        "reviewer": "independent-assistant",
+        "notes": "Souffle bas et latéral, moins haut que l'impact; ne pas le rendre comme une explosion.",
+        "humanApproved": false,
+        "runtimeApproved": false,
+        "method": "Original PNGs placed unchanged on dark, white and checker backgrounds in a QA document; all 50 inspected after Poppler rendering. Browser launch was unavailable in this sandbox.",
+        "reviewedSha256": "4cf92eafdbe6e032d6585e6970931021c7f6e6f141db953e3ba04c9656625f62"
+      },
+      "warnings": [
+        "LOW_ALPHA_BORDER_RESIDUE"
+      ]
+    },
+    {
+      "id": "arrival-foot-contact-jungle",
+      "checks": {
+        "rgbaPng": true,
+        "hasTransparentBackground": true,
+        "hasVisibleContent": true,
+        "noSignificantBorderClipping": true,
+        "significantContentInsideCanvas": true,
+        "passed": true,
+        "webpDimensionsPreserved": true,
+        "webpAlphaPreservedExactly": true,
+        "webpVisibleRgbaPreservedExactly": true,
+        "webpLosslessBitstream": true
+      },
+      "visualReview": {
+        "status": "reviewed-source-art",
+        "reviewer": "independent-assistant",
+        "notes": "Petit effet matériel de pas; réduire fortement sa taille et éviter qu'il masque les pieds.",
+        "humanApproved": false,
+        "runtimeApproved": false,
+        "method": "Original PNGs placed unchanged on dark, white and checker backgrounds in a QA document; all 50 inspected after Poppler rendering. Browser launch was unavailable in this sandbox.",
+        "reviewedSha256": "896f18b64b0f76fa018a58169b770328300f4a982a699c4516ba25073012814b"
+      },
+      "warnings": []
+    },
+    {
+      "id": "arrival-foot-contact-ice",
+      "checks": {
+        "rgbaPng": true,
+        "hasTransparentBackground": true,
+        "hasVisibleContent": true,
+        "noSignificantBorderClipping": true,
+        "significantContentInsideCanvas": true,
+        "passed": true,
+        "webpDimensionsPreserved": true,
+        "webpAlphaPreservedExactly": true,
+        "webpVisibleRgbaPreservedExactly": true,
+        "webpLosslessBitstream": true
+      },
+      "visualReview": {
+        "status": "reviewed-source-art",
+        "reviewer": "independent-assistant",
+        "notes": "Petit effet matériel de pas; réduire fortement sa taille et éviter qu'il masque les pieds.",
+        "humanApproved": false,
+        "runtimeApproved": false,
+        "method": "Original PNGs placed unchanged on dark, white and checker backgrounds in a QA document; all 50 inspected after Poppler rendering. Browser launch was unavailable in this sandbox.",
+        "reviewedSha256": "1f6ad946977bdf7da79e986084c7281f2c683963b28e7260a9baf7709577bcee"
+      },
+      "warnings": []
+    },
+    {
+      "id": "arrival-foot-contact-volcano",
+      "checks": {
+        "rgbaPng": true,
+        "hasTransparentBackground": true,
+        "hasVisibleContent": true,
+        "noSignificantBorderClipping": true,
+        "significantContentInsideCanvas": true,
+        "passed": true,
+        "webpDimensionsPreserved": true,
+        "webpAlphaPreservedExactly": true,
+        "webpVisibleRgbaPreservedExactly": true,
+        "webpLosslessBitstream": true
+      },
+      "visualReview": {
+        "status": "reviewed-source-art",
+        "reviewer": "independent-assistant",
+        "notes": "Petit effet matériel de pas; réduire fortement sa taille et éviter qu'il masque les pieds.",
+        "humanApproved": false,
+        "runtimeApproved": false,
+        "method": "Original PNGs placed unchanged on dark, white and checker backgrounds in a QA document; all 50 inspected after Poppler rendering. Browser launch was unavailable in this sandbox.",
+        "reviewedSha256": "6da3d0853b587b2c1a44598e257b74ff4d3e465ca4b4856a71947f654405c22b"
+      },
+      "warnings": []
+    },
+    {
+      "id": "arrival-foot-contact-swamp",
+      "checks": {
+        "rgbaPng": true,
+        "hasTransparentBackground": true,
+        "hasVisibleContent": true,
+        "noSignificantBorderClipping": true,
+        "significantContentInsideCanvas": true,
+        "passed": true,
+        "webpDimensionsPreserved": true,
+        "webpAlphaPreservedExactly": true,
+        "webpVisibleRgbaPreservedExactly": true,
+        "webpLosslessBitstream": true
+      },
+      "visualReview": {
+        "status": "reviewed-source-art",
+        "reviewer": "independent-assistant",
+        "notes": "Petit effet matériel de pas; réduire fortement sa taille et éviter qu'il masque les pieds.",
+        "humanApproved": false,
+        "runtimeApproved": false,
+        "method": "Original PNGs placed unchanged on dark, white and checker backgrounds in a QA document; all 50 inspected after Poppler rendering. Browser launch was unavailable in this sandbox.",
+        "reviewedSha256": "3013ade89cda607865919c1d0476bdf708c084acab0c521f194c54b403aa5316"
+      },
+      "warnings": [
+        "LOW_ALPHA_BORDER_RESIDUE"
+      ]
+    },
+    {
+      "id": "arrival-foot-contact-desert",
+      "checks": {
+        "rgbaPng": true,
+        "hasTransparentBackground": true,
+        "hasVisibleContent": true,
+        "noSignificantBorderClipping": true,
+        "significantContentInsideCanvas": true,
+        "passed": true,
+        "webpDimensionsPreserved": true,
+        "webpAlphaPreservedExactly": true,
+        "webpVisibleRgbaPreservedExactly": true,
+        "webpLosslessBitstream": true
+      },
+      "visualReview": {
+        "status": "reviewed-source-art",
+        "reviewer": "independent-assistant",
+        "notes": "Petit effet matériel de pas; réduire fortement sa taille et éviter qu'il masque les pieds.",
+        "humanApproved": false,
+        "runtimeApproved": false,
+        "method": "Original PNGs placed unchanged on dark, white and checker backgrounds in a QA document; all 50 inspected after Poppler rendering. Browser launch was unavailable in this sandbox.",
+        "reviewedSha256": "b947f645037b4ba81c4750f7ae53f75fa326927fd4002bfe0cc401dbbd700bf4"
+      },
+      "warnings": [
+        "LOW_ALPHA_BORDER_RESIDUE"
+      ]
+    },
+    {
+      "id": "arrival-foot-contact-ocean",
+      "checks": {
+        "rgbaPng": true,
+        "hasTransparentBackground": true,
+        "hasVisibleContent": true,
+        "noSignificantBorderClipping": true,
+        "significantContentInsideCanvas": true,
+        "passed": true,
+        "webpDimensionsPreserved": true,
+        "webpAlphaPreservedExactly": true,
+        "webpVisibleRgbaPreservedExactly": true,
+        "webpLosslessBitstream": true
+      },
+      "visualReview": {
+        "status": "reviewed-source-art",
+        "reviewer": "independent-assistant",
+        "notes": "Petit effet matériel de pas; réduire fortement sa taille et éviter qu'il masque les pieds.",
+        "humanApproved": false,
+        "runtimeApproved": false,
+        "method": "Original PNGs placed unchanged on dark, white and checker backgrounds in a QA document; all 50 inspected after Poppler rendering. Browser launch was unavailable in this sandbox.",
+        "reviewedSha256": "a129f51491e2969adbb89429e1309b506f2294ccf7c3040e5e49650c35dee010"
+      },
+      "warnings": []
+    },
+    {
+      "id": "arrival-foot-contact-fungal",
+      "checks": {
+        "rgbaPng": true,
+        "hasTransparentBackground": true,
+        "hasVisibleContent": true,
+        "noSignificantBorderClipping": true,
+        "significantContentInsideCanvas": true,
+        "passed": true,
+        "webpDimensionsPreserved": true,
+        "webpAlphaPreservedExactly": true,
+        "webpVisibleRgbaPreservedExactly": true,
+        "webpLosslessBitstream": true
+      },
+      "visualReview": {
+        "status": "reviewed-source-art",
+        "reviewer": "independent-assistant",
+        "notes": "Petit effet matériel de pas; réduire fortement sa taille et éviter qu'il masque les pieds.",
+        "humanApproved": false,
+        "runtimeApproved": false,
+        "method": "Original PNGs placed unchanged on dark, white and checker backgrounds in a QA document; all 50 inspected after Poppler rendering. Browser launch was unavailable in this sandbox.",
+        "reviewedSha256": "358b4bbb4fe635d82f1d245c8887dbfc4edb61d410a9ea904257f0e299a524e1"
+      },
+      "warnings": [
+        "LOW_ALPHA_BORDER_RESIDUE"
+      ]
+    },
+    {
+      "id": "arrival-foot-contact-ruins",
+      "checks": {
+        "rgbaPng": true,
+        "hasTransparentBackground": true,
+        "hasVisibleContent": true,
+        "noSignificantBorderClipping": true,
+        "significantContentInsideCanvas": true,
+        "passed": true,
+        "webpDimensionsPreserved": true,
+        "webpAlphaPreservedExactly": true,
+        "webpVisibleRgbaPreservedExactly": true,
+        "webpLosslessBitstream": true
+      },
+      "visualReview": {
+        "status": "reviewed-source-art",
+        "reviewer": "independent-assistant",
+        "notes": "Petit effet matériel de pas; réduire fortement sa taille et éviter qu'il masque les pieds.",
+        "humanApproved": false,
+        "runtimeApproved": false,
+        "method": "Original PNGs placed unchanged on dark, white and checker backgrounds in a QA document; all 50 inspected after Poppler rendering. Browser launch was unavailable in this sandbox.",
+        "reviewedSha256": "80bb79b096500b071927bd882db790c0c05e757fba3793d84fbff5788c9962d3"
+      },
+      "warnings": [
+        "LOW_ALPHA_BORDER_RESIDUE"
+      ]
+    },
+    {
+      "id": "arrival-fragment-jungle-a",
+      "checks": {
+        "rgbaPng": true,
+        "hasTransparentBackground": true,
+        "hasVisibleContent": true,
+        "noSignificantBorderClipping": true,
+        "significantContentInsideCanvas": true,
+        "passed": true,
+        "webpDimensionsPreserved": true,
+        "webpAlphaPreservedExactly": true,
+        "webpVisibleRgbaPreservedExactly": true,
+        "webpLosslessBitstream": true
+      },
+      "visualReview": {
+        "status": "reviewed-source-art",
+        "reviewer": "independent-assistant",
+        "notes": "Un fragment brun irrégulier de matière terreuse/écorce, entièrement isolé; texture stratifiée lisible.",
+        "humanApproved": false,
+        "runtimeApproved": false,
+        "method": "Original PNGs placed unchanged on dark, white and checker backgrounds in a QA document; all 50 inspected after Poppler rendering. Browser launch was unavailable in this sandbox.",
+        "reviewedSha256": "dd2cf20a16afb5ba2cb33029976f61eb372ec43ef4cae798d91fcc78744647e3"
+      },
+      "warnings": [
+        "LOW_ALPHA_BORDER_RESIDUE"
+      ]
+    },
+    {
+      "id": "arrival-fragment-jungle-b",
+      "checks": {
+        "rgbaPng": true,
+        "hasTransparentBackground": true,
+        "hasVisibleContent": true,
+        "noSignificantBorderClipping": true,
+        "significantContentInsideCanvas": true,
+        "passed": true,
+        "webpDimensionsPreserved": true,
+        "webpAlphaPreservedExactly": true,
+        "webpVisibleRgbaPreservedExactly": true,
+        "webpLosslessBitstream": true
+      },
+      "visualReview": {
+        "status": "reviewed-source-art",
+        "reviewer": "independent-assistant",
+        "notes": "Une seule lamelle d’écorce incurvée; silhouette longue et distincte du fragment A.",
+        "humanApproved": false,
+        "runtimeApproved": false,
+        "method": "Original PNGs placed unchanged on dark, white and checker backgrounds in a QA document; all 50 inspected after Poppler rendering. Browser launch was unavailable in this sandbox.",
+        "reviewedSha256": "b5edfe4cbb12a5221736e5c9c59fa58e8196954f93d2fd490d060e1dae1f8a24"
+      },
+      "warnings": []
+    },
+    {
+      "id": "arrival-fragment-ice-a",
+      "checks": {
+        "rgbaPng": true,
+        "hasTransparentBackground": true,
+        "hasVisibleContent": true,
+        "noSignificantBorderClipping": true,
+        "significantContentInsideCanvas": true,
+        "passed": true,
+        "webpDimensionsPreserved": true,
+        "webpAlphaPreservedExactly": true,
+        "webpVisibleRgbaPreservedExactly": true,
+        "webpLosslessBitstream": true
+      },
+      "visualReview": {
+        "status": "reviewed-source-art",
+        "reviewer": "independent-assistant",
+        "notes": "Une lame de glace effilée translucide et des facettes nettes; marges amples après régénération.",
+        "humanApproved": false,
+        "runtimeApproved": false,
+        "method": "Original PNGs placed unchanged on dark, white and checker backgrounds in a QA document; all 50 inspected after Poppler rendering. Browser launch was unavailable in this sandbox.",
+        "reviewedSha256": "d127b6684b422550bd93b374ec6379efc94861f33d38e3dc4399efa5e8aa3625"
+      },
+      "warnings": []
+    },
+    {
+      "id": "arrival-fragment-ice-b",
+      "checks": {
+        "rgbaPng": true,
+        "hasTransparentBackground": true,
+        "hasVisibleContent": true,
+        "noSignificantBorderClipping": true,
+        "significantContentInsideCanvas": true,
+        "passed": true,
+        "webpDimensionsPreserved": true,
+        "webpAlphaPreservedExactly": true,
+        "webpVisibleRgbaPreservedExactly": true,
+        "webpLosslessBitstream": true
+      },
+      "visualReview": {
+        "status": "reviewed-source-art",
+        "reviewer": "independent-assistant",
+        "notes": "Un agrégat neigeux compact aux faces granuleuses; variante distincte de la lame de glace.",
+        "humanApproved": false,
+        "runtimeApproved": false,
+        "method": "Original PNGs placed unchanged on dark, white and checker backgrounds in a QA document; all 50 inspected after Poppler rendering. Browser launch was unavailable in this sandbox.",
+        "reviewedSha256": "73de3fe35b2e4127bcb1d2994f18b81268959838ad42f596f572ad566de1bc9c"
+      },
+      "warnings": [
+        "LOW_ALPHA_BORDER_RESIDUE"
+      ]
+    },
+    {
+      "id": "arrival-fragment-volcano-a",
+      "checks": {
+        "rgbaPng": true,
+        "hasTransparentBackground": true,
+        "hasVisibleContent": true,
+        "noSignificantBorderClipping": true,
+        "significantContentInsideCanvas": true,
+        "passed": true,
+        "webpDimensionsPreserved": true,
+        "webpAlphaPreservedExactly": true,
+        "webpVisibleRgbaPreservedExactly": true,
+        "webpLosslessBitstream": true
+      },
+      "visualReview": {
+        "status": "reviewed-source-art",
+        "reviewer": "independent-assistant",
+        "notes": "Un éclat de basalte sombre, triangulaire et feuilleté; aucune lueur interne ajoutée.",
+        "humanApproved": false,
+        "runtimeApproved": false,
+        "method": "Original PNGs placed unchanged on dark, white and checker backgrounds in a QA document; all 50 inspected after Poppler rendering. Browser launch was unavailable in this sandbox.",
+        "reviewedSha256": "57af3461c69fe78952c3092263fe5e6ba7412795c98b51ecc55566eead8c8d83"
+      },
+      "warnings": [
+        "LOW_ALPHA_BORDER_RESIDUE"
+      ]
+    },
+    {
+      "id": "arrival-fragment-volcano-b",
+      "checks": {
+        "rgbaPng": true,
+        "hasTransparentBackground": true,
+        "hasVisibleContent": true,
+        "noSignificantBorderClipping": true,
+        "significantContentInsideCanvas": true,
+        "passed": true,
+        "webpDimensionsPreserved": true,
+        "webpAlphaPreservedExactly": true,
+        "webpVisibleRgbaPreservedExactly": true,
+        "webpLosslessBitstream": true
+      },
+      "visualReview": {
+        "status": "reviewed-source-art",
+        "reviewer": "independent-assistant",
+        "notes": "Un morceau de scorie brun-roux poreux; géométrie trouée distincte du basalte A.",
+        "humanApproved": false,
+        "runtimeApproved": false,
+        "method": "Original PNGs placed unchanged on dark, white and checker backgrounds in a QA document; all 50 inspected after Poppler rendering. Browser launch was unavailable in this sandbox.",
+        "reviewedSha256": "426b383697fc1d6fb9a66a2b0f4a0bd9e0aaab5ad98ecfd97b6283175f6f784a"
+      },
+      "warnings": [
+        "LOW_ALPHA_BORDER_RESIDUE"
+      ]
+    },
+    {
+      "id": "arrival-fragment-swamp-a",
+      "checks": {
+        "rgbaPng": true,
+        "hasTransparentBackground": true,
+        "hasVisibleContent": true,
+        "noSignificantBorderClipping": true,
+        "significantContentInsideCanvas": true,
+        "passed": true,
+        "webpDimensionsPreserved": true,
+        "webpAlphaPreservedExactly": true,
+        "webpVisibleRgbaPreservedExactly": true,
+        "webpLosslessBitstream": true
+      },
+      "visualReview": {
+        "status": "reviewed-source-art",
+        "reviewer": "independent-assistant",
+        "notes": "Une motte sombre et humide avec fibres; un seul fragment, sans terrain environnant.",
+        "humanApproved": false,
+        "runtimeApproved": false,
+        "method": "Original PNGs placed unchanged on dark, white and checker backgrounds in a QA document; all 50 inspected after Poppler rendering. Browser launch was unavailable in this sandbox.",
+        "reviewedSha256": "c62cd3347e01ee0f711dc39eaaa839e8d326d7027c8be9d382809b8358bafbfc"
+      },
+      "warnings": []
+    },
+    {
+      "id": "arrival-fragment-swamp-b",
+      "checks": {
+        "rgbaPng": true,
+        "hasTransparentBackground": true,
+        "hasVisibleContent": true,
+        "noSignificantBorderClipping": true,
+        "significantContentInsideCanvas": true,
+        "passed": true,
+        "webpDimensionsPreserved": true,
+        "webpAlphaPreservedExactly": true,
+        "webpVisibleRgbaPreservedExactly": true,
+        "webpLosslessBitstream": true
+      },
+      "visualReview": {
+        "status": "reviewed-source-art",
+        "reviewer": "independent-assistant",
+        "notes": "Un fragment de roseau/fibre torsadé et déchiré; aucune coupe visible aux extrémités.",
+        "humanApproved": false,
+        "runtimeApproved": false,
+        "method": "Original PNGs placed unchanged on dark, white and checker backgrounds in a QA document; all 50 inspected after Poppler rendering. Browser launch was unavailable in this sandbox.",
+        "reviewedSha256": "b4134687e4f8da239a9dc4200142054a75ff51b5f4fc3a22ece7622ba8280512"
+      },
+      "warnings": []
+    },
+    {
+      "id": "arrival-fragment-desert-a",
+      "checks": {
+        "rgbaPng": true,
+        "hasTransparentBackground": true,
+        "hasVisibleContent": true,
+        "noSignificantBorderClipping": true,
+        "significantContentInsideCanvas": true,
+        "passed": true,
+        "webpDimensionsPreserved": true,
+        "webpAlphaPreservedExactly": true,
+        "webpVisibleRgbaPreservedExactly": true,
+        "webpLosslessBitstream": true
+      },
+      "visualReview": {
+        "status": "reviewed-source-art",
+        "reviewer": "independent-assistant",
+        "notes": "Une pierre ocre stratifiée en triangle; matière sèche et silhouette complète.",
+        "humanApproved": false,
+        "runtimeApproved": false,
+        "method": "Original PNGs placed unchanged on dark, white and checker backgrounds in a QA document; all 50 inspected after Poppler rendering. Browser launch was unavailable in this sandbox.",
+        "reviewedSha256": "6e251c04c92091e09268a8fe7741380045abd491d8fcc7f75cb6b69780c8d305"
+      },
+      "warnings": [
+        "LOW_ALPHA_BORDER_RESIDUE"
+      ]
+    },
+    {
+      "id": "arrival-fragment-desert-b",
+      "checks": {
+        "rgbaPng": true,
+        "hasTransparentBackground": true,
+        "hasVisibleContent": true,
+        "noSignificantBorderClipping": true,
+        "significantContentInsideCanvas": true,
+        "passed": true,
+        "webpDimensionsPreserved": true,
+        "webpAlphaPreservedExactly": true,
+        "webpVisibleRgbaPreservedExactly": true,
+        "webpLosslessBitstream": true
+      },
+      "visualReview": {
+        "status": "reviewed-source-art",
+        "reviewer": "independent-assistant",
+        "notes": "Une fine écaille sableuse beige; faible hauteur et bords irréguliers, différente du grès A.",
+        "humanApproved": false,
+        "runtimeApproved": false,
+        "method": "Original PNGs placed unchanged on dark, white and checker backgrounds in a QA document; all 50 inspected after Poppler rendering. Browser launch was unavailable in this sandbox.",
+        "reviewedSha256": "7f81fb4c7581cd70963b36f0164b48fcb03c9ccc45c1a838fc86bf1ad525d72e"
+      },
+      "warnings": [
+        "LOW_ALPHA_BORDER_RESIDUE"
+      ]
+    },
+    {
+      "id": "arrival-fragment-ocean-a",
+      "checks": {
+        "rgbaPng": true,
+        "hasTransparentBackground": true,
+        "hasVisibleContent": true,
+        "noSignificantBorderClipping": true,
+        "significantContentInsideCanvas": true,
+        "passed": true,
+        "webpDimensionsPreserved": true,
+        "webpAlphaPreservedExactly": true,
+        "webpVisibleRgbaPreservedExactly": true,
+        "webpLosslessBitstream": true
+      },
+      "visualReview": {
+        "status": "reviewed-source-art",
+        "reviewer": "independent-assistant",
+        "notes": "Une goutte liquide étirée avec reflets internes et alpha transparent; pas de support ni d’ombre de sol.",
+        "humanApproved": false,
+        "runtimeApproved": false,
+        "method": "Original PNGs placed unchanged on dark, white and checker backgrounds in a QA document; all 50 inspected after Poppler rendering. Browser launch was unavailable in this sandbox.",
+        "reviewedSha256": "511a48011ab2891e19ef0e2e216ba5decd19f5355b6013d986c85a10b06e9382"
+      },
+      "warnings": [
+        "LOW_ALPHA_BORDER_RESIDUE"
+      ]
+    },
+    {
+      "id": "arrival-fragment-ocean-b",
+      "checks": {
+        "rgbaPng": true,
+        "hasTransparentBackground": true,
+        "hasVisibleContent": true,
+        "noSignificantBorderClipping": true,
+        "significantContentInsideCanvas": true,
+        "passed": true,
+        "webpDimensionsPreserved": true,
+        "webpAlphaPreservedExactly": true,
+        "webpVisibleRgbaPreservedExactly": true,
+        "webpLosslessBitstream": true
+      },
+      "visualReview": {
+        "status": "reviewed-source-art",
+        "reviewer": "independent-assistant",
+        "notes": "Une membrane liquide triangulaire isolée; forme très différente de la goutte A, centre translucide.",
+        "humanApproved": false,
+        "runtimeApproved": false,
+        "method": "Original PNGs placed unchanged on dark, white and checker backgrounds in a QA document; all 50 inspected after Poppler rendering. Browser launch was unavailable in this sandbox.",
+        "reviewedSha256": "e1783e6d750cd7665af8a840fba6a3e4241b955cbd33f5038686ef8fd6fb5f68"
+      },
+      "warnings": [
+        "LOW_ALPHA_BORDER_RESIDUE"
+      ]
+    },
+    {
+      "id": "arrival-fragment-fungal-a",
+      "checks": {
+        "rgbaPng": true,
+        "hasTransparentBackground": true,
+        "hasVisibleContent": true,
+        "noSignificantBorderClipping": true,
+        "significantContentInsideCanvas": true,
+        "passed": true,
+        "webpDimensionsPreserved": true,
+        "webpAlphaPreservedExactly": true,
+        "webpVisibleRgbaPreservedExactly": true,
+        "webpLosslessBitstream": true
+      },
+      "visualReview": {
+        "status": "reviewed-source-art",
+        "reviewer": "independent-assistant",
+        "notes": "Un fragment de substrat fibreux brun; matière organique et racines fines lisibles.",
+        "humanApproved": false,
+        "runtimeApproved": false,
+        "method": "Original PNGs placed unchanged on dark, white and checker backgrounds in a QA document; all 50 inspected after Poppler rendering. Browser launch was unavailable in this sandbox.",
+        "reviewedSha256": "731d2ab962adef2b498de04629b9ef0e9e15aa43e7e408374c7c852f36be5235"
+      },
+      "warnings": [
+        "LOW_ALPHA_BORDER_RESIDUE"
+      ]
+    },
+    {
+      "id": "arrival-fragment-fungal-b",
+      "checks": {
+        "rgbaPng": true,
+        "hasTransparentBackground": true,
+        "hasVisibleContent": true,
+        "noSignificantBorderClipping": true,
+        "significantContentInsideCanvas": true,
+        "passed": true,
+        "webpDimensionsPreserved": true,
+        "webpAlphaPreservedExactly": true,
+        "webpVisibleRgbaPreservedExactly": true,
+        "webpLosslessBitstream": true
+      },
+      "visualReview": {
+        "status": "reviewed-source-art",
+        "reviewer": "independent-assistant",
+        "notes": "Un morceau de tissu fongique à lamelles, déchiré et isolé; aucune créature complète.",
+        "humanApproved": false,
+        "runtimeApproved": false,
+        "method": "Original PNGs placed unchanged on dark, white and checker backgrounds in a QA document; all 50 inspected after Poppler rendering. Browser launch was unavailable in this sandbox.",
+        "reviewedSha256": "d19903c98b2df38e4f507b57bd3c14be9013b499b18d0070beed4a5a92819dcd"
+      },
+      "warnings": [
+        "LOW_ALPHA_BORDER_RESIDUE"
+      ]
+    },
+    {
+      "id": "arrival-fragment-ruins-a",
+      "checks": {
+        "rgbaPng": true,
+        "hasTransparentBackground": true,
+        "hasVisibleContent": true,
+        "noSignificantBorderClipping": true,
+        "significantContentInsideCanvas": true,
+        "passed": true,
+        "webpDimensionsPreserved": true,
+        "webpAlphaPreservedExactly": true,
+        "webpVisibleRgbaPreservedExactly": true,
+        "webpLosslessBitstream": true
+      },
+      "visualReview": {
+        "status": "reviewed-source-art",
+        "reviewer": "independent-assistant",
+        "notes": "Un morceau de maçonnerie gris avec stries simples; pas de nouveau symbole ou glyphes inventés.",
+        "humanApproved": false,
+        "runtimeApproved": false,
+        "method": "Original PNGs placed unchanged on dark, white and checker backgrounds in a QA document; all 50 inspected after Poppler rendering. Browser launch was unavailable in this sandbox.",
+        "reviewedSha256": "2f08e56aaaf4264de266a92c897b3f2e5a48d44c67fd85866217df8b36dc83ca"
+      },
+      "warnings": [
+        "LOW_ALPHA_BORDER_RESIDUE"
+      ]
+    },
+    {
+      "id": "arrival-fragment-ruins-b",
+      "checks": {
+        "rgbaPng": true,
+        "hasTransparentBackground": true,
+        "hasVisibleContent": true,
+        "noSignificantBorderClipping": true,
+        "significantContentInsideCanvas": true,
+        "passed": true,
+        "webpDimensionsPreserved": true,
+        "webpAlphaPreservedExactly": true,
+        "webpVisibleRgbaPreservedExactly": true,
+        "webpLosslessBitstream": true
+      },
+      "visualReview": {
+        "status": "reviewed-source-art",
+        "reviewer": "independent-assistant",
+        "notes": "Une mince écharde minérale claire; forme effilée distincte de la dalle A.",
+        "humanApproved": false,
+        "runtimeApproved": false,
+        "method": "Original PNGs placed unchanged on dark, white and checker backgrounds in a QA document; all 50 inspected after Poppler rendering. Browser launch was unavailable in this sandbox.",
+        "reviewedSha256": "64a1056f1b23b590cb5bb62b8aee26f215cdaf64e3e0bcbc5979740683c702e1"
+      },
+      "warnings": []
+    }
+  ]
+}

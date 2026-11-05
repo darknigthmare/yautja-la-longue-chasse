@@ -6,6 +6,7 @@ import { overlapsSolidPlatform, resolvePlatformMotion } from './platformCollisio
 import { huntStructuralBarrierV94 } from './huntStructuralBarrierV94';
 import { calculateLineOfSightOcclusion } from './huntSystems';
 import { isHazardActive, resolveNearestSafeGroundX, type WorldBlueprint, type WorldRect } from './worldBlueprints';
+import { createHuntPodRecovery, cloneHuntPodRecovery, restoreHuntPodRecovery, type HuntPodRecovery } from './huntPodRecovery';
 
 export type HuntCompanionOrder = 'follow' | 'hold';
 export type HuntCompanionStatus = 'active' | 'downed' | 'boarding' | 'extracted' | 'left-behind';
@@ -37,6 +38,8 @@ export interface HuntInsertionState {
   patrolIds: string[];
   alertedIds: string[];
   companions: HuntCompanion[];
+  /** Absent in older hunts and when the personal ship landed instead. */
+  podRecovery?: HuntPodRecovery;
 }
 
 export interface HuntInsertionOutcome {
@@ -96,12 +99,14 @@ export function createHuntInsertion(plan: PlanetInsertionPlan, runId: string, wo
       attackFlash: 0, invulnerability: 0, blockedSeconds: 0, jumpTargetX: null };
   }) : [];
   return { version: 1, runId, plan: normalized, origin, searchUntil: planetInsertionPressure(normalized).searchSeconds,
-    patrolIds: huntInsertionPatrols(normalized, world, runId).map(item => item.id), alertedIds: [], companions };
+    patrolIds: huntInsertionPatrols(normalized, world, runId).map(item => item.id), alertedIds: [], companions,
+    ...(normalized.method === 'pod' ? { podRecovery: createHuntPodRecovery(normalized) } : {}) };
 }
 
 export function cloneHuntInsertion(state: HuntInsertionState): HuntInsertionState {
   return { ...state, plan: { ...state.plan }, origin: { ...state.origin }, patrolIds: [...state.patrolIds],
-    alertedIds: [...state.alertedIds], companions: state.companions.map(member => ({ ...member })) };
+    alertedIds: [...state.alertedIds], companions: state.companions.map(member => ({ ...member })),
+    ...(state.podRecovery ? { podRecovery: cloneHuntPodRecovery(state.podRecovery) } : {}) };
 }
 
 /** Legacy hunts stay solo and quiet; decoding never replays an insertion or grants new actors. */
@@ -117,6 +122,8 @@ export function restoreHuntInsertion(raw: unknown, runId: string, world: WorldBl
       !Array.isArray(raw.alertedIds) || raw.alertedIds.length > 512 || new Set(raw.alertedIds).size !== raw.alertedIds.length ||
       !raw.alertedIds.every(id => typeof id === 'string' && id.length > 0 && id.length <= 250) ||
       !Array.isArray(raw.companions) || raw.companions.length !== (plan.team === 'triad' ? 2 : 0)) return null;
+  const podRecovery = restoreHuntPodRecovery(raw.podRecovery, plan);
+  if (podRecovery === null) return null;
   const companions: HuntCompanion[] = [];
   for (const member of raw.companions) {
     if (!record(member) || !TRIO_MEMBERS.some(item => item.id === member.id) || companions.some(item => item.id === member.id)) return null;
@@ -137,7 +144,8 @@ export function restoreHuntInsertion(raw: unknown, runId: string, world: WorldBl
     companions.push({ ...body });
   }
   return { version: 1, runId, plan, origin: { x: raw.origin.x as number, y: raw.origin.y as number }, searchUntil: raw.searchUntil as number,
-    patrolIds: [...raw.patrolIds] as string[], alertedIds: [...raw.alertedIds] as string[], companions };
+    patrolIds: [...raw.patrolIds] as string[], alertedIds: [...raw.alertedIds] as string[], companions,
+    ...(podRecovery ? { podRecovery } : {}) };
 }
 
 export function hurtHuntCompanion(member: HuntCompanion, damage: number): boolean {

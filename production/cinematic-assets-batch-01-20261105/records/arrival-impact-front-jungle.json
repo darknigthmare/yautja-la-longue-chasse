@@ -1,0 +1,24 @@
+{
+  "id": "arrival-impact-front-jungle",
+  "family": "impact-front",
+  "biome": "jungle",
+  "file": "public/game/cinematics/batch-01-20261105/arrival-impact-front-jungle.png",
+  "generatedSource": "/workspace/scratch/62884fa4f584/generated_images/exec-95f1837f-f799-4f17-92f1-870a372600ec.png",
+  "prompt": "Use case: stylized-concept, production 2D cinematic VFX sprite for Yautja The Long Hunt.\nAsset ID: arrival-impact-front-jungle.\nUse the provided game screenshot ONLY to match the realistic painted 2.5D rendering and restrained material detail; do not reproduce its scene, pod, characters, interface, ground plane, framing or text.\nCreate ONE isolated ground-impact effect: a low, wide, asymmetrical radial fan of damp dark jungle soil with torn leaf litter and a few tiny earthen particles thrown outwards from a single central ground contact. The central opening remains mostly clear so a landing capsule can be composited behind. Dense earthy grey-brown particulate at the base, branching lateral fingers, a few subdued olive leaf scraps, physically plausible softer semi-transparent suspended dust at the top. The effect is a single cohesive plume, not separate panels or multiple examples. No explosion, no fire, no magical glow.\nCamera: near-ground side view with a slight view of the top of the radial fan, as in the reference. Contact origin at horizontal centre and 78% down the full canvas. Widest spray spans x=15% to85%; topmost particle no higher than y=25%; no visible material below85%. Every edge fades to genuine transparent alpha, with at least12% empty transparent padding on all four sides.\nOutput: one landscape RGBA PNG with TRUE TRANSPARENT BACKGROUND, ideally1536x1024. Semi-realistic hand-painted cinematic material, high silhouette readability at250px wide, detailed organic shapes without photorealistic background, subtle neutral upper-left lighting. Preserve warm grey/brown values; no thick black outlines.\nExclude: ship, capsule, people, creatures, lettering, words, grid, sprite sheet, numbered frames, contact sheet, ground disc, scenery, horizon, black or white background, baked checkerboard, rectangular haze, cropped particles, watermark.\nThis is one distinct impact-front sprite; no atlas.",
+  "referenceImages": [
+    "/workspace/scratch/62884fa4f584/qa-recovery/spatial-a7f830c/desktop-landing-impact.png"
+  ],
+  "generationMode": "builtin-imagegen-reference",
+  "intendedAnchor": {
+    "name": "ground-capsule-reference",
+    "normalized": [
+      0.5,
+      0.784
+    ],
+    "basis": "visible contact seam visually reviewed; integration pending"
+  },
+  "generated": true,
+  "integrated": false,
+  "testedInEngine": false,
+  "artisticHumanApproval": false
+}

@@ -47,6 +47,7 @@ export const CONTROL_ACTION_DEFINITIONS = [
   { id: "hunt.useGearOne", context: "hunt", behavior: "press", label: "Utiliser l’équipement 1" },
   { id: "hunt.useGearTwo", context: "hunt", behavior: "press", label: "Utiliser l’équipement 2" },
   { id: "hunt.interact", context: "hunt", behavior: "press", label: "Interagir" },
+  { id: "hunt.podSelfDestruct", context: "hunt", behavior: "press", label: "Autodestruction des capsules / annuler" },
   { id: "hunt.pause", context: "hunt", behavior: "press", label: "Pause" },
 
   { id: "pit.p1MoveLeft", context: "pit", behavior: "hold", label: "J1 — Se déplacer à gauche" },
@@ -316,6 +317,7 @@ export const DEFAULT_CONTROL_BINDINGS = freezeBindings({
   "hunt.useGearOne": ["Digit3", "Numpad3"],
   "hunt.useGearTwo": ["Digit4", "Numpad4"],
   "hunt.interact": ["KeyE"],
+  "hunt.podSelfDestruct": ["KeyX"],
   "hunt.pause": ["Escape"],
 
   "pit.p1MoveLeft": ["KeyQ", "ArrowLeft"],

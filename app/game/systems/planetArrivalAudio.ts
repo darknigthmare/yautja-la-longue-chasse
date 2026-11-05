@@ -10,6 +10,7 @@ import {
   arrivalFormationSlots, arrivalImpactDebris,
 } from './planetArrivalPresentation';
 import { DEFAULT_PLAN, normalizePlanetInsertionPlan, type PlanetInsertionPlan } from './planetInsertion';
+import { ARRIVAL_POD_SHUTTERS_OPEN_START_MS, ARRIVAL_POD_SHUTTERS_OPEN_END_MS } from './planetArrivalPodFlight';
 import type { BiomeId } from '../types';
 import type { SceneAudioPort, SceneAudioSound } from './sceneAudio';
 
@@ -48,6 +49,16 @@ export const PLANET_ARRIVAL_SOUND_CUES: readonly PlanetArrivalSoundCue[] = [
   { id: 'reentry', atMs: at('atmosphere'), sound: {
     tones: [{ frequency: 140, endFrequency: 68, duration: .9, gain: .045, type: 'triangle', filterFrequency: 500 }],
     noises: [{ duration: 1.2, gain: .095, filterFrequency: 2_800, endFilterFrequency: 650 }],
+  } },
+  { id: 'shutters-open', atMs: ARRIVAL_POD_SHUTTERS_OPEN_START_MS, sound: {
+    tones: [{ frequency: 120, endFrequency: 79,
+      duration: (ARRIVAL_POD_SHUTTERS_OPEN_END_MS - ARRIVAL_POD_SHUTTERS_OPEN_START_MS) / 1_000,
+      gain: .027, type: 'triangle', filterFrequency: 380 }],
+    noises: [{ duration: 1.6, gain: .022, filterFrequency: 820, endFilterFrequency: 310 }],
+  } },
+  { id: 'shutters-lock', atMs: ARRIVAL_POD_SHUTTERS_OPEN_END_MS, sound: {
+    tones: [{ frequency: 250, endFrequency: 85, duration: .12, gain: .035, type: 'triangle', filterFrequency: 600 }],
+    noises: [{ duration: .08, gain: .025, filterFrequency: 1_200, endFilterFrequency: 280 }],
   } },
   { id: 'impact', atMs: ARRIVAL_CONTACT_MS, sound: {
     tones: [{ frequency: 88, endFrequency: 31, duration: .5, gain: .2 },
@@ -188,7 +199,8 @@ export function planetArrivalSoundCues(state: Pick<PlanetArrivalState, 'biomeId'
     });
     if (!slot.index) cues.push(...(ship ? PLANET_ARRIVAL_SHIP_SOUND_CUES : PLANET_ARRIVAL_SOUND_CUES)
       .map(cue => cue.id === 'impact' ? { ...cue, sound: surfaceImpact(cue.sound, material) } : cue));
-    else if (!ship) for (const cue of PLANET_ARRIVAL_SOUND_CUES.filter(cue => ['release', 'impact', 'hatch', 'vent'].includes(cue.id))) {
+    else if (!ship) for (const cue of PLANET_ARRIVAL_SOUND_CUES.filter(cue =>
+      ['release', 'shutters-open', 'shutters-lock', 'impact', 'hatch', 'vent'].includes(cue.id))) {
       add(cue.id === 'impact' ? { ...cue, sound: surfaceImpact(cue.sound, material) } : cue);
     }
     if (!ship) for (const piece of arrivalImpactDebris(0, state.seed + slot.index)) add({

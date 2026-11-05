@@ -1,0 +1,46 @@
+{
+  "id": "arrival-impact-settle-ice",
+  "family": "impact-settle",
+  "biome": "ice",
+  "file": "public/game/cinematics/batch-01-20261105/arrival-impact-settle-ice.png",
+  "generatedSource": "/workspace/scratch/62884fa4f584/generated_images/exec-89854f59-59c7-428e-8a8d-fb458990eda0.png",
+  "prompt": "Use case: stylized-concept. One independent late-phase2D cinematic VFX sprite, arrival-impact-settle-ice, for Yautja The Long Hunt.\nThe attached jungle sprite supplies ONLY the semi-realistic painted finish and subtle neutral upper-left illumination. Completely change both material and phase: this is icy fallout after the burst, with no rising fan.\nSubject: Ice AFTER the initial impact: a sparse low broad descent of small angular translucent frost chips and fine white icy powder. Discrete cold steel-blue faceted slivers tip downward, with short pale falling streaks and very thin dissipating snow wisps close to the contact line. Several disconnected clusters, more empty air than material, heavier chips lower. Distinct late falling phase, not a whitened dust cloud or upward plume; no giant icicles or glow.\nMake a shallow wide field of individually visible falling chips, discontinuous short downward powder trails and almost vanished fine wisps. Trails ABOVE their heavier lower ends indicate descent. More transparent air than visible mass. Three uneven loose clusters with a substantially clear central region; no two solid upward wings, no fountain, no outward jets.\nFull-frame contact origin x50%,y78%, implied rather than drawn. Everything fits inside x20–80%,y50–82%. Keep all four outer15% margins entirely alpha0, no ambient backdrop glow or haze. One1536x1024 landscape RGBA PNG, TRUE TRANSPARENT BACKGROUND. Restrained cold white/steel-blue small crystalline edges, crisp tiny facets and delicate soft fine powder. Natural painted2.5D game material readable at250px.\nNo ground, snowfield, pile, horizon, scene, ship, capsule, hunters, animals, giant crystal, icicle, magic, glow, text, labels, sheet, grid, frame, watermark, checkerboard, black/white backdrop, cropped particle. One distinct late effect, never the initial front merely faded.",
+  "referenceImages": [
+    "/workspace/scratch/62884fa4f584/cinematic-assets-batch-01-20261105/public/game/cinematics/batch-01-20261105/arrival-impact-front-jungle.png"
+  ],
+  "generationMode": "builtin-imagegen-reference",
+  "intendedAnchor": {
+    "name": "ground-capsule-reference",
+    "normalized": [
+      0.5,
+      0.78
+    ],
+    "basis": "shared intended contact for late falling phase; source review only, integration pending"
+  },
+  "generated": true,
+  "integrated": false,
+  "testedInEngine": false,
+  "artisticHumanApproval": false,
+  "visualReview": {
+    "reviewer": "assistant",
+    "result": "pass-with-integration-pending",
+    "notes": "Three loose groups of angular ice chips with thin trails above lower ends, indicating descent. Sparse material and open gaps, distinct from dense powder front. Sharp facets need native-scale artistic comparison before approval."
+  },
+  "qa": {
+    "mode": "RGBA",
+    "width": 1536,
+    "height": 1024,
+    "transparentPixelFraction": 0.9250043233235677,
+    "visiblePixelCountAlphaOver16": 37389,
+    "borderPixelCountAlphaOver16": 0,
+    "alphaOver16Bounds": [
+      276,
+      569,
+      1234,
+      862
+    ],
+    "passed": true
+  },
+  "sha256": "52c99256029e45ea6046b7c47fb09879ca89a88b53ed3dbfc8b0bbf4a5fd8545",
+  "bytes": 905167
+}

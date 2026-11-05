@@ -1,0 +1,95 @@
+{
+  "id": "arrival-foot-contact-volcano",
+  "family": "foot-contact",
+  "biome": "volcano",
+  "file": "public/game/cinematics/batch-01-20261105/arrival-foot-contact-volcano.png",
+  "generatedSource": "/workspace/scratch/62884fa4f584/generated_images/exec-bf5c910f-7409-4149-b60c-1aa135202e5a.png",
+  "prompt": "Use case: stylized-concept. Asset ID: arrival-foot-contact-volcano.\nCreate ONE small isolated volcanic-ash footstep micro-spray on TRUE TRANSPARENT BACKGROUND.\nReference image 1 (jungle foot-contact) shows only the required small size, lower-central location and contact pivot. Replace its organic material with a distinct physical ash spray; do not recolor or copy its leaf shapes. Reference image 2 gives the project's painted material style. Reference image 3 is the actual game and provides style only; do not reproduce any scene, pod, ground or interface.\nSubject: one compact short fan of COOL MATTE CHARCOAL ASH and several porous basalt crumbs, with one low irregular trailing wisp of grey dust. Asymmetrical grain trajectories, distinctly different from soil/leaves and ice. No flame, ember, lava, red light or magic.\nComposition: square 1024x1024 image. Near-ground side view. Origin x=0.50 y=0.78. Keep EVERY visible part inside x=0.28..0.72 and y=0.55..0.82. Outside that compact lower-central area, alpha must be completely zero. Top half entirely empty. At least 18% fully transparent padding on all four edges. No additional material elsewhere.\nStyle: realistic painted 2.5D game VFX. Restrained mid-grey charcoal material readable over jungle scenery. Light affects only the tiny material particles: DO NOT DRAW any light source, lighting gradient, beam, haze background, glow, aura, vignette, white cloud surround or ground shadow.\nOne material-only micro-effect, no foot, footprint, limb, person, creature, terrain patch, flat floor, crater, platform, disc, smoke column, scenery, horizon, text, grid, atlas, sprite sheet, panel, duplicate effect, checkerboard, black or white backdrop. Nothing is cropped. One RGBA PNG with real transparency.",
+  "referenceImages": [
+    "/workspace/scratch/62884fa4f584/cinematic-assets-batch-01-20261105/public/game/cinematics/batch-01-20261105/arrival-foot-contact-jungle.png",
+    "/workspace/scratch/62884fa4f584/cinematic-assets-batch-01-20261105/public/game/cinematics/batch-01-20261105/arrival-impact-front-jungle.png",
+    "/workspace/scratch/62884fa4f584/qa-recovery/spatial-a7f830c/desktop-landing-impact.png"
+  ],
+  "generationMode": "builtin-imagegen-reference",
+  "intendedAnchor": {
+    "name": "hunter-foot-contact",
+    "normalized": [
+      0.5,
+      0.78
+    ],
+    "basis": "requested composition anchor; runtime registration remains pending"
+  },
+  "generated": true,
+  "integrated": false,
+  "testedInEngine": false,
+  "artisticHumanApproval": false,
+  "technicalQA": {
+    "format": "PNG",
+    "mode": "RGBA",
+    "width": 1254,
+    "height": 1254,
+    "bytes": 205629,
+    "sha256": "6da3d0853b587b2c1a44598e257b74ff4d3e465ca4b4856a71947f654405c22b",
+    "gitBlobSha": "4eb38af4ccf5cc6f0a6837e8b1312a43b69543cb",
+    "visiblePixelsAbove16": 51214,
+    "fullyTransparentPixels": 1508509,
+    "transparentFraction": 0.9592964395910757,
+    "boundsAbove16": [
+      340,
+      787,
+      894,
+      1047
+    ],
+    "edgePixelsAbove16": 0,
+    "highSaturationDiagnostic": {
+      "visible": 0,
+      "opaque": 0,
+      "lowAlpha": 165
+    },
+    "passed": true
+  },
+  "visualReview": {
+    "status": "reviewed-by-agent",
+    "basis": "Built-in generated preview inspected and original RGBA data checked.",
+    "notes": "Compact asymmetric cool-ash spray with porous basalt crumbs. Rejected first halo attempt replaced by a clean isolated composition; no flame, lava, glow, terrain plane or clipped particles. Human and in-engine review remain pending."
+  },
+  "generatedAt": "2026-11-05T13:16:08.775049+00:00",
+  "rejectedAttempts": [
+    {
+      "id": "arrival-foot-contact-volcano",
+      "attempt": 1,
+      "generatedSource": "/workspace/scratch/62884fa4f584/generated_images/exec-b61ec94d-944b-4c31-9092-ff6c77a7c13b.png",
+      "prompt": "Use case: stylized-concept.\nAsset type: ONE individual 2D ground-contact VFX sprite for the Yautja The Long Hunt cinematic.\nInput image 1 is a rendering/material reference only: the approved jungle impact-front pilot. Input image 2 is the real in-game cinematic, used only to match its realistic painted 2.5D material treatment and restrained values. Do not reproduce either scene or the large impact effect.\nPrimary request: create a NEW very small footstep contact effect, representing displaced material alone. This is a single cohesive micro-effect for one step, not a landing explosion or a wide impact-front plume.\nAsset ID: arrival-foot-contact-volcano.\nSubject and unique material: A tiny footstep puff of cool volcanic ash: a compact, asymmetric fan of very fine charcoal-grey ash mixed with a few angular porous basalt crumbs. Matte ashen texture and a short, soft trailing wisp. No flame, lava, ember, smoke column or red glow.\nCamera: near-ground side view with only a slight view of the top of the particles; no ground plane is drawn. Origin is at normalized x=0.50, y=0.78 of the full image. Material emerges close to that point and rises in a low, irregular fan, largely confined to x=0.27..0.73 and y=0.52..0.80. All visible parts have ample empty transparent margins. Keep most of the square empty.\nStyle: semi-realistic hand-painted 2.5D game art, physical material detail, neutral upper-left lighting, coherent with the references. The tiny silhouette must remain legible when composited at a few dozen pixels wide.\nOutput: ONE 1024x1024 square RGBA PNG with TRUE TRANSPARENT BACKGROUND. Preserve real soft partial alpha where the material thins. No rectangular background, baked checkerboard or opaque black/white field. No visible pixels at the canvas borders.\nExclude: feet, footprints, shoes, body parts, characters, creatures, ship, capsule, ground surface, flat soil patch, platform, contact disc, cast shadow, environment, horizon, typography, labels, numbering, frame, grid, atlas, sprite sheet, duplicate examples, watermark. One material-only micro-spray, not an entire scene.",
+      "referenceImages": [
+        "/workspace/scratch/62884fa4f584/cinematic-assets-batch-01-20261105/public/game/cinematics/batch-01-20261105/arrival-impact-front-jungle.png",
+        "/workspace/scratch/62884fa4f584/qa-recovery/spatial-a7f830c/desktop-landing-impact.png"
+      ],
+      "reason": "Rejected: extraneous broad lighting haze and alpha above 16 at 853 border pixels.",
+      "technicalQA": {
+        "format": "PNG",
+        "mode": "RGBA",
+        "width": 1254,
+        "height": 1254,
+        "bytes": 1453736,
+        "sha256": "d76fe38bdc3934ccdec88ea39c0afb03b9eb51fff136de2265828db2f2f2ef9c",
+        "gitBlobSha": "49cb08a6033f10de69a31760878eb5428c720b44",
+        "visiblePixelsAbove16": 309074,
+        "fullyTransparentPixels": 392850,
+        "transparentFraction": 0.24982257732194776,
+        "boundsAbove16": [
+          0,
+          0,
+          972,
+          1083
+        ],
+        "edgePixelsAbove16": 853,
+        "highSaturationDiagnostic": {
+          "visible": 0,
+          "opaque": 0,
+          "lowAlpha": 828
+        },
+        "passed": false
+      }
+    }
+  ]
+}

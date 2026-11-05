@@ -1,0 +1,1305 @@
+{
+  "schema": 1,
+  "batchId": "cinematic-assets-batch-01-20261105",
+  "recordedAt": "2026-11-05T15:22:25.996831+00:00",
+  "sourceBaselineCommit": "a7f830c05fd4b5801fd379ca7e7313774af2659a",
+  "sourceFilesUnchanged": true,
+  "sourceManifests": [
+    {
+      "path": "production/cinematic-assets-batch-01-20261105/manifest.json",
+      "sha256": "79ac54039095b858385d2421b03b419b818f5d76860f7f8335ecefd7485d63a2",
+      "preservedExactOriginal": true
+    },
+    {
+      "path": "production/cinematic-assets-batch-01-20261105/qa-assets.json",
+      "sha256": "e4e78f4e188e76c0ebb5416e96dc6b7cba47d44f7acbeb0b431fc78d898b5bcf",
+      "preservedExactOriginal": true
+    },
+    {
+      "path": "production/cinematic-assets-batch-01-20261105/build_manifest.py",
+      "sha256": "958ecbfe91b0f1037de096531d458c930f426efb575cc0b5430964a6a970c4cb",
+      "preservedExactOriginal": true
+    }
+  ],
+  "summary": {
+    "pngSources": 50,
+    "losslessWebpExports": 50,
+    "rawGenerationByteMatches": 50,
+    "promptMatches": 50,
+    "historicalBlobReceipts": 65,
+    "missingBlobReceiptsAtResume": 35
+  },
+  "historicalPathResolution": "The original source-art manifest is retained byte-for-byte. Resolve its work/records and work/references entries with this index; public paths stay at repository root. Original generatedSource absolute paths are historical identifiers; their selected bytes are the corresponding public PNG.",
+  "records": [
+    {
+      "id": "arrival-pod-flight-glow-reinforcement",
+      "originalPath": "work/records/arrival-pod-flight-glow-reinforcement.json",
+      "repositoryPath": "production/cinematic-assets-batch-01-20261105/records/arrival-pod-flight-glow-reinforcement.json",
+      "sha256": "376d23420024840d15998e01a0e869084bf029bbc0070b1d836258b730ba6513",
+      "promptMatchesManifest": true,
+      "rawGenerationBytesVerified": true
+    },
+    {
+      "id": "arrival-pod-ground-glow-reinforcement",
+      "originalPath": "work/records/arrival-pod-ground-glow-reinforcement.json",
+      "repositoryPath": "production/cinematic-assets-batch-01-20261105/records/arrival-pod-ground-glow-reinforcement.json",
+      "sha256": "8123be842aadc53769913d2c4e8f01135c5046d8bf0d07f6633791429968fe90",
+      "promptMatchesManifest": true,
+      "rawGenerationBytesVerified": true
+    },
+    {
+      "id": "arrival-impact-front-jungle",
+      "originalPath": "work/records/arrival-impact-front-jungle.json",
+      "repositoryPath": "production/cinematic-assets-batch-01-20261105/records/arrival-impact-front-jungle.json",
+      "sha256": "598d032e28e1f48aab0aa4f84884264a839207639ba02709348beeadeaae3002",
+      "promptMatchesManifest": true,
+      "rawGenerationBytesVerified": true
+    },
+    {
+      "id": "arrival-impact-front-ice",
+      "originalPath": "work/records/arrival-impact-front-ice.json",
+      "repositoryPath": "production/cinematic-assets-batch-01-20261105/records/arrival-impact-front-ice.json",
+      "sha256": "644a4d3d1a68ec810c1ba199df442fe21dcf122588afa04d9d0532ab1907e0ab",
+      "promptMatchesManifest": true,
+      "rawGenerationBytesVerified": true
+    },
+    {
+      "id": "arrival-impact-front-volcano",
+      "originalPath": "work/records/arrival-impact-front-volcano.json",
+      "repositoryPath": "production/cinematic-assets-batch-01-20261105/records/arrival-impact-front-volcano.json",
+      "sha256": "e7e0f45297e2224b5f5a08c3e8fb6609d2b2e63977e943b174f7185a91862ed4",
+      "promptMatchesManifest": true,
+      "rawGenerationBytesVerified": true
+    },
+    {
+      "id": "arrival-impact-front-swamp",
+      "originalPath": "work/records/arrival-impact-front-swamp.json",
+      "repositoryPath": "production/cinematic-assets-batch-01-20261105/records/arrival-impact-front-swamp.json",
+      "sha256": "6471d961c68e3f97a40fe0920df2684eff2ab1bf2aa7c5184cc79f9063786c9e",
+      "promptMatchesManifest": true,
+      "rawGenerationBytesVerified": true
+    },
+    {
+      "id": "arrival-impact-front-desert",
+      "originalPath": "work/records/arrival-impact-front-desert.json",
+      "repositoryPath": "production/cinematic-assets-batch-01-20261105/records/arrival-impact-front-desert.json",
+      "sha256": "4e8d22b76cf8bb2b600f3753a77a8046efbc6229aa132231e9d55cdabffa001c",
+      "promptMatchesManifest": true,
+      "rawGenerationBytesVerified": true
+    },
+    {
+      "id": "arrival-impact-front-ocean",
+      "originalPath": "work/records/arrival-impact-front-ocean.json",
+      "repositoryPath": "production/cinematic-assets-batch-01-20261105/records/arrival-impact-front-ocean.json",
+      "sha256": "983b837dde28869d29d43b1e858fb3894968d0275e7da2331239dac77c07a63c",
+      "promptMatchesManifest": true,
+      "rawGenerationBytesVerified": true
+    },
+    {
+      "id": "arrival-impact-front-fungal",
+      "originalPath": "work/records/arrival-impact-front-fungal.json",
+      "repositoryPath": "production/cinematic-assets-batch-01-20261105/records/arrival-impact-front-fungal.json",
+      "sha256": "88addbca898e62b068baa1f2279fa2f08f2f1643075fcbd9dfe1960c141d7a43",
+      "promptMatchesManifest": true,
+      "rawGenerationBytesVerified": true
+    },
+    {
+      "id": "arrival-impact-front-ruins",
+      "originalPath": "work/records/arrival-impact-front-ruins.json",
+      "repositoryPath": "production/cinematic-assets-batch-01-20261105/records/arrival-impact-front-ruins.json",
+      "sha256": "768849d59a75b782e4881940ad9daf0057b9c8260e034c90c52b88dd1d85a55d",
+      "promptMatchesManifest": true,
+      "rawGenerationBytesVerified": true
+    },
+    {
+      "id": "arrival-impact-settle-jungle",
+      "originalPath": "work/records/arrival-impact-settle-jungle.json",
+      "repositoryPath": "production/cinematic-assets-batch-01-20261105/records/arrival-impact-settle-jungle.json",
+      "sha256": "f1ef642c8222aab0be0df57f6292de3cc7547e922e570ccfac4b5d29970eba1c",
+      "promptMatchesManifest": true,
+      "rawGenerationBytesVerified": true
+    },
+    {
+      "id": "arrival-impact-settle-ice",
+      "originalPath": "work/records/arrival-impact-settle-ice.json",
+      "repositoryPath": "production/cinematic-assets-batch-01-20261105/records/arrival-impact-settle-ice.json",
+      "sha256": "25385a5f98de9aa5a264bb760be11f7f5dffa2fb280fd7c5bc82ab92b4d0d6e5",
+      "promptMatchesManifest": true,
+      "rawGenerationBytesVerified": true
+    },
+    {
+      "id": "arrival-impact-settle-volcano",
+      "originalPath": "work/records/arrival-impact-settle-volcano.json",
+      "repositoryPath": "production/cinematic-assets-batch-01-20261105/records/arrival-impact-settle-volcano.json",
+      "sha256": "22ff3eeb8a013b30626ad52775ae38e667b55706d7a50bd53e0ac753d6aa1cf8",
+      "promptMatchesManifest": true,
+      "rawGenerationBytesVerified": true
+    },
+    {
+      "id": "arrival-impact-settle-swamp",
+      "originalPath": "work/records/arrival-impact-settle-swamp.json",
+      "repositoryPath": "production/cinematic-assets-batch-01-20261105/records/arrival-impact-settle-swamp.json",
+      "sha256": "75c3f7ad4f056d942eeaa4c75de25e75d2ee77dec6ed8f5a679d6cfffd46ce9d",
+      "promptMatchesManifest": true,
+      "rawGenerationBytesVerified": true
+    },
+    {
+      "id": "arrival-impact-settle-desert",
+      "originalPath": "work/records/arrival-impact-settle-desert.json",
+      "repositoryPath": "production/cinematic-assets-batch-01-20261105/records/arrival-impact-settle-desert.json",
+      "sha256": "80855486f87f3761c9b0fa9ca7d398fdecda34038f3c40bfd611f3c6897725c5",
+      "promptMatchesManifest": true,
+      "rawGenerationBytesVerified": true
+    },
+    {
+      "id": "arrival-impact-settle-ocean",
+      "originalPath": "work/records/arrival-impact-settle-ocean.json",
+      "repositoryPath": "production/cinematic-assets-batch-01-20261105/records/arrival-impact-settle-ocean.json",
+      "sha256": "77a24789513be2a2587bf317069d2b7e1ec7275d4d4b9d0d5357c1256099aa3c",
+      "promptMatchesManifest": true,
+      "rawGenerationBytesVerified": true
+    },
+    {
+      "id": "arrival-impact-settle-fungal",
+      "originalPath": "work/records/arrival-impact-settle-fungal.json",
+      "repositoryPath": "production/cinematic-assets-batch-01-20261105/records/arrival-impact-settle-fungal.json",
+      "sha256": "aaf3e511f4d9d66ff36ff8971ae11ad67d4c19c83d4c52bcf8063ccb706e621b",
+      "promptMatchesManifest": true,
+      "rawGenerationBytesVerified": true
+    },
+    {
+      "id": "arrival-impact-settle-ruins",
+      "originalPath": "work/records/arrival-impact-settle-ruins.json",
+      "repositoryPath": "production/cinematic-assets-batch-01-20261105/records/arrival-impact-settle-ruins.json",
+      "sha256": "829ff51e8e93e4d4a9ebce179a6dc0d866e71c141c114e685bafe7bb8e00ad5f",
+      "promptMatchesManifest": true,
+      "rawGenerationBytesVerified": true
+    },
+    {
+      "id": "arrival-ship-ground-wash-jungle",
+      "originalPath": "work/records/arrival-ship-ground-wash-jungle.json",
+      "repositoryPath": "production/cinematic-assets-batch-01-20261105/records/arrival-ship-ground-wash-jungle.json",
+      "sha256": "aad6066d1ee5158e4b8a144ffbab8e34c4a47d08db56ebf27716cc5c43a0f209",
+      "promptMatchesManifest": true,
+      "rawGenerationBytesVerified": true
+    },
+    {
+      "id": "arrival-ship-ground-wash-ice",
+      "originalPath": "work/records/arrival-ship-ground-wash-ice.json",
+      "repositoryPath": "production/cinematic-assets-batch-01-20261105/records/arrival-ship-ground-wash-ice.json",
+      "sha256": "694cef5b12195c19bf27bf4f5f8361ec0c570dd513c3cf75d9953f4c2042ccfa",
+      "promptMatchesManifest": true,
+      "rawGenerationBytesVerified": true
+    },
+    {
+      "id": "arrival-ship-ground-wash-volcano",
+      "originalPath": "work/records/arrival-ship-ground-wash-volcano.json",
+      "repositoryPath": "production/cinematic-assets-batch-01-20261105/records/arrival-ship-ground-wash-volcano.json",
+      "sha256": "25a2d8e82107c8148636cff3650faf2ac4e8d23245c7614f5e41db9401269eec",
+      "promptMatchesManifest": true,
+      "rawGenerationBytesVerified": true
+    },
+    {
+      "id": "arrival-ship-ground-wash-swamp",
+      "originalPath": "work/records/arrival-ship-ground-wash-swamp.json",
+      "repositoryPath": "production/cinematic-assets-batch-01-20261105/records/arrival-ship-ground-wash-swamp.json",
+      "sha256": "1c2ba26aa570e86174715bf05f5477338ab05ec252b0569c2a620d8e90a7da73",
+      "promptMatchesManifest": true,
+      "rawGenerationBytesVerified": true
+    },
+    {
+      "id": "arrival-ship-ground-wash-desert",
+      "originalPath": "work/records/arrival-ship-ground-wash-desert.json",
+      "repositoryPath": "production/cinematic-assets-batch-01-20261105/records/arrival-ship-ground-wash-desert.json",
+      "sha256": "c4f7f2770386efe9dc34f8d74f8242548ffa53b60d8a524a62165e90bbcc253f",
+      "promptMatchesManifest": true,
+      "rawGenerationBytesVerified": true
+    },
+    {
+      "id": "arrival-ship-ground-wash-ocean",
+      "originalPath": "work/records/arrival-ship-ground-wash-ocean.json",
+      "repositoryPath": "production/cinematic-assets-batch-01-20261105/records/arrival-ship-ground-wash-ocean.json",
+      "sha256": "bb4a3661624b957b81222062f1aaada7f1d0f669e0015440ddd4c65fd1f4b3f4",
+      "promptMatchesManifest": true,
+      "rawGenerationBytesVerified": true
+    },
+    {
+      "id": "arrival-ship-ground-wash-fungal",
+      "originalPath": "work/records/arrival-ship-ground-wash-fungal.json",
+      "repositoryPath": "production/cinematic-assets-batch-01-20261105/records/arrival-ship-ground-wash-fungal.json",
+      "sha256": "186beb1c07ed0b0608c9a33443405809381fd5030207e7b01fcdbafaed9c562c",
+      "promptMatchesManifest": true,
+      "rawGenerationBytesVerified": true
+    },
+    {
+      "id": "arrival-ship-ground-wash-ruins",
+      "originalPath": "work/records/arrival-ship-ground-wash-ruins.json",
+      "repositoryPath": "production/cinematic-assets-batch-01-20261105/records/arrival-ship-ground-wash-ruins.json",
+      "sha256": "3c0912a0d387e074fb950215044987663ed3c5b71fc6bce0c8fff513cca1cb19",
+      "promptMatchesManifest": true,
+      "rawGenerationBytesVerified": true
+    },
+    {
+      "id": "arrival-foot-contact-jungle",
+      "originalPath": "work/records/arrival-foot-contact-jungle.json",
+      "repositoryPath": "production/cinematic-assets-batch-01-20261105/records/arrival-foot-contact-jungle.json",
+      "sha256": "26fd9c6d4481beed5f80cd520ebdee0410bc3fd793e282f7369892365f0c87a1",
+      "promptMatchesManifest": true,
+      "rawGenerationBytesVerified": true
+    },
+    {
+      "id": "arrival-foot-contact-ice",
+      "originalPath": "work/records/arrival-foot-contact-ice.json",
+      "repositoryPath": "production/cinematic-assets-batch-01-20261105/records/arrival-foot-contact-ice.json",
+      "sha256": "ba63e58839660dd67f3df372a7247740c402a507ee8666e140ff9a2b3ae68c72",
+      "promptMatchesManifest": true,
+      "rawGenerationBytesVerified": true
+    },
+    {
+      "id": "arrival-foot-contact-volcano",
+      "originalPath": "work/records/arrival-foot-contact-volcano.json",
+      "repositoryPath": "production/cinematic-assets-batch-01-20261105/records/arrival-foot-contact-volcano.json",
+      "sha256": "e1e020134482cde7384cfc892a4f32adb77b090bdf15547fd8edb829efc0d5e2",
+      "promptMatchesManifest": true,
+      "rawGenerationBytesVerified": true
+    },
+    {
+      "id": "arrival-foot-contact-swamp",
+      "originalPath": "work/records/arrival-foot-contact-swamp.json",
+      "repositoryPath": "production/cinematic-assets-batch-01-20261105/records/arrival-foot-contact-swamp.json",
+      "sha256": "9642ac1193cb4779fb82de2e03c6dbf47189c8766cc8506871d3a48aefffad35",
+      "promptMatchesManifest": true,
+      "rawGenerationBytesVerified": true
+    },
+    {
+      "id": "arrival-foot-contact-desert",
+      "originalPath": "work/records/arrival-foot-contact-desert.json",
+      "repositoryPath": "production/cinematic-assets-batch-01-20261105/records/arrival-foot-contact-desert.json",
+      "sha256": "7540921b785a93054fe44345497a6f7c5a91d2ece3373ea8375df755d7c4abd5",
+      "promptMatchesManifest": true,
+      "rawGenerationBytesVerified": true
+    },
+    {
+      "id": "arrival-foot-contact-ocean",
+      "originalPath": "work/records/arrival-foot-contact-ocean.json",
+      "repositoryPath": "production/cinematic-assets-batch-01-20261105/records/arrival-foot-contact-ocean.json",
+      "sha256": "de6c2aa4cd2528c6cd857b0aff1c74bde440c4aff825ae126a84aff3cba1f52a",
+      "promptMatchesManifest": true,
+      "rawGenerationBytesVerified": true
+    },
+    {
+      "id": "arrival-foot-contact-fungal",
+      "originalPath": "work/records/arrival-foot-contact-fungal.json",
+      "repositoryPath": "production/cinematic-assets-batch-01-20261105/records/arrival-foot-contact-fungal.json",
+      "sha256": "76c8536d9520b8e2c0a6a89db1ab01a94fc2fdd552ed26b329deea08e2471f58",
+      "promptMatchesManifest": true,
+      "rawGenerationBytesVerified": true
+    },
+    {
+      "id": "arrival-foot-contact-ruins",
+      "originalPath": "work/records/arrival-foot-contact-ruins.json",
+      "repositoryPath": "production/cinematic-assets-batch-01-20261105/records/arrival-foot-contact-ruins.json",
+      "sha256": "3d3da85c0d5f2d0ca37b47a6a01625b9958ef7fdd726c67fc3829712163f36fd",
+      "promptMatchesManifest": true,
+      "rawGenerationBytesVerified": true
+    },
+    {
+      "id": "arrival-fragment-jungle-a",
+      "originalPath": "work/records/arrival-fragment-jungle-a.json",
+      "repositoryPath": "production/cinematic-assets-batch-01-20261105/records/arrival-fragment-jungle-a.json",
+      "sha256": "78453b234e724be754967953f5fe3136b20c2e901a2e7263183d1857e2cdda17",
+      "promptMatchesManifest": true,
+      "rawGenerationBytesVerified": true
+    },
+    {
+      "id": "arrival-fragment-jungle-b",
+      "originalPath": "work/records/arrival-fragment-jungle-b.json",
+      "repositoryPath": "production/cinematic-assets-batch-01-20261105/records/arrival-fragment-jungle-b.json",
+      "sha256": "a704c1ffab0c7a5d3eb1a9d3e4dfa3f6c41038dec724b9fdb8b0cb3aaa85cb5c",
+      "promptMatchesManifest": true,
+      "rawGenerationBytesVerified": true
+    },
+    {
+      "id": "arrival-fragment-ice-a",
+      "originalPath": "work/records/arrival-fragment-ice-a.json",
+      "repositoryPath": "production/cinematic-assets-batch-01-20261105/records/arrival-fragment-ice-a.json",
+      "sha256": "96231fa4632aaa6d10da407d3036cd2865ee0f9a6a2ef5ae5973b926aa771508",
+      "promptMatchesManifest": true,
+      "rawGenerationBytesVerified": true
+    },
+    {
+      "id": "arrival-fragment-ice-b",
+      "originalPath": "work/records/arrival-fragment-ice-b.json",
+      "repositoryPath": "production/cinematic-assets-batch-01-20261105/records/arrival-fragment-ice-b.json",
+      "sha256": "1811eb13b34fc2f1de0a8a764fc10fe91a4711e29c1c01cdf52e41c26c43d1ea",
+      "promptMatchesManifest": true,
+      "rawGenerationBytesVerified": true
+    },
+    {
+      "id": "arrival-fragment-volcano-a",
+      "originalPath": "work/records/arrival-fragment-volcano-a.json",
+      "repositoryPath": "production/cinematic-assets-batch-01-20261105/records/arrival-fragment-volcano-a.json",
+      "sha256": "28c237a5c2e05ba04ffb2ed54190e3abf7a5e90cd9d81a6ca9430f7daa65c248",
+      "promptMatchesManifest": true,
+      "rawGenerationBytesVerified": true
+    },
+    {
+      "id": "arrival-fragment-volcano-b",
+      "originalPath": "work/records/arrival-fragment-volcano-b.json",
+      "repositoryPath": "production/cinematic-assets-batch-01-20261105/records/arrival-fragment-volcano-b.json",
+      "sha256": "3a94279df25fdb0fdc0328af74bd7864484dd98badcb13087be5fe6f25fb9c1d",
+      "promptMatchesManifest": true,
+      "rawGenerationBytesVerified": true
+    },
+    {
+      "id": "arrival-fragment-swamp-a",
+      "originalPath": "work/records/arrival-fragment-swamp-a.json",
+      "repositoryPath": "production/cinematic-assets-batch-01-20261105/records/arrival-fragment-swamp-a.json",
+      "sha256": "0ac982be44154982bfc11618376fd997bee3d3d1fc5b43d834ff8eeec7a3b3bd",
+      "promptMatchesManifest": true,
+      "rawGenerationBytesVerified": true
+    },
+    {
+      "id": "arrival-fragment-swamp-b",
+      "originalPath": "work/records/arrival-fragment-swamp-b.json",
+      "repositoryPath": "production/cinematic-assets-batch-01-20261105/records/arrival-fragment-swamp-b.json",
+      "sha256": "a384e8161f7f9d41353633282d1e4b361bf026672d5b9670f0b433caaa4f1388",
+      "promptMatchesManifest": true,
+      "rawGenerationBytesVerified": true
+    },
+    {
+      "id": "arrival-fragment-desert-a",
+      "originalPath": "work/records/arrival-fragment-desert-a.json",
+      "repositoryPath": "production/cinematic-assets-batch-01-20261105/records/arrival-fragment-desert-a.json",
+      "sha256": "906925ddda1a84247554e16427ba2358ee0dac33c8cca5af1e1304cac3f64983",
+      "promptMatchesManifest": true,
+      "rawGenerationBytesVerified": true
+    },
+    {
+      "id": "arrival-fragment-desert-b",
+      "originalPath": "work/records/arrival-fragment-desert-b.json",
+      "repositoryPath": "production/cinematic-assets-batch-01-20261105/records/arrival-fragment-desert-b.json",
+      "sha256": "836c6e27ecfc90fcfbf369a7bace7b7c43281b451f1d81ba15170fb836fc763e",
+      "promptMatchesManifest": true,
+      "rawGenerationBytesVerified": true
+    },
+    {
+      "id": "arrival-fragment-ocean-a",
+      "originalPath": "work/records/arrival-fragment-ocean-a.json",
+      "repositoryPath": "production/cinematic-assets-batch-01-20261105/records/arrival-fragment-ocean-a.json",
+      "sha256": "63160ac175a098925819312a5527ccf3448c21c349aad140b1463e85ed85e509",
+      "promptMatchesManifest": true,
+      "rawGenerationBytesVerified": true
+    },
+    {
+      "id": "arrival-fragment-ocean-b",
+      "originalPath": "work/records/arrival-fragment-ocean-b.json",
+      "repositoryPath": "production/cinematic-assets-batch-01-20261105/records/arrival-fragment-ocean-b.json",
+      "sha256": "9d25faf6f2f60d3825f1e014a781e137b5bd00c17960221bee03117b960234b8",
+      "promptMatchesManifest": true,
+      "rawGenerationBytesVerified": true
+    },
+    {
+      "id": "arrival-fragment-fungal-a",
+      "originalPath": "work/records/arrival-fragment-fungal-a.json",
+      "repositoryPath": "production/cinematic-assets-batch-01-20261105/records/arrival-fragment-fungal-a.json",
+      "sha256": "5b3f4c1cd877e879dfe6a0cc702fecc135658f2bd8d90e530bccc3e583f83f6c",
+      "promptMatchesManifest": true,
+      "rawGenerationBytesVerified": true
+    },
+    {
+      "id": "arrival-fragment-fungal-b",
+      "originalPath": "work/records/arrival-fragment-fungal-b.json",
+      "repositoryPath": "production/cinematic-assets-batch-01-20261105/records/arrival-fragment-fungal-b.json",
+      "sha256": "d1c0b998253b3f6e6f2ceeaec8d541f02879a94962b5c5b3e2f9ed342eb6f7f9",
+      "promptMatchesManifest": true,
+      "rawGenerationBytesVerified": true
+    },
+    {
+      "id": "arrival-fragment-ruins-a",
+      "originalPath": "work/records/arrival-fragment-ruins-a.json",
+      "repositoryPath": "production/cinematic-assets-batch-01-20261105/records/arrival-fragment-ruins-a.json",
+      "sha256": "51b9a1b313e875b1d6d26f65e63884da7d9b769478feb337ed2c2dc0d04ad9cc",
+      "promptMatchesManifest": true,
+      "rawGenerationBytesVerified": true
+    },
+    {
+      "id": "arrival-fragment-ruins-b",
+      "originalPath": "work/records/arrival-fragment-ruins-b.json",
+      "repositoryPath": "production/cinematic-assets-batch-01-20261105/records/arrival-fragment-ruins-b.json",
+      "sha256": "5b156dc274b69b01c3497c920cdd2848d8e5b2586ad8eabc1d19d002e81f95c2",
+      "promptMatchesManifest": true,
+      "rawGenerationBytesVerified": true
+    }
+  ],
+  "references": [
+    {
+      "originalPath": "work/references/pod-flight.webp",
+      "repositoryPath": "production/cinematic-assets-batch-01-20261105/references/pod-flight.webp",
+      "sha256": "4eb8c702a91cdf05299c737e20184550fa7268c008c78222dbefad8a9b3b2a68",
+      "includedNow": true
+    },
+    {
+      "originalPath": "work/references/pod-ground.webp",
+      "repositoryPath": "production/cinematic-assets-batch-01-20261105/references/pod-ground.webp",
+      "sha256": "816235132f99cf19272702cc8f3e008d626616005c9b2fee556a94d4474806f1",
+      "includedNow": true
+    },
+    {
+      "originalPath": "qa-recovery/spatial-a7f830c/desktop-landing-impact.png",
+      "repositoryPath": "production/cinematic-assets-batch-01-20261105/references/desktop-landing-impact.png",
+      "sha256": "8df7788d4dfdba345e846636133eb8fea5540d516d1b85496891bed70386ec04",
+      "includedNow": true
+    },
+    {
+      "originalPath": "public/game/cinematics/batch-01-20261105/arrival-impact-front-jungle.png",
+      "repositoryPath": "public/game/cinematics/batch-01-20261105/arrival-impact-front-jungle.png",
+      "sha256": "6d72877bd07e7c8791deb0245239a9ec4f3bae721e8c4916522975649909274a",
+      "includedNow": true
+    },
+    {
+      "originalPath": "public/game/cinematics/batch-01-20261105/arrival-impact-front-fungal.png",
+      "repositoryPath": "public/game/cinematics/batch-01-20261105/arrival-impact-front-fungal.png",
+      "sha256": "c4f86bf814485ecec5d44cc42bef015f8189e52653377752812b18e6165b265a",
+      "includedNow": true
+    },
+    {
+      "originalPath": "public/game/cinematics/batch-01-20261105/arrival-impact-settle-jungle.png",
+      "repositoryPath": "public/game/cinematics/batch-01-20261105/arrival-impact-settle-jungle.png",
+      "sha256": "be7a34c6ccc8aa3d258cadf436a3d9fe9ac3ab94845d8b70866e93d2e059aeb2",
+      "includedNow": true
+    },
+    {
+      "originalPath": "public/game/cinematics/batch-01-20261105/arrival-impact-front-ruins.png",
+      "repositoryPath": "public/game/cinematics/batch-01-20261105/arrival-impact-front-ruins.png",
+      "sha256": "d1c28f52682a1ba30b00bb315959a1fee533c84af65fef7972b8e3a1654bc43f",
+      "includedNow": true
+    },
+    {
+      "originalPath": "public/game/cinematics/batch-01-20261105/arrival-ship-ground-wash-desert.png",
+      "repositoryPath": "public/game/cinematics/batch-01-20261105/arrival-ship-ground-wash-desert.png",
+      "sha256": "5b642c1114e910ae42ca6b280efbdd58cecef52e97559761b478db89e1ea56d7",
+      "includedNow": true
+    },
+    {
+      "originalPath": "public/game/cinematics/batch-01-20261105/arrival-foot-contact-jungle.png",
+      "repositoryPath": "public/game/cinematics/batch-01-20261105/arrival-foot-contact-jungle.png",
+      "sha256": "896f18b64b0f76fa018a58169b770328300f4a982a699c4516ba25073012814b",
+      "includedNow": true
+    },
+    {
+      "originalPath": "public/game/cinematics/batch-01-20261105/arrival-fragment-jungle-a.png",
+      "repositoryPath": "public/game/cinematics/batch-01-20261105/arrival-fragment-jungle-a.png",
+      "sha256": "dd2cf20a16afb5ba2cb33029976f61eb372ec43ef4cae798d91fcc78744647e3",
+      "includedNow": true
+    }
+  ],
+  "assets": [
+    {
+      "id": "arrival-pod-flight-glow-reinforcement",
+      "kind": "source",
+      "path": "public/game/cinematics/batch-01-20261105/arrival-pod-flight-glow-reinforcement.png",
+      "bytes": 1293452,
+      "sha256": "47814836cc10b5343914d28dd5a4342b7100da4c27ed14d0fbd13627cc7f71b4",
+      "gitSha": "ad60630460dfbcf4da4442ca0a023c5dafcc97e7"
+    },
+    {
+      "id": "arrival-pod-flight-glow-reinforcement",
+      "kind": "runtime",
+      "path": "public/game/cinematics/batch-01-20261105/arrival-pod-flight-glow-reinforcement.webp",
+      "bytes": 827830,
+      "sha256": "0b40c8bc5f4b98e1b69ba4c9f36d56d098f6945814d7e7c25944f339a3bad258",
+      "gitSha": "b96f75e9c7149cdcee594ac64ad11c8bd9d72fa8"
+    },
+    {
+      "id": "arrival-pod-ground-glow-reinforcement",
+      "kind": "source",
+      "path": "public/game/cinematics/batch-01-20261105/arrival-pod-ground-glow-reinforcement.png",
+      "bytes": 662312,
+      "sha256": "345cb95a0bbf7f27457ac070595a062e4c3330358e539c5b0579d48f7adb86c0",
+      "gitSha": "69077f71631354fb80fff25390a8200633050e8f"
+    },
+    {
+      "id": "arrival-pod-ground-glow-reinforcement",
+      "kind": "runtime",
+      "path": "public/game/cinematics/batch-01-20261105/arrival-pod-ground-glow-reinforcement.webp",
+      "bytes": 24524,
+      "sha256": "9c2ab16e2263e5e9012531f6428e52b838ebcd7bc40e2779f86b73805a43968e",
+      "gitSha": "9cc6c04f95343bb183a7ad36bfcaef033671ad69"
+    },
+    {
+      "id": "arrival-impact-front-jungle",
+      "kind": "source",
+      "path": "public/game/cinematics/batch-01-20261105/arrival-impact-front-jungle.png",
+      "bytes": 1346493,
+      "sha256": "6d72877bd07e7c8791deb0245239a9ec4f3bae721e8c4916522975649909274a",
+      "gitSha": "ba56d894024f68bdd0ef05c245c0842e20e42cdf"
+    },
+    {
+      "id": "arrival-impact-front-jungle",
+      "kind": "runtime",
+      "path": "public/game/cinematics/batch-01-20261105/arrival-impact-front-jungle.webp",
+      "bytes": 457638,
+      "sha256": "a8d11a4446ab1ef1f556281150a774d6060c849603dd098f06c4a2e8ff6b4336",
+      "gitSha": "a807e20a0d3b6fd8c958d1a412835696a9910eed"
+    },
+    {
+      "id": "arrival-impact-front-ice",
+      "kind": "source",
+      "path": "public/game/cinematics/batch-01-20261105/arrival-impact-front-ice.png",
+      "bytes": 1384850,
+      "sha256": "3e2aa0202f46947a160de26f93824b96905a2d40d204809591dd5a0977778c78",
+      "gitSha": "d33eeb63300813821fe8d888d3857b52cf82be94"
+    },
+    {
+      "id": "arrival-impact-front-ice",
+      "kind": "runtime",
+      "path": "public/game/cinematics/batch-01-20261105/arrival-impact-front-ice.webp",
+      "bytes": 447642,
+      "sha256": "7558ff33fc6a604bf4ed438de152ef399b120225fb1a355fe614ebe6b8366181",
+      "gitSha": "45e76a26c1bac4405db75b0dafcc92fd527389d5"
+    },
+    {
+      "id": "arrival-impact-front-volcano",
+      "kind": "source",
+      "path": "public/game/cinematics/batch-01-20261105/arrival-impact-front-volcano.png",
+      "bytes": 1307968,
+      "sha256": "69fb0a1b232fc64068c7dd9f1837a2eaf11545506d1911d28429222d5f66e525",
+      "gitSha": "957326829051edd5c110e84b54615397c9ffe59d"
+    },
+    {
+      "id": "arrival-impact-front-volcano",
+      "kind": "runtime",
+      "path": "public/game/cinematics/batch-01-20261105/arrival-impact-front-volcano.webp",
+      "bytes": 421146,
+      "sha256": "d17c9746f6481444ac352468c232257fd71cf145e16a07cfa8e424d18ccf790f",
+      "gitSha": "bcea3ec1d0d28930a895e4b4de1e776c97c8f02b"
+    },
+    {
+      "id": "arrival-impact-front-swamp",
+      "kind": "source",
+      "path": "public/game/cinematics/batch-01-20261105/arrival-impact-front-swamp.png",
+      "bytes": 990930,
+      "sha256": "f223b363006ca54c60313f1a39bcce01793ea6a62fe65eee27d06495ec5dd7e2",
+      "gitSha": "75d3c1dff05fa2deae1b341c2bb99e299ef585d3"
+    },
+    {
+      "id": "arrival-impact-front-swamp",
+      "kind": "runtime",
+      "path": "public/game/cinematics/batch-01-20261105/arrival-impact-front-swamp.webp",
+      "bytes": 180930,
+      "sha256": "8f2fd18e5d64839e88591e468c24c5a14c4abd630074dc88967da74682d311d6",
+      "gitSha": "7efcca83a51438a4e99892dcba20402bffdb5435"
+    },
+    {
+      "id": "arrival-impact-front-desert",
+      "kind": "source",
+      "path": "public/game/cinematics/batch-01-20261105/arrival-impact-front-desert.png",
+      "bytes": 1490807,
+      "sha256": "6b1e88357bc4031da539d2a8ab5b4f72b4fbdbdb0c400a515887d663b716b447",
+      "gitSha": "67fbb1e1c08053db7006749c67df71b406e63e58"
+    },
+    {
+      "id": "arrival-impact-front-desert",
+      "kind": "runtime",
+      "path": "public/game/cinematics/batch-01-20261105/arrival-impact-front-desert.webp",
+      "bytes": 634930,
+      "sha256": "65a7e9c0c88ada5bfb17ab8984ae8e04a698c525bc1af568984749eecdd4a654",
+      "gitSha": "aa34e7222d11f3d80bea356163bf76f1d02b967c"
+    },
+    {
+      "id": "arrival-impact-front-ocean",
+      "kind": "source",
+      "path": "public/game/cinematics/batch-01-20261105/arrival-impact-front-ocean.png",
+      "bytes": 1056800,
+      "sha256": "b69c7a6b4d02fb0c7900f679e41f38aac3f1e41dbd454b1e7d25831b362d6dc9",
+      "gitSha": "6803a8bcdc0f9156361e7317199d08cd0a304860"
+    },
+    {
+      "id": "arrival-impact-front-ocean",
+      "kind": "runtime",
+      "path": "public/game/cinematics/batch-01-20261105/arrival-impact-front-ocean.webp",
+      "bytes": 411696,
+      "sha256": "587391acfb2453ff2ba532a8c2abd07a2aac44f7c11b262ec680f7e876953498",
+      "gitSha": "8ad6515241876ed96acfb979e6088ee6629a3cf1"
+    },
+    {
+      "id": "arrival-impact-front-fungal",
+      "kind": "source",
+      "path": "public/game/cinematics/batch-01-20261105/arrival-impact-front-fungal.png",
+      "bytes": 1403497,
+      "sha256": "c4f86bf814485ecec5d44cc42bef015f8189e52653377752812b18e6165b265a",
+      "gitSha": "cbb909ac7d7c15228f816e9d3b8141650c93532b"
+    },
+    {
+      "id": "arrival-impact-front-fungal",
+      "kind": "runtime",
+      "path": "public/game/cinematics/batch-01-20261105/arrival-impact-front-fungal.webp",
+      "bytes": 503206,
+      "sha256": "152d7edc9698176985c9ee77c21118071c0242596eedbeb6eb53d017cf7cdc32",
+      "gitSha": "ab980c025e158db74f2944f598362a6bdb245f3f"
+    },
+    {
+      "id": "arrival-impact-front-ruins",
+      "kind": "source",
+      "path": "public/game/cinematics/batch-01-20261105/arrival-impact-front-ruins.png",
+      "bytes": 1209307,
+      "sha256": "d1c28f52682a1ba30b00bb315959a1fee533c84af65fef7972b8e3a1654bc43f",
+      "gitSha": "ac0f52d8ef09bac7f70f8abc7c5c330f54c0a2fd"
+    },
+    {
+      "id": "arrival-impact-front-ruins",
+      "kind": "runtime",
+      "path": "public/game/cinematics/batch-01-20261105/arrival-impact-front-ruins.webp",
+      "bytes": 313312,
+      "sha256": "aa907039a824d02228400665b5eb7e16f03173e6e62e784fa8c6a01163a0e07d",
+      "gitSha": "26ac9cad574373e64fcab7012fadaa014fad6693"
+    },
+    {
+      "id": "arrival-impact-settle-jungle",
+      "kind": "source",
+      "path": "public/game/cinematics/batch-01-20261105/arrival-impact-settle-jungle.png",
+      "bytes": 1177251,
+      "sha256": "be7a34c6ccc8aa3d258cadf436a3d9fe9ac3ab94845d8b70866e93d2e059aeb2",
+      "gitSha": "91794641d40428cc921898b66b14e6391a961002"
+    },
+    {
+      "id": "arrival-impact-settle-jungle",
+      "kind": "runtime",
+      "path": "public/game/cinematics/batch-01-20261105/arrival-impact-settle-jungle.webp",
+      "bytes": 284082,
+      "sha256": "62a9a1468f000ad561e027e4ba833968ed39f214b7d98dd258148e93d889e23f",
+      "gitSha": "f3b04a8d9791e94e96d85151e08224d11fa30a2e"
+    },
+    {
+      "id": "arrival-impact-settle-ice",
+      "kind": "source",
+      "path": "public/game/cinematics/batch-01-20261105/arrival-impact-settle-ice.png",
+      "bytes": 905167,
+      "sha256": "52c99256029e45ea6046b7c47fb09879ca89a88b53ed3dbfc8b0bbf4a5fd8545",
+      "gitSha": "bf7db103d38a22a6a2cb05d04e845ff66ff93939"
+    },
+    {
+      "id": "arrival-impact-settle-ice",
+      "kind": "runtime",
+      "path": "public/game/cinematics/batch-01-20261105/arrival-impact-settle-ice.webp",
+      "bytes": 145154,
+      "sha256": "3e29a08a22fd2c5b2932c4fd1e5c64f1833948ef04622c23c7c54a2e0ad48644",
+      "gitSha": "a2e12d43ce3d73173e08a8742599304997d660e3"
+    },
+    {
+      "id": "arrival-impact-settle-volcano",
+      "kind": "source",
+      "path": "public/game/cinematics/batch-01-20261105/arrival-impact-settle-volcano.png",
+      "bytes": 767950,
+      "sha256": "87965a3312d315cb5722bad9ba21347c5e5eec7ca05406bb49291d0e3cbc5964",
+      "gitSha": "711ec217a6c9afcad8e8dbfd5ffa1f0739a1fae5"
+    },
+    {
+      "id": "arrival-impact-settle-volcano",
+      "kind": "runtime",
+      "path": "public/game/cinematics/batch-01-20261105/arrival-impact-settle-volcano.webp",
+      "bytes": 85890,
+      "sha256": "edda059cf0017bbf26cab15b6206a67b4c832de3d5c952f0f4e397b31a4e2bc9",
+      "gitSha": "f6e1286a58e9d70ff9e15b5a6df1f254b7b4b225"
+    },
+    {
+      "id": "arrival-impact-settle-swamp",
+      "kind": "source",
+      "path": "public/game/cinematics/batch-01-20261105/arrival-impact-settle-swamp.png",
+      "bytes": 894511,
+      "sha256": "a81150e91632a3aea5b248327f76c7a7df458720c422fdfe5edf3b9949605697",
+      "gitSha": "d0be4f0ded1405d5a7f7fde59259c48d9da98205"
+    },
+    {
+      "id": "arrival-impact-settle-swamp",
+      "kind": "runtime",
+      "path": "public/game/cinematics/batch-01-20261105/arrival-impact-settle-swamp.webp",
+      "bytes": 102486,
+      "sha256": "c970f8359df2e4cb2b080c51a93ddd0514370aadbe4082061da9293b3498ddf1",
+      "gitSha": "717e73accdf808f7c8e78f902deb1a0922eb990e"
+    },
+    {
+      "id": "arrival-impact-settle-desert",
+      "kind": "source",
+      "path": "public/game/cinematics/batch-01-20261105/arrival-impact-settle-desert.png",
+      "bytes": 1056362,
+      "sha256": "c02ba8ea8eb8d6d7bef22c49d8eecb79d8ba4c0b7e3433b4027d1f7b3821fb55",
+      "gitSha": "22250e2b4c5592456809218af01d707555e8e067"
+    },
+    {
+      "id": "arrival-impact-settle-desert",
+      "kind": "runtime",
+      "path": "public/game/cinematics/batch-01-20261105/arrival-impact-settle-desert.webp",
+      "bytes": 215078,
+      "sha256": "bd359e19e4b9ac422f04dbaf5c288e97038a6dd83d977a8d5ebad391fe7c7aab",
+      "gitSha": "75403272ecc9aeb5faa9940485d5d2ec340304b2"
+    },
+    {
+      "id": "arrival-impact-settle-ocean",
+      "kind": "source",
+      "path": "public/game/cinematics/batch-01-20261105/arrival-impact-settle-ocean.png",
+      "bytes": 728812,
+      "sha256": "edf53ae4e417cda6fdc869b2db1fc4a3b162caa9c9613c8da003a54e21881336",
+      "gitSha": "83f0f648eecc115a27a97adb54b8b1bd292db994"
+    },
+    {
+      "id": "arrival-impact-settle-ocean",
+      "kind": "runtime",
+      "path": "public/game/cinematics/batch-01-20261105/arrival-impact-settle-ocean.webp",
+      "bytes": 49440,
+      "sha256": "b315ef05faeb6f1daaddcf15ebd4b68ad394647a12bf736869ce556e8a738583",
+      "gitSha": "e34afb6fd4329ffe351194e8dc327ee460eeb8ad"
+    },
+    {
+      "id": "arrival-impact-settle-fungal",
+      "kind": "source",
+      "path": "public/game/cinematics/batch-01-20261105/arrival-impact-settle-fungal.png",
+      "bytes": 782643,
+      "sha256": "ec2f88e7733b510a5308836feea8bacb84ce27194a8ab6a0f94fdbfb4d1280aa",
+      "gitSha": "65ca26c04390a330968b58656b19af493e02d06c"
+    },
+    {
+      "id": "arrival-impact-settle-fungal",
+      "kind": "runtime",
+      "path": "public/game/cinematics/batch-01-20261105/arrival-impact-settle-fungal.webp",
+      "bytes": 80960,
+      "sha256": "e7d3878f2c472152c4ee9cfde4e6f09cc267d1f3cd385a8b409297f4b3107921",
+      "gitSha": "ffb20ecf542dc8098dfb40cf05ef950598f3b4d6"
+    },
+    {
+      "id": "arrival-impact-settle-ruins",
+      "kind": "source",
+      "path": "public/game/cinematics/batch-01-20261105/arrival-impact-settle-ruins.png",
+      "bytes": 834870,
+      "sha256": "0c96b94298242a34dbe628afd472d0dc949352546ca0faee70d58db00e8526b4",
+      "gitSha": "1ec91c1c5f54de4ae104fb944ac8e14ccc583b69"
+    },
+    {
+      "id": "arrival-impact-settle-ruins",
+      "kind": "runtime",
+      "path": "public/game/cinematics/batch-01-20261105/arrival-impact-settle-ruins.webp",
+      "bytes": 68022,
+      "sha256": "ef4ddaf7a5ba6e043f5978a6a58bdcbdd3e97fcf474a9c8c70f6d0035e945604",
+      "gitSha": "aa603145fe140a06a178efc6f16d131712dd6d05"
+    },
+    {
+      "id": "arrival-ship-ground-wash-jungle",
+      "kind": "source",
+      "path": "public/game/cinematics/batch-01-20261105/arrival-ship-ground-wash-jungle.png",
+      "bytes": 1000629,
+      "sha256": "745272b9ba2e33d7e01bab2fe32524b58de43649f36362851a739363e56e806b",
+      "gitSha": "ebaffc798d4e1e8faec0379eaeb1e0d5c51d4db7"
+    },
+    {
+      "id": "arrival-ship-ground-wash-jungle",
+      "kind": "runtime",
+      "path": "public/game/cinematics/batch-01-20261105/arrival-ship-ground-wash-jungle.webp",
+      "bytes": 219800,
+      "sha256": "880aeb5ec294b9e715cd85cd77106f0d85cfda43dce69cb26c4569e170f5a205",
+      "gitSha": "307446ebf61815f3ad77b3297e8e116f70ade350"
+    },
+    {
+      "id": "arrival-ship-ground-wash-ice",
+      "kind": "source",
+      "path": "public/game/cinematics/batch-01-20261105/arrival-ship-ground-wash-ice.png",
+      "bytes": 1070614,
+      "sha256": "3e2df6fe896b352c7a32fc9f54c2ba9fb9eec6ad0b1c19e9faa2292d22262149",
+      "gitSha": "34fa5999cf68efb838445321c8bb2bd394a1c76f"
+    },
+    {
+      "id": "arrival-ship-ground-wash-ice",
+      "kind": "runtime",
+      "path": "public/game/cinematics/batch-01-20261105/arrival-ship-ground-wash-ice.webp",
+      "bytes": 298528,
+      "sha256": "15d062c6883a6919500e161d0e0da30e195936f999481d44d1d3079dccff7268",
+      "gitSha": "637c042b33c21d1d2c46416d91e61f12e9ef9096"
+    },
+    {
+      "id": "arrival-ship-ground-wash-volcano",
+      "kind": "source",
+      "path": "public/game/cinematics/batch-01-20261105/arrival-ship-ground-wash-volcano.png",
+      "bytes": 876925,
+      "sha256": "c3cf9cf5a5fab1309e433d14419f51197969b3c459ec20c6e99847f4f2d13338",
+      "gitSha": "b53164d3d9476d864645a6f15c65496489bced66"
+    },
+    {
+      "id": "arrival-ship-ground-wash-volcano",
+      "kind": "runtime",
+      "path": "public/game/cinematics/batch-01-20261105/arrival-ship-ground-wash-volcano.webp",
+      "bytes": 172986,
+      "sha256": "47d5af3c315d7045e77963b4c9135ae929ef46713504c507d3ec659b70f395b9",
+      "gitSha": "fdf1e14213fa29ae7974bac0a6e906dd117df443"
+    },
+    {
+      "id": "arrival-ship-ground-wash-swamp",
+      "kind": "source",
+      "path": "public/game/cinematics/batch-01-20261105/arrival-ship-ground-wash-swamp.png",
+      "bytes": 860862,
+      "sha256": "0b85e8cbb405f1a9b7cced41e842a1c5bc300fc9878c637d57769cbfd6b1f35c",
+      "gitSha": "5cdb4b0fe8ed57f190150c152969b7fdb55de642"
+    },
+    {
+      "id": "arrival-ship-ground-wash-swamp",
+      "kind": "runtime",
+      "path": "public/game/cinematics/batch-01-20261105/arrival-ship-ground-wash-swamp.webp",
+      "bytes": 172324,
+      "sha256": "f6b6642bcdcacaa4ba369c979bbd82b6197f3f01bc49f4a1912a078cf1e133fc",
+      "gitSha": "5fe360aeb150f66187a29fb5712fc2b6bd0034ea"
+    },
+    {
+      "id": "arrival-ship-ground-wash-desert",
+      "kind": "source",
+      "path": "public/game/cinematics/batch-01-20261105/arrival-ship-ground-wash-desert.png",
+      "bytes": 1004499,
+      "sha256": "5b642c1114e910ae42ca6b280efbdd58cecef52e97559761b478db89e1ea56d7",
+      "gitSha": "9d5e211d50c1966b5a19b6a0d5dbf1e44422ad1a"
+    },
+    {
+      "id": "arrival-ship-ground-wash-desert",
+      "kind": "runtime",
+      "path": "public/game/cinematics/batch-01-20261105/arrival-ship-ground-wash-desert.webp",
+      "bytes": 188734,
+      "sha256": "d83c3b1d6f20141649c7fb128e060261180546afcfaef4e8695abce0f967fe0f",
+      "gitSha": "95d384a995328209dbe7eba2b46ee7a98cc9b76d"
+    },
+    {
+      "id": "arrival-ship-ground-wash-ocean",
+      "kind": "source",
+      "path": "public/game/cinematics/batch-01-20261105/arrival-ship-ground-wash-ocean.png",
+      "bytes": 848425,
+      "sha256": "f2fcf71f1836c5819e1bcfa444de07bcf001c4ff5b33c6e89769f3ee14dc3503",
+      "gitSha": "d1a9f9e69d331bc30397b81caf226abafa3e814c"
+    },
+    {
+      "id": "arrival-ship-ground-wash-ocean",
+      "kind": "runtime",
+      "path": "public/game/cinematics/batch-01-20261105/arrival-ship-ground-wash-ocean.webp",
+      "bytes": 159692,
+      "sha256": "50c3c16f04ee4210e2cbadb94d88df1b2322317dbcf1f18b6177b9dd32b50dba",
+      "gitSha": "6e19c5944c00f7a84e069cbff2d9b5304bc137b0"
+    },
+    {
+      "id": "arrival-ship-ground-wash-fungal",
+      "kind": "source",
+      "path": "public/game/cinematics/batch-01-20261105/arrival-ship-ground-wash-fungal.png",
+      "bytes": 968786,
+      "sha256": "303ca23d82924a541454c73be6c83767242d7df3ee85f3c6678a46b54b2ef708",
+      "gitSha": "efbb1bdc3a0dbd94f78f5038c1f8bfc8a08117b4"
+    },
+    {
+      "id": "arrival-ship-ground-wash-fungal",
+      "kind": "runtime",
+      "path": "public/game/cinematics/batch-01-20261105/arrival-ship-ground-wash-fungal.webp",
+      "bytes": 214850,
+      "sha256": "0f312675d8619d30edc96040f0981815358f89621c1962f3f92a18e722b0dd7e",
+      "gitSha": "bb44765f26f0b2a5aa8338db47f233e29023bfc1"
+    },
+    {
+      "id": "arrival-ship-ground-wash-ruins",
+      "kind": "source",
+      "path": "public/game/cinematics/batch-01-20261105/arrival-ship-ground-wash-ruins.png",
+      "bytes": 883915,
+      "sha256": "4cf92eafdbe6e032d6585e6970931021c7f6e6f141db953e3ba04c9656625f62",
+      "gitSha": "9490fb1c7953d24ba89f951ef9b1e06e282673a5"
+    },
+    {
+      "id": "arrival-ship-ground-wash-ruins",
+      "kind": "runtime",
+      "path": "public/game/cinematics/batch-01-20261105/arrival-ship-ground-wash-ruins.webp",
+      "bytes": 153716,
+      "sha256": "4bf2b41404cac4572d651bb36301a208d5d30242fed10510e6bfe1f97bcc9e91",
+      "gitSha": "14ae11a82e6cdf3318c8815ece08629ba079018e"
+    },
+    {
+      "id": "arrival-foot-contact-jungle",
+      "kind": "source",
+      "path": "public/game/cinematics/batch-01-20261105/arrival-foot-contact-jungle.png",
+      "bytes": 258913,
+      "sha256": "896f18b64b0f76fa018a58169b770328300f4a982a699c4516ba25073012814b",
+      "gitSha": "df92894993e99ca77856ebb7786811304b3b94d5"
+    },
+    {
+      "id": "arrival-foot-contact-jungle",
+      "kind": "runtime",
+      "path": "public/game/cinematics/batch-01-20261105/arrival-foot-contact-jungle.webp",
+      "bytes": 154326,
+      "sha256": "a61f127e30bf236ef164d34147a140f4e7e309d39ba6a4be4810d9384338da24",
+      "gitSha": "7bd3acef56ebd735e6a3a6146677a10bc8cbc7d1"
+    },
+    {
+      "id": "arrival-foot-contact-ice",
+      "kind": "source",
+      "path": "public/game/cinematics/batch-01-20261105/arrival-foot-contact-ice.png",
+      "bytes": 338699,
+      "sha256": "1f6ad946977bdf7da79e986084c7281f2c683963b28e7260a9baf7709577bcee",
+      "gitSha": "b5907d80a25d87552ba01efc256d43075ead432c"
+    },
+    {
+      "id": "arrival-foot-contact-ice",
+      "kind": "runtime",
+      "path": "public/game/cinematics/batch-01-20261105/arrival-foot-contact-ice.webp",
+      "bytes": 191728,
+      "sha256": "6f21805693f6ea0bab5e4f9b7d24c818e19b80e8b1855468dabc6c57dea7a3fc",
+      "gitSha": "621ff9ad907a8e9f9453f93f01b49207ae0b545f"
+    },
+    {
+      "id": "arrival-foot-contact-volcano",
+      "kind": "source",
+      "path": "public/game/cinematics/batch-01-20261105/arrival-foot-contact-volcano.png",
+      "bytes": 205629,
+      "sha256": "6da3d0853b587b2c1a44598e257b74ff4d3e465ca4b4856a71947f654405c22b",
+      "gitSha": "4eb38af4ccf5cc6f0a6837e8b1312a43b69543cb"
+    },
+    {
+      "id": "arrival-foot-contact-volcano",
+      "kind": "runtime",
+      "path": "public/game/cinematics/batch-01-20261105/arrival-foot-contact-volcano.webp",
+      "bytes": 110744,
+      "sha256": "c8cf54979024853ad3e99a298454c714fdeb45153ab91498baf714fb5a4d85a1",
+      "gitSha": "e6d0afa3e0af1f2dc123329e0dd9b5efd58f2529"
+    },
+    {
+      "id": "arrival-foot-contact-swamp",
+      "kind": "source",
+      "path": "public/game/cinematics/batch-01-20261105/arrival-foot-contact-swamp.png",
+      "bytes": 216682,
+      "sha256": "3013ade89cda607865919c1d0476bdf708c084acab0c521f194c54b403aa5316",
+      "gitSha": "f47287b21645bf17ca5cb87927627f83a736af8d"
+    },
+    {
+      "id": "arrival-foot-contact-swamp",
+      "kind": "runtime",
+      "path": "public/game/cinematics/batch-01-20261105/arrival-foot-contact-swamp.webp",
+      "bytes": 122922,
+      "sha256": "3d2e3359f45317af435ec5cc33fdd0ad82d6975ca7daeadf29f030d88ec2b94d",
+      "gitSha": "918f4bdb72f046713b079689ae8a078e89ccfbfe"
+    },
+    {
+      "id": "arrival-foot-contact-desert",
+      "kind": "source",
+      "path": "public/game/cinematics/batch-01-20261105/arrival-foot-contact-desert.png",
+      "bytes": 297323,
+      "sha256": "b947f645037b4ba81c4750f7ae53f75fa326927fd4002bfe0cc401dbbd700bf4",
+      "gitSha": "602c6d24015641e46c76d43e80b4dc4e089cd3ee"
+    },
+    {
+      "id": "arrival-foot-contact-desert",
+      "kind": "runtime",
+      "path": "public/game/cinematics/batch-01-20261105/arrival-foot-contact-desert.webp",
+      "bytes": 178834,
+      "sha256": "b920ee41103ea3668a387a1aeb942f3a6c174a9693c674293b252a7863ed8bc7",
+      "gitSha": "cf3a18d31dddd7eccb1022d4350618161739efbb"
+    },
+    {
+      "id": "arrival-foot-contact-ocean",
+      "kind": "source",
+      "path": "public/game/cinematics/batch-01-20261105/arrival-foot-contact-ocean.png",
+      "bytes": 189360,
+      "sha256": "a129f51491e2969adbb89429e1309b506f2294ccf7c3040e5e49650c35dee010",
+      "gitSha": "2f84ed6f2bf2af815283022b3b3061639215da26"
+    },
+    {
+      "id": "arrival-foot-contact-ocean",
+      "kind": "runtime",
+      "path": "public/game/cinematics/batch-01-20261105/arrival-foot-contact-ocean.webp",
+      "bytes": 88992,
+      "sha256": "44a1807f36014260dd53349a9a9e12d90b973ade8a13f30cbf9e9ab055533d50",
+      "gitSha": "dfbc0739a08923cd878f2feb55efcb717acfb839"
+    },
+    {
+      "id": "arrival-foot-contact-fungal",
+      "kind": "source",
+      "path": "public/game/cinematics/batch-01-20261105/arrival-foot-contact-fungal.png",
+      "bytes": 272004,
+      "sha256": "358b4bbb4fe635d82f1d245c8887dbfc4edb61d410a9ea904257f0e299a524e1",
+      "gitSha": "6b04cf4705cdb32318a2695d357bd12b5c9ffc2b"
+    },
+    {
+      "id": "arrival-foot-contact-fungal",
+      "kind": "runtime",
+      "path": "public/game/cinematics/batch-01-20261105/arrival-foot-contact-fungal.webp",
+      "bytes": 161018,
+      "sha256": "2f05ff0361d6b1589e9fb4d11cd43f99263668c07642b7c10eda58a489b7461f",
+      "gitSha": "553c1af0db7167b5e373c19ae51d5e8ed0953dc9"
+    },
+    {
+      "id": "arrival-foot-contact-ruins",
+      "kind": "source",
+      "path": "public/game/cinematics/batch-01-20261105/arrival-foot-contact-ruins.png",
+      "bytes": 749961,
+      "sha256": "80bb79b096500b071927bd882db790c0c05e757fba3793d84fbff5788c9962d3",
+      "gitSha": "150a7b362c34a4a34b97e9f13daa942b481e74ee"
+    },
+    {
+      "id": "arrival-foot-contact-ruins",
+      "kind": "runtime",
+      "path": "public/game/cinematics/batch-01-20261105/arrival-foot-contact-ruins.webp",
+      "bytes": 337404,
+      "sha256": "27575f2313d989261cc6d3f5d1eedbd75dd22e895da78a12fdac1243ca0e22c7",
+      "gitSha": "235a9d9598020711265fe86d8b80d8e6ae2c95a1"
+    },
+    {
+      "id": "arrival-fragment-jungle-a",
+      "kind": "source",
+      "path": "public/game/cinematics/batch-01-20261105/arrival-fragment-jungle-a.png",
+      "bytes": 694355,
+      "sha256": "dd2cf20a16afb5ba2cb33029976f61eb372ec43ef4cae798d91fcc78744647e3",
+      "gitSha": "f3d7fde44aacc564f832343d97ae1faee41c01de"
+    },
+    {
+      "id": "arrival-fragment-jungle-a",
+      "kind": "runtime",
+      "path": "public/game/cinematics/batch-01-20261105/arrival-fragment-jungle-a.webp",
+      "bytes": 425746,
+      "sha256": "0cd848140ec6bdc86e5b8a28201adba4d0e8937b2efd9d026db6c80338c80db7",
+      "gitSha": "a4800c2e79e6ed48e7917a5e45b57aa142579a4e"
+    },
+    {
+      "id": "arrival-fragment-jungle-b",
+      "kind": "source",
+      "path": "public/game/cinematics/batch-01-20261105/arrival-fragment-jungle-b.png",
+      "bytes": 454798,
+      "sha256": "b5edfe4cbb12a5221736e5c9c59fa58e8196954f93d2fd490d060e1dae1f8a24",
+      "gitSha": "1ab8b3bc4d8247d3477cb49f46ba04b637205511"
+    },
+    {
+      "id": "arrival-fragment-jungle-b",
+      "kind": "runtime",
+      "path": "public/game/cinematics/batch-01-20261105/arrival-fragment-jungle-b.webp",
+      "bytes": 274846,
+      "sha256": "b7a2dc706954c0ba662dd91634f647690e319c322b1aaabbb12224b4b3274d4a",
+      "gitSha": "7b2eb566eb41b026d8834f45a13c72e756b94f92"
+    },
+    {
+      "id": "arrival-fragment-ice-a",
+      "kind": "source",
+      "path": "public/game/cinematics/batch-01-20261105/arrival-fragment-ice-a.png",
+      "bytes": 205765,
+      "sha256": "d127b6684b422550bd93b374ec6379efc94861f33d38e3dc4399efa5e8aa3625",
+      "gitSha": "fd3750b6aa08d70e61aef89b00b41d1116e711e6"
+    },
+    {
+      "id": "arrival-fragment-ice-a",
+      "kind": "runtime",
+      "path": "public/game/cinematics/batch-01-20261105/arrival-fragment-ice-a.webp",
+      "bytes": 99704,
+      "sha256": "1eb9edc30956139cc09e5b143bcda50320b64253cc0470cc2f5b2983ecd50484",
+      "gitSha": "7f8a8906c4ddc0118ff8551835f87f7012ec767b"
+    },
+    {
+      "id": "arrival-fragment-ice-b",
+      "kind": "source",
+      "path": "public/game/cinematics/batch-01-20261105/arrival-fragment-ice-b.png",
+      "bytes": 685387,
+      "sha256": "73de3fe35b2e4127bcb1d2994f18b81268959838ad42f596f572ad566de1bc9c",
+      "gitSha": "3c1bc2f2a6493b82dfbec11bc3bfe38afd6b2c74"
+    },
+    {
+      "id": "arrival-fragment-ice-b",
+      "kind": "runtime",
+      "path": "public/game/cinematics/batch-01-20261105/arrival-fragment-ice-b.webp",
+      "bytes": 402120,
+      "sha256": "e9f70b66685456f45d36ef2847ac49bc0f77b787eba83ee28f50707f9ec08c95",
+      "gitSha": "2c04a53d4fff7f9f9810acf313df4f279da9846a"
+    },
+    {
+      "id": "arrival-fragment-volcano-a",
+      "kind": "source",
+      "path": "public/game/cinematics/batch-01-20261105/arrival-fragment-volcano-a.png",
+      "bytes": 718566,
+      "sha256": "57af3461c69fe78952c3092263fe5e6ba7412795c98b51ecc55566eead8c8d83",
+      "gitSha": "7292180c509f12848a7e90a1239eba84a486faff"
+    },
+    {
+      "id": "arrival-fragment-volcano-a",
+      "kind": "runtime",
+      "path": "public/game/cinematics/batch-01-20261105/arrival-fragment-volcano-a.webp",
+      "bytes": 419134,
+      "sha256": "ee71ff576499e282d6033e72b3a2552ea36f7973f52d63aca42d294ae88b348d",
+      "gitSha": "f3a022e0423483505eaf08f70db91bedf8f53434"
+    },
+    {
+      "id": "arrival-fragment-volcano-b",
+      "kind": "source",
+      "path": "public/game/cinematics/batch-01-20261105/arrival-fragment-volcano-b.png",
+      "bytes": 897757,
+      "sha256": "426b383697fc1d6fb9a66a2b0f4a0bd9e0aaab5ad98ecfd97b6283175f6f784a",
+      "gitSha": "f816cf63b36e27c15c7bdc1c2ec22608a6c7c20c"
+    },
+    {
+      "id": "arrival-fragment-volcano-b",
+      "kind": "runtime",
+      "path": "public/game/cinematics/batch-01-20261105/arrival-fragment-volcano-b.webp",
+      "bytes": 573858,
+      "sha256": "b2f21758672aa738afa0ee31c0e75240cf2c6e806cc459da0f2f48684f42f0d8",
+      "gitSha": "477bf47d73b2cf53553f2d25135c3606dd3f2c6b"
+    },
+    {
+      "id": "arrival-fragment-swamp-a",
+      "kind": "source",
+      "path": "public/game/cinematics/batch-01-20261105/arrival-fragment-swamp-a.png",
+      "bytes": 718217,
+      "sha256": "c62cd3347e01ee0f711dc39eaaa839e8d326d7027c8be9d382809b8358bafbfc",
+      "gitSha": "7926683e4e910135bc156cef17f6e1f2995d55e5"
+    },
+    {
+      "id": "arrival-fragment-swamp-a",
+      "kind": "runtime",
+      "path": "public/game/cinematics/batch-01-20261105/arrival-fragment-swamp-a.webp",
+      "bytes": 455732,
+      "sha256": "2e0a0a634c3807e42ca7fa2a92593bd116a15caccb1880d010551498a7bbceb1",
+      "gitSha": "a46449e69df9d8c2f56f2ae21420d52f25c67033"
+    },
+    {
+      "id": "arrival-fragment-swamp-b",
+      "kind": "source",
+      "path": "public/game/cinematics/batch-01-20261105/arrival-fragment-swamp-b.png",
+      "bytes": 473955,
+      "sha256": "b4134687e4f8da239a9dc4200142054a75ff51b5f4fc3a22ece7622ba8280512",
+      "gitSha": "67ce26fea67dd3ae5b3549380dbdddd00f8e48c6"
+    },
+    {
+      "id": "arrival-fragment-swamp-b",
+      "kind": "runtime",
+      "path": "public/game/cinematics/batch-01-20261105/arrival-fragment-swamp-b.webp",
+      "bytes": 282826,
+      "sha256": "d226e7ac4bf0bdf292f27ae5cf24cc7b4bda147c8ffadabe4c137438ca730696",
+      "gitSha": "a6196222264d094fafa5a2184429f05e8b19f164"
+    },
+    {
+      "id": "arrival-fragment-desert-a",
+      "kind": "source",
+      "path": "public/game/cinematics/batch-01-20261105/arrival-fragment-desert-a.png",
+      "bytes": 819397,
+      "sha256": "6e251c04c92091e09268a8fe7741380045abd491d8fcc7f75cb6b69780c8d305",
+      "gitSha": "d0381b4a26368c85a7bd13eebb22b601c1312fbd"
+    },
+    {
+      "id": "arrival-fragment-desert-a",
+      "kind": "runtime",
+      "path": "public/game/cinematics/batch-01-20261105/arrival-fragment-desert-a.webp",
+      "bytes": 522298,
+      "sha256": "bbe11d957ec74a2a7b21b1c8133b6710cb0c4899fc46d4783df820366c08cf6c",
+      "gitSha": "fed7cf565483273c7c05c2178a823ed596878c11"
+    },
+    {
+      "id": "arrival-fragment-desert-b",
+      "kind": "source",
+      "path": "public/game/cinematics/batch-01-20261105/arrival-fragment-desert-b.png",
+      "bytes": 585596,
+      "sha256": "7f81fb4c7581cd70963b36f0164b48fcb03c9ccc45c1a838fc86bf1ad525d72e",
+      "gitSha": "3580360a74582b0e978bf16a20bc87c05bb0e9f3"
+    },
+    {
+      "id": "arrival-fragment-desert-b",
+      "kind": "runtime",
+      "path": "public/game/cinematics/batch-01-20261105/arrival-fragment-desert-b.webp",
+      "bytes": 352990,
+      "sha256": "3481a15345767bbbb8df9c7796c3a223576d2715884f5757e062b94990181e2a",
+      "gitSha": "ee63ac3fdd451e3dc87a3e9ec293d0812e28e636"
+    },
+    {
+      "id": "arrival-fragment-ocean-a",
+      "kind": "source",
+      "path": "public/game/cinematics/batch-01-20261105/arrival-fragment-ocean-a.png",
+      "bytes": 467281,
+      "sha256": "511a48011ab2891e19ef0e2e216ba5decd19f5355b6013d986c85a10b06e9382",
+      "gitSha": "4093f4aaaee4d044e0fcaeea4122daf5d9024922"
+    },
+    {
+      "id": "arrival-fragment-ocean-a",
+      "kind": "runtime",
+      "path": "public/game/cinematics/batch-01-20261105/arrival-fragment-ocean-a.webp",
+      "bytes": 292326,
+      "sha256": "4cb0a677833dc41ebb0bb773fdc3c538d0705a3de4bd4e8430370255f06a296e",
+      "gitSha": "1e3c3a59e161dd3ce6fa2f97e6361d58646abb37"
+    },
+    {
+      "id": "arrival-fragment-ocean-b",
+      "kind": "source",
+      "path": "public/game/cinematics/batch-01-20261105/arrival-fragment-ocean-b.png",
+      "bytes": 714928,
+      "sha256": "e1783e6d750cd7665af8a840fba6a3e4241b955cbd33f5038686ef8fd6fb5f68",
+      "gitSha": "4917e30d26137527c72a1ce24a02bfd8576154f3"
+    },
+    {
+      "id": "arrival-fragment-ocean-b",
+      "kind": "runtime",
+      "path": "public/game/cinematics/batch-01-20261105/arrival-fragment-ocean-b.webp",
+      "bytes": 367512,
+      "sha256": "d910403217a7d15e5d99a46ed92d61564869ecc9428ffe227c001175e5734018",
+      "gitSha": "24c349a91b099fe84152bdd0b0c6b6e6e6ed8959"
+    },
+    {
+      "id": "arrival-fragment-fungal-a",
+      "kind": "source",
+      "path": "public/game/cinematics/batch-01-20261105/arrival-fragment-fungal-a.png",
+      "bytes": 684736,
+      "sha256": "731d2ab962adef2b498de04629b9ef0e9e15aa43e7e408374c7c852f36be5235",
+      "gitSha": "f37bca0622f5a5d556f5d08d772bf0b9ad45c0dc"
+    },
+    {
+      "id": "arrival-fragment-fungal-a",
+      "kind": "runtime",
+      "path": "public/game/cinematics/batch-01-20261105/arrival-fragment-fungal-a.webp",
+      "bytes": 421468,
+      "sha256": "5daaf18abf9ab7159b33980edea29fe6913699e1c711f11c5bf262ddaba351c5",
+      "gitSha": "a97425fbbed62f8096021f461bc8de33fa21ae40"
+    },
+    {
+      "id": "arrival-fragment-fungal-b",
+      "kind": "source",
+      "path": "public/game/cinematics/batch-01-20261105/arrival-fragment-fungal-b.png",
+      "bytes": 634377,
+      "sha256": "d19903c98b2df38e4f507b57bd3c14be9013b499b18d0070beed4a5a92819dcd",
+      "gitSha": "4140b9881f1baa6af4074f64e1cf4adb29cacd89"
+    },
+    {
+      "id": "arrival-fragment-fungal-b",
+      "kind": "runtime",
+      "path": "public/game/cinematics/batch-01-20261105/arrival-fragment-fungal-b.webp",
+      "bytes": 382386,
+      "sha256": "434154ee27362eebfab397857325c2f90f279b1adb978c388d7edcea4b449eb5",
+      "gitSha": "8c3b46f10ed842a7599d03931683ec6920823089"
+    },
+    {
+      "id": "arrival-fragment-ruins-a",
+      "kind": "source",
+      "path": "public/game/cinematics/batch-01-20261105/arrival-fragment-ruins-a.png",
+      "bytes": 842030,
+      "sha256": "2f08e56aaaf4264de266a92c897b3f2e5a48d44c67fd85866217df8b36dc83ca",
+      "gitSha": "ef5b3f6a67268ffc090a5615baf2b5a4ed3b5626"
+    },
+    {
+      "id": "arrival-fragment-ruins-a",
+      "kind": "runtime",
+      "path": "public/game/cinematics/batch-01-20261105/arrival-fragment-ruins-a.webp",
+      "bytes": 506776,
+      "sha256": "2e13e72b8580cde17a742f5f6679629361c81c59482e4f62db3c50d01566d5c8",
+      "gitSha": "2ac50736528c0f796fd5f72ee5faa37d5c2726fd"
+    },
+    {
+      "id": "arrival-fragment-ruins-b",
+      "kind": "source",
+      "path": "public/game/cinematics/batch-01-20261105/arrival-fragment-ruins-b.png",
+      "bytes": 416119,
+      "sha256": "64a1056f1b23b590cb5bb62b8aee26f215cdaf64e3e0bcbc5979740683c702e1",
+      "gitSha": "b81fa835870365c4addae6854128aabf39543b14"
+    },
+    {
+      "id": "arrival-fragment-ruins-b",
+      "kind": "runtime",
+      "path": "public/game/cinematics/batch-01-20261105/arrival-fragment-ruins-b.webp",
+      "bytes": 235924,
+      "sha256": "a3c99b2f5d5142ee2b0d8b98fbf020d3828cdd356462eb4aa56495674df6b240",
+      "gitSha": "817cde460e16a1e5fd982a3600d5a8f1554d9366"
+    }
+  ],
+  "qualification": {
+    "sourceIntegrity": "passed",
+    "visiblePixelsAndAlpha": "11/11 dedicated VFX tests passed in the resumed workspace; final source changes still in progress",
+    "nativeBrowser": "not run locally; Chromium launch rejected by executor socket policy",
+    "artisticHumanApproval": false
+  }
+}

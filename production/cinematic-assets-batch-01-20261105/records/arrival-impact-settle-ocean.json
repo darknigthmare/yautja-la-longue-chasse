@@ -1,0 +1,46 @@
+{
+  "id": "arrival-impact-settle-ocean",
+  "family": "impact-settle",
+  "biome": "ocean",
+  "file": "public/game/cinematics/batch-01-20261105/arrival-impact-settle-ocean.png",
+  "generatedSource": "/workspace/scratch/62884fa4f584/generated_images/exec-21cf0fc3-9c17-4d28-8354-8a8346838016.png",
+  "prompt": "Use case: stylized-concept. One individual late water-fallout sprite arrival-impact-settle-ocean for Yautja The Long Hunt.\nAttached image is ONLY painted2.5D material finish and subtle lighting reference. Change material AND phase completely: water droplets in late descent, not an impact front.\nSubject: Water AFTER an impact splash: a sparse low wide shower of clear gray-blue droplets falling downward, short stretched drops with heavier rounded lower ends, tiny isolated broken pale foam flecks close to the contact line and only a whisper of mist. Long transparent gaps and an open middle. Asymmetric later-stage gravity-driven descent, not a rising crown, radial fan, wave or sheet of water. No ocean plane or blue glow.\nCreate a low shallow wide asynchronous scatter of small clear droplets falling DOWN. Some are round, some briefly elongated with heavier rounded lower ends and thin short tails ABOVE. A few tiny broken white foam beads fall closer to the implied contact line. Arrange unequal loose clusters with large transparent gaps and an open central third; tiny low mist only close to actual droplets. No coherent liquid sheet, no upward fan, no wings, crown, rising jet, wave, blue neon or glow.\nIntended contact origin full-frame x50%,y78%, implied not drawn. All drops confined to x20–80%,y52–81%; outer15% of every edge and every corner truly empty alpha0. One1536x1024 landscape RGBA PNG, TRUE TRANSPARENT BACKGROUND. Restrained clear gray-blue liquid, delicate small specular highlights only ON droplets, neutral upper-left light, semi-realistic painted game finish, readable at250px.\nNo light rectangle, studio light, haze backdrop, floor, water plane, puddle disc, horizon, environment, capsule, ship, people, animals, text, labels, grid, atlas, panels, sheet, frame, watermark, checkerboard, white/black backdrop, cropped particle. One genuinely different late-phase effect.",
+  "referenceImages": [
+    "/workspace/scratch/62884fa4f584/cinematic-assets-batch-01-20261105/public/game/cinematics/batch-01-20261105/arrival-impact-front-jungle.png"
+  ],
+  "generationMode": "builtin-imagegen-reference",
+  "intendedAnchor": {
+    "name": "ground-capsule-reference",
+    "normalized": [
+      0.5,
+      0.78
+    ],
+    "basis": "shared intended contact for late falling phase; source review only, integration pending"
+  },
+  "generated": true,
+  "integrated": false,
+  "testedInEngine": false,
+  "artisticHumanApproval": false,
+  "visualReview": {
+    "reviewer": "assistant",
+    "result": "pass-with-integration-pending",
+    "notes": "Small separated water droplets with short upward tails marking downward descent and sparse low foam flecks. No liquid front, ground plane or corner artifact. Fine source detail needs native-scale game review."
+  },
+  "qa": {
+    "mode": "RGBA",
+    "width": 1536,
+    "height": 1024,
+    "transparentPixelFraction": 0.9770787556966146,
+    "visiblePixelCountAlphaOver16": 7407,
+    "borderPixelCountAlphaOver16": 0,
+    "alphaOver16Bounds": [
+      327,
+      575,
+      1216,
+      874
+    ],
+    "passed": true
+  },
+  "sha256": "edf53ae4e417cda6fdc869b2db1fc4a3b162caa9c9613c8da003a54e21881336",
+  "bytes": 728812
+}

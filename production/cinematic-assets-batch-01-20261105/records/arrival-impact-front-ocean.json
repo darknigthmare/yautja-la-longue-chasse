@@ -1,0 +1,57 @@
+{
+  "id": "arrival-impact-front-ocean",
+  "family": "impact-front",
+  "biome": "ocean",
+  "file": "public/game/cinematics/batch-01-20261105/arrival-impact-front-ocean.png",
+  "generatedSource": "/workspace/scratch/62884fa4f584/generated_images/exec-ae1200ec-c30f-4ab9-b0c9-09249a483676.png",
+  "prompt": "Use case: stylized-concept. One isolated game VFX sprite, asset arrival-impact-front-ocean. Use attached jungle material sprite ONLY for painted2.5D art finish and low central-open silhouette. Generate water, never dust.\nCreate ONE low wide asymmetrical seawater splash with a shorter scalloped transparent liquid sheet on the left and a longer thin perforated liquid ribbon on the right. A few rounded droplets, tiny restrained white foam beads near the contact. Cool neutral clear gray water, physically shaped thin liquid edges, subtle small upper-left specular highlights ONLY ON WATER. Open central gap for a capsule behind; no capsule in the image.\nVERY IMPORTANT: the transparent canvas around the water is truly EMPTY alpha0, especially all four corners. No studio light rectangle, no light source, no bloom, no glow, no ambient haze, no background mist, no white or gray shape at any edge. Nothing except water and its tiny foam particles.\nNear-ground side view. Contact centered at full-frame x50%,y78%. Actual splash and every droplet strictly inside x22–78%,y40–82%; generous completely empty margins. Do not fill the canvas. Landscape1536x1024 RGBA PNG with real TRANSPARENT BACKGROUND.\nSemi-realistic hand-painted game material, not photoreal studio photography. No ground surface, water plane, puddle, backdrop, horizon, shadow disc, ship, people, text, lettering, grid, sprite sheet, frame, checkerboard, watermark or cropped particle.",
+  "referenceImages": [
+    "/workspace/scratch/62884fa4f584/cinematic-assets-batch-01-20261105/public/game/cinematics/batch-01-20261105/arrival-impact-front-jungle.png"
+  ],
+  "generationMode": "builtin-imagegen-reference",
+  "intendedAnchor": {
+    "name": "ground-capsule-reference",
+    "normalized": [
+      0.5,
+      0.78
+    ],
+    "basis": "requested full-frame contact; source contact calibration pending integration"
+  },
+  "generated": true,
+  "integrated": false,
+  "testedInEngine": false,
+  "artisticHumanApproval": false,
+  "visualReview": {
+    "reviewer": "assistant",
+    "result": "pass-with-integration-pending",
+    "notes": "Clear thin water sheet at left and perforated ribbon at right, discrete droplets and pale foam, open center. Regeneration removed the previous white corner artifact; no editing."
+  },
+  "rejectedCandidates": [
+    {
+      "generatedSource": "/workspace/scratch/62884fa4f584/generated_images/exec-259b6682-6191-42cb-b486-cd9ba5e3c2cf.png",
+      "prompt": "Use case: stylized-concept. ONE independent production cinematic VFX sprite for Yautja The Long Hunt. Asset ID arrival-impact-front-ocean.\nImage1 provides only realistic painted2.5D finish, neutral upper-left lighting and open-center family silhouette; image2 only rendering context. Produce a distinct water-specific morphology, not a recolored dust plume or a scene.\nSubject: One low, wide shallow seawater impact splash: thin irregular clear gray-blue water sheets radiate sideways, tear into arcs and droplets, with restrained broken off-white foam at the low base. The left lobe is a short scalloped sheet and the right an elongated perforated ribbon of water. The middle stays open for compositing. Real transparent liquid refraction, detailed bead edges, no huge wave, ocean surface, electric blue light or magical glow.\nNear-ground side view with slight view onto the shallow splash. Full-canvas ground-contact origin at x50%,y78%. Central opening remains mostly transparent. All water, spray and mist confined to x20–80%,y35–82%; entire outer15% border on each side genuinely empty. Keep the splash smaller in its frame than reference1 and make the lateral liquid sheets delicate rather than huge.\nOne1536x1024 landscape RGBA PNG, TRUE TRANSPARENT BACKGROUND, actual translucent water alpha, subtle gray-blue watery edges and subdued off-white foam. Readable at250px, realistic painted texture with no thick outline. No bright luminous blue.\nNo ocean plane, floor, puddle disc, landscape, horizon, backdrop, capsule, ship, people, animals, lettering, symbols, panels, sheet, grid, watermark, border, checkerboard or cropped droplets. One cohesive low splash only.",
+      "referenceImages": [
+        "/workspace/scratch/62884fa4f584/cinematic-assets-batch-01-20261105/public/game/cinematics/batch-01-20261105/arrival-impact-front-jungle.png",
+        "/workspace/scratch/62884fa4f584/qa-recovery/spatial-a7f830c/desktop-landing-impact.png"
+      ],
+      "reason": "White upper-left corner artifact; 121 border pixels with alpha>16. Rejected, not copied as delivery."
+    }
+  ],
+  "qa": {
+    "mode": "RGBA",
+    "width": 1536,
+    "height": 1024,
+    "transparentPixelFraction": 0.6798750559488932,
+    "visiblePixelCountAlphaOver16": 74697,
+    "borderPixelCountAlphaOver16": 0,
+    "alphaOver16Bounds": [
+      233,
+      507,
+      1311,
+      837
+    ],
+    "passed": true
+  },
+  "sha256": "b69c7a6b4d02fb0c7900f679e41f38aac3f1e41dbd454b1e7d25831b362d6dc9",
+  "bytes": 1056800
+}

@@ -8,6 +8,8 @@ import { backgroundPathForBiome } from '../worldScreens';
 import { worldBlueprintFor } from './worldBlueprints';
 import { wolfCastleRuntimeAsset } from './wolfCastleRuntimeArt';
 import { ARRIVAL_COMPLETION_ART, arrivalImpactArtForBiome } from './planetArrivalArt';
+import { arrivalVfxSourcesForBiome } from './planetArrivalVfxArt';
+import { ARRIVAL_POD_ART } from './planetArrivalPodArt';
 import { normalizePlanetInsertionPlan, shipSupportsSurfaceInsertion, type PlanetInsertionPlan } from './planetInsertion';
 
 /** The montage has no gameplay clock, resource cost or reward of its own. */
@@ -232,6 +234,7 @@ export const PLANET_ARRIVAL_ART = {
 const PLANET_ARRIVAL_RUNTIME_ART = {
   ...Object.fromEntries(Object.entries(PLANET_ARRIVAL_ART).map(([key, source]) => [key, wolfCastleRuntimeAsset(source)])) as Record<keyof typeof PLANET_ARRIVAL_ART, string>,
   ...ARRIVAL_COMPLETION_ART,
+  ...ARRIVAL_POD_ART,
 };
 
 export function planetArrivalAssets(state: PlanetArrivalState) {
@@ -239,6 +242,7 @@ export function planetArrivalAssets(state: PlanetArrivalState) {
   if (!destination || destination.body.id !== state.destinationId) return null;
   return {
     ...PLANET_ARRIVAL_RUNTIME_ART,
+    ...arrivalVfxSourcesForBiome(state.biomeId),
     impactDust: arrivalImpactArtForBiome(state.biomeId).path,
     carrier: shipProfileAssetPath(state.personalShipId),
     planet: galaxyBodyVisualPath(destination.body),

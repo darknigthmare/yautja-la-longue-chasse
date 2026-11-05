@@ -30,6 +30,15 @@
 .planetImage { width: 100%; height: 100%; border-radius: 50%; object-fit: contain; filter: brightness(.82) saturate(.9); }
 .carrier { position: absolute; transform-origin: 50% 50%; z-index: 4; pointer-events: none; }
 .carrierArt { position: relative; width: 100%; height: 100%; }
+.shipViewStack { position: relative; width: 100%; height: 100%; isolation: isolate; }
+/* A short alpha-weighted dissolve between adjacent authored views keeps the
+   overlapping hull opaque. Refraction stays outside this isolated paint group
+   so it continues to sample the actual scene behind the spacecraft. */
+.shipViewPaint { position: absolute; inset: 0; width: 100%; height: 100%; mix-blend-mode: plus-lighter; pointer-events: none; }
+.shipViewPaint > .litSprite { z-index: 1; }
+.shipEngineCore, .shipEnginePlume { position: absolute; width: 0; height: 0; transform-origin: 0 0; pointer-events: none; mix-blend-mode: screen; }
+.shipEnginePlume { z-index: 0; }
+.shipEngineCore { z-index: 2; }
 /* The field samples the scene behind the real alpha silhouette. Only its paint
    changes: the hull box, source orientation and every socket keep their geometry. */
 .shipOptics { position: relative; width: 100%; height: 100%; }
@@ -43,6 +52,12 @@
 .orbitalLight { position: absolute; inset: 0; z-index: 1; background: radial-gradient(ellipse at 2% 0%, #adc9ed18, transparent 55%); pointer-events: none; }
 .flyingPod { position: absolute; transform-origin: center; pointer-events: none; }
 .podFlightImage { position: relative; display: block; width: 100%; height: 100%; z-index: 2; pointer-events: none; user-select: none; }
+.podFlightCore, .podFlightPanel { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+/* A complementary core clip removes the source's permanently open petals.
+   Each rigid panel keeps its own hinge; saved time supplies every transform. */
+.podFlightCore { z-index: 1; }
+.podFlightPanel { z-index: 2; }
+.podBowShock { position: absolute; z-index: 4; width: 0; height: 0; transform-origin: 0 0; mix-blend-mode: screen; pointer-events: none; }
 .effectSocket { position: absolute; width: 0; height: 0; z-index: 1; }
 .effectRotation { position: absolute; width: 0; height: 0; transform-origin: 0 0; }
 .effectSprite { position: absolute; }
@@ -79,6 +94,9 @@
 .vaporThin { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
 .debrisSocket { position: absolute; width: 0; height: 0; z-index: 9; pointer-events: none; }
 .debrisSprite { position: absolute; }
+.materialSocket { position: absolute; width: 0; height: 0; transform-origin: 0 0; pointer-events: none; }
+.materialSprite { position: absolute; pointer-events: none; }
+.podGlow { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 3; pointer-events: none; mix-blend-mode: screen; }
 .hunter { position: absolute; z-index: 7; pointer-events: none; }
 .memberLabel { position: absolute; left: 50%; top: 100%; transform: translateX(-50%); white-space: nowrap; font-size: 10px; letter-spacing: .03em; text-shadow: 0 1px 3px #000; }
 .clipDefinitions { position: absolute; width: 0; height: 0; pointer-events: none; }

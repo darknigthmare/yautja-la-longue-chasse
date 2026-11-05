@@ -1,0 +1,47 @@
+{
+  "id": "arrival-impact-front-ice",
+  "family": "impact-front",
+  "biome": "ice",
+  "file": "public/game/cinematics/batch-01-20261105/arrival-impact-front-ice.png",
+  "generatedSource": "/workspace/scratch/62884fa4f584/generated_images/exec-97a1df88-a3a0-4f4e-a223-f2bb26eeb5c4.png",
+  "prompt": "Use case: stylized-concept. Production 2D cinematic VFX sprite for Yautja The Long Hunt.\nAsset ID: arrival-impact-front-ice.\nInput image 1 is a family STYLE and composition reference only: retain its semi-realistic painted material finish, subdued illumination, low wide silhouette and central clearance, but create a distinct physically shaped ice effect. Input image 2 is game rendering context only; never copy the scene, capsule, characters, interface or ground.\nCreate ONE isolated low wide asymmetric ice-powder impact front: an outward fan of cold white crushed frost mixed with tiny angular pale-blue ice chips, heavier faceted grains near the base and fine feathery powder breaking into thin lateral fingers. Shape the left wing as two low scalloped powder lobes and the right as a flatter long granular spray, with an open central valley so a capsule can be composited behind it. Distinct ice fracture texture, not brown dust recolored blue; no big rocks, icicles, magical glow, fire or explosion.\nNear-ground side view with a small view onto the fan. Intended ground contact origin x=50%, y=78% of full canvas. Keep all visible material within x=15–85%, y=25–84%; at least 12–15% genuinely empty transparent padding on every side. Powder fades naturally into transparent alpha without any rectangular haze. Do not draw a ground surface or shadow disc.\nOne landscape RGBA PNG, ideally 1536x1024, TRUE TRANSPARENT BACKGROUND. Hand-painted realistic 2.5D material, readable at 250px wide, restrained cold white/steel-blue palette, subtle neutral upper-left highlights, no thick outlines.\nNo lettering, labels, frame, watermark, grid, sheet, panels, other assets, capsule, ship, character, background, horizon, black/white backdrop or baked checkerboard. One complete independent plume, with no cropped particles.",
+  "referenceImages": [
+    "/workspace/scratch/62884fa4f584/cinematic-assets-batch-01-20261105/public/game/cinematics/batch-01-20261105/arrival-impact-front-jungle.png",
+    "/workspace/scratch/62884fa4f584/qa-recovery/spatial-a7f830c/desktop-landing-impact.png"
+  ],
+  "generationMode": "builtin-imagegen-reference",
+  "intendedAnchor": {
+    "name": "ground-capsule-reference",
+    "normalized": [
+      0.5,
+      0.78
+    ],
+    "basis": "requested full-frame contact; visually reviewed at source scale, integration pending"
+  },
+  "generated": true,
+  "integrated": false,
+  "testedInEngine": false,
+  "artisticHumanApproval": false,
+  "visualReview": {
+    "reviewer": "assistant",
+    "result": "pass-with-integration-pending",
+    "notes": "Asymmetric powder lobes, angular translucent chips and clear central valley; no scene, text or cropped particles. Family lighting retained. Ground origin remains an intended compositing socket."
+  },
+  "qa": {
+    "mode": "RGBA",
+    "width": 1536,
+    "height": 1024,
+    "transparentPixelFraction": 0.7937539418538412,
+    "visiblePixelCountAlphaOver16": 172175,
+    "borderPixelCountAlphaOver16": 0,
+    "alphaOver16Bounds": [
+      145,
+      410,
+      1399,
+      811
+    ],
+    "passed": true
+  },
+  "sha256": "3e2aa0202f46947a160de26f93824b96905a2d40d204809591dd5a0977778c78",
+  "bytes": 1384850
+}

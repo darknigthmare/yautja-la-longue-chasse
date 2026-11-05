@@ -1,0 +1,101 @@
+{
+  "id": "arrival-fragment-ice-b",
+  "family": "fragment",
+  "biome": "ice",
+  "file": "public/game/cinematics/batch-01-20261105/arrival-fragment-ice-b.png",
+  "generatedSource": "/workspace/scratch/62884fa4f584/generated_images/exec-d7e9dd60-2aff-49b3-9a9f-44ed250a0710.png",
+  "prompt": "Use case: stylized-concept. Asset ID: arrival-fragment-ice-b.\nGenerate ONE small isolated COMPACT FROST AGGREGATE as a transparent game sprite. One connected knobby object, NOT an environmental scene, ice slab or smoke effect.\nReference image 1 supplies cutout presentation, central placement, scale and realistic painted 2.5D style ONLY. Make a NEW irregular compact shape with rounded connected crystalline lobes, not a recolor of the layered earth clod. Reference image 2 and image 3 supply the game's style only; no cloud, backdrop, ground, UI or scene copied.\nSubject: a compact asymmetrical hoarfrost chunk with a granular crust and several fused frost lobes, hard crystalline grains and short rime ridges. Mostly opaque pale neutral grey-white, gently darker grey facets for legibility. Rounded knobby overall silhouette, distinctly different from a long clear ice blade. All crystals are connected into the one object, no loose pieces.\nFRAMING: one square 1024x1024 RGBA PNG. Put the entire chunk inside the CENTRAL box x=24%..76%, y=24%..76%. Longest size about 50% of the canvas. Centre its mass at x=.50 y=.50. At least 20% completely EMPTY transparent margin on every side.\nTRUE TRANSPARENT BACKGROUND. Everything outside the compact chunk must be alpha=0. Do not paint any white background, white halo, glow, fog, mist, bloom, illumination gradient, vignette, atmospheric haze, ground or cast shadow. Lighting is restricted to the small object's own surface.\nA bold single-object silhouette readable at 12–24 px. No long blade, soil, roots, leaves, decorative sparkles, extra object, surrounding particles, pile, landscape, text, grid, frame, panel, atlas, sprite sheet, checkerboard or watermark.",
+  "referenceImages": [
+    "/workspace/scratch/62884fa4f584/cinematic-assets-batch-01-20261105/public/game/cinematics/batch-01-20261105/arrival-fragment-jungle-a.png",
+    "/workspace/scratch/62884fa4f584/cinematic-assets-batch-01-20261105/public/game/cinematics/batch-01-20261105/arrival-impact-front-jungle.png",
+    "/workspace/scratch/62884fa4f584/qa-recovery/spatial-a7f830c/desktop-landing-impact.png"
+  ],
+  "generationMode": "builtin-imagegen-reference",
+  "intendedAnchor": {
+    "name": "fragment-center",
+    "normalized": [
+      0.5,
+      0.5
+    ],
+    "basis": "requested composition anchor; runtime registration remains pending"
+  },
+  "generated": true,
+  "integrated": false,
+  "testedInEngine": false,
+  "artisticHumanApproval": false,
+  "technicalQA": {
+    "format": "PNG",
+    "mode": "RGBA",
+    "width": 1254,
+    "height": 1254,
+    "bytes": 685387,
+    "sha256": "73de3fe35b2e4127bcb1d2994f18b81268959838ad42f596f572ad566de1bc9c",
+    "gitBlobSha": "3c1bc2f2a6493b82dfbec11bc3bfe38afd6b2c74",
+    "visiblePixelsAbove16": 249923,
+    "fullyTransparentPixels": 1309136,
+    "transparentFraction": 0.8325104482243741,
+    "boundsAbove16": [
+      315,
+      322,
+      939,
+      917
+    ],
+    "edgePixelsAbove16": 0,
+    "highSaturationDiagnostic": {
+      "visible": 0,
+      "opaque": 0,
+      "lowAlpha": 238
+    },
+    "paddingPixels": [
+      315,
+      322,
+      315,
+      337
+    ],
+    "framingPassed": true,
+    "passed": true
+  },
+  "visualReview": {
+    "status": "pending"
+  },
+  "generatedAt": "2026-11-05T13:28:41.136910+00:00",
+  "variant": "b",
+  "rejectedAttempts": [
+    {
+      "id": "arrival-fragment-ice-b",
+      "attempt": 1,
+      "generatedSource": "/workspace/scratch/62884fa4f584/generated_images/exec-0fbe6c7f-9a33-4ddc-8113-9dd93dc315de.png",
+      "prompt": "Use case: stylized-concept.\nAsset type: ONE individual airborne debris fragment sprite for the Yautja The Long Hunt cinematic.\nAsset ID: arrival-fragment-ice-b.\nInput image 1 is a material/rendering reference only (the approved jungle impact pilot); image 2 is the actual game cinematic and supplies the realistic painted 2.5D style. Do not reproduce the cloud, scene, capsule or interface.\nSubject: ONE compact connected aggregate of dense hoarfrost, a single knobby crystalline chunk with an irregular rounded overall silhouette and rough granular frosted surface. Mostly opaque pale grey-white with restrained icy shadows, very different from a clear blade-shaped shard. All sub-crystals are fused into the same chunk, not a pile of separate pieces.\nCamera: isolated three-quarter view, with the complete fragment visible, floating without a shadow or support. One connected object only. Centre its visual mass at normalized x=0.50, y=0.50. Occupy roughly 55 to 65 percent of the square in the longest direction; retain at least 15 percent completely empty transparent padding on every side, including any thin fibers. A clear silhouette and a few strong material facets should read at only 12 to 24 pixels in game. No excessive tiny ornamental detail.\nStyle: realistic hand-painted 2.5D game object, neutral upper-left illumination, restrained colors and highlights, compatible with the reference game art. Physically distinct geometry and material, not a recolor of another asset.\nOutput: ONE 1024x1024 square RGBA PNG with TRUE TRANSPARENT BACKGROUND. Correct soft partial alpha on translucent material where needed, no visible pixels on any image edge.\nExclude: another fragment, multiple examples, pile, surrounding particles, dust plume, glow, magic, fire, stand, platform, soil plane, cast shadow, background, scenery, horizon, capsule, ship, people, hands, feet, labels, text, frame, grid, atlas, sprite sheet, baked checkerboard, black or white backdrop, watermark.",
+      "referenceImages": [
+        "/workspace/scratch/62884fa4f584/cinematic-assets-batch-01-20261105/public/game/cinematics/batch-01-20261105/arrival-impact-front-jungle.png",
+        "/workspace/scratch/62884fa4f584/qa-recovery/spatial-a7f830c/desktop-landing-impact.png"
+      ],
+      "reason": "Rejected: broad opaque/light haze around the fragment reaches the left and right borders.",
+      "technicalQA": {
+        "format": "PNG",
+        "mode": "RGBA",
+        "width": 1254,
+        "height": 1254,
+        "bytes": 1577883,
+        "sha256": "c10b82f9bc0192a73b97ac5a0863ad74a777065d4301aacf982805b98a92bf70",
+        "gitBlobSha": "075b3fabeb573d7cbfa30f6f59279c7683acd835",
+        "visiblePixelsAbove16": 574986,
+        "fullyTransparentPixels": 170678,
+        "transparentFraction": 0.10853816431756497,
+        "boundsAbove16": [
+          0,
+          155,
+          1254,
+          1006
+        ],
+        "edgePixelsAbove16": 166,
+        "highSaturationDiagnostic": {
+          "visible": 0,
+          "opaque": 0,
+          "lowAlpha": 190
+        },
+        "passed": false
+      }
+    }
+  ]
+}

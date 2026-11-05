@@ -1,0 +1,46 @@
+{
+  "id": "arrival-impact-settle-swamp",
+  "family": "impact-settle",
+  "biome": "swamp",
+  "file": "public/game/cinematics/batch-01-20261105/arrival-impact-settle-swamp.png",
+  "generatedSource": "/workspace/scratch/62884fa4f584/generated_images/exec-ae383224-09c2-4183-8c36-66bcfec96036.png",
+  "prompt": "Use case: stylized-concept. ONE individual late falling material VFX sprite arrival-impact-settle-swamp for Yautja The Long Hunt.\nAttached jungle front is art-finish/lighting reference only. Generate a later FALLING aftermath of wet mud with completely different sparse morphology. Never repeat its rising wings.\nSubject: Heavy swamp mud AFTER the initial impact: individual rounded dark olive-brown droplets, short viscous downward streaks with rounded heavier lower ends, a few disconnected torn mud flecks descending toward the contact line. Low sparse irregular distribution and open center, tiny soft moisture mist only close to the base. NO outward radial splash, rising plume, dense soil cloud, plants or neon.\nOne low wide asymmetric distribution of separated heavy muddy beads, short viscous descending drips and small irregular splats in midair. The rounded heavier ends point DOWN and thin short tails extend above them. More transparent space than matter, clear middle, less than a quarter of the reference front's visual mass. Very slight low damp mist, no opaque cloud, no rising fountain.\nIntended contact full-frame x50%,y78%, no visible baseline. All material inside x20–80%,y53–81%; outer15% margins fully empty alpha0 including corners. Near-ground side view, subtle upper-left wet highlights, muddy olive-brown subdued values, realistic hand-painted2.5D game finish.\nOne1536x1024 landscape RGBA PNG with TRUE TRANSPARENT BACKGROUND. No floor, puddle, ground plane, shadow disc, plants, horizon, scene, capsule, ship, people, creature, glowing toxic matter, magic, text, lettering, panels, sheet, grid, frame, watermark, checkerboard, white/black backdrop or cropped droplets.",
+  "referenceImages": [
+    "/workspace/scratch/62884fa4f584/cinematic-assets-batch-01-20261105/public/game/cinematics/batch-01-20261105/arrival-impact-front-jungle.png"
+  ],
+  "generationMode": "builtin-imagegen-reference",
+  "intendedAnchor": {
+    "name": "ground-capsule-reference",
+    "normalized": [
+      0.5,
+      0.78
+    ],
+    "basis": "shared intended contact for late falling phase; source review only, integration pending"
+  },
+  "generated": true,
+  "integrated": false,
+  "testedInEngine": false,
+  "artisticHumanApproval": false,
+  "visualReview": {
+    "reviewer": "assistant",
+    "result": "pass-with-integration-pending",
+    "notes": "Heavy rounded mud beads with thin tails above, sparse disconnected low splats, subdued wet highlights. Clearly later than the initial coherent mud sheets; middle remains open."
+  },
+  "qa": {
+    "mode": "RGBA",
+    "width": 1536,
+    "height": 1024,
+    "transparentPixelFraction": 0.9475262959798177,
+    "visiblePixelCountAlphaOver16": 30397,
+    "borderPixelCountAlphaOver16": 0,
+    "alphaOver16Bounds": [
+      221,
+      537,
+      1238,
+      821
+    ],
+    "passed": true
+  },
+  "sha256": "a81150e91632a3aea5b248327f76c7a7df458720c422fdfe5edf3b9949605697",
+  "bytes": 894511
+}

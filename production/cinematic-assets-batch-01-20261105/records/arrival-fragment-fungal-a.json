@@ -1,0 +1,42 @@
+{
+  "id": "arrival-fragment-fungal-a",
+  "family": "fragment",
+  "biome": "fungal",
+  "variant": "a",
+  "file": "public/game/cinematics/batch-01-20261105/arrival-fragment-fungal-a.png",
+  "generatedSource": "/workspace/scratch/62884fa4f584/generated_images/exec-452c9acd-44ac-4f18-9a4a-b6058762bde7.png",
+  "prompt": "Use case: stylized-concept. Production 2D particle sprite for Yautja The Long Hunt cinematic landing, asset arrival-fragment-fungal-a.\nCreate exactly ONE isolated fragment: one small torn chunk of dark organic forest soil laced with a few cream-coloured mycelium fibres, compact irregular mass, crumbly surface and visible dry fibrous cross-section, no glow, no creature.\nUse the provided game screenshot only as a reference for restrained realistic painted 2.5D material detail. Do not copy its scenery, capsule, characters, interface or dust effect.\nCamera: three-quarter view with visible volume, neutral soft light from upper left, no cast shadow, no ground or support surface. Full fragment centred around x50%,y50%, occupying roughly45–60% of the canvas width and height. Keep minimum18% fully transparent empty padding on every edge, entire object visible. A compact expressive asymmetrical silhouette should remain recognizable at16–32px. High quality hand-painted natural material, controlled detail without heavy outline, no plastic toy gloss except real water or wet surfaces.\nOutput: exactly one square RGBA PNG, ideally1024x1024, TRUE transparent background, natural anti-aliased and where appropriate semi-transparent edges. No contact sheet, grid, multiple views, animation strip, collection, text, labels, watermark, checkerboard, shadow, floor, black or white backdrop. No additional flecks detached from the main fragment. Preserve the requested distinct natural material.",
+  "referenceImages": [
+    "/workspace/scratch/62884fa4f584/qa-recovery/spatial-a7f830c/desktop-landing-impact.png"
+  ],
+  "generationMode": "builtin-imagegen-reference",
+  "intendedAnchor": {
+    "name": "debrisSocket",
+    "normalized": [
+      0.5,
+      0.5
+    ],
+    "basis": "full-canvas centre; final visible-mass pivot reviewed during integration"
+  },
+  "generated": true,
+  "integrated": false,
+  "testedInEngine": false,
+  "artisticHumanApproval": false,
+  "rasterQA": {
+    "width": 1254,
+    "height": 1254,
+    "mode": "RGBA",
+    "sha256": "731d2ab962adef2b498de04629b9ef0e9e15aa43e7e408374c7c852f36be5235",
+    "bytes": 684736,
+    "transparentRatio": 0.8278147885299736,
+    "visiblePixels": 257098,
+    "boundsAlphaGt16": [
+      244,
+      354,
+      1035,
+      931
+    ],
+    "borderPass": true,
+    "pass": true
+  }
+}

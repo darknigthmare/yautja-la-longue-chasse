@@ -1,0 +1,28 @@
+[
+  {
+    "id": "classic-engine-core",
+    "source": "/workspace/scratch/0c1fa1359efb/generated_images/exec-9d7cee4b-6596-41bb-9a30-12f154200fdb.png",
+    "sourcePath": "production/ship-motion-20261105/art/sources/classic-engine-core.png",
+    "runtimePath": "public/game/planet-arrival/ship-motion-v1/classic-engine-core.webp",
+    "prompt": "Use case: stylized-concept. Asset type: one individual transparent raster VFX sprite for the existing classic spacecraft in Yautja The Long Hunt. Input image is a REFERENCE ONLY for the amber emitter material, not an object to include. Generate ONLY the compact luminous engine core: a softly glowing amber-white oval emitter, with a restrained orange-gold edge and very short diffuse corona. No metal, no ship, no background, no lettering, no lens flare rays, no smoke, no sparks, no circular mechanical ring. This will be composited on top of the compact aft nozzle visible on the right of the reference, then anchored and rotated in code. The oval is vertically oriented, about 40% as wide as tall, centered exactly in a square transparent canvas, with at least 25% genuinely clear alpha padding around the light. Warm-white center, pale amber middle, soft orange perimeter; light pixels become transparent smoothly. Cinematic high detail, subtle optical energy, no huge explosion. True RGBA transparent background, individual effect only, do not bake a checkerboard. Keep color compatible with the reference's small amber lamps.",
+    "referenceImages": [
+      "public/game/planet-arrival/ship-motion-v1/classic-rear-quarter.webp"
+    ],
+    "transparentBackground": true,
+    "mode": "built-in image_gen",
+    "role": "authored engine effect; not a claim of canonical propulsion physics"
+  },
+  {
+    "id": "classic-engine-plume",
+    "source": "/workspace/scratch/0c1fa1359efb/generated_images/exec-09d28512-f5d2-4d84-ae89-e82268ba726b.png",
+    "sourcePath": "production/ship-motion-20261105/art/sources/classic-engine-plume.png",
+    "runtimePath": "public/game/planet-arrival/ship-motion-v1/classic-engine-plume.webp",
+    "prompt": "Use case: stylized-concept. Asset type: one individual transparent raster engine VFX for Yautja The Long Hunt. Input image is a REFERENCE ONLY for warm amber/gold engine emission, not an object to include. Generate only ONE short controlled spacecraft thruster plume, from a narrow bright origin at the LEFT toward a tapered transparent tail on the RIGHT. Horizontal straight center axis. Thin luminous amber-white core fading into pale amber layered ion-like wisps, very restrained orange fringe, subtle internal striations. Vacuum propulsion effect: no thick smoke, no explosion, no debris, no circular fireball. Do not include metal/nozzle/ship or scenery. Use wide landscape transparent canvas, centered vertically. Start visible emitter at approximately x20% y50% of canvas, finish soft tapered tail by x84%, keep 12% or greater clear alpha padding top/bottom and at both ends. Brightest point at LEFT origin; all energy stretches RIGHT. Rounded emitter root, tail gradually disappears into genuine alpha, no hard rectangle, no baked black or checkerboard. Neutral cinematic rendered asset compatible with the attached reference's amber lamp color. One independent reusable effect only, no labels or graphic framing.",
+    "referenceImages": [
+      "public/game/planet-arrival/ship-motion-v1/classic-rear-quarter.webp"
+    ],
+    "transparentBackground": true,
+    "mode": "built-in image_gen",
+    "role": "authored engine effect; not a claim of canonical propulsion physics"
+  }
+]

@@ -1,0 +1,55 @@
+{
+  "id": "arrival-fragment-jungle-b",
+  "family": "fragment",
+  "biome": "jungle",
+  "file": "public/game/cinematics/batch-01-20261105/arrival-fragment-jungle-b.png",
+  "generatedSource": "/workspace/scratch/62884fa4f584/generated_images/exec-d2c8bea2-dda0-42f3-872f-41c3744030a6.png",
+  "prompt": "Use case: stylized-concept.\nAsset type: ONE individual airborne debris fragment sprite for the Yautja The Long Hunt cinematic.\nAsset ID: arrival-fragment-jungle-b.\nInput image 1 is a material/rendering reference only (the approved jungle impact pilot); image 2 is the actual game cinematic and supplies the realistic painted 2.5D style. Do not reproduce the cloud, scene, capsule or interface.\nSubject: ONE irregular curved flake of wet tree bark, with a layered fibrous broken edge and a dark warm-brown face. Broad tapered silhouette, a subtle bend and moist muted highlights. It must read as one bark chip, distinctly different from an earthy clod; no attached branch, leaf or root.\nCamera: isolated three-quarter view, with the complete fragment visible, floating without a shadow or support. One connected object only. Centre its visual mass at normalized x=0.50, y=0.50. Occupy roughly 55 to 65 percent of the square in the longest direction; retain at least 15 percent completely empty transparent padding on every side, including any thin fibers. A clear silhouette and a few strong material facets should read at only 12 to 24 pixels in game. No excessive tiny ornamental detail.\nStyle: realistic hand-painted 2.5D game object, neutral upper-left illumination, restrained colors and highlights, compatible with the reference game art. Physically distinct geometry and material, not a recolor of another asset.\nOutput: ONE 1024x1024 square RGBA PNG with TRUE TRANSPARENT BACKGROUND. Correct soft partial alpha on translucent material where needed, no visible pixels on any image edge.\nExclude: another fragment, multiple examples, pile, surrounding particles, dust plume, glow, magic, fire, stand, platform, soil plane, cast shadow, background, scenery, horizon, capsule, ship, people, hands, feet, labels, text, frame, grid, atlas, sprite sheet, baked checkerboard, black or white backdrop, watermark.",
+  "referenceImages": [
+    "/workspace/scratch/62884fa4f584/cinematic-assets-batch-01-20261105/public/game/cinematics/batch-01-20261105/arrival-impact-front-jungle.png",
+    "/workspace/scratch/62884fa4f584/qa-recovery/spatial-a7f830c/desktop-landing-impact.png"
+  ],
+  "generationMode": "builtin-imagegen-reference",
+  "intendedAnchor": {
+    "name": "fragment-center",
+    "normalized": [
+      0.5,
+      0.5
+    ],
+    "basis": "requested composition anchor; runtime registration remains pending"
+  },
+  "generated": true,
+  "integrated": false,
+  "testedInEngine": false,
+  "artisticHumanApproval": false,
+  "technicalQA": {
+    "format": "PNG",
+    "mode": "RGBA",
+    "width": 1254,
+    "height": 1254,
+    "bytes": 454798,
+    "sha256": "b5edfe4cbb12a5221736e5c9c59fa58e8196954f93d2fd490d060e1dae1f8a24",
+    "gitBlobSha": "1ab8b3bc4d8247d3477cb49f46ba04b637205511",
+    "visiblePixelsAbove16": 164613,
+    "fullyTransparentPixels": 1398525,
+    "transparentFraction": 0.8893550208710118,
+    "boundsAbove16": [
+      188,
+      322,
+      1031,
+      904
+    ],
+    "edgePixelsAbove16": 0,
+    "highSaturationDiagnostic": {
+      "visible": 2,
+      "opaque": 2,
+      "lowAlpha": 758
+    },
+    "passed": true
+  },
+  "visualReview": {
+    "status": "pending"
+  },
+  "generatedAt": "2026-11-05T13:23:34.602789+00:00",
+  "variant": "b"
+}

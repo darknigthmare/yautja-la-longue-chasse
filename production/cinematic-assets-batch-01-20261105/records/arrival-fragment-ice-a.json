@@ -1,0 +1,106 @@
+{
+  "id": "arrival-fragment-ice-a",
+  "family": "fragment",
+  "biome": "ice",
+  "file": "public/game/cinematics/batch-01-20261105/arrival-fragment-ice-a.png",
+  "generatedSource": "/workspace/scratch/62884fa4f584/generated_images/exec-7649a321-73e5-44de-b2a3-03cbef4e5363.png",
+  "prompt": "Use case: stylized-concept. Asset ID: arrival-fragment-ice-a.\nGenerate ONE small isolated THREE-QUARTER VIEW ICE SHARD as a transparent game sprite, a single connected object with no surrounding effect.\nReference image 1 supplies the cutout presentation, scale, central location and painted 2.5D material style ONLY. Create completely NEW tapered angular geometry, not a recolored dirt clod. Reference image 2 and image 3 provide the game's rendering style only; reproduce no cloud, scene, UI or ground.\nSubject: one slender asymmetric ice blade, a triangular translucent spall with two broad clear facets, one jagged chipped edge and a subtle internal fracture. Pale desaturated blue-grey ice, physical hard refraction and restrained narrow white highlights on the object. No glow or sparkle.\nFRAMING IS ESSENTIAL: one square 1024x1024 RGBA PNG. Entire shard must fit inside the CENTRAL box x=23%..77%, y=24%..76%. Longest size no more than 54% of the full canvas, visual centre x=.50 y=.50. More than 20% EMPTY transparent space around every side of the complete object. It should be smaller within the canvas than the reference clod. Do not extend the tip toward a border.\nLighting affects the shard itself ONLY. Everything outside the shard is alpha=0: no ambient haze, white surround, light source, light gradient, vignette, backdrop, fog, ground, shadow, reflection plane or glow. Preserve true partial transparency inside the ice where appropriate.\nOne readable shard for 12–24 px gameplay display. No extra pieces, particles, pile, frost cloud, people, hands, feet, plants, symbols, text, labels, grid, panels, atlas, sprite sheet, checkerboard or watermark.",
+  "referenceImages": [
+    "/workspace/scratch/62884fa4f584/cinematic-assets-batch-01-20261105/public/game/cinematics/batch-01-20261105/arrival-fragment-jungle-a.png",
+    "/workspace/scratch/62884fa4f584/cinematic-assets-batch-01-20261105/public/game/cinematics/batch-01-20261105/arrival-impact-front-jungle.png",
+    "/workspace/scratch/62884fa4f584/qa-recovery/spatial-a7f830c/desktop-landing-impact.png"
+  ],
+  "generationMode": "builtin-imagegen-reference",
+  "intendedAnchor": {
+    "name": "fragment-center",
+    "normalized": [
+      0.5,
+      0.5
+    ],
+    "basis": "requested composition anchor; runtime registration remains pending"
+  },
+  "generated": true,
+  "integrated": false,
+  "testedInEngine": false,
+  "artisticHumanApproval": false,
+  "technicalQA": {
+    "format": "PNG",
+    "mode": "RGBA",
+    "width": 1254,
+    "height": 1254,
+    "bytes": 205765,
+    "sha256": "d127b6684b422550bd93b374ec6379efc94861f33d38e3dc4399efa5e8aa3625",
+    "gitBlobSha": "fd3750b6aa08d70e61aef89b00b41d1116e711e6",
+    "visiblePixelsAbove16": 59924,
+    "fullyTransparentPixels": 1508833,
+    "transparentFraction": 0.9595024788301041,
+    "boundsAbove16": [
+      385,
+      436,
+      900,
+      820
+    ],
+    "edgePixelsAbove16": 0,
+    "highSaturationDiagnostic": {
+      "visible": 0,
+      "opaque": 0,
+      "lowAlpha": 651
+    },
+    "paddingPixels": [
+      385,
+      436,
+      354,
+      434
+    ],
+    "framingPassed": true,
+    "passed": true
+  },
+  "visualReview": {
+    "status": "pending"
+  },
+  "generatedAt": "2026-11-05T13:28:06.901872+00:00",
+  "variant": "a",
+  "rejectedAttempts": [
+    {
+      "id": "arrival-fragment-ice-a",
+      "attempt": 1,
+      "generatedSource": "/workspace/scratch/62884fa4f584/generated_images/exec-2ec46c07-726e-450e-bc8a-771936da8c03.png",
+      "prompt": "Use case: stylized-concept.\nAsset type: ONE individual airborne debris fragment sprite for the Yautja The Long Hunt cinematic.\nAsset ID: arrival-fragment-ice-a.\nInput image 1 is a material/rendering reference only (the approved jungle impact pilot); image 2 is the actual game cinematic and supplies the realistic painted 2.5D style. Do not reproduce the cloud, scene, capsule or interface.\nSubject: ONE angular blade-like shard of translucent ice, a single asymmetric tapered triangular spall with two broad readable facets and one chipped edge. Cool clear pale blue-grey body, subtle internal fracture, restrained white edge highlights. Slender hard silhouette, no glow, no snow pile.\nCamera: isolated three-quarter view, with the complete fragment visible, floating without a shadow or support. One connected object only. Centre its visual mass at normalized x=0.50, y=0.50. Occupy roughly 55 to 65 percent of the square in the longest direction; retain at least 15 percent completely empty transparent padding on every side, including any thin fibers. A clear silhouette and a few strong material facets should read at only 12 to 24 pixels in game. No excessive tiny ornamental detail.\nStyle: realistic hand-painted 2.5D game object, neutral upper-left illumination, restrained colors and highlights, compatible with the reference game art. Physically distinct geometry and material, not a recolor of another asset.\nOutput: ONE 1024x1024 square RGBA PNG with TRUE TRANSPARENT BACKGROUND. Correct soft partial alpha on translucent material where needed, no visible pixels on any image edge.\nExclude: another fragment, multiple examples, pile, surrounding particles, dust plume, glow, magic, fire, stand, platform, soil plane, cast shadow, background, scenery, horizon, capsule, ship, people, hands, feet, labels, text, frame, grid, atlas, sprite sheet, baked checkerboard, black or white backdrop, watermark.",
+      "referenceImages": [
+        "/workspace/scratch/62884fa4f584/cinematic-assets-batch-01-20261105/public/game/cinematics/batch-01-20261105/arrival-impact-front-jungle.png",
+        "/workspace/scratch/62884fa4f584/qa-recovery/spatial-a7f830c/desktop-landing-impact.png"
+      ],
+      "reason": "Rejected: fragment margins below requested 15%; minimum 148 px of 1254 (11.8%).",
+      "technicalQA": {
+        "format": "PNG",
+        "mode": "RGBA",
+        "width": 1254,
+        "height": 1254,
+        "bytes": 492035,
+        "sha256": "90bb82ef3ca8f765ecdbb10fea5cffe0c8009bf45793efe6a34c9bd98a573d4a",
+        "gitBlobSha": "d28d7ed9028466b0a2b5b44c2f14fb43899802b6",
+        "visiblePixelsAbove16": 203264,
+        "fullyTransparentPixels": 1355640,
+        "transparentFraction": 0.8620834382607235,
+        "boundsAbove16": [
+          148,
+          338,
+          1105,
+          905
+        ],
+        "edgePixelsAbove16": 0,
+        "highSaturationDiagnostic": {
+          "visible": 0,
+          "opaque": 0,
+          "lowAlpha": 2597
+        },
+        "passed": true
+      },
+      "framingQA": {
+        "minimumMarginPixels": 148,
+        "requiredMarginPixels": 188,
+        "passed": false
+      }
+    }
+  ]
+}

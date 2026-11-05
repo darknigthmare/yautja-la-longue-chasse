@@ -1,0 +1,56 @@
+{
+  "id": "arrival-foot-contact-ruins",
+  "family": "foot-contact",
+  "biome": "ruins",
+  "file": "public/game/cinematics/batch-01-20261105/arrival-foot-contact-ruins.png",
+  "generatedSource": "/workspace/scratch/62884fa4f584/generated_images/exec-76fe3f85-4217-4635-8b5c-57dd470b13d5.png",
+  "prompt": "Use case: stylized-concept.\nAsset type: ONE individual 2D ground-contact VFX sprite for the Yautja The Long Hunt cinematic.\nInput image 1 is a rendering/material reference only: the approved jungle impact-front pilot. Input image 2 is the real in-game cinematic, used only to match its realistic painted 2.5D material treatment and restrained values. Do not reproduce either scene or the large impact effect.\nPrimary request: create a NEW very small footstep contact effect, representing displaced material alone. This is a single cohesive micro-effect for one step, not a landing explosion or a wide impact-front plume.\nAsset ID: arrival-foot-contact-ruins.\nSubject and unique material: A tiny footstep scuff of ancient masonry dust: a low off-centre wedge of pale weathered limestone powder with four tiny angular grey stone grits. Chalky granular mineral texture, restrained warm-grey tonal variation, no large stone, carved symbol, writing or scenery.\nCamera: near-ground side view with only a slight view of the top of the particles; no ground plane is drawn. Origin is at normalized x=0.50, y=0.78 of the full image. Material emerges close to that point and rises in a low, irregular fan, largely confined to x=0.27..0.73 and y=0.52..0.80. All visible parts have ample empty transparent margins. Keep most of the square empty.\nStyle: semi-realistic hand-painted 2.5D game art, physical material detail, neutral upper-left lighting, coherent with the references. The tiny silhouette must remain legible when composited at a few dozen pixels wide.\nOutput: ONE 1024x1024 square RGBA PNG with TRUE TRANSPARENT BACKGROUND. Preserve real soft partial alpha where the material thins. No rectangular background, baked checkerboard or opaque black/white field. No visible pixels at the canvas borders.\nExclude: feet, footprints, shoes, body parts, characters, creatures, ship, capsule, ground surface, flat soil patch, platform, contact disc, cast shadow, environment, horizon, typography, labels, numbering, frame, grid, atlas, sprite sheet, duplicate examples, watermark. One material-only micro-spray, not an entire scene.",
+  "referenceImages": [
+    "/workspace/scratch/62884fa4f584/cinematic-assets-batch-01-20261105/public/game/cinematics/batch-01-20261105/arrival-impact-front-jungle.png",
+    "/workspace/scratch/62884fa4f584/qa-recovery/spatial-a7f830c/desktop-landing-impact.png"
+  ],
+  "generationMode": "builtin-imagegen-reference",
+  "intendedAnchor": {
+    "name": "hunter-foot-contact",
+    "normalized": [
+      0.5,
+      0.78
+    ],
+    "basis": "requested composition anchor; runtime registration remains pending"
+  },
+  "generated": true,
+  "integrated": false,
+  "testedInEngine": false,
+  "artisticHumanApproval": false,
+  "technicalQA": {
+    "format": "PNG",
+    "mode": "RGBA",
+    "width": 1254,
+    "height": 1254,
+    "bytes": 749961,
+    "sha256": "80bb79b096500b071927bd882db790c0c05e757fba3793d84fbff5788c9962d3",
+    "gitBlobSha": "150a7b362c34a4a34b97e9f13daa942b481e74ee",
+    "visiblePixelsAbove16": 76624,
+    "fullyTransparentPixels": 1029798,
+    "transparentFraction": 0.6548728280030219,
+    "boundsAbove16": [
+      369,
+      700,
+      908,
+      982
+    ],
+    "edgePixelsAbove16": 0,
+    "highSaturationDiagnostic": {
+      "visible": 0,
+      "opaque": 0,
+      "lowAlpha": 2974
+    },
+    "passed": true
+  },
+  "visualReview": {
+    "status": "reviewed-by-agent",
+    "basis": "Built-in generated preview inspected and original RGBA data checked.",
+    "notes": "One asymmetric chalky masonry-dust wedge with four small angular stone grits. No carved object, scenery, character or clipped particle. Human and in-engine review remain pending."
+  },
+  "generatedAt": "2026-11-05T13:21:06.090211+00:00"
+}

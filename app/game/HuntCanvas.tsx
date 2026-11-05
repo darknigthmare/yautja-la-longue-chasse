@@ -264,8 +264,15 @@ import {
 } from "./honorRules";
 import type { GameSfxId, GameMusicContext } from "./sound";
 import { shipProfileAssetPath, type ShipId } from "./shipCatalogue";
-import { carrierArtForShip } from "./systems/planetArrivalArt";
+import { ARRIVAL_COMPLETION_ART, ARRIVAL_SPRITES, carrierArtForShip } from "./systems/planetArrivalArt";
+import { POD_DESTRUCTION_ART, POD_DESTRUCTION_SPRITES } from "./systems/planetArrivalPodArt";
 import { arrivalSurfaceShipGeometry } from "./systems/planetArrivalSpatial";
+import { PLANET_ARRIVAL_ART } from "./systems/planetArrival";
+import { wolfCastleRuntimeAsset } from "./systems/wolfCastleRuntimeArt";
+import {
+  HUNT_POD_RECOVERY, commandHuntPodRecovery, huntPodAnchors, huntPodSafety, huntPodSafetyText,
+  huntPodRecoveryPersistenceKey, stepHuntPodRecovery, type HuntPodSafetyInput, type HuntPodSafety,
+} from "./systems/huntPodRecovery";
 import {
   DEFAULT_PLAN, TRIO_MEMBERS, expeditionMemberAppearance, expeditionMemberLoadout,
   normalizePlanetInsertionPlan, planetInsertionPressure, samePlanetInsertion,
@@ -360,6 +367,7 @@ type Action =
   | "gearOne"
   | "gearTwo"
   | "interact"
+  | "podSelfDestruct"
   | "pause";
 
 type HuntPhase =
@@ -676,6 +684,9 @@ function selectedHandWeapon(
 
 interface AssetBank {
   insertionShip?: HTMLImageElement | null;
+  insertionPod?: { hull: HTMLImageElement | null; hatchInterior: HTMLImageElement | null;
+    core: HTMLImageElement | null; pressure: HTMLImageElement | null; scorch: HTMLImageElement | null;
+    fragment: HTMLImageElement | null; vapor: HTMLImageElement | null };
   insertionCompanions?: Partial<Record<ExpeditionMemberId, { appearance: HunterAppearance; loadout: Loadout; assets: AssetBank }>>;
   background: HTMLImageElement | null;
   farLake: HTMLImageElement | null;
@@ -841,6 +852,7 @@ interface GameState {
 }
 
 interface UiSnapshot {
+  podRecovery: (HuntPodSafety & { phase: 'ready' | 'countdown' | 'destroyed'; remainingSeconds: number; count: number }) | null;
   insertion: {
     method: PlanetInsertionPlan['method']; searchRemaining: number;
     team: PlanetInsertionPlan['team']; runId: string; shipId: ShipId | null;
@@ -937,6 +949,7 @@ const HUNT_CONTROL_ACTIONS: Readonly<
   "hunt.useGearOne": "gearOne",
   "hunt.useGearTwo": "gearTwo",
   "hunt.interact": "interact",
+  "hunt.podSelfDestruct": "podSelfDestruct",
   "hunt.pause": "pause",
 };
 
@@ -954,6 +967,7 @@ function isHeldKeyboardAction(action: Action): boolean {
 const DEFAULT_HUNT_ACCESSIBILITY_CANVAS_V112 = normalizeHuntAccessibilityV112(undefined);
 
 const EMPTY_UI: UiSnapshot = {
+  podRecovery: null,
   insertion: { method: 'pod', team: 'solo', runId: '', shipId: null, searchRemaining: 0, members: [] },
   fieldPackV112:{carried:[],nearby:[],canDrop:false},
   fieldLoadV112: fieldLoadV112([], "hunter"),
@@ -1705,6 +1719,68 @@ function applyHuntInsertion(state: GameState, mission: MissionDefinition, diffic
   state.messageTimer = 5;
 }
 
+function podSafetyInput(state: GameState): HuntPodSafetyInput {
+  return { player: state.player, companions: state.insertion?.companions ?? [],
+    operational: !state.paused && state.player.health > 0 &&
+      (state.phase === 'tracking' || state.phase === 'target' || state.phase === 'trophy') &&
+      !state.trophyExtracting && !state.huntRites?.operation && !state.riteMenuCorpseId };
+}
+
+function commandHuntPod(state: GameState): boolean {
+  if (state.paused || state.phase === 'dead' || state.phase === 'finished' || state.player.health <= 0) return false;
+  const recovery = state.insertion?.podRecovery;
+  const anchors = state.insertion ? huntPodAnchors(state.insertion.plan, state.world) : [];
+  const safety = huntPodSafety(recovery, anchors, podSafetyInput(state));
+  const result = commandHuntPodRecovery(recovery, anchors, podSafetyInput(state));
+  if (result.event === 'armed') {
+    announce(state, 'Autodestruction armée · 3 secondes. La télécommande permet encore d’annuler.', 3, 'tactical');
+    queueSound(state, 'pod-arm');
+  } else if (result.event === 'cancelled') {
+    announce(state, 'Autodestruction annulée. Capsules conservées.', 3);
+    queueSound(state, 'pod-cancel');
+  } else {
+    announce(state, huntPodSafetyText(result.reason, safety.blockedMemberId), 3);
+  }
+  return result.event !== 'blocked';
+}
+
+function updateHuntPodRecovery(state: GameState, delta: number): void {
+  // Pause, an inactive tab and the opening briefing never consume the timer.
+  if (state.paused || !state.insertion?.podRecovery) return;
+  const recovery = state.insertion.podRecovery;
+  const anchors = huntPodAnchors(state.insertion.plan, state.world);
+  const input = podSafetyInput(state);
+  const safety = huntPodSafety(recovery, anchors, input);
+  const result = stepHuntPodRecovery(recovery, anchors, input, delta, state.elapsed);
+  if (result.event === 'cancelled') {
+    announce(state, `Autodestruction suspendue. ${huntPodSafetyText(result.reason, safety.blockedMemberId)}`, 4, 'tactical');
+    queueSound(state, 'pod-cancel');
+  }
+  if (result.event !== 'detonated') return;
+  const covers = state.world.covers.filter(cover => !state.brokenPillarIds.has(cover.id));
+  for (const pod of anchors) {
+    emitNoise(state, 'weapon', 1, HUNT_POD_RECOVERY.noiseRadius, pod, `pod-recovery:${pod.id}`);
+  }
+  const noises = state.noiseEvents.slice(-anchors.length);
+  for (const enemy of state.enemies) {
+    if (!enemy.alive || !enemy.active || enemy.boss) continue;
+    const position = { x: enemy.x + enemy.width / 2, y: enemy.y + enemy.height / 2 };
+    const heard = noises.filter(noise => perceivedNoise(noise, { position, elapsedSeconds: state.elapsed,
+      hearingMultiplier: enemy.kind === 'beast' ? 1.28 : enemy.kind === 'yautja' ? 1.15 : 1,
+      occlusion: calculateLineOfSightOcclusion(position, noise, covers), wind: sampleWind(state.world.wind, state.elapsed, position.x) }));
+    if (!heard.length) continue;
+    recovery.alertedIds.push(enemy.id);
+    const nearest = heard.sort((a, b) => distance(a, position) - distance(b, position))[0];
+    const brain = state.aiBrains[enemy.id] ?? createAiBrain(enemy.id, enemy.kind);
+    if (brain.mode !== 'engage' && brain.mode !== 'flee') state.aiBrains[enemy.id] = { ...brain, mode: 'search',
+      suspicion: Math.max(brain.suspicion, .72), lastKnownTarget: { x: nearest.x, y: nearest.y - 60 }, timeInMode: 0 };
+  }
+  const attenuation = Math.max(0, 1 - safety.nearestDistance / 1_200);
+  if (state.screenShakeEnabled) state.screenShake = Math.max(state.screenShake, 9 * attenuation);
+  queueSound(state, 'pod-detonate');
+  announce(state, 'Capsules détruites. Le souffle peut attirer les patrouilles vers le site d’insertion.', 5, 'tactical');
+}
+
 function companionPlayerState(player: PlayerState, member: HuntCompanion): PlayerState {
   return { ...player, ...member, previousY: member.y, cloaked: false, maskOn: true, aiming: false,
     aimAngle: member.facing > 0 ? 0 : Math.PI, aimPoint: { x: member.x + member.facing * 100, y: member.y + 45 },
@@ -2069,6 +2145,9 @@ function serializeActiveHuntCheckpoint(
 
 /** Active archives cannot claim an evacuation or start hoisting actors toward an absent ship. */
 function insertionCheckpointConsistent(checkpoint: MissionCheckpointPayload, insertion: HuntInsertionState, world: WorldBlueprint): boolean {
+  if (insertion.podRecovery?.destroyedAt !== undefined && insertion.podRecovery.destroyedAt !== null &&
+      insertion.podRecovery.destroyedAt > checkpoint.elapsed) return false;
+  if (insertion.podRecovery?.alertedIds.some(id => !checkpoint.enemies.some(enemy => enemy.id === id))) return false;
   if (!insertion.companions.length) return true;
   if (insertion.companions.some(member => member.status === 'extracted' ||
       member.status === 'left-behind' && checkpoint.phase !== 'extraction')) return false;
@@ -2991,6 +3070,11 @@ function snapshot(state: GameState, mission: MissionDefinition): UiSnapshot {
   const fieldItems=carriedFieldSpecimensV112(state.huntRites);
   const actorAt={x:state.player.x+state.player.width/2,y:state.player.y+state.player.height/2};
   return {
+    podRecovery: state.insertion?.podRecovery ? {
+      ...huntPodSafety(state.insertion.podRecovery, huntPodAnchors(state.insertion.plan, state.world), podSafetyInput(state)),
+      phase: state.insertion.podRecovery.phase, remainingSeconds: state.insertion.podRecovery.remainingSeconds,
+      count: huntPodAnchors(state.insertion.plan, state.world).length,
+    } : null,
     insertion: {
       method: state.insertion?.plan.method ?? 'pod',
       team: state.insertion?.plan.team ?? 'solo', runId: state.insertionRunId ?? '',
@@ -4769,6 +4853,120 @@ function drawWorldSectorOverlay(
   context.restore();
 }
 
+function drawHuntPods(context: CanvasRenderingContext2D, state: GameState, assets: AssetBank,
+  cameraX: number, pass: 'body' | 'effect'): void {
+  const recovery = state.insertion?.podRecovery;
+  if (!recovery) return;
+  const art = assets.insertionPod;
+  const width = 128, height = width * ARRIVAL_SPRITES.podGround.height / ARRIVAL_SPRITES.podGround.width;
+  const age = recovery.destroyedAt === null ? -1 : Math.max(0, state.elapsed - recovery.destroyedAt);
+  for (const [index, pod] of huntPodAnchors(state.insertion.plan, state.world).entries()) {
+    if (pod.x + HUNT_POD_RECOVERY.blastRadius < cameraX || pod.x - HUNT_POD_RECOVERY.blastRadius > cameraX + VIEW_WIDTH) continue;
+    context.save();
+    if (pass === 'body') {
+      if (recovery.phase === 'destroyed' && art?.scorch) {
+        const decal = POD_DESTRUCTION_SPRITES.scorch, decalWidth = 190;
+        const decalHeight = decalWidth * decal.height / decal.width;
+        context.drawImage(art.scorch, pod.x - decal.origin.x * decalWidth,
+          pod.y - decal.origin.y * decalHeight, decalWidth, decalHeight);
+      } else {
+        context.fillStyle = recovery.phase === 'destroyed' ? '#11100ee6' : '#0206067a';
+        context.beginPath(); context.ellipse(pod.x, pod.y, recovery.phase === 'destroyed' ? 57 : 48,
+          recovery.phase === 'destroyed' ? 10 : 7, 0, 0, Math.PI * 2); context.fill();
+      }
+      if (recovery.phase !== 'destroyed') {
+        const left = pod.x - ARRIVAL_SPRITES.podGround.foot.x * width;
+        const top = pod.y - ARRIVAL_SPRITES.podGround.foot.y * height;
+        if (art?.hull) context.drawImage(art.hull, left, top, width, height);
+        const hinge = { x: left + ARRIVAL_SPRITES.podGround.doorHinge.x * width,
+          y: top + ARRIVAL_SPRITES.podGround.doorHinge.y * height };
+        // The hatch is already open at handoff: retain its real upper hinge and inward face.
+        if (art?.hatchInterior) {
+          const doorWidth = width * ARRIVAL_SPRITES.podDoor.widthInGround;
+          const doorHeight = doorWidth * ARRIVAL_SPRITES.podDoor.height / ARRIVAL_SPRITES.podDoor.width;
+          context.save(); context.translate(hinge.x, hinge.y); context.scale(1, Math.cos(108 * Math.PI / 180));
+          context.drawImage(art.hatchInterior, -ARRIVAL_SPRITES.podDoor.hinge.x * doorWidth,
+            -ARRIVAL_SPRITES.podDoor.hinge.y * doorHeight, doorWidth, doorHeight); context.restore();
+        }
+        if (recovery.phase === 'countdown') {
+          context.save(); context.fillStyle = '#f7b776'; context.shadowColor = '#fd802f'; context.shadowBlur = 8;
+          context.fillRect(hinge.x - 2, hinge.y + 65, 4, 12); context.restore();
+          context.fillStyle = '#ffe3bf'; context.font = '800 12px system-ui,sans-serif'; context.textAlign = 'center';
+          context.fillText(`${Math.ceil(recovery.remainingSeconds)} s`, pod.x, top - 10);
+          context.strokeStyle = '#ffbd7348'; context.setLineDash([8, 12]); context.lineWidth = 1;
+          context.beginPath(); context.ellipse(pod.x, pod.y, HUNT_POD_RECOVERY.safeRadius, 19, 0, 0, Math.PI * 2);
+          context.stroke(); context.setLineDash([]);
+        }
+      }
+    } else if (age >= 0 && age < HUNT_POD_RECOVERY.effectSeconds) {
+      // The energy bloom, pressure front and fragments share the physical pod's ground anchor.
+      // No full-screen flash and no displacement of any collision body.
+      const core = Math.max(0, 1 - age / .6);
+      if (core > 0) {
+        const radius = 55 + 140 * Math.min(1, age / .3);
+        context.save();
+        context.globalAlpha = core;
+        if (art?.core) {
+          const sprite = POD_DESTRUCTION_SPRITES.core, size = radius * 2;
+          context.globalCompositeOperation = 'screen';
+          context.drawImage(art.core, pod.x - sprite.origin.x * size,
+            pod.y - 60 - sprite.origin.y * size, size, size);
+        } else {
+          // A failed optional image keeps the event readable without changing gameplay.
+          const glow = context.createRadialGradient(pod.x, pod.y - 60, 4, pod.x, pod.y - 60, radius);
+          glow.addColorStop(0, 'rgba(255,241,211,.9)');
+          glow.addColorStop(.28, 'rgba(248,171,75,.65)'); glow.addColorStop(1, 'rgba(233,104,23,0)');
+          context.fillStyle = glow; context.fillRect(pod.x - radius, pod.y - 60 - radius, radius * 2, radius * 2);
+        }
+        context.restore();
+      }
+      if (age < 1.1) {
+        const radius = 25 + (HUNT_POD_RECOVERY.blastRadius - 25) * (1 - (1 - age / 1.1) ** 2);
+        context.save();
+        context.globalAlpha = .8 * (1 - age / 1.1);
+        if (art?.pressure) {
+          const sprite = POD_DESTRUCTION_SPRITES.pressure, ringWidth = radius * 2;
+          const ringHeight = ringWidth * sprite.height / sprite.width;
+          context.drawImage(art.pressure, pod.x - sprite.origin.x * ringWidth,
+            pod.y - sprite.origin.y * ringHeight, ringWidth, ringHeight);
+        } else {
+          context.strokeStyle = 'rgb(247,203,139)'; context.lineWidth = 5 * (1 - age / 1.1) + 1;
+          context.beginPath(); context.ellipse(pod.x, pod.y, radius, radius * .2, 0, 0, Math.PI * 2); context.stroke();
+        }
+        context.restore();
+      }
+      if (art?.fragment && age < 2.4) {
+        for (let piece = 0; piece < 9; piece += 1) {
+          const direction = piece % 2 === 0 ? -1 : 1;
+          const velocityX = direction * (75 + (piece * 29 + index * 17) % 120);
+          const velocityY = -155 - (piece * 47 + index * 23) % 200;
+          const flightTime = Math.min(age, -2 * velocityY / 680);
+          const x = pod.x + velocityX * flightTime;
+          const size = 20 + piece % 3 * 6, sprite = POD_DESTRUCTION_SPRITES.fragment, pivot = sprite.origin;
+          const angle = direction * Math.min(flightTime, 1) * (3 + piece * .3);
+          // Measured alpha support of the metal shard keeps every rotation above the floor.
+          const { left, right, top, bottom } = sprite.bounds;
+          const support = Math.max(0, ...[[left, top], [right, top], [right, bottom], [left, bottom]].map(([x, y]) =>
+            (x - pivot.x) * size * Math.sin(angle) + (y - pivot.y) * size * Math.cos(angle)));
+          const y = pod.y + velocityY * flightTime + 340 * flightTime * flightTime - support;
+          context.save(); context.globalAlpha = Math.max(0, 1 - Math.max(0, age - 1) / 1.4);
+          context.translate(x, Math.min(pod.y - support, y)); context.rotate(angle);
+          context.drawImage(art.fragment, -size * pivot.x, -size * pivot.y, size, size); context.restore();
+        }
+      }
+      if (art?.vapor && age > .1) {
+        const vaporWidth = 190 + Math.min(age, 2.4) * 75;
+        const sprite = POD_DESTRUCTION_SPRITES.vapor, vaporHeight = vaporWidth * sprite.height / sprite.width;
+        context.save(); context.globalAlpha = Math.min(.55, age * .8) * Math.max(0, 1 - age / HUNT_POD_RECOVERY.effectSeconds);
+        context.drawImage(art.vapor, pod.x - vaporWidth * sprite.origin.x,
+          pod.y - vaporHeight * sprite.origin.y - age * 12, vaporWidth, vaporHeight);
+        context.restore();
+      }
+    }
+    context.restore();
+  }
+}
+
 function renderGame(
   context: CanvasRenderingContext2D,
   state: GameState,
@@ -4899,6 +5097,7 @@ function renderGame(
       context.restore();
     }
   }
+  drawHuntPods(context, state, assets, cameraX, 'body');
 
   for (const surface of state.world.surfaces) {
     const assignment = environmentGameplayPropForGeometryId(
@@ -5725,6 +5924,7 @@ function renderGame(
     );
     context.stroke();
   }
+  drawHuntPods(context, state, assets, cameraX, 'effect');
   drawEnvironmentDecorPass(
     context,
     state,
@@ -8760,7 +8960,8 @@ function updateRegularEnemy(
   const wind = sampleWind(state.world.wind, state.elapsed, selfPosition.x);
   let heardNoise: ReturnType<typeof perceivedNoise> = null;
   for (const noise of state.noiseEvents) {
-    if (noise.sourceId !== "hunter") continue;
+    const podNoise = noise.sourceId.startsWith('pod-recovery:') && state.insertion?.podRecovery?.phase === 'destroyed';
+    if (noise.sourceId !== "hunter" && !podNoise) continue;
     const perception = perceivedNoise(noise, {
       position: selfPosition,
       elapsedSeconds: state.elapsed,
@@ -8770,7 +8971,8 @@ function updateRegularEnemy(
           : enemy.kind === "yautja"
             ? 1.15
             : 1) * detectionMultiplier,
-      occlusion: coverOcclusion,
+      occlusion: podNoise ? calculateLineOfSightOcclusion(selfPosition, noise,
+        state.world.covers.filter(cover => !state.brokenPillarIds.has(cover.id))) : coverOcclusion,
       wind,
     });
     if (
@@ -8830,13 +9032,20 @@ function updateRegularEnemy(
     state.aiBrains[enemy.id] ?? createAiBrain(enemy.id, enemy.kind);
   // The insertion supplies a fixed place to investigate. Actual sight, scent,
   // tracks or noise can supersede it; merely moving the player cannot.
-  const investigatingInsertion = !!state.insertion && state.elapsed < state.insertion.searchUntil &&
-    state.insertion.alertedIds.includes(enemy.id) && ['patrol', 'suspicion', 'search'].includes(previousBrain.mode) &&
+  const recovery = state.insertion?.podRecovery;
+  const searchingPods = recovery?.phase === 'destroyed' && recovery.destroyedAt !== null &&
+    state.elapsed < recovery.destroyedAt + HUNT_POD_RECOVERY.investigationSeconds && recovery.alertedIds.includes(enemy.id);
+  const nearestPod = searchingPods ? huntPodAnchors(state.insertion.plan, state.world)
+    .sort((a, b) => distance(a, selfPosition) - distance(b, selfPosition))[0] : null;
+  const investigationPoint = nearestPod ? { x: nearestPod.x, y: nearestPod.y - 60 }
+    : { x: state.insertion?.origin.x ?? 0, y: (state.insertion?.origin.y ?? 0) - 60 };
+  const insertionSearchActive = !!state.insertion && state.elapsed < state.insertion.searchUntil && state.insertion.alertedIds.includes(enemy.id);
+  const investigatingInsertion = (insertionSearchActive || !!nearestPod) && ['patrol', 'suspicion', 'search'].includes(previousBrain.mode) &&
     visualContact < .34 && thermalContact < .34 && !heardNoise && track.strength < .18 && scent.strength < .18 &&
-    (!previousBrain.lastKnownTarget || Math.abs(previousBrain.lastKnownTarget.x - state.insertion.origin.x) < 1);
+    (!previousBrain.lastKnownTarget || Math.abs(previousBrain.lastKnownTarget.x - investigationPoint.x) < (nearestPod ? 100 : 1));
   if (investigatingInsertion) previousBrain = { ...previousBrain, mode: 'search',
-    suspicion: Math.max(previousBrain.suspicion, planetInsertionPressure(state.insertion.plan).initialSuspicion),
-    lastKnownTarget: { x: state.insertion.origin.x, y: state.insertion.origin.y - 60 } };
+    suspicion: Math.max(previousBrain.suspicion, nearestPod ? .72 : planetInsertionPressure(state.insertion.plan).initialSuspicion),
+    lastKnownTarget: investigationPoint };
   const aiStep = stepAiBrain(previousBrain, {
     deltaSeconds: delta,
     elapsedSeconds: state.elapsed,
@@ -8907,7 +9116,7 @@ function updateRegularEnemy(
   if(riteInvestigation&&riteInvestigation.until<=state.elapsed&&aiStep.brain.mode==='patrol')enemy.riteInvestigate=undefined;
   const moveIntent = ecologyProfile?.mobility === "stationary" ? 0 : inspectingRite
     ? discoveryMove
-    : investigatingInsertion ? Math.abs(selfPosition.x - state.insertion.origin.x) < 80 ? 0 : state.insertion.origin.x < selfPosition.x ? -1 : 1
+    : investigatingInsertion ? Math.abs(selfPosition.x - investigationPoint.x) < 80 ? 0 : investigationPoint.x < selfPosition.x ? -1 : 1
     : aiStep.intent.moveX;
   if (moveIntent !== 0) {
     enemy.facing = moveIntent;
@@ -9000,8 +9209,8 @@ function updateRegularEnemy(
     enemy.width,
   );
   const nextX = clamp(enemy.x + enemy.velocityX * delta,
-    investigatingInsertion ? Math.min(movementLeash.left, state.insertion.origin.x - enemy.width / 2) : movementLeash.left,
-    investigatingInsertion ? Math.max(movementLeash.right, state.insertion.origin.x + enemy.width / 2) : movementLeash.right);
+    investigatingInsertion ? Math.min(movementLeash.left, investigationPoint.x - enemy.width / 2) : movementLeash.left,
+    investigatingInsertion ? Math.max(movementLeash.right, investigationPoint.x + enemy.width / 2) : movementLeash.right);
   if (investigatingInsertion) {
     const moved = resolvePlatformMotion({ ...enemy, velocityY: 0 }, { x: nextX, y: enemy.y }, state.world.platforms, state.world.floorY);
     enemy.x = moved.x; enemy.velocityX = moved.velocityX;
@@ -10246,6 +10455,7 @@ function stepGame(
     }
   }
   if (state.phase === "dead" || state.phase === "finished") {
+    updateHuntPodRecovery(state, 0);
     input.pressed.clear();
     return;
   }
@@ -10294,6 +10504,8 @@ function stepGame(
   );
   if (state.paused) return;
   if (state.insertion?.companions.length) updateHuntInsertionCompanions(state, mission, delta);
+  if (consume(playerInput, 'podSelfDestruct')) commandHuntPod(state);
+  updateHuntPodRecovery(state, delta);
   updateHuntTraps(state, delta);
   updateHuntSignals(state, mission, delta);
   if (state.player.health <= 0) return;
@@ -10407,6 +10619,7 @@ export default function HuntCanvas({
   const ritualAssistRefV112 = useRef<(event:RitualAssistEventV112|"abort")=>void>(()=>undefined);
   const fieldPackActionRefV112=useRef<(action:"drop"|"take",id:string)=>void>(()=>undefined);
   const companionCommandRef = useRef<(id: ExpeditionMemberId, command: HuntCompanionCommand) => void>(() => undefined);
+  const podCommandRef = useRef<() => void>(() => undefined);
   const riteMenuActionRef = useRef<(action:HuntRiteActionV77|'open'|'close')=>void>(()=>undefined);
   const dismissMissionOpeningRef = useRef<() => void>(() => undefined);
   const missionOpeningActiveRef = useRef(false);
@@ -10425,6 +10638,7 @@ export default function HuntCanvas({
   const [ui, setUi] = useState<UiSnapshot>(EMPTY_UI);
   const [assetsReady, setAssetsReady] = useState(false);
   const [surfaceShipReady, setSurfaceShipReady] = useState(false);
+  const [podAssetsReady, setPodAssetsReady] = useState(false);
   const [missionOpeningOpen, setMissionOpeningOpen] = useState(false);
   const [openingHint, setOpeningHint] = useState<FirstHuntHint | null>(null);
   const [openingGuideCollapsed, setOpeningGuideCollapsed] = useState(true);
@@ -10635,6 +10849,7 @@ export default function HuntCanvas({
     };
     let lastPersistedElapsed = game.elapsed;
     let lastRitePersistenceKey = ritePersistenceKeyV77(game.huntRites);
+    let lastPodPersistenceKey = huntPodRecoveryPersistenceKey(game.insertion.podRecovery);
     let lastPersistedCheckpointIndex = game.nextCheckpointIndex;
     const assets: AssetBank = {
       background: null,
@@ -10838,6 +11053,16 @@ export default function HuntCanvas({
 
     if (game.insertion.plan.method === 'ship' && game.insertionShipId) {
       queueImage(shipProfileAssetPath(game.insertionShipId), image => { assets.insertionShip = image; });
+    }
+    if (game.insertion.podRecovery) {
+      const podArt = { hull: null, hatchInterior: null, core: null, pressure: null, scorch: null,
+        fragment: null, vapor: null } as NonNullable<AssetBank['insertionPod']>;
+      assets.insertionPod = podArt;
+      queueImage(wolfCastleRuntimeAsset(PLANET_ARRIVAL_ART.podGround), image => { podArt.hull = image; });
+      queueImage(ARRIVAL_COMPLETION_ART.podDoorInterior, image => { podArt.hatchInterior = image; });
+      for (const key of Object.keys(POD_DESTRUCTION_ART) as (keyof typeof POD_DESTRUCTION_ART)[]) {
+        queueImage(POD_DESTRUCTION_ART[key], image => { podArt[key] = image; });
+      }
     }
     // Each original campaign companion owns its anatomy/armor bank. Sharing the
     // player's appearance would turn a save or equipment change into an identity swap.
@@ -11108,6 +11333,7 @@ export default function HuntCanvas({
         accumulator = 0;
         setAssetsReady(true);
         setSurfaceShipReady(Boolean(assets.insertionShip));
+        setPodAssetsReady(Boolean(assets.insertionPod && Object.values(assets.insertionPod).every(Boolean)));
       }
     });
 
@@ -11170,6 +11396,7 @@ export default function HuntCanvas({
       if (!payload) return;
       handler?.(payload);
       lastRitePersistenceKey = ritePersistenceKeyV77(game.huntRites);
+      lastPodPersistenceKey = huntPodRecoveryPersistenceKey(game.insertion.podRecovery);
       lastPersistedElapsed = game.elapsed;
       lastPersistedCheckpointIndex = game.nextCheckpointIndex;
     };
@@ -11211,6 +11438,12 @@ export default function HuntCanvas({
     companionCommandRef.current = (id, command) => {
       if (openingActive || !commandHuntCompanion(game, id, command)) return;
       input.pressed.clear();
+      setUi(snapshot(game, mission));
+      emitPersistence(persistHuntRef.current);
+    };
+    podCommandRef.current = () => {
+      if (openingActive || game.paused) return;
+      commandHuntPod(game);
       setUi(snapshot(game, mission));
       emitPersistence(persistHuntRef.current);
     };
@@ -11427,6 +11660,7 @@ export default function HuntCanvas({
         emitPersistence(persistHuntRef.current);
       } else if (
         ritePersistenceKeyV77(game.huntRites) !== lastRitePersistenceKey ||
+        huntPodRecoveryPersistenceKey(game.insertion.podRecovery) !== lastPodPersistenceKey ||
         game.nextCheckpointIndex !== lastPersistedCheckpointIndex ||
         game.elapsed - lastPersistedElapsed >= 15
       ) {
@@ -11479,6 +11713,7 @@ export default function HuntCanvas({
       requestAbortRef.current = () => undefined;
       requestSuspendRef.current = () => undefined;
       companionCommandRef.current = () => undefined;
+      podCommandRef.current = () => undefined;
     };
   }, [
     firstHuntGuideEnabled,
@@ -11641,6 +11876,13 @@ export default function HuntCanvas({
       data-hunt-insertion-run-id={ui.insertion.runId}
       data-hunt-insertion-ship-id={ui.insertion.shipId ?? undefined}
       data-hunt-surface-ship-ready={surfaceShipReady}
+      data-hunt-pod-state={ui.podRecovery?.phase ?? 'absent'}
+      data-hunt-pod-safety={ui.podRecovery?.reason ?? 'unavailable'}
+      data-hunt-pod-distance={ui.podRecovery ? Math.round(ui.podRecovery.nearestDistance) : undefined}
+      data-hunt-pod-radio-distance={ui.podRecovery ? Math.round(ui.podRecovery.radioDistance) : undefined}
+      data-hunt-pod-remaining={ui.podRecovery?.remainingSeconds ?? 0}
+      data-hunt-pod-count={ui.podRecovery?.count ?? 0}
+      data-hunt-pod-assets-ready={podAssetsReady}
       style={{
         ...styles.shell,
         "--hunt-accent": mission.palette.accent,
@@ -11695,12 +11937,29 @@ export default function HuntCanvas({
         </button>
       </header>
 
-      {(ui.insertion.members.length > 0 || ui.insertion.method === 'ship') && <details className={presentationStyles.fieldLoadV112}
-        open={ui.phase === 'extraction' ? true : undefined}>
+      {(ui.insertion.members.length > 0 || ui.insertion.method === 'ship' || ui.podRecovery) && <details className={presentationStyles.fieldLoadV112}
+        open={ui.phase === 'extraction' || ui.podRecovery?.phase === 'countdown' ? true : undefined}>
         <summary>{ui.insertion.method === 'ship' ? 'Vaisseau posé' : 'Capsules au sol'}{' · '}
           {ui.insertion.members.length > 0 ? 'Triade · ordres et état' : 'Chasseur seul'}
           {ui.insertion.searchRemaining > 0 ? ` · Point d’insertion recherché ${Math.ceil(ui.insertion.searchRemaining)} s` : ''}</summary>
         {!huntDialogOpen && companionOrders()}
+        {ui.podRecovery && <div data-hunt-pod-panel>
+          <p role="status" aria-live="polite" aria-atomic="true">
+            {ui.podRecovery.phase === 'countdown'
+              ? `Autodestruction dans ${Math.ceil(ui.podRecovery.remainingSeconds)} s · reste à l’écart.`
+              : huntPodSafetyText(ui.podRecovery.reason, ui.podRecovery.blockedMemberId)}
+          </p>
+          {ui.podRecovery.phase !== 'destroyed' && <button type="button" data-hunt-pod-command
+            style={styles.secondaryButton}
+            disabled={huntDialogOpen || ui.paused || ui.podRecovery.phase !== 'countdown' && !ui.podRecovery.canArm}
+            onClick={() => podCommandRef.current()}>
+            {ui.podRecovery.phase === 'countdown' ? 'Annuler l’autodestruction'
+              : ui.podRecovery.count > 1 ? 'Autodestruction des capsules' : 'Autodestruction du pod'}
+            {' · '}{controlActionShortcut('hunt.podSelfDestruct', activeBindings)}
+          </button>}
+          {ui.podRecovery.phase !== 'destroyed' && <p>La télécommande annule la séquence si un chasseur revient en danger
+            ou si la liaison radio est perdue. Le souffle signale le site aux ennemis proches.</p>}
+        </div>}
       </details>}
 
       <details className={presentationStyles.fieldLoadV112}>

@@ -76,6 +76,9 @@ const fixtureBundle = await build({
         ARRIVAL_HUNTER_GROUND_CONTACT_MS, arrivalFormationSlots,
         arrivalShipCloakFrame } from './app/game/systems/planetArrivalPresentation';
       export { arrivalSurfaceShipGeometry } from './app/game/systems/planetArrivalSpatial';
+      export { arrivalShipMotionFrame, arrivalShipMotionAssetPaths } from './app/game/systems/planetArrivalShipMotion';
+      export { arrivalPodEntryFrame, arrivalPodPanelAngle, ARRIVAL_POD_FLIGHT_PANELS,
+        ARRIVAL_POD_SHUTTERS_OPEN_START_MS, ARRIVAL_POD_SHUTTERS_OPEN_END_MS } from './app/game/systems/planetArrivalPodFlight';
       export { expeditionMemberAppearance, expeditionMemberLoadout } from './app/game/systems/planetInsertion';
       export { hunterDreadPath, HUNTER_GEAR_V3 } from './app/game/hunterVisuals';`,
     resolveDir: root, loader: 'ts',
@@ -315,27 +318,42 @@ async function readFrame(target = page, contactObservation) {
     const shipImage = groundShip?.querySelector('img');
     const cloakHulls = [...root.querySelectorAll('[data-arrival-cloak-strength]')].map(element => {
       const body = element.querySelector('[data-arrival-cloak-body]');
-      const lens = element.querySelector('[data-arrival-cloak-refraction]');
-      const rim = element.querySelector('[data-arrival-cloak-rim]');
-      const lensStyle = lens ? getComputedStyle(lens) : null;
-      const filterId = lensStyle?.backdropFilter.match(/#([^"')]+)/)?.[1];
-      const filter = filterId ? document.getElementById(decodeURIComponent(filterId)) : null;
-      const offset = filter?.querySelector('feOffset');
-      const displacement = filter?.querySelector('feDisplacementMap');
-      const image = element.querySelector('img');
+      const views = [...element.querySelectorAll('[data-arrival-ship-view-layer]')].map(view => {
+        const style = getComputedStyle(view);
+        const image = view.querySelector('[data-arrival-lit] img');
+        return { id: view.getAttribute('data-arrival-ship-view-layer'),
+          source: view.getAttribute('data-arrival-ship-view-path'), imageSource: image?.getAttribute('src'),
+          opacity: Number(style.opacity), transform: style.transform, transformOrigin: style.transformOrigin,
+          ...rect(view), image: rect(image) };
+      });
+      const lenses = [...element.querySelectorAll('[data-arrival-cloak-refraction]')].map(lens => {
+        const style = getComputedStyle(lens);
+        const filterId = style.backdropFilter.match(/#([^"')]+)/)?.[1];
+        const filter = filterId ? document.getElementById(decodeURIComponent(filterId)) : null;
+        const offset = filter?.querySelector('feOffset');
+        const displacement = filter?.querySelector('feDisplacementMap');
+        return { source: lens.getAttribute('data-arrival-cloak-refraction'), view: lens.getAttribute('data-arrival-cloak-view'),
+          ...rect(lens), opacity: Number(style.opacity), mask: style.maskImage, size: style.maskSize,
+          repeat: style.maskRepeat, filter: style.backdropFilter, transform: style.transform, transformOrigin: style.transformOrigin,
+          animation: style.animationName, transition: style.transitionDuration,
+          distortion: offset && displacement ? { x: Number(offset.getAttribute('dx')), y: Number(offset.getAttribute('dy')),
+            scale: Number(displacement.getAttribute('scale')) } : null };
+      });
+      const rims = [...element.querySelectorAll('[data-arrival-cloak-rim]')].map(rim => {
+        const style = getComputedStyle(rim);
+        return { source: rim.getAttribute('data-arrival-cloak-rim'), view: rim.getAttribute('data-arrival-cloak-view'),
+          ...rect(rim), opacity: Number(style.opacity), href: rim.querySelector('image')?.getAttribute('href'),
+          transform: style.transform, transformOrigin: style.transformOrigin };
+      });
       return {
         role: element.hasAttribute('data-arrival-ground-ship') ? 'ground-ship' : 'carrier',
         strength: Number(element.getAttribute('data-arrival-cloak-strength')), opacity: opacity(element),
-        source: image?.getAttribute('src'), image: rect(image),
+        source: views[0]?.imageSource, image: views[0]?.image,
+        canvas: rect(element.querySelector('[data-arrival-cloak-hull]')), views, lenses, rims,
         body: body ? { opacity: Number(getComputedStyle(body).opacity), ...rect(body) } : null,
-        lens: lens ? { source: lens.getAttribute('data-arrival-cloak-refraction'), ...rect(lens),
-          opacity: Number(lensStyle.opacity), mask: lensStyle.maskImage, size: lensStyle.maskSize,
-          repeat: lensStyle.maskRepeat, filter: lensStyle.backdropFilter,
-          animation: lensStyle.animationName, transition: lensStyle.transitionDuration } : null,
-        rim: rim ? { source: rim.getAttribute('data-arrival-cloak-rim'), ...rect(rim),
-          opacity: Number(getComputedStyle(rim).opacity), href: rim.querySelector('image')?.getAttribute('href') } : null,
-        distortion: offset && displacement ? { x: Number(offset.getAttribute('dx')), y: Number(offset.getAttribute('dy')),
-          scale: Number(displacement.getAttribute('scale')) } : null,
+        // Retain the first-layer summary used by the historical capture index;
+        // spatial assertions below inspect every actual contributing view.
+        lens: lenses[0] ?? null, rim: rims[0] ?? null, distortion: lenses[0]?.distortion ?? null,
       };
     });
     const lights = [...root.querySelectorAll('[data-arrival-lit]')].map(element => {
@@ -364,10 +382,12 @@ async function readFrame(target = page, contactObservation) {
     });
     return {
       run: root.getAttribute('data-arrival-run'), shot: root.getAttribute('data-arrival-shot'),
-      status: root.getAttribute('data-arrival-status'), elapsedMs: Number(root.getAttribute('data-arrival-elapsed')),
+      status: root.getAttribute('data-arrival-status'),
+      elapsedMs: Number(root.getAttribute('data-arrival-elapsed-exact') ?? root.getAttribute('data-arrival-elapsed')),
       reducedMotion: root.getAttribute('data-arrival-reduced-motion') === 'true',
       method: root.getAttribute('data-arrival-method'), team: root.getAttribute('data-arrival-team'),
       shipCloak: root.getAttribute('data-arrival-ship-cloak') === 'true',
+      shipViewsUnavailable: Number(root.getAttribute('data-arrival-ship-motion-unavailable')),
       sceneShipCloak: root.querySelector('[data-arrival-scene]')?.getAttribute('data-arrival-ship-cloak') === 'true',
       cloakPhase: root.querySelector('[data-arrival-scene]')?.getAttribute('data-arrival-cloak-phase'), cloakHulls,
       contact: root.querySelector('[data-arrival-scene]')?.getAttribute('data-arrival-contact') === 'true',
@@ -378,6 +398,18 @@ async function readFrame(target = page, contactObservation) {
       flightPod: rect(root.querySelector('[data-arrival-flight-pod]')), anchors, anchorIds, lights, members,
       flightPods: [...root.querySelectorAll('[data-arrival-flight-pod]')].map(element => ({
         member: element.getAttribute('data-arrival-member'), ...rect(element), opacity: opacity(element),
+        elapsedMs: Number(element.getAttribute('data-arrival-pod-elapsed')),
+        phase: element.getAttribute('data-arrival-pod-phase'), shutters: element.getAttribute('data-arrival-pod-shutters'),
+        deployment: Number(element.getAttribute('data-arrival-pod-deployment')),
+        heat: Number(element.getAttribute('data-arrival-pod-heat')),
+        hullHeat: Number(element.getAttribute('data-arrival-pod-hull-heat')),
+        panels: [...element.querySelectorAll('[data-arrival-pod-shutter]')].map(panel => {
+          const style = getComputedStyle(panel), matrix = new DOMMatrix(style.transform);
+          return { id: panel.getAttribute('data-arrival-pod-shutter'),
+            angle: Number(panel.getAttribute('data-arrival-shutter-angle')),
+            renderedAngle: Math.atan2(matrix.b, matrix.a) * 180 / Math.PI,
+            transform: style.transform, clip: style.clipPath };
+        }),
       })),
       groundPods: [...root.querySelectorAll('[data-arrival-ground-pod]')].map(element => ({
         member: element.getAttribute('data-arrival-member'), ...rect(element), opacity: opacity(element),
@@ -474,31 +506,68 @@ function assertSpatial(frame, label) {
   assert.equal(frame.cloakPhase, cloak.phase, `${label}: optical release must follow the saved cinematic clock.`);
   for (const hull of frame.cloakHulls) {
     assert.ok(Math.abs(hull.strength - cloak.strength) < .002, `${label}: hull camouflage must follow its real elapsed time.`);
-    assert.equal(hull.source, api.shipProfileAssetPath(frame.ship), `${label}: camouflage must retain the selected real hull.`);
+    const motion = api.arrivalShipMotionFrame(frame.ship, frame.elapsedMs, frame.method, frame.reducedMotion,
+      frame.shipViewsUnavailable > 0 ? api.arrivalShipMotionAssetPaths(frame.ship) : []);
+    const expectedViews = hull.role === 'ground-ship'
+      ? [{ id: 'profile', path: api.shipProfileAssetPath(frame.ship), opacity: 1 }]
+      : [{ id: motion.from.id, path: motion.from.path, opacity: 1 - motion.mix },
+        ...(motion.to ? [{ id: motion.to.id, path: motion.to.path, opacity: motion.mix }] : [])]
+        .filter(view => view.opacity > 0);
+    assert.equal(hull.views.length, expectedViews.length, `${label}: every current view of the selected hull must be painted.`);
+    assert.equal(hull.source, expectedViews[0].path, `${label}: camouflage must retain the selected hull's current view.`);
+    for (const expected of expectedViews) {
+      const views = hull.views.filter(view => view.id === expected.id);
+      assert.equal(views.length, 1, `${label}: ${expected.id} must be painted exactly once.`);
+      const view = views[0];
+      assert.equal(view.source, expected.path); assert.equal(view.imageSource, expected.path);
+      assert.ok(view.image && Math.abs(view.opacity - expected.opacity) < .002,
+        `${label}: each actual source must keep its saved-time mixture.`);
+    }
     if (!frame.shipCloak) {
       assert.equal(hull.body, null); assert.equal(hull.lens, null); assert.equal(hull.rim, null);
+      assert.deepEqual(hull.lenses, []); assert.deepEqual(hull.rims, []);
       continue;
     }
-    assert.ok(hull.body && hull.image, `${label}: camouflage needs the real body beneath its optical layers.`);
+    assert.ok(hull.body && hull.image && hull.canvas, `${label}: camouflage needs the real body beneath its optical layers.`);
     assert.ok(Math.abs(hull.body.opacity - cloak.hullOpacity) < .002, `${label}: the partially visible hull must use the saved optical envelope.`);
+    assert.ok(['x', 'y', 'width', 'height'].every(key => Math.abs(hull.body[key] - hull.canvas[key]) < 1),
+      `${label}: the global optical body must remain on the same registered carrier canvas.`);
     if (hull.strength === 0) {
       assert.equal(hull.body.opacity, 1, `${label}: the full opaque hull must return before ground contact.`);
       assert.equal(hull.lens, null); assert.equal(hull.rim, null);
+      assert.deepEqual(hull.lenses, []); assert.deepEqual(hull.rims, []);
       continue;
     }
     assert.ok(hull.lens && hull.rim && hull.distortion, `${label}: active camouflage needs actual masked refraction, rim and SVG displacement.`);
-    assert.equal(hull.lens.source, hull.source); assert.equal(hull.rim.source, hull.source); assert.equal(hull.rim.href, hull.source);
-    assert.ok(hull.lens.mask.includes(hull.source), `${label}: refraction must be masked to the same painted silhouette.`);
-    assert.equal(hull.lens.size, '100% 100%'); assert.equal(hull.lens.repeat, 'no-repeat');
-    assert.equal(hull.lens.animation, 'none'); assert.equal(hull.lens.transition, '0s');
-    for (const layer of [hull.body, hull.lens, hull.rim]) assert.ok(['x', 'y', 'width', 'height'].every(key =>
-      Math.abs(layer[key] - hull.image[key]) < 1), `${label}: an optical layer drifted away from the real ship rectangle.`);
-    assert.ok(Math.abs(hull.lens.opacity - cloak.refractionOpacity) < .002);
-    assert.ok(Math.abs(hull.rim.opacity - cloak.rimOpacity) < .002);
-    for (const [key, expected] of [['x', cloak.noiseOffsetX], ['y', cloak.noiseOffsetY], ['scale', cloak.distortionScale]]) {
-      assert.ok(Math.abs(hull.distortion[key] - expected) < .02, `${label}: optical turbulence must be derived from the saved clock.`);
-      if (frame.reducedMotion) assert.equal(hull.distortion[key], 0, `${label}: reduced motion must stop optical turbulence.`);
+    assert.equal(hull.lenses.length, hull.views.length); assert.equal(hull.rims.length, hull.views.length);
+    for (const view of hull.views) {
+      const lenses = hull.lenses.filter(lens => lens.view === view.id);
+      const rims = hull.rims.filter(rim => rim.view === view.id);
+      assert.equal(lenses.length, 1, `${label}: each painted view needs exactly one matching refraction layer.`);
+      assert.equal(rims.length, 1, `${label}: each painted view needs exactly one matching rim.`);
+      const lens = lenses[0], rim = rims[0];
+      assert.equal(lens.source, view.source); assert.equal(rim.source, view.source); assert.equal(rim.href, view.source);
+      assert.ok(lens.mask.includes(view.source), `${label}: refraction must be masked to the same painted silhouette.`);
+      assert.equal(lens.size, '100% 100%'); assert.equal(lens.repeat, 'no-repeat');
+      assert.equal(lens.animation, 'none'); assert.equal(lens.transition, '0s');
+      for (const layer of [lens, rim]) {
+        assert.ok(['x', 'y', 'width', 'height'].every(key => Math.abs(layer[key] - view.image[key]) < 1),
+          `${label}: an optical layer drifted away from its actual ${view.id} image.`);
+        assert.equal(layer.transform, view.transform, `${label}: optics must share the painted view's full registration.`);
+        assert.equal(layer.transformOrigin, view.transformOrigin, `${label}: optics must rotate around the same source pivot.`);
+      }
+      assert.ok(Math.abs(lens.opacity - cloak.refractionOpacity * view.opacity) < .002);
+      assert.ok(Math.abs(rim.opacity - cloak.rimOpacity * view.opacity) < .002);
+      assert.ok(lens.distortion, `${label}: every active refraction must resolve its actual displacement filter.`);
+      for (const [key, expected] of [['x', cloak.noiseOffsetX], ['y', cloak.noiseOffsetY], ['scale', cloak.distortionScale]]) {
+        assert.ok(Math.abs(lens.distortion[key] - expected) < .02, `${label}: optical turbulence must be derived from the saved clock.`);
+        if (frame.reducedMotion) assert.equal(lens.distortion[key], 0, `${label}: reduced motion must stop optical turbulence.`);
+      }
     }
+    assert.ok(Math.abs(hull.lenses.reduce((sum, lens) => sum + lens.opacity, 0) - cloak.refractionOpacity) < .002,
+      `${label}: the complete refraction envelope must survive the view mixture.`);
+    assert.ok(Math.abs(hull.rims.reduce((sum, rim) => sum + rim.opacity, 0) - cloak.rimOpacity) < .002,
+      `${label}: the complete rim envelope must survive the view mixture.`);
   }
   assert.equal(new Set(frame.anchorIds).size, frame.anchorIds.length, `${label}: formation anchors must not overwrite one another.`);
   const formation = api.arrivalFormationSlots(frame.team);
@@ -535,6 +604,32 @@ function assertSpatial(frame, label) {
     }
   }
   const a = frame.anchors;
+  for (const pod of frame.flightPods) {
+    const slot = formation.find(member => member.id === pod.member);
+    assert.ok(slot, `${label}: the pod must belong to the selected formation.`);
+    assert.ok(Math.abs(pod.elapsedMs - (frame.elapsedMs - slot.delayMs)) <= 1,
+      `${label}: each pod must use its own saved-clock offset.`);
+    const entry = api.arrivalPodEntryFrame(pod.elapsedMs, frame.reducedMotion);
+    assert.equal(pod.phase, entry.phase); assert.equal(pod.shutters, entry.shutters);
+    assert.equal(pod.deployment, entry.shuttersOpen); assert.equal(pod.heat, entry.heat);
+    assert.equal(pod.hullHeat, entry.hullHeat);
+    assert.deepEqual(pod.panels.map(panel => panel.id), ['upper', 'lower'],
+      `${label}: each pod needs two independent rigid control petals.`);
+    const prefix = pod.member === 'player' ? '' : pod.member + '-';
+    for (const panel of pod.panels) {
+      const art = api.ARRIVAL_POD_FLIGHT_PANELS.find(part => part.id === panel.id);
+      assert.equal(panel.angle, api.arrivalPodPanelAngle(art, entry.shuttersOpen));
+      assert.ok(Math.abs(panel.renderedAngle - panel.angle) < .001,
+        `${label}: the browser must render the panel's mechanical angle.`);
+      assert.notEqual(panel.clip, 'none', `${label}: the petal must be isolated from the original hull.`);
+      const hinge = a[`${prefix}shutter-${panel.id}-hinge`], socket = a[`${prefix}shutter-${panel.id}-socket`];
+      assert.ok(hinge && socket && distance(hinge, socket) <= 1.5,
+        `${label}: ${pod.member} ${panel.id} panel must rotate about its own attached hinge.`);
+    }
+    const bow = a[`${prefix}bow-shock-origin`];
+    if (bow?.opacity > .02) assert.ok(a[`${prefix}pod-nose`] && distance(bow, a[`${prefix}pod-nose`]) <= 1.5,
+      `${label}: the bow shock must remain attached to the moving nose.`);
+  }
   for (const effect of formation.flatMap(slot => ['release-origin', 'trail-origin']
     .map(id => `${slot.id === 'player' ? '' : slot.id + '-'}${id}`))) {
     if (!a[effect] || a[effect].opacity < .02) continue;
@@ -1268,6 +1363,41 @@ try {
         }
       });
     }
+  }
+
+  for (const viewport of viewports) {
+    await check(`${viewport.id}: pod petals stay attached through deployment, pause and reduced motion`, async () => {
+      await page.setViewportSize({ width: viewport.width, height: viewport.height });
+      const plan = { version: 1, method: 'pod', team: 'triad' };
+      await openShot(primaryMission.id, 'atmosphere', false, api.DEFAULT_SHIP_ID, plan);
+      await waitElapsed(api.ARRIVAL_POD_SHUTTERS_OPEN_START_MS + 350, 'atmosphere');
+      await page.getByRole('button', { name: 'Pause', exact: true }).click();
+      await page.locator('[data-arrival-status="paused"]').waitFor();
+      const paused = await readFrame();
+      assertSpatial(paused, `${viewport.id}-pod-petals-paused`);
+      assert.ok(paused.flightPods.some(pod => pod.deployment > 0 && pod.deployment < 1),
+        'The real Pause button must freeze an observed mechanical deployment, not only an endpoint.');
+      await page.waitForTimeout(350);
+      const held = await readFrame();
+      assert.equal(held.elapsedMs, paused.elapsedMs);
+      assert.deepEqual(held.flightPods, paused.flightPods, 'A native pause freezes every petal, hull and heat envelope.');
+      for (const [id, anchor] of Object.entries(paused.anchors).filter(([id]) => /shutter-|bow-shock|trail-|pod-(nose|tail)/.test(id))) {
+        assert.deepEqual(held.anchors[id], anchor, `${id}: no attachment may advance on another clock while paused.`);
+      }
+      report.samples.push({ label: `${viewport.id}-pod-petals-paused`, ...paused });
+      await page.getByRole('button', { name: 'Reprendre l’arrivée', exact: true }).click();
+      const lastDelay = Math.max(...api.arrivalFormationSlots('triad').map(slot => slot.delayMs));
+      await waitElapsed(api.ARRIVAL_POD_SHUTTERS_OPEN_END_MS + lastDelay + 150, 'atmosphere');
+      const opened = await capture(`${viewport.id}-pod-petals-opened`);
+      assert.equal(opened.flightPods.length, 3);
+      assert.ok(opened.flightPods.every(pod => pod.shutters === 'open' && pod.deployment === 1));
+      await openShot(primaryMission.id, 'atmosphere', true, api.DEFAULT_SHIP_ID, plan);
+      await waitElapsed(api.ARRIVAL_POD_SHUTTERS_OPEN_START_MS + lastDelay + 150, 'atmosphere');
+      const reduced = await capture(`${viewport.id}-pod-petals-reduced-motion`);
+      assert.equal(reduced.reducedMotion, true);
+      assert.ok(reduced.flightPods.every(pod => pod.deployment === 1 && pod.panels.every(panel => Math.abs(panel.renderedAngle) < .001)),
+        'Reduced motion retains fully deployed petals without gradual mechanical travel.');
+    });
   }
 
   await check('Reduced motion preserves sockets, ground contact and the native cut duration', async () => {

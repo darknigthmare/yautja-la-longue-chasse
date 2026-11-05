@@ -1,0 +1,78 @@
+[
+  {
+    "id": "pod-flight-core",
+    "prompt": "Use case: precise-object-edit. Asset type: individual game sprite, transparent PNG, 1536x1024 landscape. Edit the provided Yautja drop pod side-view sprite to create ONLY its fixed central fuselage. Preserve exactly the original nose pointing right, three orange rear thruster apertures on the left, dark hammered metal, bronze narrow edges, central swept spine, original scale and camera, nose at x1400 y506 and thrusters near x185 y515 in a 1536x1024 canvas. Remove ONLY the large deployed upper aerodynamic petal and the large deployed lower petal. Repair the little fuselage attachment regions so the stationary core is continuous and credible underneath separate animated petals. Keep the central horizontal body exactly in place. Remove all background streaks and halos: outside the actual metal silhouette is genuinely transparent alpha. No new wings, no stars, no ground, no exhaust, no text, no redesign, no cropping. This is a production separated part that will be composed with the original two petals in the engine.",
+    "referenceImages": [
+      "/workspace/scratch/d7259bc0528d/yautja-pod-continuation/public/game/planet-arrival/v1/pod-flight.webp"
+    ],
+    "transparentBackground": true,
+    "mode": "built-in image_gen",
+    "source": "/workspace/scratch/d7259bc0528d/generated_images/exec-d29bd267-fb27-461a-97e5-6efb17caf04d.png",
+    "sourcePath": "production/pod-systems-20261105/art/sources/pod-flight-core.png"
+  },
+  {
+    "id": "pod-destruction-core",
+    "prompt": "Use case: stylized-concept. Asset type: one separate VFX sprite for a side-view realistic sci-fi game. Create a compact Yautja drop pod self-destruct energy burst, its initial bright amber-white plasma core with irregular orange ionized flame lobes and a few slender hot sparks. Cinematic detailed film-composite quality matching dark gunmetal and bronze Yautja machinery. Center the energy origin at the exact middle of a square canvas; symmetrical overall volume but naturally uneven flames, finite fully visible glow contained well inside transparent margins. Warm white center, amber orange edges, sparse faint teal electrical filaments. Transparent PNG with real graded alpha for light and haze, no black backdrop, no opaque background, no checkerboard drawing. No spacecraft, no characters, no ground, no mushroom cloud, no labels, no borders. An isolated energy flash that can be scaled and faded in Canvas at the pod's fixed location. Preserve 15 percent empty transparent margin on all sides.",
+    "referenceImages": [],
+    "transparentBackground": true,
+    "mode": "built-in image_gen",
+    "source": "/workspace/scratch/d7259bc0528d/generated_images/exec-26e4d303-580c-40eb-b5a6-1d55665323e7.png",
+    "sourcePath": "production/pod-systems-20261105/art/sources/pod-destruction-core.png"
+  },
+  {
+    "id": "pod-destruction-metal-shard",
+    "prompt": "Use case: precise-object-edit. Asset type: one independent game debris sprite. From the reference Yautja drop-pod shell make ONE small broken piece of its curved gunmetal outer armor. Preserve the distinctive hammered dark metal, thin aged bronze trim, organic elongated raised rib and black inset channels of that exact pod. Three-quarter side view suitable for tumbling in a 2D game. A single asymmetric curved metal shard with a broken rough edge and barely glowing orange hot fracture; no complete pod, no rocks, no other separate pieces, no smoke, no ground, no background, no text. Center the complete fragment in a square 1024 canvas with at least 20 percent genuinely transparent empty padding. Crisp physical shape with realistic highlights, not an icon. This will replace the rock currently reused for pod self-destruction.",
+    "referenceImages": [
+      "/workspace/scratch/d7259bc0528d/yautja-pod-continuation/public/game/planet-arrival/v1/pod-ground.webp"
+    ],
+    "transparentBackground": true,
+    "mode": "built-in image_gen",
+    "source": "/workspace/scratch/d7259bc0528d/generated_images/exec-757455b7-7ad6-4ad2-aa5a-c1f28f0ab0e6.png",
+    "sourcePath": "production/pod-systems-20261105/art/sources/pod-destruction-metal-shard.png"
+  },
+  {
+    "id": "pod-entry-bow-shock",
+    "prompt": "Use case: stylized-concept. Asset type: one separate atmospheric re-entry VFX sprite for a realistic 2D side-view game. A thin curved crescent of white-hot amber plasma, a bow shock in front of a rounded alien capsule moving RIGHT. The crescent is shaped like a closing parenthesis ), convex edge on the RIGHT and hollow side opening LEFT, NOT a complete ring. Its brightest tip is near x=65% y=50% of a square canvas; the upper and lower tips curl to the left, with small orange gas filaments trailing left. No capsule or solid object in the image; this is ONLY the luminous thin shock arc with transparent center and genuinely transparent graded outer haze. Compact, finely detailed realistic film-composite effect, warm white at the edge, amber then orange wisps behind. Fully contained with 15% transparent margin. Do not add a fireball, cone, lightning bolt, moon, planet, text, shadow, ground, black rectangle or painted checkerboard.",
+    "referenceImages": [],
+    "transparentBackground": true,
+    "mode": "built-in image_gen",
+    "source": "/workspace/scratch/d7259bc0528d/generated_images/exec-fd71fef4-2e3b-42bf-a3d9-ce7361471484.png",
+    "sourcePath": "production/pod-systems-20261105/art/sources/pod-entry-bow-shock.png"
+  },
+  {
+    "id": "pod-destruction-pressure-ring",
+    "prompt": "Use case: stylized-concept. Asset type: one independent ground-pressure VFX sprite for a 2D side-view cinematic science-fiction game. A ground-level expanding pressure ring of vapor and fine warm ash, shown in a shallow oblique side view so it forms a wide HORIZONTAL ELLIPSE, about four times wider than its visual height. Center of ring exactly centered on canvas. Empty genuinely transparent interior, thin broken rim of pale grey compressed air and amber-lit dust, realistic swirled particles. No ground plane, no rocks, no spacecraft, no flames filling the center. Each side of the ellipse is clearly visible and the whole ring fades softly into true transparency. Wide landscape canvas with generous transparent margins, no text or diagram marks. This is a compact fictional drop-pod self-destruction shockwave, not a huge explosion.",
+    "referenceImages": [],
+    "transparentBackground": true,
+    "mode": "built-in image_gen",
+    "source": "/workspace/scratch/d7259bc0528d/generated_images/exec-9da82c27-811d-4a5b-827f-3c7fa1d663af.png",
+    "sourcePath": "production/pod-systems-20261105/art/sources/pod-destruction-pressure-ring.png"
+  },
+  {
+    "id": "pod-destruction-scorch",
+    "prompt": "Use case: stylized-concept. Asset type: one persistent scorch decal sprite for a realistic side-view 2D sci-fi game. A compact patch of black carbon dust, charred grey fine ash and a few tiny melted gunmetal beads left by a small fictional alien drop pod after self destruction. Top surface seen at a shallow angle, a flattened HORIZONTAL OVAL 3.7 times wider than high. Front and back edges soft, irregular powdery feathering. No crater hole, no boulders, no intact machinery, no obvious vegetation, no environment, no flame or smoke plume. It must work over jungle earth, ice, sand or stone by compositing: real alpha transparency between particles, no surrounding ground material baked into the sprite. Low warm light barely catches two cooled metal grains. Centered completely inside a landscape canvas with wide transparent margins. No text, no frame, no checkerboard drawn.",
+    "referenceImages": [],
+    "transparentBackground": true,
+    "mode": "built-in image_gen",
+    "source": "/workspace/scratch/d7259bc0528d/generated_images/exec-a3f69465-8562-4de2-8a2a-764f98076150.png",
+    "sourcePath": "production/pod-systems-20261105/art/sources/pod-destruction-scorch.png"
+  },
+  {
+    "id": "pod-entry-plasma-wake",
+    "prompt": "Use case: stylized-concept. Asset type: one isolated atmospheric plasma wake sprite for a side-view science-fiction game. A narrow aerodynamic wake behind an alien capsule moving horizontally RIGHT. Bright compact orange-white attachment head at x=83% y=50% of a wide landscape canvas, streaking and broadening gently LEFT into thin orange, copper and pale gold turbulent wisps. The plasma must trail LEFT from the head; no right-pointing rocket flame. Realistic film-composite gas turbulence, asymmetrical small filaments, sharply defined white hot origin, tapering density and alpha along left tail. True graded alpha transparency; fully visible with 10% empty transparent padding around outermost wisps. Landscape 1536x1024. Only plasma effect, no ship, no metal, no planet, no space backdrop, no black box, no text, no panel, no water.",
+    "referenceImages": [],
+    "transparentBackground": true,
+    "mode": "built-in image_gen",
+    "source": "/workspace/scratch/d7259bc0528d/generated_images/exec-0e7b14f7-b5a8-42f9-9a69-ac5f9a6b06ec.png",
+    "sourcePath": "production/pod-systems-20261105/art/sources/pod-entry-plasma-wake.png"
+  },
+  {
+    "id": "pod-destruction-smoke",
+    "prompt": "Use case: stylized-concept. Asset type: one separate aftermath smoke sprite for a realistic side-view 2D sci-fi game. A compact thin column of warm charcoal grey smoke and tiny cooling embers rising from a destroyed alien drop capsule. The emission origin is near x=50% y=85% of a square canvas. Dense small grey coil at the base, two irregular semi-transparent wisps curl upward and apart with sparse ember specks only close to the bottom. Whole plume fully visible, naturally vanishes into alpha, no harsh boundary. Smoke neutral dark grey with subtle copper rim lighting to match dark gunmetal Yautja technology. No explosion, no mushroom cloud, no intact pod, no rocks, no scene, no ground plane, no labels. Realistic separate translucent PNG effect with real alpha; no white or black background. At least 12% transparent empty margin on every edge.",
+    "referenceImages": [],
+    "transparentBackground": true,
+    "mode": "built-in image_gen",
+    "source": "/workspace/scratch/d7259bc0528d/generated_images/exec-ec6a015d-3148-498f-938c-78e694cae349.png",
+    "sourcePath": "production/pod-systems-20261105/art/sources/pod-destruction-smoke.png"
+  }
+]

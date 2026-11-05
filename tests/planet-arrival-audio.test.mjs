@@ -63,7 +63,7 @@ test('a complete montage plays each authored cue once against the real timeline'
   assert.deepEqual(f.played, planetArrivalSoundCues(timeline).map(cue => cue.id));
   assert.equal(new Set(f.played).size, f.played.length, 'one cue per actual contact');
   assert.deepEqual(f.played.filter(id => !id.startsWith('debris-') && !id.startsWith('footstep-') && !id.startsWith('hunter-')),
-    ['destination', 'carrier', 'release', 'descent', 'reentry', 'impact', 'hatch', 'vent']);
+    ['destination', 'carrier', 'release', 'descent', 'reentry', 'shutters-open', 'shutters-lock', 'impact', 'hatch', 'vent']);
   assert.equal(f.played.filter(id => id.startsWith('debris-')).length, 9);
   assert.equal(f.played.filter(id => id.startsWith('footstep-')).length, 4);
   assert.deepEqual(f.transitions, ['orbit', 'carrier', 'descent', 'atmosphere', 'surface:jungle']);
@@ -289,7 +289,7 @@ test('reduced motion omits sounds for hidden movement and never catches them up 
     timeline = arrival.advancePlanetArrival(timeline, 100);
     f.sync(timeline, true, true);
   }
-  assert.deepEqual(f.played, ['destination', 'carrier', 'release', 'descent', 'reentry', 'impact', 'hatch', 'vent']);
+  assert.deepEqual(f.played, ['destination', 'carrier', 'release', 'descent', 'reentry', 'shutters-open', 'shutters-lock', 'impact', 'hatch', 'vent']);
   f.director.dispose();
 
   const g = harness(state(59_290));

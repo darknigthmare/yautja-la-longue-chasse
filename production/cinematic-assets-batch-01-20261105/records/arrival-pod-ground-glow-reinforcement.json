@@ -1,0 +1,133 @@
+{
+  "id": "arrival-pod-ground-glow-reinforcement",
+  "family": "pod-glow-reinforcement",
+  "biome": null,
+  "referenceImages": [
+    "/workspace/scratch/62884fa4f584/cinematic-assets-batch-01-20261105/work/references/pod-ground.webp"
+  ],
+  "sourceReference": {
+    "repository": "darknigthmare/yautja-la-longue-chasse",
+    "commit": "a7f830c05fd4b5801fd379ca7e7313774af2659a",
+    "path": "public/game/planet-arrival/v1/pod-ground.webp",
+    "sha256": "816235132f99cf19272702cc8f3e008d626616005c9b2fee556a94d4474806f1"
+  },
+  "intendedAnchor": {
+    "name": "source-full-canvas",
+    "normalized": [
+      0.5,
+      0.5
+    ],
+    "basis": "Overlay at (0,0), identical source portrait canvas 1024×1536. Three additional emission cores registered to source lamps; no crop.",
+    "emissionCentersPx": [
+      [
+        500.98,
+        78.28
+      ],
+      [
+        449.93,
+        119.04
+      ],
+      [
+        550.85,
+        119.16
+      ]
+    ]
+  },
+  "expectedDimensions": [
+    1024,
+    1536
+  ],
+  "prompt": "Use case: precise-object-edit. Asset ID: arrival-pod-ground-glow-reinforcement.\nFrom this exact reference create a transparent LIGHT-ONLY reinforcement overlay. Preserve the complete original PORTRAIT canvas, exactly1024pixelswide by1536pixelshigh, and preserve the ABSOLUTE position of the THREE orange lamps. Do not crop, recenter, resize or redraw the lamp locations.\nRemove all visible capsule body from the output, keeping only a modest soft amber-orange extra glow precisely centred over the three original lamps. Exact source centres from top-left: upper(501,78), lower-left(450,119), lower-right(551,119). The two lower centres must be at y119, NOT y124. The upper centre must be at x501, NOT x505. Be especially careful about those five-pixel shifts: this output will be superimposed directly over the source at identical full-canvas scale.\nThree small pale-amber cores with 10px radius and soft orange halos of about25px radius, no visible lamp housing. Each glow is compact, remains visibly separate, feathers to transparent naturally; no broad atmospheric glow. All alpha is zero outside x410..590,y35..160. The rest of the full tall canvas is EMPTY TRANSPARENT, including all edges. Keep this large empty canvas.\nOutput ONE RGBA PNG with true transparent background. ONLY the three emission halos, no metal, body, door, hull, sockets, reflections, exhaust, smoke, flames, rays, text, scenery, floor, shadows, checkerboard, white or black background. This is EXTRA light on top of the existing unmodified source, not an extraction or separation of baked source lighting. No change in the reference lamp positions.",
+  "file": "public/game/cinematics/batch-01-20261105/arrival-pod-ground-glow-reinforcement.png",
+  "generatedSource": "/workspace/scratch/62884fa4f584/generated_images/exec-3e16585b-e24d-47ee-8730-86509c0ebcb6.png",
+  "generationMode": "builtin-imagegen-reference",
+  "transparentBackgroundRequested": true,
+  "generated": true,
+  "integrated": false,
+  "testedInEngine": false,
+  "artisticHumanApproval": false,
+  "priorAttempts": [
+    {
+      "prompt": "Use case: precise-object-edit, registered additional light overlay for a game sprite.\nAsset ID: arrival-pod-ground-glow-reinforcement.\nUse the reference ONLY as an absolute registration guide for its three orange lamps. Create ONLY their very restrained amber-orange LIGHT REINFORCEMENT on a completely transparent canvas, with NO capsule body.\nKEEP FULL PORTRAIT CANVAS 1024×1536 EXACTLY. Do NOT crop, scale, recenter or enlarge the tiny lamps. All positions are pixels measured from top-left: precisely THREE light cores at (500.98,78.28), (449.93,119.04), (550.85,119.16). Their soft bright cores have radii about 11 pixels, surrounded by modest amber-orange feathered halos. This group remains high up near the top, around x=49% and y=6% of the full portrait canvas. The lower 85% of the canvas is entirely empty transparent.\nThe upper light is at y=78, the other two at y=119, forming the same triangular arrangement as the source. Preserve all three separately. Use subtle realistic optical bloom, small pale amber centres with orange falloff. No hard physical ring or lamp housing. Keep all emission strictly within x=390..610 and y=23..182. The halo fades naturally to fully transparent well inside the top edge; no visible pixels on any image border. Do not shift the lamps downward to create padding: the source registration is mandatory.\nThis is an ARTISTIC EXTRA EMISSION OVERLAY ONLY, not an extraction or removal of existing source illumination. The original source keeps its hull and baked glow unchanged. Emit NO hull, metal, cabin, doorway, reflections, vents, glass, physical socket, shadows, smoke, flames, rays, spaceship silhouette, scenery, text, grid, checkerboard, black or white background, or watermark.\nOne individual RGBA PNG with TRUE TRANSPARENT BACKGROUND, exact portrait dimensions and absolute positions from reference. Keep the full empty canvas even though the lights occupy a very small part near its top.",
+      "referenceImages": [
+        "/workspace/scratch/62884fa4f584/cinematic-assets-batch-01-20261105/work/references/pod-ground.webp"
+      ],
+      "generatedSource": "/workspace/scratch/62884fa4f584/generated_images/exec-7c90a305-ab47-4197-876e-ff7e2a599b69.png",
+      "reasonNotSelected": "Source light-centre offsets approximately3.8–6px."
+    },
+    {
+      "prompt": "Use case: precise-object-edit, registered additional light overlay for a game sprite.\nAsset ID: arrival-pod-ground-glow-reinforcement.\nUse the reference ONLY as an absolute registration guide for its three orange lamps. Create ONLY their very restrained amber-orange LIGHT REINFORCEMENT on a completely transparent canvas, with NO capsule body.\nKEEP FULL PORTRAIT CANVAS 1024×1536 EXACTLY. Do NOT crop, scale, recenter or enlarge the tiny lamps. All positions are pixels measured from top-left: precisely THREE light cores at (500.98,78.28), (449.93,119.04), (550.85,119.16). Their soft bright cores have radii about 11 pixels, surrounded by modest amber-orange feathered halos. This group remains high up near the top, around x=49% and y=6% of the full portrait canvas. The lower 85% of the canvas is entirely empty transparent.\nThe upper light is at y=78, the other two at y=119, forming the same triangular arrangement as the source. Preserve all three separately. Use subtle realistic optical bloom, small pale amber centres with orange falloff. No hard physical ring or lamp housing. Keep all emission strictly within x=390..610 and y=23..182. The halo fades naturally to fully transparent well inside the top edge; no visible pixels on any image border. Do not shift the lamps downward to create padding: the source registration is mandatory.\nThis is an ARTISTIC EXTRA EMISSION OVERLAY ONLY, not an extraction or removal of existing source illumination. The original source keeps its hull and baked glow unchanged. Emit NO hull, metal, cabin, doorway, reflections, vents, glass, physical socket, shadows, smoke, flames, rays, spaceship silhouette, scenery, text, grid, checkerboard, black or white background, or watermark.\nOne individual RGBA PNG with TRUE TRANSPARENT BACKGROUND, exact portrait dimensions and absolute positions from reference. Keep the full empty canvas even though the lights occupy a very small part near its top.\nPRECISION CORRECTION FROM THE SECOND REFERENCE: the second image is the first generated glow attempt. Its centres measured (504.82,78.24),(453.24,123.81),(553.92,124.29). Correct ONLY this registration: move the top core and its halo 3.84 pixels LEFT; move the lower-left core and halo 3.31 pixels LEFT and 4.77 pixels UP; move the lower-right core and halo 3.07 pixels LEFT and 5.13 pixels UP. Desired final exact centres remain (500.98,78.28),(449.93,119.04),(550.85,119.16). Align them directly to the lamps in the FIRST source reference. Preserve the same 1024×1536 canvas, keep ONLY extra light, no capsule. Also make the halo more compact and subtle; all alpha smoothly ends before y=20 at top and y=185 at bottom. All borders must have zero visible alpha. No other changes.",
+      "referenceImages": [
+        "/workspace/scratch/62884fa4f584/cinematic-assets-batch-01-20261105/work/references/pod-ground.webp",
+        "/workspace/scratch/62884fa4f584/generated_images/exec-7c90a305-ab47-4197-876e-ff7e2a599b69.png"
+      ],
+      "generatedSource": "/workspace/scratch/62884fa4f584/generated_images/exec-485fed87-4e4e-4eb8-a597-c1667d67a40c.png",
+      "reasonNotSelected": "Source light-centre offsets3.61/4.74/5.34px. Third attempt reduces all three below0.63px."
+    }
+  ],
+  "selectionReason": "Lowest measured source light-core displacement among three independent builtin-imagegen attempts; no pixel editing, source hull untouched.",
+  "reinforcementOnly": true,
+  "limitation": "Additional emission overlay only. Original baked glow is retained. Exact per-pixel extraction and in-engine registration are not claimed.",
+  "technicalQA": {
+    "format": "PNG",
+    "mode": "RGBA",
+    "dimensions": [
+      1024,
+      1536
+    ],
+    "bytes": 662312,
+    "sha256": "345cb95a0bbf7f27457ac070595a062e4c3330358e539c5b0579d48f7adb86c0",
+    "fullyTransparentFraction": 0.9849770863850912,
+    "visibleAlphaOver16Pixels": 14913,
+    "borderAlphaOver16Pixels": 0,
+    "visibleBoundsAlphaOver16": [
+      409,
+      38,
+      592,
+      159
+    ],
+    "visiblePaddingFraction": {
+      "left": 0.3994140625,
+      "right": 0.4208984375,
+      "top": 0.024739583333333332,
+      "bottom": 0.8958333333333334
+    },
+    "passed": true,
+    "emissionRegistrationMeasurements": [
+      {
+        "sourceCenterPx": [
+          500.98,
+          78.28
+        ],
+        "generatedCenterPx": [
+          501.4157303370786,
+          78.28988764044944
+        ],
+        "distancePx": 0.43584250834939936
+      },
+      {
+        "sourceCenterPx": [
+          449.93,
+          119.04
+        ],
+        "generatedCenterPx": [
+          449.6195652173913,
+          118.54347826086956
+        ],
+        "distancePx": 0.5855797056613454
+      },
+      {
+        "sourceCenterPx": [
+          550.85,
+          119.16
+        ],
+        "generatedCenterPx": [
+          550.943722943723,
+          118.54545454545455
+        ],
+        "distancePx": 0.6216511126689663
+      }
+    ],
+    "emissionRegistrationMethod": "Centroid of R>240,G>195,alpha>200 within a40x40ROI around each measured source core. Source centres use R>240,G>195,alpha>240. This measures a visual core region, not an exact extracted mask."
+  }
+}

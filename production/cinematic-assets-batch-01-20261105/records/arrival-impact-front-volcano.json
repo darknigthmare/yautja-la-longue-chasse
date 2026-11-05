@@ -1,0 +1,47 @@
+{
+  "id": "arrival-impact-front-volcano",
+  "family": "impact-front",
+  "biome": "volcano",
+  "file": "public/game/cinematics/batch-01-20261105/arrival-impact-front-volcano.png",
+  "generatedSource": "/workspace/scratch/62884fa4f584/generated_images/exec-4327fa58-46a0-4670-8dd8-baac2f54a262.png",
+  "prompt": "Use case: stylized-concept. Production 2D cinematic VFX sprite for Yautja The Long Hunt.\nAsset ID: arrival-impact-front-volcano.\nImage 1 is only the painted material finish, lighting, low wide framing and central-clearance family reference. Image 2 is only game context, not an edit target. Create a new individual effect with its own physically different material shape, never copy their scene or capsule.\nSubject: A low, wide fan of cold charcoal volcanic ash and crushed basalt grit. Dense granular dark-gray tongues spread low and outward; one short broken lobe on the left, two longer ragged fingers on the right, sparse angular porous chips. Use visibly heavy granular ash with softer sparse gray dust above, never a generic brown cloud. No lava, fire, embers, molten glow or smoke from burning.\nNear-ground side view with slight top view onto the radial front. Intended contact origin x=50%,y=78% of full canvas. Single cohesive asymmetric plume, central valley substantially clear so a capsule can be layered behind. All visible particles must fit inside x=15–85%,y=25–84%, with at least12–15% fully transparent padding every side. Naturally soft true-alpha edges; no clipped particles, no rectangular haze, no baked ground plane/shadow.\nOne landscape1536x1024 RGBA PNG with TRUE TRANSPARENT BACKGROUND. Semi-realistic painted2.5D material, subtle neutral upper-left lighting, realistic subdued color, high readability at250px wide, no heavy black outline.\nExclude ship, capsule, hunters, creatures, text, labels, watermark, frame, grid, atlas, multiple panels, background, horizon, floor, black/white backdrop and baked checkerboard. ONE independent effect only.",
+  "referenceImages": [
+    "/workspace/scratch/62884fa4f584/cinematic-assets-batch-01-20261105/public/game/cinematics/batch-01-20261105/arrival-impact-front-jungle.png",
+    "/workspace/scratch/62884fa4f584/qa-recovery/spatial-a7f830c/desktop-landing-impact.png"
+  ],
+  "generationMode": "builtin-imagegen-reference",
+  "intendedAnchor": {
+    "name": "ground-capsule-reference",
+    "normalized": [
+      0.5,
+      0.78
+    ],
+    "basis": "requested full-frame contact; visual source review only, integration pending"
+  },
+  "generated": true,
+  "integrated": false,
+  "testedInEngine": false,
+  "artisticHumanApproval": false,
+  "visualReview": {
+    "reviewer": "assistant",
+    "result": "pass-with-integration-pending",
+    "notes": "Porous basalt chips and coarse ash fingers distinct from ice/jungle; asymmetrical wings and open central seam; no luminous lava or background. Subdued upper-left light."
+  },
+  "qa": {
+    "mode": "RGBA",
+    "width": 1536,
+    "height": 1024,
+    "transparentPixelFraction": 0.7989209493001302,
+    "visiblePixelCountAlphaOver16": 202454,
+    "borderPixelCountAlphaOver16": 0,
+    "alphaOver16Bounds": [
+      105,
+      401,
+      1404,
+      812
+    ],
+    "passed": true
+  },
+  "sha256": "69fb0a1b232fc64068c7dd9f1837a2eaf11545506d1911d28429222d5f66e525",
+  "bytes": 1307968
+}

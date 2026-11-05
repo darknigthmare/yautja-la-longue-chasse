@@ -2,7 +2,7 @@ name: Planetary arrival spatial audit
 
 on:
   pull_request:
-    branches: [main]
+    branches: [main, fix/cinematic-spatial-audit-20261105]
     paths:
       - 'app/game/PlanetArrivalCinematic*'
       - 'app/game/systems/planetArrival*.ts'
@@ -20,6 +20,7 @@ on:
       - 'app/game/systems/worldBlueprints.ts'
       - 'app/dev/**'
       - 'public/game/planet-arrival/**'
+      - 'public/game/cinematics/batch-01-20261105/**'
       - 'tests/planet-arrival*.test.mjs'
       - 'tests/planet-insertion.test.mjs'
       - 'tests/ship-insertion-energy.test.mjs'
@@ -67,6 +68,7 @@ jobs:
             /public/audio/
             /public/game/ship-interior/
             /public/game/planet-arrival/
+            /public/game/cinematics/batch-01-20261105/
       - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
         with:
           node-version: '22'

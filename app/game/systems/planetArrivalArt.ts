@@ -1,6 +1,7 @@
 import { shipProfileAssetPath, type ShipId } from '../shipCatalogue';
 import type { BiomeId } from '../types';
 import { ARRIVAL_GROUND_ART } from './planetArrivalGroundArt';
+import { arrivalVfxArtForBiome } from './planetArrivalVfxArt';
 
 /**
  * Screen-space calibration of the existing, individually authored artwork.
@@ -93,14 +94,12 @@ export const ARRIVAL_COMPLETION_SPRITES = Object.freeze({
   vents: { left: normalized(332, 570, 1024, 1536), right: normalized(655, 570, 1024, 1536) },
 });
 
-const IMPACT_ART = Object.freeze({
-  dry: { ...ARRIVAL_SPRITES.impactDust, path: '/game/planet-arrival/v1/impact-dust.webp', material: 'dry' },
-  ice: { width: 1774, height: 887, foot: normalized(887, 835, 1774, 887), path: '/game/planet-arrival/v2/impact-ice-powder.webp', material: 'ice' },
-  wet: { width: 1774, height: 887, foot: normalized(887, 824, 1774, 887), path: '/game/planet-arrival/v2/impact-water-spray.webp', material: 'wet' },
-});
-
 export function arrivalImpactArtForBiome(biome: BiomeId) {
-  return biome === 'ice' ? IMPACT_ART.ice : biome === 'ocean' || biome === 'swamp' ? IMPACT_ART.wet : IMPACT_ART.dry;
+  const art = arrivalVfxArtForBiome(biome).front;
+  // Sound retains its three audited physical classes; the image now follows the
+  // actual destination instead of recolouring one dry or wet contact everywhere.
+  const material = biome === 'ice' ? 'ice' : biome === 'ocean' || biome === 'swamp' ? 'wet' : 'dry';
+  return { width: art.width, height: art.height, foot: art.anchor, path: art.path, material };
 }
 
 const globe = (cx: number, cy: number, rx: number, ry: number): ArrivalPlanetArt => ({
