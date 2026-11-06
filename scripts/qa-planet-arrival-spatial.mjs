@@ -69,6 +69,7 @@ const report = {
 };
 const requested = new Set(), missing = new Set();
 let browser, harness, harnessDir, nativeServer, nativeExit = null, page, x11Client, currentCheck = 'setup';
+let harnessContext, compositionVideo, compositionFinalization;
 const x11LaunchArgs = ['--ozone-platform=x11', '--disable-gpu', '--disable-gpu-compositing', '--no-xshm'];
 
 const fixtureBundle = await build({
@@ -1838,11 +1839,11 @@ async function prepareMoment(target = page, region = 'scene', captureAtMs, captu
 
 async function preflightMomentRoi(viewport, variant, target = page) {
   const referenceCapture = Object.freeze({ method: 'Page.captureScreenshot',
-    backend: 'chromium-aura-view-copy-output',
-    parameters: Object.freeze({ format: 'png', fromSurface: false, captureBeyondViewport: false, optimizeForSpeed: true }) });
+    backend: 'chromium-renderer-surface-copy-output',
+    parameters: Object.freeze({ format: 'png', fromSurface: true, captureBeyondViewport: false, optimizeForSpeed: true }) });
   const calibration = { viewport: viewport.id, kind: 'paused-capture-calibration-only', passed: false,
     variant: variantCaptureIdentity(variant),
-    scope: 'Native Pause for this exact insertion variant. Three intact Chromium Aura-view CopyOutput references without clip or resize. The full X11 image and restored CDP image must equal normal; markers must preserve every original target pixel. These strict comparisons qualify only this observed paused profile. Never final-formation visual evidence.',
+    scope: 'Native Pause for this exact insertion variant. Three intact Chromium renderer-surface CopyOutput references without clip or resize. Auxiliary Playwright recording is requested on the harness; its activation or continuity is not measured. The full X11 image and restored CDP image must equal normal; markers must preserve every original target pixel. These strict comparisons qualify only this observed paused profile. Never final-formation visual evidence.',
     referenceCapture,
     candidatePolicy: { sources: ['full-viewport'], selection: 'single-full-viewport-exact-cdp-x11-and-full-restoration' },
     images: [], observations: [], candidates: [] };
@@ -1861,7 +1862,7 @@ async function preflightMomentRoi(viewport, variant, target = page) {
     members: moment.members, supports: moment.supports, cloakHulls: moment.cloakHulls,
     ...captureLayout(moment), focus: moment.focus });
   const source = async (suffix, session, size) => {
-    // Aura view CopyOutput is distinct from both renderer-surface capture and X11.
+    // Renderer-surface CopyOutput is distinct from the native X11 screen copy.
     // Keep its unmodified PNG; the full paused RGBA comparisons below decide equality.
     const screenshot = await session.send(referenceCapture.method, referenceCapture.parameters);
     const bytes = Buffer.from(screenshot.data, 'base64');
@@ -2118,6 +2119,31 @@ function assertFinalFormation(frame, plan, label) {
   }
 }
 
+async function finalizeCompositionCapture() {
+  const receipt = report.nativeCapture?.compositionCapture;
+  if (!receipt) return;
+  if (!compositionFinalization) compositionFinalization = (async () => {
+    if (!harnessContext) { receipt.finalization.status = 'context-not-created'; return; }
+    receipt.nodeMoments.closeStarted = { wallTime: new Date().toISOString(), monotonicMs: performance.now() };
+    try {
+      await harnessContext.close();
+      receipt.nodeMoments.contextClosed = { wallTime: new Date().toISOString(), monotonicMs: performance.now() };
+      if (!compositionVideo) throw new Error('The harness composition video handle is unavailable after context closure.');
+      const savedPath = await compositionVideo.path();
+      const bytes = await fs.readFile(savedPath);
+      receipt.video = { file: path.relative(out, savedPath), bytes: bytes.length, sha256: sha256(bytes) };
+      receipt.finalization.status = 'flushed-and-hashed';
+    } catch (error) {
+      receipt.finalization.status = 'failed';
+      receipt.finalization.error = { message: error.message, stack: error.stack };
+      throw error;
+    } finally {
+      receipt.nodeMoments.finalizationFinished = { wallTime: new Date().toISOString(), monotonicMs: performance.now() };
+    }
+  })();
+  return compositionFinalization;
+}
+
 try {
   if (process.env.ARRIVAL_SPATIAL_SOURCE_COMMIT) {
     assert.equal(sourceCommit, process.env.ARRIVAL_SPATIAL_SOURCE_COMMIT, 'Evidence must match the requested source commit.');
@@ -2131,8 +2157,24 @@ try {
     args: ['--no-sandbox', '--disable-dev-shm-usage', ...x11LaunchArgs] });
   report.browserVersion = browser.version();
   await startX11Capture();
-  const context = await browser.newContext({ viewport: { width: 1440, height: 1000 }, hasTouch: true, reducedMotion: 'no-preference' });
-  page = await context.newPage(); observePage(page, 'native-component-host');
+  const compositionRecordVideo = { dir: path.join(out, 'composition-video'), size: { width: 16, height: 16 } };
+  report.nativeCapture.compositionCapture = {
+    kind: 'auxiliary-playwright-record-video-request', owner: 'single-harness-context-and-page',
+    requestedOptions: { recordVideo: compositionRecordVideo },
+    scope: 'A persistent Playwright recording client is requested only for the harness. Full native paused pixel comparisons remain decisive. This auxiliary file is never visual, pose, clock or frame-selection evidence.',
+    startAcknowledgementObserved: false, screencastEventsObserved: false,
+    activationOrCadenceMeasured: false, continuousCaptureVerified: false,
+    limitations: 'Playwright sends startScreencast without awaiting its acknowledgement or first frame. If no frame arrives, its recorder can create a synthetic white frame at close; a WebM file, hash or declared frame rate cannot establish native capture activation or absolute continuity.',
+    nodeMoments: { configured: { wallTime: new Date().toISOString(), monotonicMs: performance.now() } },
+    finalization: { status: 'pending' }, video: null,
+  };
+  harnessContext = await browser.newContext({ viewport: { width: 1440, height: 1000 }, hasTouch: true, reducedMotion: 'no-preference',
+    recordVideo: compositionRecordVideo });
+  report.nativeCapture.compositionCapture.nodeMoments.contextCreated = { wallTime: new Date().toISOString(), monotonicMs: performance.now() };
+  page = await harnessContext.newPage();
+  compositionVideo = page.video();
+  report.nativeCapture.compositionCapture.nodeMoments.pageCreated = { wallTime: new Date().toISOString(), monotonicMs: performance.now() };
+  observePage(page, 'native-component-host');
 
   for (const viewport of viewports) {
     await page.setViewportSize({ width: viewport.width, height: viewport.height });
@@ -2504,7 +2546,8 @@ try {
     await waitElapsed(paused.elapsedMs + 100, 'atmosphere');
     assert.equal((await readFrame()).cloakPhase, 'active');
   });
-  await context.close();
+  currentCheck = 'Harness auxiliary composition video finalization';
+  await finalizeCompositionCapture();
 
   const nativeContext = await browser.newContext({
     viewport: { width: 1440, height: 1000 }, hasTouch: true, reducedMotion: 'no-preference',
@@ -2734,6 +2777,14 @@ try {
   console.error(error);
   process.exitCode = 1;
 } finally {
+  // Flush the harness-only diagnostic also on early failure, before report.json.
+  // Keep any native acquisition failure as the primary error.
+  try { await finalizeCompositionCapture(); }
+  catch (error) {
+    report.passed = false; process.exitCode = 1;
+    report.failure ??= { check: 'Harness auxiliary composition video finalization', message: error.message, stack: error.stack };
+    console.error(error);
+  }
   if (x11Client) {
     try { await x11Client.close(); }
     catch (error) {
