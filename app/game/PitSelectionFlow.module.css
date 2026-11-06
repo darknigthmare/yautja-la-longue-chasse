@@ -335,3 +335,11 @@
   .actions { position: relative; z-index: 4; }
   .actions button { overflow-wrap: anywhere; }
 }
+/* V147: campaign Yautja slot, above the roster grid. */
+.personalSlot { display: grid; grid-template-columns: auto 1fr; align-items: center; column-gap: 10px; flex: 0 0 auto; min-height: 44px; margin-bottom: 6px; padding: 7px 11px; border: 1px solid #b6a373; background: #14211c; color: #f0eadb; text-align: left; cursor: pointer; }
+.personalSlot span { grid-row: span 2; color: #ffdf94; font-size: .58rem; font-weight: 900; letter-spacing: .12em; }
+.personalSlot strong { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: .8rem; text-transform: uppercase; }
+.personalSlot small { color: #b5c3b8; font-size: .6rem; }
+.personalSlot[aria-pressed="true"] { border-color: #ffdda0; background: #574d2b; box-shadow: inset 0 0 0 1px #ffe1a1, 0 0 12px #d4a95d38; }
+.personalSlot:disabled { cursor: not-allowed; opacity: .55; }
+.personalSlot:focus-visible { outline: 2px solid #ffdf94; outline-offset: 2px; }

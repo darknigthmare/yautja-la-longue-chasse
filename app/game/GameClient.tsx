@@ -22,6 +22,9 @@ import HunterRigPreview from "./HunterRigPreview";
 import HunterChromaticForgeV113 from "./HunterChromaticForgeV113";
 import HunterPieceForgeV146, { type CustomizationApplyV146 } from "./HunterPieceForgeV146";
 import { emptyCustomizationV146, outfitForModeV146 } from "./systems/hunterCustomizationV146";
+import { appearanceForModeV147 } from "./systems/hunterModeAppearanceV147";
+import { createPitPersonalFighterV147 } from "./systems/pitPersonalFighterV147";
+import type { PitPersonalFighterPropV147 } from "./PitPersonalFighterCardV147";
 import { ClanPaletteContextV146 } from "./clanPaletteContextV146";
 import { normalizeHunterChromaticsV113, maskOriginForCustomizationV135, type HunterChromaticsV113, type ChromaticFacilityV115 } from "./hunterChromaticsV113";
 import { commitHunterChromaticsV116 } from "./systems/hunterChromaticPersistenceV116";
@@ -1032,6 +1035,21 @@ function withPitWriteLock({
 function campaignAppearanceV146(save: SaveGame): HunterAppearance {
   const outfit = outfitForModeV146(save.customizationV146 ?? emptyCustomizationV146(), "campaign");
   return outfit ? normalizeHunterAppearanceV146(outfit.appearance) : save.appearance;
+}
+
+/**
+ * V147: the campaign Yautja for THE PIT personal slot: its name, the outfit
+ * assigned to the Pit (else the campaign look) and its equipment. Read only.
+ */
+function pitPersonalFighterV147(save: SaveGame): PitPersonalFighterPropV147 {
+  const worn = appearanceForModeV147(save, "pit", normalizeHunterAppearanceV146);
+  return createPitPersonalFighterV147({
+    hunterName: save.profile.hunterName,
+    appearance: worn.appearance,
+    appearanceSource: worn.source,
+    outfitName: worn.outfitName,
+    loadout: save.loadout,
+  });
 }
 
 export default function GameClient() {
@@ -3941,6 +3959,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
   const activeHunterKit = activeHunterPreset
     ? playableKitForPreset(activeHunterPreset.id)
     : null;
+  const pitPersonalV147 = useMemo(() => pitPersonalFighterV147(save), [save]);
   const trophyRecords = useMemo(
     () =>
       [...save.trophies].sort(
@@ -5769,6 +5788,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
             controlBindings={save.settings.controlBindings}
             highContrast={save.settings.highContrastVision}
             lastReplay={lastPitReplay}
+            personalFighterV147={pitPersonalV147}
             reducedGore={save.settings.reducedGore}
             screenShake={save.settings.screenShake}
             unlockedCosmeticIds={pitUnlockedCosmeticIds}
