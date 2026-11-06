@@ -1,0 +1,29 @@
+{
+  "id": "predator-badlands",
+  "version": "0.2.0-reconstructed",
+  "originalVersionRecovered": false,
+  "reconstructedFrom": "0.1.0",
+  "campaigns": {
+    "weyland": 25,
+    "predator": 44
+  },
+  "inheritedScenes": 46,
+  "originalGameplayBridges": 23,
+  "depthPlanes": 4,
+  "originalSvgAssets": 18,
+  "artOneToOneCertified": false,
+  "nativeYautjaIntegration": false,
+  "primaryEntry": "JOUER_PREDATOR_BADLANDS_STANDALONE.html",
+  "modularEntry": "JOUER_PREDATOR_BADLANDS.html",
+  "standaloneRequiresBuildInGitCheckout": true,
+  "standaloneSha256": "0207263600687caee5ca18beca3dd734d02c4dde984e6d8ad02371f2a7838c84",
+  "qa": {
+    "legacyAssertions": 198,
+    "coreTests": 88,
+    "browserChecks": 86,
+    "browserMode": "in-memory Chromium",
+    "realOriginDiskPersistenceValidated": false,
+    "browserJavascriptErrors": 0,
+    "newScreenshots": 6
+  }
+}

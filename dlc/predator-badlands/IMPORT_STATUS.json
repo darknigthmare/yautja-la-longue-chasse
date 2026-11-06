@@ -1,35 +1,31 @@
 {
-  "status": "partial",
-  "recoveredVersion": "0.1.0",
-  "requestedVersion02Available": false,
-  "originalArchiveFileCount": 43,
-  "originalFilesCommittedDirectly": 35,
-  "originalImagesCommittedDirectly": {"svg": 18, "png": 0},
-  "derivedOutputNotCommitted": {
-    "path": "v0.1.0/JOUER_PREDATOR_BADLANDS_STANDALONE.html",
-    "rebuildCommand": "python3 dlc/predator-badlands/tools/build_standalone.py",
-    "byteExactRebuildTestedLocally": true,
-    "size": 67354,
-    "sha256": "f8be31ce49b3a1a6c7aa40c7cce0f974216e76ae16ab308e2c9d1b2e6b52f3f6"
-  },
-  "uncommittedOriginalImages": [
+  "status": "partial-github-import-with-functional-v02-reconstruction",
+  "recoveredOriginalVersion": "0.1.0",
+  "originalV02Recovered": false,
+  "v02Reconstruction": "0.2.0-reconstructed",
+  "allOriginalFilesAvailableLocally": true,
+  "allOriginalFilesCommitted": false,
+  "originalSvgFilesCommitted": 18,
+  "originalPngFilesCommitted": 0,
+  "newPngFilesCommitted": 0,
+  "filesAvailableLocallyButNotCommitted": [
+    "releases/ALIENS_TANTALUS_DLC_PREDATOR_BADLANDS_v0.1.0.zip",
+    "v0.1.0/JOUER_PREDATOR_BADLANDS_STANDALONE.html",
     "v0.1.0/screenshots/00_title.png",
     "v0.1.0/screenshots/01_wy_cockpit.png",
     "v0.1.0/screenshots/02_wy_finale.png",
     "v0.1.0/screenshots/03_pred_vines.png",
     "v0.1.0/screenshots/04_pred_kalisk.png",
     "v0.1.0/screenshots/05_pred_organic.png",
-    "v0.1.0/screenshots/06_pred_njohrr.png"
+    "v0.1.0/screenshots/06_pred_njohrr.png",
+    "v0.2.0/JOUER_PREDATOR_BADLANDS_STANDALONE.html",
+    "v0.2.0/qa/01_menu.png",
+    "v0.2.0/qa/02_puzzle.png",
+    "v0.2.0/qa/03_combat.png",
+    "v0.2.0/qa/04_meute.png",
+    "v0.2.0/qa/05_codex.png",
+    "v0.2.0/qa/06_mobile.png"
   ],
-  "originalArchiveSha256": "65fba89f2148ee36cea58bafde3f93066f5a1883dea02f10dfef95350194b320",
-  "completeRecoveryPackage": {
-    "committedToGit": false,
-    "driveUrl": "https://drive.google.com/file/d/1hAjCv4l_32d0GGzIDjBTkRUGiwlUs0_i/view",
-    "fileName": "BADLANDS_PR_IMPORT_20261106.zip",
-    "size": 2816483,
-    "sha256": "c388eb34f0d49944538773ba70fc896712432a2db2e9f186a02d72cf316205e9"
-  },
-  "nativeYautjaMenuIntegration": false,
-  "newVisualOneToOneCertification": false,
-  "newBrowserGameplayValidation": false
+  "nativeYautjaIntegration": false,
+  "oneToOneArtCertified": false
 }
