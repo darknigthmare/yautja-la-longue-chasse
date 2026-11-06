@@ -591,3 +591,43 @@ recette spatiale sont conservées. Le correctif demande une nouvelle passe
 Actions sur la tête publiée avant fusion ; les captures rejetées conservent
 leur statut. La revue React des callbacks et des nouveaux boutons n'a trouvé
 aucun autre blocage dans ces changements.
+
+### Conservation des commandes dans les migrations V111
+
+La matrice longue du candidat `e9287626` a ensuite signalé deux comparaisons
+de sauvegardes courantes, Save11→13 et Save12→13. Leur seul écart était la
+commande `hunt.podSelfDestruct`, ajoutée par les pods et absente des attentes.
+Les comparaisons exhaustives incluent maintenant explicitement cette seule
+commande ajoutée ; tous les anciens champs restent comparés intégralement.
+Le runtime et les publications historiques sont conservés.
+
+Une nouvelle régression utilise les vrais clients historiques Save11 et Save12
+avec X déjà affecté au camouflage. Elle vérifie la conservation de toutes les
+anciennes commandes, l'attribution d'une touche libre au pod, l'absence de
+conflit et la conservation après écriture/rechargement/export/import. Le fichier
+d'intégration passe **13/13** et la recette de compatibilité, identique aux
+14 fichiers du gate V94 models, passe **118/118**, sans test ignoré. Ces nombres
+se recouvrent. Le lint ciblé strict passe également.
+
+Le [reçu de régression V111](../../../production/qa/evidence/pr-114-117-integration-20261106/v111-regressions/verification-results.json)
+conserve la reproduction des deux échecs, les commandes, journaux et empreintes
+de la correction. L'inventaire courant est à nouveau régénéré et vérifié ; la
+qualification complète de la tête publiée reste le préalable à la fusion.
+
+### Preuve du recrutement et de l'affectation dans Wolf
+
+Sur `4e9a46b0b588cb0f861100119b9580ce909afa2c`, le workflow Wolf
+[42247747109](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/42247747109)
+passe **477 tests et 32 contrôles natifs**. Les captures originales
+[28 — recrutement en réserve](../../../production/qa/evidence/pr-114-117-integration-20261106/native-4e9a46b0/28-triad-recruited-reserve.png)
+et [29 — affectation à la coque](../../../production/qa/evidence/pr-114-117-integration-20261106/native-4e9a46b0/29-triad-assigned-to-hull.png)
+sont conservées avec le [rapport brut et son reçu](../../../production/qa/evidence/pr-114-117-integration-20261106/native-4e9a46b0/receipt.json).
+
+Le stockage observé contient d'abord les deux compagnons recrutés sans coque,
+puis un retour en réserve strictement identique à cet état, et enfin leur
+affectation explicite au vaisseau classique. Le handoff livre les deux partenaires
+actifs, une charge de 70 et un seul départ payé, y compris après refus puis
+reprise de l'écriture. Les accès rapides n'accordent aucune des huit inspections
+physiques. Le checkout et le commit synthétique affiché par le build ont le même
+arbre Git, vérifié par l'API. Cette preuve datée conserve ses propres sources et
+ne remplace pas les contrôles de la tête finale.

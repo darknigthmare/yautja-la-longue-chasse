@@ -1,0 +1,113 @@
+{
+  "recordedAt": "2026-11-06T16:03:41.995Z",
+  "base": "4e9a46b0b588cb0f861100119b9580ce909afa2c",
+  "commit": "c44d255704d7515e3119d46e63221650fd923d44",
+  "node": "v24.22.1",
+  "ci": {
+    "head": "e9287626acb0cc29d250c9cb6d87b36d833f0591",
+    "run": 42244348766,
+    "job": 127983351778,
+    "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/42244348766/job/127983351778",
+    "cause": "Only the new settings.controlBindings['hunt.podSelfDestruct']=['KeyX'] default was absent from two exhaustive current-runtime migration expectations; the previous campaign fields were preserved."
+  },
+  "scope": [
+    "tests/homeworld-continuation-integration-v111.test.mjs"
+  ],
+  "runtimeChanged": false,
+  "historicalCapsulesChanged": false,
+  "commands": [
+    {
+      "command": "node --experimental-strip-types --test --test-reporter=spec --test-name-pattern='Save11 to13|Save12 carried' tests/homeworld-continuation-integration-v111.test.mjs",
+      "log": "baseline-migration.log",
+      "phase": "before",
+      "exitCode": 1,
+      "tests": 2,
+      "pass": 0,
+      "fail": 2,
+      "cancelled": 0,
+      "skipped": 0,
+      "todo": 0
+    },
+    {
+      "command": "node --experimental-strip-types --test --test-reporter=spec tests/homeworld-continuation-integration-v111.test.mjs",
+      "log": "continuation-integration.log",
+      "phase": "after",
+      "exitCode": 0,
+      "tests": 13,
+      "pass": 13,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "todo": 0
+    },
+    {
+      "command": "node scripts/test-current-v111-v112.mjs",
+      "log": "current-v111-compatibility.log",
+      "phase": "after",
+      "exitCode": 0,
+      "tests": 118,
+      "pass": 118,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "todo": 0
+    },
+    {
+      "command": "node node_modules/eslint/bin/eslint.js tests/homeworld-continuation-integration-v111.test.mjs --max-warnings=0",
+      "log": "targeted-lint.log",
+      "phase": "after",
+      "exitCode": 0,
+      "warnings": 0
+    },
+    {
+      "command": "git diff --check",
+      "phase": "after",
+      "exitCode": 0
+    }
+  ],
+  "sameFilesAsV94ModelsGate": true,
+  "gateFiles": [
+    "tests/excel-history-preservation-v111.test.mjs",
+    "tests/field-tool-purchase-ui-v111.test.mjs",
+    "tests/field-tools-rites-v111.test.mjs",
+    "tests/homeworld-archive-continuation-v111.test.mjs",
+    "tests/homeworld-archivist-motion-v111.test.mjs",
+    "tests/homeworld-arrival-recovery-integration-v111.test.mjs",
+    "tests/homeworld-arrival-recovery-v111.test.mjs",
+    "tests/homeworld-continuation-integration-v111.test.mjs",
+    "tests/homeworld-continuation-journal-v111.test.mjs",
+    "tests/homeworld-evidence-v111.test.mjs",
+    "tests/homeworld-excel-history-v111.test.mjs",
+    "tests/homeworld-objectives-v111.test.mjs",
+    "tests/hunt-harvest-runtime-v111.test.mjs",
+    "tests/trophy-harvest-v111.test.mjs"
+  ],
+  "regression": "Genuine Save11 and Save12 clients produce custom-X profiles; current migration retains every old binding, chooses a free pod shortcut, preserves cloak-only X action and persists the exact controls through write/load/export/import.",
+  "artifacts": [
+    {
+      "path": "ci-models-e9287626.log",
+      "bytes": 420587,
+      "sha256": "4fe5fd3d5737c6a0af3ceb7ff4f9825297f3ad73497f357e3cdd9e95dbf7c865"
+    },
+    {
+      "path": "baseline-migration.log",
+      "bytes": 12602,
+      "sha256": "e63b3b42a8283b0bf5fca33806523492e029ec8bd4236364a3234d2cbae40407"
+    },
+    {
+      "path": "continuation-integration.log",
+      "bytes": 1864,
+      "sha256": "a2dfff9619e5af29ce26b6ebbb7138f87582d37e4998c92b15a31dc255d6afd5"
+    },
+    {
+      "path": "current-v111-compatibility.log",
+      "bytes": 14562,
+      "sha256": "629d2290ecd3c2e04b9f84276aa72de470692ac393ecad2e6daa6c0b8d6e09b1"
+    },
+    {
+      "path": "targeted-lint.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ]
+}

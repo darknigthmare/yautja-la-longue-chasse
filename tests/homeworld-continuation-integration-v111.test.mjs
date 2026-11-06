@@ -216,7 +216,8 @@ test('V111 Save11 to13 preserves the genuine V110 campaign and B document while 
   assert.deepEqual(migrated,{...previous,version:13,
     appearance:{...previous.appearance,chromaticsV113:{...DEFAULT_CHROMATICS_V113}},
     inventory:{...previous.inventory,fieldToolIds:[],harvestV112:emptyHarvestInventoryV112()},
-    settings:{...previous.settings,huntAccessibility:normalizeHuntAccessibilityV112(undefined)},
+    settings:{...previous.settings,huntAccessibility:normalizeHuntAccessibilityV112(undefined),
+      controlBindings:{...previous.settings.controlBindings,'hunt.podSelfDestruct':['KeyX']}},
   },'every pre-existing campaign field survives; additive hunting, accessibility and material fields use their production defaults');
   assert.deepEqual(migrated.appearance.chromaticsV113,DEFAULT_CHROMATICS_V113,
     'V113 does not select a pigment, decal or material for a genuine V110 appearance');
@@ -237,12 +238,42 @@ test('V111 genuine Save12 carried continuation migrates to13 without changing ei
   assert.deepEqual(migrated.save,{...previous,version:13,
     appearance:{...previous.appearance,chromaticsV113:{...DEFAULT_CHROMATICS_V113}},
     inventory:{...previous.inventory,fieldToolIds:[],harvestV112:emptyHarvestInventoryV112()},
-    settings:{...previous.settings,huntAccessibility:normalizeHuntAccessibilityV112(undefined)},
+    settings:{...previous.settings,huntAccessibility:normalizeHuntAccessibilityV112(undefined),
+      controlBindings:{...previous.settings.controlBindings,'hunt.podSelfDestruct':['KeyX']}},
   },'every V12 campaign field and carried continuation survives the additive migration');
   assert.equal(JSON.stringify(previous),exact,'migration does not mutate its genuine V12 input');
   for(const key of ['archivePlaqueV109','archiveContinuationV111','locationV77'])
     assert.equal(JSON.stringify(migrated.save.homeworld[key]),JSON.stringify(previous.homeworld[key]));
   assert.equal(migrated.save.gauntletV134,undefined);
+});
+
+test('V111 genuine Save11 and Save12 preserve custom X controls through pod migration, durable reload and portable import',async()=>{
+  const controls=qa.load('app/game/systems/controlBindings.ts');
+  for(const [getHistory,version] of [[getHistoricalHomeworldExcelContextV111,11],[getHistoricalHomeworldExcelContextV112,12]]){
+    const history=await getHistory(),old=homeworldSceneSsrV78(history.root).load('app/game/save.ts');
+    assert.equal(old.SAVE_VERSION,version);
+    const legacy=old.defaultSave(owner);
+    legacy.settings.controlBindings={...legacy.settings.controlBindings,'hunt.toggleCloak':['KeyX']};
+    const previous=old.parseSaveImport(JSON.stringify(legacy)).save;assert(previous);
+    assert.deepEqual(previous.settings.controlBindings['hunt.toggleCloak'],['KeyX']);
+    assert.equal(Object.hasOwn(previous.settings.controlBindings,'hunt.podSelfDestruct'),false,
+      'the source is an actual historical command profile without the later pod action');
+    const exact=JSON.stringify(previous),migrated=saves.parseSaveImport(exact);assert.equal(migrated.failure,null);
+    const bindings=migrated.save.settings.controlBindings,podKeys=bindings['hunt.podSelfDestruct'];
+    assert.equal(podKeys.length,1);assert.notEqual(podKeys[0],'KeyX');
+    assert.deepEqual(bindings,{...previous.settings.controlBindings,'hunt.podSelfDestruct':podKeys},
+      'adding the pod shortcut preserves every historical binding, including custom controls');
+    assert.deepEqual(controls.matchingControlActions('hunt','KeyX',bindings),['hunt.toggleCloak']);
+    assert.deepEqual(controls.findControlBindingConflicts(bindings),[]);
+    assert.equal(JSON.stringify(previous),exact,'migration does not mutate the historical input');
+    const values=new Map(),key='v111-pod-bindings-save'+version;
+    const storage={getItem:name=>values.get(name)??null,setItem:(name,value)=>values.set(name,value),removeItem:name=>values.delete(name)};
+    assert.equal(saves.writeSaveWithStatus(migrated.save,storage,key).persisted,true);
+    const loaded=saves.loadSaveWithStatus(storage,key);assert.equal(loaded.loaded,true);
+    assert.deepEqual(loaded.save.settings.controlBindings,bindings);
+    const imported=saves.parseSaveImport(saves.exportSave(loaded.save));assert.equal(imported.failure,null);
+    assert.deepEqual(imported.save.settings.controlBindings,bindings);
+  }
 });
 
 test('V111 actual V110 client refuses genuine Save12 and current Save13 continuations without overwriting primary or backup',async()=>{

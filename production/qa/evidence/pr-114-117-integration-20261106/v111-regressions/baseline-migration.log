@@ -1,0 +1,78 @@
+✖ V111 Save11 to13 preserves the genuine V110 campaign and B document while initializing additive hunting and appearance defaults (3374.380252ms)
+✖ V111 genuine Save12 carried continuation migrates to13 without changing either document or inventing a gauntlet archive (3726.886339ms)
+ℹ tests 2
+ℹ suites 0
+ℹ pass 0
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 9948.409905
+
+✖ failing tests:
+
+test at tests/homeworld-continuation-integration-v111.test.mjs:206:1
+✖ V111 Save11 to13 preserves the genuine V110 campaign and B document while initializing additive hunting and appearance defaults (3374.380252ms)
+  AssertionError [ERR_ASSERTION]: every pre-existing campaign field survives; additive hunting, accessibility and material fields use their production defaults
+  + actual - expected
+  ... Skipped lines
+  
+    {
+      appearance: {
+        armorStyleId: 'classic',
+        armorTintId: 'bronze',
+        biomaskId: 'jungle',
+  ...
+          ],
+  +       'hunt.podSelfDestruct': [
+  +         'KeyX'
+  +       ],
+          'hunt.scan': [
+            'KeyV'
+          ],
+          'hunt.selectWeaponOne': [
+            'Digit1',
+  
+      at TestContext.<anonymous> (file:///workspace/scratch/9c13a1a9b9e6/yautja-engagement/tests/homeworld-continuation-integration-v111.test.mjs:216:10)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: { version: 13, createdAt: '2026-10-26T10:00:00.000Z', updatedAt: '2026-10-26T10:00:00.000Z', profile: { hunterName: 'Migration · constat B conservé', rankId: 'young-blood', honor: 0, clanMarks: 0, playTimeSeconds: 0 }, inventory: { fieldToolIds: [], harvestV112: [Object], unlockedWeaponIds: [Array], unlockedGearIds: [Array], unlockedArmorIds: [Array], weaponUpgrades: [Object], gearUpgrades: [Object], armorUpgrades: [Object] }, loadout: { armorId: 'hunter', weaponIds: [Array], gearIds: [Array] }, appearance: { presetId: 'jungle-hunter', bodyMorphId: 'classic', headStyleId: 'reference', skinId: 'ochre-mottle', biomaskId: 'jungle', dreadStyleId: 'classic', dreadTintId: 'obsidian', armorStyleId: 'classic', armorTintId: 'bronze', trophyAdornmentId: 'skull-spine', laserColorId: 'crimson', chromaticsV113: [Object] }, missionProgress: { 'jungle-vey': [Object], 'ice-cryostalker': [Object], 'volcano-bad-blood': [Object], 'swamp-hydra': [Object], 'desert-sandmaw': [Object], 'ocean-leviathan': [Object], 'fungal-hivemind': [Object], 'ruins-ancient-guardian': [Object] }, trophies: [], codex: { unlockedEntryIds: [Array], scanCounts: {}, discoveredEnemyIds: [] }, exploration: { abilityIds: [], openedGateIds: [], secretIds: [], discoveredRoomIds: [] }, statistics: { missionsStarted: 0, missionsCompleted: 0, missionsFailed: 0, totalKills: 0, totalScans: 0, secondWindsUsed: 0, bestHuntStreak: 0, currentHuntStreak: 0 }, settings: { huntAccessibility: [Object], difficultyId: 'hunter', masterVolume: 0.37, musicVolume: 0.65, effectsVolume: 0.85, screenShake: true, reducedGore: false, highContrastVision: false, controlBindings: [Object] }, storyCompleted: false, homeworld: { version: 1, cntlipV77: [Object], contractsV68: [Object], sideStoryV66: [Object], npcMissionsV66: [Object], mausoleum: [Object], inquiry: [Object], expeditions: [Object], visitedDistrictIds: [Array], evidenceIds: [], greetedNpcIds: [], witnessChoice: null, audienceOutcome: null, relations: [Object], locationV77: [Object], archivePlaqueV109: [Object] }, justice: { version: 1, originChoice: null, declaration: 'recognized', incidents: [], evidence: [], identifications: [], warrants: [], pressure: [Object], clandestineNotoriety: 0, detention: null, intervention: [Object] }, prologue: null, youthTraining: null, soloV66: null, soloV67: null, soloV68: null, soloV69: null, soloV70: null, homeworldRegionV68: null, homeworldPassageV67: null, gameReserveV66: null },
+    expected: { version: 13, createdAt: '2026-10-26T10:00:00.000Z', updatedAt: '2026-10-26T10:00:00.000Z', profile: { hunterName: 'Migration · constat B conservé', rankId: 'young-blood', honor: 0, clanMarks: 0, playTimeSeconds: 0 }, inventory: { unlockedWeaponIds: [Array], unlockedGearIds: [Array], unlockedArmorIds: [Array], weaponUpgrades: [Object], gearUpgrades: [Object], armorUpgrades: [Object], fieldToolIds: [], harvestV112: [Object] }, loadout: { armorId: 'hunter', weaponIds: [Array], gearIds: [Array] }, appearance: { presetId: 'jungle-hunter', bodyMorphId: 'classic', headStyleId: 'reference', skinId: 'ochre-mottle', biomaskId: 'jungle', dreadStyleId: 'classic', dreadTintId: 'obsidian', armorStyleId: 'classic', armorTintId: 'bronze', trophyAdornmentId: 'skull-spine', laserColorId: 'crimson', chromaticsV113: [Object] }, missionProgress: { 'jungle-vey': [Object], 'ice-cryostalker': [Object], 'volcano-bad-blood': [Object], 'swamp-hydra': [Object], 'desert-sandmaw': [Object], 'ocean-leviathan': [Object], 'fungal-hivemind': [Object], 'ruins-ancient-guardian': [Object] }, trophies: [], codex: { unlockedEntryIds: [Array], scanCounts: {}, discoveredEnemyIds: [] }, exploration: { abilityIds: [], openedGateIds: [], secretIds: [], discoveredRoomIds: [] }, statistics: { missionsStarted: 0, missionsCompleted: 0, missionsFailed: 0, totalKills: 0, totalScans: 0, secondWindsUsed: 0, bestHuntStreak: 0, currentHuntStreak: 0 }, settings: { difficultyId: 'hunter', masterVolume: 0.37, musicVolume: 0.65, effectsVolume: 0.85, screenShake: true, reducedGore: false, highContrastVision: false, controlBindings: [Object], huntAccessibility: [Object] }, storyCompleted: false, homeworld: { version: 1, cntlipV77: [Object], contractsV68: [Object], sideStoryV66: [Object], npcMissionsV66: [Object], mausoleum: [Object], inquiry: [Object], expeditions: [Object], visitedDistrictIds: [Array], evidenceIds: [], greetedNpcIds: [], witnessChoice: null, audienceOutcome: null, relations: [Object], locationV77: [Object], archivePlaqueV109: [Object] }, justice: { version: 1, originChoice: null, declaration: 'recognized', incidents: [], evidence: [], identifications: [], warrants: [], pressure: [Object], clandestineNotoriety: 0, detention: null, intervention: [Object] }, prologue: null, youthTraining: null, soloV66: null, soloV67: null, soloV68: null, soloV69: null, soloV70: null, homeworldRegionV68: null, homeworldPassageV67: null, gameReserveV66: null },
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests/homeworld-continuation-integration-v111.test.mjs:230:1
+✖ V111 genuine Save12 carried continuation migrates to13 without changing either document or inventing a gauntlet archive (3726.886339ms)
+  AssertionError [ERR_ASSERTION]: every V12 campaign field and carried continuation survives the additive migration
+  + actual - expected
+  ... Skipped lines
+  
+    {
+      appearance: {
+        armorStyleId: 'classic',
+        armorTintId: 'bronze',
+        biomaskId: 'jungle',
+  ...
+          ],
+  +       'hunt.podSelfDestruct': [
+  +         'KeyX'
+  +       ],
+          'hunt.scan': [
+            'KeyV'
+          ],
+          'hunt.selectWeaponOne': [
+            'Digit1',
+  
+      at TestContext.<anonymous> (file:///workspace/scratch/9c13a1a9b9e6/yautja-engagement/tests/homeworld-continuation-integration-v111.test.mjs:237:10)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: { version: 13, createdAt: '2026-10-26T10:00:00.000Z', updatedAt: '2026-10-26T10:00:00.000Z', profile: { hunterName: 'Migration · fragment A porté', rankId: 'young-blood', honor: 0, clanMarks: 0, playTimeSeconds: 0 }, inventory: { fieldToolIds: [], harvestV112: [Object], unlockedWeaponIds: [Array], unlockedGearIds: [Array], unlockedArmorIds: [Array], weaponUpgrades: [Object], gearUpgrades: [Object], armorUpgrades: [Object] }, loadout: { armorId: 'hunter', weaponIds: [Array], gearIds: [Array] }, appearance: { presetId: 'jungle-hunter', bodyMorphId: 'classic', headStyleId: 'reference', skinId: 'ochre-mottle', biomaskId: 'jungle', dreadStyleId: 'classic', dreadTintId: 'obsidian', armorStyleId: 'classic', armorTintId: 'bronze', trophyAdornmentId: 'skull-spine', laserColorId: 'crimson', chromaticsV113: [Object] }, missionProgress: { 'jungle-vey': [Object], 'ice-cryostalker': [Object], 'volcano-bad-blood': [Object], 'swamp-hydra': [Object], 'desert-sandmaw': [Object], 'ocean-leviathan': [Object], 'fungal-hivemind': [Object], 'ruins-ancient-guardian': [Object] }, trophies: [], codex: { unlockedEntryIds: [Array], scanCounts: {}, discoveredEnemyIds: [] }, exploration: { abilityIds: [], openedGateIds: [], secretIds: [], discoveredRoomIds: [] }, statistics: { missionsStarted: 0, missionsCompleted: 0, missionsFailed: 0, totalKills: 0, totalScans: 0, secondWindsUsed: 0, bestHuntStreak: 0, currentHuntStreak: 0 }, settings: { huntAccessibility: [Object], difficultyId: 'hunter', masterVolume: 0.41, musicVolume: 0.65, effectsVolume: 0.85, screenShake: true, reducedGore: false, highContrastVision: false, controlBindings: [Object] }, storyCompleted: false, homeworld: { version: 1, cntlipV77: [Object], contractsV68: [Object], sideStoryV66: [Object], npcMissionsV66: [Object], mausoleum: [Object], inquiry: [Object], expeditions: [Object], visitedDistrictIds: [Array], evidenceIds: [], greetedNpcIds: [], witnessChoice: null, audienceOutcome: null, relations: [Object], locationV77: [Object], archivePlaqueV109: [Object], archiveContinuationV111: [Object] }, justice: { version: 1, originChoice: null, declaration: 'recognized', incidents: [], evidence: [], identifications: [], warrants: [], pressure: [Object], clandestineNotoriety: 0, detention: null, intervention: [Object] }, prologue: null, youthTraining: null, soloV66: null, soloV67: null, soloV68: null, soloV69: null, soloV70: null, homeworldRegionV68: null, homeworldPassageV67: null, gameReserveV66: null },
+    expected: { version: 13, createdAt: '2026-10-26T10:00:00.000Z', updatedAt: '2026-10-26T10:00:00.000Z', profile: { hunterName: 'Migration · fragment A porté', rankId: 'young-blood', honor: 0, clanMarks: 0, playTimeSeconds: 0 }, inventory: { fieldToolIds: [], unlockedWeaponIds: [Array], unlockedGearIds: [Array], unlockedArmorIds: [Array], weaponUpgrades: [Object], gearUpgrades: [Object], armorUpgrades: [Object], harvestV112: [Object] }, loadout: { armorId: 'hunter', weaponIds: [Array], gearIds: [Array] }, appearance: { presetId: 'jungle-hunter', bodyMorphId: 'classic', headStyleId: 'reference', skinId: 'ochre-mottle', biomaskId: 'jungle', dreadStyleId: 'classic', dreadTintId: 'obsidian', armorStyleId: 'classic', armorTintId: 'bronze', trophyAdornmentId: 'skull-spine', laserColorId: 'crimson', chromaticsV113: [Object] }, missionProgress: { 'jungle-vey': [Object], 'ice-cryostalker': [Object], 'volcano-bad-blood': [Object], 'swamp-hydra': [Object], 'desert-sandmaw': [Object], 'ocean-leviathan': [Object], 'fungal-hivemind': [Object], 'ruins-ancient-guardian': [Object] }, trophies: [], codex: { unlockedEntryIds: [Array], scanCounts: {}, discoveredEnemyIds: [] }, exploration: { abilityIds: [], openedGateIds: [], secretIds: [], discoveredRoomIds: [] }, statistics: { missionsStarted: 0, missionsCompleted: 0, missionsFailed: 0, totalKills: 0, totalScans: 0, secondWindsUsed: 0, bestHuntStreak: 0, currentHuntStreak: 0 }, settings: { difficultyId: 'hunter', masterVolume: 0.41, musicVolume: 0.65, effectsVolume: 0.85, screenShake: true, reducedGore: false, highContrastVision: false, controlBindings: [Object], huntAccessibility: [Object] }, storyCompleted: false, homeworld: { version: 1, cntlipV77: [Object], contractsV68: [Object], sideStoryV66: [Object], npcMissionsV66: [Object], mausoleum: [Object], inquiry: [Object], expeditions: [Object], visitedDistrictIds: [Array], evidenceIds: [], greetedNpcIds: [], witnessChoice: null, audienceOutcome: null, relations: [Object], locationV77: [Object], archivePlaqueV109: [Object], archiveContinuationV111: [Object] }, justice: { version: 1, originChoice: null, declaration: 'recognized', incidents: [], evidence: [], identifications: [], warrants: [], pressure: [Object], clandestineNotoriety: 0, detention: null, intervention: [Object] }, prologue: null, youthTraining: null, soloV66: null, soloV67: null, soloV68: null, soloV69: null, soloV70: null, homeworldRegionV68: null, homeworldPassageV67: null, gameReserveV66: null },
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
