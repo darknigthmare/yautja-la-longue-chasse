@@ -24,7 +24,8 @@ test("Homeworld custom hero forwards the same owned appearance and loadout",()=>
   assert.match(hub,/showArmor armorId=\{save\.loadout\.armorId\}/);
   assert.match(hub,/hasWristblades=\{save\.loadout\.weaponIds\.includes\("wristblades"\)\}/);
   assert.match(mod,/HUNTER_ARMOR_MODULES\[appearance\?\.armorStyleId/);
-  assert.match(mod,/HUNTER_ARMOR_FIT_BY_MORPH\[morphId\]/);
+  // V145: the per-morph shoulder scale now lives in the shared shoulder registration.
+  assert.match(mod,/hunterShoulderPlateMatrixV145\(morphId\)/);
   assert.match(mod,/channel="armor" maskPath=\{path\}/);
   assert.match(mod,/armorId !== "scout"/);
 });

@@ -78,7 +78,6 @@ import {
   type RigPoint,
 } from "./hunterRig";
 import {
-  HUNTER_ARMOR_FIT_BY_MORPH,
   HUNTER_ARMOR_MODULES,
   HUNTER_BODY_PART_BONES,
   HUNTER_BODY_PART_IDS,
@@ -95,10 +94,13 @@ import {
   hunterMaskRigPlacement,
   hunterNetPartPath,
   hunterWristbladeRegistrationMatrix,
+  hunterShoulderPlateMatrixV145,
+  hunterGreaveMatrixV145,
+  HUNTER_ARMOR_KEEP_CLIP_V145,
   type HunterBodyPartId,
 } from "./hunterVisuals";
 import { hunterBodyPartColorV62, hunterBodyPartClipV62, type HunterLayerPlacement } from "./hunterHeadArtV62";
-import { HUNTER_DREAD_SOURCE_ROOT as HUNTER_DREAD_ROOT, solveHunterDreadsV63, stepHunterDreadsV63 } from "./hunterDreadsV63";
+import { HUNTER_DREAD_SOURCE_ROOT as HUNTER_DREAD_ROOT, solveHunterDreadsV63, solveHunterSideDreadsV145, stepHunterDreadsV63 } from "./hunterDreadsV63";
 import { chromaticCanvasSourceV113 } from "./hunterChromaticCanvasV113";
 import { decalCanvasSourceV133 } from "./decalCanvasV133.ts";
 import type { YautjaDecalZoneV133 } from "./yautjaDecalsV133.ts";
@@ -3707,6 +3709,17 @@ function drawHunterLayered(
     for (const partId of HUNTER_BACK_PARTS) {
       drawAtomicBodyPart(context, assets, frame, appearance, partId);
     }
+    // V145 far-side greave on the back shin, behind the body core.
+    if (loadout.armorId !== "scout") {
+      for (const part of ["thigh-lower", "shin"] as const) {
+        drawRegisteredLayer(context, part === "shin" ? assets.hunterArmor.shin : assets.hunterArmor.thighLower,
+          frame, "legBackLower", {
+            filter: armorTint === "none" ? "brightness(.72)" : `${armorTint} brightness(.72)`, chromatics: { appearance, channel: "armor" },
+            registration: hunterGreaveMatrixV145(appearance.bodyMorphId, part, "back"),
+            clip: part === "shin" ? HUNTER_ARMOR_KEEP_CLIP_V145.shin : undefined,
+          });
+      }
+    }
     for (const partId of HUNTER_CORE_PARTS) {
       drawAtomicBodyPart(context, assets, frame, appearance, partId);
     }
@@ -3769,11 +3782,26 @@ function drawHunterLayered(
     "armFrontUpper",
     {
       filter: armorTint, chromatics: { appearance, channel: "armor" },
-      pivot: { x: 153, y: 110 },
-      scale:
-        HUNTER_ARMOR_FIT_BY_MORPH[appearance.bodyMorphId].shoulderScale,
+      // V145: mirrored onto the deltoid, per-morph scale included.
+      registration: hunterShoulderPlateMatrixV145(appearance.bodyMorphId),
+      clip: HUNTER_ARMOR_KEEP_CLIP_V145[HUNTER_ARMOR_MODULES[appearance.armorStyleId].shoulder],
     },
   );
+  // V145 side dreadlocks fall in front of the near shoulder (rear strands stay behind).
+  if (assets.hunterDreads) {
+    solveHunterSideDreadsV145(frame, appearance.bodyMorphId, appearance.dreadStyleId, appearance.headStyleId, player.dreadAngles).forEach((strand) => {
+      drawRegisteredLayer(context, assets.hunterDreads, frame, "head", {
+        filter: dreadFilter(appearance.dreadTintId),
+        chromatics: { appearance, channel: "dreads" },
+        pivot: HUNTER_DREAD_ROOT,
+        rotation: strand.angle,
+        scaleX: strand.scale,
+        scaleY: strand.scale,
+        translateX: strand.x,
+        translateY: strand.y,
+      });
+    });
+  }
   if (loadout.armorId !== "scout") {
     if (!hasWristblades) {
       drawRegisteredLayer(
@@ -3796,7 +3824,8 @@ function drawHunterLayered(
       assets.hunterArmor.thighLower,
       frame,
       "legFrontLower",
-      { filter: armorTint, chromatics: { appearance, channel: "armor" } },
+      { filter: armorTint, chromatics: { appearance, channel: "armor" },
+        registration: hunterGreaveMatrixV145(appearance.bodyMorphId, "thigh-lower", "front") },
     );
     drawRegisteredLayer(
       context,
@@ -3810,7 +3839,9 @@ function drawHunterLayered(
       assets.hunterArmor.shin,
       frame,
       "legFrontLower",
-      { filter: armorTint, chromatics: { appearance, channel: "armor" } },
+      { filter: armorTint, chromatics: { appearance, channel: "armor" },
+        registration: hunterGreaveMatrixV145(appearance.bodyMorphId, "shin", "front"),
+        clip: HUNTER_ARMOR_KEEP_CLIP_V145.shin },
     );
   }
 

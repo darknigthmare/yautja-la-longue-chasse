@@ -75,3 +75,52 @@ test("preview, hunt canvas, PIT and Homeworld share the same forearm fits",()=>{
   assert.match(home,/data-homeworld-layer="gauntlet"/);
   assert.match(home,/hunterWristbladeRegistrationMatrix\(\)/);
 });
+
+// V145: shoulder plate, greaves and side dreadlocks.
+import {hunterShoulderPlateMatrixV145,hunterGreaveMatrixV145,HUNTER_ARMOR_KEEP_CLIP_V145} from "../app/game/hunterVisuals.ts";
+import {build} from "esbuild";
+const dreadsModule=build({
+  entryPoints:[fileURLToPath(new URL("../app/game/hunterDreadsV63.ts",import.meta.url))],
+  bundle:true,format:"esm",platform:"node",target:"es2022",write:false,
+}).then(result=>import("data:text/javascript;base64,"+Buffer.from(result.outputFiles[0].text).toString("base64")));
+
+test("V145 shoulder plate is mirrored onto the front deltoid for every morph",()=>{
+  for(const morph of MORPHS){
+    const m=hunterShoulderPlateMatrixV145(morph);
+    assert.ok(m.a<0&&m.d>0,`shoulder not mirrored for ${morph}`);
+    const centre=apply(m,{x:153,y:113});
+    // Front deltoid (top of upper-arm-front) sits at x 161-169 depending on the morph.
+    assert.ok(centre.x>165&&centre.x<180,`shoulder centre ${centre.x} off the deltoid for ${morph}`);
+    const strap=apply(m,{x:178,y:120}); // strap loop of the source plate
+    assert.ok(strap.x<centre.x,`strap loop must face the neck for ${morph}`);
+  }
+  assert.ok(HUNTER_ARMOR_KEEP_CLIP_V145["shoulder-avp"]&&HUNTER_ARMOR_KEEP_CLIP_V145.shin);
+});
+
+test("V145 greaves cover both shins under the knee",()=>{
+  for(const morph of MORPHS){
+    const shin=hunterGreaveMatrixV145(morph,"shin","front");
+    const top=apply(shin,{x:175,y:283}),bottom=apply(shin,{x:175,y:341});
+    assert.ok(top.y<285&&bottom.y>338,`front greave too short for ${morph}`);
+    assert.ok(shin.a>1.1,`front greave not widened for ${morph}`);
+    const back=apply(hunterGreaveMatrixV145(morph,"shin","back"),{x:175,y:312});
+    assert.ok(back.x>60&&back.x<90,`back greave not on shin-back for ${morph}: ${back.x}`);
+    const upper=apply(hunterGreaveMatrixV145(morph,"thigh-lower","front"),{x:160,y:294});
+    assert.ok(Math.abs(upper.x-top.x)<8,`upper greave not aligned with the shin for ${morph}`);
+  }
+});
+
+test("V145 side dreadlocks exist for every style and swing with the rear springs",async()=>{
+  const {solveHunterSideDreadsV145,HUNTER_DREAD_SIDE_STRANDS_V145}=await dreadsModule;
+  const frame=solveHunterRig({pose:"idle",facing:1,phase:0});
+  for(const style of Object.keys(HUNTER_DREAD_SIDE_STRANDS_V145)){
+    const still=solveHunterSideDreadsV145(frame,"classic",style);
+    assert.ok(still.length>=2,`no side strands for ${style}`);
+    const moving=solveHunterSideDreadsV145(frame,"classic",style,"reference",[.3,.3,.3,.3,.3,.3,.3]);
+    assert.ok(moving.every((strand,i)=>strand.angle>still[i].angle),`side strands ignore motion for ${style}`);
+    for(const strand of still){
+      const tip=apply(strand.matrix,{x:60,y:185});
+      assert.ok(tip.y>strand.root.y+40,`side strand of ${style} does not hang down`);
+    }
+  }
+});

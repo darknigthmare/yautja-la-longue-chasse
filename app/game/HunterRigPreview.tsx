@@ -19,7 +19,6 @@ import type {
 } from "./types";
 import {
   hunterBodyPartHasNet,
-  HUNTER_ARMOR_FIT_BY_MORPH,
   HUNTER_ARMOR_MODULES,
   HUNTER_BODY_PART_BONES,
   HUNTER_EQUIPMENT_V3,
@@ -36,10 +35,13 @@ import {
   hunterMaskRigPlacement,
   hunterNetPartPath,
   hunterWristbladeRegistrationMatrix,
+  hunterShoulderPlateMatrixV145,
+  hunterGreaveMatrixV145,
+  HUNTER_ARMOR_KEEP_CLIP_V145,
   type HunterBodyPartId,
 } from "./hunterVisuals";
 import { hunterBodyPartColorV62, hunterBodyPartClipCssV62, type HunterLayerPlacement } from "./hunterHeadArtV62";
-import { HUNTER_DREAD_STRANDS_V63, solveHunterDreadsV63 } from "./hunterDreadsV63";
+import { HUNTER_DREAD_STRANDS_V63, solveHunterDreadsV63, solveHunterSideDreadsV145 } from "./hunterDreadsV63";
 import {
   HUNTER_RIG_CANVAS,
   multiplyAffine,
@@ -446,9 +448,12 @@ export function HunterRigPreview({
     id: string;
     bone: HunterRigBoneId;
     z: number;
+    /** Source-space fit applied after the bone (V145 registration). */
+    fit?: AffineMatrix;
+    shade?: boolean;
   }> = [
     { id: armorFamily.chest, bone: "torso", z: 44 },
-    { id: armorFamily.shoulder, bone: "armFrontUpper", z: 52 },
+    { id: armorFamily.shoulder, bone: "armFrontUpper", z: 52, fit: hunterShoulderPlateMatrixV145(appearance.bodyMorphId) },
     { id: "belt", bone: "pelvis", z: 49 },
   ];
   if (armorId !== "scout") {
@@ -458,8 +463,11 @@ export function HunterRigPreview({
     armorSlots.push(
       { id: "thigh", bone: "legFrontUpper", z: 47 },
       { id: "knee", bone: "legFrontLower", z: 49 },
-      { id: "thigh-lower", bone: "legFrontLower", z: 47 },
-      { id: "shin", bone: "legFrontLower", z: 48 },
+      { id: "thigh-lower", bone: "legFrontLower", z: 47, fit: hunterGreaveMatrixV145(appearance.bodyMorphId, "thigh-lower", "front") },
+      { id: "shin", bone: "legFrontLower", z: 48, fit: hunterGreaveMatrixV145(appearance.bodyMorphId, "shin", "front") },
+      // Far-side greave on the back shin, drawn just over shin-back (z 22).
+      { id: "thigh-lower", bone: "legBackLower", z: 23, fit: hunterGreaveMatrixV145(appearance.bodyMorphId, "thigh-lower", "back"), shade: true },
+      { id: "shin", bone: "legBackLower", z: 24, fit: hunterGreaveMatrixV145(appearance.bodyMorphId, "shin", "back"), shade: true },
     );
   }
 
@@ -646,12 +654,12 @@ export function HunterRigPreview({
       })}
 
       {armorSlots.map((slot) => {
-        const matrix = slot.id === armorFamily.shoulder
-          ? multiplyAffine(boneMatrix(slot.bone),
-              scaleAround(153, 110, HUNTER_ARMOR_FIT_BY_MORPH[appearance.bodyMorphId].shoulderScale))
-          : boneMatrix(slot.bone);
+        const matrix = slot.fit ? multiplyAffine(boneMatrix(slot.bone), slot.fit) : boneMatrix(slot.bone);
+        const keep = HUNTER_ARMOR_KEEP_CLIP_V145[slot.id]?.[0];
+        const clipPath = keep ? `inset(${cssPercentage(keep[1], 384)} ${cssPercentage(256 - keep[0] - keep[2], 256)} ${cssPercentage(384 - keep[1] - keep[3], 384)} ${cssPercentage(keep[0], 256)})` : undefined;
         return <span key={`${slot.id}-${slot.bone}`}>
-          {registeredLayer(hunterArmorPath(slot.id), matrix, slot.z, `armor-${slot.id}`, armorFilter)}
+          {registeredLayer(hunterArmorPath(slot.id), matrix, slot.z, `armor-${slot.id}${slot.shade ? "-far" : ""}`,
+            slot.shade ? `${armorFilter} brightness(.72)` : armorFilter, undefined, undefined, clipPath)}
           <ChromaticSurfaceV113 appearance={appearance} channel="armor" maskPath={hunterArmorPath(slot.id)}
             style={{ ...fullCanvasImage, zIndex: slot.z, transform: cssMatrix(matrix) }} />
           {slot.id === armorFamily.chest && <DecalSurfaceV133 appearance={appearance} zone="armor"
@@ -659,6 +667,19 @@ export function HunterRigPreview({
             style={{ ...fullCanvasImage, zIndex: slot.z + 1, transform: cssMatrix(matrix) }} />}
         </span>;
       })}
+
+      {/* V145 side dreadlocks: in front of the near shoulder, under a worn biomask. */}
+      {solveHunterSideDreadsV145(frame, appearance.bodyMorphId, appearance.dreadStyleId, appearance.headStyleId,
+        HUNTER_DREAD_STRANDS_V63.map((_, index) => Math.max(-.13, Math.min(.34, speed / 1100 + verticalVelocity / 8000)) + Math.sin(phase * Math.PI * 2 + index) * .018)
+      ).map((strand, index) => (
+        <span aria-hidden="true" data-rig-slot={`dread-side-${index}`} key={`side-${appearance.dreadStyleId}-${index}`}
+          style={{ ...fullCanvasImage, zIndex: 66, transform: cssMatrix(strand.matrix) }}>
+          <img alt="" draggable={false} src={hunterDreadPath(appearance.dreadStyleId)}
+            style={{ ...fullCanvasImage, filter: HUNTER_DREAD_FILTERS_V114[appearance.dreadTintId] } as CSSProperties} />
+          <ChromaticSurfaceV113 appearance={appearance} channel="dreads"
+            maskPath={hunterDreadPath(appearance.dreadStyleId)} style={fullCanvasImage} />
+        </span>
+      ))}
 
       {gearIds.slice(0, 2).map((gearId, gearIndex) => (
         <span key={gearId}>

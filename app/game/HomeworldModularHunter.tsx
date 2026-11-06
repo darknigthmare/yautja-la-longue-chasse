@@ -5,10 +5,10 @@ import DecalSurfaceV133 from "./DecalSurfaceV133";
 import { maskChromaticsForAppearanceV131 } from "./hunterChromaticsV113";
 import { HUNTER_SKIN_FILTERS_V114, HUNTER_DREAD_FILTERS_V114, HUNTER_ARMOR_FILTERS_V114 } from "./hunterPaletteFiltersV114";
 import type { HunterBodyMorphId, DreadStyleId, HunterAppearance, ArmorId } from "./types";
-import { hunterBodyFullPath, hunterBodyPartPath, hunterBodyPartPlacement, hunterDreadPath, hunterArmorPath, hunterMaskRigPath, hunterMaskRigPlacement, HUNTER_ASSET_ROOT_V3, HUNTER_BODY_PART_IDS, HUNTER_ARMOR_MODULES, HUNTER_ARMOR_FIT_BY_MORPH, HUNTER_EQUIPMENT_V3, HUNTER_GAUNTLET_FIT_BY_MORPH, hunterWristbladeRegistrationMatrix } from "./hunterVisuals";
+import { hunterBodyFullPath, hunterBodyPartPath, hunterBodyPartPlacement, hunterDreadPath, hunterArmorPath, hunterMaskRigPath, hunterMaskRigPlacement, HUNTER_ASSET_ROOT_V3, HUNTER_BODY_PART_IDS, HUNTER_ARMOR_MODULES, HUNTER_EQUIPMENT_V3, HUNTER_GAUNTLET_FIT_BY_MORPH, hunterWristbladeRegistrationMatrix, hunterShoulderPlateMatrixV145, hunterGreaveMatrixV145, HUNTER_ARMOR_KEEP_CLIP_V145 } from "./hunterVisuals";
 import { gauntletRigArmFitMatrixV139, gauntletRigSpriteV139 } from "./systems/gauntletRigSpritesV139";
 import { hunterBodyPartColorV62, hunterBodyPartClipCssV62 } from "./hunterHeadArtV62";
-import { HUNTER_DREAD_STRANDS_V63, solveHunterDreadsV63 } from "./hunterDreadsV63";
+import { HUNTER_DREAD_STRANDS_V63, solveHunterDreadsV63, solveHunterSideDreadsV145 } from "./hunterDreadsV63";
 import { solveHunterRig } from "./hunterRig";
 
 /** Same authored skull socket and strand placement used by HunterRigPreview, at rest. */
@@ -39,9 +39,9 @@ export function homeworldArmorSlotsV114(
   appearance: Partial<Pick<HunterAppearance, "armorStyleId">> | undefined,
   armorId: ArmorId,
   hasWristblades: boolean,
-): Array<{ id: string; z: number; shoulder?: boolean }> {
+): Array<{ id: string; z: number; shoulder?: boolean; greave?: "front" | "back" }> {
   const family = HUNTER_ARMOR_MODULES[appearance?.armorStyleId ?? "classic"];
-  const parts: Array<{ id: string; z: number; shoulder?: boolean }> = [
+  const parts: Array<{ id: string; z: number; shoulder?: boolean; greave?: "front" | "back" }> = [
     { id: family.chest, z: 18 },
     { id: "belt", z: 19 },
     { id: family.shoulder, z: 22, shoulder: true },
@@ -50,9 +50,12 @@ export function homeworldArmorSlotsV114(
     if (!hasWristblades) parts.push({ id: "bracer", z: 23 });
     parts.push(
       { id: "thigh", z: 17 },
-      { id: "thigh-lower", z: 17 },
+      { id: "thigh-lower", z: 17, greave: "front" },
       { id: "knee", z: 19 },
-      { id: "shin", z: 18 },
+      { id: "shin", z: 18, greave: "front" },
+      // Far-side greave: drawn under the body layer (z 10), over nothing else.
+      { id: "thigh-lower", z: 9, greave: "back" },
+      { id: "shin", z: 9, greave: "back" },
     );
   }
   return parts;
@@ -132,16 +135,29 @@ export default function HomeworldModularHunter({ morphId, dreadStyleId, classNam
         </span>}
       {showArmor && homeworldArmorSlotsV114(appearance, armorId, hasWristblades).map(plate => {
         const path = hunterArmorPath(plate.id);
-        const shoulderScale = HUNTER_ARMOR_FIT_BY_MORPH[morphId].shoulderScale;
-        return <span key={plate.id} data-homeworld-layer="armor" data-armor-module={plate.id}
-          style={{ ...imageStyle, zIndex: plate.z, transform: plate.shoulder ? `scale(${shoulderScale})` : undefined,
-            transformOrigin: plate.shoulder ? "59.765625% 28.645833%" : undefined }}>
-          <img alt="" draggable={false} src={path} style={{ ...imageStyle, filter: HUNTER_ARMOR_FILTERS_V114[appearance?.armorTintId ?? "bronze"] }} />
-          <ChromaticSurfaceV113 appearance={appearance} channel="armor" maskPath={path} style={imageStyle} />
+        // V145 registration: shoulder mirrored onto the deltoid, greaves widened
+        // under the knee and repeated on the back shin.
+        const fit = plate.shoulder ? hunterShoulderPlateMatrixV145(morphId)
+          : plate.greave ? hunterGreaveMatrixV145(morphId, plate.id === "shin" ? "shin" : "thigh-lower", plate.greave) : undefined;
+        const keep = HUNTER_ARMOR_KEEP_CLIP_V145[plate.id]?.[0];
+        const clipPath = keep ? `inset(${keep[1] / 384 * 100}% ${(256 - keep[0] - keep[2]) / 256 * 100}% ${(384 - keep[1] - keep[3]) / 384 * 100}% ${keep[0] / 256 * 100}%)` : undefined;
+        const far = plate.greave === "back";
+        return <span key={plate.id + (far ? "-far" : "")} data-homeworld-layer="armor" data-armor-module={plate.id}
+          style={{ ...imageStyle, zIndex: plate.z, transformOrigin: fit ? "0 0" : undefined, transform: fit ? restMatrixCss(fit) : undefined }}>
+          <img alt="" draggable={false} src={path} style={{ ...imageStyle, clipPath,
+            filter: HUNTER_ARMOR_FILTERS_V114[appearance?.armorTintId ?? "bronze"] + (far ? " brightness(.72)" : "") }} />
+          <ChromaticSurfaceV113 appearance={appearance} channel="armor" maskPath={path} style={{ ...imageStyle, clipPath }} />
           {plate.id === HUNTER_ARMOR_MODULES[appearance?.armorStyleId ?? "classic"].chest &&
             <DecalSurfaceV133 appearance={appearance} zone="armor" maskPath={path} style={imageStyle} />}
         </span>;
       })}
+      {/* V145 side dreadlocks over the near shoulder. */}
+      {showArmor && solveHunterSideDreadsV145(REST_FRAME, morphId, dreadStyleId, appearance?.headStyleId, dreadAngles ?? []).map((strand, index) =>
+        <span key={"side-" + index} data-homeworld-layer="dread-side" style={{ ...imageStyle, zIndex: 23,
+          transformOrigin: "0 0", transform: restMatrixCss(strand.matrix) }}>
+          <img alt="" draggable={false} src={hunterDreadPath(dreadStyleId)} style={{ ...imageStyle, filter: HUNTER_DREAD_FILTERS_V114[appearance?.dreadTintId ?? "obsidian"] }} />
+          <ChromaticSurfaceV113 appearance={appearance} channel="dreads" maskPath={hunterDreadPath(dreadStyleId)} style={imageStyle} />
+        </span>)}
       {/* Worn kit at rest, with the same forearm fits as HunterRigPreview:
           wrist computer on the back forearm, blade housing on the front one. */}
       {showArmor && (() => {

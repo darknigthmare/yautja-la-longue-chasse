@@ -2,12 +2,15 @@ import {
   HUNTER_BODY_PART_BONES,
   HUNTER_GAUNTLET_FIT_BY_MORPH,
   HUNTER_WRISTBLADE_REGISTRATION,
+  HUNTER_ARMOR_KEEP_CLIP_V145,
+  hunterGreaveMatrixV145,
+  hunterShoulderPlateMatrixV145,
   hunterArmorPath, hunterBodyPartPath, hunterBodyPartPlacement, hunterDreadPath, hunterEquipmentPath,
   hunterMaskRigPath, hunterMaskRigPlacement, hunterNetPartPath,
   type HunterBodyPartId,
 } from "./hunterVisuals";
 import { hunterBodyPartColorV62, hunterBodyPartClipV62, type HunterLayerPlacement } from "./hunterHeadArtV62";
-import { HUNTER_DREAD_SOURCE_ROOT, solveHunterDreadsV63 } from "./hunterDreadsV63";
+import { HUNTER_DREAD_SOURCE_ROOT, solveHunterDreadsV63, solveHunterSideDreadsV145, HUNTER_DREAD_SIDE_STRANDS_V145 } from "./hunterDreadsV63";
 import {
   HUNTER_RIG_CANVAS, relativeBoneMatrix, solveHunterRig,
   type HunterRigBoneId,
@@ -39,6 +42,8 @@ export interface PitFighterArtLayer {
   readonly scale?: number;
   readonly pivot?: readonly [number, number];
   readonly placement?: HunterLayerPlacement;
+  /** V145 source-space registration applied right after the bone matrix. */
+  readonly fit?: { readonly a: number; readonly b: number; readonly c: number; readonly d: number; readonly e: number; readonly f: number };
 }
 
 /**
@@ -92,7 +97,18 @@ export function getPitFighterArtLayers(fighterId: PitFighterId): readonly PitFig
     ["shin", "legFrontLower", 54],
   ] as const;
   for (const [id, bone, depth] of armor) {
-    layers.push({ id: "armor-" + id, src: hunterArmorPath(id), bone, depth, filter: armorFilter, clip: id === "shin" ? [[163, 283, 25, 59]] : undefined });
+    const shoulder = id.startsWith("shoulder-");
+    layers.push({ id: "armor-" + id, src: hunterArmorPath(id), bone, depth, filter: armorFilter,
+      clip: id === "shin" ? [[163, 283, 25, 59]] : HUNTER_ARMOR_KEEP_CLIP_V145[id],
+      fit: shoulder ? hunterShoulderPlateMatrixV145(morph) : id === "shin" ? hunterGreaveMatrixV145(morph, "shin", "front") : undefined });
+  }
+  // V145 far-side greave on the back shin.
+  layers.push({ id: "armor-shin-back", src: hunterArmorPath("shin"), bone: "legBackLower", depth: 23.5,
+    filter: armorFilter + " brightness(.72)", clip: [[163, 283, 25, 59]], fit: hunterGreaveMatrixV145(morph, "shin", "back") });
+  // V145 side dreadlocks, in front of the near shoulder; matrices come from the posed frame.
+  for (const index of HUNTER_DREAD_SIDE_STRANDS_V145.classic.keys()) {
+    layers.push({ id: "dside-" + index, src: hunterDreadPath("classic"), bone: "head", depth: 58,
+      filter: "saturate(.7) brightness(.65)" });
   }
   const fit = HUNTER_GAUNTLET_FIT_BY_MORPH[morph];
   for (const [id, depth] of [["gauntlet-base", 37], ["gauntlet-lid", 38]] as const) {
@@ -202,12 +218,15 @@ export function drawPitModularFighter(
     context.shadowBlur = 4;
   }
   const dreads = solveHunterDreadsV63(animation.frame, fighter.definitionId === 'berserker' ? 'super' : 'classic', 'classic');
+  const sideDreads = solveHunterSideDreadsV145(animation.frame, fighter.definitionId === 'berserker' ? 'super' : 'classic', 'classic');
   for (const layer of getPitFighterArtLayers(fighter.definitionId)) {
     if (layer.id === "blades" && animation.bladeExtension <= 0) continue;
-    const dread = layer.id.startsWith('dread-') ? dreads[Number(layer.id.slice(6))] : undefined;
+    const dread = layer.id.startsWith('dread-') ? dreads[Number(layer.id.slice(6))]
+      : layer.id.startsWith('dside-') ? sideDreads[Number(layer.id.slice(6))] : undefined;
     const matrix = dread?.matrix ?? relativeBoneMatrix(animation.frame, BIND_FRAME, layer.bone);
     context.save();
     context.transform(matrix.a, matrix.b, matrix.c, matrix.d, matrix.e, matrix.f);
+    if (layer.fit && !dread) context.transform(layer.fit.a, layer.fit.b, layer.fit.c, layer.fit.d, layer.fit.e, layer.fit.f);
     context.globalAlpha *= layer.opacity ?? 1;
     if (layer.filter) context.filter = layer.filter;
     if (!dread) context.translate(layer.offset?.[0] ?? 0, layer.offset?.[1] ?? 0);
