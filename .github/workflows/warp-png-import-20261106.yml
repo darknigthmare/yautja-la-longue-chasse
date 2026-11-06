@@ -1,0 +1,128 @@
+name: Warp PR116 - original PNG transfer
+on:
+  push:
+    branches: [claude/bible-de-campagne]
+    paths: [.github/workflows/warp-png-import-20261106.yml]
+permissions:
+  contents: write
+concurrency:
+  group: warp-pr116-original-png-transfer
+  cancel-in-progress: false
+jobs:
+  import-originals:
+    if: github.repository == 'darknigthmare/yautja-la-longue-chasse'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Import only the 13 SHA-256-verified original PNGs
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          import base64, datetime, hashlib, html, json, os, struct
+          from pathlib import PurePosixPath
+          from urllib.request import Request, urlopen
+          from urllib.error import HTTPError
+          from urllib.parse import quote, urlparse
+          REPO = 'darknigthmare/yautja-la-longue-chasse'
+          BRANCH = 'claude/bible-de-campagne'
+          DIR = 'docs/campagne/warp-universe/lot-06-20261106'
+          MANIFEST = DIR + '/IMPORT_SOURCES.json'
+          EXPECTED = set(range(165,175)) | {199,201,203}
+          CDN = 'd2ol7oe51mr4n9.cloudfront.net'
+          def require(condition, message):
+              if not condition:
+                  raise ValueError(message)
+          def verify_asset(a, data):
+              p = PurePosixPath(a['path'])
+              require(not p.is_absolute() and '..' not in p.parts and len(p.parts)==2, 'unsafe path')
+              require(p.parts[0] in ('cinema','module') and p.suffix=='.png', 'invalid target')
+              require(a['id'] in EXPECTED and p.name.startswith(str(a['id'])+'_'), 'wrong source ID')
+              require(len(data)==a['size_bytes'] and len(data)<4_000_000, 'size mismatch')
+              require(hashlib.sha256(data).hexdigest()==a['sha256'], 'SHA-256 mismatch')
+              require(data[:8]==b'\x89PNG\r\n\x1a\n' and data[12:16]==b'IHDR', 'not PNG')
+              require(struct.unpack('>II',data[16:24])==(a['width'],a['height']), 'dimensions mismatch')
+              sha=hashlib.sha1(b'blob '+str(len(data)).encode()+b'\0'+data).hexdigest()
+              require(sha==a['git_blob_sha1'], 'Git hash mismatch')
+              return sha
+          require(os.environ.get('GITHUB_REPOSITORY')==REPO, 'repository restricted')
+          require(os.environ.get('GITHUB_REF')=='refs/heads/'+BRANCH, 'branch restricted')
+          token=os.environ['GH_TOKEN']
+          def api(route, method='GET', payload=None, missing=False):
+              req=Request('https://api.github.com/repos/'+REPO+'/'+route,
+                          data=None if payload is None else json.dumps(payload).encode(),method=method,
+                          headers={'Authorization':'Bearer '+token,'Accept':'application/vnd.github+json',
+                                   'X-GitHub-Api-Version':'2022-11-28','Content-Type':'application/json',
+                                   'User-Agent':'warp-pr116-original-png-import'})
+              try:
+                  with urlopen(req,timeout=60) as r:return json.load(r)
+              except HTTPError as e:
+                  if missing and e.code==404:return None
+                  raise
+          def read(path, ref, missing=False):
+              return api('contents/'+quote(path,safe='/')+'?ref='+quote(ref,safe=''),missing=missing)
+          def head():return api('git/ref/heads/'+BRANCH)['object']['sha']
+          pr=api('pulls/116')
+          require(pr['state']=='open' and not pr['merged'] and pr['head']['ref']==BRANCH, 'PR changed')
+          source_commit=os.environ['GITHUB_SHA']
+          mf=read(MANIFEST,source_commit)
+          m=json.loads(base64.b64decode(mf['content']))
+          require(m['target_repository']==REPO and m['target_branch']==BRANCH and m['directory']==DIR,'manifest scope mismatch')
+          require(m['artistic_validated'] is False and m['runtime_imported'] is False,'review status changed')
+          rows=m['assets']
+          require(len(rows)==13 and {a['id'] for a in rows}==EXPECTED,'wrong batch')
+          require(len({a['path'] for a in rows})==13 and len({a['sha256'] for a in rows})==13,'duplicates')
+          entries=[]
+          for a in rows:
+              parsed=urlparse(a['transfer_url'])
+              require(parsed.scheme=='https' and parsed.netloc==CDN and not parsed.query,'unapproved download host')
+              # Never send GitHub authorization to the transfer host.
+              with urlopen(Request(a['transfer_url'],headers={'User-Agent':'warp-original-png-import'}),timeout=60) as r:
+                  require(urlparse(r.geturl()).netloc==CDN,'redirect outside transfer host')
+                  data=r.read(a['size_bytes']+1)
+              sha=verify_asset(a,data)
+              blob=api('git/blobs','POST',{'content':base64.b64encode(data).decode(),'encoding':'base64'})
+              require(blob['sha']==sha,'remote blob mismatch')
+              entries.append({'path':DIR+'/'+a['path'],'mode':'100644','type':'blob','sha':sha})
+              print('Verified original',a['id'],len(data),sha,flush=True)
+          receipt={'schema':1,'status':'original_bytes_imported','source_commit':source_commit,
+                   'workflow_run_id':os.environ['GITHUB_RUN_ID'],'checked_utc':datetime.datetime.now(datetime.timezone.utc).isoformat(),
+                   'count':13,'byte_count':sum(a['size_bytes'] for a in rows),'transparent_sources':12,
+                   'opaque_sources':1,'artistic_validated':False,'runtime_imported':False,
+                   'assets':[{k:a[k] for k in ('id','path','size_bytes','sha256','git_blob_sha1','width','height')} for a in rows]}
+          gallery='<!doctype html><html lang="fr"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Warp Universe - Lot 06</title><style>body{font:16px system-ui;background:#171c22;color:#f3f5f6;margin:24px}main{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:20px}article{border:1px solid #646b73;padding:16px}img{width:100%;height:380px;object-fit:contain;background:#4c535b}a{color:inherit}</style><h1>Warp Universe - 13 originaux pour revue</h1><p>Candidats non approuves en fidelite 1:1. Aucun raccord en jeu. Cliquer pour ouvrir le PNG original.</p><main>'
+          for a in rows:
+              p=html.escape(a['path'],quote=True)
+              gallery+=f'<article><h2>ID {a["id"]}</h2><a href="{p}"><img loading="lazy" src="{p}" alt="Candidat ID {a["id"]}"></a><p>{p}<br>{a["width"]} x {a["height"]}</p></article>'
+          gallery+='</main></html>'
+          extras={'IMPORT_RECU.json':json.dumps(receipt,ensure_ascii=False,indent=2)+'\n','GALERIE.html':gallery}
+          for name,content in extras.items():
+              blob=api('git/blobs','POST',{'content':content,'encoding':'utf-8'})
+              entries.append({'path':DIR+'/'+name,'mode':'100644','type':'blob','sha':blob['sha']})
+          # Preserve all parallel work; never force-push and never overwrite a different file.
+          published=False
+          for attempt in range(4):
+              old=head()
+              require(read(MANIFEST,old)['sha']==mf['sha'],'manifest changed during import')
+              for e in entries:
+                  current=read(e['path'],old,missing=True)
+                  require(current is None or current['sha']==e['sha'],'refuse to overwrite existing different file: '+e['path'])
+              commit=api('git/commits/'+old)
+              tree=api('git/trees','POST',{'base_tree':commit['tree']['sha'],'tree':entries})
+              new=api('git/commits','POST',{'message':'assets(warp): ajouter 13 PNG originaux controles a la PR 116','tree':tree['sha'],'parents':[old]})
+              if head()!=old:
+                  continue
+              try:
+                  api('git/refs/heads/'+BRANCH,'PATCH',{'sha':new['sha'],'force':False})
+              except HTTPError as e:
+                  if e.code==422 and head()!=old:
+                      continue
+                  raise
+              print('IMPORT_COMMIT='+new['sha'],flush=True)
+              with open(os.environ['GITHUB_STEP_SUMMARY'],'a') as f:
+                  f.write('13 PNG originaux importes, empreintes verifiees. Commit `'+new['sha']+'`. Non valides artistiquement ; aucun raccord runtime.\n')
+              published=True
+              break
+          require(published,'Concurrent changes: import not published; inspect the branch before retrying.')
+          PY
