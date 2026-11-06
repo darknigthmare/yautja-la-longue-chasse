@@ -1,0 +1,27 @@
+{
+  "project": "Yautja : La Longue Chasse",
+  "sector": "Xeno Prime / Le Berceau enfoui",
+  "version": "V2.3 — raccords visuels",
+  "date": "2026-11-06",
+  "source_pack": "Xeno_Prime_108_Sprites_6_Fonds",
+  "original_108_complete": true,
+  "purpose": "Compléter les états et raccords visuels explicitement prévus par le contrat d’animation ; PNG individuels, pas un nouveau bestiaire.",
+  "visual_reference": "Sprites natifs V2.2 de chaque famille, inspectés avant génération.",
+  "invariants": [
+    "Chitine noire, cuivre humide, cyan discret et ambre ; acide jaune-vert.",
+    "Boss : tête enracinée géante au sol, couronne complète, orientation vers la gauche, jamais de corps bipède.",
+    "Un seul état par PNG, alpha réel, pas de planche, texte, décor ou socle ajouté.",
+    "Ne pas modifier les 114 PNG antérieurs.",
+    "Pour chaque variante conserver le cadre et les attaches du sprite de référence."
+  ],
+  "verification_contract": {
+    "humanArtValidation": false,
+    "runtimeIntegrated": false,
+    "animationInEngineValidated": false,
+    "image_processing": "Aucune retouche raster hors outil de génération ; copies natives uniquement."
+  },
+  "scope_basis": [
+    "INTEGRATION_ET_QA.md §5",
+    "README.md §5 attaques et fin/trophée"
+  ]
+}

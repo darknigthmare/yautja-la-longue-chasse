@@ -1,0 +1,48 @@
+name: Mobility individual HD sources 01-08
+on:
+  push:
+    branches: [claude/bible-de-campagne]
+    paths:
+      - .github/workflows/mobility-individual-hd-01-08.yml
+      - docs/campagne/mobilite/import_hd_sources_01_08.py
+permissions:
+  contents: read
+concurrency:
+  group: mobility-individual-hd-01-08-pr116
+  cancel-in-progress: false
+jobs:
+  import:
+    if: github.repository == 'darknigthmare/yautja-la-longue-chasse' && github.ref == 'refs/heads/claude/bible-de-campagne'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 1
+          sparse-checkout: |
+            docs/campagne/mobilite
+            art-source/mobilite/vehicules-montures/v0.2-individual-hd
+      - name: Verify and preserve eight already-generated native PNGs
+        run: python3 docs/campagne/mobilite/import_hd_sources_01_08.py
+      - name: Check idempotence offline
+        run: python3 docs/campagne/mobilite/import_hd_sources_01_08.py --source-dir art-source/mobilite/vehicules-montures/v0.2-individual-hd
+      - name: Commit only the eight sources and honest production report
+        shell: bash
+        run: |
+          set -euo pipefail
+          git add -- art-source/mobilite/vehicules-montures/v0.2-individual-hd docs/campagne/mobilite/INDIVIDUELS_HD_01_08.md
+          python3 - <<'PY'
+          import subprocess
+          names = subprocess.check_output(['git','diff','--cached','--name-only'],text=True).splitlines()
+          assert not names or len(names) == 11, names
+          assert all(p.startswith('art-source/mobilite/vehicules-montures/v0.2-individual-hd/') or p == 'docs/campagne/mobilite/INDIVIDUELS_HD_01_08.md' for p in names), names
+          PY
+          git diff --cached --check
+          if git diff --cached --quiet; then exit 0; fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -m 'art(mobilite): huit sources individuelles HD 01-08 conservees sans validation 1:1 [skip ci]'
+          git push origin HEAD:refs/heads/claude/bible-de-campagne

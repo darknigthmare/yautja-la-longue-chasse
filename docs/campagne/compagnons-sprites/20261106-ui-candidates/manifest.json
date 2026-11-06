@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "batch": "companions-ui-candidates-20261106",
+  "scope": "Six icônes UI uniquement; aucun sprite de personnage livré.",
+  "source_gen_id": "10aa2d90-6fde-4091-bd61-3d76e5f24cf0",
+  "source_sha256": "c53e179075b534c565e2bab42746e29a44f705697afe72e6331cffb63ea463fa",
+  "processing": ["Découpe sans texte", "Aucun redimensionnement: 64x64", "Masque alpha chanfreiné", "Palette indexée 32 couleurs: RGB différents de la source"],
+  "not_an_animation": true,
+  "not_a_complete_companion_pack": true,
+  "status": {"generated": true, "repository_candidate": true, "game_integrated": false, "tested_in_game": false, "art_validated": false, "lore_1_to_1_certified": false},
+  "assets": [
+    {"id":"companion-ui-recruit","label":"Recruter","file":"recruit.png","dimensions":[64,64],"byte_size":1143,"sha256":"442d723d93b5792f57bead846852c053dde91c3250dc8d68b5ef8b138ce45f5c","git_blob_sha1":"8bf9a48748b0c8d578b03207fe57f771bd976374","source_box":[1109,746,1173,810]},
+    {"id":"companion-ui-assign","label":"Affecter","file":"assign.png","dimensions":[64,64],"byte_size":1369,"sha256":"aaf864dc1124ee98040d3de4eed9fb6f0a6e1d9864ae507a1e9373a374cad977","git_blob_sha1":"f8644037f82efd018439bc87209f260305822c9f","source_box":[1179,746,1243,810]},
+    {"id":"companion-ui-active","label":"Actif","file":"active.png","dimensions":[64,64],"byte_size":1211,"sha256":"ee5213ef468f28397154eb49df52090d77bba7cd5aa29a95960f9627d48cecc0","git_blob_sha1":"e30c805c68d0a7996d14959898d7777e245c2421","source_box":[1248,746,1312,810]},
+    {"id":"companion-ui-on-mission","label":"En mission","file":"on-mission.png","dimensions":[64,64],"byte_size":1415,"sha256":"1c8b144293bda038e9f0707dec5d2ae359c3cc104efd8b5844df67a4cee03bc3","git_blob_sha1":"d7c86b5b120dd8bf523f88022639b9e89d532051","source_box":[1319,746,1383,810]},
+    {"id":"companion-ui-reserve","label":"Réserve / repos","file":"reserve.png","dimensions":[64,64],"byte_size":1084,"sha256":"a2a4637fb8f413d823b539a6588fc6bb362fb3fe1977eecf3b116a158342bd4a","git_blob_sha1":"1dc4577a95bd8cd57209596454b030d8ea8b1d06","source_box":[1389,746,1453,810]},
+    {"id":"companion-ui-locked","label":"Verrouillé","file":"locked.png","dimensions":[64,64],"byte_size":1184,"sha256":"e421f70b2def2d5819fe7c9725c540a5d6569108a98456349985ed1526ad331f","git_blob_sha1":"105734d939f20b0ffda98fdca3651e207741b568","source_box":[1459,746,1523,810]}
+  ]
+}

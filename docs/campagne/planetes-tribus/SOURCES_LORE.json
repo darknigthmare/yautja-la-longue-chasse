@@ -1,0 +1,270 @@
+{
+  "schema_version": 1,
+  "project": "Yautja : La Longue Chasse",
+  "checked_on": "2026-11-05",
+  "scope": "Documentation des références des packs planètes et tribus ; aucun statut canonique global ni validation artistique ou jouable accordé.",
+  "reference_ids_contract": "R01 à R07 conservés pour les prompts sources V4 et V5.",
+  "summary": {
+    "references": 7,
+    "direct_content_read": 4,
+    "indexed_official_content_only": 2,
+    "title_only_body_unverified": 1
+  },
+  "classification": [
+    {
+      "id": "work_attributed",
+      "label": "Élément attribué à une œuvre",
+      "rule": "Nommer l'œuvre, la version et la continuité. Une adaptation commerciale citant cette œuvre reste une preuve de portée limitée."
+    },
+    {
+      "id": "licensed_design",
+      "label": "Adaptation ou création sous licence",
+      "rule": "Nommer le produit et le détail repris. Une figurine ne prouve pas une physiologie ou une institution universelle."
+    },
+    {
+      "id": "project_original",
+      "label": "Création originale du projet",
+      "rule": "Garder l'attribution originale et les contrôles ouverts. Inspiration, identité, filiation et statut canonique restent distincts."
+    }
+  ],
+  "access_status_definitions": {
+    "direct_read": "Corps de page lu directement.",
+    "direct_read_official_alternate_url": "Corps de page lu à une autre URL officielle ; URL historique conservée.",
+    "indexed_official_text_direct_403": "Description officielle consultée dans l'index de recherche ; ouverture directe HTTP403.",
+    "direct_403_title_only_indexed": "Corps de page inaccessible HTTP403 ; seul le titre a été confirmé dans l'index officiel."
+  },
+  "sources": [
+    {
+      "id": "R01",
+      "title": "NECA — série 10 / hommage Kenner",
+      "url": "https://store.necaonline.com/blogs/news/closer-look-predators-series-10-action-figures",
+      "access_status": "direct_read",
+      "checked_on": "2026-11-05",
+      "publisher": "NECA",
+      "scope": "Figurines sous licence ; designs Kenner Expanded Universe.",
+      "supports": [
+        "La série rassemble Lava Planet, Hive Wars et Nightstorm.",
+        "NECA indique reprendre des designs Kenner Expanded Universe des années 1990."
+      ],
+      "does_not_establish": [
+        "Une tribu officielle des Forges de la Caldeira.",
+        "Une biologie de lave, une immunité thermique générale ou une magie de feu.",
+        "Un système universel de castes par biome."
+      ]
+    },
+    {
+      "id": "R02",
+      "title": "NECA — série 16 / hommage Kenner",
+      "url": "https://store.necaonline.com/blogs/news/closer-look-predator-series-16-action-figures-a-kenner-tribute",
+      "access_status": "direct_read",
+      "checked_on": "2026-11-05",
+      "publisher": "NECA",
+      "scope": "Figurines sous licence ; designs Kenner Expanded Universe.",
+      "supports": [
+        "La série rassemble Spiked Tail, Stalker et Ghost.",
+        "Le texte décrit la propriété lumineuse dans le noir de la figurine Stalker."
+      ],
+      "does_not_establish": [
+        "Une espèce officiellement nommée Bioluminescent Predator.",
+        "Une émission lumineuse biologique des Veilleurs.",
+        "Un peuple souterrain ou son histoire."
+      ]
+    },
+    {
+      "id": "R03",
+      "title": "NECA — Ultimate Shaman",
+      "url": "https://necaonline.com/2022/02/predator-7-scale-action-figure-ultimate-shaman/",
+      "access_status": "indexed_official_text_direct_403",
+      "checked_on": "2026-11-05",
+      "publisher": "NECA",
+      "scope": "Figurine inspirée de Predator 2 et accessoires du produit.",
+      "supports": [
+        "Le texte rattache Shaman à la Lost Tribe rencontrée par Harrigan après le City Hunter.",
+        "La figurine comprend notamment un bâton, une cape, des ornements d'os et une dague rituelle."
+      ],
+      "does_not_establish": [
+        "Des pouvoirs surnaturels.",
+        "Un clergé universel ou une fonction héréditaire.",
+        "L'identité des gardiens de récits originaux du projet."
+      ],
+      "access_note": "L'ouverture directe a renvoyé 403 ; la description officielle a été consultée dans les résultats de recherche."
+    },
+    {
+      "id": "R04",
+      "title": "NECA — Ultimate Elder Predator, fiche 2022",
+      "url": "https://necaonline.com/2022/07/predator-2-7-scale-action-figure-ultimate-elder-predator/",
+      "access_status": "direct_403_title_only_indexed",
+      "checked_on": "2026-11-05",
+      "publisher": "NECA",
+      "scope": "Référence bibliographique conservée ; corps de fiche non revérifié.",
+      "supports": [
+        "Le titre de cette fiche existe dans l'index officiel NECA."
+      ],
+      "does_not_establish": [
+        "Le contenu intégral de sa biographie ou de ses accessoires lors de cet audit.",
+        "Une monarchie universelle, une fonction de roi ou l'organisation politique des cinq communautés."
+      ],
+      "access_note": "Deux ouvertures ont renvoyé 403. Le don du pistolet à Harrigan est documenté séparément par R05 ; ne pas l'attribuer à une lecture directe de R04.",
+      "index_url": "https://necaonline.com/category/licenses/movies/predator/"
+    },
+    {
+      "id": "R05",
+      "title": "NECA — Golden Angel / Predator: 1718",
+      "url": "https://necaonline.com/2018/02/predator-2-7-scale-action-figure-ultimate-elder-the-golden-angel/",
+      "access_status": "indexed_official_text_direct_403",
+      "checked_on": "2026-11-05",
+      "publisher": "NECA",
+      "scope": "Figurine tirée du comic Dark Horse Predator: 1718 ; lien explicite au personnage de Predator 2.",
+      "supports": [
+        "NECA attribue cette version de l'Elder au comic Predator: 1718.",
+        "Le texte rappelle le don du pistolet à Harrigan dans Predator 2 et présente le comic comme l'histoire de son acquisition."
+      ],
+      "does_not_establish": [
+        "L'applicabilité de toute la biographie du comic à chacune des autres continuités.",
+        "La descendance ou l'appartenance de nouveaux PNJ à cette lignée.",
+        "Un rang de souverain de tous les Yautja."
+      ],
+      "access_note": "L'ouverture directe a renvoyé 403 ; description officielle consultée dans l'index de recherche. La reprise NECA Toy Fair 2018 confirme la même attribution au comic, sans que cela fusionne les continuités."
+    },
+    {
+      "id": "R06",
+      "title": "NECA — Ultimate Jungle Hunter",
+      "url": "https://store.necaonline.com/products/predator-ultimate-jungle-hunter-7-scale-action-figure",
+      "source_pack_url": "https://store.necaonline.com/collections/predator/products/predator-ultimate-jungle-hunter-7-scale-action-figure",
+      "access_status": "direct_read_official_alternate_url",
+      "checked_on": "2026-11-05",
+      "publisher": "NECA",
+      "scope": "Figurine inspirée du film Predator 1987 ; équipement décrit.",
+      "supports": [
+        "NECA rattache le modèle au film de 1987.",
+        "La fiche décrit un canon plasma articulé, un volet de gantelet, un masque et un équipement dorsal amovible."
+      ],
+      "does_not_establish": [
+        "Chaque arme, harnais ou réseau de soins des nouveaux personnages.",
+        "Une preuve spécifique des professions de médecin, artisan ou régulateur.",
+        "L'anatomie détaillée des femmes Yautja originales."
+      ],
+      "access_note": "L'ancienne URL avec /collections/predator/ était inaccessible ; la page produit officielle sans ce préfixe a été trouvée et lue."
+    },
+    {
+      "id": "R07",
+      "title": "NECA — fonds de diorama temple AVP",
+      "url": "https://necaonline.com/2016/12/12-days-of-downloads-2016-day-9-alien-vs-predator-temple-diorama-backdrops/",
+      "access_status": "direct_read",
+      "checked_on": "2026-11-05",
+      "publisher": "NECA",
+      "scope": "Photographies de dioramas de figurines Alien vs Predator.",
+      "supports": [
+        "NECA propose des photographies de dioramas de temple AVP à imprimer pour présentation personnelle."
+      ],
+      "does_not_establish": [
+        "Des plans officiels de Homeworld.",
+        "La cité de pierre des Hautes Branches, ses aqueducs ou ses fonctions civiques.",
+        "Une obligation de reproduire les six dioramas dans le jeu."
+      ],
+      "access_note": "La page présente des photographies de dioramas, pas un dossier architectural d'un monde Yautja."
+    }
+  ],
+  "continuity_rules": [
+    {
+      "id": "LOR-PT-01",
+      "rule": "Les cinq communautés, leurs personnes, fonctions et infrastructures particulières restent des créations originales du projet."
+    },
+    {
+      "id": "LOR-PT-02",
+      "rule": "Chaque détail revendiqué comme établi conserve sa source et sa continuité ; aucune fiche NECA ne certifie l'ensemble des œuvres."
+    },
+    {
+      "id": "LOR-PT-03",
+      "rule": "Les fonctions locales ne confèrent aucun rang ; la progression de la bible et ses compléments demeure maîtresse."
+    },
+    {
+      "id": "LOR-PT-04",
+      "rule": "Les sièges communaux du pack n'accordent ni rang, ni titre, ni victoire de reine. Les titres Prince/King et les trônes de crêtes de reines définis ailleurs dans la bible sont préservés avec leurs propres conditions."
+    },
+    {
+      "id": "LOR-PT-05",
+      "rule": "Aucun membre original ne devient automatiquement une incarnation, un descendant ou un double d'un personnage existant ; recrutement et affectation restent explicites."
+    },
+    {
+      "id": "LOR-PT-06",
+      "rule": "Aucune magie ou immunité thermique n'est déduite des références NECA. Les propositions de campagne expressément hors canon gardent leur statut distinct."
+    },
+    {
+      "id": "LOR-PT-07",
+      "rule": "L'éclairage des Veilleurs provient de la flore et des appareils du projet ; la propriété lumineuse de la figurine Stalker ne prouve pas une biologie lumineuse Yautja."
+    },
+    {
+      "id": "LOR-PT-08",
+      "rule": "Les quinze directions de planètes gardent leur correspondance documentaire sans devenir quinze mondes officiels ou quinze missions nouvelles par déduction."
+    },
+    {
+      "id": "LOR-PT-09",
+      "rule": "Un PNG livré ne suffit pas à prouver l'anatomie, une animation, un comportement, un trophée acquis ou une intégration jouable."
+    },
+    {
+      "id": "LOR-PT-10",
+      "rule": "Le statut validated est réservé à la revue artistique humaine ; les vérifications techniques restent distinctes."
+    }
+  ],
+  "visual_review": {
+    "status": "à effectuer selon le suivi de production",
+    "checks": [
+      "Silhouette entière, proportions, mandibules et appendices crâniens confrontés au modèle annoncé.",
+      "Identité conservée entre variante masquée, démasquée et masque tenu à la main.",
+      "Mains, pieds, matériel, palette, cadrage, pivot, échelle, alpha réel et bords occupés.",
+      "Personnages féminins, métiers et costumes identifiés comme créations particulières du pack.",
+      "Implantation habitable, matériaux reconnaissables et technologie cohérente avec les contraintes de communauté."
+    ]
+  },
+  "habitat_constraints": [
+    {
+      "community": "Peuple des Citernes",
+      "rule": "Eau protégée, réservoirs couverts, circuits fermés et ombre utile."
+    },
+    {
+      "community": "Terrasses des Hautes Branches",
+      "rule": "Cité de pierre monumentale parmi les arbres géants, terrasses, ponts, aqueducs et cascades."
+    },
+    {
+      "community": "Cour des Forges Basses",
+      "rule": "Quartier habité et entretenu, métal réparé et maçonnerie, ateliers fonctionnels ; aucune affiliation Bad Blood ou Enforcer implicite."
+    },
+    {
+      "community": "Forges de la Caldeira",
+      "rule": "Terrasses sèches et refroidies, voies protégées, eau disponible ; lave éloignée des parcours ; membres biologiques."
+    },
+    {
+      "community": "Refuge des Veilleurs",
+      "rule": "Habitat entièrement souterrain, voûte rocheuse visible, éclairage végétal et technique ; absence de ciel, lune et étoiles dans cet habitat."
+    }
+  ],
+  "material_contract": {
+    "palette": "Direction de couleurs ; ne constitue pas un matériau technique.",
+    "surface_image": "Image de référence ou source de production ; son statut de livraison suit l'inventaire.",
+    "pbr_material": "Contrat de rendu et données compatibles à définir et contrôler dans le moteur ; aucun ensemble de cartes n'est présumé produit.",
+    "needed_before_claiming_integrated": [
+      "Canaux requis par le rendu cible.",
+      "Échelle et orientation de surface.",
+      "Raccords si nécessaires.",
+      "Réponse aux variations d'éclairage et usage de l'émission.",
+      "Contrôle de la neutralité de la base couleur et des cartes réellement livrées."
+    ]
+  },
+  "cross_references": {
+    "readme": "README.md",
+    "tribes": "TRIBUS.md",
+    "planets": "PLANETES.md",
+    "remaining_work": "REPRISE.md",
+    "campaign": "../BIBLE_DE_CAMPAGNE.md",
+    "companions": "../COMPAGNONS_ET_ALLIES_PREMIUM.md",
+    "xeno_prime": "../xeno-prime/README.md",
+    "project_guide": "../../GAMEDEV_AGENT_GUIDE.md"
+  },
+  "verification_limits": [
+    "Contrôle documentaire, pas certification globale de canon.",
+    "Aucune revue artistique humaine déclarée par ce registre.",
+    "Aucun code, asset binaire ou fichier de sauvegarde modifié.",
+    "Aucun test de gameplay, build ou essai de performance revendiqué."
+  ]
+}

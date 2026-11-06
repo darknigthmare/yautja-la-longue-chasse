@@ -1,0 +1,161 @@
+{
+  "snapshot_commit": "04a14cce268a1572092269fb281304ac10294725",
+  "scope": "Contrôles documentaires et de concordance; aucune exécution du jeu.",
+  "checks": [
+    {
+      "check": "Tous les JSON sont valides",
+      "result": "passed",
+      "detail": 8
+    },
+    {
+      "check": "204 PNG livrés et 40 sujets préparés",
+      "result": "passed",
+      "detail": null
+    },
+    {
+      "check": "Comptes par pack",
+      "result": "passed",
+      "detail": null
+    },
+    {
+      "check": "204 IDs et SHA source distincts",
+      "result": "passed",
+      "detail": null
+    },
+    {
+      "check": "204 enregistrements source intacts",
+      "result": "passed",
+      "detail": null
+    },
+    {
+      "check": "15 prompts historiques absents restent nuls",
+      "result": "passed",
+      "detail": null
+    },
+    {
+      "check": "40 jobs V5 conservés dans les deux JSON",
+      "result": "passed",
+      "detail": null
+    },
+    {
+      "check": "40 jobs toujours sans PNG",
+      "result": "passed",
+      "detail": null
+    },
+    {
+      "check": "8 jobs par communauté",
+      "result": "passed",
+      "detail": null
+    },
+    {
+      "check": "Répartition V5:10 membres,15 objets,10 lieux,5 matières",
+      "result": "passed",
+      "detail": null
+    },
+    {
+      "check": "25 sorties V5 avec alpha prévues",
+      "result": "passed",
+      "detail": null
+    },
+    {
+      "check": "Anciennes preuves V5 datées séparément",
+      "result": "passed",
+      "detail": null
+    },
+    {
+      "check": "Correspondances source/V37 exhaustives",
+      "result": "passed",
+      "detail": null
+    },
+    {
+      "check": "408 chemins WebP présents au snapshot",
+      "result": "passed",
+      "detail": null
+    },
+    {
+      "check": "Identifiants V37 uniques",
+      "result": "passed",
+      "detail": null
+    },
+    {
+      "check": "204 références enrichies dans le catalogue",
+      "result": "passed",
+      "detail": null
+    },
+    {
+      "check": "15 directions/5 familles/6 régions/6 origines/24 PLAN",
+      "result": "passed",
+      "detail": null
+    },
+    {
+      "check": "15 directions avec six images chacune",
+      "result": "passed",
+      "detail": null
+    },
+    {
+      "check": "Planètes:5 chasses,6 sans mission,3 artistiques,1 Xeno",
+      "result": "passed",
+      "detail": null
+    },
+    {
+      "check": "Xeno Prime seulement PLAN08",
+      "result": "passed",
+      "detail": null
+    },
+    {
+      "check": "Six textes historiques conservés exactement",
+      "result": "passed",
+      "detail": null
+    },
+    {
+      "check": "Audit des archives conservé exactement",
+      "result": "passed",
+      "detail": null
+    },
+    {
+      "check": "Deux citernes signalées, non corrigées",
+      "result": "passed",
+      "detail": null
+    },
+    {
+      "check": "204 lignes de catalogue identifiables",
+      "result": "passed",
+      "detail": null
+    },
+    {
+      "check": "40 jobs identifiables dans la reprise",
+      "result": "passed",
+      "detail": null
+    },
+    {
+      "check": "24 contrôles de jeu encore ouverts",
+      "result": "passed",
+      "detail": null
+    },
+    {
+      "check": "Bible exportée inchangée octet pour octet",
+      "result": "passed",
+      "detail": null
+    },
+    {
+      "check": "Index existant conservé hors ajout balisé",
+      "result": "passed",
+      "detail": null
+    },
+    {
+      "check": "Liens Markdown locaux résolus",
+      "result": "passed",
+      "detail": {
+        "checked": 228,
+        "missing": []
+      }
+    },
+    {
+      "check": "Fichiers de l’annexe limités à Markdown/JSON",
+      "result": "passed",
+      "detail": null
+    }
+  ],
+  "passed": 30,
+  "failed": 0
+}

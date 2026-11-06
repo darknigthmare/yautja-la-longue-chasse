@@ -1,0 +1,128 @@
+{
+  "checked_at_utc": "2026-11-06T04:38:00.076858+00:00",
+  "scope": "Mise à jour documentaire V5, contrôles sans exécution du jeu",
+  "base_commit": "62c6bde96512f5ef445d91e918e7c69ab6f88aed",
+  "latest_read_parent_commit": "8abbbf00b6befcadf1510dbca5ea1ecbd7098815",
+  "checks": [
+    {
+      "name": "42 sorties nouvelles et 40 jobs exacts",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "204 enregistrements livrés historiques conservés",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "246 IDs et SHA uniques",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Sources des 40 jobs inchangées",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "40 jobs produits et zéro reste du plan",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Conservation des preuves de préparation historiques",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Archive documentaire conservée : TEXTES_SOURCE.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Archive documentaire conservée : VERIFICATION_ARCHIVES.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Archive documentaire conservée : VERIFICATION_DOCUMENTAIRE.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Archive documentaire conservée : RACCORD_EXISTANT.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Archive documentaire conservée : SOURCES_LORE.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "27 alpha et 15 opaques",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "V37 reste à 204 sources",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Nouveaux PNG non annoncés intégrés au jeu",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Revue transversale complète sans défaut bloquant",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "PDF final revu sur 7 pages",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Six archives contrôlées",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Échec de sauvegarde durable explicite",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Pas de lien de session présenté comme lien GitHub",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "246 sources, 622479638 octets",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Liens documentaires locaux présents",
+      "passed": true,
+      "detail": {
+        "checked": 253,
+        "missing": []
+      }
+    },
+    {
+      "name": "Bible courante exclue de nos fichiers modifiés",
+      "passed": true,
+      "detail": {
+        "current_parent_blob": "af208069437215b9765d7fe2a3b52580bb2d241d",
+        "note": "La bible a évolué dans des commits concurrents ; ce lot conserve la version actuelle du parent, sans restaurer un ancien export."
+      }
+    }
+  ],
+  "passed": 22,
+  "failed": 0,
+  "new_code_or_game_assets_changed": false,
+  "binary_archives_uploaded_to_git": false
+}

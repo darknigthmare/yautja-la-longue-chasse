@@ -1,0 +1,854 @@
+{
+  "description": "Illustration fixe du souffle actif. Géométrie de la tête et du jet calculée sur leur contenu visible ; le chasseur reste devant le jet.",
+  "mouth_anchor_source_px": [
+    316,
+    674
+  ],
+  "jet_origin_source_px": [
+    1493,
+    539
+  ],
+  "scene": {
+    "id": 12,
+    "title": "Le Bassin de la Matriarche",
+    "width": 3200,
+    "height": 1440,
+    "background": "fonds/BG06_bassin_royal.png",
+    "backgroundColor": "#101b1c",
+    "description": "La tête géante de la Matriarche repose au sol et commande les tentacules enracinés autour du bassin.",
+    "beforeDescription": "La tête géante de la Matriarche repose au sol et commande les tentacules enracinés autour du bassin.",
+    "afterDescription": "Après la victoire, la tête géante repose inerte dans son berceau de résine. Les tentacules s’affaissent autour du bassin. La membrane respiratoire royale est rompue. Le point lumineux du nœud nerveux a disparu. Le trophée apparaît entre les racines ; la végétation du bassin demeure.",
+    "placements": [
+      {
+        "asset": "sprites/terrain/016_bloc_sol_resine.png",
+        "assetId": "016",
+        "x": -212.02,
+        "y": 1143.708,
+        "w": 999.898,
+        "h": 333.299,
+        "visibleAnchor": {
+          "left": -160,
+          "bottom": 1430.0511508951406,
+          "width": 900,
+          "height": null
+        },
+        "layer": "jeu",
+        "depth": 1,
+        "opacity": 1,
+        "flipX": false,
+        "role": "Sol continu",
+        "asset_key": "XENO-BE-016"
+      },
+      {
+        "asset": "sprites/terrain/013_corniche_basalte.png",
+        "assetId": "013",
+        "x": -247.287,
+        "y": 1320.021,
+        "w": 960.22,
+        "h": 362.258,
+        "visibleAnchor": {
+          "left": -220,
+          "bottom": 1651.2284370099321,
+          "width": 900,
+          "height": null
+        },
+        "layer": "jeu",
+        "depth": 1,
+        "opacity": 1,
+        "flipX": false,
+        "role": "Soubassement",
+        "asset_key": "XENO-BE-013"
+      },
+      {
+        "asset": "sprites/terrain/016_bloc_sol_resine.png",
+        "assetId": "016",
+        "x": 537.98,
+        "y": 1143.708,
+        "w": 999.898,
+        "h": 333.299,
+        "visibleAnchor": {
+          "left": 590,
+          "bottom": 1430.0511508951406,
+          "width": 900,
+          "height": null
+        },
+        "layer": "jeu",
+        "depth": 1,
+        "opacity": 1,
+        "flipX": false,
+        "role": "Sol continu",
+        "asset_key": "XENO-BE-016"
+      },
+      {
+        "asset": "sprites/terrain/013_corniche_basalte.png",
+        "assetId": "013",
+        "x": 502.713,
+        "y": 1320.021,
+        "w": 960.22,
+        "h": 362.258,
+        "visibleAnchor": {
+          "left": 530,
+          "bottom": 1651.2284370099321,
+          "width": 900,
+          "height": null
+        },
+        "layer": "jeu",
+        "depth": 1,
+        "opacity": 1,
+        "flipX": false,
+        "role": "Soubassement",
+        "asset_key": "XENO-BE-013"
+      },
+      {
+        "asset": "sprites/terrain/016_bloc_sol_resine.png",
+        "assetId": "016",
+        "x": 1287.98,
+        "y": 1143.708,
+        "w": 999.898,
+        "h": 333.299,
+        "visibleAnchor": {
+          "left": 1340,
+          "bottom": 1430.0511508951406,
+          "width": 900,
+          "height": null
+        },
+        "layer": "jeu",
+        "depth": 1,
+        "opacity": 1,
+        "flipX": false,
+        "role": "Sol continu",
+        "asset_key": "XENO-BE-016"
+      },
+      {
+        "asset": "sprites/terrain/013_corniche_basalte.png",
+        "assetId": "013",
+        "x": 1252.713,
+        "y": 1320.021,
+        "w": 960.22,
+        "h": 362.258,
+        "visibleAnchor": {
+          "left": 1280,
+          "bottom": 1651.2284370099321,
+          "width": 900,
+          "height": null
+        },
+        "layer": "jeu",
+        "depth": 1,
+        "opacity": 1,
+        "flipX": false,
+        "role": "Soubassement",
+        "asset_key": "XENO-BE-013"
+      },
+      {
+        "asset": "sprites/terrain/016_bloc_sol_resine.png",
+        "assetId": "016",
+        "x": 2037.98,
+        "y": 1143.708,
+        "w": 999.898,
+        "h": 333.299,
+        "visibleAnchor": {
+          "left": 2090,
+          "bottom": 1430.0511508951406,
+          "width": 900,
+          "height": null
+        },
+        "layer": "jeu",
+        "depth": 1,
+        "opacity": 1,
+        "flipX": false,
+        "role": "Sol continu",
+        "asset_key": "XENO-BE-016"
+      },
+      {
+        "asset": "sprites/terrain/013_corniche_basalte.png",
+        "assetId": "013",
+        "x": 2002.713,
+        "y": 1320.021,
+        "w": 960.22,
+        "h": 362.258,
+        "visibleAnchor": {
+          "left": 2030,
+          "bottom": 1651.2284370099321,
+          "width": 900,
+          "height": null
+        },
+        "layer": "jeu",
+        "depth": 1,
+        "opacity": 1,
+        "flipX": false,
+        "role": "Soubassement",
+        "asset_key": "XENO-BE-013"
+      },
+      {
+        "asset": "sprites/terrain/016_bloc_sol_resine.png",
+        "assetId": "016",
+        "x": 2787.98,
+        "y": 1143.708,
+        "w": 999.898,
+        "h": 333.299,
+        "visibleAnchor": {
+          "left": 2840,
+          "bottom": 1430.0511508951406,
+          "width": 900,
+          "height": null
+        },
+        "layer": "jeu",
+        "depth": 1,
+        "opacity": 1,
+        "flipX": false,
+        "role": "Sol continu",
+        "asset_key": "XENO-BE-016"
+      },
+      {
+        "asset": "sprites/terrain/013_corniche_basalte.png",
+        "assetId": "013",
+        "x": 2752.713,
+        "y": 1320.021,
+        "w": 960.22,
+        "h": 362.258,
+        "visibleAnchor": {
+          "left": 2780,
+          "bottom": 1651.2284370099321,
+          "width": 900,
+          "height": null
+        },
+        "layer": "jeu",
+        "depth": 1,
+        "opacity": 1,
+        "flipX": false,
+        "role": "Soubassement",
+        "asset_key": "XENO-BE-013"
+      },
+      {
+        "asset": "sprites/terrain/016_bloc_sol_resine.png",
+        "assetId": "016",
+        "x": 3537.98,
+        "y": 1143.708,
+        "w": 999.898,
+        "h": 333.299,
+        "visibleAnchor": {
+          "left": 3590,
+          "bottom": 1430.0511508951406,
+          "width": 900,
+          "height": null
+        },
+        "layer": "jeu",
+        "depth": 1,
+        "opacity": 1,
+        "flipX": false,
+        "role": "Sol continu",
+        "asset_key": "XENO-BE-016"
+      },
+      {
+        "asset": "sprites/terrain/013_corniche_basalte.png",
+        "assetId": "013",
+        "x": 3502.713,
+        "y": 1320.021,
+        "w": 960.22,
+        "h": 362.258,
+        "visibleAnchor": {
+          "left": 3530,
+          "bottom": 1651.2284370099321,
+          "width": 900,
+          "height": null
+        },
+        "layer": "jeu",
+        "depth": 1,
+        "opacity": 1,
+        "flipX": false,
+        "role": "Soubassement",
+        "asset_key": "XENO-BE-013"
+      },
+      {
+        "asset": "sprites/terrain/018_colonne_ruche.png",
+        "assetId": "018",
+        "x": -283.189,
+        "y": -360.524,
+        "w": 1272.335,
+        "h": 1908.503,
+        "visibleAnchor": {
+          "left": -190,
+          "bottom": 1420,
+          "width": null,
+          "height": 1660
+        },
+        "layer": "fond",
+        "depth": 0.18,
+        "opacity": 1,
+        "flipX": false,
+        "role": "",
+        "asset_key": "XENO-BE-018"
+      },
+      {
+        "asset": "sprites/vegetation/011_coraux_fongiques.png",
+        "assetId": "011",
+        "x": 2702.178,
+        "y": 794.256,
+        "w": 506.241,
+        "h": 506.241,
+        "visibleAnchor": {
+          "left": 2770,
+          "bottom": 1290,
+          "width": null,
+          "height": 480
+        },
+        "layer": "fond",
+        "depth": 0.18,
+        "opacity": 1,
+        "flipX": false,
+        "role": "",
+        "asset_key": "XENO-BE-011"
+      },
+      {
+        "asset": "sprites/tentacules/037_tentacule_arche.png",
+        "assetId": "037",
+        "x": 858.281,
+        "y": -1.466,
+        "w": 1928.101,
+        "h": 1285.401,
+        "visibleAnchor": {
+          "left": 970,
+          "bottom": 1240,
+          "width": null,
+          "height": 1190
+        },
+        "layer": "decor",
+        "depth": 0.58,
+        "opacity": 1,
+        "flipX": false,
+        "role": "",
+        "states": {
+          "apres": {
+            "asset": "sprites/tentacules/043_tentacule_pont_inerte.png",
+            "assetId": "043",
+            "x": 958.846,
+            "y": 715.769,
+            "w": 1474.538,
+            "h": 589.667,
+            "visibleAnchor": {
+              "left": 970,
+              "bottom": 1240,
+              "width": 1450,
+              "height": null
+            },
+            "opacity": 1,
+            "asset_key": "XENO-BE-043"
+          }
+        },
+        "asset_key": "XENO-BE-037"
+      },
+      {
+        "asset": "sprites/tentacules/046_membrane_respiratoire.png",
+        "assetId": "046",
+        "x": 2347.609,
+        "y": 549.575,
+        "w": 732.717,
+        "h": 366.358,
+        "visibleAnchor": {
+          "left": 2360,
+          "bottom": 880,
+          "width": 710,
+          "height": null
+        },
+        "layer": "decor",
+        "depth": 0.58,
+        "opacity": 1,
+        "flipX": false,
+        "role": "",
+        "states": {
+          "apres": {
+            "asset": "sprites/boss_actions/093_membrane_dechiree.png",
+            "assetId": "093",
+            "x": 2347.609,
+            "y": 549.575,
+            "w": 732.717,
+            "h": 366.358,
+            "opacity": 1,
+            "asset_key": "XENO-BE-093"
+          }
+        },
+        "asset_key": "XENO-BE-046"
+      },
+      {
+        "asset": "sprites/boss_actions/096_matriarche_souffle_actif.png",
+        "assetId": "096",
+        "x": 1288.306709,
+        "y": 250.383387,
+        "w": 1869.648562,
+        "h": 1052.236422,
+        "visibleAnchor": {
+          "left": 1380,
+          "bottom": 1240,
+          "width": 1750,
+          "height": null
+        },
+        "layer": "jeu",
+        "depth": 1,
+        "opacity": 1,
+        "flipX": false,
+        "role": "Matriarche au souffle actif",
+        "states": {},
+        "asset_key": "XENO-BE-096"
+      },
+      {
+        "asset": "sprites/personnages/063_bulbe_nerveux.png",
+        "assetId": "063",
+        "x": 2267.436,
+        "y": 728.873,
+        "w": 699.2,
+        "h": 393.509,
+        "visibleAnchor": {
+          "left": 2400,
+          "bottom": 1040,
+          "width": null,
+          "height": 230
+        },
+        "layer": "jeu",
+        "depth": 1,
+        "opacity": 1,
+        "flipX": false,
+        "role": "Nœud nerveux royal",
+        "states": {
+          "apres": null
+        },
+        "asset_key": "XENO-BE-063"
+      },
+      {
+        "asset": "sprites/tentacules/038_tentacule_balayage.png",
+        "assetId": "038",
+        "x": 690.499,
+        "y": 747.777,
+        "w": 1153.151,
+        "h": 576.576,
+        "visibleAnchor": {
+          "left": 710,
+          "bottom": 1260,
+          "width": 1120,
+          "height": null
+        },
+        "layer": "jeu",
+        "depth": 1,
+        "opacity": 1,
+        "flipX": false,
+        "role": "",
+        "states": {
+          "apres": {
+            "asset": "sprites/tentacules/043_tentacule_pont_inerte.png",
+            "assetId": "043",
+            "x": 701.385,
+            "y": 855.077,
+            "w": 1138.953,
+            "h": 455.466,
+            "visibleAnchor": {
+              "left": 710,
+              "bottom": 1260,
+              "width": 1119.9995338218716,
+              "height": null
+            },
+            "opacity": 1,
+            "asset_key": "XENO-BE-043"
+          }
+        },
+        "asset_key": "XENO-BE-038"
+      },
+      {
+        "asset": "sprites/tentacules/045_fouet_diagonal.png",
+        "assetId": "045",
+        "x": 58.096,
+        "y": 149.5,
+        "w": 1650.383,
+        "h": 1100.255,
+        "visibleAnchor": {
+          "left": 100,
+          "bottom": 1210,
+          "width": null,
+          "height": 1010
+        },
+        "layer": "decor",
+        "depth": 0.58,
+        "opacity": 1,
+        "flipX": false,
+        "role": "",
+        "states": {
+          "apres": {
+            "asset": "sprites/tentacules/043_tentacule_pont_inerte.png",
+            "assetId": "043",
+            "x": 71.923,
+            "y": 880.385,
+            "w": 1067.769,
+            "h": 427,
+            "visibleAnchor": {
+              "left": 80,
+              "bottom": 1260,
+              "width": 1050,
+              "height": null
+            },
+            "opacity": 1,
+            "asset_key": "XENO-BE-043"
+          }
+        },
+        "asset_key": "XENO-BE-045"
+      },
+      {
+        "asset": "sprites/tentacules/041_anse_capture.png",
+        "assetId": "041",
+        "x": 1067.05,
+        "y": 312.929,
+        "w": 819.414,
+        "h": 546.276,
+        "visibleAnchor": {
+          "left": 1130,
+          "bottom": 840,
+          "width": null,
+          "height": 510
+        },
+        "layer": "decor",
+        "depth": 0.58,
+        "opacity": 1,
+        "flipX": false,
+        "role": "",
+        "states": {
+          "apres": {
+            "asset": "sprites/tentacules/043_tentacule_pont_inerte.png",
+            "assetId": "043",
+            "x": 1073.462,
+            "y": 952.692,
+            "w": 864.385,
+            "h": 345.667,
+            "visibleAnchor": {
+              "left": 1080,
+              "bottom": 1260,
+              "width": 850,
+              "height": null
+            },
+            "opacity": 1,
+            "asset_key": "XENO-BE-043"
+          }
+        },
+        "asset_key": "XENO-BE-041"
+      },
+      {
+        "asset": "sprites/terrain/020_appui_basalte.png",
+        "assetId": "020",
+        "x": 169.714,
+        "y": 951.438,
+        "w": 671.009,
+        "h": 447.339,
+        "visibleAnchor": {
+          "left": 230,
+          "bottom": 1290,
+          "width": 550,
+          "height": null
+        },
+        "layer": "jeu",
+        "depth": 1,
+        "opacity": 1,
+        "flipX": false,
+        "role": "",
+        "asset_key": "XENO-BE-020"
+      },
+      {
+        "asset": "sprites/props_effets/103_jet_acide_horizontal.png",
+        "assetId": "103",
+        "x": 577.404723,
+        "y": 619.841622,
+        "w": 1094.90835,
+        "h": 729.9389,
+        "layer": "jeu",
+        "depth": 1,
+        "opacity": 1,
+        "flipX": false,
+        "role": "Jet acide lié au centre de la gueule",
+        "asset_key": "XENO-BE-103"
+      },
+      {
+        "asset": "sprites/personnages/055_yautja_chasseur.png",
+        "assetId": "055",
+        "x": 349.864,
+        "y": 853.946,
+        "w": 417.959,
+        "h": 278.639,
+        "visibleAnchor": {
+          "left": 490,
+          "bottom": 1110,
+          "width": null,
+          "height": 240
+        },
+        "layer": "jeu",
+        "depth": 1,
+        "opacity": 1,
+        "flipX": false,
+        "role": "Échelle du chasseur",
+        "asset_key": "XENO-BE-055"
+      },
+      {
+        "asset": "sprites/effets/065_flaque_acide.png",
+        "assetId": "065",
+        "x": 1018.352,
+        "y": 903.567,
+        "w": 762.799,
+        "h": 508.533,
+        "visibleAnchor": {
+          "left": 1070,
+          "bottom": 1280,
+          "width": 660,
+          "height": null
+        },
+        "layer": "premier_plan",
+        "depth": 1.08,
+        "opacity": 1,
+        "flipX": false,
+        "role": "",
+        "states": {
+          "apres": null
+        },
+        "asset_key": "XENO-BE-065"
+      },
+      {
+        "asset": "sprites/props_effets/100_trophee_couronne_socle.png",
+        "assetId": "100",
+        "x": 1159.496,
+        "y": 1033.714,
+        "w": 231.832,
+        "h": 231.832,
+        "visibleAnchor": {
+          "left": 1190,
+          "bottom": 1260,
+          "width": null,
+          "height": 220
+        },
+        "layer": "jeu",
+        "depth": 1,
+        "opacity": 0,
+        "flipX": false,
+        "role": "",
+        "states": {
+          "apres": {
+            "asset": "sprites/props_effets/100_trophee_couronne_socle.png",
+            "assetId": "100",
+            "x": 1159.496,
+            "y": 1033.714,
+            "w": 231.832,
+            "h": 231.832,
+            "visibleAnchor": {
+              "left": 1190,
+              "bottom": 1260,
+              "width": null,
+              "height": 220
+            },
+            "opacity": 1,
+            "asset_key": "XENO-BE-100"
+          }
+        },
+        "asset_key": "XENO-BE-100"
+      },
+      {
+        "asset": "sprites/environnement/075_racines_premier_plan.png",
+        "assetId": "075",
+        "x": -125.214,
+        "y": 1128.885,
+        "w": 770.863,
+        "h": 385.432,
+        "visibleAnchor": {
+          "left": -120,
+          "bottom": 1460,
+          "width": 760,
+          "height": null
+        },
+        "layer": "premier_plan",
+        "depth": 1.08,
+        "opacity": 1,
+        "flipX": false,
+        "role": "",
+        "asset_key": "XENO-BE-075"
+      },
+      {
+        "asset": "sprites/environnement/075_racines_premier_plan.png",
+        "assetId": "075",
+        "x": 2615.06,
+        "y": 1156.312,
+        "w": 730.292,
+        "h": 365.146,
+        "visibleAnchor": {
+          "left": 2620,
+          "bottom": 1470,
+          "width": 720,
+          "height": null
+        },
+        "layer": "premier_plan",
+        "depth": 1.08,
+        "opacity": 1,
+        "flipX": true,
+        "role": "",
+        "asset_key": "XENO-BE-075"
+      }
+    ],
+    "links": [
+      {
+        "target": 11,
+        "label": "Retour · La Lèvre silencieuse",
+        "type": "principal"
+      }
+    ],
+    "note": "Composition artistique ; le plan de collision et les déplacements ne sont pas implémentés.",
+    "bossVariants": [
+      {
+        "id": "059",
+        "name": "Matriarche intacte",
+        "asset": "sprites/personnages/059_matriarche_intacte.png",
+        "asset_key": "XENO-BE-059"
+      },
+      {
+        "id": "060",
+        "name": "Matriarche préparant le souffle",
+        "asset": "sprites/personnages/060_matriarche_souffle.png",
+        "asset_key": "XENO-BE-060"
+      },
+      {
+        "id": "061",
+        "name": "Matriarche vulnérable",
+        "asset": "sprites/personnages/061_matriarche_vulnerable.png",
+        "asset_key": "XENO-BE-061"
+      },
+      {
+        "id": "062",
+        "name": "Matriarche après victoire",
+        "asset": "sprites/personnages/062_matriarche_morte.png",
+        "asset_key": "XENO-BE-062"
+      },
+      {
+        "id": "094",
+        "name": "Matriarche en morsure",
+        "asset": "sprites/boss_actions/094_matriarche_morsure.png",
+        "asset_key": "XENO-BE-094"
+      },
+      {
+        "id": "095",
+        "name": "Matriarche en recul",
+        "asset": "sprites/boss_actions/095_matriarche_recul.png",
+        "asset_key": "XENO-BE-095"
+      },
+      {
+        "id": "096",
+        "name": "Matriarche au souffle actif",
+        "asset": "sprites/boss_actions/096_matriarche_souffle_actif.png",
+        "asset_key": "XENO-BE-096"
+      }
+    ],
+    "omitted_planned_asset_ids": [
+      "071",
+      "105"
+    ],
+    "preview_filename": "tableaux/12_matriarche.png",
+    "after_preview_filename": "tableaux/12_matriarche_apres.png",
+    "attack_preview_filename": "tableaux/12_matriarche_souffle.png",
+    "scene_key": "XENO-BE-T12-SOUFFLE",
+    "background_asset_key": "XENO-BE-BG06"
+  },
+  "documentation_schema_version": 1,
+  "asset_namespace": "XENO-BE",
+  "source": {
+    "filename": "COMPOSITION_SOUFFLE_V2.json",
+    "archive_id": "XENO-BE-ARCHIVE-85",
+    "sha256": "763394eb66f0539c838c1ba7195cc1e2a917b4d02231c67b52d99411ebb1eac6"
+  },
+  "status": {
+    "illustrated_layout": true,
+    "runtime_integrated": false,
+    "animation_verified": false,
+    "human_art_validation": false
+  },
+  "path_scope": "archive_relative",
+  "campaign_binding": {
+    "status": "documentation_only",
+    "planet_id": "PLAN08",
+    "global_zone_id": "XP-Z12",
+    "scene_key": "XENO-BE-T12",
+    "queen_identity": "Matriarche enracinée active ; distincte du vestige inerte de XP-Z09"
+  },
+  "asset_availability_update": {
+    "date": "2026-11-06",
+    "catalog_snapshot": "2.3-raccords-150",
+    "newly_available_asset_keys": [
+      "XENO-BE-A001",
+      "XENO-BE-A002",
+      "XENO-BE-A003",
+      "XENO-BE-A004",
+      "XENO-BE-A005",
+      "XENO-BE-A006",
+      "XENO-BE-A007",
+      "XENO-BE-A008",
+      "XENO-BE-A009",
+      "XENO-BE-A010",
+      "XENO-BE-A011",
+      "XENO-BE-A012",
+      "XENO-BE-A013",
+      "XENO-BE-A014",
+      "XENO-BE-A015",
+      "XENO-BE-A016",
+      "XENO-BE-A017",
+      "XENO-BE-A018",
+      "XENO-BE-A019",
+      "XENO-BE-A020",
+      "XENO-BE-A021",
+      "XENO-BE-A022",
+      "XENO-BE-A023",
+      "XENO-BE-A024",
+      "XENO-BE-A025",
+      "XENO-BE-A026",
+      "XENO-BE-A027",
+      "XENO-BE-A028",
+      "XENO-BE-A029",
+      "XENO-BE-A030",
+      "XENO-BE-A031",
+      "XENO-BE-A032",
+      "XENO-BE-A033",
+      "XENO-BE-A034",
+      "XENO-BE-A035",
+      "XENO-BE-A036",
+      "XENO-BE-A037",
+      "XENO-BE-A038",
+      "XENO-BE-A039",
+      "XENO-BE-A040",
+      "XENO-BE-A041",
+      "XENO-BE-A042"
+    ],
+    "source_layout_recomputed": false,
+    "source_descriptions_scope": "Descriptions et omissions des rendus V2.1 historiques ; les nouveaux PNG existent séparément et ne sont pas encore placés dans ces images.",
+    "runtime_integrated": false
+  },
+  "asset_availability_history": [
+    {
+      "date": "2026-11-06",
+      "catalog_snapshot": "2.2-completion-108",
+      "newly_available_asset_keys": [
+        "XENO-BE-028",
+        "XENO-BE-030",
+        "XENO-BE-031",
+        "XENO-BE-034",
+        "XENO-BE-035",
+        "XENO-BE-036",
+        "XENO-BE-056",
+        "XENO-BE-057",
+        "XENO-BE-067",
+        "XENO-BE-068",
+        "XENO-BE-069",
+        "XENO-BE-070",
+        "XENO-BE-071",
+        "XENO-BE-072",
+        "XENO-BE-079",
+        "XENO-BE-097",
+        "XENO-BE-098",
+        "XENO-BE-102",
+        "XENO-BE-104",
+        "XENO-BE-105",
+        "XENO-BE-106",
+        "XENO-BE-107",
+        "XENO-BE-108"
+      ],
+      "source_layout_recomputed": false,
+      "source_descriptions_scope": "Descriptions et omissions des rendus V2.1 historiques ; les nouveaux PNG existent séparément et ne sont pas encore placés dans ces images.",
+      "runtime_integrated": false
+    }
+  ]
+}
