@@ -1816,6 +1816,28 @@ Les quatre fonctionnent ensemble :
 
 Les couleurs restent libres, mais alliés et ennemis gardent un contour ou un marqueur d'équipe fixe. *(proposé)* Une luminosité minimale est appliquée aux couleurs vues par les autres joueurs, pour éviter un chasseur presque noir dans la nuit.
 
+### État dans le jeu (V146)
+
+Ce que le code contient déjà (branche `claude/personnalisation-pieces`) :
+
+- **Données** : 23 pièces à trois zones plus lumière, 8 lumières, 7 marques, 5 motifs de peau, sauvegardés dans l'apparence ; les anciennes sauvegardes gardent leur forme exacte.
+- **Affiché dès maintenant** (chasse, aperçu, Homeworld) : la couleur principale de la peau, des dreads, du biomasque, du filet et de chaque pièce d'armure séparément ; la couleur du laser ; les marques gagnées (tracées par le jeu en attendant leurs planches) ; le motif de peau dans l'aperçu et Homeworld.
+- **Atelier des pièces** dans l'écran de personnalisation : pièces, lumières, motifs et marques, tenues (10 emplacements, une par mode, code de partage `YLC1.`), couleurs du clan, réparations.
+- **Camouflage** : actif dans la chasse solo, plafonné à 10 %, calculé sur les couleurs du décor de la mission, sans effet sous camouflage optique.
+- **Usure** : l'usure de mission ternit l'armure selon les dégâts subis ; un coup d'au moins 20 % de la vie fissure une pièce, ce qui est enregistré à la fin de la chasse (même ratée) et se répare avec les matériaux de l'archive de récolte.
+- **Déblocages** : enregistrés dès qu'ils sont gagnés (trophées, honneur, rang, déclaration Bad Blood) et jamais retirés ; un code de partage ne donne pas de marque non gagnée.
+- **Couleurs du clan** : les résidents du clan dans Homeworld portent la palette sur leur filet et leur masque, avec une variation par personnage.
+- **Recoloration par zones** : la fonction qui teint une base grise selon sa carte des zones et sa carte lumineuse existe et est testée ; elle attend les planches.
+
+Ce qui manque encore :
+
+- les zones secondaire, accent et lumière à l'écran, et les pièces sans calque teintable (yeux, mandibules, bijoux, brassard, lames, canon, cape, trophées, armes) : il faut les planches V146 (base grise + carte des zones) ;
+- les couleurs très claires sur des sprites très sombres (dreads noirs) : le teint actuel garde la luminosité d'origine, seule la base grise le corrige ;
+- le motif de peau dans la chasse (canvas) ;
+- la tenue du Pit et du multijoueur : enregistrées mais pas encore portées, le Pit utilise ses propres combattants ;
+- la lisibilité multijoueur : fonctions prêtes (luminosité minimale, contour d'équipe), à brancher sur le rendu des autres joueurs ;
+- l'usure lourde n'a pas encore ses couches `wear-light` et `wear-heavy` : elle est rendue par un filtre.
+
 ## Acte I — Youngling (R2-M001 → M006)
 
 L'enfance dans la cour, la cité et les premiers ateliers ; l'acte se termine au rang Unblooded. Aucune fiche n'est jouable telle quelle ; V47 (nurserie) et V48 (dojo, accueil) jouent une enfance différente.
