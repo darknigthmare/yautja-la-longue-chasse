@@ -1032,6 +1032,26 @@ Un procès bien mené (preuve d'une contrainte, témoin qui confirme) peut faire
 
 Source : [dictionnaire yautja, AvP Central](https://www.avpcentral.com/yautja-dictionary-vocabulary-of-predators).
 
+**Passe de vérification (6 novembre 2026) :** les 68 noms composés de la bible (clans, communautés, régions, personnages proposés) ont été comparés au dictionnaire ci-dessus. Aucun nom inventé ne reprend un mot canon ; les seuls mots canon présents sont ceux employés volontairement dans ce tableau. Dans le dépôt, le système `system-kaail` porte un mot canon (*Kaail*, « rage ») : compatible comme nom de lieu, à garder.
+
+### Combat du Black God : déroulé
+
+**Décision :** trois phases ; la troisième enchaîne trois formes, dans cet ordre : combat mental, avatar géant, arène vivante. Détails *(proposés)* :
+
+| Phase | Déroulé |
+| --- | --- |
+| 1. Les reines libérées | l'Ancienne lâche ses deux reines ensemble et tire au plasma depuis un promontoire ; tuer une reine enrage l'autre (plus rapide, plus d'acide) |
+| 2. L'Ancienne seule | duel contre une Yautja plus grande et plus forte (canon des femelles), armée et modifiée ; ses hybridations lui donnent des attaques Xénomorphes (queue, sang acide, cri) |
+| 3a. Combat mental | la planète entre dans l'esprit du joueur : visions des rangs passés, des compagnons morts et des choix de sa fin de voie ; il doit retrouver sa propre piste au milieu des fausses |
+| 3b. Avatar géant | la planète forme un colosse de résine et de chair autour de l'Ancienne ; points faibles à détruire pour l'en arracher |
+| 3c. Arène vivante | l'Ancienne, fusionnée au sol de la planète ; murs, sol et tentacules attaquent, l'interface se brouille ; le coup final la détache et la planète meurt avec elle |
+
+En coop, les invités aident en phases 1, 2, 3b et 3c ; la phase 3a est vue par chaque joueur dans sa propre tête *(proposé)*.
+
+### Contrats de clan du classeur V6
+
+**Décision :** les 36 contrats de clan du V6 (R2-CC01 → CC36 : 3 au rang Unblooded, 15 à Young Blood, 15 à Blooded, 3 à Elite) s'ouvrent par région : ceux du clan d'origine au départ, puis ceux de chaque région dès qu'elle est accessible et que le rang requis est atteint. Les contrats des clans hors du monde natal (CL11 → CL15) s'ouvrent aux escales de leurs bases spatiales *(proposé)*.
+
 ### Arc de guerre des clans *(missions proposées)*
 
 **Décision :** le conflit commence par un terrain de chasse disputé (canon : plusieurs clans se disputent les meilleurs sites, *Aliens vs. Predator: War*), et son déclencheur dépend de la voie de clan.
