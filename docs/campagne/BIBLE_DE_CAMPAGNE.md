@@ -347,7 +347,7 @@ Réponses aux 16 questions sur les parties faibles du jeu. Chaque décision est 
 
 ### Monde natal et hub
 
-**Décision :** les six zones de la note sont des régions de Yautja Prime, distinctes des 8 planètes de chasse, reliées à la cité par des chemins physiques.
+**Décision :** les six zones de la note sont des régions de Yautja Prime, distinctes des 8 planètes de chasse, reliées à la cité par des chemins physiques. (Remplacé le 6 novembre par les 10 régions du classeur V6 : voir « Noms du classeur V6 ».)
 
 | Région | Rang d'accès | Liaison depuis la cité | Rôle |
 | --- | --- | --- | --- |
@@ -543,7 +543,7 @@ Source : [types de Predators](https://avpcentral.com/predator-types).
 
 ### Nom du clan d'origine : cinq propositions
 
-**Décision :** le nom du clan d'origine est tiré au hasard à chaque nouvelle partie, pour que chaque partie soit unique. Les cinq noms ci-dessous forment la première liste du tirage *(proposé : un générateur de syllabes complète la liste, avec un filtre contre les noms déjà utilisés dans le jeu)*. Noms inventés pour le projet, aucun n'est un mot de la langue yautja canon, vérifiés absents du dépôt.
+**Décision :** le nom du clan d'origine est tiré au hasard à chaque nouvelle partie, pour que chaque partie soit unique. (Précisé le 6 novembre : le tirage se fait parmi les 15 clans du classeur V6.) Les cinq noms ci-dessous forment la première liste du tirage *(proposé : un générateur de syllabes complète la liste, avec un filtre contre les noms déjà utilisés dans le jeu)*. Noms inventés pour le projet, aucun n'est un mot de la langue yautja canon, vérifiés absents du dépôt.
 
 | Nom | Sens dans le jeu | Symbole proposé |
 | --- | --- | --- |
@@ -570,6 +570,38 @@ Sujets peu développés, à traiter dans les prochains lots de questions :
 - [ ] Musique et ambiance propres à chaque race
 - [ ] Noms des cités des clans et des trois cités visitables au départ
 - [ ] Dates exactes des ellipses et seuils d'honneur par rang
+
+### Équipement et IA des humains (6 novembre 2026)
+
+- **Armes :** arbre d'améliorations par arme (puissance, discrétion, utilitaire) payé en honneur et en matériaux, plus des pièces modulaires récupérées *(proposé pour le plasma caster : canon, lentille, cellule d'énergie)* qui changent le comportement de l'arme.
+- **Armures :** pièces séparées (casque, plastron, épaules, jambières) ; les trophées portés sur l'armure donnent des bonus et changent la réaction des proies *(proposé : un crâne de reine fait fuir les Xénomorphes isolés ; des plaques d'unité humaines rendent les soldats plus agressifs)*.
+- **IA humaine face au camouflage :** dépend de l'équipement et se comporte en escouade réaliste.
+  - Soldats ordinaires : voient une distorsion de près ; eau, boue et fusées révèlent le camouflage.
+  - Équipes spécialisées (OWLF, Stargazer, Reapers) : imagerie thermique, capteurs, pièges.
+  - Toutes : moral et panique, appels radio, retraites, pièges, sur le modèle des escouades de *Predator: Hunting Grounds*.
+
+### Noms du classeur V6
+
+**Décision :** on garde les noms du classeur V6, avec un nom en langue yautja (inventée pour le projet, affiché en glyphes) et la traduction française en sous-titre. Le clan d'origine est tiré au hasard parmi les 15 clans. Les 8 planètes jouables restent les chasses de la Longue Chasse ; les 24 planètes du V6 (PLAN02 → PLAN24) servent de contrats, de réserves et de découvertes spatiales.
+
+**Les 10 régions du monde natal (PLAN01) remplacent les 6 zones de la note :**
+
+| Région V6 | Zone de la note | Clan | Nom yautja *(proposé)* |
+| --- | --- | --- | --- |
+| Marches de Cendre | Lave | CL1 Maisons des Braises | Ash'kaar |
+| Désert de Verre | Désert | CL2 Peuple des Citernes | Vhel-tor |
+| Jungle des Piliers | Jungle humide | CL3 Gardiens des Hautes Branches | Dhu'saal |
+| Marais Luminescents | Marais | CL4 Veilleurs des Eaux Calmes | Neth'yra |
+| Chaîne des Orages | — | CL5 Veilleurs des Crêtes | Krav'ul |
+| Côte des Léviathans | — | CL6 Maisons du Rivage | Thal-meq |
+| Grottes Thermiques | Lave | CL7 Artisans de la Roche Chaude | Ghur'eth |
+| Couronne Froide | Glacier | CL8 Maisons du Givre | Ysk'aru |
+| Ruines de la Première Cité | — | CL9 Conservateurs des Anciennes Pierres | Oth'kesar |
+| Réserve Interdite | — | CL10 Gardiens du Confinement | Zhar'vos |
+
+Les Slums de la note deviennent le quartier bas de la cité. Les clans CL11 à CL15 (Flotte des Haltes Lointaines, Pacte des Mandats Liés, Cercle des Noms Rapportés, Foyer des Retours, Ligue des Forges Fermées) vivent sur des navires et dans des communautés alliées hors du monde natal. Chaque clan a ses deux communautés du V6 (CM01 → CM20), qui deviennent ses quartiers de cité.
+
+Les noms yautja ci-dessus sont des propositions, à valider ; aucun n'est un mot de la langue canon.
 
 Sources : [équipes humaines qui chassent les Predators](https://avpcentral.com/predator-hunter-teams).
 
