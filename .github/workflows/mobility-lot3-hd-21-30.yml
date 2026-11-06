@@ -10,7 +10,7 @@ permissions:
   contents: write
 concurrency:
   group: mobility-lot3-hd-21-30-pr116
-  cancel-in-progress: false
+  cancel-in-progress: true
 jobs:
   import-verify:
     if: github.repository == 'darknigthmare/yautja-la-longue-chasse' && github.ref == 'refs/heads/claude/bible-de-campagne'
@@ -28,7 +28,7 @@ jobs:
             art-source/mobilite
       - name: Verify audited importer and historical source receipt
         run: |
-          echo 'cd7c368493a5183dcf1f155e128df4c40e9425edd5d89df5f877d53460487646  docs/campagne/mobilite/import_lot3_hd_20261106.py' | sha256sum --check
+          echo '08f59e10d842e9b437d92c088e3ba57e4a4622532cabbe03a49e06d5f5b60362  docs/campagne/mobilite/import_lot3_hd_20261106.py' | sha256sum --check
           echo '04cc66509c183e78075d9069d02371da51163aabcfcc8c5af5b43bdde7fe785e  docs/campagne/mobilite/DEPOT_COMPLET_SPRITES_20261106.json' | sha256sum --check
       - name: Import ten exact native PNGs and document the remaining twenty
         run: python3 docs/campagne/mobilite/import_lot3_hd_20261106.py --request-sha256 "$REQUEST_SHA"
