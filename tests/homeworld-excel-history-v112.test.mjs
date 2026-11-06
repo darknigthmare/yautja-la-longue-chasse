@@ -2,6 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
 import path from 'node:path';
+import {createHash} from 'node:crypto';
 import {execFileSync} from 'node:child_process';
 import {EXCEL_HOMEWORLD_HISTORY_COMMIT_V112, EXCEL_HOMEWORLD_HISTORY_MANIFEST_SHA256_V112, EXCEL_HOMEWORLD_HISTORY_ARCHIVE_SHA256_V112, HISTORICAL_ECOTONES_V90_SHA_V112, getHistoricalHomeworldExcelContextV112, loadHistoricalHomeworldExcelV112, runHistoricalHomeworldTestsV112, runHistoricalEcotonesV90FromV112, verifyHistoricalHomeworldExcelContextV112} from '../scripts/historical-excel-context-homeworld-v112.mjs';
 
@@ -31,6 +32,23 @@ test('tampering with private V111 source or its private Git HEAD is rejected wit
     finally {await fs.writeFile(file, original); await fs.chmod(file, 0o444);}
   }
   assert.deepEqual(await fs.readFile('app/game/HomeworldHub.tsx'), current); await verifyHistoricalHomeworldExcelContextV112();
+});
+
+test('historical audio stays private while the current pod sounds remain available', async () => {
+  const relative = 'public/audio/manifest.json', current = await fs.readFile(relative);
+  const podSounds = ['pod-arm', 'pod-cancel', 'pod-detonate'];
+  assert.ok(podSounds.every(id => JSON.parse(current).entries.some(entry => entry.id === id)));
+  const context = await getHistoricalHomeworldExcelContextV112(), file = path.join(context.root, relative);
+  const historical = await fs.readFile(file), row = context.manifest.shared.find(entry => entry.path === relative);
+  assert.ok(context.restoredPaths.has(relative), 'Changed audio must use its reviewed historical preimage');
+  assert.equal(historical.length, row.bytes);
+  assert.equal(createHash('sha256').update(historical).digest('hex'), row.sha256);
+  assert.ok(podSounds.every(id => !JSON.parse(historical).entries.some(entry => entry.id === id)));
+  const privateStat = await fs.lstat(file), currentStat = await fs.stat(relative);
+  assert.equal(privateStat.isSymbolicLink(), false); assert.equal(privateStat.mode & 0o222, 0);
+  assert.ok(privateStat.ino !== currentStat.ino || privateStat.dev !== currentStat.dev);
+  await verifyHistoricalHomeworldExcelContextV112();
+  assert.deepEqual(await fs.readFile(relative), current, 'Historical verification cannot roll back current audio');
 });
 
 test('V112 history executes the unchanged V111 doorway assertions and refuses tests outside the reviewed inventory', async () => {

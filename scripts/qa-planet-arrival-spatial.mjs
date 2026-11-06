@@ -1473,88 +1473,96 @@ async function capturePreparedMoment(label, prepared, target = page, attempt = 1
     nativeCapture ? prepared.capturePaintPattern : undefined); }
   finally { finishStage('beforeObservationRpc'); }
   acquisition.before = before;
-  startStage('validationAndClip');
-  assert.equal(before.status, 'playing', `${label}: a visual evidence capture must precede the terminal overlay.`);
-  let { x, y, width, height } = prepared.scene;
-  const contextFile = prepared.region === 'formation-detail' ? label.replace(/-egress-final-detail$/, '-egress-walking.png') : null;
-  assert.ok(x >= 0 && y >= 0 && x + width <= target.viewportSize().width + 1 &&
-    y + height <= target.viewportSize().height + 1, `${label}: the unmodified scene must fit the screenshot viewport.`);
-  if (nativeCapture) {
-    assertCaptureLayout(before, prepared.layout, target.viewportSize(), label);
-    assertCaptureProfile(before, prepared.captureProfile, target.viewportSize(), label);
-    assertX11Markers(before, prepared.capturePaintPattern, target.viewportSize(), label);
-    assert.equal(before.markerPaint?.nonce, prepared.capturePaintPattern.nonce);
-    assert.equal(before.markerPaint?.count, 4);
-    assert.equal(prepared.captureProfile.kind, 'validated', `${label}: final photographs cannot search or select source profiles.`);
-    assert.strictEqual(prepared.targetRoi, prepared.captureProfile.targetRoi);
-    assert.strictEqual(prepared.sourceRoi, prepared.captureProfile.sourceRoi);
-    assert.strictEqual(prepared.windowPreparation, prepared.sessions.windowPreparation,
-      `${label}: native window preparation cannot change after the final source was prepared.`);
-    assert.ok(prepared.roiPreparation.elapsedAfter < schedule.atMs,
-      `${label}: the output ROI must be fully prepared before the unchanged final capture threshold.`);
-  }
-  if (prepared.region === 'formation-detail') {
-    assert.equal(typeof validateFrame, 'function', `${label}: every final attempt needs the original formation and grounded-hull checks.`);
-    assert.ok(report.captures.some(capture => capture.file === contextFile && capture.region === 'scene'),
-      `${label}: a separate full-scene walking photograph must provide the actual formation context.`);
-    assert.deepEqual(before.members.map(member => member.id), ['player', 'karhek', 'saketh'],
-      `${label}: the detail must include the complete real trio.`);
-    assert.ok(before.members.every(member => member.stage === 'standing' && member.contact === 'ground' &&
-      member.portal === 'clear' && member.opacity > .02 && member.coveredLayers > 1),
-    `${label}: all three visible hunters must have cleared their exits and reached their final ground pose.`);
-    assert.deepEqual(before.supports.map(support => support.id).sort(),
-      ['hunter-feet', 'hunter-support', 'karhek-hunter-feet', 'karhek-hunter-support', 'saketh-hunter-feet', 'saketh-hunter-support'].sort(),
-      `${label}: the detail must include each actual foot and support anchor.`);
-    const coverage = [...before.members.map(member => member.bounds), ...before.supports];
-    assert.ok(coverage.every(bounds => Object.values(bounds).filter(value => typeof value === 'number').every(Number.isFinite)),
-      `${label}: native detail coordinates must be finite.`);
-    // Include a 20 CSS-pixel margin for shadows, labels and visible local floor.
-    const left = Math.max(Math.ceil(x), Math.floor(Math.min(...coverage.map(bounds => bounds.x)) - 20));
-    const top = Math.max(Math.ceil(y), Math.floor(Math.min(...coverage.map(bounds => bounds.y)) - 20));
-    const right = Math.min(Math.floor(x + width), Math.ceil(Math.max(...coverage.map(bounds => bounds.right)) + 20));
-    const bottom = Math.min(Math.floor(y + height), Math.ceil(Math.max(...coverage.map(bounds => bounds.bottom)) + 20));
-    assert.ok(coverage.every(bounds => bounds.x >= left && bounds.y >= top && bounds.right <= right && bounds.bottom <= bottom),
-      `${label}: no hunter layer or ground support may be cropped by the native detail rectangle.`);
-    x = left; y = top; width = right - left; height = bottom - top;
-    assert.ok(width > 0 && height > 0 && width * height < prepared.scene.width * prepared.scene.height,
-      `${label}: the final formation detail must be a smaller native region, without rescaling.`);
-  } else if (opticalFullViewport) {
-    const profile = prepared.captureProfile;
-    const opticalSchedules = new Map([
-      [`${profile.viewport.id}-ship-cloaked-triad-decloaking`, 52_400],
-      [`${profile.viewport.id}-ship-cloaked-triad-visible-before-contact`, 53_300],
-    ]);
-    assert.equal(profile.variant.id, 'ship-cloaked-triad', `${label}: optical photographs require the exact calibrated cloaked-triad profile.`);
-    assert.ok(opticalSchedules.has(label), `${label}: the full-viewport optical mode is restricted to its two existing photographs.`);
-    assert.deepEqual(schedule, { atMs: opticalSchedules.get(label), shot: 'landing' });
-    assert.equal(attempt, 1, `${label}: optical photographs retain a single native acquisition.`);
-    assert.ok(x >= 0 && y >= 0 && x + width <= target.viewportSize().width && y + height <= target.viewportSize().height,
-      `${label}: the complete unmodified scene must fit inside the native full viewport without cropping.`);
-    // Preserve the full native viewport. The scene has fractional CSS bounds,
-    // so no scene crop, rounding, resampling or detail derivative is made here.
-    ({ x, y, width, height } = prepared.sourceRoi);
-  }
-  const clip = { x, y, width, height, scale: 1 };
   const preparedRoiSource = nativeCapture;
-  const sourceClip = preparedRoiSource ? { ...clip, x: x - prepared.sourceRoi.x, y: y - prepared.sourceRoi.y } : clip;
-  if (prepared.region === 'formation-detail') {
-    assert.ok(x >= prepared.targetRoi.x && y >= prepared.targetRoi.y &&
-      x + width <= prepared.targetRoi.x + prepared.targetRoi.width &&
-      y + height <= prepared.targetRoi.y + prepared.targetRoi.height,
-    `${label}: the complete final detail must remain inside the original, pixel-calibrated lower-scene target.`);
-    assert.ok(sourceClip.x >= 0 && sourceClip.y >= 0 &&
-      sourceClip.x + width <= prepared.sourceRoi.width && sourceClip.y + height <= prepared.sourceRoi.height,
-    `${label}: every final layer and the existing detail margin must fit the ROI prepared before the interval.`);
-  }
+  let x, y, width, height, contextFile, clip, sourceClip;
   acquisition.captureMode = opticalFullViewport ? 'native-x11-full-viewport-raw-then-optical-png'
     : preparedRoiSource ? 'native-x11-full-viewport-raw-then-lossless-detail' : 'native-clipped-png';
   if (opticalFullViewport) acquisition.evidenceKind = 'native-x11-full-viewport-optical';
   acquisition.captureSessionRole = preparedRoiSource ? 'persistent-x11-helper' : 'metrics-baseline-owner';
   if (preparedRoiSource) acquisition.profileId = prepared.captureProfile.id;
   acquisition.fromSurface = preparedRoiSource ? null : true;
-  acquisition.clip = clip;
-  if (prepared.region === 'formation-detail') acquisition.sourceClip = sourceClip;
-  finishStage('validationAndClip');
+  // The full native source rectangle is already calibrated. Start its copy
+  // immediately after the observed final pose and fresh paint; checking the
+  // returned geometry and calculating its lossless crop can wait until after
+  // the live after-observation. All the same checks still gate acceptance.
+  const validateAndClip = () => {
+    startStage('validationAndClip');
+    assert.equal(before.status, 'playing', `${label}: a visual evidence capture must precede the terminal overlay.`);
+    ({ x, y, width, height } = prepared.scene);
+    contextFile = prepared.region === 'formation-detail' ? label.replace(/-egress-final-detail$/, '-egress-walking.png') : null;
+    assert.ok(x >= 0 && y >= 0 && x + width <= target.viewportSize().width + 1 &&
+      y + height <= target.viewportSize().height + 1, `${label}: the unmodified scene must fit the screenshot viewport.`);
+    if (nativeCapture) {
+      assertCaptureLayout(before, prepared.layout, target.viewportSize(), label);
+      assertCaptureProfile(before, prepared.captureProfile, target.viewportSize(), label);
+      assertX11Markers(before, prepared.capturePaintPattern, target.viewportSize(), label);
+      assert.equal(before.markerPaint?.nonce, prepared.capturePaintPattern.nonce);
+      assert.equal(before.markerPaint?.count, 4);
+      assert.equal(prepared.captureProfile.kind, 'validated', `${label}: final photographs cannot search or select source profiles.`);
+      assert.strictEqual(prepared.targetRoi, prepared.captureProfile.targetRoi);
+      assert.strictEqual(prepared.sourceRoi, prepared.captureProfile.sourceRoi);
+      assert.strictEqual(prepared.windowPreparation, prepared.sessions.windowPreparation,
+        `${label}: native window preparation cannot change after the final source was prepared.`);
+      assert.ok(prepared.roiPreparation.elapsedAfter < schedule.atMs,
+        `${label}: the output ROI must be fully prepared before the unchanged final capture threshold.`);
+    }
+    if (prepared.region === 'formation-detail') {
+      assert.equal(typeof validateFrame, 'function', `${label}: every final attempt needs the original formation and grounded-hull checks.`);
+      assert.ok(report.captures.some(capture => capture.file === contextFile && capture.region === 'scene'),
+        `${label}: a separate full-scene walking photograph must provide the actual formation context.`);
+      assert.deepEqual(before.members.map(member => member.id), ['player', 'karhek', 'saketh'],
+        `${label}: the detail must include the complete real trio.`);
+      assert.ok(before.members.every(member => member.stage === 'standing' && member.contact === 'ground' &&
+        member.portal === 'clear' && member.opacity > .02 && member.coveredLayers > 1),
+      `${label}: all three visible hunters must have cleared their exits and reached their final ground pose.`);
+      assert.deepEqual(before.supports.map(support => support.id).sort(),
+        ['hunter-feet', 'hunter-support', 'karhek-hunter-feet', 'karhek-hunter-support', 'saketh-hunter-feet', 'saketh-hunter-support'].sort(),
+        `${label}: the detail must include each actual foot and support anchor.`);
+      const coverage = [...before.members.map(member => member.bounds), ...before.supports];
+      assert.ok(coverage.every(bounds => Object.values(bounds).filter(value => typeof value === 'number').every(Number.isFinite)),
+        `${label}: native detail coordinates must be finite.`);
+      // Include a 20 CSS-pixel margin for shadows, labels and visible local floor.
+      const left = Math.max(Math.ceil(x), Math.floor(Math.min(...coverage.map(bounds => bounds.x)) - 20));
+      const top = Math.max(Math.ceil(y), Math.floor(Math.min(...coverage.map(bounds => bounds.y)) - 20));
+      const right = Math.min(Math.floor(x + width), Math.ceil(Math.max(...coverage.map(bounds => bounds.right)) + 20));
+      const bottom = Math.min(Math.floor(y + height), Math.ceil(Math.max(...coverage.map(bounds => bounds.bottom)) + 20));
+      assert.ok(coverage.every(bounds => bounds.x >= left && bounds.y >= top && bounds.right <= right && bounds.bottom <= bottom),
+        `${label}: no hunter layer or ground support may be cropped by the native detail rectangle.`);
+      x = left; y = top; width = right - left; height = bottom - top;
+      assert.ok(width > 0 && height > 0 && width * height < prepared.scene.width * prepared.scene.height,
+        `${label}: the final formation detail must be a smaller native region, without rescaling.`);
+    } else if (opticalFullViewport) {
+      const profile = prepared.captureProfile;
+      const opticalSchedules = new Map([
+        [`${profile.viewport.id}-ship-cloaked-triad-decloaking`, 52_400],
+        [`${profile.viewport.id}-ship-cloaked-triad-visible-before-contact`, 53_300],
+      ]);
+      assert.equal(profile.variant.id, 'ship-cloaked-triad', `${label}: optical photographs require the exact calibrated cloaked-triad profile.`);
+      assert.ok(opticalSchedules.has(label), `${label}: the full-viewport optical mode is restricted to its two existing photographs.`);
+      assert.deepEqual(schedule, { atMs: opticalSchedules.get(label), shot: 'landing' });
+      assert.equal(attempt, 1, `${label}: optical photographs retain a single native acquisition.`);
+      assert.ok(x >= 0 && y >= 0 && x + width <= target.viewportSize().width && y + height <= target.viewportSize().height,
+        `${label}: the complete unmodified scene must fit inside the native full viewport without cropping.`);
+      // Preserve the full native viewport. The scene has fractional CSS bounds,
+      // so no scene crop, rounding, resampling or detail derivative is made here.
+      ({ x, y, width, height } = prepared.sourceRoi);
+    }
+    clip = { x, y, width, height, scale: 1 };
+    sourceClip = preparedRoiSource ? { ...clip, x: x - prepared.sourceRoi.x, y: y - prepared.sourceRoi.y } : clip;
+    if (prepared.region === 'formation-detail') {
+      assert.ok(x >= prepared.targetRoi.x && y >= prepared.targetRoi.y &&
+        x + width <= prepared.targetRoi.x + prepared.targetRoi.width &&
+        y + height <= prepared.targetRoi.y + prepared.targetRoi.height,
+      `${label}: the complete final detail must remain inside the original, pixel-calibrated lower-scene target.`);
+      assert.ok(sourceClip.x >= 0 && sourceClip.y >= 0 &&
+        sourceClip.x + width <= prepared.sourceRoi.width && sourceClip.y + height <= prepared.sourceRoi.height,
+      `${label}: every final layer and the existing detail margin must fit the ROI prepared before the interval.`);
+    }
+    acquisition.clip = clip;
+    if (prepared.region === 'formation-detail') acquisition.sourceClip = sourceClip;
+    finishStage('validationAndClip');
+  };
+  if (!preparedRoiSource) validateAndClip();
   // X11 returns only an acquisition ACK; no full pixels, PNG or hash cross the
   // pipe until after clock and geometry observations. Ordinary CDP retains its
   // previous acquisition/encode/transport span and unchanged clip.
@@ -1586,6 +1594,7 @@ async function capturePreparedMoment(label, prepared, target = page, attempt = 1
     try { after = await readMoment(target, prepared.region); }
     finally { finishStage('afterObservationRpc'); }
     acquisition.after = after;
+    if (preparedRoiSource) validateAndClip();
     startStage('completeGeometryRpc');
     try { measured = { ...await readFrame(target), decodedSvg: prepared.decodedSvg }; }
     finally { finishStage('completeGeometryRpc'); }
@@ -2320,7 +2329,10 @@ try {
         assert.ok(walking.capturedBefore.members.some(member => member.stage === 'walking'),
           'The walking PNG must be requested while a real formation member is walking.');
         const finalDetail = variant.plan.team === 'triad';
-        const finalTime = api.ARRIVAL_HUNTER_MOVE_END_MS + Math.max(...api.arrivalFormationSlots(variant.plan.team).map(slot => slot.delayMs)) + 10;
+        // Observe the first real standing commit, with no extra delay that can
+        // discard a whole frame from the trio's 250 ms pre-completion window.
+        // readMoment also requires every actual member to be standing/grounded.
+        const finalTime = api.ARRIVAL_HUNTER_MOVE_END_MS + Math.max(...api.arrivalFormationSlots(variant.plan.team).map(slot => slot.delayMs));
         const validateFinalFrame = frame => {
           assertFinalFormation(frame, variant.plan, `${viewport.id}-${variant.id}`);
           if (variant.plan.method === 'ship') assert.ok(

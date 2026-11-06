@@ -1,0 +1,18 @@
+✔ a private filtered fetch preserves a shallow alternate boundary and never writes to its source (197.913196ms)
+✔ historical Git diagnostics retain the transport cause and redact authentication (0.79132ms)
+✔ R7, V112, V113 and their child entry points reject external Git overrides before any private or external write (1922.494697ms)
+✔ explicit fetch authentication remains process-local after inherited Git configuration is refused (22.466862ms)
+✔ promised blobs in a shallow alternate are fetched once without assuming its commits contain every blob (142.15351ms)
+✔ shared restoration rejects inherited Git path and config overrides before any private or external write (819.827451ms)
+✔ reviewed shared inputs restore original private bytes while preserving current evidence and frozen Git (109.022889ms)
+✔ unreviewed paths, duplicate entries and blobs outside the frozen source tree cannot restore files (112.209792ms)
+✔ every later verification rejects changed historical bytes, changed current evidence, links and aliases (102.045251ms)
+✔ only reviewed private fixture inputs retain Git0644 and permit disposable copy corruption (110.328188ms)
+ℹ tests 10
+ℹ suites 0
+ℹ pass 10
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2379.997932

@@ -27,7 +27,10 @@ function fixture() {
   const input = { keyboardHeld: new Set(), touchHeld: new Set(), gamepadHeld: new Set(), pressed: new Set(), previousGamepadButtons: [], activeGamepadIndex: null, gamepadNeedsNeutral: true, gamepadDialogActions: [] };
   const poll = runtimeFunction("pollGamepad", { document, navigator, DEFAULT_HUNT_GAMEPAD_V112 });
   const messages = [];
-  const step = runtimeFunction("stepGame", { freshJumpAssistState, pollGamepad: poll, consume: (hub, action) => hub.pressed.delete(action), announce: (_state, message) => messages.push(message) });
+  // These input-only states have no insertion; use the actual pod guard when
+  // stepGame checks a terminal phase instead of replacing it with a no-op.
+  const updateHuntPodRecovery = runtimeFunction("updateHuntPodRecovery", {});
+  const step = runtimeFunction("stepGame", { freshJumpAssistState, updateHuntPodRecovery, pollGamepad: poll, consume: (hub, action) => hub.pressed.delete(action), announce: (_state, message) => messages.push(message) });
   return { pad, primary, pads, document, navigator, input, poll: () => poll(input), messages, step: state => step(state, {}, {}, {}, {}, "hunter", input, 1 / 60, () => {}) };
 }
 

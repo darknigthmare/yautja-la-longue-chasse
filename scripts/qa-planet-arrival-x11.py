@@ -807,8 +807,15 @@ class Helper:
                 round_observations.append({"id": m["id"], "matched": observed == m["rgb"]})
                 probe_records.append({"round": rounds + 1, "markerId": m["id"],
                                       "matched": observed == m["rgb"], **probe_timing})
+                # One stale corner already rejects this round. Avoid redundant
+                # XGetImage requests while the browser is still presenting its
+                # new paint. A ready round still reads all four corners, and
+                # the single full private copy verifies every marker again.
+                if observed != m["rgb"]:
+                    break
             rounds += 1; probe_observations = round_observations
-            probe_ready = all(m["matched"] for m in round_observations)
+            probe_ready = len(round_observations) == len(markers) and all(
+                m["matched"] for m in round_observations)
             if probe_ready or time.monotonic_ns() >= deadline:
                 break
             time.sleep(min(0.002, max(0, (deadline - time.monotonic_ns()) / 1_000_000_000)))

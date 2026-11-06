@@ -1,0 +1,28 @@
+✔ checkpoint captures detached discovery and saves/restores it through the real checksum schema (8.540541ms)
+✔ vertical camera position is derived from the hunter and never serialized (3.559662ms)
+✔ legacy checkpoints reveal only their actual room and foreign ids never enter the map (4.565805ms)
+✔ retry preserves knowledge found after the checkpoint without revealing skipped rooms (1.574066ms)
+✔ a newly entered sector is discovered before the checkpoint on the same simulation frame (46.661859ms)
+✔ checksum-valid but malformed combat snapshots are rejected before restoration (14.387834ms)
+✔ pilot acquisitions survive retry and resume without stacking the permanent energy bonus (5.18069ms)
+✔ legacy hunter embedded in a new floor returns safely to insertion with objectives intact (1.324321ms)
+✔ real jump handler grants one aerial pulse only and requires neutral after action locks (9.661676ms)
+✔ ice checkpoints keep campaign discoveries but cannot forge jungle acquisitions (3.650299ms)
+✔ jump buffers and coyote timers never survive checkpoint roundtrip (3.040081ms)
+✔ a connected pad outside slot zero controls the hunt and keeps its slot (59.051548ms)
+✔ connecting while an attack is held requires neutral before accepting it (21.673808ms)
+✔ active gamepad loss pauses before simulation time can advance (16.839999ms)
+✔ focus loss cannot be bypassed by Start and requires neutral on return (15.27015ms)
+✔ a denied gamepad API never crashes or clears keyboard controls (12.016457ms)
+✔ Start cannot change the paused state of a finished or dead hunt (28.965972ms)
+✔ gamepad dialog actions are edge-triggered and do not repeat while held (12.063788ms)
+✔ pause and death dialogs can move focus and activate a button entirely from the pad (1.974839ms)
+✔ controller aim ignores a stale mouse position while pointer aim remains precise (3.786964ms)
+ℹ tests 20
+ℹ suites 0
+ℹ pass 20
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1523.821437

@@ -520,3 +520,39 @@ Les générations visuelles et l'égalité des exports ne constituent toujours p
 une validation artistique humaine ou une certification canonique 1:1. Les
 quartiers conditionnels, autres compagnons, missions et suites de la bible non
 implémentés par ces PR gardent leur statut de production précédent.
+
+### Corrections issues de la première passe Actions
+
+La première tête publiée `5be40efdd6e1b7fae67d5dda7677209820fc9034`
+a permis de qualifier l'intérieur personnel, les vues de flotte et le vaisseau
+de clan dans Chromium. Elle a aussi révélé des raccords de vérification qui
+étaient absents des anciennes branches :
+
+- Les contextes historiques V112/V113 restaurent maintenant leur manifeste
+  audio original dans une copie privée et vérifiée. Les nouveaux sons des pods
+  restent dans le jeu courant ; aucune capsule ou empreinte historique n'est
+  remplacée. Les cinq suites de récupération concernées passent **40/40**.
+- Wolf et les visites de développement matérialisent les nouveaux dossiers
+  d'arrivée et leurs PNG sources. Les **53 tests** de ces assets passent après
+  hydratation, dont les six précédemment rouges dans Wolf.
+- Les tests isolés d'exploration et de manette reçoivent la vraie fonction de
+  récupération des pods appelée par `stepGame` : **20/20 tests** passent, avec
+  les assertions de sauvegarde, d'ordre des événements et de pause conservées.
+- Le paramètre d'armure devenu inutilisé après V145 est retiré de son unique
+  appel. Le gate V94 de lint strict passe sur **182 fichiers**, et les **13 tests**
+  d'armure, de brassard et de gant restent verts.
+- La recette de capture finale observe la première formation réellement debout
+  et effectue la copie native avant les calculs de recadrage. La fenêtre de
+  validité, les contrôles de fraîcheur, les rejets et les trois tentatives
+  maximales restent obligatoires. Une ronde de sondage s'arrête au premier coin
+  encore ancien ; la ronde admise et la copie complète doivent toujours vérifier
+  les quatre coins frais. Trois cas de protocole couvrent les coins retardés et
+  les copies refusées. Cette correction nécessite sa propre qualification native
+  sur la tête corrigée.
+
+Le [relevé des corrections CI](../../../production/qa/evidence/pr-114-117-integration-20261106/ci-corrections-local-validation.json)
+conserve les journaux et les empreintes. Ces sous-suites recouvrent en partie les
+473 tests de la première qualification ; leurs nombres ne sont pas additionnés
+comme des tests uniques. Le premier relevé de lint global reste daté de cette
+première passe. Les résultats natifs définitifs doivent être lus sur la dernière
+tête de la PR, et non déduits des seuls succès partiels précédents.

@@ -39,7 +39,6 @@ const imageStyle: CSSProperties = { position: "absolute", inset: 0, width: "100%
 export function homeworldArmorSlotsV114(
   appearance: Partial<Pick<HunterAppearance, "armorStyleId">> | undefined,
   armorId: ArmorId,
-  hasWristblades: boolean,
 ): Array<{ id: string; z: number; shoulder?: boolean; greave?: "front" | "back"; wrap?: HunterBodyPartId }> {
   const family = HUNTER_ARMOR_MODULES[appearance?.armorStyleId ?? "classic"];
   // V145 wrap: `wrap` plates are drawn under the body (z 9) and again over it,
@@ -137,7 +136,7 @@ export default function HomeworldModularHunter({ morphId, dreadStyleId, classNam
             maskPath={hunterMaskRigPath(appearance.biomaskId)}
             placement={hunterMaskRigPlacement(appearance.biomaskId)} style={imageStyle} />
         </span>}
-      {showArmor && homeworldArmorSlotsV114(appearance, armorId, hasWristblades).map(plate => {
+      {showArmor && homeworldArmorSlotsV114(appearance, armorId).map(plate => {
         const path = hunterArmorPath(plate.id);
         // V145 registration: shoulder mirrored onto the deltoid, greaves widened
         // under the knee and repeated on the back shin.

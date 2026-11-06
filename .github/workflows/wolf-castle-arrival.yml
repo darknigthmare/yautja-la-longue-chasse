@@ -23,6 +23,7 @@ on:
       - 'app/game/systems/mainMenuModesV81.ts'
       - 'public/game/wolf-castle/**'
       - 'public/game/planet-arrival/**'
+      - 'public/game/cinematics/batch-01-20261105/**'
       - 'tests/wolf-*.test.mjs'
       - 'tests/planet-arrival*.test.mjs'
       - 'tests/planet-insertion.test.mjs'
@@ -75,7 +76,8 @@ jobs:
             /.openai/hosting.json
             /public/**/manifest.json
             /public/game/ship-interior/
-            /public/game/planet-arrival/v2/
+            /public/game/planet-arrival/
+            /public/game/cinematics/batch-01-20261105/
             /production/wolf-castle-arrival-20261104/art-manifest*.json
             /production/wolf-castle-arrival-20261104/runtime-art-v2.json
       - name: Include the castle, arrival and real campaign artwork
