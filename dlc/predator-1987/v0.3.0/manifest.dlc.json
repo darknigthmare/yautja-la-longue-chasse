@@ -1,0 +1,75 @@
+{
+  "schemaVersion": 1,
+  "contentClass": "private-film-dlc-prototype",
+  "id": "predator-1987-dual-campaign",
+  "title": "PREDATOR 1987 — Chasseur / Proie",
+  "version": "0.3.0",
+  "base": {
+    "repository": "darknigthmare/yautja-la-longue-chasse",
+    "commit": "3d8efbcfb42939a33093ee3ad923c0e97ff53ff5"
+  },
+  "publicBuildPolicy": {
+    "importableByPublicApp": false,
+    "containsOfficialPixels": false,
+    "containsOfficialAudio": false,
+    "containsScreenplayText": false,
+    "publicDeploymentRecommended": false,
+    "intendedForPrivateDlcFolder": true
+  },
+  "fidelity": {
+    "goal": "séquence, casting, équipement et résultats canoniques",
+    "geometry": "reconstruction 2D; les distances et raccords hors champ sont interprétés",
+    "dialogue": "paraphrasé; aucune transcription du scénario",
+    "offscreen": "les événements non montrés restent abstraits et signalés comme tels"
+  },
+  "counts": {
+    "locations": 36,
+    "humanChapters": 16,
+    "predatorChapters": 12,
+    "characters": 12,
+    "sources": 5,
+    "fieldIntel": 36,
+    "trophyTargets": 6,
+    "duelPhases": 3
+  },
+  "sources": [
+    {
+      "id": "S1",
+      "label": "IMDb — Predator (1987), Plot Summary",
+      "url": "https://www.imdb.com/title/tt0093773/plotsummary/",
+      "use": "ordre des événements et personnages"
+    },
+    {
+      "id": "S2",
+      "label": "Wikipedia — Predator (film)",
+      "url": "https://en.wikipedia.org/wiki/Predator_(film)",
+      "use": "séquence finale, pièges, boue et extraction"
+    },
+    {
+      "id": "S3",
+      "label": "Internet Movie Firearms Database — Predator (1987)",
+      "url": "https://www.imfdb.org/wiki/Predator_(1987)",
+      "use": "armes à feu et affectations par personnage"
+    },
+    {
+      "id": "S4",
+      "label": "AvP Central — Predator (1987): Plot, Characters, And Lore",
+      "url": "https://www.avpcentral.com/predator-1987",
+      "use": "équipement et comportement du Jungle Hunter"
+    },
+    {
+      "id": "S5",
+      "label": "AvP Central — Jungle Hunter profile",
+      "url": "https://www.avpcentral.com/jungle-hunter-predator-profile",
+      "use": "biomask, caster, cloak, wristblades et apparence de l’équipement"
+    }
+  ],
+  "systemsV03": [
+    "identités tactiques escouade",
+    "pression de traque",
+    "construction persistante des pièges",
+    "registre de trophées Predator",
+    "duel final en trois phases",
+    "migration sauvegarde v0.1/v0.2"
+  ]
+}

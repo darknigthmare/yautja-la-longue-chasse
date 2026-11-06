@@ -1,0 +1,28 @@
+{
+  "schema": "predator-1987-import-validation/1",
+  "status": "PASS_IMPORT_STATIC_AND_UNIT_ONLY",
+  "archive_count": 3,
+  "archive_crc_passed": 3,
+  "original_files_per_archive": 33,
+  "active_pack_files": 33,
+  "png_count": 7,
+  "png_dimensions": [
+    1280,
+    720
+  ],
+  "png_bytes_preserved": true,
+  "automated_tests": {
+    "passed": 18,
+    "failed": 0
+  },
+  "static_validator_checks_passed": 13,
+  "standalone_rebuild_byte_identical": true,
+  "standalone_sha256": "5bf417c4545914d2fa9de23580adfaa38d0d29fcf61e1b058c400b3825a273f0",
+  "source_archive_hashes_verified": true,
+  "browser_test_performed": false,
+  "full_yautja_build_performed": false,
+  "canonical_visual_1_to_1_certified": false,
+  "native_host_integration_performed": false,
+  "new_content_since_v03": false,
+  "note": "The seven PNGs are historical original previsualisations, not executable screenshots. All three original archives are preserved. No V0.4 was supplied or invented."
+}

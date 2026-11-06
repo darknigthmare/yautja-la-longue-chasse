@@ -1,0 +1,2355 @@
+export const GAME_DATA = {
+  "title": "PREDATOR 1987 — Chasseur / Proie",
+  "version": "0.3.0",
+  "baseRepo": "darknigthmare/yautja-la-longue-chasse",
+  "baseCommit": "3d8efbcfb42939a33093ee3ad923c0e97ff53ff5",
+  "copyrightNote": "Prototype fan non commercial. Aucun pixel, audio ou dialogue officiel embarqué.",
+  "locations": [
+    {
+      "id": "L01",
+      "name": "Base d’opérations",
+      "theme": "briefing",
+      "canon": "onscreen",
+      "width": 1800,
+      "note": "Camp militaire, bureau de Phillips et rencontre avec Dillon.",
+      "planes": [
+        "sol"
+      ],
+      "connections": [],
+      "fieldIntel": {
+        "x": 420,
+        "label": "Dossier terrain 01"
+      }
+    },
+    {
+      "id": "L02",
+      "name": "Insertion héliportée",
+      "theme": "helicopter",
+      "canon": "onscreen",
+      "width": 2200,
+      "note": "Vol tactique vers la zone et débarquement en jungle.",
+      "planes": [
+        "sol"
+      ],
+      "connections": [],
+      "fieldIntel": {
+        "x": 593,
+        "label": "Dossier terrain 02"
+      }
+    },
+    {
+      "id": "L03",
+      "name": "Lisière d’insertion",
+      "theme": "jungle",
+      "canon": "onscreen",
+      "width": 2400,
+      "note": "Progression initiale sous canopée.",
+      "planes": [
+        "sol",
+        "plan-arriere",
+        "canopée"
+      ],
+      "connections": [
+        {
+          "plane": "plan-arriere",
+          "transition": "Z/S près des lianes, talus, huttes ou troncs marqués"
+        },
+        {
+          "plane": "canopée",
+          "transition": "Z/S près des lianes, talus, huttes ou troncs marqués"
+        }
+      ],
+      "fieldIntel": {
+        "x": 766,
+        "label": "Dossier terrain 03"
+      }
+    },
+    {
+      "id": "L04",
+      "name": "Lit de rivière",
+      "theme": "river",
+      "canon": "onscreen",
+      "width": 2500,
+      "note": "Couloir humide servant de transition vers la zone du crash.",
+      "planes": [
+        "sol"
+      ],
+      "connections": [],
+      "fieldIntel": {
+        "x": 939,
+        "label": "Dossier terrain 04"
+      }
+    },
+    {
+      "id": "L05",
+      "name": "Épave d’hélicoptère",
+      "theme": "wreck",
+      "canon": "onscreen",
+      "width": 2200,
+      "note": "Site de l’appareil détruit recherché par l’équipe.",
+      "planes": [
+        "sol"
+      ],
+      "connections": [],
+      "fieldIntel": {
+        "x": 1112,
+        "label": "Dossier terrain 05"
+      }
+    },
+    {
+      "id": "L06",
+      "name": "Clairière des Green Berets",
+      "theme": "trophy",
+      "canon": "onscreen",
+      "width": 2300,
+      "note": "Découverte des corps de l’équipe de Jim Hopper.",
+      "planes": [
+        "sol"
+      ],
+      "connections": [],
+      "fieldIntel": {
+        "x": 1285,
+        "label": "Dossier terrain 06"
+      }
+    },
+    {
+      "id": "L07",
+      "name": "Crête d’observation",
+      "theme": "ridge",
+      "canon": "onscreen",
+      "width": 2500,
+      "note": "Point de reconnaissance au-dessus du camp.",
+      "planes": [
+        "sol",
+        "plan-arriere",
+        "canopée"
+      ],
+      "connections": [
+        {
+          "plane": "plan-arriere",
+          "transition": "Z/S près des lianes, talus, huttes ou troncs marqués"
+        },
+        {
+          "plane": "canopée",
+          "transition": "Z/S près des lianes, talus, huttes ou troncs marqués"
+        }
+      ],
+      "fieldIntel": {
+        "x": 1458,
+        "label": "Dossier terrain 07"
+      }
+    },
+    {
+      "id": "L08",
+      "name": "Périmètre du camp",
+      "theme": "camp",
+      "canon": "onscreen",
+      "width": 2600,
+      "note": "Postes extérieurs, sentinelles et Claymore neutralisée.",
+      "planes": [
+        "sol",
+        "plan-arriere"
+      ],
+      "connections": [
+        {
+          "plane": "plan-arriere",
+          "transition": "Z/S près des lianes, talus, huttes ou troncs marqués"
+        }
+      ],
+      "fieldIntel": {
+        "x": 1631,
+        "label": "Dossier terrain 08"
+      }
+    },
+    {
+      "id": "L09",
+      "name": "Camp guérillero — Est",
+      "theme": "camp",
+      "canon": "onscreen",
+      "width": 3000,
+      "note": "Première phase de l’assaut.",
+      "planes": [
+        "sol",
+        "plan-arriere"
+      ],
+      "connections": [
+        {
+          "plane": "plan-arriere",
+          "transition": "Z/S près des lianes, talus, huttes ou troncs marqués"
+        }
+      ],
+      "fieldIntel": {
+        "x": 1804,
+        "label": "Dossier terrain 09"
+      }
+    },
+    {
+      "id": "L10",
+      "name": "Camp guérillero — Centre",
+      "theme": "camp",
+      "canon": "onscreen",
+      "width": 3200,
+      "note": "Combats autour des huttes et véhicules.",
+      "planes": [
+        "sol",
+        "plan-arriere"
+      ],
+      "connections": [
+        {
+          "plane": "plan-arriere",
+          "transition": "Z/S près des lianes, talus, huttes ou troncs marqués"
+        }
+      ],
+      "fieldIntel": {
+        "x": 1977,
+        "label": "Dossier terrain 10"
+      }
+    },
+    {
+      "id": "L11",
+      "name": "Camp guérillero — Commandement",
+      "theme": "camp",
+      "canon": "onscreen",
+      "width": 2800,
+      "note": "Zone des officiers, des otages et récupération d’Anna.",
+      "planes": [
+        "sol",
+        "plan-arriere"
+      ],
+      "connections": [
+        {
+          "plane": "plan-arriere",
+          "transition": "Z/S près des lianes, talus, huttes ou troncs marqués"
+        }
+      ],
+      "fieldIntel": {
+        "x": 2150,
+        "label": "Dossier terrain 11"
+      }
+    },
+    {
+      "id": "L12",
+      "name": "Sortie du camp",
+      "theme": "jungle",
+      "canon": "onscreen",
+      "width": 2500,
+      "note": "Regroupement et révélation de la véritable mission.",
+      "planes": [
+        "sol",
+        "plan-arriere",
+        "canopée"
+      ],
+      "connections": [
+        {
+          "plane": "plan-arriere",
+          "transition": "Z/S près des lianes, talus, huttes ou troncs marqués"
+        },
+        {
+          "plane": "canopée",
+          "transition": "Z/S près des lianes, talus, huttes ou troncs marqués"
+        }
+      ],
+      "fieldIntel": {
+        "x": 473,
+        "label": "Dossier terrain 12"
+      }
+    },
+    {
+      "id": "L13",
+      "name": "Sentier d’exfiltration",
+      "theme": "jungle",
+      "canon": "onscreen",
+      "width": 2800,
+      "note": "Marche vers le point d’extraction avec Anna prisonnière.",
+      "planes": [
+        "sol",
+        "plan-arriere",
+        "canopée"
+      ],
+      "connections": [
+        {
+          "plane": "plan-arriere",
+          "transition": "Z/S près des lianes, talus, huttes ou troncs marqués"
+        },
+        {
+          "plane": "canopée",
+          "transition": "Z/S près des lianes, talus, huttes ou troncs marqués"
+        }
+      ],
+      "fieldIntel": {
+        "x": 2496,
+        "label": "Dossier terrain 13"
+      }
+    },
+    {
+      "id": "L14",
+      "name": "Virage des fougères",
+      "theme": "jungle",
+      "canon": "onscreen",
+      "width": 2300,
+      "note": "Tentative d’évasion d’Anna et disparition de Hawkins.",
+      "planes": [
+        "sol",
+        "plan-arriere",
+        "canopée"
+      ],
+      "connections": [
+        {
+          "plane": "plan-arriere",
+          "transition": "Z/S près des lianes, talus, huttes ou troncs marqués"
+        },
+        {
+          "plane": "canopée",
+          "transition": "Z/S près des lianes, talus, huttes ou troncs marqués"
+        }
+      ],
+      "fieldIntel": {
+        "x": 1019,
+        "label": "Dossier terrain 14"
+      }
+    },
+    {
+      "id": "L15",
+      "name": "Clairière de Blain",
+      "theme": "jungle",
+      "canon": "onscreen",
+      "width": 2400,
+      "note": "Blain est frappé par le chasseur invisible.",
+      "planes": [
+        "sol",
+        "plan-arriere",
+        "canopée"
+      ],
+      "connections": [
+        {
+          "plane": "plan-arriere",
+          "transition": "Z/S près des lianes, talus, huttes ou troncs marqués"
+        },
+        {
+          "plane": "canopée",
+          "transition": "Z/S près des lianes, talus, huttes ou troncs marqués"
+        }
+      ],
+      "fieldIntel": {
+        "x": 1092,
+        "label": "Dossier terrain 15"
+      }
+    },
+    {
+      "id": "L16",
+      "name": "Couloir de tir",
+      "theme": "jungle",
+      "canon": "onscreen",
+      "width": 3200,
+      "note": "L’équipe rase la végétation sous un feu massif.",
+      "planes": [
+        "sol",
+        "plan-arriere",
+        "canopée"
+      ],
+      "connections": [
+        {
+          "plane": "plan-arriere",
+          "transition": "Z/S près des lianes, talus, huttes ou troncs marqués"
+        },
+        {
+          "plane": "canopée",
+          "transition": "Z/S près des lianes, talus, huttes ou troncs marqués"
+        }
+      ],
+      "fieldIntel": {
+        "x": 465,
+        "label": "Dossier terrain 16"
+      }
+    },
+    {
+      "id": "L17",
+      "name": "Bivouac nocturne",
+      "theme": "night",
+      "canon": "onscreen",
+      "width": 2400,
+      "note": "Périmètre défensif et écoute de la jungle.",
+      "planes": [
+        "sol",
+        "plan-arriere",
+        "canopée"
+      ],
+      "connections": [
+        {
+          "plane": "plan-arriere",
+          "transition": "Z/S près des lianes, talus, huttes ou troncs marqués"
+        },
+        {
+          "plane": "canopée",
+          "transition": "Z/S près des lianes, talus, huttes ou troncs marqués"
+        }
+      ],
+      "fieldIntel": {
+        "x": 1438,
+        "label": "Dossier terrain 17"
+      }
+    },
+    {
+      "id": "L18",
+      "name": "Piège de canopée",
+      "theme": "trap",
+      "canon": "onscreen",
+      "width": 2900,
+      "note": "Piège collectif destiné à capturer le chasseur.",
+      "planes": [
+        "sol",
+        "plan-arriere",
+        "canopée"
+      ],
+      "connections": [
+        {
+          "plane": "plan-arriere",
+          "transition": "Z/S près des lianes, talus, huttes ou troncs marqués"
+        },
+        {
+          "plane": "canopée",
+          "transition": "Z/S près des lianes, talus, huttes ou troncs marqués"
+        }
+      ],
+      "fieldIntel": {
+        "x": 1111,
+        "label": "Dossier terrain 18"
+      }
+    },
+    {
+      "id": "L19",
+      "name": "Piste de sang vert",
+      "theme": "jungle",
+      "canon": "onscreen",
+      "width": 2600,
+      "note": "Poursuite après la blessure du Predator.",
+      "planes": [
+        "sol",
+        "plan-arriere",
+        "canopée"
+      ],
+      "connections": [
+        {
+          "plane": "plan-arriere",
+          "transition": "Z/S près des lianes, talus, huttes ou troncs marqués"
+        },
+        {
+          "plane": "canopée",
+          "transition": "Z/S près des lianes, talus, huttes ou troncs marqués"
+        }
+      ],
+      "fieldIntel": {
+        "x": 1584,
+        "label": "Dossier terrain 19"
+      }
+    },
+    {
+      "id": "L20",
+      "name": "Crête Mac/Dillon",
+      "theme": "ridge",
+      "canon": "onscreen",
+      "width": 2800,
+      "note": "Mac et Dillon quittent le groupe pour chasser la créature.",
+      "planes": [
+        "sol",
+        "plan-arriere",
+        "canopée"
+      ],
+      "connections": [
+        {
+          "plane": "plan-arriere",
+          "transition": "Z/S près des lianes, talus, huttes ou troncs marqués"
+        },
+        {
+          "plane": "canopée",
+          "transition": "Z/S près des lianes, talus, huttes ou troncs marqués"
+        }
+      ],
+      "fieldIntel": {
+        "x": 1557,
+        "label": "Dossier terrain 20"
+      }
+    },
+    {
+      "id": "L21",
+      "name": "Fossé de Mac",
+      "theme": "ravine",
+      "canon": "onscreen",
+      "width": 2200,
+      "note": "Mac rampe sous le feuillage en suivant sa cible.",
+      "planes": [
+        "sol",
+        "plan-arriere",
+        "canopée"
+      ],
+      "connections": [
+        {
+          "plane": "plan-arriere",
+          "transition": "Z/S près des lianes, talus, huttes ou troncs marqués"
+        },
+        {
+          "plane": "canopée",
+          "transition": "Z/S près des lianes, talus, huttes ou troncs marqués"
+        }
+      ],
+      "fieldIntel": {
+        "x": 780,
+        "label": "Dossier terrain 21"
+      }
+    },
+    {
+      "id": "L22",
+      "name": "Arbre de Dillon",
+      "theme": "jungle",
+      "canon": "onscreen",
+      "width": 2400,
+      "note": "Dillon rejoint Mac et affronte le Predator.",
+      "planes": [
+        "sol",
+        "plan-arriere",
+        "canopée"
+      ],
+      "connections": [
+        {
+          "plane": "plan-arriere",
+          "transition": "Z/S près des lianes, talus, huttes ou troncs marqués"
+        },
+        {
+          "plane": "canopée",
+          "transition": "Z/S près des lianes, talus, huttes ou troncs marqués"
+        }
+      ],
+      "fieldIntel": {
+        "x": 553,
+        "label": "Dossier terrain 22"
+      }
+    },
+    {
+      "id": "L23",
+      "name": "Pont de Billy",
+      "theme": "bridge",
+      "canon": "onscreen",
+      "width": 2100,
+      "note": "Billy reste seul pour le duel hors champ.",
+      "planes": [
+        "sol",
+        "plan-arriere",
+        "canopée"
+      ],
+      "connections": [
+        {
+          "plane": "plan-arriere",
+          "transition": "Z/S près des lianes, talus, huttes ou troncs marqués"
+        },
+        {
+          "plane": "canopée",
+          "transition": "Z/S près des lianes, talus, huttes ou troncs marqués"
+        }
+      ],
+      "fieldIntel": {
+        "x": 1326,
+        "label": "Dossier terrain 23"
+      }
+    },
+    {
+      "id": "L24",
+      "name": "Piste du brancard",
+      "theme": "jungle",
+      "canon": "onscreen",
+      "width": 2600,
+      "note": "Dutch, Anna et Billy transportent Poncho blessé.",
+      "planes": [
+        "sol",
+        "plan-arriere",
+        "canopée"
+      ],
+      "connections": [
+        {
+          "plane": "plan-arriere",
+          "transition": "Z/S près des lianes, talus, huttes ou troncs marqués"
+        },
+        {
+          "plane": "canopée",
+          "transition": "Z/S près des lianes, talus, huttes ou troncs marqués"
+        }
+      ],
+      "fieldIntel": {
+        "x": 499,
+        "label": "Dossier terrain 24"
+      }
+    },
+    {
+      "id": "L25",
+      "name": "Approche de la LZ",
+      "theme": "jungle",
+      "canon": "onscreen",
+      "width": 2600,
+      "note": "Mort de Poncho et séparation d’Anna.",
+      "planes": [
+        "sol",
+        "plan-arriere",
+        "canopée"
+      ],
+      "connections": [
+        {
+          "plane": "plan-arriere",
+          "transition": "Z/S près des lianes, talus, huttes ou troncs marqués"
+        },
+        {
+          "plane": "canopée",
+          "transition": "Z/S près des lianes, talus, huttes ou troncs marqués"
+        }
+      ],
+      "fieldIntel": {
+        "x": 672,
+        "label": "Dossier terrain 25"
+      }
+    },
+    {
+      "id": "L26",
+      "name": "Pente de poursuite",
+      "theme": "cliff",
+      "canon": "onscreen",
+      "width": 2800,
+      "note": "Dutch fuit le Predator et perd son armement.",
+      "planes": [
+        "sol",
+        "plan-arriere",
+        "canopée"
+      ],
+      "connections": [
+        {
+          "plane": "plan-arriere",
+          "transition": "Z/S près des lianes, talus, huttes ou troncs marqués"
+        },
+        {
+          "plane": "canopée",
+          "transition": "Z/S près des lianes, talus, huttes ou troncs marqués"
+        }
+      ],
+      "fieldIntel": {
+        "x": 445,
+        "label": "Dossier terrain 26"
+      }
+    },
+    {
+      "id": "L27",
+      "name": "Cascade",
+      "theme": "waterfall",
+      "canon": "onscreen",
+      "width": 2600,
+      "note": "Chute de Dutch et rupture temporaire du contact.",
+      "planes": [
+        "sol"
+      ],
+      "connections": [],
+      "fieldIntel": {
+        "x": 1018,
+        "label": "Dossier terrain 27"
+      }
+    },
+    {
+      "id": "L28",
+      "name": "Rive boueuse",
+      "theme": "mud",
+      "canon": "onscreen",
+      "width": 2200,
+      "note": "Dutch découvre accidentellement le camouflage thermique par la boue.",
+      "planes": [
+        "sol",
+        "plan-arriere"
+      ],
+      "connections": [
+        {
+          "plane": "plan-arriere",
+          "transition": "Z/S près des lianes, talus, huttes ou troncs marqués"
+        }
+      ],
+      "fieldIntel": {
+        "x": 441,
+        "label": "Dossier terrain 28"
+      }
+    },
+    {
+      "id": "L29",
+      "name": "Cache de trophées",
+      "theme": "trophy",
+      "canon": "inferred",
+      "width": 2200,
+      "note": "Espace de transition minimal représentant la récupération hors champ des trophées.",
+      "planes": [
+        "sol"
+      ],
+      "connections": [],
+      "fieldIntel": {
+        "x": 614,
+        "label": "Dossier terrain 29"
+      }
+    },
+    {
+      "id": "L30",
+      "name": "Bassin de préparation",
+      "theme": "mud",
+      "canon": "onscreen",
+      "width": 2600,
+      "note": "Dutch fabrique arc, flèches, lance et pièges improvisés.",
+      "planes": [
+        "sol",
+        "plan-arriere"
+      ],
+      "connections": [
+        {
+          "plane": "plan-arriere",
+          "transition": "Z/S près des lianes, talus, huttes ou troncs marqués"
+        }
+      ],
+      "fieldIntel": {
+        "x": 1537,
+        "label": "Dossier terrain 30"
+      }
+    },
+    {
+      "id": "L31",
+      "name": "Gauntlet de pièges",
+      "theme": "night",
+      "canon": "onscreen",
+      "width": 3200,
+      "note": "Zone nocturne du duel et du feu d’appât.",
+      "planes": [
+        "sol",
+        "plan-arriere",
+        "canopée"
+      ],
+      "connections": [
+        {
+          "plane": "plan-arriere",
+          "transition": "Z/S près des lianes, talus, huttes ou troncs marqués"
+        },
+        {
+          "plane": "canopée",
+          "transition": "Z/S près des lianes, talus, huttes ou troncs marqués"
+        }
+      ],
+      "fieldIntel": {
+        "x": 510,
+        "label": "Dossier terrain 31"
+      }
+    },
+    {
+      "id": "L32",
+      "name": "Rivière du duel",
+      "theme": "river",
+      "canon": "onscreen",
+      "width": 2600,
+      "note": "La boue est lavée et le Predator reprend l’avantage.",
+      "planes": [
+        "sol"
+      ],
+      "connections": [],
+      "fieldIntel": {
+        "x": 1883,
+        "label": "Dossier terrain 32"
+      }
+    },
+    {
+      "id": "L33",
+      "name": "Clairière finale",
+      "theme": "night",
+      "canon": "onscreen",
+      "width": 2600,
+      "note": "Le Jungle Hunter retire son masque et ses armes.",
+      "planes": [
+        "sol",
+        "plan-arriere",
+        "canopée"
+      ],
+      "connections": [
+        {
+          "plane": "plan-arriere",
+          "transition": "Z/S près des lianes, talus, huttes ou troncs marqués"
+        },
+        {
+          "plane": "canopée",
+          "transition": "Z/S près des lianes, talus, huttes ou troncs marqués"
+        }
+      ],
+      "fieldIntel": {
+        "x": 2056,
+        "label": "Dossier terrain 33"
+      }
+    },
+    {
+      "id": "L34",
+      "name": "Tunnel / contrepoids",
+      "theme": "trap",
+      "canon": "onscreen",
+      "width": 2200,
+      "note": "Dernier piège de Dutch et écrasement du Predator.",
+      "planes": [
+        "sol",
+        "plan-arriere",
+        "canopée"
+      ],
+      "connections": [
+        {
+          "plane": "plan-arriere",
+          "transition": "Z/S près des lianes, talus, huttes ou troncs marqués"
+        },
+        {
+          "plane": "canopée",
+          "transition": "Z/S près des lianes, talus, huttes ou troncs marqués"
+        }
+      ],
+      "fieldIntel": {
+        "x": 1479,
+        "label": "Dossier terrain 34"
+      }
+    },
+    {
+      "id": "L35",
+      "name": "Zone d’explosion",
+      "theme": "blast",
+      "canon": "onscreen",
+      "width": 3000,
+      "note": "Fuite devant le dispositif d’autodestruction.",
+      "planes": [
+        "sol"
+      ],
+      "connections": [],
+      "fieldIntel": {
+        "x": 1602,
+        "label": "Dossier terrain 35"
+      }
+    },
+    {
+      "id": "L36",
+      "name": "LZ d’extraction",
+      "theme": "dawn",
+      "canon": "onscreen",
+      "width": 2200,
+      "note": "Récupération de Dutch au lever du jour.",
+      "planes": [
+        "sol",
+        "plan-arriere"
+      ],
+      "connections": [
+        {
+          "plane": "plan-arriere",
+          "transition": "Z/S près des lianes, talus, huttes ou troncs marqués"
+        }
+      ],
+      "fieldIntel": {
+        "x": 1825,
+        "label": "Dossier terrain 36"
+      }
+    }
+  ],
+  "characters": [
+    {
+      "id": "dutch",
+      "name": "Maj. Alan “Dutch” Schaefer",
+      "side": "human",
+      "role": "Chef d’équipe",
+      "visual": "gilet noir, treillis woodland, bras nus",
+      "weapons": [
+        "AR-15/SP1 + faux M203",
+        "M67",
+        "Desert Eagle holstered",
+        "arc/lance improvisés (finale)"
+      ]
+    },
+    {
+      "id": "dillon",
+      "name": "George Dillon",
+      "side": "human",
+      "role": "CIA / ancien frère d’armes",
+      "visual": "tenue jungle et casquette",
+      "weapons": [
+        "HK94 raccourci",
+        "M1911A1 holstered"
+      ]
+    },
+    {
+      "id": "mac",
+      "name": "Sgt. Mac Eliot",
+      "side": "human",
+      "role": "mitrailleur",
+      "visual": "chemise jungle, casquette",
+      "weapons": [
+        "M60E3 raccourcie",
+        "M134 de Blain après sa mort",
+        "Desert Eagle holstered",
+        "M18A1 Claymore"
+      ]
+    },
+    {
+      "id": "blain",
+      "name": "Sgt. Blain Cooper",
+      "side": "human",
+      "role": "arme lourde",
+      "visual": "chapeau de brousse, gilet",
+      "weapons": [
+        "M134 “Ol’ Painless”",
+        "HK94 raccourci"
+      ]
+    },
+    {
+      "id": "billy",
+      "name": "Billy Sole",
+      "side": "human",
+      "role": "éclaireur",
+      "visual": "chapeau, peinture/ornements discrets",
+      "weapons": [
+        "AR-15/SP1 + Mossberg 500",
+        "Desert Eagle holstered",
+        "grand couteau"
+      ]
+    },
+    {
+      "id": "poncho",
+      "name": "Jorge “Poncho” Ramirez",
+      "side": "human",
+      "role": "grenadier",
+      "visual": "casquette, tenue jungle",
+      "weapons": [
+        "HK94 raccourci",
+        "AN/M5 modifié 37 mm",
+        "Desert Eagle holstered"
+      ]
+    },
+    {
+      "id": "hawkins",
+      "name": "Rick Hawkins",
+      "side": "human",
+      "role": "radio / soutien",
+      "visual": "lunettes, casquette",
+      "weapons": [
+        "HK94 raccourci",
+        "Desert Eagle holstered"
+      ]
+    },
+    {
+      "id": "anna",
+      "name": "Anna",
+      "side": "human",
+      "role": "prisonnière / survivante",
+      "visual": "tenue civile de jungle",
+      "weapons": [
+        "Walther PP récupéré (brièvement)",
+        "HK94 de Poncho (brièvement)"
+      ]
+    },
+    {
+      "id": "phillips",
+      "name": "Gen. Phillips",
+      "side": "human",
+      "role": "commandement",
+      "visual": "uniforme de base",
+      "weapons": []
+    },
+    {
+      "id": "hopper",
+      "name": "Jim Hopper et son équipe",
+      "side": "human",
+      "role": "équipe disparue",
+      "visual": "corps dépouillés / indices",
+      "weapons": []
+    },
+    {
+      "id": "guerrilla",
+      "name": "Guérilleros du camp",
+      "side": "hostile-human",
+      "role": "ennemis initiaux",
+      "visual": "tenues disparates jungle",
+      "weapons": [
+        "AKM/AK-47",
+        "Valmet M78/83",
+        "M72 LAW",
+        "armes de poing"
+      ]
+    },
+    {
+      "id": "jungle-hunter",
+      "name": "Jungle Hunter 1987",
+      "side": "predator",
+      "role": "chasseur extraterrestre",
+      "visual": "biomask, filet, armure asymétrique, dreadlocks, caster épaule",
+      "weapons": [
+        "wristblades",
+        "plasmacaster",
+        "cloak",
+        "thermal vision",
+        "wrist computer / self-destruct"
+      ]
+    }
+  ],
+  "campaigns": [
+    {
+      "id": "human",
+      "title": "Campagne I — Les humains",
+      "subtitle": "Dutch et son équipe — infiltration, assaut, survie et duel final",
+      "chapters": [
+        {
+          "id": "H01",
+          "title": "Ordres et insertion",
+          "location": "L01",
+          "playable": "dutch",
+          "companions": [
+            "dillon"
+          ],
+          "loadout": [
+            "AR-15/SP1 + faux M203"
+          ],
+          "steps": [
+            {
+              "type": "interact",
+              "x": 1180,
+              "label": "Recevoir les ordres de Phillips et Dillon"
+            },
+            {
+              "type": "reach",
+              "x": 1660,
+              "label": "Rejoindre l’hélicoptère"
+            }
+          ],
+          "canonBeat": "Le groupe accepte une mission de sauvetage et part pour la jungle.",
+          "planes": [
+            "sol"
+          ],
+          "allowCanopy": false,
+          "allowDepth": false,
+          "optionalObjective": "Trouver Dossier terrain 01",
+          "mastery": [
+            "sans dégâts",
+            "objectif optionnel",
+            "munitions ≥ 50 %"
+          ]
+        },
+        {
+          "id": "H02",
+          "title": "L’épave",
+          "location": "L05",
+          "playable": "dutch",
+          "companions": [
+            "dillon",
+            "mac",
+            "blain",
+            "billy",
+            "poncho",
+            "hawkins"
+          ],
+          "loadout": [
+            "AR-15/SP1 + faux M203"
+          ],
+          "steps": [
+            {
+              "type": "reach",
+              "x": 1500,
+              "label": "Atteindre l’épave"
+            },
+            {
+              "type": "interact",
+              "x": 1830,
+              "label": "Examiner les traces autour du crash"
+            }
+          ],
+          "canonBeat": "L’équipe constate que l’appareil recherché a été abattu.",
+          "planes": [
+            "sol"
+          ],
+          "allowCanopy": false,
+          "allowDepth": false,
+          "optionalObjective": "Trouver Dossier terrain 05",
+          "mastery": [
+            "sans dégâts",
+            "objectif optionnel",
+            "munitions ≥ 50 %"
+          ]
+        },
+        {
+          "id": "H03",
+          "title": "Les hommes de Hopper",
+          "location": "L06",
+          "playable": "dutch",
+          "companions": [
+            "dillon",
+            "mac",
+            "blain",
+            "billy",
+            "poncho",
+            "hawkins"
+          ],
+          "loadout": [
+            "AR-15/SP1 + faux M203"
+          ],
+          "steps": [
+            {
+              "type": "reach",
+              "x": 1380,
+              "label": "Suivre Billy"
+            },
+            {
+              "type": "interact",
+              "x": 1710,
+              "label": "Identifier les corps de Hopper et de ses hommes"
+            }
+          ],
+          "canonBeat": "Dutch reconnaît l’équipe de Jim Hopper et soupçonne que Dillon cache des informations.",
+          "planes": [
+            "sol"
+          ],
+          "allowCanopy": false,
+          "allowDepth": false,
+          "optionalObjective": "Trouver Dossier terrain 06",
+          "mastery": [
+            "sans dégâts",
+            "objectif optionnel",
+            "munitions ≥ 50 %"
+          ]
+        },
+        {
+          "id": "H04",
+          "title": "Reconnaissance du camp",
+          "location": "L07",
+          "playable": "dutch",
+          "companions": [
+            "dillon",
+            "mac",
+            "blain",
+            "billy",
+            "poncho",
+            "hawkins"
+          ],
+          "loadout": [
+            "jumelles",
+            "AR-15/SP1 + faux M203"
+          ],
+          "steps": [
+            {
+              "type": "scan",
+              "x": 1600,
+              "label": "Observer le camp aux jumelles"
+            },
+            {
+              "type": "reach",
+              "x": 2210,
+              "label": "Descendre vers le périmètre"
+            }
+          ],
+          "canonBeat": "Le groupe identifie le camp, ses gardes et la zone des otages.",
+          "planes": [
+            "sol",
+            "plan-arriere",
+            "canopée"
+          ],
+          "allowCanopy": true,
+          "allowDepth": true,
+          "optionalObjective": "Trouver Dossier terrain 07",
+          "mastery": [
+            "sans dégâts",
+            "objectif optionnel",
+            "munitions ≥ 50 %"
+          ]
+        },
+        {
+          "id": "H05",
+          "title": "Assaut sur le camp",
+          "location": "L10",
+          "playable": "dutch",
+          "companions": [
+            "dillon",
+            "mac",
+            "blain",
+            "billy",
+            "poncho",
+            "hawkins"
+          ],
+          "loadout": [
+            "AR-15/SP1 + faux M203",
+            "M67"
+          ],
+          "enemies": 12,
+          "steps": [
+            {
+              "type": "eliminate",
+              "count": 12,
+              "label": "Neutraliser la garnison"
+            },
+            {
+              "type": "interact",
+              "x": 2780,
+              "label": "Sécuriser la zone des otages"
+            }
+          ],
+          "canonBeat": "L’équipe détruit le camp, découvre les otages morts et capture Anna.",
+          "planes": [
+            "sol",
+            "plan-arriere"
+          ],
+          "allowCanopy": false,
+          "allowDepth": true,
+          "optionalObjective": "Trouver Dossier terrain 10",
+          "mastery": [
+            "sans dégâts",
+            "objectif optionnel",
+            "munitions ≥ 50 %"
+          ]
+        },
+        {
+          "id": "H06",
+          "title": "La mission réelle",
+          "location": "L12",
+          "playable": "dutch",
+          "companions": [
+            "dillon",
+            "mac",
+            "blain",
+            "billy",
+            "poncho",
+            "hawkins",
+            "anna"
+          ],
+          "loadout": [
+            "AR-15/SP1 + faux M203"
+          ],
+          "steps": [
+            {
+              "type": "reach",
+              "x": 1180,
+              "label": "Regrouper l’équipe"
+            },
+            {
+              "type": "interact",
+              "x": 1600,
+              "label": "Confronter Dillon"
+            },
+            {
+              "type": "reach",
+              "x": 2280,
+              "label": "Reprendre la route vers la LZ"
+            }
+          ],
+          "canonBeat": "Dutch apprend que la mission de sauvetage servait de couverture.",
+          "planes": [
+            "sol",
+            "plan-arriere",
+            "canopée"
+          ],
+          "allowCanopy": true,
+          "allowDepth": true,
+          "optionalObjective": "Trouver Dossier terrain 12",
+          "mastery": [
+            "sans dégâts",
+            "objectif optionnel",
+            "munitions ≥ 50 %"
+          ]
+        },
+        {
+          "id": "H07",
+          "title": "Hawkins disparaît",
+          "location": "L14",
+          "playable": "dutch",
+          "companions": [
+            "dillon",
+            "mac",
+            "blain",
+            "billy",
+            "poncho",
+            "hawkins",
+            "anna"
+          ],
+          "loadout": [
+            "AR-15/SP1 + faux M203"
+          ],
+          "steps": [
+            {
+              "type": "reach",
+              "x": 1080,
+              "label": "Rattraper Anna"
+            },
+            {
+              "type": "survive",
+              "seconds": 5,
+              "label": "Réagir à l’attaque invisible"
+            },
+            {
+              "type": "interact",
+              "x": 1840,
+              "label": "Inspecter la zone de disparition"
+            }
+          ],
+          "casualty": "hawkins",
+          "canonBeat": "Hawkins est tué et emporté par une présence que l’équipe ne voit pas.",
+          "planes": [
+            "sol",
+            "plan-arriere",
+            "canopée"
+          ],
+          "allowCanopy": true,
+          "allowDepth": true,
+          "optionalObjective": "Trouver Dossier terrain 14",
+          "mastery": [
+            "sans dégâts",
+            "objectif optionnel",
+            "munitions ≥ 50 %"
+          ]
+        },
+        {
+          "id": "H08",
+          "title": "Blain et le mur de feu",
+          "location": "L16",
+          "playable": "dutch",
+          "companions": [
+            "dillon",
+            "mac",
+            "blain",
+            "billy",
+            "poncho",
+            "anna"
+          ],
+          "loadout": [
+            "AR-15/SP1 + faux M203"
+          ],
+          "steps": [
+            {
+              "type": "reach",
+              "x": 760,
+              "label": "Rejoindre Blain"
+            },
+            {
+              "type": "survive",
+              "seconds": 8,
+              "label": "Arroser la lisière de tirs"
+            },
+            {
+              "type": "reach",
+              "x": 2700,
+              "label": "Cesser le feu et faire le bilan"
+            }
+          ],
+          "casualty": "blain",
+          "canonBeat": "Blain est tué par le plasmacaster; Mac déclenche la riposte qui rase une portion de jungle.",
+          "planes": [
+            "sol",
+            "plan-arriere",
+            "canopée"
+          ],
+          "allowCanopy": true,
+          "allowDepth": true,
+          "optionalObjective": "Trouver Dossier terrain 16",
+          "mastery": [
+            "sans dégâts",
+            "objectif optionnel",
+            "munitions ≥ 50 %"
+          ]
+        },
+        {
+          "id": "H09",
+          "title": "La nuit du piège",
+          "location": "L18",
+          "playable": "dutch",
+          "companions": [
+            "dillon",
+            "mac",
+            "billy",
+            "poncho",
+            "anna"
+          ],
+          "loadout": [
+            "AR-15/SP1 + faux M203",
+            "M18A1 Claymore (équipe)"
+          ],
+          "steps": [
+            {
+              "type": "placeTrap",
+              "x": 1050,
+              "label": "Installer la première ligne de pièges"
+            },
+            {
+              "type": "placeTrap",
+              "x": 1710,
+              "label": "Fermer le couloir de canopée"
+            },
+            {
+              "type": "survive",
+              "seconds": 10,
+              "label": "Attendre le chasseur"
+            },
+            {
+              "type": "reach",
+              "x": 2540,
+              "label": "Poursuivre la créature blessée"
+            }
+          ],
+          "canonBeat": "Le Predator tombe dans le dispositif, se libère et laisse du sang fluorescent.",
+          "planes": [
+            "sol",
+            "plan-arriere",
+            "canopée"
+          ],
+          "allowCanopy": true,
+          "allowDepth": true,
+          "optionalObjective": "Trouver Dossier terrain 18",
+          "mastery": [
+            "sans dégâts",
+            "objectif optionnel",
+            "munitions ≥ 50 %"
+          ]
+        },
+        {
+          "id": "H10",
+          "title": "Mac et Dillon",
+          "location": "L20",
+          "playable": "dutch",
+          "companions": [
+            "billy",
+            "poncho",
+            "anna"
+          ],
+          "loadout": [
+            "AR-15/SP1 + faux M203"
+          ],
+          "steps": [
+            {
+              "type": "interact",
+              "x": 1000,
+              "label": "Laisser Mac et Dillon partir en chasse"
+            },
+            {
+              "type": "survive",
+              "seconds": 6,
+              "label": "Attendre leur retour"
+            },
+            {
+              "type": "reach",
+              "x": 2350,
+              "label": "Reprendre la progression"
+            }
+          ],
+          "casualty": "mac,dillon",
+          "canonBeat": "Mac et Dillon poursuivent le Predator séparément et sont éliminés.",
+          "planes": [
+            "sol",
+            "plan-arriere",
+            "canopée"
+          ],
+          "allowCanopy": true,
+          "allowDepth": true,
+          "optionalObjective": "Trouver Dossier terrain 20",
+          "mastery": [
+            "sans dégâts",
+            "objectif optionnel",
+            "munitions ≥ 50 %"
+          ]
+        },
+        {
+          "id": "H11",
+          "title": "Le dernier passage de Billy",
+          "location": "L23",
+          "playable": "dutch",
+          "companions": [
+            "billy",
+            "poncho",
+            "anna"
+          ],
+          "loadout": [
+            "AR-15/SP1 + faux M203"
+          ],
+          "steps": [
+            {
+              "type": "interact",
+              "x": 1060,
+              "label": "Écouter Billy"
+            },
+            {
+              "type": "reach",
+              "x": 1760,
+              "label": "Continuer avec Poncho et Anna"
+            },
+            {
+              "type": "survive",
+              "seconds": 5,
+              "label": "Entendre l’issue du duel derrière vous"
+            }
+          ],
+          "casualty": "billy",
+          "canonBeat": "Billy se sépare du groupe et affronte seul le Predator; le combat reste volontairement hors champ.",
+          "planes": [
+            "sol",
+            "plan-arriere",
+            "canopée"
+          ],
+          "allowCanopy": true,
+          "allowDepth": true,
+          "optionalObjective": "Trouver Dossier terrain 23",
+          "mastery": [
+            "sans dégâts",
+            "objectif optionnel",
+            "munitions ≥ 50 %"
+          ]
+        },
+        {
+          "id": "H12",
+          "title": "Poncho tombe",
+          "location": "L25",
+          "playable": "dutch",
+          "companions": [
+            "poncho",
+            "anna"
+          ],
+          "loadout": [
+            "AR-15/SP1 + faux M203"
+          ],
+          "steps": [
+            {
+              "type": "reach",
+              "x": 960,
+              "label": "Transporter Poncho"
+            },
+            {
+              "type": "survive",
+              "seconds": 4,
+              "label": "Subir la reprise de la chasse"
+            },
+            {
+              "type": "interact",
+              "x": 1810,
+              "label": "Empêcher Anna de prendre l’arme"
+            },
+            {
+              "type": "reach",
+              "x": 2370,
+              "label": "Envoyer Anna vers la LZ"
+            }
+          ],
+          "casualty": "poncho",
+          "canonBeat": "Poncho est tué; Dutch comprend qu’Anna non armée n’est pas ciblée et l’envoie vers l’extraction.",
+          "planes": [
+            "sol",
+            "plan-arriere",
+            "canopée"
+          ],
+          "allowCanopy": true,
+          "allowDepth": true,
+          "optionalObjective": "Trouver Dossier terrain 25",
+          "mastery": [
+            "sans dégâts",
+            "objectif optionnel",
+            "munitions ≥ 50 %"
+          ]
+        },
+        {
+          "id": "H13",
+          "title": "Cascade et boue",
+          "location": "L28",
+          "playable": "dutch",
+          "companions": [],
+          "loadout": [
+            "aucun armement intact"
+          ],
+          "steps": [
+            {
+              "type": "reach",
+              "x": 880,
+              "label": "Sortir de l’eau"
+            },
+            {
+              "type": "interact",
+              "x": 1380,
+              "label": "Se plaquer dans la boue"
+            },
+            {
+              "type": "survive",
+              "seconds": 7,
+              "label": "Rester immobile pendant le balayage thermique"
+            },
+            {
+              "type": "reach",
+              "x": 1940,
+              "label": "Quitter la rive sans être repéré"
+            }
+          ],
+          "canonBeat": "La boue froide masque la signature thermique de Dutch.",
+          "planes": [
+            "sol",
+            "plan-arriere"
+          ],
+          "allowCanopy": false,
+          "allowDepth": true,
+          "optionalObjective": "Trouver Dossier terrain 28",
+          "mastery": [
+            "sans dégâts",
+            "objectif optionnel",
+            "munitions ≥ 50 %"
+          ]
+        },
+        {
+          "id": "H14",
+          "title": "Devenir le chasseur",
+          "location": "L30",
+          "playable": "dutch",
+          "companions": [],
+          "loadout": [
+            "arc improvisé",
+            "flèches explosives",
+            "lance",
+            "pièges"
+          ],
+          "steps": [
+            {
+              "type": "interact",
+              "x": 680,
+              "label": "Fabriquer l’arc et les flèches"
+            },
+            {
+              "type": "placeTrap",
+              "x": 1240,
+              "label": "Installer le piège à pieux"
+            },
+            {
+              "type": "placeTrap",
+              "x": 1860,
+              "label": "Armer le contrepoids"
+            },
+            {
+              "type": "interact",
+              "x": 2320,
+              "label": "S’enduire de boue"
+            }
+          ],
+          "canonBeat": "Dutch prépare une arène nocturne avec des armes et pièges improvisés.",
+          "planes": [
+            "sol",
+            "plan-arriere"
+          ],
+          "allowCanopy": false,
+          "allowDepth": true,
+          "optionalObjective": "Trouver Dossier terrain 30",
+          "mastery": [
+            "sans dégâts",
+            "objectif optionnel",
+            "munitions ≥ 50 %"
+          ]
+        },
+        {
+          "id": "H15",
+          "title": "Le duel",
+          "location": "L33",
+          "playable": "dutch",
+          "companions": [],
+          "loadout": [
+            "arc improvisé",
+            "lance",
+            "pièges"
+          ],
+          "boss": "jungle-hunter",
+          "steps": [
+            {
+              "type": "bossDamage",
+              "amount": 3,
+              "label": "Toucher le Predator depuis la boue"
+            },
+            {
+              "type": "survive",
+              "seconds": 7,
+              "label": "Forcer le combat à se déplacer vers la rivière"
+            },
+            {
+              "type": "interact",
+              "x": 1780,
+              "label": "Déclencher la séquence de duel à mains nues"
+            },
+            {
+              "type": "interact",
+              "x": 2260,
+              "label": "Activer le contrepoids final"
+            },
+            {
+              "type": "reach",
+              "x": 2510,
+              "label": "S’éloigner du dispositif d’autodestruction"
+            }
+          ],
+          "canonBeat": "Dutch blesse le Predator, survit au duel et déclenche le contrepoids qui le condamne.",
+          "planes": [
+            "sol",
+            "plan-arriere",
+            "canopée"
+          ],
+          "allowCanopy": true,
+          "allowDepth": true,
+          "optionalObjective": "Trouver Dossier terrain 33",
+          "mastery": [
+            "sans dégâts",
+            "objectif optionnel",
+            "munitions ≥ 50 %"
+          ]
+        },
+        {
+          "id": "H16",
+          "title": "Extraction",
+          "location": "L36",
+          "playable": "dutch",
+          "companions": [
+            "anna",
+            "phillips"
+          ],
+          "loadout": [
+            "aucun"
+          ],
+          "steps": [
+            {
+              "type": "reach",
+              "x": 1480,
+              "label": "Atteindre l’hélicoptère"
+            },
+            {
+              "type": "interact",
+              "x": 1830,
+              "label": "Monter à bord"
+            }
+          ],
+          "canonBeat": "Dutch est récupéré au lever du jour avec Anna déjà secourue.",
+          "planes": [
+            "sol",
+            "plan-arriere"
+          ],
+          "allowCanopy": false,
+          "allowDepth": true,
+          "optionalObjective": "Trouver Dossier terrain 36",
+          "mastery": [
+            "sans dégâts",
+            "objectif optionnel",
+            "munitions ≥ 50 %"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "predator",
+      "title": "Campagne II — Le Predator",
+      "subtitle": "Jungle Hunter — observation, sélection des proies, traque et duel final",
+      "chapters": [
+        {
+          "id": "P01",
+          "title": "Descente",
+          "location": "L03",
+          "playable": "jungle-hunter",
+          "companions": [],
+          "loadout": [
+            "cloak",
+            "thermal vision",
+            "plasmacaster",
+            "wristblades"
+          ],
+          "allowCanopy": true,
+          "steps": [
+            {
+              "type": "cloak",
+              "label": "Activer le camouflage"
+            },
+            {
+              "type": "scan",
+              "x": 1420,
+              "label": "Scanner les signatures armées"
+            },
+            {
+              "type": "reach",
+              "x": 2110,
+              "label": "Gagner la canopée"
+            }
+          ],
+          "canonBeat": "Le chasseur observe la zone et choisit des proies armées.",
+          "planes": [
+            "sol",
+            "plan-arriere",
+            "canopée"
+          ],
+          "allowDepth": true,
+          "optionalObjective": "Trouver Dossier terrain 03",
+          "mastery": [
+            "sans dégâts",
+            "objectif optionnel",
+            "sans plasmacaster"
+          ]
+        },
+        {
+          "id": "P02",
+          "title": "Des intrus dangereux",
+          "location": "L10",
+          "playable": "jungle-hunter",
+          "companions": [],
+          "loadout": [
+            "cloak",
+            "thermal vision"
+          ],
+          "allowCanopy": false,
+          "steps": [
+            {
+              "type": "scan",
+              "x": 1060,
+              "label": "Observer l’assaut sans intervenir"
+            },
+            {
+              "type": "reach",
+              "x": 1940,
+              "label": "Suivre Dutch et son équipe depuis la canopée"
+            },
+            {
+              "type": "mimic",
+              "label": "Enregistrer un échantillon vocal"
+            }
+          ],
+          "canonBeat": "Le Predator suit la destruction du camp et évalue les capacités du groupe.",
+          "planes": [
+            "sol",
+            "plan-arriere"
+          ],
+          "allowDepth": true,
+          "optionalObjective": "Trouver Dossier terrain 10",
+          "mastery": [
+            "sans dégâts",
+            "objectif optionnel",
+            "sans plasmacaster"
+          ]
+        },
+        {
+          "id": "P03",
+          "title": "Première prise",
+          "location": "L14",
+          "playable": "jungle-hunter",
+          "companions": [],
+          "loadout": [
+            "cloak",
+            "wristblades"
+          ],
+          "allowCanopy": true,
+          "targets": [
+            "hawkins"
+          ],
+          "steps": [
+            {
+              "type": "cloak",
+              "label": "Rester invisible"
+            },
+            {
+              "type": "reach",
+              "x": 1320,
+              "label": "Se placer derrière Hawkins"
+            },
+            {
+              "type": "meleeTarget",
+              "target": "hawkins",
+              "label": "Neutraliser Hawkins"
+            },
+            {
+              "type": "reach",
+              "x": 2050,
+              "label": "Emporter la prise hors du sentier"
+            }
+          ],
+          "canonBeat": "Hawkins est la première victime de l’équipe montrée à l’écran.",
+          "planes": [
+            "sol",
+            "plan-arriere",
+            "canopée"
+          ],
+          "allowDepth": true,
+          "optionalObjective": "Trouver Dossier terrain 14",
+          "mastery": [
+            "sans dégâts",
+            "objectif optionnel",
+            "sans plasmacaster"
+          ]
+        },
+        {
+          "id": "P04",
+          "title": "Le canon de Blain",
+          "location": "L15",
+          "playable": "jungle-hunter",
+          "companions": [],
+          "loadout": [
+            "plasmacaster",
+            "cloak"
+          ],
+          "allowCanopy": true,
+          "targets": [
+            "blain"
+          ],
+          "steps": [
+            {
+              "type": "scan",
+              "x": 940,
+              "label": "Isoler Blain"
+            },
+            {
+              "type": "plasmaTarget",
+              "target": "blain",
+              "label": "Frapper Blain au plasmacaster"
+            },
+            {
+              "type": "reach",
+              "x": 2040,
+              "label": "Rompre le contact avant la riposte"
+            }
+          ],
+          "canonBeat": "Le Predator tue Blain et se replie sous le déluge de feu du groupe.",
+          "planes": [
+            "sol",
+            "plan-arriere",
+            "canopée"
+          ],
+          "allowDepth": true,
+          "optionalObjective": "Trouver Dossier terrain 15",
+          "mastery": [
+            "sans dégâts",
+            "objectif optionnel",
+            "sans plasmacaster"
+          ]
+        },
+        {
+          "id": "P05",
+          "title": "Sous la tempête de balles",
+          "location": "L16",
+          "playable": "jungle-hunter",
+          "companions": [],
+          "loadout": [
+            "cloak"
+          ],
+          "allowCanopy": true,
+          "steps": [
+            {
+              "type": "survive",
+              "seconds": 9,
+              "label": "Traverser la rafale sans rester dans la ligne de tir"
+            },
+            {
+              "type": "reach",
+              "x": 2860,
+              "label": "Quitter la zone détruite"
+            }
+          ],
+          "canonBeat": "La jungle est criblée de tirs, mais le chasseur échappe au barrage.",
+          "planes": [
+            "sol",
+            "plan-arriere",
+            "canopée"
+          ],
+          "allowDepth": true,
+          "optionalObjective": "Trouver Dossier terrain 16",
+          "mastery": [
+            "sans dégâts",
+            "objectif optionnel",
+            "sans plasmacaster"
+          ]
+        },
+        {
+          "id": "P06",
+          "title": "Piège nocturne",
+          "location": "L18",
+          "playable": "jungle-hunter",
+          "companions": [],
+          "loadout": [
+            "cloak",
+            "wristblades"
+          ],
+          "allowCanopy": true,
+          "steps": [
+            {
+              "type": "reach",
+              "x": 1120,
+              "label": "Entrer dans le dispositif humain"
+            },
+            {
+              "type": "interact",
+              "x": 1510,
+              "label": "Se libérer du piège"
+            },
+            {
+              "type": "survive",
+              "seconds": 5,
+              "label": "Fuir blessé"
+            },
+            {
+              "type": "reach",
+              "x": 2500,
+              "label": "Disparaître avec une plaie ouverte"
+            }
+          ],
+          "canonBeat": "Le Predator est blessé et laisse un sang lumineux qui confirme qu’il peut être atteint.",
+          "planes": [
+            "sol",
+            "plan-arriere",
+            "canopée"
+          ],
+          "allowDepth": true,
+          "optionalObjective": "Trouver Dossier terrain 18",
+          "mastery": [
+            "sans dégâts",
+            "objectif optionnel",
+            "sans plasmacaster"
+          ]
+        },
+        {
+          "id": "P07",
+          "title": "Mac et Dillon",
+          "location": "L22",
+          "playable": "jungle-hunter",
+          "companions": [],
+          "loadout": [
+            "cloak",
+            "plasmacaster",
+            "wristblades"
+          ],
+          "allowCanopy": true,
+          "targets": [
+            "mac",
+            "dillon"
+          ],
+          "steps": [
+            {
+              "type": "scan",
+              "x": 900,
+              "label": "Localiser Mac"
+            },
+            {
+              "type": "meleeTarget",
+              "target": "mac",
+              "label": "Éliminer Mac"
+            },
+            {
+              "type": "plasmaTarget",
+              "target": "dillon",
+              "label": "Neutraliser Dillon"
+            },
+            {
+              "type": "reach",
+              "x": 2110,
+              "label": "Reprendre la poursuite principale"
+            }
+          ],
+          "canonBeat": "Le Predator surclasse Mac puis Dillon, qui avait rejoint son ami.",
+          "planes": [
+            "sol",
+            "plan-arriere",
+            "canopée"
+          ],
+          "allowDepth": true,
+          "optionalObjective": "Trouver Dossier terrain 22",
+          "mastery": [
+            "sans dégâts",
+            "objectif optionnel",
+            "sans plasmacaster"
+          ]
+        },
+        {
+          "id": "P08",
+          "title": "Billy",
+          "location": "L23",
+          "playable": "jungle-hunter",
+          "companions": [],
+          "loadout": [
+            "wristblades"
+          ],
+          "allowCanopy": true,
+          "targets": [
+            "billy"
+          ],
+          "steps": [
+            {
+              "type": "reach",
+              "x": 1040,
+              "label": "Accepter le défi de Billy"
+            },
+            {
+              "type": "meleeTarget",
+              "target": "billy",
+              "label": "Conclure le duel hors champ"
+            },
+            {
+              "type": "reach",
+              "x": 1820,
+              "label": "Poursuivre les survivants"
+            }
+          ],
+          "canonBeat": "Le film ne montre pas la chorégraphie du duel; le DLC conserve seulement son résultat et son hors-champ.",
+          "planes": [
+            "sol",
+            "plan-arriere",
+            "canopée"
+          ],
+          "allowDepth": true,
+          "optionalObjective": "Trouver Dossier terrain 23",
+          "mastery": [
+            "sans dégâts",
+            "objectif optionnel",
+            "sans plasmacaster"
+          ]
+        },
+        {
+          "id": "P09",
+          "title": "Poncho",
+          "location": "L25",
+          "playable": "jungle-hunter",
+          "companions": [],
+          "loadout": [
+            "plasmacaster",
+            "cloak"
+          ],
+          "allowCanopy": true,
+          "targets": [
+            "poncho"
+          ],
+          "steps": [
+            {
+              "type": "plasmaTarget",
+              "target": "poncho",
+              "label": "Abattre Poncho"
+            },
+            {
+              "type": "scan",
+              "x": 1560,
+              "label": "Évaluer Anna non armée"
+            },
+            {
+              "type": "reach",
+              "x": 2320,
+              "label": "Choisir Dutch comme proie principale"
+            }
+          ],
+          "canonBeat": "Le Predator ignore Anna quand elle n’est plus armée et concentre sa chasse sur Dutch.",
+          "planes": [
+            "sol",
+            "plan-arriere",
+            "canopée"
+          ],
+          "allowDepth": true,
+          "optionalObjective": "Trouver Dossier terrain 25",
+          "mastery": [
+            "sans dégâts",
+            "objectif optionnel",
+            "sans plasmacaster"
+          ]
+        },
+        {
+          "id": "P10",
+          "title": "La proie disparaît",
+          "location": "L28",
+          "playable": "jungle-hunter",
+          "companions": [],
+          "loadout": [
+            "thermal vision",
+            "cloak"
+          ],
+          "allowCanopy": false,
+          "targets": [
+            "dutch"
+          ],
+          "steps": [
+            {
+              "type": "scan",
+              "x": 920,
+              "label": "Rechercher Dutch au thermique"
+            },
+            {
+              "type": "reach",
+              "x": 1500,
+              "label": "Inspecter la rive"
+            },
+            {
+              "type": "survive",
+              "seconds": 6,
+              "label": "Échouer à distinguer la signature sous la boue"
+            },
+            {
+              "type": "reach",
+              "x": 1980,
+              "label": "Quitter la rive"
+            }
+          ],
+          "canonBeat": "Le masque thermique ne distingue pas Dutch recouvert de boue froide.",
+          "planes": [
+            "sol",
+            "plan-arriere"
+          ],
+          "allowDepth": true,
+          "optionalObjective": "Trouver Dossier terrain 28",
+          "mastery": [
+            "sans dégâts",
+            "objectif optionnel",
+            "sans plasmacaster"
+          ]
+        },
+        {
+          "id": "P11",
+          "title": "Trophées et retour au duel",
+          "location": "L29",
+          "playable": "jungle-hunter",
+          "companions": [],
+          "loadout": [
+            "wristblades",
+            "wrist computer"
+          ],
+          "allowCanopy": false,
+          "steps": [
+            {
+              "type": "interact",
+              "x": 790,
+              "label": "Récupérer les trophées déjà acquis"
+            },
+            {
+              "type": "mimic",
+              "label": "Réécouter les voix humaines mémorisées"
+            },
+            {
+              "type": "reach",
+              "x": 1890,
+              "label": "Répondre à l’appel de Dutch"
+            }
+          ],
+          "canonBeat": "Le film suggère la collecte de trophées hors champ avant le duel final; l’espace est volontairement abstrait.",
+          "planes": [
+            "sol"
+          ],
+          "allowDepth": false,
+          "optionalObjective": "Trouver Dossier terrain 29",
+          "mastery": [
+            "sans dégâts",
+            "objectif optionnel",
+            "sans plasmacaster"
+          ]
+        },
+        {
+          "id": "P12",
+          "title": "La dernière chasse",
+          "location": "L33",
+          "playable": "jungle-hunter",
+          "companions": [],
+          "loadout": [
+            "plasmacaster",
+            "cloak",
+            "wristblades",
+            "wrist computer"
+          ],
+          "allowCanopy": true,
+          "targets": [
+            "dutch"
+          ],
+          "steps": [
+            {
+              "type": "survive",
+              "seconds": 6,
+              "label": "Subir les premiers pièges de Dutch"
+            },
+            {
+              "type": "plasmaTarget",
+              "target": "dutch",
+              "label": "Riposter avant que le camouflage ne tombe"
+            },
+            {
+              "type": "interact",
+              "x": 1650,
+              "label": "Retirer masque et plasmacaster"
+            },
+            {
+              "type": "meleeTarget",
+              "target": "dutch",
+              "label": "Engager le duel à mains nues"
+            },
+            {
+              "type": "interact",
+              "x": 2210,
+              "label": "Tomber sous le contrepoids"
+            },
+            {
+              "type": "interact",
+              "x": 2390,
+              "label": "Activer l’autodestruction"
+            }
+          ],
+          "canonBeat": "La campagne Predator se termine par la défaite canonique du Jungle Hunter et son autodestruction.",
+          "planes": [
+            "sol",
+            "plan-arriere",
+            "canopée"
+          ],
+          "allowDepth": true,
+          "optionalObjective": "Trouver Dossier terrain 33",
+          "mastery": [
+            "sans dégâts",
+            "objectif optionnel",
+            "sans plasmacaster"
+          ]
+        }
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "id": "S1",
+      "label": "IMDb — Predator (1987), Plot Summary",
+      "url": "https://www.imdb.com/title/tt0093773/plotsummary/",
+      "use": "ordre des événements et personnages"
+    },
+    {
+      "id": "S2",
+      "label": "Wikipedia — Predator (film)",
+      "url": "https://en.wikipedia.org/wiki/Predator_(film)",
+      "use": "séquence finale, pièges, boue et extraction"
+    },
+    {
+      "id": "S3",
+      "label": "Internet Movie Firearms Database — Predator (1987)",
+      "url": "https://www.imfdb.org/wiki/Predator_(1987)",
+      "use": "armes à feu et affectations par personnage"
+    },
+    {
+      "id": "S4",
+      "label": "AvP Central — Predator (1987): Plot, Characters, And Lore",
+      "url": "https://www.avpcentral.com/predator-1987",
+      "use": "équipement et comportement du Jungle Hunter"
+    },
+    {
+      "id": "S5",
+      "label": "AvP Central — Jungle Hunter profile",
+      "url": "https://www.avpcentral.com/jungle-hunter-predator-profile",
+      "use": "biomask, caster, cloak, wristblades et apparence de l’équipement"
+    }
+  ],
+  "controls": {
+    "move": "Q/D ou ←/→",
+    "lane": "Z/S ou ↑/↓ (Predator, scènes autorisées)",
+    "primary": "J",
+    "secondary": "K",
+    "interact": "E",
+    "utility": "F",
+    "cloak": "C",
+    "vision": "V",
+    "pause": "Échap"
+  },
+  "edition": "Traque totale",
+  "systems": {
+    "multiPlane": {
+      "lanes": [
+        "sol",
+        "plan-arriere",
+        "canopée"
+      ],
+      "description": "Transitions Z/S contextuelles selon le chapitre."
+    },
+    "stealth": {
+      "human": "Couverture végétale et déplacements prudents",
+      "predator": "Camouflage consommant de l’énergie + vision thermique"
+    },
+    "trophies": {
+      "count": 12,
+      "policy": "Collectibles originaux liés aux personnages/événements, sans asset officiel."
+    },
+    "challenges": [
+      "Terminer un chapitre sans dégâts",
+      "Predator : neutraliser la cible sans plasmacaster",
+      "Humains : conserver 50 % des munitions",
+      "Trouver tous les dossiers de terrain"
+    ]
+  }
+};
