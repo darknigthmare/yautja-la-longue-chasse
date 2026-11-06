@@ -563,13 +563,13 @@ Source : [types de Predators](https://avpcentral.com/predator-types).
 
 Sujets peu développés, à traiter dans les prochains lots de questions :
 
-- [ ] Progression des armes et des armures, arbre d'améliorations de l'atelier
-- [ ] IA des proies humaines et réactions au camouflage
-- [ ] Déroulé détaillé des 6 à 8 missions de l'arc de guerre
-- [ ] Noms et rôles des personnages de la Lost Tribe, du Serpent Clan et des Matriarches
-- [ ] Musique et ambiance propres à chaque race
-- [ ] Noms des cités des clans et des trois cités visitables au départ
-- [ ] Dates exactes des ellipses et seuils d'honneur par rang
+- [ ] Progression des armes et des armures, arbre d'améliorations de l'atelier — traité le 6 novembre (Équipement et IA)
+- [ ] IA des proies humaines et réactions au camouflage — traité le 6 novembre
+- [ ] Déroulé détaillé des 6 à 8 missions de l'arc de guerre — traité (G-1 → G-8)
+- [ ] Noms et rôles des personnages de la Lost Tribe, du Serpent Clan et des Matriarches — traité le 6 novembre
+- [ ] Musique et ambiance propres à chaque race — musique traitée (MUS-60 → MUS-72), ambiances sonores encore à faire
+- [ ] Noms des cités des clans et des trois cités visitables au départ — noms traités (classeur V6) ; choix des trois cités de départ encore ouvert
+- [ ] Dates exactes des ellipses et seuils d'honneur par rang — traité le 6 novembre
 
 ### Équipement et IA des humains (6 novembre 2026)
 
@@ -624,6 +624,90 @@ Noms yautja des régions validés le 6 novembre 2026. Aucun n'est un mot de la l
 | CL15 Ligue des Forges Fermées | Gholl'ferr | navires et communautés alliées |
 
 Les noms yautja de ce tableau sont des propositions, à valider ; aucun n'est un mot de la langue canon.
+
+### Seuils d'honneur, ellipses, cités de départ (6 novembre 2026)
+
+**Seuils d'honneur — décision :** atteindre le seuil d'honneur débloque l'épreuve du rang ; seule l'épreuve réussie fait monter. L'honneur perdu (infractions, voir *Honneur, Bad Blood et Enforcer*) peut faire repasser sous le seuil : l'épreuve redevient verrouillée, le rang acquis reste.
+
+| Level | Rang | Seuil d'honneur cumulé *(proposé)* | Épreuve débloquée |
+| --- | --- | --- | --- |
+| 1 | Unblooded | 100 | fin de l'intro (R2-M006) |
+| 2 | Young Blood | 500 | Quatza-Rij en trio |
+| 3 | Blooded | 1 500 | la pyramide |
+| 4 | Adjutant | 3 000 | mener et ramener un pack |
+| 5 | Elite | 5 000 | crâne de reine + Quatza-Rij seul |
+| 6 | Elder | 8 000 | transmission observée |
+| 7 | Clan Leader | 12 000 | 3 ruches nettoyées puis une des trois voies |
+| 8 | Adjudicator | 18 000 | 5 ruches + Reine Mère |
+| 9 | Philosopher | 25 000 | l'épreuve de la longue mémoire |
+| 10 | Black God | 40 000 | la chasse mythique |
+
+*(proposé)* En mode réalisme et hardcore, les seuils sont identiques mais l'honneur gagné est réduit de 20 % et les pertes doublées.
+
+**Ellipses — décision :** un mélange cohérent des trois logiques, selon la situation.
+
+- **Âge affiché partout :** chaque ellipse affiche l'âge du Yautja et le temps écoulé (« 40 ans plus tard »).
+- **Dates terrestres quand la mission touche la Terre ou une époque des films :** chasses sur Terre, arc Warp, crossover Tantalus. Elles se calent sur les dates des films (1718, 1987, 1997, 2004, 2010, 2022, 2025…).
+- **Durée variable pour les contrats et les chasses libres :** chaque contrat consomme du temps (*proposé :* de quelques mois à 10 ans selon la distance et le type), plafonné par rang pour que le Yautja ne vieillisse pas avant d'avoir passé les épreuves principales.
+- **Cohérence :** l'âge ne recule jamais, sauf par le Warp ; dans ce cas l'âge du Yautja continue d'avancer, seule la date de destination change.
+
+**Tranches d'âge par rang** *(proposées ; le canon ne donne pas de chiffres fiables)* : Youngling 0–15 ans ; Unblooded 15–30 ; Young Blood 30–45 ; Blooded 45–80 ; Adjutant 80–120 ; Elite 120–200 ; Elder 200–300 ; Clan Leader 250–400 ; Adjudicator 350–500 ; Philosopher et Ancient au-delà de 500. Ces tranches pilotent les silhouettes de vieillissement décidées plus haut.
+
+**Cités visitables au départ — décision :** la cité du clan tiré au hasard et les deux régions voisines. Les 10 régions forment un anneau autour de la Réserve Interdite *(disposition proposée)* :
+
+| Cité du clan tiré | Voisine 1 | Voisine 2 |
+| --- | --- | --- |
+| Marches de Cendre (CL1) | Grottes Thermiques | Désert de Verre |
+| Désert de Verre (CL2) | Marches de Cendre | Ruines de la Première Cité |
+| Ruines de la Première Cité (CL9) | Désert de Verre | Jungle des Piliers |
+| Jungle des Piliers (CL3) | Ruines de la Première Cité | Marais Luminescents |
+| Marais Luminescents (CL4) | Jungle des Piliers | Côte des Léviathans |
+| Côte des Léviathans (CL6) | Marais Luminescents | Chaîne des Orages |
+| Chaîne des Orages (CL5) | Côte des Léviathans | Couronne Froide |
+| Couronne Froide (CL8) | Chaîne des Orages | Grottes Thermiques |
+| Grottes Thermiques (CL7) | Couronne Froide | Marches de Cendre |
+| Réserve Interdite (CL10) | Ruines de la Première Cité | Jungle des Piliers |
+
+*(proposé)* Si le tirage donne un clan hors du monde natal (CL11 → CL15), le départ se fait sur le navire du clan ; les deux cités de départ sont les Ruines de la Première Cité (cité commune des cérémonies) et la région où le clan a sa communauté alliée. Les Slums restent le quartier bas de chaque cité.
+
+### Personnages de la Lost Tribe, du Serpent Clan et des Matriarches
+
+**Décision :** les membres canon d'abord, complétés par des personnages inventés là où le canon n'a personne ; les inventés sont marqués *(proposé)*.
+
+**Lost Tribe** — l'équipage de Greyback (bios NECA, *Predator 2*). Tous canon :
+
+| Personnage | Canon | Rôle dans le jeu *(proposé)* |
+| --- | --- | --- |
+| Greyback | chef et fondateur de la Lost Tribe | voir *Figures canon* : piste du XVIIIe siècle dans l'arc Warp |
+| Warrior | maître d'armes, bras droit de Greyback, combat à la hache géante | maître d'armes de l'atelier quand la Lost Tribe est alliée ; duel d'entraînement en Pit |
+| Shaman | chef spirituel, connaît les rituels et peut-être les prophéties | modèle et mentor du rang Philosopher ; visions au Level 9 |
+| Scout | tireur d'élite au fusil à plasma | guide des chasses à longue distance ; contrat de tir |
+| Guardian | expert en explosifs et armes lourdes, ancien Temple Guard devenu Elite | lien avec les Temple Guards dans l'arc de guerre (G-x) |
+| Snake | assassin du Serpent Clan, contrats discrets pour les Elders | passerelle entre la Lost Tribe et le Serpent Clan |
+| Boar et Stalker (frères Boar) | Boar : protection, extraction, trophées ; Stalker : le planificateur | contrats d'extraction et de récupération de trophées |
+| Armored Lost | maître d'armes, fugitif après le vol de technologie sur Yautja Prime | arc Warp (vaisseau prototype et module de portail) |
+| City Hunter | jeune, chassait à Los Angeles, tué par Harrigan (1997) | mort avant la campagne ; son trophée sert de rappel dans l'arc Warp |
+
+**Serpent Clan** — canon : Viper (chef, mercenaires, aide les Enforcers contre immunité) et Snake. Complété *(proposé)* :
+
+| Personnage | Statut | Rôle |
+| --- | --- | --- |
+| Viper | canon | chef ; recrute le joueur Enforcer ou le traque s'il devient Bad Blood |
+| Snake | canon | assassin ; contrats d'élimination discrets pour les Elders |
+| Ssik'thar | *(proposé)* | second de Viper, négocie l'immunité ; peut trahir le joueur selon son honneur |
+| Vhar'nesh | *(proposé)* | maître des poisons et des pièges du clan ; vend les améliorations discrétion |
+
+**Matriarches** — le canon donne la fonction (consort du Roi, affaires internes ; la mère de Dek commande son propre vaisseau dans *Badlands*) mais aucun nom utilisable. Conseil de trois *(proposé)* :
+
+| Personnage | Rôle |
+| --- | --- |
+| Nhal'vesh | arbitre des clans ; préside G-8 *L'arbitrage des Matriarches* |
+| Kyr'adhen | gardienne des lignées ; reconnaît la fondation d'un clan et le titre de Prince |
+| Thes'ka | commandante de vaisseau (modèle de la mère de Dek) ; donne les contrats de flotte et la reconnaissance du titre de King |
+
+La Matriarche du clan d'origine est générée avec le nom du clan tiré *(proposé)* : c'est elle qui accueille à la cérémonie Unblooded et qui reconnaît (ou non) le joueur à chaque grand rang.
+
+Sources : [Lost Tribe](https://avpcentral.com/lost-tribe-predators), [Shaman](https://avpcentral.com/shaman-predator-yautja-spiritual-leader).
 
 ### Arc de guerre des clans *(missions proposées)*
 
