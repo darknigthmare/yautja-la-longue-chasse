@@ -6,7 +6,7 @@
 « Tribus » reste le nom du chantier et des archives. Les cinq ensembles ci-dessous
 sont des communautés originales du monde natal, avec une identité visuelle et des
 fonctions locales. Ils ne constituent pas une classification officielle de tous
-les Yautja. Les six origines du joueur, les six régions de la bible, le clan
+les Yautja. Les six origines du joueur, les régions de la bible courante, le clan
 d'origine et les rangs restent des systèmes distincts.
 
 Les noms de fonctions identifient ici des concepts de personnages. Avant de les
@@ -18,7 +18,7 @@ visuel n'impose une parenté avec un personnage de film ou de figurine.
 
 ## Vue d'ensemble
 
-| Clé conservée | Communauté | PNG V2 + V4 | V5 à produire | Identité et raccord |
+| Clé conservée | Communauté | PNG V2 + V4 | Sujets V5 livrés (hors corrections) | Identité et raccord |
 | --- | --- | ---: | ---: | --- |
 | `DESERT` | Peuple des Citernes | 23 | 8 | Pierre ocre, bronze, eau protégée ; le Village des Citernes existe dans `glass-desert` |
 | `FOREST` | Terrasses des Hautes Branches | 23 | 8 | Cité de pierre, aqueducs et arbres géants ; les Terrasses existent dans `pillar-jungle`, avec le nom de population « Gardiens des Hautes Branches » |
@@ -67,12 +67,14 @@ Pisteur et à la Tisseuse d'identifier un passage devenu impraticable ; une
 reconnaissance puis un retour complètent cette boucle civile. Le soin ne
 ressuscite pas un compagnon mort et ne devient pas un rite Blooded.
 
-**Correction ouverte PT-ART-01.** Les images `original_citerne_desert_v1` et
+**Correction produite PT-ART-01 ; import en jeu à réaliser.** Les images `original_citerne_desert_v1` et
 `prop_desert_origine_v2` montrent un bassin de distribution ouvert ; la première
 montre aussi un écoulement visible. Elles restent des sources livrées et
 référencées, mais ne satisfont pas entièrement la contrainte d'eau fermée de V5.
-Prévoir une variante corrigée avec distribution protégée, en conservant les
-originaux et leurs identifiants ; ne pas les déclarer retouchées par cette PR.
+Deux nouvelles variantes, `PT-ART-01-V1` et `PT-ART-01-V2`, ferment les bassins
+et raccordent des gourdes bouchées. Elles sont livrées dans [V5](LIVRAISON_V5.md).
+Les originaux et leurs identifiants sont conservés ; les anciens dérivés du jeu
+n'ont pas encore été remplacés.
 
 ## FOREST — Terrasses des Hautes Branches
 
@@ -87,7 +89,7 @@ entourent et traversent certains volumes ; la structure principale demeure en
 pierre. La mousse reste contenue pour conserver les passages et l'accès aux
 vannes. Les huttes de bois suspendues ne remplacent pas cette direction.
 Le tissu cérémoniel vert mousse à fils de bronze de V2 reste distinct du cuir
-de harnais gris vert préparé en V5.
+de harnais gris vert livré en V5.
 
 **Trône et salle.** Le siège de pierre possède un dossier à degrés, des renforts
 de bronze et des canaux latéraux. Une racine peut accompagner le socle sans
@@ -127,7 +129,7 @@ basses. Un changement de nom futur devra préserver les anciennes références.
 passerelles soutenues, graphite, cuivre sombre et lumière ambrée. L'entretien
 est visible : joints suivis, zones d'usage dégagées, eau propre et réserves
 fermées. Le quartier n'est ni un dépotoir ni une image générique de criminalité.
-La texture V2 d'acier réparé ne remplace pas le cuir matelassé souple prévu en V5.
+La texture V2 d'acier réparé ne remplace pas le cuir matelassé souple livré en V5.
 
 **Trône et salle.** Le siège réutilise des pièces de coque assemblées sur une
 base stable, avec des surfaces de contact praticables. Il sert aux décisions
@@ -163,7 +165,7 @@ cette chasse par simple ressemblance de matériaux.
 tours pointues, terrasses sèches, ponts portants et extraction des ateliers.
 Les coulées restent au-dessous et à distance des routes de vie. L'eau de
 refroidissement est contenue ; les outils et les accès possèdent leurs propres
-protections. La céramique isolante claire prévue en V5 complète l'alliage
+protections. La céramique isolante claire livrée en V5 complète l'alliage
 segmenté sombre de V2.
 
 **Trône et salle.** Un siège solide de basalte et d'alliage porte un dossier
@@ -197,8 +199,9 @@ espèce Yautja différente et n'accorde aucun statut surnaturel.
 **Raccord encore à établir.** Les images `darkjungle-v2` sont déjà réutilisées
 par le Poste des Gardiens de Réserve dans `forbidden-reserve`. Cette utilisation
 ne prouve pas que la Réserve soit ce refuge entièrement souterrain. Le dossier
-V37 évoque un accès Young Blood ; la bible du 5 novembre maintient six régions
-et ne nomme pas les Veilleurs comme une septième région. Définir une enclave
+V37 évoque un accès Young Blood ; cette indication reste un relevé ancien.
+La carte du 6 novembre définit dix régions autour de la capitale, avec les
+accès de Réserve gouvernés par mission ; elle ne crée pas une région Veilleurs. Définir une enclave
 locale et son accès physique dans le secteur retenu avant d'en faire un lieu
 visitable ; conserver ce raccord comme travail ouvert, sans renommer Marais.
 

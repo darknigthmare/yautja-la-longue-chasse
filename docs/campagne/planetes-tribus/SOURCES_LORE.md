@@ -70,7 +70,7 @@ Ces règles reprennent la direction des [communautés](TRIBUS.md). Elles constit
 
 Une **palette** organise les couleurs d'une communauté. Une **image de matière** représente une surface et peut servir de référence ou de base de production. Un **matériau PBR** exploitable exige un contrat de rendu et les données attendues par ce contrat ; ni une palette ni un PNG de surface ne suffisent à l'attester.
 
-Pour les matières V2 livrées et les matières V5 encore préparées, conserver le statut du [suivi de production](REPRISE.md). Les propriétés comme bronze, pierre, céramique ou cuir décrivent d'abord l'intention visuelle. Elles ne prouvent pas des cartes de rugosité, métallicité, normales ou relief déjà produites.
+Pour les matières V2 et V5 livrées, conserver le statut du [suivi de production](REPRISE.md) et les preuves de [livraison du 6 novembre 2026](LIVRAISON_V5.md). Les propriétés comme bronze, pierre, céramique ou cuir décrivent d'abord l'intention visuelle. Elles ne prouvent pas des cartes de rugosité, métallicité, normales ou relief déjà produites.
 
 Avant de déclarer une matière intégrée, définir les canaux réellement nécessaires au moteur, l'échelle et l'orientation de surface, les raccords éventuels, les variations d'éclairage et l'usage de l'émission. Une image éclairée artistiquement ne devient pas une base couleur neutre par changement d'étiquette. Les textures, masques et réglages futurs doivent être contrôlés dans le rendu concerné ; cette annexe n'en crée aucun.
 

@@ -3,49 +3,50 @@
 [Contrat de raccord](README.md) · [Images livrées](ASSETS.md) ·
 [Quarante consignes V5](REPRISE_V5.json) · [Scénarios civils](SCENARIOS_CIVILS.md).
 
-## Point de départ vérifié
+## État de production au 6 novembre 2026
 
-**204 PNG livrés en V2–V4, déjà référencés dans V37 ; 40 sujets V5 préparés,
-aucun PNG V5 livré.** Les SHA-256 des sources correspondent aux 204 références
-du catalogue existant. Les dérivés et les vignettes ne sont pas de nouvelles
-images à ajouter au compte des livraisons.
+**204 sources V2-V4 conservées + 40 sujets V5 livrés + 2 citernes corrigées = 246 PNG sources.**
+Les 40 jobs ci-dessous possèdent leur PNG natif contrôlé. Les archives, dimensions,
+consignes réelles, références et empreintes sont dans [la livraison V5](LIVRAISON_V5.md)
+et [son manifeste](LIVRAISON_V5.json). Le catalogue runtime V37 référence toujours
+les 204 anciennes sources ; les 42 nouvelles sorties restent à importer selon usage.
 
-Le quota mentionné par les documents V5 concerne le 17 septembre 2026. Le présent
-chantier n'a effectué aucune nouvelle génération et ne conclut rien sur le quota
-actuel. Dans les données, `source_record.status` conserve le fait historique ;
-`current_status` / `production_status` décrit la reprise, selon le schéma du
-fichier concerné. Un chemin de sortie `.png` dans un job V5 n'est pas un fichier
-livré. Les quinze originaux V1 dont le prompt n'a pas été retrouvé gardent un
-prompt nul ; une reprise pourra écrire une nouvelle consigne identifiée comme telle.
+Les **42 PNG produits et contrôlés sont remis dans la conversation**, dans six archives. **Nouvelles archives sauvegardées durablement : 0 sur 6.** La sauvegarde durable a échoué lors de `prepare_uploads`, avant transfert/finalisation. Pour les fichiers sans identifiant retourné, aucun lien durable n'est annoncé : **fichier remis dans la conversation ; lien durable en attente**. Les liens de session sont fournis dans la conversation et ne sont pas publiés comme adresses web dans ce dépôt.
+
+Le quota de septembre reste conservé dans les champs historiques. Il ne décrit
+pas cette passe, qui a réellement produit les images. Les sources anciennes ne
+sont pas écrasées : les deux citernes protégées ont leurs propres IDs et SHA.
+Les quinze prompts V1 introuvables restent nuls ; les corrections ont des consignes
+nouvelles identifiées, sans reconstruction prétendue des anciens prompts.
 
 ## Ordre de travail proposé
 
 | Étape | Travail concret | Sortie attendue |
 | --- | --- | --- |
 | P0 — Raccorder | Réutiliser les identifiants V37 ; régler l'homonymie Cour/Enclave des Forges Basses, le lieu des Veilleurs et les divergences de verrous de région ; définir les identités des membres retenus | Correspondance enregistrée, sans recréer mondes, PNJ ou bibliothèques existants |
-| P1 — Corriger les sources ciblées | Produire une variante protégée des deux citernes PT-ART-01 ; vérifier les autres images retenues dans la scène cible | Nouvelles versions traçables, originaux conservés, aucun ancien fichier annoncé corrigé sans preuve |
-| P2 — Produire V5 | Suivre les 40 jobs ci-dessous par communauté, avec références V2/V4 inspectées ; commencer par une cible visuelle de membre et de lieu cohérente | 40 sorties individuelles attendues : 25 avec alpha, 10 scènes complètes et 5 matières opaques |
+| P1 — Variantes de citerne livrées ; adaptation à suivre | Sélectionner les variantes protégées PT-ART-01-V1 et PT-ART-01-V2 pour leurs usages ; revoir les dérivés et les autres images dans la scène cible | Deux PNG natifs contrôlés, originaux conservés ; adaptation et remplacement des anciens dérivés encore à réaliser |
+| P2 — 40 PNG V5 livrés | Consulter les PNG contrôlés, leurs références inspectées et leurs consignes réelles dans LIVRAISON_V5.json ; choisir les usages à adapter | 40 sorties individuelles livrées : 25 avec alpha, 10 scènes complètes et 5 matières opaques |
 | P3 — Préparer les usages | Définir poses, pièces mobiles, portraits, pivots, échelle, surfaces praticables, interactions, sons et états nécessaires à une boucle civile | Ressources adaptées à une scène, distinctes des simples images de référence |
 | P4 — Raccorder une boucle | Réutiliser les systèmes de région, navigation, personnages, dialogues et sauvegarde ; tester arrivée, service, sortie et reprise | Une boucle réellement parcourue et vérifiée avant extension aux autres |
 | P5 — Étendre et valider | Étendre les usages retenus, revoir les variantes et les références de continuité, consigner les preuves et le reste à faire | Statuts d'intégration et de validation mis à jour seulement sur résultats observés |
 
-P0 et P1 ne sont pas des images supplémentaires dans la liste de 40 V5. Les
-corrections des citernes, les futurs états animés, les variantes d'âge et les
-compléments Glacier/Marais éventuels demandent des lignes de production propres,
-après définition de leur périmètre. Ne pas leur attribuer un nombre de fichiers
-arbitraire ou les annoncer déjà inclus dans V5.
+Le plan initial conserve ses 40 sujets. Les deux corrections de citerne livrées
+sous les IDs `PT-ART-01-V1` et `PT-ART-01-V2` s'ajoutent à ce plan dans l'archive
+de production V5, qui contient donc 42 PNG. Les futurs états animés, variantes
+d'âge et compléments Glacier/Marais éventuels restent des chantiers distincts,
+à délimiter avant de leur attribuer un nombre de fichiers ou un statut livré.
 
 ## Les quarante sujets V5
 
-Les identifiants, noms de fichier attendus, prompts complets, références R01–R07
+Les identifiants, noms de fichier livrés, prompts sources complets, références R01–R07
 et usages d'origine sont conservés dans [REPRISE_V5.json](REPRISE_V5.json).
 Chaque groupe ci-dessous comprend deux membres, trois objets, deux lieux et
-une matière. **Toutes les lignes sont à produire.**
+une matière. **Toutes les lignes disposent maintenant de leur PNG contrôlé.**
 
 <!-- jobs-v5:start -->
 ### DESERT — Peuple des Citernes
 
-| ID source | Sujet à produire | Usage | Sortie attendue |
+| ID source | Sujet livré | Usage proposé | Format livré |
 | --- | --- | --- | --- |
 | `personnages_desert_praticien_v5` | Praticien des Retours | Spécialiste des soins au retour des expéditions ; rôle local original. | PNG avec alpha |
 | `personnages_desert_tisseuse_v5` | Tisseuse des Voiles de sable | Artisane des voiles et protections contre la poussière. | PNG avec alpha |
@@ -58,7 +59,7 @@ une matière. **Toutes les lignes sont à produire.**
 
 ### FOREST — Terrasses des Hautes Branches
 
-| ID source | Sujet à produire | Usage | Sortie attendue |
+| ID source | Sujet livré | Usage proposé | Format livré |
 | --- | --- | --- | --- |
 | `personnages_forest_soigneuse_v5` | Soigneuse des Terrasses | Praticienne chargée des soins dans les terrasses habitées. | PNG avec alpha |
 | `personnages_forest_ajusteur_v5` | Ajusteur des Harnais | Artisan du réglage et de l’entretien des harnais de canopée. | PNG avec alpha |
@@ -71,7 +72,7 @@ une matière. **Toutes les lignes sont à produire.**
 
 ### SLUMS — Cour des Forges Basses
 
-| ID source | Sujet à produire | Usage | Sortie attendue |
+| ID source | Sujet livré | Usage proposé | Format livré |
 | --- | --- | --- | --- |
 | `personnages_slums_regulatrice_v5` | Régulatrice des Cellules | Spécialiste du contrôle des cellules d’alimentation du quartier. | PNG avec alpha |
 | `personnages_slums_praticien_v5` | Praticien des Ateliers | Praticien chargé des soins des artisans et des voyageurs. | PNG avec alpha |
@@ -84,7 +85,7 @@ une matière. **Toutes les lignes sont à produire.**
 
 ### LAVA — Forges de la Caldeira
 
-| ID source | Sujet à produire | Usage | Sortie attendue |
+| ID source | Sujet livré | Usage proposé | Format livré |
 | --- | --- | --- | --- |
 | `personnages_lava_controleuse_v5` | Contrôleuse des Écrans thermiques | Spécialiste de l’inspection des écrans et protections thermiques. | PNG avec alpha |
 | `personnages_lava_ravitailleur_v5` | Ravitailleur des Hauts Fourneaux | Transport des provisions et consommables sur les routes protégées. | PNG avec alpha |
@@ -97,7 +98,7 @@ une matière. **Toutes les lignes sont à produire.**
 
 ### DARKJUNGLE — Refuge des Veilleurs
 
-| ID source | Sujet à produire | Usage | Sortie attendue |
+| ID source | Sujet livré | Usage proposé | Format livré |
 | --- | --- | --- | --- |
 | `personnages_darkjungle_regleur_v5` | Régleur des Optiques | Spécialiste de l’entretien des optiques et capteurs personnels. | PNG avec alpha |
 | `personnages_darkjungle_preparatrice_v5` | Préparatrice des Remèdes | Préparation et conservation des soins matériels du refuge. | PNG avec alpha |
@@ -163,7 +164,7 @@ les ombres et les attaches n'ont pas été revues.
 
 | Chantier | Existant à réutiliser | Ce qui manque pour une réalisation prouvée |
 | --- | --- | --- |
-| Régions et accès | `homeworldRegionsV68.ts`, `homeworldAccessV69.ts` ; six régions cibles dans la bible | Raccord spatial des communautés et vérification des verrous Unblooded/Young Blood, en tenant compte des contrôles historiques différents |
+| Régions et accès | `homeworldRegionsV68.ts`, `homeworldAccessV69.ts` ; carte courante de la bible du 6 novembre | Raccord aux dix régions et à la capitale ; vérifier accès initiaux, promenades Youngling et progression selon la bible courante, en tenant compte des contrôles historiques du code |
 | Habitant et identité | Variantes V84, références de portraits V85, catalogue des compagnons | Identité persistante, âge, fonction, affectation et états de vie ; distinguer une référence de métier d'une personne unique |
 | Architecture et interaction | Enveloppes d'usage, implantation V78, navigation V109 et guidage V111 | Approche, place pour utiliser l'objet, sorties, portage, caméra et collision ; portes et intérieurs réellement accessibles |
 | Services civils | Scénarios et objets V4/V5, systèmes de dialogue et d'inventaire existants | Conditions, répliques, choix, coût, délai, résultat, échec et reprise ; conséquences sans gain automatique de rang |
@@ -177,19 +178,20 @@ les animaux déjà nommés et les trophées conservent leurs contrats. La créat
 d'un lit, d'un casier ou d'un siège ne crée pas un emplacement supplémentaire
 dans ces systèmes.
 
-## Contrôles d'acceptation encore ouverts
+## Suivi des 24 contrôles d'acceptation
 
-Ce sont **24 contrôles à réaliser lors de la production et de l'intégration**.
-Ils ne sont pas déclarés réussis par l'audit documentaire des archives.
+Ce sont **24 contrôles de production et d'intégration**. Les contrôles de livraison
+ont reçu leurs preuves au 6 novembre ; les scénarios de jeu conservent leur état
+ouvert. Les rapports antérieurs restent des audits datés, sans validation rétroactive.
 Les contrôles techniques effectivement effectués sont dans
 [VERIFICATION.md](VERIFICATION.md).
 
 | ID | Scénario ou contrôle | Résultat attendu | État |
 | --- | --- | --- | --- |
-| PT-QA-01 | Produire un job V5 et enregistrer sa sortie | Un seul sujet, source, version et SHA ; aucun statut livré sans fichier | Ouvert |
+| PT-QA-01 | Produire un job V5 et enregistrer sa sortie | Un seul sujet, source, version et SHA ; aucun statut livré sans fichier | Réussi sur les 40 jobs et 2 variantes ; voir VERIFICATION_V5.json |
 | PT-QA-02 | Examiner un membre masqué/démasqué et ses variantes | Même individu reconnaissable ; anatomie et équipement revus sur référence précise | Ouvert |
-| PT-QA-03 | Afficher un membre/objet sur fonds clair et sombre | Alpha utilisable, corps entier, pas de halo, bords ou accessoire tronqués | Ouvert |
-| PT-QA-04 | Corriger les deux citernes PT-ART-01 | Eau et distribution protégées, originaux conservés, dérivés révisés tracés | Ouvert |
+| PT-QA-03 | Afficher un membre/objet sur fonds clair et sombre | Alpha utilisable, corps entier, pas de halo, bords ou accessoire tronqués | Contrôlé sur fonds clair/sombre ; marges serrées consignées, usage en scène à revoir |
+| PT-QA-04 | Corriger les deux citernes PT-ART-01 | Eau et distribution protégées, originaux conservés, dérivés révisés tracés | Deux PNG corrigés livrés ; anciens dérivés du jeu à remplacer après choix |
 | PT-QA-05 | Parcourir un lieu des Hautes Branches | Cité de pierre, appuis et aqueducs cohérents, voie libre pour le personnage | Ouvert |
 | PT-QA-06 | Utiliser un service des Forges Basses | Quartier entretenu, séparation atelier/soin/vivres et accès praticable | Ouvert |
 | PT-QA-07 | Traverser un accès de la Caldeira | Route protégée, dangers thermiques appliqués ; aucune immunité implicite | Ouvert |
@@ -200,7 +202,7 @@ Les contrôles techniques effectivement effectués sont dans
 | PT-QA-12 | Interrompre puis reprendre une interaction | État cohérent, son/animation arrêtés correctement, aucun objet dupliqué | Ouvert |
 | PT-QA-13 | Charger une ancienne sauvegarde après intégration | Progression récupérable et identifiants existants conservés | Ouvert |
 | PT-QA-14 | Tester les six origines dans les mêmes régions | Variantes narratives conservées ; aucune origine remplacée par une tribu | Ouvert |
-| PT-QA-15 | Tester Unblooded puis Young Blood sur les six régions | Verrous cibles appliqués, traversées physiques et accès retour vérifiés | Ouvert |
+| PT-QA-15 | Tester les accès Youngling, Unblooded et Young Blood selon la carte courante | Départs, dix régions, capitale, traversées physiques et accès retour conformes aux décisions actuelles | Ouvert |
 | PT-QA-16 | Charger Cour/Enclave des Forges Basses et la Réserve | Identifiants distincts, noms complets, aucun lieu substitué par simple correspondance partielle | Ouvert |
 | PT-QA-17 | Consulter un monde `surveyed` puis une chasse active | Pas de mission jouable annoncée pour un corps sans mission ; contrat existant conservé | Ouvert |
 | PT-QA-18 | Parcourir Mycora-Nox/Nivalis-C et les mondes proches par le nom | Aucun transfert de boss, de sauvegarde ou d'identité depuis Mycora-V/Nivalis-K/RTS Nivalis | Ouvert |

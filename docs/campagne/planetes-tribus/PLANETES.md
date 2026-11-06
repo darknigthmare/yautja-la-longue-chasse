@@ -1,6 +1,6 @@
 # Quinze directions planétaires et leur place dans la campagne
 
-[Contrat de raccord](README.md) · [Catalogue des 204 images](ASSETS.md) ·
+[Contrat de raccord](README.md) · [Catalogue des 246 images sources](ASSETS.md) ·
 [Concordance vérifiée au dépôt](RACCORD_EXISTANT.md).
 
 Chaque direction possède **six PNG livrés** : un chasseur visiteur, un paysage
@@ -75,11 +75,18 @@ familles végétales de référence, pas des pays déplacés dans la géographie
 
 ## Raccord aux régions du monde natal
 
-Les régions locales restent accessibles par les liaisons physiques prévues
-dans la bible, avec leurs scènes de trajet à réaliser. Le rang cible n'est pas
-une preuve que le verrou correspondant existe déjà dans le code.
+**Mise à jour du 6 novembre 2026.** La [bible courante](../BIBLE_DE_CAMPAGNE.md)
+définit une capitale centrale, dix régions selon le climat et des liaisons en anneau.
+Elle précise les accès initiaux liés au clan et les trois promenades encadrées
+Youngling communes (Marches de Cendre, Désert de Verre, Jungle des Piliers).
+Ces décisions courantes gouvernent le futur raccord ; la génération V5 ne change
+aucun accès dans le code. Les Slums sont les quartiers bas de la capitale et des cités.
 
-| Région de la bible | Accès cible | Liaison écrite | Rapport au pack |
+Le tableau suivant conserve **les six familles et seuils du cahier du 5 novembre**
+pour la traçabilité graphique. Il ne remplace pas la carte ou les accès révisés
+et ne prouve pas leur implémentation.
+
+| Famille du cahier du 5 novembre | Ancien seuil proposé | Liaison écrite alors | Rapport au pack |
 | --- | --- | --- | --- |
 | Désert | Unblooded | Porte sud, à pied | Peuple des Citernes ; distinct de Serekh-9 et Ferrum-6 |
 | Slums | Unblooded | Rues basses, à pied | Cour des Forges Basses ; ne pas fusionner l'enclave thermale homonyme |
@@ -88,7 +95,7 @@ une preuve que le verrou correspondant existe déjà dans le code.
 | Glacier | Young Blood | Skiff des hauts plateaux | Région conservée ; aucun pack de tribu glacier n'est livré par V2/V4/V5 |
 | Marais | Young Blood | Skiff fluvial | Région et sanctuaire de la Réserve conservés ; aucun changement implicite en Refuge des Veilleurs |
 
-Ces six régions ne sont ni les six origines O1–O6 ni six planètes de chasse.
+Ces six familles ne sont ni les six origines O1–O6 ni six planètes de chasse.
 Les anciens libellés « Glacier Moon » et « Swamp Moon » sont réconciliés par
 la décision du 5 novembre : des régions de Yautja Prime. Une reprise ne doit
 pas recréer deux lunes à partir de ces seuls anciens noms.
@@ -99,13 +106,14 @@ Les images de ruche sont des compléments généraux à **PLAN08**. Le
 [Berceau enfoui](../xeno-prime/README.md) développe **XP-Z12 depuis XP-Z11**,
 avec ses douze tableaux locaux ; **XP-Z09 conserve sa tête de reine morte**.
 Conserver R2-M025, R2-M026 / L-07 et R2-M027, l'accès Blooded, les rites et
-Quatza-Rij solitaire requis pour Élite, puis le prélèvement et le retour de
-la preuve. Un chasseur visiteur en armure de quarantaine reste un Yautja ;
+Quatza-Rij solitaire dans le rite de référence, puis le prélèvement et le retour
+de la preuve, en appliquant les exceptions de coop expressément décidées dans
+la bible courante. Un chasseur visiteur en armure de quarantaine reste un Yautja ;
 aucune hybridation, nouvelle espèce ou immunité à la résine n'est accordée.
 
 Les six fichiers Xeno V2/V3 restent distincts des 91 ressources du pack du
-Berceau, de ses compositions et de ses 23 sprites à produire. Ils ne diminuent
-pas automatiquement son manque de poses, de têtes ou d'états de boss. Les
+Berceau et de ses compositions. Le statut courant des poses, têtes et états
+de boss propres à ce chantier est suivi dans [son annexe](../xeno-prime/README.md). Les
 modules de [mobilité](../mobilite/README.md) et de
 [compagnons](../COMPAGNONS_ET_ALLIES_PREMIUM.md) restent soumis aux passages,
 aux affectations et à la présence réelle dans la mission.

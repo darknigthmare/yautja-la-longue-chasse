@@ -1,10 +1,14 @@
 # Catalogue des images — planètes et communautés
 
-Retour au [contrat de raccord](README.md). Les [données complètes](DONNEES_ASSETS.json) conservent les enregistrements des manifestes, consignes d’origine, usages proposés, identifiants, SHA-256 et contrôles des fichiers. Les [références de franchise](SOURCES_LORE.md) précisent leur portée ; la [reprise](REPRISE.md) et ses [40 consignes V5](REPRISE_V5.json) restent distinctes des images livrées.
+Retour au [contrat de raccord](README.md). Les [données complètes](DONNEES_ASSETS.json) conservent les enregistrements des manifestes, consignes d’origine, usages proposés, identifiants, SHA-256 et contrôles des fichiers. Les [références de franchise](SOURCES_LORE.md) précisent leur portée ; la [reprise](REPRISE.md) et ses [40 consignes sources V5](REPRISE_V5.json) sont reliées aux PNG et aux consignes réellement utilisées dans [la livraison V5](LIVRAISON_V5.md).
 
 ## Livraison, référencement et usage
 
-**204 PNG sources sont livrés et vérifiés : 119 V2, 45 V3 et 40 V4. V5 contient zéro PNG.** Les 204 fichiers sont distincts par SHA-256. Ils totalisent 508 496 994 octets décompressés, avec 143 images possédant une transparence effective et 61 opaques : 41 scènes et 20 illustrations de matière.
+**246 PNG sources sont livrés : les 204 historiques V2-V4, les 40 sujets V5 et deux variantes corrigées de citerne.** La [livraison V5](LIVRAISON_V5.md) apporte 27 PNG avec alpha, dix scènes et cinq matières opaques.
+
+Les **42 PNG produits et contrôlés sont remis dans la conversation**, dans six archives. **Nouvelles archives sauvegardées durablement : 0 sur 6.** La sauvegarde durable a échoué lors de `prepare_uploads`, avant transfert/finalisation. Pour les fichiers sans identifiant retourné, aucun lien durable n'est annoncé : **fichier remis dans la conversation ; lien durable en attente**. Les liens de session sont fournis dans la conversation et ne sont pas publiés comme adresses web dans ce dépôt.
+
+Le relevé suivant décrit les sources historiques V2-V4 : Les 204 fichiers sont distincts par SHA-256. Ils totalisent 508 496 994 octets décompressés, avec 143 images possédant une transparence effective et 61 opaques : 41 scènes et 20 illustrations de matière.
 
 Les 204 sources ont déjà des références dans la bibliothèque statique [V37](../../../app/game/tribeArtV37.json) et son [rapport d’import](../../tribe-art-import-v37.json). Le [raccord au dépôt](RACCORD_EXISTANT.md) et ses [données](RACCORD_EXISTANT.json) qualifient les identifiants et usages existants. Ce référencement ne prouve pas que chaque image est placée, animée, interactive ou validée artistiquement. Les dérivés WebP/PNG du catalogue ne s’ajoutent pas au compte des 204 sources ; cette annexe ne crée pas une seconde bibliothèque ni un nouvel import binaire.
 
@@ -13,9 +17,10 @@ Les 204 sources ont déjà des références dans la bibliothèque statique [V37]
 | V2 | 119 | 68 | 51 | 64 sujets régénérés depuis V1, 40 nouveaux sujets V2 et 15 originaux V1 récupérés |
 | V3 | 45 | 45 | 0 | Trois éléments de niveau pour chacune des quinze directions planétaires |
 | V4 | 40 | 30 | 10 | Quatre membres, deux objets et deux lieux pour chacune des cinq communautés |
-| V5 | **0** | 0 | 0 | 40 sujets préparés : dix membres, quinze objets, dix lieux et cinq matières |
+| V5 | **40** | 25 | 15 | Dix membres, quinze objets, dix lieux et cinq matières livrés |
+| Corrections V5 | **2** | 2 | 0 | Deux variantes protégées de citernes, originaux conservés |
 
-Un fichier distinct ne crée pas un individu supplémentaire. Les vétérans, trônes, objets et refuge V1 récupérés restent des variantes de sujets déjà représentés. Les noms de fonction ne constituent pas des rangs officiels. Les **15 prompts des originaux V1 sont absents des sources** et restent nuls ; ils n’ont pas été reconstruits. Les 189 consignes connues des autres PNG et les 40 consignes préparées V5 sont conservées intégralement dans les JSON.
+Un fichier distinct ne crée pas un individu supplémentaire. Les vétérans, trônes, objets et refuge V1 récupérés restent des variantes de sujets déjà représentés. Les noms de fonction ne constituent pas des rangs officiels. Les **15 prompts des originaux V1 sont absents des sources** et restent nuls ; ils n’ont pas été reconstruits. Les 189 consignes connues des autres PNG et les 40 consignes sources V5 sont conservées intégralement dans les JSON. Les 42 consignes réellement utilisées le 6 novembre sont enregistrées séparément dans [LIVRAISON_V5.json](LIVRAISON_V5.json), sans reconstruction des quinze consignes V1 absentes.
 
 Les personnages sont des illustrations statiques en pied. Les scènes sont des compositions complètes. Les images de matière ne sont ni des jeux de cartes PBR ni des raccords répétables certifiés. Les contrôles de SHA, dimensions et alpha ne remplacent pas la revue des silhouettes, de l’échelle, des institutions représentées ou de la cohérence de chaque scène : voir [Vérification](VERIFICATION.md).
 
@@ -28,16 +33,16 @@ Les liens ouvrent les fichiers sources conservés. Les tailles ci-dessous sont c
 | V2 | [YAUTJA_PLANETES_TRIBUS_V2_119_PNG.zip](https://chatgpt.com/library?file_id=libfile_65be4443878c81919ae5072a28331ff3&account_id=personal) | 325 670 728 octets | 126 | 119 |
 | V3 | [YAUTJA_PLANETES_TRIBUS_V3_45_NOUVEAUX_PNG.zip](https://chatgpt.com/library?file_id=libfile_147af5a25cc08191b58fb6f459858b42&account_id=personal) | 93 053 810 octets | 52 | 45 |
 | V4 | [YAUTJA_TRIBUS_V4_40_NOUVELLES_IMAGES.zip](https://chatgpt.com/library?file_id=libfile_36973d285c7881918b59b9c8bb57d315&account_id=personal) | 100 353 957 octets | 49 | 40 |
-| V5 | [YAUTJA_TRIBUS_V5_PREPARATION_40_SUJETS.zip](https://chatgpt.com/library?file_id=libfile_b7488900b51081918b2e2416c698230c&account_id=personal) | 154 075 octets | 53 | 0 |
+| V5 — préparation historique | [YAUTJA_TRIBUS_V5_PREPARATION_40_SUJETS.zip](https://chatgpt.com/library?file_id=libfile_b7488900b51081918b2e2416c698230c&account_id=personal) | 154 075 octets | 53 | 0 |
 
 | Pack | SHA-256 du ZIP |
 | --- | --- |
 | V2 | `7559df362413f29769b358fbd15649cc08736c01afb0996f6064e36f8e4ed4bd` |
 | V3 | `1b74f4c3948077b1a6a98903ae51f0daaa349a59d923a1967bb8e57818b04c74` |
 | V4 | `5298de3424ea4b3adbcb9b6d2819076339797fd91e87acb845ea8819baca71af` |
-| V5 | `f14d66fcf1cfab9bb85b938e9aeb2e721e197ac169fd80c938b12e6b0a178fe4` |
+| V5 — préparation historique | `f14d66fcf1cfab9bb85b938e9aeb2e721e197ac169fd80c938b12e6b0a178fe4` |
 
-L’archive V5 comprend 53 fichiers : guides, inventaires, sources et prompts. Les chemins `images/…` de sa préparation sont des sorties attendues, sans fichier PNG correspondant. Le quota mentionné dans son état source est daté du 17 septembre 2026 ; le statut de production actuel est **à produire**, sans nouvelle tentative de génération pendant cette intégration documentaire.
+L’archive de préparation V5 comprend toujours ses 53 fichiers historiques : guides, inventaires, sources et prompts, sans PNG. Ses chemins `images/…` restent les sorties attendues de cette archive du 17 septembre 2026, conservée sans modification. La [livraison du 6 novembre](LIVRAISON_V5.md) fournit désormais les 40 PNG correspondants et deux variantes corrigées dans de nouvelles archives. Le quota de septembre décrit uniquement la passe historique.
 
 ## Quinze directions planétaires — 90 PNG
 
@@ -210,19 +215,19 @@ Les chemins ci-dessous désignent les membres internes de l’archive indiquée,
 | `passages_vardos_iii_v3` | Accès technique du métro aérien | V3 | 1536 × 1024 | Passage / structure | `images/passages/PASSAGES_VARDOS_III_V3.png` |
 | `objets_vardos_iii_v3` | Consigne de livraison blindée | V3 | 1024 × 1536 | Objet | `images/objets/OBJETS_VARDOS_III_V3.png` |
 
-## Cinq communautés — 114 PNG
+## Cinq communautés — 156 PNG sources, dont 114 historiques V2-V4
 
-Les fichiers V2 et V4 ci-dessous couvrent les membres, lieux, trônes, équipements, végétation, faune, automate et matières des cinq communautés. Les [fiches de communautés](TRIBUS.md) règlent leurs relations, l’architecture et les services. Leur présence dans un inventaire ne recrute aucun habitant, ne valide aucun rang et ne donne aucun droit à bord d’un vaisseau.
+Les tableaux détaillés ci-dessous conservent les 114 fichiers V2 et V4 des cinq communautés : membres, lieux, trônes, équipements, végétation, faune, automate et matières. Les 42 nouvelles sorties sont détaillées dans [LIVRAISON_V5.md](LIVRAISON_V5.md). Le tableau de synthèse inclut toutes les sources livrées. Les [fiches de communautés](TRIBUS.md) règlent leurs relations, l’architecture et les services. Leur présence dans un inventaire ne recrute aucun habitant, ne valide aucun rang et ne donne aucun droit à bord d’un vaisseau.
 
-| Communauté | Clé source | V2 | V4 | Total livré | Préparés V5, non livrés |
-| --- | --- | ---: | ---: | ---: | ---: |
-| Peuple des Citernes | `DESERT` | 15 | 8 | 23 | 8 |
-| Terrasses des Hautes Branches | `FOREST` | 15 | 8 | 23 | 8 |
-| Cour des Forges Basses | `SLUMS` | 15 | 8 | 23 | 8 |
-| Forges de la Caldeira | `LAVA` | 15 | 8 | 23 | 8 |
-| Refuge des Veilleurs | `DARKJUNGLE` | 14 | 8 | 22 | 8 |
+| Communauté | Clé source | V2 | V4 | Sujets V5 livrés | Citernes corrigées | Total livré |
+| --- | --- | ---: | ---: | ---: | ---: | ---: |
+| Peuple des Citernes | `DESERT` | 15 | 8 | 8 | 2 | 33 |
+| Terrasses des Hautes Branches | `FOREST` | 15 | 8 | 8 | 0 | 31 |
+| Cour des Forges Basses | `SLUMS` | 15 | 8 | 8 | 0 | 31 |
+| Forges de la Caldeira | `LAVA` | 15 | 8 | 8 | 0 | 31 |
+| Refuge des Veilleurs | `DARKJUNGLE` | 14 | 8 | 8 | 0 | 30 |
 
-### Peuple des Citernes — 23 PNG
+### Peuple des Citernes — 23 PNG historiques V2-V4
 
 | ID source | Sujet | Pack | Pixels | Type | Chemin dans l’archive |
 | --- | --- | --- | --- | --- | --- |
@@ -250,7 +255,7 @@ Les fichiers V2 et V4 ci-dessous couvrent les membres, lieux, trônes, équipeme
 | `lieux_desert_cour_v4` | Cour des départs | V4 | 1672 × 941 | Lieu | `images/lieux/LIEU_DESERT_COUR_V4.png` |
 | `lieux_desert_maison_v4` | Maison des Pactes | V4 | 1536 × 1024 | Lieu | `images/lieux/LIEU_DESERT_MAISON_V4.png` |
 
-### Terrasses des Hautes Branches — 23 PNG
+### Terrasses des Hautes Branches — 23 PNG historiques V2-V4
 
 | ID source | Sujet | Pack | Pixels | Type | Chemin dans l’archive |
 | --- | --- | --- | --- | --- | --- |
@@ -278,7 +283,7 @@ Les fichiers V2 et V4 ci-dessous couvrent les membres, lieux, trônes, équipeme
 | `lieux_forest_epreuves_v4` | Cour des Épreuves | V4 | 1536 × 1024 | Lieu | `images/lieux/LIEU_FOREST_EPREUVES_V4.png` |
 | `lieux_forest_galerie_v4` | Galerie des Lignées | V4 | 1536 × 1024 | Lieu | `images/lieux/LIEU_FOREST_GALERIE_V4.png` |
 
-### Cour des Forges Basses — 23 PNG
+### Cour des Forges Basses — 23 PNG historiques V2-V4
 
 | ID source | Sujet | Pack | Pixels | Type | Chemin dans l’archive |
 | --- | --- | --- | --- | --- | --- |
@@ -306,7 +311,7 @@ Les fichiers V2 et V4 ci-dessous couvrent les membres, lieux, trônes, équipeme
 | `lieux_slums_place_v4` | Place du Troc | V4 | 1672 × 941 | Lieu | `images/lieux/LIEU_SLUMS_PLACE_V4.png` |
 | `lieux_slums_armements_v4` | Salle des Armements | V4 | 1536 × 1024 | Lieu | `images/lieux/LIEU_SLUMS_ARMEMENTS_V4.png` |
 
-### Forges de la Caldeira — 23 PNG
+### Forges de la Caldeira — 23 PNG historiques V2-V4
 
 | ID source | Sujet | Pack | Pixels | Type | Chemin dans l’archive |
 | --- | --- | --- | --- | --- | --- |
@@ -334,7 +339,7 @@ Les fichiers V2 et V4 ci-dessous couvrent les membres, lieux, trônes, équipeme
 | `lieux_lava_terrasse_v4` | Terrasse des Épreuves | V4 | 1536 × 1024 | Lieu | `images/lieux/LIEU_LAVA_TERRASSE_V4.png` |
 | `lieux_lava_refectoire_v4` | Réfectoire des Forges | V4 | 1536 × 1024 | Lieu | `images/lieux/LIEU_LAVA_REFECTOIRE_V4.png` |
 
-### Refuge des Veilleurs — 22 PNG
+### Refuge des Veilleurs — 22 PNG historiques V2-V4
 
 | ID source | Sujet | Pack | Pixels | Type | Chemin dans l’archive |
 | --- | --- | --- | --- | --- | --- |
@@ -361,8 +366,12 @@ Les fichiers V2 et V4 ci-dessous couvrent les membres, lieux, trônes, équipeme
 | `lieux_darkjungle_cour_v4` | Cour des Retours | V4 | 1536 × 1024 | Lieu | `images/lieux/LIEU_DARKJUNGLE_COUR_V4.png` |
 | `lieux_darkjungle_salle_v4` | Salle des Récits | V4 | 1536 × 1024 | Lieu | `images/lieux/LIEU_DARKJUNGLE_SALLE_V4.png` |
 
+## Livraison V5 du 6 novembre 2026
+
+Les 40 sujets et les deux corrections sont catalogués dans [LIVRAISON_V5.md](LIVRAISON_V5.md), avec archives, catalogue PDF et preuves. Les tableaux détaillés V2-V4 ci-dessus conservent le relevé historique ; les synthèses incluent la nouvelle livraison. Le registre JSON contient désormais 246 sorties distinctes ; V37 en référence toujours 204.
+
 ## Travail restant
 
-Les quarante sujets V5 sont entièrement décrits dans [REPRISE_V5.json](REPRISE_V5.json), avec les consignes, sources et statuts historiques conservés. La [reprise de production](REPRISE.md) sépare génération, choix des variantes, raccord de scène, identité des habitants, animation, interactions, audio et tests. Aucun de ces travaux n’est marqué terminé par ce catalogue.
+Les quarante sujets V5 sont entièrement décrits dans [REPRISE_V5.json](REPRISE_V5.json), avec les consignes, sources et statuts historiques conservés. La [reprise de production](REPRISE.md) sépare génération, choix des variantes, raccord de scène, identité des habitants, animation, interactions, audio et tests. La génération des 40 sujets et des deux variantes de citerne est terminée ; les autres étapes conservent leur état non réalisé.
 
-Pour les images déjà livrées, réutiliser l’identité V37 existante et documenter le choix d’une variante avant de produire les états manquants. Une retouche ou une conversion conserve sa filiation avec la source ; elle ne crée pas automatiquement une nouvelle communauté, une nouvelle personne ou une mission supplémentaire.
+Pour les 204 sources historiques déjà référencées dans V37, réutiliser l’identité existante et documenter le choix d’une variante avant de produire les états manquants. Les 42 nouvelles sources doivent recevoir leur raccord et leur usage avant import ; leur livraison ne crée aucune entrée V37 supplémentaire. Une retouche ou une conversion conserve sa filiation avec la source ; elle ne crée pas automatiquement une nouvelle communauté, une nouvelle personne ou une mission supplémentaire.

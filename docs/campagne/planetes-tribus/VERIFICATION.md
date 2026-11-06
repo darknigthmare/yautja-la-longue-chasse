@@ -1,5 +1,10 @@
 # Vérification du raccord V2–V5
 
+**Mise à jour du 6 novembre 2026 :** les 40 PNG V5 et deux corrections sont livrés.
+Leurs contrôles et archives sont dans [LIVRAISON_V5.md](LIVRAISON_V5.md) et
+[VERIFICATION_V5.json](VERIFICATION_V5.json). Le rapport ci-dessous reste l'audit
+historique du 5 novembre et conserve ses nombres de départ.
+
 Vérification documentaire et technique du **5 novembre 2026**. Base examinée :
 `claude/bible-de-campagne`, commit `04a14cce268a1572092269fb281304ac10294725`,
 PR [#116](https://github.com/darknigthmare/yautja-la-longue-chasse/pull/116).

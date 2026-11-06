@@ -1,5 +1,11 @@
 # Raccord aux registres, régions et personnages existants
 
+**Point de suivi du 6 novembre 2026 :** les 40 sujets V5 et deux corrections
+sont désormais livrés dans [LIVRAISON_V5.md](LIVRAISON_V5.md). Les 204 références
+V37 restent inchangées ; les 42 nouvelles sources ne sont pas importées.
+Le constat ci-dessous et RACCORD_EXISTANT.json conservent l'audit du 5 novembre,
+y compris son état historique « V5 à produire ».
+
 Audit documentaire de la branche `claude/bible-de-campagne`, au commit
 `04a14cce268a1572092269fb281304ac10294725`, le **5 novembre 2026**.
 Les décisions PT-01 à PT-12 du [contrat de raccord](README.md) gouvernent la reprise.

@@ -159,9 +159,9 @@ dépôt, puis conserve séparément les sujets préparés et les usages restant 
 | [Contrat de raccord](planetes-tribus/README.md) | Douze décisions PT-01 à PT-12 ; rangs, identité, géographie, compagnons, mobilité, Warp et distinction des états de production. |
 | [Quinze directions planétaires](planetes-tribus/PLANETES.md) | Cinq chasses existantes, six corps galactiques répertoriés sans mission, trois directions artistiques et Xeno Prime / PLAN08 ; usages des six images par monde. |
 | [Cinq communautés](planetes-tribus/TRIBUS.md) · [scénarios civils](planetes-tribus/SCENARIOS_CIVILS.md) | Citernes, Hautes Branches, Cour des Forges Basses, Caldeira et Veilleurs ; architecture, trônes, membres, fonctions locales, vingt situations V4, cinq enchaînements V4 et cinq boucles V5. |
-| [Images et archives](planetes-tribus/ASSETS.md) · [données complètes](planetes-tribus/DONNEES_ASSETS.json) | 204 PNG V2–V4 vérifiés sur les archives : 143 avec transparence effective, 41 scènes opaques et 20 matières ; prompts, dimensions, empreintes et variantes conservés. |
+| [Images et archives](planetes-tribus/ASSETS.md) · [données complètes](planetes-tribus/DONNEES_ASSETS.json) | 246 PNG sources livrés : 204 historiques V2–V4 et 42 nouvelles sorties V5/corrections ; 170 avec alpha, 51 scènes opaques et 25 matières. Les 204 références V37 restent inchangées ; les 42 nouvelles sources ne sont pas importées. |
 | [Raccord à l'existant](planetes-tribus/RACCORD_EXISTANT.md) · [concordance structurée](planetes-tribus/RACCORD_EXISTANT.json) | Correspondance exacte des 204 sources avec V37, dérivés présents, usages relevés dans le code, identités et divergences de régions/accessibilité. |
-| [Reprise](planetes-tribus/REPRISE.md) · [40 consignes V5](planetes-tribus/REPRISE_V5.json) | Dix membres, quinze objets, dix lieux et cinq matières encore sans PNG ; corrections ciblées, travail de jeu et 24 contrôles d'acceptation ouverts. |
+| [Reprise](planetes-tribus/REPRISE.md) · [40 consignes V5](planetes-tribus/REPRISE_V5.json) | 40 sujets V5 livrés et deux citernes corrigées ; [archives et catalogue](planetes-tribus/LIVRAISON_V5.md), travail de jeu et suivi des 24 contrôles d'acceptation. |
 | [Références de franchise](planetes-tribus/SOURCES_LORE.md) · [textes source conservés](planetes-tribus/TEXTES_SOURCE.json) | Sept sources NECA attribuées avec leurs limites ; œuvres/produits sous licence séparés des créations originales et des anciens textes de production. |
 | [Vérification et limites](planetes-tribus/VERIFICATION.md) | Audit des quatre archives, conservation des données, rapprochement au dépôt et revue visuelle ponctuelle ; aucune nouvelle validation artistique humaine ou jouabilité déduite. |
 
@@ -171,21 +171,26 @@ Quelques usages et variantes dérivées sont déjà référencés dans le code ;
 ne signifie pas que les cinq communautés soient entièrement jouables. Ce complément
 réutilise ces identifiants et ne réimporte pas une seconde copie des binaires.
 
-**V5 reste une préparation de 40 sujets et de zéro PNG.** La mention de quota
-contenue dans l'archive appartient au 17 septembre 2026 ; elle ne décrit pas
-la disponibilité actuelle du service. Les deux citernes anciennes à bassin ouvert
-sont signalées comme sources à corriger pour respecter la contrainte d'eau protégée,
-sans prétendre que leurs images ont été retouchées.
+**Livraison du 6 novembre 2026 : 40 sujets V5 + deux citernes corrigées, soit 42 PNG natifs.**
+Les archives et le catalogue sont reliés dans [LIVRAISON_V5.md](planetes-tribus/LIVRAISON_V5.md).
+Le total de sources livrées passe à 246, dont 204 déjà référencées dans V37.
+Les 42 nouvelles sorties restent à importer dans le jeu ; les originaux sont conservés.
+Le quota de septembre reste un événement historique, distinct de cette production.
+
+Les **42 PNG produits et contrôlés sont remis dans la conversation**, dans six archives. **Nouvelles archives sauvegardées durablement : 0 sur 6.** La sauvegarde durable a échoué lors de `prepare_uploads`, avant transfert/finalisation. Pour les fichiers sans identifiant retourné, aucun lien durable n'est annoncé : **fichier remis dans la conversation ; lien durable en attente**. Les liens de session sont fournis dans la conversation et ne sont pas publiés comme adresses web dans ce dépôt.
 
 ### Concordance de géographie, d'identité et de lore
 
-Les cinq communautés originales ne remplacent ni les six départs O1–O6, ni les
-six régions cibles de Yautja Prime, ni les dix identifiants régionaux V68 existants.
+Les cinq communautés originales ne remplacent ni les six départs O1–O6 ni les
+dix régions de la carte courante du monde natal. Les six familles du cahier
+artistique initial gardent leur rôle de repères visuels ; la capitale, les
+liaisons et les accès du 6 novembre sont définis par la bible principale.
 Glacier et Marais restent conservés. La Cour des Forges Basses et l'Enclave des
 Forges Basses gardent des identités distinctes ; le Refuge des Veilleurs exige un
 raccord souterrain explicite, sans absorber les autres groupes nommés Veilleurs.
-Les verrous de régions Young Blood écrits en novembre restent à rapprocher du
-comportement actuel, sans migration silencieuse des sauvegardes.
+Les accès initiaux, les promenades Youngling et la progression régionale de la
+bible courante restent à rapprocher du comportement du jeu, sans migration
+silencieuse des sauvegardes.
 
 Les huit chasses et les 68 fiches restent le socle. Mycora-Nox n'est pas Mycora-V ;
 Nivalis-C n'est pas Nivalis-K ; aucun `PLANxx` n'est attribué par ressemblance de

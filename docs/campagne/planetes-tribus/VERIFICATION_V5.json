@@ -1,0 +1,4319 @@
+{
+  "checked_at_utc": "2026-11-06T04:20:26.196352+00:00",
+  "status": "passed",
+  "planned_subjects_exact_coverage": 40,
+  "correction_exact_coverage": 2,
+  "decoded_png": 42,
+  "unique_png_sha256": 42,
+  "transparent_png": 27,
+  "opaque_png": 15,
+  "source_png_bytes_preserved": true,
+  "archive_checks": [
+    {
+      "filename": "YAUTJA_TRIBUS_V5_42_PNG.zip",
+      "local_path": "/workspace/scratch/a215ef7a9d28/production_v5_20261106/delivery/YAUTJA_TRIBUS_V5_42_PNG.zip",
+      "size_bytes": 119787415,
+      "sha256": "fc0ea8de193836cafb91c7f8e4bb0f1d46a544c44062213a42a126bdb70e7aac",
+      "png_files": 42,
+      "zip_crc_ok": true,
+      "png_sha256_all_match": true,
+      "asset_ids": [
+        "personnages_desert_praticien_v5",
+        "personnages_desert_tisseuse_v5",
+        "objets_desert_mallette_v5",
+        "objets_desert_lit_v5",
+        "objets_desert_sechoir_v5",
+        "lieux_desert_soins_v5",
+        "lieux_desert_chambree_v5",
+        "matieres_desert_toile_v5",
+        "personnages_forest_soigneuse_v5",
+        "personnages_forest_ajusteur_v5",
+        "objets_forest_siege_v5",
+        "objets_forest_banc_v5",
+        "objets_forest_casier_v5",
+        "lieux_forest_pavillon_v5",
+        "lieux_forest_logis_v5",
+        "matieres_forest_cuir_v5",
+        "personnages_slums_regulatrice_v5",
+        "personnages_slums_praticien_v5",
+        "objets_slums_recharge_v5",
+        "objets_slums_brancard_v5",
+        "objets_slums_rations_v5",
+        "lieux_slums_infirmerie_v5",
+        "lieux_slums_cuisine_v5",
+        "matieres_slums_cuir_v5",
+        "personnages_lava_controleuse_v5",
+        "personnages_lava_ravitailleur_v5",
+        "objets_lava_cabine_v5",
+        "objets_lava_portecharge_v5",
+        "objets_lava_inspection_v5",
+        "lieux_lava_depoussierage_v5",
+        "lieux_lava_chambree_v5",
+        "matieres_lava_ceramique_v5",
+        "personnages_darkjungle_regleur_v5",
+        "personnages_darkjungle_preparatrice_v5",
+        "objets_darkjungle_optiques_v5",
+        "objets_darkjungle_repos_v5",
+        "objets_darkjungle_preparations_v5",
+        "lieux_darkjungle_atelier_v5",
+        "lieux_darkjungle_alcoves_v5",
+        "matieres_darkjungle_fibres_v5",
+        "PT-ART-01-V1",
+        "PT-ART-01-V2"
+      ]
+    },
+    {
+      "filename": "YAUTJA_TRIBUS_V5_DESERT_10_PNG.zip",
+      "local_path": "/workspace/scratch/a215ef7a9d28/production_v5_20261106/delivery/YAUTJA_TRIBUS_V5_DESERT_10_PNG.zip",
+      "size_bytes": 26766716,
+      "sha256": "e9544990961f280dcd7e25eea8fd4a9467e38c2f68fbb295941e17334e61285d",
+      "png_files": 10,
+      "zip_crc_ok": true,
+      "png_sha256_all_match": true,
+      "asset_ids": [
+        "personnages_desert_praticien_v5",
+        "personnages_desert_tisseuse_v5",
+        "objets_desert_mallette_v5",
+        "objets_desert_lit_v5",
+        "objets_desert_sechoir_v5",
+        "lieux_desert_soins_v5",
+        "lieux_desert_chambree_v5",
+        "matieres_desert_toile_v5",
+        "PT-ART-01-V1",
+        "PT-ART-01-V2"
+      ]
+    },
+    {
+      "filename": "YAUTJA_TRIBUS_V5_FOREST_8_PNG.zip",
+      "local_path": "/workspace/scratch/a215ef7a9d28/production_v5_20261106/delivery/YAUTJA_TRIBUS_V5_FOREST_8_PNG.zip",
+      "size_bytes": 24495445,
+      "sha256": "c9cdaf185a46d831e6b5ba869a3f82749c73b9c5f2c8ff9f86f56e656647f4a1",
+      "png_files": 8,
+      "zip_crc_ok": true,
+      "png_sha256_all_match": true,
+      "asset_ids": [
+        "personnages_forest_soigneuse_v5",
+        "personnages_forest_ajusteur_v5",
+        "objets_forest_siege_v5",
+        "objets_forest_banc_v5",
+        "objets_forest_casier_v5",
+        "lieux_forest_pavillon_v5",
+        "lieux_forest_logis_v5",
+        "matieres_forest_cuir_v5"
+      ]
+    },
+    {
+      "filename": "YAUTJA_TRIBUS_V5_SLUMS_8_PNG.zip",
+      "local_path": "/workspace/scratch/a215ef7a9d28/production_v5_20261106/delivery/YAUTJA_TRIBUS_V5_SLUMS_8_PNG.zip",
+      "size_bytes": 21656704,
+      "sha256": "93f3cb75a7c8c3ee1c237ff0a6d3f918d68a4fabcc9c3e8eab4d73ebdcaedce9",
+      "png_files": 8,
+      "zip_crc_ok": true,
+      "png_sha256_all_match": true,
+      "asset_ids": [
+        "personnages_slums_regulatrice_v5",
+        "personnages_slums_praticien_v5",
+        "objets_slums_recharge_v5",
+        "objets_slums_brancard_v5",
+        "objets_slums_rations_v5",
+        "lieux_slums_infirmerie_v5",
+        "lieux_slums_cuisine_v5",
+        "matieres_slums_cuir_v5"
+      ]
+    },
+    {
+      "filename": "YAUTJA_TRIBUS_V5_LAVA_8_PNG.zip",
+      "local_path": "/workspace/scratch/a215ef7a9d28/production_v5_20261106/delivery/YAUTJA_TRIBUS_V5_LAVA_8_PNG.zip",
+      "size_bytes": 21917654,
+      "sha256": "2d9b0c271006e53b53070d9fdfa4eef9a75ae83b0c78ed5b8792915405bd4165",
+      "png_files": 8,
+      "zip_crc_ok": true,
+      "png_sha256_all_match": true,
+      "asset_ids": [
+        "personnages_lava_controleuse_v5",
+        "personnages_lava_ravitailleur_v5",
+        "objets_lava_cabine_v5",
+        "objets_lava_portecharge_v5",
+        "objets_lava_inspection_v5",
+        "lieux_lava_depoussierage_v5",
+        "lieux_lava_chambree_v5",
+        "matieres_lava_ceramique_v5"
+      ]
+    },
+    {
+      "filename": "YAUTJA_TRIBUS_V5_DARKJUNGLE_8_PNG.zip",
+      "local_path": "/workspace/scratch/a215ef7a9d28/production_v5_20261106/delivery/YAUTJA_TRIBUS_V5_DARKJUNGLE_8_PNG.zip",
+      "size_bytes": 21609141,
+      "sha256": "f02cfa2d059e160e4479364d0a86f2e165148e03b274ca3924b3f9bbe3a11b60",
+      "png_files": 8,
+      "zip_crc_ok": true,
+      "png_sha256_all_match": true,
+      "asset_ids": [
+        "personnages_darkjungle_regleur_v5",
+        "personnages_darkjungle_preparatrice_v5",
+        "objets_darkjungle_optiques_v5",
+        "objets_darkjungle_repos_v5",
+        "objets_darkjungle_preparations_v5",
+        "lieux_darkjungle_atelier_v5",
+        "lieux_darkjungle_alcoves_v5",
+        "matieres_darkjungle_fibres_v5"
+      ]
+    }
+  ],
+  "pdf": {
+    "local_path": "/workspace/scratch/a215ef7a9d28/production_v5_20261106/delivery/CATALOGUE_YAUTJA_TRIBUS_V5.pdf",
+    "size_bytes": 4504618,
+    "sha256": "1e724bd86ae423c70d935d4056ceafb9415fe88074c3ad1ba3830331a56a6269",
+    "visual_qa_status": "passed",
+    "visual_qa_report": {
+      "schema_version": 1,
+      "reviewed_at_utc": "2026-11-06T04:22:07.893326+00:00",
+      "review_scope": "Inspection du catalogue PDF final uniquement; aucune modification du PDF, des scripts ou archives.",
+      "source_pdf": "/workspace/scratch/a215ef7a9d28/production_v5_20261106/delivery/CATALOGUE_YAUTJA_TRIBUS_V5.pdf",
+      "source_size_bytes": 4504618,
+      "source_sha256": "1e724bd86ae423c70d935d4056ceafb9415fe88074c3ad1ba3830331a56a6269",
+      "page_count": 7,
+      "expected_page_count": 7,
+      "catalogue_subject_count_excluding_cover": 42,
+      "planned_v5_subjects": 40,
+      "corrected_cistern_subjects": 2,
+      "cover_preview_is_not_an_additional_subject": true,
+      "alpha_labels_in_subject_pages": 27,
+      "opaque_labels_in_subject_pages": 15,
+      "method": [
+        "Rendu de chacune des sept pages avec pdftoppm à 150 dpi.",
+        "Inspection visuelle individuelle des sept pages initiales.",
+        "Nouveau rendu du PDF final compressé; les sept pages sont identiques pixel par pixel aux pages inspectées.",
+        "Comparaison des 40 titres, résolutions, mentions alpha et identifiants avec les jobs et checkpoints.",
+        "Comptage des images placées par page et contrôle des caractères hors limites avec pypdf/pdfplumber."
+      ],
+      "pages": [
+        {
+          "page": 1,
+          "label": "Couverture",
+          "subject_count_excluding_cover": 0,
+          "image_placement_count": 1,
+          "render_path": "/workspace/scratch/a215ef7a9d28/production_v5_20261106/qa/pdf_review/final/page-1.png",
+          "render_dpi": 150,
+          "render_dimensions": [
+            1754,
+            1241
+          ],
+          "render_sha256": "c87d406ef4b6c33b9d6167b1ae6a92b2de92d8e057d8761663537aaedae74dfe",
+          "visually_reviewed": true,
+          "final_render_pixel_identical_to_reviewed_initial": true,
+          "maximum_channel_difference": 0,
+          "text_characters_outside_page_count": 0,
+          "visual_layout_status": "pass",
+          "visual_notes": "Titres, métadonnées, images et pied de page lisibles et séparés; aucune coupe ou superposition observée."
+        },
+        {
+          "page": 2,
+          "label": "Peuple des Citernes",
+          "subject_count_excluding_cover": 8,
+          "image_placement_count": 8,
+          "render_path": "/workspace/scratch/a215ef7a9d28/production_v5_20261106/qa/pdf_review/final/page-2.png",
+          "render_dpi": 150,
+          "render_dimensions": [
+            1754,
+            1241
+          ],
+          "render_sha256": "8c8b867e80b461b38b163532682aa3d8183199ff2e6fe6b64d6f7a08765e2d85",
+          "visually_reviewed": true,
+          "final_render_pixel_identical_to_reviewed_initial": true,
+          "maximum_channel_difference": 0,
+          "text_characters_outside_page_count": 0,
+          "visual_layout_status": "pass",
+          "visual_notes": "Titres, métadonnées, images et pied de page lisibles et séparés; aucune coupe ou superposition observée."
+        },
+        {
+          "page": 3,
+          "label": "Terrasses des Hautes Branches",
+          "subject_count_excluding_cover": 8,
+          "image_placement_count": 8,
+          "render_path": "/workspace/scratch/a215ef7a9d28/production_v5_20261106/qa/pdf_review/final/page-3.png",
+          "render_dpi": 150,
+          "render_dimensions": [
+            1754,
+            1241
+          ],
+          "render_sha256": "cb048f7d7fbe8489af6c45d3bde9aed375b3f8360592a04bbd8e4c3e7022b05d",
+          "visually_reviewed": true,
+          "final_render_pixel_identical_to_reviewed_initial": true,
+          "maximum_channel_difference": 0,
+          "text_characters_outside_page_count": 0,
+          "visual_layout_status": "pass",
+          "visual_notes": "Titres, métadonnées, images et pied de page lisibles et séparés; aucune coupe ou superposition observée."
+        },
+        {
+          "page": 4,
+          "label": "Cour des Forges Basses",
+          "subject_count_excluding_cover": 8,
+          "image_placement_count": 8,
+          "render_path": "/workspace/scratch/a215ef7a9d28/production_v5_20261106/qa/pdf_review/final/page-4.png",
+          "render_dpi": 150,
+          "render_dimensions": [
+            1754,
+            1241
+          ],
+          "render_sha256": "7637dd6c400d5c4911a4e1df40947b196504a42ef4d3a4df3ef3cc3e98a35b79",
+          "visually_reviewed": true,
+          "final_render_pixel_identical_to_reviewed_initial": true,
+          "maximum_channel_difference": 0,
+          "text_characters_outside_page_count": 0,
+          "visual_layout_status": "pass",
+          "visual_notes": "Titres, métadonnées, images et pied de page lisibles et séparés; aucune coupe ou superposition observée."
+        },
+        {
+          "page": 5,
+          "label": "Forges de la Caldeira",
+          "subject_count_excluding_cover": 8,
+          "image_placement_count": 8,
+          "render_path": "/workspace/scratch/a215ef7a9d28/production_v5_20261106/qa/pdf_review/final/page-5.png",
+          "render_dpi": 150,
+          "render_dimensions": [
+            1754,
+            1241
+          ],
+          "render_sha256": "c14e8577da158eafbb674bf098965a1b1fe104e900d0e79ad7847cec5520c0e5",
+          "visually_reviewed": true,
+          "final_render_pixel_identical_to_reviewed_initial": true,
+          "maximum_channel_difference": 0,
+          "text_characters_outside_page_count": 0,
+          "visual_layout_status": "pass",
+          "visual_notes": "Titres, métadonnées, images et pied de page lisibles et séparés; aucune coupe ou superposition observée."
+        },
+        {
+          "page": 6,
+          "label": "Refuge des Veilleurs",
+          "subject_count_excluding_cover": 8,
+          "image_placement_count": 8,
+          "render_path": "/workspace/scratch/a215ef7a9d28/production_v5_20261106/qa/pdf_review/final/page-6.png",
+          "render_dpi": 150,
+          "render_dimensions": [
+            1754,
+            1241
+          ],
+          "render_sha256": "32f7dd6a0335cb5713d3b74fb0da5660119ca3db55c40aea7283b81256cdc508",
+          "visually_reviewed": true,
+          "final_render_pixel_identical_to_reviewed_initial": true,
+          "maximum_channel_difference": 0,
+          "text_characters_outside_page_count": 0,
+          "visual_layout_status": "pass",
+          "visual_notes": "Titres, métadonnées, images et pied de page lisibles et séparés; aucune coupe ou superposition observée."
+        },
+        {
+          "page": 7,
+          "label": "Citernes protégées V1 et V2",
+          "subject_count_excluding_cover": 2,
+          "image_placement_count": 2,
+          "render_path": "/workspace/scratch/a215ef7a9d28/production_v5_20261106/qa/pdf_review/final/page-7.png",
+          "render_dpi": 150,
+          "render_dimensions": [
+            1754,
+            1241
+          ],
+          "render_sha256": "7c3ccac494bee6a7110da0c8044a406df903a19dc1a17e101e81490a32a975dc",
+          "visually_reviewed": true,
+          "final_render_pixel_identical_to_reviewed_initial": true,
+          "maximum_channel_difference": 0,
+          "text_characters_outside_page_count": 0,
+          "visual_layout_status": "pass",
+          "visual_notes": "Titres, métadonnées, images et pied de page lisibles et séparés; aucune coupe ou superposition observée."
+        }
+      ],
+      "asset_label_checks": [
+        {
+          "id": "personnages_desert_praticien_v5",
+          "title": "Praticien des Retours",
+          "page": 2,
+          "title_occurrences_on_page": 1,
+          "expected_native_dimensions": "1024 x 1536 px",
+          "native_dimensions_label_found": true,
+          "expected_alpha_label": "Alpha réel",
+          "alpha_label_found": true,
+          "filename_label_found": true
+        },
+        {
+          "id": "personnages_desert_tisseuse_v5",
+          "title": "Tisseuse des Voiles de sable",
+          "page": 2,
+          "title_occurrences_on_page": 1,
+          "expected_native_dimensions": "1024 x 1536 px",
+          "native_dimensions_label_found": true,
+          "expected_alpha_label": "Alpha réel",
+          "alpha_label_found": true,
+          "filename_label_found": true
+        },
+        {
+          "id": "objets_desert_mallette_v5",
+          "title": "Mallette de soins des pistes",
+          "page": 2,
+          "title_occurrences_on_page": 1,
+          "expected_native_dimensions": "1374 x 1145 px",
+          "native_dimensions_label_found": true,
+          "expected_alpha_label": "Alpha réel",
+          "alpha_label_found": true,
+          "filename_label_found": true
+        },
+        {
+          "id": "objets_desert_lit_v5",
+          "title": "Lit de repos pliant",
+          "page": 2,
+          "title_occurrences_on_page": 1,
+          "expected_native_dimensions": "1672 x 941 px",
+          "native_dimensions_label_found": true,
+          "expected_alpha_label": "Alpha réel",
+          "alpha_label_found": true,
+          "filename_label_found": true
+        },
+        {
+          "id": "objets_desert_sechoir_v5",
+          "title": "Coffre de séchage des voiles",
+          "page": 2,
+          "title_occurrences_on_page": 1,
+          "expected_native_dimensions": "1266 x 1242 px",
+          "native_dimensions_label_found": true,
+          "expected_alpha_label": "Alpha réel",
+          "alpha_label_found": true,
+          "filename_label_found": true
+        },
+        {
+          "id": "lieux_desert_soins_v5",
+          "title": "Maison des Retours",
+          "page": 2,
+          "title_occurrences_on_page": 1,
+          "expected_native_dimensions": "1672 x 941 px",
+          "native_dimensions_label_found": true,
+          "expected_alpha_label": "Opaque",
+          "alpha_label_found": true,
+          "filename_label_found": true
+        },
+        {
+          "id": "lieux_desert_chambree_v5",
+          "title": "Chambrée des Traversées",
+          "page": 2,
+          "title_occurrences_on_page": 1,
+          "expected_native_dimensions": "1672 x 941 px",
+          "native_dimensions_label_found": true,
+          "expected_alpha_label": "Opaque",
+          "alpha_label_found": true,
+          "filename_label_found": true
+        },
+        {
+          "id": "matieres_desert_toile_v5",
+          "title": "Toile pare-sable des Citernes",
+          "page": 2,
+          "title_occurrences_on_page": 1,
+          "expected_native_dimensions": "1254 x 1254 px",
+          "native_dimensions_label_found": true,
+          "expected_alpha_label": "Opaque",
+          "alpha_label_found": true,
+          "filename_label_found": true
+        },
+        {
+          "id": "personnages_forest_soigneuse_v5",
+          "title": "Soigneuse des Terrasses",
+          "page": 3,
+          "title_occurrences_on_page": 1,
+          "expected_native_dimensions": "1024 x 1536 px",
+          "native_dimensions_label_found": true,
+          "expected_alpha_label": "Alpha réel",
+          "alpha_label_found": true,
+          "filename_label_found": true
+        },
+        {
+          "id": "personnages_forest_ajusteur_v5",
+          "title": "Ajusteur des Harnais",
+          "page": 3,
+          "title_occurrences_on_page": 1,
+          "expected_native_dimensions": "1024 x 1536 px",
+          "native_dimensions_label_found": true,
+          "expected_alpha_label": "Alpha réel",
+          "alpha_label_found": true,
+          "filename_label_found": true
+        },
+        {
+          "id": "objets_forest_siege_v5",
+          "title": "Siège de traitement des Terrasses",
+          "page": 3,
+          "title_occurrences_on_page": 1,
+          "expected_native_dimensions": "1536 x 1024 px",
+          "native_dimensions_label_found": true,
+          "expected_alpha_label": "Alpha réel",
+          "alpha_label_found": true,
+          "filename_label_found": true
+        },
+        {
+          "id": "objets_forest_banc_v5",
+          "title": "Banc de contrôle des harnais",
+          "page": 3,
+          "title_occurrences_on_page": 1,
+          "expected_native_dimensions": "1536 x 1024 px",
+          "native_dimensions_label_found": true,
+          "expected_alpha_label": "Alpha réel",
+          "alpha_label_found": true,
+          "filename_label_found": true
+        },
+        {
+          "id": "objets_forest_casier_v5",
+          "title": "Casier des expéditions hautes",
+          "page": 3,
+          "title_occurrences_on_page": 1,
+          "expected_native_dimensions": "1145 x 1374 px",
+          "native_dimensions_label_found": true,
+          "expected_alpha_label": "Alpha réel",
+          "alpha_label_found": true,
+          "filename_label_found": true
+        },
+        {
+          "id": "lieux_forest_pavillon_v5",
+          "title": "Pavillon des Soins",
+          "page": 3,
+          "title_occurrences_on_page": 1,
+          "expected_native_dimensions": "1774 x 887 px",
+          "native_dimensions_label_found": true,
+          "expected_alpha_label": "Opaque",
+          "alpha_label_found": true,
+          "filename_label_found": true
+        },
+        {
+          "id": "lieux_forest_logis_v5",
+          "title": "Logis des Hauts Paliers",
+          "page": 3,
+          "title_occurrences_on_page": 1,
+          "expected_native_dimensions": "1774 x 887 px",
+          "native_dimensions_label_found": true,
+          "expected_alpha_label": "Opaque",
+          "alpha_label_found": true,
+          "filename_label_found": true
+        },
+        {
+          "id": "matieres_forest_cuir_v5",
+          "title": "Cuir des harnais de canopée",
+          "page": 3,
+          "title_occurrences_on_page": 1,
+          "expected_native_dimensions": "1254 x 1254 px",
+          "native_dimensions_label_found": true,
+          "expected_alpha_label": "Opaque",
+          "alpha_label_found": true,
+          "filename_label_found": true
+        },
+        {
+          "id": "personnages_slums_regulatrice_v5",
+          "title": "Régulatrice des Cellules",
+          "page": 4,
+          "title_occurrences_on_page": 1,
+          "expected_native_dimensions": "1024 x 1536 px",
+          "native_dimensions_label_found": true,
+          "expected_alpha_label": "Alpha réel",
+          "alpha_label_found": true,
+          "filename_label_found": true
+        },
+        {
+          "id": "personnages_slums_praticien_v5",
+          "title": "Praticien des Ateliers",
+          "page": 4,
+          "title_occurrences_on_page": 1,
+          "expected_native_dimensions": "1024 x 1536 px",
+          "native_dimensions_label_found": true,
+          "expected_alpha_label": "Alpha réel",
+          "alpha_label_found": true,
+          "filename_label_found": true
+        },
+        {
+          "id": "objets_slums_recharge_v5",
+          "title": "Station de recharge verrouillée",
+          "page": 4,
+          "title_occurrences_on_page": 1,
+          "expected_native_dimensions": "1312 x 1199 px",
+          "native_dimensions_label_found": true,
+          "expected_alpha_label": "Alpha réel",
+          "alpha_label_found": true,
+          "filename_label_found": true
+        },
+        {
+          "id": "objets_slums_brancard_v5",
+          "title": "Brancard des Ateliers",
+          "page": 4,
+          "title_occurrences_on_page": 1,
+          "expected_native_dimensions": "1774 x 887 px",
+          "native_dimensions_label_found": true,
+          "expected_alpha_label": "Alpha réel",
+          "alpha_label_found": true,
+          "filename_label_found": true
+        },
+        {
+          "id": "objets_slums_rations_v5",
+          "title": "Armoire des rations scellées",
+          "page": 4,
+          "title_occurrences_on_page": 1,
+          "expected_native_dimensions": "1145 x 1374 px",
+          "native_dimensions_label_found": true,
+          "expected_alpha_label": "Alpha réel",
+          "alpha_label_found": true,
+          "filename_label_found": true
+        },
+        {
+          "id": "lieux_slums_infirmerie_v5",
+          "title": "Infirmerie des Ateliers",
+          "page": 4,
+          "title_occurrences_on_page": 1,
+          "expected_native_dimensions": "1774 x 887 px",
+          "native_dimensions_label_found": true,
+          "expected_alpha_label": "Opaque",
+          "alpha_label_found": true,
+          "filename_label_found": true
+        },
+        {
+          "id": "lieux_slums_cuisine_v5",
+          "title": "Cuisine des Échanges",
+          "page": 4,
+          "title_occurrences_on_page": 1,
+          "expected_native_dimensions": "1774 x 887 px",
+          "native_dimensions_label_found": true,
+          "expected_alpha_label": "Opaque",
+          "alpha_label_found": true,
+          "filename_label_found": true
+        },
+        {
+          "id": "matieres_slums_cuir_v5",
+          "title": "Cuir matelassé des Ateliers",
+          "page": 4,
+          "title_occurrences_on_page": 1,
+          "expected_native_dimensions": "1254 x 1254 px",
+          "native_dimensions_label_found": true,
+          "expected_alpha_label": "Opaque",
+          "alpha_label_found": true,
+          "filename_label_found": true
+        },
+        {
+          "id": "personnages_lava_controleuse_v5",
+          "title": "Contrôleuse des Écrans thermiques",
+          "page": 5,
+          "title_occurrences_on_page": 1,
+          "expected_native_dimensions": "1024 x 1536 px",
+          "native_dimensions_label_found": true,
+          "expected_alpha_label": "Alpha réel",
+          "alpha_label_found": true,
+          "filename_label_found": true
+        },
+        {
+          "id": "personnages_lava_ravitailleur_v5",
+          "title": "Ravitailleur des Hauts Fourneaux",
+          "page": 5,
+          "title_occurrences_on_page": 1,
+          "expected_native_dimensions": "1024 x 1536 px",
+          "native_dimensions_label_found": true,
+          "expected_alpha_label": "Alpha réel",
+          "alpha_label_found": true,
+          "filename_label_found": true
+        },
+        {
+          "id": "objets_lava_cabine_v5",
+          "title": "Cabine de dépoussiérage",
+          "page": 5,
+          "title_occurrences_on_page": 1,
+          "expected_native_dimensions": "1312 x 1199 px",
+          "native_dimensions_label_found": true,
+          "expected_alpha_label": "Alpha réel",
+          "alpha_label_found": true,
+          "filename_label_found": true
+        },
+        {
+          "id": "objets_lava_portecharge_v5",
+          "title": "Porte-charge de ravitaillement",
+          "page": 5,
+          "title_occurrences_on_page": 1,
+          "expected_native_dimensions": "1536 x 1024 px",
+          "native_dimensions_label_found": true,
+          "expected_alpha_label": "Alpha réel",
+          "alpha_label_found": true,
+          "filename_label_found": true
+        },
+        {
+          "id": "objets_lava_inspection_v5",
+          "title": "Borne d’inspection thermique",
+          "page": 5,
+          "title_occurrences_on_page": 1,
+          "expected_native_dimensions": "1312 x 1199 px",
+          "native_dimensions_label_found": true,
+          "expected_alpha_label": "Alpha réel",
+          "alpha_label_found": true,
+          "filename_label_found": true
+        },
+        {
+          "id": "lieux_lava_depoussierage_v5",
+          "title": "Salle de Dépoussiérage",
+          "page": 5,
+          "title_occurrences_on_page": 1,
+          "expected_native_dimensions": "1774 x 887 px",
+          "native_dimensions_label_found": true,
+          "expected_alpha_label": "Opaque",
+          "alpha_label_found": true,
+          "filename_label_found": true
+        },
+        {
+          "id": "lieux_lava_chambree_v5",
+          "title": "Chambrée des Veilles",
+          "page": 5,
+          "title_occurrences_on_page": 1,
+          "expected_native_dimensions": "1774 x 887 px",
+          "native_dimensions_label_found": true,
+          "expected_alpha_label": "Opaque",
+          "alpha_label_found": true,
+          "filename_label_found": true
+        },
+        {
+          "id": "matieres_lava_ceramique_v5",
+          "title": "Céramique isolante de la Caldeira",
+          "page": 5,
+          "title_occurrences_on_page": 1,
+          "expected_native_dimensions": "1254 x 1254 px",
+          "native_dimensions_label_found": true,
+          "expected_alpha_label": "Opaque",
+          "alpha_label_found": true,
+          "filename_label_found": true
+        },
+        {
+          "id": "personnages_darkjungle_regleur_v5",
+          "title": "Régleur des Optiques",
+          "page": 6,
+          "title_occurrences_on_page": 1,
+          "expected_native_dimensions": "1024 x 1536 px",
+          "native_dimensions_label_found": true,
+          "expected_alpha_label": "Alpha réel",
+          "alpha_label_found": true,
+          "filename_label_found": true
+        },
+        {
+          "id": "personnages_darkjungle_preparatrice_v5",
+          "title": "Préparatrice des Remèdes",
+          "page": 6,
+          "title_occurrences_on_page": 1,
+          "expected_native_dimensions": "1024 x 1536 px",
+          "native_dimensions_label_found": true,
+          "expected_alpha_label": "Alpha réel",
+          "alpha_label_found": true,
+          "filename_label_found": true
+        },
+        {
+          "id": "objets_darkjungle_optiques_v5",
+          "title": "Coffret d’alignement optique",
+          "page": 6,
+          "title_occurrences_on_page": 1,
+          "expected_native_dimensions": "1536 x 1024 px",
+          "native_dimensions_label_found": true,
+          "expected_alpha_label": "Alpha réel",
+          "alpha_label_found": true,
+          "filename_label_found": true
+        },
+        {
+          "id": "objets_darkjungle_repos_v5",
+          "title": "Capsule de repos occultante",
+          "page": 6,
+          "title_occurrences_on_page": 1,
+          "expected_native_dimensions": "1672 x 941 px",
+          "native_dimensions_label_found": true,
+          "expected_alpha_label": "Alpha réel",
+          "alpha_label_found": true,
+          "filename_label_found": true
+        },
+        {
+          "id": "objets_darkjungle_preparations_v5",
+          "title": "Mallette des préparations",
+          "page": 6,
+          "title_occurrences_on_page": 1,
+          "expected_native_dimensions": "1536 x 1024 px",
+          "native_dimensions_label_found": true,
+          "expected_alpha_label": "Alpha réel",
+          "alpha_label_found": true,
+          "filename_label_found": true
+        },
+        {
+          "id": "lieux_darkjungle_atelier_v5",
+          "title": "Atelier des Optiques",
+          "page": 6,
+          "title_occurrences_on_page": 1,
+          "expected_native_dimensions": "1774 x 887 px",
+          "native_dimensions_label_found": true,
+          "expected_alpha_label": "Opaque",
+          "alpha_label_found": true,
+          "filename_label_found": true
+        },
+        {
+          "id": "lieux_darkjungle_alcoves_v5",
+          "title": "Alcôves du Silence",
+          "page": 6,
+          "title_occurrences_on_page": 1,
+          "expected_native_dimensions": "1774 x 887 px",
+          "native_dimensions_label_found": true,
+          "expected_alpha_label": "Opaque",
+          "alpha_label_found": true,
+          "filename_label_found": true
+        },
+        {
+          "id": "matieres_darkjungle_fibres_v5",
+          "title": "Fibres silencieuses des Veilleurs",
+          "page": 6,
+          "title_occurrences_on_page": 1,
+          "expected_native_dimensions": "1254 x 1254 px",
+          "native_dimensions_label_found": true,
+          "expected_alpha_label": "Opaque",
+          "alpha_label_found": true,
+          "filename_label_found": true
+        }
+      ],
+      "correction_label_checks": [
+        {
+          "page": 7,
+          "title": "Citerne protégée - variante V1",
+          "id": "PT-ART-01-V1",
+          "title_occurrences_on_page": 1,
+          "id_occurrences_on_page": 1
+        },
+        {
+          "page": 7,
+          "title": "Citerne protégée - variante V2",
+          "id": "PT-ART-01-V2",
+          "title_occurrences_on_page": 1,
+          "id_occurrences_on_page": 1
+        }
+      ],
+      "anomalies": [],
+      "blocking_anomaly_count": 0,
+      "overall_status": "pass",
+      "human_art_approval": false,
+      "limitations": [
+        "La revue concerne la lisibilité et la complétude du catalogue, pas une validation artistique humaine ni une certification de conformité au canon.",
+        "Les images du PDF sont des aperçus réduits; les résolutions indiquées décrivent les PNG natifs.",
+        "Les réserves sur les marges natives de certains sprites restent consignées dans leurs checkpoints; elles ne provoquent pas de coupe dans les cartes du catalogue."
+      ]
+    }
+  },
+  "assets": [
+    {
+      "id": "personnages_desert_praticien_v5",
+      "width": 1024,
+      "height": 1536,
+      "mode": "RGBA",
+      "size_bytes": 2493790,
+      "sha256": "9545dd43b96d39a3fbf0781eab9c658c18e55a20a7612e4b007d14b1a9ab6e75",
+      "alpha_min": 0,
+      "alpha_max": 254,
+      "fully_transparent_pixels": 895847,
+      "visible_pixels": 677017
+    },
+    {
+      "id": "personnages_desert_tisseuse_v5",
+      "width": 1024,
+      "height": 1536,
+      "mode": "RGBA",
+      "size_bytes": 2152033,
+      "sha256": "822b1f550a54be15e71dee975e42b89fe6ffef42ee05cbf7c5072066b0427574",
+      "alpha_min": 0,
+      "alpha_max": 254,
+      "fully_transparent_pixels": 1084601,
+      "visible_pixels": 488263
+    },
+    {
+      "id": "objets_desert_mallette_v5",
+      "width": 1374,
+      "height": 1145,
+      "mode": "RGBA",
+      "size_bytes": 2524965,
+      "sha256": "1587be1c5b538d4b34ca3f324d2a2c959ef3644b14330bab106b25fdf2d45dd3",
+      "alpha_min": 0,
+      "alpha_max": 255,
+      "fully_transparent_pixels": 598561,
+      "visible_pixels": 974669
+    },
+    {
+      "id": "objets_desert_lit_v5",
+      "width": 1672,
+      "height": 941,
+      "mode": "RGBA",
+      "size_bytes": 1592372,
+      "sha256": "c465fa4eecf5f868d97ac944aba02b17755b60dd8af17825ea8b134f7026219f",
+      "alpha_min": 0,
+      "alpha_max": 255,
+      "fully_transparent_pixels": 1014748,
+      "visible_pixels": 558604
+    },
+    {
+      "id": "objets_desert_sechoir_v5",
+      "width": 1266,
+      "height": 1242,
+      "mode": "RGBA",
+      "size_bytes": 2272527,
+      "sha256": "cd10774e0e7a25fc248fe71a53b230378b064adb3dd8f56e4f360175b982a035",
+      "alpha_min": 0,
+      "alpha_max": 255,
+      "fully_transparent_pixels": 673432,
+      "visible_pixels": 898940
+    },
+    {
+      "id": "lieux_desert_soins_v5",
+      "width": 1672,
+      "height": 941,
+      "mode": "RGB",
+      "size_bytes": 2707348,
+      "sha256": "87c84556a85c31eb1be8aa78d3f6c0eb7465894f21f11d13e9d41ebe5b2ff2f6",
+      "alpha_min": 255,
+      "alpha_max": 255,
+      "fully_transparent_pixels": 0,
+      "visible_pixels": 1573352
+    },
+    {
+      "id": "lieux_desert_chambree_v5",
+      "width": 1672,
+      "height": 941,
+      "mode": "RGB",
+      "size_bytes": 2800011,
+      "sha256": "069c53194d4facf747d80e3c602fb81d135c01d7f58258ac92686b5cb55db35d",
+      "alpha_min": 255,
+      "alpha_max": 255,
+      "fully_transparent_pixels": 0,
+      "visible_pixels": 1573352
+    },
+    {
+      "id": "matieres_desert_toile_v5",
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGB",
+      "size_bytes": 4180809,
+      "sha256": "288a8d74450153c149c0699ac5de09ea9d1355668e5b6ad116f4bc14b899629e",
+      "alpha_min": 255,
+      "alpha_max": 255,
+      "fully_transparent_pixels": 0,
+      "visible_pixels": 1572516
+    },
+    {
+      "id": "personnages_forest_soigneuse_v5",
+      "width": 1024,
+      "height": 1536,
+      "mode": "RGBA",
+      "size_bytes": 1955266,
+      "sha256": "1ab7175183093bc1e1b464dde4a133f55836b88dccc75957ab77bda0a669a367",
+      "alpha_min": 0,
+      "alpha_max": 254,
+      "fully_transparent_pixels": 1110242,
+      "visible_pixels": 462622
+    },
+    {
+      "id": "personnages_forest_ajusteur_v5",
+      "width": 1024,
+      "height": 1536,
+      "mode": "RGBA",
+      "size_bytes": 2308817,
+      "sha256": "c0ccdc761a214819a217ab9c2b3661263f8c73a3c1ebba9406242630501dd3d0",
+      "alpha_min": 0,
+      "alpha_max": 254,
+      "fully_transparent_pixels": 964558,
+      "visible_pixels": 608306
+    },
+    {
+      "id": "objets_forest_siege_v5",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "size_bytes": 2675105,
+      "sha256": "1e22a8032dc41027337ddc28f561ce2acfb911b55c1461a2eda7a0debca55d27",
+      "alpha_min": 0,
+      "alpha_max": 254,
+      "fully_transparent_pixels": 779082,
+      "visible_pixels": 793782
+    },
+    {
+      "id": "objets_forest_banc_v5",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "size_bytes": 2878108,
+      "sha256": "51471a140e1c25d1345b6d6d45056b6956eafea006f7fa45e171462d0f2562bc",
+      "alpha_min": 0,
+      "alpha_max": 254,
+      "fully_transparent_pixels": 724352,
+      "visible_pixels": 848512
+    },
+    {
+      "id": "objets_forest_casier_v5",
+      "width": 1145,
+      "height": 1374,
+      "mode": "RGBA",
+      "size_bytes": 3151445,
+      "sha256": "f733cf60bd7d01f2e22f80c528dbc75a0d73cefc7ba7cdd89e85f5176ba3f02a",
+      "alpha_min": 0,
+      "alpha_max": 255,
+      "fully_transparent_pixels": 343535,
+      "visible_pixels": 1229695
+    },
+    {
+      "id": "lieux_forest_pavillon_v5",
+      "width": 1774,
+      "height": 887,
+      "mode": "RGB",
+      "size_bytes": 3523207,
+      "sha256": "ba0ca7f8a0e7b6e6609f42fad37d1b8e8b7784168a6f290f7455470f408d3afd",
+      "alpha_min": 255,
+      "alpha_max": 255,
+      "fully_transparent_pixels": 0,
+      "visible_pixels": 1573538
+    },
+    {
+      "id": "lieux_forest_logis_v5",
+      "width": 1774,
+      "height": 887,
+      "mode": "RGB",
+      "size_bytes": 3398355,
+      "sha256": "4f8dcb58bb6d401a6af44f2d39a822fff3083e5a8b6602c5b544afffbec7de01",
+      "alpha_min": 255,
+      "alpha_max": 255,
+      "fully_transparent_pixels": 0,
+      "visible_pixels": 1573538
+    },
+    {
+      "id": "matieres_forest_cuir_v5",
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGB",
+      "size_bytes": 4127545,
+      "sha256": "c1646bcce93262e8c67e56315d49a6da1891f3b14043080483f6e6c75ddb9c6b",
+      "alpha_min": 255,
+      "alpha_max": 255,
+      "fully_transparent_pixels": 0,
+      "visible_pixels": 1572516
+    },
+    {
+      "id": "personnages_slums_regulatrice_v5",
+      "width": 1024,
+      "height": 1536,
+      "mode": "RGBA",
+      "size_bytes": 2146450,
+      "sha256": "2c61b6aa6b66b2344c600a5ee1b4da83a94b88042558643536ffafbba7b7f518",
+      "alpha_min": 0,
+      "alpha_max": 254,
+      "fully_transparent_pixels": 1029082,
+      "visible_pixels": 543782
+    },
+    {
+      "id": "personnages_slums_praticien_v5",
+      "width": 1024,
+      "height": 1536,
+      "mode": "RGBA",
+      "size_bytes": 2421815,
+      "sha256": "89957793c01927f51c67859d5153ef7a770e83548571b72799eb1539746a3e7f",
+      "alpha_min": 0,
+      "alpha_max": 254,
+      "fully_transparent_pixels": 899127,
+      "visible_pixels": 673737
+    },
+    {
+      "id": "objets_slums_recharge_v5",
+      "width": 1312,
+      "height": 1199,
+      "mode": "RGBA",
+      "size_bytes": 2737618,
+      "sha256": "920158f08219c8d1c3fba2d320360d6e0012b57b6df5526c32ec1c6a9da93198",
+      "alpha_min": 0,
+      "alpha_max": 255,
+      "fully_transparent_pixels": 427143,
+      "visible_pixels": 1145945
+    },
+    {
+      "id": "objets_slums_brancard_v5",
+      "width": 1774,
+      "height": 887,
+      "mode": "RGBA",
+      "size_bytes": 1985410,
+      "sha256": "ad57ace800b923ce794f89d86222b22e769293d91402c26236f1c930e1b54e68",
+      "alpha_min": 0,
+      "alpha_max": 255,
+      "fully_transparent_pixels": 774219,
+      "visible_pixels": 799319
+    },
+    {
+      "id": "objets_slums_rations_v5",
+      "width": 1145,
+      "height": 1374,
+      "mode": "RGBA",
+      "size_bytes": 2458726,
+      "sha256": "4d7492e4f41721a50701e865b207871e9aabd3b736cb8767e1f7eda195b0aaf5",
+      "alpha_min": 0,
+      "alpha_max": 255,
+      "fully_transparent_pixels": 510629,
+      "visible_pixels": 1062601
+    },
+    {
+      "id": "lieux_slums_infirmerie_v5",
+      "width": 1774,
+      "height": 887,
+      "mode": "RGB",
+      "size_bytes": 3025201,
+      "sha256": "9bfd5e85bd4409f7f0de0858d3a53778533d01550292a59bd0c87bc4afc94da5",
+      "alpha_min": 255,
+      "alpha_max": 255,
+      "fully_transparent_pixels": 0,
+      "visible_pixels": 1573538
+    },
+    {
+      "id": "lieux_slums_cuisine_v5",
+      "width": 1774,
+      "height": 887,
+      "mode": "RGB",
+      "size_bytes": 3065197,
+      "sha256": "66f02e35986e727e9aaa212305a0a9d1945c341aecb121e3e2aa394779580102",
+      "alpha_min": 255,
+      "alpha_max": 255,
+      "fully_transparent_pixels": 0,
+      "visible_pixels": 1573538
+    },
+    {
+      "id": "matieres_slums_cuir_v5",
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGB",
+      "size_bytes": 3318037,
+      "sha256": "120e1347d5e0d26f0c9242cbf72d435ddf778cb39d8c12adee44ec93013462d6",
+      "alpha_min": 255,
+      "alpha_max": 255,
+      "fully_transparent_pixels": 0,
+      "visible_pixels": 1572516
+    },
+    {
+      "id": "personnages_lava_controleuse_v5",
+      "width": 1024,
+      "height": 1536,
+      "mode": "RGBA",
+      "size_bytes": 2149166,
+      "sha256": "1da52829570c24e7bab70ed66349635e307126042e9b95abf2d997d6bb9a021b",
+      "alpha_min": 0,
+      "alpha_max": 254,
+      "fully_transparent_pixels": 995914,
+      "visible_pixels": 576950
+    },
+    {
+      "id": "personnages_lava_ravitailleur_v5",
+      "width": 1024,
+      "height": 1536,
+      "mode": "RGBA",
+      "size_bytes": 2381693,
+      "sha256": "b43c7615cac7e52c70e968469e73594ac665989109a1cc64a6b3fceaa3bcd71b",
+      "alpha_min": 0,
+      "alpha_max": 254,
+      "fully_transparent_pixels": 866010,
+      "visible_pixels": 706854
+    },
+    {
+      "id": "objets_lava_cabine_v5",
+      "width": 1312,
+      "height": 1199,
+      "mode": "RGBA",
+      "size_bytes": 2371157,
+      "sha256": "c323f71de081c83bc1f0af8110a196daf60de966ecd636fc80867f37d1826927",
+      "alpha_min": 0,
+      "alpha_max": 255,
+      "fully_transparent_pixels": 640584,
+      "visible_pixels": 932504
+    },
+    {
+      "id": "objets_lava_portecharge_v5",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "size_bytes": 2730993,
+      "sha256": "89b6bb13cb786b53aa419d13b245799f13220b7d9b352ca7aef3d6289a87a8c3",
+      "alpha_min": 0,
+      "alpha_max": 254,
+      "fully_transparent_pixels": 707863,
+      "visible_pixels": 865001
+    },
+    {
+      "id": "objets_lava_inspection_v5",
+      "width": 1312,
+      "height": 1199,
+      "mode": "RGBA",
+      "size_bytes": 2086506,
+      "sha256": "28523ff25a56187a6cb23c385286d7e2fbac03fa78034f3cd4f167a384df3735",
+      "alpha_min": 0,
+      "alpha_max": 255,
+      "fully_transparent_pixels": 741251,
+      "visible_pixels": 831837
+    },
+    {
+      "id": "lieux_lava_depoussierage_v5",
+      "width": 1774,
+      "height": 887,
+      "mode": "RGB",
+      "size_bytes": 3037959,
+      "sha256": "23f6c89af2314354262c4fe98865df5d6559494285122ba2860d2bd55df932b5",
+      "alpha_min": 255,
+      "alpha_max": 255,
+      "fully_transparent_pixels": 0,
+      "visible_pixels": 1573538
+    },
+    {
+      "id": "lieux_lava_chambree_v5",
+      "width": 1774,
+      "height": 887,
+      "mode": "RGB",
+      "size_bytes": 2874946,
+      "sha256": "92b3844f68fccfbd625fd066b1d302a8879c8b42a0efe927694bbb04d8d2fee7",
+      "alpha_min": 255,
+      "alpha_max": 255,
+      "fully_transparent_pixels": 0,
+      "visible_pixels": 1573538
+    },
+    {
+      "id": "matieres_lava_ceramique_v5",
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGB",
+      "size_bytes": 3859795,
+      "sha256": "9c80c4fae3f17171b013bb527410917f79f593e3079a99252a84ffb38d0627c7",
+      "alpha_min": 255,
+      "alpha_max": 255,
+      "fully_transparent_pixels": 0,
+      "visible_pixels": 1572516
+    },
+    {
+      "id": "personnages_darkjungle_regleur_v5",
+      "width": 1024,
+      "height": 1536,
+      "mode": "RGBA",
+      "size_bytes": 1943534,
+      "sha256": "c5755203978f76c641b63f36e4aa92b781dfa24267932e2e1ca62af628b467b1",
+      "alpha_min": 0,
+      "alpha_max": 254,
+      "fully_transparent_pixels": 1097116,
+      "visible_pixels": 475748
+    },
+    {
+      "id": "personnages_darkjungle_preparatrice_v5",
+      "width": 1024,
+      "height": 1536,
+      "mode": "RGBA",
+      "size_bytes": 1968509,
+      "sha256": "575940d847e267aaa289114e10db21cde1f658f1244264f27490dd3f6389e241",
+      "alpha_min": 0,
+      "alpha_max": 254,
+      "fully_transparent_pixels": 1077833,
+      "visible_pixels": 495031
+    },
+    {
+      "id": "objets_darkjungle_optiques_v5",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "size_bytes": 2638113,
+      "sha256": "1c07f57007fafb16db0abb6e7799ec885bb81785de822532ac005600aa37034a",
+      "alpha_min": 0,
+      "alpha_max": 254,
+      "fully_transparent_pixels": 698878,
+      "visible_pixels": 873986
+    },
+    {
+      "id": "objets_darkjungle_repos_v5",
+      "width": 1672,
+      "height": 941,
+      "mode": "RGBA",
+      "size_bytes": 2045174,
+      "sha256": "8df385bd44c398854e06bd6a4fd71df8a404bbe4c906131debd8416dc209483c",
+      "alpha_min": 0,
+      "alpha_max": 255,
+      "fully_transparent_pixels": 727435,
+      "visible_pixels": 845917
+    },
+    {
+      "id": "objets_darkjungle_preparations_v5",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "size_bytes": 2801724,
+      "sha256": "278baa7b54e4e1fb0697618ebd960ce2755b35ee8c40385bd393a945bf01c65b",
+      "alpha_min": 0,
+      "alpha_max": 254,
+      "fully_transparent_pixels": 630775,
+      "visible_pixels": 942089
+    },
+    {
+      "id": "lieux_darkjungle_atelier_v5",
+      "width": 1774,
+      "height": 887,
+      "mode": "RGB",
+      "size_bytes": 3076676,
+      "sha256": "d30b12a4a0975f8012625c93a68395acb864203d724f54e480c0284b3413d18a",
+      "alpha_min": 255,
+      "alpha_max": 255,
+      "fully_transparent_pixels": 0,
+      "visible_pixels": 1573538
+    },
+    {
+      "id": "lieux_darkjungle_alcoves_v5",
+      "width": 1774,
+      "height": 887,
+      "mode": "RGB",
+      "size_bytes": 3225292,
+      "sha256": "7f5f393e7495f7983cfcd11aa03a9b3a57b73a5c53aa2bc41402c517f4a4f88f",
+      "alpha_min": 255,
+      "alpha_max": 255,
+      "fully_transparent_pixels": 0,
+      "visible_pixels": 1573538
+    },
+    {
+      "id": "matieres_darkjungle_fibres_v5",
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGB",
+      "size_bytes": 3416885,
+      "sha256": "5c279fac0fba5178e54cdcf94e8be35dcbd302a17735dd8444d75d828f3d4a4d",
+      "alpha_min": 255,
+      "alpha_max": 255,
+      "fully_transparent_pixels": 0,
+      "visible_pixels": 1572516
+    },
+    {
+      "id": "PT-ART-01-V1",
+      "width": 1024,
+      "height": 1536,
+      "mode": "RGBA",
+      "size_bytes": 2790216,
+      "sha256": "d2897149c3d43240e0c9731467a0ef0a1fdd8e85d85ea175100ee08e4d68039c",
+      "alpha_min": 0,
+      "alpha_max": 254,
+      "fully_transparent_pixels": 676494,
+      "visible_pixels": 896370
+    },
+    {
+      "id": "PT-ART-01-V2",
+      "width": 1024,
+      "height": 1536,
+      "mode": "RGBA",
+      "size_bytes": 2684149,
+      "sha256": "d285b4e976085909b9069808de3dc1837b30488702c79028a36be8be7211da81",
+      "alpha_min": 0,
+      "alpha_max": 254,
+      "fully_transparent_pixels": 716864,
+      "visible_pixels": 856000
+    }
+  ],
+  "catalogue_html_checks": [
+    {
+      "catalogue": "YAUTJA_TRIBUS_V5_42_PNG",
+      "cards": 42,
+      "local_links_checked": 129,
+      "checksums_checked": 176
+    },
+    {
+      "catalogue": "YAUTJA_TRIBUS_V5_DARKJUNGLE_8_PNG",
+      "cards": 8,
+      "local_links_checked": 27,
+      "checksums_checked": 41
+    },
+    {
+      "catalogue": "YAUTJA_TRIBUS_V5_DESERT_10_PNG",
+      "cards": 10,
+      "local_links_checked": 33,
+      "checksums_checked": 47
+    },
+    {
+      "catalogue": "YAUTJA_TRIBUS_V5_FOREST_8_PNG",
+      "cards": 8,
+      "local_links_checked": 27,
+      "checksums_checked": 41
+    },
+    {
+      "catalogue": "YAUTJA_TRIBUS_V5_LAVA_8_PNG",
+      "cards": 8,
+      "local_links_checked": 27,
+      "checksums_checked": 41
+    },
+    {
+      "catalogue": "YAUTJA_TRIBUS_V5_SLUMS_8_PNG",
+      "cards": 8,
+      "local_links_checked": 27,
+      "checksums_checked": 41
+    }
+  ],
+  "archives": [
+    {
+      "filename": "YAUTJA_TRIBUS_V5_42_PNG.zip",
+      "local_path": "/workspace/scratch/a215ef7a9d28/production_v5_20261106/delivery/YAUTJA_TRIBUS_V5_42_PNG.zip",
+      "size_bytes": 119787415,
+      "sha256": "fc0ea8de193836cafb91c7f8e4bb0f1d46a544c44062213a42a126bdb70e7aac",
+      "png_files": 42,
+      "zip_crc_ok": true,
+      "png_sha256_all_match": true,
+      "asset_ids": [
+        "personnages_desert_praticien_v5",
+        "personnages_desert_tisseuse_v5",
+        "objets_desert_mallette_v5",
+        "objets_desert_lit_v5",
+        "objets_desert_sechoir_v5",
+        "lieux_desert_soins_v5",
+        "lieux_desert_chambree_v5",
+        "matieres_desert_toile_v5",
+        "personnages_forest_soigneuse_v5",
+        "personnages_forest_ajusteur_v5",
+        "objets_forest_siege_v5",
+        "objets_forest_banc_v5",
+        "objets_forest_casier_v5",
+        "lieux_forest_pavillon_v5",
+        "lieux_forest_logis_v5",
+        "matieres_forest_cuir_v5",
+        "personnages_slums_regulatrice_v5",
+        "personnages_slums_praticien_v5",
+        "objets_slums_recharge_v5",
+        "objets_slums_brancard_v5",
+        "objets_slums_rations_v5",
+        "lieux_slums_infirmerie_v5",
+        "lieux_slums_cuisine_v5",
+        "matieres_slums_cuir_v5",
+        "personnages_lava_controleuse_v5",
+        "personnages_lava_ravitailleur_v5",
+        "objets_lava_cabine_v5",
+        "objets_lava_portecharge_v5",
+        "objets_lava_inspection_v5",
+        "lieux_lava_depoussierage_v5",
+        "lieux_lava_chambree_v5",
+        "matieres_lava_ceramique_v5",
+        "personnages_darkjungle_regleur_v5",
+        "personnages_darkjungle_preparatrice_v5",
+        "objets_darkjungle_optiques_v5",
+        "objets_darkjungle_repos_v5",
+        "objets_darkjungle_preparations_v5",
+        "lieux_darkjungle_atelier_v5",
+        "lieux_darkjungle_alcoves_v5",
+        "matieres_darkjungle_fibres_v5",
+        "PT-ART-01-V1",
+        "PT-ART-01-V2"
+      ],
+      "library_file_id": null,
+      "library_url": null,
+      "storage_status": "workspace_ready_persistent_save_failed",
+      "access_note": "fichier remis dans la conversation ; lien durable en attente",
+      "delivery_channel": "conversation"
+    },
+    {
+      "filename": "YAUTJA_TRIBUS_V5_DESERT_10_PNG.zip",
+      "local_path": "/workspace/scratch/a215ef7a9d28/production_v5_20261106/delivery/YAUTJA_TRIBUS_V5_DESERT_10_PNG.zip",
+      "size_bytes": 26766716,
+      "sha256": "e9544990961f280dcd7e25eea8fd4a9467e38c2f68fbb295941e17334e61285d",
+      "png_files": 10,
+      "zip_crc_ok": true,
+      "png_sha256_all_match": true,
+      "asset_ids": [
+        "personnages_desert_praticien_v5",
+        "personnages_desert_tisseuse_v5",
+        "objets_desert_mallette_v5",
+        "objets_desert_lit_v5",
+        "objets_desert_sechoir_v5",
+        "lieux_desert_soins_v5",
+        "lieux_desert_chambree_v5",
+        "matieres_desert_toile_v5",
+        "PT-ART-01-V1",
+        "PT-ART-01-V2"
+      ],
+      "library_file_id": null,
+      "library_url": null,
+      "storage_status": "workspace_ready_persistent_save_failed",
+      "access_note": "fichier remis dans la conversation ; lien durable en attente",
+      "delivery_channel": "conversation"
+    },
+    {
+      "filename": "YAUTJA_TRIBUS_V5_FOREST_8_PNG.zip",
+      "local_path": "/workspace/scratch/a215ef7a9d28/production_v5_20261106/delivery/YAUTJA_TRIBUS_V5_FOREST_8_PNG.zip",
+      "size_bytes": 24495445,
+      "sha256": "c9cdaf185a46d831e6b5ba869a3f82749c73b9c5f2c8ff9f86f56e656647f4a1",
+      "png_files": 8,
+      "zip_crc_ok": true,
+      "png_sha256_all_match": true,
+      "asset_ids": [
+        "personnages_forest_soigneuse_v5",
+        "personnages_forest_ajusteur_v5",
+        "objets_forest_siege_v5",
+        "objets_forest_banc_v5",
+        "objets_forest_casier_v5",
+        "lieux_forest_pavillon_v5",
+        "lieux_forest_logis_v5",
+        "matieres_forest_cuir_v5"
+      ],
+      "library_file_id": null,
+      "library_url": null,
+      "storage_status": "workspace_ready_persistent_save_failed",
+      "access_note": "fichier remis dans la conversation ; lien durable en attente",
+      "delivery_channel": "conversation"
+    },
+    {
+      "filename": "YAUTJA_TRIBUS_V5_SLUMS_8_PNG.zip",
+      "local_path": "/workspace/scratch/a215ef7a9d28/production_v5_20261106/delivery/YAUTJA_TRIBUS_V5_SLUMS_8_PNG.zip",
+      "size_bytes": 21656704,
+      "sha256": "93f3cb75a7c8c3ee1c237ff0a6d3f918d68a4fabcc9c3e8eab4d73ebdcaedce9",
+      "png_files": 8,
+      "zip_crc_ok": true,
+      "png_sha256_all_match": true,
+      "asset_ids": [
+        "personnages_slums_regulatrice_v5",
+        "personnages_slums_praticien_v5",
+        "objets_slums_recharge_v5",
+        "objets_slums_brancard_v5",
+        "objets_slums_rations_v5",
+        "lieux_slums_infirmerie_v5",
+        "lieux_slums_cuisine_v5",
+        "matieres_slums_cuir_v5"
+      ],
+      "library_file_id": null,
+      "library_url": null,
+      "storage_status": "workspace_ready_persistent_save_failed",
+      "access_note": "fichier remis dans la conversation ; lien durable en attente",
+      "delivery_channel": "conversation"
+    },
+    {
+      "filename": "YAUTJA_TRIBUS_V5_LAVA_8_PNG.zip",
+      "local_path": "/workspace/scratch/a215ef7a9d28/production_v5_20261106/delivery/YAUTJA_TRIBUS_V5_LAVA_8_PNG.zip",
+      "size_bytes": 21917654,
+      "sha256": "2d9b0c271006e53b53070d9fdfa4eef9a75ae83b0c78ed5b8792915405bd4165",
+      "png_files": 8,
+      "zip_crc_ok": true,
+      "png_sha256_all_match": true,
+      "asset_ids": [
+        "personnages_lava_controleuse_v5",
+        "personnages_lava_ravitailleur_v5",
+        "objets_lava_cabine_v5",
+        "objets_lava_portecharge_v5",
+        "objets_lava_inspection_v5",
+        "lieux_lava_depoussierage_v5",
+        "lieux_lava_chambree_v5",
+        "matieres_lava_ceramique_v5"
+      ],
+      "library_file_id": null,
+      "library_url": null,
+      "storage_status": "workspace_ready_persistent_save_failed",
+      "access_note": "fichier remis dans la conversation ; lien durable en attente",
+      "delivery_channel": "conversation"
+    },
+    {
+      "filename": "YAUTJA_TRIBUS_V5_DARKJUNGLE_8_PNG.zip",
+      "local_path": "/workspace/scratch/a215ef7a9d28/production_v5_20261106/delivery/YAUTJA_TRIBUS_V5_DARKJUNGLE_8_PNG.zip",
+      "size_bytes": 21609141,
+      "sha256": "f02cfa2d059e160e4479364d0a86f2e165148e03b274ca3924b3f9bbe3a11b60",
+      "png_files": 8,
+      "zip_crc_ok": true,
+      "png_sha256_all_match": true,
+      "asset_ids": [
+        "personnages_darkjungle_regleur_v5",
+        "personnages_darkjungle_preparatrice_v5",
+        "objets_darkjungle_optiques_v5",
+        "objets_darkjungle_repos_v5",
+        "objets_darkjungle_preparations_v5",
+        "lieux_darkjungle_atelier_v5",
+        "lieux_darkjungle_alcoves_v5",
+        "matieres_darkjungle_fibres_v5"
+      ],
+      "library_file_id": null,
+      "library_url": null,
+      "storage_status": "workspace_ready_persistent_save_failed",
+      "access_note": "fichier remis dans la conversation ; lien durable en attente",
+      "delivery_channel": "conversation"
+    }
+  ],
+  "visual_review": {
+    "report_version": 1,
+    "reviewed_at_utc": "2026-11-06T04:18:30.873621+00:00",
+    "scope": "40 nouveaux assets V5 et 2 corrections de citernes ; revue transversale des fichiers effectivement présents.",
+    "expected_count": 42,
+    "present_count": 42,
+    "visually_reviewed_count": 42,
+    "transparent_sprite_count": 27,
+    "fully_opaque_scene_material_count": 15,
+    "blocking_defects_observed": [],
+    "actual_subject_truncations_observed": [],
+    "human_art_approval": false,
+    "runtime_ingested": false,
+    "official_canon_fidelity_certified": false,
+    "limitations_fr": [
+      "Revue visuelle par IA et contrôles de fichiers, sans validation artistique humaine.",
+      "Continuité avec les références et les communautés originales du projet ; aucun statut de clan ou personnage canonique officiel ajouté.",
+      "Absence de certification 1:1 du canon, de preuve de répétition sans couture des matières, de cartes PBR ou de test d’importation dans le moteur.",
+      "Les planches QA sont des vignettes composées et annotées ; aucun PNG de production n’a été modifié."
+    ],
+    "methods_fr": [
+      "Décodage PNG, dimensions, mode, histogramme alpha, SHA-256 et comparaison aux records de génération.",
+      "Composition des 25 nouveaux sprites et des 2 citernes sur un fond clair puis sur un fond sombre ; inspection avec view_image.",
+      "Inspection des 10 décors et 5 matières ; contrôle des contraintes propres à chaque communauté.",
+      "Contrôle rapproché de l’armoire SLUMS pour distinguer anticrénelage au bord et troncature réelle ; comparaison directe des deux citernes aux sources V1/V2."
+    ],
+    "community_coherence_fr": {
+      "DESERT": "Grès ocre, bronze et toile sable ; fournitures fermées et circulation sèche dans les soins et le repos.",
+      "FOREST": "Pierre monumentale et cuir vert-gris, bronze ; cordages et harnais cohérents, logis maçonné, eau séparée de la circulation.",
+      "SLUMS": "Alliage graphite, cuivre réparé et cuir brun ; lieux artisanaux entretenus, alimentation et soin organisés, protections électriques fermées.",
+      "LAVA": "Basalte refroidi, bronze, vêtements isolants et céramique pâle ; installations protégées, absence de lave ouverte dans les lieux de service et de repos.",
+      "DARKJUNGLE": "Pierre et métal bleu-noir, fibres sombres ; voûte rocheuse visible, arbres et fleurs cyan-violet dans la caverne, lampes ambrées distinctes, aucune lueur biologique des membres.",
+      "CORRECTIONS": "Les deux citernes présentent une distribution et des réceptacles fermés ; matériaux, dômes, conduits, hublots et pieds sont reconnaissables par rapport aux deux sources."
+    },
+    "findings": [
+      {
+        "id": "personnages_desert_praticien_v5",
+        "severity": "information",
+        "code": "MARGE_ETROITE",
+        "margins_ltrb_px": [
+          156,
+          16,
+          140,
+          21
+        ],
+        "actual_subject_truncation_observed": false,
+        "description_fr": "Marge de 6 à 20 pixels sur au moins un bord ; aucune partie du sujet réellement coupée observée."
+      },
+      {
+        "id": "personnages_desert_praticien_v5",
+        "severity": "information",
+        "code": "ALPHA_MAX_254",
+        "description_fr": "Transparence réelle avec alpha maximal 254/255 ; ce constat ne constitue pas une troncature et ne produit pas de halo visible sur les deux fonds de contrôle."
+      },
+      {
+        "id": "personnages_desert_tisseuse_v5",
+        "severity": "information",
+        "code": "ALPHA_MAX_254",
+        "description_fr": "Transparence réelle avec alpha maximal 254/255 ; ce constat ne constitue pas une troncature et ne produit pas de halo visible sur les deux fonds de contrôle."
+      },
+      {
+        "id": "personnages_forest_soigneuse_v5",
+        "severity": "information",
+        "code": "MARGE_ETROITE",
+        "margins_ltrb_px": [
+          253,
+          34,
+          241,
+          18
+        ],
+        "actual_subject_truncation_observed": false,
+        "description_fr": "Marge de 6 à 20 pixels sur au moins un bord ; aucune partie du sujet réellement coupée observée."
+      },
+      {
+        "id": "personnages_forest_soigneuse_v5",
+        "severity": "information",
+        "code": "ALPHA_MAX_254",
+        "description_fr": "Transparence réelle avec alpha maximal 254/255 ; ce constat ne constitue pas une troncature et ne produit pas de halo visible sur les deux fonds de contrôle."
+      },
+      {
+        "id": "personnages_forest_ajusteur_v5",
+        "severity": "information",
+        "code": "MARGE_ETROITE",
+        "margins_ltrb_px": [
+          195,
+          10,
+          159,
+          13
+        ],
+        "actual_subject_truncation_observed": false,
+        "description_fr": "Marge de 6 à 20 pixels sur au moins un bord ; aucune partie du sujet réellement coupée observée."
+      },
+      {
+        "id": "personnages_forest_ajusteur_v5",
+        "severity": "information",
+        "code": "ALPHA_MAX_254",
+        "description_fr": "Transparence réelle avec alpha maximal 254/255 ; ce constat ne constitue pas une troncature et ne produit pas de halo visible sur les deux fonds de contrôle."
+      },
+      {
+        "id": "objets_forest_siege_v5",
+        "severity": "information",
+        "code": "ALPHA_MAX_254",
+        "description_fr": "Transparence réelle avec alpha maximal 254/255 ; ce constat ne constitue pas une troncature et ne produit pas de halo visible sur les deux fonds de contrôle."
+      },
+      {
+        "id": "objets_forest_banc_v5",
+        "severity": "information",
+        "code": "ALPHA_MAX_254",
+        "description_fr": "Transparence réelle avec alpha maximal 254/255 ; ce constat ne constitue pas une troncature et ne produit pas de halo visible sur les deux fonds de contrôle."
+      },
+      {
+        "id": "objets_forest_casier_v5",
+        "severity": "information",
+        "code": "MARGE_ETROITE",
+        "margins_ltrb_px": [
+          12,
+          19,
+          21,
+          15
+        ],
+        "actual_subject_truncation_observed": false,
+        "description_fr": "Marge de 6 à 20 pixels sur au moins un bord ; aucune partie du sujet réellement coupée observée."
+      },
+      {
+        "id": "personnages_slums_regulatrice_v5",
+        "severity": "information",
+        "code": "MARGE_ETROITE",
+        "margins_ltrb_px": [
+          214,
+          11,
+          189,
+          10
+        ],
+        "actual_subject_truncation_observed": false,
+        "description_fr": "Marge de 6 à 20 pixels sur au moins un bord ; aucune partie du sujet réellement coupée observée."
+      },
+      {
+        "id": "personnages_slums_regulatrice_v5",
+        "severity": "information",
+        "code": "ALPHA_MAX_254",
+        "description_fr": "Transparence réelle avec alpha maximal 254/255 ; ce constat ne constitue pas une troncature et ne produit pas de halo visible sur les deux fonds de contrôle."
+      },
+      {
+        "id": "personnages_slums_praticien_v5",
+        "severity": "non_bloquant",
+        "code": "MARGE_TRES_ETROITE",
+        "margins_ltrb_px": [
+          181,
+          6,
+          60,
+          3
+        ],
+        "actual_subject_truncation_observed": false,
+        "description_fr": "Silhouette entière observée ; marge technique très étroite. Les quatre valeurs sont gauche, haut, droite, bas au seuil alpha >10."
+      },
+      {
+        "id": "personnages_slums_praticien_v5",
+        "severity": "information",
+        "code": "ALPHA_MAX_254",
+        "description_fr": "Transparence réelle avec alpha maximal 254/255 ; ce constat ne constitue pas une troncature et ne produit pas de halo visible sur les deux fonds de contrôle."
+      },
+      {
+        "id": "objets_slums_recharge_v5",
+        "severity": "information",
+        "code": "MARGE_ETROITE",
+        "margins_ltrb_px": [
+          19,
+          8,
+          48,
+          8
+        ],
+        "actual_subject_truncation_observed": false,
+        "description_fr": "Marge de 6 à 20 pixels sur au moins un bord ; aucune partie du sujet réellement coupée observée."
+      },
+      {
+        "id": "objets_slums_brancard_v5",
+        "severity": "information",
+        "code": "MARGE_ETROITE",
+        "margins_ltrb_px": [
+          52,
+          62,
+          24,
+          17
+        ],
+        "actual_subject_truncation_observed": false,
+        "description_fr": "Marge de 6 à 20 pixels sur au moins un bord ; aucune partie du sujet réellement coupée observée."
+      },
+      {
+        "id": "objets_slums_rations_v5",
+        "severity": "non_bloquant",
+        "code": "MARGE_TRES_ETROITE",
+        "margins_ltrb_px": [
+          101,
+          3,
+          97,
+          0
+        ],
+        "actual_subject_truncation_observed": false,
+        "description_fr": "Silhouette entière observée ; marge technique très étroite. Les quatre valeurs sont gauche, haut, droite, bas au seuil alpha >10."
+      },
+      {
+        "id": "personnages_lava_controleuse_v5",
+        "severity": "information",
+        "code": "MARGE_ETROITE",
+        "margins_ltrb_px": [
+          242,
+          11,
+          193,
+          12
+        ],
+        "actual_subject_truncation_observed": false,
+        "description_fr": "Marge de 6 à 20 pixels sur au moins un bord ; aucune partie du sujet réellement coupée observée."
+      },
+      {
+        "id": "personnages_lava_controleuse_v5",
+        "severity": "information",
+        "code": "ALPHA_MAX_254",
+        "description_fr": "Transparence réelle avec alpha maximal 254/255 ; ce constat ne constitue pas une troncature et ne produit pas de halo visible sur les deux fonds de contrôle."
+      },
+      {
+        "id": "personnages_lava_ravitailleur_v5",
+        "severity": "non_bloquant",
+        "code": "MARGE_TRES_ETROITE",
+        "margins_ltrb_px": [
+          141,
+          5,
+          133,
+          2
+        ],
+        "actual_subject_truncation_observed": false,
+        "description_fr": "Silhouette entière observée ; marge technique très étroite. Les quatre valeurs sont gauche, haut, droite, bas au seuil alpha >10."
+      },
+      {
+        "id": "personnages_lava_ravitailleur_v5",
+        "severity": "information",
+        "code": "ALPHA_MAX_254",
+        "description_fr": "Transparence réelle avec alpha maximal 254/255 ; ce constat ne constitue pas une troncature et ne produit pas de halo visible sur les deux fonds de contrôle."
+      },
+      {
+        "id": "objets_lava_cabine_v5",
+        "severity": "information",
+        "code": "MARGE_ETROITE",
+        "margins_ltrb_px": [
+          91,
+          8,
+          112,
+          28
+        ],
+        "actual_subject_truncation_observed": false,
+        "description_fr": "Marge de 6 à 20 pixels sur au moins un bord ; aucune partie du sujet réellement coupée observée."
+      },
+      {
+        "id": "objets_lava_portecharge_v5",
+        "severity": "information",
+        "code": "MARGE_ETROITE",
+        "margins_ltrb_px": [
+          99,
+          11,
+          95,
+          13
+        ],
+        "actual_subject_truncation_observed": false,
+        "description_fr": "Marge de 6 à 20 pixels sur au moins un bord ; aucune partie du sujet réellement coupée observée."
+      },
+      {
+        "id": "objets_lava_portecharge_v5",
+        "severity": "information",
+        "code": "ALPHA_MAX_254",
+        "description_fr": "Transparence réelle avec alpha maximal 254/255 ; ce constat ne constitue pas une troncature et ne produit pas de halo visible sur les deux fonds de contrôle."
+      },
+      {
+        "id": "objets_lava_inspection_v5",
+        "severity": "information",
+        "code": "MARGE_ETROITE",
+        "margins_ltrb_px": [
+          68,
+          8,
+          77,
+          10
+        ],
+        "actual_subject_truncation_observed": false,
+        "description_fr": "Marge de 6 à 20 pixels sur au moins un bord ; aucune partie du sujet réellement coupée observée."
+      },
+      {
+        "id": "personnages_darkjungle_regleur_v5",
+        "severity": "information",
+        "code": "MARGE_ETROITE",
+        "margins_ltrb_px": [
+          236,
+          10,
+          263,
+          12
+        ],
+        "actual_subject_truncation_observed": false,
+        "description_fr": "Marge de 6 à 20 pixels sur au moins un bord ; aucune partie du sujet réellement coupée observée."
+      },
+      {
+        "id": "personnages_darkjungle_regleur_v5",
+        "severity": "information",
+        "code": "ALPHA_MAX_254",
+        "description_fr": "Transparence réelle avec alpha maximal 254/255 ; ce constat ne constitue pas une troncature et ne produit pas de halo visible sur les deux fonds de contrôle."
+      },
+      {
+        "id": "personnages_darkjungle_preparatrice_v5",
+        "severity": "information",
+        "code": "MARGE_ETROITE",
+        "margins_ltrb_px": [
+          235,
+          8,
+          236,
+          12
+        ],
+        "actual_subject_truncation_observed": false,
+        "description_fr": "Marge de 6 à 20 pixels sur au moins un bord ; aucune partie du sujet réellement coupée observée."
+      },
+      {
+        "id": "personnages_darkjungle_preparatrice_v5",
+        "severity": "information",
+        "code": "ALPHA_MAX_254",
+        "description_fr": "Transparence réelle avec alpha maximal 254/255 ; ce constat ne constitue pas une troncature et ne produit pas de halo visible sur les deux fonds de contrôle."
+      },
+      {
+        "id": "objets_darkjungle_optiques_v5",
+        "severity": "information",
+        "code": "MARGE_ETROITE",
+        "margins_ltrb_px": [
+          197,
+          18,
+          196,
+          55
+        ],
+        "actual_subject_truncation_observed": false,
+        "description_fr": "Marge de 6 à 20 pixels sur au moins un bord ; aucune partie du sujet réellement coupée observée."
+      },
+      {
+        "id": "objets_darkjungle_optiques_v5",
+        "severity": "information",
+        "code": "ALPHA_MAX_254",
+        "description_fr": "Transparence réelle avec alpha maximal 254/255 ; ce constat ne constitue pas une troncature et ne produit pas de halo visible sur les deux fonds de contrôle."
+      },
+      {
+        "id": "objets_darkjungle_preparations_v5",
+        "severity": "information",
+        "code": "ALPHA_MAX_254",
+        "description_fr": "Transparence réelle avec alpha maximal 254/255 ; ce constat ne constitue pas une troncature et ne produit pas de halo visible sur les deux fonds de contrôle."
+      },
+      {
+        "id": "PT-ART-01-V1",
+        "severity": "information",
+        "code": "MARGE_ETROITE",
+        "margins_ltrb_px": [
+          22,
+          6,
+          30,
+          31
+        ],
+        "actual_subject_truncation_observed": false,
+        "description_fr": "Marge de 6 à 20 pixels sur au moins un bord ; aucune partie du sujet réellement coupée observée."
+      },
+      {
+        "id": "PT-ART-01-V1",
+        "severity": "information",
+        "code": "ALPHA_MAX_254",
+        "description_fr": "Transparence réelle avec alpha maximal 254/255 ; ce constat ne constitue pas une troncature et ne produit pas de halo visible sur les deux fonds de contrôle."
+      },
+      {
+        "id": "PT-ART-01-V2",
+        "severity": "information",
+        "code": "MARGE_ETROITE",
+        "margins_ltrb_px": [
+          96,
+          7,
+          111,
+          38
+        ],
+        "actual_subject_truncation_observed": false,
+        "description_fr": "Marge de 6 à 20 pixels sur au moins un bord ; aucune partie du sujet réellement coupée observée."
+      },
+      {
+        "id": "PT-ART-01-V2",
+        "severity": "information",
+        "code": "ALPHA_MAX_254",
+        "description_fr": "Transparence réelle avec alpha maximal 254/255 ; ce constat ne constitue pas une troncature et ne produit pas de halo visible sur les deux fonds de contrôle."
+      }
+    ],
+    "assets": [
+      {
+        "id": "personnages_desert_praticien_v5",
+        "tribe_key": "DESERT",
+        "category": "personnages",
+        "path": "/workspace/scratch/a215ef7a9d28/production_v5_20261106/images/personnages/MEMBRE_DESERT_PRATICIEN_V5.png",
+        "requires_alpha": true,
+        "available": true,
+        "width": 1024,
+        "height": 1536,
+        "mode": "RGBA",
+        "bytes": 2493790,
+        "sha256": "9545dd43b96d39a3fbf0781eab9c658c18e55a20a7612e4b007d14b1a9ab6e75",
+        "alpha_extrema": [
+          0,
+          254
+        ],
+        "zero_alpha_pixels": 895847,
+        "opaque_pixels": 0,
+        "nonzero_bbox": [
+          0,
+          13,
+          1018,
+          1536
+        ],
+        "alpha_over_10_bbox": [
+          156,
+          16,
+          884,
+          1515
+        ],
+        "edge_pixels_alpha_over_10": {
+          "top": 0,
+          "bottom": 0,
+          "left": 0,
+          "right": 0
+        },
+        "meaningful_alpha_margins": [
+          156,
+          16,
+          140,
+          21
+        ],
+        "checks": {
+          "png_decoded": true,
+          "hash_unchanged_since_qa_snapshot": true,
+          "hash_matches_generation_record": true,
+          "visual_review_completed": true,
+          "complete_subject_observed": true,
+          "visible_halo_observed": false,
+          "actual_subject_truncation_observed": false,
+          "alpha_requirement_met": true
+        },
+        "visual_observation_fr": "Corps complet, mallette fermée, face biologique non masquée et tenues de travail ocre/bronze. Aucun halo visible sur fonds clair et sombre.",
+        "finding_codes": [
+          "MARGE_ETROITE",
+          "ALPHA_MAX_254"
+        ]
+      },
+      {
+        "id": "personnages_desert_tisseuse_v5",
+        "tribe_key": "DESERT",
+        "category": "personnages",
+        "path": "/workspace/scratch/a215ef7a9d28/production_v5_20261106/images/personnages/MEMBRE_DESERT_TISSEUSE_V5.png",
+        "requires_alpha": true,
+        "available": true,
+        "width": 1024,
+        "height": 1536,
+        "mode": "RGBA",
+        "bytes": 2152033,
+        "sha256": "822b1f550a54be15e71dee975e42b89fe6ffef42ee05cbf7c5072066b0427574",
+        "alpha_extrema": [
+          0,
+          254
+        ],
+        "zero_alpha_pixels": 1084601,
+        "opaque_pixels": 0,
+        "nonzero_bbox": [
+          0,
+          21,
+          1005,
+          1536
+        ],
+        "alpha_over_10_bbox": [
+          240,
+          86,
+          799,
+          1445
+        ],
+        "edge_pixels_alpha_over_10": {
+          "top": 0,
+          "bottom": 0,
+          "left": 0,
+          "right": 0
+        },
+        "meaningful_alpha_margins": [
+          240,
+          86,
+          225,
+          91
+        ],
+        "checks": {
+          "png_decoded": true,
+          "hash_unchanged_since_qa_snapshot": true,
+          "hash_matches_generation_record": true,
+          "visual_review_completed": true,
+          "complete_subject_observed": true,
+          "visible_halo_observed": false,
+          "actual_subject_truncation_observed": false,
+          "alpha_requirement_met": true
+        },
+        "visual_observation_fr": "Rouleau ocre et navette de tissage lisibles ; tablier asymétrique et silhouette entière, sans pièce détachée.",
+        "finding_codes": [
+          "ALPHA_MAX_254"
+        ]
+      },
+      {
+        "id": "objets_desert_mallette_v5",
+        "tribe_key": "DESERT",
+        "category": "objets",
+        "path": "/workspace/scratch/a215ef7a9d28/production_v5_20261106/images/objets/OBJET_DESERT_MALLETTE_V5.png",
+        "requires_alpha": true,
+        "available": true,
+        "width": 1374,
+        "height": 1145,
+        "mode": "RGBA",
+        "bytes": 2524965,
+        "sha256": "1587be1c5b538d4b34ca3f324d2a2c959ef3644b14330bab106b25fdf2d45dd3",
+        "alpha_extrema": [
+          0,
+          255
+        ],
+        "zero_alpha_pixels": 598561,
+        "opaque_pixels": 599,
+        "nonzero_bbox": [
+          0,
+          9,
+          1371,
+          1145
+        ],
+        "alpha_over_10_bbox": [
+          168,
+          39,
+          1242,
+          1099
+        ],
+        "edge_pixels_alpha_over_10": {
+          "top": 0,
+          "bottom": 0,
+          "left": 0,
+          "right": 0
+        },
+        "meaningful_alpha_margins": [
+          168,
+          39,
+          132,
+          46
+        ],
+        "checks": {
+          "png_decoded": true,
+          "hash_unchanged_since_qa_snapshot": true,
+          "hash_matches_generation_record": true,
+          "visual_review_completed": true,
+          "complete_subject_observed": true,
+          "visible_halo_observed": false,
+          "actual_subject_truncation_observed": false,
+          "alpha_requirement_met": true
+        },
+        "visual_observation_fr": "Mallette ouverte entière, compartiments ajustés, flacons fermés turquoise et pansements rangés ; charnières et poignée cohérentes.",
+        "finding_codes": []
+      },
+      {
+        "id": "objets_desert_lit_v5",
+        "tribe_key": "DESERT",
+        "category": "objets",
+        "path": "/workspace/scratch/a215ef7a9d28/production_v5_20261106/images/objets/OBJET_DESERT_LIT_V5.png",
+        "requires_alpha": true,
+        "available": true,
+        "width": 1672,
+        "height": 941,
+        "mode": "RGBA",
+        "bytes": 1592372,
+        "sha256": "c465fa4eecf5f868d97ac944aba02b17755b60dd8af17825ea8b134f7026219f",
+        "alpha_extrema": [
+          0,
+          255
+        ],
+        "zero_alpha_pixels": 1014748,
+        "opaque_pixels": 970,
+        "nonzero_bbox": [
+          0,
+          17,
+          1656,
+          941
+        ],
+        "alpha_over_10_bbox": [
+          57,
+          97,
+          1623,
+          864
+        ],
+        "edge_pixels_alpha_over_10": {
+          "top": 0,
+          "bottom": 0,
+          "left": 0,
+          "right": 0
+        },
+        "meaningful_alpha_margins": [
+          57,
+          97,
+          49,
+          77
+        ],
+        "checks": {
+          "png_decoded": true,
+          "hash_unchanged_since_qa_snapshot": true,
+          "hash_matches_generation_record": true,
+          "visual_review_completed": true,
+          "complete_subject_observed": true,
+          "visible_halo_observed": false,
+          "actual_subject_truncation_observed": false,
+          "alpha_requirement_met": true
+        },
+        "visual_observation_fr": "Lit bas complet, toile ocre tendue, supports et sangles rattachés à la structure ; pas de sol inclus.",
+        "finding_codes": []
+      },
+      {
+        "id": "objets_desert_sechoir_v5",
+        "tribe_key": "DESERT",
+        "category": "objets",
+        "path": "/workspace/scratch/a215ef7a9d28/production_v5_20261106/images/objets/OBJET_DESERT_SECHOIR_V5.png",
+        "requires_alpha": true,
+        "available": true,
+        "width": 1266,
+        "height": 1242,
+        "mode": "RGBA",
+        "bytes": 2272527,
+        "sha256": "cd10774e0e7a25fc248fe71a53b230378b064adb3dd8f56e4f360175b982a035",
+        "alpha_extrema": [
+          0,
+          255
+        ],
+        "zero_alpha_pixels": 673432,
+        "opaque_pixels": 749,
+        "nonzero_bbox": [
+          0,
+          19,
+          1265,
+          1242
+        ],
+        "alpha_over_10_bbox": [
+          163,
+          79,
+          1102,
+          1178
+        ],
+        "edge_pixels_alpha_over_10": {
+          "top": 0,
+          "bottom": 0,
+          "left": 0,
+          "right": 0
+        },
+        "meaningful_alpha_margins": [
+          163,
+          79,
+          164,
+          64
+        ],
+        "checks": {
+          "png_decoded": true,
+          "hash_unchanged_since_qa_snapshot": true,
+          "hash_matches_generation_record": true,
+          "visual_review_completed": true,
+          "complete_subject_observed": true,
+          "visible_halo_observed": false,
+          "actual_subject_truncation_observed": false,
+          "alpha_requirement_met": true
+        },
+        "visual_observation_fr": "Armoire de séchage entière avec trois compartiments verticaux de textile et volets ventilés ; pas de réservoir d’eau.",
+        "finding_codes": []
+      },
+      {
+        "id": "lieux_desert_soins_v5",
+        "tribe_key": "DESERT",
+        "category": "lieux",
+        "path": "/workspace/scratch/a215ef7a9d28/production_v5_20261106/images/lieux/LIEU_DESERT_SOINS_V5.png",
+        "requires_alpha": false,
+        "available": true,
+        "width": 1672,
+        "height": 941,
+        "mode": "RGB",
+        "bytes": 2707348,
+        "sha256": "87c84556a85c31eb1be8aa78d3f6c0eb7465894f21f11d13e9d41ebe5b2ff2f6",
+        "alpha_extrema": [
+          255,
+          255
+        ],
+        "zero_alpha_pixels": 0,
+        "opaque_pixels": 1573352,
+        "nonzero_bbox": [
+          0,
+          0,
+          1672,
+          941
+        ],
+        "alpha_over_10_bbox": [
+          0,
+          0,
+          1672,
+          941
+        ],
+        "edge_pixels_alpha_over_10": {
+          "top": 1672,
+          "bottom": 1672,
+          "left": 941,
+          "right": 941
+        },
+        "meaningful_alpha_margins": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "checks": {
+          "png_decoded": true,
+          "hash_unchanged_since_qa_snapshot": true,
+          "hash_matches_generation_record": true,
+          "visual_review_completed": true,
+          "complete_subject_observed": null,
+          "visible_halo_observed": null,
+          "actual_subject_truncation_observed": false,
+          "alpha_requirement_met": true
+        },
+        "visual_observation_fr": "Deux bancs de soin vides, alcôves ombragées, coffres fermés et conduites couvertes ; sol sec dégagé, pas de fontaine ouverte.",
+        "finding_codes": []
+      },
+      {
+        "id": "lieux_desert_chambree_v5",
+        "tribe_key": "DESERT",
+        "category": "lieux",
+        "path": "/workspace/scratch/a215ef7a9d28/production_v5_20261106/images/lieux/LIEU_DESERT_CHAMBREE_V5.png",
+        "requires_alpha": false,
+        "available": true,
+        "width": 1672,
+        "height": 941,
+        "mode": "RGB",
+        "bytes": 2800011,
+        "sha256": "069c53194d4facf747d80e3c602fb81d135c01d7f58258ac92686b5cb55db35d",
+        "alpha_extrema": [
+          255,
+          255
+        ],
+        "zero_alpha_pixels": 0,
+        "opaque_pixels": 1573352,
+        "nonzero_bbox": [
+          0,
+          0,
+          1672,
+          941
+        ],
+        "alpha_over_10_bbox": [
+          0,
+          0,
+          1672,
+          941
+        ],
+        "edge_pixels_alpha_over_10": {
+          "top": 1672,
+          "bottom": 1672,
+          "left": 941,
+          "right": 941
+        },
+        "meaningful_alpha_margins": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "checks": {
+          "png_decoded": true,
+          "hash_unchanged_since_qa_snapshot": true,
+          "hash_matches_generation_record": true,
+          "visual_review_completed": true,
+          "complete_subject_observed": null,
+          "visible_halo_observed": null,
+          "actual_subject_truncation_observed": false,
+          "alpha_requirement_met": true
+        },
+        "visual_observation_fr": "Trois alcôves de repos, casiers fermés et ouvertures hautes ombragées ; maçonnerie épaisse, pas d’eau ouverte.",
+        "finding_codes": []
+      },
+      {
+        "id": "matieres_desert_toile_v5",
+        "tribe_key": "DESERT",
+        "category": "matieres",
+        "path": "/workspace/scratch/a215ef7a9d28/production_v5_20261106/images/matieres/MATIERE_DESERT_TOILE_V5.png",
+        "requires_alpha": false,
+        "available": true,
+        "width": 1254,
+        "height": 1254,
+        "mode": "RGB",
+        "bytes": 4180809,
+        "sha256": "288a8d74450153c149c0699ac5de09ea9d1355668e5b6ad116f4bc14b899629e",
+        "alpha_extrema": [
+          255,
+          255
+        ],
+        "zero_alpha_pixels": 0,
+        "opaque_pixels": 1572516,
+        "nonzero_bbox": [
+          0,
+          0,
+          1254,
+          1254
+        ],
+        "alpha_over_10_bbox": [
+          0,
+          0,
+          1254,
+          1254
+        ],
+        "edge_pixels_alpha_over_10": {
+          "top": 1254,
+          "bottom": 1254,
+          "left": 1254,
+          "right": 1254
+        },
+        "meaningful_alpha_margins": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "checks": {
+          "png_decoded": true,
+          "hash_unchanged_since_qa_snapshot": true,
+          "hash_matches_generation_record": true,
+          "visual_review_completed": true,
+          "complete_subject_observed": null,
+          "visible_halo_observed": null,
+          "actual_subject_truncation_observed": false,
+          "alpha_requirement_met": true
+        },
+        "visual_observation_fr": "Toile ocre au tissage diagonal fin, renforts bruns ; matière opaque jusqu’aux quatre bords, sans silhouette de vêtement.",
+        "finding_codes": []
+      },
+      {
+        "id": "personnages_forest_soigneuse_v5",
+        "tribe_key": "FOREST",
+        "category": "personnages",
+        "path": "/workspace/scratch/a215ef7a9d28/production_v5_20261106/images/personnages/MEMBRE_FOREST_SOIGNEUSE_V5.png",
+        "requires_alpha": true,
+        "available": true,
+        "width": 1024,
+        "height": 1536,
+        "mode": "RGBA",
+        "bytes": 1955266,
+        "sha256": "1ab7175183093bc1e1b464dde4a133f55836b88dccc75957ab77bda0a669a367",
+        "alpha_extrema": [
+          0,
+          254
+        ],
+        "zero_alpha_pixels": 1110242,
+        "opaque_pixels": 0,
+        "nonzero_bbox": [
+          0,
+          20,
+          1010,
+          1521
+        ],
+        "alpha_over_10_bbox": [
+          253,
+          34,
+          783,
+          1518
+        ],
+        "edge_pixels_alpha_over_10": {
+          "top": 0,
+          "bottom": 0,
+          "left": 0,
+          "right": 0
+        },
+        "meaningful_alpha_margins": [
+          253,
+          34,
+          241,
+          18
+        ],
+        "checks": {
+          "png_decoded": true,
+          "hash_unchanged_since_qa_snapshot": true,
+          "hash_matches_generation_record": true,
+          "visual_review_completed": true,
+          "complete_subject_observed": true,
+          "visible_halo_observed": false,
+          "actual_subject_truncation_observed": false,
+          "alpha_requirement_met": true
+        },
+        "visual_observation_fr": "Silhouette entière avec instrument fermé dirigé vers le bas, pochette et tenue vert-gris/bronze ; absence de magie ou blessure.",
+        "finding_codes": [
+          "MARGE_ETROITE",
+          "ALPHA_MAX_254"
+        ]
+      },
+      {
+        "id": "personnages_forest_ajusteur_v5",
+        "tribe_key": "FOREST",
+        "category": "personnages",
+        "path": "/workspace/scratch/a215ef7a9d28/production_v5_20261106/images/personnages/MEMBRE_FOREST_AJUSTEUR_V5.png",
+        "requires_alpha": true,
+        "available": true,
+        "width": 1024,
+        "height": 1536,
+        "mode": "RGBA",
+        "bytes": 2308817,
+        "sha256": "c0ccdc761a214819a217ab9c2b3661263f8c73a3c1ebba9406242630501dd3d0",
+        "alpha_extrema": [
+          0,
+          254
+        ],
+        "zero_alpha_pixels": 964558,
+        "opaque_pixels": 0,
+        "nonzero_bbox": [
+          19,
+          7,
+          1004,
+          1525
+        ],
+        "alpha_over_10_bbox": [
+          195,
+          10,
+          865,
+          1523
+        ],
+        "edge_pixels_alpha_over_10": {
+          "top": 0,
+          "bottom": 0,
+          "left": 0,
+          "right": 0
+        },
+        "meaningful_alpha_margins": [
+          195,
+          10,
+          159,
+          13
+        ],
+        "checks": {
+          "png_decoded": true,
+          "hash_unchanged_since_qa_snapshot": true,
+          "hash_matches_generation_record": true,
+          "visual_review_completed": true,
+          "complete_subject_observed": true,
+          "visible_halo_observed": false,
+          "actual_subject_truncation_observed": false,
+          "alpha_requirement_met": true
+        },
+        "visual_observation_fr": "Harnais et cordage maintenus sur l’avant-bras, outil émoussé, volumes biologiques et silhouette complets ; cuir vert-gris et bronze cohérents.",
+        "finding_codes": [
+          "MARGE_ETROITE",
+          "ALPHA_MAX_254"
+        ]
+      },
+      {
+        "id": "objets_forest_siege_v5",
+        "tribe_key": "FOREST",
+        "category": "objets",
+        "path": "/workspace/scratch/a215ef7a9d28/production_v5_20261106/images/objets/OBJET_FOREST_SIEGE_V5.png",
+        "requires_alpha": true,
+        "available": true,
+        "width": 1536,
+        "height": 1024,
+        "mode": "RGBA",
+        "bytes": 2675105,
+        "sha256": "1e22a8032dc41027337ddc28f561ce2acfb911b55c1461a2eda7a0debca55d27",
+        "alpha_extrema": [
+          0,
+          254
+        ],
+        "zero_alpha_pixels": 779082,
+        "opaque_pixels": 0,
+        "nonzero_bbox": [
+          0,
+          9,
+          1533,
+          1024
+        ],
+        "alpha_over_10_bbox": [
+          90,
+          49,
+          1443,
+          981
+        ],
+        "edge_pixels_alpha_over_10": {
+          "top": 0,
+          "bottom": 0,
+          "left": 0,
+          "right": 0
+        },
+        "meaningful_alpha_margins": [
+          90,
+          49,
+          93,
+          43
+        ],
+        "checks": {
+          "png_decoded": true,
+          "hash_unchanged_since_qa_snapshot": true,
+          "hash_matches_generation_record": true,
+          "visual_review_completed": true,
+          "complete_subject_observed": true,
+          "visible_halo_observed": false,
+          "actual_subject_truncation_observed": false,
+          "alpha_requirement_met": true
+        },
+        "visual_observation_fr": "Siège de soin incliné complet, support massif, deux accoudoirs et boîte fermée fixée ; absence de couronne cérémonielle et de patient.",
+        "finding_codes": [
+          "ALPHA_MAX_254"
+        ]
+      },
+      {
+        "id": "objets_forest_banc_v5",
+        "tribe_key": "FOREST",
+        "category": "objets",
+        "path": "/workspace/scratch/a215ef7a9d28/production_v5_20261106/images/objets/OBJET_FOREST_BANC_V5.png",
+        "requires_alpha": true,
+        "available": true,
+        "width": 1536,
+        "height": 1024,
+        "mode": "RGBA",
+        "bytes": 2878108,
+        "sha256": "51471a140e1c25d1345b6d6d45056b6956eafea006f7fa45e171462d0f2562bc",
+        "alpha_extrema": [
+          0,
+          254
+        ],
+        "zero_alpha_pixels": 724352,
+        "opaque_pixels": 0,
+        "nonzero_bbox": [
+          0,
+          16,
+          1520,
+          1024
+        ],
+        "alpha_over_10_bbox": [
+          52,
+          29,
+          1489,
+          999
+        ],
+        "edge_pixels_alpha_over_10": {
+          "top": 0,
+          "bottom": 0,
+          "left": 0,
+          "right": 0
+        },
+        "meaningful_alpha_margins": [
+          52,
+          29,
+          47,
+          25
+        ],
+        "checks": {
+          "png_decoded": true,
+          "hash_unchanged_since_qa_snapshot": true,
+          "hash_matches_generation_record": true,
+          "visual_review_completed": true,
+          "complete_subject_observed": true,
+          "visible_halo_observed": false,
+          "actual_subject_truncation_observed": false,
+          "alpha_requirement_met": true
+        },
+        "visual_observation_fr": "Banc entier en pierre et bronze, harnais tenu sous tension dans un cadre horizontal, lignes fixées aux montants et petit plateau fermé ; aucun cordage flottant.",
+        "finding_codes": [
+          "ALPHA_MAX_254"
+        ]
+      },
+      {
+        "id": "objets_forest_casier_v5",
+        "tribe_key": "FOREST",
+        "category": "objets",
+        "path": "/workspace/scratch/a215ef7a9d28/production_v5_20261106/images/objets/OBJET_FOREST_CASIER_V5.png",
+        "requires_alpha": true,
+        "available": true,
+        "width": 1145,
+        "height": 1374,
+        "mode": "RGBA",
+        "bytes": 3151445,
+        "sha256": "f733cf60bd7d01f2e22f80c528dbc75a0d73cefc7ba7cdd89e85f5176ba3f02a",
+        "alpha_extrema": [
+          0,
+          255
+        ],
+        "zero_alpha_pixels": 343535,
+        "opaque_pixels": 635,
+        "nonzero_bbox": [
+          0,
+          0,
+          1142,
+          1361
+        ],
+        "alpha_over_10_bbox": [
+          12,
+          19,
+          1124,
+          1359
+        ],
+        "edge_pixels_alpha_over_10": {
+          "top": 0,
+          "bottom": 0,
+          "left": 0,
+          "right": 0
+        },
+        "meaningful_alpha_margins": [
+          12,
+          19,
+          21,
+          15
+        ],
+        "checks": {
+          "png_decoded": true,
+          "hash_unchanged_since_qa_snapshot": true,
+          "hash_matches_generation_record": true,
+          "visual_review_completed": true,
+          "complete_subject_observed": true,
+          "visible_halo_observed": false,
+          "actual_subject_truncation_observed": false,
+          "alpha_requirement_met": true
+        },
+        "visual_observation_fr": "Casier entier à trois colonnes distinctes : capes roulées, cordages lovés et harnais pliés. Inspection rapprochée des formes de gauche : ce sont des tissus enroulés, sans visage ni biomasque. Portes ventilées et large base cohérentes.",
+        "finding_codes": [
+          "MARGE_ETROITE"
+        ]
+      },
+      {
+        "id": "lieux_forest_pavillon_v5",
+        "tribe_key": "FOREST",
+        "category": "lieux",
+        "path": "/workspace/scratch/a215ef7a9d28/production_v5_20261106/images/lieux/LIEU_FOREST_PAVILLON_V5.png",
+        "requires_alpha": false,
+        "available": true,
+        "width": 1774,
+        "height": 887,
+        "mode": "RGB",
+        "bytes": 3523207,
+        "sha256": "ba0ca7f8a0e7b6e6609f42fad37d1b8e8b7784168a6f290f7455470f408d3afd",
+        "alpha_extrema": [
+          255,
+          255
+        ],
+        "zero_alpha_pixels": 0,
+        "opaque_pixels": 1573538,
+        "nonzero_bbox": [
+          0,
+          0,
+          1774,
+          887
+        ],
+        "alpha_over_10_bbox": [
+          0,
+          0,
+          1774,
+          887
+        ],
+        "edge_pixels_alpha_over_10": {
+          "top": 1774,
+          "bottom": 1774,
+          "left": 887,
+          "right": 887
+        },
+        "meaningful_alpha_margins": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "checks": {
+          "png_decoded": true,
+          "hash_unchanged_since_qa_snapshot": true,
+          "hash_matches_generation_record": true,
+          "visual_review_completed": true,
+          "complete_subject_observed": null,
+          "visible_halo_observed": null,
+          "actual_subject_truncation_observed": false,
+          "alpha_requirement_met": true
+        },
+        "visual_observation_fr": "Architecture monumentale en pierre vert-gris, bancs vides, sol sec ; arbres et ponts soutenus visibles à travers les arches, eau au-delà de la terrasse.",
+        "finding_codes": []
+      },
+      {
+        "id": "lieux_forest_logis_v5",
+        "tribe_key": "FOREST",
+        "category": "lieux",
+        "path": "/workspace/scratch/a215ef7a9d28/production_v5_20261106/images/lieux/LIEU_FOREST_LOGIS_V5.png",
+        "requires_alpha": false,
+        "available": true,
+        "width": 1774,
+        "height": 887,
+        "mode": "RGB",
+        "bytes": 3398355,
+        "sha256": "4f8dcb58bb6d401a6af44f2d39a822fff3083e5a8b6602c5b544afffbec7de01",
+        "alpha_extrema": [
+          255,
+          255
+        ],
+        "zero_alpha_pixels": 0,
+        "opaque_pixels": 1573538,
+        "nonzero_bbox": [
+          0,
+          0,
+          1774,
+          887
+        ],
+        "alpha_over_10_bbox": [
+          0,
+          0,
+          1774,
+          887
+        ],
+        "edge_pixels_alpha_over_10": {
+          "top": 1774,
+          "bottom": 1774,
+          "left": 887,
+          "right": 887
+        },
+        "meaningful_alpha_margins": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "checks": {
+          "png_decoded": true,
+          "hash_unchanged_since_qa_snapshot": true,
+          "hash_matches_generation_record": true,
+          "visual_review_completed": true,
+          "complete_subject_observed": null,
+          "visible_halo_observed": null,
+          "actual_subject_truncation_observed": false,
+          "alpha_requirement_met": true
+        },
+        "visual_observation_fr": "Deux plateformes de couchage dans un logis en pierre, plafond massif, casiers fermés, petite table ; arbres et terrasses visibles latéralement, aucune cabane arboricole.",
+        "finding_codes": []
+      },
+      {
+        "id": "matieres_forest_cuir_v5",
+        "tribe_key": "FOREST",
+        "category": "matieres",
+        "path": "/workspace/scratch/a215ef7a9d28/production_v5_20261106/images/matieres/MATIERE_FOREST_CUIR_V5.png",
+        "requires_alpha": false,
+        "available": true,
+        "width": 1254,
+        "height": 1254,
+        "mode": "RGB",
+        "bytes": 4127545,
+        "sha256": "c1646bcce93262e8c67e56315d49a6da1891f3b14043080483f6e6c75ddb9c6b",
+        "alpha_extrema": [
+          255,
+          255
+        ],
+        "zero_alpha_pixels": 0,
+        "opaque_pixels": 1572516,
+        "nonzero_bbox": [
+          0,
+          0,
+          1254,
+          1254
+        ],
+        "alpha_over_10_bbox": [
+          0,
+          0,
+          1254,
+          1254
+        ],
+        "edge_pixels_alpha_over_10": {
+          "top": 1254,
+          "bottom": 1254,
+          "left": 1254,
+          "right": 1254
+        },
+        "meaningful_alpha_margins": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "checks": {
+          "png_decoded": true,
+          "hash_unchanged_since_qa_snapshot": true,
+          "hash_matches_generation_record": true,
+          "visual_review_completed": true,
+          "complete_subject_observed": null,
+          "visible_halo_observed": null,
+          "actual_subject_truncation_observed": false,
+          "alpha_requirement_met": true
+        },
+        "visual_observation_fr": "Cuir vert-gris grainé, bandes croisées cousues et quelques rivets affleurants ; surface opaque remplissant le cadre, distincte de la toile DESERT.",
+        "finding_codes": []
+      },
+      {
+        "id": "personnages_slums_regulatrice_v5",
+        "tribe_key": "SLUMS",
+        "category": "personnages",
+        "path": "/workspace/scratch/a215ef7a9d28/production_v5_20261106/images/personnages/MEMBRE_SLUMS_REGULATRICE_V5.png",
+        "requires_alpha": true,
+        "available": true,
+        "width": 1024,
+        "height": 1536,
+        "mode": "RGBA",
+        "bytes": 2146450,
+        "sha256": "2c61b6aa6b66b2344c600a5ee1b4da83a94b88042558643536ffafbba7b7f518",
+        "alpha_extrema": [
+          0,
+          254
+        ],
+        "zero_alpha_pixels": 1029082,
+        "opaque_pixels": 0,
+        "nonzero_bbox": [
+          0,
+          2,
+          1010,
+          1536
+        ],
+        "alpha_over_10_bbox": [
+          214,
+          11,
+          835,
+          1526
+        ],
+        "edge_pixels_alpha_over_10": {
+          "top": 0,
+          "bottom": 0,
+          "left": 0,
+          "right": 0
+        },
+        "meaningful_alpha_margins": [
+          214,
+          11,
+          189,
+          10
+        ],
+        "checks": {
+          "png_decoded": true,
+          "hash_unchanged_since_qa_snapshot": true,
+          "hash_matches_generation_record": true,
+          "visual_review_completed": true,
+          "complete_subject_observed": true,
+          "visible_halo_observed": false,
+          "actual_subject_truncation_observed": false,
+          "alpha_requirement_met": true
+        },
+        "visual_observation_fr": "Biomasque continu couvrant entièrement le visage, cellule protégée à la hanche, graphite et cuivre réparé ; pas d’arc électrique ni de partie coupée.",
+        "finding_codes": [
+          "MARGE_ETROITE",
+          "ALPHA_MAX_254"
+        ]
+      },
+      {
+        "id": "personnages_slums_praticien_v5",
+        "tribe_key": "SLUMS",
+        "category": "personnages",
+        "path": "/workspace/scratch/a215ef7a9d28/production_v5_20261106/images/personnages/MEMBRE_SLUMS_PRATICIEN_V5.png",
+        "requires_alpha": true,
+        "available": true,
+        "width": 1024,
+        "height": 1536,
+        "mode": "RGBA",
+        "bytes": 2421815,
+        "sha256": "89957793c01927f51c67859d5153ef7a770e83548571b72799eb1539746a3e7f",
+        "alpha_extrema": [
+          0,
+          254
+        ],
+        "zero_alpha_pixels": 899127,
+        "opaque_pixels": 0,
+        "nonzero_bbox": [
+          0,
+          0,
+          1010,
+          1536
+        ],
+        "alpha_over_10_bbox": [
+          181,
+          6,
+          964,
+          1533
+        ],
+        "edge_pixels_alpha_over_10": {
+          "top": 0,
+          "bottom": 0,
+          "left": 0,
+          "right": 0
+        },
+        "meaningful_alpha_margins": [
+          181,
+          6,
+          60,
+          3
+        ],
+        "checks": {
+          "png_decoded": true,
+          "hash_unchanged_since_qa_snapshot": true,
+          "hash_matches_generation_record": true,
+          "visual_review_completed": true,
+          "complete_subject_observed": true,
+          "visible_halo_observed": false,
+          "actual_subject_truncation_observed": false,
+          "alpha_requirement_met": true
+        },
+        "visual_observation_fr": "Membre mûr au visage biologique non masqué, nécessaire de soin fermé et main ouverte ; corps et doigts visibles dans le cadre malgré marge inférieure très serrée.",
+        "finding_codes": [
+          "MARGE_TRES_ETROITE",
+          "ALPHA_MAX_254"
+        ]
+      },
+      {
+        "id": "objets_slums_recharge_v5",
+        "tribe_key": "SLUMS",
+        "category": "objets",
+        "path": "/workspace/scratch/a215ef7a9d28/production_v5_20261106/images/objets/OBJET_SLUMS_RECHARGE_V5.png",
+        "requires_alpha": true,
+        "available": true,
+        "width": 1312,
+        "height": 1199,
+        "mode": "RGBA",
+        "bytes": 2737618,
+        "sha256": "920158f08219c8d1c3fba2d320360d6e0012b57b6df5526c32ec1c6a9da93198",
+        "alpha_extrema": [
+          0,
+          255
+        ],
+        "zero_alpha_pixels": 427143,
+        "opaque_pixels": 399,
+        "nonzero_bbox": [
+          0,
+          0,
+          1284,
+          1199
+        ],
+        "alpha_over_10_bbox": [
+          19,
+          8,
+          1264,
+          1191
+        ],
+        "edge_pixels_alpha_over_10": {
+          "top": 0,
+          "bottom": 0,
+          "left": 0,
+          "right": 0
+        },
+        "meaningful_alpha_margins": [
+          19,
+          8,
+          48,
+          8
+        ],
+        "checks": {
+          "png_decoded": true,
+          "hash_unchanged_since_qa_snapshot": true,
+          "hash_matches_generation_record": true,
+          "visual_review_completed": true,
+          "complete_subject_observed": true,
+          "visible_halo_observed": false,
+          "actual_subject_truncation_observed": false,
+          "alpha_requirement_met": true
+        },
+        "visual_observation_fr": "Station compacte entière avec trois cellules sous protections ambrées, conduits fermés et socle stable ; aucune décharge électrique.",
+        "finding_codes": [
+          "MARGE_ETROITE"
+        ]
+      },
+      {
+        "id": "objets_slums_brancard_v5",
+        "tribe_key": "SLUMS",
+        "category": "objets",
+        "path": "/workspace/scratch/a215ef7a9d28/production_v5_20261106/images/objets/OBJET_SLUMS_BRANCARD_V5.png",
+        "requires_alpha": true,
+        "available": true,
+        "width": 1774,
+        "height": 887,
+        "mode": "RGBA",
+        "bytes": 1985410,
+        "sha256": "ad57ace800b923ce794f89d86222b22e769293d91402c26236f1c930e1b54e68",
+        "alpha_extrema": [
+          0,
+          255
+        ],
+        "zero_alpha_pixels": 774219,
+        "opaque_pixels": 504,
+        "nonzero_bbox": [
+          0,
+          0,
+          1762,
+          887
+        ],
+        "alpha_over_10_bbox": [
+          52,
+          62,
+          1750,
+          870
+        ],
+        "edge_pixels_alpha_over_10": {
+          "top": 0,
+          "bottom": 0,
+          "left": 0,
+          "right": 0
+        },
+        "meaningful_alpha_margins": [
+          52,
+          62,
+          24,
+          17
+        ],
+        "checks": {
+          "png_decoded": true,
+          "hash_unchanged_since_qa_snapshot": true,
+          "hash_matches_generation_record": true,
+          "visual_review_completed": true,
+          "complete_subject_observed": true,
+          "visible_halo_observed": false,
+          "actual_subject_truncation_observed": false,
+          "alpha_requirement_met": true
+        },
+        "visual_observation_fr": "Brancard vide complet, surface rembourrée, compartiment inférieur fermé et quatre roulettes dont une partiellement masquée par la perspective.",
+        "finding_codes": [
+          "MARGE_ETROITE"
+        ]
+      },
+      {
+        "id": "objets_slums_rations_v5",
+        "tribe_key": "SLUMS",
+        "category": "objets",
+        "path": "/workspace/scratch/a215ef7a9d28/production_v5_20261106/images/objets/OBJET_SLUMS_RATIONS_V5.png",
+        "requires_alpha": true,
+        "available": true,
+        "width": 1145,
+        "height": 1374,
+        "mode": "RGBA",
+        "bytes": 2458726,
+        "sha256": "4d7492e4f41721a50701e865b207871e9aabd3b736cb8767e1f7eda195b0aaf5",
+        "alpha_extrema": [
+          0,
+          255
+        ],
+        "zero_alpha_pixels": 510629,
+        "opaque_pixels": 405,
+        "nonzero_bbox": [
+          0,
+          0,
+          1127,
+          1374
+        ],
+        "alpha_over_10_bbox": [
+          101,
+          3,
+          1048,
+          1374
+        ],
+        "edge_pixels_alpha_over_10": {
+          "top": 0,
+          "bottom": 4,
+          "left": 0,
+          "right": 0
+        },
+        "meaningful_alpha_margins": [
+          101,
+          3,
+          97,
+          0
+        ],
+        "checks": {
+          "png_decoded": true,
+          "hash_unchanged_since_qa_snapshot": true,
+          "hash_matches_generation_record": true,
+          "visual_review_completed": true,
+          "complete_subject_observed": true,
+          "visible_halo_observed": false,
+          "actual_subject_truncation_observed": false,
+          "alpha_requirement_met": true
+        },
+        "visual_observation_fr": "Armoire complète, porte entrouverte et récipients opaques fermés. Contrôle rapproché : contour du pied complet, marge inférieure presque nulle ; quatre pixels d’anticrénelage alpha 12–14 touchent la dernière ligne, sans troncature structurelle observée.",
+        "finding_codes": [
+          "MARGE_TRES_ETROITE"
+        ]
+      },
+      {
+        "id": "lieux_slums_infirmerie_v5",
+        "tribe_key": "SLUMS",
+        "category": "lieux",
+        "path": "/workspace/scratch/a215ef7a9d28/production_v5_20261106/images/lieux/LIEU_SLUMS_INFIRMERIE_V5.png",
+        "requires_alpha": false,
+        "available": true,
+        "width": 1774,
+        "height": 887,
+        "mode": "RGB",
+        "bytes": 3025201,
+        "sha256": "9bfd5e85bd4409f7f0de0858d3a53778533d01550292a59bd0c87bc4afc94da5",
+        "alpha_extrema": [
+          255,
+          255
+        ],
+        "zero_alpha_pixels": 0,
+        "opaque_pixels": 1573538,
+        "nonzero_bbox": [
+          0,
+          0,
+          1774,
+          887
+        ],
+        "alpha_over_10_bbox": [
+          0,
+          0,
+          1774,
+          887
+        ],
+        "edge_pixels_alpha_over_10": {
+          "top": 1774,
+          "bottom": 1774,
+          "left": 887,
+          "right": 887
+        },
+        "meaningful_alpha_margins": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "checks": {
+          "png_decoded": true,
+          "hash_unchanged_since_qa_snapshot": true,
+          "hash_matches_generation_record": true,
+          "visual_review_completed": true,
+          "complete_subject_observed": null,
+          "visible_halo_observed": null,
+          "actual_subject_truncation_observed": false,
+          "alpha_requirement_met": true
+        },
+        "visual_observation_fr": "Deux bancs de soin vides, parois en nervures graphite et cuivre, passages secs, ouverture accessible ; atelier de soin maintenu, sans forge ni blessure.",
+        "finding_codes": []
+      },
+      {
+        "id": "lieux_slums_cuisine_v5",
+        "tribe_key": "SLUMS",
+        "category": "lieux",
+        "path": "/workspace/scratch/a215ef7a9d28/production_v5_20261106/images/lieux/LIEU_SLUMS_CUISINE_V5.png",
+        "requires_alpha": false,
+        "available": true,
+        "width": 1774,
+        "height": 887,
+        "mode": "RGB",
+        "bytes": 3065197,
+        "sha256": "66f02e35986e727e9aaa212305a0a9d1945c341aecb121e3e2aa394779580102",
+        "alpha_extrema": [
+          255,
+          255
+        ],
+        "zero_alpha_pixels": 0,
+        "opaque_pixels": 1573538,
+        "nonzero_bbox": [
+          0,
+          0,
+          1774,
+          887
+        ],
+        "alpha_over_10_bbox": [
+          0,
+          0,
+          1774,
+          887
+        ],
+        "edge_pixels_alpha_over_10": {
+          "top": 1774,
+          "bottom": 1774,
+          "left": 887,
+          "right": 887
+        },
+        "meaningful_alpha_margins": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "checks": {
+          "png_decoded": true,
+          "hash_unchanged_since_qa_snapshot": true,
+          "hash_matches_generation_record": true,
+          "visual_review_completed": true,
+          "complete_subject_observed": null,
+          "visible_halo_observed": null,
+          "actual_subject_truncation_observed": false,
+          "alpha_requirement_met": true
+        },
+        "visual_observation_fr": "Cuisine en graphite/cuivre, récipients de cuisson couverts sous extraction, rangements fermés et allée sèche ; pas de marque humaine ni carcasse.",
+        "finding_codes": []
+      },
+      {
+        "id": "matieres_slums_cuir_v5",
+        "tribe_key": "SLUMS",
+        "category": "matieres",
+        "path": "/workspace/scratch/a215ef7a9d28/production_v5_20261106/images/matieres/MATIERE_SLUMS_CUIR_V5.png",
+        "requires_alpha": false,
+        "available": true,
+        "width": 1254,
+        "height": 1254,
+        "mode": "RGB",
+        "bytes": 3318037,
+        "sha256": "120e1347d5e0d26f0c9242cbf72d435ddf778cb39d8c12adee44ec93013462d6",
+        "alpha_extrema": [
+          255,
+          255
+        ],
+        "zero_alpha_pixels": 0,
+        "opaque_pixels": 1572516,
+        "nonzero_bbox": [
+          0,
+          0,
+          1254,
+          1254
+        ],
+        "alpha_over_10_bbox": [
+          0,
+          0,
+          1254,
+          1254
+        ],
+        "edge_pixels_alpha_over_10": {
+          "top": 1254,
+          "bottom": 1254,
+          "left": 1254,
+          "right": 1254
+        },
+        "meaningful_alpha_margins": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "checks": {
+          "png_decoded": true,
+          "hash_unchanged_since_qa_snapshot": true,
+          "hash_matches_generation_record": true,
+          "visual_review_completed": true,
+          "complete_subject_observed": null,
+          "visible_halo_observed": null,
+          "actual_subject_truncation_observed": false,
+          "alpha_requirement_met": true
+        },
+        "visual_observation_fr": "Cuir brun rembourré, coutures géométriques cuivrées, petites reprises visibles ; matière opaque sans effet de tôle métallique.",
+        "finding_codes": []
+      },
+      {
+        "id": "personnages_lava_controleuse_v5",
+        "tribe_key": "LAVA",
+        "category": "personnages",
+        "path": "/workspace/scratch/a215ef7a9d28/production_v5_20261106/images/personnages/MEMBRE_LAVA_CONTROLEUSE_V5.png",
+        "requires_alpha": true,
+        "available": true,
+        "width": 1024,
+        "height": 1536,
+        "mode": "RGBA",
+        "bytes": 2149166,
+        "sha256": "1da52829570c24e7bab70ed66349635e307126042e9b95abf2d997d6bb9a021b",
+        "alpha_extrema": [
+          0,
+          254
+        ],
+        "zero_alpha_pixels": 995914,
+        "opaque_pixels": 0,
+        "nonzero_bbox": [
+          0,
+          0,
+          1018,
+          1536
+        ],
+        "alpha_over_10_bbox": [
+          242,
+          11,
+          831,
+          1524
+        ],
+        "edge_pixels_alpha_over_10": {
+          "top": 0,
+          "bottom": 0,
+          "left": 0,
+          "right": 0
+        },
+        "meaningful_alpha_margins": [
+          242,
+          11,
+          193,
+          12
+        ],
+        "checks": {
+          "png_decoded": true,
+          "hash_unchanged_since_qa_snapshot": true,
+          "hash_matches_generation_record": true,
+          "visual_review_completed": true,
+          "complete_subject_observed": true,
+          "visible_halo_observed": false,
+          "actual_subject_truncation_observed": false,
+          "alpha_requirement_met": true
+        },
+        "visual_observation_fr": "Biomasque fermé, céramique pâle et tenue isolante sombre, appareil d’inspection tenu bas ; silhouette complète, pas de peau lumineuse.",
+        "finding_codes": [
+          "MARGE_ETROITE",
+          "ALPHA_MAX_254"
+        ]
+      },
+      {
+        "id": "personnages_lava_ravitailleur_v5",
+        "tribe_key": "LAVA",
+        "category": "personnages",
+        "path": "/workspace/scratch/a215ef7a9d28/production_v5_20261106/images/personnages/MEMBRE_LAVA_RAVITAILLEUR_V5.png",
+        "requires_alpha": true,
+        "available": true,
+        "width": 1024,
+        "height": 1536,
+        "mode": "RGBA",
+        "bytes": 2381693,
+        "sha256": "b43c7615cac7e52c70e968469e73594ac665989109a1cc64a6b3fceaa3bcd71b",
+        "alpha_extrema": [
+          0,
+          254
+        ],
+        "zero_alpha_pixels": 866010,
+        "opaque_pixels": 0,
+        "nonzero_bbox": [
+          0,
+          0,
+          1023,
+          1536
+        ],
+        "alpha_over_10_bbox": [
+          141,
+          5,
+          891,
+          1534
+        ],
+        "edge_pixels_alpha_over_10": {
+          "top": 0,
+          "bottom": 0,
+          "left": 0,
+          "right": 0
+        },
+        "meaningful_alpha_margins": [
+          141,
+          5,
+          133,
+          2
+        ],
+        "checks": {
+          "png_decoded": true,
+          "hash_unchanged_since_qa_snapshot": true,
+          "hash_matches_generation_record": true,
+          "visual_review_completed": true,
+          "complete_subject_observed": true,
+          "visible_halo_observed": false,
+          "actual_subject_truncation_observed": false,
+          "alpha_requirement_met": true
+        },
+        "visual_observation_fr": "Deux caisses de ravitaillement fermées portées près du corps, pieds et mains entiers ; peau naturelle rouille, pas de flamme ni de lave.",
+        "finding_codes": [
+          "MARGE_TRES_ETROITE",
+          "ALPHA_MAX_254"
+        ]
+      },
+      {
+        "id": "objets_lava_cabine_v5",
+        "tribe_key": "LAVA",
+        "category": "objets",
+        "path": "/workspace/scratch/a215ef7a9d28/production_v5_20261106/images/objets/OBJET_LAVA_CABINE_V5.png",
+        "requires_alpha": true,
+        "available": true,
+        "width": 1312,
+        "height": 1199,
+        "mode": "RGBA",
+        "bytes": 2371157,
+        "sha256": "c323f71de081c83bc1f0af8110a196daf60de966ecd636fc80867f37d1826927",
+        "alpha_extrema": [
+          0,
+          255
+        ],
+        "zero_alpha_pixels": 640584,
+        "opaque_pixels": 364,
+        "nonzero_bbox": [
+          0,
+          0,
+          1292,
+          1199
+        ],
+        "alpha_over_10_bbox": [
+          91,
+          8,
+          1200,
+          1171
+        ],
+        "edge_pixels_alpha_over_10": {
+          "top": 0,
+          "bottom": 0,
+          "left": 0,
+          "right": 0
+        },
+        "meaningful_alpha_margins": [
+          91,
+          8,
+          112,
+          28
+        ],
+        "checks": {
+          "png_decoded": true,
+          "hash_unchanged_since_qa_snapshot": true,
+          "hash_matches_generation_record": true,
+          "visual_review_completed": true,
+          "complete_subject_observed": true,
+          "visible_halo_observed": false,
+          "actual_subject_truncation_observed": false,
+          "alpha_requirement_met": true
+        },
+        "visual_observation_fr": "Cabine fermée entière, porte segmentée, filtres et conduits intégrés ; basalte/céramique refroidis, pas de vapeur ni lave ouverte.",
+        "finding_codes": [
+          "MARGE_ETROITE"
+        ]
+      },
+      {
+        "id": "objets_lava_portecharge_v5",
+        "tribe_key": "LAVA",
+        "category": "objets",
+        "path": "/workspace/scratch/a215ef7a9d28/production_v5_20261106/images/objets/OBJET_LAVA_PORTECHARGE_V5.png",
+        "requires_alpha": true,
+        "available": true,
+        "width": 1536,
+        "height": 1024,
+        "mode": "RGBA",
+        "bytes": 2730993,
+        "sha256": "89b6bb13cb786b53aa419d13b245799f13220b7d9b352ca7aef3d6289a87a8c3",
+        "alpha_extrema": [
+          0,
+          254
+        ],
+        "zero_alpha_pixels": 707863,
+        "opaque_pixels": 0,
+        "nonzero_bbox": [
+          0,
+          0,
+          1512,
+          1024
+        ],
+        "alpha_over_10_bbox": [
+          99,
+          11,
+          1441,
+          1011
+        ],
+        "edge_pixels_alpha_over_10": {
+          "top": 0,
+          "bottom": 0,
+          "left": 0,
+          "right": 0
+        },
+        "meaningful_alpha_margins": [
+          99,
+          11,
+          95,
+          13
+        ],
+        "checks": {
+          "png_decoded": true,
+          "hash_unchanged_since_qa_snapshot": true,
+          "hash_matches_generation_record": true,
+          "visual_review_completed": true,
+          "complete_subject_observed": true,
+          "visible_halo_observed": false,
+          "actual_subject_truncation_observed": false,
+          "alpha_requirement_met": true
+        },
+        "visual_observation_fr": "Chariot manuel entier, trois caisses fermées sanglées, poignée intégrée et appuis solides ; roue opposée largement occultée par la charge, pas de moteur ou d’objet flottant.",
+        "finding_codes": [
+          "MARGE_ETROITE",
+          "ALPHA_MAX_254"
+        ]
+      },
+      {
+        "id": "objets_lava_inspection_v5",
+        "tribe_key": "LAVA",
+        "category": "objets",
+        "path": "/workspace/scratch/a215ef7a9d28/production_v5_20261106/images/objets/OBJET_LAVA_INSPECTION_V5.png",
+        "requires_alpha": true,
+        "available": true,
+        "width": 1312,
+        "height": 1199,
+        "mode": "RGBA",
+        "bytes": 2086506,
+        "sha256": "28523ff25a56187a6cb23c385286d7e2fbac03fa78034f3cd4f167a384df3735",
+        "alpha_extrema": [
+          0,
+          255
+        ],
+        "zero_alpha_pixels": 741251,
+        "opaque_pixels": 549,
+        "nonzero_bbox": [
+          0,
+          0,
+          1293,
+          1199
+        ],
+        "alpha_over_10_bbox": [
+          68,
+          8,
+          1235,
+          1189
+        ],
+        "edge_pixels_alpha_over_10": {
+          "top": 0,
+          "bottom": 0,
+          "left": 0,
+          "right": 0
+        },
+        "meaningful_alpha_margins": [
+          68,
+          8,
+          77,
+          10
+        ],
+        "checks": {
+          "png_decoded": true,
+          "hash_unchanged_since_qa_snapshot": true,
+          "hash_matches_generation_record": true,
+          "visual_review_completed": true,
+          "complete_subject_observed": true,
+          "visible_halo_observed": false,
+          "actual_subject_truncation_observed": false,
+          "alpha_requirement_met": true
+        },
+        "visual_observation_fr": "Borne entière avec une plaque de céramique pâle fixée dans le cadre, capteur fermé et câble court protégé ; appuis lourds, pas de champ de chaleur, four ou lave.",
+        "finding_codes": [
+          "MARGE_ETROITE"
+        ]
+      },
+      {
+        "id": "lieux_lava_depoussierage_v5",
+        "tribe_key": "LAVA",
+        "category": "lieux",
+        "path": "/workspace/scratch/a215ef7a9d28/production_v5_20261106/images/lieux/LIEU_LAVA_DEPOUSSIERAGE_V5.png",
+        "requires_alpha": false,
+        "available": true,
+        "width": 1774,
+        "height": 887,
+        "mode": "RGB",
+        "bytes": 3037959,
+        "sha256": "23f6c89af2314354262c4fe98865df5d6559494285122ba2860d2bd55df932b5",
+        "alpha_extrema": [
+          255,
+          255
+        ],
+        "zero_alpha_pixels": 0,
+        "opaque_pixels": 1573538,
+        "nonzero_bbox": [
+          0,
+          0,
+          1774,
+          887
+        ],
+        "alpha_over_10_bbox": [
+          0,
+          0,
+          1774,
+          887
+        ],
+        "edge_pixels_alpha_over_10": {
+          "top": 1774,
+          "bottom": 1774,
+          "left": 887,
+          "right": 887
+        },
+        "meaningful_alpha_margins": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "checks": {
+          "png_decoded": true,
+          "hash_unchanged_since_qa_snapshot": true,
+          "hash_matches_generation_record": true,
+          "visual_review_completed": true,
+          "complete_subject_observed": null,
+          "visible_halo_observed": null,
+          "actual_subject_truncation_observed": false,
+          "alpha_requirement_met": true
+        },
+        "visual_observation_fr": "Deux cabines fermées et ventilation protégée dans une salle de basalte ; parcours sec vers une porte intérieure, sans lave, brouillard ni étincelles.",
+        "finding_codes": []
+      },
+      {
+        "id": "lieux_lava_chambree_v5",
+        "tribe_key": "LAVA",
+        "category": "lieux",
+        "path": "/workspace/scratch/a215ef7a9d28/production_v5_20261106/images/lieux/LIEU_LAVA_CHAMBREE_V5.png",
+        "requires_alpha": false,
+        "available": true,
+        "width": 1774,
+        "height": 887,
+        "mode": "RGB",
+        "bytes": 2874946,
+        "sha256": "92b3844f68fccfbd625fd066b1d302a8879c8b42a0efe927694bbb04d8d2fee7",
+        "alpha_extrema": [
+          255,
+          255
+        ],
+        "zero_alpha_pixels": 0,
+        "opaque_pixels": 1573538,
+        "nonzero_bbox": [
+          0,
+          0,
+          1774,
+          887
+        ],
+        "alpha_over_10_bbox": [
+          0,
+          0,
+          1774,
+          887
+        ],
+        "edge_pixels_alpha_over_10": {
+          "top": 1774,
+          "bottom": 1774,
+          "left": 887,
+          "right": 887
+        },
+        "meaningful_alpha_margins": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "checks": {
+          "png_decoded": true,
+          "hash_unchanged_since_qa_snapshot": true,
+          "hash_matches_generation_record": true,
+          "visual_review_completed": true,
+          "complete_subject_observed": null,
+          "visible_halo_observed": null,
+          "actual_subject_truncation_observed": false,
+          "alpha_requirement_met": true
+        },
+        "visual_observation_fr": "Salle de repos abritée, couchages bas, casiers fermés et panneaux céramiques pâles ; fenêtre haute fermée, pas de forge ou lave ouverte.",
+        "finding_codes": []
+      },
+      {
+        "id": "matieres_lava_ceramique_v5",
+        "tribe_key": "LAVA",
+        "category": "matieres",
+        "path": "/workspace/scratch/a215ef7a9d28/production_v5_20261106/images/matieres/MATIERE_LAVA_CERAMIQUE_V5.png",
+        "requires_alpha": false,
+        "available": true,
+        "width": 1254,
+        "height": 1254,
+        "mode": "RGB",
+        "bytes": 3859795,
+        "sha256": "9c80c4fae3f17171b013bb527410917f79f593e3079a99252a84ffb38d0627c7",
+        "alpha_extrema": [
+          255,
+          255
+        ],
+        "zero_alpha_pixels": 0,
+        "opaque_pixels": 1572516,
+        "nonzero_bbox": [
+          0,
+          0,
+          1254,
+          1254
+        ],
+        "alpha_over_10_bbox": [
+          0,
+          0,
+          1254,
+          1254
+        ],
+        "edge_pixels_alpha_over_10": {
+          "top": 1254,
+          "bottom": 1254,
+          "left": 1254,
+          "right": 1254
+        },
+        "meaningful_alpha_margins": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "checks": {
+          "png_decoded": true,
+          "hash_unchanged_since_qa_snapshot": true,
+          "hash_matches_generation_record": true,
+          "visual_review_completed": true,
+          "complete_subject_observed": null,
+          "visible_halo_observed": null,
+          "actual_subject_truncation_observed": false,
+          "alpha_requirement_met": true
+        },
+        "visual_observation_fr": "Céramique gris clair refroidie et non émissive, grain fin, microfissures et joints de plaques ; aucun métal brillant, magma ou fissure incandescente.",
+        "finding_codes": []
+      },
+      {
+        "id": "personnages_darkjungle_regleur_v5",
+        "tribe_key": "DARKJUNGLE",
+        "category": "personnages",
+        "path": "/workspace/scratch/a215ef7a9d28/production_v5_20261106/images/personnages/MEMBRE_DARKJUNGLE_REGLEUR_V5.png",
+        "requires_alpha": true,
+        "available": true,
+        "width": 1024,
+        "height": 1536,
+        "mode": "RGBA",
+        "bytes": 1943534,
+        "sha256": "c5755203978f76c641b63f36e4aa92b781dfa24267932e2e1ca62af628b467b1",
+        "alpha_extrema": [
+          0,
+          254
+        ],
+        "zero_alpha_pixels": 1097116,
+        "opaque_pixels": 0,
+        "nonzero_bbox": [
+          39,
+          0,
+          1010,
+          1527
+        ],
+        "alpha_over_10_bbox": [
+          236,
+          10,
+          761,
+          1524
+        ],
+        "edge_pixels_alpha_over_10": {
+          "top": 0,
+          "bottom": 0,
+          "left": 0,
+          "right": 0
+        },
+        "meaningful_alpha_margins": [
+          236,
+          10,
+          263,
+          12
+        ],
+        "checks": {
+          "png_decoded": true,
+          "hash_unchanged_since_qa_snapshot": true,
+          "hash_matches_generation_record": true,
+          "visual_review_completed": true,
+          "complete_subject_observed": true,
+          "visible_halo_observed": false,
+          "actual_subject_truncation_observed": false,
+          "alpha_requirement_met": true
+        },
+        "visual_observation_fr": "Biomasque continu, instrument optique fermé, vêtements bleu-noir ; silhouette entière. Transparence propre visible sur deux fonds, marges verticales serrées.",
+        "finding_codes": [
+          "MARGE_ETROITE",
+          "ALPHA_MAX_254"
+        ]
+      },
+      {
+        "id": "personnages_darkjungle_preparatrice_v5",
+        "tribe_key": "DARKJUNGLE",
+        "category": "personnages",
+        "path": "/workspace/scratch/a215ef7a9d28/production_v5_20261106/images/personnages/MEMBRE_DARKJUNGLE_PREPARATRICE_V5.png",
+        "requires_alpha": true,
+        "available": true,
+        "width": 1024,
+        "height": 1536,
+        "mode": "RGBA",
+        "bytes": 1968509,
+        "sha256": "575940d847e267aaa289114e10db21cde1f658f1244264f27490dd3f6389e241",
+        "alpha_extrema": [
+          0,
+          254
+        ],
+        "zero_alpha_pixels": 1077833,
+        "opaque_pixels": 0,
+        "nonzero_bbox": [
+          47,
+          0,
+          994,
+          1526
+        ],
+        "alpha_over_10_bbox": [
+          235,
+          8,
+          788,
+          1524
+        ],
+        "edge_pixels_alpha_over_10": {
+          "top": 0,
+          "bottom": 0,
+          "left": 0,
+          "right": 0
+        },
+        "meaningful_alpha_margins": [
+          235,
+          8,
+          236,
+          12
+        ],
+        "checks": {
+          "png_decoded": true,
+          "hash_unchanged_since_qa_snapshot": true,
+          "hash_matches_generation_record": true,
+          "visual_review_completed": true,
+          "complete_subject_observed": true,
+          "visible_halo_observed": false,
+          "actual_subject_truncation_observed": false,
+          "alpha_requirement_met": true
+        },
+        "visual_observation_fr": "Face biologique à mandibules, deux groupes de dreadlocks, mallette et cylindre fermés ; tenue pratique complète, aucune lueur biologique ni plante magique.",
+        "finding_codes": [
+          "MARGE_ETROITE",
+          "ALPHA_MAX_254"
+        ]
+      },
+      {
+        "id": "objets_darkjungle_optiques_v5",
+        "tribe_key": "DARKJUNGLE",
+        "category": "objets",
+        "path": "/workspace/scratch/a215ef7a9d28/production_v5_20261106/images/objets/OBJET_DARKJUNGLE_OPTIQUES_V5.png",
+        "requires_alpha": true,
+        "available": true,
+        "width": 1536,
+        "height": 1024,
+        "mode": "RGBA",
+        "bytes": 2638113,
+        "sha256": "1c07f57007fafb16db0abb6e7799ec885bb81785de822532ac005600aa37034a",
+        "alpha_extrema": [
+          0,
+          254
+        ],
+        "zero_alpha_pixels": 698878,
+        "opaque_pixels": 0,
+        "nonzero_bbox": [
+          0,
+          0,
+          1516,
+          1024
+        ],
+        "alpha_over_10_bbox": [
+          197,
+          18,
+          1340,
+          969
+        ],
+        "edge_pixels_alpha_over_10": {
+          "top": 0,
+          "bottom": 0,
+          "left": 0,
+          "right": 0
+        },
+        "meaningful_alpha_margins": [
+          197,
+          18,
+          196,
+          55
+        ],
+        "checks": {
+          "png_decoded": true,
+          "hash_unchanged_since_qa_snapshot": true,
+          "hash_matches_generation_record": true,
+          "visual_review_completed": true,
+          "complete_subject_observed": true,
+          "visible_halo_observed": false,
+          "actual_subject_truncation_observed": false,
+          "alpha_requirement_met": true
+        },
+        "visual_observation_fr": "Coffret complet, support d’étalonnage connecté, deux lentilles de réserve et doublure rembourrée ; pas de visage, masque ou rayon projeté.",
+        "finding_codes": [
+          "MARGE_ETROITE",
+          "ALPHA_MAX_254"
+        ]
+      },
+      {
+        "id": "objets_darkjungle_repos_v5",
+        "tribe_key": "DARKJUNGLE",
+        "category": "objets",
+        "path": "/workspace/scratch/a215ef7a9d28/production_v5_20261106/images/objets/OBJET_DARKJUNGLE_REPOS_V5.png",
+        "requires_alpha": true,
+        "available": true,
+        "width": 1672,
+        "height": 941,
+        "mode": "RGBA",
+        "bytes": 2045174,
+        "sha256": "8df385bd44c398854e06bd6a4fd71df8a404bbe4c906131debd8416dc209483c",
+        "alpha_extrema": [
+          0,
+          255
+        ],
+        "zero_alpha_pixels": 727435,
+        "opaque_pixels": 397,
+        "nonzero_bbox": [
+          0,
+          8,
+          1671,
+          941
+        ],
+        "alpha_over_10_bbox": [
+          99,
+          38,
+          1575,
+          904
+        ],
+        "edge_pixels_alpha_over_10": {
+          "top": 0,
+          "bottom": 0,
+          "left": 0,
+          "right": 0
+        },
+        "meaningful_alpha_margins": [
+          99,
+          38,
+          97,
+          37
+        ],
+        "checks": {
+          "png_decoded": true,
+          "hash_unchanged_since_qa_snapshot": true,
+          "hash_matches_generation_record": true,
+          "visual_review_completed": true,
+          "complete_subject_observed": true,
+          "visible_halo_observed": false,
+          "actual_subject_truncation_observed": false,
+          "alpha_requirement_met": true
+        },
+        "visual_observation_fr": "Capsule horizontale vide, capot opaque partiellement relevé, doublure et tiroir fermé ; silhouette complète, pas de système cryogénique.",
+        "finding_codes": []
+      },
+      {
+        "id": "objets_darkjungle_preparations_v5",
+        "tribe_key": "DARKJUNGLE",
+        "category": "objets",
+        "path": "/workspace/scratch/a215ef7a9d28/production_v5_20261106/images/objets/OBJET_DARKJUNGLE_PREPARATIONS_V5.png",
+        "requires_alpha": true,
+        "available": true,
+        "width": 1536,
+        "height": 1024,
+        "mode": "RGBA",
+        "bytes": 2801724,
+        "sha256": "278baa7b54e4e1fb0697618ebd960ce2755b35ee8c40385bd393a945bf01c65b",
+        "alpha_extrema": [
+          0,
+          254
+        ],
+        "zero_alpha_pixels": 630775,
+        "opaque_pixels": 0,
+        "nonzero_bbox": [
+          0,
+          22,
+          1506,
+          1024
+        ],
+        "alpha_over_10_bbox": [
+          145,
+          25,
+          1386,
+          990
+        ],
+        "edge_pixels_alpha_over_10": {
+          "top": 0,
+          "bottom": 0,
+          "left": 0,
+          "right": 0
+        },
+        "meaningful_alpha_margins": [
+          145,
+          25,
+          150,
+          34
+        ],
+        "checks": {
+          "png_decoded": true,
+          "hash_unchanged_since_qa_snapshot": true,
+          "hash_matches_generation_record": true,
+          "visual_review_completed": true,
+          "complete_subject_observed": true,
+          "visible_halo_observed": false,
+          "actual_subject_truncation_observed": false,
+          "alpha_requirement_met": true
+        },
+        "visual_observation_fr": "Mallette entière avec fioles opaques fermées, linges pliés et étuis d’instruments fermés ; pas de sang, aiguille ou spécimen biologique.",
+        "finding_codes": [
+          "ALPHA_MAX_254"
+        ]
+      },
+      {
+        "id": "lieux_darkjungle_atelier_v5",
+        "tribe_key": "DARKJUNGLE",
+        "category": "lieux",
+        "path": "/workspace/scratch/a215ef7a9d28/production_v5_20261106/images/lieux/LIEU_DARKJUNGLE_ATELIER_V5.png",
+        "requires_alpha": false,
+        "available": true,
+        "width": 1774,
+        "height": 887,
+        "mode": "RGB",
+        "bytes": 3076676,
+        "sha256": "d30b12a4a0975f8012625c93a68395acb864203d724f54e480c0284b3413d18a",
+        "alpha_extrema": [
+          255,
+          255
+        ],
+        "zero_alpha_pixels": 0,
+        "opaque_pixels": 1573538,
+        "nonzero_bbox": [
+          0,
+          0,
+          1774,
+          887
+        ],
+        "alpha_over_10_bbox": [
+          0,
+          0,
+          1774,
+          887
+        ],
+        "edge_pixels_alpha_over_10": {
+          "top": 1774,
+          "bottom": 1774,
+          "left": 887,
+          "right": 887
+        },
+        "meaningful_alpha_margins": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "checks": {
+          "png_decoded": true,
+          "hash_unchanged_since_qa_snapshot": true,
+          "hash_matches_generation_record": true,
+          "visual_review_completed": true,
+          "complete_subject_observed": null,
+          "visible_halo_observed": null,
+          "actual_subject_truncation_observed": false,
+          "alpha_requirement_met": true
+        },
+        "visual_observation_fr": "Voûte rocheuse et stalactites clairement visibles, forêt bioluminescente intérieure cyan-violet, lampes de travail ambrées distinctes ; tables optiques et voie sèche continue.",
+        "finding_codes": []
+      },
+      {
+        "id": "lieux_darkjungle_alcoves_v5",
+        "tribe_key": "DARKJUNGLE",
+        "category": "lieux",
+        "path": "/workspace/scratch/a215ef7a9d28/production_v5_20261106/images/lieux/LIEU_DARKJUNGLE_ALCOVES_V5.png",
+        "requires_alpha": false,
+        "available": true,
+        "width": 1774,
+        "height": 887,
+        "mode": "RGB",
+        "bytes": 3225292,
+        "sha256": "7f5f393e7495f7983cfcd11aa03a9b3a57b73a5c53aa2bc41402c517f4a4f88f",
+        "alpha_extrema": [
+          255,
+          255
+        ],
+        "zero_alpha_pixels": 0,
+        "opaque_pixels": 1573538,
+        "nonzero_bbox": [
+          0,
+          0,
+          1774,
+          887
+        ],
+        "alpha_over_10_bbox": [
+          0,
+          0,
+          1774,
+          887
+        ],
+        "edge_pixels_alpha_over_10": {
+          "top": 1774,
+          "bottom": 1774,
+          "left": 887,
+          "right": 887
+        },
+        "meaningful_alpha_margins": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "checks": {
+          "png_decoded": true,
+          "hash_unchanged_since_qa_snapshot": true,
+          "hash_matches_generation_record": true,
+          "visual_review_completed": true,
+          "complete_subject_observed": null,
+          "visible_halo_observed": null,
+          "actual_subject_truncation_observed": false,
+          "alpha_requirement_met": true
+        },
+        "visual_observation_fr": "Trois alcôves de couchage sous plafond rocheux, rideaux et rangements fermés ; forêt intérieure par une arche, voie sèche continue, sans ciel ni étoiles.",
+        "finding_codes": []
+      },
+      {
+        "id": "matieres_darkjungle_fibres_v5",
+        "tribe_key": "DARKJUNGLE",
+        "category": "matieres",
+        "path": "/workspace/scratch/a215ef7a9d28/production_v5_20261106/images/matieres/MATIERE_DARKJUNGLE_FIBRES_V5.png",
+        "requires_alpha": false,
+        "available": true,
+        "width": 1254,
+        "height": 1254,
+        "mode": "RGB",
+        "bytes": 3416885,
+        "sha256": "5c279fac0fba5178e54cdcf94e8be35dcbd302a17735dd8444d75d828f3d4a4d",
+        "alpha_extrema": [
+          255,
+          255
+        ],
+        "zero_alpha_pixels": 0,
+        "opaque_pixels": 1572516,
+        "nonzero_bbox": [
+          0,
+          0,
+          1254,
+          1254
+        ],
+        "alpha_over_10_bbox": [
+          0,
+          0,
+          1254,
+          1254
+        ],
+        "edge_pixels_alpha_over_10": {
+          "top": 1254,
+          "bottom": 1254,
+          "left": 1254,
+          "right": 1254
+        },
+        "meaningful_alpha_margins": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "checks": {
+          "png_decoded": true,
+          "hash_unchanged_since_qa_snapshot": true,
+          "hash_matches_generation_record": true,
+          "visual_review_completed": true,
+          "complete_subject_observed": null,
+          "visible_halo_observed": null,
+          "actual_subject_truncation_observed": false,
+          "alpha_requirement_met": true
+        },
+        "visual_observation_fr": "Fibres souples bleu-noir entrelacées et rares fils cyan non émissifs, matière mate opaque bord à bord ; absence de pierre ou champignon lumineux.",
+        "finding_codes": []
+      },
+      {
+        "id": "PT-ART-01-V1",
+        "tribe_key": "CORRECTIONS",
+        "category": "corrections",
+        "path": "/workspace/scratch/a215ef7a9d28/production_v5_20261106/images/corrections/CITERNE_DESERT_ORIGINE_V1_PROTEGEE_V5.png",
+        "requires_alpha": true,
+        "available": true,
+        "width": 1024,
+        "height": 1536,
+        "mode": "RGBA",
+        "bytes": 2790216,
+        "sha256": "d2897149c3d43240e0c9731467a0ef0a1fdd8e85d85ea175100ee08e4d68039c",
+        "alpha_extrema": [
+          0,
+          254
+        ],
+        "zero_alpha_pixels": 676494,
+        "opaque_pixels": 0,
+        "nonzero_bbox": [
+          0,
+          0,
+          1020,
+          1536
+        ],
+        "alpha_over_10_bbox": [
+          22,
+          6,
+          994,
+          1505
+        ],
+        "edge_pixels_alpha_over_10": {
+          "top": 0,
+          "bottom": 0,
+          "left": 0,
+          "right": 0
+        },
+        "meaningful_alpha_margins": [
+          22,
+          6,
+          30,
+          31
+        ],
+        "checks": {
+          "png_decoded": true,
+          "hash_unchanged_since_qa_snapshot": true,
+          "hash_matches_generation_record": true,
+          "visual_review_completed": true,
+          "complete_subject_observed": true,
+          "visible_halo_observed": false,
+          "actual_subject_truncation_observed": false,
+          "alpha_requirement_met": true
+        },
+        "visual_observation_fr": "Comparaison directe avec la source V1 : le bassin est désormais couvert et verrouillé ; flexible relié à un récipient fermé. Silhouette, pieds, grès ocre, bronze, gravures et hublots turquoise sont reconnaissables et conservés dans leur ensemble.",
+        "finding_codes": [
+          "MARGE_ETROITE",
+          "ALPHA_MAX_254"
+        ]
+      },
+      {
+        "id": "PT-ART-01-V2",
+        "tribe_key": "CORRECTIONS",
+        "category": "corrections",
+        "path": "/workspace/scratch/a215ef7a9d28/production_v5_20261106/images/corrections/CITERNE_DESERT_ORIGINE_V2_PROTEGEE_V5.png",
+        "requires_alpha": true,
+        "available": true,
+        "width": 1024,
+        "height": 1536,
+        "mode": "RGBA",
+        "bytes": 2684149,
+        "sha256": "d285b4e976085909b9069808de3dc1837b30488702c79028a36be8be7211da81",
+        "alpha_extrema": [
+          0,
+          254
+        ],
+        "zero_alpha_pixels": 716864,
+        "opaque_pixels": 0,
+        "nonzero_bbox": [
+          0,
+          0,
+          994,
+          1520
+        ],
+        "alpha_over_10_bbox": [
+          96,
+          7,
+          913,
+          1498
+        ],
+        "edge_pixels_alpha_over_10": {
+          "top": 0,
+          "bottom": 0,
+          "left": 0,
+          "right": 0
+        },
+        "meaningful_alpha_margins": [
+          96,
+          7,
+          111,
+          38
+        ],
+        "checks": {
+          "png_decoded": true,
+          "hash_unchanged_since_qa_snapshot": true,
+          "hash_matches_generation_record": true,
+          "visual_review_completed": true,
+          "complete_subject_observed": true,
+          "visible_halo_observed": false,
+          "actual_subject_truncation_observed": false,
+          "alpha_requirement_met": true
+        },
+        "visual_observation_fr": "Comparaison directe avec la source V2 : la zone ouverte de distribution est fermée par un panneau, flexible raccordé à une gourde fermée ; aucun écoulement ou bassin exposé. Corps, conduit latéral, dôme, hublots turquoise et pieds restent reconnaissables. La zone frontale a changé conformément à la correction demandée.",
+        "finding_codes": [
+          "MARGE_ETROITE",
+          "ALPHA_MAX_254"
+        ]
+      }
+    ],
+    "qa_preview_paths": [
+      "/workspace/scratch/a215ef7a9d28/production_v5_20261106/qa/transversale/CORRECTIONS_clair_sombre.jpg",
+      "/workspace/scratch/a215ef7a9d28/production_v5_20261106/qa/transversale/DARKJUNGLE_decors_matiere.jpg",
+      "/workspace/scratch/a215ef7a9d28/production_v5_20261106/qa/transversale/DARKJUNGLE_sprites_clair_sombre.jpg",
+      "/workspace/scratch/a215ef7a9d28/production_v5_20261106/qa/transversale/DESERT_decors_matiere.jpg",
+      "/workspace/scratch/a215ef7a9d28/production_v5_20261106/qa/transversale/DESERT_sprites_clair_sombre.jpg",
+      "/workspace/scratch/a215ef7a9d28/production_v5_20261106/qa/transversale/FOREST_decors_matiere.jpg",
+      "/workspace/scratch/a215ef7a9d28/production_v5_20261106/qa/transversale/FOREST_sprites_clair_sombre.jpg",
+      "/workspace/scratch/a215ef7a9d28/production_v5_20261106/qa/transversale/LAVA_decors_matiere.jpg",
+      "/workspace/scratch/a215ef7a9d28/production_v5_20261106/qa/transversale/LAVA_sprites_clair_sombre.jpg",
+      "/workspace/scratch/a215ef7a9d28/production_v5_20261106/qa/transversale/SLUMS_decors_matiere.jpg",
+      "/workspace/scratch/a215ef7a9d28/production_v5_20261106/qa/transversale/SLUMS_rations_detail_clair.jpg",
+      "/workspace/scratch/a215ef7a9d28/production_v5_20261106/qa/transversale/SLUMS_sprites_clair_sombre.jpg"
+    ]
+  },
+  "catalogue_pdf": {
+    "filename": "CATALOGUE_YAUTJA_TRIBUS_V5.pdf",
+    "local_path": "/workspace/scratch/a215ef7a9d28/production_v5_20261106/delivery/CATALOGUE_YAUTJA_TRIBUS_V5.pdf",
+    "size_bytes": 4504618,
+    "sha256": "1e724bd86ae423c70d935d4056ceafb9415fe88074c3ad1ba3830331a56a6269",
+    "library_file_id": null,
+    "library_url": null,
+    "storage_status": "workspace_ready_persistent_save_failed",
+    "access_note": "fichier remis dans la conversation ; lien durable en attente",
+    "delivery_channel": "conversation"
+  },
+  "delivery_storage": {
+    "delivery_channel": "conversation",
+    "produced_png_files": 42,
+    "delivered_png_files_in_conversation": 42,
+    "new_archives_delivered_in_conversation": 6,
+    "new_archives_durably_saved": 0,
+    "catalogue_pdf_durably_saved": false,
+    "storage_status": "workspace_ready_persistent_save_failed",
+    "persistence_error": {
+      "stage": "prepare_uploads",
+      "message": "library upload failed: prepare_uploads failed",
+      "known_finalizations": 0,
+      "helper_attempts": 3,
+      "outcome": "preparation_failed_no_library_file_ids_returned"
+    },
+    "session_links_published_in_github_documentation": false
+  }
+}
