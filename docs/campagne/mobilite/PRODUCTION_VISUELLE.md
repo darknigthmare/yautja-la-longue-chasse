@@ -29,3 +29,10 @@ SFX à prévoir : ralenti, moteur/locomotion par vitesse, départ/arrêt, boost,
 Kenner/Badlands : collecter les références primaires exactes avant certification ; ne pas remplacer la silhouette de référence par des enjolivements inventés puis annoncer « 1:1 ». Les mécaniques et armements proposés ne prouvent pas leur présence dans l'œuvre. Concepts originaux de destriers : ne pas attribuer leur dessin à un artiste non identifié.
 
 Contrôles : RGBA avec alpha réellement utile, dimensions, sujet non coupé, pivot, échelle, contacts, sens du mouvement, profondeur, pose du pilote, stabilité caméra, feu/camouflage/cargo synchronisés, toutes vues utiles et lecture en jeu. Les comptes et hashes sont des preuves techniques, jamais une revue artistique humaine. Ne jamais passer `hunterSpriteAtlas.validated` à vrai à partir du seul export.
+
+
+<!-- mobility-all-sources-20261106:start -->
+## Sources graphiques conservées dans la PR
+
+[Inventaire actuel des 87 PNG](DEPOT_COMPLET_SPRITES_20261106.md) : 20 sorties individuelles HD 01–20, 50 concepts V0.1, un essai non retenu et 16 planches archivées séparément. Les anciens reçus restent historiques. Aucun nouveau lot 21–30, aucune animation, intégration moteur ou validation artistique 1:1 ne découle de cet import.
+<!-- mobility-all-sources-20261106:end -->

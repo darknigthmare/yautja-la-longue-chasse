@@ -133,3 +133,10 @@ Priorités : **MOB-SLICE-01 `hunter_hoverbike`**, **MOB-SLICE-02 `blade_fighter_
 | MOB-QA-12 Performance | Mesure sur scène/matériel/résolution identifiés ; 60 FPS est une cible, jamais une preuve documentaire. |
 
 La présente PR ne ferme **aucun** de ces contrôles de gameplay. La validation livrée concerne la structure documentaire, l'unicité des fiches, la conservation des données source et la génération reproductible des exports. Références artistiques primaires, contrôle navigateur/manette, équilibrage, animations, sons et intégration jouable restent à réaliser.
+
+
+<!-- mobility-all-sources-20261106:start -->
+## Sources graphiques conservées dans la PR
+
+[Inventaire actuel des 87 PNG](DEPOT_COMPLET_SPRITES_20261106.md) : 20 sorties individuelles HD 01–20, 50 concepts V0.1, un essai non retenu et 16 planches archivées séparément. Les anciens reçus restent historiques. Aucun nouveau lot 21–30, aucune animation, intégration moteur ou validation artistique 1:1 ne découle de cet import.
+<!-- mobility-all-sources-20261106:end -->
