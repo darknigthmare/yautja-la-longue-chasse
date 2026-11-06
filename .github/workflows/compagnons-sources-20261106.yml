@@ -1,103 +1,40 @@
-name: Compagnons - transfert des sources individuelles
+name: Compagnons - intégrité des PNG individuels
 
-# One-off transfer requested by the project owner. This workflow writes only
-# to this dedicated asset branch and will become read-only after the transfer.
+# The one-off binary transfer completed at 1a9ddbd18008438d03f722f4e532c03dffce5a4f.
+# No remote bundle download, auto-commit, or push remains in this workflow.
 on:
   push:
     branches: ['art/compagnons-individuels-20261106']
-    paths: ['.github/workflows/compagnons-sources-20261106.yml']
+    paths:
+      - 'production/compagnons/20261106-sprites-individuels-revue/**'
+      - '.github/workflows/compagnons-sources-20261106.yml'
+  pull_request:
+    paths:
+      - 'production/compagnons/20261106-sprites-individuels-revue/**'
+      - '.github/workflows/compagnons-sources-20261106.yml'
+  workflow_dispatch:
 
 permissions:
-  contents: write
-
-concurrency:
-  group: compagnons-sources-20261106
-  cancel-in-progress: false
+  contents: read
 
 jobs:
-  import-sources:
-    if: github.repository == 'darknigthmare/yautja-la-longue-chasse' && github.ref == 'refs/heads/art/compagnons-individuels-20261106'
+  verify-individual-sources:
     runs-on: ubuntu-latest
-    timeout-minutes: 8
+    timeout-minutes: 5
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: art/compagnons-individuels-20261106
           fetch-depth: 1
           lfs: false
+          persist-credentials: false
           sparse-checkout: |
-            production/compagnons
-            .github/workflows
+            production/compagnons/20261106-sprites-individuels-revue
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
       - name: Install image verifier
         run: python -m pip install --disable-pip-version-check 'Pillow==12.0.0'
-      - name: Fetch exact delivered archive and verify every individual PNG
-        shell: bash
-        run: |
-          python - <<'PY'
-          import hashlib, io, json, pathlib, urllib.request, zipfile
-          from PIL import Image
-          url = 'https://d2ol7oe51mr4n9.cloudfront.net/user_3JHwJlNzgmcxQy32tjF7NiVZPuH/cacb279b-b54a-432e-8a06-c3f16a5165e2.zip'
-          expected = 'df26541c9402e55b6f56040539330834106c9c3d5ffbda73a8259f71ee0dbd58'
-          with urllib.request.urlopen(url, timeout=45) as response:
-              payload = response.read(2_000_001)
-          assert len(payload) == 609025, 'Unexpected archive size'
-          assert hashlib.sha256(payload).hexdigest() == expected, 'Archive digest mismatch'
-          root = pathlib.Path('production/compagnons/20261106-sprites-individuels-revue')
-          prefix = str(root) + '/'
-          archive = zipfile.ZipFile(io.BytesIO(payload))
-          assert archive.testzip() is None, 'Archive CRC failure'
-          members = [i for i in archive.infolist() if not i.is_dir() and i.filename.startswith(prefix)]
-          assert len(members) == 43, 'Unexpected source file count'
-          manifest = json.loads(archive.read(prefix + 'MANIFEST.json'))
-          assert len(manifest['assets']) == 39
-          allowed = {prefix + a['file'] for a in manifest['assets']} | {prefix + n for n in ('MANIFEST.json', 'README.md', 'VERIFICATION.txt', 'verify.py')}
-          assert {i.filename for i in members} == allowed
-          for info in members:
-              path = pathlib.Path(info.filename)
-              assert '..' not in path.parts and not path.is_absolute()
-              assert info.file_size < 1_000_000
-              assert (info.external_attr >> 16) & 0o170000 != 0o120000, 'Symlink rejected'
-              data = archive.read(info)
-              if path.exists():
-                  assert path.read_bytes() == data, f'Refusing overwrite: {path}'
-              else:
-                  path.parent.mkdir(parents=True, exist_ok=True)
-                  path.write_bytes(data)
-          records = []
-          for asset in manifest['assets']:
-              path = root / asset['file']
-              raw = path.read_bytes()
-              assert hashlib.sha256(raw).hexdigest() == asset['sha256']
-              with Image.open(io.BytesIO(raw)) as image:
-                  image.load()
-                  assert image.format == 'PNG' and image.size == (80, 96)
-                  assert image.mode == 'RGBA'
-                  alpha = image.getchannel('A')
-                  assert alpha.getextrema()[0] == 0 and alpha.getextrema()[1] > 0
-                  box = alpha.getbbox()
-                  assert box and box[0] > 0 and box[1] > 0 and box[2] < 80 and box[3] < 96
-              records.append({'id': asset['id'], 'path': str(path), 'sha256': asset['sha256'], 'gitBlobSha': hashlib.sha1(b'blob ' + str(len(raw)).encode() + b'\0' + raw).hexdigest(), 'bytes': len(raw), 'width': 80, 'height': 96, 'status': 'draft_requires_redraw', 'humanValidated': False, 'approvedForRuntime': False})
-          assert len({r['sha256'] for r in records}) == 39
-          receipt = {'schemaVersion': 1, 'date': '2026-11-06', 'sourcePullRequest': 116, 'sourcePullRequestAlreadyMerged': True, 'deliveryBranch': 'art/compagnons-individuels-20261106', 'archiveSha256': expected, 'individualPng': 39, 'allPngSourceBytesPreserved': True, 'artisticFidelity1to1Validated': False, 'runtimeIntegrated': False, 'historicalManifestNote': 'MANIFEST.json describes the earlier unpublished local delivery. This receipt and Git history record the subsequent publication; historical review flags remain unchanged.', 'assets': records}
-          (root / 'DEPOT_PNG.json').write_text(json.dumps(receipt, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
-          lines = ['# 39 PNG individuels - fichiers du dépôt', '', 'Suite de la bible PR #116, déjà fusionnée. Les PNG ci-dessous sont effectivement versionnés individuellement, sans modification de leurs octets. Ce sont les brouillons précédemment livrés, pas de nouveaux sprites certifiés 1:1.', '', 'Le MANIFEST et le README historiques conservent le statut de la livraison locale initiale. DEPOT_PNG.json décrit ce transfert. Aucun recrutement ni asset runtime n\u2019est activé.', '', '| Personnage et vue | PNG |', '| --- | --- |']
-          for asset in manifest['assets']:
-              lines.append(f"| {asset['name']} - {asset['id']} | [{pathlib.Path(asset['file']).name}]({asset['file']}) |")
-          (root / 'INDEX_SPRITES.md').write_text('\n'.join(lines) + '\n', encoding='utf-8')
-          print(json.dumps({'png':len(records),'characters':len({a['characterId'] for a in manifest['assets']}),'bytes':sum(r['bytes'] for r in records),'sourceArchiveSha256':expected}, indent=2))
-          PY
-      - name: Commit only the requested individual source files
-        shell: bash
-        run: |
-          set -euo pipefail
-          test "$GITHUB_REF_NAME" = 'art/compagnons-individuels-20261106'
-          git config user.name 'github-actions[bot]'
-          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add -- production/compagnons/20261106-sprites-individuels-revue
-          if git diff --cached --quiet; then exit 0; fi
-          git diff --cached --check
-          git commit -m 'art(compagnons): publier les 39 PNG individuels auparavant uniquement livrés localement'
-          git push origin HEAD:refs/heads/art/compagnons-individuels-20261106
+      - name: Verify actual PNG files, hashes, transparency and review-only state
+        run: python production/compagnons/20261106-sprites-individuels-revue/verify.py
+      - name: No working tree modifications
+        run: git diff --exit-code
