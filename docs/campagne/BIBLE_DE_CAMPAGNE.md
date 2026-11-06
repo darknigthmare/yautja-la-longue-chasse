@@ -1418,7 +1418,7 @@ Source : [plasmacaster types, AvP Central](https://www.avpcentral.com/predator-s
 | OT-02 smart disc (en jeu) | *Predator 2*, *AVP* | film | Serrated throwing disc with a central grip. |
 | OT-03 net gun (en jeu) | Films | film | Net launcher plus the deployed net as a separate layer. |
 | OT-04 speargun | Romans (*Bhrak-chei*) ; Scarface, *Concrete Jungle* (NECA) | vérifié | Compact Yautja speargun with bolts, loaded and empty. |
-| OT-05 glaive | PHG (à vérifier) | interprétation | Long polearm blade. Not found in any PHG source consulted: proposed item. |
+| OT-05 glaive | *Predator: Concrete Jungle* (jeu) | vérifié (nom) | Long polearm blade (weapon listed in Predator: Concrete Jungle; shape not described, check a capture). |
 | OT-06 war club | PHG (niveau 54) | vérifié (fonction) | Ceremonial bladed club for close melee (PHG, level 54). |
 | OT-07 bow (en jeu) | PHG ; projet (`yautja-bow`) | interprétation | Recurve Yautja bow and arrows. |
 | OT-08 shield | Feral, *Prey* | vérifié | Folding forearm shield (see the existing PIT Feral sprites). |
@@ -1436,7 +1436,7 @@ Relevé fait le 6 novembre 2026 dans l'historique des patchs d'AvP Galaxy (jusqu
 - WB-02 : la source ne parle pas de lames dentelées ; le mot est retiré.
 - WB-08 : la lame unique est celle du Falconer (*Predators*), elle se rétracte dans le gantelet.
 - WB-10 : porteurs cités par la source : Dark, Spartan, Wolf et Claw (*Aliens vs. Predator*, 2010).
-- OT-05 glaive : absent de toutes les sources PHG consultées ; reste une proposition.
+- OT-05 glaive : absent des sources PHG consultées, mais présent dans Predator: Concrete Jungle (voir « Contrôle des manques »).
 - OT-06 war club et OT-07 bow : confirmés dans PHG (niveaux 54 et 38).
 - MK-23 → MK-42 : remplacés par la table « Masques PHG » ci-dessous.
 
@@ -1610,6 +1610,107 @@ Sources : [arsenal yautja, AvP Central](https://www.avpcentral.com/predator-weap
 | OT-36 neck brace | *Predator: Killer of Killers* | vérifié | Collar with two red lights. |
 | OT-37 jetpack | AvP Central (équipement) | vérifié | Compact pack with twin thrusters leaving red flame trails. |
 | OT-38 heavy plasma cannon, burner | *AvP: War* / *Duel* (comics) | vérifié (fonction) | Two-handed plasma weapons; see PC-11. |
+
+### Contrôle des manques : ajouts de la franchise
+
+Comparaison du catalogue avec les index d'AvP Central (armes, technologie, équipement, grenades, net guns, harpons, pistolets, masques à cornes, profils des films, des jeux et des jouets) et les listes d'armes des jeux *AvP 2*, *AvP* (2010) et *Concrete Jungle*. Les personnages de romans et de comics secondaires (environ 80 profils) ne sont pas repris un par un : seuls les objets cités comme iconiques ou réutilisés ailleurs le sont.
+
+**Corrections**
+
+- OT-05 glaive : l'arme existe dans *Predator: Concrete Jungle* (liste d'armes : « Glaive, Maul ») ; la source passe de PHG à *Concrete Jungle*.
+- OT-03 net gun : la version de City Hunter est un lanceur couleur bronze, porté comme un pistolet dans un étui sur la jambe gauche.
+- OT-04 speargun : arme à deux mains de type fusil de précision dans les jeux *AvP*, pistolet à une main dans *Concrete Jungle*.
+- OT-23 chain whip : dans *Killer of Killers*, le fouet de l'Oni finit par un grappin griffu.
+- OT-26 ceremonial dagger : lame souvent taillée dans un os de Xénomorphe.
+- MK-13 dek : dans le film, Dek se fabrique un masque dans la carapace d'un Bone Bison (voir MK-64) ; le masque d'entraînement actuel reste une interprétation.
+- DR-15 : les dreads de Njohrr sont blancs (âge).
+
+#### Masques ajoutés
+
+| ID | Source | Statut | Détails |
+| --- | --- | --- | --- |
+| MK-46 tracker | Tracker, *Predators* (2010) | vérifié | Bio-helmet with battle damage on its LEFT side and two elephant-like tusks attached at the jaw. |
+| MK-47 crucified | Classic (Crucified) Predator, *Predators* (2010) | vérifié | Jungle Hunter style mask with the LEFT side broken open, partly revealing the eye. |
+| MK-48 kwei | Kwei, *Badlands* | à relever | Similar to Dek's mask with its own details; describe from a still. |
+| MK-49 njohrr | Njohrr, *Badlands* | vérifié | Bio-mask with antler-like horns on each side. |
+| MK-50 grendel king | Grendel King, *Killer of Killers* | vérifié | Custom mask shaped like the face of a Yautja skull. |
+| MK-51 oni (KoK) | Samurai Killer, *Killer of Killers* | vérifié | Metallic mask over the face, lower mandibles visible beneath it; no upper mandibles, the lower pair longer, thicker, curving upward. |
+| MK-52 grendel | Viking Killer, *Killer of Killers* | à relever | Bio-mask not described; describe from a still. |
+| MK-53 pilot | Pilot, *Killer of Killers* | vérifié (tête) | No mask: bald head, reinforced nose and mouth area, fully covered cybernetic eye. |
+| MK-54 claw | Claw, *AvP* (2010) | vérifié | Jungle Hunter based helmet with four vertical red stripes and blood streaks on the front. |
+| MK-55 dark | Dark, *AvP* (2010) | vérifié (base) | Jungle Hunter based helmet (same base as Claw, without the stripes). |
+| MK-56 alien head | Alien Head, *AvP* (2010) | vérifié | Bio-helmet shaped like a Xenomorph's head. |
+| MK-57 scarface | Scarface, *Concrete Jungle* | vérifié (partiel) | Aged, battle-worn mask; unmasked face with a deep scar and an empty LEFT eye socket (separate face layer). |
+| MK-58 clan leader | Kenner (années 1990) ; NECA Deluxe Clan Leader | vérifié | Bio-mask with giant horns, the longest of any known Predator. |
+| MK-59 nightstorm | NECA (Scarab Predator) | vérifié | Anubis-like mask with horn-like ridges and mandible vents. |
+| MK-60 stalker | Kenner ; NECA | vérifié | Horns pointing downward. |
+| MK-61 hornhead | *AvP: Life and Death* (comic) ; NECA | vérifié | Small horns growing from the head itself; removable bio-mask. |
+| MK-62 mad | *Aliens vs. Predator* (arcade, 1994) | vérifié | No mask: light and dark blue skin, black hair, painted teeth and fangs. |
+| MK-63 spartan | Spartan, *AvP* (2010) | à relever | Bio-helmet not described; describe from a capture. |
+| MK-64 dek shell | Dek, *Badlands* | vérifié | Improvised mask made from the shell of a Bone Bison. |
+
+#### Dreads ajoutés
+
+| ID | Source | Statut | Prompt (à ajouter au gabarit) |
+| --- | --- | --- | --- |
+| DR-18 spartan | Spartan, *AvP* (2010) | vérifié | Black dreadlocks with yellow rings. |
+| DR-19 grendel king | Grendel King, *Killer of Killers* | vérifié | Long black dreadlocks on a charcoal-skinned head. |
+| DR-20 kwei | Kwei, *Badlands* | vérifié | Somewhat thin dreadlocks, close to the Feral's. |
+
+#### Armures ajoutées
+
+| ID | Source | Statut | Détails |
+| --- | --- | --- | --- |
+| AR-31 tracker | Tracker, *Predators* (2010) | vérifié | Heavy dark plating with reinforced sections, chest left relatively exposed, bone added to the plates (precise version of AR-16). |
+| AR-32 njohrr | Njohrr, *Badlands* | vérifié | Heavy ceremonial armour, dark metallic plating with engraved rank designs, crimson energy lines and gold detailing; separate dark cape layer. |
+| AR-33 kwei | Kwei, *Badlands* | vérifié | Armour close to Dek's, with bone shoulder pads instead of metal plates. |
+| AR-34 grendel king | Grendel King, *Killer of Killers* | vérifié | Bone armour taken from unknown prey; separate layer: enormous trophy cape made of bones, tails, rib cages and spinal columns. |
+| AR-35 grendel | Viking Killer, *Killer of Killers* | vérifié | Almost no plate armour, most of the upper body exposed; the RIGHT arm is a sonic prosthetic (see GM-12). |
+| AR-36 oni (KoK) | Samurai Killer, *Killer of Killers* | vérifié | Metallic armour over most of a lean body; one heavy pauldron on a single shoulder (concept art). |
+| AR-37 pilot | Pilot, *Killer of Killers* | vérifié | Big metallic chest armour, bone-like spikes on the shoulders. |
+| AR-38 dek | Dek, *Badlands* | vérifié | Light armour on chest and waist only; improvised variant: fur-backed armour from a Bone Bison carcass, and a vine harness worn on the back (to carry Thia). |
+| AR-39 scarface | Scarface, *Concrete Jungle* | vérifié | Reinforced plates with bone trophies, skull ornaments and tribal ornaments. |
+| AR-40 nightstorm | NECA | vérifié | Golden armour on blue skin. |
+| AR-41 mad | *Aliens vs. Predator* (arcade, 1994) | vérifié | Fishnet only, skeleton trophy necklace, 8-bit painted look. |
+
+#### Modules de brassard ajoutés
+
+| ID | Source | Statut | Prompt (à ajouter au gabarit) |
+| --- | --- | --- | --- |
+| GM-11 celtic netgun | Celtic, *AVP* (2004) | vérifié | Net launcher built into the LEFT gauntlet; net ringed with a few larger spears whose back ends spin to tighten it. |
+| GM-12 sonic arm | Grendel, *Killer of Killers* | vérifié (fonction) | Prosthetic RIGHT arm that projects destructive shockwaves; not a standard power fist. |
+| GM-13 power fist (KoK) | *Killer of Killers* | vérifié (fonction) | Fist attachment using sonic or plasma energy (variant of GM-06). |
+| GM-14 holo gauntlet | Crucified Predator, *Predators* (2010) | vérifié | Advanced wrist gauntlet with a holographic display. |
+| GM-15 vulture-beak gauntlet | Dek, *Badlands* | vérifié (nom) | Improvised gauntlet made with a vulture's beak. |
+| GM-16 charge emitter | *Aliens vs. Predator 2* | vérifié (fonction) | Gauntlet device used to operate machines, like a hacking tool. |
+| GM-17 energy sift | *Aliens vs. Predator 2* | vérifié (fonction) | Portable device that refills energy. |
+| GM-18 translator | AvP Central (gantelet) | vérifié (fonction) | Language translator in the wrist gauntlet (display layer only). |
+
+#### Armes et accessoires ajoutés (franchise)
+
+| ID | Source | Statut | Prompt (à ajouter au gabarit) |
+| --- | --- | --- | --- |
+| OT-39 plasma sword | Dek, *Badlands* ; Kwei ; Njohrr (version pliable, figurine Hot Toys) | vérifié | Sword with a red-glowing plasma blade; folded state for the Hot Toys variant. |
+| OT-40 plasma bow | Dek, *Badlands* | vérifié (nom) | Plasma-powered bow; describe from a still. |
+| OT-41 grapple gun | Dek, *Badlands* | vérifié (nom) | Handheld grapple gun; describe from a still. |
+| OT-42 razor-grass whips | Dek, *Badlands* | vérifié | Coiled whips of razor grass, improvised. |
+| OT-43 red sword | Kwei, *Badlands* | vérifié | Red-coloured sword of Njohrr's lineage. |
+| OT-44 clan sword | Njohrr, *Badlands* | vérifié (nom) | Predator sword; describe from a still. |
+| OT-45 maul | *Predator: Concrete Jungle* | vérifié (nom) | Heavy maul; describe from a capture. |
+| OT-46 mines | *Prey* ; *AVP-R* ; *Concrete Jungle* ; *AvP* (2010) ; *Killer of Killers* | vérifié | Separate items: disc mines deployed in threes (Prey, smart-disc technology); laser mines (Wolf); proximity mines in four types, sonic, fire, plasma and pulse (Concrete Jungle); mines rising about a metre off the ground (AvP 2010); homing mines (Oni, KoK). |
+| OT-47 bombs | *AvP 2* ; *Predator: Invaders from the Fourth Dimension* ; *Concrete Jungle* ; PHG | vérifié | Remote bomb detonated on command (AvP 2); electric grenade: dark baseball-sized sphere with a stitched band; fire bomb (Concrete Jungle); several grenades worn on the belt (Witch). |
+| OT-48 nets | *Prey* ; *Killer of Killers* | vérifié | Feral's hand-thrown netball on a small spinning mechanism that pulls the net in; ship cannon firing a sphere that opens into a large orange net. |
+| OT-49 harpoons | *Fire and Stone* ; *Killer of Killers* ; *Predator vs. Judge Dredd* | vérifié | Ahab's harpoon gun, sometimes tethered; ground harpoon turret worked by one Yautja; harpoon on a cable pulled back by a drone; handheld launcher with a barbed head on a cable. |
+| OT-50 plasma pistol | *Aliens vs. Predator* (jeux PC) | vérifié (fonction) | Pistol firing an electric charge, no ammunition (energy). |
+| OT-51 scout sniper rifle | Scout, Lost Tribe (NECA) | vérifié | Long-range plasma rifle shaped like the Lost Tribe ship, much longer. |
+| OT-52 flintlock pistol | Greyback, *Predator 2* ; *Killer of Killers* | vérifié | 1715 Raphael Adolini flintlock pistol, human trophy. |
+| OT-53 trophy wear | *AvP* (2010) ; *Predator vs. Magnus Robot Fighter* ; arcade | vérifié | Skull trophy necklace (Spartan); vertebrae necklace (North Am); skeleton necklace (Mad). |
+| OT-54 grendel king weapons | Grendel King, *Killer of Killers* | vérifié | Massive axe, combistick and a curved scimitar-like blade. |
+| OT-55 oni KoK combistick | Samurai Killer, *Killer of Killers* | vérifié | Combistick whose blades extend under force. |
+| OT-56 parachute | *Predators* (2010) | vérifié | Human-looking parachute with a chest strap emitting red light. |
+| OT-57 hell hounds | *Predators* (2010) ; *The Predator* (2018) | vérifié | Not equipment, companion sprites: armoured quadruped hounds with spikes on their backs (Predators), recalled by whistle; dreadlocked dogs with green blood (The Predator). |
+
+**Laissés de côté volontairement** : le Serrated Hunting Rifle de *Call of Duty* (objet de crossover, pas yautja), les armes humaines prises par les Yautja (SIG SG 552, fusils à impulsion), le power loader de Tessa (Weyland-Yutani), et les véhicules (motos à sustentation, pods, vaisseaux), qui relèvent de la section navire.
 
 ## Acte I — Youngling (R2-M001 → M006)
 
