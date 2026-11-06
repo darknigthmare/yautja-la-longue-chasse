@@ -445,7 +445,7 @@ La note parlait de « Glacier Moon » et « Swamp Moon » : elles deviennent des
 | Harek | rival du départ O6 | Bad Blood possible ou chef du clan rival |
 | OWLF, époque future | unité secrète de la CIA de *Predator 2* (Other Worldly Life Forms) | descendants de l'OWLF qui traquent les Yautja à l'époque du jeu |
 | Chasseurs humains de Yautja | Project Stargazer (*The Predator*), Reapers (roman *Hunters and Hunted*), Predator Hunters de Jaya Soames (comics), Spearhead (*Xenogenesis*) | contrats et embuscades contre le joueur, captures et évasions |
-| USS Tentalus (crossover) | ton jeu *Alien USS Tentalus* | *mission annexe « Le silence d'Asphodèle », détaillée ci-dessous* |
+| USS Tantalus (crossover) | ton jeu *Alien USS Tentalus* | *mission annexe « Le silence d'Asphodèle », détaillée ci-dessous* |
 
 ### Modes annexes
 
@@ -1051,6 +1051,33 @@ En coop, les invités aident en phases 1, 2, 3b et 3c ; la phase 3a est vue par 
 ### Contrats de clan du classeur V6
 
 **Décision :** les 36 contrats de clan du V6 (R2-CC01 → CC36 : 3 au rang Unblooded, 15 à Young Blood, 15 à Blooded, 3 à Elite) s'ouvrent par région : ceux du clan d'origine au départ, puis ceux de chaque région dès qu'elle est accessible et que le rang requis est atteint. Les contrats des clans hors du monde natal (CL11 → CL15) s'ouvrent aux escales de leurs bases spatiales *(proposé)*.
+
+### Le pack et la triade : personnages
+
+Base : profils de voix du classeur V6 (D6-V-O-18 → 20). Compléments décidés le 6 novembre, détails *(proposés)*.
+
+| Personnage | V6 | Décision et complément |
+| --- | --- | --- |
+| Harek | rival qui progresse aussi ; piques courtes, défis francs ; apprend à reconnaître une autre méthode sans perdre son caractère | **pression de lignée :** fils d'un Elite célèbre, il doit dépasser le joueur pour exister ; jaloux mais pas cruel au départ. Sa pente dépend des actes du joueur (allié, Bad Blood, chef du clan rival) |
+| Yena | attentive aux passages oubliés ; propose, demande un signal, refuse les risques inutiles | **pisteuse :** discrétion, pièges, arc ; ouvre les routes cachées dans les chasses en trio |
+| Tov | pragmatique, aime essayer avec ses mains ; humour autour des outils et des mauvais appuis | **brute protectrice :** mêlée lourde, tient la ligne ; c'est lui qui pose et tient cordes et charges |
+| Saar | instructeur de la cohorte | vieillit, puis meurt de vieillesse ou en chasse (décision déjà prise) |
+
+Le joueur fait le lien entre Yena et Tov. Comme le dit le V6, leurs styles changent avec le temps *(proposé : chacun apprend une technique du joueur s'il l'a vue réussir pendant les chasses en trio)*. *(proposé)* Le père de Harek, l'Elite, est un personnage de la cité ; il observe la pyramide et peut parrainer Harek pour la Succession.
+
+### Chasseurs humains
+
+**Décision :** les trois formes en parallèle.
+
+- **Un arc récurrent** *(proposé : l'OWLF de l'époque future, héritière de l'unité de Predator 2)* : repérée après Blooded, embuscades qui montent en puissance, capture du joueur et évasion, assaut final sur sa base.
+- **Un mini-arc de trois missions par organisation**, à l'époque de sa source : Project Stargazer (*The Predator*, 2018), les Reapers, les Predator Hunters de Jaya Soames (comics), Spearhead.
+- **Des événements** : embuscades et contrats ponctuels sur les routes et les planètes, tirés selon l'époque.
+
+Leur IA suit la décision « Équipement et IA » (équipes spécialisées : imagerie thermique, capteurs, pièges). Les époques et détails des Reapers et de Spearhead sont à vérifier dans leurs sources avant l'écriture des missions.
+
+### Direction artistique des races
+
+**Décision :** une silhouette lisible et une palette par race, sur la base des sprites existants ; fidélité à la figurine NECA de référence quand la race en a une (par exemple Lost Tribe d'après Greyback et l'équipage de *Predator 2*, Super Predator d'après *Predators*, Feral d'après *Prey*). La palette sert à reconnaître la race de loin ; la figurine fixe les détails du masque, de l'armure et des armes. Les palettes par race restent à écrire avec la planche de sprites.
 
 ### Arc de guerre des clans *(missions proposées)*
 
