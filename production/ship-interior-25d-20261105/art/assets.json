@@ -1,0 +1,333 @@
+[
+  {
+    "key": "navigationConsole",
+    "src": "/game/ship-interior/v23/navigation-console.webp",
+    "source": "production/ship-interior-25d-20261105/art/source/navigation-console.png",
+    "sourceWidth": 1536,
+    "sourceHeight": 1024,
+    "alphaBounds": {
+      "x": 40,
+      "y": 131,
+      "width": 1456,
+      "height": 801
+    },
+    "alphaThreshold": 8,
+    "pivot": {
+      "x": 768,
+      "y": 931,
+      "method": "alpha-bounds-bottom-center"
+    },
+    "pivotValidation": "Heuristic visible silhouette anchor; physical floor-contact point not human validated.",
+    "humanArtValidation": false,
+    "alpha": {
+      "minimum": 0,
+      "maximum": 254,
+      "fullyTransparentPixels": 722444,
+      "visiblePixels": 828238,
+      "visibleBorderPixels": 0
+    },
+    "runtimeBytes": 1326022,
+    "sourceBytes": 2537892,
+    "runtimeSha256": "863ffedfa629e0e9e90538469a858d46fe20249a01a5bce51da7b6ea910ad1af",
+    "sourceSha256": "ac370fc6b86c6319f9fd9676ccd77f2cad6df12b7e3f7641ea7b1dc91235b916",
+    "generation": {
+      "tool": "image_gen.imagegen",
+      "prompt": "Create a single production game prop as an individual transparent RGBA image: the exact personal Yautja navigation console in the supplied reference, re-rendered from a strict orthographic camera at 35 degrees elevation above its floor, yaw 0 degrees, looking straight at its FRONT. Preserve the reference object's proportions, silhouette, symmetrical broad beveled angular desktop, three inset switch strips per side, central engraved plaque, one central sculpted pedestal with two angled ribbed braces and polygonal base, fine etched dark steel and worn dark bronze trim. This is the small personal-ship console, not a large table, no hologram and no freestanding added screens. The top surfaces should now be visibly readable due only to the camera elevation; keep vertical edges vertical, left-right symmetry, parallel lines with no perspective convergence. Restrained amber illumination at its existing inset indicators, tiny subdued cyan accents already visible in reference. Isolated one complete object only; full base and all extremities inside frame with generous transparent margin. No environment, no floor plane, no cast shadow outside the object, no person, no weapons, no added machinery, no labels or readable text, no watermark, no collage. Preserve detailed original AVP-like Yautja metalwork, do not redesign. Front base contact at lower center. High quality sharp production game asset.",
+      "reference": "/workspace/scratch/30b4dd7183ed/yautja-ship-25d/public/game/ship-interior/v21/console-navigation.webp",
+      "generatedSourcePath": "/workspace/scratch/30b4dd7183ed/generated_images/exec-f10046b6-96b7-496f-b5cc-75619b6511be.png",
+      "transparentBackground": true
+    },
+    "conversion": "Lossless WebP via Sharp; no resize, crop, recolor or alpha normalization.",
+    "technicalValidation": {
+      "dimensionsMeasured": true,
+      "alphaBoundsMeasured": true,
+      "visualInspection": true,
+      "engineIntegration": "Pending parent QA"
+    }
+  },
+  {
+    "key": "medbayBed",
+    "src": "/game/ship-interior/v23/medbay-bed.webp",
+    "source": "production/ship-interior-25d-20261105/art/source/medbay-bed.png",
+    "sourceWidth": 1774,
+    "sourceHeight": 887,
+    "alphaBounds": {
+      "x": 111,
+      "y": 35,
+      "width": 1551,
+      "height": 828
+    },
+    "alphaThreshold": 8,
+    "pivot": {
+      "x": 886.5,
+      "y": 862,
+      "method": "alpha-bounds-bottom-center"
+    },
+    "pivotValidation": "Heuristic visible silhouette anchor; physical floor-contact point not human validated.",
+    "humanArtValidation": false,
+    "alpha": {
+      "minimum": 0,
+      "maximum": 255,
+      "fullyTransparentPixels": 896592,
+      "visiblePixels": 651008,
+      "visibleBorderPixels": 0
+    },
+    "runtimeBytes": 956502,
+    "sourceBytes": 1481552,
+    "runtimeSha256": "36d2acae1f8d0d4eefa91bf334430d6a84ef928a65b74f7e03b22b1cda42ad95",
+    "sourceSha256": "9d12d2d6bd4857d9b74d9ca75972918bed752ae5e16ae6ab57e7dcfeb7308627",
+    "generation": {
+      "tool": "image_gen.imagegen",
+      "prompt": "Create one individual production game prop on fully transparent RGBA background: the SAME personal Yautja medical bed from the supplied reference, re-rendered with strict orthographic camera elevated 35 degrees above the floor, yaw 0, looking straight at its long FRONT side. Preserve exactly the reference construction and silhouette: long low segmented black padded mattress, tapered dark steel and bronze beveled metal perimeter, two squat flared pedestal legs, the single angular cantilever surgical gantry rising at the RIGHT end and leaning over the bed with one downward surgical implement. Keep the mattress empty. Preserve engraved weathered dark bronze and blackened steel, thin amber indicator lights, only tiny cyan inset accents where the reference already has them. Expose the mattress and horizontal ledges from the higher camera without inventing extra parts or redesigning the bed. Vertical lines straight, front and back edges parallel, no perspective convergence. Entire single complete bed and gantry inside frame with generous transparent margins and all feet visible; no room, no ground plane, no background, no cast shadow beyond prop, no patient, no gore, no labels/readable text, no watermark, no surrounding objects, no collage. Sharp, high quality realistic game prop matching the reference materials and form.",
+      "reference": "/workspace/scratch/30b4dd7183ed/yautja-ship-25d/public/game/ship-interior/v22/medbay-bed.webp",
+      "generatedSourcePath": "/workspace/scratch/30b4dd7183ed/generated_images/exec-e29c4672-b57b-4d98-93c3-27ca4cd9156e.png",
+      "transparentBackground": true
+    },
+    "conversion": "Lossless WebP via Sharp; no resize, crop, recolor or alpha normalization.",
+    "technicalValidation": {
+      "dimensionsMeasured": true,
+      "alphaBoundsMeasured": true,
+      "visualInspection": true,
+      "engineIntegration": "Pending parent QA"
+    }
+  },
+  {
+    "key": "armoryRack",
+    "src": "/game/ship-interior/v23/armory-rack.webp",
+    "source": "production/ship-interior-25d-20261105/art/source/armory-rack.png",
+    "sourceWidth": 1536,
+    "sourceHeight": 1024,
+    "alphaBounds": {
+      "x": 35,
+      "y": 130,
+      "width": 1465,
+      "height": 776
+    },
+    "alphaThreshold": 8,
+    "pivot": {
+      "x": 767.5,
+      "y": 905,
+      "method": "alpha-bounds-bottom-center"
+    },
+    "pivotValidation": "Heuristic visible silhouette anchor; physical floor-contact point not human validated.",
+    "humanArtValidation": false,
+    "alpha": {
+      "minimum": 0,
+      "maximum": 254,
+      "fullyTransparentPixels": 434954,
+      "visiblePixels": 1106920,
+      "visibleBorderPixels": 0
+    },
+    "runtimeBytes": 1472372,
+    "sourceBytes": 2416290,
+    "runtimeSha256": "85f09935c6b1264dc3697029e50c7a05f35987aa5b37e54bb6ac0558d8971b1c",
+    "sourceSha256": "c85393b633c964303ac6daf49eb6177b48a21d13100c5342e593fd007f184050",
+    "generation": {
+      "tool": "image_gen.imagegen",
+      "prompt": "Create a single individual game prop cutout on fully transparent RGBA background, matching the supplied Yautja armory rack reference. Re-render the SAME wide low-depth armored rack from a strict orthographic camera at 35 degrees elevation over its floor, yaw zero, looking directly at its FRONT with vertical lines vertical and left-right symmetry. Preserve the exact empty THREE vertical recessed bays, clipped top corners, broad dark-bronze beveled perimeter, two horizontal retaining bars, simple existing hooks/clamps, slim amber top insets and very restrained tiny cyan strips between bays. The rack must remain EMPTY, add no weapons or collectibles. Keep weathered blackened steel planes, warm dark bronze worn edges and delicate diagonal engraved panel motifs of the reference. Higher viewpoint should reveal its shallow top thickness and supporting base only, not create extra structures. No perspective convergence, not a diagonal isometric view. Entire complete single rack fits comfortably inside image with transparent margins, no cropped tips, base contact at lower center. No environment or floor plane, no cast shadow beyond prop, no people, no labels, readable text, watermark, surrounding props or collage. Detailed production game prop faithful to the reference silhouette and materials.",
+      "reference": "/workspace/scratch/30b4dd7183ed/yautja-ship-25d/public/game/ship-interior/v22/armory-rack.webp",
+      "generatedSourcePath": "/workspace/scratch/30b4dd7183ed/generated_images/exec-314a16a1-6414-47fc-a8c5-2649de1c93d7.png",
+      "transparentBackground": true
+    },
+    "conversion": "Lossless WebP via Sharp; no resize, crop, recolor or alpha normalization.",
+    "technicalValidation": {
+      "dimensionsMeasured": true,
+      "alphaBoundsMeasured": true,
+      "visualInspection": true,
+      "engineIntegration": "Pending parent QA"
+    }
+  },
+  {
+    "key": "forgeStation",
+    "src": "/game/ship-interior/v23/forge-station.webp",
+    "source": "production/ship-interior-25d-20261105/art/source/forge-station.png",
+    "sourceWidth": 1024,
+    "sourceHeight": 1536,
+    "alphaBounds": {
+      "x": 33,
+      "y": 66,
+      "width": 959,
+      "height": 1422
+    },
+    "alphaThreshold": 8,
+    "pivot": {
+      "x": 512.5,
+      "y": 1487,
+      "method": "alpha-bounds-bottom-center"
+    },
+    "pivotValidation": "Heuristic visible silhouette anchor; physical floor-contact point not human validated.",
+    "humanArtValidation": false,
+    "alpha": {
+      "minimum": 0,
+      "maximum": 254,
+      "fullyTransparentPixels": 634545,
+      "visiblePixels": 904892,
+      "visibleBorderPixels": 0
+    },
+    "runtimeBytes": 1445088,
+    "sourceBytes": 2625880,
+    "runtimeSha256": "c8e7046b1203c2d971bf941560bb34f84e8a6b8c20a90c61d194a4411a9a2c48",
+    "sourceSha256": "e6ecb07947042dadf22410079b56c1787ac59eaf63cd6aeb22e27824ae9b5933",
+    "generation": {
+      "tool": "image_gen.imagegen",
+      "prompt": "Create ONE individual production game prop cutout on fully transparent RGBA background: the SAME personal Yautja forge station shown in the supplied reference, re-rendered by a strict orthographic camera elevated 35 degrees above the floor, yaw ZERO, looking straight at its FRONT. Preserve the exact tall vertical ribbed central spine, three paired small clamp supports along that spine, angular polygon arch at the top, articulated side arms, waist-height polygon work shelf, two spread solid supporting feet, amber lower vents and subdued tiny cyan inset accents. Preserve its silhouette, scale proportions and detailed engraved weathered dark bronze and blackened steel construction. The changed viewpoint only reveals the horizontal top surfaces and shelf depth. Keep vertical edges vertical, left-right symmetry and parallel edges without perspective convergence. Entire single complete station including arch, arms and feet fits with generous clear transparent margins. No floor plane, no room, no external shadow, no person, no loose weapon, no extra machinery, no added props, no text/labels/watermark, no collage. Empty work surface. Detailed realistic game prop, no stylistic redesign. Front floor contact at lower center.",
+      "reference": "/workspace/scratch/30b4dd7183ed/yautja-ship-25d/public/game/ship-interior/v22/forge-station.webp",
+      "generatedSourcePath": "/workspace/scratch/30b4dd7183ed/generated_images/exec-471a78e0-fdba-486b-8c04-b75830e2ebe8.png",
+      "transparentBackground": true
+    },
+    "conversion": "Lossless WebP via Sharp; no resize, crop, recolor or alpha normalization.",
+    "technicalValidation": {
+      "dimensionsMeasured": true,
+      "alphaBoundsMeasured": true,
+      "visualInspection": true,
+      "engineIntegration": "Pending parent QA"
+    }
+  },
+  {
+    "key": "trophyPlinth",
+    "src": "/game/ship-interior/v23/trophy-plinth.webp",
+    "source": "production/ship-interior-25d-20261105/art/source/trophy-plinth.png",
+    "sourceWidth": 1536,
+    "sourceHeight": 1024,
+    "alphaBounds": {
+      "x": 305,
+      "y": 217,
+      "width": 925,
+      "height": 681
+    },
+    "alphaThreshold": 8,
+    "pivot": {
+      "x": 767.5,
+      "y": 897,
+      "method": "alpha-bounds-bottom-center"
+    },
+    "pivotValidation": "Heuristic visible silhouette anchor; physical floor-contact point not human validated.",
+    "humanArtValidation": false,
+    "alpha": {
+      "minimum": 0,
+      "maximum": 254,
+      "fullyTransparentPixels": 1039067,
+      "visiblePixels": 515877,
+      "visibleBorderPixels": 0
+    },
+    "runtimeBytes": 766328,
+    "sourceBytes": 1807508,
+    "runtimeSha256": "a92dc32d62fcea1c0494e3d870cceb35888d676d2966c3790f4790fc77f9f7f4",
+    "sourceSha256": "eafae692f2c5c1bf34a53ff3306460069210f967b91ec2d1428dde5062dda542",
+    "generation": {
+      "tool": "image_gen.imagegen",
+      "prompt": "Create ONE small individual EMPTY trophy display plinth for a personal Yautja spacecraft, isolated on fully transparent RGBA. Use only the supplied console reference's existing material vocabulary: weathered blackened steel plates, restrained dark bronze beveled trim, the same fine engraved geometric Yautja metalwork and small amber inset indicators. This is a conservative low simple pedestal: squat symmetric polygonal base, short tapering ribbed center support, flat shallow octagonal top plate; no trophy, skull, weapon or collectible on top, no additional technology. Strict ORTHOGRAPHIC camera elevated35 degrees above the floor, yawZERO, looking directly at its FRONT; top plate visibly readable, all verticals straight, equal left/right depth, parallel lines, no perspective convergence. Entire single small object centered with generous clear transparent margin, front base contact lower center. Realistic detailed production game sprite. No room, ground plane, external cast shadow, hologram, text, logo, watermark or collage. Match reference dark bronze/steel/amber colors, avoid redesigning into unrelated sleek or fantasy aesthetics.",
+      "reference": "/workspace/scratch/30b4dd7183ed/yautja-ship-25d/public/game/ship-interior/v21/console-navigation.webp",
+      "generatedSourcePath": "/workspace/scratch/30b4dd7183ed/generated_images/exec-7bb8d378-9d42-4a2a-b25c-04c93a15e4ff.png",
+      "transparentBackground": true
+    },
+    "conversion": "Lossless WebP via Sharp; no resize, crop, recolor or alpha normalization.",
+    "technicalValidation": {
+      "dimensionsMeasured": true,
+      "alphaBoundsMeasured": true,
+      "visualInspection": true,
+      "engineIntegration": "Pending parent QA"
+    }
+  },
+  {
+    "key": "trainingEmitter",
+    "src": "/game/ship-interior/v23/training-emitter.webp",
+    "source": "production/ship-interior-25d-20261105/art/source/training-emitter.png",
+    "sourceWidth": 1024,
+    "sourceHeight": 1536,
+    "alphaBounds": {
+      "x": 178,
+      "y": 267,
+      "width": 669,
+      "height": 1126
+    },
+    "alphaThreshold": 8,
+    "pivot": {
+      "x": 512.5,
+      "y": 1392,
+      "method": "alpha-bounds-bottom-center"
+    },
+    "pivotValidation": "Heuristic visible silhouette anchor; physical floor-contact point not human validated.",
+    "humanArtValidation": false,
+    "alpha": {
+      "minimum": 0,
+      "maximum": 254,
+      "fullyTransparentPixels": 1121938,
+      "visiblePixels": 440827,
+      "visibleBorderPixels": 0
+    },
+    "runtimeBytes": 671344,
+    "sourceBytes": 1675824,
+    "runtimeSha256": "6fad177f693d9e38c1788b201610b2a0feca51f438a32fda4225febafbb80648",
+    "sourceSha256": "fe0277bb00d643fbe723ad9deb6b31bae4b815056dc07ad3c0b241992544eb6e",
+    "generation": {
+      "tool": "image_gen.imagegen",
+      "prompt": "Create ONE small inactive training emitter prop for a personal Yautja spacecraft on fully transparent RGBA. Take its materials and construction vocabulary strictly from the supplied forge reference: engraved weathered dark bronze edging, blackened steel segmented plates and ribs, tiny amber light insets, very subdued cyan accent only. A compact waist-high symmetric solid machine with a squat chamfered polygon floor base, one short reinforced ribbed column, and a small angular emitter head with one recessed dark amber lens. No floating or projected effect; no hologram, beam, target, person or weapon. Keep the geometry restrained and functional so it belongs beside this forge. Strict orthographic view elevated35 degrees over the floor, yawZERO, looking square at its FRONT. Show top surfaces naturally from this elevation, vertical edges vertical and parallel lines without perspective convergence. Entire single complete prop with base and all edges inside generous clear transparent margins, base contact lower center. Detailed realistic production game sprite, dark worn bronze/steel, no room, floor plane, external cast shadow, extra props, text, watermark or collage.",
+      "reference": "/workspace/scratch/30b4dd7183ed/yautja-ship-25d/public/game/ship-interior/v22/forge-station.webp",
+      "generatedSourcePath": "/workspace/scratch/30b4dd7183ed/generated_images/exec-1006f47b-1376-4153-88ff-7a8d60bee2f5.png",
+      "transparentBackground": true
+    },
+    "conversion": "Lossless WebP via Sharp; no resize, crop, recolor or alpha normalization.",
+    "technicalValidation": {
+      "dimensionsMeasured": true,
+      "alphaBoundsMeasured": true,
+      "visualInspection": true,
+      "engineIntegration": "Pending parent QA"
+    }
+  },
+  {
+    "key": "floorPanel",
+    "src": "/game/ship-interior/v23/floor-panel.png",
+    "source": "production/ship-interior-25d-20261105/art/source/floor-panel.png",
+    "sourceWidth": 1254,
+    "sourceHeight": 1254,
+    "alphaBounds": {
+      "x": 0,
+      "y": 0,
+      "width": 1254,
+      "height": 1254
+    },
+    "alphaThreshold": 8,
+    "pivot": null,
+    "projection": "top-down",
+    "humanArtValidation": false,
+    "alpha": {
+      "minimum": 255,
+      "maximum": 255,
+      "fullyTransparentPixels": 0,
+      "visiblePixels": 1572516,
+      "visibleBorderPixels": 5012
+    },
+    "runtimeBytes": 2849410,
+    "sourceBytes": 2849410,
+    "runtimeSha256": "414e75e8c33ffda7b31a382163bceeef1cf680324ef27d5a8d75f68ac9e088b4",
+    "sourceSha256": "414e75e8c33ffda7b31a382163bceeef1cf680324ef27d5a8d75f68ac9e088b4",
+    "generation": {
+      "tool": "image_gen.imagegen",
+      "prompt": "Create ONE individual opaque seamless square metallic floor-material texture for the interior of a personal Yautja spacecraft in the Alien vs Predator visual language. It will cover a separately projected 2.5D floor. EXACT orthographic TOP-DOWN view looking vertically down at the material: zero oblique angle, zero perspective convergence, zero camera tilt, no visible panel thickness or side faces. Fill the entire image edge to edge with the material. Dark blackened steel panel assemblies, warm worn bronze framing strips, restrained engraved alien geometric grooves, industrial brushed metal grain, small consistent rivets and minute recessed amber indicator points. Dense tactile worn metal detail, subtle edge wear, believable utilitarian spacecraft construction, low-contrast charcoal and deep bronze palette with only dim amber accents. Uniform soft neutral overhead illumination across the entire tile, no directional cast shadows, no central spotlight, no vignette. The panel rhythm must continue seamlessly across all four image borders; no distinct center, no outer frame, no margin. Flat physical surface suited to repeated floor tiling at gameplay scale. No props, no console, no furniture, no walls, no room scene, no figures, no floating graphics, no labels, no readable text, no logos. A single square repeatable material image, not a sheet of multiple views or samples.",
+      "reference": null,
+      "generatedSourcePath": "/workspace/scratch/30b4dd7183ed/generated_images/exec-1f984a86-90c8-4006-a787-6974d5fba183.png",
+      "transparentBackground": false
+    },
+    "conversion": "Original generated PNG reused byte-for-byte at runtime after local environment recovery; no resize, crop, recolor or alpha normalization.",
+    "technicalValidation": {
+      "dimensionsMeasured": true,
+      "alphaBoundsMeasured": true,
+      "visualInspection": true,
+      "engineIntegration": "Pending parent QA",
+      "seamlessEdges": "Requested in generation; not mathematically verified. Floor joints may be masked by the renderer.",
+      "recoveredPngSha256Verified": true
+    },
+    "recovery": {
+      "reason": "Local environment became unavailable after asset generation; original PNG retained in image generation result was uploaded directly to an immutable GitHub blob.",
+      "githubBlobSha": "7457bed609652d7b6fa81ada3994938eec7e2f9f",
+      "runtimeReusesSourceBytes": true,
+      "previousRuntimeWebp": {
+        "path": "public/game/ship-interior/v23/floor-panel.webp",
+        "bytes": 1896644,
+        "sha256": "29d3db8b747b582dec8660255ba11ba4edcc116a34caaf3e73b4583ad8243a8a",
+        "usedAtRuntime": false
+      }
+    }
+  }
+]

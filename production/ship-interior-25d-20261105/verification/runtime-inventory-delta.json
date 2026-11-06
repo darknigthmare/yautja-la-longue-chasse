@@ -1,0 +1,98 @@
+{
+  "canonicalCommit": "ac1ffc8f91e7eef8cba7bb04f9d58d647d229d54",
+  "generatedCommit": "9fc54afe684cd0f404f2a04bd58236640ee072fa",
+  "canonicalFiles": 2167,
+  "generatedFiles": 2171,
+  "canonicalRuntimeBytes": 1092461217,
+  "generatedRuntimeBytes": 1092529610,
+  "added": [
+    {
+      "path": "app/game/ShipInterior25D.module.css",
+      "bytes": 11604,
+      "sha256": "df7e4691bdcb698c2bd9f3611f8a6bdbcf876dfb0a42cf9e7789b6a5a3c8d073"
+    },
+    {
+      "path": "app/game/ShipInterior25D.tsx",
+      "bytes": 30403,
+      "sha256": "2b11c7f06d35fa73424d635e41f452eb7576f611c10e3421a379a259c82d2a6c"
+    },
+    {
+      "path": "app/game/shipInterior25dArt.ts",
+      "bytes": 2833,
+      "sha256": "ec64768feeae028cb53b71d1010354ce233fd3e58e3602975cfc78908af4c920"
+    },
+    {
+      "path": "app/game/systems/shipInterior25d.ts",
+      "bytes": 22737,
+      "sha256": "7305c70173cb2963f78bd527340384fc3b49fee32b8625cadd323706b94367a8"
+    }
+  ],
+  "removed": [],
+  "changed": [
+    {
+      "path": "app/dev/destinations.ts",
+      "before": {
+        "path": "app/dev/destinations.ts",
+        "bytes": 15406,
+        "sha256": "dbd23830a61bca9c70fcb5fffebfb56426fff2354e9871c8ce0554174851f32e"
+      },
+      "after": {
+        "path": "app/dev/destinations.ts",
+        "bytes": 15419,
+        "sha256": "e0d02723918486aa7ff5fc5d63383b768726726466c478dc0f31ed66166d3005"
+      }
+    },
+    {
+      "path": "app/dev/session.tsx",
+      "before": {
+        "path": "app/dev/session.tsx",
+        "bytes": 29468,
+        "sha256": "9a8deef175790e2aacbd5825212f21b282ea947554f9f6afa352839580780b0b"
+      },
+      "after": {
+        "path": "app/dev/session.tsx",
+        "bytes": 29465,
+        "sha256": "3bb2e9d50d71b2e89691e643fc67f7146652567acc8cb596e6c4f46ab6233382"
+      }
+    },
+    {
+      "path": "app/game/GameClient.tsx",
+      "before": {
+        "path": "app/game/GameClient.tsx",
+        "bytes": 341799,
+        "sha256": "578c182140a0dc2a82041c61ffacd45ceae48cd6304ad895993805659e6b0a05"
+      },
+      "after": {
+        "path": "app/game/GameClient.tsx",
+        "bytes": 341796,
+        "sha256": "c7696684b594f78ff400a5269152618c19a88478c321d92c551cf2cffce7253d"
+      }
+    },
+    {
+      "path": "app/game/buildInfo.ts",
+      "before": {
+        "path": "app/game/buildInfo.ts",
+        "bytes": 965,
+        "sha256": "dea7cd3bb989be4f51e39e7833046d01a031be6dfdcabc4f1b034371ada593f4"
+      },
+      "after": {
+        "path": "app/game/buildInfo.ts",
+        "bytes": 953,
+        "sha256": "e170184ba9203100fbc885de78d1d809fed682425e14c19300ac8a9d872f365f"
+      }
+    },
+    {
+      "path": "app/game/systems/shipPreparationV88.ts",
+      "before": {
+        "path": "app/game/systems/shipPreparationV88.ts",
+        "bytes": 16214,
+        "sha256": "15d3339c547e5e4d50b1c6b304a7c6c07353bed6f0d713804d51c913c6e7a62e"
+      },
+      "after": {
+        "path": "app/game/systems/shipPreparationV88.ts",
+        "bytes": 17035,
+        "sha256": "c1d16ebcdcb4b760bfbc6298ecccf73c842d40153f323c3c576fd20a671baf6d"
+      }
+    }
+  ]
+}
