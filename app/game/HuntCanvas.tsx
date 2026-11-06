@@ -266,7 +266,7 @@ import {
 } from "./honorRules";
 import type { GameSfxId, GameMusicContext } from "./sound";
 import { chromaticsForPieceV146, lightColorV146, type HunterPieceIdV146 } from "./hunterPiecesV146";
-import { camouflageVisibilityV146, heavyHitPieceV146, missionWearV146, wearFilterV146, type HunterMarkIdV146 } from "./systems/hunterCustomizationV146";
+import { camouflageVisibilityV146, heavyHitPieceV146, missionWearV146, wearFilterV146, type HunterMarkIdV146, type SkinPatternIdV146 } from "./systems/hunterCustomizationV146";
 import { markColorV146, markLayerV146, markStrokesV146 } from "./hunterMarksArtV146";
 import type {
   DifficultyId,
@@ -3423,6 +3423,79 @@ function drawWrappedLayerV145(
   context.restore();
 }
 
+const PATTERN_CANVAS_V146: { canvas?: HTMLCanvasElement } = {};
+const PATTERN_TILES_V146 = new Map<string, HTMLCanvasElement>();
+
+/** V146 skin pattern tile (procedural until pattern plates exist). */
+function skinPatternTileV146(pattern: SkinPatternIdV146, first: string, second: string): HTMLCanvasElement | null {
+  const key = pattern + first + second;
+  const cached = PATTERN_TILES_V146.get(key);
+  if (cached) return cached;
+  const tile = document.createElement("canvas");
+  tile.width = 18; tile.height = 18;
+  const c = tile.getContext("2d");
+  if (!c) return null;
+  c.fillStyle = first; c.strokeStyle = first;
+  if (pattern === "spots") {
+    c.beginPath(); c.arc(5, 5, 2.6, 0, Math.PI * 2); c.fill();
+    c.fillStyle = second; c.beginPath(); c.arc(13, 12, 1.8, 0, Math.PI * 2); c.fill();
+  } else if (pattern === "stripes") {
+    c.lineWidth = 2; c.beginPath(); c.moveTo(3, 0); c.lineTo(1, 18); c.stroke();
+    c.strokeStyle = second; c.lineWidth = 1; c.beginPath(); c.moveTo(11, 0); c.lineTo(9, 18); c.stroke();
+  } else if (pattern === "marbled") {
+    c.beginPath(); c.ellipse(7, 8, 5, 2.5, .5, 0, Math.PI * 2); c.fill();
+    c.fillStyle = second; c.beginPath(); c.ellipse(14, 3, 2, 3.5, -.3, 0, Math.PI * 2); c.fill();
+  } else if (pattern === "scales") {
+    c.lineWidth = 1;
+    for (const [x, y] of [[4.5, 9], [13.5, 9], [9, 18], [0, 18], [18, 18]]) { c.beginPath(); c.arc(x, y, 4.5, Math.PI, 0); c.stroke(); }
+  } else {
+    c.fillRect(0, 2, 18, 1.6); c.fillStyle = second; c.fillRect(0, 10, 18, 1);
+  }
+  if (PATTERN_TILES_V146.size > 24) PATTERN_TILES_V146.clear();
+  PATTERN_TILES_V146.set(key, tile);
+  return tile;
+}
+
+/** V146: draws the chosen skin pattern masked to one skin layer, in multiply. */
+function drawSkinPatternV146(
+  context: CanvasRenderingContext2D,
+  image: HTMLImageElement | null,
+  frame: HunterRigFrame,
+  boneId: HunterRigBoneId,
+  appearance: HunterAppearance,
+  placement?: { x: number; y: number; width: number; height: number },
+  clip?: readonly (readonly [number, number, number, number])[],
+): void {
+  const pattern = appearance.skinPatternIdV146;
+  if (!pattern || !image || typeof document === "undefined") return;
+  const colors = appearance.piecesV146?.["skin-pattern"];
+  const tile = skinPatternTileV146(pattern, colors?.primary ?? "#2d241d", colors?.secondary ?? colors?.primary ?? "#4a3a2c");
+  const canvas = PATTERN_CANVAS_V146.canvas ?? (PATTERN_CANVAS_V146.canvas = document.createElement("canvas"));
+  canvas.width = HUNTER_RIG_CANVAS.width;
+  canvas.height = HUNTER_RIG_CANVAS.height;
+  const local = canvas.getContext("2d");
+  if (!local || !tile) return;
+  local.drawImage(image, placement?.x ?? 0, placement?.y ?? 0,
+    placement?.width ?? HUNTER_RIG_CANVAS.width, placement?.height ?? HUNTER_RIG_CANVAS.height);
+  local.globalCompositeOperation = "source-in";
+  const fill = local.createPattern(tile, "repeat");
+  if (!fill) return;
+  local.fillStyle = fill;
+  local.fillRect(0, 0, HUNTER_RIG_CANVAS.width, HUNTER_RIG_CANVAS.height);
+  local.globalCompositeOperation = "source-over";
+  context.save();
+  applyAffine(context, relativeBoneMatrix(frame, HUNTER_BIND_FRAME, boneId));
+  if (clip) {
+    context.beginPath();
+    for (const rect of clip) context.rect(...rect);
+    context.clip();
+  }
+  context.globalAlpha *= 0.5;
+  context.globalCompositeOperation = "multiply";
+  context.drawImage(canvas, 0, 0, HUNTER_RIG_CANVAS.width, HUNTER_RIG_CANVAS.height);
+  context.restore();
+}
+
 function drawAtomicBodyPart(
   context: CanvasRenderingContext2D,
   assets: AssetBank,
@@ -3436,9 +3509,11 @@ function drawAtomicBodyPart(
     assets.hunterBodyParts[partId],
     frame,
     boneId,
-    { filter: hunterBodyPartColorV62(appearance.bodyMorphId, partId, bodyFilter(appearance)), placement: hunterBodyPartPlacement(appearance.bodyMorphId, partId, appearance.headStyleId), clip: hunterBodyPartClipV62(appearance.bodyMorphId, partId), chromatics: { appearance, channel: "skin" },
+    { filter: hunterBodyPartColorV62(appearance.bodyMorphId, partId, bodyFilter(appearance)), placement: hunterBodyPartPlacement(appearance.bodyMorphId, partId, appearance.headStyleId), clip: hunterBodyPartClipV62(appearance.bodyMorphId, partId), chromatics: { appearance, channel: "skin", piece: "skin" },
       decalZone:partId==="head"?"face":partId==="torso"?"body":undefined },
   );
+  drawSkinPatternV146(context, assets.hunterBodyParts[partId], frame, boneId, appearance,
+    hunterBodyPartPlacement(appearance.bodyMorphId, partId, appearance.headStyleId), hunterBodyPartClipV62(appearance.bodyMorphId, partId));
   if (!hunterBodyPartHasNet(appearance.bodyMorphId, partId)) return;
   drawRegisteredLayer(
     context,
@@ -3788,13 +3863,13 @@ function drawHunterLayered(
       drawAtomicBodyPart(context, assets, frame, appearance, partId);
     }
   } else if (
-    !drawRegisteredLayer(
+    !(drawRegisteredLayer(
       context,
       assets.hunterBodyFull,
       frame,
       "root",
       { filter: bodyFilter(appearance), chromatics: { appearance, channel: "skin", piece: "skin" }, decalZone:"body" },
-    )
+    ) && (drawSkinPatternV146(context, assets.hunterBodyFull, frame, "root", appearance), true))
   ) {
     drawFallbackCharacter(
       context,

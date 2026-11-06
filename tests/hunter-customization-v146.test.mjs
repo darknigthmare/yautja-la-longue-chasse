@@ -195,6 +195,8 @@ test("V146 renderers and campaign use the per-piece contract", () => {
   assert.match(hunt, /wearV146: \{ heavyPieces/);
   assert.match(hunt, /lightColorV146\(appearance, "laser"/);
   assert.match(hunt, /drawMarksV146\(/);
+  assert.match(hunt, /drawSkinPatternV146\(context, assets\.hunterBodyParts\[partId\]/);
+  assert.match(hunt, /drawSkinPatternV146\(context, assets\.hunterBodyFull/);
   assert.match(preview, /piece=\{pieceForArmorSlotV146\(slot\.id\)\}/);
   assert.match(preview, /SkinPatternSurfaceV146/);
   assert.match(preview, /HunterMarksOverlayV146/);
