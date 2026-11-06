@@ -1,7 +1,6 @@
 import {
   HUNTER_BODY_PART_BONES,
-  HUNTER_GAUNTLET_FIT_BY_MORPH,
-  HUNTER_WRISTBLADE_REGISTRATION,
+  hunterWristbladeRegistrationMatrix,
   HUNTER_ARMOR_KEEP_CLIP_V145,
   hunterGreaveMatrixV145,
   hunterShoulderPlateMatrixV145,
@@ -17,13 +16,7 @@ import {
 } from "./hunterRig";
 import { resolvePitFighterAnimation } from "./pitFighterAnimation";
 import { PIT_FIGHTERS, type PitFighterId, type PitFighterState } from "./systems/pitCombat";
-
-/** Same forearm fit as HunterRigPreview and HuntCanvas: offset, then rotation about the pivot. */
-const WRISTBLADE_FIT = {
-  offset: [HUNTER_WRISTBLADE_REGISTRATION.translateX, HUNTER_WRISTBLADE_REGISTRATION.translateY],
-  pivot: [HUNTER_WRISTBLADE_REGISTRATION.pivot.x, HUNTER_WRISTBLADE_REGISTRATION.pivot.y],
-  rotation: HUNTER_WRISTBLADE_REGISTRATION.rotation,
-} as const;
+import { gauntletFrontArmMatrixV145 } from "./systems/gauntletRigSpritesV139";
 
 export const PIT_MODULAR_FIGHTER_IDS = ["jungle-hunter", "berserker"] as const;
 export type PitModularFighterId = typeof PIT_MODULAR_FIGHTER_IDS[number];
@@ -110,9 +103,9 @@ export function getPitFighterArtLayers(fighterId: PitFighterId): readonly PitFig
     layers.push({ id: "dside-" + index, src: hunterDreadPath("classic"), bone: "head", depth: 58,
       filter: "saturate(.7) brightness(.65)" });
   }
-  const fit = HUNTER_GAUNTLET_FIT_BY_MORPH[morph];
-  for (const [id, depth] of [["gauntlet-base", 37], ["gauntlet-lid", 38]] as const) {
-    layers.push({ id, src: hunterEquipmentPath(id), bone: "armBackLower", depth, offset: [fit.translateX, fit.translateY], filter: armorFilter });
+  // V145: wrist computer on the FRONT forearm, blades on the back one (see HunterRigPreview).
+  for (const [id, depth] of [["gauntlet-base", 60], ["gauntlet-lid", 60.1]] as const) {
+    layers.push({ id, src: hunterEquipmentPath(id), bone: "armFrontLower", depth, filter: armorFilter, fit: gauntletFrontArmMatrixV145(morph, false) });
   }
   for (const [part, bone, depth] of [
     ["mount", "casterShoulderMount", 41], ["caster-upper", "casterUpperArm", 42],
@@ -123,9 +116,9 @@ export function getPitFighterArtLayers(fighterId: PitFighterId): readonly PitFig
   }
   layers.push(
     { id: "mask", src: hunterMaskRigPath(superHunter ? "berserker" : "jungle"), placement: hunterMaskRigPlacement(superHunter ? "berserker" : "jungle"), bone: "head", depth: 48 },
-    { id: "blade-housing", src: hunterEquipmentPath("blade-housing"), bone: "armFrontLower", depth: 62, filter: armorFilter, ...WRISTBLADE_FIT },
+    { id: "blade-housing", src: hunterEquipmentPath("blade-housing"), bone: "armBackLower", depth: 40.6, filter: armorFilter, fit: hunterWristbladeRegistrationMatrix(morph) },
     {
-      id: "blades", src: hunterEquipmentPath("blades"), bone: "armFrontLower", depth: 63, ...WRISTBLADE_FIT,
+      id: "blades", src: hunterEquipmentPath("blades"), bone: "armBackLower", depth: 40.5, fit: hunterWristbladeRegistrationMatrix(morph),
       // One existing blade for Berserker; preserve source pixels without drawing a substitute.
       clip: superHunter ? [[196, 204, 54, 11], [236, 215, 9, 1]] : undefined,
     },

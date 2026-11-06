@@ -190,29 +190,37 @@ export const HUNTER_ARMOR_MODULES: Readonly<
 export const HUNTER_GAUNTLET_HINGE = { x: 51, y: 202 } as const;
 
 /**
- * Registration of the V3 wristblade housing and blades on the FRONT forearm.
- * The source sprites were drawn horizontally (blades pointing +x) while the
- * bind-pose forearm runs from the elbow (185,161) to the wrist (212,216).
- * This rigid fit turns the art onto that axis and sits the housing on the
- * back of the forearm, just above the wrist, so the blades extend past the
- * hand along the arm (Jungle Hunter, right arm) in every pose.
- * Applied after the bone matrix and before the blade slide, in 256x384 space.
+ * V145 arm assignment (user decision, 6 Nov 2026): wristblades on the BACK
+ * (background) forearm, wrist computer on the FRONT forearm — always on
+ * opposite arms, as in the films.
+ *
+ * Wristblade registration on the back forearm. The source housing and blades
+ * were drawn horizontally (blades toward +x, housing top toward -y). The
+ * bind-pose back forearm runs from the elbow (55,149) to the wrist (45,219).
+ * The art is flipped vertically, so its top faces outward (back of the wrist),
+ * turned onto that axis and seated on the lower forearm; the blades then
+ * extend past the hand along the arm. Per-morph offsets reuse
+ * HUNTER_GAUNTLET_FIT_BY_MORPH, measured on the same back forearm.
+ * Applied after the armBackLower bone and before the blade slide (256x384).
  */
 export const HUNTER_WRISTBLADE_REGISTRATION = {
   pivot: { x: 198, y: 211 },
-  rotation: Math.atan2(216 - 161, 212 - 185),
-  translateX: 6.4,
-  translateY: -10.4,
+  rotation: Math.atan2(219 - 149, 45 - 55),
+  flipY: true,
+  target: { x: 47.8, y: 199.4 },
 } as const;
 
 /** Same fit as an affine matrix (a, b, c, d, e, f) for DOM and Canvas renderers. */
-export function hunterWristbladeRegistrationMatrix(): { a: number; b: number; c: number; d: number; e: number; f: number } {
-  const { pivot, rotation, translateX, translateY } = HUNTER_WRISTBLADE_REGISTRATION;
-  const cos = Math.cos(rotation), sin = Math.sin(rotation);
+export function hunterWristbladeRegistrationMatrix(morphId: HunterBodyMorphId = "classic"): { a: number; b: number; c: number; d: number; e: number; f: number } {
+  const { pivot, rotation, flipY, target } = HUNTER_WRISTBLADE_REGISTRATION;
+  const fit = HUNTER_GAUNTLET_FIT_BY_MORPH[morphId];
+  const cos = Math.cos(rotation), sin = Math.sin(rotation), fy = flipY ? -1 : 1;
+  // T(target + morph) * R * F, applied to (p - pivot).
+  const a = cos, b = sin, c = -sin * fy, d = cos * fy;
   return {
-    a: cos, b: sin, c: -sin, d: cos,
-    e: translateX + pivot.x - cos * pivot.x + sin * pivot.y,
-    f: translateY + pivot.y - sin * pivot.x - cos * pivot.y,
+    a, b, c, d,
+    e: target.x + fit.translateX - a * pivot.x - c * pivot.y,
+    f: target.y + fit.translateY - 3 - b * pivot.x - d * pivot.y,
   };
 }
 

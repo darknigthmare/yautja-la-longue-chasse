@@ -8,7 +8,7 @@ import DecalSurfaceV133 from "./DecalSurfaceV133";
 import { maskChromaticsForAppearanceV131 } from "./hunterChromaticsV113";
 import { HUNTER_SKIN_FILTERS_V114, HUNTER_DREAD_FILTERS_V114, HUNTER_ARMOR_FILTERS_V114 } from "./hunterPaletteFiltersV114";
 import { gauntletByIdV132 } from "./systems/clanWarGauntletCatalogV132";
-import { gauntletRigArmFitMatrixV139, gauntletRigSpriteV139 } from "./systems/gauntletRigSpritesV139";
+import { gauntletFrontArmMatrixV145, gauntletRigSpriteV139 } from "./systems/gauntletRigSpritesV139";
 
 import type {
   ArmorId,
@@ -22,7 +22,6 @@ import {
   HUNTER_ARMOR_MODULES,
   HUNTER_BODY_PART_BONES,
   HUNTER_EQUIPMENT_V3,
-  HUNTER_GAUNTLET_FIT_BY_MORPH,
   HUNTER_GAUNTLET_HINGE,
   HUNTER_GEAR_V3,
   HUNTER_TROPHIES_V3,
@@ -422,7 +421,8 @@ export function HunterRigPreview({
     );
   };
   const armorFamily = HUNTER_ARMOR_MODULES[appearance.armorStyleId];
-  const armorFilter = `${HUNTER_ARMOR_FILTERS_V114[appearance.armorTintId]} drop-shadow(0 3px 3px rgb(0 0 0 / .82))`;
+  // V145: tight contact shadow; the former 3 px drop made every plate float in front of the body.
+  const armorFilter = `${HUNTER_ARMOR_FILTERS_V114[appearance.armorTintId]} drop-shadow(0 1px 1px rgb(0 0 0 / .6))`;
   const selectedGauntlet = gauntletByIdV132(gauntletVariantId ?? "jungle-hunter") ?? gauntletByIdV132("jungle-hunter");
   const rigGauntletId = selectedGauntlet?.id ?? "jungle-hunter";
   const netOpacity =
@@ -451,36 +451,45 @@ export function HunterRigPreview({
     /** Source-space fit applied after the bone (V145 registration). */
     fit?: AffineMatrix;
     shade?: boolean;
+    /**
+     * V145 wrap: the plate is drawn once at `z` (behind the limb) and again at
+     * `wrapZ`, masked to this limb's silhouette, so it reads as going around
+     * the limb instead of being pasted in front of the character.
+     */
+    wrap?: { part: HunterBodyPartId; wrapZ: number };
   }> = [
-    { id: armorFamily.chest, bone: "torso", z: 44 },
-    { id: armorFamily.shoulder, bone: "armFrontUpper", z: 52, fit: hunterShoulderPlateMatrixV145(appearance.bodyMorphId) },
-    { id: "belt", bone: "pelvis", z: 49 },
+    // Body z: torso 34, head 36, thigh-front 38, shin-front 40, foot-front 42,
+    // upper-arm-front 44, lower-arm-front 46, hand-front 48 (nets +1).
+    { id: armorFamily.chest, bone: "torso", z: 35 },
+    { id: armorFamily.shoulder, bone: "armFrontUpper", z: 35, fit: hunterShoulderPlateMatrixV145(appearance.bodyMorphId),
+      wrap: { part: "upper-arm-front", wrapZ: 45 } },
   ];
   if (armorId !== "scout") {
-    if (!showsWristblades) {
-      armorSlots.push({ id: "bracer", bone: "armFrontLower", z: 55 });
-    }
     armorSlots.push(
-      { id: "thigh", bone: "legFrontUpper", z: 47 },
-      { id: "knee", bone: "legFrontLower", z: 49 },
-      { id: "thigh-lower", bone: "legFrontLower", z: 47, fit: hunterGreaveMatrixV145(appearance.bodyMorphId, "thigh-lower", "front") },
-      { id: "shin", bone: "legFrontLower", z: 48, fit: hunterGreaveMatrixV145(appearance.bodyMorphId, "shin", "front") },
-      // Far-side greave on the back shin, drawn just over shin-back (z 22).
-      { id: "thigh-lower", bone: "legBackLower", z: 23, fit: hunterGreaveMatrixV145(appearance.bodyMorphId, "thigh-lower", "back"), shade: true },
-      { id: "shin", bone: "legBackLower", z: 24, fit: hunterGreaveMatrixV145(appearance.bodyMorphId, "shin", "back"), shade: true },
+      { id: "thigh", bone: "legFrontUpper", z: 37, wrap: { part: "thigh-front", wrapZ: 39 } },
+      { id: "thigh-lower", bone: "legFrontLower", z: 39, fit: hunterGreaveMatrixV145(appearance.bodyMorphId, "thigh-lower", "front"),
+        wrap: { part: "shin-front", wrapZ: 41 } },
+      { id: "shin", bone: "legFrontLower", z: 39, fit: hunterGreaveMatrixV145(appearance.bodyMorphId, "shin", "front"),
+        wrap: { part: "shin-front", wrapZ: 41 } },
+      { id: "knee", bone: "legFrontLower", z: 41 },
+      // Far-side greave on the back shin (shin-back z 22).
+      { id: "thigh-lower", bone: "legBackLower", z: 21, fit: hunterGreaveMatrixV145(appearance.bodyMorphId, "thigh-lower", "back"), shade: true,
+        wrap: { part: "shin-back", wrapZ: 23 } },
+      { id: "shin", bone: "legBackLower", z: 21, fit: hunterGreaveMatrixV145(appearance.bodyMorphId, "shin", "back"), shade: true,
+        wrap: { part: "shin-back", wrapZ: 23 } },
+      // The front forearm carries the bracer under the wrist computer.
+      { id: "bracer", bone: "armFrontLower", z: 47 },
     );
   }
+  // Belt and loincloth hang over the front thigh.
+  armorSlots.push({ id: "belt", bone: "pelvis", z: 39 });
 
-  const gauntletFit =
-    HUNTER_GAUNTLET_FIT_BY_MORPH[appearance.bodyMorphId];
-  // V139 shells are fitted to the forearm (scale about a fixed point), so the
-  // lid below still pivots on HUNTER_GAUNTLET_HINGE in source coordinates.
+  // V145: wrist computer on the FRONT forearm (blades take the back one).
+  // The shell is fitted and turned onto that forearm, so the lid below still
+  // pivots on HUNTER_GAUNTLET_HINGE in source coordinates.
   const gauntletMatrix = multiplyAffine(
-    multiplyAffine(
-      boneMatrix("armBackLower"),
-      translation(gauntletFit.translateX, gauntletFit.translateY),
-    ),
-    gauntletRigArmFitMatrixV139(),
+    boneMatrix("armFrontLower"),
+    gauntletFrontArmMatrixV145(appearance.bodyMorphId, true),
   );
   const lidBase = gauntletMatrix;
   const lidMatrix = multiplyAffine(
@@ -491,11 +500,11 @@ export function HunterRigPreview({
       gauntletOpen ? -1.12 : 0,
     ),
   );
-  // Housing and blades are turned onto the forearm axis; the blades then
-  // slide along their own axis, out past the hand.
+  // V145: housing and blades on the BACK forearm (background arm), top of
+  // the wrist outward; the blades slide along their own axis past the hand.
   const bladeHousingMatrix = multiplyAffine(
-    boneMatrix("armFrontLower"),
-    hunterWristbladeRegistrationMatrix(),
+    boneMatrix("armBackLower"),
+    hunterWristbladeRegistrationMatrix(appearance.bodyMorphId),
   );
   const bladeMatrix = multiplyAffine(
     bladeHousingMatrix,
@@ -657,11 +666,22 @@ export function HunterRigPreview({
         const matrix = slot.fit ? multiplyAffine(boneMatrix(slot.bone), slot.fit) : boneMatrix(slot.bone);
         const keep = HUNTER_ARMOR_KEEP_CLIP_V145[slot.id]?.[0];
         const clipPath = keep ? `inset(${cssPercentage(keep[1], 384)} ${cssPercentage(256 - keep[0] - keep[2], 256)} ${cssPercentage(384 - keep[1] - keep[3], 384)} ${cssPercentage(keep[0], 256)})` : undefined;
+        const filter = slot.shade ? `${armorFilter} brightness(.72)` : armorFilter;
+        const limb = slot.wrap && hunterBodyPartPath(appearance.bodyMorphId, slot.wrap.part, appearance.headStyleId);
         return <span key={`${slot.id}-${slot.bone}`}>
           {registeredLayer(hunterArmorPath(slot.id), matrix, slot.z, `armor-${slot.id}${slot.shade ? "-far" : ""}`,
-            slot.shade ? `${armorFilter} brightness(.72)` : armorFilter, undefined, undefined, clipPath)}
+            filter, undefined, undefined, clipPath)}
           <ChromaticSurfaceV113 appearance={appearance} channel="armor" maskPath={hunterArmorPath(slot.id)}
             style={{ ...fullCanvasImage, zIndex: slot.z, transform: cssMatrix(matrix) }} />
+          {slot.wrap && limb && <span aria-hidden="true" data-rig-armor-wrap={slot.id}
+            style={{ ...fullCanvasImage, zIndex: slot.wrap.wrapZ, transform: cssMatrix(boneMatrix(slot.bone)),
+              maskImage: `url("${limb}")`, WebkitMaskImage: `url("${limb}")`, maskSize: "100% 100%", WebkitMaskSize: "100% 100%",
+              maskRepeat: "no-repeat", WebkitMaskRepeat: "no-repeat" }}>
+            <img alt="" draggable={false} src={hunterArmorPath(slot.id)}
+              style={{ ...fullCanvasImage, filter, clipPath, transform: slot.fit ? cssMatrix(slot.fit) : undefined }} />
+            <ChromaticSurfaceV113 appearance={appearance} channel="armor" maskPath={hunterArmorPath(slot.id)}
+              style={{ ...fullCanvasImage, transform: slot.fit ? cssMatrix(slot.fit) : undefined }} />
+          </span>}
           {slot.id === armorFamily.chest && <DecalSurfaceV133 appearance={appearance} zone="armor"
             maskPath={hunterArmorPath(slot.id)}
             style={{ ...fullCanvasImage, zIndex: slot.z + 1, transform: cssMatrix(matrix) }} />}
@@ -777,13 +797,13 @@ export function HunterRigPreview({
       {registeredLayer(
         gauntletRigSpriteV139(rigGauntletId, "base"),
         gauntletMatrix,
-        64,
+        47,
         "gauntlet-base",
       )}
       {registeredLayer(
         gauntletRigSpriteV139(rigGauntletId, "lid"),
         lidMatrix,
-        65,
+        47,
         "gauntlet-lid",
       )}
 
@@ -791,14 +811,14 @@ export function HunterRigPreview({
         registeredLayer(
           HUNTER_EQUIPMENT_V3.wristblades.housing,
           bladeHousingMatrix,
-          68,
+          31,
           "blade-housing",
         )}
       {showsWristblades &&
         registeredLayer(
           HUNTER_EQUIPMENT_V3.wristblades.blades,
           bladeMatrix,
-          67,
+          31,
           "wristblades",
           undefined,
           bladesExtended ? 1 : 0,

@@ -7,7 +7,7 @@ import {
   HUNTER_GAUNTLET_HINGE,HUNTER_GAUNTLET_FIT_BY_MORPH,
   HUNTER_WRISTBLADE_REGISTRATION,hunterWristbladeRegistrationMatrix,
 } from "../app/game/hunterVisuals.ts";
-import {gauntletRigArmFitMatrixV139,isGauntletRigSpriteV139,gauntletRigSpriteV139} from "../app/game/systems/gauntletRigSpritesV139.ts";
+import {gauntletRigArmFitMatrixV139,gauntletFrontArmMatrixV145,isGauntletRigSpriteV139,gauntletRigSpriteV139} from "../app/game/systems/gauntletRigSpritesV139.ts";
 
 const root=fileURLToPath(new URL("../",import.meta.url));
 const read=relative=>readFileSync(root+relative,"utf8");
@@ -17,63 +17,68 @@ const bind=solveHunterRig({pose:"idle",facing:1,phase:0,aimAngle:0});
 const POSES=["idle","run","jump","fall","climb","extract"];
 const MORPHS=Object.keys(HUNTER_GAUNTLET_FIT_BY_MORPH);
 
-test("wristblade housing and blades follow the front forearm axis in every pose",()=>{
-  const fit=hunterWristbladeRegistrationMatrix();
+test("V145 wristblades follow the BACK forearm axis, top of the wrist outward, in every pose",()=>{
   const {pivot}=HUNTER_WRISTBLADE_REGISTRATION;
   let checks=0;
-  for(const pose of POSES)for(const facing of [-1,1])for(const phase of [0,.25,.5,.75]){
+  for(const morph of MORPHS)for(const pose of POSES)for(const facing of [-1,1])for(const phase of [0,.5]){
+    const fit=hunterWristbladeRegistrationMatrix(morph);
     const frame=solveHunterRig({pose,facing,phase,speed:pose==="run"?260:0,verticalVelocity:pose==="fall"?480:0,extractionProgress:pose==="extract"?phase:0});
-    const forearm=relativeBoneMatrix(frame,bind,"armFrontLower");
-    const elbow=apply(frame.bones.armFrontLower,{x:0,y:0});
-    const wrist=apply(frame.bones.handFront,{x:0,y:0});
+    const forearm=relativeBoneMatrix(frame,bind,"armBackLower");
+    const elbow=apply(frame.bones.armBackLower,{x:0,y:0});
+    const wrist=apply(frame.bones.handBack,{x:0,y:0});
     const arm=Math.atan2(wrist.y-elbow.y,wrist.x-elbow.x);
     const blades=multiplyAffine(forearm,fit);
     const rear=apply(blades,pivot),tip=apply(blades,{x:pivot.x+40,y:pivot.y});
     const art=Math.atan2(tip.y-rear.y,tip.x-rear.x);
     const diff=Math.atan2(Math.sin(art-arm),Math.cos(art-arm));
-    assert.ok(Math.abs(diff)<.02,`blades off the forearm axis in ${pose}/${facing}/${phase}: ${diff}`);
-    // Housing centre sits on the forearm segment, between elbow and wrist.
+    assert.ok(Math.abs(diff)<.02,`blades off the back forearm axis in ${morph}/${pose}/${facing}/${phase}: ${diff}`);
     const t=((rear.x-elbow.x)*(wrist.x-elbow.x)+(rear.y-elbow.y)*(wrist.y-elbow.y))/((wrist.x-elbow.x)**2+(wrist.y-elbow.y)**2);
-    assert.ok(t>.5&&t<1,`housing not on the lower forearm (${t}) in ${pose}`);
+    assert.ok(t>.5&&t<1,`housing not on the lower back forearm (${t}) in ${pose}`);
     checks++;
   }
-  assert.equal(checks,48);
+  // At rest the housing top (source -y) faces away from the torso (screen left).
+  const fit=hunterWristbladeRegistrationMatrix("classic");
+  const centre=apply(fit,pivot),top=apply(fit,{x:pivot.x,y:pivot.y-10});
+  assert.ok(top.x<centre.x,"housing top must face outward");
+  assert.equal(checks,MORPHS.length*24);
 });
 
-test("V139 wrist computers are fitted to the back forearm and keep a fixed lid hinge",()=>{
-  const fit=gauntletRigArmFitMatrixV139();
-  // Measured extent of the 54 V139 base shells in source space.
-  const shell={x0:19,y0:162,x1:93,y1:232};
-  for(const morph of MORPHS){
-    const m={...fit,e:fit.e+HUNTER_GAUNTLET_FIT_BY_MORPH[morph].translateX,f:fit.f+HUNTER_GAUNTLET_FIT_BY_MORPH[morph].translateY};
-    const a=apply(m,{x:shell.x0,y:shell.y0}),b=apply(m,{x:shell.x1,y:shell.y1});
-    assert.ok(b.x-a.x<=48,`shell wider than the forearm for ${morph}`);
-    assert.ok(a.y>=149&&b.y<=219,`shell outside elbow..wrist for ${morph}: ${a.y}..${b.y}`);
+test("V145 wrist computer sits on the FRONT forearm and keeps a fixed lid hinge",()=>{
+  for(const morph of MORPHS)for(const v139 of [true,false]){
+    const m=gauntletFrontArmMatrixV145(morph,v139);
+    const centre=apply(m,v139?{x:55,y:197.5}:{x:50.5,y:202.5});
+    // Front forearm: elbow (185,161) to wrist (212,216).
+    const t=((centre.x-185)*27+(centre.y-161)*55)/(27*27+55*55);
+    assert.ok(t>.3&&t<.7,`computer not at mid front forearm for ${morph}: ${t}`);
+    const off=Math.abs((centre.x-185)*55-(centre.y-161)*27)/Math.hypot(27,55);
+    assert.ok(off<8,`computer off the front forearm for ${morph}: ${off}`);
   }
   for(const pose of POSES)for(const facing of [-1,1]){
     const frame=solveHunterRig({pose,facing,phase:.5});
-    const base=multiplyAffine(relativeBoneMatrix(frame,bind,"armBackLower"),fit);
+    const base=multiplyAffine(relativeBoneMatrix(frame,bind,"armFrontLower"),gauntletFrontArmMatrixV145("classic",true));
     const c=Math.cos(-1.12),s=Math.sin(-1.12),h=HUNTER_GAUNTLET_HINGE;
     const open=multiplyAffine(base,{a:c,b:s,c:-s,d:c,e:h.x-c*h.x+s*h.y,f:h.y-s*h.x-c*h.y});
     const p0=apply(base,h),p1=apply(open,h);
     assert.ok(near(p0.x,p1.x,1e-6)&&near(p0.y,p1.y,1e-6),`hinge detached in ${pose}`);
   }
+  assert.ok(gauntletRigArmFitMatrixV139().a<1);
   assert.equal(isGauntletRigSpriteV139(gauntletRigSpriteV139("wolf","base")),true);
   assert.equal(isGauntletRigSpriteV139("/game/assets/v3/actors/yautja/hunter/equipment/registered/gauntlet-base.webp"),false);
 });
 
-test("preview, hunt canvas, PIT and Homeworld share the same forearm fits",()=>{
+test("preview, hunt canvas, PIT and Homeworld share the same arm assignment and wrap",()=>{
   const preview=read("app/game/HunterRigPreview.tsx");
   const hunt=read("app/game/HuntCanvas.tsx");
   const pit=read("app/game/pitFighterRendering.ts");
   const home=read("app/game/HomeworldModularHunter.tsx");
-  assert.match(preview,/gauntletRigArmFitMatrixV139\(\)/);
-  assert.match(preview,/hunterWristbladeRegistrationMatrix\(\)/);
-  assert.match(hunt,/isGauntletRigSpriteV139\(image\.src\)/);
-  assert.match(hunt,/registration: hunterWristbladeRegistrationMatrix\(\)/);
-  assert.match(pit,/HUNTER_WRISTBLADE_REGISTRATION/);
-  assert.match(home,/data-homeworld-layer="gauntlet"/);
-  assert.match(home,/hunterWristbladeRegistrationMatrix\(\)/);
+  for(const source of [preview,hunt,pit,home]){
+    assert.match(source,/gauntletFrontArmMatrixV145\(/);
+    assert.match(source,/hunterWristbladeRegistrationMatrix\((appearance\.bodyMorphId|morph|morphId)\)/);
+  }
+  assert.match(preview,/data-rig-armor-wrap/);
+  assert.match(hunt,/drawWrappedLayerV145\(/);
+  assert.match(home,/data-homeworld-armor-wrap/);
+  assert.match(preview,/boneMatrix\("armBackLower"\),\n\s*hunterWristbladeRegistrationMatrix/);
 });
 
 // V145: shoulder plate, greaves and side dreadlocks.

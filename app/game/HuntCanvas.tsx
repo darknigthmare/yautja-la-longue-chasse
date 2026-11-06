@@ -2,7 +2,7 @@
 
 import { huntStructuralBarrierV94 } from "./systems/huntStructuralBarrierV94";
 import { loadGauntletRigPartV141 } from "./systems/gauntletMissionVisualV141";
-import { gauntletRigArmFitMatrixV139, isGauntletRigSpriteV139 } from "./systems/gauntletRigSpritesV139";
+import { gauntletFrontArmMatrixV145, isGauntletRigSpriteV139 } from "./systems/gauntletRigSpritesV139";
 import { createCorpseDiscoveryV112, stepCorpseDiscoveryV112, restoreCorpseDiscoveryV112,
   corpseDiscoveryReactionV112, corpseZoneFearV112, animalCorpseResponseV112,
   type CorpseDiscoveryStateV112, type DiscoveryActorV112 } from "./systems/corpseDiscoveryV112";
@@ -82,7 +82,6 @@ import {
   HUNTER_BODY_PART_BONES,
   HUNTER_BODY_PART_IDS,
   HUNTER_EQUIPMENT_V3,
-  HUNTER_GAUNTLET_FIT_BY_MORPH,
   HUNTER_GAUNTLET_HINGE,
   hunterArmorPath,
   hunterBodyPartHasNet,
@@ -3374,6 +3373,37 @@ function drawRegisteredLayer(
   return true;
 }
 
+/**
+ * V145 wrap: draws a registered plate masked to one limb's silhouette, so a
+ * plate drawn once behind the limb and once through this helper reads as
+ * going around it. The mask is applied in the limb's bind space (offscreen
+ * 256x384), then the result follows the limb bone.
+ */
+const WRAP_CANVAS_V145: { canvas: HTMLCanvasElement | null } = { canvas: null };
+function drawWrappedLayerV145(
+  context: CanvasRenderingContext2D,
+  image: HTMLImageElement | null,
+  limb: HTMLImageElement | null,
+  frame: HunterRigFrame,
+  boneId: HunterRigBoneId,
+  options: RegisteredLayerOptions = {},
+): void {
+  if (!image || !limb || typeof document === "undefined") return;
+  const canvas = WRAP_CANVAS_V145.canvas ?? (WRAP_CANVAS_V145.canvas = document.createElement("canvas"));
+  canvas.width = HUNTER_RIG_CANVAS.width;
+  canvas.height = HUNTER_RIG_CANVAS.height;
+  const local = canvas.getContext("2d");
+  if (!local) return;
+  drawRegisteredLayer(local, image, HUNTER_BIND_FRAME, boneId, options);
+  local.globalCompositeOperation = "destination-in";
+  local.drawImage(limb, 0, 0, HUNTER_RIG_CANVAS.width, HUNTER_RIG_CANVAS.height);
+  local.globalCompositeOperation = "source-over";
+  context.save();
+  applyAffine(context, relativeBoneMatrix(frame, HUNTER_BIND_FRAME, boneId));
+  context.drawImage(canvas, 0, 0, HUNTER_RIG_CANVAS.width, HUNTER_RIG_CANVAS.height);
+  context.restore();
+}
+
 function drawAtomicBodyPart(
   context: CanvasRenderingContext2D,
   assets: AssetBank,
@@ -3709,16 +3739,29 @@ function drawHunterLayered(
     for (const partId of HUNTER_BACK_PARTS) {
       drawAtomicBodyPart(context, assets, frame, appearance, partId);
     }
-    // V145 far-side greave on the back shin, behind the body core.
+    // V145 far-side greave on the back shin (behind and around it), and the
+    // wristblades on the BACK forearm: both stay behind the body core.
     if (loadout.armorId !== "scout") {
       for (const part of ["thigh-lower", "shin"] as const) {
-        drawRegisteredLayer(context, part === "shin" ? assets.hunterArmor.shin : assets.hunterArmor.thighLower,
-          frame, "legBackLower", {
-            filter: armorTint === "none" ? "brightness(.72)" : `${armorTint} brightness(.72)`, chromatics: { appearance, channel: "armor" },
-            registration: hunterGreaveMatrixV145(appearance.bodyMorphId, part, "back"),
-            clip: part === "shin" ? HUNTER_ARMOR_KEEP_CLIP_V145.shin : undefined,
-          });
+        const greave: RegisteredLayerOptions = {
+          filter: armorTint === "none" ? "brightness(.72)" : `${armorTint} brightness(.72)`, chromatics: { appearance, channel: "armor" },
+          registration: hunterGreaveMatrixV145(appearance.bodyMorphId, part, "back"),
+          clip: part === "shin" ? HUNTER_ARMOR_KEEP_CLIP_V145.shin : undefined,
+        };
+        drawRegisteredLayer(context, part === "shin" ? assets.hunterArmor.shin : assets.hunterArmor.thighLower, frame, "legBackLower", greave);
+        drawWrappedLayerV145(context, part === "shin" ? assets.hunterArmor.shin : assets.hunterArmor.thighLower,
+          assets.hunterBodyParts["shin-back"], frame, "legBackLower", greave);
       }
+    }
+    if (hasWristblades) {
+      const extension = clamp(player.bladeExtension, 0, 1);
+      const bladeFit = hunterWristbladeRegistrationMatrix(appearance.bodyMorphId);
+      drawRegisteredLayer(context, assets.hunterWristblades.blades, frame, "armBackLower", {
+        alpha: extension,
+        registration: bladeFit,
+        translateX: -46 * (1 - extension),
+      });
+      drawRegisteredLayer(context, assets.hunterWristblades.housing, frame, "armBackLower", { registration: bladeFit });
     }
     for (const partId of HUNTER_CORE_PARTS) {
       drawAtomicBodyPart(context, assets, frame, appearance, partId);
@@ -3760,6 +3803,24 @@ function drawHunterLayered(
   );
   drawHunterBeltLoadout(context, assets, frame, loadout);
 
+  // V145 wrap, first pass: plates behind their limb (and behind the head for
+  // the shoulder). The masked second pass is drawn after the front limbs.
+  const shoulderPlate: RegisteredLayerOptions = {
+    filter: armorTint, chromatics: { appearance, channel: "armor" },
+    // Mirrored onto the deltoid, per-morph scale included.
+    registration: hunterShoulderPlateMatrixV145(appearance.bodyMorphId),
+    clip: HUNTER_ARMOR_KEEP_CLIP_V145[HUNTER_ARMOR_MODULES[appearance.armorStyleId].shoulder],
+  };
+  const frontLegPlates = loadout.armorId === "scout" ? [] : [
+    { image: assets.hunterArmor.thigh, bone: "legFrontUpper" as const, limb: "thigh-front" as const, options: { filter: armorTint, chromatics: { appearance, channel: "armor" as const } } },
+    { image: assets.hunterArmor.thighLower, bone: "legFrontLower" as const, limb: "shin-front" as const, options: { filter: armorTint, chromatics: { appearance, channel: "armor" as const },
+      registration: hunterGreaveMatrixV145(appearance.bodyMorphId, "thigh-lower", "front") } },
+    { image: assets.hunterArmor.shin, bone: "legFrontLower" as const, limb: "shin-front" as const, options: { filter: armorTint, chromatics: { appearance, channel: "armor" as const },
+      registration: hunterGreaveMatrixV145(appearance.bodyMorphId, "shin", "front"), clip: HUNTER_ARMOR_KEEP_CLIP_V145.shin } },
+  ];
+  drawRegisteredLayer(context, assets.hunterArmor.shoulder, frame, "armFrontUpper", shoulderPlate);
+  for (const plate of frontLegPlates) drawRegisteredLayer(context, plate.image, frame, plate.bone, plate.options);
+
   if (atomicBodyReady) {
     drawAtomicBodyPart(context, assets, frame, appearance, "head");
     for (const partId of HUNTER_FRONT_PARTS) {
@@ -3774,19 +3835,9 @@ function drawHunterLayered(
     drawAtomicBodyPart(context, assets, frame, appearance, "hand-front");
   }
 
-  // Modules d'armure qui suivent réellement leur membre.
-  drawRegisteredLayer(
-    context,
-    assets.hunterArmor.shoulder,
-    frame,
-    "armFrontUpper",
-    {
-      filter: armorTint, chromatics: { appearance, channel: "armor" },
-      // V145: mirrored onto the deltoid, per-morph scale included.
-      registration: hunterShoulderPlateMatrixV145(appearance.bodyMorphId),
-      clip: HUNTER_ARMOR_KEEP_CLIP_V145[HUNTER_ARMOR_MODULES[appearance.armorStyleId].shoulder],
-    },
-  );
+  // Modules d'armure qui suivent réellement leur membre. V145 wrap, second
+  // pass: each plate again, masked to its limb, over that limb.
+  drawWrappedLayerV145(context, assets.hunterArmor.shoulder, assets.hunterBodyParts["upper-arm-front"], frame, "armFrontUpper", shoulderPlate);
   // V145 side dreadlocks fall in front of the near shoulder (rear strands stay behind).
   if (assets.hunterDreads) {
     solveHunterSideDreadsV145(frame, appearance.bodyMorphId, appearance.dreadStyleId, appearance.headStyleId, player.dreadAngles).forEach((strand) => {
@@ -3803,30 +3854,17 @@ function drawHunterLayered(
     });
   }
   if (loadout.armorId !== "scout") {
-    if (!hasWristblades) {
-      drawRegisteredLayer(
-        context,
-        assets.hunterArmor.bracer,
-        frame,
-        "armFrontLower",
-        { filter: armorTint, chromatics: { appearance, channel: "armor" } },
-      );
-    }
+    // The front forearm carries the bracer under the wrist computer.
     drawRegisteredLayer(
       context,
-      assets.hunterArmor.thigh,
+      assets.hunterArmor.bracer,
       frame,
-      "legFrontUpper",
+      "armFrontLower",
       { filter: armorTint, chromatics: { appearance, channel: "armor" } },
     );
-    drawRegisteredLayer(
-      context,
-      assets.hunterArmor.thighLower,
-      frame,
-      "legFrontLower",
-      { filter: armorTint, chromatics: { appearance, channel: "armor" },
-        registration: hunterGreaveMatrixV145(appearance.bodyMorphId, "thigh-lower", "front") },
-    );
+    for (const plate of frontLegPlates) {
+      drawWrappedLayerV145(context, plate.image, assets.hunterBodyParts[plate.limb], frame, plate.bone, plate.options);
+    }
     drawRegisteredLayer(
       context,
       assets.hunterArmor.knee,
@@ -3834,71 +3872,31 @@ function drawHunterLayered(
       "legFrontLower",
       { filter: armorTint, chromatics: { appearance, channel: "armor" } },
     );
-    drawRegisteredLayer(
-      context,
-      assets.hunterArmor.shin,
-      frame,
-      "legFrontLower",
-      { filter: armorTint, chromatics: { appearance, channel: "armor" },
-        registration: hunterGreaveMatrixV145(appearance.bodyMorphId, "shin", "front"),
-        clip: HUNTER_ARMOR_KEEP_CLIP_V145.shin },
-    );
   }
 
-  // Gantelet : la base suit l'avant-bras arrière et le lid pivote sur sa
-  // charnière canonique au lieu de fondre vers une seconde image complète.
-  const gauntletFit =
-    HUNTER_GAUNTLET_FIT_BY_MORPH[appearance.bodyMorphId];
-  // V139 shells share HunterRigPreview's forearm fit: bone, then the morph
-  // offset, then the shell fit. The V3 fallback is already forearm-sized.
-  // The lid keeps pivoting on its source-space hinge in both cases.
-  const gauntletPlacement = (image: HTMLImageElement | null): RegisteredLayerOptions => {
-    if (!image || !isGauntletRigSpriteV139(image.src)) {
-      return { translateX: gauntletFit.translateX, translateY: gauntletFit.translateY };
-    }
-    const fit = gauntletRigArmFitMatrixV139();
-    return { registration: { ...fit, e: fit.e + gauntletFit.translateX, f: fit.f + gauntletFit.translateY } };
-  };
+  // Gantelet (V145) : l'ordinateur passe sur l'avant-bras AVANT, les lames
+  // sur l'avant-bras arrière ; le lid pivote toujours sur sa charnière source.
+  const gauntletPlacement = (image: HTMLImageElement | null): RegisteredLayerOptions => ({
+    registration: gauntletFrontArmMatrixV145(appearance.bodyMorphId, !!image && isGauntletRigSpriteV139(image.src)),
+  });
   drawRegisteredLayer(
     context,
     assets.hunterGauntlet.base,
     frame,
-    "armBackLower",
+    "armFrontLower",
     gauntletPlacement(assets.hunterGauntlet.base),
   );
   drawRegisteredLayer(
     context,
     assets.hunterGauntlet.lid,
     frame,
-    "armBackLower",
+    "armFrontLower",
     {
       ...gauntletPlacement(assets.hunterGauntlet.lid),
       pivot: HUNTER_GAUNTLET_HINGE,
       rotation: -1.12 * clamp(player.gauntletOpen, 0, 1),
     },
   );
-
-  if (hasWristblades) {
-    const extension = clamp(player.bladeExtension, 0, 1);
-    drawRegisteredLayer(
-      context,
-      assets.hunterWristblades.blades,
-      frame,
-      "armFrontLower",
-      {
-        alpha: extension,
-        registration: hunterWristbladeRegistrationMatrix(),
-        translateX: -46 * (1 - extension),
-      },
-    );
-    drawRegisteredLayer(
-      context,
-      assets.hunterWristblades.housing,
-      frame,
-      "armFrontLower",
-      { registration: hunterWristbladeRegistrationMatrix() },
-    );
-  }
 
   // Toute la tête du caster suit la chaîne yoke > cannon > barrel > muzzle.
   if (hasPlasmaCaster) {
