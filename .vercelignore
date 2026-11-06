@@ -41,3 +41,6 @@ tests
 # This exact historical group is served by the SHA-pinned beforeFiles rewrite.
 # Exclude it at packaging time instead of mutating mounted generated copies.
 /public/game/imports/v85
+
+# Archive-only PREY DLC sources and local reconstructions are not deployment inputs.
+/dlc/prey-2022

@@ -1,0 +1,14 @@
+import { readFileSync, writeFileSync, readdirSync } from 'node:fs';
+import { dirname, join, resolve } from 'node:path';
+import { fileURLToPath } from 'node:url';
+const here=dirname(fileURLToPath(import.meta.url)),root=resolve(here,'..');
+let html=readFileSync(join(root,'JOUER_PREY_DLC_V0_6.html'),'utf8');
+const css=readFileSync(join(root,'src','prey-v06.css'),'utf8');
+const content=readFileSync(join(root,'src','prey-content-v06.js'),'utf8').replaceAll('</script','<\\/script');
+const game=readFileSync(join(root,'src','prey-game-v06.js'),'utf8').replaceAll('</script','<\\/script');
+const iconDir=join(root,'assets','icons'),icons={};
+for(const name of readdirSync(iconDir).filter(x=>x.endsWith('.svg')).sort())icons[name]=`data:image/svg+xml;base64,${Buffer.from(readFileSync(join(iconDir,name))).toString('base64')}`;
+html=html.replace('<link rel="stylesheet" href="src/prey-v06.css">',`<style>${css}</style>`);
+html=html.replace('<script src="src/prey-content-v06.js"></script><script src="src/prey-game-v06.js"></script>',`<script>window.PREY_ICON_DATA=${JSON.stringify(icons)};<\/script><script>${content}<\/script><script>${game}<\/script>`);
+writeFileSync(join(root,'JOUER_PREY_DLC_V0_6_PORTABLE.html'),html,'utf8');
+console.log(JSON.stringify({portable:'JOUER_PREY_DLC_V0_6_PORTABLE.html',icons:Object.keys(icons).length,bytes:Buffer.byteLength(html)}));

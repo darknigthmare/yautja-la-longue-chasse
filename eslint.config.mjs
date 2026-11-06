@@ -23,6 +23,8 @@ const eslintConfig = defineConfig([
     "outputs/**",
     // Preserve the exact executed bundle archived with its browser evidence.
     "docs/qa/hunt-pr62-followup-r8-20261102/hud-layout/native-badge.bundle.js",
+    // Standalone historical DLC archive; not activated application source.
+    "dlc/prey-2022/**",
     "tmp/**",
     "work/**",
     "work-local/**",

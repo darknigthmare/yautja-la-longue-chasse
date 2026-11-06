@@ -1,0 +1,133 @@
+{
+  "id": "yautja.prey.1719",
+  "version": "0.6.0",
+  "title": "PREY — La chasse de 1719",
+  "contentClass": "private-fan-dlc",
+  "campaigns": [
+    {
+      "id": "human",
+      "chapters": 22
+    },
+    {
+      "id": "feral",
+      "chapters": 15
+    }
+  ],
+  "totals": {
+    "chapters": 37,
+    "zones": 185,
+    "objectiveSteps": 102,
+    "iconAssets": 20,
+    "parallelSyncPoints": 15,
+    "recordEntries": 17,
+    "chapterChallenges": 37,
+    "globalFeats": 12,
+    "mirrorDossiers": 15,
+    "packageFiles": 57,
+    "huntMarks": 6,
+    "sceneProfiles": 9
+  },
+  "systems": {
+    "saveSchemaVersion": 6,
+    "v02Migration": true,
+    "v03Migration": true,
+    "persistentCampaignState": true,
+    "objectiveCheckpointResume": true,
+    "deathRestoresCheckpoint": true,
+    "ritualDifficultyNoCheckpoint": true,
+    "dynamicDetectionMeter": true,
+    "canonProtection": true,
+    "chapterMastery": true,
+    "parallelTimeline": true,
+    "parallelSyncPoints": true,
+    "huntRecords": true,
+    "threePlaneLevels": true,
+    "limitedAmmo": true,
+    "endCreditCoda": true,
+    "localHostBridge": true,
+    "v04Migration": true,
+    "challengeBoard": true,
+    "chapterChallenges": 37,
+    "globalFeats": 12,
+    "mirrorDossiers": 15,
+    "sceneSpecificEnemyAI": true,
+    "hostileRangedProjectiles": true,
+    "sprintAndWounds": true,
+    "sariiCooldown": true,
+    "arrowRecovery": true,
+    "saveExportImport": true,
+    "optionalDevHostCard": true,
+    "integrityVerifier": true,
+    "v05Migration": true,
+    "noiseAndCrouchStealth": true,
+    "sceneBossPhases": true,
+    "feralHuntLedger": true,
+    "mirrorReplayJump": true,
+    "equipmentDamageContinuity": true,
+    "mausoleumAdapter": true,
+    "optionalMausoleumPatch": true
+  },
+  "canonLocks": [
+    "H17 detached-mask bolt guidance",
+    "H20 herb + flintlock + mask recovery",
+    "H21 eight-phase redirected-crossbolt finale",
+    "H22 return to village + pistol handoff",
+    "F09 ash/bear-trap/arsenal sequence",
+    "F11 temporary mask loss + recovery",
+    "F13 permanent biomask loss",
+    "F15 canonical crossbolt defeat",
+    "protected canonical actors cannot be killed early",
+    "F09 leg injury persists until F10 medicomp",
+    "F14 arm sever persists into F15"
+  ],
+  "feralArsenal": [
+    "Wrist Blades",
+    "Crossbolt Gun",
+    "Feral Spear",
+    "Expandable Shield",
+    "Net Gun",
+    "Cut Clamp",
+    "Wrist Mines",
+    "Cloak",
+    "Biomask",
+    "Medicomp"
+  ],
+  "humanTools": [
+    "Tomahawk relié",
+    "Arc",
+    "Sarii",
+    "Flintlock Adolini",
+    "Herbe orange"
+  ],
+  "publicBuildPolicy": {
+    "installUnder": "private-dlc/campaigns/prey-2022",
+    "modifyPublicFiles": false,
+    "publicDeploy": false,
+    "optionalBridgeIsLocalOnly": true,
+    "optionalMausoleumPatchIsLocalOnly": true
+  },
+  "copyrightSafety": {
+    "officialPixels": false,
+    "officialAudio": false,
+    "verbatimDialogue": false,
+    "visualAssets": "original-vector-and-canvas"
+  },
+  "validation": {
+    "static": "PASS",
+    "runtimeHarness": "PASS",
+    "runtimeChapters": "37/37",
+    "criticalScenarios": 25,
+    "portable": "PASS",
+    "integration": "PASS",
+    "browserInteractive": "UNAVAILABLE_ENVIRONMENT",
+    "browserScreenshotClaimed": false,
+    "sourceFilesBeforeChecksum": 56,
+    "checksumEntries": 56
+  },
+  "hostCompatibility": {
+    "repository": "darknigthmare/yautja-la-longue-chasse",
+    "testedCommit": "73c0f6e8fe5e0a1301c6aa9becb5a67f0fb34aa9",
+    "hostSaveVersion": 9,
+    "nativeMausoleumService": true
+  }
+}

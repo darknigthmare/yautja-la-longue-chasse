@@ -1,0 +1,5 @@
+import fs from 'node:fs';import assert from 'node:assert/strict';import path from 'node:path';import {fileURLToPath} from 'node:url';
+const HERE=path.dirname(fileURLToPath(import.meta.url)),ROOT=path.resolve(HERE,'..');const html=fs.readFileSync(path.join(ROOT,'JOUER_PREY_DLC_V0_6_PORTABLE.html'),'utf8');
+assert.ok(html.length>160000);assert.ok(!/<script[^>]+src=/i.test(html));assert.ok(!/<link[^>]+stylesheet/i.test(html));assert.ok(html.includes('window.PREY_CONTENT='));assert.ok(html.includes('window.PREY_ICON_DATA='));assert.ok(html.includes("SAVE_KEY='yautja.prey.2022.dlc.v06'"));assert.ok(html.includes('buildChallenges'));assert.ok(html.includes('spawnHostileShot'));assert.ok(html.includes('37 défis de chapitre'));assert.ok(html.includes('Bruit'));assert.ok(html.includes('Phase'));
+const iconMatches=[...html.matchAll(/data:image\/svg\+xml;base64,/g)];assert.equal(iconMatches.length,20);
+const result={status:'PASS',bytes:Buffer.byteLength(html),embeddedIcons:20,externalScripts:false,externalStyles:false,saveSchema:6};fs.writeFileSync(path.join(HERE,'QA_PORTABLE_V0_6.json'),JSON.stringify(result,null,2)+'\n');console.log(JSON.stringify(result));
