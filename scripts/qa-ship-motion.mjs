@@ -52,6 +52,7 @@ const report = {
   browserMode: headed ? 'headed' : 'headless',
   video: { requested: recordVideo, supported: null, files: [] },
   checks: [], frames: [], captures: [], launchObservations: [], registrationObservations: [], registrationDiagnostics: [],
+  registrationNodeRetention: [],
   familyCoverage: [], heldViewPreparations: [], heldViewCaptureCleanupErrors: [],
   pageErrors: [], consoleErrors: [], missingAssets: [], requests: [], readinessFailures: [],
   sourceHashes: {}, assetHashes: {},
@@ -701,6 +702,15 @@ async function observeLaunches(page) {
 async function observeRegistrationBlends(page, untilMs) {
   return page.locator('[data-arrival-run]').evaluate((root, untilMs) => new Promise((resolve, reject) => {
     const seen = new Set(), observations = [];
+    // Identity is measured from the actual DOM objects, without attributes or
+    // source-path-derived identifiers. Its scope is this observer.
+    const observedNodes = new WeakMap();
+    let nextNode = 1, inactiveShallow = null;
+    const nodeIdentity = node => {
+      if (!node) return null;
+      if (!observedNodes.has(node)) observedNodes.set(node, nextNode++);
+      return observedNodes.get(node);
+    };
     const observer = new MutationObserver(inspect);
     const timeout = setTimeout(() => finish(new Error('The native view-registration interval did not complete.')), 30_000);
     const rectangle = element => {
@@ -715,7 +725,11 @@ async function observeRegistrationBlends(page, untilMs) {
       return { sourceCanvas: { width: image?.naturalWidth ?? 0, height: image?.naturalHeight ?? 0 },
         sourceImage: { found: Boolean(image), src: image?.getAttribute('src') ?? null,
           currentSrc: image?.currentSrc ?? null, complete: image?.complete ?? null,
-          naturalWidth: image?.naturalWidth ?? null, naturalHeight: image?.naturalHeight ?? null },
+          naturalWidth: image?.naturalWidth ?? null, naturalHeight: image?.naturalHeight ?? null,
+          nodeIdentity: nodeIdentity(image), connected: image?.isConnected ?? false,
+          parentIdentity: nodeIdentity(image?.parentElement) },
+        slotNode: { identity: nodeIdentity(layer), connected: layer.isConnected,
+          parentIdentity: nodeIdentity(layer.parentElement) },
         renderedCanvas: { width: Number.parseFloat(style.width), height: Number.parseFloat(style.height) },
         linearTransform: { a: matrix.a, b: matrix.b, c: matrix.c, d: matrix.d } };
     };
@@ -735,11 +749,19 @@ async function observeRegistrationBlends(page, untilMs) {
       const from = hull.getAttribute('data-arrival-ship-view-from');
       const to = hull.getAttribute('data-arrival-ship-view-to');
       const mix = Number(hull.getAttribute('data-arrival-ship-view-mix'));
+      if (from === 'bank-dorsal' && !to && mix === 0) {
+        const slot = hull.querySelector('[data-arrival-retained-view="bank-dorsal-shallow"]');
+        inactiveShallow = { elapsedMs, from, to, mix, found: Boolean(slot),
+          retainedView: slot?.getAttribute('data-arrival-retained-view') ?? null,
+          path: slot?.getAttribute('data-arrival-ship-view-path') ?? null,
+          opacity: slot ? Number(getComputedStyle(slot).opacity) : null,
+          geometry: slot ? canvasGeometry(slot) : null };
+      }
       if (!to || from === to || mix <= .03 || mix >= .97) return;
       const key = `${from}:${to}:${Math.floor(mix * 4)}`;
       if (seen.has(key)) return;
       seen.add(key);
-      observations.push({ elapsedMs, from, to, mix,
+      observations.push({ elapsedMs, from, to, mix, inactiveShallow,
         cloak: Number(hull.getAttribute('data-arrival-cloak-strength') ?? 0),
         rims: [...hull.querySelectorAll('[data-arrival-cloak-rim]')].map(item => {
           const image = item.querySelector('image'), matrix = image?.getScreenCTM();
@@ -795,6 +817,57 @@ function validateRegistrationResult(result, validate) {
   }
 }
 
+function assertRegistrationNodeRetention(observations, optical) {
+  const identities = new Map();
+  let repeatedSourceSamples = 0;
+  const ancestry = layer => ({ image: layer.sourceImage.nodeIdentity,
+    imageParent: layer.sourceImage.parentIdentity, slot: layer.slotNode?.identity,
+    slotParent: layer.slotNode?.parentIdentity });
+  for (const observation of observations) {
+    for (const layer of observation.layers) {
+      const identity = layer.sourceImage?.nodeIdentity;
+      assert.ok(layer.sourceImage?.found && Number.isInteger(identity) && identity > 0,
+        'Every active view must expose the identity of its actual HTML image node.');
+      assert.ok(layer.sourceImage.connected && layer.slotNode?.connected &&
+        Object.values(ancestry(layer)).every(value => Number.isInteger(value) && value > 0),
+      'The observed active image, keyed slot and their parents must be connected real nodes.');
+      if (identities.has(layer.path)) {
+        assert.equal(identity, identities.get(layer.path).image, 'A returning view must retain the same real HTML image node.');
+        assert.deepEqual(ancestry(layer), identities.get(layer.path), 'The retained image and slot must keep their actual parents.');
+        repeatedSourceSamples++;
+      } else identities.set(layer.path, ancestry(layer));
+    }
+  }
+  let dorsalReturn = null;
+  if (!optical) {
+    const before = observations.find(item => item.from === 'bank-dorsal-shallow' && item.to === 'bank-dorsal');
+    const after = observations.find(item => item.from === 'bank-dorsal' && item.to === 'bank-dorsal-shallow');
+    assert.ok(before && after && before.elapsedMs < after.elapsedMs,
+      'Observe the shallow view on both sides of the intervening native dorsal hold.');
+    const first = before.layers.find(layer => layer.id === 'bank-dorsal-shallow');
+    const returned = after.layers.find(layer => layer.id === 'bank-dorsal-shallow');
+    const inactive = after.inactiveShallow;
+    assert.ok(first && returned);
+    assert.ok(inactive?.found && before.elapsedMs < inactive.elapsedMs && inactive.elapsedMs < after.elapsedMs,
+      'The actual retained shallow slot must be observed strictly between its two active uses.');
+    assert.equal(inactive.retainedView, 'bank-dorsal-shallow');
+    assert.equal(inactive.opacity, 0, 'The retained interval must have actual computed opacity zero.');
+    assert.ok(inactive.geometry?.sourceImage.found && inactive.geometry.sourceImage.connected &&
+      inactive.geometry.slotNode.connected, 'The inactive image and keyed slot must remain connected.');
+    assert.equal(inactive.path, first.path);
+    assert.equal(inactive.geometry.sourceImage.src, first.path);
+    assert.deepEqual(ancestry(inactive.geometry), ancestry(first),
+      'The zero-opacity interval must retain the actual image, keyed slot and both parents.');
+    assert.equal(returned.path, first.path);
+    assert.equal(returned.sourceImage.nodeIdentity, first.sourceImage.nodeIdentity,
+      'The shallow view must reuse its image node after its zero-opacity interval.');
+    dorsalReturn = { path: first.path, nodeIdentity: first.sourceImage.nodeIdentity, ancestry: ancestry(first),
+      beforeElapsedMs: before.elapsedMs, inactive, afterElapsedMs: after.elapsedMs };
+  }
+  return { identityBasis: 'WeakMap keyed by actual image, slot and parent DOM objects within this observer',
+    sourceNodes: identities.size, repeatedSourceSamples, dorsalReturn };
+}
+
 async function capsuleRoute(page, viewport) {
   await openShot(page, 'carrier');
   await waitElapsed(page, 14_600, 'carrier');
@@ -844,6 +917,9 @@ async function capsuleRoute(page, viewport) {
         if (layer.path !== api.shipProfileAssetPath(api.DEFAULT_SHIP_ID)) optionalPaths.add(layer.path);
       }
     }
+    observed.diagnostic.validation.stage = 'node-retention'; observed.diagnostic.validation.observationIndex = null;
+    const retention = assertRegistrationNodeRetention(observed.observations, false);
+    report.registrationNodeRetention.push({ viewport: viewport.id, shipId: api.DEFAULT_SHIP_ID, optical: false, ...retention });
     report.registrationObservations.push({ viewport: viewport.id, observations: observed.observations });
   });
   await pauseAndResume(page, { reuseScene: true, engines: true, label: `${viewport.id}-native-pause-held-engine` });
@@ -985,6 +1061,9 @@ async function additionalFamilyRoute(page, viewport, shipId) {
           differentCanvasObservations: differentCanvasObservations.length,
           differentCanvasTransitions: [...new Set(differentCanvasObservations.map(observation => `${observation.from}->${observation.to}`))] };
       }
+      result.diagnostic.validation.stage = 'node-retention';
+      const retention = assertRegistrationNodeRetention(result.observations, optical);
+      report.registrationNodeRetention.push({ viewport: viewport.id, shipId, optical, ...retention });
       coverage.transitions.push(...transitions);
       report.registrationObservations.push({ viewport: viewport.id, shipId, optical, observations: result.observations,
         transitionsObserved: transitions });

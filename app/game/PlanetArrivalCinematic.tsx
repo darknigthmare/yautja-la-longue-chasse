@@ -21,7 +21,7 @@ import { arrivalVfxArtForBiome, type ArrivalVfxArt } from './systems/planetArriv
 import { ARRIVAL_POD_FLIGHT_CORE_CLIP, ARRIVAL_POD_FLIGHT_PANEL_CLIPS, ARRIVAL_POD_FLIGHT_PANELS,
   arrivalPodEntryFrame, arrivalPodPanelAngle } from './systems/planetArrivalPodFlight';
 import { ARRIVAL_POD_SPRITES } from './systems/planetArrivalPodArt';
-import { arrivalShipMotionAssetPaths, arrivalShipMotionFrame, arrivalShipViewRegistration,
+import { arrivalShipMotionAssetPaths, arrivalShipMotionFrame, arrivalShipViewRegistration, arrivalShipViewSlots,
   type ArrivalShipViewTransform } from './systems/planetArrivalShipMotion';
 import { ARRIVAL_SHIP_ENGINE_ART, arrivalShipEffectAssetPaths, arrivalShipEngineAperture,
   arrivalShipEngineFrame } from './systems/planetArrivalShipEffects';
@@ -471,19 +471,19 @@ export default function PlanetArrivalCinematic({ state, appearance, loadout, gau
     ? <img src={path} className={className} style={style} alt={alt} draggable={false} onError={() => assetFailed(path)} /> : null;
 
   const litLayer = (path: string | undefined, className: string, role: string, rotation = 0, mirrored = false, fillAngle = 32,
-    opening = doorOpen, podHeat?: number) => {
+    opening = doorOpen, podHeat?: number, painted = true) => {
     if (!path || failedAssets.includes(path)) return null;
     const faceLighting = role === 'hatch-interior'
       ? { ...lighting, keyStrength: lighting.keyStrength * .35, fillStrength: lighting.fillStrength * .65 }
       : podHeat === undefined ? lighting : { ...lighting, heat: podHeat };
     const light = arrivalLightGradient(faceLighting, rotation, mirrored, fillAngle,
       role.startsWith('flight-pod') ? ARRIVAL_SPRITES.podFlight.nose : undefined);
-    return <div className={`${styles.litSprite} ${className}`} data-arrival-lit={role}
-      data-arrival-light-source={path} data-arrival-light-environment={lighting.environment}
-      data-arrival-light-world-angle={lighting.keyAngle} data-arrival-light-local-angle={light.localKeyAngle}
-      data-arrival-light-rotation={rotation} data-arrival-light-mirrored={mirrored}>
+    return <div className={`${styles.litSprite} ${className}`} data-arrival-lit={painted ? role : undefined}
+      data-arrival-light-source={painted ? path : undefined} data-arrival-light-environment={painted ? lighting.environment : undefined}
+      data-arrival-light-world-angle={painted ? lighting.keyAngle : undefined} data-arrival-light-local-angle={painted ? light.localKeyAngle : undefined}
+      data-arrival-light-rotation={painted ? rotation : undefined} data-arrival-light-mirrored={painted ? mirrored : undefined}>
       {layer(path, styles.fullAsset, { filter: `brightness(${lighting.brightness * (role === 'hatch' ? 1 - opening * .16 : role === 'hatch-interior' ? .7 : 1)}) saturate(.88)` })}
-      <div className={styles.surfaceLight} data-arrival-light-mask="true" style={{
+      <div className={styles.surfaceLight} data-arrival-light-mask={painted ? 'true' : undefined} style={{
         background: light.background, maskImage: `url("${path}")`, WebkitMaskImage: `url("${path}")`,
       }} />
     </div>;
@@ -501,6 +501,10 @@ export default function PlanetArrivalCinematic({ state, appearance, loadout, gau
       : [{ view: shipMotion.from, opacity: 1 - shipMotion.mix },
         ...(shipMotion.to ? [{ view: shipMotion.to, opacity: shipMotion.mix }] : [])];
     const visible = entries.filter(entry => entry.opacity > 0 && !failedAssets.includes(entry.view.path));
+    // Stable keyed paint slots preserve each real <img> when its view returns.
+    // Inactive slots are retained at zero opacity, outside the painted selectors.
+    const paintSlots = grounded || motionReduced ? visible
+      : arrivalShipViewSlots(shipMotion, unavailableShipViews).filter(entry => !failedAssets.includes(entry.view.path));
     // Camera variants register their own full-canvas pivot onto the shared
     // moving pivot. Paint, lighting, refraction and rim receive the same offset.
     const registration = (view: typeof shipMotion.from): CSSProperties => {
@@ -539,19 +543,21 @@ export default function PlanetArrivalCinematic({ state, appearance, loadout, gau
       </div>);
     };
     const hull = <div className={styles.shipViewStack}>
-      {visible.map(({ view, opacity }) => <div key={view.id} className={styles.shipViewPaint}
-        data-arrival-ship-view-layer={view.id} data-arrival-ship-view-path={view.path}
+      {paintSlots.map(({ view, opacity }) => <div key={view.id} className={styles.shipViewPaint}
+        data-arrival-ship-view-layer={opacity > 0 ? view.id : undefined}
+        data-arrival-retained-view={opacity === 0 ? view.id : undefined}
+        data-arrival-ship-view-path={view.path}
         data-arrival-ship-view-opacity={opacity} data-arrival-ship-view-calibration={view.calibration}
         style={{ ...registration(view), opacity }}>
         <span className={styles.spatialAnchor} data-arrival-view-anchor="nose"
           style={{ left: view.art.nose.x * width, top: view.art.nose.y * height }} />
         <span className={styles.spatialAnchor} data-arrival-view-anchor="tail"
           style={{ left: view.art.tail.x * width, top: view.art.tail.y * height }} />
-        {engineLayers(view, 'plume')}
+        {opacity > 0 && engineLayers(view, 'plume')}
         {litLayer(view.path, styles.fullAsset, role,
           rotation + (grounded ? 0 : arrivalShipViewRegistration(shipMotion, view).rotationDeg * (mirrored ? -1 : 1)),
-          mirrored, fillAngle)}
-        {engineLayers(view, 'core')}
+          mirrored, fillAngle, doorOpen, undefined, opacity > 0)}
+        {opacity > 0 && engineLayers(view, 'core')}
       </div>)}
     </div>;
     if (!shipCloak.requested || !visible.length) return hull;

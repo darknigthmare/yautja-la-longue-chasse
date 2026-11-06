@@ -1,13 +1,16 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import { readFileSync } from 'node:fs';
+import { createRequire } from 'node:module';
 import sharp from 'sharp';
+import ts from 'typescript';
 import { homeworldSceneSsrV78 } from './helpers/homeworld-scene-ssr-v78.mjs';
 
 const qa = homeworldSceneSsrV78();
 const {
   ARRIVAL_CLASSIC_SHIP_VIEWS, ARRIVAL_SHIP_MOTION_HULL, ARRIVAL_SHIP_MOTION_FAMILIES,
   arrivalShipMotionFrame, arrivalShipMotionAssetPaths,
-  arrivalShipViewRegistration, arrivalShipViewPoint,
+  arrivalShipViewRegistration, arrivalShipViewPoint, arrivalShipViewSlots,
 } = qa.load('app/game/systems/planetArrivalShipMotion.ts');
 const { SHIP_IDS, shipProfileAssetPath } = qa.load('app/game/shipCatalogue.ts');
 const { carrierArtForShip } = qa.load('app/game/systems/planetArrivalArt.ts');
@@ -43,6 +46,142 @@ function sameVisibleFrame(a, b, tolerance = 1e-8) {
     }
   }
 }
+
+test('retained view slots preserve the exact active from/to weights and ordering for every supported family', () => {
+  for (const [shipId, family] of Object.entries(ARRIVAL_SHIP_MOTION_FAMILIES)) {
+    for (const method of family.methods) {
+      for (const time of [13_000, 14_230, 17_180, 20_080, 20_500, 21_080, 23_500, 24_480, 26_480, 43_500]) {
+        const frame = arrivalShipMotionFrame(shipId, time, method);
+        const slots = arrivalShipViewSlots(frame);
+        const expected = [{ view: frame.from, opacity: 1 - frame.mix },
+          ...(frame.to ? [{ view: frame.to, opacity: frame.mix }] : [])].filter(entry => entry.opacity > 0);
+        assert.deepEqual(slots.filter(entry => entry.opacity > 0), expected);
+        assert.deepEqual(slots.slice(0, expected.length), expected, 'The first DOM participant must remain the actual from view.');
+        assert.equal(slots.length, family.paths.length + 1);
+        assert.equal(new Set(slots.map(entry => entry.view.id)).size, slots.length);
+        assert.deepEqual(new Set(slots.map(entry => entry.view.path)), new Set([shipProfileAssetPath(shipId), ...family.paths]));
+        assert.ok(slots.slice(expected.length).every(entry => entry.opacity === 0));
+      }
+    }
+  }
+});
+
+test('the same keyed shallow slot remains available through its inactive dorsal interval and native return', () => {
+  for (const shipId of Object.keys(ARRIVAL_SHIP_MOTION_FAMILIES)) {
+    const sequence = [20_080, 20_500, 21_080].map(time => arrivalShipViewSlots(arrivalShipMotionFrame(shipId, time, 'pod')));
+    const shallow = sequence.map(slots => slots.find(entry => entry.view.id === 'bank-dorsal-shallow'));
+    assert.ok(shallow[0].opacity > 0 && shallow[1].opacity === 0 && shallow[2].opacity > 0);
+    assert.equal(shallow[0].view, shallow[1].view);
+    assert.equal(shallow[2].view, shallow[1].view);
+    assert.deepEqual(sequence[2].filter(entry => entry.opacity > 0).map(entry => entry.view.id),
+      ['bank-dorsal', 'bank-dorsal-shallow']);
+  }
+});
+
+test('an unavailable or unsupported family never acquires hidden optional image slots', () => {
+  for (const [shipId, family] of Object.entries(ARRIVAL_SHIP_MOTION_FAMILIES)) {
+    const unavailable = [family.paths[0]];
+    for (const time of [14_230, 20_500, 23_500]) {
+      const frame = arrivalShipMotionFrame(shipId, time, 'pod', false, unavailable);
+      const slots = arrivalShipViewSlots(frame, unavailable);
+      assert.equal(slots.length, 1);
+      assert.equal(slots[0].view.path, shipProfileAssetPath(shipId));
+      assert.equal(slots[0].opacity, 1);
+    }
+  }
+  const unsupported = SHIP_IDS.find(shipId => !ARRIVAL_SHIP_MOTION_FAMILIES[shipId]);
+  assert.equal(arrivalShipViewSlots(arrivalShipMotionFrame(unsupported, 20_500, 'pod')).length, 1);
+});
+
+test('the actual ship paint subtree exposes only participants to geometry, light, engine and optical consumers', () => {
+  // Execute the production's pure JSX builders with real motion/art inputs.
+  // This verifies element structure only; CI measures real DOM-node identity.
+  const source = readFileSync(new URL('../app/game/PlanetArrivalCinematic.tsx', import.meta.url), 'utf8');
+  const tree = ts.createSourceFile('PlanetArrivalCinematic.tsx', source, ts.ScriptTarget.Latest, true, ts.ScriptKind.TSX);
+  const builders = new Map();
+  const visit = node => {
+    if (ts.isVariableDeclaration(node) && ts.isIdentifier(node.name) &&
+      ['layer', 'litLayer', 'shipLayer'].includes(node.name.text)) builders.set(node.name.text, node.initializer.getText(tree));
+    ts.forEachChild(node, visit);
+  };
+  visit(tree);
+  assert.equal(builders.size, 3);
+  const code = ts.transpileModule([...builders].map(([name, value]) => 'const ' + name + ' = ' + value + ';').join('\n'), {
+    compilerOptions: { target: ts.ScriptTarget.ES2022, module: ts.ModuleKind.CommonJS, jsx: ts.JsxEmit.ReactJSX },
+  }).outputText;
+  const require = createRequire(import.meta.url);
+  const { Fragment } = require('react');
+  const { ARRIVAL_SPRITES } = qa.load('app/game/systems/planetArrivalArt.ts');
+  const { arrivalLightGradient, arrivalLighting } = qa.load('app/game/systems/planetArrivalPresentation.ts');
+  const { ARRIVAL_SHIP_ENGINE_ART, arrivalShipEngineAperture, arrivalShipEngineFrame } = qa.load('app/game/systems/planetArrivalShipEffects.ts');
+  const descendants = (node, predicate) => {
+    const found = [];
+    const walk = value => {
+      if (Array.isArray(value)) { value.forEach(walk); return; }
+      if (!value?.props) return;
+      if (predicate(value)) found.push(value);
+      walk(value.props.children);
+    };
+    walk(node); return found;
+  };
+  const marked = (node, name) => descendants(node, value => value.props[name] !== undefined);
+  for (const scenario of [
+    { shipId: classic, time: 21_080 }, { shipId: classic, time: 26_800 },
+    { shipId: 'avp-predator-mothership', time: 21_080 },
+    { shipId: 'wolf-ship', time: 24_480, method: 'ship', cloak: true },
+    { shipId: 'wolf-ship', time: 21_080, unavailable: true },
+    { shipId: 'wolf-ship', time: 54_300, role: 'ground-ship', method: 'ship', cloak: true },
+    { shipId: 'wolf-ship', time: 21_080, reduced: true },
+  ]) {
+    const { shipId, time, role = 'carrier', method = 'pod', cloak = false, reduced = false } = scenario;
+    const unavailable = scenario.unavailable ? [arrivalShipMotionAssetPaths(shipId)[0]] : [];
+    const frame = arrivalShipMotionFrame(shipId, time, method, reduced, unavailable);
+    const art = carrierArtForShip(shipId), facing = art.nose.x < art.tail.x ? -1 : 1;
+    const environment = {
+      Fragment, styles: new Proxy({}, { get: (_object, name) => String(name) }),
+      sources: { carrier: shipProfileAssetPath(shipId) }, failedAssets: [], unavailableShipViews: unavailable,
+      motionReduced: reduced, shipMotion: frame, baseCarrierArt: art, baseCarrierFacing: facing,
+      shipGround: { width: 550, height: 550 * art.height / art.width }, CARRIER_WIDTH: 550,
+      carrierHeight: 550 * frame.art.height / frame.art.width, carrierFacing: facing, doorOpen: 0,
+      lighting: arrivalLighting('jungle', 'carrier', time, reduced), arrivalLightGradient, ARRIVAL_SPRITES,
+      shipCloak: { requested: cloak, strength: cloak ? 1 : 0, hullOpacity: .2, refractionOpacity: .8, rimOpacity: .5 },
+      shipEngine: arrivalShipEngineFrame(time, method, reduced, cloak ? 1 : 0),
+      ARRIVAL_SHIP_ENGINE_ART, arrivalShipEngineAperture, arrivalShipViewRegistration, arrivalShipViewSlots,
+      cloakFilterId: 'structure-only', assetFailed: () => { throw Error('No image events execute in this structural test.'); },
+    };
+    const render = new Function('require', 'exports', 'environment',
+      'const {' + Object.keys(environment).join(',') + '} = environment;\n' + code + '\nreturn shipLayer;')(require, {}, environment);
+    const element = render(role, 0);
+    const active = marked(element, 'data-arrival-ship-view-layer');
+    const inactive = marked(element, 'data-arrival-retained-view');
+    const expectedIds = role === 'ground-ship' ? ['profile'] :
+      [{ view: frame.from, opacity: 1 - frame.mix }, ...(frame.to ? [{ view: frame.to, opacity: frame.mix }] : [])]
+        .filter(entry => entry.opacity > 0).map(entry => entry.view.id);
+    assert.deepEqual(active.map(node => node.props['data-arrival-ship-view-layer']), expectedIds);
+    for (const node of inactive) {
+      assert.equal(node.props.style.opacity, 0);
+      assert.equal(node.props['data-arrival-ship-view-layer'], undefined);
+      assert.equal(marked(node, 'data-arrival-lit').length, 0);
+      assert.equal(marked(node, 'data-arrival-light-source').length, 0);
+      assert.equal(marked(node, 'data-arrival-engine').length, 0);
+      const images = descendants(node, child => child.type === 'img');
+      assert.equal(images.length, 1);
+      assert.equal(images[0].props.src, node.props['data-arrival-ship-view-path']);
+    }
+    const activePaths = active.map(node => node.props['data-arrival-ship-view-path']);
+    assert.deepEqual(marked(element, 'data-arrival-light-source').map(node => node.props['data-arrival-light-source']), activePaths);
+    assert.ok(marked(element, 'data-arrival-engine').every(node => expectedIds.includes(node.props['data-arrival-engine-view'])));
+    assert.deepEqual(marked(element, 'data-arrival-cloak-rim').map(node => node.props['data-arrival-cloak-rim']), cloak ? activePaths : []);
+    assert.deepEqual(marked(element, 'data-arrival-cloak-refraction').map(node => node.props['data-arrival-cloak-refraction']), cloak ? activePaths : []);
+    if (role === 'ground-ship' || reduced || scenario.unavailable) {
+      assert.equal(inactive.length, 0);
+      assert.ok(descendants(element, node => node.type === 'img').every(node => node.props.src === shipProfileAssetPath(shipId)));
+    } else {
+      assert.equal(active.length + inactive.length, arrivalShipMotionAssetPaths(shipId).length + 1);
+      assert.equal(new Set([...active, ...inactive].map(node => node.key)).size, active.length + inactive.length);
+    }
+  }
+});
 
 test('each optional view belongs to this hull and has usable full-canvas geometry, without reusing the inconsistent top image', () => {
   const paths = arrivalShipMotionAssetPaths(classic);

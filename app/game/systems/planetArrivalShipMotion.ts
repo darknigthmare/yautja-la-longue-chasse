@@ -222,6 +222,21 @@ function profileView(shipId: ShipId): ArrivalShipMotionView {
   };
 }
 
+/** Keep available image nodes mounted between uses. Participants remain first
+ * in their original from/to order; the other slots never contribute opacity.
+ * An unavailable family retains only the frame's existing fallback source. */
+export function arrivalShipViewSlots(frame: ArrivalShipMotionFrame,
+  unavailablePaths: readonly string[] = []): readonly { view: ArrivalShipMotionView; opacity: number }[] {
+  const active = [{ view: frame.from, opacity: 1 - frame.mix },
+    ...(frame.to ? [{ view: frame.to, opacity: frame.mix }] : [])].filter(entry => entry.opacity > 0);
+  const family = ARRIVAL_SHIP_MOTION_FAMILIES[frame.from.shipId];
+  if (frame.fallback || !family || family.paths.some(path => unavailablePaths.includes(path))) return active;
+  const activeIds = new Set(active.map(entry => entry.view.id));
+  const retained = [profileView(frame.from.shipId), ...Object.values(family.views)]
+    .filter(view => !activeIds.has(view.id)).map(view => ({ view, opacity: 0 }));
+  return [...active, ...retained];
+}
+
 interface ViewCue { atMs: number; id: ArrivalShipViewId; durationMs: number }
 const cue = (atMs: number, id: ArrivalShipViewId, durationMs = ARRIVAL_SHIP_MOTION_TRANSITION_MS): ViewCue => ({ atMs, id, durationMs });
 
