@@ -211,14 +211,14 @@ Technologie du vaisseau prototype de la Rogue Space Tribe (voir « Warp gate d'a
 | Branche | Cadre canon | Scène proposée |
 | --- | --- | --- |
 | W-01 | Scandinavie viking, 841 (*Killer of Killers*) | fjord en hiver, chasse d'un guerrier champion |
-| W-02 | Japon féodal, 1609 (*Killer of Killers*) | château de nuit, duel au sabre |
+| W-02 | Japon féodal, 1629 (duel des frères en 1609) (*Killer of Killers*) | château de nuit, duel au sabre |
 | W-03 | 1715 (pistolet de *Predator 2*) | navire et port, trophée d'un capitaine |
 | W-04 | Grandes Plaines, 1719 (*Prey*) | plaine et forêt, chasse sans technologie lourde |
 | W-05 | 1942 (*Killer of Killers*) | ciel et terrain de bataille aérienne |
 
 Règles du classeur conservées (WARP-R01 → R24). Musique : MUS-43, MUS-44.
 
-Sources ajoutées : [Quatza-Rij (Alien Species Wiki)](https://aliens.fandom.com/wiki/Quatza-Rij), [masque cérémoniel Sideshow](https://dailydead.com/sideshow-reveal-predator-ceremonial-mask/), [« soft meat » interdit aux unBlooded](https://avp.fandom.com/wiki/%27Aseigan). Les dates des branches W-01, W-02, W-03 et W-05 viennent de ma connaissance des films et sont à vérifier avant production.
+Sources ajoutées : [Quatza-Rij (Alien Species Wiki)](https://aliens.fandom.com/wiki/Quatza-Rij), [masque cérémoniel Sideshow](https://dailydead.com/sideshow-reveal-predator-ceremonial-mask/), [« soft meat » interdit aux unBlooded](https://avp.fandom.com/wiki/%27Aseigan). Dates vérifiées le 6 novembre 2026 : 841 (Scandinavie) et 1942 (Afrique du Nord) d'après AvP Central ; 1629 pour le Japon d'après la fiche de Kenji Kawakami ; 1715 est la date gravée sur le pistolet de Raphael Adolini (Predator 2), remis en 1719 dans Prey.
 
 ## Échelle des rangs (note du 27 juin 2022, complétée)
 
@@ -868,6 +868,42 @@ Les multiplicateurs se cumulent (mêlée sans être repéré : × 1,875). Repèr
 - **Cicatrices et marque Blooded :** cicatrices gagnées en jeu selon les blessures reçues ; la marque d'acide est dessinée par le joueur à la fin de la pyramide (L-04).
 - **Voix et clics :** choix parmi les voix de la race (voir *Ambiances sonores par race*).
 - **Masque gravé :** gravures dessinées avec l'outil du symbole de clan.
+
+### Mode Queen Hunt
+
+**Décision :** les deux formules.
+
+- **Contrats de ruche :** une ruche choisie sur la carte galactique, en trois tailles *(valeurs proposées)* :
+
+| Taille | Contenu | Temps | Récompense |
+| --- | --- | --- | --- |
+| Petite | drones, facehuggers, une reine jeune | 10 min | 400 d'honneur, crâne de reine, chitine |
+| Moyenne | + guerriers, un praetorien | 18 min | 700, crâne, chitine et acide figé |
+| Grande | + variantes de la planète hôte, deux praetoriens, reine adulte | 25 min | 1 100, crâne, matériaux rares |
+
+- **Descente :** une ruche sans fin par paliers ; le joueur remonte quand il veut et garde ce qu'il rapporte ; une reine tous les 5 paliers ; classement en ligne au palier atteint *(proposé)*.
+- Les ruches écrites des étapes de rang (3 pour Clan Leader, 5 pour Adjudicator) restent à part ; seules elles comptent pour les rangs.
+
+### Missions du Warp
+
+**Décision :** les trois formes à la suite, pour chaque époque (W-01 → W-05 et la branche XVIIIe siècle de Greyback) :
+
+1. **Mini-arc d'arrivée** (2 à 3 missions) : ouverture du portail, repérage, traque.
+2. **Chasse complète** sur le modèle des 8 chasses de la Longue Chasse : 6 secteurs, un champion humain en boss, un trophée unique.
+3. **Contrats rejouables** : une fois l'époque terminée, elle donne des chasses procédurales.
+
+**Règle canon :** les héros des films restent en vie, car le canon les fait survivre à leur Yautja — Ursa (841), Kenji (1629), Torres (1942), Naru (1719). Le joueur peut les croiser, pas les tuer ; les champions des chasses sont d'autres guerriers *(proposés)*.
+
+**Discrétion temporelle — décision :** laisser de la technologie ou des témoins est une infraction du code (perte d'honneur) et produit des **échos** dans les époques suivantes *(exemples proposés : une saga viking parle d'un démon invisible ; un armurier japonais copie une lame de poignet abandonnée ; en 1942, une unité connaît déjà la vision thermique de la légende)*. Un écho rend la chasse de l'époque suivante plus difficile (proies prévenues, pièges adaptés).
+
+### Héritage vers la partie suivante
+
+**Décision :** les quatre, après le sacrifice ou une mort en hardcore.
+
+- **Masque au mausolée :** visible et visitable dans la cité de la partie suivante (Mausolée des Chasseurs, CITY-23 ; système existant `systems/mausoleum.ts`).
+- **Une arme léguée :** le joueur la choisit avant la fin ; son descendant la trouve aux Archives des Lignées (CITY-13) et peut la porter quand son rang le permet *(proposé)*.
+- **Nom dans les légendes :** les PNJ citent l'ancien Yautja ; une quête de lignée suit ses trophées et ses lieux *(proposé : 3 missions)*.
+- **Bonus de départ *(valeurs proposées)* :** 100 d'honneur et une réputation « descendant de » qui change quelques dialogues ; aucun rang n'est donné. Une fin Bad Blood BB-E2 ne transmet que la légende, sans masque.
 
 ### Arc de guerre des clans *(missions proposées)*
 
