@@ -1,0 +1,153 @@
+name: Compagnons - import unique du sprite entier Eclisse
+
+on:
+  push:
+    branches: ['art/compagnons-individuels-20261106']
+    paths: ['.github/workflows/compagnons-eclisse-hd-20261106.yml']
+
+permissions:
+  contents: write
+
+jobs:
+  import-reviewed-source:
+    if: github.repository == 'darknigthmare/yautja-la-longue-chasse' && github.ref == 'refs/heads/art/compagnons-individuels-20261106'
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: art/compagnons-individuels-20261106
+          fetch-depth: 1
+          lfs: false
+          sparse-checkout: |
+            production/compagnons
+            .github/workflows
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install --disable-pip-version-check 'Pillow==12.0.0'
+      - name: Verify archive before importing exact files
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import hashlib, io, json, stat, urllib.request, zipfile
+          from pathlib import Path, PurePosixPath
+          from PIL import Image
+          url = 'https://d2ol7oe51mr4n9.cloudfront.net/user_3JHwJlNzgmcxQy32tjF7NiVZPuH/55e11ea4-c984-42be-9925-8348187d4451.zip'
+          with urllib.request.urlopen(url, timeout=45) as response:
+              archive = response.read(4_000_001)
+          assert len(archive) == 2306209
+          assert hashlib.sha256(archive).hexdigest() == '4ee41709b759746fd2ed26570d780a94a9ce4f44b0a1efc74a9a335029cbfe36'
+          expected = {
+              'FILES.json', 'MANIFEST.json', 'PROMPT.txt', 'README.md',
+              'sources/eclisse__source_chroma.png',
+              'sprites/eclisse/eclisse__trois-quarts-droite__entier.png',
+              'tools/normalize_eclisse.py',
+              'verification/eclisse_clair.jpg', 'verification/eclisse_sombre.jpg',
+          }
+          root = Path('production/compagnons/20261106-eclisse-hd')
+          with zipfile.ZipFile(io.BytesIO(archive)) as z:
+              assert z.testzip() is None
+              assert len(z.infolist()) == 9 and set(z.namelist()) == expected
+              assert sum(i.file_size for i in z.infolist()) < 4_000_000
+              for item in z.infolist():
+                  p = PurePosixPath(item.filename)
+                  assert not p.is_absolute() and '..' not in p.parts
+                  assert not stat.S_ISLNK(item.external_attr >> 16)
+              payload = {name: z.read(name) for name in expected}
+          file_index = json.loads(payload['FILES.json'])['files']
+          assert len(file_index) == 8
+          assert {e['path'] for e in file_index} == expected - {'FILES.json'}
+          for e in file_index:
+              b = payload[e['path']]
+              assert len(b) == e['bytes']
+              assert hashlib.sha256(b).hexdigest() == e['sha256']
+              assert hashlib.sha1(b'blob '+str(len(b)).encode()+b'\0'+b).hexdigest() == e['gitBlobSha']
+          m = json.loads(payload['MANIFEST.json'])
+          assert m['identity'] == 'eclisse' and m['uniqueWholeBodySprites'] == 1
+          assert all(m[k] is False for k in ['runtimeIntegrated','animationComplete','humanArtValidated','fidelity1to1Certified'])
+          png = payload[m['sprite']['path']]
+          assert hashlib.sha256(png).hexdigest() == '556c8bc3ee3b8cfb729f5655d439385ac4919b2a3fe33b65bb647f588def9312'
+          with Image.open(io.BytesIO(png)) as im:
+              im.load()
+              assert im.mode == 'RGBA' and im.size == (1248,832)
+              assert im.getchannel('A').getextrema() == (0,255)
+              assert im.getchannel('A').getbbox() == (262,73,979,766)
+          for name, b in payload.items():
+              p = root/name
+              if p.exists():
+                  assert p.read_bytes() == b, f'Refusing overwrite: {p}'
+              p.parent.mkdir(parents=True, exist_ok=True)
+              p.write_bytes(b)
+          print('Nine files verified and imported. One new complete sprite; source and two review previews are not extra sprites.')
+          PY
+      - name: Retire importer and retain read-only verification
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          text = '''name: Compagnons - integrite du sprite entier Eclisse
+          on:
+            push:
+              branches: ['art/compagnons-individuels-20261106']
+              paths: ['production/compagnons/20261106-eclisse-hd/**', '.github/workflows/compagnons-eclisse-hd-20261106.yml']
+            pull_request:
+              paths: ['production/compagnons/20261106-eclisse-hd/**', '.github/workflows/compagnons-eclisse-hd-20261106.yml']
+            workflow_dispatch:
+          permissions:
+            contents: read
+          jobs:
+            verify:
+              runs-on: ubuntu-latest
+              timeout-minutes: 5
+              steps:
+                - uses: actions/checkout@v4
+                  with:
+                    lfs: false
+                    persist-credentials: false
+                    sparse-checkout: production/compagnons/20261106-eclisse-hd
+                - uses: actions/setup-python@v5
+                  with:
+                    python-version: '3.12'
+                - run: python -m pip install --disable-pip-version-check 'Pillow==12.0.0'
+                - name: Verify exact sources and transparent whole-body PNG
+                  run: |
+                    python - <<'VERIFY'
+                    from pathlib import Path
+                    import hashlib, json
+                    from PIL import Image
+                    root=Path('production/compagnons/20261106-eclisse-hd')
+                    entries=json.loads((root/'FILES.json').read_text())['files']
+                    assert len(entries)==8
+                    assert {str(p.relative_to(root)) for p in root.rglob('*') if p.is_file()} == {e['path'] for e in entries} | {'FILES.json'}
+                    for e in entries:
+                        p=root/e['path']; b=p.read_bytes()
+                        assert len(b)==e['bytes']
+                        assert hashlib.sha256(b).hexdigest()==e['sha256']
+                        assert hashlib.sha1(b'blob '+str(len(b)).encode()+b'\\0'+b).hexdigest()==e['gitBlobSha']
+                    m=json.loads((root/'MANIFEST.json').read_text())
+                    assert m['identity']=='eclisse' and m['uniqueWholeBodySprites']==1 and m['frameCount']==1
+                    assert all(m[k] is False for k in ['runtimeIntegrated','animationComplete','humanArtValidated','fidelity1to1Certified'])
+                    with Image.open(root/m['sprite']['path']) as im:
+                        im.load()
+                        assert im.mode=='RGBA' and im.size==(1248,832)
+                        assert im.getchannel('A').getextrema()==(0,255)
+                        assert im.getchannel('A').getbbox()==(262,73,979,766)
+                    print('One complete individual PNG: byte integrity, transparency and margins verified. No artistic 1:1 certification inferred.')
+                    VERIFY
+          '''
+          Path('.github/workflows/compagnons-eclisse-hd-20261106.yml').write_text(text, encoding='utf-8')
+          PY
+      - name: Commit only the requested art source and retired importer
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -- production/compagnons/20261106-eclisse-hd .github/workflows/compagnons-eclisse-hd-20261106.yml
+          git diff --cached --check
+          if ! git diff --cached --quiet; then
+            git commit -m 'art(compagnons): Eclisse entier en PNG transparent natif et sources controlees'
+            git push origin HEAD:art/compagnons-individuels-20261106
+          fi
