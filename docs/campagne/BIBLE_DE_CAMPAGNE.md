@@ -22,7 +22,7 @@ Cette bible fusionne la « Campagne commune » du classeur V6 (60 fiches R2-M001
 | Partiel | Du code existe ; ses propres notes disent ce qui manque. |
 | Texte seul | Fiche et dialogues présents, aucun chapitre jouable. |
 
-**Règle de lecture.** Les lignes « Production (proposé) » sont des propositions déduites de la scène écrite dans la fiche ; elles ne figurent pas dans le classeur et sont à valider. Il en va de même des blocs « Comblement » des chasses, du catalogue musical (MUS-01 → MUS-51) et de la section « Comblement des vides ». Les identifiants SFX en police technique (`rifle-burst`…) sont des noms de dossiers proposés pour `public/audio/sfx/`, sur le modèle des 21 existants. Pour les 8 chasses, « Existant » et « Manquant » sont vérifiés dans les fichiers du dépôt.
+**Règle de lecture.** Les lignes « Production (proposé) » sont des propositions déduites de la scène écrite dans la fiche ; elles ne figurent pas dans le classeur et sont à valider. Il en va de même des blocs « Comblement » des chasses, du catalogue musical (MUS-01 → MUS-72) et de la section « Comblement des vides ». Les identifiants SFX en police technique (`rifle-burst`…) sont des noms de dossiers proposés pour `public/audio/sfx/`, sur le modèle des 21 existants. Pour les 8 chasses, « Existant » et « Manquant » sont vérifiés dans les fichiers du dépôt.
 
 ## Vue d'ensemble
 
@@ -622,6 +622,8 @@ Noms yautja des régions validés le 6 novembre 2026. Aucun n'est un mot de la l
 | CL13 Cercle des Noms Rapportés | Raq'nhom | navires et communautés alliées |
 | CL14 Foyer des Retours | Ouhn'rhet | navires et communautés alliées |
 | CL15 Ligue des Forges Fermées | Gholl'ferr | navires et communautés alliées |
+
+Les noms yautja de ce tableau sont des propositions, à valider ; aucun n'est un mot de la langue canon.
 
 ### Arc de guerre des clans *(missions proposées)*
 
