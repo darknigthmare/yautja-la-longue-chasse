@@ -445,7 +445,7 @@ La note parlait de « Glacier Moon » et « Swamp Moon » : elles deviennent des
 | Harek | rival du départ O6 | Bad Blood possible ou chef du clan rival |
 | OWLF, époque future | unité secrète de la CIA de *Predator 2* (Other Worldly Life Forms) | descendants de l'OWLF qui traquent les Yautja à l'époque du jeu |
 | Chasseurs humains de Yautja | Project Stargazer (*The Predator*), Reapers (roman *Hunters and Hunted*), Predator Hunters de Jaya Soames (comics), Spearhead (*Xenogenesis*) | contrats et embuscades contre le joueur, captures et évasions |
-| USS Tantalus (crossover) | ton jeu *Alien USS Tentalus* | *mission annexe « Le silence d'Asphodèle », détaillée ci-dessous* |
+| USS Tantalus (crossover) | ton jeu *Aliens: Tantalus Frontier* | *mission annexe « Le silence d'Asphodèle », détaillée ci-dessous* |
 
 ### Modes annexes
 
