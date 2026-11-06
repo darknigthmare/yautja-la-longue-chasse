@@ -189,6 +189,33 @@ export const HUNTER_ARMOR_MODULES: Readonly<
 
 export const HUNTER_GAUNTLET_HINGE = { x: 51, y: 202 } as const;
 
+/**
+ * Registration of the V3 wristblade housing and blades on the FRONT forearm.
+ * The source sprites were drawn horizontally (blades pointing +x) while the
+ * bind-pose forearm runs from the elbow (185,161) to the wrist (212,216).
+ * This rigid fit turns the art onto that axis and sits the housing on the
+ * back of the forearm, just above the wrist, so the blades extend past the
+ * hand along the arm (Jungle Hunter, right arm) in every pose.
+ * Applied after the bone matrix and before the blade slide, in 256x384 space.
+ */
+export const HUNTER_WRISTBLADE_REGISTRATION = {
+  pivot: { x: 198, y: 211 },
+  rotation: Math.atan2(216 - 161, 212 - 185),
+  translateX: 6.4,
+  translateY: -10.4,
+} as const;
+
+/** Same fit as an affine matrix (a, b, c, d, e, f) for DOM and Canvas renderers. */
+export function hunterWristbladeRegistrationMatrix(): { a: number; b: number; c: number; d: number; e: number; f: number } {
+  const { pivot, rotation, translateX, translateY } = HUNTER_WRISTBLADE_REGISTRATION;
+  const cos = Math.cos(rotation), sin = Math.sin(rotation);
+  return {
+    a: cos, b: sin, c: -sin, d: cos,
+    e: translateX + pivot.x - cos * pivot.x + sin * pivot.y,
+    f: translateY + pivot.y - sin * pivot.x - cos * pivot.y,
+  };
+}
+
 export const HUNTER_GAUNTLET_FIT_BY_MORPH: Readonly<
   Record<HunterBodyMorphId, { translateX: number; translateY: number }>
 > = {

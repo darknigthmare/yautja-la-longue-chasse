@@ -5,7 +5,8 @@ import DecalSurfaceV133 from "./DecalSurfaceV133";
 import { maskChromaticsForAppearanceV131 } from "./hunterChromaticsV113";
 import { HUNTER_SKIN_FILTERS_V114, HUNTER_DREAD_FILTERS_V114, HUNTER_ARMOR_FILTERS_V114 } from "./hunterPaletteFiltersV114";
 import type { HunterBodyMorphId, DreadStyleId, HunterAppearance, ArmorId } from "./types";
-import { hunterBodyFullPath, hunterBodyPartPath, hunterBodyPartPlacement, hunterDreadPath, hunterArmorPath, hunterMaskRigPath, hunterMaskRigPlacement, HUNTER_ASSET_ROOT_V3, HUNTER_BODY_PART_IDS, HUNTER_ARMOR_MODULES, HUNTER_ARMOR_FIT_BY_MORPH } from "./hunterVisuals";
+import { hunterBodyFullPath, hunterBodyPartPath, hunterBodyPartPlacement, hunterDreadPath, hunterArmorPath, hunterMaskRigPath, hunterMaskRigPlacement, HUNTER_ASSET_ROOT_V3, HUNTER_BODY_PART_IDS, HUNTER_ARMOR_MODULES, HUNTER_ARMOR_FIT_BY_MORPH, HUNTER_EQUIPMENT_V3, HUNTER_GAUNTLET_FIT_BY_MORPH, hunterWristbladeRegistrationMatrix } from "./hunterVisuals";
+import { gauntletRigArmFitMatrixV139, gauntletRigSpriteV139 } from "./systems/gauntletRigSpritesV139";
 import { hunterBodyPartColorV62, hunterBodyPartClipCssV62 } from "./hunterHeadArtV62";
 import { HUNTER_DREAD_STRANDS_V63, solveHunterDreadsV63 } from "./hunterDreadsV63";
 import { solveHunterRig } from "./hunterRig";
@@ -25,6 +26,9 @@ const clothClip = (morphId: HunterBodyMorphId) => {
   const [left, top, right, bottom] = CLOTH_RECT[morphId];
   return `inset(${top / 384 * 100}% ${(256 - right) / 256 * 100}% ${(384 - bottom) / 384 * 100}% ${left / 256 * 100}%)`;
 };
+/** Rest-pose (bind) matrix in 256x384 units as CSS, like HunterRigPreview's cssMatrix. */
+const restMatrixCss = (m: { a: number; b: number; c: number; d: number; e: number; f: number }) =>
+  `translate(${m.e / 256 * 100}%, ${m.f / 384 * 100}%) matrix(${m.a}, ${m.b}, ${m.c}, ${m.d}, 0, 0)`;
 const imageStyle: CSSProperties = { position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "fill", pointerEvents: "none", userSelect: "none" };
 /**
  * These are the exact registered 256x384 V3 plates used by HunterRigPreview.
@@ -55,7 +59,7 @@ export function homeworldArmorSlotsV114(
 }
 
 /** Modular body bitmaps with constrained strand motion; not a full body sheet. */
-export default function HomeworldModularHunter({ morphId, dreadStyleId, className, appearance, style, motionPhase = 0, speed = 0, dreadAngles, showArmor = false, armorId = "hunter", hasWristblades = false }: {
+export default function HomeworldModularHunter({ morphId, dreadStyleId, className, appearance, style, motionPhase = 0, speed = 0, dreadAngles, showArmor = false, armorId = "hunter", hasWristblades = false, gauntletVariantId = "jungle-hunter" }: {
   morphId: HunterBodyMorphId; dreadStyleId: DreadStyleId; className?: string;
   style?: CSSProperties;
   motionPhase?: number; speed?: number;
@@ -64,6 +68,8 @@ export default function HomeworldModularHunter({ morphId, dreadStyleId, classNam
   showArmor?: boolean;
   armorId?: ArmorId;
   hasWristblades?: boolean;
+  /** Wrist computer identity worn on the back (left) forearm; same V139 shells as the rig. */
+  gauntletVariantId?: string;
   appearance?: Pick<HunterAppearance, "skinId" | "dreadTintId" | "headStyleId"> &
     Partial<Pick<HunterAppearance, "armorStyleId" | "armorTintId" | "chromaticsV113" | "presetId" | "biomaskId">>;
 }) {
@@ -136,6 +142,21 @@ export default function HomeworldModularHunter({ morphId, dreadStyleId, classNam
             <DecalSurfaceV133 appearance={appearance} zone="armor" maskPath={path} style={imageStyle} />}
         </span>;
       })}
+      {/* Worn kit at rest, with the same forearm fits as HunterRigPreview:
+          wrist computer on the back forearm, blade housing on the front one. */}
+      {showArmor && (() => {
+        const fit = HUNTER_GAUNTLET_FIT_BY_MORPH[morphId];
+        const shell = gauntletRigArmFitMatrixV139();
+        const gauntlet = restMatrixCss({ ...shell, e: shell.e + fit.translateX, f: shell.f + fit.translateY });
+        return <>
+          {(["base", "lid"] as const).map((part, index) => <img key={part} alt="" draggable={false}
+            data-homeworld-layer="gauntlet" data-gauntlet-part={part} src={gauntletRigSpriteV139(gauntletVariantId, part)}
+            style={{ ...imageStyle, zIndex: 24 + index, transformOrigin: "0 0", transform: gauntlet }} />)}
+          {hasWristblades && <img alt="" draggable={false} data-homeworld-layer="blade-housing"
+            src={HUNTER_EQUIPMENT_V3.wristblades.housing}
+            style={{ ...imageStyle, zIndex: 26, transformOrigin: "0 0", transform: restMatrixCss(hunterWristbladeRegistrationMatrix()) }} />}
+        </>;
+      })()}
     </span>
   </span>;
 }

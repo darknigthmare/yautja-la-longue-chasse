@@ -8,7 +8,7 @@ import DecalSurfaceV133 from "./DecalSurfaceV133";
 import { maskChromaticsForAppearanceV131 } from "./hunterChromaticsV113";
 import { HUNTER_SKIN_FILTERS_V114, HUNTER_DREAD_FILTERS_V114, HUNTER_ARMOR_FILTERS_V114 } from "./hunterPaletteFiltersV114";
 import { gauntletByIdV132 } from "./systems/clanWarGauntletCatalogV132";
-import { gauntletRigSpriteV139 } from "./systems/gauntletRigSpritesV139";
+import { gauntletRigArmFitMatrixV139, gauntletRigSpriteV139 } from "./systems/gauntletRigSpritesV139";
 
 import type {
   ArmorId,
@@ -35,6 +35,7 @@ import {
   hunterMaskRigPath,
   hunterMaskRigPlacement,
   hunterNetPartPath,
+  hunterWristbladeRegistrationMatrix,
   type HunterBodyPartId,
 } from "./hunterVisuals";
 import { hunterBodyPartColorV62, hunterBodyPartClipCssV62, type HunterLayerPlacement } from "./hunterHeadArtV62";
@@ -464,9 +465,14 @@ export function HunterRigPreview({
 
   const gauntletFit =
     HUNTER_GAUNTLET_FIT_BY_MORPH[appearance.bodyMorphId];
+  // V139 shells are fitted to the forearm (scale about a fixed point), so the
+  // lid below still pivots on HUNTER_GAUNTLET_HINGE in source coordinates.
   const gauntletMatrix = multiplyAffine(
-    boneMatrix("armBackLower"),
-    translation(gauntletFit.translateX, gauntletFit.translateY),
+    multiplyAffine(
+      boneMatrix("armBackLower"),
+      translation(gauntletFit.translateX, gauntletFit.translateY),
+    ),
+    gauntletRigArmFitMatrixV139(),
   );
   const lidBase = gauntletMatrix;
   const lidMatrix = multiplyAffine(
@@ -477,8 +483,14 @@ export function HunterRigPreview({
       gauntletOpen ? -1.12 : 0,
     ),
   );
-  const bladeMatrix = multiplyAffine(
+  // Housing and blades are turned onto the forearm axis; the blades then
+  // slide along their own axis, out past the hand.
+  const bladeHousingMatrix = multiplyAffine(
     boneMatrix("armFrontLower"),
+    hunterWristbladeRegistrationMatrix(),
+  );
+  const bladeMatrix = multiplyAffine(
+    bladeHousingMatrix,
     translation(bladesExtended ? 0 : -46, 0),
   );
   const muzzle = frame.anchors.muzzle;
@@ -757,7 +769,7 @@ export function HunterRigPreview({
       {showsWristblades &&
         registeredLayer(
           HUNTER_EQUIPMENT_V3.wristblades.housing,
-          boneMatrix("armFrontLower"),
+          bladeHousingMatrix,
           68,
           "blade-housing",
         )}

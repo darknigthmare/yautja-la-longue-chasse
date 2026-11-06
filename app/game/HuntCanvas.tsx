@@ -2,6 +2,7 @@
 
 import { huntStructuralBarrierV94 } from "./systems/huntStructuralBarrierV94";
 import { loadGauntletRigPartV141 } from "./systems/gauntletMissionVisualV141";
+import { gauntletRigArmFitMatrixV139, isGauntletRigSpriteV139 } from "./systems/gauntletRigSpritesV139";
 import { createCorpseDiscoveryV112, stepCorpseDiscoveryV112, restoreCorpseDiscoveryV112,
   corpseDiscoveryReactionV112, corpseZoneFearV112, animalCorpseResponseV112,
   type CorpseDiscoveryStateV112, type DiscoveryActorV112 } from "./systems/corpseDiscoveryV112";
@@ -93,6 +94,7 @@ import {
   hunterMaskRigPath,
   hunterMaskRigPlacement,
   hunterNetPartPath,
+  hunterWristbladeRegistrationMatrix,
   type HunterBodyPartId,
 } from "./hunterVisuals";
 import { hunterBodyPartColorV62, hunterBodyPartClipV62, type HunterLayerPlacement } from "./hunterHeadArtV62";
@@ -3151,6 +3153,8 @@ interface RegisteredLayerOptions {
   scaleY?: number;
   translateX?: number;
   translateY?: number;
+  /** Rigid fit of the source art onto its bone, applied right after the bone matrix. */
+  registration?: AffineMatrix;
 }
 
 const HUNTER_HAND_WEAPON_PIVOT = { x: 218, y: 229 } as const;
@@ -3339,6 +3343,7 @@ function drawRegisteredLayer(
   context.globalAlpha *= options.alpha ?? 1;
   if (options.filter && !recolored && !decorated) context.filter = options.filter;
   applyAffine(context, matrix);
+  if (options.registration) applyAffine(context, options.registration);
   context.translate(options.translateX ?? 0, options.translateY ?? 0);
   const scaleX = options.scaleX ?? options.scale ?? 1;
   const scaleY = options.scaleY ?? options.scale ?? 1;
@@ -3813,15 +3818,22 @@ function drawHunterLayered(
   // charnière canonique au lieu de fondre vers une seconde image complète.
   const gauntletFit =
     HUNTER_GAUNTLET_FIT_BY_MORPH[appearance.bodyMorphId];
+  // V139 shells share HunterRigPreview's forearm fit: bone, then the morph
+  // offset, then the shell fit. The V3 fallback is already forearm-sized.
+  // The lid keeps pivoting on its source-space hinge in both cases.
+  const gauntletPlacement = (image: HTMLImageElement | null): RegisteredLayerOptions => {
+    if (!image || !isGauntletRigSpriteV139(image.src)) {
+      return { translateX: gauntletFit.translateX, translateY: gauntletFit.translateY };
+    }
+    const fit = gauntletRigArmFitMatrixV139();
+    return { registration: { ...fit, e: fit.e + gauntletFit.translateX, f: fit.f + gauntletFit.translateY } };
+  };
   drawRegisteredLayer(
     context,
     assets.hunterGauntlet.base,
     frame,
     "armBackLower",
-    {
-      translateX: gauntletFit.translateX,
-      translateY: gauntletFit.translateY,
-    },
+    gauntletPlacement(assets.hunterGauntlet.base),
   );
   drawRegisteredLayer(
     context,
@@ -3829,10 +3841,9 @@ function drawHunterLayered(
     frame,
     "armBackLower",
     {
+      ...gauntletPlacement(assets.hunterGauntlet.lid),
       pivot: HUNTER_GAUNTLET_HINGE,
       rotation: -1.12 * clamp(player.gauntletOpen, 0, 1),
-      translateX: gauntletFit.translateX,
-      translateY: gauntletFit.translateY,
     },
   );
 
@@ -3845,6 +3856,7 @@ function drawHunterLayered(
       "armFrontLower",
       {
         alpha: extension,
+        registration: hunterWristbladeRegistrationMatrix(),
         translateX: -46 * (1 - extension),
       },
     );
@@ -3853,6 +3865,7 @@ function drawHunterLayered(
       assets.hunterWristblades.housing,
       frame,
       "armFrontLower",
+      { registration: hunterWristbladeRegistrationMatrix() },
     );
   }
 
