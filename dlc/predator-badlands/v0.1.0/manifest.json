@@ -1,0 +1,26 @@
+{
+  "name": "PREDATOR: BADLANDS — La Meute de Genna",
+  "version": "0.1.0",
+  "created": "2026-09-29",
+  "campaigns": {
+    "weyland": 16,
+    "predator": 30
+  },
+  "sceneCount": 46,
+  "hostBaseline": {
+    "repo": "darknigthmare/aliens-tantalus-frontier",
+    "commit": "496996f5ea557d970ec625aa346876f3eaed1c5f",
+    "package": "86.0.0"
+  },
+  "humanCampaignPolicy": "Le film ne contient pas de personnages humains; la campagne 1 utilise donc la branche Weyland-Yutani synthétique, sans inventer un protagoniste humain.",
+  "files": [],
+  "qa": {
+    "nodeDataChecks": 198,
+    "browserScenesLoaded": 46,
+    "browserErrors": 0,
+    "mobileMenuAndTouch": true,
+    "installerRoundTrip": "PASS",
+    "screenshots": 7
+  },
+  "primaryEntry": "JOUER_PREDATOR_BADLANDS_STANDALONE.html"
+}
