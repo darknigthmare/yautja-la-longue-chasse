@@ -2139,8 +2139,10 @@ try {
         const landing = api.PLANET_ARRIVAL_SHOTS.find(shot => shot.id === 'landing');
         if (variant.plan.shipCloak) {
           const prepared = await prepareMoment();
-          await waitElapsed(52_800, landing.id);
-          const releasing = await captureMoment(`${viewport.id}-${variant.id}-decloaking`, prepared);
+          const releasing = await captureMoment(`${viewport.id}-${variant.id}-decloaking`, prepared, page, 1, undefined,
+            { atMs: 52_400, shot: landing.id });
+          assert.ok(Number.isFinite(releasing.capturedBefore.armedAt) && releasing.capturedBefore.armedAt < 52_400,
+            'The decloaking photograph must be armed before its native release sample threshold.');
           assert.ok(releasing.capturedBefore.elapsedMs >= 52_300 && releasing.capturedBefore.elapsedMs < 53_300,
             'The photographed release must actually occur within the one-second optical envelope.');
           assert.equal(releasing.capturedBefore.cloakPhase, 'releasing');
@@ -2150,8 +2152,10 @@ try {
           // cannot consume the independent pre-contact evidence window.
           await openShot(primaryMission.id, 'landing', false, api.DEFAULT_SHIP_ID, variant.plan);
           const visiblePrepared = await prepareMoment();
-          await waitElapsed(53_400, landing.id);
-          const visible = await captureMoment(`${viewport.id}-${variant.id}-visible-before-contact`, visiblePrepared);
+          const visible = await captureMoment(`${viewport.id}-${variant.id}-visible-before-contact`, visiblePrepared, page, 1, undefined,
+            { atMs: 53_300, shot: landing.id });
+          assert.ok(Number.isFinite(visible.capturedBefore.armedAt) && visible.capturedBefore.armedAt < 53_300,
+            'The visible pre-contact photograph must be armed before optical release ends.');
           assert.equal(visible.capturedBefore.cloakPhase, 'off'); assert.equal(visible.capturedBefore.contact, false);
           assert.ok(visible.capturedBefore.cloakHulls.some(hull => hull.strength === 0 && hull.bodyOpacity === 1 && !hull.lens && !hull.rim));
         } else {
