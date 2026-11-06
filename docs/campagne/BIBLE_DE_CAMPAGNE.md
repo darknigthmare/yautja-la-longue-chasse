@@ -1112,6 +1112,35 @@ Chaque tête reçoit un fichier de pivots (un point par mandibule, à la racine)
 
 **Où ces animations servent :** portraits de dialogue, The Pit, cinématiques, aperçu de l'éditeur, et en jeu quand le masque est retiré (le rugissement masque ôté des films, au trophée ou au défi). Masque porté : pas d'animation du visage. Chaque race nouvelle (Hish-Qu-Ten, Infected, Four-Armed…) demande sa tête en calques ; l'éditeur ajoute les dreadlocks et les cicatrices par-dessus le crâne.
 
+### Armure et équipement : planches en 3/4 à produire
+
+**Décision du 6 novembre :** les deux méthodes. Une découpe en code est livrée maintenant (PR #118). De nouvelles planches dessinées en 3/4 la remplaceront ensuite.
+
+**Ce que fait la découpe en code (PR #118) :**
+
+- chaque plaque est dessinée derrière son membre, puis par-dessus, masquée à sa silhouette ;
+- l'épaulette passe sous la tête ;
+- le plastron passe sous la tête et derrière le bras avant ;
+- l'ombre portée est réduite ;
+- les lames sont sur l'avant-bras arrière et l'ordinateur sur l'avant-bras avant.
+
+Le dessin reste celui des planches V3, plates et vues de face : la découpe ne corrige ni le volume ni la perspective.
+
+**Références retenues :** la figurine NECA Ultimate Jungle Hunter et le costume du film de 1987.
+
+**Planches à dessiner** *(spécification proposée)*, sur la toile commune de 256 × 384 et en pose de repos, comme les planches V3 :
+
+| Pièce | Couches | Règles |
+| --- | --- | --- |
+| Plastron | face visible ; bord qui passe derrière le flanc éloigné ; sangle de l'épaule éloignée | perspective 3/4 : le côté proche plus large que le côté éloigné ; il suit l'inclinaison du torse et couvre le torse jusqu'à la ceinture ; épaisseur visible sur les bords |
+| Épaulette (bras avant) | dôme ; rebord et sangle côté cou, derrière la tête | elle coiffe le deltoïde ; sa face intérieure est cachée par le cou et la mâchoire |
+| Cuissard, genouillère | face avant ; bord arrière qui passe derrière la cuisse | ils épousent le galbe de la cuisse |
+| Jambières (les deux jambes) | face avant ; demi-coque arrière derrière le mollet | elles vont du genou à la cheville ; celle de la jambe arrière est vue de trois quarts arrière et plus sombre |
+| Boîtier des lames (bras arrière) | boîtier ; lames séparées | il est posé sur le dessus du poignet ; les lames sortent au-dessus du dos de la main |
+| Ordinateur de poignet (bras avant) | coque ; couvercle avec sa charnière | il est dessiné directement dans l'axe de l'avant-bras avant, sans rotation dans le code |
+
+Chaque planche est livrée en couches PNG ou WebP avec leur ordre de superposition. L'intégration réutilise les fonctions de recalage de la PR #118 ; les décalages fixes y seront remplacés par ceux des nouvelles planches.
+
 ### Arc de guerre des clans *(missions proposées)*
 
 **Décision :** le conflit commence par un terrain de chasse disputé (canon : plusieurs clans se disputent les meilleurs sites, *Aliens vs. Predator: War*), et son déclencheur dépend de la voie de clan.
