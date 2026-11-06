@@ -905,6 +905,45 @@ Les multiplicateurs se cumulent (mêlée sans être repéré : × 1,875). Repèr
 - **Nom dans les légendes :** les PNJ citent l'ancien Yautja ; une quête de lignée suit ses trophées et ses lieux *(proposé : 3 missions)*.
 - **Bonus de départ *(valeurs proposées)* :** 100 d'honneur et une réputation « descendant de » qui change quelques dialogues ; aucun rang n'est donné. Une fin Bad Blood BB-E2 ne transmet que la légende, sans masque.
 
+### Espace : carte galactique et exploration
+
+**Décision :** on garde ce qui existe et on l'améliore selon l'échelle : routes et événements de route entre systèmes, vol libre dans un système avec événements et rencontres sur la carte.
+
+**Ce qui existe dans le dépôt :** une carte à cinq niveaux (galaxie → secteur → système → planète → mission) avec 5 secteurs, 12 systèmes et environ 60 corps célestes (`galaxyRegistry.ts`) ; vol manuel et pilote automatique (`galaxyFlight.ts`) ; une rencontre spatiale du navire de clan au tour par tour (interception, escorte, récupération ; 9 ordres ; `clanShipSpaceEncounter.ts`). Le classeur V6 ajoute 10 bases spatiales, 36 incidents de route (SPACE-E01 → E36) et 24 manœuvres de vol (FLIGHT5-01 → 24).
+
+| Échelle | Déplacement | Ce qui peut arriver |
+| --- | --- | --- |
+| Galaxie et secteur | par **routes** tracées entre systèmes ; chaque trajet consomme du temps (lié aux ellipses) | un **incident de route** tiré parmi les 36 du V6, selon le type de route ; escales aux 10 bases spatiales |
+| Système | **vol libre** (vol manuel existant) | événements posés sur la carte et rencontres (ci-dessous) |
+| Planète | descente, puis scan | lieux annexes découverts sur place (décision déjà prise) |
+
+**Types de route** *(proposés)* :
+
+| Route | Risque | Incidents et rencontres typiques |
+| --- | --- | --- |
+| route de clan | faible | contrôles, escortes, messages de clan, convois de guerre |
+| route humaine (commerce, colonies) | moyen | cargos Weyland-Yutani, patrouilles, épaves récentes, équipes de chasseurs humains |
+| route sauvage | élevé | ceintures de débris, faune spatiale, vaisseaux contaminés par des Xénomorphes |
+| route interdite | très élevé | anomalies, Rogue Space Tribe, Bad Bloods, échos du Warp |
+
+**Événements dans un système** *(proposés)* : signaux de détresse, épaves à fouiller, vaisseau humain à suivre sans être vu, ruche orbitale, tempête stellaire, champ de débris, navire de clan rival, Bad Blood en fuite, sonde à récupérer. Une rencontre se règle de trois façons : éviter (camouflage du vaisseau, manœuvres V5), combattre (le combat spatial au tour par tour existant, étendu au vaisseau personnel en version à 3 membres d'équipage), ou aborder (mission courte en 2,5D à l'intérieur du vaisseau abordé).
+
+*(proposé)* Fréquence : un incident pour deux trajets sur route de clan, un par trajet sur route sauvage ou interdite ; 2 à 4 événements visibles par système, renouvelés à chaque ellipse.
+
+### Chiens de chasse : commandes
+
+**Décision :** quatre ordres et un lien qui monte avec les chasses, sur le modèle du « Lien des montures » du V6 (lien de 0 à 100, seuils 25 / 50 / 75 / 100, gain maximal de 5 par séance).
+
+| Lien | Ordre débloqué *(répartition proposée)* |
+| --- | --- |
+| 0 | **Revenir** (rappel) |
+| 25 | **Pister** : suit la trace la plus fraîche et la marque |
+| 50 | **Rabattre** : pousse la proie vers le joueur ou un piège |
+| 75 | **Attaquer** : immobilise ou abat la proie désignée |
+| 100 | ordre signature propre à la race du chien *(à définir)* |
+
+Un chien blessé se soigne au Chenil des Pisteurs (CITY-28). Il suit la règle de mort définitive des compagnons. Une mise à mort faite par le chien compte comme faite par le joueur pour le code d'honneur *(proposé)*.
+
 ### Arc de guerre des clans *(missions proposées)*
 
 **Décision :** le conflit commence par un terrain de chasse disputé (canon : plusieurs clans se disputent les meilleurs sites, *Aliens vs. Predator: War*), et son déclencheur dépend de la voie de clan.
@@ -956,7 +995,7 @@ Source : la bible de campagne d'*Aliens: Tantalus Frontier* (dépôt `darknigthm
 
 *Production (proposé)* — **Props :** anneau extérieur, pont de contrôle, laboratoire, berceaux QZ17, barricades de l'Echo-8 (réutiliser les assets de *Tantalus Frontier* si les licences des deux dépôts le permettent). **SFX :** alarme de quarantaine, voix de CASSIUS, détecteur de mouvement des Marines. **Musique :** MUS-41.
 
-**À décider :** l'époque du jeu Yautja par rapport à 2204, et le sort de l'Echo-8 (emporté ou laissé), compatible avec le point ouvert n°5 de la bible *Tantalus* (« le fil Echo-8 est-il conservé ? »).
+**À décider :** rien. Décisions du 6 novembre : 2204 s'atteint par le Warp (époque future) ; le sort de l'Echo-8 est le choix du joueur (emporté pour l'honorer, ce qui colle à « plaque retrouvée, jamais le corps », ou laissé avec une marque gravée). À reporter dans le point ouvert n°5 de la bible *Tantalus* (« le fil Echo-8 est-il conservé ? »).
 
 ## Acte I — Youngling (R2-M001 → M006)
 
