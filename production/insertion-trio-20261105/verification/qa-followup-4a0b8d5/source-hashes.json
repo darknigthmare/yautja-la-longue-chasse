@@ -1,0 +1,83 @@
+{
+  "sourceCommit": "4a0b8d58cdfadf642d6c897c32980b7a8586f4dd",
+  "tree": "9b64f036ca97247ef7a131566705df7e1c472325",
+  "reportHashCounts": {
+    "spatial": 21,
+    "dev": 23
+  },
+  "reports": {
+    "spatial": {
+      "origin": "report.sourceHashes",
+      "count": 21,
+      "allMatchCommittedBlobs": true,
+      "files": {
+        "app/dev/client.tsx": "d0039f33b6b242058828f91a7099902a4ccee3116eda1ec658ff34dfc0971dde",
+        "app/dev/destinations.ts": "dbd23830a61bca9c70fcb5fffebfb56426fff2354e9871c8ce0554174851f32e",
+        "app/dev/session.tsx": "9a8deef175790e2aacbd5825212f21b282ea947554f9f6afa352839580780b0b",
+        "app/game/HuntCanvas.tsx": "b401fcc2c2e5dbdb5ddb8601aaba1ff1efde12a9fb064e783010a621fbc1e59a",
+        "app/game/HunterRigPreview.tsx": "f9a7fb5029f08d0deec205af1fbfe5172d0bb5c32f6885c5424479886a6f876c",
+        "app/game/PlanetArrivalCinematic.module.css": "f4a4bb6e952f8ecc9b3519bb8e4151428dca9062e2095f504e3b84fff4a9f00a",
+        "app/game/PlanetArrivalCinematic.tsx": "01803c35cb795744b0a72a06fcea57ad2e7123e85e0eefeb456d06f1f522d9d7",
+        "app/game/hunterRig.ts": "653c03db8a3cc2ad6664725d501ac58866ff58097239aab50e880d019cd14904",
+        "app/game/shipCatalogue.ts": "458d077948c3f3e2f867fdc441e64423808cfb0cea54582b0c61762b1705d396",
+        "app/game/systems/huntInsertion.ts": "f283d44d6876a7afd14d4f6cb922b325c0a48aeb79347d8d73aec8f1d0cc38ec",
+        "app/game/systems/planetArrival.ts": "2d0ce19e0b1d11b64af56c0a5058bc30e4b8d5a018fe17e222457f2f055e9fb4",
+        "app/game/systems/planetArrivalArt.ts": "28f50705db61616c632b9ed2ec39298012b893204f1a7bc4ac1fd2d4caea64a4",
+        "app/game/systems/planetArrivalAudio.ts": "add38c7f8107d5c88852d1bff06b1f339de52fc74d78ccf3ffc6c7bc712b44ec",
+        "app/game/systems/planetArrivalGroundArt.ts": "d0d7f257757c458b8944a8ddd95dc9bea9cc250083899918fc6f5ccaab421e22",
+        "app/game/systems/planetArrivalPresentation.ts": "20789a02f321f4533e48408663a81140273b78d74c52f57e60ed4967fce75831",
+        "app/game/systems/planetArrivalRun.ts": "81fde7e75834779c9cde9b57836de6260aa1db24fe3b5671bb36950db2251bd4",
+        "app/game/systems/planetArrivalSpatial.ts": "bce53ce72cff85bdef9d9351066f70d1920a385d131751bf0bf71da430a7c020",
+        "app/game/systems/planetInsertion.ts": "f3be5ddd744e8a5d621a4e9291c3b9dc0aaa8818d5d034e13a66bf4e94743d5a",
+        "app/game/systems/shipInsertionEnergy.ts": "00e9a554acee76c3f0e186ad376dc87bf46b4f0bc8b5999815716109080380ca",
+        "app/game/worldScreens.ts": "04854a87a575630fedcc6b0ac641de942c7f04e87e448da0767ef558e930d495",
+        "scripts/qa-planet-arrival-spatial.mjs": "ec3ab52faa42172f8e78faca0d0cabf2bf77cda04eaf1271e142d2a8cc3c1bbf"
+      }
+    },
+    "wolf": {
+      "origin": "Committed files at exact report source/checkout; Wolf does not emit sourceHashes itself.",
+      "count": 8,
+      "allMatchCommittedBlobs": true,
+      "files": {
+        "scripts/qa-wolf-arrival-browser.mjs": "64cc7d484322ebb45dc829de1234fd2be395dfd895a5c23b6ba0aabfe71f816f",
+        "app/game/GameClient.tsx": "578c182140a0dc2a82041c61ffacd45ceae48cd6304ad895993805659e6b0a05",
+        "app/game/HuntCanvas.tsx": "b401fcc2c2e5dbdb5ddb8601aaba1ff1efde12a9fb064e783010a621fbc1e59a",
+        "app/game/PlanetArrivalCinematic.tsx": "01803c35cb795744b0a72a06fcea57ad2e7123e85e0eefeb456d06f1f522d9d7",
+        "app/game/systems/shipInsertionEnergy.ts": "00e9a554acee76c3f0e186ad376dc87bf46b4f0bc8b5999815716109080380ca",
+        "app/game/systems/planetInsertion.ts": "f3be5ddd744e8a5d621a4e9291c3b9dc0aaa8818d5d034e13a66bf4e94743d5a",
+        "app/game/systems/planetArrivalRun.ts": "81fde7e75834779c9cde9b57836de6260aa1db24fe3b5671bb36950db2251bd4",
+        "app/game/systems/huntInsertion.ts": "f283d44d6876a7afd14d4f6cb922b325c0a48aeb79347d8d73aec8f1d0cc38ec"
+      }
+    },
+    "dev": {
+      "origin": "report.sourceHashes",
+      "count": 23,
+      "allMatchCommittedBlobs": true,
+      "files": {
+        "app/dev/client.tsx": "d0039f33b6b242058828f91a7099902a4ccee3116eda1ec658ff34dfc0971dde",
+        "app/dev/destinations.ts": "dbd23830a61bca9c70fcb5fffebfb56426fff2354e9871c8ce0554174851f32e",
+        "app/dev/dev-travel.module.css": "ea1402ad8aa8ffab933699d0772022def3bb06318eabac2c1799e9422373ad99",
+        "app/dev/page.tsx": "d5d70598faf63d77755ed6c82e82459451132bf43202a2d95baa4194743c9b91",
+        "app/dev/services.tsx": "423710d5e58584813798608edd68b6fe545be577beb76614b485678cbf402d38",
+        "app/dev/session.module.css": "d877a7812000e081a71e8bff40dfab87e8fa1870c54ade01d223cae9b07fd357",
+        "app/dev/session.tsx": "9a8deef175790e2aacbd5825212f21b282ea947554f9f6afa352839580780b0b",
+        "app/game/ClanShipHub.tsx": "d77dd3fb94577ee0ad2e38fe14bb0af83714152bd3f2418b0777ffa08dda672b",
+        "app/game/ClanShipInterior.tsx": "be082652a8c60f1b8dc89e47542c81903cef060629748c90570f9239b4c83711",
+        "app/game/HomeworldHub.tsx": "1fe63077ed64a1d8e58cfbbff163b5d457702cb8b8d1fec9adb92072f7354e45",
+        "app/game/HomeworldRegionV68.tsx": "d6b94d240a09c1d835dfdebef9243f3890681cb55b0f25bc3edeaac63903f8ce",
+        "app/game/HuntCanvas.tsx": "b401fcc2c2e5dbdb5ddb8601aaba1ff1efde12a9fb064e783010a621fbc1e59a",
+        "app/game/PhysicalShipDeck.tsx": "bf2fae1c7d79088825f48b488985bf2628968b8d402c7bcf89066fcbff4f55cf",
+        "app/game/PlanetArrivalCinematic.tsx": "01803c35cb795744b0a72a06fcea57ad2e7123e85e0eefeb456d06f1f522d9d7",
+        "app/game/ShipHub.tsx": "17c535e9c16b4fd984a0b7fbf083b715d5ff7db3f5c042b0cc0726e3eac368e7",
+        "app/game/WolfCastleScene.tsx": "1ebae94444f8a0ce211fc7baae4175fe4bee2873e76a871a689b7a413a1d982a",
+        "app/game/systems/huntInsertion.ts": "f283d44d6876a7afd14d4f6cb922b325c0a48aeb79347d8d73aec8f1d0cc38ec",
+        "app/game/systems/planetArrival.ts": "2d0ce19e0b1d11b64af56c0a5058bc30e4b8d5a018fe17e222457f2f055e9fb4",
+        "app/game/systems/planetArrivalRun.ts": "81fde7e75834779c9cde9b57836de6260aa1db24fe3b5671bb36950db2251bd4",
+        "app/game/systems/planetInsertion.ts": "f3be5ddd744e8a5d621a4e9291c3b9dc0aaa8818d5d034e13a66bf4e94743d5a",
+        "app/game/systems/shipInsertionEnergy.ts": "00e9a554acee76c3f0e186ad376dc87bf46b4f0bc8b5999815716109080380ca",
+        "app/game/systems/wolfCastle.ts": "51147485dabf373165406efa691c83e452b72a366e069594632074ed3ff3bac7",
+        "scripts/qa-dev-travel-browser.mjs": "45b1f8c49d343e494486f36edd8ff7ff9ce0f9c15894570440454ee31f08a553"
+      }
+    }
+  }
+}

@@ -17,6 +17,10 @@ const {GAUNTLET_CATALOG_V132,serializeGauntletPreferenceV132}=qa.load("app/game/
 const {readHunterGauntletV133}=qa.load("app/game/systems/useHunterGauntletV133.ts");
 const {normalizeHuntAccessibilityV112}=qa.load("app/game/systems/huntAccessibilityV112.ts");
 const {createPlanetArrival,requestPlanetArrivalHandoff,completePlanetArrivalHandoff}=qa.load("app/game/systems/planetArrival.ts");
+const {normalizePlanetInsertionPlan,shipSupportsSurfaceInsertion,expeditionTrioReady}=qa.load("app/game/systems/planetInsertion.ts");
+const {evaluateClanShipAccess}=qa.load("app/game/systems/clanShipOperations.ts");
+const {hasShipInsertionDebit}=qa.load("app/game/systems/shipInsertionEnergy.ts");
+const {isShipId}=qa.load("app/game/shipCatalogue.ts");
 const {
   defaultSave,exportSave,parseSaveImport,normalizeSave,RANK_THRESHOLDS,
 }=qa.load("app/game/save.ts");
@@ -94,7 +98,27 @@ test("GameClient writes launch-time visual identity, preserves it across writes,
   const client=read("app/game/GameClient.tsx");
   const runtime=read("app/game/HuntCanvas.tsx");
   assert.match(client,/gauntletVariantId: captureHuntGauntletV142\(gauntletVariantId,save\.profile\.rankId/);
-  assert.match(client,/configuration:\s*huntConfiguration\(\s*runtimeSave\s*,\s*hunterGauntlet\.equippedId\s*\)/);
+  const ast=ts.createSourceFile("GameClient.tsx",client,ts.ScriptTarget.Latest,true,ts.ScriptKind.TSX);
+  const matching=(root,predicate)=>{
+    const matches=[];
+    const visit=node=>{if(predicate(node))matches.push(node);ts.forEachChild(node,visit);};
+    visit(root);return matches;
+  };
+  const launches=matching(ast,node=>ts.isVariableDeclaration(node)&&ts.isIdentifier(node.name)&&node.name.text==="launchMission");
+  assert.equal(launches.length,1,"The actual departure handler must be unique.");
+  const runs=matching(launches[0],node=>ts.isVariableDeclaration(node)&&ts.isIdentifier(node.name)&&node.name.text==="run");
+  assert.equal(runs.length,1,"The departure must capture one durable arrival run.");
+  assert.ok(runs[0].initializer&&ts.isObjectLiteralExpression(runs[0].initializer));
+  const configuration=runs[0].initializer.properties.find(node=>ts.isPropertyAssignment(node)&&
+    (ts.isIdentifier(node.name)||ts.isStringLiteral(node.name))&&node.name.text==="configuration");
+  assert.ok(configuration&&ts.isObjectLiteralExpression(configuration.initializer));
+  const captures=configuration.initializer.properties.filter(node=>ts.isSpreadAssignment(node)&&
+    ts.isCallExpression(node.expression)&&ts.isIdentifier(node.expression.expression)&&node.expression.expression.text==="huntConfiguration");
+  assert.equal(captures.length,1,"The real run configuration must retain the launch-time cosmetic capture.");
+  assert.deepEqual(captures[0].expression.arguments.map(argument=>argument.getText(ast)),["runtimeSave","hunterGauntlet.equippedId"]);
+  assert.ok(configuration.initializer.properties.every(node=>!ts.isPropertyAssignment(node)||
+    !(ts.isIdentifier(node.name)||ts.isStringLiteral(node.name))||node.name.text!=="gauntletVariantId"),
+  "Insertion fields must not overwrite the captured gauntlet identity.");
   assert.match(client,/\.\.\.session\.configuration/);
   assert.match(client,/gauntletVariantId: resumeHuntGauntletV142\(/);
   assert.match(client,/resumed\.configuration,/);
@@ -128,6 +152,8 @@ test("Arrival handoff and first-mount recovery retain the captured gauntlet afte
     activeHuntSessionRef:{current:null},missionSettlementRef:{current:false},
     MISSIONS:[{id:"jungle-vey"}],hunterGauntlet:{equippedId:equipped()},huntResumePayload:null,
     normalizeSave,normalizeHuntAccessibilityV112,captureHuntGauntletV142,resumeHuntGauntletV142,
+    normalizePlanetInsertionPlan,isShipId,evaluateClanShipAccess,shipSupportsSurfaceInsertion,
+    expeditionTrioReady,hasShipInsertionDebit,
     setHuntResumePayload(value){environment.huntResumePayload=value;},
     setHuntRuntimeSave(value){environment.huntRuntimeSave=value;},
     setPendingHuntResult(){},setLastResult(){},setLastRewardSummary(){},setSelectedMission(){},

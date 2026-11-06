@@ -1,0 +1,159 @@
+{
+  "schemaVersion": 1,
+  "shipId": "fugitive-spaceship",
+  "sourceCommit": "3ef6d77e338bbec8e904f09ad72f75b4d38bbed2",
+  "method": "built-in image_gen.imagegen, one sprite per call",
+  "transparentBackground": true,
+  "rasterEdits": "none",
+  "fidelityLimit": "Project reference identity; generated hidden geometry and panel details require review; requested camera degrees are intentions, not measurements.",
+  "views": [
+    {
+      "view": "forward-quarter-shallow",
+      "id": "fugitive-spaceship-forward-quarter-shallow",
+      "prompt": "Use case: identity-preserve. Create ONE transparent cinematic game sprite of the EXACT SAME Fugitive spacecraft from the supplied two master project references. First is the existing oblique profile; second is its top view. These are the same rigid ship. LOCK identity: broad rounded-diamond metallic main shell, black smooth hemispherical dorsal dome surrounded by concentric curved silver/gunmetal ribs and small red pin lights; substantial rounded dark underside; EXACTLY TWO spherical/egg-shaped rear engine nacelles attached on the LEFT by thick curved tubular arms, blue inset ports and short existing cyan-blue exhausts. The leading rounded point of the diamond is the nose and stays on the RIGHT; aft and both engines stay LEFT. Same scratched weathered gunmetal/silver material, subtle existing red lights, original proportions and parts, no extra nacelle, no orange engines, no antennae, new weapons, landing legs or new apertures. Keep the small original blue engine exhausts attached to their existing nozzle mouths, do not lengthen into large jets. Neutral soft upper-left lighting matching reference. Full entire ship centered on a1536x1024landscape canvas, complete tips and engine flames, clear transparent margin. True RGBA transparency outside ship, including open gaps between curved arms; no environment, ground, shadow plane, halo mist, checkerboard, text, labels or watermark. This must be a true change of the camera around a rigid object, not a rotated or skewed existing bitmap. Keep projected long axis roughly horizontal and upright, do not mirror.\nCAMERA: shallow FRONT quarter. From the supplied profile camera, yaw12 degrees toward the RIGHT nose. Reveal slightly more of the leading front rim with the far side receding; preserve similar slight elevation and longitudinal proportions. Do not turn into a top view.",
+      "referencePaths": [
+        "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/fugitive-spaceship-profile.webp",
+        "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/fugitive-spaceship-top.webp"
+      ],
+      "sourcePath": "/workspace/scratch/0c1fa1359efb/generated_images/exec-28039742-6ab0-43cd-9598-22052f6ac8f5.png",
+      "candidatePath": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/fugitive-spaceship/candidates/forward-quarter-shallow.png",
+      "status": "candidate-pending-independent-review",
+      "sourceSha256": "d345e5f4e77d13b50607d35b682dca3bdee4dc3e4ca182276c4f81c637130f82",
+      "sourceBytes": 1874663,
+      "dimensions": [
+        1536,
+        1024
+      ]
+    },
+    {
+      "view": "forward-quarter",
+      "id": "fugitive-spaceship-forward-quarter",
+      "prompt": "Use case: identity-preserve. Create ONE transparent cinematic game sprite of the EXACT SAME Fugitive spacecraft from the supplied two master project references. First is the existing oblique profile; second is its top view. These are the same rigid ship. LOCK identity: broad rounded-diamond metallic main shell, black smooth hemispherical dorsal dome surrounded by concentric curved silver/gunmetal ribs and small red pin lights; substantial rounded dark underside; EXACTLY TWO spherical/egg-shaped rear engine nacelles attached on the LEFT by thick curved tubular arms, blue inset ports and short existing cyan-blue exhausts. The leading rounded point of the diamond is the nose and stays on the RIGHT; aft and both engines stay LEFT. Same scratched weathered gunmetal/silver material, subtle existing red lights, original proportions and parts, no extra nacelle, no orange engines, no antennae, new weapons, landing legs or new apertures. Keep the small original blue engine exhausts attached to their existing nozzle mouths, do not lengthen into large jets. Neutral soft upper-left lighting matching reference. Full entire ship centered on a1536x1024landscape canvas, complete tips and engine flames, clear transparent margin. True RGBA transparency outside ship, including open gaps between curved arms; no environment, ground, shadow plane, halo mist, checkerboard, text, labels or watermark. This must be a true change of the camera around a rigid object, not a rotated or skewed existing bitmap. Keep projected long axis roughly horizontal and upright, do not mirror.\nImage3 is the corresponding accepted shallow-angle candidate, used only for continuity of the same ship; the first TWO master references remain authoritative for identity. Create a NEW deeper angle, not a copy of image3.\nCAMERA TARGET: pronounced FRONT-quarter,25degrees toward the RIGHT nose relative to the master profile, clearly further toward the NOSE than image3. The nose/front rim is viewed more front-on and the two aft nozzle faces become more oblique; not a rear camera. Increase true depth foreshortening, same slight elevation, same rigid ship and all original parts.",
+      "referencePaths": [
+        "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/fugitive-spaceship-profile.webp",
+        "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/fugitive-spaceship-top.webp",
+        "/workspace/scratch/0c1fa1359efb/generated_images/exec-28039742-6ab0-43cd-9598-22052f6ac8f5.png"
+      ],
+      "sourcePath": "/workspace/scratch/0c1fa1359efb/generated_images/exec-c25995b1-ea3e-47d0-9ab2-f5a57c27e12e.png",
+      "candidatePath": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/fugitive-spaceship/candidates/forward-quarter.png",
+      "status": "candidate-pending-independent-review",
+      "sourceSha256": "61a2a3a3ef8ced542c90ed6c8f298158cbf5db6b65745a62f62115ae24740369",
+      "sourceBytes": 1996335,
+      "dimensions": [
+        1536,
+        1024
+      ]
+    },
+    {
+      "view": "bank-dorsal-shallow",
+      "id": "fugitive-spaceship-bank-dorsal-shallow",
+      "prompt": "Use case: identity-preserve. Create ONE transparent cinematic game sprite of the EXACT SAME Fugitive spacecraft from the supplied two master project references. First is the existing oblique profile; second is its top view. These are the same rigid ship. LOCK identity: broad rounded-diamond metallic main shell, black smooth hemispherical dorsal dome surrounded by concentric curved silver/gunmetal ribs and small red pin lights; substantial rounded dark underside; EXACTLY TWO spherical/egg-shaped rear engine nacelles attached on the LEFT by thick curved tubular arms, blue inset ports and short existing cyan-blue exhausts. The leading rounded point of the diamond is the nose and stays on the RIGHT; aft and both engines stay LEFT. Same scratched weathered gunmetal/silver material, subtle existing red lights, original proportions and parts, no extra nacelle, no orange engines, no antennae, new weapons, landing legs or new apertures. Keep the small original blue engine exhausts attached to their existing nozzle mouths, do not lengthen into large jets. Neutral soft upper-left lighting matching reference. Full entire ship centered on a1536x1024landscape canvas, complete tips and engine flames, clear transparent margin. True RGBA transparency outside ship, including open gaps between curved arms; no environment, ground, shadow plane, halo mist, checkerboard, text, labels or watermark. This must be a true change of the camera around a rigid object, not a rotated or skewed existing bitmap. Keep projected long axis roughly horizontal and upright, do not mirror.\nCAMERA: shallow DORSAL bank. Start with the profile reference and reveal the upper shell by an additional12 degrees of roll about the ship longitudinal axis (nose RIGHT, tail LEFT). Show a little more of the curved dorsal rib pattern and black dome. No added longitudinal yaw, no pitch, no in-plane rotation. The near and far engine arms remain the same rigid parts.",
+      "referencePaths": [
+        "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/fugitive-spaceship-profile.webp",
+        "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/fugitive-spaceship-top.webp"
+      ],
+      "sourcePath": "/workspace/scratch/0c1fa1359efb/generated_images/exec-f907b6fb-a73b-4339-a78e-870853d74825.png",
+      "candidatePath": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/fugitive-spaceship/candidates/bank-dorsal-shallow.png",
+      "status": "candidate-pending-independent-review",
+      "sourceSha256": "023e9acfd955db295aaf83c8d754f82ce34be22be531ddf7ce38ab4b1fedf48a",
+      "sourceBytes": 1917350,
+      "dimensions": [
+        1536,
+        1024
+      ]
+    },
+    {
+      "view": "bank-dorsal",
+      "id": "fugitive-spaceship-bank-dorsal",
+      "prompt": "Use case: identity-preserve. Create ONE transparent cinematic game sprite of the EXACT SAME Fugitive spacecraft from the supplied two master project references. First is the existing oblique profile; second is its top view. These are the same rigid ship. LOCK identity: broad rounded-diamond metallic main shell, black smooth hemispherical dorsal dome surrounded by concentric curved silver/gunmetal ribs and small red pin lights; substantial rounded dark underside; EXACTLY TWO spherical/egg-shaped rear engine nacelles attached on the LEFT by thick curved tubular arms, blue inset ports and short existing cyan-blue exhausts. The leading rounded point of the diamond is the nose and stays on the RIGHT; aft and both engines stay LEFT. Same scratched weathered gunmetal/silver material, subtle existing red lights, original proportions and parts, no extra nacelle, no orange engines, no antennae, new weapons, landing legs or new apertures. Keep the small original blue engine exhausts attached to their existing nozzle mouths, do not lengthen into large jets. Neutral soft upper-left lighting matching reference. Full entire ship centered on a1536x1024landscape canvas, complete tips and engine flames, clear transparent margin. True RGBA transparency outside ship, including open gaps between curved arms; no environment, ground, shadow plane, halo mist, checkerboard, text, labels or watermark. This must be a true change of the camera around a rigid object, not a rotated or skewed existing bitmap. Keep projected long axis roughly horizontal and upright, do not mirror.\nImage3 is the corresponding accepted shallow-angle candidate, used only for continuity of the same ship; the first TWO master references remain authoritative for identity. Create a NEW deeper angle, not a copy of image3.\nCAMERA TARGET: pronounced DORSAL bank,25degrees about the nose-tail longitudinal axis from master profile, clearly more dorsal upper surface visible than image3. Show more of the concentric ribs around the dorsal black dome, less rounded belly. No longitudinal yaw, no pitch, no in-plane rotation.",
+      "referencePaths": [
+        "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/fugitive-spaceship-profile.webp",
+        "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/fugitive-spaceship-top.webp",
+        "/workspace/scratch/0c1fa1359efb/generated_images/exec-f907b6fb-a73b-4339-a78e-870853d74825.png"
+      ],
+      "sourcePath": "/workspace/scratch/0c1fa1359efb/generated_images/exec-13b4de6f-6c8f-4c9d-b5ee-5a76ef6268ca.png",
+      "candidatePath": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/fugitive-spaceship/candidates/bank-dorsal.png",
+      "status": "candidate-pending-independent-review",
+      "sourceSha256": "57ff81e56c7c3e92f3e5e0f6a1aef534d2b4fe6c201be2cb99d056e949b61579",
+      "sourceBytes": 2258773,
+      "dimensions": [
+        1536,
+        1024
+      ]
+    },
+    {
+      "view": "bank-ventral-shallow",
+      "id": "fugitive-spaceship-bank-ventral-shallow",
+      "prompt": "Use case: identity-preserve. Create ONE transparent cinematic game sprite of the EXACT SAME Fugitive spacecraft from the supplied two master project references. First is the existing oblique profile; second is its top view. These are the same rigid ship. LOCK identity: broad rounded-diamond metallic main shell, black smooth hemispherical dorsal dome surrounded by concentric curved silver/gunmetal ribs and small red pin lights; substantial rounded dark underside; EXACTLY TWO spherical/egg-shaped rear engine nacelles attached on the LEFT by thick curved tubular arms, blue inset ports and short existing cyan-blue exhausts. The leading rounded point of the diamond is the nose and stays on the RIGHT; aft and both engines stay LEFT. Same scratched weathered gunmetal/silver material, subtle existing red lights, original proportions and parts, no extra nacelle, no orange engines, no antennae, new weapons, landing legs or new apertures. Keep the small original blue engine exhausts attached to their existing nozzle mouths, do not lengthen into large jets. Neutral soft upper-left lighting matching reference. Full entire ship centered on a1536x1024landscape canvas, complete tips and engine flames, clear transparent margin. True RGBA transparency outside ship, including open gaps between curved arms; no environment, ground, shadow plane, halo mist, checkerboard, text, labels or watermark. This must be a true change of the camera around a rigid object, not a rotated or skewed existing bitmap. Keep projected long axis roughly horizontal and upright, do not mirror.\nCAMERA: shallow VENTRAL bank. Start with the profile reference and roll12 degrees the opposite direction about the longitudinal axis, slightly revealing more of the rounded belly and less of the black dorsal dome. No added longitudinal yaw, no pitch, no in-plane rotation. Keep TWO physical engines, allowing honest partial occlusion.",
+      "referencePaths": [
+        "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/fugitive-spaceship-profile.webp",
+        "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/fugitive-spaceship-top.webp"
+      ],
+      "sourcePath": "/workspace/scratch/0c1fa1359efb/generated_images/exec-4e38799c-eeb0-46c9-a7af-4ad512d05daf.png",
+      "candidatePath": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/fugitive-spaceship/candidates/bank-ventral-shallow.png",
+      "status": "candidate-pending-independent-review",
+      "sourceSha256": "e72c4504cd699e069df26ec28a364578b0ce3932d5ca156f59f72838096ffab5",
+      "sourceBytes": 1649626,
+      "dimensions": [
+        1536,
+        1024
+      ]
+    },
+    {
+      "view": "bank-ventral",
+      "id": "fugitive-spaceship-bank-ventral",
+      "prompt": "Use case: identity-preserve. Create ONE transparent cinematic game sprite of the EXACT SAME Fugitive spacecraft from the supplied two master project references. First is the existing oblique profile; second is its top view. These are the same rigid ship. LOCK identity: broad rounded-diamond metallic main shell, black smooth hemispherical dorsal dome surrounded by concentric curved silver/gunmetal ribs and small red pin lights; substantial rounded dark underside; EXACTLY TWO spherical/egg-shaped rear engine nacelles attached on the LEFT by thick curved tubular arms, blue inset ports and short existing cyan-blue exhausts. The leading rounded point of the diamond is the nose and stays on the RIGHT; aft and both engines stay LEFT. Same scratched weathered gunmetal/silver material, subtle existing red lights, original proportions and parts, no extra nacelle, no orange engines, no antennae, new weapons, landing legs or new apertures. Keep the small original blue engine exhausts attached to their existing nozzle mouths, do not lengthen into large jets. Neutral soft upper-left lighting matching reference. Full entire ship centered on a1536x1024landscape canvas, complete tips and engine flames, clear transparent margin. True RGBA transparency outside ship, including open gaps between curved arms; no environment, ground, shadow plane, halo mist, checkerboard, text, labels or watermark. This must be a true change of the camera around a rigid object, not a rotated or skewed existing bitmap. Keep projected long axis roughly horizontal and upright, do not mirror.\nImage3 is the corresponding accepted shallow-angle candidate, used only for continuity of the same ship; the first TWO master references remain authoritative for identity. Create a NEW deeper angle, not a copy of image3.\nCAMERA TARGET: pronounced VENTRAL bank,25degrees about the nose-tail longitudinal axis from master profile, clearly more rounded belly visible and much less upper dome than image3. The ventral underside must be visible coherently with existing dark rounded panels, not a new engine or hatch. No longitudinal yaw, no pitch, no in-plane rotation.",
+      "referencePaths": [
+        "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/fugitive-spaceship-profile.webp",
+        "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/fugitive-spaceship-top.webp",
+        "/workspace/scratch/0c1fa1359efb/generated_images/exec-4e38799c-eeb0-46c9-a7af-4ad512d05daf.png"
+      ],
+      "sourcePath": "/workspace/scratch/0c1fa1359efb/generated_images/exec-2ab99c57-f380-4abb-8c85-5eccd649a209.png",
+      "candidatePath": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/fugitive-spaceship/candidates/bank-ventral.png",
+      "status": "candidate-pending-independent-review",
+      "sourceSha256": "bb9cd29e41c94e971587116d7378e5f4e39accd513445e8ecf270ebf018f9818",
+      "sourceBytes": 1550378,
+      "dimensions": [
+        1536,
+        1024
+      ]
+    },
+    {
+      "view": "rear-quarter-shallow",
+      "id": "fugitive-spaceship-rear-quarter-shallow",
+      "prompt": "Use case: identity-preserve. Create ONE transparent cinematic game sprite of the EXACT SAME Fugitive spacecraft from the supplied two master project references. First is the existing oblique profile; second is its top view. These are the same rigid ship. LOCK identity: broad rounded-diamond metallic main shell, black smooth hemispherical dorsal dome surrounded by concentric curved silver/gunmetal ribs and small red pin lights; substantial rounded dark underside; EXACTLY TWO spherical/egg-shaped rear engine nacelles attached on the LEFT by thick curved tubular arms, blue inset ports and short existing cyan-blue exhausts. The leading rounded point of the diamond is the nose and stays on the RIGHT; aft and both engines stay LEFT. Same scratched weathered gunmetal/silver material, subtle existing red lights, original proportions and parts, no extra nacelle, no orange engines, no antennae, new weapons, landing legs or new apertures. Keep the small original blue engine exhausts attached to their existing nozzle mouths, do not lengthen into large jets. Neutral soft upper-left lighting matching reference. Full entire ship centered on a1536x1024landscape canvas, complete tips and engine flames, clear transparent margin. True RGBA transparency outside ship, including open gaps between curved arms; no environment, ground, shadow plane, halo mist, checkerboard, text, labels or watermark. This must be a true change of the camera around a rigid object, not a rotated or skewed existing bitmap. Keep projected long axis roughly horizontal and upright, do not mirror.\nCAMERA: shallow REAR quarter. From the supplied profile camera, yaw12 degrees toward the LEFT aft. Reveal slightly more of the TWO existing rear nozzle mouths, tubular arm junctions and rear body. Similar slight elevation, no extra roll or broad top view.",
+      "referencePaths": [
+        "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/fugitive-spaceship-profile.webp",
+        "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/fugitive-spaceship-top.webp"
+      ],
+      "sourcePath": "/workspace/scratch/0c1fa1359efb/generated_images/exec-4a5ac108-feb5-4dec-b271-cb59967b0f26.png",
+      "candidatePath": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/fugitive-spaceship/candidates/rear-quarter-shallow.png",
+      "status": "candidate-pending-independent-review",
+      "sourceSha256": "271f70e31718a209a193ef05f79cc4be7d77ecfb6868f2ab4ac30c8458ff9fc6",
+      "sourceBytes": 1873344,
+      "dimensions": [
+        1536,
+        1024
+      ]
+    },
+    {
+      "view": "rear-quarter",
+      "id": "fugitive-spaceship-rear-quarter",
+      "prompt": "Use case: identity-preserve. Create ONE transparent cinematic game sprite of the EXACT SAME Fugitive spacecraft from the supplied two master project references. First is the existing oblique profile; second is its top view. These are the same rigid ship. LOCK identity: broad rounded-diamond metallic main shell, black smooth hemispherical dorsal dome surrounded by concentric curved silver/gunmetal ribs and small red pin lights; substantial rounded dark underside; EXACTLY TWO spherical/egg-shaped rear engine nacelles attached on the LEFT by thick curved tubular arms, blue inset ports and short existing cyan-blue exhausts. The leading rounded point of the diamond is the nose and stays on the RIGHT; aft and both engines stay LEFT. Same scratched weathered gunmetal/silver material, subtle existing red lights, original proportions and parts, no extra nacelle, no orange engines, no antennae, new weapons, landing legs or new apertures. Keep the small original blue engine exhausts attached to their existing nozzle mouths, do not lengthen into large jets. Neutral soft upper-left lighting matching reference. Full entire ship centered on a1536x1024landscape canvas, complete tips and engine flames, clear transparent margin. True RGBA transparency outside ship, including open gaps between curved arms; no environment, ground, shadow plane, halo mist, checkerboard, text, labels or watermark. This must be a true change of the camera around a rigid object, not a rotated or skewed existing bitmap. Keep projected long axis roughly horizontal and upright, do not mirror.\nImage3 is the corresponding accepted shallow-angle candidate, used only for continuity of the same ship; the first TWO master references remain authoritative for identity. Create a NEW deeper angle, not a copy of image3.\nCAMERA TARGET: pronounced REAR-quarter,25degrees toward the LEFT aft relative to master profile, clearly further toward the aft than image3. Show the circular rear faces of the TWO engine nacelles more front-on and the nose receding RIGHT. True perspective foreshortening of the main shell, same slight elevation.",
+      "referencePaths": [
+        "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/fugitive-spaceship-profile.webp",
+        "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/fugitive-spaceship-top.webp",
+        "/workspace/scratch/0c1fa1359efb/generated_images/exec-4a5ac108-feb5-4dec-b271-cb59967b0f26.png"
+      ],
+      "sourcePath": "/workspace/scratch/0c1fa1359efb/generated_images/exec-2d89004a-2006-4321-981b-2000c0502b8c.png",
+      "candidatePath": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/fugitive-spaceship/candidates/rear-quarter.png",
+      "status": "candidate-pending-independent-review",
+      "sourceSha256": "0351029a77616d14c0ada9b5c70e4058d470a4307a4f6ab91974c91eefe15cdd",
+      "sourceBytes": 1929850,
+      "dimensions": [
+        1536,
+        1024
+      ]
+    }
+  ]
+}

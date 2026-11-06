@@ -1,0 +1,137 @@
+{
+  "sourceCommit": "1951e17f01f1951d7c961b4ed3938741966e3007",
+  "spatial": {
+    "runId": 42009684795,
+    "jobId": 127185222900,
+    "failedCheck": "desktop: pod-triad real flight, contact and complete disembarkation",
+    "message": "desktop-pod-triad-egress-final-detail: a visual evidence capture must precede the terminal overlay.",
+    "expected": "playing",
+    "actual": "complete",
+    "failureFrame": {
+      "shot": "egress",
+      "status": "complete",
+      "elapsedMs": 62000,
+      "method": "pod",
+      "team": "triad",
+      "shipCloak": false
+    },
+    "jobLogExcerpt": "2026-11-05T10:28:29.6379423Z AssertionError [ERR_ASSERTION]: desktop-pod-triad-egress-final-detail: a visual evidence capture must precede the terminal overlay.\n2026-11-05T10:28:29.6380664Z + actual - expected\n2026-11-05T10:28:29.6380935Z \n2026-11-05T10:28:29.6381091Z + 'complete'\n2026-11-05T10:28:29.6381448Z - 'playing'\n2026-11-05T10:28:29.6381874Z \n2026-11-05T10:28:29.6382872Z     at captureMoment (file:///home/runner/work/yautja-la-longue-chasse/yautja-la-longue-chasse/scripts/qa-planet-arrival-spatial.mjs:727:10)\n2026-11-05T10:28:29.6384753Z     at async file:///home/runner/work/yautja-la-longue-chasse/yautja-la-longue-chasse/scripts/qa-planet-arrival-spatial.mjs:1103:26\n2026-11-05T10:28:29.6386601Z     at async check (file:///home/runner/work/yautja-la-longue-chasse/yautja-la-longue-chasse/scripts/qa-planet-arrival-spatial.mjs:205:9)\n2026-11-05T10:28:29.6388472Z     at async file:///home/runner/work/yautja-la-longue-chasse/yautja-la-longue-chasse/scripts/qa-planet-arrival-spatial.mjs:1015:7 {\n2026-11-05T10:28:29.6389581Z   generatedMessage: false,\n2026-11-05T10:28:29.6390033Z   code: 'ERR_ASSERTION',\n2026-11-05T10:28:29.6390443Z   actual: 'complete',\n2026-11-05T10:28:29.6390820Z   expected: 'playing',\n2026-11-05T10:28:29.6391931Z   operator: 'strictEqual',\n2026-11-05T10:28:29.6392399Z   diff: 'simple'\n2026-11-05T10:28:29.6393012Z }\n2026-11-05T10:28:29.8419123Z Spatial evidence: outputs/qa-planet-arrival-spatial/report.json\n2026-11-05T10:28:29.9155595Z ##[error]Process completed with exit code 1.",
+    "diagnosis": "The first readMoment returned complete before Page.captureScreenshot; the post-acquisition retry branch was not reached.",
+    "rejectedCaptures": [],
+    "acceptedFinalTriadPhotograph": false,
+    "camouflageReached": false,
+    "mobileReached": false,
+    "failureScreenshotInArtifact": "failure.png",
+    "reviewedImages": [
+      {
+        "file": "desktop-ship-solo-egress-walking.png",
+        "sha256": "1a7c0ef118990918b91e3961431237e2b96e8614e44deeae750f607a4809806a",
+        "elapsedBefore": 60533,
+        "elapsedAfter": 61083,
+        "measuredAt": 61266
+      },
+      {
+        "file": "desktop-ship-solo-egress-final.png",
+        "sha256": "ea0b6299f22412af2d0145b34f47f1d32dfbe98ce8e59b52c636867f1130216d",
+        "elapsedBefore": 61416,
+        "elapsedAfter": 61816,
+        "measuredAt": 61950
+      },
+      {
+        "file": "desktop-pod-triad-egress-walking.png",
+        "sha256": "d46fab924a075e59b5337b6dacc36ef7f4af09eed0a1103776ef8fa1bbdb377c",
+        "elapsedBefore": 60916,
+        "elapsedAfter": 61766,
+        "measuredAt": 61983
+      }
+    ],
+    "reviewScope": "Read-only inspection found no terminal overlay or obvious support/cropping defect in these three existing desktop images. Pod-triad walking crosses walking to standing; its later measured geometry is not an exact final-pose photograph."
+  },
+  "dev": {
+    "runId": 42009684967,
+    "jobId": 127185224366,
+    "failedCheck": "Arrival pause, mobile controls, reload, reset and native Skip preserve the campaign and enter one real hunt",
+    "jobLogExcerpt": "2026-11-05T10:25:18.6763233Z locator.waitFor: Timeout 90000ms exceeded.\n2026-11-05T10:25:18.6763558Z Call log:\n2026-11-05T10:25:18.6765098Z   - waiting for getByRole('region', { name: 'Mission Sang dans la canopée sur Oseris-IV', exact: true }).and(locator('[data-dev-session=\"arrival-jungle-vey\"][data-dev-stage=\"hunt\"]:visible').locator('.hunt-screen')).locator('[data-mission-opening-v78]') to be visible\n2026-11-05T10:25:18.6765927Z \n2026-11-05T10:25:18.6766494Z     at assertArrivalHandoff (/home/runner/work/yautja-la-longue-chasse/yautja-la-longue-chasse/scripts/qa-dev-travel-browser.mjs:464:52)\n2026-11-05T10:25:18.6767359Z     at async file:///home/runner/work/yautja-la-longue-chasse/yautja-la-longue-chasse/scripts/qa-dev-travel-browser.mjs:809:5\n2026-11-05T10:25:18.6768171Z     at async check (/home/runner/work/yautja-la-longue-chasse/yautja-la-longue-chasse/scripts/qa-dev-travel-browser.mjs:210:5)\n2026-11-05T10:25:18.6768771Z     at async file:///home/runner/work/yautja-la-longue-chasse/yautja-la-longue-chasse/scripts/qa-dev-travel-browser.mjs:770:3\n2026-11-05T10:25:20.7376493Z {\"passed\":false,\"checks\":11,\"failed\":1,\"missingAssets\":0,\"report\":\"/home/runner/work/yautja-la-longue-chasse/yautja-la-longue-chasse/outputs/qa-dev-travel/report.json\"}\n2026-11-05T10:25:20.7641600Z ##[error]Process completed with exit code 1.\n2026-11-05T10:25:20.7726480Z ##[group]Run actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02",
+    "failureState": {
+      "url": "http://127.0.0.1:4193/dev?lieu=arrival-jungle-vey",
+      "focused": true,
+      "hidden": false,
+      "visibility": "visible",
+      "activeElement": {
+        "tag": "BUTTON",
+        "text": "Commencer la chasse"
+      },
+      "session": {
+        "id": "arrival-jungle-vey",
+        "stage": "hunt",
+        "arrivalStatus": "complete",
+        "arrivalElapsed": "200"
+      },
+      "arrival": null,
+      "activeSessionCount": 1,
+      "activeArrivalCount": 0
+    },
+    "failureScreenshotInArtifact": "failure.png",
+    "visibleBriefingTitle": "Sang dans la canopée",
+    "diagnosis": "A regression introduced in the QA active-region refactor, not an absent mission briefing. HuntViewportDialogV79 uses createPortal(children, document.body), outside the HuntCanvas section.",
+    "sourceEvidence": {
+      "file": "app/game/HuntCanvas.tsx",
+      "component": "HuntViewportDialogV79",
+      "implementation": "createPortal(children, document.body)"
+    },
+    "correction": "Resolve the page-accessible dialog by exact mission title and native opening marker; interact with its real action. Keep Hunt/session scoping, run identity, and global unmount/single-instance assertions."
+  },
+  "wolf": {
+    "runId": 42009684875,
+    "jobId": 127185223992,
+    "failedCheck": "The return guide reaches the audience and a refused reward write keeps the victory and balance unclaimed",
+    "jobLogExcerpt": "2026-11-05T10:25:05.4700874Z page.waitForFunction: Timeout 20000ms exceeded.\n2026-11-05T10:25:05.4701774Z     at targetStation (/home/runner/work/yautja-la-longue-chasse/yautja-la-longue-chasse/scripts/qa-wolf-arrival-browser.mjs:185:16)\n2026-11-05T10:25:05.4702789Z     at async file:///home/runner/work/yautja-la-longue-chasse/yautja-la-longue-chasse/scripts/qa-wolf-arrival-browser.mjs:624:72\n2026-11-05T10:25:05.4703666Z     at async check (/home/runner/work/yautja-la-longue-chasse/yautja-la-longue-chasse/scripts/qa-wolf-arrival-browser.mjs:48:11)\n2026-11-05T10:25:05.4704528Z     at async file:///home/runner/work/yautja-la-longue-chasse/yautja-la-longue-chasse/scripts/qa-wolf-arrival-browser.mjs:613:3 {\n2026-11-05T10:25:05.4705051Z   log: [],\n2026-11-05T10:25:05.4705252Z   name: 'TimeoutError'\n2026-11-05T10:25:05.4705458Z }\n2026-11-05T10:25:05.8074692Z {\"passed\":false,\"checks\":19,\"output\":\"/home/runner/work/yautja-la-longue-chasse/yautja-la-longue-chasse/outputs/qa-wolf-arrival\",\"missingAssets\":0,\"assetGateRequired\":true}\n2026-11-05T10:25:05.8746869Z ##[error]Process completed with exit code 1.\n2026-11-05T10:25:05.8820832Z ##[group]Run actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02",
+    "failureState": {
+      "focused": true,
+      "hidden": false,
+      "roomId": "royal-audience",
+      "mode": "hub",
+      "status": "aboard",
+      "entryFrom": "royal-council",
+      "revision": 177,
+      "position": {
+        "x": 1350,
+        "y": 612,
+        "facing": 1
+      },
+      "moving": false,
+      "recordedStationAudienceClick": false,
+      "lastRecordedTransitions": [
+        {
+          "room": "royal-service-pass",
+          "target": "door:royal-council"
+        },
+        {
+          "room": "royal-service-pass",
+          "interaction": "door:royal-council"
+        },
+        {
+          "room": "royal-council",
+          "target": "door:royal-audience"
+        },
+        {
+          "room": "royal-council",
+          "interaction": "door:royal-audience"
+        }
+      ]
+    },
+    "failureScreenshotInArtifact": "failure.png",
+    "established": "The real and saved room is royal-audience. The click history contains the door transitions but no station target audience click before targetStation timed out.",
+    "notEstablished": "A transient disabled button is only a hypothesis; the data do not establish why the click was absent.",
+    "priorSuccessfulRun": {
+      "headSha": "4a0b8d58cdfadf642d6c897c32980b7a8586f4dd",
+      "runId": 42003800111,
+      "checks": {
+        "passed": 32,
+        "total": 32
+      },
+      "applicationAndWolfQaScriptIdentical": true,
+      "receipt": "../qa-followup-4a0b8d5/receipt.json"
+    }
+  }
+}

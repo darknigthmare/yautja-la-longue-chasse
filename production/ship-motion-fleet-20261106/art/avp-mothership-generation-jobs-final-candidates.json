@@ -1,0 +1,323 @@
+[
+  {
+    "id": "avp-predator-mothership-forward-quarter-shallow",
+    "viewId": "forward-quarter-shallow",
+    "phase": "shallow",
+    "camera": "CAMERA: a shallow FRONT three-quarter view, move the camera about12 degrees toward the RIGHT bow from image1. Reveal slightly more of the rounded bow-facing lip and its depth; rear neck and left nozzles recede slightly. Keep the same upright orientation; no roll or pitch. The change is modest and clearly closer to the profile master than to any head-on view.",
+    "status": "candidate-source-art-inspected-pending-parent-review",
+    "prompt": "Use case: identity-preserve.\nAsset type: ONE individual cinematic game spacecraft sprite for Yautja The Long Hunt, exact project AVP Predator mothership family.\nInput images: image 1 is the locked profile identity master; image 2 is the locked dorsal/top structural reference, NOT the requested camera pose.\nChange ONLY the viewing direction of this same rigid vessel. Bow remains RIGHT, rear/engines LEFT, top upright, projected main hull axis nearly horizontal. Preserve the broad rounded crescent/hammerhead forebody at RIGHT, its overhanging curved outer shell and inset arches, the long narrower rear neck tapering LEFT, the existing ventral/underside structures, the smooth engraved dark gunmetal plates and rows of tiny pale warm-white windows along seams. Keep relative forebody/neck lengths, thickness, panel language and hull identity.\nENGINE LOCK: the top reference establishes TWO large rear terminal cylindrical nozzles with ONE smaller axial nozzle between them. Keep exactly that arrangement; a nozzle may be occluded by perspective but do not add, replace, enlarge or multiply engines. No luminous engine core, flame, smoke, jet or new VFX. Openings stay dark as in the references.\nDo not add forked bow prongs, Wolf-style petals, dorsal spikes, wings, guns, glass cockpit, landing legs or a different ship. Preserve neutral cool-grey metallic colors and subdued pale seam lights. Soft neutral upper-left light, no dramatic relighting.\nFull ship with every appendage visible on a 1536x1024 RGBA transparent canvas. Center the physical hull, retain generous transparent margins on all sides, roughly within x70..1466 and y170..850. Do not fatten the vessel to fill the canvas. No scenery, shadow plane, colored backdrop, atmospheric halo, checkerboard pixels, text, label, watermark, frame or motion blur. Use genuine alpha transparency outside metal and its native tiny lights.\nCAMERA: a shallow FRONT three-quarter view, move the camera about12 degrees toward the RIGHT bow from image1. Reveal slightly more of the rounded bow-facing lip and its depth; rear neck and left nozzles recede slightly. Keep the same upright orientation; no roll or pitch. The change is modest and clearly closer to the profile master than to any head-on view.",
+    "referenceImages": [
+      "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/avp-predator-mothership-profile.webp",
+      "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/avp-predator-mothership-top.webp"
+    ],
+    "source": "/workspace/scratch/0c1fa1359efb/generated_images/exec-2ed1286f-8991-4988-85bc-8f1d7f4b264a.png",
+    "candidatePath": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/candidates-avp-mothership/avp-predator-mothership-forward-quarter-shallow.png",
+    "transparentBackground": true,
+    "mode": "built-in image_gen",
+    "bytes": 1457282,
+    "sha256": "717efa8e0f0cf06b3582964ec6609ac6f11198f08957fe7c0eac9c787d7a182d",
+    "dimensions": [
+      1536,
+      1024
+    ],
+    "imageMode": "RGBA",
+    "referenceProvenance": [
+      {
+        "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/avp-predator-mothership-profile.webp",
+        "bytes": 89754,
+        "sha256": "7bd67240d2ef6f4df2717219420aeea9083a1a5395e994c98cb0bcc4c824c907",
+        "canvas": [
+          1774,
+          887
+        ],
+        "mode": "RGBA"
+      },
+      {
+        "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/avp-predator-mothership-top.webp",
+        "bytes": 140552,
+        "sha256": "f1d33bedb750f6984e900171b68cf3dd2b9663f723a5e220af1dca9b15f05ca1",
+        "canvas": [
+          1774,
+          887
+        ],
+        "mode": "RGBA"
+      }
+    ],
+    "assignmentNote": "Original generated assignment retained after visual shallow/deep comparison; no pixel alteration."
+  },
+  {
+    "id": "avp-predator-mothership-forward-quarter",
+    "viewId": "forward-quarter",
+    "phase": "deep",
+    "camera": "CAMERA: a stronger FRONT three-quarter view, about24 degrees from image1 toward the RIGHT bow, continuing the same direction beyond the shallow front view. Reveal more of the curved front lip and rounded forebody faces; rear neck/nozzles recede further. Still recognizably a longitudinal three-quarter ship, not head-on. No roll or pitch.",
+    "status": "candidate-source-art-inspected-pending-parent-review",
+    "prompt": "Use case: identity-preserve.\nAsset type: ONE individual cinematic game spacecraft sprite for Yautja The Long Hunt, exact project AVP Predator mothership family.\nInput images: image 1 is the locked profile identity master; image 2 is the locked dorsal/top structural reference, NOT the requested camera pose.\nChange ONLY the viewing direction of this same rigid vessel. Bow remains RIGHT, rear/engines LEFT, top upright, projected main hull axis nearly horizontal. Preserve the broad rounded crescent/hammerhead forebody at RIGHT, its overhanging curved outer shell and inset arches, the long narrower rear neck tapering LEFT, the existing ventral/underside structures, the smooth engraved dark gunmetal plates and rows of tiny pale warm-white windows along seams. Keep relative forebody/neck lengths, thickness, panel language and hull identity.\nENGINE LOCK: the top reference establishes TWO large rear terminal cylindrical nozzles with ONE smaller axial nozzle between them. Keep exactly that arrangement; a nozzle may be occluded by perspective but do not add, replace, enlarge or multiply engines. No luminous engine core, flame, smoke, jet or new VFX. Openings stay dark as in the references.\nDo not add forked bow prongs, Wolf-style petals, dorsal spikes, wings, guns, glass cockpit, landing legs or a different ship. Preserve neutral cool-grey metallic colors and subdued pale seam lights. Soft neutral upper-left light, no dramatic relighting.\nFull ship with every appendage visible on a 1536x1024 RGBA transparent canvas. Center the physical hull, retain generous transparent margins on all sides, roughly within x70..1466 and y170..850. Do not fatten the vessel to fill the canvas. No scenery, shadow plane, colored backdrop, atmospheric halo, checkerboard pixels, text, label, watermark, frame or motion blur. Use genuine alpha transparency outside metal and its native tiny lights.\nCAMERA: a stronger FRONT three-quarter view, about24 degrees from image1 toward the RIGHT bow, continuing the same direction beyond the shallow front view. Reveal more of the curved front lip and rounded forebody faces; rear neck/nozzles recede further. Still recognizably a longitudinal three-quarter ship, not head-on. No roll or pitch.\nInput image 3: supporting continuity reference, the newly generated SHALLOW view of this same family. Preserve its hull identity and rear nozzle arrangement, but advance the camera farther in the direction specified above. The deep view must be visibly beyond image3 while remaining between image1 and the relevant target direction. Do not duplicate the shallow pose.",
+    "referenceImages": [
+      "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/avp-predator-mothership-profile.webp",
+      "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/avp-predator-mothership-top.webp",
+      "/workspace/scratch/0c1fa1359efb/generated_images/exec-2ed1286f-8991-4988-85bc-8f1d7f4b264a.png"
+    ],
+    "source": "/workspace/scratch/0c1fa1359efb/generated_images/exec-697c7f9b-d30d-45c8-a4dc-c27def89c57b.png",
+    "candidatePath": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/candidates-avp-mothership/avp-predator-mothership-forward-quarter.png",
+    "transparentBackground": true,
+    "mode": "built-in image_gen",
+    "bytes": 1627871,
+    "sha256": "9faf74beeb7f2422b12e98050b69f526558dda0cbbe5c4669292384b78ec0481",
+    "dimensions": [
+      1536,
+      1024
+    ],
+    "imageMode": "RGBA",
+    "alphaExtrema": [
+      0,
+      254
+    ],
+    "referenceProvenance": [
+      {
+        "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/avp-predator-mothership-profile.webp",
+        "bytes": 89754,
+        "sha256": "7bd67240d2ef6f4df2717219420aeea9083a1a5395e994c98cb0bcc4c824c907",
+        "canvas": [
+          1774,
+          887
+        ],
+        "mode": "RGBA"
+      },
+      {
+        "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/avp-predator-mothership-top.webp",
+        "bytes": 140552,
+        "sha256": "f1d33bedb750f6984e900171b68cf3dd2b9663f723a5e220af1dca9b15f05ca1",
+        "canvas": [
+          1774,
+          887
+        ],
+        "mode": "RGBA"
+      },
+      {
+        "path": "/workspace/scratch/0c1fa1359efb/generated_images/exec-2ed1286f-8991-4988-85bc-8f1d7f4b264a.png",
+        "bytes": 1457282,
+        "sha256": "717efa8e0f0cf06b3582964ec6609ac6f11198f08957fe7c0eac9c787d7a182d",
+        "canvas": [
+          1536,
+          1024
+        ],
+        "mode": "RGBA"
+      }
+    ],
+    "assignmentNote": "Original generated assignment retained after visual shallow/deep comparison; no pixel alteration."
+  },
+  {
+    "id": "avp-predator-mothership-bank-dorsal-shallow",
+    "viewId": "bank-dorsal-shallow",
+    "phase": "shallow",
+    "camera": "CAMERA: a LIGHT DORSAL bank, about12 degrees from image1 toward the top reference around the vessel's longitudinal axis. Show only a little more of the upper domed shell and far-side contours. This is the first intermediate, predominantly still the profile/three-quarter view, approximately the first fifth of the way toward the full top reference. Do not copy the full top pose. Do not roll the bitmap or tilt its left-to-right longitudinal axis. No yaw or pitch.",
+    "status": "candidate-source-art-inspected-pending-parent-review",
+    "prompt": "Use case: identity-preserve.\nAsset type: ONE individual cinematic game spacecraft sprite for Yautja The Long Hunt, exact project AVP Predator mothership family.\nInput images: image 1 is the locked profile identity master; image 2 is the locked dorsal/top structural reference, NOT the requested camera pose.\nChange ONLY the viewing direction of this same rigid vessel. Bow remains RIGHT, rear/engines LEFT, top upright, projected main hull axis nearly horizontal. Preserve the broad rounded crescent/hammerhead forebody at RIGHT, its overhanging curved outer shell and inset arches, the long narrower rear neck tapering LEFT, the existing ventral/underside structures, the smooth engraved dark gunmetal plates and rows of tiny pale warm-white windows along seams. Keep relative forebody/neck lengths, thickness, panel language and hull identity.\nENGINE LOCK: the top reference establishes TWO large rear terminal cylindrical nozzles with ONE smaller axial nozzle between them. Keep exactly that arrangement; a nozzle may be occluded by perspective but do not add, replace, enlarge or multiply engines. No luminous engine core, flame, smoke, jet or new VFX. Openings stay dark as in the references.\nDo not add forked bow prongs, Wolf-style petals, dorsal spikes, wings, guns, glass cockpit, landing legs or a different ship. Preserve neutral cool-grey metallic colors and subdued pale seam lights. Soft neutral upper-left light, no dramatic relighting.\nFull ship with every appendage visible on a 1536x1024 RGBA transparent canvas. Center the physical hull, retain generous transparent margins on all sides, roughly within x70..1466 and y170..850. Do not fatten the vessel to fill the canvas. No scenery, shadow plane, colored backdrop, atmospheric halo, checkerboard pixels, text, label, watermark, frame or motion blur. Use genuine alpha transparency outside metal and its native tiny lights.\nCAMERA: a LIGHT DORSAL bank, about12 degrees from image1 toward the top reference around the vessel's longitudinal axis. Show only a little more of the upper domed shell and far-side contours. This is the first intermediate, predominantly still the profile/three-quarter view, approximately the first fifth of the way toward the full top reference. Do not copy the full top pose. Do not roll the bitmap or tilt its left-to-right longitudinal axis. No yaw or pitch.",
+    "referenceImages": [
+      "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/avp-predator-mothership-profile.webp",
+      "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/avp-predator-mothership-top.webp"
+    ],
+    "source": "/workspace/scratch/0c1fa1359efb/generated_images/exec-6f2cd077-998e-4b09-8eab-d2e42bf21193.png",
+    "candidatePath": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/candidates-avp-mothership/avp-predator-mothership-bank-dorsal-shallow.png",
+    "transparentBackground": true,
+    "mode": "built-in image_gen",
+    "bytes": 1642761,
+    "sha256": "45b739d7d2ff6810a2953130679e1097eb706807b32f0d1b4b19288be44bedba",
+    "dimensions": [
+      1536,
+      1024
+    ],
+    "imageMode": "RGBA",
+    "referenceProvenance": [
+      {
+        "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/avp-predator-mothership-profile.webp",
+        "bytes": 89754,
+        "sha256": "7bd67240d2ef6f4df2717219420aeea9083a1a5395e994c98cb0bcc4c824c907",
+        "canvas": [
+          1774,
+          887
+        ],
+        "mode": "RGBA"
+      },
+      {
+        "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/avp-predator-mothership-top.webp",
+        "bytes": 140552,
+        "sha256": "f1d33bedb750f6984e900171b68cf3dd2b9663f723a5e220af1dca9b15f05ca1",
+        "canvas": [
+          1774,
+          887
+        ],
+        "mode": "RGBA"
+      }
+    ],
+    "assignmentNote": "Original generated assignment retained after visual shallow/deep comparison; no pixel alteration."
+  },
+  {
+    "id": "avp-predator-mothership-bank-dorsal",
+    "viewId": "bank-dorsal",
+    "phase": "deep",
+    "camera": "CAMERA: a stronger DORSAL bank, about25 degrees from image1 toward the top reference around the longitudinal axis, continuing beyond the shallow dorsal view. Reveal clearly MORE top-shell area and far-side structure than the shallow image while remaining short of the full top view. This is a middle intermediate, about two fifths of the way toward image2. Do not rotate the bitmap or tilt the longitudinal axis; no yaw or pitch.",
+    "status": "candidate-source-art-inspected-pending-parent-review",
+    "prompt": "Use case: identity-preserve.\nAsset type: ONE individual cinematic game spacecraft sprite for Yautja The Long Hunt, exact project AVP Predator mothership family.\nInput images: image 1 is the locked profile identity master; image 2 is the locked dorsal/top structural reference, NOT the requested camera pose.\nChange ONLY the viewing direction of this same rigid vessel. Bow remains RIGHT, rear/engines LEFT, top upright, projected main hull axis nearly horizontal. Preserve the broad rounded crescent/hammerhead forebody at RIGHT, its overhanging curved outer shell and inset arches, the long narrower rear neck tapering LEFT, the existing ventral/underside structures, the smooth engraved dark gunmetal plates and rows of tiny pale warm-white windows along seams. Keep relative forebody/neck lengths, thickness, panel language and hull identity.\nENGINE LOCK: the top reference establishes TWO large rear terminal cylindrical nozzles with ONE smaller axial nozzle between them. Keep exactly that arrangement; a nozzle may be occluded by perspective but do not add, replace, enlarge or multiply engines. No luminous engine core, flame, smoke, jet or new VFX. Openings stay dark as in the references.\nDo not add forked bow prongs, Wolf-style petals, dorsal spikes, wings, guns, glass cockpit, landing legs or a different ship. Preserve neutral cool-grey metallic colors and subdued pale seam lights. Soft neutral upper-left light, no dramatic relighting.\nFull ship with every appendage visible on a 1536x1024 RGBA transparent canvas. Center the physical hull, retain generous transparent margins on all sides, roughly within x70..1466 and y170..850. Do not fatten the vessel to fill the canvas. No scenery, shadow plane, colored backdrop, atmospheric halo, checkerboard pixels, text, label, watermark, frame or motion blur. Use genuine alpha transparency outside metal and its native tiny lights.\nCAMERA: a stronger DORSAL bank, about25 degrees from image1 toward the top reference around the longitudinal axis, continuing beyond the shallow dorsal view. Reveal clearly MORE top-shell area and far-side structure than the shallow image while remaining short of the full top view. This is a middle intermediate, about two fifths of the way toward image2. Do not rotate the bitmap or tilt the longitudinal axis; no yaw or pitch.\nInput image 3: supporting continuity reference, the newly generated SHALLOW view of this same family. Preserve its hull identity and rear nozzle arrangement, but advance the camera farther in the direction specified above. The deep view must be visibly beyond image3 while remaining between image1 and the relevant target direction. Do not duplicate the shallow pose.",
+    "referenceImages": [
+      "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/avp-predator-mothership-profile.webp",
+      "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/avp-predator-mothership-top.webp",
+      "/workspace/scratch/0c1fa1359efb/generated_images/exec-6f2cd077-998e-4b09-8eab-d2e42bf21193.png"
+    ],
+    "source": "/workspace/scratch/0c1fa1359efb/generated_images/exec-4905a349-263e-4ce1-9683-898d77a3317f.png",
+    "candidatePath": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/candidates-avp-mothership/avp-predator-mothership-bank-dorsal.png",
+    "transparentBackground": true,
+    "mode": "built-in image_gen",
+    "bytes": 1735275,
+    "sha256": "65cb3266b3ee05750885ee427e49e2bdf8f0f2bb7abc5b8febddf6991860c6b0",
+    "dimensions": [
+      1536,
+      1024
+    ],
+    "imageMode": "RGBA",
+    "alphaExtrema": [
+      0,
+      254
+    ],
+    "referenceProvenance": [
+      {
+        "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/avp-predator-mothership-profile.webp",
+        "bytes": 89754,
+        "sha256": "7bd67240d2ef6f4df2717219420aeea9083a1a5395e994c98cb0bcc4c824c907",
+        "canvas": [
+          1774,
+          887
+        ],
+        "mode": "RGBA"
+      },
+      {
+        "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/avp-predator-mothership-top.webp",
+        "bytes": 140552,
+        "sha256": "f1d33bedb750f6984e900171b68cf3dd2b9663f723a5e220af1dca9b15f05ca1",
+        "canvas": [
+          1774,
+          887
+        ],
+        "mode": "RGBA"
+      },
+      {
+        "path": "/workspace/scratch/0c1fa1359efb/generated_images/exec-6f2cd077-998e-4b09-8eab-d2e42bf21193.png",
+        "bytes": 1642761,
+        "sha256": "45b739d7d2ff6810a2953130679e1097eb706807b32f0d1b4b19288be44bedba",
+        "canvas": [
+          1536,
+          1024
+        ],
+        "mode": "RGBA"
+      }
+    ],
+    "assignmentNote": "Original generated assignment retained after visual shallow/deep comparison; no pixel alteration."
+  },
+  {
+    "id": "avp-predator-mothership-rear-quarter-shallow",
+    "viewId": "rear-quarter-shallow",
+    "phase": "shallow",
+    "camera": "CAMERA: a shallow REAR three-quarter view, move the camera about12 degrees toward the LEFT aft end from image1. Reveal slightly more of the existing rear nozzle faces and rear-neck depth; rounded bow on RIGHT recedes. Preserve the two-large plus one-smaller axial nozzle arrangement, with natural occlusion only. No roll or pitch; this is a modest first departure-turn intermediate.",
+    "status": "candidate-source-art-inspected-pending-parent-review",
+    "prompt": "Use case: identity-preserve.\nAsset type: ONE individual cinematic game spacecraft sprite for Yautja The Long Hunt, exact project AVP Predator mothership family.\nInput images: image 1 is the locked profile identity master; image 2 is the locked dorsal/top structural reference, NOT the requested camera pose.\nChange ONLY the viewing direction of this same rigid vessel. Bow remains RIGHT, rear/engines LEFT, top upright, projected main hull axis nearly horizontal. Preserve the broad rounded crescent/hammerhead forebody at RIGHT, its overhanging curved outer shell and inset arches, the long narrower rear neck tapering LEFT, the existing ventral/underside structures, the smooth engraved dark gunmetal plates and rows of tiny pale warm-white windows along seams. Keep relative forebody/neck lengths, thickness, panel language and hull identity.\nENGINE LOCK: the top reference establishes TWO large rear terminal cylindrical nozzles with ONE smaller axial nozzle between them. Keep exactly that arrangement; a nozzle may be occluded by perspective but do not add, replace, enlarge or multiply engines. No luminous engine core, flame, smoke, jet or new VFX. Openings stay dark as in the references.\nDo not add forked bow prongs, Wolf-style petals, dorsal spikes, wings, guns, glass cockpit, landing legs or a different ship. Preserve neutral cool-grey metallic colors and subdued pale seam lights. Soft neutral upper-left light, no dramatic relighting.\nFull ship with every appendage visible on a 1536x1024 RGBA transparent canvas. Center the physical hull, retain generous transparent margins on all sides, roughly within x70..1466 and y170..850. Do not fatten the vessel to fill the canvas. No scenery, shadow plane, colored backdrop, atmospheric halo, checkerboard pixels, text, label, watermark, frame or motion blur. Use genuine alpha transparency outside metal and its native tiny lights.\nCAMERA: a shallow REAR three-quarter view, move the camera about12 degrees toward the LEFT aft end from image1. Reveal slightly more of the existing rear nozzle faces and rear-neck depth; rounded bow on RIGHT recedes. Preserve the two-large plus one-smaller axial nozzle arrangement, with natural occlusion only. No roll or pitch; this is a modest first departure-turn intermediate.",
+    "referenceImages": [
+      "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/avp-predator-mothership-profile.webp",
+      "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/avp-predator-mothership-top.webp"
+    ],
+    "source": "/workspace/scratch/0c1fa1359efb/generated_images/exec-77e63587-1e41-4159-8980-5f83a492d239.png",
+    "candidatePath": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/candidates-avp-mothership/avp-predator-mothership-rear-quarter-shallow.png",
+    "transparentBackground": true,
+    "mode": "built-in image_gen",
+    "bytes": 1673368,
+    "sha256": "1006279a873e93fb3b2c0b02c7aa005554496f5c8c87ab3c83313cf0ed9beff3",
+    "dimensions": [
+      1536,
+      1024
+    ],
+    "imageMode": "RGBA",
+    "referenceProvenance": [
+      {
+        "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/avp-predator-mothership-profile.webp",
+        "bytes": 89754,
+        "sha256": "7bd67240d2ef6f4df2717219420aeea9083a1a5395e994c98cb0bcc4c824c907",
+        "canvas": [
+          1774,
+          887
+        ],
+        "mode": "RGBA"
+      },
+      {
+        "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/avp-predator-mothership-top.webp",
+        "bytes": 140552,
+        "sha256": "f1d33bedb750f6984e900171b68cf3dd2b9663f723a5e220af1dca9b15f05ca1",
+        "canvas": [
+          1774,
+          887
+        ],
+        "mode": "RGBA"
+      }
+    ],
+    "assignmentNote": "Original generated assignment retained after visual shallow/deep comparison; no pixel alteration."
+  },
+  {
+    "id": "avp-predator-mothership-rear-quarter",
+    "viewId": "rear-quarter",
+    "phase": "deep",
+    "camera": "CAMERA: a stronger REAR three-quarter view, about24 degrees from image1 toward the LEFT aft end, continuing beyond the shallow rear view. Rear nozzle faces are more exposed, neck foreshortens, rounded bow recedes on RIGHT. Preserve the exact two-large plus one-smaller axial nozzle arrangement; no extra cylinders or invented engines. No roll or pitch.",
+    "status": "candidate-source-art-inspected-pending-parent-review",
+    "prompt": "Use case: identity-preserve.\nAsset type: ONE individual cinematic game spacecraft sprite for Yautja The Long Hunt, exact project AVP Predator mothership family.\nInput images: image 1 is the locked profile identity master; image 2 is the locked dorsal/top structural reference, NOT the requested camera pose.\nChange ONLY the viewing direction of this same rigid vessel. Bow remains RIGHT, rear/engines LEFT, top upright, projected main hull axis nearly horizontal. Preserve the broad rounded crescent/hammerhead forebody at RIGHT, its overhanging curved outer shell and inset arches, the long narrower rear neck tapering LEFT, the existing ventral/underside structures, the smooth engraved dark gunmetal plates and rows of tiny pale warm-white windows along seams. Keep relative forebody/neck lengths, thickness, panel language and hull identity.\nENGINE LOCK: the top reference establishes TWO large rear terminal cylindrical nozzles with ONE smaller axial nozzle between them. Keep exactly that arrangement; a nozzle may be occluded by perspective but do not add, replace, enlarge or multiply engines. No luminous engine core, flame, smoke, jet or new VFX. Openings stay dark as in the references.\nDo not add forked bow prongs, Wolf-style petals, dorsal spikes, wings, guns, glass cockpit, landing legs or a different ship. Preserve neutral cool-grey metallic colors and subdued pale seam lights. Soft neutral upper-left light, no dramatic relighting.\nFull ship with every appendage visible on a 1536x1024 RGBA transparent canvas. Center the physical hull, retain generous transparent margins on all sides, roughly within x70..1466 and y170..850. Do not fatten the vessel to fill the canvas. No scenery, shadow plane, colored backdrop, atmospheric halo, checkerboard pixels, text, label, watermark, frame or motion blur. Use genuine alpha transparency outside metal and its native tiny lights.\nCAMERA: a stronger REAR three-quarter view, about24 degrees from image1 toward the LEFT aft end, continuing beyond the shallow rear view. Rear nozzle faces are more exposed, neck foreshortens, rounded bow recedes on RIGHT. Preserve the exact two-large plus one-smaller axial nozzle arrangement; no extra cylinders or invented engines. No roll or pitch.\nInput image 3: supporting continuity reference, the newly generated SHALLOW view of this same family. Preserve its hull identity and rear nozzle arrangement, but advance the camera farther in the direction specified above. The deep view must be visibly beyond image3 while remaining between image1 and the relevant target direction. Do not duplicate the shallow pose.",
+    "referenceImages": [
+      "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/avp-predator-mothership-profile.webp",
+      "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/avp-predator-mothership-top.webp",
+      "/workspace/scratch/0c1fa1359efb/generated_images/exec-77e63587-1e41-4159-8980-5f83a492d239.png"
+    ],
+    "source": "/workspace/scratch/0c1fa1359efb/generated_images/exec-400e0027-2d5a-4192-97bf-0a4a8bf9872c.png",
+    "candidatePath": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/candidates-avp-mothership/avp-predator-mothership-rear-quarter.png",
+    "transparentBackground": true,
+    "mode": "built-in image_gen",
+    "bytes": 1732402,
+    "sha256": "afb80f5b2624bbebd06133e07e74cc6953c8da109bbc3169f21ceeec2d8917da",
+    "dimensions": [
+      1536,
+      1024
+    ],
+    "imageMode": "RGBA",
+    "alphaExtrema": [
+      0,
+      254
+    ],
+    "referenceProvenance": [
+      {
+        "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/avp-predator-mothership-profile.webp",
+        "bytes": 89754,
+        "sha256": "7bd67240d2ef6f4df2717219420aeea9083a1a5395e994c98cb0bcc4c824c907",
+        "canvas": [
+          1774,
+          887
+        ],
+        "mode": "RGBA"
+      },
+      {
+        "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/avp-predator-mothership-top.webp",
+        "bytes": 140552,
+        "sha256": "f1d33bedb750f6984e900171b68cf3dd2b9663f723a5e220af1dca9b15f05ca1",
+        "canvas": [
+          1774,
+          887
+        ],
+        "mode": "RGBA"
+      },
+      {
+        "path": "/workspace/scratch/0c1fa1359efb/generated_images/exec-77e63587-1e41-4159-8980-5f83a492d239.png",
+        "bytes": 1673368,
+        "sha256": "1006279a873e93fb3b2c0b02c7aa005554496f5c8c87ab3c83313cf0ed9beff3",
+        "canvas": [
+          1536,
+          1024
+        ],
+        "mode": "RGBA"
+      }
+    ],
+    "assignmentNote": "Original generated assignment retained after visual shallow/deep comparison; no pixel alteration."
+  }
+]

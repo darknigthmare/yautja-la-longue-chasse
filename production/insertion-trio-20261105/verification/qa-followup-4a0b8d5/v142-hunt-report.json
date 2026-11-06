@@ -1,0 +1,83 @@
+{
+  "version": 142,
+  "scope": "Production HuntCanvas mounted in an isolated seeded jungle mission; actual V1 sidecar and two browser tabs; not the full GameClient campaign navigation",
+  "cases": [
+    {
+      "name": "Real production jungle HuntCanvas draws two Wolf sprites",
+      "status": "PASS",
+      "detail": {
+        "mission": "jungle-vey",
+        "model": "wolf",
+        "parts": [
+          "base",
+          "lid"
+        ]
+      }
+    },
+    {
+      "name": "Real suspend button writes owner-scoped V1 sidecar with captured Wolf identity",
+      "status": "PASS",
+      "detail": {
+        "sequence": 3,
+        "version": 1
+      }
+    },
+    {
+      "name": "Real cross-tab Feral change does not override a resumed Wolf hunt",
+      "status": "PASS",
+      "detail": {
+        "before": "wolf",
+        "currentNextPreference": "feral",
+        "after": "wolf",
+        "resumedRunRotated": true
+      }
+    },
+    {
+      "name": "Controlled missing V139 SVG triggers real HuntCanvas V3 fallback",
+      "status": "PASS",
+      "detail": {
+        "requested": "wolf/base.svg",
+        "fallback": "gauntlet-base.webp",
+        "lidStillWolf": true
+      }
+    }
+  ],
+  "results": 4,
+  "gauntletAssetHits": [
+    [
+      "/game/assets/v139/rig-gauntlets/wolf/base.svg",
+      2
+    ],
+    [
+      "/game/assets/v139/rig-gauntlets/wolf/lid.svg",
+      3
+    ]
+  ],
+  "excludedMissingWorldAssets": [
+    "/game/assets/v19/biome-decor/jungle/plt/plt-mossy-ruin-slab-04-broken.webp",
+    "/game/assets/v19/biome-decor/jungle/clm/clm-buttress-trunk-03-forked.webp",
+    "/game/assets/v19/biome-decor/jungle/srf/srf-rain-puddle-01-patch.webp",
+    "/game/assets/v19/biome-decor/jungle/plt/plt-root-bridge-05-tiered.webp",
+    "/game/assets/v19/biome-decor/jungle/plt/plt-mossy-ruin-slab-01-low-wide.webp",
+    "/game/assets/v19/biome-decor/jungle/plt/plt-canopy-crown-05-tiered.webp",
+    "/game/assets/v19/biome-decor/jungle/clm/clm-field-ladder-05-paired.webp",
+    "/game/assets/v19/biome-decor/jungle/clm/clm-field-ladder-04-interrupted.webp",
+    "/game/assets/v19/biome-decor/jungle/clm/clm-field-ladder-01-straight.webp",
+    "/game/assets/v19/biome-decor/jungle/srf/srf-footprint-mud-05-transition.webp",
+    "/game/assets/v19/biome-decor/jungle/orn/orn-vine-curtain-03-cluster.webp",
+    "/game/assets/v19/biome-decor/jungle/orn/orn-vine-curtain-05-evidence.webp",
+    "/game/assets/v19/biome-decor/jungle/orn/orn-storm-flower-04-fallen.webp",
+    "/game/assets/v19/biome-decor/jungle/orn/orn-storm-flower-02-pair.webp",
+    "/game/assets/v19/biome-decor/jungle/plt/plt-root-bridge-02-high-narrow.webp",
+    "/game/assets/v19/biome-decor/jungle/clm/clm-buttress-trunk-05-paired.webp",
+    "/game/assets/v19/biome-decor/jungle/cov/cov-supply-palisade-01-narrow.webp",
+    "/game/assets/v19/biome-decor/jungle/plt/plt-mossy-ruin-slab-05-tiered.webp",
+    "/game/assets/v19/biome-decor/jungle/plt/plt-root-bridge-01-low-wide.webp",
+    "/game/assets/v19/biome-decor/jungle/plt/plt-mossy-ruin-slab-02-high-narrow.webp"
+  ],
+  "mediaFailuresInSparseCheckout": 135,
+  "deliberatelyBlockedGauntletCount": 1,
+  "browserErrors": [],
+  "oneToOneFilmApproved": 0,
+  "allMissionsTested": false
+}

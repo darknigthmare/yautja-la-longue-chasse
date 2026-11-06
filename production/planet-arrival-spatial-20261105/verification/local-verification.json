@@ -1,0 +1,60 @@
+{
+  "sourceCommit": "ed1fce8fc28dbaf54ca742e2defcef6d18fe8123",
+  "branch": "fix/cinematic-spatial-audit-20261105",
+  "auditStatus": "source-and-geometry-verified-browser-pending",
+  "targetedTests": {
+    "command": "node --experimental-strip-types --test --test-concurrency=1 tests/planet-arrival*.test.mjs",
+    "passed": 48,
+    "failed": 0,
+    "skipped": 0,
+    "spatialTests": 14,
+    "log": "tests.log"
+  },
+  "productionBuild": {
+    "command": "NEXT_TELEMETRY_DISABLED=1 npm run build:production",
+    "exitCode": 0,
+    "typescript": "passed",
+    "compiledCssChecks": "passed",
+    "vercelOnlyChecks": "skipped outside exact Vercel build root",
+    "log": "build.log"
+  },
+  "staticAnalysis": {
+    "typescript": "passed",
+    "eslintModifiedFiles": "passed"
+  },
+  "sourceArtReview": {
+    "runtimeShipIdentities": 54,
+    "calibratedSourceProfiles": 55,
+    "planetGlobes": 8,
+    "sequenceSprites": 6,
+    "sourceImageChanges": 0
+  },
+  "browserQA": {
+    "status": "not-executed",
+    "newScreenshots": 0,
+    "newVideos": 0,
+    "limitations": [
+      "Direct Chromium launch failed: Unix socket not permitted.",
+      "Existing browser could not reach the local Next server in its separate execution environment."
+    ],
+    "preparedScript": "scripts/qa-planet-arrival-spatial.mjs",
+    "preparedWorkflow": ".github/workflows/planet-arrival-spatial.yml"
+  },
+  "remoteCI": "not-executed",
+  "deployment": "not-performed",
+  "sourceSha256": {
+    "app/game/PlanetArrivalCinematic.tsx": "ac8ce8713207bf00507efaef7b8a9674a005269721ecd16e8299eafb0a0fd082",
+    "app/game/PlanetArrivalCinematic.module.css": "426439a2208e4b9c90005ee81a26728090f4d484878dab4429d58140933430ba",
+    "app/game/systems/planetArrivalSpatial.ts": "bd3358f404589fd1d34746587e5a61085754707ae5981041ac8fe1bfb85128d9",
+    "app/game/systems/planetArrivalArt.ts": "5babfc712b3009e8f8b6641d58798b7001b70b460ba55b7bd873c2f129c01a17",
+    "tests/planet-arrival-spatial.test.mjs": "51ba70933fde4299f84a67696b3276537859754e2dba0ddfa79cd7be28ff039f",
+    "tests/fixtures/planet-arrival-art-calibration.json": "29fb6e5f5bffffbc7d2423253b41fcda97c1dfa26550d00acf0173abb18901ea",
+    "scripts/qa-planet-arrival-spatial.mjs": "e73ff60d504de8c665954e8e7feed83f0ae1785b6d639864e0b40535b18ccc8b",
+    ".github/workflows/planet-arrival-spatial.yml": "6a12ac2784d5f1f47972a49299fbfe81297217782385345cf18eaa0295975e71"
+  },
+  "limits": [
+    "No claim of new animated visual validation.",
+    "No change to human artistic approval or film 1:1 fidelity status.",
+    "Release sockets are calibrated composition points, not new claims of canon bay locations."
+  ]
+}

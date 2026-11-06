@@ -1,0 +1,775 @@
+{
+  "schemaVersion": 1,
+  "dateUtc": "2026-11-06",
+  "shipId": "feral-spaceship",
+  "status": "independent-eight-view-calibration-proposed-for-parent-approval",
+  "runtimeActivationApproved": false,
+  "canonicalArtApproval": false,
+  "humanArtApproval": false,
+  "sourceManifest": {
+    "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/feral-spaceship/generation-manifest.json",
+    "sha256": "957f7ca0477534945e8ae2663370783c19f5c1e238ba9d84a1b1daa8a8955c5a"
+  },
+  "references": [
+    {
+      "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/feral-spaceship-profile.webp",
+      "sha256": "ff8147412252c56e5e810e5e1a6ea610d1ec01f5044ce892a677529863fb4a7d",
+      "bytes": 94792,
+      "dimensions": [
+        1672,
+        941
+      ]
+    },
+    {
+      "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/feral-spaceship-top.webp",
+      "sha256": "c8f7d7d8a2db3ac0f2efc6fe0dba203b229103ad1f8215e46fab6b6c4e6e1947",
+      "bytes": 140436,
+      "dimensions": [
+        1672,
+        941
+      ]
+    }
+  ],
+  "canvas": {
+    "width": 1536,
+    "height": 1024,
+    "rasterEdits": false
+  },
+  "methods": [
+    "pod",
+    "ship"
+  ],
+  "profileRegistration": {
+    "runtimePath": "/game/ships/v14/feral-spaceship.webp",
+    "historical": {
+      "width": 1672,
+      "height": 941,
+      "nose": [
+        1620,
+        540
+      ],
+      "tail": [
+        110,
+        540
+      ],
+      "release": [
+        900,
+        666
+      ],
+      "pivot": [
+        836,
+        470.5
+      ]
+    },
+    "measuredVisualAxis": {
+      "nose": [
+        1590,
+        495
+      ],
+      "tail": [
+        110,
+        535
+      ]
+    },
+    "visualAxisUncertaintyPx": {
+      "nose": 6,
+      "tail": 8
+    },
+    "historicalAnchorAlpha": {
+      "nose": 0,
+      "tail": 255,
+      "release": 0,
+      "pivot": 255
+    },
+    "plot": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/feral-spaceship/review/profile-landmarks.png"
+  },
+  "measurementMethod": {
+    "registration": "All four historical points are transported by the same positive uniform 2D similarity between the source-profile visual axis and each generated-view visual axis. Formula q=Tview+(p-Tprofile)*(Nview-Tview)/(Nprofile-Tprofile), with points represented as complex native-pixel coordinates.",
+    "nose": "The forward/right edge of the upper prow lip is measured, rather than a lower side prong. The runtime nose is its transported historical offset, not a newly claimed physical point.",
+    "tail": "The near nacelle opening is used consistently with the source profile, not an average of the two nacelles.",
+    "pivot": "Transported historical canvas centre; derived registration point, not a measured 3D centre of mass.",
+    "release": "Transported historical release only; no hatch or bay inferred. Active releases and ground views continue using the unchanged profile.",
+    "engines": "Existing luminous engine pixels belong to the artwork. Runtime exhaust visibility remains zero and review unreviewed; no new VFX approved.",
+    "precision": "Input landmark uncertainty is explicit. Six decimal places preserve the derived similarity for implementation; they are not measurement precision."
+  },
+  "calibrations": {
+    "forward-quarter-shallow": {
+      "nose": [
+        1500.169434,
+        604.730931
+      ],
+      "tail": [
+        109.949909,
+        589.603376
+      ],
+      "release": [
+        836.021004,
+        713.522865
+      ],
+      "pivot": [
+        779.056359,
+        532.889699
+      ],
+      "exhaust": [
+        109.949909,
+        589.603376
+      ],
+      "exhaustAngleDeg": 179.075277,
+      "exhaustVisibility": 0,
+      "calibration": "inspected-source-art",
+      "exhaustReview": "unreviewed"
+    },
+    "forward-quarter": {
+      "nose": [
+        1448.129836,
+        604.321077
+      ],
+      "tail": [
+        129.993522,
+        602.36469
+      ],
+      "release": [
+        819.451259,
+        713.378412
+      ],
+      "pivot": [
+        763.836524,
+        542.636122
+      ],
+      "exhaust": [
+        129.993522,
+        602.36469
+      ],
+      "exhaustAngleDeg": 178.536881,
+      "exhaustVisibility": 0,
+      "calibration": "inspected-source-art",
+      "exhaustReview": "unreviewed"
+    },
+    "bank-dorsal-shallow": {
+      "nose": [
+        1480.820894,
+        553.626916
+      ],
+      "tail": [
+        222.313047,
+        648.167245
+      ],
+      "release": [
+        888.626478,
+        703.72031
+      ],
+      "pivot": [
+        823.045593,
+        544.788057
+      ],
+      "exhaust": [
+        222.313047,
+        648.167245
+      ],
+      "exhaustAngleDeg": 174.155797,
+      "exhaustVisibility": 0,
+      "calibration": "inspected-source-art",
+      "exhaustReview": "unreviewed"
+    },
+    "bank-dorsal": {
+      "nose": [
+        1431.100547,
+        519.904745
+      ],
+      "tail": [
+        285.704927,
+        732.792701
+      ],
+      "release": [
+        902.715803,
+        716.990292
+      ],
+      "pivot": [
+        826.606588,
+        577.718759
+      ],
+      "exhaust": [
+        285.704927,
+        732.792701
+      ],
+      "exhaustAngleDeg": 167.922759,
+      "exhaustVisibility": 0,
+      "calibration": "inspected-source-art",
+      "exhaustReview": "unreviewed"
+    },
+    "bank-ventral-shallow": {
+      "nose": [
+        1517.483485,
+        577.11104
+      ],
+      "tail": [
+        105.826369,
+        524.674361
+      ],
+      "release": [
+        839.999945,
+        669.902026
+      ],
+      "pivot": [
+        786.957108,
+        484.912016
+      ],
+      "exhaust": [
+        105.826369,
+        524.674361
+      ],
+      "exhaustAngleDeg": -179.420857,
+      "exhaustVisibility": 0,
+      "calibration": "inspected-source-art",
+      "exhaustReview": "unreviewed"
+    },
+    "bank-ventral": {
+      "nose": [
+        1497.895438,
+        547.118796
+      ],
+      "tail": [
+        102.908942,
+        519.619161
+      ],
+      "release": [
+        830.441642,
+        650.409234
+      ],
+      "pivot": [
+        774.87677,
+        468.634507
+      ],
+      "exhaust": [
+        102.908942,
+        519.619161
+      ],
+      "exhaustAngleDeg": 179.581179,
+      "exhaustVisibility": 0,
+      "calibration": "inspected-source-art",
+      "exhaustReview": "unreviewed"
+    },
+    "rear-quarter-shallow": {
+      "nose": [
+        1485.735036,
+        542.92865
+      ],
+      "tail": [
+        260.265328,
+        623.057847
+      ],
+      "release": [
+        908.091387,
+        683.393686
+      ],
+      "pivot": [
+        845.776606,
+        528.128084
+      ],
+      "exhaust": [
+        260.265328,
+        623.057847
+      ],
+      "exhaustAngleDeg": 174.710796,
+      "exhaustVisibility": 0,
+      "calibration": "inspected-source-art",
+      "exhaustReview": "unreviewed"
+    },
+    "rear-quarter": {
+      "nose": [
+        1528.207482,
+        491.823175
+      ],
+      "tail": [
+        181.717336,
+        708.458577
+      ],
+      "release": [
+        904.249307,
+        707.475657
+      ],
+      "pivot": [
+        819.131697,
+        542.327208
+      ],
+      "exhaust": [
+        181.717336,
+        708.458577
+      ],
+      "exhaustAngleDeg": 169.31191,
+      "exhaustVisibility": 0,
+      "calibration": "inspected-source-art",
+      "exhaustReview": "unreviewed"
+    }
+  },
+  "views": [
+    {
+      "view": "forward-quarter-shallow",
+      "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/feral-spaceship/candidates/forward-quarter-shallow.png",
+      "sha256": "8e78489b51cd151c459ee0e528c3248d81f83f1158b78082587ce9d217622d70",
+      "bytes": 1711106,
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "visualAxis": {
+        "nose": [
+          1473,
+          563
+        ],
+        "tail": [
+          110,
+          585
+        ],
+        "noseUncertaintyPx": 6,
+        "tailUncertaintyPx": 8
+      },
+      "nearEngineReference": "centre of the near nacelle opening, between the luminous terminal and circular inner rim; no VFX socket approved",
+      "farNacelle": "visible",
+      "similarity": {
+        "real": 0.9206751824817518,
+        "imaginary": 0.010018248175182482,
+        "scale": 0.920729687223295,
+        "rotationDeg": 0.6234345142500466
+      },
+      "plot": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/feral-spaceship/review/forward-quarter-shallow-landmarks.png"
+    },
+    {
+      "view": "forward-quarter",
+      "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/feral-spaceship/candidates/forward-quarter.png",
+      "sha256": "6b2ba455174d1de1ec8a5f669c09347b1b17e8c6e907eeb5528cad35d1857a2c",
+      "bytes": 1975187,
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "visualAxis": {
+        "nose": [
+          1422,
+          565
+        ],
+        "tail": [
+          130,
+          598
+        ],
+        "noseUncertaintyPx": 6,
+        "tailUncertaintyPx": 8
+      },
+      "nearEngineReference": "centre of the near nacelle opening, between the luminous terminal and circular inner rim; no VFX socket approved",
+      "farNacelle": "visible",
+      "similarity": {
+        "real": 0.8729379562043795,
+        "imaginary": 0.0012956204379562047,
+        "scale": 0.8729389176881728,
+        "rotationDeg": 0.08503872229322733
+      },
+      "plot": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/feral-spaceship/review/forward-quarter-landmarks.png"
+    },
+    {
+      "view": "bank-dorsal-shallow",
+      "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/feral-spaceship/candidates/bank-dorsal-shallow.png",
+      "sha256": "89877ab8536f44d28d428b3ac213d3184ef523ffb6f579be638e20c836fa4473",
+      "bytes": 1832826,
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "visualAxis": {
+        "nose": [
+          1453,
+          518
+        ],
+        "tail": [
+          222,
+          644
+        ],
+        "noseUncertaintyPx": 6,
+        "tailUncertaintyPx": 8
+      },
+      "nearEngineReference": "centre of the near nacelle opening, between the luminous terminal and circular inner rim; no VFX socket approved",
+      "farNacelle": "visible",
+      "similarity": {
+        "real": 0.8334489051094891,
+        "imaginary": -0.0626094890510949,
+        "scale": 0.8357972394949899,
+        "rotationDeg": -4.296045489505513
+      },
+      "plot": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/feral-spaceship/review/bank-dorsal-shallow-landmarks.png"
+    },
+    {
+      "view": "bank-dorsal",
+      "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/feral-spaceship/candidates/bank-dorsal.png",
+      "sha256": "083e7f4bd2bdcb646dd00a662ae9e5dfabfb77537a9aa9fc35c62741ac423f1c",
+      "bytes": 2201237,
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "visualAxis": {
+        "nose": [
+          1402,
+          490
+        ],
+        "tail": [
+          285,
+          729
+        ],
+        "noseUncertaintyPx": 6,
+        "tailUncertaintyPx": 8
+      },
+      "nearEngineReference": "centre of the near nacelle opening, between the luminous terminal and circular inner rim; no VFX socket approved",
+      "farNacelle": "visible",
+      "similarity": {
+        "real": 0.7585401459854014,
+        "imaginary": -0.14098540145985403,
+        "scale": 0.7715309692399588,
+        "rotationDeg": -10.529083090131943
+      },
+      "plot": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/feral-spaceship/review/bank-dorsal-landmarks.png",
+      "selectedAttempt": 2
+    },
+    {
+      "view": "bank-ventral-shallow",
+      "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/feral-spaceship/candidates/bank-ventral-shallow.png",
+      "sha256": "b7f343bb0031b328135319057937ad818e86c6d2d1c5817920e34238fbdfbde7",
+      "bytes": 1522723,
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "visualAxis": {
+        "nose": [
+          1491,
+          534
+        ],
+        "tail": [
+          106,
+          520
+        ],
+        "noseUncertaintyPx": 6,
+        "tailUncertaintyPx": 8
+      },
+      "nearEngineReference": "centre of the near nacelle opening, between the luminous terminal and circular inner rim; no VFX socket approved",
+      "farNacelle": "occluded",
+      "similarity": {
+        "real": 0.9348722627737227,
+        "imaginary": 0.034726277372262776,
+        "scale": 0.9355170025412664,
+        "rotationDeg": 2.1273010885289665
+      },
+      "plot": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/feral-spaceship/review/bank-ventral-shallow-landmarks.png"
+    },
+    {
+      "view": "bank-ventral",
+      "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/feral-spaceship/candidates/bank-ventral.png",
+      "sha256": "9c5858121b6946f232dc45fd7bd7739a3ed2810d11455760238329ab83c9b0a8",
+      "bytes": 1681646,
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "visualAxis": {
+        "nose": [
+          1471,
+          505
+        ],
+        "tail": [
+          103,
+          515
+        ],
+        "noseUncertaintyPx": 6,
+        "tailUncertaintyPx": 8
+      },
+      "nearEngineReference": "centre of the near nacelle opening, between the luminous terminal and circular inner rim; no VFX socket approved",
+      "farNacelle": "visible",
+      "similarity": {
+        "real": 0.9238321167883211,
+        "imaginary": 0.01821167883211679,
+        "scale": 0.9240116045026028,
+        "rotationDeg": 1.1293363612016902
+      },
+      "plot": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/feral-spaceship/review/bank-ventral-landmarks.png"
+    },
+    {
+      "view": "rear-quarter-shallow",
+      "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/feral-spaceship/candidates/rear-quarter-shallow.png",
+      "sha256": "26ae2bd3646e061322f0f55ba9dc79b31609d362d79791b3d888550f8e8cb7dd",
+      "bytes": 1704646,
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "visualAxis": {
+        "nose": [
+          1459,
+          508
+        ],
+        "tail": [
+          260,
+          619
+        ],
+        "noseUncertaintyPx": 6,
+        "tailUncertaintyPx": 8
+      },
+      "nearEngineReference": "centre of the near nacelle opening, between the luminous terminal and circular inner rim; no VFX socket approved",
+      "farNacelle": "visible",
+      "similarity": {
+        "real": 0.8115693430656935,
+        "imaginary": -0.05306569343065693,
+        "scale": 0.8133023831413245,
+        "rotationDeg": -3.7410460959476945
+      },
+      "plot": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/feral-spaceship/review/rear-quarter-shallow-landmarks.png"
+    },
+    {
+      "view": "rear-quarter",
+      "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/feral-spaceship/candidates/rear-quarter.png",
+      "sha256": "5d4b524887ab6d8ebcfa83a0bbd176a8c0668d556a9fa2342910323048f79cc1",
+      "bytes": 1927447,
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "visualAxis": {
+        "nose": [
+          1495,
+          456
+        ],
+        "tail": [
+          181,
+          704
+        ],
+        "noseUncertaintyPx": 6,
+        "tailUncertaintyPx": 8
+      },
+      "nearEngineReference": "centre of the near nacelle opening, between the luminous terminal and circular inner rim; no VFX socket approved",
+      "farNacelle": "visible",
+      "similarity": {
+        "real": 0.8917153284671533,
+        "imaginary": -0.14346715328467152,
+        "scale": 0.9031827340549035,
+        "rotationDeg": -9.139932415422814
+      },
+      "plot": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/feral-spaceship/review/rear-quarter-landmarks.png"
+    }
+  ],
+  "viewOrderReview": {
+    "forward": "Accent view presents more of the broad fore face/ventral leading structure than shallow; not a measured 3D yaw angle.",
+    "dorsal": "Corrected deep candidate was opened independently and shows substantially more upper shell and ribbed central deck, widely separated nacelles and far less ventral belly than shallow. Relative dorsal progression now established; no exact 25-degree or pure 3D camera rotation claimed.",
+    "ventral": "Accent view exposes the second nacelle below the hull and a broader underside; shallow keeps the far nacelle occluded.",
+    "rear": "Accent view enlarges/reveals the two aft chambers and retracts the prow in perspective relative to the near nacelle; not a measured pure yaw."
+  },
+  "identityReview": {
+    "inspectedOriginalImages": 11,
+    "profileAndTopOpened": true,
+    "allEightOriginalCandidatesOpened": true,
+    "observedTwoNacelleDesign": true,
+    "singleVisibleNacelleAllowedViews": [
+      "bank-ventral-shallow"
+    ],
+    "cutHullObserved": false,
+    "featuresPreserved": [
+      "broad angular wedge prow facing right",
+      "ribbed dorsal bridge",
+      "black layered metal plates",
+      "paired rear nacelles",
+      "ember-coloured vents and ventral grille"
+    ],
+    "fidelityLimit": "These are generated interpreted views. Panel details, ribs and hidden surfaces vary; two references do not prove a canonical 3D reconstruction or exact angles.",
+    "currentRetainedSourceImagesOpened": 8,
+    "rejectedHistoricalImageOpened": 1,
+    "correctedDeepDorsalOpened": true
+  },
+  "alphaReview": {
+    "independentNumericRecheck": [
+      {
+        "view": "forward-quarter-shallow",
+        "dimensions": [
+          1536,
+          1024
+        ],
+        "sha256": "8e78489b51cd151c459ee0e528c3248d81f83f1158b78082587ce9d217622d70",
+        "alphaMinMax": [
+          0,
+          254
+        ],
+        "alphaZeroPixels": 1072517,
+        "alphaAbove16Bounds": [
+          39,
+          234,
+          1474,
+          751
+        ],
+        "borderAlphaMax": 0,
+        "sourceCopyByteExact": true
+      },
+      {
+        "view": "forward-quarter",
+        "dimensions": [
+          1536,
+          1024
+        ],
+        "sha256": "6b2ba455174d1de1ec8a5f669c09347b1b17e8c6e907eeb5528cad35d1857a2c",
+        "alphaMinMax": [
+          0,
+          254
+        ],
+        "alphaZeroPixels": 998825,
+        "alphaAbove16Bounds": [
+          59,
+          190,
+          1423,
+          800
+        ],
+        "borderAlphaMax": 1,
+        "sourceCopyByteExact": true
+      },
+      {
+        "view": "bank-dorsal-shallow",
+        "dimensions": [
+          1536,
+          1024
+        ],
+        "sha256": "89877ab8536f44d28d428b3ac213d3184ef523ffb6f579be638e20c836fa4473",
+        "alphaMinMax": [
+          0,
+          254
+        ],
+        "alphaZeroPixels": 1031720,
+        "alphaAbove16Bounds": [
+          80,
+          200,
+          1455,
+          827
+        ],
+        "borderAlphaMax": 1,
+        "sourceCopyByteExact": true
+      },
+      {
+        "view": "bank-dorsal",
+        "dimensions": [
+          1536,
+          1024
+        ],
+        "sha256": "083e7f4bd2bdcb646dd00a662ae9e5dfabfb77537a9aa9fc35c62741ac423f1c",
+        "alphaMinMax": [
+          0,
+          254
+        ],
+        "alphaZeroPixels": 888951,
+        "alphaAbove16Bounds": [
+          152,
+          58,
+          1404,
+          928
+        ],
+        "borderAlphaMax": 1,
+        "sourceCopyByteExact": true
+      },
+      {
+        "view": "bank-ventral-shallow",
+        "dimensions": [
+          1536,
+          1024
+        ],
+        "sha256": "b7f343bb0031b328135319057937ad818e86c6d2d1c5817920e34238fbdfbde7",
+        "alphaMinMax": [
+          0,
+          254
+        ],
+        "alphaZeroPixels": 1152029,
+        "alphaAbove16Bounds": [
+          39,
+          250,
+          1495,
+          700
+        ],
+        "borderAlphaMax": 0,
+        "sourceCopyByteExact": true
+      },
+      {
+        "view": "bank-ventral",
+        "dimensions": [
+          1536,
+          1024
+        ],
+        "sha256": "9c5858121b6946f232dc45fd7bd7739a3ed2810d11455760238329ab83c9b0a8",
+        "alphaMinMax": [
+          0,
+          254
+        ],
+        "alphaZeroPixels": 1074686,
+        "alphaAbove16Bounds": [
+          27,
+          239,
+          1521,
+          781
+        ],
+        "borderAlphaMax": 1,
+        "sourceCopyByteExact": true
+      },
+      {
+        "view": "rear-quarter-shallow",
+        "dimensions": [
+          1536,
+          1024
+        ],
+        "sha256": "26ae2bd3646e061322f0f55ba9dc79b31609d362d79791b3d888550f8e8cb7dd",
+        "alphaMinMax": [
+          0,
+          254
+        ],
+        "alphaZeroPixels": 1079640,
+        "alphaAbove16Bounds": [
+          62,
+          224,
+          1464,
+          759
+        ],
+        "borderAlphaMax": 0,
+        "sourceCopyByteExact": true
+      },
+      {
+        "view": "rear-quarter",
+        "dimensions": [
+          1536,
+          1024
+        ],
+        "sha256": "5d4b524887ab6d8ebcfa83a0bbd176a8c0668d556a9fa2342910323048f79cc1",
+        "alphaMinMax": [
+          0,
+          254
+        ],
+        "alphaZeroPixels": 976175,
+        "alphaAbove16Bounds": [
+          57,
+          199,
+          1499,
+          845
+        ],
+        "borderAlphaMax": 1,
+        "sourceCopyByteExact": true
+      }
+    ],
+    "allRetainedSourceHashesMatchGenerationManifest": true,
+    "allRetainedSourceCopiesByteExact": true,
+    "compositesInspected": "All eight retained views and the profile were plotted over neutral grey with native coordinate grids. Source-only RGB halos vanish under their recorded alpha; no opaque background added.",
+    "sourceRasterEdits": false
+  },
+  "limitations": [
+    "No new view is activated by this scratch report.",
+    "No pixel edits, resizing, padding, mirror, interpolation or regenerated export was made to any source asset.",
+    "Registration evidence is 2D and does not establish canonical or human art approval.",
+    "The corrected dorsal approaches the top reference; its physical angle is unmeasured, and smooth 3D interpolation is not established by two reference images."
+  ],
+  "profilePath": "/game/ships/v14/feral-spaceship.webp",
+  "sourceReview": "production/ship-motion-fleet-20261106/art/feral-eight-view-calibration.json",
+  "historicalRejectedAttemptsPreserved": [
+    {
+      "view": "bank-dorsal",
+      "sha256": "0bf112a2ae81cbfa00ad62d57b526cada8f240d5fa900d14ca09d9d347bfdafe",
+      "reason": "Original deep candidate did not establish reliable shallow-to-deep dorsal progression; excluded, no pixel retouch.",
+      "replacementSha256": "083e7f4bd2bdcb646dd00a662ae9e5dfabfb77537a9aa9fc35c62741ac423f1c"
+    }
+  ]
+}

@@ -16,6 +16,9 @@ const context = createHistoricalExcelContext({
   manifestPath: 'tests/fixtures/excel-history-v111-homeworld-v112.json',
   manifestSha256: EXCEL_HOMEWORLD_HISTORY_MANIFEST_SHA256_V112,
   archiveSha256: EXCEL_HOMEWORLD_HISTORY_ARCHIVE_SHA256_V112,
+  // Later pod sounds belong to the current game; the V111 capsule keeps its
+  // original audio inventory as a private, tree-verified read-only preimage.
+  sharedPreimages: [{path: 'public/audio/manifest.json', gitBlobSha: '3e1f9027c6b5a3129caa5d6dd032c90cf0efc49f'}],
 });
 export async function getHistoricalHomeworldExcelContextV112() {
   return {...await context.get(), manifestSha256: EXCEL_HOMEWORLD_HISTORY_MANIFEST_SHA256_V112,

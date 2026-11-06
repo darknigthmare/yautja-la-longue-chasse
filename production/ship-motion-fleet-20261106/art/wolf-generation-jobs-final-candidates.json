@@ -1,0 +1,114 @@
+[
+  {
+    "id": "wolf-forward-quarter-shallow",
+    "generatedId": "wolf-forward-quarter-shallow",
+    "status": "candidate-pending-final-calibration",
+    "source": "/workspace/scratch/0c1fa1359efb/generated_images/exec-4e58ff8a-64da-4a3a-968f-342a68bd312a.png",
+    "prompt": "Use case: identity-preserve. Asset type: ONE individual transparent game cinematic sprite of the exact Wolf personal spacecraft in the two supplied project reference images. Image1 is the existing side/profile reference; image2 is its existing dorsal/top reference. Preserve this same rigid ship, not a reinterpretation or a different Predator ship. Keep the flower-like pointed segmented prow on the RIGHT and the ONE large circular aft engine on the LEFT; longitudinal projected axis horizontal, upright. Preserve the referenced armor plate arrangement, narrow waist, exposed cables/ribs, dark bronze-gunmetal scratched material, small amber lamps, and the ring of small lamps surrounding the single rear engine. No AVPR three-engine scout design, no extra thrusters, no cockpit glass, guns, landing legs, added fins or omitted panels. Treat the two images as two views of the same object. Neutral upper-left studio key light matching the references, dark recesses, restrained amber engine aperture without a plume. Full object centered in a 1536x1024 landscape canvas, ample transparent alpha margin on all four sides; every tip, fin and pipe fully inside the frame. Generate only this single view, no sheet, labels, scenery, ground shadow, background, checkerboard, haze, motion blur or watermark. Genuine RGBA transparent background. Change only the 3D camera orientation specified below; do not fake the perspective by mirroring or rotating a flat image.\nCAMERA: gentle front three-quarter angle, 12 degrees of yaw from broadside toward the flower-like RIGHT prow, with no axial bank and no pitch. Reveal a small amount of the forward-facing inner surfaces between the existing prow prongs; the rear engine mouth becomes more occluded. Keep nose RIGHT and aft LEFT.",
+    "referenceImages": [
+      "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/wolf-profile.webp",
+      "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/wolf-top.webp"
+    ],
+    "transparentBackground": true,
+    "mode": "built-in image_gen",
+    "assignmentNote": null
+  },
+  {
+    "id": "wolf-forward-quarter",
+    "generatedId": "wolf-forward-quarter",
+    "status": "candidate-pending-final-calibration",
+    "source": "/workspace/scratch/0c1fa1359efb/generated_images/exec-a486358b-7cf0-46e6-ab86-fe3a7751d99e.png",
+    "prompt": "Use case: identity-preserve. Asset type: ONE individual transparent game cinematic sprite of the exact Wolf personal spacecraft in the two supplied project reference images. Image1 is the existing side/profile reference; image2 is its existing dorsal/top reference. Preserve this same rigid ship, not a reinterpretation or a different Predator ship. Keep the flower-like pointed segmented prow on the RIGHT and the ONE large circular aft engine on the LEFT; longitudinal projected axis horizontal, upright. Preserve the referenced armor plate arrangement, narrow waist, exposed cables/ribs, dark bronze-gunmetal scratched material, small amber lamps, and the ring of small lamps surrounding the single rear engine. No AVPR three-engine scout design, no extra thrusters, no cockpit glass, guns, landing legs, added fins or omitted panels. Treat the two images as two views of the same object. Neutral upper-left studio key light matching the references, dark recesses, restrained amber engine aperture without a plume. Full object centered in a 1536x1024 landscape canvas, ample transparent alpha margin on all four sides; every tip, fin and pipe fully inside the frame. Generate only this single view, no sheet, labels, scenery, ground shadow, background, checkerboard, haze, motion blur or watermark. Genuine RGBA transparent background. Change only the 3D camera orientation specified below; do not fake the perspective by mirroring or rotating a flat image.\nCAMERA: pronounced front three-quarter angle,25degrees of yaw from broadside toward the flower-like RIGHT prow. The RIGHT prow is nearer the viewer and reveals the inner faces of the SAME rigid prong arrangement. The LEFT rear engine recedes and its opening is mostly occluded. No axial bank, no pitch, no changes to the spacing/number/shape of prongs themselves. Keep projected axis horizontal, noseRIGHT/aftLEFT. This is the deeper companion of the12degree forward view.",
+    "referenceImages": [
+      "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/wolf-profile.webp",
+      "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/wolf-top.webp"
+    ],
+    "transparentBackground": true,
+    "mode": "built-in image_gen",
+    "assignmentNote": null
+  },
+  {
+    "id": "wolf-bank-dorsal",
+    "generatedId": "wolf-bank-dorsal-shallow",
+    "status": "candidate-pending-final-calibration",
+    "source": "/workspace/scratch/0c1fa1359efb/generated_images/exec-c25ba19e-1c87-4420-b9ee-3aa9a4096872.png",
+    "prompt": "Use case: identity-preserve. Asset type: ONE individual transparent game cinematic sprite of the exact Wolf personal spacecraft in the two supplied project reference images. Image1 is the existing side/profile reference; image2 is its existing dorsal/top reference. Preserve this same rigid ship, not a reinterpretation or a different Predator ship. Keep the flower-like pointed segmented prow on the RIGHT and the ONE large circular aft engine on the LEFT; longitudinal projected axis horizontal, upright. Preserve the referenced armor plate arrangement, narrow waist, exposed cables/ribs, dark bronze-gunmetal scratched material, small amber lamps, and the ring of small lamps surrounding the single rear engine. No AVPR three-engine scout design, no extra thrusters, no cockpit glass, guns, landing legs, added fins or omitted panels. Treat the two images as two views of the same object. Neutral upper-left studio key light matching the references, dark recesses, restrained amber engine aperture without a plume. Full object centered in a 1536x1024 landscape canvas, ample transparent alpha margin on all four sides; every tip, fin and pipe fully inside the frame. Generate only this single view, no sheet, labels, scenery, ground shadow, background, checkerboard, haze, motion blur or watermark. Genuine RGBA transparent background. Change only the 3D camera orientation specified below; do not fake the perspective by mirroring or rotating a flat image.\nCAMERA: roll the rigid hull12 degrees TOWARD the viewer around its nose-to-engine longitudinal axis, revealing modestly more dorsal armor, consistent with the supplied top reference. Nose remains RIGHT, aft LEFT, projected axis horizontal. No yaw, no pitch; no flat bitmap rotation.",
+    "referenceImages": [
+      "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/wolf-profile.webp",
+      "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/wolf-top.webp"
+    ],
+    "transparentBackground": true,
+    "mode": "built-in image_gen",
+    "assignmentNote": "Dorsal pair assigned by observed progression; requested angles are not measurements."
+  },
+  {
+    "id": "wolf-bank-dorsal-shallow",
+    "generatedId": "wolf-bank-dorsal",
+    "status": "candidate-pending-final-calibration",
+    "source": "/workspace/scratch/0c1fa1359efb/generated_images/exec-c29c507c-c73d-46f3-b6f9-361ddb2e4b66.png",
+    "prompt": "Use case: identity-preserve. Asset type: ONE individual transparent game cinematic sprite of the exact Wolf personal spacecraft in the two supplied project reference images. Image1 is the existing side/profile reference; image2 is its existing dorsal/top reference. Preserve this same rigid ship, not a reinterpretation or a different Predator ship. Keep the flower-like pointed segmented prow on the RIGHT and the ONE large circular aft engine on the LEFT; longitudinal projected axis horizontal, upright. Preserve the referenced armor plate arrangement, narrow waist, exposed cables/ribs, dark bronze-gunmetal scratched material, small amber lamps, and the ring of small lamps surrounding the single rear engine. No AVPR three-engine scout design, no extra thrusters, no cockpit glass, guns, landing legs, added fins or omitted panels. Treat the two images as two views of the same object. Neutral upper-left studio key light matching the references, dark recesses, restrained amber engine aperture without a plume. Full object centered in a 1536x1024 landscape canvas, ample transparent alpha margin on all four sides; every tip, fin and pipe fully inside the frame. Generate only this single view, no sheet, labels, scenery, ground shadow, background, checkerboard, haze, motion blur or watermark. Genuine RGBA transparent background. Change only the 3D camera orientation specified below; do not fake the perspective by mirroring or rotating a flat image.\nCAMERA: roll the rigid hull25 degrees TOWARD the viewer around its nose-to-engine longitudinal axis, revealing clearly more dorsal armor and the top-root arrangement of its existing prow plates, consistent with the top reference. Nose remains RIGHT, aft LEFT, projected axis horizontal. No yaw, no pitch; this is the deeper companion to a12degree dorsal bank.",
+    "referenceImages": [
+      "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/wolf-profile.webp",
+      "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/wolf-top.webp"
+    ],
+    "transparentBackground": true,
+    "mode": "built-in image_gen",
+    "assignmentNote": "Dorsal pair assigned by observed progression; requested angles are not measurements."
+  },
+  {
+    "id": "wolf-bank-ventral-shallow",
+    "generatedId": "wolf-bank-ventral-shallow",
+    "status": "candidate-pending-final-calibration",
+    "source": "/workspace/scratch/0c1fa1359efb/generated_images/exec-86de32c6-417f-44fb-abed-773c60f7d8a4.png",
+    "prompt": "Use case: identity-preserve. Asset type: ONE individual transparent game cinematic sprite of the exact Wolf personal spacecraft in the two supplied project reference images. Image1 is the existing side/profile reference; image2 is its existing dorsal/top reference. Preserve this same rigid ship, not a reinterpretation or a different Predator ship. Keep the flower-like pointed segmented prow on the RIGHT and the ONE large circular aft engine on the LEFT; longitudinal projected axis horizontal, upright. Preserve the referenced armor plate arrangement, narrow waist, exposed cables/ribs, dark bronze-gunmetal scratched material, small amber lamps, and the ring of small lamps surrounding the single rear engine. No AVPR three-engine scout design, no extra thrusters, no cockpit glass, guns, landing legs, added fins or omitted panels. Treat the two images as two views of the same object. Neutral upper-left studio key light matching the references, dark recesses, restrained amber engine aperture without a plume. Full object centered in a 1536x1024 landscape canvas, ample transparent alpha margin on all four sides; every tip, fin and pipe fully inside the frame. Generate only this single view, no sheet, labels, scenery, ground shadow, background, checkerboard, haze, motion blur or watermark. Genuine RGBA transparent background. Change only the 3D camera orientation specified below; do not fake the perspective by mirroring or rotating a flat image.\nCAMERA: roll the rigid hull12 degrees AWAY FROM the viewer around its nose-to-engine longitudinal axis, revealing modestly more of the ventral underside and inner roots of the EXISTING lower prow plates. Nose remains RIGHT, aft LEFT, projected axis horizontal. No yaw, no pitch. Keep unchanged armor/cables; no added hatches, landing gear or weapons.",
+    "referenceImages": [
+      "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/wolf-profile.webp",
+      "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/wolf-top.webp"
+    ],
+    "transparentBackground": true,
+    "mode": "built-in image_gen",
+    "assignmentNote": null
+  },
+  {
+    "id": "wolf-bank-ventral",
+    "generatedId": "wolf-bank-ventral",
+    "status": "candidate-pending-final-calibration",
+    "source": "/workspace/scratch/0c1fa1359efb/generated_images/exec-48cc48d8-3c0e-4669-a150-dc90efb22e87.png",
+    "prompt": "Use case: identity-preserve. Asset type: ONE individual transparent game cinematic sprite of the exact Wolf personal spacecraft in the two supplied project reference images. Image1 is the existing side/profile reference; image2 is its existing dorsal/top reference. Preserve this same rigid ship, not a reinterpretation or a different Predator ship. Keep the flower-like pointed segmented prow on the RIGHT and the ONE large circular aft engine on the LEFT; longitudinal projected axis horizontal, upright. Preserve the referenced armor plate arrangement, narrow waist, exposed cables/ribs, dark bronze-gunmetal scratched material, small amber lamps, and the ring of small lamps surrounding the single rear engine. No AVPR three-engine scout design, no extra thrusters, no cockpit glass, guns, landing legs, added fins or omitted panels. Treat the two images as two views of the same object. Neutral upper-left studio key light matching the references, dark recesses, restrained amber engine aperture without a plume. Full object centered in a 1536x1024 landscape canvas, ample transparent alpha margin on all four sides; every tip, fin and pipe fully inside the frame. Generate only this single view, no sheet, labels, scenery, ground shadow, background, checkerboard, haze, motion blur or watermark. Genuine RGBA transparent background. Change only the 3D camera orientation specified below; do not fake the perspective by mirroring or rotating a flat image.\nCAMERA: roll the rigid hull25 degrees AWAY FROM the viewer around its nose-to-engine longitudinal axis, revealing more ventral underside and inner roots of the EXISTING lower prow plates. Nose remains RIGHT, aft LEFT, projected axis horizontal. No yaw, no pitch. This is the deeper companion to a12degree ventral bank. Keep unchanged armor/cables; no added hatches, landing gear or weapons.",
+    "referenceImages": [
+      "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/wolf-profile.webp",
+      "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/wolf-top.webp"
+    ],
+    "transparentBackground": true,
+    "mode": "built-in image_gen",
+    "assignmentNote": null
+  },
+  {
+    "id": "wolf-rear-quarter-shallow",
+    "generatedId": "wolf-rear-quarter-shallow",
+    "status": "candidate-pending-final-calibration",
+    "source": "/workspace/scratch/0c1fa1359efb/generated_images/exec-ddedaf01-232e-45bd-9da6-bfdb60dc5804.png",
+    "prompt": "Use case: identity-preserve. Asset type: ONE individual transparent game cinematic sprite of the exact Wolf personal spacecraft in the two supplied project reference images. Image1 is the existing side/profile reference; image2 is its existing dorsal/top reference. Preserve this same rigid ship, not a reinterpretation or a different Predator ship. Keep the flower-like pointed segmented prow on the RIGHT and the ONE large circular aft engine on the LEFT; longitudinal projected axis horizontal, upright. Preserve the referenced armor plate arrangement, narrow waist, exposed cables/ribs, dark bronze-gunmetal scratched material, small amber lamps, and the ring of small lamps surrounding the single rear engine. No AVPR three-engine scout design, no extra thrusters, no cockpit glass, guns, landing legs, added fins or omitted panels. Treat the two images as two views of the same object. Neutral upper-left studio key light matching the references, dark recesses, restrained amber engine aperture without a plume. Full object centered in a 1536x1024 landscape canvas, ample transparent alpha margin on all four sides; every tip, fin and pipe fully inside the frame. Generate only this single view, no sheet, labels, scenery, ground shadow, background, checkerboard, haze, motion blur or watermark. Genuine RGBA transparent background. Change only the 3D camera orientation specified below; do not fake the perspective by mirroring or rotating a flat image.\nCAMERA: gentle rear three-quarter angle, 12 degrees of yaw from broadside toward the circular LEFT aft engine, with no axial bank and no pitch. Reveal the opening of the single existing rear engine and its lamp ring while preserving the same narrow central body and RIGHT prow. Keep nose RIGHT and aft LEFT.",
+    "referenceImages": [
+      "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/wolf-profile.webp",
+      "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/wolf-top.webp"
+    ],
+    "transparentBackground": true,
+    "mode": "built-in image_gen",
+    "assignmentNote": null
+  },
+  {
+    "id": "wolf-rear-quarter",
+    "generatedId": "wolf-rear-quarter",
+    "status": "candidate-pending-final-calibration",
+    "source": "/workspace/scratch/0c1fa1359efb/generated_images/exec-2b889339-af6b-47ab-a234-56b3f0f43b01.png",
+    "prompt": "Use case: identity-preserve. Asset type: ONE individual transparent game cinematic sprite of the exact Wolf personal spacecraft in the two supplied project reference images. Image1 is the existing side/profile reference; image2 is its existing dorsal/top reference. Preserve this same rigid ship, not a reinterpretation or a different Predator ship. Keep the flower-like pointed segmented prow on the RIGHT and the ONE large circular aft engine on the LEFT; longitudinal projected axis horizontal, upright. Preserve the referenced armor plate arrangement, narrow waist, exposed cables/ribs, dark bronze-gunmetal scratched material, small amber lamps, and the ring of small lamps surrounding the single rear engine. No AVPR three-engine scout design, no extra thrusters, no cockpit glass, guns, landing legs, added fins or omitted panels. Treat the two images as two views of the same object. Neutral upper-left studio key light matching the references, dark recesses, restrained amber engine aperture without a plume. Full object centered in a 1536x1024 landscape canvas, ample transparent alpha margin on all four sides; every tip, fin and pipe fully inside the frame. Generate only this single view, no sheet, labels, scenery, ground shadow, background, checkerboard, haze, motion blur or watermark. Genuine RGBA transparent background. Change only the 3D camera orientation specified below; do not fake the perspective by mirroring or rotating a flat image.\nCAMERA: pronounced rear three-quarter angle,25degrees of yaw from broadside toward the single large LEFT aft engine. The LEFT engine is nearer the viewer, showing the round aperture and its existing small lamp ring more face-on; the SAME rigid RIGHT flower-like prow recedes. No axial bank, no pitch, no extra engines. Keep projected axis horizontal, noseRIGHT/aftLEFT. This is the deeper companion of the12degree rear view.",
+    "referenceImages": [
+      "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/wolf-profile.webp",
+      "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/wolf-top.webp"
+    ],
+    "transparentBackground": true,
+    "mode": "built-in image_gen",
+    "assignmentNote": null
+  }
+]

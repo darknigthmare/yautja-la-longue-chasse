@@ -52,6 +52,9 @@ export type GameSfxId =
   | "scan"
   | "cloak-on"
   | "cloak-off"
+  | "pod-arm"
+  | "pod-cancel"
+  | "pod-detonate"
   | "mask-on"
   | "mask-off"
   | "weapon-switch"
@@ -488,6 +491,11 @@ export class GameAudio {
       case "cloak-off":
         this.cloak(false);
         break;
+      case "pod-arm":
+      case "pod-cancel":
+      case "pod-detonate":
+        this.podSignal(id);
+        break;
       case "mask-on":
         this.mask(true);
         break;
@@ -525,6 +533,26 @@ export class GameAudio {
         this.defeat();
         break;
     }
+  }
+
+  /** Remote pod events use the existing effects bus and pause/dispose lifecycle.
+   * The detonation is original synthesis, not a sampled film explosion. */
+  podSignal(id: "pod-arm" | "pod-cancel" | "pod-detonate"): void {
+    if (this.fileAudio.playSfx(id)) return;
+    const now = this.readyTime();
+    if (now === null) return;
+    if (id === "pod-detonate") {
+      this.tone(78, { at: now, endFrequency: 28, duration: .75, gain: .17, type: "sine" });
+      this.tone(190, { at: now, endFrequency: 52, duration: .17, gain: .075, type: "triangle", filterFrequency: 620 });
+      this.noise({ at: now, duration: 1.15, gain: .16, filterType: "lowpass", filterFrequency: 1_100, endFilterFrequency: 90 });
+      this.noise({ at: now + .08, duration: .45, gain: .035, filterType: "bandpass", filterFrequency: 1_900, endFilterFrequency: 380 });
+      return;
+    }
+    const notes = id === "pod-arm" ? [330, 495, 660] : [440, 220];
+    notes.forEach((frequency, index) => this.tone(frequency, {
+      at: now + index * .115, duration: .085, endFrequency: frequency * (id === "pod-arm" ? 1.05 : .8),
+      gain: .045, type: "triangle", filterFrequency: 1_600,
+    }));
   }
 
   footstep(intensity = 1): void {

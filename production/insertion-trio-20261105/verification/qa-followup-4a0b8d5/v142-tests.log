@@ -1,0 +1,15 @@
+2026-11-05T09:37:08.0683241Z ✔ Every legitimate V142 unlocked identity survives saved/reloaded sidecar configuration (1.106283ms)
+2026-11-05T09:37:08.0686248Z ✔ Saved Wolf stays Wolf after a different cosmetic preference is equipped elsewhere (0.129974ms)
+2026-11-05T09:37:08.0687253Z ✔ Legacy V141 sidecar without optional model preserves previous behavior (0.091657ms)
+2026-11-05T09:37:08.0688155Z ✔ An old/future/hostile cosmetic receipt cannot unlock an unearned gauntlet (0.158417ms)
+2026-11-05T09:37:08.0689183Z ✔ V1 active hunt sidecar roundtrip persists optional selected identity, no schema break (12.949544ms)
+2026-11-05T09:37:08.0690772Z ✔ GameClient writes launch-time visual identity, preserves it across writes, and passes it to HuntCanvas on resume (68.517067ms)
+2026-11-05T09:37:08.0692351Z ✔ Arrival handoff and first-mount recovery retain the captured gauntlet after another tab changes a legacy preference (97.247015ms)
+2026-11-05T09:37:08.1042141Z ℹ tests 7
+2026-11-05T09:37:08.1042471Z ℹ suites 0
+2026-11-05T09:37:08.1042755Z ℹ pass 7
+2026-11-05T09:37:08.1043010Z ℹ fail 0
+2026-11-05T09:37:08.1043282Z ℹ cancelled 0
+2026-11-05T09:37:08.1044969Z ℹ skipped 0
+2026-11-05T09:37:08.1045173Z ℹ todo 0
+2026-11-05T09:37:08.1045398Z ℹ duration_ms 2651.509584

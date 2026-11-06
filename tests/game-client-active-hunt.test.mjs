@@ -22,24 +22,29 @@ test("GameClient validates and exposes a compatible interrupted hunt", () => {
   assert.match(source, /activeHuntElapsed\(resumableHunt\)/);
 });
 
-test("GameClient starts a fresh monotonic sidecar session", () => {
+test("GameClient freezes one departure before mounting its monotonic hunt session", () => {
   const launchBlock = source.match(
-    /const launchMission = useCallback[\s\S]*?\n  }, \[playSound, save, selectedMission\]\);/,
+    /const launchMission = useCallback[\s\S]*?(?=\n\n  const resumeActiveHunt)/,
   )?.[0];
+  const mountBlock = source.match(/const mountArrivalHunt = useCallback[\s\S]*?(?=\n\n  const checkpointPlanetArrival)/)?.[0];
   assert.ok(launchBlock);
+  assert.ok(mountBlock);
   assert.match(
     launchBlock,
-    /const runtimeWrite = writeSaveWithStatus\(normalizeSave\(save\)\)/,
+    /const runtimeWrite = writeSaveWithStatus\(normalizeSave\(saveRef\.current\)\)/,
   );
   assert.match(launchBlock, /const runtimeSave = runtimeWrite\.save/);
   assert.match(launchBlock, /setSave\(runtimeSave\)/);
   assert.match(launchBlock, /setSaveFailure\(runtimeWrite\.failure\)/);
-  assert.match(
-    launchBlock,
-    /activeHuntSessionRef\.current = runtimeWrite\.persisted\s*\?\s*\{/,
-  );
+  assert.match(launchBlock, /const runId = createHuntRunId\(\)/);
+  assert.match(launchBlock, /persistSocialProgress\(\{ planetArrival: arrival, planetArrivalRun: run/);
+  assert.match(launchBlock, /activeHuntSessionRef\.current = null/);
+  assert.match(launchBlock, /setScreen\("planet-arrival"\)/);
+  assert.doesNotMatch(launchBlock, /setScreen\(['"]mission['"]\)/);
+  assert.match(mountBlock, /activeHuntSessionRef\.current = \{/);
+  assert.match(mountBlock, /runId: arrival\.runId, sequence: 0/);
+  assert.match(mountBlock, /configuration: run\.configuration/);
   assert.match(launchBlock, /clearActiveHuntSave\(\)/);
-  assert.match(launchBlock, /runId: createHuntRunId\(\)[\s\S]*?sequence: 0/);
   assert.match(source, /const sequence = session\.sequence \+ 1/);
   assert.match(source, /writeActiveHuntSave\(\{[\s\S]*?snapshot: payload\.snapshot,[\s\S]*?retryCheckpoint: payload\.retryCheckpoint/);
   assert.match(source, /elapsedSeconds: Math\.max/);

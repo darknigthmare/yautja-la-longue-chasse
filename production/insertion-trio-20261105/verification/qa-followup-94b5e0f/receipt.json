@@ -1,0 +1,601 @@
+{
+  "schema": 1,
+  "recordedAt": "2026-11-05T12:11:29.910Z",
+  "sourceCommit": "94b5e0f156c8eff9cbbc03bcf2088d3b96db03ea",
+  "tree": "710c3831a1b4981a474ed764678153b1ca1b6332",
+  "workflowTotals": {
+    "total": 17,
+    "success": 16,
+    "failure": 1,
+    "pending": 0,
+    "confirmation": "Final global result confirmed by root and audio_sync after V94 completed."
+  },
+  "dev": {
+    "runId": 42020979168,
+    "jobId": 127223374870,
+    "conclusion": "success",
+    "browserChecks": {
+      "passed": 20,
+      "total": 20
+    },
+    "regressionTests": {
+      "passed": 75,
+      "total": 75
+    },
+    "typecheck": "PASS",
+    "strictLint": "PASS",
+    "productionBuild": "PASS",
+    "sourceCommit": "94b5e0f156c8eff9cbbc03bcf2088d3b96db03ea",
+    "workingTreeDirty": false,
+    "sourceHashesVerified": 23,
+    "compact": {
+      "parts": 4,
+      "charactersUtf16": 42111,
+      "bytesUtf8": 42121,
+      "sha256": "a2661af3d260d26b09780be9ee2caa6bb0d58c4a1fae886f074e3fa9704e786b",
+      "copied": false
+    },
+    "decisiveChecks": [
+      "Empty browser opens, resets and leaves a real room without persistent storage or database creation.",
+      "Leaving development returns to the ordinary campaign menu.",
+      "Final asset, JavaScript and persistent-write gate passes."
+    ],
+    "storage": {
+      "totalChecks": 54,
+      "emptyBrowser": {
+        "label": "empty-browser-after-reset-and-return",
+        "keys": 0,
+        "sha256": "43562eae6647a8177bc36000b2cb66721b6832a2425d55b66d3f78cedb628988"
+      },
+      "emptySnapshotHashIndependentlyRecomputed": "43562eae6647a8177bc36000b2cb66721b6832a2425d55b66d3f78cedb628988",
+      "protectedCampaign": {
+        "checks": 53,
+        "distinctHashes": [
+          "41155f35af84dbd3354748adfc0aada11cdb2e7b64c3eacf00c7a31fb1543a0b"
+        ],
+        "keyCounts": [
+          5
+        ]
+      },
+      "storageOperations": 0,
+      "databaseOpens": 0
+    },
+    "errors": 0,
+    "consoleErrors": 0,
+    "missingAssets": 0,
+    "artifact": {
+      "id": 13412092438,
+      "sizeInBytes": 9723989,
+      "declaredSha256": "ff99576aba3f633945aeaaccb65d01bd74f7d24fda30753a67f4e5d30505e191",
+      "zipDigestVerifiedLocally": false
+    }
+  },
+  "wolf": {
+    "runId": 42020978929,
+    "jobId": 127223374099,
+    "conclusion": "success",
+    "browserChecks": {
+      "passed": 32,
+      "total": 32
+    },
+    "regressionTests": {
+      "passed": 405,
+      "total": 405,
+      "scope": "Wolf workflow regression gate confirmed by cinematic_review."
+    },
+    "sourceCommit": "94b5e0f156c8eff9cbbc03bcf2088d3b96db03ea",
+    "checkoutCommit": "94b5e0f156c8eff9cbbc03bcf2088d3b96db03ea",
+    "workingTreeDirty": false,
+    "cloakBriefing": {
+      "chargeBefore": 100,
+      "chargeAfter": 70,
+      "departures": 1
+    },
+    "companions": [
+      {
+        "id": "karhek",
+        "health": 100,
+        "maxHealth": 100
+      },
+      {
+        "id": "saketh",
+        "health": 120,
+        "maxHealth": 120
+      }
+    ],
+    "physicalPatrols": 1,
+    "searchUntilSeconds": 18,
+    "errors": 0,
+    "missingAssets": 0,
+    "evidenceScope": "Final read-only result supplied by cinematic_review and independently checked by root; no report or ZIP is duplicated here."
+  },
+  "spatial": {
+    "runId": 42020978966,
+    "conclusion": "failure",
+    "checks": {
+      "passed": 62,
+      "total": 63
+    },
+    "sourceCommit": "94b5e0f156c8eff9cbbc03bcf2088d3b96db03ea",
+    "workingTreeDirty": false,
+    "sourceHashesVerified": 21,
+    "sourceVerificationBy": "root",
+    "samples": 254,
+    "captures": 208,
+    "rejectedCaptures": 0,
+    "errors": 0,
+    "consoleErrors": 0,
+    "missingAssets": 0,
+    "archive": {
+      "bytes": 89405459,
+      "sha256": "64664073647d21131e2296a7f8466d404573b1926c9b63a6bcb6599b2bc3a5cc",
+      "verifiedBy": "root",
+      "copied": false
+    },
+    "report": {
+      "bytes": 9349780,
+      "sha256": "44cfd5b7d9dd689ef9001991044177e3678f626b8390fd323e193e898722fdfe",
+      "verifiedBy": [
+        "root",
+        "ci_repair"
+      ],
+      "copied": false
+    },
+    "failure": {
+      "check": "Independent impact fragments, vent phases and world-aligned masked light were actually observed",
+      "message": "desktop: pod karhek must actually be observed at threshold contact."
+    },
+    "coverageDiagnostic": {
+      "mode": "Read-only recomputation over the recorded samples with the existing aggregate's exact filters; not a rerun or a new successful browser check.",
+      "predicate": "label starts with viewport + '-'; method matches; team === 'triad'; !reducedMotion; member.id matches; member.opacity > 0.02; member.contact matches.",
+      "primary": {
+        "requiredCells": 36,
+        "coveredCells": 35,
+        "cellLegend": [
+          "qualifying sample count",
+          "minimum observed elapsedMs",
+          "maximum observed elapsedMs"
+        ],
+        "rows": [
+          {
+            "viewport": "desktop",
+            "method": "pod",
+            "team": "triad",
+            "member": "player",
+            "contacts": {
+              "threshold": [
+                1,
+                58650,
+                58650
+              ],
+              "airborne": [
+                1,
+                59100,
+                59100
+              ],
+              "ground": [
+                4,
+                59633,
+                62000
+              ]
+            }
+          },
+          {
+            "viewport": "desktop",
+            "method": "pod",
+            "team": "triad",
+            "member": "karhek",
+            "contacts": {
+              "threshold": [
+                0,
+                null,
+                null
+              ],
+              "airborne": [
+                1,
+                59100,
+                59100
+              ],
+              "ground": [
+                4,
+                59633,
+                62000
+              ]
+            }
+          },
+          {
+            "viewport": "desktop",
+            "method": "pod",
+            "team": "triad",
+            "member": "saketh",
+            "contacts": {
+              "threshold": [
+                1,
+                59100,
+                59100
+              ],
+              "airborne": [
+                1,
+                59633,
+                59633
+              ],
+              "ground": [
+                3,
+                60367,
+                62000
+              ]
+            }
+          },
+          {
+            "viewport": "desktop",
+            "method": "ship",
+            "team": "triad",
+            "member": "player",
+            "contacts": {
+              "threshold": [
+                2,
+                58616,
+                58617
+              ],
+              "airborne": [
+                4,
+                58866,
+                59300
+              ],
+              "ground": [
+                8,
+                59567,
+                62000
+              ]
+            }
+          },
+          {
+            "viewport": "desktop",
+            "method": "ship",
+            "team": "triad",
+            "member": "karhek",
+            "contacts": {
+              "threshold": [
+                2,
+                58866,
+                58867
+              ],
+              "airborne": [
+                2,
+                59283,
+                59300
+              ],
+              "ground": [
+                8,
+                59567,
+                62000
+              ]
+            }
+          },
+          {
+            "viewport": "desktop",
+            "method": "ship",
+            "team": "triad",
+            "member": "saketh",
+            "contacts": {
+              "threshold": [
+                2,
+                59283,
+                59300
+              ],
+              "airborne": [
+                2,
+                59567,
+                59567
+              ],
+              "ground": [
+                6,
+                60033,
+                62000
+              ]
+            }
+          },
+          {
+            "viewport": "mobile",
+            "method": "pod",
+            "team": "triad",
+            "member": "player",
+            "contacts": {
+              "threshold": [
+                1,
+                58616,
+                58616
+              ],
+              "airborne": [
+                2,
+                58900,
+                59116
+              ],
+              "ground": [
+                3,
+                59783,
+                61833
+              ]
+            }
+          },
+          {
+            "viewport": "mobile",
+            "method": "pod",
+            "team": "triad",
+            "member": "karhek",
+            "contacts": {
+              "threshold": [
+                1,
+                58900,
+                58900
+              ],
+              "airborne": [
+                1,
+                59116,
+                59116
+              ],
+              "ground": [
+                3,
+                59783,
+                61833
+              ]
+            }
+          },
+          {
+            "viewport": "mobile",
+            "method": "pod",
+            "team": "triad",
+            "member": "saketh",
+            "contacts": {
+              "threshold": [
+                1,
+                59116,
+                59116
+              ],
+              "airborne": [
+                1,
+                59783,
+                59783
+              ],
+              "ground": [
+                2,
+                60333,
+                61833
+              ]
+            }
+          },
+          {
+            "viewport": "mobile",
+            "method": "ship",
+            "team": "triad",
+            "member": "player",
+            "contacts": {
+              "threshold": [
+                2,
+                58617,
+                58617
+              ],
+              "airborne": [
+                4,
+                58867,
+                59117
+              ],
+              "ground": [
+                6,
+                59783,
+                61800
+              ]
+            }
+          },
+          {
+            "viewport": "mobile",
+            "method": "ship",
+            "team": "triad",
+            "member": "karhek",
+            "contacts": {
+              "threshold": [
+                2,
+                58867,
+                58867
+              ],
+              "airborne": [
+                2,
+                59117,
+                59117
+              ],
+              "ground": [
+                6,
+                59783,
+                61800
+              ]
+            }
+          },
+          {
+            "viewport": "mobile",
+            "method": "ship",
+            "team": "triad",
+            "member": "saketh",
+            "contacts": {
+              "threshold": [
+                2,
+                59117,
+                59117
+              ],
+              "airborne": [
+                2,
+                59783,
+                59783
+              ],
+              "ground": [
+                4,
+                60317,
+                61800
+              ]
+            }
+          }
+        ]
+      },
+      "separatedCloakVariants": {
+        "requiredCells": 54,
+        "coveredCells": 53,
+        "scope": "Additional diagnostic split of ship-triad and ship-cloaked-triad; the live aggregate combines them by method.",
+        "missingCells": [
+          {
+            "viewport": "desktop",
+            "variant": "pod-triad",
+            "member": "karhek",
+            "contact": "threshold"
+          }
+        ]
+      },
+      "onlyHole": {
+        "viewport": "desktop",
+        "method": "pod",
+        "team": "triad",
+        "member": "karhek",
+        "contact": "threshold",
+        "productContactWindowMs": {
+          "start": 58750,
+          "endExclusive": 59050,
+          "visibilityGate": "opacity > 0.02; the hidden interval before appearance does not qualify",
+          "basis": "Production MOVE_START=58500, THRESHOLD_LEAVE=58800, and Ka’rhek's 250 ms formation delay."
+        },
+        "productSource": {
+          "path": "app/game/systems/planetArrivalPresentation.ts",
+          "blobSha": "f45c4081678e656afa4bd96405294f6c0f1f5c0b"
+        },
+        "ordinaryObservedMs": [
+          58650,
+          59100,
+          59633,
+          60367
+        ],
+        "bracketingSamples": [
+          {
+            "label": "desktop-pod-triad-egress-measured-32",
+            "run": "spatial:jungle-vey:egress:classic-predator-spaceship",
+            "shot": "egress",
+            "elapsedMs": 58650,
+            "shipCloak": false,
+            "status": "playing",
+            "contact": "threshold",
+            "stage": "hidden",
+            "opacity": 0
+          },
+          {
+            "label": "desktop-pod-triad-egress-measured-37",
+            "run": "spatial:jungle-vey:egress:classic-predator-spaceship",
+            "shot": "egress",
+            "elapsedMs": 59100,
+            "shipCloak": false,
+            "status": "playing",
+            "contact": "airborne",
+            "stage": "step-down",
+            "opacity": 1
+          },
+          {
+            "label": "desktop-pod-triad-egress-measured-42",
+            "run": "spatial:jungle-vey:egress:classic-predator-spaceship",
+            "shot": "egress",
+            "elapsedMs": 59633,
+            "shipCloak": false,
+            "status": "playing",
+            "contact": "ground",
+            "stage": "walking",
+            "opacity": 1
+          }
+        ],
+        "laterPhotoGeometryMs": [
+          61350,
+          62000
+        ],
+        "explanation": "The 450 ms gap from the last hidden threshold sample to the first visible airborne sample straddles the entire 300 ms threshold window."
+      },
+      "additionalAirborneObservations": [
+        {
+          "label": "desktop-ship-triad-egress-contact-saketh-airborne",
+          "requestedContact": {
+            "member": "saketh",
+            "contact": "airborne",
+            "shot": "egress",
+            "atMs": 59550,
+            "endMs": 59800
+          },
+          "measuredAt": 59567,
+          "accepted": true
+        },
+        {
+          "label": "desktop-ship-cloaked-triad-egress-contact-saketh-airborne",
+          "requestedContact": {
+            "member": "saketh",
+            "contact": "airborne",
+            "shot": "egress",
+            "atMs": 59550,
+            "endMs": 59800
+          },
+          "measuredAt": 59567,
+          "accepted": true
+        }
+      ],
+      "otherAggregatePredicates": {
+        "total": 30,
+        "satisfied": 30,
+        "groups": [
+          "Impact fragments",
+          "Vent dissipation",
+          "Three player contact states",
+          "Seven lit source roles",
+          "Three camouflage states"
+        ],
+        "scope": "Observed data satisfy these predicates in diagnostic rereading. The live final aggregate had already stopped at the threshold assertion."
+      },
+      "globalPredicateDiagnostic": {
+        "satisfied": 65,
+        "total": 66
+      }
+    }
+  },
+  "v94": {
+    "runId": 42020978940,
+    "conclusion": "success",
+    "allFiveJobsSuccess": true,
+    "jobs": [
+      127223387560,
+      127223387852,
+      127223388055,
+      127223388059,
+      127234921490
+    ],
+    "inventoryStep67": "PASS",
+    "nativeClanWarStep73": "PASS"
+  },
+  "preparedQaCorrection": {
+    "path": "scripts/qa-planet-arrival-spatial.mjs",
+    "baseBlobSha": "b059905622a95a45f6119d969507687bc7069b59",
+    "blobSha": "8cb175d0cbe9eb14e35cdc309751748cec7c82a0",
+    "sha256": "a767c535476777b11a0f3f27f874b7e1c2c070ee23574c6dbd7a4d25910bf88d",
+    "bytes": 109858,
+    "nodeSyntax": "PASS",
+    "independentReview": "PASS",
+    "sourceReadback": "Exact Git SHA, SHA256 and length verified by root and ci_repair.",
+    "change": "Generalize prearmed observations to every required missing contact, using production windows and their midpoints while retaining the visibility guard.",
+    "unchanged": [
+      "Product",
+      "Duration and native clock",
+      "Existing observer",
+      "Four ordinary overview readings",
+      "PNG acquisition",
+      "Final aggregate assertions",
+      "Cleanup"
+    ],
+    "deltaScope": "Root verified that only the MOVE_START import and the contact loop change; the inverse diff matches the prior source.",
+    "strictLint": "Pending CI",
+    "browser": "Pending CI"
+  },
+  "limits": [
+    "The 94b5 Spatial workflow remains failed at 62/63. Read-only coverage recomputation does not change its conclusion.",
+    "These are measurement-coverage findings; no new product, image or audio defect is attributed by this receipt.",
+    "The new generalized QA source has not yet passed its subsequent browser execution.",
+    "No large report, PNG or archive is duplicated, and no additional pixel or audio qualification is claimed."
+  ]
+}

@@ -1,0 +1,61 @@
+{
+  "schema": 1,
+  "date": "2026-11-05",
+  "tool": "image_gen.imagegen",
+  "mode": "built-in",
+  "transparentBackground": true,
+  "humanArtisticApproval": false,
+  "assets": [
+    {
+      "id": "pod-hatch",
+      "source": "public/game/planet-arrival/v2/pod-hatch.png",
+      "references": [
+        "public/game/planet-arrival/v1/pod-ground.png",
+        "public/game/planet-arrival/v1/pod-door.png"
+      ],
+      "prompt": "Use case: precise-object-edit. Production game asset for the existing Yautja planetary-arrival cinematic. Image 1 is the fixed reference capsule housing with its open doorway; image 2 is the old separate hatch to be replaced. Generate ONLY ONE NEW SEPARATE RIGID HATCH PANEL, front orthographic view, on genuine transparent background. It must precisely belong to the housing in image 1: same hammered dark gunmetal, thin worn warm bronze edges, same restrained material/detail scale. Its silhouette must fit the ACTUAL OPENING in image 1: tall rounded arch at the TOP, near-vertical sides widening slightly toward lower quarter, short rounded lower corners and a FLATTENED gently curved bottom edge. Do NOT retain the pointed leaf bottom of image 2. The panel fills the doorway from its arch down to its threshold, not the whole capsule. A compact horizontal hinge barrel at the top center permits the panel to lift outward/up. Closed outer face, subtle central reinforcement and two inset ribs, no window. Neutral diffuse cool upper-left illumination with restrained warm metal edge reflections; no baked broad glow, no backdrop, no shadow outside the asset, no surrounding capsule, no people, no text, no lettering, no labels, no grid, no sprite sheet. One centered complete part with generous transparent margin, approximately 1:2 panel silhouette. Match the existing object identity rather than redesigning it. This file will be independently pivoted at the top hinge in a 2D scene."
+    },
+    {
+      "id": "vent-vapor",
+      "source": "public/game/planet-arrival/v2/vent-vapor.png",
+      "references": [],
+      "prompt": "Use case: stylized-concept. One independent cinematic game VFX sprite: a short vented plume of pressurized cold steam from a spacecraft hatch. Genuine transparent background. Narrow clearly visible emission root near the lower center, then soft turbulent pale grey-blue vapour curls diagonally upward and right, expanding and dissipating into wispy transparent edges. Realistic volumetric smoke detail, dark science-fiction cinematic rendering, gentle neutral rim light so it can be tinted by the game. One continuous plume only, compact approximately square composition, all wisps fully inside generous transparent margins. No ship, no nozzle, no ground, no fire, no flame, no lettering, no black or white backing, no glow halo, no grid, no contact sheet. This asset will be anchored at its narrow root, scaled and translated as one short timed puff while a capsule hatch opens."
+    },
+    {
+      "id": "vent-vapor-thin",
+      "source": "public/game/planet-arrival/v2/vent-vapor-thin.png",
+      "references": [
+        "public/game/planet-arrival/v2/vent-vapor.png"
+      ],
+      "prompt": "Use case: precise-object-edit. Create the NEXT DISSIPATING PHASE of this same one standalone pressurized steam VFX sprite for a 2D game, keeping the same transparent square canvas and the exact emission root position near x=31% and y=89% of the image. This is a separate animation-phase image, not a sprite sheet. Preserve the pale grey-blue neutral vapour and same diagonal upward-right flow. Compared with the reference, break up the dense middle into thinner semi-transparent curls, stretch and loosen the upper wisps slightly, reduce total opacity, with more empty transparent gaps. Keep the narrow root fixed and wisps fully inside the canvas. Genuine alpha transparency throughout the dissipating edges. No solid backing, no flame, no ship, no nozzle, no ground, no unrelated effects, no text or frame. It must cross-fade seamlessly from the reference without moving the emitter."
+    },
+    {
+      "id": "impact-fragment",
+      "source": "public/game/planet-arrival/v2/impact-fragment.png",
+      "references": [],
+      "prompt": "Use case: stylized-concept. One independent game sprite on genuine transparent background: a SINGLE small irregular dark basalt stone chip thrown from soil by a sci-fi landing capsule impact. Entire stone visible, roughly angular triangular silhouette, chipped faceted rough rock, cool charcoal grey neutral material, a few restrained grey-brown edges, soft upper-left directional illumination, slight three-quarter side view. Centered in a square image with plenty of empty transparent margin. Crisp readable silhouette at tiny 8 to 16 pixel game size. No scenery, no dust, no ground shadow, no trail, no sparks, no metal, no glowing lava, no other fragments, no labels, no text, no sprite sheet. This one part will be animated independently on ballistic paths."
+    },
+    {
+      "id": "impact-ice-powder",
+      "source": "public/game/planet-arrival/v2/impact-ice-powder.png",
+      "references": [],
+      "prompt": "Use case: stylized-concept. ONE standalone wide 2D cinematic VFX sprite for a heavy science-fiction capsule impacting an icy ground. Genuine transparent background, landscape about 2:1. A low broad outward burst of fine WHITE ICE POWDER and a few tiny translucent frost crystals, symmetrical but naturally irregular, side-on ground-level camera. Contact pivot at the lower center, x50% and y85%; powder expands left/right along the horizontal ground contact and curls upward just a little, with wispy fading transparent edges. Readable at 340px wide in a game. Cool neutral white/light grey ice, restrained soft blue reflections, realistic fine powder detail, no baked broad glow. Entire plume fully inside transparent margins on all sides. Only the ice powder impact burst, no ship, no crater, no ground plane, no landscape, no fire, no dark smoke, no text, no grid, no sprite sheet. Isolated effect to be animated by scaling from its fixed lower-center root."
+    },
+    {
+      "id": "impact-water-spray",
+      "source": "public/game/planet-arrival/v2/impact-water-spray.png",
+      "references": [],
+      "prompt": "Use case: stylized-concept. ONE standalone wide 2D cinematic VFX sprite for a heavy science-fiction landing capsule hitting shallow water on a wet shore. Genuine transparent background, landscape about 2:1. A low broad outward burst of WATER SPRAY, fine mist and separate droplets, left and right around one central contact pivot at x50% and y85%. Side-on ground-level camera; clear horizontal contact baseline, outward fans close to the ground with a few short rising arcs, naturally irregular but balanced, most water stays low. Neutral grey-white translucent droplets with subtle cool highlights, realistic dark science-fiction game rendering, readable at 340px wide, semitransparent edges. Entire spray fully inside generous transparent margins. Only the splash/mist effect, no pool, no ocean surface, no ship, no ground, no scenery, no flame, no dust, no labels, no black/white backing, no text, no grid, no contact sheet. The effect will grow around its fixed lower-center contact and dissolve."
+    },
+    {
+      "id": "pod-hatch-interior",
+      "source": "public/game/planet-arrival/v2/pod-hatch-interior.png",
+      "originalSource": "public/game/planet-arrival/v2/pod-hatch-interior-source.png",
+      "references": [
+        "public/game/planet-arrival/v2/pod-hatch.png"
+      ],
+      "prompt": "Use case: precise-object-edit. Edit target: the attached existing separate capsule hatch panel. Make ONE matching INNER FACE of exactly this same hatch panel, for the back side of a hinged game sprite. Preserve the exact 887 by 1774 full canvas, exact alpha silhouette and transparent margins, same arch shape, flattened bottom, bronze rim thickness and top horizontal hinge barrel at exactly the same pixel positions. Change only the face material/detail INSIDE the rim: inner gunmetal plate slightly darker and flatter, two modest vertical recessed structural ribs aligned with the existing panel, a few compact flush fastening heads, subtle inner seam. Restraint: this is the inside of the same thin rigid panel, no new handles sticking out, no openings, no glass, no major machinery, no emissive objects. Front orthographic view, same scale and neutral diffuse light from upper left, aged dark metal and restrained worn bronze. Genuine transparent background. One standalone sprite; no sheet, text, labels, ground, shadows outside silhouette or scenery. This will be mounted to the existing outward-facing plate as a true reverse face, so the silhouette, hinge and full frame registration must remain identical."
+    }
+  ],
+  "recovery": "The two contact VFX generated in the preceding turn were recovered from their saved outputs and integrated unchanged. Alternative fresh candidates were inspected but not selected."
+}

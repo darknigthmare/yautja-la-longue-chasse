@@ -1,0 +1,164 @@
+name: Planetary arrival spatial audit
+
+on:
+  pull_request:
+    branches: [main, fix/cinematic-spatial-audit-20261105]
+    paths:
+      - 'app/game/PlanetArrivalCinematic*'
+      - 'app/game/systems/planetArrival*.ts'
+      - 'app/game/systems/planetInsertion.ts'
+      - 'app/game/systems/shipInsertionEnergy.ts'
+      - 'app/game/systems/huntInsertion.ts'
+      - 'app/game/InsertionPlanPanel*'
+      - 'app/game/HunterRigPreview.tsx'
+      - 'app/game/HuntCanvas.tsx'
+      - 'app/game/environmentProp*.ts'
+      - 'app/game/gameReserveV66Rendering.ts'
+      - 'app/game/hunterRig.ts'
+      - 'app/game/shipCatalogue.ts'
+      - 'app/game/worldScreens.ts'
+      - 'app/game/systems/worldBlueprints.ts'
+      - 'app/dev/**'
+      - 'public/game/planet-arrival/**'
+      - 'public/game/cinematics/batch-01-20261105/**'
+      - 'tests/planet-arrival*.test.mjs'
+      - 'tests/planet-insertion.test.mjs'
+      - 'tests/ship-insertion-energy.test.mjs'
+      - 'tests/hunt-insertion.test.mjs'
+      - 'tests/fixtures/wolf-arrival-browser-assets.json'
+      - 'tests/fixtures/clan-ship-browser-assets.json'
+      - 'scripts/qa-planet-arrival-spatial.mjs'
+      - 'scripts/qa-planet-arrival-x11.py'
+      - '.github/workflows/planet-arrival-spatial.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: arrival-spatial-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  spatial:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    env:
+      ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
+      NEXT_TELEMETRY_DISABLED: '1'
+      ARRIVAL_SPATIAL_SOURCE_COMMIT: ${{ github.event.pull_request.head.sha || github.sha }}
+      ARRIVAL_SPATIAL_START_SERVER: '1'
+      ARRIVAL_SPATIAL_HEADED: '1'
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          persist-credentials: false
+          filter: blob:none
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /*
+            !/*/
+            /app/
+            /scripts/
+            /tests/
+            /desktop/
+            /build/
+            /.openai/hosting.json
+            /public/**/manifest.json
+            /public/audio/
+            /public/game/ship-interior/
+            /public/game/planet-arrival/
+            /public/game/cinematics/batch-01-20261105/
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci --ignore-scripts --no-audit --no-fund
+      - name: Include registered artwork for all destinations and the real developer hunt
+        run: |
+          node --input-type=module <<'NODE'
+          import assert from 'node:assert/strict';
+          import { existsSync, readFileSync } from 'node:fs';
+          import { execFileSync } from 'node:child_process';
+          import { build } from 'esbuild';
+          const compiled = await build({
+            stdin: { contents: `export { MISSIONS } from './app/game/data';
+              export { createPlanetArrival, planetArrivalAssets, planetArrivalLanding } from './app/game/systems/planetArrival';
+              export { createDevArrival, createDevSave, resolveDevDestination } from './app/dev/destinations';
+              export { environmentPropRuntimeUrlsForSector } from './app/game/environmentPropRegistry';
+              export { getWorldScreenAtX, worldScreensFor } from './app/game/worldScreens';
+              export { GAME_RESERVE_V66_ART } from './app/game/gameReserveV66Rendering';
+              export { defaultSave } from './app/game/save';
+              export { DEFAULT_SHIP_ID, isShipId, shipProfileAssetPath } from './app/game/shipCatalogue';`, resolveDir: process.cwd(), loader: 'ts' },
+            bundle: true, platform: 'node', format: 'esm', write: false, logLevel: 'silent',
+          });
+          const api = await import('data:text/javascript;base64,' + Buffer.from(compiled.outputFiles[0].text).toString('base64'));
+          const save = api.defaultSave('2026-11-05T00:00:00.000Z');
+          const arrivalPaths = api.MISSIONS.flatMap(mission => Object.values(api.planetArrivalAssets(api.createPlanetArrival({
+            ownerCreatedAt: save.createdAt, runId: 'spatial-fixture:' + mission.id, missionId: mission.id,
+            encounterRun: 1, personalShipId: api.DEFAULT_SHIP_ID, hunterPresetId: save.appearance.presetId,
+          }))).map(asset => 'public' + asset));
+          const representativeShipIds = [
+            'avp-predator-mothership', 'avpr-scout-ship', 'wolf-ship',
+            'fugitive-spaceship', 'upgrade-spaceship', 'feral-spaceship',
+          ];
+          assert.ok(representativeShipIds.every(shipId => api.isShipId(shipId)));
+          const carrierPaths = representativeShipIds.map(shipId => 'public' + api.shipProfileAssetPath(shipId));
+          // The /dev handoff starts encounter 1. The shared fixture misses some
+          // of its variants; derive this run's adjacent-sector streaming from
+          // the real registry instead of copying the entire V19 art catalogue.
+          const nativeDestination = api.resolveDevDestination('arrival-jungle-vey');
+          assert.equal(nativeDestination?.kind, 'arrival');
+          const nativeArrival = api.createDevArrival(nativeDestination, api.createDevSave(nativeDestination)).state;
+          const nativeLanding = api.planetArrivalLanding(nativeArrival);
+          const screens = api.worldScreensFor(nativeArrival.missionId).screens;
+          const activeId = api.getWorldScreenAtX(nativeArrival.missionId, nativeLanding.spawnX).id;
+          const activeIndex = screens.findIndex(screen => screen.id === activeId);
+          assert.ok(activeIndex >= 0, 'The native hunt must have a registered entry sector');
+          const streamedSectors = screens.slice(Math.max(0, activeIndex - 1), Math.min(screens.length, activeIndex + 2));
+          const nativePaths = [api.GAME_RESERVE_V66_ART.hunter, ...streamedSectors.flatMap(screen =>
+            api.environmentPropRuntimeUrlsForSector(nativeArrival.missionId, screen.id, nativeArrival.encounterRun),
+          )].map(asset => 'public' + asset);
+          const existingPaths = ['wolf-arrival-browser-assets.json', 'clan-ship-browser-assets.json'].flatMap(name => {
+            const { paths } = JSON.parse(readFileSync('tests/fixtures/' + name, 'utf8'));
+            assert.equal(new Set(paths).size, paths.length, name + ' duplicates asset paths');
+            return paths;
+          });
+          const paths = [...new Set([...existingPaths, ...arrivalPaths, ...carrierPaths, ...nativePaths])].sort();
+          for (const file of paths) {
+            assert.match(file, /^public\/game\/[A-Za-z0-9._/-]+$/);
+            assert.ok(file.split('/').every(part => part && part !== '.' && part !== '..'));
+          }
+          execFileSync('git', ['sparse-checkout', 'add', '--stdin'], {
+            input: paths.map(file => '/' + file).join('\n') + '\n', stdio: ['pipe', 'inherit', 'inherit'],
+          });
+          assert.deepEqual(paths.filter(file => !existsSync(file)), [], 'Every audited image must exist in the source commit');
+          console.log('Registered images materialized:', paths.length);
+          NODE
+      - name: Typecheck and strictly lint the actual scene and spatial audit
+        run: |
+          python3 -c "from pathlib import Path; p = Path('scripts/qa-planet-arrival-x11.py'); compile(p.read_bytes(), str(p), 'exec')"
+          node node_modules/next/dist/bin/next typegen
+          npm run typecheck
+          node node_modules/eslint/bin/eslint.js --max-warnings=0 app/game/PlanetArrivalCinematic.tsx app/game/InsertionPlanPanel.tsx app/game/systems/planetArrival*.ts app/game/systems/planetInsertion.ts app/game/systems/shipInsertionEnergy.ts app/game/systems/huntInsertion.ts scripts/qa-planet-arrival-spatial.mjs tests/planet-arrival*.test.mjs tests/planet-insertion.test.mjs tests/ship-insertion-energy.test.mjs tests/hunt-insertion.test.mjs
+      - name: Geometry, timeline and audio regressions
+        run: node --experimental-strip-types --test --test-concurrency=1 tests/planet-arrival*.test.mjs tests/planet-insertion.test.mjs tests/ship-insertion-energy.test.mjs tests/hunt-insertion.test.mjs
+      - name: Build the production application used by the native route
+        shell: bash
+        run: |
+          mkdir -p outputs/qa-planet-arrival-spatial
+          npm run build:production 2>&1 | tee outputs/qa-planet-arrival-spatial/build.log
+      - name: Install pinned Chromium and its video support
+        run: node node_modules/playwright-core/cli.js install --with-deps chromium
+      - name: Measure real transforms, inspect every shot, and play the native sequence
+        run: xvfb-run -a --server-args="-screen 0 1920x1200x24" node scripts/qa-planet-arrival-spatial.mjs
+      - name: Preserve captures, motion measurements, video and failures
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: planet-arrival-spatial-${{ github.event.pull_request.head.sha || github.sha }}
+          path: outputs/qa-planet-arrival-spatial/
+          include-hidden-files: false
+          if-no-files-found: warn
+          retention-days: 14

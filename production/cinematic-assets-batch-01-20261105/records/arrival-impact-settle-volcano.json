@@ -1,0 +1,46 @@
+{
+  "id": "arrival-impact-settle-volcano",
+  "family": "impact-settle",
+  "biome": "volcano",
+  "file": "public/game/cinematics/batch-01-20261105/arrival-impact-settle-volcano.png",
+  "generatedSource": "/workspace/scratch/62884fa4f584/generated_images/exec-fa063c98-0373-4d7a-bbb9-8bb528a45745.png",
+  "prompt": "Use case: stylized-concept. One independent cinematic late-fallout sprite arrival-impact-settle-volcano for Yautja The Long Hunt.\nAttached image is art finish/reference only. Create a genuinely different LATE falling phase of cold volcanic material, no copy of the front silhouette.\nSubject: Cold charcoal ash AFTER the initial impact: sparse falling fine gray flecks in a shallow uneven broken curtain, a few downward drifting porous basalt granules, two very thin dissipating ash wisps almost on the contact line. Long empty spaces, heavier grains below the fines. No upward fan, eruption, flame, embers, lava or dense smoke.\nGravity pulls all visible particles DOWN. Sparse short trails stand above their slightly heavier lower ends. Make one low wide asymmetric broken band, several disconnected fine-grain clusters of different sizes, significant transparent gaps including the middle. Small dark porous granules must be much smaller than boulders. No rising fans, tall wings, explosive streaks or eruption. Fine ash nearly dissipated.\nIntended contact origin full-frame x50%,y78%, implied no line. All visible material strictly within x20–80%,y53–81%, with empty transparent outer15% margins. Much less opaque mass than the reference initial impact.\n1536x1024 landscape RGBA PNG, TRUE TRANSPARENT BACKGROUND. Hand-painted realistic2.5D volcanic ash and basalt grit, cold charcoal and muted gray, subtle upper-left light, no thick black outline, readable at250px.\nNo fire, lava, embers, glow, magic, floor, rocks pile, ground disc, scene, horizon, capsule, ship, person, creature, text, labels, grid, sheet, panels, frame, watermark, checkerboard, black/white backdrop or cropped particle.",
+  "referenceImages": [
+    "/workspace/scratch/62884fa4f584/cinematic-assets-batch-01-20261105/public/game/cinematics/batch-01-20261105/arrival-impact-front-jungle.png"
+  ],
+  "generationMode": "builtin-imagegen-reference",
+  "intendedAnchor": {
+    "name": "ground-capsule-reference",
+    "normalized": [
+      0.5,
+      0.78
+    ],
+    "basis": "shared intended contact for late falling phase; source review only, integration pending"
+  },
+  "generated": true,
+  "integrated": false,
+  "testedInEngine": false,
+  "artisticHumanApproval": false,
+  "visualReview": {
+    "reviewer": "assistant",
+    "result": "pass-with-integration-pending",
+    "notes": "Very thin ash wisps and sparse porous grains descending with vertical trails, no lava or burning glow. Distinct lower-density late phase; fine particles need in-engine readability check."
+  },
+  "qa": {
+    "mode": "RGBA",
+    "width": 1536,
+    "height": 1024,
+    "transparentPixelFraction": 0.9548250834147135,
+    "visiblePixelCountAlphaOver16": 22021,
+    "borderPixelCountAlphaOver16": 0,
+    "alphaOver16Bounds": [
+      240,
+      569,
+      1284,
+      837
+    ],
+    "passed": true
+  },
+  "sha256": "87965a3312d315cb5722bad9ba21347c5e5eec7ca05406bb49291d0e3cbc5964",
+  "bytes": 767950
+}

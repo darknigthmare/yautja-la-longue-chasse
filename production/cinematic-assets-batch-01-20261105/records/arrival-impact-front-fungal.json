@@ -1,0 +1,47 @@
+{
+  "id": "arrival-impact-front-fungal",
+  "family": "impact-front",
+  "biome": "fungal",
+  "file": "public/game/cinematics/batch-01-20261105/arrival-impact-front-fungal.png",
+  "generatedSource": "/workspace/scratch/62884fa4f584/generated_images/exec-932ec4e2-b660-4138-9fbd-aa0bd6a2d3ff.png",
+  "prompt": "Use case: stylized-concept. Production cinematic VFX sprite arrival-impact-front-fungal for Yautja The Long Hunt.\nAttached image1 is the material finish and family silhouette reference; image2 is only game rendering context. Create a different physically plausible fibrous organic material, not a new creature or scene.\nSubject: A low, wide impact front of muted dark organic fungal-terrain soil with dry fibrous litter: friable dark brown-gray earth fingers, a few small matte tan organic flakes and wispy tangled beige fiber fragments. Two ragged low lobes with different shapes left and right, clear central valley, sparse particulate dust. Organic texture must differ from jungle leaves. No mushrooms, creatures, luminous spores, toxic clouds, magic or added lore.\nONE isolated low wide asymmetric front, viewed nearly side-on slightly from above; clear central valley for capsule compositing. Full-frame contact origin x50%,y78%. Keep ALL particles and haze within x20–80%,y35–82%; at least15% truly empty transparent margin each edge. Use irregular fibrous branching fingers and tiny organic flake edges instead of the jungle reference's leaf shapes. Only restrained dusty haze around the actual material.\nOne1536x1024 landscape RGBA PNG, TRUE TRANSPARENT BACKGROUND. Semi-realistic hand-painted2.5D finish, detailed matte soil and fibers, muted brown-gray and pale tan, subtle neutral upper-left lighting, readable at250px wide. No luminous spores, colored magic, toxic glow or bioluminescence.\nNo ground plane, shadow disc, mushrooms, vegetation scenery, architecture, horizon, capsule, ship, hunters, animals, words, labels, frame, sheet, atlas, panels, watermark, checkerboard, black/white backdrop or cropped particle. One distinct effect only.",
+  "referenceImages": [
+    "/workspace/scratch/62884fa4f584/cinematic-assets-batch-01-20261105/public/game/cinematics/batch-01-20261105/arrival-impact-front-jungle.png",
+    "/workspace/scratch/62884fa4f584/qa-recovery/spatial-a7f830c/desktop-landing-impact.png"
+  ],
+  "generationMode": "builtin-imagegen-reference",
+  "intendedAnchor": {
+    "name": "ground-capsule-reference",
+    "normalized": [
+      0.5,
+      0.78
+    ],
+    "basis": "requested full-frame contact; source contact calibration pending integration"
+  },
+  "generated": true,
+  "integrated": false,
+  "testedInEngine": false,
+  "artisticHumanApproval": false,
+  "visualReview": {
+    "reviewer": "assistant",
+    "result": "pass-with-integration-pending",
+    "notes": "Matte organic dust with torn fibrous strands and dry flakes, no luminous spores or invented objects. Center open; actual side margins require comparison to target before integration."
+  },
+  "qa": {
+    "mode": "RGBA",
+    "width": 1536,
+    "height": 1024,
+    "transparentPixelFraction": 0.7699902852376302,
+    "visiblePixelCountAlphaOver16": 224488,
+    "borderPixelCountAlphaOver16": 0,
+    "alphaOver16Bounds": [
+      91,
+      397,
+      1392,
+      811
+    ],
+    "passed": true
+  },
+  "sha256": "c4f86bf814485ecec5d44cc42bef015f8189e52653377752812b18e6165b265a",
+  "bytes": 1403497
+}

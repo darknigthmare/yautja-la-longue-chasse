@@ -180,7 +180,7 @@ export default function ControlBindingsPanel({
               >
                 {listening
                   ? "Appuie sur une touche…"
-                  : entry.keyCodes.map(keyLabel).join(" · ")}
+                  : entry.keyCodes.length ? entry.keyCodes.map(keyLabel).join(" · ") : "Sans raccourci"}
               </button>
             </div>
           );

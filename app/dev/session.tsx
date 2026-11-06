@@ -2,13 +2,15 @@
 
 import { lazy, Suspense, useCallback, useEffect, useLayoutEffect, useRef, useState, useSyncExternalStore } from "react";
 import { MISSION_BY_ID } from "../game/data";
-import { DEFAULT_SHIP_ID } from "../game/shipCatalogue";
+import { DEFAULT_SHIP_ID, isShipId } from "../game/shipCatalogue";
 import { GameAudio } from "../game/sound";
 import { useHomeworldReducedMotionV77 } from "../game/useHomeworldReducedMotionV77";
 import { actClanShipDocking, type ClanShipDockingAction } from "../game/systems/clanShipDocking";
 import { actClanShipOperations, createClanShipOperations, inspectClanShipOperations, type ClanShipOperationsAction } from "../game/systems/clanShipOperations";
 import { completePlanetArrivalHandoff, inspectPlanetArrival, type PlanetArrivalState } from "../game/systems/planetArrival";
 import { inspectPlanetArrivalRun } from "../game/systems/planetArrivalRun";
+import { samePlanetInsertion } from "../game/systems/planetInsertion";
+import { shipInsertionCharge } from "../game/systems/shipInsertionEnergy";
 import { createDefaultShipProgression, type ShipProgressionState } from "../game/systems/progression";
 import { actWolfCastle, applyWolfCastleCheckpoint, type WolfCastleAction, type WolfCastleCheckpoint } from "../game/systems/wolfCastle";
 import type { HomeworldProgress } from "../game/systems/homeworld";
@@ -19,7 +21,7 @@ import { createDevArrival, createDevSave, createMemoryStorage, resolveDevDestina
 import DevServices, { type DevService } from "./services";
 import styles from "./session.module.css";
 
-const PhysicalShipDeck = lazy(() => import("../game/PhysicalShipDeck"));
+const ShipInterior25D = lazy(() => import("../game/ShipInterior25D"));
 const ClanShipHub = lazy(() => import("../game/ClanShipHub"));
 const HomeworldHub = lazy(() => import("../game/HomeworldHub"));
 const HomeworldRegionV68 = lazy(() => import("../game/HomeworldRegionV68"));
@@ -52,6 +54,8 @@ interface HuntObservation {
   elapsed: number;
   discoveredRooms: string;
   visitedScreens: string;
+  insertion: string | null;
+  insertionPatrols: string;
 }
 
 /** A separate owner for the production scenes. It neither loads a campaign nor
@@ -98,6 +102,7 @@ export default function DevTravelSession({ destination, onTravel, onExit }: DevT
   const inHunt = destination.kind === "mission" || (destination.kind === "arrival" && arrival?.status === "complete");
   const arrivalGauntlet = typeof arrivalFixture?.run.configuration.gauntletVariantId === "string"
     ? arrivalFixture.run.configuration.gauntletVariantId : undefined;
+  const arrivalShipId = arrivalFixture?.run.configuration.insertionShipId;
 
   useLayoutEffect(() => {
     sessionAliveRef.current = true;
@@ -260,6 +265,7 @@ export default function DevTravelSession({ destination, onTravel, onExit }: DevT
     const candidate = inspected.state;
     if (inspected.status !== "valid" || !candidate || candidate.missionId !== destination.missionId ||
         candidate.encounterRun !== arrivalFixture.state.encounterRun || candidate.personalShipId !== selectedShipId ||
+        !samePlanetInsertion(candidate.insertion, arrivalFixture.state.insertion) ||
         candidate.hunterPresetId !== arrivalFixture.state.hunterPresetId || candidate.elapsedMs < current.elapsedMs ||
         (current.completedBy !== null && candidate.completedBy !== current.completedBy)) return null;
     return candidate;
@@ -312,9 +318,17 @@ export default function DevTravelSession({ destination, onTravel, onExit }: DevT
       Array.isArray(exploration.discoveredRoomIds) ? exploration.discoveredRoomIds.filter(value => typeof value === "string") : [];
     const visitedScreens = Array.isArray(checkpoint.visitedScreenIds)
       ? checkpoint.visitedScreenIds.filter(value => typeof value === "string") : [];
+    const insertion = checkpoint.insertion && typeof checkpoint.insertion === "object" && !Array.isArray(checkpoint.insertion)
+      ? checkpoint.insertion : null;
+    const patrolIds = insertion && Array.isArray(insertion.patrolIds)
+      ? insertion.patrolIds.filter((id): id is string => typeof id === "string") : [];
+    const enemies = Array.isArray(checkpoint.enemies) ? checkpoint.enemies : [];
+    const presentPatrols = patrolIds.filter(id => enemies.some(enemy => enemy && typeof enemy === "object" &&
+      !Array.isArray(enemy) && enemy.id === id));
     setHuntObservation({
       x: player.x, y: player.y, elapsed: payload.elapsed,
       discoveredRooms: JSON.stringify(discoveredRooms), visitedScreens: JSON.stringify(visitedScreens),
+      insertion: insertion ? JSON.stringify(insertion) : null, insertionPatrols: JSON.stringify(presentPatrols),
     });
   }, []);
   const suspendHunt = useCallback((checkpoint: HuntPersistencePayload) => {
@@ -341,18 +355,26 @@ export default function DevTravelSession({ destination, onTravel, onExit }: DevT
       data-dev-arrival-run={arrival?.runId} data-dev-arrival-status={arrival?.status}
       data-dev-arrival-completed-by={arrival?.completedBy ?? undefined}
       data-dev-arrival-elapsed={arrival?.elapsedMs} data-dev-arrival-mission={arrival?.missionId}
+      data-dev-insertion-method={arrivalFixture?.state.insertion?.method}
+      data-dev-insertion-team={arrivalFixture?.state.insertion?.team}
+      data-dev-insertion-ship-cloak={arrivalFixture ? !!arrivalFixture.state.insertion?.shipCloak : undefined}
+      data-dev-insertion-energy={arrivalFixture ? shipInsertionCharge(save.shipInsertionEnergy, save.createdAt, selectedShipId) ?? undefined : undefined}
+      data-dev-insertion-energy-run={typeof arrivalFixture?.run.configuration.insertionEnergyRunId === "string"
+        ? arrivalFixture.run.configuration.insertionEnergyRunId : undefined}
       data-dev-hunt-generation={inHunt ? huntGeneration.epoch : undefined}
       data-dev-hunt-x={huntObservation?.x} data-dev-hunt-y={huntObservation?.y}
       data-dev-hunt-elapsed={huntObservation?.elapsed}
       data-dev-hunt-discovered-rooms={huntObservation?.discoveredRooms}
-      data-dev-hunt-visited-screens={huntObservation?.visitedScreens}>
+      data-dev-hunt-visited-screens={huntObservation?.visitedScreens}
+      data-dev-hunt-insertion={huntObservation?.insertion ?? undefined}
+      data-dev-hunt-insertion-patrols={huntObservation?.insertionPatrols}>
       <p className={styles.notice} role="status" data-dev-notice>
         {notice || "Session de test temporaire. Les déplacements et résultats de cet essai disparaissent au changement de lieu ou au rechargement."}
       </p>
       <div className={styles.viewport}>
         <div ref={sceneRef} className={styles.scene} hidden={service !== null} inert={service !== null}>
           <Suspense fallback={<div className={styles.loading} role="status">Chargement du lieu…</div>}>
-            {destination.kind === "ship" && <PhysicalShipDeck
+            {destination.kind === "ship" && <ShipInterior25D
               appearance={save.appearance}
               loadout={save.loadout}
               rankLabel="Chasseur de test"
@@ -436,6 +458,10 @@ export default function DevTravelSession({ destination, onTravel, onExit }: DevT
               key={huntGeneration.epoch}
               mission={MISSION_BY_ID[missionId]}
               encounterRun={arrivalFixture?.state.encounterRun ?? 1}
+              {...(arrivalFixture?.state.insertion ? {
+                insertionPlan: arrivalFixture.state.insertion, insertionRunId: arrivalFixture.run.runId,
+                insertionShipId: isShipId(arrivalShipId) ? arrivalShipId : undefined,
+              } : {})}
               appearance={huntGeneration.runtimeSave.appearance}
               gauntletVariantId={arrivalGauntlet}
               loadout={huntGeneration.runtimeSave.loadout}

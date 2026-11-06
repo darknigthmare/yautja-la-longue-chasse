@@ -8,7 +8,8 @@ import {verifyBibleSourceIntegrityV85} from './helpers/bible-source-integrity-v8
 
 const bundle = await build({ stdin: { contents: `export * from './app/game/systems/shipPreparationV88';
   export {defaultSave} from './app/game/save'; export {createDefaultShipProgression,SHIP_PROGRESSION_STORAGE_KEY,SHIP_PROGRESSION_VERSION} from './app/game/systems/progression';
-  export {SHIP_LEVEL_STATIONS} from './app/game/systems/shipLevelLayout';`, loader: 'ts', resolveDir: fileURLToPath(new URL('../', import.meta.url)) },
+  export {SHIP_LEVEL_STATIONS} from './app/game/systems/shipLevelLayout';
+  export {SHIP_INTERIOR_25D_ROOMS} from './app/game/systems/shipInterior25d';`, loader: 'ts', resolveDir: fileURLToPath(new URL('../', import.meta.url)) },
   bundle: true, write: false, format: 'esm', platform: 'node', target: 'es2022', logLevel: 'silent' });
 const api = await import('data:text/javascript;base64,' + Buffer.from(bundle.outputFiles[0].text).toString('base64'));
 const owner = '2026-10-07T17:00:00.000Z';
@@ -63,6 +64,60 @@ test('a distant interface, wrong deck, NaN or unknown post cannot stamp an inspe
     const result = api.inspectShipPreparationV88(null, bad, context);
     assert.equal(result.accepted, false); assert.equal(result.state, null);
   }
+});
+
+function groundObservation(id) {
+  return { space: 'ship-ground-v1', roomId: id, stationId: id, ...api.SHIP_INTERIOR_25D_ROOMS[id].station.approach };
+}
+
+test('the physical 2.5D approaches preserve the eight-post preparation sequence and existing receipt format', () => {
+  const context = fixture(), before = JSON.stringify(context);
+  assert.equal(api.inspectShipPreparationV88(null, groundObservation('launch-airlock'), context).accepted, false);
+  let state = null;
+  for (const id of api.SHIP_LEVEL_STATIONS.map(station => station.id)) {
+    const result = api.inspectShipPreparationV88(state, groundObservation(id), context);
+    assert.equal(result.accepted, true, result.message);
+    state = result.state;
+  }
+  assert.equal(state.revision, 8);
+  assert.equal(api.evaluateShipPreparationV88(state, context).ready, true);
+  assert.deepEqual(api.normalizeShipPreparationV88(JSON.parse(JSON.stringify(state)), owner), state);
+  // Room coordinates are observations, not a new durable receipt schema.
+  assert.equal(Object.hasOwn(state.hulls[0].inspections[0], 'roomId'), false);
+  const repeat = api.inspectShipPreparationV88(state, groundObservation('wall-armory'), context);
+  assert.equal(repeat.accepted, true); assert.equal(repeat.changed, false);
+  assert.equal(JSON.stringify(context), before);
+});
+
+test('2.5D inspections reject legacy coordinate substitution, wrong rooms, solid fixtures and unknown spatial contracts', () => {
+  const context = fixture(), real = groundObservation('galaxy-map');
+  const invalid = [
+    { ...observation('galaxy-map'), space: 'ship-ground-v1', roomId: 'galaxy-map' },
+    { ...real, roomId: 'wall-armory' },
+    { ...real, roomId: 'unknown' },
+    { ...real, x: 600, y: 300 },
+    { ...real, y: real.y + 65 },
+    { ...real, x: NaN },
+    { ...real, space: 'future-space-v99' },
+    { ...observation('galaxy-map'), roomId: 'galaxy-map' },
+    { ...observation('galaxy-map'), space: 'ship-ground-v1' },
+    null,
+  ];
+  for (const position of invalid) {
+    const result = api.inspectShipPreparationV88(null, position, context);
+    assert.equal(result.accepted, false, JSON.stringify(position));
+    assert.equal(result.state, null);
+  }
+});
+
+test('legacy observations remain accepted and switching presentation does not duplicate a physical inspection', () => {
+  const context = fixture();
+  const legacy = api.inspectShipPreparationV88(null, observation('wall-armory'), context);
+  assert.equal(legacy.accepted, true);
+  const ground = api.inspectShipPreparationV88(legacy.state, groundObservation('wall-armory'), context);
+  assert.equal(ground.accepted, true); assert.equal(ground.changed, false); assert.equal(ground.state.revision, 1);
+  const explicitLegacy = api.inspectShipPreparationV88(ground.state, { ...observation('clan-archives'), space: 'ship-side-v21' }, context);
+  assert.equal(explicitLegacy.accepted, true); assert.equal(explicitLegacy.state.revision, 2);
 });
 
 test('inactive, paused and unfocused decks preserve the last confirmed checkpoint', () => {

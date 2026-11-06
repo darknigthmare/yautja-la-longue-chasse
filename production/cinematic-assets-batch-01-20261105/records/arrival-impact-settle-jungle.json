@@ -1,0 +1,46 @@
+{
+  "id": "arrival-impact-settle-jungle",
+  "family": "impact-settle",
+  "biome": "jungle",
+  "file": "public/game/cinematics/batch-01-20261105/arrival-impact-settle-jungle.png",
+  "generatedSource": "/workspace/scratch/62884fa4f584/generated_images/exec-d9f83a65-36e6-4f22-8fdb-5ec0b5d441e2.png",
+  "prompt": "Use case: stylized-concept. ONE late-phase cinematic VFX sprite, arrival-impact-settle-jungle, for Yautja The Long Hunt.\nThe attached jungle front is ONLY an art finish/palette reference. Create its distinctly later GRAVITY-DRIVEN FALLING AFTERMATH, NOT the same front at lower opacity, NOT any erupting fan. Preserve painted2.5D material detail but change morphology completely.\nSubject: Jungle soil AFTER the initial impact: a sparse uneven fall of damp brown soil grains, a few tiny curled muted olive and brown leaf scraps tipping downward, short dark grain trails and extremely thin broken dusty wisps low near the base. The heavy grains hang below the fine suspended material. Wide shallow composition with large transparent spaces and an open center. NOT the reference plume with reduced opacity; create a genuinely different late falling aftermath with no outward explosion.\nComposition is a low wide shallow irregular cloud of DISCONNECTED falling particles, short downward trails and sparse wisps, with large transparent gaps between clusters. A few falling leaf scraps curl DOWN, fine trails extend upward BEHIND the heavier grain lower ends. No two rising wings and no upward/outward jets. Contact origin is full-frame x50%,y78%, implied only, no drawn line. Particles stay within x20–80%,y52–81%, thinning almost to nothing at the sides; keep at least15% truly empty transparent margin every edge. Clear center for capsule compositing.\nOne1536x1024 landscape RGBA PNG, TRUE TRANSPARENT BACKGROUND. Semi-realistic hand-painted natural damp soil, muted olive-brown scraps, subtle neutral upper-left light, softer and significantly less dense than the initial front, readable at250px.\nNo floor, pile, ground surface, shadow disc, backdrop, horizon, capsule, ship, people, creature, magic, glow, labels, text, grid, sheet, frame, watermark, checkerboard or cropped particles. One independent effect, not several panels.",
+  "referenceImages": [
+    "/workspace/scratch/62884fa4f584/cinematic-assets-batch-01-20261105/public/game/cinematics/batch-01-20261105/arrival-impact-front-jungle.png"
+  ],
+  "generationMode": "builtin-imagegen-reference",
+  "intendedAnchor": {
+    "name": "ground-capsule-reference",
+    "normalized": [
+      0.5,
+      0.78
+    ],
+    "basis": "shared intended contact for late falling phase; source review only, integration pending"
+  },
+  "generated": true,
+  "integrated": false,
+  "testedInEngine": false,
+  "artisticHumanApproval": false,
+  "visualReview": {
+    "reviewer": "assistant",
+    "result": "pass-with-integration-pending",
+    "notes": "Sparse falling leaf scraps and earth grains in separated descending trails, with much lower particle mass than front and open central area. A distinct late morphology, not a uniform-opacity duplicate."
+  },
+  "qa": {
+    "mode": "RGBA",
+    "width": 1536,
+    "height": 1024,
+    "transparentPixelFraction": 0.8206755320231119,
+    "visiblePixelCountAlphaOver16": 35734,
+    "borderPixelCountAlphaOver16": 0,
+    "alphaOver16Bounds": [
+      276,
+      533,
+      1244,
+      845
+    ],
+    "passed": true
+  },
+  "sha256": "be7a34c6ccc8aa3d258cadf436a3d9fe9ac3ab94845d8b70866e93d2e059aeb2",
+  "bytes": 1177251
+}

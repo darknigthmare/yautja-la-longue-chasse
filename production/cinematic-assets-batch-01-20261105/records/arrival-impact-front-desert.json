@@ -1,0 +1,47 @@
+{
+  "id": "arrival-impact-front-desert",
+  "family": "impact-front",
+  "biome": "desert",
+  "file": "public/game/cinematics/batch-01-20261105/arrival-impact-front-desert.png",
+  "generatedSource": "/workspace/scratch/62884fa4f584/generated_images/exec-56b7093f-f60e-4149-820e-66e6aceda0e2.png",
+  "prompt": "Use case: stylized-concept. Individual production cinematic VFX sprite for Yautja The Long Hunt. Asset ID arrival-impact-front-desert.\nImage1 is only the realistic painted2.5D finish, neutral lighting and central-clearance family reference; image2 only game style. Do not reproduce any scene or capsule. This is a new material-specific shape.\nSubject: A low, wide sand impact front built from tawny fine sand grains and gritty pale-ochre ribbons. The left side is a flattened coarse spray; the right side has two thin curling sheets of granular sand breaking into individual grains. A few tiny matte pebbles, dry sand texture rather than billowy smoke. Very airy upper edges and open central valley, restrained warm beige and ochre, no terrain dunes.\nNear-ground side view, slight top view. The contact origin is full-canvas x50%,y78%; keep center mostly clear. CONTAINMENT: all sand and haze, including stray grains, must stay within x20–80%,y35–82%. At least15% completely transparent margin on all four edges; make the effect smaller in the frame than reference1. Tiny peripheral dust must not extend to the outer canvas. ONE low wide cohesive asymmetric front.\nOutput one1536x1024 landscape RGBA PNG with TRUE TRANSPARENT BACKGROUND. Realistic subdued ochre grains, subtle upper-left highlights, soft true-alpha particulate edges, readable at250px. No billowing smoke tower, thick outlines or arbitrary glow.\nNo floor, ground plane, shadow disc, dunes, landscape, horizon, background, checkerboard, capsule, ship, people, creatures, text, labels, grid, panel, sheet, atlas, watermark, border or cropped particles.",
+  "referenceImages": [
+    "/workspace/scratch/62884fa4f584/cinematic-assets-batch-01-20261105/public/game/cinematics/batch-01-20261105/arrival-impact-front-jungle.png",
+    "/workspace/scratch/62884fa4f584/qa-recovery/spatial-a7f830c/desktop-landing-impact.png"
+  ],
+  "generationMode": "builtin-imagegen-reference",
+  "intendedAnchor": {
+    "name": "ground-capsule-reference",
+    "normalized": [
+      0.5,
+      0.78
+    ],
+    "basis": "requested full-frame contact; visual source review only, integration pending"
+  },
+  "generated": true,
+  "integrated": false,
+  "testedInEngine": false,
+  "artisticHumanApproval": false,
+  "visualReview": {
+    "reviewer": "assistant",
+    "result": "pass-with-integration-pending",
+    "notes": "Distinct thin granular sand ribbons, low coarse left fan and extended split right fan. Subdued sandy palette and central valley. Exact source-to-world contact calibration remains pending."
+  },
+  "qa": {
+    "mode": "RGBA",
+    "width": 1536,
+    "height": 1024,
+    "transparentPixelFraction": 0.5888373057047526,
+    "visiblePixelCountAlphaOver16": 204816,
+    "borderPixelCountAlphaOver16": 0,
+    "alphaOver16Bounds": [
+      221,
+      470,
+      1313,
+      798
+    ],
+    "passed": true
+  },
+  "sha256": "6b1e88357bc4031da539d2a8ab5b4f72b4fbdbdb0c400a515887d663b716b447",
+  "bytes": 1490807
+}

@@ -1,0 +1,1891 @@
+{
+  "schema": "ship-family-imagegen-candidates/v1",
+  "family": "upgrade-spaceship",
+  "sourceCommit": "3ef6d77e338bbec8e904f09ad72f75b4d38bbed2",
+  "tool": "built-in image_gen",
+  "requestedCanvas": {
+    "width": 1536,
+    "height": 1024
+  },
+  "referenceImages": [
+    {
+      "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/upgrade-spaceship-profile.webp",
+      "role": "reference image 1: exact V14 Upgrade perspective/profile, armor, materials, embedded light and maneuvering mounts",
+      "sha256": "6e8c05489366124e93b0fe6ab18450d44de9d2ac1e9943640ebe3dfbc37702f3",
+      "gitBlob": "2b51a252ccc8abb0633342f11d7861551cfb4229",
+      "dimensions": [
+        1672,
+        941
+      ]
+    },
+    {
+      "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/upgrade-spaceship-top.webp",
+      "role": "reference image 2: exact V14 Upgrade dorsal geometry, narrow nose-right, wide aft-left, two outer orange nacelles and central blue engine",
+      "sha256": "d791e10f600e50ee90a7786ea9c42f5a78031ce5801c2f60aa2f7e97b4ff6dc4",
+      "gitBlob": "5091b1c727bfeda2a0a7f99664f563738c632b71",
+      "dimensions": [
+        1672,
+        941
+      ]
+    }
+  ],
+  "referenceIdentityEvidence": {
+    "file": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-inventory-3ef6d77e/sources/art-source/v14/ships/ship-reference-sources.json",
+    "entry": "ships.upgrade-spaceship",
+    "visualLocks": [
+      "sweeping wide-rear arrowhead",
+      "long narrow pointed nose",
+      "dark gray armor with deep red dorsal accents",
+      "two outer orange nacelles and one central blue engine",
+      "smaller rotatable maneuvering thrusters"
+    ]
+  },
+  "mainPropulsion": {
+    "outerOrangeNacelleAssemblies": 2,
+    "centralBlueEngines": 1,
+    "smallManeuveringUnits": "Preserve the visible reference units and natural occlusion; no invented count of hidden units."
+  },
+  "orientation": {
+    "nose": "screen-right",
+    "aft": "screen-left"
+  },
+  "repositoryIntegrated": false,
+  "externalPublished": false,
+  "engineEffectsRequested": false,
+  "limits": [
+    "These are eight imagegen candidates, not a canonical or human artistic1:1 approval.",
+    "Camera12/25deg values are prompt targets, not measured3D camera solutions. The two master images are authored perspective and dorsal identity references; unshown underside geometry is inferred.",
+    "No postgeneration pixels were edited, cropped, resized or alpha-normalized. All selected files are byte-exact copies of their recorded imagegen output.",
+    "Some RGB glow in previews is stored under alpha0 and is invisible under proper compositing; low nonzero alpha pixels and maxima254 are retained as delivered.",
+    "The eight views need independent sprite review, coordinate calibration and native runtime validation before integration. No separate engine VFX was generated.",
+    "The selected PNGs all have alpha extrema0..254; a few corner64px samples contain alpha1 residuals. No blanket claim of completely zero exterior alpha is made."
+  ],
+  "jobs": [
+    {
+      "id": "forward-quarter-shallow",
+      "direction": "front",
+      "degrees": 12,
+      "prompt": "Use case: stylized-concept.\nAsset type: one individual transparent game-cinematic sprite, candidate for Yautja The Long Hunt.\nCanvas exactly 1536 x 1024 pixels, landscape, true RGBA transparent background.\nInput images are identity references of the UPGRADE/ASSASSIN spaceship, not bitmaps to rotate. Image 1 locks the construction/materials and existing maneuvering mounts. Image 2 locks the dorsal planform, the nose-to-aft axis, and principal propulsion layout. Generate a new coherent 3D camera view of THIS exact craft.\nIdentity: broad swept arrowhead rear, very long narrow sharp pointed nose, dark scratched gray/black angular armor with metallic edge highlights, deep red inset lines and dorsal vents, the exact layered panel construction and existing small blue-lit rotatable maneuvering units. Preserve the original proportions and the same attached hardware; do not substitute the Fugitive, Wolf, Scout, classic Predator ship, or a human stealth aircraft.\nPrincipal propulsion layout is EXACTLY TWO OUTER ORANGE NACELLE ASSEMBLIES plus ONE CENTRAL BLUE ENGINE between them at the aft. This is not three identical orange circular reactors. Each outer nacelle can reveal more than one illuminated surface of its same original housing; do not mistake these surfaces for permission to add another nacelle. Preserve the original housings, the one blue central aperture, original orange/red color and their locations from image 2. Respect natural occlusion: a hidden engine need not be forced into view. The smaller maneuvering units remain the existing reference units, without multiplication. No new thrusters, duplicated orange pods, engine plumes or separate VFX.\nOrientation and framing: sharp NOSE to screen RIGHT; broad aft and main engine group to screen LEFT. Center one complete ship near (768,512), with transparent margins around every wing edge and maneuvering mount. Keep the longitudinal axis close to horizontal and preserve comparable world scale across the eight views, allowing genuine perspective foreshortening. No collage, multiple ships, labels or text.\nStyle: detailed realistic 3D cutout matching the supplied references, restrained red/cyan-blue/orange embedded lights, neutral soft illumination, dark metallic armor. No background, ground, cast-shadow plane, checkerboard, glow outline, watermarks or borders.\n\nRequired camera view: Orbit the camera 12 degrees toward the pointed NOSE from a right-facing broadside side elevation. A shallow front-quarter view: reveal a little of the forward-facing nose and frontal surfaces, slight longitudinal foreshortening, almost level camera, no roll.\nReveal genuinely different surfaces and occlusions. Do not mirror, stretch, skew, recolor or rotate a copy of either reference bitmap.",
+      "references": [
+        "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/upgrade-spaceship-profile.webp",
+        "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/upgrade-spaceship-top.webp"
+      ],
+      "transparentBackground": true,
+      "targetCandidatePath": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/upgrade-spaceship/upgrade-spaceship-forward-quarter-shallow.png",
+      "status": "generated-candidate",
+      "reviewStatus": "candidate-before-QA",
+      "attempts": [
+        {
+          "id": "forward-quarter-shallow",
+          "attempt": 1,
+          "original": "/workspace/scratch/0c1fa1359efb/generated_images/exec-6d0c1d2a-7d96-4548-8f79-a96244cb7499.png",
+          "target": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/upgrade-spaceship/upgrade-spaceship-forward-quarter-shallow.png",
+          "startedAt": "2026-11-06T04:35:17.297Z",
+          "completedAt": "2026-11-06T04:35:55.109Z",
+          "output_hint": "Generated images are saved to /workspace/scratch/0c1fa1359efb/generated_images as /workspace/scratch/0c1fa1359efb/generated_images/exec-6d0c1d2a-7d96-4548-8f79-a96244cb7499.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+          "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/upgrade-spaceship/upgrade-spaceship-forward-quarter-shallow.png",
+          "bytes": 1781474,
+          "sha256": "7abf83d40a1a3640e68e1be7e09d10d4a93ac6417ef9e9fc97a48108b5b6caa9",
+          "width": 1536,
+          "height": 1024,
+          "mode": "RGBA",
+          "alphaExtrema": [
+            0,
+            254
+          ],
+          "transparentPixels": 1094683,
+          "partiallyTransparentPixels": 478181,
+          "pixelBytesChanged": false,
+          "prompt": "Use case: stylized-concept.\nAsset type: one individual transparent game-cinematic sprite, candidate for Yautja The Long Hunt.\nCanvas exactly 1536 x 1024 pixels, landscape, true RGBA transparent background.\nInput images are identity references of the UPGRADE/ASSASSIN spaceship, not bitmaps to rotate. Image 1 locks the construction/materials and existing maneuvering mounts. Image 2 locks the dorsal planform, the nose-to-aft axis, and principal propulsion layout. Generate a new coherent 3D camera view of THIS exact craft.\nIdentity: broad swept arrowhead rear, very long narrow sharp pointed nose, dark scratched gray/black angular armor with metallic edge highlights, deep red inset lines and dorsal vents, the exact layered panel construction and existing small blue-lit rotatable maneuvering units. Preserve the original proportions and the same attached hardware; do not substitute the Fugitive, Wolf, Scout, classic Predator ship, or a human stealth aircraft.\nPrincipal propulsion layout is EXACTLY TWO OUTER ORANGE NACELLE ASSEMBLIES plus ONE CENTRAL BLUE ENGINE between them at the aft. This is not three identical orange circular reactors. Each outer nacelle can reveal more than one illuminated surface of its same original housing; do not mistake these surfaces for permission to add another nacelle. Preserve the original housings, the one blue central aperture, original orange/red color and their locations from image 2. Respect natural occlusion: a hidden engine need not be forced into view. The smaller maneuvering units remain the existing reference units, without multiplication. No new thrusters, duplicated orange pods, engine plumes or separate VFX.\nOrientation and framing: sharp NOSE to screen RIGHT; broad aft and main engine group to screen LEFT. Center one complete ship near (768,512), with transparent margins around every wing edge and maneuvering mount. Keep the longitudinal axis close to horizontal and preserve comparable world scale across the eight views, allowing genuine perspective foreshortening. No collage, multiple ships, labels or text.\nStyle: detailed realistic 3D cutout matching the supplied references, restrained red/cyan-blue/orange embedded lights, neutral soft illumination, dark metallic armor. No background, ground, cast-shadow plane, checkerboard, glow outline, watermarks or borders.\n\nRequired camera view: Orbit the camera 12 degrees toward the pointed NOSE from a right-facing broadside side elevation. A shallow front-quarter view: reveal a little of the forward-facing nose and frontal surfaces, slight longitudinal foreshortening, almost level camera, no roll.\nReveal genuinely different surfaces and occlusions. Do not mirror, stretch, skew, recolor or rotate a copy of either reference bitmap.",
+          "references": [
+            "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/upgrade-spaceship-profile.webp",
+            "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/upgrade-spaceship-top.webp"
+          ],
+          "reviewStatus": "rejected-pose-too-overhead",
+          "visualFinding": "Aft blue engine face dominates and the camera remains overhead/rear-biased instead of the requested front quarter.",
+          "referenceEvidence": [
+            {
+              "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/upgrade-spaceship-profile.webp",
+              "bytes": 94314,
+              "sha256": "6e8c05489366124e93b0fe6ab18450d44de9d2ac1e9943640ebe3dfbc37702f3",
+              "width": 1672,
+              "height": 941,
+              "sourceRole": "pinned-runtime-reference"
+            },
+            {
+              "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/upgrade-spaceship-top.webp",
+              "bytes": 152632,
+              "sha256": "d791e10f600e50ee90a7786ea9c42f5a78031ce5801c2f60aa2f7e97b4ff6dc4",
+              "width": 1672,
+              "height": 941,
+              "sourceRole": "pinned-runtime-reference"
+            }
+          ]
+        },
+        {
+          "id": "forward-quarter-shallow",
+          "attempt": 2,
+          "startedAt": "2026-11-06T04:39:39.608Z",
+          "completedAt": "2026-11-06T04:40:47.861Z",
+          "output_hint": "Generated images are saved to /workspace/scratch/0c1fa1359efb/generated_images as /workspace/scratch/0c1fa1359efb/generated_images/exec-1a823dd0-8f15-4d83-a672-9126500b9a51.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+          "prompt": "Use case: stylized-concept.\nAsset type: one individual transparent game-cinematic sprite, candidate for Yautja The Long Hunt.\nCanvas exactly 1536 x 1024 pixels, landscape, true RGBA transparent background.\nInput images are identity references of the UPGRADE/ASSASSIN spaceship, not bitmaps to rotate. Image 1 locks the construction/materials and existing maneuvering mounts. Image 2 locks the dorsal planform, the nose-to-aft axis, and principal propulsion layout. Generate a new coherent 3D camera view of THIS exact craft.\nIdentity: broad swept arrowhead rear, very long narrow sharp pointed nose, dark scratched gray/black angular armor with metallic edge highlights, deep red inset lines and dorsal vents, the exact layered panel construction and existing small blue-lit rotatable maneuvering units. Preserve the original proportions and the same attached hardware; do not substitute the Fugitive, Wolf, Scout, classic Predator ship, or a human stealth aircraft.\nPrincipal propulsion layout is EXACTLY TWO OUTER ORANGE NACELLE ASSEMBLIES plus ONE CENTRAL BLUE ENGINE between them at the aft. This is not three identical orange circular reactors. Each outer nacelle can reveal more than one illuminated surface of its same original housing; do not mistake these surfaces for permission to add another nacelle. Preserve the original housings, the one blue central aperture, original orange/red color and their locations from image 2. Respect natural occlusion: a hidden engine need not be forced into view. The smaller maneuvering units remain the existing reference units, without multiplication. No new thrusters, duplicated orange pods, engine plumes or separate VFX.\nOrientation and framing: sharp NOSE to screen RIGHT; broad aft and main engine group to screen LEFT. Center one complete ship near (768,512), with transparent margins around every wing edge and maneuvering mount. Keep the longitudinal axis close to horizontal and preserve comparable world scale across the eight views, allowing genuine perspective foreshortening. No collage, multiple ships, labels or text.\nStyle: detailed realistic 3D cutout matching the supplied references, restrained red/cyan-blue/orange embedded lights, neutral soft illumination, dark metallic armor. No background, ground, cast-shadow plane, checkerboard, glow outline, watermarks or borders.\n\nRequired camera view: Orbit the camera 12 degrees toward the pointed NOSE from a right-facing broadside side elevation. A shallow front-quarter view: reveal a little of the forward-facing nose and frontal surfaces, slight longitudinal foreshortening, almost level camera, no roll.\nReveal genuinely different surfaces and occlusions. Do not mirror, stretch, skew, recolor or rotate a copy of either reference bitmap.\nCRITICAL CAMERA DEFINITIONS: the reference top image is a construction map, NOT the target pose. Zero camera elevation means looking horizontally at the SIDE of the ship. Do not copy the overhead composition. At low elevation the far wing/nacelle overlaps behind the near wing/nacelle in projection; they should NOT spread into a full symmetric overhead V above and below the centerline. Reconstruct the ship in three dimensions with proper occlusion, rather than flattening the reference.\nFor this FRONT view specifically: camera elevation is 0 degrees, and yaw is 12 degrees toward the NOSE from a strict side-on view. The pointed nose at screen RIGHT is nearer the camera and the broad aft at screen LEFT recedes. The central blue exhaust aperture faces AWAY from a front observer: do not present it as a large frontal blue circle. Its original housing must remain physically mounted at the rear, naturally occluded as needed. Show the FRONT/right-facing nose surfaces, not the rear engine faces. A narrow roof strip may remain visible only as required by the reference hull curvature.",
+          "references": [
+            "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/upgrade-spaceship-profile.webp",
+            "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/upgrade-spaceship-top.webp"
+          ],
+          "targetCandidatePath": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/upgrade-spaceship/upgrade-spaceship-forward-quarter-shallow-v2.png",
+          "original": "/workspace/scratch/0c1fa1359efb/generated_images/exec-1a823dd0-8f15-4d83-a672-9126500b9a51.png",
+          "target": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/upgrade-spaceship/upgrade-spaceship-forward-quarter-shallow-v2.png",
+          "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/upgrade-spaceship/upgrade-spaceship-forward-quarter-shallow-v2.png",
+          "bytes": 1629761,
+          "sha256": "4f77f82755b0afb393a9345aca8bdaf218eaa2b60007960fb176c8e241db5e6e",
+          "width": 1536,
+          "height": 1024,
+          "mode": "RGBA",
+          "alphaExtrema": [
+            0,
+            254
+          ],
+          "transparentPixels": 1166391,
+          "partiallyTransparentPixels": 406473,
+          "pixelBytesChanged": false,
+          "reviewStatus": "rejected-pose-still-too-overhead",
+          "visualFinding": "The central aft aperture is less frontal, but broad dorsal exposure still dominates instead of the requested horizontal front camera.",
+          "referenceEvidence": [
+            {
+              "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/upgrade-spaceship-profile.webp",
+              "bytes": 94314,
+              "sha256": "6e8c05489366124e93b0fe6ab18450d44de9d2ac1e9943640ebe3dfbc37702f3",
+              "width": 1672,
+              "height": 941,
+              "sourceRole": "pinned-runtime-reference"
+            },
+            {
+              "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/upgrade-spaceship-top.webp",
+              "bytes": 152632,
+              "sha256": "d791e10f600e50ee90a7786ea9c42f5a78031ce5801c2f60aa2f7e97b4ff6dc4",
+              "width": 1672,
+              "height": 941,
+              "sourceRole": "pinned-runtime-reference"
+            }
+          ]
+        },
+        {
+          "id": "forward-quarter-shallow",
+          "attempt": 3,
+          "startedAt": "2026-11-06T04:51:07.100Z",
+          "completedAt": "2026-11-06T04:53:13.290Z",
+          "output_hint": "Generated images are saved to /workspace/scratch/0c1fa1359efb/generated_images as /workspace/scratch/0c1fa1359efb/generated_images/exec-8b760e0d-28a0-44f6-9bbe-3844c4e601a1.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+          "prompt": "CAMERA CHANGE IS THE MAIN TASK. Show the spaceship almost EDGE-ON from the FRONT-RIGHT, viewed horizontally at its side, with yaw only 12 degrees from exact side-on TOWARD THE POINTED NOSE. Elevation is ZERO. Its long narrow nose at screen RIGHT is nearer us; its wide aft at screen LEFT recedes away. The far wing and far orange nacelle overlap and are substantially hidden BEHIND the near wing. Show front-facing side/nose surfaces. The broad dorsal deck must be seen edge-on, not as an overhead V. Aft exhaust openings point AWAY from camera; no frontal blue circle facing us. Do NOT reuse the elevated top-view composition of the references. This is a slim horizontal side silhouette with a modest front reveal, not a top or rear view.\nKeep exactly the Upgrade/Assassin spaceship shown by the two reference images: sweeping wide aft arrowhead, long needle nose, dark scratched angular gray/black armor, inset red panel seams, TWO orange outer nacelle assemblies and ONE central BLUE aft engine, plus only the existing little blue-lit maneuvering mounts. These are identity/structure references, not target camera poses. The orange light surfaces within one nacelle do not create extra engines. No new engine, no plume, no human aircraft, no Wolf or Scout. One complete ship, nose RIGHT, aft LEFT. 1536x1024 RGBA with truly transparent background and margins, no ground or shadow plane or added surrounding glow. Reconstruct a genuine three-dimensional view, never distort a bitmap. Match detailed rendering/materials.",
+          "references": [
+            "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/upgrade-spaceship-profile.webp",
+            "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/upgrade-spaceship-top.webp"
+          ],
+          "targetCandidatePath": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/upgrade-spaceship/upgrade-spaceship-forward-quarter-shallow-v3.png",
+          "original": "/workspace/scratch/0c1fa1359efb/generated_images/exec-8b760e0d-28a0-44f6-9bbe-3844c4e601a1.png",
+          "target": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/upgrade-spaceship/upgrade-spaceship-forward-quarter-shallow-v3.png",
+          "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/upgrade-spaceship/upgrade-spaceship-forward-quarter-shallow-v3.png",
+          "bytes": 972548,
+          "sha256": "e7cef53e83bbe09816f6480d62646754b83f52d9e5ffa1633e6831a77b9c333e",
+          "width": 2172,
+          "height": 724,
+          "mode": "RGBA",
+          "alphaExtrema": [
+            0,
+            255
+          ],
+          "transparentPixels": 1154028,
+          "partiallyTransparentPixels": 417857,
+          "pixelBytesChanged": false,
+          "reviewStatus": "rejected-canvas-dimensions",
+          "visualFinding": "Front camera substantially improved, but tool returned2172x724 despite1536x1024 requested; keep as exact pose reference for a canvas correction.",
+          "referenceEvidence": [
+            {
+              "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/upgrade-spaceship-profile.webp",
+              "bytes": 94314,
+              "sha256": "6e8c05489366124e93b0fe6ab18450d44de9d2ac1e9943640ebe3dfbc37702f3",
+              "width": 1672,
+              "height": 941,
+              "sourceRole": "pinned-runtime-reference"
+            },
+            {
+              "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/upgrade-spaceship-top.webp",
+              "bytes": 152632,
+              "sha256": "d791e10f600e50ee90a7786ea9c42f5a78031ce5801c2f60aa2f7e97b4ff6dc4",
+              "width": 1672,
+              "height": 941,
+              "sourceRole": "pinned-runtime-reference"
+            }
+          ]
+        },
+        {
+          "id": "forward-quarter-shallow",
+          "attempt": 4,
+          "startedAt": "2026-11-06T04:54:17.172Z",
+          "completedAt": "2026-11-06T04:54:54.355Z",
+          "output_hint": "Generated images are saved to /workspace/scratch/0c1fa1359efb/generated_images as /workspace/scratch/0c1fa1359efb/generated_images/exec-e0884a2c-2527-492f-bd50-8f5290f8af58.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+          "prompt": "CANVAS MUST BE EXACTLY1536 pixels wide by1024 pixels high, landscape3:2. This is a transparent sprite with deliberately large empty transparent vertical margins, NOT a panoramic image. Recreate the provided spacecraft in EXACTLY THE SAME CAMERA POSE, orientation and design, centered inside that1536x1024 canvas. Preserve the nose to RIGHT, aft to LEFT, front-facing low camera, relative wing/nacelle occlusion, dark panels, red vents, two original orange nacelle assemblies, single central blue aft motor naturally hidden, and the existing small blue maneuvering mounts. Do not turn the camera upward. Do not add or duplicate hardware or engine emitters. Keep the complete ship inside the canvas with at least60px clear horizontal margin; let the thin ship occupy only the middle vertical band with generous transparent space above and below. One ship, truly transparent RGBA background, no floor, no shadow, no text. Match the image's perspective exactly; only the requested canvas/framing is different. Required output1536x1024, not2172x724.",
+          "references": [
+            "/workspace/scratch/0c1fa1359efb/generated_images/exec-8b760e0d-28a0-44f6-9bbe-3844c4e601a1.png"
+          ],
+          "targetCandidatePath": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/upgrade-spaceship/upgrade-spaceship-forward-quarter-shallow-v4.png",
+          "original": "/workspace/scratch/0c1fa1359efb/generated_images/exec-e0884a2c-2527-492f-bd50-8f5290f8af58.png",
+          "target": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/upgrade-spaceship/upgrade-spaceship-forward-quarter-shallow-v4.png",
+          "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/upgrade-spaceship/upgrade-spaceship-forward-quarter-shallow-v4.png",
+          "bytes": 1125888,
+          "sha256": "d264943c2b0274281b38ee0056896a0f4eb7cfa9ef685054c0fa96d8f9f1dec0",
+          "width": 1536,
+          "height": 1024,
+          "mode": "RGBA",
+          "alphaExtrema": [
+            0,
+            254
+          ],
+          "transparentPixels": 1362189,
+          "partiallyTransparentPixels": 210675,
+          "pixelBytesChanged": false,
+          "reviewStatus": "selected-candidate-not-artistic-approval",
+          "visualFinding": "The camera is now markedly lower than the rejected dorsal attempts, with a thin side silhouette, overlapping far nacelle and partly occluded aft blue assembly; nose points right. Nominal12deg is requested, not measured.",
+          "referenceEvidence": [
+            {
+              "path": "/workspace/scratch/0c1fa1359efb/generated_images/exec-8b760e0d-28a0-44f6-9bbe-3844c4e601a1.png",
+              "bytes": 972548,
+              "sha256": "e7cef53e83bbe09816f6480d62646754b83f52d9e5ffa1633e6831a77b9c333e",
+              "width": 2172,
+              "height": 724,
+              "sourceRole": "previous-generated-candidate"
+            }
+          ]
+        }
+      ],
+      "selected": {
+        "id": "forward-quarter-shallow",
+        "direction": "front",
+        "nominalDegrees": 12,
+        "selectedAttempt": 4,
+        "originalGeneratedPath": "/workspace/scratch/0c1fa1359efb/generated_images/exec-e0884a2c-2527-492f-bd50-8f5290f8af58.png",
+        "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/upgrade-spaceship/candidates/upgrade-spaceship-forward-quarter-shallow.png",
+        "bytes": 1125888,
+        "sha256": "d264943c2b0274281b38ee0056896a0f4eb7cfa9ef685054c0fa96d8f9f1dec0",
+        "gitBlobSha1": "3924ddc05afe4f855ecce3a57ea5a9370f943fbe",
+        "rgbaSha256": "cee26a5770caf7fb09a753e8e928e85eb02eabe55244e583a7a1b4c37ba1933a",
+        "alphaSha256": "e6590592a0f1c00ddc6d51bee9b76d78ed600a6623edb4ab03b0c3108e885aa6",
+        "width": 1536,
+        "height": 1024,
+        "mode": "RGBA",
+        "pixelBytesChanged": false,
+        "alphaReview": {
+          "alphaExtrema": [
+            0,
+            254
+          ],
+          "zeroPixels": 1362189,
+          "partialPixels": 210675,
+          "fullyOpaquePixels": 0,
+          "nearOpaquePixels250plus": 184609,
+          "lowAlphaPixels1to8": 14712,
+          "rgbNonzeroUnderAlphaZero": 816584,
+          "boundsAtAlpha": {
+            "1": [
+              33,
+              163,
+              1522,
+              990
+            ],
+            "8": [
+              81,
+              397,
+              1503,
+              635
+            ],
+            "128": [
+              81,
+              398,
+              1502,
+              634
+            ],
+            "250": [
+              84,
+              400,
+              1487,
+              633
+            ]
+          },
+          "outsideNearOpaqueBoundsNonzeroAlpha": 4679,
+          "outsideNearOpaqueBoundsMaxAlpha": 249,
+          "corner64pxAlphaMax": {
+            "topLeft": 0,
+            "topRight": 0,
+            "bottomLeft": 0,
+            "bottomRight": 0
+          },
+          "samples": {
+            "768,100": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "768,250": [
+              2,
+              1,
+              2,
+              0
+            ],
+            "100,100": [
+              1,
+              0,
+              0,
+              0
+            ],
+            "1400,250": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "768,900": [
+              0,
+              0,
+              0,
+              0
+            ]
+          }
+        },
+        "visualInspectionPerformed": true,
+        "visualFinding": "The camera is now markedly lower than the rejected dorsal attempts, with a thin side silhouette, overlapping far nacelle and partly occluded aft blue assembly; nose points right. Nominal12deg is requested, not measured.",
+        "reviewStatus": "candidate-pending-independent-review-and-calibration"
+      }
+    },
+    {
+      "id": "forward-quarter",
+      "direction": "front",
+      "degrees": 25,
+      "prompt": "Use case: stylized-concept.\nAsset type: one individual transparent game-cinematic sprite, candidate for Yautja The Long Hunt.\nCanvas exactly 1536 x 1024 pixels, landscape, true RGBA transparent background.\nInput images are identity references of the UPGRADE/ASSASSIN spaceship, not bitmaps to rotate. Image 1 locks the construction/materials and existing maneuvering mounts. Image 2 locks the dorsal planform, the nose-to-aft axis, and principal propulsion layout. Generate a new coherent 3D camera view of THIS exact craft.\nIdentity: broad swept arrowhead rear, very long narrow sharp pointed nose, dark scratched gray/black angular armor with metallic edge highlights, deep red inset lines and dorsal vents, the exact layered panel construction and existing small blue-lit rotatable maneuvering units. Preserve the original proportions and the same attached hardware; do not substitute the Fugitive, Wolf, Scout, classic Predator ship, or a human stealth aircraft.\nPrincipal propulsion layout is EXACTLY TWO OUTER ORANGE NACELLE ASSEMBLIES plus ONE CENTRAL BLUE ENGINE between them at the aft. This is not three identical orange circular reactors. Each outer nacelle can reveal more than one illuminated surface of its same original housing; do not mistake these surfaces for permission to add another nacelle. Preserve the original housings, the one blue central aperture, original orange/red color and their locations from image 2. Respect natural occlusion: a hidden engine need not be forced into view. The smaller maneuvering units remain the existing reference units, without multiplication. No new thrusters, duplicated orange pods, engine plumes or separate VFX.\nOrientation and framing: sharp NOSE to screen RIGHT; broad aft and main engine group to screen LEFT. Center one complete ship near (768,512), with transparent margins around every wing edge and maneuvering mount. Keep the longitudinal axis close to horizontal and preserve comparable world scale across the eight views, allowing genuine perspective foreshortening. No collage, multiple ships, labels or text.\nStyle: detailed realistic 3D cutout matching the supplied references, restrained red/cyan-blue/orange embedded lights, neutral soft illumination, dark metallic armor. No background, ground, cast-shadow plane, checkerboard, glow outline, watermarks or borders.\n\nRequired camera view: Orbit the camera 25 degrees toward the pointed NOSE from a right-facing broadside side elevation. A stronger front-quarter view: visibly more front-facing surfaces and greater foreshortening than the 12-degree view, almost level camera, no roll. Nose must still project RIGHT.\nReveal genuinely different surfaces and occlusions. Do not mirror, stretch, skew, recolor or rotate a copy of either reference bitmap.",
+      "references": [
+        "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/upgrade-spaceship-profile.webp",
+        "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/upgrade-spaceship-top.webp"
+      ],
+      "transparentBackground": true,
+      "targetCandidatePath": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/upgrade-spaceship/upgrade-spaceship-forward-quarter.png",
+      "status": "generated-candidate",
+      "reviewStatus": "candidate-before-QA",
+      "attempts": [
+        {
+          "id": "forward-quarter",
+          "attempt": 1,
+          "original": "/workspace/scratch/0c1fa1359efb/generated_images/exec-40c98b06-5943-43ef-8617-dd01eda17a8d.png",
+          "target": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/upgrade-spaceship/upgrade-spaceship-forward-quarter.png",
+          "startedAt": "2026-11-06T04:35:17.297Z",
+          "completedAt": "2026-11-06T04:37:26.001Z",
+          "output_hint": "Generated images are saved to /workspace/scratch/0c1fa1359efb/generated_images as /workspace/scratch/0c1fa1359efb/generated_images/exec-40c98b06-5943-43ef-8617-dd01eda17a8d.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+          "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/upgrade-spaceship/upgrade-spaceship-forward-quarter.png",
+          "bytes": 1947323,
+          "sha256": "aebdad2de39c1b1bbefd038bbdd7be2e1e9c5ee577e34d61dbe53dbd6a9b3909",
+          "width": 1536,
+          "height": 1024,
+          "mode": "RGBA",
+          "alphaExtrema": [
+            0,
+            254
+          ],
+          "transparentPixels": 1011139,
+          "partiallyTransparentPixels": 561725,
+          "pixelBytesChanged": false,
+          "prompt": "Use case: stylized-concept.\nAsset type: one individual transparent game-cinematic sprite, candidate for Yautja The Long Hunt.\nCanvas exactly 1536 x 1024 pixels, landscape, true RGBA transparent background.\nInput images are identity references of the UPGRADE/ASSASSIN spaceship, not bitmaps to rotate. Image 1 locks the construction/materials and existing maneuvering mounts. Image 2 locks the dorsal planform, the nose-to-aft axis, and principal propulsion layout. Generate a new coherent 3D camera view of THIS exact craft.\nIdentity: broad swept arrowhead rear, very long narrow sharp pointed nose, dark scratched gray/black angular armor with metallic edge highlights, deep red inset lines and dorsal vents, the exact layered panel construction and existing small blue-lit rotatable maneuvering units. Preserve the original proportions and the same attached hardware; do not substitute the Fugitive, Wolf, Scout, classic Predator ship, or a human stealth aircraft.\nPrincipal propulsion layout is EXACTLY TWO OUTER ORANGE NACELLE ASSEMBLIES plus ONE CENTRAL BLUE ENGINE between them at the aft. This is not three identical orange circular reactors. Each outer nacelle can reveal more than one illuminated surface of its same original housing; do not mistake these surfaces for permission to add another nacelle. Preserve the original housings, the one blue central aperture, original orange/red color and their locations from image 2. Respect natural occlusion: a hidden engine need not be forced into view. The smaller maneuvering units remain the existing reference units, without multiplication. No new thrusters, duplicated orange pods, engine plumes or separate VFX.\nOrientation and framing: sharp NOSE to screen RIGHT; broad aft and main engine group to screen LEFT. Center one complete ship near (768,512), with transparent margins around every wing edge and maneuvering mount. Keep the longitudinal axis close to horizontal and preserve comparable world scale across the eight views, allowing genuine perspective foreshortening. No collage, multiple ships, labels or text.\nStyle: detailed realistic 3D cutout matching the supplied references, restrained red/cyan-blue/orange embedded lights, neutral soft illumination, dark metallic armor. No background, ground, cast-shadow plane, checkerboard, glow outline, watermarks or borders.\n\nRequired camera view: Orbit the camera 25 degrees toward the pointed NOSE from a right-facing broadside side elevation. A stronger front-quarter view: visibly more front-facing surfaces and greater foreshortening than the 12-degree view, almost level camera, no roll. Nose must still project RIGHT.\nReveal genuinely different surfaces and occlusions. Do not mirror, stretch, skew, recolor or rotate a copy of either reference bitmap.",
+          "references": [
+            "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/upgrade-spaceship-profile.webp",
+            "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/upgrade-spaceship-top.webp"
+          ],
+          "reviewStatus": "rejected-pose-too-overhead",
+          "visualFinding": "Aft blue engine face dominates and the camera remains overhead/rear-biased instead of the requested front quarter.",
+          "referenceEvidence": [
+            {
+              "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/upgrade-spaceship-profile.webp",
+              "bytes": 94314,
+              "sha256": "6e8c05489366124e93b0fe6ab18450d44de9d2ac1e9943640ebe3dfbc37702f3",
+              "width": 1672,
+              "height": 941,
+              "sourceRole": "pinned-runtime-reference"
+            },
+            {
+              "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/upgrade-spaceship-top.webp",
+              "bytes": 152632,
+              "sha256": "d791e10f600e50ee90a7786ea9c42f5a78031ce5801c2f60aa2f7e97b4ff6dc4",
+              "width": 1672,
+              "height": 941,
+              "sourceRole": "pinned-runtime-reference"
+            }
+          ]
+        },
+        {
+          "id": "forward-quarter",
+          "attempt": 2,
+          "startedAt": "2026-11-06T04:39:39.608Z",
+          "completedAt": "2026-11-06T04:41:46.405Z",
+          "output_hint": "Generated images are saved to /workspace/scratch/0c1fa1359efb/generated_images as /workspace/scratch/0c1fa1359efb/generated_images/exec-36df58d4-aa76-491d-a149-afd43ef5270e.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+          "prompt": "Use case: stylized-concept.\nAsset type: one individual transparent game-cinematic sprite, candidate for Yautja The Long Hunt.\nCanvas exactly 1536 x 1024 pixels, landscape, true RGBA transparent background.\nInput images are identity references of the UPGRADE/ASSASSIN spaceship, not bitmaps to rotate. Image 1 locks the construction/materials and existing maneuvering mounts. Image 2 locks the dorsal planform, the nose-to-aft axis, and principal propulsion layout. Generate a new coherent 3D camera view of THIS exact craft.\nIdentity: broad swept arrowhead rear, very long narrow sharp pointed nose, dark scratched gray/black angular armor with metallic edge highlights, deep red inset lines and dorsal vents, the exact layered panel construction and existing small blue-lit rotatable maneuvering units. Preserve the original proportions and the same attached hardware; do not substitute the Fugitive, Wolf, Scout, classic Predator ship, or a human stealth aircraft.\nPrincipal propulsion layout is EXACTLY TWO OUTER ORANGE NACELLE ASSEMBLIES plus ONE CENTRAL BLUE ENGINE between them at the aft. This is not three identical orange circular reactors. Each outer nacelle can reveal more than one illuminated surface of its same original housing; do not mistake these surfaces for permission to add another nacelle. Preserve the original housings, the one blue central aperture, original orange/red color and their locations from image 2. Respect natural occlusion: a hidden engine need not be forced into view. The smaller maneuvering units remain the existing reference units, without multiplication. No new thrusters, duplicated orange pods, engine plumes or separate VFX.\nOrientation and framing: sharp NOSE to screen RIGHT; broad aft and main engine group to screen LEFT. Center one complete ship near (768,512), with transparent margins around every wing edge and maneuvering mount. Keep the longitudinal axis close to horizontal and preserve comparable world scale across the eight views, allowing genuine perspective foreshortening. No collage, multiple ships, labels or text.\nStyle: detailed realistic 3D cutout matching the supplied references, restrained red/cyan-blue/orange embedded lights, neutral soft illumination, dark metallic armor. No background, ground, cast-shadow plane, checkerboard, glow outline, watermarks or borders.\n\nRequired camera view: Orbit the camera 25 degrees toward the pointed NOSE from a right-facing broadside side elevation. A stronger front-quarter view: visibly more front-facing surfaces and greater foreshortening than the 12-degree view, almost level camera, no roll. Nose must still project RIGHT.\nReveal genuinely different surfaces and occlusions. Do not mirror, stretch, skew, recolor or rotate a copy of either reference bitmap.\nCRITICAL CAMERA DEFINITIONS: the reference top image is a construction map, NOT the target pose. Zero camera elevation means looking horizontally at the SIDE of the ship. Do not copy the overhead composition. At low elevation the far wing/nacelle overlaps behind the near wing/nacelle in projection; they should NOT spread into a full symmetric overhead V above and below the centerline. Reconstruct the ship in three dimensions with proper occlusion, rather than flattening the reference.\nFor this FRONT view specifically: camera elevation is 0 degrees, and yaw is 25 degrees toward the NOSE from a strict side-on view. The pointed nose at screen RIGHT is nearer the camera and the broad aft at screen LEFT recedes. The central blue exhaust aperture faces AWAY from a front observer: do not present it as a large frontal blue circle. Its original housing must remain physically mounted at the rear, naturally occluded as needed. Show the FRONT/right-facing nose surfaces, not the rear engine faces. A narrow roof strip may remain visible only as required by the reference hull curvature.",
+          "references": [
+            "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/upgrade-spaceship-profile.webp",
+            "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/upgrade-spaceship-top.webp"
+          ],
+          "targetCandidatePath": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/upgrade-spaceship/upgrade-spaceship-forward-quarter-v2.png",
+          "original": "/workspace/scratch/0c1fa1359efb/generated_images/exec-36df58d4-aa76-491d-a149-afd43ef5270e.png",
+          "target": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/upgrade-spaceship/upgrade-spaceship-forward-quarter-v2.png",
+          "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/upgrade-spaceship/upgrade-spaceship-forward-quarter-v2.png",
+          "bytes": 1724278,
+          "sha256": "862206ca7e473f7a7eb8b21bc27bdfa99ac3c9393925b4847a67b747be653b6a",
+          "width": 1536,
+          "height": 1024,
+          "mode": "RGBA",
+          "alphaExtrema": [
+            0,
+            254
+          ],
+          "transparentPixels": 1117527,
+          "partiallyTransparentPixels": 455337,
+          "pixelBytesChanged": false,
+          "reviewStatus": "rejected-pose-still-too-overhead",
+          "visualFinding": "The central aft aperture is less frontal, but broad dorsal exposure still dominates instead of the requested horizontal front camera.",
+          "referenceEvidence": [
+            {
+              "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/upgrade-spaceship-profile.webp",
+              "bytes": 94314,
+              "sha256": "6e8c05489366124e93b0fe6ab18450d44de9d2ac1e9943640ebe3dfbc37702f3",
+              "width": 1672,
+              "height": 941,
+              "sourceRole": "pinned-runtime-reference"
+            },
+            {
+              "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/upgrade-spaceship-top.webp",
+              "bytes": 152632,
+              "sha256": "d791e10f600e50ee90a7786ea9c42f5a78031ce5801c2f60aa2f7e97b4ff6dc4",
+              "width": 1672,
+              "height": 941,
+              "sourceRole": "pinned-runtime-reference"
+            }
+          ]
+        },
+        {
+          "id": "forward-quarter",
+          "attempt": 3,
+          "startedAt": "2026-11-06T04:51:07.100Z",
+          "completedAt": "2026-11-06T04:51:42.553Z",
+          "output_hint": "Generated images are saved to /workspace/scratch/0c1fa1359efb/generated_images as /workspace/scratch/0c1fa1359efb/generated_images/exec-d4dcf19d-5f7e-4f60-8321-70719caf761c.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+          "prompt": "CAMERA CHANGE IS THE MAIN TASK. Show the spaceship almost EDGE-ON from the FRONT-RIGHT, viewed horizontally at its side, with yaw 25 degrees from exact side-on TOWARD THE POINTED NOSE. Elevation is ZERO. Its long narrow nose at screen RIGHT projects closer to us; its broad aft at screen LEFT recedes away, with noticeable longitudinal foreshortening. The far wing and far orange nacelle overlap BEHIND the near wing and are mostly occluded. Clearly show front-facing nose/side geometry. The dorsal deck is viewed edge-on, not spread out as an overhead V. Aft exhaust openings point AWAY from camera; do not present a frontal blue aperture to us. Do NOT reuse the elevated top-view reference composition. This is a low front quarter of the same craft, not a top or rear view.\nKeep exactly the Upgrade/Assassin spaceship shown by the two reference images: sweeping wide aft arrowhead, long needle nose, dark scratched angular gray/black armor, inset red panel seams, TWO orange outer nacelle assemblies and ONE central BLUE aft engine, plus only the existing little blue-lit maneuvering mounts. These are identity/structure references, not target camera poses. The orange light surfaces within one nacelle do not create extra engines. No new engine, no plume, no human aircraft, no Wolf or Scout. One complete ship, nose RIGHT, aft LEFT. 1536x1024 RGBA with truly transparent background and margins, no ground or shadow plane or added surrounding glow. Reconstruct a genuine three-dimensional view, never distort a bitmap. Match detailed rendering/materials.",
+          "references": [
+            "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/upgrade-spaceship-profile.webp",
+            "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/upgrade-spaceship-top.webp"
+          ],
+          "targetCandidatePath": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/upgrade-spaceship/upgrade-spaceship-forward-quarter-v3.png",
+          "original": "/workspace/scratch/0c1fa1359efb/generated_images/exec-d4dcf19d-5f7e-4f60-8321-70719caf761c.png",
+          "target": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/upgrade-spaceship/upgrade-spaceship-forward-quarter-v3.png",
+          "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/upgrade-spaceship/upgrade-spaceship-forward-quarter-v3.png",
+          "bytes": 1109535,
+          "sha256": "6e0c894141b3ea86dad69675f8b677987661740ad6089db61f9ec6ef0844124f",
+          "width": 2172,
+          "height": 724,
+          "mode": "RGBA",
+          "alphaExtrema": [
+            0,
+            255
+          ],
+          "transparentPixels": 1098852,
+          "partiallyTransparentPixels": 473164,
+          "pixelBytesChanged": false,
+          "reviewStatus": "rejected-canvas-dimensions",
+          "visualFinding": "Front camera substantially improved, but tool returned2172x724 despite1536x1024 requested; keep as exact pose reference for a canvas correction.",
+          "referenceEvidence": [
+            {
+              "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/upgrade-spaceship-profile.webp",
+              "bytes": 94314,
+              "sha256": "6e8c05489366124e93b0fe6ab18450d44de9d2ac1e9943640ebe3dfbc37702f3",
+              "width": 1672,
+              "height": 941,
+              "sourceRole": "pinned-runtime-reference"
+            },
+            {
+              "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/upgrade-spaceship-top.webp",
+              "bytes": 152632,
+              "sha256": "d791e10f600e50ee90a7786ea9c42f5a78031ce5801c2f60aa2f7e97b4ff6dc4",
+              "width": 1672,
+              "height": 941,
+              "sourceRole": "pinned-runtime-reference"
+            }
+          ]
+        },
+        {
+          "id": "forward-quarter",
+          "attempt": 4,
+          "startedAt": "2026-11-06T04:54:17.172Z",
+          "completedAt": "2026-11-06T04:55:31.055Z",
+          "output_hint": "Generated images are saved to /workspace/scratch/0c1fa1359efb/generated_images as /workspace/scratch/0c1fa1359efb/generated_images/exec-9169d71d-ef20-49cc-bf08-b83f33d90741.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+          "prompt": "CANVAS MUST BE EXACTLY1536 pixels wide by1024 pixels high, landscape3:2. This is a transparent sprite with deliberately large empty transparent vertical margins, NOT a panoramic image. Recreate the provided spacecraft in EXACTLY THE SAME CAMERA POSE, orientation and design, centered inside that1536x1024 canvas. Preserve the nose to RIGHT, aft to LEFT, front-facing low camera, relative wing/nacelle occlusion, dark panels, red vents, two original orange nacelle assemblies, single central blue aft motor naturally hidden, and the existing small blue maneuvering mounts. Do not turn the camera upward. Do not add or duplicate hardware or engine emitters. Keep the complete ship inside the canvas with at least60px clear horizontal margin; let the thin ship occupy only the middle vertical band with generous transparent space above and below. One ship, truly transparent RGBA background, no floor, no shadow, no text. Match the image's perspective exactly; only the requested canvas/framing is different. Required output1536x1024, not2172x724.",
+          "references": [
+            "/workspace/scratch/0c1fa1359efb/generated_images/exec-d4dcf19d-5f7e-4f60-8321-70719caf761c.png"
+          ],
+          "targetCandidatePath": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/upgrade-spaceship/upgrade-spaceship-forward-quarter-v4.png",
+          "original": "/workspace/scratch/0c1fa1359efb/generated_images/exec-9169d71d-ef20-49cc-bf08-b83f33d90741.png",
+          "target": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/upgrade-spaceship/upgrade-spaceship-forward-quarter-v4.png",
+          "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/upgrade-spaceship/upgrade-spaceship-forward-quarter-v4.png",
+          "bytes": 1171519,
+          "sha256": "898f77fad5f3d6525d12ef17cd7b2b9e76749a1b46d190fd1e3b233c266fcc4e",
+          "width": 1536,
+          "height": 1024,
+          "mode": "RGBA",
+          "alphaExtrema": [
+            0,
+            254
+          ],
+          "transparentPixels": 1347712,
+          "partiallyTransparentPixels": 225152,
+          "pixelBytesChanged": false,
+          "reviewStatus": "selected-candidate-not-artistic-approval",
+          "visualFinding": "Low front-quarter candidate, more forward nose/side reveal than the shallow view; aft central blue assembly is naturally occluded. Shape and orange nacelle pair retained. Nominal25deg is not metrically measured.",
+          "referenceEvidence": [
+            {
+              "path": "/workspace/scratch/0c1fa1359efb/generated_images/exec-d4dcf19d-5f7e-4f60-8321-70719caf761c.png",
+              "bytes": 1109535,
+              "sha256": "6e0c894141b3ea86dad69675f8b677987661740ad6089db61f9ec6ef0844124f",
+              "width": 2172,
+              "height": 724,
+              "sourceRole": "previous-generated-candidate"
+            }
+          ]
+        }
+      ],
+      "selected": {
+        "id": "forward-quarter",
+        "direction": "front",
+        "nominalDegrees": 25,
+        "selectedAttempt": 4,
+        "originalGeneratedPath": "/workspace/scratch/0c1fa1359efb/generated_images/exec-9169d71d-ef20-49cc-bf08-b83f33d90741.png",
+        "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/upgrade-spaceship/candidates/upgrade-spaceship-forward-quarter.png",
+        "bytes": 1171519,
+        "sha256": "898f77fad5f3d6525d12ef17cd7b2b9e76749a1b46d190fd1e3b233c266fcc4e",
+        "gitBlobSha1": "8c19fcf2ea41586befa1b4fda7810b50903e9506",
+        "rgbaSha256": "513ff9e5699d4d18fd7a79744b965f880b7c1b9ea78e754e79c016904a86fdbd",
+        "alphaSha256": "b5a3303e9121d0ba561c710b36a4ddaa0fd0a92cb7c10c09918456a460c59abe",
+        "width": 1536,
+        "height": 1024,
+        "mode": "RGBA",
+        "pixelBytesChanged": false,
+        "alphaReview": {
+          "alphaExtrema": [
+            0,
+            254
+          ],
+          "zeroPixels": 1347712,
+          "partialPixels": 225152,
+          "fullyOpaquePixels": 0,
+          "nearOpaquePixels250plus": 205617,
+          "lowAlphaPixels1to8": 11681,
+          "rgbNonzeroUnderAlphaZero": 787408,
+          "boundsAtAlpha": {
+            "1": [
+              0,
+              0,
+              1470,
+              968
+            ],
+            "8": [
+              77,
+              383,
+              1466,
+              654
+            ],
+            "128": [
+              77,
+              384,
+              1465,
+              653
+            ],
+            "250": [
+              79,
+              385,
+              1463,
+              652
+            ]
+          },
+          "outsideNearOpaqueBoundsNonzeroAlpha": 2343,
+          "outsideNearOpaqueBoundsMaxAlpha": 248,
+          "corner64pxAlphaMax": {
+            "topLeft": 1,
+            "topRight": 0,
+            "bottomLeft": 0,
+            "bottomRight": 0
+          },
+          "samples": {
+            "768,100": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "768,250": [
+              3,
+              4,
+              4,
+              0
+            ],
+            "100,100": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "1400,250": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "768,900": [
+              0,
+              0,
+              0,
+              0
+            ]
+          }
+        },
+        "visualInspectionPerformed": true,
+        "visualFinding": "Low front-quarter candidate, more forward nose/side reveal than the shallow view; aft central blue assembly is naturally occluded. Shape and orange nacelle pair retained. Nominal25deg is not metrically measured.",
+        "reviewStatus": "candidate-pending-independent-review-and-calibration"
+      }
+    },
+    {
+      "id": "bank-dorsal-shallow",
+      "direction": "dorsal",
+      "degrees": 12,
+      "prompt": "Use case: stylized-concept.\nAsset type: one individual transparent game-cinematic sprite, candidate for Yautja The Long Hunt.\nCanvas exactly 1536 x 1024 pixels, landscape, true RGBA transparent background.\nInput images are identity references of the UPGRADE/ASSASSIN spaceship, not bitmaps to rotate. Image 1 locks the construction/materials and existing maneuvering mounts. Image 2 locks the dorsal planform, the nose-to-aft axis, and principal propulsion layout. Generate a new coherent 3D camera view of THIS exact craft.\nIdentity: broad swept arrowhead rear, very long narrow sharp pointed nose, dark scratched gray/black angular armor with metallic edge highlights, deep red inset lines and dorsal vents, the exact layered panel construction and existing small blue-lit rotatable maneuvering units. Preserve the original proportions and the same attached hardware; do not substitute the Fugitive, Wolf, Scout, classic Predator ship, or a human stealth aircraft.\nPrincipal propulsion layout is EXACTLY TWO OUTER ORANGE NACELLE ASSEMBLIES plus ONE CENTRAL BLUE ENGINE between them at the aft. This is not three identical orange circular reactors. Each outer nacelle can reveal more than one illuminated surface of its same original housing; do not mistake these surfaces for permission to add another nacelle. Preserve the original housings, the one blue central aperture, original orange/red color and their locations from image 2. Respect natural occlusion: a hidden engine need not be forced into view. The smaller maneuvering units remain the existing reference units, without multiplication. No new thrusters, duplicated orange pods, engine plumes or separate VFX.\nOrientation and framing: sharp NOSE to screen RIGHT; broad aft and main engine group to screen LEFT. Center one complete ship near (768,512), with transparent margins around every wing edge and maneuvering mount. Keep the longitudinal axis close to horizontal and preserve comparable world scale across the eight views, allowing genuine perspective foreshortening. No collage, multiple ships, labels or text.\nStyle: detailed realistic 3D cutout matching the supplied references, restrained red/cyan-blue/orange embedded lights, neutral soft illumination, dark metallic armor. No background, ground, cast-shadow plane, checkerboard, glow outline, watermarks or borders.\n\nRequired camera view: Raise the camera 12 degrees ABOVE a right-facing broadside side elevation, without front/rear yaw. Reveal a shallow strip of the upper deck and its red vents/plate geometry. Longitudinal axis stays horizontal; no 2D roll.\nReveal genuinely different surfaces and occlusions. Do not mirror, stretch, skew, recolor or rotate a copy of either reference bitmap.",
+      "references": [
+        "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/upgrade-spaceship-profile.webp",
+        "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/upgrade-spaceship-top.webp"
+      ],
+      "transparentBackground": true,
+      "targetCandidatePath": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/upgrade-spaceship/upgrade-spaceship-bank-dorsal-shallow.png",
+      "status": "generated-candidate",
+      "reviewStatus": "candidate-before-QA",
+      "attempts": [
+        {
+          "id": "bank-dorsal-shallow",
+          "attempt": 1,
+          "original": "/workspace/scratch/0c1fa1359efb/generated_images/exec-b2edc612-74e3-4791-99f3-91f3ecac56b2.png",
+          "target": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/upgrade-spaceship/upgrade-spaceship-bank-dorsal-shallow.png",
+          "startedAt": "2026-11-06T04:35:17.298Z",
+          "completedAt": "2026-11-06T04:36:40.067Z",
+          "output_hint": "Generated images are saved to /workspace/scratch/0c1fa1359efb/generated_images as /workspace/scratch/0c1fa1359efb/generated_images/exec-b2edc612-74e3-4791-99f3-91f3ecac56b2.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+          "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/upgrade-spaceship/upgrade-spaceship-bank-dorsal-shallow.png",
+          "bytes": 1644187,
+          "sha256": "076a738397a7f9960446c6da523655cea5fc665bdaaaeb3608e211fdf48b68ec",
+          "width": 1536,
+          "height": 1024,
+          "mode": "RGBA",
+          "alphaExtrema": [
+            0,
+            254
+          ],
+          "transparentPixels": 1161633,
+          "partiallyTransparentPixels": 411231,
+          "pixelBytesChanged": false,
+          "prompt": "Use case: stylized-concept.\nAsset type: one individual transparent game-cinematic sprite, candidate for Yautja The Long Hunt.\nCanvas exactly 1536 x 1024 pixels, landscape, true RGBA transparent background.\nInput images are identity references of the UPGRADE/ASSASSIN spaceship, not bitmaps to rotate. Image 1 locks the construction/materials and existing maneuvering mounts. Image 2 locks the dorsal planform, the nose-to-aft axis, and principal propulsion layout. Generate a new coherent 3D camera view of THIS exact craft.\nIdentity: broad swept arrowhead rear, very long narrow sharp pointed nose, dark scratched gray/black angular armor with metallic edge highlights, deep red inset lines and dorsal vents, the exact layered panel construction and existing small blue-lit rotatable maneuvering units. Preserve the original proportions and the same attached hardware; do not substitute the Fugitive, Wolf, Scout, classic Predator ship, or a human stealth aircraft.\nPrincipal propulsion layout is EXACTLY TWO OUTER ORANGE NACELLE ASSEMBLIES plus ONE CENTRAL BLUE ENGINE between them at the aft. This is not three identical orange circular reactors. Each outer nacelle can reveal more than one illuminated surface of its same original housing; do not mistake these surfaces for permission to add another nacelle. Preserve the original housings, the one blue central aperture, original orange/red color and their locations from image 2. Respect natural occlusion: a hidden engine need not be forced into view. The smaller maneuvering units remain the existing reference units, without multiplication. No new thrusters, duplicated orange pods, engine plumes or separate VFX.\nOrientation and framing: sharp NOSE to screen RIGHT; broad aft and main engine group to screen LEFT. Center one complete ship near (768,512), with transparent margins around every wing edge and maneuvering mount. Keep the longitudinal axis close to horizontal and preserve comparable world scale across the eight views, allowing genuine perspective foreshortening. No collage, multiple ships, labels or text.\nStyle: detailed realistic 3D cutout matching the supplied references, restrained red/cyan-blue/orange embedded lights, neutral soft illumination, dark metallic armor. No background, ground, cast-shadow plane, checkerboard, glow outline, watermarks or borders.\n\nRequired camera view: Raise the camera 12 degrees ABOVE a right-facing broadside side elevation, without front/rear yaw. Reveal a shallow strip of the upper deck and its red vents/plate geometry. Longitudinal axis stays horizontal; no 2D roll.\nReveal genuinely different surfaces and occlusions. Do not mirror, stretch, skew, recolor or rotate a copy of either reference bitmap.",
+          "references": [
+            "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/upgrade-spaceship-profile.webp",
+            "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/upgrade-spaceship-top.webp"
+          ],
+          "reviewStatus": "rejected-pose-too-overhead",
+          "visualFinding": "Full dorsal planform is too exposed for the requested shallow 12-degree above-broadside camera.",
+          "referenceEvidence": [
+            {
+              "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/upgrade-spaceship-profile.webp",
+              "bytes": 94314,
+              "sha256": "6e8c05489366124e93b0fe6ab18450d44de9d2ac1e9943640ebe3dfbc37702f3",
+              "width": 1672,
+              "height": 941,
+              "sourceRole": "pinned-runtime-reference"
+            },
+            {
+              "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/upgrade-spaceship-top.webp",
+              "bytes": 152632,
+              "sha256": "d791e10f600e50ee90a7786ea9c42f5a78031ce5801c2f60aa2f7e97b4ff6dc4",
+              "width": 1672,
+              "height": 941,
+              "sourceRole": "pinned-runtime-reference"
+            }
+          ]
+        },
+        {
+          "id": "bank-dorsal-shallow",
+          "attempt": 2,
+          "startedAt": "2026-11-06T04:39:39.608Z",
+          "completedAt": "2026-11-06T04:42:31.957Z",
+          "output_hint": "Generated images are saved to /workspace/scratch/0c1fa1359efb/generated_images as /workspace/scratch/0c1fa1359efb/generated_images/exec-0d87d490-b163-45dc-8e09-a188388ebf65.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+          "prompt": "Use case: stylized-concept.\nAsset type: one individual transparent game-cinematic sprite, candidate for Yautja The Long Hunt.\nCanvas exactly 1536 x 1024 pixels, landscape, true RGBA transparent background.\nInput images are identity references of the UPGRADE/ASSASSIN spaceship, not bitmaps to rotate. Image 1 locks the construction/materials and existing maneuvering mounts. Image 2 locks the dorsal planform, the nose-to-aft axis, and principal propulsion layout. Generate a new coherent 3D camera view of THIS exact craft.\nIdentity: broad swept arrowhead rear, very long narrow sharp pointed nose, dark scratched gray/black angular armor with metallic edge highlights, deep red inset lines and dorsal vents, the exact layered panel construction and existing small blue-lit rotatable maneuvering units. Preserve the original proportions and the same attached hardware; do not substitute the Fugitive, Wolf, Scout, classic Predator ship, or a human stealth aircraft.\nPrincipal propulsion layout is EXACTLY TWO OUTER ORANGE NACELLE ASSEMBLIES plus ONE CENTRAL BLUE ENGINE between them at the aft. This is not three identical orange circular reactors. Each outer nacelle can reveal more than one illuminated surface of its same original housing; do not mistake these surfaces for permission to add another nacelle. Preserve the original housings, the one blue central aperture, original orange/red color and their locations from image 2. Respect natural occlusion: a hidden engine need not be forced into view. The smaller maneuvering units remain the existing reference units, without multiplication. No new thrusters, duplicated orange pods, engine plumes or separate VFX.\nOrientation and framing: sharp NOSE to screen RIGHT; broad aft and main engine group to screen LEFT. Center one complete ship near (768,512), with transparent margins around every wing edge and maneuvering mount. Keep the longitudinal axis close to horizontal and preserve comparable world scale across the eight views, allowing genuine perspective foreshortening. No collage, multiple ships, labels or text.\nStyle: detailed realistic 3D cutout matching the supplied references, restrained red/cyan-blue/orange embedded lights, neutral soft illumination, dark metallic armor. No background, ground, cast-shadow plane, checkerboard, glow outline, watermarks or borders.\n\nRequired camera view: Raise the camera 12 degrees ABOVE a right-facing broadside side elevation, without front/rear yaw. Reveal a shallow strip of the upper deck and its red vents/plate geometry. Longitudinal axis stays horizontal; no 2D roll.\nReveal genuinely different surfaces and occlusions. Do not mirror, stretch, skew, recolor or rotate a copy of either reference bitmap.\nCRITICAL CAMERA DEFINITIONS: the reference top image is a construction map, NOT the target pose. Zero camera elevation means looking horizontally at the SIDE of the ship. Do not copy the overhead composition. At low elevation the far wing/nacelle overlaps behind the near wing/nacelle in projection; they should NOT spread into a full symmetric overhead V above and below the centerline. Reconstruct the ship in three dimensions with proper occlusion, rather than flattening the reference.\nFor this DORSAL view specifically: camera elevation is ONLY +12 degrees above the horizontal side-view plane, yaw zero. This is NOT 12 degrees away from an overhead view. Show a narrow, strongly foreshortened upper deck with the far wing substantially overlapping behind the near wing. Keep the complete ship, pointed nose RIGHT and main aft group LEFT.",
+          "references": [
+            "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/upgrade-spaceship-profile.webp",
+            "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/upgrade-spaceship-top.webp"
+          ],
+          "targetCandidatePath": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/upgrade-spaceship/upgrade-spaceship-bank-dorsal-shallow-v2.png",
+          "original": "/workspace/scratch/0c1fa1359efb/generated_images/exec-0d87d490-b163-45dc-8e09-a188388ebf65.png",
+          "target": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/upgrade-spaceship/upgrade-spaceship-bank-dorsal-shallow-v2.png",
+          "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/upgrade-spaceship/upgrade-spaceship-bank-dorsal-shallow-v2.png",
+          "bytes": 1495340,
+          "sha256": "2911059c83742beffe77e02e02c1e4401fd01cf54190669bdd747e2cd15ba379",
+          "width": 1536,
+          "height": 1024,
+          "mode": "RGBA",
+          "alphaExtrema": [
+            0,
+            254
+          ],
+          "transparentPixels": 1208211,
+          "partiallyTransparentPixels": 364653,
+          "pixelBytesChanged": false,
+          "reviewStatus": "selected-candidate-not-artistic-approval",
+          "visualFinding": "Upper deck is more foreshortened than the selected dorsal25 view, but remains an authored perspective. Two outer orange nacelle housings and one blue aft assembly remain visible.",
+          "referenceEvidence": [
+            {
+              "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/upgrade-spaceship-profile.webp",
+              "bytes": 94314,
+              "sha256": "6e8c05489366124e93b0fe6ab18450d44de9d2ac1e9943640ebe3dfbc37702f3",
+              "width": 1672,
+              "height": 941,
+              "sourceRole": "pinned-runtime-reference"
+            },
+            {
+              "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/upgrade-spaceship-top.webp",
+              "bytes": 152632,
+              "sha256": "d791e10f600e50ee90a7786ea9c42f5a78031ce5801c2f60aa2f7e97b4ff6dc4",
+              "width": 1672,
+              "height": 941,
+              "sourceRole": "pinned-runtime-reference"
+            }
+          ]
+        }
+      ],
+      "selected": {
+        "id": "bank-dorsal-shallow",
+        "direction": "dorsal",
+        "nominalDegrees": 12,
+        "selectedAttempt": 2,
+        "originalGeneratedPath": "/workspace/scratch/0c1fa1359efb/generated_images/exec-0d87d490-b163-45dc-8e09-a188388ebf65.png",
+        "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/upgrade-spaceship/candidates/upgrade-spaceship-bank-dorsal-shallow.png",
+        "bytes": 1495340,
+        "sha256": "2911059c83742beffe77e02e02c1e4401fd01cf54190669bdd747e2cd15ba379",
+        "gitBlobSha1": "4cabf595a886dc181beec578d57eb0d5e1f777d8",
+        "rgbaSha256": "2c88d169600bade88cfa5b4f643f62d4910d0ff586c9ec9e780d9fad6c6f2d54",
+        "alphaSha256": "ee19e108967014860786e910a9344647a71f4217ca0c95781aa50eb89a422391",
+        "width": 1536,
+        "height": 1024,
+        "mode": "RGBA",
+        "pixelBytesChanged": false,
+        "alphaReview": {
+          "alphaExtrema": [
+            0,
+            254
+          ],
+          "zeroPixels": 1208211,
+          "partialPixels": 364653,
+          "fullyOpaquePixels": 0,
+          "nearOpaquePixels250plus": 335937,
+          "lowAlphaPixels1to8": 14850,
+          "rgbNonzeroUnderAlphaZero": 728092,
+          "boundsAtAlpha": {
+            "1": [
+              40,
+              29,
+              1502,
+              1002
+            ],
+            "8": [
+              43,
+              288,
+              1500,
+              755
+            ],
+            "128": [
+              44,
+              289,
+              1499,
+              755
+            ],
+            "250": [
+              47,
+              289,
+              1496,
+              754
+            ]
+          },
+          "outsideNearOpaqueBoundsNonzeroAlpha": 1012,
+          "outsideNearOpaqueBoundsMaxAlpha": 245,
+          "corner64pxAlphaMax": {
+            "topLeft": 0,
+            "topRight": 1,
+            "bottomLeft": 0,
+            "bottomRight": 0
+          },
+          "samples": {
+            "768,100": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "768,250": [
+              21,
+              23,
+              25,
+              0
+            ],
+            "100,100": [
+              1,
+              0,
+              0,
+              0
+            ],
+            "1400,250": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "768,900": [
+              0,
+              0,
+              0,
+              0
+            ]
+          }
+        },
+        "visualInspectionPerformed": true,
+        "visualFinding": "Upper deck is more foreshortened than the selected dorsal25 view, but remains an authored perspective. Two outer orange nacelle housings and one blue aft assembly remain visible.",
+        "reviewStatus": "candidate-pending-independent-review-and-calibration"
+      }
+    },
+    {
+      "id": "bank-dorsal",
+      "direction": "dorsal",
+      "degrees": 25,
+      "prompt": "Use case: stylized-concept.\nAsset type: one individual transparent game-cinematic sprite, candidate for Yautja The Long Hunt.\nCanvas exactly 1536 x 1024 pixels, landscape, true RGBA transparent background.\nInput images are identity references of the UPGRADE/ASSASSIN spaceship, not bitmaps to rotate. Image 1 locks the construction/materials and existing maneuvering mounts. Image 2 locks the dorsal planform, the nose-to-aft axis, and principal propulsion layout. Generate a new coherent 3D camera view of THIS exact craft.\nIdentity: broad swept arrowhead rear, very long narrow sharp pointed nose, dark scratched gray/black angular armor with metallic edge highlights, deep red inset lines and dorsal vents, the exact layered panel construction and existing small blue-lit rotatable maneuvering units. Preserve the original proportions and the same attached hardware; do not substitute the Fugitive, Wolf, Scout, classic Predator ship, or a human stealth aircraft.\nPrincipal propulsion layout is EXACTLY TWO OUTER ORANGE NACELLE ASSEMBLIES plus ONE CENTRAL BLUE ENGINE between them at the aft. This is not three identical orange circular reactors. Each outer nacelle can reveal more than one illuminated surface of its same original housing; do not mistake these surfaces for permission to add another nacelle. Preserve the original housings, the one blue central aperture, original orange/red color and their locations from image 2. Respect natural occlusion: a hidden engine need not be forced into view. The smaller maneuvering units remain the existing reference units, without multiplication. No new thrusters, duplicated orange pods, engine plumes or separate VFX.\nOrientation and framing: sharp NOSE to screen RIGHT; broad aft and main engine group to screen LEFT. Center one complete ship near (768,512), with transparent margins around every wing edge and maneuvering mount. Keep the longitudinal axis close to horizontal and preserve comparable world scale across the eight views, allowing genuine perspective foreshortening. No collage, multiple ships, labels or text.\nStyle: detailed realistic 3D cutout matching the supplied references, restrained red/cyan-blue/orange embedded lights, neutral soft illumination, dark metallic armor. No background, ground, cast-shadow plane, checkerboard, glow outline, watermarks or borders.\n\nRequired camera view: Raise the camera 25 degrees ABOVE a right-facing broadside side elevation, without front/rear yaw. Reveal substantially more of the upper deck and the exact arrowhead planform than at 12 degrees, but do not make a full top-down view. Longitudinal axis stays horizontal; no 2D roll.\nReveal genuinely different surfaces and occlusions. Do not mirror, stretch, skew, recolor or rotate a copy of either reference bitmap.\nCRITICAL CAMERA DEFINITIONS: the reference top image is a construction map, NOT the target pose. Zero camera elevation means looking horizontally at the SIDE of the ship. Do not copy the overhead composition. At low elevation the far wing/nacelle overlaps behind the near wing/nacelle in projection; they should NOT spread into a full symmetric overhead V above and below the centerline. Reconstruct the ship in three dimensions with proper occlusion, rather than flattening the reference.\nElevation is exactly the requested +25 degrees above the HORIZONTAL side-view plane, not 25 degrees away from top-down.",
+      "references": [
+        "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/upgrade-spaceship-profile.webp",
+        "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/upgrade-spaceship-top.webp"
+      ],
+      "transparentBackground": true,
+      "targetCandidatePath": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/upgrade-spaceship/upgrade-spaceship-bank-dorsal.png",
+      "status": "generated-candidate",
+      "reviewStatus": "candidate-before-QA",
+      "attempts": [
+        {
+          "id": "bank-dorsal",
+          "attempt": 1,
+          "startedAt": "2026-11-06T04:45:05.863Z",
+          "completedAt": "2026-11-06T04:46:39.784Z",
+          "output_hint": "Generated images are saved to /workspace/scratch/0c1fa1359efb/generated_images as /workspace/scratch/0c1fa1359efb/generated_images/exec-200e1a01-2cc1-45b9-ae56-15a77d4a3d00.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+          "prompt": "Use case: stylized-concept.\nAsset type: one individual transparent game-cinematic sprite, candidate for Yautja The Long Hunt.\nCanvas exactly 1536 x 1024 pixels, landscape, true RGBA transparent background.\nInput images are identity references of the UPGRADE/ASSASSIN spaceship, not bitmaps to rotate. Image 1 locks the construction/materials and existing maneuvering mounts. Image 2 locks the dorsal planform, the nose-to-aft axis, and principal propulsion layout. Generate a new coherent 3D camera view of THIS exact craft.\nIdentity: broad swept arrowhead rear, very long narrow sharp pointed nose, dark scratched gray/black angular armor with metallic edge highlights, deep red inset lines and dorsal vents, the exact layered panel construction and existing small blue-lit rotatable maneuvering units. Preserve the original proportions and the same attached hardware; do not substitute the Fugitive, Wolf, Scout, classic Predator ship, or a human stealth aircraft.\nPrincipal propulsion layout is EXACTLY TWO OUTER ORANGE NACELLE ASSEMBLIES plus ONE CENTRAL BLUE ENGINE between them at the aft. This is not three identical orange circular reactors. Each outer nacelle can reveal more than one illuminated surface of its same original housing; do not mistake these surfaces for permission to add another nacelle. Preserve the original housings, the one blue central aperture, original orange/red color and their locations from image 2. Respect natural occlusion: a hidden engine need not be forced into view. The smaller maneuvering units remain the existing reference units, without multiplication. No new thrusters, duplicated orange pods, engine plumes or separate VFX.\nOrientation and framing: sharp NOSE to screen RIGHT; broad aft and main engine group to screen LEFT. Center one complete ship near (768,512), with transparent margins around every wing edge and maneuvering mount. Keep the longitudinal axis close to horizontal and preserve comparable world scale across the eight views, allowing genuine perspective foreshortening. No collage, multiple ships, labels or text.\nStyle: detailed realistic 3D cutout matching the supplied references, restrained red/cyan-blue/orange embedded lights, neutral soft illumination, dark metallic armor. No background, ground, cast-shadow plane, checkerboard, glow outline, watermarks or borders.\n\nRequired camera view: Raise the camera 25 degrees ABOVE a right-facing broadside side elevation, without front/rear yaw. Reveal substantially more of the upper deck and the exact arrowhead planform than at 12 degrees, but do not make a full top-down view. Longitudinal axis stays horizontal; no 2D roll.\nReveal genuinely different surfaces and occlusions. Do not mirror, stretch, skew, recolor or rotate a copy of either reference bitmap.\nCRITICAL CAMERA DEFINITIONS: the reference top image is a construction map, NOT the target pose. Zero camera elevation means looking horizontally at the SIDE of the ship. Do not copy the overhead composition. At low elevation the far wing/nacelle overlaps behind the near wing/nacelle in projection; they should NOT spread into a full symmetric overhead V above and below the centerline. Reconstruct the ship in three dimensions with proper occlusion, rather than flattening the reference.\nElevation is exactly the requested +25 degrees above the HORIZONTAL side-view plane, not 25 degrees away from top-down.",
+          "references": [
+            "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/upgrade-spaceship-profile.webp",
+            "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/upgrade-spaceship-top.webp"
+          ],
+          "targetCandidatePath": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/upgrade-spaceship/upgrade-spaceship-bank-dorsal.png",
+          "original": "/workspace/scratch/0c1fa1359efb/generated_images/exec-200e1a01-2cc1-45b9-ae56-15a77d4a3d00.png",
+          "target": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/upgrade-spaceship/upgrade-spaceship-bank-dorsal.png",
+          "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/upgrade-spaceship/upgrade-spaceship-bank-dorsal.png",
+          "bytes": 1825009,
+          "sha256": "eed63039ee54b202534b34809b47d7f1aa961f5d386543c5cbb565731c172e29",
+          "width": 1536,
+          "height": 1024,
+          "mode": "RGBA",
+          "alphaExtrema": [
+            0,
+            254
+          ],
+          "transparentPixels": 1083772,
+          "partiallyTransparentPixels": 489092,
+          "pixelBytesChanged": false,
+          "reviewStatus": "selected-candidate-not-artistic-approval",
+          "visualFinding": "More upper-deck/arrowhead exposure than the shallow dorsal candidate. The original dark panels, red seams, orange lateral and blue central main engines remain recognizable.",
+          "referenceEvidence": [
+            {
+              "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/upgrade-spaceship-profile.webp",
+              "bytes": 94314,
+              "sha256": "6e8c05489366124e93b0fe6ab18450d44de9d2ac1e9943640ebe3dfbc37702f3",
+              "width": 1672,
+              "height": 941,
+              "sourceRole": "pinned-runtime-reference"
+            },
+            {
+              "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/upgrade-spaceship-top.webp",
+              "bytes": 152632,
+              "sha256": "d791e10f600e50ee90a7786ea9c42f5a78031ce5801c2f60aa2f7e97b4ff6dc4",
+              "width": 1672,
+              "height": 941,
+              "sourceRole": "pinned-runtime-reference"
+            }
+          ]
+        }
+      ],
+      "selected": {
+        "id": "bank-dorsal",
+        "direction": "dorsal",
+        "nominalDegrees": 25,
+        "selectedAttempt": 1,
+        "originalGeneratedPath": "/workspace/scratch/0c1fa1359efb/generated_images/exec-200e1a01-2cc1-45b9-ae56-15a77d4a3d00.png",
+        "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/upgrade-spaceship/candidates/upgrade-spaceship-bank-dorsal.png",
+        "bytes": 1825009,
+        "sha256": "eed63039ee54b202534b34809b47d7f1aa961f5d386543c5cbb565731c172e29",
+        "gitBlobSha1": "3c412ade0f582a80eb1eaf18c57da0acb7a9b6c1",
+        "rgbaSha256": "1faa5d607ec461f439bb1d0e1a06ec1ad633f5d39944f212c877c9586b22fecc",
+        "alphaSha256": "4a4d88b1f84d4f7f78371f8c9b8d5e821428df9b433e7dd8d8ffee363fe89478",
+        "width": 1536,
+        "height": 1024,
+        "mode": "RGBA",
+        "pixelBytesChanged": false,
+        "alphaReview": {
+          "alphaExtrema": [
+            0,
+            254
+          ],
+          "zeroPixels": 1083772,
+          "partialPixels": 489092,
+          "fullyOpaquePixels": 0,
+          "nearOpaquePixels250plus": 457182,
+          "lowAlphaPixels1to8": 16687,
+          "rgbNonzeroUnderAlphaZero": 769529,
+          "boundsAtAlpha": {
+            "1": [
+              0,
+              23,
+              1493,
+              1002
+            ],
+            "8": [
+              58,
+              203,
+              1491,
+              852
+            ],
+            "128": [
+              59,
+              204,
+              1489,
+              852
+            ],
+            "250": [
+              63,
+              207,
+              1480,
+              850
+            ]
+          },
+          "outsideNearOpaqueBoundsNonzeroAlpha": 1264,
+          "outsideNearOpaqueBoundsMaxAlpha": 249,
+          "corner64pxAlphaMax": {
+            "topLeft": 0,
+            "topRight": 0,
+            "bottomLeft": 0,
+            "bottomRight": 0
+          },
+          "samples": {
+            "768,100": [
+              2,
+              2,
+              2,
+              0
+            ],
+            "768,250": [
+              41,
+              44,
+              50,
+              0
+            ],
+            "100,100": [
+              4,
+              5,
+              5,
+              0
+            ],
+            "1400,250": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "768,900": [
+              4,
+              6,
+              10,
+              0
+            ]
+          }
+        },
+        "visualInspectionPerformed": true,
+        "visualFinding": "More upper-deck/arrowhead exposure than the shallow dorsal candidate. The original dark panels, red seams, orange lateral and blue central main engines remain recognizable.",
+        "reviewStatus": "candidate-pending-independent-review-and-calibration"
+      }
+    },
+    {
+      "id": "bank-ventral-shallow",
+      "direction": "ventral",
+      "degrees": 12,
+      "prompt": "Use case: stylized-concept.\nAsset type: one individual transparent game-cinematic sprite, candidate for Yautja The Long Hunt.\nCanvas exactly 1536 x 1024 pixels, landscape, true RGBA transparent background.\nInput images are identity references of the UPGRADE/ASSASSIN spaceship, not bitmaps to rotate. Image 1 locks the construction/materials and existing maneuvering mounts. Image 2 locks the dorsal planform, the nose-to-aft axis, and principal propulsion layout. Generate a new coherent 3D camera view of THIS exact craft.\nIdentity: broad swept arrowhead rear, very long narrow sharp pointed nose, dark scratched gray/black angular armor with metallic edge highlights, deep red inset lines and dorsal vents, the exact layered panel construction and existing small blue-lit rotatable maneuvering units. Preserve the original proportions and the same attached hardware; do not substitute the Fugitive, Wolf, Scout, classic Predator ship, or a human stealth aircraft.\nPrincipal propulsion layout is EXACTLY TWO OUTER ORANGE NACELLE ASSEMBLIES plus ONE CENTRAL BLUE ENGINE between them at the aft. This is not three identical orange circular reactors. Each outer nacelle can reveal more than one illuminated surface of its same original housing; do not mistake these surfaces for permission to add another nacelle. Preserve the original housings, the one blue central aperture, original orange/red color and their locations from image 2. Respect natural occlusion: a hidden engine need not be forced into view. The smaller maneuvering units remain the existing reference units, without multiplication. No new thrusters, duplicated orange pods, engine plumes or separate VFX.\nOrientation and framing: sharp NOSE to screen RIGHT; broad aft and main engine group to screen LEFT. Center one complete ship near (768,512), with transparent margins around every wing edge and maneuvering mount. Keep the longitudinal axis close to horizontal and preserve comparable world scale across the eight views, allowing genuine perspective foreshortening. No collage, multiple ships, labels or text.\nStyle: detailed realistic 3D cutout matching the supplied references, restrained red/cyan-blue/orange embedded lights, neutral soft illumination, dark metallic armor. No background, ground, cast-shadow plane, checkerboard, glow outline, watermarks or borders.\n\nRequired camera view: Lower the camera 12 degrees BELOW a right-facing broadside side elevation, without front/rear yaw. Reveal a shallow real view of the lower hull and the existing maneuvering mounts. Infer only the minimally needed underside surfaces from these exact references. Longitudinal axis stays horizontal; no 2D roll.\nReveal genuinely different surfaces and occlusions. Do not mirror, stretch, skew, recolor or rotate a copy of either reference bitmap.\nCRITICAL CAMERA DEFINITIONS: the reference top image is a construction map, NOT the target pose. Zero camera elevation means looking horizontally at the SIDE of the ship. Do not copy the overhead composition. At low elevation the far wing/nacelle overlaps behind the near wing/nacelle in projection; they should NOT spread into a full symmetric overhead V above and below the centerline. Reconstruct the ship in three dimensions with proper occlusion, rather than flattening the reference.\nElevation is -12 degrees below the HORIZONTAL side-view plane. The underside must face the camera; the dorsal upper-deck panels should be occluded, not simply darkened or relabeled. The far wing overlaps behind the near wing in projection.",
+      "references": [
+        "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/upgrade-spaceship-profile.webp",
+        "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/upgrade-spaceship-top.webp"
+      ],
+      "transparentBackground": true,
+      "targetCandidatePath": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/upgrade-spaceship/upgrade-spaceship-bank-ventral-shallow.png",
+      "status": "generated-candidate",
+      "reviewStatus": "candidate-before-QA",
+      "attempts": [
+        {
+          "id": "bank-ventral-shallow",
+          "attempt": 1,
+          "startedAt": "2026-11-06T04:45:05.863Z",
+          "completedAt": "2026-11-06T04:47:27.770Z",
+          "output_hint": "Generated images are saved to /workspace/scratch/0c1fa1359efb/generated_images as /workspace/scratch/0c1fa1359efb/generated_images/exec-f6a0c3e1-c494-4cbb-80ac-5433c28d18ce.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+          "prompt": "Use case: stylized-concept.\nAsset type: one individual transparent game-cinematic sprite, candidate for Yautja The Long Hunt.\nCanvas exactly 1536 x 1024 pixels, landscape, true RGBA transparent background.\nInput images are identity references of the UPGRADE/ASSASSIN spaceship, not bitmaps to rotate. Image 1 locks the construction/materials and existing maneuvering mounts. Image 2 locks the dorsal planform, the nose-to-aft axis, and principal propulsion layout. Generate a new coherent 3D camera view of THIS exact craft.\nIdentity: broad swept arrowhead rear, very long narrow sharp pointed nose, dark scratched gray/black angular armor with metallic edge highlights, deep red inset lines and dorsal vents, the exact layered panel construction and existing small blue-lit rotatable maneuvering units. Preserve the original proportions and the same attached hardware; do not substitute the Fugitive, Wolf, Scout, classic Predator ship, or a human stealth aircraft.\nPrincipal propulsion layout is EXACTLY TWO OUTER ORANGE NACELLE ASSEMBLIES plus ONE CENTRAL BLUE ENGINE between them at the aft. This is not three identical orange circular reactors. Each outer nacelle can reveal more than one illuminated surface of its same original housing; do not mistake these surfaces for permission to add another nacelle. Preserve the original housings, the one blue central aperture, original orange/red color and their locations from image 2. Respect natural occlusion: a hidden engine need not be forced into view. The smaller maneuvering units remain the existing reference units, without multiplication. No new thrusters, duplicated orange pods, engine plumes or separate VFX.\nOrientation and framing: sharp NOSE to screen RIGHT; broad aft and main engine group to screen LEFT. Center one complete ship near (768,512), with transparent margins around every wing edge and maneuvering mount. Keep the longitudinal axis close to horizontal and preserve comparable world scale across the eight views, allowing genuine perspective foreshortening. No collage, multiple ships, labels or text.\nStyle: detailed realistic 3D cutout matching the supplied references, restrained red/cyan-blue/orange embedded lights, neutral soft illumination, dark metallic armor. No background, ground, cast-shadow plane, checkerboard, glow outline, watermarks or borders.\n\nRequired camera view: Lower the camera 12 degrees BELOW a right-facing broadside side elevation, without front/rear yaw. Reveal a shallow real view of the lower hull and the existing maneuvering mounts. Infer only the minimally needed underside surfaces from these exact references. Longitudinal axis stays horizontal; no 2D roll.\nReveal genuinely different surfaces and occlusions. Do not mirror, stretch, skew, recolor or rotate a copy of either reference bitmap.\nCRITICAL CAMERA DEFINITIONS: the reference top image is a construction map, NOT the target pose. Zero camera elevation means looking horizontally at the SIDE of the ship. Do not copy the overhead composition. At low elevation the far wing/nacelle overlaps behind the near wing/nacelle in projection; they should NOT spread into a full symmetric overhead V above and below the centerline. Reconstruct the ship in three dimensions with proper occlusion, rather than flattening the reference.\nElevation is -12 degrees below the HORIZONTAL side-view plane. The underside must face the camera; the dorsal upper-deck panels should be occluded, not simply darkened or relabeled. The far wing overlaps behind the near wing in projection.",
+          "references": [
+            "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/upgrade-spaceship-profile.webp",
+            "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/upgrade-spaceship-top.webp"
+          ],
+          "targetCandidatePath": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/upgrade-spaceship/upgrade-spaceship-bank-ventral-shallow.png",
+          "original": "/workspace/scratch/0c1fa1359efb/generated_images/exec-f6a0c3e1-c494-4cbb-80ac-5433c28d18ce.png",
+          "target": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/upgrade-spaceship/upgrade-spaceship-bank-ventral-shallow.png",
+          "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/upgrade-spaceship/upgrade-spaceship-bank-ventral-shallow.png",
+          "bytes": 1427651,
+          "sha256": "ed3aabc50f7c1dcef957f9ab6068bdd6edd98497001bf743ac0550f47a424a7b",
+          "width": 1536,
+          "height": 1024,
+          "mode": "RGBA",
+          "alphaExtrema": [
+            0,
+            254
+          ],
+          "transparentPixels": 1200306,
+          "partiallyTransparentPixels": 372558,
+          "pixelBytesChanged": false,
+          "reviewStatus": "selected-candidate-not-artistic-approval",
+          "visualFinding": "Lower side/belly and existing small blue-lit maneuvering units are exposed, with two orange main nacelle assemblies and one central blue aft engine.",
+          "referenceEvidence": [
+            {
+              "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/upgrade-spaceship-profile.webp",
+              "bytes": 94314,
+              "sha256": "6e8c05489366124e93b0fe6ab18450d44de9d2ac1e9943640ebe3dfbc37702f3",
+              "width": 1672,
+              "height": 941,
+              "sourceRole": "pinned-runtime-reference"
+            },
+            {
+              "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/upgrade-spaceship-top.webp",
+              "bytes": 152632,
+              "sha256": "d791e10f600e50ee90a7786ea9c42f5a78031ce5801c2f60aa2f7e97b4ff6dc4",
+              "width": 1672,
+              "height": 941,
+              "sourceRole": "pinned-runtime-reference"
+            }
+          ]
+        }
+      ],
+      "selected": {
+        "id": "bank-ventral-shallow",
+        "direction": "ventral",
+        "nominalDegrees": 12,
+        "selectedAttempt": 1,
+        "originalGeneratedPath": "/workspace/scratch/0c1fa1359efb/generated_images/exec-f6a0c3e1-c494-4cbb-80ac-5433c28d18ce.png",
+        "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/upgrade-spaceship/candidates/upgrade-spaceship-bank-ventral-shallow.png",
+        "bytes": 1427651,
+        "sha256": "ed3aabc50f7c1dcef957f9ab6068bdd6edd98497001bf743ac0550f47a424a7b",
+        "gitBlobSha1": "f403fa4c94231b0f384aa238f9e188c719c63c3f",
+        "rgbaSha256": "73029fa7cfeb32029b6aa1955b30cd811e05ef8c164842daa162a6771029a82f",
+        "alphaSha256": "a7f683086e8b91a48a88385b51d9d7732a48e6e7a671135859822b2345536351",
+        "width": 1536,
+        "height": 1024,
+        "mode": "RGBA",
+        "pixelBytesChanged": false,
+        "alphaReview": {
+          "alphaExtrema": [
+            0,
+            254
+          ],
+          "zeroPixels": 1200306,
+          "partialPixels": 372558,
+          "fullyOpaquePixels": 0,
+          "nearOpaquePixels250plus": 341335,
+          "lowAlphaPixels1to8": 18051,
+          "rgbNonzeroUnderAlphaZero": 702586,
+          "boundsAtAlpha": {
+            "1": [
+              0,
+              33,
+              1527,
+              1008
+            ],
+            "8": [
+              7,
+              273,
+              1525,
+              707
+            ],
+            "128": [
+              8,
+              274,
+              1524,
+              706
+            ],
+            "250": [
+              11,
+              275,
+              1520,
+              705
+            ]
+          },
+          "outsideNearOpaqueBoundsNonzeroAlpha": 5164,
+          "outsideNearOpaqueBoundsMaxAlpha": 249,
+          "corner64pxAlphaMax": {
+            "topLeft": 0,
+            "topRight": 1,
+            "bottomLeft": 0,
+            "bottomRight": 1
+          },
+          "samples": {
+            "768,100": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "768,250": [
+              21,
+              21,
+              23,
+              0
+            ],
+            "100,100": [
+              0,
+              0,
+              1,
+              0
+            ],
+            "1400,250": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "768,900": [
+              0,
+              0,
+              0,
+              0
+            ]
+          }
+        },
+        "visualInspectionPerformed": true,
+        "visualFinding": "Lower side/belly and existing small blue-lit maneuvering units are exposed, with two orange main nacelle assemblies and one central blue aft engine.",
+        "reviewStatus": "candidate-pending-independent-review-and-calibration"
+      }
+    },
+    {
+      "id": "bank-ventral",
+      "direction": "ventral",
+      "degrees": 25,
+      "prompt": "Use case: stylized-concept.\nAsset type: one individual transparent game-cinematic sprite, candidate for Yautja The Long Hunt.\nCanvas exactly 1536 x 1024 pixels, landscape, true RGBA transparent background.\nInput images are identity references of the UPGRADE/ASSASSIN spaceship, not bitmaps to rotate. Image 1 locks the construction/materials and existing maneuvering mounts. Image 2 locks the dorsal planform, the nose-to-aft axis, and principal propulsion layout. Generate a new coherent 3D camera view of THIS exact craft.\nIdentity: broad swept arrowhead rear, very long narrow sharp pointed nose, dark scratched gray/black angular armor with metallic edge highlights, deep red inset lines and dorsal vents, the exact layered panel construction and existing small blue-lit rotatable maneuvering units. Preserve the original proportions and the same attached hardware; do not substitute the Fugitive, Wolf, Scout, classic Predator ship, or a human stealth aircraft.\nPrincipal propulsion layout is EXACTLY TWO OUTER ORANGE NACELLE ASSEMBLIES plus ONE CENTRAL BLUE ENGINE between them at the aft. This is not three identical orange circular reactors. Each outer nacelle can reveal more than one illuminated surface of its same original housing; do not mistake these surfaces for permission to add another nacelle. Preserve the original housings, the one blue central aperture, original orange/red color and their locations from image 2. Respect natural occlusion: a hidden engine need not be forced into view. The smaller maneuvering units remain the existing reference units, without multiplication. No new thrusters, duplicated orange pods, engine plumes or separate VFX.\nOrientation and framing: sharp NOSE to screen RIGHT; broad aft and main engine group to screen LEFT. Center one complete ship near (768,512), with transparent margins around every wing edge and maneuvering mount. Keep the longitudinal axis close to horizontal and preserve comparable world scale across the eight views, allowing genuine perspective foreshortening. No collage, multiple ships, labels or text.\nStyle: detailed realistic 3D cutout matching the supplied references, restrained red/cyan-blue/orange embedded lights, neutral soft illumination, dark metallic armor. No background, ground, cast-shadow plane, checkerboard, glow outline, watermarks or borders.\n\nRequired camera view: Lower the camera 25 degrees BELOW a right-facing broadside side elevation, without front/rear yaw. Clearly reveal more of the lower hull and the existing maneuvering mounts than the 12-degree view. Infer only minimal hidden underside construction coherent with these exact references, without adding mechanisms. Longitudinal axis stays horizontal; no 2D roll.\nReveal genuinely different surfaces and occlusions. Do not mirror, stretch, skew, recolor or rotate a copy of either reference bitmap.\nCRITICAL CAMERA DEFINITIONS: the reference top image is a construction map, NOT the target pose. Zero camera elevation means looking horizontally at the SIDE of the ship. Do not copy the overhead composition. At low elevation the far wing/nacelle overlaps behind the near wing/nacelle in projection; they should NOT spread into a full symmetric overhead V above and below the centerline. Reconstruct the ship in three dimensions with proper occlusion, rather than flattening the reference.\nElevation is -25 degrees below the HORIZONTAL side-view plane. The underside must face the camera; the dorsal upper-deck panels should be occluded, not simply darkened or relabeled. The far wing overlaps behind the near wing in projection.",
+      "references": [
+        "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/upgrade-spaceship-profile.webp",
+        "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/upgrade-spaceship-top.webp"
+      ],
+      "transparentBackground": true,
+      "targetCandidatePath": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/upgrade-spaceship/upgrade-spaceship-bank-ventral.png",
+      "status": "generated-candidate",
+      "reviewStatus": "candidate-before-QA",
+      "attempts": [
+        {
+          "id": "bank-ventral",
+          "attempt": 1,
+          "startedAt": "2026-11-06T04:45:05.863Z",
+          "completedAt": "2026-11-06T04:45:56.912Z",
+          "output_hint": "Generated images are saved to /workspace/scratch/0c1fa1359efb/generated_images as /workspace/scratch/0c1fa1359efb/generated_images/exec-29584c4a-7a9c-47c8-9e51-162044ee50ce.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+          "prompt": "Use case: stylized-concept.\nAsset type: one individual transparent game-cinematic sprite, candidate for Yautja The Long Hunt.\nCanvas exactly 1536 x 1024 pixels, landscape, true RGBA transparent background.\nInput images are identity references of the UPGRADE/ASSASSIN spaceship, not bitmaps to rotate. Image 1 locks the construction/materials and existing maneuvering mounts. Image 2 locks the dorsal planform, the nose-to-aft axis, and principal propulsion layout. Generate a new coherent 3D camera view of THIS exact craft.\nIdentity: broad swept arrowhead rear, very long narrow sharp pointed nose, dark scratched gray/black angular armor with metallic edge highlights, deep red inset lines and dorsal vents, the exact layered panel construction and existing small blue-lit rotatable maneuvering units. Preserve the original proportions and the same attached hardware; do not substitute the Fugitive, Wolf, Scout, classic Predator ship, or a human stealth aircraft.\nPrincipal propulsion layout is EXACTLY TWO OUTER ORANGE NACELLE ASSEMBLIES plus ONE CENTRAL BLUE ENGINE between them at the aft. This is not three identical orange circular reactors. Each outer nacelle can reveal more than one illuminated surface of its same original housing; do not mistake these surfaces for permission to add another nacelle. Preserve the original housings, the one blue central aperture, original orange/red color and their locations from image 2. Respect natural occlusion: a hidden engine need not be forced into view. The smaller maneuvering units remain the existing reference units, without multiplication. No new thrusters, duplicated orange pods, engine plumes or separate VFX.\nOrientation and framing: sharp NOSE to screen RIGHT; broad aft and main engine group to screen LEFT. Center one complete ship near (768,512), with transparent margins around every wing edge and maneuvering mount. Keep the longitudinal axis close to horizontal and preserve comparable world scale across the eight views, allowing genuine perspective foreshortening. No collage, multiple ships, labels or text.\nStyle: detailed realistic 3D cutout matching the supplied references, restrained red/cyan-blue/orange embedded lights, neutral soft illumination, dark metallic armor. No background, ground, cast-shadow plane, checkerboard, glow outline, watermarks or borders.\n\nRequired camera view: Lower the camera 25 degrees BELOW a right-facing broadside side elevation, without front/rear yaw. Clearly reveal more of the lower hull and the existing maneuvering mounts than the 12-degree view. Infer only minimal hidden underside construction coherent with these exact references, without adding mechanisms. Longitudinal axis stays horizontal; no 2D roll.\nReveal genuinely different surfaces and occlusions. Do not mirror, stretch, skew, recolor or rotate a copy of either reference bitmap.\nCRITICAL CAMERA DEFINITIONS: the reference top image is a construction map, NOT the target pose. Zero camera elevation means looking horizontally at the SIDE of the ship. Do not copy the overhead composition. At low elevation the far wing/nacelle overlaps behind the near wing/nacelle in projection; they should NOT spread into a full symmetric overhead V above and below the centerline. Reconstruct the ship in three dimensions with proper occlusion, rather than flattening the reference.\nElevation is -25 degrees below the HORIZONTAL side-view plane. The underside must face the camera; the dorsal upper-deck panels should be occluded, not simply darkened or relabeled. The far wing overlaps behind the near wing in projection.",
+          "references": [
+            "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/upgrade-spaceship-profile.webp",
+            "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/upgrade-spaceship-top.webp"
+          ],
+          "targetCandidatePath": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/upgrade-spaceship/upgrade-spaceship-bank-ventral.png",
+          "original": "/workspace/scratch/0c1fa1359efb/generated_images/exec-29584c4a-7a9c-47c8-9e51-162044ee50ce.png",
+          "target": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/upgrade-spaceship/upgrade-spaceship-bank-ventral.png",
+          "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/upgrade-spaceship/upgrade-spaceship-bank-ventral.png",
+          "bytes": 1641628,
+          "sha256": "3004b25390203199704bd77ccad4491c183be45dde73adc6ec72cc27c7773e78",
+          "width": 1536,
+          "height": 1024,
+          "mode": "RGBA",
+          "alphaExtrema": [
+            0,
+            254
+          ],
+          "transparentPixels": 1152992,
+          "partiallyTransparentPixels": 419872,
+          "pixelBytesChanged": false,
+          "reviewStatus": "rejected-duplicated-blue-emitter",
+          "visualFinding": "Extra large blue circular emitter on the underside in addition to the central aft blue engine.",
+          "referenceEvidence": [
+            {
+              "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/upgrade-spaceship-profile.webp",
+              "bytes": 94314,
+              "sha256": "6e8c05489366124e93b0fe6ab18450d44de9d2ac1e9943640ebe3dfbc37702f3",
+              "width": 1672,
+              "height": 941,
+              "sourceRole": "pinned-runtime-reference"
+            },
+            {
+              "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/upgrade-spaceship-top.webp",
+              "bytes": 152632,
+              "sha256": "d791e10f600e50ee90a7786ea9c42f5a78031ce5801c2f60aa2f7e97b4ff6dc4",
+              "width": 1672,
+              "height": 941,
+              "sourceRole": "pinned-runtime-reference"
+            }
+          ]
+        },
+        {
+          "id": "bank-ventral",
+          "attempt": 2,
+          "startedAt": "2026-11-06T04:51:07.100Z",
+          "completedAt": "2026-11-06T04:52:33.699Z",
+          "output_hint": "Generated images are saved to /workspace/scratch/0c1fa1359efb/generated_images as /workspace/scratch/0c1fa1359efb/generated_images/exec-5a929964-7cda-43e7-9bac-3da2e1db2da2.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+          "prompt": "Create a REAL UNDERSIDE VIEW of this same craft at camera elevation minus25 degrees BELOW its horizontal side-view plane, no yaw. Nose RIGHT, aft LEFT. Show the lower hull facing us, with dorsal panels hidden above. Image3 is the already derived shallow underside candidate; use its coherent lower-hull construction and engine grouping, but move the camera genuinely farther BELOW, from minus12 to minus25 degrees. Do not merely tilt the bitmap or show an upper deck. CRITICAL: there is only ONE large BLUE circular engine, at the AFT CENTER LEFT between the two orange nacelle assemblies. There is NO SECOND large blue eye/dome/emitter under the midship or nose. The smaller blue indicator dots of existing maneuvering mounts remain small; do not turn them into new reactors. Keep the rest of the design unchanged.\nKeep exactly the Upgrade/Assassin spaceship shown by the two reference images: sweeping wide aft arrowhead, long needle nose, dark scratched angular gray/black armor, inset red panel seams, TWO orange outer nacelle assemblies and ONE central BLUE aft engine, plus only the existing little blue-lit maneuvering mounts. These are identity/structure references, not target camera poses. The orange light surfaces within one nacelle do not create extra engines. No new engine, no plume, no human aircraft, no Wolf or Scout. One complete ship, nose RIGHT, aft LEFT. 1536x1024 RGBA with truly transparent background and margins, no ground or shadow plane or added surrounding glow. Reconstruct a genuine three-dimensional view, never distort a bitmap. Match detailed rendering/materials.",
+          "references": [
+            "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/upgrade-spaceship-profile.webp",
+            "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/upgrade-spaceship-top.webp",
+            "/workspace/scratch/0c1fa1359efb/generated_images/exec-f6a0c3e1-c494-4cbb-80ac-5433c28d18ce.png"
+          ],
+          "targetCandidatePath": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/upgrade-spaceship/upgrade-spaceship-bank-ventral-v2.png",
+          "original": "/workspace/scratch/0c1fa1359efb/generated_images/exec-5a929964-7cda-43e7-9bac-3da2e1db2da2.png",
+          "target": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/upgrade-spaceship/upgrade-spaceship-bank-ventral-v2.png",
+          "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/upgrade-spaceship/upgrade-spaceship-bank-ventral-v2.png",
+          "bytes": 1631576,
+          "sha256": "2b091b0ac3a20ba90b27f17a10d1824477f4680d103dac9ae2595215a0b3f264",
+          "width": 1536,
+          "height": 1024,
+          "mode": "RGBA",
+          "alphaExtrema": [
+            0,
+            254
+          ],
+          "transparentPixels": 1112252,
+          "partiallyTransparentPixels": 460612,
+          "pixelBytesChanged": false,
+          "reviewStatus": "selected-candidate-not-artistic-approval",
+          "visualFinding": "Corrected candidate reveals the broad lower hull; the duplicate large blue underside emitter is removed. One large central aft blue engine remains between the orange pair; underside construction is inferred from references.",
+          "referenceEvidence": [
+            {
+              "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/upgrade-spaceship-profile.webp",
+              "bytes": 94314,
+              "sha256": "6e8c05489366124e93b0fe6ab18450d44de9d2ac1e9943640ebe3dfbc37702f3",
+              "width": 1672,
+              "height": 941,
+              "sourceRole": "pinned-runtime-reference"
+            },
+            {
+              "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/upgrade-spaceship-top.webp",
+              "bytes": 152632,
+              "sha256": "d791e10f600e50ee90a7786ea9c42f5a78031ce5801c2f60aa2f7e97b4ff6dc4",
+              "width": 1672,
+              "height": 941,
+              "sourceRole": "pinned-runtime-reference"
+            },
+            {
+              "path": "/workspace/scratch/0c1fa1359efb/generated_images/exec-f6a0c3e1-c494-4cbb-80ac-5433c28d18ce.png",
+              "bytes": 1427651,
+              "sha256": "ed3aabc50f7c1dcef957f9ab6068bdd6edd98497001bf743ac0550f47a424a7b",
+              "width": 1536,
+              "height": 1024,
+              "sourceRole": "previous-generated-candidate"
+            }
+          ]
+        }
+      ],
+      "selected": {
+        "id": "bank-ventral",
+        "direction": "ventral",
+        "nominalDegrees": 25,
+        "selectedAttempt": 2,
+        "originalGeneratedPath": "/workspace/scratch/0c1fa1359efb/generated_images/exec-5a929964-7cda-43e7-9bac-3da2e1db2da2.png",
+        "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/upgrade-spaceship/candidates/upgrade-spaceship-bank-ventral.png",
+        "bytes": 1631576,
+        "sha256": "2b091b0ac3a20ba90b27f17a10d1824477f4680d103dac9ae2595215a0b3f264",
+        "gitBlobSha1": "0f945517d206336f8551d78763fbe12244fd8e25",
+        "rgbaSha256": "1e2307a5b0503b8c7f10fe52e366399b97db07df4bab20a8b32cab92da24b08c",
+        "alphaSha256": "982f9e88daa185c039d3223e296b83591b9d792ecedc25f99b3dbf9d06dc52a2",
+        "width": 1536,
+        "height": 1024,
+        "mode": "RGBA",
+        "pixelBytesChanged": false,
+        "alphaReview": {
+          "alphaExtrema": [
+            0,
+            254
+          ],
+          "zeroPixels": 1112252,
+          "partialPixels": 460612,
+          "fullyOpaquePixels": 0,
+          "nearOpaquePixels250plus": 411580,
+          "lowAlphaPixels1to8": 34704,
+          "rgbNonzeroUnderAlphaZero": 717581,
+          "boundsAtAlpha": {
+            "1": [
+              0,
+              29,
+              1514,
+              1000
+            ],
+            "8": [
+              25,
+              216,
+              1512,
+              777
+            ],
+            "128": [
+              27,
+              217,
+              1511,
+              776
+            ],
+            "250": [
+              31,
+              220,
+              1500,
+              775
+            ]
+          },
+          "outsideNearOpaqueBoundsNonzeroAlpha": 11236,
+          "outsideNearOpaqueBoundsMaxAlpha": 249,
+          "corner64pxAlphaMax": {
+            "topLeft": 0,
+            "topRight": 0,
+            "bottomLeft": 0,
+            "bottomRight": 0
+          },
+          "samples": {
+            "768,100": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "768,250": [
+              13,
+              12,
+              11,
+              0
+            ],
+            "100,100": [
+              4,
+              4,
+              4,
+              0
+            ],
+            "1400,250": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "768,900": [
+              0,
+              0,
+              0,
+              0
+            ]
+          }
+        },
+        "visualInspectionPerformed": true,
+        "visualFinding": "Corrected candidate reveals the broad lower hull; the duplicate large blue underside emitter is removed. One large central aft blue engine remains between the orange pair; underside construction is inferred from references.",
+        "reviewStatus": "candidate-pending-independent-review-and-calibration"
+      }
+    },
+    {
+      "id": "rear-quarter-shallow",
+      "direction": "rear",
+      "degrees": 12,
+      "prompt": "Use case: stylized-concept.\nAsset type: one individual transparent game-cinematic sprite, candidate for Yautja The Long Hunt.\nCanvas exactly 1536 x 1024 pixels, landscape, true RGBA transparent background.\nInput images are identity references of the UPGRADE/ASSASSIN spaceship, not bitmaps to rotate. Image 1 locks the construction/materials and existing maneuvering mounts. Image 2 locks the dorsal planform, the nose-to-aft axis, and principal propulsion layout. Generate a new coherent 3D camera view of THIS exact craft.\nIdentity: broad swept arrowhead rear, very long narrow sharp pointed nose, dark scratched gray/black angular armor with metallic edge highlights, deep red inset lines and dorsal vents, the exact layered panel construction and existing small blue-lit rotatable maneuvering units. Preserve the original proportions and the same attached hardware; do not substitute the Fugitive, Wolf, Scout, classic Predator ship, or a human stealth aircraft.\nPrincipal propulsion layout is EXACTLY TWO OUTER ORANGE NACELLE ASSEMBLIES plus ONE CENTRAL BLUE ENGINE between them at the aft. This is not three identical orange circular reactors. Each outer nacelle can reveal more than one illuminated surface of its same original housing; do not mistake these surfaces for permission to add another nacelle. Preserve the original housings, the one blue central aperture, original orange/red color and their locations from image 2. Respect natural occlusion: a hidden engine need not be forced into view. The smaller maneuvering units remain the existing reference units, without multiplication. No new thrusters, duplicated orange pods, engine plumes or separate VFX.\nOrientation and framing: sharp NOSE to screen RIGHT; broad aft and main engine group to screen LEFT. Center one complete ship near (768,512), with transparent margins around every wing edge and maneuvering mount. Keep the longitudinal axis close to horizontal and preserve comparable world scale across the eight views, allowing genuine perspective foreshortening. No collage, multiple ships, labels or text.\nStyle: detailed realistic 3D cutout matching the supplied references, restrained red/cyan-blue/orange embedded lights, neutral soft illumination, dark metallic armor. No background, ground, cast-shadow plane, checkerboard, glow outline, watermarks or borders.\n\nRequired camera view: Orbit the camera 12 degrees toward the wide AFT from a right-facing broadside side elevation. A shallow rear-quarter view: show more of the existing aft engine faces and their exact mounting while preserving small longitudinal foreshortening. Near-level camera, no roll. Pointed nose remains RIGHT, wide aft LEFT.\nReveal genuinely different surfaces and occlusions. Do not mirror, stretch, skew, recolor or rotate a copy of either reference bitmap.\nCRITICAL CAMERA DEFINITIONS: the reference top image is a construction map, NOT the target pose. Zero camera elevation means looking horizontally at the SIDE of the ship. Do not copy the overhead composition. At low elevation the far wing/nacelle overlaps behind the near wing/nacelle in projection; they should NOT spread into a full symmetric overhead V above and below the centerline. Reconstruct the ship in three dimensions with proper occlusion, rather than flattening the reference.\nThis REAR camera is at 0 degrees elevation and yaw 12 degrees toward the stern from side-on. The aft group at screen LEFT is nearer the camera, nose at screen RIGHT recedes. Show the actual aft apertures, while avoiding a full overhead planform.",
+      "references": [
+        "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/upgrade-spaceship-profile.webp",
+        "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/upgrade-spaceship-top.webp"
+      ],
+      "transparentBackground": true,
+      "targetCandidatePath": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/upgrade-spaceship/upgrade-spaceship-rear-quarter-shallow.png",
+      "status": "generated-candidate",
+      "reviewStatus": "candidate-before-QA",
+      "attempts": [
+        {
+          "id": "rear-quarter-shallow",
+          "attempt": 1,
+          "startedAt": "2026-11-06T04:47:44.388Z",
+          "completedAt": "2026-11-06T04:49:13.367Z",
+          "output_hint": "Generated images are saved to /workspace/scratch/0c1fa1359efb/generated_images as /workspace/scratch/0c1fa1359efb/generated_images/exec-45fddfbe-c519-4079-b291-9ce59c061c64.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+          "prompt": "Use case: stylized-concept.\nAsset type: one individual transparent game-cinematic sprite, candidate for Yautja The Long Hunt.\nCanvas exactly 1536 x 1024 pixels, landscape, true RGBA transparent background.\nInput images are identity references of the UPGRADE/ASSASSIN spaceship, not bitmaps to rotate. Image 1 locks the construction/materials and existing maneuvering mounts. Image 2 locks the dorsal planform, the nose-to-aft axis, and principal propulsion layout. Generate a new coherent 3D camera view of THIS exact craft.\nIdentity: broad swept arrowhead rear, very long narrow sharp pointed nose, dark scratched gray/black angular armor with metallic edge highlights, deep red inset lines and dorsal vents, the exact layered panel construction and existing small blue-lit rotatable maneuvering units. Preserve the original proportions and the same attached hardware; do not substitute the Fugitive, Wolf, Scout, classic Predator ship, or a human stealth aircraft.\nPrincipal propulsion layout is EXACTLY TWO OUTER ORANGE NACELLE ASSEMBLIES plus ONE CENTRAL BLUE ENGINE between them at the aft. This is not three identical orange circular reactors. Each outer nacelle can reveal more than one illuminated surface of its same original housing; do not mistake these surfaces for permission to add another nacelle. Preserve the original housings, the one blue central aperture, original orange/red color and their locations from image 2. Respect natural occlusion: a hidden engine need not be forced into view. The smaller maneuvering units remain the existing reference units, without multiplication. No new thrusters, duplicated orange pods, engine plumes or separate VFX.\nOrientation and framing: sharp NOSE to screen RIGHT; broad aft and main engine group to screen LEFT. Center one complete ship near (768,512), with transparent margins around every wing edge and maneuvering mount. Keep the longitudinal axis close to horizontal and preserve comparable world scale across the eight views, allowing genuine perspective foreshortening. No collage, multiple ships, labels or text.\nStyle: detailed realistic 3D cutout matching the supplied references, restrained red/cyan-blue/orange embedded lights, neutral soft illumination, dark metallic armor. No background, ground, cast-shadow plane, checkerboard, glow outline, watermarks or borders.\n\nRequired camera view: Orbit the camera 12 degrees toward the wide AFT from a right-facing broadside side elevation. A shallow rear-quarter view: show more of the existing aft engine faces and their exact mounting while preserving small longitudinal foreshortening. Near-level camera, no roll. Pointed nose remains RIGHT, wide aft LEFT.\nReveal genuinely different surfaces and occlusions. Do not mirror, stretch, skew, recolor or rotate a copy of either reference bitmap.\nCRITICAL CAMERA DEFINITIONS: the reference top image is a construction map, NOT the target pose. Zero camera elevation means looking horizontally at the SIDE of the ship. Do not copy the overhead composition. At low elevation the far wing/nacelle overlaps behind the near wing/nacelle in projection; they should NOT spread into a full symmetric overhead V above and below the centerline. Reconstruct the ship in three dimensions with proper occlusion, rather than flattening the reference.\nThis REAR camera is at 0 degrees elevation and yaw 12 degrees toward the stern from side-on. The aft group at screen LEFT is nearer the camera, nose at screen RIGHT recedes. Show the actual aft apertures, while avoiding a full overhead planform.",
+          "references": [
+            "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/upgrade-spaceship-profile.webp",
+            "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/upgrade-spaceship-top.webp"
+          ],
+          "targetCandidatePath": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/upgrade-spaceship/upgrade-spaceship-rear-quarter-shallow.png",
+          "original": "/workspace/scratch/0c1fa1359efb/generated_images/exec-45fddfbe-c519-4079-b291-9ce59c061c64.png",
+          "target": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/upgrade-spaceship/upgrade-spaceship-rear-quarter-shallow.png",
+          "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/upgrade-spaceship/upgrade-spaceship-rear-quarter-shallow.png",
+          "bytes": 1898140,
+          "sha256": "e5ed40258ed728c63270dc078a06d493e707218be66807b2d352320a852e0ebb",
+          "width": 1536,
+          "height": 1024,
+          "mode": "RGBA",
+          "alphaExtrema": [
+            0,
+            254
+          ],
+          "transparentPixels": 1031884,
+          "partiallyTransparentPixels": 540980,
+          "pixelBytesChanged": false,
+          "reviewStatus": "selected-candidate-not-artistic-approval",
+          "visualFinding": "Aft blue engine and orange main assemblies face the camera more directly than the front candidates. Dorsal exposure persists; nominal12deg is not a measured3D camera value.",
+          "referenceEvidence": [
+            {
+              "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/upgrade-spaceship-profile.webp",
+              "bytes": 94314,
+              "sha256": "6e8c05489366124e93b0fe6ab18450d44de9d2ac1e9943640ebe3dfbc37702f3",
+              "width": 1672,
+              "height": 941,
+              "sourceRole": "pinned-runtime-reference"
+            },
+            {
+              "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/upgrade-spaceship-top.webp",
+              "bytes": 152632,
+              "sha256": "d791e10f600e50ee90a7786ea9c42f5a78031ce5801c2f60aa2f7e97b4ff6dc4",
+              "width": 1672,
+              "height": 941,
+              "sourceRole": "pinned-runtime-reference"
+            }
+          ]
+        }
+      ],
+      "selected": {
+        "id": "rear-quarter-shallow",
+        "direction": "rear",
+        "nominalDegrees": 12,
+        "selectedAttempt": 1,
+        "originalGeneratedPath": "/workspace/scratch/0c1fa1359efb/generated_images/exec-45fddfbe-c519-4079-b291-9ce59c061c64.png",
+        "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/upgrade-spaceship/candidates/upgrade-spaceship-rear-quarter-shallow.png",
+        "bytes": 1898140,
+        "sha256": "e5ed40258ed728c63270dc078a06d493e707218be66807b2d352320a852e0ebb",
+        "gitBlobSha1": "520cc646f940262d984f8141100a38ba4e4d1004",
+        "rgbaSha256": "c485e169b5a3d3f12a8ab5da1ab77f674c671d7922cb3d19b701aabe8032b4c3",
+        "alphaSha256": "2bebdc5b1324817a4915774e135c3ad2648d3d1ce08a3c1bb8d87c46411f3653",
+        "width": 1536,
+        "height": 1024,
+        "mode": "RGBA",
+        "pixelBytesChanged": false,
+        "alphaReview": {
+          "alphaExtrema": [
+            0,
+            254
+          ],
+          "zeroPixels": 1031884,
+          "partialPixels": 540980,
+          "fullyOpaquePixels": 0,
+          "nearOpaquePixels250plus": 503907,
+          "lowAlphaPixels1to8": 20326,
+          "rgbNonzeroUnderAlphaZero": 691250,
+          "boundsAtAlpha": {
+            "1": [
+              0,
+              36,
+              1522,
+              1024
+            ],
+            "8": [
+              14,
+              212,
+              1520,
+              863
+            ],
+            "128": [
+              15,
+              213,
+              1519,
+              862
+            ],
+            "250": [
+              16,
+              215,
+              1512,
+              861
+            ]
+          },
+          "outsideNearOpaqueBoundsNonzeroAlpha": 4765,
+          "outsideNearOpaqueBoundsMaxAlpha": 248,
+          "corner64pxAlphaMax": {
+            "topLeft": 0,
+            "topRight": 0,
+            "bottomLeft": 0,
+            "bottomRight": 0
+          },
+          "samples": {
+            "768,100": [
+              3,
+              3,
+              3,
+              0
+            ],
+            "768,250": [
+              48,
+              52,
+              60,
+              0
+            ],
+            "100,100": [
+              1,
+              2,
+              3,
+              0
+            ],
+            "1400,250": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "768,900": [
+              3,
+              3,
+              4,
+              0
+            ]
+          }
+        },
+        "visualInspectionPerformed": true,
+        "visualFinding": "Aft blue engine and orange main assemblies face the camera more directly than the front candidates. Dorsal exposure persists; nominal12deg is not a measured3D camera value.",
+        "reviewStatus": "candidate-pending-independent-review-and-calibration"
+      }
+    },
+    {
+      "id": "rear-quarter",
+      "direction": "rear",
+      "degrees": 25,
+      "prompt": "Use case: stylized-concept.\nAsset type: one individual transparent game-cinematic sprite, candidate for Yautja The Long Hunt.\nCanvas exactly 1536 x 1024 pixels, landscape, true RGBA transparent background.\nInput images are identity references of the UPGRADE/ASSASSIN spaceship, not bitmaps to rotate. Image 1 locks the construction/materials and existing maneuvering mounts. Image 2 locks the dorsal planform, the nose-to-aft axis, and principal propulsion layout. Generate a new coherent 3D camera view of THIS exact craft.\nIdentity: broad swept arrowhead rear, very long narrow sharp pointed nose, dark scratched gray/black angular armor with metallic edge highlights, deep red inset lines and dorsal vents, the exact layered panel construction and existing small blue-lit rotatable maneuvering units. Preserve the original proportions and the same attached hardware; do not substitute the Fugitive, Wolf, Scout, classic Predator ship, or a human stealth aircraft.\nPrincipal propulsion layout is EXACTLY TWO OUTER ORANGE NACELLE ASSEMBLIES plus ONE CENTRAL BLUE ENGINE between them at the aft. This is not three identical orange circular reactors. Each outer nacelle can reveal more than one illuminated surface of its same original housing; do not mistake these surfaces for permission to add another nacelle. Preserve the original housings, the one blue central aperture, original orange/red color and their locations from image 2. Respect natural occlusion: a hidden engine need not be forced into view. The smaller maneuvering units remain the existing reference units, without multiplication. No new thrusters, duplicated orange pods, engine plumes or separate VFX.\nOrientation and framing: sharp NOSE to screen RIGHT; broad aft and main engine group to screen LEFT. Center one complete ship near (768,512), with transparent margins around every wing edge and maneuvering mount. Keep the longitudinal axis close to horizontal and preserve comparable world scale across the eight views, allowing genuine perspective foreshortening. No collage, multiple ships, labels or text.\nStyle: detailed realistic 3D cutout matching the supplied references, restrained red/cyan-blue/orange embedded lights, neutral soft illumination, dark metallic armor. No background, ground, cast-shadow plane, checkerboard, glow outline, watermarks or borders.\n\nRequired camera view: Orbit the camera 25 degrees toward the wide AFT from a right-facing broadside side elevation. A stronger rear-quarter view: reveal the aft configuration more frontally and clearly, with greater foreshortening than at 12 degrees. Near-level camera, no roll. Pointed nose remains RIGHT, wide aft LEFT.\nReveal genuinely different surfaces and occlusions. Do not mirror, stretch, skew, recolor or rotate a copy of either reference bitmap.\nCRITICAL CAMERA DEFINITIONS: the reference top image is a construction map, NOT the target pose. Zero camera elevation means looking horizontally at the SIDE of the ship. Do not copy the overhead composition. At low elevation the far wing/nacelle overlaps behind the near wing/nacelle in projection; they should NOT spread into a full symmetric overhead V above and below the centerline. Reconstruct the ship in three dimensions with proper occlusion, rather than flattening the reference.\nThis REAR camera is at 0 degrees elevation and yaw 25 degrees toward the stern from side-on. The aft group at screen LEFT is nearer the camera, nose at screen RIGHT recedes. Show the actual aft apertures, while avoiding a full overhead planform.",
+      "references": [
+        "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/upgrade-spaceship-profile.webp",
+        "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/upgrade-spaceship-top.webp"
+      ],
+      "transparentBackground": true,
+      "targetCandidatePath": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/upgrade-spaceship/upgrade-spaceship-rear-quarter.png",
+      "status": "generated-candidate",
+      "reviewStatus": "candidate-before-QA",
+      "attempts": [
+        {
+          "id": "rear-quarter",
+          "attempt": 1,
+          "startedAt": "2026-11-06T04:47:44.388Z",
+          "completedAt": "2026-11-06T04:48:35.599Z",
+          "output_hint": "Generated images are saved to /workspace/scratch/0c1fa1359efb/generated_images as /workspace/scratch/0c1fa1359efb/generated_images/exec-d884b92a-7eb1-4586-a629-c076a7ec0b74.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+          "prompt": "Use case: stylized-concept.\nAsset type: one individual transparent game-cinematic sprite, candidate for Yautja The Long Hunt.\nCanvas exactly 1536 x 1024 pixels, landscape, true RGBA transparent background.\nInput images are identity references of the UPGRADE/ASSASSIN spaceship, not bitmaps to rotate. Image 1 locks the construction/materials and existing maneuvering mounts. Image 2 locks the dorsal planform, the nose-to-aft axis, and principal propulsion layout. Generate a new coherent 3D camera view of THIS exact craft.\nIdentity: broad swept arrowhead rear, very long narrow sharp pointed nose, dark scratched gray/black angular armor with metallic edge highlights, deep red inset lines and dorsal vents, the exact layered panel construction and existing small blue-lit rotatable maneuvering units. Preserve the original proportions and the same attached hardware; do not substitute the Fugitive, Wolf, Scout, classic Predator ship, or a human stealth aircraft.\nPrincipal propulsion layout is EXACTLY TWO OUTER ORANGE NACELLE ASSEMBLIES plus ONE CENTRAL BLUE ENGINE between them at the aft. This is not three identical orange circular reactors. Each outer nacelle can reveal more than one illuminated surface of its same original housing; do not mistake these surfaces for permission to add another nacelle. Preserve the original housings, the one blue central aperture, original orange/red color and their locations from image 2. Respect natural occlusion: a hidden engine need not be forced into view. The smaller maneuvering units remain the existing reference units, without multiplication. No new thrusters, duplicated orange pods, engine plumes or separate VFX.\nOrientation and framing: sharp NOSE to screen RIGHT; broad aft and main engine group to screen LEFT. Center one complete ship near (768,512), with transparent margins around every wing edge and maneuvering mount. Keep the longitudinal axis close to horizontal and preserve comparable world scale across the eight views, allowing genuine perspective foreshortening. No collage, multiple ships, labels or text.\nStyle: detailed realistic 3D cutout matching the supplied references, restrained red/cyan-blue/orange embedded lights, neutral soft illumination, dark metallic armor. No background, ground, cast-shadow plane, checkerboard, glow outline, watermarks or borders.\n\nRequired camera view: Orbit the camera 25 degrees toward the wide AFT from a right-facing broadside side elevation. A stronger rear-quarter view: reveal the aft configuration more frontally and clearly, with greater foreshortening than at 12 degrees. Near-level camera, no roll. Pointed nose remains RIGHT, wide aft LEFT.\nReveal genuinely different surfaces and occlusions. Do not mirror, stretch, skew, recolor or rotate a copy of either reference bitmap.\nCRITICAL CAMERA DEFINITIONS: the reference top image is a construction map, NOT the target pose. Zero camera elevation means looking horizontally at the SIDE of the ship. Do not copy the overhead composition. At low elevation the far wing/nacelle overlaps behind the near wing/nacelle in projection; they should NOT spread into a full symmetric overhead V above and below the centerline. Reconstruct the ship in three dimensions with proper occlusion, rather than flattening the reference.\nThis REAR camera is at 0 degrees elevation and yaw 25 degrees toward the stern from side-on. The aft group at screen LEFT is nearer the camera, nose at screen RIGHT recedes. Show the actual aft apertures, while avoiding a full overhead planform.",
+          "references": [
+            "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/upgrade-spaceship-profile.webp",
+            "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/upgrade-spaceship-top.webp"
+          ],
+          "targetCandidatePath": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/upgrade-spaceship/upgrade-spaceship-rear-quarter.png",
+          "original": "/workspace/scratch/0c1fa1359efb/generated_images/exec-d884b92a-7eb1-4586-a629-c076a7ec0b74.png",
+          "target": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/upgrade-spaceship/upgrade-spaceship-rear-quarter.png",
+          "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/upgrade-spaceship/upgrade-spaceship-rear-quarter.png",
+          "bytes": 1927564,
+          "sha256": "3b24f1ba6cd51aa755c56f7145900458a46153643be848622323c65a8abd2d17",
+          "width": 1536,
+          "height": 1024,
+          "mode": "RGBA",
+          "alphaExtrema": [
+            0,
+            254
+          ],
+          "transparentPixels": 1027622,
+          "partiallyTransparentPixels": 545242,
+          "pixelBytesChanged": false,
+          "reviewStatus": "selected-candidate-not-artistic-approval",
+          "visualFinding": "Stronger aft aperture exposure and foreshortening than the shallow rear candidate; one blue central aft engine and two orange main assemblies remain. Nominal25deg is unmeasured.",
+          "referenceEvidence": [
+            {
+              "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/upgrade-spaceship-profile.webp",
+              "bytes": 94314,
+              "sha256": "6e8c05489366124e93b0fe6ab18450d44de9d2ac1e9943640ebe3dfbc37702f3",
+              "width": 1672,
+              "height": 941,
+              "sourceRole": "pinned-runtime-reference"
+            },
+            {
+              "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/upgrade-spaceship-top.webp",
+              "bytes": 152632,
+              "sha256": "d791e10f600e50ee90a7786ea9c42f5a78031ce5801c2f60aa2f7e97b4ff6dc4",
+              "width": 1672,
+              "height": 941,
+              "sourceRole": "pinned-runtime-reference"
+            }
+          ]
+        }
+      ],
+      "selected": {
+        "id": "rear-quarter",
+        "direction": "rear",
+        "nominalDegrees": 25,
+        "selectedAttempt": 1,
+        "originalGeneratedPath": "/workspace/scratch/0c1fa1359efb/generated_images/exec-d884b92a-7eb1-4586-a629-c076a7ec0b74.png",
+        "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/upgrade-spaceship/candidates/upgrade-spaceship-rear-quarter.png",
+        "bytes": 1927564,
+        "sha256": "3b24f1ba6cd51aa755c56f7145900458a46153643be848622323c65a8abd2d17",
+        "gitBlobSha1": "38b22d3da52b16e878feccd8ec0ab359c0a592e8",
+        "rgbaSha256": "72fc4aaaaee9aff31a2320ac72b1f7893ce6b4cbbfbb40d1e78a3151020c5050",
+        "alphaSha256": "172ebebd209c708253a97afb1ec907a156fc37d860e244b1441eff44d29b749e",
+        "width": 1536,
+        "height": 1024,
+        "mode": "RGBA",
+        "pixelBytesChanged": false,
+        "alphaReview": {
+          "alphaExtrema": [
+            0,
+            254
+          ],
+          "zeroPixels": 1027622,
+          "partialPixels": 545242,
+          "fullyOpaquePixels": 0,
+          "nearOpaquePixels250plus": 504307,
+          "lowAlphaPixels1to8": 25754,
+          "rgbNonzeroUnderAlphaZero": 701986,
+          "boundsAtAlpha": {
+            "1": [
+              0,
+              23,
+              1503,
+              1024
+            ],
+            "8": [
+              42,
+              179,
+              1499,
+              884
+            ],
+            "128": [
+              43,
+              181,
+              1498,
+              883
+            ],
+            "250": [
+              44,
+              183,
+              1492,
+              882
+            ]
+          },
+          "outsideNearOpaqueBoundsNonzeroAlpha": 5300,
+          "outsideNearOpaqueBoundsMaxAlpha": 248,
+          "corner64pxAlphaMax": {
+            "topLeft": 0,
+            "topRight": 0,
+            "bottomLeft": 0,
+            "bottomRight": 0
+          },
+          "samples": {
+            "768,100": [
+              7,
+              8,
+              8,
+              0
+            ],
+            "768,250": [
+              39,
+              39,
+              45,
+              252
+            ],
+            "100,100": [
+              4,
+              4,
+              6,
+              0
+            ],
+            "1400,250": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "768,900": [
+              3,
+              2,
+              3,
+              0
+            ]
+          }
+        },
+        "visualInspectionPerformed": true,
+        "visualFinding": "Stronger aft aperture exposure and foreshortening than the shallow rear candidate; one blue central aft engine and two orange main assemblies remain. Nominal25deg is unmeasured.",
+        "reviewStatus": "candidate-pending-independent-review-and-calibration"
+      }
+    }
+  ],
+  "revisionRequests": [
+    {
+      "id": "forward-quarter-shallow",
+      "attempt": 2,
+      "reason": "Correct the observed overhead/rear-biased camera while retaining the exact Upgrade identity.",
+      "prompt": "Use case: stylized-concept.\nAsset type: one individual transparent game-cinematic sprite, candidate for Yautja The Long Hunt.\nCanvas exactly 1536 x 1024 pixels, landscape, true RGBA transparent background.\nInput images are identity references of the UPGRADE/ASSASSIN spaceship, not bitmaps to rotate. Image 1 locks the construction/materials and existing maneuvering mounts. Image 2 locks the dorsal planform, the nose-to-aft axis, and principal propulsion layout. Generate a new coherent 3D camera view of THIS exact craft.\nIdentity: broad swept arrowhead rear, very long narrow sharp pointed nose, dark scratched gray/black angular armor with metallic edge highlights, deep red inset lines and dorsal vents, the exact layered panel construction and existing small blue-lit rotatable maneuvering units. Preserve the original proportions and the same attached hardware; do not substitute the Fugitive, Wolf, Scout, classic Predator ship, or a human stealth aircraft.\nPrincipal propulsion layout is EXACTLY TWO OUTER ORANGE NACELLE ASSEMBLIES plus ONE CENTRAL BLUE ENGINE between them at the aft. This is not three identical orange circular reactors. Each outer nacelle can reveal more than one illuminated surface of its same original housing; do not mistake these surfaces for permission to add another nacelle. Preserve the original housings, the one blue central aperture, original orange/red color and their locations from image 2. Respect natural occlusion: a hidden engine need not be forced into view. The smaller maneuvering units remain the existing reference units, without multiplication. No new thrusters, duplicated orange pods, engine plumes or separate VFX.\nOrientation and framing: sharp NOSE to screen RIGHT; broad aft and main engine group to screen LEFT. Center one complete ship near (768,512), with transparent margins around every wing edge and maneuvering mount. Keep the longitudinal axis close to horizontal and preserve comparable world scale across the eight views, allowing genuine perspective foreshortening. No collage, multiple ships, labels or text.\nStyle: detailed realistic 3D cutout matching the supplied references, restrained red/cyan-blue/orange embedded lights, neutral soft illumination, dark metallic armor. No background, ground, cast-shadow plane, checkerboard, glow outline, watermarks or borders.\n\nRequired camera view: Orbit the camera 12 degrees toward the pointed NOSE from a right-facing broadside side elevation. A shallow front-quarter view: reveal a little of the forward-facing nose and frontal surfaces, slight longitudinal foreshortening, almost level camera, no roll.\nReveal genuinely different surfaces and occlusions. Do not mirror, stretch, skew, recolor or rotate a copy of either reference bitmap.\nCRITICAL CAMERA DEFINITIONS: the reference top image is a construction map, NOT the target pose. Zero camera elevation means looking horizontally at the SIDE of the ship. Do not copy the overhead composition. At low elevation the far wing/nacelle overlaps behind the near wing/nacelle in projection; they should NOT spread into a full symmetric overhead V above and below the centerline. Reconstruct the ship in three dimensions with proper occlusion, rather than flattening the reference.\nFor this FRONT view specifically: camera elevation is 0 degrees, and yaw is 12 degrees toward the NOSE from a strict side-on view. The pointed nose at screen RIGHT is nearer the camera and the broad aft at screen LEFT recedes. The central blue exhaust aperture faces AWAY from a front observer: do not present it as a large frontal blue circle. Its original housing must remain physically mounted at the rear, naturally occluded as needed. Show the FRONT/right-facing nose surfaces, not the rear engine faces. A narrow roof strip may remain visible only as required by the reference hull curvature.",
+      "references": [
+        "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/upgrade-spaceship-profile.webp",
+        "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/upgrade-spaceship-top.webp"
+      ],
+      "transparentBackground": true,
+      "targetCandidatePath": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/upgrade-spaceship/upgrade-spaceship-forward-quarter-shallow-v2.png"
+    },
+    {
+      "id": "forward-quarter",
+      "attempt": 2,
+      "reason": "Correct the observed overhead/rear-biased camera while retaining the exact Upgrade identity.",
+      "prompt": "Use case: stylized-concept.\nAsset type: one individual transparent game-cinematic sprite, candidate for Yautja The Long Hunt.\nCanvas exactly 1536 x 1024 pixels, landscape, true RGBA transparent background.\nInput images are identity references of the UPGRADE/ASSASSIN spaceship, not bitmaps to rotate. Image 1 locks the construction/materials and existing maneuvering mounts. Image 2 locks the dorsal planform, the nose-to-aft axis, and principal propulsion layout. Generate a new coherent 3D camera view of THIS exact craft.\nIdentity: broad swept arrowhead rear, very long narrow sharp pointed nose, dark scratched gray/black angular armor with metallic edge highlights, deep red inset lines and dorsal vents, the exact layered panel construction and existing small blue-lit rotatable maneuvering units. Preserve the original proportions and the same attached hardware; do not substitute the Fugitive, Wolf, Scout, classic Predator ship, or a human stealth aircraft.\nPrincipal propulsion layout is EXACTLY TWO OUTER ORANGE NACELLE ASSEMBLIES plus ONE CENTRAL BLUE ENGINE between them at the aft. This is not three identical orange circular reactors. Each outer nacelle can reveal more than one illuminated surface of its same original housing; do not mistake these surfaces for permission to add another nacelle. Preserve the original housings, the one blue central aperture, original orange/red color and their locations from image 2. Respect natural occlusion: a hidden engine need not be forced into view. The smaller maneuvering units remain the existing reference units, without multiplication. No new thrusters, duplicated orange pods, engine plumes or separate VFX.\nOrientation and framing: sharp NOSE to screen RIGHT; broad aft and main engine group to screen LEFT. Center one complete ship near (768,512), with transparent margins around every wing edge and maneuvering mount. Keep the longitudinal axis close to horizontal and preserve comparable world scale across the eight views, allowing genuine perspective foreshortening. No collage, multiple ships, labels or text.\nStyle: detailed realistic 3D cutout matching the supplied references, restrained red/cyan-blue/orange embedded lights, neutral soft illumination, dark metallic armor. No background, ground, cast-shadow plane, checkerboard, glow outline, watermarks or borders.\n\nRequired camera view: Orbit the camera 25 degrees toward the pointed NOSE from a right-facing broadside side elevation. A stronger front-quarter view: visibly more front-facing surfaces and greater foreshortening than the 12-degree view, almost level camera, no roll. Nose must still project RIGHT.\nReveal genuinely different surfaces and occlusions. Do not mirror, stretch, skew, recolor or rotate a copy of either reference bitmap.\nCRITICAL CAMERA DEFINITIONS: the reference top image is a construction map, NOT the target pose. Zero camera elevation means looking horizontally at the SIDE of the ship. Do not copy the overhead composition. At low elevation the far wing/nacelle overlaps behind the near wing/nacelle in projection; they should NOT spread into a full symmetric overhead V above and below the centerline. Reconstruct the ship in three dimensions with proper occlusion, rather than flattening the reference.\nFor this FRONT view specifically: camera elevation is 0 degrees, and yaw is 25 degrees toward the NOSE from a strict side-on view. The pointed nose at screen RIGHT is nearer the camera and the broad aft at screen LEFT recedes. The central blue exhaust aperture faces AWAY from a front observer: do not present it as a large frontal blue circle. Its original housing must remain physically mounted at the rear, naturally occluded as needed. Show the FRONT/right-facing nose surfaces, not the rear engine faces. A narrow roof strip may remain visible only as required by the reference hull curvature.",
+      "references": [
+        "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/upgrade-spaceship-profile.webp",
+        "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/upgrade-spaceship-top.webp"
+      ],
+      "transparentBackground": true,
+      "targetCandidatePath": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/upgrade-spaceship/upgrade-spaceship-forward-quarter-v2.png"
+    },
+    {
+      "id": "bank-dorsal-shallow",
+      "attempt": 2,
+      "reason": "Correct the observed overhead/rear-biased camera while retaining the exact Upgrade identity.",
+      "prompt": "Use case: stylized-concept.\nAsset type: one individual transparent game-cinematic sprite, candidate for Yautja The Long Hunt.\nCanvas exactly 1536 x 1024 pixels, landscape, true RGBA transparent background.\nInput images are identity references of the UPGRADE/ASSASSIN spaceship, not bitmaps to rotate. Image 1 locks the construction/materials and existing maneuvering mounts. Image 2 locks the dorsal planform, the nose-to-aft axis, and principal propulsion layout. Generate a new coherent 3D camera view of THIS exact craft.\nIdentity: broad swept arrowhead rear, very long narrow sharp pointed nose, dark scratched gray/black angular armor with metallic edge highlights, deep red inset lines and dorsal vents, the exact layered panel construction and existing small blue-lit rotatable maneuvering units. Preserve the original proportions and the same attached hardware; do not substitute the Fugitive, Wolf, Scout, classic Predator ship, or a human stealth aircraft.\nPrincipal propulsion layout is EXACTLY TWO OUTER ORANGE NACELLE ASSEMBLIES plus ONE CENTRAL BLUE ENGINE between them at the aft. This is not three identical orange circular reactors. Each outer nacelle can reveal more than one illuminated surface of its same original housing; do not mistake these surfaces for permission to add another nacelle. Preserve the original housings, the one blue central aperture, original orange/red color and their locations from image 2. Respect natural occlusion: a hidden engine need not be forced into view. The smaller maneuvering units remain the existing reference units, without multiplication. No new thrusters, duplicated orange pods, engine plumes or separate VFX.\nOrientation and framing: sharp NOSE to screen RIGHT; broad aft and main engine group to screen LEFT. Center one complete ship near (768,512), with transparent margins around every wing edge and maneuvering mount. Keep the longitudinal axis close to horizontal and preserve comparable world scale across the eight views, allowing genuine perspective foreshortening. No collage, multiple ships, labels or text.\nStyle: detailed realistic 3D cutout matching the supplied references, restrained red/cyan-blue/orange embedded lights, neutral soft illumination, dark metallic armor. No background, ground, cast-shadow plane, checkerboard, glow outline, watermarks or borders.\n\nRequired camera view: Raise the camera 12 degrees ABOVE a right-facing broadside side elevation, without front/rear yaw. Reveal a shallow strip of the upper deck and its red vents/plate geometry. Longitudinal axis stays horizontal; no 2D roll.\nReveal genuinely different surfaces and occlusions. Do not mirror, stretch, skew, recolor or rotate a copy of either reference bitmap.\nCRITICAL CAMERA DEFINITIONS: the reference top image is a construction map, NOT the target pose. Zero camera elevation means looking horizontally at the SIDE of the ship. Do not copy the overhead composition. At low elevation the far wing/nacelle overlaps behind the near wing/nacelle in projection; they should NOT spread into a full symmetric overhead V above and below the centerline. Reconstruct the ship in three dimensions with proper occlusion, rather than flattening the reference.\nFor this DORSAL view specifically: camera elevation is ONLY +12 degrees above the horizontal side-view plane, yaw zero. This is NOT 12 degrees away from an overhead view. Show a narrow, strongly foreshortened upper deck with the far wing substantially overlapping behind the near wing. Keep the complete ship, pointed nose RIGHT and main aft group LEFT.",
+      "references": [
+        "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/upgrade-spaceship-profile.webp",
+        "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/upgrade-spaceship-top.webp"
+      ],
+      "transparentBackground": true,
+      "targetCandidatePath": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/upgrade-spaceship/upgrade-spaceship-bank-dorsal-shallow-v2.png"
+    },
+    {
+      "id": "forward-quarter-shallow",
+      "attempt": 3,
+      "reason": "Attempts 1 and 2 remain too dorsal/rear-biased for a low front-quarter view.",
+      "prompt": "CAMERA CHANGE IS THE MAIN TASK. Show the spaceship almost EDGE-ON from the FRONT-RIGHT, viewed horizontally at its side, with yaw only 12 degrees from exact side-on TOWARD THE POINTED NOSE. Elevation is ZERO. Its long narrow nose at screen RIGHT is nearer us; its wide aft at screen LEFT recedes away. The far wing and far orange nacelle overlap and are substantially hidden BEHIND the near wing. Show front-facing side/nose surfaces. The broad dorsal deck must be seen edge-on, not as an overhead V. Aft exhaust openings point AWAY from camera; no frontal blue circle facing us. Do NOT reuse the elevated top-view composition of the references. This is a slim horizontal side silhouette with a modest front reveal, not a top or rear view.\nKeep exactly the Upgrade/Assassin spaceship shown by the two reference images: sweeping wide aft arrowhead, long needle nose, dark scratched angular gray/black armor, inset red panel seams, TWO orange outer nacelle assemblies and ONE central BLUE aft engine, plus only the existing little blue-lit maneuvering mounts. These are identity/structure references, not target camera poses. The orange light surfaces within one nacelle do not create extra engines. No new engine, no plume, no human aircraft, no Wolf or Scout. One complete ship, nose RIGHT, aft LEFT. 1536x1024 RGBA with truly transparent background and margins, no ground or shadow plane or added surrounding glow. Reconstruct a genuine three-dimensional view, never distort a bitmap. Match detailed rendering/materials.",
+      "references": [
+        "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/upgrade-spaceship-profile.webp",
+        "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/upgrade-spaceship-top.webp"
+      ],
+      "transparentBackground": true,
+      "targetCandidatePath": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/upgrade-spaceship/upgrade-spaceship-forward-quarter-shallow-v3.png"
+    },
+    {
+      "id": "forward-quarter",
+      "attempt": 3,
+      "reason": "Attempts 1 and 2 remain too dorsal/rear-biased for a low front-quarter view.",
+      "prompt": "CAMERA CHANGE IS THE MAIN TASK. Show the spaceship almost EDGE-ON from the FRONT-RIGHT, viewed horizontally at its side, with yaw 25 degrees from exact side-on TOWARD THE POINTED NOSE. Elevation is ZERO. Its long narrow nose at screen RIGHT projects closer to us; its broad aft at screen LEFT recedes away, with noticeable longitudinal foreshortening. The far wing and far orange nacelle overlap BEHIND the near wing and are mostly occluded. Clearly show front-facing nose/side geometry. The dorsal deck is viewed edge-on, not spread out as an overhead V. Aft exhaust openings point AWAY from camera; do not present a frontal blue aperture to us. Do NOT reuse the elevated top-view reference composition. This is a low front quarter of the same craft, not a top or rear view.\nKeep exactly the Upgrade/Assassin spaceship shown by the two reference images: sweeping wide aft arrowhead, long needle nose, dark scratched angular gray/black armor, inset red panel seams, TWO orange outer nacelle assemblies and ONE central BLUE aft engine, plus only the existing little blue-lit maneuvering mounts. These are identity/structure references, not target camera poses. The orange light surfaces within one nacelle do not create extra engines. No new engine, no plume, no human aircraft, no Wolf or Scout. One complete ship, nose RIGHT, aft LEFT. 1536x1024 RGBA with truly transparent background and margins, no ground or shadow plane or added surrounding glow. Reconstruct a genuine three-dimensional view, never distort a bitmap. Match detailed rendering/materials.",
+      "references": [
+        "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/upgrade-spaceship-profile.webp",
+        "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/upgrade-spaceship-top.webp"
+      ],
+      "transparentBackground": true,
+      "targetCandidatePath": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/upgrade-spaceship/upgrade-spaceship-forward-quarter-v3.png"
+    },
+    {
+      "id": "bank-ventral",
+      "attempt": 2,
+      "reason": "First ventral25 shows an extra blue circular emitter in addition to the central aft engine.",
+      "prompt": "Create a REAL UNDERSIDE VIEW of this same craft at camera elevation minus25 degrees BELOW its horizontal side-view plane, no yaw. Nose RIGHT, aft LEFT. Show the lower hull facing us, with dorsal panels hidden above. Image3 is the already derived shallow underside candidate; use its coherent lower-hull construction and engine grouping, but move the camera genuinely farther BELOW, from minus12 to minus25 degrees. Do not merely tilt the bitmap or show an upper deck. CRITICAL: there is only ONE large BLUE circular engine, at the AFT CENTER LEFT between the two orange nacelle assemblies. There is NO SECOND large blue eye/dome/emitter under the midship or nose. The smaller blue indicator dots of existing maneuvering mounts remain small; do not turn them into new reactors. Keep the rest of the design unchanged.\nKeep exactly the Upgrade/Assassin spaceship shown by the two reference images: sweeping wide aft arrowhead, long needle nose, dark scratched angular gray/black armor, inset red panel seams, TWO orange outer nacelle assemblies and ONE central BLUE aft engine, plus only the existing little blue-lit maneuvering mounts. These are identity/structure references, not target camera poses. The orange light surfaces within one nacelle do not create extra engines. No new engine, no plume, no human aircraft, no Wolf or Scout. One complete ship, nose RIGHT, aft LEFT. 1536x1024 RGBA with truly transparent background and margins, no ground or shadow plane or added surrounding glow. Reconstruct a genuine three-dimensional view, never distort a bitmap. Match detailed rendering/materials.",
+      "references": [
+        "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/upgrade-spaceship-profile.webp",
+        "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/upgrade-spaceship-top.webp",
+        "/workspace/scratch/0c1fa1359efb/generated_images/exec-f6a0c3e1-c494-4cbb-80ac-5433c28d18ce.png"
+      ],
+      "transparentBackground": true,
+      "targetCandidatePath": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/upgrade-spaceship/upgrade-spaceship-bank-ventral-v2.png"
+    },
+    {
+      "id": "forward-quarter-shallow",
+      "attempt": 4,
+      "reason": "Native generation used2172x724 canvas; request the same pose on1536x1024 without manual image transformations.",
+      "prompt": "CANVAS MUST BE EXACTLY1536 pixels wide by1024 pixels high, landscape3:2. This is a transparent sprite with deliberately large empty transparent vertical margins, NOT a panoramic image. Recreate the provided spacecraft in EXACTLY THE SAME CAMERA POSE, orientation and design, centered inside that1536x1024 canvas. Preserve the nose to RIGHT, aft to LEFT, front-facing low camera, relative wing/nacelle occlusion, dark panels, red vents, two original orange nacelle assemblies, single central blue aft motor naturally hidden, and the existing small blue maneuvering mounts. Do not turn the camera upward. Do not add or duplicate hardware or engine emitters. Keep the complete ship inside the canvas with at least60px clear horizontal margin; let the thin ship occupy only the middle vertical band with generous transparent space above and below. One ship, truly transparent RGBA background, no floor, no shadow, no text. Match the image's perspective exactly; only the requested canvas/framing is different. Required output1536x1024, not2172x724.",
+      "references": [
+        "/workspace/scratch/0c1fa1359efb/generated_images/exec-8b760e0d-28a0-44f6-9bbe-3844c4e601a1.png"
+      ],
+      "identityReferenceChain": [
+        {
+          "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/upgrade-spaceship-profile.webp",
+          "role": "reference image 1: exact V14 Upgrade perspective/profile, armor, materials, embedded light and maneuvering mounts",
+          "sha256": "6e8c05489366124e93b0fe6ab18450d44de9d2ac1e9943640ebe3dfbc37702f3",
+          "gitBlob": "2b51a252ccc8abb0633342f11d7861551cfb4229",
+          "dimensions": [
+            1672,
+            941
+          ]
+        },
+        {
+          "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/upgrade-spaceship-top.webp",
+          "role": "reference image 2: exact V14 Upgrade dorsal geometry, narrow nose-right, wide aft-left, two outer orange nacelles and central blue engine",
+          "sha256": "d791e10f600e50ee90a7786ea9c42f5a78031ce5801c2f60aa2f7e97b4ff6dc4",
+          "gitBlob": "5091b1c727bfeda2a0a7f99664f563738c632b71",
+          "dimensions": [
+            1672,
+            941
+          ]
+        }
+      ],
+      "transparentBackground": true,
+      "targetCandidatePath": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/upgrade-spaceship/upgrade-spaceship-forward-quarter-shallow-v4.png"
+    },
+    {
+      "id": "forward-quarter",
+      "attempt": 4,
+      "reason": "Native generation used2172x724 canvas; request the same pose on1536x1024 without manual image transformations.",
+      "prompt": "CANVAS MUST BE EXACTLY1536 pixels wide by1024 pixels high, landscape3:2. This is a transparent sprite with deliberately large empty transparent vertical margins, NOT a panoramic image. Recreate the provided spacecraft in EXACTLY THE SAME CAMERA POSE, orientation and design, centered inside that1536x1024 canvas. Preserve the nose to RIGHT, aft to LEFT, front-facing low camera, relative wing/nacelle occlusion, dark panels, red vents, two original orange nacelle assemblies, single central blue aft motor naturally hidden, and the existing small blue maneuvering mounts. Do not turn the camera upward. Do not add or duplicate hardware or engine emitters. Keep the complete ship inside the canvas with at least60px clear horizontal margin; let the thin ship occupy only the middle vertical band with generous transparent space above and below. One ship, truly transparent RGBA background, no floor, no shadow, no text. Match the image's perspective exactly; only the requested canvas/framing is different. Required output1536x1024, not2172x724.",
+      "references": [
+        "/workspace/scratch/0c1fa1359efb/generated_images/exec-d4dcf19d-5f7e-4f60-8321-70719caf761c.png"
+      ],
+      "identityReferenceChain": [
+        {
+          "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/upgrade-spaceship-profile.webp",
+          "role": "reference image 1: exact V14 Upgrade perspective/profile, armor, materials, embedded light and maneuvering mounts",
+          "sha256": "6e8c05489366124e93b0fe6ab18450d44de9d2ac1e9943640ebe3dfbc37702f3",
+          "gitBlob": "2b51a252ccc8abb0633342f11d7861551cfb4229",
+          "dimensions": [
+            1672,
+            941
+          ]
+        },
+        {
+          "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/upgrade-spaceship-top.webp",
+          "role": "reference image 2: exact V14 Upgrade dorsal geometry, narrow nose-right, wide aft-left, two outer orange nacelles and central blue engine",
+          "sha256": "d791e10f600e50ee90a7786ea9c42f5a78031ce5801c2f60aa2f7e97b4ff6dc4",
+          "gitBlob": "5091b1c727bfeda2a0a7f99664f563738c632b71",
+          "dimensions": [
+            1672,
+            941
+          ]
+        }
+      ],
+      "transparentBackground": true,
+      "targetCandidatePath": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/upgrade-spaceship/upgrade-spaceship-forward-quarter-v4.png"
+    }
+  ],
+  "generationCompletedAt": "2026-11-06T04:57:07.578942+00:00",
+  "selectedCount": 8,
+  "attemptCount": 16,
+  "nonSelectedAttemptCount": 8,
+  "selectedPaths": [
+    "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/upgrade-spaceship/candidates/upgrade-spaceship-forward-quarter-shallow.png",
+    "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/upgrade-spaceship/candidates/upgrade-spaceship-forward-quarter.png",
+    "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/upgrade-spaceship/candidates/upgrade-spaceship-bank-dorsal-shallow.png",
+    "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/upgrade-spaceship/candidates/upgrade-spaceship-bank-dorsal.png",
+    "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/upgrade-spaceship/candidates/upgrade-spaceship-bank-ventral-shallow.png",
+    "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/upgrade-spaceship/candidates/upgrade-spaceship-bank-ventral.png",
+    "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/upgrade-spaceship/candidates/upgrade-spaceship-rear-quarter-shallow.png",
+    "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/upgrade-spaceship/candidates/upgrade-spaceship-rear-quarter.png"
+  ],
+  "selectedBytes": 12502687,
+  "selectionStatus": "frozen-candidates-awaiting-independent-review",
+  "pixelProcessingApplied": false
+}

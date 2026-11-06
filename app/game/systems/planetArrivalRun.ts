@@ -2,6 +2,7 @@ import { DIFFICULTIES } from '../data';
 import type { DifficultyId } from '../types';
 import type { JsonObject } from './activeHuntSave';
 import type { PlanetArrivalState } from './planetArrival';
+import { samePlanetInsertion } from './planetInsertion';
 
 /** Frozen mission-start configuration, committed in the same campaign document as the montage. */
 export interface PlanetArrivalRun {
@@ -35,7 +36,10 @@ export function inspectPlanetArrivalRun(value: unknown, arrival: PlanetArrivalSt
       !record(config.visualOptions) || config.appearance.presetId !== arrival.hunterPresetId ||
       !['screenShake', 'reducedGore', 'highContrastVision'].every(key => typeof (config.visualOptions as Record<string, unknown>)[key] === 'boolean') ||
       typeof config.gauntletVariantId !== 'string' || config.gauntletVariantId.length > 160 ||
-      config.elapsedSeconds !== 0) return invalid;
+      config.elapsedSeconds !== 0 || !samePlanetInsertion(config.insertion, arrival.insertion) ||
+      (config.insertion !== undefined && config.insertionShipId !== arrival.personalShipId) ||
+      (config.insertionShipId !== undefined && config.insertionShipId !== arrival.personalShipId) ||
+      (arrival.insertion?.shipCloak ? config.insertionEnergyRunId !== arrival.runId : config.insertionEnergyRunId !== undefined)) return invalid;
   try {
     // Bound the frozen equipment snapshot and reject values that cannot survive JSON storage.
     const serialized = JSON.stringify(config);

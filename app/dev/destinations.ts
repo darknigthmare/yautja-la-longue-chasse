@@ -10,6 +10,8 @@ import {
   createPlanetArrival, inspectPlanetArrival, type PlanetArrivalState,
 } from '../game/systems/planetArrival';
 import { inspectPlanetArrivalRun, type PlanetArrivalRun } from '../game/systems/planetArrivalRun';
+import { assignExpeditionMember, recruitExpeditionMember, type PlanetInsertionPlan } from '../game/systems/planetInsertion';
+import { debitShipInsertionCloak, hasShipInsertionDebit } from '../game/systems/shipInsertionEnergy';
 import {
   WOLF_CASTLE_ROOMS, createWolfCastleVisit, inspectWolfCastleVisit, wolfCastleEntryPoint,
   type WolfCastleRoomId,
@@ -42,7 +44,7 @@ export type DevDestination = DevDestinationDetails & (
   | { readonly kind: 'region'; readonly regionId: HomeworldRegionIdV68 }
   | { readonly kind: 'mission'; readonly missionId: MissionId }
   | { readonly kind: 'wolf'; readonly roomId: WolfCastleRoomId; readonly status: 'approach' | 'aboard' }
-  | { readonly kind: 'arrival'; readonly missionId: MissionId }
+  | { readonly kind: 'arrival'; readonly missionId: MissionId; readonly insertion?: Readonly<PlanetInsertionPlan> }
 );
 
 export interface DevArrivalFixture {
@@ -65,7 +67,7 @@ function cityDoorway(id: string, label: string, description: string, buildingId:
 export const DEV_DESTINATIONS: readonly DevDestination[] = [
   {
     id: 'ship', label: 'Mon vaisseau', category: 'hubs', kind: 'ship',
-    description: 'Intérieur parcourable du vaisseau personnel : huit salles reliées sur deux ponts.',
+    description: 'Intérieur en 2,5D du vaisseau personnel : circulation en profondeur, huit salles et deux ponts.',
   },
   {
     id: 'clan-docking', label: 'Clan Ship · approche et amarrage', category: 'clan', kind: 'clan',
@@ -117,6 +119,26 @@ export const DEV_DESTINATIONS: readonly DevDestination[] = [
     missionId: mission.id,
     description: `${mission.title} · Jouer la cinématique d’insertion, puis rejoindre la même chasse de test.`,
   })),
+  {
+    id: 'arrival-ship-jungle-vey', label: 'Arrivée · posé du vaisseau en solo', category: 'arrivals', kind: 'arrival',
+    missionId: 'jungle-vey', insertion: { version: 1, method: 'ship', team: 'solo' },
+    description: 'Poser le vaisseau personnel sur Vey, puis rejoindre la chasse avec la pression de cette insertion.',
+  },
+  {
+    id: 'arrival-triad-jungle-vey', label: 'Arrivée · capsules de la triade', category: 'arrivals', kind: 'arrival',
+    missionId: 'jungle-vey', insertion: { version: 1, method: 'pod', team: 'triad' },
+    description: 'Rejoindre Vey avec Ka’rhek et Sa’keth, puis retrouver les trois chasseurs dans la même simulation.',
+  },
+  {
+    id: 'arrival-ship-triad-jungle-vey', label: 'Arrivée · vaisseau et triade', category: 'arrivals', kind: 'arrival',
+    missionId: 'jungle-vey', insertion: { version: 1, method: 'ship', team: 'triad' },
+    description: 'Poser le vaisseau et faire sortir la triade avant de rejoindre la chasse et ses patrouilles alertées.',
+  },
+  {
+    id: 'arrival-ship-cloaked-triad-jungle-vey', label: 'Arrivée · vaisseau camouflé et triade', category: 'arrivals', kind: 'arrival',
+    missionId: 'jungle-vey', insertion: { version: 1, method: 'ship', team: 'triad', shipCloak: true },
+    description: 'Approcher sous camouflage, retrouver la coque visible avant le posé et commencer avec une pression réduite et 70 unités d’énergie.',
+  },
 ];
 
 export function resolveDevDestination(id: string | null | undefined): DevDestination | undefined {
@@ -145,6 +167,19 @@ export function createDevSave(destination: DevDestination): SaveGame {
     unlockedArmorIds: ARMORS.map(armor => armor.id),
     fieldToolIds: ['flaying-tool'],
   };
+
+  if (canonical.kind === 'arrival' && canonical.insertion?.team === 'triad') {
+    for (const id of ['karhek', 'saketh'] as const) {
+      save.expeditionRoster = recruitExpeditionMember(save.expeditionRoster, owner, id);
+      save.expeditionRoster = assignExpeditionMember(save.expeditionRoster, owner, DEFAULT_SHIP_ID, id);
+    }
+  }
+  if (canonical.kind === 'arrival' && canonical.insertion?.shipCloak) {
+    const debit = debitShipInsertionCloak(save.shipInsertionEnergy, owner, DEFAULT_SHIP_ID,
+      `dev-arrival:${canonical.missionId}:${owner}`, canonical.insertion);
+    if (!debit) throw new Error('Le départ camouflé de test ne dispose pas de son énergie.');
+    save.shipInsertionEnergy = debit.state;
+  }
 
   if (canonical.kind === 'clan') {
     save.clanShipDocking = {
@@ -191,10 +226,15 @@ export function createDevArrival(
   if (canonical.kind !== 'arrival') throw new Error('Destination d’arrivée de développement inconnue.');
   if (save.createdAt !== owner) throw new Error('Le contexte d’arrivée appartient à une autre session de test.');
   const runtime = structuredClone(save);
+  const insertion = canonical.insertion ? structuredClone(canonical.insertion) : undefined;
   const runId = `dev-arrival:${canonical.missionId}:${owner}`;
+  if (insertion?.shipCloak && !hasShipInsertionDebit(runtime.shipInsertionEnergy, owner, runId, DEFAULT_SHIP_ID)) {
+    throw new Error('Le contexte d’arrivée camouflée ne possède pas de débit d’énergie valide.');
+  }
   const state = createPlanetArrival({
     ownerCreatedAt: owner, runId, missionId: canonical.missionId, encounterRun: 1,
     personalShipId: DEFAULT_SHIP_ID, hunterPresetId: runtime.appearance.presetId,
+    ...(insertion ? { insertion } : {}),
   });
   const run: PlanetArrivalRun = {
     version: 1, ownerCreatedAt: owner, runId, startedAt: owner, difficultyId: runtime.settings.difficultyId,
@@ -210,6 +250,8 @@ export function createDevArrival(
         huntAccessibility: runtime.settings.huntAccessibility as unknown as JsonObject,
       },
       elapsedSeconds: 0,
+      ...(insertion ? { insertion: structuredClone(insertion) as unknown as JsonObject, insertionShipId: DEFAULT_SHIP_ID } : {}),
+      ...(insertion?.shipCloak ? { insertionEnergyRunId: runId } : {}),
     },
   };
   const inspectedState = inspectPlanetArrival(state, owner, runId);

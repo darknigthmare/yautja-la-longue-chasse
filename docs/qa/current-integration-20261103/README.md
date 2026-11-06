@@ -429,3 +429,205 @@ preuves finales conservent le commit réellement exécuté et déclarent les
 fixtures initiales, dont les deux résultats de chasse synthétiques du contexte
 d’équipage complet. Aucune approbation artistique humaine n’est déduite de ces
 contrôles.
+
+## Cinématiques, incursions et camouflage d’approche — 5 novembre 2026
+
+Le relevé courant est actualisé pour la version applicative 1.5.0 de la
+PR [#114](https://github.com/darknigthmare/yautja-la-longue-chasse/pull/114).
+Il comprend les compléments audiovisuels de l’arrivée, les insertions par
+capsule ou vaisseau posé, la triade et l’option de camouflage du vaisseau avec
+sa réserve auxiliaire persistante. La base locale `57ccc1daf60643c8cc752981d58ae2e6c363992d`
+et la publication précédente `34f1387144906696d4977120113a616a5d4d8709`
+partagent l’arbre `cbbf116e5a3808ff8402f468f148e966ebede695` ; le présent
+relevé inclut les modifications de camouflage qui les suivent.
+
+| Mesure du relevé courant | Valeur |
+| --- | --- |
+| Entrées | 2 167 |
+| Sources applicatives | 1 214 |
+| Octets des entrées | 1 092 461 217 |
+| Octets du document JSON | 402 812 |
+| SHA-256 du document | `b292753aaaab82578d1526aa183711cd22dfb27077bcd4c21f2b441f310877e7` |
+| Identité Git du document | `35bbc81036853017e13f14bdeac68b017d27ec4d` |
+
+Le générateur officiel `snapshot-runtime-v113.mjs --write`, puis sa commande
+`--check`, ont relu les sources et les entrées natives réellement présentes.
+Les freezes, certificats et classeurs historiques conservent leur contenu.
+Le script de recette V112 inventorié importe désormais les helpers réels
+utilisés par les callbacks du cycle de chasse, sans remplacer les assertions
+de conservation ni simuler leur résultat.
+
+Les preuves de ce lot sont conservées dans
+[`production/insertion-trio-20261105/`](../../../production/insertion-trio-20261105/README.md).
+Le reçu navigateur `browser-34f1387` identifie explicitement le lot précédent,
+antérieur au camouflage. Les nouveaux contrôles navigateur doivent qualifier
+le commit publié avec le présent relevé ; la génération de cet inventaire
+ne vaut pas validation du shader, des interactions ou du mix sonore.
+
+## Consolidation des PR #114 et #117 — 6 novembre 2026
+
+Le candidat **1.6.1** rapproche les cinématiques, la triade, le camouflage, les
+capsules et les perspectives de la flotte avec l'intérieur personnel 2,5D de
+#115. Il conserve la bible de #116 et les corrections de rig de #118 présentes
+sur `main`. Les huit salles et les identifiants existants restent en place.
+
+La résolution du test de gant conserve ensemble le contrôle structurel de
+l'effet d'initialisation et les matrices avant-bras/lames de la correction V145.
+L'inventaire courant est recalculé avec `snapshot-runtime-v113.mjs`, puis vérifié
+avec `--check`. Les inventaires historiques et leurs attestations restent datés.
+
+### Raccords de la bible réalisés
+
+- **ALL-02 / QA-C04 :** recrutement, aptitude, affectation et départ en trio sont
+  séparés pour Ka’rhek et Sa’keth. Le recrutement crée une entrée en réserve,
+  sans affectation à une coque. Le registre v2 accepte les anciens registres v1
+  valides en conservant leurs membres, coques, aptitudes et reçus.
+- **QA-C09, portée registre et briefing :** la mise en réserve supprime seulement
+  l'affectation. Elle ne guérit pas, ne rembourse pas et ne recrute pas une
+  seconde fois. Les quartiers personnels et le réaménagement au chantier restent
+  des éléments distincts à produire ; cette correction ne les déclare pas livrés.
+- **QA-C21 :** les ordres Suivre/Tenir gardent le silence face à une patrouille,
+  une suspicion ou une recherche. Le soutien exige un contact hostile actuel ou
+  une attaque dirigée contre le groupe ; perte de contact et retraite le suspendent.
+- **Commandes des pods :** une ancienne touche X personnalisée est conservée.
+  La nouvelle action reçoit une touche libre, ou reste accessible par son bouton
+  sans raccourci si aucune touche n'est disponible. Les conflits explicites
+  restent refusés.
+
+Les tests des capsules passent aussi par les writers/loaders de campagne, le
+sidecar de chasse et l'archive intégrale : compte à rebours, fermeture/reprise,
+écriture refusée, changement de propriétaire de session, destruction unique et
+perte réelle de liaison radio pendant le déplacement. Aucun nouveau changement
+du moteur de capsules n'a été nécessaire pour ces scénarios.
+
+### Qualification du candidat
+
+Le [relevé local](../../../production/qa/evidence/pr-114-117-integration-20261106/local-validation.json)
+conserve les empreintes des sources observées et les journaux : **473/473 tests,
+aucun ignoré**, build Next de production et lint ciblé strict réussis. Le lint
+global relève **0 erreur et 38 avertissements** déjà présents hors de ces
+correctifs ; sa passe optionnelle avec un plafond de zéro avertissement est
+consignée en échec, sans la transformer en réussite.
+
+Chromium local est bloqué par l'environnement. La qualification native doit donc
+être lue dans les runs GitHub Actions de la tête publiée. Le workflow intérieur
+2,5D couvre désormais les PR vers `main` et la branche cinématique, avec checkout
+de la tête réellement soumise. Wolf conserve deux nouvelles captures du
+recrutement en réserve et de l'affectation, avec observations du vrai stockage.
+Les contrôles existants, fenêtres temporelles et rejets d'images restent actifs.
+
+Les générations visuelles et l'égalité des exports ne constituent toujours pas
+une validation artistique humaine ou une certification canonique 1:1. Les
+quartiers conditionnels, autres compagnons, missions et suites de la bible non
+implémentés par ces PR gardent leur statut de production précédent.
+
+### Corrections issues de la première passe Actions
+
+La première tête publiée `5be40efdd6e1b7fae67d5dda7677209820fc9034`
+a permis de qualifier l'intérieur personnel, les vues de flotte et le vaisseau
+de clan dans Chromium. Elle a aussi révélé des raccords de vérification qui
+étaient absents des anciennes branches :
+
+- Les contextes historiques V112/V113 restaurent maintenant leur manifeste
+  audio original dans une copie privée et vérifiée. Les nouveaux sons des pods
+  restent dans le jeu courant ; aucune capsule ou empreinte historique n'est
+  remplacée. Les cinq suites de récupération concernées passent **40/40**.
+- Wolf et les visites de développement matérialisent les nouveaux dossiers
+  d'arrivée et leurs PNG sources. Les **53 tests** de ces assets passent après
+  hydratation, dont les six précédemment rouges dans Wolf.
+- Les tests isolés d'exploration et de manette reçoivent la vraie fonction de
+  récupération des pods appelée par `stepGame` : **20/20 tests** passent, avec
+  les assertions de sauvegarde, d'ordre des événements et de pause conservées.
+- Le paramètre d'armure devenu inutilisé après V145 est retiré de son unique
+  appel. Le gate V94 de lint strict passe sur **182 fichiers**, et les **13 tests**
+  d'armure, de brassard et de gant restent verts.
+- La recette de capture finale observe la première formation réellement debout
+  et effectue la copie native avant les calculs de recadrage. La fenêtre de
+  validité, les contrôles de fraîcheur, les rejets et les trois tentatives
+  maximales restent obligatoires. Une ronde de sondage s'arrête au premier coin
+  encore ancien ; la ronde admise et la copie complète doivent toujours vérifier
+  les quatre coins frais. Trois cas de protocole couvrent les coins retardés et
+  les copies refusées. Cette correction nécessite sa propre qualification native
+  sur la tête corrigée.
+
+Le [relevé des corrections CI](../../../production/qa/evidence/pr-114-117-integration-20261106/ci-corrections-local-validation.json)
+conserve les journaux et les empreintes. Ces sous-suites recouvrent en partie les
+473 tests de la première qualification ; leurs nombres ne sont pas additionnés
+comme des tests uniques. Le premier relevé de lint global reste daté de cette
+première passe. Les résultats natifs définitifs doivent être lus sur la dernière
+tête de la PR, et non déduits des seuls succès partiels précédents.
+
+### Deuxième passe native et correction de son instrumentation
+
+La tête `e9287626acb0cc29d250c9cb6d87b36d833f0591` a confirmé les corrections
+d'historique, de lint et d'assets. L'intérieur personnel passe 17 contrôles
+natifs, les voyages isolés 20, le vaisseau de clan 22 contrôles de navigation
+et 27 d'opérations. Les huit destinations de développement livrent chacune un
+seul `HuntCanvas`, aussi bien par Skip qu'à la fin naturelle de l'arrivée.
+Ces nombres décrivent des suites distinctes et ne constituent pas un total
+unique de fonctionnalités ou de tests.
+
+Le [reçu daté de cette passe](../../../production/qa/evidence/pr-114-117-integration-20261106/native-review-e9287626.json)
+conserve aussi ses deux échecs :
+
+- Wolf a franchi ses 472 tests et 21 contrôles du château, puis sa recette a
+  attendu un ancien sélecteur du pont. Le départ utilise désormais le disclosure
+  réel de l'intérieur 2,5D et son bouton accessible. Les vérifications du
+  recrutement en réserve, de l'affectation, de l'énergie et des reprises restent
+  présentes ; les futures captures 28/29 figurent aussi dans le résumé CI.
+- La capture finale du trio en pod est passée au deuxième essai, mais les trois
+  photographies du trio en vaisseau sont restées rejetées : la lecture après
+  copie atteignait 62 000 ms. La fonction d'observation inchangée est maintenant
+  compilée sur la session CDP avant la fenêtre, puis appelée directement avant
+  et après la copie. Cela retire une couche de sérialisation du test. La scène,
+  son horloge, ses pixels, la fenêtre valide et le nombre d'essais restent les
+  mêmes. Une vérification supplémentaire compare les deux transports sur le
+  vrai document déjà en pause pendant les préflights.
+
+Les six tests locaux de protocole passent, dont cinq sur la parité des champs,
+les quatre marqueurs, l'attente du dernier membre et les erreurs. Ils ne
+constituent pas une exécution native. Les 496 assertions antérieures de la
+recette spatiale sont conservées. Le correctif demande une nouvelle passe
+Actions sur la tête publiée avant fusion ; les captures rejetées conservent
+leur statut. La revue React des callbacks et des nouveaux boutons n'a trouvé
+aucun autre blocage dans ces changements.
+
+### Conservation des commandes dans les migrations V111
+
+La matrice longue du candidat `e9287626` a ensuite signalé deux comparaisons
+de sauvegardes courantes, Save11→13 et Save12→13. Leur seul écart était la
+commande `hunt.podSelfDestruct`, ajoutée par les pods et absente des attentes.
+Les comparaisons exhaustives incluent maintenant explicitement cette seule
+commande ajoutée ; tous les anciens champs restent comparés intégralement.
+Le runtime et les publications historiques sont conservés.
+
+Une nouvelle régression utilise les vrais clients historiques Save11 et Save12
+avec X déjà affecté au camouflage. Elle vérifie la conservation de toutes les
+anciennes commandes, l'attribution d'une touche libre au pod, l'absence de
+conflit et la conservation après écriture/rechargement/export/import. Le fichier
+d'intégration passe **13/13** et la recette de compatibilité, identique aux
+14 fichiers du gate V94 models, passe **118/118**, sans test ignoré. Ces nombres
+se recouvrent. Le lint ciblé strict passe également.
+
+Le [reçu de régression V111](../../../production/qa/evidence/pr-114-117-integration-20261106/v111-regressions/verification-results.json)
+conserve la reproduction des deux échecs, les commandes, journaux et empreintes
+de la correction. L'inventaire courant est à nouveau régénéré et vérifié ; la
+qualification complète de la tête publiée reste le préalable à la fusion.
+
+### Preuve du recrutement et de l'affectation dans Wolf
+
+Sur `4e9a46b0b588cb0f861100119b9580ce909afa2c`, le workflow Wolf
+[42247747109](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/42247747109)
+passe **477 tests et 32 contrôles natifs**. Les captures originales
+[28 — recrutement en réserve](../../../production/qa/evidence/pr-114-117-integration-20261106/native-4e9a46b0/28-triad-recruited-reserve.png)
+et [29 — affectation à la coque](../../../production/qa/evidence/pr-114-117-integration-20261106/native-4e9a46b0/29-triad-assigned-to-hull.png)
+sont conservées avec le [rapport brut et son reçu](../../../production/qa/evidence/pr-114-117-integration-20261106/native-4e9a46b0/receipt.json).
+
+Le stockage observé contient d'abord les deux compagnons recrutés sans coque,
+puis un retour en réserve strictement identique à cet état, et enfin leur
+affectation explicite au vaisseau classique. Le handoff livre les deux partenaires
+actifs, une charge de 70 et un seul départ payé, y compris après refus puis
+reprise de l'écriture. Les accès rapides n'accordent aucune des huit inspections
+physiques. Le checkout et le commit synthétique affiché par le build ont le même
+arbre Git, vérifié par l'API. Cette preuve datée conserve ses propres sources et
+ne remplace pas les contrôles de la tête finale.

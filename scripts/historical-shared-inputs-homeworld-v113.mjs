@@ -1,4 +1,4 @@
-/** The 81 shared artifacts republished after the original V112 Homeworld/Pit
+/** The 82 shared artifacts republished after the original V112 Homeworld/Pit
  * commit a5ed39dfbed118669b2e76402c490b200136a74d. Each blob is checked against
  * that immutable tree and the unchanged capsule manifest before use. */
 export const HOMEWORLD_SHARED_PREIMAGES_V113=Object.freeze([
@@ -82,6 +82,7 @@ export const HOMEWORLD_SHARED_PREIMAGES_V113=Object.freeze([
  Object.freeze({"path":"docs/v112-production-proof-protocol.md","gitBlobSha":"7ad500b3a85fea91595755e036a4c258a715aff7"}),
  Object.freeze({"path":"docs/v112-runtime-freeze.json","gitBlobSha":"e77d41874c4d2162b8189b6e031d38ab9fc7b69d"}),
  Object.freeze({"path":"docs/v112-runtime-public-inputs.json","gitBlobSha":"59e6b5128312d31069ce13df2a1bd1e72c656292"}),
+ Object.freeze({"path":"public/audio/manifest.json","gitBlobSha":"3e1f9027c6b5a3129caa5d6dd032c90cf0efc49f"}),
  Object.freeze({"path":"tests/fixtures/homeworld-upgrade-v112/manifest.json","gitBlobSha":"133c155d752a2debabdd3fdb166268dc8cc0d222"}),
 ]);
 

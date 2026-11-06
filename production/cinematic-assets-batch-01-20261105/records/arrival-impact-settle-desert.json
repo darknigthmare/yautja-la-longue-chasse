@@ -1,0 +1,46 @@
+{
+  "id": "arrival-impact-settle-desert",
+  "family": "impact-settle",
+  "biome": "desert",
+  "file": "public/game/cinematics/batch-01-20261105/arrival-impact-settle-desert.png",
+  "generatedSource": "/workspace/scratch/62884fa4f584/generated_images/exec-dc1cb863-4946-4084-8f13-f9a7be8f58e2.png",
+  "prompt": "Use case: stylized-concept. One individual late falling cinematic VFX sprite arrival-impact-settle-desert for Yautja The Long Hunt.\nAttached jungle front gives only the realistic painted game material finish and lighting. This asset is a different material and a different moment: LATE SAND SETTLING, not another impact fan.\nSubject: Desert sand AFTER the impact: a delicate low broken curtain of fine tawny grains falling downward in short uneven granular trails, a few isolated tiny heavier pebbles closer to the bottom, soft nearly dissipated ochre veils close to the base only. Wide shallow distribution with large transparent gaps and an open center. Clearly downward settling, not a new upward fan or a fading smoke cloud. No dunes or ground.\nLow wide shallow uneven band of tiny separated sand grains with very fine VERTICAL downward trails, some trails gently tilted, and few short almost dissipated wisps. Heavy grains at lower ends. Long transparent gaps with the central third largely clear. No solid wings, fountains, rising streaks, upward spray, opaque clouds or large stones. Fine sand texture remains distinct from gray volcanic ash.\nIntended ground contact origin full-frame x50%,y78%, not a drawn line. All particles within x20–80%,y52–81%; fully empty transparent outer15% margins all sides. One1536x1024 landscape RGBA PNG with TRUE TRANSPARENT BACKGROUND. Warm muted ochre, pale tan and soft neutral upper-left light, semi-realistic hand-painted2.5D, readable at250px.\nNo ground plane, dunes, floor, piles, shadow disc, environment, horizon, capsule, ship, people, creature, magical glow, text, labels, grid, panels, sheet, frame, watermark, checkerboard, black/white backdrop or cut-off particles. Must be a new sparse falling morphology, never a uniformly faded front.",
+  "referenceImages": [
+    "/workspace/scratch/62884fa4f584/cinematic-assets-batch-01-20261105/public/game/cinematics/batch-01-20261105/arrival-impact-front-jungle.png"
+  ],
+  "generationMode": "builtin-imagegen-reference",
+  "intendedAnchor": {
+    "name": "ground-capsule-reference",
+    "normalized": [
+      0.5,
+      0.78
+    ],
+    "basis": "shared intended contact for late falling phase; source review only, integration pending"
+  },
+  "generated": true,
+  "integrated": false,
+  "testedInEngine": false,
+  "artisticHumanApproval": false,
+  "visualReview": {
+    "reviewer": "assistant",
+    "result": "pass-with-integration-pending",
+    "notes": "Fine ochre grain curtains with heavier grains at bottom of near-vertical trails; open center and low density compared with initial sand ribbons. No terrain backdrop or new lore."
+  },
+  "qa": {
+    "mode": "RGBA",
+    "width": 1536,
+    "height": 1024,
+    "transparentPixelFraction": 0.8865235646565756,
+    "visiblePixelCountAlphaOver16": 64961,
+    "borderPixelCountAlphaOver16": 0,
+    "alphaOver16Bounds": [
+      195,
+      541,
+      1301,
+      848
+    ],
+    "passed": true
+  },
+  "sha256": "c02ba8ea8eb8d6d7bef22c49d8eecb79d8ba4c0b7e3433b4027d1f7b3821fb55",
+  "bytes": 1056362
+}

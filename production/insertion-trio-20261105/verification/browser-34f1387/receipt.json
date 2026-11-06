@@ -1,0 +1,272 @@
+{
+  "sourceCommit": "34f1387144906696d4977120113a616a5d4d8709",
+  "workflowRun": 41991077924,
+  "artifact": 13399600209,
+  "artifactSha256": "9c893b55a6cad4f70f0236a3b46e28d3c46a2c900fd0a85fbf3fc57af07ef347",
+  "scope": "Pre-cloak insertion extension; optical approach is not present on this commit.",
+  "passedChecks": 56,
+  "totalChecks": 57,
+  "capturedFrames": 189,
+  "errors": [],
+  "consoleErrors": [],
+  "missingAssets": [],
+  "sourceHashes": {
+    "app/dev/client.tsx": "d0039f33b6b242058828f91a7099902a4ccee3116eda1ec658ff34dfc0971dde",
+    "app/dev/destinations.ts": "585d61047ae63e9c3ec70bbad7f52176f0eadfd4a9b438fdeb38026ef170ee98",
+    "app/dev/session.tsx": "be55d5d4e77fbd4220cc2646e36624c33efd039ec0c84a0ae5e1de280d1cb3e1",
+    "app/game/HuntCanvas.tsx": "839a76cae4b9c73fcd885982b35cd6af6b7f115e249323037795e6304e51fe5f",
+    "app/game/HunterRigPreview.tsx": "f9a7fb5029f08d0deec205af1fbfe5172d0bb5c32f6885c5424479886a6f876c",
+    "app/game/PlanetArrivalCinematic.module.css": "d1e1e73ef6285f910d539cb54cafba040b5a546d93da70058e0be53cf5094129",
+    "app/game/PlanetArrivalCinematic.tsx": "b35e36ab8728b272bbfe56d7880048c8dfa3fd3ce640ab7a8bc6549d434e9ee1",
+    "app/game/hunterRig.ts": "653c03db8a3cc2ad6664725d501ac58866ff58097239aab50e880d019cd14904",
+    "app/game/shipCatalogue.ts": "458d077948c3f3e2f867fdc441e64423808cfb0cea54582b0c61762b1705d396",
+    "app/game/systems/huntInsertion.ts": "f283d44d6876a7afd14d4f6cb922b325c0a48aeb79347d8d73aec8f1d0cc38ec",
+    "app/game/systems/planetArrival.ts": "2d0ce19e0b1d11b64af56c0a5058bc30e4b8d5a018fe17e222457f2f055e9fb4",
+    "app/game/systems/planetArrivalArt.ts": "28f50705db61616c632b9ed2ec39298012b893204f1a7bc4ac1fd2d4caea64a4",
+    "app/game/systems/planetArrivalAudio.ts": "f93257cd351910496ca83849128e7df36946fb2a9aa77601560fa8d1b119b443",
+    "app/game/systems/planetArrivalGroundArt.ts": "d0d7f257757c458b8944a8ddd95dc9bea9cc250083899918fc6f5ccaab421e22",
+    "app/game/systems/planetArrivalPresentation.ts": "c0db85998b87ac32fe18ef5ed7bef50034d306677b96f5c80e38d5a11e8d6727",
+    "app/game/systems/planetArrivalRun.ts": "da41776733aecdfc9ac14fd332f6f3f803e83791fad7f9320e4e1c415959249b",
+    "app/game/systems/planetArrivalSpatial.ts": "bce53ce72cff85bdef9d9351066f70d1920a385d131751bf0bf71da430a7c020",
+    "app/game/systems/planetInsertion.ts": "dc30d8679f5f930eeb7e5d2334161595105fcf6cf3dc7362e87cc964f2694222",
+    "app/game/worldScreens.ts": "04854a87a575630fedcc6b0ac641de942c7f04e87e448da0767ef558e930d495",
+    "scripts/qa-planet-arrival-spatial.mjs": "02b0da7aebb5a2ce9c51e1de36cd0267418c39ee0e178b3feb33bcf0d2b665f4"
+  },
+  "checks": [
+    {
+      "name": "desktop: orbit actual layers, anchors and motion",
+      "passed": true
+    },
+    {
+      "name": "desktop: title actual layers, anchors and motion",
+      "passed": true
+    },
+    {
+      "name": "desktop: carrier actual layers, anchors and motion",
+      "passed": true
+    },
+    {
+      "name": "desktop: release actual layers, anchors and motion",
+      "passed": true
+    },
+    {
+      "name": "desktop: descent actual layers, anchors and motion",
+      "passed": true
+    },
+    {
+      "name": "desktop: atmosphere actual layers, anchors and motion",
+      "passed": true
+    },
+    {
+      "name": "desktop: landing actual layers, anchors and motion",
+      "passed": true
+    },
+    {
+      "name": "desktop: egress actual layers, anchors and motion",
+      "passed": true
+    },
+    {
+      "name": "desktop: Nivalis-K own planet, landscape and grounded emergence",
+      "passed": true
+    },
+    {
+      "name": "desktop: Cinder-12 own planet, landscape and grounded emergence",
+      "passed": true
+    },
+    {
+      "name": "desktop: Naraka-Delta own planet, landscape and grounded emergence",
+      "passed": true
+    },
+    {
+      "name": "desktop: Serekh-9 own planet, landscape and grounded emergence",
+      "passed": true
+    },
+    {
+      "name": "desktop: Pelagos-M own planet, landscape and grounded emergence",
+      "passed": true
+    },
+    {
+      "name": "desktop: Mycora-V own planet, landscape and grounded emergence",
+      "passed": true
+    },
+    {
+      "name": "desktop: Acheron-Sigma own planet, landscape and grounded emergence",
+      "passed": true
+    },
+    {
+      "name": "desktop: avp-predator-mothership source orientation and attached release effect",
+      "passed": true
+    },
+    {
+      "name": "desktop: avpr-scout-ship source orientation and attached release effect",
+      "passed": true
+    },
+    {
+      "name": "desktop: wolf-ship source orientation and attached release effect",
+      "passed": true
+    },
+    {
+      "name": "desktop: fugitive-spaceship source orientation and attached release effect",
+      "passed": true
+    },
+    {
+      "name": "desktop: upgrade-spaceship source orientation and attached release effect",
+      "passed": true
+    },
+    {
+      "name": "desktop: feral-spaceship source orientation and attached release effect",
+      "passed": true
+    },
+    {
+      "name": "desktop: ship-solo real flight, contact and complete disembarkation",
+      "passed": true
+    },
+    {
+      "name": "desktop: pod-triad real flight, contact and complete disembarkation",
+      "passed": true
+    },
+    {
+      "name": "desktop: ship-triad real flight, contact and complete disembarkation",
+      "passed": true
+    },
+    {
+      "name": "desktop: wolf-ship measured hull support and attached exit on the real surface",
+      "passed": true
+    },
+    {
+      "name": "desktop: avpr-scout-ship measured hull support and attached exit on the real surface",
+      "passed": true
+    },
+    {
+      "name": "mobile: orbit actual layers, anchors and motion",
+      "passed": true
+    },
+    {
+      "name": "mobile: title actual layers, anchors and motion",
+      "passed": true
+    },
+    {
+      "name": "mobile: carrier actual layers, anchors and motion",
+      "passed": true
+    },
+    {
+      "name": "mobile: release actual layers, anchors and motion",
+      "passed": true
+    },
+    {
+      "name": "mobile: descent actual layers, anchors and motion",
+      "passed": true
+    },
+    {
+      "name": "mobile: atmosphere actual layers, anchors and motion",
+      "passed": true
+    },
+    {
+      "name": "mobile: landing actual layers, anchors and motion",
+      "passed": true
+    },
+    {
+      "name": "mobile: egress actual layers, anchors and motion",
+      "passed": true
+    },
+    {
+      "name": "mobile: Nivalis-K own planet, landscape and grounded emergence",
+      "passed": true
+    },
+    {
+      "name": "mobile: Cinder-12 own planet, landscape and grounded emergence",
+      "passed": true
+    },
+    {
+      "name": "mobile: Naraka-Delta own planet, landscape and grounded emergence",
+      "passed": true
+    },
+    {
+      "name": "mobile: Serekh-9 own planet, landscape and grounded emergence",
+      "passed": true
+    },
+    {
+      "name": "mobile: Pelagos-M own planet, landscape and grounded emergence",
+      "passed": true
+    },
+    {
+      "name": "mobile: Mycora-V own planet, landscape and grounded emergence",
+      "passed": true
+    },
+    {
+      "name": "mobile: Acheron-Sigma own planet, landscape and grounded emergence",
+      "passed": true
+    },
+    {
+      "name": "mobile: avp-predator-mothership source orientation and attached release effect",
+      "passed": true
+    },
+    {
+      "name": "mobile: avpr-scout-ship source orientation and attached release effect",
+      "passed": true
+    },
+    {
+      "name": "mobile: wolf-ship source orientation and attached release effect",
+      "passed": true
+    },
+    {
+      "name": "mobile: fugitive-spaceship source orientation and attached release effect",
+      "passed": true
+    },
+    {
+      "name": "mobile: upgrade-spaceship source orientation and attached release effect",
+      "passed": true
+    },
+    {
+      "name": "mobile: feral-spaceship source orientation and attached release effect",
+      "passed": true
+    },
+    {
+      "name": "mobile: ship-solo real flight, contact and complete disembarkation",
+      "passed": true
+    },
+    {
+      "name": "mobile: pod-triad real flight, contact and complete disembarkation",
+      "passed": true
+    },
+    {
+      "name": "mobile: ship-triad real flight, contact and complete disembarkation",
+      "passed": true
+    },
+    {
+      "name": "mobile: wolf-ship measured hull support and attached exit on the real surface",
+      "passed": true
+    },
+    {
+      "name": "mobile: avpr-scout-ship measured hull support and attached exit on the real surface",
+      "passed": true
+    },
+    {
+      "name": "Reduced motion preserves sockets, ground contact and the native cut duration",
+      "passed": true
+    },
+    {
+      "name": "Reduced motion preserves every explicit insertion method and complete formation",
+      "passed": true
+    },
+    {
+      "name": "Production /dev runs all eight shots naturally, with real resize and exactly one hunt",
+      "passed": true
+    },
+    {
+      "name": "Native Reset and Skip retain the same destination and mount one real hunt",
+      "passed": true
+    },
+    {
+      "name": "Native ship and triad Skip preserves the actual hull, formation, patrols and usable companion orders",
+      "passed": false,
+      "message": "locator.click: Timeout 20000ms exceeded.\nCall log:\n  - waiting for getByRole('button', { name: 'Ka’rhek : tenir la position', exact: true })\n"
+    }
+  ],
+  "reviewedCaptureSha256": {
+    "desktop-ship-triad-grounded.png": "83e7e312e83f1a130307c5efb5f93357a19dcaef95924c23118b06566ac756ee",
+    "mobile-pod-triad-egress-final.png": "fcc2f6122c9d2ad8040a262abaf9cd94c1264040d98a4d5076117a50e2faa63d",
+    "mobile-ship-triad-egress-final.png": "57e8a24fb430624cffd70a9b01ff5abfb5055f2505a05566cdd37a3b2f624890"
+  },
+  "review": "Root and independent reviewer inspected representative hull contacts, walking disembarkation and mobile final formations; no obvious ground/support discontinuity. The desktop final image was obscured by the terminal panel and is not evidence for that final pose. The only failed functional check opened the unrelated Details panel instead of the trio orders panel; fixed separately in the next source commit."
+}

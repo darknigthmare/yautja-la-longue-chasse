@@ -26,6 +26,7 @@ const ast = ts.createSourceFile("HuntCanvas.tsx", source, ts.ScriptTarget.Latest
 const nativeBundle = await build({ stdin: {
   contents: `${source.replace("export default function HuntCanvas", "function HuntCanvas")}
 export {huntFieldLoadV112,discoveryActorsV112,riteSourceLabelV77,riteRuntimeOptionsV112,routeCorpseRiteGamepadV112,makeGameState};
+export {cloneHuntInsertion,restoreHuntInsertion,samePlanetInsertion,insertionCheckpointConsistent,updateHuntInsertionCompanions,updateHuntPodRecovery};
 export {defaultSave} from "./save";
 export {MISSION_BY_ID} from "./data";
 export * from "./systems/canopyTraversalV112";

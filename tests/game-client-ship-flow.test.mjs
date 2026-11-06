@@ -19,6 +19,11 @@ const dependencies = await build({
     'export { defaultSave, normalizeSave, reconcileSaveWrite, RANK_THRESHOLDS, SAVE_STORAGE_KEY, writeSaveWithStatus as durableSaveWrite, loadSaveWithStatus } from "./app/game/save.ts";',
     'export { MISSIONS } from "./app/game/data.ts";',
     'export { loadShipProgression } from "./app/game/systems/progression.ts";',
+    'export { isShipId } from "./app/game/shipCatalogue.ts";',
+    'export { TRIO_MEMBERS, assignExpeditionMember, recruitExpeditionMember, reserveExpeditionMember, expeditionTrioReady, normalizePlanetInsertionPlan, samePlanetInsertion, settleExpeditionOutcome, shipSupportsSurfaceInsertion } from "./app/game/systems/planetInsertion.ts";',
+    'export { SHIP_INSERTION_ENERGY, debitShipInsertionCloak, hasShipInsertionDebit, shipInsertionCharge, rechargeShipInsertionEnergy } from "./app/game/systems/shipInsertionEnergy.ts";',
+    'export { createHuntInsertion, hurtHuntCompanion, beginHuntCompanionBoarding, completeHuntCompanionBoarding, huntInsertionOutcome } from "./app/game/systems/huntInsertion.ts";',
+    'export { worldBlueprintFor } from "./app/game/systems/worldBlueprints.ts";',
     'export { createPlanetArrival, inspectPlanetArrival, requestPlanetArrivalHandoff, completePlanetArrivalHandoff } from "./app/game/systems/planetArrival.ts";',
     'export { inspectPlanetArrivalRun } from "./app/game/systems/planetArrivalRun.ts";',
     'export { createWolfCastleVisit, actWolfCastle, applyWolfCastleCheckpoint } from "./app/game/systems/wolfCastle.ts";',
@@ -26,7 +31,7 @@ const dependencies = await build({
     'export * as castleCombat from "./app/game/systems/wolfCastleCombat.ts";',
     'export { captureHuntGauntletV142, resumeHuntGauntletV142 } from "./app/game/systems/huntGauntletIdentityV142.ts";',
     'export { normalizeHuntAccessibilityV112 } from "./app/game/systems/huntAccessibilityV112.ts";',
-    'export { actClanShipOperations, bindClanShipMission, clanShipContract, createClanShipOperations, inspectClanShipOperations, releaseClanShipMissionBinding, settleClanShipMission, CLAN_SHIP_ONBOARDING_STEPS } from "./app/game/systems/clanShipOperations.ts";',
+    'export { actClanShipOperations, bindClanShipMission, clanShipContract, createClanShipOperations, evaluateClanShipAccess, inspectClanShipOperations, releaseClanShipMissionBinding, settleClanShipMission, CLAN_SHIP_ONBOARDING_STEPS } from "./app/game/systems/clanShipOperations.ts";',
     'export { applyMissionResult as applyRealMissionResult } from "./app/game/save.ts";',
   ].join('\n'), resolveDir: fileURLToPath(new URL('../', import.meta.url)), loader: 'ts' },
   bundle: true, write: false, format: 'iife', globalName: 'ShipFlowDependencies', platform: 'node', logLevel: 'silent',
@@ -69,6 +74,7 @@ function fixture() {
     arrivalStartupRef: { current: false }, arrivalMountedRunRef: { current: null },
     screen: 'deck', settingsOpen: false, archiveTransferBusy: false, archiveRecoveryIssue: null, campaignSaveBusy: false,
     hunterGauntlet: { equippedId: "jungle-hunter" },
+    resumableHunt: null,
     activeHuntSessionRef: { current: null }, activeHuntWriteFailureRef: { current: null }, pendingTerminalRunRef: { current: null },
     mergeExplorationProgress, isExplorationMission, deliverHarvestV112,
     writeSaveWithStatus(save) { observations.writes++; observations.events.push("write"); return { save, persisted: true, failure: null }; },
@@ -76,10 +82,10 @@ function fixture() {
     loadActiveHuntSave() { return { save: observations.currentHunt ?? null, failure: null }; },
     createHuntRunId: () => `run-${++observations.sequence}`,
     playSound() {}, setSave(save) { environment.save = save; }, setSaveFailure(value) { observations.saveFailure = value; },
-    setResumableHunt() {}, setHuntResumePayload() {}, setHuntRuntimeSave() {}, setSelectedMission() {},
+    setResumableHunt() {}, setHuntResumePayload(value) { observations.huntResumePayload = value; }, setHuntRuntimeSave() {}, setSelectedMission() {},
     setPendingHuntResult(value) { observations.pendingResult = value; },
     setLastResult(value) { observations.lastResult = value; }, setLastRewardSummary(value) { observations.lastRewardSummary = value; }, setToast(value) { observations.toast = value; },
-    setNewGamePhase() {}, setSelectedShipId() {},
+    setNewGamePhase() {}, setSelectedShipId(value) { observations.selectedShipId = value; },
     setScreen(screen) { observations.screen = screen; environment.screen = screen; },
     persist(save) { environment.save = save; },
     applyMissionResult(save) {
@@ -94,6 +100,7 @@ function fixture() {
   // clone for these JSON DTOs, then reconstruct their prototypes in this realm.
   runInNewContext('globalThis.structuredClone = value => JSON.parse(cloneJsonDto(value));', environment);
   environment.save = environment.defaultSave("2026-08-31T10:00:00.000Z");
+  environment.insertionPlan = environment.normalizePlanetInsertionPlan(undefined);
   environment.save.settings.difficultyId = 'hunter';
   environment.selectedMission = environment.MISSIONS.find(item => item.id === MISSION_ID);
   environment.entry = { ownerCreatedAt: environment.save.createdAt };
@@ -114,6 +121,185 @@ function fixture() {
   // departure and handoff callbacks; no fake active session is injected.
   const launch = () => { depart(); arrive(); };
   return { observations, environment, depart, arrive, launch, finish: callback("completeMission", environment), autosave: callback("persistActiveHunt", environment) };
+}
+
+function insertionFixture(method = 'ship', team = 'triad', shipCloak = false) {
+  const result = fixture(), { environment } = result;
+  environment.fixtureMethod = method; environment.fixtureTeam = team;
+  environment.fixtureCloak = shipCloak;
+  runInNewContext(`
+    insertionPlan = { version: 1, method: fixtureMethod, team: fixtureTeam, ...(fixtureCloak ? { shipCloak: true } : {}) };
+    if (insertionPlan.team === 'triad') {
+      const shipId = loadShipProgression(save).selectedShipId;
+      let roster = recruitExpeditionMember(save.expeditionRoster, save.createdAt, 'karhek');
+      roster = assignExpeditionMember(roster, save.createdAt, shipId, 'karhek');
+      roster = recruitExpeditionMember(roster, save.createdAt, 'saketh');
+      roster = assignExpeditionMember(roster, save.createdAt, shipId, 'saketh');
+      save = { ...save, expeditionRoster: roster };
+      saveRef.current = save;
+    }
+    applyMissionResult = applyRealMissionResult;
+    makeInsertionResult = (outcome = 'success') => {
+      const session = activeHuntSessionRef.current;
+      const world = worldBlueprintFor(selectedMission.id);
+      const insertion = createHuntInsertion(session.configuration.insertion, session.runId, world);
+      if (insertion.companions.length) hurtHuntCompanion(insertion.companions[0], 30);
+      if (outcome === 'success') {
+        // This transaction fixture positions both bodies at the authored return
+        // point; the actual boarding and outcome functions decide their status.
+        for (const member of insertion.companions) member.x = world.extraction.x - member.width / 2;
+        if (!beginHuntCompanionBoarding(insertion, world)) throw Error('The real extraction must accept these bodies');
+        completeHuntCompanionBoarding(insertion);
+      }
+      return {
+        missionId: selectedMission.id, difficultyId: 'hunter', outcome, score: 80, scans: 3, elapsedSeconds: 180,
+        completedObjectiveIds: selectedMission.objectives.filter(item => item.required || item.kind === 'extract').map(item => item.id),
+        honorEvents: [], trophyQuality: 'elite', kills: 3, secondWindUsed: false,
+        completedAt: '2026-11-05T14:00:00.000Z', insertionOutcome: huntInsertionOutcome(insertion, session.runId),
+      };
+    };
+  `, environment);
+  return result;
+}
+
+test('real briefing callbacks keep recruitment, assignment and reserve as separate campaign actions', () => {
+  const { environment, observations } = fixture();
+  environment.screen = 'briefing';
+  const recruit = callback('recruitExpeditionHunter', environment);
+  const assign = callback('assignExpeditionHunter', environment);
+  const reserve = callback('reserveExpeditionHunter', environment);
+  const shipId = environment.loadShipProgression(environment.save).selectedShipId;
+  assign('karhek', shipId);
+  assert.equal(observations.writes, 0, 'assignment cannot create an agreement');
+  recruit('karhek');
+  assert.equal(environment.save.expeditionRoster.members[0].assignedShipId, null);
+  assert.equal(environment.expeditionTrioReady(environment.save.expeditionRoster, environment.save.createdAt, shipId), false);
+  assign('karhek', 'wolf-ship');
+  assert.equal(observations.writes, 1, 'a stale hull displayed by the briefing cannot receive an assignment');
+  assign('karhek', shipId);
+  assert.equal(environment.save.expeditionRoster.members[0].assignedShipId, shipId);
+  reserve('karhek', 'wolf-ship');
+  assert.equal(observations.writes, 2, 'a stale reserve command cannot remove a newer assignment');
+  reserve('karhek', shipId);
+  assert.equal(observations.writes, 3);
+  assert.equal(environment.save.expeditionRoster.members.length, 1);
+  assert.equal(environment.save.expeditionRoster.members[0].assignedShipId, null);
+  assert.equal(environment.save.expeditionRoster.members[0].availability, 'ready');
+  const beforeRepeat = JSON.stringify(environment.save.expeditionRoster);
+  recruit('karhek');
+  assert.equal(JSON.stringify(environment.save.expeditionRoster), beforeRepeat, 'recruit again cannot reboard the hunter');
+});
+
+test('retained roster commands cannot reassign companions once the actual departure is underway', () => {
+  const { environment, observations, depart, arrive } = insertionFixture('pod', 'triad');
+  const recruit = callback('recruitExpeditionHunter', environment);
+  const assign = callback('assignExpeditionHunter', environment);
+  const reserve = callback('reserveExpeditionHunter', environment);
+  const shipId = environment.loadShipProgression(environment.save).selectedShipId;
+  depart();
+  const before = environment.save.expeditionRoster, writes = observations.writes;
+  // Even a retained briefing event cannot replace the manifest frozen at departure.
+  environment.screen = 'briefing';
+  recruit('karhek'); assign('karhek', shipId); reserve('karhek', shipId);
+  assert.equal(environment.save.expeditionRoster, before);
+  assert.equal(observations.writes, writes);
+  environment.screen = 'planet-arrival';
+  assert.equal(arrive(), true);
+  environment.screen = 'briefing';
+  const huntWrites = observations.writes;
+  reserve('karhek', shipId);
+  assert.equal(environment.save.expeditionRoster, before);
+  assert.equal(observations.writes, huntWrites, 'an active hunt keeps the return assignment');
+});
+
+for (const command of ['assign', 'reserve']) for (const failureMode of ['before-setItem', 'after-setItem']) {
+  test(`roster ${command}: ${failureMode} preserves the previous confirmed state then recovers one durable transition`, () => {
+    const { environment, observations } = fixture();
+    environment.screen = 'briefing';
+    const shipId = environment.loadShipProgression(environment.save).selectedShipId;
+    callback('recruitExpeditionHunter', environment)('karhek');
+    if (command === 'reserve') callback('assignExpeditionHunter', environment)('karhek', shipId);
+    const values = new Map(), writes = [];
+    let rejectWrite = false, rejectConfirmation = false;
+    const storage = {
+      getItem(key) {
+        if (key === environment.SAVE_STORAGE_KEY && rejectConfirmation) {
+          rejectConfirmation = false;
+          throw Error('The write confirmation cannot be read yet');
+        }
+        return values.get(key) ?? null;
+      },
+      setItem(key, value) {
+        if (key === environment.SAVE_STORAGE_KEY && rejectWrite) {
+          rejectWrite = false;
+          if (failureMode === 'before-setItem') throw new DOMException('Full', 'QuotaExceededError');
+          values.set(key, value); writes.push(value); rejectConfirmation = true; return;
+        }
+        values.set(key, value);
+        if (key === environment.SAVE_STORAGE_KEY) writes.push(value);
+      },
+      removeItem(key) { values.delete(key); },
+    };
+    environment.window = { localStorage: storage };
+    const initial = environment.durableSaveWrite(environment.save);
+    assert.equal(initial.persisted, true);
+    environment.save = initial.save; environment.saveRef.current = initial.save;
+    environment.writeSaveWithStatus = save => { observations.writes++; return environment.durableSaveWrite(save); };
+    writes.length = 0; rejectWrite = true;
+    const change = callback(command === 'assign' ? 'assignExpeditionHunter' : 'reserveExpeditionHunter', environment);
+    const before = environment.save, marks = before.profile.clanMarks;
+    change('karhek', shipId);
+    assert.equal(environment.save, before, 'an unconfirmed action cannot change the active campaign');
+    assert.equal(observations.saveFailure, 'write-failed');
+    assert(environment.pendingSocialWriteRef.current);
+    change('karhek', shipId);
+    assert.equal(environment.pendingSocialWriteRef.current, null);
+    assert.equal(environment.save.expeditionRoster.members[0].assignedShipId, command === 'assign' ? shipId : null);
+    assert.equal(environment.save.profile.clanMarks, marks);
+    assert.equal(writes.length, 1, 'confirmation recovery must not persist the same transition twice');
+    const loaded = environment.loadSaveWithStatus(storage);
+    assert.equal(JSON.stringify(loaded.save.expeditionRoster), JSON.stringify(environment.save.expeditionRoster));
+  });
+}
+
+function paidDepartureTransactionFixture(failureMode) {
+  const result = insertionFixture('ship', 'solo', true);
+  const { environment, observations } = result;
+  const values = new Map(), writes = [];
+  let rejectDeparture = true, rejectConfirmation = false;
+  const storage = {
+    getItem(key) {
+      if (key === environment.SAVE_STORAGE_KEY && rejectConfirmation) {
+        rejectConfirmation = false;
+        throw Error('The confirmed bytes cannot be read back yet');
+      }
+      return values.get(key) ?? null;
+    },
+    setItem(key, value) {
+      if (key === environment.SAVE_STORAGE_KEY && rejectDeparture && JSON.parse(value).planetArrival) {
+        rejectDeparture = false;
+        if (failureMode === 'before-setItem') throw new DOMException('Full', 'QuotaExceededError');
+        values.set(key, value); writes.push({ key, value });
+        rejectConfirmation = true;
+        return;
+      }
+      values.set(key, value); writes.push({ key, value });
+    },
+    removeItem(key) { values.delete(key); },
+  };
+  environment.window = { localStorage: storage };
+  const initial = environment.durableSaveWrite(environment.save);
+  assert.equal(initial.persisted, true, initial.failure);
+  environment.save = initial.save; environment.saveRef.current = initial.save;
+  environment.writeSaveWithStatus = save => {
+    observations.writes++;
+    return environment.durableSaveWrite(save);
+  };
+  const durable = () => JSON.parse(values.get(environment.SAVE_STORAGE_KEY));
+  const charge = () => environment.shipInsertionCharge(environment.save.shipInsertionEnergy,
+    environment.save.createdAt, 'classic-predator-spaceship');
+  const departureWrites = () => writes.filter(write => write.key === environment.SAVE_STORAGE_KEY && JSON.parse(write.value).planetArrival);
+  return { ...result, durable, charge, departureWrites };
 }
 
 function castleCheckpointFixture() {
@@ -444,6 +630,269 @@ test("duplicate terminal callbacks settle once; a deliberate next run can earn i
   launch(); finish({ outcome: "success" });
   assert.equal(observations.rewards, 2);
   assert.equal(environment.save.profile.honor, 10);
+});
+
+test('all four insertion choices freeze the accepted plan and hull through arrival, mounting and the first autosave', () => {
+  for (const method of ['pod', 'ship']) for (const team of ['solo', 'triad']) {
+    const { environment, observations, depart, arrive, autosave } = insertionFixture(method, team);
+    const plan = { version: 1, method, team };
+    depart();
+    assert.equal(observations.screen, 'planet-arrival');
+    const run = environment.save.planetArrivalRun;
+    assert.deepEqual(JSON.parse(JSON.stringify(environment.save.planetArrival.insertion)), plan);
+    assert.deepEqual(JSON.parse(JSON.stringify(run.configuration.insertion)), plan);
+    assert.equal(run.configuration.insertionShipId, 'classic-predator-spaceship');
+    runInNewContext(`insertionPlan.method = insertionPlan.method === 'pod' ? 'ship' : 'pod';
+      insertionPlan.team = insertionPlan.team === 'solo' ? 'triad' : 'solo';`, environment);
+    assert.equal(arrive(), true, 'later briefing changes cannot replace the accepted departure');
+    assert.deepEqual(JSON.parse(JSON.stringify(observations.huntResumePayload.insertionPlan)), plan);
+    assert.equal(observations.huntResumePayload.insertionRunId, run.runId);
+    assert.equal(observations.huntResumePayload.insertionShipId, run.configuration.insertionShipId);
+    autosave({ elapsed: 1, snapshot: { health: 100 }, retryCheckpoint: null });
+    assert.deepEqual(JSON.parse(JSON.stringify(observations.sidecars[0].configuration.insertion)), plan);
+    assert.equal(observations.sidecars[0].configuration.insertionShipId, run.configuration.insertionShipId);
+  }
+});
+
+test('the real departure refuses an absent, incomplete, reassigned or recovering triad before any write', () => {
+  for (const change of [
+    'save.expeditionRoster = null;',
+    'save.expeditionRoster.members.pop();',
+    "save.expeditionRoster = assignExpeditionMember(save.expeditionRoster, save.createdAt, 'wolf-ship', 'saketh');",
+    "save.expeditionRoster.members[0].availability = 'recovering';",
+  ]) {
+    const { environment, observations, depart } = insertionFixture();
+    runInNewContext(change, environment);
+    const before = JSON.stringify(environment.save);
+    depart();
+    assert.equal(observations.writes, 0, change);
+    assert.equal(observations.clears, 0, change);
+    assert.equal(environment.activeHuntSessionRef.current, null);
+    assert.equal(observations.screen, 'deck');
+    assert.match(observations.toast, /aptes et affectés/);
+    assert.equal(JSON.stringify(environment.save), before);
+  }
+});
+
+test('a cloaked departure commits its energy receipt with the frozen run and never pays again on mounting or autosave', () => {
+  const { environment, observations, depart, arrive, autosave } = insertionFixture('ship', 'triad', true);
+  const shipId = 'classic-predator-spaceship', written = [];
+  const charge = () => environment.shipInsertionCharge(environment.save.shipInsertionEnergy, environment.save.createdAt, shipId);
+  const write = environment.writeSaveWithStatus;
+  environment.writeSaveWithStatus = save => { written.push(save); return write(save); };
+  assert.equal(charge(), 100);
+  depart();
+  const { planetArrival: arrival, planetArrivalRun: run } = environment.save;
+  assert.equal(written.length, 2, 'owner bootstrap and one atomic departure write');
+  assert.equal(written[0].planetArrival ?? null, null);
+  assert.equal(written[0].shipInsertionEnergy ?? null, null);
+  assert.equal(written[1].planetArrivalRun.configuration.insertionEnergyRunId, arrival.runId);
+  assert.equal(written[1].shipInsertionEnergy.departures[0].runId, arrival.runId);
+  assert.equal(charge(), 70);
+  assert.equal(environment.hasShipInsertionDebit(environment.save.shipInsertionEnergy, environment.save.createdAt, arrival.runId, shipId), true);
+  const ledger = JSON.stringify(environment.save.shipInsertionEnergy);
+  depart();
+  assert.equal(written.length, 2, 'a second departure gesture keeps the accepted montage');
+  assert.equal(arrive(), true);
+  assert.equal(environment.mountArrivalHunt(environment.save.planetArrival, run), true);
+  environment.insertionPlan.shipCloak = false;
+  autosave({ elapsed: 1, snapshot: { health: 100 }, retryCheckpoint: null });
+  assert.equal(observations.huntResumePayload.insertionPlan.shipCloak, true);
+  assert.equal(observations.sidecars[0].configuration.insertion.shipCloak, true);
+  assert.equal(observations.sidecars[0].configuration.insertionEnergyRunId, arrival.runId);
+  assert.equal(JSON.stringify(environment.save.shipInsertionEnergy), ledger);
+  assert.equal(charge(), 70);
+});
+
+test('refused owner or departure storage never spends the campaign auxiliary budget', () => {
+  for (const failureStage of ['owner', 'departure']) {
+    const { environment, observations, depart } = insertionFixture('ship', 'triad', true);
+    const write = environment.writeSaveWithStatus;
+    environment.writeSaveWithStatus = save => failureStage === 'owner' || save.planetArrival
+      ? { save, persisted: false, failure: 'write-failed' } : write(save);
+    depart();
+    assert.equal(environment.shipInsertionCharge(environment.save.shipInsertionEnergy, environment.save.createdAt, 'classic-predator-spaceship'), 100);
+    assert.equal(environment.save.shipInsertionEnergy ?? null, null);
+    assert.equal(environment.save.planetArrival ?? null, null);
+    assert.equal(environment.activeHuntSessionRef.current, null);
+    assert.equal(observations.screen, 'deck');
+    if (failureStage === 'departure') {
+      const pending = environment.pendingSocialWriteRef.current.attempt.save;
+      assert.equal(pending.shipInsertionEnergy.hulls[0].charge, 70, 'the unconfirmed proposal remains recoverable, separate from campaign state');
+      assert.equal(pending.shipInsertionEnergy.departures[0].runId, pending.planetArrival.runId);
+    }
+  }
+});
+
+for (const failureMode of ['before-setItem', 'after-setItem-before-confirmation']) {
+  test(`the real paid departure recovers ${failureMode} without a second charge or an arrival substitution`, () => {
+    const { environment, observations, depart, durable, charge, departureWrites } = paidDepartureTransactionFixture(failureMode);
+    depart();
+    assert.equal(observations.saveFailure, 'write-failed');
+    assert.equal(charge(), 100, 'an unconfirmed departure cannot replace the in-memory campaign');
+    assert.equal(observations.screen, 'deck');
+    const pending = environment.pendingSocialWriteRef.current;
+    assert.ok(pending);
+    const attemptedRun = pending.attempt.save.planetArrival.runId;
+    if (failureMode === 'before-setItem') {
+      assert.equal(durable().planetArrival ?? null, null);
+      assert.equal(durable().shipInsertionEnergy ?? null, null);
+    } else {
+      assert.equal(durable().planetArrival.runId, attemptedRun);
+      assert.equal(durable().shipInsertionEnergy.hulls[0].charge, 70);
+    }
+    // These are the actual retry gestures. The first reconciles uncertain
+    // bytes before any baseline write; confirmed recovery refreshes the UI
+    // before the second gesture opens the original saved montage.
+    depart();
+    assert.equal(environment.pendingSocialWriteRef.current, null);
+    assert.equal(observations.saveFailure, null);
+    if (failureMode === 'after-setItem-before-confirmation') {
+      assert.equal(durable().planetArrival.runId, attemptedRun);
+      assert.equal(departureWrites().length, 1, 'confirmation recovery must not write another departure');
+    }
+    depart();
+    assert.equal(observations.screen, 'planet-arrival');
+    assert.equal(charge(), 70);
+    assert.equal(durable().shipInsertionEnergy.hulls[0].charge, 70);
+    assert.equal(durable().shipInsertionEnergy.departures.length, 1);
+    assert.equal(durable().shipInsertionEnergy.departures[0].runId, durable().planetArrival.runId);
+    assert.equal(durable().planetArrivalRun.configuration.insertionEnergyRunId, durable().planetArrival.runId);
+    assert.equal(departureWrites().length, 1);
+    assert.equal(environment.hasShipInsertionDebit(environment.save.shipInsertionEnergy, environment.save.createdAt,
+      environment.save.planetArrival.runId, 'classic-predator-spaceship'), true);
+    const accepted = JSON.stringify(durable());
+    depart();
+    assert.equal(JSON.stringify(durable()), accepted, 'a repeated launch must preserve the same paid departure');
+    assert.equal(departureWrites().length, 1);
+  });
+}
+
+test('two actual cloaked sorties consume 100 to 70 to 40, then the real recharge callback charges twenty marks once', () => {
+  const { environment, observations, launch, depart, finish } = insertionFixture('ship', 'solo', true);
+  environment.save.profile.clanMarks = 40;
+  const shipId = 'classic-predator-spaceship';
+  const charge = () => environment.shipInsertionCharge(environment.save.shipInsertionEnergy, environment.save.createdAt, shipId);
+  for (const expectedCharge of [70, 40]) {
+    launch();
+    assert.ok(environment.activeHuntSessionRef.current);
+    assert.equal(charge(), expectedCharge);
+    finish(environment.makeInsertionResult());
+    assert.equal(charge(), expectedCharge);
+    assert.equal(environment.activeHuntSessionRef.current, null);
+  }
+  assert.equal(environment.save.shipInsertionEnergy.departures.length, 2);
+  const beforeRefusal = observations.writes;
+  depart();
+  assert.equal(observations.writes, beforeRefusal);
+  assert.equal(environment.save.planetArrival, null);
+  assert.match(observations.toast, /Énergie insuffisante/);
+  environment.screen = 'briefing';
+  const marks = environment.save.profile.clanMarks;
+  const recharge = callback('rechargeInsertionShip', environment);
+  recharge('wolf-ship', 40);
+  assert.equal(charge(), 40, 'a stale button from a different selected hull cannot recharge this ship');
+  assert.equal(observations.selectedShipId, shipId, 'the stale button must refresh the actual selected hull in the briefing');
+  assert.equal(environment.save.profile.clanMarks, marks);
+  assert.equal(observations.writes, beforeRefusal);
+  recharge(shipId, 40);
+  assert.equal(charge(), 100);
+  assert.equal(environment.save.profile.clanMarks, marks - 20);
+  assert.equal(environment.save.shipInsertionEnergy.departures.length, 2);
+  assert.equal(observations.writes, beforeRefusal + 1);
+  recharge(shipId, 40);
+  assert.equal(charge(), 100);
+  assert.equal(environment.save.profile.clanMarks, marks - 20);
+  assert.equal(observations.writes, beforeRefusal + 1, 'the stale charge cannot buy the same recharge twice');
+});
+
+test('the actual hunt configuration refuses cloak without its saved energy receipt and original departure identity', () => {
+  const { environment, depart } = insertionFixture('ship', 'triad', true);
+  depart();
+  assert.ok(environment.normalizeHuntConfiguration(environment.save, environment.save.planetArrivalRun));
+  for (const change of [
+    'campaign.shipInsertionEnergy = null;',
+    'delete run.configuration.insertionEnergyRunId;',
+    "run.configuration.insertionEnergyRunId = 'another-departure';",
+    "run.configuration.insertionShipId = 'wolf-ship';",
+  ]) {
+    const accepted = runInNewContext(`(() => { const campaign = structuredClone(save); const run = structuredClone(save.planetArrivalRun); ${change} return normalizeHuntConfiguration(campaign, run); })()`, environment);
+    assert.equal(accepted, null, change);
+  }
+});
+
+test('arrival checkpoint and handoff reject a substituted insertion plan without replacing the frozen run', () => {
+  const { environment, observations, depart, arrive } = insertionFixture();
+  depart();
+  const before = environment.save, run = before.planetArrivalRun, writes = observations.writes;
+  runInNewContext(`
+    substitutedArrival = { ...save.planetArrival, insertion: { version: 1, method: 'pod', team: 'solo' } };
+    substitutedHandoff = requestPlanetArrivalHandoff(substitutedArrival, 'skipped');
+  `, environment);
+  assert.equal(callback('checkpointPlanetArrival', environment)(environment.substitutedArrival), false);
+  assert.equal(callback('finishPlanetArrival', environment)(environment.substitutedHandoff), false);
+  assert.equal(environment.save, before);
+  assert.equal(environment.save.planetArrivalRun, run);
+  assert.equal(observations.writes, writes);
+  assert.equal(environment.activeHuntSessionRef.current, null);
+  assert.equal(arrive(), true, 'the original accepted plan remains recoverable');
+});
+
+test('real triad extraction or abandonment settles availability with mission rewards once in the same campaign write', () => {
+  for (const outcome of ['success', 'abandoned']) {
+    const { environment, observations, launch, finish } = insertionFixture();
+    launch();
+    const before = environment.save, runId = environment.activeHuntSessionRef.current.runId;
+    const result = environment.makeInsertionResult(outcome);
+    const ordinary = environment.applyRealMissionResult(before, result);
+    const written = [];
+    const write = environment.writeSaveWithStatus;
+    environment.writeSaveWithStatus = save => { written.push(save); return write(save); };
+    observations.events.length = 0;
+    finish(result);
+    assert.equal(written.length, 1);
+    assert.equal(written[0], environment.save);
+    assert.equal(environment.save.profile.honor, ordinary.profile.honor);
+    assert.equal(environment.save.profile.clanMarks, ordinary.profile.clanMarks);
+    assert.deepEqual(JSON.parse(JSON.stringify(environment.save.expeditionRoster.members.map(member => member.availability))),
+      outcome === 'success' ? ['recovering', 'ready'] : ['missing', 'missing']);
+    assert.deepEqual([...environment.save.expeditionRoster.settledRunIds], [runId]);
+    assert.equal(environment.save.planetArrival, null);
+    assert.equal(environment.save.planetArrivalRun, null);
+    assert.deepEqual(observations.events, ['write', ['clear', runId]]);
+    const accepted = environment.save;
+    finish(result);
+    assert.equal(written.length, 1);
+    assert.equal(environment.save, accepted);
+  }
+});
+
+test('a missing or mismatched triad report retains the live hunt and campaign until a matching actual outcome arrives', () => {
+  const { environment, observations, launch, finish } = insertionFixture();
+  launch();
+  environment.validInsertionResult = environment.makeInsertionResult();
+  const before = environment.save, session = environment.activeHuntSessionRef.current;
+  const writes = observations.writes, clears = observations.clears;
+  for (const change of [
+    'delete candidate.insertionOutcome;',
+    "candidate.insertionOutcome.runId = 'another-run';",
+    "candidate.insertionOutcome.plan.method = 'pod';",
+    'candidate.insertionOutcome.members.pop();',
+    'candidate.insertionOutcome.injured = [];',
+  ]) {
+    const candidate = runInNewContext(`(() => { const candidate = structuredClone(validInsertionResult); ${change} return candidate; })()`, environment);
+    finish(candidate);
+    assert.equal(environment.save, before, change);
+    assert.equal(environment.activeHuntSessionRef.current, session);
+    assert.equal(environment.missionSettlementRef.current, false);
+    assert.equal(observations.pendingResult.result, candidate);
+    assert.equal(observations.writes, writes);
+    assert.equal(observations.clears, clears);
+  }
+  finish(environment.validInsertionResult);
+  assert.equal(observations.pendingResult, null);
+  assert.equal(environment.activeHuntSessionRef.current, null);
+  assert.deepEqual([...environment.save.expeditionRoster.settledRunIds], [session.runId]);
 });
 
 test("a locked destination cannot create or replace an active session", () => {

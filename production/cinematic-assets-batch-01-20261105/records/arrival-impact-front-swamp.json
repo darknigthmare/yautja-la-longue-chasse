@@ -1,0 +1,47 @@
+{
+  "id": "arrival-impact-front-swamp",
+  "family": "impact-front",
+  "biome": "swamp",
+  "file": "public/game/cinematics/batch-01-20261105/arrival-impact-front-swamp.png",
+  "generatedSource": "/workspace/scratch/62884fa4f584/generated_images/exec-f75ea5d5-f3e9-4c8b-b876-1b39db3aca69.png",
+  "prompt": "Use case: stylized-concept. Production 2D cinematic VFX sprite for Yautja The Long Hunt.\nAsset ID: arrival-impact-front-swamp.\nImage1 is ONLY the material finish, lighting and open-center family reference; image2 is only game context. Create a new physical effect, not the pictured scene or capsule. Make this effect appreciably smaller within its canvas than the reference so every particle has abundant transparent padding.\nSubject: A low, wide heavy mud splash from wet swamp soil, shaped as an asymmetric split cohesive fan with thick dark olive-brown muddy sheets tearing into rounded beads and curling fingers. Left side broad and low, right side several thinner muddy tendrils. Shallow droplets remain heavy and viscous, with subtle wet highlights and very little airborne haze. A clear middle opening. No plants, insects, neon or clean ocean-blue water.\nNear-ground side view with slight top view. Intended contact origin x=50%,y=78% of the entire frame. ONE cohesive irregular split plume. Central valley stays open. STRICT COMPOSITION: all visible mud, droplets and haze confined to the CENTRAL60% of image width, x=20–80%, and y=38–82%. At least15% of EVERY edge is entirely empty transparent canvas; no peripheral dust or glow. Contact line remains near y78%, not centered vertically. Fine liquid edges dissolve to real alpha.\nOne landscape1536x1024 RGBA PNG, TRUE TRANSPARENT BACKGROUND. Semi-realistic painted2.5D material, subtle neutral upper-left light and small wet highlights, realistic muted color, readable at250px wide, no black outline.\nExclude ground/floor/shadow disc, scene, horizon, black/white backdrop, checkerboard, capsule, ship, hunter, creatures, text, labels, frame, watermark, grid, atlas, panels, cropped droplets. One distinct independent sprite only.",
+  "referenceImages": [
+    "/workspace/scratch/62884fa4f584/cinematic-assets-batch-01-20261105/public/game/cinematics/batch-01-20261105/arrival-impact-front-jungle.png",
+    "/workspace/scratch/62884fa4f584/qa-recovery/spatial-a7f830c/desktop-landing-impact.png"
+  ],
+  "generationMode": "builtin-imagegen-reference",
+  "intendedAnchor": {
+    "name": "ground-capsule-reference",
+    "normalized": [
+      0.5,
+      0.78
+    ],
+    "basis": "requested full-frame contact; visual source review only, integration pending"
+  },
+  "generated": true,
+  "integrated": false,
+  "testedInEngine": false,
+  "artisticHumanApproval": false,
+  "visualReview": {
+    "reviewer": "assistant",
+    "result": "pass-with-integration-pending",
+    "notes": "Cohesive dark muddy sheets, thick rounded beads and thin tearing fingers; center open; differs physically from dry dust and ice. Isolated material with no added plants or scenery."
+  },
+  "qa": {
+    "mode": "RGBA",
+    "width": 1536,
+    "height": 1024,
+    "transparentPixelFraction": 0.929351806640625,
+    "visiblePixelCountAlphaOver16": 74026,
+    "borderPixelCountAlphaOver16": 0,
+    "alphaOver16Bounds": [
+      292,
+      492,
+      1231,
+      791
+    ],
+    "passed": true
+  },
+  "sha256": "f223b363006ca54c60313f1a39bcce01793ea6a62fe65eee27d06495ec5dd7e2",
+  "bytes": 990930
+}

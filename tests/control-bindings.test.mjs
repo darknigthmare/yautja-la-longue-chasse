@@ -40,8 +40,69 @@ function mutableDefaults() {
   );
 }
 
+test("old command profiles preserve occupied X bindings when pod recovery is introduced", () => {
+  const legacy = mutableDefaults();
+  delete legacy["hunt.podSelfDestruct"];
+  legacy["hunt.toggleCloak"] = ["KeyX"];
+  legacy["hunt.interact"] = ["KeyF"];
+  legacy["pit.p1AttackLight"] = ["KeyB"];
+  for (const version of [1, 2, 3]) {
+    const migrated = controls.deserializeControlBindings({ version, bindings: legacy });
+    assert.equal(migrated.restored, true, JSON.stringify(migrated.issues));
+    for (const [action, codes] of Object.entries(legacy)) assert.deepEqual(migrated.bindings[action], codes, action);
+    assert.deepEqual(controls.matchingControlActions("hunt", "KeyX", migrated.bindings), ["hunt.toggleCloak"]);
+    assert.equal(migrated.bindings["hunt.podSelfDestruct"].length, 1);
+    assert.notEqual(migrated.bindings["hunt.podSelfDestruct"][0], "KeyX");
+    assert.deepEqual(controls.findControlBindingConflicts(migrated.bindings), []);
+    assert.deepEqual(controls.deserializeControlBindings(controls.serializeControlBindings(migrated.bindings)).bindings,
+      migrated.bindings);
+  }
+});
+
+test("a fully occupied old keyboard keeps its controls and leaves only the new pod shortcut unassigned", () => {
+  const legacy = mutableDefaults();
+  delete legacy["hunt.podSelfDestruct"];
+  const occupied = new Set(Object.entries(legacy)
+    .filter(([id]) => id.startsWith("hunt.") && id !== "hunt.toggleCloak").flatMap(([, codes]) => codes));
+  legacy["hunt.toggleCloak"] = controls.SUPPORTED_CONTROL_KEY_CODES.filter(code => !occupied.has(code));
+  const migrated = controls.deserializeControlBindings({ version: 3, bindings: legacy });
+  assert.equal(migrated.restored, true, JSON.stringify(migrated.issues));
+  for (const [action, codes] of Object.entries(legacy)) assert.deepEqual(migrated.bindings[action], codes, action);
+  assert.deepEqual(migrated.bindings["hunt.podSelfDestruct"], []);
+  assert.deepEqual(controls.findControlBindingConflicts(migrated.bindings), []);
+  const reloaded = controls.deserializeControlBindings(controls.serializeControlBindings(migrated.bindings));
+  assert.equal(reloaded.restored, true);
+  assert.deepEqual(reloaded.bindings, migrated.bindings);
+  for (const code of controls.SUPPORTED_CONTROL_KEY_CODES) {
+    assert.equal(controls.matchesControlAction("hunt.podSelfDestruct", code, reloaded.bindings), false);
+  }
+});
+
+test("explicitly conflicting pod keys are still rejected instead of silently remapped", () => {
+  const conflicts = mutableDefaults();
+  conflicts["hunt.toggleCloak"] = ["KeyX"];
+  assert.equal(controls.normalizeControlBindings(conflicts).valid, false);
+  assert.equal(controls.deserializeControlBindings({ version: 3, bindings: conflicts }).restored, false);
+});
+
+test("reclaiming a pod shortcut preserves cloak input and allows a later keyboard assignment", () => {
+  const reclaimed = controls.rebindControlAction(controls.DEFAULT_CONTROL_BINDINGS, "hunt.toggleCloak", "KeyX",
+    { conflictPolicy: "replace" });
+  assert.equal(reclaimed.accepted, true);
+  assert.deepEqual(reclaimed.bindings["hunt.toggleCloak"], ["KeyX"]);
+  assert.deepEqual(reclaimed.bindings["hunt.podSelfDestruct"], []);
+  assert.deepEqual(controls.matchingControlActions("hunt", "KeyX", reclaimed.bindings), ["hunt.toggleCloak"]);
+  const reassigned = controls.rebindControlAction(reclaimed.bindings, "hunt.podSelfDestruct", "KeyB");
+  assert.equal(reassigned.accepted, true);
+  const restored = controls.deserializeControlBindings(controls.serializeControlBindings(reassigned.bindings));
+  assert.equal(restored.restored, true);
+  assert.deepEqual(controls.matchingControlActions("hunt", "KeyB", restored.bindings), ["hunt.podSelfDestruct"]);
+  assert.deepEqual(controls.matchingControlActions("hunt", "KeyX", restored.bindings), ["hunt.toggleCloak"]);
+  assert.equal(controls.rebindControlAction(restored.bindings, "hunt.pause", []).accepted, false);
+});
+
 test("the AZERTY defaults cover every stable action without contextual conflicts", () => {
-  assert.equal(controls.CONTROL_ACTION_IDS.length, 73);
+  assert.equal(controls.CONTROL_ACTION_IDS.length, 74);
   assert.deepEqual(
     Object.keys(controls.DEFAULT_CONTROL_BINDINGS),
     controls.CONTROL_ACTION_IDS,
@@ -59,6 +120,10 @@ test("the AZERTY defaults cover every stable action without contextual conflicts
     "KeyZ",
     "ArrowUp",
   ]);
+  assert.deepEqual(controls.DEFAULT_CONTROL_BINDINGS["hunt.podSelfDestruct"], ["KeyX"]);
+  assert.deepEqual(controls.matchingControlActions("hunt", "KeyX"), [
+    "hunt.podSelfDestruct",
+  ]);
   assert.deepEqual(controls.findControlBindingConflicts(
     controls.DEFAULT_CONTROL_BINDINGS,
   ), []);
@@ -71,6 +136,7 @@ test("the AZERTY defaults cover every stable action without contextual conflicts
   assert.equal(huntEntries.get("hunt.weaponPrimary")?.behavior, "press");
   assert.equal(huntEntries.get("hunt.scan")?.behavior, "press");
   assert.equal(huntEntries.get("hunt.aim")?.behavior, "hold");
+  assert.equal(huntEntries.get("hunt.podSelfDestruct")?.behavior, "press");
 
   for (const context of controls.CONTROL_CONTEXTS) {
     const entries = controls.controlBindingsForContext(context);
@@ -298,30 +364,36 @@ test("matching helpers prefer physical codes and provide a key-only fallback", (
 
 test("v1 and v2 binding envelopes migrate without losing existing remaps", () => {
   const legacyBindings = Object.fromEntries(
-    Object.entries(mutableDefaults()).filter(([actionId]) => !actionId.startsWith("pit.")),
+    Object.entries(mutableDefaults()).filter(([actionId]) => (
+      !actionId.startsWith("pit.") && actionId !== "hunt.podSelfDestruct"
+    )),
   );
   assert.equal(Object.keys(legacyBindings).length, 48);
+  legacyBindings["hunt.interact"] = ["KeyF"];
 
   const migrated = controls.deserializeControlBindings({
     version: 1,
     bindings: legacyBindings,
   });
   assert.equal(migrated.restored, true);
+  assert.deepEqual(migrated.bindings["hunt.interact"], ["KeyF"]);
+  assert.deepEqual(migrated.bindings["hunt.podSelfDestruct"], ["KeyX"]);
   assert.deepEqual(migrated.bindings["pit.p1AttackLight"], ["KeyJ"]);
   assert.deepEqual(migrated.bindings["pit.p2AttackLight"], ["Numpad1"]);
   assert.equal(
     migrated.issues.filter((entry) => entry.code === "missing-action").length,
-    25,
+    26,
   );
   assert.deepEqual(controls.findControlBindingConflicts(migrated.bindings), []);
 
   const serialized = controls.serializeControlBindings(migrated.bindings);
   assert.equal(serialized.version, 3);
-  assert.equal(Object.keys(serialized.bindings).length, 73);
+  assert.equal(Object.keys(serialized.bindings).length, 74);
 
   const versionTwoBindings = mutableDefaults();
   delete versionTwoBindings["pit.p1Resource"];
   delete versionTwoBindings["pit.p2Resource"];
+  delete versionTwoBindings["hunt.podSelfDestruct"];
   versionTwoBindings["pit.p1AttackLight"] = ["KeyB"];
   const migratedV2 = controls.deserializeControlBindings({
     version: 2,
@@ -331,10 +403,12 @@ test("v1 and v2 binding envelopes migrate without losing existing remaps", () =>
   assert.deepEqual(migratedV2.bindings["pit.p1AttackLight"], ["KeyB"]);
   assert.deepEqual(migratedV2.bindings["pit.p1Resource"], ["KeyH"]);
   assert.deepEqual(migratedV2.bindings["pit.p2Resource"], ["NumpadSubtract"]);
+  assert.deepEqual(migratedV2.bindings["hunt.podSelfDestruct"], ["KeyX"]);
   assert.equal(
     migratedV2.issues.filter((entry) => entry.code === "missing-action").length,
-    2,
+    3,
   );
+  assert.deepEqual(controls.findControlBindingConflicts(migratedV2.bindings), []);
 });
 
 test("versioned persistence round-trips and corrupt storage falls back atomically", () => {

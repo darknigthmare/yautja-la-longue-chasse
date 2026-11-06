@@ -35,10 +35,12 @@ if (process.env.DEV_TRAVEL_QA_SOURCE_COMMIT) {
 }
 const sourceFiles = [
   ...(await fs.readdir(path.join(root, 'app/dev'))).filter(file => /\.(tsx?|css)$/.test(file)).map(file => `app/dev/${file}`),
-  'app/game/HomeworldHub.tsx', 'app/game/HomeworldRegionV68.tsx', 'app/game/PhysicalShipDeck.tsx',
+  'app/game/HomeworldHub.tsx', 'app/game/HomeworldRegionV68.tsx',
+  'app/game/ShipInterior25D.tsx', 'app/game/ShipInterior25D.module.css', 'app/game/systems/shipInterior25d.ts',
   'app/game/ClanShipHub.tsx', 'app/game/ClanShipInterior.tsx', 'app/game/HuntCanvas.tsx', 'app/game/ShipHub.tsx',
   'app/game/WolfCastleScene.tsx', 'app/game/PlanetArrivalCinematic.tsx',
   'app/game/systems/wolfCastle.ts', 'app/game/systems/planetArrival.ts', 'app/game/systems/planetArrivalRun.ts',
+  'app/game/systems/planetInsertion.ts', 'app/game/systems/shipInsertionEnergy.ts', 'app/game/systems/huntInsertion.ts',
   'scripts/qa-dev-travel-browser.mjs',
 ].sort();
 const sourceHashes = Object.fromEntries(await Promise.all(sourceFiles.map(async file => [
@@ -48,11 +50,12 @@ const seedBundle = await build({
   stdin: {
     contents: `export { defaultSave, SAVE_STORAGE_KEY } from './app/game/save';
       export { migrateLegacyCampaignSlot, loadCampaignSlots } from './app/game/systems/campaignSlots';
-      export { DEV_DESTINATIONS, createDevSave } from './app/dev/destinations';
+      export { DEV_DESTINATIONS, createDevSave, createDevArrival } from './app/dev/destinations';
       export { DEFAULT_SHIP_ID, shipProfileAssetPath } from './app/game/shipCatalogue';
+      export { shipInsertionCharge } from './app/game/systems/shipInsertionEnergy';
       export { WOLF_CASTLE_ROOMS, WOLF_CASTLE_ART_ROOT } from './app/game/systems/wolfCastle';
       export { wolfCastleRuntimeAsset } from './app/game/systems/wolfCastleRuntimeArt';
-      export { createPlanetArrival, planetArrivalAssets, planetArrivalDestination, PLANET_ARRIVAL_SHOTS } from './app/game/systems/planetArrival';`,
+      export { planetArrivalAssets, planetArrivalDestination, PLANET_ARRIVAL_SHOTS } from './app/game/systems/planetArrival';`,
     resolveDir: root,
     loader: 'ts',
   },
@@ -69,7 +72,7 @@ const report = {
   url: route.href,
   runtime: 'actual Next /dev route and production scene components',
   browserMode: headless ? 'headless' : 'headed',
-  scope: 'Direct travel, real movement and mission startup, Wolf castle rooms and approach, eight planetary arrivals with natural and skipped handoffs, reset, URL entry, keyboard and touch, and campaign storage isolation. No complete campaign, art approval or performance qualification.',
+  scope: 'Direct travel, real movement and mission startup, Wolf castle rooms and approach, eight destination arrivals and four explicit insertion variants including a paid cloaked approach, natural and skipped handoffs, reset, URL entry, keyboard and touch, and campaign storage isolation. No complete campaign, art approval or performance qualification.',
   checks: [], captures: [], errors: [], consoleErrors: [], storageOperations: [], databaseOpens: [],
   storageChecks: [], roomVisits: [], movement: [], huntObservations: [], missingAssets: [],
   castleVisits: [], arrivalVisits: [], arrivalTransitions: [], arrivalResets: [], arrivalPauses: [], requestedAssets: [],
@@ -77,7 +80,7 @@ const report = {
 const missing = new Set();
 const requested = new Set();
 const loaded = new Set();
-let browser, page, protectedState, emptyContext, server;
+let browser, page, protectedState, emptyContext, server, diagnosticPage;
 let serverExit = null;
 let currentCheck = 'setup';
 
@@ -237,21 +240,51 @@ async function jump(id, target = page) {
   assert.equal(new URL(target.url()).searchParams.get('lieu'), id, 'Quick travel must update the direct URL.');
 }
 
+function sessionSelector(target, stage) {
+  const id = new URL(target.url()).searchParams.get('lieu');
+  return `[data-dev-session${id ? `=${JSON.stringify(id)}` : ''}]${stage ? `[data-dev-stage="${stage}"]` : ''}`;
+}
+
+function clanRegion(target = page) {
+  // Next can stream an inactive copy outside the accessibility tree. Keep the
+  // real named region and the exact URL session; two active copies still fail.
+  return target.getByRole('region', { name: 'Clan Ship — vaisseau-mère AVP', exact: true })
+    .and(target.locator(`${sessionSelector(target, 'clan')} [data-clan-ship-status]`));
+}
+
+function arrivalRegion(target = page) {
+  return target.getByRole('region', { name: /^Arrivée sur /u })
+    .and(target.locator(`${sessionSelector(target, 'arrival')} [data-arrival-run]`));
+}
+
+async function waitForArrival(target, predicate, value, options) {
+  // Resolve the accessible native element strictly before observing its clock.
+  // This handle only reads the current scene; a replacement cannot satisfy it.
+  const arrival = await arrivalRegion(target).elementHandle();
+  assert.ok(arrival, 'The active arrival must exist before observing its timeline.');
+  try { await target.waitForFunction(predicate, { arrival, value }, options); }
+  finally { await arrival.dispose(); }
+}
+
 async function clanReady(room, target = page) {
-  await target.locator(`[data-clan-ship-status="aboard"][data-clan-ship-room="${room}"]`).waitFor();
-  await target.locator(`[data-clan-interior][data-interior-room="${room}"]`).waitFor();
-  await target.waitForFunction(() => {
-    const image = document.querySelector('[data-interior-background]');
-    return image instanceof HTMLImageElement && image.complete && image.naturalWidth > 0;
-  });
-  await target.locator('[data-interior-background]').evaluate(image => image.decode());
-  const info = await target.locator('[data-clan-interior]').evaluate(element => ({
+  const clan = clanRegion(target).and(target.locator(`[data-clan-ship-status="aboard"][data-clan-ship-room="${room}"]`));
+  await clan.waitFor();
+  const interior = clan.locator(`[data-clan-interior][data-interior-room="${room}"]`);
+  await interior.waitFor();
+  // Resolve ownership in the same live locator chain, without a separately
+  // resolved DOM element between matching the region and reading its owner.
+  const destination = await clan.locator('xpath=ancestor::*[@data-dev-session][1]').getAttribute('data-dev-session');
+  assert.equal(destination, new URL(target.url()).searchParams.get('lieu'), 'The active Clan Ship must belong to the requested developer destination.');
+  await interior.locator('[data-interior-background]').evaluate(image => image.decode());
+  const info = await interior.evaluate(element => ({
     room: element.getAttribute('data-interior-room'),
     x: Number(element.getAttribute('data-interior-actor-x')),
     y: Number(element.getAttribute('data-interior-actor-y')),
     image: element.querySelector('[data-interior-background]')?.getAttribute('src'),
+    imageWidth: element.querySelector('[data-interior-background]')?.naturalWidth,
     unavailable: Array.from(element.querySelectorAll('[data-art-unavailable="true"]'), item => item.getAttribute('data-interior-art')),
   }));
+  assert.ok(info.imageWidth > 0, 'The active Clan Ship backdrop must decode to nonempty pixels.');
   assert.ok(Number.isFinite(info.x) && Number.isFinite(info.y), 'Clan Ship actor coordinates must be finite.');
   assert.deepEqual(info.unavailable, [], `Missing visible Clan Ship props in ${room}.`);
   assert.equal(info.image, `/game/clan-ship/interiors/${room}-v1.webp`, 'Each arrival must display its real room backdrop.');
@@ -260,7 +293,8 @@ async function clanReady(room, target = page) {
 }
 
 async function decodeRenderedImages(target, selector) {
-  const images = await target.locator(selector).evaluate(async element => {
+  const scope = typeof selector === 'string' ? target.locator(selector) : selector;
+  const images = await scope.evaluate(async element => {
     const native = Array.from(element.querySelectorAll('img'));
     await Promise.all(native.map(image => image.decode()));
     const decoded = native.map(image => ({ src: image.currentSrc || image.src, width: image.naturalWidth, height: image.naturalHeight }));
@@ -279,18 +313,27 @@ async function decodeRenderedImages(target, selector) {
   return images;
 }
 
+const activeCastleSelector = '[data-wolf-castle-status]:not([inert]):not([aria-hidden="true"])';
+const activeCastleInteriorSelector = `${activeCastleSelector} [data-wolf-castle-interior]`;
+
 async function castleReady(room, target = page) {
-  const selector = `[data-wolf-castle-status="aboard"][data-wolf-castle-room="${room.id}"]`;
-  await target.locator(selector).waitFor({ timeout: 90000 });
-  await target.locator('[data-wolf-castle-interior]').waitFor();
+  // A streamed URL entry can briefly retain an explicitly suspended copy.
+  // Follow the same active/non-inert scene that can receive native input;
+  // two active candidates still fail Playwright's strict locator checks.
+  const selector = `${activeCastleSelector}[data-wolf-castle-status="aboard"][data-wolf-castle-room="${room.id}"]`;
+  const castle = target.locator(selector);
+  await castle.waitFor({ timeout: 90000 });
+  await castle.locator('[data-wolf-castle-interior]').waitFor();
+  const destination = await castle.evaluate(element => element.closest('[data-dev-session]')?.getAttribute('data-dev-session'));
+  assert.equal(destination, new URL(target.url()).searchParams.get('lieu'), 'The active castle must belong to the requested developer destination.');
   const images = await decodeRenderedImages(target, selector);
   assert.ok(images.some(image => image.src === room.background), `Wolf ${room.id} must render its authored room backdrop.`);
-  const position = await target.locator('[data-wolf-castle-interior]').evaluate(element => ({
+  const position = await castle.locator('[data-wolf-castle-interior]').evaluate(element => ({
     x: Number(element.getAttribute('data-wolf-castle-x')),
     y: Number(element.getAttribute('data-wolf-castle-y')),
   }));
   assert.ok(Number.isFinite(position.x) && Number.isFinite(position.y), 'The real Wolf actor must have finite coordinates.');
-  const info = { room: room.id, ...position, background: room.background, decodedImages: images.length };
+  const info = { room: room.id, destination, ...position, background: room.background, decodedImages: images.length };
   report.castleVisits.push(info);
   return info;
 }
@@ -305,11 +348,16 @@ async function waitForLoadedAssets(paths, label) {
 }
 
 async function observeArrival(target = page) {
-  return target.locator('[data-arrival-run]').evaluate(element => ({
+  return arrivalRegion(target).evaluate(element => ({
     run: element.getAttribute('data-arrival-run'),
     shot: element.getAttribute('data-arrival-shot'),
     status: element.getAttribute('data-arrival-status'),
     elapsed: Number(element.getAttribute('data-arrival-elapsed')),
+    method: element.getAttribute('data-arrival-method'),
+    team: element.getAttribute('data-arrival-team'),
+    shipCloak: element.getAttribute('data-arrival-ship-cloak') === 'true',
+    energy: Number(element.closest('[data-dev-session]')?.getAttribute('data-dev-insertion-energy')),
+    energyRun: element.closest('[data-dev-session]')?.getAttribute('data-dev-insertion-energy-run'),
     planet: element.querySelector('[data-arrival-scene]')?.getAttribute('data-arrival-planet'),
     ship: element.querySelector('[data-arrival-scene]')?.getAttribute('data-arrival-ship'),
     hunter: element.querySelector('[data-arrival-hunter]')?.getAttribute('data-arrival-hunter'),
@@ -318,35 +366,37 @@ async function observeArrival(target = page) {
 }
 
 async function pageDiagnostics(target = page) {
-  return target.evaluate(() => {
-    const arrival = document.querySelector('[data-arrival-run]');
-    const session = document.querySelector('[data-dev-session]');
-    const panel = arrival?.querySelector('[aria-labelledby="arrival-pause-title"]');
+  const arrivals = await arrivalRegion(target).evaluateAll(elements => elements.map(arrival => {
+    const panel = arrival.querySelector('[aria-labelledby="arrival-pause-title"]');
+    return {
+      run: arrival.getAttribute('data-arrival-run'), shot: arrival.getAttribute('data-arrival-shot'),
+      status: arrival.getAttribute('data-arrival-status'), elapsed: Number(arrival.getAttribute('data-arrival-elapsed')),
+      heading: panel?.querySelector('h2')?.textContent?.trim() ?? '',
+      reason: Array.from(panel?.querySelectorAll('p') ?? []).at(-1)?.textContent?.trim() ?? '',
+      statusNote: arrival.querySelector('[role="status"]')?.textContent?.trim() ?? '',
+    };
+  }));
+  const sessions = await target.locator(`${sessionSelector(target)}:visible`).evaluateAll(elements => elements.map(session => ({
+    id: session.getAttribute('data-dev-session'), stage: session.getAttribute('data-dev-stage'),
+    arrivalStatus: session.getAttribute('data-dev-arrival-status'), arrivalElapsed: session.getAttribute('data-dev-arrival-elapsed'),
+  })));
+  const focus = await target.evaluate(() => {
     const active = document.activeElement;
     return {
       url: location.href, focused: document.hasFocus(), hidden: document.hidden, visibility: document.visibilityState,
       activeElement: active ? { tag: active.tagName, role: active.getAttribute('role'), label: active.getAttribute('aria-label'),
         text: active.textContent?.trim().slice(0, 160) } : null,
-      session: session ? { id: session.getAttribute('data-dev-session'), stage: session.getAttribute('data-dev-stage'),
-        arrivalStatus: session.getAttribute('data-dev-arrival-status'), arrivalElapsed: session.getAttribute('data-dev-arrival-elapsed') } : null,
-      arrival: arrival ? {
-        run: arrival.getAttribute('data-arrival-run'), shot: arrival.getAttribute('data-arrival-shot'),
-        status: arrival.getAttribute('data-arrival-status'), elapsed: Number(arrival.getAttribute('data-arrival-elapsed')),
-        heading: panel?.querySelector('h2')?.textContent?.trim() ?? '',
-        reason: Array.from(panel?.querySelectorAll('p') ?? []).at(-1)?.textContent?.trim() ?? '',
-        statusNote: arrival.querySelector('[role="status"]')?.textContent?.trim() ?? '',
-      } : null,
     };
   });
+  return { ...focus, session: sessions.length === 1 ? sessions[0] : null,
+    arrival: arrivals.length === 1 ? arrivals[0] : null, activeSessionCount: sessions.length, activeArrivalCount: arrivals.length };
 }
 
 async function arrivalReady(expected, target = page) {
-  await target.locator(`[data-dev-session="${expected.id}"][data-dev-stage="arrival"]`).waitFor({ timeout: 90000 });
-  await target.waitForFunction(() => {
-    const arrival = document.querySelector('[data-arrival-run]');
-    return arrival && arrival.getAttribute('data-arrival-status') !== 'prepared';
-  }, null, { timeout: 90000 });
-  if (await target.locator('[data-arrival-status="paused"]').count()) {
+  assert.equal(new URL(target.url()).searchParams.get('lieu'), expected.id, 'Arrival must belong to the requested developer destination.');
+  const arrival = arrivalRegion(target);
+  await arrival.and(target.locator('[data-arrival-status]:not([data-arrival-status="prepared"])')).waitFor({ timeout: 90000 });
+  if (await arrival.and(target.locator('[data-arrival-status="paused"]')).count()) {
     const before = await pageDiagnostics(target);
     const pause = { id: expected.id, before, resumeAttempted: false };
     report.arrivalPauses.push(pause);
@@ -362,10 +412,9 @@ async function arrivalReady(expected, target = page) {
     // The production arrival can start paused, as in the existing campaign QA.
     // Use one native, actionable Resume button; never loop over further pauses.
     pause.resumeAttempted = true;
-    await target.getByRole('button', { name: 'Reprendre l’arrivée', exact: true }).click();
-    await target.locator('[data-arrival-status="playing"]').waitFor();
-    await target.waitForFunction(({ run, elapsed }) => {
-      const arrival = document.querySelector('[data-arrival-run]');
+    await arrival.getByRole('button', { name: 'Reprendre l’arrivée', exact: true }).click();
+    await arrival.and(target.locator('[data-arrival-status="playing"]')).waitFor();
+    await waitForArrival(target, ({ arrival, value: { run, elapsed } }) => {
       if (arrival?.getAttribute('data-arrival-run') !== run || arrival.getAttribute('data-arrival-status') !== 'playing') {
         throw new Error('The arrival changed run or paused again after its single native resume.');
       }
@@ -373,17 +422,22 @@ async function arrivalReady(expected, target = page) {
     }, { run: before.arrival.run, elapsed: before.arrival.elapsed });
     pause.afterResume = await pageDiagnostics(target);
   }
-  await target.locator('[data-arrival-status="playing"]').waitFor();
+  await arrival.and(target.locator('[data-arrival-status="playing"]')).waitFor();
   const value = await observeArrival(target);
   assert.ok(value.run && Number.isFinite(value.elapsed), 'The cinematic must expose a real run and a finite native timeline.');
   assert.equal(value.planet, expected.planet);
   assert.equal(value.ship, expected.ship);
   assert.equal(value.hunter, expected.hunter);
+  assert.equal(value.method, expected.insertion.method);
+  assert.equal(value.team, expected.insertion.team);
+  assert.equal(value.shipCloak, !!expected.insertion.shipCloak);
+  assert.equal(value.energy, expected.energy);
+  assert.equal(value.energyRun, expected.insertion.shipCloak ? value.run : null);
   assert.equal(value.spawn, `${expected.missionId}:spawn`);
-  assert.equal(await target.locator('[data-arrival-run] h1').textContent(), expected.name);
-  assert.ok((await target.locator('[data-arrival-run]').textContent()).includes(expected.title), 'The arrival must name its actual mission.');
+  assert.equal(await arrival.locator('h1').textContent(), expected.name);
+  assert.ok((await arrival.textContent()).includes(expected.title), 'The arrival must name its actual mission.');
   assert.equal(await target.locator('.hunt-screen').count(), 0, 'Gameplay must not mount before arrival is handed off.');
-  const images = await decodeRenderedImages(target, '[data-arrival-run]');
+  const images = await decodeRenderedImages(target, arrival);
   assert.ok(images.some(image => image.src === expected.assets.ground), 'Arrival must render the native mission terrain source.');
   await waitForLoadedAssets(Object.values(expected.assets), expected.id);
   report.arrivalVisits.push({ id: expected.id, ...value, assets: expected.assets, decodedImages: images.length });
@@ -391,8 +445,8 @@ async function arrivalReady(expected, target = page) {
 }
 
 async function freshArrival(expected, label, target = page) {
-  await target.locator(`[data-dev-session="${expected.id}"][data-dev-stage="arrival"]`).waitFor({ timeout: 90000 });
-  await target.locator('[data-arrival-run]').waitFor({ timeout: 90000 });
+  assert.equal(new URL(target.url()).searchParams.get('lieu'), expected.id, 'Reset must retain the requested developer destination.');
+  await arrivalRegion(target).waitFor({ timeout: 90000 });
   // Read before image decoding. A cached arrival may already be playing;
   // there is no requirement to observe its transient prepared state.
   const value = await observeArrival(target);
@@ -405,14 +459,21 @@ async function freshArrival(expected, label, target = page) {
 }
 
 async function assertArrivalHandoff(expected, completion, run, mountsBefore, target = page) {
-  const session = target.locator(`[data-dev-session="${expected.id}"][data-dev-stage="hunt"]`);
+  const session = target.locator(`[data-dev-session="${expected.id}"][data-dev-stage="hunt"]:visible`);
   await session.waitFor({ timeout: 180000 });
-  await target.locator('.hunt-screen canvas.hunt-canvas').waitFor({ timeout: 90000 });
-  await target.locator('[data-mission-opening-v78]').waitFor({ timeout: 90000 });
+  const hunt = target.getByRole('region', { name: `Mission ${expected.title} sur ${expected.name}`, exact: true })
+    .and(session.locator('.hunt-screen'));
+  await hunt.locator('canvas.hunt-canvas').waitFor({ timeout: 90000 });
+  // HuntViewportDialogV79 portals the native briefing to document.body, outside
+  // the Hunt region. Resolve that accessible dialog itself; retain the exact
+  // Hunt/session scope and global instance counts for the handoff assertions.
+  const opening = target.getByRole('dialog', { name: expected.title, exact: true })
+    .and(target.locator('[data-mission-opening-v78] [role="dialog"]'));
+  await opening.waitFor({ timeout: 90000 });
   assert.equal(new URL(target.url()).searchParams.get('lieu'), expected.id, 'Handoff must retain the bookmarked arrival destination.');
   assert.equal(await target.locator('[data-arrival-run]').count(), 0, 'The native arrival must unmount at handoff.');
   assert.equal(await target.locator('.hunt-screen canvas.hunt-canvas').count(), 1);
-  assert.equal(await target.locator('.hunt-screen').getAttribute('aria-label'), `Mission ${expected.title} sur ${expected.name}`, 'The actual HuntCanvas must receive the same mission as the arrival.');
+  assert.equal(await hunt.getAttribute('aria-label'), `Mission ${expected.title} sur ${expected.name}`, 'The actual HuntCanvas must receive the same mission as the arrival.');
   const handoff = await session.evaluate(element => ({
     run: element.getAttribute('data-dev-arrival-run'),
     status: element.getAttribute('data-dev-arrival-status'),
@@ -427,8 +488,8 @@ async function assertArrivalHandoff(expected, completion, run, mountsBefore, tar
   assert.equal(handoff.mission, expected.missionId);
   if (completion === 'natural') assert.equal(handoff.elapsed, 62000, 'Natural handoff requires all 62 seconds of the real timeline.');
   assert.equal(await target.evaluate(() => window.__devTravelQaObservations.huntCanvasMounts), mountsBefore + 1, 'One arrival must mount HuntCanvas exactly once.');
-  await target.getByRole('button', { name: 'Commencer la chasse', exact: true }).click();
-  await target.locator('[data-mission-opening-v78]').waitFor({ state: 'hidden' });
+  await opening.getByRole('button', { name: 'Commencer la chasse', exact: true }).click();
+  await opening.waitFor({ state: 'hidden' });
   await target.waitForFunction(() => Array.from(document.querySelectorAll('.hunt-screen summary')).some(element => {
     const match = element.textContent?.match(/Détails\s*·\s*(\d+):(\d+)/);
     return match && Number(match[1]) * 60 + Number(match[2]) > 0;
@@ -439,17 +500,20 @@ async function assertArrivalHandoff(expected, completion, run, mountsBefore, tar
 }
 
 async function moveWithKeyboard(target, focusSelector, actorSelector, xAttribute, yAttribute, label) {
-  const actor = () => target.locator(actorSelector).evaluate((element, fields) => ({
+  const actorScope = typeof actorSelector === 'string' ? target.locator(actorSelector) : actorSelector;
+  const actor = () => actorScope.evaluate((element, fields) => ({
     x: Number(element.getAttribute(fields[0])), y: Number(element.getAttribute(fields[1])),
   }), [xAttribute, yAttribute]);
   // A null selector deliberately relies on focus restored by the application.
-  if (focusSelector) await target.locator(focusSelector).focus();
+  if (focusSelector) await (typeof focusSelector === 'string' ? target.locator(focusSelector) : focusSelector).focus();
   const before = await actor();
+  const actorElement = await actorScope.elementHandle();
+  assert.ok(actorElement, 'The actor receiving real input must exist.');
   await target.keyboard.down('ArrowRight');
   try {
-    await target.waitForFunction(({ selector, field, x }) => Number(document.querySelector(selector)?.getAttribute(field)) > x + 12,
-      { selector: actorSelector, field: xAttribute, x: before.x }, { timeout: 10000 });
-  } finally { await target.keyboard.up('ArrowRight'); }
+    await target.waitForFunction(({ element, field, x }) => Number(element.getAttribute(field)) > x + 12,
+      { element: actorElement, field: xAttribute, x: before.x }, { timeout: 10000 });
+  } finally { await target.keyboard.up('ArrowRight'); await actorElement.dispose(); }
   const after = await actor();
   report.movement.push({ label, before, after });
   return { before, after };
@@ -490,13 +554,13 @@ try {
     sessionStorage.setItem('qa.session-preserved', 'Onglet existant');
     const arrivals = api.DEV_DESTINATIONS.filter(destination => destination.kind === 'arrival').map(destination => {
       const fixture = api.createDevSave(destination);
-      const state = api.createPlanetArrival({
-        ownerCreatedAt: fixture.createdAt, runId: `qa-expected:${destination.missionId}`, missionId: destination.missionId,
-        encounterRun: 1, personalShipId: api.DEFAULT_SHIP_ID, hunterPresetId: fixture.appearance.presetId,
-      });
+      const { state } = api.createDevArrival(destination, fixture);
       return { id: destination.id, missionId: destination.missionId, name: state.destinationDisplayName,
         title: api.planetArrivalDestination(destination.missionId).mission.title,
         planet: state.destinationId, ship: state.personalShipId, hunter: state.hunterPresetId,
+        explicitInsertion: state.insertion !== undefined,
+        insertion: state.insertion ?? { version: 1, method: 'pod', team: 'solo' },
+        energy: api.shipInsertionCharge(fixture.shipInsertionEnergy, fixture.createdAt, state.personalShipId),
         assets: api.planetArrivalAssets(state) };
     });
     return {
@@ -540,19 +604,19 @@ try {
   await check('Keyboard launch opens the real personal deck, movement works, and reset restores the starting point', async () => {
     await page.locator('[data-dev-launch="ship"]').focus();
     await page.keyboard.press('Enter');
-    await page.locator('[data-dev-session="ship"] .physical-ship-deck').waitFor({ timeout: 120000 });
-    const moved = await moveWithKeyboard(page, '.physical-ship-deck', '.physical-ship-deck', 'data-player-x', 'data-player-y', 'personal-ship');
+    await page.locator('[data-dev-session="ship"] [data-ship-interior="2.5d"]:visible').waitFor({ timeout: 120000 });
+    const moved = await moveWithKeyboard(page, '[data-ship-interior="2.5d"]:visible', '[data-ship-interior="2.5d"]:visible', 'data-player-x', 'data-player-y', 'personal-ship');
     await page.locator('[data-dev-reset]').click();
     await page.waitForFunction(({ x, y }) => {
-      const deck = document.querySelector('.physical-ship-deck');
+      const deck = document.querySelector('[data-dev-session="ship"] [data-ship-interior="2.5d"]');
       return Number(deck?.getAttribute('data-player-x')) === x && Number(deck?.getAttribute('data-player-y')) === y;
     }, moved.before);
     await capture('02-personal-ship');
   });
 
   await check('Changing equipment in the test armory stays in memory and returning preserves the personal deck', async () => {
-    await page.locator('.ship-level-accessibility > summary').click();
-    await page.locator('.physical-ship-deck__station-shortcuts').getByRole('button', { name: /armurerie/i }).click();
+    await page.locator('[data-ship-shortcuts] > summary').click();
+    await page.locator('[data-ship-shortcut="wall-armory"]').click();
     const armory = page.locator('[data-dev-service="armory"]');
     await armory.waitFor();
     const weapon = armory.getByLabel(/^Arme\s+1(?=\D|$)/);
@@ -562,8 +626,8 @@ try {
     await weapon.selectOption(next);
     assert.equal(await weapon.inputValue(), next);
     await page.locator('[data-dev-service-back]').click();
-    await page.locator('.physical-ship-deck[data-suspended="false"]').waitFor();
-    await page.locator('.physical-ship-deck__station-shortcuts').getByRole('button', { name: /armurerie/i }).click();
+    await page.locator('[data-ship-interior="2.5d"][data-suspended="false"]:visible').waitFor();
+    await page.locator('[data-ship-shortcut="wall-armory"]').click();
     assert.equal(await page.locator('[data-dev-service="armory"]').getByLabel(/^Arme\s+1(?=\D|$)/).inputValue(), next);
     await page.locator('[data-dev-service-back]').click();
   });
@@ -576,17 +640,18 @@ try {
     }
     await jump('clan-hangar');
     await clanReady('hangar');
-    await moveWithKeyboard(page, '[data-interior-world]', '[data-clan-interior]', 'data-interior-actor-x', 'data-interior-actor-y', 'clan-hangar');
+    await moveWithKeyboard(page, clanRegion().locator('[data-interior-world]'), clanRegion().locator('[data-clan-interior]'),
+      'data-interior-actor-x', 'data-interior-actor-y', 'clan-hangar');
     await noHorizontalOverflow(page, 'Desktop Clan Ship');
     await capture('03-clan-hangar');
   });
 
   await check('Approach, docking and boarding use the real Clan Ship transitions within the test session', async () => {
     await jump('clan-docking');
-    await page.locator('[data-clan-ship-status="free-flight"]').waitFor();
+    await clanRegion().and(page.locator('[data-clan-ship-status="free-flight"]')).waitFor();
     for (const [action, state] of [['approach', 'approach'], ['dock', 'docked'], ['board', 'aboard']]) {
-      await page.locator(`[data-clan-ship-action="${action}"]`).click();
-      await page.locator(`[data-clan-ship-status="${state}"]`).waitFor();
+      await clanRegion().locator(`[data-clan-ship-action="${action}"]`).click();
+      await clanRegion().and(page.locator(`[data-clan-ship-status="${state}"]`)).waitFor();
     }
     await clanReady('hangar');
   });
@@ -638,14 +703,14 @@ try {
       await jump(`wolf-${room.id}`);
       const initial = await castleReady(room);
       if (room.id === 'royal-berth') {
-        await moveWithKeyboard(page, '[data-wolf-castle-interior]', '[data-wolf-castle-interior]',
+        await moveWithKeyboard(page, activeCastleInteriorSelector, activeCastleInteriorSelector,
           'data-wolf-castle-x', 'data-wolf-castle-y', 'wolf-royal-berth');
-        await page.locator('[data-wolf-castle-interior][data-wolf-castle-moving="false"]').waitFor();
+        await page.locator(`${activeCastleInteriorSelector}[data-wolf-castle-moving="false"]`).waitFor();
         await page.locator('[data-dev-reset]').click();
-        await page.waitForFunction(({ x, y }) => {
-          const actor = document.querySelector('[data-wolf-castle-interior]');
+        await page.waitForFunction(({ selector, x, y }) => {
+          const actor = document.querySelector(selector);
           return Number(actor?.getAttribute('data-wolf-castle-x')) === x && Number(actor?.getAttribute('data-wolf-castle-y')) === y;
-        }, initial);
+        }, { ...initial, selector: activeCastleInteriorSelector });
         const reset = await castleReady(room);
         assert.equal(reset.x, initial.x); assert.equal(reset.y, initial.y);
       }
@@ -656,26 +721,27 @@ try {
 
   await check('Wolf approach, boarding, settings and departure use native actions, and F8 escapes its real map', async () => {
     await jump('wolf-approach');
-    await page.locator('[data-wolf-castle-status="approach"]').waitFor();
-    const approachImages = await decodeRenderedImages(page, '[data-wolf-castle-status="approach"]');
+    const activeCastle = page.locator(activeCastleSelector);
+    await page.locator(`${activeCastleSelector}[data-wolf-castle-status="approach"]`).waitFor();
+    const approachImages = await decodeRenderedImages(page, `${activeCastleSelector}[data-wolf-castle-status="approach"]`);
     for (const src of seeded.castleApproachAssets) assert.ok(approachImages.some(image => image.src === src), `Wolf approach must display ${src}.`);
     await capture('09-wolf-castle-approach');
-    await page.locator('[data-wolf-castle-action="board"]').click();
+    await activeCastle.locator('[data-wolf-castle-action="board"]').click();
     const berth = seeded.castleRooms.find(room => room.id === 'royal-berth');
     const beforeSettings = await castleReady(berth);
-    await page.locator('[data-wolf-castle-menu]').click();
+    await activeCastle.locator('[data-wolf-castle-menu]').click();
     await page.locator('[data-dev-service="settings"]').waitFor();
     await assertStorageUnchanged(page, protectedState, 'wolf-settings-open');
     await page.locator('[data-dev-service-back]').click();
-    await page.waitForFunction(() => document.querySelector('[data-wolf-castle-interior]')?.contains(document.activeElement));
+    await page.waitForFunction(selector => document.querySelector(selector)?.contains(document.activeElement), activeCastleInteriorSelector);
     const afterSettings = await castleReady(berth);
     assert.equal(afterSettings.x, beforeSettings.x); assert.equal(afterSettings.y, beforeSettings.y);
-    await moveWithKeyboard(page, null, '[data-wolf-castle-interior]',
+    await moveWithKeyboard(page, null, activeCastleInteriorSelector,
       'data-wolf-castle-x', 'data-wolf-castle-y', 'wolf-after-settings-native-focus');
-    await page.locator('[data-wolf-castle-interior][data-wolf-castle-moving="false"]').waitFor();
-    await page.locator('[data-wolf-castle-interact="personal-ship"]').click();
-    await page.locator('[data-wolf-castle-dialog="departure"]').waitFor();
-    await page.locator('[data-wolf-castle-action="depart"]').click();
+    await page.locator(`${activeCastleInteriorSelector}[data-wolf-castle-moving="false"]`).waitFor();
+    await activeCastle.locator('[data-wolf-castle-interact="personal-ship"]').click();
+    await activeCastle.locator('[data-wolf-castle-dialog="departure"]').waitFor();
+    await activeCastle.locator('[data-wolf-castle-action="depart"]').click();
     await page.locator('[data-dev-session="ship"]').waitFor();
     assert.equal(new URL(page.url()).searchParams.get('lieu'), 'ship');
 
@@ -685,17 +751,18 @@ try {
     await page.reload({ waitUntil: 'domcontentloaded', timeout: 120000 });
     const reloaded = await castleReady(archives);
     assert.equal(reloaded.x, initial.x); assert.equal(reloaded.y, initial.y);
-    await page.locator('[data-wolf-castle-map]').click();
-    await page.locator('[data-wolf-castle-dialog="map"]').waitFor();
+    await activeCastle.locator('[data-wolf-castle-map]').click();
+    await activeCastle.locator('[data-wolf-castle-dialog="map"]').waitFor();
     await page.keyboard.press('F8');
     await page.locator('[data-dev-catalogue]').waitFor();
     assert.equal(await page.locator('[data-wolf-castle-status]').count(), 0);
   });
 
-  await check('All eight arrival entries preload their native resources and identify the correct mission, planet, hunter and ship', async () => {
-    assert.equal(seeded.arrivals.length, 8);
+  await check('Eight destination arrivals and four insertion variants preload their real resources and preserve their paid identities', async () => {
+    assert.equal(seeded.arrivals.filter(arrival => !arrival.explicitInsertion).length, 8);
+    assert.equal(seeded.arrivals.filter(arrival => arrival.explicitInsertion).length, 4);
     await page.locator('[data-dev-category="arrivals"]').click();
-    assert.equal(await page.locator('[data-dev-launch]').count(), 8);
+    assert.equal(await page.locator('[data-dev-launch]').count(), seeded.arrivals.length);
     for (const expected of seeded.arrivals) {
       await jump(expected.id);
       await arrivalReady(expected);
@@ -712,33 +779,33 @@ try {
     const expected = seeded.arrivals.find(destination => destination.missionId === 'jungle-vey');
     await jump(expected.id);
     await arrivalReady(expected);
-    await page.waitForFunction(() => {
-      const arrival = document.querySelector('[data-arrival-run][data-arrival-status="playing"]');
+    await waitForArrival(page, ({ arrival }) => {
       const active = document.activeElement;
-      return Number(arrival?.getAttribute('data-arrival-elapsed')) >= 2000 && document.hasFocus() && !document.hidden &&
+      return arrival.getAttribute('data-arrival-status') === 'playing' &&
+        Number(arrival.getAttribute('data-arrival-elapsed')) >= 2000 && document.hasFocus() && !document.hidden &&
         active instanceof HTMLButtonElement && arrival.contains(active) && active.textContent?.trim() === 'Pause' && !active.disabled;
     });
     await page.keyboard.press('Escape');
-    await page.locator('[data-arrival-status="paused"]').waitFor();
+    await arrivalRegion().and(page.locator('[data-arrival-status="paused"]')).waitFor();
     const paused = await observeArrival();
     await page.waitForTimeout(650);
     assert.equal((await observeArrival()).elapsed, paused.elapsed, 'Native pause must freeze the arrival timeline.');
     await page.setViewportSize({ width: 390, height: 844 });
     await page.evaluate(() => new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve))));
     await noHorizontalOverflow(page, 'Mobile arrival pause');
-    assert.equal(await page.locator('[data-arrival-run]').getAttribute('data-arrival-reduced-motion'), 'true');
+    assert.equal(await arrivalRegion().getAttribute('data-arrival-reduced-motion'), 'true');
     await capture('11-arrival-pause-mobile');
-    await page.getByRole('button', { name: 'Reprendre l’arrivée', exact: true }).tap();
-    await page.waitForFunction(elapsed => Number(document.querySelector('[data-arrival-run]')?.getAttribute('data-arrival-elapsed')) > elapsed, paused.elapsed);
+    await arrivalRegion().getByRole('button', { name: 'Reprendre l’arrivée', exact: true }).tap();
+    await waitForArrival(page, ({ arrival, value: elapsed }) => Number(arrival.getAttribute('data-arrival-elapsed')) > elapsed, paused.elapsed);
     assert.equal((await observeArrival()).run, paused.run);
     await page.setViewportSize({ width: 1440, height: 1000 });
     await page.locator('[data-dev-reset]').click();
     await freshArrival(expected, 'reset-during-arrival');
     await page.reload({ waitUntil: 'domcontentloaded', timeout: 120000 });
     await freshArrival(expected, 'bookmarked-arrival-reload');
-    await page.locator('[data-arrival-run]').getByRole('button', { name: 'Pause', exact: true }).click();
-    await page.locator('[data-arrival-status="paused"]').waitFor();
-    await page.locator('[data-arrival-run]').getByRole('button', { name: /revenir.*(?:menu|lieux)/i }).click();
+    await arrivalRegion().getByRole('button', { name: 'Pause', exact: true }).click();
+    await arrivalRegion().and(page.locator('[data-arrival-status="paused"]')).waitFor();
+    await arrivalRegion().getByRole('button', { name: /revenir.*(?:menu|lieux)/i }).click();
     await page.locator('[data-dev-catalogue]').waitFor();
     assert.equal(await page.locator('[data-arrival-run]').count(), 0);
     await assertStorageUnchanged(page, protectedState, 'arrival-native-exit');
@@ -746,7 +813,7 @@ try {
     await jump(expected.id);
     const beforeSkip = await arrivalReady(expected);
     const mountsBefore = await page.evaluate(() => window.__devTravelQaObservations.huntCanvasMounts);
-    await page.locator('[data-arrival-run]').getByRole('button', { name: /^Passer l’arrivée/ }).click();
+    await arrivalRegion().getByRole('button', { name: /^Passer l’arrivée/ }).click();
     await assertArrivalHandoff(expected, 'skipped', beforeSkip.run, mountsBefore);
     await assertStorageUnchanged(page, protectedState, 'arrival-skipped-handoff');
     await page.locator('[data-dev-reset]').click();
@@ -758,21 +825,21 @@ try {
     await page.emulateMedia({ reducedMotion: 'no-preference' });
     await page.locator('[data-dev-reset]').click();
     const first = await freshArrival(expected, 'natural-arrival-start');
-    await page.locator('[data-arrival-reduced-motion="false"]').waitFor();
+    await arrivalRegion().and(page.locator('[data-arrival-reduced-motion="false"]')).waitFor();
     assert.equal(first.shot, 'orbit');
     const shots = [first];
     const mountsBefore = await page.evaluate(() => window.__devTravelQaObservations.huntCanvasMounts);
     for (const shot of seeded.arrivalShots.slice(1)) {
-      await page.locator(`[data-arrival-shot="${shot.id}"][data-arrival-status="playing"]`).waitFor({ timeout: 120000 });
+      await arrivalRegion().and(page.locator(`[data-arrival-shot="${shot.id}"][data-arrival-status="playing"]`)).waitFor({ timeout: 120000 });
       const current = await observeArrival();
       assert.equal(current.run, first.run, 'Natural arrival must retain its run across every native shot.');
       assert.ok(current.elapsed > shots.at(-1).elapsed, 'The native arrival clock must advance without restarting.');
       assert.equal(current.planet, expected.planet); assert.equal(current.ship, expected.ship);
       shots.push(current);
       if (shot.id === 'egress') {
-        await page.waitForFunction(start => Number(document.querySelector('[data-arrival-run]')?.getAttribute('data-arrival-elapsed')) >= start + 1000, shot.startMs);
-        await page.locator('[data-arrival-ground-pod="true"]').waitFor();
-        assert.equal(await page.locator('[data-arrival-scene]').getAttribute('data-arrival-contact'), 'true');
+        await waitForArrival(page, ({ arrival, value: start }) => Number(arrival.getAttribute('data-arrival-elapsed')) >= start + 1000, shot.startMs);
+        await arrivalRegion().locator('[data-arrival-ground-pod="true"]').waitFor();
+        assert.equal(await arrivalRegion().locator('[data-arrival-scene]').getAttribute('data-arrival-contact'), 'true');
         await capture('12-arrival-natural-egress');
       }
     }
@@ -865,7 +932,6 @@ try {
     await page.goto(destinationUrl('clan-trophees'), { waitUntil: 'domcontentloaded', timeout: 120000 });
     await clanReady('trophees');
     await page.reload({ waitUntil: 'domcontentloaded', timeout: 120000 });
-    await page.locator('[data-dev-session="clan-trophees"]').waitFor();
     await clanReady('trophees');
   });
 
@@ -875,7 +941,7 @@ try {
     assert.equal(await page.locator('[data-dev-session]').count(), 0);
     assert.match(await page.locator('[data-dev-notice]').innerText(), /inconnu/i);
     await page.locator('[data-dev-launch="ship"]').click();
-    await page.locator('.physical-ship-deck').waitFor();
+    await page.locator('[data-ship-interior="2.5d"]:visible').waitFor();
     await page.locator('[data-dev-back]').click();
     await page.locator('[data-dev-catalogue]').waitFor();
     await page.waitForFunction(() => document.activeElement?.getAttribute('data-dev-launch') === 'ship');
@@ -898,6 +964,7 @@ try {
     emptyContext = await browser.newContext({ viewport: { width: 1280, height: 900 }, reducedMotion: 'reduce' });
     await observeContext(emptyContext, 'empty-browser');
     const blankPage = await emptyContext.newPage();
+    diagnosticPage = blankPage;
     await blankPage.goto(destinationUrl('clan-hangar'), { waitUntil: 'domcontentloaded', timeout: 120000 });
     await clanReady('hangar', blankPage);
     await blankPage.locator('[data-dev-reset]').click();
@@ -905,7 +972,7 @@ try {
     await blankPage.locator('[data-dev-back]').click();
     await blankPage.locator('[data-dev-catalogue]').waitFor();
     await assertStorageUnchanged(blankPage, { local: {}, session: {} }, 'empty-browser-after-reset-and-return');
-    await emptyContext.close(); emptyContext = null;
+    await emptyContext.close(); emptyContext = null; diagnosticPage = null;
   });
 
   await check('Leaving development returns to the ordinary game menu with no developer navigation entry', async () => {
@@ -929,10 +996,11 @@ try {
   report.passed = false;
   report.failure = error.stack || String(error);
   console.error(error.stack || error);
-  if (page && !page.isClosed()) {
-    try { report.failureState = await pageDiagnostics(); }
+  const diagnosticTarget = diagnosticPage ?? page;
+  if (diagnosticTarget && !diagnosticTarget.isClosed()) {
+    try { report.failureState = { context: diagnosticPage ? 'empty-browser' : 'existing-campaign', ...await pageDiagnostics(diagnosticTarget) }; }
     catch (diagnosticError) { report.failureStateError = String(diagnosticError); }
-    try { await capture('failure'); } catch { /* Preserve the original failure. */ }
+    try { await capture('failure', diagnosticTarget); } catch { /* Preserve the original failure. */ }
   }
   process.exitCode = 1;
 } finally {
@@ -946,4 +1014,15 @@ try {
   await browser?.close();
   await stopServer();
   console.log(JSON.stringify({ passed: report.passed, checks: report.passedChecks, failed: report.failedChecks, missingAssets: report.missingAssets.length, report: path.join(out, 'report.json') }));
+  // Duplicate compact, existing evidence after the browser has closed so a
+  // remote review can inspect CI output without changing any native capture.
+  if (process.env.GITHUB_ACTIONS === 'true') {
+    const review = JSON.stringify(Object.fromEntries(["schema","startedAt","finishedAt","sourceCommit","checkoutCommit","workingTreeDirty","sourceHashes","browserVersion","passed","passedChecks","failedChecks","checks","arrivalVisits","arrivalPauses","arrivalResets","arrivalTransitions","huntObservations","storageChecks","storageOperations","databaseOpens","errors","consoleErrors","missingAssets","failure","failureState","failureStateError"]
+      .filter(key => report[key] !== undefined).map(key => [key, report[key]])));
+    const chunkSize = 12_000, parts = Math.ceil(review.length / chunkSize);
+    for (let part = 0; part < parts; part++) console.log('QA_REVIEW_JSON ' + JSON.stringify({
+      suite: 'dev', sourceCommit: report.sourceCommit, part, parts, characters: review.length,
+      text: review.slice(part * chunkSize, (part + 1) * chunkSize),
+    }));
+  }
 }

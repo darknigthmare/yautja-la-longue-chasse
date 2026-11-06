@@ -551,6 +551,8 @@ export interface TrophyClaim {
 }
 
 export interface MissionResult {
+  /** Actual companion extraction, bound to the live mission lease. */
+  insertionOutcome?: import("./systems/huntInsertion").HuntInsertionOutcome;
   missionId: MissionId;
   difficultyId: DifficultyId;
   outcome: MissionOutcome;
@@ -689,6 +691,9 @@ export interface SaveGame {
   /** Arrival and frozen start configuration are written in one campaign transaction. */
   planetArrival?: import("./systems/planetArrival").PlanetArrivalState | null;
   planetArrivalRun?: import("./systems/planetArrivalRun").PlanetArrivalRun | null;
+  /** Explicit campaign recruitment and readiness; never the tutorial's Saar/Vek duo. */
+  expeditionRoster?: import("./systems/planetInsertion").ExpeditionRoster | null;
+  shipInsertionEnergy?: import("./systems/shipInsertionEnergy").ShipInsertionEnergy | null;
   /** V134: versioned cosmetic gauntlet, research claims and owner binding; older saves may omit. */
   gauntletV134?: import("./systems/gauntletCampaignV134").GauntletCampaignV134 | null;
   version: number;

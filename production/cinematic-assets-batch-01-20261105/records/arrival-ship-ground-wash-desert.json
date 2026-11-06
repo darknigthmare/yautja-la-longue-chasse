@@ -1,0 +1,61 @@
+{
+  "id": "arrival-ship-ground-wash-desert",
+  "family": "ship-ground-wash",
+  "biome": "desert",
+  "referenceImages": [
+    "/workspace/scratch/62884fa4f584/cinematic-assets-batch-01-20261105/public/game/cinematics/batch-01-20261105/arrival-impact-front-jungle.png",
+    "/workspace/scratch/62884fa4f584/qa-recovery/spatial-a7f830c/desktop-landing-impact.png"
+  ],
+  "sourceReference": {
+    "kind": "original-generated-material-complement",
+    "styleReference": "arrival-impact-front-jungle",
+    "sceneCommit": "a7f830c05fd4b5801fd379ca7e7313774af2659a"
+  },
+  "expectedDimensions": [
+    1536,
+    1024
+  ],
+  "intendedAnchor": {
+    "name": "ground-wash-origin",
+    "normalized": [
+      0.5,
+      0.78
+    ],
+    "basis": "Intended unseen ground contact in the full canvas; low horizontal flow spreads away from the centre. Visual calibration pending engine integration."
+  },
+  "prompt": "Use case: stylized-concept, one production 2D cinematic material VFX sprite for Yautja The Long Hunt.\nAsset ID: arrival-ship-ground-wash-desert. Biome: desert.\nUse the first supplied sprite ONLY for realistic painted 2.5D material detail and soft alpha edges; use the second screenshot ONLY for near-ground camera and restrained painted game look. Do NOT reproduce its capsule, ship, characters, background, ground plane, interface or text. Do NOT copy the tall impact shape: this new effect is MUCH LOWER AND GENTLER.\nCreate ONE isolated soft ground wash: a low, wide, asymmetrical horizontal flow of displaced surface material, as an unseen landing craft gently pushes air sideways across the ground. The flow originates at full-canvas normalized (.5,.78) and spreads left and right, strongest low down, thin and transparent in the middle. This is sustained low-speed ground wash, NOT an explosion or capsule impact. Material description: Loose pale ochre sand fines and extremely tiny granular tan grains swept in two low thin rippling horizontal sheets. Subtle density streaks and feathery sand-saltation edges, natural warm beige with subdued daylight; no rocks, dunes, terrain, orange fire or smoke explosion.\nComposition: full landscape canvas 1536×1024, contact origin at pixel(768,799). The sparse effect lies entirely between x=22%..78% and y=58%..81%, with its most visible denser material in y=70%..80%. Keep the silhouette about four times wider than tall. Two unequal low lateral veils, shallow rolling wisps, modest short granular arcs, a mostly clear centre. There is no dense vertical central column, no towering splash and no solid accumulated ridge. Preserve at least 12% fully empty transparent margins on all four sides; no visible pixel touches an edge.\nRendering: realistic hand-painted 2.5D game VFX, near-ground side view with a very slight view of the top of the spread. Restrained physically believable material colour, subtle neutral upper-left daylight, readable at 250px wide. Soft natural alpha feathering, no rectangular haze boundary, no thick outline. The effect contains only moving suspended particles and low airborne material, not terrain.\nOutput ONE individual landscape RGBA PNG with TRUE TRANSPARENT BACKGROUND, ideally exactly1536×1024. No ship, capsule, engine, visible thruster, vertical exhaust plume, explosion, fire, magical energy, character, scenery, floor, opaque ground disc, cast background shadow, text, frame, grid, sprite sheet, numbered panels, contact sheet, checkerboard, black or white background, watermark or cropped particles.\nPadding priority: the sprite must be smaller than the first reference in the full canvas, with substantial blank transparent room. Keep every soft wisp within x=18%..82%, y=50%..85%. All pixels in the outer 15% strip at left and right and outer 13% strip at top and bottom must have zero alpha. Do not zoom to fill the width. The visible wash is only a narrow band in the lower half, around the stated ground origin.",
+  "file": "public/game/cinematics/batch-01-20261105/arrival-ship-ground-wash-desert.png",
+  "generatedSource": "/workspace/scratch/62884fa4f584/generated_images/exec-a3432d1b-d715-4035-92f4-1ac2c50da789.png",
+  "generationMode": "builtin-imagegen-reference",
+  "transparentBackgroundRequested": true,
+  "generated": true,
+  "integrated": false,
+  "testedInEngine": false,
+  "artisticHumanApproval": false,
+  "technicalQA": {
+    "format": "PNG",
+    "mode": "RGBA",
+    "dimensions": [
+      1536,
+      1024
+    ],
+    "bytes": 1004499,
+    "sha256": "5b642c1114e910ae42ca6b280efbdd58cecef52e97559761b478db89e1ea56d7",
+    "fullyTransparentFraction": 0.8881276448567709,
+    "visibleAlphaOver16Pixels": 105104,
+    "borderAlphaOver16Pixels": 0,
+    "visibleBoundsAlphaOver16": [
+      243,
+      644,
+      1231,
+      827
+    ],
+    "visiblePaddingFraction": {
+      "left": 0.158203125,
+      "right": 0.19791666666666666,
+      "top": 0.62890625,
+      "bottom": 0.19140625
+    },
+    "passed": true
+  }
+}

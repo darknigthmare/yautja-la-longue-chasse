@@ -1,0 +1,28 @@
+Source: GitHub Actions job 127199019545, commit 86f593bad2c7d00259dc4cf0a7d1ad40eac1d719.
+Filtered exact log lines; timestamps and messages retained. The full log remains at the job endpoint in the receipt.
+
+2026-11-05T10:49:11.2135193Z # tests 14
+2026-11-05T10:49:11.2148109Z # pass 14
+2026-11-05T10:49:11.2148566Z # fail 0
+2026-11-05T10:49:11.2148987Z # cancelled 0
+2026-11-05T10:49:11.2149430Z # skipped 0
+2026-11-05T10:49:11.2149854Z # todo 0
+2026-11-05T10:51:26.2263906Z PASS The real developer URL mounts the 2.5D room and preserves an existing campaign
+2026-11-05T10:51:27.6902053Z PASS Keyboard movement uses both ground axes, native depth projection and released input
+2026-11-05T10:51:34.3151028Z PASS Furniture blocks native movement and fades only when the hunter really walks behind it
+2026-11-05T10:51:36.9304895Z PASS A real floor click walks around the console to its service without crossing the solid
+2026-11-05T10:51:38.3414385Z PASS Walk the connected ship to Passerelle de navigation, use its service and return at the same position
+2026-11-05T10:51:44.9364594Z PASS Walk the connected ship to Armurerie, use its service and return at the same position
+2026-11-05T10:51:51.2751584Z PASS Walk the connected ship to Archives du chasseur, use its service and return at the same position
+2026-11-05T10:51:57.3016519Z PASS Walk the connected ship to Forge des parures, use its service and return at the same position
+2026-11-05T10:52:18.2544697Z PASS Walk the connected ship to Galerie des trophées, use its service and return at the same position
+2026-11-05T10:52:24.8279032Z PASS Walk the connected ship to Baie médicale, use its service and return at the same position
+2026-11-05T10:52:32.5785162Z PASS Walk the connected ship to Cercle d’entraînement, use its service and return at the same position
+2026-11-05T10:52:38.6038294Z PASS Walk the connected ship to Sas de chasse, use its service and return at the same position
+2026-11-05T10:53:13.6028687Z PASS The aft lift also requires a walked threshold and supports the reverse journey
+2026-11-05T10:53:20.0030282Z PASS Mobile 390 px keeps the camera readable, touch movement working and swipe separate from walking
+2026-11-05T10:53:26.6230778Z PASS Mobile 320 px keeps the camera readable, touch movement working and swipe separate from walking
+2026-11-05T10:53:27.6214488Z PASS F8 unmounts the test and a real URL reload recreates the initial ship without changing the campaign
+2026-11-05T10:53:27.6236081Z PASS Every requested asset exists and the actual scene produces no browser or console exception
+2026-11-05T10:53:28.0394307Z {"passed":true,"checks":17,"failed":0,"missingAssets":0,"report":"outputs/qa-ship-interior-25d/report.json"}
+2026-11-05T10:53:30.5830498Z Artifact ship-interior-25d-86f593bad2c7d00259dc4cf0a7d1ad40eac1d719.zip successfully finalized. Artifact ID 13408631794

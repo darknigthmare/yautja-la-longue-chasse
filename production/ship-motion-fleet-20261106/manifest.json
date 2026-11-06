@@ -1,0 +1,1816 @@
+{
+  "schemaVersion": 1,
+  "release": "1.5.3",
+  "basedOn": "3ef6d77e338bbec8e904f09ad72f75b4d38bbed2",
+  "scope": "Six previously exercised non-classic cinematic hulls;46additional authored perspectives.",
+  "viewCount": 46,
+  "sourcePngCount": 46,
+  "runtimeWebpCount": 46,
+  "binaryCount": 92,
+  "sourceBytes": 81608088,
+  "runtimeBytes": 52626792,
+  "sourceReferenceManifest": {
+    "path": "production/ship-motion-fleet-20261106/art/references-manifest.json",
+    "bytes": 24993,
+    "sha256": "1e9f1204985beffc0e9c54104a5e5560fee28f87b504aa964c1b28a7bd562b95"
+  },
+  "technicalIntegrationApproval": {
+    "path": "production/ship-motion-fleet-20261106/art/root-integration-approval.json",
+    "bytes": 6988,
+    "sha256": "71a60ef49ad79b1789ba831a68b6051fbe5b315617c9077cc72dfcfefd900ac1"
+  },
+  "canonicalArtApproval": false,
+  "humanArtApproval": false,
+  "nativeQualification": "Requires the exact submitted commit and official browser artifacts; outcomes belong in the PR.",
+  "rasterEdits": false,
+  "allDecodedRgbaExact": true,
+  "limitations": [
+    "Master references are generated project artwork, not a calibrated canonical3D model.",
+    "Requested camera degrees are intentions, not measurements. Hidden panels and some lights are interpreted.",
+    "Upgrade perspective/profile and low front views differ materially; native transition review required.",
+    "Upgrade ventral-shallow retains11borderpixels alpha2..3; no source pixel cleanup."
+  ],
+  "families": [
+    {
+      "shipId": "wolf-ship",
+      "profilePath": "/game/ships/v14/wolf-ship.webp",
+      "methods": [
+        "pod",
+        "ship"
+      ],
+      "sourceReview": {
+        "path": "production/ship-motion-fleet-20261106/art/wolf-eight-view-calibration.json",
+        "bytes": 38954,
+        "sha256": "8742e1f40f77548d9583b0e00b64841cbf5cf3856f2e84dbce7425337350356d"
+      },
+      "exportReview": {
+        "path": "production/ship-motion-fleet-20261106/art/wolf-export-review.json",
+        "bytes": 5996,
+        "sha256": "4e69bcafd2de65dae97cb52be9691f59c94f47a03a271af91e606e5b0b32731a"
+      },
+      "separateEngineEffectsApproved": false,
+      "views": [
+        {
+          "id": "bank-dorsal",
+          "source": {
+            "path": "production/ship-motion-fleet-20261106/art/sources/wolf-ship/bank-dorsal.png",
+            "bytes": 2025335,
+            "sha256": "c42337ea97ce2f09aed2a55a9793ab979c66bc9d8579ccb450e93e2530bbe977"
+          },
+          "runtime": {
+            "path": "public/game/planet-arrival/ship-motion-fleet-v1/wolf-ship/bank-dorsal.webp",
+            "bytes": 1357238,
+            "sha256": "6d2d1e1bebab9b75797c587c028cbf15672b8486a1057dc19d04959738371e45"
+          },
+          "dimensions": [
+            1536,
+            1024
+          ],
+          "fullRgbaExact": true,
+          "registrationPixels": {
+            "nose": [
+              1482.0,
+              504.0
+            ],
+            "tail": [
+              181.5,
+              528.0
+            ],
+            "pivot": [
+              779.468,
+              499.745
+            ],
+            "release": [
+              745.635,
+              701.875
+            ]
+          }
+        },
+        {
+          "id": "bank-dorsal-shallow",
+          "source": {
+            "path": "production/ship-motion-fleet-20261106/art/sources/wolf-ship/bank-dorsal-shallow.png",
+            "bytes": 2052298,
+            "sha256": "32b9b613fc4ba669db134d8cf352975ec8ff7ca206dcc81bebcaa94e7ed5abd7"
+          },
+          "runtime": {
+            "path": "public/game/planet-arrival/ship-motion-fleet-v1/wolf-ship/bank-dorsal-shallow.webp",
+            "bytes": 1372738,
+            "sha256": "4a3822ee94074f6651ff80c9e68bda74ffd21b2d3a3dc1e2ba5daba2c9e1aa13"
+          },
+          "dimensions": [
+            1536,
+            1024
+          ],
+          "fullRgbaExact": true,
+          "registrationPixels": {
+            "nose": [
+              1471.0,
+              481.5
+            ],
+            "tail": [
+              181.5,
+              548.5
+            ],
+            "pivot": [
+              773.839,
+              500.609
+            ],
+            "release": [
+              746.983,
+              702.276
+            ]
+          }
+        },
+        {
+          "id": "bank-ventral",
+          "source": {
+            "path": "production/ship-motion-fleet-20261106/art/sources/wolf-ship/bank-ventral.png",
+            "bytes": 1883556,
+            "sha256": "f0605b2edb41a5886693a32e7a507d83a47735208b76e3fe1222bbd19a3c8ed9"
+          },
+          "runtime": {
+            "path": "public/game/planet-arrival/ship-motion-fleet-v1/wolf-ship/bank-ventral.webp",
+            "bytes": 1235830,
+            "sha256": "1b3c28da78a052ae4811757f052eb4f45a20327bdc752e614fc4759b95275c94"
+          },
+          "dimensions": [
+            1536,
+            1024
+          ],
+          "fullRgbaExact": true,
+          "registrationPixels": {
+            "nose": [
+              1484.5,
+              505.5
+            ],
+            "tail": [
+              205.5,
+              502.5
+            ],
+            "pivot": [
+              793.935,
+              486.951
+            ],
+            "release": [
+              756.54,
+              684.971
+            ]
+          }
+        },
+        {
+          "id": "bank-ventral-shallow",
+          "source": {
+            "path": "production/ship-motion-fleet-20261106/art/sources/wolf-ship/bank-ventral-shallow.png",
+            "bytes": 1857298,
+            "sha256": "c9b6a8fad9f3739e9b951d43c502484fac6cdc006caf5055433229b35e63ccc7"
+          },
+          "runtime": {
+            "path": "public/game/planet-arrival/ship-motion-fleet-v1/wolf-ship/bank-ventral-shallow.webp",
+            "bytes": 1239698,
+            "sha256": "a22c2e9308cfde6e42347c45625598fc4953e64e8ac2182572636254f73fa7f6"
+          },
+          "dimensions": [
+            1536,
+            1024
+          ],
+          "fullRgbaExact": true,
+          "registrationPixels": {
+            "nose": [
+              1470.0,
+              501.75
+            ],
+            "tail": [
+              209.5,
+              510.5
+            ],
+            "pivot": [
+              789.268,
+              489.79
+            ],
+            "release": [
+              754.228,
+              685.284
+            ]
+          }
+        },
+        {
+          "id": "forward-quarter",
+          "source": {
+            "path": "production/ship-motion-fleet-20261106/art/sources/wolf-ship/forward-quarter.png",
+            "bytes": 2281013,
+            "sha256": "121f1d1e50b7782dcf8b4707e10261e61b202610f806873e1e198ca2420ea0b7"
+          },
+          "runtime": {
+            "path": "public/game/planet-arrival/ship-motion-fleet-v1/wolf-ship/forward-quarter.webp",
+            "bytes": 1499716,
+            "sha256": "6689158499fc5f693a8e48a4a805ef331081b2e5c18ca1a146054a9355d8e55a"
+          },
+          "dimensions": [
+            1536,
+            1024
+          ],
+          "fullRgbaExact": true,
+          "registrationPixels": {
+            "nose": [
+              1464.5,
+              518.0
+            ],
+            "tail": [
+              84.5,
+              498.0
+            ],
+            "pivot": [
+              719.624,
+              488.935
+            ],
+            "release": [
+              676.68,
+              702.108
+            ]
+          }
+        },
+        {
+          "id": "forward-quarter-shallow",
+          "source": {
+            "path": "production/ship-motion-fleet-20261106/art/sources/wolf-ship/forward-quarter-shallow.png",
+            "bytes": 2053091,
+            "sha256": "97ce5687aa65ed285374046b0f31c38547ce05b4ad635ba7a0835c06d6e8cda4"
+          },
+          "runtime": {
+            "path": "public/game/planet-arrival/ship-motion-fleet-v1/wolf-ship/forward-quarter-shallow.webp",
+            "bytes": 1355716,
+            "sha256": "5d378dfd1931de6b29ee105c6bb5eaf0497cc36d44192c3c5912beff1cc95575"
+          },
+          "dimensions": [
+            1536,
+            1024
+          ],
+          "fullRgbaExact": true,
+          "registrationPixels": {
+            "nose": [
+              1452.5,
+              543.75
+            ],
+            "tail": [
+              172.0,
+              535.0
+            ],
+            "pivot": [
+              761.201,
+              522.076
+            ],
+            "release": [
+              722.872,
+              720.163
+            ]
+          }
+        },
+        {
+          "id": "rear-quarter",
+          "source": {
+            "path": "production/ship-motion-fleet-20261106/art/sources/wolf-ship/rear-quarter.png",
+            "bytes": 2259354,
+            "sha256": "e0abd1e2e881108ca3c57e7298beebf37eee276e673b0664b1ed4e498752bd82"
+          },
+          "runtime": {
+            "path": "public/game/planet-arrival/ship-motion-fleet-v1/wolf-ship/rear-quarter.webp",
+            "bytes": 1491992,
+            "sha256": "caced47dd24bcd17800077faf12ece25bd3b10e5098c7487153f934a24e21c05"
+          },
+          "dimensions": [
+            1536,
+            1024
+          ],
+          "fullRgbaExact": true,
+          "registrationPixels": {
+            "nose": [
+              1464.5,
+              494.75
+            ],
+            "tail": [
+              298.0,
+              538.5
+            ],
+            "pivot": [
+              834.061,
+              502.933
+            ],
+            "release": [
+              807.156,
+              684.878
+            ]
+          }
+        },
+        {
+          "id": "rear-quarter-shallow",
+          "source": {
+            "path": "production/ship-motion-fleet-20261106/art/sources/wolf-ship/rear-quarter-shallow.png",
+            "bytes": 2015175,
+            "sha256": "5e7fbaf53a65760b12c7da7c0e51bde1fd7f8b5856e9e12e766446f5f5a40b00"
+          },
+          "runtime": {
+            "path": "public/game/planet-arrival/ship-motion-fleet-v1/wolf-ship/rear-quarter-shallow.webp",
+            "bytes": 1330260,
+            "sha256": "9295593f344a41270f864aee42886b5a800fc6da2601c19bc1075c713a5c4152"
+          },
+          "dimensions": [
+            1536,
+            1024
+          ],
+          "fullRgbaExact": true,
+          "registrationPixels": {
+            "nose": [
+              1460.5,
+              491.5
+            ],
+            "tail": [
+              252.0,
+              528.0
+            ],
+            "pivot": [
+              807.479,
+              495.212
+            ],
+            "release": [
+              778.238,
+              683.453
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "shipId": "avp-predator-mothership",
+      "profilePath": "/game/ships/v14/avp-predator-mothership.webp",
+      "methods": [
+        "pod"
+      ],
+      "sourceReview": {
+        "path": "production/ship-motion-fleet-20261106/art/avp-mothership-six-view-calibration.json",
+        "bytes": 41355,
+        "sha256": "3c88559adebbfc96c7f630daec17e1d80ee6394ab7b33ee1bfad1caa5eee2345"
+      },
+      "exportReview": {
+        "path": "production/ship-motion-fleet-20261106/art/avp-mothership-export-review.json",
+        "bytes": 6791,
+        "sha256": "cf286d9b242f1d0151093860a16f3e6bb2ce7b3a0ed132faf7fc70b38f68f39b"
+      },
+      "separateEngineEffectsApproved": false,
+      "views": [
+        {
+          "id": "bank-dorsal",
+          "source": {
+            "path": "production/ship-motion-fleet-20261106/art/sources/avp-predator-mothership/bank-dorsal.png",
+            "bytes": 1735275,
+            "sha256": "65cb3266b3ee05750885ee427e49e2bdf8f0f2bb7abc5b8febddf6991860c6b0"
+          },
+          "runtime": {
+            "path": "public/game/planet-arrival/ship-motion-fleet-v1/avp-predator-mothership/bank-dorsal.webp",
+            "bytes": 1093766,
+            "sha256": "c8b232fa9e0c02ecffee8816aaac5bb9b91855f4954ab82dfc6a1837a035ad10"
+          },
+          "dimensions": [
+            1536,
+            1024
+          ],
+          "fullRgbaExact": true,
+          "registrationPixels": {
+            "nose": [
+              1417.846,
+              551.665
+            ],
+            "tail": [
+              76.808,
+              567.293
+            ],
+            "pivot": [
+              765.978,
+              511.191
+            ],
+            "release": [
+              731.548,
+              748.917
+            ]
+          }
+        },
+        {
+          "id": "bank-dorsal-shallow",
+          "source": {
+            "path": "production/ship-motion-fleet-20261106/art/sources/avp-predator-mothership/bank-dorsal-shallow.png",
+            "bytes": 1642761,
+            "sha256": "45b739d7d2ff6810a2953130679e1097eb706807b32f0d1b4b19288be44bedba"
+          },
+          "runtime": {
+            "path": "public/game/planet-arrival/ship-motion-fleet-v1/avp-predator-mothership/bank-dorsal-shallow.webp",
+            "bytes": 1055244,
+            "sha256": "ad0d4a8e09200af9fd91beee9911316b38cd547390e9ce076568f4d6a0baec32"
+          },
+          "dimensions": [
+            1536,
+            1024
+          ],
+          "fullRgbaExact": true,
+          "registrationPixels": {
+            "nose": [
+              1417.597,
+              500.564
+            ],
+            "tail": [
+              81.531,
+              579.403
+            ],
+            "pivot": [
+              765.878,
+              490.969
+            ],
+            "release": [
+              742.771,
+              729.569
+            ]
+          }
+        },
+        {
+          "id": "forward-quarter",
+          "source": {
+            "path": "production/ship-motion-fleet-20261106/art/sources/avp-predator-mothership/forward-quarter.png",
+            "bytes": 1627871,
+            "sha256": "9faf74beeb7f2422b12e98050b69f526558dda0cbbe5c4669292384b78ec0481"
+          },
+          "runtime": {
+            "path": "public/game/planet-arrival/ship-motion-fleet-v1/avp-predator-mothership/forward-quarter.webp",
+            "bytes": 1014124,
+            "sha256": "8c3a741a25edebb859b075ba8f2ffdbb5c6df58b17b4442aff7e6fe719719fea"
+          },
+          "dimensions": [
+            1536,
+            1024
+          ],
+          "fullRgbaExact": true,
+          "registrationPixels": {
+            "nose": [
+              1386.19,
+              465.79
+            ],
+            "tail": [
+              108.996,
+              521.331
+            ],
+            "pivot": [
+              763.898,
+              446.989
+            ],
+            "release": [
+              738.301,
+              674.526
+            ]
+          }
+        },
+        {
+          "id": "forward-quarter-shallow",
+          "source": {
+            "path": "production/ship-motion-fleet-20261106/art/sources/avp-predator-mothership/forward-quarter-shallow.png",
+            "bytes": 1457282,
+            "sha256": "717efa8e0f0cf06b3582964ec6609ac6f11198f08957fe7c0eac9c787d7a182d"
+          },
+          "runtime": {
+            "path": "public/game/planet-arrival/ship-motion-fleet-v1/avp-predator-mothership/forward-quarter-shallow.webp",
+            "bytes": 917222,
+            "sha256": "4208021c35418ff5b4d434a6a8a79cdc9298bc3c601380c0d58285e32a34cb88"
+          },
+          "dimensions": [
+            1536,
+            1024
+          ],
+          "fullRgbaExact": true,
+          "registrationPixels": {
+            "nose": [
+              1396.899,
+              499.129
+            ],
+            "tail": [
+              107.977,
+              562.092
+            ],
+            "pivot": [
+              768.645,
+              483.513
+            ],
+            "release": [
+              744.036,
+              713.331
+            ]
+          }
+        },
+        {
+          "id": "rear-quarter",
+          "source": {
+            "path": "production/ship-motion-fleet-20261106/art/sources/avp-predator-mothership/rear-quarter.png",
+            "bytes": 1732402,
+            "sha256": "afb80f5b2624bbebd06133e07e74cc6953c8da109bbc3169f21ceeec2d8917da"
+          },
+          "runtime": {
+            "path": "public/game/planet-arrival/ship-motion-fleet-v1/avp-predator-mothership/rear-quarter.webp",
+            "bytes": 1076242,
+            "sha256": "70374c1f1a2c01982d7c826ba7077ad49a8488eaa362fbe51446030665b1ae0c"
+          },
+          "dimensions": [
+            1536,
+            1024
+          ],
+          "fullRgbaExact": true,
+          "registrationPixels": {
+            "nose": [
+              1346.509,
+              466.057
+            ],
+            "tail": [
+              258.943,
+              572.267
+            ],
+            "pivot": [
+              814.499,
+              478.661
+            ],
+            "release": [
+              803.128,
+              674.049
+            ]
+          }
+        },
+        {
+          "id": "rear-quarter-shallow",
+          "source": {
+            "path": "production/ship-motion-fleet-20261106/art/sources/avp-predator-mothership/rear-quarter-shallow.png",
+            "bytes": 1673368,
+            "sha256": "1006279a873e93fb3b2c0b02c7aa005554496f5c8c87ab3c83313cf0ed9beff3"
+          },
+          "runtime": {
+            "path": "public/game/planet-arrival/ship-motion-fleet-v1/avp-predator-mothership/rear-quarter-shallow.webp",
+            "bytes": 1055682,
+            "sha256": "ddf1a21a4759d66d41671715242beb1d0b1f22435315c636207e9aa24753107e"
+          },
+          "dimensions": [
+            1536,
+            1024
+          ],
+          "fullRgbaExact": true,
+          "registrationPixels": {
+            "nose": [
+              1419.576,
+              464.877
+            ],
+            "tail": [
+              143.925,
+              556.197
+            ],
+            "pivot": [
+              796.752,
+              463.509
+            ],
+            "release": [
+              777.529,
+              691.765
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "shipId": "avpr-scout-ship",
+      "profilePath": "/game/ships/v14/avpr-scout-ship.webp",
+      "methods": [
+        "pod",
+        "ship"
+      ],
+      "sourceReview": {
+        "path": "production/ship-motion-fleet-20261106/art/avpr-scout-eight-view-calibration.json",
+        "bytes": 53985,
+        "sha256": "4f7d6a9a960bfe6b27e697d40fa200b5631768a91d4970aed47769cda6c6a96a"
+      },
+      "exportReview": {
+        "path": "production/ship-motion-fleet-20261106/art/avpr-scout-export-review.json",
+        "bytes": 8429,
+        "sha256": "0e87f4586b5caa2200439009094f4d6cdd96e269a0d5d9e10c30c5495da154b0"
+      },
+      "separateEngineEffectsApproved": false,
+      "views": [
+        {
+          "id": "bank-dorsal",
+          "source": {
+            "path": "production/ship-motion-fleet-20261106/art/sources/avpr-scout-ship/bank-dorsal.png",
+            "bytes": 1794516,
+            "sha256": "eaa0ad6e3cb897cfa6ea9206b15eea83264df89576ef1d1b235ae119c2b42862"
+          },
+          "runtime": {
+            "path": "public/game/planet-arrival/ship-motion-fleet-v1/avpr-scout-ship/bank-dorsal.webp",
+            "bytes": 1164226,
+            "sha256": "6eeb9972b61291545b8965ef7018d9a5e5b647b18e9f84e6059770984fcddfeb"
+          },
+          "dimensions": [
+            1536,
+            1024
+          ],
+          "fullRgbaExact": true,
+          "registrationPixels": {
+            "nose": [
+              1431.157,
+              549.898
+            ],
+            "tail": [
+              141.459,
+              529.083
+            ],
+            "pivot": [
+              752.474,
+              482.138
+            ],
+            "release": [
+              857.082,
+              679.382
+            ]
+          }
+        },
+        {
+          "id": "bank-dorsal-shallow",
+          "source": {
+            "path": "production/ship-motion-fleet-20261106/art/sources/avpr-scout-ship/bank-dorsal-shallow.png",
+            "bytes": 1547913,
+            "sha256": "cf2f617b0c98b7cd2f383dbadbd89757626ac9493747582e11a3b24f94e91f6a"
+          },
+          "runtime": {
+            "path": "public/game/planet-arrival/ship-motion-fleet-v1/avpr-scout-ship/bank-dorsal-shallow.webp",
+            "bytes": 988166,
+            "sha256": "a15b8a0f008de97de17154a241ca204d3795b09a58726dadf9cab4cb7d4065c5"
+          },
+          "dimensions": [
+            1536,
+            1024
+          ],
+          "fullRgbaExact": true,
+          "registrationPixels": {
+            "nose": [
+              1416.393,
+              567.867
+            ],
+            "tail": [
+              167.515,
+              506.57
+            ],
+            "pivot": [
+              761.003,
+              480.572
+            ],
+            "release": [
+              856.063,
+              675.01
+            ]
+          }
+        },
+        {
+          "id": "bank-ventral",
+          "source": {
+            "path": "production/ship-motion-fleet-20261106/art/sources/avpr-scout-ship/bank-ventral.png",
+            "bytes": 1681772,
+            "sha256": "1c278b14da4c23f623f0167977a3c6bec408f1287f4e5171bf1205d15acbc34a"
+          },
+          "runtime": {
+            "path": "public/game/planet-arrival/ship-motion-fleet-v1/avpr-scout-ship/bank-ventral.webp",
+            "bytes": 1082008,
+            "sha256": "f7cf6828148c104a29bbe1ff5838211ab34bb0c4483bccba679156535bb84603"
+          },
+          "dimensions": [
+            1536,
+            1024
+          ],
+          "fullRgbaExact": true,
+          "registrationPixels": {
+            "nose": [
+              1439.151,
+              556.947
+            ],
+            "tail": [
+              166.07,
+              479.812
+            ],
+            "pivot": [
+              771.704,
+              460.242
+            ],
+            "release": [
+              866.386,
+              659.672
+            ]
+          }
+        },
+        {
+          "id": "bank-ventral-shallow",
+          "source": {
+            "path": "production/ship-motion-fleet-20261106/art/sources/avpr-scout-ship/bank-ventral-shallow.png",
+            "bytes": 1578905,
+            "sha256": "a1f28447723b497bff5a2a44e3584d7ca99ec699351a75cc7e90add4be356023"
+          },
+          "runtime": {
+            "path": "public/game/planet-arrival/ship-motion-fleet-v1/avpr-scout-ship/bank-ventral-shallow.webp",
+            "bytes": 1027588,
+            "sha256": "0ff7550d34a55e1cb989d5ccdc4a886ed2c143276641b92c731c10e844054980"
+          },
+          "dimensions": [
+            1536,
+            1024
+          ],
+          "fullRgbaExact": true,
+          "registrationPixels": {
+            "nose": [
+              1445.284,
+              571.719
+            ],
+            "tail": [
+              151.792,
+              514.233
+            ],
+            "pivot": [
+              766.217,
+              484.468
+            ],
+            "release": [
+              865.583,
+              685.351
+            ]
+          }
+        },
+        {
+          "id": "forward-quarter",
+          "source": {
+            "path": "production/ship-motion-fleet-20261106/art/sources/avpr-scout-ship/forward-quarter.png",
+            "bytes": 1818845,
+            "sha256": "892ee0d60cbec215e47f199af8fa9b8fd20a474191c840e14b94cbf8d5f04515"
+          },
+          "runtime": {
+            "path": "public/game/planet-arrival/ship-motion-fleet-v1/avpr-scout-ship/forward-quarter.webp",
+            "bytes": 1169136,
+            "sha256": "5f55c6428ff75f1f53fac47e903a2145a4f6d9a858ffd3e8570375bdb726a86a"
+          },
+          "dimensions": [
+            1536,
+            1024
+          ],
+          "fullRgbaExact": true,
+          "registrationPixels": {
+            "nose": [
+              1426.681,
+              613.146
+            ],
+            "tail": [
+              156.26,
+              514.708
+            ],
+            "pivot": [
+              761.575,
+              505.332
+            ],
+            "release": [
+              852.805,
+              706.139
+            ]
+          }
+        },
+        {
+          "id": "forward-quarter-shallow",
+          "source": {
+            "path": "production/ship-motion-fleet-20261106/art/sources/avpr-scout-ship/forward-quarter-shallow.png",
+            "bytes": 1633436,
+            "sha256": "9763608a8a85c1f1ef9d505280d6b5356d56194b402188c2a6c429c5c2086b3b"
+          },
+          "runtime": {
+            "path": "public/game/planet-arrival/ship-motion-fleet-v1/avpr-scout-ship/forward-quarter-shallow.webp",
+            "bytes": 1050862,
+            "sha256": "9d8a772dd9bc675499c94af52449d9130a8bd8d6d2581ca617f74dbd37181506"
+          },
+          "dimensions": [
+            1536,
+            1024
+          ],
+          "fullRgbaExact": true,
+          "registrationPixels": {
+            "nose": [
+              1406.367,
+              593.571
+            ],
+            "tail": [
+              166.068,
+              511.973
+            ],
+            "pivot": [
+              756.391,
+              495.957
+            ],
+            "release": [
+              847.658,
+              690.791
+            ]
+          }
+        },
+        {
+          "id": "rear-quarter",
+          "source": {
+            "path": "production/ship-motion-fleet-20261106/art/sources/avpr-scout-ship/rear-quarter.png",
+            "bytes": 1573765,
+            "sha256": "184e0bb9a52cf7056ccc7207239fa85b11db56e2d03e7f03c12e059b4e22b787"
+          },
+          "runtime": {
+            "path": "public/game/planet-arrival/ship-motion-fleet-v1/avpr-scout-ship/rear-quarter.webp",
+            "bytes": 1005238,
+            "sha256": "f33fe01275befbdcb53fb4becd20a8d616f8a472171d3d403cd520914bff4b29"
+          },
+          "dimensions": [
+            1536,
+            1024
+          ],
+          "fullRgbaExact": true,
+          "registrationPixels": {
+            "nose": [
+              1420.508,
+              552.957
+            ],
+            "tail": [
+              199.292,
+              545.014
+            ],
+            "pivot": [
+              777.344,
+              494.996
+            ],
+            "release": [
+              878.181,
+              680.782
+            ]
+          }
+        },
+        {
+          "id": "rear-quarter-shallow",
+          "source": {
+            "path": "production/ship-motion-fleet-20261106/art/sources/avpr-scout-ship/rear-quarter-shallow.png",
+            "bytes": 1573033,
+            "sha256": "217ace5ee7a180c8934ff9fa2e14972b73660caa713c938a792e70257c7ff3e6"
+          },
+          "runtime": {
+            "path": "public/game/planet-arrival/ship-motion-fleet-v1/avpr-scout-ship/rear-quarter-shallow.webp",
+            "bytes": 1013026,
+            "sha256": "6d11329811c03bc0e59e1aa4a60b5fec2c7983b2e82bce995da3a58099761d9c"
+          },
+          "dimensions": [
+            1536,
+            1024
+          ],
+          "fullRgbaExact": true,
+          "registrationPixels": {
+            "nose": [
+              1426.195,
+              605.996
+            ],
+            "tail": [
+              201.472,
+              537.211
+            ],
+            "pivot": [
+              783.862,
+              515.82
+            ],
+            "release": [
+              875.77,
+              707.222
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "shipId": "feral-spaceship",
+      "profilePath": "/game/ships/v14/feral-spaceship.webp",
+      "methods": [
+        "pod",
+        "ship"
+      ],
+      "sourceReview": {
+        "path": "production/ship-motion-fleet-20261106/art/feral-eight-view-calibration.json",
+        "bytes": 22762,
+        "sha256": "3d7119077a98ac5e143b2f41d17a3603e8e4449f493dc4490277e7d3288b4e6b"
+      },
+      "exportReview": {
+        "path": "production/ship-motion-fleet-20261106/art/feral-export-review.json",
+        "bytes": 8285,
+        "sha256": "0be4ba3784c807ef931e37b9d704f038ea55860e4df63f11e64582fff508fbc8"
+      },
+      "separateEngineEffectsApproved": false,
+      "views": [
+        {
+          "id": "bank-dorsal",
+          "source": {
+            "path": "production/ship-motion-fleet-20261106/art/sources/feral-spaceship/bank-dorsal.png",
+            "bytes": 2201237,
+            "sha256": "083e7f4bd2bdcb646dd00a662ae9e5dfabfb77537a9aa9fc35c62741ac423f1c"
+          },
+          "runtime": {
+            "path": "public/game/planet-arrival/ship-motion-fleet-v1/feral-spaceship/bank-dorsal.webp",
+            "bytes": 1362840,
+            "sha256": "d0cd2b2dbecf9587a305a54c8979563067e145dad88b4d3e7628657c7dcd5844"
+          },
+          "dimensions": [
+            1536,
+            1024
+          ],
+          "fullRgbaExact": true,
+          "registrationPixels": {
+            "nose": [
+              1431.100547,
+              519.904745
+            ],
+            "tail": [
+              285.704927,
+              732.792701
+            ],
+            "pivot": [
+              826.606588,
+              577.718759
+            ],
+            "release": [
+              902.715803,
+              716.990292
+            ]
+          }
+        },
+        {
+          "id": "bank-dorsal-shallow",
+          "source": {
+            "path": "production/ship-motion-fleet-20261106/art/sources/feral-spaceship/bank-dorsal-shallow.png",
+            "bytes": 1832826,
+            "sha256": "89877ab8536f44d28d428b3ac213d3184ef523ffb6f579be638e20c836fa4473"
+          },
+          "runtime": {
+            "path": "public/game/planet-arrival/ship-motion-fleet-v1/feral-spaceship/bank-dorsal-shallow.webp",
+            "bytes": 1175772,
+            "sha256": "47c2a303c2a30b6e6a753fcfcbe3409a389ee604fa6c98ee16766c551cb5872c"
+          },
+          "dimensions": [
+            1536,
+            1024
+          ],
+          "fullRgbaExact": true,
+          "registrationPixels": {
+            "nose": [
+              1480.820894,
+              553.626916
+            ],
+            "tail": [
+              222.313047,
+              648.167245
+            ],
+            "pivot": [
+              823.045593,
+              544.788057
+            ],
+            "release": [
+              888.626478,
+              703.72031
+            ]
+          }
+        },
+        {
+          "id": "bank-ventral",
+          "source": {
+            "path": "production/ship-motion-fleet-20261106/art/sources/feral-spaceship/bank-ventral.png",
+            "bytes": 1681646,
+            "sha256": "9c5858121b6946f232dc45fd7bd7739a3ed2810d11455760238329ab83c9b0a8"
+          },
+          "runtime": {
+            "path": "public/game/planet-arrival/ship-motion-fleet-v1/feral-spaceship/bank-ventral.webp",
+            "bytes": 1108760,
+            "sha256": "f0b94c401fd2a09a0286fe2aa047f236a054e0da134c59415eab0e6434f12953"
+          },
+          "dimensions": [
+            1536,
+            1024
+          ],
+          "fullRgbaExact": true,
+          "registrationPixels": {
+            "nose": [
+              1497.895438,
+              547.118796
+            ],
+            "tail": [
+              102.908942,
+              519.619161
+            ],
+            "pivot": [
+              774.87677,
+              468.634507
+            ],
+            "release": [
+              830.441642,
+              650.409234
+            ]
+          }
+        },
+        {
+          "id": "bank-ventral-shallow",
+          "source": {
+            "path": "production/ship-motion-fleet-20261106/art/sources/feral-spaceship/bank-ventral-shallow.png",
+            "bytes": 1522723,
+            "sha256": "b7f343bb0031b328135319057937ad818e86c6d2d1c5817920e34238fbdfbde7"
+          },
+          "runtime": {
+            "path": "public/game/planet-arrival/ship-motion-fleet-v1/feral-spaceship/bank-ventral-shallow.webp",
+            "bytes": 997732,
+            "sha256": "df99443cedefddf1f4cd739051a6d744b71617ec7bedeb8ada81a4ef31e05b2c"
+          },
+          "dimensions": [
+            1536,
+            1024
+          ],
+          "fullRgbaExact": true,
+          "registrationPixels": {
+            "nose": [
+              1517.483485,
+              577.11104
+            ],
+            "tail": [
+              105.826369,
+              524.674361
+            ],
+            "pivot": [
+              786.957108,
+              484.912016
+            ],
+            "release": [
+              839.999945,
+              669.902026
+            ]
+          }
+        },
+        {
+          "id": "forward-quarter",
+          "source": {
+            "path": "production/ship-motion-fleet-20261106/art/sources/feral-spaceship/forward-quarter.png",
+            "bytes": 1975187,
+            "sha256": "6b2ba455174d1de1ec8a5f669c09347b1b17e8c6e907eeb5528cad35d1857a2c"
+          },
+          "runtime": {
+            "path": "public/game/planet-arrival/ship-motion-fleet-v1/feral-spaceship/forward-quarter.webp",
+            "bytes": 1270468,
+            "sha256": "992a1204474d4ae189f4558719e20a54e3e902f27a1a8e15f155d07b9f5a0eac"
+          },
+          "dimensions": [
+            1536,
+            1024
+          ],
+          "fullRgbaExact": true,
+          "registrationPixels": {
+            "nose": [
+              1448.129836,
+              604.321077
+            ],
+            "tail": [
+              129.993522,
+              602.36469
+            ],
+            "pivot": [
+              763.836524,
+              542.636122
+            ],
+            "release": [
+              819.451259,
+              713.378412
+            ]
+          }
+        },
+        {
+          "id": "forward-quarter-shallow",
+          "source": {
+            "path": "production/ship-motion-fleet-20261106/art/sources/feral-spaceship/forward-quarter-shallow.png",
+            "bytes": 1711106,
+            "sha256": "8e78489b51cd151c459ee0e528c3248d81f83f1158b78082587ce9d217622d70"
+          },
+          "runtime": {
+            "path": "public/game/planet-arrival/ship-motion-fleet-v1/feral-spaceship/forward-quarter-shallow.webp",
+            "bytes": 1105192,
+            "sha256": "1a7222d8317208a69cf321478f71c9ec11b80cf8661c6f23cabd24a34a06400c"
+          },
+          "dimensions": [
+            1536,
+            1024
+          ],
+          "fullRgbaExact": true,
+          "registrationPixels": {
+            "nose": [
+              1500.169434,
+              604.730931
+            ],
+            "tail": [
+              109.949909,
+              589.603376
+            ],
+            "pivot": [
+              779.056359,
+              532.889699
+            ],
+            "release": [
+              836.021004,
+              713.522865
+            ]
+          }
+        },
+        {
+          "id": "rear-quarter",
+          "source": {
+            "path": "production/ship-motion-fleet-20261106/art/sources/feral-spaceship/rear-quarter.png",
+            "bytes": 1927447,
+            "sha256": "5d4b524887ab6d8ebcfa83a0bbd176a8c0668d556a9fa2342910323048f79cc1"
+          },
+          "runtime": {
+            "path": "public/game/planet-arrival/ship-motion-fleet-v1/feral-spaceship/rear-quarter.webp",
+            "bytes": 1252110,
+            "sha256": "b9c0dd03467d48fd65073474e207747d587ccb26d7a08c59d52cf4c79ed3bb14"
+          },
+          "dimensions": [
+            1536,
+            1024
+          ],
+          "fullRgbaExact": true,
+          "registrationPixels": {
+            "nose": [
+              1528.207482,
+              491.823175
+            ],
+            "tail": [
+              181.717336,
+              708.458577
+            ],
+            "pivot": [
+              819.131697,
+              542.327208
+            ],
+            "release": [
+              904.249307,
+              707.475657
+            ]
+          }
+        },
+        {
+          "id": "rear-quarter-shallow",
+          "source": {
+            "path": "production/ship-motion-fleet-20261106/art/sources/feral-spaceship/rear-quarter-shallow.png",
+            "bytes": 1704646,
+            "sha256": "26ae2bd3646e061322f0f55ba9dc79b31609d362d79791b3d888550f8e8cb7dd"
+          },
+          "runtime": {
+            "path": "public/game/planet-arrival/ship-motion-fleet-v1/feral-spaceship/rear-quarter-shallow.webp",
+            "bytes": 1094664,
+            "sha256": "ff7b8b8100b35e7e6baf5e6903de72bc861d6dd4eb088e3e98d1d4273f693b09"
+          },
+          "dimensions": [
+            1536,
+            1024
+          ],
+          "fullRgbaExact": true,
+          "registrationPixels": {
+            "nose": [
+              1485.735036,
+              542.92865
+            ],
+            "tail": [
+              260.265328,
+              623.057847
+            ],
+            "pivot": [
+              845.776606,
+              528.128084
+            ],
+            "release": [
+              908.091387,
+              683.393686
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "shipId": "fugitive-spaceship",
+      "profilePath": "/game/ships/v14/fugitive-spaceship.webp",
+      "methods": [
+        "pod",
+        "ship"
+      ],
+      "sourceReview": {
+        "path": "production/ship-motion-fleet-20261106/art/fugitive-eight-view-calibration.json",
+        "bytes": 56212,
+        "sha256": "f7c91e483d8d0d6c4bff42a8aaaad6ed546e31b7b0ddd0c730744535180725f9"
+      },
+      "exportReview": {
+        "path": "production/ship-motion-fleet-20261106/art/fugitive-export-review.json",
+        "bytes": 8370,
+        "sha256": "bcf821661c6ef6fd3d24e4b6b21eafc70f722f47c039016dcae65a7799f55349"
+      },
+      "separateEngineEffectsApproved": false,
+      "views": [
+        {
+          "id": "bank-dorsal",
+          "source": {
+            "path": "production/ship-motion-fleet-20261106/art/sources/fugitive-spaceship/bank-dorsal.png",
+            "bytes": 2258773,
+            "sha256": "57ff81e56c7c3e92f3e5e0f6a1aef534d2b4fe6c201be2cb99d056e949b61579"
+          },
+          "runtime": {
+            "path": "public/game/planet-arrival/ship-motion-fleet-v1/fugitive-spaceship/bank-dorsal.webp",
+            "bytes": 1392622,
+            "sha256": "cded33842e308cd5074a669cdb7c8f743884f64f0ddf53e10333da2a4d5b8e7d"
+          },
+          "dimensions": [
+            1536,
+            1024
+          ],
+          "fullRgbaExact": true,
+          "registrationPixels": {
+            "nose": [
+              1447.883,
+              518.117
+            ],
+            "tail": [
+              180.744,
+              515.906
+            ],
+            "pivot": [
+              765.384,
+              543.63
+            ],
+            "release": [
+              984.607,
+              754.12
+            ]
+          }
+        },
+        {
+          "id": "bank-dorsal-shallow",
+          "source": {
+            "path": "production/ship-motion-fleet-20261106/art/sources/fugitive-spaceship/bank-dorsal-shallow.png",
+            "bytes": 1917350,
+            "sha256": "023e9acfd955db295aaf83c8d754f82ce34be22be531ddf7ce38ab4b1fedf48a"
+          },
+          "runtime": {
+            "path": "public/game/planet-arrival/ship-motion-fleet-v1/fugitive-spaceship/bank-dorsal-shallow.webp",
+            "bytes": 1218730,
+            "sha256": "03efae8c09af93d33935ab0b1c21496a970dc4567f807036eafbe8f34090ac2a"
+          },
+          "dimensions": [
+            1536,
+            1024
+          ],
+          "fullRgbaExact": true,
+          "registrationPixels": {
+            "nose": [
+              1466.921,
+              514.811
+            ],
+            "tail": [
+              185.331,
+              542.059
+            ],
+            "pivot": [
+              777.26,
+              556.495
+            ],
+            "release": [
+              1003.872,
+              764.276
+            ]
+          }
+        },
+        {
+          "id": "bank-ventral",
+          "source": {
+            "path": "production/ship-motion-fleet-20261106/art/sources/fugitive-spaceship/bank-ventral.png",
+            "bytes": 1550378,
+            "sha256": "bb9cd29e41c94e971587116d7378e5f4e39accd513445e8ecf270ebf018f9818"
+          },
+          "runtime": {
+            "path": "public/game/planet-arrival/ship-motion-fleet-v1/fugitive-spaceship/bank-ventral.webp",
+            "bytes": 1001074,
+            "sha256": "be66b113962e606e11c99ccf05f16d2aa4afc9c6e781a1097339650ba9bc237a"
+          },
+          "dimensions": [
+            1536,
+            1024
+          ],
+          "fullRgbaExact": true,
+          "registrationPixels": {
+            "nose": [
+              1456.99,
+              468.887
+            ],
+            "tail": [
+              176.866,
+              513.031
+            ],
+            "pivot": [
+              768.475,
+              519.639
+            ],
+            "release": [
+              997.634,
+              724.25
+            ]
+          }
+        },
+        {
+          "id": "bank-ventral-shallow",
+          "source": {
+            "path": "production/ship-motion-fleet-20261106/art/sources/fugitive-spaceship/bank-ventral-shallow.png",
+            "bytes": 1649626,
+            "sha256": "e72c4504cd699e069df26ec28a364578b0ce3932d5ca156f59f72838096ffab5"
+          },
+          "runtime": {
+            "path": "public/game/planet-arrival/ship-motion-fleet-v1/fugitive-spaceship/bank-ventral-shallow.webp",
+            "bytes": 1066532,
+            "sha256": "a7ad558a61856e2e0644d1a46463c5fbf6c15f4fb31293ce5fdf57fef8dabbd2"
+          },
+          "dimensions": [
+            1536,
+            1024
+          ],
+          "fullRgbaExact": true,
+          "registrationPixels": {
+            "nose": [
+              1441.03,
+              491.624
+            ],
+            "tail": [
+              192.505,
+              505.096
+            ],
+            "pivot": [
+              768.887,
+              525.191
+            ],
+            "release": [
+              987.485,
+              729.877
+            ]
+          }
+        },
+        {
+          "id": "forward-quarter",
+          "source": {
+            "path": "production/ship-motion-fleet-20261106/art/sources/fugitive-spaceship/forward-quarter.png",
+            "bytes": 1996335,
+            "sha256": "61a2a3a3ef8ced542c90ed6c8f298158cbf5db6b65745a62f62115ae24740369"
+          },
+          "runtime": {
+            "path": "public/game/planet-arrival/ship-motion-fleet-v1/fugitive-spaceship/forward-quarter.webp",
+            "bytes": 1250012,
+            "sha256": "6285558a5a1ebc5767d509e15f3d9c5c2698252789c812aaaeaf1690521c461e"
+          },
+          "dimensions": [
+            1536,
+            1024
+          ],
+          "fullRgbaExact": true,
+          "registrationPixels": {
+            "nose": [
+              1399.077,
+              562.186
+            ],
+            "tail": [
+              250.465,
+              456.679
+            ],
+            "pivot": [
+              778.237,
+              529.568
+            ],
+            "release": [
+              959.793,
+              738.306
+            ]
+          }
+        },
+        {
+          "id": "forward-quarter-shallow",
+          "source": {
+            "path": "production/ship-motion-fleet-20261106/art/sources/fugitive-spaceship/forward-quarter-shallow.png",
+            "bytes": 1874663,
+            "sha256": "d345e5f4e77d13b50607d35b682dca3bdee4dc3e4ca182276c4f81c637130f82"
+          },
+          "runtime": {
+            "path": "public/game/planet-arrival/ship-motion-fleet-v1/fugitive-spaceship/forward-quarter-shallow.webp",
+            "bytes": 1202086,
+            "sha256": "c935e826390b211878cb47154196b5bc51b88ce0d9b6d18160322615c5f88742"
+          },
+          "dimensions": [
+            1536,
+            1024
+          ],
+          "fullRgbaExact": true,
+          "registrationPixels": {
+            "nose": [
+              1468.685,
+              504.355
+            ],
+            "tail": [
+              151.595,
+              513.858
+            ],
+            "pivot": [
+              759.531,
+              537.229
+            ],
+            "release": [
+              989.352,
+              753.972
+            ]
+          }
+        },
+        {
+          "id": "rear-quarter",
+          "source": {
+            "path": "production/ship-motion-fleet-20261106/art/sources/fugitive-spaceship/rear-quarter.png",
+            "bytes": 1929850,
+            "sha256": "0351029a77616d14c0ada9b5c70e4058d470a4307a4f6ab91974c91eefe15cdd"
+          },
+          "runtime": {
+            "path": "public/game/planet-arrival/ship-motion-fleet-v1/fugitive-spaceship/rear-quarter.webp",
+            "bytes": 1214922,
+            "sha256": "7a23913e77154720cbc609a9f347b0fe0cdfff90b29abfc03fb88cae87f8ef60"
+          },
+          "dimensions": [
+            1536,
+            1024
+          ],
+          "fullRgbaExact": true,
+          "registrationPixels": {
+            "nose": [
+              1437.975,
+              398.642
+            ],
+            "tail": [
+              262.371,
+              574.677
+            ],
+            "pivot": [
+              808.532,
+              518.225
+            ],
+            "release": [
+              1041.447,
+              682.648
+            ]
+          }
+        },
+        {
+          "id": "rear-quarter-shallow",
+          "source": {
+            "path": "production/ship-motion-fleet-20261106/art/sources/fugitive-spaceship/rear-quarter-shallow.png",
+            "bytes": 1873344,
+            "sha256": "271f70e31718a209a193ef05f79cc4be7d77ecfb6868f2ab4ac30c8458ff9fc6"
+          },
+          "runtime": {
+            "path": "public/game/planet-arrival/ship-motion-fleet-v1/fugitive-spaceship/rear-quarter-shallow.webp",
+            "bytes": 1200182,
+            "sha256": "3d3e0853a7a3f94b7f90b5060edcbd13beefd4e2f008c9dc2924b08998d98af5"
+          },
+          "dimensions": [
+            1536,
+            1024
+          ],
+          "fullRgbaExact": true,
+          "registrationPixels": {
+            "nose": [
+              1467.096,
+              466.991
+            ],
+            "tail": [
+              190.688,
+              535.348
+            ],
+            "pivot": [
+              781.092,
+              530.705
+            ],
+            "release": [
+              1013.623,
+              730.503
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "shipId": "upgrade-spaceship",
+      "profilePath": "/game/ships/v14/upgrade-spaceship.webp",
+      "methods": [
+        "pod",
+        "ship"
+      ],
+      "sourceReview": {
+        "path": "production/ship-motion-fleet-20261106/art/upgrade-eight-view-calibration.json",
+        "bytes": 74261,
+        "sha256": "851432efc75daa5c525301a3b3c05884f7a485c0645a9dc1bab5306bc816b33b"
+      },
+      "exportReview": {
+        "path": "production/ship-motion-fleet-20261106/art/upgrade-export-review.json",
+        "bytes": 8483,
+        "sha256": "3e54ccb6b96c5512a7920a1ebe21ce1508b5da8f165bf58f0eafce1a9ee0368f"
+      },
+      "separateEngineEffectsApproved": false,
+      "views": [
+        {
+          "id": "bank-dorsal",
+          "source": {
+            "path": "production/ship-motion-fleet-20261106/art/sources/upgrade-spaceship/bank-dorsal.png",
+            "bytes": 1825009,
+            "sha256": "eed63039ee54b202534b34809b47d7f1aa961f5d386543c5cbb565731c172e29"
+          },
+          "runtime": {
+            "path": "public/game/planet-arrival/ship-motion-fleet-v1/upgrade-spaceship/bank-dorsal.webp",
+            "bytes": 1159084,
+            "sha256": "7e7cf77f374b8168c8fa5cbbe0fb5bac9680d93d98823bc374ec1511a5964c58"
+          },
+          "dimensions": [
+            1536,
+            1024
+          ],
+          "fullRgbaExact": true,
+          "registrationPixels": {
+            "nose": [
+              1466.141,
+              516.49
+            ],
+            "tail": [
+              128.238,
+              528.812
+            ],
+            "pivot": [
+              727.986,
+              493.116
+            ],
+            "release": [
+              894.084,
+              590.089
+            ]
+          }
+        },
+        {
+          "id": "bank-dorsal-shallow",
+          "source": {
+            "path": "production/ship-motion-fleet-20261106/art/sources/upgrade-spaceship/bank-dorsal-shallow.png",
+            "bytes": 1495340,
+            "sha256": "2911059c83742beffe77e02e02c1e4401fd01cf54190669bdd747e2cd15ba379"
+          },
+          "runtime": {
+            "path": "public/game/planet-arrival/ship-motion-fleet-v1/upgrade-spaceship/bank-dorsal-shallow.webp",
+            "bytes": 962548,
+            "sha256": "021eb511b69b3efd25907c731cd8712f57e95026cfb2e2a2810d229088cfd770"
+          },
+          "dimensions": [
+            1536,
+            1024
+          ],
+          "fullRgbaExact": true,
+          "registrationPixels": {
+            "nose": [
+              1475.871,
+              493.559
+            ],
+            "tail": [
+              123.781,
+              514.132
+            ],
+            "pivot": [
+              729.707,
+              474.415
+            ],
+            "release": [
+              898.163,
+              571.414
+            ]
+          }
+        },
+        {
+          "id": "bank-ventral",
+          "source": {
+            "path": "production/ship-motion-fleet-20261106/art/sources/upgrade-spaceship/bank-ventral.png",
+            "bytes": 1631576,
+            "sha256": "2b091b0ac3a20ba90b27f17a10d1824477f4680d103dac9ae2595215a0b3f264"
+          },
+          "runtime": {
+            "path": "public/game/planet-arrival/ship-motion-fleet-v1/upgrade-spaceship/bank-ventral.webp",
+            "bytes": 1064748,
+            "sha256": "0319f816584a51a2adbaf472ce111075f34fd49d3b671bc40763fe0b1b741867"
+          },
+          "dimensions": [
+            1536,
+            1024
+          ],
+          "fullRgbaExact": true,
+          "registrationPixels": {
+            "nose": [
+              1487.686,
+              540.279
+            ],
+            "tail": [
+              104.361,
+              491.178
+            ],
+            "pivot": [
+              725.866,
+              482.004
+            ],
+            "release": [
+              893.05,
+              589.905
+            ]
+          }
+        },
+        {
+          "id": "bank-ventral-shallow",
+          "source": {
+            "path": "production/ship-motion-fleet-20261106/art/sources/upgrade-spaceship/bank-ventral-shallow.png",
+            "bytes": 1427651,
+            "sha256": "ed3aabc50f7c1dcef957f9ab6068bdd6edd98497001bf743ac0550f47a424a7b"
+          },
+          "runtime": {
+            "path": "public/game/planet-arrival/ship-motion-fleet-v1/upgrade-spaceship/bank-ventral-shallow.webp",
+            "bytes": 934768,
+            "sha256": "edaba01fbd38afecb0bbb9336ab5b80343385cea24a718a4b725290303514add"
+          },
+          "dimensions": [
+            1536,
+            1024
+          ],
+          "fullRgbaExact": true,
+          "registrationPixels": {
+            "nose": [
+              1499.957,
+              488.813
+            ],
+            "tail": [
+              91.991,
+              510.23
+            ],
+            "pivot": [
+              722.957,
+              468.875
+            ],
+            "release": [
+              898.374,
+              569.883
+            ]
+          }
+        },
+        {
+          "id": "forward-quarter",
+          "source": {
+            "path": "production/ship-motion-fleet-20261106/art/sources/upgrade-spaceship/forward-quarter.png",
+            "bytes": 1171519,
+            "sha256": "898f77fad5f3d6525d12ef17cd7b2b9e76749a1b46d190fd1e3b233c266fcc4e"
+          },
+          "runtime": {
+            "path": "public/game/planet-arrival/ship-motion-fleet-v1/upgrade-spaceship/forward-quarter.webp",
+            "bytes": 791146,
+            "sha256": "cc035d5074b3a44e71e1716cbe2a9b4efb79fd418a5ac69d0e339b22f0e97fab"
+          },
+          "dimensions": [
+            1536,
+            1024
+          ],
+          "fullRgbaExact": true,
+          "registrationPixels": {
+            "nose": [
+              1442.961,
+              531.524
+            ],
+            "tail": [
+              152.176,
+              532.508
+            ],
+            "pivot": [
+              731.049,
+              502.959
+            ],
+            "release": [
+              890.494,
+              597.864
+            ]
+          }
+        },
+        {
+          "id": "forward-quarter-shallow",
+          "source": {
+            "path": "production/ship-motion-fleet-20261106/art/sources/upgrade-spaceship/forward-quarter-shallow.png",
+            "bytes": 1125888,
+            "sha256": "d264943c2b0274281b38ee0056896a0f4eb7cfa9ef685054c0fa96d8f9f1dec0"
+          },
+          "runtime": {
+            "path": "public/game/planet-arrival/ship-motion-fleet-v1/upgrade-spaceship/forward-quarter-shallow.webp",
+            "bytes": 761602,
+            "sha256": "e5d3aafa2692ad541094b3d01a24f5e92af7a28145ac95929ec28baaf0a404e8"
+          },
+          "dimensions": [
+            1536,
+            1024
+          ],
+          "fullRgbaExact": true,
+          "registrationPixels": {
+            "nose": [
+              1478.786,
+              503.684
+            ],
+            "tail": [
+              123.844,
+              532.707
+            ],
+            "pivot": [
+              730.858,
+              489.136
+            ],
+            "release": [
+              900.288,
+              585.301
+            ]
+          }
+        },
+        {
+          "id": "rear-quarter",
+          "source": {
+            "path": "production/ship-motion-fleet-20261106/art/sources/upgrade-spaceship/rear-quarter.png",
+            "bytes": 1927564,
+            "sha256": "3b24f1ba6cd51aa755c56f7145900458a46153643be848622323c65a8abd2d17"
+          },
+          "runtime": {
+            "path": "public/game/planet-arrival/ship-motion-fleet-v1/upgrade-spaceship/rear-quarter.webp",
+            "bytes": 1228516,
+            "sha256": "3245a4dfae8038270238ccd95d14b92ef89cdc4e97c6ea2a5023c9650c6cee90"
+          },
+          "dimensions": [
+            1536,
+            1024
+          ],
+          "fullRgbaExact": true,
+          "registrationPixels": {
+            "nose": [
+              1475.823,
+              498.103
+            ],
+            "tail": [
+              186.555,
+              534.135
+            ],
+            "pivot": [
+              763.957,
+              488.902
+            ],
+            "release": [
+              925.795,
+              579.367
+            ]
+          }
+        },
+        {
+          "id": "rear-quarter-shallow",
+          "source": {
+            "path": "production/ship-motion-fleet-20261106/art/sources/upgrade-spaceship/rear-quarter-shallow.png",
+            "bytes": 1898140,
+            "sha256": "e5ed40258ed728c63270dc078a06d493e707218be66807b2d352320a852e0ebb"
+          },
+          "runtime": {
+            "path": "public/game/planet-arrival/ship-motion-fleet-v1/upgrade-spaceship/rear-quarter-shallow.webp",
+            "bytes": 1214964,
+            "sha256": "80b6b96cd767ffd8b0364cb404dfeaf2084d0f0ab1044abe4c00d9fdfae0b68c"
+          },
+          "dimensions": [
+            1536,
+            1024
+          ],
+          "fullRgbaExact": true,
+          "registrationPixels": {
+            "nose": [
+              1495.407,
+              516.397
+            ],
+            "tail": [
+              114.312,
+              535.289
+            ],
+            "pivot": [
+              733.283,
+              495.672
+            ],
+            "release": [
+              905.197,
+              595.014
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

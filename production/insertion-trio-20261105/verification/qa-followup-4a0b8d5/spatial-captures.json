@@ -1,0 +1,76 @@
+{
+  "sourceCommit": "4a0b8d58cdfadf642d6c897c32980b7a8586f4dd",
+  "runId": 42003800301,
+  "artifactId": 13403832614,
+  "imagesStoredInActionsArtifact": true,
+  "acceptedImagesReviewed": [
+    {
+      "file": "desktop-ship-solo-egress-walking.png",
+      "sha256": "1a7c0ef118990918b91e3961431237e2b96e8614e44deeae750f607a4809806a",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "shot": "egress",
+      "elapsedBefore": 60550,
+      "elapsedAfter": 61150,
+      "measuredAt": 61366,
+      "observation": "Live clock immediately before and after lossless PNG capture; native playing status, shot and optical phase must survive both observations. Complete geometry measured afterwards.",
+      "review": {
+        "terminalOverlayVisible": false,
+        "scope": "Actual screenshot inspected independently; silhouettes and support look coherent.",
+        "measuredGeometryMayBeLaterThanImage": true
+      }
+    },
+    {
+      "file": "desktop-ship-solo-egress-final.png",
+      "sha256": "53b0cbaa3a06a487dc6068d68abd243e182899017bf7361a5423dc86919c62a5",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "shot": "egress",
+      "elapsedBefore": 61316,
+      "elapsedAfter": 61683,
+      "measuredAt": 61750,
+      "observation": "Live clock immediately before and after lossless PNG capture; native playing status, shot and optical phase must survive both observations. Complete geometry measured afterwards.",
+      "review": {
+        "terminalOverlayVisible": false,
+        "scope": "Actual screenshot inspected independently; silhouettes and support look coherent.",
+        "measuredGeometryMayBeLaterThanImage": true
+      }
+    },
+    {
+      "file": "desktop-pod-triad-egress-walking.png",
+      "sha256": "8cdb42294f53c19bea8f4aa8abc349b0c25fcee2811862a4d2d8292d975908d4",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "shot": "egress",
+      "elapsedBefore": 60800,
+      "elapsedAfter": 61700,
+      "measuredAt": 62000,
+      "observation": "Live clock immediately before and after lossless PNG capture; native playing status, shot and optical phase must survive both observations. Complete geometry measured afterwards.",
+      "review": {
+        "terminalOverlayVisible": false,
+        "scope": "Actual screenshot inspected independently; silhouettes and support look coherent.",
+        "measuredGeometryMayBeLaterThanImage": true
+      }
+    }
+  ],
+  "rejectedFinal": {
+    "check": "desktop: pod-triad real flight, contact and complete disembarkation",
+    "message": "desktop-pod-triad-egress-final: a terminal or paused overlay invalidates the photograph.\n+ actual - expected\n\n+ 'complete'\n- 'playing'\n",
+    "statusAfter": "complete",
+    "elapsedAfter": 62000,
+    "acceptedPhotograph": false,
+    "failureScreenshotSha256": "7bc7d71b702120a8b2768dfffb81b4da91f9b98e62eed6db1674e2e3553dc81e"
+  },
+  "limits": [
+    "The pod-triad walking photograph ends at 61700 ms; its complete geometric read is later, at 62000 ms, and is not the exact photographed pose.",
+    "No ship-cloaked-triad atmosphere, decloaking or pre-contact pixels were reached by this Spatial run.",
+    "No mobile Spatial variants were reached.",
+    "The paused Wolf image does not qualify atmospheric refraction."
+  ]
+}

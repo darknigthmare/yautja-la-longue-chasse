@@ -7,6 +7,10 @@ import type { BiomeId, HunterPresetId, MissionId } from '../types';
 import { backgroundPathForBiome } from '../worldScreens';
 import { worldBlueprintFor } from './worldBlueprints';
 import { wolfCastleRuntimeAsset } from './wolfCastleRuntimeArt';
+import { ARRIVAL_COMPLETION_ART, arrivalImpactArtForBiome } from './planetArrivalArt';
+import { arrivalVfxSourcesForBiome } from './planetArrivalVfxArt';
+import { ARRIVAL_POD_ART } from './planetArrivalPodArt';
+import { normalizePlanetInsertionPlan, shipSupportsSurfaceInsertion, type PlanetInsertionPlan } from './planetInsertion';
 
 /** The montage has no gameplay clock, resource cost or reward of its own. */
 export const PLANET_ARRIVAL_VERSION = 1 as const;
@@ -52,6 +56,8 @@ export interface PlanetArrivalState {
   elapsedMs: number;
   status: PlanetArrivalStatus;
   completedBy: PlanetArrivalCompletion | null;
+  /** Missing on V1 archives means the original solo capsule sequence. */
+  insertion?: PlanetInsertionPlan;
 }
 
 export interface PlanetArrivalInput {
@@ -61,6 +67,7 @@ export interface PlanetArrivalInput {
   encounterRun: number;
   personalShipId: ShipId;
   hunterPresetId: HunterPresetId;
+  insertion?: PlanetInsertionPlan;
 }
 
 export interface PlanetArrivalInspection {
@@ -101,10 +108,12 @@ export function planetArrivalDestination(missionId: MissionId) {
 
 export function createPlanetArrival(input: PlanetArrivalInput): PlanetArrivalState {
   const destination = planetArrivalDestination(input.missionId);
+  const insertion = normalizePlanetInsertionPlan(input.insertion);
   if (!destination || !identity(input.ownerCreatedAt) || !identity(input.runId) ||
       !Number.isInteger(input.encounterRun) || input.encounterRun < 0 || input.encounterRun > 1_000_000_000 ||
       !isShipId(input.personalShipId) || !identity(input.hunterPresetId) ||
-      (input.hunterPresetId !== 'custom' && !Object.hasOwn(HUNTER_PRESET_BY_ID, input.hunterPresetId))) {
+      (input.hunterPresetId !== 'custom' && !Object.hasOwn(HUNTER_PRESET_BY_ID, input.hunterPresetId)) ||
+      !insertion || (insertion.method === 'ship' && !shipSupportsSurfaceInsertion(input.personalShipId))) {
     throw new TypeError('Identité, mission, coque ou apparence d’arrivée invalide.');
   }
   return {
@@ -123,6 +132,7 @@ export function createPlanetArrival(input: PlanetArrivalInput): PlanetArrivalSta
     elapsedMs: 0,
     status: 'prepared',
     completedBy: null,
+    ...(input.insertion === undefined ? {} : { insertion }),
   };
 }
 
@@ -133,7 +143,7 @@ export function inspectPlanetArrival(value: unknown, expectedOwnerCreatedAt?: st
   if (typeof value.version === 'number' && value.version > PLANET_ARRIVAL_VERSION) {
     return { status: 'future-version', state: null, reason: 'version' };
   }
-  if (value.version !== PLANET_ARRIVAL_VERSION || Object.keys(value).length !== KEYS.length ||
+  if (value.version !== PLANET_ARRIVAL_VERSION || Object.keys(value).length !== KEYS.length + (Object.hasOwn(value, 'insertion') ? 1 : 0) ||
       !KEYS.every(key => Object.hasOwn(value, key))) return invalid('structure');
   if (!identity(value.ownerCreatedAt) || !identity(value.runId)) return invalid('identity');
   if (expectedOwnerCreatedAt !== undefined && value.ownerCreatedAt !== expectedOwnerCreatedAt) return invalid('owner');
@@ -221,15 +231,19 @@ export const PLANET_ARRIVAL_ART = {
   impactDust: '/game/planet-arrival/v1/impact-dust.png',
 } as const;
 
-const PLANET_ARRIVAL_RUNTIME_ART = Object.fromEntries(
-  Object.entries(PLANET_ARRIVAL_ART).map(([key, source]) => [key, wolfCastleRuntimeAsset(source)]),
-) as Record<keyof typeof PLANET_ARRIVAL_ART, string>;
+const PLANET_ARRIVAL_RUNTIME_ART = {
+  ...Object.fromEntries(Object.entries(PLANET_ARRIVAL_ART).map(([key, source]) => [key, wolfCastleRuntimeAsset(source)])) as Record<keyof typeof PLANET_ARRIVAL_ART, string>,
+  ...ARRIVAL_COMPLETION_ART,
+  ...ARRIVAL_POD_ART,
+};
 
 export function planetArrivalAssets(state: PlanetArrivalState) {
   const destination = planetArrivalDestination(state.missionId);
   if (!destination || destination.body.id !== state.destinationId) return null;
   return {
     ...PLANET_ARRIVAL_RUNTIME_ART,
+    ...arrivalVfxSourcesForBiome(state.biomeId),
+    impactDust: arrivalImpactArtForBiome(state.biomeId).path,
     carrier: shipProfileAssetPath(state.personalShipId),
     planet: galaxyBodyVisualPath(destination.body),
     ground: backgroundPathForBiome(destination.mission.biome),

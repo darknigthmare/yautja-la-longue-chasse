@@ -1,0 +1,176 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-11-06",
+  "publishedCandidateBeforeCorrections": "5be40efdd6e1b7fae67d5dda7677209820fc9034",
+  "localImplementationCommit": "12e2e56cab03b466601607d965e7cc4f194c8d0f",
+  "scope": "Local qualification of corrections from the first remote CI pass. Counts overlap the earlier behavioral suite and must not be summed as unique tests. Historical assertions and native capture rejection remain enforced.",
+  "historicalContextCommit": "cebb5e52b029fc3dcfe79ea2d8bf04a351a3ee14",
+  "checks": [
+    {
+      "name": "homeworld-recovery-40",
+      "command": [
+        "node",
+        "--experimental-strip-types",
+        "--test",
+        "--test-concurrency=1",
+        "tests/homeworld-dressing-recovery-v113.test.mjs",
+        "tests/homeworld-dressing-planner-v113.test.mjs",
+        "tests/homeworld-geometry-recovery-v112.test.mjs",
+        "tests/homeworld-geometry-recovery-integration-v112.test.mjs",
+        "tests/homeworld-geometry-recovery-matrix-v112.test.mjs"
+      ],
+      "startedAt": "2026-11-06T15:16:32.371Z",
+      "completedAt": "2026-11-06T15:17:29.230Z",
+      "exitCode": 0,
+      "signal": null,
+      "logfile": "ci-homeworld-recovery-40.log",
+      "sha256": "f25ef80795db1919819cf2da2d34cbd51f2acf84a5343a26a8cab1b729f328d5"
+    },
+    {
+      "name": "historical-isolation-10",
+      "command": [
+        "node",
+        "--test",
+        "tests/historical-shared-inputs.test.mjs",
+        "tests/historical-git.test.mjs"
+      ],
+      "startedAt": "2026-11-06T15:16:32.373Z",
+      "completedAt": "2026-11-06T15:16:34.831Z",
+      "exitCode": 0,
+      "signal": null,
+      "logfile": "ci-historical-isolation-10.log",
+      "sha256": "733e0c02987ad8d7dee7c192f6279eb777d01bd66fdc3c51ab092a0d5c41efb1"
+    },
+    {
+      "name": "historical-audio-and-capsule-3",
+      "command": [
+        "node",
+        "--test",
+        "--test-name-pattern=historical audio|capsule keeps",
+        "tests/homeworld-excel-history-v112.test.mjs",
+        "tests/homeworld-v112-history-v113.test.mjs"
+      ],
+      "startedAt": "2026-11-06T15:16:32.375Z",
+      "completedAt": "2026-11-06T15:16:53.207Z",
+      "exitCode": 0,
+      "signal": null,
+      "logfile": "ci-historical-audio-and-capsule-3.log",
+      "sha256": "3853b1fe3f94c061f143035c818cbb936d4c3363727b2a2f04b420887e43dd46"
+    },
+    {
+      "name": "nested-original-v112-4",
+      "command": [
+        "node",
+        "--input-type=module",
+        "--eval",
+        "import {runHistoricalHomeworldTestsV113} from './scripts/historical-excel-context-homeworld-v113.mjs'; const result=await runHistoricalHomeworldTestsV113(['tests/homeworld-excel-history-v112.test.mjs']);console.log(result.output);"
+      ],
+      "startedAt": "2026-11-06T15:16:32.376Z",
+      "completedAt": "2026-11-06T15:17:15.932Z",
+      "exitCode": 0,
+      "signal": null,
+      "logfile": "ci-nested-original-v112-4.log",
+      "sha256": "25983b5653d1057a361ae2942ed7b3fd03cc7a7d68a81b7b556ae17e3d0a155e"
+    },
+    {
+      "name": "Cinematic source/runtime assets after complete hydration",
+      "passed": 53,
+      "exitCode": 0,
+      "logfile": "ci-cinematic-assets.log",
+      "sha256": "de82cfc657e7c64a97e162e682e06cba1c9ab1ca600e6293b5055bc900334bca"
+    },
+    {
+      "name": "Real pod helper wired into exploration and input VM contexts",
+      "passed": 20,
+      "exitCode": 0,
+      "logfile": "ci-hunt-vm.log",
+      "sha256": "db433aa56632a562bbf9d88530b9cb9c310f16a896b9289596f88960b402260a"
+    },
+    {
+      "name": "Homeworld armor, forearm registration and gauntlet regression",
+      "passed": 13,
+      "exitCode": 0,
+      "logfile": "ci-armor-rigs.log",
+      "sha256": "3222c4cc8bb90d20dfcbc961dfcb4d61f35ac6ea7b39ee21ca81837b200ae73a"
+    },
+    {
+      "name": "Native X11 freshness protocol with supplied diagnostic buffers",
+      "passed": 1,
+      "pythonProtocolCases": 3,
+      "exitCode": 0,
+      "logfile": "ci-x11-protocol.log",
+      "sha256": "fafa3090bd9ee443dae296e768fc99338c6b8d5645aedfc3bfe18644bb97b69e",
+      "scope": "Protocol tests only, not a live browser or X11 session."
+    }
+  ],
+  "runtimeLint": {
+    "scope": "Exact V94 runtime lint gate, 182 existing source files",
+    "maxWarnings": 0,
+    "exitCode": 0,
+    "logfile": "ci-runtime-lint.log",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "spatialCapture": {
+    "syntaxCheck": "passed",
+    "strictLint": "passed",
+    "nativeQualification": "pending on corrected published source",
+    "acceptedIntervalUnchanged": true,
+    "maximumAttempts": 3,
+    "originalAssertionCallsPreserved": 496,
+    "probeOptimization": "A stale corner rejects a probe round immediately. An admitted round and the single full copy still verify all four fresh markers."
+  },
+  "inputs": [
+    {
+      "path": ".github/workflows/wolf-castle-arrival.yml",
+      "sha256": "a3fdefc13dad7d75a06e9ebc22ffaf7e34e198e353774c5ea17c34f656b85adc"
+    },
+    {
+      "path": ".github/workflows/dev-travel.yml",
+      "sha256": "c3dcd29601e73886ef9d06c7080d8cac2ee5288f834c1dfb3d90ab30c7aa2d0c"
+    },
+    {
+      "path": "scripts/historical-excel-context-homeworld-v112.mjs",
+      "sha256": "d730903d9f6960632c99c8ffac52e38a94cd1517fdeb159ffe804fd86ef85b46"
+    },
+    {
+      "path": "scripts/historical-shared-inputs-homeworld-v113.mjs",
+      "sha256": "a45b88862a118b1e933266b65c0b5e7ac6f62b80272003c96bab8ee13aca3be2"
+    },
+    {
+      "path": "scripts/qa-planet-arrival-spatial.mjs",
+      "sha256": "d75b824e5a6faa86f72b07db52d4996760c932918ff900c030f4f0934482bbcc"
+    },
+    {
+      "path": "tests/homeworld-excel-history-v112.test.mjs",
+      "sha256": "b5206dbad0b6b262475e86f49ca7efae83a689d92d53fb44d011f7f587bcbadd"
+    },
+    {
+      "path": "tests/homeworld-v112-history-v113.test.mjs",
+      "sha256": "1b4139f1a11c7613289a28e3c8971eed04e5a90bdc0839db2e7dc23fed161d17"
+    },
+    {
+      "path": "tests/hunt-exploration-save-runtime.test.mjs",
+      "sha256": "18f809a9ded5ddb56842a55fd3dd293a175fbcd9e9410726340c7dea0e093707"
+    },
+    {
+      "path": "tests/hunt-input-runtime.test.mjs",
+      "sha256": "e3d40f89a686305b1b35fd7424018a642e370a341f9640db1c083fbc88fff3a8"
+    },
+    {
+      "path": "app/game/HomeworldModularHunter.tsx",
+      "sha256": "7a6d86c8e5cc3fc7efa9acf9046899a15e79837ca3b4bc0ed6b49c5a0b81c734"
+    },
+    {
+      "path": "scripts/qa-planet-arrival-x11.py",
+      "sha256": "93d7dc8628c44f8710bdf21accfd8401eaf5f60737dcb254f6979cf70d2aa285"
+    },
+    {
+      "path": "tests/planet-arrival-x11.test.mjs",
+      "sha256": "e97a6fb87e83f85b2ddf3098031d3a62203e3050391e29cac18454f9ef2a6975"
+    },
+    {
+      "path": "tests/test_planet_arrival_x11.py",
+      "sha256": "21599993de86094d2080e3e0a18487169bd0f990c5745d63f9feb5a1f47e6e1c"
+    }
+  ]
+}

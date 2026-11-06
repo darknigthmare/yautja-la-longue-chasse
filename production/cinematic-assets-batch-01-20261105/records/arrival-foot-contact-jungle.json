@@ -1,0 +1,56 @@
+{
+  "id": "arrival-foot-contact-jungle",
+  "family": "foot-contact",
+  "biome": "jungle",
+  "file": "public/game/cinematics/batch-01-20261105/arrival-foot-contact-jungle.png",
+  "generatedSource": "/workspace/scratch/62884fa4f584/generated_images/exec-fd230e43-7884-43fb-aca2-670c53f1d190.png",
+  "prompt": "Use case: stylized-concept.\nAsset type: ONE individual 2D ground-contact VFX sprite for the Yautja The Long Hunt cinematic.\nInput image 1 is a rendering/material reference only: the approved jungle impact-front pilot. Input image 2 is the real in-game cinematic, used only to match its realistic painted 2.5D material treatment and restrained values. Do not reproduce either scene or the large impact effect.\nPrimary request: create a NEW very small footstep contact effect, representing displaced material alone. This is a single cohesive micro-effect for one step, not a landing explosion or a wide impact-front plume.\nAsset ID: arrival-foot-contact-jungle.\nSubject and unique material: A tiny, low, asymmetrical footstep puff of damp dark jungle loam: two short outward jets of irregular soil crumbs, one curled olive leaf scrap and one torn brown leaf tip, with a restrained wisp of earthy dust. Damp granular organic matter, not a dry sand cloud.\nCamera: near-ground side view with only a slight view of the top of the particles; no ground plane is drawn. Origin is at normalized x=0.50, y=0.78 of the full image. Material emerges close to that point and rises in a low, irregular fan, largely confined to x=0.27..0.73 and y=0.52..0.80. All visible parts have ample empty transparent margins. Keep most of the square empty.\nStyle: semi-realistic hand-painted 2.5D game art, physical material detail, neutral upper-left lighting, coherent with the references. The tiny silhouette must remain legible when composited at a few dozen pixels wide.\nOutput: ONE 1024x1024 square RGBA PNG with TRUE TRANSPARENT BACKGROUND. Preserve real soft partial alpha where the material thins. No rectangular background, baked checkerboard or opaque black/white field. No visible pixels at the canvas borders.\nExclude: feet, footprints, shoes, body parts, characters, creatures, ship, capsule, ground surface, flat soil patch, platform, contact disc, cast shadow, environment, horizon, typography, labels, numbering, frame, grid, atlas, sprite sheet, duplicate examples, watermark. One material-only micro-spray, not an entire scene.",
+  "referenceImages": [
+    "/workspace/scratch/62884fa4f584/cinematic-assets-batch-01-20261105/public/game/cinematics/batch-01-20261105/arrival-impact-front-jungle.png",
+    "/workspace/scratch/62884fa4f584/qa-recovery/spatial-a7f830c/desktop-landing-impact.png"
+  ],
+  "generationMode": "builtin-imagegen-reference",
+  "intendedAnchor": {
+    "name": "hunter-foot-contact",
+    "normalized": [
+      0.5,
+      0.78
+    ],
+    "basis": "requested composition anchor; runtime registration remains pending"
+  },
+  "generated": true,
+  "integrated": false,
+  "testedInEngine": false,
+  "artisticHumanApproval": false,
+  "technicalQA": {
+    "format": "PNG",
+    "mode": "RGBA",
+    "width": 1254,
+    "height": 1254,
+    "bytes": 258913,
+    "sha256": "896f18b64b0f76fa018a58169b770328300f4a982a699c4516ba25073012814b",
+    "gitBlobSha": "df92894993e99ca77856ebb7786811304b3b94d5",
+    "visiblePixelsAbove16": 61062,
+    "fullyTransparentPixels": 1481541,
+    "transparentFraction": 0.9421468525598468,
+    "boundsAbove16": [
+      295,
+      767,
+      943,
+      1031
+    ],
+    "edgePixelsAbove16": 0,
+    "highSaturationDiagnostic": {
+      "visible": 0,
+      "opaque": 0,
+      "lowAlpha": 1259
+    },
+    "passed": true
+  },
+  "visualReview": {
+    "status": "reviewed-by-agent",
+    "basis": "Built-in generated preview inspected; source RGBA pixels and alpha checked independently.",
+    "notes": "Single low asymmetric soil-and-leaf micro-spray. No foot, character, terrain plane or cropped particle. Not an in-engine or human artistic approval."
+  },
+  "generatedAt": "2026-11-05T13:09:59.958318+00:00"
+}

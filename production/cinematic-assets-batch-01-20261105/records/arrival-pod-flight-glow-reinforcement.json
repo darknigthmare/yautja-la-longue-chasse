@@ -1,0 +1,113 @@
+{
+  "id": "arrival-pod-flight-glow-reinforcement",
+  "family": "pod-glow-reinforcement",
+  "biome": null,
+  "referenceImages": [
+    "/workspace/scratch/62884fa4f584/cinematic-assets-batch-01-20261105/work/references/pod-flight.webp"
+  ],
+  "sourceReference": {
+    "repository": "darknigthmare/yautja-la-longue-chasse",
+    "commit": "a7f830c05fd4b5801fd379ca7e7313774af2659a",
+    "path": "public/game/planet-arrival/v1/pod-flight.webp",
+    "sha256": "4eb8c702a91cdf05299c737e20184550fa7268c008c78222dbefad8a9b3b2a68"
+  },
+  "intendedAnchor": {
+    "name": "source-full-canvas",
+    "normalized": [
+      0.5,
+      0.5
+    ],
+    "basis": "Overlay is placed at (0,0) in the full original canvas with identical 1536×1024 dimensions. Three additional emission cores are registered to the source light centres.",
+    "emissionCentersPx": [
+      [
+        197.37,
+        484.84
+      ],
+      [
+        166.36,
+        516.3
+      ],
+      [
+        197.37,
+        544.25
+      ]
+    ]
+  },
+  "expectedDimensions": [
+    1536,
+    1024
+  ],
+  "prompt": "Use case: precise-object-edit, isolated additional emission overlay for an existing game sprite.\nAsset ID: arrival-pod-flight-glow-reinforcement.\nThe supplied reference is a 1536 by 1024 transparent canvas of a horizontal metallic capsule. Create ONLY a very restrained warm amber-orange LIGHT REINFORCEMENT layer registered exactly to that full canvas. The capsule itself is NOT part of the output.\nKEEP THE FULL LANDSCAPE CANVAS 1536×1024 EXACTLY, no crop, no recentering, no scaling. There are precisely THREE small emission cores at source pixel centres (197.37,484.84), (166.36,516.30), (197.37,544.25), measured from the top-left of the full image. Their approximate bright core radii are 9,7,9 pixels. Place the new glows exactly over those reference lamps. This tiny triangular group sits at about 12% across the image and 50% down it, leaving the right 80% entirely empty transparent.\nRender only three softly feathered amber-orange halos and modest yellow-amber centres, realistic optical bloom, no hard rings and no metal sockets. The combined halo stays within x=108 to255 and y=434 to600. Outside this small region all pixels must be fully transparent. The glow must fade smoothly to zero well before all image edges. Keep the three cores clearly distinct, with subtle overlapping warm light; do not merge into a single giant glow or add lens flares, rays or smoke.\nThis is an ADDITIVE ARTISTIC REINFORCEMENT, not an extraction of the existing glow and not a dark-body replacement. The original capsule and original baked illumination remain untouched in the game. Do not depict any hull, wing, surface reflection, nozzle, streak, exhaust, spacecraft silhouette, background, text, ground, grid, checkerboard, black rectangle, white rectangle or watermark.\nOutput ONE individual RGBA PNG with TRUE TRANSPARENT BACKGROUND. Full empty canvas around the small three-light cluster is essential; never zoom to the lights. Preserve the input orientation, absolute placement and dimensions.",
+  "file": "public/game/cinematics/batch-01-20261105/arrival-pod-flight-glow-reinforcement.png",
+  "generatedSource": "/workspace/scratch/62884fa4f584/generated_images/exec-af701d91-933b-469a-97f1-8809a6b47119.png",
+  "generationMode": "builtin-imagegen-reference",
+  "transparentBackgroundRequested": true,
+  "generated": true,
+  "integrated": false,
+  "testedInEngine": false,
+  "artisticHumanApproval": false,
+  "reinforcementOnly": true,
+  "limitation": "Additional emission overlay only. Original baked glow is retained. Exact per-pixel extraction and in-engine registration are not claimed.",
+  "technicalQA": {
+    "format": "PNG",
+    "mode": "RGBA",
+    "dimensions": [
+      1536,
+      1024
+    ],
+    "bytes": 1293452,
+    "sha256": "47814836cc10b5343914d28dd5a4342b7100da4c27ed14d0fbd13627cc7f71b4",
+    "fullyTransparentFraction": 0.09943580627441406,
+    "visibleAlphaOver16Pixels": 20410,
+    "borderAlphaOver16Pixels": 0,
+    "visibleBoundsAlphaOver16": [
+      113,
+      432,
+      269,
+      605
+    ],
+    "visiblePaddingFraction": {
+      "left": 0.07356770833333333,
+      "right": 0.82421875,
+      "top": 0.421875,
+      "bottom": 0.408203125
+    },
+    "passed": true,
+    "emissionRegistrationMeasurements": [
+      {
+        "sourceCenterPx": [
+          197.37,
+          484.84
+        ],
+        "generatedCenterPx": [
+          196.31827111984282,
+          485.1944990176817
+        ],
+        "distancePx": 1.109866294151692
+      },
+      {
+        "sourceCenterPx": [
+          166.36,
+          516.3
+        ],
+        "generatedCenterPx": [
+          165.77235772357724,
+          515.5365853658536
+        ],
+        "distancePx": 0.9633926243583707
+      },
+      {
+        "sourceCenterPx": [
+          197.37,
+          544.25
+        ],
+        "generatedCenterPx": [
+          195.8861209964413,
+          544.6459074733096
+        ],
+        "distancePx": 1.53578632127807
+      }
+    ],
+    "emissionRegistrationMethod": "Centroid of R>240,G>195,alpha>200 within a40x40ROI around each measured source core. Source centres use R>240,G>195,alpha>240. This measures a visual core region, not an exact extracted mask."
+  }
+}

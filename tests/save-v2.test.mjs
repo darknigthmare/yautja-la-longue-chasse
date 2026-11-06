@@ -35,10 +35,18 @@ await build({
   },
 });
 
-const { SAVE_VERSION, applyMissionResult, defaultSave, normalizeSave } =
+const { SAVE_VERSION, SAVE_STORAGE_KEY, applyMissionResult, defaultSave, normalizeSave,
+  writeSaveWithStatus, loadSaveWithStatus, exportSave, parseSaveImport } =
   await import(pathToFileURL(join(outputDirectory, "save.mjs")).href);
 
 let apexClaimSequence = 0;
+// Current save migration gives older authored presets neutral optional paint
+// channels. The full equipment identity below must still remain exact.
+const neutralChromatics = Object.freeze({
+  skinHex: null, dreadHex: null, outfitHex: null, armorHex: null, maskHex: null, maskOriginId: null,
+  maskDecalId: null, faceDecalId: null, bodyDecalId: null, armorDecalId: null,
+  skinMaterialId: null, dreadMaterialId: null, outfitMaterialId: null, armorMaterialId: null, maskMaterialId: null,
+});
 
 test("V62 canonical and renamed original mask selections roundtrip without losing save identity", () => {
   for (const id of [...REFERENCE_BIOMASKS_V62, ...PRESERVED_BIOMASKS_V62].map(mask => mask.id).concat("elder")) {
@@ -136,6 +144,7 @@ test("v1 saves migrate to the current schema without losing legacy trophy data",
     armorTintId: "bronze",
     trophyAdornmentId: "skull-spine",
     laserColorId: "crimson",
+    chromaticsV113: neutralChromatics,
   });
   assert.deepEqual(
     migrated.settings.controlBindings,
@@ -159,7 +168,7 @@ test("v1 saves migrate to the current schema without losing legacy trophy data",
 
 test("keyboard bindings persist custom keys and repair malformed profiles", () => {
   const source = defaultSave("2026-01-01T00:00:00.000Z");
-  assert.equal(Object.keys(source.settings.controlBindings).length, 73);
+  assert.equal(Object.keys(source.settings.controlBindings).length, 74);
   assert.deepEqual(source.settings.controlBindings["hunt.moveLeft"], [
     "KeyQ",
     "ArrowLeft",
@@ -191,6 +200,30 @@ test("keyboard bindings persist custom keys and repair malformed profiles", () =
     normalizeSave(conflicting).settings.controlBindings,
     defaultSave("2026-01-01T00:00:00.000Z").settings.controlBindings,
   );
+});
+
+test("campaign load and portable import retain old custom X controls when the pod action is added", () => {
+  const source = defaultSave("2026-01-01T00:00:00.000Z");
+  source.settings.controlBindings = { ...source.settings.controlBindings,
+    "hunt.toggleCloak": ["KeyX"], "hunt.interact": ["KeyF"] };
+  delete source.settings.controlBindings["hunt.podSelfDestruct"];
+  const values = new Map([[SAVE_STORAGE_KEY, JSON.stringify(source)]]);
+  const storage = { getItem: key => values.get(key) ?? null,
+    setItem: (key, value) => values.set(key, value), removeItem: key => values.delete(key) };
+  const reloaded = loadSaveWithStatus(storage, SAVE_STORAGE_KEY);
+  assert.equal(reloaded.loaded, true, reloaded.failure);
+  for (const [action, codes] of Object.entries(source.settings.controlBindings)) {
+    assert.deepEqual(reloaded.save.settings.controlBindings[action], codes, action);
+  }
+  const podKeys = reloaded.save.settings.controlBindings["hunt.podSelfDestruct"];
+  assert.equal(podKeys.length, 1);
+  assert.notEqual(podKeys[0], "KeyX");
+  assert.equal(writeSaveWithStatus(reloaded.save, storage, SAVE_STORAGE_KEY).persisted, true);
+  const reopened = loadSaveWithStatus(storage, SAVE_STORAGE_KEY);
+  assert.deepEqual(reopened.save.settings.controlBindings, reloaded.save.settings.controlBindings);
+  const imported = parseSaveImport(exportSave(reopened.save));
+  assert.ok(imported.save, imported.failure);
+  assert.deepEqual(imported.save.settings.controlBindings, reloaded.save.settings.controlBindings);
 });
 
 test("bestiary discoveries normalize to unique authored V7 and V8 roster ids", () => {
@@ -364,6 +397,7 @@ test("appearance normalization accepts an unmasked hunter and repairs invalid id
     armorTintId: "bronze",
     trophyAdornmentId: "skull-spine",
     laserColorId: "crimson",
+    chromaticsV113: neutralChromatics,
   });
 });
 
@@ -374,7 +408,7 @@ test("every production hunter preset survives save normalization", () => {
 
     assert.deepEqual(
       normalizeSave(source).appearance,
-      appearanceForPreset(preset.id),
+      { ...appearanceForPreset(preset.id), chromaticsV113: neutralChromatics },
       `${preset.id}: save normalization must preserve the selected plate`,
     );
   }
@@ -460,7 +494,7 @@ test("legacy v3 legendary saves may omit only the former optional laser color", 
 
   assert.deepEqual(
     normalizeSave(source).appearance,
-    appearanceForPreset("wolf"),
+    { ...appearanceForPreset("wolf"), chromaticsV113: neutralChromatics },
   );
 });
 
@@ -492,7 +526,7 @@ test("every legendary playable kit survives a normalized save round-trip", () =>
     const normalized = normalizeSave(source);
     assert.deepEqual(
       normalized.appearance,
-      appearanceForPreset(preset.id),
+      { ...appearanceForPreset(preset.id), chromaticsV113: neutralChromatics },
       `${preset.id}: exact appearance must survive`,
     );
     assert.deepEqual(

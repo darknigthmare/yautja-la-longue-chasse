@@ -1,0 +1,624 @@
+{
+  "schema": "cinematic-expansion-runtime-references/v1",
+  "createdAt": "2026-11-06T04:11:29.483413+00:00",
+  "sourceCommit": "3ef6d77e338bbec8e904f09ad72f75b4d38bbed2",
+  "sourceRootTree": "4abaf0ab5b79e0c22641c74cb55f62bac96bda67",
+  "sourceShipsTree": "3cf712cb78a469d8f11591ef281dd82b06fb6e63",
+  "scope": "Exact runtime V14 profile/top references for six previously audited hulls. This prepares 46 consumable future views; no runtime integration or image generation is performed by this manifest.",
+  "repositoryFilesChanged": false,
+  "remoteWrites": false,
+  "referenceCount": 12,
+  "newlyMaterialized": 10,
+  "existingReverified": 2,
+  "totalBytes": 1546610,
+  "sourceMatrix": {
+    "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-runtime-sprite-audit-3ef6d77e/six-hull-consumption-matrix.json",
+    "sha256": "2be92b68113233b7e0522c19441c48d22f4d95767c3217eb732d398483fc4439"
+  },
+  "sourceGitInventory": {
+    "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-inventory-3ef6d77e/remote-inventories.json",
+    "sha256": "0f0c31ff0e48e127602ab9fd0a6a5d2c16afa2db4d4030e31ae3e658411e9a7e"
+  },
+  "ships": [
+    {
+      "shipId": "avp-predator-mothership",
+      "boundedConsumableViewCount": 6,
+      "angles": [
+        "forward-quarter",
+        "forward-quarter-shallow",
+        "bank-dorsal-shallow",
+        "bank-dorsal",
+        "rear-quarter-shallow",
+        "rear-quarter"
+      ],
+      "surfaceInsertionAllowed": false
+    },
+    {
+      "shipId": "avpr-scout-ship",
+      "boundedConsumableViewCount": 8,
+      "angles": [
+        "forward-quarter",
+        "forward-quarter-shallow",
+        "bank-dorsal-shallow",
+        "bank-dorsal",
+        "bank-ventral-shallow",
+        "bank-ventral",
+        "rear-quarter-shallow",
+        "rear-quarter"
+      ],
+      "surfaceInsertionAllowed": true
+    },
+    {
+      "shipId": "wolf-ship",
+      "boundedConsumableViewCount": 8,
+      "angles": [
+        "forward-quarter",
+        "forward-quarter-shallow",
+        "bank-dorsal-shallow",
+        "bank-dorsal",
+        "bank-ventral-shallow",
+        "bank-ventral",
+        "rear-quarter-shallow",
+        "rear-quarter"
+      ],
+      "surfaceInsertionAllowed": true
+    },
+    {
+      "shipId": "fugitive-spaceship",
+      "boundedConsumableViewCount": 8,
+      "angles": [
+        "forward-quarter",
+        "forward-quarter-shallow",
+        "bank-dorsal-shallow",
+        "bank-dorsal",
+        "bank-ventral-shallow",
+        "bank-ventral",
+        "rear-quarter-shallow",
+        "rear-quarter"
+      ],
+      "surfaceInsertionAllowed": true
+    },
+    {
+      "shipId": "upgrade-spaceship",
+      "boundedConsumableViewCount": 8,
+      "angles": [
+        "forward-quarter",
+        "forward-quarter-shallow",
+        "bank-dorsal-shallow",
+        "bank-dorsal",
+        "bank-ventral-shallow",
+        "bank-ventral",
+        "rear-quarter-shallow",
+        "rear-quarter"
+      ],
+      "surfaceInsertionAllowed": true
+    },
+    {
+      "shipId": "feral-spaceship",
+      "boundedConsumableViewCount": 8,
+      "angles": [
+        "forward-quarter",
+        "forward-quarter-shallow",
+        "bank-dorsal-shallow",
+        "bank-dorsal",
+        "bank-ventral-shallow",
+        "bank-ventral",
+        "rear-quarter-shallow",
+        "rear-quarter"
+      ],
+      "surfaceInsertionAllowed": true
+    }
+  ],
+  "references": [
+    {
+      "shipId": "avp-predator-mothership",
+      "view": "profile",
+      "file": "avp-predator-mothership-profile.webp",
+      "localPath": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/avp-predator-mothership-profile.webp",
+      "sourceRepository": "darknigthmare/yautja-la-longue-chasse",
+      "sourceCommit": "3ef6d77e338bbec8e904f09ad72f75b4d38bbed2",
+      "sourcePath": "public/game/ships/v14/avp-predator-mothership.webp",
+      "sourceUrl": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/3ef6d77e338bbec8e904f09ad72f75b4d38bbed2/public/game/ships/v14/avp-predator-mothership.webp",
+      "bytes": 89754,
+      "sha256": "7bd67240d2ef6f4df2717219420aeea9083a1a5395e994c98cb0bcc4c824c907",
+      "gitBlob": "73f12951bcf76c1403cf333cadcf04dff7e3e55d",
+      "matchesPinnedGitTree": true,
+      "matchesV14ManifestSha256": true,
+      "image": {
+        "format": "WEBP",
+        "width": 1774,
+        "height": 887,
+        "mode": "RGBA",
+        "alphaExtrema": [
+          0,
+          255
+        ],
+        "alphaBBox": [
+          62,
+          221,
+          1694,
+          722
+        ]
+      },
+      "materialization": "GitHub fetch_file at exact commit, base64 decoded without pixel modification",
+      "sourceMasterMetadata": {
+        "promptId": "v14-profile-avp-predator-mothership",
+        "masterPath": "art-source/v14/ships/avp-predator-mothership-profile-chroma-master.png",
+        "runtimePath": "/game/ships/v14/avp-predator-mothership.webp",
+        "width": 1774,
+        "height": 887,
+        "masterSha256": "e55c221c7506d780cb00fc402b60e814eb9c4c15aaa19859b4d8d1a6362df2cb",
+        "runtimeSha256": "7bd67240d2ef6f4df2717219420aeea9083a1a5395e994c98cb0bcc4c824c907"
+      },
+      "boundedConsumableViewCount": 6
+    },
+    {
+      "shipId": "avp-predator-mothership",
+      "view": "top",
+      "file": "avp-predator-mothership-top.webp",
+      "localPath": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/avp-predator-mothership-top.webp",
+      "sourceRepository": "darknigthmare/yautja-la-longue-chasse",
+      "sourceCommit": "3ef6d77e338bbec8e904f09ad72f75b4d38bbed2",
+      "sourcePath": "public/game/ships/v14/avp-predator-mothership-top.webp",
+      "sourceUrl": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/3ef6d77e338bbec8e904f09ad72f75b4d38bbed2/public/game/ships/v14/avp-predator-mothership-top.webp",
+      "bytes": 140552,
+      "sha256": "f1d33bedb750f6984e900171b68cf3dd2b9663f723a5e220af1dca9b15f05ca1",
+      "gitBlob": "63656848b8bc94ff00539b5da3eb1bb55f778629",
+      "matchesPinnedGitTree": true,
+      "matchesV14ManifestSha256": true,
+      "image": {
+        "format": "WEBP",
+        "width": 1774,
+        "height": 887,
+        "mode": "RGBA",
+        "alphaExtrema": [
+          0,
+          255
+        ],
+        "alphaBBox": [
+          78,
+          100,
+          1694,
+          787
+        ]
+      },
+      "materialization": "GitHub fetch_file at exact commit, base64 decoded without pixel modification",
+      "sourceMasterMetadata": {
+        "promptId": "v14-top-avp-predator-mothership",
+        "masterPath": "art-source/v14/ships/avp-predator-mothership-top-chroma-master.png",
+        "runtimePath": "/game/ships/v14/avp-predator-mothership-top.webp",
+        "width": 1774,
+        "height": 887,
+        "masterSha256": "66fc3fa068191e3dc3813d3d56d21a5cebde8d5130a9fe9cc812e25abfe2e02b",
+        "runtimeSha256": "f1d33bedb750f6984e900171b68cf3dd2b9663f723a5e220af1dca9b15f05ca1"
+      },
+      "boundedConsumableViewCount": 6
+    },
+    {
+      "shipId": "avpr-scout-ship",
+      "view": "profile",
+      "file": "avpr-scout-ship-profile.webp",
+      "localPath": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/avpr-scout-ship-profile.webp",
+      "sourceRepository": "darknigthmare/yautja-la-longue-chasse",
+      "sourceCommit": "3ef6d77e338bbec8e904f09ad72f75b4d38bbed2",
+      "sourcePath": "public/game/ships/v14/avpr-scout-ship.webp",
+      "sourceUrl": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/3ef6d77e338bbec8e904f09ad72f75b4d38bbed2/public/game/ships/v14/avpr-scout-ship.webp",
+      "bytes": 79740,
+      "sha256": "b787eb8f6a8a0eb1e5d075bce7503bc1f7e54f452e490d82959e93aa1a38c306",
+      "gitBlob": "6f28cc3833daf94dd76bb30813e6fab4f779c283",
+      "matchesPinnedGitTree": true,
+      "matchesV14ManifestSha256": true,
+      "image": {
+        "format": "WEBP",
+        "width": 1536,
+        "height": 1024,
+        "mode": "RGBA",
+        "alphaExtrema": [
+          0,
+          255
+        ],
+        "alphaBBox": [
+          128,
+          306,
+          1413,
+          705
+        ]
+      },
+      "materialization": "GitHub fetch_file at exact commit, base64 decoded without pixel modification",
+      "sourceMasterMetadata": {
+        "promptId": "v14-profile-avpr-scout-ship",
+        "masterPath": "art-source/v14/ships/avpr-scout-ship-profile-chroma-master.png",
+        "runtimePath": "/game/ships/v14/avpr-scout-ship.webp",
+        "width": 1536,
+        "height": 1024,
+        "masterSha256": "6aaf6e6a314c257888b9a921e3fc51e8648213a928a96385b7f7fd803924e86c",
+        "runtimeSha256": "b787eb8f6a8a0eb1e5d075bce7503bc1f7e54f452e490d82959e93aa1a38c306"
+      },
+      "boundedConsumableViewCount": 8
+    },
+    {
+      "shipId": "avpr-scout-ship",
+      "view": "top",
+      "file": "avpr-scout-ship-top.webp",
+      "localPath": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/avpr-scout-ship-top.webp",
+      "sourceRepository": "darknigthmare/yautja-la-longue-chasse",
+      "sourceCommit": "3ef6d77e338bbec8e904f09ad72f75b4d38bbed2",
+      "sourcePath": "public/game/ships/v14/avpr-scout-ship-top.webp",
+      "sourceUrl": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/3ef6d77e338bbec8e904f09ad72f75b4d38bbed2/public/game/ships/v14/avpr-scout-ship-top.webp",
+      "bytes": 119774,
+      "sha256": "346d944556b7f992bec2259fdb86f122c672d7456d509cb22605fa304c98676a",
+      "gitBlob": "f1d17e309a3a37f9dbb96021565b1deac1bbd523",
+      "matchesPinnedGitTree": true,
+      "matchesV14ManifestSha256": true,
+      "image": {
+        "format": "WEBP",
+        "width": 1536,
+        "height": 1024,
+        "mode": "RGBA",
+        "alphaExtrema": [
+          0,
+          255
+        ],
+        "alphaBBox": [
+          110,
+          279,
+          1406,
+          730
+        ]
+      },
+      "materialization": "GitHub fetch_file at exact commit, base64 decoded without pixel modification",
+      "sourceMasterMetadata": {
+        "promptId": "v14-top-avpr-scout-ship",
+        "masterPath": "art-source/v14/ships/avpr-scout-ship-top-chroma-master.png",
+        "runtimePath": "/game/ships/v14/avpr-scout-ship-top.webp",
+        "width": 1536,
+        "height": 1024,
+        "masterSha256": "397adacd9e94c57c54765b969289ca1e3ad95a009324220465cb02a53ae4e539",
+        "runtimeSha256": "346d944556b7f992bec2259fdb86f122c672d7456d509cb22605fa304c98676a"
+      },
+      "boundedConsumableViewCount": 8
+    },
+    {
+      "shipId": "wolf-ship",
+      "view": "profile",
+      "file": "wolf-profile.webp",
+      "localPath": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/wolf-profile.webp",
+      "sourceRepository": "darknigthmare/yautja-la-longue-chasse",
+      "sourceCommit": "3ef6d77e338bbec8e904f09ad72f75b4d38bbed2",
+      "sourcePath": "public/game/ships/v14/wolf-ship.webp",
+      "sourceUrl": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/3ef6d77e338bbec8e904f09ad72f75b4d38bbed2/public/game/ships/v14/wolf-ship.webp",
+      "bytes": 161544,
+      "sha256": "8697aff1379201f33aba393871a24780098dcb8f2268424c56912fac9470eed8",
+      "gitBlob": "8de077e849f830c063f6091bcbd7cd92d48a79e0",
+      "matchesPinnedGitTree": true,
+      "matchesV14ManifestSha256": true,
+      "image": {
+        "format": "WEBP",
+        "width": 1761,
+        "height": 893,
+        "mode": "RGBA",
+        "alphaExtrema": [
+          0,
+          255
+        ],
+        "alphaBBox": [
+          69,
+          154,
+          1680,
+          738
+        ]
+      },
+      "materialization": "existing Wolf reference independently reverified",
+      "sourceMasterMetadata": {
+        "promptId": "v14-profile-wolf-ship",
+        "masterPath": "art-source/v14/ships/wolf-ship-profile-chroma-master.png",
+        "runtimePath": "/game/ships/v14/wolf-ship.webp",
+        "width": 1761,
+        "height": 893,
+        "masterSha256": "2166368dabbc9cec6f27b906cc774ed01ffc57e6469e864e6b1315c5852f7a3a",
+        "runtimeSha256": "8697aff1379201f33aba393871a24780098dcb8f2268424c56912fac9470eed8"
+      },
+      "boundedConsumableViewCount": 8
+    },
+    {
+      "shipId": "wolf-ship",
+      "view": "top",
+      "file": "wolf-top.webp",
+      "localPath": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/wolf-top.webp",
+      "sourceRepository": "darknigthmare/yautja-la-longue-chasse",
+      "sourceCommit": "3ef6d77e338bbec8e904f09ad72f75b4d38bbed2",
+      "sourcePath": "public/game/ships/v14/wolf-ship-top.webp",
+      "sourceUrl": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/3ef6d77e338bbec8e904f09ad72f75b4d38bbed2/public/game/ships/v14/wolf-ship-top.webp",
+      "bytes": 208190,
+      "sha256": "5c6b5866fc5fbad1f539b6006f19f9a78621660c9efd51afc3c74e4beb0acc72",
+      "gitBlob": "33d4888721f3dcd30109a622ee9613be1ff9455a",
+      "matchesPinnedGitTree": true,
+      "matchesV14ManifestSha256": true,
+      "image": {
+        "format": "WEBP",
+        "width": 1757,
+        "height": 895,
+        "mode": "RGBA",
+        "alphaExtrema": [
+          0,
+          255
+        ],
+        "alphaBBox": [
+          62,
+          150,
+          1688,
+          729
+        ]
+      },
+      "materialization": "existing Wolf reference independently reverified",
+      "sourceMasterMetadata": {
+        "promptId": "v14-top-wolf-ship",
+        "masterPath": "art-source/v14/ships/wolf-ship-top-chroma-master.png",
+        "runtimePath": "/game/ships/v14/wolf-ship-top.webp",
+        "width": 1757,
+        "height": 895,
+        "masterSha256": "cb39ebb24c7c3292d4de458c60cbd9702c486be2f6450b13b7817532fa139ec9",
+        "runtimeSha256": "5c6b5866fc5fbad1f539b6006f19f9a78621660c9efd51afc3c74e4beb0acc72"
+      },
+      "boundedConsumableViewCount": 8
+    },
+    {
+      "shipId": "fugitive-spaceship",
+      "view": "profile",
+      "file": "fugitive-spaceship-profile.webp",
+      "localPath": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/fugitive-spaceship-profile.webp",
+      "sourceRepository": "darknigthmare/yautja-la-longue-chasse",
+      "sourceCommit": "3ef6d77e338bbec8e904f09ad72f75b4d38bbed2",
+      "sourcePath": "public/game/ships/v14/fugitive-spaceship.webp",
+      "sourceUrl": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/3ef6d77e338bbec8e904f09ad72f75b4d38bbed2/public/game/ships/v14/fugitive-spaceship.webp",
+      "bytes": 104748,
+      "sha256": "643ae874e41a68f130e55aa472bc473dc21b4f7216357dcb87d320c7e88a6bc0",
+      "gitBlob": "dd821f48d9cd40fbb4916432b42894fe9cfd8b00",
+      "matchesPinnedGitTree": true,
+      "matchesV14ManifestSha256": true,
+      "image": {
+        "format": "WEBP",
+        "width": 1693,
+        "height": 929,
+        "mode": "RGBA",
+        "alphaExtrema": [
+          0,
+          255
+        ],
+        "alphaBBox": [
+          90,
+          190,
+          1548,
+          689
+        ]
+      },
+      "materialization": "GitHub fetch_file at exact commit, base64 decoded without pixel modification",
+      "sourceMasterMetadata": {
+        "promptId": "v14-profile-fugitive-spaceship",
+        "masterPath": "art-source/v14/ships/fugitive-spaceship-profile-chroma-master.png",
+        "runtimePath": "/game/ships/v14/fugitive-spaceship.webp",
+        "width": 1693,
+        "height": 929,
+        "masterSha256": "b69e15a8663e6ae04a5cd67eb04d689f8908cfa142851b7e23662f7ce8497a7e",
+        "runtimeSha256": "643ae874e41a68f130e55aa472bc473dc21b4f7216357dcb87d320c7e88a6bc0"
+      },
+      "boundedConsumableViewCount": 8
+    },
+    {
+      "shipId": "fugitive-spaceship",
+      "view": "top",
+      "file": "fugitive-spaceship-top.webp",
+      "localPath": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/fugitive-spaceship-top.webp",
+      "sourceRepository": "darknigthmare/yautja-la-longue-chasse",
+      "sourceCommit": "3ef6d77e338bbec8e904f09ad72f75b4d38bbed2",
+      "sourcePath": "public/game/ships/v14/fugitive-spaceship-top.webp",
+      "sourceUrl": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/3ef6d77e338bbec8e904f09ad72f75b4d38bbed2/public/game/ships/v14/fugitive-spaceship-top.webp",
+      "bytes": 160134,
+      "sha256": "8f719e2cf6d31ba6bf74913c48e9adfc83754432ff7e37a0f70832bcf4891f77",
+      "gitBlob": "9316d48252157119f5bdaa50db5fde93379b4bb6",
+      "matchesPinnedGitTree": true,
+      "matchesV14ManifestSha256": true,
+      "image": {
+        "format": "WEBP",
+        "width": 1692,
+        "height": 930,
+        "mode": "RGBA",
+        "alphaExtrema": [
+          0,
+          255
+        ],
+        "alphaBBox": [
+          142,
+          115,
+          1549,
+          786
+        ]
+      },
+      "materialization": "GitHub fetch_file at exact commit, base64 decoded without pixel modification",
+      "sourceMasterMetadata": {
+        "promptId": "v14-top-fugitive-spaceship",
+        "masterPath": "art-source/v14/ships/fugitive-spaceship-top-chroma-master.png",
+        "runtimePath": "/game/ships/v14/fugitive-spaceship-top.webp",
+        "width": 1692,
+        "height": 930,
+        "masterSha256": "8e34a6f0a536a9e292c369107586cc6f310991e3b9f4692a0ea6879502ffff3a",
+        "runtimeSha256": "8f719e2cf6d31ba6bf74913c48e9adfc83754432ff7e37a0f70832bcf4891f77"
+      },
+      "boundedConsumableViewCount": 8
+    },
+    {
+      "shipId": "upgrade-spaceship",
+      "view": "profile",
+      "file": "upgrade-spaceship-profile.webp",
+      "localPath": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/upgrade-spaceship-profile.webp",
+      "sourceRepository": "darknigthmare/yautja-la-longue-chasse",
+      "sourceCommit": "3ef6d77e338bbec8e904f09ad72f75b4d38bbed2",
+      "sourcePath": "public/game/ships/v14/upgrade-spaceship.webp",
+      "sourceUrl": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/3ef6d77e338bbec8e904f09ad72f75b4d38bbed2/public/game/ships/v14/upgrade-spaceship.webp",
+      "bytes": 94314,
+      "sha256": "6e8c05489366124e93b0fe6ab18450d44de9d2ac1e9943640ebe3dfbc37702f3",
+      "gitBlob": "2b51a252ccc8abb0633342f11d7861551cfb4229",
+      "matchesPinnedGitTree": true,
+      "matchesV14ManifestSha256": true,
+      "image": {
+        "format": "WEBP",
+        "width": 1672,
+        "height": 941,
+        "mode": "RGBA",
+        "alphaExtrema": [
+          0,
+          255
+        ],
+        "alphaBBox": [
+          90,
+          181,
+          1614,
+          701
+        ]
+      },
+      "materialization": "GitHub fetch_file at exact commit, base64 decoded without pixel modification",
+      "sourceMasterMetadata": {
+        "promptId": "v14-profile-upgrade-spaceship",
+        "masterPath": "art-source/v14/ships/upgrade-spaceship-profile-chroma-master.png",
+        "runtimePath": "/game/ships/v14/upgrade-spaceship.webp",
+        "width": 1672,
+        "height": 941,
+        "masterSha256": "5e99afa3ba18bce9933bf6f2e87b26d1c58f828c2b2b2abb5c6d7534e9a210e1",
+        "runtimeSha256": "6e8c05489366124e93b0fe6ab18450d44de9d2ac1e9943640ebe3dfbc37702f3"
+      },
+      "boundedConsumableViewCount": 8
+    },
+    {
+      "shipId": "upgrade-spaceship",
+      "view": "top",
+      "file": "upgrade-spaceship-top.webp",
+      "localPath": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/upgrade-spaceship-top.webp",
+      "sourceRepository": "darknigthmare/yautja-la-longue-chasse",
+      "sourceCommit": "3ef6d77e338bbec8e904f09ad72f75b4d38bbed2",
+      "sourcePath": "public/game/ships/v14/upgrade-spaceship-top.webp",
+      "sourceUrl": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/3ef6d77e338bbec8e904f09ad72f75b4d38bbed2/public/game/ships/v14/upgrade-spaceship-top.webp",
+      "bytes": 152632,
+      "sha256": "d791e10f600e50ee90a7786ea9c42f5a78031ce5801c2f60aa2f7e97b4ff6dc4",
+      "gitBlob": "5091b1c727bfeda2a0a7f99664f563738c632b71",
+      "matchesPinnedGitTree": true,
+      "matchesV14ManifestSha256": true,
+      "image": {
+        "format": "WEBP",
+        "width": 1672,
+        "height": 941,
+        "mode": "RGBA",
+        "alphaExtrema": [
+          0,
+          255
+        ],
+        "alphaBBox": [
+          59,
+          61,
+          1623,
+          865
+        ]
+      },
+      "materialization": "GitHub fetch_file at exact commit, base64 decoded without pixel modification",
+      "sourceMasterMetadata": {
+        "promptId": "v14-top-upgrade-spaceship",
+        "masterPath": "art-source/v14/ships/upgrade-spaceship-top-chroma-master.png",
+        "runtimePath": "/game/ships/v14/upgrade-spaceship-top.webp",
+        "width": 1672,
+        "height": 941,
+        "masterSha256": "d758c57577b6d149a7b34fa6b61b65baa59bc2d6d81fe7cafeaa82852470b36d",
+        "runtimeSha256": "d791e10f600e50ee90a7786ea9c42f5a78031ce5801c2f60aa2f7e97b4ff6dc4"
+      },
+      "boundedConsumableViewCount": 8
+    },
+    {
+      "shipId": "feral-spaceship",
+      "view": "profile",
+      "file": "feral-spaceship-profile.webp",
+      "localPath": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/feral-spaceship-profile.webp",
+      "sourceRepository": "darknigthmare/yautja-la-longue-chasse",
+      "sourceCommit": "3ef6d77e338bbec8e904f09ad72f75b4d38bbed2",
+      "sourcePath": "public/game/ships/v14/feral-spaceship.webp",
+      "sourceUrl": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/3ef6d77e338bbec8e904f09ad72f75b4d38bbed2/public/game/ships/v14/feral-spaceship.webp",
+      "bytes": 94792,
+      "sha256": "ff8147412252c56e5e810e5e1a6ea610d1ec01f5044ce892a677529863fb4a7d",
+      "gitBlob": "df020f91c8ca3f7e3fc8c23122633c3d2c1b1db9",
+      "matchesPinnedGitTree": true,
+      "matchesV14ManifestSha256": true,
+      "image": {
+        "format": "WEBP",
+        "width": 1672,
+        "height": 941,
+        "mode": "RGBA",
+        "alphaExtrema": [
+          0,
+          255
+        ],
+        "alphaBBox": [
+          20,
+          207,
+          1655,
+          696
+        ]
+      },
+      "materialization": "GitHub fetch_file at exact commit, base64 decoded without pixel modification",
+      "sourceMasterMetadata": {
+        "promptId": "v14-profile-feral-spaceship",
+        "masterPath": "art-source/v14/ships/feral-spaceship-profile-chroma-master.png",
+        "runtimePath": "/game/ships/v14/feral-spaceship.webp",
+        "width": 1672,
+        "height": 941,
+        "masterSha256": "7fba93b984eb5031b61d195f383ccde47c7c6302a4a0b63e3a6ff2809d180e14",
+        "runtimeSha256": "ff8147412252c56e5e810e5e1a6ea610d1ec01f5044ce892a677529863fb4a7d"
+      },
+      "boundedConsumableViewCount": 8
+    },
+    {
+      "shipId": "feral-spaceship",
+      "view": "top",
+      "file": "feral-spaceship-top.webp",
+      "localPath": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/feral-spaceship-top.webp",
+      "sourceRepository": "darknigthmare/yautja-la-longue-chasse",
+      "sourceCommit": "3ef6d77e338bbec8e904f09ad72f75b4d38bbed2",
+      "sourcePath": "public/game/ships/v14/feral-spaceship-top.webp",
+      "sourceUrl": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/3ef6d77e338bbec8e904f09ad72f75b4d38bbed2/public/game/ships/v14/feral-spaceship-top.webp",
+      "bytes": 140436,
+      "sha256": "c8f7d7d8a2db3ac0f2efc6fe0dba203b229103ad1f8215e46fab6b6c4e6e1947",
+      "gitBlob": "de45f1b7d1ad7fb6608bc2c0c5872a32e53e7102",
+      "matchesPinnedGitTree": true,
+      "matchesV14ManifestSha256": true,
+      "image": {
+        "format": "WEBP",
+        "width": 1672,
+        "height": 941,
+        "mode": "RGBA",
+        "alphaExtrema": [
+          0,
+          255
+        ],
+        "alphaBBox": [
+          238,
+          50,
+          1464,
+          873
+        ]
+      },
+      "materialization": "GitHub fetch_file at exact commit, base64 decoded without pixel modification",
+      "sourceMasterMetadata": {
+        "promptId": "v14-top-feral-spaceship",
+        "masterPath": "art-source/v14/ships/feral-spaceship-top-chroma-master.png",
+        "runtimePath": "/game/ships/v14/feral-spaceship-top.webp",
+        "width": 1672,
+        "height": 941,
+        "masterSha256": "1aeccb4c9abe8a813cc0f324decb5433ecb676d648f6ef98daabcd47fd380fbe",
+        "runtimeSha256": "c8f7d7d8a2db3ac0f2efc6fe0dba203b229103ad1f8215e46fab6b6c4e6e1947"
+      },
+      "boundedConsumableViewCount": 8
+    }
+  ],
+  "limits": [
+    "These are existing generated runtime references, not newly checked external canonical photographs or a human artistic 1:1 approval.",
+    "Original bytes, dimensions, color and transparency are preserved. No crop, resample or background replacement has been applied.",
+    "The 46 future view count excludes the mothership ventral pair, which has no current ship-surface consumer.",
+    "No engine-effect count is inferred from the classic hull; each other hull needs its own visible aperture/socket review."
+  ]
+}

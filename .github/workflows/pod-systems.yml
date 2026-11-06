@@ -1,0 +1,151 @@
+name: Pod atmosphere and remote recovery
+on:
+  pull_request:
+    branches: [main, fix/cinematic-spatial-audit-20261105]
+    paths:
+      - 'app/game/PlanetArrivalCinematic*'
+      - 'app/game/HuntCanvas.tsx'
+      - 'app/game/buildInfo.ts'
+      - 'app/game/sound.ts'
+      - 'app/dev/**'
+      - 'app/game/systems/planetArrival*.ts'
+      - 'app/game/systems/huntInsertion.ts'
+      - 'app/game/systems/huntPodRecovery.ts'
+      - 'app/game/systems/controlBindings.ts'
+      - 'public/game/cinematics/batch-01-20261105/**'
+      - 'public/game/planet-arrival/**'
+      - 'public/audio/manifest.json'
+      - 'tests/planet-arrival*.test.mjs'
+      - 'tests/hunt-pod-recovery.test.mjs'
+      - 'tests/control-bindings.test.mjs'
+      - 'tests/save-v2.test.mjs'
+      - 'tests/expedition-roster-assignment.test.mjs'
+      - 'tests/pod-audio.test.mjs'
+      - 'scripts/qa-pod-systems.mjs'
+      - 'docs/qa/current-integration-20261103/runtime-inputs.json'
+      - '.github/workflows/pod-systems.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pod-systems-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  pod-systems:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    env:
+      ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
+      NEXT_TELEMETRY_DISABLED: '1'
+      POD_SYSTEMS_START_SERVER: '1'
+      POD_SYSTEMS_URL: 'http://127.0.0.1:4199/dev'
+      POD_SYSTEMS_SOURCE_COMMIT: ${{ github.event.pull_request.head.sha || github.sha }}
+      POD_SYSTEMS_HEADED: '1'
+      POD_SYSTEMS_REQUIRE_CLEAN: '1'
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          persist-credentials: false
+          filter: blob:none
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /*
+            !/*/
+            /app/
+            /scripts/
+            /tests/
+            /docs/
+            /desktop/
+            /build/
+            /.openai/hosting.json
+            /.github/workflows/pod-systems.yml
+            /public/**/manifest.json
+            /public/audio/
+            /public/game/ship-interior/
+            /public/game/planet-arrival/
+            /public/game/cinematics/batch-01-20261105/
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci --ignore-scripts --no-audit --no-fund
+      - name: Materialize original runtime inputs and native arrival artwork
+        run: |
+          node --input-type=module <<'NODE'
+          import assert from 'node:assert/strict';
+          import { existsSync, readFileSync } from 'node:fs';
+          import { execFileSync } from 'node:child_process';
+          import { build } from 'esbuild';
+          const compiled = await build({
+            stdin: { contents: `export { MISSIONS } from './app/game/data';
+              export { createPlanetArrival, planetArrivalAssets, planetArrivalLanding } from './app/game/systems/planetArrival';
+              export { createDevArrival, createDevSave, resolveDevDestination } from './app/dev/destinations';
+              export { environmentPropRuntimeUrlsForSector } from './app/game/environmentPropRegistry';
+              export { getWorldScreenAtX, worldScreensFor } from './app/game/worldScreens';
+              export { GAME_RESERVE_V66_ART } from './app/game/gameReserveV66Rendering';
+              export { defaultSave } from './app/game/save';
+              export { DEFAULT_SHIP_ID, shipProfileAssetPath } from './app/game/shipCatalogue';`,
+              resolveDir: process.cwd(), loader: 'ts' },
+            bundle: true, platform: 'node', format: 'esm', write: false, logLevel: 'silent',
+          });
+          const api = await import('data:text/javascript;base64,' + Buffer.from(compiled.outputFiles[0].text).toString('base64'));
+          const inventory = JSON.parse(readFileSync('docs/qa/current-integration-20261103/runtime-inputs.json', 'utf8'));
+          const save = api.defaultSave('2026-11-05T00:00:00.000Z');
+          const cinematic = api.MISSIONS.flatMap(mission => Object.values(api.planetArrivalAssets(api.createPlanetArrival({
+            ownerCreatedAt: save.createdAt, runId: 'pod-qa:' + mission.id, missionId: mission.id,
+            encounterRun: 1, personalShipId: api.DEFAULT_SHIP_ID, hunterPresetId: save.appearance.presetId,
+          }))).map(asset => 'public' + asset));
+          const destination = api.resolveDevDestination('arrival-jungle-vey');
+          const arrival = api.createDevArrival(destination, api.createDevSave(destination)).state;
+          // Include every real sector of this playable level: the operator must
+          // walk away from all pods, not stay in the first streamed screen.
+          const level = api.worldScreensFor(arrival.missionId).screens.flatMap(screen =>
+            api.environmentPropRuntimeUrlsForSector(arrival.missionId, screen.id, arrival.encounterRun).map(asset => 'public' + asset));
+          const fixtures = ['wolf-arrival-browser-assets.json', 'clan-ship-browser-assets.json'].flatMap(file =>
+            JSON.parse(readFileSync('tests/fixtures/' + file, 'utf8')).paths);
+          const ships = ['wolf-ship', 'avp-predator-mothership', 'avpr-scout-ship', 'fugitive-spaceship', 'upgrade-spaceship', 'feral-spaceship']
+            .map(id => 'public' + api.shipProfileAssetPath(id));
+          const paths = [...new Set([...inventory.entries.map(row => row.path), ...cinematic, ...level,
+            ...fixtures, ...ships, 'public' + api.GAME_RESERVE_V66_ART.hunter])].sort();
+          for (const file of paths) {
+            assert.match(file, /^[A-Za-z0-9._/-]+$/);
+            assert.ok(file.split('/').every(part => part && part !== '.' && part !== '..'));
+          }
+          execFileSync('git', ['sparse-checkout', 'add', '--stdin'], {
+            input: paths.map(file => '/' + file).join('\n') + '\n', stdio: ['pipe', 'inherit', 'inherit'],
+          });
+          assert.deepEqual(paths.filter(file => !existsSync(file)), [], 'Original runtime sources must be present');
+          console.log('Materialized sources and assets:', paths.length);
+          NODE
+      - name: Check the reviewed current inventory and preserve an official candidate
+        run: |
+          mkdir -p outputs/qa-pod-systems
+          node scripts/snapshot-runtime-v113.mjs --check docs/qa/current-integration-20261103/runtime-inputs.json
+          node scripts/snapshot-runtime-v113.mjs --write outputs/qa-pod-systems/runtime-inputs.candidate.json
+          git diff --exit-code -- docs/qa/current-integration-20261103/runtime-inputs.json
+      - name: Typecheck and lint the implemented systems
+        run: |
+          node node_modules/next/dist/bin/next typegen
+          npm run typecheck
+          node node_modules/eslint/bin/eslint.js --max-warnings=0 app/game/HuntCanvas.tsx app/game/PlanetArrivalCinematic.tsx app/game/sound.ts app/game/systems/huntPodRecovery.ts app/game/systems/huntInsertion.ts app/game/systems/controlBindings.ts app/game/systems/planetArrival*.ts scripts/qa-pod-systems.mjs tests/planet-arrival*.test.mjs tests/hunt-pod-recovery.test.mjs tests/pod-audio.test.mjs
+      - name: Behavior and save regressions
+        run: node --experimental-strip-types --test --test-concurrency=1 tests/planet-arrival*.test.mjs tests/planet-insertion.test.mjs tests/expedition-roster-assignment.test.mjs tests/ship-insertion-energy.test.mjs tests/hunt-insertion.test.mjs tests/hunt-pod-recovery.test.mjs tests/control-bindings.test.mjs tests/save-v2.test.mjs tests/pod-audio.test.mjs
+      - name: Build the production application
+        run: npm run build:production
+      - name: Install pinned Chromium and video dependencies
+        run: node node_modules/playwright-core/cli.js install --with-deps chromium
+      - name: Play native pod controls and observe atmospheric panels
+        run: xvfb-run -a --server-args="-screen 0 1920x1200x24" node scripts/qa-pod-systems.mjs
+      - name: Preserve the exact inventory candidate, screenshots and observations
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: pod-systems-${{ github.event.pull_request.head.sha || github.sha }}
+          path: outputs/qa-pod-systems/
+          include-hidden-files: false
+          if-no-files-found: warn
+          retention-days: 14

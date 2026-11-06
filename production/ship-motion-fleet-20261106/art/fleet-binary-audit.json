@@ -1,0 +1,3468 @@
+{
+  "schemaVersion": 1,
+  "startedAtUtc": "2026-11-06T05:12:43.000082+00:00",
+  "completedAtUtc": "2026-11-06T05:12:57.601958+00:00",
+  "reviewer": "sprite_review",
+  "scope": "Independent local binary and provenance audit of 46 selected fleet source/runtime pairs.",
+  "status": "PASS",
+  "repositoryPath": "/workspace/scratch/af58a64ab248/yautja-ship-motion",
+  "localCheckoutHead": "ab08c6178ac105672994845cdfab460bebc78bf3",
+  "localCheckoutIsPublicationIdentity": false,
+  "sourceBaselineRemoteHead": "3ef6d77e338bbec8e904f09ad72f75b4d38bbed2",
+  "sourceAndRuntimeMutatedByAudit": false,
+  "method": {
+    "decoder": "Pillow 13.0.0",
+    "libwebp": "1.6.0",
+    "numpy": "2.3.5",
+    "python": "3.12.14",
+    "equality": "Every decoded RGBA byte, including invisible RGB where alpha is zero; no premultiplication, tolerance, resampling or normalization.",
+    "sourceIntegrity": "PNG bytes equal selected candidate and original generated file; SHA-256 and bytes checked against calibration, selected manifest and export receipt.",
+    "sourceManifestPolicy": "Use final selected manifests, including approved Wolf assignment permutation and corrected Feral selection; do not promote nonselected attempts.",
+    "inputStableDuringAudit": true
+  },
+  "summary": {
+    "families": 6,
+    "pairs": 46,
+    "sourcePngs": 46,
+    "runtimeWebps": 46,
+    "binaryFiles": 92,
+    "sourcePngBytes": 81608088,
+    "runtimeWebpBytes": 52626792,
+    "rgbaBytesComparedPerSide": 289406976,
+    "differentDecodedPixels": 0,
+    "recordedRejectedAttemptsExcluded": 11,
+    "checks": 1779,
+    "errorCount": 0
+  },
+  "families": [
+    {
+      "shipId": "wolf-ship",
+      "viewCount": 8,
+      "calibration": {
+        "path": "/workspace/scratch/af58a64ab248/yautja-ship-motion/production/ship-motion-fleet-20261106/art/wolf-eight-view-calibration.json",
+        "bytes": 38954,
+        "sha256": "8742e1f40f77548d9583b0e00b64841cbf5cf3856f2e84dbce7425337350356d"
+      },
+      "exportReview": {
+        "path": "/workspace/scratch/af58a64ab248/yautja-ship-motion/production/ship-motion-fleet-20261106/art/wolf-export-review.json",
+        "bytes": 5996,
+        "sha256": "4e69bcafd2de65dae97cb52be9691f59c94f47a03a271af91e606e5b0b32731a"
+      },
+      "sourceManifest": {
+        "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/wolf-generation-jobs-final-candidates.json",
+        "bytes": 19661,
+        "sha256": "870dcac4bb7523e689046b01fba14d7cca06a4c8e2d9993f85cfa65fc4a08c15"
+      },
+      "repositoryManifest": {
+        "path": "/workspace/scratch/af58a64ab248/yautja-ship-motion/production/ship-motion-fleet-20261106/art/wolf-generation-jobs-final-candidates.json",
+        "bytes": 19661,
+        "sha256": "870dcac4bb7523e689046b01fba14d7cca06a4c8e2d9993f85cfa65fc4a08c15"
+      },
+      "masterReferences": [
+        {
+          "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/wolf-profile.webp",
+          "bytes": 161544,
+          "sha256": "8697aff1379201f33aba393871a24780098dcb8f2268424c56912fac9470eed8"
+        },
+        {
+          "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/wolf-top.webp",
+          "bytes": 208190,
+          "sha256": "5c6b5866fc5fbad1f539b6006f19f9a78621660c9efd51afc3c74e4beb0acc72"
+        }
+      ],
+      "sourcePngBytes": 16427120,
+      "runtimeWebpBytes": 10883188,
+      "excludedAttemptCount": 0,
+      "allDecodedRgbaExact": true
+    },
+    {
+      "shipId": "avp-predator-mothership",
+      "viewCount": 6,
+      "calibration": {
+        "path": "/workspace/scratch/af58a64ab248/yautja-ship-motion/production/ship-motion-fleet-20261106/art/avp-mothership-six-view-calibration.json",
+        "bytes": 41355,
+        "sha256": "3c88559adebbfc96c7f630daec17e1d80ee6394ab7b33ee1bfad1caa5eee2345"
+      },
+      "exportReview": {
+        "path": "/workspace/scratch/af58a64ab248/yautja-ship-motion/production/ship-motion-fleet-20261106/art/avp-mothership-export-review.json",
+        "bytes": 6791,
+        "sha256": "cf286d9b242f1d0151093860a16f3e6bb2ce7b3a0ed132faf7fc70b38f68f39b"
+      },
+      "sourceManifest": {
+        "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/avp-mothership-generation-jobs-final-candidates.json",
+        "bytes": 29937,
+        "sha256": "e6b43a956fd13e95cbba3e4e6f703fb18e66e101ea00540a0fab170981564e88"
+      },
+      "repositoryManifest": {
+        "path": "/workspace/scratch/af58a64ab248/yautja-ship-motion/production/ship-motion-fleet-20261106/art/avp-mothership-generation-jobs-final-candidates.json",
+        "bytes": 29937,
+        "sha256": "e6b43a956fd13e95cbba3e4e6f703fb18e66e101ea00540a0fab170981564e88"
+      },
+      "masterReferences": [
+        {
+          "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/avp-predator-mothership-profile.webp",
+          "bytes": 89754,
+          "sha256": "7bd67240d2ef6f4df2717219420aeea9083a1a5395e994c98cb0bcc4c824c907"
+        },
+        {
+          "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/avp-predator-mothership-top.webp",
+          "bytes": 140552,
+          "sha256": "f1d33bedb750f6984e900171b68cf3dd2b9663f723a5e220af1dca9b15f05ca1"
+        }
+      ],
+      "sourcePngBytes": 9868959,
+      "runtimeWebpBytes": 6212280,
+      "excludedAttemptCount": 0,
+      "allDecodedRgbaExact": true
+    },
+    {
+      "shipId": "avpr-scout-ship",
+      "viewCount": 8,
+      "calibration": {
+        "path": "/workspace/scratch/af58a64ab248/yautja-ship-motion/production/ship-motion-fleet-20261106/art/avpr-scout-eight-view-calibration.json",
+        "bytes": 53985,
+        "sha256": "4f7d6a9a960bfe6b27e697d40fa200b5631768a91d4970aed47769cda6c6a96a"
+      },
+      "exportReview": {
+        "path": "/workspace/scratch/af58a64ab248/yautja-ship-motion/production/ship-motion-fleet-20261106/art/avpr-scout-export-review.json",
+        "bytes": 8429,
+        "sha256": "0e87f4586b5caa2200439009094f4d6cdd96e269a0d5d9e10c30c5495da154b0"
+      },
+      "sourceManifest": {
+        "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/avpr-scout-ship/generation-manifest.json",
+        "bytes": 118880,
+        "sha256": "fce474a68eaffe78fcb6511aa781f6851a52e2f6a0d91a0c443b679e8506fd12"
+      },
+      "repositoryManifest": {
+        "path": "/workspace/scratch/af58a64ab248/yautja-ship-motion/production/ship-motion-fleet-20261106/art/avpr-scout-generation-manifest.json",
+        "bytes": 118880,
+        "sha256": "fce474a68eaffe78fcb6511aa781f6851a52e2f6a0d91a0c443b679e8506fd12"
+      },
+      "masterReferences": [
+        {
+          "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/avpr-scout-ship-profile.webp",
+          "bytes": 79740,
+          "sha256": "b787eb8f6a8a0eb1e5d075bce7503bc1f7e54f452e490d82959e93aa1a38c306"
+        },
+        {
+          "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/avpr-scout-ship-top.webp",
+          "bytes": 119774,
+          "sha256": "346d944556b7f992bec2259fdb86f122c672d7456d509cb22605fa304c98676a"
+        }
+      ],
+      "sourcePngBytes": 13202185,
+      "runtimeWebpBytes": 8500250,
+      "excludedAttemptCount": 2,
+      "allDecodedRgbaExact": true
+    },
+    {
+      "shipId": "feral-spaceship",
+      "viewCount": 8,
+      "calibration": {
+        "path": "/workspace/scratch/af58a64ab248/yautja-ship-motion/production/ship-motion-fleet-20261106/art/feral-eight-view-calibration.json",
+        "bytes": 22762,
+        "sha256": "3d7119077a98ac5e143b2f41d17a3603e8e4449f493dc4490277e7d3288b4e6b"
+      },
+      "exportReview": {
+        "path": "/workspace/scratch/af58a64ab248/yautja-ship-motion/production/ship-motion-fleet-20261106/art/feral-export-review.json",
+        "bytes": 8285,
+        "sha256": "0be4ba3784c807ef931e37b9d704f038ea55860e4df63f11e64582fff508fbc8"
+      },
+      "sourceManifest": {
+        "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/feral-spaceship/generation-manifest.json",
+        "bytes": 25798,
+        "sha256": "957f7ca0477534945e8ae2663370783c19f5c1e238ba9d84a1b1daa8a8955c5a"
+      },
+      "repositoryManifest": {
+        "path": "/workspace/scratch/af58a64ab248/yautja-ship-motion/production/ship-motion-fleet-20261106/art/feral-generation-manifest.json",
+        "bytes": 25798,
+        "sha256": "957f7ca0477534945e8ae2663370783c19f5c1e238ba9d84a1b1daa8a8955c5a"
+      },
+      "masterReferences": [
+        {
+          "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/feral-spaceship-profile.webp",
+          "bytes": 94792,
+          "sha256": "ff8147412252c56e5e810e5e1a6ea610d1ec01f5044ce892a677529863fb4a7d"
+        },
+        {
+          "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/feral-spaceship-top.webp",
+          "bytes": 140436,
+          "sha256": "c8f7d7d8a2db3ac0f2efc6fe0dba203b229103ad1f8215e46fab6b6c4e6e1947"
+        }
+      ],
+      "sourcePngBytes": 14556818,
+      "runtimeWebpBytes": 9367538,
+      "excludedAttemptCount": 1,
+      "allDecodedRgbaExact": true
+    },
+    {
+      "shipId": "fugitive-spaceship",
+      "viewCount": 8,
+      "calibration": {
+        "path": "/workspace/scratch/af58a64ab248/yautja-ship-motion/production/ship-motion-fleet-20261106/art/fugitive-eight-view-calibration.json",
+        "bytes": 56212,
+        "sha256": "f7c91e483d8d0d6c4bff42a8aaaad6ed546e31b7b0ddd0c730744535180725f9"
+      },
+      "exportReview": {
+        "path": "/workspace/scratch/af58a64ab248/yautja-ship-motion/production/ship-motion-fleet-20261106/art/fugitive-export-review.json",
+        "bytes": 8370,
+        "sha256": "bcf821661c6ef6fd3d24e4b6b21eafc70f722f47c039016dcae65a7799f55349"
+      },
+      "sourceManifest": {
+        "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/fugitive-spaceship/generation-manifest.json",
+        "bytes": 24081,
+        "sha256": "6e318dd5ed7802d6fb235866d394220c92ed556b2bd65ede379228deecc1fbc0"
+      },
+      "repositoryManifest": {
+        "path": "/workspace/scratch/af58a64ab248/yautja-ship-motion/production/ship-motion-fleet-20261106/art/fugitive-generation-manifest.json",
+        "bytes": 24081,
+        "sha256": "6e318dd5ed7802d6fb235866d394220c92ed556b2bd65ede379228deecc1fbc0"
+      },
+      "masterReferences": [
+        {
+          "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/fugitive-spaceship-profile.webp",
+          "bytes": 104748,
+          "sha256": "643ae874e41a68f130e55aa472bc473dc21b4f7216357dcb87d320c7e88a6bc0"
+        },
+        {
+          "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/fugitive-spaceship-top.webp",
+          "bytes": 160134,
+          "sha256": "8f719e2cf6d31ba6bf74913c48e9adfc83754432ff7e37a0f70832bcf4891f77"
+        }
+      ],
+      "sourcePngBytes": 15050319,
+      "runtimeWebpBytes": 9546160,
+      "excludedAttemptCount": 0,
+      "allDecodedRgbaExact": true
+    },
+    {
+      "shipId": "upgrade-spaceship",
+      "viewCount": 8,
+      "calibration": {
+        "path": "/workspace/scratch/af58a64ab248/yautja-ship-motion/production/ship-motion-fleet-20261106/art/upgrade-eight-view-calibration.json",
+        "bytes": 74261,
+        "sha256": "851432efc75daa5c525301a3b3c05884f7a485c0645a9dc1bab5306bc816b33b"
+      },
+      "exportReview": {
+        "path": "/workspace/scratch/af58a64ab248/yautja-ship-motion/production/ship-motion-fleet-20261106/art/upgrade-export-review.json",
+        "bytes": 8483,
+        "sha256": "3e54ccb6b96c5512a7920a1ebe21ce1508b5da8f165bf58f0eafce1a9ee0368f"
+      },
+      "sourceManifest": {
+        "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/upgrade-spaceship/generation-manifest.json",
+        "bytes": 177074,
+        "sha256": "d6ee4845b2a97b8bc4ae3faab91b055b41e04d3bcd0495648bae69602efd6109"
+      },
+      "repositoryManifest": {
+        "path": "/workspace/scratch/af58a64ab248/yautja-ship-motion/production/ship-motion-fleet-20261106/art/upgrade-generation-manifest.json",
+        "bytes": 177074,
+        "sha256": "d6ee4845b2a97b8bc4ae3faab91b055b41e04d3bcd0495648bae69602efd6109"
+      },
+      "masterReferences": [
+        {
+          "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/upgrade-spaceship-profile.webp",
+          "bytes": 94314,
+          "sha256": "6e8c05489366124e93b0fe6ab18450d44de9d2ac1e9943640ebe3dfbc37702f3"
+        },
+        {
+          "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/upgrade-spaceship-top.webp",
+          "bytes": 152632,
+          "sha256": "d791e10f600e50ee90a7786ea9c42f5a78031ce5801c2f60aa2f7e97b4ff6dc4"
+        }
+      ],
+      "sourcePngBytes": 12502687,
+      "runtimeWebpBytes": 8117376,
+      "excludedAttemptCount": 8,
+      "allDecodedRgbaExact": true
+    }
+  ],
+  "pairs": [
+    {
+      "shipId": "wolf-ship",
+      "viewId": "forward-quarter-shallow",
+      "originalGenerated": {
+        "path": "/workspace/scratch/0c1fa1359efb/generated_images/exec-4e58ff8a-64da-4a3a-968f-342a68bd312a.png",
+        "bytes": 2053091,
+        "sha256": "97ce5687aa65ed285374046b0f31c38547ce05b4ad635ba7a0835c06d6e8cda4"
+      },
+      "selectedCandidate": {
+        "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/candidates/wolf-forward-quarter-shallow.png",
+        "bytes": 2053091,
+        "sha256": "97ce5687aa65ed285374046b0f31c38547ce05b4ad635ba7a0835c06d6e8cda4"
+      },
+      "sourcePng": {
+        "path": "/workspace/scratch/af58a64ab248/yautja-ship-motion/production/ship-motion-fleet-20261106/art/sources/wolf-ship/forward-quarter-shallow.png",
+        "bytes": 2053091,
+        "sha256": "97ce5687aa65ed285374046b0f31c38547ce05b4ad635ba7a0835c06d6e8cda4"
+      },
+      "runtimeWebp": {
+        "path": "/workspace/scratch/af58a64ab248/yautja-ship-motion/public/game/planet-arrival/ship-motion-fleet-v1/wolf-ship/forward-quarter-shallow.webp",
+        "bytes": 1355716,
+        "sha256": "5d378dfd1931de6b29ee105c6bb5eaf0497cc36d44192c3c5912beff1cc95575"
+      },
+      "selectedAttempt": null,
+      "generatedId": "wolf-forward-quarter-shallow",
+      "assignedId": "wolf-forward-quarter-shallow",
+      "assignmentNote": null,
+      "sourceBytesEqualCandidateAndOriginal": true,
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "mode": "RGBA",
+      "webpContainerChunks": [
+        {
+          "fourcc": "VP8L",
+          "bytes": 1355696
+        }
+      ],
+      "decodedEquality": {
+        "fullRgbaExact": true,
+        "rgbaBytes": 6291456,
+        "sourceRgbaSha256": "00d3ecb67312cc48a379fa7d2daadef56a8f20342e940410b139e9a460233afd",
+        "runtimeRgbaSha256": "00d3ecb67312cc48a379fa7d2daadef56a8f20342e940410b139e9a460233afd",
+        "differentPixels": 0,
+        "differentChannels": 0,
+        "maximumChannelDelta": 0,
+        "includesRgbUnderAlphaZero": true
+      },
+      "alpha": {
+        "minimum": 0,
+        "maximum": 254,
+        "maximumBorder": 1,
+        "above16Bounds": [
+          94,
+          201,
+          1462,
+          813
+        ],
+        "above16InsideCanvas": true,
+        "fullyTransparentPixels": 996169
+      }
+    },
+    {
+      "shipId": "wolf-ship",
+      "viewId": "forward-quarter",
+      "originalGenerated": {
+        "path": "/workspace/scratch/0c1fa1359efb/generated_images/exec-a486358b-7cf0-46e6-ab86-fe3a7751d99e.png",
+        "bytes": 2281013,
+        "sha256": "121f1d1e50b7782dcf8b4707e10261e61b202610f806873e1e198ca2420ea0b7"
+      },
+      "selectedCandidate": {
+        "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/candidates/wolf-forward-quarter.png",
+        "bytes": 2281013,
+        "sha256": "121f1d1e50b7782dcf8b4707e10261e61b202610f806873e1e198ca2420ea0b7"
+      },
+      "sourcePng": {
+        "path": "/workspace/scratch/af58a64ab248/yautja-ship-motion/production/ship-motion-fleet-20261106/art/sources/wolf-ship/forward-quarter.png",
+        "bytes": 2281013,
+        "sha256": "121f1d1e50b7782dcf8b4707e10261e61b202610f806873e1e198ca2420ea0b7"
+      },
+      "runtimeWebp": {
+        "path": "/workspace/scratch/af58a64ab248/yautja-ship-motion/public/game/planet-arrival/ship-motion-fleet-v1/wolf-ship/forward-quarter.webp",
+        "bytes": 1499716,
+        "sha256": "6689158499fc5f693a8e48a4a805ef331081b2e5c18ca1a146054a9355d8e55a"
+      },
+      "selectedAttempt": null,
+      "generatedId": "wolf-forward-quarter",
+      "assignedId": "wolf-forward-quarter",
+      "assignmentNote": null,
+      "sourceBytesEqualCandidateAndOriginal": true,
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "mode": "RGBA",
+      "webpContainerChunks": [
+        {
+          "fourcc": "VP8L",
+          "bytes": 1499696
+        }
+      ],
+      "decodedEquality": {
+        "fullRgbaExact": true,
+        "rgbaBytes": 6291456,
+        "sourceRgbaSha256": "fb401c2d47b1442205bffebd1603a9b514272bcf6d92d9698538c3c17bd92365",
+        "runtimeRgbaSha256": "fb401c2d47b1442205bffebd1603a9b514272bcf6d92d9698538c3c17bd92365",
+        "differentPixels": 0,
+        "differentChannels": 0,
+        "maximumChannelDelta": 0,
+        "includesRgbUnderAlphaZero": true
+      },
+      "alpha": {
+        "minimum": 0,
+        "maximum": 254,
+        "maximumBorder": 1,
+        "above16Bounds": [
+          49,
+          143,
+          1480,
+          881
+        ],
+        "above16InsideCanvas": true,
+        "fullyTransparentPixels": 893468
+      }
+    },
+    {
+      "shipId": "wolf-ship",
+      "viewId": "bank-dorsal-shallow",
+      "originalGenerated": {
+        "path": "/workspace/scratch/0c1fa1359efb/generated_images/exec-c29c507c-c73d-46f3-b6f9-361ddb2e4b66.png",
+        "bytes": 2052298,
+        "sha256": "32b9b613fc4ba669db134d8cf352975ec8ff7ca206dcc81bebcaa94e7ed5abd7"
+      },
+      "selectedCandidate": {
+        "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/candidates/wolf-bank-dorsal-shallow.png",
+        "bytes": 2052298,
+        "sha256": "32b9b613fc4ba669db134d8cf352975ec8ff7ca206dcc81bebcaa94e7ed5abd7"
+      },
+      "sourcePng": {
+        "path": "/workspace/scratch/af58a64ab248/yautja-ship-motion/production/ship-motion-fleet-20261106/art/sources/wolf-ship/bank-dorsal-shallow.png",
+        "bytes": 2052298,
+        "sha256": "32b9b613fc4ba669db134d8cf352975ec8ff7ca206dcc81bebcaa94e7ed5abd7"
+      },
+      "runtimeWebp": {
+        "path": "/workspace/scratch/af58a64ab248/yautja-ship-motion/public/game/planet-arrival/ship-motion-fleet-v1/wolf-ship/bank-dorsal-shallow.webp",
+        "bytes": 1372738,
+        "sha256": "4a3822ee94074f6651ff80c9e68bda74ffd21b2d3a3dc1e2ba5daba2c9e1aa13"
+      },
+      "selectedAttempt": null,
+      "generatedId": "wolf-bank-dorsal",
+      "assignedId": "wolf-bank-dorsal-shallow",
+      "assignmentNote": "Dorsal pair assigned by observed progression; requested angles are not measurements.",
+      "sourceBytesEqualCandidateAndOriginal": true,
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "mode": "RGBA",
+      "webpContainerChunks": [
+        {
+          "fourcc": "VP8L",
+          "bytes": 1372718
+        }
+      ],
+      "decodedEquality": {
+        "fullRgbaExact": true,
+        "rgbaBytes": 6291456,
+        "sourceRgbaSha256": "0acb29cbf69a6ac0e399314cfa85981263429b235df48c2ff5516e59ece8b1fb",
+        "runtimeRgbaSha256": "0acb29cbf69a6ac0e399314cfa85981263429b235df48c2ff5516e59ece8b1fb",
+        "differentPixels": 0,
+        "differentChannels": 0,
+        "maximumChannelDelta": 0,
+        "includesRgbUnderAlphaZero": true
+      },
+      "alpha": {
+        "minimum": 0,
+        "maximum": 254,
+        "maximumBorder": 0,
+        "above16Bounds": [
+          55,
+          207,
+          1480,
+          764
+        ],
+        "above16InsideCanvas": true,
+        "fullyTransparentPixels": 1003527
+      }
+    },
+    {
+      "shipId": "wolf-ship",
+      "viewId": "bank-dorsal",
+      "originalGenerated": {
+        "path": "/workspace/scratch/0c1fa1359efb/generated_images/exec-c25ba19e-1c87-4420-b9ee-3aa9a4096872.png",
+        "bytes": 2025335,
+        "sha256": "c42337ea97ce2f09aed2a55a9793ab979c66bc9d8579ccb450e93e2530bbe977"
+      },
+      "selectedCandidate": {
+        "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/candidates/wolf-bank-dorsal.png",
+        "bytes": 2025335,
+        "sha256": "c42337ea97ce2f09aed2a55a9793ab979c66bc9d8579ccb450e93e2530bbe977"
+      },
+      "sourcePng": {
+        "path": "/workspace/scratch/af58a64ab248/yautja-ship-motion/production/ship-motion-fleet-20261106/art/sources/wolf-ship/bank-dorsal.png",
+        "bytes": 2025335,
+        "sha256": "c42337ea97ce2f09aed2a55a9793ab979c66bc9d8579ccb450e93e2530bbe977"
+      },
+      "runtimeWebp": {
+        "path": "/workspace/scratch/af58a64ab248/yautja-ship-motion/public/game/planet-arrival/ship-motion-fleet-v1/wolf-ship/bank-dorsal.webp",
+        "bytes": 1357238,
+        "sha256": "6d2d1e1bebab9b75797c587c028cbf15672b8486a1057dc19d04959738371e45"
+      },
+      "selectedAttempt": null,
+      "generatedId": "wolf-bank-dorsal-shallow",
+      "assignedId": "wolf-bank-dorsal",
+      "assignmentNote": "Dorsal pair assigned by observed progression; requested angles are not measurements.",
+      "sourceBytesEqualCandidateAndOriginal": true,
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "mode": "RGBA",
+      "webpContainerChunks": [
+        {
+          "fourcc": "VP8L",
+          "bytes": 1357217
+        }
+      ],
+      "decodedEquality": {
+        "fullRgbaExact": true,
+        "rgbaBytes": 6291456,
+        "sourceRgbaSha256": "d59be18280c11f1d5b6a1b03608affdd2849978ca7f6d8666fda6f8857f3e9e5",
+        "runtimeRgbaSha256": "d59be18280c11f1d5b6a1b03608affdd2849978ca7f6d8666fda6f8857f3e9e5",
+        "differentPixels": 0,
+        "differentChannels": 0,
+        "maximumChannelDelta": 0,
+        "includesRgbUnderAlphaZero": true
+      },
+      "alpha": {
+        "minimum": 0,
+        "maximum": 254,
+        "maximumBorder": 1,
+        "above16Bounds": [
+          53,
+          217,
+          1488,
+          768
+        ],
+        "above16InsideCanvas": true,
+        "fullyTransparentPixels": 1002035
+      }
+    },
+    {
+      "shipId": "wolf-ship",
+      "viewId": "bank-ventral-shallow",
+      "originalGenerated": {
+        "path": "/workspace/scratch/0c1fa1359efb/generated_images/exec-86de32c6-417f-44fb-abed-773c60f7d8a4.png",
+        "bytes": 1857298,
+        "sha256": "c9b6a8fad9f3739e9b951d43c502484fac6cdc006caf5055433229b35e63ccc7"
+      },
+      "selectedCandidate": {
+        "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/candidates/wolf-bank-ventral-shallow.png",
+        "bytes": 1857298,
+        "sha256": "c9b6a8fad9f3739e9b951d43c502484fac6cdc006caf5055433229b35e63ccc7"
+      },
+      "sourcePng": {
+        "path": "/workspace/scratch/af58a64ab248/yautja-ship-motion/production/ship-motion-fleet-20261106/art/sources/wolf-ship/bank-ventral-shallow.png",
+        "bytes": 1857298,
+        "sha256": "c9b6a8fad9f3739e9b951d43c502484fac6cdc006caf5055433229b35e63ccc7"
+      },
+      "runtimeWebp": {
+        "path": "/workspace/scratch/af58a64ab248/yautja-ship-motion/public/game/planet-arrival/ship-motion-fleet-v1/wolf-ship/bank-ventral-shallow.webp",
+        "bytes": 1239698,
+        "sha256": "a22c2e9308cfde6e42347c45625598fc4953e64e8ac2182572636254f73fa7f6"
+      },
+      "selectedAttempt": null,
+      "generatedId": "wolf-bank-ventral-shallow",
+      "assignedId": "wolf-bank-ventral-shallow",
+      "assignmentNote": null,
+      "sourceBytesEqualCandidateAndOriginal": true,
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "mode": "RGBA",
+      "webpContainerChunks": [
+        {
+          "fourcc": "VP8L",
+          "bytes": 1239677
+        }
+      ],
+      "decodedEquality": {
+        "fullRgbaExact": true,
+        "rgbaBytes": 6291456,
+        "sourceRgbaSha256": "82ce5a938db46e467ce42ee8073702308933119ef39def6c65d918e7222af673",
+        "runtimeRgbaSha256": "82ce5a938db46e467ce42ee8073702308933119ef39def6c65d918e7222af673",
+        "differentPixels": 0,
+        "differentChannels": 0,
+        "maximumChannelDelta": 0,
+        "includesRgbUnderAlphaZero": true
+      },
+      "alpha": {
+        "minimum": 0,
+        "maximum": 254,
+        "maximumBorder": 0,
+        "above16Bounds": [
+          59,
+          251,
+          1476,
+          739
+        ],
+        "above16InsideCanvas": true,
+        "fullyTransparentPixels": 1084739
+      }
+    },
+    {
+      "shipId": "wolf-ship",
+      "viewId": "bank-ventral",
+      "originalGenerated": {
+        "path": "/workspace/scratch/0c1fa1359efb/generated_images/exec-48cc48d8-3c0e-4669-a150-dc90efb22e87.png",
+        "bytes": 1883556,
+        "sha256": "f0605b2edb41a5886693a32e7a507d83a47735208b76e3fe1222bbd19a3c8ed9"
+      },
+      "selectedCandidate": {
+        "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/candidates/wolf-bank-ventral.png",
+        "bytes": 1883556,
+        "sha256": "f0605b2edb41a5886693a32e7a507d83a47735208b76e3fe1222bbd19a3c8ed9"
+      },
+      "sourcePng": {
+        "path": "/workspace/scratch/af58a64ab248/yautja-ship-motion/production/ship-motion-fleet-20261106/art/sources/wolf-ship/bank-ventral.png",
+        "bytes": 1883556,
+        "sha256": "f0605b2edb41a5886693a32e7a507d83a47735208b76e3fe1222bbd19a3c8ed9"
+      },
+      "runtimeWebp": {
+        "path": "/workspace/scratch/af58a64ab248/yautja-ship-motion/public/game/planet-arrival/ship-motion-fleet-v1/wolf-ship/bank-ventral.webp",
+        "bytes": 1235830,
+        "sha256": "1b3c28da78a052ae4811757f052eb4f45a20327bdc752e614fc4759b95275c94"
+      },
+      "selectedAttempt": null,
+      "generatedId": "wolf-bank-ventral",
+      "assignedId": "wolf-bank-ventral",
+      "assignmentNote": null,
+      "sourceBytesEqualCandidateAndOriginal": true,
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "mode": "RGBA",
+      "webpContainerChunks": [
+        {
+          "fourcc": "VP8L",
+          "bytes": 1235809
+        }
+      ],
+      "decodedEquality": {
+        "fullRgbaExact": true,
+        "rgbaBytes": 6291456,
+        "sourceRgbaSha256": "ad5ce8c540af9c08cf4de3132f24eb372b6c9447cbfbe7c30ebcac472188f348",
+        "runtimeRgbaSha256": "ad5ce8c540af9c08cf4de3132f24eb372b6c9447cbfbe7c30ebcac472188f348",
+        "differentPixels": 0,
+        "differentChannels": 0,
+        "maximumChannelDelta": 0,
+        "includesRgbUnderAlphaZero": true
+      },
+      "alpha": {
+        "minimum": 0,
+        "maximum": 254,
+        "maximumBorder": 0,
+        "above16Bounds": [
+          44,
+          242,
+          1487,
+          805
+        ],
+        "above16InsideCanvas": true,
+        "fullyTransparentPixels": 1037719
+      }
+    },
+    {
+      "shipId": "wolf-ship",
+      "viewId": "rear-quarter-shallow",
+      "originalGenerated": {
+        "path": "/workspace/scratch/0c1fa1359efb/generated_images/exec-ddedaf01-232e-45bd-9da6-bfdb60dc5804.png",
+        "bytes": 2015175,
+        "sha256": "5e7fbaf53a65760b12c7da7c0e51bde1fd7f8b5856e9e12e766446f5f5a40b00"
+      },
+      "selectedCandidate": {
+        "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/candidates/wolf-rear-quarter-shallow.png",
+        "bytes": 2015175,
+        "sha256": "5e7fbaf53a65760b12c7da7c0e51bde1fd7f8b5856e9e12e766446f5f5a40b00"
+      },
+      "sourcePng": {
+        "path": "/workspace/scratch/af58a64ab248/yautja-ship-motion/production/ship-motion-fleet-20261106/art/sources/wolf-ship/rear-quarter-shallow.png",
+        "bytes": 2015175,
+        "sha256": "5e7fbaf53a65760b12c7da7c0e51bde1fd7f8b5856e9e12e766446f5f5a40b00"
+      },
+      "runtimeWebp": {
+        "path": "/workspace/scratch/af58a64ab248/yautja-ship-motion/public/game/planet-arrival/ship-motion-fleet-v1/wolf-ship/rear-quarter-shallow.webp",
+        "bytes": 1330260,
+        "sha256": "9295593f344a41270f864aee42886b5a800fc6da2601c19bc1075c713a5c4152"
+      },
+      "selectedAttempt": null,
+      "generatedId": "wolf-rear-quarter-shallow",
+      "assignedId": "wolf-rear-quarter-shallow",
+      "assignmentNote": null,
+      "sourceBytesEqualCandidateAndOriginal": true,
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "mode": "RGBA",
+      "webpContainerChunks": [
+        {
+          "fourcc": "VP8L",
+          "bytes": 1330240
+        }
+      ],
+      "decodedEquality": {
+        "fullRgbaExact": true,
+        "rgbaBytes": 6291456,
+        "sourceRgbaSha256": "790267879bfb54e56cdceca029f7e50c2b5bb5540e5894422aec43b6f5c3328d",
+        "runtimeRgbaSha256": "790267879bfb54e56cdceca029f7e50c2b5bb5540e5894422aec43b6f5c3328d",
+        "differentPixels": 0,
+        "differentChannels": 0,
+        "maximumChannelDelta": 0,
+        "includesRgbUnderAlphaZero": true
+      },
+      "alpha": {
+        "minimum": 0,
+        "maximum": 254,
+        "maximumBorder": 0,
+        "above16Bounds": [
+          71,
+          206,
+          1468,
+          781
+        ],
+        "above16InsideCanvas": true,
+        "fullyTransparentPixels": 1019277
+      }
+    },
+    {
+      "shipId": "wolf-ship",
+      "viewId": "rear-quarter",
+      "originalGenerated": {
+        "path": "/workspace/scratch/0c1fa1359efb/generated_images/exec-2b889339-af6b-47ab-a234-56b3f0f43b01.png",
+        "bytes": 2259354,
+        "sha256": "e0abd1e2e881108ca3c57e7298beebf37eee276e673b0664b1ed4e498752bd82"
+      },
+      "selectedCandidate": {
+        "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/candidates/wolf-rear-quarter.png",
+        "bytes": 2259354,
+        "sha256": "e0abd1e2e881108ca3c57e7298beebf37eee276e673b0664b1ed4e498752bd82"
+      },
+      "sourcePng": {
+        "path": "/workspace/scratch/af58a64ab248/yautja-ship-motion/production/ship-motion-fleet-20261106/art/sources/wolf-ship/rear-quarter.png",
+        "bytes": 2259354,
+        "sha256": "e0abd1e2e881108ca3c57e7298beebf37eee276e673b0664b1ed4e498752bd82"
+      },
+      "runtimeWebp": {
+        "path": "/workspace/scratch/af58a64ab248/yautja-ship-motion/public/game/planet-arrival/ship-motion-fleet-v1/wolf-ship/rear-quarter.webp",
+        "bytes": 1491992,
+        "sha256": "caced47dd24bcd17800077faf12ece25bd3b10e5098c7487153f934a24e21c05"
+      },
+      "selectedAttempt": null,
+      "generatedId": "wolf-rear-quarter",
+      "assignedId": "wolf-rear-quarter",
+      "assignmentNote": null,
+      "sourceBytesEqualCandidateAndOriginal": true,
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "mode": "RGBA",
+      "webpContainerChunks": [
+        {
+          "fourcc": "VP8L",
+          "bytes": 1491971
+        }
+      ],
+      "decodedEquality": {
+        "fullRgbaExact": true,
+        "rgbaBytes": 6291456,
+        "sourceRgbaSha256": "c1f3578432eb533a4bdb662330ff559a6124156b56490653606d55375699f48c",
+        "runtimeRgbaSha256": "c1f3578432eb533a4bdb662330ff559a6124156b56490653606d55375699f48c",
+        "differentPixels": 0,
+        "differentChannels": 0,
+        "maximumChannelDelta": 0,
+        "includesRgbUnderAlphaZero": true
+      },
+      "alpha": {
+        "minimum": 0,
+        "maximum": 254,
+        "maximumBorder": 1,
+        "above16Bounds": [
+          66,
+          184,
+          1471,
+          839
+        ],
+        "above16InsideCanvas": true,
+        "fullyTransparentPixels": 913868
+      }
+    },
+    {
+      "shipId": "avp-predator-mothership",
+      "viewId": "forward-quarter-shallow",
+      "originalGenerated": {
+        "path": "/workspace/scratch/0c1fa1359efb/generated_images/exec-2ed1286f-8991-4988-85bc-8f1d7f4b264a.png",
+        "bytes": 1457282,
+        "sha256": "717efa8e0f0cf06b3582964ec6609ac6f11198f08957fe7c0eac9c787d7a182d"
+      },
+      "selectedCandidate": {
+        "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/candidates-avp-mothership/avp-predator-mothership-forward-quarter-shallow.png",
+        "bytes": 1457282,
+        "sha256": "717efa8e0f0cf06b3582964ec6609ac6f11198f08957fe7c0eac9c787d7a182d"
+      },
+      "sourcePng": {
+        "path": "/workspace/scratch/af58a64ab248/yautja-ship-motion/production/ship-motion-fleet-20261106/art/sources/avp-predator-mothership/forward-quarter-shallow.png",
+        "bytes": 1457282,
+        "sha256": "717efa8e0f0cf06b3582964ec6609ac6f11198f08957fe7c0eac9c787d7a182d"
+      },
+      "runtimeWebp": {
+        "path": "/workspace/scratch/af58a64ab248/yautja-ship-motion/public/game/planet-arrival/ship-motion-fleet-v1/avp-predator-mothership/forward-quarter-shallow.webp",
+        "bytes": 917222,
+        "sha256": "4208021c35418ff5b4d434a6a8a79cdc9298bc3c601380c0d58285e32a34cb88"
+      },
+      "selectedAttempt": null,
+      "generatedId": "avp-predator-mothership-forward-quarter-shallow",
+      "assignedId": "avp-predator-mothership-forward-quarter-shallow",
+      "assignmentNote": "Original generated assignment retained after visual shallow/deep comparison; no pixel alteration.",
+      "sourceBytesEqualCandidateAndOriginal": true,
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "mode": "RGBA",
+      "webpContainerChunks": [
+        {
+          "fourcc": "VP8L",
+          "bytes": 917201
+        }
+      ],
+      "decodedEquality": {
+        "fullRgbaExact": true,
+        "rgbaBytes": 6291456,
+        "sourceRgbaSha256": "0d1fa9ae19b4397a8519d8a351c1c1e552c53b4ffa1399004f6a899e772452aa",
+        "runtimeRgbaSha256": "0d1fa9ae19b4397a8519d8a351c1c1e552c53b4ffa1399004f6a899e772452aa",
+        "differentPixels": 0,
+        "differentChannels": 0,
+        "maximumChannelDelta": 0,
+        "includesRgbUnderAlphaZero": true
+      },
+      "alpha": {
+        "minimum": 0,
+        "maximum": 254,
+        "maximumBorder": 0,
+        "above16Bounds": [
+          98,
+          278,
+          1438,
+          732
+        ],
+        "above16InsideCanvas": true,
+        "fullyTransparentPixels": 1203929
+      }
+    },
+    {
+      "shipId": "avp-predator-mothership",
+      "viewId": "forward-quarter",
+      "originalGenerated": {
+        "path": "/workspace/scratch/0c1fa1359efb/generated_images/exec-697c7f9b-d30d-45c8-a4dc-c27def89c57b.png",
+        "bytes": 1627871,
+        "sha256": "9faf74beeb7f2422b12e98050b69f526558dda0cbbe5c4669292384b78ec0481"
+      },
+      "selectedCandidate": {
+        "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/candidates-avp-mothership/avp-predator-mothership-forward-quarter.png",
+        "bytes": 1627871,
+        "sha256": "9faf74beeb7f2422b12e98050b69f526558dda0cbbe5c4669292384b78ec0481"
+      },
+      "sourcePng": {
+        "path": "/workspace/scratch/af58a64ab248/yautja-ship-motion/production/ship-motion-fleet-20261106/art/sources/avp-predator-mothership/forward-quarter.png",
+        "bytes": 1627871,
+        "sha256": "9faf74beeb7f2422b12e98050b69f526558dda0cbbe5c4669292384b78ec0481"
+      },
+      "runtimeWebp": {
+        "path": "/workspace/scratch/af58a64ab248/yautja-ship-motion/public/game/planet-arrival/ship-motion-fleet-v1/avp-predator-mothership/forward-quarter.webp",
+        "bytes": 1014124,
+        "sha256": "8c3a741a25edebb859b075ba8f2ffdbb5c6df58b17b4442aff7e6fe719719fea"
+      },
+      "selectedAttempt": null,
+      "generatedId": "avp-predator-mothership-forward-quarter",
+      "assignedId": "avp-predator-mothership-forward-quarter",
+      "assignmentNote": "Original generated assignment retained after visual shallow/deep comparison; no pixel alteration.",
+      "sourceBytesEqualCandidateAndOriginal": true,
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "mode": "RGBA",
+      "webpContainerChunks": [
+        {
+          "fourcc": "VP8L",
+          "bytes": 1014103
+        }
+      ],
+      "decodedEquality": {
+        "fullRgbaExact": true,
+        "rgbaBytes": 6291456,
+        "sourceRgbaSha256": "e3a530dc8af9778a3e8f93f99af7df3f3645ff5a6643e699737e9f97b2b9f6b3",
+        "runtimeRgbaSha256": "e3a530dc8af9778a3e8f93f99af7df3f3645ff5a6643e699737e9f97b2b9f6b3",
+        "differentPixels": 0,
+        "differentChannels": 0,
+        "maximumChannelDelta": 0,
+        "includesRgbUnderAlphaZero": true
+      },
+      "alpha": {
+        "minimum": 0,
+        "maximum": 254,
+        "maximumBorder": 1,
+        "above16Bounds": [
+          112,
+          185,
+          1426,
+          738
+        ],
+        "above16InsideCanvas": true,
+        "fullyTransparentPixels": 1130328
+      }
+    },
+    {
+      "shipId": "avp-predator-mothership",
+      "viewId": "bank-dorsal-shallow",
+      "originalGenerated": {
+        "path": "/workspace/scratch/0c1fa1359efb/generated_images/exec-6f2cd077-998e-4b09-8eab-d2e42bf21193.png",
+        "bytes": 1642761,
+        "sha256": "45b739d7d2ff6810a2953130679e1097eb706807b32f0d1b4b19288be44bedba"
+      },
+      "selectedCandidate": {
+        "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/candidates-avp-mothership/avp-predator-mothership-bank-dorsal-shallow.png",
+        "bytes": 1642761,
+        "sha256": "45b739d7d2ff6810a2953130679e1097eb706807b32f0d1b4b19288be44bedba"
+      },
+      "sourcePng": {
+        "path": "/workspace/scratch/af58a64ab248/yautja-ship-motion/production/ship-motion-fleet-20261106/art/sources/avp-predator-mothership/bank-dorsal-shallow.png",
+        "bytes": 1642761,
+        "sha256": "45b739d7d2ff6810a2953130679e1097eb706807b32f0d1b4b19288be44bedba"
+      },
+      "runtimeWebp": {
+        "path": "/workspace/scratch/af58a64ab248/yautja-ship-motion/public/game/planet-arrival/ship-motion-fleet-v1/avp-predator-mothership/bank-dorsal-shallow.webp",
+        "bytes": 1055244,
+        "sha256": "ad0d4a8e09200af9fd91beee9911316b38cd547390e9ce076568f4d6a0baec32"
+      },
+      "selectedAttempt": null,
+      "generatedId": "avp-predator-mothership-bank-dorsal-shallow",
+      "assignedId": "avp-predator-mothership-bank-dorsal-shallow",
+      "assignmentNote": "Original generated assignment retained after visual shallow/deep comparison; no pixel alteration.",
+      "sourceBytesEqualCandidateAndOriginal": true,
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "mode": "RGBA",
+      "webpContainerChunks": [
+        {
+          "fourcc": "VP8L",
+          "bytes": 1055223
+        }
+      ],
+      "decodedEquality": {
+        "fullRgbaExact": true,
+        "rgbaBytes": 6291456,
+        "sourceRgbaSha256": "8e0d25989c10ebcafafee3995c14306c457551ffe929983fa36fe50f535c95a4",
+        "runtimeRgbaSha256": "8e0d25989c10ebcafafee3995c14306c457551ffe929983fa36fe50f535c95a4",
+        "differentPixels": 0,
+        "differentChannels": 0,
+        "maximumChannelDelta": 0,
+        "includesRgbUnderAlphaZero": true
+      },
+      "alpha": {
+        "minimum": 0,
+        "maximum": 254,
+        "maximumBorder": 0,
+        "above16Bounds": [
+          78,
+          266,
+          1459,
+          714
+        ],
+        "above16InsideCanvas": true,
+        "fullyTransparentPixels": 1178982
+      }
+    },
+    {
+      "shipId": "avp-predator-mothership",
+      "viewId": "bank-dorsal",
+      "originalGenerated": {
+        "path": "/workspace/scratch/0c1fa1359efb/generated_images/exec-4905a349-263e-4ce1-9683-898d77a3317f.png",
+        "bytes": 1735275,
+        "sha256": "65cb3266b3ee05750885ee427e49e2bdf8f0f2bb7abc5b8febddf6991860c6b0"
+      },
+      "selectedCandidate": {
+        "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/candidates-avp-mothership/avp-predator-mothership-bank-dorsal.png",
+        "bytes": 1735275,
+        "sha256": "65cb3266b3ee05750885ee427e49e2bdf8f0f2bb7abc5b8febddf6991860c6b0"
+      },
+      "sourcePng": {
+        "path": "/workspace/scratch/af58a64ab248/yautja-ship-motion/production/ship-motion-fleet-20261106/art/sources/avp-predator-mothership/bank-dorsal.png",
+        "bytes": 1735275,
+        "sha256": "65cb3266b3ee05750885ee427e49e2bdf8f0f2bb7abc5b8febddf6991860c6b0"
+      },
+      "runtimeWebp": {
+        "path": "/workspace/scratch/af58a64ab248/yautja-ship-motion/public/game/planet-arrival/ship-motion-fleet-v1/avp-predator-mothership/bank-dorsal.webp",
+        "bytes": 1093766,
+        "sha256": "c8b232fa9e0c02ecffee8816aaac5bb9b91855f4954ab82dfc6a1837a035ad10"
+      },
+      "selectedAttempt": null,
+      "generatedId": "avp-predator-mothership-bank-dorsal",
+      "assignedId": "avp-predator-mothership-bank-dorsal",
+      "assignmentNote": "Original generated assignment retained after visual shallow/deep comparison; no pixel alteration.",
+      "sourceBytesEqualCandidateAndOriginal": true,
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "mode": "RGBA",
+      "webpContainerChunks": [
+        {
+          "fourcc": "VP8L",
+          "bytes": 1093746
+        }
+      ],
+      "decodedEquality": {
+        "fullRgbaExact": true,
+        "rgbaBytes": 6291456,
+        "sourceRgbaSha256": "90c014aac468c01892ae46c7785cad8608bd8c4da1102889817d1ffa38e08b54",
+        "runtimeRgbaSha256": "90c014aac468c01892ae46c7785cad8608bd8c4da1102889817d1ffa38e08b54",
+        "differentPixels": 0,
+        "differentChannels": 0,
+        "maximumChannelDelta": 0,
+        "includesRgbUnderAlphaZero": true
+      },
+      "alpha": {
+        "minimum": 0,
+        "maximum": 254,
+        "maximumBorder": 1,
+        "above16Bounds": [
+          78,
+          223,
+          1460,
+          764
+        ],
+        "above16InsideCanvas": true,
+        "fullyTransparentPixels": 1102523
+      }
+    },
+    {
+      "shipId": "avp-predator-mothership",
+      "viewId": "rear-quarter-shallow",
+      "originalGenerated": {
+        "path": "/workspace/scratch/0c1fa1359efb/generated_images/exec-77e63587-1e41-4159-8980-5f83a492d239.png",
+        "bytes": 1673368,
+        "sha256": "1006279a873e93fb3b2c0b02c7aa005554496f5c8c87ab3c83313cf0ed9beff3"
+      },
+      "selectedCandidate": {
+        "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/candidates-avp-mothership/avp-predator-mothership-rear-quarter-shallow.png",
+        "bytes": 1673368,
+        "sha256": "1006279a873e93fb3b2c0b02c7aa005554496f5c8c87ab3c83313cf0ed9beff3"
+      },
+      "sourcePng": {
+        "path": "/workspace/scratch/af58a64ab248/yautja-ship-motion/production/ship-motion-fleet-20261106/art/sources/avp-predator-mothership/rear-quarter-shallow.png",
+        "bytes": 1673368,
+        "sha256": "1006279a873e93fb3b2c0b02c7aa005554496f5c8c87ab3c83313cf0ed9beff3"
+      },
+      "runtimeWebp": {
+        "path": "/workspace/scratch/af58a64ab248/yautja-ship-motion/public/game/planet-arrival/ship-motion-fleet-v1/avp-predator-mothership/rear-quarter-shallow.webp",
+        "bytes": 1055682,
+        "sha256": "ddf1a21a4759d66d41671715242beb1d0b1f22435315c636207e9aa24753107e"
+      },
+      "selectedAttempt": null,
+      "generatedId": "avp-predator-mothership-rear-quarter-shallow",
+      "assignedId": "avp-predator-mothership-rear-quarter-shallow",
+      "assignmentNote": "Original generated assignment retained after visual shallow/deep comparison; no pixel alteration.",
+      "sourceBytesEqualCandidateAndOriginal": true,
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "mode": "RGBA",
+      "webpContainerChunks": [
+        {
+          "fourcc": "VP8L",
+          "bytes": 1055662
+        }
+      ],
+      "decodedEquality": {
+        "fullRgbaExact": true,
+        "rgbaBytes": 6291456,
+        "sourceRgbaSha256": "26de36de1aa9b5dc79bb4546a6dfd032df94590037c27c79d3cfef40d02ddefb",
+        "runtimeRgbaSha256": "26de36de1aa9b5dc79bb4546a6dfd032df94590037c27c79d3cfef40d02ddefb",
+        "differentPixels": 0,
+        "differentChannels": 0,
+        "maximumChannelDelta": 0,
+        "includesRgbUnderAlphaZero": true
+      },
+      "alpha": {
+        "minimum": 0,
+        "maximum": 254,
+        "maximumBorder": 0,
+        "above16Bounds": [
+          114,
+          224,
+          1460,
+          744
+        ],
+        "above16InsideCanvas": true,
+        "fullyTransparentPixels": 1113333
+      }
+    },
+    {
+      "shipId": "avp-predator-mothership",
+      "viewId": "rear-quarter",
+      "originalGenerated": {
+        "path": "/workspace/scratch/0c1fa1359efb/generated_images/exec-400e0027-2d5a-4192-97bf-0a4a8bf9872c.png",
+        "bytes": 1732402,
+        "sha256": "afb80f5b2624bbebd06133e07e74cc6953c8da109bbc3169f21ceeec2d8917da"
+      },
+      "selectedCandidate": {
+        "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/candidates-avp-mothership/avp-predator-mothership-rear-quarter.png",
+        "bytes": 1732402,
+        "sha256": "afb80f5b2624bbebd06133e07e74cc6953c8da109bbc3169f21ceeec2d8917da"
+      },
+      "sourcePng": {
+        "path": "/workspace/scratch/af58a64ab248/yautja-ship-motion/production/ship-motion-fleet-20261106/art/sources/avp-predator-mothership/rear-quarter.png",
+        "bytes": 1732402,
+        "sha256": "afb80f5b2624bbebd06133e07e74cc6953c8da109bbc3169f21ceeec2d8917da"
+      },
+      "runtimeWebp": {
+        "path": "/workspace/scratch/af58a64ab248/yautja-ship-motion/public/game/planet-arrival/ship-motion-fleet-v1/avp-predator-mothership/rear-quarter.webp",
+        "bytes": 1076242,
+        "sha256": "70374c1f1a2c01982d7c826ba7077ad49a8488eaa362fbe51446030665b1ae0c"
+      },
+      "selectedAttempt": null,
+      "generatedId": "avp-predator-mothership-rear-quarter",
+      "assignedId": "avp-predator-mothership-rear-quarter",
+      "assignmentNote": "Original generated assignment retained after visual shallow/deep comparison; no pixel alteration.",
+      "sourceBytesEqualCandidateAndOriginal": true,
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "mode": "RGBA",
+      "webpContainerChunks": [
+        {
+          "fourcc": "VP8L",
+          "bytes": 1076221
+        }
+      ],
+      "decodedEquality": {
+        "fullRgbaExact": true,
+        "rgbaBytes": 6291456,
+        "sourceRgbaSha256": "ff8ca9945a7d8ed91e4ff4d3a08e94a76378de1bb4e61396b2392dcbac0add15",
+        "runtimeRgbaSha256": "ff8ca9945a7d8ed91e4ff4d3a08e94a76378de1bb4e61396b2392dcbac0add15",
+        "differentPixels": 0,
+        "differentChannels": 0,
+        "maximumChannelDelta": 0,
+        "includesRgbUnderAlphaZero": true
+      },
+      "alpha": {
+        "minimum": 0,
+        "maximum": 254,
+        "maximumBorder": 0,
+        "above16Bounds": [
+          196,
+          213,
+          1381,
+          780
+        ],
+        "above16InsideCanvas": true,
+        "fullyTransparentPixels": 1102993
+      }
+    },
+    {
+      "shipId": "avpr-scout-ship",
+      "viewId": "forward-quarter-shallow",
+      "originalGenerated": {
+        "path": "/workspace/scratch/0c1fa1359efb/generated_images/exec-c4f195fe-ff56-4103-9225-4860f2d87f4e.png",
+        "bytes": 1633436,
+        "sha256": "9763608a8a85c1f1ef9d505280d6b5356d56194b402188c2a6c429c5c2086b3b"
+      },
+      "selectedCandidate": {
+        "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/avpr-scout-ship/candidates/avpr-scout-ship-forward-quarter-shallow.png",
+        "bytes": 1633436,
+        "sha256": "9763608a8a85c1f1ef9d505280d6b5356d56194b402188c2a6c429c5c2086b3b"
+      },
+      "sourcePng": {
+        "path": "/workspace/scratch/af58a64ab248/yautja-ship-motion/production/ship-motion-fleet-20261106/art/sources/avpr-scout-ship/forward-quarter-shallow.png",
+        "bytes": 1633436,
+        "sha256": "9763608a8a85c1f1ef9d505280d6b5356d56194b402188c2a6c429c5c2086b3b"
+      },
+      "runtimeWebp": {
+        "path": "/workspace/scratch/af58a64ab248/yautja-ship-motion/public/game/planet-arrival/ship-motion-fleet-v1/avpr-scout-ship/forward-quarter-shallow.webp",
+        "bytes": 1050862,
+        "sha256": "9d8a772dd9bc675499c94af52449d9130a8bd8d6d2581ca617f74dbd37181506"
+      },
+      "selectedAttempt": 1,
+      "generatedId": null,
+      "assignedId": null,
+      "assignmentNote": null,
+      "sourceBytesEqualCandidateAndOriginal": true,
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "mode": "RGBA",
+      "webpContainerChunks": [
+        {
+          "fourcc": "VP8L",
+          "bytes": 1050841
+        }
+      ],
+      "decodedEquality": {
+        "fullRgbaExact": true,
+        "rgbaBytes": 6291456,
+        "sourceRgbaSha256": "f704891628cf4c5cf4d8b4f65be5f098533ec8d1d092fc3c1c409952dfc90cac",
+        "runtimeRgbaSha256": "f704891628cf4c5cf4d8b4f65be5f098533ec8d1d092fc3c1c409952dfc90cac",
+        "differentPixels": 0,
+        "differentChannels": 0,
+        "maximumChannelDelta": 0,
+        "includesRgbUnderAlphaZero": true
+      },
+      "alpha": {
+        "minimum": 0,
+        "maximum": 254,
+        "maximumBorder": 1,
+        "above16Bounds": [
+          101,
+          280,
+          1426,
+          716
+        ],
+        "above16InsideCanvas": true,
+        "fullyTransparentPixels": 1156018
+      }
+    },
+    {
+      "shipId": "avpr-scout-ship",
+      "viewId": "forward-quarter",
+      "originalGenerated": {
+        "path": "/workspace/scratch/0c1fa1359efb/generated_images/exec-4a1aa24c-f30d-41c1-b42b-1a0db0ddbd7f.png",
+        "bytes": 1818845,
+        "sha256": "892ee0d60cbec215e47f199af8fa9b8fd20a474191c840e14b94cbf8d5f04515"
+      },
+      "selectedCandidate": {
+        "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/avpr-scout-ship/candidates/avpr-scout-ship-forward-quarter.png",
+        "bytes": 1818845,
+        "sha256": "892ee0d60cbec215e47f199af8fa9b8fd20a474191c840e14b94cbf8d5f04515"
+      },
+      "sourcePng": {
+        "path": "/workspace/scratch/af58a64ab248/yautja-ship-motion/production/ship-motion-fleet-20261106/art/sources/avpr-scout-ship/forward-quarter.png",
+        "bytes": 1818845,
+        "sha256": "892ee0d60cbec215e47f199af8fa9b8fd20a474191c840e14b94cbf8d5f04515"
+      },
+      "runtimeWebp": {
+        "path": "/workspace/scratch/af58a64ab248/yautja-ship-motion/public/game/planet-arrival/ship-motion-fleet-v1/avpr-scout-ship/forward-quarter.webp",
+        "bytes": 1169136,
+        "sha256": "5f55c6428ff75f1f53fac47e903a2145a4f6d9a858ffd3e8570375bdb726a86a"
+      },
+      "selectedAttempt": 2,
+      "generatedId": null,
+      "assignedId": null,
+      "assignmentNote": null,
+      "sourceBytesEqualCandidateAndOriginal": true,
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "mode": "RGBA",
+      "webpContainerChunks": [
+        {
+          "fourcc": "VP8L",
+          "bytes": 1169115
+        }
+      ],
+      "decodedEquality": {
+        "fullRgbaExact": true,
+        "rgbaBytes": 6291456,
+        "sourceRgbaSha256": "dd1d796f2ff19d612b98a1b250b30881d643d24a78b42441ccc948699e846738",
+        "runtimeRgbaSha256": "dd1d796f2ff19d612b98a1b250b30881d643d24a78b42441ccc948699e846738",
+        "differentPixels": 0,
+        "differentChannels": 0,
+        "maximumChannelDelta": 0,
+        "includesRgbUnderAlphaZero": true
+      },
+      "alpha": {
+        "minimum": 0,
+        "maximum": 254,
+        "maximumBorder": 1,
+        "above16Bounds": [
+          94,
+          255,
+          1448,
+          753
+        ],
+        "above16InsideCanvas": true,
+        "fullyTransparentPixels": 1081532
+      }
+    },
+    {
+      "shipId": "avpr-scout-ship",
+      "viewId": "bank-dorsal-shallow",
+      "originalGenerated": {
+        "path": "/workspace/scratch/0c1fa1359efb/generated_images/exec-32d0ca86-fc2e-4569-9589-012dafa0bb95.png",
+        "bytes": 1547913,
+        "sha256": "cf2f617b0c98b7cd2f383dbadbd89757626ac9493747582e11a3b24f94e91f6a"
+      },
+      "selectedCandidate": {
+        "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/avpr-scout-ship/candidates/avpr-scout-ship-bank-dorsal-shallow.png",
+        "bytes": 1547913,
+        "sha256": "cf2f617b0c98b7cd2f383dbadbd89757626ac9493747582e11a3b24f94e91f6a"
+      },
+      "sourcePng": {
+        "path": "/workspace/scratch/af58a64ab248/yautja-ship-motion/production/ship-motion-fleet-20261106/art/sources/avpr-scout-ship/bank-dorsal-shallow.png",
+        "bytes": 1547913,
+        "sha256": "cf2f617b0c98b7cd2f383dbadbd89757626ac9493747582e11a3b24f94e91f6a"
+      },
+      "runtimeWebp": {
+        "path": "/workspace/scratch/af58a64ab248/yautja-ship-motion/public/game/planet-arrival/ship-motion-fleet-v1/avpr-scout-ship/bank-dorsal-shallow.webp",
+        "bytes": 988166,
+        "sha256": "a15b8a0f008de97de17154a241ca204d3795b09a58726dadf9cab4cb7d4065c5"
+      },
+      "selectedAttempt": 2,
+      "generatedId": null,
+      "assignedId": null,
+      "assignmentNote": null,
+      "sourceBytesEqualCandidateAndOriginal": true,
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "mode": "RGBA",
+      "webpContainerChunks": [
+        {
+          "fourcc": "VP8L",
+          "bytes": 988146
+        }
+      ],
+      "decodedEquality": {
+        "fullRgbaExact": true,
+        "rgbaBytes": 6291456,
+        "sourceRgbaSha256": "be1e0be4c8bd256774b53a1ba29f86b8f398a03a49d2604f8035baa1ee2915c2",
+        "runtimeRgbaSha256": "be1e0be4c8bd256774b53a1ba29f86b8f398a03a49d2604f8035baa1ee2915c2",
+        "differentPixels": 0,
+        "differentChannels": 0,
+        "maximumChannelDelta": 0,
+        "includesRgbUnderAlphaZero": true
+      },
+      "alpha": {
+        "minimum": 0,
+        "maximum": 254,
+        "maximumBorder": 1,
+        "above16Bounds": [
+          104,
+          302,
+          1428,
+          721
+        ],
+        "above16InsideCanvas": true,
+        "fullyTransparentPixels": 1163869
+      }
+    },
+    {
+      "shipId": "avpr-scout-ship",
+      "viewId": "bank-dorsal",
+      "originalGenerated": {
+        "path": "/workspace/scratch/0c1fa1359efb/generated_images/exec-6f61e224-0ee4-4164-b264-5fd77fff1558.png",
+        "bytes": 1794516,
+        "sha256": "eaa0ad6e3cb897cfa6ea9206b15eea83264df89576ef1d1b235ae119c2b42862"
+      },
+      "selectedCandidate": {
+        "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/avpr-scout-ship/candidates/avpr-scout-ship-bank-dorsal.png",
+        "bytes": 1794516,
+        "sha256": "eaa0ad6e3cb897cfa6ea9206b15eea83264df89576ef1d1b235ae119c2b42862"
+      },
+      "sourcePng": {
+        "path": "/workspace/scratch/af58a64ab248/yautja-ship-motion/production/ship-motion-fleet-20261106/art/sources/avpr-scout-ship/bank-dorsal.png",
+        "bytes": 1794516,
+        "sha256": "eaa0ad6e3cb897cfa6ea9206b15eea83264df89576ef1d1b235ae119c2b42862"
+      },
+      "runtimeWebp": {
+        "path": "/workspace/scratch/af58a64ab248/yautja-ship-motion/public/game/planet-arrival/ship-motion-fleet-v1/avpr-scout-ship/bank-dorsal.webp",
+        "bytes": 1164226,
+        "sha256": "6eeb9972b61291545b8965ef7018d9a5e5b647b18e9f84e6059770984fcddfeb"
+      },
+      "selectedAttempt": 1,
+      "generatedId": null,
+      "assignedId": null,
+      "assignmentNote": null,
+      "sourceBytesEqualCandidateAndOriginal": true,
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "mode": "RGBA",
+      "webpContainerChunks": [
+        {
+          "fourcc": "VP8L",
+          "bytes": 1164206
+        }
+      ],
+      "decodedEquality": {
+        "fullRgbaExact": true,
+        "rgbaBytes": 6291456,
+        "sourceRgbaSha256": "4ea719a47b5cce1993b62d2621cf4a4651ac6f052fc74a88a91371cc6f0825d3",
+        "runtimeRgbaSha256": "4ea719a47b5cce1993b62d2621cf4a4651ac6f052fc74a88a91371cc6f0825d3",
+        "differentPixels": 0,
+        "differentChannels": 0,
+        "maximumChannelDelta": 0,
+        "includesRgbUnderAlphaZero": true
+      },
+      "alpha": {
+        "minimum": 0,
+        "maximum": 254,
+        "maximumBorder": 1,
+        "above16Bounds": [
+          97,
+          292,
+          1438,
+          751
+        ],
+        "above16InsideCanvas": true,
+        "fullyTransparentPixels": 1107891
+      }
+    },
+    {
+      "shipId": "avpr-scout-ship",
+      "viewId": "bank-ventral-shallow",
+      "originalGenerated": {
+        "path": "/workspace/scratch/0c1fa1359efb/generated_images/exec-09173d3c-6ecf-43e7-a8eb-1dedada06795.png",
+        "bytes": 1578905,
+        "sha256": "a1f28447723b497bff5a2a44e3584d7ca99ec699351a75cc7e90add4be356023"
+      },
+      "selectedCandidate": {
+        "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/avpr-scout-ship/candidates/avpr-scout-ship-bank-ventral-shallow.png",
+        "bytes": 1578905,
+        "sha256": "a1f28447723b497bff5a2a44e3584d7ca99ec699351a75cc7e90add4be356023"
+      },
+      "sourcePng": {
+        "path": "/workspace/scratch/af58a64ab248/yautja-ship-motion/production/ship-motion-fleet-20261106/art/sources/avpr-scout-ship/bank-ventral-shallow.png",
+        "bytes": 1578905,
+        "sha256": "a1f28447723b497bff5a2a44e3584d7ca99ec699351a75cc7e90add4be356023"
+      },
+      "runtimeWebp": {
+        "path": "/workspace/scratch/af58a64ab248/yautja-ship-motion/public/game/planet-arrival/ship-motion-fleet-v1/avpr-scout-ship/bank-ventral-shallow.webp",
+        "bytes": 1027588,
+        "sha256": "0ff7550d34a55e1cb989d5ccdc4a886ed2c143276641b92c731c10e844054980"
+      },
+      "selectedAttempt": 1,
+      "generatedId": null,
+      "assignedId": null,
+      "assignmentNote": null,
+      "sourceBytesEqualCandidateAndOriginal": true,
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "mode": "RGBA",
+      "webpContainerChunks": [
+        {
+          "fourcc": "VP8L",
+          "bytes": 1027567
+        }
+      ],
+      "decodedEquality": {
+        "fullRgbaExact": true,
+        "rgbaBytes": 6291456,
+        "sourceRgbaSha256": "79ef048507522b36d5db04b80c417891cfbfdec644a7e73df5cbd472afecc642",
+        "runtimeRgbaSha256": "79ef048507522b36d5db04b80c417891cfbfdec644a7e73df5cbd472afecc642",
+        "differentPixels": 0,
+        "differentChannels": 0,
+        "maximumChannelDelta": 0,
+        "includesRgbUnderAlphaZero": true
+      },
+      "alpha": {
+        "minimum": 0,
+        "maximum": 254,
+        "maximumBorder": 1,
+        "above16Bounds": [
+          75,
+          310,
+          1460,
+          719
+        ],
+        "above16InsideCanvas": true,
+        "fullyTransparentPixels": 1154966
+      }
+    },
+    {
+      "shipId": "avpr-scout-ship",
+      "viewId": "bank-ventral",
+      "originalGenerated": {
+        "path": "/workspace/scratch/0c1fa1359efb/generated_images/exec-2aadf00e-1e7d-430c-905c-85ab35053fe6.png",
+        "bytes": 1681772,
+        "sha256": "1c278b14da4c23f623f0167977a3c6bec408f1287f4e5171bf1205d15acbc34a"
+      },
+      "selectedCandidate": {
+        "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/avpr-scout-ship/candidates/avpr-scout-ship-bank-ventral.png",
+        "bytes": 1681772,
+        "sha256": "1c278b14da4c23f623f0167977a3c6bec408f1287f4e5171bf1205d15acbc34a"
+      },
+      "sourcePng": {
+        "path": "/workspace/scratch/af58a64ab248/yautja-ship-motion/production/ship-motion-fleet-20261106/art/sources/avpr-scout-ship/bank-ventral.png",
+        "bytes": 1681772,
+        "sha256": "1c278b14da4c23f623f0167977a3c6bec408f1287f4e5171bf1205d15acbc34a"
+      },
+      "runtimeWebp": {
+        "path": "/workspace/scratch/af58a64ab248/yautja-ship-motion/public/game/planet-arrival/ship-motion-fleet-v1/avpr-scout-ship/bank-ventral.webp",
+        "bytes": 1082008,
+        "sha256": "f7cf6828148c104a29bbe1ff5838211ab34bb0c4483bccba679156535bb84603"
+      },
+      "selectedAttempt": 1,
+      "generatedId": null,
+      "assignedId": null,
+      "assignmentNote": null,
+      "sourceBytesEqualCandidateAndOriginal": true,
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "mode": "RGBA",
+      "webpContainerChunks": [
+        {
+          "fourcc": "VP8L",
+          "bytes": 1081988
+        }
+      ],
+      "decodedEquality": {
+        "fullRgbaExact": true,
+        "rgbaBytes": 6291456,
+        "sourceRgbaSha256": "0c2fe54f008e7d046904fd819fb6a6eb1c078eddde24db6dbfd79c5200d3baa1",
+        "runtimeRgbaSha256": "0c2fe54f008e7d046904fd819fb6a6eb1c078eddde24db6dbfd79c5200d3baa1",
+        "differentPixels": 0,
+        "differentChannels": 0,
+        "maximumChannelDelta": 0,
+        "includesRgbUnderAlphaZero": true
+      },
+      "alpha": {
+        "minimum": 0,
+        "maximum": 254,
+        "maximumBorder": 1,
+        "above16Bounds": [
+          83,
+          274,
+          1455,
+          735
+        ],
+        "above16InsideCanvas": true,
+        "fullyTransparentPixels": 1124506
+      }
+    },
+    {
+      "shipId": "avpr-scout-ship",
+      "viewId": "rear-quarter-shallow",
+      "originalGenerated": {
+        "path": "/workspace/scratch/0c1fa1359efb/generated_images/exec-d40f1aaa-e849-4e79-aed3-2b1a597e9b4e.png",
+        "bytes": 1573033,
+        "sha256": "217ace5ee7a180c8934ff9fa2e14972b73660caa713c938a792e70257c7ff3e6"
+      },
+      "selectedCandidate": {
+        "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/avpr-scout-ship/candidates/avpr-scout-ship-rear-quarter-shallow.png",
+        "bytes": 1573033,
+        "sha256": "217ace5ee7a180c8934ff9fa2e14972b73660caa713c938a792e70257c7ff3e6"
+      },
+      "sourcePng": {
+        "path": "/workspace/scratch/af58a64ab248/yautja-ship-motion/production/ship-motion-fleet-20261106/art/sources/avpr-scout-ship/rear-quarter-shallow.png",
+        "bytes": 1573033,
+        "sha256": "217ace5ee7a180c8934ff9fa2e14972b73660caa713c938a792e70257c7ff3e6"
+      },
+      "runtimeWebp": {
+        "path": "/workspace/scratch/af58a64ab248/yautja-ship-motion/public/game/planet-arrival/ship-motion-fleet-v1/avpr-scout-ship/rear-quarter-shallow.webp",
+        "bytes": 1013026,
+        "sha256": "6d11329811c03bc0e59e1aa4a60b5fec2c7983b2e82bce995da3a58099761d9c"
+      },
+      "selectedAttempt": 1,
+      "generatedId": null,
+      "assignedId": null,
+      "assignmentNote": null,
+      "sourceBytesEqualCandidateAndOriginal": true,
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "mode": "RGBA",
+      "webpContainerChunks": [
+        {
+          "fourcc": "VP8L",
+          "bytes": 1013005
+        }
+      ],
+      "decodedEquality": {
+        "fullRgbaExact": true,
+        "rgbaBytes": 6291456,
+        "sourceRgbaSha256": "9d88b180baec716261a4748f60d2fb1f6c1576468cd504e7d2c6ff6eea054871",
+        "runtimeRgbaSha256": "9d88b180baec716261a4748f60d2fb1f6c1576468cd504e7d2c6ff6eea054871",
+        "differentPixels": 0,
+        "differentChannels": 0,
+        "maximumChannelDelta": 0,
+        "includesRgbUnderAlphaZero": true
+      },
+      "alpha": {
+        "minimum": 0,
+        "maximum": 254,
+        "maximumBorder": 1,
+        "above16Bounds": [
+          105,
+          299,
+          1436,
+          718
+        ],
+        "above16InsideCanvas": true,
+        "fullyTransparentPixels": 1170634
+      }
+    },
+    {
+      "shipId": "avpr-scout-ship",
+      "viewId": "rear-quarter",
+      "originalGenerated": {
+        "path": "/workspace/scratch/0c1fa1359efb/generated_images/exec-671b4496-8262-4e9d-9baf-85d92d599d06.png",
+        "bytes": 1573765,
+        "sha256": "184e0bb9a52cf7056ccc7207239fa85b11db56e2d03e7f03c12e059b4e22b787"
+      },
+      "selectedCandidate": {
+        "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/avpr-scout-ship/candidates/avpr-scout-ship-rear-quarter.png",
+        "bytes": 1573765,
+        "sha256": "184e0bb9a52cf7056ccc7207239fa85b11db56e2d03e7f03c12e059b4e22b787"
+      },
+      "sourcePng": {
+        "path": "/workspace/scratch/af58a64ab248/yautja-ship-motion/production/ship-motion-fleet-20261106/art/sources/avpr-scout-ship/rear-quarter.png",
+        "bytes": 1573765,
+        "sha256": "184e0bb9a52cf7056ccc7207239fa85b11db56e2d03e7f03c12e059b4e22b787"
+      },
+      "runtimeWebp": {
+        "path": "/workspace/scratch/af58a64ab248/yautja-ship-motion/public/game/planet-arrival/ship-motion-fleet-v1/avpr-scout-ship/rear-quarter.webp",
+        "bytes": 1005238,
+        "sha256": "f33fe01275befbdcb53fb4becd20a8d616f8a472171d3d403cd520914bff4b29"
+      },
+      "selectedAttempt": 1,
+      "generatedId": null,
+      "assignedId": null,
+      "assignmentNote": null,
+      "sourceBytesEqualCandidateAndOriginal": true,
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "mode": "RGBA",
+      "webpContainerChunks": [
+        {
+          "fourcc": "VP8L",
+          "bytes": 1005218
+        }
+      ],
+      "decodedEquality": {
+        "fullRgbaExact": true,
+        "rgbaBytes": 6291456,
+        "sourceRgbaSha256": "55cfe19017f74b84530ea5b9c81b46ff1435c8de943f67f2c29e7244d3248c41",
+        "runtimeRgbaSha256": "55cfe19017f74b84530ea5b9c81b46ff1435c8de943f67f2c29e7244d3248c41",
+        "differentPixels": 0,
+        "differentChannels": 0,
+        "maximumChannelDelta": 0,
+        "includesRgbUnderAlphaZero": true
+      },
+      "alpha": {
+        "minimum": 0,
+        "maximum": 254,
+        "maximumBorder": 1,
+        "above16Bounds": [
+          96,
+          257,
+          1435,
+          744
+        ],
+        "above16InsideCanvas": true,
+        "fullyTransparentPixels": 1111458
+      }
+    },
+    {
+      "shipId": "feral-spaceship",
+      "viewId": "forward-quarter-shallow",
+      "originalGenerated": {
+        "path": "/workspace/scratch/0c1fa1359efb/generated_images/exec-f6208dd9-7cc6-49f2-9a0f-c47b1b975e9f.png",
+        "bytes": 1711106,
+        "sha256": "8e78489b51cd151c459ee0e528c3248d81f83f1158b78082587ce9d217622d70"
+      },
+      "selectedCandidate": {
+        "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/feral-spaceship/candidates/forward-quarter-shallow.png",
+        "bytes": 1711106,
+        "sha256": "8e78489b51cd151c459ee0e528c3248d81f83f1158b78082587ce9d217622d70"
+      },
+      "sourcePng": {
+        "path": "/workspace/scratch/af58a64ab248/yautja-ship-motion/production/ship-motion-fleet-20261106/art/sources/feral-spaceship/forward-quarter-shallow.png",
+        "bytes": 1711106,
+        "sha256": "8e78489b51cd151c459ee0e528c3248d81f83f1158b78082587ce9d217622d70"
+      },
+      "runtimeWebp": {
+        "path": "/workspace/scratch/af58a64ab248/yautja-ship-motion/public/game/planet-arrival/ship-motion-fleet-v1/feral-spaceship/forward-quarter-shallow.webp",
+        "bytes": 1105192,
+        "sha256": "1a7222d8317208a69cf321478f71c9ec11b80cf8661c6f23cabd24a34a06400c"
+      },
+      "selectedAttempt": 1,
+      "generatedId": null,
+      "assignedId": null,
+      "assignmentNote": null,
+      "sourceBytesEqualCandidateAndOriginal": true,
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "mode": "RGBA",
+      "webpContainerChunks": [
+        {
+          "fourcc": "VP8L",
+          "bytes": 1105172
+        }
+      ],
+      "decodedEquality": {
+        "fullRgbaExact": true,
+        "rgbaBytes": 6291456,
+        "sourceRgbaSha256": "6b1ac930b4fab9654b1a4bc80447776c9b48bce32862bd8500212c3df082f05a",
+        "runtimeRgbaSha256": "6b1ac930b4fab9654b1a4bc80447776c9b48bce32862bd8500212c3df082f05a",
+        "differentPixels": 0,
+        "differentChannels": 0,
+        "maximumChannelDelta": 0,
+        "includesRgbUnderAlphaZero": true
+      },
+      "alpha": {
+        "minimum": 0,
+        "maximum": 254,
+        "maximumBorder": 0,
+        "above16Bounds": [
+          39,
+          234,
+          1474,
+          751
+        ],
+        "above16InsideCanvas": true,
+        "fullyTransparentPixels": 1072517
+      }
+    },
+    {
+      "shipId": "feral-spaceship",
+      "viewId": "forward-quarter",
+      "originalGenerated": {
+        "path": "/workspace/scratch/0c1fa1359efb/generated_images/exec-815618f1-0854-44d5-a374-316e1e5115cd.png",
+        "bytes": 1975187,
+        "sha256": "6b2ba455174d1de1ec8a5f669c09347b1b17e8c6e907eeb5528cad35d1857a2c"
+      },
+      "selectedCandidate": {
+        "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/feral-spaceship/candidates/forward-quarter.png",
+        "bytes": 1975187,
+        "sha256": "6b2ba455174d1de1ec8a5f669c09347b1b17e8c6e907eeb5528cad35d1857a2c"
+      },
+      "sourcePng": {
+        "path": "/workspace/scratch/af58a64ab248/yautja-ship-motion/production/ship-motion-fleet-20261106/art/sources/feral-spaceship/forward-quarter.png",
+        "bytes": 1975187,
+        "sha256": "6b2ba455174d1de1ec8a5f669c09347b1b17e8c6e907eeb5528cad35d1857a2c"
+      },
+      "runtimeWebp": {
+        "path": "/workspace/scratch/af58a64ab248/yautja-ship-motion/public/game/planet-arrival/ship-motion-fleet-v1/feral-spaceship/forward-quarter.webp",
+        "bytes": 1270468,
+        "sha256": "992a1204474d4ae189f4558719e20a54e3e902f27a1a8e15f155d07b9f5a0eac"
+      },
+      "selectedAttempt": 1,
+      "generatedId": null,
+      "assignedId": null,
+      "assignmentNote": null,
+      "sourceBytesEqualCandidateAndOriginal": true,
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "mode": "RGBA",
+      "webpContainerChunks": [
+        {
+          "fourcc": "VP8L",
+          "bytes": 1270448
+        }
+      ],
+      "decodedEquality": {
+        "fullRgbaExact": true,
+        "rgbaBytes": 6291456,
+        "sourceRgbaSha256": "83d767bbd813f0f55f9b793183cd80658933056e9050e1206ebe5368a7e3d0ac",
+        "runtimeRgbaSha256": "83d767bbd813f0f55f9b793183cd80658933056e9050e1206ebe5368a7e3d0ac",
+        "differentPixels": 0,
+        "differentChannels": 0,
+        "maximumChannelDelta": 0,
+        "includesRgbUnderAlphaZero": true
+      },
+      "alpha": {
+        "minimum": 0,
+        "maximum": 254,
+        "maximumBorder": 1,
+        "above16Bounds": [
+          59,
+          190,
+          1423,
+          800
+        ],
+        "above16InsideCanvas": true,
+        "fullyTransparentPixels": 998825
+      }
+    },
+    {
+      "shipId": "feral-spaceship",
+      "viewId": "bank-dorsal-shallow",
+      "originalGenerated": {
+        "path": "/workspace/scratch/0c1fa1359efb/generated_images/exec-66ad936f-5e30-489d-a0e9-b140be691272.png",
+        "bytes": 1832826,
+        "sha256": "89877ab8536f44d28d428b3ac213d3184ef523ffb6f579be638e20c836fa4473"
+      },
+      "selectedCandidate": {
+        "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/feral-spaceship/candidates/bank-dorsal-shallow.png",
+        "bytes": 1832826,
+        "sha256": "89877ab8536f44d28d428b3ac213d3184ef523ffb6f579be638e20c836fa4473"
+      },
+      "sourcePng": {
+        "path": "/workspace/scratch/af58a64ab248/yautja-ship-motion/production/ship-motion-fleet-20261106/art/sources/feral-spaceship/bank-dorsal-shallow.png",
+        "bytes": 1832826,
+        "sha256": "89877ab8536f44d28d428b3ac213d3184ef523ffb6f579be638e20c836fa4473"
+      },
+      "runtimeWebp": {
+        "path": "/workspace/scratch/af58a64ab248/yautja-ship-motion/public/game/planet-arrival/ship-motion-fleet-v1/feral-spaceship/bank-dorsal-shallow.webp",
+        "bytes": 1175772,
+        "sha256": "47c2a303c2a30b6e6a753fcfcbe3409a389ee604fa6c98ee16766c551cb5872c"
+      },
+      "selectedAttempt": 1,
+      "generatedId": null,
+      "assignedId": null,
+      "assignmentNote": null,
+      "sourceBytesEqualCandidateAndOriginal": true,
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "mode": "RGBA",
+      "webpContainerChunks": [
+        {
+          "fourcc": "VP8L",
+          "bytes": 1175752
+        }
+      ],
+      "decodedEquality": {
+        "fullRgbaExact": true,
+        "rgbaBytes": 6291456,
+        "sourceRgbaSha256": "99eea702d2bddfbe43ac2acb50cec6f9336ddeaffe09293d5dc62674cabdcd45",
+        "runtimeRgbaSha256": "99eea702d2bddfbe43ac2acb50cec6f9336ddeaffe09293d5dc62674cabdcd45",
+        "differentPixels": 0,
+        "differentChannels": 0,
+        "maximumChannelDelta": 0,
+        "includesRgbUnderAlphaZero": true
+      },
+      "alpha": {
+        "minimum": 0,
+        "maximum": 254,
+        "maximumBorder": 1,
+        "above16Bounds": [
+          80,
+          200,
+          1455,
+          827
+        ],
+        "above16InsideCanvas": true,
+        "fullyTransparentPixels": 1031720
+      }
+    },
+    {
+      "shipId": "feral-spaceship",
+      "viewId": "bank-dorsal",
+      "originalGenerated": {
+        "path": "/workspace/scratch/0c1fa1359efb/generated_images/exec-9ac54bec-4c22-47f9-b642-2a281e94059d.png",
+        "bytes": 2201237,
+        "sha256": "083e7f4bd2bdcb646dd00a662ae9e5dfabfb77537a9aa9fc35c62741ac423f1c"
+      },
+      "selectedCandidate": {
+        "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/feral-spaceship/candidates/bank-dorsal.png",
+        "bytes": 2201237,
+        "sha256": "083e7f4bd2bdcb646dd00a662ae9e5dfabfb77537a9aa9fc35c62741ac423f1c"
+      },
+      "sourcePng": {
+        "path": "/workspace/scratch/af58a64ab248/yautja-ship-motion/production/ship-motion-fleet-20261106/art/sources/feral-spaceship/bank-dorsal.png",
+        "bytes": 2201237,
+        "sha256": "083e7f4bd2bdcb646dd00a662ae9e5dfabfb77537a9aa9fc35c62741ac423f1c"
+      },
+      "runtimeWebp": {
+        "path": "/workspace/scratch/af58a64ab248/yautja-ship-motion/public/game/planet-arrival/ship-motion-fleet-v1/feral-spaceship/bank-dorsal.webp",
+        "bytes": 1362840,
+        "sha256": "d0cd2b2dbecf9587a305a54c8979563067e145dad88b4d3e7628657c7dcd5844"
+      },
+      "selectedAttempt": 2,
+      "generatedId": null,
+      "assignedId": null,
+      "assignmentNote": null,
+      "sourceBytesEqualCandidateAndOriginal": true,
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "mode": "RGBA",
+      "webpContainerChunks": [
+        {
+          "fourcc": "VP8L",
+          "bytes": 1362820
+        }
+      ],
+      "decodedEquality": {
+        "fullRgbaExact": true,
+        "rgbaBytes": 6291456,
+        "sourceRgbaSha256": "8c8d2670417cf411331387b12019ab5131e1863c4461f285441b46ff7ad596f4",
+        "runtimeRgbaSha256": "8c8d2670417cf411331387b12019ab5131e1863c4461f285441b46ff7ad596f4",
+        "differentPixels": 0,
+        "differentChannels": 0,
+        "maximumChannelDelta": 0,
+        "includesRgbUnderAlphaZero": true
+      },
+      "alpha": {
+        "minimum": 0,
+        "maximum": 254,
+        "maximumBorder": 1,
+        "above16Bounds": [
+          152,
+          58,
+          1404,
+          928
+        ],
+        "above16InsideCanvas": true,
+        "fullyTransparentPixels": 888951
+      }
+    },
+    {
+      "shipId": "feral-spaceship",
+      "viewId": "bank-ventral-shallow",
+      "originalGenerated": {
+        "path": "/workspace/scratch/0c1fa1359efb/generated_images/exec-df7749b0-d01d-45ff-b77b-c4362a7b6299.png",
+        "bytes": 1522723,
+        "sha256": "b7f343bb0031b328135319057937ad818e86c6d2d1c5817920e34238fbdfbde7"
+      },
+      "selectedCandidate": {
+        "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/feral-spaceship/candidates/bank-ventral-shallow.png",
+        "bytes": 1522723,
+        "sha256": "b7f343bb0031b328135319057937ad818e86c6d2d1c5817920e34238fbdfbde7"
+      },
+      "sourcePng": {
+        "path": "/workspace/scratch/af58a64ab248/yautja-ship-motion/production/ship-motion-fleet-20261106/art/sources/feral-spaceship/bank-ventral-shallow.png",
+        "bytes": 1522723,
+        "sha256": "b7f343bb0031b328135319057937ad818e86c6d2d1c5817920e34238fbdfbde7"
+      },
+      "runtimeWebp": {
+        "path": "/workspace/scratch/af58a64ab248/yautja-ship-motion/public/game/planet-arrival/ship-motion-fleet-v1/feral-spaceship/bank-ventral-shallow.webp",
+        "bytes": 997732,
+        "sha256": "df99443cedefddf1f4cd739051a6d744b71617ec7bedeb8ada81a4ef31e05b2c"
+      },
+      "selectedAttempt": 1,
+      "generatedId": null,
+      "assignedId": null,
+      "assignmentNote": null,
+      "sourceBytesEqualCandidateAndOriginal": true,
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "mode": "RGBA",
+      "webpContainerChunks": [
+        {
+          "fourcc": "VP8L",
+          "bytes": 997711
+        }
+      ],
+      "decodedEquality": {
+        "fullRgbaExact": true,
+        "rgbaBytes": 6291456,
+        "sourceRgbaSha256": "3c87b2363975406d26bce616ed4b1ac4e087eea2341315083d8fb5877e3fff64",
+        "runtimeRgbaSha256": "3c87b2363975406d26bce616ed4b1ac4e087eea2341315083d8fb5877e3fff64",
+        "differentPixels": 0,
+        "differentChannels": 0,
+        "maximumChannelDelta": 0,
+        "includesRgbUnderAlphaZero": true
+      },
+      "alpha": {
+        "minimum": 0,
+        "maximum": 254,
+        "maximumBorder": 0,
+        "above16Bounds": [
+          39,
+          250,
+          1495,
+          700
+        ],
+        "above16InsideCanvas": true,
+        "fullyTransparentPixels": 1152029
+      }
+    },
+    {
+      "shipId": "feral-spaceship",
+      "viewId": "bank-ventral",
+      "originalGenerated": {
+        "path": "/workspace/scratch/0c1fa1359efb/generated_images/exec-7857b78f-bc9a-4951-ac97-09b3b6ab4f33.png",
+        "bytes": 1681646,
+        "sha256": "9c5858121b6946f232dc45fd7bd7739a3ed2810d11455760238329ab83c9b0a8"
+      },
+      "selectedCandidate": {
+        "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/feral-spaceship/candidates/bank-ventral.png",
+        "bytes": 1681646,
+        "sha256": "9c5858121b6946f232dc45fd7bd7739a3ed2810d11455760238329ab83c9b0a8"
+      },
+      "sourcePng": {
+        "path": "/workspace/scratch/af58a64ab248/yautja-ship-motion/production/ship-motion-fleet-20261106/art/sources/feral-spaceship/bank-ventral.png",
+        "bytes": 1681646,
+        "sha256": "9c5858121b6946f232dc45fd7bd7739a3ed2810d11455760238329ab83c9b0a8"
+      },
+      "runtimeWebp": {
+        "path": "/workspace/scratch/af58a64ab248/yautja-ship-motion/public/game/planet-arrival/ship-motion-fleet-v1/feral-spaceship/bank-ventral.webp",
+        "bytes": 1108760,
+        "sha256": "f0b94c401fd2a09a0286fe2aa047f236a054e0da134c59415eab0e6434f12953"
+      },
+      "selectedAttempt": 1,
+      "generatedId": null,
+      "assignedId": null,
+      "assignmentNote": null,
+      "sourceBytesEqualCandidateAndOriginal": true,
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "mode": "RGBA",
+      "webpContainerChunks": [
+        {
+          "fourcc": "VP8L",
+          "bytes": 1108739
+        }
+      ],
+      "decodedEquality": {
+        "fullRgbaExact": true,
+        "rgbaBytes": 6291456,
+        "sourceRgbaSha256": "85b423b70eda0200bf2309101dc431ac6e44767c398ed20ee28e24a729c04455",
+        "runtimeRgbaSha256": "85b423b70eda0200bf2309101dc431ac6e44767c398ed20ee28e24a729c04455",
+        "differentPixels": 0,
+        "differentChannels": 0,
+        "maximumChannelDelta": 0,
+        "includesRgbUnderAlphaZero": true
+      },
+      "alpha": {
+        "minimum": 0,
+        "maximum": 254,
+        "maximumBorder": 1,
+        "above16Bounds": [
+          27,
+          239,
+          1521,
+          781
+        ],
+        "above16InsideCanvas": true,
+        "fullyTransparentPixels": 1074686
+      }
+    },
+    {
+      "shipId": "feral-spaceship",
+      "viewId": "rear-quarter-shallow",
+      "originalGenerated": {
+        "path": "/workspace/scratch/0c1fa1359efb/generated_images/exec-b44f2d81-3f6e-4c74-810a-bc407691e324.png",
+        "bytes": 1704646,
+        "sha256": "26ae2bd3646e061322f0f55ba9dc79b31609d362d79791b3d888550f8e8cb7dd"
+      },
+      "selectedCandidate": {
+        "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/feral-spaceship/candidates/rear-quarter-shallow.png",
+        "bytes": 1704646,
+        "sha256": "26ae2bd3646e061322f0f55ba9dc79b31609d362d79791b3d888550f8e8cb7dd"
+      },
+      "sourcePng": {
+        "path": "/workspace/scratch/af58a64ab248/yautja-ship-motion/production/ship-motion-fleet-20261106/art/sources/feral-spaceship/rear-quarter-shallow.png",
+        "bytes": 1704646,
+        "sha256": "26ae2bd3646e061322f0f55ba9dc79b31609d362d79791b3d888550f8e8cb7dd"
+      },
+      "runtimeWebp": {
+        "path": "/workspace/scratch/af58a64ab248/yautja-ship-motion/public/game/planet-arrival/ship-motion-fleet-v1/feral-spaceship/rear-quarter-shallow.webp",
+        "bytes": 1094664,
+        "sha256": "ff7b8b8100b35e7e6baf5e6903de72bc861d6dd4eb088e3e98d1d4273f693b09"
+      },
+      "selectedAttempt": 1,
+      "generatedId": null,
+      "assignedId": null,
+      "assignmentNote": null,
+      "sourceBytesEqualCandidateAndOriginal": true,
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "mode": "RGBA",
+      "webpContainerChunks": [
+        {
+          "fourcc": "VP8L",
+          "bytes": 1094644
+        }
+      ],
+      "decodedEquality": {
+        "fullRgbaExact": true,
+        "rgbaBytes": 6291456,
+        "sourceRgbaSha256": "d9bb66b340e541ab3abf173abcc024abdef14e6dffe1407f7b063539ebab5bab",
+        "runtimeRgbaSha256": "d9bb66b340e541ab3abf173abcc024abdef14e6dffe1407f7b063539ebab5bab",
+        "differentPixels": 0,
+        "differentChannels": 0,
+        "maximumChannelDelta": 0,
+        "includesRgbUnderAlphaZero": true
+      },
+      "alpha": {
+        "minimum": 0,
+        "maximum": 254,
+        "maximumBorder": 0,
+        "above16Bounds": [
+          62,
+          224,
+          1464,
+          759
+        ],
+        "above16InsideCanvas": true,
+        "fullyTransparentPixels": 1079640
+      }
+    },
+    {
+      "shipId": "feral-spaceship",
+      "viewId": "rear-quarter",
+      "originalGenerated": {
+        "path": "/workspace/scratch/0c1fa1359efb/generated_images/exec-183e05d4-62af-4420-8203-b15878af1b2b.png",
+        "bytes": 1927447,
+        "sha256": "5d4b524887ab6d8ebcfa83a0bbd176a8c0668d556a9fa2342910323048f79cc1"
+      },
+      "selectedCandidate": {
+        "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/feral-spaceship/candidates/rear-quarter.png",
+        "bytes": 1927447,
+        "sha256": "5d4b524887ab6d8ebcfa83a0bbd176a8c0668d556a9fa2342910323048f79cc1"
+      },
+      "sourcePng": {
+        "path": "/workspace/scratch/af58a64ab248/yautja-ship-motion/production/ship-motion-fleet-20261106/art/sources/feral-spaceship/rear-quarter.png",
+        "bytes": 1927447,
+        "sha256": "5d4b524887ab6d8ebcfa83a0bbd176a8c0668d556a9fa2342910323048f79cc1"
+      },
+      "runtimeWebp": {
+        "path": "/workspace/scratch/af58a64ab248/yautja-ship-motion/public/game/planet-arrival/ship-motion-fleet-v1/feral-spaceship/rear-quarter.webp",
+        "bytes": 1252110,
+        "sha256": "b9c0dd03467d48fd65073474e207747d587ccb26d7a08c59d52cf4c79ed3bb14"
+      },
+      "selectedAttempt": 1,
+      "generatedId": null,
+      "assignedId": null,
+      "assignmentNote": null,
+      "sourceBytesEqualCandidateAndOriginal": true,
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "mode": "RGBA",
+      "webpContainerChunks": [
+        {
+          "fourcc": "VP8L",
+          "bytes": 1252089
+        }
+      ],
+      "decodedEquality": {
+        "fullRgbaExact": true,
+        "rgbaBytes": 6291456,
+        "sourceRgbaSha256": "d115c87e57a2473805cd701457a7e6297e10ebabb2ba6322bb3aa481914e5e8b",
+        "runtimeRgbaSha256": "d115c87e57a2473805cd701457a7e6297e10ebabb2ba6322bb3aa481914e5e8b",
+        "differentPixels": 0,
+        "differentChannels": 0,
+        "maximumChannelDelta": 0,
+        "includesRgbUnderAlphaZero": true
+      },
+      "alpha": {
+        "minimum": 0,
+        "maximum": 254,
+        "maximumBorder": 1,
+        "above16Bounds": [
+          57,
+          199,
+          1499,
+          845
+        ],
+        "above16InsideCanvas": true,
+        "fullyTransparentPixels": 976175
+      }
+    },
+    {
+      "shipId": "fugitive-spaceship",
+      "viewId": "forward-quarter-shallow",
+      "originalGenerated": {
+        "path": "/workspace/scratch/0c1fa1359efb/generated_images/exec-28039742-6ab0-43cd-9598-22052f6ac8f5.png",
+        "bytes": 1874663,
+        "sha256": "d345e5f4e77d13b50607d35b682dca3bdee4dc3e4ca182276c4f81c637130f82"
+      },
+      "selectedCandidate": {
+        "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/fugitive-spaceship/candidates/forward-quarter-shallow.png",
+        "bytes": 1874663,
+        "sha256": "d345e5f4e77d13b50607d35b682dca3bdee4dc3e4ca182276c4f81c637130f82"
+      },
+      "sourcePng": {
+        "path": "/workspace/scratch/af58a64ab248/yautja-ship-motion/production/ship-motion-fleet-20261106/art/sources/fugitive-spaceship/forward-quarter-shallow.png",
+        "bytes": 1874663,
+        "sha256": "d345e5f4e77d13b50607d35b682dca3bdee4dc3e4ca182276c4f81c637130f82"
+      },
+      "runtimeWebp": {
+        "path": "/workspace/scratch/af58a64ab248/yautja-ship-motion/public/game/planet-arrival/ship-motion-fleet-v1/fugitive-spaceship/forward-quarter-shallow.webp",
+        "bytes": 1202086,
+        "sha256": "c935e826390b211878cb47154196b5bc51b88ce0d9b6d18160322615c5f88742"
+      },
+      "selectedAttempt": 1,
+      "generatedId": null,
+      "assignedId": null,
+      "assignmentNote": null,
+      "sourceBytesEqualCandidateAndOriginal": true,
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "mode": "RGBA",
+      "webpContainerChunks": [
+        {
+          "fourcc": "VP8L",
+          "bytes": 1202066
+        }
+      ],
+      "decodedEquality": {
+        "fullRgbaExact": true,
+        "rgbaBytes": 6291456,
+        "sourceRgbaSha256": "5f750b5fa3febae89936248cf860e55250e2bb39cb1f0828abbb1f4d5d3fcdd6",
+        "runtimeRgbaSha256": "5f750b5fa3febae89936248cf860e55250e2bb39cb1f0828abbb1f4d5d3fcdd6",
+        "differentPixels": 0,
+        "differentChannels": 0,
+        "maximumChannelDelta": 0,
+        "includesRgbUnderAlphaZero": true
+      },
+      "alpha": {
+        "minimum": 0,
+        "maximum": 254,
+        "maximumBorder": 0,
+        "above16Bounds": [
+          44,
+          215,
+          1477,
+          783
+        ],
+        "above16InsideCanvas": true,
+        "fullyTransparentPixels": 1031069
+      }
+    },
+    {
+      "shipId": "fugitive-spaceship",
+      "viewId": "forward-quarter",
+      "originalGenerated": {
+        "path": "/workspace/scratch/0c1fa1359efb/generated_images/exec-c25995b1-ea3e-47d0-9ab2-f5a57c27e12e.png",
+        "bytes": 1996335,
+        "sha256": "61a2a3a3ef8ced542c90ed6c8f298158cbf5db6b65745a62f62115ae24740369"
+      },
+      "selectedCandidate": {
+        "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/fugitive-spaceship/candidates/forward-quarter.png",
+        "bytes": 1996335,
+        "sha256": "61a2a3a3ef8ced542c90ed6c8f298158cbf5db6b65745a62f62115ae24740369"
+      },
+      "sourcePng": {
+        "path": "/workspace/scratch/af58a64ab248/yautja-ship-motion/production/ship-motion-fleet-20261106/art/sources/fugitive-spaceship/forward-quarter.png",
+        "bytes": 1996335,
+        "sha256": "61a2a3a3ef8ced542c90ed6c8f298158cbf5db6b65745a62f62115ae24740369"
+      },
+      "runtimeWebp": {
+        "path": "/workspace/scratch/af58a64ab248/yautja-ship-motion/public/game/planet-arrival/ship-motion-fleet-v1/fugitive-spaceship/forward-quarter.webp",
+        "bytes": 1250012,
+        "sha256": "6285558a5a1ebc5767d509e15f3d9c5c2698252789c812aaaeaf1690521c461e"
+      },
+      "selectedAttempt": 1,
+      "generatedId": null,
+      "assignedId": null,
+      "assignmentNote": null,
+      "sourceBytesEqualCandidateAndOriginal": true,
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "mode": "RGBA",
+      "webpContainerChunks": [
+        {
+          "fourcc": "VP8L",
+          "bytes": 1249991
+        }
+      ],
+      "decodedEquality": {
+        "fullRgbaExact": true,
+        "rgbaBytes": 6291456,
+        "sourceRgbaSha256": "eb81d2a3d60df756376329d22338383f81f326bec9c92dd8410bd5f6c24d769d",
+        "runtimeRgbaSha256": "eb81d2a3d60df756376329d22338383f81f326bec9c92dd8410bd5f6c24d769d",
+        "differentPixels": 0,
+        "differentChannels": 0,
+        "maximumChannelDelta": 0,
+        "includesRgbUnderAlphaZero": true
+      },
+      "alpha": {
+        "minimum": 0,
+        "maximum": 254,
+        "maximumBorder": 1,
+        "above16Bounds": [
+          114,
+          147,
+          1407,
+          850
+        ],
+        "above16InsideCanvas": true,
+        "fullyTransparentPixels": 1005439
+      }
+    },
+    {
+      "shipId": "fugitive-spaceship",
+      "viewId": "bank-dorsal-shallow",
+      "originalGenerated": {
+        "path": "/workspace/scratch/0c1fa1359efb/generated_images/exec-f907b6fb-a73b-4339-a78e-870853d74825.png",
+        "bytes": 1917350,
+        "sha256": "023e9acfd955db295aaf83c8d754f82ce34be22be531ddf7ce38ab4b1fedf48a"
+      },
+      "selectedCandidate": {
+        "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/fugitive-spaceship/candidates/bank-dorsal-shallow.png",
+        "bytes": 1917350,
+        "sha256": "023e9acfd955db295aaf83c8d754f82ce34be22be531ddf7ce38ab4b1fedf48a"
+      },
+      "sourcePng": {
+        "path": "/workspace/scratch/af58a64ab248/yautja-ship-motion/production/ship-motion-fleet-20261106/art/sources/fugitive-spaceship/bank-dorsal-shallow.png",
+        "bytes": 1917350,
+        "sha256": "023e9acfd955db295aaf83c8d754f82ce34be22be531ddf7ce38ab4b1fedf48a"
+      },
+      "runtimeWebp": {
+        "path": "/workspace/scratch/af58a64ab248/yautja-ship-motion/public/game/planet-arrival/ship-motion-fleet-v1/fugitive-spaceship/bank-dorsal-shallow.webp",
+        "bytes": 1218730,
+        "sha256": "03efae8c09af93d33935ab0b1c21496a970dc4567f807036eafbe8f34090ac2a"
+      },
+      "selectedAttempt": 1,
+      "generatedId": null,
+      "assignedId": null,
+      "assignmentNote": null,
+      "sourceBytesEqualCandidateAndOriginal": true,
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "mode": "RGBA",
+      "webpContainerChunks": [
+        {
+          "fourcc": "VP8L",
+          "bytes": 1218710
+        }
+      ],
+      "decodedEquality": {
+        "fullRgbaExact": true,
+        "rgbaBytes": 6291456,
+        "sourceRgbaSha256": "60fd2044e11eb766086f5bdfbf45d42a220eff22ad87675615f330fa3d44ce80",
+        "runtimeRgbaSha256": "60fd2044e11eb766086f5bdfbf45d42a220eff22ad87675615f330fa3d44ce80",
+        "differentPixels": 0,
+        "differentChannels": 0,
+        "maximumChannelDelta": 0,
+        "includesRgbUnderAlphaZero": true
+      },
+      "alpha": {
+        "minimum": 0,
+        "maximum": 254,
+        "maximumBorder": 0,
+        "above16Bounds": [
+          70,
+          224,
+          1475,
+          792
+        ],
+        "above16InsideCanvas": true,
+        "fullyTransparentPixels": 1030239
+      }
+    },
+    {
+      "shipId": "fugitive-spaceship",
+      "viewId": "bank-dorsal",
+      "originalGenerated": {
+        "path": "/workspace/scratch/0c1fa1359efb/generated_images/exec-13b4de6f-6c8f-4c9d-b5ee-5a76ef6268ca.png",
+        "bytes": 2258773,
+        "sha256": "57ff81e56c7c3e92f3e5e0f6a1aef534d2b4fe6c201be2cb99d056e949b61579"
+      },
+      "selectedCandidate": {
+        "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/fugitive-spaceship/candidates/bank-dorsal.png",
+        "bytes": 2258773,
+        "sha256": "57ff81e56c7c3e92f3e5e0f6a1aef534d2b4fe6c201be2cb99d056e949b61579"
+      },
+      "sourcePng": {
+        "path": "/workspace/scratch/af58a64ab248/yautja-ship-motion/production/ship-motion-fleet-20261106/art/sources/fugitive-spaceship/bank-dorsal.png",
+        "bytes": 2258773,
+        "sha256": "57ff81e56c7c3e92f3e5e0f6a1aef534d2b4fe6c201be2cb99d056e949b61579"
+      },
+      "runtimeWebp": {
+        "path": "/workspace/scratch/af58a64ab248/yautja-ship-motion/public/game/planet-arrival/ship-motion-fleet-v1/fugitive-spaceship/bank-dorsal.webp",
+        "bytes": 1392622,
+        "sha256": "cded33842e308cd5074a669cdb7c8f743884f64f0ddf53e10333da2a4d5b8e7d"
+      },
+      "selectedAttempt": 1,
+      "generatedId": null,
+      "assignedId": null,
+      "assignmentNote": null,
+      "sourceBytesEqualCandidateAndOriginal": true,
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "mode": "RGBA",
+      "webpContainerChunks": [
+        {
+          "fourcc": "VP8L",
+          "bytes": 1392601
+        }
+      ],
+      "decodedEquality": {
+        "fullRgbaExact": true,
+        "rgbaBytes": 6291456,
+        "sourceRgbaSha256": "526606e1f14ad3867d0a8e953572f80382832113a7b2287ae86ccb32713ff3e9",
+        "runtimeRgbaSha256": "526606e1f14ad3867d0a8e953572f80382832113a7b2287ae86ccb32713ff3e9",
+        "differentPixels": 0,
+        "differentChannels": 0,
+        "maximumChannelDelta": 0,
+        "includesRgbUnderAlphaZero": true
+      },
+      "alpha": {
+        "minimum": 0,
+        "maximum": 254,
+        "maximumBorder": 1,
+        "above16Bounds": [
+          90,
+          143,
+          1455,
+          871
+        ],
+        "above16InsideCanvas": true,
+        "fullyTransparentPixels": 919760
+      }
+    },
+    {
+      "shipId": "fugitive-spaceship",
+      "viewId": "bank-ventral-shallow",
+      "originalGenerated": {
+        "path": "/workspace/scratch/0c1fa1359efb/generated_images/exec-4e38799c-eeb0-46c9-a7af-4ad512d05daf.png",
+        "bytes": 1649626,
+        "sha256": "e72c4504cd699e069df26ec28a364578b0ce3932d5ca156f59f72838096ffab5"
+      },
+      "selectedCandidate": {
+        "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/fugitive-spaceship/candidates/bank-ventral-shallow.png",
+        "bytes": 1649626,
+        "sha256": "e72c4504cd699e069df26ec28a364578b0ce3932d5ca156f59f72838096ffab5"
+      },
+      "sourcePng": {
+        "path": "/workspace/scratch/af58a64ab248/yautja-ship-motion/production/ship-motion-fleet-20261106/art/sources/fugitive-spaceship/bank-ventral-shallow.png",
+        "bytes": 1649626,
+        "sha256": "e72c4504cd699e069df26ec28a364578b0ce3932d5ca156f59f72838096ffab5"
+      },
+      "runtimeWebp": {
+        "path": "/workspace/scratch/af58a64ab248/yautja-ship-motion/public/game/planet-arrival/ship-motion-fleet-v1/fugitive-spaceship/bank-ventral-shallow.webp",
+        "bytes": 1066532,
+        "sha256": "a7ad558a61856e2e0644d1a46463c5fbf6c15f4fb31293ce5fdf57fef8dabbd2"
+      },
+      "selectedAttempt": 1,
+      "generatedId": null,
+      "assignedId": null,
+      "assignmentNote": null,
+      "sourceBytesEqualCandidateAndOriginal": true,
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "mode": "RGBA",
+      "webpContainerChunks": [
+        {
+          "fourcc": "VP8L",
+          "bytes": 1066511
+        }
+      ],
+      "decodedEquality": {
+        "fullRgbaExact": true,
+        "rgbaBytes": 6291456,
+        "sourceRgbaSha256": "c4f05c3154c0e19b1a0f2d9afa7933d9ddfda4ec3b14f26d24abff50d5e85201",
+        "runtimeRgbaSha256": "c4f05c3154c0e19b1a0f2d9afa7933d9ddfda4ec3b14f26d24abff50d5e85201",
+        "differentPixels": 0,
+        "differentChannels": 0,
+        "maximumChannelDelta": 0,
+        "includesRgbUnderAlphaZero": true
+      },
+      "alpha": {
+        "minimum": 0,
+        "maximum": 254,
+        "maximumBorder": 0,
+        "above16Bounds": [
+          89,
+          255,
+          1449,
+          725
+        ],
+        "above16InsideCanvas": true,
+        "fullyTransparentPixels": 1141798
+      }
+    },
+    {
+      "shipId": "fugitive-spaceship",
+      "viewId": "bank-ventral",
+      "originalGenerated": {
+        "path": "/workspace/scratch/0c1fa1359efb/generated_images/exec-2ab99c57-f380-4abb-8c85-5eccd649a209.png",
+        "bytes": 1550378,
+        "sha256": "bb9cd29e41c94e971587116d7378e5f4e39accd513445e8ecf270ebf018f9818"
+      },
+      "selectedCandidate": {
+        "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/fugitive-spaceship/candidates/bank-ventral.png",
+        "bytes": 1550378,
+        "sha256": "bb9cd29e41c94e971587116d7378e5f4e39accd513445e8ecf270ebf018f9818"
+      },
+      "sourcePng": {
+        "path": "/workspace/scratch/af58a64ab248/yautja-ship-motion/production/ship-motion-fleet-20261106/art/sources/fugitive-spaceship/bank-ventral.png",
+        "bytes": 1550378,
+        "sha256": "bb9cd29e41c94e971587116d7378e5f4e39accd513445e8ecf270ebf018f9818"
+      },
+      "runtimeWebp": {
+        "path": "/workspace/scratch/af58a64ab248/yautja-ship-motion/public/game/planet-arrival/ship-motion-fleet-v1/fugitive-spaceship/bank-ventral.webp",
+        "bytes": 1001074,
+        "sha256": "be66b113962e606e11c99ccf05f16d2aa4afc9c6e781a1097339650ba9bc237a"
+      },
+      "selectedAttempt": 1,
+      "generatedId": null,
+      "assignedId": null,
+      "assignmentNote": null,
+      "sourceBytesEqualCandidateAndOriginal": true,
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "mode": "RGBA",
+      "webpContainerChunks": [
+        {
+          "fourcc": "VP8L",
+          "bytes": 1001053
+        }
+      ],
+      "decodedEquality": {
+        "fullRgbaExact": true,
+        "rgbaBytes": 6291456,
+        "sourceRgbaSha256": "2e415abc0dc477e69490d207d15770bf5c339053f5d4e4de81796c812098a96e",
+        "runtimeRgbaSha256": "2e415abc0dc477e69490d207d15770bf5c339053f5d4e4de81796c812098a96e",
+        "differentPixels": 0,
+        "differentChannels": 0,
+        "maximumChannelDelta": 0,
+        "includesRgbUnderAlphaZero": true
+      },
+      "alpha": {
+        "minimum": 0,
+        "maximum": 254,
+        "maximumBorder": 0,
+        "above16Bounds": [
+          83,
+          268,
+          1465,
+          721
+        ],
+        "above16InsideCanvas": true,
+        "fullyTransparentPixels": 1145029
+      }
+    },
+    {
+      "shipId": "fugitive-spaceship",
+      "viewId": "rear-quarter-shallow",
+      "originalGenerated": {
+        "path": "/workspace/scratch/0c1fa1359efb/generated_images/exec-4a5ac108-feb5-4dec-b271-cb59967b0f26.png",
+        "bytes": 1873344,
+        "sha256": "271f70e31718a209a193ef05f79cc4be7d77ecfb6868f2ab4ac30c8458ff9fc6"
+      },
+      "selectedCandidate": {
+        "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/fugitive-spaceship/candidates/rear-quarter-shallow.png",
+        "bytes": 1873344,
+        "sha256": "271f70e31718a209a193ef05f79cc4be7d77ecfb6868f2ab4ac30c8458ff9fc6"
+      },
+      "sourcePng": {
+        "path": "/workspace/scratch/af58a64ab248/yautja-ship-motion/production/ship-motion-fleet-20261106/art/sources/fugitive-spaceship/rear-quarter-shallow.png",
+        "bytes": 1873344,
+        "sha256": "271f70e31718a209a193ef05f79cc4be7d77ecfb6868f2ab4ac30c8458ff9fc6"
+      },
+      "runtimeWebp": {
+        "path": "/workspace/scratch/af58a64ab248/yautja-ship-motion/public/game/planet-arrival/ship-motion-fleet-v1/fugitive-spaceship/rear-quarter-shallow.webp",
+        "bytes": 1200182,
+        "sha256": "3d3e0853a7a3f94b7f90b5060edcbd13beefd4e2f008c9dc2924b08998d98af5"
+      },
+      "selectedAttempt": 1,
+      "generatedId": null,
+      "assignedId": null,
+      "assignmentNote": null,
+      "sourceBytesEqualCandidateAndOriginal": true,
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "mode": "RGBA",
+      "webpContainerChunks": [
+        {
+          "fourcc": "VP8L",
+          "bytes": 1200162
+        }
+      ],
+      "decodedEquality": {
+        "fullRgbaExact": true,
+        "rgbaBytes": 6291456,
+        "sourceRgbaSha256": "0d6738443ef611b6998ca4c003f6ac08b9494003ebd064cf2c09b1172d482b98",
+        "runtimeRgbaSha256": "0d6738443ef611b6998ca4c003f6ac08b9494003ebd064cf2c09b1172d482b98",
+        "differentPixels": 0,
+        "differentChannels": 0,
+        "maximumChannelDelta": 0,
+        "includesRgbUnderAlphaZero": true
+      },
+      "alpha": {
+        "minimum": 0,
+        "maximum": 254,
+        "maximumBorder": 1,
+        "above16Bounds": [
+          83,
+          228,
+          1475,
+          788
+        ],
+        "above16InsideCanvas": true,
+        "fullyTransparentPixels": 1048605
+      }
+    },
+    {
+      "shipId": "fugitive-spaceship",
+      "viewId": "rear-quarter",
+      "originalGenerated": {
+        "path": "/workspace/scratch/0c1fa1359efb/generated_images/exec-2d89004a-2006-4321-981b-2000c0502b8c.png",
+        "bytes": 1929850,
+        "sha256": "0351029a77616d14c0ada9b5c70e4058d470a4307a4f6ab91974c91eefe15cdd"
+      },
+      "selectedCandidate": {
+        "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/fugitive-spaceship/candidates/rear-quarter.png",
+        "bytes": 1929850,
+        "sha256": "0351029a77616d14c0ada9b5c70e4058d470a4307a4f6ab91974c91eefe15cdd"
+      },
+      "sourcePng": {
+        "path": "/workspace/scratch/af58a64ab248/yautja-ship-motion/production/ship-motion-fleet-20261106/art/sources/fugitive-spaceship/rear-quarter.png",
+        "bytes": 1929850,
+        "sha256": "0351029a77616d14c0ada9b5c70e4058d470a4307a4f6ab91974c91eefe15cdd"
+      },
+      "runtimeWebp": {
+        "path": "/workspace/scratch/af58a64ab248/yautja-ship-motion/public/game/planet-arrival/ship-motion-fleet-v1/fugitive-spaceship/rear-quarter.webp",
+        "bytes": 1214922,
+        "sha256": "7a23913e77154720cbc609a9f347b0fe0cdfff90b29abfc03fb88cae87f8ef60"
+      },
+      "selectedAttempt": 1,
+      "generatedId": null,
+      "assignedId": null,
+      "assignmentNote": null,
+      "sourceBytesEqualCandidateAndOriginal": true,
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "mode": "RGBA",
+      "webpContainerChunks": [
+        {
+          "fourcc": "VP8L",
+          "bytes": 1214901
+        }
+      ],
+      "decodedEquality": {
+        "fullRgbaExact": true,
+        "rgbaBytes": 6291456,
+        "sourceRgbaSha256": "723a282419dddd81c83051fbb4acdcb81b6ba5e7d33442afbc8e2744d9e11f1b",
+        "runtimeRgbaSha256": "723a282419dddd81c83051fbb4acdcb81b6ba5e7d33442afbc8e2744d9e11f1b",
+        "differentPixels": 0,
+        "differentChannels": 0,
+        "maximumChannelDelta": 0,
+        "includesRgbUnderAlphaZero": true
+      },
+      "alpha": {
+        "minimum": 0,
+        "maximum": 254,
+        "maximumBorder": 1,
+        "above16Bounds": [
+          94,
+          217,
+          1445,
+          853
+        ],
+        "above16InsideCanvas": true,
+        "fullyTransparentPixels": 1030449
+      }
+    },
+    {
+      "shipId": "upgrade-spaceship",
+      "viewId": "forward-quarter-shallow",
+      "originalGenerated": {
+        "path": "/workspace/scratch/0c1fa1359efb/generated_images/exec-e0884a2c-2527-492f-bd50-8f5290f8af58.png",
+        "bytes": 1125888,
+        "sha256": "d264943c2b0274281b38ee0056896a0f4eb7cfa9ef685054c0fa96d8f9f1dec0"
+      },
+      "selectedCandidate": {
+        "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/upgrade-spaceship/candidates/upgrade-spaceship-forward-quarter-shallow.png",
+        "bytes": 1125888,
+        "sha256": "d264943c2b0274281b38ee0056896a0f4eb7cfa9ef685054c0fa96d8f9f1dec0"
+      },
+      "sourcePng": {
+        "path": "/workspace/scratch/af58a64ab248/yautja-ship-motion/production/ship-motion-fleet-20261106/art/sources/upgrade-spaceship/forward-quarter-shallow.png",
+        "bytes": 1125888,
+        "sha256": "d264943c2b0274281b38ee0056896a0f4eb7cfa9ef685054c0fa96d8f9f1dec0"
+      },
+      "runtimeWebp": {
+        "path": "/workspace/scratch/af58a64ab248/yautja-ship-motion/public/game/planet-arrival/ship-motion-fleet-v1/upgrade-spaceship/forward-quarter-shallow.webp",
+        "bytes": 761602,
+        "sha256": "e5d3aafa2692ad541094b3d01a24f5e92af7a28145ac95929ec28baaf0a404e8"
+      },
+      "selectedAttempt": 4,
+      "generatedId": null,
+      "assignedId": null,
+      "assignmentNote": null,
+      "sourceBytesEqualCandidateAndOriginal": true,
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "mode": "RGBA",
+      "webpContainerChunks": [
+        {
+          "fourcc": "VP8L",
+          "bytes": 761582
+        }
+      ],
+      "decodedEquality": {
+        "fullRgbaExact": true,
+        "rgbaBytes": 6291456,
+        "sourceRgbaSha256": "cee26a5770caf7fb09a753e8e928e85eb02eabe55244e583a7a1b4c37ba1933a",
+        "runtimeRgbaSha256": "cee26a5770caf7fb09a753e8e928e85eb02eabe55244e583a7a1b4c37ba1933a",
+        "differentPixels": 0,
+        "differentChannels": 0,
+        "maximumChannelDelta": 0,
+        "includesRgbUnderAlphaZero": true
+      },
+      "alpha": {
+        "minimum": 0,
+        "maximum": 254,
+        "maximumBorder": 0,
+        "above16Bounds": [
+          81,
+          397,
+          1503,
+          635
+        ],
+        "above16InsideCanvas": true,
+        "fullyTransparentPixels": 1362189
+      }
+    },
+    {
+      "shipId": "upgrade-spaceship",
+      "viewId": "forward-quarter",
+      "originalGenerated": {
+        "path": "/workspace/scratch/0c1fa1359efb/generated_images/exec-9169d71d-ef20-49cc-bf08-b83f33d90741.png",
+        "bytes": 1171519,
+        "sha256": "898f77fad5f3d6525d12ef17cd7b2b9e76749a1b46d190fd1e3b233c266fcc4e"
+      },
+      "selectedCandidate": {
+        "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/upgrade-spaceship/candidates/upgrade-spaceship-forward-quarter.png",
+        "bytes": 1171519,
+        "sha256": "898f77fad5f3d6525d12ef17cd7b2b9e76749a1b46d190fd1e3b233c266fcc4e"
+      },
+      "sourcePng": {
+        "path": "/workspace/scratch/af58a64ab248/yautja-ship-motion/production/ship-motion-fleet-20261106/art/sources/upgrade-spaceship/forward-quarter.png",
+        "bytes": 1171519,
+        "sha256": "898f77fad5f3d6525d12ef17cd7b2b9e76749a1b46d190fd1e3b233c266fcc4e"
+      },
+      "runtimeWebp": {
+        "path": "/workspace/scratch/af58a64ab248/yautja-ship-motion/public/game/planet-arrival/ship-motion-fleet-v1/upgrade-spaceship/forward-quarter.webp",
+        "bytes": 791146,
+        "sha256": "cc035d5074b3a44e71e1716cbe2a9b4efb79fd418a5ac69d0e339b22f0e97fab"
+      },
+      "selectedAttempt": 4,
+      "generatedId": null,
+      "assignedId": null,
+      "assignmentNote": null,
+      "sourceBytesEqualCandidateAndOriginal": true,
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "mode": "RGBA",
+      "webpContainerChunks": [
+        {
+          "fourcc": "VP8L",
+          "bytes": 791126
+        }
+      ],
+      "decodedEquality": {
+        "fullRgbaExact": true,
+        "rgbaBytes": 6291456,
+        "sourceRgbaSha256": "513ff9e5699d4d18fd7a79744b965f880b7c1b9ea78e754e79c016904a86fdbd",
+        "runtimeRgbaSha256": "513ff9e5699d4d18fd7a79744b965f880b7c1b9ea78e754e79c016904a86fdbd",
+        "differentPixels": 0,
+        "differentChannels": 0,
+        "maximumChannelDelta": 0,
+        "includesRgbUnderAlphaZero": true
+      },
+      "alpha": {
+        "minimum": 0,
+        "maximum": 254,
+        "maximumBorder": 1,
+        "above16Bounds": [
+          77,
+          383,
+          1465,
+          654
+        ],
+        "above16InsideCanvas": true,
+        "fullyTransparentPixels": 1347712
+      }
+    },
+    {
+      "shipId": "upgrade-spaceship",
+      "viewId": "bank-dorsal-shallow",
+      "originalGenerated": {
+        "path": "/workspace/scratch/0c1fa1359efb/generated_images/exec-0d87d490-b163-45dc-8e09-a188388ebf65.png",
+        "bytes": 1495340,
+        "sha256": "2911059c83742beffe77e02e02c1e4401fd01cf54190669bdd747e2cd15ba379"
+      },
+      "selectedCandidate": {
+        "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/upgrade-spaceship/candidates/upgrade-spaceship-bank-dorsal-shallow.png",
+        "bytes": 1495340,
+        "sha256": "2911059c83742beffe77e02e02c1e4401fd01cf54190669bdd747e2cd15ba379"
+      },
+      "sourcePng": {
+        "path": "/workspace/scratch/af58a64ab248/yautja-ship-motion/production/ship-motion-fleet-20261106/art/sources/upgrade-spaceship/bank-dorsal-shallow.png",
+        "bytes": 1495340,
+        "sha256": "2911059c83742beffe77e02e02c1e4401fd01cf54190669bdd747e2cd15ba379"
+      },
+      "runtimeWebp": {
+        "path": "/workspace/scratch/af58a64ab248/yautja-ship-motion/public/game/planet-arrival/ship-motion-fleet-v1/upgrade-spaceship/bank-dorsal-shallow.webp",
+        "bytes": 962548,
+        "sha256": "021eb511b69b3efd25907c731cd8712f57e95026cfb2e2a2810d229088cfd770"
+      },
+      "selectedAttempt": 2,
+      "generatedId": null,
+      "assignedId": null,
+      "assignmentNote": null,
+      "sourceBytesEqualCandidateAndOriginal": true,
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "mode": "RGBA",
+      "webpContainerChunks": [
+        {
+          "fourcc": "VP8L",
+          "bytes": 962528
+        }
+      ],
+      "decodedEquality": {
+        "fullRgbaExact": true,
+        "rgbaBytes": 6291456,
+        "sourceRgbaSha256": "2c88d169600bade88cfa5b4f643f62d4910d0ff586c9ec9e780d9fad6c6f2d54",
+        "runtimeRgbaSha256": "2c88d169600bade88cfa5b4f643f62d4910d0ff586c9ec9e780d9fad6c6f2d54",
+        "differentPixels": 0,
+        "differentChannels": 0,
+        "maximumChannelDelta": 0,
+        "includesRgbUnderAlphaZero": true
+      },
+      "alpha": {
+        "minimum": 0,
+        "maximum": 254,
+        "maximumBorder": 0,
+        "above16Bounds": [
+          43,
+          288,
+          1500,
+          755
+        ],
+        "above16InsideCanvas": true,
+        "fullyTransparentPixels": 1208211
+      }
+    },
+    {
+      "shipId": "upgrade-spaceship",
+      "viewId": "bank-dorsal",
+      "originalGenerated": {
+        "path": "/workspace/scratch/0c1fa1359efb/generated_images/exec-200e1a01-2cc1-45b9-ae56-15a77d4a3d00.png",
+        "bytes": 1825009,
+        "sha256": "eed63039ee54b202534b34809b47d7f1aa961f5d386543c5cbb565731c172e29"
+      },
+      "selectedCandidate": {
+        "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/upgrade-spaceship/candidates/upgrade-spaceship-bank-dorsal.png",
+        "bytes": 1825009,
+        "sha256": "eed63039ee54b202534b34809b47d7f1aa961f5d386543c5cbb565731c172e29"
+      },
+      "sourcePng": {
+        "path": "/workspace/scratch/af58a64ab248/yautja-ship-motion/production/ship-motion-fleet-20261106/art/sources/upgrade-spaceship/bank-dorsal.png",
+        "bytes": 1825009,
+        "sha256": "eed63039ee54b202534b34809b47d7f1aa961f5d386543c5cbb565731c172e29"
+      },
+      "runtimeWebp": {
+        "path": "/workspace/scratch/af58a64ab248/yautja-ship-motion/public/game/planet-arrival/ship-motion-fleet-v1/upgrade-spaceship/bank-dorsal.webp",
+        "bytes": 1159084,
+        "sha256": "7e7cf77f374b8168c8fa5cbbe0fb5bac9680d93d98823bc374ec1511a5964c58"
+      },
+      "selectedAttempt": 1,
+      "generatedId": null,
+      "assignedId": null,
+      "assignmentNote": null,
+      "sourceBytesEqualCandidateAndOriginal": true,
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "mode": "RGBA",
+      "webpContainerChunks": [
+        {
+          "fourcc": "VP8L",
+          "bytes": 1159064
+        }
+      ],
+      "decodedEquality": {
+        "fullRgbaExact": true,
+        "rgbaBytes": 6291456,
+        "sourceRgbaSha256": "1faa5d607ec461f439bb1d0e1a06ec1ad633f5d39944f212c877c9586b22fecc",
+        "runtimeRgbaSha256": "1faa5d607ec461f439bb1d0e1a06ec1ad633f5d39944f212c877c9586b22fecc",
+        "differentPixels": 0,
+        "differentChannels": 0,
+        "maximumChannelDelta": 0,
+        "includesRgbUnderAlphaZero": true
+      },
+      "alpha": {
+        "minimum": 0,
+        "maximum": 254,
+        "maximumBorder": 1,
+        "above16Bounds": [
+          58,
+          204,
+          1491,
+          852
+        ],
+        "above16InsideCanvas": true,
+        "fullyTransparentPixels": 1083772
+      }
+    },
+    {
+      "shipId": "upgrade-spaceship",
+      "viewId": "bank-ventral-shallow",
+      "originalGenerated": {
+        "path": "/workspace/scratch/0c1fa1359efb/generated_images/exec-f6a0c3e1-c494-4cbb-80ac-5433c28d18ce.png",
+        "bytes": 1427651,
+        "sha256": "ed3aabc50f7c1dcef957f9ab6068bdd6edd98497001bf743ac0550f47a424a7b"
+      },
+      "selectedCandidate": {
+        "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/upgrade-spaceship/candidates/upgrade-spaceship-bank-ventral-shallow.png",
+        "bytes": 1427651,
+        "sha256": "ed3aabc50f7c1dcef957f9ab6068bdd6edd98497001bf743ac0550f47a424a7b"
+      },
+      "sourcePng": {
+        "path": "/workspace/scratch/af58a64ab248/yautja-ship-motion/production/ship-motion-fleet-20261106/art/sources/upgrade-spaceship/bank-ventral-shallow.png",
+        "bytes": 1427651,
+        "sha256": "ed3aabc50f7c1dcef957f9ab6068bdd6edd98497001bf743ac0550f47a424a7b"
+      },
+      "runtimeWebp": {
+        "path": "/workspace/scratch/af58a64ab248/yautja-ship-motion/public/game/planet-arrival/ship-motion-fleet-v1/upgrade-spaceship/bank-ventral-shallow.webp",
+        "bytes": 934768,
+        "sha256": "edaba01fbd38afecb0bbb9336ab5b80343385cea24a718a4b725290303514add"
+      },
+      "selectedAttempt": 1,
+      "generatedId": null,
+      "assignedId": null,
+      "assignmentNote": null,
+      "sourceBytesEqualCandidateAndOriginal": true,
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "mode": "RGBA",
+      "webpContainerChunks": [
+        {
+          "fourcc": "VP8L",
+          "bytes": 934747
+        }
+      ],
+      "decodedEquality": {
+        "fullRgbaExact": true,
+        "rgbaBytes": 6291456,
+        "sourceRgbaSha256": "73029fa7cfeb32029b6aa1955b30cd811e05ef8c164842daa162a6771029a82f",
+        "runtimeRgbaSha256": "73029fa7cfeb32029b6aa1955b30cd811e05ef8c164842daa162a6771029a82f",
+        "differentPixels": 0,
+        "differentChannels": 0,
+        "maximumChannelDelta": 0,
+        "includesRgbUnderAlphaZero": true
+      },
+      "alpha": {
+        "minimum": 0,
+        "maximum": 254,
+        "maximumBorder": 3,
+        "above16Bounds": [
+          7,
+          273,
+          1524,
+          706
+        ],
+        "above16InsideCanvas": true,
+        "fullyTransparentPixels": 1200306
+      }
+    },
+    {
+      "shipId": "upgrade-spaceship",
+      "viewId": "bank-ventral",
+      "originalGenerated": {
+        "path": "/workspace/scratch/0c1fa1359efb/generated_images/exec-5a929964-7cda-43e7-9bac-3da2e1db2da2.png",
+        "bytes": 1631576,
+        "sha256": "2b091b0ac3a20ba90b27f17a10d1824477f4680d103dac9ae2595215a0b3f264"
+      },
+      "selectedCandidate": {
+        "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/upgrade-spaceship/candidates/upgrade-spaceship-bank-ventral.png",
+        "bytes": 1631576,
+        "sha256": "2b091b0ac3a20ba90b27f17a10d1824477f4680d103dac9ae2595215a0b3f264"
+      },
+      "sourcePng": {
+        "path": "/workspace/scratch/af58a64ab248/yautja-ship-motion/production/ship-motion-fleet-20261106/art/sources/upgrade-spaceship/bank-ventral.png",
+        "bytes": 1631576,
+        "sha256": "2b091b0ac3a20ba90b27f17a10d1824477f4680d103dac9ae2595215a0b3f264"
+      },
+      "runtimeWebp": {
+        "path": "/workspace/scratch/af58a64ab248/yautja-ship-motion/public/game/planet-arrival/ship-motion-fleet-v1/upgrade-spaceship/bank-ventral.webp",
+        "bytes": 1064748,
+        "sha256": "0319f816584a51a2adbaf472ce111075f34fd49d3b671bc40763fe0b1b741867"
+      },
+      "selectedAttempt": 2,
+      "generatedId": null,
+      "assignedId": null,
+      "assignmentNote": null,
+      "sourceBytesEqualCandidateAndOriginal": true,
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "mode": "RGBA",
+      "webpContainerChunks": [
+        {
+          "fourcc": "VP8L",
+          "bytes": 1064728
+        }
+      ],
+      "decodedEquality": {
+        "fullRgbaExact": true,
+        "rgbaBytes": 6291456,
+        "sourceRgbaSha256": "1e2307a5b0503b8c7f10fe52e366399b97db07df4bab20a8b32cab92da24b08c",
+        "runtimeRgbaSha256": "1e2307a5b0503b8c7f10fe52e366399b97db07df4bab20a8b32cab92da24b08c",
+        "differentPixels": 0,
+        "differentChannels": 0,
+        "maximumChannelDelta": 0,
+        "includesRgbUnderAlphaZero": true
+      },
+      "alpha": {
+        "minimum": 0,
+        "maximum": 254,
+        "maximumBorder": 1,
+        "above16Bounds": [
+          26,
+          216,
+          1512,
+          777
+        ],
+        "above16InsideCanvas": true,
+        "fullyTransparentPixels": 1112252
+      }
+    },
+    {
+      "shipId": "upgrade-spaceship",
+      "viewId": "rear-quarter-shallow",
+      "originalGenerated": {
+        "path": "/workspace/scratch/0c1fa1359efb/generated_images/exec-45fddfbe-c519-4079-b291-9ce59c061c64.png",
+        "bytes": 1898140,
+        "sha256": "e5ed40258ed728c63270dc078a06d493e707218be66807b2d352320a852e0ebb"
+      },
+      "selectedCandidate": {
+        "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/upgrade-spaceship/candidates/upgrade-spaceship-rear-quarter-shallow.png",
+        "bytes": 1898140,
+        "sha256": "e5ed40258ed728c63270dc078a06d493e707218be66807b2d352320a852e0ebb"
+      },
+      "sourcePng": {
+        "path": "/workspace/scratch/af58a64ab248/yautja-ship-motion/production/ship-motion-fleet-20261106/art/sources/upgrade-spaceship/rear-quarter-shallow.png",
+        "bytes": 1898140,
+        "sha256": "e5ed40258ed728c63270dc078a06d493e707218be66807b2d352320a852e0ebb"
+      },
+      "runtimeWebp": {
+        "path": "/workspace/scratch/af58a64ab248/yautja-ship-motion/public/game/planet-arrival/ship-motion-fleet-v1/upgrade-spaceship/rear-quarter-shallow.webp",
+        "bytes": 1214964,
+        "sha256": "80b6b96cd767ffd8b0364cb404dfeaf2084d0f0ab1044abe4c00d9fdfae0b68c"
+      },
+      "selectedAttempt": 1,
+      "generatedId": null,
+      "assignedId": null,
+      "assignmentNote": null,
+      "sourceBytesEqualCandidateAndOriginal": true,
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "mode": "RGBA",
+      "webpContainerChunks": [
+        {
+          "fourcc": "VP8L",
+          "bytes": 1214944
+        }
+      ],
+      "decodedEquality": {
+        "fullRgbaExact": true,
+        "rgbaBytes": 6291456,
+        "sourceRgbaSha256": "c485e169b5a3d3f12a8ab5da1ab77f674c671d7922cb3d19b701aabe8032b4c3",
+        "runtimeRgbaSha256": "c485e169b5a3d3f12a8ab5da1ab77f674c671d7922cb3d19b701aabe8032b4c3",
+        "differentPixels": 0,
+        "differentChannels": 0,
+        "maximumChannelDelta": 0,
+        "includesRgbUnderAlphaZero": true
+      },
+      "alpha": {
+        "minimum": 0,
+        "maximum": 254,
+        "maximumBorder": 1,
+        "above16Bounds": [
+          14,
+          212,
+          1520,
+          862
+        ],
+        "above16InsideCanvas": true,
+        "fullyTransparentPixels": 1031884
+      }
+    },
+    {
+      "shipId": "upgrade-spaceship",
+      "viewId": "rear-quarter",
+      "originalGenerated": {
+        "path": "/workspace/scratch/0c1fa1359efb/generated_images/exec-d884b92a-7eb1-4586-a629-c076a7ec0b74.png",
+        "bytes": 1927564,
+        "sha256": "3b24f1ba6cd51aa755c56f7145900458a46153643be848622323c65a8abd2d17"
+      },
+      "selectedCandidate": {
+        "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/upgrade-spaceship/candidates/upgrade-spaceship-rear-quarter.png",
+        "bytes": 1927564,
+        "sha256": "3b24f1ba6cd51aa755c56f7145900458a46153643be848622323c65a8abd2d17"
+      },
+      "sourcePng": {
+        "path": "/workspace/scratch/af58a64ab248/yautja-ship-motion/production/ship-motion-fleet-20261106/art/sources/upgrade-spaceship/rear-quarter.png",
+        "bytes": 1927564,
+        "sha256": "3b24f1ba6cd51aa755c56f7145900458a46153643be848622323c65a8abd2d17"
+      },
+      "runtimeWebp": {
+        "path": "/workspace/scratch/af58a64ab248/yautja-ship-motion/public/game/planet-arrival/ship-motion-fleet-v1/upgrade-spaceship/rear-quarter.webp",
+        "bytes": 1228516,
+        "sha256": "3245a4dfae8038270238ccd95d14b92ef89cdc4e97c6ea2a5023c9650c6cee90"
+      },
+      "selectedAttempt": 1,
+      "generatedId": null,
+      "assignedId": null,
+      "assignmentNote": null,
+      "sourceBytesEqualCandidateAndOriginal": true,
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "mode": "RGBA",
+      "webpContainerChunks": [
+        {
+          "fourcc": "VP8L",
+          "bytes": 1228495
+        }
+      ],
+      "decodedEquality": {
+        "fullRgbaExact": true,
+        "rgbaBytes": 6291456,
+        "sourceRgbaSha256": "72fc4aaaaee9aff31a2320ac72b1f7893ce6b4cbbfbb40d1e78a3151020c5050",
+        "runtimeRgbaSha256": "72fc4aaaaee9aff31a2320ac72b1f7893ce6b4cbbfbb40d1e78a3151020c5050",
+        "differentPixels": 0,
+        "differentChannels": 0,
+        "maximumChannelDelta": 0,
+        "includesRgbUnderAlphaZero": true
+      },
+      "alpha": {
+        "minimum": 0,
+        "maximum": 254,
+        "maximumBorder": 1,
+        "above16Bounds": [
+          42,
+          180,
+          1498,
+          884
+        ],
+        "above16InsideCanvas": true,
+        "fullyTransparentPixels": 1027622
+      }
+    }
+  ],
+  "rejectedAttempts": [
+    {
+      "shipId": "avpr-scout-ship",
+      "viewId": "forward-quarter",
+      "attempt": 1,
+      "path": "/workspace/scratch/0c1fa1359efb/generated_images/exec-276befe8-a769-401b-9c2b-d6aafb35d3e8.png",
+      "sha256": "e475ff4e7f2ee9f3ef8ce76afcf59a04a8ba343a168f954d8954f76552b0f2d0",
+      "bytes": 1804107,
+      "reason": "rejected-reactor-count",
+      "actualFile": {
+        "path": "/workspace/scratch/0c1fa1359efb/generated_images/exec-276befe8-a769-401b-9c2b-d6aafb35d3e8.png",
+        "bytes": 1804107,
+        "sha256": "e475ff4e7f2ee9f3ef8ce76afcf59a04a8ba343a168f954d8954f76552b0f2d0"
+      },
+      "promotedToSource": false
+    },
+    {
+      "shipId": "avpr-scout-ship",
+      "viewId": "bank-dorsal-shallow",
+      "attempt": 1,
+      "path": "/workspace/scratch/0c1fa1359efb/generated_images/exec-04674af9-672c-4e63-9650-a82633be2761.png",
+      "sha256": "9b08f52d7ac824d97ac545c469222a4fad8eb9e738a1b83658c38f7f42e3b144",
+      "bytes": 1643142,
+      "reason": "rejected-reactor-count",
+      "actualFile": {
+        "path": "/workspace/scratch/0c1fa1359efb/generated_images/exec-04674af9-672c-4e63-9650-a82633be2761.png",
+        "bytes": 1643142,
+        "sha256": "9b08f52d7ac824d97ac545c469222a4fad8eb9e738a1b83658c38f7f42e3b144"
+      },
+      "promotedToSource": false
+    },
+    {
+      "shipId": "feral-spaceship",
+      "viewId": "bank-dorsal",
+      "path": "/workspace/scratch/0c1fa1359efb/generated_images/exec-acad46c6-f4c9-4aa0-ab6e-eef82b15d8a2.png",
+      "archivedCandidatePath": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/feral-spaceship/rejected/bank-dorsal-attempt-1.png",
+      "sha256": "0bf112a2ae81cbfa00ad62d57b526cada8f240d5fa900d14ca09d9d347bfdafe",
+      "bytes": 2087505,
+      "reason": "Original deep dorsal did not establish a clear shallow-to-deep progression; replacement reveals substantially more dorsal shell.",
+      "actualFile": {
+        "path": "/workspace/scratch/0c1fa1359efb/generated_images/exec-acad46c6-f4c9-4aa0-ab6e-eef82b15d8a2.png",
+        "bytes": 2087505,
+        "sha256": "0bf112a2ae81cbfa00ad62d57b526cada8f240d5fa900d14ca09d9d347bfdafe"
+      },
+      "promotedToSource": false
+    },
+    {
+      "shipId": "upgrade-spaceship",
+      "viewId": "forward-quarter-shallow",
+      "attempt": 1,
+      "path": "/workspace/scratch/0c1fa1359efb/generated_images/exec-6d0c1d2a-7d96-4548-8f79-a96244cb7499.png",
+      "sha256": "7abf83d40a1a3640e68e1be7e09d10d4a93ac6417ef9e9fc97a48108b5b6caa9",
+      "bytes": 1781474,
+      "reason": "rejected-pose-too-overhead",
+      "actualFile": {
+        "path": "/workspace/scratch/0c1fa1359efb/generated_images/exec-6d0c1d2a-7d96-4548-8f79-a96244cb7499.png",
+        "bytes": 1781474,
+        "sha256": "7abf83d40a1a3640e68e1be7e09d10d4a93ac6417ef9e9fc97a48108b5b6caa9"
+      },
+      "promotedToSource": false
+    },
+    {
+      "shipId": "upgrade-spaceship",
+      "viewId": "forward-quarter-shallow",
+      "attempt": 2,
+      "path": "/workspace/scratch/0c1fa1359efb/generated_images/exec-1a823dd0-8f15-4d83-a672-9126500b9a51.png",
+      "sha256": "4f77f82755b0afb393a9345aca8bdaf218eaa2b60007960fb176c8e241db5e6e",
+      "bytes": 1629761,
+      "reason": "rejected-pose-still-too-overhead",
+      "actualFile": {
+        "path": "/workspace/scratch/0c1fa1359efb/generated_images/exec-1a823dd0-8f15-4d83-a672-9126500b9a51.png",
+        "bytes": 1629761,
+        "sha256": "4f77f82755b0afb393a9345aca8bdaf218eaa2b60007960fb176c8e241db5e6e"
+      },
+      "promotedToSource": false
+    },
+    {
+      "shipId": "upgrade-spaceship",
+      "viewId": "forward-quarter-shallow",
+      "attempt": 3,
+      "path": "/workspace/scratch/0c1fa1359efb/generated_images/exec-8b760e0d-28a0-44f6-9bbe-3844c4e601a1.png",
+      "sha256": "e7cef53e83bbe09816f6480d62646754b83f52d9e5ffa1633e6831a77b9c333e",
+      "bytes": 972548,
+      "reason": "rejected-canvas-dimensions",
+      "actualFile": {
+        "path": "/workspace/scratch/0c1fa1359efb/generated_images/exec-8b760e0d-28a0-44f6-9bbe-3844c4e601a1.png",
+        "bytes": 972548,
+        "sha256": "e7cef53e83bbe09816f6480d62646754b83f52d9e5ffa1633e6831a77b9c333e"
+      },
+      "promotedToSource": false
+    },
+    {
+      "shipId": "upgrade-spaceship",
+      "viewId": "forward-quarter",
+      "attempt": 1,
+      "path": "/workspace/scratch/0c1fa1359efb/generated_images/exec-40c98b06-5943-43ef-8617-dd01eda17a8d.png",
+      "sha256": "aebdad2de39c1b1bbefd038bbdd7be2e1e9c5ee577e34d61dbe53dbd6a9b3909",
+      "bytes": 1947323,
+      "reason": "rejected-pose-too-overhead",
+      "actualFile": {
+        "path": "/workspace/scratch/0c1fa1359efb/generated_images/exec-40c98b06-5943-43ef-8617-dd01eda17a8d.png",
+        "bytes": 1947323,
+        "sha256": "aebdad2de39c1b1bbefd038bbdd7be2e1e9c5ee577e34d61dbe53dbd6a9b3909"
+      },
+      "promotedToSource": false
+    },
+    {
+      "shipId": "upgrade-spaceship",
+      "viewId": "forward-quarter",
+      "attempt": 2,
+      "path": "/workspace/scratch/0c1fa1359efb/generated_images/exec-36df58d4-aa76-491d-a149-afd43ef5270e.png",
+      "sha256": "862206ca7e473f7a7eb8b21bc27bdfa99ac3c9393925b4847a67b747be653b6a",
+      "bytes": 1724278,
+      "reason": "rejected-pose-still-too-overhead",
+      "actualFile": {
+        "path": "/workspace/scratch/0c1fa1359efb/generated_images/exec-36df58d4-aa76-491d-a149-afd43ef5270e.png",
+        "bytes": 1724278,
+        "sha256": "862206ca7e473f7a7eb8b21bc27bdfa99ac3c9393925b4847a67b747be653b6a"
+      },
+      "promotedToSource": false
+    },
+    {
+      "shipId": "upgrade-spaceship",
+      "viewId": "forward-quarter",
+      "attempt": 3,
+      "path": "/workspace/scratch/0c1fa1359efb/generated_images/exec-d4dcf19d-5f7e-4f60-8321-70719caf761c.png",
+      "sha256": "6e0c894141b3ea86dad69675f8b677987661740ad6089db61f9ec6ef0844124f",
+      "bytes": 1109535,
+      "reason": "rejected-canvas-dimensions",
+      "actualFile": {
+        "path": "/workspace/scratch/0c1fa1359efb/generated_images/exec-d4dcf19d-5f7e-4f60-8321-70719caf761c.png",
+        "bytes": 1109535,
+        "sha256": "6e0c894141b3ea86dad69675f8b677987661740ad6089db61f9ec6ef0844124f"
+      },
+      "promotedToSource": false
+    },
+    {
+      "shipId": "upgrade-spaceship",
+      "viewId": "bank-dorsal-shallow",
+      "attempt": 1,
+      "path": "/workspace/scratch/0c1fa1359efb/generated_images/exec-b2edc612-74e3-4791-99f3-91f3ecac56b2.png",
+      "sha256": "076a738397a7f9960446c6da523655cea5fc665bdaaaeb3608e211fdf48b68ec",
+      "bytes": 1644187,
+      "reason": "rejected-pose-too-overhead",
+      "actualFile": {
+        "path": "/workspace/scratch/0c1fa1359efb/generated_images/exec-b2edc612-74e3-4791-99f3-91f3ecac56b2.png",
+        "bytes": 1644187,
+        "sha256": "076a738397a7f9960446c6da523655cea5fc665bdaaaeb3608e211fdf48b68ec"
+      },
+      "promotedToSource": false
+    },
+    {
+      "shipId": "upgrade-spaceship",
+      "viewId": "bank-ventral",
+      "attempt": 1,
+      "path": "/workspace/scratch/0c1fa1359efb/generated_images/exec-29584c4a-7a9c-47c8-9e51-162044ee50ce.png",
+      "sha256": "3004b25390203199704bd77ccad4491c183be45dde73adc6ec72cc27c7773e78",
+      "bytes": 1641628,
+      "reason": "rejected-duplicated-blue-emitter",
+      "actualFile": {
+        "path": "/workspace/scratch/0c1fa1359efb/generated_images/exec-29584c4a-7a9c-47c8-9e51-162044ee50ce.png",
+        "bytes": 1641628,
+        "sha256": "3004b25390203199704bd77ccad4491c183be45dde73adc6ec72cc27c7773e78"
+      },
+      "promotedToSource": false
+    }
+  ],
+  "specialAssignments": {
+    "wolfDorsals": [
+      {
+        "viewId": "bank-dorsal-shallow",
+        "generatedId": "wolf-bank-dorsal",
+        "assignedId": "wolf-bank-dorsal-shallow",
+        "assignmentNote": "Dorsal pair assigned by observed progression; requested angles are not measurements.",
+        "originalGenerated": {
+          "path": "/workspace/scratch/0c1fa1359efb/generated_images/exec-c29c507c-c73d-46f3-b6f9-361ddb2e4b66.png",
+          "bytes": 2052298,
+          "sha256": "32b9b613fc4ba669db134d8cf352975ec8ff7ca206dcc81bebcaa94e7ed5abd7"
+        },
+        "sourcePng": {
+          "path": "/workspace/scratch/af58a64ab248/yautja-ship-motion/production/ship-motion-fleet-20261106/art/sources/wolf-ship/bank-dorsal-shallow.png",
+          "bytes": 2052298,
+          "sha256": "32b9b613fc4ba669db134d8cf352975ec8ff7ca206dcc81bebcaa94e7ed5abd7"
+        },
+        "runtimeWebp": {
+          "path": "/workspace/scratch/af58a64ab248/yautja-ship-motion/public/game/planet-arrival/ship-motion-fleet-v1/wolf-ship/bank-dorsal-shallow.webp",
+          "bytes": 1372738,
+          "sha256": "4a3822ee94074f6651ff80c9e68bda74ffd21b2d3a3dc1e2ba5daba2c9e1aa13"
+        }
+      },
+      {
+        "viewId": "bank-dorsal",
+        "generatedId": "wolf-bank-dorsal-shallow",
+        "assignedId": "wolf-bank-dorsal",
+        "assignmentNote": "Dorsal pair assigned by observed progression; requested angles are not measurements.",
+        "originalGenerated": {
+          "path": "/workspace/scratch/0c1fa1359efb/generated_images/exec-c25ba19e-1c87-4420-b9ee-3aa9a4096872.png",
+          "bytes": 2025335,
+          "sha256": "c42337ea97ce2f09aed2a55a9793ab979c66bc9d8579ccb450e93e2530bbe977"
+        },
+        "sourcePng": {
+          "path": "/workspace/scratch/af58a64ab248/yautja-ship-motion/production/ship-motion-fleet-20261106/art/sources/wolf-ship/bank-dorsal.png",
+          "bytes": 2025335,
+          "sha256": "c42337ea97ce2f09aed2a55a9793ab979c66bc9d8579ccb450e93e2530bbe977"
+        },
+        "runtimeWebp": {
+          "path": "/workspace/scratch/af58a64ab248/yautja-ship-motion/public/game/planet-arrival/ship-motion-fleet-v1/wolf-ship/bank-dorsal.webp",
+          "bytes": 1357238,
+          "sha256": "6d2d1e1bebab9b75797c587c028cbf15672b8486a1057dc19d04959738371e45"
+        }
+      }
+    ],
+    "feralCorrectedDorsal": {
+      "shipId": "feral-spaceship",
+      "viewId": "bank-dorsal",
+      "originalGenerated": {
+        "path": "/workspace/scratch/0c1fa1359efb/generated_images/exec-9ac54bec-4c22-47f9-b642-2a281e94059d.png",
+        "bytes": 2201237,
+        "sha256": "083e7f4bd2bdcb646dd00a662ae9e5dfabfb77537a9aa9fc35c62741ac423f1c"
+      },
+      "selectedCandidate": {
+        "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/feral-spaceship/candidates/bank-dorsal.png",
+        "bytes": 2201237,
+        "sha256": "083e7f4bd2bdcb646dd00a662ae9e5dfabfb77537a9aa9fc35c62741ac423f1c"
+      },
+      "sourcePng": {
+        "path": "/workspace/scratch/af58a64ab248/yautja-ship-motion/production/ship-motion-fleet-20261106/art/sources/feral-spaceship/bank-dorsal.png",
+        "bytes": 2201237,
+        "sha256": "083e7f4bd2bdcb646dd00a662ae9e5dfabfb77537a9aa9fc35c62741ac423f1c"
+      },
+      "runtimeWebp": {
+        "path": "/workspace/scratch/af58a64ab248/yautja-ship-motion/public/game/planet-arrival/ship-motion-fleet-v1/feral-spaceship/bank-dorsal.webp",
+        "bytes": 1362840,
+        "sha256": "d0cd2b2dbecf9587a305a54c8979563067e145dad88b4d3e7628657c7dcd5844"
+      },
+      "selectedAttempt": 2,
+      "generatedId": null,
+      "assignedId": null,
+      "assignmentNote": null,
+      "sourceBytesEqualCandidateAndOriginal": true,
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "mode": "RGBA",
+      "webpContainerChunks": [
+        {
+          "fourcc": "VP8L",
+          "bytes": 1362820
+        }
+      ],
+      "decodedEquality": {
+        "fullRgbaExact": true,
+        "rgbaBytes": 6291456,
+        "sourceRgbaSha256": "8c8d2670417cf411331387b12019ab5131e1863c4461f285441b46ff7ad596f4",
+        "runtimeRgbaSha256": "8c8d2670417cf411331387b12019ab5131e1863c4461f285441b46ff7ad596f4",
+        "differentPixels": 0,
+        "differentChannels": 0,
+        "maximumChannelDelta": 0,
+        "includesRgbUnderAlphaZero": true
+      },
+      "alpha": {
+        "minimum": 0,
+        "maximum": 254,
+        "maximumBorder": 1,
+        "above16Bounds": [
+          152,
+          58,
+          1404,
+          928
+        ],
+        "above16InsideCanvas": true,
+        "fullyTransparentPixels": 888951
+      }
+    }
+  },
+  "directoryCoverage": {
+    "extraPngs": [],
+    "missingPngs": [],
+    "extraWebps": [],
+    "missingWebps": []
+  },
+  "limitations": [
+    "No new artistic approval or canonical 1:1 claim: this proves exact transfer and lossless encoding of the selected generated source pixels.",
+    "No browser run, animation/cross-fade qualification, timing measurement or publication performed.",
+    "Small existing alpha residues and alpha maximum 254 are preserved exactly; no cleanup or normalization performed.",
+    "The final fleet manifest and application integration are outside this binary audit scope."
+  ],
+  "errors": []
+}

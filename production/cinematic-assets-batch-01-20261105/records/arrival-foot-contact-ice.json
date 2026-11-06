@@ -1,0 +1,56 @@
+{
+  "id": "arrival-foot-contact-ice",
+  "family": "foot-contact",
+  "biome": "ice",
+  "file": "public/game/cinematics/batch-01-20261105/arrival-foot-contact-ice.png",
+  "generatedSource": "/workspace/scratch/62884fa4f584/generated_images/exec-e3e4fee5-e109-4fed-a9aa-cf4b71ec8e78.png",
+  "prompt": "Use case: stylized-concept.\nAsset type: ONE individual 2D ground-contact VFX sprite for the Yautja The Long Hunt cinematic.\nInput image 1 is a rendering/material reference only: the approved jungle impact-front pilot. Input image 2 is the real in-game cinematic, used only to match its realistic painted 2.5D material treatment and restrained values. Do not reproduce either scene or the large impact effect.\nPrimary request: create a NEW very small footstep contact effect, representing displaced material alone. This is a single cohesive micro-effect for one step, not a landing explosion or a wide impact-front plume.\nAsset ID: arrival-foot-contact-ice.\nSubject and unique material: A tiny, shallow footstep spray of crushed frost: a low broken arc of fine white crystalline grains with three small sharp translucent ice splinters. The grains feel brittle and cold, with restrained grey-blue reflections; no star-shaped sparkles or glow.\nCamera: near-ground side view with only a slight view of the top of the particles; no ground plane is drawn. Origin is at normalized x=0.50, y=0.78 of the full image. Material emerges close to that point and rises in a low, irregular fan, largely confined to x=0.27..0.73 and y=0.52..0.80. All visible parts have ample empty transparent margins. Keep most of the square empty.\nStyle: semi-realistic hand-painted 2.5D game art, physical material detail, neutral upper-left lighting, coherent with the references. The tiny silhouette must remain legible when composited at a few dozen pixels wide.\nOutput: ONE 1024x1024 square RGBA PNG with TRUE TRANSPARENT BACKGROUND. Preserve real soft partial alpha where the material thins. No rectangular background, baked checkerboard or opaque black/white field. No visible pixels at the canvas borders.\nExclude: feet, footprints, shoes, body parts, characters, creatures, ship, capsule, ground surface, flat soil patch, platform, contact disc, cast shadow, environment, horizon, typography, labels, numbering, frame, grid, atlas, sprite sheet, duplicate examples, watermark. One material-only micro-spray, not an entire scene.",
+  "referenceImages": [
+    "/workspace/scratch/62884fa4f584/cinematic-assets-batch-01-20261105/public/game/cinematics/batch-01-20261105/arrival-impact-front-jungle.png",
+    "/workspace/scratch/62884fa4f584/qa-recovery/spatial-a7f830c/desktop-landing-impact.png"
+  ],
+  "generationMode": "builtin-imagegen-reference",
+  "intendedAnchor": {
+    "name": "hunter-foot-contact",
+    "normalized": [
+      0.5,
+      0.78
+    ],
+    "basis": "requested composition anchor; runtime registration remains pending"
+  },
+  "generated": true,
+  "integrated": false,
+  "testedInEngine": false,
+  "artisticHumanApproval": false,
+  "technicalQA": {
+    "format": "PNG",
+    "mode": "RGBA",
+    "width": 1254,
+    "height": 1254,
+    "bytes": 338699,
+    "sha256": "1f6ad946977bdf7da79e986084c7281f2c683963b28e7260a9baf7709577bcee",
+    "gitBlobSha": "b5907d80a25d87552ba01efc256d43075ead432c",
+    "visiblePixelsAbove16": 57316,
+    "fullyTransparentPixels": 1450840,
+    "transparentFraction": 0.9226233628147503,
+    "boundsAbove16": [
+      295,
+      809,
+      980,
+      1017
+    ],
+    "edgePixelsAbove16": 0,
+    "highSaturationDiagnostic": {
+      "visible": 0,
+      "opaque": 0,
+      "lowAlpha": 1305
+    },
+    "passed": true
+  },
+  "visualReview": {
+    "status": "reviewed-by-agent",
+    "basis": "Built-in generated preview inspected and original RGBA data checked.",
+    "notes": "Low fractured-frost spray with angular ice chips; no foot, scenery, cropped particle or drawn ground plane. Human and in-engine review remain pending."
+  },
+  "generatedAt": "2026-11-05T13:12:31.648886+00:00"
+}

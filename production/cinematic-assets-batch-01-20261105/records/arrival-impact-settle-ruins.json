@@ -1,0 +1,48 @@
+{
+  "id": "arrival-impact-settle-ruins",
+  "family": "impact-settle",
+  "biome": "ruins",
+  "prompt": "Use case: stylized-concept. ONE independent production 2D cinematic VFX sprite for Yautja The Long Hunt.\nAsset ID: arrival-impact-settle-ruins; biome ruins.\nInput image 1 is a material/palette/style reference only; input image 2 is a phase/scale/style reference only. Make ONE new standalone effect matching the restrained semi-realistic hand-painted 2.5D finish. Do not reproduce or combine whole reference images.\nSubject: A sparse late falling aftermath of tiny angular weathered limestone/masonry chips, minute plaster grit and fine pale warm-grey mineral dust. Only small suspended fragments falling down, with short faint trails above the heavier chips, isolated wisps of residual warm-grey dust lower in the frame. Natural buff/grey weathered stone without architecture, markings or metal.\nMorphology: Sparse DISCONNECTED falling particles and very short descending trails, large transparent gaps between the small groups. Far less dense and much lower than the impact-front reference. No outward/upward eruption or mirrored rising wings, no solid material pile. This is a distinct later falling aftermath, not a recolour or lower-opacity copy of the first reference.\nCamera: near-ground side view, with very slight view of the top of the spread. Subtle neutral upper-left light. Clear centre for compositing the existing capsule or ship behind. No scene geometry.\nComposition: 1536x1024 landscape canvas. Unseen contact origin is full-frame x50%, y78% (768,799). All visible material should stay within x20%..80%, y52%..81%; all particles are in a shallow irregular band. All pixels in the outer 15% strips at left and right, and outer 13% at top and bottom MUST have zero alpha. Do not fill the frame or zoom in. Every wisp fades into genuinely transparent alpha and stays away from edges.\nOutput ONE individual RGBA PNG with TRUE TRANSPARENT BACKGROUND. No floor, terrain, pile, ground surface, painted shadow disc, backdrop, horizon, ship, capsule, engines, characters, creature, magic, glow, words, labels, grid, sprite sheet, frames, contact sheet, watermark, baked checkerboard, black or white background, cropped particles. Keep clean transparent separation.",
+  "generatedSource": "/workspace/scratch/1221b6b0a2c1/generated_images/exec-19481139-4143-4354-813a-ddf0392aa3ef.png",
+  "file": "public/game/cinematics/batch-01-20261105/arrival-impact-settle-ruins.png",
+  "referenceImages": [
+    "/workspace/scratch/1221b6b0a2c1/cinematic-assets-batch-01-20261105/public/game/cinematics/batch-01-20261105/arrival-impact-front-ruins.png",
+    "/workspace/scratch/1221b6b0a2c1/cinematic-assets-batch-01-20261105/public/game/cinematics/batch-01-20261105/arrival-impact-settle-jungle.png"
+  ],
+  "generationMode": "builtin-imagegen-reference",
+  "transparentBackgroundRequested": true,
+  "intendedAnchor": {
+    "name": "ground-capsule-reference",
+    "normalized": [
+      0.5,
+      0.78
+    ],
+    "basis": "Common intended contact from prompt; visually reviewed standalone, runtime calibration pending."
+  },
+  "generated": true,
+  "integrated": false,
+  "testedInEngine": false,
+  "artisticHumanApproval": false,
+  "visualReview": {
+    "reviewer": "assistant",
+    "result": "pass-with-integration-pending",
+    "notes": "Clear centre, restrained material palette, sparse downward aftermath for settle; low lateral flow for wash. Entire significant effect inside canvas."
+  },
+  "technicalQA": {
+    "mode": "RGBA",
+    "width": 1536,
+    "height": 1024,
+    "fullyTransparentFraction": 0.9630374908447266,
+    "visibleAlphaOver16Pixels": 14216,
+    "visibleBoundsAlphaOver16": [
+      309,
+      543,
+      1184,
+      823
+    ],
+    "bytes": 834870,
+    "sha256": "0c96b94298242a34dbe628afd472d0dc949352546ca0faee70d58db00e8526b4",
+    "borderPass": true,
+    "passed": true
+  }
+}

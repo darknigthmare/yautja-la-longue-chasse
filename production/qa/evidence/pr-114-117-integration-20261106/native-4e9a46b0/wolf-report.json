@@ -1,0 +1,3836 @@
+{
+  "startedAt": "2026-11-06T16:00:28.437Z",
+  "checkoutCommit": "4e9a46b0b588cb0f861100119b9580ce909afa2c",
+  "workingTreeDirty": false,
+  "sourceCommit": "4e9a46b0b588cb0f861100119b9580ce909afa2c",
+  "runtime": "actual desktop GameClient via Vite",
+  "headed": true,
+  "assetGateRequired": true,
+  "checks": [
+    {
+      "name": "Main menu resumes the existing campaign on the personal deck",
+      "passed": true
+    },
+    {
+      "name": "The orbital castle remains separate from the personal hull and Clan Ship",
+      "passed": true
+    },
+    {
+      "name": "Walking reaches the airlock, vestibule, gallery and real archive terminal",
+      "passed": true
+    },
+    {
+      "name": "Castle room and personal hull survive menu, reload and Continue",
+      "passed": true
+    },
+    {
+      "name": "The audience and council preserve one campaign decision",
+      "passed": true
+    },
+    {
+      "name": "The three-seal court trial is traversed and completed without campaign rewards",
+      "passed": true
+    },
+    {
+      "name": "The royal court starts a real three-guard fight with damage and a saved exact position",
+      "passed": true
+    },
+    {
+      "name": "A paused fight survives menu and reload without recovering health or resetting the guard",
+      "passed": true
+    },
+    {
+      "name": "A real browser tab change pauses the fight and returning never resumes it implicitly",
+      "passed": true
+    },
+    {
+      "name": "Taking the announced hits ends in defeat, then restart creates one fresh attempt",
+      "passed": true
+    },
+    {
+      "name": "Combat controls fit 320 pixels and abandoning unlocks the same court safely",
+      "passed": true
+    },
+    {
+      "name": "Ordinary keyboard movement, timed parries, dodges and attacks defeat the three guards",
+      "passed": true
+    },
+    {
+      "name": "Castle navigation and return remain usable at 390 and 320 pixels",
+      "passed": true
+    },
+    {
+      "name": "The accepted audience grants a new mandate whose objectives require fresh station interactions",
+      "passed": true
+    },
+    {
+      "name": "A partially explored mandate survives Save, menu, reload and Continue with the same training dossier",
+      "passed": true
+    },
+    {
+      "name": "The gallery and council complete the three objectives and unlock the separate sentinel encounter",
+      "passed": true
+    },
+    {
+      "name": "The paused mandate reloads the same sentinel, damaged health, position and elapsed time before explicit resume",
+      "passed": true
+    },
+    {
+      "name": "Real movement, parries, dodges and attacks beat all sentinel phases without healing or an early reward",
+      "passed": true
+    },
+    {
+      "name": "The return guide reaches the audience and a refused reward write keeps the victory and balance unclaimed",
+      "passed": true
+    },
+    {
+      "name": "Retrying the same audience action commits exactly two marks together with the campaign receipt",
+      "passed": true
+    },
+    {
+      "name": "The completed mandate keeps one receipt and one reward after reload, another audience consultation and departure",
+      "passed": true
+    },
+    {
+      "name": "Real recruitment and a cloaked ship-triad briefing freeze one paid campaign run before any hunt mounts",
+      "passed": true
+    },
+    {
+      "name": "A real browser tab change suspends arrival and preserves the same mission on return",
+      "passed": true
+    },
+    {
+      "name": "Arrival pause freezes active time and reduced-motion keeps the same mission",
+      "passed": true
+    },
+    {
+      "name": "Arrival menu, reload and Continue retain the same run without a gameplay sidecar",
+      "passed": true
+    },
+    {
+      "name": "A refused handoff leaves the hunt unmounted and can retry the same run once",
+      "passed": true
+    },
+    {
+      "name": "Reload after handoff resumes the real hunt and never replays arrival",
+      "passed": true
+    },
+    {
+      "name": "A second isolated campaign launches the full moving arrival",
+      "passed": true
+    },
+    {
+      "name": "The title, actual carrier and separate capsule are presented before the descent",
+      "passed": true
+    },
+    {
+      "name": "Descent reload retains mission and run, then explicitly resumes the same shot",
+      "passed": true
+    },
+    {
+      "name": "Atmosphere, ground impact and the selected hunter lead to exactly one natural handoff",
+      "passed": true
+    },
+    {
+      "name": "The complete route has no browser exception and every requested visual is available",
+      "passed": true
+    }
+  ],
+  "errors": [],
+  "missingAssets": [],
+  "requestedAssets": [
+    "public/game/assets/v139/rig-gauntlets/jungle-hunter/base.svg",
+    "public/game/assets/v139/rig-gauntlets/jungle-hunter/lid.svg",
+    "public/game/assets/v15/trophies/trophy-vey.webp",
+    "public/game/assets/v18/enemy-trophy-gameplay/enemy-trophy-crane-a-quatre-narines.webp",
+    "public/game/assets/v18/enemy-trophy-gameplay/enemy-trophy-crete-de-resonance.webp",
+    "public/game/assets/v18/enemy-trophy-gameplay/enemy-trophy-crocs-a-canal-thermique.webp",
+    "public/game/assets/v18/enemy-trophy-gameplay/enemy-trophy-dome-cranien-intact.webp",
+    "public/game/assets/v18/enemy-trophy-gameplay/enemy-trophy-dome-cranien-mouchete.webp",
+    "public/game/assets/v18/enemy-trophy-gameplay/enemy-trophy-matrice-de-ciblage.webp",
+    "public/game/assets/v18/enemy-trophy-gameplay/enemy-trophy-noyau-de-servomoteur.webp",
+    "public/game/assets/v18/enemy-trophy-gameplay/enemy-trophy-plaque-d-unite.webp",
+    "public/game/assets/v18/enemy-trophy-gameplay/enemy-trophy-sac-pollinique-intact.webp",
+    "public/game/assets/v19/biome-decor/jungle/clm/clm-buttress-trunk-03-forked.webp",
+    "public/game/assets/v19/biome-decor/jungle/clm/clm-buttress-trunk-05-paired.webp",
+    "public/game/assets/v19/biome-decor/jungle/clm/clm-field-ladder-01-straight.webp",
+    "public/game/assets/v19/biome-decor/jungle/clm/clm-field-ladder-02-hooked.webp",
+    "public/game/assets/v19/biome-decor/jungle/clm/clm-field-ladder-04-interrupted.webp",
+    "public/game/assets/v19/biome-decor/jungle/clm/clm-field-ladder-05-paired.webp",
+    "public/game/assets/v19/biome-decor/jungle/clm/clm-hanging-vine-04-interrupted.webp",
+    "public/game/assets/v19/biome-decor/jungle/clm/clm-hanging-vine-05-paired.webp",
+    "public/game/assets/v19/biome-decor/jungle/cov/cov-strangler-root-wall-02-broad.webp",
+    "public/game/assets/v19/biome-decor/jungle/cov/cov-supply-palisade-01-narrow.webp",
+    "public/game/assets/v19/biome-decor/jungle/haz/haz-spectral-flare-tripwire-04-cyclic.webp",
+    "public/game/assets/v19/biome-decor/jungle/orn/orn-storm-flower-02-pair.webp",
+    "public/game/assets/v19/biome-decor/jungle/orn/orn-storm-flower-03-cluster.webp",
+    "public/game/assets/v19/biome-decor/jungle/orn/orn-storm-flower-04-fallen.webp",
+    "public/game/assets/v19/biome-decor/jungle/orn/orn-transponder-debris-03-cluster.webp",
+    "public/game/assets/v19/biome-decor/jungle/orn/orn-vine-curtain-02-pair.webp",
+    "public/game/assets/v19/biome-decor/jungle/orn/orn-vine-curtain-03-cluster.webp",
+    "public/game/assets/v19/biome-decor/jungle/orn/orn-vine-curtain-04-fallen.webp",
+    "public/game/assets/v19/biome-decor/jungle/orn/orn-vine-curtain-05-evidence.webp",
+    "public/game/assets/v19/biome-decor/jungle/plt/plt-canopy-crown-04-broken.webp",
+    "public/game/assets/v19/biome-decor/jungle/plt/plt-canopy-crown-05-tiered.webp",
+    "public/game/assets/v19/biome-decor/jungle/plt/plt-expedition-deck-04-broken.webp",
+    "public/game/assets/v19/biome-decor/jungle/plt/plt-mossy-ruin-slab-01-low-wide.webp",
+    "public/game/assets/v19/biome-decor/jungle/plt/plt-mossy-ruin-slab-02-high-narrow.webp",
+    "public/game/assets/v19/biome-decor/jungle/plt/plt-mossy-ruin-slab-03-forked.webp",
+    "public/game/assets/v19/biome-decor/jungle/plt/plt-mossy-ruin-slab-04-broken.webp",
+    "public/game/assets/v19/biome-decor/jungle/plt/plt-mossy-ruin-slab-05-tiered.webp",
+    "public/game/assets/v19/biome-decor/jungle/plt/plt-root-bridge-01-low-wide.webp",
+    "public/game/assets/v19/biome-decor/jungle/plt/plt-root-bridge-02-high-narrow.webp",
+    "public/game/assets/v19/biome-decor/jungle/plt/plt-root-bridge-05-tiered.webp",
+    "public/game/assets/v19/biome-decor/jungle/srf/srf-footprint-mud-03-ridge.webp",
+    "public/game/assets/v19/biome-decor/jungle/srf/srf-footprint-mud-05-transition.webp",
+    "public/game/assets/v19/biome-decor/jungle/srf/srf-rain-puddle-01-patch.webp",
+    "public/game/assets/v2/environments/jungle/climbables/vine-ladder.webp",
+    "public/game/assets/v2/environments/jungle/layers/far-lake.webp",
+    "public/game/assets/v3/actors/yautja/hunter/armor/registered/belt.webp",
+    "public/game/assets/v3/actors/yautja/hunter/armor/registered/bracer.webp",
+    "public/game/assets/v3/actors/yautja/hunter/armor/registered/chest-classic.webp",
+    "public/game/assets/v3/actors/yautja/hunter/armor/registered/knee.webp",
+    "public/game/assets/v3/actors/yautja/hunter/armor/registered/shin.webp",
+    "public/game/assets/v3/actors/yautja/hunter/armor/registered/shoulder-classic.webp",
+    "public/game/assets/v3/actors/yautja/hunter/armor/registered/thigh-lower.webp",
+    "public/game/assets/v3/actors/yautja/hunter/armor/registered/thigh.webp",
+    "public/game/assets/v3/actors/yautja/hunter/body/classic/full.webp",
+    "public/game/assets/v3/actors/yautja/hunter/body/classic/net/parts/hand-back.webp",
+    "public/game/assets/v3/actors/yautja/hunter/body/classic/net/parts/hand-front.webp",
+    "public/game/assets/v3/actors/yautja/hunter/body/classic/net/parts/lower-arm-back.webp",
+    "public/game/assets/v3/actors/yautja/hunter/body/classic/net/parts/lower-arm-front.webp",
+    "public/game/assets/v3/actors/yautja/hunter/body/classic/net/parts/pelvis.webp",
+    "public/game/assets/v3/actors/yautja/hunter/body/classic/net/parts/shin-back.webp",
+    "public/game/assets/v3/actors/yautja/hunter/body/classic/net/parts/shin-front.webp",
+    "public/game/assets/v3/actors/yautja/hunter/body/classic/net/parts/thigh-back.webp",
+    "public/game/assets/v3/actors/yautja/hunter/body/classic/net/parts/thigh-front.webp",
+    "public/game/assets/v3/actors/yautja/hunter/body/classic/net/parts/torso.webp",
+    "public/game/assets/v3/actors/yautja/hunter/body/classic/net/parts/upper-arm-back.webp",
+    "public/game/assets/v3/actors/yautja/hunter/body/classic/net/parts/upper-arm-front.webp",
+    "public/game/assets/v3/actors/yautja/hunter/body/classic/parts/foot-back.webp",
+    "public/game/assets/v3/actors/yautja/hunter/body/classic/parts/foot-front.webp",
+    "public/game/assets/v3/actors/yautja/hunter/body/classic/parts/hand-back.webp",
+    "public/game/assets/v3/actors/yautja/hunter/body/classic/parts/hand-front.webp",
+    "public/game/assets/v3/actors/yautja/hunter/body/classic/parts/head.webp",
+    "public/game/assets/v3/actors/yautja/hunter/body/classic/parts/lower-arm-back.webp",
+    "public/game/assets/v3/actors/yautja/hunter/body/classic/parts/lower-arm-front.webp",
+    "public/game/assets/v3/actors/yautja/hunter/body/classic/parts/pelvis.webp",
+    "public/game/assets/v3/actors/yautja/hunter/body/classic/parts/shin-back.webp",
+    "public/game/assets/v3/actors/yautja/hunter/body/classic/parts/shin-front.webp",
+    "public/game/assets/v3/actors/yautja/hunter/body/classic/parts/thigh-back.webp",
+    "public/game/assets/v3/actors/yautja/hunter/body/classic/parts/thigh-front.webp",
+    "public/game/assets/v3/actors/yautja/hunter/body/classic/parts/torso.webp",
+    "public/game/assets/v3/actors/yautja/hunter/body/classic/parts/upper-arm-back.webp",
+    "public/game/assets/v3/actors/yautja/hunter/body/classic/parts/upper-arm-front.webp",
+    "public/game/assets/v3/actors/yautja/hunter/dreads/registered/braided.webp",
+    "public/game/assets/v3/actors/yautja/hunter/dreads/registered/classic.webp",
+    "public/game/assets/v3/actors/yautja/hunter/dreads/registered/ringed.webp",
+    "public/game/assets/v3/actors/yautja/hunter/equipment/registered/barrel.webp",
+    "public/game/assets/v3/actors/yautja/hunter/equipment/registered/blade-housing.webp",
+    "public/game/assets/v3/actors/yautja/hunter/equipment/registered/blades.webp",
+    "public/game/assets/v3/actors/yautja/hunter/equipment/registered/cannon.webp",
+    "public/game/assets/v3/actors/yautja/hunter/equipment/registered/caster-lower.webp",
+    "public/game/assets/v3/actors/yautja/hunter/equipment/registered/caster-upper.webp",
+    "public/game/assets/v3/actors/yautja/hunter/equipment/registered/gauntlet-base.webp",
+    "public/game/assets/v3/actors/yautja/hunter/equipment/registered/gauntlet-lid.webp",
+    "public/game/assets/v3/actors/yautja/hunter/equipment/registered/laser.webp",
+    "public/game/assets/v3/actors/yautja/hunter/equipment/registered/mount.webp",
+    "public/game/assets/v3/actors/yautja/hunter/equipment/registered/muzzle.webp",
+    "public/game/assets/v3/actors/yautja/hunter/equipment/registered/yoke.webp",
+    "public/game/assets/v3/actors/yautja/hunter/gear/motion-sensor.webp",
+    "public/game/assets/v3/actors/yautja/hunter/gear/registered/audio-decoy.webp",
+    "public/game/assets/v3/actors/yautja/hunter/gear/registered/motion-sensor.webp",
+    "public/game/assets/v3/actors/yautja/hunter/gear/registered/snare.webp",
+    "public/game/assets/v3/actors/yautja/hunter/trophies/registered/trophy-bindings.webp",
+    "public/game/assets/v3/actors/yautja/hunter/trophies/registered/trophy-skull.webp",
+    "public/game/assets/v3/actors/yautja/hunter/trophies/registered/trophy-spine.webp",
+    "public/game/assets/v3/actors/yautja/hunter/weapons/registered/combistick-folded.webp",
+    "public/game/assets/v3/actors/yautja/hunter/weapons/registered/combistick.webp",
+    "public/game/backgrounds/jungle-multiscreen-v6.png",
+    "public/game/backgrounds/ship.webp",
+    "public/game/backgrounds/v10/galaxy-overview-v10.webp",
+    "public/game/backgrounds/v10/sector-nebula-v10.webp",
+    "public/game/backgrounds/v11/systems/system-oseris.webp",
+    "public/game/backgrounds/v9/galaxy-sector-v9.webp",
+    "public/game/celestial/v10/belt-saal.webp",
+    "public/game/celestial/v10/moon-khepri.webp",
+    "public/game/cinematics/batch-01-20261105/arrival-foot-contact-jungle.webp",
+    "public/game/cinematics/batch-01-20261105/arrival-fragment-jungle-a.webp",
+    "public/game/cinematics/batch-01-20261105/arrival-fragment-jungle-b.webp",
+    "public/game/cinematics/batch-01-20261105/arrival-impact-front-jungle.webp",
+    "public/game/cinematics/batch-01-20261105/arrival-impact-settle-jungle.webp",
+    "public/game/cinematics/batch-01-20261105/arrival-pod-flight-glow-reinforcement.webp",
+    "public/game/cinematics/batch-01-20261105/arrival-pod-ground-glow-reinforcement.webp",
+    "public/game/cinematics/batch-01-20261105/arrival-ship-ground-wash-jungle.webp",
+    "public/game/planet-arrival/ship-motion-v1/classic-bank-dorsal-shallow.webp",
+    "public/game/planet-arrival/ship-motion-v1/classic-bank-dorsal.webp",
+    "public/game/planet-arrival/ship-motion-v1/classic-bank-ventral-shallow.webp",
+    "public/game/planet-arrival/ship-motion-v1/classic-bank-ventral.webp",
+    "public/game/planet-arrival/ship-motion-v1/classic-engine-core.webp",
+    "public/game/planet-arrival/ship-motion-v1/classic-engine-plume.webp",
+    "public/game/planet-arrival/ship-motion-v1/classic-forward-quarter-shallow.webp",
+    "public/game/planet-arrival/ship-motion-v1/classic-forward-quarter.webp",
+    "public/game/planet-arrival/ship-motion-v1/classic-rear-quarter-shallow.webp",
+    "public/game/planet-arrival/ship-motion-v1/classic-rear-quarter.webp",
+    "public/game/planet-arrival/v1/atmosphere-clouds.webp",
+    "public/game/planet-arrival/v1/heat-trail.webp",
+    "public/game/planet-arrival/v1/pod-flight.webp",
+    "public/game/planet-arrival/v1/pod-ground.webp",
+    "public/game/planet-arrival/v1/release-jet.webp",
+    "public/game/planet-arrival/v1/space.webp",
+    "public/game/planet-arrival/v2/impact-fragment.webp",
+    "public/game/planet-arrival/v2/pod-hatch-interior.webp",
+    "public/game/planet-arrival/v2/pod-hatch.webp",
+    "public/game/planet-arrival/v2/vent-vapor-thin.webp",
+    "public/game/planet-arrival/v2/vent-vapor.webp",
+    "public/game/planet-arrival/v3/pod-destruction-core.webp",
+    "public/game/planet-arrival/v3/pod-destruction-metal-shard.webp",
+    "public/game/planet-arrival/v3/pod-destruction-pressure-ring.webp",
+    "public/game/planet-arrival/v3/pod-destruction-scorch.webp",
+    "public/game/planet-arrival/v3/pod-destruction-smoke.webp",
+    "public/game/planet-arrival/v3/pod-entry-bow-shock.webp",
+    "public/game/planet-arrival/v3/pod-entry-plasma-wake.webp",
+    "public/game/planet-arrival/v3/pod-flight-core.webp",
+    "public/game/planets/v10/planet-oseris-ii.webp",
+    "public/game/planets/v10/planet-oseris-iv.webp",
+    "public/game/prologue/v47/village.png",
+    "public/game/props/v4/crown-platform.png",
+    "public/game/props/v4/expedition-platform.png",
+    "public/game/props/v4/foreground-ferns.png",
+    "public/game/props/v4/root-platform.png",
+    "public/game/props/v4/ruin-platform.png",
+    "public/game/props/v4/tree-trunk.png",
+    "public/game/ship-interior/v21/door-frame.webp",
+    "public/game/ship-interior/v21/wall-observatory.webp",
+    "public/game/ship-interior/v22/archive-terminal.webp",
+    "public/game/ship-interior/v22/floor-edge.webp",
+    "public/game/ship-interior/v23/floor-panel.png",
+    "public/game/ship-interior/v23/navigation-console.webp",
+    "public/game/ships/v12/classic-predator-spaceship.webp",
+    "public/game/ships/v13/classic-predator-spaceship-top.webp",
+    "public/game/sprites/bad-blood.webp",
+    "public/game/sprites/cryostalker.webp",
+    "public/game/sprites/mercenary.webp",
+    "public/game/sprites/v4/bad-blood-initiate.png",
+    "public/game/sprites/v4/commandante-vey.png",
+    "public/game/sprites/v4/cryostalker-brute.png",
+    "public/game/sprites/v4/cryostalker-runner.png",
+    "public/game/sprites/v4/heavy.png",
+    "public/game/sprites/v4/rifle-soldier.png",
+    "public/game/sprites/v4/scout.png",
+    "public/game/sprites/v6/masks-trophies-atlas.png",
+    "public/game/sprites/v6/prey-atlas.png",
+    "public/game/sprites/v6/ranks-lasers-atlas.png",
+    "public/game/sprites/v6/ships-atlas.png",
+    "public/game/sprites/v62/heads/classic-head.png",
+    "public/game/sprites/v62/masks/jungle.png",
+    "public/game/sprites/v8/ecology/common/interplanetary-scavenger-sheet.png",
+    "public/game/sprites/v8/ecology/common/wandering-xeno-drone-sheet.png",
+    "public/game/sprites/v8/ecology/oseris-iv/corporate-juggernaut-sheet.png",
+    "public/game/sprites/v8/ecology/oseris-iv/drumcrest-herdling-sheet.png",
+    "public/game/sprites/v8/ecology/oseris-iv/jungle-smuggler-drone-sheet.png",
+    "public/game/sprites/v8/ecology/oseris-iv/jungle-xeno-scout-sheet.png",
+    "public/game/sprites/v8/ecology/oseris-iv/mist-pouncer-sheet.png",
+    "public/game/sprites/v8/ecology/oseris-iv/spore-bloom-sheet.png",
+    "public/game/sprites/v8/ecology/oseris-iv/vey-jungle-marine-sheet.png",
+    "public/game/wolf-castle/v1/access-beacon.webp",
+    "public/game/wolf-castle/v1/airlock-frame.webp",
+    "public/game/wolf-castle/v1/airlock-leaf.webp",
+    "public/game/wolf-castle/v1/archive-console.webp",
+    "public/game/wolf-castle/v1/audience-wall.webp",
+    "public/game/wolf-castle/v1/bay-anchor.webp",
+    "public/game/wolf-castle/v1/berth-wall.webp",
+    "public/game/wolf-castle/v1/castle-exterior.webp",
+    "public/game/wolf-castle/v1/column.webp",
+    "public/game/wolf-castle/v1/council-table.webp",
+    "public/game/wolf-castle/v1/court-wall.webp",
+    "public/game/wolf-castle/v1/dais.webp",
+    "public/game/wolf-castle/v1/gallery-wall.webp",
+    "public/game/wolf-castle/v1/predator-king-seated.webp",
+    "public/game/wolf-castle/v1/royal-guard.webp",
+    "public/game/wolf-castle/v1/service-wall.webp",
+    "public/game/wolf-castle/v1/throne.webp",
+    "public/game/wolf-castle/v1/trophy-plinth.webp",
+    "public/game/wolf-castle/v2/royal-guard-lunge.webp",
+    "public/game/wolf-castle/v2/royal-guard-ready.webp",
+    "public/game/wolf-castle/v2/royal-guard-windup.webp"
+  ],
+  "screenshots": [
+    "01-castle-orbit-desktop.png",
+    "02-castle-archives-desktop.png",
+    "03-castle-audience-desktop.png",
+    "04-castle-court-desktop.png",
+    "16-castle-combat-paused-desktop.png",
+    "17-castle-combat-defeat.png",
+    "18-castle-combat-mobile-320.png",
+    "19-castle-combat-victory.png",
+    "05-castle-court-mobile-320.png",
+    "22-mandate-accepted-journal.png",
+    "23-mandate-partial-resume.png",
+    "24-mandate-boss-paused-resume.png",
+    "25-mandate-boss-victory.png",
+    "26-mandate-reward-refused.png",
+    "27-mandate-completed-resume.png",
+    "28-triad-recruited-reserve.png",
+    "29-triad-assigned-to-hull.png",
+    "06-arrival-pause-mobile-320.png",
+    "07-arrival-handoff-recovery.png",
+    "08-hunt-after-skip.png",
+    "20-arrival-orbit.png",
+    "09-arrival-destination-title.png",
+    "10-arrival-carrier.png",
+    "11-arrival-pod-release.png",
+    "21-arrival-descent.png",
+    "12-arrival-atmosphere.png",
+    "13-arrival-ground-impact.png",
+    "14-arrival-hunter-egress.png",
+    "15-hunt-after-natural-arrival.png"
+  ],
+  "focusTransitions": [
+    {
+      "phase": "before",
+      "hidden": false,
+      "focused": true
+    },
+    {
+      "phase": "background",
+      "hidden": false,
+      "focused": false
+    },
+    {
+      "phase": "restored",
+      "hidden": false,
+      "focused": true
+    },
+    {
+      "phase": "before",
+      "hidden": false,
+      "focused": true
+    },
+    {
+      "phase": "background",
+      "hidden": false,
+      "focused": false
+    },
+    {
+      "phase": "restored",
+      "hidden": false,
+      "focused": true
+    },
+    {
+      "phase": "before-arrival-escape",
+      "focused": true,
+      "hidden": false,
+      "arrivalStatus": "playing",
+      "activeElement": "<button type=\"button\" class=\"_quietButton_al44i_128\">Pause</button>"
+    }
+  ],
+  "viewportTransitions": [
+    {
+      "width": 320,
+      "height": 844,
+      "cssWidth": 320,
+      "cssHeight": 844,
+      "cardWidth": 290,
+      "cardScroll": 290,
+      "padding": "14px"
+    },
+    {
+      "width": 1440,
+      "height": 1000,
+      "cssWidth": 1440,
+      "cssHeight": 1000,
+      "cardWidth": 1308,
+      "cardScroll": 1308,
+      "padding": "57.6px"
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "cssWidth": 390,
+      "cssHeight": 844,
+      "cardWidth": 345,
+      "cardScroll": 345,
+      "padding": "14px"
+    },
+    {
+      "width": 320,
+      "height": 844,
+      "cssWidth": 320,
+      "cssHeight": 844,
+      "cardWidth": 290,
+      "cardScroll": 290,
+      "padding": "14px"
+    },
+    {
+      "width": 1440,
+      "height": 1000,
+      "cssWidth": 1440,
+      "cssHeight": 1000,
+      "padding": null
+    },
+    {
+      "width": 320,
+      "height": 844,
+      "cssWidth": 320,
+      "cssHeight": 844,
+      "cardWidth": 290,
+      "cardScroll": 290,
+      "arrivalSceneWidth": 290,
+      "padding": "14px"
+    },
+    {
+      "width": 1440,
+      "height": 1000,
+      "cssWidth": 1440,
+      "cssHeight": 1000,
+      "cardWidth": 1308,
+      "cardScroll": 1308,
+      "arrivalSceneWidth": 1308,
+      "padding": "57.6px"
+    }
+  ],
+  "stationClickAttempts": [
+    {
+      "id": "door:royal-airlock",
+      "room": "royal-berth",
+      "attempt": 1,
+      "reason": "initial-native-press",
+      "before": {
+        "sequence": 4,
+        "lastClick": {
+          "sequence": 4,
+          "at": 5761,
+          "element": "BUTTON",
+          "target": null,
+          "interaction": null,
+          "action": "board",
+          "disabled": false,
+          "room": "royal-berth",
+          "position": {}
+        },
+        "documentTimeOrigin": 1793980830007.2,
+        "room": "royal-berth",
+        "status": "aboard",
+        "x": "380.0",
+        "y": "612.0",
+        "stopped": true,
+        "dialog": false,
+        "error": false,
+        "focused": true,
+        "hidden": false,
+        "targetReady": true
+      },
+      "after": {
+        "sequence": 5,
+        "lastClick": {
+          "sequence": 5,
+          "at": 5991.199999999953,
+          "element": "BUTTON",
+          "target": "door:royal-airlock",
+          "interaction": null,
+          "action": null,
+          "disabled": false,
+          "room": "royal-berth",
+          "position": {
+            "wolfCastleInterior": "true",
+            "wolfCastleX": "380.0",
+            "wolfCastleY": "612.0",
+            "wolfCastleMoving": "false"
+          }
+        },
+        "documentTimeOrigin": 1793980830007.2,
+        "room": "royal-berth",
+        "status": "aboard",
+        "x": "380.0",
+        "y": "612.0",
+        "stopped": true,
+        "dialog": false,
+        "error": false,
+        "focused": true,
+        "hidden": false,
+        "targetReady": true
+      },
+      "outcome": "click-observed"
+    },
+    {
+      "id": "door:royal-vestibule",
+      "room": "royal-airlock",
+      "attempt": 1,
+      "reason": "initial-native-press",
+      "before": {
+        "sequence": 6,
+        "lastClick": {
+          "sequence": 6,
+          "at": 10109.099999999977,
+          "element": "BUTTON",
+          "target": null,
+          "interaction": "door:royal-airlock",
+          "action": null,
+          "disabled": false,
+          "room": "royal-berth",
+          "position": {
+            "wolfCastleInterior": "true",
+            "wolfCastleX": "1464.3",
+            "wolfCastleY": "596.1",
+            "wolfCastleMoving": "false"
+          }
+        },
+        "documentTimeOrigin": 1793980830007.2,
+        "room": "royal-airlock",
+        "status": "aboard",
+        "x": "250.0",
+        "y": "612.0",
+        "stopped": true,
+        "dialog": false,
+        "error": false,
+        "focused": true,
+        "hidden": false,
+        "targetReady": true
+      },
+      "after": {
+        "sequence": 7,
+        "lastClick": {
+          "sequence": 7,
+          "at": 10277.399999999965,
+          "element": "BUTTON",
+          "target": "door:royal-vestibule",
+          "interaction": null,
+          "action": null,
+          "disabled": false,
+          "room": "royal-airlock",
+          "position": {
+            "wolfCastleInterior": "true",
+            "wolfCastleX": "250.0",
+            "wolfCastleY": "612.0",
+            "wolfCastleMoving": "false"
+          }
+        },
+        "documentTimeOrigin": 1793980830007.2,
+        "room": "royal-airlock",
+        "status": "aboard",
+        "x": "250.0",
+        "y": "612.0",
+        "stopped": true,
+        "dialog": false,
+        "error": false,
+        "focused": true,
+        "hidden": false,
+        "targetReady": true
+      },
+      "outcome": "click-observed"
+    },
+    {
+      "id": "door:royal-gallery",
+      "room": "royal-vestibule",
+      "attempt": 1,
+      "reason": "initial-native-press",
+      "before": {
+        "sequence": 8,
+        "lastClick": {
+          "sequence": 8,
+          "at": 14844.899999999965,
+          "element": "BUTTON",
+          "target": null,
+          "interaction": "door:royal-vestibule",
+          "action": null,
+          "disabled": false,
+          "room": "royal-airlock",
+          "position": {
+            "wolfCastleInterior": "true",
+            "wolfCastleX": "1464.8",
+            "wolfCastleY": "596.0",
+            "wolfCastleMoving": "false"
+          }
+        },
+        "documentTimeOrigin": 1793980830007.2,
+        "room": "royal-vestibule",
+        "status": "aboard",
+        "x": "250.0",
+        "y": "612.0",
+        "stopped": true,
+        "dialog": false,
+        "error": false,
+        "focused": true,
+        "hidden": false,
+        "targetReady": true
+      },
+      "after": {
+        "sequence": 9,
+        "lastClick": {
+          "sequence": 9,
+          "at": 14994.299999999988,
+          "element": "BUTTON",
+          "target": "door:royal-gallery",
+          "interaction": null,
+          "action": null,
+          "disabled": false,
+          "room": "royal-vestibule",
+          "position": {
+            "wolfCastleInterior": "true",
+            "wolfCastleX": "250.0",
+            "wolfCastleY": "612.0",
+            "wolfCastleMoving": "false"
+          }
+        },
+        "documentTimeOrigin": 1793980830007.2,
+        "room": "royal-vestibule",
+        "status": "aboard",
+        "x": "254.5",
+        "y": "611.9",
+        "stopped": false,
+        "dialog": false,
+        "error": false,
+        "focused": true,
+        "hidden": false,
+        "targetReady": true
+      },
+      "outcome": "click-observed"
+    },
+    {
+      "id": "door:royal-archives",
+      "room": "royal-gallery",
+      "attempt": 1,
+      "reason": "initial-native-press",
+      "before": {
+        "sequence": 10,
+        "lastClick": {
+          "sequence": 10,
+          "at": 19597.900000000023,
+          "element": "BUTTON",
+          "target": null,
+          "interaction": "door:royal-gallery",
+          "action": null,
+          "disabled": false,
+          "room": "royal-vestibule",
+          "position": {
+            "wolfCastleInterior": "true",
+            "wolfCastleX": "1464.8",
+            "wolfCastleY": "596.0",
+            "wolfCastleMoving": "false"
+          }
+        },
+        "documentTimeOrigin": 1793980830007.2,
+        "room": "royal-gallery",
+        "status": "aboard",
+        "x": "250.0",
+        "y": "612.0",
+        "stopped": true,
+        "dialog": false,
+        "error": false,
+        "focused": true,
+        "hidden": false,
+        "targetReady": true
+      },
+      "after": {
+        "sequence": 11,
+        "lastClick": {
+          "sequence": 11,
+          "at": 19756.199999999953,
+          "element": "BUTTON",
+          "target": "door:royal-archives",
+          "interaction": null,
+          "action": null,
+          "disabled": false,
+          "room": "royal-gallery",
+          "position": {
+            "wolfCastleInterior": "true",
+            "wolfCastleX": "250.0",
+            "wolfCastleY": "612.0",
+            "wolfCastleMoving": "false"
+          }
+        },
+        "documentTimeOrigin": 1793980830007.2,
+        "room": "royal-gallery",
+        "status": "aboard",
+        "x": "258.9",
+        "y": "610.7",
+        "stopped": false,
+        "dialog": false,
+        "error": false,
+        "focused": true,
+        "hidden": false,
+        "targetReady": true
+      },
+      "outcome": "click-observed"
+    },
+    {
+      "id": "archive",
+      "room": "royal-archives",
+      "attempt": 1,
+      "reason": "initial-native-press",
+      "before": {
+        "sequence": 12,
+        "lastClick": {
+          "sequence": 12,
+          "at": 21884.5,
+          "element": "BUTTON",
+          "target": null,
+          "interaction": "door:royal-archives",
+          "action": null,
+          "disabled": false,
+          "room": "royal-gallery",
+          "position": {
+            "wolfCastleInterior": "true",
+            "wolfCastleX": "798.0",
+            "wolfCastleY": "534.3",
+            "wolfCastleMoving": "false"
+          }
+        },
+        "documentTimeOrigin": 1793980830007.2,
+        "room": "royal-archives",
+        "status": "aboard",
+        "x": "250.0",
+        "y": "612.0",
+        "stopped": true,
+        "dialog": false,
+        "error": false,
+        "focused": true,
+        "hidden": false,
+        "targetReady": true
+      },
+      "after": {
+        "sequence": 13,
+        "lastClick": {
+          "sequence": 13,
+          "at": 21999.199999999953,
+          "element": "BUTTON",
+          "target": "archive",
+          "interaction": null,
+          "action": null,
+          "disabled": false,
+          "room": "royal-archives",
+          "position": {
+            "wolfCastleInterior": "true",
+            "wolfCastleX": "250.0",
+            "wolfCastleY": "612.0",
+            "wolfCastleMoving": "false"
+          }
+        },
+        "documentTimeOrigin": 1793980830007.2,
+        "room": "royal-archives",
+        "status": "aboard",
+        "x": "254.5",
+        "y": "612.0",
+        "stopped": false,
+        "dialog": false,
+        "error": false,
+        "focused": true,
+        "hidden": false,
+        "targetReady": true
+      },
+      "outcome": "click-observed"
+    },
+    {
+      "id": "door:royal-gallery",
+      "room": "royal-archives",
+      "attempt": 1,
+      "reason": "initial-native-press",
+      "before": {
+        "sequence": 2,
+        "lastClick": {
+          "sequence": 2,
+          "at": 1719,
+          "element": "SPAN",
+          "target": null,
+          "interaction": null,
+          "action": null,
+          "disabled": false,
+          "position": {}
+        },
+        "documentTimeOrigin": 1793980855096.7,
+        "room": "royal-archives",
+        "status": "aboard",
+        "x": "798.9",
+        "y": "608.0",
+        "stopped": true,
+        "dialog": false,
+        "error": false,
+        "focused": true,
+        "hidden": false,
+        "targetReady": true
+      },
+      "after": {
+        "sequence": 3,
+        "lastClick": {
+          "sequence": 3,
+          "at": 2603.3000000000466,
+          "element": "BUTTON",
+          "target": "door:royal-gallery",
+          "interaction": null,
+          "action": null,
+          "disabled": false,
+          "room": "royal-archives",
+          "position": {
+            "wolfCastleInterior": "true",
+            "wolfCastleX": "798.9",
+            "wolfCastleY": "608.0",
+            "wolfCastleMoving": "false"
+          }
+        },
+        "documentTimeOrigin": 1793980855096.7,
+        "room": "royal-archives",
+        "status": "aboard",
+        "x": "785.5",
+        "y": "607.8",
+        "stopped": false,
+        "dialog": false,
+        "error": false,
+        "focused": true,
+        "hidden": false,
+        "targetReady": true
+      },
+      "outcome": "click-observed"
+    },
+    {
+      "id": "door:royal-audience",
+      "room": "royal-gallery",
+      "attempt": 1,
+      "reason": "initial-native-press",
+      "before": {
+        "sequence": 4,
+        "lastClick": {
+          "sequence": 4,
+          "at": 5171.5,
+          "element": "BUTTON",
+          "target": null,
+          "interaction": "door:royal-gallery",
+          "action": null,
+          "disabled": false,
+          "room": "royal-archives",
+          "position": {
+            "wolfCastleInterior": "true",
+            "wolfCastleX": "133.1",
+            "wolfCastleY": "596.0",
+            "wolfCastleMoving": "false"
+          }
+        },
+        "documentTimeOrigin": 1793980855096.7,
+        "room": "royal-gallery",
+        "status": "aboard",
+        "x": "800.0",
+        "y": "638.0",
+        "stopped": true,
+        "dialog": false,
+        "error": false,
+        "focused": true,
+        "hidden": false,
+        "targetReady": true
+      },
+      "after": {
+        "sequence": 5,
+        "lastClick": {
+          "sequence": 5,
+          "at": 5298.800000000047,
+          "element": "BUTTON",
+          "target": "door:royal-audience",
+          "interaction": null,
+          "action": null,
+          "disabled": false,
+          "room": "royal-gallery",
+          "position": {
+            "wolfCastleInterior": "true",
+            "wolfCastleX": "800.0",
+            "wolfCastleY": "638.0",
+            "wolfCastleMoving": "false"
+          }
+        },
+        "documentTimeOrigin": 1793980855096.7,
+        "room": "royal-gallery",
+        "status": "aboard",
+        "x": "800.0",
+        "y": "638.0",
+        "stopped": true,
+        "dialog": false,
+        "error": false,
+        "focused": true,
+        "hidden": false,
+        "targetReady": true
+      },
+      "outcome": "click-observed"
+    },
+    {
+      "id": "audience",
+      "room": "royal-audience",
+      "attempt": 1,
+      "reason": "initial-native-press",
+      "before": {
+        "sequence": 6,
+        "lastClick": {
+          "sequence": 6,
+          "at": 7821,
+          "element": "BUTTON",
+          "target": null,
+          "interaction": "door:royal-audience",
+          "action": null,
+          "disabled": false,
+          "room": "royal-gallery",
+          "position": {
+            "wolfCastleInterior": "true",
+            "wolfCastleX": "1464.7",
+            "wolfCastleY": "596.2",
+            "wolfCastleMoving": "false"
+          }
+        },
+        "documentTimeOrigin": 1793980855096.7,
+        "room": "royal-audience",
+        "status": "aboard",
+        "x": "250.0",
+        "y": "612.0",
+        "stopped": true,
+        "dialog": false,
+        "error": false,
+        "focused": true,
+        "hidden": false,
+        "targetReady": true
+      },
+      "after": {
+        "sequence": 7,
+        "lastClick": {
+          "sequence": 7,
+          "at": 8085.699999999953,
+          "element": "BUTTON",
+          "target": "audience",
+          "interaction": null,
+          "action": null,
+          "disabled": false,
+          "room": "royal-audience",
+          "position": {
+            "wolfCastleInterior": "true",
+            "wolfCastleX": "250.0",
+            "wolfCastleY": "612.0",
+            "wolfCastleMoving": "false"
+          }
+        },
+        "documentTimeOrigin": 1793980855096.7,
+        "room": "royal-audience",
+        "status": "aboard",
+        "x": "250.0",
+        "y": "612.0",
+        "stopped": true,
+        "dialog": false,
+        "error": false,
+        "focused": true,
+        "hidden": false,
+        "targetReady": true
+      },
+      "outcome": "click-observed"
+    },
+    {
+      "id": "door:royal-council",
+      "room": "royal-audience",
+      "attempt": 1,
+      "reason": "initial-native-press",
+      "before": {
+        "sequence": 9,
+        "lastClick": {
+          "sequence": 9,
+          "at": 10285.599999999977,
+          "element": "BUTTON",
+          "target": null,
+          "interaction": null,
+          "action": "hear-audience",
+          "disabled": false,
+          "room": "royal-audience",
+          "position": {
+            "wolfCastleInterior": "true",
+            "wolfCastleX": "799.0",
+            "wolfCastleY": "616.0",
+            "wolfCastleMoving": "false"
+          }
+        },
+        "documentTimeOrigin": 1793980855096.7,
+        "room": "royal-audience",
+        "status": "aboard",
+        "x": "799.0",
+        "y": "616.0",
+        "stopped": true,
+        "dialog": false,
+        "error": false,
+        "focused": true,
+        "hidden": false,
+        "targetReady": true
+      },
+      "after": {
+        "sequence": 10,
+        "lastClick": {
+          "sequence": 10,
+          "at": 10819.099999999977,
+          "element": "BUTTON",
+          "target": "door:royal-council",
+          "interaction": null,
+          "action": null,
+          "disabled": false,
+          "room": "royal-audience",
+          "position": {
+            "wolfCastleInterior": "true",
+            "wolfCastleX": "799.0",
+            "wolfCastleY": "616.0",
+            "wolfCastleMoving": "false"
+          }
+        },
+        "documentTimeOrigin": 1793980855096.7,
+        "room": "royal-audience",
+        "status": "aboard",
+        "x": "799.0",
+        "y": "616.0",
+        "stopped": true,
+        "dialog": false,
+        "error": false,
+        "focused": true,
+        "hidden": false,
+        "targetReady": true
+      },
+      "outcome": "click-observed"
+    },
+    {
+      "id": "council",
+      "room": "royal-council",
+      "attempt": 1,
+      "reason": "initial-native-press",
+      "before": {
+        "sequence": 11,
+        "lastClick": {
+          "sequence": 11,
+          "at": 13357.300000000047,
+          "element": "BUTTON",
+          "target": null,
+          "interaction": "door:royal-council",
+          "action": null,
+          "disabled": false,
+          "room": "royal-audience",
+          "position": {
+            "wolfCastleInterior": "true",
+            "wolfCastleX": "1464.7",
+            "wolfCastleY": "596.1",
+            "wolfCastleMoving": "false"
+          }
+        },
+        "documentTimeOrigin": 1793980855096.7,
+        "room": "royal-council",
+        "status": "aboard",
+        "x": "250.0",
+        "y": "612.0",
+        "stopped": true,
+        "dialog": false,
+        "error": false,
+        "focused": true,
+        "hidden": false,
+        "targetReady": true
+      },
+      "after": {
+        "sequence": 12,
+        "lastClick": {
+          "sequence": 12,
+          "at": 13481,
+          "element": "BUTTON",
+          "target": "council",
+          "interaction": null,
+          "action": null,
+          "disabled": false,
+          "room": "royal-council",
+          "position": {
+            "wolfCastleInterior": "true",
+            "wolfCastleX": "250.0",
+            "wolfCastleY": "612.0",
+            "wolfCastleMoving": "false"
+          }
+        },
+        "documentTimeOrigin": 1793980855096.7,
+        "room": "royal-council",
+        "status": "aboard",
+        "x": "250.0",
+        "y": "612.0",
+        "stopped": true,
+        "dialog": false,
+        "error": false,
+        "focused": true,
+        "hidden": false,
+        "targetReady": true
+      },
+      "outcome": "click-observed"
+    },
+    {
+      "id": "door:royal-service-pass",
+      "room": "royal-council",
+      "attempt": 1,
+      "reason": "initial-native-press",
+      "before": {
+        "sequence": 14,
+        "lastClick": {
+          "sequence": 14,
+          "at": 15620.900000000023,
+          "element": "BUTTON",
+          "target": null,
+          "interaction": null,
+          "action": "accept-audience",
+          "disabled": false,
+          "room": "royal-council",
+          "position": {
+            "wolfCastleInterior": "true",
+            "wolfCastleX": "798.9",
+            "wolfCastleY": "622.0",
+            "wolfCastleMoving": "false"
+          }
+        },
+        "documentTimeOrigin": 1793980855096.7,
+        "room": "royal-council",
+        "status": "aboard",
+        "x": "798.9",
+        "y": "622.0",
+        "stopped": true,
+        "dialog": false,
+        "error": false,
+        "focused": true,
+        "hidden": false,
+        "targetReady": true
+      },
+      "after": {
+        "sequence": 15,
+        "lastClick": {
+          "sequence": 15,
+          "at": 15702.5,
+          "element": "BUTTON",
+          "target": "door:royal-service-pass",
+          "interaction": null,
+          "action": null,
+          "disabled": false,
+          "room": "royal-council",
+          "position": {
+            "wolfCastleInterior": "true",
+            "wolfCastleX": "798.9",
+            "wolfCastleY": "622.0",
+            "wolfCastleMoving": "false"
+          }
+        },
+        "documentTimeOrigin": 1793980855096.7,
+        "room": "royal-council",
+        "status": "aboard",
+        "x": "798.9",
+        "y": "622.0",
+        "stopped": true,
+        "dialog": false,
+        "error": false,
+        "focused": true,
+        "hidden": false,
+        "targetReady": true
+      },
+      "outcome": "click-observed"
+    },
+    {
+      "id": "door:royal-court",
+      "room": "royal-service-pass",
+      "attempt": 1,
+      "reason": "initial-native-press",
+      "before": {
+        "sequence": 16,
+        "lastClick": {
+          "sequence": 16,
+          "at": 18237.199999999953,
+          "element": "BUTTON",
+          "target": null,
+          "interaction": "door:royal-service-pass",
+          "action": null,
+          "disabled": false,
+          "room": "royal-council",
+          "position": {
+            "wolfCastleInterior": "true",
+            "wolfCastleX": "1464.4",
+            "wolfCastleY": "596.1",
+            "wolfCastleMoving": "false"
+          }
+        },
+        "documentTimeOrigin": 1793980855096.7,
+        "room": "royal-service-pass",
+        "status": "aboard",
+        "x": "1350.0",
+        "y": "612.0",
+        "stopped": true,
+        "dialog": false,
+        "error": false,
+        "focused": true,
+        "hidden": false,
+        "targetReady": true
+      },
+      "after": {
+        "sequence": 17,
+        "lastClick": {
+          "sequence": 17,
+          "at": 18362.400000000023,
+          "element": "BUTTON",
+          "target": "door:royal-court",
+          "interaction": null,
+          "action": null,
+          "disabled": false,
+          "room": "royal-service-pass",
+          "position": {
+            "wolfCastleInterior": "true",
+            "wolfCastleX": "1350.0",
+            "wolfCastleY": "612.0",
+            "wolfCastleMoving": "false"
+          }
+        },
+        "documentTimeOrigin": 1793980855096.7,
+        "room": "royal-service-pass",
+        "status": "aboard",
+        "x": "1350.0",
+        "y": "612.0",
+        "stopped": true,
+        "dialog": false,
+        "error": false,
+        "focused": true,
+        "hidden": false,
+        "targetReady": true
+      },
+      "outcome": "click-observed"
+    },
+    {
+      "id": "trial",
+      "room": "royal-court",
+      "attempt": 1,
+      "reason": "initial-native-press",
+      "before": {
+        "sequence": 18,
+        "lastClick": {
+          "sequence": 18,
+          "at": 20452.699999999953,
+          "element": "BUTTON",
+          "target": null,
+          "interaction": "door:royal-court",
+          "action": null,
+          "disabled": false,
+          "room": "royal-service-pass",
+          "position": {
+            "wolfCastleInterior": "true",
+            "wolfCastleX": "802.0",
+            "wolfCastleY": "534.3",
+            "wolfCastleMoving": "false"
+          }
+        },
+        "documentTimeOrigin": 1793980855096.7,
+        "room": "royal-court",
+        "status": "aboard",
+        "x": "250.0",
+        "y": "612.0",
+        "stopped": true,
+        "dialog": false,
+        "error": false,
+        "focused": true,
+        "hidden": false,
+        "targetReady": true
+      },
+      "after": {
+        "sequence": 19,
+        "lastClick": {
+          "sequence": 19,
+          "at": 20572.800000000047,
+          "element": "BUTTON",
+          "target": "trial",
+          "interaction": null,
+          "action": null,
+          "disabled": false,
+          "room": "royal-court",
+          "position": {
+            "wolfCastleInterior": "true",
+            "wolfCastleX": "250.0",
+            "wolfCastleY": "612.0",
+            "wolfCastleMoving": "false"
+          }
+        },
+        "documentTimeOrigin": 1793980855096.7,
+        "room": "royal-court",
+        "status": "aboard",
+        "x": "250.0",
+        "y": "612.0",
+        "stopped": true,
+        "dialog": false,
+        "error": false,
+        "focused": true,
+        "hidden": false,
+        "targetReady": true
+      },
+      "outcome": "click-observed"
+    },
+    {
+      "id": "seal:threshold",
+      "room": "royal-court",
+      "attempt": 1,
+      "reason": "initial-native-press",
+      "before": {
+        "sequence": 21,
+        "lastClick": {
+          "sequence": 21,
+          "at": 22726.699999999953,
+          "element": "BUTTON",
+          "target": null,
+          "interaction": null,
+          "action": "start-trial",
+          "disabled": false,
+          "room": "royal-court",
+          "position": {
+            "wolfCastleInterior": "true",
+            "wolfCastleX": "798.1",
+            "wolfCastleY": "643.9",
+            "wolfCastleMoving": "false"
+          }
+        },
+        "documentTimeOrigin": 1793980855096.7,
+        "room": "royal-court",
+        "status": "aboard",
+        "x": "798.1",
+        "y": "643.9",
+        "stopped": true,
+        "dialog": false,
+        "error": false,
+        "focused": true,
+        "hidden": false,
+        "targetReady": true
+      },
+      "after": {
+        "sequence": 22,
+        "lastClick": {
+          "sequence": 22,
+          "at": 22818.5,
+          "element": "BUTTON",
+          "target": "seal:threshold",
+          "interaction": null,
+          "action": null,
+          "disabled": false,
+          "room": "royal-court",
+          "position": {
+            "wolfCastleInterior": "true",
+            "wolfCastleX": "798.1",
+            "wolfCastleY": "643.9",
+            "wolfCastleMoving": "false"
+          }
+        },
+        "documentTimeOrigin": 1793980855096.7,
+        "room": "royal-court",
+        "status": "aboard",
+        "x": "798.1",
+        "y": "643.9",
+        "stopped": true,
+        "dialog": false,
+        "error": false,
+        "focused": true,
+        "hidden": false,
+        "targetReady": true
+      },
+      "outcome": "click-observed"
+    },
+    {
+      "id": "seal:zenith",
+      "room": "royal-court",
+      "attempt": 1,
+      "reason": "initial-native-press",
+      "before": {
+        "sequence": 23,
+        "lastClick": {
+          "sequence": 23,
+          "at": 24319.5,
+          "element": "BUTTON",
+          "target": null,
+          "interaction": "seal:threshold",
+          "action": null,
+          "disabled": false,
+          "room": "royal-court",
+          "position": {
+            "wolfCastleInterior": "true",
+            "wolfCastleX": "419.7",
+            "wolfCastleY": "562.8",
+            "wolfCastleMoving": "false"
+          }
+        },
+        "documentTimeOrigin": 1793980855096.7,
+        "room": "royal-court",
+        "status": "aboard",
+        "x": "419.7",
+        "y": "562.8",
+        "stopped": true,
+        "dialog": false,
+        "error": false,
+        "focused": true,
+        "hidden": false,
+        "targetReady": true
+      },
+      "after": {
+        "sequence": 24,
+        "lastClick": {
+          "sequence": 24,
+          "at": 24374.800000000047,
+          "element": "BUTTON",
+          "target": "seal:zenith",
+          "interaction": null,
+          "action": null,
+          "disabled": false,
+          "room": "royal-court",
+          "position": {
+            "wolfCastleInterior": "true",
+            "wolfCastleX": "419.7",
+            "wolfCastleY": "562.8",
+            "wolfCastleMoving": "false"
+          }
+        },
+        "documentTimeOrigin": 1793980855096.7,
+        "room": "royal-court",
+        "status": "aboard",
+        "x": "419.7",
+        "y": "562.8",
+        "stopped": true,
+        "dialog": false,
+        "error": false,
+        "focused": true,
+        "hidden": false,
+        "targetReady": true
+      },
+      "outcome": "click-observed"
+    },
+    {
+      "id": "seal:return",
+      "room": "royal-court",
+      "attempt": 1,
+      "reason": "initial-native-press",
+      "before": {
+        "sequence": 25,
+        "lastClick": {
+          "sequence": 25,
+          "at": 27388.900000000023,
+          "element": "BUTTON",
+          "target": null,
+          "interaction": "seal:zenith",
+          "action": null,
+          "disabled": false,
+          "room": "royal-court",
+          "position": {
+            "wolfCastleInterior": "true",
+            "wolfCastleX": "1207.1",
+            "wolfCastleY": "562.0",
+            "wolfCastleMoving": "false"
+          }
+        },
+        "documentTimeOrigin": 1793980855096.7,
+        "room": "royal-court",
+        "status": "aboard",
+        "x": "1207.1",
+        "y": "562.0",
+        "stopped": true,
+        "dialog": false,
+        "error": false,
+        "focused": true,
+        "hidden": false,
+        "targetReady": true
+      },
+      "after": {
+        "sequence": 26,
+        "lastClick": {
+          "sequence": 26,
+          "at": 27450.400000000023,
+          "element": "BUTTON",
+          "target": "seal:return",
+          "interaction": null,
+          "action": null,
+          "disabled": false,
+          "room": "royal-court",
+          "position": {
+            "wolfCastleInterior": "true",
+            "wolfCastleX": "1207.1",
+            "wolfCastleY": "562.0",
+            "wolfCastleMoving": "false"
+          }
+        },
+        "documentTimeOrigin": 1793980855096.7,
+        "room": "royal-court",
+        "status": "aboard",
+        "x": "1202.6",
+        "y": "561.6",
+        "stopped": false,
+        "dialog": false,
+        "error": false,
+        "focused": true,
+        "hidden": false,
+        "targetReady": true
+      },
+      "outcome": "click-observed"
+    },
+    {
+      "id": "trial",
+      "room": "royal-court",
+      "attempt": 1,
+      "reason": "initial-native-press",
+      "before": {
+        "sequence": 27,
+        "lastClick": {
+          "sequence": 27,
+          "at": 29003.5,
+          "element": "BUTTON",
+          "target": null,
+          "interaction": "seal:return",
+          "action": null,
+          "disabled": false,
+          "room": "royal-court",
+          "position": {
+            "wolfCastleInterior": "true",
+            "wolfCastleX": "803.7",
+            "wolfCastleY": "526.3",
+            "wolfCastleMoving": "false"
+          }
+        },
+        "documentTimeOrigin": 1793980855096.7,
+        "room": "royal-court",
+        "status": "aboard",
+        "x": "803.7",
+        "y": "526.3",
+        "stopped": true,
+        "dialog": false,
+        "error": false,
+        "focused": true,
+        "hidden": false,
+        "targetReady": true
+      },
+      "after": {
+        "sequence": 28,
+        "lastClick": {
+          "sequence": 28,
+          "at": 29088.400000000023,
+          "element": "BUTTON",
+          "target": "trial",
+          "interaction": null,
+          "action": null,
+          "disabled": false,
+          "room": "royal-court",
+          "position": {
+            "wolfCastleInterior": "true",
+            "wolfCastleX": "803.7",
+            "wolfCastleY": "526.3",
+            "wolfCastleMoving": "false"
+          }
+        },
+        "documentTimeOrigin": 1793980855096.7,
+        "room": "royal-court",
+        "status": "aboard",
+        "x": "803.6",
+        "y": "530.8",
+        "stopped": false,
+        "dialog": false,
+        "error": false,
+        "focused": true,
+        "hidden": false,
+        "targetReady": true
+      },
+      "outcome": "click-observed"
+    },
+    {
+      "id": "combat",
+      "room": "royal-court",
+      "attempt": 1,
+      "reason": "initial-native-press",
+      "before": {
+        "sequence": 30,
+        "lastClick": {
+          "sequence": 30,
+          "at": 29629.599999999977,
+          "element": "BUTTON",
+          "target": null,
+          "interaction": null,
+          "action": "finish-trial",
+          "disabled": false,
+          "room": "royal-court",
+          "position": {
+            "wolfCastleInterior": "true",
+            "wolfCastleX": "800.0",
+            "wolfCastleY": "643.3",
+            "wolfCastleMoving": "false"
+          }
+        },
+        "documentTimeOrigin": 1793980855096.7,
+        "room": "royal-court",
+        "status": "aboard",
+        "x": "800.0",
+        "y": "643.3",
+        "stopped": true,
+        "dialog": false,
+        "error": false,
+        "focused": true,
+        "hidden": false,
+        "targetReady": true
+      },
+      "after": {
+        "sequence": 31,
+        "lastClick": {
+          "sequence": 31,
+          "at": 30168.400000000023,
+          "element": "BUTTON",
+          "target": "combat",
+          "interaction": null,
+          "action": null,
+          "disabled": false,
+          "room": "royal-court",
+          "position": {
+            "wolfCastleInterior": "true",
+            "wolfCastleX": "800.0",
+            "wolfCastleY": "643.3",
+            "wolfCastleMoving": "false"
+          }
+        },
+        "documentTimeOrigin": 1793980855096.7,
+        "room": "royal-court",
+        "status": "aboard",
+        "x": "800.0",
+        "y": "643.3",
+        "stopped": true,
+        "dialog": false,
+        "error": false,
+        "focused": true,
+        "hidden": false,
+        "targetReady": true
+      },
+      "outcome": "click-observed"
+    },
+    {
+      "id": "combat",
+      "room": "royal-court",
+      "attempt": 1,
+      "reason": "initial-native-press",
+      "before": {
+        "sequence": 9,
+        "lastClick": {
+          "sequence": 9,
+          "at": 12975.5,
+          "element": "BUTTON",
+          "target": null,
+          "interaction": null,
+          "action": "abandon-combat",
+          "disabled": false,
+          "room": "royal-court",
+          "position": {
+            "wolfCastleInterior": "true",
+            "wolfCastleX": "519.1",
+            "wolfCastleY": "610.0",
+            "wolfCastleMoving": "false",
+            "wolfCombatStatus": "active",
+            "wolfCombatEncounter": "0",
+            "wolfCombatScenario": "training",
+            "wolfCombatPaused": "true",
+            "wolfCombatElapsed": "799.9",
+            "wolfCombatPlayerHealth": "100",
+            "wolfCombatEnemyHealth": "66",
+            "wolfCombatPlayerX": "519.1",
+            "wolfCombatPlayerY": "610.0",
+            "wolfCombatPlayerFacing": "1",
+            "wolfCombatEnemyX": "950.0",
+            "wolfCombatEnemyY": "610.0",
+            "wolfCombatEnemyPhase": "approach",
+            "wolfCombatEnemyMs": "0.0",
+            "wolfCombatEnemyStrike": "thrust",
+            "wolfCombatPlayerAttackMs": "0.0",
+            "wolfCombatAttackCooldownMs": "30.1",
+            "wolfCombatDefenseCooldownMs": "666.7"
+          }
+        },
+        "documentTimeOrigin": 1793980891921.6,
+        "room": "royal-court",
+        "status": "aboard",
+        "x": "519.1",
+        "y": "610.0",
+        "stopped": true,
+        "dialog": false,
+        "error": false,
+        "focused": true,
+        "hidden": false,
+        "targetReady": true
+      },
+      "after": {
+        "sequence": 10,
+        "lastClick": {
+          "sequence": 10,
+          "at": 13209,
+          "element": "BUTTON",
+          "target": "combat",
+          "interaction": null,
+          "action": null,
+          "disabled": false,
+          "room": "royal-court",
+          "position": {
+            "wolfCastleInterior": "true",
+            "wolfCastleX": "519.1",
+            "wolfCastleY": "610.0",
+            "wolfCastleMoving": "false"
+          }
+        },
+        "documentTimeOrigin": 1793980891921.6,
+        "room": "royal-court",
+        "status": "aboard",
+        "x": "519.1",
+        "y": "610.0",
+        "stopped": true,
+        "dialog": false,
+        "error": false,
+        "focused": true,
+        "hidden": false,
+        "targetReady": true
+      },
+      "outcome": "click-observed"
+    },
+    {
+      "id": "door:royal-service-pass",
+      "room": "royal-court",
+      "attempt": 1,
+      "reason": "initial-native-press",
+      "before": {
+        "sequence": 19,
+        "lastClick": {
+          "sequence": 19,
+          "at": 33041.90000000002,
+          "element": "BUTTON",
+          "target": null,
+          "interaction": null,
+          "action": null,
+          "disabled": false,
+          "room": "royal-court",
+          "position": {
+            "wolfCastleInterior": "true",
+            "wolfCastleX": "779.5",
+            "wolfCastleY": "610.0",
+            "wolfCastleMoving": "false"
+          }
+        },
+        "documentTimeOrigin": 1793980891921.6,
+        "room": "royal-court",
+        "status": "aboard",
+        "x": "779.5",
+        "y": "610.0",
+        "stopped": true,
+        "dialog": false,
+        "error": false,
+        "focused": true,
+        "hidden": false,
+        "targetReady": true
+      },
+      "after": {
+        "sequence": 20,
+        "lastClick": {
+          "sequence": 20,
+          "at": 33191.29999999993,
+          "element": "BUTTON",
+          "target": "door:royal-service-pass",
+          "interaction": null,
+          "action": null,
+          "disabled": false,
+          "room": "royal-court",
+          "position": {
+            "wolfCastleInterior": "true",
+            "wolfCastleX": "779.5",
+            "wolfCastleY": "610.0",
+            "wolfCastleMoving": "false"
+          }
+        },
+        "documentTimeOrigin": 1793980891921.6,
+        "room": "royal-court",
+        "status": "aboard",
+        "x": "779.5",
+        "y": "610.0",
+        "stopped": true,
+        "dialog": false,
+        "error": false,
+        "focused": true,
+        "hidden": false,
+        "targetReady": true
+      },
+      "outcome": "click-observed"
+    },
+    {
+      "id": "door:royal-vestibule",
+      "room": "royal-service-pass",
+      "attempt": 1,
+      "reason": "initial-native-press",
+      "before": {
+        "sequence": 21,
+        "lastClick": {
+          "sequence": 21,
+          "at": 35663.90000000002,
+          "element": "BUTTON",
+          "target": null,
+          "interaction": "door:royal-service-pass",
+          "action": null,
+          "disabled": false,
+          "room": "royal-court",
+          "position": {
+            "wolfCastleInterior": "true",
+            "wolfCastleX": "132.0",
+            "wolfCastleY": "596.0",
+            "wolfCastleMoving": "false"
+          }
+        },
+        "documentTimeOrigin": 1793980891921.6,
+        "room": "royal-service-pass",
+        "status": "aboard",
+        "x": "800.0",
+        "y": "638.0",
+        "stopped": true,
+        "dialog": false,
+        "error": false,
+        "focused": true,
+        "hidden": false,
+        "targetReady": true
+      },
+      "after": {
+        "sequence": 22,
+        "lastClick": {
+          "sequence": 22,
+          "at": 35775.90000000002,
+          "element": "BUTTON",
+          "target": "door:royal-vestibule",
+          "interaction": null,
+          "action": null,
+          "disabled": false,
+          "room": "royal-service-pass",
+          "position": {
+            "wolfCastleInterior": "true",
+            "wolfCastleX": "800.0",
+            "wolfCastleY": "638.0",
+            "wolfCastleMoving": "false"
+          }
+        },
+        "documentTimeOrigin": 1793980891921.6,
+        "room": "royal-service-pass",
+        "status": "aboard",
+        "x": "800.0",
+        "y": "638.0",
+        "stopped": true,
+        "dialog": false,
+        "error": false,
+        "focused": true,
+        "hidden": false,
+        "targetReady": true
+      },
+      "outcome": "click-observed"
+    },
+    {
+      "id": "door:royal-airlock",
+      "room": "royal-vestibule",
+      "attempt": 1,
+      "reason": "initial-native-press",
+      "before": {
+        "sequence": 23,
+        "lastClick": {
+          "sequence": 23,
+          "at": 38312.29999999993,
+          "element": "BUTTON",
+          "target": null,
+          "interaction": "door:royal-vestibule",
+          "action": null,
+          "disabled": false,
+          "room": "royal-service-pass",
+          "position": {
+            "wolfCastleInterior": "true",
+            "wolfCastleX": "135.3",
+            "wolfCastleY": "596.2",
+            "wolfCastleMoving": "false"
+          }
+        },
+        "documentTimeOrigin": 1793980891921.6,
+        "room": "royal-vestibule",
+        "status": "aboard",
+        "x": "800.0",
+        "y": "638.0",
+        "stopped": true,
+        "dialog": false,
+        "error": false,
+        "focused": true,
+        "hidden": false,
+        "targetReady": true
+      },
+      "after": {
+        "sequence": 24,
+        "lastClick": {
+          "sequence": 24,
+          "at": 38425.19999999995,
+          "element": "BUTTON",
+          "target": "door:royal-airlock",
+          "interaction": null,
+          "action": null,
+          "disabled": false,
+          "room": "royal-vestibule",
+          "position": {
+            "wolfCastleInterior": "true",
+            "wolfCastleX": "800.0",
+            "wolfCastleY": "638.0",
+            "wolfCastleMoving": "false"
+          }
+        },
+        "documentTimeOrigin": 1793980891921.6,
+        "room": "royal-vestibule",
+        "status": "aboard",
+        "x": "800.0",
+        "y": "638.0",
+        "stopped": true,
+        "dialog": false,
+        "error": false,
+        "focused": true,
+        "hidden": false,
+        "targetReady": true
+      },
+      "outcome": "click-observed"
+    },
+    {
+      "id": "door:royal-berth",
+      "room": "royal-airlock",
+      "attempt": 1,
+      "reason": "initial-native-press",
+      "before": {
+        "sequence": 25,
+        "lastClick": {
+          "sequence": 25,
+          "at": 40959.19999999995,
+          "element": "BUTTON",
+          "target": null,
+          "interaction": "door:royal-airlock",
+          "action": null,
+          "disabled": false,
+          "room": "royal-vestibule",
+          "position": {
+            "wolfCastleInterior": "true",
+            "wolfCastleX": "135.3",
+            "wolfCastleY": "596.2",
+            "wolfCastleMoving": "false"
+          }
+        },
+        "documentTimeOrigin": 1793980891921.6,
+        "room": "royal-airlock",
+        "status": "aboard",
+        "x": "1350.0",
+        "y": "612.0",
+        "stopped": true,
+        "dialog": false,
+        "error": false,
+        "focused": true,
+        "hidden": false,
+        "targetReady": true
+      },
+      "after": {
+        "sequence": 26,
+        "lastClick": {
+          "sequence": 26,
+          "at": 41063.40000000002,
+          "element": "BUTTON",
+          "target": "door:royal-berth",
+          "interaction": null,
+          "action": null,
+          "disabled": false,
+          "room": "royal-airlock",
+          "position": {
+            "wolfCastleInterior": "true",
+            "wolfCastleX": "1350.0",
+            "wolfCastleY": "612.0",
+            "wolfCastleMoving": "false"
+          }
+        },
+        "documentTimeOrigin": 1793980891921.6,
+        "room": "royal-airlock",
+        "status": "aboard",
+        "x": "1336.5",
+        "y": "611.8",
+        "stopped": false,
+        "dialog": false,
+        "error": false,
+        "focused": true,
+        "hidden": false,
+        "targetReady": true
+      },
+      "outcome": "click-observed"
+    },
+    {
+      "id": "personal-ship",
+      "room": "royal-berth",
+      "attempt": 1,
+      "reason": "initial-native-press",
+      "before": {
+        "sequence": 27,
+        "lastClick": {
+          "sequence": 27,
+          "at": 45628.69999999995,
+          "element": "BUTTON",
+          "target": null,
+          "interaction": "door:royal-berth",
+          "action": null,
+          "disabled": false,
+          "room": "royal-airlock",
+          "position": {
+            "wolfCastleInterior": "true",
+            "wolfCastleX": "135.2",
+            "wolfCastleY": "596.0",
+            "wolfCastleMoving": "false"
+          }
+        },
+        "documentTimeOrigin": 1793980891921.6,
+        "room": "royal-berth",
+        "status": "aboard",
+        "x": "1350.0",
+        "y": "612.0",
+        "stopped": true,
+        "dialog": false,
+        "error": false,
+        "focused": true,
+        "hidden": false,
+        "targetReady": true
+      },
+      "after": {
+        "sequence": 28,
+        "lastClick": {
+          "sequence": 28,
+          "at": 45725.90000000002,
+          "element": "BUTTON",
+          "target": "personal-ship",
+          "interaction": null,
+          "action": null,
+          "disabled": false,
+          "room": "royal-berth",
+          "position": {
+            "wolfCastleInterior": "true",
+            "wolfCastleX": "1350.0",
+            "wolfCastleY": "612.0",
+            "wolfCastleMoving": "false"
+          }
+        },
+        "documentTimeOrigin": 1793980891921.6,
+        "room": "royal-berth",
+        "status": "aboard",
+        "x": "1350.0",
+        "y": "612.0",
+        "stopped": true,
+        "dialog": false,
+        "error": false,
+        "focused": true,
+        "hidden": false,
+        "targetReady": true
+      },
+      "outcome": "click-observed"
+    },
+    {
+      "id": "door:royal-airlock",
+      "room": "royal-berth",
+      "attempt": 1,
+      "reason": "initial-native-press",
+      "before": {
+        "sequence": 32,
+        "lastClick": {
+          "sequence": 32,
+          "at": 50037,
+          "element": "BUTTON",
+          "target": null,
+          "interaction": null,
+          "action": "board",
+          "disabled": false,
+          "room": "royal-berth",
+          "position": {}
+        },
+        "documentTimeOrigin": 1793980891921.6,
+        "room": "royal-berth",
+        "status": "aboard",
+        "x": "380.0",
+        "y": "612.0",
+        "stopped": true,
+        "dialog": false,
+        "error": false,
+        "focused": true,
+        "hidden": false,
+        "targetReady": true
+      },
+      "after": {
+        "sequence": 33,
+        "lastClick": {
+          "sequence": 33,
+          "at": 50197.90000000002,
+          "element": "BUTTON",
+          "target": "door:royal-airlock",
+          "interaction": null,
+          "action": null,
+          "disabled": false,
+          "room": "royal-berth",
+          "position": {
+            "wolfCastleInterior": "true",
+            "wolfCastleX": "380.0",
+            "wolfCastleY": "612.0",
+            "wolfCastleMoving": "false"
+          }
+        },
+        "documentTimeOrigin": 1793980891921.6,
+        "room": "royal-berth",
+        "status": "aboard",
+        "x": "380.0",
+        "y": "612.0",
+        "stopped": true,
+        "dialog": false,
+        "error": false,
+        "focused": true,
+        "hidden": false,
+        "targetReady": true
+      },
+      "outcome": "click-observed"
+    },
+    {
+      "id": "door:royal-vestibule",
+      "room": "royal-airlock",
+      "attempt": 1,
+      "reason": "initial-native-press",
+      "before": {
+        "sequence": 34,
+        "lastClick": {
+          "sequence": 34,
+          "at": 54276,
+          "element": "BUTTON",
+          "target": null,
+          "interaction": "door:royal-airlock",
+          "action": null,
+          "disabled": false,
+          "room": "royal-berth",
+          "position": {
+            "wolfCastleInterior": "true",
+            "wolfCastleX": "1464.3",
+            "wolfCastleY": "596.1",
+            "wolfCastleMoving": "false"
+          }
+        },
+        "documentTimeOrigin": 1793980891921.6,
+        "room": "royal-airlock",
+        "status": "aboard",
+        "x": "250.0",
+        "y": "612.0",
+        "stopped": true,
+        "dialog": false,
+        "error": false,
+        "focused": true,
+        "hidden": false,
+        "targetReady": true
+      },
+      "after": {
+        "sequence": 35,
+        "lastClick": {
+          "sequence": 35,
+          "at": 54451.29999999993,
+          "element": "BUTTON",
+          "target": "door:royal-vestibule",
+          "interaction": null,
+          "action": null,
+          "disabled": false,
+          "room": "royal-airlock",
+          "position": {
+            "wolfCastleInterior": "true",
+            "wolfCastleX": "250.0",
+            "wolfCastleY": "612.0",
+            "wolfCastleMoving": "false"
+          }
+        },
+        "documentTimeOrigin": 1793980891921.6,
+        "room": "royal-airlock",
+        "status": "aboard",
+        "x": "254.5",
+        "y": "611.9",
+        "stopped": false,
+        "dialog": false,
+        "error": false,
+        "focused": true,
+        "hidden": false,
+        "targetReady": true
+      },
+      "outcome": "click-observed"
+    },
+    {
+      "id": "door:royal-gallery",
+      "room": "royal-vestibule",
+      "attempt": 1,
+      "reason": "initial-native-press",
+      "before": {
+        "sequence": 36,
+        "lastClick": {
+          "sequence": 36,
+          "at": 59040.79999999993,
+          "element": "BUTTON",
+          "target": null,
+          "interaction": "door:royal-vestibule",
+          "action": null,
+          "disabled": false,
+          "room": "royal-airlock",
+          "position": {
+            "wolfCastleInterior": "true",
+            "wolfCastleX": "1464.9",
+            "wolfCastleY": "596.0",
+            "wolfCastleMoving": "false"
+          }
+        },
+        "documentTimeOrigin": 1793980891921.6,
+        "room": "royal-vestibule",
+        "status": "aboard",
+        "x": "250.0",
+        "y": "612.0",
+        "stopped": true,
+        "dialog": false,
+        "error": false,
+        "focused": true,
+        "hidden": false,
+        "targetReady": true
+      },
+      "after": {
+        "sequence": 37,
+        "lastClick": {
+          "sequence": 37,
+          "at": 59197.19999999995,
+          "element": "BUTTON",
+          "target": "door:royal-gallery",
+          "interaction": null,
+          "action": null,
+          "disabled": false,
+          "room": "royal-vestibule",
+          "position": {
+            "wolfCastleInterior": "true",
+            "wolfCastleX": "250.0",
+            "wolfCastleY": "612.0",
+            "wolfCastleMoving": "false"
+          }
+        },
+        "documentTimeOrigin": 1793980891921.6,
+        "room": "royal-vestibule",
+        "status": "aboard",
+        "x": "250.0",
+        "y": "612.0",
+        "stopped": true,
+        "dialog": false,
+        "error": false,
+        "focused": true,
+        "hidden": false,
+        "targetReady": true
+      },
+      "outcome": "click-observed"
+    },
+    {
+      "id": "door:royal-audience",
+      "room": "royal-gallery",
+      "attempt": 1,
+      "reason": "initial-native-press",
+      "before": {
+        "sequence": 38,
+        "lastClick": {
+          "sequence": 38,
+          "at": 63760.5,
+          "element": "BUTTON",
+          "target": null,
+          "interaction": "door:royal-gallery",
+          "action": null,
+          "disabled": false,
+          "room": "royal-vestibule",
+          "position": {
+            "wolfCastleInterior": "true",
+            "wolfCastleX": "1464.9",
+            "wolfCastleY": "596.0",
+            "wolfCastleMoving": "false"
+          }
+        },
+        "documentTimeOrigin": 1793980891921.6,
+        "room": "royal-gallery",
+        "status": "aboard",
+        "x": "250.0",
+        "y": "612.0",
+        "stopped": true,
+        "dialog": false,
+        "error": false,
+        "focused": true,
+        "hidden": false,
+        "targetReady": true
+      },
+      "after": {
+        "sequence": 39,
+        "lastClick": {
+          "sequence": 39,
+          "at": 63955,
+          "element": "BUTTON",
+          "target": "door:royal-audience",
+          "interaction": null,
+          "action": null,
+          "disabled": false,
+          "room": "royal-gallery",
+          "position": {
+            "wolfCastleInterior": "true",
+            "wolfCastleX": "250.0",
+            "wolfCastleY": "612.0",
+            "wolfCastleMoving": "false"
+          }
+        },
+        "documentTimeOrigin": 1793980891921.6,
+        "room": "royal-gallery",
+        "status": "aboard",
+        "x": "259.0",
+        "y": "611.9",
+        "stopped": false,
+        "dialog": false,
+        "error": false,
+        "focused": true,
+        "hidden": false,
+        "targetReady": true
+      },
+      "outcome": "click-observed"
+    },
+    {
+      "id": "audience",
+      "room": "royal-audience",
+      "attempt": 1,
+      "reason": "initial-native-press",
+      "before": {
+        "sequence": 40,
+        "lastClick": {
+          "sequence": 40,
+          "at": 68491.79999999993,
+          "element": "BUTTON",
+          "target": null,
+          "interaction": "door:royal-audience",
+          "action": null,
+          "disabled": false,
+          "room": "royal-gallery",
+          "position": {
+            "wolfCastleInterior": "true",
+            "wolfCastleX": "1464.8",
+            "wolfCastleY": "596.0",
+            "wolfCastleMoving": "false"
+          }
+        },
+        "documentTimeOrigin": 1793980891921.6,
+        "room": "royal-audience",
+        "status": "aboard",
+        "x": "250.0",
+        "y": "612.0",
+        "stopped": true,
+        "dialog": false,
+        "error": false,
+        "focused": true,
+        "hidden": false,
+        "targetReady": true
+      },
+      "after": {
+        "sequence": 41,
+        "lastClick": {
+          "sequence": 41,
+          "at": 68717.40000000002,
+          "element": "BUTTON",
+          "target": "audience",
+          "interaction": null,
+          "action": null,
+          "disabled": false,
+          "room": "royal-audience",
+          "position": {
+            "wolfCastleInterior": "true",
+            "wolfCastleX": "250.0",
+            "wolfCastleY": "612.0",
+            "wolfCastleMoving": "false"
+          }
+        },
+        "documentTimeOrigin": 1793980891921.6,
+        "room": "royal-audience",
+        "status": "aboard",
+        "x": "250.0",
+        "y": "612.0",
+        "stopped": true,
+        "dialog": false,
+        "error": false,
+        "focused": true,
+        "hidden": false,
+        "targetReady": true
+      },
+      "outcome": "click-observed"
+    },
+    {
+      "id": "door:royal-gallery",
+      "room": "royal-audience",
+      "attempt": 1,
+      "reason": "initial-native-press",
+      "before": {
+        "sequence": 45,
+        "lastClick": {
+          "sequence": 45,
+          "at": 71406.90000000002,
+          "element": "BUTTON",
+          "target": null,
+          "interaction": null,
+          "action": null,
+          "disabled": false,
+          "room": "royal-audience",
+          "position": {
+            "wolfCastleInterior": "true",
+            "wolfCastleX": "798.9",
+            "wolfCastleY": "616.0",
+            "wolfCastleMoving": "false"
+          }
+        },
+        "documentTimeOrigin": 1793980891921.6,
+        "room": "royal-audience",
+        "status": "aboard",
+        "x": "798.9",
+        "y": "616.0",
+        "stopped": true,
+        "dialog": false,
+        "error": false,
+        "focused": true,
+        "hidden": false,
+        "targetReady": true
+      },
+      "after": {
+        "sequence": 46,
+        "lastClick": {
+          "sequence": 46,
+          "at": 71480.40000000002,
+          "element": "BUTTON",
+          "target": "door:royal-gallery",
+          "interaction": null,
+          "action": null,
+          "disabled": false,
+          "room": "royal-audience",
+          "position": {
+            "wolfCastleInterior": "true",
+            "wolfCastleX": "798.9",
+            "wolfCastleY": "616.0",
+            "wolfCastleMoving": "false"
+          }
+        },
+        "documentTimeOrigin": 1793980891921.6,
+        "room": "royal-audience",
+        "status": "aboard",
+        "x": "794.4",
+        "y": "615.9",
+        "stopped": false,
+        "dialog": false,
+        "error": false,
+        "focused": true,
+        "hidden": false,
+        "targetReady": true
+      },
+      "outcome": "click-observed"
+    },
+    {
+      "id": "door:royal-archives",
+      "room": "royal-gallery",
+      "attempt": 1,
+      "reason": "initial-native-press",
+      "before": {
+        "sequence": 47,
+        "lastClick": {
+          "sequence": 47,
+          "at": 74040.19999999995,
+          "element": "BUTTON",
+          "target": null,
+          "interaction": "door:royal-gallery",
+          "action": null,
+          "disabled": false,
+          "room": "royal-audience",
+          "position": {
+            "wolfCastleInterior": "true",
+            "wolfCastleX": "133.2",
+            "wolfCastleY": "596.0",
+            "wolfCastleMoving": "false"
+          }
+        },
+        "documentTimeOrigin": 1793980891921.6,
+        "room": "royal-gallery",
+        "status": "aboard",
+        "x": "1350.0",
+        "y": "612.0",
+        "stopped": true,
+        "dialog": false,
+        "error": false,
+        "focused": true,
+        "hidden": false,
+        "targetReady": true
+      },
+      "after": {
+        "sequence": 48,
+        "lastClick": {
+          "sequence": 48,
+          "at": 74173.29999999993,
+          "element": "BUTTON",
+          "target": "door:royal-archives",
+          "interaction": null,
+          "action": null,
+          "disabled": false,
+          "room": "royal-gallery",
+          "position": {
+            "wolfCastleInterior": "true",
+            "wolfCastleX": "1350.0",
+            "wolfCastleY": "612.0",
+            "wolfCastleMoving": "false"
+          }
+        },
+        "documentTimeOrigin": 1793980891921.6,
+        "room": "royal-gallery",
+        "status": "aboard",
+        "x": "1350.0",
+        "y": "612.0",
+        "stopped": true,
+        "dialog": false,
+        "error": false,
+        "focused": true,
+        "hidden": false,
+        "targetReady": true
+      },
+      "outcome": "click-observed"
+    },
+    {
+      "id": "archive",
+      "room": "royal-archives",
+      "attempt": 1,
+      "reason": "initial-native-press",
+      "before": {
+        "sequence": 49,
+        "lastClick": {
+          "sequence": 49,
+          "at": 76274.09999999998,
+          "element": "BUTTON",
+          "target": null,
+          "interaction": "door:royal-archives",
+          "action": null,
+          "disabled": false,
+          "room": "royal-gallery",
+          "position": {
+            "wolfCastleInterior": "true",
+            "wolfCastleX": "802.0",
+            "wolfCastleY": "534.3",
+            "wolfCastleMoving": "false"
+          }
+        },
+        "documentTimeOrigin": 1793980891921.6,
+        "room": "royal-archives",
+        "status": "aboard",
+        "x": "250.0",
+        "y": "612.0",
+        "stopped": true,
+        "dialog": false,
+        "error": false,
+        "focused": true,
+        "hidden": false,
+        "targetReady": true
+      },
+      "after": {
+        "sequence": 50,
+        "lastClick": {
+          "sequence": 50,
+          "at": 76374,
+          "element": "BUTTON",
+          "target": "archive",
+          "interaction": null,
+          "action": null,
+          "disabled": false,
+          "room": "royal-archives",
+          "position": {
+            "wolfCastleInterior": "true",
+            "wolfCastleX": "250.0",
+            "wolfCastleY": "612.0",
+            "wolfCastleMoving": "false"
+          }
+        },
+        "documentTimeOrigin": 1793980891921.6,
+        "room": "royal-archives",
+        "status": "aboard",
+        "x": "250.0",
+        "y": "612.0",
+        "stopped": true,
+        "dialog": false,
+        "error": false,
+        "focused": true,
+        "hidden": false,
+        "targetReady": true
+      },
+      "outcome": "click-observed"
+    },
+    {
+      "id": "door:royal-gallery",
+      "room": "royal-archives",
+      "attempt": 1,
+      "reason": "initial-native-press",
+      "before": {
+        "sequence": 4,
+        "lastClick": {
+          "sequence": 4,
+          "at": 2688.79999999993,
+          "element": "BUTTON",
+          "target": null,
+          "interaction": null,
+          "action": null,
+          "disabled": false,
+          "room": "royal-archives",
+          "position": {
+            "wolfCastleInterior": "true",
+            "wolfCastleX": "798.9",
+            "wolfCastleY": "608.0",
+            "wolfCastleMoving": "false"
+          }
+        },
+        "documentTimeOrigin": 1793980970923.3,
+        "room": "royal-archives",
+        "status": "aboard",
+        "x": "798.9",
+        "y": "608.0",
+        "stopped": true,
+        "dialog": false,
+        "error": false,
+        "focused": true,
+        "hidden": false,
+        "targetReady": true
+      },
+      "after": {
+        "sequence": 5,
+        "lastClick": {
+          "sequence": 5,
+          "at": 2771.9000000000233,
+          "element": "BUTTON",
+          "target": "door:royal-gallery",
+          "interaction": null,
+          "action": null,
+          "disabled": false,
+          "room": "royal-archives",
+          "position": {
+            "wolfCastleInterior": "true",
+            "wolfCastleX": "798.9",
+            "wolfCastleY": "608.0",
+            "wolfCastleMoving": "false"
+          }
+        },
+        "documentTimeOrigin": 1793980970923.3,
+        "room": "royal-archives",
+        "status": "aboard",
+        "x": "798.9",
+        "y": "608.0",
+        "stopped": true,
+        "dialog": false,
+        "error": false,
+        "focused": true,
+        "hidden": false,
+        "targetReady": true
+      },
+      "outcome": "click-observed"
+    },
+    {
+      "id": "gallery",
+      "room": "royal-gallery",
+      "attempt": 1,
+      "reason": "initial-native-press",
+      "before": {
+        "sequence": 6,
+        "lastClick": {
+          "sequence": 6,
+          "at": 5307,
+          "element": "BUTTON",
+          "target": null,
+          "interaction": "door:royal-gallery",
+          "action": null,
+          "disabled": false,
+          "room": "royal-archives",
+          "position": {
+            "wolfCastleInterior": "true",
+            "wolfCastleX": "133.1",
+            "wolfCastleY": "596.0",
+            "wolfCastleMoving": "false"
+          }
+        },
+        "documentTimeOrigin": 1793980970923.3,
+        "room": "royal-gallery",
+        "status": "aboard",
+        "x": "800.0",
+        "y": "638.0",
+        "stopped": true,
+        "dialog": false,
+        "error": false,
+        "focused": true,
+        "hidden": false,
+        "targetReady": true
+      },
+      "after": {
+        "sequence": 7,
+        "lastClick": {
+          "sequence": 7,
+          "at": 5436.400000000023,
+          "element": "BUTTON",
+          "target": "gallery",
+          "interaction": null,
+          "action": null,
+          "disabled": false,
+          "room": "royal-gallery",
+          "position": {
+            "wolfCastleInterior": "true",
+            "wolfCastleX": "800.0",
+            "wolfCastleY": "638.0",
+            "wolfCastleMoving": "false"
+          }
+        },
+        "documentTimeOrigin": 1793980970923.3,
+        "room": "royal-gallery",
+        "status": "aboard",
+        "x": "800.0",
+        "y": "638.0",
+        "stopped": true,
+        "dialog": false,
+        "error": false,
+        "focused": true,
+        "hidden": false,
+        "targetReady": true
+      },
+      "outcome": "click-observed"
+    },
+    {
+      "id": "door:royal-audience",
+      "room": "royal-gallery",
+      "attempt": 1,
+      "reason": "initial-native-press",
+      "before": {
+        "sequence": 9,
+        "lastClick": {
+          "sequence": 9,
+          "at": 6820.5,
+          "element": "BUTTON",
+          "target": null,
+          "interaction": null,
+          "action": "inspect-dungeon-gallery",
+          "disabled": false,
+          "room": "royal-gallery",
+          "position": {
+            "wolfCastleInterior": "true",
+            "wolfCastleX": "1149.7",
+            "wolfCastleY": "608.0",
+            "wolfCastleMoving": "false"
+          }
+        },
+        "documentTimeOrigin": 1793980970923.3,
+        "room": "royal-gallery",
+        "status": "aboard",
+        "x": "1149.7",
+        "y": "608.0",
+        "stopped": true,
+        "dialog": false,
+        "error": false,
+        "focused": true,
+        "hidden": false,
+        "targetReady": true
+      },
+      "after": {
+        "sequence": 10,
+        "lastClick": {
+          "sequence": 10,
+          "at": 6921.29999999993,
+          "element": "BUTTON",
+          "target": "door:royal-audience",
+          "interaction": null,
+          "action": null,
+          "disabled": false,
+          "room": "royal-gallery",
+          "position": {
+            "wolfCastleInterior": "true",
+            "wolfCastleX": "1149.7",
+            "wolfCastleY": "608.0",
+            "wolfCastleMoving": "false"
+          }
+        },
+        "documentTimeOrigin": 1793980970923.3,
+        "room": "royal-gallery",
+        "status": "aboard",
+        "x": "1149.7",
+        "y": "608.0",
+        "stopped": true,
+        "dialog": false,
+        "error": false,
+        "focused": true,
+        "hidden": false,
+        "targetReady": true
+      },
+      "outcome": "click-observed"
+    },
+    {
+      "id": "door:royal-council",
+      "room": "royal-audience",
+      "attempt": 1,
+      "reason": "initial-native-press",
+      "before": {
+        "sequence": 11,
+        "lastClick": {
+          "sequence": 11,
+          "at": 8156.29999999993,
+          "element": "BUTTON",
+          "target": null,
+          "interaction": "door:royal-audience",
+          "action": null,
+          "disabled": false,
+          "room": "royal-gallery",
+          "position": {
+            "wolfCastleInterior": "true",
+            "wolfCastleX": "1464.4",
+            "wolfCastleY": "596.1",
+            "wolfCastleMoving": "false"
+          }
+        },
+        "documentTimeOrigin": 1793980970923.3,
+        "room": "royal-audience",
+        "status": "aboard",
+        "x": "250.0",
+        "y": "612.0",
+        "stopped": true,
+        "dialog": false,
+        "error": false,
+        "focused": true,
+        "hidden": false,
+        "targetReady": true
+      },
+      "after": {
+        "sequence": 12,
+        "lastClick": {
+          "sequence": 12,
+          "at": 8354,
+          "element": "BUTTON",
+          "target": "door:royal-council",
+          "interaction": null,
+          "action": null,
+          "disabled": false,
+          "room": "royal-audience",
+          "position": {
+            "wolfCastleInterior": "true",
+            "wolfCastleX": "250.0",
+            "wolfCastleY": "612.0",
+            "wolfCastleMoving": "false"
+          }
+        },
+        "documentTimeOrigin": 1793980970923.3,
+        "room": "royal-audience",
+        "status": "aboard",
+        "x": "250.0",
+        "y": "612.0",
+        "stopped": true,
+        "dialog": false,
+        "error": false,
+        "focused": true,
+        "hidden": false,
+        "targetReady": true
+      },
+      "outcome": "click-observed"
+    },
+    {
+      "id": "council",
+      "room": "royal-council",
+      "attempt": 1,
+      "reason": "initial-native-press",
+      "before": {
+        "sequence": 13,
+        "lastClick": {
+          "sequence": 13,
+          "at": 12888.699999999953,
+          "element": "BUTTON",
+          "target": null,
+          "interaction": "door:royal-council",
+          "action": null,
+          "disabled": false,
+          "room": "royal-audience",
+          "position": {
+            "wolfCastleInterior": "true",
+            "wolfCastleX": "1464.8",
+            "wolfCastleY": "596.0",
+            "wolfCastleMoving": "false"
+          }
+        },
+        "documentTimeOrigin": 1793980970923.3,
+        "room": "royal-council",
+        "status": "aboard",
+        "x": "250.0",
+        "y": "612.0",
+        "stopped": true,
+        "dialog": false,
+        "error": false,
+        "focused": true,
+        "hidden": false,
+        "targetReady": true
+      },
+      "after": {
+        "sequence": 14,
+        "lastClick": {
+          "sequence": 14,
+          "at": 13004.099999999977,
+          "element": "BUTTON",
+          "target": "council",
+          "interaction": null,
+          "action": null,
+          "disabled": false,
+          "room": "royal-council",
+          "position": {
+            "wolfCastleInterior": "true",
+            "wolfCastleX": "250.0",
+            "wolfCastleY": "612.0",
+            "wolfCastleMoving": "false"
+          }
+        },
+        "documentTimeOrigin": 1793980970923.3,
+        "room": "royal-council",
+        "status": "aboard",
+        "x": "250.0",
+        "y": "612.0",
+        "stopped": true,
+        "dialog": false,
+        "error": false,
+        "focused": true,
+        "hidden": false,
+        "targetReady": true
+      },
+      "outcome": "click-observed"
+    },
+    {
+      "id": "door:royal-service-pass",
+      "room": "royal-council",
+      "attempt": 1,
+      "reason": "initial-native-press",
+      "before": {
+        "sequence": 16,
+        "lastClick": {
+          "sequence": 16,
+          "at": 15136.699999999953,
+          "element": "BUTTON",
+          "target": null,
+          "interaction": null,
+          "action": "inspect-dungeon-council",
+          "disabled": false,
+          "room": "royal-council",
+          "position": {
+            "wolfCastleInterior": "true",
+            "wolfCastleX": "798.9",
+            "wolfCastleY": "622.0",
+            "wolfCastleMoving": "false"
+          }
+        },
+        "documentTimeOrigin": 1793980970923.3,
+        "room": "royal-council",
+        "status": "aboard",
+        "x": "798.9",
+        "y": "622.0",
+        "stopped": true,
+        "dialog": false,
+        "error": false,
+        "focused": true,
+        "hidden": false,
+        "targetReady": true
+      },
+      "after": {
+        "sequence": 17,
+        "lastClick": {
+          "sequence": 17,
+          "at": 15237.699999999953,
+          "element": "BUTTON",
+          "target": "door:royal-service-pass",
+          "interaction": null,
+          "action": null,
+          "disabled": false,
+          "room": "royal-council",
+          "position": {
+            "wolfCastleInterior": "true",
+            "wolfCastleX": "798.9",
+            "wolfCastleY": "622.0",
+            "wolfCastleMoving": "false"
+          }
+        },
+        "documentTimeOrigin": 1793980970923.3,
+        "room": "royal-council",
+        "status": "aboard",
+        "x": "798.9",
+        "y": "622.0",
+        "stopped": true,
+        "dialog": false,
+        "error": false,
+        "focused": true,
+        "hidden": false,
+        "targetReady": true
+      },
+      "outcome": "click-observed"
+    },
+    {
+      "id": "door:royal-court",
+      "room": "royal-service-pass",
+      "attempt": 1,
+      "reason": "initial-native-press",
+      "before": {
+        "sequence": 18,
+        "lastClick": {
+          "sequence": 18,
+          "at": 17849.400000000023,
+          "element": "BUTTON",
+          "target": null,
+          "interaction": "door:royal-service-pass",
+          "action": null,
+          "disabled": false,
+          "room": "royal-council",
+          "position": {
+            "wolfCastleInterior": "true",
+            "wolfCastleX": "1464.4",
+            "wolfCastleY": "596.1",
+            "wolfCastleMoving": "false"
+          }
+        },
+        "documentTimeOrigin": 1793980970923.3,
+        "room": "royal-service-pass",
+        "status": "aboard",
+        "x": "1350.0",
+        "y": "612.0",
+        "stopped": true,
+        "dialog": false,
+        "error": false,
+        "focused": true,
+        "hidden": false,
+        "targetReady": true
+      },
+      "after": {
+        "sequence": 19,
+        "lastClick": {
+          "sequence": 19,
+          "at": 17978.5,
+          "element": "BUTTON",
+          "target": "door:royal-court",
+          "interaction": null,
+          "action": null,
+          "disabled": false,
+          "room": "royal-service-pass",
+          "position": {
+            "wolfCastleInterior": "true",
+            "wolfCastleX": "1350.0",
+            "wolfCastleY": "612.0",
+            "wolfCastleMoving": "false"
+          }
+        },
+        "documentTimeOrigin": 1793980970923.3,
+        "room": "royal-service-pass",
+        "status": "aboard",
+        "x": "1350.0",
+        "y": "612.0",
+        "stopped": true,
+        "dialog": false,
+        "error": false,
+        "focused": true,
+        "hidden": false,
+        "targetReady": true
+      },
+      "outcome": "click-observed"
+    },
+    {
+      "id": "combat",
+      "room": "royal-court",
+      "attempt": 1,
+      "reason": "initial-native-press",
+      "before": {
+        "sequence": 20,
+        "lastClick": {
+          "sequence": 20,
+          "at": 20103,
+          "element": "BUTTON",
+          "target": null,
+          "interaction": "door:royal-court",
+          "action": null,
+          "disabled": false,
+          "room": "royal-service-pass",
+          "position": {
+            "wolfCastleInterior": "true",
+            "wolfCastleX": "802.0",
+            "wolfCastleY": "534.3",
+            "wolfCastleMoving": "false"
+          }
+        },
+        "documentTimeOrigin": 1793980970923.3,
+        "room": "royal-court",
+        "status": "aboard",
+        "x": "250.0",
+        "y": "612.0",
+        "stopped": true,
+        "dialog": false,
+        "error": false,
+        "focused": true,
+        "hidden": false,
+        "targetReady": true
+      },
+      "after": {
+        "sequence": 21,
+        "lastClick": {
+          "sequence": 21,
+          "at": 20268.199999999953,
+          "element": "BUTTON",
+          "target": "combat",
+          "interaction": null,
+          "action": null,
+          "disabled": false,
+          "room": "royal-court",
+          "position": {
+            "wolfCastleInterior": "true",
+            "wolfCastleX": "250.0",
+            "wolfCastleY": "612.0",
+            "wolfCastleMoving": "false"
+          }
+        },
+        "documentTimeOrigin": 1793980970923.3,
+        "room": "royal-court",
+        "status": "aboard",
+        "x": "250.0",
+        "y": "612.0",
+        "stopped": true,
+        "dialog": false,
+        "error": false,
+        "focused": true,
+        "hidden": false,
+        "targetReady": true
+      },
+      "outcome": "click-observed"
+    },
+    {
+      "id": "door:royal-council",
+      "room": "royal-service-pass",
+      "attempt": 1,
+      "reason": "initial-native-press",
+      "before": {
+        "sequence": 7,
+        "lastClick": {
+          "sequence": 7,
+          "at": 23758.29999999993,
+          "element": "BUTTON",
+          "target": null,
+          "interaction": "door:royal-service-pass",
+          "action": null,
+          "disabled": false,
+          "room": "royal-court",
+          "position": {
+            "wolfCastleInterior": "true",
+            "wolfCastleX": "134.6",
+            "wolfCastleY": "596.1",
+            "wolfCastleMoving": "false"
+          }
+        },
+        "documentTimeOrigin": 1793980998586.1,
+        "room": "royal-service-pass",
+        "status": "aboard",
+        "x": "800.0",
+        "y": "638.0",
+        "stopped": true,
+        "dialog": false,
+        "error": false,
+        "focused": true,
+        "hidden": false,
+        "targetReady": true
+      },
+      "after": {
+        "sequence": 8,
+        "lastClick": {
+          "sequence": 8,
+          "at": 23847.599999999977,
+          "element": "BUTTON",
+          "target": "door:royal-council",
+          "interaction": null,
+          "action": null,
+          "disabled": false,
+          "room": "royal-service-pass",
+          "position": {
+            "wolfCastleInterior": "true",
+            "wolfCastleX": "800.0",
+            "wolfCastleY": "638.0",
+            "wolfCastleMoving": "false"
+          }
+        },
+        "documentTimeOrigin": 1793980998586.1,
+        "room": "royal-service-pass",
+        "status": "aboard",
+        "x": "800.0",
+        "y": "638.0",
+        "stopped": true,
+        "dialog": false,
+        "error": false,
+        "focused": true,
+        "hidden": false,
+        "targetReady": true
+      },
+      "outcome": "click-observed"
+    },
+    {
+      "id": "door:royal-audience",
+      "room": "royal-council",
+      "attempt": 1,
+      "reason": "initial-native-press",
+      "before": {
+        "sequence": 9,
+        "lastClick": {
+          "sequence": 9,
+          "at": 26374.400000000023,
+          "element": "BUTTON",
+          "target": null,
+          "interaction": "door:royal-council",
+          "action": null,
+          "disabled": false,
+          "room": "royal-service-pass",
+          "position": {
+            "wolfCastleInterior": "true",
+            "wolfCastleX": "1464.7",
+            "wolfCastleY": "596.2",
+            "wolfCastleMoving": "false"
+          }
+        },
+        "documentTimeOrigin": 1793980998586.1,
+        "room": "royal-council",
+        "status": "aboard",
+        "x": "1350.0",
+        "y": "612.0",
+        "stopped": true,
+        "dialog": false,
+        "error": false,
+        "focused": true,
+        "hidden": false,
+        "targetReady": true
+      },
+      "after": {
+        "sequence": 10,
+        "lastClick": {
+          "sequence": 10,
+          "at": 26585.599999999977,
+          "element": "BUTTON",
+          "target": "door:royal-audience",
+          "interaction": null,
+          "action": null,
+          "disabled": false,
+          "room": "royal-council",
+          "position": {
+            "wolfCastleInterior": "true",
+            "wolfCastleX": "1350.0",
+            "wolfCastleY": "612.0",
+            "wolfCastleMoving": "false"
+          }
+        },
+        "documentTimeOrigin": 1793980998586.1,
+        "room": "royal-council",
+        "status": "aboard",
+        "x": "1345.5",
+        "y": "611.9",
+        "stopped": false,
+        "dialog": false,
+        "error": false,
+        "focused": true,
+        "hidden": false,
+        "targetReady": true
+      },
+      "outcome": "click-observed"
+    },
+    {
+      "id": "audience",
+      "room": "royal-audience",
+      "attempt": 1,
+      "reason": "initial-native-press",
+      "before": {
+        "sequence": 11,
+        "lastClick": {
+          "sequence": 11,
+          "at": 31140.699999999953,
+          "element": "BUTTON",
+          "target": null,
+          "interaction": "door:royal-audience",
+          "action": null,
+          "disabled": false,
+          "room": "royal-council",
+          "position": {
+            "wolfCastleInterior": "true",
+            "wolfCastleX": "135.2",
+            "wolfCastleY": "596.0",
+            "wolfCastleMoving": "false"
+          }
+        },
+        "documentTimeOrigin": 1793980998586.1,
+        "room": "royal-audience",
+        "status": "aboard",
+        "x": "1350.0",
+        "y": "612.0",
+        "stopped": true,
+        "dialog": false,
+        "error": false,
+        "focused": true,
+        "hidden": false,
+        "targetReady": true
+      },
+      "after": {
+        "sequence": 12,
+        "lastClick": {
+          "sequence": 12,
+          "at": 31312.699999999953,
+          "element": "BUTTON",
+          "target": "audience",
+          "interaction": null,
+          "action": null,
+          "disabled": false,
+          "room": "royal-audience",
+          "position": {
+            "wolfCastleInterior": "true",
+            "wolfCastleX": "1350.0",
+            "wolfCastleY": "612.0",
+            "wolfCastleMoving": "false"
+          }
+        },
+        "documentTimeOrigin": 1793980998586.1,
+        "room": "royal-audience",
+        "status": "aboard",
+        "x": "1350.0",
+        "y": "612.0",
+        "stopped": true,
+        "dialog": false,
+        "error": false,
+        "focused": true,
+        "hidden": false,
+        "targetReady": true
+      },
+      "outcome": "click-observed"
+    },
+    {
+      "id": "door:royal-gallery",
+      "room": "royal-audience",
+      "attempt": 1,
+      "reason": "initial-native-press",
+      "before": {
+        "sequence": 4,
+        "lastClick": {
+          "sequence": 4,
+          "at": 2676.6999999999534,
+          "element": "BUTTON",
+          "target": null,
+          "interaction": null,
+          "action": null,
+          "disabled": false,
+          "room": "royal-audience",
+          "position": {
+            "wolfCastleInterior": "true",
+            "wolfCastleX": "801.1",
+            "wolfCastleY": "616.0",
+            "wolfCastleMoving": "false"
+          }
+        },
+        "documentTimeOrigin": 1793981033135.7,
+        "room": "royal-audience",
+        "status": "aboard",
+        "x": "801.1",
+        "y": "616.0",
+        "stopped": true,
+        "dialog": false,
+        "error": false,
+        "focused": true,
+        "hidden": false,
+        "targetReady": true
+      },
+      "after": {
+        "sequence": 5,
+        "lastClick": {
+          "sequence": 5,
+          "at": 2757.6999999999534,
+          "element": "BUTTON",
+          "target": "door:royal-gallery",
+          "interaction": null,
+          "action": null,
+          "disabled": false,
+          "room": "royal-audience",
+          "position": {
+            "wolfCastleInterior": "true",
+            "wolfCastleX": "801.1",
+            "wolfCastleY": "616.0",
+            "wolfCastleMoving": "false"
+          }
+        },
+        "documentTimeOrigin": 1793981033135.7,
+        "room": "royal-audience",
+        "status": "aboard",
+        "x": "796.6",
+        "y": "615.9",
+        "stopped": false,
+        "dialog": false,
+        "error": false,
+        "focused": true,
+        "hidden": false,
+        "targetReady": true
+      },
+      "outcome": "click-observed"
+    },
+    {
+      "id": "door:royal-vestibule",
+      "room": "royal-gallery",
+      "attempt": 1,
+      "reason": "initial-native-press",
+      "before": {
+        "sequence": 6,
+        "lastClick": {
+          "sequence": 6,
+          "at": 5291,
+          "element": "BUTTON",
+          "target": null,
+          "interaction": "door:royal-gallery",
+          "action": null,
+          "disabled": false,
+          "room": "royal-audience",
+          "position": {
+            "wolfCastleInterior": "true",
+            "wolfCastleX": "135.4",
+            "wolfCastleY": "596.1",
+            "wolfCastleMoving": "false"
+          }
+        },
+        "documentTimeOrigin": 1793981033135.7,
+        "room": "royal-gallery",
+        "status": "aboard",
+        "x": "1350.0",
+        "y": "612.0",
+        "stopped": true,
+        "dialog": false,
+        "error": false,
+        "focused": true,
+        "hidden": false,
+        "targetReady": true
+      },
+      "after": {
+        "sequence": 7,
+        "lastClick": {
+          "sequence": 7,
+          "at": 5449.79999999993,
+          "element": "BUTTON",
+          "target": "door:royal-vestibule",
+          "interaction": null,
+          "action": null,
+          "disabled": false,
+          "room": "royal-gallery",
+          "position": {
+            "wolfCastleInterior": "true",
+            "wolfCastleX": "1350.0",
+            "wolfCastleY": "612.0",
+            "wolfCastleMoving": "false"
+          }
+        },
+        "documentTimeOrigin": 1793981033135.7,
+        "room": "royal-gallery",
+        "status": "aboard",
+        "x": "1350.0",
+        "y": "612.0",
+        "stopped": true,
+        "dialog": false,
+        "error": false,
+        "focused": true,
+        "hidden": false,
+        "targetReady": true
+      },
+      "outcome": "click-observed"
+    },
+    {
+      "id": "door:royal-airlock",
+      "room": "royal-vestibule",
+      "attempt": 1,
+      "reason": "initial-native-press",
+      "before": {
+        "sequence": 8,
+        "lastClick": {
+          "sequence": 8,
+          "at": 10007.400000000023,
+          "element": "BUTTON",
+          "target": null,
+          "interaction": "door:royal-vestibule",
+          "action": null,
+          "disabled": false,
+          "room": "royal-gallery",
+          "position": {
+            "wolfCastleInterior": "true",
+            "wolfCastleX": "135.2",
+            "wolfCastleY": "596.0",
+            "wolfCastleMoving": "false"
+          }
+        },
+        "documentTimeOrigin": 1793981033135.7,
+        "room": "royal-vestibule",
+        "status": "aboard",
+        "x": "1350.0",
+        "y": "612.0",
+        "stopped": true,
+        "dialog": false,
+        "error": false,
+        "focused": true,
+        "hidden": false,
+        "targetReady": true
+      },
+      "after": {
+        "sequence": 9,
+        "lastClick": {
+          "sequence": 9,
+          "at": 10126.599999999977,
+          "element": "BUTTON",
+          "target": "door:royal-airlock",
+          "interaction": null,
+          "action": null,
+          "disabled": false,
+          "room": "royal-vestibule",
+          "position": {
+            "wolfCastleInterior": "true",
+            "wolfCastleX": "1350.0",
+            "wolfCastleY": "612.0",
+            "wolfCastleMoving": "false"
+          }
+        },
+        "documentTimeOrigin": 1793981033135.7,
+        "room": "royal-vestibule",
+        "status": "aboard",
+        "x": "1350.0",
+        "y": "612.0",
+        "stopped": true,
+        "dialog": false,
+        "error": false,
+        "focused": true,
+        "hidden": false,
+        "targetReady": true
+      },
+      "outcome": "click-observed"
+    },
+    {
+      "id": "door:royal-berth",
+      "room": "royal-airlock",
+      "attempt": 1,
+      "reason": "initial-native-press",
+      "before": {
+        "sequence": 10,
+        "lastClick": {
+          "sequence": 10,
+          "at": 14690.699999999953,
+          "element": "BUTTON",
+          "target": null,
+          "interaction": "door:royal-airlock",
+          "action": null,
+          "disabled": false,
+          "room": "royal-vestibule",
+          "position": {
+            "wolfCastleInterior": "true",
+            "wolfCastleX": "135.1",
+            "wolfCastleY": "596.0",
+            "wolfCastleMoving": "false"
+          }
+        },
+        "documentTimeOrigin": 1793981033135.7,
+        "room": "royal-airlock",
+        "status": "aboard",
+        "x": "1350.0",
+        "y": "612.0",
+        "stopped": true,
+        "dialog": false,
+        "error": false,
+        "focused": true,
+        "hidden": false,
+        "targetReady": true
+      },
+      "after": {
+        "sequence": 11,
+        "lastClick": {
+          "sequence": 11,
+          "at": 14826.400000000023,
+          "element": "BUTTON",
+          "target": "door:royal-berth",
+          "interaction": null,
+          "action": null,
+          "disabled": false,
+          "room": "royal-airlock",
+          "position": {
+            "wolfCastleInterior": "true",
+            "wolfCastleX": "1350.0",
+            "wolfCastleY": "612.0",
+            "wolfCastleMoving": "false"
+          }
+        },
+        "documentTimeOrigin": 1793981033135.7,
+        "room": "royal-airlock",
+        "status": "aboard",
+        "x": "1350.0",
+        "y": "612.0",
+        "stopped": true,
+        "dialog": false,
+        "error": false,
+        "focused": true,
+        "hidden": false,
+        "targetReady": true
+      },
+      "outcome": "click-observed"
+    },
+    {
+      "id": "personal-ship",
+      "room": "royal-berth",
+      "attempt": 1,
+      "reason": "initial-native-press",
+      "before": {
+        "sequence": 12,
+        "lastClick": {
+          "sequence": 12,
+          "at": 19357.099999999977,
+          "element": "BUTTON",
+          "target": null,
+          "interaction": "door:royal-berth",
+          "action": null,
+          "disabled": false,
+          "room": "royal-airlock",
+          "position": {
+            "wolfCastleInterior": "true",
+            "wolfCastleX": "135.2",
+            "wolfCastleY": "596.0",
+            "wolfCastleMoving": "false"
+          }
+        },
+        "documentTimeOrigin": 1793981033135.7,
+        "room": "royal-berth",
+        "status": "aboard",
+        "x": "1350.0",
+        "y": "612.0",
+        "stopped": true,
+        "dialog": false,
+        "error": false,
+        "focused": true,
+        "hidden": false,
+        "targetReady": true
+      },
+      "after": {
+        "sequence": 13,
+        "lastClick": {
+          "sequence": 13,
+          "at": 19509.79999999993,
+          "element": "BUTTON",
+          "target": "personal-ship",
+          "interaction": null,
+          "action": null,
+          "disabled": false,
+          "room": "royal-berth",
+          "position": {
+            "wolfCastleInterior": "true",
+            "wolfCastleX": "1350.0",
+            "wolfCastleY": "612.0",
+            "wolfCastleMoving": "false"
+          }
+        },
+        "documentTimeOrigin": 1793981033135.7,
+        "room": "royal-berth",
+        "status": "aboard",
+        "x": "1350.0",
+        "y": "612.0",
+        "stopped": true,
+        "dialog": false,
+        "error": false,
+        "focused": true,
+        "hidden": false,
+        "targetReady": true
+      },
+      "outcome": "click-observed"
+    }
+  ],
+  "rosterPreparation": {
+    "recruited": {
+      "version": 2,
+      "ownerCreatedAt": "2026-11-04T10:00:00.000Z",
+      "members": [
+        {
+          "id": "karhek",
+          "assignedShipId": null,
+          "availability": "ready"
+        },
+        {
+          "id": "saketh",
+          "assignedShipId": null,
+          "availability": "ready"
+        }
+      ],
+      "settledRunIds": []
+    },
+    "returnedToReserve": {
+      "version": 2,
+      "ownerCreatedAt": "2026-11-04T10:00:00.000Z",
+      "members": [
+        {
+          "id": "karhek",
+          "assignedShipId": null,
+          "availability": "ready"
+        },
+        {
+          "id": "saketh",
+          "assignedShipId": null,
+          "availability": "ready"
+        }
+      ],
+      "settledRunIds": []
+    },
+    "assigned": {
+      "version": 2,
+      "ownerCreatedAt": "2026-11-04T10:00:00.000Z",
+      "members": [
+        {
+          "id": "karhek",
+          "assignedShipId": "classic-predator-spaceship",
+          "availability": "ready"
+        },
+        {
+          "id": "saketh",
+          "assignedShipId": "classic-predator-spaceship",
+          "availability": "ready"
+        }
+      ],
+      "settledRunIds": []
+    }
+  },
+  "cloakBriefing": {
+    "enabled": true,
+    "chargeBefore": 100,
+    "previewAfter": 70
+  },
+  "shipTriadHandoff": {
+    "runId": "ff135755-bad3-4c99-871a-974f37c54c5e",
+    "plan": {
+      "version": 1,
+      "method": "ship",
+      "team": "triad",
+      "shipCloak": true
+    },
+    "companions": [
+      {
+        "id": "karhek",
+        "x": 389,
+        "y": 512,
+        "width": 64,
+        "height": 112,
+        "health": 100,
+        "maxHealth": 100,
+        "velocityX": 0,
+        "velocityY": 0,
+        "facing": -1,
+        "grounded": true,
+        "climbing": false,
+        "order": "follow",
+        "status": "active",
+        "attackCooldown": 0.7,
+        "attackFlash": 0,
+        "invulnerability": 0,
+        "blockedSeconds": 0,
+        "jumpTargetX": null
+      },
+      {
+        "id": "saketh",
+        "x": 549,
+        "y": 512,
+        "width": 64,
+        "height": 112,
+        "health": 120,
+        "maxHealth": 120,
+        "velocityX": 0,
+        "velocityY": 0,
+        "facing": 1,
+        "grounded": true,
+        "climbing": false,
+        "order": "follow",
+        "status": "active",
+        "attackCooldown": 0.7,
+        "attackFlash": 0,
+        "invulnerability": 0,
+        "blockedSeconds": 0,
+        "jumpTargetX": null
+      }
+    ],
+    "energy": {
+      "charge": 70,
+      "runId": "ff135755-bad3-4c99-871a-974f37c54c5e",
+      "departures": 1
+    },
+    "patrolIds": [
+      "jungle-vey:0:insertion-patrol-0"
+    ],
+    "searchUntil": 18,
+    "realPatrolCount": 1
+  },
+  "passed": true,
+  "finishedAt": "2026-11-06T16:06:16.025Z"
+}

@@ -1,0 +1,2415 @@
+{
+  "schemaVersion": 1,
+  "dateUtc": "2026-11-06T04:48:09.653311+00:00",
+  "shipId": "fugitive-spaceship",
+  "status": "eight candidate views independently inspected; parent approval and native qualification pending",
+  "runtimeActivationApproved": false,
+  "canonicalArtApproval": false,
+  "humanArtApproval": false,
+  "methods": [
+    "pod",
+    "ship"
+  ],
+  "profilePath": "/game/ships/v14/fugitive-spaceship.webp",
+  "sourceReview": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/fugitive-spaceship/independent-eight-view-review.md",
+  "sourceManifest": {
+    "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/fugitive-spaceship/generation-manifest.json",
+    "bytes": 24081,
+    "sha256": "6e318dd5ed7802d6fb235866d394220c92ed556b2bd65ede379228deecc1fbc0"
+  },
+  "priorNumericReview": {
+    "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/fugitive-spaceship/candidate-numeric-review.json",
+    "bytes": 3617,
+    "sha256": "a8f99c5bb7ab30bc9792030aa466380ccc1016b3ebed95fb3154da927b6e64c5"
+  },
+  "sourceSelectionUnchanged": true,
+  "references": [
+    {
+      "role": "profile",
+      "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/fugitive-spaceship-profile.webp",
+      "bytes": 104748,
+      "sha256": "643ae874e41a68f130e55aa472bc473dc21b4f7216357dcb87d320c7e88a6bc0",
+      "canvas": [
+        1693,
+        929
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "role": "top",
+      "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/fugitive-spaceship-top.webp",
+      "bytes": 160134,
+      "sha256": "8f719e2cf6d31ba6bf74913c48e9adfc83754432ff7e37a0f70832bcf4891f77",
+      "canvas": [
+        1692,
+        930
+      ],
+      "mode": "RGBA"
+    }
+  ],
+  "canvas": {
+    "width": 1536,
+    "height": 1024
+  },
+  "profileRegistration": {
+    "width": 1693,
+    "height": 929,
+    "nose": [
+      1540.0,
+      405.0
+    ],
+    "tail": [
+      250.0,
+      465.0
+    ],
+    "pivot": [
+      846.5,
+      464.5
+    ],
+    "release": [
+      1080.0,
+      668.0
+    ],
+    "basis": "Unchanged V14 carrier() coordinates from planetArrivalArt.ts; pivot is the full source canvas center.",
+    "visualFrontTip": [
+      1546,
+      400.0
+    ],
+    "rearApertureLandmarks": {
+      "boundsInclusiveApproximate": [
+        [
+          255,
+          279,
+          334,
+          377
+        ],
+        [
+          197,
+          541,
+          282,
+          655
+        ]
+      ],
+      "centers": [
+        [
+          294.5,
+          328.0
+        ],
+        [
+          239.5,
+          598.0
+        ]
+      ],
+      "meanCenter": [
+        267.0,
+        463.0
+      ],
+      "centerPixelSamples": [
+        {
+          "point": [
+            294,
+            328
+          ],
+          "rgba": [
+            67,
+            150,
+            217,
+            255
+          ]
+        },
+        {
+          "point": [
+            240,
+            598
+          ],
+          "rgba": [
+            56,
+            123,
+            189,
+            255
+          ]
+        }
+      ]
+    },
+    "registeredPointsInVisualAxisBasis": {
+      "nose": [
+        0.9951280941084638,
+        0.003669327544044737
+      ],
+      "tail": [
+        -0.013336301156841342,
+        0.0009068123746043749
+      ],
+      "pivot": [
+        0.45193406553198234,
+        0.02343381245388185
+      ],
+      "release": [
+        0.6262384056689495,
+        0.19112824046688337
+      ]
+    }
+  },
+  "measurementMethod": {
+    "noseVisualPoint": "Rightmost alpha>=128 metal silhouette of the leading lip within y300..649; mean y when the maximum x spans multiple rows. No flame contributes at the right-facing nose.",
+    "tailVisualPoint": "Equal mean of the two manually inspected blue rear aperture ellipse centers, using only the mouth within its metal housing. The free blue jets and the upper nacelle windows are excluded.",
+    "manualBounds": "Approximate inclusive visual bounds in original pixels. Midpoints are deterministic from these declared bounds; no segmentation or new physical nozzle socket is claimed.",
+    "registeredPoints": "All four unchanged historical profile points are transported together by the similarity between the profile visual tail-to-tip axis and each candidate visual axis. This preserves the original nose inset and tail offset.",
+    "formula": "a=Nvisual−Tvisual; u=dot(q−Tvisual,a)/|a|²; v=cross(a,q−Tvisual)/|a|². qNew=Tnew+u*(Nnew−Tnew)+v*perp(Nnew−Tnew), perp([x,y])=[−y,x].",
+    "manualSemanticUncertaintyPx": {
+      "noseVisualTip": 3,
+      "rearApertureCenters": 8,
+      "narrowForwardDeepApertures": 12,
+      "registeredPointsApproximate": 12
+    },
+    "precision": "Fractional coordinates preserve deterministic calculations; they do not assert subpixel artistic accuracy.",
+    "pivot": "Registration pivot derived from original full-canvas center, not center of mass.",
+    "release": "Transport of established release(1080,668), not a new identified launch bay; active release/contact keeps the historical profile.",
+    "aspect": "Native candidate pixels1536×1024 versus master1693×929. Runtime must account for canvas aspect in its matrix before uniform rotation/scale. No pre-stretch, resize or padding was performed.",
+    "engines": "Small blue jets already belong to the reference raster and remain embedded in each candidate. All separate exhaustVisibility values are0 and exhaustReview unreviewed, so no extra runtime engine effect or socket is enabled."
+  },
+  "calibrations": {
+    "forward-quarter-shallow": {
+      "nose": [
+        1468.685,
+        504.355
+      ],
+      "tail": [
+        151.595,
+        513.858
+      ],
+      "pivot": [
+        759.531,
+        537.229
+      ],
+      "release": [
+        989.352,
+        753.972
+      ],
+      "exhaust": [
+        151.595,
+        513.858
+      ],
+      "exhaustAngleDeg": 179.5866,
+      "exhaustVisibility": 0,
+      "calibration": "inspected-source-art",
+      "exhaustReview": "unreviewed"
+    },
+    "forward-quarter": {
+      "nose": [
+        1399.077,
+        562.186
+      ],
+      "tail": [
+        250.465,
+        456.679
+      ],
+      "pivot": [
+        778.237,
+        529.568
+      ],
+      "release": [
+        959.793,
+        738.306
+      ],
+      "exhaust": [
+        250.465,
+        456.679
+      ],
+      "exhaustAngleDeg": -174.7518,
+      "exhaustVisibility": 0,
+      "calibration": "inspected-source-art",
+      "exhaustReview": "unreviewed"
+    },
+    "bank-dorsal-shallow": {
+      "nose": [
+        1466.921,
+        514.811
+      ],
+      "tail": [
+        185.331,
+        542.059
+      ],
+      "pivot": [
+        777.26,
+        556.495
+      ],
+      "release": [
+        1003.872,
+        764.276
+      ],
+      "exhaust": [
+        185.331,
+        542.059
+      ],
+      "exhaustAngleDeg": 178.782,
+      "exhaustVisibility": 0,
+      "calibration": "inspected-source-art",
+      "exhaustReview": "unreviewed"
+    },
+    "bank-dorsal": {
+      "nose": [
+        1447.883,
+        518.117
+      ],
+      "tail": [
+        180.744,
+        515.906
+      ],
+      "pivot": [
+        765.384,
+        543.63
+      ],
+      "release": [
+        984.607,
+        754.12
+      ],
+      "exhaust": [
+        180.744,
+        515.906
+      ],
+      "exhaustAngleDeg": -179.9,
+      "exhaustVisibility": 0,
+      "calibration": "inspected-source-art",
+      "exhaustReview": "unreviewed"
+    },
+    "bank-ventral-shallow": {
+      "nose": [
+        1441.03,
+        491.624
+      ],
+      "tail": [
+        192.505,
+        505.096
+      ],
+      "pivot": [
+        768.887,
+        525.191
+      ],
+      "release": [
+        987.485,
+        729.877
+      ],
+      "exhaust": [
+        192.505,
+        505.096
+      ],
+      "exhaustAngleDeg": 179.3818,
+      "exhaustVisibility": 0,
+      "calibration": "inspected-source-art",
+      "exhaustReview": "unreviewed"
+    },
+    "bank-ventral": {
+      "nose": [
+        1456.99,
+        468.887
+      ],
+      "tail": [
+        176.866,
+        513.031
+      ],
+      "pivot": [
+        768.475,
+        519.639
+      ],
+      "release": [
+        997.634,
+        724.25
+      ],
+      "exhaust": [
+        176.866,
+        513.031
+      ],
+      "exhaustAngleDeg": 178.025,
+      "exhaustVisibility": 0,
+      "calibration": "inspected-source-art",
+      "exhaustReview": "unreviewed"
+    },
+    "rear-quarter-shallow": {
+      "nose": [
+        1467.096,
+        466.991
+      ],
+      "tail": [
+        190.688,
+        535.348
+      ],
+      "pivot": [
+        781.092,
+        530.705
+      ],
+      "release": [
+        1013.623,
+        730.503
+      ],
+      "exhaust": [
+        190.688,
+        535.348
+      ],
+      "exhaustAngleDeg": 176.9345,
+      "exhaustVisibility": 0,
+      "calibration": "inspected-source-art",
+      "exhaustReview": "unreviewed"
+    },
+    "rear-quarter": {
+      "nose": [
+        1437.975,
+        398.642
+      ],
+      "tail": [
+        262.371,
+        574.677
+      ],
+      "pivot": [
+        808.532,
+        518.225
+      ],
+      "release": [
+        1041.447,
+        682.648
+      ],
+      "exhaust": [
+        262.371,
+        574.677
+      ],
+      "exhaustAngleDeg": 171.4838,
+      "exhaustVisibility": 0,
+      "calibration": "inspected-source-art",
+      "exhaustReview": "unreviewed"
+    }
+  },
+  "views": [
+    {
+      "id": "forward-quarter-shallow",
+      "candidatePath": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/fugitive-spaceship/candidates/forward-quarter-shallow.png",
+      "generatedPath": "/workspace/scratch/0c1fa1359efb/generated_images/exec-28039742-6ab0-43cd-9598-22052f6ac8f5.png",
+      "bytes": 1874663,
+      "sha256": "d345e5f4e77d13b50607d35b682dca3bdee4dc3e4ca182276c4f81c637130f82",
+      "canvas": [
+        1536,
+        1024
+      ],
+      "sourceMatchesCandidate": true,
+      "referencePaths": [
+        "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/fugitive-spaceship-profile.webp",
+        "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/fugitive-spaceship-top.webp"
+      ],
+      "inspection": "Both exact reference masters and this original PNG opened individually with view_image; no pixel edit.",
+      "visualFrontTip": {
+        "point": [
+          1475,
+          499.5
+        ],
+        "searchBand": {
+          "yMin": 300,
+          "yMaxExclusive": 650,
+          "alphaMinInclusive": 128
+        },
+        "extremeYRangeInclusive": [
+          497,
+          502
+        ],
+        "extremePixelCount": 6
+      },
+      "rearApertureLandmarks": {
+        "boundsInclusiveApproximate": [
+          [
+            155,
+            320,
+            218,
+            427
+          ],
+          [
+            115,
+            591,
+            188,
+            712
+          ]
+        ],
+        "centers": [
+          [
+            186.5,
+            373.5
+          ],
+          [
+            151.5,
+            651.5
+          ]
+        ],
+        "meanCenter": [
+          169.0,
+          512.5
+        ],
+        "centerPixelSamples": [
+          {
+            "point": [
+              186,
+              374
+            ],
+            "rgba": [
+              87,
+              167,
+              240,
+              253
+            ]
+          },
+          {
+            "point": [
+              152,
+              652
+            ],
+            "rgba": [
+              89,
+              166,
+              239,
+              253
+            ]
+          }
+        ]
+      },
+      "calibration": {
+        "nose": [
+          1468.685,
+          504.355
+        ],
+        "tail": [
+          151.595,
+          513.858
+        ],
+        "pivot": [
+          759.531,
+          537.229
+        ],
+        "release": [
+          989.352,
+          753.972
+        ],
+        "exhaust": [
+          151.595,
+          513.858
+        ],
+        "exhaustAngleDeg": 179.5866,
+        "exhaustVisibility": 0,
+        "calibration": "inspected-source-art",
+        "exhaustReview": "unreviewed"
+      },
+      "projectedRegisteredSpanPixels": 1317.124282332157,
+      "alpha": {
+        "alphaMin": 0,
+        "alphaMax": 254,
+        "borderMax": 0,
+        "thresholds": {
+          "0": {
+            "count": 541795,
+            "boundsInclusive": [
+              37,
+              25,
+              1521,
+              943
+            ]
+          },
+          "1": {
+            "count": 533137,
+            "boundsInclusive": [
+              38,
+              214,
+              1478,
+              784
+            ]
+          },
+          "16": {
+            "count": 524643,
+            "boundsInclusive": [
+              44,
+              215,
+              1476,
+              782
+            ]
+          },
+          "128": {
+            "count": 519717,
+            "boundsInclusive": [
+              56,
+              216,
+              1475,
+              781
+            ]
+          },
+          "250": {
+            "count": 499010,
+            "boundsInclusive": [
+              88,
+              217,
+              1472,
+              780
+            ]
+          }
+        },
+        "outsideSamples": [
+          {
+            "point": [
+              100,
+              100
+            ],
+            "rgba": [
+              1,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "point": [
+              800,
+              70
+            ],
+            "rgba": [
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "point": [
+              800,
+              950
+            ],
+            "rgba": [
+              1,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "point": [
+              1490,
+              200
+            ],
+            "rgba": [
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "point": [
+              1500,
+              900
+            ],
+            "rgba": [
+              1,
+              1,
+              0,
+              0
+            ]
+          },
+          {
+            "point": [
+              50,
+              900
+            ],
+            "rgba": [
+              0,
+              0,
+              0,
+              0
+            ]
+          }
+        ]
+      },
+      "visualReview": "Modest frontal exposure of the leading lip; spherical nacelles remain behind the central body on curved tubes. Two inherited small blue jets.",
+      "observedSphericalNacelles": 2,
+      "embeddedBlueJetsPreserved": true,
+      "newRuntimeEngineEffectApproved": false
+    },
+    {
+      "id": "forward-quarter",
+      "candidatePath": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/fugitive-spaceship/candidates/forward-quarter.png",
+      "generatedPath": "/workspace/scratch/0c1fa1359efb/generated_images/exec-c25995b1-ea3e-47d0-9ab2-f5a57c27e12e.png",
+      "bytes": 1996335,
+      "sha256": "61a2a3a3ef8ced542c90ed6c8f298158cbf5db6b65745a62f62115ae24740369",
+      "canvas": [
+        1536,
+        1024
+      ],
+      "sourceMatchesCandidate": true,
+      "referencePaths": [
+        "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/fugitive-spaceship-profile.webp",
+        "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/fugitive-spaceship-top.webp",
+        "/workspace/scratch/0c1fa1359efb/generated_images/exec-28039742-6ab0-43cd-9598-22052f6ac8f5.png"
+      ],
+      "inspection": "Both exact reference masters and this original PNG opened individually with view_image; no pixel edit.",
+      "visualFrontTip": {
+        "point": [
+          1405,
+          558.5
+        ],
+        "searchBand": {
+          "yMin": 300,
+          "yMaxExclusive": 650,
+          "alphaMinInclusive": 128
+        },
+        "extremeYRangeInclusive": [
+          552,
+          565
+        ],
+        "extremePixelCount": 14
+      },
+      "rearApertureLandmarks": {
+        "boundsInclusiveApproximate": [
+          [
+            333,
+            248,
+            362,
+            355
+          ],
+          [
+            170,
+            553,
+            198,
+            672
+          ]
+        ],
+        "centers": [
+          [
+            347.5,
+            301.5
+          ],
+          [
+            184.0,
+            612.5
+          ]
+        ],
+        "meanCenter": [
+          265.75,
+          457.0
+        ],
+        "centerPixelSamples": [
+          {
+            "point": [
+              348,
+              302
+            ],
+            "rgba": [
+              33,
+              142,
+              234,
+              252
+            ]
+          },
+          {
+            "point": [
+              184,
+              612
+            ],
+            "rgba": [
+              30,
+              122,
+              201,
+              253
+            ]
+          }
+        ]
+      },
+      "calibration": {
+        "nose": [
+          1399.077,
+          562.186
+        ],
+        "tail": [
+          250.465,
+          456.679
+        ],
+        "pivot": [
+          778.237,
+          529.568
+        ],
+        "release": [
+          959.793,
+          738.306
+        ],
+        "exhaust": [
+          250.465,
+          456.679
+        ],
+        "exhaustAngleDeg": -174.7518,
+        "exhaustVisibility": 0,
+        "calibration": "inspected-source-art",
+        "exhaustReview": "unreviewed"
+      },
+      "projectedRegisteredSpanPixels": 1153.4475512969805,
+      "alpha": {
+        "alphaMin": 0,
+        "alphaMax": 254,
+        "borderMax": 1,
+        "thresholds": {
+          "0": {
+            "count": 567425,
+            "boundsInclusive": [
+              0,
+              39,
+              1465,
+              1023
+            ]
+          },
+          "1": {
+            "count": 557122,
+            "boundsInclusive": [
+              112,
+              145,
+              1408,
+              851
+            ]
+          },
+          "16": {
+            "count": 551106,
+            "boundsInclusive": [
+              114,
+              147,
+              1406,
+              849
+            ]
+          },
+          "128": {
+            "count": 547509,
+            "boundsInclusive": [
+              121,
+              148,
+              1405,
+              848
+            ]
+          },
+          "250": {
+            "count": 532549,
+            "boundsInclusive": [
+              145,
+              150,
+              1404,
+              847
+            ]
+          }
+        },
+        "outsideSamples": [
+          {
+            "point": [
+              100,
+              100
+            ],
+            "rgba": [
+              1,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "point": [
+              800,
+              70
+            ],
+            "rgba": [
+              4,
+              4,
+              3,
+              0
+            ]
+          },
+          {
+            "point": [
+              800,
+              950
+            ],
+            "rgba": [
+              13,
+              9,
+              7,
+              0
+            ]
+          },
+          {
+            "point": [
+              1490,
+              200
+            ],
+            "rgba": [
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "point": [
+              1500,
+              900
+            ],
+            "rgba": [
+              1,
+              1,
+              1,
+              0
+            ]
+          },
+          {
+            "point": [
+              50,
+              900
+            ],
+            "rgba": [
+              1,
+              0,
+              0,
+              0
+            ]
+          }
+        ]
+      },
+      "visualReview": "Leading lip and lower frontal bowl occupy more of the visible hull; rear mouths become narrow side ellipses, and the nearer/farther nacelles overlap the hull differently. Stronger front perspective than shallow, with some elevation coupled in.",
+      "observedSphericalNacelles": 2,
+      "embeddedBlueJetsPreserved": true,
+      "newRuntimeEngineEffectApproved": false
+    },
+    {
+      "id": "bank-dorsal-shallow",
+      "candidatePath": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/fugitive-spaceship/candidates/bank-dorsal-shallow.png",
+      "generatedPath": "/workspace/scratch/0c1fa1359efb/generated_images/exec-f907b6fb-a73b-4339-a78e-870853d74825.png",
+      "bytes": 1917350,
+      "sha256": "023e9acfd955db295aaf83c8d754f82ce34be22be531ddf7ce38ab4b1fedf48a",
+      "canvas": [
+        1536,
+        1024
+      ],
+      "sourceMatchesCandidate": true,
+      "referencePaths": [
+        "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/fugitive-spaceship-profile.webp",
+        "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/fugitive-spaceship-top.webp"
+      ],
+      "inspection": "Both exact reference masters and this original PNG opened individually with view_image; no pixel edit.",
+      "visualFrontTip": {
+        "point": [
+          1473,
+          510.0
+        ],
+        "searchBand": {
+          "yMin": 300,
+          "yMaxExclusive": 650,
+          "alphaMinInclusive": 128
+        },
+        "extremeYRangeInclusive": [
+          507,
+          513
+        ],
+        "extremePixelCount": 7
+      },
+      "rearApertureLandmarks": {
+        "boundsInclusiveApproximate": [
+          [
+            171,
+            322,
+            244,
+            431
+          ],
+          [
+            158,
+            650,
+            236,
+            759
+          ]
+        ],
+        "centers": [
+          [
+            207.5,
+            376.5
+          ],
+          [
+            197.0,
+            704.5
+          ]
+        ],
+        "meanCenter": [
+          202.25,
+          540.5
+        ],
+        "centerPixelSamples": [
+          {
+            "point": [
+              208,
+              376
+            ],
+            "rgba": [
+              44,
+              126,
+              197,
+              253
+            ]
+          },
+          {
+            "point": [
+              197,
+              704
+            ],
+            "rgba": [
+              44,
+              123,
+              193,
+              253
+            ]
+          }
+        ]
+      },
+      "calibration": {
+        "nose": [
+          1466.921,
+          514.811
+        ],
+        "tail": [
+          185.331,
+          542.059
+        ],
+        "pivot": [
+          777.26,
+          556.495
+        ],
+        "release": [
+          1003.872,
+          764.276
+        ],
+        "exhaust": [
+          185.331,
+          542.059
+        ],
+        "exhaustAngleDeg": 178.782,
+        "exhaustVisibility": 0,
+        "calibration": "inspected-source-art",
+        "exhaustReview": "unreviewed"
+      },
+      "projectedRegisteredSpanPixels": 1281.8796283598551,
+      "alpha": {
+        "alphaMin": 0,
+        "alphaMax": 254,
+        "borderMax": 0,
+        "thresholds": {
+          "0": {
+            "count": 542625,
+            "boundsInclusive": [
+              61,
+              69,
+              1476,
+              977
+            ]
+          },
+          "1": {
+            "count": 533404,
+            "boundsInclusive": [
+              63,
+              224,
+              1474,
+              797
+            ]
+          },
+          "16": {
+            "count": 527287,
+            "boundsInclusive": [
+              70,
+              224,
+              1474,
+              791
+            ]
+          },
+          "128": {
+            "count": 522799,
+            "boundsInclusive": [
+              78,
+              225,
+              1473,
+              790
+            ]
+          },
+          "250": {
+            "count": 504365,
+            "boundsInclusive": [
+              113,
+              226,
+              1472,
+              786
+            ]
+          }
+        },
+        "outsideSamples": [
+          {
+            "point": [
+              100,
+              100
+            ],
+            "rgba": [
+              0,
+              1,
+              0,
+              0
+            ]
+          },
+          {
+            "point": [
+              800,
+              70
+            ],
+            "rgba": [
+              1,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "point": [
+              800,
+              950
+            ],
+            "rgba": [
+              0,
+              1,
+              0,
+              0
+            ]
+          },
+          {
+            "point": [
+              1490,
+              200
+            ],
+            "rgba": [
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "point": [
+              1500,
+              900
+            ],
+            "rgba": [
+              1,
+              1,
+              0,
+              0
+            ]
+          },
+          {
+            "point": [
+              50,
+              900
+            ],
+            "rgba": [
+              1,
+              1,
+              1,
+              0
+            ]
+          }
+        ]
+      },
+      "visualReview": "Upper annular deck and dark central dome more open than the profile while substantial lower hull remains visible. Two nacelles remain separated.",
+      "observedSphericalNacelles": 2,
+      "embeddedBlueJetsPreserved": true,
+      "newRuntimeEngineEffectApproved": false
+    },
+    {
+      "id": "bank-dorsal",
+      "candidatePath": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/fugitive-spaceship/candidates/bank-dorsal.png",
+      "generatedPath": "/workspace/scratch/0c1fa1359efb/generated_images/exec-13b4de6f-6c8f-4c9d-b5ee-5a76ef6268ca.png",
+      "bytes": 2258773,
+      "sha256": "57ff81e56c7c3e92f3e5e0f6a1aef534d2b4fe6c201be2cb99d056e949b61579",
+      "canvas": [
+        1536,
+        1024
+      ],
+      "sourceMatchesCandidate": true,
+      "referencePaths": [
+        "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/fugitive-spaceship-profile.webp",
+        "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/fugitive-spaceship-top.webp",
+        "/workspace/scratch/0c1fa1359efb/generated_images/exec-f907b6fb-a73b-4339-a78e-870853d74825.png"
+      ],
+      "inspection": "Both exact reference masters and this original PNG opened individually with view_image; no pixel edit.",
+      "visualFrontTip": {
+        "point": [
+          1454,
+          513.5
+        ],
+        "searchBand": {
+          "yMin": 300,
+          "yMaxExclusive": 650,
+          "alphaMinInclusive": 128
+        },
+        "extremeYRangeInclusive": [
+          509,
+          518
+        ],
+        "extremePixelCount": 10
+      },
+      "rearApertureLandmarks": {
+        "boundsInclusiveApproximate": [
+          [
+            187,
+            227,
+            213,
+            332
+          ],
+          [
+            183,
+            699,
+            207,
+            801
+          ]
+        ],
+        "centers": [
+          [
+            200.0,
+            279.5
+          ],
+          [
+            195.0,
+            750.0
+          ]
+        ],
+        "meanCenter": [
+          197.5,
+          514.75
+        ],
+        "centerPixelSamples": [
+          {
+            "point": [
+              200,
+              280
+            ],
+            "rgba": [
+              42,
+              98,
+              143,
+              253
+            ]
+          },
+          {
+            "point": [
+              195,
+              750
+            ],
+            "rgba": [
+              49,
+              105,
+              152,
+              253
+            ]
+          }
+        ]
+      },
+      "calibration": {
+        "nose": [
+          1447.883,
+          518.117
+        ],
+        "tail": [
+          180.744,
+          515.906
+        ],
+        "pivot": [
+          765.384,
+          543.63
+        ],
+        "release": [
+          984.607,
+          754.12
+        ],
+        "exhaust": [
+          180.744,
+          515.906
+        ],
+        "exhaustAngleDeg": -179.9,
+        "exhaustVisibility": 0,
+        "calibration": "inspected-source-art",
+        "exhaustReview": "unreviewed"
+      },
+      "projectedRegisteredSpanPixels": 1267.140928958575,
+      "alpha": {
+        "alphaMin": 0,
+        "alphaMax": 254,
+        "borderMax": 1,
+        "thresholds": {
+          "0": {
+            "count": 653104,
+            "boundsInclusive": [
+              0,
+              3,
+              1521,
+              1009
+            ]
+          },
+          "1": {
+            "count": 638982,
+            "boundsInclusive": [
+              87,
+              141,
+              1456,
+              877
+            ]
+          },
+          "16": {
+            "count": 630470,
+            "boundsInclusive": [
+              90,
+              143,
+              1454,
+              870
+            ]
+          },
+          "128": {
+            "count": 626180,
+            "boundsInclusive": [
+              96,
+              144,
+              1454,
+              869
+            ]
+          },
+          "250": {
+            "count": 602038,
+            "boundsInclusive": [
+              128,
+              145,
+              1453,
+              866
+            ]
+          }
+        },
+        "outsideSamples": [
+          {
+            "point": [
+              100,
+              100
+            ],
+            "rgba": [
+              2,
+              8,
+              9,
+              0
+            ]
+          },
+          {
+            "point": [
+              800,
+              70
+            ],
+            "rgba": [
+              13,
+              12,
+              12,
+              0
+            ]
+          },
+          {
+            "point": [
+              800,
+              950
+            ],
+            "rgba": [
+              3,
+              3,
+              3,
+              0
+            ]
+          },
+          {
+            "point": [
+              1490,
+              200
+            ],
+            "rgba": [
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "point": [
+              1500,
+              900
+            ],
+            "rgba": [
+              1,
+              1,
+              0,
+              0
+            ]
+          },
+          {
+            "point": [
+              50,
+              900
+            ],
+            "rgba": [
+              1,
+              8,
+              8,
+              0
+            ]
+          }
+        ]
+      },
+      "visualReview": "Much more top-facing deck, near-circular top dome and widely separated nacelles. Clear progression beyond shallow; the magnitude is a visual observation, not a measured 25-degree camera angle.",
+      "observedSphericalNacelles": 2,
+      "embeddedBlueJetsPreserved": true,
+      "newRuntimeEngineEffectApproved": false
+    },
+    {
+      "id": "bank-ventral-shallow",
+      "candidatePath": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/fugitive-spaceship/candidates/bank-ventral-shallow.png",
+      "generatedPath": "/workspace/scratch/0c1fa1359efb/generated_images/exec-4e38799c-eeb0-46c9-a7af-4ad512d05daf.png",
+      "bytes": 1649626,
+      "sha256": "e72c4504cd699e069df26ec28a364578b0ce3932d5ca156f59f72838096ffab5",
+      "canvas": [
+        1536,
+        1024
+      ],
+      "sourceMatchesCandidate": true,
+      "referencePaths": [
+        "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/fugitive-spaceship-profile.webp",
+        "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/fugitive-spaceship-top.webp"
+      ],
+      "inspection": "Both exact reference masters and this original PNG opened individually with view_image; no pixel edit.",
+      "visualFrontTip": {
+        "point": [
+          1447,
+          487.0
+        ],
+        "searchBand": {
+          "yMin": 300,
+          "yMaxExclusive": 650,
+          "alphaMinInclusive": 128
+        },
+        "extremeYRangeInclusive": [
+          484,
+          490
+        ],
+        "extremePixelCount": 7
+      },
+      "rearApertureLandmarks": {
+        "boundsInclusiveApproximate": [
+          [
+            177,
+            338,
+            248,
+            435
+          ],
+          [
+            167,
+            568,
+            244,
+            674
+          ]
+        ],
+        "centers": [
+          [
+            212.5,
+            386.5
+          ],
+          [
+            205.5,
+            621.0
+          ]
+        ],
+        "meanCenter": [
+          209.0,
+          503.75
+        ],
+        "centerPixelSamples": [
+          {
+            "point": [
+              212,
+              386
+            ],
+            "rgba": [
+              55,
+              162,
+              248,
+              252
+            ]
+          },
+          {
+            "point": [
+              206,
+              621
+            ],
+            "rgba": [
+              69,
+              156,
+              247,
+              253
+            ]
+          }
+        ]
+      },
+      "calibration": {
+        "nose": [
+          1441.03,
+          491.624
+        ],
+        "tail": [
+          192.505,
+          505.096
+        ],
+        "pivot": [
+          768.887,
+          525.191
+        ],
+        "release": [
+          987.485,
+          729.877
+        ],
+        "exhaust": [
+          192.505,
+          505.096
+        ],
+        "exhaustAngleDeg": 179.3818,
+        "exhaustVisibility": 0,
+        "calibration": "inspected-source-art",
+        "exhaustReview": "unreviewed"
+      },
+      "projectedRegisteredSpanPixels": 1248.5976815648025,
+      "alpha": {
+        "alphaMin": 0,
+        "alphaMax": 254,
+        "borderMax": 0,
+        "thresholds": {
+          "0": {
+            "count": 431066,
+            "boundsInclusive": [
+              79,
+              19,
+              1475,
+              999
+            ]
+          },
+          "1": {
+            "count": 423507,
+            "boundsInclusive": [
+              86,
+              253,
+              1452,
+              731
+            ]
+          },
+          "16": {
+            "count": 417239,
+            "boundsInclusive": [
+              89,
+              255,
+              1448,
+              724
+            ]
+          },
+          "128": {
+            "count": 413299,
+            "boundsInclusive": [
+              100,
+              256,
+              1447,
+              724
+            ]
+          },
+          "250": {
+            "count": 396769,
+            "boundsInclusive": [
+              143,
+              257,
+              1446,
+              722
+            ]
+          }
+        },
+        "outsideSamples": [
+          {
+            "point": [
+              100,
+              100
+            ],
+            "rgba": [
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "point": [
+              800,
+              70
+            ],
+            "rgba": [
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "point": [
+              800,
+              950
+            ],
+            "rgba": [
+              1,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "point": [
+              1490,
+              200
+            ],
+            "rgba": [
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "point": [
+              1500,
+              900
+            ],
+            "rgba": [
+              1,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "point": [
+              50,
+              900
+            ],
+            "rgba": [
+              0,
+              0,
+              0,
+              0
+            ]
+          }
+        ]
+      },
+      "visualReview": "Shallower upper deck, greater visibility of the central lower bowl and curved support tubes.",
+      "observedSphericalNacelles": 2,
+      "embeddedBlueJetsPreserved": true,
+      "newRuntimeEngineEffectApproved": false
+    },
+    {
+      "id": "bank-ventral",
+      "candidatePath": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/fugitive-spaceship/candidates/bank-ventral.png",
+      "generatedPath": "/workspace/scratch/0c1fa1359efb/generated_images/exec-2ab99c57-f380-4abb-8c85-5eccd649a209.png",
+      "bytes": 1550378,
+      "sha256": "bb9cd29e41c94e971587116d7378e5f4e39accd513445e8ecf270ebf018f9818",
+      "canvas": [
+        1536,
+        1024
+      ],
+      "sourceMatchesCandidate": true,
+      "referencePaths": [
+        "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/fugitive-spaceship-profile.webp",
+        "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/fugitive-spaceship-top.webp",
+        "/workspace/scratch/0c1fa1359efb/generated_images/exec-4e38799c-eeb0-46c9-a7af-4ad512d05daf.png"
+      ],
+      "inspection": "Both exact reference masters and this original PNG opened individually with view_image; no pixel edit.",
+      "visualFrontTip": {
+        "point": [
+          1463,
+          464.0
+        ],
+        "searchBand": {
+          "yMin": 300,
+          "yMaxExclusive": 650,
+          "alphaMinInclusive": 128
+        },
+        "extremeYRangeInclusive": [
+          460,
+          468
+        ],
+        "extremePixelCount": 9
+      },
+      "rearApertureLandmarks": {
+        "boundsInclusiveApproximate": [
+          [
+            154,
+            346,
+            228,
+            447
+          ],
+          [
+            156,
+            574,
+            237,
+            678
+          ]
+        ],
+        "centers": [
+          [
+            191.0,
+            396.5
+          ],
+          [
+            196.5,
+            626.0
+          ]
+        ],
+        "meanCenter": [
+          193.75,
+          511.25
+        ],
+        "centerPixelSamples": [
+          {
+            "point": [
+              191,
+              396
+            ],
+            "rgba": [
+              57,
+              169,
+              249,
+              253
+            ]
+          },
+          {
+            "point": [
+              196,
+              626
+            ],
+            "rgba": [
+              61,
+              151,
+              246,
+              253
+            ]
+          }
+        ]
+      },
+      "calibration": {
+        "nose": [
+          1456.99,
+          468.887
+        ],
+        "tail": [
+          176.866,
+          513.031
+        ],
+        "pivot": [
+          768.475,
+          519.639
+        ],
+        "release": [
+          997.634,
+          724.25
+        ],
+        "exhaust": [
+          176.866,
+          513.031
+        ],
+        "exhaustAngleDeg": 178.025,
+        "exhaustVisibility": 0,
+        "calibration": "inspected-source-art",
+        "exhaustReview": "unreviewed"
+      },
+      "projectedRegisteredSpanPixels": 1280.8849082224367,
+      "alpha": {
+        "alphaMin": 0,
+        "alphaMax": 254,
+        "borderMax": 0,
+        "thresholds": {
+          "0": {
+            "count": 427835,
+            "boundsInclusive": [
+              75,
+              22,
+              1469,
+              934
+            ]
+          },
+          "1": {
+            "count": 418413,
+            "boundsInclusive": [
+              79,
+              266,
+              1466,
+              722
+            ]
+          },
+          "16": {
+            "count": 411819,
+            "boundsInclusive": [
+              83,
+              268,
+              1464,
+              720
+            ]
+          },
+          "128": {
+            "count": 408591,
+            "boundsInclusive": [
+              90,
+              268,
+              1463,
+              719
+            ]
+          },
+          "250": {
+            "count": 395643,
+            "boundsInclusive": [
+              114,
+              272,
+              1462,
+              718
+            ]
+          }
+        },
+        "outsideSamples": [
+          {
+            "point": [
+              100,
+              100
+            ],
+            "rgba": [
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "point": [
+              800,
+              70
+            ],
+            "rgba": [
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "point": [
+              800,
+              950
+            ],
+            "rgba": [
+              1,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "point": [
+              1490,
+              200
+            ],
+            "rgba": [
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "point": [
+              1500,
+              900
+            ],
+            "rgba": [
+              1,
+              1,
+              0,
+              0
+            ]
+          },
+          {
+            "point": [
+              50,
+              900
+            ],
+            "rgba": [
+              1,
+              0,
+              0,
+              0
+            ]
+          }
+        ]
+      },
+      "visualReview": "Upper deck nearly edge-on, larger lower bowl and belly surfaces than shallow. Clear ventral progression without swapping assignments.",
+      "observedSphericalNacelles": 2,
+      "embeddedBlueJetsPreserved": true,
+      "newRuntimeEngineEffectApproved": false
+    },
+    {
+      "id": "rear-quarter-shallow",
+      "candidatePath": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/fugitive-spaceship/candidates/rear-quarter-shallow.png",
+      "generatedPath": "/workspace/scratch/0c1fa1359efb/generated_images/exec-4a5ac108-feb5-4dec-b271-cb59967b0f26.png",
+      "bytes": 1873344,
+      "sha256": "271f70e31718a209a193ef05f79cc4be7d77ecfb6868f2ab4ac30c8458ff9fc6",
+      "canvas": [
+        1536,
+        1024
+      ],
+      "sourceMatchesCandidate": true,
+      "referencePaths": [
+        "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/fugitive-spaceship-profile.webp",
+        "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/fugitive-spaceship-top.webp"
+      ],
+      "inspection": "Both exact reference masters and this original PNG opened individually with view_image; no pixel edit.",
+      "visualFrontTip": {
+        "point": [
+          1473,
+          462.0
+        ],
+        "searchBand": {
+          "yMin": 300,
+          "yMaxExclusive": 650,
+          "alphaMinInclusive": 128
+        },
+        "extremeYRangeInclusive": [
+          458,
+          466
+        ],
+        "extremePixelCount": 9
+      },
+      "rearApertureLandmarks": {
+        "boundsInclusiveApproximate": [
+          [
+            171,
+            318,
+            234,
+            454
+          ],
+          [
+            174,
+            609,
+            251,
+            752
+          ]
+        ],
+        "centers": [
+          [
+            202.5,
+            386.0
+          ],
+          [
+            212.5,
+            680.5
+          ]
+        ],
+        "meanCenter": [
+          207.5,
+          533.25
+        ],
+        "centerPixelSamples": [
+          {
+            "point": [
+              202,
+              386
+            ],
+            "rgba": [
+              87,
+              178,
+              239,
+              253
+            ]
+          },
+          {
+            "point": [
+              212,
+              680
+            ],
+            "rgba": [
+              94,
+              185,
+              250,
+              253
+            ]
+          }
+        ]
+      },
+      "calibration": {
+        "nose": [
+          1467.096,
+          466.991
+        ],
+        "tail": [
+          190.688,
+          535.348
+        ],
+        "pivot": [
+          781.092,
+          530.705
+        ],
+        "release": [
+          1013.623,
+          730.503
+        ],
+        "exhaust": [
+          190.688,
+          535.348
+        ],
+        "exhaustAngleDeg": 176.9345,
+        "exhaustVisibility": 0,
+        "calibration": "inspected-source-art",
+        "exhaustReview": "unreviewed"
+      },
+      "projectedRegisteredSpanPixels": 1278.2370914321803,
+      "alpha": {
+        "alphaMin": 0,
+        "alphaMax": 254,
+        "borderMax": 1,
+        "thresholds": {
+          "0": {
+            "count": 524259,
+            "boundsInclusive": [
+              0,
+              21,
+              1517,
+              989
+            ]
+          },
+          "1": {
+            "count": 514628,
+            "boundsInclusive": [
+              78,
+              226,
+              1476,
+              791
+            ]
+          },
+          "16": {
+            "count": 508289,
+            "boundsInclusive": [
+              83,
+              228,
+              1474,
+              787
+            ]
+          },
+          "128": {
+            "count": 504226,
+            "boundsInclusive": [
+              89,
+              229,
+              1473,
+              787
+            ]
+          },
+          "250": {
+            "count": 488607,
+            "boundsInclusive": [
+              127,
+              230,
+              1471,
+              785
+            ]
+          }
+        },
+        "outsideSamples": [
+          {
+            "point": [
+              100,
+              100
+            ],
+            "rgba": [
+              1,
+              1,
+              0,
+              0
+            ]
+          },
+          {
+            "point": [
+              800,
+              70
+            ],
+            "rgba": [
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "point": [
+              800,
+              950
+            ],
+            "rgba": [
+              0,
+              1,
+              1,
+              0
+            ]
+          },
+          {
+            "point": [
+              1490,
+              200
+            ],
+            "rgba": [
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "point": [
+              1500,
+              900
+            ],
+            "rgba": [
+              0,
+              1,
+              1,
+              0
+            ]
+          },
+          {
+            "point": [
+              50,
+              900
+            ],
+            "rgba": [
+              0,
+              1,
+              0,
+              0
+            ]
+          }
+        ]
+      },
+      "visualReview": "Both aft blue mouths and their circular rims are more exposed; the forward body remains broad.",
+      "observedSphericalNacelles": 2,
+      "embeddedBlueJetsPreserved": true,
+      "newRuntimeEngineEffectApproved": false
+    },
+    {
+      "id": "rear-quarter",
+      "candidatePath": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/fugitive-spaceship/candidates/rear-quarter.png",
+      "generatedPath": "/workspace/scratch/0c1fa1359efb/generated_images/exec-2d89004a-2006-4321-981b-2000c0502b8c.png",
+      "bytes": 1929850,
+      "sha256": "0351029a77616d14c0ada9b5c70e4058d470a4307a4f6ab91974c91eefe15cdd",
+      "canvas": [
+        1536,
+        1024
+      ],
+      "sourceMatchesCandidate": true,
+      "referencePaths": [
+        "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/fugitive-spaceship-profile.webp",
+        "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/fugitive-spaceship-top.webp",
+        "/workspace/scratch/0c1fa1359efb/generated_images/exec-4a5ac108-feb5-4dec-b271-cb59967b0f26.png"
+      ],
+      "inspection": "Both exact reference masters and this original PNG opened individually with view_image; no pixel edit.",
+      "visualFrontTip": {
+        "point": [
+          1443,
+          393.5
+        ],
+        "searchBand": {
+          "yMin": 300,
+          "yMaxExclusive": 650,
+          "alphaMinInclusive": 128
+        },
+        "extremeYRangeInclusive": [
+          390,
+          397
+        ],
+        "extremePixelCount": 8
+      },
+      "rearApertureLandmarks": {
+        "boundsInclusiveApproximate": [
+          [
+            132,
+            336,
+            264,
+            503
+          ],
+          [
+            287,
+            633,
+            428,
+            813
+          ]
+        ],
+        "centers": [
+          [
+            198.0,
+            419.5
+          ],
+          [
+            357.5,
+            723.0
+          ]
+        ],
+        "meanCenter": [
+          277.75,
+          571.25
+        ],
+        "centerPixelSamples": [
+          {
+            "point": [
+              198,
+              420
+            ],
+            "rgba": [
+              142,
+              239,
+              254,
+              253
+            ]
+          },
+          {
+            "point": [
+              358,
+              723
+            ],
+            "rgba": [
+              137,
+              229,
+              253,
+              253
+            ]
+          }
+        ]
+      },
+      "calibration": {
+        "nose": [
+          1437.975,
+          398.642
+        ],
+        "tail": [
+          262.371,
+          574.677
+        ],
+        "pivot": [
+          808.532,
+          518.225
+        ],
+        "release": [
+          1041.447,
+          682.648
+        ],
+        "exhaust": [
+          262.371,
+          574.677
+        ],
+        "exhaustAngleDeg": 171.4838,
+        "exhaustVisibility": 0,
+        "calibration": "inspected-source-art",
+        "exhaustReview": "unreviewed"
+      },
+      "projectedRegisteredSpanPixels": 1188.7106822271767,
+      "alpha": {
+        "alphaMin": 0,
+        "alphaMax": 254,
+        "borderMax": 1,
+        "thresholds": {
+          "0": {
+            "count": 542415,
+            "boundsInclusive": [
+              0,
+              14,
+              1481,
+              1023
+            ]
+          },
+          "1": {
+            "count": 533049,
+            "boundsInclusive": [
+              84,
+              214,
+              1446,
+              857
+            ]
+          },
+          "16": {
+            "count": 525630,
+            "boundsInclusive": [
+              94,
+              217,
+              1444,
+              852
+            ]
+          },
+          "128": {
+            "count": 522067,
+            "boundsInclusive": [
+              101,
+              218,
+              1443,
+              852
+            ]
+          },
+          "250": {
+            "count": 508819,
+            "boundsInclusive": [
+              126,
+              220,
+              1442,
+              850
+            ]
+          }
+        },
+        "outsideSamples": [
+          {
+            "point": [
+              100,
+              100
+            ],
+            "rgba": [
+              1,
+              1,
+              0,
+              0
+            ]
+          },
+          {
+            "point": [
+              800,
+              70
+            ],
+            "rgba": [
+              7,
+              6,
+              6,
+              0
+            ]
+          },
+          {
+            "point": [
+              800,
+              950
+            ],
+            "rgba": [
+              1,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "point": [
+              1490,
+              200
+            ],
+            "rgba": [
+              1,
+              1,
+              1,
+              0
+            ]
+          },
+          {
+            "point": [
+              1500,
+              900
+            ],
+            "rgba": [
+              1,
+              1,
+              0,
+              0
+            ]
+          },
+          {
+            "point": [
+              50,
+              900
+            ],
+            "rgba": [
+              0,
+              0,
+              0,
+              0
+            ]
+          }
+        ]
+      },
+      "visualReview": "Aft circular faces and spherical housings enlarge substantially; support tubes and forebody foreshorten. More aft-facing than shallow. The jets retain the reference family but their lengths/shape vary.",
+      "observedSphericalNacelles": 2,
+      "embeddedBlueJetsPreserved": true,
+      "newRuntimeEngineEffectApproved": false
+    }
+  ],
+  "viewOrderReview": {
+    "forward": {
+      "status": "original shallow/deep assignment retained",
+      "reason": "Deep increases frontal lip/bowl exposure and narrows the rear mouth ellipses relative to shallow.",
+      "measured3DAngles": false
+    },
+    "dorsal": {
+      "status": "original assignment retained; no permutation requested",
+      "reason": "Deep clearly exposes more top deck and near-circular dome; shallow remains more oblique.",
+      "measured3DAngles": false
+    },
+    "ventral": {
+      "status": "original assignment retained; no permutation requested",
+      "reason": "Deep brings the upper deck nearer edge-on and reveals more central lower bowl.",
+      "measured3DAngles": false
+    },
+    "rear": {
+      "status": "original assignment retained",
+      "reason": "Deep enlarges the rear circular apertures and shortens the projected support tubes/forebody.",
+      "measured3DAngles": false
+    }
+  },
+  "identityReview": {
+    "sphericalNacelleCountPerView": 2,
+    "noCroppedHullObserved": true,
+    "preserved": [
+      "Two spherical nacelles at left on curved dark tubes.",
+      "Blue aft mouths, small existing blue jets and blue upper inset windows.",
+      "Right-pointing layered metal central deck, dark round dome and red inset lights.",
+      "Weathered silver/graphite panel style."
+    ],
+    "remainingDrift": [
+      "Independent generations alter panel seams, weathering, the exact lower-bowl panel shapes and small light placements.",
+      "Jet outlines/lengths and nacelle spacing change with the generated view; they are embedded pixels, not newly controlled VFX.",
+      "Deep dorsal is strongly top-facing, and forward deep also varies elevation. Relative direction is clear, but the requested degree values are unmeasured.",
+      "Sharper/brighter metal highlights than the original profile may show during a cross-fade."
+    ],
+    "blockingIdentityBreakObserved": false,
+    "canonical1to1Established": false
+  },
+  "alphaReview": {
+    "allNativeCanvases1536x1024": true,
+    "allSourceCopiesByteExact": true,
+    "allAlphaAbove16BoundsInsideCanvas": true,
+    "range": [
+      0,
+      254
+    ],
+    "maximumBorderAlpha": 1,
+    "maximumDeclaredOutsideSampleAlpha": 0,
+    "interpretation": "All48 declared outside samples have alpha0. Grey or cyan RGB in an alpha-ignorant preview is not evidence of an opaque backdrop. Low-alpha residues are recorded and preserved. Blue plume pixels with nonzero alpha remain intentional inherited sprite content.",
+    "pixelProcessingPerformed": false
+  },
+  "limitations": [
+    "Source-art inspection and proposed registration only; no native transition/cinematic frame has qualified this candidate set.",
+    "Inspect scale, pivot, double contours, moving nacelles and embedded jet outlines after integration.",
+    "No source selection, input manifest, original pixels, reference master or repository code was modified.",
+    "No new VFX, profile replacement or release/grounding contract is approved by this report.",
+    "Parent approval remains necessary before activation; canonical and human artistic approval are not asserted."
+  ]
+}

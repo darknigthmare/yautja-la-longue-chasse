@@ -90,7 +90,7 @@ function isOutsideEveryHazard(blueprint, x, margin) {
   );
 }
 
-test("the eight world blueprints are internally valid and offer three routes", async () => {
+test("the eight world blueprints are internally valid and register all four physical routes", async () => {
   const world = await worldPromise;
   const blueprints = Object.values(world.WORLD_BLUEPRINTS_BY_MISSION);
   assert.equal(blueprints.length, 8);
@@ -98,7 +98,10 @@ test("the eight world blueprints are internally valid and offer three routes", a
     assert.deepEqual(world.validateWorldBlueprint(blueprint), []);
     assert.equal(blueprint.width, 8_400);
     assert.ok(blueprint.extraction.x > 7_000);
-    assert.equal(blueprint.routes.length, 3);
+    assert.equal(blueprint.routes.length, 4, `${blueprint.missionId}: three regional routes plus canopy transfer`);
+    const routeIds = new Set(blueprint.routes.map(route => route.id));
+    assert.equal(routeIds.size, 4, `${blueprint.missionId}: every route has a distinct identity`);
+    assert.ok(routeIds.has("canopy-transfer"), `${blueprint.missionId}: the authored fourth route is registered`);
     assert.ok(blueprint.climbables.length >= 6);
     assert.ok(blueprint.hazards.length >= 3);
     assert.ok(blueprint.trapSockets.length >= 4);

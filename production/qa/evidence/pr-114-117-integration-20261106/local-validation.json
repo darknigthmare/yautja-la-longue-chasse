@@ -1,0 +1,138 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-11-06",
+  "scope": "Local combined implementation for PRs 114/117, including interior PR 115 and current main with PRs 116/118. Node behavioral/source/asset tests, production build and source lint; no local native browser qualification.",
+  "localImplementationCommit": "86c8bb54622f5f827634d9ff530261c5804b24f4",
+  "tests": {
+    "passed": 473,
+    "failed": 0,
+    "skipped": 0,
+    "log": "local-tests.log"
+  },
+  "productionBuild": {
+    "command": "NEXT_TELEMETRY_DISABLED=1 npm run build:production",
+    "exitCode": 0,
+    "log": "local-build.log"
+  },
+  "targetedLint": {
+    "maxWarnings": 0,
+    "exitCode": 0
+  },
+  "globalLint": {
+    "errors": 0,
+    "warnings": 38,
+    "strictOptionalRunExitCode": 1,
+    "scope": "Existing repository-wide warnings remain separate from the zero-warning changed-file checks."
+  },
+  "browser": {
+    "status": "pending-remote-ci",
+    "localBlock": "Chromium process_singleton_posix socket() denied by the local runtime. No native success claimed."
+  },
+  "inputs": [
+    {
+      "path": "app/dev/destinations.ts",
+      "bytes": 15480,
+      "sha256": "d47184789fe95e9834152964375d961296280ab52d09401fdab6da786853c2a7"
+    },
+    {
+      "path": "app/game/ControlBindingsPanel.tsx",
+      "bytes": 6261,
+      "sha256": "7809b3eeb32a737cf948c6cc21510cd478c23b364ce8dd5ab00d26d480907808"
+    },
+    {
+      "path": "app/game/GameClient.tsx",
+      "bytes": 344145,
+      "sha256": "992c07dec64f7b4061b7d06ab2b57fe25fa065e6006b1e78eba9927e66658d64"
+    },
+    {
+      "path": "app/game/HuntCanvas.tsx",
+      "bytes": 465503,
+      "sha256": "8cb850ed2854a369f9ff11ff7a3c1ab0e62c1b323b01c9ce12ee2cbda93302a5"
+    },
+    {
+      "path": "app/game/InsertionPlanPanel.module.css",
+      "bytes": 3228,
+      "sha256": "eeb01b22389dda894f45bf0b43a88c08e6cdde45b215bea324761b5cdf72864b"
+    },
+    {
+      "path": "app/game/InsertionPlanPanel.tsx",
+      "bytes": 10328,
+      "sha256": "b1a75803f26e6a997da4bba9e0c8596eb889cf9dc50ab0d2c0c16a79cdbde110"
+    },
+    {
+      "path": "app/game/buildInfo.ts",
+      "bytes": 977,
+      "sha256": "0770176041ca67f32d7988bcd448a4d5322007c686020dfdb460e6076fab333a"
+    },
+    {
+      "path": "app/game/controlBindingLabels.ts",
+      "bytes": 1225,
+      "sha256": "3a4ba284a71fa9f624710cd1d19a2e305953c5325035af05c23b81ad34b0a3a7"
+    },
+    {
+      "path": "app/game/systems/controlBindings.ts",
+      "bytes": 34224,
+      "sha256": "b29d8c5022ad5413180cfc5c1d57cdf9936211571bad759c6e00620fa0517993"
+    },
+    {
+      "path": "app/game/systems/huntInsertion.ts",
+      "bytes": 24750,
+      "sha256": "1244239e249fdb937422ace051d64e5227db14542f35db1743af34a38fab07e0"
+    },
+    {
+      "path": "app/game/systems/planetInsertion.ts",
+      "bytes": 13452,
+      "sha256": "d34d3cac8ddf05980d778f8f4028976b22bd846c807dfcf39457b9ec8af76b94"
+    },
+    {
+      "path": "scripts/qa-wolf-arrival-browser.mjs",
+      "bytes": 69692,
+      "sha256": "c0cefc551c7a070cf0747abaf7952b8fa9779c553207601eaf86ddc9352f687d"
+    },
+    {
+      "path": "tests/control-bindings.test.mjs",
+      "bytes": 17233,
+      "sha256": "476173879ad17f628b5dd4f6b16c7e49c8ead03039e8e468d7cc3308e7fa9bc3"
+    },
+    {
+      "path": "tests/expedition-roster-assignment.test.mjs",
+      "bytes": 8111,
+      "sha256": "b7eb38a82b587c7f46c197a869b3033c542bf16e2d1d44312d5fc0c928b471b9"
+    },
+    {
+      "path": "tests/game-client-ship-flow.test.mjs",
+      "bytes": 82140,
+      "sha256": "71461e2ee6a22d7249302451dd243f06e4578d3b5d640dfe581e38730e10149b"
+    },
+    {
+      "path": "tests/gauntlet-mission-v141.test.mjs",
+      "bytes": 5714,
+      "sha256": "105eec3948441c8e999c4aa1ce6487b87832c2118c62552af6efb6ea48c55b9e"
+    },
+    {
+      "path": "tests/hunt-insertion.test.mjs",
+      "bytes": 36325,
+      "sha256": "3939b38a63e2be7d0720867f53dfdb4ae69dc8b2018e9fbda064f1c29d1eed32"
+    },
+    {
+      "path": "tests/hunt-pod-recovery.test.mjs",
+      "bytes": 31518,
+      "sha256": "156586d57b7c3ab412d19d2f2cd5b6a724a1cdbdced736fc914eab2cbd60b504"
+    },
+    {
+      "path": "tests/planet-insertion.test.mjs",
+      "bytes": 14296,
+      "sha256": "5336a5675ebcde0195ac6f3c5bdfdb040190d1198b830e766edc5b8c83431902"
+    },
+    {
+      "path": "tests/save-v2.test.mjs",
+      "bytes": 27102,
+      "sha256": "fb6d37ff6b9bf51bf55e8c8c0ed82e704c91990b9af4eab8449424afb8374400"
+    },
+    {
+      "path": "tests/ship-insertion-energy.test.mjs",
+      "bytes": 12204,
+      "sha256": "b96961ad44aea09508a55a16c1ed1afcc36f999d3eb668a0b7e25f27ce865c80"
+    }
+  ]
+}

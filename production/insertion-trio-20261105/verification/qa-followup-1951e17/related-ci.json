@@ -1,0 +1,170 @@
+{
+  "observedAt": "2026-11-05T10:50:41.282Z",
+  "headSha": "1951e17f01f1951d7c961b4ed3938741966e3007",
+  "headTree": "4f6b3e4a785951286efbf0deafa29b843df40150",
+  "runtimeCommit": "bdc195e77fa22a40b4918bd71dfb18f6fcdd2c6c",
+  "runtimeTree": "4f6b3e4a785951286efbf0deafa29b843df40150",
+  "runtimeParents": [
+    "23b48e127e8d058da110f391c7ac3a4b9ef17aad",
+    "1951e17f01f1951d7c961b4ed3938741966e3007"
+  ],
+  "workflows": [
+    {
+      "id": 42009684839,
+      "name": "V112 hunt closure qualifications",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 42009684862,
+      "name": "V136 Full Gauntlet Campaign and Build Integration",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 42009685016,
+      "name": "V94 transactional exercises and trophy confirmation",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 42009684925,
+      "name": "V94 campaign routes and bounded cloud transport",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 42009685023,
+      "name": "V94 ship training persistence",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 42009684963,
+      "name": "V131 Gauntlet hologram dual-view checks",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 42009684909,
+      "name": "V94 regression tests",
+      "status": "completed",
+      "conclusion": "success"
+    }
+  ],
+  "jobs": [
+    {
+      "runId": 42009684963,
+      "id": 127185223799,
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "runId": 42009684862,
+      "id": 127185224258,
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "runId": 42009684839,
+      "id": 127185223818,
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "runId": 42009684839,
+      "id": 127185224148,
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "runId": 42009684925,
+      "id": 127185223517,
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "runId": 42009685023,
+      "id": 127185224039,
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "runId": 42009685016,
+      "id": 127185224171,
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "runId": 42009684909,
+      "id": 127185224323,
+      "name": "Application audit (history)",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "runId": 42009684909,
+      "id": 127185224752,
+      "name": "Application audit (models)",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "runId": 42009684909,
+      "id": 127185224862,
+      "name": "Targeted V94 regressions (not full game QA)",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "runId": 42009684909,
+      "id": 127185224949,
+      "name": "Application audit (application)",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "runId": 42009684909,
+      "id": 127197244909,
+      "name": "Application compile, types, runtime lint and browser integration",
+      "status": "completed",
+      "conclusion": "success"
+    }
+  ],
+  "watchedV94Steps": [
+    {
+      "jobId": 127185224752,
+      "name": "Verify the consolidated runtime inventory and every current V113 model",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 67
+    },
+    {
+      "jobId": 127185224949,
+      "name": "Exercise actual clan-war panel and native locked storage",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 73
+    }
+  ],
+  "artifactDownloads": [],
+  "scope": "Read-only final status of the seven related workflows. No duplicate V94 report or large artifact was downloaded for this follow-up.",
+  "v112ArtifactMetadata": [
+    {
+      "id": 13406975205,
+      "kind": "browser",
+      "sha256": "bb68d54fe5a1e77f3c22db11d47be2e72d6756a20576748ba92277c53fee4b85",
+      "digestSource": "GitHub metadata",
+      "zipDownloaded": false,
+      "locallyVerified": false
+    },
+    {
+      "id": 13405829098,
+      "kind": "native",
+      "sha256": "ce166594578b0f095838374322ba67251dfaf3badd83c4a62e8ee7902d9eb42a",
+      "digestSource": "GitHub metadata",
+      "zipDownloaded": false,
+      "locallyVerified": false
+    }
+  ]
+}

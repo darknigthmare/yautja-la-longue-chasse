@@ -1,0 +1,68 @@
+{
+  "sourceCommit": "66f57a147d3e17aca592d62f3aadbb35ec702db8",
+  "failedCheck": "desktop: egress actual layers, anchors and motion",
+  "failureStatus": "complete",
+  "failureElapsedMs": 62000,
+  "captures": [
+    {
+      "file": "desktop-egress-early.png",
+      "sha256": "0a391529ed605152e5b2285940a3a94432ccd50bcb2f8613404bef5211832593",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "shot": "egress",
+      "elapsedBefore": 57550,
+      "elapsedAfter": 57767,
+      "spanMs": 217
+    },
+    {
+      "file": "desktop-egress-vent-dissipation.png",
+      "sha256": "e848cb9ec45abea8bec8e1fdbe00ac9458e39725d8c84aee2222371e0d97ebc5",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "shot": "egress",
+      "elapsedBefore": 58333,
+      "elapsedAfter": 58633,
+      "spanMs": 300
+    },
+    {
+      "file": "desktop-egress-threshold.png",
+      "sha256": "e6defa00cc1f9e9fc3181342e5f08abdc611c5477592a8d30225b290872eb88d",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "shot": "egress",
+      "elapsedBefore": 58783,
+      "elapsedAfter": 60317,
+      "spanMs": 1534
+    },
+    {
+      "file": "desktop-egress-step-down.png",
+      "sha256": "d1e2f662e2108bb7536cbd6be00460ef01d5153abd1625c8e1ad2f343e196220",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "shot": "egress",
+      "elapsedBefore": 60967,
+      "elapsedAfter": 61767,
+      "spanMs": 800
+    },
+    {
+      "file": "desktop-egress-middle.png",
+      "sha256": "a97bf17d40f1abdb994687c0de71902bf0c5629a5c37d97da83b478090a027b1",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "shot": "egress",
+      "elapsedBefore": 61950,
+      "elapsedAfter": 62000,
+      "spanMs": 50
+    }
+  ]
+}

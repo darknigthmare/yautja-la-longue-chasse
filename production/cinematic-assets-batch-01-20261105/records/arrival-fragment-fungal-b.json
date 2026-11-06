@@ -1,0 +1,42 @@
+{
+  "id": "arrival-fragment-fungal-b",
+  "family": "fragment",
+  "biome": "fungal",
+  "variant": "b",
+  "file": "public/game/cinematics/batch-01-20261105/arrival-fragment-fungal-b.png",
+  "generatedSource": "/workspace/scratch/62884fa4f584/generated_images/exec-5f5d1f26-7bfe-4f55-9f5f-059dca9ba766.png",
+  "prompt": "Use case: stylized-concept. Production 2D particle sprite for Yautja The Long Hunt cinematic landing, asset arrival-fragment-fungal-b.\nCreate exactly ONE isolated fragment: one irregular light fragment of dead fungal cap material, thin curled brownish-grey organic plate with delicate broken radial gills exposed on the underside, detached fragment only, not a whole mushroom, no spores cloud, no glow.\nUse the provided game screenshot only as a reference for restrained realistic painted 2.5D material detail. Do not copy its scenery, capsule, characters, interface or dust effect.\nCamera: three-quarter view with visible volume, neutral soft light from upper left, no cast shadow, no ground or support surface. Full fragment centred around x50%,y50%, occupying roughly45–60% of the canvas width and height. Keep minimum18% fully transparent empty padding on every edge, entire object visible. A compact expressive asymmetrical silhouette should remain recognizable at16–32px. High quality hand-painted natural material, controlled detail without heavy outline, no plastic toy gloss except real water or wet surfaces.\nOutput: exactly one square RGBA PNG, ideally1024x1024, TRUE transparent background, natural anti-aliased and where appropriate semi-transparent edges. No contact sheet, grid, multiple views, animation strip, collection, text, labels, watermark, checkerboard, shadow, floor, black or white backdrop. No additional flecks detached from the main fragment. Preserve the requested distinct natural material.",
+  "referenceImages": [
+    "/workspace/scratch/62884fa4f584/qa-recovery/spatial-a7f830c/desktop-landing-impact.png"
+  ],
+  "generationMode": "builtin-imagegen-reference",
+  "intendedAnchor": {
+    "name": "debrisSocket",
+    "normalized": [
+      0.5,
+      0.5
+    ],
+    "basis": "full-canvas centre; final visible-mass pivot reviewed during integration"
+  },
+  "generated": true,
+  "integrated": false,
+  "testedInEngine": false,
+  "artisticHumanApproval": false,
+  "rasterQA": {
+    "width": 1254,
+    "height": 1254,
+    "mode": "RGBA",
+    "sha256": "d19903c98b2df38e4f507b57bd3c14be9013b499b18d0070beed4a5a92819dcd",
+    "bytes": 634377,
+    "transparentRatio": 0.8469141172490455,
+    "visiblePixels": 226145,
+    "boundsAlphaGt16": [
+      179,
+      294,
+      1074,
+      966
+    ],
+    "borderPass": true,
+    "pass": true
+  }
+}

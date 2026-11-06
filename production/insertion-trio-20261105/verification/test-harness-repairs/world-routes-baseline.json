@@ -1,0 +1,77 @@
+{
+  "base": "44ac0d0bb",
+  "baseTestSame": true,
+  "assertion": "assert.equal(blueprint.routes.length, 3)",
+  "dependencyChecks": [
+    {
+      "path": "app/game/systems/platformCollision.ts",
+      "unchanged": true
+    },
+    {
+      "path": "app/game/systems/canopyTraversalV112.ts",
+      "unchanged": true
+    },
+    {
+      "path": "app/game/systems/huntLevelCoherenceV157.ts",
+      "unchanged": true
+    },
+    {
+      "path": "app/game/systems/huntExpansionLayoutsV157.ts",
+      "unchanged": true
+    },
+    {
+      "path": "app/game/worldScreens.ts",
+      "unchanged": true
+    },
+    {
+      "path": "app/game/systems/worldBlueprints.ts",
+      "unchanged": true
+    },
+    {
+      "path": "tests/fixtures/world-runtime-entry.ts",
+      "unchanged": true
+    }
+  ],
+  "routes": [
+    {
+      "mission": "jungle-vey",
+      "routes": 4,
+      "validation": []
+    },
+    {
+      "mission": "ice-cryostalker",
+      "routes": 4,
+      "validation": []
+    },
+    {
+      "mission": "volcano-bad-blood",
+      "routes": 4,
+      "validation": []
+    },
+    {
+      "mission": "swamp-hydra",
+      "routes": 4,
+      "validation": []
+    },
+    {
+      "mission": "desert-sandmaw",
+      "routes": 4,
+      "validation": []
+    },
+    {
+      "mission": "ocean-leviathan",
+      "routes": 4,
+      "validation": []
+    },
+    {
+      "mission": "fungal-hivemind",
+      "routes": 4,
+      "validation": []
+    },
+    {
+      "mission": "ruins-ancient-guardian",
+      "routes": 4,
+      "validation": []
+    }
+  ]
+}

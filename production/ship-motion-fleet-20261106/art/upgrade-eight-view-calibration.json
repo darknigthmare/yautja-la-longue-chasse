@@ -1,0 +1,3115 @@
+{
+  "schemaVersion": 1,
+  "dateUtc": "2026-11-06T05:02:14.143707+00:00",
+  "shipId": "upgrade-spaceship",
+  "status": "eight final selections independently inspected; parent approval and native transition qualification pending",
+  "runtimeActivationApproved": false,
+  "canonicalArtApproval": false,
+  "humanArtApproval": false,
+  "methods": [
+    "pod",
+    "ship"
+  ],
+  "profilePath": "/game/ships/v14/upgrade-spaceship.webp",
+  "sourceReview": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/upgrade-spaceship/independent-eight-view-review.md",
+  "sourceManifest": {
+    "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/upgrade-spaceship/generation-manifest.json",
+    "bytes": 177074,
+    "sha256": "d6ee4845b2a97b8bc4ae3faab91b055b41e04d3bcd0495648bae69602efd6109"
+  },
+  "priorCandidateReview": {
+    "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/upgrade-spaceship/candidate-review.json",
+    "bytes": 24155,
+    "sha256": "0e07c310f988b3b1922ea24b402d4ac733774b9655aadc0c4f05c903e54f17b3"
+  },
+  "sourceSelectionUnchanged": true,
+  "historicalRejectedAttemptsPreserved": true,
+  "sourceAttemptCount": 16,
+  "selectedAttemptCount": 8,
+  "nonSelectedAttemptCount": 8,
+  "references": [
+    {
+      "role": "profile",
+      "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/upgrade-spaceship-profile.webp",
+      "bytes": 94314,
+      "sha256": "6e8c05489366124e93b0fe6ab18450d44de9d2ac1e9943640ebe3dfbc37702f3",
+      "canvas": [
+        1672,
+        941
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "role": "top",
+      "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/upgrade-spaceship-top.webp",
+      "bytes": 152632,
+      "sha256": "d791e10f600e50ee90a7786ea9c42f5a78031ce5801c2f60aa2f7e97b4ff6dc4",
+      "canvas": [
+        1672,
+        941
+      ],
+      "mode": "RGBA"
+    }
+  ],
+  "canvas": {
+    "width": 1536,
+    "height": 1024
+  },
+  "profileRegistration": {
+    "width": 1672,
+    "height": 941,
+    "nose": [
+      1590.0,
+      540.0
+    ],
+    "tail": [
+      220.0,
+      470.0
+    ],
+    "pivot": [
+      836.0,
+      470.5
+    ],
+    "release": [
+      1000.0,
+      580.0
+    ],
+    "sourceArtRole": "authored-view-with-perspective",
+    "basis": "Existing V14 carrier() coordinates from planetArrivalArt.ts; unchanged. Pivot is the source full canvas center.",
+    "visualFrontTip": [
+      1612.0,
+      547.5
+    ],
+    "rearOrangeLandmarks": [
+      {
+        "side": "upper",
+        "components": [
+          {
+            "pixels": 4170,
+            "boundsHalfOpen": [
+              214,
+              290,
+              352,
+              356
+            ],
+            "center": [
+              282.5,
+              322.5
+            ]
+          },
+          {
+            "pixels": 301,
+            "boundsHalfOpen": [
+              224,
+              329,
+              299,
+              361
+            ],
+            "center": [
+              261.0,
+              344.5
+            ]
+          }
+        ],
+        "boundsHalfOpen": [
+          214,
+          290,
+          352,
+          361
+        ],
+        "center": [
+          282.5,
+          325.0
+        ]
+      },
+      {
+        "side": "lower",
+        "components": [
+          {
+            "pixels": 111,
+            "boundsHalfOpen": [
+              308,
+              575,
+              322,
+              593
+            ],
+            "center": [
+              314.5,
+              583.5
+            ]
+          },
+          {
+            "pixels": 127,
+            "boundsHalfOpen": [
+              359,
+              579,
+              386,
+              593
+            ],
+            "center": [
+              372.0,
+              585.5
+            ]
+          },
+          {
+            "pixels": 103,
+            "boundsHalfOpen": [
+              294,
+              587,
+              310,
+              601
+            ],
+            "center": [
+              301.5,
+              593.5
+            ]
+          },
+          {
+            "pixels": 1922,
+            "boundsHalfOpen": [
+              308,
+              595,
+              383,
+              646
+            ],
+            "center": [
+              345.0,
+              620.0
+            ]
+          },
+          {
+            "pixels": 125,
+            "boundsHalfOpen": [
+              382,
+              600,
+              402,
+              619
+            ],
+            "center": [
+              391.5,
+              609.0
+            ]
+          },
+          {
+            "pixels": 160,
+            "boundsHalfOpen": [
+              286,
+              643,
+              313,
+              655
+            ],
+            "center": [
+              299.0,
+              648.5
+            ]
+          },
+          {
+            "pixels": 1140,
+            "boundsHalfOpen": [
+              314,
+              644,
+              402,
+              671
+            ],
+            "center": [
+              357.5,
+              657.0
+            ]
+          }
+        ],
+        "boundsHalfOpen": [
+          286,
+          575,
+          402,
+          671
+        ],
+        "center": [
+          343.5,
+          622.5
+        ]
+      }
+    ],
+    "visualRearPoint": [
+      313.0,
+      473.75
+    ],
+    "registeredPointsInVisualAxisBasis": {
+      "nose": [
+        0.9827915668790477,
+        -0.004796672869383962
+      ],
+      "tail": [
+        -0.07152687674533341,
+        0.0011740624788054955
+      ],
+      "pivot": [
+        0.40118220707574964,
+        -0.025278820455609342
+      ],
+      "release": [
+        0.5317979869701955,
+        0.05160115354961361
+      ]
+    }
+  },
+  "measurementMethod": {
+    "noseVisualPoint": "Rightmost alpha>=128 metal point of the nose within y350..649, with mean y if the extremal x spans several rows.",
+    "rearVisualPoint": "Equal mean of the bounding centers of the visible warm-orange regions in the upper and lower main nacelle assemblies. This is a 2D group registration landmark, not the center of a physically inferred hidden nozzle.",
+    "orangePredicate": "alpha>=128 and red>150 and green>65 and red-blue>50,4-connected components with>=100pixels in x<600,y150..899. Upper/lower groups split by component center y<500. The shallow-front far-nacelle group additionally excludes the unrelated deck strip at x>=400, explicitly recorded in its components.",
+    "orangeGrouping": "Each group unions qualifying orange barrel/cavity surfaces of one main housing. A housing can expose more than one lit surface; no extra main engine count is inferred. Bounds are half-open; centers use(min+maxExclusive−1)/2.",
+    "registeredPoints": "Transport unchanged historical nose/tail/pivot/release together by the similarity between the profile visual aft-group-to-nose axis and each selected candidate axis. Preserve the profile offsets; no anisotropic deformation or hidden 3D landmark is introduced.",
+    "formula": "a=Nvisual−Tvisual;u=dot(q−Tvisual,a)/|a|²;v=cross(a,q−Tvisual)/|a|²;qNew=Tnew+u*(Nnew−Tnew)+v*perp(Nnew−Tnew),perp([x,y])=[−y,x].",
+    "manualSemanticUncertaintyPx": {
+      "noseVisualTip": 3,
+      "orangeVisibleGroupCenters": 16,
+      "partlyOccludedForwardGroups": 20,
+      "registeredPointsApproximate": 20
+    },
+    "precision": "Numeric fractions make the chosen source-art measurements reproducible, not a subpixel or rigid3D reconstruction.",
+    "pivot": "Registration pivot derived from the profile full-canvas center; not a physical center of mass.",
+    "release": "Derived from unchanged release(1000,580); not a new bay or launch point. Active release/contact retains the established profile.",
+    "aspect": "Native candidate1536×1024 versus profile1672×941. The runtime matrix must compensate canvas aspect before rotation/uniform scale; no raster stretching, padding or resizing was performed.",
+    "engines": "All separate exhaustVisibility values remain0 and exhaustReview unreviewed. No blue/orange main or secondary emission socket is approved by this measurement."
+  },
+  "calibrations": {
+    "forward-quarter-shallow": {
+      "nose": [
+        1478.786,
+        503.684
+      ],
+      "tail": [
+        123.844,
+        532.707
+      ],
+      "pivot": [
+        730.858,
+        489.136
+      ],
+      "release": [
+        900.288,
+        585.301
+      ],
+      "exhaust": [
+        123.844,
+        532.707
+      ],
+      "exhaustAngleDeg": 178.7729,
+      "exhaustVisibility": 0,
+      "calibration": "inspected-source-art",
+      "exhaustReview": "unreviewed"
+    },
+    "forward-quarter": {
+      "nose": [
+        1442.961,
+        531.524
+      ],
+      "tail": [
+        152.176,
+        532.508
+      ],
+      "pivot": [
+        731.049,
+        502.959
+      ],
+      "release": [
+        890.494,
+        597.864
+      ],
+      "exhaust": [
+        152.176,
+        532.508
+      ],
+      "exhaustAngleDeg": 179.9563,
+      "exhaustVisibility": 0,
+      "calibration": "inspected-source-art",
+      "exhaustReview": "unreviewed"
+    },
+    "bank-dorsal-shallow": {
+      "nose": [
+        1475.871,
+        493.559
+      ],
+      "tail": [
+        123.781,
+        514.132
+      ],
+      "pivot": [
+        729.707,
+        474.415
+      ],
+      "release": [
+        898.163,
+        571.414
+      ],
+      "exhaust": [
+        123.781,
+        514.132
+      ],
+      "exhaustAngleDeg": 179.1283,
+      "exhaustVisibility": 0,
+      "calibration": "inspected-source-art",
+      "exhaustReview": "unreviewed"
+    },
+    "bank-dorsal": {
+      "nose": [
+        1466.141,
+        516.49
+      ],
+      "tail": [
+        128.238,
+        528.812
+      ],
+      "pivot": [
+        727.986,
+        493.116
+      ],
+      "release": [
+        894.084,
+        590.089
+      ],
+      "exhaust": [
+        128.238,
+        528.812
+      ],
+      "exhaustAngleDeg": 179.4723,
+      "exhaustVisibility": 0,
+      "calibration": "inspected-source-art",
+      "exhaustReview": "unreviewed"
+    },
+    "bank-ventral-shallow": {
+      "nose": [
+        1499.957,
+        488.813
+      ],
+      "tail": [
+        91.991,
+        510.23
+      ],
+      "pivot": [
+        722.957,
+        468.875
+      ],
+      "release": [
+        898.374,
+        569.883
+      ],
+      "exhaust": [
+        91.991,
+        510.23
+      ],
+      "exhaustAngleDeg": 179.1285,
+      "exhaustVisibility": 0,
+      "calibration": "inspected-source-art",
+      "exhaustReview": "unreviewed"
+    },
+    "bank-ventral": {
+      "nose": [
+        1487.686,
+        540.279
+      ],
+      "tail": [
+        104.361,
+        491.178
+      ],
+      "pivot": [
+        725.866,
+        482.004
+      ],
+      "release": [
+        893.05,
+        589.905
+      ],
+      "exhaust": [
+        104.361,
+        491.178
+      ],
+      "exhaustAngleDeg": -177.9671,
+      "exhaustVisibility": 0,
+      "calibration": "inspected-source-art",
+      "exhaustReview": "unreviewed"
+    },
+    "rear-quarter-shallow": {
+      "nose": [
+        1495.407,
+        516.397
+      ],
+      "tail": [
+        114.312,
+        535.289
+      ],
+      "pivot": [
+        733.283,
+        495.672
+      ],
+      "release": [
+        905.197,
+        595.014
+      ],
+      "exhaust": [
+        114.312,
+        535.289
+      ],
+      "exhaustAngleDeg": 179.2163,
+      "exhaustVisibility": 0,
+      "calibration": "inspected-source-art",
+      "exhaustReview": "unreviewed"
+    },
+    "rear-quarter": {
+      "nose": [
+        1475.823,
+        498.103
+      ],
+      "tail": [
+        186.555,
+        534.135
+      ],
+      "pivot": [
+        763.957,
+        488.902
+      ],
+      "release": [
+        925.795,
+        579.367
+      ],
+      "exhaust": [
+        186.555,
+        534.135
+      ],
+      "exhaustAngleDeg": 178.3991,
+      "exhaustVisibility": 0,
+      "calibration": "inspected-source-art",
+      "exhaustReview": "unreviewed"
+    }
+  },
+  "views": [
+    {
+      "id": "forward-quarter-shallow",
+      "candidatePath": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/upgrade-spaceship/candidates/upgrade-spaceship-forward-quarter-shallow.png",
+      "generatedPath": "/workspace/scratch/0c1fa1359efb/generated_images/exec-e0884a2c-2527-492f-bd50-8f5290f8af58.png",
+      "selectedAttempt": 4,
+      "bytes": 1125888,
+      "sha256": "d264943c2b0274281b38ee0056896a0f4eb7cfa9ef685054c0fa96d8f9f1dec0",
+      "canvas": [
+        1536,
+        1024
+      ],
+      "sourceMatchesCandidate": true,
+      "inspection": "Two exact V14 masters and this final selected PNG opened individually with view_image; no pixel modification.",
+      "visualFrontTip": {
+        "point": [
+          1501,
+          509.5
+        ],
+        "searchBand": {
+          "yMin": 350,
+          "yMaxExclusive": 650,
+          "alphaMinInclusive": 128
+        },
+        "extremeYRangeInclusive": [
+          509,
+          510
+        ],
+        "extremePixelCount": 2
+      },
+      "rearOrangeLandmarks": [
+        {
+          "side": "upper",
+          "components": [
+            {
+              "pixels": 148,
+              "boundsHalfOpen": [
+                150,
+                450,
+                186,
+                456
+              ],
+              "center": [
+                167.5,
+                452.5
+              ]
+            },
+            {
+              "pixels": 263,
+              "boundsHalfOpen": [
+                143,
+                457,
+                185,
+                470
+              ],
+              "center": [
+                163.5,
+                463.0
+              ]
+            }
+          ],
+          "boundsHalfOpen": [
+            143,
+            450,
+            186,
+            470
+          ],
+          "center": [
+            164.0,
+            459.5
+          ],
+          "excludedComponents": [
+            {
+              "pixels": 139,
+              "boundsHalfOpen": [
+                463,
+                446,
+                513,
+                452
+              ],
+              "center": [
+                487.5,
+                448.5
+              ]
+            }
+          ],
+          "semanticSelection": "Only the visible far orange nacelle at x<400; unrelated red deck strip around(487.5,448.5) excluded."
+        },
+        {
+          "side": "lower",
+          "components": [
+            {
+              "pixels": 926,
+              "boundsHalfOpen": [
+                264,
+                579,
+                340,
+                608
+              ],
+              "center": [
+                301.5,
+                593.0
+              ]
+            },
+            {
+              "pixels": 101,
+              "boundsHalfOpen": [
+                196,
+                585,
+                220,
+                595
+              ],
+              "center": [
+                207.5,
+                589.5
+              ]
+            },
+            {
+              "pixels": 516,
+              "boundsHalfOpen": [
+                246,
+                607,
+                329,
+                620
+              ],
+              "center": [
+                287.0,
+                613.0
+              ]
+            },
+            {
+              "pixels": 109,
+              "boundsHalfOpen": [
+                242,
+                612,
+                311,
+                622
+              ],
+              "center": [
+                276.0,
+                616.5
+              ]
+            }
+          ],
+          "boundsHalfOpen": [
+            196,
+            579,
+            340,
+            622
+          ],
+          "center": [
+            267.5,
+            600.0
+          ]
+        }
+      ],
+      "visualRearPoint": [
+        215.75,
+        529.75
+      ],
+      "calibration": {
+        "nose": [
+          1478.786,
+          503.684
+        ],
+        "tail": [
+          123.844,
+          532.707
+        ],
+        "pivot": [
+          730.858,
+          489.136
+        ],
+        "release": [
+          900.288,
+          585.301
+        ],
+        "exhaust": [
+          123.844,
+          532.707
+        ],
+        "exhaustAngleDeg": 178.7729,
+        "exhaustVisibility": 0,
+        "calibration": "inspected-source-art",
+        "exhaustReview": "unreviewed"
+      },
+      "projectedRegisteredSpanPixels": 1355.2528022081342,
+      "alpha": {
+        "min": 0,
+        "max": 254,
+        "borderMax": 0,
+        "thresholds": {
+          "0": {
+            "count": 210675,
+            "boundsInclusive": [
+              33,
+              163,
+              1521,
+              989
+            ]
+          },
+          "1": {
+            "count": 201282,
+            "boundsInclusive": [
+              79,
+              395,
+              1503,
+              637
+            ]
+          },
+          "16": {
+            "count": 195455,
+            "boundsInclusive": [
+              81,
+              397,
+              1502,
+              634
+            ]
+          },
+          "128": {
+            "count": 192885,
+            "boundsInclusive": [
+              81,
+              398,
+              1501,
+              633
+            ]
+          },
+          "250": {
+            "count": 182355,
+            "boundsInclusive": [
+              84,
+              400,
+              1482,
+              632
+            ]
+          }
+        },
+        "outsideSamples": [
+          {
+            "point": [
+              100,
+              100
+            ],
+            "rgba": [
+              1,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "point": [
+              768,
+              100
+            ],
+            "rgba": [
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "point": [
+              768,
+              950
+            ],
+            "rgba": [
+              1,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "point": [
+              1450,
+              100
+            ],
+            "rgba": [
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "point": [
+              1500,
+              900
+            ],
+            "rgba": [
+              1,
+              1,
+              1,
+              0
+            ]
+          },
+          {
+            "point": [
+              50,
+              900
+            ],
+            "rgba": [
+              1,
+              0,
+              0,
+              0
+            ]
+          }
+        ],
+        "borderPixelsAbove1": []
+      },
+      "minimumAlphaAbove16MarginPixels": 33,
+      "visualReview": "Final attempt4 is a low flank/front view with a thin silhouette, far orange nacelle partly behind the near hull and the axial rear blue assembly only partly visible. It is no longer a dorsal view. Small blue-lit maneuvering units and nose inset are distinct from the main axial engine.",
+      "mainPropulsionReview": {
+        "outerOrangeAssemblies": 2,
+        "centralBlueMainAssembly": 1,
+        "centralBlueVisibility": "partly occluded",
+        "note": "Counts describe the principal physical assemblies. Multiple exposed orange surfaces within one housing, tiny blue vents and maneuvering units are not counted as extra main engines. A hidden assembly is not inferred as a measured visible socket."
+      },
+      "newRuntimeEngineEffectApproved": false
+    },
+    {
+      "id": "forward-quarter",
+      "candidatePath": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/upgrade-spaceship/candidates/upgrade-spaceship-forward-quarter.png",
+      "generatedPath": "/workspace/scratch/0c1fa1359efb/generated_images/exec-9169d71d-ef20-49cc-bf08-b83f33d90741.png",
+      "selectedAttempt": 4,
+      "bytes": 1171519,
+      "sha256": "898f77fad5f3d6525d12ef17cd7b2b9e76749a1b46d190fd1e3b233c266fcc4e",
+      "canvas": [
+        1536,
+        1024
+      ],
+      "sourceMatchesCandidate": true,
+      "inspection": "Two exact V14 masters and this final selected PNG opened individually with view_image; no pixel modification.",
+      "visualFrontTip": {
+        "point": [
+          1464,
+          537.5
+        ],
+        "searchBand": {
+          "yMin": 350,
+          "yMaxExclusive": 650,
+          "alphaMinInclusive": 128
+        },
+        "extremeYRangeInclusive": [
+          537,
+          538
+        ],
+        "extremePixelCount": 2
+      },
+      "rearOrangeLandmarks": [
+        {
+          "side": "upper",
+          "components": [
+            {
+              "pixels": 479,
+              "boundsHalfOpen": [
+                229,
+                456,
+                289,
+                472
+              ],
+              "center": [
+                258.5,
+                463.5
+              ]
+            }
+          ],
+          "boundsHalfOpen": [
+            229,
+            456,
+            289,
+            472
+          ],
+          "center": [
+            258.5,
+            463.5
+          ]
+        },
+        {
+          "side": "lower",
+          "components": [
+            {
+              "pixels": 1693,
+              "boundsHalfOpen": [
+                179,
+                573,
+                264,
+                627
+              ],
+              "center": [
+                221.0,
+                599.5
+              ]
+            }
+          ],
+          "boundsHalfOpen": [
+            179,
+            573,
+            264,
+            627
+          ],
+          "center": [
+            221.0,
+            599.5
+          ]
+        }
+      ],
+      "visualRearPoint": [
+        239.75,
+        531.5
+      ],
+      "calibration": {
+        "nose": [
+          1442.961,
+          531.524
+        ],
+        "tail": [
+          152.176,
+          532.508
+        ],
+        "pivot": [
+          731.049,
+          502.959
+        ],
+        "release": [
+          890.494,
+          597.864
+        ],
+        "exhaust": [
+          152.176,
+          532.508
+        ],
+        "exhaustAngleDeg": 179.9563,
+        "exhaustVisibility": 0,
+        "calibration": "inspected-source-art",
+        "exhaustReview": "unreviewed"
+      },
+      "projectedRegisteredSpanPixels": 1290.7853750647319,
+      "alpha": {
+        "min": 0,
+        "max": 254,
+        "borderMax": 1,
+        "thresholds": {
+          "0": {
+            "count": 225152,
+            "boundsInclusive": [
+              0,
+              0,
+              1469,
+              967
+            ]
+          },
+          "1": {
+            "count": 217265,
+            "boundsInclusive": [
+              75,
+              382,
+              1467,
+              654
+            ]
+          },
+          "16": {
+            "count": 213102,
+            "boundsInclusive": [
+              77,
+              383,
+              1464,
+              653
+            ]
+          },
+          "128": {
+            "count": 211105,
+            "boundsInclusive": [
+              77,
+              384,
+              1464,
+              652
+            ]
+          },
+          "250": {
+            "count": 203969,
+            "boundsInclusive": [
+              79,
+              385,
+              1462,
+              651
+            ]
+          }
+        },
+        "outsideSamples": [
+          {
+            "point": [
+              100,
+              100
+            ],
+            "rgba": [
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "point": [
+              768,
+              100
+            ],
+            "rgba": [
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "point": [
+              768,
+              950
+            ],
+            "rgba": [
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "point": [
+              1450,
+              100
+            ],
+            "rgba": [
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "point": [
+              1500,
+              900
+            ],
+            "rgba": [
+              1,
+              1,
+              1,
+              0
+            ]
+          },
+          {
+            "point": [
+              50,
+              900
+            ],
+            "rgba": [
+              1,
+              0,
+              0,
+              0
+            ]
+          }
+        ],
+        "borderPixelsAbove1": []
+      },
+      "minimumAlphaAbove16MarginPixels": 71,
+      "visualReview": "Final attempt4 remains low. The far nacelle is more overlapped, the rear axial blue assembly is hidden, and the forward needle/side surfaces and near orange housing differ in perspective from shallow. Some elevation change accompanies the relative front orbit; exact12/25deg is not established.",
+      "mainPropulsionReview": {
+        "outerOrangeAssemblies": 2,
+        "centralBlueMainAssembly": 1,
+        "centralBlueVisibility": "occluded",
+        "note": "Counts describe the principal physical assemblies. Multiple exposed orange surfaces within one housing, tiny blue vents and maneuvering units are not counted as extra main engines. A hidden assembly is not inferred as a measured visible socket."
+      },
+      "newRuntimeEngineEffectApproved": false
+    },
+    {
+      "id": "bank-dorsal-shallow",
+      "candidatePath": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/upgrade-spaceship/candidates/upgrade-spaceship-bank-dorsal-shallow.png",
+      "generatedPath": "/workspace/scratch/0c1fa1359efb/generated_images/exec-0d87d490-b163-45dc-8e09-a188388ebf65.png",
+      "selectedAttempt": 2,
+      "bytes": 1495340,
+      "sha256": "2911059c83742beffe77e02e02c1e4401fd01cf54190669bdd747e2cd15ba379",
+      "canvas": [
+        1536,
+        1024
+      ],
+      "sourceMatchesCandidate": true,
+      "inspection": "Two exact V14 masters and this final selected PNG opened individually with view_image; no pixel modification.",
+      "visualFrontTip": {
+        "point": [
+          1498,
+          499.5
+        ],
+        "searchBand": {
+          "yMin": 350,
+          "yMaxExclusive": 650,
+          "alphaMinInclusive": 128
+        },
+        "extremeYRangeInclusive": [
+          499,
+          500
+        ],
+        "extremePixelCount": 2
+      },
+      "rearOrangeLandmarks": [
+        {
+          "side": "upper",
+          "components": [
+            {
+              "pixels": 346,
+              "boundsHalfOpen": [
+                242,
+                306,
+                293,
+                329
+              ],
+              "center": [
+                267.0,
+                317.0
+              ]
+            },
+            {
+              "pixels": 2596,
+              "boundsHalfOpen": [
+                145,
+                396,
+                243,
+                445
+              ],
+              "center": [
+                193.5,
+                420.0
+              ]
+            },
+            {
+              "pixels": 245,
+              "boundsHalfOpen": [
+                109,
+                402,
+                144,
+                415
+              ],
+              "center": [
+                126.0,
+                408.0
+              ]
+            }
+          ],
+          "boundsHalfOpen": [
+            109,
+            306,
+            293,
+            445
+          ],
+          "center": [
+            200.5,
+            375.0
+          ]
+        },
+        {
+          "side": "lower",
+          "components": [
+            {
+              "pixels": 2266,
+              "boundsHalfOpen": [
+                117,
+                559,
+                263,
+                599
+              ],
+              "center": [
+                189.5,
+                578.5
+              ]
+            },
+            {
+              "pixels": 109,
+              "boundsHalfOpen": [
+                316,
+                681,
+                345,
+                694
+              ],
+              "center": [
+                330.0,
+                687.0
+              ]
+            },
+            {
+              "pixels": 1973,
+              "boundsHalfOpen": [
+                232,
+                686,
+                336,
+                735
+              ],
+              "center": [
+                283.5,
+                710.0
+              ]
+            },
+            {
+              "pixels": 296,
+              "boundsHalfOpen": [
+                228,
+                715,
+                332,
+                739
+              ],
+              "center": [
+                279.5,
+                726.5
+              ]
+            }
+          ],
+          "boundsHalfOpen": [
+            117,
+            559,
+            345,
+            739
+          ],
+          "center": [
+            230.5,
+            648.5
+          ]
+        }
+      ],
+      "visualRearPoint": [
+        215.5,
+        511.75
+      ],
+      "calibration": {
+        "nose": [
+          1475.871,
+          493.559
+        ],
+        "tail": [
+          123.781,
+          514.132
+        ],
+        "pivot": [
+          729.707,
+          474.415
+        ],
+        "release": [
+          898.163,
+          571.414
+        ],
+        "exhaust": [
+          123.781,
+          514.132
+        ],
+        "exhaustAngleDeg": 179.1283,
+        "exhaustVisibility": 0,
+        "calibration": "inspected-source-art",
+        "exhaustReview": "unreviewed"
+      },
+      "projectedRegisteredSpanPixels": 1352.2465072718808,
+      "alpha": {
+        "min": 0,
+        "max": 254,
+        "borderMax": 0,
+        "thresholds": {
+          "0": {
+            "count": 364653,
+            "boundsInclusive": [
+              40,
+              29,
+              1501,
+              1001
+            ]
+          },
+          "1": {
+            "count": 355880,
+            "boundsInclusive": [
+              41,
+              286,
+              1501,
+              756
+            ]
+          },
+          "16": {
+            "count": 349245,
+            "boundsInclusive": [
+              43,
+              288,
+              1499,
+              754
+            ]
+          },
+          "128": {
+            "count": 346341,
+            "boundsInclusive": [
+              44,
+              289,
+              1498,
+              754
+            ]
+          },
+          "250": {
+            "count": 332804,
+            "boundsInclusive": [
+              48,
+              289,
+              1495,
+              753
+            ]
+          }
+        },
+        "outsideSamples": [
+          {
+            "point": [
+              100,
+              100
+            ],
+            "rgba": [
+              1,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "point": [
+              768,
+              100
+            ],
+            "rgba": [
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "point": [
+              768,
+              950
+            ],
+            "rgba": [
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "point": [
+              1450,
+              100
+            ],
+            "rgba": [
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "point": [
+              1500,
+              900
+            ],
+            "rgba": [
+              1,
+              1,
+              0,
+              0
+            ]
+          },
+          {
+            "point": [
+              50,
+              900
+            ],
+            "rgba": [
+              0,
+              0,
+              0,
+              0
+            ]
+          }
+        ],
+        "borderPixelsAbove1": []
+      },
+      "minimumAlphaAbove16MarginPixels": 36,
+      "visualReview": "Selected attempt2 exposes the upper deck but retains a narrower/foreshortened surface than deep. Two orange nacelle assemblies and one main rear blue assembly visible.",
+      "mainPropulsionReview": {
+        "outerOrangeAssemblies": 2,
+        "centralBlueMainAssembly": 1,
+        "centralBlueVisibility": "visible",
+        "note": "Counts describe the principal physical assemblies. Multiple exposed orange surfaces within one housing, tiny blue vents and maneuvering units are not counted as extra main engines. A hidden assembly is not inferred as a measured visible socket."
+      },
+      "newRuntimeEngineEffectApproved": false
+    },
+    {
+      "id": "bank-dorsal",
+      "candidatePath": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/upgrade-spaceship/candidates/upgrade-spaceship-bank-dorsal.png",
+      "generatedPath": "/workspace/scratch/0c1fa1359efb/generated_images/exec-200e1a01-2cc1-45b9-ae56-15a77d4a3d00.png",
+      "selectedAttempt": 1,
+      "bytes": 1825009,
+      "sha256": "eed63039ee54b202534b34809b47d7f1aa961f5d386543c5cbb565731c172e29",
+      "canvas": [
+        1536,
+        1024
+      ],
+      "sourceMatchesCandidate": true,
+      "inspection": "Two exact V14 masters and this final selected PNG opened individually with view_image; no pixel modification.",
+      "visualFrontTip": {
+        "point": [
+          1488,
+          522.5
+        ],
+        "searchBand": {
+          "yMin": 350,
+          "yMaxExclusive": 650,
+          "alphaMinInclusive": 128
+        },
+        "extremeYRangeInclusive": [
+          522,
+          523
+        ],
+        "extremePixelCount": 2
+      },
+      "rearOrangeLandmarks": [
+        {
+          "side": "upper",
+          "components": [
+            {
+              "pixels": 815,
+              "boundsHalfOpen": [
+                258,
+                230,
+                322,
+                256
+              ],
+              "center": [
+                289.5,
+                242.5
+              ]
+            },
+            {
+              "pixels": 136,
+              "boundsHalfOpen": [
+                203,
+                360,
+                260,
+                379
+              ],
+              "center": [
+                231.0,
+                369.0
+              ]
+            },
+            {
+              "pixels": 2996,
+              "boundsHalfOpen": [
+                145,
+                366,
+                247,
+                419
+              ],
+              "center": [
+                195.5,
+                392.0
+              ]
+            }
+          ],
+          "boundsHalfOpen": [
+            145,
+            230,
+            322,
+            419
+          ],
+          "center": [
+            233.0,
+            324.0
+          ]
+        },
+        {
+          "side": "lower",
+          "components": [
+            {
+              "pixels": 2734,
+              "boundsHalfOpen": [
+                106,
+                637,
+                245,
+                692
+              ],
+              "center": [
+                175.0,
+                664.0
+              ]
+            },
+            {
+              "pixels": 172,
+              "boundsHalfOpen": [
+                106,
+                684,
+                140,
+                696
+              ],
+              "center": [
+                122.5,
+                689.5
+              ]
+            },
+            {
+              "pixels": 672,
+              "boundsHalfOpen": [
+                258,
+                790,
+                305,
+                811
+              ],
+              "center": [
+                281.0,
+                800.0
+              ]
+            },
+            {
+              "pixels": 275,
+              "boundsHalfOpen": [
+                266,
+                811,
+                300,
+                824
+              ],
+              "center": [
+                282.5,
+                817.0
+              ]
+            }
+          ],
+          "boundsHalfOpen": [
+            106,
+            637,
+            305,
+            824
+          ],
+          "center": [
+            205.0,
+            730.0
+          ]
+        }
+      ],
+      "visualRearPoint": [
+        219.0,
+        527.0
+      ],
+      "calibration": {
+        "nose": [
+          1466.141,
+          516.49
+        ],
+        "tail": [
+          128.238,
+          528.812
+        ],
+        "pivot": [
+          727.986,
+          493.116
+        ],
+        "release": [
+          894.084,
+          590.089
+        ],
+        "exhaust": [
+          128.238,
+          528.812
+        ],
+        "exhaustAngleDeg": 179.4723,
+        "exhaustVisibility": 0,
+        "calibration": "inspected-source-art",
+        "exhaustReview": "unreviewed"
+      },
+      "projectedRegisteredSpanPixels": 1337.9597412078585,
+      "alpha": {
+        "min": 0,
+        "max": 254,
+        "borderMax": 1,
+        "thresholds": {
+          "0": {
+            "count": 489092,
+            "boundsInclusive": [
+              0,
+              23,
+              1492,
+              1001
+            ]
+          },
+          "1": {
+            "count": 478717,
+            "boundsInclusive": [
+              56,
+              202,
+              1490,
+              853
+            ]
+          },
+          "16": {
+            "count": 471737,
+            "boundsInclusive": [
+              58,
+              204,
+              1490,
+              851
+            ]
+          },
+          "128": {
+            "count": 468523,
+            "boundsInclusive": [
+              59,
+              204,
+              1488,
+              851
+            ]
+          },
+          "250": {
+            "count": 453047,
+            "boundsInclusive": [
+              63,
+              207,
+              1479,
+              848
+            ]
+          }
+        },
+        "outsideSamples": [
+          {
+            "point": [
+              100,
+              100
+            ],
+            "rgba": [
+              4,
+              5,
+              5,
+              0
+            ]
+          },
+          {
+            "point": [
+              768,
+              100
+            ],
+            "rgba": [
+              2,
+              2,
+              2,
+              0
+            ]
+          },
+          {
+            "point": [
+              768,
+              950
+            ],
+            "rgba": [
+              1,
+              1,
+              2,
+              0
+            ]
+          },
+          {
+            "point": [
+              1450,
+              100
+            ],
+            "rgba": [
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "point": [
+              1500,
+              900
+            ],
+            "rgba": [
+              1,
+              1,
+              0,
+              0
+            ]
+          },
+          {
+            "point": [
+              50,
+              900
+            ],
+            "rgba": [
+              4,
+              4,
+              4,
+              0
+            ]
+          }
+        ],
+        "borderPixelsAbove1": []
+      },
+      "minimumAlphaAbove16MarginPixels": 45,
+      "visualReview": "Broader, more symmetric upper arrowhead deck than shallow. Orange nacelle housings and rear blue axial assembly align with the top master construction.",
+      "mainPropulsionReview": {
+        "outerOrangeAssemblies": 2,
+        "centralBlueMainAssembly": 1,
+        "centralBlueVisibility": "visible",
+        "note": "Counts describe the principal physical assemblies. Multiple exposed orange surfaces within one housing, tiny blue vents and maneuvering units are not counted as extra main engines. A hidden assembly is not inferred as a measured visible socket."
+      },
+      "newRuntimeEngineEffectApproved": false
+    },
+    {
+      "id": "bank-ventral-shallow",
+      "candidatePath": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/upgrade-spaceship/candidates/upgrade-spaceship-bank-ventral-shallow.png",
+      "generatedPath": "/workspace/scratch/0c1fa1359efb/generated_images/exec-f6a0c3e1-c494-4cbb-80ac-5433c28d18ce.png",
+      "selectedAttempt": 1,
+      "bytes": 1427651,
+      "sha256": "ed3aabc50f7c1dcef957f9ab6068bdd6edd98497001bf743ac0550f47a424a7b",
+      "canvas": [
+        1536,
+        1024
+      ],
+      "sourceMatchesCandidate": true,
+      "inspection": "Two exact V14 masters and this final selected PNG opened individually with view_image; no pixel modification.",
+      "visualFrontTip": {
+        "point": [
+          1523,
+          495.0
+        ],
+        "searchBand": {
+          "yMin": 350,
+          "yMaxExclusive": 650,
+          "alphaMinInclusive": 128
+        },
+        "extremeYRangeInclusive": [
+          495,
+          495
+        ],
+        "extremePixelCount": 1
+      },
+      "rearOrangeLandmarks": [
+        {
+          "side": "upper",
+          "components": [
+            {
+              "pixels": 5014,
+              "boundsHalfOpen": [
+                85,
+                342,
+                280,
+                407
+              ],
+              "center": [
+                182.0,
+                374.0
+              ]
+            },
+            {
+              "pixels": 170,
+              "boundsHalfOpen": [
+                91,
+                355,
+                144,
+                364
+              ],
+              "center": [
+                117.0,
+                359.0
+              ]
+            }
+          ],
+          "boundsHalfOpen": [
+            85,
+            342,
+            280,
+            407
+          ],
+          "center": [
+            182.0,
+            374.0
+          ]
+        },
+        {
+          "side": "lower",
+          "components": [
+            {
+              "pixels": 3521,
+              "boundsHalfOpen": [
+                152,
+                610,
+                285,
+                674
+              ],
+              "center": [
+                218.0,
+                641.5
+              ]
+            },
+            {
+              "pixels": 198,
+              "boundsHalfOpen": [
+                102,
+                642,
+                154,
+                657
+              ],
+              "center": [
+                127.5,
+                649.0
+              ]
+            }
+          ],
+          "boundsHalfOpen": [
+            102,
+            610,
+            285,
+            674
+          ],
+          "center": [
+            193.0,
+            641.5
+          ]
+        }
+      ],
+      "visualRearPoint": [
+        187.5,
+        507.75
+      ],
+      "calibration": {
+        "nose": [
+          1499.957,
+          488.813
+        ],
+        "tail": [
+          91.991,
+          510.23
+        ],
+        "pivot": [
+          722.957,
+          468.875
+        ],
+        "release": [
+          898.374,
+          569.883
+        ],
+        "exhaust": [
+          91.991,
+          510.23
+        ],
+        "exhaustAngleDeg": 179.1285,
+        "exhaustVisibility": 0,
+        "calibration": "inspected-source-art",
+        "exhaustReview": "unreviewed"
+      },
+      "projectedRegisteredSpanPixels": 1408.128880836197,
+      "alpha": {
+        "min": 0,
+        "max": 254,
+        "borderMax": 3,
+        "thresholds": {
+          "0": {
+            "count": 372558,
+            "boundsInclusive": [
+              0,
+              33,
+              1526,
+              1007
+            ]
+          },
+          "1": {
+            "count": 360397,
+            "boundsInclusive": [
+              0,
+              271,
+              1525,
+              708
+            ]
+          },
+          "16": {
+            "count": 353899,
+            "boundsInclusive": [
+              7,
+              273,
+              1523,
+              705
+            ]
+          },
+          "128": {
+            "count": 351154,
+            "boundsInclusive": [
+              8,
+              274,
+              1523,
+              705
+            ]
+          },
+          "250": {
+            "count": 337836,
+            "boundsInclusive": [
+              11,
+              275,
+              1509,
+              704
+            ]
+          }
+        },
+        "outsideSamples": [
+          {
+            "point": [
+              100,
+              100
+            ],
+            "rgba": [
+              0,
+              0,
+              1,
+              0
+            ]
+          },
+          {
+            "point": [
+              768,
+              100
+            ],
+            "rgba": [
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "point": [
+              768,
+              950
+            ],
+            "rgba": [
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "point": [
+              1450,
+              100
+            ],
+            "rgba": [
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "point": [
+              1500,
+              900
+            ],
+            "rgba": [
+              1,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "point": [
+              50,
+              900
+            ],
+            "rgba": [
+              0,
+              0,
+              0,
+              0
+            ]
+          }
+        ],
+        "borderPixelsAbove1": [
+          [
+            0,
+            343,
+            2
+          ],
+          [
+            0,
+            344,
+            2
+          ],
+          [
+            0,
+            345,
+            2
+          ],
+          [
+            0,
+            346,
+            2
+          ],
+          [
+            0,
+            347,
+            3
+          ],
+          [
+            0,
+            348,
+            3
+          ],
+          [
+            0,
+            349,
+            3
+          ],
+          [
+            0,
+            350,
+            3
+          ],
+          [
+            0,
+            351,
+            3
+          ],
+          [
+            0,
+            352,
+            2
+          ],
+          [
+            0,
+            353,
+            2
+          ]
+        ]
+      },
+      "minimumAlphaAbove16MarginPixels": 7,
+      "visualReview": "Lower ribs and belly are visible while some upper plates remain. Two orange housings, one main blue rear engine and small blue-lit maneuvering units are distinct. Very small but nonzero raster margin on left/right.",
+      "mainPropulsionReview": {
+        "outerOrangeAssemblies": 2,
+        "centralBlueMainAssembly": 1,
+        "centralBlueVisibility": "visible",
+        "note": "Counts describe the principal physical assemblies. Multiple exposed orange surfaces within one housing, tiny blue vents and maneuvering units are not counted as extra main engines. A hidden assembly is not inferred as a measured visible socket."
+      },
+      "newRuntimeEngineEffectApproved": false
+    },
+    {
+      "id": "bank-ventral",
+      "candidatePath": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/upgrade-spaceship/candidates/upgrade-spaceship-bank-ventral.png",
+      "generatedPath": "/workspace/scratch/0c1fa1359efb/generated_images/exec-5a929964-7cda-43e7-9bac-3da2e1db2da2.png",
+      "selectedAttempt": 2,
+      "bytes": 1631576,
+      "sha256": "2b091b0ac3a20ba90b27f17a10d1824477f4680d103dac9ae2595215a0b3f264",
+      "canvas": [
+        1536,
+        1024
+      ],
+      "sourceMatchesCandidate": true,
+      "inspection": "Two exact V14 masters and this final selected PNG opened individually with view_image; no pixel modification.",
+      "visualFrontTip": {
+        "point": [
+          1510,
+          547.5
+        ],
+        "searchBand": {
+          "yMin": 350,
+          "yMaxExclusive": 650,
+          "alphaMinInclusive": 128
+        },
+        "extremeYRangeInclusive": [
+          547,
+          548
+        ],
+        "extremePixelCount": 2
+      },
+      "rearOrangeLandmarks": [
+        {
+          "side": "upper",
+          "components": [
+            {
+              "pixels": 7566,
+              "boundsHalfOpen": [
+                106,
+                286,
+                310,
+                370
+              ],
+              "center": [
+                207.5,
+                327.5
+              ]
+            },
+            {
+              "pixels": 154,
+              "boundsHalfOpen": [
+                215,
+                357,
+                270,
+                376
+              ],
+              "center": [
+                242.0,
+                366.0
+              ]
+            }
+          ],
+          "boundsHalfOpen": [
+            106,
+            286,
+            310,
+            376
+          ],
+          "center": [
+            207.5,
+            330.5
+          ]
+        },
+        {
+          "side": "lower",
+          "components": [
+            {
+              "pixels": 6619,
+              "boundsHalfOpen": [
+                97,
+                613,
+                282,
+                701
+              ],
+              "center": [
+                189.0,
+                656.5
+              ]
+            }
+          ],
+          "boundsHalfOpen": [
+            97,
+            613,
+            282,
+            701
+          ],
+          "center": [
+            189.0,
+            656.5
+          ]
+        }
+      ],
+      "visualRearPoint": [
+        198.25,
+        493.5
+      ],
+      "calibration": {
+        "nose": [
+          1487.686,
+          540.279
+        ],
+        "tail": [
+          104.361,
+          491.178
+        ],
+        "pivot": [
+          725.866,
+          482.004
+        ],
+        "release": [
+          893.05,
+          589.905
+        ],
+        "exhaust": [
+          104.361,
+          491.178
+        ],
+        "exhaustAngleDeg": -177.9671,
+        "exhaustVisibility": 0,
+        "calibration": "inspected-source-art",
+        "exhaustReview": "unreviewed"
+      },
+      "projectedRegisteredSpanPixels": 1384.1961435526396,
+      "alpha": {
+        "min": 0,
+        "max": 254,
+        "borderMax": 1,
+        "thresholds": {
+          "0": {
+            "count": 460612,
+            "boundsInclusive": [
+              0,
+              29,
+              1513,
+              999
+            ]
+          },
+          "1": {
+            "count": 432444,
+            "boundsInclusive": [
+              24,
+              211,
+              1511,
+              781
+            ]
+          },
+          "16": {
+            "count": 425324,
+            "boundsInclusive": [
+              26,
+              216,
+              1511,
+              776
+            ]
+          },
+          "128": {
+            "count": 422593,
+            "boundsInclusive": [
+              27,
+              217,
+              1510,
+              775
+            ]
+          },
+          "250": {
+            "count": 407407,
+            "boundsInclusive": [
+              33,
+              221,
+              1477,
+              774
+            ]
+          }
+        },
+        "outsideSamples": [
+          {
+            "point": [
+              100,
+              100
+            ],
+            "rgba": [
+              4,
+              4,
+              4,
+              0
+            ]
+          },
+          {
+            "point": [
+              768,
+              100
+            ],
+            "rgba": [
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "point": [
+              768,
+              950
+            ],
+            "rgba": [
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "point": [
+              1450,
+              100
+            ],
+            "rgba": [
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "point": [
+              1500,
+              900
+            ],
+            "rgba": [
+              1,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "point": [
+              50,
+              900
+            ],
+            "rgba": [
+              1,
+              0,
+              0,
+              0
+            ]
+          }
+        ],
+        "borderPixelsAbove1": []
+      },
+      "minimumAlphaAbove16MarginPixels": 24,
+      "visualReview": "Selected attempt2 reveals a broad underside and longitudinal lower ribs. Only one large axial blue engine is visible; the small orientable blue-lit units are separate and correspond to the master family.",
+      "mainPropulsionReview": {
+        "outerOrangeAssemblies": 2,
+        "centralBlueMainAssembly": 1,
+        "centralBlueVisibility": "visible",
+        "note": "Counts describe the principal physical assemblies. Multiple exposed orange surfaces within one housing, tiny blue vents and maneuvering units are not counted as extra main engines. A hidden assembly is not inferred as a measured visible socket."
+      },
+      "newRuntimeEngineEffectApproved": false
+    },
+    {
+      "id": "rear-quarter-shallow",
+      "candidatePath": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/upgrade-spaceship/candidates/upgrade-spaceship-rear-quarter-shallow.png",
+      "generatedPath": "/workspace/scratch/0c1fa1359efb/generated_images/exec-45fddfbe-c519-4079-b291-9ce59c061c64.png",
+      "selectedAttempt": 1,
+      "bytes": 1898140,
+      "sha256": "e5ed40258ed728c63270dc078a06d493e707218be66807b2d352320a852e0ebb",
+      "canvas": [
+        1536,
+        1024
+      ],
+      "sourceMatchesCandidate": true,
+      "inspection": "Two exact V14 masters and this final selected PNG opened individually with view_image; no pixel modification.",
+      "visualFrontTip": {
+        "point": [
+          1518,
+          522.5
+        ],
+        "searchBand": {
+          "yMin": 350,
+          "yMaxExclusive": 650,
+          "alphaMinInclusive": 128
+        },
+        "extremeYRangeInclusive": [
+          522,
+          523
+        ],
+        "extremePixelCount": 2
+      },
+      "rearOrangeLandmarks": [
+        {
+          "side": "upper",
+          "components": [
+            {
+              "pixels": 327,
+              "boundsHalfOpen": [
+                242,
+                243,
+                285,
+                261
+              ],
+              "center": [
+                263.0,
+                251.5
+              ]
+            },
+            {
+              "pixels": 200,
+              "boundsHalfOpen": [
+                172,
+                356,
+                225,
+                368
+              ],
+              "center": [
+                198.0,
+                361.5
+              ]
+            },
+            {
+              "pixels": 4659,
+              "boundsHalfOpen": [
+                136,
+                364,
+                241,
+                441
+              ],
+              "center": [
+                188.0,
+                402.0
+              ]
+            },
+            {
+              "pixels": 245,
+              "boundsHalfOpen": [
+                92,
+                370,
+                136,
+                387
+              ],
+              "center": [
+                113.5,
+                378.0
+              ]
+            },
+            {
+              "pixels": 641,
+              "boundsHalfOpen": [
+                244,
+                386,
+                285,
+                428
+              ],
+              "center": [
+                264.0,
+                406.5
+              ]
+            },
+            {
+              "pixels": 191,
+              "boundsHalfOpen": [
+                93,
+                389,
+                134,
+                404
+              ],
+              "center": [
+                113.0,
+                396.0
+              ]
+            }
+          ],
+          "boundsHalfOpen": [
+            92,
+            243,
+            285,
+            441
+          ],
+          "center": [
+            188.0,
+            341.5
+          ]
+        },
+        {
+          "side": "lower",
+          "components": [
+            {
+              "pixels": 4490,
+              "boundsHalfOpen": [
+                134,
+                618,
+                243,
+                692
+              ],
+              "center": [
+                188.0,
+                654.5
+              ]
+            },
+            {
+              "pixels": 426,
+              "boundsHalfOpen": [
+                256,
+                630,
+                286,
+                657
+              ],
+              "center": [
+                270.5,
+                643.0
+              ]
+            },
+            {
+              "pixels": 311,
+              "boundsHalfOpen": [
+                90,
+                651,
+                134,
+                667
+              ],
+              "center": [
+                111.5,
+                658.5
+              ]
+            },
+            {
+              "pixels": 427,
+              "boundsHalfOpen": [
+                90,
+                668,
+                135,
+                693
+              ],
+              "center": [
+                112.0,
+                680.0
+              ]
+            },
+            {
+              "pixels": 648,
+              "boundsHalfOpen": [
+                307,
+                791,
+                354,
+                815
+              ],
+              "center": [
+                330.0,
+                802.5
+              ]
+            },
+            {
+              "pixels": 560,
+              "boundsHalfOpen": [
+                292,
+                803,
+                367,
+                832
+              ],
+              "center": [
+                329.0,
+                817.0
+              ]
+            }
+          ],
+          "boundsHalfOpen": [
+            90,
+            618,
+            367,
+            832
+          ],
+          "center": [
+            228.0,
+            724.5
+          ]
+        }
+      ],
+      "visualRearPoint": [
+        208.0,
+        533.0
+      ],
+      "calibration": {
+        "nose": [
+          1495.407,
+          516.397
+        ],
+        "tail": [
+          114.312,
+          535.289
+        ],
+        "pivot": [
+          733.283,
+          495.672
+        ],
+        "release": [
+          905.197,
+          595.014
+        ],
+        "exhaust": [
+          114.312,
+          535.289
+        ],
+        "exhaustAngleDeg": 179.2163,
+        "exhaustVisibility": 0,
+        "calibration": "inspected-source-art",
+        "exhaustReview": "unreviewed"
+      },
+      "projectedRegisteredSpanPixels": 1381.2242058004197,
+      "alpha": {
+        "min": 0,
+        "max": 254,
+        "borderMax": 1,
+        "thresholds": {
+          "0": {
+            "count": 540980,
+            "boundsInclusive": [
+              0,
+              36,
+              1521,
+              1023
+            ]
+          },
+          "1": {
+            "count": 527275,
+            "boundsInclusive": [
+              12,
+              210,
+              1519,
+              863
+            ]
+          },
+          "16": {
+            "count": 519989,
+            "boundsInclusive": [
+              14,
+              212,
+              1519,
+              861
+            ]
+          },
+          "128": {
+            "count": 516804,
+            "boundsInclusive": [
+              15,
+              213,
+              1518,
+              861
+            ]
+          },
+          "250": {
+            "count": 499383,
+            "boundsInclusive": [
+              16,
+              215,
+              1511,
+              860
+            ]
+          }
+        },
+        "outsideSamples": [
+          {
+            "point": [
+              100,
+              100
+            ],
+            "rgba": [
+              1,
+              2,
+              3,
+              0
+            ]
+          },
+          {
+            "point": [
+              768,
+              100
+            ],
+            "rgba": [
+              3,
+              3,
+              3,
+              0
+            ]
+          },
+          {
+            "point": [
+              768,
+              950
+            ],
+            "rgba": [
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "point": [
+              1450,
+              100
+            ],
+            "rgba": [
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "point": [
+              1500,
+              900
+            ],
+            "rgba": [
+              1,
+              1,
+              0,
+              0
+            ]
+          },
+          {
+            "point": [
+              50,
+              900
+            ],
+            "rgba": [
+              0,
+              0,
+              0,
+              0
+            ]
+          }
+        ],
+        "borderPixelsAbove1": []
+      },
+      "minimumAlphaAbove16MarginPixels": 14,
+      "visualReview": "The main rear blue cylindrical face is clearly exposed, between the two orange nacelle assemblies. Upper deck is still substantially visible.",
+      "mainPropulsionReview": {
+        "outerOrangeAssemblies": 2,
+        "centralBlueMainAssembly": 1,
+        "centralBlueVisibility": "visible",
+        "note": "Counts describe the principal physical assemblies. Multiple exposed orange surfaces within one housing, tiny blue vents and maneuvering units are not counted as extra main engines. A hidden assembly is not inferred as a measured visible socket."
+      },
+      "newRuntimeEngineEffectApproved": false
+    },
+    {
+      "id": "rear-quarter",
+      "candidatePath": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/upgrade-spaceship/candidates/upgrade-spaceship-rear-quarter.png",
+      "generatedPath": "/workspace/scratch/0c1fa1359efb/generated_images/exec-d884b92a-7eb1-4586-a629-c076a7ec0b74.png",
+      "selectedAttempt": 1,
+      "bytes": 1927564,
+      "sha256": "3b24f1ba6cd51aa755c56f7145900458a46153643be848622323c65a8abd2d17",
+      "canvas": [
+        1536,
+        1024
+      ],
+      "sourceMatchesCandidate": true,
+      "inspection": "Two exact V14 masters and this final selected PNG opened individually with view_image; no pixel modification.",
+      "visualFrontTip": {
+        "point": [
+          1497,
+          503.5
+        ],
+        "searchBand": {
+          "yMin": 350,
+          "yMaxExclusive": 650,
+          "alphaMinInclusive": 128
+        },
+        "extremeYRangeInclusive": [
+          503,
+          504
+        ],
+        "extremePixelCount": 2
+      },
+      "rearOrangeLandmarks": [
+        {
+          "side": "upper",
+          "components": [
+            {
+              "pixels": 281,
+              "boundsHalfOpen": [
+                231,
+                215,
+                270,
+                232
+              ],
+              "center": [
+                250.0,
+                223.0
+              ]
+            },
+            {
+              "pixels": 100,
+              "boundsHalfOpen": [
+                258,
+                310,
+                301,
+                315
+              ],
+              "center": [
+                279.0,
+                312.0
+              ]
+            },
+            {
+              "pixels": 4569,
+              "boundsHalfOpen": [
+                216,
+                327,
+                318,
+                407
+              ],
+              "center": [
+                266.5,
+                366.5
+              ]
+            },
+            {
+              "pixels": 750,
+              "boundsHalfOpen": [
+                319,
+                349,
+                357,
+                393
+              ],
+              "center": [
+                337.5,
+                370.5
+              ]
+            },
+            {
+              "pixels": 395,
+              "boundsHalfOpen": [
+                151,
+                353,
+                225,
+                384
+              ],
+              "center": [
+                187.5,
+                368.0
+              ]
+            }
+          ],
+          "boundsHalfOpen": [
+            151,
+            215,
+            357,
+            407
+          ],
+          "center": [
+            253.5,
+            310.5
+          ]
+        },
+        {
+          "side": "lower",
+          "components": [
+            {
+              "pixels": 4980,
+              "boundsHalfOpen": [
+                178,
+                639,
+                332,
+                711
+              ],
+              "center": [
+                254.5,
+                674.5
+              ]
+            },
+            {
+              "pixels": 267,
+              "boundsHalfOpen": [
+                134,
+                661,
+                191,
+                692
+              ],
+              "center": [
+                162.0,
+                676.0
+              ]
+            },
+            {
+              "pixels": 1492,
+              "boundsHalfOpen": [
+                402,
+                792,
+                453,
+                845
+              ],
+              "center": [
+                427.0,
+                818.0
+              ]
+            },
+            {
+              "pixels": 643,
+              "boundsHalfOpen": [
+                373,
+                844,
+                456,
+                864
+              ],
+              "center": [
+                414.0,
+                853.5
+              ]
+            }
+          ],
+          "boundsHalfOpen": [
+            134,
+            639,
+            456,
+            864
+          ],
+          "center": [
+            294.5,
+            751.0
+          ]
+        }
+      ],
+      "visualRearPoint": [
+        274.0,
+        530.75
+      ],
+      "calibration": {
+        "nose": [
+          1475.823,
+          498.103
+        ],
+        "tail": [
+          186.555,
+          534.135
+        ],
+        "pivot": [
+          763.957,
+          488.902
+        ],
+        "release": [
+          925.795,
+          579.367
+        ],
+        "exhaust": [
+          186.555,
+          534.135
+        ],
+        "exhaustAngleDeg": 178.3991,
+        "exhaustVisibility": 0,
+        "calibration": "inspected-source-art",
+        "exhaustReview": "unreviewed"
+      },
+      "projectedRegisteredSpanPixels": 1289.7714064313877,
+      "alpha": {
+        "min": 0,
+        "max": 254,
+        "borderMax": 1,
+        "thresholds": {
+          "0": {
+            "count": 545242,
+            "boundsInclusive": [
+              0,
+              23,
+              1502,
+              1023
+            ]
+          },
+          "1": {
+            "count": 526723,
+            "boundsInclusive": [
+              40,
+              177,
+              1500,
+              885
+            ]
+          },
+          "16": {
+            "count": 518843,
+            "boundsInclusive": [
+              42,
+              180,
+              1497,
+              883
+            ]
+          },
+          "128": {
+            "count": 515752,
+            "boundsInclusive": [
+              43,
+              181,
+              1497,
+              882
+            ]
+          },
+          "250": {
+            "count": 500301,
+            "boundsInclusive": [
+              44,
+              183,
+              1490,
+              881
+            ]
+          }
+        },
+        "outsideSamples": [
+          {
+            "point": [
+              100,
+              100
+            ],
+            "rgba": [
+              4,
+              4,
+              6,
+              0
+            ]
+          },
+          {
+            "point": [
+              768,
+              100
+            ],
+            "rgba": [
+              7,
+              8,
+              8,
+              0
+            ]
+          },
+          {
+            "point": [
+              768,
+              950
+            ],
+            "rgba": [
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "point": [
+              1450,
+              100
+            ],
+            "rgba": [
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "point": [
+              1500,
+              900
+            ],
+            "rgba": [
+              1,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "point": [
+              50,
+              900
+            ],
+            "rgba": [
+              0,
+              0,
+              0,
+              0
+            ]
+          }
+        ],
+        "excludedBackgroundProbe": {
+          "point": [
+            768,
+            250
+          ],
+          "rgba": [
+            39,
+            39,
+            45,
+            252
+          ],
+          "reason": "This point lies on the real upper maneuvering unit in the opened image, so it is retained as a source-art sample and is not an off-hull background probe."
+        },
+        "borderPixelsAbove1": []
+      },
+      "minimumAlphaAbove16MarginPixels": 38,
+      "visualReview": "Main blue engine face and aft orange assemblies occupy more of the image; forward body is more foreshortened than shallow. This is also an elevated authored projection, not a measured pure yaw.",
+      "mainPropulsionReview": {
+        "outerOrangeAssemblies": 2,
+        "centralBlueMainAssembly": 1,
+        "centralBlueVisibility": "visible",
+        "note": "Counts describe the principal physical assemblies. Multiple exposed orange surfaces within one housing, tiny blue vents and maneuvering units are not counted as extra main engines. A hidden assembly is not inferred as a measured visible socket."
+      },
+      "newRuntimeEngineEffectApproved": false
+    }
+  ],
+  "viewOrderReview": {
+    "forward": {
+      "status": "final corrected selections retained; no new rejection or swap proposed",
+      "reason": "Both final candidates are low views, with more far-nacelle and main rear-engine occlusion in deep. The previous overly dorsal and wrong-format attempts are excluded. Some elevation coupling remains, so do not claim a pure12/25degree solution.",
+      "measured3DAngles": false
+    },
+    "dorsal": {
+      "status": "retained",
+      "reason": "Deep has a broader, more symmetric visible upper deck than shallow.",
+      "measured3DAngles": false
+    },
+    "ventral": {
+      "status": "retained",
+      "reason": "Deep reveals materially more underside and lower ribs; the duplicated-blue rejected attempt is not selected.",
+      "measured3DAngles": false
+    },
+    "rear": {
+      "status": "retained",
+      "reason": "Deep emphasizes the main aft engine face/assemblies and foreshortens the forward hull. Both remain elevated projections.",
+      "measured3DAngles": false
+    }
+  },
+  "identityReview": {
+    "preserved": [
+      "Dark armored arrowhead body, narrow nose pointing right, broad aft at left.",
+      "Two outer orange main nacelle assemblies and one axial blue main engine, with angle-dependent occlusion.",
+      "Small blue-lit maneuvering mounts and red vents/lights consistent with the master family."
+    ],
+    "noCroppedHullObserved": true,
+    "blockingPoseErrorObservedInFinalSelections": false,
+    "blockingMainEngineDuplicationObserved": false,
+    "remainingDrift": [
+      "The original profile is explicitly an authored perspective. Its large blue focus is projected toward center-right, whereas the top and many variants place the axial assembly at the aft-left. These images do not establish a single rigid camera-calibrated3D hull.",
+      "The final front views are much thinner than the perspective profile; this is retained as a real pose difference and must be inspected during native cross-fades. It is not compensated by anisotropic scaling.",
+      "Panels, red lines, small maneuvering-unit placement and highlight levels vary between generated projections.",
+      "Ventral-shallow has only a7px minimum alpha>16 margin and eleven left-edge alpha2..3 pixels. Its bright hull is not cropped, but native edge appearance should be checked. No pixel cleanup or padding was applied."
+    ],
+    "canonical1to1Established": false
+  },
+  "alphaReview": {
+    "allSelectedCanvases1536x1024": true,
+    "allSelectedCopiesMatchGeneratedBytes": true,
+    "range": [
+      0,
+      254
+    ],
+    "maximumBorderAlpha": 3,
+    "allAlphaAbove16BoundsInsideCanvas": true,
+    "minimumAlphaAbove16MarginPixels": 7,
+    "maximumDeclaredOutsideSampleAlpha": 0,
+    "interpretation": "All 48 declared off-hull samples have alpha0. Other borders retain low-alpha residue: maximum3 in ventral-shallow, maximum1 elsewhere. Nonzero RGB under alpha0 is hidden under proper compositing; no cleanup or opacity normalization was performed. The initial point(768,250) on rear-deep was found to lie on its actual upper maneuvering unit and is recorded separately, not treated as background.",
+    "pixelProcessingPerformed": false,
+    "borderAbove1Finding": "Eleven left-edge pixels at x0,y343..353 of bank-ventral-shallow have alpha2..3. Its alpha>16 silhouette starts at x7, so the brighter hull is still inside. This low-alpha residue is preserved; it is not described as a completely empty edge."
+  },
+  "limitations": [
+    "Only final frozen selections were calibrated; rejected poses, the duplicate-blue candidate and wrong-size outputs remain preserved in the manifest.",
+    "This source-art review is not native transition validation or canonical/human artistic approval.",
+    "Inspect profile→low-front transition, axial-blue apparent position, cross-fade double contours, registration and edge margins in the real scene.",
+    "No source image, prior manifest/review, reference, runtime registry or other repository file was modified.",
+    "No VFX, profile replacement, release bay or grounding contract is approved by this report.",
+    "Parent approval is required before activation."
+  ]
+}

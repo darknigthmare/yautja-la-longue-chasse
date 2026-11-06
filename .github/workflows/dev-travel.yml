@@ -19,6 +19,9 @@ on:
       - 'app/game/systems/homeworldLiftStationV83.ts'
       - 'app/game/systems/wolfCastle*.ts'
       - 'app/game/systems/planetArrival*.ts'
+      - 'app/game/systems/planetInsertion.ts'
+      - 'app/game/systems/shipInsertionEnergy.ts'
+      - 'app/game/systems/huntInsertion.ts'
       - 'app/game/save.ts'
       - 'app/game/data.ts'
       - 'next.config.ts'
@@ -27,6 +30,7 @@ on:
       - 'tests/fixtures/wolf-arrival-browser-assets.json'
       - 'public/game/wolf-castle/**'
       - 'public/game/planet-arrival/**'
+      - 'public/game/cinematics/batch-01-20261105/**'
       - 'scripts/qa-dev-travel-browser.mjs'
       - '.github/workflows/dev-travel.yml'
   workflow_dispatch:
@@ -72,6 +76,8 @@ jobs:
             /public/game/homeworld/
             /public/game/clan-ship/
             /public/game/ship-interior/
+            /public/game/planet-arrival/
+            /public/game/cinematics/batch-01-20261105/
             /public/game/backgrounds/
             /public/game/sprites/
             /public/game/props/

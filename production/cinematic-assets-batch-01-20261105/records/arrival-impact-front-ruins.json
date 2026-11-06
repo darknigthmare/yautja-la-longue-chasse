@@ -1,0 +1,47 @@
+{
+  "id": "arrival-impact-front-ruins",
+  "family": "impact-front",
+  "biome": "ruins",
+  "file": "public/game/cinematics/batch-01-20261105/arrival-impact-front-ruins.png",
+  "generatedSource": "/workspace/scratch/62884fa4f584/generated_images/exec-f0d0f4dd-f08a-4d05-9255-dae3d3019611.png",
+  "prompt": "Use case: stylized-concept. ONE production cinematic VFX sprite arrival-impact-front-ruins for Yautja The Long Hunt.\nImage1 is only a painted2.5D finish, neutral lighting and open-center reference. Image2 only the game's visual finish. Generate an independent material-specific mineral impact front.\nSubject: A low, wide asymmetric fan of crumbled old stone and pale gray-beige mineral dust, with tiny angular limestone chips and a few flat weathered stone flakes. Left side a granular stepped lobe, right side a more extended thin spray with fractured angular edges; sparse chalk fines above. Clearly mineral stone, not muddy jungle soil or smoke. Open center. No carved symbols, runes, metal debris, bones, artifacts, architecture or invented lore.\nLow shallow asymmetric fan in near-ground side view, with slight top view and a mostly empty central opening. Full-canvas contact origin x50%,y78%. COMPACT FRAMING: effect occupies only the middle HALF to THREE-FIFTHS of image width, with all tiny chips safely inside x22–78%, y40–82%. Entire outer15% of every edge is alpha0 with no haze. Thin chalk fines should stay close to the fractured stone tongues, not fill a studio background.\n1536x1024 landscape RGBA PNG, TRUE TRANSPARENT BACKGROUND. Realistic painted2.5D gray-beige limestone grit, small crisp chipped planes, soft mineral fines, subtle upper-left light, readable at250px.\nNo floor, piled ground disc, building, ruin backdrop, carvings, runes, statues, metal, bones, capsule, ship, hunter, creature, text, labels, frame, sheet, panel, grid, watermark, checkerboard, black or white backdrop. No clipped particles.",
+  "referenceImages": [
+    "/workspace/scratch/62884fa4f584/cinematic-assets-batch-01-20261105/public/game/cinematics/batch-01-20261105/arrival-impact-front-jungle.png",
+    "/workspace/scratch/62884fa4f584/qa-recovery/spatial-a7f830c/desktop-landing-impact.png"
+  ],
+  "generationMode": "builtin-imagegen-reference",
+  "intendedAnchor": {
+    "name": "ground-capsule-reference",
+    "normalized": [
+      0.5,
+      0.78
+    ],
+    "basis": "requested full-frame contact; visual source review only, integration pending"
+  },
+  "generated": true,
+  "integrated": false,
+  "testedInEngine": false,
+  "artisticHumanApproval": false,
+  "visualReview": {
+    "reviewer": "assistant",
+    "result": "pass-with-integration-pending",
+    "notes": "Angular pale mineral chips and fractured stone flakes with chalk fines; open central valley. No architecture, artifacts or carved markings. Actual material sizes must be assessed at in-engine scale."
+  },
+  "qa": {
+    "mode": "RGBA",
+    "width": 1536,
+    "height": 1024,
+    "transparentPixelFraction": 0.863983154296875,
+    "visiblePixelCountAlphaOver16": 145641,
+    "borderPixelCountAlphaOver16": 0,
+    "alphaOver16Bounds": [
+      211,
+      441,
+      1362,
+      803
+    ],
+    "passed": true
+  },
+  "sha256": "d1c28f52682a1ba30b00bb315959a1fee533c84af65fef7972b8e3a1654bc43f",
+  "bytes": 1209307
+}

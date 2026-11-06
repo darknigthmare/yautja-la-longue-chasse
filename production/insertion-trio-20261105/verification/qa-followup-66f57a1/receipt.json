@@ -1,0 +1,467 @@
+{
+  "sourceCommit": "66f57a147d3e17aca592d62f3aadbb35ec702db8",
+  "recordedAt": "2026-11-05T09:25:02.563639+00:00",
+  "artifacts": [
+    {
+      "recipe": "spatial",
+      "id": 13402013299,
+      "name": "planet-arrival-spatial-66f57a147d3e17aca592d62f3aadbb35ec702db8",
+      "sizeInBytes": 15274073,
+      "digest": "sha256:04a37f00da7e12176d8042fb66efdbd1370ca94ea2ca36d9c0c25a2c0e73792f",
+      "runId": 42000126241,
+      "headSha": "66f57a147d3e17aca592d62f3aadbb35ec702db8",
+      "jobId": 127152948619,
+      "sourceCommit": "66f57a147d3e17aca592d62f3aadbb35ec702db8",
+      "checkoutCommit": null,
+      "workingTreeDirty": false,
+      "checks": {
+        "passed": 7,
+        "failed": 1,
+        "total": 8
+      },
+      "browserErrors": 0,
+      "consoleErrors": 0,
+      "missingAssets": 0,
+      "camouflageChecksReached": false,
+      "consoleErrorsCollected": true,
+      "workflowUrl": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/42000126241",
+      "executedChecks": [
+        {
+          "name": "desktop: orbit actual layers, anchors and motion",
+          "passed": true
+        },
+        {
+          "name": "desktop: title actual layers, anchors and motion",
+          "passed": true
+        },
+        {
+          "name": "desktop: carrier actual layers, anchors and motion",
+          "passed": true
+        },
+        {
+          "name": "desktop: release actual layers, anchors and motion",
+          "passed": true
+        },
+        {
+          "name": "desktop: descent actual layers, anchors and motion",
+          "passed": true
+        },
+        {
+          "name": "desktop: atmosphere actual layers, anchors and motion",
+          "passed": true
+        },
+        {
+          "name": "desktop: landing actual layers, anchors and motion",
+          "passed": true
+        },
+        {
+          "name": "desktop: egress actual layers, anchors and motion",
+          "passed": false,
+          "message": "page.waitForFunction: Timeout 25000ms exceeded."
+        }
+      ],
+      "reportSha256": "e1481f676b6ce8a9ec59ef58a2d0ce1ef6b4866e49d9a8e789e0e007d02c7325"
+    },
+    {
+      "recipe": "wolf",
+      "id": 13402296984,
+      "name": "wolf-arrival-browser-b4415567a4683b2fa723d984acc25663ddb4128f",
+      "sizeInBytes": 6523745,
+      "digest": "sha256:4ffd901f8cd033495cebe600ad8af8af44cf0eff9847b12b1cc701efad3c9d36",
+      "runId": 42000126236,
+      "headSha": "66f57a147d3e17aca592d62f3aadbb35ec702db8",
+      "jobId": 127152949254,
+      "sourceCommit": "66f57a147d3e17aca592d62f3aadbb35ec702db8",
+      "checkoutCommit": "66f57a147d3e17aca592d62f3aadbb35ec702db8",
+      "workingTreeDirty": false,
+      "checks": {
+        "passed": 12,
+        "failed": 1,
+        "total": 13
+      },
+      "browserErrors": 0,
+      "consoleErrors": null,
+      "missingAssets": 0,
+      "camouflageChecksReached": false,
+      "consoleErrorsCollected": false,
+      "workflowUrl": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/42000126236",
+      "executedChecks": [
+        {
+          "name": "Main menu resumes the existing campaign on the personal deck",
+          "passed": true
+        },
+        {
+          "name": "The orbital castle remains separate from the personal hull and Clan Ship",
+          "passed": true
+        },
+        {
+          "name": "Walking reaches the airlock, vestibule, gallery and real archive terminal",
+          "passed": true
+        },
+        {
+          "name": "Castle room and personal hull survive menu, reload and Continue",
+          "passed": true
+        },
+        {
+          "name": "The audience and council preserve one campaign decision",
+          "passed": true
+        },
+        {
+          "name": "The three-seal court trial is traversed and completed without campaign rewards",
+          "passed": true
+        },
+        {
+          "name": "The royal court starts a real three-guard fight with damage and a saved exact position",
+          "passed": true
+        },
+        {
+          "name": "A paused fight survives menu and reload without recovering health or resetting the guard",
+          "passed": true
+        },
+        {
+          "name": "A real browser tab change pauses the fight and returning never resumes it implicitly",
+          "passed": true
+        },
+        {
+          "name": "Taking the announced hits ends in defeat, then restart creates one fresh attempt",
+          "passed": true
+        },
+        {
+          "name": "Combat controls fit 320 pixels and abandoning unlocks the same court safely",
+          "passed": true
+        },
+        {
+          "name": "Ordinary keyboard movement, timed parries, dodges and attacks defeat the three guards",
+          "passed": true
+        },
+        {
+          "name": "Castle navigation and return remain usable at 390 and 320 pixels",
+          "passed": false,
+          "message": "page.waitForFunction: Timeout 20000ms exceeded."
+        }
+      ],
+      "reportSha256": "0fb98c0b076909153fc735d32df6d9d4dd446d2393238042db7fb41482759a1e"
+    },
+    {
+      "recipe": "dev",
+      "id": 13402960688,
+      "name": "dev-travel-browser-66f57a147d3e17aca592d62f3aadbb35ec702db8",
+      "sizeInBytes": 8367554,
+      "digest": "sha256:c2621d46e404fd9b09069d604cf0452146ab380ab6e61fcce37d594c1c9b239d",
+      "runId": 42000125892,
+      "headSha": "66f57a147d3e17aca592d62f3aadbb35ec702db8",
+      "jobId": 127152948915,
+      "sourceCommit": "66f57a147d3e17aca592d62f3aadbb35ec702db8",
+      "checkoutCommit": null,
+      "workingTreeDirty": false,
+      "checks": {
+        "passed": 9,
+        "failed": 1,
+        "total": 10
+      },
+      "browserErrors": 0,
+      "consoleErrors": 0,
+      "missingAssets": 0,
+      "camouflageChecksReached": false,
+      "consoleErrorsCollected": true,
+      "workflowUrl": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/42000125892",
+      "executedChecks": [
+        {
+          "name": "Hidden /dev route opens directly with noindex and a complete destination catalogue",
+          "passed": true
+        },
+        {
+          "name": "Category and accent-insensitive search filter actual destination buttons",
+          "passed": true
+        },
+        {
+          "name": "Keyboard launch opens the real personal deck, movement works, and reset restores the starting point",
+          "passed": true
+        },
+        {
+          "name": "Changing equipment in the test armory stays in memory and returning preserves the personal deck",
+          "passed": true
+        },
+        {
+          "name": "All seven Clan Ship room arrivals mount the real interior and their authored scenery",
+          "passed": true
+        },
+        {
+          "name": "Approach, docking and boarding use the real Clan Ship transitions within the test session",
+          "passed": true
+        },
+        {
+          "name": "Homeworld port and market open at distinct real city positions, and city movement works",
+          "passed": true
+        },
+        {
+          "name": "A regional destination opens its live village, and F8 returns to the catalogue even from its modal",
+          "passed": true
+        },
+        {
+          "name": "All nine Wolf castle arrivals render their real rooms, accept movement and reset the disposable visit",
+          "passed": true
+        },
+        {
+          "name": "Wolf approach, boarding, settings and departure use native actions, and F8 escapes its real map",
+          "passed": false,
+          "message": "locator.waitFor: Error: strict mode violation: locator('[data-wolf-castle-status=\"aboard\"][data-wolf-castle-room=\"royal-archives\"]') resolved to 2 elements:\n    1) <section data-wolf-dungeon-status=\"none\" data-wolf-castle-status=\"aboard\" data-wolf-castle-mode=\"audience\" data-wolf-dungeon-reward=\"false\" data-wolf-castle-room=\"royal-archives\" aria-label=\"Château du Roi — système Wolf\" class=\"WolfCastleScene_castle__1vuyQ  WolfCastleScene_reducedMotion__DqOf3\">…</section> aka getByRole('region', { name: 'Château du Roi — système Wolf' })\n    2) <section inert=\"\" aria-hidden=\"true\" data-wolf-dungeon-status=\"none\" data-wolf-castle-status=\"aboard\" data-wolf-castle-mode=\"audience\" data-wolf-dungeon-reward=\"false\" data-wolf-castle-room=\"royal-archives\" class=\"WolfCastleScene_castle__1vuyQ  \" aria-label=\"Château du Roi — système Wolf\">…</section> aka getByLabel('Château du Roi — système Wolf').nth(1)\n\nCall log:\n  - waiting for locator('[data-wolf-castle-status=\"aboard\"][data-wolf-castle-room=\"royal-archives\"]') to be visible\n    - locator resolved to hidden <section inert=\"\" aria-hidden=\"true\" data-wolf-dungeon-status=\"none\" data-wolf-castle-status=\"aboard\" data-wolf-castle-mode=\"audience\" data-wolf-dungeon-reward=\"false\" data-wolf-castle-room=\"royal-archives\" class=\"WolfCastleScene_castle__1vuyQ  \" aria-label=\"Château du Roi — système Wolf\">…</section>\n"
+        }
+      ],
+      "reportSha256": "f2b944eb58df969e1301dc947e414152f307bc99df8d13234637dc4e49fa8ee5"
+    }
+  ],
+  "scope": "Partial browser results on the published optical-cloak source. Each recipe stopped before the new camouflage; no image in this receipt qualifies that effect.",
+  "v112": {
+    "artifactId": 13402820601,
+    "artifactName": "hunt-closure-v112-browser-b4415567a4683b2fa723d984acc25663ddb4128f",
+    "runId": 42000126165,
+    "jobId": 127152949629,
+    "workflowHeadSha": "66f57a147d3e17aca592d62f3aadbb35ec702db8",
+    "runtimeCommit": "b4415567a4683b2fa723d984acc25663ddb4128f",
+    "runtimeTree": "c9246736e6b60029be183462fb3eb7d68c05c7f7",
+    "headTree": "c9246736e6b60029be183462fb3eb7d68c05c7f7",
+    "treesIdentical": true,
+    "runtimeParents": [
+      "23b48e127e8d058da110f391c7ac3a4b9ef17aad",
+      "66f57a147d3e17aca592d62f3aadbb35ec702db8"
+    ],
+    "expectedDigest": "sha256:6eaaa3acc5cc601d0e401f9bc96b5b1c524a14b0d03e0c0b215cbbcc83fe6be7",
+    "verifiedDigest": "sha256:6eaaa3acc5cc601d0e401f9bc96b5b1c524a14b0d03e0c0b215cbbcc83fe6be7",
+    "bytes": 607831,
+    "files": [
+      "qa-hunt-v112/accessibility-phone.png",
+      "qa-hunt-v112/canopy-native-release.png",
+      "qa-hunt-v112/corpse-rites-gamepad.png",
+      "qa-hunt-v112/corpse-rites.png",
+      "qa-hunt-v112/field-guide-readable.png",
+      "qa-hunt-v112/report.json",
+      "qa-hunt-v112/workshop-cleaned.png",
+      "qa-hunt-lifecycle-v112/mapped-workshop-phone.png",
+      "qa-hunt-lifecycle-v112/mounted-conservation.png",
+      "qa-hunt-lifecycle-v112/mounted-harvest.png",
+      "qa-hunt-lifecycle-v112/report.json",
+      "qa-v109-atlas-integration/run-8v3Auv/actual-worker-cargo-detour.png",
+      "qa-v109-atlas-integration/run-8v3Auv/mobile-cargo-register.png",
+      "qa-v109-atlas-integration/run-8v3Auv/result.json"
+    ],
+    "reports": [
+      {
+        "name": "qa-hunt-v112",
+        "sha256": "fa233bb2ee1f91c647acbcddbe49c3421d1fedd7c7e0731e4f61ed1ed840e58d",
+        "results": [
+          {
+            "name": "native selects save all three glyph timing preferences",
+            "status": "PASS"
+          },
+          {
+            "name": "press, hold and toggle confirmation choices remain available",
+            "status": "PASS"
+          },
+          {
+            "name": "keyboard Space toggles grip without pointer precision; aim persists separately",
+            "status": "PASS"
+          },
+          {
+            "name": "controller reassignment swaps actions and preserves twelve unique bindings",
+            "status": "PASS"
+          },
+          {
+            "name": "field guide opens with the keyboard and reflects remapped jump labels",
+            "status": "PASS"
+          },
+          {
+            "name": "guide distinguishes exhausted grip, corpse harvesting and extraction",
+            "status": "PASS"
+          },
+          {
+            "name": "explicit reset restores a complete serializable profile",
+            "status": "PASS"
+          },
+          {
+            "name": "390px layout fits horizontally and announces scoring/time consequences",
+            "status": "PASS"
+          },
+          {
+            "name": "real accessibility controls, remapping, readable guide and narrow viewport",
+            "status": "PASS"
+          },
+          {
+            "name": "guide immediate extraction cue reflects the actual remapped controller action",
+            "status": "PASS"
+          },
+          {
+            "name": "guide opens and closes by native Enter/Space; eleven steps reach the workshop and stay keyboard reachable",
+            "status": "PASS"
+          },
+          {
+            "name": "390px viewport with 200% root text preserves wrapped guide content and the final conservation step",
+            "status": "PASS"
+          },
+          {
+            "name": "field guide native disclosure, remapped cue and 200% text",
+            "status": "PASS"
+          },
+          {
+            "name": "denied write leaves the actual conservation panel and stock unconfirmed",
+            "status": "PASS"
+          },
+          {
+            "name": "actual panel drives all four persistent manual stages exactly once",
+            "status": "PASS"
+          },
+          {
+            "name": "free sharpening and explicit counted reserve preserve possession",
+            "status": "PASS"
+          },
+          {
+            "name": "actual corpse menu starts, interrupts and completes the native flaying operation",
+            "status": "PASS"
+          },
+          {
+            "name": "keyboard: fixture keyboard/pointer or actual gamepad polling feeds the real canopy pendulum",
+            "status": "PASS"
+          },
+          {
+            "name": "touch: fixture keyboard/pointer or actual gamepad polling feeds the real canopy pendulum",
+            "status": "PASS"
+          },
+          {
+            "name": "gamepad: fixture keyboard/pointer or actual gamepad polling feeds the real canopy pendulum",
+            "status": "PASS"
+          },
+          {
+            "name": "default: real gamepad opens, navigates, activates and closes the actual corpse menu while simulation continues",
+            "status": "PASS"
+          },
+          {
+            "name": "remapped: real gamepad opens, navigates, activates and closes the actual corpse menu while simulation continues",
+            "status": "PASS"
+          }
+        ],
+        "errors": []
+      },
+      {
+        "name": "qa-hunt-lifecycle-v112",
+        "sha256": "eaaf548a4b81e2515a2afee7af7d2c4c13245904fff5caad94b5892e831f32b5",
+        "results": [
+          {
+            "name": "mounted briefing owns input and freezes the native simulation until consent",
+            "status": "PASS"
+          },
+          {
+            "name": "actual window keyboard handlers and rAF move, then release the hunter",
+            "status": "PASS"
+          },
+          {
+            "name": "actual pointer capture controls, release and pointer cancellation clear held touch",
+            "status": "PASS"
+          },
+          {
+            "name": "mounted polling handles an emulated controller and native disconnection without stale held input",
+            "status": "PASS"
+          },
+          {
+            "name": "injected blur event reaches the actual listener, pauses, emits its checkpoint callback and clears keyboard state until explicit resume",
+            "status": "PASS"
+          },
+          {
+            "name": "actual unmount cancels the frame and removes old native listeners",
+            "status": "PASS"
+          },
+          {
+            "name": "mounted native menu analyzes, flays and harvests one finite physical source during rAF simulation",
+            "status": "PASS"
+          },
+          {
+            "name": "native extraction segment boards through actual input and settles the harvested identity through the unmodified GameClient callback",
+            "status": "PASS"
+          },
+          {
+            "name": "real storage refusal and readback recovery drive the actual station callbacks without double debit",
+            "status": "PASS"
+          },
+          {
+            "name": "native station completes remaining manual phases and survives a fresh document load from production save bytes",
+            "status": "PASS"
+          },
+          {
+            "name": "native workshop remains usable at 390 px and its exit button supports Tab and Enter",
+            "status": "PASS"
+          },
+          {
+            "name": "actual menu hook navigates and confirms with standard bindings, then uses saved workshop remaps",
+            "status": "PASS"
+          }
+        ],
+        "errors": []
+      }
+    ]
+  },
+  "v94KnownRegressionChecks": {
+    "runId": 42000126207,
+    "models": {
+      "jobId": 127152949480,
+      "conclusion": "success",
+      "inventoryStep": 67,
+      "inventoryConclusion": "success",
+      "historicalPersistenceStep": 33,
+      "historicalPersistenceConclusion": "success"
+    },
+    "application": {
+      "jobId": 127152950049,
+      "clanWarStep": 73,
+      "clanWarConclusion": "success",
+      "workflowNotYetComplete": true,
+      "conclusion": "success"
+    }
+  },
+  "correctiveChanges": [
+    {
+      "file": "tests/gauntlet-mission-resume-v142.test.mjs",
+      "cause": "Old textual configuration shape and missing real validator imports in the extracted VM.",
+      "correction": "Validate the unique real launch run and capture through TypeScript AST; load all six real helpers. Preserve every owner, run and visible-gauntlet assertion."
+    },
+    {
+      "file": "scripts/qa-wolf-arrival-browser.mjs",
+      "cause": "The CSS resize sentinel still required a castle/arrival panel after native departure had correctly unmounted it.",
+      "correction": "Require panel padding only when that context existed before resize; retain real viewport/media probes and unchanged overflow assertions."
+    },
+    {
+      "file": "scripts/qa-dev-travel-browser.mjs",
+      "cause": "A streamed inactive castle copy explicitly marked inert and aria-hidden matched the global locator.",
+      "correction": "Use the active section, verify its developer destination against the URL, and preserve room, source-image, input and storage assertions."
+    },
+    {
+      "file": "scripts/qa-planet-arrival-spatial.mjs",
+      "cause": "Six PNG captures plus complete DOM measurements consumed the five-second native egress interval.",
+      "correction": "Separate uninterrupted geometry sampling from photographs on independent native playbacks. Capture lossless PNG through the pinned Chromium CDP API with speed-optimized encoding. Check playing status, shot, optical phase and ground contact immediately before and after each photograph; then measure full geometry. No runtime clock, DOM or product source is changed."
+    }
+  ],
+  "localFollowup": {
+    "checkedAt": "2026-11-05T09:31:18.479013+00:00",
+    "v142": {
+      "passed": 7,
+      "failed": 0,
+      "skipped": 0
+    },
+    "eslint": {
+      "files": 4,
+      "maxWarnings": 0,
+      "exitCode": 0
+    },
+    "syntax": {
+      "scripts": 3,
+      "exitCode": 0
+    },
+    "applicationSourcesUnchanged": true,
+    "priorApplicationValidation": "../local-validation.json",
+    "sourceSha256": {
+      "scripts/qa-dev-travel-browser.mjs": "45b1f8c49d343e494486f36edd8ff7ff9ce0f9c15894570440454ee31f08a553",
+      "scripts/qa-planet-arrival-spatial.mjs": "ec3ab52faa42172f8e78faca0d0cabf2bf77cda04eaf1271e142d2a8cc3c1bbf",
+      "scripts/qa-wolf-arrival-browser.mjs": "64cc7d484322ebb45dc829de1234fd2be395dfd895a5c23b6ba0aabfe71f816f",
+      "tests/gauntlet-mission-resume-v142.test.mjs": "47d79c7a5dd5486bd0554c671677973a46dd61faf2964246d6c5fe3805f80766"
+    },
+    "browserStatus": "Pending the corrected recipe publication."
+  }
+}

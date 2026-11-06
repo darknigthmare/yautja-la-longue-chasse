@@ -5,8 +5,8 @@
     "bytes": 264999,
     "sha256": "8eee8a5f5a043f2a67477bc6bcff97fffb1ee1666864bd7aed60c7a6c21ca138"
   },
-  "files": 2158,
-  "bytes": 1092273567,
+  "files": 2179,
+  "bytes": 1092739599,
   "entries": [
     {
       "path": ".openai/hosting.json",
@@ -45,8 +45,8 @@
     },
     {
       "path": "app/dev/destinations.ts",
-      "bytes": 12481,
-      "sha256": "97bc2687cecee02e4de0485d461ac6a9caf1a2f6af1ab51318f968051bdea51b"
+      "bytes": 15480,
+      "sha256": "d47184789fe95e9834152964375d961296280ab52d09401fdab6da786853c2a7"
     },
     {
       "path": "app/dev/dev-travel.module.css",
@@ -70,8 +70,8 @@
     },
     {
       "path": "app/dev/session.tsx",
-      "bytes": 27408,
-      "sha256": "ecda890cbd07b3ba7b80b55cbfcd5877252e6b3802225261ab4fbefae7020623"
+      "bytes": 29465,
+      "sha256": "3bb2e9d50d71b2e89691e643fc67f7146652567acc8cb596e6c4f46ab6233382"
     },
     {
       "path": "app/dialogues/page.tsx",
@@ -455,8 +455,8 @@
     },
     {
       "path": "app/game/ControlBindingsPanel.tsx",
-      "bytes": 6218,
-      "sha256": "b6f4e4e0e00c03abdd698baed6451c4d6bc5f552dfae1a5dc6485b05561df54b"
+      "bytes": 6261,
+      "sha256": "7809b3eeb32a737cf948c6cc21510cd478c23b364ce8dd5ab00d26d480907808"
     },
     {
       "path": "app/game/DecalSurfaceV133.tsx",
@@ -595,8 +595,8 @@
     },
     {
       "path": "app/game/GameClient.tsx",
-      "bytes": 331743,
-      "sha256": "73eef05f5d9ec1cadfa289b94f18ba06a1765beb82469d746ca5e825adb2712c"
+      "bytes": 344145,
+      "sha256": "992c07dec64f7b4061b7d06ab2b57fe25fa065e6006b1e78eba9927e66658d64"
     },
     {
       "path": "app/game/GameReserveEntryV104.module.css",
@@ -955,8 +955,8 @@
     },
     {
       "path": "app/game/HomeworldModularHunter.tsx",
-      "bytes": 10345,
-      "sha256": "97598b55e8d7b37422307f3af33e98ffae03e0627c89d10afc5d1e1823ccf38d"
+      "bytes": 14582,
+      "sha256": "7a6d86c8e5cc3fc7efa9acf9046899a15e79837ca3b4bc0ed6b49c5a0b81c734"
     },
     {
       "path": "app/game/HomeworldNativePropV64.tsx",
@@ -1195,8 +1195,8 @@
     },
     {
       "path": "app/game/HuntCanvas.tsx",
-      "bytes": 412581,
-      "sha256": "d0981b72c2ea468f5989d768a2b29671472e7ae6ffb8ed5eb51404f87c7f7631"
+      "bytes": 465503,
+      "sha256": "8cb850ed2854a369f9ff11ff7a3c1ab0e62c1b323b01c9ce12ee2cbda93302a5"
     },
     {
       "path": "app/game/HuntFieldGuideV112.tsx",
@@ -1235,13 +1235,23 @@
     },
     {
       "path": "app/game/HunterRigPreview.tsx",
-      "bytes": 27263,
-      "sha256": "f9a7fb5029f08d0deec205af1fbfe5172d0bb5c32f6885c5424479886a6f876c"
+      "bytes": 31627,
+      "sha256": "98cf20082796c1ab7e788e6e7416e72a45906956f7b29bac57538fcc2fa6fc4a"
     },
     {
       "path": "app/game/IceExplorationMap.tsx",
       "bytes": 5652,
       "sha256": "1b0372c45110ace2ffa12529ff3655d1f3918a9775c381dc7432ad1f1ed26f1f"
+    },
+    {
+      "path": "app/game/InsertionPlanPanel.module.css",
+      "bytes": 3228,
+      "sha256": "eeb01b22389dda894f45bf0b43a88c08e6cdde45b215bea324761b5cdf72864b"
+    },
+    {
+      "path": "app/game/InsertionPlanPanel.tsx",
+      "bytes": 10328,
+      "sha256": "b1a75803f26e6a997da4bba9e0c8596eb889cf9dc50ab0d2c0c16a79cdbde110"
     },
     {
       "path": "app/game/JungleHunterLayeredV134.module.css",
@@ -1415,13 +1425,13 @@
     },
     {
       "path": "app/game/PlanetArrivalCinematic.module.css",
-      "bytes": 9539,
-      "sha256": "79ab4c8985d28cbb7b823a207d3198e5fa80ace9252fe03f4e8f7f3c96c7431c"
+      "bytes": 15234,
+      "sha256": "37aa7bb09b144de888c86cdbde731ad18aa7d3b08ab452d01e1b4d11d5380fc3"
     },
     {
       "path": "app/game/PlanetArrivalCinematic.tsx",
-      "bytes": 28688,
-      "sha256": "950d127782f12c0ae4fa8a94dc81fbc6e43005474ac4a7264b89f2aecee4a90c"
+      "bytes": 73154,
+      "sha256": "29532812b171fc06d083e937268d164c9b24501d9df3a04a95cf7d5c53d2ed7c"
     },
     {
       "path": "app/game/PlanetEarthReferenceV147.module.css",
@@ -1574,6 +1584,16 @@
       "sha256": "17c535e9c16b4fd984a0b7fbf083b715d5ff7db3f5c042b0cc0726e3eac368e7"
     },
     {
+      "path": "app/game/ShipInterior25D.module.css",
+      "bytes": 11604,
+      "sha256": "df7e4691bdcb698c2bd9f3611f8a6bdbcf876dfb0a42cf9e7789b6a5a3c8d073"
+    },
+    {
+      "path": "app/game/ShipInterior25D.tsx",
+      "bytes": 30403,
+      "sha256": "2b11c7f06d35fa73424d635e41f452eb7576f611c10e3421a379a259c82d2a6c"
+    },
+    {
       "path": "app/game/ShipLevelScene.tsx",
       "bytes": 25417,
       "sha256": "66b241f5fe5916ba36441bb40196c03c10ee084ac802eb98d235ad4daeae4e76"
@@ -1695,8 +1715,8 @@
     },
     {
       "path": "app/game/buildInfo.ts",
-      "bytes": 945,
-      "sha256": "600fbc6a87e43e9344edabedf3b5885d7226f7d9b1365e54c596e3ef82195c91"
+      "bytes": 977,
+      "sha256": "0770176041ca67f32d7988bcd448a4d5322007c686020dfdb460e6076fab333a"
     },
     {
       "path": "app/game/catalogueAppearance.ts",
@@ -1735,8 +1755,8 @@
     },
     {
       "path": "app/game/controlBindingLabels.ts",
-      "bytes": 1191,
-      "sha256": "f8cef710e2f376fe732ce0ce3f8892ebe7ed69d7f1e99070e203984c38a9559d"
+      "bytes": 1225,
+      "sha256": "3a4ba284a71fa9f624710cd1d19a2e305953c5325035af05c23b81ad34b0a3a7"
     },
     {
       "path": "app/game/data.ts",
@@ -2700,8 +2720,8 @@
     },
     {
       "path": "app/game/hunterDreadsV63.ts",
-      "bytes": 6585,
-      "sha256": "7bb5cfae54495cd99e0fbfb6f8c5718569bf4085b64a29a0a6bdbd163c8cdc80"
+      "bytes": 9467,
+      "sha256": "e8307b5505bd7bd3f011494fbd00d5ced06ebff86ddf98d2f2c06016ccae4b2f"
     },
     {
       "path": "app/game/hunterHeadArtV62.ts",
@@ -2745,8 +2765,8 @@
     },
     {
       "path": "app/game/hunterVisuals.ts",
-      "bytes": 10891,
-      "sha256": "692b5119292e716a52262b259dba85a69314e0b78c143b6c645701fdec9dab87"
+      "bytes": 16195,
+      "sha256": "8e0fc565a56904952d1d39092d9071582422e5289b89fdb13ae7f878c4a85882"
     },
     {
       "path": "app/game/iceExplorationRendering.ts",
@@ -2900,8 +2920,8 @@
     },
     {
       "path": "app/game/pitFighterRendering.ts",
-      "bytes": 10780,
-      "sha256": "ab73af0717f0ad1ccf665942bef366d05730a3ca5d1703542e6f92cdc535ab1d"
+      "bytes": 12529,
+      "sha256": "148c844270da531e312319ee5712c57cd0a7a44a78bd93a6e6607e14bf5b8f27"
     },
     {
       "path": "app/game/pitFinisherRenderingV80.ts",
@@ -3160,8 +3180,8 @@
     },
     {
       "path": "app/game/save.ts",
-      "bytes": 90960,
-      "sha256": "78c7c745a8ceb7151889563cd54a2d1246e5fbd3bbca7131804a64dc13627c20"
+      "bytes": 92628,
+      "sha256": "eb4858a4a977bf34215e1872832fa5f0993f0deafd7818d22b7941aa8f4871cf"
     },
     {
       "path": "app/game/ship-level.css",
@@ -3172,6 +3192,11 @@
       "path": "app/game/shipCatalogue.ts",
       "bytes": 38039,
       "sha256": "458d077948c3f3e2f867fdc441e64423808cfb0cea54582b0c61762b1705d396"
+    },
+    {
+      "path": "app/game/shipInterior25dArt.ts",
+      "bytes": 2833,
+      "sha256": "ec64768feeae028cb53b71d1010354ce233fd3e58e3602975cfc78908af4c920"
     },
     {
       "path": "app/game/shipInteriorKit.ts",
@@ -3185,8 +3210,8 @@
     },
     {
       "path": "app/game/sound.ts",
-      "bytes": 39587,
-      "sha256": "3fbb07aba852ebaf7854e0eed161ef3fa60068d2e43b4e0793b52a57fe1d26de"
+      "bytes": 40926,
+      "sha256": "cf0e124639cb3541cdb43453344fee051fa90dd08b8f2c2c18b64f6541b9b138"
     },
     {
       "path": "app/game/spriteContact.ts",
@@ -3945,8 +3970,8 @@
     },
     {
       "path": "app/game/systems/controlBindings.ts",
-      "bytes": 32661,
-      "sha256": "75d493beb7c72279152408ab1903d0537c9544ce1fecf23220e7c9d36583a51e"
+      "bytes": 34224,
+      "sha256": "b29d8c5022ad5413180cfc5c1d57cdf9936211571bad759c6e00620fa0517993"
     },
     {
       "path": "app/game/systems/corpseDiscoveryV112.ts",
@@ -4080,8 +4105,8 @@
     },
     {
       "path": "app/game/systems/gauntletRigSpritesV139.ts",
-      "bytes": 691,
-      "sha256": "d3798bb504f7e5c04e9bc1595c81cdb7d8906584f893f55aec90a07a090dda67"
+      "bytes": 3916,
+      "sha256": "0811a2925197b0ad54d22b74b6ba1aa2d5217c331b505827eb0beaa0c9e1c791"
     },
     {
       "path": "app/game/systems/glassDesert.ts",
@@ -5064,6 +5089,11 @@
       "sha256": "7678350bb36568fcb1b4ae1c593418f92fc8a256cb82641cd321c8bb2334762b"
     },
     {
+      "path": "app/game/systems/huntInsertion.ts",
+      "bytes": 24750,
+      "sha256": "1244239e249fdb937422ace051d64e5227db14542f35db1743af34a38fab07e0"
+    },
+    {
       "path": "app/game/systems/huntLevelCoherenceV157.ts",
       "bytes": 6967,
       "sha256": "9e3f50ed47108e37c84ae6b8070f748a81fd9fc9c926ff13b52a0d33b1191d75"
@@ -5072,6 +5102,11 @@
       "path": "app/game/systems/huntMeleeCombat.ts",
       "bytes": 30249,
       "sha256": "de0d351da0b00cad82ff2b45aad3b00196faa4b80e2df303771b65484b0938a4"
+    },
+    {
+      "path": "app/game/systems/huntPodRecovery.ts",
+      "bytes": 8576,
+      "sha256": "a6be60b6bf1eb155c2878fa90b54d6cc2ca93a86d5ecfba17a7541b81ba02332"
     },
     {
       "path": "app/game/systems/huntRitesRuntimeV77.ts",
@@ -5530,23 +5565,83 @@
     },
     {
       "path": "app/game/systems/planetArrival.ts",
-      "bytes": 12677,
-      "sha256": "4ac97bda5ccfac11d3e9449e69c8d911332e21feb9f2d1582b71d42395de1d7b"
+      "bytes": 13603,
+      "sha256": "ee21998d76714956e10bdebc3b25c36238ee7f0e67940a032fea87eb9b799259"
+    },
+    {
+      "path": "app/game/systems/planetArrivalArt.ts",
+      "bytes": 11957,
+      "sha256": "f72ceaa2b6ae8e350ab76a74e61dd11d70fe9a92a95afd5e56df363057277c99"
     },
     {
       "path": "app/game/systems/planetArrivalAudio.ts",
-      "bytes": 6716,
-      "sha256": "064998a534d4b82f4f03760dcda40ba84e88510b4b5400d610cea61643279f1c"
+      "bytes": 18649,
+      "sha256": "7ce287c0bda6938fb13d91f849d13730e71b449d8c92f771619552c966ce8992"
+    },
+    {
+      "path": "app/game/systems/planetArrivalGroundArt.ts",
+      "bytes": 6820,
+      "sha256": "d0d7f257757c458b8944a8ddd95dc9bea9cc250083899918fc6f5ccaab421e22"
+    },
+    {
+      "path": "app/game/systems/planetArrivalPodArt.ts",
+      "bytes": 1907,
+      "sha256": "d056258f7aef9421f8a6c777e6c657c1d3917be7d691bbbfe00a97a56889f5c7"
+    },
+    {
+      "path": "app/game/systems/planetArrivalPodFlight.ts",
+      "bytes": 5354,
+      "sha256": "991ee6e31a3b0a25e59c7e89296a69e5073159e7fa98158c777ddb2c0f77d3dd"
+    },
+    {
+      "path": "app/game/systems/planetArrivalPresentation.ts",
+      "bytes": 15979,
+      "sha256": "20789a02f321f4533e48408663a81140273b78d74c52f57e60ed4967fce75831"
     },
     {
       "path": "app/game/systems/planetArrivalRun.ts",
-      "bytes": 2953,
-      "sha256": "023d13ad3e2cfb02c5250e19a306effe67894e941d79a632bc908b6212a73363"
+      "bytes": 3399,
+      "sha256": "81fde7e75834779c9cde9b57836de6260aa1db24fe3b5671bb36950db2251bd4"
+    },
+    {
+      "path": "app/game/systems/planetArrivalShipEffects.ts",
+      "bytes": 2849,
+      "sha256": "ed77b5c8757cc7c6b78e63339564c7107058eb6fa37c97d621347031ce8f63e6"
+    },
+    {
+      "path": "app/game/systems/planetArrivalShipMotion.ts",
+      "bytes": 26314,
+      "sha256": "a1b89c7b892e732aac281596ab038ef0961306bfd48e5963facc07e23bf93e0b"
+    },
+    {
+      "path": "app/game/systems/planetArrivalShipMotionCalibrations.ts",
+      "bytes": 17337,
+      "sha256": "c6fb47c806fdcccaa0b898fd6b60e5477ce5ba2906196548673968426fd11848"
+    },
+    {
+      "path": "app/game/systems/planetArrivalSpatial.ts",
+      "bytes": 9326,
+      "sha256": "bce53ce72cff85bdef9d9351066f70d1920a385d131751bf0bf71da430a7c020"
+    },
+    {
+      "path": "app/game/systems/planetArrivalVfx.ts",
+      "bytes": 5643,
+      "sha256": "b576480a7cd167df926b22d0c3d4fcddfda5084388e89d07e86c946235947c6c"
+    },
+    {
+      "path": "app/game/systems/planetArrivalVfxArt.ts",
+      "bytes": 62156,
+      "sha256": "65a5c4ccaa2b554dfa95465bcec7c544c9d04982837d3ce2ec2d20dabde7ecab"
     },
     {
       "path": "app/game/systems/planetExportZipV114.ts",
       "bytes": 4421,
       "sha256": "09d5b6c662776c3f89a25ff360fe77e1574121cc0dce9f519d88f0b6d988167a"
+    },
+    {
+      "path": "app/game/systems/planetInsertion.ts",
+      "bytes": 13452,
+      "sha256": "d34d3cac8ddf05980d778f8f4028976b22bd846c807dfcf39457b9ec8af76b94"
     },
     {
       "path": "app/game/systems/planetLoreSettingsV148.ts",
@@ -5619,6 +5714,16 @@
       "sha256": "5983d8047a80b23e76a43e0033068b7463d8be5399c16c5ece0fe70741f27ee3"
     },
     {
+      "path": "app/game/systems/shipInsertionEnergy.ts",
+      "bytes": 6511,
+      "sha256": "00e9a554acee76c3f0e186ad376dc87bf46b4f0bc8b5999815716109080380ca"
+    },
+    {
+      "path": "app/game/systems/shipInterior25d.ts",
+      "bytes": 22737,
+      "sha256": "7305c70173cb2963f78bd527340384fc3b49fee32b8625cadd323706b94367a8"
+    },
+    {
       "path": "app/game/systems/shipLevelLayout.ts",
       "bytes": 11769,
       "sha256": "620c91e73ed49d74363f6dc567811d71cca0e4759616238c7d0cc9e5fd99d680"
@@ -5630,8 +5735,8 @@
     },
     {
       "path": "app/game/systems/shipPreparationV88.ts",
-      "bytes": 16214,
-      "sha256": "15d3339c547e5e4d50b1c6b304a7c6c07353bed6f0d713804d51c913c6e7a62e"
+      "bytes": 17035,
+      "sha256": "c1d16ebcdcb4b760bfbc6298ecccf73c842d40153f323c3c576fd20a671baf6d"
     },
     {
       "path": "app/game/systems/shipTrainingAcknowledgementV94.ts",
@@ -5765,8 +5870,8 @@
     },
     {
       "path": "app/game/types.ts",
-      "bytes": 19442,
-      "sha256": "dd82b8db49fa7ca7e31d8d0a414a993272d436cbbf5d84564eaa3e4c17bdfe67"
+      "bytes": 19853,
+      "sha256": "f57a70fb180a0476ca516e7f45d458ed0cb9c6fcd93f2f7e17cf33e0399f31bb"
     },
     {
       "path": "app/game/useGeneratedWarCatalogV102.ts",
@@ -9980,8 +10085,8 @@
     },
     {
       "path": "scripts/historical-excel-context-homeworld-v112.mjs",
-      "bytes": 2928,
-      "sha256": "8a5f325db1873183f8e329e69d438e4cb34940e2dbab81a13a54e9c17e51cb19"
+      "bytes": 3198,
+      "sha256": "d730903d9f6960632c99c8ffac52e38a94cd1517fdeb159ffe804fd86ef85b46"
     },
     {
       "path": "scripts/homeworld-qa-model-v64.mjs",
@@ -10105,8 +10210,8 @@
     },
     {
       "path": "scripts/qa-hunt-lifecycle-browser-v112.mjs",
-      "bytes": 22957,
-      "sha256": "2915f5a563e4837eac8bae8e4857df16d202d540f4091193e6afcaaedb4da9c5"
+      "bytes": 23190,
+      "sha256": "b2855281e3df130010e9fe5d9230c562f075d4317a453583bcc01c2a16bf4c62"
     },
     {
       "path": "scripts/qa-hunt-mechanics-browser-v112.mjs",
@@ -10525,8 +10630,8 @@
     },
     {
       "path": "tests/homeworld-continuation-integration-v111.test.mjs",
-      "bytes": 29168,
-      "sha256": "9750db0204ffcb04d69165e94e72cb4f512f6aa0bc5e58e283d2111505cbdd67"
+      "bytes": 31725,
+      "sha256": "47c0c000ba9f14e9b0a7c607355f988b0a00fe96cb907a8f6a254d1af2a6a62b"
     },
     {
       "path": "tests/homeworld-current-production-v113.test.mjs",
@@ -10555,8 +10660,8 @@
     },
     {
       "path": "tests/homeworld-excel-history-v112.test.mjs",
-      "bytes": 4133,
-      "sha256": "046ca0db32eafab9d8ff6ce7942adb9a913ea7284502fdd7cf5bdb8bd4115681"
+      "bytes": 5523,
+      "sha256": "b5206dbad0b6b262475e86f49ca7efae83a689d92d53fb44d011f7f587bcbadd"
     },
     {
       "path": "tests/homeworld-forge-fire-v113.test.mjs",

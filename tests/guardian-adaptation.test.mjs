@@ -1,13 +1,11 @@
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
+import { createRequire } from "node:module";
+import { fileURLToPath } from "node:url";
 import { test } from "node:test";
 import { runInNewContext } from "node:vm";
 import ts from "typescript";
 import { build } from "esbuild";
-const explorationBundle = await build({ stdin: { contents: 'export * from "./app/game/systems/explorationProgress"; export * from "./app/game/systems/metroidvaniaPilot"; export * from "./app/game/systems/explorationRegions"; export * from "./app/game/systems/jumpAssist"; export * from "./app/game/systems/platformCollision"; export {worldBlueprintFor} from "./app/game/systems/worldBlueprints"; export {cancelHuntMeleeAttack} from "./app/game/systems/huntMeleeCombat";', resolveDir: process.cwd(), loader: "ts" }, bundle: true, write: false, platform: "node", format: "cjs" });
-const explorationModule = { exports: {} };
-runInNewContext(explorationBundle.outputFiles[0].text, { module: explorationModule, exports: explorationModule.exports });
-
 const systemsSource = await readFile(new URL("../app/game/systems/huntSystems.ts", import.meta.url), "utf8");
 const systemsCode = ts.transpileModule(systemsSource, {
   compilerOptions: { target: ts.ScriptTarget.ES2022, module: ts.ModuleKind.ESNext },
@@ -15,6 +13,19 @@ const systemsCode = ts.transpileModule(systemsSource, {
 const hunt = await import(`data:text/javascript;base64,${Buffer.from(systemsCode).toString("base64")}`);
 const canvasSource = await readFile(new URL("../app/game/HuntCanvas.tsx", import.meta.url), "utf8");
 const canvasAst = ts.createSourceFile("HuntCanvas.tsx", canvasSource, ts.ScriptTarget.Latest, true, ts.ScriptKind.TSX);
+// The save probe uses the complete production closure: discovery, rites,
+// insertion, geometry and clone helpers must not be replaced with test stubs.
+const nativeBundle = await build({ stdin: {
+  contents: `${canvasSource.replace("export default function HuntCanvas", "function HuntCanvas")}
+export { makeGameState, captureCheckpoint, restoreCheckpoint };
+export { defaultSave } from "./save";
+export { MISSION_BY_ID } from "./data";
+`, resolveDir: fileURLToPath(new URL("../app/game/", import.meta.url)), loader: "tsx",
+}, bundle: true, write: false, platform: "node", format: "cjs", jsx: "automatic",
+loader: { ".module.css": "empty" }, external: ["react", "react/jsx-runtime", "react-dom"], logLevel: "silent" });
+const nativeModule = { exports: {} };
+runInNewContext(nativeBundle.outputFiles[0].text, { module: nativeModule, exports: nativeModule.exports, require: createRequire(import.meta.url) });
+const native = nativeModule.exports;
 function canvasFunction(name, dependencies) {
   const node = canvasAst.statements.find((candidate) => ts.isFunctionDeclaration(candidate) && candidate.name?.text === name);
   assert.ok(node, `${name}: missing Canvas integration`);
@@ -139,36 +150,25 @@ test("legacy checkpoints initialize adaptation safely and new checkpoints resume
 });
 
 test("restoring an old dead-boss checkpoint releases its stale energy lock", () => {
-  const clone = (value) => structuredClone(value);
-  const restore = canvasFunction("restoreCheckpoint", {
-    ...explorationModule.exports,
-    clonePlayerState: clone, cloneEnemyState: clone, cloneAiBrains: clone,
-    cloneProjectileState: clone, cloneArsenalRuntime: clone, cloneTrophyRitual: clone,
-    cloneBossMechanics: canvasFunction("cloneBossMechanics", {}),
-    clamp, VIEW_WIDTH: 1280, VIEW_HEIGHT: 720, getWorldScreenAtX: () => ({ id: "arena" }),
-    normalizeVisitedScreenIds: (_missionId, ids) => ids,
-    discoverWorldScreen: (_missionId, ids) => ids,
-  });
-  const checkpoint = {
-    player: { x: 1000, y: 508, height: 116, width: 72, health: 80, maxHealth: 100, stamina: 90,
-      maxStamina: 100, energy: 40, maxEnergy: 100, cloaked: false },
-    phase: "trophy", elapsed: 300, boss: { alive: false, health: 0 },
-    bossMechanics: { ...fresh(), guardianAdaptation: undefined },
-    energyWeaponsLocked: true, aiBrains: {}, mud: {}, arsenal: {}, trophyRitual: null,
-    enemies: [], projectiles: [], scentNodes: [], noiseEvents: [], tracks: [],
-    scanNodes: [], recoveryNodes: [], purgeConsoleNodes: [], regularTrophyDrops: [],
-    spawnedWaves: [], completedObjectives: [], honorEvents: [], brokenPillarIds: [], traps: [],
-  };
-  const state = { player: clone(checkpoint.player), nextCheckpointIndex: 1,
-    world: { width: 5000, missionId: "ruins-ancient-guardian" } };
+  const save = native.defaultSave("2026-11-05T00:00:00.000Z");
+  const mission = native.MISSION_BY_ID["ruins-ancient-guardian"];
+  const state = native.makeGameState(mission, save.loadout, save.inventory, "hunter", save.appearance,
+    false, false, "guardian-legacy-resume", save.exploration);
+  state.phase = "trophy"; state.elapsed = 300; state.boss.alive = false; state.boss.health = 0;
+  state.energyWeaponsLocked = true;
+  const checkpoint = native.captureCheckpoint(state, "resume");
+  delete checkpoint.bossMechanics.guardianAdaptation;
+  delete checkpoint.huntRites;
+  delete checkpoint.ecosystem;
+  delete checkpoint.insertion;
   for (const mode of ["resume", "retry"]) {
-    const restored = restore(state, checkpoint, mode);
+    const restored = native.restoreCheckpoint(state, checkpoint, mode);
     assert.equal(restored.energyWeaponsLocked, false, `${mode}: no permanent postmortem lock`);
     assert.equal(restored.boss.alive, false);
   }
   assert.equal(checkpoint.energyWeaponsLocked, true, "normalization does not mutate the saved input");
-  const living = { ...checkpoint, boss: { alive: true, health: 30 }, bossMechanics: field() };
-  assert.equal(restore(state, living, "resume").energyWeaponsLocked, true,
+  const living = { ...checkpoint, boss: { ...checkpoint.boss, alive: true, health: 30 }, bossMechanics: field() };
+  assert.equal(native.restoreCheckpoint(state, living, "resume").energyWeaponsLocked, true,
     "an actual living-boss field survives restoration until the next decision");
 });
 

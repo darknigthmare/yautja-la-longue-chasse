@@ -6,7 +6,7 @@ import { homeworldQaModelV64 } from '../scripts/homeworld-qa-model-v64.mjs';
 
 const api = homeworldQaModelV64(process.cwd(), [
   '../../dev/destinations.ts', '../shipCatalogue.ts', '../hunterLore.ts',
-  'planetArrival.ts', 'planetArrivalRun.ts', 'wolfCastle.ts',
+  'planetArrival.ts', 'planetArrivalRun.ts', 'planetInsertion.ts', 'wolfCastle.ts',
 ]);
 const source = fs.readFileSync('app/dev/session.tsx', 'utf8');
 const tree = ts.createSourceFile('session.tsx', source, ts.ScriptTarget.Latest, true, ts.ScriptKind.TSX);
@@ -62,7 +62,7 @@ function mountSession(id) {
     get save() { return environment.saveRef.current; } };
 }
 
-test('all eight native arrivals pause, resume and hand off once without changing a campaign document', () => {
+test('all native arrivals and explicit insertion variants pause, resume and hand off once without changing a campaign document', () => {
   for (const destination of api.DEV_DESTINATIONS.filter(entry => entry.kind === 'arrival')) {
     const run = mountSession(destination.id), host = run.environment;
     const savedBytes = JSON.stringify(run.save);
@@ -118,6 +118,8 @@ test('arrival checkpoints reject another owner, run, mission, ship, preset, enco
     { personalShipId: api.SHIP_IDS.find(id => id !== initial.personalShipId) },
     { hunterPresetId: api.HUNTER_PRESETS.find(preset => preset.id !== initial.hunterPresetId).id },
     { encounterRun: initial.encounterRun + 1 },
+    { insertion: { version: 1, method: 'ship', team: 'solo' } },
+    { insertion: { version: 1, method: 'pod', team: 'triad' } },
   ];
   for (const change of changes) {
     const other = api.startPlanetArrival(api.createPlanetArrival({ ...initial, ...change }));
@@ -133,6 +135,27 @@ test('arrival checkpoints reject another owner, run, mission, ship, preset, enco
   host.arrivalFixture.run.configuration.inventory = null;
   assert.equal(host.finishArrival(api.requestPlanetArrivalHandoff(advanced)), false, 'the frozen run must also validate');
   assert.equal(run.arrival.status, 'playing');
+});
+
+test('a ship or triad session rejects a substituted insertion plan at checkpoint and handoff', () => {
+  for (const id of ['arrival-ship-jungle-vey', 'arrival-triad-jungle-vey', 'arrival-ship-triad-jungle-vey', 'arrival-ship-cloaked-triad-jungle-vey']) {
+    const run = mountSession(id), host = run.environment;
+    const initial = run.arrival;
+    for (const insertion of [undefined, { version: 1, method: initial.insertion.method === 'ship' ? 'pod' : 'ship', team: initial.insertion.team },
+      { ...initial.insertion, team: initial.insertion.team === 'solo' ? 'triad' : 'solo' },
+      ...(initial.insertion.shipCloak ? [{ ...initial.insertion, shipCloak: false }] : [])]) {
+      const substituted = api.startPlanetArrival(api.createPlanetArrival({ ...initial, insertion }));
+      assert.equal(api.inspectPlanetArrival(substituted).status, 'valid');
+      assert.equal(host.checkpointArrival(substituted), false, id);
+      assert.equal(host.finishArrival(api.requestPlanetArrivalHandoff(substituted)), false, id);
+    }
+    const pending = api.requestPlanetArrivalHandoff(api.startPlanetArrival(initial));
+    assert.equal(host.finishArrival(pending), true);
+    assert.deepEqual(run.arrival.insertion, initial.insertion);
+    assert.deepEqual(host.arrivalFixture.run.configuration.insertion, initial.insertion);
+    assert.equal(host.arrivalFixture.run.configuration.insertionShipId, initial.personalShipId);
+    assert.equal(run.observations.writes.length, 0);
+  }
 });
 
 test('leaving a presentation invalidates its late handoff even when a reset has the same synthetic owner', () => {

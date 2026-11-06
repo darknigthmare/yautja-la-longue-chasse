@@ -16,20 +16,21 @@ const assetsRequired = process.env.WOLF_ARRIVAL_REQUIRE_ASSETS !== '0';
 const headed = process.env.WOLF_ARRIVAL_HEADED === '1';
 await fs.mkdir(out, { recursive: true });
 const bundle = await build({
-  stdin: { contents: "export {defaultSave,SAVE_STORAGE_KEY} from './app/game/save.ts'; export {ACTIVE_HUNT_STORAGE_KEY} from './app/game/systems/activeHuntSave.ts'; export {GALAXY_NAVIGATION} from './app/game/galaxyNavigation.ts';", resolveDir: root },
+  stdin: { contents: "export {defaultSave,SAVE_STORAGE_KEY} from './app/game/save.ts'; export {ACTIVE_HUNT_STORAGE_KEY} from './app/game/systems/activeHuntSave.ts'; export {GALAXY_NAVIGATION} from './app/game/galaxyNavigation.ts'; export {shipInsertionCharge,hasShipInsertionDebit} from './app/game/systems/shipInsertionEnergy.ts';", resolveDir: root },
   bundle: true, platform: 'node', format: 'esm', write: false, logLevel: 'silent',
 });
-const { defaultSave, SAVE_STORAGE_KEY, ACTIVE_HUNT_STORAGE_KEY, GALAXY_NAVIGATION } = await import('data:text/javascript;base64,' + Buffer.from(bundle.outputFiles[0].text).toString('base64'));
+const { defaultSave, SAVE_STORAGE_KEY, ACTIVE_HUNT_STORAGE_KEY, GALAXY_NAVIGATION, shipInsertionCharge, hasShipInsertionDebit } = await import('data:text/javascript;base64,' + Buffer.from(bundle.outputFiles[0].text).toString('base64'));
 const missionRoute = GALAXY_NAVIGATION.sectors.flatMap(sector => sector.systems.flatMap(system =>
   system.bodies.flatMap(body => body.missions.map(mission => ({ sector, system, body, mission }))))).find(route => route.mission.id === 'jungle-vey');
 assert.ok(missionRoute, 'The real navigation registry must expose the initial jungle contract');
 const seed = defaultSave('2026-11-04T10:00:00.000Z');
+const shipTriadPlan = { version: 1, method: 'ship', team: 'triad', shipCloak: true };
 seed.profile.hunterName = 'QA Château et arrivée';
 seed.settings.masterVolume = 0;
 const checkoutCommit = execFileSync('git', ['rev-parse', 'HEAD'], { cwd: root, encoding: 'utf8' }).trim();
 const workingTreeDirty = execFileSync('git', ['status', '--porcelain'], { cwd: root, encoding: 'utf8' }).trim().length > 0;
 const report = { startedAt: new Date().toISOString(), checkoutCommit, workingTreeDirty, sourceCommit: process.env.WOLF_ARRIVAL_SOURCE_COMMIT || checkoutCommit,
-  runtime: 'actual desktop GameClient via Vite', headed, assetGateRequired: assetsRequired, checks: [], errors: [], missingAssets: [], requestedAssets: [], screenshots: [], focusTransitions: [], viewportTransitions: [] };
+  runtime: 'actual desktop GameClient via Vite', headed, assetGateRequired: assetsRequired, checks: [], errors: [], missingAssets: [], requestedAssets: [], screenshots: [], focusTransitions: [], viewportTransitions: [], stationClickAttempts: [] };
 const missing = new Set(), requested = new Set();
 let server, browser, page;
 
@@ -56,7 +57,7 @@ try {
       }
       const pad = { index: 0, id: 'wolf-arrival-qa', connected: true, axes: [0, 0], buttons: Array.from({ length: 17 }, () => ({ pressed: false, value: 0, touched: false })) };
       Object.defineProperty(navigator, 'getGamepads', { configurable: true, value: () => [pad] });
-      const api = { pad, mounts: 0, canvasIdentities: new WeakSet(), activeRunIds: [], handoffWrites: [], castleClicks: [], failArrivalHandoff: false,
+      const api = { pad, mounts: 0, canvasIdentities: new WeakSet(), activeRunIds: [], handoffWrites: [], clickSequence: 0, lastClick: null, castleClicks: [], failArrivalHandoff: false,
         failMandateReward: false, mandateRewardRefusals: 0 };
       const originalSet = Storage.prototype.setItem;
       Storage.prototype.setItem = function (name, value) {
@@ -77,14 +78,21 @@ try {
         return originalSet.call(this, name, value);
       };
       document.addEventListener('click', event => {
+        if (!event.isTrusted) return;
+        // Count every native click before filtering castle controls. A click on
+        // another element must never be mistaken for an undelivered press.
+        const sequence = ++api.clickSequence;
         const control = event.target instanceof Element ? event.target.closest('[data-wolf-castle-target], [data-wolf-castle-interact], [data-wolf-castle-action]') : null;
-        if (!control) return;
-        api.castleClicks.push({
-          target: control.getAttribute('data-wolf-castle-target'), interaction: control.getAttribute('data-wolf-castle-interact'),
-          action: control.getAttribute('data-wolf-castle-action'), disabled: control.matches(':disabled'),
+        const observation = {
+          sequence, at: performance.now(), element: event.target instanceof Element ? event.target.tagName : null,
+          target: control?.getAttribute('data-wolf-castle-target') ?? null, interaction: control?.getAttribute('data-wolf-castle-interact') ?? null,
+          action: control?.getAttribute('data-wolf-castle-action') ?? null, disabled: control?.matches(':disabled') ?? false,
           room: document.querySelector('[data-wolf-castle-room]')?.getAttribute('data-wolf-castle-room'),
           position: { ...document.querySelector('[data-wolf-castle-interior]')?.dataset },
-        });
+        };
+        api.lastClick = observation;
+        if (!control) return;
+        api.castleClicks.push(observation);
         if (api.castleClicks.length > 40) api.castleClicks.shift();
       }, true);
       const observe = () => {
@@ -108,6 +116,14 @@ try {
   };
   const stored = () => page.evaluate(key => JSON.parse(localStorage.getItem(key)), SAVE_STORAGE_KEY);
   const huntStored = () => page.evaluate(key => JSON.parse(localStorage.getItem(key)), ACTIVE_HUNT_STORAGE_KEY);
+  const assertCloakEnergy = async runId => {
+    const save = await stored(), shipId = 'classic-predator-spaceship';
+    assert.equal(shipInsertionCharge(save.shipInsertionEnergy, save.createdAt, shipId), 70);
+    assert.equal(hasShipInsertionDebit(save.shipInsertionEnergy, save.createdAt, runId, shipId), true);
+    assert.equal(save.shipInsertionEnergy.departures.length, 1, 'Pause, reload, failed handoff and Skip share one departure debit.');
+    assert.equal(save.shipInsertionEnergy.departures[0].runId, runId);
+    return { charge: 70, runId, departures: save.shipInsertionEnergy.departures.length };
+  };
   const continueCampaign = async () => {
     await page.locator('[data-campaign-menu]').waitFor();
     if (await page.locator('[data-menu-section="campaign"]').isVisible()) await page.locator('[data-menu-section="campaign"]').click();
@@ -117,18 +133,40 @@ try {
   const openApp = async () => { await page.goto(`http://127.0.0.1:${port}`, { waitUntil: 'networkidle', timeout: 120_000 }); await continueCampaign(); };
   const screenshot = async filename => { await page.screenshot({ path: path.join(out, filename), fullPage: true }); report.screenshots.push(filename); };
   const resizeViewport = async viewport => {
-    await page.setViewportSize(viewport);
-    await page.waitForFunction(({ width, height }) => innerWidth === width && innerHeight === height, viewport);
-    // Headed Chromium can acknowledge device metrics before the new media
-    // queries and vw padding have painted. Measure the settled layout only.
-    await page.evaluate(() => new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve))));
-    report.viewportTransitions.push(await page.evaluate(() => {
-      const card = document.querySelector('[data-wolf-castle-status], [data-arrival-run]');
-      const safe = card?.closest('.screen-safe');
-      return { width: innerWidth, height: innerHeight, cardWidth: card?.clientWidth, cardScroll: card?.scrollWidth,
-        arrivalSceneWidth: card?.querySelector('[data-arrival-scene]')?.clientWidth,
-        padding: safe ? getComputedStyle(safe).paddingInlineStart : null };
-    }));
+    const requirePanel = await page.evaluate(() => {
+      const probe = document.createElement('div');
+      probe.dataset.wolfArrivalViewportProbe = '';
+      probe.style.cssText = 'position:fixed;left:0;top:0;width:100vw;height:100vh;visibility:hidden;pointer-events:none';
+      document.body.append(probe);
+      return !!document.querySelector('[data-wolf-castle-status], [data-arrival-run]');
+    });
+    try {
+      await page.setViewportSize(viewport);
+      // Device metrics and two animation frames can precede the viewport-unit
+      // and media-query recalculation in headed Chromium. Wait for actual CSS
+      // dimensions and, when resizing a panel, its screen-safe padding. Returning
+      // to the personal deck has no castle/arrival panel. Never wait for overflow to disappear.
+      await page.waitForFunction(({ width, height, requirePanel }) => {
+        const rect = document.querySelector('[data-wolf-arrival-viewport-probe]')?.getBoundingClientRect();
+        const safe = document.querySelector('[data-wolf-castle-status], [data-arrival-run]')?.closest('.screen-safe');
+        const expectedPadding = width <= 760 ? 14 : Math.min(64, Math.max(18, width * .04));
+        return innerWidth === width && innerHeight === height && rect &&
+          Math.abs(rect.width - width) < 1 && Math.abs(rect.height - height) < 1 &&
+          matchMedia('(max-width: 760px)').matches === (width <= 760) &&
+          (!requirePanel || safe && Math.abs(parseFloat(getComputedStyle(safe).paddingInlineStart) - expectedPadding) < .1);
+      }, { ...viewport, requirePanel });
+      report.viewportTransitions.push(await page.evaluate(() => {
+        const card = document.querySelector('[data-wolf-castle-status], [data-arrival-run]');
+        const safe = card?.closest('.screen-safe');
+        const rect = document.querySelector('[data-wolf-arrival-viewport-probe]').getBoundingClientRect();
+        return { width: innerWidth, height: innerHeight, cssWidth: rect.width, cssHeight: rect.height,
+          cardWidth: card?.clientWidth, cardScroll: card?.scrollWidth,
+          arrivalSceneWidth: card?.querySelector('[data-arrival-scene]')?.clientWidth,
+          padding: safe ? getComputedStyle(safe).paddingInlineStart : null };
+      }));
+    } finally {
+      await page.locator('[data-wolf-arrival-viewport-probe]').evaluateAll(probes => probes.forEach(probe => probe.remove()));
+    }
   };
   const padButton = async (index, pressed) => {
     await page.evaluate(({ index, pressed }) => { window.__wolfArrivalQa.pad.buttons[index] = { pressed, touched: pressed, value: pressed ? 1 : 0 }; }, { index, pressed });
@@ -150,7 +188,53 @@ try {
       await immediate.click();
       return;
     }
-    await page.locator(`[data-wolf-castle-target="${id}"]`).click();
+    const target = page.locator(`[data-wolf-castle-target="${id}"]`);
+    const observeClick = () => page.evaluate(id => {
+      const api = window.__wolfArrivalQa;
+      const room = document.querySelector('[data-wolf-castle-room]');
+      const interior = document.querySelector('[data-wolf-castle-interior]');
+      const button = document.querySelector(`[data-wolf-castle-target="${id}"]`);
+      const box = button?.getBoundingClientRect(), style = button ? getComputedStyle(button) : null;
+      return { sequence: api.clickSequence, lastClick: api.lastClick, documentTimeOrigin: performance.timeOrigin,
+        room: room?.getAttribute('data-wolf-castle-room'), status: room?.getAttribute('data-wolf-castle-status'),
+        x: interior?.getAttribute('data-wolf-castle-x'), y: interior?.getAttribute('data-wolf-castle-y'),
+        stopped: interior?.getAttribute('data-wolf-castle-moving') === 'false',
+        dialog: !!document.querySelector('[data-wolf-castle-dialog], [role="dialog"], [role="alertdialog"]'),
+        error: !!room?.querySelector('[role="alert"]'), focused: document.hasFocus(), hidden: document.hidden,
+        targetReady: button instanceof HTMLButtonElement && !button.disabled && !button.closest('[inert]') &&
+          box.width > 0 && box.height > 0 && style.visibility === 'visible' && style.pointerEvents !== 'none' };
+    }, id);
+    const initial = await observeClick();
+    const mayRepeatUndeliveredPress = state => state.documentTimeOrigin === initial.documentTimeOrigin &&
+      state.sequence === initial.sequence && state.room === currentRoom && state.status === 'aboard' &&
+      initial.room === currentRoom && initial.status === 'aboard' && initial.stopped && state.stopped &&
+      initial.x !== null && initial.x !== undefined && initial.y !== null && initial.y !== undefined &&
+      state.x === initial.x && state.y === initial.y && !initial.dialog && !initial.error && !state.dialog && !state.error &&
+      state.focused && !state.hidden && state.targetReady;
+    for (let attempt = 1; attempt <= 2; attempt++) {
+      const before = attempt === 1 ? initial : await observeClick();
+      if (attempt === 2) assert.ok(mayRepeatUndeliveredPress(before), `Castle target ${id}: scene changed before the single native re-emission`);
+      const entry = { id, room: currentRoom, attempt,
+        reason: attempt === 1 ? 'initial-native-press' : 'previous-press-produced-no-document-click', before };
+      report.stationClickAttempts.push(entry);
+      try { await target.click(); }
+      catch (error) { entry.error = error.message; entry.after = await observeClick().catch(() => null); throw error; }
+      const after = await observeClick(); entry.after = after;
+      if (after.sequence !== before.sequence) {
+        entry.outcome = 'click-observed';
+        assert.equal(after.documentTimeOrigin, before.documentTimeOrigin, 'The native click must remain in the same document');
+        assert.equal(after.sequence, before.sequence + 1, `Castle target ${id}: unexpected additional document clicks`);
+        assert.equal(after.lastClick?.sequence, after.sequence, 'The native click receipt must match the monotone counter');
+        assert.deepEqual({ target: after.lastClick?.target, interaction: after.lastClick?.interaction, action: after.lastClick?.action,
+          room: after.lastClick?.room, disabled: after.lastClick?.disabled },
+        { target: id, interaction: null, action: null, room: currentRoom, disabled: false }, `Castle target ${id}: native click reached the wrong control or room`);
+        break;
+      }
+      entry.outcome = 'no-document-click';
+      assert.equal(attempt, 1, `Castle target ${id}: the single native re-emission also produced no click`);
+      entry.retryAllowed = mayRepeatUndeliveredPress(after);
+      assert.ok(entry.retryAllowed, `Castle target ${id}: no click was delivered and the scene is no longer unchanged and ready`);
+    }
     await page.waitForFunction(({ id, room }) => {
       if (document.querySelector('[data-wolf-castle-dialog]')) return true;
       if (document.querySelector('[data-wolf-castle-room]')?.getAttribute('data-wolf-castle-room') !== room) return true;
@@ -245,11 +329,11 @@ try {
     await page.locator('[data-campaign-location="deck"]').waitFor();
     const quick = page.getByRole('button', { name: 'Accès rapide aux installations', exact: true });
     if (await quick.getAttribute('aria-expanded') !== 'true') await quick.click();
-    const shortcutDetails = page.locator('details.ship-level-accessibility');
+    const shortcutDetails = page.locator('[data-ship-interior="2.5d"] [data-ship-shortcuts]');
     if (await shortcutDetails.getAttribute('open') === null) await shortcutDetails.locator('summary').click();
-    await page.getByRole('navigation', { name: 'Accès alternatif aux interfaces, la position du chasseur est conservée', exact: true }).getByRole('button', { name: /^DÉPART/ }).click();
+    await shortcutDetails.getByRole('navigation', { name: 'Accès alternatif aux interfaces, la position du chasseur est conservée', exact: true }).getByRole('button', { name: /^DÉPART/ }).click();
   };
-  const launchMission = async () => {
+  const launchMission = async plan => {
     await openDeparture();
     // A new campaign has no selected mission. Follow the actual map and its
     // autopilot legs, then validate the briefing before returning to the airlock.
@@ -261,6 +345,58 @@ try {
     }
     await page.locator('.galaxy-v10-dossier-nav').getByRole('button', { name: missionRoute.mission.title, exact: false }).click();
     await page.getByRole('button', { name: 'Préparer la chasse', exact: true }).click();
+    if (plan) {
+      const panel = page.locator('[data-insertion-plan]');
+      await panel.waitFor();
+      if (plan.team === 'triad') {
+        await panel.getByRole('button', { name: 'Recruter Ka’rhek', exact: true }).click();
+        await panel.locator('[data-expedition-member="karhek"][data-availability="ready"][data-assigned-ship="reserve"]').waitFor();
+        await panel.getByRole('button', { name: 'Recruter Sa’keth', exact: true }).click();
+        await panel.locator('[data-expedition-member="saketh"][data-availability="ready"][data-assigned-ship="reserve"]').waitFor();
+        const recruited = (await stored()).expeditionRoster;
+        assert.equal(recruited.version, 2);
+        assert.deepEqual(recruited.members.map(member => member.assignedShipId), [null, null],
+          'An agreement must not assign either companion to the personal hull.');
+        await screenshot('28-triad-recruited-reserve.png');
+        const karhek = panel.locator('[data-expedition-member="karhek"]');
+        await karhek.getByRole('button', { name: 'Affecter au vaisseau', exact: true }).click();
+        await panel.locator('[data-expedition-member="karhek"][data-assigned-ship="classic-predator-spaceship"]').waitFor();
+        await karhek.getByRole('button', { name: 'Mettre en réserve', exact: true }).click();
+        await panel.locator('[data-expedition-member="karhek"][data-assigned-ship="reserve"]').waitFor();
+        const returnedToReserve = (await stored()).expeditionRoster;
+        assert.deepEqual(returnedToReserve, recruited, 'Reserve must keep the agreement, availability and receipt history.');
+        assert.equal(await karhek.getByRole('button', { name: 'Recruter Ka’rhek', exact: true }).count(), 0,
+          'A reserved companion must never need to be recruited again.');
+        for (const id of ['karhek', 'saketh']) {
+          await panel.locator(`[data-expedition-member="${id}"]`).getByRole('button', { name: 'Affecter au vaisseau', exact: true }).click();
+          await panel.locator(`[data-expedition-member="${id}"][data-assigned-ship="classic-predator-spaceship"]`).waitFor();
+        }
+        const roster = (await stored()).expeditionRoster;
+        assert.equal(roster.ownerCreatedAt, seed.createdAt);
+        assert.deepEqual(roster.members.map(member => ({ id: member.id, ship: member.assignedShipId, availability: member.availability })), [
+          { id: 'karhek', ship: 'classic-predator-spaceship', availability: 'ready' },
+          { id: 'saketh', ship: 'classic-predator-spaceship', availability: 'ready' },
+        ], 'Only the explicit assignment buttons may durably assign both recruited hunters to the selected hull.');
+        report.rosterPreparation = { recruited, returnedToReserve, assigned: roster };
+        await screenshot('29-triad-assigned-to-hull.png');
+      }
+      await panel.locator(`input[name="insertion-method"][value="${plan.method}"]`).check();
+      await panel.locator(`input[name="insertion-team"][value="${plan.team}"]`).check();
+      assert.equal(await panel.getAttribute('data-insertion-plan'), `${plan.method}-${plan.team}`);
+      if (plan.shipCloak) {
+        const energy = panel.locator('[data-insertion-energy]');
+        assert.equal(await energy.getAttribute('data-charge'), '100');
+        assert.equal(await energy.getAttribute('data-after-cloak'), '70');
+        const control = panel.getByRole('checkbox', { name: 'Camouflage optique du vaisseau', exact: true });
+        await control.check();
+        await panel.getByText('Signature visuelle atténuée', { exact: true }).waitFor();
+        assert.equal(await control.isChecked(), true);
+        const campaign = await stored();
+        assert.equal(shipInsertionCharge(campaign.shipInsertionEnergy, campaign.createdAt, 'classic-predator-spaceship'), 100,
+          'Selecting camouflage previews the cost; the real deployment commits it.');
+        report.cloakBriefing = { enabled: true, chargeBefore: 100, previewAfter: 70 };
+      }
+    }
     await page.getByRole('button', { name: 'Valider la destination', exact: true }).click();
     await page.locator('[data-galaxy-v10-level]').waitFor({ state: 'detached' });
     await openDeparture();
@@ -607,14 +743,19 @@ try {
   });
 
   let skipRun;
-  await check('A campaign launch freezes a single run, destination, ship and hunter before any hunt mounts', async () => {
-    await launchMission();
+  await check('Real recruitment and a cloaked ship-triad briefing freeze one paid campaign run before any hunt mounts', async () => {
+    await launchMission(shipTriadPlan);
     const save = await stored();
     skipRun = save.planetArrival.runId;
     assert.equal(save.planetArrival.personalShipId, 'classic-predator-spaceship');
     assert.equal(save.planetArrival.destinationId, 'planet-oseris-iv');
     assert.equal(save.planetArrival.hunterPresetId, seed.appearance.presetId);
     assert.equal(save.planetArrivalRun.runId, skipRun);
+    assert.deepEqual(save.planetArrival.insertion, shipTriadPlan);
+    assert.deepEqual(save.planetArrivalRun.configuration.insertion, shipTriadPlan);
+    assert.equal(save.planetArrivalRun.configuration.insertionShipId, save.planetArrival.personalShipId);
+    assert.equal(save.planetArrivalRun.configuration.insertionEnergyRunId, skipRun);
+    await assertCloakEnergy(skipRun);
     assert.equal(await page.locator('.hunt-screen').count(), 0);
     assert.equal(await huntStored(), null);
   });
@@ -629,6 +770,7 @@ try {
     await page.waitForTimeout(300);
     assert.equal(await page.locator('[data-arrival-run]').getAttribute('data-arrival-elapsed'), elapsed);
     assert.equal((await stored()).planetArrival.runId, skipRun);
+    await assertCloakEnergy(skipRun);
     await page.getByRole('button', { name: 'Reprendre l’arrivée', exact: true }).click();
     await page.locator('[data-arrival-status="playing"]').waitFor();
   });
@@ -674,6 +816,7 @@ try {
     await page.locator('[data-arrival-status="paused"]').waitFor({ timeout: 90_000 });
     assert.equal((await stored()).planetArrival.runId, skipRun);
     assert.equal((await stored()).planetArrivalRun.runId, skipRun);
+    await assertCloakEnergy(skipRun);
     assert.equal(await huntStored(), null);
   });
   await check('A refused handoff leaves the hunt unmounted and can retry the same run once', async () => {
@@ -683,11 +826,35 @@ try {
     assert.equal(await page.locator('.hunt-screen').count(), 0);
     assert.equal(await huntStored(), null);
     assert.notEqual((await stored()).planetArrival.status, 'complete');
+    await assertCloakEnergy(skipRun);
     await screenshot('07-arrival-handoff-recovery.png');
     await page.evaluate(() => { window.__wolfArrivalQa.failArrivalHandoff = false; });
     await page.getByRole('button', { name: 'Réessayer le départ', exact: true }).focus();
     await padButton(0, false); await padButton(0, true);
     await assertSingleHunt(skipRun);
+    await page.waitForFunction(key => {
+      const snapshot = JSON.parse(localStorage.getItem(key))?.snapshot;
+      return snapshot?.checkpoint?.insertion?.companions?.length === 2;
+    }, ACTIVE_HUNT_STORAGE_KEY, { timeout: 30000 });
+    const hunt = await huntStored(), insertion = hunt.snapshot.checkpoint.insertion;
+    assert.deepEqual(hunt.configuration.insertion, shipTriadPlan);
+    assert.equal(hunt.configuration.insertionShipId, 'classic-predator-spaceship');
+    assert.equal(hunt.configuration.insertionEnergyRunId, skipRun);
+    assert.deepEqual(insertion.plan, shipTriadPlan);
+    assert.deepEqual(insertion.companions.map(member => member.id), ['karhek', 'saketh']);
+    assert.deepEqual(insertion.patrolIds, [`${insertion.runId}:insertion-patrol-0`],
+      'Camouflage requests fewer patrols; only the first safe jungle placement is available among those two attempts.');
+    assert.equal(insertion.searchUntil, 18);
+    const enemyIds = new Set(hunt.snapshot.checkpoint.enemies.map(enemy => enemy.id));
+    assert.ok(insertion.patrolIds.every(id => enemyIds.has(id)), 'The cloaked insertion still creates its actual patrol enemy.');
+    await page.locator('[data-hunt-surface-ship-ready="true"]').waitFor({ timeout: 90000 });
+    assert.equal(await page.locator('.hunt-screen').getAttribute('data-hunt-insertion-method'), 'ship');
+    assert.equal(await page.locator('.hunt-screen').getAttribute('data-hunt-insertion-team'), 'triad');
+    assert.equal(await page.locator('.hunt-screen').getAttribute('data-hunt-insertion-run-id'), skipRun);
+    assert.equal(await page.locator('.hunt-screen').getAttribute('data-hunt-insertion-ship-id'), 'classic-predator-spaceship');
+    assert.deepEqual((await stored()).expeditionRoster.members.map(member => member.id), ['karhek', 'saketh']);
+    report.shipTriadHandoff = { runId: skipRun, plan: insertion.plan, companions: insertion.companions, energy: await assertCloakEnergy(skipRun),
+      patrolIds: insertion.patrolIds, searchUntil: insertion.searchUntil, realPatrolCount: insertion.patrolIds.length };
     await page.waitForTimeout(450);
     assert.equal(await page.evaluate(() => window.__wolfArrivalQa.mounts), 1);
     await padButton(0, false);
@@ -698,6 +865,11 @@ try {
     await page.locator('.hunt-screen canvas.hunt-canvas').waitFor({ timeout: 90_000 });
     assert.equal(await page.locator('[data-arrival-run]').count(), 0);
     assert.equal((await huntStored()).missionId, 'jungle-vey');
+    assert.deepEqual((await huntStored()).configuration.insertion, shipTriadPlan);
+    assert.deepEqual((await huntStored()).snapshot.checkpoint.insertion.plan, shipTriadPlan);
+    assert.equal((await huntStored()).snapshot.checkpoint.insertion.companions.length, 2);
+    assert.equal((await huntStored()).configuration.insertionEnergyRunId, skipRun);
+    await assertCloakEnergy(skipRun);
     assert.equal(await page.evaluate(() => window.__wolfArrivalQa.mounts), 1);
   });
   await first.context.close();
@@ -709,6 +881,8 @@ try {
     await openApp(); await launchMission(); naturalRun = (await stored()).planetArrival.runId;
     assert.notEqual(naturalRun, skipRun);
     assert.equal(await page.locator('[data-arrival-run]').getAttribute('data-arrival-reduced-motion'), 'false');
+    assert.equal(await page.locator('[data-arrival-run]').getAttribute('data-arrival-method'), 'pod');
+    assert.equal(await page.locator('[data-arrival-run]').getAttribute('data-arrival-team'), 'solo');
     await page.waitForTimeout(800); await screenshot('20-arrival-orbit.png');
   });
   await check('The title, actual carrier and separate capsule are presented before the descent', async () => {
@@ -762,6 +936,7 @@ try {
     report.failureState = await page.evaluate(key => ({ focused: document.hasFocus(), hidden: document.hidden,
       activeElement: document.activeElement?.outerHTML.slice(0,500),
       interior: document.querySelector('[data-wolf-castle-interior]')?.dataset,
+      clickSequence: window.__wolfArrivalQa?.clickSequence, lastClick: window.__wolfArrivalQa?.lastClick,
       castleClicks: window.__wolfArrivalQa?.castleClicks ?? [],
       castle: JSON.parse(localStorage.getItem(key) || 'null')?.wolfCastle,
     }), SAVE_STORAGE_KEY).catch(() => null);
@@ -775,4 +950,15 @@ try {
   await fs.writeFile(path.join(out, 'observed-assets.json'), JSON.stringify({ source: 'Observed requests from real GameClient wolf-castle and planet-arrival browser route', paths: report.requestedAssets }, null, 2) + '\n');
   if (browser) await browser.close(); if (server) await server.close();
   console.log(JSON.stringify({ passed: report.passed, checks: report.checks.length, output: out, missingAssets: missing.size, assetGateRequired: assetsRequired }));
+  // Duplicate compact, existing evidence after the browser has closed so a
+  // remote review can inspect CI output without changing any native capture.
+  if (process.env.GITHUB_ACTIONS === 'true') {
+    const review = JSON.stringify(Object.fromEntries(["startedAt","finishedAt","sourceCommit","checkoutCommit","workingTreeDirty","headed","assetGateRequired","passed","checks","rosterPreparation","screenshots","cloakBriefing","shipTriadHandoff","focusTransitions","viewportTransitions","stationClickAttempts","errors","missingAssets","failure","failureState"]
+      .filter(key => report[key] !== undefined).map(key => [key, report[key]])));
+    const chunkSize = 12_000, parts = Math.ceil(review.length / chunkSize);
+    for (let part = 0; part < parts; part++) console.log('QA_REVIEW_JSON ' + JSON.stringify({
+      suite: 'wolf', sourceCommit: report.sourceCommit, part, parts, characters: review.length,
+      text: review.slice(part * chunkSize, (part + 1) * chunkSize),
+    }));
+  }
 }
