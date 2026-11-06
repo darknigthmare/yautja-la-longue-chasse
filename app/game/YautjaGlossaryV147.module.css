@@ -1,0 +1,17 @@
+.glossary{min-width:0;border:1px solid #5d4d32;background:#1d1912;color:#e8e0cc;border-radius:9px;padding:15px;margin:16px 0}
+.glossary h2{margin:0 0 6px;font-size:18px;color:#f0d79a}
+.glossary p{font-size:12px;line-height:1.6;color:#cfc4ab;margin:6px 0}
+.rules summary{cursor:pointer;min-height:44px;display:flex;align-items:center;font-weight:650;color:#e9d7a8}
+.rules ul{margin:4px 0 10px;padding-left:18px;font-size:12px;line-height:1.6;color:#d4cab2}
+.search{display:grid;gap:6px;font-size:12px;margin-top:8px}
+.search input{width:100%;min-height:43px;border:1px solid #7a6640;border-radius:6px;background:#2a2318;color:#f0e7d2;padding:9px}
+.count{font-size:11px;color:#bfae86}
+.list{list-style:none;display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:9px;margin:8px 0 0;padding:0}
+.list li{min-width:0;padding:11px;border:1px solid #4e4129;border-radius:6px;background:#261f15;display:grid;gap:5px;font-size:12px;overflow-wrap:anywhere}
+.list li strong{font-size:15px;color:#f3d98f}
+.list li span{line-height:1.5;color:#e2d8c1}
+.list li small{font-size:11px;color:#bdb092;line-height:1.5}
+.list li a{font-size:11px;color:#d9c48a;text-underline-offset:3px}
+.list li[data-status="proposé"]{border-style:dashed}
+.badge{font-style:normal;font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:#a8d8b0}
+@media(max-width:530px){.list{grid-template-columns:1fr}}

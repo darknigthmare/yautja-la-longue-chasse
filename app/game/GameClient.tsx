@@ -318,6 +318,7 @@ const PhysicalShipDeck = React.lazy(() => import("./PhysicalShipDeck"));
 const ShipAcquisitionV89 = React.lazy(() => import("./ShipAcquisitionV89"));
 const TrophyWorkshop = React.lazy(() => import("./TrophyWorkshop"));
 const EnemyBestiaryV8 = React.lazy(() => import("./EnemyBestiaryV8"));
+const YautjaGlossaryV147 = React.lazy(() => import("./YautjaGlossaryV147"));
 const CatalogueHunterBrowser = React.lazy(() =>
   import("./CatalogueHunterBrowser").then((module) => ({
     default: module.CatalogueHunterBrowser,
@@ -5730,6 +5731,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
                 </div>
               </article>
             </section>
+            <YautjaGlossaryV147 />
             <div className="codex-grid">
               {CODEX_ENTRIES.map((entry) => {
                 const unlocked =
