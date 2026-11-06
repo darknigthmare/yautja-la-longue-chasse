@@ -1837,9 +1837,13 @@ async function prepareMoment(target = page, region = 'scene', captureAtMs, captu
 }
 
 async function preflightMomentRoi(viewport, variant, target = page) {
+  const referenceCapture = Object.freeze({ method: 'Page.captureScreenshot',
+    backend: 'chromium-aura-view-copy-output',
+    parameters: Object.freeze({ format: 'png', fromSurface: false, captureBeyondViewport: false, optimizeForSpeed: true }) });
   const calibration = { viewport: viewport.id, kind: 'paused-capture-calibration-only', passed: false,
     variant: variantCaptureIdentity(variant),
-    scope: 'Native Pause for this exact insertion variant. One full-viewport X11 source must match every native CDP pixel; markers must preserve every original target pixel and the complete final CDP image must remain identical. Never final-formation visual evidence.',
+    scope: 'Native Pause for this exact insertion variant. Three intact Chromium Aura-view CopyOutput references without clip or resize. The full X11 image and restored CDP image must equal normal; markers must preserve every original target pixel. These strict comparisons qualify only this observed paused profile. Never final-formation visual evidence.',
+    referenceCapture,
     candidatePolicy: { sources: ['full-viewport'], selection: 'single-full-viewport-exact-cdp-x11-and-full-restoration' },
     images: [], observations: [], candidates: [] };
   report.capturePreflights.push(calibration);
@@ -1857,15 +1861,15 @@ async function preflightMomentRoi(viewport, variant, target = page) {
     members: moment.members, supports: moment.supports, cloakHulls: moment.cloakHulls,
     ...captureLayout(moment), focus: moment.focus });
   const source = async (suffix, session, size) => {
-    const screenshot = await session.send('Page.captureScreenshot', {
-      format: 'png', fromSurface: true, captureBeyondViewport: false, optimizeForSpeed: true,
-    });
+    // Aura view CopyOutput is distinct from both renderer-surface capture and X11.
+    // Keep its unmodified PNG; the full paused RGBA comparisons below decide equality.
+    const screenshot = await session.send(referenceCapture.method, referenceCapture.parameters);
     const bytes = Buffer.from(screenshot.data, 'base64');
     const prefix = variant.id === 'pod-triad' ? `${viewport.id}-roi-calibration` : `${viewport.id}-${variant.id}-roi-calibration`;
     const file = `${prefix}${activeCandidate ? `-candidate-${activeCandidate.index}` : ''}-${suffix}.png`;
     await fs.writeFile(path.join(out, file), bytes);
     const item = { file, sha256: sha256(bytes), bytes: bytes.length, evidenceKind: 'calibration-only-native-png',
-      role: suffix, candidateIndex: activeCandidate?.index ?? null };
+      role: suffix, candidateIndex: activeCandidate?.index ?? null, referenceCapture };
     calibration.images.push(item);
     activeCandidate?.images.push(item);
     const metadata = await sharp(bytes).metadata();
