@@ -852,6 +852,23 @@ Les multiplicateurs se cumulent (mêlée sans être repéré : × 1,875). Repèr
 
 **Matériaux** *(proposé)* : quatre familles pour l'atelier — métal (épaves, ruines), chitine et acide figé (Xénomorphes), os et cuir (faune), composants (technologie humaine et Yautja récupérée). Une amélioration d'arme coûte de l'honneur et une ou deux familles.
 
+### Modes multijoueur dédiés
+
+**The Pit — décision :** un mode à part, construit comme un jeu de combat (écran de sélection, roster, arènes, tournois). Le roster a une case de plus : le Yautja de sa campagne, avec son apparence et son équipement. *(proposé : en classé en ligne, ses statistiques sont ramenées à l'équilibre du roster ; en local et en partie libre, il garde celles de sa campagne.)*
+
+**Guerre des clans en multijoueur — décision :** toute la guerre des clans, avec tous ses sous-gameplays, se joue dans une partie dédiée en multijoueur : escarmouches en 2,5D, phases RTS, raids sur dépôt, sièges, duel des chefs dans The Pit, diplomatie et arbitrage des Matriarches. *(proposé : 2 à 4 clans de joueurs, de 1 à 3 joueurs par clan, sur la carte de Korthas du classeur V6 — 36 territoires et 70 passages ; une partie se joue en plusieurs sessions et se sauvegarde.)* Chaque joueur y entre avec son Yautja et son clan de campagne ; le résultat ne modifie pas sa campagne.
+
+**Invasion Enforcer ↔ Bad Blood — décision :** honneur et trophée, sans perte de progression. L'Enforcer vainqueur gagne de l'honneur et le masque rayé du Bad Blood en trophée ; le Bad Blood vainqueur gagne une pièce d'équipement d'Enforcer.
+
+### Éditeur de personnage : ajouts
+
+**Décision :** les quatre ajouts au PHG existant.
+
+- **Dreadlocks et ornements :** longueur, anneaux, perles, couleur ; les anneaux s'ajoutent avec les rangs *(proposé)*.
+- **Cicatrices et marque Blooded :** cicatrices gagnées en jeu selon les blessures reçues ; la marque d'acide est dessinée par le joueur à la fin de la pyramide (L-04).
+- **Voix et clics :** choix parmi les voix de la race (voir *Ambiances sonores par race*).
+- **Masque gravé :** gravures dessinées avec l'outil du symbole de clan.
+
 ### Arc de guerre des clans *(missions proposées)*
 
 **Décision :** le conflit commence par un terrain de chasse disputé (canon : plusieurs clans se disputent les meilleurs sites, *Aliens vs. Predator: War*), et son déclencheur dépend de la voie de clan.
