@@ -1195,15 +1195,17 @@ async function syncMomentViewport(target) {
       preparation.boundsAfterRestore = (await send('Browser.getWindowBounds', { windowId })).bounds;
       assert.equal(preparation.boundsAfterRestore.windowState, 'normal');
     }
-    preparation.requestedBounds = { left: 0, top: 0, width: physicalScreen.width,
-      height: physicalScreen.height, windowState: 'normal' };
+    // Chromium 153 X11Window::AdjustSizeForDisplay subtracts one pixel from
+    // each dimension when the requested size exactly equals an entire screen.
+    preparation.requestedBounds = { left: 0, top: 0, width: 1919,
+      height: 1199, windowState: 'normal' };
     await send('Browser.setWindowBounds', { windowId, bounds: preparation.requestedBounds });
     await send('Emulation.setDeviceMetricsOverride', sessions.baseline);
     preparation.boundsAfter = (await send('Browser.getWindowBounds', { windowId })).bounds;
     const actual = preparation.boundsAfter;
     assert.deepEqual({ left: actual.left, top: actual.top, width: actual.width,
       height: actual.height, windowState: actual.windowState }, preparation.requestedBounds,
-    'The prepared native Chrome window must occupy the observed private screen, independently of CSS viewport metrics.');
+    'The prepared native Chrome window must exactly match the fixed interior bounds, independently of CSS viewport metrics.');
     preparation.finishedAtMs = performance.now(); preparation.passed = true;
     sessions.windowPreparation = freezeCaptureData(preparation);
     return sessions;
@@ -1721,7 +1723,7 @@ function assertCaptureProfile(moment, profile, viewport, label) {
   assert.equal(profile.windowPreparation.passed, true);
   assert.deepEqual(profile.windowPreparation.cssViewport, { width: viewport.width, height: viewport.height });
   assert.deepEqual(profile.windowPreparation.boundsAfter,
-    { left: 0, top: 0, width: 1920, height: 1200, windowState: 'normal' });
+    { left: 0, top: 0, width: 1919, height: 1199, windowState: 'normal' });
   if (profile.kind === 'candidate') {
     assert.equal(moment.status, 'paused', `${label}: an unqualified source can only be examined under the native Pause control.`);
   } else {
