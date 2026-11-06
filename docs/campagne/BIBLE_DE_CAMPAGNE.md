@@ -22,7 +22,7 @@ Cette bible fusionne la « Campagne commune » du classeur V6 (60 fiches R2-M001
 | Partiel | Du code existe ; ses propres notes disent ce qui manque. |
 | Texte seul | Fiche et dialogues présents, aucun chapitre jouable. |
 
-**Règle de lecture.** Les lignes « Production (proposé) » sont des propositions déduites de la scène écrite dans la fiche ; elles ne figurent pas dans le classeur et sont à valider. Il en va de même des blocs « Comblement » des chasses, du catalogue musical (MUS-01 → MUS-72) et de la section « Comblement des vides ». Les identifiants SFX en police technique (`rifle-burst`…) sont des noms de dossiers proposés pour `public/audio/sfx/`, sur le modèle des 21 existants. Pour les 8 chasses, « Existant » et « Manquant » sont vérifiés dans les fichiers du dépôt.
+**Règle de lecture.** Les lignes « Production (proposé) » sont des propositions déduites de la scène écrite dans la fiche ; elles ne figurent pas dans le classeur et sont à valider. Il en va de même des blocs « Comblement » des chasses, du catalogue musical (MUS-01 → MUS-73) et de la section « Comblement des vides ». Les identifiants SFX en police technique (`rifle-burst`…) sont des noms de dossiers proposés pour `public/audio/sfx/`, sur le modèle des 21 existants. Pour les 8 chasses, « Existant » et « Manquant » sont vérifiés dans les fichiers du dépôt.
 
 ## Vue d'ensemble
 
@@ -322,7 +322,7 @@ Le Warp n'est plus une invention isolée : il s'appuie sur les bios des figurine
 
 ### Le lore utilisé (bios NECA)
 
-- **Armored Lost Predator :** maître d'armes, ancien de l'équipage de Greyback (la Lost Tribe). Accusé à tort d'un vol sur Yautja Prime, poursuivi par le haut conseil et ses Enforcers, il fuit avec deux complices à bord d'un vaisseau prototype volé.
+- **Armored Lost Predator :** maître d'armes, ancien de l'équipage de Greyback (la Lost Tribe). Entraîné par ruse dans le vol de technologie expérimentale sur Yautja Prime par Spiked Tail et Lasershot, il est condamné comme complice ; renié par le conseil des Anciens et poursuivi par ses Enforcers, il fuit avec ces deux complices, dont il se méfie désormais, à bord d'un vaisseau prototype volé.
 - **Spiked Tail :** chef de la Rogue Space Tribe, exilé pour méthodes non orthodoxes et armes illégales ; allié d'Armored Lost et de Lasershot.
 - **Lasershot :** Bad Blood obsédé par la technologie, en partie cybernétique.
 - **Greyback :** Ancien venu sur Terre au XVIIIe siècle contre des pirates, revenu en 1997 avec la Lost Tribe (dont le City Hunter de *Predator 2*).
@@ -331,8 +331,8 @@ Le Warp n'est plus une invention isolée : il s'appuie sur les bios des figurine
 
 1. **Le prototype (R2-M030 réécrite) :** l'Observatoire des Seuils est le laboratoire du haut conseil qui a conçu le vaisseau prototype. Le joueur Adjutant apprend le vol et découvre que la Space Tribe s'en sert pour ouvrir des portails.
 2. **Deux voies d'accès :**
-   - **Enforcer :** traquer la Space Tribe, récupérer le module de portail sur le prototype et le faire installer dans son vaisseau avec l'accord du conseil (R2-M031, M032). Le joueur peut découvrir qu'Armored Lost a été piégé et choisir de le faire innocenter.
-   - **Bad Blood :** rejoindre la Space Tribe et utiliser le module volé, sans protection du conseil ; chaque portail ouvert attire les Enforcers.
+   - **Enforcer :** traquer la Space Tribe, récupérer le module de portail sur le prototype et le faire installer dans son vaisseau avec l'accord du conseil (R2-M031, M032). Le joueur peut découvrir qu'Armored Lost a été entraîné par ruse et choisir de plaider sa cause ; il devient alors l'allié méfiant du joueur.
+   - **Bad Blood :** rejoindre la Space Tribe et utiliser le module volé, sans protection du conseil ; chaque portail ouvert attire les Enforcers. (Décision du 6 novembre : Spiked Tail et Lasershot restent les antagonistes de l'arc ; en voie Bad Blood, ils trahissent le joueur à la fin de l'arc \*(proposé)\*, et Armored Lost choisit son camp.)
 3. **Les portails :** le module crée un portail sur place ; le joueur le traverse à pied (règles WARP-R01 → R24 conservées).
 4. **Les époques :** celles où le canon place des chasses (W-01 → W-05), plus une branche XVIIIe siècle sur la piste de Greyback et des pirates.
 5. **Fin de l'arc :** le prototype est détruit, rendu au conseil ou gardé par le clan du joueur ; ce choix décide si le Warp reste ouvert.
@@ -708,6 +708,47 @@ Les noms yautja de ce tableau sont des propositions, à valider ; aucun n'est un
 La Matriarche du clan d'origine est générée avec le nom du clan tiré *(proposé)* : c'est elle qui accueille à la cérémonie Unblooded et qui reconnaît (ou non) le joueur à chaque grand rang.
 
 Sources : [Lost Tribe](https://avpcentral.com/lost-tribe-predators), [Shaman](https://avpcentral.com/shaman-predator-yautja-spiritual-leader).
+
+### Mini-arcs de la Lost Tribe et du Serpent Clan *(missions proposées)*
+
+**Décision :** chaque faction a un mini-arc de trois missions (rencontre, contrat, choix final allié ou ennemi), débloqué après Blooded. Les personnages sont ceux de la section précédente.
+
+| # | Mission | Déroulé | Issue |
+| --- | --- | --- | --- |
+| LT-1 | La piste de Greyback | à un relais de chasse, Scout met le joueur à l'épreuve : trois cibles à longue distance sans être repéré | la Lost Tribe accepte de parler au joueur |
+| LT-2 | Le contrat des frères Boar | extraction de trophées sur une planète réserve avec Boar et Stalker ; Guardian fournit les explosifs ; Stalker planifie, Boar fonce : le joueur arbitre | trophées partagés ou gardés (honneur) |
+| LT-3 | La vision du Shaman | le Shaman montre au joueur la mort du City Hunter (1997) et demande un serment ; choix : alliance ou refus | **alliée :** Warrior ouvre l'atelier, Greyback donne la piste du XVIIIe siècle (arc Warp) ; **rivale :** la Lost Tribe conteste un territoire dans l'arc de guerre |
+| SC-1 | L'offre de Viper | Ssik'thar propose un contrat : éliminer un Bad Blood sans laisser de trace | le Serpent Clan juge le joueur |
+| SC-2 | Le contrat de Snake | Snake et le joueur exécutent un contrat pour un Elder, avec les pièges de Vhar'nesh ; la cible se révèle innocente | dilemme d'honneur : finir le contrat (perte d'honneur, gain d'argent) ou l'abandonner |
+| SC-3 | Le prix de l'immunité | Viper réclame un service en échange de l'immunité ; si l'honneur est bas, Ssik'thar trahit le joueur | **allié :** mercenaires dans l'arc de guerre, améliorations discrétion, aide pour la voie Enforcer ; **ennemi :** le Serpent Clan traque le joueur (événements d'embuscade) |
+
+*Production (proposé)* — **Props :** relais de chasse de la Lost Tribe, cibles de tir, caisses de trophées, cercle de vision du Shaman (fumée, crânes), repaire du Serpent Clan (fosses, pièges, fioles de poison). **VFX :** fumée de vision, image fantôme du City Hunter, poison vert qui s'évapore. **SFX :** `vision-whisper`, `trap-spring`, `poison-hiss`. **Musique :** MUS-61 (Lost Tribe) pour LT-1 → LT-3 ; MUS-73 (Serpent Clan, ci-dessous) pour SC-1 → SC-3.
+
+**MUS-73 — Serpent Clan**
+
+```text
+Instrumental 90-second leitmotif for a mercenary alien hunter clan of assassins and poisoners. 92 BPM, F-sharp minor. Hissing shaker textures, slithering fretless bass, muted hand drums, a sinuous double-reed melody, sudden silences. Coiled, patient, treacherous.
+```
+
+### Ambiances sonores par race
+
+**Décision :** chaque race a son jeu de voix (clics, grognements), ses sons d'équipement (armure, cloak, lames) et une boucle d'ambiance de camp. Les dossiers SFX sont proposés sur le modèle `public/audio/sfx/<race>/`.
+
+| Race | Voix *(proposé)* | Équipement *(proposé)* | Camp *(proposé)* |
+| --- | --- | --- | --- |
+| Yautja classique | clic grave classique, rugissement des films | armure métal léger, cloak électrique | jungle, feu, trophées qui s'entrechoquent |
+| Lost Tribe | clics plus rauques, voix usées | métal abîmé, tintement de trophées | vaisseau ancien qui grince, hum urbain lointain |
+| Super Predator | grognement plus grave, aboiements | armure lourde, pas massifs | chenil des chiens, réserve, cris de proies |
+| Feral | clics secs, souffle animal | os et cuir, pas de métal | vent, os qui claquent, feu de bois |
+| Assassin (hybride) | voix traitée, clics distordus | servo, métal froid | laboratoire, ventilation |
+| Fugitive | voix essoufflée, clics rapides | équipement léger qui cliquette | abri provisoire, pluie |
+| Hish-Qu-Ten | clics cassés, chuchotements | métal ancien rouillé | ruines, échos |
+| Cyborg | clics doublés d'un bip | servomoteurs, refroidissement | atelier, étincelles |
+| Exiled | clics doux, sifflements | bois, pierre, cordes | ressac, oiseaux d'île |
+| Emissary | clics mélés de radio | armure militaire humaine, sangles | base militaire, radio |
+| Infected | gargouillis, clics mouillés | chair qui craque | bulles, battement irrégulier |
+| Four-Armed | deux voix superposées | lames multiples | arène, foule |
+| Meta | voix amplifiée, écho | énergie, décharges | grande salle, bourdonnement électrique |
 
 ### Arc de guerre des clans *(missions proposées)*
 
@@ -1495,7 +1536,7 @@ Le registre ne charge que les paires présentes ; les 336 variantes manquantes (
 
 ## Catalogue musical et prompts Flow Music
 
-La campagne demande 61 pistes, dont 13 thèmes de race (MUS-60 → MUS-72) et 18 thèmes communs, 19 pistes pour les chasses, 11 pour les actes VI à VIII. Toutes sont à créer : les 7 dossiers `public/audio/music/` sont vides.
+La campagne demande 62 pistes, dont 13 thèmes de race (MUS-60 → MUS-72), le thème du Serpent Clan (MUS-73) et 18 thèmes communs, 19 pistes pour les chasses, 11 pour les actes VI à VIII. Toutes sont à créer : les 7 dossiers `public/audio/music/` sont vides.
 
 **Utilisation dans Flow Music.** Coller le prompt dans la zone de saisie de la session. Flow Music génère avec Lyria 3.5, jusqu'à environ 3 minutes par piste. Pour une boucle de jeu, sélectionner la fin dans Remix → Extend et demander « end on the same chord and groove as bar 1 for a seamless loop ». Pour corriger une partie, utiliser Replace sur la section plutôt que tout régénérer. Générer deux versions et comparer. Les prompts sont en anglais et ne citent aucun artiste ni aucune musique de film. Sources : [aide Flow](https://support.google.com/flow/answer/17084348?hl=en), [guide Flow Music 2026](https://jackrighteous.com/blogs/music-creation-process-guide/google-flow-music-complete-guide-2026).
 
