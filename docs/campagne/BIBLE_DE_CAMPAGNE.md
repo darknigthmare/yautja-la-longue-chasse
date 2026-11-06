@@ -1712,6 +1712,110 @@ Comparaison du catalogue avec les index d'AvP Central (armes, technologie, équi
 
 **Laissés de côté volontairement** : le Serrated Hunting Rifle de *Call of Duty* (objet de crossover, pas yautja), les armes humaines prises par les Yautja (SIG SG 552, fusils à impulsion), le power loader de Tessa (Weyland-Yutani), et les véhicules (motos à sustentation, pods, vaisseaux), qui relèvent de la section navire.
 
+## Personnalisation : couleurs, matières et skins
+
+**Décisions (6 novembre 2026).** Chaque sprite modulable du joueur se teint séparément, en trois zones (principale, secondaire, accent) plus une couleur lumineuse quand la pièce brille. La roue de couleurs est libre dès le début ; les matières, motifs et skins se gagnent. La couleur est esthétique, sauf un camouflage par biome en solo et en coop. Tout ce qui brille se recolore. Le corps reçoit motifs, cicatrices, bijoux et peintures de guerre. Tenues enregistrées, une tenue par mode, code de partage et couleurs du clan sur les PNJ fonctionnent ensemble. L'usure existe à deux niveaux. En multijoueur, un contour d'équipe est imposé. Les marques gagnées en jeu se débloquent par les actions, puis le joueur choisit de les afficher.
+
+### Point de départ dans le jeu
+
+L'atelier de teinture actuel (`hunterChromaticsV113.ts`) a cinq canaux : peau, dreads, tenue, armure, biomasque. Chaque canal porte une couleur (`#RRGGBB`), une matière et, pour certains, un décalque (masque, visage, corps, armure). Vingt teintes prédéfinies existent, réparties en trois ateliers (navire, forge, laboratoire). Le brassard a sa propre palette (`GAUNTLET_PALETTES_V132` : accent, secondaire, écran, métal). Le nouveau système étend celui-ci sans casser les sauvegardes : *(proposé)* à la migration, la couleur d'un canal devient la couleur principale de toutes les pièces de ce canal.
+
+### Format des planches teintables
+
+Chaque planche nouvelle est livrée en trois images alignées au pixel sur la toile 256 × 384 du rig (générées en 1024 × 1536) :
+
+1. **Base en niveaux de gris** : volumes, ombres et reflets, sans teinte. Le gris moyen de chaque zone est proche de 50 % pour que la couleur choisie reste fidèle.
+2. **Carte des zones** en aplats purs : rouge = principale, vert = secondaire, bleu = accent, noir = non teintable (os, cuir naturel, dents, yeux s'ils ne sont pas lumineux).
+3. **Carte lumineuse** : blanc là où la pièce émet de la lumière (écran, laser, plasma, verres), noir ailleurs.
+
+Les générateurs d'images produisent mal des masques exacts : la carte des zones est générée à part (prompt ci-dessous) puis vérifiée et corrigée à la main sur la base grise avant intégration. Les planches déjà en couleur restent utilisables avec le teint par canal actuel en attendant leur version grise.
+
+**Ajout au gabarit, version base grise** : `Render this layer in neutral greyscale only (no hue at all), full shading and specular highlights kept, mid-tones around 50 % grey on every paintable surface, so the game can recolour it.`
+
+**Ajout au gabarit, version carte des zones** : `Same object, same pose, same outline, pixel-aligned with the greyscale version. Flat colours only, no shading, no anti-aliasing inside the shape: pure red (#FF0000) = primary paint area, pure green (#00FF00) = secondary, pure blue (#0000FF) = accent and trims, pure black = unpaintable (bone, natural leather, teeth), transparent outside the object.`
+
+**Ajout au gabarit, version carte lumineuse** : `Same object, pixel-aligned: white where the part emits light (displays, glyphs, laser emitter, plasma, lenses), black everywhere else, transparent outside the object.`
+
+### Pièces teintables du chasseur
+
+Couches du rig actuel (`HunterRigPreview`, `HuntCanvas`, PIT, Homeworld) et pièces du catalogue. La répartition des zones est *(proposée)* et sert de convention pour toutes les planches.
+
+| Pièce | Couches du rig | Principale | Secondaire | Accent | Lumineux |
+| --- | --- | --- | --- | --- | --- |
+| Peau | corps du morph (tête, torse, bras, mains, cuisses, tibias, pieds) | Couleur de base | Ventre et intérieur des membres | Rebords des plaques de peau | Non |
+| Motif de peau | couche au-dessus du corps | Couleur des taches | Deuxième couleur du motif | Non | Non |
+| Yeux | tête démasquée | Iris | Non | Non | Oui (selon le skin) |
+| Mandibules et dents | tête démasquée | Mandibules | Non | Non | Non (dents non teintables) |
+| Cicatrices | couche au-dessus du corps | Couleur de la cicatrice | Non | Non | Non |
+| Peinture de guerre | décalques corps, visage | Couleur libre | Non | Non | Non |
+| Dreads | brins arrière et latéraux (V145) | Mèches | Pointes | Anneaux et attaches | Non |
+| Bijoux | anneaux, colliers, ornements | Métal ou os | Pierres | Liens | Non |
+| Biomasque | tête | Coque | Plaques de rebord | Gravures | Verres, laser 3 points |
+| Plastron | `chest` | Plaques | Sangles | Rivets et gravures | Non |
+| Épaulette | `shoulder` (avant + enveloppe) | Plaque | Sangle | Gravures | Non |
+| Ceinture et pagne | `belt` | Ceinture | Pagne | Boucles | Non |
+| Cuissard, genouillère | `thigh`, `knee` | Plaque | Sangles | Rivets | Non |
+| Jambières avant et arrière | `shin`, `thigh-lower`, greaves arrière | Plaque | Sangles | Gravures | Non |
+| Filet | filet par membre | Mailles | Non | Non | Non |
+| Brassard (ordinateur) | `gauntlet` + couvercle | Boîtier | Couvercle | Rivets | Écran, glyphes, hologrammes, compte à rebours |
+| Lames de poignet | logement + lames | Logement | Lames | Rivets | Lames chauffées (WB-02) |
+| Canon d'épaule | 7 pièces (`mount` → `muzzle`) + laser | Coque | Bras articulé | Bouche | Plasma, laser |
+| Cape | cape (Njohrr, Grendel King) | Étoffe | Doublure | Franges ou chaîne | Non |
+| Trophées portés | colliers, crânes, cape d'os | Patine de l'os | Liens | Non | Non |
+| Armes | combistick, disque, épées, arc, armes de poing | Corps de l'arme | Poignée | Gravures | Plasma, énergie, laser |
+| Effets | camouflage optique, bouclier, plasma, hologrammes | Couleur de l'effet | Non | Non | Oui |
+
+Le sang reste vert fluo (canon) et n'est pas teintable.
+
+### Au-delà du chasseur
+
+Même système à trois zones :
+
+- **Chiens et montures** : pelage ou peau, motif, harnais.
+- **Navire et Ancrage** : coque, bannères, éclairage de la salle des trophées.
+- **Trophées exposés** : patine des crânes, supports, éclairage.
+
+### Déblocage
+
+- **Libre dès le début** : la roue de couleurs pour toutes les zones, plus les teintes prédéfinies existantes.
+- **À gagner** : matières (patines, métaux, os, cuirs), motifs de peau, skins de personnages (sets PHG, films, comics du catalogue) et pièces du catalogue. *(proposé)* Sources : trophées, honneur, rang, chasses de reine, contrats et épreuves.
+
+### Camouflage par biome
+
+En solo et en coop uniquement ; sans effet en PvP et dans le Pit. *(proposé)* Le jeu compare la couleur principale moyenne des pièces visibles à la palette du biome. Plus elles sont proches, plus la portée de détection des proies et ennemis IA baisse, avec un plafond de 10 %. L'effet ne s'ajoute pas au camouflage optique : il ne compte que quand le chasseur est visible. Chaque région doit donc avoir une palette de référence *(à définir avec les biomes)*.
+
+### Usure
+
+Deux niveaux qui se suivent :
+
+- **Usure de mission** : éraflures, saleté et sang apparaissent pendant le combat, puis disparaissent au retour au navire.
+- **Dégâts lourds** : fissures et éclats sur les pièces touchées par de gros coups ou de l'acide ; ils restent jusqu'à réparation à la forge, avec un coût en matériaux (lié à l'économie déjà décidée).
+
+Chaque planche reçoit donc deux couches d'usure alignées (`wear-light`, `wear-heavy`), qui suivent la couleur choisie.
+
+### Marques gagnées
+
+Le jeu débloque les marques par les actions, puis le joueur choisit de les afficher et leur couleur :
+
+- marque gravée par le sang de Xénomorphe sur le masque (comme Scar) ;
+- marque de sang de reine ;
+- cicatrices de duel ;
+- marque Bad Blood ;
+- marques de rang.
+
+### Tenues
+
+Les quatre fonctionnent ensemble :
+
+- **Tenues enregistrées** : plusieurs emplacements *(proposé : 10)* à sauvegarder et rappeler.
+- **Une tenue par mode** : campagne, multijoueur et Pit ont chacun la leur.
+- **Code de partage** : il contient les pièces, les couleurs et les matières. Chez un autre joueur, une pièce qu'il n'a pas débloquée est remplacée par la pièce de base, en gardant les couleurs, et signalée.
+- **Couleurs du clan** : le joueur fixe une palette de clan (3 couleurs) que les PNJ de son clan reprennent, avec de petites variations individuelles *(proposé)*.
+
+### Lisibilité en multijoueur
+
+Les couleurs restent libres, mais alliés et ennemis gardent un contour ou un marqueur d'équipe fixe. *(proposé)* Une luminosité minimale est appliquée aux couleurs vues par les autres joueurs, pour éviter un chasseur presque noir dans la nuit.
+
 ## Acte I — Youngling (R2-M001 → M006)
 
 L'enfance dans la cour, la cité et les premiers ateliers ; l'acte se termine au rang Unblooded. Aucune fiche n'est jouable telle quelle ; V47 (nurserie) et V48 (dojo, accueil) jouent une enfance différente.
