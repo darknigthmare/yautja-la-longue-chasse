@@ -1242,6 +1242,7 @@ function assertCaptureLayout(moment, expected, viewport, label) {
 async function readMoment(target, region, schedule, paint) {
   return target.evaluate(({ region, schedule, paint }) => {
     const evaluationStartedAtMs = performance.now();
+    const nativeCapture = region === 'formation-detail' || region === 'optical-full-viewport';
     const threshold = schedule?.atMs;
     const roots = document.querySelectorAll('[data-arrival-run]');
     if (roots.length !== 1) throw new Error('A native moment observation requires exactly one arrival root.');
@@ -1302,8 +1303,8 @@ async function readMoment(target, region, schedule, paint) {
             ? Number(getComputedStyle(hull.querySelector('[data-arrival-cloak-body]')).opacity) : null,
           lens: !!hull.querySelector('[data-arrival-cloak-refraction]'), rim: !!hull.querySelector('[data-arrival-cloak-rim]'),
         })),
-        members, ...(region === 'formation-detail' ? {
-          supports,
+        members, ...(region === 'formation-detail' ? { supports } : {}),
+        ...(nativeCapture ? {
           captureViewport: {
             innerWidth, innerHeight, devicePixelRatio, scrollX, scrollY,
             documentElement: { clientWidth: document.documentElement.clientWidth,
@@ -1332,7 +1333,7 @@ async function readMoment(target, region, schedule, paint) {
       // same document synchronously, never a compositor-only transform. The
       // helper must find this exact fresh pattern in its one full private copy.
       if (paint) {
-        if (region !== 'formation-detail' || document.visibilityState !== 'visible' || window.top !== window ||
+        if (!nativeCapture || document.visibilityState !== 'visible' || window.top !== window ||
             root.querySelector('iframe,video,canvas,object,embed')) throw new Error('Fresh native paint requires the visible single arrival document.');
         for (const marker of paint.markers) {
           const element = document.querySelector(`[data-spatial-x11-marker="${marker.id}"]`);
@@ -1422,7 +1423,9 @@ async function captureMoment(label, prepared, target = page, attempt = 1, valida
 }
 
 async function capturePreparedMoment(label, prepared, target = page, attempt = 1, validateFrame, schedule) {
-  const acquisition = { label, attempt, schedule: schedule ?? null, before: null,
+  const opticalFullViewport = prepared.region === 'optical-full-viewport';
+  const nativeCapture = prepared.region === 'formation-detail' || opticalFullViewport;
+  const acquisition = { label, attempt, region: prepared.region, schedule: schedule ?? null, before: null,
     timings: { clock: 'Node performance.now(); origin differs from browser performance.now()',
       startedAtMs: performance.now(), stages: {} } };
   const startStage = name => {
@@ -1466,7 +1469,7 @@ async function capturePreparedMoment(label, prepared, target = page, attempt = 1
   startStage('beforeObservationRpc');
   let before;
   try { before = await readMoment(target, prepared.region, schedule,
-    prepared.region === 'formation-detail' ? prepared.capturePaintPattern : undefined); }
+    nativeCapture ? prepared.capturePaintPattern : undefined); }
   finally { finishStage('beforeObservationRpc'); }
   acquisition.before = before;
   startStage('validationAndClip');
@@ -1475,7 +1478,7 @@ async function capturePreparedMoment(label, prepared, target = page, attempt = 1
   const contextFile = prepared.region === 'formation-detail' ? label.replace(/-egress-final-detail$/, '-egress-walking.png') : null;
   assert.ok(x >= 0 && y >= 0 && x + width <= target.viewportSize().width + 1 &&
     y + height <= target.viewportSize().height + 1, `${label}: the unmodified scene must fit the screenshot viewport.`);
-  if (prepared.region === 'formation-detail') {
+  if (nativeCapture) {
     assertCaptureLayout(before, prepared.layout, target.viewportSize(), label);
     assertCaptureProfile(before, prepared.captureProfile, target.viewportSize(), label);
     assertX11Markers(before, prepared.capturePaintPattern, target.viewportSize(), label);
@@ -1488,6 +1491,8 @@ async function capturePreparedMoment(label, prepared, target = page, attempt = 1
       `${label}: native window preparation cannot change after the final source was prepared.`);
     assert.ok(prepared.roiPreparation.elapsedAfter < schedule.atMs,
       `${label}: the output ROI must be fully prepared before the unchanged final capture threshold.`);
+  }
+  if (prepared.region === 'formation-detail') {
     assert.equal(typeof validateFrame, 'function', `${label}: every final attempt needs the original formation and grounded-hull checks.`);
     assert.ok(report.captures.some(capture => capture.file === contextFile && capture.region === 'scene'),
       `${label}: a separate full-scene walking photograph must provide the actual formation context.`);
@@ -1512,11 +1517,26 @@ async function capturePreparedMoment(label, prepared, target = page, attempt = 1
     x = left; y = top; width = right - left; height = bottom - top;
     assert.ok(width > 0 && height > 0 && width * height < prepared.scene.width * prepared.scene.height,
       `${label}: the final formation detail must be a smaller native region, without rescaling.`);
+  } else if (opticalFullViewport) {
+    const profile = prepared.captureProfile;
+    const opticalSchedules = new Map([
+      [`${profile.viewport.id}-ship-cloaked-triad-decloaking`, 52_400],
+      [`${profile.viewport.id}-ship-cloaked-triad-visible-before-contact`, 53_300],
+    ]);
+    assert.equal(profile.variant.id, 'ship-cloaked-triad', `${label}: optical photographs require the exact calibrated cloaked-triad profile.`);
+    assert.ok(opticalSchedules.has(label), `${label}: the full-viewport optical mode is restricted to its two existing photographs.`);
+    assert.deepEqual(schedule, { atMs: opticalSchedules.get(label), shot: 'landing' });
+    assert.equal(attempt, 1, `${label}: optical photographs retain a single native acquisition.`);
+    assert.ok(x >= 0 && y >= 0 && x + width <= target.viewportSize().width && y + height <= target.viewportSize().height,
+      `${label}: the complete unmodified scene must fit inside the native full viewport without cropping.`);
+    // Preserve the full native viewport. The scene has fractional CSS bounds,
+    // so no scene crop, rounding, resampling or detail derivative is made here.
+    ({ x, y, width, height } = prepared.sourceRoi);
   }
   const clip = { x, y, width, height, scale: 1 };
-  const preparedRoiSource = prepared.region === 'formation-detail';
+  const preparedRoiSource = nativeCapture;
   const sourceClip = preparedRoiSource ? { ...clip, x: x - prepared.sourceRoi.x, y: y - prepared.sourceRoi.y } : clip;
-  if (preparedRoiSource) {
+  if (prepared.region === 'formation-detail') {
     assert.ok(x >= prepared.targetRoi.x && y >= prepared.targetRoi.y &&
       x + width <= prepared.targetRoi.x + prepared.targetRoi.width &&
       y + height <= prepared.targetRoi.y + prepared.targetRoi.height,
@@ -1525,12 +1545,14 @@ async function capturePreparedMoment(label, prepared, target = page, attempt = 1
       sourceClip.x + width <= prepared.sourceRoi.width && sourceClip.y + height <= prepared.sourceRoi.height,
     `${label}: every final layer and the existing detail margin must fit the ROI prepared before the interval.`);
   }
-  acquisition.captureMode = preparedRoiSource ? 'native-x11-full-viewport-raw-then-lossless-detail' : 'native-clipped-png';
+  acquisition.captureMode = opticalFullViewport ? 'native-x11-full-viewport-raw-then-optical-png'
+    : preparedRoiSource ? 'native-x11-full-viewport-raw-then-lossless-detail' : 'native-clipped-png';
+  if (opticalFullViewport) acquisition.evidenceKind = 'native-x11-full-viewport-optical';
   acquisition.captureSessionRole = preparedRoiSource ? 'persistent-x11-helper' : 'metrics-baseline-owner';
   if (preparedRoiSource) acquisition.profileId = prepared.captureProfile.id;
   acquisition.fromSurface = preparedRoiSource ? null : true;
   acquisition.clip = clip;
-  if (preparedRoiSource) acquisition.sourceClip = sourceClip;
+  if (prepared.region === 'formation-detail') acquisition.sourceClip = sourceClip;
   finishStage('validationAndClip');
   // X11 returns only an acquisition ACK; no full pixels, PNG or hash cross the
   // pipe until after clock and geometry observations. Ordinary CDP retains its
@@ -1577,25 +1599,31 @@ async function capturePreparedMoment(label, prepared, target = page, attempt = 1
     let bytes = preparedRoiSource ? null : Buffer.from(screenshot.data, 'base64');
     finishStage('pngMaterialization');
     if (preparedRoiSource) {
-      bytes = await preserveNativeSource(`${photographLabel}-source-native.png`);
+      bytes = await preserveNativeSource(opticalFullViewport ? file : `${photographLabel}-source-native.png`);
       if (captureError) throw captureError;
       assertX11CaptureAck(acquisition.captureAck, prepared, acquisition.captureId, true);
-      startStage('losslessDetailPostprocessing');
-      try {
-        const cropped = await losslessNativeDetailCrop(bytes, sourceClip, prepared.sourceRoi);
-        bytes = cropped.bytes;
-        acquisition.pixelEquality = cropped.pixelEquality;
-        acquisition.cropProcessingTiming = cropped.processingTiming;
-      } finally { finishStage('losslessDetailPostprocessing'); }
+      if (prepared.region === 'formation-detail') {
+        startStage('losslessDetailPostprocessing');
+        try {
+          const cropped = await losslessNativeDetailCrop(bytes, sourceClip, prepared.sourceRoi);
+          bytes = cropped.bytes;
+          acquisition.pixelEquality = cropped.pixelEquality;
+          acquisition.cropProcessingTiming = cropped.processingTiming;
+        } finally { finishStage('losslessDetailPostprocessing'); }
+      }
     }
     // Both photograph times and exact geometry are already observed. Save the
     // native scene or verified derivative before assertions. The native full source
     // for a detail was saved first and survives every crop/assert failure.
     startStage('pngWrite');
-    try { await fs.writeFile(path.join(out, file), bytes); }
+    try { if (!opticalFullViewport) await fs.writeFile(path.join(out, file), bytes); }
     finally { finishStage('pngWrite'); }
     acquisition.file = file; acquisition.sha256 = sha256(bytes);
     startStage('assertionsAndReport');
+    if (opticalFullViewport) {
+      assert.equal(file, acquisition.sourceCapture.file, `${label}: the optical photograph is the preserved native full-viewport PNG itself.`);
+      assert.equal(acquisition.sha256, acquisition.sourceCapture.sha256, `${label}: optical pixels must not be re-encoded or transformed.`);
+    }
     assert.equal(after.run, before.run, `${label}: the photograph must retain the same native arrival run.`);
     assert.equal(after.shot, before.shot, `${label}: the photograph must stay within its actual native shot.`);
     assert.equal(after.cloakPhase, before.cloakPhase, `${label}: optical phase must remain unambiguous across the photograph.`);
@@ -1606,11 +1634,12 @@ async function capturePreparedMoment(label, prepared, target = page, attempt = 1
     assert.equal(measured.cloakPhase, after.cloakPhase, `${label}: subsequent geometry must retain the photographed optical phase.`);
     assert.equal(measured.contact, after.contact, `${label}: subsequent geometry must retain the photographed ground-contact phase.`);
     assert.ok(measured.elapsedMs >= after.elapsedMs, `${label}: subsequent geometry must not rewind the native clock.`);
+    if (nativeCapture && !lateCompletion) {
+      assertCaptureLayout(after, prepared.layout, target.viewportSize(), label);
+      assertX11Markers(after, prepared.capturePaintPattern, target.viewportSize(), label);
+    }
+    if (opticalFullViewport) assertCaptureProfile(after, prepared.captureProfile, target.viewportSize(), label);
     if (prepared.region === 'formation-detail') {
-      if (!lateCompletion) {
-        assertCaptureLayout(after, prepared.layout, target.viewportSize(), label);
-        assertX11Markers(after, prepared.capturePaintPattern, target.viewportSize(), label);
-      }
       const identityAndPose = members => members.map(({ id, stage, contact, portal, opacity }) => ({ id, stage, contact, portal, opacity }));
       assert.deepEqual(identityAndPose(after.members), identityAndPose(before.members),
         `${label}: the entire native detail capture must retain the same visible standing trio.`);
@@ -1626,11 +1655,15 @@ async function capturePreparedMoment(label, prepared, target = page, attempt = 1
     validateFrame?.(measured);
     (lateCompletion ? report.rejectedCaptures : report.captures).push({ file, sha256: sha256(bytes), viewport: target.viewportSize(), shot: before.shot,
       region: prepared.region, clip, ...(contextFile ? { contextFile } : {}),
-      ...(preparedRoiSource ? { evidenceKind: 'verified-lossless-integer-rgba-crop', sourceCapture: acquisition.sourceCapture, sourceClip,
+      ...(opticalFullViewport ? { evidenceKind: 'native-x11-full-viewport-optical', captureMode: acquisition.captureMode,
+        sourceCapture: acquisition.sourceCapture }
+        : preparedRoiSource ? { evidenceKind: 'verified-lossless-integer-rgba-crop', sourceCapture: acquisition.sourceCapture, sourceClip,
         pixelEquality: acquisition.pixelEquality } : { evidenceKind: 'native-clipped-png' }),
       attempt, accepted: !lateCompletion, ...(lateCompletion ? { rejection: 'Arrival completed during native acquisition; no visual proof accepted.' } : {}),
       elapsedBefore: before.elapsedMs, elapsedAfter: after.elapsedMs, measuredAt: measured.elapsedMs,
-      observation: preparedRoiSource
+      observation: opticalFullViewport
+        ? 'Live before reads, synchronous fresh paint outside the component, one full native X11 private copy, live after and complete geometry; raw and the identical full-viewport PNG exported only afterwards. Optical phase and ground-contact guards remain mandatory.'
+        : preparedRoiSource
         ? 'Live before reads, synchronous fresh paint outside the component, one full native X11 private copy, live after and complete geometry; raw export, PNG and lossless crop only afterwards. The native interval remains mandatory.'
         : 'Live clock immediately before and after lossless PNG capture; native playing status, shot and optical phase must survive both observations. Complete geometry measured afterwards.' });
     report.samples.push({ label: photographLabel, ...measured, photoAccepted: !lateCompletion, capturedBefore: before, capturedAfter: after });
@@ -1662,7 +1695,9 @@ async function capturePreparedMoment(label, prepared, target = page, attempt = 1
     report.rejectedCaptures.push({ file: acquisition.file ?? acquisition.sourceCapture?.file ?? null,
       sha256: acquisition.sha256 ?? acquisition.sourceCapture?.sha256 ?? null,
       viewport: target.viewportSize(), shot: before.shot, region: prepared.region, clip,
-      ...(preparedRoiSource ? { evidenceKind: acquisition.file ? 'verified-lossless-integer-rgba-crop' : 'native-x11-full-viewport-source',
+      ...(opticalFullViewport ? { evidenceKind: 'native-x11-full-viewport-optical', captureMode: acquisition.captureMode,
+        sourceCapture: acquisition.sourceCapture ?? null }
+        : preparedRoiSource ? { evidenceKind: acquisition.file ? 'verified-lossless-integer-rgba-crop' : 'native-x11-full-viewport-source',
         sourceCapture: acquisition.sourceCapture ?? null, sourceClip, pixelEquality: acquisition.pixelEquality ?? null } : { evidenceKind: 'native-clipped-png' }),
       attempt, accepted: false, rejection: error.message,
       elapsedBefore: before.elapsedMs, elapsedAfter: after?.elapsedMs ?? null,
@@ -1737,15 +1772,16 @@ function assertCaptureProfile(moment, profile, viewport, label) {
 }
 
 async function prepareMoment(target = page, region = 'scene', captureAtMs, captureProfile) {
-  assert.ok(['scene', 'formation-detail'].includes(region));
+  assert.ok(['scene', 'formation-detail', 'optical-full-viewport'].includes(region));
+  const nativeCapture = region === 'formation-detail' || region === 'optical-full-viewport';
   const decodedSvg = await decodeSceneImages(target);
   const scene = await target.locator('[data-arrival-scene]').boundingBox();
   assert.ok(scene);
   const sessions = await momentSessions(target);
   assert.ok(sessions.baseline, 'The metrics session must have the current full CSS viewport baseline.');
   const prepared = { decodedSvg, scene, region, sessions, captureProfile,
-    captureSession: region === 'formation-detail' ? sessions.captureSession : sessions.metricsSession };
-  if (region !== 'formation-detail') return prepared;
+    captureSession: nativeCapture ? sessions.captureSession : sessions.metricsSession };
+  if (!nativeCapture) return prepared;
   const before = await readMoment(target, region);
   if (before.status === 'playing') assert.ok(Number.isFinite(captureAtMs) && before.elapsedMs < captureAtMs,
     'A native output ROI must be configured before the final capture interval starts.');
@@ -1775,6 +1811,7 @@ async function prepareMoment(target = page, region = 'scene', captureAtMs, captu
     targetBottom <= sourceBottom, 'The native source must preserve every pixel of the original calibration target.');
   prepared.roiPreparation = { elapsedBefore: before.elapsedMs, sourceRoi: prepared.sourceRoi,
     targetRoi: prepared.targetRoi,
+    region, captureAtMs: captureAtMs ?? null,
     profileId: captureProfile.id, profileKind: captureProfile.kind,
     viewport: captureProfile.viewport, variant: captureProfile.variant,
     calibrationId: captureProfile.x11Calibration.calibrationId,
@@ -2138,7 +2175,8 @@ try {
         await openShot(primaryMission.id, 'landing', false, api.DEFAULT_SHIP_ID, variant.plan);
         const landing = api.PLANET_ARRIVAL_SHOTS.find(shot => shot.id === 'landing');
         if (variant.plan.shipCloak) {
-          const prepared = await prepareMoment();
+          const opticalProfile = captureProfiles.get('ship-cloaked-triad');
+          const prepared = await prepareMoment(page, 'optical-full-viewport', 52_400, opticalProfile);
           const releasing = await captureMoment(`${viewport.id}-${variant.id}-decloaking`, prepared, page, 1, undefined,
             { atMs: 52_400, shot: landing.id });
           assert.ok(Number.isFinite(releasing.capturedBefore.armedAt) && releasing.capturedBefore.armedAt < 52_400,
@@ -2151,7 +2189,7 @@ try {
           // Re-enter at the native shot boundary so encoding the release PNG
           // cannot consume the independent pre-contact evidence window.
           await openShot(primaryMission.id, 'landing', false, api.DEFAULT_SHIP_ID, variant.plan);
-          const visiblePrepared = await prepareMoment();
+          const visiblePrepared = await prepareMoment(page, 'optical-full-viewport', 53_300, opticalProfile);
           const visible = await captureMoment(`${viewport.id}-${variant.id}-visible-before-contact`, visiblePrepared, page, 1, undefined,
             { atMs: 53_300, shot: landing.id });
           assert.ok(Number.isFinite(visible.capturedBefore.armedAt) && visible.capturedBefore.armedAt < 53_300,
