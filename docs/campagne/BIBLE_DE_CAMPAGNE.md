@@ -770,6 +770,45 @@ Instrumental 90-second leitmotif for a mercenary alien hunter clan of assassins 
 | Four-Armed | deux voix superposées | lames multiples | arène, foule |
 | Meta | voix amplifiée, écho | énergie, décharges | grande salle, bourdonnement électrique |
 
+### Fins de voie et fin de jeu
+
+**Décision :** la fin du départ (classeur V6, 3 fins par départ, choisie en Mx-M29 et jouée en Mx-M30 après Elite) clôt l'histoire personnelle. La fin de jeu (Reine Mère, Adjudicator, Black God, sacrifice) vient ensuite, et l'épilogue (R2-M060) reprend la fin de voie choisie. Le V6 interdit déjà que M31 → M36 ou R2-M060 modifient la fin de voie : l'épilogue la montre, il ne la change pas.
+
+| Départ | Fin 1 | Fin 2 | Fin 3 |
+| --- | --- | --- | --- |
+| O1 Rejeté du clan | E1 Mon seuil, mon nom | E2 La force sous mes limites | E3 Une porte entrouverte, sous conditions |
+| O2 Héritier du masque | E1 Le masque avec son histoire entière | E2 La galerie des voix liées | E3 Mon propre masque, leur garde |
+| O3 Porteur des derniers noms | E1 Un foyer reconstruit par choix | E2 Les haltes des derniers noms | E3 Les archives confiées, ma route ouverte |
+| O4 Nom entaché | E1 Le nom assumé avec les faits | E2 Un nom choisi pour ma route | E3 Réparer dans une fonction limitée |
+| O5 Dette envers l'Étranger | E1 L'alliance des deux routes | E2 La dette reconnue et soldée | E3 Un relais entre partenaires libres |
+| O6 La Longue Chasse | E1 La maison des futurs chasseurs | E2 Le cercle de chasse choisi | E3 Transmettre puis explorer |
+
+*(proposé)* Dans l'épilogue, le lieu de la fin de voie (seuil, galerie, foyer, plaque, relais, maison d'enseignement) reçoit le masque du joueur après le sacrifice, à la place du mausolée si le joueur le choisit.
+
+### Fin de la voie Bad Blood
+
+**Décision :** un joueur resté Bad Blood n'accède pas au Black God ; il a sa propre fin. Trois issues *(proposées)*, selon ses actes dans l'arc Warp et face aux Enforcers :
+
+| Fin | Condition | Séquence |
+| --- | --- | --- |
+| BB-E1 Le chef des exilés | vaincre Spiked Tail après sa trahison (fin de l'arc Warp) | le joueur prend la tête de la Rogue Space Tribe ; le prototype devient son navire ; l'épilogue le montre chassant hors de toute loi |
+| BB-E2 La dernière traque | perdre le duel final contre le chef des Enforcers (ou Viper si le Serpent Clan est ennemi) | mort sans réclamation par le Black Warrior ; masque détruit, pas de mausolée |
+| BB-E3 La rédemption tardive | rendre le prototype au conseil et se livrer | jugement par l'Adjudicator ; exil accepté ou fonction de réparation (écho de O4-E3) ; masque gardé aux archives, rayé |
+
+**Musique :** MUS-17 *Exil* pour les trois, avec le motif de la race joué en mineur.
+
+### Navire de clan : gestion
+
+**Décision :** les 12 actions du classeur V6 (CNS-G01 → G12), jouées en scènes courtes dans le navire, plus une couche chiffrée.
+
+- **Actions V6 :** composer une équipe, préparer une expédition, entretenir la coque, accueillir un nouveau membre, définir une priorité, partager une prise, suivre les vétérans, tenir une halte, régler une rivalité, soutenir une guerre, organiser une relève, transmettre le navire. Équipage de 6, 12 ou 18 autres occupants selon la taille du navire.
+- **Couche chiffrée *(proposée)* :** quatre jauges affichées sur la table du salon de charte, pas dans un menu à part : **réserves** (vivres, matériaux), **état de la coque**, **moral de l'équipage**, **fatigue** par membre. Chaque action jouée les modifie ; une jauge basse ferme des missions (coque abîmée : pas de saut lointain ; moral bas : un membre peut partir ; fatigue : un vétéran refuse la sortie).
+- **Règle :** les chiffres ne remplacent jamais l'action jouée ; ils disent seulement ce qui est possible.
+
+### Enfance (Youngling)
+
+**Décision :** les six fiches R2-M001 → M006 sont jouées en missions courtes, environ 30 à 45 minutes en tout *(durée proposée)*. En nouvelle partie, le joueur peut passer l'enfance ; le tirage du clan, le départ et la région de départ restent faits.
+
 ### Arc de guerre des clans *(missions proposées)*
 
 **Décision :** le conflit commence par un terrain de chasse disputé (canon : plusieurs clans se disputent les meilleurs sites, *Aliens vs. Predator: War*), et son déclencheur dépend de la voie de clan.
