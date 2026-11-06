@@ -51,7 +51,7 @@ const report = {
   timing: 'Native requestAnimationFrame and ordinary Pause/Resume controls only. Requested times are thresholds. Reports retain observed elapsed times and each screenshot interval. Fixtures begin only at registered shot boundaries.',
   browserMode: headed ? 'headed' : 'headless',
   video: { requested: recordVideo, supported: null, files: [] },
-  checks: [], frames: [], captures: [], launchObservations: [], registrationObservations: [],
+  checks: [], frames: [], captures: [], launchObservations: [], registrationObservations: [], registrationDiagnostics: [],
   familyCoverage: [], heldViewPreparations: [], heldViewCaptureCleanupErrors: [],
   pageErrors: [], consoleErrors: [], missingAssets: [], requests: [], readinessFailures: [],
   sourceHashes: {}, assetHashes: {},
@@ -713,6 +713,9 @@ async function observeRegistrationBlends(page, untilMs) {
       const image = [...layer.querySelectorAll('img')].find(image =>
         image.getAttribute('src') === layer.getAttribute('data-arrival-ship-view-path'));
       return { sourceCanvas: { width: image?.naturalWidth ?? 0, height: image?.naturalHeight ?? 0 },
+        sourceImage: { found: Boolean(image), src: image?.getAttribute('src') ?? null,
+          currentSrc: image?.currentSrc ?? null, complete: image?.complete ?? null,
+          naturalWidth: image?.naturalWidth ?? null, naturalHeight: image?.naturalHeight ?? null },
         renderedCanvas: { width: Number.parseFloat(style.width), height: Number.parseFloat(style.height) },
         linearTransform: { a: matrix.a, b: matrix.b, c: matrix.c, d: matrix.d } };
     };
@@ -763,14 +766,43 @@ async function observeRegistrationBlends(page, untilMs) {
   }), untilMs);
 }
 
+const registrationError = error => error ? { name: error.name, message: error.message, stack: error.stack } : null;
+
+/** Preserve the raw result before validation, including results whose caller
+ * stops earlier. Diagnostics never count as validated registration evidence. */
+function retainRegistrationResult(pending, context) {
+  const retain = result => {
+    const diagnostic = { ...context, observations: result.observations ?? null,
+      observer: { status: result.error ? 'failed' : 'completed', error: registrationError(result.error) },
+      validation: { status: 'not-run', stage: null, observationIndex: null, error: null } };
+    report.registrationDiagnostics.push(diagnostic);
+    return { ...result, diagnostic };
+  };
+  // A rejected observer returned no batch; its unreturned samples remain unknown.
+  return pending.then(observations => retain({ observations }),
+    error => retain({ error, observations: null }));
+}
+
+function validateRegistrationResult(result, validate) {
+  const validation = result.diagnostic.validation;
+  validation.status = 'running'; validation.stage = 'result';
+  try {
+    validate();
+    validation.status = 'passed'; validation.stage = 'complete'; validation.observationIndex = null;
+  } catch (error) {
+    validation.status = 'failed'; validation.error = registrationError(error);
+    throw error;
+  }
+}
+
 async function capsuleRoute(page, viewport) {
   await openShot(page, 'carrier');
   await waitElapsed(page, 14_600, 'carrier');
   await capture(page, `${viewport.id}-orbital-approach`, { generated: true });
   // Catch now so an earlier scenario failure cannot leave an unhandled page
   // evaluation when the browser closes. The result is still asserted below.
-  const registration = observeRegistrationBlends(page, 26_700)
-    .then(observations => ({ observations }), error => ({ error }));
+  const registration = retainRegistrationResult(observeRegistrationBlends(page, 26_700),
+    { viewport: viewport.id, shipId: api.DEFAULT_SHIP_ID, method: 'pod', optical: false, untilMs: 26_700 });
   await waitElapsed(page, 20_500, 'carrier');
   await capture(page, `${viewport.id}-orbital-dorsal-bank`);
   const launches = await observeLaunches(page);
@@ -799,16 +831,21 @@ async function capsuleRoute(page, viewport) {
   await waitElapsed(page, 26_700, 'release');
   await capture(page, `${viewport.id}-departure-three-quarter`, { generated: true, engines: true });
   const observed = await registration;
-  if (observed.error) throw observed.error;
-  assert.ok(observed.observations.length >= 2, 'Inspect actual intermediate mixtures, not only held endpoints.');
-  for (const observation of observed.observations) {
-    assert.equal(observation.layers.length, 2, 'Both real view layers must be present during a dissolve.');
-    assertRegistration(observation);
-    for (const layer of observation.layers) {
-      if (layer.path !== api.shipProfileAssetPath(api.DEFAULT_SHIP_ID)) optionalPaths.add(layer.path);
+  validateRegistrationResult(observed, () => {
+    if (observed.error) throw observed.error;
+    assert.ok(observed.observations.length >= 2, 'Inspect actual intermediate mixtures, not only held endpoints.');
+    let observationIndex = 0;
+    for (const observation of observed.observations) {
+      observed.diagnostic.validation.stage = 'observations';
+      observed.diagnostic.validation.observationIndex = observationIndex++;
+      assert.equal(observation.layers.length, 2, 'Both real view layers must be present during a dissolve.');
+      assertRegistration(observation);
+      for (const layer of observation.layers) {
+        if (layer.path !== api.shipProfileAssetPath(api.DEFAULT_SHIP_ID)) optionalPaths.add(layer.path);
+      }
     }
-  }
-  report.registrationObservations.push({ viewport: viewport.id, observations: observed.observations });
+    report.registrationObservations.push({ viewport: viewport.id, observations: observed.observations });
+  });
   await pauseAndResume(page, { reuseScene: true, engines: true, label: `${viewport.id}-native-pause-held-engine` });
 }
 
@@ -918,39 +955,45 @@ async function additionalFamilyRoute(page, viewport, shipId) {
   };
   const consumeBlends = async (pending, optical = false) => {
     const result = await pending;
-    if (result.error) throw result.error;
-    assert.ok(result.observations.length >= 2, `${shipId}: inspect real intermediate native mixtures.`);
-    for (const observation of result.observations) {
-      assert.equal(observation.layers.length, 2);
-      assertRegistration(observation); assertIsotropicSources(observation);
+    validateRegistrationResult(result, () => {
+      if (result.error) throw result.error;
+      assert.ok(result.observations.length >= 2, `${shipId}: inspect real intermediate native mixtures.`);
+      let observationIndex = 0;
+      for (const observation of result.observations) {
+        result.diagnostic.validation.stage = 'observations';
+        result.diagnostic.validation.observationIndex = observationIndex++;
+        assert.equal(observation.layers.length, 2);
+        assertRegistration(observation); assertIsotropicSources(observation);
+        if (optical) {
+          assert.ok(observation.cloak > 0, 'The additional ship dissolve must actually be optically cloaked.');
+          assertRimRegistration(observation, shipId);
+        }
+        for (const layer of observation.layers) assert.ok(layer.path === api.shipProfileAssetPath(shipId) ||
+          family.paths.includes(layer.path), 'A native dissolve cannot borrow an image from a different hull.');
+      }
+      result.diagnostic.validation.stage = 'summary'; result.diagnostic.validation.observationIndex = null;
+      const transitions = [...new Set(result.observations.map(observation => `${observation.from}->${observation.to}`))];
+      const differentCanvasObservations = result.observations.filter(observation => new Set(observation.layers
+        .map(layer => `${layer.sourceCanvas.width}x${layer.sourceCanvas.height}`)).size > 1);
       if (optical) {
-        assert.ok(observation.cloak > 0, 'The additional ship dissolve must actually be optically cloaked.');
-        assertRimRegistration(observation, shipId);
+        const profile = api.carrierArtForShip(shipId);
+        if (Object.values(family.views).some(view => view.art.width !== profile.width || view.art.height !== profile.height)) {
+          assert.ok(differentCanvasObservations.length > 0,
+            'Observe an actual cloaked profile-to-view dissolve with different native canvases; held views cannot prove the SVG correction.');
+        }
+        coverage.opticalRegistration = { observations: result.observations.length,
+          differentCanvasObservations: differentCanvasObservations.length,
+          differentCanvasTransitions: [...new Set(differentCanvasObservations.map(observation => `${observation.from}->${observation.to}`))] };
       }
-      for (const layer of observation.layers) assert.ok(layer.path === api.shipProfileAssetPath(shipId) ||
-        family.paths.includes(layer.path), 'A native dissolve cannot borrow an image from a different hull.');
-    }
-    const transitions = [...new Set(result.observations.map(observation => `${observation.from}->${observation.to}`))];
-    const differentCanvasObservations = result.observations.filter(observation => new Set(observation.layers
-      .map(layer => `${layer.sourceCanvas.width}x${layer.sourceCanvas.height}`)).size > 1);
-    if (optical) {
-      const profile = api.carrierArtForShip(shipId);
-      if (Object.values(family.views).some(view => view.art.width !== profile.width || view.art.height !== profile.height)) {
-        assert.ok(differentCanvasObservations.length > 0,
-          'Observe an actual cloaked profile-to-view dissolve with different native canvases; held views cannot prove the SVG correction.');
-      }
-      coverage.opticalRegistration = { observations: result.observations.length,
-        differentCanvasObservations: differentCanvasObservations.length,
-        differentCanvasTransitions: [...new Set(differentCanvasObservations.map(observation => `${observation.from}->${observation.to}`))] };
-    }
-    coverage.transitions.push(...transitions);
-    report.registrationObservations.push({ viewport: viewport.id, shipId, optical, observations: result.observations,
-      transitionsObserved: transitions });
+      coverage.transitions.push(...transitions);
+      report.registrationObservations.push({ viewport: viewport.id, shipId, optical, observations: result.observations,
+        transitionsObserved: transitions });
+    });
   };
   try {
     await openShot(page, 'carrier', 'pod', false, true, new Set(), shipId);
-    const podBlends = observeRegistrationBlends(page, 27_200)
-      .then(observations => ({ observations }), error => ({ error }));
+    const podBlends = retainRegistrationResult(observeRegistrationBlends(page, 27_200),
+      { viewport: viewport.id, shipId, method: 'pod', optical: false, untilMs: 27_200 });
     captureSession = await page.context().newCDPSession(page);
     preparation = await prepareHeldViewCapture(page, viewport, shipId, 14_200);
     for (const [id, time, untilMs, shot] of [
@@ -963,8 +1006,8 @@ async function additionalFamilyRoute(page, viewport, shipId) {
       // A separate ordinary ship playback reveals the two otherwise unused
       // ventral views and checks their actual optical masks on the same pixels.
       await openShot(page, 'release', 'ship', true, true, new Set(), shipId);
-      const shipBlends = observeRegistrationBlends(page, 27_200)
-        .then(observations => ({ observations }), error => ({ error }));
+      const shipBlends = retainRegistrationResult(observeRegistrationBlends(page, 27_200),
+        { viewport: viewport.id, shipId, method: 'ship', optical: true, untilMs: 27_200 });
       preparation = await prepareHeldViewCapture(page, viewport, shipId, 25_200);
       await photograph('bank-ventral-shallow', 25_200, 26_200, 'release', true);
       await photograph('bank-ventral', 26_800, 31_000, 'release', true);
