@@ -1,0 +1,1367 @@
+{
+  "pack": "Xeno Prime — Le Berceau enfoui",
+  "version": "V2.3",
+  "date": "2026-11-06",
+  "scope": "42 poses/parties/effets :36 raccords initiaux et six états de tête complémentaires au cadre059 pour éviter les anciens sauts d’échelle.",
+  "old_sprite_count": 108,
+  "planned_new_count": 42,
+  "original_ids_preserved": true,
+  "basis": [
+    "README.md §5",
+    "INTEGRATION_ET_QA.md §2, §3 et §5"
+  ],
+  "jobs": [
+    {
+      "id": "A001",
+      "asset_key": "XENO-BE-A001",
+      "name_fr": "Inspiration au repos",
+      "family": "tete_bulbe",
+      "filename": "sprites/tete_bulbe/A001_059_inspiration.png",
+      "reference_ids": [
+        "059"
+      ],
+      "reference_files": [
+        "sprites/personnages/059_matriarche_intacte.png"
+      ],
+      "reference_paths": [
+        "sprites/personnages/059_matriarche_intacte.png"
+      ],
+      "target_canvas": [
+        1672,
+        941
+      ],
+      "production_status": "generated_technical_checked",
+      "humanArtValidation": false,
+      "runtimeIntegrated": false,
+      "animationInEngineValidated": false,
+      "master_frame": "059",
+      "reference_role": "059 fixe le cadre et le berceau ; autres références seulement pour l’état.",
+      "actual_canvas": [
+        1671,
+        941
+      ],
+      "sha256": "88223dc32261a0f05fb87a4997cde48d27f8516f8272b7e6c339b27bcc172af6"
+    },
+    {
+      "id": "A002",
+      "asset_key": "XENO-BE-A002",
+      "name_fr": "Anticipation de morsure",
+      "family": "tete_bulbe",
+      "filename": "sprites/tete_bulbe/A002_094_anticipation_morsure.png",
+      "reference_ids": [
+        "059",
+        "094"
+      ],
+      "reference_files": [
+        "sprites/personnages/059_matriarche_intacte.png",
+        "sprites/boss_actions/094_matriarche_morsure.png"
+      ],
+      "reference_paths": [
+        "sprites/personnages/059_matriarche_intacte.png",
+        "sprites/boss_actions/094_matriarche_morsure.png"
+      ],
+      "target_canvas": [
+        1672,
+        941
+      ],
+      "production_status": "generated_technical_checked",
+      "humanArtValidation": false,
+      "runtimeIntegrated": false,
+      "animationInEngineValidated": false,
+      "master_frame": "059",
+      "reference_role": "059 fixe le cadre et le berceau ; autres références seulement pour l’état.",
+      "actual_canvas": [
+        1671,
+        941
+      ],
+      "sha256": "06fb608594bcc23e549fc813ebaeb76ad4ede582fc3e2c88a26c889d3e92fe29"
+    },
+    {
+      "id": "A003",
+      "asset_key": "XENO-BE-A003",
+      "name_fr": "Fermeture de la morsure",
+      "family": "tete_bulbe",
+      "filename": "sprites/tete_bulbe/A003_094_fermeture_contact.png",
+      "reference_ids": [
+        "059",
+        "094"
+      ],
+      "reference_files": [
+        "sprites/personnages/059_matriarche_intacte.png",
+        "sprites/boss_actions/094_matriarche_morsure.png"
+      ],
+      "reference_paths": [
+        "sprites/personnages/059_matriarche_intacte.png",
+        "sprites/boss_actions/094_matriarche_morsure.png"
+      ],
+      "target_canvas": [
+        1672,
+        941
+      ],
+      "production_status": "generated_technical_checked",
+      "humanArtValidation": false,
+      "runtimeIntegrated": false,
+      "animationInEngineValidated": false,
+      "master_frame": "059",
+      "reference_role": "059 fixe le cadre et le berceau ; autres références seulement pour l’état.",
+      "actual_canvas": [
+        1671,
+        941
+      ],
+      "sha256": "7698af25ac8f795cbb26395e7d803a98930a30f893fa224c6016e91a07c4ed80"
+    },
+    {
+      "id": "A004",
+      "asset_key": "XENO-BE-A004",
+      "name_fr": "Retour au repos après recul",
+      "family": "tete_bulbe",
+      "filename": "sprites/tete_bulbe/A004_095_retour_repos.png",
+      "reference_ids": [
+        "059",
+        "095"
+      ],
+      "reference_files": [
+        "sprites/personnages/059_matriarche_intacte.png",
+        "sprites/boss_actions/095_matriarche_recul.png"
+      ],
+      "reference_paths": [
+        "sprites/personnages/059_matriarche_intacte.png",
+        "sprites/boss_actions/095_matriarche_recul.png"
+      ],
+      "target_canvas": [
+        1672,
+        941
+      ],
+      "production_status": "generated_technical_checked",
+      "humanArtValidation": false,
+      "runtimeIntegrated": false,
+      "animationInEngineValidated": false,
+      "master_frame": "059",
+      "reference_role": "059 fixe le cadre et le berceau ; autres références seulement pour l’état.",
+      "actual_canvas": [
+        1671,
+        941
+      ],
+      "sha256": "5a67de46db39847c5fcb885670d22847f3b6e84dea64656115f9ed626e1f241f"
+    },
+    {
+      "id": "A005",
+      "asset_key": "XENO-BE-A005",
+      "name_fr": "Charge intermédiaire du souffle",
+      "family": "tete_bulbe",
+      "filename": "sprites/tete_bulbe/A005_060_charge_intermediaire.png",
+      "reference_ids": [
+        "059",
+        "060"
+      ],
+      "reference_files": [
+        "sprites/personnages/059_matriarche_intacte.png",
+        "sprites/personnages/060_matriarche_souffle.png"
+      ],
+      "reference_paths": [
+        "sprites/personnages/059_matriarche_intacte.png",
+        "sprites/personnages/060_matriarche_souffle.png"
+      ],
+      "target_canvas": [
+        1672,
+        941
+      ],
+      "production_status": "generated_technical_checked",
+      "humanArtValidation": false,
+      "runtimeIntegrated": false,
+      "animationInEngineValidated": false,
+      "master_frame": "059",
+      "reference_role": "059 fixe le cadre et le berceau ; autres références seulement pour l’état.",
+      "actual_canvas": [
+        1671,
+        941
+      ],
+      "sha256": "c5a3c15bc7482ee52466f8750e05b2a9234b41e699c25937c6c6ae66bb7561d3"
+    },
+    {
+      "id": "A006",
+      "asset_key": "XENO-BE-A006",
+      "name_fr": "Fin du souffle",
+      "family": "tete_bulbe",
+      "filename": "sprites/tete_bulbe/A006_096_fin_souffle.png",
+      "reference_ids": [
+        "059",
+        "096",
+        "060"
+      ],
+      "reference_files": [
+        "sprites/personnages/059_matriarche_intacte.png",
+        "sprites/boss_actions/096_matriarche_souffle_actif.png",
+        "sprites/personnages/060_matriarche_souffle.png"
+      ],
+      "reference_paths": [
+        "sprites/personnages/059_matriarche_intacte.png",
+        "sprites/boss_actions/096_matriarche_souffle_actif.png",
+        "sprites/personnages/060_matriarche_souffle.png"
+      ],
+      "target_canvas": [
+        1672,
+        941
+      ],
+      "production_status": "generated_technical_checked",
+      "humanArtValidation": false,
+      "runtimeIntegrated": false,
+      "animationInEngineValidated": false,
+      "master_frame": "059",
+      "reference_role": "059 fixe le cadre et le berceau ; autres références seulement pour l’état.",
+      "actual_canvas": [
+        1671,
+        941
+      ],
+      "sha256": "6b89d0d9a7f22c0aee6ef7c5764b6520705d5bfc8ab1297a8842b0ccdb3e4e01"
+    },
+    {
+      "id": "A007",
+      "asset_key": "XENO-BE-A007",
+      "name_fr": "Exposition progressive du bulbe",
+      "family": "tete_bulbe",
+      "filename": "sprites/tete_bulbe/A007_061_exposition_progressive.png",
+      "reference_ids": [
+        "059",
+        "061"
+      ],
+      "reference_files": [
+        "sprites/personnages/059_matriarche_intacte.png",
+        "sprites/personnages/061_matriarche_vulnerable.png"
+      ],
+      "reference_paths": [
+        "sprites/personnages/059_matriarche_intacte.png",
+        "sprites/personnages/061_matriarche_vulnerable.png"
+      ],
+      "target_canvas": [
+        1672,
+        941
+      ],
+      "production_status": "generated_technical_checked",
+      "humanArtValidation": false,
+      "runtimeIntegrated": false,
+      "animationInEngineValidated": false,
+      "master_frame": "059",
+      "reference_role": "059 fixe le cadre et le berceau ; autres références seulement pour l’état.",
+      "actual_canvas": [
+        1671,
+        941
+      ],
+      "sha256": "ce7c0ea1dffa55d82045d84797380450884d39ae2df326b15ba1e198c30d9904"
+    },
+    {
+      "id": "A008",
+      "asset_key": "XENO-BE-A008",
+      "name_fr": "Affaissement final de la tête",
+      "family": "tete_bulbe",
+      "filename": "sprites/tete_bulbe/A008_097_affaissement_final.png",
+      "reference_ids": [
+        "059",
+        "097",
+        "062"
+      ],
+      "reference_files": [
+        "sprites/personnages/059_matriarche_intacte.png",
+        "sprites/boss_actions/097_matriarche_agonie.png",
+        "sprites/personnages/062_matriarche_morte.png"
+      ],
+      "reference_paths": [
+        "sprites/personnages/059_matriarche_intacte.png",
+        "sprites/boss_actions/097_matriarche_agonie.png",
+        "sprites/personnages/062_matriarche_morte.png"
+      ],
+      "target_canvas": [
+        1672,
+        941
+      ],
+      "production_status": "generated_technical_checked",
+      "humanArtValidation": false,
+      "runtimeIntegrated": false,
+      "animationInEngineValidated": false,
+      "master_frame": "059",
+      "reference_role": "059 fixe le cadre et le berceau ; autres références seulement pour l’état.",
+      "actual_canvas": [
+        1671,
+        941
+      ],
+      "sha256": "f54a036b9ae73073e38558b0a6acf491e96f028cb4888c62d0c38b2d68f18538"
+    },
+    {
+      "id": "A009",
+      "asset_key": "XENO-BE-A009",
+      "name_fr": "Bulbe nerveux contracté",
+      "family": "tete_bulbe",
+      "filename": "sprites/tete_bulbe/A009_063_bulbe_contracte.png",
+      "reference_ids": [
+        "063"
+      ],
+      "reference_files": [
+        "sprites/personnages/063_bulbe_nerveux.png"
+      ],
+      "reference_paths": [
+        "sprites/personnages/063_bulbe_nerveux.png"
+      ],
+      "target_canvas": [
+        1672,
+        941
+      ],
+      "production_status": "generated_technical_checked",
+      "humanArtValidation": false,
+      "runtimeIntegrated": false,
+      "animationInEngineValidated": false,
+      "actual_canvas": [
+        1671,
+        941
+      ],
+      "sha256": "04eb46093c5c98e39e4acda5f88c0a1143fc1d46563ef4f09d4fa8ccabc5d6e8"
+    },
+    {
+      "id": "A010",
+      "asset_key": "XENO-BE-A010",
+      "name_fr": "Tête après prélèvement de la crête",
+      "family": "tete_bulbe",
+      "filename": "sprites/tete_bulbe/A010_062_crete_prelevee.png",
+      "reference_ids": [
+        "062",
+        "054"
+      ],
+      "reference_files": [
+        "sprites/personnages/062_matriarche_morte.png",
+        "sprites/accessoires/054_fragment_couronne.png"
+      ],
+      "reference_paths": [
+        "sprites/personnages/062_matriarche_morte.png",
+        "sprites/accessoires/054_fragment_couronne.png"
+      ],
+      "target_canvas": [
+        1672,
+        941
+      ],
+      "production_status": "generated_technical_checked",
+      "humanArtValidation": false,
+      "runtimeIntegrated": false,
+      "animationInEngineValidated": false,
+      "actual_canvas": [
+        1671,
+        941
+      ],
+      "sha256": "cf960c5545dc42417a0901857cde3caafff07cea2b5acef80b2109060afbdf74"
+    },
+    {
+      "id": "A011",
+      "asset_key": "XENO-BE-A011",
+      "name_fr": "Crête arrimée pour le transport",
+      "family": "tete_bulbe",
+      "filename": "sprites/tete_bulbe/A011_054_crete_arrimee_transport.png",
+      "reference_ids": [
+        "054",
+        "100"
+      ],
+      "reference_files": [
+        "sprites/accessoires/054_fragment_couronne.png",
+        "sprites/props_effets/100_trophee_couronne_socle.png"
+      ],
+      "reference_paths": [
+        "sprites/accessoires/054_fragment_couronne.png",
+        "sprites/props_effets/100_trophee_couronne_socle.png"
+      ],
+      "target_canvas": [
+        1254,
+        1254
+      ],
+      "production_status": "generated_technical_checked",
+      "humanArtValidation": false,
+      "runtimeIntegrated": false,
+      "animationInEngineValidated": false,
+      "actual_canvas": [
+        1254,
+        1254
+      ],
+      "sha256": "e47bf62c5ef95885dd5c78efb907490bf5d586381d9a5c5d1630784bcb74ba16"
+    },
+    {
+      "id": "A012",
+      "asset_key": "XENO-BE-A012",
+      "name_fr": "Crête endommagée",
+      "family": "tete_bulbe",
+      "filename": "sprites/tete_bulbe/A012_054_crete_endommagee.png",
+      "reference_ids": [
+        "054"
+      ],
+      "reference_files": [
+        "sprites/accessoires/054_fragment_couronne.png"
+      ],
+      "reference_paths": [
+        "sprites/accessoires/054_fragment_couronne.png"
+      ],
+      "target_canvas": [
+        1254,
+        1254
+      ],
+      "production_status": "generated_technical_checked",
+      "humanArtValidation": false,
+      "runtimeIntegrated": false,
+      "animationInEngineValidated": false,
+      "actual_canvas": [
+        1254,
+        1254
+      ],
+      "sha256": "2886e5300bf15598968fdca563c058f3461a68ef8c6f8b731a17eba615886846"
+    },
+    {
+      "id": "A013",
+      "asset_key": "XENO-BE-A013",
+      "name_fr": "Déploiement intermédiaire du balayage",
+      "family": "tentacules",
+      "filename": "sprites/tentacules/A013_089_balayage_deploiement_intermediaire.png",
+      "reference_ids": [
+        "089",
+        "038"
+      ],
+      "reference_files": [
+        "sprites/boss_actions/089_tentacule_armement.png",
+        "sprites/tentacules/038_tentacule_balayage.png"
+      ],
+      "reference_paths": [
+        "sprites/boss_actions/089_tentacule_armement.png",
+        "sprites/tentacules/038_tentacule_balayage.png"
+      ],
+      "target_canvas": [
+        1774,
+        887
+      ],
+      "production_status": "generated_technical_checked",
+      "humanArtValidation": false,
+      "runtimeIntegrated": false,
+      "animationInEngineValidated": false,
+      "actual_canvas": [
+        1774,
+        887
+      ],
+      "sha256": "5eede33195ef9f295c187070be0bf16d5d111c17ee00a15b188f9bf31d86536f"
+    },
+    {
+      "id": "A014",
+      "asset_key": "XENO-BE-A014",
+      "name_fr": "Retour du balayage",
+      "family": "tentacules",
+      "filename": "sprites/tentacules/A014_038_balayage_retour.png",
+      "reference_ids": [
+        "038",
+        "089"
+      ],
+      "reference_files": [
+        "sprites/tentacules/038_tentacule_balayage.png",
+        "sprites/boss_actions/089_tentacule_armement.png"
+      ],
+      "reference_paths": [
+        "sprites/tentacules/038_tentacule_balayage.png",
+        "sprites/boss_actions/089_tentacule_armement.png"
+      ],
+      "target_canvas": [
+        1774,
+        887
+      ],
+      "production_status": "generated_technical_checked",
+      "humanArtValidation": false,
+      "runtimeIntegrated": false,
+      "animationInEngineValidated": false,
+      "actual_canvas": [
+        1774,
+        887
+      ],
+      "sha256": "6ccaac78a76b77ac62894aa2fdaf1b09e6043bce065241a6340d2de71d8c59cb"
+    },
+    {
+      "id": "A015",
+      "asset_key": "XENO-BE-A015",
+      "name_fr": "Descente de perforation",
+      "family": "tentacules",
+      "filename": "sprites/tentacules/A015_039_perforation_descente.png",
+      "reference_ids": [
+        "039",
+        "090"
+      ],
+      "reference_files": [
+        "sprites/tentacules/039_tentacule_perforation.png",
+        "sprites/boss_actions/090_tentacule_impact.png"
+      ],
+      "reference_paths": [
+        "sprites/tentacules/039_tentacule_perforation.png",
+        "sprites/boss_actions/090_tentacule_impact.png"
+      ],
+      "target_canvas": [
+        1024,
+        1536
+      ],
+      "production_status": "generated_technical_checked",
+      "humanArtValidation": false,
+      "runtimeIntegrated": false,
+      "animationInEngineValidated": false,
+      "actual_canvas": [
+        1024,
+        1536
+      ],
+      "sha256": "370154c38fdb516def9ad51bf75cf420b69ad8f71cf428949a5929e16905f1b2"
+    },
+    {
+      "id": "A016",
+      "asset_key": "XENO-BE-A016",
+      "name_fr": "Retrait de perforation",
+      "family": "tentacules",
+      "filename": "sprites/tentacules/A016_090_perforation_retrait.png",
+      "reference_ids": [
+        "090",
+        "039"
+      ],
+      "reference_files": [
+        "sprites/boss_actions/090_tentacule_impact.png",
+        "sprites/tentacules/039_tentacule_perforation.png"
+      ],
+      "reference_paths": [
+        "sprites/boss_actions/090_tentacule_impact.png",
+        "sprites/tentacules/039_tentacule_perforation.png"
+      ],
+      "target_canvas": [
+        1024,
+        1536
+      ],
+      "production_status": "generated_technical_checked",
+      "humanArtValidation": false,
+      "runtimeIntegrated": false,
+      "animationInEngineValidated": false,
+      "actual_canvas": [
+        1024,
+        1536
+      ],
+      "sha256": "1506f9b9816bddde467fba17e2ad09dfd7ec151eae2efd7e974fa223fc01b04b"
+    },
+    {
+      "id": "A017",
+      "asset_key": "XENO-BE-A017",
+      "name_fr": "Anse à demi refermée",
+      "family": "tentacules",
+      "filename": "sprites/tentacules/A017_041_anse_fermeture_intermediaire.png",
+      "reference_ids": [
+        "041",
+        "091"
+      ],
+      "reference_files": [
+        "sprites/tentacules/041_anse_capture.png",
+        "sprites/boss_actions/091_anse_fermee.png"
+      ],
+      "reference_paths": [
+        "sprites/tentacules/041_anse_capture.png",
+        "sprites/boss_actions/091_anse_fermee.png"
+      ],
+      "target_canvas": [
+        1536,
+        1024
+      ],
+      "production_status": "generated_technical_checked",
+      "humanArtValidation": false,
+      "runtimeIntegrated": false,
+      "animationInEngineValidated": false,
+      "actual_canvas": [
+        1536,
+        1024
+      ],
+      "sha256": "771bbf164c7d528588418f6a842b209b19ec612b908c701a5fc7ecd363a29da2"
+    },
+    {
+      "id": "A018",
+      "asset_key": "XENO-BE-A018",
+      "name_fr": "Libération de l’anse",
+      "family": "tentacules",
+      "filename": "sprites/tentacules/A018_091_anse_liberation.png",
+      "reference_ids": [
+        "091",
+        "041"
+      ],
+      "reference_files": [
+        "sprites/boss_actions/091_anse_fermee.png",
+        "sprites/tentacules/041_anse_capture.png"
+      ],
+      "reference_paths": [
+        "sprites/boss_actions/091_anse_fermee.png",
+        "sprites/tentacules/041_anse_capture.png"
+      ],
+      "target_canvas": [
+        1536,
+        1024
+      ],
+      "production_status": "generated_technical_checked",
+      "humanArtValidation": false,
+      "runtimeIntegrated": false,
+      "animationInEngineValidated": false,
+      "actual_canvas": [
+        1536,
+        1024
+      ],
+      "sha256": "3c7da04e4e5ecde52d8110ea804087f863d02846c70f5fec92ad33de16c389f8"
+    },
+    {
+      "id": "A019",
+      "asset_key": "XENO-BE-A019",
+      "name_fr": "Armement du fouet diagonal",
+      "family": "tentacules",
+      "filename": "sprites/tentacules/A019_045_fouet_armement.png",
+      "reference_ids": [
+        "045",
+        "092"
+      ],
+      "reference_files": [
+        "sprites/tentacules/045_fouet_diagonal.png",
+        "sprites/boss_actions/092_fouet_retrait.png"
+      ],
+      "reference_paths": [
+        "sprites/tentacules/045_fouet_diagonal.png",
+        "sprites/boss_actions/092_fouet_retrait.png"
+      ],
+      "target_canvas": [
+        1536,
+        1024
+      ],
+      "production_status": "generated_technical_checked",
+      "humanArtValidation": false,
+      "runtimeIntegrated": false,
+      "animationInEngineValidated": false,
+      "actual_canvas": [
+        1536,
+        1024
+      ],
+      "sha256": "ce17fe5fa92b2293145b1f7f6a8fbbb2040499f3ddcb3454e5169e72e3d019ab"
+    },
+    {
+      "id": "A020",
+      "asset_key": "XENO-BE-A020",
+      "name_fr": "Descente intermédiaire du fouet",
+      "family": "tentacules",
+      "filename": "sprites/tentacules/A020_045_fouet_descente_intermediaire.png",
+      "reference_ids": [
+        "045",
+        "092"
+      ],
+      "reference_files": [
+        "sprites/tentacules/045_fouet_diagonal.png",
+        "sprites/boss_actions/092_fouet_retrait.png"
+      ],
+      "reference_paths": [
+        "sprites/tentacules/045_fouet_diagonal.png",
+        "sprites/boss_actions/092_fouet_retrait.png"
+      ],
+      "target_canvas": [
+        1536,
+        1024
+      ],
+      "production_status": "generated_technical_checked",
+      "humanArtValidation": false,
+      "runtimeIntegrated": false,
+      "animationInEngineValidated": false,
+      "actual_canvas": [
+        1536,
+        1024
+      ],
+      "sha256": "9923eaae64bec57655ff5787fb0277615316fa64e9bf3b8a61347ef59e0be084"
+    },
+    {
+      "id": "A021",
+      "asset_key": "XENO-BE-A021",
+      "name_fr": "Souche sectionnée indépendante",
+      "family": "tentacules",
+      "filename": "sprites/tentacules/A021_042_souche_separee.png",
+      "reference_ids": [
+        "042"
+      ],
+      "reference_files": [
+        "sprites/tentacules/042_tentacule_sectionne.png"
+      ],
+      "reference_paths": [
+        "sprites/tentacules/042_tentacule_sectionne.png"
+      ],
+      "target_canvas": [
+        1536,
+        1024
+      ],
+      "production_status": "generated_technical_checked",
+      "humanArtValidation": false,
+      "runtimeIntegrated": false,
+      "animationInEngineValidated": false,
+      "actual_canvas": [
+        1536,
+        1024
+      ],
+      "sha256": "dbb927b491a08b84a95344d201ac1189656080659c1a163ca1b6b89b72157ac4"
+    },
+    {
+      "id": "A022",
+      "asset_key": "XENO-BE-A022",
+      "name_fr": "Segment détaché indépendant",
+      "family": "tentacules",
+      "filename": "sprites/tentacules/A022_042_segment_detache_separe.png",
+      "reference_ids": [
+        "042"
+      ],
+      "reference_files": [
+        "sprites/tentacules/042_tentacule_sectionne.png"
+      ],
+      "reference_paths": [
+        "sprites/tentacules/042_tentacule_sectionne.png"
+      ],
+      "target_canvas": [
+        1536,
+        1024
+      ],
+      "production_status": "generated_technical_checked",
+      "humanArtValidation": false,
+      "runtimeIntegrated": false,
+      "animationInEngineValidated": false,
+      "actual_canvas": [
+        1536,
+        1024
+      ],
+      "sha256": "1124d4945229138aaeec15aadbed022952204dd4761e3c55f93f4fe05ddd505f"
+    },
+    {
+      "id": "A023",
+      "asset_key": "XENO-BE-A023",
+      "name_fr": "Évent entrouvert",
+      "family": "effets_interactions",
+      "filename": "sprites/effets_interactions/A023_033_event_entrouvert.png",
+      "reference_ids": [
+        "033",
+        "086"
+      ],
+      "reference_files": [
+        "sprites/ruche/033_event_respiratoire.png",
+        "sprites/reactions/086_event_ferme.png"
+      ],
+      "reference_paths": [
+        "sprites/ruche/033_event_respiratoire.png",
+        "sprites/reactions/086_event_ferme.png"
+      ],
+      "target_canvas": [
+        1366,
+        1152
+      ],
+      "production_status": "generated_technical_checked",
+      "humanArtValidation": false,
+      "runtimeIntegrated": false,
+      "animationInEngineValidated": false,
+      "actual_canvas": [
+        1366,
+        1151
+      ],
+      "sha256": "7719bdd90d5fbaadec49b7875204fb095a38175f8d6b7fe0eff4252103b73b9d"
+    },
+    {
+      "id": "A024",
+      "asset_key": "XENO-BE-A024",
+      "name_fr": "Membrane de passage entrouverte",
+      "family": "effets_interactions",
+      "filename": "sprites/effets_interactions/A024_034_membrane_passage_entrouverte.png",
+      "reference_ids": [
+        "034",
+        "035"
+      ],
+      "reference_files": [
+        "sprites/ruche/034_porte_membrane_fermee.png",
+        "sprites/ruche/035_porte_membrane_ouverte.png"
+      ],
+      "reference_paths": [
+        "sprites/ruche/034_porte_membrane_fermee.png",
+        "sprites/ruche/035_porte_membrane_ouverte.png"
+      ],
+      "target_canvas": [
+        1312,
+        1199
+      ],
+      "production_status": "generated_technical_checked",
+      "humanArtValidation": false,
+      "runtimeIntegrated": false,
+      "animationInEngineValidated": false,
+      "actual_canvas": [
+        1312,
+        1199
+      ],
+      "sha256": "a3e1a02d02c11e6b6fa7f28dcf46cd3254f57585afbcefbd2aa15751ba9f876a"
+    },
+    {
+      "id": "A025",
+      "asset_key": "XENO-BE-A025",
+      "name_fr": "Vanne en cours de drainage",
+      "family": "effets_interactions",
+      "filename": "sprites/effets_interactions/A025_030_vanne_drainage_intermediaire.png",
+      "reference_ids": [
+        "030",
+        "036"
+      ],
+      "reference_files": [
+        "sprites/ruche/030_vanne_tissulaire.png",
+        "sprites/ruche/036_vanne_drainee.png"
+      ],
+      "reference_paths": [
+        "sprites/ruche/030_vanne_tissulaire.png",
+        "sprites/ruche/036_vanne_drainee.png"
+      ],
+      "target_canvas": [
+        2172,
+        724
+      ],
+      "production_status": "generated_technical_checked",
+      "humanArtValidation": false,
+      "runtimeIntegrated": false,
+      "animationInEngineValidated": false,
+      "actual_canvas": [
+        2172,
+        724
+      ],
+      "sha256": "045952d045dd77f05cdc169c8eb28c7a274e33c28080a661c8f6838911fa6532"
+    },
+    {
+      "id": "A026",
+      "asset_key": "XENO-BE-A026",
+      "name_fr": "Filaments à demi dressés",
+      "family": "effets_interactions",
+      "filename": "sprites/effets_interactions/A026_031_filaments_demi_alerte.png",
+      "reference_ids": [
+        "031",
+        "084"
+      ],
+      "reference_files": [
+        "sprites/ruche/031_filaments_sensoriels.png",
+        "sprites/reactions/084_filaments_alerte.png"
+      ],
+      "reference_paths": [
+        "sprites/ruche/031_filaments_sensoriels.png",
+        "sprites/reactions/084_filaments_alerte.png"
+      ],
+      "target_canvas": [
+        1254,
+        1254
+      ],
+      "production_status": "generated_technical_checked",
+      "humanArtValidation": false,
+      "runtimeIntegrated": false,
+      "animationInEngineValidated": false,
+      "actual_canvas": [
+        1254,
+        1254
+      ],
+      "sha256": "9f5cfdaf4e96f8e3c191de3f256a6ff5cad72c0db1e5d3a67cecc8bf33ce6d9c"
+    },
+    {
+      "id": "A027",
+      "asset_key": "XENO-BE-A027",
+      "name_fr": "Membrane royale gonflée",
+      "family": "effets_interactions",
+      "filename": "sprites/effets_interactions/A027_046_membrane_gonflee.png",
+      "reference_ids": [
+        "046",
+        "093"
+      ],
+      "reference_files": [
+        "sprites/tentacules/046_membrane_respiratoire.png",
+        "sprites/boss_actions/093_membrane_dechiree.png"
+      ],
+      "reference_paths": [
+        "sprites/tentacules/046_membrane_respiratoire.png",
+        "sprites/boss_actions/093_membrane_dechiree.png"
+      ],
+      "target_canvas": [
+        1774,
+        887
+      ],
+      "production_status": "generated_technical_checked",
+      "humanArtValidation": false,
+      "runtimeIntegrated": false,
+      "animationInEngineValidated": false,
+      "actual_canvas": [
+        1774,
+        887
+      ],
+      "sha256": "24baedae5a67a31c4d4d7f35f1d705d8f7d0a2f7f0813892a45e05fa8d04f437"
+    },
+    {
+      "id": "A028",
+      "asset_key": "XENO-BE-A028",
+      "name_fr": "Déchirure initiale de la membrane royale",
+      "family": "effets_interactions",
+      "filename": "sprites/effets_interactions/A028_093_membrane_dechirure_initiale.png",
+      "reference_ids": [
+        "046",
+        "093"
+      ],
+      "reference_files": [
+        "sprites/tentacules/046_membrane_respiratoire.png",
+        "sprites/boss_actions/093_membrane_dechiree.png"
+      ],
+      "reference_paths": [
+        "sprites/tentacules/046_membrane_respiratoire.png",
+        "sprites/boss_actions/093_membrane_dechiree.png"
+      ],
+      "target_canvas": [
+        1774,
+        887
+      ],
+      "production_status": "generated_technical_checked",
+      "humanArtValidation": false,
+      "runtimeIntegrated": false,
+      "animationInEngineValidated": false,
+      "actual_canvas": [
+        1774,
+        887
+      ],
+      "sha256": "edb5b70e799239aa349bfcff2cf3686adfa61ae49a7d1f04ca3b320be3669dd9"
+    },
+    {
+      "id": "A029",
+      "asset_key": "XENO-BE-A029",
+      "name_fr": "Rupture initiale du bulbe",
+      "family": "effets_interactions",
+      "filename": "sprites/effets_interactions/A029_063_bulbe_rupture_initiale.png",
+      "reference_ids": [
+        "063",
+        "098"
+      ],
+      "reference_files": [
+        "sprites/personnages/063_bulbe_nerveux.png",
+        "sprites/boss_actions/098_bulbe_rompu.png"
+      ],
+      "reference_paths": [
+        "sprites/personnages/063_bulbe_nerveux.png",
+        "sprites/boss_actions/098_bulbe_rompu.png"
+      ],
+      "target_canvas": [
+        1672,
+        941
+      ],
+      "production_status": "generated_technical_checked",
+      "humanArtValidation": false,
+      "runtimeIntegrated": false,
+      "animationInEngineValidated": false,
+      "actual_canvas": [
+        1671,
+        941
+      ],
+      "sha256": "7cfc82b24419c8ee1e2c1075927f926b5fa9682d1196cac53e9903ab2c9628d3"
+    },
+    {
+      "id": "A030",
+      "asset_key": "XENO-BE-A030",
+      "name_fr": "Naissance du jet acide",
+      "family": "effets_interactions",
+      "filename": "sprites/effets_interactions/A030_103_jet_naissance.png",
+      "reference_ids": [
+        "103"
+      ],
+      "reference_files": [
+        "sprites/props_effets/103_jet_acide_horizontal.png"
+      ],
+      "reference_paths": [
+        "sprites/props_effets/103_jet_acide_horizontal.png"
+      ],
+      "target_canvas": [
+        1536,
+        1024
+      ],
+      "production_status": "generated_technical_checked",
+      "humanArtValidation": false,
+      "runtimeIntegrated": false,
+      "animationInEngineValidated": false,
+      "actual_canvas": [
+        1536,
+        1024
+      ],
+      "sha256": "836b72cbcd848b606ab7f6983fd1b860a4814a38866a61ea5f83bd67047dcf1d"
+    },
+    {
+      "id": "A031",
+      "asset_key": "XENO-BE-A031",
+      "name_fr": "Extinction du jet acide",
+      "family": "effets_interactions",
+      "filename": "sprites/effets_interactions/A031_103_jet_extinction.png",
+      "reference_ids": [
+        "103"
+      ],
+      "reference_files": [
+        "sprites/props_effets/103_jet_acide_horizontal.png"
+      ],
+      "reference_paths": [
+        "sprites/props_effets/103_jet_acide_horizontal.png"
+      ],
+      "target_canvas": [
+        1536,
+        1024
+      ],
+      "production_status": "generated_technical_checked",
+      "humanArtValidation": false,
+      "runtimeIntegrated": false,
+      "animationInEngineValidated": false,
+      "actual_canvas": [
+        1536,
+        1024
+      ],
+      "sha256": "65fa81058bbfa5754e2130f80a882f85e6812aae1c94893836f6a4e1912441e0"
+    },
+    {
+      "id": "A032",
+      "asset_key": "XENO-BE-A032",
+      "name_fr": "Premier contact acide",
+      "family": "effets_interactions",
+      "filename": "sprites/effets_interactions/A032_104_acide_premier_contact.png",
+      "reference_ids": [
+        "104",
+        "065"
+      ],
+      "reference_files": [
+        "sprites/props_effets/104_acide_eclaboussure.png",
+        "sprites/effets/065_flaque_acide.png"
+      ],
+      "reference_paths": [
+        "sprites/props_effets/104_acide_eclaboussure.png",
+        "sprites/effets/065_flaque_acide.png"
+      ],
+      "target_canvas": [
+        1536,
+        1024
+      ],
+      "production_status": "generated_technical_checked",
+      "humanArtValidation": false,
+      "runtimeIntegrated": false,
+      "animationInEngineValidated": false,
+      "actual_canvas": [
+        1536,
+        1024
+      ],
+      "sha256": "b25cea4405461a7a3720124949f902a2c6ce1b58118967863bba17c350e38dbd"
+    },
+    {
+      "id": "A033",
+      "asset_key": "XENO-BE-A033",
+      "name_fr": "Début de l’impact de poussière",
+      "family": "effets_interactions",
+      "filename": "sprites/effets_interactions/A033_070_poussiere_debut_impact.png",
+      "reference_ids": [
+        "070"
+      ],
+      "reference_files": [
+        "sprites/effets/070_impact_poussiere.png"
+      ],
+      "reference_paths": [
+        "sprites/effets/070_impact_poussiere.png"
+      ],
+      "target_canvas": [
+        1536,
+        1024
+      ],
+      "production_status": "generated_technical_checked",
+      "humanArtValidation": false,
+      "runtimeIntegrated": false,
+      "animationInEngineValidated": false,
+      "actual_canvas": [
+        1536,
+        1024
+      ],
+      "sha256": "be0a9ee1b68d6a905a87fba2c63c3e8b50e66c6fa1048467b300ceb4369feb44"
+    },
+    {
+      "id": "A034",
+      "asset_key": "XENO-BE-A034",
+      "name_fr": "Télégraphe de sol fissuré",
+      "family": "effets_interactions",
+      "filename": "sprites/effets_interactions/A034_071_telegraphe_sol_fissure.png",
+      "reference_ids": [
+        "071",
+        "013"
+      ],
+      "reference_files": [
+        "sprites/effets/071_onde_sol.png",
+        "sprites/terrain/013_corniche_basalte.png"
+      ],
+      "reference_paths": [
+        "sprites/effets/071_onde_sol.png",
+        "sprites/terrain/013_corniche_basalte.png"
+      ],
+      "target_canvas": [
+        1536,
+        1024
+      ],
+      "production_status": "generated_technical_checked",
+      "humanArtValidation": false,
+      "runtimeIntegrated": false,
+      "animationInEngineValidated": false,
+      "actual_canvas": [
+        1536,
+        1024
+      ],
+      "sha256": "e19e5d5abbec158a9a36fa3a10fc543f05f2cc87a74598ad877a11e7e67b6084"
+    },
+    {
+      "id": "A035",
+      "asset_key": "XENO-BE-A035",
+      "name_fr": "Amorce de vapeur",
+      "family": "effets_interactions",
+      "filename": "sprites/effets_interactions/A035_068_vapeur_amorce.png",
+      "reference_ids": [
+        "068",
+        "033"
+      ],
+      "reference_files": [
+        "sprites/effets/068_souffle_vapeur.png",
+        "sprites/ruche/033_event_respiratoire.png"
+      ],
+      "reference_paths": [
+        "sprites/effets/068_souffle_vapeur.png",
+        "sprites/ruche/033_event_respiratoire.png"
+      ],
+      "target_canvas": [
+        1536,
+        1024
+      ],
+      "production_status": "generated_technical_checked",
+      "humanArtValidation": false,
+      "runtimeIntegrated": false,
+      "animationInEngineValidated": false,
+      "actual_canvas": [
+        1536,
+        1024
+      ],
+      "sha256": "0c786d81ffed1666393894922ece1a1be3ff82979215a6d5b07565fcf8b023ac"
+    },
+    {
+      "id": "A036",
+      "asset_key": "XENO-BE-A036",
+      "name_fr": "Dissipation des spores",
+      "family": "effets_interactions",
+      "filename": "sprites/effets_interactions/A036_067_spores_dissipation.png",
+      "reference_ids": [
+        "067"
+      ],
+      "reference_files": [
+        "sprites/effets/067_nuage_spores.png"
+      ],
+      "reference_paths": [
+        "sprites/effets/067_nuage_spores.png"
+      ],
+      "target_canvas": [
+        1536,
+        1024
+      ],
+      "production_status": "generated_technical_checked",
+      "humanArtValidation": false,
+      "runtimeIntegrated": false,
+      "animationInEngineValidated": false,
+      "actual_canvas": [
+        1536,
+        1024
+      ],
+      "sha256": "6dd22337fa0103617d37d23a579b5185e65236a7b549cb24029bfcaced055f7d"
+    },
+    {
+      "id": "A037",
+      "asset_key": "XENO-BE-A037",
+      "name_fr": "Préparation complète du souffle au cadre 059",
+      "family": "tete_bulbe",
+      "filename": "sprites/tete_bulbe/A037_060_preparation_cadre_059.png",
+      "reference_ids": [
+        "059",
+        "060"
+      ],
+      "reference_files": [
+        "sprites/personnages/059_matriarche_intacte.png",
+        "sprites/personnages/060_matriarche_souffle.png"
+      ],
+      "reference_paths": [
+        "sprites/personnages/059_matriarche_intacte.png",
+        "sprites/personnages/060_matriarche_souffle.png"
+      ],
+      "target_canvas": [
+        1672,
+        941
+      ],
+      "master_frame": "059",
+      "reference_role": "059 fixe le cadre et le berceau ; autre référence seulement pour l’état anatomique.",
+      "production_status": "generated_technical_checked",
+      "humanArtValidation": false,
+      "runtimeIntegrated": false,
+      "animationInEngineValidated": false,
+      "actual_canvas": [
+        1671,
+        941
+      ],
+      "sha256": "f74e6e71d6576ad232503a028748b0ea42efe953e24e83ac5bb03ec3675850a7"
+    },
+    {
+      "id": "A038",
+      "asset_key": "XENO-BE-A038",
+      "name_fr": "Souffle actif au cadre 059",
+      "family": "tete_bulbe",
+      "filename": "sprites/tete_bulbe/A038_096_souffle_actif_cadre_059.png",
+      "reference_ids": [
+        "059",
+        "096"
+      ],
+      "reference_files": [
+        "sprites/personnages/059_matriarche_intacte.png",
+        "sprites/boss_actions/096_matriarche_souffle_actif.png"
+      ],
+      "reference_paths": [
+        "sprites/personnages/059_matriarche_intacte.png",
+        "sprites/boss_actions/096_matriarche_souffle_actif.png"
+      ],
+      "target_canvas": [
+        1672,
+        941
+      ],
+      "master_frame": "059",
+      "reference_role": "059 fixe le cadre et le berceau ; autre référence seulement pour l’état anatomique.",
+      "production_status": "generated_technical_checked",
+      "humanArtValidation": false,
+      "runtimeIntegrated": false,
+      "animationInEngineValidated": false,
+      "actual_canvas": [
+        1671,
+        941
+      ],
+      "sha256": "277f2a981a3bd01996d9dd5a967fbce1694b01bdb8fd23220a969cdfa88fd818"
+    },
+    {
+      "id": "A039",
+      "asset_key": "XENO-BE-A039",
+      "name_fr": "Vulnérabilité complète au cadre 059",
+      "family": "tete_bulbe",
+      "filename": "sprites/tete_bulbe/A039_061_vulnerable_cadre_059.png",
+      "reference_ids": [
+        "059",
+        "061"
+      ],
+      "reference_files": [
+        "sprites/personnages/059_matriarche_intacte.png",
+        "sprites/personnages/061_matriarche_vulnerable.png"
+      ],
+      "reference_paths": [
+        "sprites/personnages/059_matriarche_intacte.png",
+        "sprites/personnages/061_matriarche_vulnerable.png"
+      ],
+      "target_canvas": [
+        1672,
+        941
+      ],
+      "master_frame": "059",
+      "reference_role": "059 fixe le cadre et le berceau ; autre référence seulement pour l’état anatomique.",
+      "production_status": "generated_technical_checked",
+      "humanArtValidation": false,
+      "runtimeIntegrated": false,
+      "animationInEngineValidated": false,
+      "actual_canvas": [
+        1671,
+        941
+      ],
+      "sha256": "5842b38bc29cdfe08f3eb827ac89c0bb09c54cc1c47dcd866a376016dec88419"
+    },
+    {
+      "id": "A040",
+      "asset_key": "XENO-BE-A040",
+      "name_fr": "Agonie au cadre 059",
+      "family": "tete_bulbe",
+      "filename": "sprites/tete_bulbe/A040_097_agonie_cadre_059.png",
+      "reference_ids": [
+        "059",
+        "097"
+      ],
+      "reference_files": [
+        "sprites/personnages/059_matriarche_intacte.png",
+        "sprites/boss_actions/097_matriarche_agonie.png"
+      ],
+      "reference_paths": [
+        "sprites/personnages/059_matriarche_intacte.png",
+        "sprites/boss_actions/097_matriarche_agonie.png"
+      ],
+      "target_canvas": [
+        1672,
+        941
+      ],
+      "master_frame": "059",
+      "reference_role": "059 fixe le cadre et le berceau ; autre référence seulement pour l’état anatomique.",
+      "production_status": "generated_technical_checked",
+      "humanArtValidation": false,
+      "runtimeIntegrated": false,
+      "animationInEngineValidated": false,
+      "actual_canvas": [
+        1671,
+        941
+      ],
+      "sha256": "aa7962fe5d9880f39694a7972473afd042f9fa0f971be81f71e2bfde7faf45cf"
+    },
+    {
+      "id": "A041",
+      "asset_key": "XENO-BE-A041",
+      "name_fr": "Tête morte au cadre 059",
+      "family": "tete_bulbe",
+      "filename": "sprites/tete_bulbe/A041_062_morte_cadre_059.png",
+      "reference_ids": [
+        "059",
+        "062"
+      ],
+      "reference_files": [
+        "sprites/personnages/059_matriarche_intacte.png",
+        "sprites/personnages/062_matriarche_morte.png"
+      ],
+      "reference_paths": [
+        "sprites/personnages/059_matriarche_intacte.png",
+        "sprites/personnages/062_matriarche_morte.png"
+      ],
+      "target_canvas": [
+        1672,
+        941
+      ],
+      "master_frame": "059",
+      "reference_role": "059 fixe le cadre et le berceau ; autre référence seulement pour l’état anatomique.",
+      "production_status": "generated_technical_checked",
+      "humanArtValidation": false,
+      "runtimeIntegrated": false,
+      "animationInEngineValidated": false,
+      "actual_canvas": [
+        1670,
+        942
+      ],
+      "sha256": "e51f8f82d95fa875010faaee4fa26c64b12560a66a911e732079fe32beb3ac36"
+    },
+    {
+      "id": "A042",
+      "asset_key": "XENO-BE-A042",
+      "name_fr": "Tête après prélèvement au cadre 059",
+      "family": "tete_bulbe",
+      "filename": "sprites/tete_bulbe/A042_062_prelevee_cadre_059.png",
+      "reference_ids": [
+        "A041",
+        "054"
+      ],
+      "reference_files": [
+        "sprites/tete_bulbe/A041_062_morte_cadre_059.png",
+        "sprites/accessoires/054_fragment_couronne.png"
+      ],
+      "reference_paths": [
+        "sprites/tete_bulbe/A041_062_morte_cadre_059.png",
+        "sprites/accessoires/054_fragment_couronne.png"
+      ],
+      "target_canvas": [
+        1672,
+        941
+      ],
+      "master_frame": "A041",
+      "production_status": "generated_technical_checked",
+      "humanArtValidation": false,
+      "runtimeIntegrated": false,
+      "animationInEngineValidated": false,
+      "actual_canvas": [
+        1670,
+        942
+      ],
+      "sha256": "06b529793903a8f6cd4f38ced08a040b73e659acd0bc7576be85c00a938d1fd6"
+    }
+  ],
+  "scope_addition_reason": "Relecture indépendante :060/061/096/097/062 historiques ont des cadrages différents. Générer des variantes au cadre059 et son état après prélèvement, sans modifier les sources.",
+  "plan_status": "completed_42_native_pngs"
+}

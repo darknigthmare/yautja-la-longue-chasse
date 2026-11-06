@@ -1,0 +1,1442 @@
+{
+  "schema_version": 1,
+  "date": "2026-11-06",
+  "pack": "Xeno Prime — Le Berceau enfoui V2.3",
+  "repository_delivery": {
+    "repository": "darknigthmare/yautja-la-longue-chasse",
+    "pull_request": 116,
+    "branch": "claude/bible-de-campagne",
+    "asset_root": "art-source/xeno-prime/berceau-enfoui/v2.3",
+    "png_count": 156,
+    "sprite_count": 150,
+    "background_count": 6,
+    "png_total_bytes": 218567012,
+    "manifest": "DEPOT_PNG.json",
+    "files_versioned": true,
+    "source_png_bytes_unchanged": true,
+    "runtime_integrated": false
+  },
+  "base_commit_before_import": "01f587d40f4514f5700b4901f19e0249ddddaae4",
+  "source_manifest": {
+    "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/MANIFEST_150_SPRITES.json",
+    "sha256": "51496b4247ad2db4ad125294e58982f55bd229806c805566227af6d5d10aafe3"
+  },
+  "verification": {
+    "all_local_png_copies_match_delivered_manifest": true,
+    "all_local_git_blob_hashes_match_source_bytes": true,
+    "remote_blob_uploads_verified": true,
+    "no_lfs_pointer_substitution": true,
+    "human_art_validation": false,
+    "runtime_integrated": false,
+    "animation_cycle_verified": false,
+    "browser_render_executed": false,
+    "remote_verified_png_count": 156
+  },
+  "scope": "Sources PNG du pack V2.3 et fichiers de consultation versionnés. Les compositions V2.1, le code du jeu, les sauvegardes et les règles de campagne ne sont pas modifiés.",
+  "items": [
+    {
+      "id": "001",
+      "asset_key": "XENO-BE-001",
+      "kind": "sprite",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/vegetation/001_calice_geant.png",
+      "size_bytes": 1812109,
+      "sha256": "c7947f23a30b0992def1e847dee8c939da46f7dd94c77e2b103d9611c2b20e07",
+      "git_blob_sha1": "29f1823581ad670f044573991103e6c670688cc2"
+    },
+    {
+      "id": "002",
+      "asset_key": "XENO-BE-002",
+      "kind": "sprite",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/vegetation/002_calice_incline.png",
+      "size_bytes": 1695601,
+      "sha256": "41593ed45fd6f9cd5d7480ebb4375dc7ab16fed7d87bb8fb845e824dcdcd6111",
+      "git_blob_sha1": "86a6366c08b42543de51b381987a561246f913c0"
+    },
+    {
+      "id": "003",
+      "asset_key": "XENO-BE-003",
+      "kind": "sprite",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/vegetation/003_calices_juveniles.png",
+      "size_bytes": 1533460,
+      "sha256": "ec08c6532b375111b5f9944471bb581abf6980a22d03c62a5eac225c29978220",
+      "git_blob_sha1": "dff7b8e91f96bfa4ed1f10b192233c2c3ce1f9ed"
+    },
+    {
+      "id": "004",
+      "asset_key": "XENO-BE-004",
+      "kind": "sprite",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/vegetation/004_tronc_etrangle.png",
+      "size_bytes": 2238327,
+      "sha256": "69f202e222b6a2bb9b06a580f37ef154319c250b8342e2b4658777cd24b2fcd2",
+      "git_blob_sha1": "0102db941914f17f8e542b4e5d8ba784f335eeda"
+    },
+    {
+      "id": "005",
+      "asset_key": "XENO-BE-005",
+      "kind": "sprite",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/vegetation/005_branche_praticable.png",
+      "size_bytes": 1127829,
+      "sha256": "0f46ce8561f9f0982062844ac9f5d28fe3a1cc6f411cb5c5b6a6f34c3c387469",
+      "git_blob_sha1": "f23d6c5ee28ba650d4470735a05dbd388263fc25"
+    },
+    {
+      "id": "006",
+      "asset_key": "XENO-BE-006",
+      "kind": "sprite",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/vegetation/006_arche_racine_petrifiee.png",
+      "size_bytes": 2354942,
+      "sha256": "928ced7cffa05eb8571962eea4dd2fe2457cfa6b7f45836559967f86338babda",
+      "git_blob_sha1": "7ece1fb90a019a1fed2f94afcb72cc2305126a6e"
+    },
+    {
+      "id": "007",
+      "asset_key": "XENO-BE-007",
+      "kind": "sprite",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/vegetation/007_liane_suspendue.png",
+      "size_bytes": 1367126,
+      "sha256": "0998651499dc52fc96e62e1d781388d1d3a407720214f961ff505d95b4eea058",
+      "git_blob_sha1": "3de5631a8f55cc10c4bc6f9ed2ddb64605859bf2"
+    },
+    {
+      "id": "008",
+      "asset_key": "XENO-BE-008",
+      "kind": "sprite",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/vegetation/008_pont_membrane.png",
+      "size_bytes": 1368000,
+      "sha256": "bd7da19b9206530db058a6ec931b095106edbfce65669aee6c8fee3add694fc7",
+      "git_blob_sha1": "a2e6580b3d0af284c6eb15484f69c593b7aa1e6f"
+    },
+    {
+      "id": "009",
+      "asset_key": "XENO-BE-009",
+      "kind": "sprite",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/vegetation/009_poche_suspendue.png",
+      "size_bytes": 2172863,
+      "sha256": "c588e9846a8e44d133e7c58406a62c55ab49905b70133752cc4ab68e402cceec",
+      "git_blob_sha1": "5faa6373392e6ccf2545fac40955bc0fdb6d4688"
+    },
+    {
+      "id": "010",
+      "asset_key": "XENO-BE-010",
+      "kind": "sprite",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/vegetation/010_fougeres_sporiferes.png",
+      "size_bytes": 1795850,
+      "sha256": "34696139f5b23b48e35e1f4ee70d32847a02c736aa27932198a1353557285178",
+      "git_blob_sha1": "947296c60ee7d3927f0daa92f7e6fe5f4bb92918"
+    },
+    {
+      "id": "011",
+      "asset_key": "XENO-BE-011",
+      "kind": "sprite",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/vegetation/011_coraux_fongiques.png",
+      "size_bytes": 1795020,
+      "sha256": "d7aca8a460476c28ff584d8036c4775e057d3414065f922662ccd12495c7c9b4",
+      "git_blob_sha1": "07157a85232d02cee70760c88deaa941f378d544"
+    },
+    {
+      "id": "012",
+      "asset_key": "XENO-BE-012",
+      "kind": "sprite",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/vegetation/012_silhouette_canopee.png",
+      "size_bytes": 1421297,
+      "sha256": "d4091ab16f56a3d2baa2b686984fd03a0e35dce99b68ceb05a4382b85df7290f",
+      "git_blob_sha1": "dcbef716a448e7cc767be01bdbaace0c6a76de2d"
+    },
+    {
+      "id": "013",
+      "asset_key": "XENO-BE-013",
+      "kind": "sprite",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/terrain/013_corniche_basalte.png",
+      "size_bytes": 1224230,
+      "sha256": "f17df84d7bc99c6121378c4d15711204b3ee4f99a11507cf2fcb8abbb1df7a23",
+      "git_blob_sha1": "a098105b06db829f0c19c86d6912f1ffc744386b"
+    },
+    {
+      "id": "014",
+      "asset_key": "XENO-BE-014",
+      "kind": "sprite",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/terrain/014_pilier_abri.png",
+      "size_bytes": 1635192,
+      "sha256": "7bc67e755c4352c393da47fd4f130de32af65ee2e2b0ff8de7dafa38baf6caf2",
+      "git_blob_sha1": "9ac7e7574a486bac77b50832132523bb5c085847"
+    },
+    {
+      "id": "015",
+      "asset_key": "XENO-BE-015",
+      "kind": "sprite",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/terrain/015_arche_caverne.png",
+      "size_bytes": 1383440,
+      "sha256": "ab6c56dabc3a516903e2ad1a0fc57f9cd8227c5771ea04f0c71af2044b17b950",
+      "git_blob_sha1": "b8d9cbb3be9cd978b7ab429d5e0353e5ccd85dc8"
+    },
+    {
+      "id": "016",
+      "asset_key": "XENO-BE-016",
+      "kind": "sprite",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/terrain/016_bloc_sol_resine.png",
+      "size_bytes": 1054769,
+      "sha256": "db27cea17c3d5d210ab3e039222a4a0c2ea90d850915332eca97d5c60bee5998",
+      "git_blob_sha1": "c55fba42bfa2e70f0c1c8d56b5c39fb54ce40903"
+    },
+    {
+      "id": "017",
+      "asset_key": "XENO-BE-017",
+      "kind": "sprite",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/terrain/017_paroi_resine.png",
+      "size_bytes": 1765668,
+      "sha256": "c477fe1d5492346db919ca7e82f2dba9a166ddfb66d17a8f6394132e03d81f93",
+      "git_blob_sha1": "8c009ea5cc25eae0f4b699b3ef458fb183016ade"
+    },
+    {
+      "id": "018",
+      "asset_key": "XENO-BE-018",
+      "kind": "sprite",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/terrain/018_colonne_ruche.png",
+      "size_bytes": 1998554,
+      "sha256": "eb8fb6d884e172315139f1a04e2e5e4fbdf6183ed1ca5ddd236cdc7bfaaa1a13",
+      "git_blob_sha1": "292161723b8f46fa76c61db32abd2ad89d8aa13d"
+    },
+    {
+      "id": "019",
+      "asset_key": "XENO-BE-019",
+      "kind": "sprite",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/terrain/019_rampe_racinaire.png",
+      "size_bytes": 1219004,
+      "sha256": "b89455ab891bdd0cc9cdb94ffebcbb770c1300222d55ec88bc52df1d8cdb5f13",
+      "git_blob_sha1": "ebc3f400de512fa5b6e34f416da24dd9531f220b"
+    },
+    {
+      "id": "020",
+      "asset_key": "XENO-BE-020",
+      "kind": "sprite",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/terrain/020_appui_basalte.png",
+      "size_bytes": 1497162,
+      "sha256": "59b46fd8d636c2c898afc7370a01a796e42bfb7d237488848e6b5cc9ce44b689",
+      "git_blob_sha1": "31913ff7e0a0fd4d879223680401c9f14e790355"
+    },
+    {
+      "id": "021",
+      "asset_key": "XENO-BE-021",
+      "kind": "sprite",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/terrain/021_digue_resine.png",
+      "size_bytes": 2119394,
+      "sha256": "1749148bd886a2a98f324fdebbca83f05af98404bcf3ec0c51551a447aa3df01",
+      "git_blob_sha1": "ce0972619eda8504bd94cbe5dbf14a445550072d"
+    },
+    {
+      "id": "022",
+      "asset_key": "XENO-BE-022",
+      "kind": "sprite",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/terrain/022_paroi_stratifiee.png",
+      "size_bytes": 2186023,
+      "sha256": "a715d2a0e03e47cd99072b4368169dbe98973d683a2eace3873381863332029c",
+      "git_blob_sha1": "83039eac9f59cff9ab68939584e945c70881a35a"
+    },
+    {
+      "id": "023",
+      "asset_key": "XENO-BE-023",
+      "kind": "sprite",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/terrain/023_flaque_eau.png",
+      "size_bytes": 536668,
+      "sha256": "b856d32f0ad86b6a44d071ba40b6ccd707aeb00f7a25844bc5fdd6b76ff00b0e",
+      "git_blob_sha1": "e5b6cd8958f7d2959a182faf1679e59fa6ed2bbb"
+    },
+    {
+      "id": "024",
+      "asset_key": "XENO-BE-024",
+      "kind": "sprite",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/terrain/024_empreinte_couronne.png",
+      "size_bytes": 2017224,
+      "sha256": "a1cd23e0f8739a581080ae7efea68074f589a4a9b214c4275ba4c60b4b01b473",
+      "git_blob_sha1": "54c0f26701b2cbe40ac0067df77c5fdb55489ef0"
+    },
+    {
+      "id": "025",
+      "asset_key": "XENO-BE-025",
+      "kind": "sprite",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/ruche/025_oeuf_ferme.png",
+      "size_bytes": 1293352,
+      "sha256": "939c7ecd81eefdff04863bdb81838541a521b7f5283899ad68c4a4bf3ca58a5f",
+      "git_blob_sha1": "c6b2b5b0e75beb1ef96270fe4f5cf496d1202ba6"
+    },
+    {
+      "id": "026",
+      "asset_key": "XENO-BE-026",
+      "kind": "sprite",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/ruche/026_oeuf_ouvert.png",
+      "size_bytes": 1536940,
+      "sha256": "8c9d4299b6687a38a7f5d847defee38150c76d7c24de955a2a3357b9c8619307",
+      "git_blob_sha1": "f8a64b814c5bea5ebfc0d669c3e730e9b0c38de7"
+    },
+    {
+      "id": "027",
+      "asset_key": "XENO-BE-027",
+      "kind": "sprite",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/ruche/027_cocon_proie.png",
+      "size_bytes": 950032,
+      "sha256": "b9357fbc3d2aee38de6e218144db16de6d5d985dcf8e5a8700c13306c1ea34b9",
+      "git_blob_sha1": "72a02cf3e45212dee96d94412317316efad0b641"
+    },
+    {
+      "id": "028",
+      "asset_key": "XENO-BE-028",
+      "kind": "sprite",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/ruche/028_exuvie_suspendue.png",
+      "size_bytes": 1218555,
+      "sha256": "6f0b300c82cb58ec4566a7e4412377919f433802f94829ee602dbc6f7329501d",
+      "git_blob_sha1": "29c67b24a84b26aed0c5336193861f294a1ab75e"
+    },
+    {
+      "id": "029",
+      "asset_key": "XENO-BE-029",
+      "kind": "sprite",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/ruche/029_reservoir_acide.png",
+      "size_bytes": 1789365,
+      "sha256": "d48f7579098e558c7a375b640bd69475099b3262df302802f76329a792ce226a",
+      "git_blob_sha1": "94adb244195cbd0ec9e97aee2593ecc346700440"
+    },
+    {
+      "id": "030",
+      "asset_key": "XENO-BE-030",
+      "kind": "sprite",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/ruche/030_vanne_tissulaire.png",
+      "size_bytes": 1523227,
+      "sha256": "5cdbd2625c50598a6f1fa7e5b28a8f119bf3a43915721594ff3f8f9edc763439",
+      "git_blob_sha1": "81ce7e4f7f19eba83f13bbb8d972d35e8be814c1"
+    },
+    {
+      "id": "031",
+      "asset_key": "XENO-BE-031",
+      "kind": "sprite",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/ruche/031_filaments_sensoriels.png",
+      "size_bytes": 1157865,
+      "sha256": "d38788b18960fa43d24f8ea546f2bc434de90305d47ac37ec6ed030f08d37c43",
+      "git_blob_sha1": "1df5904c4d9f50a6af1ed99afee0ef08d06b14b5"
+    },
+    {
+      "id": "032",
+      "asset_key": "XENO-BE-032",
+      "kind": "sprite",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/ruche/032_conduit_nourricier.png",
+      "size_bytes": 1291636,
+      "sha256": "dd061367cdc91db41e71b30efd9f031f3b59b8483af839f7f6fd6ee309040de4",
+      "git_blob_sha1": "317d327482c1267335fc455371518923ddd6eacf"
+    },
+    {
+      "id": "033",
+      "asset_key": "XENO-BE-033",
+      "kind": "sprite",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/ruche/033_event_respiratoire.png",
+      "size_bytes": 1551711,
+      "sha256": "bd21ddd96aa8f4e5ea1a58fab4cf62b941eea84c6d382ae11b13c42fad46b699",
+      "git_blob_sha1": "e839aabe3d6e3d133816a59238203524d18c6ad5"
+    },
+    {
+      "id": "034",
+      "asset_key": "XENO-BE-034",
+      "kind": "sprite",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/ruche/034_porte_membrane_fermee.png",
+      "size_bytes": 1669806,
+      "sha256": "a23c2c33fc31c73dbfd714a67924cc0b4e0f6d64c6e72a5ae3ea145a56d60261",
+      "git_blob_sha1": "21911c1adc2286b8a76de0f3d3151ef1f0699662"
+    },
+    {
+      "id": "035",
+      "asset_key": "XENO-BE-035",
+      "kind": "sprite",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/ruche/035_porte_membrane_ouverte.png",
+      "size_bytes": 1118230,
+      "sha256": "71af86d68996d2d1c2084eab48a43001ebb8578f6994b47cf04e73bc07cfb2a9",
+      "git_blob_sha1": "262fd8ac46cc4aa7f0f921e4617e1c580534a4c5"
+    },
+    {
+      "id": "036",
+      "asset_key": "XENO-BE-036",
+      "kind": "sprite",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/ruche/036_vanne_drainee.png",
+      "size_bytes": 1441864,
+      "sha256": "205c4b360f34820c9d791ad06ef033d9813311d61f18f1d6bf0ad4969a78fe65",
+      "git_blob_sha1": "004606a86c6bbffc019316afa0e41bc253e3b8ee"
+    },
+    {
+      "id": "037",
+      "asset_key": "XENO-BE-037",
+      "kind": "sprite",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/tentacules/037_tentacule_arche.png",
+      "size_bytes": 1242231,
+      "sha256": "b8332f912e3fd8f2a8a522fa3d5f225a9ae8c27faaff09422175d0ff4e3ade96",
+      "git_blob_sha1": "6eb605ed097915c0b928db73a8ec7ea7829d7455"
+    },
+    {
+      "id": "038",
+      "asset_key": "XENO-BE-038",
+      "kind": "sprite",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/tentacules/038_tentacule_balayage.png",
+      "size_bytes": 980446,
+      "sha256": "64d3296210a3b17057e377ee2fa6501fc1040c60bab14487fd243687c5d0e8ba",
+      "git_blob_sha1": "35468c2be4455df6ea3f88d3cad3a485387e525c"
+    },
+    {
+      "id": "039",
+      "asset_key": "XENO-BE-039",
+      "kind": "sprite",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/tentacules/039_tentacule_perforation.png",
+      "size_bytes": 1403055,
+      "sha256": "08e9381b27da07b9dc5993ed30f6997d9f053d57e2853c7d5fee39a9192f6574",
+      "git_blob_sha1": "fd8ee8fdefc314fa0bfc613794118703dc545b62"
+    },
+    {
+      "id": "040",
+      "asset_key": "XENO-BE-040",
+      "kind": "sprite",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/tentacules/040_tentacule_plante.png",
+      "size_bytes": 1286403,
+      "sha256": "f2144866e4e64736c3f78f3d971991bed70ab84596d8c902f33d1cb88a6383dc",
+      "git_blob_sha1": "5c315c00a5943a475e2d0a18801754901fe08518"
+    },
+    {
+      "id": "041",
+      "asset_key": "XENO-BE-041",
+      "kind": "sprite",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/tentacules/041_anse_capture.png",
+      "size_bytes": 1254442,
+      "sha256": "166afc58b99e8d0621c285a80e574656003fab5d7e54601b482ec7d341df425f",
+      "git_blob_sha1": "9a2e7ec6023ff19caa0a216a7212d68cb0ac0371"
+    },
+    {
+      "id": "042",
+      "asset_key": "XENO-BE-042",
+      "kind": "sprite",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/tentacules/042_tentacule_sectionne.png",
+      "size_bytes": 1753394,
+      "sha256": "78328b32e3f5ad26cb227d76bd53ff23f9e6e0585e1afc339a257182fc879be5",
+      "git_blob_sha1": "142c5278cb00a79287ff4775c5da8bc130de0992"
+    },
+    {
+      "id": "043",
+      "asset_key": "XENO-BE-043",
+      "kind": "sprite",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/tentacules/043_tentacule_pont_inerte.png",
+      "size_bytes": 975036,
+      "sha256": "5e63f47611044c4d97b1ffea6d1ee983bbf4e99493fe84ac54a939ace19d3786",
+      "git_blob_sha1": "2824457f20a69a9574c813aa69b1aa13b15bf1d1"
+    },
+    {
+      "id": "044",
+      "asset_key": "XENO-BE-044",
+      "kind": "sprite",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/tentacules/044_constricteur_pilier.png",
+      "size_bytes": 1078201,
+      "sha256": "6c7f6d873bd8d051b7d45a53cb5c3b71b52512c6c83da5a6e3184885c63ba01c",
+      "git_blob_sha1": "95a5e53dab120c8410a284ce3ca3e16987c5bca0"
+    },
+    {
+      "id": "045",
+      "asset_key": "XENO-BE-045",
+      "kind": "sprite",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/tentacules/045_fouet_diagonal.png",
+      "size_bytes": 776782,
+      "sha256": "817cbd0bd2863d2c361b0fa23e5fe93751c30bb30a857bea6800bafe0d42f100",
+      "git_blob_sha1": "c9878114913fe73fc17b855d2ab41b1807e72b34"
+    },
+    {
+      "id": "046",
+      "asset_key": "XENO-BE-046",
+      "kind": "sprite",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/tentacules/046_membrane_respiratoire.png",
+      "size_bytes": 1591623,
+      "sha256": "fc05e7f2dafe893eb3ed3df4eefb2a9e89d06fc59d605f5139502939f87c4ef6",
+      "git_blob_sha1": "7587b3695126cb0cf7d7108e884987f4f3e024b0"
+    },
+    {
+      "id": "047",
+      "asset_key": "XENO-BE-047",
+      "kind": "sprite",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/accessoires/047_balise_yautja.png",
+      "size_bytes": 835726,
+      "sha256": "1bdf15488ef3ce44a56ae2a39300f84f7e20d7d60518417749f4a41d846326a7",
+      "git_blob_sha1": "f21ff5bbd4361caa230444f9b77b6a99d6215b81"
+    },
+    {
+      "id": "048",
+      "asset_key": "XENO-BE-048",
+      "kind": "sprite",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/accessoires/048_cache_chasseur.png",
+      "size_bytes": 1257934,
+      "sha256": "1e6bd321a0935eb8614f7be6245f1aa519cda09f20a0f18530d167ea133c2dfe",
+      "git_blob_sha1": "c32f1750f58a426c2dc7e345f65cc0ec1d39bffd"
+    },
+    {
+      "id": "049",
+      "asset_key": "XENO-BE-049",
+      "kind": "sprite",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/accessoires/049_perchoir_abandonne.png",
+      "size_bytes": 1933840,
+      "sha256": "fa76974cba398fe4046011d0602e9e5a8a7b2e4cebceae09ca6040b99a03f16c",
+      "git_blob_sha1": "e89f5102c6c0087468511a3f6bfdf22c404dc54e"
+    },
+    {
+      "id": "050",
+      "asset_key": "XENO-BE-050",
+      "kind": "sprite",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/accessoires/050_passerelle_tombee.png",
+      "size_bytes": 1302423,
+      "sha256": "750b54fd938bb9447c2ffaeee6ab0353a914d7d243a0c7110dc751471951b9ca",
+      "git_blob_sha1": "41cf0993b7a3eb5c029984d27a1c37d58c7b24f8"
+    },
+    {
+      "id": "051",
+      "asset_key": "XENO-BE-051",
+      "kind": "sprite",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/accessoires/051_stele_chasse.png",
+      "size_bytes": 1266777,
+      "sha256": "d1e6c834b50629811f76865e26322a62bdefb0a7c484bbaf59f6746cb3ba6cee",
+      "git_blob_sha1": "beee90837f9c5de940433cb71180b0ec3c634116"
+    },
+    {
+      "id": "052",
+      "asset_key": "XENO-BE-052",
+      "kind": "sprite",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/accessoires/052_support_masque.png",
+      "size_bytes": 1020963,
+      "sha256": "fbd42635a06fbff425c0f4e0a49893a729d9d8f344a76ff6323abd2cc8d2c966",
+      "git_blob_sha1": "56d749f4d70bc70b28648a363aa52ff5f70be59d"
+    },
+    {
+      "id": "053",
+      "asset_key": "XENO-BE-053",
+      "kind": "sprite",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/accessoires/053_ossements_proie.png",
+      "size_bytes": 1167472,
+      "sha256": "00559510a628532999445e50e002b682d3bc4ada15cdf3c4e9e66e3be5308e9f",
+      "git_blob_sha1": "cafb78389313637fac811831c04aa9fa37471c59"
+    },
+    {
+      "id": "054",
+      "asset_key": "XENO-BE-054",
+      "kind": "sprite",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/accessoires/054_fragment_couronne.png",
+      "size_bytes": 1210394,
+      "sha256": "698a75b29a8f503bf4ca7de4064baeb586167391917cf0805c68a638f2d70e7d",
+      "git_blob_sha1": "f0cd2ad7f3ca8d50348d27b1b39e1d8e234e050f"
+    },
+    {
+      "id": "055",
+      "asset_key": "XENO-BE-055",
+      "kind": "sprite",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/personnages/055_yautja_chasseur.png",
+      "size_bytes": 2003416,
+      "sha256": "6e93455d611c3182c0ac949273daff63e1cf2dde42ef004a1c353d2c268481de",
+      "git_blob_sha1": "a65469c7796b867058b8373c67dd4e0633c93681"
+    },
+    {
+      "id": "056",
+      "asset_key": "XENO-BE-056",
+      "kind": "sprite",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/ruche/056_nid_guetteur.png",
+      "size_bytes": 1781882,
+      "sha256": "f6cd1888fb5266fc8f3fd98849b9f7c465d6aed1febf6a5a249160af8a31f9a1",
+      "git_blob_sha1": "d6aeb7ac8a29c0175ac1be62bb6a3ea119c36dc3"
+    },
+    {
+      "id": "057",
+      "asset_key": "XENO-BE-057",
+      "kind": "sprite",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/ruche/057_cocon_mural.png",
+      "size_bytes": 2222536,
+      "sha256": "0438e2a3f24b4f5a47f17885fbab2d85c0b5a4e279ff08692850d3e2da54902a",
+      "git_blob_sha1": "1f497984ea3a0b01ff2571542c593b02aa9947c0"
+    },
+    {
+      "id": "058",
+      "asset_key": "XENO-BE-058",
+      "kind": "sprite",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/personnages/058_facehugger.png",
+      "size_bytes": 813191,
+      "sha256": "d15a8ea8590d3eb6e65898aeb35618c4b5e5b0744967158663cbb9277bb2552b",
+      "git_blob_sha1": "f47cf4c1d1346c1226c8ba1e0236671a14f634cf"
+    },
+    {
+      "id": "059",
+      "asset_key": "XENO-BE-059",
+      "kind": "sprite",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/personnages/059_matriarche_intacte.png",
+      "size_bytes": 955971,
+      "sha256": "b70bbde0ababb0cc5e43f0491a279cd5b281203d1c367ff74afc37d8fca2da70",
+      "git_blob_sha1": "ce3284ba1b426d9bf45cc1d72758d6c45ec36523"
+    },
+    {
+      "id": "060",
+      "asset_key": "XENO-BE-060",
+      "kind": "sprite",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/personnages/060_matriarche_souffle.png",
+      "size_bytes": 1568448,
+      "sha256": "4e5c62210dc37c353428be87f60de7d0ed8e483b4be4064bc6872a6c2ff494a2",
+      "git_blob_sha1": "e3c5d681854f6566152eef78335a6730ffbb900a"
+    },
+    {
+      "id": "061",
+      "asset_key": "XENO-BE-061",
+      "kind": "sprite",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/personnages/061_matriarche_vulnerable.png",
+      "size_bytes": 1323629,
+      "sha256": "c475a3c2db7cfdf0d1d45ced154aee2018a4d2bb532dec5317039da66d9173ce",
+      "git_blob_sha1": "16c32193c52c6dc1ab2844eee310b91efc495a26"
+    },
+    {
+      "id": "062",
+      "asset_key": "XENO-BE-062",
+      "kind": "sprite",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/personnages/062_matriarche_morte.png",
+      "size_bytes": 1065789,
+      "sha256": "7e02a2f697f4915cfe8130d818c3edbc7cca23968e95f753a1bd210585afdb73",
+      "git_blob_sha1": "5f8288629627edf8b2b4b7fe4d75753a48135382"
+    },
+    {
+      "id": "063",
+      "asset_key": "XENO-BE-063",
+      "kind": "sprite",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/personnages/063_bulbe_nerveux.png",
+      "size_bytes": 801694,
+      "sha256": "9ce04105aef126188a5be8b43a11f4d0164ac5391a60d29ed263bd446419e5e8",
+      "git_blob_sha1": "8fdf24c28f1c6e5654147ca4fbe8e01e625fa3e7"
+    },
+    {
+      "id": "064",
+      "asset_key": "XENO-BE-064",
+      "kind": "sprite",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/personnages/064_masse_sous_cutanee.png",
+      "size_bytes": 2421380,
+      "sha256": "1328fdf656b221ac1977a2d625ada8db4562b696b271a165960d1c94b9132b7d",
+      "git_blob_sha1": "ae3b466d92e8cbc9423bd9765c11cc0e11ea937a"
+    },
+    {
+      "id": "065",
+      "asset_key": "XENO-BE-065",
+      "kind": "sprite",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/effets/065_flaque_acide.png",
+      "size_bytes": 1307010,
+      "sha256": "2c2db259c6cedca9bfc62cabb05f9265db7996c4b41ae5410ab7031b7ef838ad",
+      "git_blob_sha1": "96452db10cc61650d7c26c8eec4c2aab224752c8"
+    },
+    {
+      "id": "066",
+      "asset_key": "XENO-BE-066",
+      "kind": "sprite",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/effets/066_globule_acide.png",
+      "size_bytes": 1099294,
+      "sha256": "da3ee0aa82e9c3f7636b3e932197a7c696bdcdc33e376cdf51d50c13b588fdec",
+      "git_blob_sha1": "a0241ebd77aadffdb899112937f6ec66922cfbde"
+    },
+    {
+      "id": "067",
+      "asset_key": "XENO-BE-067",
+      "kind": "sprite",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/effets/067_nuage_spores.png",
+      "size_bytes": 1019450,
+      "sha256": "d64b7b1e1bbecd3447a826b294f8bafbd9bf3175ed01fa54cd774adccdb40df3",
+      "git_blob_sha1": "b0fb0e1fd00877c4fef42da23d5bc213067b46d0"
+    },
+    {
+      "id": "068",
+      "asset_key": "XENO-BE-068",
+      "kind": "sprite",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/effets/068_souffle_vapeur.png",
+      "size_bytes": 791977,
+      "sha256": "422211735e2211b118b47d001eb91c1c6ebaf87c8012ee7601aa3d864af7050c",
+      "git_blob_sha1": "4fb9e2e686ee756d364a1351acbe2f71b0e3f312"
+    },
+    {
+      "id": "069",
+      "asset_key": "XENO-BE-069",
+      "kind": "sprite",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/effets/069_pulsation_nerveuse.png",
+      "size_bytes": 627078,
+      "sha256": "7997098367eb197e2adb43ff104250da8226bea4c5a3f97a9f3577f6fe8052c6",
+      "git_blob_sha1": "59ca38ec450fa0e0106957662b744a5d7ca78937"
+    },
+    {
+      "id": "070",
+      "asset_key": "XENO-BE-070",
+      "kind": "sprite",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/effets/070_impact_poussiere.png",
+      "size_bytes": 1345836,
+      "sha256": "6e377bfc68362650960c109868a700bf4971209a6dc7800667e752ad7dc90cdc",
+      "git_blob_sha1": "c06dc10b57eb85fc86331cc2d563d5502da01aea"
+    },
+    {
+      "id": "071",
+      "asset_key": "XENO-BE-071",
+      "kind": "sprite",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/effets/071_onde_sol.png",
+      "size_bytes": 1194248,
+      "sha256": "85f67ab25023dee2844e1b792fe1c1b12e02acec37c57e9eb642b944ebd69087",
+      "git_blob_sha1": "e542240360abc3344ff69e846faed9dc7e5bfbc9"
+    },
+    {
+      "id": "072",
+      "asset_key": "XENO-BE-072",
+      "kind": "sprite",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/effets/072_voile_brume.png",
+      "size_bytes": 1115859,
+      "sha256": "a5a0c5aa47cb12f71416bb277c7e8a6a8706dd1b808f8ae816ce10f70edd1c96",
+      "git_blob_sha1": "9a8086ba5ea3934d9c0d806c0d54b73fe4ac62c6"
+    },
+    {
+      "id": "073",
+      "asset_key": "XENO-BE-073",
+      "kind": "sprite",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/environnement/073_tronc_creux_horizontal.png",
+      "size_bytes": 1849012,
+      "sha256": "72841fcadffc2230c6a368c4c148fb12f63de6b4a41f5b0bf6663ec20e9eb852",
+      "git_blob_sha1": "e975fbfbbe2de98bc09e1dd696710ba105e9707b"
+    },
+    {
+      "id": "074",
+      "asset_key": "XENO-BE-074",
+      "kind": "sprite",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/environnement/074_racine_echelle.png",
+      "size_bytes": 1871175,
+      "sha256": "1a743277078ad4adcf8b19debb87e7c912631e9abe486a327e9e3c48a82be708",
+      "git_blob_sha1": "284783803fdfd09ed48ffdfa843eaf2b152b7fc6"
+    },
+    {
+      "id": "075",
+      "asset_key": "XENO-BE-075",
+      "kind": "sprite",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/environnement/075_racines_premier_plan.png",
+      "size_bytes": 1288558,
+      "sha256": "483dbb6176e3a3e63bc52c36525a92ca8f8ff11c81f41ae7244a59ea5b9d0066",
+      "git_blob_sha1": "43c643bbce0eb5242899f5e451d1a56277cac92a"
+    },
+    {
+      "id": "076",
+      "asset_key": "XENO-BE-076",
+      "kind": "sprite",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/environnement/076_contrefort_vertical.png",
+      "size_bytes": 2337590,
+      "sha256": "d9b23f948f8b382c966450585f1c9e5a9766bb1475aa0ce6548877e639d0fc25",
+      "git_blob_sha1": "368731575ebd1dcfeeae03a0b7d316a7bba9d4c4"
+    },
+    {
+      "id": "077",
+      "asset_key": "XENO-BE-077",
+      "kind": "sprite",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/environnement/077_passerelle_deployee.png",
+      "size_bytes": 843998,
+      "sha256": "1677dc3b71fe05cbe7762383ff77b0347043c0e305b69b409a974845749e01f9",
+      "git_blob_sha1": "6955073eacc3329471ebaf3f6639ac4ec030772b"
+    },
+    {
+      "id": "078",
+      "asset_key": "XENO-BE-078",
+      "kind": "sprite",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/environnement/078_bouchon_resine_intact.png",
+      "size_bytes": 1925971,
+      "sha256": "7d9b5211026bafbf787904ee691ec132b6681c686c5f63ebcf263b4220d747d3",
+      "git_blob_sha1": "8b8743135fdf7423fe4ffe3376a634c517e52877"
+    },
+    {
+      "id": "079",
+      "asset_key": "XENO-BE-079",
+      "kind": "sprite",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/environnement/079_bouchon_resine_brise.png",
+      "size_bytes": 1260085,
+      "sha256": "a838cfda78e24f95b782c246b71384fc3a190dab60cb571ae99947872c7d9448",
+      "git_blob_sha1": "5876ecb64705bc84015b518bb6bfc177a5ad2b65"
+    },
+    {
+      "id": "080",
+      "asset_key": "XENO-BE-080",
+      "kind": "sprite",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/environnement/080_nid_fongique_plafond.png",
+      "size_bytes": 2459172,
+      "sha256": "782e7cb41d27d7ec132e9efab4dc69439c4ee89ff9176eb46f98b03b2671bf5c",
+      "git_blob_sha1": "1363f24a4a6b7584bed8485ce93acba7dbe30cfe"
+    },
+    {
+      "id": "081",
+      "asset_key": "XENO-BE-081",
+      "kind": "sprite",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/reactions/081_pont_membrane_affaisse.png",
+      "size_bytes": 1285745,
+      "sha256": "720502d7b30c746721808e1fd879945527c241706d49ddeb7695bcb1fcb391b5",
+      "git_blob_sha1": "bbb6bc261e936ed8bb64474a1ae5fe2a09eec4f8"
+    },
+    {
+      "id": "082",
+      "asset_key": "XENO-BE-082",
+      "kind": "sprite",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/reactions/082_poche_contractee.png",
+      "size_bytes": 1636980,
+      "sha256": "9c486e418d8d8968e67f851c231c558ab98bd9f89e12b9bdefa9fd34373b74ff",
+      "git_blob_sha1": "7b2126b2f5b3d73bedc0f58f72210576e420366d"
+    },
+    {
+      "id": "083",
+      "asset_key": "XENO-BE-083",
+      "kind": "sprite",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/reactions/083_reservoir_vide.png",
+      "size_bytes": 1836566,
+      "sha256": "34e774f7aa38dfad1000673cb5b1a6405cba9b5378f98df4d00664a93193c2b2",
+      "git_blob_sha1": "f8806e92edc2183e98bbe827352ef73fd41c02a1"
+    },
+    {
+      "id": "084",
+      "asset_key": "XENO-BE-084",
+      "kind": "sprite",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/reactions/084_filaments_alerte.png",
+      "size_bytes": 1154640,
+      "sha256": "b29c174c3e16978dff1b4beabb590c31bbf0e135ac71391c909f1a2c39ced096",
+      "git_blob_sha1": "2419f0772ca2bf7b20af8a661911f9ac5cd3ba6d"
+    },
+    {
+      "id": "085",
+      "asset_key": "XENO-BE-085",
+      "kind": "sprite",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/reactions/085_conduit_eteint.png",
+      "size_bytes": 1265977,
+      "sha256": "a977500bae6eb53d8c13c716ce706a7c4b3157ea1e0a69d917e3c928d0afdc8e",
+      "git_blob_sha1": "bf6e862dfab2a22ce1d38212a172f647ed1d81fb"
+    },
+    {
+      "id": "086",
+      "asset_key": "XENO-BE-086",
+      "kind": "sprite",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/reactions/086_event_ferme.png",
+      "size_bytes": 1565862,
+      "sha256": "9d8ac92536250b31ce02456d14383d7ee763870de125fe1ba05073d317ec1fca",
+      "git_blob_sha1": "3ca40c5a9128b6fe91b50a0e084336f8ce24ebd4"
+    },
+    {
+      "id": "087",
+      "asset_key": "XENO-BE-087",
+      "kind": "sprite",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/reactions/087_oeuf_eclosion.png",
+      "size_bytes": 1446378,
+      "sha256": "73dd973cc055573571a1eb84fbc385339c8b6579452262687fb7f82a874052a7",
+      "git_blob_sha1": "929670d18b79f1b1186076d44e979feb0a885a59"
+    },
+    {
+      "id": "088",
+      "asset_key": "XENO-BE-088",
+      "kind": "sprite",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/reactions/088_amas_coques_oeufs.png",
+      "size_bytes": 2306463,
+      "sha256": "e32fa07c498298cb67a46150445d1426034cdf9b0872e0e782250b116750f669",
+      "git_blob_sha1": "27487fdb0575e198a3f7f3d8413a9e365ccd335d"
+    },
+    {
+      "id": "089",
+      "asset_key": "XENO-BE-089",
+      "kind": "sprite",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/boss_actions/089_tentacule_armement.png",
+      "size_bytes": 1236061,
+      "sha256": "7dc2ce6e06c932dd90ffef859d3a9999f79e3b7363ceb4f1d1878b20fc80753f",
+      "git_blob_sha1": "0222b243fc12c69fcf7e81e2b348412225b97c87"
+    },
+    {
+      "id": "090",
+      "asset_key": "XENO-BE-090",
+      "kind": "sprite",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/boss_actions/090_tentacule_impact.png",
+      "size_bytes": 2279942,
+      "sha256": "93adc4dca6dd869bdc633c92416bf5edf72b5e909a255e7dc5822a68613230a4",
+      "git_blob_sha1": "5c87e298b0ad8ca89261e12d4d33902d0d2e7100"
+    },
+    {
+      "id": "091",
+      "asset_key": "XENO-BE-091",
+      "kind": "sprite",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/boss_actions/091_anse_fermee.png",
+      "size_bytes": 2148396,
+      "sha256": "a240db1b1d47d0233fd20c0aec554ab2d7fe81fe4c0c9f3df1488a5b1c4ad59c",
+      "git_blob_sha1": "72c3e4ab1c6fff97e87501e639fef66bf4d83364"
+    },
+    {
+      "id": "092",
+      "asset_key": "XENO-BE-092",
+      "kind": "sprite",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/boss_actions/092_fouet_retrait.png",
+      "size_bytes": 1912985,
+      "sha256": "7d66505b067218899e8481150cc5dec947e035bf009307d74a0afd4001e2a8a0",
+      "git_blob_sha1": "3e48c992c9857f80bc596d53d5ea6d83d8e67f6e"
+    },
+    {
+      "id": "093",
+      "asset_key": "XENO-BE-093",
+      "kind": "sprite",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/boss_actions/093_membrane_dechiree.png",
+      "size_bytes": 1460558,
+      "sha256": "24c9039542c5048f346383c7398859e4c7b354c8a5dd8f35b89df44dd24fabf7",
+      "git_blob_sha1": "d61f11f7e57d8441e24407d369a9c44e752cdf6c"
+    },
+    {
+      "id": "094",
+      "asset_key": "XENO-BE-094",
+      "kind": "sprite",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/boss_actions/094_matriarche_morsure.png",
+      "size_bytes": 1025209,
+      "sha256": "2509ec3b504bb99c7747d0c0b3143a4ac8037a16c623ad24f2e8b7d4a5f360e4",
+      "git_blob_sha1": "16b76a0a0b402e9cc07403dcea3b90578dde5eb4"
+    },
+    {
+      "id": "095",
+      "asset_key": "XENO-BE-095",
+      "kind": "sprite",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/boss_actions/095_matriarche_recul.png",
+      "size_bytes": 961311,
+      "sha256": "e5460ef5884192340b7f7672938d1f3c0cfed7acabc8e7e0f06c8240814f6b9d",
+      "git_blob_sha1": "68de169170603bea65e7ddfdd24e005a7ba74673"
+    },
+    {
+      "id": "096",
+      "asset_key": "XENO-BE-096",
+      "kind": "sprite",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/boss_actions/096_matriarche_souffle_actif.png",
+      "size_bytes": 1727663,
+      "sha256": "88d4c861e510d390906a4e97bc90d29dae63aa6ef7bfcff2d7b235f720c8053a",
+      "git_blob_sha1": "92d11481069f83f02ca7e43724e4963d41bd1a6e"
+    },
+    {
+      "id": "097",
+      "asset_key": "XENO-BE-097",
+      "kind": "sprite",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/boss_actions/097_matriarche_agonie.png",
+      "size_bytes": 1299009,
+      "sha256": "5f441afc47743ac6b6e71846f77e860db2586f9582d7aeee7f57cfe90ad3423c",
+      "git_blob_sha1": "a66dcb7d6c7df1d26382d398b39c4628b0aa1f35"
+    },
+    {
+      "id": "098",
+      "asset_key": "XENO-BE-098",
+      "kind": "sprite",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/boss_actions/098_bulbe_rompu.png",
+      "size_bytes": 814015,
+      "sha256": "c0c1792af1cd52f24b1f6a43bc501636735ddb85154db795a997ae2e1af9df12",
+      "git_blob_sha1": "38a0b7ac5296299b7e555ea5f4bc795fcc409d55"
+    },
+    {
+      "id": "099",
+      "asset_key": "XENO-BE-099",
+      "kind": "sprite",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/props_effets/099_glyphe_repere_chasse.png",
+      "size_bytes": 1314747,
+      "sha256": "9aa39af8c9246fb40c24286b0d5145c14fd611c2c51ec995a7e8344ea15e1c82",
+      "git_blob_sha1": "f0de8870c1879ff71eb6802b7b9063621eda26d8"
+    },
+    {
+      "id": "100",
+      "asset_key": "XENO-BE-100",
+      "kind": "sprite",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/props_effets/100_trophee_couronne_socle.png",
+      "size_bytes": 1403437,
+      "sha256": "468211d8ae6e1b826deb781ebd52f87e6a81b17add55a28bd5ca7e5c423f8b80",
+      "git_blob_sha1": "fdd1e88d34671f26e2417b0aff4433983d637f35"
+    },
+    {
+      "id": "101",
+      "asset_key": "XENO-BE-101",
+      "kind": "sprite",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/props_effets/101_minerai_ambre.png",
+      "size_bytes": 1382738,
+      "sha256": "4609970f3b2b3ed9fd4f81cd54463518dc27f1b14f5fb99e98684044d7d7298b",
+      "git_blob_sha1": "62c74b7531863da141982e527d4077af2027cc71"
+    },
+    {
+      "id": "102",
+      "asset_key": "XENO-BE-102",
+      "kind": "sprite",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/props_effets/102_eclats_chitine.png",
+      "size_bytes": 888423,
+      "sha256": "6220f46a4c6583cd0d9eff39f3aa26d6e2e61c47f84f6e5ecf50eaf8f5e6b4d8",
+      "git_blob_sha1": "c60298ca8078e9e75d9ea9debbf0eb5d409b721d"
+    },
+    {
+      "id": "103",
+      "asset_key": "XENO-BE-103",
+      "kind": "sprite",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/props_effets/103_jet_acide_horizontal.png",
+      "size_bytes": 1682987,
+      "sha256": "6ba4c97fa6ed8a3ef31e7269fd8587d4a5127850009c64bf8619bb0c492c08fe",
+      "git_blob_sha1": "82eb15ab8b77886a742d8d1fe671e8695a639e07"
+    },
+    {
+      "id": "104",
+      "asset_key": "XENO-BE-104",
+      "kind": "sprite",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/props_effets/104_acide_eclaboussure.png",
+      "size_bytes": 1458533,
+      "sha256": "7102c29220cc11ff24da06590377ffd738b78a7c86edd7884c364540e54b2122",
+      "git_blob_sha1": "cdf4e283d9a6c0144d14427a93068067b6574caa"
+    },
+    {
+      "id": "105",
+      "asset_key": "XENO-BE-105",
+      "kind": "sprite",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/props_effets/105_condensation_bouche.png",
+      "size_bytes": 832355,
+      "sha256": "a52d5304831a488cc5be529271b0ef8af7a791dde414c53647f3b8953713a21c",
+      "git_blob_sha1": "dbec15c5dc26ae9141d4719ba809fb6fe1e7cc39"
+    },
+    {
+      "id": "106",
+      "asset_key": "XENO-BE-106",
+      "kind": "sprite",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/props_effets/106_poussiere_chute.png",
+      "size_bytes": 1575824,
+      "sha256": "38c566650314dcabfe7d07494e26c9a739358fba98af93b66b282251135094d1",
+      "git_blob_sha1": "26975e1c80f7181d7af307b2bc42a9f4f2c03c60"
+    },
+    {
+      "id": "107",
+      "asset_key": "XENO-BE-107",
+      "kind": "sprite",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/props_effets/107_etincelles_impact.png",
+      "size_bytes": 408520,
+      "sha256": "03bbf82d4651112f2e2d8b848562c6a9c22c61d48057ba8f75280c6ae075abf2",
+      "git_blob_sha1": "a9ceab9cc1241e1a722d23c3028b2c181c83e0c1"
+    },
+    {
+      "id": "108",
+      "asset_key": "XENO-BE-108",
+      "kind": "sprite",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/props_effets/108_suintement_acide.png",
+      "size_bytes": 1275295,
+      "sha256": "bbbad804254e2a0584233ed3670d400549c4f427407dd36a1c3705b0cb85852a",
+      "git_blob_sha1": "73164c205f74c2ef914b00dd19d58454fcaeda23"
+    },
+    {
+      "id": "BG01",
+      "asset_key": "XENO-BE-BG01",
+      "kind": "fond",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/fonds/BG01_horizon_bassin.png",
+      "size_bytes": 2169370,
+      "sha256": "13a49aaeba2e8b40bd358b1591d7ea51b584b74210eb98139b0a0ffbbeeeeff5",
+      "git_blob_sha1": "98ac54a3420cf03ebfef589cd399cc13167c076c"
+    },
+    {
+      "id": "BG02",
+      "asset_key": "XENO-BE-BG02",
+      "kind": "fond",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/fonds/BG02_foret_profonde.png",
+      "size_bytes": 2298804,
+      "sha256": "eaf6dee5a388a34e3609e4f1f2ea99719e1660b238617b2f17109e48f7566168",
+      "git_blob_sha1": "54a113e8051b4cde11ea17ef120d0a92b13b141a"
+    },
+    {
+      "id": "BG03",
+      "asset_key": "XENO-BE-BG03",
+      "kind": "fond",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/fonds/BG03_canopee_lointaine.png",
+      "size_bytes": 2151782,
+      "sha256": "8d8c2d344bbb1cc62b5c503e47bdcb5cbad4862664aab13b6d81125389a6e048",
+      "git_blob_sha1": "9b9134c1a03752322e366094bec0a82804274acc"
+    },
+    {
+      "id": "BG04",
+      "asset_key": "XENO-BE-BG04",
+      "kind": "fond",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/fonds/BG04_faille_profonde.png",
+      "size_bytes": 2239571,
+      "sha256": "6211a220d542c6f0c6c40b0ee28fb2c941135c9ade441710d06071a061b705b0",
+      "git_blob_sha1": "a4faf83bca1c930192916854bde2591eca342c40"
+    },
+    {
+      "id": "BG05",
+      "asset_key": "XENO-BE-BG05",
+      "kind": "fond",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/fonds/BG05_galeries_lointaines.png",
+      "size_bytes": 2046071,
+      "sha256": "6eb1f80ba97c791236abb7c0694181d3aa20bdf722f08cc239e3eb8bb61e0432",
+      "git_blob_sha1": "975a8ec1999d28882243fd480345c1badf75f74f"
+    },
+    {
+      "id": "BG06",
+      "asset_key": "XENO-BE-BG06",
+      "kind": "fond",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/fonds/BG06_bassin_royal.png",
+      "size_bytes": 2043343,
+      "sha256": "1f0b12e50097e74269e36fc13ca4a03795008e5549e9d5f8118eb8020df513b9",
+      "git_blob_sha1": "63ddb11233877b239c12f4553047b154f806f4e9"
+    },
+    {
+      "id": "A001",
+      "asset_key": "XENO-BE-A001",
+      "kind": "sprite",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/tete_bulbe/A001_059_inspiration.png",
+      "size_bytes": 1015320,
+      "sha256": "88223dc32261a0f05fb87a4997cde48d27f8516f8272b7e6c339b27bcc172af6",
+      "git_blob_sha1": "519cec4f465782cd4aaea26f198322ac4f9ce6d7"
+    },
+    {
+      "id": "A002",
+      "asset_key": "XENO-BE-A002",
+      "kind": "sprite",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/tete_bulbe/A002_094_anticipation_morsure.png",
+      "size_bytes": 1053122,
+      "sha256": "06fb608594bcc23e549fc813ebaeb76ad4ede582fc3e2c88a26c889d3e92fe29",
+      "git_blob_sha1": "4a952aa6f75f60a16a49b7b0e73e2dd18c22fae1"
+    },
+    {
+      "id": "A003",
+      "asset_key": "XENO-BE-A003",
+      "kind": "sprite",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/tete_bulbe/A003_094_fermeture_contact.png",
+      "size_bytes": 1026485,
+      "sha256": "7698af25ac8f795cbb26395e7d803a98930a30f893fa224c6016e91a07c4ed80",
+      "git_blob_sha1": "e1f5ef0e0b7d7779d2ad76cbc0e2a516f8cb2778"
+    },
+    {
+      "id": "A004",
+      "asset_key": "XENO-BE-A004",
+      "kind": "sprite",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/tete_bulbe/A004_095_retour_repos.png",
+      "size_bytes": 1019076,
+      "sha256": "5a67de46db39847c5fcb885670d22847f3b6e84dea64656115f9ed626e1f241f",
+      "git_blob_sha1": "b779800033564f86e378eb7d890d191e45a247c0"
+    },
+    {
+      "id": "A005",
+      "asset_key": "XENO-BE-A005",
+      "kind": "sprite",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/tete_bulbe/A005_060_charge_intermediaire.png",
+      "size_bytes": 1050975,
+      "sha256": "c5a3c15bc7482ee52466f8750e05b2a9234b41e699c25937c6c6ae66bb7561d3",
+      "git_blob_sha1": "92f8c3d1da6bd4418aa1bf4591164e03b9cdc476"
+    },
+    {
+      "id": "A006",
+      "asset_key": "XENO-BE-A006",
+      "kind": "sprite",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/tete_bulbe/A006_096_fin_souffle.png",
+      "size_bytes": 1029520,
+      "sha256": "6b89d0d9a7f22c0aee6ef7c5764b6520705d5bfc8ab1297a8842b0ccdb3e4e01",
+      "git_blob_sha1": "85408d462c30f48be208bd82c3040f108d480fc5"
+    },
+    {
+      "id": "A007",
+      "asset_key": "XENO-BE-A007",
+      "kind": "sprite",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/tete_bulbe/A007_061_exposition_progressive.png",
+      "size_bytes": 1012091,
+      "sha256": "ce7c0ea1dffa55d82045d84797380450884d39ae2df326b15ba1e198c30d9904",
+      "git_blob_sha1": "273dffddc562ad52914bc6d877145ff9d5c81fb4"
+    },
+    {
+      "id": "A008",
+      "asset_key": "XENO-BE-A008",
+      "kind": "sprite",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/tete_bulbe/A008_097_affaissement_final.png",
+      "size_bytes": 923475,
+      "sha256": "f54a036b9ae73073e38558b0a6acf491e96f028cb4888c62d0c38b2d68f18538",
+      "git_blob_sha1": "bbb4e1f45c0a646c494fe2e2d5c5ead2c62ff14e"
+    },
+    {
+      "id": "A009",
+      "asset_key": "XENO-BE-A009",
+      "kind": "sprite",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/tete_bulbe/A009_063_bulbe_contracte.png",
+      "size_bytes": 826904,
+      "sha256": "04eb46093c5c98e39e4acda5f88c0a1143fc1d46563ef4f09d4fa8ccabc5d6e8",
+      "git_blob_sha1": "ea799b05daa88d0630eb86854326578e9c2d2bc6"
+    },
+    {
+      "id": "A010",
+      "asset_key": "XENO-BE-A010",
+      "kind": "sprite",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/tete_bulbe/A010_062_crete_prelevee.png",
+      "size_bytes": 1091291,
+      "sha256": "cf960c5545dc42417a0901857cde3caafff07cea2b5acef80b2109060afbdf74",
+      "git_blob_sha1": "33f5a9f5b9ce947650d73bc448accebe825f32f9"
+    },
+    {
+      "id": "A011",
+      "asset_key": "XENO-BE-A011",
+      "kind": "sprite",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/tete_bulbe/A011_054_crete_arrimee_transport.png",
+      "size_bytes": 1304111,
+      "sha256": "e47bf62c5ef95885dd5c78efb907490bf5d586381d9a5c5d1630784bcb74ba16",
+      "git_blob_sha1": "d05a84962f053373ddc1383d546056af3f9b0df2"
+    },
+    {
+      "id": "A012",
+      "asset_key": "XENO-BE-A012",
+      "kind": "sprite",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/tete_bulbe/A012_054_crete_endommagee.png",
+      "size_bytes": 1203367,
+      "sha256": "2886e5300bf15598968fdca563c058f3461a68ef8c6f8b731a17eba615886846",
+      "git_blob_sha1": "5b416746b1a87f23ae2a12994727c09f8a03d726"
+    },
+    {
+      "id": "A013",
+      "asset_key": "XENO-BE-A013",
+      "kind": "sprite",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/tentacules/A013_089_balayage_deploiement_intermediaire.png",
+      "size_bytes": 960017,
+      "sha256": "5eede33195ef9f295c187070be0bf16d5d111c17ee00a15b188f9bf31d86536f",
+      "git_blob_sha1": "0e2172fd557f5d2befd4f63af336dcb8987fe5c4"
+    },
+    {
+      "id": "A014",
+      "asset_key": "XENO-BE-A014",
+      "kind": "sprite",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/tentacules/A014_038_balayage_retour.png",
+      "size_bytes": 1235766,
+      "sha256": "6ccaac78a76b77ac62894aa2fdaf1b09e6043bce065241a6340d2de71d8c59cb",
+      "git_blob_sha1": "bf8aaac155551b126ce5e0fbaa3617ffc2746aef"
+    },
+    {
+      "id": "A015",
+      "asset_key": "XENO-BE-A015",
+      "kind": "sprite",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/tentacules/A015_039_perforation_descente.png",
+      "size_bytes": 2097213,
+      "sha256": "370154c38fdb516def9ad51bf75cf420b69ad8f71cf428949a5929e16905f1b2",
+      "git_blob_sha1": "69f37cda4a2df585e1a823467f7768ee27acf1d8"
+    },
+    {
+      "id": "A016",
+      "asset_key": "XENO-BE-A016",
+      "kind": "sprite",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/tentacules/A016_090_perforation_retrait.png",
+      "size_bytes": 2280892,
+      "sha256": "1506f9b9816bddde467fba17e2ad09dfd7ec151eae2efd7e974fa223fc01b04b",
+      "git_blob_sha1": "269a69dddbd1898ca204564489d3d5c643367b1f"
+    },
+    {
+      "id": "A017",
+      "asset_key": "XENO-BE-A017",
+      "kind": "sprite",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/tentacules/A017_041_anse_fermeture_intermediaire.png",
+      "size_bytes": 2155085,
+      "sha256": "771bbf164c7d528588418f6a842b209b19ec612b908c701a5fc7ecd363a29da2",
+      "git_blob_sha1": "89a9145966605a6e089042951fee395a6406a2a4"
+    },
+    {
+      "id": "A018",
+      "asset_key": "XENO-BE-A018",
+      "kind": "sprite",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/tentacules/A018_091_anse_liberation.png",
+      "size_bytes": 2065634,
+      "sha256": "3c7da04e4e5ecde52d8110ea804087f863d02846c70f5fec92ad33de16c389f8",
+      "git_blob_sha1": "ae596cd811548355957952031c0aad16ca4dbd0e"
+    },
+    {
+      "id": "A019",
+      "asset_key": "XENO-BE-A019",
+      "kind": "sprite",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/tentacules/A019_045_fouet_armement.png",
+      "size_bytes": 1576820,
+      "sha256": "ce17fe5fa92b2293145b1f7f6a8fbbb2040499f3ddcb3454e5169e72e3d019ab",
+      "git_blob_sha1": "c48e7690e04ca01b5021cef989fb38ad86e9983b"
+    },
+    {
+      "id": "A020",
+      "asset_key": "XENO-BE-A020",
+      "kind": "sprite",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/tentacules/A020_045_fouet_descente_intermediaire.png",
+      "size_bytes": 1475119,
+      "sha256": "9923eaae64bec57655ff5787fb0277615316fa64e9bf3b8a61347ef59e0be084",
+      "git_blob_sha1": "5cd34af212dbed88b03eccea5510b19dc5f2d910"
+    },
+    {
+      "id": "A021",
+      "asset_key": "XENO-BE-A021",
+      "kind": "sprite",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/tentacules/A021_042_souche_separee.png",
+      "size_bytes": 1273765,
+      "sha256": "dbb927b491a08b84a95344d201ac1189656080659c1a163ca1b6b89b72157ac4",
+      "git_blob_sha1": "fa21d2f6a837000d5807f004b35c0867fb3d5737"
+    },
+    {
+      "id": "A022",
+      "asset_key": "XENO-BE-A022",
+      "kind": "sprite",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/tentacules/A022_042_segment_detache_separe.png",
+      "size_bytes": 1008944,
+      "sha256": "1124d4945229138aaeec15aadbed022952204dd4761e3c55f93f4fe05ddd505f",
+      "git_blob_sha1": "8aebe80974d211bcb9a8c0d77101e843fb680e30"
+    },
+    {
+      "id": "A023",
+      "asset_key": "XENO-BE-A023",
+      "kind": "sprite",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/effets_interactions/A023_033_event_entrouvert.png",
+      "size_bytes": 1605499,
+      "sha256": "7719bdd90d5fbaadec49b7875204fb095a38175f8d6b7fe0eff4252103b73b9d",
+      "git_blob_sha1": "0d062879e878172ee962345a4a734f6e2e8e7721"
+    },
+    {
+      "id": "A024",
+      "asset_key": "XENO-BE-A024",
+      "kind": "sprite",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/effets_interactions/A024_034_membrane_passage_entrouverte.png",
+      "size_bytes": 1560224,
+      "sha256": "a3e1a02d02c11e6b6fa7f28dcf46cd3254f57585afbcefbd2aa15751ba9f876a",
+      "git_blob_sha1": "556f8707c20171364fe74af364532dfeadc449b0"
+    },
+    {
+      "id": "A025",
+      "asset_key": "XENO-BE-A025",
+      "kind": "sprite",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/effets_interactions/A025_030_vanne_drainage_intermediaire.png",
+      "size_bytes": 1369389,
+      "sha256": "045952d045dd77f05cdc169c8eb28c7a274e33c28080a661c8f6838911fa6532",
+      "git_blob_sha1": "987b5d3bed79da10cbe779a6f4899240255e5e05"
+    },
+    {
+      "id": "A026",
+      "asset_key": "XENO-BE-A026",
+      "kind": "sprite",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/effets_interactions/A026_031_filaments_demi_alerte.png",
+      "size_bytes": 1225184,
+      "sha256": "9f5cfdaf4e96f8e3c191de3f256a6ff5cad72c0db1e5d3a67cecc8bf33ce6d9c",
+      "git_blob_sha1": "99a47fa937ba39c2bfb44646ef0cfc673783dced"
+    },
+    {
+      "id": "A027",
+      "asset_key": "XENO-BE-A027",
+      "kind": "sprite",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/effets_interactions/A027_046_membrane_gonflee.png",
+      "size_bytes": 1688187,
+      "sha256": "24baedae5a67a31c4d4d7f35f1d705d8f7d0a2f7f0813892a45e05fa8d04f437",
+      "git_blob_sha1": "38d8c4e8dce94ff1f0b78ccefecf2af1eb8b4568"
+    },
+    {
+      "id": "A028",
+      "asset_key": "XENO-BE-A028",
+      "kind": "sprite",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/effets_interactions/A028_093_membrane_dechirure_initiale.png",
+      "size_bytes": 1654090,
+      "sha256": "edb5b70e799239aa349bfcff2cf3686adfa61ae49a7d1f04ca3b320be3669dd9",
+      "git_blob_sha1": "18322f494ac5770d894eab6e9ff0082f3792cafd"
+    },
+    {
+      "id": "A029",
+      "asset_key": "XENO-BE-A029",
+      "kind": "sprite",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/effets_interactions/A029_063_bulbe_rupture_initiale.png",
+      "size_bytes": 797249,
+      "sha256": "7cfc82b24419c8ee1e2c1075927f926b5fa9682d1196cac53e9903ab2c9628d3",
+      "git_blob_sha1": "ae5b1b20620cb9734734b494379441b75709cd70"
+    },
+    {
+      "id": "A030",
+      "asset_key": "XENO-BE-A030",
+      "kind": "sprite",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/effets_interactions/A030_103_jet_naissance.png",
+      "size_bytes": 765988,
+      "sha256": "836b72cbcd848b606ab7f6983fd1b860a4814a38866a61ea5f83bd67047dcf1d",
+      "git_blob_sha1": "ddf83877d3f92431805d839336496b7ade7e5aab"
+    },
+    {
+      "id": "A031",
+      "asset_key": "XENO-BE-A031",
+      "kind": "sprite",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/effets_interactions/A031_103_jet_extinction.png",
+      "size_bytes": 1012621,
+      "sha256": "65fa81058bbfa5754e2130f80a882f85e6812aae1c94893836f6a4e1912441e0",
+      "git_blob_sha1": "4e9f5eba25e60a5771492257ed083b25ea1cb313"
+    },
+    {
+      "id": "A032",
+      "asset_key": "XENO-BE-A032",
+      "kind": "sprite",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/effets_interactions/A032_104_acide_premier_contact.png",
+      "size_bytes": 925140,
+      "sha256": "b25cea4405461a7a3720124949f902a2c6ce1b58118967863bba17c350e38dbd",
+      "git_blob_sha1": "102a61cc7548505d7ab94cd9c57ff02555e1c7d8"
+    },
+    {
+      "id": "A033",
+      "asset_key": "XENO-BE-A033",
+      "kind": "sprite",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/effets_interactions/A033_070_poussiere_debut_impact.png",
+      "size_bytes": 868874,
+      "sha256": "be0a9ee1b68d6a905a87fba2c63c3e8b50e66c6fa1048467b300ceb4369feb44",
+      "git_blob_sha1": "127c070a19f57eba94da4c058a0dd8f19117fb5c"
+    },
+    {
+      "id": "A034",
+      "asset_key": "XENO-BE-A034",
+      "kind": "sprite",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/effets_interactions/A034_071_telegraphe_sol_fissure.png",
+      "size_bytes": 759008,
+      "sha256": "e19e5d5abbec158a9a36fa3a10fc543f05f2cc87a74598ad877a11e7e67b6084",
+      "git_blob_sha1": "1f867603dd35ab35c582ff39e7b2d4c281091faf"
+    },
+    {
+      "id": "A035",
+      "asset_key": "XENO-BE-A035",
+      "kind": "sprite",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/effets_interactions/A035_068_vapeur_amorce.png",
+      "size_bytes": 646115,
+      "sha256": "0c786d81ffed1666393894922ece1a1be3ff82979215a6d5b07565fcf8b023ac",
+      "git_blob_sha1": "16166a7700364010605b25f8b8c5b1ba24ad4d2f"
+    },
+    {
+      "id": "A036",
+      "asset_key": "XENO-BE-A036",
+      "kind": "sprite",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/effets_interactions/A036_067_spores_dissipation.png",
+      "size_bytes": 1041338,
+      "sha256": "6dd22337fa0103617d37d23a579b5185e65236a7b549cb24029bfcaced055f7d",
+      "git_blob_sha1": "c3db46530f2aec1837b5ec8be91c54a8d7798913"
+    },
+    {
+      "id": "A037",
+      "asset_key": "XENO-BE-A037",
+      "kind": "sprite",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/tete_bulbe/A037_060_preparation_cadre_059.png",
+      "size_bytes": 1062852,
+      "sha256": "f74e6e71d6576ad232503a028748b0ea42efe953e24e83ac5bb03ec3675850a7",
+      "git_blob_sha1": "032120816f6486235cac2f4f86f9b465be3b39ce"
+    },
+    {
+      "id": "A038",
+      "asset_key": "XENO-BE-A038",
+      "kind": "sprite",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/tete_bulbe/A038_096_souffle_actif_cadre_059.png",
+      "size_bytes": 1057312,
+      "sha256": "277f2a981a3bd01996d9dd5a967fbce1694b01bdb8fd23220a969cdfa88fd818",
+      "git_blob_sha1": "14f9c0cf99e6c68eb9f45b9dd2acbc9f704b4b26"
+    },
+    {
+      "id": "A039",
+      "asset_key": "XENO-BE-A039",
+      "kind": "sprite",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/tete_bulbe/A039_061_vulnerable_cadre_059.png",
+      "size_bytes": 1027277,
+      "sha256": "5842b38bc29cdfe08f3eb827ac89c0bb09c54cc1c47dcd866a376016dec88419",
+      "git_blob_sha1": "6dcbd5994c60f6b3d508ffd112df522f67f491e0"
+    },
+    {
+      "id": "A040",
+      "asset_key": "XENO-BE-A040",
+      "kind": "sprite",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/tete_bulbe/A040_097_agonie_cadre_059.png",
+      "size_bytes": 992521,
+      "sha256": "aa7962fe5d9880f39694a7972473afd042f9fa0f971be81f71e2bfde7faf45cf",
+      "git_blob_sha1": "2cc85fe366affd9b74b426f17f321d03f96a9dee"
+    },
+    {
+      "id": "A041",
+      "asset_key": "XENO-BE-A041",
+      "kind": "sprite",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/tete_bulbe/A041_062_morte_cadre_059.png",
+      "size_bytes": 906182,
+      "sha256": "e51f8f82d95fa875010faaee4fa26c64b12560a66a911e732079fe32beb3ac36",
+      "git_blob_sha1": "363bbdf4c4c6f8db6ff8c9053039ef927e1df188"
+    },
+    {
+      "id": "A042",
+      "asset_key": "XENO-BE-A042",
+      "kind": "sprite",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/tete_bulbe/A042_062_prelevee_cadre_059.png",
+      "size_bytes": 887684,
+      "sha256": "06b529793903a8f6cd4f38ced08a040b73e659acd0bc7576be85c00a938d1fd6",
+      "git_blob_sha1": "a137e867b3fdbf67e6ecf7ccabc339ef3d321920"
+    }
+  ]
+}

@@ -22,7 +22,7 @@ Les huit poses de tête historiques sont complétées par A001–A008, A010 et A
 9adc5c12550a46cc06bf4d7cdec7ccbd4d3da41fb3d8dc10aa87b405df041547  Xeno_Prime_V2_3_150_Sprites_6_Fonds.zip
 ```
 
-Les résultats d’enregistrement sont indiqués pour chaque archive dans le JSON. Les ZIP sans lien persistant sont disponibles en téléchargement direct dans la conversation.
+Les résultats d’enregistrement sont indiqués pour chaque archive dans le JSON. Les ZIP sans lien persistant sont disponibles en téléchargement direct dans la conversation. Les échecs consignés concernent les ZIP ; les 156 PNG sont également conservés dans le dépôt, avec les [chemins et empreintes](DEPOT_PNG.json).
 
 Chaque archive contient un catalogue HTML, un inventaire, les prompts et les manifestes de production. Le pack complet ajoute un **lecteur de 23 suites de poses** (`PREVISUALISATION_POSES.html`) et le [registre des séquences](SEQUENCES_RACCORDS.json). Il conserve les cadres natifs pour comparer les images, sans masquer les écarts par une interpolation. Les cadences de ce lecteur sont des vitesses de revue, pas des durées de combat équilibrées.
 

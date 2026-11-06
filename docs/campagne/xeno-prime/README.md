@@ -31,7 +31,7 @@ La victoire, l’extraction de la crête et le retour sont distincts. `queen.fir
 | [INTEGRATION_ET_QA.md](INTEGRATION_ET_QA.md) | Raccords de progression, interactions, sauvegardes, caméra, compagnons et critères de recette ouverts. |
 | [VERIFICATION.md](VERIFICATION.md) | Sources et contrôles historiques du 5 novembre ; voir aussi [la production du 6 novembre](PRODUCTION_20261106.md). |
 
-Les binaires restent dans les archives sources. ASSETS.md récapitule les liens historiques et le statut de livraison des nouveaux packs, joints à la conversation. Cette PR ajoute leur catalogue et les règles d’intégration ; elle ne les importe pas dans `public/`.
+Les **156 PNG sources sont versionnés dans cette PR** sous [`art-source/xeno-prime/berceau-enfoui/v2.3`](../../../art-source/xeno-prime/berceau-enfoui/v2.3/README.md), avec le catalogue, les prompts et le lecteur de poses. L’[index des images](../../../art-source/xeno-prime/berceau-enfoui/v2.3/INDEX_SPRITES.md) donne un lien direct vers chaque fichier ; [DEPOT_PNG.json](DEPOT_PNG.json) enregistre ses empreintes. Les règles d’intégration, les animations et les comportements en jeu gardent leur état de travail restant.
 
 ## 2. Direction du secteur
 

@@ -1,6 +1,6 @@
 # Xeno Prime — suivi des 23 demandes complétées
 
-**Suite V2.3 :** les 42 raccords A001–A042 sont également produits. Le catalogue atteint **150 sprites + 6 fonds** ; voir [RACCORDS_V23.md](RACCORDS_V23.md). Le tableau des 23 demandes ci-dessous conserve l’historique de complétion V2.2.
+**Suite V2.3 :** les 42 raccords A001–A042 sont également produits. Le catalogue atteint **150 sprites + 6 fonds** ; voir [RACCORDS_V23.md](RACCORDS_V23.md). Les [156 PNG sont versionnés dans la PR](../../../art-source/xeno-prime/berceau-enfoui/v2.3/INDEX_SPRITES.md), avec leurs [chemins et empreintes](DEPOT_PNG.json). Le tableau des 23 demandes ci-dessous conserve l’historique de complétion V2.2.
 
 **Les 23 demandes d’images ouvertes au 5 novembre sont produites le 6 novembre 2026.** Le catalogue atteint **108/108 sprites et six fonds** ; aucune de ces 23 demandes ne reste `non_produit`. Les PNG indépendants, prompts et mesures figurent dans les [archives](ASSETS.md), le [catalogue](DONNEES_ASSETS.json) et le [suivi structuré](REPRISE_ASSETS.json).
 

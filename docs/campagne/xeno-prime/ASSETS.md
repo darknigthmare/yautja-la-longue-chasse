@@ -2,6 +2,16 @@
 
 Mise à jour **V2.3 du 6 novembre 2026** : **42 raccords visuels** complètent les 108 sprites déjà livrés. Le catalogue réunit **150 sprites et six fonds**, soit 156 PNG distincts. Le socle V2.2 est conservé à l’octet près.
 
+## PNG versionnés dans la PR
+
+Les **150 sprites et six fonds** sont maintenant présents comme fichiers PNG individuels dans [`art-source/xeno-prime/berceau-enfoui/v2.3`](../../../art-source/xeno-prime/berceau-enfoui/v2.3/README.md). Les **156 images**, soit **218 567 012 octets**, conservent leurs noms, leurs dimensions, leur alpha et leurs octets d’origine.
+
+- [Index des 156 PNG avec liens directs](../../../art-source/xeno-prime/berceau-enfoui/v2.3/INDEX_SPRITES.md).
+- [Manifeste du dépôt](DEPOT_PNG.json), avec chemin Git, SHA-256 et identifiant de blob pour chaque fichier.
+- [Catalogue HTML](../../../art-source/xeno-prime/berceau-enfoui/v2.3/CATALOGUE.html) et [lecteur des 23 suites de poses](../../../art-source/xeno-prime/berceau-enfoui/v2.3/PREVISUALISATION_POSES.html), à ouvrir depuis le dossier récupéré pour conserver leurs chemins relatifs.
+
+La copie des PNG dans le dépôt ne change pas les statuts d’animation, de collision ou d’intégration en jeu. Les 28 contrôles de gameplay restent ouverts.
+
 ## Livraison V2.3
 
 | Archive | Octets | PNG |
@@ -14,7 +24,7 @@ Mise à jour **V2.3 du 6 novembre 2026** : **42 raccords visuels** complètent l
 9adc5c12550a46cc06bf4d7cdec7ccbd4d3da41fb3d8dc10aa87b405df041547  Xeno_Prime_V2_3_150_Sprites_6_Fonds.zip
 ```
 
-Les résultats d’enregistrement sont indiqués pour chaque archive dans le JSON. Les ZIP sans lien persistant sont disponibles en téléchargement direct dans la conversation.
+Les résultats d’enregistrement sont indiqués pour chaque archive dans le JSON. Les ZIP sans lien persistant sont disponibles en téléchargement direct dans la conversation. Les échecs consignés concernent les ZIP ; les 156 PNG sont également conservés dans le dépôt, avec les [chemins et empreintes](DEPOT_PNG.json).
 
 Voir [RACCORDS_V23.md](RACCORDS_V23.md) et [RACCORDS_V23.json](RACCORDS_V23.json) pour les 42 nouveaux fichiers, références, corrections et limites de calage. Le pack complet inclut le lecteur de 23 suites de poses ; les séquences sont aussi décrites dans [SEQUENCES_RACCORDS.json](SEQUENCES_RACCORDS.json).
 
@@ -38,7 +48,7 @@ Les deux ZIP V2.2 sont livrés par téléchargement direct dans la conversation 
 
 **Statut : images sources disponibles et contrôlées techniquement.** Les 42 nouveaux PNG V2.3 sont copiés depuis les sorties natives du générateur sans retouche, extraction, rééchantillonnage ni remplacement de l’alpha. Les 114 PNG du socle V2.2 sont conservés tels qu’ils étaient livrés. La revue par l’assistant compare silhouette, matière, direction, marges et état demandé aux références ; `human_art_validation` et `runtime_integrated` restent `false`. Aucune certification canonique générale ni cycle animé ne découle de ce catalogue.
 
-Cette PR référence les archives et la production ; elle ne copie pas les binaires sous `public/`. Les chemins sont relatifs à la racine des archives. Les IDs **XENO-BE-001 à XENO-BE-108** et **XENO-BE-BG01 à XENO-BE-BG06** restent documentaires, ainsi que l’extension **XENO-BE-A001 à XENO-BE-A042**, sans nouveaux IDs moteur implicites.
+Cette PR contient les PNG sources sous `art-source/xeno-prime/berceau-enfoui/v2.3`. Les chemins `filename` restent relatifs à la racine du pack ; `repository_path` désigne leur emplacement dans Git. Les IDs **XENO-BE-001 à XENO-BE-108** et **XENO-BE-BG01 à XENO-BE-BG06** restent documentaires, ainsi que l’extension **XENO-BE-A001 à XENO-BE-A042**, sans nouveaux IDs moteur implicites.
 
 ## Familles du socle V2.2
 

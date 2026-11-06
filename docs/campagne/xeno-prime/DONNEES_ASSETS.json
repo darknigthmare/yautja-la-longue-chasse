@@ -147,9 +147,11 @@
     }
   ],
   "path_contract": {
-    "filename": "Chemin du PNG final depuis la racine du pack consolidé ; pas un chemin Git ou public/.",
+    "filename": "Chemin du PNG depuis la racine du pack ou depuis repository_delivery.asset_root dans le dépôt.",
     "source_filename": "Anciens assets : PNG brut dans l’archive Sources et Prompts. Ajouts du 6 novembre : même chemin que filename, PNG natif généré conservé sans retouche.",
-    "content_bbox_px": "Contour mesuré à alpha > 16/255, destiné au placement illustratif ; pas une collision ou une échelle physique."
+    "content_bbox_px": "Contour mesuré à alpha > 16/255, destiné au placement illustratif ; pas une collision ou une échelle physique.",
+    "repository_path": "Chemin du PNG effectivement versionné depuis la racine Git ; les octets sont ceux du pack livré.",
+    "repository_blob_sha1": "Identifiant du blob Git calculé sur les octets PNG, distinct de leur SHA-256."
   },
   "notes": [
     "25 fichiers de composition correspondent à 12 tableaux avant/après et un souffle supplémentaire ; les vues avant/après des tableaux 01 et 11 ont des octets identiques, car leur décor conserve le même état.",
@@ -242,7 +244,9 @@
       "alpha_extrema_verified": [
         0,
         255
-      ]
+      ],
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/vegetation/001_calice_geant.png",
+      "repository_blob_sha1": "29f1823581ad670f044573991103e6c670688cc2"
     },
     {
       "id": "002",
@@ -320,7 +324,9 @@
       "alpha_extrema_verified": [
         0,
         255
-      ]
+      ],
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/vegetation/002_calice_incline.png",
+      "repository_blob_sha1": "86a6366c08b42543de51b381987a561246f913c0"
     },
     {
       "id": "003",
@@ -392,7 +398,9 @@
       "alpha_extrema_verified": [
         0,
         255
-      ]
+      ],
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/vegetation/003_calices_juveniles.png",
+      "repository_blob_sha1": "dff7b8e91f96bfa4ed1f10b192233c2c3ce1f9ed"
     },
     {
       "id": "004",
@@ -464,7 +472,9 @@
       "alpha_extrema_verified": [
         0,
         254
-      ]
+      ],
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/vegetation/004_tronc_etrangle.png",
+      "repository_blob_sha1": "0102db941914f17f8e542b4e5d8ba784f335eeda"
     },
     {
       "id": "005",
@@ -535,7 +545,9 @@
       "alpha_extrema_verified": [
         0,
         255
-      ]
+      ],
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/vegetation/005_branche_praticable.png",
+      "repository_blob_sha1": "f23d6c5ee28ba650d4470735a05dbd388263fc25"
     },
     {
       "id": "006",
@@ -606,7 +618,9 @@
       "alpha_extrema_verified": [
         0,
         254
-      ]
+      ],
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/vegetation/006_arche_racine_petrifiee.png",
+      "repository_blob_sha1": "7ece1fb90a019a1fed2f94afcb72cc2305126a6e"
     },
     {
       "id": "007",
@@ -679,7 +693,9 @@
       "alpha_extrema_verified": [
         0,
         254
-      ]
+      ],
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/vegetation/007_liane_suspendue.png",
+      "repository_blob_sha1": "3de5631a8f55cc10c4bc6f9ed2ddb64605859bf2"
     },
     {
       "id": "008",
@@ -746,7 +762,9 @@
       "alpha_extrema_verified": [
         0,
         255
-      ]
+      ],
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/vegetation/008_pont_membrane.png",
+      "repository_blob_sha1": "a2e6580b3d0af284c6eb15484f69c593b7aa1e6f"
     },
     {
       "id": "009",
@@ -814,7 +832,9 @@
       "alpha_extrema_verified": [
         0,
         254
-      ]
+      ],
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/vegetation/009_poche_suspendue.png",
+      "repository_blob_sha1": "5faa6373392e6ccf2545fac40955bc0fdb6d4688"
     },
     {
       "id": "010",
@@ -886,7 +906,9 @@
       "alpha_extrema_verified": [
         0,
         255
-      ]
+      ],
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/vegetation/010_fougeres_sporiferes.png",
+      "repository_blob_sha1": "947296c60ee7d3927f0daa92f7e6fe5f4bb92918"
     },
     {
       "id": "011",
@@ -959,7 +981,9 @@
       "alpha_extrema_verified": [
         0,
         255
-      ]
+      ],
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/vegetation/011_coraux_fongiques.png",
+      "repository_blob_sha1": "07157a85232d02cee70760c88deaa941f378d544"
     },
     {
       "id": "012",
@@ -1026,7 +1050,9 @@
       "alpha_extrema_verified": [
         0,
         255
-      ]
+      ],
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/vegetation/012_silhouette_canopee.png",
+      "repository_blob_sha1": "dcbef716a448e7cc767be01bdbaace0c6a76de2d"
     },
     {
       "id": "013",
@@ -1124,7 +1150,9 @@
       "alpha_extrema_verified": [
         0,
         255
-      ]
+      ],
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/terrain/013_corniche_basalte.png",
+      "repository_blob_sha1": "a098105b06db829f0c19c86d6912f1ffc744386b"
     },
     {
       "id": "014",
@@ -1192,7 +1220,9 @@
       "alpha_extrema_verified": [
         0,
         255
-      ]
+      ],
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/terrain/014_pilier_abri.png",
+      "repository_blob_sha1": "9ac7e7574a486bac77b50832132523bb5c085847"
     },
     {
       "id": "015",
@@ -1269,7 +1299,9 @@
       "alpha_extrema_verified": [
         0,
         255
-      ]
+      ],
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/terrain/015_arche_caverne.png",
+      "repository_blob_sha1": "b8d9cbb3be9cd978b7ab429d5e0353e5ccd85dc8"
     },
     {
       "id": "016",
@@ -1354,7 +1386,9 @@
       "alpha_extrema_verified": [
         0,
         255
-      ]
+      ],
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/terrain/016_bloc_sol_resine.png",
+      "repository_blob_sha1": "c55fba42bfa2e70f0c1c8d56b5c39fb54ce40903"
     },
     {
       "id": "017",
@@ -1426,7 +1460,9 @@
       "alpha_extrema_verified": [
         0,
         255
-      ]
+      ],
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/terrain/017_paroi_resine.png",
+      "repository_blob_sha1": "8c009ea5cc25eae0f4b699b3ef458fb183016ade"
     },
     {
       "id": "018",
@@ -1512,7 +1548,9 @@
       "alpha_extrema_verified": [
         0,
         254
-      ]
+      ],
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/terrain/018_colonne_ruche.png",
+      "repository_blob_sha1": "292161723b8f46fa76c61db32abd2ad89d8aa13d"
     },
     {
       "id": "019",
@@ -1583,7 +1621,9 @@
       "alpha_extrema_verified": [
         0,
         255
-      ]
+      ],
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/terrain/019_rampe_racinaire.png",
+      "repository_blob_sha1": "ebc3f400de512fa5b6e34f416da24dd9531f220b"
     },
     {
       "id": "020",
@@ -1656,7 +1696,9 @@
       "alpha_extrema_verified": [
         0,
         254
-      ]
+      ],
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/terrain/020_appui_basalte.png",
+      "repository_blob_sha1": "31913ff7e0a0fd4d879223680401c9f14e790355"
     },
     {
       "id": "021",
@@ -1724,7 +1766,9 @@
       "alpha_extrema_verified": [
         0,
         254
-      ]
+      ],
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/terrain/021_digue_resine.png",
+      "repository_blob_sha1": "ce0972619eda8504bd94cbe5dbf14a445550072d"
     },
     {
       "id": "022",
@@ -1795,7 +1839,9 @@
       "alpha_extrema_verified": [
         0,
         255
-      ]
+      ],
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/terrain/022_paroi_stratifiee.png",
+      "repository_blob_sha1": "83039eac9f59cff9ab68939584e945c70881a35a"
     },
     {
       "id": "023",
@@ -1871,7 +1917,9 @@
       "alpha_extrema_verified": [
         0,
         255
-      ]
+      ],
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/terrain/023_flaque_eau.png",
+      "repository_blob_sha1": "e5b6cd8958f7d2959a182faf1679e59fa6ed2bbb"
     },
     {
       "id": "024",
@@ -1939,7 +1987,9 @@
       "alpha_extrema_verified": [
         0,
         255
-      ]
+      ],
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/terrain/024_empreinte_couronne.png",
+      "repository_blob_sha1": "54c0f26701b2cbe40ac0067df77c5fdb55489ef0"
     },
     {
       "id": "025",
@@ -2007,7 +2057,9 @@
       "alpha_extrema_verified": [
         0,
         255
-      ]
+      ],
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/ruche/025_oeuf_ferme.png",
+      "repository_blob_sha1": "c6b2b5b0e75beb1ef96270fe4f5cf496d1202ba6"
     },
     {
       "id": "026",
@@ -2075,7 +2127,9 @@
       "alpha_extrema_verified": [
         0,
         255
-      ]
+      ],
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/ruche/026_oeuf_ouvert.png",
+      "repository_blob_sha1": "f8a64b814c5bea5ebfc0d669c3e730e9b0c38de7"
     },
     {
       "id": "027",
@@ -2144,7 +2198,9 @@
       "alpha_extrema_verified": [
         0,
         255
-      ]
+      ],
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/ruche/027_cocon_proie.png",
+      "repository_blob_sha1": "72a02cf3e45212dee96d94412317316efad0b641"
     },
     {
       "id": "028",
@@ -2241,7 +2297,9 @@
           "output_sha256": "6f0b300c82cb58ec4566a7e4412377919f433802f94829ee602dbc6f7329501d",
           "selected": true
         }
-      ]
+      ],
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/ruche/028_exuvie_suspendue.png",
+      "repository_blob_sha1": "29c67b24a84b26aed0c5336193861f294a1ab75e"
     },
     {
       "id": "029",
@@ -2308,7 +2366,9 @@
       "alpha_extrema_verified": [
         0,
         255
-      ]
+      ],
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/ruche/029_reservoir_acide.png",
+      "repository_blob_sha1": "94adb244195cbd0ec9e97aee2593ecc346700440"
     },
     {
       "id": "030",
@@ -2384,7 +2444,9 @@
       "composition_usage": {
         "in_original_v2_1_compositions": false,
         "note_fr": "Ressource produite le 6 novembre ; les compositions V2.1 ne sont pas recalculées par cette livraison."
-      }
+      },
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/ruche/030_vanne_tissulaire.png",
+      "repository_blob_sha1": "81ce7e4f7f19eba83f13bbb8d972d35e8be814c1"
     },
     {
       "id": "031",
@@ -2462,7 +2524,9 @@
       "composition_usage": {
         "in_original_v2_1_compositions": false,
         "note_fr": "Ressource produite le 6 novembre ; les compositions V2.1 ne sont pas recalculées par cette livraison."
-      }
+      },
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/ruche/031_filaments_sensoriels.png",
+      "repository_blob_sha1": "1df5904c4d9f50a6af1ed99afee0ef08d06b14b5"
     },
     {
       "id": "032",
@@ -2536,7 +2600,9 @@
       "alpha_extrema_verified": [
         0,
         255
-      ]
+      ],
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/ruche/032_conduit_nourricier.png",
+      "repository_blob_sha1": "317d327482c1267335fc455371518923ddd6eacf"
     },
     {
       "id": "033",
@@ -2604,7 +2670,9 @@
       "alpha_extrema_verified": [
         0,
         255
-      ]
+      ],
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/ruche/033_event_respiratoire.png",
+      "repository_blob_sha1": "e839aabe3d6e3d133816a59238203524d18c6ad5"
     },
     {
       "id": "034",
@@ -2682,7 +2750,9 @@
       "composition_usage": {
         "in_original_v2_1_compositions": false,
         "note_fr": "Ressource produite le 6 novembre ; les compositions V2.1 ne sont pas recalculées par cette livraison."
-      }
+      },
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/ruche/034_porte_membrane_fermee.png",
+      "repository_blob_sha1": "21911c1adc2286b8a76de0f3d3151ef1f0699662"
     },
     {
       "id": "035",
@@ -2761,7 +2831,9 @@
       "composition_usage": {
         "in_original_v2_1_compositions": false,
         "note_fr": "Ressource produite le 6 novembre ; les compositions V2.1 ne sont pas recalculées par cette livraison."
-      }
+      },
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/ruche/035_porte_membrane_ouverte.png",
+      "repository_blob_sha1": "262fd8ac46cc4aa7f0f921e4617e1c580534a4c5"
     },
     {
       "id": "036",
@@ -2838,7 +2910,9 @@
       "composition_usage": {
         "in_original_v2_1_compositions": false,
         "note_fr": "Ressource produite le 6 novembre ; les compositions V2.1 ne sont pas recalculées par cette livraison."
-      }
+      },
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/ruche/036_vanne_drainee.png",
+      "repository_blob_sha1": "004606a86c6bbffc019316afa0e41bc253e3b8ee"
     },
     {
       "id": "037",
@@ -2910,7 +2984,9 @@
       "alpha_extrema_verified": [
         0,
         255
-      ]
+      ],
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/tentacules/037_tentacule_arche.png",
+      "repository_blob_sha1": "6eb605ed097915c0b928db73a8ec7ea7829d7455"
     },
     {
       "id": "038",
@@ -2979,7 +3055,9 @@
       "alpha_extrema_verified": [
         0,
         255
-      ]
+      ],
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/tentacules/038_tentacule_balayage.png",
+      "repository_blob_sha1": "35468c2be4455df6ea3f88d3cad3a485387e525c"
     },
     {
       "id": "039",
@@ -3047,7 +3125,9 @@
       "alpha_extrema_verified": [
         0,
         255
-      ]
+      ],
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/tentacules/039_tentacule_perforation.png",
+      "repository_blob_sha1": "fd8ee8fdefc314fa0bfc613794118703dc545b62"
     },
     {
       "id": "040",
@@ -3114,7 +3194,9 @@
       "alpha_extrema_verified": [
         0,
         255
-      ]
+      ],
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/tentacules/040_tentacule_plante.png",
+      "repository_blob_sha1": "5c315c00a5943a475e2d0a18801754901fe08518"
     },
     {
       "id": "041",
@@ -3183,7 +3265,9 @@
       "alpha_extrema_verified": [
         0,
         255
-      ]
+      ],
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/tentacules/041_anse_capture.png",
+      "repository_blob_sha1": "9a2e7ec6023ff19caa0a216a7212d68cb0ac0371"
     },
     {
       "id": "042",
@@ -3252,7 +3336,9 @@
       "alpha_extrema_verified": [
         0,
         254
-      ]
+      ],
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/tentacules/042_tentacule_sectionne.png",
+      "repository_blob_sha1": "142c5278cb00a79287ff4775c5da8bc130de0992"
     },
     {
       "id": "043",
@@ -3322,7 +3408,9 @@
       "alpha_extrema_verified": [
         0,
         255
-      ]
+      ],
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/tentacules/043_tentacule_pont_inerte.png",
+      "repository_blob_sha1": "2824457f20a69a9574c813aa69b1aa13b15bf1d1"
     },
     {
       "id": "044",
@@ -3390,7 +3478,9 @@
       "alpha_extrema_verified": [
         0,
         255
-      ]
+      ],
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/tentacules/044_constricteur_pilier.png",
+      "repository_blob_sha1": "95a5e53dab120c8410a284ce3ca3e16987c5bca0"
     },
     {
       "id": "045",
@@ -3458,7 +3548,9 @@
       "alpha_extrema_verified": [
         0,
         255
-      ]
+      ],
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/tentacules/045_fouet_diagonal.png",
+      "repository_blob_sha1": "c9878114913fe73fc17b855d2ab41b1807e72b34"
     },
     {
       "id": "046",
@@ -3526,7 +3618,9 @@
       "alpha_extrema_verified": [
         0,
         255
-      ]
+      ],
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/tentacules/046_membrane_respiratoire.png",
+      "repository_blob_sha1": "7587b3695126cb0cf7d7108e884987f4f3e024b0"
     },
     {
       "id": "047",
@@ -3600,7 +3694,9 @@
       "alpha_extrema_verified": [
         0,
         255
-      ]
+      ],
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/accessoires/047_balise_yautja.png",
+      "repository_blob_sha1": "f21ff5bbd4361caa230444f9b77b6a99d6215b81"
     },
     {
       "id": "048",
@@ -3671,7 +3767,9 @@
       "alpha_extrema_verified": [
         0,
         255
-      ]
+      ],
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/accessoires/048_cache_chasseur.png",
+      "repository_blob_sha1": "c32f1750f58a426c2dc7e345f65cc0ec1d39bffd"
     },
     {
       "id": "049",
@@ -3739,7 +3837,9 @@
       "alpha_extrema_verified": [
         0,
         254
-      ]
+      ],
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/accessoires/049_perchoir_abandonne.png",
+      "repository_blob_sha1": "e89f5102c6c0087468511a3f6bfdf22c404dc54e"
     },
     {
       "id": "050",
@@ -3805,7 +3905,9 @@
       "alpha_extrema_verified": [
         0,
         254
-      ]
+      ],
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/accessoires/050_passerelle_tombee.png",
+      "repository_blob_sha1": "41cf0993b7a3eb5c029984d27a1c37d58c7b24f8"
     },
     {
       "id": "051",
@@ -3874,7 +3976,9 @@
       "alpha_extrema_verified": [
         0,
         255
-      ]
+      ],
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/accessoires/051_stele_chasse.png",
+      "repository_blob_sha1": "beee90837f9c5de940433cb71180b0ec3c634116"
     },
     {
       "id": "052",
@@ -3942,7 +4046,9 @@
       "alpha_extrema_verified": [
         0,
         255
-      ]
+      ],
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/accessoires/052_support_masque.png",
+      "repository_blob_sha1": "56d749f4d70bc70b28648a363aa52ff5f70be59d"
     },
     {
       "id": "053",
@@ -4016,7 +4122,9 @@
       "alpha_extrema_verified": [
         0,
         255
-      ]
+      ],
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/accessoires/053_ossements_proie.png",
+      "repository_blob_sha1": "cafb78389313637fac811831c04aa9fa37471c59"
     },
     {
       "id": "054",
@@ -4080,7 +4188,9 @@
       "alpha_extrema_verified": [
         0,
         255
-      ]
+      ],
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/accessoires/054_fragment_couronne.png",
+      "repository_blob_sha1": "f0cd2ad7f3ca8d50348d27b1b39e1d8e234e050f"
     },
     {
       "id": "055",
@@ -4183,7 +4293,9 @@
       "alpha_extrema_verified": [
         0,
         254
-      ]
+      ],
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/personnages/055_yautja_chasseur.png",
+      "repository_blob_sha1": "a65469c7796b867058b8373c67dd4e0633c93681"
     },
     {
       "id": "056",
@@ -4257,7 +4369,9 @@
       "composition_usage": {
         "in_original_v2_1_compositions": false,
         "note_fr": "Ressource produite le 6 novembre ; les compositions V2.1 ne sont pas recalculées par cette livraison."
-      }
+      },
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/ruche/056_nid_guetteur.png",
+      "repository_blob_sha1": "d6aeb7ac8a29c0175ac1be62bb6a3ea119c36dc3"
     },
     {
       "id": "057",
@@ -4331,7 +4445,9 @@
       "composition_usage": {
         "in_original_v2_1_compositions": false,
         "note_fr": "Ressource produite le 6 novembre ; les compositions V2.1 ne sont pas recalculées par cette livraison."
-      }
+      },
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/ruche/057_cocon_mural.png",
+      "repository_blob_sha1": "1f497984ea3a0b01ff2571542c593b02aa9947c0"
     },
     {
       "id": "058",
@@ -4399,7 +4515,9 @@
       "alpha_extrema_verified": [
         0,
         255
-      ]
+      ],
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/personnages/058_facehugger.png",
+      "repository_blob_sha1": "f47cf4c1d1346c1226c8ba1e0236671a14f634cf"
     },
     {
       "id": "059",
@@ -4467,7 +4585,9 @@
       "alpha_extrema_verified": [
         0,
         255
-      ]
+      ],
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/personnages/059_matriarche_intacte.png",
+      "repository_blob_sha1": "ce3284ba1b426d9bf45cc1d72758d6c45ec36523"
     },
     {
       "id": "060",
@@ -4533,7 +4653,9 @@
       "alpha_extrema_verified": [
         0,
         255
-      ]
+      ],
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/personnages/060_matriarche_souffle.png",
+      "repository_blob_sha1": "e3c5d681854f6566152eef78335a6730ffbb900a"
     },
     {
       "id": "061",
@@ -4599,7 +4721,9 @@
       "alpha_extrema_verified": [
         0,
         255
-      ]
+      ],
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/personnages/061_matriarche_vulnerable.png",
+      "repository_blob_sha1": "16c32193c52c6dc1ab2844eee310b91efc495a26"
     },
     {
       "id": "062",
@@ -4667,7 +4791,9 @@
       "alpha_extrema_verified": [
         0,
         255
-      ]
+      ],
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/personnages/062_matriarche_morte.png",
+      "repository_blob_sha1": "5f8288629627edf8b2b4b7fe4d75753a48135382"
     },
     {
       "id": "063",
@@ -4735,7 +4861,9 @@
       "alpha_extrema_verified": [
         0,
         255
-      ]
+      ],
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/personnages/063_bulbe_nerveux.png",
+      "repository_blob_sha1": "8fdf24c28f1c6e5654147ca4fbe8e01e625fa3e7"
     },
     {
       "id": "064",
@@ -4804,7 +4932,9 @@
       "alpha_extrema_verified": [
         0,
         255
-      ]
+      ],
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/personnages/064_masse_sous_cutanee.png",
+      "repository_blob_sha1": "ae3b466d92e8cbc9423bd9765c11cc0e11ea937a"
     },
     {
       "id": "065",
@@ -4875,7 +5005,9 @@
       "alpha_extrema_verified": [
         0,
         254
-      ]
+      ],
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/effets/065_flaque_acide.png",
+      "repository_blob_sha1": "96452db10cc61650d7c26c8eec4c2aab224752c8"
     },
     {
       "id": "066",
@@ -4940,7 +5072,9 @@
       "alpha_extrema_verified": [
         0,
         254
-      ]
+      ],
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/effets/066_globule_acide.png",
+      "repository_blob_sha1": "a0241ebd77aadffdb899112937f6ec66922cfbde"
     },
     {
       "id": "067",
@@ -5023,7 +5157,9 @@
       "composition_usage": {
         "in_original_v2_1_compositions": false,
         "note_fr": "Ressource produite le 6 novembre ; les compositions V2.1 ne sont pas recalculées par cette livraison."
-      }
+      },
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/effets/067_nuage_spores.png",
+      "repository_blob_sha1": "b0fb0e1fd00877c4fef42da23d5bc213067b46d0"
     },
     {
       "id": "068",
@@ -5104,7 +5240,9 @@
       "composition_usage": {
         "in_original_v2_1_compositions": false,
         "note_fr": "Ressource produite le 6 novembre ; les compositions V2.1 ne sont pas recalculées par cette livraison."
-      }
+      },
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/effets/068_souffle_vapeur.png",
+      "repository_blob_sha1": "4fb9e2e686ee756d364a1351acbe2f71b0e3f312"
     },
     {
       "id": "069",
@@ -5186,7 +5324,9 @@
       "composition_usage": {
         "in_original_v2_1_compositions": false,
         "note_fr": "Ressource produite le 6 novembre ; les compositions V2.1 ne sont pas recalculées par cette livraison."
-      }
+      },
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/effets/069_pulsation_nerveuse.png",
+      "repository_blob_sha1": "59ca38ec450fa0e0106957662b744a5d7ca78937"
     },
     {
       "id": "070",
@@ -5268,7 +5408,9 @@
       "composition_usage": {
         "in_original_v2_1_compositions": false,
         "note_fr": "Ressource produite le 6 novembre ; les compositions V2.1 ne sont pas recalculées par cette livraison."
-      }
+      },
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/effets/070_impact_poussiere.png",
+      "repository_blob_sha1": "c06dc10b57eb85fc86331cc2d563d5502da01aea"
     },
     {
       "id": "071",
@@ -5344,7 +5486,9 @@
       "composition_usage": {
         "in_original_v2_1_compositions": false,
         "note_fr": "Ressource produite le 6 novembre ; les compositions V2.1 ne sont pas recalculées par cette livraison."
-      }
+      },
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/effets/071_onde_sol.png",
+      "repository_blob_sha1": "e542240360abc3344ff69e846faed9dc7e5bfbc9"
     },
     {
       "id": "072",
@@ -5425,7 +5569,9 @@
       "composition_usage": {
         "in_original_v2_1_compositions": false,
         "note_fr": "Ressource produite le 6 novembre ; les compositions V2.1 ne sont pas recalculées par cette livraison."
-      }
+      },
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/effets/072_voile_brume.png",
+      "repository_blob_sha1": "9a8086ba5ea3934d9c0d806c0d54b73fe4ac62c6"
     },
     {
       "id": "073",
@@ -5497,7 +5643,9 @@
       "alpha_extrema_verified": [
         0,
         255
-      ]
+      ],
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/environnement/073_tronc_creux_horizontal.png",
+      "repository_blob_sha1": "e975fbfbbe2de98bc09e1dd696710ba105e9707b"
     },
     {
       "id": "074",
@@ -5568,7 +5716,9 @@
       "alpha_extrema_verified": [
         0,
         254
-      ]
+      ],
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/environnement/074_racine_echelle.png",
+      "repository_blob_sha1": "284783803fdfd09ed48ffdfa843eaf2b152b7fc6"
     },
     {
       "id": "075",
@@ -5664,7 +5814,9 @@
       "alpha_extrema_verified": [
         0,
         255
-      ]
+      ],
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/environnement/075_racines_premier_plan.png",
+      "repository_blob_sha1": "43c643bbce0eb5242899f5e451d1a56277cac92a"
     },
     {
       "id": "076",
@@ -5734,7 +5886,9 @@
       "alpha_extrema_verified": [
         0,
         254
-      ]
+      ],
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/environnement/076_contrefort_vertical.png",
+      "repository_blob_sha1": "368731575ebd1dcfeeae03a0b7d316a7bba9d4c4"
     },
     {
       "id": "077",
@@ -5801,7 +5955,9 @@
       "alpha_extrema_verified": [
         0,
         255
-      ]
+      ],
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/environnement/077_passerelle_deployee.png",
+      "repository_blob_sha1": "6955073eacc3329471ebaf3f6639ac4ec030772b"
     },
     {
       "id": "078",
@@ -5875,7 +6031,9 @@
       "alpha_extrema_verified": [
         0,
         255
-      ]
+      ],
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/environnement/078_bouchon_resine_intact.png",
+      "repository_blob_sha1": "8b8743135fdf7423fe4ffe3376a634c517e52877"
     },
     {
       "id": "079",
@@ -5953,7 +6111,9 @@
       "composition_usage": {
         "in_original_v2_1_compositions": false,
         "note_fr": "Ressource produite le 6 novembre ; les compositions V2.1 ne sont pas recalculées par cette livraison."
-      }
+      },
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/environnement/079_bouchon_resine_brise.png",
+      "repository_blob_sha1": "5876ecb64705bc84015b518bb6bfc177a5ad2b65"
     },
     {
       "id": "080",
@@ -6027,7 +6187,9 @@
       "alpha_extrema_verified": [
         0,
         254
-      ]
+      ],
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/environnement/080_nid_fongique_plafond.png",
+      "repository_blob_sha1": "1363f24a4a6b7584bed8485ce93acba7dbe30cfe"
     },
     {
       "id": "081",
@@ -6094,7 +6256,9 @@
       "alpha_extrema_verified": [
         0,
         255
-      ]
+      ],
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/reactions/081_pont_membrane_affaisse.png",
+      "repository_blob_sha1": "bbb6bc261e936ed8bb64474a1ae5fe2a09eec4f8"
     },
     {
       "id": "082",
@@ -6162,7 +6326,9 @@
       "alpha_extrema_verified": [
         0,
         254
-      ]
+      ],
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/reactions/082_poche_contractee.png",
+      "repository_blob_sha1": "7b2126b2f5b3d73bedc0f58f72210576e420366d"
     },
     {
       "id": "083",
@@ -6229,7 +6395,9 @@
       "alpha_extrema_verified": [
         0,
         255
-      ]
+      ],
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/reactions/083_reservoir_vide.png",
+      "repository_blob_sha1": "f8806e92edc2183e98bbe827352ef73fd41c02a1"
     },
     {
       "id": "084",
@@ -6300,7 +6468,9 @@
       "alpha_extrema_verified": [
         0,
         255
-      ]
+      ],
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/reactions/084_filaments_alerte.png",
+      "repository_blob_sha1": "2419f0772ca2bf7b20af8a661911f9ac5cd3ba6d"
     },
     {
       "id": "085",
@@ -6374,7 +6544,9 @@
       "alpha_extrema_verified": [
         0,
         255
-      ]
+      ],
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/reactions/085_conduit_eteint.png",
+      "repository_blob_sha1": "bf6e862dfab2a22ce1d38212a172f647ed1d81fb"
     },
     {
       "id": "086",
@@ -6445,7 +6617,9 @@
       "alpha_extrema_verified": [
         0,
         255
-      ]
+      ],
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/reactions/086_event_ferme.png",
+      "repository_blob_sha1": "3ca40c5a9128b6fe91b50a0e084336f8ce24ebd4"
     },
     {
       "id": "087",
@@ -6511,7 +6685,9 @@
       "alpha_extrema_verified": [
         0,
         255
-      ]
+      ],
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/reactions/087_oeuf_eclosion.png",
+      "repository_blob_sha1": "929670d18b79f1b1186076d44e979feb0a885a59"
     },
     {
       "id": "088",
@@ -6582,7 +6758,9 @@
       "alpha_extrema_verified": [
         0,
         254
-      ]
+      ],
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/reactions/088_amas_coques_oeufs.png",
+      "repository_blob_sha1": "27487fdb0575e198a3f7f3d8413a9e365ccd335d"
     },
     {
       "id": "089",
@@ -6650,7 +6828,9 @@
       "alpha_extrema_verified": [
         0,
         255
-      ]
+      ],
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/boss_actions/089_tentacule_armement.png",
+      "repository_blob_sha1": "0222b243fc12c69fcf7e81e2b348412225b97c87"
     },
     {
       "id": "090",
@@ -6718,7 +6898,9 @@
       "alpha_extrema_verified": [
         0,
         254
-      ]
+      ],
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/boss_actions/090_tentacule_impact.png",
+      "repository_blob_sha1": "5c87e298b0ad8ca89261e12d4d33902d0d2e7100"
     },
     {
       "id": "091",
@@ -6783,7 +6965,9 @@
       "alpha_extrema_verified": [
         0,
         254
-      ]
+      ],
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/boss_actions/091_anse_fermee.png",
+      "repository_blob_sha1": "72c3e4ab1c6fff97e87501e639fef66bf4d83364"
     },
     {
       "id": "092",
@@ -6848,7 +7032,9 @@
       "alpha_extrema_verified": [
         0,
         254
-      ]
+      ],
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/boss_actions/092_fouet_retrait.png",
+      "repository_blob_sha1": "3e48c992c9857f80bc596d53d5ea6d83d8e67f6e"
     },
     {
       "id": "093",
@@ -6914,7 +7100,9 @@
       "alpha_extrema_verified": [
         0,
         255
-      ]
+      ],
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/boss_actions/093_membrane_dechiree.png",
+      "repository_blob_sha1": "d61f11f7e57d8441e24407d369a9c44e752cdf6c"
     },
     {
       "id": "094",
@@ -6980,7 +7168,9 @@
       "alpha_extrema_verified": [
         0,
         255
-      ]
+      ],
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/boss_actions/094_matriarche_morsure.png",
+      "repository_blob_sha1": "16b76a0a0b402e9cc07403dcea3b90578dde5eb4"
     },
     {
       "id": "095",
@@ -7046,7 +7236,9 @@
       "alpha_extrema_verified": [
         0,
         255
-      ]
+      ],
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/boss_actions/095_matriarche_recul.png",
+      "repository_blob_sha1": "68de169170603bea65e7ddfdd24e005a7ba74673"
     },
     {
       "id": "096",
@@ -7114,7 +7306,9 @@
       "alpha_extrema_verified": [
         0,
         255
-      ]
+      ],
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/boss_actions/096_matriarche_souffle_actif.png",
+      "repository_blob_sha1": "92d11481069f83f02ca7e43724e4963d41bd1a6e"
     },
     {
       "id": "097",
@@ -7190,7 +7384,9 @@
       "composition_usage": {
         "in_original_v2_1_compositions": false,
         "note_fr": "Ressource produite le 6 novembre ; les compositions V2.1 ne sont pas recalculées par cette livraison."
-      }
+      },
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/boss_actions/097_matriarche_agonie.png",
+      "repository_blob_sha1": "a66dcb7d6c7df1d26382d398b39c4628b0aa1f35"
     },
     {
       "id": "098",
@@ -7266,7 +7462,9 @@
       "composition_usage": {
         "in_original_v2_1_compositions": false,
         "note_fr": "Ressource produite le 6 novembre ; les compositions V2.1 ne sont pas recalculées par cette livraison."
-      }
+      },
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/boss_actions/098_bulbe_rompu.png",
+      "repository_blob_sha1": "38a0b7ac5296299b7e555ea5f4bc795fcc409d55"
     },
     {
       "id": "099",
@@ -7340,7 +7538,9 @@
       "alpha_extrema_verified": [
         0,
         255
-      ]
+      ],
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/props_effets/099_glyphe_repere_chasse.png",
+      "repository_blob_sha1": "f0de8870c1879ff71eb6802b7b9063621eda26d8"
     },
     {
       "id": "100",
@@ -7410,7 +7610,9 @@
       "alpha_extrema_verified": [
         0,
         255
-      ]
+      ],
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/props_effets/100_trophee_couronne_socle.png",
+      "repository_blob_sha1": "fdd1e88d34671f26e2417b0aff4433983d637f35"
     },
     {
       "id": "101",
@@ -7484,7 +7686,9 @@
       "alpha_extrema_verified": [
         0,
         255
-      ]
+      ],
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/props_effets/101_minerai_ambre.png",
+      "repository_blob_sha1": "62c74b7531863da141982e527d4077af2027cc71"
     },
     {
       "id": "102",
@@ -7562,7 +7766,9 @@
       "composition_usage": {
         "in_original_v2_1_compositions": false,
         "note_fr": "Ressource produite le 6 novembre ; les compositions V2.1 ne sont pas recalculées par cette livraison."
-      }
+      },
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/props_effets/102_eclats_chitine.png",
+      "repository_blob_sha1": "c60298ca8078e9e75d9ea9debbf0eb5d409b721d"
     },
     {
       "id": "103",
@@ -7629,7 +7835,9 @@
       "alpha_extrema_verified": [
         0,
         254
-      ]
+      ],
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/props_effets/103_jet_acide_horizontal.png",
+      "repository_blob_sha1": "82eb15ab8b77886a742d8d1fe671e8695a639e07"
     },
     {
       "id": "104",
@@ -7707,7 +7915,9 @@
       "composition_usage": {
         "in_original_v2_1_compositions": false,
         "note_fr": "Ressource produite le 6 novembre ; les compositions V2.1 ne sont pas recalculées par cette livraison."
-      }
+      },
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/props_effets/104_acide_eclaboussure.png",
+      "repository_blob_sha1": "cdf4e283d9a6c0144d14427a93068067b6574caa"
     },
     {
       "id": "105",
@@ -7786,7 +7996,9 @@
       "composition_usage": {
         "in_original_v2_1_compositions": false,
         "note_fr": "Ressource produite le 6 novembre ; les compositions V2.1 ne sont pas recalculées par cette livraison."
-      }
+      },
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/props_effets/105_condensation_bouche.png",
+      "repository_blob_sha1": "dbec15c5dc26ae9141d4719ba809fb6fe1e7cc39"
     },
     {
       "id": "106",
@@ -7869,7 +8081,9 @@
       "composition_usage": {
         "in_original_v2_1_compositions": false,
         "note_fr": "Ressource produite le 6 novembre ; les compositions V2.1 ne sont pas recalculées par cette livraison."
-      }
+      },
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/props_effets/106_poussiere_chute.png",
+      "repository_blob_sha1": "26975e1c80f7181d7af307b2bc42a9f4f2c03c60"
     },
     {
       "id": "107",
@@ -7949,7 +8163,9 @@
       "composition_usage": {
         "in_original_v2_1_compositions": false,
         "note_fr": "Ressource produite le 6 novembre ; les compositions V2.1 ne sont pas recalculées par cette livraison."
-      }
+      },
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/props_effets/107_etincelles_impact.png",
+      "repository_blob_sha1": "a9ceab9cc1241e1a722d23c3028b2c181c83e0c1"
     },
     {
       "id": "108",
@@ -8026,7 +8242,9 @@
       "composition_usage": {
         "in_original_v2_1_compositions": false,
         "note_fr": "Ressource produite le 6 novembre ; les compositions V2.1 ne sont pas recalculées par cette livraison."
-      }
+      },
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/props_effets/108_suintement_acide.png",
+      "repository_blob_sha1": "73164c205f74c2ef914b00dd19d58454fcaeda23"
     },
     {
       "description": "Horizon d’un bassin ouvert de Xeno Prime, jungle fongique monumentale dans la brume, réservé à l’arrière-plan.",
@@ -8079,7 +8297,9 @@
       },
       "alpha_extrema_verified": null,
       "generation_output_basename": "exec-174a7e61-4900-425f-8542-02273a46fa5d.png",
-      "generation_origin_note": "Nom historique du rendu temporaire ; le fichier canonique disponible est filename dans l’archive consolidée."
+      "generation_origin_note": "Nom historique du rendu temporaire ; le fichier canonique disponible est filename dans l’archive consolidée.",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/fonds/BG01_horizon_bassin.png",
+      "repository_blob_sha1": "98ac54a3420cf03ebfef589cd399cc13167c076c"
     },
     {
       "description": "Forêt lointaine de calices fongiques et de troncs épais, étagée dans une vapeur cyan sourde.",
@@ -8132,7 +8352,9 @@
       },
       "alpha_extrema_verified": null,
       "generation_output_basename": "exec-e2e38439-ebe0-4c7c-8b36-b6591f67b1ae.png",
-      "generation_origin_note": "Nom historique du rendu temporaire ; le fichier canonique disponible est filename dans l’archive consolidée."
+      "generation_origin_note": "Nom historique du rendu temporaire ; le fichier canonique disponible est filename dans l’archive consolidée.",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/fonds/BG02_foret_profonde.png",
+      "repository_blob_sha1": "54a113e8051b4cde11ea17ef120d0a92b13b141a"
     },
     {
       "description": "Sous-bois supérieur, canopée et racines suspendues dans la profondeur.",
@@ -8184,7 +8406,9 @@
       },
       "alpha_extrema_verified": null,
       "generation_output_basename": "exec-d0be1fdb-4b6c-4bf4-8d4f-151f82b74b44.png",
-      "generation_origin_note": "Nom historique du rendu temporaire ; le fichier canonique disponible est filename dans l’archive consolidée."
+      "generation_origin_note": "Nom historique du rendu temporaire ; le fichier canonique disponible est filename dans l’archive consolidée.",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/fonds/BG03_canopee_lointaine.png",
+      "repository_blob_sha1": "9b9134c1a03752322e366094bec0a82804274acc"
     },
     {
       "description": "Grande faille verticale de basalte sombre et de racines enfoncées dans les parois.",
@@ -8235,7 +8459,9 @@
       },
       "alpha_extrema_verified": null,
       "generation_output_basename": "exec-fd6da796-045d-4bb0-a68b-dde33c363093.png",
-      "generation_origin_note": "Nom historique du rendu temporaire ; le fichier canonique disponible est filename dans l’archive consolidée."
+      "generation_origin_note": "Nom historique du rendu temporaire ; le fichier canonique disponible est filename dans l’archive consolidée.",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/fonds/BG04_faille_profonde.png",
+      "repository_blob_sha1": "a4faf83bca1c930192916854bde2591eca342c40"
     },
     {
       "description": "Galeries de ruche courbes et conduits organiques lointains, sans gore.",
@@ -8290,7 +8516,9 @@
       },
       "alpha_extrema_verified": null,
       "generation_output_basename": "exec-79115b49-df03-4692-91f7-483167292e51.png",
-      "generation_origin_note": "Nom historique du rendu temporaire ; le fichier canonique disponible est filename dans l’archive consolidée."
+      "generation_origin_note": "Nom historique du rendu temporaire ; le fichier canonique disponible est filename dans l’archive consolidée.",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/fonds/BG05_galeries_lointaines.png",
+      "repository_blob_sha1": "975a8ec1999d28882243fd480345c1badf75f74f"
     },
     {
       "description": "Vaste niche royale vide, concavité centrale et parois de ruche pour accueillir la Matriarche comme sprite distinct.",
@@ -8340,7 +8568,9 @@
       },
       "alpha_extrema_verified": null,
       "generation_output_basename": "exec-9761d05c-7d1c-419a-9441-6d7a4caa9537.png",
-      "generation_origin_note": "Nom historique du rendu temporaire ; le fichier canonique disponible est filename dans l’archive consolidée."
+      "generation_origin_note": "Nom historique du rendu temporaire ; le fichier canonique disponible est filename dans l’archive consolidée.",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/fonds/BG06_bassin_royal.png",
+      "repository_blob_sha1": "63ddb11233877b239c12f4553047b154f806f4e9"
     },
     {
       "id": "A001",
@@ -8443,7 +8673,9 @@
       "source_archive_id": "XENO-BE-ARCHIVE-RACCORDS-42",
       "path_scope": "Racine du pack V2.3 extrait",
       "new_generation": true,
-      "verification_date": "2026-11-06"
+      "verification_date": "2026-11-06",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/tete_bulbe/A001_059_inspiration.png",
+      "repository_blob_sha1": "519cec4f465782cd4aaea26f198322ac4f9ce6d7"
     },
     {
       "id": "A002",
@@ -8552,7 +8784,9 @@
       "source_archive_id": "XENO-BE-ARCHIVE-RACCORDS-42",
       "path_scope": "Racine du pack V2.3 extrait",
       "new_generation": true,
-      "verification_date": "2026-11-06"
+      "verification_date": "2026-11-06",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/tete_bulbe/A002_094_anticipation_morsure.png",
+      "repository_blob_sha1": "4a952aa6f75f60a16a49b7b0e73e2dd18c22fae1"
     },
     {
       "id": "A003",
@@ -8661,7 +8895,9 @@
       "source_archive_id": "XENO-BE-ARCHIVE-RACCORDS-42",
       "path_scope": "Racine du pack V2.3 extrait",
       "new_generation": true,
-      "verification_date": "2026-11-06"
+      "verification_date": "2026-11-06",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/tete_bulbe/A003_094_fermeture_contact.png",
+      "repository_blob_sha1": "e1f5ef0e0b7d7779d2ad76cbc0e2a516f8cb2778"
     },
     {
       "id": "A004",
@@ -8770,7 +9006,9 @@
       "source_archive_id": "XENO-BE-ARCHIVE-RACCORDS-42",
       "path_scope": "Racine du pack V2.3 extrait",
       "new_generation": true,
-      "verification_date": "2026-11-06"
+      "verification_date": "2026-11-06",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/tete_bulbe/A004_095_retour_repos.png",
+      "repository_blob_sha1": "b779800033564f86e378eb7d890d191e45a247c0"
     },
     {
       "id": "A005",
@@ -8879,7 +9117,9 @@
       "source_archive_id": "XENO-BE-ARCHIVE-RACCORDS-42",
       "path_scope": "Racine du pack V2.3 extrait",
       "new_generation": true,
-      "verification_date": "2026-11-06"
+      "verification_date": "2026-11-06",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/tete_bulbe/A005_060_charge_intermediaire.png",
+      "repository_blob_sha1": "92f8c3d1da6bd4418aa1bf4591164e03b9cdc476"
     },
     {
       "id": "A006",
@@ -8991,7 +9231,9 @@
       "source_archive_id": "XENO-BE-ARCHIVE-RACCORDS-42",
       "path_scope": "Racine du pack V2.3 extrait",
       "new_generation": true,
-      "verification_date": "2026-11-06"
+      "verification_date": "2026-11-06",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/tete_bulbe/A006_096_fin_souffle.png",
+      "repository_blob_sha1": "85408d462c30f48be208bd82c3040f108d480fc5"
     },
     {
       "id": "A007",
@@ -9132,7 +9374,9 @@
       "source_archive_id": "XENO-BE-ARCHIVE-RACCORDS-42",
       "path_scope": "Racine du pack V2.3 extrait",
       "new_generation": true,
-      "verification_date": "2026-11-06"
+      "verification_date": "2026-11-06",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/tete_bulbe/A007_061_exposition_progressive.png",
+      "repository_blob_sha1": "273dffddc562ad52914bc6d877145ff9d5c81fb4"
     },
     {
       "id": "A008",
@@ -9242,7 +9486,9 @@
       "source_archive_id": "XENO-BE-ARCHIVE-RACCORDS-42",
       "path_scope": "Racine du pack V2.3 extrait",
       "new_generation": true,
-      "verification_date": "2026-11-06"
+      "verification_date": "2026-11-06",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/tete_bulbe/A008_097_affaissement_final.png",
+      "repository_blob_sha1": "bbb4e1f45c0a646c494fe2e2d5c5ead2c62ff14e"
     },
     {
       "id": "A009",
@@ -9344,7 +9590,9 @@
       "source_archive_id": "XENO-BE-ARCHIVE-RACCORDS-42",
       "path_scope": "Racine du pack V2.3 extrait",
       "new_generation": true,
-      "verification_date": "2026-11-06"
+      "verification_date": "2026-11-06",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/tete_bulbe/A009_063_bulbe_contracte.png",
+      "repository_blob_sha1": "ea799b05daa88d0630eb86854326578e9c2d2bc6"
     },
     {
       "id": "A010",
@@ -9452,7 +9700,9 @@
       "source_archive_id": "XENO-BE-ARCHIVE-RACCORDS-42",
       "path_scope": "Racine du pack V2.3 extrait",
       "new_generation": true,
-      "verification_date": "2026-11-06"
+      "verification_date": "2026-11-06",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/tete_bulbe/A010_062_crete_prelevee.png",
+      "repository_blob_sha1": "33f5a9f5b9ce947650d73bc448accebe825f32f9"
     },
     {
       "id": "A011",
@@ -9560,7 +9810,9 @@
       "source_archive_id": "XENO-BE-ARCHIVE-RACCORDS-42",
       "path_scope": "Racine du pack V2.3 extrait",
       "new_generation": true,
-      "verification_date": "2026-11-06"
+      "verification_date": "2026-11-06",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/tete_bulbe/A011_054_crete_arrimee_transport.png",
+      "repository_blob_sha1": "d05a84962f053373ddc1383d546056af3f9b0df2"
     },
     {
       "id": "A012",
@@ -9662,7 +9914,9 @@
       "source_archive_id": "XENO-BE-ARCHIVE-RACCORDS-42",
       "path_scope": "Racine du pack V2.3 extrait",
       "new_generation": true,
-      "verification_date": "2026-11-06"
+      "verification_date": "2026-11-06",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/tete_bulbe/A012_054_crete_endommagee.png",
+      "repository_blob_sha1": "5b416746b1a87f23ae2a12994727c09f8a03d726"
     },
     {
       "id": "A013",
@@ -9775,7 +10029,9 @@
       "source_archive_id": "XENO-BE-ARCHIVE-RACCORDS-42",
       "path_scope": "Racine du pack V2.3 extrait",
       "new_generation": true,
-      "verification_date": "2026-11-06"
+      "verification_date": "2026-11-06",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/tentacules/A013_089_balayage_deploiement_intermediaire.png",
+      "repository_blob_sha1": "0e2172fd557f5d2befd4f63af336dcb8987fe5c4"
     },
     {
       "id": "A014",
@@ -9888,7 +10144,9 @@
       "source_archive_id": "XENO-BE-ARCHIVE-RACCORDS-42",
       "path_scope": "Racine du pack V2.3 extrait",
       "new_generation": true,
-      "verification_date": "2026-11-06"
+      "verification_date": "2026-11-06",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/tentacules/A014_038_balayage_retour.png",
+      "repository_blob_sha1": "bf8aaac155551b126ce5e0fbaa3617ffc2746aef"
     },
     {
       "id": "A015",
@@ -10077,7 +10335,9 @@
       "source_archive_id": "XENO-BE-ARCHIVE-RACCORDS-42",
       "path_scope": "Racine du pack V2.3 extrait",
       "new_generation": true,
-      "verification_date": "2026-11-06"
+      "verification_date": "2026-11-06",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/tentacules/A015_039_perforation_descente.png",
+      "repository_blob_sha1": "69f37cda4a2df585e1a823467f7768ee27acf1d8"
     },
     {
       "id": "A016",
@@ -10188,7 +10448,9 @@
       "source_archive_id": "XENO-BE-ARCHIVE-RACCORDS-42",
       "path_scope": "Racine du pack V2.3 extrait",
       "new_generation": true,
-      "verification_date": "2026-11-06"
+      "verification_date": "2026-11-06",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/tentacules/A016_090_perforation_retrait.png",
+      "repository_blob_sha1": "269a69dddbd1898ca204564489d3d5c643367b1f"
     },
     {
       "id": "A017",
@@ -10301,7 +10563,9 @@
       "source_archive_id": "XENO-BE-ARCHIVE-RACCORDS-42",
       "path_scope": "Racine du pack V2.3 extrait",
       "new_generation": true,
-      "verification_date": "2026-11-06"
+      "verification_date": "2026-11-06",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/tentacules/A017_041_anse_fermeture_intermediaire.png",
+      "repository_blob_sha1": "89a9145966605a6e089042951fee395a6406a2a4"
     },
     {
       "id": "A018",
@@ -10451,7 +10715,9 @@
       "source_archive_id": "XENO-BE-ARCHIVE-RACCORDS-42",
       "path_scope": "Racine du pack V2.3 extrait",
       "new_generation": true,
-      "verification_date": "2026-11-06"
+      "verification_date": "2026-11-06",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/tentacules/A018_091_anse_liberation.png",
+      "repository_blob_sha1": "ae596cd811548355957952031c0aad16ca4dbd0e"
     },
     {
       "id": "A019",
@@ -10564,7 +10830,9 @@
       "source_archive_id": "XENO-BE-ARCHIVE-RACCORDS-42",
       "path_scope": "Racine du pack V2.3 extrait",
       "new_generation": true,
-      "verification_date": "2026-11-06"
+      "verification_date": "2026-11-06",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/tentacules/A019_045_fouet_armement.png",
+      "repository_blob_sha1": "c48e7690e04ca01b5021cef989fb38ad86e9983b"
     },
     {
       "id": "A020",
@@ -10675,7 +10943,9 @@
       "source_archive_id": "XENO-BE-ARCHIVE-RACCORDS-42",
       "path_scope": "Racine du pack V2.3 extrait",
       "new_generation": true,
-      "verification_date": "2026-11-06"
+      "verification_date": "2026-11-06",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/tentacules/A020_045_fouet_descente_intermediaire.png",
+      "repository_blob_sha1": "5cd34af212dbed88b03eccea5510b19dc5f2d910"
     },
     {
       "id": "A021",
@@ -10783,7 +11053,9 @@
       "source_archive_id": "XENO-BE-ARCHIVE-RACCORDS-42",
       "path_scope": "Racine du pack V2.3 extrait",
       "new_generation": true,
-      "verification_date": "2026-11-06"
+      "verification_date": "2026-11-06",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/tentacules/A021_042_souche_separee.png",
+      "repository_blob_sha1": "fa21d2f6a837000d5807f004b35c0867fb3d5737"
     },
     {
       "id": "A022",
@@ -10891,7 +11163,9 @@
       "source_archive_id": "XENO-BE-ARCHIVE-RACCORDS-42",
       "path_scope": "Racine du pack V2.3 extrait",
       "new_generation": true,
-      "verification_date": "2026-11-06"
+      "verification_date": "2026-11-06",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/tentacules/A022_042_segment_detache_separe.png",
+      "repository_blob_sha1": "8aebe80974d211bcb9a8c0d77101e843fb680e30"
     },
     {
       "id": "A023",
@@ -10974,7 +11248,9 @@
       "source_archive_id": "XENO-BE-ARCHIVE-RACCORDS-42",
       "path_scope": "Racine du pack V2.3 extrait",
       "new_generation": true,
-      "verification_date": "2026-11-06"
+      "verification_date": "2026-11-06",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/effets_interactions/A023_033_event_entrouvert.png",
+      "repository_blob_sha1": "0d062879e878172ee962345a4a734f6e2e8e7721"
     },
     {
       "id": "A024",
@@ -11066,7 +11342,9 @@
       "source_archive_id": "XENO-BE-ARCHIVE-RACCORDS-42",
       "path_scope": "Racine du pack V2.3 extrait",
       "new_generation": true,
-      "verification_date": "2026-11-06"
+      "verification_date": "2026-11-06",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/effets_interactions/A024_034_membrane_passage_entrouverte.png",
+      "repository_blob_sha1": "556f8707c20171364fe74af364532dfeadc449b0"
     },
     {
       "id": "A025",
@@ -11149,7 +11427,9 @@
       "source_archive_id": "XENO-BE-ARCHIVE-RACCORDS-42",
       "path_scope": "Racine du pack V2.3 extrait",
       "new_generation": true,
-      "verification_date": "2026-11-06"
+      "verification_date": "2026-11-06",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/effets_interactions/A025_030_vanne_drainage_intermediaire.png",
+      "repository_blob_sha1": "987b5d3bed79da10cbe779a6f4899240255e5e05"
     },
     {
       "id": "A026",
@@ -11232,7 +11512,9 @@
       "source_archive_id": "XENO-BE-ARCHIVE-RACCORDS-42",
       "path_scope": "Racine du pack V2.3 extrait",
       "new_generation": true,
-      "verification_date": "2026-11-06"
+      "verification_date": "2026-11-06",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/effets_interactions/A026_031_filaments_demi_alerte.png",
+      "repository_blob_sha1": "99a47fa937ba39c2bfb44646ef0cfc673783dced"
     },
     {
       "id": "A027",
@@ -11315,7 +11597,9 @@
       "source_archive_id": "XENO-BE-ARCHIVE-RACCORDS-42",
       "path_scope": "Racine du pack V2.3 extrait",
       "new_generation": true,
-      "verification_date": "2026-11-06"
+      "verification_date": "2026-11-06",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/effets_interactions/A027_046_membrane_gonflee.png",
+      "repository_blob_sha1": "38d8c4e8dce94ff1f0b78ccefecf2af1eb8b4568"
     },
     {
       "id": "A028",
@@ -11398,7 +11682,9 @@
       "source_archive_id": "XENO-BE-ARCHIVE-RACCORDS-42",
       "path_scope": "Racine du pack V2.3 extrait",
       "new_generation": true,
-      "verification_date": "2026-11-06"
+      "verification_date": "2026-11-06",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/effets_interactions/A028_093_membrane_dechirure_initiale.png",
+      "repository_blob_sha1": "18322f494ac5770d894eab6e9ff0082f3792cafd"
     },
     {
       "id": "A029",
@@ -11481,7 +11767,9 @@
       "source_archive_id": "XENO-BE-ARCHIVE-RACCORDS-42",
       "path_scope": "Racine du pack V2.3 extrait",
       "new_generation": true,
-      "verification_date": "2026-11-06"
+      "verification_date": "2026-11-06",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/effets_interactions/A029_063_bulbe_rupture_initiale.png",
+      "repository_blob_sha1": "ae5b1b20620cb9734734b494379441b75709cd70"
     },
     {
       "id": "A030",
@@ -11561,7 +11849,9 @@
       "source_archive_id": "XENO-BE-ARCHIVE-RACCORDS-42",
       "path_scope": "Racine du pack V2.3 extrait",
       "new_generation": true,
-      "verification_date": "2026-11-06"
+      "verification_date": "2026-11-06",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/effets_interactions/A030_103_jet_naissance.png",
+      "repository_blob_sha1": "ddf83877d3f92431805d839336496b7ade7e5aab"
     },
     {
       "id": "A031",
@@ -11641,7 +11931,9 @@
       "source_archive_id": "XENO-BE-ARCHIVE-RACCORDS-42",
       "path_scope": "Racine du pack V2.3 extrait",
       "new_generation": true,
-      "verification_date": "2026-11-06"
+      "verification_date": "2026-11-06",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/effets_interactions/A031_103_jet_extinction.png",
+      "repository_blob_sha1": "4e9f5eba25e60a5771492257ed083b25ea1cb313"
     },
     {
       "id": "A032",
@@ -11726,7 +12018,9 @@
       "source_archive_id": "XENO-BE-ARCHIVE-RACCORDS-42",
       "path_scope": "Racine du pack V2.3 extrait",
       "new_generation": true,
-      "verification_date": "2026-11-06"
+      "verification_date": "2026-11-06",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/effets_interactions/A032_104_acide_premier_contact.png",
+      "repository_blob_sha1": "102a61cc7548505d7ab94cd9c57ff02555e1c7d8"
     },
     {
       "id": "A033",
@@ -11806,7 +12100,9 @@
       "source_archive_id": "XENO-BE-ARCHIVE-RACCORDS-42",
       "path_scope": "Racine du pack V2.3 extrait",
       "new_generation": true,
-      "verification_date": "2026-11-06"
+      "verification_date": "2026-11-06",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/effets_interactions/A033_070_poussiere_debut_impact.png",
+      "repository_blob_sha1": "127c070a19f57eba94da4c058a0dd8f19117fb5c"
     },
     {
       "id": "A034",
@@ -11900,7 +12196,9 @@
       "source_archive_id": "XENO-BE-ARCHIVE-RACCORDS-42",
       "path_scope": "Racine du pack V2.3 extrait",
       "new_generation": true,
-      "verification_date": "2026-11-06"
+      "verification_date": "2026-11-06",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/effets_interactions/A034_071_telegraphe_sol_fissure.png",
+      "repository_blob_sha1": "1f867603dd35ab35c582ff39e7b2d4c281091faf"
     },
     {
       "id": "A035",
@@ -11985,7 +12283,9 @@
       "source_archive_id": "XENO-BE-ARCHIVE-RACCORDS-42",
       "path_scope": "Racine du pack V2.3 extrait",
       "new_generation": true,
-      "verification_date": "2026-11-06"
+      "verification_date": "2026-11-06",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/effets_interactions/A035_068_vapeur_amorce.png",
+      "repository_blob_sha1": "16166a7700364010605b25f8b8c5b1ba24ad4d2f"
     },
     {
       "id": "A036",
@@ -12065,7 +12365,9 @@
       "source_archive_id": "XENO-BE-ARCHIVE-RACCORDS-42",
       "path_scope": "Racine du pack V2.3 extrait",
       "new_generation": true,
-      "verification_date": "2026-11-06"
+      "verification_date": "2026-11-06",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/effets_interactions/A036_067_spores_dissipation.png",
+      "repository_blob_sha1": "c3db46530f2aec1837b5ec8be91c54a8d7798913"
     },
     {
       "id": "A037",
@@ -12178,7 +12480,9 @@
       "source_archive_id": "XENO-BE-ARCHIVE-RACCORDS-42",
       "path_scope": "Racine du pack V2.3 extrait",
       "new_generation": true,
-      "verification_date": "2026-11-06"
+      "verification_date": "2026-11-06",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/tete_bulbe/A037_060_preparation_cadre_059.png",
+      "repository_blob_sha1": "032120816f6486235cac2f4f86f9b465be3b39ce"
     },
     {
       "id": "A038",
@@ -12291,7 +12595,9 @@
       "source_archive_id": "XENO-BE-ARCHIVE-RACCORDS-42",
       "path_scope": "Racine du pack V2.3 extrait",
       "new_generation": true,
-      "verification_date": "2026-11-06"
+      "verification_date": "2026-11-06",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/tete_bulbe/A038_096_souffle_actif_cadre_059.png",
+      "repository_blob_sha1": "14f9c0cf99e6c68eb9f45b9dd2acbc9f704b4b26"
     },
     {
       "id": "A039",
@@ -12398,7 +12704,9 @@
       "source_archive_id": "XENO-BE-ARCHIVE-RACCORDS-42",
       "path_scope": "Racine du pack V2.3 extrait",
       "new_generation": true,
-      "verification_date": "2026-11-06"
+      "verification_date": "2026-11-06",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/tete_bulbe/A039_061_vulnerable_cadre_059.png",
+      "repository_blob_sha1": "6dcbd5994c60f6b3d508ffd112df522f67f491e0"
     },
     {
       "id": "A040",
@@ -12505,7 +12813,9 @@
       "source_archive_id": "XENO-BE-ARCHIVE-RACCORDS-42",
       "path_scope": "Racine du pack V2.3 extrait",
       "new_generation": true,
-      "verification_date": "2026-11-06"
+      "verification_date": "2026-11-06",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/tete_bulbe/A040_097_agonie_cadre_059.png",
+      "repository_blob_sha1": "2cc85fe366affd9b74b426f17f321d03f96a9dee"
     },
     {
       "id": "A041",
@@ -12647,7 +12957,9 @@
       "source_archive_id": "XENO-BE-ARCHIVE-RACCORDS-42",
       "path_scope": "Racine du pack V2.3 extrait",
       "new_generation": true,
-      "verification_date": "2026-11-06"
+      "verification_date": "2026-11-06",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/tete_bulbe/A041_062_morte_cadre_059.png",
+      "repository_blob_sha1": "363bbdf4c4c6f8db6ff8c9053039ef927e1df188"
     },
     {
       "id": "A042",
@@ -12756,7 +13068,9 @@
       "source_archive_id": "XENO-BE-ARCHIVE-RACCORDS-42",
       "path_scope": "Racine du pack V2.3 extrait",
       "new_generation": true,
-      "verification_date": "2026-11-06"
+      "verification_date": "2026-11-06",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/tete_bulbe/A042_062_prelevee_cadre_059.png",
+      "repository_blob_sha1": "a137e867b3fdbf67e6ecf7ccabc339ef3d321920"
     }
   ],
   "composition_exports": [
@@ -13112,5 +13426,19 @@
     "filename": "RACCORDS_V23.json",
     "archive_id": "XENO-BE-ARCHIVE-RACCORDS-42",
     "count": 42
+  },
+  "repository_delivery": {
+    "repository": "darknigthmare/yautja-la-longue-chasse",
+    "pull_request": 116,
+    "branch": "claude/bible-de-campagne",
+    "asset_root": "art-source/xeno-prime/berceau-enfoui/v2.3",
+    "png_count": 156,
+    "sprite_count": 150,
+    "background_count": 6,
+    "png_total_bytes": 218567012,
+    "manifest": "DEPOT_PNG.json",
+    "files_versioned": true,
+    "source_png_bytes_unchanged": true,
+    "runtime_integrated": false
   }
 }
