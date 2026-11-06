@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict';
-import { createHash } from 'node:crypto';
+import { createHash, randomBytes } from 'node:crypto';
 import { execFileSync, spawn } from 'node:child_process';
 import fs from 'node:fs/promises';
 import { createRequire } from 'node:module';
@@ -17,15 +17,19 @@ import sharp from 'sharp';
  * The disposable Vite host imports the actual PlanetArrivalCinematic. A valid
  * paused state starts at a native shot boundary; the normal Resume button and
  * requestAnimationFrame then advance it. No fake clock, source replacement,
- * rescaled or retouched screenshot, DOM mutation, fabricated asset or mocked renderer is
- * used. Requested sample times are thresholds: the report records the actual
+ * rescaled or retouched screenshot, fabricated asset or mocked renderer is used.
+ * Four opaque QA paint markers are added in harness padding outside the arrival
+ * component. Their fresh nonce proves native X11 presentation after the before
+ * observation; no game DOM, clock or state is altered. Requested sample times
+ * are thresholds: the report records the actual
  * elapsed time and rendered anchors, including the screenshot interval.
  *
  * A final natural 62-second route uses the real production /dev page, with its
  * real HuntCanvas handoff, resize, pause, resume and Skip controls.
  *
  * npm run build:production
- * ARRIVAL_SPATIAL_START_SERVER=1 node scripts/qa-planet-arrival-spatial.mjs
+ * xvfb-run -a --server-args="-screen 0 1920x1200x24" env ARRIVAL_SPATIAL_HEADED=1
+ *   ARRIVAL_SPATIAL_START_SERVER=1 node scripts/qa-planet-arrival-spatial.mjs
  *
  * Chromium is installed by CI. Do not change the local process/socket policy
  * when an installed browser cannot launch in a restricted executor.
@@ -46,7 +50,7 @@ const sourceFiles = [
   'app/game/HunterRigPreview.tsx', 'app/game/hunterRig.ts', 'app/game/worldScreens.ts', 'app/game/shipCatalogue.ts',
   'app/game/HuntCanvas.tsx', 'app/game/systems/planetInsertion.ts', 'app/game/systems/shipInsertionEnergy.ts', 'app/game/systems/huntInsertion.ts',
   'app/dev/session.tsx', 'app/dev/destinations.ts', 'app/dev/client.tsx',
-  'scripts/qa-planet-arrival-spatial.mjs',
+  'scripts/qa-planet-arrival-spatial.mjs', 'scripts/qa-planet-arrival-x11.py',
   ...(await fs.readdir(path.join(root, 'app/game/systems')))
     .filter(file => /^planetArrival.*\.ts$/.test(file)).map(file => `app/game/systems/${file}`),
 ].sort();
@@ -64,7 +68,8 @@ const report = {
   resizes: [], ships: [], insertions: [], native: {}, errors: [], consoleErrors: [], missingAssets: [], requestedAssets: [],
 };
 const requested = new Set(), missing = new Set();
-let browser, harness, harnessDir, nativeServer, nativeExit = null, page, currentCheck = 'setup';
+let browser, harness, harnessDir, nativeServer, nativeExit = null, page, x11Client, currentCheck = 'setup';
+const x11LaunchArgs = ['--ozone-platform=x11', '--disable-gpu', '--disable-gpu-compositing', '--no-xshm'];
 
 const fixtureBundle = await build({
   stdin: {
@@ -874,39 +879,245 @@ async function capture(label, target = page, options = {}) {
   return before;
 }
 
-// Narrow native intervals must not spend their remaining time decoding images
-// or walking hundreds of computed-style ancestors before requesting the PNG.
-// Read the live clock and stage tags, capture the unchanged visible rectangle,
-// bracket that PNG with another light clock read, then measure the complete
-// geometry. PNG compression is optimized for speed but remains lossless.
-// The final trio has only 250 ms before completion. Its detail photograph uses
-// a native surface PNG of a ROI prepared before the final interval, then a
-// verified lossless integer crop containing
-// all three rigs, overflowing equipment, labels and ground supports. The source
-// PNG is retained; all cropping happens after the temporal/geometry reads.
-// A dedicated metrics session prepares the output ROI while retaining the full
-// CSS viewport. A separate capture-only session avoids screenshot-time device
-// emulation resize/restoration. Ordinary captures keep their existing clip on
-// the metrics-owning session, so they restore its complete baseline instead of
-// an unrelated empty emulation state. The capture-only session never gets a clip.
-// Neither capture mode supplies an exact
-// frame timestamp; the unchanged before/after observations remain mandatory.
-// The preceding walking image supplies full-scene
-// context; the same before/after timing gates still reject a late detail PNG.
+// Ordinary photographs keep their existing native CDP clip. The narrow final
+// trio interval uses one full-viewport XGetImage on the verified software X11
+// backend. A new opaque paint nonce is written outside the component after all
+// before reads. Its presence in the same private full image proves freshness,
+// not a pose timestamp. The unchanged after/geometry gates remain mandatory.
+// Raw transfer, hashing, PNG encoding and lossless integer cropping all follow
+// those observations. No source ROI override or padding search remains: paused
+// calibration compares every full-viewport pixel against native CDP, separately
+// for each triad/viewport, while retaining the original lower-scene target.
 const momentCaptureSessions = new WeakMap();
 const validatedCaptureProfiles = new WeakSet();
+const usedPaintNonces = new Set();
+const usedPaintPatterns = new Set();
+
+function freezeCaptureData(value) {
+  if (value && typeof value === 'object' && !Object.isFrozen(value)) {
+    for (const item of Object.values(value)) freezeCaptureData(item);
+    Object.freeze(value);
+  }
+  return value;
+}
+
+function x11PaintPattern(viewport) {
+  const nonce = randomBytes(12).toString('hex');
+  assert.ok(!usedPaintNonces.has(nonce)); usedPaintNonces.add(nonce);
+  const corners = [['tl', 0, 0], ['tr', viewport.width - 4, 0],
+    ['bl', 0, viewport.height - 8], ['br', viewport.width - 4, viewport.height - 8]];
+  const markers = corners.map(([id, x, y], index) => {
+    const signature = [[235, 17, 83], [23, 241, 67], [37, 59, 239], [251, 197, 19],
+      [31 + index * 41, 221 - index * 31, 101 + index * 23], [211, 43, 167], [71, 181, 233], [149, 227, 53]];
+    const payload = [...nonce].map(hex => {
+      const digit = Number.parseInt(hex, 16);
+      return [7 + digit * 16, 255 - digit * 13, 41 + digit * 11];
+    });
+    const rgb = [...signature, ...payload].flat();
+    const encoded = JSON.stringify(rgb);
+    assert.ok(!usedPaintPatterns.has(encoded), 'Every actual marker paint pattern must be new, not only its nonce label.');
+    usedPaintPatterns.add(encoded);
+    return { id, x, y, width: 4, height: 8, rgb };
+  });
+  return freezeCaptureData({ nonce, markers });
+}
+
+async function installX11PaintMarkers(target, pattern) {
+  return target.evaluate(({ nonce, markers }) => {
+    const root = document.querySelector('[data-arrival-run]');
+    if (!root || document.querySelectorAll('[data-arrival-run]').length !== 1) throw new Error('Paint markers require one native arrival root.');
+    if (document.visibilityState !== 'visible' || window.top !== window || root.querySelector('iframe,video,canvas,object,embed')) {
+      throw new Error('X11 proof requires the visible single document arrival without independent surfaces.');
+    }
+    const bounds = root.getBoundingClientRect();
+    for (const old of document.querySelectorAll('[data-spatial-x11-marker]')) old.remove();
+    for (const marker of markers) {
+      if (!Number.isInteger(marker.x) || !Number.isInteger(marker.y) || marker.x < 0 || marker.y < 0 ||
+          marker.x + marker.width > innerWidth || marker.y + marker.height > innerHeight ||
+          !(marker.x + marker.width <= bounds.left || marker.x >= bounds.right ||
+            marker.y + marker.height <= bounds.top || marker.y >= bounds.bottom)) {
+        throw new Error('Every opaque QA paint marker must fit entirely in native padding outside the arrival component.');
+      }
+      const element = document.createElement('div');
+      element.setAttribute('data-spatial-x11-marker', marker.id);
+      element.setAttribute('data-spatial-x11-nonce', nonce);
+      element.setAttribute('aria-hidden', 'true');
+      element.style.cssText = `all:initial;position:fixed;left:${marker.x}px;top:${marker.y}px;width:4px;height:8px;display:block;opacity:1;transform:none;filter:none;z-index:2147483647;pointer-events:none;overflow:hidden;contain:strict;`;
+      for (let pixel = 0; pixel < 32; pixel += 1) {
+        const cell = document.createElement('span');
+        cell.style.cssText = `all:initial;position:absolute;left:${pixel % 4}px;top:${Math.floor(pixel / 4)}px;width:1px;height:1px;display:block;opacity:1;transform:none;filter:none;background:rgb(${marker.rgb.slice(pixel * 3, pixel * 3 + 3).join(',')});`;
+        element.appendChild(cell);
+      }
+      document.body.appendChild(element);
+    }
+    return { nonce, visibilityState: document.visibilityState, markerCount: markers.length };
+  }, pattern);
+}
+
+function assertX11Markers(moment, pattern, viewport, label) {
+  assert.equal(moment.paintMarkers?.visibilityState, 'visible', `${label}: the native document must be visible.`);
+  assert.equal(moment.paintMarkers?.independentSurfaces, 0, `${label}: no independent surface may replace part of the arrival.`);
+  assert.equal(moment.paintMarkers?.topLevel, true);
+  assert.equal(moment.paintMarkers?.markers.length, 4);
+  for (const expected of pattern.markers) {
+    const marker = moment.paintMarkers.markers.find(item => item.id === expected.id);
+    assert.ok(marker);
+    assert.deepEqual({ x: marker.x, y: marker.y, right: marker.right, bottom: marker.bottom },
+      { x: expected.x, y: expected.y, right: expected.x + 4, bottom: expected.y + 8 });
+    assert.equal(marker.position, 'fixed'); assert.equal(marker.opacity, '1');
+    assert.equal(marker.cells, 32);
+    const bounds = moment.captureLayout.root;
+    assert.ok(marker.right <= bounds.x || marker.x >= bounds.right || marker.bottom <= bounds.y || marker.y >= bounds.bottom,
+      `${label}: QA markers must never cover component pixels.`);
+    assert.ok(marker.x >= 0 && marker.y >= 0 && marker.right <= viewport.width && marker.bottom <= viewport.height);
+  }
+}
+
+async function startX11Capture() {
+  assert.equal(headed, true, 'Native X11 evidence requires the actual headed Xvfb window.');
+  const session = await browser.newBrowserCDPSession();
+  const systemInfo = await session.send('SystemInfo.getInfo');
+  const processInfo = await session.send('SystemInfo.getProcessInfo');
+  const browserVersion = await session.send('Browser.getVersion');
+  const browserPid = processInfo.processInfo.find(item => item.type === 'browser')?.id;
+  report.nativeCapture = { backend: 'x11-xgetimage-software-no-xshm', requestedFlags: x11LaunchArgs,
+    browserVersion, systemInfo, processInfo, browserPid, browserGuards: { passed: false },
+    mutation: 'Four opaque 4x8 QA paint markers in harness padding, outside the arrival component; final nonce painted synchronously after all before reads.' };
+  assert.equal(systemInfo.gpu.featureStatus.gpu_compositing, 'disabled_software');
+  for (const flag of x11LaunchArgs) assert.ok(systemInfo.commandLine.split(/\s+/).includes(flag), `The native browser command must include ${flag}.`);
+  assert.ok(!systemInfo.commandLine.split(/\s+/).some(flag => flag.startsWith('--headless')));
+  assert.equal(browserVersion.product, 'Chrome/153.0.8010.12', 'The X11 source proof is pinned to this Chromium binary.');
+  assert.equal(browserVersion.revision, '@971a7443b0c9b0a9b2860529b33331b76077ec62');
+  assert.ok(Number.isSafeInteger(browserPid) && browserPid > 0);
+  report.nativeCapture.browserGuards.passed = true;
+  const child = spawn('python3', ['-u', path.join(root, 'scripts/qa-planet-arrival-x11.py')], {
+    cwd: root, env: process.env, stdio: ['pipe', 'pipe', 'pipe'],
+  });
+  let nextId = 0, buffer = '', stderr = '', ended = false, queue = Promise.resolve();
+  const pending = new Map();
+  const rejectPending = error => { for (const item of pending.values()) { clearTimeout(item.timer); item.reject(error); } pending.clear(); };
+  child.stdout.on('data', data => {
+    buffer += data.toString('utf8');
+    for (let index; (index = buffer.indexOf('\n')) >= 0;) {
+      const line = buffer.slice(0, index); buffer = buffer.slice(index + 1);
+      if (!line.trim()) continue;
+      try {
+        const message = JSON.parse(line), item = pending.get(message.id);
+        if (!item) throw new Error('X11 helper returned an unknown response id.');
+        pending.delete(message.id); clearTimeout(item.timer);
+        if (message.ok) item.resolve(message.result);
+        else { const error = new Error(message.error?.message ?? 'X11 helper rejected the request.'); error.x11Result = message.result; item.reject(error); }
+      } catch (error) { rejectPending(error); }
+    }
+  });
+  child.stderr.on('data', data => { stderr = (stderr + data.toString('utf8')).slice(-32_768); });
+  child.on('error', rejectPending);
+  child.on('exit', (code, signal) => {
+    ended = true; report.nativeCapture.helperExit = { code, signal };
+  });
+  // exit may precede the last stdout bytes. Only close guarantees that stdio
+  // has drained, so a successfully printed final JSON response remains valid.
+  child.on('close', (code, signal) => {
+    ended = true; rejectPending(new Error(`X11 helper closed (${code}, ${signal}). ${stderr}`));
+  });
+  const request = (op, params = {}, timeoutMs = 20_000) => {
+    const send = () => new Promise((resolve, reject) => {
+      if (ended) { reject(new Error('X11 helper is not running.')); return; }
+      const id = ++nextId;
+      const timer = setTimeout(() => { pending.delete(id); reject(new Error(`X11 ${op} response timed out.`)); }, timeoutMs);
+      pending.set(id, { resolve, reject, timer });
+      child.stdin.write(JSON.stringify({ id, op, ...params }) + '\n', error => {
+        if (error) { clearTimeout(timer); pending.delete(id); reject(error); }
+      });
+    });
+    const result = queue.then(send, send); queue = result.catch(() => {}); return result;
+  };
+  const client = { request, browserPid, close: async () => {
+    try {
+      if (!ended) {
+        report.nativeCapture.helperClose = await request('close', {}, 5000);
+        assert.deepEqual(report.nativeCapture.helperClose.unexportedTokens, [], 'Every acquired native frame must be preserved before helper shutdown.');
+        assert.deepEqual(report.nativeCapture.helperClose.recoveryFailures, [], 'Native orphan recovery must not fail.');
+        assert.deepEqual(report.nativeCapture.helperClose.recoveredOrphans, [], 'A successful recipe must explicitly account for every acquired frame before shutdown.');
+      }
+    }
+    finally { report.nativeCapture.helperStderr = stderr; if (!ended) child.kill('SIGTERM'); }
+  } };
+  x11Client = client;
+  report.nativeCapture.helperSetup = await request('setup', { outputDir: out, browserPid, timeoutMs: 10_000 });
+  assert.equal(report.nativeCapture.helperSetup.guards?.passed, true);
+  return client;
+}
+
+function assertX11CaptureAck(ack, prepared, captureId, requireFresh) {
+  assert.ok(ack?.token);
+  assert.equal(ack.captureId, captureId);
+  assert.equal(ack.calibrationId, prepared.captureProfile.x11Calibration.calibrationId);
+  assert.equal(ack.nonce, prepared.capturePaintPattern.nonce);
+  assert.equal(ack.nonceMatched, true, 'The unique full native copy must contain every expected nonce pixel.');
+  assert.equal(ack.rejected, false, 'A timeout or invalid native frame cannot become accepted evidence.');
+  assert.equal(ack.geometryGuard?.passed, true);
+  if (requireFresh) assert.equal(ack.freshSinceCalibration, true, 'A final photograph requires new paint after its before observation.');
+  assert.deepEqual(ack.origin, prepared.captureProfile.x11Calibration.origin);
+  for (const key of ['depth', 'bitsPerPixel', 'byteOrder', 'byteOrderCode', 'redMask', 'greenMask', 'blueMask', 'format']) {
+    assert.equal(ack.format[key], prepared.captureProfile.x11Calibration.format[key], `Native pixel format changed: ${key}.`);
+  }
+  assert.equal(ack.width, prepared.sourceRoi.width); assert.equal(ack.height, prepared.sourceRoi.height);
+  assert.equal(ack.format.width, ack.width); assert.equal(ack.format.height, ack.height);
+  assert.ok(ack.format.bytesPerLine >= ack.width * 4 && ack.format.bytesPerLine % 4 === 0);
+}
+
+async function exportX11Source(ack, basename, prepared, preserve = () => {}) {
+  assert.ok(ack?.token, 'Every acquired native frame needs a retained private buffer token.');
+  const exported = await x11Client.request('export', { token: ack.token, basename });
+  const files = {};
+  for (const role of ['raw', 'png', 'metadata']) {
+    const item = exported[role];
+    assert.ok(item && path.resolve(item.path).startsWith(out + path.sep));
+    files[role] = { file: path.relative(out, item.path), bytes: item.bytes, sha256: item.sha256 };
+  }
+  const sourceCapture = { ...files.png, width: prepared.sourceRoi.width, height: prepared.sourceRoi.height,
+    kind: 'native-x11-full-viewport-png', backend: 'x11-xgetimage-software-no-xshm',
+    sourceRoi: prepared.sourceRoi, roi: prepared.sourceRoi, targetRoi: prepared.targetRoi,
+    cssViewport: { width: prepared.captureProfile.viewport.width, height: prepared.captureProfile.viewport.height },
+    profileId: prepared.captureProfile.id, calibrationId: ack.calibrationId,
+    preparation: prepared.roiPreparation, captureAck: ack, raw: files.raw, metadata: files.metadata,
+    rgbaSha256: exported.rgbaSha256, nativePixelEquality: exported.pixelEquality, nativeFormat: exported.nativeFormat,
+    alphaPolicy: exported.alphaPolicy, exportTiming: exported.timings };
+  // Files have been written by the helper. Retain their identities before any
+  // subsequent hash, decode or crop assertion can reject this native source.
+  preserve(sourceCapture);
+  for (const role of ['raw', 'png', 'metadata']) {
+    const item = exported[role];
+    const bytes = await fs.readFile(item.path);
+    assert.equal(bytes.length, item.bytes); assert.equal(sha256(bytes), item.sha256);
+  }
+  const bytes = await fs.readFile(path.join(out, files.png.file));
+  const metadata = await sharp(bytes).metadata();
+  assert.equal(metadata.format, 'png');
+  assert.equal(metadata.width, prepared.sourceRoi.width);
+  assert.equal(metadata.height, prepared.sourceRoi.height);
+  const decoded = await sharp(bytes).ensureAlpha().raw().toBuffer({ resolveWithObject: true });
+  assert.equal(decoded.info.width, prepared.sourceRoi.width); assert.equal(decoded.info.height, prepared.sourceRoi.height);
+  assert.equal(decoded.info.channels, 4); assert.equal(sha256(decoded.data), exported.rgbaSha256);
+  assert.equal(exported.pixelEquality?.matched, true);
+  assert.equal(exported.pixelEquality?.rgbaBytes, decoded.data.length);
+  assert.equal(exported.pixelEquality?.rgbaSha256, exported.rgbaSha256);
+  assert.equal(exported.pixelEquality?.pngDecodedRgbaSha256, exported.rgbaSha256);
+  assert.deepEqual(exported.nativeFormat, ack.format);
+  return { bytes, sourceCapture };
+}
 async function momentSessions(target) {
   if (!momentCaptureSessions.has(target)) {
     const metricsSession = await target.context().newCDPSession(target);
     const captureSession = await target.context().newCDPSession(target);
-    momentCaptureSessions.set(target, { metricsSession, captureSession, baseline: null, activeRoi: null });
+    momentCaptureSessions.set(target, { metricsSession, captureSession, baseline: null });
   }
   return momentCaptureSessions.get(target);
 }
 
 async function syncMomentViewport(target) {
   const sessions = await momentSessions(target);
-  assert.equal(sessions.activeRoi, null, 'A prepared ROI must be restored before viewport changes or navigation.');
   const viewport = target.viewportSize();
   assert.ok(viewport?.width > 0 && viewport.height > 0);
   // Match the locked Playwright 1.63.0 non-mobile context exactly. Keep this
@@ -916,14 +1127,6 @@ async function syncMomentViewport(target) {
     mobile: false, screenOrientation: { angle: 0, type: 'landscapePrimary' }, dontSetVisibleSize: false };
   await sessions.metricsSession.send('Emulation.setDeviceMetricsOverride', sessions.baseline);
   return sessions;
-}
-
-async function restoreMomentViewport(prepared) {
-  if (!prepared?.sessions?.activeRoi) return;
-  // Omit viewport to restore the complete baseline; never clear another
-  // session's effective metrics. This runs after the capture observations.
-  await prepared.sessions.metricsSession.send('Emulation.setDeviceMetricsOverride', prepared.sessions.baseline);
-  prepared.sessions.activeRoi = null;
 }
 
 function captureLayout(moment) {
@@ -950,8 +1153,8 @@ function assertCaptureLayout(moment, expected, viewport, label) {
   assert.equal(moment.captureViewport.visualViewport.pageTop, 0);
 }
 
-async function readMoment(target, region, schedule) {
-  return target.evaluate(({ region, schedule }) => {
+async function readMoment(target, region, schedule, paint) {
+  return target.evaluate(({ region, schedule, paint }) => {
     const evaluationStartedAtMs = performance.now();
     const threshold = schedule?.atMs;
     const roots = document.querySelectorAll('[data-arrival-run]');
@@ -1030,8 +1233,33 @@ async function readMoment(target, region, schedule) {
           focus: { document: document.hasFocus(), tag: document.activeElement?.tagName,
             id: document.activeElement?.id, ariaLabel: document.activeElement?.getAttribute('aria-label'),
             text: document.activeElement?.textContent.trim(), withinArrival: root.contains(document.activeElement) },
+          paintMarkers: { visibilityState: document.visibilityState, topLevel: window.top === window,
+            independentSurfaces: root.querySelectorAll('iframe,video,canvas,object,embed').length,
+            markers: [...document.querySelectorAll('[data-spatial-x11-marker]')].map(element => ({
+              id: element.getAttribute('data-spatial-x11-marker'), nonce: element.getAttribute('data-spatial-x11-nonce'),
+              ...rect(element), position: getComputedStyle(element).position, opacity: getComputedStyle(element).opacity,
+              cells: element.children.length,
+            })) },
         } : {}),
       };
+      // All native before reads are complete. Mutate real opaque paint in the
+      // same document synchronously, never a compositor-only transform. The
+      // helper must find this exact fresh pattern in its one full private copy.
+      if (paint) {
+        if (region !== 'formation-detail' || document.visibilityState !== 'visible' || window.top !== window ||
+            root.querySelector('iframe,video,canvas,object,embed')) throw new Error('Fresh native paint requires the visible single arrival document.');
+        for (const marker of paint.markers) {
+          const element = document.querySelector(`[data-spatial-x11-marker="${marker.id}"]`);
+          if (!element || element.children.length !== 32 || element.getAttribute('data-spatial-x11-nonce') === paint.nonce) {
+            throw new Error('The final paint marker is missing or its nonce was already used.');
+          }
+          for (let pixel = 0; pixel < 32; pixel += 1) {
+            element.children[pixel].style.backgroundColor = `rgb(${marker.rgb.slice(pixel * 3, pixel * 3 + 3).join(',')})`;
+          }
+          element.setAttribute('data-spatial-x11-nonce', paint.nonce);
+        }
+        moment.markerPaint = { nonce: paint.nonce, count: paint.markers.length, paintedAtMs: performance.now() };
+      }
       const finishedAtMs = performance.now();
       moment.observationTiming = { clock: 'browser performance.now()', evaluationStartedAtMs, readStartedAtMs,
         finishedAtMs, scheduledWaitMs: readStartedAtMs - evaluationStartedAtMs,
@@ -1064,7 +1292,7 @@ async function readMoment(target, region, schedule) {
         attributeFilter: ['data-arrival-elapsed-exact', 'data-arrival-elapsed', 'data-arrival-status', 'data-arrival-hunter-stage', 'data-arrival-hunter-contact'] });
       inspect();
     });
-  }, { region, schedule });
+  }, { region, schedule, paint });
 }
 
 async function losslessNativeDetailCrop(sourceBytes, clip, viewport) {
@@ -1104,8 +1332,7 @@ async function losslessNativeDetailCrop(sourceBytes, clip, viewport) {
 }
 
 async function captureMoment(label, prepared, target = page, attempt = 1, validateFrame, schedule) {
-  try { return await capturePreparedMoment(label, prepared, target, attempt, validateFrame, schedule); }
-  finally { await restoreMomentViewport(prepared); }
+  return capturePreparedMoment(label, prepared, target, attempt, validateFrame, schedule);
 }
 
 async function capturePreparedMoment(label, prepared, target = page, attempt = 1, validateFrame, schedule) {
@@ -1135,31 +1362,25 @@ async function capturePreparedMoment(label, prepared, target = page, attempt = 1
       browserBefore: acquisition.before?.observationTiming ?? null, browserAfter: acquisition.after?.observationTiming ?? null,
       browserGeometry: acquisition.geometryObservationTiming ?? null, rejection: acquisition.rejection ?? null }));
   };
-  const preserveNativeSource = async (file, bytes) => {
-    startStage('nativeSourceWrite');
-    try { await fs.writeFile(path.join(out, file), bytes); }
-    finally { finishStage('nativeSourceWrite'); }
-    // Publish the retained source before decoding/cropping: any later failure
-    // must still leave the exact native bytes and their identity in the report.
-    acquisition.sourceCapture = { file, sha256: sha256(bytes), bytes: bytes.length,
-      kind: 'native-prepared-roi-png', backend: 'native-surface-with-preconfigured-roi', fromSurface: true,
-      roi: prepared.sourceRoi, sourceRoi: prepared.sourceRoi, targetRoi: prepared.targetRoi, cssViewport: target.viewportSize(),
-      profileId: prepared.captureProfile.id,
-      preparation: prepared.roiPreparation,
-      width: null, height: null };
-    startStage('nativeSourceMetadata');
+  const preserveNativeSource = async file => {
+    startStage('nativeRawExportAndPng');
+    acquisition.nativeExport = { basename: file.replace(/\.png$/, ''), token: acquisition.captureAck?.token, status: 'requested' };
     try {
-      const metadata = await sharp(bytes).metadata();
-      assert.equal(metadata.format, 'png');
-      acquisition.sourceCapture.width = metadata.width; acquisition.sourceCapture.height = metadata.height;
-      assert.equal(metadata.width, prepared.sourceRoi.width);
-      assert.equal(metadata.height, prepared.sourceRoi.height);
-    } finally { finishStage('nativeSourceMetadata'); }
+      const result = await exportX11Source(acquisition.captureAck, acquisition.nativeExport.basename, prepared,
+        source => { acquisition.sourceCapture = source; });
+      acquisition.nativeExport.status = 'verified';
+      return result.bytes;
+    } catch (error) {
+      acquisition.nativeExport.status = 'failed'; acquisition.nativeExport.error = error.message;
+      if (error.x11Result) acquisition.nativeExport.partial = error.x11Result;
+      throw error;
+    } finally { finishStage('nativeRawExportAndPng'); }
   };
   report.captureAttempts.push(acquisition);
   startStage('beforeObservationRpc');
   let before;
-  try { before = await readMoment(target, prepared.region, schedule); }
+  try { before = await readMoment(target, prepared.region, schedule,
+    prepared.region === 'formation-detail' ? prepared.capturePaintPattern : undefined); }
   finally { finishStage('beforeObservationRpc'); }
   acquisition.before = before;
   startStage('validationAndClip');
@@ -1171,6 +1392,9 @@ async function capturePreparedMoment(label, prepared, target = page, attempt = 1
   if (prepared.region === 'formation-detail') {
     assertCaptureLayout(before, prepared.layout, target.viewportSize(), label);
     assertCaptureProfile(before, prepared.captureProfile, target.viewportSize(), label);
+    assertX11Markers(before, prepared.capturePaintPattern, target.viewportSize(), label);
+    assert.equal(before.markerPaint?.nonce, prepared.capturePaintPattern.nonce);
+    assert.equal(before.markerPaint?.count, 4);
     assert.equal(prepared.captureProfile.kind, 'validated', `${label}: final photographs cannot search or select source profiles.`);
     assert.strictEqual(prepared.targetRoi, prepared.captureProfile.targetRoi);
     assert.strictEqual(prepared.sourceRoi, prepared.captureProfile.sourceRoi);
@@ -1213,23 +1437,38 @@ async function capturePreparedMoment(label, prepared, target = page, attempt = 1
       sourceClip.x + width <= prepared.sourceRoi.width && sourceClip.y + height <= prepared.sourceRoi.height,
     `${label}: every final layer and the existing detail margin must fit the ROI prepared before the interval.`);
   }
-  acquisition.captureMode = preparedRoiSource ? 'native-preconfigured-roi-then-lossless-detail' : 'native-clipped-png';
-  acquisition.captureSessionRole = preparedRoiSource ? 'capture-only-session' : 'metrics-baseline-owner';
+  acquisition.captureMode = preparedRoiSource ? 'native-x11-full-viewport-raw-then-lossless-detail' : 'native-clipped-png';
+  acquisition.captureSessionRole = preparedRoiSource ? 'persistent-x11-helper' : 'metrics-baseline-owner';
   if (preparedRoiSource) acquisition.profileId = prepared.captureProfile.id;
-  acquisition.fromSurface = true;
+  acquisition.fromSurface = preparedRoiSource ? null : true;
   acquisition.clip = clip;
   if (preparedRoiSource) acquisition.sourceClip = sourceClip;
   finishStage('validationAndClip');
-  // This span includes dispatch, native acquisition/encoding and return. It
-  // must not be described as an isolated PNG-encoding or transport duration.
-  startStage('screenshotRpc');
-  let screenshot;
+  // X11 returns only an acquisition ACK; no full pixels, PNG or hash cross the
+  // pipe until after clock and geometry observations. Ordinary CDP retains its
+  // previous acquisition/encode/transport span and unchanged clip.
+  const captureStage = preparedRoiSource ? 'nativeX11CaptureRpc' : 'screenshotRpc';
+  startStage(captureStage);
+  let screenshot, captureError;
   try {
-    screenshot = await prepared.captureSession.send('Page.captureScreenshot', {
-      format: 'png', ...(preparedRoiSource ? {} : { clip }), fromSurface: acquisition.fromSurface,
-      captureBeyondViewport: false, optimizeForSpeed: true,
-    });
-  } finally { finishStage('screenshotRpc'); }
+    if (preparedRoiSource) {
+      acquisition.captureId = `${label}:attempt-${attempt}:${prepared.capturePaintPattern.nonce}`;
+      try {
+        acquisition.captureAck = await x11Client.request('capture', {
+          calibrationId: prepared.captureProfile.x11Calibration.calibrationId,
+          captureId: acquisition.captureId, ...prepared.capturePaintPattern, timeoutMs: 500,
+        });
+      } catch (error) {
+        if (!error.x11Result?.token) throw error;
+        acquisition.captureAck = error.x11Result; captureError = error;
+      }
+    } else {
+      screenshot = await prepared.captureSession.send('Page.captureScreenshot', {
+        format: 'png', clip, fromSurface: acquisition.fromSurface,
+        captureBeyondViewport: false, optimizeForSpeed: true,
+      });
+    }
+  } finally { finishStage(captureStage); }
   let after, measured;
   try {
     startStage('afterObservationRpc');
@@ -1247,10 +1486,12 @@ async function capturePreparedMoment(label, prepared, target = page, attempt = 1
     const lateCompletion = prepared.region === 'formation-detail' && after.status === 'complete' && after.elapsedMs === 62_000;
     const photographLabel = label + (lateCompletion ? `-rejected-attempt-${attempt}` : '');
     const file = photographLabel + '.png';
-    let bytes = Buffer.from(screenshot.data, 'base64');
+    let bytes = preparedRoiSource ? null : Buffer.from(screenshot.data, 'base64');
     finishStage('pngMaterialization');
     if (preparedRoiSource) {
-      await preserveNativeSource(`${photographLabel}-source-native.png`, bytes);
+      bytes = await preserveNativeSource(`${photographLabel}-source-native.png`);
+      if (captureError) throw captureError;
+      assertX11CaptureAck(acquisition.captureAck, prepared, acquisition.captureId, true);
       startStage('losslessDetailPostprocessing');
       try {
         const cropped = await losslessNativeDetailCrop(bytes, sourceClip, prepared.sourceRoi);
@@ -1260,7 +1501,7 @@ async function capturePreparedMoment(label, prepared, target = page, attempt = 1
       } finally { finishStage('losslessDetailPostprocessing'); }
     }
     // Both photograph times and exact geometry are already observed. Save the
-    // native scene or verified derivative before assertions. The native source ROI
+    // native scene or verified derivative before assertions. The native full source
     // for a detail was saved first and survives every crop/assert failure.
     startStage('pngWrite');
     try { await fs.writeFile(path.join(out, file), bytes); }
@@ -1278,7 +1519,10 @@ async function capturePreparedMoment(label, prepared, target = page, attempt = 1
     assert.equal(measured.contact, after.contact, `${label}: subsequent geometry must retain the photographed ground-contact phase.`);
     assert.ok(measured.elapsedMs >= after.elapsedMs, `${label}: subsequent geometry must not rewind the native clock.`);
     if (prepared.region === 'formation-detail') {
-      if (!lateCompletion) assertCaptureLayout(after, prepared.layout, target.viewportSize(), label);
+      if (!lateCompletion) {
+        assertCaptureLayout(after, prepared.layout, target.viewportSize(), label);
+        assertX11Markers(after, prepared.capturePaintPattern, target.viewportSize(), label);
+      }
       const identityAndPose = members => members.map(({ id, stage, contact, portal, opacity }) => ({ id, stage, contact, portal, opacity }));
       assert.deepEqual(identityAndPose(after.members), identityAndPose(before.members),
         `${label}: the entire native detail capture must retain the same visible standing trio.`);
@@ -1296,12 +1540,14 @@ async function capturePreparedMoment(label, prepared, target = page, attempt = 1
       region: prepared.region, clip, ...(contextFile ? { contextFile } : {}),
       ...(preparedRoiSource ? { evidenceKind: 'verified-lossless-integer-rgba-crop', sourceCapture: acquisition.sourceCapture, sourceClip,
         pixelEquality: acquisition.pixelEquality } : { evidenceKind: 'native-clipped-png' }),
-      attempt, accepted: !lateCompletion, ...(lateCompletion ? { rejection: 'Native completion during PNG acquisition; no visual proof accepted.' } : {}),
+      attempt, accepted: !lateCompletion, ...(lateCompletion ? { rejection: 'Arrival completed during native acquisition; no visual proof accepted.' } : {}),
       elapsedBefore: before.elapsedMs, elapsedAfter: after.elapsedMs, measuredAt: measured.elapsedMs,
-      observation: 'Live clock immediately before and after lossless PNG capture; native playing status, shot and optical phase must survive both observations. Complete geometry measured afterwards.' });
+      observation: preparedRoiSource
+        ? 'Live before reads, synchronous fresh paint outside the component, one full native X11 private copy, live after and complete geometry; raw export, PNG and lossless crop only afterwards. The native interval remains mandatory.'
+        : 'Live clock immediately before and after lossless PNG capture; native playing status, shot and optical phase must survive both observations. Complete geometry measured afterwards.' });
     report.samples.push({ label: photographLabel, ...measured, photoAccepted: !lateCompletion, capturedBefore: before, capturedAfter: after });
     acquisition.accepted = !lateCompletion; acquisition.file = file;
-    if (lateCompletion) acquisition.rejection = 'Native completion during PNG acquisition; no visual proof accepted.';
+    if (lateCompletion) acquisition.rejection = 'Arrival completed during native acquisition; no visual proof accepted.';
     finishStage('assertionsAndReport'); finishAcquisition();
     return lateCompletion ? null : { frame: measured, capturedBefore: before, file, attempt };
   } catch (error) {
@@ -1310,14 +1556,14 @@ async function capturePreparedMoment(label, prepared, target = page, attempt = 1
     acquisition.accepted = false; acquisition.rejection = error.message;
     if (measured) acquisition.failedMeasurement = measured;
     // readMoment/readFrame can themselves reject before the regular write.
-    // This still preserves the PNG already acquired, without another capture.
+    // Preserve the existing private X11 buffer or CDP PNG, without another capture.
     if (!acquisition.file) {
       startStage('failedPngPreservation');
       try {
-        const bytes = Buffer.from(screenshot.data, 'base64');
         if (preparedRoiSource) {
-          if (!acquisition.sourceCapture) await preserveNativeSource(`${label}-failed-attempt-${attempt}-source-native.png`, bytes);
+          if (!acquisition.sourceCapture) await preserveNativeSource(`${label}-failed-attempt-${attempt}-source-native.png`);
         } else {
+          const bytes = Buffer.from(screenshot.data, 'base64');
           const file = `${label}-failed-attempt-${attempt}.png`;
           await fs.writeFile(path.join(out, file), bytes);
           acquisition.file = file; acquisition.sha256 = sha256(bytes);
@@ -1328,7 +1574,7 @@ async function capturePreparedMoment(label, prepared, target = page, attempt = 1
     report.rejectedCaptures.push({ file: acquisition.file ?? acquisition.sourceCapture?.file ?? null,
       sha256: acquisition.sha256 ?? acquisition.sourceCapture?.sha256 ?? null,
       viewport: target.viewportSize(), shot: before.shot, region: prepared.region, clip,
-      ...(preparedRoiSource ? { evidenceKind: acquisition.file ? 'verified-lossless-integer-rgba-crop' : 'native-prepared-roi-source',
+      ...(preparedRoiSource ? { evidenceKind: acquisition.file ? 'verified-lossless-integer-rgba-crop' : 'native-x11-full-viewport-source',
         sourceCapture: acquisition.sourceCapture ?? null, sourceClip, pixelEquality: acquisition.pixelEquality ?? null } : { evidenceKind: 'native-clipped-png' }),
       attempt, accepted: false, rejection: error.message,
       elapsedBefore: before.elapsedMs, elapsedAfter: after?.elapsedMs ?? null,
@@ -1350,22 +1596,10 @@ function momentTargetRoi(scene) {
 }
 
 function roiCandidates(scene, viewport) {
-  const targetRoi = momentTargetRoi(scene), edgeAlignment = 64;
-  const targetBottom = targetRoi.y + targetRoi.height;
-  const unique = new Map();
-  for (const contextPadding of [32, 64, 128, 192]) {
-    const sourceTop = Math.max(0, Math.floor((targetRoi.y - contextPadding) / edgeAlignment) * edgeAlignment);
-    const sourceBottom = viewport.height - Math.max(0,
-      Math.floor((viewport.height - targetBottom - contextPadding) / edgeAlignment)) * edgeAlignment;
-    const sourceRoi = Object.freeze({ x: 0, y: sourceTop, width: viewport.width,
-      height: sourceBottom - sourceTop, scale: 1 });
-    const key = JSON.stringify(sourceRoi);
-    if (unique.has(key)) unique.get(key).paddingAliases.push(contextPadding);
-    else unique.set(key, { sourceRoi, targetRoi, contextPadding, edgeAlignment, paddingAliases: [contextPadding] });
-  }
-  return Object.freeze([...unique.values()]
-    .sort((a, b) => a.sourceRoi.width * a.sourceRoi.height - b.sourceRoi.width * b.sourceRoi.height)
-    .map(candidate => Object.freeze({ ...candidate, paddingAliases: Object.freeze(candidate.paddingAliases) })));
+  // A full native viewport preserves all filter context. There is no geometry
+  // search or smaller-source fallback; the historical target stays unchanged.
+  return Object.freeze([Object.freeze({ targetRoi: momentTargetRoi(scene),
+    sourceRoi: Object.freeze({ x: 0, y: 0, width: viewport.width, height: viewport.height, scale: 1 }) })]);
 }
 
 function variantCaptureIdentity(variant) {
@@ -1390,6 +1624,13 @@ function assertCaptureProfile(moment, profile, viewport, label) {
       shipId: profile.variant.shipId }, `${label}: actual insertion intent and selected hull must match the calibrated variant.`);
   assert.deepEqual(momentTargetRoi(moment.captureLayout.scene), profile.targetRoi,
     `${label}: a capture profile cannot be reused for a different original target rectangle.`);
+  assert.deepEqual(profile.sourceRoi, { x: 0, y: 0, width: viewport.width, height: viewport.height, scale: 1 });
+  assert.ok(Object.isFrozen(profile.x11Calibration) && Object.isFrozen(profile.calibrationPattern));
+  assert.equal(profile.x11Calibration.guards?.passed, true);
+  assert.ok(typeof profile.x11Calibration.calibrationId === 'string' && profile.x11Calibration.calibrationId.length > 0);
+  assert.deepEqual(profile.x11Calibration.viewport, { width: viewport.width, height: viewport.height });
+  assert.deepEqual(profile.x11Calibration.markers, profile.calibrationPattern.markers);
+  assert.equal(profile.x11Calibration.nonce, profile.calibrationPattern.nonce);
   if (profile.kind === 'candidate') {
     assert.equal(moment.status, 'paused', `${label}: an unqualified source can only be examined under the native Pause control.`);
   } else {
@@ -1397,6 +1638,8 @@ function assertCaptureProfile(moment, profile, viewport, label) {
     assert.ok(validatedCaptureProfiles.has(profile), `${label}: playback requires the exact profile selected by its native calibration.`);
     assert.equal(profile.pixelEquality?.roiMatched, true);
     assert.equal(profile.pixelEquality?.restoredMatched, true);
+    assert.equal(profile.pixelEquality?.fullMatched, true);
+    assert.equal(profile.pixelEquality?.markerTargetMatched, true);
   }
 }
 
@@ -1409,11 +1652,7 @@ async function prepareMoment(target = page, region = 'scene', captureAtMs, captu
   assert.ok(sessions.baseline, 'The metrics session must have the current full CSS viewport baseline.');
   const prepared = { decodedSvg, scene, region, sessions, captureProfile,
     captureSession: region === 'formation-detail' ? sessions.captureSession : sessions.metricsSession };
-  if (region !== 'formation-detail') {
-    assert.equal(sessions.activeRoi, null, 'Ordinary clipped captures require the complete metrics baseline.');
-    return prepared;
-  }
-  assert.equal(sessions.activeRoi, null);
+  if (region !== 'formation-detail') return prepared;
   const before = await readMoment(target, region);
   if (before.status === 'playing') assert.ok(Number.isFinite(captureAtMs) && before.elapsedMs < captureAtMs,
     'A native output ROI must be configured before the final capture interval starts.');
@@ -1425,7 +1664,6 @@ async function prepareMoment(target = page, region = 'scene', captureAtMs, captu
   // Selection only occurs in the paused preflight. Playback reuses the exact
   // validated source rectangle, never a recalculated padding or a new candidate.
   const viewport = target.viewportSize();
-  const { contextPadding, edgeAlignment } = captureProfile;
   prepared.sourceRoi = captureProfile.sourceRoi;
   const sourceTop = prepared.sourceRoi.y;
   const targetBottom = prepared.targetRoi.y + prepared.targetRoi.height;
@@ -1435,41 +1673,35 @@ async function prepareMoment(target = page, region = 'scene', captureAtMs, captu
   assert.ok(prepared.targetRoi.x >= prepared.sourceRoi.x && prepared.targetRoi.y >= prepared.sourceRoi.y &&
     prepared.targetRoi.x + prepared.targetRoi.width <= prepared.sourceRoi.x + prepared.sourceRoi.width &&
     targetBottom <= sourceBottom, 'The native source must preserve every pixel of the original calibration target.');
-  assert.equal(sourceTop % edgeAlignment, 0);
-  assert.equal((viewport.height - sourceBottom) % edgeAlignment, 0);
   prepared.roiPreparation = { elapsedBefore: before.elapsedMs, sourceRoi: prepared.sourceRoi,
-    targetRoi: prepared.targetRoi, contextPadding, edgeAlignment,
+    targetRoi: prepared.targetRoi,
     profileId: captureProfile.id, profileKind: captureProfile.kind,
-    viewport: captureProfile.viewport, variant: captureProfile.variant, paddingAliases: captureProfile.paddingAliases,
-    contextPurpose: 'Filter-context and edge-phase hypothesis; all original target pixels require exact native preflight equality.',
+    viewport: captureProfile.viewport, variant: captureProfile.variant,
+    calibrationId: captureProfile.x11Calibration.calibrationId,
+    contextPurpose: 'Full native X11 viewport, no source override; every full pixel and original target pixel must match native CDP under Pause.',
     cssViewport: viewport, layout: prepared.layout };
   const startedAtMs = performance.now();
-  // Mark before sending: even a failed command may have changed the target.
-  sessions.activeRoi = prepared.sourceRoi;
-  try {
-    await sessions.metricsSession.send('Emulation.setDeviceMetricsOverride', { ...sessions.baseline, viewport: prepared.sourceRoi });
-    const after = await readMoment(target, region);
-    assertCaptureLayout(after, prepared.layout, target.viewportSize(), 'ROI configuration');
-    assertCaptureProfile(after, captureProfile, target.viewportSize(), 'ROI configuration');
-    assert.equal(after.run, before.run); assert.equal(after.shot, before.shot);
-    assert.equal(after.status, before.status, 'Preparing the output ROI must preserve the native playback status.');
-    assert.ok(after.elapsedMs >= before.elapsedMs, 'Preparing the output ROI must not rewind the native clock.');
-    if (after.status === 'playing') assert.ok(after.elapsedMs < captureAtMs,
-      'The native output ROI must finish configuration before the unchanged final capture interval.');
-    prepared.roiPreparation.elapsedAfter = after.elapsedMs;
-    prepared.roiPreparation.durationMs = performance.now() - startedAtMs;
-    return prepared;
-  } catch (error) {
-    await restoreMomentViewport(prepared);
-    throw error;
-  }
+  await installX11PaintMarkers(target, captureProfile.calibrationPattern);
+  prepared.capturePaintPattern = captureProfile.kind === 'validated' ? x11PaintPattern(viewport) : captureProfile.calibrationPattern;
+  const after = await readMoment(target, region);
+  assertCaptureLayout(after, prepared.layout, target.viewportSize(), 'ROI configuration');
+  assertCaptureProfile(after, captureProfile, target.viewportSize(), 'ROI configuration');
+  assertX11Markers(after, captureProfile.calibrationPattern, viewport, 'Full viewport preparation');
+  assert.equal(after.run, before.run); assert.equal(after.shot, before.shot);
+  assert.equal(after.status, before.status, 'Preparing the output ROI must preserve the native playback status.');
+  assert.ok(after.elapsedMs >= before.elapsedMs, 'Preparing the output ROI must not rewind the native clock.');
+  if (after.status === 'playing') assert.ok(after.elapsedMs < captureAtMs,
+    'The native output ROI must finish configuration before the unchanged final capture interval.');
+  prepared.roiPreparation.elapsedAfter = after.elapsedMs;
+  prepared.roiPreparation.durationMs = performance.now() - startedAtMs;
+  return prepared;
 }
 
 async function preflightMomentRoi(viewport, variant, target = page) {
   const calibration = { viewport: viewport.id, kind: 'paused-capture-calibration-only', passed: false,
     variant: variantCaptureIdentity(variant),
-    scope: 'Native Pause for this exact insertion variant. Unique sources are examined by increasing area; every original target pixel and each restored full image must match exactly. Never final-formation visual evidence.',
-    candidatePolicy: { padding: [32, 64, 128, 192], edgeAlignment: 64, selection: 'smallest-area-exact-target-and-full-restoration' },
+    scope: 'Native Pause for this exact insertion variant. One full-viewport X11 source must match every native CDP pixel; markers must preserve every original target pixel and the complete final CDP image must remain identical. Never final-formation visual evidence.',
+    candidatePolicy: { sources: ['full-viewport'], selection: 'single-full-viewport-exact-cdp-x11-and-full-restoration' },
     images: [], observations: [], candidates: [] };
   report.capturePreflights.push(calibration);
   let activeCandidate = null;
@@ -1521,10 +1753,23 @@ async function preflightMomentRoi(viewport, variant, target = page) {
     await target.waitForFunction(() => document.activeElement?.matches('button') &&
       document.activeElement.closest('[data-arrival-status="paused"]') &&
       document.activeElement.textContent.trim() === 'Reprendre l’arrivée', null, { polling: 'raf' });
+    const sessions = await momentSessions(target);
+    const unmarkedBefore = await observe('unmarked-before');
+    assert.equal(unmarkedBefore.status, 'paused');
+    assert.equal(unmarkedBefore.paintMarkers.markers.length, 0, 'The unmarked reference must precede all QA paint markers.');
+    const expected = pausedState(unmarkedBefore);
+    const unmarked = await source('unmarked', sessions.captureSession, target.viewportSize());
+    assert.deepEqual(pausedState(await observe('unmarked-after')), expected);
+    const calibrationPattern = x11PaintPattern(target.viewportSize());
+    await installX11PaintMarkers(target, calibrationPattern);
+    const x11Calibration = freezeCaptureData(await x11Client.request('calibrate', {
+      viewport: target.viewportSize(), browserPid: x11Client.browserPid, ...calibrationPattern,
+    }));
+    assert.equal(x11Calibration.guards?.passed, true);
     const before = await observe('normal-before');
     assert.equal(before.status, 'paused');
-    const expected = pausedState(before);
-    const sessions = await momentSessions(target);
+    assert.deepEqual(pausedState(before), expected, 'Adding paint outside the component must preserve native paused geometry, focus and clock.');
+    assertX11Markers(before, calibrationPattern, target.viewportSize(), 'Paused full viewport calibration');
     const normal = await source('normal', sessions.captureSession, target.viewportSize());
     const normalFile = calibration.images.at(-1);
     assert.deepEqual(pausedState(await observe('normal-after')), expected);
@@ -1532,24 +1777,46 @@ async function preflightMomentRoi(viewport, variant, target = page) {
     calibration.uniqueCandidateCount = candidates.length;
     for (const [index, configuration] of candidates.entries()) {
       const candidate = Object.freeze({ ...configuration,
-        id: `${viewport.id}:${variant.id}:source-${configuration.sourceRoi.y}-${configuration.sourceRoi.height}`,
+        id: `${viewport.id}:${variant.id}:x11-full-viewport`,
         kind: 'candidate', candidateIndex: index + 1,
         viewport: Object.freeze({ id: viewport.id, width: viewport.width, height: viewport.height, dpr: 1 }),
-        variant: calibration.variant });
+        variant: calibration.variant, x11Calibration, calibrationPattern });
       activeCandidate = { id: candidate.id, index: candidate.candidateIndex, sourceRoi: candidate.sourceRoi,
-        targetRoi: candidate.targetRoi, paddingAliases: candidate.paddingAliases,
+        targetRoi: candidate.targetRoi, x11Calibration,
         accepted: false, images: [], observations: [] };
       calibration.candidates.push(activeCandidate);
       let roi;
       prepared = undefined;
-      try {
+      {
         prepared = await prepareMoment(target, 'formation-detail', undefined, candidate);
         activeCandidate.roiPreparation = prepared.roiPreparation;
         assert.deepEqual(pausedState(await observe('roi-before')), expected,
         'Preparing the native output ROI must preserve paused clock, focus, viewport and every observed native box.');
-        roi = await source('roi', sessions.captureSession, prepared.sourceRoi);
+        const prefix = variant.id === 'pod-triad' ? `${viewport.id}-roi-calibration` : `${viewport.id}-${variant.id}-roi-calibration`;
+        activeCandidate.exportBasename = `${prefix}-candidate-${candidate.candidateIndex}-roi`;
+        let captureError;
+        try {
+          activeCandidate.captureAck = await x11Client.request('capture', {
+            calibrationId: x11Calibration.calibrationId, captureId: `${candidate.id}:calibration`,
+            ...calibrationPattern, timeoutMs: 500,
+          });
+        } catch (error) {
+          if (!error.x11Result?.token) throw error;
+          activeCandidate.captureAck = error.x11Result; captureError = error;
+        }
         assert.deepEqual(pausedState(await observe('roi-after')), expected);
-      } finally { await restoreMomentViewport(prepared); }
+        activeCandidate.geometry = { ...await readFrame(target), decodedSvg: prepared.decodedSvg };
+        const exported = await exportX11Source(activeCandidate.captureAck, activeCandidate.exportBasename, prepared,
+          value => { activeCandidate.sourceCapture = value; });
+        roi = exported.bytes; activeCandidate.sourceCapture = exported.sourceCapture;
+        const item = { file: exported.sourceCapture.file, sha256: exported.sourceCapture.sha256,
+          bytes: exported.sourceCapture.bytes, width: prepared.sourceRoi.width, height: prepared.sourceRoi.height,
+          evidenceKind: 'calibration-only-native-x11-png', role: 'roi', candidateIndex: candidate.candidateIndex };
+        calibration.images.push(item); activeCandidate.images.push(item);
+        if (captureError) throw captureError;
+        assertX11CaptureAck(activeCandidate.captureAck, prepared, `${candidate.id}:calibration`, false);
+        assertSpatial(activeCandidate.geometry, `${candidate.id}:calibration`);
+      }
       assert.deepEqual(pausedState(await observe('restored-before')), expected,
       'Restoring the complete viewport must preserve the same paused native observation.');
       const restored = await source('restored', sessions.captureSession, target.viewportSize());
@@ -1563,21 +1830,22 @@ async function preflightMomentRoi(viewport, variant, target = page) {
       const roiPixels = await sharp(actualRoi.bytes).ensureAlpha().raw().toBuffer();
       const normalPixels = await sharp(normal).ensureAlpha().raw().toBuffer();
       const restoredPixels = await sharp(restored).ensureAlpha().raw().toBuffer();
-      // Full restoration is fatal for every candidate, including a source whose
-      // target pixels differ. Only that one comparison may advance the search.
+      const x11Pixels = await sharp(roi).ensureAlpha().raw().toBuffer();
+      const unmarkedTarget = await losslessNativeDetailCrop(unmarked, prepared.targetRoi, target.viewportSize());
+      const unmarkedPixels = await sharp(unmarkedTarget.bytes).ensureAlpha().raw().toBuffer();
+      for (let alpha = 3; alpha < normalPixels.length; alpha += 4) assert.equal(normalPixels[alpha], 255,
+        'Depth-24 X11 can only qualify against a completely opaque native CDP reference.');
+      assert.ok(unmarkedPixels.equals(expectedPixels), 'QA paint outside the component must preserve every original target RGBA pixel.');
+      assert.ok(x11Pixels.equals(normalPixels), 'The complete native X11 viewport must equal every native CDP RGBA pixel, without a mask or tolerance.');
+      // The sole full-viewport candidate has no fallback. Restoration, target,
+      // and complete CDP-to-X11 equality are all fatal requirements.
       assert.ok(restoredPixels.equals(normalPixels), 'The restored complete native image must retain every original RGBA pixel, without tolerance.');
       const targetPixelsEqual = roiPixels.equals(expectedPixels);
       activeCandidate.pixelEquality = Object.freeze({ roiMatched: targetPixelsEqual, roiBytes: roiPixels.length,
         expectedRoiRgbaSha256: sha256(expectedPixels), actualRoiRgbaSha256: sha256(roiPixels),
-        restoredMatched: true, fullBytes: normalPixels.length,
-        normalRgbaSha256: sha256(normalPixels), restoredRgbaSha256: sha256(restoredPixels) });
-      if (!targetPixelsEqual) {
-        activeCandidate.rejection = 'target-pixels-differ';
-        console.log('QA_ROI_PROFILE ' + JSON.stringify({ viewport: viewport.id, variant: variant.id,
-          profileId: candidate.id, accepted: false, rejection: activeCandidate.rejection,
-          sourceRoi: candidate.sourceRoi, targetRoi: candidate.targetRoi, pixelEquality: activeCandidate.pixelEquality }));
-        continue;
-      }
+        restoredMatched: true, fullMatched: true, markerTargetMatched: true, fullBytes: normalPixels.length,
+        unmarkedTargetRgbaSha256: sha256(unmarkedPixels), markedTargetRgbaSha256: sha256(expectedPixels),
+        normalRgbaSha256: sha256(normalPixels), x11RgbaSha256: sha256(x11Pixels), restoredRgbaSha256: sha256(restoredPixels) });
       assert.ok(roiPixels.equals(expectedPixels), 'The prepared native ROI must equal the same integer pixels of the normal native image, without tolerance.');
       activeCandidate.accepted = true;
       calibration.sourceRoi = prepared.sourceRoi;
@@ -1600,8 +1868,17 @@ async function preflightMomentRoi(viewport, variant, target = page) {
   } catch (error) {
     calibration.error = error.message;
     if (activeCandidate && !activeCandidate.rejection) activeCandidate.error = error.message;
+    if (activeCandidate?.captureAck?.token && !activeCandidate.sourceCapture && prepared) {
+      try {
+        await exportX11Source(activeCandidate.captureAck, activeCandidate.exportBasename, prepared,
+          value => { activeCandidate.sourceCapture = value; });
+      } catch (preservationError) {
+        activeCandidate.preservationError = preservationError.message;
+        if (preservationError.x11Result) activeCandidate.partialExport = preservationError.x11Result;
+      }
+    }
     throw error;
-  } finally { await restoreMomentViewport(prepared); }
+  }
 }
 
 async function waitElapsed(milliseconds, shotId, target = page, allowComplete = false) {
@@ -1706,8 +1983,10 @@ try {
   await startNativeServer();
   const executablePath = process.env.CHROMIUM_EXECUTABLE || await fs.access(chromium.executablePath())
     .then(() => undefined, () => '/usr/bin/chromium');
-  browser = await chromium.launch({ executablePath, headless: !headed, args: ['--no-sandbox', '--disable-dev-shm-usage'] });
+  browser = await chromium.launch({ executablePath, headless: !headed,
+    args: ['--no-sandbox', '--disable-dev-shm-usage', ...x11LaunchArgs] });
   report.browserVersion = browser.version();
+  await startX11Capture();
   const context = await browser.newContext({ viewport: { width: 1440, height: 1000 }, hasTouch: true, reducedMotion: 'no-preference' });
   page = await context.newPage(); observePage(page, 'native-component-host');
 
@@ -2306,6 +2585,12 @@ try {
   console.error(error);
   process.exitCode = 1;
 } finally {
+  if (x11Client) {
+    try { await x11Client.close(); }
+    catch (error) {
+      report.nativeCapture.closeError = error.message; report.passed = false; process.exitCode = 1;
+    }
+  }
   report.finishedAt = new Date().toISOString();
   report.missingAssets = [...missing].sort(); report.requestedAssets = [...requested].sort();
   await fs.writeFile(path.join(out, 'report.json'), JSON.stringify(report, null, 2) + '\n');
@@ -2323,7 +2608,7 @@ try {
   // Duplicate compact, existing evidence after the browser has closed so a
   // remote review can inspect CI output without changing any native capture.
   if (process.env.GITHUB_ACTIONS === 'true') {
-    const review = JSON.stringify(Object.fromEntries(["schema","startedAt","finishedAt","sourceCommit","workingTreeDirty","workingTreeStatus","sourceHashes","browserVersion","browserMode","scope","timing","passed","checks","captures","rejectedCaptures","captureAttempts","capturePreflights","contactObservations","resizes","ships","insertions","native","errors","consoleErrors","missingAssets","failure"]
+    const review = JSON.stringify(Object.fromEntries(["schema","startedAt","finishedAt","sourceCommit","workingTreeDirty","workingTreeStatus","sourceHashes","browserVersion","browserMode","nativeCapture","scope","timing","passed","checks","captures","rejectedCaptures","captureAttempts","capturePreflights","contactObservations","resizes","ships","insertions","native","errors","consoleErrors","missingAssets","failure"]
       .filter(key => report[key] !== undefined).map(key => [key, report[key]])));
     const chunkSize = 12_000, parts = Math.ceil(review.length / chunkSize);
     for (let part = 0; part < parts; part++) console.log('QA_REVIEW_JSON ' + JSON.stringify({

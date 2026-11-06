@@ -28,6 +28,7 @@ on:
       - 'tests/fixtures/wolf-arrival-browser-assets.json'
       - 'tests/fixtures/clan-ship-browser-assets.json'
       - 'scripts/qa-planet-arrival-spatial.mjs'
+      - 'scripts/qa-planet-arrival-x11.py'
       - '.github/workflows/planet-arrival-spatial.yml'
   workflow_dispatch:
 
@@ -137,6 +138,7 @@ jobs:
           NODE
       - name: Typecheck and strictly lint the actual scene and spatial audit
         run: |
+          python3 -c "from pathlib import Path; p = Path('scripts/qa-planet-arrival-x11.py'); compile(p.read_bytes(), str(p), 'exec')"
           node node_modules/next/dist/bin/next typegen
           npm run typecheck
           node node_modules/eslint/bin/eslint.js --max-warnings=0 app/game/PlanetArrivalCinematic.tsx app/game/InsertionPlanPanel.tsx app/game/systems/planetArrival*.ts app/game/systems/planetInsertion.ts app/game/systems/shipInsertionEnergy.ts app/game/systems/huntInsertion.ts scripts/qa-planet-arrival-spatial.mjs tests/planet-arrival*.test.mjs tests/planet-insertion.test.mjs tests/ship-insertion-energy.test.mjs tests/hunt-insertion.test.mjs
