@@ -1247,15 +1247,15 @@ Depuis V145, les lames sont sur l'avant-bras arrière du rig. Source des variant
 | ID | Source | Statut | Prompt (à ajouter au gabarit) |
 | --- | --- | --- | --- |
 | WB-01 regular (en jeu) | City Hunter, *Predator 2* | vérifié | Layers HOUSING + BLADES, on the BACK forearm (top of the wrist, facing outward): compact bronze-gunmetal housing, two straight razor blades, tips visible when retracted; draw retracted and extended states. |
-| WB-02 prehensile | Jungle Hunter, *Predator* (1987) | vérifié | Two serrated blades that can spread apart to grip, subtle red heated glow at the edges in the extended state; boxy dark housing with a small red indicator. |
+| WB-02 prehensile | Jungle Hunter, *Predator* (1987) | vérifié | Two blades that can spread apart to grip, subtle red heated glow at the edges in the extended state; boxy dark housing with a small red indicator. |
 | WB-03 extra-long | Young Bloods, *AVP* (2004) | vérifié | Two very long blades with a telescoping segment (extended state twice the retracted length), polished steel, heavy riveted housing. |
 | WB-04 reverse | Celtic, *AVP* (2004) | vérifié | Two extra-long double-edged blades, housing able to point them backward along the forearm: draw forward and reversed states. |
 | WB-05 curved | Feral, *Prey* (2022) | vérifié | Curved, blunter blades of darker forged metal, primitive bound housing with sinew and bone. |
 | WB-06 glass shard | Dek, *Badlands* (2025) | vérifié | Transparent razor-glass shard blades, faceted, catching light, mounted in a scavenged copper housing. |
 | WB-07 scimitar | Chopper, *AVP* (2004) | vérifié | Single long scimitar arm-blade attached to the gauntlet, does not fully retract, curved edge. |
-| WB-08 single | Super Predators, *Predators* (2010) | vérifié | Single short stabbing blade, black metal, angular housing. |
+| WB-08 single | Falconer, *Predators* (2010) | vérifié | Single blade, shorter than a scimitar, receding into the gauntlet (Falconer). |
 | WB-09 three-blade | Ahab (*Life and Death*) ; Stone Heart (*Concrete Jungle*) | vérifié | Three fixed Wolverine-like blades; Stone Heart variant smaller, sitting on the knuckles: draw both. |
-| WB-10 dual-arm | Elite, *Aliens vs. Predator* (2010) | vérifié | Two blades per arm: one set for each forearm (front and back), identical design. |
+| WB-10 dual-arm | Dark, Spartan, Wolf, Claw, *Aliens vs. Predator* (2010) | vérifié | Two blades per arm, one set on each forearm, identical design (worn by Dark, Spartan, Wolf and Claw). |
 | WB-11 launcher | Scar, Young Bloods (*AVP*) | vérifié | Blades fired as projectiles: draw housing, blades in flight (no motion blur), and empty housing. |
 | WB-12 harpoon | Assassin, *The Predator* (2018) | vérifié | Single blade attached to a razor-sharp wire, housing with a reel; draw retracted and fired (wire taut). |
 | WB-13 blade claws | Lasershot (NECA) | vérifié | Finger-length blades retracting into cybernetic fingers; draw the cybernetic hand covers only. |
@@ -1332,7 +1332,7 @@ Layers SHELL and LID (hinged) of a Yautja wrist computer worn on the FRONT forea
 
 ### Biomasques
 
-Les 14 premiers sont les masques de référence du jeu (`biomaskCatalogueV62.ts`). Sources : [top 10 bio-masks, AvP Central](https://www.avpcentral.com/top-10-predator-bio-masks) et le catalogue du dépôt. Les masques PHG portent les noms des classes et DLC déjà au catalogue V132 ; leur apparence n'a pas été relevée et doit l'être sur captures du jeu avant génération.
+Les 14 premiers sont les masques de référence du jeu (`biomaskCatalogueV62.ts`). Sources : [top 10 bio-masks, AvP Central](https://www.avpcentral.com/top-10-predator-bio-masks) et le catalogue du dépôt. Les masques PHG portent les noms des classes et DLC déjà au catalogue V132 ; une partie est désormais décrite par des sources (table « Masques PHG » plus bas) ; le reste doit être relevé sur captures du jeu avant génération.
 
 **Prompt commun aux masques** (à ajouter au gabarit) : `Biomask only, fitted to the head socket of the rig, three-quarter view facing right, eye lenses and laser emitter on the hunter's LEFT temple (far side), breathing tube ends visible at the jaw sides. Details:`
 
@@ -1360,7 +1360,7 @@ Les 14 premiers sont les masques de référence du jeu (`biomaskCatalogueV62.ts`
 | MK-20 golden angel | Greyback, *Predator 1718* (comic) / NECA | vérifié | Two masks on separate images: a bird-like mask with blood-red eyes, and a traditional one close to the 1987 mask. |
 | MK-21 lava planet | Kenner / NECA | vérifié | Scorpion-like blood-red mask (shared with Cracked Tusk). |
 | MK-22 race war | Race War Predator | vérifié | Brownish-gold mask with a double set of rectangular eye slits. |
-| MK-23 → MK-42 PHG | PHG : Hunter, Scout, Berserker, Alpha, Samurai, Viking, Valkyrie, Cleopatra, Exiled, Pirate, Bionic, Emissary, Oni, Witch, Father, Jotun, Exalted, Anubis, Gladiator, Captured | interprétation | One mask per name, from game captures only: describe silhouette, material and markings from the capture, then add `matching the Predator: Hunting Grounds '<name>' mask`. Do not generate from the name alone. |
+| MK-23 → MK-42 PHG | PHG : Hunter, Scout, Berserker, Alpha, Samurai, Viking, Valkyrie, Cleopatra, Exiled, Pirate, Bionic, Emissary, Oni, Witch, Father, Jotun, Exalted, Anubis, Gladiator, Captured | interprétation | Replaced by the « Masques PHG » table below. For names without a description, describe the game capture, then add `matching the Predator: Hunting Grounds '<name>' mask`. Do not generate from the name alone. |
 
 ### Armures
 
@@ -1418,14 +1418,198 @@ Source : [plasmacaster types, AvP Central](https://www.avpcentral.com/predator-s
 | OT-02 smart disc (en jeu) | *Predator 2*, *AVP* | film | Serrated throwing disc with a central grip. |
 | OT-03 net gun (en jeu) | Films | film | Net launcher plus the deployed net as a separate layer. |
 | OT-04 speargun | Romans (*Bhrak-chei*) ; Scarface, *Concrete Jungle* (NECA) | vérifié | Compact Yautja speargun with bolts, loaded and empty. |
-| OT-05 glaive | PHG (à vérifier) | interprétation | Long polearm blade. |
-| OT-06 war club | PHG (à vérifier) | interprétation | Heavy bladed war club. |
+| OT-05 glaive | PHG (à vérifier) | interprétation | Long polearm blade. Not found in any PHG source consulted: proposed item. |
+| OT-06 war club | PHG (niveau 54) | vérifié (fonction) | Ceremonial bladed club for close melee (PHG, level 54). |
 | OT-07 bow (en jeu) | PHG ; projet (`yautja-bow`) | interprétation | Recurve Yautja bow and arrows. |
 | OT-08 shield | Feral, *Prey* | vérifié | Folding forearm shield (see the existing PIT Feral sprites). |
 | OT-09 feral launcher | Feral, *Prey* | vérifié | Arm-mounted bolt launcher. |
 | OT-10 medicomp | Films | film | Medical kit case with tools and vials, open. |
 | OT-11 trophies (en jeu) | Films | film | Skull, spine, belt bindings. |
 | OT-12 fishnet (en jeu) | Films | vérifié | Fishnet bodysuit per body part, clipped to each limb silhouette (fixes the floating front-arm net). |
+
+### Inventaire Predator: Hunting Grounds et références par entrée
+
+Relevé fait le 6 novembre 2026 dans l'historique des patchs d'AvP Galaxy (jusqu'au patch 2.49, janvier 2023), les annonces des DLC 2024-2026, les pages Steam et les fiches AvP Central. Les wikis Fandom n'étaient pas accessibles depuis cette session. Quand une source ne décrit pas l'apparence, la ligne le dit : il faut alors relever l'objet sur une capture du jeu avant de générer.
+
+**Corrections apportées aux tables ci-dessus**
+
+- WB-02 : la source ne parle pas de lames dentelées ; le mot est retiré.
+- WB-08 : la lame unique est celle du Falconer (*Predators*), elle se rétracte dans le gantelet.
+- WB-10 : porteurs cités par la source : Dark, Spartan, Wolf et Claw (*Aliens vs. Predator*, 2010).
+- OT-05 glaive : absent de toutes les sources PHG consultées ; reste une proposition.
+- OT-06 war club et OT-07 bow : confirmés dans PHG (niveaux 54 et 38).
+- MK-23 → MK-42 : remplacés par la table « Masques PHG » ci-dessous.
+
+**Point à trancher : côté des bras.** Selon AvP Central, les lames de poignet du City Hunter sont sur le bras droit et l'ordinateur de poignet est « usually worn on the left arm ». Le gabarit place le côté droit du chasseur vers la caméra. Avec V145 (lames sur le bras arrière, ordinateur sur le bras avant), les deux sont donc inversés par rapport aux films, sauf si les planches du corps montrent en fait le côté gauche. À vérifier sur `body/classic/full.webp` avant de générer les planches de bras.
+
+#### Classes de Predator dans PHG
+
+| Classe | Sortie | Ce que disent les sources | Référence |
+| --- | --- | --- | --- |
+| Hunter, Scout, Berserker | Base | Classes de départ : équilibrée, rapide et légère, lourde au corps à corps. Apparence non décrite. | [AvP Central, PHG](https://www.avpcentral.com/predator-hunting-grounds) |
+| Elder | Patch 1.10, niveau 150 | Apparence non décrite. | [Historique des patchs](https://avpgalaxy.net/games/predator-hunting-grounds/patch-history/) |
+| Alpha | Patch 1.14, niveau 100 | Le lore (Kaail) le montre portant une tête d'Amengi en casque et des os d'Amengi sur le corps ; la version PHG n'est pas décrite. | [Alpha (Kaail)](https://www.avpcentral.com/alpha-predator-kaail-the-first-yautja) |
+| Samurai | Patch 1.13, avec le Katana | Masque mêlant un visage yautja démasqué et un oni japonais, bouche monstrueuse, grandes mandibules ; armure modelée sur les samouraïs du XVIe siècle ; dreads noirs en chignon haut (chonmage) ; yeux brun clair. | [Samurai](https://www.avpcentral.com/samurai-predator) |
+| City Hunter | Patch 1.16, avec le Wrist Launcher | Combistick City Hunter et masque City Hunter Rebreather ajoutés ensuite. | [Historique des patchs](https://avpgalaxy.net/games/predator-hunting-grounds/patch-history/) |
+| Viking | Patch 2.08, avec la Battle Axe | Masque à cornes, plaque de métal sur un œil (allusion à Odin) ; plaques, cotte de mailles et fourrure, ornements vikings et celtiques ; dreads noirs, yeux orange. | [Viking](https://www.avpcentral.com/viking-predator) |
+| Valkyrie | Patch 2.14, avec le Norse Hammer | Masque aux ornements en forme d'ailes des deux côtés ; plaques, cotte de mailles, ornements celtiques ; une fois le canon déployé, les plaques d'épaule ressemblent à de petites ailes. | [Valkyrie](https://www.avpcentral.com/valkyrie-predator) |
+| Cleopatra | Patch 2.25, avec l'Ancient Disc | Armure ornée de style égyptien antique ; dreads courts noirs avec ornements dorés aux pointes ; disque à lames rotatives. | [Cleopatra](https://www.avpcentral.com/cleopatra-predator) |
+| Exiled | Patch 2.28, avec le Hook | Armure d'os et de bois, motifs rituels des îles du Pacifique ; lames de poignet à trois lames ; dreads noirs, yeux orange. | [Exiled](https://www.avpcentral.com/exiled-predator) |
+| Captured, Falconer, Mr. Black | Patch 2.32 (Hunting Party) | Falconer : masque en forme de faucon, une seule lame longue, drone faucon, pas de canon d'épaule. Mr. Black : masque noir, mâchoire de créature fixée dessous. Captured : non décrit. | [Falconer](https://www.avpcentral.com/falconer-predator-profile), [Mr. Black](https://www.avpcentral.com/berserker-predator-mr-black-profile) |
+| Wolf | Patch 2.36 | Voir MK-06 et PC-06/PC-07. | [Bio-masks](https://www.avpcentral.com/top-10-predator-bio-masks) |
+| Emissary | Patch 2.39 | Casque proche de celui du Fugitive et des Emissaries coupés de *The Predator* ; gilets tactiques, casque de combat, poches à munitions, gilet pare-balles ; équipement humain récupéré et reconstruit. | [Emissary](https://www.avpcentral.com/emissary-predator) |
+| Bionic | Patch 2.42 | Œil droit remplacé par un implant rouge lumineux, plaques de métal sur le crâne et le visage, bras droit entièrement mécanique avec lame intégrée, jambes reconstruites, supports sur la colonne et le torse ; machinerie apparente. | [Bionic](https://www.avpcentral.com/bionic-predator) |
+| Amazon, Pirate | Patchs 2.44/2.45 (Hunting Party 2) | Amazon : masque en crâne de jaguar, armure primitive avec restes d'animaux, lames de poignet en os. Pirate : masque couvrant seulement le bas du visage, œil gauche voilé et cicatrisé sous un simple cache-œil, vêtements de pirate. | [Amazon](https://www.avpcentral.com/amazon-predator), [Pirate](https://www.avpcentral.com/pirate-predator) |
+| Celtic, Chopper, Scar | Patch 2.47 | Voir MK-03 à MK-05. | [Historique des patchs](https://avpgalaxy.net/games/predator-hunting-grounds/patch-history/) |
+| Feral | Mise à jour PS5/Xbox | Voir MK-07, AR-02. | [Comicbook](https://comicbook.com/gaming/news/predator-hunting-grounds-ps5-xbox-update-patch-notes) |
+| Gladiator | Décembre 2024, avec le Trident | « Inspired by the savage spectacle of the gladiatorial arenas » ; adopte l'armure des combattants qu'il chasse. Apparence non décrite. | [MP1st](https://mp1st.com/title-updates-and-patches/predator-hunting-grounds-update-1-006-now-available-along-with-gladiator-predator) |
+| Anubis | Patch 3.2.0, février 2025, avec l'Eye of Ra | Masque allongé de chacal, yeux lumineux ; armure sombre avec placages d'or, marques cérémonielles, accents lumineux ; plus massif que Cleopatra. | [Anubis](https://www.avpcentral.com/anubis-predator) |
+| Exalted | Mars 2025, avec les Dual Swords | Femelle ; armure retravaillée avec les motifs d'or des lames du temple. | [Exalted](https://www.avpcentral.com/exalted-predator) |
+| Witch | Patch 3.4.0, avril 2025, avec le Drone | Masque en os avec bois (cornes de cervidé), défenses et plumes ; armure où le métal est remplacé par l'os et le cuir ; nouveau motif de peau. | [AvP Galaxy, Witch](https://www.avpgalaxy.net/2025/04/24/the-witch-predator-haunts-the-jungles-of-predator-hunting-grounds-in-update-3-4-0/) |
+| Oni | Août 2025, avec la Chain Whip | Tiré de *Predator: Killer of Killers* ; spécialiste de la discrétion et du combat à distance. Apparence non décrite. | [Notes de patch](https://steamdb.info/patchnotes/19637408) |
+| Jotun | Patch 3.6.0, janvier 2026, avec le Shock Gauntlet | Tiré de *Killer of Killers* ; style « plus réaliste » que la silhouette massive du film ; refuse les armes à plasma ; main tranchée remplacée par une prothèse cybernétique. | [AvP Galaxy, Jotun](https://www.avpgalaxy.net/2026/01/21/the-jotun-from-killer-of-killers-lands-in-predator-hunting-grounds/) |
+| Father | Patch 3.7.0, avril 2026 | Njohrr de *Predator: Badlands*, Elder chef de clan. Apparence non décrite dans le texte consulté. | [Steam](https://store.steampowered.com/app/4043800) |
+| Fugitive | Cité par AvP Central | Voir MK-12, PC-08. | [AvP Central, PHG](https://www.avpcentral.com/predator-hunting-grounds) |
+
+#### Armes et équipements de PHG
+
+| Objet | Déblocage | Description de la source | ID catalogue |
+| --- | --- | --- | --- |
+| Wristblades | Base | Équipement standard, mises à mort discrètes. | WB-01 |
+| Plasma Caster | Base | Canon d'épaule, laser puis triangle de visée, consomme l'énergie. | PC-01, PC-13 |
+| Handheld Plasmacaster | Niveau 11 | Version tenue en main qui tire des salves fractionnées. | PC-14 |
+| Net Gun | Niveau 15 | Filet qui piège et blesse ; munitions limitées. | OT-03 |
+| Elder Sword | Niveau 22 | Lame ancienne, attaques rapides successives. | OT-13 |
+| Smart Disc | Niveau 27 | Lancé et dirigé par l'ordinateur de poignet. | OT-02 |
+| Ancient Disc | Cleopatra, puis niveau 27 | Disque à lames rotatives. | OT-14 |
+| Yautja Bow | Niveau 38 | Arc pliable ; la charge augmente vitesse et dégâts ; flèches récupérables. | OT-07 |
+| Combistick (et variante City Hunter) | Niveau 42 | Lance rétractable, épingle la cible quand lancée. | OT-01, OT-15 |
+| War Club | Niveau 54 | Massue cérémonielle à lames. | OT-06 |
+| Hook | Exiled, puis niveau 95 | Skin du War Club. | OT-16 |
+| Katana | Samurai, puis niveau 75 | Sabre yautja pour le corps à corps. | OT-17 |
+| Battle Axe | Viking, puis niveau 85 | Hache de bataille massive. | OT-18 |
+| Norse Hammer | Valkyrie, puis niveau 28 | Marteau lourd, sans doute inspiré de Mjöllnir. | OT-19 |
+| Eye of Ra | Anubis | Variante du canon à main, énergie dorée, projectiles plus rapides et moins courbes, cadence et chargeur réduits. | OT-20 |
+| Trident | Gladiator | Non décrit. | OT-21 |
+| Dual Swords | Exalted | Lames d'or ornées, gravures cérémonielles ; estoc croisé qu'on ne peut pas parer. | OT-22 |
+| Chain Whip | Oni | Attire la proie à distance, puis enchaîne au corps à corps. | OT-23 |
+| Shock Gauntlet | Jotun | « A primal showcase of Yautja weaponsmithing ». | GM-10 |
+| Wrist Launcher | City Hunter, puis niveau 60 | Lanceur de poignet. | GM-01 |
+| Predator Drone | Witch | « A disposable tracking device » proche du drone du Falconer. | OT-24 |
+| Healing Kit | Base | Soin limité, exige de rester immobile et de rugir. | OT-10 |
+| Bear Trap, Audio Decoy, Motion Detector | Niveaux 9, 31, 49 | Non décrits dans le texte consulté. | OT-25 |
+| Self-Destruct Device | Base | Explosion après un compte à rebours, désamorçable. | GM-08 |
+| Crossbolt Gun, bouclier, bolt gun | Cités hors source officielle | Mentionnés dans un article de patch (Crossbolt) et un commentaire Steam (shield, boltgun). À vérifier. | OT-09, GM-02 |
+
+**Cosmétiques nommés dans les notes de patch** (apparence à relever sur capture) :
+
+- Masques : Journeyman, Eclipse, Prophet, Inferno, Plague, Phoenix, Phalanx, Nocturne, Immortal (patch 1.10, cités avec la teinte Obsidian) ; Ravager, Arthos, Vex (2.01) ; Wretch, Haze, Rival (2.14) ; City Hunter Rebreather, Mr Black (2.19-2.23) ; Salamander, Mors, Foxtrot (2.28) ; Tank (2.40) ; Bone (2.42). Option de cicatrices sur les masques (2.32).
+- Dreads : Tank (2.39).
+- Peintures de guerre : Ire, Fury, Waves, Sun, Erode, Cortex, Retch, Attend.
+- Motifs de peau : Ivy, Hydra, Cell, Blood, Smash, Swamp, Buried, Nuke, Menace, Mottle, Raptor, Shatter, Aurora.
+- Teintes d'armure : Crimson, Sage, Paroxysm, Tyrant, Warlord, Platinum, Gold, Requiem, Nova.
+- Trophées : Broken Ancient Sword, Indonesian Kris Dagger, Gold Medal, Unidentified Alien Skull.
+
+#### Masques PHG
+
+Remplace MK-23 → MK-42. Même prompt commun que les biomasques.
+
+| ID | Source | Statut | Détails |
+| --- | --- | --- | --- |
+| MK-23 samurai | Samurai, PHG | vérifié | Mask blending an unmasked Yautja face and a Japanese oni demon: monstrous open mouth, large sculpted mandibles, fierce brow; lacquered dark metal. |
+| MK-24 viking | Viking, PHG | vérifié | Horned bio-mask, one eye lens covered by a riveted metal plate like an eyepatch, Norse-Celtic knotwork engraving. |
+| MK-25 valkyrie | Valkyrie, PHG | vérifié | Bio-mask with wing-shaped ornaments on both sides like a winged helmet, Celtic-style engraving. |
+| MK-26 anubis | Anubis, PHG | vérifié | Elongated jackal-like mask with tall ears and long snout, dark metal with gold plating, glowing eyes. |
+| MK-27 witch | Witch, PHG | vérifié | Skull-like bone mask with ornamental antlers, tusks and feathers, tribal look. |
+| MK-28 amazon | Amazon, PHG | vérifié | Bone mask shaped like a jaguar skull. |
+| MK-29 pirate | Pirate, PHG | vérifié | Half mask covering only the lower face (mouth and mandibles); separate layer: simple leather eyepatch over a clouded, scarred LEFT eye. |
+| MK-30 emissary | Emissary, PHG | vérifié (silhouette) | Bio-mask close to the Fugitive's, worn with a human-style combat helmet over it, camouflage tones. |
+| MK-31 bionic | Bionic, PHG | vérifié (tête) | Separate head layer: glowing red cybernetic implant in place of the RIGHT eye, metal plates bolted onto skull and face. |
+| MK-32 white skull | Hunting Grounds | vérifié | Standard bio-mask with a white skull painted on its face. |
+| MK-33 rebreather | City Hunter, PHG | vérifié | Backup breathing mask resembling a scuba second-stage regulator, worn without the bio-mask. |
+| MK-34 falconer | Falconer, *Predators* / PHG | vérifié | Mask shaped like a falcon's head, beak-like brow (same as MK-10). |
+| MK-35 mr black | Mr. Black, *Predators* / PHG | vérifié | Black elongated angular mask with a creature's lower jaw fixed under it (same as MK-11). |
+| MK-36 bone | Bone, PHG (d'après *Prey*) | vérifié | Same as MK-07. |
+| MK-37 → MK-45 | Cleopatra, Exiled, Exalted, Gladiator, Oni, Jotun, Father, Captured, Elder, Alpha, Hunter, Scout, Berserker, et les masques cosmétiques nommés plus haut | à relever | No text source describes them: describe each from a game capture, then add `matching the Predator: Hunting Grounds '<name>' mask`. |
+
+#### Armures PHG
+
+Même prompt commun que les armures.
+
+| ID | Source | Statut | Détails |
+| --- | --- | --- | --- |
+| AR-17 samurai | Samurai, PHG | vérifié | 16th-century Japanese samurai armour adapted to Yautja proportions (lamellar plates, large shoulder guards); black dreads tied in a high chonmage topknot (dread layer). |
+| AR-18 viking | Viking, PHG | vérifié | Metal plates, chainmail and fur lining, Viking and Celtic ornament. |
+| AR-19 valkyrie | Valkyrie, PHG | vérifié | Metal plates, chainmail, Celtic-style ornaments; extra caster state where the shoulder plates open like small wings. |
+| AR-20 cleopatra | Cleopatra, PHG | vérifié | Ornate regal Ancient Egyptian armour; short black dreads with gold ornaments at the tips (dread layer). |
+| AR-21 anubis | Anubis, PHG | vérifié | Ornate dark armour with gold plating, ceremonial markings and glowing accents; heavier build than Cleopatra. |
+| AR-22 emissary | Emissary, PHG | vérifié | Rebuilt human special-forces gear: tactical vest, ammo pouches, body armour, camouflage pattern. |
+| AR-23 exiled | Exiled, PHG | vérifié | Primitive armour of bone and wood with Pacific Islander ritual motifs. |
+| AR-24 bionic | Bionic, PHG | vérifié | Cybernetic body layers: full mechanical RIGHT arm, reconstructed legs, spine and torso supports, exposed machinery, glowing implants, battle damage. |
+| AR-25 amazon | Amazon, PHG | vérifié | Primitive armour hung with animal remains and skeletal decorations. |
+| AR-26 pirate | Pirate, PHG | vérifié | Standard Yautja armour with pirate-style clothing and decorations. |
+| AR-27 exalted | Exalted, PHG | vérifié | Armour with ornate gold patterns taken from the temple blades. |
+| AR-28 witch | Witch, PHG | vérifié | Metal parts replaced by bone and hide. |
+| AR-29 jotun | Jotun, PHG | vérifié (partiel) | No shoulder cannon; cybernetic prosthetic replacing one severed hand; realistic proportions. |
+| AR-30 gladiator, oni, father | PHG | à relever | Not described in the text sources: describe from captures. |
+
+#### Lames de poignet ajoutées
+
+| ID | Source | Statut | Prompt (à ajouter au gabarit) |
+| --- | --- | --- | --- |
+| WB-17 fugitive | Fugitive, *The Predator* (2018) | vérifié | Blades that retract fully into the gauntlet (no visible tips), launchable, replaced by the gauntlet; draw retracted, extended and broken states. |
+| WB-18 exiled | Exiled, PHG | vérifié | Unique three-bladed wristblade on a primitive bone-and-wood housing. |
+| WB-19 bone | Amazon, PHG | vérifié | Wristblades carved from bone. |
+
+#### Modules de brassard
+
+Pièces montées sur le gantelet (ordinateur ou lames), à générer en couches séparées sur l'avant-bras concerné. Source principale : [wrist gauntlet, AvP Central](https://avpcentral.com/predator-wrist-gauntlet).
+
+| ID | Source | Statut | Prompt (à ajouter au gabarit) |
+| --- | --- | --- | --- |
+| GM-01 wrist launcher | City Hunter, *Predator 2* ; PHG | vérifié (fonction) | Compact launcher built into the gauntlet; draw closed and firing states. |
+| GM-02 gauntlet shield | Feral, *Prey* | vérifié | Shield that unfolds from the gauntlet like a flower and covers about half the body: draw folded, half-open and open. |
+| GM-03 kujhad | Fugitive, *The Predator* | vérifié (fonction) | Detachable mini-computer that launches discs and projects holograms: draw attached and detached. |
+| GM-04 cloaking chip | Dek, *Badlands* | vérifié | Small circular device inserted into a slot in the middle of the gauntlet. |
+| GM-05 grappling hook | *Aliens vs. Predator* (Classic) | vérifié | Hook fired from the gauntlet trailing a flexible blue rope. |
+| GM-06 power punch glove | Wolf, *AVP-R* | vérifié (fonction) | Armoured glove that extends from the gauntlet over the hand. |
+| GM-07 sat-com | Celtic, *AVP* (2004) | vérifié (fonction) | Holographic projection above the wrist computer, separate glow layer. |
+| GM-08 self-destruct | *Predator* (1987) | vérifié | Lid open, flashing countdown glyphs on the display. |
+| GM-09 flamethrower | *Alien vs. Predator: Thicker Than Blood* (comic) | vérifié (fonction) | Wrist-mounted nozzle projecting a short stream of fire; flame on its own layer. |
+| GM-10 shock gauntlet | Jotun, PHG | à relever | Primitive heavy gauntlet weapon; describe from capture. |
+
+#### Armes et accessoires ajoutés
+
+Sources : [arsenal yautja, AvP Central](https://www.avpcentral.com/predator-weapons-yautja-hunting-arsenal) et [équipement, AvP Central](https://www.avpcentral.com/predator-equipment-and-hunting-gear), plus la table PHG ci-dessus.
+
+| ID | Source | Statut | Prompt (à ajouter au gabarit) |
+| --- | --- | --- | --- |
+| OT-13 elder sword | PHG ; *Predator: 1718* (comic) | vérifié (fonction) | Long ancient two-handed Yautja blade, ceremonial engraving. |
+| OT-14 ancient disc | Cleopatra, PHG | vérifié | Smart disc with rotating blades, Egyptian-style gold engraving. |
+| OT-15 combistick City Hunter | City Hunter, PHG | à relever | City Hunter skin of the combistick; describe from capture. |
+| OT-16 hook | Exiled, PHG | vérifié (nom) | War-club variant shaped as a hook; describe from capture. |
+| OT-17 katana | Samurai, PHG | vérifié | Yautja-made katana. |
+| OT-18 battle axe | Viking, PHG | vérifié | Massive Yautja battle axe. |
+| OT-19 norse hammer | Valkyrie, PHG | vérifié | Heavy war hammer in the spirit of Mjolnir. |
+| OT-20 eye of ra | Anubis, PHG | vérifié | Handheld plasma caster variant with golden energy effects; projectile on its own layer. |
+| OT-21 trident | Gladiator, PHG | à relever | Trident; describe from capture. |
+| OT-22 dual swords | Exalted, PHG | vérifié | Two ornate golden blades with ceremonial engravings. |
+| OT-23 chain whip | Oni, PHG | vérifié (fonction) | Chain whip that pulls prey in; draw coiled and extended. |
+| OT-24 drone | Witch, PHG ; Falconer, *Predators* | vérifié | Disposable tracking drone; Falconer variant is a mechanical falcon worn on the shoulder. |
+| OT-25 traps and sensors | PHG | à relever | Bear trap, audio decoy, motion detector: describe from captures. |
+| OT-26 ceremonial dagger | *AVP* (2004) | vérifié (fonction) | Blooding-rite dagger. |
+| OT-27 shuriken | *AVP* (2004) | vérifié | Throwing star worn folded on the leg, snapping open to full size: draw both states. |
+| OT-28 bolas | *Predator: Big Game* (film) | vérifié | Weighted electroshock bolas. |
+| OT-29 whip | *AVP: Requiem* (game) ; *Rage War* | vérifié | Whip made from a Xenomorph tail. |
+| OT-30 bolt gun | Feral, *Prey* | vérifié | Pistol-held launcher firing spear-shaped bolts, with a laser sight. |
+| OT-31 grenades | *Sand Trap* (game) ; *Badlands* | vérifié | Plasma grenade with green glowing liquid inside; freeze grenade (Badlands). |
+| OT-32 stasis trap | Dek, *Badlands* | vérifié | Small belt device that throws a red laser trap. |
+| OT-33 flaying tool | AvP Central (équipement) | vérifié | Double-bladed knife with a red laser between the blades. |
+| OT-34 cleaner case | Wolf, *AVP-R* | vérifié | Large case worn behind the RIGHT shoulder: tracking syringe, blue dissolving liquid, self-destruct device. |
+| OT-35 medicomp case | Jungle Hunter, *Predator* | vérifié | Medical kit in a satchel or case, often behind the LEFT shoulder (precise version of OT-10). |
+| OT-36 neck brace | *Predator: Killer of Killers* | vérifié | Collar with two red lights. |
+| OT-37 jetpack | AvP Central (équipement) | vérifié | Compact pack with twin thrusters leaving red flame trails. |
+| OT-38 heavy plasma cannon, burner | *AvP: War* / *Duel* (comics) | vérifié (fonction) | Two-handed plasma weapons; see PC-11. |
 
 ## Acte I — Youngling (R2-M001 → M006)
 
