@@ -52,7 +52,7 @@ const report = {
   browserMode: headed ? 'headed' : 'headless',
   video: { requested: recordVideo, supported: null, files: [] },
   checks: [], frames: [], captures: [], launchObservations: [], registrationObservations: [],
-  familyCoverage: [],
+  familyCoverage: [], heldViewPreparations: [], heldViewCaptureCleanupErrors: [],
   pageErrors: [], consoleErrors: [], missingAssets: [], requests: [], readinessFailures: [],
   sourceHashes: {}, assetHashes: {},
 };
@@ -358,6 +358,14 @@ async function frame(page) {
     return {
       observedPerformanceMs: performance.now(), elapsedMs: Number(root.getAttribute('data-arrival-elapsed')),
       elapsedExactMs: Number(root.getAttribute('data-arrival-elapsed-exact') ?? root.getAttribute('data-arrival-elapsed')),
+      run: root.getAttribute('data-arrival-run'),
+      captureViewport: { width: innerWidth, height: innerHeight, devicePixelRatio,
+        clientWidth: document.documentElement.clientWidth, clientHeight: document.documentElement.clientHeight,
+        scrollX, scrollY, visualViewport: window.visualViewport ? {
+          width: visualViewport.width, height: visualViewport.height, scale: visualViewport.scale,
+          offsetLeft: visualViewport.offsetLeft, offsetTop: visualViewport.offsetTop,
+          pageLeft: visualViewport.pageLeft, pageTop: visualViewport.pageTop,
+        } : null },
       shot: root.getAttribute('data-arrival-shot'), status: root.getAttribute('data-arrival-status'),
       method: root.getAttribute('data-arrival-method'), team: root.getAttribute('data-arrival-team'),
       scene: { ...rectangle(scene), ship: attribute(scene, 'data-arrival-ship') },
@@ -541,6 +549,109 @@ async function capture(page, label, options) {
       view: after.carrier?.view ?? 'ground-profile', from: after.carrier?.from ?? null,
       to: after.carrier?.to ?? null, mix: after.carrier?.mix ?? null } });
   assert.equal(after.shot, before.shot, 'A photograph must remain within its reported native shot.');
+  return before;
+}
+
+const heldViewCaptureParameters = Object.freeze({
+  format: 'png', fromSurface: true, captureBeyondViewport: false, optimizeForSpeed: true,
+});
+
+function assertHeldViewViewport(snapshot, viewport) {
+  const actual = snapshot.captureViewport, scene = snapshot.scene;
+  assert.deepEqual([actual.width, actual.height, actual.devicePixelRatio], [viewport.width, viewport.height, 1],
+    'A held-view photograph must retain the configured CSS viewport and one source pixel per CSS pixel.');
+  assert.ok(actual.visualViewport, 'The native visible viewport must be observable.');
+  assert.deepEqual([actual.visualViewport.scale, actual.visualViewport.offsetLeft, actual.visualViewport.offsetTop,
+    actual.visualViewport.pageLeft, actual.visualViewport.pageTop], [1, 0, 0, actual.scrollX, actual.scrollY],
+  'The native full-viewport photograph must not introduce zoom or a visual viewport offset.');
+  assert.ok([scene.x, scene.y, scene.width, scene.height, actual.scrollX, actual.scrollY,
+    actual.clientWidth, actual.clientHeight, actual.visualViewport.width, actual.visualViewport.height].every(Number.isFinite));
+  // Native scrollbars may make the visible/client area narrower than innerWidth.
+  const visibleWidth = Math.min(actual.clientWidth, actual.visualViewport.width);
+  const visibleHeight = Math.min(actual.clientHeight, actual.visualViewport.height);
+  assert.ok(visibleWidth > 0 && visibleHeight > 0 && actual.clientWidth <= actual.width &&
+    actual.visualViewport.width <= actual.width && actual.clientHeight <= actual.height &&
+    actual.visualViewport.height <= actual.height);
+  assert.ok(scene.width > 0 && scene.height > 0 && scene.x >= 0 && scene.y >= 0 &&
+    scene.x + scene.width <= visibleWidth && scene.y + scene.height <= visibleHeight,
+  'The complete actual arrival scene must lie inside the native viewport photograph.');
+}
+
+function assertHeldViewPng(bytes, viewport) {
+  assert.ok(bytes.length >= 24 && bytes.subarray(0, 8).equals(Buffer.from([137, 80, 78, 71, 13, 10, 26, 10])) &&
+    bytes.toString('ascii', 12, 16) === 'IHDR', 'Keep a native PNG with its real IHDR dimensions.');
+  assert.deepEqual([bytes.readUInt32BE(16), bytes.readUInt32BE(20)], [viewport.width, viewport.height],
+    'The untouched held-view PNG must contain exactly the configured full viewport at DPR 1.');
+}
+
+async function prepareHeldViewCapture(page, viewport, shipId, firstRequestedAt) {
+  const startedNodeMs = performance.now();
+  // Native scrolling and font readiness happen before the requested pose, not
+  // inside its before -> PNG -> after bracket. The timeline keeps running.
+  await page.locator('[data-arrival-scene]').scrollIntoViewIfNeeded();
+  await page.evaluate(() => document.fonts.ready.then(() => null));
+  const snapshot = await frame(page);
+  const preparation = { id: `held-view-${report.heldViewPreparations.length + 1}`, shipId,
+    viewport: { ...viewport }, firstRequestedAt, startedNodeMs, completedNodeMs: performance.now(),
+    run: snapshot.run, method: snapshot.method, shot: snapshot.shot, elapsedExactMs: snapshot.elapsedExactMs,
+    scene: snapshot.scene, captureViewport: snapshot.captureViewport,
+    captureMode: 'native-cdp-full-viewport-png', parameters: heldViewCaptureParameters };
+  report.heldViewPreparations.push(preparation);
+  assert.equal(snapshot.status, 'playing'); assert.equal(snapshot.scene.ship, shipId);
+  assertHeldViewViewport(snapshot, viewport);
+  assert.ok(snapshot.elapsedExactMs < firstRequestedAt,
+    'Native full-viewport preparation must finish before the unchanged first held-pose threshold.');
+  return preparation;
+}
+
+async function captureHeldView(page, session, preparation, label, options) {
+  const startedNodeMs = performance.now();
+  const before = await frame(page);
+  const beforeReadCompletedNodeMs = performance.now();
+  assertHull(before, options);
+  assertHeldViewViewport(before, preparation.viewport);
+  assert.equal(before.status, 'playing'); assert.equal(before.run, preparation.run);
+  assert.deepEqual(before.captureViewport, preparation.captureViewport,
+    'The prepared native viewport and scroll position must still be current.');
+  // This dedicated session never sets Emulation or sends a clip. Unlike the
+  // element screenshot pipeline, no scrolling/stability/font work occurs here.
+  // optimizeForSpeed changes PNG encoding effort, not pixels; its gain is unproven.
+  const captureStartedNodeMs = performance.now();
+  const screenshot = await session.send('Page.captureScreenshot', heldViewCaptureParameters);
+  const captureCompletedNodeMs = performance.now();
+  let after, observationError;
+  try { after = await frame(page); } catch (error) { observationError = error; }
+  const afterReadCompletedNodeMs = performance.now();
+  // Preserve the original full PNG after both observations, including a source
+  // whose after-observation or strict held-pose guard subsequently rejects it.
+  const bytes = Buffer.from(screenshot.data, 'base64'), filename = `${label}.png`;
+  await fs.writeFile(path.join(out, filename), bytes);
+  report.frames.push({ label, ...before });
+  const recorded = { label, file: filename, sha256: sha256(bytes),
+    captureMode: preparation.captureMode, parameters: heldViewCaptureParameters, preparationId: preparation.id,
+    viewport: preparation.viewport, sceneBefore: before.scene, sceneAfter: after?.scene ?? null,
+    captureViewportBefore: before.captureViewport, captureViewportAfter: after?.captureViewport ?? null,
+    timings: { beforeReadMs: beforeReadCompletedNodeMs - startedNodeMs,
+      screenshotRpcMs: captureCompletedNodeMs - captureStartedNodeMs,
+      afterReadMs: afterReadCompletedNodeMs - captureCompletedNodeMs },
+    before: { elapsedMs: before.elapsedMs, elapsedExactMs: before.elapsedExactMs, shot: before.shot, view: before.carrier?.view },
+    after: after ? { elapsedMs: after.elapsedMs, elapsedExactMs: after.elapsedExactMs, shot: after.shot,
+      view: after.carrier?.view, from: after.carrier?.from ?? null,
+      to: after.carrier?.to ?? null, mix: after.carrier?.mix ?? null } : null };
+  report.captures.push(recorded);
+  try {
+    if (observationError) throw observationError;
+    assertHeldViewPng(bytes, preparation.viewport);
+    assertHeldViewViewport(after, preparation.viewport);
+    assert.equal(after.status, 'playing'); assert.equal(after.run, before.run);
+    assert.equal(after.shot, before.shot, 'A photograph must remain within its reported native shot.');
+    assert.deepEqual(after.scene, before.scene, 'The complete scene geometry must stay fixed throughout the native photograph.');
+    assert.deepEqual(after.captureViewport, before.captureViewport,
+      'Viewport, scroll, DPR and visual viewport must stay fixed throughout the native photograph.');
+  } catch (error) {
+    recorded.rejected = { message: error.message, afterObservationFailed: Boolean(observationError) };
+    throw error;
+  }
   return before;
 }
 
@@ -786,10 +897,11 @@ async function additionalFamilyRoute(page, viewport, shipId) {
   const coverage = { viewport: viewport.id, shipId, methods: [...family.methods], expectedPaths: [...family.paths],
     sourceReview: family.sourceReview, views: [], transitions: [], passed: false };
   report.familyCoverage.push(coverage);
+  let captureSession, preparation, routeError;
   const photograph = async (id, time, untilMs, shot, cloak = false) => {
     await waitElapsed(page, time, shot);
     const label = `${viewport.id}-${shipId}-${id}`;
-    const observed = await capture(page, label, { shipId, generated: true, cloak });
+    const observed = await captureHeldView(page, captureSession, preparation, label, { shipId, generated: true, cloak });
     const recorded = report.captures.at(-1);
     assert.equal(observed.carrier.fallback, 'false', 'Additional-family evidence must actually load that family.');
     assert.equal(observed.carrier.from, id); assert.equal(observed.carrier.to, '');
@@ -801,7 +913,8 @@ async function additionalFamilyRoute(page, viewport, shipId) {
     observedPaths.add(observed.carrier.path);
     coverage.views.push({ id, path: observed.carrier.path, file: recorded.file, sha256: recorded.sha256,
       method: observed.method, cloak, requestedAt: time, heldUntilMs: untilMs,
-      elapsedBefore: observed.elapsedExactMs, elapsedAfter: recorded.after.elapsedExactMs });
+      elapsedBefore: observed.elapsedExactMs, elapsedAfter: recorded.after.elapsedExactMs,
+      captureMode: recorded.captureMode, preparationId: preparation.id });
   };
   const consumeBlends = async (pending, optical = false) => {
     const result = await pending;
@@ -834,29 +947,44 @@ async function additionalFamilyRoute(page, viewport, shipId) {
     report.registrationObservations.push({ viewport: viewport.id, shipId, optical, observations: result.observations,
       transitionsObserved: transitions });
   };
-  await openShot(page, 'carrier', 'pod', false, true, new Set(), shipId);
-  const podBlends = observeRegistrationBlends(page, 27_200)
-    .then(observations => ({ observations }), error => ({ error }));
-  for (const [id, time, untilMs, shot] of [
-    ['forward-quarter', 14_200, 15_200, 'carrier'], ['forward-quarter-shallow', 16_000, 17_100, 'carrier'],
-    ['bank-dorsal-shallow', 19_100, 20_000, 'carrier'], ['bank-dorsal', 20_200, 21_000, 'carrier'],
-    ['rear-quarter-shallow', 25_200, 26_400, 'release'], ['rear-quarter', 26_800, 31_000, 'release'],
-  ]) await photograph(id, time, untilMs, shot);
-  await consumeBlends(podBlends);
-  if (family.methods.includes('ship')) {
-    // A separate ordinary ship playback reveals the two otherwise unused
-    // ventral views and checks their actual optical masks on the same pixels.
-    await openShot(page, 'release', 'ship', true, true, new Set(), shipId);
-    const shipBlends = observeRegistrationBlends(page, 27_200)
+  try {
+    await openShot(page, 'carrier', 'pod', false, true, new Set(), shipId);
+    const podBlends = observeRegistrationBlends(page, 27_200)
       .then(observations => ({ observations }), error => ({ error }));
-    await photograph('bank-ventral-shallow', 25_200, 26_200, 'release', true);
-    await photograph('bank-ventral', 26_800, 31_000, 'release', true);
-    await consumeBlends(shipBlends, true);
+    captureSession = await page.context().newCDPSession(page);
+    preparation = await prepareHeldViewCapture(page, viewport, shipId, 14_200);
+    for (const [id, time, untilMs, shot] of [
+      ['forward-quarter', 14_200, 15_200, 'carrier'], ['forward-quarter-shallow', 16_000, 17_100, 'carrier'],
+      ['bank-dorsal-shallow', 19_100, 20_000, 'carrier'], ['bank-dorsal', 20_200, 21_000, 'carrier'],
+      ['rear-quarter-shallow', 25_200, 26_400, 'release'], ['rear-quarter', 26_800, 31_000, 'release'],
+    ]) await photograph(id, time, untilMs, shot);
+    await consumeBlends(podBlends);
+    if (family.methods.includes('ship')) {
+      // A separate ordinary ship playback reveals the two otherwise unused
+      // ventral views and checks their actual optical masks on the same pixels.
+      await openShot(page, 'release', 'ship', true, true, new Set(), shipId);
+      const shipBlends = observeRegistrationBlends(page, 27_200)
+        .then(observations => ({ observations }), error => ({ error }));
+      preparation = await prepareHeldViewCapture(page, viewport, shipId, 25_200);
+      await photograph('bank-ventral-shallow', 25_200, 26_200, 'release', true);
+      await photograph('bank-ventral', 26_800, 31_000, 'release', true);
+      await consumeBlends(shipBlends, true);
+    }
+    assert.deepEqual([...observedPaths].sort(), [...family.paths].sort(),
+      'Every registered additional view must be painted and photographed during a native playback.');
+    coverage.transitions = [...new Set(coverage.transitions)];
+    coverage.passed = true;
+  } catch (error) {
+    routeError = error;
+    throw error;
+  } finally {
+    if (captureSession) {
+      try { await captureSession.detach(); } catch (error) {
+        report.heldViewCaptureCleanupErrors.push({ viewport: viewport.id, shipId, message: error.message });
+        if (!routeError) throw error;
+      }
+    }
   }
-  assert.deepEqual([...observedPaths].sort(), [...family.paths].sort(),
-    'Every registered additional view must be painted and photographed during a native playback.');
-  coverage.transitions = [...new Set(coverage.transitions)];
-  coverage.passed = true;
 }
 
 async function failureRoute(viewport, shipId = api.DEFAULT_SHIP_ID) {

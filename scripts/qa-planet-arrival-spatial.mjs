@@ -378,7 +378,7 @@ async function readFrame(target = page, contactObservation) {
     });
     const groundShip = root.querySelector('[data-arrival-ground-ship]');
     const shipImage = groundShip?.querySelector('img');
-    const cloakHulls = [...root.querySelectorAll('[data-arrival-cloak-strength]')].map(element => {
+    const cloakHulls = [...root.querySelectorAll('[data-arrival-carrier], [data-arrival-ground-ship]')].map(element => {
       const body = element.querySelector('[data-arrival-cloak-body]');
       const views = [...element.querySelectorAll('[data-arrival-ship-view-layer]')].map(view => {
         const style = getComputedStyle(view);
