@@ -5,9 +5,11 @@ import DecalSurfaceV133 from "./DecalSurfaceV133";
 import { maskChromaticsForAppearanceV131 } from "./hunterChromaticsV113";
 import { HUNTER_SKIN_FILTERS_V114, HUNTER_DREAD_FILTERS_V114, HUNTER_ARMOR_FILTERS_V114 } from "./hunterPaletteFiltersV114";
 import type { HunterBodyMorphId, DreadStyleId, HunterAppearance, ArmorId } from "./types";
-import { hunterBodyFullPath, hunterBodyPartPath, hunterBodyPartPlacement, hunterDreadPath, hunterArmorPath, hunterMaskRigPath, hunterMaskRigPlacement, HUNTER_ASSET_ROOT_V3, HUNTER_BODY_PART_IDS, HUNTER_ARMOR_MODULES, HUNTER_ARMOR_FIT_BY_MORPH } from "./hunterVisuals";
+import type { HunterBodyPartId } from "./hunterVisuals";
+import { hunterBodyFullPath, hunterBodyPartPath, hunterBodyPartPlacement, hunterDreadPath, hunterArmorPath, hunterMaskRigPath, hunterMaskRigPlacement, HUNTER_ASSET_ROOT_V3, HUNTER_BODY_PART_IDS, HUNTER_ARMOR_MODULES, HUNTER_EQUIPMENT_V3, hunterWristbladeRegistrationMatrix, hunterShoulderPlateMatrixV145, hunterGreaveMatrixV145, HUNTER_ARMOR_KEEP_CLIP_V145 } from "./hunterVisuals";
+import { gauntletFrontArmMatrixV145, gauntletRigSpriteV139 } from "./systems/gauntletRigSpritesV139";
 import { hunterBodyPartColorV62, hunterBodyPartClipCssV62 } from "./hunterHeadArtV62";
-import { HUNTER_DREAD_STRANDS_V63, solveHunterDreadsV63 } from "./hunterDreadsV63";
+import { HUNTER_DREAD_STRANDS_V63, solveHunterDreadsV63, solveHunterSideDreadsV145 } from "./hunterDreadsV63";
 import { solveHunterRig } from "./hunterRig";
 
 /** Same authored skull socket and strand placement used by HunterRigPreview, at rest. */
@@ -25,6 +27,9 @@ const clothClip = (morphId: HunterBodyMorphId) => {
   const [left, top, right, bottom] = CLOTH_RECT[morphId];
   return `inset(${top / 384 * 100}% ${(256 - right) / 256 * 100}% ${(384 - bottom) / 384 * 100}% ${left / 256 * 100}%)`;
 };
+/** Rest-pose (bind) matrix in 256x384 units as CSS, like HunterRigPreview's cssMatrix. */
+const restMatrixCss = (m: { a: number; b: number; c: number; d: number; e: number; f: number }) =>
+  `translate(${m.e / 256 * 100}%, ${m.f / 384 * 100}%) matrix(${m.a}, ${m.b}, ${m.c}, ${m.d}, 0, 0)`;
 const imageStyle: CSSProperties = { position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "fill", pointerEvents: "none", userSelect: "none" };
 /**
  * These are the exact registered 256x384 V3 plates used by HunterRigPreview.
@@ -35,27 +40,33 @@ export function homeworldArmorSlotsV114(
   appearance: Partial<Pick<HunterAppearance, "armorStyleId">> | undefined,
   armorId: ArmorId,
   hasWristblades: boolean,
-): Array<{ id: string; z: number; shoulder?: boolean }> {
+): Array<{ id: string; z: number; shoulder?: boolean; greave?: "front" | "back"; wrap?: HunterBodyPartId }> {
   const family = HUNTER_ARMOR_MODULES[appearance?.armorStyleId ?? "classic"];
-  const parts: Array<{ id: string; z: number; shoulder?: boolean }> = [
+  // V145 wrap: `wrap` plates are drawn under the body (z 9) and again over it,
+  // masked to that limb, so they read as going around the limb.
+  const parts: Array<{ id: string; z: number; shoulder?: boolean; greave?: "front" | "back"; wrap?: HunterBodyPartId }> = [
     { id: family.chest, z: 18 },
     { id: "belt", z: 19 },
-    { id: family.shoulder, z: 22, shoulder: true },
+    { id: family.shoulder, z: 22, shoulder: true, wrap: "upper-arm-front" },
   ];
+  // Blades are on the back forearm since V145, so the front one always keeps its
+  // bracer; hasWristblades no longer changes the plate list.
   if (armorId !== "scout") {
-    if (!hasWristblades) parts.push({ id: "bracer", z: 23 });
+    parts.push({ id: "bracer", z: 23 });
     parts.push(
-      { id: "thigh", z: 17 },
-      { id: "thigh-lower", z: 17 },
+      { id: "thigh", z: 17, wrap: "thigh-front" },
+      { id: "thigh-lower", z: 17, greave: "front", wrap: "shin-front" },
       { id: "knee", z: 19 },
-      { id: "shin", z: 18 },
+      { id: "shin", z: 18, greave: "front", wrap: "shin-front" },
+      { id: "thigh-lower", z: 17, greave: "back", wrap: "shin-back" },
+      { id: "shin", z: 17, greave: "back", wrap: "shin-back" },
     );
   }
   return parts;
 }
 
 /** Modular body bitmaps with constrained strand motion; not a full body sheet. */
-export default function HomeworldModularHunter({ morphId, dreadStyleId, className, appearance, style, motionPhase = 0, speed = 0, dreadAngles, showArmor = false, armorId = "hunter", hasWristblades = false }: {
+export default function HomeworldModularHunter({ morphId, dreadStyleId, className, appearance, style, motionPhase = 0, speed = 0, dreadAngles, showArmor = false, armorId = "hunter", hasWristblades = false, gauntletVariantId = "jungle-hunter" }: {
   morphId: HunterBodyMorphId; dreadStyleId: DreadStyleId; className?: string;
   style?: CSSProperties;
   motionPhase?: number; speed?: number;
@@ -64,6 +75,8 @@ export default function HomeworldModularHunter({ morphId, dreadStyleId, classNam
   showArmor?: boolean;
   armorId?: ArmorId;
   hasWristblades?: boolean;
+  /** Wrist computer identity worn on the back (left) forearm; same V139 shells as the rig. */
+  gauntletVariantId?: string;
   appearance?: Pick<HunterAppearance, "skinId" | "dreadTintId" | "headStyleId"> &
     Partial<Pick<HunterAppearance, "armorStyleId" | "armorTintId" | "chromaticsV113" | "presetId" | "biomaskId">>;
 }) {
@@ -126,16 +139,51 @@ export default function HomeworldModularHunter({ morphId, dreadStyleId, classNam
         </span>}
       {showArmor && homeworldArmorSlotsV114(appearance, armorId, hasWristblades).map(plate => {
         const path = hunterArmorPath(plate.id);
-        const shoulderScale = HUNTER_ARMOR_FIT_BY_MORPH[morphId].shoulderScale;
-        return <span key={plate.id} data-homeworld-layer="armor" data-armor-module={plate.id}
-          style={{ ...imageStyle, zIndex: plate.z, transform: plate.shoulder ? `scale(${shoulderScale})` : undefined,
-            transformOrigin: plate.shoulder ? "59.765625% 28.645833%" : undefined }}>
-          <img alt="" draggable={false} src={path} style={{ ...imageStyle, filter: HUNTER_ARMOR_FILTERS_V114[appearance?.armorTintId ?? "bronze"] }} />
-          <ChromaticSurfaceV113 appearance={appearance} channel="armor" maskPath={path} style={imageStyle} />
+        // V145 registration: shoulder mirrored onto the deltoid, greaves widened
+        // under the knee and repeated on the back shin.
+        const fit = plate.shoulder ? hunterShoulderPlateMatrixV145(morphId)
+          : plate.greave ? hunterGreaveMatrixV145(morphId, plate.id === "shin" ? "shin" : "thigh-lower", plate.greave) : undefined;
+        const keep = HUNTER_ARMOR_KEEP_CLIP_V145[plate.id]?.[0];
+        const clipPath = keep ? `inset(${keep[1] / 384 * 100}% ${(256 - keep[0] - keep[2]) / 256 * 100}% ${(384 - keep[1] - keep[3]) / 384 * 100}% ${keep[0] / 256 * 100}%)` : undefined;
+        const far = plate.greave === "back";
+        const plateLayer = (zIndex: number, key: string) => <span key={key} data-homeworld-layer="armor" data-armor-module={plate.id}
+          style={{ ...imageStyle, zIndex, transformOrigin: fit ? "0 0" : undefined, transform: fit ? restMatrixCss(fit) : undefined }}>
+          <img alt="" draggable={false} src={path} style={{ ...imageStyle, clipPath,
+            filter: HUNTER_ARMOR_FILTERS_V114[appearance?.armorTintId ?? "bronze"] + (far ? " brightness(.72)" : "") }} />
+          <ChromaticSurfaceV113 appearance={appearance} channel="armor" maskPath={path} style={{ ...imageStyle, clipPath }} />
           {plate.id === HUNTER_ARMOR_MODULES[appearance?.armorStyleId ?? "classic"].chest &&
             <DecalSurfaceV133 appearance={appearance} zone="armor" maskPath={path} style={imageStyle} />}
         </span>;
+        const id = plate.id + (far ? "-far" : "");
+        if (!plate.wrap) return plateLayer(plate.z, id);
+        const limb = hunterBodyPartPath(morphId, plate.wrap, appearance?.headStyleId);
+        return <span key={id}>
+          {plateLayer(9, id + "-under")}
+          <span data-homeworld-armor-wrap={plate.id} style={{ ...imageStyle, zIndex: plate.z,
+            maskImage: `url("${limb}")`, WebkitMaskImage: `url("${limb}")`, maskSize: "100% 100%", WebkitMaskSize: "100% 100%",
+            maskRepeat: "no-repeat", WebkitMaskRepeat: "no-repeat" }}>{plateLayer(0, id + "-over")}</span>
+        </span>;
       })}
+      {/* V145 side dreadlocks over the near shoulder. */}
+      {showArmor && solveHunterSideDreadsV145(REST_FRAME, morphId, dreadStyleId, appearance?.headStyleId, dreadAngles ?? []).map((strand, index) =>
+        <span key={"side-" + index} data-homeworld-layer="dread-side" style={{ ...imageStyle, zIndex: 23,
+          transformOrigin: "0 0", transform: restMatrixCss(strand.matrix) }}>
+          <img alt="" draggable={false} src={hunterDreadPath(dreadStyleId)} style={{ ...imageStyle, filter: HUNTER_DREAD_FILTERS_V114[appearance?.dreadTintId ?? "obsidian"] }} />
+          <ChromaticSurfaceV113 appearance={appearance} channel="dreads" maskPath={hunterDreadPath(dreadStyleId)} style={imageStyle} />
+        </span>)}
+      {/* Worn kit at rest, with the same forearm fits as HunterRigPreview (V145):
+          wrist computer on the front forearm, blade housing on the back one. */}
+      {showArmor && (() => {
+        const gauntlet = restMatrixCss(gauntletFrontArmMatrixV145(morphId, true));
+        return <>
+          {(["base", "lid"] as const).map((part, index) => <img key={part} alt="" draggable={false}
+            data-homeworld-layer="gauntlet" data-gauntlet-part={part} src={gauntletRigSpriteV139(gauntletVariantId, part)}
+            style={{ ...imageStyle, zIndex: 24 + index, transformOrigin: "0 0", transform: gauntlet }} />)}
+          {hasWristblades && <img alt="" draggable={false} data-homeworld-layer="blade-housing"
+            src={HUNTER_EQUIPMENT_V3.wristblades.housing}
+            style={{ ...imageStyle, zIndex: 26, transformOrigin: "0 0", transform: restMatrixCss(hunterWristbladeRegistrationMatrix(morphId)) }} />}
+        </>;
+      })()}
     </span>
   </span>;
 }

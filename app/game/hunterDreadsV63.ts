@@ -116,3 +116,40 @@ export function solveHunterDreadsV63(frame: HunterRigFrame, morph: HunterBodyMor
       collisions: contacts, corrected: angle !== requested, samples };
   });
 }
+
+/**
+ * V145 side strands. References (Jungle Hunter 1987, City Hunter 1990, Scar
+ * 2004, Feral 2022) show dreadlocks growing all over the rear and SIDES of the
+ * scalp: the side ones fall in front of the near shoulder and frame the face,
+ * the rear ones hang down the back. The count and length depend on the style
+ * (proposed values). Roots are relative to the rear dread socket, in head
+ * space; they are drawn IN FRONT of the torso and shoulder armour (but under a
+ * worn biomask) and swing with the same spring angles as the rear strands.
+ */
+export const HUNTER_DREAD_SIDE_STRANDS_V145: Readonly<Record<DreadStyleId, readonly { x: number; y: number; rest: number; scale: number }[]>> = {
+  classic: [{ x: 4, y: 4, rest: -.3, scale: .62 }, { x: 8, y: 10, rest: -.4, scale: .56 }, { x: 11, y: 16, rest: -.5, scale: .5 }],
+  ringed: [{ x: 4, y: 4, rest: -.3, scale: .62 }, { x: 8, y: 10, rest: -.4, scale: .56 }, { x: 11, y: 16, rest: -.5, scale: .5 }],
+  braided: [{ x: 4, y: 4, rest: -.28, scale: .64 }, { x: 8, y: 10, rest: -.38, scale: .58 }, { x: 11, y: 16, rest: -.48, scale: .52 }],
+  elder: [{ x: 3, y: 2, rest: -.24, scale: .72 }, { x: 6, y: 7, rest: -.33, scale: .67 }, { x: 9, y: 12, rest: -.42, scale: .6 }, { x: 12, y: 18, rest: -.52, scale: .52 }],
+  veteran: [{ x: 4, y: 4, rest: -.28, scale: .66 }, { x: 8, y: 10, rest: -.38, scale: .6 }, { x: 11, y: 16, rest: -.48, scale: .53 }],
+  temple: [{ x: 6, y: 7, rest: -.34, scale: .56 }, { x: 10, y: 14, rest: -.46, scale: .48 }],
+  feral: [{ x: 2, y: 2, rest: -.2, scale: .6 }, { x: 5, y: 7, rest: -.3, scale: .56 }, { x: 8, y: 12, rest: -.42, scale: .52 }, { x: 11, y: 18, rest: -.54, scale: .46 }],
+  huntress: [{ x: 6, y: 7, rest: -.36, scale: .52 }, { x: 10, y: 14, rest: -.46, scale: .46 }],
+};
+
+/** Front-of-body side strands; same matrix contract as solveHunterDreadsV63, no torso push-back. */
+export function solveHunterSideDreadsV145(frame: HunterRigFrame, morph: HunterBodyMorphId, style: DreadStyleId,
+  headStyle: HunterHeadStyleId = 'reference', angles: readonly number[] = []): HunterDreadLayerV63[] {
+  const head = relativeBoneMatrix(frame, BIND, 'head'), socket = hunterDreadSocketV63(morph, headStyle);
+  const strands = HUNTER_DREAD_SIDE_STRANDS_V145[style] ?? HUNTER_DREAD_SIDE_STRANDS_V145.classic;
+  return strands.map((strand, index) => {
+    const root = { x: socket.x + strand.x, y: socket.y + strand.y };
+    // Reuse the rear springs (same motion), damped: side strands rest against the shoulder.
+    const swing = finite(angles[index % HUNTER_DREAD_STRANDS_V63.length] ?? 0) * .6;
+    const angle = clamp(strand.rest + swing, -.75, .25);
+    const matrix = layerMatrix(head, root, strand.scale, angle);
+    return { matrix, root: transformPoint(head, root), angle, scale: strand.scale, x: root.x - 143, y: root.y - 43,
+      collisions: 0, corrected: false, samples: [] };
+  });
+}
+
