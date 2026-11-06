@@ -809,6 +809,49 @@ Instrumental 90-second leitmotif for a mercenary alien hunter clan of assassins 
 
 **Décision :** les six fiches R2-M001 → M006 sont jouées en missions courtes, environ 30 à 45 minutes en tout *(durée proposée)*. En nouvelle partie, le joueur peut passer l'enfance ; le tirage du clan, le départ et la région de départ restent faits.
 
+### Coop de campagne
+
+**Décision :** de 1 à 3 joueurs (le nombre du trio), hôte maître : l'histoire, les choix et les missions validées avancent chez l'hôte ; les invités gardent l'honneur, les trophées et les matériaux gagnés.
+
+**Épreuves de rang en coop — décision :** autorisées, y compris le Quatza-Rij seul, la pyramide, la reine et le Black God. Précisions *(proposées)* :
+
+- l'honneur gagné pendant une épreuve est réduit de moitié pour tous quand elle est faite à plusieurs ;
+- le rang n'est validé que pour l'hôte ; un invité qui n'a pas encore ce rang garde la récompense mais doit repasser l'épreuve dans sa partie ;
+- le trophée de l'épreuve (crâne de reine, marque Blooded) va à celui qui porte le coup final ;
+- écart avec le lore : un rite canon comme le Quatza-Rij seul se passe sans aide ; le jeu le signale par une ligne du maître de rite à l'entrée (« un nom gagné à plusieurs se porte moins haut »).
+
+### Économie chiffrée *(valeurs proposées)*
+
+**Honneur — décision :** gagné par la manière. Gain = base de la proie × multiplicateur de manière, moins les pénalités du code.
+
+| Proie | Base |
+| --- | --- |
+| faune ordinaire digne (prédateur armé par nature) | 5 |
+| Xénomorphe drone | 10 |
+| humain armé | 15 |
+| Xénomorphe guerrier, praetorien | 25 / 60 |
+| équipe spécialisée (OWLF, Stargazer, Reapers), par membre | 30 |
+| Bad Blood yautja | 60 |
+| boss d'une des 8 chasses | 150 |
+| reine Xénomorphe | 400 |
+| Reine Mère | 1 500 |
+
+| Manière | Effet |
+| --- | --- |
+| mise à mort sans être repéré | × 1,25 |
+| arme de mêlée | × 1,5 |
+| sans camouflage, à découvert | × 1,5 |
+| trophée prélevé et rapporté | + 20 % |
+| plasma caster sur une proie désarmée ou faible | gain annulé + infraction |
+| technologie yautja laissée sur place | − 50 par objet |
+| proie non digne (malade, enceinte, désarmée, enfant) | gain annulé + infraction (code canon) |
+
+Les multiplicateurs se cumulent (mêlée sans être repéré : × 1,875). Repère : le pack et les sorties d'entraînement rapportent assez pour atteindre 500 (Young Blood) en une dizaine de missions.
+
+**Mort et matériaux (mode normal) — décision :** on perd les matériaux non déposés au vaisseau, à la cité ou au navire ; l'honneur et les trophées déjà gagnés sont gardés. Les modes réalisme et hardcore suivent les règles déjà fixées dans *Mort et difficulté*.
+
+**Matériaux** *(proposé)* : quatre familles pour l'atelier — métal (épaves, ruines), chitine et acide figé (Xénomorphes), os et cuir (faune), composants (technologie humaine et Yautja récupérée). Une amélioration d'arme coûte de l'honneur et une ou deux familles.
+
 ### Arc de guerre des clans *(missions proposées)*
 
 **Décision :** le conflit commence par un terrain de chasse disputé (canon : plusieurs clans se disputent les meilleurs sites, *Aliens vs. Predator: War*), et son déclencheur dépend de la voie de clan.
