@@ -1,0 +1,52 @@
+{
+  "schemaVersion": 2,
+  "id": "yautja.prey.1719",
+  "version": "0.6.0",
+  "visibility": "owner-local-only",
+  "entry": "JOUER_PREY_DLC_V0_6.html",
+  "portableEntry": "JOUER_PREY_DLC_V0_6_PORTABLE.html",
+  "localBridgePort": 4319,
+  "campaigns": [
+    {
+      "id": "human",
+      "label": "Naru / Taabe",
+      "chapters": 22
+    },
+    {
+      "id": "feral",
+      "label": "Feral Predator",
+      "chapters": 15
+    }
+  ],
+  "save": {
+    "storageKey": "yautja.prey.2022.dlc.v06",
+    "schemaVersion": 6,
+    "isolatedFromHost": true,
+    "migrates": [
+      "v05",
+      "v04",
+      "v03",
+      "v02"
+    ]
+  },
+  "hostCompatibility": {
+    "repository": "darknigthmare/yautja-la-longue-chasse",
+    "testedCommit": "73c0f6e8fe5e0a1301c6aa9becb5a67f0fb34aa9",
+    "hostSaveVersion": 9,
+    "publicSourceModified": false,
+    "mausoleumServiceDetected": true,
+    "mausoleumContract": "MausoleumDlcAdapter"
+  },
+  "features": {
+    "chapterChallenges": 37,
+    "globalFeats": 12,
+    "mirrorDossiers": 15,
+    "huntMarks": 6,
+    "noiseStealth": true,
+    "sceneBossPhases": true,
+    "equipmentDamageContinuity": true,
+    "sceneSpecificAI": true,
+    "saveExportImport": true,
+    "mausoleumLaunch": true
+  }
+}

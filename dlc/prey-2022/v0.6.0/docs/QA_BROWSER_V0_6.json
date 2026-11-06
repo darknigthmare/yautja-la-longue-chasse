@@ -1,0 +1,20 @@
+{
+  "version": "0.6.0",
+  "status": "UNAVAILABLE_ENVIRONMENT",
+  "interactivePassClaimed": false,
+  "attempt": {
+    "method": "Chromium headless against local private bridge",
+    "url": "http://127.0.0.1:4360/JOUER_PREY_DLC_V0_6.html",
+    "timeoutSeconds": 20,
+    "exitCode": 124,
+    "domBytes": 0,
+    "stderrExcerpt": "Failed to connect to D-Bus system/session bus; Chromium did not return DOM before timeout."
+  },
+  "fallbackValidation": [
+    "VM DOM/canvas runtime harness",
+    "static contract QA",
+    "portable self-contained QA",
+    "HTTP bridge/integration QA"
+  ],
+  "note": "Aucune capture V0.6 n’est présentée comme preuve navigateur."
+}

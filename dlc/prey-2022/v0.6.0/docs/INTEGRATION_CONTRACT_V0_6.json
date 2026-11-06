@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 6,
+  "dlcId": "yautja.prey.1719",
+  "version": "0.6.0",
+  "host": {
+    "repository": "darknigthmare/yautja-la-longue-chasse",
+    "testedCommit": "73c0f6e8fe5e0a1301c6aa9becb5a67f0fb34aa9",
+    "hostSaveVersion": 9,
+    "nativeMausoleumService": true,
+    "mausoleumContract": "MausoleumDlcAdapter",
+    "hostMissionIdClosedUnion": true
+  },
+  "mode": "isolated-save-local-bridge-with-native-mausoleum-adapter",
+  "installPath": "private-dlc/campaigns/prey-2022",
+  "saveKey": "yautja.prey.2022.dlc.v06",
+  "localBridge": {
+    "script": "integration/prey-private-dev-server-v06.mjs",
+    "defaultUrl": "http://127.0.0.1:4319",
+    "cors": true,
+    "statusEndpoint": "/__prey/status",
+    "descriptorEndpoint": "/__prey/descriptor"
+  },
+  "optionalDevMenuCard": {
+    "script": "integration/APPLIQUER_CARTE_PREY_LOCALE_V0_6.mjs",
+    "target": "app/game/CampaignMainMenu.tsx",
+    "developmentOnly": true,
+    "backupAndHashGuard": true
+  },
+  "optionalNativeMausoleumAdapter": {
+    "script": "integration/APPLIQUER_MAUSOLEE_PREY_LOCAL_V0_6.mjs",
+    "target": "app/game/systems/mausoleum.ts",
+    "adapter": "integration/preyMausoleumAdapterV06.ts",
+    "chronicleId": "prey",
+    "backupAndHashGuard": true,
+    "requiresLocalBridge": true
+  },
+  "defaultInstallerModifiesPublicFiles": false,
+  "publicDeploymentAllowed": false,
+  "nativeMissionMergeClaim": false
+}

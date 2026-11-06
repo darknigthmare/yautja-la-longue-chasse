@@ -1,0 +1,54 @@
+{
+  "operation": "archive-import-only",
+  "sourceVersion": "0.6.0",
+  "repository": "darknigthmare/yautja-la-longue-chasse",
+  "baseCommit": "a97be316ed06ee4fc881dd985e259245b9b73b38",
+  "sourceArchive": {
+    "name": "Yautja_PREY_1719_DLC_v0.6.0.zip",
+    "bytes": 158419,
+    "sha256": "2f07386d1b7ceb4954d1dc88d9a08140b6a9f14907dc5f7648162fb951b5349c"
+  },
+  "inventory": {
+    "originalTrackedFiles": 55,
+    "generatedDuplicates": 2,
+    "completeRebuiltFiles": 57,
+    "svgAssets": 20,
+    "missingOriginalFilesAfterRebuild": 0,
+    "sourceTreeSha": "c84c6557a1de92d7afe39c79ad38dda4ea8037bc",
+    "fullOriginalPackageTreeSha": "34e9860972864ed07d3c31db15d5a859b8b6bace"
+  },
+  "verification": {
+    "originalSha256Entries": "56/56 PASS",
+    "rebuildByteEquality": "57/57 PASS",
+    "rebuildSafetyTests": "6/6 PASS",
+    "modularJsAndMjsSyntax": "12/12 PASS",
+    "staticData": "PASS",
+    "runtimeHarness": {
+      "status": "PASS",
+      "loadedChapters": 37,
+      "completedWithQaApi": 37,
+      "criticalScenarios": 25,
+      "normalPlaythrough": false
+    },
+    "fixtureIntegration": "PASS",
+    "historicalPortableEmbeddedResources": "PASS",
+    "historicalPortableJavaScriptSyntax": {
+      "status": "FAIL",
+      "error": "SyntaxError: Identifier '$' has already been declared",
+      "cause": "Historical String.replace replacement converts $$ to $",
+      "preservedWithoutModification": true
+    },
+    "browserInteractive": "NOT_RUN",
+    "currentHostBuild": "NOT_RUN",
+    "currentHostIntegration": "NOT_RUN"
+  },
+  "hostChanges": [
+    "tsconfig.json: scoped archive exclusion",
+    "eslint.config.mjs: scoped archive exclusion",
+    ".vercelignore: scoped archive exclusion"
+  ],
+  "hostRuntimeModified": false,
+  "historicalIntegrationScriptsApplied": false,
+  "merged": false,
+  "deploymentCommandIssued": false
+}
