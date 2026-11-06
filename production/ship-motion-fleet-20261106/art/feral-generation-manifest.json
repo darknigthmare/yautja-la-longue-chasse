@@ -1,0 +1,181 @@
+{
+  "schemaVersion": 1,
+  "shipId": "feral-spaceship",
+  "sourceCommit": "3ef6d77e338bbec8e904f09ad72f75b4d38bbed2",
+  "method": "built-in image_gen.imagegen, one sprite per call",
+  "transparentBackground": true,
+  "rasterEdits": "none",
+  "fidelityLimit": "Project reference identity; generated hidden geometry and panel details require review; requested camera degrees are intentions, not measurements.",
+  "views": [
+    {
+      "view": "forward-quarter-shallow",
+      "id": "feral-spaceship-forward-quarter-shallow",
+      "prompt": "Use case: identity-preserve. Asset type: ONE individual transparent cinematic game sprite of the EXACT SAME Feral spacecraft shown by the two supplied project references. Image1 is its side/profile; image2 its dorsal/top view. These are references to the same rigid object, not suggestions for redesign. Keep broad chamfered wedge prow RIGHT, aft LEFT, upright, projected longitudinal axis horizontal. LOCK the flattened broad wedge shell, raised ribbed dorsal bridge, exact angular panel seams, small orange-red vent slits and underside hot grating, dark charcoal gunmetal worn surface, and EXACTLY TWO physical rear-side engine nacelles connected to the hull as shown in the top reference. Natural occlusion is allowed; never add a third engine or merge them. Preserve all existing shells and small emissive details. No Wolf flower prow, no round saucer dome, no cockpit glass, weapons, antennae, fins, new landing legs or new hatches. Use the same neutral soft upper-left lighting and restrained ember engine apertures; no new plume or large flare. Full ship centered on a1536x1024landscape canvas with at least6% clear alpha margin, all nacelles and prow tips intact. Genuine RGBA transparency outside physical silhouette, including openings. No scene, ground, shadow plane, background, haze, checkerboard, frame, text or watermark. Change only the three-dimensional camera angle below; never mirror or rotate a flat bitmap to fake the view.\nCAMERA: a gentle12degree front three-quarter yaw from broadside toward the RIGHT prow, no pitch or roll. Reveal a little of the front/inner faces of the existing prow; rear nacelles recede. Keep every part rigid and in the same location on the hull.",
+      "referencePaths": [
+        "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/feral-spaceship-profile.webp",
+        "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/feral-spaceship-top.webp"
+      ],
+      "sourcePath": "/workspace/scratch/0c1fa1359efb/generated_images/exec-f6208dd9-7cc6-49f2-9a0f-c47b1b975e9f.png",
+      "candidatePath": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/feral-spaceship/candidates/forward-quarter-shallow.png",
+      "status": "candidate-pending-independent-review",
+      "sourceSha256": "8e78489b51cd151c459ee0e528c3248d81f83f1158b78082587ce9d217622d70",
+      "sourceBytes": 1711106,
+      "dimensions": [
+        1536,
+        1024
+      ]
+    },
+    {
+      "view": "forward-quarter",
+      "id": "feral-spaceship-forward-quarter",
+      "prompt": "Use case: identity-preserve. Asset type: ONE individual transparent cinematic game sprite of the EXACT SAME Feral spacecraft shown by the two supplied project references. Image1 is its side/profile; image2 its dorsal/top view. These are references to the same rigid object, not suggestions for redesign. Keep broad chamfered wedge prow RIGHT, aft LEFT, upright, projected longitudinal axis horizontal. LOCK the flattened broad wedge shell, raised ribbed dorsal bridge, exact angular panel seams, small orange-red vent slits and underside hot grating, dark charcoal gunmetal worn surface, and EXACTLY TWO physical rear-side engine nacelles connected to the hull as shown in the top reference. Natural occlusion is allowed; never add a third engine or merge them. Preserve all existing shells and small emissive details. No Wolf flower prow, no round saucer dome, no cockpit glass, weapons, antennae, fins, new landing legs or new hatches. Use the same neutral soft upper-left lighting and restrained ember engine apertures; no new plume or large flare. Full ship centered on a1536x1024landscape canvas with at least6% clear alpha margin, all nacelles and prow tips intact. Genuine RGBA transparency outside physical silhouette, including openings. No scene, ground, shadow plane, background, haze, checkerboard, frame, text or watermark. Change only the three-dimensional camera angle below; never mirror or rotate a flat bitmap to fake the view.\nCAMERA: stronger front-quarter yaw, approximately25 degrees toward the broad wedge prow from the profile camera. Show the prow front facet clearly and the far side receding; greater longitudinal foreshortening than a12degree shallow view. Slightly elevated enough to retain dorsal reference recognition, not a top view. Nose stays RIGHT and tail LEFT. Preserve both physical rear nacelles, naturally occluded where appropriate. The hull is one rigid object.",
+      "referencePaths": [
+        "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/feral-spaceship-profile.webp",
+        "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/feral-spaceship-top.webp"
+      ],
+      "sourcePath": "/workspace/scratch/0c1fa1359efb/generated_images/exec-815618f1-0854-44d5-a374-316e1e5115cd.png",
+      "candidatePath": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/feral-spaceship/candidates/forward-quarter.png",
+      "status": "candidate-pending-independent-review",
+      "sourceSha256": "6b2ba455174d1de1ec8a5f669c09347b1b17e8c6e907eeb5528cad35d1857a2c",
+      "sourceBytes": 1975187,
+      "dimensions": [
+        1536,
+        1024
+      ]
+    },
+    {
+      "view": "bank-dorsal-shallow",
+      "id": "feral-spaceship-bank-dorsal-shallow",
+      "prompt": "Use case: identity-preserve. Asset type: ONE individual transparent cinematic game sprite of the EXACT SAME Feral spacecraft shown by the two supplied project references. Image1 is its side/profile; image2 its dorsal/top view. These are references to the same rigid object, not suggestions for redesign. Keep broad chamfered wedge prow RIGHT, aft LEFT, upright, projected longitudinal axis horizontal. LOCK the flattened broad wedge shell, raised ribbed dorsal bridge, exact angular panel seams, small orange-red vent slits and underside hot grating, dark charcoal gunmetal worn surface, and EXACTLY TWO physical rear-side engine nacelles connected to the hull as shown in the top reference. Natural occlusion is allowed; never add a third engine or merge them. Preserve all existing shells and small emissive details. No Wolf flower prow, no round saucer dome, no cockpit glass, weapons, antennae, fins, new landing legs or new hatches. Use the same neutral soft upper-left lighting and restrained ember engine apertures; no new plume or large flare. Full ship centered on a1536x1024landscape canvas with at least6% clear alpha margin, all nacelles and prow tips intact. Genuine RGBA transparency outside physical silhouette, including openings. No scene, ground, shadow plane, background, haze, checkerboard, frame, text or watermark. Change only the three-dimensional camera angle below; never mirror or rotate a flat bitmap to fake the view.\nCAMERA: a gentle axial roll12degrees toward the viewer from the profile, exposing slightly more DORSAL upper armor and the paired rear nacelles as arranged in the top reference. No yaw or pitch; noseRIGHT/aftLEFT, longitudinal projected axis horizontal. This is the shallow dorsal view, not a full top-down view.",
+      "referencePaths": [
+        "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/feral-spaceship-profile.webp",
+        "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/feral-spaceship-top.webp"
+      ],
+      "sourcePath": "/workspace/scratch/0c1fa1359efb/generated_images/exec-66ad936f-5e30-489d-a0e9-b140be691272.png",
+      "candidatePath": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/feral-spaceship/candidates/bank-dorsal-shallow.png",
+      "status": "candidate-pending-independent-review",
+      "sourceSha256": "89877ab8536f44d28d428b3ac213d3184ef523ffb6f579be638e20c836fa4473",
+      "sourceBytes": 1832826,
+      "dimensions": [
+        1536,
+        1024
+      ]
+    },
+    {
+      "view": "bank-dorsal",
+      "id": "feral-spaceship-bank-dorsal",
+      "prompt": "Use case: identity-preserve. Asset type: ONE individual transparent cinematic game sprite of the EXACT SAME Feral spacecraft shown by the two supplied project references. Image1 is its side/profile; image2 its dorsal/top view. These are references to the same rigid object, not suggestions for redesign. Keep broad chamfered wedge prow RIGHT, aft LEFT, upright, projected longitudinal axis horizontal. LOCK the flattened broad wedge shell, raised ribbed dorsal bridge, exact angular panel seams, small orange-red vent slits and underside hot grating, dark charcoal gunmetal worn surface, and EXACTLY TWO physical rear-side engine nacelles connected to the hull as shown in the top reference. Natural occlusion is allowed; never add a third engine or merge them. Preserve all existing shells and small emissive details. No Wolf flower prow, no round saucer dome, no cockpit glass, weapons, antennae, fins, new landing legs or new hatches. Use the same neutral soft upper-left lighting and restrained ember engine apertures; no new plume or large flare. Full ship centered on a1536x1024landscape canvas with at least6% clear alpha margin, all nacelles and prow tips intact. Genuine RGBA transparency outside physical silhouette, including openings. No scene, ground, shadow plane, background, haze, checkerboard, frame, text or watermark. Change only the three-dimensional camera angle below; never mirror or rotate a flat bitmap to fake the view.\nThe THIRD image is the current shallow dorsal candidate. Preserve the rigid ship identity from the two masters and its materials/parts from image3. We need the DEEP DORSAL view, not a near duplicate of image3: move the camera substantially further toward directly above the ship, revealing CLEARLY MORE of the wide UPPER shell and the entire upper ribbed bridge than image3, with the two rear nacelles separating vertically and far LESS of the dark ventral belly visible. This represents the stronger25degree dorsal bank target relative to the master profile (camera angle is intention). Keep nose RIGHT and tail LEFT along a level projected long axis. No front/rear yaw, no in-plane bitmap rotation. The top broad shell should visibly dominate the silhouette, approaching but not reaching the master top-down camera. Do not increase the ventral cheek, do not enlarge the near engine, no new part. Both existing rear nacelles remain, all tips within alpha margins.",
+      "referencePaths": [
+        "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/feral-spaceship-profile.webp",
+        "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/feral-spaceship-top.webp",
+        "/workspace/scratch/0c1fa1359efb/generated_images/exec-66ad936f-5e30-489d-a0e9-b140be691272.png"
+      ],
+      "sourcePath": "/workspace/scratch/0c1fa1359efb/generated_images/exec-9ac54bec-4c22-47f9-b642-2a281e94059d.png",
+      "candidatePath": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/feral-spaceship/candidates/bank-dorsal.png",
+      "status": "candidate-pending-independent-review",
+      "sourceSha256": "083e7f4bd2bdcb646dd00a662ae9e5dfabfb77537a9aa9fc35c62741ac423f1c",
+      "sourceBytes": 2201237,
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "generatedId": "feral-spaceship-bank-dorsal-correction-1",
+      "assignmentNote": "Original deep dorsal did not establish a clear shallow-to-deep progression; replacement reveals substantially more dorsal shell.",
+      "selectedAttempt": 2
+    },
+    {
+      "view": "bank-ventral-shallow",
+      "id": "feral-spaceship-bank-ventral-shallow",
+      "prompt": "Use case: identity-preserve. Asset type: ONE individual transparent cinematic game sprite of the EXACT SAME Feral spacecraft shown by the two supplied project references. Image1 is its side/profile; image2 its dorsal/top view. These are references to the same rigid object, not suggestions for redesign. Keep broad chamfered wedge prow RIGHT, aft LEFT, upright, projected longitudinal axis horizontal. LOCK the flattened broad wedge shell, raised ribbed dorsal bridge, exact angular panel seams, small orange-red vent slits and underside hot grating, dark charcoal gunmetal worn surface, and EXACTLY TWO physical rear-side engine nacelles connected to the hull as shown in the top reference. Natural occlusion is allowed; never add a third engine or merge them. Preserve all existing shells and small emissive details. No Wolf flower prow, no round saucer dome, no cockpit glass, weapons, antennae, fins, new landing legs or new hatches. Use the same neutral soft upper-left lighting and restrained ember engine apertures; no new plume or large flare. Full ship centered on a1536x1024landscape canvas with at least6% clear alpha margin, all nacelles and prow tips intact. Genuine RGBA transparency outside physical silhouette, including openings. No scene, ground, shadow plane, background, haze, checkerboard, frame, text or watermark. Change only the three-dimensional camera angle below; never mirror or rotate a flat bitmap to fake the view.\nCAMERA: gentle axial roll12degrees AWAY from the viewer from the profile, revealing slightly more VENTRAL underside, the existing lower orange grating and lower faces of the rear nacelle shells. No yaw or pitch; noseRIGHT/aftLEFT, projected axis horizontal. Preserve the reference silhouette; do not invent landing legs, a new bay, weapons or appendages.",
+      "referencePaths": [
+        "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/feral-spaceship-profile.webp",
+        "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/feral-spaceship-top.webp"
+      ],
+      "sourcePath": "/workspace/scratch/0c1fa1359efb/generated_images/exec-df7749b0-d01d-45ff-b77b-c4362a7b6299.png",
+      "candidatePath": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/feral-spaceship/candidates/bank-ventral-shallow.png",
+      "status": "candidate-pending-independent-review",
+      "sourceSha256": "b7f343bb0031b328135319057937ad818e86c6d2d1c5817920e34238fbdfbde7",
+      "sourceBytes": 1522723,
+      "dimensions": [
+        1536,
+        1024
+      ]
+    },
+    {
+      "view": "bank-ventral",
+      "id": "feral-spaceship-bank-ventral",
+      "prompt": "Use case: identity-preserve. Asset type: ONE individual transparent cinematic game sprite of the EXACT SAME Feral spacecraft shown by the two supplied project references. Image1 is its side/profile; image2 its dorsal/top view. These are references to the same rigid object, not suggestions for redesign. Keep broad chamfered wedge prow RIGHT, aft LEFT, upright, projected longitudinal axis horizontal. LOCK the flattened broad wedge shell, raised ribbed dorsal bridge, exact angular panel seams, small orange-red vent slits and underside hot grating, dark charcoal gunmetal worn surface, and EXACTLY TWO physical rear-side engine nacelles connected to the hull as shown in the top reference. Natural occlusion is allowed; never add a third engine or merge them. Preserve all existing shells and small emissive details. No Wolf flower prow, no round saucer dome, no cockpit glass, weapons, antennae, fins, new landing legs or new hatches. Use the same neutral soft upper-left lighting and restrained ember engine apertures; no new plume or large flare. Full ship centered on a1536x1024landscape canvas with at least6% clear alpha margin, all nacelles and prow tips intact. Genuine RGBA transparency outside physical silhouette, including openings. No scene, ground, shadow plane, background, haze, checkerboard, frame, text or watermark. Change only the three-dimensional camera angle below; never mirror or rotate a flat bitmap to fake the view.\nCAMERA: stronger axial roll25degrees AWAY from the viewer from the profile, revealing MORE VENTRAL underside, the existing lower orange grating and lower faces of the two rear nacelle shells than a shallow12degree bank. No yaw or pitch; noseRIGHT/aftLEFT, projected axis horizontal. Preserve all existing panels and physical attachments; no new equipment.",
+      "referencePaths": [
+        "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/feral-spaceship-profile.webp",
+        "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/feral-spaceship-top.webp"
+      ],
+      "sourcePath": "/workspace/scratch/0c1fa1359efb/generated_images/exec-7857b78f-bc9a-4951-ac97-09b3b6ab4f33.png",
+      "candidatePath": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/feral-spaceship/candidates/bank-ventral.png",
+      "status": "candidate-pending-independent-review",
+      "sourceSha256": "9c5858121b6946f232dc45fd7bd7739a3ed2810d11455760238329ab83c9b0a8",
+      "sourceBytes": 1681646,
+      "dimensions": [
+        1536,
+        1024
+      ]
+    },
+    {
+      "view": "rear-quarter-shallow",
+      "id": "feral-spaceship-rear-quarter-shallow",
+      "prompt": "Use case: identity-preserve. Asset type: ONE individual transparent cinematic game sprite of the EXACT SAME Feral spacecraft shown by the two supplied project references. Image1 is its side/profile; image2 its dorsal/top view. These are references to the same rigid object, not suggestions for redesign. Keep broad chamfered wedge prow RIGHT, aft LEFT, upright, projected longitudinal axis horizontal. LOCK the flattened broad wedge shell, raised ribbed dorsal bridge, exact angular panel seams, small orange-red vent slits and underside hot grating, dark charcoal gunmetal worn surface, and EXACTLY TWO physical rear-side engine nacelles connected to the hull as shown in the top reference. Natural occlusion is allowed; never add a third engine or merge them. Preserve all existing shells and small emissive details. No Wolf flower prow, no round saucer dome, no cockpit glass, weapons, antennae, fins, new landing legs or new hatches. Use the same neutral soft upper-left lighting and restrained ember engine apertures; no new plume or large flare. Full ship centered on a1536x1024landscape canvas with at least6% clear alpha margin, all nacelles and prow tips intact. Genuine RGBA transparency outside physical silhouette, including openings. No scene, ground, shadow plane, background, haze, checkerboard, frame, text or watermark. Change only the three-dimensional camera angle below; never mirror or rotate a flat bitmap to fake the view.\nCAMERA: a gentle12degree rear three-quarter yaw from broadside toward the LEFT aft nacelles, no pitch or roll. Reveal the two existing engine apertures where physically visible; the RIGHT prow recedes. Keep every part rigid and in the same location on the hull.",
+      "referencePaths": [
+        "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/feral-spaceship-profile.webp",
+        "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/feral-spaceship-top.webp"
+      ],
+      "sourcePath": "/workspace/scratch/0c1fa1359efb/generated_images/exec-b44f2d81-3f6e-4c74-810a-bc407691e324.png",
+      "candidatePath": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/feral-spaceship/candidates/rear-quarter-shallow.png",
+      "status": "candidate-pending-independent-review",
+      "sourceSha256": "26ae2bd3646e061322f0f55ba9dc79b31609d362d79791b3d888550f8e8cb7dd",
+      "sourceBytes": 1704646,
+      "dimensions": [
+        1536,
+        1024
+      ]
+    },
+    {
+      "view": "rear-quarter",
+      "id": "feral-spaceship-rear-quarter",
+      "prompt": "Use case: identity-preserve. Asset type: ONE individual transparent cinematic game sprite of the EXACT SAME Feral spacecraft shown by the two supplied project references. Image1 is its side/profile; image2 its dorsal/top view. These are references to the same rigid object, not suggestions for redesign. Keep broad chamfered wedge prow RIGHT, aft LEFT, upright, projected longitudinal axis horizontal. LOCK the flattened broad wedge shell, raised ribbed dorsal bridge, exact angular panel seams, small orange-red vent slits and underside hot grating, dark charcoal gunmetal worn surface, and EXACTLY TWO physical rear-side engine nacelles connected to the hull as shown in the top reference. Natural occlusion is allowed; never add a third engine or merge them. Preserve all existing shells and small emissive details. No Wolf flower prow, no round saucer dome, no cockpit glass, weapons, antennae, fins, new landing legs or new hatches. Use the same neutral soft upper-left lighting and restrained ember engine apertures; no new plume or large flare. Full ship centered on a1536x1024landscape canvas with at least6% clear alpha margin, all nacelles and prow tips intact. Genuine RGBA transparency outside physical silhouette, including openings. No scene, ground, shadow plane, background, haze, checkerboard, frame, text or watermark. Change only the three-dimensional camera angle below; never mirror or rotate a flat bitmap to fake the view.\nCAMERA: stronger rear-quarter yaw, approximately25 degrees toward the aft from the profile camera. Clearly reveal the rear construction and the faces of the TWO existing nacelles at LEFT, and foreshorten the wedge prow receding to RIGHT. This is more pronounced than a12degree shallow rear-quarter view, not a direct rear view. Keep the same slight elevation and rigid shell; no roll, no added engines.",
+      "referencePaths": [
+        "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/feral-spaceship-profile.webp",
+        "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/feral-spaceship-top.webp"
+      ],
+      "sourcePath": "/workspace/scratch/0c1fa1359efb/generated_images/exec-183e05d4-62af-4420-8203-b15878af1b2b.png",
+      "candidatePath": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/feral-spaceship/candidates/rear-quarter.png",
+      "status": "candidate-pending-independent-review",
+      "sourceSha256": "5d4b524887ab6d8ebcfa83a0bbd176a8c0668d556a9fa2342910323048f79cc1",
+      "sourceBytes": 1927447,
+      "dimensions": [
+        1536,
+        1024
+      ]
+    }
+  ],
+  "rejectedAttempts": [
+    {
+      "view": "bank-dorsal",
+      "id": "feral-spaceship-bank-dorsal",
+      "prompt": "Use case: identity-preserve. Asset type: ONE individual transparent cinematic game sprite of the EXACT SAME Feral spacecraft shown by the two supplied project references. Image1 is its side/profile; image2 its dorsal/top view. These are references to the same rigid object, not suggestions for redesign. Keep broad chamfered wedge prow RIGHT, aft LEFT, upright, projected longitudinal axis horizontal. LOCK the flattened broad wedge shell, raised ribbed dorsal bridge, exact angular panel seams, small orange-red vent slits and underside hot grating, dark charcoal gunmetal worn surface, and EXACTLY TWO physical rear-side engine nacelles connected to the hull as shown in the top reference. Natural occlusion is allowed; never add a third engine or merge them. Preserve all existing shells and small emissive details. No Wolf flower prow, no round saucer dome, no cockpit glass, weapons, antennae, fins, new landing legs or new hatches. Use the same neutral soft upper-left lighting and restrained ember engine apertures; no new plume or large flare. Full ship centered on a1536x1024landscape canvas with at least6% clear alpha margin, all nacelles and prow tips intact. Genuine RGBA transparency outside physical silhouette, including openings. No scene, ground, shadow plane, background, haze, checkerboard, frame, text or watermark. Change only the three-dimensional camera angle below; never mirror or rotate a flat bitmap to fake the view.\nCAMERA: a stronger axial roll25degrees toward the viewer from the profile, clearly exposing MORE DORSAL upper armor, both side engine roots and the raised central ribbed bridge than the shallow12degree bank. No yaw or pitch; noseRIGHT/aftLEFT, projected axis horizontal. Both side nacelles stay rigidly attached; this is not a full top-down view.",
+      "referencePaths": [
+        "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/feral-spaceship-profile.webp",
+        "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/feral-spaceship-top.webp"
+      ],
+      "sourcePath": "/workspace/scratch/0c1fa1359efb/generated_images/exec-acad46c6-f4c9-4aa0-ab6e-eef82b15d8a2.png",
+      "candidatePath": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/feral-spaceship/candidates/bank-dorsal.png",
+      "status": "candidate-pending-independent-review",
+      "sourceSha256": "0bf112a2ae81cbfa00ad62d57b526cada8f240d5fa900d14ca09d9d347bfdafe",
+      "sourceBytes": 2087505,
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "archivedCandidatePath": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/feral-spaceship/rejected/bank-dorsal-attempt-1.png",
+      "reason": "Original deep dorsal did not establish a clear shallow-to-deep progression; replacement reveals substantially more dorsal shell."
+    }
+  ]
+}

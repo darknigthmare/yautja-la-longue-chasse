@@ -1,15 +1,17 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import sharp from 'sharp';
 import { homeworldSceneSsrV78 } from './helpers/homeworld-scene-ssr-v78.mjs';
 
 const qa = homeworldSceneSsrV78();
 const {
-  ARRIVAL_CLASSIC_SHIP_VIEWS, ARRIVAL_SHIP_MOTION_HULL,
+  ARRIVAL_CLASSIC_SHIP_VIEWS, ARRIVAL_SHIP_MOTION_HULL, ARRIVAL_SHIP_MOTION_FAMILIES,
   arrivalShipMotionFrame, arrivalShipMotionAssetPaths,
   arrivalShipViewRegistration, arrivalShipViewPoint,
 } = qa.load('app/game/systems/planetArrivalShipMotion.ts');
 const { SHIP_IDS, shipProfileAssetPath } = qa.load('app/game/shipCatalogue.ts');
 const { carrierArtForShip } = qa.load('app/game/systems/planetArrivalArt.ts');
+const { ARRIVAL_ADDITIONAL_SHIP_MOTION_CALIBRATIONS } = qa.load('app/game/systems/planetArrivalShipMotionCalibrations.ts');
 const { arrivalCarrierPose, arrivalInsertionShipPose, attachmentToStage } = qa.load('app/game/systems/planetArrivalSpatial.ts');
 const { arrivalFormationSlots } = qa.load('app/game/systems/planetArrivalPresentation.ts');
 
@@ -123,8 +125,8 @@ test('reduced motion holds the complete original view without a rotating bank or
   }
 });
 
-test('every other catalogue identity uses only its own calibrated profile, including project-original V12 and canonical V14 hulls', () => {
-  for (const shipId of SHIP_IDS.filter(id => id !== classic)) {
+test('every unregistered catalogue identity uses only its own calibrated profile, including project-original V12 and canonical V14 hulls', () => {
+  for (const shipId of SHIP_IDS.filter(id => !ARRIVAL_SHIP_MOTION_FAMILIES[id])) {
     assert.deepEqual(arrivalShipMotionAssetPaths(shipId), []);
     for (const time of [14_000, 20_080, 24_480, 27_000, 34_880, 44_080, 53_960, 62_000]) {
       const frame = arrivalShipMotionFrame(shipId, time, 'ship');
@@ -133,6 +135,94 @@ test('every other catalogue identity uses only its own calibrated profile, inclu
       assert.deepEqual(frame.art, carrierArtForShip(shipId));
       assert.equal(frame.to, null); assert.equal(frame.fallback, true);
       assert.ok(!arrivalShipMotionAssetPaths(classic).includes(frame.from.path));
+    }
+  }
+});
+
+test('the approved fleet extension contains all six selected hulls and exactly forty-six views', () => {
+  const expected = ['avp-predator-mothership', 'avpr-scout-ship', 'wolf-ship',
+    'fugitive-spaceship', 'upgrade-spaceship', 'feral-spaceship'];
+  const registered = Object.keys(ARRIVAL_SHIP_MOTION_FAMILIES).filter(id => id !== classic);
+  assert.deepEqual(registered.sort(), expected.sort(), 'An omitted fleet family cannot silently reduce the delivery scope.');
+  assert.equal(registered.reduce((count, id) => count + arrivalShipMotionAssetPaths(id).length, 0), 46);
+});
+
+test('inspected additional families expose exactly their consumed views and never borrow another hull or engine', () => {
+  const allowed = new Map([
+    ['avp-predator-mothership', ['pod']], ['avpr-scout-ship', ['pod', 'ship']],
+    ['wolf-ship', ['pod', 'ship']], ['fugitive-spaceship', ['pod', 'ship']],
+    ['upgrade-spaceship', ['pod', 'ship']], ['feral-spaceship', ['pod', 'ship']],
+  ]);
+  const registered = Object.keys(ARRIVAL_SHIP_MOTION_FAMILIES).filter(id => id !== classic);
+  assert.deepEqual(registered, Object.keys(ARRIVAL_ADDITIONAL_SHIP_MOTION_CALIBRATIONS),
+    'An approved table must be complete and compatible; silently rejected registrations cannot pass.');
+  const paths = new Set(arrivalShipMotionAssetPaths(classic));
+  for (const shipId of registered) {
+    assert.ok(allowed.has(shipId));
+    const family = ARRIVAL_SHIP_MOTION_FAMILIES[shipId];
+    assert.deepEqual(family.methods, allowed.get(shipId));
+    const expected = ['forward-quarter', 'forward-quarter-shallow', 'bank-dorsal', 'bank-dorsal-shallow',
+      'rear-quarter-shallow', 'rear-quarter', ...(family.methods.includes('ship') ? ['bank-ventral', 'bank-ventral-shallow'] : [])];
+    assert.deepEqual(Object.keys(family.views).sort(), expected.sort());
+    assert.equal(arrivalShipMotionAssetPaths(shipId).length, expected.length);
+    assert.ok(family.sourceReview);
+    const profile = carrierArtForShip(shipId);
+    for (const view of Object.values(family.views)) {
+      assert.equal(view.shipId, shipId);
+      assert.ok(view.path.startsWith(`/game/planet-arrival/ship-motion-fleet-v1/${shipId}/`));
+      assert.ok(!paths.has(view.path), 'Different hulls must not share a perspective sprite.');
+      paths.add(view.path);
+      assert.equal(view.calibration, 'inspected-source-art');
+      assert.equal(view.art.review, 'inspected-source-art');
+      assert.ok(view.art.width > 0 && view.art.height > 0);
+      assert.equal(Math.sign(view.art.nose.x - view.art.tail.x), Math.sign(profile.nose.x - profile.tail.x));
+      for (const point of [view.art.nose, view.art.tail, view.art.release, view.pivot]) {
+        assert.ok(Number.isFinite(point.x) && Number.isFinite(point.y));
+        assert.ok(point.x >= 0 && point.x <= 1 && point.y >= 0 && point.y <= 1);
+      }
+      assert.ok(view.exhaust.every(socket => socket.visibility === 0 && socket.review === 'unreviewed'));
+    }
+  }
+});
+
+test('additional-family calibration dimensions match the actual unresized transparent runtime canvases', async () => {
+  for (const [shipId, family] of Object.entries(ARRIVAL_SHIP_MOTION_FAMILIES)) {
+    if (shipId === classic) continue;
+    for (const view of Object.values(family.views)) {
+      const metadata = await sharp(`public${view.path}`).metadata();
+      assert.equal(metadata.format, 'webp'); assert.equal(metadata.hasAlpha, true);
+      assert.deepEqual([metadata.width, metadata.height], [view.art.width, view.art.height],
+        `${shipId}/${view.id}: the aspect correction must use the real decoded source dimensions.`);
+    }
+  }
+});
+
+test('additional families preserve launch, landing, unsupported methods and complete-family fallback', () => {
+  for (const [shipId, family] of Object.entries(ARRIVAL_SHIP_MOTION_FAMILIES)) {
+    if (shipId === classic) continue;
+    const profile = carrierArtForShip(shipId);
+    const isProfile = frame => {
+      assert.equal(frame.from.path, shipProfileAssetPath(shipId));
+      assert.equal(frame.to, null); assert.equal(frame.mix, 0);
+      assert.deepEqual(frame.art, profile); assert.deepEqual(frame.pivot, { x: .5, y: .5 });
+    };
+    for (const method of ['pod', 'ship']) {
+      for (const time of [0, 12_999, 22_400, 23_000, 23_860, 24_200, 49_000, 53_960, 57_000, 62_000]) {
+        isProfile(arrivalShipMotionFrame(shipId, time, method));
+      }
+      for (const time of [14_000, 15_280, 20_080, 24_480, 26_480, 34_880, 44_080]) {
+        const frame = arrivalShipMotionFrame(shipId, time, method);
+        assert.equal(frame.from.shipId, shipId);
+        assert.ok(frame.exhaust.every(socket => socket.visibility === 0));
+        isProfile(arrivalShipMotionFrame(shipId, time, method, true));
+        if (!family.methods.includes(method)) { isProfile(frame); assert.equal(frame.fallback, true); }
+        for (const path of family.paths) isProfile(arrivalShipMotionFrame(shipId, time, method, false, [path]));
+        assert.deepEqual(arrivalShipMotionFrame(shipId, time, method, false, ['/unrelated.webp']), frame);
+      }
+      for (const boundary of [23_000, 31_000, ...(method === 'ship' ? [49_000] : [])]) {
+        sameVisibleFrame(arrivalShipMotionFrame(shipId, boundary - .001, method),
+          arrivalShipMotionFrame(shipId, boundary + .001, method));
+      }
     }
   }
 });
@@ -209,6 +299,76 @@ test('registration matches a known quarter-turn and uniform resize on a rectangu
   ]) {
     const actual = arrivalShipViewPoint(frame, view, point);
     near(actual.x, expected.x); near(actual.y, expected.y);
+  }
+});
+
+test('different native canvases preserve every pixel direction and length ratio after the CSS canvas stretch is cancelled', () => {
+  const view = { ...ARRIVAL_CLASSIC_SHIP_VIEWS['forward-quarter'], pivot: { x: .3, y: .6 },
+    art: { ...original, width: 1200, height: 600, nose: { x: .25, y: .5 }, tail: { x: .75, y: .5 } } };
+  const frame = { art: { ...view.art, width: 1500, height: 1500,
+    nose: { x: .5, y: .25 }, tail: { x: .5, y: .75 } } };
+  const transform = arrivalShipViewRegistration(frame, view);
+  assert.deepEqual(transform.sourceScale, { x: .8, y: .4 });
+  near(transform.rotationDeg, 90); near(transform.scale, 1.25);
+  const transformed = point => {
+    const p = arrivalShipViewPoint(frame, view, point);
+    return { x: p.x * frame.art.width, y: p.y * frame.art.height };
+  };
+  const center = transformed({ x: .5, y: .5 });
+  const nativeX = transformed({ x: .5 + 1 / view.art.width, y: .5 });
+  const nativeY = transformed({ x: .5, y: .5 + 1 / view.art.height });
+  const x = { x: nativeX.x - center.x, y: nativeX.y - center.y };
+  const y = { x: nativeY.x - center.x, y: nativeY.y - center.y };
+  near(Math.hypot(x.x, x.y), 1.25); near(Math.hypot(y.x, y.y), 1.25);
+  near(x.x * y.x + x.y * y.y, 0);
+  near(x.x * y.y - x.y * y.x, 1.25 ** 2);
+  for (const point of [{ x: 0, y: 0 }, { x: 1, y: 0 }, { x: 0, y: 1 }, { x: 1, y: 1 }, { x: .5, y: .8 }]) {
+    // Independent affine prediction from two orthogonal one-source-pixel
+    // vectors covers corners and an interior point, not just nose/tail anchors.
+    const expected = { x: center.x + x.x * (point.x - .5) * view.art.width + y.x * (point.y - .5) * view.art.height,
+      y: center.y + x.y * (point.x - .5) * view.art.width + y.y * (point.y - .5) * view.art.height };
+    const actual = transformed(point);
+    near(actual.x, expected.x); near(actual.y, expected.y);
+  }
+  const below = arrivalShipViewPoint(frame, view, { x: .5, y: .8 });
+  near(below.x, .35); near(below.y, .5);
+  assert.deepEqual(arrivalShipViewRegistration({ art: view.art }, view),
+    { translateX: 0, translateY: 0, rotationDeg: 0, scale: 1 });
+});
+
+test('additional-family dissolves align the painted axes and stay isotropic through profile-to-native-canvas changes', () => {
+  for (const [shipId, family] of Object.entries(ARRIVAL_SHIP_MOTION_FAMILIES)) {
+    if (shipId === classic) continue;
+    for (const method of family.methods) {
+      let transitions = 0;
+      for (let time = 13_000; time < 49_000; time += 40) {
+        const frame = arrivalShipMotionFrame(shipId, time, method);
+        for (const view of [frame.from, frame.to].filter(Boolean)) {
+          const registration = arrivalShipViewRegistration(frame, view);
+          for (const key of ['translateX', 'translateY', 'rotationDeg', 'scale']) assert.ok(Number.isFinite(registration[key]));
+          assert.ok(registration.scale > 0);
+          for (const name of ['nose', 'tail']) {
+            const point = arrivalShipViewPoint(frame, view, view.art[name]);
+            near(point.x, frame.art[name].x); near(point.y, frame.art[name].y);
+          }
+          const measured = point => {
+            const p = arrivalShipViewPoint(frame, view, point);
+            return [p.x * frame.art.width, p.y * frame.art.height];
+          };
+          const origin = measured(view.pivot);
+          const px = measured({ x: view.pivot.x + 1 / view.art.width, y: view.pivot.y });
+          const py = measured({ x: view.pivot.x, y: view.pivot.y + 1 / view.art.height });
+          const x = px.map((value, index) => value - origin[index]);
+          const y = py.map((value, index) => value - origin[index]);
+          near(Math.hypot(...x), Math.hypot(...y)); near(x[0] * y[0] + x[1] * y[1], 0);
+        }
+        if (!frame.to) continue;
+        transitions++;
+        sameVisibleFrame(arrivalShipMotionFrame(shipId, time - .001, method),
+          arrivalShipMotionFrame(shipId, time + .001, method), .0003);
+      }
+      assert.ok(transitions > 0, `${shipId}/${method} must exercise its real registered dissolves.`);
+    }
   }
 });
 

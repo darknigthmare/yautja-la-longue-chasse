@@ -1,0 +1,69 @@
+{
+  "scope": "Synthetic oracle counterexample and exact source-delta inspection; no browser/native claim",
+  "sourceSha256": "f3abb22cd8728f03e0b00d6d158df39038015204fbb6d3d94c288c34fdbe3ecb",
+  "tsxSha256": "49449f839d797de1348cb89249dd1c1b70d3c671976e6f2acca8323c13ce03cf",
+  "helperSha256": "ab72b3647ed1581363f434c68aa7a53380f31f5ff3a62936adc7a9dc038416a1",
+  "checks": [
+    {
+      "name": "uniform rotated source",
+      "expected": "accept",
+      "passed": true,
+      "determinant": 0.05759999999999999
+    },
+    {
+      "name": "intentional reflected carrier",
+      "expected": "accept",
+      "passed": true,
+      "determinant": -0.05759999999999999
+    },
+    {
+      "name": "implicit SVG meet under differing source and frame canvases",
+      "expected": "reject",
+      "passed": true,
+      "scaleRatio": 0.7606473594548551,
+      "error": "bank-ventral-shallow SVG source-pixel scale must be isotropic: observed 0.7606473594548551, expected 1 ± 0.0001"
+    },
+    {
+      "name": "isotropic but displaced rim",
+      "expected": "reject",
+      "passed": true,
+      "error": "bank-ventral-shallow/nose SVG source pixels must coincide with the actual painted layer: observed 2, expected 0 ± 0.5"
+    }
+  ],
+  "allPassed": true,
+  "unchangedFunctions": [
+    "check",
+    "loadFixtures",
+    "startHost",
+    "makeContext",
+    "watch",
+    "openShot",
+    "waitElapsed",
+    "assertRegistration",
+    "assertIsotropicSources",
+    "assertEngines",
+    "capture",
+    "expectedLaunch",
+    "observeLaunches",
+    "capsuleRoute",
+    "pauseAndResume",
+    "shipRoute",
+    "failureRoute"
+  ],
+  "changedFunctions": [
+    "frame",
+    "assertHull",
+    "observeRegistrationBlends",
+    "additionalFamilyRoute"
+  ],
+  "addedFunction": "assertRimRegistration",
+  "nativeMainLoopByteIdentical": true,
+  "priorAssertionsRetainedExactly": 87,
+  "addedAssertions": 9,
+  "tsxOnlyDelta": "Conditional outer SVG preserveAspectRatio=none iff non-grounded and the actual registration carries sourceScale.",
+  "limitations": [
+    "A native getScreenCTM observation is still required.",
+    "The 46 held-view photographs alone do not exercise a cross-canvas dissolve.",
+    "The extended native oracle requires a real cross-canvas cloaked dissolve for each applicable additional ship family."
+  ]
+}

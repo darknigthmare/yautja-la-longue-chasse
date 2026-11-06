@@ -1,0 +1,2310 @@
+{
+  "schemaVersion": 1,
+  "dateUtc": "2026-11-06T04:41:14.280858+00:00",
+  "shipId": "avpr-scout-ship",
+  "status": "eight selected candidates independently inspected; parent approval and native transition qualification pending",
+  "runtimeActivationApproved": false,
+  "canonicalArtApproval": false,
+  "humanArtApproval": false,
+  "methods": [
+    "pod",
+    "ship"
+  ],
+  "profilePath": "/game/ships/v14/avpr-scout-ship.webp",
+  "sourceReview": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/avpr-scout-ship/independent-eight-view-review.md",
+  "sourceManifest": {
+    "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/avpr-scout-ship/generation-manifest.json",
+    "sha256": "fce474a68eaffe78fcb6511aa781f6851a52e2f6a0d91a0c443b679e8506fd12",
+    "bytes": 118880
+  },
+  "sourceSelectionUnchanged": true,
+  "historicalRejectedAttemptsPreserved": true,
+  "references": [
+    {
+      "role": "profile",
+      "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/avpr-scout-ship-profile.webp",
+      "bytes": 79740,
+      "sha256": "b787eb8f6a8a0eb1e5d075bce7503bc1f7e54f452e490d82959e93aa1a38c306",
+      "canvas": [
+        1536,
+        1024
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "role": "top",
+      "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/avpr-scout-ship-top.webp",
+      "bytes": 119774,
+      "sha256": "346d944556b7f992bec2259fdb86f122c672d7456d509cb22605fa304c98676a",
+      "canvas": [
+        1536,
+        1024
+      ],
+      "mode": "RGBA"
+    }
+  ],
+  "canvas": {
+    "width": 1536,
+    "height": 1024
+  },
+  "profileRegistration": {
+    "width": 1536,
+    "height": 1024,
+    "nose": [
+      1390.0,
+      625.0
+    ],
+    "tail": [
+      200.0,
+      510.0
+    ],
+    "pivot": [
+      768.0,
+      512.0
+    ],
+    "release": [
+      850.0,
+      702.0
+    ],
+    "basis": "Existing V14 carrier() anchor coordinates from planetArrivalArt.ts; unchanged. Pivot is original full canvas center.",
+    "visualFrontPoint": [
+      1379.0,
+      627.0
+    ],
+    "visualRearPoint": [
+      205.83333333333334,
+      511.1666666666667
+    ],
+    "frontWarmComponent": {
+      "pixels": 1434,
+      "boundsHalfOpen": [
+        1351,
+        599,
+        1408,
+        656
+      ],
+      "center": [
+        1379.0,
+        627.0
+      ]
+    },
+    "rearWarmComponents": [
+      {
+        "pixels": 1803,
+        "boundsHalfOpen": [
+          176,
+          419,
+          241,
+          492
+        ],
+        "center": [
+          208.0,
+          455.0
+        ]
+      },
+      {
+        "pixels": 1761,
+        "boundsHalfOpen": [
+          130,
+          496,
+          183,
+          567
+        ],
+        "center": [
+          156.0,
+          531.0
+        ]
+      },
+      {
+        "pixels": 1723,
+        "boundsHalfOpen": [
+          227,
+          512,
+          281,
+          584
+        ],
+        "center": [
+          253.5,
+          547.5
+        ]
+      }
+    ],
+    "registeredPointsInVisualAxisBasis": {
+      "nose": [
+        1.009119108953958,
+        -0.0026051684504902264
+      ],
+      "tail": [
+        -0.0050215322455205765,
+        -0.0004986553614665882
+      ],
+      "pivot": [
+        0.4746304787479233,
+        -0.04615260445088887
+      ],
+      "release": [
+        0.5596882752388911,
+        0.10740398475763188
+      ]
+    }
+  },
+  "measurementMethod": {
+    "colorPredicate": "alpha>=128 and red>140 and green>75 and red-blue>45, evaluated in original decoded source pixels without modifying them.",
+    "components": "4-connected components. Aft registration uses the equal mean of centers of the three largest components with center.x<500; nose uses the largest component with center.x>1100. Every selected component was checked against the separately opened source art.",
+    "componentCenter": "Midpoint of pixel-center bounds: (min+maxExclusive-1)/2 for each axis. This is a reproducible visual landmark, not an exact physical nozzle center.",
+    "registeredPoints": "Transport all four unchanged historical profile points by the similarity from the measured profile rear-triad mean to the front warm detail onto the corresponding candidate axis. This preserves small offsets already present in the profile anchors.",
+    "formula": "a=Nvisual−Tvisual; u=dot(q−Tvisual,a)/|a|²; v=cross(a,q−Tvisual)/|a|². qNew=Tnew+u*(Nnew−Tnew)+v*perp(Nnew−Tnew), perp([x,y])=[−y,x].",
+    "manualSemanticUncertaintyPx": {
+      "nose": 8,
+      "rearMouthCenters": 8,
+      "registeredPointsApproximate": 10
+    },
+    "precision": "Subpixel decimals encode the deterministic calculations, not subpixel artistic certainty.",
+    "pivot": "Derived registration pivot preserving full profile canvas center, not center of mass.",
+    "release": "Derived from unchanged profile release(850,702); not a newly identified bay or contact point. Real release/contact must keep the established profile.",
+    "aspect": "All reference and candidate canvases are native1536×1024. No pixel resize, padding or coordinate pre-stretch.",
+    "engines": "Three luminous mouths are part of the source art. All runtime exhaustVisibility values remain0, review unreviewed; no additional emission resources or sockets approved."
+  },
+  "calibrations": {
+    "forward-quarter-shallow": {
+      "nose": [
+        1406.367,
+        593.571
+      ],
+      "tail": [
+        166.068,
+        511.973
+      ],
+      "pivot": [
+        756.391,
+        495.957
+      ],
+      "release": [
+        847.658,
+        690.791
+      ],
+      "exhaust": [
+        166.068,
+        511.973
+      ],
+      "exhaustAngleDeg": -176.236,
+      "exhaustVisibility": 0,
+      "calibration": "inspected-source-art",
+      "exhaustReview": "unreviewed"
+    },
+    "forward-quarter": {
+      "nose": [
+        1426.681,
+        613.146
+      ],
+      "tail": [
+        156.26,
+        514.708
+      ],
+      "pivot": [
+        761.575,
+        505.332
+      ],
+      "release": [
+        852.805,
+        706.139
+      ],
+      "exhaust": [
+        156.26,
+        514.708
+      ],
+      "exhaustAngleDeg": -175.5693,
+      "exhaustVisibility": 0,
+      "calibration": "inspected-source-art",
+      "exhaustReview": "unreviewed"
+    },
+    "bank-dorsal-shallow": {
+      "nose": [
+        1416.393,
+        567.867
+      ],
+      "tail": [
+        167.515,
+        506.57
+      ],
+      "pivot": [
+        761.003,
+        480.572
+      ],
+      "release": [
+        856.063,
+        675.01
+      ],
+      "exhaust": [
+        167.515,
+        506.57
+      ],
+      "exhaustAngleDeg": -177.1901,
+      "exhaustVisibility": 0,
+      "calibration": "inspected-source-art",
+      "exhaustReview": "unreviewed"
+    },
+    "bank-dorsal": {
+      "nose": [
+        1431.157,
+        549.898
+      ],
+      "tail": [
+        141.459,
+        529.083
+      ],
+      "pivot": [
+        752.474,
+        482.138
+      ],
+      "release": [
+        857.082,
+        679.382
+      ],
+      "exhaust": [
+        141.459,
+        529.083
+      ],
+      "exhaustAngleDeg": -179.0754,
+      "exhaustVisibility": 0,
+      "calibration": "inspected-source-art",
+      "exhaustReview": "unreviewed"
+    },
+    "bank-ventral-shallow": {
+      "nose": [
+        1445.284,
+        571.719
+      ],
+      "tail": [
+        151.792,
+        514.233
+      ],
+      "pivot": [
+        766.217,
+        484.468
+      ],
+      "release": [
+        865.583,
+        685.351
+      ],
+      "exhaust": [
+        151.792,
+        514.233
+      ],
+      "exhaustAngleDeg": -177.4553,
+      "exhaustVisibility": 0,
+      "calibration": "inspected-source-art",
+      "exhaustReview": "unreviewed"
+    },
+    "bank-ventral": {
+      "nose": [
+        1439.151,
+        556.947
+      ],
+      "tail": [
+        166.07,
+        479.812
+      ],
+      "pivot": [
+        771.704,
+        460.242
+      ],
+      "release": [
+        866.386,
+        659.672
+      ],
+      "exhaust": [
+        166.07,
+        479.812
+      ],
+      "exhaustAngleDeg": -176.5327,
+      "exhaustVisibility": 0,
+      "calibration": "inspected-source-art",
+      "exhaustReview": "unreviewed"
+    },
+    "rear-quarter-shallow": {
+      "nose": [
+        1426.195,
+        605.996
+      ],
+      "tail": [
+        201.472,
+        537.211
+      ],
+      "pivot": [
+        783.862,
+        515.82
+      ],
+      "release": [
+        875.77,
+        707.222
+      ],
+      "exhaust": [
+        201.472,
+        537.211
+      ],
+      "exhaustAngleDeg": -176.7854,
+      "exhaustVisibility": 0,
+      "calibration": "inspected-source-art",
+      "exhaustReview": "unreviewed"
+    },
+    "rear-quarter": {
+      "nose": [
+        1420.508,
+        552.957
+      ],
+      "tail": [
+        199.292,
+        545.014
+      ],
+      "pivot": [
+        777.344,
+        494.996
+      ],
+      "release": [
+        878.181,
+        680.782
+      ],
+      "exhaust": [
+        199.292,
+        545.014
+      ],
+      "exhaustAngleDeg": -179.6273,
+      "exhaustVisibility": 0,
+      "calibration": "inspected-source-art",
+      "exhaustReview": "unreviewed"
+    }
+  },
+  "views": [
+    {
+      "id": "forward-quarter-shallow",
+      "candidatePath": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/avpr-scout-ship/candidates/avpr-scout-ship-forward-quarter-shallow.png",
+      "generatedPath": "/workspace/scratch/0c1fa1359efb/generated_images/exec-c4f195fe-ff56-4103-9225-4860f2d87f4e.png",
+      "selectedSourceAttemptPath": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/avpr-scout-ship/avpr-scout-ship-forward-quarter-shallow.png",
+      "selectedAttempt": 1,
+      "bytes": 1633436,
+      "sha256": "9763608a8a85c1f1ef9d505280d6b5356d56194b402188c2a6c429c5c2086b3b",
+      "canvas": [
+        1536,
+        1024
+      ],
+      "sourceMatchesCandidate": true,
+      "inspection": "Selected PNG opened individually with view_image, after both reference masters. No image modification.",
+      "frontWarmComponent": {
+        "pixels": 1029,
+        "boundsHalfOpen": [
+          1371,
+          568,
+          1420,
+          625
+        ],
+        "center": [
+          1395.0,
+          596.0
+        ]
+      },
+      "rearWarmComponents": [
+        {
+          "pixels": 2153,
+          "boundsHalfOpen": [
+            189,
+            523,
+            250,
+            599
+          ],
+          "center": [
+            219.0,
+            560.5
+          ]
+        },
+        {
+          "pixels": 2036,
+          "boundsHalfOpen": [
+            140,
+            406,
+            196,
+            482
+          ],
+          "center": [
+            167.5,
+            443.5
+          ]
+        },
+        {
+          "pixels": 1941,
+          "boundsHalfOpen": [
+            104,
+            498,
+            157,
+            573
+          ],
+          "center": [
+            130.0,
+            535.0
+          ]
+        }
+      ],
+      "visualFrontPoint": [
+        1395.0,
+        596.0
+      ],
+      "visualRearPoint": [
+        172.16666666666666,
+        513.0
+      ],
+      "calibration": {
+        "nose": [
+          1406.367,
+          593.571
+        ],
+        "tail": [
+          166.068,
+          511.973
+        ],
+        "pivot": [
+          756.391,
+          495.957
+        ],
+        "release": [
+          847.658,
+          690.791
+        ],
+        "exhaust": [
+          166.068,
+          511.973
+        ],
+        "exhaustAngleDeg": -176.236,
+        "exhaustVisibility": 0,
+        "calibration": "inspected-source-art",
+        "exhaustReview": "unreviewed"
+      },
+      "projectedRegisteredSpanPixels": 1242.980226312953,
+      "alpha": {
+        "min": 0,
+        "max": 254,
+        "borderMax": 1,
+        "thresholds": {
+          "0": {
+            "count": 416846,
+            "boundsInclusive": [
+              0,
+              31,
+              1511,
+              985
+            ]
+          },
+          "1": {
+            "count": 411240,
+            "boundsInclusive": [
+              100,
+              276,
+              1427,
+              717
+            ]
+          },
+          "16": {
+            "count": 406772,
+            "boundsInclusive": [
+              101,
+              280,
+              1425,
+              715
+            ]
+          },
+          "128": {
+            "count": 404815,
+            "boundsInclusive": [
+              102,
+              281,
+              1424,
+              715
+            ]
+          },
+          "250": {
+            "count": 395784,
+            "boundsInclusive": [
+              103,
+              284,
+              1420,
+              713
+            ]
+          }
+        },
+        "outsideSamples": [
+          {
+            "point": [
+              100,
+              100
+            ],
+            "rgba": [
+              1,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "point": [
+              768,
+              100
+            ],
+            "rgba": [
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "point": [
+              768,
+              900
+            ],
+            "rgba": [
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "point": [
+              50,
+              500
+            ],
+            "rgba": [
+              60,
+              44,
+              33,
+              0
+            ]
+          },
+          {
+            "point": [
+              1450,
+              100
+            ],
+            "rgba": [
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "point": [
+              300,
+              850
+            ],
+            "rgba": [
+              0,
+              0,
+              0,
+              0
+            ]
+          }
+        ]
+      },
+      "visualReview": "Three rear mouths; broad flank and modest front nose aperture. Slightly fuller arch plating and brighter etched texture than the profile.",
+      "aftReactorCountObserved": 3,
+      "noseWarmDetailIsNotAReactor": true,
+      "engineIntegrationStatus": "No engine effect activation; tail is a group registration placeholder, not one of the three approved emission sockets."
+    },
+    {
+      "id": "forward-quarter",
+      "candidatePath": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/avpr-scout-ship/candidates/avpr-scout-ship-forward-quarter.png",
+      "generatedPath": "/workspace/scratch/0c1fa1359efb/generated_images/exec-4a1aa24c-f30d-41c1-b42b-1a0db0ddbd7f.png",
+      "selectedSourceAttemptPath": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/avpr-scout-ship/avpr-scout-ship-forward-quarter-v2.png",
+      "selectedAttempt": 2,
+      "bytes": 1818845,
+      "sha256": "892ee0d60cbec215e47f199af8fa9b8fd20a474191c840e14b94cbf8d5f04515",
+      "canvas": [
+        1536,
+        1024
+      ],
+      "sourceMatchesCandidate": true,
+      "inspection": "Selected PNG opened individually with view_image, after both reference masters. No image modification.",
+      "frontWarmComponent": {
+        "pixels": 1782,
+        "boundsHalfOpen": [
+          1387,
+          583,
+          1444,
+          649
+        ],
+        "center": [
+          1415.0,
+          615.5
+        ]
+      },
+      "rearWarmComponents": [
+        {
+          "pixels": 3006,
+          "boundsHalfOpen": [
+            180,
+            521,
+            241,
+            612
+          ],
+          "center": [
+            210.0,
+            566.0
+          ]
+        },
+        {
+          "pixels": 2620,
+          "boundsHalfOpen": [
+            99,
+            505,
+            157,
+            594
+          ],
+          "center": [
+            127.5,
+            549.0
+          ]
+        },
+        {
+          "pixels": 2372,
+          "boundsHalfOpen": [
+            122,
+            389,
+            179,
+            477
+          ],
+          "center": [
+            150.0,
+            432.5
+          ]
+        }
+      ],
+      "visualFrontPoint": [
+        1415.0,
+        615.5
+      ],
+      "visualRearPoint": [
+        162.5,
+        515.8333333333334
+      ],
+      "calibration": {
+        "nose": [
+          1426.681,
+          613.146
+        ],
+        "tail": [
+          156.26,
+          514.708
+        ],
+        "pivot": [
+          761.575,
+          505.332
+        ],
+        "release": [
+          852.805,
+          706.139
+        ],
+        "exhaust": [
+          156.26,
+          514.708
+        ],
+        "exhaustAngleDeg": -175.5693,
+        "exhaustVisibility": 0,
+        "calibration": "inspected-source-art",
+        "exhaustReview": "unreviewed"
+      },
+      "projectedRegisteredSpanPixels": 1274.2290049614317,
+      "alpha": {
+        "min": 0,
+        "max": 254,
+        "borderMax": 1,
+        "thresholds": {
+          "0": {
+            "count": 491332,
+            "boundsInclusive": [
+              0,
+              16,
+              1513,
+              991
+            ]
+          },
+          "1": {
+            "count": 485048,
+            "boundsInclusive": [
+              92,
+              253,
+              1452,
+              754
+            ]
+          },
+          "16": {
+            "count": 481049,
+            "boundsInclusive": [
+              94,
+              255,
+              1447,
+              752
+            ]
+          },
+          "128": {
+            "count": 479087,
+            "boundsInclusive": [
+              95,
+              255,
+              1447,
+              751
+            ]
+          },
+          "250": {
+            "count": 471002,
+            "boundsInclusive": [
+              96,
+              256,
+              1446,
+              750
+            ]
+          }
+        },
+        "outsideSamples": [
+          {
+            "point": [
+              100,
+              100
+            ],
+            "rgba": [
+              0,
+              1,
+              0,
+              0
+            ]
+          },
+          {
+            "point": [
+              768,
+              100
+            ],
+            "rgba": [
+              1,
+              2,
+              1,
+              0
+            ]
+          },
+          {
+            "point": [
+              768,
+              900
+            ],
+            "rgba": [
+              4,
+              4,
+              4,
+              0
+            ]
+          },
+          {
+            "point": [
+              50,
+              500
+            ],
+            "rgba": [
+              68,
+              46,
+              32,
+              0
+            ]
+          },
+          {
+            "point": [
+              1450,
+              100
+            ],
+            "rgba": [
+              1,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "point": [
+              300,
+              850
+            ],
+            "rgba": [
+              2,
+              1,
+              1,
+              0
+            ]
+          }
+        ]
+      },
+      "visualReview": "Corrected selected attempt 2 has three rear mouths. Nose assembly/front mouth appears larger and more exposed, and aft luminous ellipses are narrower relative to their height than shallow. Local plate/rib changes remain.",
+      "aftReactorCountObserved": 3,
+      "noseWarmDetailIsNotAReactor": true,
+      "engineIntegrationStatus": "No engine effect activation; tail is a group registration placeholder, not one of the three approved emission sockets."
+    },
+    {
+      "id": "bank-dorsal-shallow",
+      "candidatePath": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/avpr-scout-ship/candidates/avpr-scout-ship-bank-dorsal-shallow.png",
+      "generatedPath": "/workspace/scratch/0c1fa1359efb/generated_images/exec-32d0ca86-fc2e-4569-9589-012dafa0bb95.png",
+      "selectedSourceAttemptPath": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/avpr-scout-ship/avpr-scout-ship-bank-dorsal-shallow-v2.png",
+      "selectedAttempt": 2,
+      "bytes": 1547913,
+      "sha256": "cf2f617b0c98b7cd2f383dbadbd89757626ac9493747582e11a3b24f94e91f6a",
+      "canvas": [
+        1536,
+        1024
+      ],
+      "sourceMatchesCandidate": true,
+      "inspection": "Selected PNG opened individually with view_image, after both reference masters. No image modification.",
+      "frontWarmComponent": {
+        "pixels": 482,
+        "boundsHalfOpen": [
+          1389,
+          550,
+          1422,
+          592
+        ],
+        "center": [
+          1405.0,
+          570.5
+        ]
+      },
+      "rearWarmComponents": [
+        {
+          "pixels": 2157,
+          "boundsHalfOpen": [
+            189,
+            522,
+            249,
+            598
+          ],
+          "center": [
+            218.5,
+            559.5
+          ]
+        },
+        {
+          "pixels": 1900,
+          "boundsHalfOpen": [
+            111,
+            495,
+            165,
+            567
+          ],
+          "center": [
+            137.5,
+            530.5
+          ]
+        },
+        {
+          "pixels": 1869,
+          "boundsHalfOpen": [
+            136,
+            397,
+            195,
+            469
+          ],
+          "center": [
+            165.0,
+            432.5
+          ]
+        }
+      ],
+      "visualFrontPoint": [
+        1405.0,
+        570.5
+      ],
+      "visualRearPoint": [
+        173.66666666666666,
+        507.5
+      ],
+      "calibration": {
+        "nose": [
+          1416.393,
+          567.867
+        ],
+        "tail": [
+          167.515,
+          506.57
+        ],
+        "pivot": [
+          761.003,
+          480.572
+        ],
+        "release": [
+          856.063,
+          675.01
+        ],
+        "exhaust": [
+          167.515,
+          506.57
+        ],
+        "exhaustAngleDeg": -177.1901,
+        "exhaustVisibility": 0,
+        "calibration": "inspected-source-art",
+        "exhaustReview": "unreviewed"
+      },
+      "projectedRegisteredSpanPixels": 1250.3813742586701,
+      "alpha": {
+        "min": 0,
+        "max": 254,
+        "borderMax": 1,
+        "thresholds": {
+          "0": {
+            "count": 408995,
+            "boundsInclusive": [
+              0,
+              119,
+              1505,
+              885
+            ]
+          },
+          "1": {
+            "count": 404360,
+            "boundsInclusive": [
+              100,
+              300,
+              1429,
+              722
+            ]
+          },
+          "16": {
+            "count": 400057,
+            "boundsInclusive": [
+              104,
+              302,
+              1427,
+              720
+            ]
+          },
+          "128": {
+            "count": 398101,
+            "boundsInclusive": [
+              104,
+              303,
+              1427,
+              720
+            ]
+          },
+          "250": {
+            "count": 390005,
+            "boundsInclusive": [
+              109,
+              304,
+              1424,
+              719
+            ]
+          }
+        },
+        "outsideSamples": [
+          {
+            "point": [
+              100,
+              100
+            ],
+            "rgba": [
+              1,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "point": [
+              768,
+              100
+            ],
+            "rgba": [
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "point": [
+              768,
+              900
+            ],
+            "rgba": [
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "point": [
+              50,
+              500
+            ],
+            "rgba": [
+              51,
+              35,
+              27,
+              0
+            ]
+          },
+          {
+            "point": [
+              1450,
+              100
+            ],
+            "rgba": [
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "point": [
+              300,
+              850
+            ],
+            "rgba": [
+              1,
+              0,
+              0,
+              0
+            ]
+          }
+        ]
+      },
+      "visualReview": "Corrected selected attempt 2 has three rear mouths. Some upper spine and second cyan row visible, while the flank still dominates.",
+      "aftReactorCountObserved": 3,
+      "noseWarmDetailIsNotAReactor": true,
+      "engineIntegrationStatus": "No engine effect activation; tail is a group registration placeholder, not one of the three approved emission sockets."
+    },
+    {
+      "id": "bank-dorsal",
+      "candidatePath": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/avpr-scout-ship/candidates/avpr-scout-ship-bank-dorsal.png",
+      "generatedPath": "/workspace/scratch/0c1fa1359efb/generated_images/exec-6f61e224-0ee4-4164-b264-5fd77fff1558.png",
+      "selectedSourceAttemptPath": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/avpr-scout-ship/avpr-scout-ship-bank-dorsal.png",
+      "selectedAttempt": 1,
+      "bytes": 1794516,
+      "sha256": "eaa0ad6e3cb897cfa6ea9206b15eea83264df89576ef1d1b235ae119c2b42862",
+      "canvas": [
+        1536,
+        1024
+      ],
+      "sourceMatchesCandidate": true,
+      "inspection": "Selected PNG opened individually with view_image, after both reference masters. No image modification.",
+      "frontWarmComponent": {
+        "pixels": 569,
+        "boundsHalfOpen": [
+          1403,
+          531,
+          1437,
+          576
+        ],
+        "center": [
+          1419.5,
+          553.0
+        ]
+      },
+      "rearWarmComponents": [
+        {
+          "pixels": 1649,
+          "boundsHalfOpen": [
+            138,
+            575,
+            186,
+            646
+          ],
+          "center": [
+            161.5,
+            610.0
+          ]
+        },
+        {
+          "pixels": 1362,
+          "boundsHalfOpen": [
+            101,
+            499,
+            142,
+            564
+          ],
+          "center": [
+            121.0,
+            531.0
+          ]
+        },
+        {
+          "pixels": 1357,
+          "boundsHalfOpen": [
+            141,
+            416,
+            182,
+            482
+          ],
+          "center": [
+            161.0,
+            448.5
+          ]
+        }
+      ],
+      "visualFrontPoint": [
+        1419.5,
+        553.0
+      ],
+      "visualRearPoint": [
+        147.83333333333334,
+        529.8333333333334
+      ],
+      "calibration": {
+        "nose": [
+          1431.157,
+          549.898
+        ],
+        "tail": [
+          141.459,
+          529.083
+        ],
+        "pivot": [
+          752.474,
+          482.138
+        ],
+        "release": [
+          857.082,
+          679.382
+        ],
+        "exhaust": [
+          141.459,
+          529.083
+        ],
+        "exhaustAngleDeg": -179.0754,
+        "exhaustVisibility": 0,
+        "calibration": "inspected-source-art",
+        "exhaustReview": "unreviewed"
+      },
+      "projectedRegisteredSpanPixels": 1289.8659602567236,
+      "alpha": {
+        "min": 0,
+        "max": 254,
+        "borderMax": 1,
+        "thresholds": {
+          "0": {
+            "count": 464973,
+            "boundsInclusive": [
+              0,
+              18,
+              1521,
+              999
+            ]
+          },
+          "1": {
+            "count": 453994,
+            "boundsInclusive": [
+              94,
+              290,
+              1439,
+              752
+            ]
+          },
+          "16": {
+            "count": 449092,
+            "boundsInclusive": [
+              97,
+              292,
+              1437,
+              750
+            ]
+          },
+          "128": {
+            "count": 446950,
+            "boundsInclusive": [
+              97,
+              293,
+              1437,
+              749
+            ]
+          },
+          "250": {
+            "count": 435748,
+            "boundsInclusive": [
+              99,
+              295,
+              1434,
+              748
+            ]
+          }
+        },
+        "outsideSamples": [
+          {
+            "point": [
+              100,
+              100
+            ],
+            "rgba": [
+              0,
+              1,
+              0,
+              0
+            ]
+          },
+          {
+            "point": [
+              768,
+              100
+            ],
+            "rgba": [
+              0,
+              1,
+              1,
+              0
+            ]
+          },
+          {
+            "point": [
+              768,
+              900
+            ],
+            "rgba": [
+              2,
+              1,
+              1,
+              0
+            ]
+          },
+          {
+            "point": [
+              50,
+              500
+            ],
+            "rgba": [
+              59,
+              45,
+              36,
+              0
+            ]
+          },
+          {
+            "point": [
+              1450,
+              100
+            ],
+            "rgba": [
+              1,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "point": [
+              300,
+              850
+            ],
+            "rgba": [
+              7,
+              6,
+              6,
+              0
+            ]
+          }
+        ]
+      },
+      "visualReview": "The upper central long panel and swept enclosing arch are more top-facing than shallow; underside ribs occupy less of the visible hull. Three rear mouths.",
+      "aftReactorCountObserved": 3,
+      "noseWarmDetailIsNotAReactor": true,
+      "engineIntegrationStatus": "No engine effect activation; tail is a group registration placeholder, not one of the three approved emission sockets."
+    },
+    {
+      "id": "bank-ventral-shallow",
+      "candidatePath": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/avpr-scout-ship/candidates/avpr-scout-ship-bank-ventral-shallow.png",
+      "generatedPath": "/workspace/scratch/0c1fa1359efb/generated_images/exec-09173d3c-6ecf-43e7-a8eb-1dedada06795.png",
+      "selectedSourceAttemptPath": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/avpr-scout-ship/avpr-scout-ship-bank-ventral-shallow.png",
+      "selectedAttempt": 1,
+      "bytes": 1578905,
+      "sha256": "a1f28447723b497bff5a2a44e3584d7ca99ec699351a75cc7e90add4be356023",
+      "canvas": [
+        1536,
+        1024
+      ],
+      "sourceMatchesCandidate": true,
+      "inspection": "Selected PNG opened individually with view_image, after both reference masters. No image modification.",
+      "frontWarmComponent": {
+        "pixels": 903,
+        "boundsHalfOpen": [
+          1414,
+          548,
+          1454,
+          602
+        ],
+        "center": [
+          1433.5,
+          574.5
+        ]
+      },
+      "rearWarmComponents": [
+        {
+          "pixels": 2276,
+          "boundsHalfOpen": [
+            179,
+            509,
+            246,
+            584
+          ],
+          "center": [
+            212.0,
+            546.0
+          ]
+        },
+        {
+          "pixels": 2048,
+          "boundsHalfOpen": [
+            124,
+            413,
+            187,
+            488
+          ],
+          "center": [
+            155.0,
+            450.0
+          ]
+        },
+        {
+          "pixels": 1850,
+          "boundsHalfOpen": [
+            79,
+            515,
+            137,
+            585
+          ],
+          "center": [
+            107.5,
+            549.5
+          ]
+        }
+      ],
+      "visualFrontPoint": [
+        1433.5,
+        574.5
+      ],
+      "visualRearPoint": [
+        158.16666666666666,
+        515.1666666666666
+      ],
+      "calibration": {
+        "nose": [
+          1445.284,
+          571.719
+        ],
+        "tail": [
+          151.792,
+          514.233
+        ],
+        "pivot": [
+          766.217,
+          484.468
+        ],
+        "release": [
+          865.583,
+          685.351
+        ],
+        "exhaust": [
+          151.792,
+          514.233
+        ],
+        "exhaustAngleDeg": -177.4553,
+        "exhaustVisibility": 0,
+        "calibration": "inspected-source-art",
+        "exhaustReview": "unreviewed"
+      },
+      "projectedRegisteredSpanPixels": 1294.7687802306637,
+      "alpha": {
+        "min": 0,
+        "max": 254,
+        "borderMax": 1,
+        "thresholds": {
+          "0": {
+            "count": 417898,
+            "boundsInclusive": [
+              0,
+              39,
+              1461,
+              999
+            ]
+          },
+          "1": {
+            "count": 408417,
+            "boundsInclusive": [
+              73,
+              305,
+              1459,
+              720
+            ]
+          },
+          "16": {
+            "count": 403326,
+            "boundsInclusive": [
+              75,
+              310,
+              1459,
+              718
+            ]
+          },
+          "128": {
+            "count": 401235,
+            "boundsInclusive": [
+              75,
+              311,
+              1458,
+              717
+            ]
+          },
+          "250": {
+            "count": 391287,
+            "boundsInclusive": [
+              78,
+              311,
+              1453,
+              715
+            ]
+          }
+        },
+        "outsideSamples": [
+          {
+            "point": [
+              100,
+              100
+            ],
+            "rgba": [
+              1,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "point": [
+              768,
+              100
+            ],
+            "rgba": [
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "point": [
+              768,
+              900
+            ],
+            "rgba": [
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "point": [
+              50,
+              500
+            ],
+            "rgba": [
+              57,
+              43,
+              35,
+              0
+            ]
+          },
+          {
+            "point": [
+              1450,
+              100
+            ],
+            "rgba": [
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "point": [
+              300,
+              850
+            ],
+            "rgba": [
+              0,
+              0,
+              0,
+              0
+            ]
+          }
+        ]
+      },
+      "visualReview": "A narrow underside strip with small inset details becomes visible below the longitudinal ribs. Three rear mouths.",
+      "aftReactorCountObserved": 3,
+      "noseWarmDetailIsNotAReactor": true,
+      "engineIntegrationStatus": "No engine effect activation; tail is a group registration placeholder, not one of the three approved emission sockets."
+    },
+    {
+      "id": "bank-ventral",
+      "candidatePath": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/avpr-scout-ship/candidates/avpr-scout-ship-bank-ventral.png",
+      "generatedPath": "/workspace/scratch/0c1fa1359efb/generated_images/exec-2aadf00e-1e7d-430c-905c-85ab35053fe6.png",
+      "selectedSourceAttemptPath": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/avpr-scout-ship/avpr-scout-ship-bank-ventral.png",
+      "selectedAttempt": 1,
+      "bytes": 1681772,
+      "sha256": "1c278b14da4c23f623f0167977a3c6bec408f1287f4e5171bf1205d15acbc34a",
+      "canvas": [
+        1536,
+        1024
+      ],
+      "sourceMatchesCandidate": true,
+      "inspection": "Selected PNG opened individually with view_image, after both reference masters. No image modification.",
+      "frontWarmComponent": {
+        "pixels": 1416,
+        "boundsHalfOpen": [
+          1402,
+          528,
+          1454,
+          592
+        ],
+        "center": [
+          1427.5,
+          559.5
+        ]
+      },
+      "rearWarmComponents": [
+        {
+          "pixels": 2452,
+          "boundsHalfOpen": [
+            199,
+            474,
+            258,
+            553
+          ],
+          "center": [
+            228.0,
+            513.0
+          ]
+        },
+        {
+          "pixels": 2419,
+          "boundsHalfOpen": [
+            136,
+            380,
+            211,
+            456
+          ],
+          "center": [
+            173.0,
+            417.5
+          ]
+        },
+        {
+          "pixels": 2174,
+          "boundsHalfOpen": [
+            87,
+            474,
+            146,
+            551
+          ],
+          "center": [
+            116.0,
+            512.0
+          ]
+        }
+      ],
+      "visualFrontPoint": [
+        1427.5,
+        559.5
+      ],
+      "visualRearPoint": [
+        172.33333333333334,
+        480.8333333333333
+      ],
+      "calibration": {
+        "nose": [
+          1439.151,
+          556.947
+        ],
+        "tail": [
+          166.07,
+          479.812
+        ],
+        "pivot": [
+          771.704,
+          460.242
+        ],
+        "release": [
+          866.386,
+          659.672
+        ],
+        "exhaust": [
+          166.07,
+          479.812
+        ],
+        "exhaustAngleDeg": -176.5327,
+        "exhaustVisibility": 0,
+        "calibration": "inspected-source-art",
+        "exhaustReview": "unreviewed"
+      },
+      "projectedRegisteredSpanPixels": 1275.4156345231152,
+      "alpha": {
+        "min": 0,
+        "max": 254,
+        "borderMax": 1,
+        "thresholds": {
+          "0": {
+            "count": 448358,
+            "boundsInclusive": [
+              0,
+              15,
+              1523,
+              923
+            ]
+          },
+          "1": {
+            "count": 441853,
+            "boundsInclusive": [
+              81,
+              272,
+              1457,
+              735
+            ]
+          },
+          "16": {
+            "count": 436649,
+            "boundsInclusive": [
+              83,
+              274,
+              1454,
+              734
+            ]
+          },
+          "128": {
+            "count": 434422,
+            "boundsInclusive": [
+              83,
+              275,
+              1453,
+              733
+            ]
+          },
+          "250": {
+            "count": 423891,
+            "boundsInclusive": [
+              86,
+              276,
+              1448,
+              732
+            ]
+          }
+        },
+        "outsideSamples": [
+          {
+            "point": [
+              100,
+              100
+            ],
+            "rgba": [
+              1,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "point": [
+              768,
+              100
+            ],
+            "rgba": [
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "point": [
+              768,
+              900
+            ],
+            "rgba": [
+              4,
+              3,
+              3,
+              0
+            ]
+          },
+          {
+            "point": [
+              50,
+              500
+            ],
+            "rgba": [
+              68,
+              50,
+              38,
+              0
+            ]
+          },
+          {
+            "point": [
+              1450,
+              100
+            ],
+            "rgba": [
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "point": [
+              300,
+              850
+            ],
+            "rgba": [
+              2,
+              0,
+              0,
+              0
+            ]
+          }
+        ]
+      },
+      "visualReview": "A substantially broader belly plate is visible; nose and aft cluster remain coherent. Some small underside details differ from shallow, so this is an inferred hidden surface.",
+      "aftReactorCountObserved": 3,
+      "noseWarmDetailIsNotAReactor": true,
+      "engineIntegrationStatus": "No engine effect activation; tail is a group registration placeholder, not one of the three approved emission sockets."
+    },
+    {
+      "id": "rear-quarter-shallow",
+      "candidatePath": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/avpr-scout-ship/candidates/avpr-scout-ship-rear-quarter-shallow.png",
+      "generatedPath": "/workspace/scratch/0c1fa1359efb/generated_images/exec-d40f1aaa-e849-4e79-aed3-2b1a597e9b4e.png",
+      "selectedSourceAttemptPath": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/avpr-scout-ship/avpr-scout-ship-rear-quarter-shallow.png",
+      "selectedAttempt": 1,
+      "bytes": 1573033,
+      "sha256": "217ace5ee7a180c8934ff9fa2e14972b73660caa713c938a792e70257c7ff3e6",
+      "canvas": [
+        1536,
+        1024
+      ],
+      "sourceMatchesCandidate": true,
+      "inspection": "Selected PNG opened individually with view_image, after both reference masters. No image modification.",
+      "frontWarmComponent": {
+        "pixels": 879,
+        "boundsHalfOpen": [
+          1396,
+          583,
+          1435,
+          635
+        ],
+        "center": [
+          1415.0,
+          608.5
+        ]
+      },
+      "rearWarmComponents": [
+        {
+          "pixels": 2781,
+          "boundsHalfOpen": [
+            112,
+            521,
+            183,
+            601
+          ],
+          "center": [
+            147.0,
+            560.5
+          ]
+        },
+        {
+          "pixels": 2722,
+          "boundsHalfOpen": [
+            175,
+            436,
+            246,
+            514
+          ],
+          "center": [
+            210.0,
+            474.5
+          ]
+        },
+        {
+          "pixels": 2587,
+          "boundsHalfOpen": [
+            234,
+            538,
+            298,
+            622
+          ],
+          "center": [
+            265.5,
+            579.5
+          ]
+        }
+      ],
+      "visualFrontPoint": [
+        1415.0,
+        608.5
+      ],
+      "visualRearPoint": [
+        207.5,
+        538.1666666666666
+      ],
+      "calibration": {
+        "nose": [
+          1426.195,
+          605.996
+        ],
+        "tail": [
+          201.472,
+          537.211
+        ],
+        "pivot": [
+          783.862,
+          515.82
+        ],
+        "release": [
+          875.77,
+          707.222
+        ],
+        "exhaust": [
+          201.472,
+          537.211
+        ],
+        "exhaustAngleDeg": -176.7854,
+        "exhaustVisibility": 0,
+        "calibration": "inspected-source-art",
+        "exhaustReview": "unreviewed"
+      },
+      "projectedRegisteredSpanPixels": 1226.653089897058,
+      "alpha": {
+        "min": 0,
+        "max": 254,
+        "borderMax": 1,
+        "thresholds": {
+          "0": {
+            "count": 402230,
+            "boundsInclusive": [
+              0,
+              70,
+              1489,
+              981
+            ]
+          },
+          "1": {
+            "count": 395693,
+            "boundsInclusive": [
+              103,
+              297,
+              1437,
+              719
+            ]
+          },
+          "16": {
+            "count": 391358,
+            "boundsInclusive": [
+              105,
+              299,
+              1435,
+              717
+            ]
+          },
+          "128": {
+            "count": 389347,
+            "boundsInclusive": [
+              106,
+              300,
+              1434,
+              716
+            ]
+          },
+          "250": {
+            "count": 379795,
+            "boundsInclusive": [
+              107,
+              300,
+              1429,
+              715
+            ]
+          }
+        },
+        "outsideSamples": [
+          {
+            "point": [
+              100,
+              100
+            ],
+            "rgba": [
+              1,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "point": [
+              768,
+              100
+            ],
+            "rgba": [
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "point": [
+              768,
+              900
+            ],
+            "rgba": [
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "point": [
+              50,
+              500
+            ],
+            "rgba": [
+              34,
+              28,
+              25,
+              0
+            ]
+          },
+          {
+            "point": [
+              1450,
+              100
+            ],
+            "rgba": [
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "point": [
+              300,
+              850
+            ],
+            "rgba": [
+              0,
+              0,
+              0,
+              0
+            ]
+          }
+        ]
+      },
+      "visualReview": "Three distinct aft faces, a broader aft cluster and comparatively small front light; still close to the profile flank.",
+      "aftReactorCountObserved": 3,
+      "noseWarmDetailIsNotAReactor": true,
+      "engineIntegrationStatus": "No engine effect activation; tail is a group registration placeholder, not one of the three approved emission sockets."
+    },
+    {
+      "id": "rear-quarter",
+      "candidatePath": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/avpr-scout-ship/candidates/avpr-scout-ship-rear-quarter.png",
+      "generatedPath": "/workspace/scratch/0c1fa1359efb/generated_images/exec-671b4496-8262-4e9d-9baf-85d92d599d06.png",
+      "selectedSourceAttemptPath": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/avpr-scout-ship/avpr-scout-ship-rear-quarter.png",
+      "selectedAttempt": 1,
+      "bytes": 1573765,
+      "sha256": "184e0bb9a52cf7056ccc7207239fa85b11db56e2d03e7f03c12e059b4e22b787",
+      "canvas": [
+        1536,
+        1024
+      ],
+      "sourceMatchesCandidate": true,
+      "inspection": "Selected PNG opened individually with view_image, after both reference masters. No image modification.",
+      "frontWarmComponent": {
+        "pixels": 663,
+        "boundsHalfOpen": [
+          1391,
+          528,
+          1429,
+          585
+        ],
+        "center": [
+          1409.5,
+          556.0
+        ]
+      },
+      "rearWarmComponents": [
+        {
+          "pixels": 3670,
+          "boundsHalfOpen": [
+            229,
+            549,
+            306,
+            649
+          ],
+          "center": [
+            267.0,
+            598.5
+          ]
+        },
+        {
+          "pixels": 3448,
+          "boundsHalfOpen": [
+            166,
+            401,
+            239,
+            503
+          ],
+          "center": [
+            202.0,
+            451.5
+          ]
+        },
+        {
+          "pixels": 3046,
+          "boundsHalfOpen": [
+            114,
+            539,
+            181,
+            636
+          ],
+          "center": [
+            147.0,
+            587.0
+          ]
+        }
+      ],
+      "visualFrontPoint": [
+        1409.5,
+        556.0
+      ],
+      "visualRearPoint": [
+        205.33333333333334,
+        545.6666666666666
+      ],
+      "calibration": {
+        "nose": [
+          1420.508,
+          552.957
+        ],
+        "tail": [
+          199.292,
+          545.014
+        ],
+        "pivot": [
+          777.344,
+          494.996
+        ],
+        "release": [
+          878.181,
+          680.782
+        ],
+        "exhaust": [
+          199.292,
+          545.014
+        ],
+        "exhaustAngleDeg": -179.6273,
+        "exhaustVisibility": 0,
+        "calibration": "inspected-source-art",
+        "exhaustReview": "unreviewed"
+      },
+      "projectedRegisteredSpanPixels": 1221.2418310494447,
+      "alpha": {
+        "min": 0,
+        "max": 254,
+        "borderMax": 1,
+        "thresholds": {
+          "0": {
+            "count": 461406,
+            "boundsInclusive": [
+              0,
+              30,
+              1521,
+              983
+            ]
+          },
+          "1": {
+            "count": 452724,
+            "boundsInclusive": [
+              95,
+              256,
+              1438,
+              747
+            ]
+          },
+          "16": {
+            "count": 447765,
+            "boundsInclusive": [
+              96,
+              257,
+              1434,
+              743
+            ]
+          },
+          "128": {
+            "count": 445440,
+            "boundsInclusive": [
+              97,
+              258,
+              1433,
+              742
+            ]
+          },
+          "250": {
+            "count": 432623,
+            "boundsInclusive": [
+              100,
+              259,
+              1424,
+              741
+            ]
+          }
+        },
+        "outsideSamples": [
+          {
+            "point": [
+              100,
+              100
+            ],
+            "rgba": [
+              1,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "point": [
+              768,
+              100
+            ],
+            "rgba": [
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "point": [
+              768,
+              900
+            ],
+            "rgba": [
+              1,
+              1,
+              1,
+              0
+            ]
+          },
+          {
+            "point": [
+              50,
+              500
+            ],
+            "rgba": [
+              24,
+              19,
+              16,
+              0
+            ]
+          },
+          {
+            "point": [
+              1450,
+              100
+            ],
+            "rgba": [
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "point": [
+              300,
+              850
+            ],
+            "rgba": [
+              0,
+              0,
+              0,
+              0
+            ]
+          }
+        ]
+      },
+      "visualReview": "Aft cluster occupies more of the hull and forward assembly recedes. This view also reveals considerably more dorsal arch than shallow: mixed elevation/yaw remains a visible limitation, not a measured pure rear camera orbit.",
+      "aftReactorCountObserved": 3,
+      "noseWarmDetailIsNotAReactor": true,
+      "engineIntegrationStatus": "No engine effect activation; tail is a group registration placeholder, not one of the three approved emission sockets."
+    }
+  ],
+  "viewOrderReview": {
+    "forward": {
+      "status": "selected order retained",
+      "reason": "Deep has a larger exposed forward assembly and aft ellipse shapes more edge-on relative to their height. Independent seam/rib changes prevent proof of exact pure orbit.",
+      "measured3DAngles": false
+    },
+    "dorsal": {
+      "status": "selected order retained; no swap requested",
+      "reason": "Deep exposes more central upper plate and enclosing arch; shallow is more dominated by the flank.",
+      "measured3DAngles": false
+    },
+    "ventral": {
+      "status": "selected order retained; no swap requested",
+      "reason": "Deep exposes a broader belly panel below the ribs than shallow.",
+      "measured3DAngles": false
+    },
+    "rear": {
+      "status": "selected order retained, with mixed-angle limitation",
+      "reason": "Deep emphasizes aft cluster and recedes the forward assembly, but also reveals more dorsal structure. Do not claim a calibrated pure rear orbit or the prompt degrees.",
+      "measured3DAngles": false
+    }
+  },
+  "identityReview": {
+    "allSelectedViewsHaveThreeObservedAftReactors": true,
+    "noCroppedHullObserved": true,
+    "preserved": [
+      "Three aft warm reactor mouths at left and a separate small warm nose detail at right.",
+      "Elongated dark graphite organic hull, swept arches and long layered ribs/pipes.",
+      "Restrained cyan inset seams and engraved weathered metal."
+    ],
+    "remainingDrift": [
+      "Panel shapes, individual ribs, cyan spacing and underside details are independently interpreted.",
+      "Generated metal highlights/etched weathering are brighter and more sharply resolved than the profile master.",
+      "Rear deep changes elevation as well as apparent aft perspective; yaw labels do not certify exact camera geometry."
+    ],
+    "blockingIdentityBreakObserved": false,
+    "canonical1to1Established": false
+  },
+  "alphaReview": {
+    "allCanvases1536x1024": true,
+    "allSelectedCopiesMatchOriginalGeneratedBytes": true,
+    "allAlphaAbove16SilhouettesInsideCanvas": true,
+    "range": [
+      0,
+      254
+    ],
+    "maximumBorderAlpha": 1,
+    "maximumOutsideSampleAlpha": 0,
+    "interpretation": "Nonzero RGB under alpha0 does not establish an opaque preview halo. Very low alpha residuals are recorded, left intact.",
+    "pixelProcessingPerformed": false
+  },
+  "limitations": [
+    "Source art inspection only; no browser transition or runtime frame qualification in this review.",
+    "Exact panel alignment, double contours and color/scale changes must be inspected after native integration.",
+    "No rejected initial four-reactor output is selected or calibrated.",
+    "No profile replacement, new launch bay, grounding change, new VFX or engine emission is approved by this report.",
+    "Parent approval of this candidate selection is still required; canonical/human artistic approval is not asserted."
+  ]
+}

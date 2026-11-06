@@ -5,8 +5,8 @@
     "bytes": 264999,
     "sha256": "8eee8a5f5a043f2a67477bc6bcff97fffb1ee1666864bd7aed60c7a6c21ca138"
   },
-  "files": 2174,
-  "bytes": 1092607453,
+  "files": 2175,
+  "bytes": 1092630736,
   "entries": [
     {
       "path": ".openai/hosting.json",
@@ -1430,8 +1430,8 @@
     },
     {
       "path": "app/game/PlanetArrivalCinematic.tsx",
-      "bytes": 72130,
-      "sha256": "69cdab643a229d7aeed59cd35f9185f6bc633a31e830f0a8be380bf62f6577b4"
+      "bytes": 72421,
+      "sha256": "49449f839d797de1348cb89249dd1c1b70d3c671976e6f2acca8323c13ce03cf"
     },
     {
       "path": "app/game/PlanetEarthReferenceV147.module.css",
@@ -1706,7 +1706,7 @@
     {
       "path": "app/game/buildInfo.ts",
       "bytes": 976,
-      "sha256": "20e95fab834dafbc0887b421605c349724253a55d703fc2dde5d5a0916f0919d"
+      "sha256": "d6e4f3f77375f17db4091759b930e3722f66749bb336de406075ed8bf7fcb03e"
     },
     {
       "path": "app/game/catalogueAppearance.ts",
@@ -5595,8 +5595,13 @@
     },
     {
       "path": "app/game/systems/planetArrivalShipMotion.ts",
-      "bytes": 19636,
-      "sha256": "7569574b2027c3136452059fe69f423c58f08c3188e51d0d9d435f3d61b379cc"
+      "bytes": 25291,
+      "sha256": "9f6f4b7617773d04076aec710b7570d0ea175505284d36c979283ace6af3a8ff"
+    },
+    {
+      "path": "app/game/systems/planetArrivalShipMotionCalibrations.ts",
+      "bytes": 17337,
+      "sha256": "c6fb47c806fdcccaa0b898fd6b60e5477ce5ba2906196548673968426fd11848"
     },
     {
       "path": "app/game/systems/planetArrivalSpatial.ts",

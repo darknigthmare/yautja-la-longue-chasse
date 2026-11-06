@@ -85,7 +85,7 @@ jobs:
           mkdirSync('outputs/qa-ship-motion', { recursive: true });
           writeFileSync('outputs/qa-ship-motion/ci-context.json', JSON.stringify({
             schemaVersion: 1, sourceCommit, startedAt: new Date().toISOString(),
-            scope: 'The actual PlanetArrivalCinematic mounted through Vite; classic hull on desktop and mobile. Native frames, controls, optional-asset fallback and optical masks. No production build, campaign handoff or canonical art approval is claimed.',
+            scope: 'The actual PlanetArrivalCinematic mounted through Vite; classic hull and six inspected additional families on desktop and mobile. Native frames, all 46 additional views, controls, optional-asset fallback and optical masks. No production build, campaign handoff or canonical art approval is claimed.',
           }, null, 2) + '\n');
           NODE
       - run: npm ci --ignore-scripts --no-audit --no-fund
@@ -99,7 +99,7 @@ jobs:
           const compiled = await build({
             stdin: { contents: `export { MISSIONS } from './app/game/data';
               export { createPlanetArrival, planetArrivalAssets } from './app/game/systems/planetArrival';
-              export { arrivalShipMotionAssetPaths } from './app/game/systems/planetArrivalShipMotion';
+              export { ARRIVAL_SHIP_MOTION_FAMILIES, arrivalShipMotionAssetPaths } from './app/game/systems/planetArrivalShipMotion';
               export { defaultSave } from './app/game/save';
               export { DEFAULT_SHIP_ID, shipProfileAssetPath } from './app/game/shipCatalogue';`,
               resolveDir: process.cwd(), loader: 'ts' },
@@ -120,7 +120,19 @@ jobs:
             assert.ok(assets, mission.id + ': arrival assets are required');
             return Object.values(assets).map(asset => 'public' + asset);
           });
-          const motionPaths = api.arrivalShipMotionAssetPaths(api.DEFAULT_SHIP_ID).map(asset => 'public' + asset);
+          const expectedAdditionalFamilies = {
+            'avp-predator-mothership': 6, 'avpr-scout-ship': 8, 'wolf-ship': 8,
+            'fugitive-spaceship': 8, 'upgrade-spaceship': 8, 'feral-spaceship': 8,
+          };
+          const motionFamilies = Object.values(api.ARRIVAL_SHIP_MOTION_FAMILIES).map(family => ({
+            shipId: family.shipId, methods: family.methods, paths: [...family.paths], sourceReview: family.sourceReview,
+          }));
+          const additionalFamilies = motionFamilies.filter(family => family.shipId !== api.DEFAULT_SHIP_ID);
+          assert.deepEqual(additionalFamilies.map(family => family.shipId).sort(), Object.keys(expectedAdditionalFamilies).sort());
+          for (const family of additionalFamilies) assert.equal(family.paths.length, expectedAdditionalFamilies[family.shipId]);
+          assert.equal(additionalFamilies.reduce((total, family) => total + family.paths.length, 0), 46);
+          const motionPaths = motionFamilies.flatMap(family => api.arrivalShipMotionAssetPaths(family.shipId))
+            .map(asset => 'public' + asset);
           assert.ok(motionPaths.length > 0, 'The actual optional motion family must be present');
           assert.equal(new Set(motionPaths).size, motionPaths.length, 'Duplicate motion asset registration');
           const fixturePaths = ['wolf-arrival-browser-assets.json', 'clan-ship-browser-assets.json'].flatMap(name => {
@@ -129,8 +141,8 @@ jobs:
             assert.equal(new Set(paths).size, paths.length, name + ': duplicate paths');
             return paths;
           });
-          const paths = [...new Set([...motionPaths, ...arrivalPaths, ...fixturePaths,
-            'public' + api.shipProfileAssetPath(api.DEFAULT_SHIP_ID)])].sort();
+          const profilePaths = motionFamilies.map(family => 'public' + api.shipProfileAssetPath(family.shipId));
+          const paths = [...new Set([...motionPaths, ...arrivalPaths, ...fixturePaths, ...profilePaths])].sort();
           for (const file of paths) {
             assert.match(file, /^public\/game\/[A-Za-z0-9._/-]+$/);
             assert.ok(file.split('/').every(part => part && part !== '.' && part !== '..'));
@@ -144,7 +156,7 @@ jobs:
           writeFileSync('outputs/qa-ship-motion/asset-inputs.json', JSON.stringify({
             sourceCommit: process.env.SHIP_MOTION_SOURCE_COMMIT,
             scope: 'Materialized source paths; usage and rendering are measured separately by the browser report.',
-            optionalMotionPaths: motionPaths, paths,
+            optionalMotionPaths: motionPaths, motionFamilies, paths,
           }, null, 2) + '\n');
           console.log('Registered images materialized:', paths.length, '; optional ship views:', motionPaths.length);
           NODE
@@ -173,6 +185,31 @@ jobs:
           assert.equal(report.passed, true);
           assert.ok(report.checks.length > 0 && report.checks.every(check => check.passed));
           assert.ok(report.captures.length > 0, 'Actual browser PNG captures are required');
+          const inputs = JSON.parse(readFileSync(path.join(directory, 'asset-inputs.json'), 'utf8'));
+          assert.equal(inputs.sourceCommit, report.sourceCommit);
+          const families = inputs.motionFamilies.filter(family => family.shipId !== 'classic-predator-spaceship');
+          assert.equal(families.length, 6);
+          assert.equal(report.familyCoverage.length, 12);
+          for (const viewport of ['desktop', 'mobile']) {
+            const observed = report.familyCoverage.filter(item => item.viewport === viewport);
+            assert.deepEqual(observed.map(item => item.shipId).sort(), families.map(family => family.shipId).sort());
+            assert.equal(observed.reduce((total, item) => total + item.views.length, 0), 46);
+            assert.equal(new Set(observed.flatMap(item => item.views.map(view => view.file))).size, 46,
+              'Every perspective requires a distinct photograph in this viewport');
+            for (const family of families) {
+              const coverage = observed.find(item => item.shipId === family.shipId);
+              assert.equal(coverage.passed, true);
+              assert.deepEqual(coverage.expectedPaths.slice().sort(), family.paths.slice().sort());
+              assert.deepEqual(coverage.views.map(view => view.path).sort(), family.paths.slice().sort());
+              for (const view of coverage.views) {
+                const capture = report.captures.find(item => item.file === view.file);
+                assert.ok(capture, 'Every counted perspective needs its own actual browser photograph');
+                assert.equal(capture.label, `${viewport}-${family.shipId}-${view.id}`);
+                assert.equal(capture.sha256, view.sha256);
+                assert.ok(view.elapsedAfter >= view.elapsedBefore && view.elapsedAfter < view.heldUntilMs);
+              }
+            }
+          }
           assert.equal(report.video.requested, true);
           assert.equal(report.video.supported, true, 'The installed FFmpeg must support native video');
           assert.ok(report.video.files.length > 0, 'A native browser WebM is required');

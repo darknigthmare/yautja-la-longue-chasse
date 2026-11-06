@@ -1,0 +1,1758 @@
+{
+  "schemaVersion": 1,
+  "dateUtc": "2026-11-06T04:21:39.510903+00:00",
+  "shipId": "wolf-ship",
+  "status": "eight candidates inspected and technical registration proposed; parent review required before runtime activation",
+  "runtimeActivationApproved": false,
+  "canonicalArtApproval": false,
+  "humanArtApproval": false,
+  "sourceManifest": {
+    "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/wolf-generation-jobs-final-candidates.json",
+    "bytes": 19661,
+    "sha256": "870dcac4bb7523e689046b01fba14d7cca06a4c8e2d9993f85cfa65fc4a08c15",
+    "assignmentRule": "Use this final manifest, not the preserved original generation manifest."
+  },
+  "references": [
+    {
+      "role": "profile",
+      "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/wolf-profile.webp",
+      "bytes": 161544,
+      "sha256": "8697aff1379201f33aba393871a24780098dcb8f2268424c56912fac9470eed8",
+      "canvas": [
+        1761,
+        893
+      ]
+    },
+    {
+      "role": "top",
+      "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/wolf-top.webp",
+      "bytes": 208190,
+      "sha256": "5c6b5866fc5fbad1f539b6006f19f9a78621660c9efd51afc3c74e4beb0acc72",
+      "canvas": [
+        1757,
+        895
+      ]
+    }
+  ],
+  "canvas": {
+    "width": 1536,
+    "height": 1024
+  },
+  "profileRegistration": {
+    "width": 1761,
+    "height": 893,
+    "nose": [
+      1640.0,
+      430.0
+    ],
+    "tail": [
+      235.0,
+      495.0
+    ],
+    "pivot": [
+      880.5,
+      446.5
+    ],
+    "release": [
+      850.0,
+      666.0
+    ],
+    "basis": "Existing V14 profile coordinates from planetArrivalArt.ts; unchanged. Pivot is the full source canvas center.",
+    "pivotAxisCoefficients": [
+      0.4600429672690509,
+      -0.013236446354100847
+    ],
+    "releaseAxisCoefficients": [
+      0.43116896246682673,
+      0.14165550360166815
+    ]
+  },
+  "measurementMethod": {
+    "nose": "Midpoint of the two forward outer-claw tip landmarks, selected in separately declared upper/lower bands; rightmost alpha>=128 pixels in each band, y averaged only when the extreme spans several rows. This is a projected registration point in the forward opening, not a hidden physical socket.",
+    "tail": "Center of the bounds of the dominant connected warm luminous aperture component in x<420,y250..750, inspected against the visible terminal engine. This follows the Wolf profile convention of a rear face-center landmark instead of the absolute left silhouette boundary.",
+    "tailColorPredicate": "alpha>128 and red>140 and green>75 and red-blue>45; 4-connected component; dominant component selected. Bounds are half-open; midpoint uses pixel centers (min+maxExclusive-1)/2.",
+    "manualSemanticUncertaintyPx": {
+      "nose": 6,
+      "tail": 8,
+      "forwardDeepTail": 12
+    },
+    "pivot": "Similarity of the measured tail→nose axis, preserving the original profile center relative to that axis. Derived registration pivot, not center of mass.",
+    "release": "Derived by the same axis similarity from the unchanged profile release(850,666). Not a visually discovered bay or new physical launch point. Active launch/contact must retain the established profile.",
+    "aspect": "All values remain native source pixels. No pre-stretch/resize/padding. Runtime matrix must account for profile1761×893 versus variant1536×1024 canvas aspect, as coordinated with motion_logic.",
+    "precision": "Fractional coordinates support deterministic geometry calculations; they do not imply subpixel artistic certainty."
+  },
+  "calibrations": {
+    "forward-quarter-shallow": {
+      "nose": [
+        1452.5,
+        543.75
+      ],
+      "tail": [
+        172.0,
+        535.0
+      ],
+      "release": [
+        722.872,
+        720.163
+      ],
+      "pivot": [
+        761.201,
+        522.076
+      ],
+      "exhaust": [
+        172.0,
+        535.0
+      ],
+      "exhaustAngleDeg": -179.6085,
+      "exhaustVisibility": 0,
+      "calibration": "inspected-source-art",
+      "exhaustReview": "unreviewed"
+    },
+    "forward-quarter": {
+      "nose": [
+        1464.5,
+        518.0
+      ],
+      "tail": [
+        84.5,
+        498.0
+      ],
+      "release": [
+        676.68,
+        702.108
+      ],
+      "pivot": [
+        719.624,
+        488.935
+      ],
+      "exhaust": [
+        84.5,
+        498.0
+      ],
+      "exhaustAngleDeg": -179.1697,
+      "exhaustVisibility": 0,
+      "calibration": "inspected-source-art",
+      "exhaustReview": "unreviewed"
+    },
+    "bank-dorsal-shallow": {
+      "nose": [
+        1471.0,
+        481.5
+      ],
+      "tail": [
+        181.5,
+        548.5
+      ],
+      "release": [
+        746.983,
+        702.276
+      ],
+      "pivot": [
+        773.839,
+        500.609
+      ],
+      "exhaust": [
+        181.5,
+        548.5
+      ],
+      "exhaustAngleDeg": 177.0257,
+      "exhaustVisibility": 0,
+      "calibration": "inspected-source-art",
+      "exhaustReview": "unreviewed"
+    },
+    "bank-dorsal": {
+      "nose": [
+        1482.0,
+        504.0
+      ],
+      "tail": [
+        181.5,
+        528.0
+      ],
+      "release": [
+        745.635,
+        701.875
+      ],
+      "pivot": [
+        779.468,
+        499.745
+      ],
+      "exhaust": [
+        181.5,
+        528.0
+      ],
+      "exhaustAngleDeg": 178.9428,
+      "exhaustVisibility": 0,
+      "calibration": "inspected-source-art",
+      "exhaustReview": "unreviewed"
+    },
+    "bank-ventral-shallow": {
+      "nose": [
+        1470.0,
+        501.75
+      ],
+      "tail": [
+        209.5,
+        510.5
+      ],
+      "release": [
+        754.228,
+        685.284
+      ],
+      "pivot": [
+        789.268,
+        489.79
+      ],
+      "exhaust": [
+        209.5,
+        510.5
+      ],
+      "exhaustAngleDeg": 179.6023,
+      "exhaustVisibility": 0,
+      "calibration": "inspected-source-art",
+      "exhaustReview": "unreviewed"
+    },
+    "bank-ventral": {
+      "nose": [
+        1484.5,
+        505.5
+      ],
+      "tail": [
+        205.5,
+        502.5
+      ],
+      "release": [
+        756.54,
+        684.971
+      ],
+      "pivot": [
+        793.935,
+        486.951
+      ],
+      "exhaust": [
+        205.5,
+        502.5
+      ],
+      "exhaustAngleDeg": -179.8656,
+      "exhaustVisibility": 0,
+      "calibration": "inspected-source-art",
+      "exhaustReview": "unreviewed"
+    },
+    "rear-quarter-shallow": {
+      "nose": [
+        1460.5,
+        491.5
+      ],
+      "tail": [
+        252.0,
+        528.0
+      ],
+      "release": [
+        778.238,
+        683.453
+      ],
+      "pivot": [
+        807.479,
+        495.212
+      ],
+      "exhaust": [
+        252.0,
+        528.0
+      ],
+      "exhaustAngleDeg": 178.27,
+      "exhaustVisibility": 0,
+      "calibration": "inspected-source-art",
+      "exhaustReview": "unreviewed"
+    },
+    "rear-quarter": {
+      "nose": [
+        1464.5,
+        494.75
+      ],
+      "tail": [
+        298.0,
+        538.5
+      ],
+      "release": [
+        807.156,
+        684.878
+      ],
+      "pivot": [
+        834.061,
+        502.933
+      ],
+      "exhaust": [
+        298.0,
+        538.5
+      ],
+      "exhaustAngleDeg": 177.8521,
+      "exhaustVisibility": 0,
+      "calibration": "inspected-source-art",
+      "exhaustReview": "unreviewed"
+    }
+  },
+  "views": [
+    {
+      "id": "forward-quarter-shallow",
+      "generatedPath": "/workspace/scratch/0c1fa1359efb/generated_images/exec-4e58ff8a-64da-4a3a-968f-342a68bd312a.png",
+      "sha256": "97ce5687aa65ed285374046b0f31c38547ce05b4ad635ba7a0835c06d6e8cda4",
+      "bytes": 2053091,
+      "canvas": [
+        1536,
+        1024
+      ],
+      "noseTips": [
+        [
+          1460.0,
+          459.0
+        ],
+        [
+          1445.0,
+          628.5
+        ]
+      ],
+      "noseTipSearchBands": [
+        {
+          "xMin": 1100,
+          "yMin": 380,
+          "yMaxExclusive": 480
+        },
+        {
+          "xMin": 1100,
+          "yMin": 560,
+          "yMaxExclusive": 690
+        }
+      ],
+      "nose": [
+        1452.5,
+        543.75
+      ],
+      "tail": [
+        172.0,
+        535.0
+      ],
+      "pivot": [
+        761.2008,
+        522.0761
+      ],
+      "engineAmberComponent": {
+        "count": 4118,
+        "bounds": [
+          147,
+          462,
+          198,
+          609
+        ]
+      },
+      "alphaRange": [
+        0,
+        254
+      ],
+      "alphaAbove16Bounds": [
+        94,
+        201,
+        1462,
+        813
+      ],
+      "alphaAbove16Pixels": 558803,
+      "edgeAlphaMax": 1,
+      "assignedId": "wolf-forward-quarter-shallow",
+      "generatedId": "wolf-forward-quarter-shallow",
+      "assignmentNote": null,
+      "candidatePath": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/candidates/wolf-forward-quarter-shallow.png",
+      "sourceMatchesCandidate": true,
+      "inspection": "original PNG opened individually with view_image; no pixel processing",
+      "calibration": {
+        "nose": [
+          1452.5,
+          543.75
+        ],
+        "tail": [
+          172.0,
+          535.0
+        ],
+        "release": [
+          722.872,
+          720.163
+        ],
+        "pivot": [
+          761.201,
+          522.076
+        ],
+        "exhaust": [
+          172.0,
+          535.0
+        ],
+        "exhaustAngleDeg": -179.6085,
+        "exhaustVisibility": 0,
+        "calibration": "inspected-source-art",
+        "exhaustReview": "unreviewed"
+      },
+      "backgroundSamples": [
+        {
+          "point": [
+            5,
+            512
+          ],
+          "rgba": [
+            38,
+            26,
+            17,
+            0
+          ]
+        },
+        {
+          "point": [
+            1530,
+            512
+          ],
+          "rgba": [
+            37,
+            31,
+            24,
+            0
+          ]
+        },
+        {
+          "point": [
+            768,
+            75
+          ],
+          "rgba": [
+            1,
+            1,
+            0,
+            0
+          ]
+        },
+        {
+          "point": [
+            768,
+            950
+          ],
+          "rgba": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "point": [
+            1450,
+            100
+          ],
+          "rgba": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "point": [
+            100,
+            900
+          ],
+          "rgba": [
+            0,
+            0,
+            0,
+            0
+          ]
+        }
+      ],
+      "projectedHullSpanPixels": 1280.5298951996397,
+      "suggestedEngineRegistrationPoint": [
+        172.0,
+        535.0
+      ],
+      "engineIntegrationStatus": "No new engine effect approved; exhaustVisibility=0, exhaustReview=unreviewed. Tail is a visible-aperture registration landmark, not an approved emission socket."
+    },
+    {
+      "id": "forward-quarter",
+      "generatedPath": "/workspace/scratch/0c1fa1359efb/generated_images/exec-a486358b-7cf0-46e6-ab86-fe3a7751d99e.png",
+      "sha256": "121f1d1e50b7782dcf8b4707e10261e61b202610f806873e1e198ca2420ea0b7",
+      "bytes": 2281013,
+      "canvas": [
+        1536,
+        1024
+      ],
+      "noseTips": [
+        [
+          1451.0,
+          393.0
+        ],
+        [
+          1478.0,
+          643.0
+        ]
+      ],
+      "noseTipSearchBands": [
+        {
+          "xMin": 1100,
+          "yMin": 310,
+          "yMaxExclusive": 420
+        },
+        {
+          "xMin": 1100,
+          "yMin": 600,
+          "yMaxExclusive": 700
+        }
+      ],
+      "nose": [
+        1464.5,
+        518.0
+      ],
+      "tail": [
+        84.5,
+        498.0
+      ],
+      "pivot": [
+        719.624,
+        488.9346
+      ],
+      "engineAmberComponent": {
+        "count": 752,
+        "bounds": [
+          71,
+          458,
+          99,
+          539
+        ]
+      },
+      "alphaRange": [
+        0,
+        254
+      ],
+      "alphaAbove16Bounds": [
+        49,
+        143,
+        1480,
+        881
+      ],
+      "alphaAbove16Pixels": 660267,
+      "edgeAlphaMax": 1,
+      "assignedId": "wolf-forward-quarter",
+      "generatedId": "wolf-forward-quarter",
+      "assignmentNote": null,
+      "candidatePath": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/candidates/wolf-forward-quarter.png",
+      "sourceMatchesCandidate": true,
+      "inspection": "original PNG opened individually with view_image; no pixel processing",
+      "calibration": {
+        "nose": [
+          1464.5,
+          518.0
+        ],
+        "tail": [
+          84.5,
+          498.0
+        ],
+        "release": [
+          676.68,
+          702.108
+        ],
+        "pivot": [
+          719.624,
+          488.935
+        ],
+        "exhaust": [
+          84.5,
+          498.0
+        ],
+        "exhaustAngleDeg": -179.1697,
+        "exhaustVisibility": 0,
+        "calibration": "inspected-source-art",
+        "exhaustReview": "unreviewed"
+      },
+      "backgroundSamples": [
+        {
+          "point": [
+            5,
+            512
+          ],
+          "rgba": [
+            72,
+            54,
+            39,
+            0
+          ]
+        },
+        {
+          "point": [
+            1530,
+            512
+          ],
+          "rgba": [
+            20,
+            17,
+            12,
+            0
+          ]
+        },
+        {
+          "point": [
+            768,
+            75
+          ],
+          "rgba": [
+            1,
+            1,
+            1,
+            0
+          ]
+        },
+        {
+          "point": [
+            768,
+            950
+          ],
+          "rgba": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "point": [
+            1450,
+            100
+          ],
+          "rgba": [
+            3,
+            3,
+            2,
+            0
+          ]
+        },
+        {
+          "point": [
+            100,
+            900
+          ],
+          "rgba": [
+            0,
+            0,
+            0,
+            0
+          ]
+        }
+      ],
+      "projectedHullSpanPixels": 1380.1449199268893,
+      "suggestedEngineRegistrationPoint": [
+        84.5,
+        498.0
+      ],
+      "engineIntegrationStatus": "No new engine effect approved; exhaustVisibility=0, exhaustReview=unreviewed. Tail is a visible-aperture registration landmark, not an approved emission socket.",
+      "tailCaveat": "The aperture is almost edge-on and partly occluded; the center of the visible amber remnant is a technical registration estimate, not the center of an established complete nozzle geometry."
+    },
+    {
+      "id": "bank-dorsal-shallow",
+      "generatedPath": "/workspace/scratch/0c1fa1359efb/generated_images/exec-c29c507c-c73d-46f3-b6f9-361ddb2e4b66.png",
+      "sha256": "32b9b613fc4ba669db134d8cf352975ec8ff7ca206dcc81bebcaa94e7ed5abd7",
+      "bytes": 2052298,
+      "canvas": [
+        1536,
+        1024
+      ],
+      "noseTips": [
+        [
+          1466.0,
+          385.0
+        ],
+        [
+          1476.0,
+          578.0
+        ]
+      ],
+      "noseTipSearchBands": [
+        {
+          "xMin": 1100,
+          "yMin": 330,
+          "yMaxExclusive": 410
+        },
+        {
+          "xMin": 1100,
+          "yMin": 560,
+          "yMaxExclusive": 650
+        }
+      ],
+      "nose": [
+        1471.0,
+        481.5
+      ],
+      "tail": [
+        181.5,
+        548.5
+      ],
+      "pivot": [
+        773.8386,
+        500.6087
+      ],
+      "engineAmberComponent": {
+        "count": 5766,
+        "bounds": [
+          142,
+          482,
+          222,
+          616
+        ]
+      },
+      "alphaRange": [
+        0,
+        254
+      ],
+      "alphaAbove16Bounds": [
+        55,
+        207,
+        1480,
+        764
+      ],
+      "alphaAbove16Pixels": 551565,
+      "edgeAlphaMax": 0,
+      "assignedId": "wolf-bank-dorsal-shallow",
+      "generatedId": "wolf-bank-dorsal",
+      "assignmentNote": "Dorsal pair assigned by observed progression; requested angles are not measurements.",
+      "candidatePath": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/candidates/wolf-bank-dorsal-shallow.png",
+      "sourceMatchesCandidate": true,
+      "inspection": "original PNG opened individually with view_image; no pixel processing",
+      "calibration": {
+        "nose": [
+          1471.0,
+          481.5
+        ],
+        "tail": [
+          181.5,
+          548.5
+        ],
+        "release": [
+          746.983,
+          702.276
+        ],
+        "pivot": [
+          773.839,
+          500.609
+        ],
+        "exhaust": [
+          181.5,
+          548.5
+        ],
+        "exhaustAngleDeg": 177.0257,
+        "exhaustVisibility": 0,
+        "calibration": "inspected-source-art",
+        "exhaustReview": "unreviewed"
+      },
+      "backgroundSamples": [
+        {
+          "point": [
+            5,
+            512
+          ],
+          "rgba": [
+            61,
+            40,
+            26,
+            0
+          ]
+        },
+        {
+          "point": [
+            1530,
+            512
+          ],
+          "rgba": [
+            62,
+            52,
+            42,
+            0
+          ]
+        },
+        {
+          "point": [
+            768,
+            75
+          ],
+          "rgba": [
+            1,
+            1,
+            1,
+            0
+          ]
+        },
+        {
+          "point": [
+            768,
+            950
+          ],
+          "rgba": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "point": [
+            1450,
+            100
+          ],
+          "rgba": [
+            1,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "point": [
+            100,
+            900
+          ],
+          "rgba": [
+            1,
+            0,
+            0,
+            0
+          ]
+        }
+      ],
+      "projectedHullSpanPixels": 1291.2394239644327,
+      "suggestedEngineRegistrationPoint": [
+        181.5,
+        548.5
+      ],
+      "engineIntegrationStatus": "No new engine effect approved; exhaustVisibility=0, exhaustReview=unreviewed. Tail is a visible-aperture registration landmark, not an approved emission socket."
+    },
+    {
+      "id": "bank-dorsal",
+      "generatedPath": "/workspace/scratch/0c1fa1359efb/generated_images/exec-c25ba19e-1c87-4420-b9ee-3aa9a4096872.png",
+      "sha256": "c42337ea97ce2f09aed2a55a9793ab979c66bc9d8579ccb450e93e2530bbe977",
+      "bytes": 2025335,
+      "canvas": [
+        1536,
+        1024
+      ],
+      "noseTips": [
+        [
+          1477.0,
+          403.5
+        ],
+        [
+          1487.0,
+          604.5
+        ]
+      ],
+      "noseTipSearchBands": [
+        {
+          "xMin": 1100,
+          "yMin": 340,
+          "yMaxExclusive": 440
+        },
+        {
+          "xMin": 1100,
+          "yMin": 580,
+          "yMaxExclusive": 660
+        }
+      ],
+      "nose": [
+        1482.0,
+        504.0
+      ],
+      "tail": [
+        181.5,
+        528.0
+      ],
+      "pivot": [
+        779.4682,
+        499.745
+      ],
+      "engineAmberComponent": {
+        "count": 8736,
+        "bounds": [
+          130,
+          447,
+          234,
+          610
+        ]
+      },
+      "alphaRange": [
+        0,
+        254
+      ],
+      "alphaAbove16Bounds": [
+        53,
+        217,
+        1488,
+        768
+      ],
+      "alphaAbove16Pixels": 554146,
+      "edgeAlphaMax": 1,
+      "assignedId": "wolf-bank-dorsal",
+      "generatedId": "wolf-bank-dorsal-shallow",
+      "assignmentNote": "Dorsal pair assigned by observed progression; requested angles are not measurements.",
+      "candidatePath": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/candidates/wolf-bank-dorsal.png",
+      "sourceMatchesCandidate": true,
+      "inspection": "original PNG opened individually with view_image; no pixel processing",
+      "calibration": {
+        "nose": [
+          1482.0,
+          504.0
+        ],
+        "tail": [
+          181.5,
+          528.0
+        ],
+        "release": [
+          745.635,
+          701.875
+        ],
+        "pivot": [
+          779.468,
+          499.745
+        ],
+        "exhaust": [
+          181.5,
+          528.0
+        ],
+        "exhaustAngleDeg": 178.9428,
+        "exhaustVisibility": 0,
+        "calibration": "inspected-source-art",
+        "exhaustReview": "unreviewed"
+      },
+      "backgroundSamples": [
+        {
+          "point": [
+            5,
+            512
+          ],
+          "rgba": [
+            55,
+            37,
+            24,
+            0
+          ]
+        },
+        {
+          "point": [
+            1530,
+            512
+          ],
+          "rgba": [
+            34,
+            29,
+            24,
+            0
+          ]
+        },
+        {
+          "point": [
+            768,
+            75
+          ],
+          "rgba": [
+            1,
+            1,
+            1,
+            0
+          ]
+        },
+        {
+          "point": [
+            768,
+            950
+          ],
+          "rgba": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "point": [
+            1450,
+            100
+          ],
+          "rgba": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "point": [
+            100,
+            900
+          ],
+          "rgba": [
+            0,
+            0,
+            0,
+            0
+          ]
+        }
+      ],
+      "projectedHullSpanPixels": 1300.7214344355214,
+      "suggestedEngineRegistrationPoint": [
+        181.5,
+        528.0
+      ],
+      "engineIntegrationStatus": "No new engine effect approved; exhaustVisibility=0, exhaustReview=unreviewed. Tail is a visible-aperture registration landmark, not an approved emission socket."
+    },
+    {
+      "id": "bank-ventral-shallow",
+      "generatedPath": "/workspace/scratch/0c1fa1359efb/generated_images/exec-86de32c6-417f-44fb-abed-773c60f7d8a4.png",
+      "sha256": "c9b6a8fad9f3739e9b951d43c502484fac6cdc006caf5055433229b35e63ccc7",
+      "bytes": 1857298,
+      "canvas": [
+        1536,
+        1024
+      ],
+      "noseTips": [
+        [
+          1465.0,
+          431.5
+        ],
+        [
+          1475.0,
+          572.0
+        ]
+      ],
+      "noseTipSearchBands": [
+        {
+          "xMin": 1100,
+          "yMin": 365,
+          "yMaxExclusive": 450
+        },
+        {
+          "xMin": 1100,
+          "yMin": 550,
+          "yMaxExclusive": 650
+        }
+      ],
+      "nose": [
+        1470.0,
+        501.75
+      ],
+      "tail": [
+        209.5,
+        510.5
+      ],
+      "pivot": [
+        789.2683,
+        489.7901
+      ],
+      "engineAmberComponent": {
+        "count": 7467,
+        "bounds": [
+          158,
+          451,
+          262,
+          571
+        ]
+      },
+      "alphaRange": [
+        0,
+        254
+      ],
+      "alphaAbove16Bounds": [
+        59,
+        251,
+        1476,
+        739
+      ],
+      "alphaAbove16Pixels": 470828,
+      "edgeAlphaMax": 0,
+      "assignedId": "wolf-bank-ventral-shallow",
+      "generatedId": "wolf-bank-ventral-shallow",
+      "assignmentNote": null,
+      "candidatePath": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/candidates/wolf-bank-ventral-shallow.png",
+      "sourceMatchesCandidate": true,
+      "inspection": "original PNG opened individually with view_image; no pixel processing",
+      "calibration": {
+        "nose": [
+          1470.0,
+          501.75
+        ],
+        "tail": [
+          209.5,
+          510.5
+        ],
+        "release": [
+          754.228,
+          685.284
+        ],
+        "pivot": [
+          789.268,
+          489.79
+        ],
+        "exhaust": [
+          209.5,
+          510.5
+        ],
+        "exhaustAngleDeg": 179.6023,
+        "exhaustVisibility": 0,
+        "calibration": "inspected-source-art",
+        "exhaustReview": "unreviewed"
+      },
+      "backgroundSamples": [
+        {
+          "point": [
+            5,
+            512
+          ],
+          "rgba": [
+            56,
+            38,
+            24,
+            0
+          ]
+        },
+        {
+          "point": [
+            1530,
+            512
+          ],
+          "rgba": [
+            34,
+            28,
+            21,
+            0
+          ]
+        },
+        {
+          "point": [
+            768,
+            75
+          ],
+          "rgba": [
+            1,
+            1,
+            0,
+            0
+          ]
+        },
+        {
+          "point": [
+            768,
+            950
+          ],
+          "rgba": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "point": [
+            1450,
+            100
+          ],
+          "rgba": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "point": [
+            100,
+            900
+          ],
+          "rgba": [
+            0,
+            0,
+            0,
+            0
+          ]
+        }
+      ],
+      "projectedHullSpanPixels": 1260.5303695270495,
+      "suggestedEngineRegistrationPoint": [
+        209.5,
+        510.5
+      ],
+      "engineIntegrationStatus": "No new engine effect approved; exhaustVisibility=0, exhaustReview=unreviewed. Tail is a visible-aperture registration landmark, not an approved emission socket."
+    },
+    {
+      "id": "bank-ventral",
+      "generatedPath": "/workspace/scratch/0c1fa1359efb/generated_images/exec-48cc48d8-3c0e-4669-a150-dc90efb22e87.png",
+      "sha256": "f0605b2edb41a5886693a32e7a507d83a47735208b76e3fe1222bbd19a3c8ed9",
+      "bytes": 1883556,
+      "canvas": [
+        1536,
+        1024
+      ],
+      "noseTips": [
+        [
+          1484.0,
+          417.5
+        ],
+        [
+          1485.0,
+          593.5
+        ]
+      ],
+      "noseTipSearchBands": [
+        {
+          "xMin": 1100,
+          "yMin": 350,
+          "yMaxExclusive": 450
+        },
+        {
+          "xMin": 1100,
+          "yMin": 575,
+          "yMaxExclusive": 660
+        }
+      ],
+      "nose": [
+        1484.5,
+        505.5
+      ],
+      "tail": [
+        205.5,
+        502.5
+      ],
+      "pivot": [
+        793.9347,
+        486.9507
+      ],
+      "engineAmberComponent": {
+        "count": 9004,
+        "bounds": [
+          149,
+          433,
+          263,
+          573
+        ]
+      },
+      "alphaRange": [
+        0,
+        254
+      ],
+      "alphaAbove16Bounds": [
+        44,
+        242,
+        1487,
+        805
+      ],
+      "alphaAbove16Pixels": 517176,
+      "edgeAlphaMax": 0,
+      "assignedId": "wolf-bank-ventral",
+      "generatedId": "wolf-bank-ventral",
+      "assignmentNote": null,
+      "candidatePath": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/candidates/wolf-bank-ventral.png",
+      "sourceMatchesCandidate": true,
+      "inspection": "original PNG opened individually with view_image; no pixel processing",
+      "calibration": {
+        "nose": [
+          1484.5,
+          505.5
+        ],
+        "tail": [
+          205.5,
+          502.5
+        ],
+        "release": [
+          756.54,
+          684.971
+        ],
+        "pivot": [
+          793.935,
+          486.951
+        ],
+        "exhaust": [
+          205.5,
+          502.5
+        ],
+        "exhaustAngleDeg": -179.8656,
+        "exhaustVisibility": 0,
+        "calibration": "inspected-source-art",
+        "exhaustReview": "unreviewed"
+      },
+      "backgroundSamples": [
+        {
+          "point": [
+            5,
+            512
+          ],
+          "rgba": [
+            57,
+            40,
+            29,
+            0
+          ]
+        },
+        {
+          "point": [
+            1530,
+            512
+          ],
+          "rgba": [
+            30,
+            24,
+            17,
+            0
+          ]
+        },
+        {
+          "point": [
+            768,
+            75
+          ],
+          "rgba": [
+            1,
+            1,
+            0,
+            0
+          ]
+        },
+        {
+          "point": [
+            768,
+            950
+          ],
+          "rgba": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "point": [
+            1450,
+            100
+          ],
+          "rgba": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "point": [
+            100,
+            900
+          ],
+          "rgba": [
+            0,
+            0,
+            0,
+            0
+          ]
+        }
+      ],
+      "projectedHullSpanPixels": 1279.0035183688901,
+      "suggestedEngineRegistrationPoint": [
+        205.5,
+        502.5
+      ],
+      "engineIntegrationStatus": "No new engine effect approved; exhaustVisibility=0, exhaustReview=unreviewed. Tail is a visible-aperture registration landmark, not an approved emission socket."
+    },
+    {
+      "id": "rear-quarter-shallow",
+      "generatedPath": "/workspace/scratch/0c1fa1359efb/generated_images/exec-ddedaf01-232e-45bd-9da6-bfdb60dc5804.png",
+      "sha256": "5e7fbaf53a65760b12c7da7c0e51bde1fd7f8b5856e9e12e766446f5f5a40b00",
+      "bytes": 2015175,
+      "canvas": [
+        1536,
+        1024
+      ],
+      "noseTips": [
+        [
+          1454.0,
+          407.5
+        ],
+        [
+          1467.0,
+          575.5
+        ]
+      ],
+      "noseTipSearchBands": [
+        {
+          "xMin": 1100,
+          "yMin": 350,
+          "yMaxExclusive": 440
+        },
+        {
+          "xMin": 1100,
+          "yMin": 550,
+          "yMaxExclusive": 665
+        }
+      ],
+      "nose": [
+        1460.5,
+        491.5
+      ],
+      "tail": [
+        252.0,
+        528.0
+      ],
+      "pivot": [
+        807.4788,
+        495.2122
+      ],
+      "engineAmberComponent": {
+        "count": 12451,
+        "bounds": [
+          187,
+          449,
+          318,
+          608
+        ]
+      },
+      "alphaRange": [
+        0,
+        254
+      ],
+      "alphaAbove16Bounds": [
+        71,
+        206,
+        1468,
+        781
+      ],
+      "alphaAbove16Pixels": 536319,
+      "edgeAlphaMax": 0,
+      "assignedId": "wolf-rear-quarter-shallow",
+      "generatedId": "wolf-rear-quarter-shallow",
+      "assignmentNote": null,
+      "candidatePath": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/candidates/wolf-rear-quarter-shallow.png",
+      "sourceMatchesCandidate": true,
+      "inspection": "original PNG opened individually with view_image; no pixel processing",
+      "calibration": {
+        "nose": [
+          1460.5,
+          491.5
+        ],
+        "tail": [
+          252.0,
+          528.0
+        ],
+        "release": [
+          778.238,
+          683.453
+        ],
+        "pivot": [
+          807.479,
+          495.212
+        ],
+        "exhaust": [
+          252.0,
+          528.0
+        ],
+        "exhaustAngleDeg": 178.27,
+        "exhaustVisibility": 0,
+        "calibration": "inspected-source-art",
+        "exhaustReview": "unreviewed"
+      },
+      "backgroundSamples": [
+        {
+          "point": [
+            5,
+            512
+          ],
+          "rgba": [
+            45,
+            33,
+            23,
+            0
+          ]
+        },
+        {
+          "point": [
+            1530,
+            512
+          ],
+          "rgba": [
+            31,
+            26,
+            19,
+            0
+          ]
+        },
+        {
+          "point": [
+            768,
+            75
+          ],
+          "rgba": [
+            1,
+            1,
+            1,
+            0
+          ]
+        },
+        {
+          "point": [
+            768,
+            950
+          ],
+          "rgba": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "point": [
+            1450,
+            100
+          ],
+          "rgba": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "point": [
+            100,
+            900
+          ],
+          "rgba": [
+            0,
+            0,
+            0,
+            0
+          ]
+        }
+      ],
+      "projectedHullSpanPixels": 1209.051074190003,
+      "suggestedEngineRegistrationPoint": [
+        252.0,
+        528.0
+      ],
+      "engineIntegrationStatus": "No new engine effect approved; exhaustVisibility=0, exhaustReview=unreviewed. Tail is a visible-aperture registration landmark, not an approved emission socket."
+    },
+    {
+      "id": "rear-quarter",
+      "generatedPath": "/workspace/scratch/0c1fa1359efb/generated_images/exec-2b889339-af6b-47ab-a234-56b3f0f43b01.png",
+      "sha256": "e0abd1e2e881108ca3c57e7298beebf37eee276e673b0664b1ed4e498752bd82",
+      "bytes": 2259354,
+      "canvas": [
+        1536,
+        1024
+      ],
+      "noseTips": [
+        [
+          1460.0,
+          405.0
+        ],
+        [
+          1469.0,
+          584.5
+        ]
+      ],
+      "noseTipSearchBands": [
+        {
+          "xMin": 1100,
+          "yMin": 330,
+          "yMaxExclusive": 430
+        },
+        {
+          "xMin": 1100,
+          "yMin": 550,
+          "yMaxExclusive": 650
+        }
+      ],
+      "nose": [
+        1464.5,
+        494.75
+      ],
+      "tail": [
+        298.0,
+        538.5
+      ],
+      "pivot": [
+        834.061,
+        502.9328
+      ],
+      "engineAmberComponent": {
+        "count": 17535,
+        "bounds": [
+          210,
+          439,
+          387,
+          639
+        ]
+      },
+      "alphaRange": [
+        0,
+        254
+      ],
+      "alphaAbove16Bounds": [
+        66,
+        184,
+        1471,
+        839
+      ],
+      "alphaAbove16Pixels": 644166,
+      "edgeAlphaMax": 1,
+      "assignedId": "wolf-rear-quarter",
+      "generatedId": "wolf-rear-quarter",
+      "assignmentNote": null,
+      "candidatePath": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/candidates/wolf-rear-quarter.png",
+      "sourceMatchesCandidate": true,
+      "inspection": "original PNG opened individually with view_image; no pixel processing",
+      "calibration": {
+        "nose": [
+          1464.5,
+          494.75
+        ],
+        "tail": [
+          298.0,
+          538.5
+        ],
+        "release": [
+          807.156,
+          684.878
+        ],
+        "pivot": [
+          834.061,
+          502.933
+        ],
+        "exhaust": [
+          298.0,
+          538.5
+        ],
+        "exhaustAngleDeg": 177.8521,
+        "exhaustVisibility": 0,
+        "calibration": "inspected-source-art",
+        "exhaustReview": "unreviewed"
+      },
+      "backgroundSamples": [
+        {
+          "point": [
+            5,
+            512
+          ],
+          "rgba": [
+            53,
+            38,
+            26,
+            0
+          ]
+        },
+        {
+          "point": [
+            1530,
+            512
+          ],
+          "rgba": [
+            32,
+            26,
+            18,
+            0
+          ]
+        },
+        {
+          "point": [
+            768,
+            75
+          ],
+          "rgba": [
+            3,
+            2,
+            1,
+            0
+          ]
+        },
+        {
+          "point": [
+            768,
+            950
+          ],
+          "rgba": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "point": [
+            1450,
+            100
+          ],
+          "rgba": [
+            1,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "point": [
+            100,
+            900
+          ],
+          "rgba": [
+            0,
+            0,
+            0,
+            0
+          ]
+        }
+      ],
+      "projectedHullSpanPixels": 1167.3201413922404,
+      "suggestedEngineRegistrationPoint": [
+        298.0,
+        538.5
+      ],
+      "engineIntegrationStatus": "No new engine effect approved; exhaustVisibility=0, exhaustReview=unreviewed. Tail is a visible-aperture registration landmark, not an approved emission socket."
+    }
+  ],
+  "viewOrderReview": {
+    "dorsal": {
+      "status": "permutation approved by parent",
+      "shallowSource": "exec-c29c507c-c73d-46f3-b6f9-361ddb2e4b66.png",
+      "deepSource": "exec-c25ba19e-1c87-4420-b9ee-3aa9a4096872.png",
+      "reason": "Original shallow has the more top-facing central beak and more bilateral dorsal rail/panel layout; original deep keeps a pronounced flank. Assignment now follows observed profile→intermediate→more-dorsal progression.",
+      "measured3DAngles": false
+    },
+    "ventral": {
+      "status": "original relative order retained",
+      "reason": "The deep view exposes more lower pipes, underbody panels and lower prong surfaces than shallow."
+    },
+    "yaw": {
+      "status": "original relative order retained",
+      "reason": "Forward-deep further occludes the left engine aperture and enlarges the forward petal faces; rear-deep enlarges the engine face and foreshortens the right-hand bow. Real visible progression, not exact yaw measurement."
+    }
+  },
+  "identityReview": {
+    "mainEngineCountObservedPerView": 1,
+    "noCroppedHullObserved": true,
+    "preserved": [
+      "Terminal cylindrical engine at left with single amber central aperture and small rim lights.",
+      "Long dark bronze mechanical hull with layered rails/plates.",
+      "Central forward beak and curved radial bow petals pointing right."
+    ],
+    "remainingDrift": [
+      "Panel seams, claw spacing and local tip shapes vary between independently generated projections.",
+      "Forward-deep most strongly reveals/reinterprets the bow surfaces; the reference pair does not establish all hidden geometry."
+    ],
+    "canonical1to1Established": false
+  },
+  "alphaReview": {
+    "allNativeCanvases1536x1024": true,
+    "allSourceToCandidateBytesExact": true,
+    "allSilhouetteAlphaAbove16InsideCanvas": true,
+    "maximumBorderAlpha": 1,
+    "backgroundInterpretation": "Nonzero raw RGB under alpha0 remains hidden. Six off-silhouette sample positions for every view have alpha<=1; no opaque halo established. No cleanup is inferred from the raw preview.",
+    "pixelProcessingPerformed": false
+  },
+  "limitations": [
+    "No browser transition or new native scene captures performed for this candidate set.",
+    "Dissolve midpoint contours and actual registration must be inspected after data integration.",
+    "No new engine effect emission, no profile replacement, no grounding or release contract change approved by this note.",
+    "Technical source-art inspection remains separate from human artistic validation and canonical 1:1."
+  ]
+}

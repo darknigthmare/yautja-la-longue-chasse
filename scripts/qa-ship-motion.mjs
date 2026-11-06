@@ -47,11 +47,12 @@ const report = {
   startedAt: new Date().toISOString(),
   sourceCommit: git('rev-parse', 'HEAD'),
   workingTreeDirty: Boolean(git('status', '--porcelain')),
-  scope: 'Actual-component ship-view rendering, registered hull/nozzle screen-space geometry and frozen engine effects; classic hull; pod trio; ship insertion with and without optical camouflage; desktop 1280×720 and mobile 390×844. This is not campaign handoff, canonical art approval, or a production deployment test.',
+  scope: 'Actual-component ship-view rendering, registered hull/nozzle screen-space geometry and frozen engine effects; unchanged classic scenarios plus every inspected additional family and its consumed views; pod trio; ship insertion with and without optical camouflage; desktop 1280×720 and mobile 390×844. This is not campaign handoff, canonical art approval, or a production deployment test.',
   timing: 'Native requestAnimationFrame and ordinary Pause/Resume controls only. Requested times are thresholds. Reports retain observed elapsed times and each screenshot interval. Fixtures begin only at registered shot boundaries.',
   browserMode: headed ? 'headed' : 'headless',
   video: { requested: recordVideo, supported: null, files: [] },
   checks: [], frames: [], captures: [], launchObservations: [], registrationObservations: [],
+  familyCoverage: [],
   pageErrors: [], consoleErrors: [], missingAssets: [], requests: [], readinessFailures: [],
   sourceHashes: {}, assetHashes: {},
 };
@@ -83,7 +84,8 @@ async function loadFixtures() {
       export { carrierArtForShip } from './app/game/systems/planetArrivalArt';
       export { arrivalCarrierPose, attachmentToStage } from './app/game/systems/planetArrivalSpatial';
       export { arrivalFormationSlots } from './app/game/systems/planetArrivalPresentation';
-      export { arrivalShipMotionAssetPaths } from './app/game/systems/planetArrivalShipMotion';
+      export { ARRIVAL_SHIP_MOTION_FAMILIES, arrivalShipMotionAssetPaths, arrivalShipMotionFrame }
+        from './app/game/systems/planetArrivalShipMotion';
     ` },
     bundle: true, platform: 'node', format: 'esm', write: false, logLevel: 'silent',
   });
@@ -119,9 +121,11 @@ async function startHost() {
     import { createPlanetArrival, inspectPlanetArrival, PLANET_ARRIVAL_SHOTS }
       from ${importPath('app/game/systems/planetArrival')};
     import { defaultSave } from ${importPath('app/game/save')};
-    import { DEFAULT_SHIP_ID } from ${importPath('app/game/shipCatalogue')};
+    import { DEFAULT_SHIP_ID, isShipId } from ${importPath('app/game/shipCatalogue')};
     import { normalizePlanetInsertionPlan } from ${importPath('app/game/systems/planetInsertion')};
     const query = new URLSearchParams(location.search);
+    const shipId = query.get('ship') ?? DEFAULT_SHIP_ID;
+    if (!isShipId(shipId)) throw new Error('Unknown selected ship identity.');
     const shot = PLANET_ARRIVAL_SHOTS.find(item => item.id === query.get('shot'));
     const insertion = normalizePlanetInsertionPlan({ version: 1,
       method: query.get('method') ?? 'pod', team: 'triad',
@@ -129,8 +133,9 @@ async function startHost() {
     if (!shot || !insertion) throw new Error('Unknown native ship-motion fixture.');
     const save = defaultSave('2026-11-05T00:00:00.000Z');
     const initial = { ...createPlanetArrival({ ownerCreatedAt: save.createdAt,
-      runId: 'ship-motion:' + shot.id + ':' + insertion.method + ':' + Boolean(insertion.shipCloak),
-      missionId: 'jungle-vey', encounterRun: 1, personalShipId: DEFAULT_SHIP_ID,
+      runId: 'ship-motion:' + shot.id + ':' + insertion.method + ':' + Boolean(insertion.shipCloak) +
+        (shipId === DEFAULT_SHIP_ID ? '' : ':' + shipId),
+      missionId: 'jungle-vey', encounterRun: 1, personalShipId: shipId,
       hunterPresetId: save.appearance.presetId, insertion }),
       elapsedMs: shot.startMs, status: 'paused' as const };
     if (inspectPlanetArrival(initial).status !== 'valid') throw new Error('Invalid native arrival boundary.');
@@ -196,10 +201,11 @@ function watch(page, label, expectedFailures = new Set()) {
   });
 }
 
-async function openShot(page, shot, method = 'pod', cloak = false, resume = true, unavailable = new Set()) {
+async function openShot(page, shot, method = 'pod', cloak = false, resume = true, unavailable = new Set(), shipId = api.DEFAULT_SHIP_ID) {
   assert.ok(api.PLANET_ARRIVAL_SHOTS.some(item => item.id === shot));
   const url = new URL(report.harnessUrl);
   url.searchParams.set('shot', shot); url.searchParams.set('method', method);
+  if (shipId !== api.DEFAULT_SHIP_ID) url.searchParams.set('ship', shipId);
   if (cloak) url.searchParams.set('cloak', '1');
   await page.goto(url.href, { waitUntil: 'domcontentloaded', timeout: 60_000 });
   await page.bringToFront();
@@ -207,7 +213,7 @@ async function openShot(page, shot, method = 'pod', cloak = false, resume = true
   const button = page.getByRole('button', { name: 'Reprendre l’arrivée', exact: true });
   await button.waitFor({ state: 'visible', timeout: 30_000 });
   assert.equal(await button.isEnabled(), true);
-  const expectedPaths = api.arrivalShipMotionAssetPaths(api.DEFAULT_SHIP_ID);
+  const expectedPaths = api.arrivalShipMotionAssetPaths(shipId);
   const expectedTotal = expectedPaths.length;
   try {
     await page.waitForFunction(({ total, unavailable }) => {
@@ -217,7 +223,7 @@ async function openShot(page, shot, method = 'pod', cloak = false, resume = true
     }, { total: expectedTotal, unavailable: unavailable.size ? expectedTotal : 0 }, { timeout: 15_000, polling: 'raf' });
   } catch (error) {
     if (error.name !== 'TimeoutError') throw error;
-    const diagnostic = { shot, method, cloak, expectedReady: unavailable.size ? 0 : expectedTotal,
+    const diagnostic = { shot, method, cloak, shipId, expectedReady: unavailable.size ? 0 : expectedTotal,
       expectedUnavailable: unavailable.size ? expectedTotal : 0 };
     report.readinessFailures.push(diagnostic);
     try {
@@ -297,10 +303,14 @@ async function frame(page) {
         source: item.getAttribute('data-arrival-cloak-refraction'), mask: getComputedStyle(item).maskImage,
         view: item.getAttribute('data-arrival-cloak-view'), transform: getComputedStyle(item).transform,
       })),
-      rims: [...element.querySelectorAll('[data-arrival-cloak-rim]')].map(item => ({
-        source: item.getAttribute('data-arrival-cloak-rim'), href: item.querySelector('image')?.getAttribute('href'),
-        view: item.getAttribute('data-arrival-cloak-view'), transform: getComputedStyle(item).transform,
-      })),
+      rims: [...element.querySelectorAll('[data-arrival-cloak-rim]')].map(item => {
+        const image = item.querySelector('image'), matrix = image?.getScreenCTM();
+        return { source: item.getAttribute('data-arrival-cloak-rim'), href: image?.getAttribute('href'),
+          view: item.getAttribute('data-arrival-cloak-view'), transform: getComputedStyle(item).transform,
+          preserveAspectRatio: item.getAttribute('preserveAspectRatio'),
+          sourceCanvas: { width: image?.width.baseVal.value ?? 0, height: image?.height.baseVal.value ?? 0 },
+          sourcePixelCTM: matrix ? { a: matrix.a, b: matrix.b, c: matrix.c, d: matrix.d, e: matrix.e, f: matrix.f } : null };
+      }),
     });
     const engines = element => [...element.querySelectorAll('[data-arrival-engine]')].map(engine => ({
       kind: engine.getAttribute('data-arrival-engine'),
@@ -311,6 +321,14 @@ async function frame(page) {
       origin: rectangle(engine.querySelector('[data-arrival-engine-origin]')),
       images: images(engine),
     }));
+    const canvasGeometry = layer => {
+      const style = getComputedStyle(layer), matrix = new DOMMatrixReadOnly(style.transform);
+      const image = [...layer.querySelectorAll('img')].find(image =>
+        image.getAttribute('src') === layer.getAttribute('data-arrival-ship-view-path'));
+      return { sourceCanvas: { width: image?.naturalWidth ?? 0, height: image?.naturalHeight ?? 0 },
+        renderedCanvas: { width: Number.parseFloat(style.width), height: Number.parseFloat(style.height) },
+        linearTransform: { a: matrix.a, b: matrix.b, c: matrix.c, d: matrix.d } };
+    };
     const hull = element => element ? {
       view: attribute(element, 'data-arrival-ship-view'),
       from: attribute(element, 'data-arrival-ship-view-from'),
@@ -330,6 +348,7 @@ async function frame(page) {
         id: layer.getAttribute('data-arrival-ship-view-layer'),
         path: layer.getAttribute('data-arrival-ship-view-path'),
         opacity: Number(getComputedStyle(layer).opacity), transform: getComputedStyle(layer).transform,
+        ...canvasGeometry(layer),
         bounds: rectangle(layer), images: images(layer), ...optics(layer),
         anchors: Object.fromEntries(['nose', 'tail'].map(name =>
           [name, rectangle(layer.querySelector(`[data-arrival-view-anchor="${name}"]`))])),
@@ -338,6 +357,7 @@ async function frame(page) {
     const scene = root.querySelector('[data-arrival-scene]');
     return {
       observedPerformanceMs: performance.now(), elapsedMs: Number(root.getAttribute('data-arrival-elapsed')),
+      elapsedExactMs: Number(root.getAttribute('data-arrival-elapsed-exact') ?? root.getAttribute('data-arrival-elapsed')),
       shot: root.getAttribute('data-arrival-shot'), status: root.getAttribute('data-arrival-status'),
       method: root.getAttribute('data-arrival-method'), team: root.getAttribute('data-arrival-team'),
       scene: { ...rectangle(scene), ship: attribute(scene, 'data-arrival-ship') },
@@ -365,6 +385,52 @@ function assertRegistration(hull) {
       assert.ok(source && target, `Both real ${layer.id}/${name} anchors must be mounted.`);
       near(Math.hypot(source.x - target.x, source.y - target.y), 0, .5,
         `${layer.id}/${name} registered pixels must coincide with the shared screen-space hull axis`);
+    }
+  }
+}
+
+function assertIsotropicSources(hull) {
+  for (const layer of hull.layers.filter(layer => layer.opacity > .001)) {
+    const { sourceCanvas: source, renderedCanvas: canvas, linearTransform: matrix } = layer;
+    assert.ok(source?.width > 0 && source.height > 0 && canvas?.width > 0 && canvas.height > 0 && matrix,
+      'Isotropy must be measured from a decoded source and its actual CSS canvas.');
+    const x = { x: matrix.a * canvas.width / source.width, y: matrix.b * canvas.width / source.width };
+    const y = { x: matrix.c * canvas.height / source.height, y: matrix.d * canvas.height / source.height };
+    const sx = Math.hypot(x.x, x.y), sy = Math.hypot(y.x, y.y);
+    assert.ok(sx > 0 && sy > 0);
+    // Computed CSS matrices and dimensions are serialized at finite precision.
+    // These relative guards inspect both pixel axes, independently of anchors.
+    near(sx / sy, 1, .0001, `${layer.id} source-pixel scale must be isotropic`);
+    near((x.x * y.x + x.y * y.y) / (sx * sy), 0, .0001, `${layer.id} source-pixel axes must remain perpendicular`);
+    assert.ok(matrix.a * matrix.d - matrix.b * matrix.c > 0, 'Local registration must not introduce a reflection.');
+  }
+}
+
+function assertRimRegistration(hull, shipId) {
+  for (const layer of hull.layers.filter(layer => layer.opacity > .001)) {
+    const rims = hull.rims.filter(rim => rim.view === layer.id);
+    assert.equal(rims.length, 1, 'Every painted optical view needs one actual SVG image for pixel registration.');
+    const rim = rims[0], matrix = rim.sourcePixelCTM;
+    const art = layer.id === 'profile' ? api.carrierArtForShip(shipId)
+      : api.ARRIVAL_SHIP_MOTION_FAMILIES[shipId]?.views[layer.id]?.art;
+    assert.ok(art && matrix && ['a', 'b', 'c', 'd', 'e', 'f'].every(key => Number.isFinite(matrix[key])),
+      'The native SVG image CTM must map its calibrated source pixels into the viewport.');
+    assert.equal(rim.source, layer.path); assert.equal(rim.href, layer.path);
+    assert.deepEqual([rim.sourceCanvas.width, rim.sourceCanvas.height], [art.width, art.height]);
+    const sx = Math.hypot(matrix.a, matrix.b), sy = Math.hypot(matrix.c, matrix.d);
+    assert.ok(sx > 0 && sy > 0);
+    near(sx / sy, 1, .0001, `${layer.id} SVG source-pixel scale must be isotropic`);
+    near((matrix.a * matrix.c + matrix.b * matrix.d) / (sx * sy), 0, .0001,
+      `${layer.id} SVG source-pixel axes must remain perpendicular`);
+    // This screen matrix includes the intentional carrier-facing mirror.
+    // Its determinant may be negative; both real paint anchors remain decisive.
+    for (const name of ['nose', 'tail']) {
+      const x = art[name].x * art.width, y = art[name].y * art.height;
+      const painted = layer.anchors[name];
+      assert.ok(painted, `The painted ${layer.id}/${name} anchor must exist beside its rim.`);
+      near(Math.hypot(matrix.a * x + matrix.c * y + matrix.e - painted.x,
+        matrix.b * x + matrix.d * y + matrix.f - painted.y), 0, .5,
+      `${layer.id}/${name} SVG source pixels must coincide with the actual painted layer`);
     }
   }
 }
@@ -399,10 +465,11 @@ function assertEngines(hull, expected = false) {
   }
 }
 
-function assertHull(snapshot, { ground = false, cloak = false, generated = false, engines = false } = {}) {
+function assertHull(snapshot, { ground = false, cloak = false, generated = false, engines = false,
+  shipId = api.DEFAULT_SHIP_ID } = {}) {
   const hull = ground ? snapshot.ground : snapshot.carrier;
   assert.ok(hull, `A real ${ground ? 'grounded' : 'flying'} hull must be mounted.`);
-  assert.equal(snapshot.scene.ship, api.DEFAULT_SHIP_ID, 'The selected hull identity must not change.');
+  assert.equal(snapshot.scene.ship, shipId, 'The selected hull identity must not change.');
   near(snapshot.stage.width / snapshot.stage.height, 1280 / 720, .00001, 'Isotropic stage');
   assert.ok(hull.bounds.width > 0 && hull.bounds.height > 0, 'The hull must occupy a real rendered box.');
   assert.ok(hull.images.some(image => image.complete && image.width > 0 && image.opacity > .001),
@@ -413,11 +480,26 @@ function assertHull(snapshot, { ground = false, cloak = false, generated = false
     assert.ok(hull.layers.length > 0, 'The actual hull must render registered view layers.');
     assertRegistration(hull);
     assertEngines(hull, engines);
+    if (shipId !== api.DEFAULT_SHIP_ID) {
+      assertIsotropicSources(hull);
+      if (cloak && hull.cloak > 0) assertRimRegistration(hull, shipId);
+      assert.equal(hull.engines.length, 0, 'Additional hulls have no inspected engine-effect sockets.');
+      const expected = api.arrivalShipMotionFrame(shipId, snapshot.elapsedExactMs, snapshot.method, false,
+        hull.fallback === 'true' ? api.arrivalShipMotionAssetPaths(shipId) : []);
+      const views = [{ view: expected.from, opacity: 1 - expected.mix },
+        ...(expected.to ? [{ view: expected.to, opacity: expected.mix }] : [])].filter(item => item.opacity > 0);
+      assert.equal(hull.layers.length, views.length);
+      for (const { view, opacity } of views) {
+        const layers = hull.layers.filter(layer => layer.id === view.id);
+        assert.equal(layers.length, 1); assert.equal(layers[0].path, view.path);
+        near(layers[0].opacity, opacity, .002, 'The selected hull must retain its exact native view mixture');
+      }
+    }
     for (const layer of hull.layers.filter(layer => layer.opacity > .001)) {
       assert.ok(layer.images.some(image => image.src === layer.path && image.complete && image.width > 0),
         `Visible ${layer.id} layer must use its own decoded source ${layer.path}.`);
       assert.ok(layer.lights.every(source => source === layer.path), 'Lighting masks must follow each view source.');
-      if (layer.path !== api.shipProfileAssetPath(api.DEFAULT_SHIP_ID)) optionalPaths.add(layer.path);
+      if (shipId === api.DEFAULT_SHIP_ID && layer.path !== api.shipProfileAssetPath(shipId)) optionalPaths.add(layer.path);
       if (cloak && hull.cloak > 0) {
         const refractions = hull.refractions.filter(item => item.view === layer.id);
         const rims = hull.rims.filter(item => item.view === layer.id);
@@ -435,10 +517,10 @@ function assertHull(snapshot, { ground = false, cloak = false, generated = false
       }
     }
     if (generated) assert.ok(hull.layers.some(layer => layer.opacity > .05 &&
-      layer.path !== api.shipProfileAssetPath(api.DEFAULT_SHIP_ID)), 'A real authored additional view must be visible.');
+      layer.path !== api.shipProfileAssetPath(shipId)), 'A real authored additional view must be visible.');
   } else {
     assert.equal(hull.engines.length, 0, 'The parked catalogue hull must not retain flight engine effects.');
-    const expected = api.shipProfileAssetPath(api.DEFAULT_SHIP_ID);
+    const expected = api.shipProfileAssetPath(shipId);
     assert.ok(hull.images.every(image => image.src === expected), 'The grounded hull must return to the catalogue profile.');
     assert.ok(hull.lights.every(source => source === expected), 'Ground lighting must use that same profile.');
   }
@@ -455,7 +537,9 @@ async function capture(page, label, options) {
   report.frames.push({ label, ...before });
   report.captures.push({ label, file: filename, sha256: sha256(bytes),
     before: { elapsedMs: before.elapsedMs, shot: before.shot, view: before.carrier?.view ?? 'ground-profile' },
-    after: { elapsedMs: after.elapsedMs, shot: after.shot, view: after.carrier?.view ?? 'ground-profile' } });
+    after: { elapsedMs: after.elapsedMs, elapsedExactMs: after.elapsedExactMs, shot: after.shot,
+      view: after.carrier?.view ?? 'ground-profile', from: after.carrier?.from ?? null,
+      to: after.carrier?.to ?? null, mix: after.carrier?.mix ?? null } });
   assert.equal(after.shot, before.shot, 'A photograph must remain within its reported native shot.');
   return before;
 }
@@ -513,6 +597,14 @@ async function observeRegistrationBlends(page, untilMs) {
       const r = element.getBoundingClientRect();
       return { x: r.x, y: r.y, width: r.width, height: r.height };
     };
+    const canvasGeometry = layer => {
+      const style = getComputedStyle(layer), matrix = new DOMMatrixReadOnly(style.transform);
+      const image = [...layer.querySelectorAll('img')].find(image =>
+        image.getAttribute('src') === layer.getAttribute('data-arrival-ship-view-path'));
+      return { sourceCanvas: { width: image?.naturalWidth ?? 0, height: image?.naturalHeight ?? 0 },
+        renderedCanvas: { width: Number.parseFloat(style.width), height: Number.parseFloat(style.height) },
+        linearTransform: { a: matrix.a, b: matrix.b, c: matrix.c, d: matrix.d } };
+    };
     function finish(error) {
       observer.disconnect(); clearTimeout(timeout);
       if (error) reject(error); else resolve(observations);
@@ -534,12 +626,21 @@ async function observeRegistrationBlends(page, untilMs) {
       if (seen.has(key)) return;
       seen.add(key);
       observations.push({ elapsedMs, from, to, mix,
+        cloak: Number(hull.getAttribute('data-arrival-cloak-strength') ?? 0),
+        rims: [...hull.querySelectorAll('[data-arrival-cloak-rim]')].map(item => {
+          const image = item.querySelector('image'), matrix = image?.getScreenCTM();
+          return { source: item.getAttribute('data-arrival-cloak-rim'), href: image?.getAttribute('href'),
+            view: item.getAttribute('data-arrival-cloak-view'), preserveAspectRatio: item.getAttribute('preserveAspectRatio'),
+            sourceCanvas: { width: image?.width.baseVal.value ?? 0, height: image?.height.baseVal.value ?? 0 },
+            sourcePixelCTM: matrix ? { a: matrix.a, b: matrix.b, c: matrix.c, d: matrix.d, e: matrix.e, f: matrix.f } : null };
+        }),
         anchors: Object.fromEntries(['nose', 'tail'].map(name =>
           [name, rectangle(hull.querySelector(`[data-arrival-anchor="carrier-${name}"]`))])),
         layers: [...hull.querySelectorAll('[data-arrival-ship-view-layer]')].map(layer => ({
           id: layer.getAttribute('data-arrival-ship-view-layer'),
           path: layer.getAttribute('data-arrival-ship-view-path'),
           opacity: Number(getComputedStyle(layer).opacity), transform: getComputedStyle(layer).transform,
+          ...canvasGeometry(layer),
           anchors: Object.fromEntries(['nose', 'tail'].map(name =>
             [name, rectangle(layer.querySelector(`[data-arrival-view-anchor="${name}"]`))])),
         })),
@@ -678,32 +779,117 @@ async function shipRoute(page, viewport, cloak) {
   await capture(page, `${prefix}-catalogue-egress`, { ground: true, cloak });
 }
 
-async function failureRoute(viewport) {
-  assert.ok(optionalPaths.size, 'Observe actual additional view files before checking their optional fallback.');
+async function additionalFamilyRoute(page, viewport, shipId) {
+  const family = api.ARRIVAL_SHIP_MOTION_FAMILIES[shipId];
+  assert.ok(family && shipId !== api.DEFAULT_SHIP_ID && family.methods.includes('pod'));
+  const observedPaths = new Set();
+  const coverage = { viewport: viewport.id, shipId, methods: [...family.methods], expectedPaths: [...family.paths],
+    sourceReview: family.sourceReview, views: [], transitions: [], passed: false };
+  report.familyCoverage.push(coverage);
+  const photograph = async (id, time, untilMs, shot, cloak = false) => {
+    await waitElapsed(page, time, shot);
+    const label = `${viewport.id}-${shipId}-${id}`;
+    const observed = await capture(page, label, { shipId, generated: true, cloak });
+    const recorded = report.captures.at(-1);
+    assert.equal(observed.carrier.fallback, 'false', 'Additional-family evidence must actually load that family.');
+    assert.equal(observed.carrier.from, id); assert.equal(observed.carrier.to, '');
+    assert.equal(observed.carrier.path, family.views[id].path);
+    assert.equal(recorded.after.view, id, 'A held-view photograph must retain its source throughout acquisition.');
+    assert.equal(recorded.after.from, id); assert.equal(recorded.after.to, '');
+    assert.equal(Number(recorded.after.mix), 0);
+    assert.ok(recorded.after.elapsedExactMs < untilMs, 'The entire native photograph must precede the next view or shot.');
+    observedPaths.add(observed.carrier.path);
+    coverage.views.push({ id, path: observed.carrier.path, file: recorded.file, sha256: recorded.sha256,
+      method: observed.method, cloak, requestedAt: time, heldUntilMs: untilMs,
+      elapsedBefore: observed.elapsedExactMs, elapsedAfter: recorded.after.elapsedExactMs });
+  };
+  const consumeBlends = async (pending, optical = false) => {
+    const result = await pending;
+    if (result.error) throw result.error;
+    assert.ok(result.observations.length >= 2, `${shipId}: inspect real intermediate native mixtures.`);
+    for (const observation of result.observations) {
+      assert.equal(observation.layers.length, 2);
+      assertRegistration(observation); assertIsotropicSources(observation);
+      if (optical) {
+        assert.ok(observation.cloak > 0, 'The additional ship dissolve must actually be optically cloaked.');
+        assertRimRegistration(observation, shipId);
+      }
+      for (const layer of observation.layers) assert.ok(layer.path === api.shipProfileAssetPath(shipId) ||
+        family.paths.includes(layer.path), 'A native dissolve cannot borrow an image from a different hull.');
+    }
+    const transitions = [...new Set(result.observations.map(observation => `${observation.from}->${observation.to}`))];
+    const differentCanvasObservations = result.observations.filter(observation => new Set(observation.layers
+      .map(layer => `${layer.sourceCanvas.width}x${layer.sourceCanvas.height}`)).size > 1);
+    if (optical) {
+      const profile = api.carrierArtForShip(shipId);
+      if (Object.values(family.views).some(view => view.art.width !== profile.width || view.art.height !== profile.height)) {
+        assert.ok(differentCanvasObservations.length > 0,
+          'Observe an actual cloaked profile-to-view dissolve with different native canvases; held views cannot prove the SVG correction.');
+      }
+      coverage.opticalRegistration = { observations: result.observations.length,
+        differentCanvasObservations: differentCanvasObservations.length,
+        differentCanvasTransitions: [...new Set(differentCanvasObservations.map(observation => `${observation.from}->${observation.to}`))] };
+    }
+    coverage.transitions.push(...transitions);
+    report.registrationObservations.push({ viewport: viewport.id, shipId, optical, observations: result.observations,
+      transitionsObserved: transitions });
+  };
+  await openShot(page, 'carrier', 'pod', false, true, new Set(), shipId);
+  const podBlends = observeRegistrationBlends(page, 27_200)
+    .then(observations => ({ observations }), error => ({ error }));
+  for (const [id, time, untilMs, shot] of [
+    ['forward-quarter', 14_200, 15_200, 'carrier'], ['forward-quarter-shallow', 16_000, 17_100, 'carrier'],
+    ['bank-dorsal-shallow', 19_100, 20_000, 'carrier'], ['bank-dorsal', 20_200, 21_000, 'carrier'],
+    ['rear-quarter-shallow', 25_200, 26_400, 'release'], ['rear-quarter', 26_800, 31_000, 'release'],
+  ]) await photograph(id, time, untilMs, shot);
+  await consumeBlends(podBlends);
+  if (family.methods.includes('ship')) {
+    // A separate ordinary ship playback reveals the two otherwise unused
+    // ventral views and checks their actual optical masks on the same pixels.
+    await openShot(page, 'release', 'ship', true, true, new Set(), shipId);
+    const shipBlends = observeRegistrationBlends(page, 27_200)
+      .then(observations => ({ observations }), error => ({ error }));
+    await photograph('bank-ventral-shallow', 25_200, 26_200, 'release', true);
+    await photograph('bank-ventral', 26_800, 31_000, 'release', true);
+    await consumeBlends(shipBlends, true);
+  }
+  assert.deepEqual([...observedPaths].sort(), [...family.paths].sort(),
+    'Every registered additional view must be painted and photographed during a native playback.');
+  coverage.transitions = [...new Set(coverage.transitions)];
+  coverage.passed = true;
+}
+
+async function failureRoute(viewport, shipId = api.DEFAULT_SHIP_ID) {
+  const classic = shipId === api.DEFAULT_SHIP_ID;
+  const observed = classic ? optionalPaths : new Set(report.familyCoverage
+    .filter(item => item.shipId === shipId && item.passed).flatMap(item => item.views.map(view => view.path)));
+  assert.ok(observed.size, 'Observe actual additional view files before checking their optional fallback.');
   // One unavailable sibling must keep the whole optional family disabled; a
   // partial pack must not make the silhouette pop between unrelated views.
-  const blocked = new Set([optionalPaths.values().next().value]);
+  const blocked = new Set([observed.values().next().value]);
+  const failureLabel = classic ? 'intentional-optional-view-404' : `intentional-optional-view-404:${shipId}`;
+  const prefix = classic ? 'desktop-missing-optional-view' : `${viewport.id}-${shipId}-missing-optional-view`;
   const context = await makeContext(viewport);
-  const page = await context.newPage(); watch(page, 'intentional-optional-view-404', blocked);
+  const page = await context.newPage(); watch(page, failureLabel, blocked);
   await page.route('**/game/**', route => blocked.has(new URL(route.request().url()).pathname)
     ? route.fulfill({ status: 404, contentType: 'text/plain', body: 'Intentional QA failure for an optional ship view.' })
     : route.continue());
   const failedResponse = page.waitForResponse(response => blocked.has(new URL(response.url()).pathname) && response.status() === 404);
-  await openShot(page, 'carrier', 'pod', false, true, blocked);
+  await openShot(page, 'carrier', 'pod', false, true, blocked, shipId);
   await failedResponse;
   await waitElapsed(page, 14_600, 'carrier');
-  const fallback = await capture(page, 'desktop-missing-optional-view-profile-fallback');
+  const fallback = await capture(page, `${prefix}-profile-fallback`, { shipId });
   assert.equal(fallback.carrier.fallback, 'true');
-  assert.equal(fallback.carrier.path, api.shipProfileAssetPath(api.DEFAULT_SHIP_ID));
-  assert.ok(fallback.carrier.layers.every(layer => layer.path === api.shipProfileAssetPath(api.DEFAULT_SHIP_ID)));
-  await openShot(page, 'release', 'pod', false, true, blocked);
+  assert.equal(fallback.carrier.path, api.shipProfileAssetPath(shipId));
+  assert.ok(fallback.carrier.layers.every(layer => layer.path === api.shipProfileAssetPath(shipId)));
+  await openShot(page, 'release', 'pod', false, true, blocked, shipId);
   await waitElapsed(page, 26_700, 'release');
-  const departingFallback = await capture(page, 'desktop-missing-optional-view-departure-fallback');
+  const departingFallback = await capture(page, `${prefix}-departure-fallback`, { shipId });
   assert.equal(departingFallback.carrier.fallback, 'true');
-  assert.equal(departingFallback.carrier.path, api.shipProfileAssetPath(api.DEFAULT_SHIP_ID));
+  assert.equal(departingFallback.carrier.path, api.shipProfileAssetPath(shipId));
   assert.equal(departingFallback.carrier.engines.length, 0,
     'The unavailable rear view must not leave its engine attached to the fallback profile.');
-  assert.ok(report.missingAssets.some(item => item.label === 'intentional-optional-view-404' && item.expected),
+  assert.ok(report.missingAssets.some(item => item.label === failureLabel && item.expected),
     'The failure scenario must observe a real intercepted HTTP 404, not a silent renderer change.');
   await context.close();
 }
@@ -729,6 +915,10 @@ try {
     }
     await check(`${viewport.id}: cloaked moving hull uses matching body/light/refraction/rim sources`,
       () => shipRoute(page, viewport, true));
+    for (const shipId of Object.keys(api.ARRIVAL_SHIP_MOTION_FAMILIES).filter(id => id !== api.DEFAULT_SHIP_ID)) {
+      await check(`${viewport.id}: ${shipId} complete inspected view family and isotropic native registration`,
+        () => additionalFamilyRoute(page, viewport, shipId));
+    }
     const video = page.video();
     await context.close();
     if (video) {
@@ -739,6 +929,13 @@ try {
   }
   await check('desktop: missing optional views visibly fall back to the selected catalogue hull',
     () => failureRoute(viewports[0]));
+  const fallbackSizes = new Set();
+  for (const [shipId, family] of Object.entries(api.ARRIVAL_SHIP_MOTION_FAMILIES)) {
+    if (shipId === api.DEFAULT_SHIP_ID || fallbackSizes.has(family.paths.length)) continue;
+    fallbackSizes.add(family.paths.length);
+    await check(`desktop: ${shipId} missing view retains its own complete ${family.paths.length}-view family fallback`,
+      () => failureRoute(viewports[0], shipId));
+  }
   await check('rendered fixtures have no unexpected image failures or JavaScript errors', async () => {
     assert.deepEqual(report.pageErrors, []);
     assert.deepEqual(report.missingAssets.filter(item => !item.expected), []);

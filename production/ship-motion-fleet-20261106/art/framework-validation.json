@@ -1,0 +1,365 @@
+{
+  "basedOn": "3ef6d77e338bbec8e904f09ad72f75b4d38bbed2",
+  "createdAt": "2026-11-06T05:14:39.659645+00:00",
+  "status": "frozen-for-parent-publication-review-native-qualification-pending",
+  "files": [
+    {
+      "path": "app/game/systems/planetArrivalShipMotion.ts",
+      "bytes": 25291,
+      "sha256": "9f6f4b7617773d04076aec710b7570d0ea175505284d36c979283ace6af3a8ff",
+      "gitBlob": "b4910c3203df03b0c79508e2a88607990f3a6ff4"
+    },
+    {
+      "path": "app/game/systems/planetArrivalShipMotionCalibrations.ts",
+      "bytes": 17337,
+      "sha256": "c6fb47c806fdcccaa0b898fd6b60e5477ce5ba2906196548673968426fd11848",
+      "gitBlob": "c24b6156a795474ba84d492e1075ba0d5f2da84a"
+    },
+    {
+      "path": "app/game/PlanetArrivalCinematic.tsx",
+      "bytes": 72421,
+      "sha256": "49449f839d797de1348cb89249dd1c1b70d3c671976e6f2acca8323c13ce03cf",
+      "gitBlob": "178cee65a3110fe86fc255e1c025e0933f1fcec5"
+    },
+    {
+      "path": "tests/planet-arrival-ship-motion.test.mjs",
+      "bytes": 25944,
+      "sha256": "029cb84d30857e197f28f5bacc2781783fe9554b915bd1fa51ef2afd93dcc478",
+      "gitBlob": "31748a2999745781d1c649ac9e21b37957396624"
+    },
+    {
+      "path": "scripts/qa-ship-motion.mjs",
+      "bytes": 59742,
+      "sha256": "f3abb22cd8728f03e0b00d6d158df39038015204fbb6d3d94c288c34fdbe3ecb",
+      "gitBlob": "86e1da61fe3e12fcc669267774bda3aa1b98aec4"
+    },
+    {
+      "path": "scripts/qa-planet-arrival-spatial.mjs",
+      "bytes": 196792,
+      "sha256": "8d02b153dd81d68f3c2b8264309a38c13e716fc7219df6146914912f90c013da",
+      "gitBlob": "2d3bd1b23665a02e8e09a2fbe207b01d13e8f183"
+    }
+  ],
+  "families": [
+    {
+      "shipId": "wolf-ship",
+      "methods": [
+        "pod",
+        "ship"
+      ],
+      "views": 8,
+      "sourceCalibration": "wolf-eight-view-calibration.json",
+      "approvedSha256": "8742e1f40f77548d9583b0e00b64841cbf5cf3856f2e84dbce7425337350356d",
+      "productionReview": "production/ship-motion-fleet-20261106/art/wolf-eight-view-calibration.json",
+      "productionReviewByteExact": true,
+      "allFourLandmarksExact": true,
+      "newEngineEmissionApproved": false
+    },
+    {
+      "shipId": "avp-predator-mothership",
+      "methods": [
+        "pod"
+      ],
+      "views": 6,
+      "sourceCalibration": "avp-mothership-six-view-calibration.json",
+      "approvedSha256": "3c88559adebbfc96c7f630daec17e1d80ee6394ab7b33ee1bfad1caa5eee2345",
+      "productionReview": "production/ship-motion-fleet-20261106/art/avp-mothership-six-view-calibration.json",
+      "productionReviewByteExact": true,
+      "allFourLandmarksExact": true,
+      "newEngineEmissionApproved": false
+    },
+    {
+      "shipId": "avpr-scout-ship",
+      "methods": [
+        "pod",
+        "ship"
+      ],
+      "views": 8,
+      "sourceCalibration": "avpr-scout-ship/independent-eight-view-calibration.json",
+      "approvedSha256": "4f7d6a9a960bfe6b27e697d40fa200b5631768a91d4970aed47769cda6c6a96a",
+      "productionReview": "production/ship-motion-fleet-20261106/art/avpr-scout-eight-view-calibration.json",
+      "productionReviewByteExact": true,
+      "allFourLandmarksExact": true,
+      "newEngineEmissionApproved": false
+    },
+    {
+      "shipId": "feral-spaceship",
+      "methods": [
+        "pod",
+        "ship"
+      ],
+      "views": 8,
+      "sourceCalibration": "feral-spaceship/independent-eight-view-calibration.json",
+      "approvedSha256": "3d7119077a98ac5e143b2f41d17a3603e8e4449f493dc4490277e7d3288b4e6b",
+      "productionReview": "production/ship-motion-fleet-20261106/art/feral-eight-view-calibration.json",
+      "productionReviewByteExact": true,
+      "allFourLandmarksExact": true,
+      "newEngineEmissionApproved": false
+    },
+    {
+      "shipId": "fugitive-spaceship",
+      "methods": [
+        "pod",
+        "ship"
+      ],
+      "views": 8,
+      "sourceCalibration": "fugitive-spaceship/independent-eight-view-calibration.json",
+      "approvedSha256": "f7c91e483d8d0d6c4bff42a8aaaad6ed546e31b7b0ddd0c730744535180725f9",
+      "productionReview": "production/ship-motion-fleet-20261106/art/fugitive-eight-view-calibration.json",
+      "productionReviewByteExact": true,
+      "allFourLandmarksExact": true,
+      "newEngineEmissionApproved": false
+    },
+    {
+      "shipId": "upgrade-spaceship",
+      "methods": [
+        "pod",
+        "ship"
+      ],
+      "views": 8,
+      "sourceCalibration": "upgrade-spaceship/independent-eight-view-calibration.json",
+      "approvedSha256": "851432efc75daa5c525301a3b3c05884f7a485c0645a9dc1bab5306bc816b33b",
+      "productionReview": "production/ship-motion-fleet-20261106/art/upgrade-eight-view-calibration.json",
+      "productionReviewByteExact": true,
+      "allFourLandmarksExact": true,
+      "newEngineEmissionApproved": false
+    }
+  ],
+  "additionalFamilyCount": 6,
+  "additionalViewCount": 46,
+  "checks": {
+    "syntax": {
+      "command": "node --check scripts/qa-ship-motion.mjs",
+      "exitCode": 0
+    },
+    "eslint": {
+      "finalPaths": [
+        "app/game/PlanetArrivalCinematic.tsx",
+        "app/game/systems/planetArrivalShipMotionCalibrations.ts",
+        "tests/planet-arrival-ship-motion.test.mjs",
+        "scripts/qa-ship-motion.mjs"
+      ],
+      "exitCode": 0,
+      "unchangedPathsAlreadyChecked": [
+        "app/game/systems/planetArrivalShipMotion.ts",
+        "scripts/qa-planet-arrival-spatial.mjs"
+      ],
+      "originalReceipt": "framework-validation.json"
+    },
+    "typecheck": {
+      "command": "npx tsc --noEmit",
+      "exitCode": 0
+    },
+    "focusedRegression": {
+      "command": "node --experimental-strip-types --test tests/planet-arrival-ship-motion.test.mjs tests/planet-arrival-ship-effects.test.mjs tests/planet-arrival-spatial.test.mjs",
+      "passed": 43,
+      "failed": 0,
+      "skipped": 0
+    },
+    "approvedDataExact": {
+      "file": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/framework/final-calibrations-validation.json",
+      "bytes": 3475,
+      "sha256": "1efefa77f1f3a4f59920d71bfad4218c6240c9abe5778f95d831a955178a4db5"
+    },
+    "compiledBaselineRegression": {
+      "sourceCommit": "3ef6d77e338bbec8e904f09ad72f75b4d38bbed2",
+      "passed": true,
+      "classicFrames": 29160,
+      "classicRegistrations": 233280,
+      "unchangedProfileFrames": 1316,
+      "unregisteredHulls": 47,
+      "registeredAdditionalHulls": [
+        "wolf-ship",
+        "avp-predator-mothership",
+        "avpr-scout-ship",
+        "feral-spaceship",
+        "fugitive-spaceship",
+        "upgrade-spaceship"
+      ],
+      "baselineSha256": "7569574b2027c3136452059fe69f423c58f08c3188e51d0d9d435f3d61b379cc",
+      "candidateSha256": "9f6f4b7617773d04076aec710b7570d0ea175505284d36c979283ace6af3a8ff",
+      "scope": "Structural deep equality of the exact compiled baseline and candidate; live-time, nonfinite, reduced-motion and missing-image cases. Not a browser or raster rendering claim."
+    },
+    "svgOracleCounterexample": {
+      "scope": "Synthetic oracle counterexample and exact source-delta inspection; no browser/native claim",
+      "sourceSha256": "f3abb22cd8728f03e0b00d6d158df39038015204fbb6d3d94c288c34fdbe3ecb",
+      "tsxSha256": "49449f839d797de1348cb89249dd1c1b70d3c671976e6f2acca8323c13ce03cf",
+      "helperSha256": "ab72b3647ed1581363f434c68aa7a53380f31f5ff3a62936adc7a9dc038416a1",
+      "checks": [
+        {
+          "name": "uniform rotated source",
+          "expected": "accept",
+          "passed": true,
+          "determinant": 0.05759999999999999
+        },
+        {
+          "name": "intentional reflected carrier",
+          "expected": "accept",
+          "passed": true,
+          "determinant": -0.05759999999999999
+        },
+        {
+          "name": "implicit SVG meet under differing source and frame canvases",
+          "expected": "reject",
+          "passed": true,
+          "scaleRatio": 0.7606473594548551,
+          "error": "bank-ventral-shallow SVG source-pixel scale must be isotropic: observed 0.7606473594548551, expected 1 ± 0.0001"
+        },
+        {
+          "name": "isotropic but displaced rim",
+          "expected": "reject",
+          "passed": true,
+          "error": "bank-ventral-shallow/nose SVG source pixels must coincide with the actual painted layer: observed 2, expected 0 ± 0.5"
+        }
+      ],
+      "allPassed": true,
+      "unchangedFunctions": [
+        "check",
+        "loadFixtures",
+        "startHost",
+        "makeContext",
+        "watch",
+        "openShot",
+        "waitElapsed",
+        "assertRegistration",
+        "assertIsotropicSources",
+        "assertEngines",
+        "capture",
+        "expectedLaunch",
+        "observeLaunches",
+        "capsuleRoute",
+        "pauseAndResume",
+        "shipRoute",
+        "failureRoute"
+      ],
+      "changedFunctions": [
+        "frame",
+        "assertHull",
+        "observeRegistrationBlends",
+        "additionalFamilyRoute"
+      ],
+      "addedFunction": "assertRimRegistration",
+      "nativeMainLoopByteIdentical": true,
+      "priorAssertionsRetainedExactly": 87,
+      "addedAssertions": 9,
+      "tsxOnlyDelta": "Conditional outer SVG preserveAspectRatio=none iff non-grounded and the actual registration carries sourceScale.",
+      "limitations": [
+        "A native getScreenCTM observation is still required.",
+        "The 46 held-view photographs alone do not exercise a cross-canvas dissolve.",
+        "The extended native oracle requires a real cross-canvas cloaked dissolve for each applicable additional ship family."
+      ]
+    }
+  },
+  "spatialScope": {
+    "allDeclaredFunctionsByteIdentical": [
+      "startHarness",
+      "startNativeServer",
+      "observePage",
+      "check",
+      "readFrame",
+      "decodeSceneImages",
+      "assertSpatial",
+      "capture",
+      "freezeCaptureData",
+      "x11PaintPattern",
+      "installX11PaintMarkers",
+      "assertX11Markers",
+      "startX11Capture",
+      "assertX11CaptureAck",
+      "exportX11Source",
+      "retainX11CalibrationFailure",
+      "momentSessions",
+      "syncMomentViewport",
+      "captureLayout",
+      "assertCaptureLayout",
+      "readMoment",
+      "losslessNativeDetailCrop",
+      "captureMoment",
+      "capturePreparedMoment",
+      "momentTargetRoi",
+      "roiCandidates",
+      "variantCaptureIdentity",
+      "assertCaptureProfile",
+      "prepareMoment",
+      "preflightMomentRoi",
+      "waitElapsed",
+      "ready",
+      "openShot",
+      "measureMovement",
+      "storageSnapshot",
+      "assertFinalFormation",
+      "finalizeCompositionCapture"
+    ],
+    "assertionsBefore": 495,
+    "assertionsAfter": 496,
+    "unchangedAssertions": 494,
+    "removed": [
+      "assert.ok(frame.images.some(image => image.path === profile), 'The real catalogue profile must be rendered.')"
+    ],
+    "added": [
+      "assert.equal(carriers.length, 1, 'The selected catalogue hull requires exactly one actual carrier.')",
+      "assert.ok(paintedCarrier.opacity > .02 && paintedCarrier.views.length > 0 &&\n          paintedCarrier.views.every(view => view.opacity > 0 && view.image?.width > 0 && view.image.height > 0),\n        'The selected carrier must paint its actual decoded profile or registered perspective layers.')"
+    ],
+    "scope": "Only additionalShips caller block and its observed-view receipt changed. All capture helpers, native clocks, optics, final gates and X11 functions are byte-identical."
+  },
+  "preservedLogic": {
+    "motionModuleUnchangedSinceApprovedFramework": "9f6f4b7617773d04076aec710b7570d0ea175505284d36c979283ace6af3a8ff",
+    "spatialScriptUnchangedSinceApprovedFramework": "8d02b153dd81d68f3c2b8264309a38c13e716fc7219df6146914912f90c013da",
+    "sourcePixels": "Source PNGs and lossless exports are owned/reviewed by root; this agent changed no raster.",
+    "groundAndRelease": "Unchanged calibrated profiles remain active for all three pod releases, surface contact and egress.",
+    "enginePolicy": "All additional view sockets remain visibility0/unreviewed; classic inspected rear engines remain unchanged."
+  },
+  "nativeRequirements": {
+    "additionalPathsPerViewport": 46,
+    "viewports": [
+      "desktop",
+      "mobile"
+    ],
+    "familyCoverageRecords": 12,
+    "actualCloakedDifferentCanvasDissolveRequiredFor": [
+      "wolf-ship",
+      "fugitive-spaceship",
+      "upgrade-spaceship",
+      "feral-spaceship"
+    ],
+    "sameCanvasOpticalFamily": "avpr-scout-ship",
+    "podOnlyFamily": "avp-predator-mothership",
+    "noLocalBrowserExecuted": true,
+    "noClockChanges": true,
+    "noNewRetries": true
+  },
+  "receipts": {
+    "fullDiff": {
+      "file": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/framework/framework-final.diff",
+      "bytes": 76329,
+      "sha256": "4102e70d3945646ca8db1726001ef393a9a166fca425c5e039cbe8f6f17f84c2"
+    },
+    "svgDiff": {
+      "file": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/framework/svg-registration/svg-registration.diff",
+      "bytes": 9021,
+      "sha256": "8c31486bc5f7118a98d7fa1b88b50aeb1aa5c21af225de1dd09d7835cbe74df4"
+    },
+    "svgIndependentReview": {
+      "file": "/workspace/scratch/0c1fa1359efb/qa/ship-motion-svg-registration-review/frozen-review.json",
+      "bytes": 8250,
+      "sha256": "dfab68e0b935ec7c2d560f00bba2941b2e62977ffb1643640b57eeb9937a1cfb"
+    },
+    "workflowIndependentReview": {
+      "file": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/framework/workflow-independent-review.json",
+      "bytes": 1514,
+      "sha256": "65c73f4be071caee700d2361d1004d22810d5ac88c4bb7334dcc84e2704ad0b6"
+    },
+    "independentFleetBinaryReview": {
+      "file": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/fleet-binary-audit/independent-fleet-binary-audit.json",
+      "bytes": 133506,
+      "sha256": "4430e26cc0eb394a876886aa68c8f079ff932ca7784a68dc47524dc551b1b076"
+    }
+  },
+  "limitations": [
+    "Generated unseen surfaces and camera angles are interpreted, not a canonical 3D reconstruction or human artistic acceptance.",
+    "Native viewing of all 46 new perspectives and cross-canvas optical transitions is pending the authorized runner.",
+    "Held-view photographs alone do not prove the SVG aspect correction; the new native oracle requires actual heterogeneous-canvas mixtures.",
+    "Upgrade ventral-shallow has 11 border pixels with alpha 2..3 and 7px visible-hull margin; no universal border-alpha<=1 claim is made.",
+    "No workflow, helper, CSS, catalogue, inventory, buildInfo or publication was changed by this agent during framework integration."
+  ]
+}

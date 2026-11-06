@@ -1,0 +1,1995 @@
+{
+  "schema": "ship-family-imagegen-candidates/v1",
+  "family": "avpr-scout-ship",
+  "sourceCommit": "3ef6d77e338bbec8e904f09ad72f75b4d38bbed2",
+  "tool": "built-in image_gen",
+  "requestedCanvas": {
+    "width": 1536,
+    "height": 1024
+  },
+  "referenceImages": [
+    {
+      "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/avpr-scout-ship-profile.webp",
+      "role": "reference image 1: exact V14 Scout profile; identity, materials and three-reactor aft cluster",
+      "sha256": "b787eb8f6a8a0eb1e5d075bce7503bc1f7e54f452e490d82959e93aa1a38c306"
+    },
+    {
+      "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/avpr-scout-ship-top.webp",
+      "role": "reference image 2: exact V14 Scout dorsal reference; same ship, structural layout and reactor locations",
+      "sha256": "346d944556b7f992bec2259fdb86f122c672d7456d509cb22605fa304c98676a"
+    }
+  ],
+  "expectedAftReactorCount": 3,
+  "orientation": {
+    "nose": "screen-right",
+    "aft": "screen-left"
+  },
+  "repositoryIntegrated": false,
+  "externalPublished": false,
+  "engineEffectsRequested": false,
+  "limits": [
+    "Exact artistic/canonical 1:1 fidelity is not certified; new hidden faces remain inferred candidates.",
+    "Camera-angle labels express generation intent and require visual/geometry QA; no calibrated 3D model is available."
+  ],
+  "jobs": [
+    {
+      "id": "forward-quarter-shallow",
+      "direction": "front",
+      "degrees": 12,
+      "prompt": "Use case: stylized-concept.\nAsset type: one individual transparent game-cinematic ship sprite, a candidate for Yautja The Long Hunt.\nCanvas: exactly 1536 x 1024 pixels, landscape, true RGBA transparency.\nInput images are IDENTITY REFERENCES, not sprites to rotate: image 1 is the AVP:R SCOUT V14 profile; image 2 is the same SCOUT's V14 dorsal view. Reconstruct a coherent new three-dimensional view of this exact craft. Do not substitute Wolf, the classic Predator ship, or a generic spacecraft.\nIdentity invariants: preserve its elongated dark graphite/gunmetal organic hull, the large swept arch-like plates, nested longitudinal ribs and pipes, the reference panel joints and weathering, the thin cyan inset light rows, and the small forward nose assembly. The aft cluster contains EXACTLY THREE circular warm-orange reactor mouths with the same physical positions and housings as the references; never add, remove, merge or duplicate a reactor. The small warm feature on the nose is a forward light/detail, not a fourth engine. Preserve reference proportions and construction; no new fins, wings, weapons, landing legs, flames or exhaust plume.\nOrientation and composition: nose projects to screen RIGHT and rear to screen LEFT, as in both references. Center the full craft near (768,512), keep its longitudinal axis nearly horizontal and leave transparent margins around every protrusion. Preserve comparable world scale between family members, with natural perspective foreshortening rather than artificial image stretching. One ship, one angle, no montage or labels.\nRendering: match the references' detailed realistic 3D cutout style, worn dark metal, subtle restrained cyan and warm orange embedded light; neutral soft illumination. Preserve sharp mechanical edges without drawing a glow outline. No background, ground, shadow plane, checkerboard, text, watermark or decorative framing.\n\nRequired camera view for this sprite: From a true right-facing broadside pose, orbit the camera 12 degrees toward the NOSE at the right. This is the shallow FRONT quarter angle: reveal a small amount of the forward-facing nose surface, with only slight longitudinal foreshortening. Keep camera elevation close to the hull centerline; no bank or 2D roll.\nThis must be a distinct 3D camera view with new occlusions and visible surfaces, not a rotated, mirrored, skewed or recolored copy of an input bitmap.",
+      "references": [
+        "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/avpr-scout-ship-profile.webp",
+        "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/avpr-scout-ship-top.webp"
+      ],
+      "transparentBackground": true,
+      "targetCandidatePath": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/avpr-scout-ship/avpr-scout-ship-forward-quarter-shallow.png",
+      "status": "candidate-ready-for-independent-QA",
+      "reviewStatus": "candidate-before-QA",
+      "attempts": [
+        {
+          "id": "forward-quarter-shallow",
+          "original": "/workspace/scratch/0c1fa1359efb/generated_images/exec-c4f195fe-ff56-4103-9225-4860f2d87f4e.png",
+          "target": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/avpr-scout-ship/avpr-scout-ship-forward-quarter-shallow.png",
+          "startedAt": "2026-11-06T04:17:15.983Z",
+          "completedAt": "2026-11-06T04:18:01.801Z",
+          "output_hint": "Generated images are saved to /workspace/scratch/0c1fa1359efb/generated_images as /workspace/scratch/0c1fa1359efb/generated_images/exec-c4f195fe-ff56-4103-9225-4860f2d87f4e.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+          "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/avpr-scout-ship/avpr-scout-ship-forward-quarter-shallow.png",
+          "bytes": 1633436,
+          "sha256": "9763608a8a85c1f1ef9d505280d6b5356d56194b402188c2a6c429c5c2086b3b",
+          "width": 1536,
+          "height": 1024,
+          "mode": "RGBA",
+          "alphaExtrema": [
+            0,
+            254
+          ],
+          "alphaBBox": [
+            0,
+            31,
+            1512,
+            986
+          ],
+          "transparentPixels": 1156018,
+          "partiallyTransparentPixels": 416846,
+          "opaquePixels": 0,
+          "alphaSamples": [
+            {
+              "xy": [
+                0,
+                0
+              ],
+              "rgba": [
+                1,
+                1,
+                1,
+                0
+              ]
+            },
+            {
+              "xy": [
+                768,
+                100
+              ],
+              "rgba": [
+                0,
+                0,
+                0,
+                0
+              ]
+            },
+            {
+              "xy": [
+                768,
+                200
+              ],
+              "rgba": [
+                11,
+                10,
+                11,
+                0
+              ]
+            },
+            {
+              "xy": [
+                768,
+                900
+              ],
+              "rgba": [
+                0,
+                0,
+                0,
+                0
+              ]
+            },
+            {
+              "xy": [
+                100,
+                100
+              ],
+              "rgba": [
+                1,
+                0,
+                0,
+                0
+              ]
+            }
+          ],
+          "pixelBytesChanged": false,
+          "attempt": 1,
+          "prompt": "Use case: stylized-concept.\nAsset type: one individual transparent game-cinematic ship sprite, a candidate for Yautja The Long Hunt.\nCanvas: exactly 1536 x 1024 pixels, landscape, true RGBA transparency.\nInput images are IDENTITY REFERENCES, not sprites to rotate: image 1 is the AVP:R SCOUT V14 profile; image 2 is the same SCOUT's V14 dorsal view. Reconstruct a coherent new three-dimensional view of this exact craft. Do not substitute Wolf, the classic Predator ship, or a generic spacecraft.\nIdentity invariants: preserve its elongated dark graphite/gunmetal organic hull, the large swept arch-like plates, nested longitudinal ribs and pipes, the reference panel joints and weathering, the thin cyan inset light rows, and the small forward nose assembly. The aft cluster contains EXACTLY THREE circular warm-orange reactor mouths with the same physical positions and housings as the references; never add, remove, merge or duplicate a reactor. The small warm feature on the nose is a forward light/detail, not a fourth engine. Preserve reference proportions and construction; no new fins, wings, weapons, landing legs, flames or exhaust plume.\nOrientation and composition: nose projects to screen RIGHT and rear to screen LEFT, as in both references. Center the full craft near (768,512), keep its longitudinal axis nearly horizontal and leave transparent margins around every protrusion. Preserve comparable world scale between family members, with natural perspective foreshortening rather than artificial image stretching. One ship, one angle, no montage or labels.\nRendering: match the references' detailed realistic 3D cutout style, worn dark metal, subtle restrained cyan and warm orange embedded light; neutral soft illumination. Preserve sharp mechanical edges without drawing a glow outline. No background, ground, shadow plane, checkerboard, text, watermark or decorative framing.\n\nRequired camera view for this sprite: From a true right-facing broadside pose, orbit the camera 12 degrees toward the NOSE at the right. This is the shallow FRONT quarter angle: reveal a small amount of the forward-facing nose surface, with only slight longitudinal foreshortening. Keep camera elevation close to the hull centerline; no bank or 2D roll.\nThis must be a distinct 3D camera view with new occlusions and visible surfaces, not a rotated, mirrored, skewed or recolored copy of an input bitmap.",
+          "references": [
+            "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/avpr-scout-ship-profile.webp",
+            "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/avpr-scout-ship-top.webp"
+          ],
+          "selected": true,
+          "reviewStatus": "candidate-before-independent-QA",
+          "referenceFiles": [
+            {
+              "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/avpr-scout-ship-profile.webp",
+              "sha256": "b787eb8f6a8a0eb1e5d075bce7503bc1f7e54f452e490d82959e93aa1a38c306"
+            },
+            {
+              "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/avpr-scout-ship-top.webp",
+              "sha256": "346d944556b7f992bec2259fdb86f122c672d7456d509cb22605fa304c98676a"
+            }
+          ]
+        }
+      ],
+      "initialVisualReview": {
+        "aftReactorCount": 3,
+        "verdict": "candidate-requires-angle-QA",
+        "note": "Identity and three aft reactors visible; exact 12-degree camera geometry remains unmeasured."
+      },
+      "selectedAttempt": 1,
+      "selectedCandidatePath": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/avpr-scout-ship/candidates/avpr-scout-ship-forward-quarter-shallow.png",
+      "currentVisualReview": {
+        "aftReactorCount": 3,
+        "verdict": "candidate-requires-angle-QA",
+        "note": "Identity and three aft reactors visible; exact 12-degree camera geometry remains unmeasured."
+      },
+      "selectedSourceAttemptPath": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/avpr-scout-ship/avpr-scout-ship-forward-quarter-shallow.png",
+      "candidateIntegrity": {
+        "bytes": 1633436,
+        "sha256": "9763608a8a85c1f1ef9d505280d6b5356d56194b402188c2a6c429c5c2086b3b",
+        "byteExactCopyOfGeneratedOutput": true,
+        "dimensions": [
+          1536,
+          1024
+        ],
+        "mode": "RGBA",
+        "alphaRange": [
+          0,
+          254
+        ],
+        "fullyTransparentPixels": 1156018,
+        "alpha1to7Pixels": 9520,
+        "alpha250to255Pixels": 397979,
+        "fullyOpaquePixels": 0,
+        "transparentPixelsWithNonzeroRgb": 739939,
+        "boundsByAlphaThreshold": {
+          "1": [
+            0,
+            31,
+            1512,
+            986
+          ],
+          "8": [
+            101,
+            280,
+            1426,
+            717
+          ],
+          "128": [
+            102,
+            281,
+            1425,
+            716
+          ],
+          "250": [
+            103,
+            283,
+            1421,
+            714
+          ]
+        },
+        "samples": [
+          {
+            "xy": [
+              0,
+              0
+            ],
+            "rgba": [
+              1,
+              1,
+              1,
+              0
+            ]
+          },
+          {
+            "xy": [
+              768,
+              100
+            ],
+            "rgba": [
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "xy": [
+              768,
+              200
+            ],
+            "rgba": [
+              11,
+              10,
+              11,
+              0
+            ]
+          },
+          {
+            "xy": [
+              768,
+              900
+            ],
+            "rgba": [
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "xy": [
+              100,
+              100
+            ],
+            "rgba": [
+              1,
+              0,
+              0,
+              0
+            ]
+          }
+        ],
+        "rgbaSha256": "f704891628cf4c5cf4d8b4f65be5f098533ec8d1d092fc3c1c409952dfc90cac",
+        "alphaSha256": "e30d21bcb53ee469e5da732ffa3fded14df1d16c53bbad79cfc2f3347cb0695b",
+        "note": "Read-only analysis. RGB visible in an alpha-ignorant preview can be fully transparent. Low-alpha residuals and max alpha 254 are preserved without cleanup or normalization."
+      }
+    },
+    {
+      "id": "forward-quarter",
+      "direction": "front",
+      "degrees": 25,
+      "prompt": "Use case: stylized-concept.\nAsset type: one individual transparent game-cinematic ship sprite, a candidate for Yautja The Long Hunt.\nCanvas: exactly 1536 x 1024 pixels, landscape, true RGBA transparency.\nInput images are IDENTITY REFERENCES, not sprites to rotate: image 1 is the AVP:R SCOUT V14 profile; image 2 is the same SCOUT's V14 dorsal view. Reconstruct a coherent new three-dimensional view of this exact craft. Do not substitute Wolf, the classic Predator ship, or a generic spacecraft.\nIdentity invariants: preserve its elongated dark graphite/gunmetal organic hull, the large swept arch-like plates, nested longitudinal ribs and pipes, the reference panel joints and weathering, the thin cyan inset light rows, and the small forward nose assembly. The aft cluster contains EXACTLY THREE circular warm-orange reactor mouths with the same physical positions and housings as the references; never add, remove, merge or duplicate a reactor. The small warm feature on the nose is a forward light/detail, not a fourth engine. Preserve reference proportions and construction; no new fins, wings, weapons, landing legs, flames or exhaust plume.\nOrientation and composition: nose projects to screen RIGHT and rear to screen LEFT, as in both references. Center the full craft near (768,512), keep its longitudinal axis nearly horizontal and leave transparent margins around every protrusion. Preserve comparable world scale between family members, with natural perspective foreshortening rather than artificial image stretching. One ship, one angle, no montage or labels.\nRendering: match the references' detailed realistic 3D cutout style, worn dark metal, subtle restrained cyan and warm orange embedded light; neutral soft illumination. Preserve sharp mechanical edges without drawing a glow outline. No background, ground, shadow plane, checkerboard, text, watermark or decorative framing.\n\nRequired camera view for this sprite: From a true right-facing broadside pose, orbit the camera 25 degrees toward the NOSE at the right. This is the stronger FRONT quarter angle: reveal clearly more forward-facing nose surface and stronger longitudinal foreshortening than a 12-degree view. Keep camera elevation close to the hull centerline; no bank or 2D roll.\nThis must be a distinct 3D camera view with new occlusions and visible surfaces, not a rotated, mirrored, skewed or recolored copy of an input bitmap.",
+      "references": [
+        "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/avpr-scout-ship-profile.webp",
+        "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/avpr-scout-ship-top.webp"
+      ],
+      "transparentBackground": true,
+      "targetCandidatePath": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/avpr-scout-ship/avpr-scout-ship-forward-quarter.png",
+      "status": "candidate-ready-for-independent-QA",
+      "reviewStatus": "candidate-before-QA",
+      "attempts": [
+        {
+          "id": "forward-quarter",
+          "original": "/workspace/scratch/0c1fa1359efb/generated_images/exec-276befe8-a769-401b-9c2b-d6aafb35d3e8.png",
+          "target": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/avpr-scout-ship/avpr-scout-ship-forward-quarter.png",
+          "startedAt": "2026-11-06T04:17:15.983Z",
+          "completedAt": "2026-11-06T04:19:34.204Z",
+          "output_hint": "Generated images are saved to /workspace/scratch/0c1fa1359efb/generated_images as /workspace/scratch/0c1fa1359efb/generated_images/exec-276befe8-a769-401b-9c2b-d6aafb35d3e8.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+          "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/avpr-scout-ship/avpr-scout-ship-forward-quarter.png",
+          "bytes": 1804107,
+          "sha256": "e475ff4e7f2ee9f3ef8ce76afcf59a04a8ba343a168f954d8954f76552b0f2d0",
+          "width": 1536,
+          "height": 1024,
+          "mode": "RGBA",
+          "alphaExtrema": [
+            0,
+            254
+          ],
+          "alphaBBox": [
+            0,
+            0,
+            1508,
+            1024
+          ],
+          "transparentPixels": 1076822,
+          "partiallyTransparentPixels": 496042,
+          "opaquePixels": 0,
+          "alphaSamples": [
+            {
+              "xy": [
+                0,
+                0
+              ],
+              "rgba": [
+                1,
+                1,
+                0,
+                1
+              ]
+            },
+            {
+              "xy": [
+                768,
+                100
+              ],
+              "rgba": [
+                0,
+                0,
+                0,
+                0
+              ]
+            },
+            {
+              "xy": [
+                768,
+                200
+              ],
+              "rgba": [
+                22,
+                22,
+                22,
+                0
+              ]
+            },
+            {
+              "xy": [
+                768,
+                900
+              ],
+              "rgba": [
+                6,
+                6,
+                6,
+                0
+              ]
+            },
+            {
+              "xy": [
+                100,
+                100
+              ],
+              "rgba": [
+                1,
+                1,
+                0,
+                0
+              ]
+            }
+          ],
+          "pixelBytesChanged": false,
+          "attempt": 1,
+          "prompt": "Use case: stylized-concept.\nAsset type: one individual transparent game-cinematic ship sprite, a candidate for Yautja The Long Hunt.\nCanvas: exactly 1536 x 1024 pixels, landscape, true RGBA transparency.\nInput images are IDENTITY REFERENCES, not sprites to rotate: image 1 is the AVP:R SCOUT V14 profile; image 2 is the same SCOUT's V14 dorsal view. Reconstruct a coherent new three-dimensional view of this exact craft. Do not substitute Wolf, the classic Predator ship, or a generic spacecraft.\nIdentity invariants: preserve its elongated dark graphite/gunmetal organic hull, the large swept arch-like plates, nested longitudinal ribs and pipes, the reference panel joints and weathering, the thin cyan inset light rows, and the small forward nose assembly. The aft cluster contains EXACTLY THREE circular warm-orange reactor mouths with the same physical positions and housings as the references; never add, remove, merge or duplicate a reactor. The small warm feature on the nose is a forward light/detail, not a fourth engine. Preserve reference proportions and construction; no new fins, wings, weapons, landing legs, flames or exhaust plume.\nOrientation and composition: nose projects to screen RIGHT and rear to screen LEFT, as in both references. Center the full craft near (768,512), keep its longitudinal axis nearly horizontal and leave transparent margins around every protrusion. Preserve comparable world scale between family members, with natural perspective foreshortening rather than artificial image stretching. One ship, one angle, no montage or labels.\nRendering: match the references' detailed realistic 3D cutout style, worn dark metal, subtle restrained cyan and warm orange embedded light; neutral soft illumination. Preserve sharp mechanical edges without drawing a glow outline. No background, ground, shadow plane, checkerboard, text, watermark or decorative framing.\n\nRequired camera view for this sprite: From a true right-facing broadside pose, orbit the camera 25 degrees toward the NOSE at the right. This is the stronger FRONT quarter angle: reveal clearly more forward-facing nose surface and stronger longitudinal foreshortening than a 12-degree view. Keep camera elevation close to the hull centerline; no bank or 2D roll.\nThis must be a distinct 3D camera view with new occlusions and visible surfaces, not a rotated, mirrored, skewed or recolored copy of an input bitmap.",
+          "references": [
+            "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/avpr-scout-ship-profile.webp",
+            "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/avpr-scout-ship-top.webp"
+          ],
+          "selected": false,
+          "reviewStatus": "rejected-reactor-count",
+          "referenceFiles": [
+            {
+              "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/avpr-scout-ship-profile.webp",
+              "sha256": "b787eb8f6a8a0eb1e5d075bce7503bc1f7e54f452e490d82959e93aa1a38c306"
+            },
+            {
+              "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/avpr-scout-ship-top.webp",
+              "sha256": "346d944556b7f992bec2259fdb86f122c672d7456d509cb22605fa304c98676a"
+            }
+          ]
+        },
+        {
+          "id": "forward-quarter",
+          "attempt": 2,
+          "original": "/workspace/scratch/0c1fa1359efb/generated_images/exec-4a1aa24c-f30d-41c1-b42b-1a0db0ddbd7f.png",
+          "target": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/avpr-scout-ship/avpr-scout-ship-forward-quarter-v2.png",
+          "startedAt": "2026-11-06T04:21:18.213Z",
+          "completedAt": "2026-11-06T04:22:00.144Z",
+          "output_hint": "Generated images are saved to /workspace/scratch/0c1fa1359efb/generated_images as /workspace/scratch/0c1fa1359efb/generated_images/exec-4a1aa24c-f30d-41c1-b42b-1a0db0ddbd7f.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+          "prompt": "Use case: precise-object-edit.\nEdit image 1 only: it is a newly generated AVP:R SCOUT candidate with an incorrect count of FOUR aft orange reactor mouths. Images 2 and 3 are the exact V14 SCOUT profile and top identity references.\nCorrect only the aft propulsion cluster to contain EXACTLY THREE physical reactor housings and THREE orange circular burner mouths, arranged coherently as the same three units in reference images 2 and 3. Remove the invented fourth rear unit and reconstruct the adjacent original ribs/plates cleanly. Count the rear burner mouths before finishing: THREE total, not four. The small orange nose light at the RIGHT is not an engine and should remain a nose detail.\nPreserve image 1's front camera view at the intended 25 degrees, its nose pointing RIGHT and aft LEFT, its silhouette proportions, center, orientation, detailed dark graphite metal, cyan seams, panel construction, lighting and all non-engine parts. Use the supplied references to preserve this specific SCOUT; do not turn it into Wolf or the classic ship.\nOne craft only, full craft visible, exactly 1536 x 1024 landscape, actual transparent RGBA background. No new effects, plume, flames, floor, text, labels or border. Preserve transparency. This is a targeted reactor-count correction, not a new design or a 2D image rotation.",
+          "references": [
+            "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/avpr-scout-ship/avpr-scout-ship-forward-quarter.png",
+            "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/avpr-scout-ship-profile.webp",
+            "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/avpr-scout-ship-top.webp"
+          ],
+          "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/avpr-scout-ship/avpr-scout-ship-forward-quarter-v2.png",
+          "bytes": 1818845,
+          "sha256": "892ee0d60cbec215e47f199af8fa9b8fd20a474191c840e14b94cbf8d5f04515",
+          "width": 1536,
+          "height": 1024,
+          "mode": "RGBA",
+          "alphaExtrema": [
+            0,
+            254
+          ],
+          "alphaBBox": [
+            0,
+            16,
+            1514,
+            992
+          ],
+          "transparentPixels": 1081532,
+          "partiallyTransparentPixels": 491332,
+          "opaquePixels": 0,
+          "pixelBytesChanged": false,
+          "selected": true,
+          "reviewStatus": "candidate-before-independent-QA",
+          "referenceFiles": [
+            {
+              "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/avpr-scout-ship/avpr-scout-ship-forward-quarter.png",
+              "sha256": "e475ff4e7f2ee9f3ef8ce76afcf59a04a8ba343a168f954d8954f76552b0f2d0"
+            },
+            {
+              "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/avpr-scout-ship-profile.webp",
+              "sha256": "b787eb8f6a8a0eb1e5d075bce7503bc1f7e54f452e490d82959e93aa1a38c306"
+            },
+            {
+              "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/avpr-scout-ship-top.webp",
+              "sha256": "346d944556b7f992bec2259fdb86f122c672d7456d509cb22605fa304c98676a"
+            }
+          ]
+        }
+      ],
+      "initialVisualReview": {
+        "aftReactorCount": 4,
+        "verdict": "rejected-reactor-count",
+        "note": "Four aft burner mouths are visible instead of the required three; targeted image-generation correction is needed."
+      },
+      "selectedAttempt": 2,
+      "selectedCandidatePath": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/avpr-scout-ship/candidates/avpr-scout-ship-forward-quarter.png",
+      "currentVisualReview": {
+        "aftReactorCount": 3,
+        "verdict": "candidate-requires-independent-QA",
+        "note": "Three aft burner mouths visible. Reference hull identity and requested orientation retained; exact angle degrees have not been measured."
+      },
+      "selectedSourceAttemptPath": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/avpr-scout-ship/avpr-scout-ship-forward-quarter-v2.png",
+      "candidateIntegrity": {
+        "bytes": 1818845,
+        "sha256": "892ee0d60cbec215e47f199af8fa9b8fd20a474191c840e14b94cbf8d5f04515",
+        "byteExactCopyOfGeneratedOutput": true,
+        "dimensions": [
+          1536,
+          1024
+        ],
+        "mode": "RGBA",
+        "alphaRange": [
+          0,
+          254
+        ],
+        "fullyTransparentPixels": 1081532,
+        "alpha1to7Pixels": 9843,
+        "alpha250to255Pixels": 473083,
+        "fullyOpaquePixels": 0,
+        "transparentPixelsWithNonzeroRgb": 847454,
+        "boundsByAlphaThreshold": {
+          "1": [
+            0,
+            16,
+            1514,
+            992
+          ],
+          "8": [
+            94,
+            254,
+            1448,
+            753
+          ],
+          "128": [
+            95,
+            255,
+            1448,
+            752
+          ],
+          "250": [
+            96,
+            256,
+            1447,
+            751
+          ]
+        },
+        "samples": [
+          {
+            "xy": [
+              0,
+              0
+            ],
+            "rgba": [
+              1,
+              1,
+              1,
+              0
+            ]
+          },
+          {
+            "xy": [
+              768,
+              100
+            ],
+            "rgba": [
+              1,
+              2,
+              1,
+              0
+            ]
+          },
+          {
+            "xy": [
+              768,
+              200
+            ],
+            "rgba": [
+              28,
+              27,
+              27,
+              0
+            ]
+          },
+          {
+            "xy": [
+              768,
+              900
+            ],
+            "rgba": [
+              4,
+              4,
+              4,
+              0
+            ]
+          },
+          {
+            "xy": [
+              100,
+              100
+            ],
+            "rgba": [
+              0,
+              1,
+              0,
+              0
+            ]
+          }
+        ],
+        "rgbaSha256": "dd1d796f2ff19d612b98a1b250b30881d643d24a78b42441ccc948699e846738",
+        "alphaSha256": "3b635063494b3f005fdbe9cba31393fdd66ca2c9d6bfe25f51a53f84312e203d",
+        "note": "Read-only analysis. RGB visible in an alpha-ignorant preview can be fully transparent. Low-alpha residuals and max alpha 254 are preserved without cleanup or normalization."
+      }
+    },
+    {
+      "id": "bank-dorsal-shallow",
+      "direction": "dorsal",
+      "degrees": 12,
+      "prompt": "Use case: stylized-concept.\nAsset type: one individual transparent game-cinematic ship sprite, a candidate for Yautja The Long Hunt.\nCanvas: exactly 1536 x 1024 pixels, landscape, true RGBA transparency.\nInput images are IDENTITY REFERENCES, not sprites to rotate: image 1 is the AVP:R SCOUT V14 profile; image 2 is the same SCOUT's V14 dorsal view. Reconstruct a coherent new three-dimensional view of this exact craft. Do not substitute Wolf, the classic Predator ship, or a generic spacecraft.\nIdentity invariants: preserve its elongated dark graphite/gunmetal organic hull, the large swept arch-like plates, nested longitudinal ribs and pipes, the reference panel joints and weathering, the thin cyan inset light rows, and the small forward nose assembly. The aft cluster contains EXACTLY THREE circular warm-orange reactor mouths with the same physical positions and housings as the references; never add, remove, merge or duplicate a reactor. The small warm feature on the nose is a forward light/detail, not a fourth engine. Preserve reference proportions and construction; no new fins, wings, weapons, landing legs, flames or exhaust plume.\nOrientation and composition: nose projects to screen RIGHT and rear to screen LEFT, as in both references. Center the full craft near (768,512), keep its longitudinal axis nearly horizontal and leave transparent margins around every protrusion. Preserve comparable world scale between family members, with natural perspective foreshortening rather than artificial image stretching. One ship, one angle, no montage or labels.\nRendering: match the references' detailed realistic 3D cutout style, worn dark metal, subtle restrained cyan and warm orange embedded light; neutral soft illumination. Preserve sharp mechanical edges without drawing a glow outline. No background, ground, shadow plane, checkerboard, text, watermark or decorative framing.\n\nRequired camera view for this sprite: From a true right-facing broadside pose, raise the camera 12 degrees above the hull centerline, with no front/rear yaw. This is the shallow DORSAL angle: a narrow but genuine view of the upper deck, its layered arches and paired cyan seams. Keep the projected nose-to-tail axis horizontal; no 2D roll.\nThis must be a distinct 3D camera view with new occlusions and visible surfaces, not a rotated, mirrored, skewed or recolored copy of an input bitmap.",
+      "references": [
+        "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/avpr-scout-ship-profile.webp",
+        "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/avpr-scout-ship-top.webp"
+      ],
+      "transparentBackground": true,
+      "targetCandidatePath": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/avpr-scout-ship/avpr-scout-ship-bank-dorsal-shallow.png",
+      "status": "candidate-ready-for-independent-QA",
+      "reviewStatus": "candidate-before-QA",
+      "attempts": [
+        {
+          "id": "bank-dorsal-shallow",
+          "original": "/workspace/scratch/0c1fa1359efb/generated_images/exec-04674af9-672c-4e63-9650-a82633be2761.png",
+          "target": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/avpr-scout-ship/avpr-scout-ship-bank-dorsal-shallow.png",
+          "startedAt": "2026-11-06T04:17:15.983Z",
+          "completedAt": "2026-11-06T04:18:49.210Z",
+          "output_hint": "Generated images are saved to /workspace/scratch/0c1fa1359efb/generated_images as /workspace/scratch/0c1fa1359efb/generated_images/exec-04674af9-672c-4e63-9650-a82633be2761.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+          "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/avpr-scout-ship/avpr-scout-ship-bank-dorsal-shallow.png",
+          "bytes": 1643142,
+          "sha256": "9b08f52d7ac824d97ac545c469222a4fad8eb9e738a1b83658c38f7f42e3b144",
+          "width": 1536,
+          "height": 1024,
+          "mode": "RGBA",
+          "alphaExtrema": [
+            0,
+            254
+          ],
+          "alphaBBox": [
+            0,
+            19,
+            1500,
+            1008
+          ],
+          "transparentPixels": 1163724,
+          "partiallyTransparentPixels": 409140,
+          "opaquePixels": 0,
+          "alphaSamples": [
+            {
+              "xy": [
+                0,
+                0
+              ],
+              "rgba": [
+                1,
+                1,
+                1,
+                0
+              ]
+            },
+            {
+              "xy": [
+                768,
+                100
+              ],
+              "rgba": [
+                0,
+                0,
+                0,
+                0
+              ]
+            },
+            {
+              "xy": [
+                768,
+                200
+              ],
+              "rgba": [
+                9,
+                9,
+                9,
+                0
+              ]
+            },
+            {
+              "xy": [
+                768,
+                900
+              ],
+              "rgba": [
+                0,
+                0,
+                0,
+                0
+              ]
+            },
+            {
+              "xy": [
+                100,
+                100
+              ],
+              "rgba": [
+                1,
+                0,
+                0,
+                0
+              ]
+            }
+          ],
+          "pixelBytesChanged": false,
+          "attempt": 1,
+          "prompt": "Use case: stylized-concept.\nAsset type: one individual transparent game-cinematic ship sprite, a candidate for Yautja The Long Hunt.\nCanvas: exactly 1536 x 1024 pixels, landscape, true RGBA transparency.\nInput images are IDENTITY REFERENCES, not sprites to rotate: image 1 is the AVP:R SCOUT V14 profile; image 2 is the same SCOUT's V14 dorsal view. Reconstruct a coherent new three-dimensional view of this exact craft. Do not substitute Wolf, the classic Predator ship, or a generic spacecraft.\nIdentity invariants: preserve its elongated dark graphite/gunmetal organic hull, the large swept arch-like plates, nested longitudinal ribs and pipes, the reference panel joints and weathering, the thin cyan inset light rows, and the small forward nose assembly. The aft cluster contains EXACTLY THREE circular warm-orange reactor mouths with the same physical positions and housings as the references; never add, remove, merge or duplicate a reactor. The small warm feature on the nose is a forward light/detail, not a fourth engine. Preserve reference proportions and construction; no new fins, wings, weapons, landing legs, flames or exhaust plume.\nOrientation and composition: nose projects to screen RIGHT and rear to screen LEFT, as in both references. Center the full craft near (768,512), keep its longitudinal axis nearly horizontal and leave transparent margins around every protrusion. Preserve comparable world scale between family members, with natural perspective foreshortening rather than artificial image stretching. One ship, one angle, no montage or labels.\nRendering: match the references' detailed realistic 3D cutout style, worn dark metal, subtle restrained cyan and warm orange embedded light; neutral soft illumination. Preserve sharp mechanical edges without drawing a glow outline. No background, ground, shadow plane, checkerboard, text, watermark or decorative framing.\n\nRequired camera view for this sprite: From a true right-facing broadside pose, raise the camera 12 degrees above the hull centerline, with no front/rear yaw. This is the shallow DORSAL angle: a narrow but genuine view of the upper deck, its layered arches and paired cyan seams. Keep the projected nose-to-tail axis horizontal; no 2D roll.\nThis must be a distinct 3D camera view with new occlusions and visible surfaces, not a rotated, mirrored, skewed or recolored copy of an input bitmap.",
+          "references": [
+            "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/avpr-scout-ship-profile.webp",
+            "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/avpr-scout-ship-top.webp"
+          ],
+          "selected": false,
+          "reviewStatus": "rejected-reactor-count",
+          "referenceFiles": [
+            {
+              "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/avpr-scout-ship-profile.webp",
+              "sha256": "b787eb8f6a8a0eb1e5d075bce7503bc1f7e54f452e490d82959e93aa1a38c306"
+            },
+            {
+              "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/avpr-scout-ship-top.webp",
+              "sha256": "346d944556b7f992bec2259fdb86f122c672d7456d509cb22605fa304c98676a"
+            }
+          ]
+        },
+        {
+          "id": "bank-dorsal-shallow",
+          "attempt": 2,
+          "original": "/workspace/scratch/0c1fa1359efb/generated_images/exec-32d0ca86-fc2e-4569-9589-012dafa0bb95.png",
+          "target": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/avpr-scout-ship/avpr-scout-ship-bank-dorsal-shallow-v2.png",
+          "startedAt": "2026-11-06T04:21:18.213Z",
+          "completedAt": "2026-11-06T04:23:12.161Z",
+          "output_hint": "Generated images are saved to /workspace/scratch/0c1fa1359efb/generated_images as /workspace/scratch/0c1fa1359efb/generated_images/exec-32d0ca86-fc2e-4569-9589-012dafa0bb95.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+          "prompt": "Use case: precise-object-edit.\nEdit image 1 only: it is a newly generated AVP:R SCOUT candidate with an incorrect count of FOUR aft orange reactor mouths. Images 2 and 3 are the exact V14 SCOUT profile and top identity references.\nCorrect only the aft propulsion cluster to contain EXACTLY THREE physical reactor housings and THREE orange circular burner mouths, arranged coherently as the same three units in reference images 2 and 3. Remove the invented fourth rear unit and reconstruct the adjacent original ribs/plates cleanly. Count the rear burner mouths before finishing: THREE total, not four. The small orange nose light at the RIGHT is not an engine and should remain a nose detail.\nPreserve image 1's dorsal camera view at the intended 12 degrees, its nose pointing RIGHT and aft LEFT, its silhouette proportions, center, orientation, detailed dark graphite metal, cyan seams, panel construction, lighting and all non-engine parts. Use the supplied references to preserve this specific SCOUT; do not turn it into Wolf or the classic ship.\nOne craft only, full craft visible, exactly 1536 x 1024 landscape, actual transparent RGBA background. No new effects, plume, flames, floor, text, labels or border. Preserve transparency. This is a targeted reactor-count correction, not a new design or a 2D image rotation.",
+          "references": [
+            "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/avpr-scout-ship/avpr-scout-ship-bank-dorsal-shallow.png",
+            "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/avpr-scout-ship-profile.webp",
+            "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/avpr-scout-ship-top.webp"
+          ],
+          "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/avpr-scout-ship/avpr-scout-ship-bank-dorsal-shallow-v2.png",
+          "bytes": 1547913,
+          "sha256": "cf2f617b0c98b7cd2f383dbadbd89757626ac9493747582e11a3b24f94e91f6a",
+          "width": 1536,
+          "height": 1024,
+          "mode": "RGBA",
+          "alphaExtrema": [
+            0,
+            254
+          ],
+          "alphaBBox": [
+            0,
+            119,
+            1506,
+            886
+          ],
+          "transparentPixels": 1163869,
+          "partiallyTransparentPixels": 408995,
+          "opaquePixels": 0,
+          "pixelBytesChanged": false,
+          "selected": true,
+          "reviewStatus": "candidate-before-independent-QA",
+          "referenceFiles": [
+            {
+              "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/avpr-scout-ship/avpr-scout-ship-bank-dorsal-shallow.png",
+              "sha256": "9b08f52d7ac824d97ac545c469222a4fad8eb9e738a1b83658c38f7f42e3b144"
+            },
+            {
+              "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/avpr-scout-ship-profile.webp",
+              "sha256": "b787eb8f6a8a0eb1e5d075bce7503bc1f7e54f452e490d82959e93aa1a38c306"
+            },
+            {
+              "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/avpr-scout-ship-top.webp",
+              "sha256": "346d944556b7f992bec2259fdb86f122c672d7456d509cb22605fa304c98676a"
+            }
+          ]
+        }
+      ],
+      "initialVisualReview": {
+        "aftReactorCount": 4,
+        "verdict": "rejected-reactor-count",
+        "note": "Four aft burner mouths are visible instead of the required three; targeted image-generation correction is needed."
+      },
+      "selectedAttempt": 2,
+      "selectedCandidatePath": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/avpr-scout-ship/candidates/avpr-scout-ship-bank-dorsal-shallow.png",
+      "currentVisualReview": {
+        "aftReactorCount": 3,
+        "verdict": "candidate-requires-independent-QA",
+        "note": "Three aft burner mouths visible. Reference hull identity and requested orientation retained; exact angle degrees have not been measured."
+      },
+      "selectedSourceAttemptPath": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/avpr-scout-ship/avpr-scout-ship-bank-dorsal-shallow-v2.png",
+      "candidateIntegrity": {
+        "bytes": 1547913,
+        "sha256": "cf2f617b0c98b7cd2f383dbadbd89757626ac9493747582e11a3b24f94e91f6a",
+        "byteExactCopyOfGeneratedOutput": true,
+        "dimensions": [
+          1536,
+          1024
+        ],
+        "mode": "RGBA",
+        "alphaRange": [
+          0,
+          254
+        ],
+        "fullyTransparentPixels": 1163869,
+        "alpha1to7Pixels": 8461,
+        "alpha250to255Pixels": 391634,
+        "fullyOpaquePixels": 0,
+        "transparentPixelsWithNonzeroRgb": 783355,
+        "boundsByAlphaThreshold": {
+          "1": [
+            0,
+            119,
+            1506,
+            886
+          ],
+          "8": [
+            103,
+            302,
+            1428,
+            721
+          ],
+          "128": [
+            104,
+            303,
+            1428,
+            721
+          ],
+          "250": [
+            107,
+            304,
+            1426,
+            720
+          ]
+        },
+        "samples": [
+          {
+            "xy": [
+              0,
+              0
+            ],
+            "rgba": [
+              1,
+              1,
+              1,
+              0
+            ]
+          },
+          {
+            "xy": [
+              768,
+              100
+            ],
+            "rgba": [
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "xy": [
+              768,
+              200
+            ],
+            "rgba": [
+              12,
+              12,
+              12,
+              0
+            ]
+          },
+          {
+            "xy": [
+              768,
+              900
+            ],
+            "rgba": [
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "xy": [
+              100,
+              100
+            ],
+            "rgba": [
+              1,
+              0,
+              0,
+              0
+            ]
+          }
+        ],
+        "rgbaSha256": "be1e0be4c8bd256774b53a1ba29f86b8f398a03a49d2604f8035baa1ee2915c2",
+        "alphaSha256": "4f9e2dfc3dcaa74f26fdfa6d84ce0273b44d7948168a640314612a126a8e8b36",
+        "note": "Read-only analysis. RGB visible in an alpha-ignorant preview can be fully transparent. Low-alpha residuals and max alpha 254 are preserved without cleanup or normalization."
+      }
+    },
+    {
+      "id": "bank-dorsal",
+      "direction": "dorsal",
+      "degrees": 25,
+      "prompt": "Use case: stylized-concept.\nAsset type: one individual transparent game-cinematic ship sprite, a candidate for Yautja The Long Hunt.\nCanvas: exactly 1536 x 1024 pixels, landscape, true RGBA transparency.\nInput images are IDENTITY REFERENCES, not sprites to rotate: image 1 is the AVP:R SCOUT V14 profile; image 2 is the same SCOUT's V14 dorsal view. Reconstruct a coherent new three-dimensional view of this exact craft. Do not substitute Wolf, the classic Predator ship, or a generic spacecraft.\nIdentity invariants: preserve its elongated dark graphite/gunmetal organic hull, the large swept arch-like plates, nested longitudinal ribs and pipes, the reference panel joints and weathering, the thin cyan inset light rows, and the small forward nose assembly. The aft cluster contains EXACTLY THREE circular warm-orange reactor mouths with the same physical positions and housings as the references; never add, remove, merge or duplicate a reactor. The small warm feature on the nose is a forward light/detail, not a fourth engine. Preserve reference proportions and construction; no new fins, wings, weapons, landing legs, flames or exhaust plume.\nOrientation and composition: nose projects to screen RIGHT and rear to screen LEFT, as in both references. Center the full craft near (768,512), keep its longitudinal axis nearly horizontal and leave transparent margins around every protrusion. Preserve comparable world scale between family members, with natural perspective foreshortening rather than artificial image stretching. One ship, one angle, no montage or labels.\nRendering: match the references' detailed realistic 3D cutout style, worn dark metal, subtle restrained cyan and warm orange embedded light; neutral soft illumination. Preserve sharp mechanical edges without drawing a glow outline. No background, ground, shadow plane, checkerboard, text, watermark or decorative framing.\n\nRequired camera view for this sprite: From a true right-facing broadside pose, raise the camera 25 degrees above the hull centerline, with no front/rear yaw. This is the stronger DORSAL angle: show substantially more upper-deck surface and the correct dorsal structural layout from reference 2, while remaining a low bank view rather than a full top-down image. Keep the projected nose-to-tail axis horizontal; no 2D roll.\nThis must be a distinct 3D camera view with new occlusions and visible surfaces, not a rotated, mirrored, skewed or recolored copy of an input bitmap.\nCritical final count check: the reference aft section has exactly THREE and only three circular orange reactor mouths. The forward warm-orange nose detail is separate and is NOT an engine. Do not create a fourth aft housing when revealing a different angle. Preserve the original three housings under natural perspective/occlusion.",
+      "references": [
+        "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/avpr-scout-ship-profile.webp",
+        "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/avpr-scout-ship-top.webp"
+      ],
+      "transparentBackground": true,
+      "targetCandidatePath": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/avpr-scout-ship/avpr-scout-ship-bank-dorsal.png",
+      "status": "candidate-ready-for-independent-QA",
+      "reviewStatus": "candidate-before-QA",
+      "attempts": [
+        {
+          "id": "bank-dorsal",
+          "attempt": 1,
+          "original": "/workspace/scratch/0c1fa1359efb/generated_images/exec-6f61e224-0ee4-4164-b264-5fd77fff1558.png",
+          "target": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/avpr-scout-ship/avpr-scout-ship-bank-dorsal.png",
+          "startedAt": "2026-11-06T04:21:18.213Z",
+          "completedAt": "2026-11-06T04:22:44.695Z",
+          "output_hint": "Generated images are saved to /workspace/scratch/0c1fa1359efb/generated_images as /workspace/scratch/0c1fa1359efb/generated_images/exec-6f61e224-0ee4-4164-b264-5fd77fff1558.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+          "prompt": "Use case: stylized-concept.\nAsset type: one individual transparent game-cinematic ship sprite, a candidate for Yautja The Long Hunt.\nCanvas: exactly 1536 x 1024 pixels, landscape, true RGBA transparency.\nInput images are IDENTITY REFERENCES, not sprites to rotate: image 1 is the AVP:R SCOUT V14 profile; image 2 is the same SCOUT's V14 dorsal view. Reconstruct a coherent new three-dimensional view of this exact craft. Do not substitute Wolf, the classic Predator ship, or a generic spacecraft.\nIdentity invariants: preserve its elongated dark graphite/gunmetal organic hull, the large swept arch-like plates, nested longitudinal ribs and pipes, the reference panel joints and weathering, the thin cyan inset light rows, and the small forward nose assembly. The aft cluster contains EXACTLY THREE circular warm-orange reactor mouths with the same physical positions and housings as the references; never add, remove, merge or duplicate a reactor. The small warm feature on the nose is a forward light/detail, not a fourth engine. Preserve reference proportions and construction; no new fins, wings, weapons, landing legs, flames or exhaust plume.\nOrientation and composition: nose projects to screen RIGHT and rear to screen LEFT, as in both references. Center the full craft near (768,512), keep its longitudinal axis nearly horizontal and leave transparent margins around every protrusion. Preserve comparable world scale between family members, with natural perspective foreshortening rather than artificial image stretching. One ship, one angle, no montage or labels.\nRendering: match the references' detailed realistic 3D cutout style, worn dark metal, subtle restrained cyan and warm orange embedded light; neutral soft illumination. Preserve sharp mechanical edges without drawing a glow outline. No background, ground, shadow plane, checkerboard, text, watermark or decorative framing.\n\nRequired camera view for this sprite: From a true right-facing broadside pose, raise the camera 25 degrees above the hull centerline, with no front/rear yaw. This is the stronger DORSAL angle: show substantially more upper-deck surface and the correct dorsal structural layout from reference 2, while remaining a low bank view rather than a full top-down image. Keep the projected nose-to-tail axis horizontal; no 2D roll.\nThis must be a distinct 3D camera view with new occlusions and visible surfaces, not a rotated, mirrored, skewed or recolored copy of an input bitmap.\nCritical final count check: the reference aft section has exactly THREE and only three circular orange reactor mouths. The forward warm-orange nose detail is separate and is NOT an engine. Do not create a fourth aft housing when revealing a different angle. Preserve the original three housings under natural perspective/occlusion.",
+          "references": [
+            "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/avpr-scout-ship-profile.webp",
+            "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/avpr-scout-ship-top.webp"
+          ],
+          "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/avpr-scout-ship/avpr-scout-ship-bank-dorsal.png",
+          "bytes": 1794516,
+          "sha256": "eaa0ad6e3cb897cfa6ea9206b15eea83264df89576ef1d1b235ae119c2b42862",
+          "width": 1536,
+          "height": 1024,
+          "mode": "RGBA",
+          "alphaExtrema": [
+            0,
+            254
+          ],
+          "alphaBBox": [
+            0,
+            18,
+            1522,
+            1000
+          ],
+          "transparentPixels": 1107891,
+          "partiallyTransparentPixels": 464973,
+          "opaquePixels": 0,
+          "pixelBytesChanged": false,
+          "selected": true,
+          "reviewStatus": "candidate-before-independent-QA",
+          "referenceFiles": [
+            {
+              "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/avpr-scout-ship-profile.webp",
+              "sha256": "b787eb8f6a8a0eb1e5d075bce7503bc1f7e54f452e490d82959e93aa1a38c306"
+            },
+            {
+              "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/avpr-scout-ship-top.webp",
+              "sha256": "346d944556b7f992bec2259fdb86f122c672d7456d509cb22605fa304c98676a"
+            }
+          ]
+        }
+      ],
+      "selectedAttempt": 1,
+      "selectedCandidatePath": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/avpr-scout-ship/candidates/avpr-scout-ship-bank-dorsal.png",
+      "currentVisualReview": {
+        "aftReactorCount": 3,
+        "verdict": "candidate-requires-independent-QA",
+        "note": "Three aft burner mouths visible. Reference hull identity and requested orientation retained; exact angle degrees have not been measured."
+      },
+      "selectedSourceAttemptPath": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/avpr-scout-ship/avpr-scout-ship-bank-dorsal.png",
+      "candidateIntegrity": {
+        "bytes": 1794516,
+        "sha256": "eaa0ad6e3cb897cfa6ea9206b15eea83264df89576ef1d1b235ae119c2b42862",
+        "byteExactCopyOfGeneratedOutput": true,
+        "dimensions": [
+          1536,
+          1024
+        ],
+        "mode": "RGBA",
+        "alphaRange": [
+          0,
+          254
+        ],
+        "fullyTransparentPixels": 1107891,
+        "alpha1to7Pixels": 15348,
+        "alpha250to255Pixels": 438958,
+        "fullyOpaquePixels": 0,
+        "transparentPixelsWithNonzeroRgb": 964400,
+        "boundsByAlphaThreshold": {
+          "1": [
+            0,
+            18,
+            1522,
+            1000
+          ],
+          "8": [
+            97,
+            291,
+            1438,
+            751
+          ],
+          "128": [
+            97,
+            293,
+            1438,
+            750
+          ],
+          "250": [
+            98,
+            294,
+            1435,
+            749
+          ]
+        },
+        "samples": [
+          {
+            "xy": [
+              0,
+              0
+            ],
+            "rgba": [
+              1,
+              1,
+              1,
+              0
+            ]
+          },
+          {
+            "xy": [
+              768,
+              100
+            ],
+            "rgba": [
+              0,
+              1,
+              1,
+              0
+            ]
+          },
+          {
+            "xy": [
+              768,
+              200
+            ],
+            "rgba": [
+              21,
+              20,
+              20,
+              0
+            ]
+          },
+          {
+            "xy": [
+              768,
+              900
+            ],
+            "rgba": [
+              2,
+              1,
+              1,
+              0
+            ]
+          },
+          {
+            "xy": [
+              100,
+              100
+            ],
+            "rgba": [
+              0,
+              1,
+              0,
+              0
+            ]
+          }
+        ],
+        "rgbaSha256": "4ea719a47b5cce1993b62d2621cf4a4651ac6f052fc74a88a91371cc6f0825d3",
+        "alphaSha256": "54652bf10637f61d9f73bc8518f3e7f562728c8e842a20790d5ad711bc0de5ac",
+        "note": "Read-only analysis. RGB visible in an alpha-ignorant preview can be fully transparent. Low-alpha residuals and max alpha 254 are preserved without cleanup or normalization."
+      }
+    },
+    {
+      "id": "bank-ventral-shallow",
+      "direction": "ventral",
+      "degrees": 12,
+      "prompt": "Use case: stylized-concept.\nAsset type: one individual transparent game-cinematic ship sprite, a candidate for Yautja The Long Hunt.\nCanvas: exactly 1536 x 1024 pixels, landscape, true RGBA transparency.\nInput images are IDENTITY REFERENCES, not sprites to rotate: image 1 is the AVP:R SCOUT V14 profile; image 2 is the same SCOUT's V14 dorsal view. Reconstruct a coherent new three-dimensional view of this exact craft. Do not substitute Wolf, the classic Predator ship, or a generic spacecraft.\nIdentity invariants: preserve its elongated dark graphite/gunmetal organic hull, the large swept arch-like plates, nested longitudinal ribs and pipes, the reference panel joints and weathering, the thin cyan inset light rows, and the small forward nose assembly. The aft cluster contains EXACTLY THREE circular warm-orange reactor mouths with the same physical positions and housings as the references; never add, remove, merge or duplicate a reactor. The small warm feature on the nose is a forward light/detail, not a fourth engine. Preserve reference proportions and construction; no new fins, wings, weapons, landing legs, flames or exhaust plume.\nOrientation and composition: nose projects to screen RIGHT and rear to screen LEFT, as in both references. Center the full craft near (768,512), keep its longitudinal axis nearly horizontal and leave transparent margins around every protrusion. Preserve comparable world scale between family members, with natural perspective foreshortening rather than artificial image stretching. One ship, one angle, no montage or labels.\nRendering: match the references' detailed realistic 3D cutout style, worn dark metal, subtle restrained cyan and warm orange embedded light; neutral soft illumination. Preserve sharp mechanical edges without drawing a glow outline. No background, ground, shadow plane, checkerboard, text, watermark or decorative framing.\n\nRequired camera view for this sprite: From a true right-facing broadside pose, lower the camera 12 degrees below the hull centerline, with no front/rear yaw. This is the shallow VENTRAL angle: reveal a narrow real view of the underside and lower structural ribs. Infer only the minimally necessary hidden surface from the same two references; keep all visible hull components unchanged. Keep the projected nose-to-tail axis horizontal; no 2D roll.\nThis must be a distinct 3D camera view with new occlusions and visible surfaces, not a rotated, mirrored, skewed or recolored copy of an input bitmap.\nCritical final count check: the reference aft section has exactly THREE and only three circular orange reactor mouths. The forward warm-orange nose detail is separate and is NOT an engine. Do not create a fourth aft housing when revealing a different angle. Preserve the original three housings under natural perspective/occlusion.",
+      "references": [
+        "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/avpr-scout-ship-profile.webp",
+        "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/avpr-scout-ship-top.webp"
+      ],
+      "transparentBackground": true,
+      "targetCandidatePath": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/avpr-scout-ship/avpr-scout-ship-bank-ventral-shallow.png",
+      "status": "candidate-ready-for-independent-QA",
+      "reviewStatus": "candidate-before-QA",
+      "attempts": [
+        {
+          "id": "bank-ventral-shallow",
+          "attempt": 1,
+          "original": "/workspace/scratch/0c1fa1359efb/generated_images/exec-09173d3c-6ecf-43e7-a8eb-1dedada06795.png",
+          "target": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/avpr-scout-ship/avpr-scout-ship-bank-ventral-shallow.png",
+          "startedAt": "2026-11-06T04:24:03.587Z",
+          "completedAt": "2026-11-06T04:25:24.865Z",
+          "output_hint": "Generated images are saved to /workspace/scratch/0c1fa1359efb/generated_images as /workspace/scratch/0c1fa1359efb/generated_images/exec-09173d3c-6ecf-43e7-a8eb-1dedada06795.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+          "prompt": "Use case: stylized-concept.\nAsset type: one individual transparent game-cinematic ship sprite, a candidate for Yautja The Long Hunt.\nCanvas: exactly 1536 x 1024 pixels, landscape, true RGBA transparency.\nInput images are IDENTITY REFERENCES, not sprites to rotate: image 1 is the AVP:R SCOUT V14 profile; image 2 is the same SCOUT's V14 dorsal view. Reconstruct a coherent new three-dimensional view of this exact craft. Do not substitute Wolf, the classic Predator ship, or a generic spacecraft.\nIdentity invariants: preserve its elongated dark graphite/gunmetal organic hull, the large swept arch-like plates, nested longitudinal ribs and pipes, the reference panel joints and weathering, the thin cyan inset light rows, and the small forward nose assembly. The aft cluster contains EXACTLY THREE circular warm-orange reactor mouths with the same physical positions and housings as the references; never add, remove, merge or duplicate a reactor. The small warm feature on the nose is a forward light/detail, not a fourth engine. Preserve reference proportions and construction; no new fins, wings, weapons, landing legs, flames or exhaust plume.\nOrientation and composition: nose projects to screen RIGHT and rear to screen LEFT, as in both references. Center the full craft near (768,512), keep its longitudinal axis nearly horizontal and leave transparent margins around every protrusion. Preserve comparable world scale between family members, with natural perspective foreshortening rather than artificial image stretching. One ship, one angle, no montage or labels.\nRendering: match the references' detailed realistic 3D cutout style, worn dark metal, subtle restrained cyan and warm orange embedded light; neutral soft illumination. Preserve sharp mechanical edges without drawing a glow outline. No background, ground, shadow plane, checkerboard, text, watermark or decorative framing.\n\nRequired camera view for this sprite: From a true right-facing broadside pose, lower the camera 12 degrees below the hull centerline, with no front/rear yaw. This is the shallow VENTRAL angle: reveal a narrow real view of the underside and lower structural ribs. Infer only the minimally necessary hidden surface from the same two references; keep all visible hull components unchanged. Keep the projected nose-to-tail axis horizontal; no 2D roll.\nThis must be a distinct 3D camera view with new occlusions and visible surfaces, not a rotated, mirrored, skewed or recolored copy of an input bitmap.\nCritical final count check: the reference aft section has exactly THREE and only three circular orange reactor mouths. The forward warm-orange nose detail is separate and is NOT an engine. Do not create a fourth aft housing when revealing a different angle. Preserve the original three housings under natural perspective/occlusion.",
+          "references": [
+            "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/avpr-scout-ship-profile.webp",
+            "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/avpr-scout-ship-top.webp"
+          ],
+          "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/avpr-scout-ship/avpr-scout-ship-bank-ventral-shallow.png",
+          "bytes": 1578905,
+          "sha256": "a1f28447723b497bff5a2a44e3584d7ca99ec699351a75cc7e90add4be356023",
+          "width": 1536,
+          "height": 1024,
+          "mode": "RGBA",
+          "alphaExtrema": [
+            0,
+            254
+          ],
+          "alphaBBox": [
+            0,
+            39,
+            1462,
+            1000
+          ],
+          "transparentPixels": 1154966,
+          "partiallyTransparentPixels": 417898,
+          "opaquePixels": 0,
+          "pixelBytesChanged": false,
+          "selected": true,
+          "reviewStatus": "candidate-before-independent-QA",
+          "referenceFiles": [
+            {
+              "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/avpr-scout-ship-profile.webp",
+              "sha256": "b787eb8f6a8a0eb1e5d075bce7503bc1f7e54f452e490d82959e93aa1a38c306"
+            },
+            {
+              "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/avpr-scout-ship-top.webp",
+              "sha256": "346d944556b7f992bec2259fdb86f122c672d7456d509cb22605fa304c98676a"
+            }
+          ]
+        }
+      ],
+      "selectedAttempt": 1,
+      "selectedCandidatePath": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/avpr-scout-ship/candidates/avpr-scout-ship-bank-ventral-shallow.png",
+      "currentVisualReview": {
+        "aftReactorCount": 3,
+        "verdict": "candidate-requires-independent-QA",
+        "note": "Three aft reactor mouths are visible, with nose-right/aft-left orientation. Angle-specific revealed surfaces differ; exact camera degrees are unmeasured."
+      },
+      "selectedSourceAttemptPath": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/avpr-scout-ship/avpr-scout-ship-bank-ventral-shallow.png",
+      "candidateIntegrity": {
+        "bytes": 1578905,
+        "sha256": "a1f28447723b497bff5a2a44e3584d7ca99ec699351a75cc7e90add4be356023",
+        "byteExactCopyOfGeneratedOutput": true,
+        "dimensions": [
+          1536,
+          1024
+        ],
+        "mode": "RGBA",
+        "alphaRange": [
+          0,
+          254
+        ],
+        "fullyTransparentPixels": 1154966,
+        "alpha1to7Pixels": 14019,
+        "alpha250to255Pixels": 394017,
+        "fullyOpaquePixels": 0,
+        "transparentPixelsWithNonzeroRgb": 765960,
+        "boundsByAlphaThreshold": {
+          "1": [
+            0,
+            39,
+            1462,
+            1000
+          ],
+          "8": [
+            74,
+            308,
+            1460,
+            719
+          ],
+          "128": [
+            75,
+            311,
+            1459,
+            718
+          ],
+          "250": [
+            77,
+            311,
+            1454,
+            716
+          ]
+        },
+        "samples": [
+          {
+            "xy": [
+              0,
+              0
+            ],
+            "rgba": [
+              1,
+              1,
+              1,
+              0
+            ]
+          },
+          {
+            "xy": [
+              768,
+              100
+            ],
+            "rgba": [
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "xy": [
+              768,
+              200
+            ],
+            "rgba": [
+              10,
+              10,
+              10,
+              0
+            ]
+          },
+          {
+            "xy": [
+              768,
+              900
+            ],
+            "rgba": [
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "xy": [
+              100,
+              100
+            ],
+            "rgba": [
+              1,
+              0,
+              0,
+              0
+            ]
+          }
+        ],
+        "rgbaSha256": "79ef048507522b36d5db04b80c417891cfbfdec644a7e73df5cbd472afecc642",
+        "alphaSha256": "fea5a31fee7e9e9be005fcd31f648873af6ac37196f2594b37d2247ba68258a7",
+        "note": "Read-only analysis. RGB visible in an alpha-ignorant preview can be fully transparent. Low-alpha residuals and max alpha 254 are preserved without cleanup or normalization."
+      }
+    },
+    {
+      "id": "bank-ventral",
+      "direction": "ventral",
+      "degrees": 25,
+      "prompt": "Use case: stylized-concept.\nAsset type: one individual transparent game-cinematic ship sprite, a candidate for Yautja The Long Hunt.\nCanvas: exactly 1536 x 1024 pixels, landscape, true RGBA transparency.\nInput images are IDENTITY REFERENCES, not sprites to rotate: image 1 is the AVP:R SCOUT V14 profile; image 2 is the same SCOUT's V14 dorsal view. Reconstruct a coherent new three-dimensional view of this exact craft. Do not substitute Wolf, the classic Predator ship, or a generic spacecraft.\nIdentity invariants: preserve its elongated dark graphite/gunmetal organic hull, the large swept arch-like plates, nested longitudinal ribs and pipes, the reference panel joints and weathering, the thin cyan inset light rows, and the small forward nose assembly. The aft cluster contains EXACTLY THREE circular warm-orange reactor mouths with the same physical positions and housings as the references; never add, remove, merge or duplicate a reactor. The small warm feature on the nose is a forward light/detail, not a fourth engine. Preserve reference proportions and construction; no new fins, wings, weapons, landing legs, flames or exhaust plume.\nOrientation and composition: nose projects to screen RIGHT and rear to screen LEFT, as in both references. Center the full craft near (768,512), keep its longitudinal axis nearly horizontal and leave transparent margins around every protrusion. Preserve comparable world scale between family members, with natural perspective foreshortening rather than artificial image stretching. One ship, one angle, no montage or labels.\nRendering: match the references' detailed realistic 3D cutout style, worn dark metal, subtle restrained cyan and warm orange embedded light; neutral soft illumination. Preserve sharp mechanical edges without drawing a glow outline. No background, ground, shadow plane, checkerboard, text, watermark or decorative framing.\n\nRequired camera view for this sprite: From a true right-facing broadside pose, lower the camera 25 degrees below the hull centerline, with no front/rear yaw. This is the stronger VENTRAL angle: expose clearly more of the lower hull and structural ribs than the 12-degree view. Infer only the minimally necessary hidden surface from the same references; preserve the ship identity and do not add new machinery or apertures. Keep the projected nose-to-tail axis horizontal; no 2D roll.\nThis must be a distinct 3D camera view with new occlusions and visible surfaces, not a rotated, mirrored, skewed or recolored copy of an input bitmap.\nCritical final count check: the reference aft section has exactly THREE and only three circular orange reactor mouths. The forward warm-orange nose detail is separate and is NOT an engine. Do not create a fourth aft housing when revealing a different angle. Preserve the original three housings under natural perspective/occlusion.",
+      "references": [
+        "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/avpr-scout-ship-profile.webp",
+        "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/avpr-scout-ship-top.webp"
+      ],
+      "transparentBackground": true,
+      "targetCandidatePath": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/avpr-scout-ship/avpr-scout-ship-bank-ventral.png",
+      "status": "candidate-ready-for-independent-QA",
+      "reviewStatus": "candidate-before-QA",
+      "attempts": [
+        {
+          "id": "bank-ventral",
+          "attempt": 1,
+          "original": "/workspace/scratch/0c1fa1359efb/generated_images/exec-2aadf00e-1e7d-430c-905c-85ab35053fe6.png",
+          "target": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/avpr-scout-ship/avpr-scout-ship-bank-ventral.png",
+          "startedAt": "2026-11-06T04:24:03.587Z",
+          "completedAt": "2026-11-06T04:24:35.796Z",
+          "output_hint": "Generated images are saved to /workspace/scratch/0c1fa1359efb/generated_images as /workspace/scratch/0c1fa1359efb/generated_images/exec-2aadf00e-1e7d-430c-905c-85ab35053fe6.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+          "prompt": "Use case: stylized-concept.\nAsset type: one individual transparent game-cinematic ship sprite, a candidate for Yautja The Long Hunt.\nCanvas: exactly 1536 x 1024 pixels, landscape, true RGBA transparency.\nInput images are IDENTITY REFERENCES, not sprites to rotate: image 1 is the AVP:R SCOUT V14 profile; image 2 is the same SCOUT's V14 dorsal view. Reconstruct a coherent new three-dimensional view of this exact craft. Do not substitute Wolf, the classic Predator ship, or a generic spacecraft.\nIdentity invariants: preserve its elongated dark graphite/gunmetal organic hull, the large swept arch-like plates, nested longitudinal ribs and pipes, the reference panel joints and weathering, the thin cyan inset light rows, and the small forward nose assembly. The aft cluster contains EXACTLY THREE circular warm-orange reactor mouths with the same physical positions and housings as the references; never add, remove, merge or duplicate a reactor. The small warm feature on the nose is a forward light/detail, not a fourth engine. Preserve reference proportions and construction; no new fins, wings, weapons, landing legs, flames or exhaust plume.\nOrientation and composition: nose projects to screen RIGHT and rear to screen LEFT, as in both references. Center the full craft near (768,512), keep its longitudinal axis nearly horizontal and leave transparent margins around every protrusion. Preserve comparable world scale between family members, with natural perspective foreshortening rather than artificial image stretching. One ship, one angle, no montage or labels.\nRendering: match the references' detailed realistic 3D cutout style, worn dark metal, subtle restrained cyan and warm orange embedded light; neutral soft illumination. Preserve sharp mechanical edges without drawing a glow outline. No background, ground, shadow plane, checkerboard, text, watermark or decorative framing.\n\nRequired camera view for this sprite: From a true right-facing broadside pose, lower the camera 25 degrees below the hull centerline, with no front/rear yaw. This is the stronger VENTRAL angle: expose clearly more of the lower hull and structural ribs than the 12-degree view. Infer only the minimally necessary hidden surface from the same references; preserve the ship identity and do not add new machinery or apertures. Keep the projected nose-to-tail axis horizontal; no 2D roll.\nThis must be a distinct 3D camera view with new occlusions and visible surfaces, not a rotated, mirrored, skewed or recolored copy of an input bitmap.\nCritical final count check: the reference aft section has exactly THREE and only three circular orange reactor mouths. The forward warm-orange nose detail is separate and is NOT an engine. Do not create a fourth aft housing when revealing a different angle. Preserve the original three housings under natural perspective/occlusion.",
+          "references": [
+            "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/avpr-scout-ship-profile.webp",
+            "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/avpr-scout-ship-top.webp"
+          ],
+          "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/avpr-scout-ship/avpr-scout-ship-bank-ventral.png",
+          "bytes": 1681772,
+          "sha256": "1c278b14da4c23f623f0167977a3c6bec408f1287f4e5171bf1205d15acbc34a",
+          "width": 1536,
+          "height": 1024,
+          "mode": "RGBA",
+          "alphaExtrema": [
+            0,
+            254
+          ],
+          "alphaBBox": [
+            0,
+            15,
+            1524,
+            924
+          ],
+          "transparentPixels": 1124506,
+          "partiallyTransparentPixels": 448358,
+          "opaquePixels": 0,
+          "pixelBytesChanged": false,
+          "selected": true,
+          "reviewStatus": "candidate-before-independent-QA",
+          "referenceFiles": [
+            {
+              "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/avpr-scout-ship-profile.webp",
+              "sha256": "b787eb8f6a8a0eb1e5d075bce7503bc1f7e54f452e490d82959e93aa1a38c306"
+            },
+            {
+              "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/avpr-scout-ship-top.webp",
+              "sha256": "346d944556b7f992bec2259fdb86f122c672d7456d509cb22605fa304c98676a"
+            }
+          ]
+        }
+      ],
+      "selectedAttempt": 1,
+      "selectedCandidatePath": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/avpr-scout-ship/candidates/avpr-scout-ship-bank-ventral.png",
+      "currentVisualReview": {
+        "aftReactorCount": 3,
+        "verdict": "candidate-requires-independent-QA",
+        "note": "Three aft reactor mouths are visible, with nose-right/aft-left orientation. Angle-specific revealed surfaces differ; exact camera degrees are unmeasured."
+      },
+      "selectedSourceAttemptPath": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/avpr-scout-ship/avpr-scout-ship-bank-ventral.png",
+      "candidateIntegrity": {
+        "bytes": 1681772,
+        "sha256": "1c278b14da4c23f623f0167977a3c6bec408f1287f4e5171bf1205d15acbc34a",
+        "byteExactCopyOfGeneratedOutput": true,
+        "dimensions": [
+          1536,
+          1024
+        ],
+        "mode": "RGBA",
+        "alphaRange": [
+          0,
+          254
+        ],
+        "fullyTransparentPixels": 1124506,
+        "alpha1to7Pixels": 11113,
+        "alpha250to255Pixels": 426630,
+        "fullyOpaquePixels": 0,
+        "transparentPixelsWithNonzeroRgb": 747089,
+        "boundsByAlphaThreshold": {
+          "1": [
+            0,
+            15,
+            1524,
+            924
+          ],
+          "8": [
+            83,
+            274,
+            1456,
+            735
+          ],
+          "128": [
+            83,
+            275,
+            1454,
+            734
+          ],
+          "250": [
+            86,
+            276,
+            1450,
+            733
+          ]
+        },
+        "samples": [
+          {
+            "xy": [
+              0,
+              0
+            ],
+            "rgba": [
+              1,
+              1,
+              1,
+              0
+            ]
+          },
+          {
+            "xy": [
+              768,
+              100
+            ],
+            "rgba": [
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "xy": [
+              768,
+              200
+            ],
+            "rgba": [
+              18,
+              17,
+              17,
+              0
+            ]
+          },
+          {
+            "xy": [
+              768,
+              900
+            ],
+            "rgba": [
+              4,
+              3,
+              3,
+              0
+            ]
+          },
+          {
+            "xy": [
+              100,
+              100
+            ],
+            "rgba": [
+              1,
+              0,
+              0,
+              0
+            ]
+          }
+        ],
+        "rgbaSha256": "0c2fe54f008e7d046904fd819fb6a6eb1c078eddde24db6dbfd79c5200d3baa1",
+        "alphaSha256": "122d8e6a3d37b3f7a1685c467c9e4a7f989c834d6b1101939548c01bd6124b22",
+        "note": "Read-only analysis. RGB visible in an alpha-ignorant preview can be fully transparent. Low-alpha residuals and max alpha 254 are preserved without cleanup or normalization."
+      }
+    },
+    {
+      "id": "rear-quarter-shallow",
+      "direction": "rear",
+      "degrees": 12,
+      "prompt": "Use case: stylized-concept.\nAsset type: one individual transparent game-cinematic ship sprite, a candidate for Yautja The Long Hunt.\nCanvas: exactly 1536 x 1024 pixels, landscape, true RGBA transparency.\nInput images are IDENTITY REFERENCES, not sprites to rotate: image 1 is the AVP:R SCOUT V14 profile; image 2 is the same SCOUT's V14 dorsal view. Reconstruct a coherent new three-dimensional view of this exact craft. Do not substitute Wolf, the classic Predator ship, or a generic spacecraft.\nIdentity invariants: preserve its elongated dark graphite/gunmetal organic hull, the large swept arch-like plates, nested longitudinal ribs and pipes, the reference panel joints and weathering, the thin cyan inset light rows, and the small forward nose assembly. The aft cluster contains EXACTLY THREE circular warm-orange reactor mouths with the same physical positions and housings as the references; never add, remove, merge or duplicate a reactor. The small warm feature on the nose is a forward light/detail, not a fourth engine. Preserve reference proportions and construction; no new fins, wings, weapons, landing legs, flames or exhaust plume.\nOrientation and composition: nose projects to screen RIGHT and rear to screen LEFT, as in both references. Center the full craft near (768,512), keep its longitudinal axis nearly horizontal and leave transparent margins around every protrusion. Preserve comparable world scale between family members, with natural perspective foreshortening rather than artificial image stretching. One ship, one angle, no montage or labels.\nRendering: match the references' detailed realistic 3D cutout style, worn dark metal, subtle restrained cyan and warm orange embedded light; neutral soft illumination. Preserve sharp mechanical edges without drawing a glow outline. No background, ground, shadow plane, checkerboard, text, watermark or decorative framing.\n\nRequired camera view for this sprite: From a true right-facing broadside pose, orbit the camera 12 degrees toward the AFT at the left. This is the shallow REAR quarter angle: the THREE aft reactor mouths become a little more front-facing, with only slight longitudinal foreshortening. Keep camera elevation close to the hull centerline; no bank or 2D roll.\nThis must be a distinct 3D camera view with new occlusions and visible surfaces, not a rotated, mirrored, skewed or recolored copy of an input bitmap.\nCritical final count check: the reference aft section has exactly THREE and only three circular orange reactor mouths. The forward warm-orange nose detail is separate and is NOT an engine. Do not create a fourth aft housing when revealing a different angle. Preserve the original three housings under natural perspective/occlusion.",
+      "references": [
+        "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/avpr-scout-ship-profile.webp",
+        "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/avpr-scout-ship-top.webp"
+      ],
+      "transparentBackground": true,
+      "targetCandidatePath": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/avpr-scout-ship/avpr-scout-ship-rear-quarter-shallow.png",
+      "status": "candidate-ready-for-independent-QA",
+      "reviewStatus": "candidate-before-QA",
+      "attempts": [
+        {
+          "id": "rear-quarter-shallow",
+          "attempt": 1,
+          "original": "/workspace/scratch/0c1fa1359efb/generated_images/exec-d40f1aaa-e849-4e79-aed3-2b1a597e9b4e.png",
+          "target": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/avpr-scout-ship/avpr-scout-ship-rear-quarter-shallow.png",
+          "startedAt": "2026-11-06T04:25:37.961Z",
+          "completedAt": "2026-11-06T04:27:05.262Z",
+          "output_hint": "Generated images are saved to /workspace/scratch/0c1fa1359efb/generated_images as /workspace/scratch/0c1fa1359efb/generated_images/exec-d40f1aaa-e849-4e79-aed3-2b1a597e9b4e.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+          "prompt": "Use case: stylized-concept.\nAsset type: one individual transparent game-cinematic ship sprite, a candidate for Yautja The Long Hunt.\nCanvas: exactly 1536 x 1024 pixels, landscape, true RGBA transparency.\nInput images are IDENTITY REFERENCES, not sprites to rotate: image 1 is the AVP:R SCOUT V14 profile; image 2 is the same SCOUT's V14 dorsal view. Reconstruct a coherent new three-dimensional view of this exact craft. Do not substitute Wolf, the classic Predator ship, or a generic spacecraft.\nIdentity invariants: preserve its elongated dark graphite/gunmetal organic hull, the large swept arch-like plates, nested longitudinal ribs and pipes, the reference panel joints and weathering, the thin cyan inset light rows, and the small forward nose assembly. The aft cluster contains EXACTLY THREE circular warm-orange reactor mouths with the same physical positions and housings as the references; never add, remove, merge or duplicate a reactor. The small warm feature on the nose is a forward light/detail, not a fourth engine. Preserve reference proportions and construction; no new fins, wings, weapons, landing legs, flames or exhaust plume.\nOrientation and composition: nose projects to screen RIGHT and rear to screen LEFT, as in both references. Center the full craft near (768,512), keep its longitudinal axis nearly horizontal and leave transparent margins around every protrusion. Preserve comparable world scale between family members, with natural perspective foreshortening rather than artificial image stretching. One ship, one angle, no montage or labels.\nRendering: match the references' detailed realistic 3D cutout style, worn dark metal, subtle restrained cyan and warm orange embedded light; neutral soft illumination. Preserve sharp mechanical edges without drawing a glow outline. No background, ground, shadow plane, checkerboard, text, watermark or decorative framing.\n\nRequired camera view for this sprite: From a true right-facing broadside pose, orbit the camera 12 degrees toward the AFT at the left. This is the shallow REAR quarter angle: the THREE aft reactor mouths become a little more front-facing, with only slight longitudinal foreshortening. Keep camera elevation close to the hull centerline; no bank or 2D roll.\nThis must be a distinct 3D camera view with new occlusions and visible surfaces, not a rotated, mirrored, skewed or recolored copy of an input bitmap.\nCritical final count check: the reference aft section has exactly THREE and only three circular orange reactor mouths. The forward warm-orange nose detail is separate and is NOT an engine. Do not create a fourth aft housing when revealing a different angle. Preserve the original three housings under natural perspective/occlusion.",
+          "references": [
+            "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/avpr-scout-ship-profile.webp",
+            "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/avpr-scout-ship-top.webp"
+          ],
+          "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/avpr-scout-ship/avpr-scout-ship-rear-quarter-shallow.png",
+          "bytes": 1573033,
+          "sha256": "217ace5ee7a180c8934ff9fa2e14972b73660caa713c938a792e70257c7ff3e6",
+          "width": 1536,
+          "height": 1024,
+          "mode": "RGBA",
+          "alphaExtrema": [
+            0,
+            254
+          ],
+          "alphaBBox": [
+            0,
+            70,
+            1490,
+            982
+          ],
+          "transparentPixels": 1170634,
+          "partiallyTransparentPixels": 402230,
+          "opaquePixels": 0,
+          "pixelBytesChanged": false,
+          "selected": true,
+          "reviewStatus": "candidate-before-independent-QA",
+          "referenceFiles": [
+            {
+              "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/avpr-scout-ship-profile.webp",
+              "sha256": "b787eb8f6a8a0eb1e5d075bce7503bc1f7e54f452e490d82959e93aa1a38c306"
+            },
+            {
+              "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/avpr-scout-ship-top.webp",
+              "sha256": "346d944556b7f992bec2259fdb86f122c672d7456d509cb22605fa304c98676a"
+            }
+          ]
+        }
+      ],
+      "selectedAttempt": 1,
+      "selectedCandidatePath": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/avpr-scout-ship/candidates/avpr-scout-ship-rear-quarter-shallow.png",
+      "currentVisualReview": {
+        "aftReactorCount": 3,
+        "verdict": "candidate-requires-independent-QA",
+        "note": "Three aft reactor mouths are visible, with nose-right/aft-left orientation. Angle-specific revealed surfaces differ; exact camera degrees are unmeasured."
+      },
+      "selectedSourceAttemptPath": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/avpr-scout-ship/avpr-scout-ship-rear-quarter-shallow.png",
+      "candidateIntegrity": {
+        "bytes": 1573033,
+        "sha256": "217ace5ee7a180c8934ff9fa2e14972b73660caa713c938a792e70257c7ff3e6",
+        "byteExactCopyOfGeneratedOutput": true,
+        "dimensions": [
+          1536,
+          1024
+        ],
+        "mode": "RGBA",
+        "alphaRange": [
+          0,
+          254
+        ],
+        "fullyTransparentPixels": 1170634,
+        "alpha1to7Pixels": 10352,
+        "alpha250to255Pixels": 382406,
+        "fullyOpaquePixels": 0,
+        "transparentPixelsWithNonzeroRgb": 755270,
+        "boundsByAlphaThreshold": {
+          "1": [
+            0,
+            70,
+            1490,
+            982
+          ],
+          "8": [
+            105,
+            298,
+            1436,
+            718
+          ],
+          "128": [
+            106,
+            300,
+            1435,
+            717
+          ],
+          "250": [
+            107,
+            300,
+            1430,
+            716
+          ]
+        },
+        "samples": [
+          {
+            "xy": [
+              0,
+              0
+            ],
+            "rgba": [
+              1,
+              1,
+              0,
+              0
+            ]
+          },
+          {
+            "xy": [
+              768,
+              100
+            ],
+            "rgba": [
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "xy": [
+              768,
+              200
+            ],
+            "rgba": [
+              9,
+              9,
+              9,
+              0
+            ]
+          },
+          {
+            "xy": [
+              768,
+              900
+            ],
+            "rgba": [
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "xy": [
+              100,
+              100
+            ],
+            "rgba": [
+              1,
+              0,
+              0,
+              0
+            ]
+          }
+        ],
+        "rgbaSha256": "9d88b180baec716261a4748f60d2fb1f6c1576468cd504e7d2c6ff6eea054871",
+        "alphaSha256": "d2a45e9d91de990c4595022ed40caaf9204428950d7647d3b24bb0bcc002cab6",
+        "note": "Read-only analysis. RGB visible in an alpha-ignorant preview can be fully transparent. Low-alpha residuals and max alpha 254 are preserved without cleanup or normalization."
+      }
+    },
+    {
+      "id": "rear-quarter",
+      "direction": "rear",
+      "degrees": 25,
+      "prompt": "Use case: stylized-concept.\nAsset type: one individual transparent game-cinematic ship sprite, a candidate for Yautja The Long Hunt.\nCanvas: exactly 1536 x 1024 pixels, landscape, true RGBA transparency.\nInput images are IDENTITY REFERENCES, not sprites to rotate: image 1 is the AVP:R SCOUT V14 profile; image 2 is the same SCOUT's V14 dorsal view. Reconstruct a coherent new three-dimensional view of this exact craft. Do not substitute Wolf, the classic Predator ship, or a generic spacecraft.\nIdentity invariants: preserve its elongated dark graphite/gunmetal organic hull, the large swept arch-like plates, nested longitudinal ribs and pipes, the reference panel joints and weathering, the thin cyan inset light rows, and the small forward nose assembly. The aft cluster contains EXACTLY THREE circular warm-orange reactor mouths with the same physical positions and housings as the references; never add, remove, merge or duplicate a reactor. The small warm feature on the nose is a forward light/detail, not a fourth engine. Preserve reference proportions and construction; no new fins, wings, weapons, landing legs, flames or exhaust plume.\nOrientation and composition: nose projects to screen RIGHT and rear to screen LEFT, as in both references. Center the full craft near (768,512), keep its longitudinal axis nearly horizontal and leave transparent margins around every protrusion. Preserve comparable world scale between family members, with natural perspective foreshortening rather than artificial image stretching. One ship, one angle, no montage or labels.\nRendering: match the references' detailed realistic 3D cutout style, worn dark metal, subtle restrained cyan and warm orange embedded light; neutral soft illumination. Preserve sharp mechanical edges without drawing a glow outline. No background, ground, shadow plane, checkerboard, text, watermark or decorative framing.\n\nRequired camera view for this sprite: From a true right-facing broadside pose, orbit the camera 25 degrees toward the AFT at the left. This is the stronger REAR quarter angle: clearly reveal the THREE circular aft reactor mouths and their true spatial arrangement, with stronger longitudinal foreshortening than the 12-degree view. The nose must still project to the right, aft to the left. Keep camera elevation close to the hull centerline; no 2D roll.\nThis must be a distinct 3D camera view with new occlusions and visible surfaces, not a rotated, mirrored, skewed or recolored copy of an input bitmap.\nCritical final count check: the reference aft section has exactly THREE and only three circular orange reactor mouths. The forward warm-orange nose detail is separate and is NOT an engine. Do not create a fourth aft housing when revealing a different angle. Preserve the original three housings under natural perspective/occlusion.",
+      "references": [
+        "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/avpr-scout-ship-profile.webp",
+        "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/avpr-scout-ship-top.webp"
+      ],
+      "transparentBackground": true,
+      "targetCandidatePath": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/avpr-scout-ship/avpr-scout-ship-rear-quarter.png",
+      "status": "candidate-ready-for-independent-QA",
+      "reviewStatus": "candidate-before-QA",
+      "attempts": [
+        {
+          "id": "rear-quarter",
+          "attempt": 1,
+          "original": "/workspace/scratch/0c1fa1359efb/generated_images/exec-671b4496-8262-4e9d-9baf-85d92d599d06.png",
+          "target": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/avpr-scout-ship/avpr-scout-ship-rear-quarter.png",
+          "startedAt": "2026-11-06T04:25:37.961Z",
+          "completedAt": "2026-11-06T04:26:17.711Z",
+          "output_hint": "Generated images are saved to /workspace/scratch/0c1fa1359efb/generated_images as /workspace/scratch/0c1fa1359efb/generated_images/exec-671b4496-8262-4e9d-9baf-85d92d599d06.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+          "prompt": "Use case: stylized-concept.\nAsset type: one individual transparent game-cinematic ship sprite, a candidate for Yautja The Long Hunt.\nCanvas: exactly 1536 x 1024 pixels, landscape, true RGBA transparency.\nInput images are IDENTITY REFERENCES, not sprites to rotate: image 1 is the AVP:R SCOUT V14 profile; image 2 is the same SCOUT's V14 dorsal view. Reconstruct a coherent new three-dimensional view of this exact craft. Do not substitute Wolf, the classic Predator ship, or a generic spacecraft.\nIdentity invariants: preserve its elongated dark graphite/gunmetal organic hull, the large swept arch-like plates, nested longitudinal ribs and pipes, the reference panel joints and weathering, the thin cyan inset light rows, and the small forward nose assembly. The aft cluster contains EXACTLY THREE circular warm-orange reactor mouths with the same physical positions and housings as the references; never add, remove, merge or duplicate a reactor. The small warm feature on the nose is a forward light/detail, not a fourth engine. Preserve reference proportions and construction; no new fins, wings, weapons, landing legs, flames or exhaust plume.\nOrientation and composition: nose projects to screen RIGHT and rear to screen LEFT, as in both references. Center the full craft near (768,512), keep its longitudinal axis nearly horizontal and leave transparent margins around every protrusion. Preserve comparable world scale between family members, with natural perspective foreshortening rather than artificial image stretching. One ship, one angle, no montage or labels.\nRendering: match the references' detailed realistic 3D cutout style, worn dark metal, subtle restrained cyan and warm orange embedded light; neutral soft illumination. Preserve sharp mechanical edges without drawing a glow outline. No background, ground, shadow plane, checkerboard, text, watermark or decorative framing.\n\nRequired camera view for this sprite: From a true right-facing broadside pose, orbit the camera 25 degrees toward the AFT at the left. This is the stronger REAR quarter angle: clearly reveal the THREE circular aft reactor mouths and their true spatial arrangement, with stronger longitudinal foreshortening than the 12-degree view. The nose must still project to the right, aft to the left. Keep camera elevation close to the hull centerline; no 2D roll.\nThis must be a distinct 3D camera view with new occlusions and visible surfaces, not a rotated, mirrored, skewed or recolored copy of an input bitmap.\nCritical final count check: the reference aft section has exactly THREE and only three circular orange reactor mouths. The forward warm-orange nose detail is separate and is NOT an engine. Do not create a fourth aft housing when revealing a different angle. Preserve the original three housings under natural perspective/occlusion.",
+          "references": [
+            "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/avpr-scout-ship-profile.webp",
+            "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/avpr-scout-ship-top.webp"
+          ],
+          "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/avpr-scout-ship/avpr-scout-ship-rear-quarter.png",
+          "bytes": 1573765,
+          "sha256": "184e0bb9a52cf7056ccc7207239fa85b11db56e2d03e7f03c12e059b4e22b787",
+          "width": 1536,
+          "height": 1024,
+          "mode": "RGBA",
+          "alphaExtrema": [
+            0,
+            254
+          ],
+          "alphaBBox": [
+            0,
+            30,
+            1522,
+            984
+          ],
+          "transparentPixels": 1111458,
+          "partiallyTransparentPixels": 461406,
+          "opaquePixels": 0,
+          "pixelBytesChanged": false,
+          "selected": true,
+          "reviewStatus": "candidate-before-independent-QA",
+          "referenceFiles": [
+            {
+              "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/avpr-scout-ship-profile.webp",
+              "sha256": "b787eb8f6a8a0eb1e5d075bce7503bc1f7e54f452e490d82959e93aa1a38c306"
+            },
+            {
+              "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/avpr-scout-ship-top.webp",
+              "sha256": "346d944556b7f992bec2259fdb86f122c672d7456d509cb22605fa304c98676a"
+            }
+          ]
+        }
+      ],
+      "selectedAttempt": 1,
+      "selectedCandidatePath": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/avpr-scout-ship/candidates/avpr-scout-ship-rear-quarter.png",
+      "currentVisualReview": {
+        "aftReactorCount": 3,
+        "verdict": "candidate-requires-independent-QA",
+        "note": "Three aft reactor mouths are visible, with nose-right/aft-left orientation. Angle-specific revealed surfaces differ; exact camera degrees are unmeasured."
+      },
+      "selectedSourceAttemptPath": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/avpr-scout-ship/avpr-scout-ship-rear-quarter.png",
+      "candidateIntegrity": {
+        "bytes": 1573765,
+        "sha256": "184e0bb9a52cf7056ccc7207239fa85b11db56e2d03e7f03c12e059b4e22b787",
+        "byteExactCopyOfGeneratedOutput": true,
+        "dimensions": [
+          1536,
+          1024
+        ],
+        "mode": "RGBA",
+        "alphaRange": [
+          0,
+          254
+        ],
+        "fullyTransparentPixels": 1111458,
+        "alpha1to7Pixels": 13056,
+        "alpha250to255Pixels": 436248,
+        "fullyOpaquePixels": 0,
+        "transparentPixelsWithNonzeroRgb": 698543,
+        "boundsByAlphaThreshold": {
+          "1": [
+            0,
+            30,
+            1522,
+            984
+          ],
+          "8": [
+            96,
+            257,
+            1436,
+            744
+          ],
+          "128": [
+            97,
+            258,
+            1434,
+            743
+          ],
+          "250": [
+            100,
+            259,
+            1425,
+            742
+          ]
+        },
+        "samples": [
+          {
+            "xy": [
+              0,
+              0
+            ],
+            "rgba": [
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "xy": [
+              768,
+              100
+            ],
+            "rgba": [
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "xy": [
+              768,
+              200
+            ],
+            "rgba": [
+              19,
+              19,
+              18,
+              0
+            ]
+          },
+          {
+            "xy": [
+              768,
+              900
+            ],
+            "rgba": [
+              1,
+              1,
+              1,
+              0
+            ]
+          },
+          {
+            "xy": [
+              100,
+              100
+            ],
+            "rgba": [
+              1,
+              0,
+              0,
+              0
+            ]
+          }
+        ],
+        "rgbaSha256": "55cfe19017f74b84530ea5b9c81b46ff1435c8de943f67f2c29e7244d3248c41",
+        "alphaSha256": "a771081a84d7d1fcb18d2d45905233e51272278329b84ccef6acea9b0b4d745a",
+        "note": "Read-only analysis. RGB visible in an alpha-ignorant preview can be fully transparent. Low-alpha residuals and max alpha 254 are preserved without cleanup or normalization."
+      }
+    }
+  ],
+  "revisionRequests": [
+    {
+      "id": "forward-quarter",
+      "attempt": 2,
+      "reason": "Correct the observed fourth aft reactor; preserve the intended camera view.",
+      "prompt": "Use case: precise-object-edit.\nEdit image 1 only: it is a newly generated AVP:R SCOUT candidate with an incorrect count of FOUR aft orange reactor mouths. Images 2 and 3 are the exact V14 SCOUT profile and top identity references.\nCorrect only the aft propulsion cluster to contain EXACTLY THREE physical reactor housings and THREE orange circular burner mouths, arranged coherently as the same three units in reference images 2 and 3. Remove the invented fourth rear unit and reconstruct the adjacent original ribs/plates cleanly. Count the rear burner mouths before finishing: THREE total, not four. The small orange nose light at the RIGHT is not an engine and should remain a nose detail.\nPreserve image 1's front camera view at the intended 25 degrees, its nose pointing RIGHT and aft LEFT, its silhouette proportions, center, orientation, detailed dark graphite metal, cyan seams, panel construction, lighting and all non-engine parts. Use the supplied references to preserve this specific SCOUT; do not turn it into Wolf or the classic ship.\nOne craft only, full craft visible, exactly 1536 x 1024 landscape, actual transparent RGBA background. No new effects, plume, flames, floor, text, labels or border. Preserve transparency. This is a targeted reactor-count correction, not a new design or a 2D image rotation.",
+      "references": [
+        "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/avpr-scout-ship/avpr-scout-ship-forward-quarter.png",
+        "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/avpr-scout-ship-profile.webp",
+        "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/avpr-scout-ship-top.webp"
+      ],
+      "transparentBackground": true,
+      "targetCandidatePath": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/avpr-scout-ship/avpr-scout-ship-forward-quarter-v2.png"
+    },
+    {
+      "id": "bank-dorsal-shallow",
+      "attempt": 2,
+      "reason": "Correct the observed fourth aft reactor; preserve the intended camera view.",
+      "prompt": "Use case: precise-object-edit.\nEdit image 1 only: it is a newly generated AVP:R SCOUT candidate with an incorrect count of FOUR aft orange reactor mouths. Images 2 and 3 are the exact V14 SCOUT profile and top identity references.\nCorrect only the aft propulsion cluster to contain EXACTLY THREE physical reactor housings and THREE orange circular burner mouths, arranged coherently as the same three units in reference images 2 and 3. Remove the invented fourth rear unit and reconstruct the adjacent original ribs/plates cleanly. Count the rear burner mouths before finishing: THREE total, not four. The small orange nose light at the RIGHT is not an engine and should remain a nose detail.\nPreserve image 1's dorsal camera view at the intended 12 degrees, its nose pointing RIGHT and aft LEFT, its silhouette proportions, center, orientation, detailed dark graphite metal, cyan seams, panel construction, lighting and all non-engine parts. Use the supplied references to preserve this specific SCOUT; do not turn it into Wolf or the classic ship.\nOne craft only, full craft visible, exactly 1536 x 1024 landscape, actual transparent RGBA background. No new effects, plume, flames, floor, text, labels or border. Preserve transparency. This is a targeted reactor-count correction, not a new design or a 2D image rotation.",
+      "references": [
+        "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/avpr-scout-ship/avpr-scout-ship-bank-dorsal-shallow.png",
+        "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/avpr-scout-ship-profile.webp",
+        "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/references/avpr-scout-ship-top.webp"
+      ],
+      "transparentBackground": true,
+      "targetCandidatePath": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/avpr-scout-ship/avpr-scout-ship-bank-dorsal-shallow-v2.png"
+    }
+  ],
+  "generationSummary": {
+    "initialCalls": 8,
+    "targetedCorrectionCalls": 2,
+    "totalCalls": 10,
+    "selectedCandidateCount": 8,
+    "rejectedCandidateCount": 2,
+    "allGeneratedWithBuiltInTool": true,
+    "pixelManipulationPerformed": false,
+    "engineEffectsGenerated": 0,
+    "completedAt": "2026-11-06T04:28:30.797Z",
+    "totalSelectedBytes": 13202185
+  },
+  "pairedImageDistinctness": [
+    {
+      "shallow": "forward-quarter-shallow",
+      "strong": "forward-quarter",
+      "differentRgbaPixelsWithinAlphaUnionAbove8": 481905,
+      "unionPixelsAbove8": 482004,
+      "scope": "Confirms distinct image data only, not true 12/25-degree camera calibration."
+    },
+    {
+      "shallow": "bank-dorsal-shallow",
+      "strong": "bank-dorsal",
+      "differentRgbaPixelsWithinAlphaUnionAbove8": 453667,
+      "unionPixelsAbove8": 453748,
+      "scope": "Confirms distinct image data only, not true 12/25-degree camera calibration."
+    },
+    {
+      "shallow": "bank-ventral-shallow",
+      "strong": "bank-ventral",
+      "differentRgbaPixelsWithinAlphaUnionAbove8": 445893,
+      "unionPixelsAbove8": 446001,
+      "scope": "Confirms distinct image data only, not true 12/25-degree camera calibration."
+    },
+    {
+      "shallow": "rear-quarter-shallow",
+      "strong": "rear-quarter",
+      "differentRgbaPixelsWithinAlphaUnionAbove8": 463293,
+      "unionPixelsAbove8": 463376,
+      "scope": "Confirms distinct image data only, not true 12/25-degree camera calibration."
+    }
+  ],
+  "selectedCandidates": [
+    {
+      "id": "forward-quarter-shallow",
+      "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/avpr-scout-ship/candidates/avpr-scout-ship-forward-quarter-shallow.png",
+      "sha256": "9763608a8a85c1f1ef9d505280d6b5356d56194b402188c2a6c429c5c2086b3b",
+      "rgbaSha256": "f704891628cf4c5cf4d8b4f65be5f098533ec8d1d092fc3c1c409952dfc90cac",
+      "bytes": 1633436,
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "alphaRange": [
+        0,
+        254
+      ],
+      "fullyTransparentPixels": 1156018,
+      "visibleAftReactorCountInitialReview": 3
+    },
+    {
+      "id": "forward-quarter",
+      "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/avpr-scout-ship/candidates/avpr-scout-ship-forward-quarter.png",
+      "sha256": "892ee0d60cbec215e47f199af8fa9b8fd20a474191c840e14b94cbf8d5f04515",
+      "rgbaSha256": "dd1d796f2ff19d612b98a1b250b30881d643d24a78b42441ccc948699e846738",
+      "bytes": 1818845,
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "alphaRange": [
+        0,
+        254
+      ],
+      "fullyTransparentPixels": 1081532,
+      "visibleAftReactorCountInitialReview": 3
+    },
+    {
+      "id": "bank-dorsal-shallow",
+      "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/avpr-scout-ship/candidates/avpr-scout-ship-bank-dorsal-shallow.png",
+      "sha256": "cf2f617b0c98b7cd2f383dbadbd89757626ac9493747582e11a3b24f94e91f6a",
+      "rgbaSha256": "be1e0be4c8bd256774b53a1ba29f86b8f398a03a49d2604f8035baa1ee2915c2",
+      "bytes": 1547913,
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "alphaRange": [
+        0,
+        254
+      ],
+      "fullyTransparentPixels": 1163869,
+      "visibleAftReactorCountInitialReview": 3
+    },
+    {
+      "id": "bank-dorsal",
+      "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/avpr-scout-ship/candidates/avpr-scout-ship-bank-dorsal.png",
+      "sha256": "eaa0ad6e3cb897cfa6ea9206b15eea83264df89576ef1d1b235ae119c2b42862",
+      "rgbaSha256": "4ea719a47b5cce1993b62d2621cf4a4651ac6f052fc74a88a91371cc6f0825d3",
+      "bytes": 1794516,
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "alphaRange": [
+        0,
+        254
+      ],
+      "fullyTransparentPixels": 1107891,
+      "visibleAftReactorCountInitialReview": 3
+    },
+    {
+      "id": "bank-ventral-shallow",
+      "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/avpr-scout-ship/candidates/avpr-scout-ship-bank-ventral-shallow.png",
+      "sha256": "a1f28447723b497bff5a2a44e3584d7ca99ec699351a75cc7e90add4be356023",
+      "rgbaSha256": "79ef048507522b36d5db04b80c417891cfbfdec644a7e73df5cbd472afecc642",
+      "bytes": 1578905,
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "alphaRange": [
+        0,
+        254
+      ],
+      "fullyTransparentPixels": 1154966,
+      "visibleAftReactorCountInitialReview": 3
+    },
+    {
+      "id": "bank-ventral",
+      "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/avpr-scout-ship/candidates/avpr-scout-ship-bank-ventral.png",
+      "sha256": "1c278b14da4c23f623f0167977a3c6bec408f1287f4e5171bf1205d15acbc34a",
+      "rgbaSha256": "0c2fe54f008e7d046904fd819fb6a6eb1c078eddde24db6dbfd79c5200d3baa1",
+      "bytes": 1681772,
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "alphaRange": [
+        0,
+        254
+      ],
+      "fullyTransparentPixels": 1124506,
+      "visibleAftReactorCountInitialReview": 3
+    },
+    {
+      "id": "rear-quarter-shallow",
+      "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/avpr-scout-ship/candidates/avpr-scout-ship-rear-quarter-shallow.png",
+      "sha256": "217ace5ee7a180c8934ff9fa2e14972b73660caa713c938a792e70257c7ff3e6",
+      "rgbaSha256": "9d88b180baec716261a4748f60d2fb1f6c1576468cd504e7d2c6ff6eea054871",
+      "bytes": 1573033,
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "alphaRange": [
+        0,
+        254
+      ],
+      "fullyTransparentPixels": 1170634,
+      "visibleAftReactorCountInitialReview": 3
+    },
+    {
+      "id": "rear-quarter",
+      "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/avpr-scout-ship/candidates/avpr-scout-ship-rear-quarter.png",
+      "sha256": "184e0bb9a52cf7056ccc7207239fa85b11db56e2d03e7f03c12e059b4e22b787",
+      "rgbaSha256": "55cfe19017f74b84530ea5b9c81b46ff1435c8de943f67f2c29e7244d3248c41",
+      "bytes": 1573765,
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "alphaRange": [
+        0,
+        254
+      ],
+      "fullyTransparentPixels": 1111458,
+      "visibleAftReactorCountInitialReview": 3
+    }
+  ],
+  "limitations": [
+    "All eight selected files remain generation candidates before independent silhouette/landmark/occlusion QA and runtime calibration.",
+    "Exactly three aft reactor mouths were observed in each selected candidate; two initial four-reactor outputs are retained as rejected attempts.",
+    "Reference materials and recognizable construction were inspected, but new hidden faces and nominal 12/25-degree angles are inferred rather than measured from a calibrated 3D model.",
+    "No bitmap rotation, mirroring, warping, resizing, alpha cleanup, color replacement or PNG-to-WebP conversion was performed.",
+    "The visible preview halo is not treated as an opaque background: alpha was read independently. Low-alpha residual pixels and maximum alpha 254 remain unmodified and are recorded.",
+    "No art was copied into the repository, no runtime registry changed, and no new engine-effect resource was requested or generated."
+  ]
+}

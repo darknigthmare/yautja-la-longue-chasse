@@ -21,7 +21,8 @@ import { arrivalVfxArtForBiome, type ArrivalVfxArt } from './systems/planetArriv
 import { ARRIVAL_POD_FLIGHT_CORE_CLIP, ARRIVAL_POD_FLIGHT_PANEL_CLIPS, ARRIVAL_POD_FLIGHT_PANELS,
   arrivalPodEntryFrame, arrivalPodPanelAngle } from './systems/planetArrivalPodFlight';
 import { ARRIVAL_POD_SPRITES } from './systems/planetArrivalPodArt';
-import { arrivalShipMotionAssetPaths, arrivalShipMotionFrame, arrivalShipViewRegistration } from './systems/planetArrivalShipMotion';
+import { arrivalShipMotionAssetPaths, arrivalShipMotionFrame, arrivalShipViewRegistration,
+  type ArrivalShipViewTransform } from './systems/planetArrivalShipMotion';
 import { ARRIVAL_SHIP_ENGINE_ART, arrivalShipEffectAssetPaths, arrivalShipEngineAperture,
   arrivalShipEngineFrame } from './systems/planetArrivalShipEffects';
 import { DEFAULT_PLAN, EXPEDITION_MEMBER_SIZE, expeditionMemberAppearance, expeditionMemberLoadout, normalizePlanetInsertionPlan,
@@ -503,11 +504,12 @@ export default function PlanetArrivalCinematic({ state, appearance, loadout, gau
     // Camera variants register their own full-canvas pivot onto the shared
     // moving pivot. Paint, lighting, refraction and rim receive the same offset.
     const registration = (view: typeof shipMotion.from): CSSProperties => {
-      const transform = grounded ? { translateX: 0, translateY: 0, rotationDeg: 0, scale: 1 }
+      const transform: ArrivalShipViewTransform = grounded ? { translateX: 0, translateY: 0, rotationDeg: 0, scale: 1 }
         : arrivalShipViewRegistration(shipMotion, view);
       return {
         transformOrigin: `${view.pivot.x * 100}% ${view.pivot.y * 100}%`,
-        transform: `translate(${transform.translateX * width}px, ${transform.translateY * height}px) rotate(${transform.rotationDeg}deg) scale(${transform.scale})`,
+        transform: `translate(${transform.translateX * width}px, ${transform.translateY * height}px) rotate(${transform.rotationDeg}deg) scale(${transform.scale})` +
+          (transform.sourceScale ? ` scale(${transform.sourceScale.x}, ${transform.sourceScale.y})` : ''),
       };
     };
     const engineLayers = (view: typeof shipMotion.from, part: 'core' | 'plume') => {
@@ -564,6 +566,7 @@ export default function PlanetArrivalCinematic({ state, appearance, loadout, gau
         }} />
         <svg className={styles.shipCloakRim} data-arrival-cloak-rim={view.path}
           data-arrival-cloak-view={view.id} style={{ ...registration(view), opacity: shipCloak.rimOpacity * opacity }}
+          preserveAspectRatio={!grounded && arrivalShipViewRegistration(shipMotion, view).sourceScale ? 'none' : undefined}
           viewBox={`0 0 ${view.art.width} ${view.art.height}`}>
           <image href={view.path} width={view.art.width} height={view.art.height} filter={`url(#${cloakFilterId}-rim)`}
             onError={() => assetFailed(view.path)} />

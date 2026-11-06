@@ -1,0 +1,338 @@
+{
+  "scope": "Independent read-only source review of frozen SVG fix; algebra and structural checks, not native pixel qualification.",
+  "reviewedAt": "2026-11-06T05:13:07.870Z",
+  "sources": [
+    {
+      "path": "app/game/PlanetArrivalCinematic.tsx",
+      "bytes": 72421,
+      "sha256": "49449f839d797de1348cb89249dd1c1b70d3c671976e6f2acca8323c13ce03cf"
+    },
+    {
+      "path": "scripts/qa-ship-motion.mjs",
+      "bytes": 59742,
+      "sha256": "f3abb22cd8728f03e0b00d6d158df39038015204fbb6d3d94c288c34fdbe3ecb"
+    }
+  ],
+  "diff": {
+    "path": "/workspace/scratch/0c1fa1359efb/qa/cinematic-sprite-expansion-20261106/framework/svg-registration/svg-registration.diff",
+    "sha256": "8c31486bc5f7118a98d7fa1b88b50aeb1aa5c21af225de1dd09d7835cbe74df4"
+  },
+  "tsxInverseByteExact": true,
+  "mainLoopByteExact": true,
+  "unchangedFunctions": [
+    "check",
+    "loadFixtures",
+    "startHost",
+    "makeContext",
+    "watch",
+    "openShot",
+    "waitElapsed",
+    "assertRegistration",
+    "assertIsotropicSources",
+    "assertEngines",
+    "capture",
+    "expectedLaunch",
+    "observeLaunches",
+    "capsuleRoute",
+    "pauseAndResume",
+    "shipRoute",
+    "failureRoute"
+  ],
+  "changedFunctions": [
+    "additionalFamilyRoute",
+    "assertHull",
+    "frame",
+    "observeRegistrationBlends"
+  ],
+  "addedFunction": "assertRimRegistration",
+  "families": [
+    {
+      "shipId": "classic-predator-spaceship",
+      "methods": [
+        "pod",
+        "ship"
+      ],
+      "profileCanvas": [
+        1536,
+        1024
+      ],
+      "viewCanvases": [
+        "1536x1024"
+      ],
+      "viewCount": 8,
+      "requiresDifferentCanvasOpticalObservation": false
+    },
+    {
+      "shipId": "wolf-ship",
+      "methods": [
+        "pod",
+        "ship"
+      ],
+      "profileCanvas": [
+        1761,
+        893
+      ],
+      "viewCanvases": [
+        "1536x1024"
+      ],
+      "viewCount": 8,
+      "requiresDifferentCanvasOpticalObservation": true
+    },
+    {
+      "shipId": "avp-predator-mothership",
+      "methods": [
+        "pod"
+      ],
+      "profileCanvas": [
+        1774,
+        887
+      ],
+      "viewCanvases": [
+        "1536x1024"
+      ],
+      "viewCount": 6,
+      "requiresDifferentCanvasOpticalObservation": false
+    },
+    {
+      "shipId": "avpr-scout-ship",
+      "methods": [
+        "pod",
+        "ship"
+      ],
+      "profileCanvas": [
+        1536,
+        1024
+      ],
+      "viewCanvases": [
+        "1536x1024"
+      ],
+      "viewCount": 8,
+      "requiresDifferentCanvasOpticalObservation": false
+    },
+    {
+      "shipId": "feral-spaceship",
+      "methods": [
+        "pod",
+        "ship"
+      ],
+      "profileCanvas": [
+        1672,
+        941
+      ],
+      "viewCanvases": [
+        "1536x1024"
+      ],
+      "viewCount": 8,
+      "requiresDifferentCanvasOpticalObservation": true
+    },
+    {
+      "shipId": "fugitive-spaceship",
+      "methods": [
+        "pod",
+        "ship"
+      ],
+      "profileCanvas": [
+        1693,
+        929
+      ],
+      "viewCanvases": [
+        "1536x1024"
+      ],
+      "viewCount": 8,
+      "requiresDifferentCanvasOpticalObservation": true
+    },
+    {
+      "shipId": "upgrade-spaceship",
+      "methods": [
+        "pod",
+        "ship"
+      ],
+      "profileCanvas": [
+        1672,
+        941
+      ],
+      "viewCanvases": [
+        "1536x1024"
+      ],
+      "viewCount": 8,
+      "requiresDifferentCanvasOpticalObservation": true
+    }
+  ],
+  "classicSamples": [
+    {
+      "method": "pod",
+      "elapsed": 13000,
+      "from": "forward-quarter",
+      "to": null,
+      "mix": 0
+    },
+    {
+      "method": "pod",
+      "elapsed": 14000,
+      "from": "forward-quarter",
+      "to": null,
+      "mix": 0
+    },
+    {
+      "method": "pod",
+      "elapsed": 15100,
+      "from": "forward-quarter",
+      "to": null,
+      "mix": 0
+    },
+    {
+      "method": "pod",
+      "elapsed": 15160,
+      "from": "forward-quarter",
+      "to": null,
+      "mix": 0
+    },
+    {
+      "method": "pod",
+      "elapsed": 15190,
+      "from": "forward-quarter",
+      "to": null,
+      "mix": 0
+    },
+    {
+      "method": "pod",
+      "elapsed": 15200,
+      "from": "forward-quarter",
+      "to": "forward-quarter-shallow",
+      "mix": 0
+    },
+    {
+      "method": "pod",
+      "elapsed": 17160,
+      "from": "forward-quarter-shallow",
+      "to": "profile",
+      "mix": 0.31640625
+    },
+    {
+      "method": "pod",
+      "elapsed": 21060,
+      "from": "bank-dorsal",
+      "to": "bank-dorsal-shallow",
+      "mix": 0.31640625
+    },
+    {
+      "method": "pod",
+      "elapsed": 24060,
+      "from": "profile",
+      "to": null,
+      "mix": 0
+    },
+    {
+      "method": "pod",
+      "elapsed": 26260,
+      "from": "rear-quarter-shallow",
+      "to": null,
+      "mix": 0
+    },
+    {
+      "method": "pod",
+      "elapsed": 62000,
+      "from": "profile",
+      "to": null,
+      "mix": 0
+    },
+    {
+      "method": "ship",
+      "elapsed": 13000,
+      "from": "forward-quarter",
+      "to": null,
+      "mix": 0
+    },
+    {
+      "method": "ship",
+      "elapsed": 14000,
+      "from": "forward-quarter",
+      "to": null,
+      "mix": 0
+    },
+    {
+      "method": "ship",
+      "elapsed": 15100,
+      "from": "forward-quarter",
+      "to": null,
+      "mix": 0
+    },
+    {
+      "method": "ship",
+      "elapsed": 15160,
+      "from": "forward-quarter",
+      "to": null,
+      "mix": 0
+    },
+    {
+      "method": "ship",
+      "elapsed": 15190,
+      "from": "forward-quarter",
+      "to": null,
+      "mix": 0
+    },
+    {
+      "method": "ship",
+      "elapsed": 15200,
+      "from": "forward-quarter",
+      "to": "forward-quarter-shallow",
+      "mix": 0
+    },
+    {
+      "method": "ship",
+      "elapsed": 17160,
+      "from": "forward-quarter-shallow",
+      "to": "profile",
+      "mix": 0.31640625
+    },
+    {
+      "method": "ship",
+      "elapsed": 21060,
+      "from": "bank-dorsal",
+      "to": "bank-dorsal-shallow",
+      "mix": 0.31640625
+    },
+    {
+      "method": "ship",
+      "elapsed": 24060,
+      "from": "profile",
+      "to": null,
+      "mix": 0
+    },
+    {
+      "method": "ship",
+      "elapsed": 26260,
+      "from": "bank-ventral-shallow",
+      "to": "bank-ventral",
+      "mix": 0.31640625
+    },
+    {
+      "method": "ship",
+      "elapsed": 62000,
+      "from": "profile",
+      "to": null,
+      "mix": 0
+    }
+  ],
+  "conclusions": [
+    "The sole JSX attribute is on the outer SVG whose source viewBox otherwise uses meet; none makes its pixel-to-box mapping agree with the HTML image before sourceScale cancellation.",
+    "Grounded hulls short-circuit the condition. Classic profile and all classic variants have the same 1536x1024 canvas, so sourceScale remains absent and the old SVG setting is preserved.",
+    "The actual inner image getScreenCTM is collected beside painted anchors in the existing browser evaluation; no additional evaluation, wait, timer, or playback clock is introduced.",
+    "The oracle checks actual image identity/dimensions, finite CTM, isotropic orthogonal pixel axes, and both calibrated anchors. It does not reject the intended carrier-facing reflection.",
+    "Four ship-capable families must expose at least one actual cloaked two-layer mixture with differing decoded canvases; a same-canvas ventral-to-ventral blend alone cannot qualify the correction.",
+    "The prior classic scenario functions and shared capture function remain byte-identical. Additional CTM reads add local observation work; their native cost is not measured here."
+  ],
+  "independentReview": "favorable",
+  "nativeValidationPending": true,
+  "limitations": [
+    "Source geometry and the synthetic four-case oracle do not replace the next exact-head browser run.",
+    "Anchor/isotropy checks establish geometric registration, not pixel-perfect artistic identity of generated views.",
+    "The profile and variant angles are authored camera targets, not a measured reconstruction of a canonical 3D hull."
+  ],
+  "primarySources": [
+    "https://www.w3.org/TR/SVG2/coords.html#ComputingAViewportsTransform",
+    "https://www.w3.org/TR/SVG2/types.html#__svg__SVGGraphicsElement__getScreenCTM"
+  ],
+  "repositoryFilesWritten": false,
+  "remoteMutations": false
+}

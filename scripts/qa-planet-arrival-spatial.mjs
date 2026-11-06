@@ -2428,7 +2428,16 @@ try {
         await waitElapsed(carrier.startMs + (carrier.endMs - carrier.startMs) * .5, carrier.id);
         const frame = await capture(`${viewport.id}-${shipId}-carrier`);
         assert.equal(frame.ship, shipId, 'A selected hull must retain its own identity.');
-        assert.ok(frame.images.some(image => image.path === profile), 'The real catalogue profile must be rendered.');
+        const carriers = frame.cloakHulls.filter(hull => hull.role === 'carrier');
+        assert.equal(carriers.length, 1, 'The selected catalogue hull requires exactly one actual carrier.');
+        const paintedCarrier = carriers[0];
+        // capture() already checked each source/imageSource and mixture against
+        // this selected hull's exact motion frame, including its own fallback.
+        // The midpoint can legitimately hold the profile; a later observation
+        // may show a reviewed view. Neither is an arbitrary scene-image match.
+        assert.ok(paintedCarrier.opacity > .02 && paintedCarrier.views.length > 0 &&
+          paintedCarrier.views.every(view => view.opacity > 0 && view.image?.width > 0 && view.image.height > 0),
+        'The selected carrier must paint its actual decoded profile or registered perspective layers.');
         await measureMovement(`${viewport.id}-${shipId}-carrier`);
         await openShot(primaryMission.id, 'release', false, shipId);
         const release = api.PLANET_ARRIVAL_SHOTS.find(shot => shot.id === 'release');
@@ -2439,6 +2448,7 @@ try {
           ejection.anchors['release-origin']?.opacity > .02,
         'The observed ejection must include the hull socket, capsule and active release effect.');
         report.ships.push({ viewport: viewport.id, shipId, profile,
+          observedCarrierViews: paintedCarrier.views.map(view => ({ id: view.id, source: view.source, opacity: view.opacity })),
           directionBasis: calibration.directionBasis, review: calibration.review,
           scope: shipId === 'upgrade-spaceship' ? 'Projection of the authored perspective; canonical release geometry remains unasserted.' :
             'Rendered source orientation and attachment; no assertion of canonical release geometry.',

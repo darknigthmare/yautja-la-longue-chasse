@@ -1,5 +1,6 @@
 import { shipProfileAssetPath, type ShipId } from '../shipCatalogue';
 import { carrierArtForShip, type ArrivalArtPoint, type ArrivalCarrierArt } from './planetArrivalArt';
+import { ARRIVAL_ADDITIONAL_SHIP_MOTION_CALIBRATIONS } from './planetArrivalShipMotionCalibrations';
 import type { PlanetInsertionPlan } from './planetInsertion';
 
 /**
@@ -77,9 +78,39 @@ export interface ArrivalShipViewTransform {
   /** Clockwise source-space rotation, before the carrier's facing mirror. */
   rotationDeg: number;
   scale: number;
+  /** Cancels only the source-to-frame canvas stretch, before the uniform
+   * registration. Absent for matching canvases, including every classic view. */
+  sourceScale?: { x: number; y: number };
 }
 
 type PixelPoint = readonly [number, number];
+export interface ArrivalShipMotionViewCalibration {
+  path: string;
+  width: number;
+  height: number;
+  nose: PixelPoint;
+  tail: PixelPoint;
+  release: PixelPoint;
+  pivot: PixelPoint;
+  calibration: 'inspected-source-art';
+}
+
+export interface ArrivalShipMotionFamilyCalibration {
+  /** Exact active profile inspected alongside the generated perspectives. */
+  profilePath: string;
+  sourceReview: string;
+  methods: readonly PlanetInsertionPlan['method'][];
+  views: Readonly<Partial<Record<ArrivalShipVariantId, ArrivalShipMotionViewCalibration>>>;
+}
+
+export interface ArrivalShipMotionFamily {
+  shipId: ShipId;
+  methods: readonly PlanetInsertionPlan['method'][];
+  views: Readonly<Partial<Record<ArrivalShipVariantId, ArrivalShipMotionView>>>;
+  paths: readonly string[];
+  sourceReview: string;
+}
+
 interface ClassicViewCalibration {
   nose: PixelPoint;
   tail: PixelPoint;
@@ -176,11 +207,6 @@ export const ARRIVAL_CLASSIC_SHIP_VIEWS: Readonly<Record<ArrivalShipVariantId, A
 const CLASSIC_VIEW_PATHS = Object.freeze(Object.values(ARRIVAL_CLASSIC_SHIP_VIEWS).map(view => view.path));
 const NO_VIEW_PATHS: readonly string[] = Object.freeze([]);
 
-/** Optional preloads; never merge them into the required cinematic asset gate. */
-export function arrivalShipMotionAssetPaths(shipId: ShipId): readonly string[] {
-  return shipId === ARRIVAL_SHIP_MOTION_HULL ? CLASSIC_VIEW_PATHS : NO_VIEW_PATHS;
-}
-
 function profileView(shipId: ShipId): ArrivalShipMotionView {
   const art = carrierArtForShip(shipId);
   const classic = shipId === ARRIVAL_SHIP_MOTION_HULL;
@@ -229,6 +255,63 @@ const SHIP_CUES: readonly ViewCue[] = Object.freeze([
   cue(47_000, 'profile'),
 ]);
 
+function inspectedFamily(shipId: ShipId, calibration: ArrivalShipMotionFamilyCalibration): ArrivalShipMotionFamily | null {
+  const { methods } = calibration;
+  if (!calibration.sourceReview || calibration.profilePath !== shipProfileAssetPath(shipId) ||
+    !methods.length || new Set(methods).size !== methods.length ||
+    !methods.every(method => method === 'pod' || method === 'ship')) return null;
+  const required = new Set(methods.flatMap(method => (method === 'ship' ? SHIP_CUES : POD_CUES)
+    .map(entry => entry.id).filter((id): id is ArrivalShipVariantId => id !== 'profile')));
+  const entries = Object.entries(calibration.views) as [ArrivalShipVariantId, ArrivalShipMotionViewCalibration][];
+  if (entries.length !== required.size || entries.some(([id]) => !required.has(id))) return null;
+  const original = carrierArtForShip(shipId);
+  const direction = Math.sign(original.nose.x - original.tail.x);
+  const paths = new Set<string>();
+  const views: Partial<Record<ArrivalShipVariantId, ArrivalShipMotionView>> = {};
+  for (const [id, measured] of entries) {
+    if (measured.calibration !== 'inspected-source-art' ||
+      !Number.isInteger(measured.width) || measured.width <= 0 ||
+      !Number.isInteger(measured.height) || measured.height <= 0 ||
+      !measured.path.startsWith('/game/planet-arrival/') || !measured.path.endsWith('.webp') ||
+      measured.path === calibration.profilePath || paths.has(measured.path) ||
+      ![measured.nose, measured.tail, measured.release, measured.pivot].every(([x, y]) =>
+        Number.isFinite(x) && Number.isFinite(y) && x >= 0 && x <= measured.width && y >= 0 && y <= measured.height) ||
+      Math.sign(measured.nose[0] - measured.tail[0]) !== direction) return null;
+    paths.add(measured.path);
+    const sourcePoint = ([x, y]: PixelPoint): ArrivalArtPoint => ({ x: x / measured.width, y: y / measured.height });
+    const art: ArrivalCarrierArt = { ...original, width: measured.width, height: measured.height,
+      nose: sourcePoint(measured.nose), tail: sourcePoint(measured.tail), release: sourcePoint(measured.release),
+      review: 'inspected-source-art', directionBasis: 'authored-view-with-perspective' };
+    views[id] = Object.freeze({ id, shipId, path: measured.path, art, pivot: sourcePoint(measured.pivot),
+      // This hidden marker preserves the profile's socket identity, not an
+      // approved nozzle. New hulls cannot borrow the classic engine effects.
+      exhaust: [{ id: 'main' as const, point: art.tail, angle: aftAngle(art), visibility: 0,
+        review: 'unreviewed' as const }],
+      attitude: { ...ARRIVAL_CLASSIC_SHIP_VIEWS[id].attitude }, attitudeBasis: 'authored-camera-target' as const,
+      projectedHullSpan: hullSpan(art), calibration: measured.calibration });
+  }
+  return Object.freeze({ shipId, methods: Object.freeze([...methods]), views: Object.freeze(views),
+    paths: Object.freeze([...paths]), sourceReview: calibration.sourceReview });
+}
+
+/** Only complete, inspected families participate. An unsupported method or
+ * rejected registration retains that selected hull's historical profile. */
+export const ARRIVAL_SHIP_MOTION_FAMILIES: Readonly<Partial<Record<ShipId, ArrivalShipMotionFamily>>> = Object.freeze({
+  [ARRIVAL_SHIP_MOTION_HULL]: Object.freeze({ shipId: ARRIVAL_SHIP_MOTION_HULL,
+    methods: Object.freeze(['pod', 'ship'] as const), views: ARRIVAL_CLASSIC_SHIP_VIEWS, paths: CLASSIC_VIEW_PATHS,
+    sourceReview: 'production/ship-motion-20261105/art/sprite-review.json' }),
+  ...Object.fromEntries(Object.entries(ARRIVAL_ADDITIONAL_SHIP_MOTION_CALIBRATIONS).flatMap(([id, calibration]) => {
+    if (id === ARRIVAL_SHIP_MOTION_HULL || !calibration) return [];
+    const family = inspectedFamily(id as ShipId, calibration);
+    return family ? [[id, family]] : [];
+  })),
+});
+
+/** Optional preloads; never merge them into the required cinematic asset gate. */
+export function arrivalShipMotionAssetPaths(shipId: ShipId): readonly string[] {
+  return ARRIVAL_SHIP_MOTION_FAMILIES[shipId]?.paths ?? NO_VIEW_PATHS;
+}
+
 function held(view: ArrivalShipMotionView, fallback = false): ArrivalShipMotionFrame {
   return { from: view, to: null, mix: 0, art: view.art, pivot: view.pivot, exhaust: view.exhaust,
     attitude: view.attitude, projectedHullSpan: view.projectedHullSpan, fallback };
@@ -237,7 +320,10 @@ function held(view: ArrivalShipMotionView, fallback = false): ArrivalShipMotionF
 /**
  * Align both projected hull axes during a dissolve, using uniform scale only.
  * CSS must use view.pivot as transform-origin and apply, in this written order,
- * translate(translateX * width, translateY * height) rotate(rotationDeg) scale(scale).
+ * translate(translateX * width, translateY * height) rotate(rotationDeg) scale(scale),
+ * followed by scale(sourceScale.x, sourceScale.y) when present. The latter
+ * cancels the image's initial canvas stretch: source pixels then receive one
+ * uniform scale and rotation, even when the two native canvases differ.
  * The parent carrier then applies its facing mirror and world rotation. The
  * center compensation also supports the profile's unchanged (.5, .5) pivot.
  */
@@ -245,19 +331,22 @@ export function arrivalShipViewRegistration(frame: Pick<ArrivalShipMotionFrame, 
   view: ArrivalShipMotionView): ArrivalShipViewTransform {
   if (frame.art === view.art) return { translateX: 0, translateY: 0, rotationDeg: 0, scale: 1 };
   const aspect = frame.art.height / frame.art.width;
-  const sourceAxis = { x: view.art.tail.x - view.art.nose.x, y: (view.art.tail.y - view.art.nose.y) * aspect };
+  const sourceScale = view.art.width === frame.art.width && view.art.height === frame.art.height ? undefined
+    : { x: view.art.width / frame.art.width, y: view.art.height / frame.art.height };
+  const sourceAxis = { x: (view.art.tail.x - view.art.nose.x) * (sourceScale?.x ?? 1),
+    y: (view.art.tail.y - view.art.nose.y) * aspect * (sourceScale?.y ?? 1) };
   const targetAxis = { x: frame.art.tail.x - frame.art.nose.x, y: (frame.art.tail.y - frame.art.nose.y) * aspect };
   const rotation = Math.atan2(targetAxis.y, targetAxis.x) - Math.atan2(sourceAxis.y, sourceAxis.x);
   const scale = Math.hypot(targetAxis.x, targetAxis.y) / Math.hypot(sourceAxis.x, sourceAxis.y);
   const sourceCenter = blendPoint(view.art.nose, view.art.tail, .5);
   const targetCenter = blendPoint(frame.art.nose, frame.art.tail, .5);
-  const dx = sourceCenter.x - view.pivot.x;
-  const dy = (sourceCenter.y - view.pivot.y) * aspect;
+  const dx = (sourceCenter.x - view.pivot.x) * (sourceScale?.x ?? 1);
+  const dy = (sourceCenter.y - view.pivot.y) * aspect * (sourceScale?.y ?? 1);
   const cosine = Math.cos(rotation), sine = Math.sin(rotation);
   return {
     translateX: targetCenter.x - view.pivot.x - scale * (dx * cosine - dy * sine),
     translateY: targetCenter.y - view.pivot.y - scale * (dx * sine + dy * cosine) / aspect,
-    rotationDeg: rotation * 180 / Math.PI, scale,
+    rotationDeg: rotation * 180 / Math.PI, scale, ...(sourceScale ? { sourceScale } : {}),
   };
 }
 
@@ -265,7 +354,8 @@ function registeredPoint(frame: Pick<ArrivalShipMotionFrame, 'art'>, view: Arriv
   point: ArrivalArtPoint, registration: ArrivalShipViewTransform): ArrivalArtPoint {
   const aspect = frame.art.height / frame.art.width;
   const radians = registration.rotationDeg * Math.PI / 180;
-  const dx = point.x - view.pivot.x, dy = (point.y - view.pivot.y) * aspect;
+  const dx = (point.x - view.pivot.x) * (registration.sourceScale?.x ?? 1);
+  const dy = (point.y - view.pivot.y) * aspect * (registration.sourceScale?.y ?? 1);
   const cosine = Math.cos(radians), sine = Math.sin(radians);
   return {
     x: view.pivot.x + registration.translateX + registration.scale * (dx * cosine - dy * sine),
@@ -346,7 +436,8 @@ export function arrivalShipMotionFrame(shipId: ShipId, elapsedMs: number,
   method: PlanetInsertionPlan['method'], reducedMotion = false,
   unavailablePaths: readonly string[] = []): ArrivalShipMotionFrame {
   const profile = profileView(shipId);
-  if (shipId !== ARRIVAL_SHIP_MOTION_HULL) return held(profile, true);
+  const family = ARRIVAL_SHIP_MOTION_FAMILIES[shipId];
+  if (!family || !family.methods.includes(method)) return held(profile, true);
   const time = Number.isFinite(elapsedMs) ? Math.max(0, elapsedMs) : 0;
   // Landing and the eventual HuntCanvas must use exactly the same image/pivot.
   if (reducedMotion || time < 13_000 || time >= 49_000) return held(profile);
@@ -359,10 +450,11 @@ export function arrivalShipMotionFrame(shipId: ShipId, elapsedMs: number,
     active = entry;
   }
   if (!active) return held(profile);
-  const view = (id: ArrivalShipViewId) => id === 'profile' ? profile : ARRIVAL_CLASSIC_SHIP_VIEWS[id];
+  const view = (id: ArrivalShipViewId) => id === 'profile' ? profile : family.views[id];
   const target = view(active.id);
   const inTransition = active.durationMs > 0 && time < active.atMs + active.durationMs;
   const source = inTransition ? view(previous) : target;
+  if (!source || !target) return held(profile, true);
   const familyUnavailable = arrivalShipMotionAssetPaths(shipId).some(path => unavailablePaths.includes(path));
   if (familyUnavailable && (source.id !== 'profile' || target.id !== 'profile')) return held(profile, true);
   return inTransition ? transition(source, target, smooth((time - active.atMs) / active.durationMs)) : held(target);
