@@ -1,0 +1,16 @@
+{
+  "count": 6,
+  "binary_checks": "pass",
+  "command_executed": "python verify.py",
+  "checks": [
+    {"file":"recruit.png","sha256":"442d723d93b5792f57bead846852c053dde91c3250dc8d68b5ef8b138ce45f5c","dimensions":[64,64],"alpha_bbox":[3,3,61,61],"transparent_pixels":1057,"binary_check":"pass"},
+    {"file":"assign.png","sha256":"aaf864dc1124ee98040d3de4eed9fb6f0a6e1d9864ae507a1e9373a374cad977","dimensions":[64,64],"alpha_bbox":[3,3,61,61],"transparent_pixels":1057,"binary_check":"pass"},
+    {"file":"active.png","sha256":"ee5213ef468f28397154eb49df52090d77bba7cd5aa29a95960f9627d48cecc0","dimensions":[64,64],"alpha_bbox":[3,3,61,61],"transparent_pixels":1057,"binary_check":"pass"},
+    {"file":"on-mission.png","sha256":"1c8b144293bda038e9f0707dec5d2ae359c3cc104efd8b5844df67a4cee03bc3","dimensions":[64,64],"alpha_bbox":[3,3,61,61],"transparent_pixels":1057,"binary_check":"pass"},
+    {"file":"reserve.png","sha256":"a2a4637fb8f413d823b539a6588fc6bb362fb3fe1977eecf3b116a158342bd4a","dimensions":[64,64],"alpha_bbox":[3,3,61,61],"transparent_pixels":1057,"binary_check":"pass"},
+    {"file":"locked.png","sha256":"e421f70b2def2d5819fe7c9725c540a5d6569108a98456349985ed1526ad331f","dimensions":[64,64],"alpha_bbox":[3,3,61,61],"transparent_pixels":1057,"binary_check":"pass"}
+  ],
+  "game_tests_executed": false,
+  "lore_1_to_1_certified": false,
+  "human_art_validation": false
+}
