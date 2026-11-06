@@ -567,8 +567,8 @@ Sujets peu développés, à traiter dans les prochains lots de questions :
 - [ ] IA des proies humaines et réactions au camouflage — traité le 6 novembre
 - [ ] Déroulé détaillé des 6 à 8 missions de l'arc de guerre — traité (G-1 → G-8)
 - [ ] Noms et rôles des personnages de la Lost Tribe, du Serpent Clan et des Matriarches — traité le 6 novembre
-- [ ] Musique et ambiance propres à chaque race — musique traitée (MUS-60 → MUS-72), ambiances sonores encore à faire
-- [ ] Noms des cités des clans et des trois cités visitables au départ — noms traités (classeur V6) ; choix des trois cités de départ encore ouvert
+- [ ] Musique et ambiance propres à chaque race — musique (MUS-60 → MUS-72) et ambiances sonores traitées le 6 novembre
+- [ ] Noms des cités des clans et des trois cités visitables au départ — noms traités (classeur V6) ; carte et cités de départ traitées le 6 novembre
 - [ ] Dates exactes des ellipses et seuils d'honneur par rang — traité le 6 novembre
 
 ### Équipement et IA des humains (6 novembre 2026)
@@ -653,22 +653,42 @@ Les noms yautja de ce tableau sont des propositions, à valider ; aucun n'est un
 
 **Tranches d'âge par rang** *(proposées ; le canon ne donne pas de chiffres fiables)* : Youngling 0–15 ans ; Unblooded 15–30 ; Young Blood 30–45 ; Blooded 45–80 ; Adjutant 80–120 ; Elite 120–200 ; Elder 200–300 ; Clan Leader 250–400 ; Adjudicator 350–500 ; Philosopher et Ancient au-delà de 500. Ces tranches pilotent les silhouettes de vieillissement décidées plus haut.
 
-**Cités visitables au départ — décision :** la cité du clan tiré au hasard et les deux régions voisines. Les 10 régions forment un anneau autour de la Réserve Interdite *(disposition proposée)* :
+**Carte du monde natal et cités de départ — décision :** un mélange de l'anneau, de la géographie par climat et d'une capitale centrale qui relie tout.
 
-| Cité du clan tiré | Voisine 1 | Voisine 2 |
+- **La capitale au centre :** c'est la cité du classeur V6 (36 lieux sur 4 niveaux, CITY-01 → CITY-36). Ses portes mènent à chaque région : c'est le hub.
+- **Les régions placées par climat** *(disposition proposée)* : froid au nord, eau à l'ouest, chaleur au sud, montagnes et Réserve à l'est.
+- **Un anneau de sentiers de frontière** relie les régions voisines entre elles, sans repasser par la capitale *(proposé : ouverts par mission, comme les raccourcis du V6)*.
+
+```text
+                       NORD
+      Couronne Froide ─────── Chaîne des Orages
+            │   ╲                 ╱   │
+  Côte des  │    ╲   CAPITALE    ╱    │  Réserve
+Léviathans ─┼───── (CITY-01→36) ─────┼─ Interdite   EST
+            │    ╱  Ruines de la ╲    │  + Spatioport
+   Marais   │   ╱  Première Cité  ╲   │    Oriental
+Luminescents── Jungle des Piliers    Désert de Verre
+            │         │               │
+     Grottes Thermiques ──── Marches de Cendre
+                       SUD
+```
+
+| Région | Liaison depuis la capitale | Voisines sur l'anneau |
 | --- | --- | --- |
-| Marches de Cendre (CL1) | Grottes Thermiques | Désert de Verre |
-| Désert de Verre (CL2) | Marches de Cendre | Ruines de la Première Cité |
-| Ruines de la Première Cité (CL9) | Désert de Verre | Jungle des Piliers |
-| Jungle des Piliers (CL3) | Ruines de la Première Cité | Marais Luminescents |
-| Marais Luminescents (CL4) | Jungle des Piliers | Côte des Léviathans |
-| Côte des Léviathans (CL6) | Marais Luminescents | Chaîne des Orages |
-| Chaîne des Orages (CL5) | Côte des Léviathans | Couronne Froide |
-| Couronne Froide (CL8) | Chaîne des Orages | Grottes Thermiques |
-| Grottes Thermiques (CL7) | Couronne Froide | Marches de Cendre |
-| Réserve Interdite (CL10) | Ruines de la Première Cité | Jungle des Piliers |
+| Ruines de la Première Cité | contiguë à la capitale, par le Passage des Racines (CITY-30) | Jungle des Piliers, Désert de Verre |
+| Marches de Cendre | Porte des Marches (CITY-07), à pied | Désert de Verre, Grottes Thermiques |
+| Désert de Verre | porte sud, à pied | Marches de Cendre, Réserve Interdite |
+| Jungle des Piliers | pont de lianes | Ruines, Marais Luminescents |
+| Marais Luminescents | skiff fluvial | Jungle des Piliers, Côte des Léviathans, Grottes Thermiques |
+| Côte des Léviathans | Port Côtier (CITY-34), par la mer | Marais Luminescents, Couronne Froide |
+| Couronne Froide | skiff des hauts plateaux | Côte des Léviathans, Chaîne des Orages |
+| Chaîne des Orages | rampes taillées et lignes de traversée | Couronne Froide, Réserve Interdite |
+| Réserve Interdite | Porte des Réserves (CITY-36), accès par mission | Chaîne des Orages, Désert de Verre |
+| Grottes Thermiques | tunnel depuis les Forges Profondes (CITY-26) | Marches de Cendre, Marais Luminescents |
 
-*(proposé)* Si le tirage donne un clan hors du monde natal (CL11 → CL15), le départ se fait sur le navire du clan ; les deux cités de départ sont les Ruines de la Première Cité (cité commune des cérémonies) et la région où le clan a sa communauté alliée. Les Slums restent le quartier bas de chaque cité.
+**Au départ :** la capitale, la région du clan tiré et ses deux voisines les plus proches sur l'anneau. Pour le Marais, ce sont la Jungle et la Côte. Le V6 ouvre de toute façon les Marches de Cendre, le Désert de Verre et la Jungle des Piliers en promenade encadrée dès Youngling : ce sont les trois régions communes à tous les départs. Le Spatioport Oriental (CITY-33) est à l'est de la capitale ; on y embarque une fois le vaisseau acquis.
+
+*(proposé)* Si le tirage donne un clan hors du monde natal (CL11 → CL15), le départ se fait sur le navire du clan, amarré au Spatioport Oriental ; les deux régions de départ sont les Ruines de la Première Cité et le Désert de Verre, les plus proches du spatioport. Les Slums restent le quartier bas de la capitale et de chaque cité de clan.
 
 ### Personnages de la Lost Tribe, du Serpent Clan et des Matriarches
 
