@@ -444,7 +444,7 @@ La note parlait de « Glacier Moon » et « Swamp Moon » : elles deviennent des
 | Rogue Space Tribe | bios NECA | Warp, Bad Bloods, voie Enforcer |
 | Harek | rival du départ O6 | Bad Blood possible ou chef du clan rival |
 | OWLF, époque future | unité secrète de la CIA de *Predator 2* (Other Worldly Life Forms) | descendants de l'OWLF qui traquent les Yautja à l'époque du jeu |
-| Chasseurs humains de Yautja | Project Stargazer (*The Predator*), Reapers (roman *Hunters and Hunted*), Predator Hunters de Jaya Soames (comics), Spearhead (*Xenogenesis*) | contrats et embuscades contre le joueur, captures et évasions |
+| Chasseurs humains de Yautja | Project Stargazer et ses Reapers (*The Predator* ; roman *Hunters and Hunted*), Predator Hunters de Jaya Soames (comics), Spearhead (*Xenogenesis*) | contrats et embuscades contre le joueur, captures et évasions |
 | USS Tantalus (crossover) | ton jeu *Aliens: Tantalus Frontier* | *mission annexe « Le silence d'Asphodèle », détaillée ci-dessous* |
 
 ### Modes annexes
@@ -1070,14 +1070,47 @@ Le joueur fait le lien entre Yena et Tov. Comme le dit le V6, leurs styles chang
 **Décision :** les trois formes en parallèle.
 
 - **Un arc récurrent** *(proposé : l'OWLF de l'époque future, héritière de l'unité de Predator 2)* : repérée après Blooded, embuscades qui montent en puissance, capture du joueur et évasion, assaut final sur sa base.
-- **Un mini-arc de trois missions par organisation**, à l'époque de sa source : Project Stargazer (*The Predator*, 2018), les Reapers, les Predator Hunters de Jaya Soames (comics), Spearhead.
+- **Un mini-arc de trois missions par organisation**, à l'époque de sa source : Project Stargazer et sa troupe d'élite les Reapers (*The Predator*, 2018, et son roman préquelle *Hunters and Hunted* ; époque moderne, juste avant le film), les Predator Hunters de Jaya Soames (comics), Spearhead. Les Reapers ne sont donc pas une organisation à part : un seul mini-arc Stargazer/Reapers.
 - **Des événements** : embuscades et contrats ponctuels sur les routes et les planètes, tirés selon l'époque.
 
-Leur IA suit la décision « Équipement et IA » (équipes spécialisées : imagerie thermique, capteurs, pièges). Les époques et détails des Reapers et de Spearhead sont à vérifier dans leurs sources avant l'écriture des missions.
+Leur IA suit la décision « Équipement et IA » (équipes spécialisées : imagerie thermique, capteurs, pièges). Vérifié le 6 novembre (Den of Geek, sur le roman) : Stargazer est issu de l'OWLF de Predator 2 (Peter Keyes) ; les Reapers sont ses soldats d'élite, entraînés par Roger Elliott, survivant d'une rencontre avec un Yautja au Vietnam dans les années 1960 — une époque possible pour le Warp \*(proposé)\*. Il en découle une lignée cohérente pour l'arc récurrent : OWLF (1997) → Stargazer et Reapers (2018) → OWLF de l'époque future. Spearhead reste à vérifier.
 
 ### Direction artistique des races
 
 **Décision :** une silhouette lisible et une palette par race, sur la base des sprites existants ; fidélité à la figurine NECA de référence quand la race en a une (par exemple Lost Tribe d'après Greyback et l'équipage de *Predator 2*, Super Predator d'après *Predators*, Feral d'après *Prey*). La palette sert à reconnaître la race de loin ; la figurine fixe les détails du masque, de l'armure et des armes. Les palettes par race restent à écrire avec la planche de sprites.
+
+### Animation faciale : mandibules
+
+**Demande du 6 novembre :** le visage des sprites yautja doit être animé sur les mandibules (idle, cri, etc.).
+
+**Ce qui existe :** quatre têtes peintes d'un seul tenant, `public/game/sprites/v62/heads/` (classic, elder, super, feral ; young et huntress reprennent classic), placées sur le corps articulé par `hunterHeadArtV62.ts`. Aucune n'a de calques séparés.
+
+**Essai fait le 6 novembre :** découper les quatre mandibules dans la tête classic et les faire pivoter. Résultat : coutures visibles et trous dès 4 à 9 degrés, parce que la peinture ne contient rien sous les mandibules. Conclusion : il faut des têtes peintes en calques ; le découpage de l'art actuel ne suffit pas, même comme solution provisoire.
+
+**Calques à produire par tête** *(proposés)* :
+
+| Calque | Contenu | Règle |
+| --- | --- | --- |
+| crâne | tête sans mandibules, joues peintes jusqu'à la racine | la zone sous chaque mandibule est peinte (chair, gencive) |
+| bouche | gorge, langue, dents internes | visible quand les mandibules s'ouvrent |
+| mandibule haut gauche / haut droite / bas gauche / bas droite | une mandibule avec sa défense | racine prolongée de 15 à 20 px sous la joue pour ne jamais laisser de trou |
+| yeux et paupières | deux états (ouvert, cligne) | clignement en idle |
+
+Chaque tête reçoit un fichier de pivots (un point par mandibule, à la racine), sur le modèle des placements mesurés de `HUNTER_HEAD_ART_V62`.
+
+**Animations** *(valeurs proposées ; angle vers l'extérieur, mandibules basses / hautes)* :
+
+| Animation | Durée | Mouvement | Son |
+| --- | --- | --- | --- |
+| idle | boucle de 2,4 s | respiration : 3° / 1,5°, léger décalage gauche-droite ; clignement toutes les 4 à 7 s | aucun |
+| clic | 0,6 s | 2 à 3 fermetures rapides à 6° / 3° | clics de la race |
+| grognement | 1 s | ouverture à 8° / 4° avec tremblement | grognement de la race |
+| cri (rugissement) | 1,2 s | anticipation fermée (−2°), ouverture à 24° / 13°, tenue tremblante, retour | rugissement |
+| parole | variable | mandibules qui suivent les syllabes des sous-titres (ou le volume du son) | voix de la race |
+| douleur | 0,5 s | ouverture asymétrique, un côté crispé | cri bref |
+| mort | 1 s | relâchement, mandibules qui retombent ouvertes | râle |
+
+**Où ces animations servent :** portraits de dialogue, The Pit, cinématiques, aperçu de l'éditeur, et en jeu quand le masque est retiré (le rugissement masque ôté des films, au trophée ou au défi). Masque porté : pas d'animation du visage. Chaque race nouvelle (Hish-Qu-Ten, Infected, Four-Armed…) demande sa tête en calques ; l'éditeur ajoute les dreadlocks et les cicatrices par-dessus le crâne.
 
 ### Arc de guerre des clans *(missions proposées)*
 
