@@ -20,7 +20,7 @@ const dependencies = await build({
     'export { MISSIONS } from "./app/game/data.ts";',
     'export { loadShipProgression } from "./app/game/systems/progression.ts";',
     'export { isShipId } from "./app/game/shipCatalogue.ts";',
-    'export { assignExpeditionMember, expeditionTrioReady, normalizePlanetInsertionPlan, samePlanetInsertion, settleExpeditionOutcome, shipSupportsSurfaceInsertion } from "./app/game/systems/planetInsertion.ts";',
+    'export { TRIO_MEMBERS, assignExpeditionMember, recruitExpeditionMember, reserveExpeditionMember, expeditionTrioReady, normalizePlanetInsertionPlan, samePlanetInsertion, settleExpeditionOutcome, shipSupportsSurfaceInsertion } from "./app/game/systems/planetInsertion.ts";',
     'export { SHIP_INSERTION_ENERGY, debitShipInsertionCloak, hasShipInsertionDebit, shipInsertionCharge, rechargeShipInsertionEnergy } from "./app/game/systems/shipInsertionEnergy.ts";',
     'export { createHuntInsertion, hurtHuntCompanion, beginHuntCompanionBoarding, completeHuntCompanionBoarding, huntInsertionOutcome } from "./app/game/systems/huntInsertion.ts";',
     'export { worldBlueprintFor } from "./app/game/systems/worldBlueprints.ts";',
@@ -131,7 +131,9 @@ function insertionFixture(method = 'ship', team = 'triad', shipCloak = false) {
     insertionPlan = { version: 1, method: fixtureMethod, team: fixtureTeam, ...(fixtureCloak ? { shipCloak: true } : {}) };
     if (insertionPlan.team === 'triad') {
       const shipId = loadShipProgression(save).selectedShipId;
-      let roster = assignExpeditionMember(save.expeditionRoster, save.createdAt, shipId, 'karhek');
+      let roster = recruitExpeditionMember(save.expeditionRoster, save.createdAt, 'karhek');
+      roster = assignExpeditionMember(roster, save.createdAt, shipId, 'karhek');
+      roster = recruitExpeditionMember(roster, save.createdAt, 'saketh');
       roster = assignExpeditionMember(roster, save.createdAt, shipId, 'saketh');
       save = { ...save, expeditionRoster: roster };
       saveRef.current = save;
@@ -158,6 +160,106 @@ function insertionFixture(method = 'ship', team = 'triad', shipCloak = false) {
     };
   `, environment);
   return result;
+}
+
+test('real briefing callbacks keep recruitment, assignment and reserve as separate campaign actions', () => {
+  const { environment, observations } = fixture();
+  environment.screen = 'briefing';
+  const recruit = callback('recruitExpeditionHunter', environment);
+  const assign = callback('assignExpeditionHunter', environment);
+  const reserve = callback('reserveExpeditionHunter', environment);
+  const shipId = environment.loadShipProgression(environment.save).selectedShipId;
+  assign('karhek', shipId);
+  assert.equal(observations.writes, 0, 'assignment cannot create an agreement');
+  recruit('karhek');
+  assert.equal(environment.save.expeditionRoster.members[0].assignedShipId, null);
+  assert.equal(environment.expeditionTrioReady(environment.save.expeditionRoster, environment.save.createdAt, shipId), false);
+  assign('karhek', 'wolf-ship');
+  assert.equal(observations.writes, 1, 'a stale hull displayed by the briefing cannot receive an assignment');
+  assign('karhek', shipId);
+  assert.equal(environment.save.expeditionRoster.members[0].assignedShipId, shipId);
+  reserve('karhek', 'wolf-ship');
+  assert.equal(observations.writes, 2, 'a stale reserve command cannot remove a newer assignment');
+  reserve('karhek', shipId);
+  assert.equal(observations.writes, 3);
+  assert.equal(environment.save.expeditionRoster.members.length, 1);
+  assert.equal(environment.save.expeditionRoster.members[0].assignedShipId, null);
+  assert.equal(environment.save.expeditionRoster.members[0].availability, 'ready');
+  const beforeRepeat = JSON.stringify(environment.save.expeditionRoster);
+  recruit('karhek');
+  assert.equal(JSON.stringify(environment.save.expeditionRoster), beforeRepeat, 'recruit again cannot reboard the hunter');
+});
+
+test('retained roster commands cannot reassign companions once the actual departure is underway', () => {
+  const { environment, observations, depart, arrive } = insertionFixture('pod', 'triad');
+  const recruit = callback('recruitExpeditionHunter', environment);
+  const assign = callback('assignExpeditionHunter', environment);
+  const reserve = callback('reserveExpeditionHunter', environment);
+  const shipId = environment.loadShipProgression(environment.save).selectedShipId;
+  depart();
+  const before = environment.save.expeditionRoster, writes = observations.writes;
+  // Even a retained briefing event cannot replace the manifest frozen at departure.
+  environment.screen = 'briefing';
+  recruit('karhek'); assign('karhek', shipId); reserve('karhek', shipId);
+  assert.equal(environment.save.expeditionRoster, before);
+  assert.equal(observations.writes, writes);
+  environment.screen = 'planet-arrival';
+  assert.equal(arrive(), true);
+  environment.screen = 'briefing';
+  const huntWrites = observations.writes;
+  reserve('karhek', shipId);
+  assert.equal(environment.save.expeditionRoster, before);
+  assert.equal(observations.writes, huntWrites, 'an active hunt keeps the return assignment');
+});
+
+for (const command of ['assign', 'reserve']) for (const failureMode of ['before-setItem', 'after-setItem']) {
+  test(`roster ${command}: ${failureMode} preserves the previous confirmed state then recovers one durable transition`, () => {
+    const { environment, observations } = fixture();
+    environment.screen = 'briefing';
+    const shipId = environment.loadShipProgression(environment.save).selectedShipId;
+    callback('recruitExpeditionHunter', environment)('karhek');
+    if (command === 'reserve') callback('assignExpeditionHunter', environment)('karhek', shipId);
+    const values = new Map(), writes = [];
+    let rejectWrite = false, rejectConfirmation = false;
+    const storage = {
+      getItem(key) {
+        if (key === environment.SAVE_STORAGE_KEY && rejectConfirmation) {
+          rejectConfirmation = false;
+          throw Error('The write confirmation cannot be read yet');
+        }
+        return values.get(key) ?? null;
+      },
+      setItem(key, value) {
+        if (key === environment.SAVE_STORAGE_KEY && rejectWrite) {
+          rejectWrite = false;
+          if (failureMode === 'before-setItem') throw new DOMException('Full', 'QuotaExceededError');
+          values.set(key, value); writes.push(value); rejectConfirmation = true; return;
+        }
+        values.set(key, value);
+        if (key === environment.SAVE_STORAGE_KEY) writes.push(value);
+      },
+      removeItem(key) { values.delete(key); },
+    };
+    environment.window = { localStorage: storage };
+    const initial = environment.durableSaveWrite(environment.save);
+    assert.equal(initial.persisted, true);
+    environment.save = initial.save; environment.saveRef.current = initial.save;
+    environment.writeSaveWithStatus = save => { observations.writes++; return environment.durableSaveWrite(save); };
+    writes.length = 0; rejectWrite = true;
+    const change = callback(command === 'assign' ? 'assignExpeditionHunter' : 'reserveExpeditionHunter', environment);
+    const before = environment.save, marks = before.profile.clanMarks;
+    change('karhek', shipId);
+    assert.equal(environment.save, before, 'an unconfirmed action cannot change the active campaign');
+    assert.equal(observations.saveFailure, 'write-failed');
+    assert(environment.pendingSocialWriteRef.current);
+    change('karhek', shipId);
+    assert.equal(environment.pendingSocialWriteRef.current, null);
+    assert.equal(environment.save.expeditionRoster.members[0].assignedShipId, command === 'assign' ? shipId : null);
+    assert.equal(environment.save.profile.clanMarks, marks);
+    assert.equal(writes.length, 1, 'confirmation recovery must not persist the same transition twice');
+    const loaded = environment.loadSaveWithStatus(storage);
+    assert.equal(JSON.stringify(loaded.save.expeditionRoster), JSON.stringify(environment.save.expeditionRoster));
+  });
 }
 
 function paidDepartureTransactionFixture(failureMode) {

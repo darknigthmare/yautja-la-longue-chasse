@@ -37,5 +37,5 @@ export function controlActionShortcut(
   bindings: ControlBindings = DEFAULT_CONTROL_BINDINGS,
 ): string {
   const codes = bindings[actionId] ?? DEFAULT_CONTROL_BINDINGS[actionId];
-  return codes.map(compactControlKeyLabel).join(" / ");
+  return codes.length ? codes.map(compactControlKeyLabel).join(" / ") : "Sans raccourci";
 }

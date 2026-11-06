@@ -21,7 +21,7 @@ function fixture(team = 'solo') {
   const save = saves.defaultSave(OWNER);
   const plan = { ...CLOAK, team };
   if (team === 'triad') save.expeditionRoster = p.TRIO_MEMBERS.reduce((roster, member) =>
-    p.assignExpeditionMember(roster, OWNER, SHIP, member.id), null);
+    p.assignExpeditionMember(p.recruitExpeditionMember(roster, OWNER, member.id), OWNER, SHIP, member.id), null);
   const state = a.createPlanetArrival({ ownerCreatedAt: OWNER, runId: RUN, missionId: 'jungle-vey',
     encounterRun: save.missionProgress['jungle-vey'].attempts, personalShipId: SHIP,
     hunterPresetId: save.appearance.presetId, insertion: plan });

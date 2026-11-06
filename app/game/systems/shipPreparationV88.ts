@@ -5,6 +5,7 @@ import type { SaveGame } from '../types';
 import { nearestPhysicalShipStation } from './physicalShipMotion';
 import { SHIP_PROGRESSION_STORAGE_KEY, validateCanonicalShipProgression, type ShipProgressionState } from './progression';
 import { SHIP_LEVEL_STATIONS, type PhysicalShipStationId } from './shipLevelLayout';
+import { isShipInterior25dRoomId, isNearShipInterior25dStation, type ShipInterior25dRoomId } from './shipInterior25d';
 
 export const SHIP_PREPARATION_SOURCE_V88 = source;
 export interface ShipPreparationInspectionV88 {
@@ -24,7 +25,12 @@ export interface ShipPreparationStateV88 {
 }
 /** Emitted only by the nearby inspection button using the deck's playerRef.
  * Shortcut/menu navigation does not call this observer. */
-export interface ShipPreparationObservationV88 { stationId: PhysicalShipStationId; x: number; y: number }
+export type ShipPreparationObservationV88 = {
+  stationId: PhysicalShipStationId; x: number; y: number;
+} & (
+  { space?: 'ship-side-v21'; roomId?: never } |
+  { space: 'ship-ground-v1'; roomId: ShipInterior25dRoomId }
+);
 export interface ShipPreparationContextV88 {
   save: SaveGame;
   shipId: ShipId;
@@ -215,8 +221,15 @@ export function inspectShipPreparationV88(raw: unknown, observation: ShipPrepara
   const refuse = (message: string): ShipPreparationResultV88 => ({ accepted: false, changed: false, state: evaluation.state, message });
   if (!evaluation.writable) return refuse(evaluation.message);
   if (!context.active || !context.focused || context.suspended) return refuse('Reprenez le pont actif avant cette inspection.');
-  if (!Number.isFinite(observation.x) || !Number.isFinite(observation.y) ||
-    nearestPhysicalShipStation(observation)?.id !== observation.stationId) return refuse('Rejoignez ce poste à pied : une interface distante ne constitue pas une inspection.');
+  // Each spatial contract validates its real actor position. A new ground
+  // observation must never fall back to legacy deck coordinates, or replace
+  // its position with the old station centre to manufacture an inspection.
+  const nearby = record(observation) && Number.isFinite(observation.x) && Number.isFinite(observation.y) &&
+    (observation.space === 'ship-ground-v1'
+      ? isShipInterior25dRoomId(observation.roomId) && isNearShipInterior25dStation(observation.roomId, observation, observation.stationId)
+      : (observation.space === undefined || observation.space === 'ship-side-v21') && observation.roomId === undefined &&
+        nearestPhysicalShipStation(observation)?.id === observation.stationId);
+  if (!nearby) return refuse('Rejoignez ce poste à pied : une interface distante ne constitue pas une inspection.');
   const fact = evaluation.facts.find(item => item.stationId === observation.stationId);
   if (!fact) return refuse('Poste inconnu.');
   if (fact.missing.length) return refuse(fact.missing.join(' '));

@@ -1,9 +1,9 @@
 /** Visible content lot, shared by portable archive metadata and the UI. */
 export const GAME_CONTENT_VERSION = "V112";
-export const GAME_CONTENT_LABEL = "Canopée · cité vivante · épreuves royales · Clan Ship · triade · pods · perspectives du vaisseau";
+export const GAME_CONTENT_LABEL = "Canopée · cité vivante · Clan Ship · triade · pods · perspectives · intérieur du vaisseau en 2,5D";
 
 /** Application release; independent from the historical content and save formats. */
-export const GAME_RELEASE_VERSION = "1.5.3";
+export const GAME_RELEASE_VERSION = "1.6.1";
 
 function publishedBuildId(): string {
   // Next and Vite replace this literal with the same public, non-secret Git ID.

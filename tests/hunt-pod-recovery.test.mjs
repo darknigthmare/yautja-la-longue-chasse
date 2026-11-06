@@ -26,6 +26,7 @@ export { DEFAULT_CONTROL_BINDINGS } from './systems/controlBindings';
 export { createAiBrain } from './systems/huntSystems';
 export { defaultSave } from './save';
 export { MISSION_BY_ID } from './data';
+export const deserializeStoredCheckpoint = serialized => deserializeActiveHuntCheckpoint(JSON.parse(serialized));
 export const testPlan = (method='pod', team='solo') => ({version:1,method,team});`,
     resolveDir: fileURLToPath(new URL('../app/game/', import.meta.url)),
     sourcefile: fileURLToPath(sourceUrl), loader: 'tsx',
@@ -41,6 +42,18 @@ runInNewContext(bundled.outputFiles[0].text, {
   navigator: { getGamepads: () => [] },
 });
 const r = compiled.exports;
+// Exercise the real campaign writer, active-hunt sidecar and complete archive
+// in the host realm. Only serialized JSON crosses the Canvas VM boundary.
+const persistenceBundle = await build({
+  stdin: {
+    contents: `export { defaultSave, SAVE_STORAGE_KEY, writeSaveWithStatus, loadSaveWithStatus } from './save';
+export * from './systems/activeHuntSave';
+export * from './systems/completeArchive';`,
+    resolveDir: fileURLToPath(new URL('../app/game/', import.meta.url)), loader: 'ts',
+  },
+  bundle: true, write: false, format: 'esm', platform: 'node', logLevel: 'silent',
+});
+const persistence = await import('data:text/javascript;base64,' + Buffer.from(persistenceBundle.outputFiles[0].text).toString('base64'));
 const plain = value => JSON.parse(JSON.stringify(value));
 const close = (actual, expected) => assert.ok(Math.abs(actual - expected) < 1e-8, `${actual} != ${expected}`);
 const cfg = r.HUNT_POD_RECOVERY;
@@ -65,11 +78,11 @@ function handler(name, environment) {
   return runInNewContext(`(() => { ${code}; return handler; })()`, environment);
 }
 
-function fixture(team = 'solo', method = 'pod', missionId = 'jungle-vey') {
+function fixture(team = 'solo', method = 'pod', missionId = 'jungle-vey', encounterRun = 'pod-recovery-qa', runId = 'pod-recovery-run') {
   browser.hidden = false; browser.focused = true;
   const save = r.defaultSave('2026-11-05T00:00:00.000Z'), mission = r.MISSION_BY_ID[missionId];
   const state = r.makeGameState(mission, save.loadout, save.inventory, 'hunter', save.appearance, false, false,
-    'pod-recovery-qa', save.exploration, r.testPlan(method, team), 'pod-recovery-run', 'wolf-ship');
+    encounterRun, save.exploration, r.testPlan(method, team), runId, 'wolf-ship');
   const controls = { keyboardHeld: new Set(), touchHeld: new Set(), gamepadHeld: new Set(), pressed: new Set(),
     previousGamepadButtons: [], activeGamepadIndex: null, gamepadNeedsNeutral: true, gamepadDialogActions: [], pointerScreen: null };
   const environment = { ...r, input: controls, activeBindings: r.DEFAULT_CONTROL_BINDINGS, Element: class Element {} };
@@ -77,10 +90,64 @@ function fixture(team = 'solo', method = 'pod', missionId = 'jungle-vey') {
   const onKeyDown = handler('onKeyDown', environment);
   const press = (repeat = false) => onKeyDown({ code: 'KeyX', key: 'x', repeat, defaultPrevented: false,
     ctrlKey: false, altKey: false, metaKey: false, target: null, preventDefault() { this.defaultPrevented = true; } });
-  return { save, mission, state, controls, press,
-    step: (delta = 1 / 60) => r.stepGame(state, mission, save.loadout, save.inventory, save.appearance,
-      'hunter', controls, delta, () => {}),
+  const f = { save, mission, state, controls, press,
+    step: (delta = 1 / 60) => r.stepGame(f.state, f.mission, f.save.loadout, f.save.inventory, f.save.appearance,
+      'hunter', f.controls, delta, () => {}),
   };
+  return f;
+}
+
+function storageFrom(entries = []) {
+  const data = new Map(entries);
+  return { data, getItem: key => data.get(key) ?? null,
+    setItem: (key, value) => { data.set(key, value); }, removeItem: key => { data.delete(key); } };
+}
+
+function durableFixture(team = 'solo') {
+  const f = fixture(team, 'pod', 'jungle-vey', 0);
+  const storage = storageFrom();
+  const result = persistence.writeSaveWithStatus(plain(f.save), storage);
+  assert.equal(result.persisted, true, result.failure);
+  f.save = result.save;
+  return { f, storage };
+}
+
+function savedHunt(f, sequence, runId = 'pod-recovery-run') {
+  const payload = plain(r.persistencePayloadFor(f.state));
+  assert.ok(payload);
+  return {
+    version: persistence.ACTIVE_HUNT_SAVE_VERSION, runtimeRevision: persistence.ACTIVE_HUNT_RUNTIME_REVISION,
+    ownerSaveCreatedAt: f.save.createdAt, missionId: f.mission.id, difficultyId: 'hunter',
+    encounterRun: f.save.missionProgress[f.mission.id].attempts, runId, sequence,
+    startedAt: f.save.createdAt, savedAt: new Date(Date.parse(f.save.createdAt) + sequence * 1000).toISOString(),
+    configuration: plain({ inventory: f.save.inventory, loadout: f.save.loadout, appearance: f.save.appearance,
+      visualOptions: { screenShake: f.save.settings.screenShake, reducedGore: f.save.settings.reducedGore,
+        highContrastVision: f.save.settings.highContrastVision }, elapsedSeconds: payload.elapsed,
+      insertion: f.state.insertion.plan, insertionShipId: f.state.insertionShipId }),
+    snapshot: payload.snapshot, retryCheckpoint: payload.retryCheckpoint,
+  };
+}
+
+function reloadDurableHunt(storage, runId) {
+  const campaign = persistence.loadSaveWithStatus(storage);
+  assert.equal(campaign.loaded, true, campaign.failure);
+  const result = persistence.loadActiveHuntSave({ storage, compatibility: {
+    ownerSaveCreatedAt: campaign.save.createdAt, missionId: 'jungle-vey', difficultyId: 'hunter',
+    encounterRun: campaign.save.missionProgress['jungle-vey'].attempts, missionAvailable: true,
+  } });
+  assert.equal(result.loaded, true, result.failure);
+  const claimed = persistence.claimActiveHuntSave(result.save, runId, { storage });
+  assert.equal(claimed.persisted, true, claimed.failure);
+  const active = claimed.save;
+  const decoded = r.deserializeStoredCheckpoint(JSON.stringify(active.snapshot));
+  assert.ok(decoded);
+  const f = fixture(active.configuration.insertion.team, 'pod', active.missionId, active.encounterRun, active.runId);
+  f.save = campaign.save;
+  f.state = r.restoreCheckpoint(f.state, decoded.checkpoint, 'resume');
+  assert.equal(f.state.elapsed, active.configuration.elapsedSeconds);
+  assert.equal(f.state.paused, true);
+  assert.deepEqual(plain(f.state.insertion.podRecovery), active.snapshot.checkpoint.insertion.podRecovery);
+  return { f, active };
 }
 
 function clearArena(f) {
@@ -145,6 +212,33 @@ test('the radio must reach the farthest pod, even when the nearest pod is reacha
   assert.ok(Math.hypot(player.x + 36 - 320, -58) < cfg.radioRange);
   assert.equal(r.huntPodSafety(fresh(), pods, input(player)).reason, 'out-of-range');
   assert.equal(r.commandHuntPodRecovery(fresh(), pods, input(player)).event, 'blocked');
+});
+
+test('walking across the real radio boundary cancels once and returning does not rearm the pod', () => {
+  const f = fixture();
+  const pods = r.huntPodAnchors(f.state.insertion.plan, f.state.world), player = f.state.player;
+  player.y = f.state.world.floorY - player.height;
+  player.x = pods[0].x + Math.sqrt(cfg.radioRange ** 2 - (player.height / 2) ** 2) - player.width / 2 - 2;
+  player.velocityX = 0; player.velocityY = 0; player.grounded = true;
+  const safety = () => r.huntPodSafety(f.state.insertion.podRecovery, pods, r.podSafetyInput(f.state));
+  assert.equal(safety().canArm, true);
+  assert.equal(r.commandHuntPod(f.state), true);
+  const startX = player.x;
+  f.controls.keyboardHeld.add('right');
+  for (let i = 0; i < 30 && f.state.insertion.podRecovery.phase === 'countdown'; i++) f.step();
+  assert.ok(player.x > startX, 'production movement must cross the boundary');
+  assert.ok(safety().radioDistance > cfg.radioRange);
+  assert.equal(f.state.insertion.podRecovery.phase, 'ready');
+  assert.equal(sounds(f.state, 'pod-cancel'), 1); assert.equal(sounds(f.state, 'pod-detonate'), 0);
+  f.controls.keyboardHeld.delete('right'); f.controls.keyboardHeld.add('left');
+  for (let i = 0; i < 60 && safety().radioDistance > cfg.radioRange; i++) f.step();
+  assert.equal(safety().canArm, true);
+  f.controls.keyboardHeld.clear();
+  for (let i = 0; i < 15; i++) f.step();
+  assert.equal(f.state.insertion.podRecovery.phase, 'ready');
+  assert.equal(sounds(f.state, 'pod-cancel'), 1); assert.equal(sounds(f.state, 'pod-arm'), 1);
+  assert.equal(r.commandHuntPod(f.state), true);
+  assert.equal(f.state.insertion.podRecovery.remainingSeconds, cfg.countdownSeconds);
 });
 
 test('invalid bodies, missing pods and non-operational hunters cannot arm', () => {
@@ -280,6 +374,73 @@ test('a real paused checkpoint round-trip retains the countdown and its detached
   restored.paused = false;
   const resumed = { ...f, state: restored }; tickPod(resumed, 1.75);
   assert.equal(restored.insertion.podRecovery.phase, 'destroyed'); assert.equal(sounds(restored, 'pod-detonate'), 1);
+});
+
+test('campaign storage preserves an interrupted pod countdown and a claimed resume rejects the old session', () => {
+  const { f, storage } = durableFixture();
+  moveSafely(f); r.commandHuntPod(f.state); tickPod(f, 1.25); f.state.paused = true;
+  const candidate = savedHunt(f, 1);
+  assert.equal(persistence.writeActiveHuntSave(candidate, { storage }).persisted, true);
+  const campaignBytes = storage.getItem(persistence.SAVE_STORAGE_KEY);
+  const activeBytes = storage.getItem(persistence.ACTIVE_HUNT_STORAGE_KEY);
+
+  // A denied autosave must leave the previous resumable countdown intact.
+  const denied = { ...storage, setItem() { throw new Error('QuotaExceededError'); } };
+  const failed = persistence.writeActiveHuntSave(savedHunt(f, 2), { storage: denied });
+  assert.equal(failed.persisted, false); assert.equal(failed.failure, 'write-failed');
+  assert.equal(storage.getItem(persistence.ACTIVE_HUNT_STORAGE_KEY), activeBytes);
+  assert.equal(storage.getItem(persistence.SAVE_STORAGE_KEY), campaignBytes);
+
+  // Start again from bytes only, with a new runtime and session owner.
+  const reopened = storageFrom([...storage.data]);
+  const { f: resumed, active } = reloadDurableHunt(reopened, 'pod-resumed-session');
+  close(resumed.state.insertion.podRecovery.remainingSeconds, 1.75);
+  for (let i = 0; i < 240; i++) resumed.step();
+  close(resumed.state.insertion.podRecovery.remainingSeconds, 1.75);
+  close(resumed.state.elapsed, 1.25);
+  const claimedBytes = reopened.getItem(persistence.ACTIVE_HUNT_STORAGE_KEY);
+  const stale = persistence.writeActiveHuntSave(savedHunt(f, 3), { storage: reopened });
+  assert.equal(stale.persisted, false); assert.equal(stale.failure, 'stale-run');
+  assert.equal(reopened.getItem(persistence.ACTIVE_HUNT_STORAGE_KEY), claimedBytes);
+
+  resumed.state.paused = false; tickPod(resumed, 1.75);
+  assert.equal(resumed.state.insertion.podRecovery.phase, 'destroyed');
+  assert.equal(sounds(resumed.state, 'pod-detonate'), 1);
+  const destroyed = savedHunt(resumed, active.sequence + 1, active.runId);
+  assert.equal(persistence.writeActiveHuntSave(destroyed, { storage: reopened }).persisted, true);
+  const { f: finalResume } = reloadDurableHunt(storageFrom([...reopened.data]), 'pod-final-session');
+  const expected = plain(resumed.state.insertion.podRecovery);
+  finalResume.state.paused = false; tickPod(finalResume, 4);
+  assert.deepEqual(plain(finalResume.state.insertion.podRecovery), expected);
+  assert.equal(sounds(finalResume.state, 'pod-detonate'), 0);
+  assert.equal(r.commandHuntPod(finalResume.state), false);
+});
+
+test('complete campaign export and import retain armed and destroyed triad pods through the live decoder', () => {
+  const { f, storage } = durableFixture('triad');
+  moveSafely(f); r.commandHuntPod(f.state); tickPod(f, .75);
+  for (const [index, phase] of ['countdown', 'destroyed'].entries()) {
+    if (phase === 'destroyed') tickPod(f, 2.25);
+    assert.equal(f.state.insertion.podRecovery.phase, phase);
+    assert.equal(persistence.writeActiveHuntSave(savedHunt(f, index + 1), { storage }).persisted, true);
+    const sourceBytes = [...storage.data];
+    const exported = persistence.createCompleteArchive(f.save, storage, f.save.createdAt);
+    assert.deepEqual(exported.warnings, []); assert.deepEqual([...storage.data], sourceBytes);
+    const parsed = persistence.parseCompleteArchive(exported.serialized);
+    assert.ok(parsed.archive, parsed.failure);
+    const destination = storageFrom();
+    const oldCampaign = persistence.defaultSave('2026-11-04T00:00:00.000Z');
+    assert.equal(persistence.writeSaveWithStatus(oldCampaign, destination).persisted, true);
+    const imported = persistence.importCompleteArchive(persistence.prepareCompleteArchiveImport(parsed.archive, destination), destination);
+    assert.equal(imported.persisted, true, imported.failure);
+    const { f: restored } = reloadDurableHunt(storageFrom([...destination.data]), `imported-pods-${phase}`);
+    assert.deepEqual(plain(restored.state.insertion.podRecovery), plain(f.state.insertion.podRecovery));
+    assert.deepEqual(plain(restored.state.insertion.companions), plain(f.state.insertion.companions));
+    assert.equal(restored.save.createdAt, f.save.createdAt);
+    restored.state.paused = false; tickPod(restored, 2.25);
+    assert.equal(restored.state.insertion.podRecovery.phase, 'destroyed');
+    assert.equal(sounds(restored.state, 'pod-detonate'), phase === 'countdown' ? 1 : 0);
+  }
 });
 
 test('destruction, heard-enemy IDs and expiry survive a real reload without replaying effects', () => {

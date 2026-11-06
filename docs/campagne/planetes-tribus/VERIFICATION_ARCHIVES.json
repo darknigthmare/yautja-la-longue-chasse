@@ -1,0 +1,257 @@
+{
+  "audit_date": "2026-11-05",
+  "scope": "Inventaire documentaire des archives sources V2–V5 ; aucun import ni audit fonctionnel du jeu.",
+  "summary": {
+    "delivered_png_files": 204,
+    "byte_unique_delivered_pngs": 204,
+    "delivered_png_bytes": 508496994,
+    "pngs_with_actual_transparency": 143,
+    "pngs_without_transparency": 61,
+    "planned_v5_images": 40,
+    "delivered_v5_images": 0,
+    "byte_duplicate_groups": {},
+    "source_manifest_mismatch_count": 0,
+    "per_pack": {
+      "V2": {
+        "personnage": 15,
+        "decor_planete": 15,
+        "texture": 15,
+        "elite": 10,
+        "habitant": 10,
+        "decor_tribu": 6,
+        "interieur": 10,
+        "trone": 10,
+        "objet": 13,
+        "creature": 5,
+        "vegetation": 5,
+        "texture_tribu": 5
+      },
+      "V3": {
+        "nature": 15,
+        "passages": 15,
+        "objets": 15
+      },
+      "V4": {
+        "personnages": 20,
+        "objets": 10,
+        "lieux": 10
+      }
+    },
+    "per_community_delivered": {
+      "DESERT": 23,
+      "FOREST": 23,
+      "SLUMS": 23,
+      "LAVA": 23,
+      "DARKJUNGLE": 22
+    },
+    "per_world_delivered": {
+      "Mycora-Nox": 6,
+      "Serekh-9": 6,
+      "Ferrum-6": 6,
+      "Nivalis-C": 6,
+      "Nivalis-K": 6,
+      "Kaail-Prime": 6,
+      "Eryndor-V": 6,
+      "Oseris-IV": 6,
+      "Sequoia-IX": 6,
+      "Umbra-Terminus": 6,
+      "Khar-Sul": 6,
+      "Cinder-12": 6,
+      "Pelagos-M": 6,
+      "Xeno Prime": 6,
+      "Vardos-III": 6
+    },
+    "per_community_planned": {
+      "DESERT": 8,
+      "FOREST": 8,
+      "SLUMS": 8,
+      "LAVA": 8,
+      "DARKJUNGLE": 8
+    },
+    "subject_count_note": "204 fichiers PNG distincts par leurs octets ; pas 204 sujets ou identités uniques. V2 contient des variantes récupérées et des sujets régénérés de V1."
+  },
+  "archives": [
+    {
+      "version": "V2",
+      "filename": "YAUTJA_PLANETES_TRIBUS_V2_119_PNG.zip",
+      "library_file_id": "libfile_65be4443878c81919ae5072a28331ff3",
+      "library_url": "https://chatgpt.com/library?file_id=libfile_65be4443878c81919ae5072a28331ff3&account_id=personal",
+      "source_library_path": "/Yautja The Long Hunt/Planetes_Tribus_Images_V2/YAUTJA_PLANETES_TRIBUS_V2_119_PNG.zip",
+      "source_created_at": "2026-09-16T19:44:10.987188Z",
+      "size_bytes": 325670728,
+      "sha256": "7559df362413f29769b358fbd15649cc08736c01afb0996f6064e36f8e4ed4bd",
+      "source_manifest_filename": "MANIFESTE_YAUTJA_V2.json",
+      "source_manifest_sha256": "251d357f1feec0b44f9e08f1885bf3a8a1a6e83932be5c93e6624ca585a0b4cb",
+      "source_summary": {
+        "version": "Yautja — Planètes et Tribus — Images V2",
+        "images": 119,
+        "origins": {
+          "recreated_v1": 64,
+          "new_v2": 40,
+          "recovered_v1": 15
+        },
+        "categories": {
+          "personnage": 15,
+          "decor_planete": 15,
+          "texture": 15,
+          "elite": 10,
+          "habitant": 10,
+          "decor_tribu": 6,
+          "interieur": 10,
+          "trone": 10,
+          "objet": 13,
+          "creature": 5,
+          "vegetation": 5,
+          "texture_tribu": 5
+        },
+        "png_bytes": 318643626,
+        "transparency_verified": 68,
+        "opaque_materials": 20,
+        "opaque_scenes": 31,
+        "byte_unique_images": 119,
+        "failed_checks": 0
+      },
+      "verification": {
+        "archive_entries": 126,
+        "png_files": 119,
+        "manifest_matches_embedded_bytes": true,
+        "manifest_matches_v5_embedded_bytes": true,
+        "png_set_matches_manifest": true,
+        "extra_png_paths": [],
+        "missing_png_paths": [],
+        "zip_crc_ok": true,
+        "png_bytes": 318643626,
+        "byte_unique_pngs": 119,
+        "pngs_with_actual_transparency": 68,
+        "pngs_without_transparency": 51,
+        "mismatches": []
+      }
+    },
+    {
+      "version": "V3",
+      "filename": "YAUTJA_PLANETES_TRIBUS_V3_45_NOUVEAUX_PNG.zip",
+      "library_file_id": "libfile_147af5a25cc08191b58fb6f459858b42",
+      "library_url": "https://chatgpt.com/library?file_id=libfile_147af5a25cc08191b58fb6f459858b42&account_id=personal",
+      "source_library_path": "/Yautja The Long Hunt/Planetes_Tribus_Images_V3/YAUTJA_PLANETES_TRIBUS_V3_45_NOUVEAUX_PNG.zip",
+      "source_created_at": "2026-09-16T23:32:18.991358+00:00",
+      "size_bytes": 93053810,
+      "sha256": "1b74f4c3948077b1a6a98903ae51f0daaa349a59d923a1967bb8e57818b04c74",
+      "source_manifest_filename": "MANIFESTE_YAUTJA_V3.json",
+      "source_manifest_sha256": "63a9ba8004e320fbf69e5a13dbf7c4ecd047c4f18b323ec6e93f53b3a7a721a8",
+      "source_summary": {
+        "version": "V3 — Éléments de niveaux",
+        "images": 45,
+        "worlds": 15,
+        "categories": {
+          "nature": 15,
+          "passages": 15,
+          "objets": 15
+        },
+        "new_subjects": 45,
+        "reused_v2_pngs": 0,
+        "transparent_pngs": 45,
+        "png_bytes": 91111120,
+        "unique_png_hashes": 45,
+        "generation_method": "outil_image_integre"
+      },
+      "verification": {
+        "archive_entries": 52,
+        "png_files": 45,
+        "manifest_matches_embedded_bytes": true,
+        "manifest_matches_v5_embedded_bytes": true,
+        "png_set_matches_manifest": true,
+        "extra_png_paths": [],
+        "missing_png_paths": [],
+        "zip_crc_ok": true,
+        "png_bytes": 91111120,
+        "byte_unique_pngs": 45,
+        "pngs_with_actual_transparency": 45,
+        "pngs_without_transparency": 0,
+        "mismatches": []
+      }
+    },
+    {
+      "version": "V4",
+      "filename": "YAUTJA_TRIBUS_V4_40_NOUVELLES_IMAGES.zip",
+      "library_file_id": "libfile_36973d285c7881918b59b9c8bb57d315",
+      "library_url": "https://chatgpt.com/library?file_id=libfile_36973d285c7881918b59b9c8bb57d315&account_id=personal",
+      "source_library_path": "/Yautja The Long Hunt/Tribus_Images_V4/YAUTJA_TRIBUS_V4_40_NOUVELLES_IMAGES.zip",
+      "source_created_at": "2026-09-17T00:13:31.446387Z",
+      "size_bytes": 100353957,
+      "sha256": "5298de3424ea4b3adbcb9b6d2819076339797fd91e87acb845ea8819baca71af",
+      "source_manifest_filename": "MANIFESTE_YAUTJA_V4.json",
+      "source_manifest_sha256": "fa1f1530d8c2e4edc4c12b564a42222ce64fadb7aeec08d2906eef0ee4e7ff07",
+      "source_summary": {
+        "version": "V4 — Les cinq tribus",
+        "images": 40,
+        "tribes": 5,
+        "categories": {
+          "personnages": 20,
+          "objets": 10,
+          "lieux": 10
+        },
+        "new_pngs": 40,
+        "reused_v2_or_v3_pngs": 0,
+        "transparent_pngs": 30,
+        "complete_scenes": 10,
+        "png_bytes": 98742248,
+        "unique_png_hashes": 40,
+        "generation_method": "outil_image_integre",
+        "lore_status": "Cinq communautés originales pour le projet ; références de franchise documentées séparément."
+      },
+      "verification": {
+        "archive_entries": 49,
+        "png_files": 40,
+        "manifest_matches_embedded_bytes": true,
+        "manifest_matches_v5_embedded_bytes": true,
+        "png_set_matches_manifest": true,
+        "extra_png_paths": [],
+        "missing_png_paths": [],
+        "zip_crc_ok": true,
+        "png_bytes": 98742248,
+        "byte_unique_pngs": 40,
+        "pngs_with_actual_transparency": 30,
+        "pngs_without_transparency": 10,
+        "mismatches": []
+      }
+    },
+    {
+      "version": "V5",
+      "filename": "YAUTJA_TRIBUS_V5_PREPARATION_40_SUJETS.zip",
+      "library_file_id": "libfile_b7488900b51081918b2e2416c698230c",
+      "library_url": "https://chatgpt.com/library?file_id=libfile_b7488900b51081918b2e2416c698230c&account_id=personal",
+      "source_library_path": "/Yautja The Long Hunt/Tribus_Images_V5_Preparation/YAUTJA_TRIBUS_V5_PREPARATION_40_SUJETS.zip",
+      "source_created_at": "2026-09-17T06:43:07.149488Z",
+      "size_bytes": 154075,
+      "sha256": "f14d66fcf1cfab9bb85b938e9aeb2e721e197ac169fd80c938b12e6b0a178fe4",
+      "source_summary": {
+        "version": "V5 — Préparation des soins, du repos et des services",
+        "status": "PREPARATION_SANS_NOUVELLES_IMAGES",
+        "planned_images": 40,
+        "generated_images": 0,
+        "previous_inventory_images": 204,
+        "tribes": 5,
+        "category_counts": {
+          "personnages": 10,
+          "objets": 15,
+          "lieux": 10,
+          "matieres": 5
+        },
+        "blocker": "Limite du service de génération d’images atteinte. Aucun nouveau PNG produit.",
+        "service_announced_reset_utc": "2026-09-17T23:04:48+00:00",
+        "service_announced_reset_paris": "2026-09-18T01:04:48+02:00",
+        "reset_is_service_estimate": true
+      },
+      "verification": {
+        "archive_entries": 53,
+        "png_files": 0,
+        "zip_crc_ok": true,
+        "jobs": 40
+      },
+      "status": "preparation_seulement_aucun_png",
+      "historical_blocker_note": "Le quota cité dans la source concerne le 17 septembre 2026. Aucun contrôle actuel du service n’est déduit de cette archive."
+    }
+  ],
+  "failures": [],
+  "warnings": []
+}

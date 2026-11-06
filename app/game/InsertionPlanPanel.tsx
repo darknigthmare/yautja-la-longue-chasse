@@ -20,12 +20,14 @@ interface Props {
   campaignAccess: { allowed: boolean; reason: string };
   busy: boolean;
   onChange: (plan: PlanetInsertionPlan) => void;
-  onAssign: (id: ExpeditionMemberId) => void;
+  onRecruit: (id: ExpeditionMemberId) => void;
+  onAssign: (id: ExpeditionMemberId, expectedShipId: ShipId) => void;
+  onReserve: (id: ExpeditionMemberId, expectedShipId: ShipId) => void;
   onCare: (id: ExpeditionMemberId, expectedAvailability: 'recovering' | 'missing') => void;
 }
 
 export default function InsertionPlanPanel({ plan, missionId, shipId, ownerCreatedAt, roster, clanMarks, shipEnergy, onRecharge,
-  campaignAccess, busy, onChange, onAssign, onCare }: Props) {
+  campaignAccess, busy, onChange, onRecruit, onAssign, onReserve, onCare }: Props) {
   const pressure = planetInsertionPressure(plan);
   const surfaceCapable = shipSupportsSurfaceInsertion(shipId);
   const ready = expeditionTrioReady(roster, ownerCreatedAt, shipId);
@@ -92,21 +94,38 @@ export default function InsertionPlanPanel({ plan, missionId, shipId, ownerCreat
         const assigned = entry?.assignedShipId === shipId;
         const unavailable = entry && entry.availability !== 'ready';
         const careCost = unavailable ? EXPEDITION_CARE_COST[entry.availability as 'recovering' | 'missing'] : 0;
-        return <article key={member.id} data-expedition-member={member.id} data-availability={entry?.availability ?? 'unrecruited'}>
+        return <article key={member.id} data-expedition-member={member.id} data-availability={entry?.availability ?? 'unrecruited'}
+          data-assigned-ship={entry ? entry.assignedShipId ?? 'reserve' : 'unrecruited'}>
           <h3>{member.name}<small>{member.role}</small></h3>
           <p>{!entry ? member.invitation : entry.availability === 'missing' ? 'Resté sur le terrain. Un rapatriement du clan est nécessaire avant les soins.'
             : entry.availability === 'recovering' ? 'Rapatrié, en attente de soins avant le prochain départ.'
-              : assigned ? 'Prêt à embarquer dans le vaisseau sélectionné.' : 'Disponible, à affecter au vaisseau sélectionné.'}</p>
-          {unavailable ? <button type="button" className="ghost-button" disabled={busy || clanMarks < careCost}
-            onClick={() => onCare(member.id, entry.availability as 'recovering' | 'missing')}>
-            {entry.availability === 'missing' ? 'Rapatriement du clan' : 'Soins à bord'} · {careCost} marques
-          </button> : !assigned ? <button type="button" className="ghost-button" disabled={busy} onClick={() => onAssign(member.id)}>
-            {entry ? 'Affecter au vaisseau' : `Recruter ${member.name}`}
-          </button> : <span className={styles.ready}>Affectation confirmée</span>}
+              : assigned ? 'Prêt à embarquer dans le vaisseau sélectionné.' : 'Disponible pour une prochaine affectation.'}</p>
+          {entry && <p>{entry.assignedShipId === null
+            ? 'En réserve : recruté, sans affectation à un vaisseau.'
+            : `Affecté à : ${shipForId(entry.assignedShipId).name}.`}</p>}
+          {assigned && <span className={styles.ready}>Affectation confirmée</span>}
+          <div className={styles.rosterActions}>
+            {!entry && <button type="button" className="ghost-button" disabled={busy} onClick={() => onRecruit(member.id)}>
+              Recruter {member.name}
+            </button>}
+            {unavailable && <button type="button" className="ghost-button" disabled={busy || clanMarks < careCost}
+              onClick={() => onCare(member.id, entry.availability as 'recovering' | 'missing')}>
+              {entry.availability === 'missing' ? 'Rapatriement du clan' : 'Soins du clan'} · {careCost} marques
+            </button>}
+            {entry && !unavailable && !assigned && <button type="button" className="ghost-button" disabled={busy}
+              onClick={() => onAssign(member.id, shipId)}>
+              Affecter au vaisseau
+            </button>}
+            {entry?.assignedShipId && <button type="button" className="ghost-button" disabled={busy}
+              onClick={() => onReserve(member.id, entry.assignedShipId!)}>
+              Mettre en réserve
+            </button>}
+          </div>
         </article>;
       })}
       {plan.team === 'triad' && !ready && <p className={styles.notice}>Prépare les deux compagnons et affecte-les à cette coque pour partir en trio.</p>}
-      <p className={styles.care}>En mission : ordres de suivi ou d’attente, assistance au combat et stabilisation avec une charge de médicomp. Rassemble les trois chasseurs au point d’extraction. Solde : {clanMarks} marques.</p>
+      <p className={styles.care}>Le recrutement ne crée aucune affectation de bord. Affecte chaque partenaire au vaisseau choisi avant le départ ; une mise en réserve conserve son recrutement et ses soins éventuels.
+        {' '}En mission : ordres de suivi ou d’attente, assistance au combat et stabilisation avec une charge de médicomp. Rassemble les trois chasseurs au point d’extraction. Solde : {clanMarks} marques.</p>
     </div>}
   </section>;
 }

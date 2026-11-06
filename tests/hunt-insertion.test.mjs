@@ -61,6 +61,16 @@ function regular(f, { id = 'regular', x = 600, archetype = 'bad-blood-initiate',
   f.state.enemies.push(enemy); f.state.aiBrains[id] = r.createAiBrain(id, enemy.kind);
   return enemy;
 }
+function escortEncounter(order = 'hold') {
+  const f = arena(), member = f.state.insertion.companions[0];
+  Object.assign(member, { x: 500, y: f.state.world.floorY - member.height, order, attackCooldown: 0, health: 50 });
+  // Keep the leader at the existing follow formation, so a diversion is observable.
+  Object.assign(f.state.player, { x: member.x + member.width / 2 + 100 - f.state.player.width / 2, facing: 1, cloaked: true });
+  f.state.insertion.companions[1].x = 2_000;
+  f.state.insertion.companions[1].order = 'hold';
+  const enemy = regular(f, { x: member.x + 70, health: 100 });
+  return { f, member, enemy };
+}
 
 test('all eight authored worlds have the same safe cinematic-to-hunt centers and distinct companion bodies', () => {
   for (const missionId of Object.keys(r.WORLD_BLUEPRINTS_BY_MISSION)) {
@@ -315,12 +325,83 @@ test('a companion already exposed in lava can escape while taking real damage in
   assert.ok(member.health > 0 && member.health < member.maxHealth, 'escape does not grant immunity');
 });
 
-test('bounded escort combat damages only reachable regular opponents, never an Apex at range', () => {
-  const f = arena(), a = f.state.insertion.companions[0];
-  f.state.player.x = a.x - 80; a.order = 'hold'; a.attackCooldown = 0;
-  f.state.insertion.companions[1].order = 'hold';
-  const enemy = regular(f, { x: a.x + 70, health: 100 });
+test('QA-C21 follow and hold remain quiet around unengaged enemies, even with an injured escort and cloaked leader', () => {
+  for (const order of ['follow', 'hold']) for (const mode of [undefined, 'patrol', 'suspicion', 'search']) {
+    const { f, member, enemy } = escortEncounter(order);
+    if (mode) Object.assign(f.state.aiBrains[enemy.id], { mode, suspicion: 1, lostContactSeconds: 0 });
+    else delete f.state.aiBrains[enemy.id];
+    const x = member.x;
+    step(f, 1);
+    assert.equal(enemy.health, 100, `${order}/${mode}: visibility or suspicion cannot authorize a strike`);
+    close(member.x, x);
+    assert.equal(member.attackFlash, 0);
+    assert.equal(f.state.noiseEvents.length, 0, 'a quiet escort must not reveal the group with attack noise');
+    assert.equal(member.health, 50, 'an old wound is not a current attack order');
+  }
+});
+
+test('QA-C21 a fleeting contact stops escort attacks until the enemy really reacquires the group', () => {
+  const { f, member, enemy } = escortEncounter();
+  f.state.mud.thermalVisibility = 0; f.state.mud.cloakShimmer = 0;
+  r.updateRegularEnemy(f.state, enemy, f.mission, 1 / 60);
+  assert.equal(f.state.aiBrains[enemy.id].mode, 'engage');
+  assert.equal(f.state.aiBrains[enemy.id].lostContactSeconds, 0);
+  f.state.world.covers = [{ id: 'contact-break', x: member.x + member.width + 1, y: 0,
+    width: 4, height: f.state.world.floorY, protection: 1, destructible: false }];
+  r.updateRegularEnemy(f.state, enemy, f.mission, .05);
+  assert.equal(f.state.aiBrains[enemy.id].mode, 'engage', 'the enemy FSM retains its short contact memory');
+  assert.ok(f.state.aiBrains[enemy.id].lostContactSeconds > 0);
+  f.state.world.covers = [];
+  // An old attack warning must not bypass the observation that contact was lost.
+  enemy.pendingAttackId = 'regular-melee'; enemy.pendingAttackTargetId = member.id;
+  r.updateHuntInsertionCompanions(f.state, f.mission, 1 / 60);
+  assert.equal(enemy.health, 100);
+  assert.equal(f.state.noiseEvents.length, 0);
+  r.updateRegularEnemy(f.state, enemy, f.mission, 1 / 60);
+  assert.equal(f.state.aiBrains[enemy.id].lostContactSeconds, 0);
+  r.updateHuntInsertionCompanions(f.state, f.mission, 1 / 60);
+  assert.equal(enemy.health, 91, 'real hostile contact restores defensive support');
+});
+
+test('QA-C21 explicit hostile telegraphs defend a live group member without waking nearby uninvolved enemies', () => {
+  const { f, member, enemy } = escortEncounter();
+  delete f.state.aiBrains[enemy.id];
+  enemy.pendingAttackId = 'regular-melee';
+  const other = f.state.insertion.companions[1];
+  other.health = 0; other.status = 'downed';
+  for (const target of [undefined, 'unknown-target', other.id]) {
+    enemy.pendingAttackTargetId = target;
+    r.updateHuntInsertionCompanions(f.state, f.mission, 1 / 60);
+    assert.equal(enemy.health, 100, 'a missing, unrelated or unavailable target is not a live attack on the group');
+  }
+  enemy.pendingAttackTargetId = member.id;
+  r.updateHuntInsertionCompanions(f.state, f.mission, 1 / 60);
+  assert.equal(enemy.health, 91);
+  assert.equal(member.order, 'hold'); close(member.x, 500);
+  assert.equal(f.state.player.cloaked, true, 'defending an exposed companion does not uncloak the leader');
+});
+
+test('QA-C21 support selects an engaged attacker instead of a nearer patrol and stops against a retreat', () => {
+  const { f, member, enemy } = escortEncounter();
+  const patrol = regular(f, { id: 'unaware-neighbor', x: member.x + 30, health: 100 });
+  r.updateRegularEnemy(f.state, enemy, f.mission, 1 / 60);
+  assert.equal(f.state.aiBrains[enemy.id].mode, 'engage');
+  r.updateHuntInsertionCompanions(f.state, f.mission, 1 / 60);
+  assert.equal(patrol.health, 100);
+  assert.equal(enemy.health, 91);
+  member.attackCooldown = 0;
+  f.state.aiBrains[enemy.id].mode = 'flee';
+  enemy.pendingAttackId = 'regular-melee'; enemy.pendingAttackTargetId = member.id;
+  r.updateHuntInsertionCompanions(f.state, f.mission, 1 / 60);
+  assert.equal(enemy.health, 91, 'a stale warning does not turn retreat into fresh aggression');
+  assert.equal(patrol.health, 100);
+});
+
+test('bounded escort combat supports a detected hostile, damages only reachable regular opponents, never an Apex at range', () => {
+  const { f, member: a, enemy } = escortEncounter();
   const health = enemy.health;
+  r.updateRegularEnemy(f.state, enemy, f.mission, 1 / 60);
+  assert.equal(f.state.aiBrains[enemy.id].mode, 'engage');
   r.updateHuntInsertionCompanions(f.state, f.mission, 1 / 60);
   assert.equal(enemy.health, health - 9);
   step(f, .5); assert.equal(enemy.health, health - 9, 'no damage every animation frame');
@@ -335,6 +416,8 @@ test('walls prevent escort strikes, hostile acquisition and hostile projectiles'
   f.state.player.x = 3_000; a.order = 'hold'; a.attackCooldown = 0;
   f.state.insertion.companions[1].x = 2_000;
   const enemy = regular(f, { x: a.x + 95, health: 100 }); enemy.facing = -1;
+  r.updateRegularEnemy(f.state, enemy, f.mission, 1 / 60);
+  assert.equal(f.state.aiBrains[enemy.id].mode, 'engage');
   f.state.world.platforms = [{ id: 'shield', x: a.x + 75, y: 0, width: 8, height: f.state.world.floorY, collision: 'solid' }];
   assert.equal(r.visibleHuntCompanionTarget(f.state, enemy), null);
   r.updateHuntInsertionCompanions(f.state, f.mission, .05); assert.equal(enemy.health, 100);
@@ -346,8 +429,10 @@ test('walls prevent escort strikes, hostile acquisition and hostile projectiles'
 test('opaque covers block escort strikes, hostile acquisition and aid; destruction and soft foliage are respected', () => {
   const f = arena(), a = f.state.insertion.companions[0];
   Object.assign(a, { x: 400, y: 512, order: 'hold', attackCooldown: 0 });
-  f.state.player.x = 2_000; f.state.insertion.companions[1].x = 2_600;
+  f.state.player.x = 600; f.state.insertion.companions[1].x = 2_600;
   const enemy = regular(f, { x: 500, health: 100 }); Object.assign(enemy, { width: 32, height: 104, y: 520 });
+  r.updateRegularEnemy(f.state, enemy, f.mission, 1 / 60);
+  assert.equal(f.state.aiBrains[enemy.id].mode, 'engage');
   const cover = { id: 'opaque-cover', x: 480, y: 350, width: 12, height: 274, protection: 1, destructible: true };
   f.state.world.covers = [cover];
   r.updateHuntInsertionCompanions(f.state, f.mission, 1 / 60);

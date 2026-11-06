@@ -1,0 +1,291 @@
+{
+  "schemaVersion": 1,
+  "release": "1.6.0",
+  "runtimeCommit": "86f593bad2c7d00259dc4cf0a7d1ad40eac1d719",
+  "runtimeTree": "21052551ce3b80c57f70a8695a86d601e87e5e20",
+  "repository": "darknigthmare/yautja-la-longue-chasse",
+  "branch": "feat/ship-interior-25d-20261105",
+  "mergedBase": "1951e17f01f1951d7c961b4ed3938741966e3007",
+  "verification": {
+    "workflowRun": 42013765672,
+    "job": 127199019545,
+    "status": "completed",
+    "conclusion": "success",
+    "lint": "passed",
+    "productionBuild": "passed",
+    "typeScript": "passed",
+    "unitTests": {
+      "passed": 14,
+      "failed": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "scope": [
+        "tests/ship-interior-25d.test.mjs",
+        "tests/game-client-code-splitting.test.mjs"
+      ]
+    },
+    "browser": {
+      "passed": 17,
+      "failed": 0,
+      "missingAssets": 0,
+      "javaScriptErrors": 0,
+      "consoleErrors": 0,
+      "checks": [
+        "The real developer URL mounts the 2.5D room and preserves an existing campaign",
+        "Keyboard movement uses both ground axes, native depth projection and released input",
+        "Furniture blocks native movement and fades only when the hunter really walks behind it",
+        "A real floor click walks around the console to its service without crossing the solid",
+        "Walk the connected ship to Passerelle de navigation, use its service and return at the same position",
+        "Walk the connected ship to Armurerie, use its service and return at the same position",
+        "Walk the connected ship to Archives du chasseur, use its service and return at the same position",
+        "Walk the connected ship to Forge des parures, use its service and return at the same position",
+        "Walk the connected ship to Galerie des trophées, use its service and return at the same position",
+        "Walk the connected ship to Baie médicale, use its service and return at the same position",
+        "Walk the connected ship to Cercle d’entraînement, use its service and return at the same position",
+        "Walk the connected ship to Sas de chasse, use its service and return at the same position",
+        "The aft lift also requires a walked threshold and supports the reverse journey",
+        "Mobile 390 px keeps the camera readable, touch movement working and swipe separate from walking",
+        "Mobile 320 px keeps the camera readable, touch movement working and swipe separate from walking",
+        "F8 unmounts the test and a real URL reload recreates the initial ship without changing the campaign",
+        "Every requested asset exists and the actual scene produces no browser or console exception"
+      ],
+      "route": "/dev?lieu=ship",
+      "mobileWidths": [
+        390,
+        320
+      ],
+      "scope": "Native production Next developer route. All eight personal rooms and the isolated developer service panels; medical and training use the native shared ShipHub. This does not assert a complete campaign playthrough or physical gamepad testing."
+    }
+  },
+  "priorLocalChecks": {
+    "initialDistinctTests": 168,
+    "initialFiles": 11,
+    "finalGeometryPreparationSaveSubset": 34,
+    "combinedTotalsMustNotBeAdded": true,
+    "note": "The 168 tests were run on the initial conversion. The 34-test geometry/preparation/save subset was rerun after furniture calibration before environment loss. Final commit evidence is the remote 14-test and 17-check run above."
+  },
+  "artifact": {
+    "id": 13408631794,
+    "name": "ship-interior-25d-86f593bad2c7d00259dc4cf0a7d1ad40eac1d719",
+    "files": 18,
+    "bytes": 28133732,
+    "sha256": "79efaea2a7a0fe3f8c2fc8800089eca38ad5f587de0e90b45421498e9a2a09d5",
+    "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/42013765672/artifacts/13408631794",
+    "digestEvidence": "GitHub Actions upload log and artifact metadata"
+  },
+  "art": {
+    "generatedImages": 7,
+    "integratedRuntimeImages": 7,
+    "originalSources": 7,
+    "runtimeBytes": 9487066,
+    "formats": {
+      "webp": 6,
+      "png": 1
+    },
+    "humanArtValidation": false,
+    "sourceVisualInspection": "All seven generated images were inspected before the environment became unavailable.",
+    "finalSceneCaptureInspection": "Completed by the main assistant and the art-review agent after environment recovery: all 14 original PNG captures opened, archive SHA256 matched. No human/canonical 1:1 approval is asserted.",
+    "floor": "The original opaque PNG was recovered unchanged from the imagegen result; the renderer applies the Homeworld ground projection once."
+  },
+  "boundaries": {
+    "personalShip": true,
+    "clanShipConversion": false,
+    "canonicalFloorPlan": false,
+    "physicalGamepadTest": false,
+    "fullCampaignPlaythrough": false,
+    "positionPreservedAcrossService": true,
+    "positionRestoredAfterFullReload": false,
+    "transitionAnimations": false,
+    "finalWorkbookExportAvailable": true
+  },
+  "sources": {
+    "workflow": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/42013765672",
+    "jobLogs": "https://api.github.com/repos/darknigthmare/yautja-la-longue-chasse/actions/jobs/127199019545/logs"
+  },
+  "subsequentVisualReview": {
+    "sourceCommit": "86f593bad2c7d00259dc4cf0a7d1ad40eac1d719",
+    "artifactId": 13408631794,
+    "archiveSha256": "79efaea2a7a0fe3f8c2fc8800089eca38ad5f587de0e90b45421498e9a2a09d5",
+    "captureCount": 14,
+    "inspected": true,
+    "reviewers": "Assistant principal et agent de revue artistique",
+    "humanArtValidation": false,
+    "result": "Aucun découpage d’objet, fond opaque parasite ou halo bleu visible dans les captures inspectées. Les contacts au sol et l’ordre avant/arrière sont plausibles aux positions observées. Le chasseur et les commandes restent lisibles ; le mobile utilise la caméra rapprochée et le défilement vertical.",
+    "limitations": [
+      "La console et le râtelier restent assez frontaux : leur perspective ne constitue pas un alignement canonique 1:1 à 35°.",
+      "Le chasseur masque partiellement les installations actives lorsqu’il se tient au point d’usage ; la forge est une machine haute et l’émetteur est partiellement occulté.",
+      "Les passages latéraux conservent des rectangles translucides ; leur finition et leurs animations restent à compléter.",
+      "Les captures seules ne qualifient ni tous les contacts pendant le mouvement, ni une manette physique, ni une campagne complète.",
+      "La revue effectuée par les agents ne constitue pas une approbation artistique humaine."
+    ],
+    "inspectionAtUtc": "2026-11-05",
+    "captures": [
+      {
+        "filename": "01-desktop-navigation.png",
+        "bytes": 1014305,
+        "sha256": "cabf35cd06450e1fc373f2d25674bb2d8f821c00f49bef6fbf66c50b1d324222"
+      },
+      {
+        "filename": "02-console-front-collision.png",
+        "bytes": 1011074,
+        "sha256": "4db449f3a9beddbcb8547c4e5bf3a14a6278292780255bd42d8788c0c42d5018"
+      },
+      {
+        "filename": "03-console-behind-occlusion.png",
+        "bytes": 1001711,
+        "sha256": "23df8f65a361370afaa345118e33d0d04191ab3da8a3b55313a20f870c232659"
+      },
+      {
+        "filename": "04-pointer-service-arrival.png",
+        "bytes": 1012750,
+        "sha256": "4c863dd0f2fe4866e3a7ccb31eb3b6289191e4354e5435129885599ccb562e31"
+      },
+      {
+        "filename": "mobile-320-armory.png",
+        "bytes": 239675,
+        "sha256": "24a6a771fc534e0544589d404942c93a3b7474800c92a1264e98011796ae9fb3"
+      },
+      {
+        "filename": "mobile-390-armory.png",
+        "bytes": 270874,
+        "sha256": "80fce7b2bf2f94a76501a1893bbc32da89eb81044675f21625dc2d01c0ba9c3f"
+      },
+      {
+        "filename": "room-appearance-forge.png",
+        "bytes": 1081817,
+        "sha256": "ee86ad2398de22d62b4515d033b981c9019f1bcd384bc623fe4b6e810f8189c9"
+      },
+      {
+        "filename": "room-clan-archives.png",
+        "bytes": 1049387,
+        "sha256": "e84fc1dde38ea5b05fe6272aa36ea098d9a0038a029c3736500c5b4e6b60b2fe"
+      },
+      {
+        "filename": "room-galaxy-map.png",
+        "bytes": 1012998,
+        "sha256": "83338fc3776c1a0d7872937782f920f2f7efd6ad570c633812fb96d464f35bf8"
+      },
+      {
+        "filename": "room-launch-airlock.png",
+        "bytes": 1017807,
+        "sha256": "6056b982d907fd48fe60e8419f18b126ca6015a15a4c5131e2578b1bcce9e869"
+      },
+      {
+        "filename": "room-medical-bay.png",
+        "bytes": 1016487,
+        "sha256": "ea415c79c083152d8b660a0ac5d4eac64a19f1a690f4527be9927335a7ff1f89"
+      },
+      {
+        "filename": "room-training-arena.png",
+        "bytes": 1031129,
+        "sha256": "3bf9aba480ff0292308dfa31fee3b5bf6772d3378d11f4e5c1326c6ab22c327d"
+      },
+      {
+        "filename": "room-trophy-hall.png",
+        "bytes": 1001073,
+        "sha256": "897ce3b2a023f6415c7cc4df29ee92bddba28039fb36e3c2e013a4f869c001d6"
+      },
+      {
+        "filename": "room-wall-armory.png",
+        "bytes": 1078029,
+        "sha256": "1f85b30a518d25001373c7c24781348adcf4b3f228c261a2438dc0847bcc45e2"
+      }
+    ],
+    "archiveBytes": 28133732,
+    "reportReadDirectly": true,
+    "reportDataConfirmed": {
+      "passed": true,
+      "checks": 17,
+      "workingTreeDirty": false,
+      "missingAssets": [],
+      "errors": [],
+      "consoleErrors": []
+    }
+  },
+  "subsequentBaseSynchronization": {
+    "commit": "8cee6ec4d7a1334ffd74af6eb9b29b161f561b15",
+    "applicationChanges": false,
+    "artChanges": false,
+    "dedicatedRecipeChanges": false,
+    "scope": "Three general QA scripts and five upstream evidence files; the developer recipe retains both parents' independent changes."
+  },
+  "workbook": {
+    "path": "production/ship-interior-25d-20261105/yautja-interieur-25d-v1.6.0.xlsx",
+    "bytes": 25233,
+    "sha256": "3aeda622cdeb39b24c04f925fb32270acdb9f913750e90e99633aa90caf396b4",
+    "sheets": 4,
+    "boundedFormulas": 19,
+    "formulaErrors": 0,
+    "previewsInspected": 9,
+    "nativeExcelExecuted": false
+  },
+  "latestQualification": {
+    "schemaVersion": 1,
+    "sourceCommit": "5f9dd187a52575719cada89bb184c03bcfe14bc1",
+    "sourceTree": "64a94b64d0775ef80c21950a5285569140dc544c",
+    "run": 42020235758,
+    "job": 127220855535,
+    "attempt": 1,
+    "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/42020235758",
+    "status": "completed",
+    "conclusion": "success",
+    "completedAt": "2026-11-05T11:42:29Z",
+    "checks": {
+      "canonicalRuntimeInventory": "passed",
+      "strictLint": "passed",
+      "productionBuild": "passed",
+      "typeScript": "passed",
+      "unitTests": {
+        "passed": 14,
+        "failed": 0
+      },
+      "browser": {
+        "passed": 17,
+        "failed": 0,
+        "missingAssets": 0,
+        "javaScriptErrors": 0,
+        "consoleErrors": 0
+      }
+    },
+    "canonicalInventory": {
+      "path": "docs/qa/current-integration-20261103/runtime-inputs.json",
+      "entries": 2171,
+      "bytes": 403483,
+      "sha256": "043ea4a9f7c431df625f826b818efdca73d24e79cbc19a35e87e76ff8974e4c9"
+    },
+    "artifact": {
+      "id": 13411571937,
+      "bytes": 28138263,
+      "sha256": "f3bdffd210f60633d69e091f0e2e833605b7ab4707fb1c28648e21464cdd4b96",
+      "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/42020235758/artifacts/13411571937",
+      "metadataAndUploadDigestMatch": true
+    },
+    "visualReview": {
+      "sourceCommit": "86f593bad2c7d00259dc4cf0a7d1ad40eac1d719",
+      "artifactId": 13408631794,
+      "capturesInspected": 14,
+      "archiveDigestVerified": true,
+      "reviewers": "Main assistant and art-review agent",
+      "humanCanonicalApproval": false,
+      "applicationAndImagesUnchangedFromReviewedRevision": true,
+      "newArchiveDownloadedAgain": false
+    },
+    "workbook": {
+      "path": "production/ship-interior-25d-20261105/yautja-interieur-25d-v1.6.0.xlsx",
+      "bytes": 25233,
+      "sha256": "3aeda622cdeb39b24c04f925fb32270acdb9f913750e90e99633aa90caf396b4",
+      "sheets": 4,
+      "formulaErrors": 0
+    },
+    "scope": "The dedicated personal-ship route, its real movement and developer services. General campaign/Clan Ship/arrival qualification is separate.",
+    "laterBaseSynchronization": {
+      "baseCommit": "94b5e0f156c8eff9cbbc03bcf2088d3b96db03ea",
+      "baseTree": "710c3831a1b4981a474ed764678153b1ca1b6332",
+      "scope": "Two general QA scripts and five upstream proof files. The developer recipe preserves the six ship adaptations.",
+      "applicationChanges": false,
+      "assetChanges": false,
+      "dedicatedRecipeChanges": false,
+      "canonicalInventoryChanges": false
+    }
+  }
+}

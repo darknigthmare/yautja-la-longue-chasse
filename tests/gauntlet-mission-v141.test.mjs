@@ -84,7 +84,9 @@ test("actual 12k-line HuntCanvas preloads per-hunter assets once and preserves b
     assert.ok(dependencies.elements.some(node=>ts.isIdentifier(node)&&node.text===name),
       `${name} must remain in the same initialization effect's dependency list.`);
   }
-  assert.match(runtime,/HUNTER_GAUNTLET_FIT_BY_MORPH\[appearance\.bodyMorphId\]/);
+  // V145: computer on the front forearm, blades on the back one (per-morph fits in the shared helpers).
+  assert.match(runtime,/gauntletFrontArmMatrixV145\(appearance\.bodyMorphId/);
+  assert.match(runtime,/hunterWristbladeRegistrationMatrix\(appearance\.bodyMorphId\)/);
   assert.match(runtime,/rotation: -1\.12 \* clamp\(player\.gauntletOpen, 0, 1\)/);
   assert.match(runtime,/assets\.hunterWristblades\.blades/);
   assert.match(runtime,/"armFrontLower"/);

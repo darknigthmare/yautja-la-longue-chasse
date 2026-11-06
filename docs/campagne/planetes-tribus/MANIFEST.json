@@ -1,0 +1,208 @@
+{
+  "schema_version": 1,
+  "project": "Yautja : La Longue Chasse",
+  "scope": "Raccord documentaire planètes/tribus V2–V5 à la PR de la bible",
+  "requested_date": "2026-11-05",
+  "repository": "darknigthmare/yautja-la-longue-chasse",
+  "pull_request": 116,
+  "target_branch": "claude/bible-de-campagne",
+  "source_snapshot_commit": "04a14cce268a1572092269fb281304ac10294725",
+  "published_paths_including_this_manifest": 22,
+  "source_counts": {
+    "png_v2": 119,
+    "png_v3": 45,
+    "png_v4": 40,
+    "png_v5": 0,
+    "v5_prepared_jobs": 40,
+    "v37_source_matches": 204,
+    "planet_directions": 15,
+    "community_families": 5
+  },
+  "archive_sha256": {
+    "V2": "7559df362413f29769b358fbd15649cc08736c01afb0996f6064e36f8e4ed4bd",
+    "V3": "1b74f4c3948077b1a6a98903ae51f0daaa349a59d923a1967bb8e57818b04c74",
+    "V4": "5298de3424ea4b3adbcb9b6d2819076339797fd91e87acb845ea8819baca71af",
+    "V5": "f14d66fcf1cfab9bb85b938e9aeb2e721e197ac169fd80c938b12e6b0a178fe4",
+    "V5_PRODUCTION_20261106": "fc0ea8de193836cafb91c7f8e4bb0f1d46a544c44062213a42a126bdb70e7aac"
+  },
+  "verification": {
+    "documentary_checks_passed": 30,
+    "documentary_checks_failed": 0,
+    "code_changed": false,
+    "binary_assets_changed": false,
+    "new_image_generation_performed": true,
+    "gameplay_executed": false,
+    "human_art_approval_granted": false,
+    "new_png_decoded": 42,
+    "new_png_unique_sha256": 42,
+    "new_png_native_bytes_preserved": true,
+    "new_archives_durably_saved": 0,
+    "catalogue_pdf_durably_saved": false,
+    "initial_documentary_report_note": "Les 30 contrôles initiaux restent le rapport daté du 5 novembre ; VERIFICATION_V5.json décrit la livraison suivante.",
+    "delivery_documentary_checks_passed": 22,
+    "delivery_documentary_checks_failed": 0
+  },
+  "files": [
+    {
+      "path": "docs/campagne/README.md",
+      "bytes": 17977,
+      "sha256": "febe46b8909853644f469ecd79f6f01538cee5e7a1e5431f5f954e04ddd6675f"
+    },
+    {
+      "path": "docs/campagne/planetes-tribus/ASSETS.md",
+      "bytes": 40919,
+      "sha256": "3b2e4354b57e27b5ccd8c9d2acb10bb2bafb9aa8d15a27758235b1a0cf3441b5"
+    },
+    {
+      "path": "docs/campagne/planetes-tribus/DONNEES_ASSETS.json",
+      "bytes": 1037537,
+      "sha256": "52f783f4610fe7267ca84a0d3f0271f644dd77b49445a75885ba9a219b98763d"
+    },
+    {
+      "path": "docs/campagne/planetes-tribus/LIVRAISON_V5.json",
+      "bytes": 524555,
+      "sha256": "328f7de89470fd826a0892635ef5517c77b679acd2a1959a584146edd9eb5f3e"
+    },
+    {
+      "path": "docs/campagne/planetes-tribus/LIVRAISON_V5.md",
+      "bytes": 10768,
+      "sha256": "885adbc52840aa05d7781cbff4161e00721cd5476b1afb065524d346ee46f382"
+    },
+    {
+      "path": "docs/campagne/planetes-tribus/PLANETES.md",
+      "bytes": 14245,
+      "sha256": "681939858053a27e5cbaab30d3338e3453c2b68a62419150a09c54d055df92fe"
+    },
+    {
+      "path": "docs/campagne/planetes-tribus/RACCORD_EXISTANT.json",
+      "bytes": 413249,
+      "sha256": "6b29ad162e4751745f620d304f96d07887296f89cb24fac3d3b1598af2d3a3eb"
+    },
+    {
+      "path": "docs/campagne/planetes-tribus/RACCORD_EXISTANT.md",
+      "bytes": 17511,
+      "sha256": "0ed42069f107537d77516d694d0b8e9b4d9aa3cd7fd55934057392269ced3656"
+    },
+    {
+      "path": "docs/campagne/planetes-tribus/README.md",
+      "bytes": 9909,
+      "sha256": "2adda5804b59dcbcf407492a5fc1e7bd22b9e6cdeb0ee3cfd2197e555e04f670"
+    },
+    {
+      "path": "docs/campagne/planetes-tribus/REPRISE.md",
+      "bytes": 21469,
+      "sha256": "85875108a34628c5ece9106770aec9bc230f74930d01e620f6cee620a67b792b"
+    },
+    {
+      "path": "docs/campagne/planetes-tribus/REPRISE_V5.json",
+      "bytes": 198204,
+      "sha256": "3eeefcd7873589d0fd1cdedf78adc90f7a1430a50f30734702e9da3bfb97dd14"
+    },
+    {
+      "path": "docs/campagne/planetes-tribus/SCENARIOS_CIVILS.md",
+      "bytes": 44210,
+      "sha256": "b1931bc58f3c156c5ebf9bed06066c79cb01517e6e7c21e7eed880780ba9b05b"
+    },
+    {
+      "path": "docs/campagne/planetes-tribus/SOURCES_LORE.json",
+      "bytes": 13507,
+      "sha256": "e0a542ee1290d178b0d315bf98a64d1b8d68c46dddd7a69248dbd48d1f583a27"
+    },
+    {
+      "path": "docs/campagne/planetes-tribus/SOURCES_LORE.md",
+      "bytes": 12774,
+      "sha256": "44c16924e2f114555a1a50ff9412bd9fe17b8eddd4137458e06b70c49a65c9a6"
+    },
+    {
+      "path": "docs/campagne/planetes-tribus/TEXTES_SOURCE.json",
+      "bytes": 62173,
+      "sha256": "27f9bc00b27c1d230dd44fc0e43d4f96f70bc14e283327e435d4f5e124f7c0b8"
+    },
+    {
+      "path": "docs/campagne/planetes-tribus/TRIBUS.md",
+      "bytes": 18901,
+      "sha256": "29b49784c9b93590c7ce8628ad403542babdae9c29648f9141e75e5bdaf16804"
+    },
+    {
+      "path": "docs/campagne/planetes-tribus/VERIFICATION.md",
+      "bytes": 7990,
+      "sha256": "46fc3d6b4f793fba9d27fb9f275a48ff063d529d19447f203c40ee9f2aa19de1"
+    },
+    {
+      "path": "docs/campagne/planetes-tribus/VERIFICATION_ARCHIVES.json",
+      "bytes": 9090,
+      "sha256": "eefc6b0e45a7c64a7ab7db13bc116707bbbc8b59329d053a60d8c17e48e3d4bd"
+    },
+    {
+      "path": "docs/campagne/planetes-tribus/VERIFICATION_DOCUMENTAIRE.json",
+      "bytes": 3739,
+      "sha256": "b2f19d69e4ae5f46435a802bf3f5260581b25464bd603eac96f8124ce63634b0"
+    },
+    {
+      "path": "docs/campagne/planetes-tribus/VERIFICATION_DOCUMENTAIRE_V5.json",
+      "bytes": 3224,
+      "sha256": "c992b3ca268737fbd6a1d8bb3e87ec22d8fb3b5a62f4855756590207449802e8"
+    },
+    {
+      "path": "docs/campagne/planetes-tribus/VERIFICATION_V5.json",
+      "bytes": 143593,
+      "sha256": "4fa36b8c0c0ec472282db6e96297157023977a94a9c043c11f8cd308d42b9bed"
+    }
+  ],
+  "self_hash_note": "Ce manifeste ne contient pas sa propre empreinte ; le commit Git fixe son identité.",
+  "latest_production_update": "2026-11-06",
+  "historical_source_counts_note": "Les source_counts ci-dessous décrivent les quatre archives récupérées lors du raccord initial du 5 novembre. Voir current_production pour la nouvelle livraison.",
+  "current_production": {
+    "total_delivered_sources": 246,
+    "historical_v37_sources": 204,
+    "planned_v5_subjects": 40,
+    "delivered_v5_subjects": 40,
+    "correction_variants": 2,
+    "delivered_png_files": 42,
+    "remaining_v5_subjects": 0,
+    "transparent_png": 27,
+    "opaque_scenes": 10,
+    "opaque_material_illustrations": 5,
+    "source_bytes": 113982644,
+    "per_community": {
+      "DESERT": 10,
+      "FOREST": 8,
+      "SLUMS": 8,
+      "LAVA": 8,
+      "DARKJUNGLE": 8
+    },
+    "per_category": {
+      "personnages": 10,
+      "objets": 15,
+      "lieux": 10,
+      "matieres": 5,
+      "corrections": 2
+    },
+    "native_png_bytes_unchanged": true,
+    "image_animation_frames_produced": 0,
+    "runtime_import_performed": false,
+    "human_art_approval_granted": false,
+    "delivery_channel": "conversation",
+    "new_archives_durably_saved": 0,
+    "persistent_storage_status": "workspace_ready_persistent_save_failed"
+  },
+  "delivery_storage": {
+    "delivery_channel": "conversation",
+    "produced_png_files": 42,
+    "delivered_png_files_in_conversation": 42,
+    "new_archives_delivered_in_conversation": 6,
+    "new_archives_durably_saved": 0,
+    "catalogue_pdf_durably_saved": false,
+    "storage_status": "workspace_ready_persistent_save_failed",
+    "persistence_error": {
+      "stage": "prepare_uploads",
+      "message": "library upload failed: prepare_uploads failed",
+      "known_finalizations": 0,
+      "helper_attempts": 3,
+      "outcome": "preparation_failed_no_library_file_ids_returned"
+    },
+    "session_links_published_in_github_documentation": false
+  },
+  "publication_parent_commit": "8abbbf00b6befcadf1510dbca5ea1ecbd7098815",
+  "preserved_bible_git_blob": "af208069437215b9765d7fe2a3b52580bb2d241d"
+}

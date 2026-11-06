@@ -21,7 +21,7 @@ import { createDevArrival, createDevSave, createMemoryStorage, resolveDevDestina
 import DevServices, { type DevService } from "./services";
 import styles from "./session.module.css";
 
-const PhysicalShipDeck = lazy(() => import("../game/PhysicalShipDeck"));
+const ShipInterior25D = lazy(() => import("../game/ShipInterior25D"));
 const ClanShipHub = lazy(() => import("../game/ClanShipHub"));
 const HomeworldHub = lazy(() => import("../game/HomeworldHub"));
 const HomeworldRegionV68 = lazy(() => import("../game/HomeworldRegionV68"));
@@ -374,7 +374,7 @@ export default function DevTravelSession({ destination, onTravel, onExit }: DevT
       <div className={styles.viewport}>
         <div ref={sceneRef} className={styles.scene} hidden={service !== null} inert={service !== null}>
           <Suspense fallback={<div className={styles.loading} role="status">Chargement du lieu…</div>}>
-            {destination.kind === "ship" && <PhysicalShipDeck
+            {destination.kind === "ship" && <ShipInterior25D
               appearance={save.appearance}
               loadout={save.loadout}
               rankLabel="Chasseur de test"

@@ -56,7 +56,7 @@ test("GameClient lazily loads every heavyweight game surface", async () => {
     "PitCanvas",
     "PitNarrativeTrials",
     "GalaxyMapPanel",
-    "PhysicalShipDeck",
+    "ShipInterior25D",
     "TrophyWorkshop",
     "EnemyBestiaryV8",
     "HomeworldHub",

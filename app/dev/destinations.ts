@@ -10,7 +10,7 @@ import {
   createPlanetArrival, inspectPlanetArrival, type PlanetArrivalState,
 } from '../game/systems/planetArrival';
 import { inspectPlanetArrivalRun, type PlanetArrivalRun } from '../game/systems/planetArrivalRun';
-import { assignExpeditionMember, type PlanetInsertionPlan } from '../game/systems/planetInsertion';
+import { assignExpeditionMember, recruitExpeditionMember, type PlanetInsertionPlan } from '../game/systems/planetInsertion';
 import { debitShipInsertionCloak, hasShipInsertionDebit } from '../game/systems/shipInsertionEnergy';
 import {
   WOLF_CASTLE_ROOMS, createWolfCastleVisit, inspectWolfCastleVisit, wolfCastleEntryPoint,
@@ -67,7 +67,7 @@ function cityDoorway(id: string, label: string, description: string, buildingId:
 export const DEV_DESTINATIONS: readonly DevDestination[] = [
   {
     id: 'ship', label: 'Mon vaisseau', category: 'hubs', kind: 'ship',
-    description: 'Intérieur parcourable du vaisseau personnel : huit salles reliées sur deux ponts.',
+    description: 'Intérieur en 2,5D du vaisseau personnel : circulation en profondeur, huit salles et deux ponts.',
   },
   {
     id: 'clan-docking', label: 'Clan Ship · approche et amarrage', category: 'clan', kind: 'clan',
@@ -169,8 +169,10 @@ export function createDevSave(destination: DevDestination): SaveGame {
   };
 
   if (canonical.kind === 'arrival' && canonical.insertion?.team === 'triad') {
-    save.expeditionRoster = assignExpeditionMember(save.expeditionRoster, owner, DEFAULT_SHIP_ID, 'karhek');
-    save.expeditionRoster = assignExpeditionMember(save.expeditionRoster, owner, DEFAULT_SHIP_ID, 'saketh');
+    for (const id of ['karhek', 'saketh'] as const) {
+      save.expeditionRoster = recruitExpeditionMember(save.expeditionRoster, owner, id);
+      save.expeditionRoster = assignExpeditionMember(save.expeditionRoster, owner, DEFAULT_SHIP_ID, id);
+    }
   }
   if (canonical.kind === 'arrival' && canonical.insertion?.shipCloak) {
     const debit = debitShipInsertionCloak(save.shipInsertionEnergy, owner, DEFAULT_SHIP_ID,

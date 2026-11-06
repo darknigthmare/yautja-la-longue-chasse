@@ -350,15 +350,35 @@ try {
       await panel.waitFor();
       if (plan.team === 'triad') {
         await panel.getByRole('button', { name: 'Recruter Ka’rhek', exact: true }).click();
-        await panel.locator('[data-expedition-member="karhek"][data-availability="ready"]').waitFor();
+        await panel.locator('[data-expedition-member="karhek"][data-availability="ready"][data-assigned-ship="reserve"]').waitFor();
         await panel.getByRole('button', { name: 'Recruter Sa’keth', exact: true }).click();
-        await panel.locator('[data-expedition-member="saketh"][data-availability="ready"]').waitFor();
+        await panel.locator('[data-expedition-member="saketh"][data-availability="ready"][data-assigned-ship="reserve"]').waitFor();
+        const recruited = (await stored()).expeditionRoster;
+        assert.equal(recruited.version, 2);
+        assert.deepEqual(recruited.members.map(member => member.assignedShipId), [null, null],
+          'An agreement must not assign either companion to the personal hull.');
+        await screenshot('28-triad-recruited-reserve.png');
+        const karhek = panel.locator('[data-expedition-member="karhek"]');
+        await karhek.getByRole('button', { name: 'Affecter au vaisseau', exact: true }).click();
+        await panel.locator('[data-expedition-member="karhek"][data-assigned-ship="classic-predator-spaceship"]').waitFor();
+        await karhek.getByRole('button', { name: 'Mettre en réserve', exact: true }).click();
+        await panel.locator('[data-expedition-member="karhek"][data-assigned-ship="reserve"]').waitFor();
+        const returnedToReserve = (await stored()).expeditionRoster;
+        assert.deepEqual(returnedToReserve, recruited, 'Reserve must keep the agreement, availability and receipt history.');
+        assert.equal(await karhek.getByRole('button', { name: 'Recruter Ka’rhek', exact: true }).count(), 0,
+          'A reserved companion must never need to be recruited again.');
+        for (const id of ['karhek', 'saketh']) {
+          await panel.locator(`[data-expedition-member="${id}"]`).getByRole('button', { name: 'Affecter au vaisseau', exact: true }).click();
+          await panel.locator(`[data-expedition-member="${id}"][data-assigned-ship="classic-predator-spaceship"]`).waitFor();
+        }
         const roster = (await stored()).expeditionRoster;
         assert.equal(roster.ownerCreatedAt, seed.createdAt);
         assert.deepEqual(roster.members.map(member => ({ id: member.id, ship: member.assignedShipId, availability: member.availability })), [
           { id: 'karhek', ship: 'classic-predator-spaceship', availability: 'ready' },
           { id: 'saketh', ship: 'classic-predator-spaceship', availability: 'ready' },
-        ], 'The real recruitment buttons must durably assign both hunters to the selected hull.');
+        ], 'Only the explicit assignment buttons may durably assign both recruited hunters to the selected hull.');
+        report.rosterPreparation = { recruited, returnedToReserve, assigned: roster };
+        await screenshot('29-triad-assigned-to-hull.png');
       }
       await panel.locator(`input[name="insertion-method"][value="${plan.method}"]`).check();
       await panel.locator(`input[name="insertion-team"][value="${plan.team}"]`).check();

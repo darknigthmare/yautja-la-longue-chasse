@@ -4,7 +4,7 @@ import {
 } from './planetInsertion';
 import { overlapsSolidPlatform, resolvePlatformMotion } from './platformCollision';
 import { huntStructuralBarrierV94 } from './huntStructuralBarrierV94';
-import { calculateLineOfSightOcclusion } from './huntSystems';
+import { calculateLineOfSightOcclusion, type AiBrain } from './huntSystems';
 import { isHazardActive, resolveNearestSafeGroundX, type WorldBlueprint, type WorldRect } from './worldBlueprints';
 import { createHuntPodRecovery, cloneHuntPodRecovery, restoreHuntPodRecovery, type HuntPodRecovery } from './huntPodRecovery';
 
@@ -210,17 +210,37 @@ export function huntInsertionOutcome(state: HuntInsertionState, liveRunId = stat
     injured: members.filter(member => member.status === 'extracted' && member.health < member.maxHealth).map(member => member.id) };
 }
 
-export interface InsertionEnemy extends WorldRect { id: string; alive: boolean; active: boolean; boss: boolean }
+export interface InsertionEnemy extends WorldRect {
+  id: string;
+  alive: boolean;
+  active: boolean;
+  boss: boolean;
+  pendingAttackId?: string | null;
+  pendingAttackTargetId?: 'hunter' | ExpeditionMemberId;
+}
 export interface CompanionStepInput {
   delta: number;
   elapsed: number;
   player: WorldRect & { facing: -1 | 1 };
   world: WorldBlueprint;
   enemies: readonly InsertionEnemy[];
+  /** Current observations from the owning enemy simulation, never a roster-wide alert. */
+  enemyBrains?: Readonly<Record<string, Pick<AiBrain, 'mode' | 'lostContactSeconds'>>>;
   /** Destroyed covers have already been removed by the owning simulation. */
   covers?: WorldBlueprint['covers'];
   extracting: boolean;
   boardingProgress?: number;
+}
+
+/** Follow/hold preserve stealth; only a live threat authorizes defensive support (QA-C21). */
+function companionMayEngage(enemy: InsertionEnemy, state: HuntInsertionState, input: CompanionStepInput): boolean {
+  const brain = input.enemyBrains?.[enemy.id];
+  // A short-lived engage state can outlast real contact. Do not turn its memory,
+  // an interrupted telegraph or a retreat into a new attack by the escort.
+  if (brain && (brain.lostContactSeconds !== 0 || brain.mode === 'flee')) return false;
+  const attacksGroup = !!enemy.pendingAttackId && (enemy.pendingAttackTargetId === 'hunter' ||
+    state.companions.some(member => member.id === enemy.pendingAttackTargetId && member.status === 'active'));
+  return attacksGroup || !!brain && ['engage', 'cover', 'coordinate'].includes(brain.mode);
 }
 
 const intersects = (a: WorldRect, b: WorldRect) => a.x < b.x + b.width && a.x + a.width > b.x &&
@@ -298,6 +318,7 @@ export function stepHuntCompanions(state: HuntInsertionState, input: CompanionSt
       ? input.world.extraction.x + (index === 0 ? -55 : 55)
       : leader.x - input.player.facing * (100 + index * 95);
     const target = member.status !== 'active' ? undefined : input.enemies.filter(enemy => enemy.active && enemy.alive && !enemy.boss &&
+      companionMayEngage(enemy, state, input) &&
       Math.abs(point(enemy).x - leader.x) <= 720 && Math.abs(point(enemy).y - self.y) < 90 &&
       Math.abs(point(enemy).x - self.x) <= (member.order === 'hold' ? 100 : 240) &&
       huntInsertionLineOfSight(self, point(enemy), input.world, input.covers))

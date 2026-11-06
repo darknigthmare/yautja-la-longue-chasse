@@ -66,7 +66,7 @@ import { createWolfCastleVisit, inspectWolfCastleVisit, actWolfCastle, applyWolf
 import { createPlanetArrival, inspectPlanetArrival, completePlanetArrivalHandoff, type PlanetArrivalState } from "./systems/planetArrival";
 import { inspectPlanetArrivalRun, type PlanetArrivalRun } from "./systems/planetArrivalRun";
 import { DEFAULT_PLAN, TRIO_MEMBERS, assignExpeditionMember, careForExpeditionMember, expeditionTrioReady,
-  normalizePlanetInsertionPlan, samePlanetInsertion, settleExpeditionOutcome, shipSupportsSurfaceInsertion,
+  normalizePlanetInsertionPlan, recruitExpeditionMember, reserveExpeditionMember, samePlanetInsertion, settleExpeditionOutcome, shipSupportsSurfaceInsertion,
   type ExpeditionMemberId, type PlanetInsertionPlan } from "./systems/planetInsertion";
 import InsertionPlanPanel from "./InsertionPlanPanel";
 import { SHIP_INSERTION_ENERGY, debitShipInsertionCloak, hasShipInsertionDebit, rechargeShipInsertionEnergy,
@@ -316,7 +316,7 @@ const WolfCastleScene = React.lazy(() => import("./WolfCastleScene"));
 const PlanetArrivalCinematic = React.lazy(() => import("./PlanetArrivalCinematic"));
 const PitHonorsPanel = React.lazy(() => import("./PitHonorsPanel"));
 const GalaxyMapPanel = React.lazy(() => import("./GalaxyMapPanel"));
-const PhysicalShipDeck = React.lazy(() => import("./PhysicalShipDeck"));
+const ShipInterior25D = React.lazy(() => import("./ShipInterior25D"));
 const ShipAcquisitionV89 = React.lazy(() => import("./ShipAcquisitionV89"));
 const TrophyWorkshop = React.lazy(() => import("./TrophyWorkshop"));
 const EnemyBestiaryV8 = React.lazy(() => import("./EnemyBestiaryV8"));
@@ -2200,13 +2200,39 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
     return true;
   }, [reconcileHuntWrite]);
 
-  const assignExpeditionHunter = useCallback((id: ExpeditionMemberId) => {
+  const recruitExpeditionHunter = useCallback((id: ExpeditionMemberId) => {
+    const current = saveRef.current;
+    if (screen !== 'briefing' || settingsOpen || archiveTransferBusy || archiveRecoveryIssue || campaignSaveBusy ||
+        activeHuntSessionRef.current || resumableHunt || current.planetArrival || !evaluateClanShipAccess(current).allowed) return;
+    const roster = recruitExpeditionMember(current.expeditionRoster, current.createdAt, id);
+    if (persistSocialProgress({ expeditionRoster: roster })) setToast(`${TRIO_MEMBERS.find(member => member.id === id)?.name} : recrutement confirmé. Choisis ensuite son affectation.`);
+  }, [archiveRecoveryIssue, archiveTransferBusy, campaignSaveBusy, persistSocialProgress, resumableHunt, screen, settingsOpen]);
+
+  const assignExpeditionHunter = useCallback((id: ExpeditionMemberId, expectedShipId: ShipId) => {
     const current = saveRef.current;
     if (screen !== 'briefing' || settingsOpen || archiveTransferBusy || archiveRecoveryIssue || campaignSaveBusy ||
         activeHuntSessionRef.current || resumableHunt || current.planetArrival || !evaluateClanShipAccess(current).allowed) return;
     const shipId = loadShipProgression(current).selectedShipId;
+    if (shipId !== expectedShipId) {
+      setSelectedShipId(shipId);
+      setToast('La coque sélectionnée a changé. Vérifie le vaisseau avant de confirmer l’affectation.'); return;
+    }
+    if (!current.expeditionRoster?.members.some(member => member.id === id)) {
+      setToast('Recrute ce compagnon avant de lui proposer une affectation.'); return;
+    }
     const roster = assignExpeditionMember(current.expeditionRoster, current.createdAt, shipId, id);
     if (persistSocialProgress({ expeditionRoster: roster })) setToast(`${TRIO_MEMBERS.find(member => member.id === id)?.name} : affectation au vaisseau confirmée.`);
+  }, [archiveRecoveryIssue, archiveTransferBusy, campaignSaveBusy, persistSocialProgress, resumableHunt, screen, settingsOpen]);
+
+  const reserveExpeditionHunter = useCallback((id: ExpeditionMemberId, expectedShipId: ShipId) => {
+    const current = saveRef.current;
+    if (screen !== 'briefing' || settingsOpen || archiveTransferBusy || archiveRecoveryIssue || campaignSaveBusy ||
+        activeHuntSessionRef.current || resumableHunt || current.planetArrival || !evaluateClanShipAccess(current).allowed) return;
+    if (current.expeditionRoster?.members.find(member => member.id === id)?.assignedShipId !== expectedShipId) {
+      setToast('L’affectation a changé. Vérifie le dossier du compagnon avant sa mise en réserve.'); return;
+    }
+    const roster = reserveExpeditionMember(current.expeditionRoster, current.createdAt, id);
+    if (persistSocialProgress({ expeditionRoster: roster })) setToast(`${TRIO_MEMBERS.find(member => member.id === id)?.name} : mise en réserve confirmée. Son recrutement et son état sont conservés.`);
   }, [archiveRecoveryIssue, archiveTransferBusy, campaignSaveBusy, persistSocialProgress, resumableHunt, screen, settingsOpen]);
 
   const careForExpeditionHunter = useCallback((id: ExpeditionMemberId, expectedAvailability: 'recovering' | 'missing') => {
@@ -4450,7 +4476,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
                   Pause / réglages
                 </button>
               </div>
-              <PhysicalShipDeck
+              <ShipInterior25D
                 appearance={save.appearance}
                 loadout={save.loadout}
                 trophyDisplays={deckTrophyDisplays}
@@ -4736,7 +4762,8 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
                   ownerCreatedAt={save.createdAt} roster={save.expeditionRoster} clanMarks={save.profile.clanMarks}
                   campaignAccess={evaluateClanShipAccess(save)}
                   busy={settingsOpen || archiveTransferBusy || !!archiveRecoveryIssue || campaignSaveBusy || !!resumableHunt}
-                  onChange={setInsertionPlan} onAssign={assignExpeditionHunter} onCare={careForExpeditionHunter} />
+                  onChange={setInsertionPlan} onRecruit={recruitExpeditionHunter} onAssign={assignExpeditionHunter}
+                  onReserve={reserveExpeditionHunter} onCare={careForExpeditionHunter} />
                 <div className="briefing-actions">
                   <button
                     type="button"

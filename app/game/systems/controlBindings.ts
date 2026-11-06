@@ -288,6 +288,11 @@ const ACTION_DEFINITION_BY_ID = new Map<
   CONTROL_ACTION_DEFINITIONS.map((definition) => [definition.id, definition]),
 );
 
+// Pod recovery also has an in-scene button. An old profile may already use
+// every supported key; keep its bindings rather than inventing a collision or
+// resetting the entire keyboard when this newly added action is migrated.
+const OPTIONAL_KEYBOARD_ACTIONS: ReadonlySet<ControlActionId> = new Set(["hunt.podSelfDestruct"]);
+
 function freezeBindings(
   source: Record<ControlActionId, readonly string[]>,
 ): ControlBindings {
@@ -582,7 +587,7 @@ export function normalizeControlBindings(
       continue;
     }
     const codes = normalizeBindingValue(actionId, source[actionId], issues);
-    if (codes.length === 0) {
+    if (codes.length === 0 && !OPTIONAL_KEYBOARD_ACTIONS.has(actionId)) {
       issues.push(issue(
         "error",
         "empty-binding",
@@ -592,6 +597,21 @@ export function normalizeControlBindings(
       normalized[actionId] = DEFAULT_CONTROL_BINDINGS[actionId];
     } else {
       normalized[actionId] = codes;
+    }
+  }
+
+  if (source && !Object.prototype.hasOwnProperty.call(source, "hunt.podSelfDestruct")) {
+    const occupied = new Set(CONTROL_ACTION_DEFINITIONS
+      .filter(definition => definition.context === "hunt" && definition.id !== "hunt.podSelfDestruct")
+      .flatMap(definition => normalized[definition.id]));
+    const key = ["KeyX", ...SUPPORTED_CONTROL_KEY_CODES].find(code => !occupied.has(code));
+    normalized["hunt.podSelfDestruct"] = key ? [key] : [];
+    if (key !== "KeyX") {
+      const warning = issues.findIndex(entry => entry.code === "missing-action" && entry.actionId === "hunt.podSelfDestruct");
+      issues[warning] = issue("warning", "missing-action", key
+        ? `L’autodestruction des capsules utilise ${key} pour conserver tes commandes existantes.`
+        : "L’autodestruction des capsules reste accessible par son bouton ; aucune touche libre n’est disponible.",
+      "hunt.podSelfDestruct", key);
     }
   }
 
@@ -787,7 +807,7 @@ export function rebindControlAction(
 
   const issues: ControlBindingIssue[] = [];
   const codes = normalizeBindingValue(actionId, requestedCodes, issues);
-  if (codes.length === 0) {
+  if (codes.length === 0 && !OPTIONAL_KEYBOARD_ACTIONS.has(actionId)) {
     issues.push(issue(
       "error",
       "empty-binding",
@@ -836,7 +856,7 @@ export function rebindControlAction(
     for (const definition of CONTROL_ACTION_DEFINITIONS) {
       if (definition.context !== context || definition.id === actionId) continue;
       const remaining = mutable[definition.id].filter((code) => !requested.has(code));
-      if (remaining.length === 0) {
+      if (remaining.length === 0 && !OPTIONAL_KEYBOARD_ACTIONS.has(definition.id)) {
         issues.push(issue(
           "error",
           "empty-binding",

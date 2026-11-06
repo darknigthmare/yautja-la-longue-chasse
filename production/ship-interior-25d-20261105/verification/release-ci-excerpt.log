@@ -1,0 +1,24 @@
+2026-11-05T11:37:30.9406216Z {"status":"SNAPSHOT_WRITTEN","path":"outputs/qa-ship-interior-25d/runtime-inputs.json","bytes":403483,"sha256":"043ea4a9f7c431df625f826b818efdca73d24e79cbc19a35e87e76ff8974e4c9"}
+2026-11-05T11:37:41.5835756Z # tests 14
+2026-11-05T11:37:41.5839974Z # pass 14
+2026-11-05T11:37:41.5840325Z # fail 0
+2026-11-05T11:40:20.3564305Z PASS The real developer URL mounts the 2.5D room and preserves an existing campaign
+2026-11-05T11:40:22.1844986Z PASS Keyboard movement uses both ground axes, native depth projection and released input
+2026-11-05T11:40:28.8341170Z PASS Furniture blocks native movement and fades only when the hunter really walks behind it
+2026-11-05T11:40:31.5455911Z PASS A real floor click walks around the console to its service without crossing the solid
+2026-11-05T11:40:33.1079013Z PASS Walk the connected ship to Passerelle de navigation, use its service and return at the same position
+2026-11-05T11:40:39.4498199Z PASS Walk the connected ship to Armurerie, use its service and return at the same position
+2026-11-05T11:40:45.9873190Z PASS Walk the connected ship to Archives du chasseur, use its service and return at the same position
+2026-11-05T11:40:51.9956310Z PASS Walk the connected ship to Forge des parures, use its service and return at the same position
+2026-11-05T11:41:12.3935559Z PASS Walk the connected ship to Galerie des trophées, use its service and return at the same position
+2026-11-05T11:41:19.1399197Z PASS Walk the connected ship to Baie médicale, use its service and return at the same position
+2026-11-05T11:41:27.0585651Z PASS Walk the connected ship to Cercle d’entraînement, use its service and return at the same position
+2026-11-05T11:41:32.9346007Z PASS Walk the connected ship to Sas de chasse, use its service and return at the same position
+2026-11-05T11:42:08.1618057Z PASS The aft lift also requires a walked threshold and supports the reverse journey
+2026-11-05T11:42:14.5869419Z PASS Mobile 390 px keeps the camera readable, touch movement working and swipe separate from walking
+2026-11-05T11:42:20.9711415Z PASS Mobile 320 px keeps the camera readable, touch movement working and swipe separate from walking
+2026-11-05T11:42:22.0526396Z PASS F8 unmounts the test and a real URL reload recreates the initial ship without changing the campaign
+2026-11-05T11:42:22.0545492Z PASS Every requested asset exists and the actual scene produces no browser or console exception
+2026-11-05T11:42:22.5226182Z {"passed":true,"checks":17,"failed":0,"missingAssets":0,"report":"outputs/qa-ship-interior-25d/report.json"}
+2026-11-05T11:42:25.3102884Z SHA256 digest of uploaded artifact zip is f3bdffd210f60633d69e091f0e2e833605b7ab4707fb1c28648e21464cdd4b96
+2026-11-05T11:42:25.8215368Z Artifact ship-interior-25d-5f9dd187a52575719cada89bb184c03bcfe14bc1 has been successfully uploaded! Final size is 28138263 bytes. Artifact ID is 13411571937

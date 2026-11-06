@@ -1,0 +1,147 @@
+name: Physical ship interior 2.5D
+
+on:
+  pull_request:
+    branches: [main, fix/cinematic-spatial-audit-20261105]
+    paths:
+      - 'app/dev/**'
+      - 'app/game/ShipInterior25D*'
+      - 'app/game/shipInterior*'
+      - 'app/game/systems/shipInterior25d.ts'
+      - 'app/game/systems/homeworldGeometryV64.ts'
+      - 'app/game/GameClient.tsx'
+      - 'public/game/ship-interior/**'
+      - 'scripts/qa-ship-interior-25d.mjs'
+      - 'scripts/snapshot-runtime-v113.mjs'
+      - 'docs/qa/current-integration-20261103/runtime-inputs.json'
+      - 'tests/ship-interior-25d.test.mjs'
+      - 'tests/game-client-code-splitting.test.mjs'
+      - 'tests/fixtures/clan-ship-browser-assets.json'
+      - '.github/workflows/ship-interior-25d.yml'
+  push:
+    branches: [feat/ship-interior-25d-20261105]
+    paths:
+      - 'app/dev/**'
+      - 'app/game/ShipInterior25D*'
+      - 'app/game/shipInterior*'
+      - 'app/game/systems/shipInterior25d.ts'
+      - 'app/game/systems/homeworldGeometryV64.ts'
+      - 'app/game/GameClient.tsx'
+      - 'public/game/ship-interior/**'
+      - 'scripts/qa-ship-interior-25d.mjs'
+      - 'scripts/snapshot-runtime-v113.mjs'
+      - 'docs/qa/current-integration-20261103/runtime-inputs.json'
+      - 'tests/ship-interior-25d.test.mjs'
+      - 'tests/game-client-code-splitting.test.mjs'
+      - 'tests/fixtures/clan-ship-browser-assets.json'
+      - '.github/workflows/ship-interior-25d.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ship-interior-25d-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  interior:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    env:
+      ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
+      NEXT_TELEMETRY_DISABLED: '1'
+      SHIP_INTERIOR_QA_SOURCE_COMMIT: ${{ github.event.pull_request.head.sha || github.sha }}
+      SHIP_INTERIOR_QA_START_SERVER: '1'
+      SHIP_INTERIOR_QA_HEADED: '1'
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          persist-credentials: false
+          filter: blob:none
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /*
+            !/*/
+            /app/
+            /scripts/
+            /tests/
+            /desktop/
+            /build/
+            /.github/workflows/ship-interior-25d.yml
+            /.openai/hosting.json
+            /docs/qa/current-integration-20261103/runtime-inputs.json
+            /public/**/manifest.json
+            /public/audio/
+            /public/game/ship-interior/
+            /public/game/backgrounds/ship-hub-v4.webp
+            /public/game/sprites/hunter.webp
+            /public/game/assets/v3/actors/yautja/hunter/equipment/registered/blade-housing.webp
+            /public/game/assets/v3/actors/yautja/hunter/equipment/registered/blades.webp
+            /public/game/ships/v12/classic-predator-spaceship.webp
+            /public/game/ships/v13/classic-predator-spaceship-top.webp
+      - name: Materialize real service assets and every canonical runtime input
+        run: |
+          node --input-type=module <<'NODE'
+          import assert from 'node:assert/strict';
+          import { existsSync, readFileSync } from 'node:fs';
+          import { execFileSync } from 'node:child_process';
+          const { paths } = JSON.parse(readFileSync('tests/fixtures/clan-ship-browser-assets.json', 'utf8'));
+          assert.equal(new Set(paths).size, paths.length, 'The established rig/service fixture must remain unique');
+          for (const file of paths) {
+            assert.match(file, /^public\/game\/[A-Za-z0-9._/-]+$/);
+            assert.ok(file.split('/').every(part => part && part !== '.' && part !== '..'));
+          }
+          const { entries, files: canonicalCount } = JSON.parse(readFileSync('docs/qa/current-integration-20261103/runtime-inputs.json', 'utf8'));
+          assert.ok(Array.isArray(entries), 'The canonical snapshot must expose its exact runtime inputs');
+          const canonicalPaths = entries.map(entry => entry.path);
+          assert.equal(canonicalPaths.length, canonicalCount, 'The canonical runtime count must match its native entries');
+          assert.equal(new Set(canonicalPaths).size, canonicalPaths.length, 'Canonical runtime inputs must be unique');
+          for (const file of canonicalPaths) {
+            assert.match(file, /^[A-Za-z0-9._/-]+$/);
+            assert.ok(file.split('/').every(part => part && part !== '.' && part !== '..'));
+          }
+          const requiredPaths = [...new Set([...paths, ...canonicalPaths])];
+          execFileSync('git', ['sparse-checkout', 'add', '--stdin'], {
+            input: requiredPaths.map(file => '/' + file).join('\n') + '\n', stdio: ['pipe', 'inherit', 'inherit'],
+          });
+          assert.deepEqual(requiredPaths.filter(file => !existsSync(file)), [], 'Every fixture and canonical runtime input must exist in this exact commit');
+          NODE
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci --ignore-scripts --no-audit --no-fund
+      - name: Generate and verify the canonical runtime inventory with the official script
+        run: |
+          mkdir -p outputs/qa-ship-interior-25d
+          node scripts/snapshot-runtime-v113.mjs --write outputs/qa-ship-interior-25d/runtime-inputs.json
+          node scripts/snapshot-runtime-v113.mjs --check docs/qa/current-integration-20261103/runtime-inputs.json
+      - name: Strictly lint the new scene, geometry, browser recipe and loading contract
+        run: >-
+          node node_modules/eslint/bin/eslint.js --max-warnings=0
+          app/game/ShipInterior25D.tsx app/game/systems/shipInterior25d.ts
+          scripts/qa-ship-interior-25d.mjs tests/ship-interior-25d.test.mjs
+          tests/game-client-code-splitting.test.mjs
+      - name: Exercise native ground motion, doors and asynchronous loading
+        run: >-
+          node --experimental-strip-types --test --test-concurrency=1
+          tests/ship-interior-25d.test.mjs tests/game-client-code-splitting.test.mjs
+      - name: Build the actual production application including its TypeScript check
+        shell: bash
+        run: |
+          mkdir -p outputs/qa-ship-interior-25d
+          npm run build:production 2>&1 | tee outputs/qa-ship-interior-25d/build.log
+      - name: Install the locked Chromium and native video support
+        run: node node_modules/playwright-core/cli.js install --with-deps chromium
+      - name: Walk the ship through real Next, keyboard, touch, services and physical doors
+        run: xvfb-run -a --server-args="-screen 0 1920x1200x24" node scripts/qa-ship-interior-25d.mjs
+      - name: Preserve exact-source observations, captures, video and failures
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: ship-interior-25d-${{ github.event.pull_request.head.sha || github.sha }}
+          path: outputs/qa-ship-interior-25d/
+          if-no-files-found: warn
+          retention-days: 14

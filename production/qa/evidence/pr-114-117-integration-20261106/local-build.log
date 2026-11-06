@@ -1,0 +1,148 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> yautja-la-longue-chasse@1.0.0 build:production
+> node scripts/build-production-v94.mjs
+
+[production] audio
+[audio] 40 slots, 22 supplied, 0 ignored
+[production] next
+▲ Next.js 16.3.5 (webpack)
+✓ Running next.config.ts took 42ms
+
+  Creating an optimized production build ...
+✓ Compiled successfully in 13.1s
+  Running TypeScript ...
+  Finished TypeScript in 63s ...
+  Collecting page data using 8 workers ...
+  Generating static pages using 8 workers (0/10) ...
+  Generating static pages using 8 workers (2/10) 
+  Generating static pages using 8 workers (4/10) 
+  Generating static pages using 8 workers (7/10) 
+✓ Generating static pages using 8 workers (10/10) in 1560ms
+  Finalizing page optimization ...
+  Collecting build traces ...
+
+Route (app)
+┌ ƒ /
+├ ƒ /_not-found
+├ ƒ /clan-war-qa-v92
+├ ƒ /dev
+├ ƒ /dialogues
+├ ƒ /gauntlet-qa-v135
+├ ƒ /gauntlet-qa-v136
+├ ƒ /pit-lab
+├ ƒ /planet-generator-v102
+├ ƒ /planet-generator-v103
+├ ƒ /planet-materials-v101
+├ ƒ /rig-lab
+├ ƒ /solo-qa-v92
+└ ƒ /visual-qa-v90
+
+
+ƒ Proxy (Middleware)
+
+ƒ  (Dynamic)  server-rendered on demand
+
+[production] pit-css
+{
+  "status": "PASS",
+  "checkedAt": "2026-11-06T14:58:41.686Z",
+  "nextDir": "/workspace/scratch/9c13a1a9b9e6/yautja-la-longue-chasse/.next",
+  "scope": "Root game route compiled CSS referenced by its webpack client manifest; no source CSS is read.",
+  "files": [
+    {
+      "path": "static/css/c510889949e7af4f.css",
+      "bytes": 126161,
+      "sha256": "5e708e0b1d7a4fb7762d6ae5a5808ec7f3a1b64278e25d0c4cf0b07394d7ddd2"
+    },
+    {
+      "path": "static/css/37e68a663ba2fbdb.css",
+      "bytes": 41149,
+      "sha256": "23fc88b418b819ea694fa08041e8e412e5da6cd2858d9c0d36d38851ed910fae"
+    }
+  ],
+  "checks": [
+    {
+      "id": "toast-does-not-intercept-hud",
+      "selector": "toast",
+      "property": "pointer-events",
+      "expected": "none",
+      "status": "PASS",
+      "declarations": [
+        {
+          "file": "static/css/c510889949e7af4f.css",
+          "selector": ".toast",
+          "value": "none",
+          "important": false,
+          "unconditional": true,
+          "matches": true
+        }
+      ],
+      "resets": []
+    },
+    {
+      "id": "immersive-toast-above-desktop-menu",
+      "selector": "desktop",
+      "property": "bottom",
+      "expected": "max(76px, calc(env(safe-area-inset-bottom) + 64px))",
+      "status": "PASS",
+      "declarations": [
+        {
+          "file": "static/css/c510889949e7af4f.css",
+          "selector": ".game-shell:has([data-pit-immersive=true])>.toast",
+          "value": "max(76px,calc(env(safe-area-inset-bottom) + 64px))",
+          "important": false,
+          "unconditional": true,
+          "matches": true
+        }
+      ],
+      "resets": []
+    },
+    {
+      "id": "touch-toast-below-health-hud",
+      "selector": "touch",
+      "property": "top",
+      "expected": "max(152px, calc(env(safe-area-inset-top) + 142px))",
+      "status": "PASS",
+      "declarations": [
+        {
+          "file": "static/css/c510889949e7af4f.css",
+          "selector": ".game-shell:has([data-pit-immersive=true] [aria-label=Commandes\\ tactiles])>.toast,.game-shell:has([data-pit-immersive=true] [data-pit-finisher-hud])>.toast",
+          "value": "max(152px,calc(env(safe-area-inset-top) + 142px))",
+          "important": false,
+          "unconditional": true,
+          "matches": true
+        }
+      ],
+      "resets": []
+    },
+    {
+      "id": "touch-toast-releases-bottom",
+      "selector": "touch",
+      "property": "bottom",
+      "expected": "auto",
+      "status": "PASS",
+      "declarations": [
+        {
+          "file": "static/css/c510889949e7af4f.css",
+          "selector": ".game-shell:has([data-pit-immersive=true] [aria-label=Commandes\\ tactiles])>.toast,.game-shell:has([data-pit-immersive=true] [data-pit-finisher-hud])>.toast",
+          "value": "auto",
+          "important": false,
+          "unconditional": true,
+          "matches": true
+        }
+      ],
+      "resets": []
+    }
+  ],
+  "errors": [],
+  "limits": [
+    "Verifies these exact compiled selectors and declarations, not the entire CSS cascade or visual layout.",
+    "Does not certify CDN contents, service-worker caches, or the deployed browser; public smoke QA remains required.",
+    "The webpack manifest format is required and fails closed if it changes; equivalent unsupported CSS spellings need review."
+  ]
+}
+[production] native-origin
+{"status":"skipped","reason":"not-exact-linux-vercel-build-root"}
+[production] static-output
+{"status":"skipped","reason":"not-exact-linux-vercel-build-root"}

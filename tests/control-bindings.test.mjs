@@ -40,6 +40,67 @@ function mutableDefaults() {
   );
 }
 
+test("old command profiles preserve occupied X bindings when pod recovery is introduced", () => {
+  const legacy = mutableDefaults();
+  delete legacy["hunt.podSelfDestruct"];
+  legacy["hunt.toggleCloak"] = ["KeyX"];
+  legacy["hunt.interact"] = ["KeyF"];
+  legacy["pit.p1AttackLight"] = ["KeyB"];
+  for (const version of [1, 2, 3]) {
+    const migrated = controls.deserializeControlBindings({ version, bindings: legacy });
+    assert.equal(migrated.restored, true, JSON.stringify(migrated.issues));
+    for (const [action, codes] of Object.entries(legacy)) assert.deepEqual(migrated.bindings[action], codes, action);
+    assert.deepEqual(controls.matchingControlActions("hunt", "KeyX", migrated.bindings), ["hunt.toggleCloak"]);
+    assert.equal(migrated.bindings["hunt.podSelfDestruct"].length, 1);
+    assert.notEqual(migrated.bindings["hunt.podSelfDestruct"][0], "KeyX");
+    assert.deepEqual(controls.findControlBindingConflicts(migrated.bindings), []);
+    assert.deepEqual(controls.deserializeControlBindings(controls.serializeControlBindings(migrated.bindings)).bindings,
+      migrated.bindings);
+  }
+});
+
+test("a fully occupied old keyboard keeps its controls and leaves only the new pod shortcut unassigned", () => {
+  const legacy = mutableDefaults();
+  delete legacy["hunt.podSelfDestruct"];
+  const occupied = new Set(Object.entries(legacy)
+    .filter(([id]) => id.startsWith("hunt.") && id !== "hunt.toggleCloak").flatMap(([, codes]) => codes));
+  legacy["hunt.toggleCloak"] = controls.SUPPORTED_CONTROL_KEY_CODES.filter(code => !occupied.has(code));
+  const migrated = controls.deserializeControlBindings({ version: 3, bindings: legacy });
+  assert.equal(migrated.restored, true, JSON.stringify(migrated.issues));
+  for (const [action, codes] of Object.entries(legacy)) assert.deepEqual(migrated.bindings[action], codes, action);
+  assert.deepEqual(migrated.bindings["hunt.podSelfDestruct"], []);
+  assert.deepEqual(controls.findControlBindingConflicts(migrated.bindings), []);
+  const reloaded = controls.deserializeControlBindings(controls.serializeControlBindings(migrated.bindings));
+  assert.equal(reloaded.restored, true);
+  assert.deepEqual(reloaded.bindings, migrated.bindings);
+  for (const code of controls.SUPPORTED_CONTROL_KEY_CODES) {
+    assert.equal(controls.matchesControlAction("hunt.podSelfDestruct", code, reloaded.bindings), false);
+  }
+});
+
+test("explicitly conflicting pod keys are still rejected instead of silently remapped", () => {
+  const conflicts = mutableDefaults();
+  conflicts["hunt.toggleCloak"] = ["KeyX"];
+  assert.equal(controls.normalizeControlBindings(conflicts).valid, false);
+  assert.equal(controls.deserializeControlBindings({ version: 3, bindings: conflicts }).restored, false);
+});
+
+test("reclaiming a pod shortcut preserves cloak input and allows a later keyboard assignment", () => {
+  const reclaimed = controls.rebindControlAction(controls.DEFAULT_CONTROL_BINDINGS, "hunt.toggleCloak", "KeyX",
+    { conflictPolicy: "replace" });
+  assert.equal(reclaimed.accepted, true);
+  assert.deepEqual(reclaimed.bindings["hunt.toggleCloak"], ["KeyX"]);
+  assert.deepEqual(reclaimed.bindings["hunt.podSelfDestruct"], []);
+  assert.deepEqual(controls.matchingControlActions("hunt", "KeyX", reclaimed.bindings), ["hunt.toggleCloak"]);
+  const reassigned = controls.rebindControlAction(reclaimed.bindings, "hunt.podSelfDestruct", "KeyB");
+  assert.equal(reassigned.accepted, true);
+  const restored = controls.deserializeControlBindings(controls.serializeControlBindings(reassigned.bindings));
+  assert.equal(restored.restored, true);
+  assert.deepEqual(controls.matchingControlActions("hunt", "KeyB", restored.bindings), ["hunt.podSelfDestruct"]);
+  assert.deepEqual(controls.matchingControlActions("hunt", "KeyX", restored.bindings), ["hunt.toggleCloak"]);
+  assert.equal(controls.rebindControlAction(restored.bindings, "hunt.pause", []).accepted, false);
+});
+
 test("the AZERTY defaults cover every stable action without contextual conflicts", () => {
   assert.equal(controls.CONTROL_ACTION_IDS.length, 74);
   assert.deepEqual(

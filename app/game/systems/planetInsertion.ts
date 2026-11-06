@@ -80,22 +80,26 @@ export function triadRecommendedForMission(missionId: MissionId): boolean {
   return ['fungal-hivemind', 'ruins-ancient-guardian', 'volcano-bad-blood'].includes(missionId);
 }
 
-/** Recruitment is explicit. The assignment is to one owned/selected personal hull. */
+export const EXPEDITION_ROSTER_VERSION = 2 as const;
+
+/** Recruitment and hull assignment are independent; null assignment means reserve. */
 export interface ExpeditionRoster {
-  version: 1;
+  version: typeof EXPEDITION_ROSTER_VERSION;
   ownerCreatedAt: string;
-  members: { id: ExpeditionMemberId; assignedShipId: ShipId; availability: 'ready' | 'recovering' | 'missing' }[];
+  members: { id: ExpeditionMemberId; assignedShipId: ShipId | null; availability: 'ready' | 'recovering' | 'missing' }[];
   /** A repeated completion cannot heal, lose or debit the same hunters twice. */
   settledRunIds: string[];
 }
 
+/** Preserve v1 agreements and assignments; never infer recruitment from a catalogue. */
 export function inspectExpeditionRoster(value: unknown, owner: string): {
   status: 'absent' | 'valid' | 'invalid-save' | 'future-version'; state: ExpeditionRoster | null;
 } {
   if (value === undefined || value === null) return { status: 'absent', state: null };
-  if (record(value) && typeof value.version === 'number' && value.version > 1) return { status: 'future-version', state: null };
+  if (record(value) && typeof value.version === 'number' && value.version > EXPEDITION_ROSTER_VERSION) return { status: 'future-version', state: null };
   const invalid = { status: 'invalid-save' as const, state: null };
-  if (!record(value) || !exact(value, ['version', 'ownerCreatedAt', 'members', 'settledRunIds']) || value.version !== 1 ||
+  if (!record(value) || !exact(value, ['version', 'ownerCreatedAt', 'members', 'settledRunIds']) ||
+      (value.version !== 1 && value.version !== EXPEDITION_ROSTER_VERSION) ||
       value.ownerCreatedAt !== owner || !owner || !Array.isArray(value.members) || value.members.length > 2 ||
       !Array.isArray(value.settledRunIds) || value.settledRunIds.length > 64 ||
       value.settledRunIds.some(id => typeof id !== 'string' || !id || id.length > 160 || /[\x00-\x1f\x7f]/.test(id)) ||
@@ -103,22 +107,39 @@ export function inspectExpeditionRoster(value: unknown, owner: string): {
   const members: ExpeditionRoster['members'] = [];
   for (const raw of value.members) {
     if (!record(raw) || !exact(raw, ['id', 'assignedShipId', 'availability']) || !TRIO_MEMBERS.some(member => member.id === raw.id) ||
-        !isShipId(raw.assignedShipId) || !['ready', 'recovering', 'missing'].includes(raw.availability as string) ||
+        (!isShipId(raw.assignedShipId) && !(value.version === EXPEDITION_ROSTER_VERSION && raw.assignedShipId === null)) ||
+        !['ready', 'recovering', 'missing'].includes(raw.availability as string) ||
         members.some(member => member.id === raw.id)) return invalid;
-    members.push({ id: raw.id as ExpeditionMemberId, assignedShipId: raw.assignedShipId,
+    members.push({ id: raw.id as ExpeditionMemberId, assignedShipId: raw.assignedShipId as ShipId | null,
       availability: raw.availability as ExpeditionRoster['members'][number]['availability'] });
   }
-  return { status: 'valid', state: { version: 1, ownerCreatedAt: owner, members, settledRunIds: [...value.settledRunIds] as string[] } };
+  return { status: 'valid', state: { version: EXPEDITION_ROSTER_VERSION, ownerCreatedAt: owner, members, settledRunIds: [...value.settledRunIds] as string[] } };
 }
 
-export function assignExpeditionMember(roster: ExpeditionRoster | null | undefined, owner: string, shipId: ShipId, id: ExpeditionMemberId): ExpeditionRoster {
-  if (!owner || !isShipId(shipId) || !TRIO_MEMBERS.some(member => member.id === id)) throw new TypeError('Affectation de triade invalide.');
+/** Accept an explicit agreement without creating an occupant aboard any hull. */
+export function recruitExpeditionMember(roster: ExpeditionRoster | null | undefined, owner: string, id: ExpeditionMemberId): ExpeditionRoster {
+  if (!owner || !TRIO_MEMBERS.some(member => member.id === id)) throw new TypeError('Recrutement de triade invalide.');
   const current = inspectExpeditionRoster(roster, owner);
   if (current.status === 'invalid-save' || current.status === 'future-version') throw new TypeError('Registre de triade incompatible.');
-  const availability = current.state?.members.find(member => member.id === id)?.availability ?? 'ready';
-  return { version: 1, ownerCreatedAt: owner, settledRunIds: current.state?.settledRunIds ?? [], members: [
-    ...(current.state?.members ?? []).filter(member => member.id !== id), { id, assignedShipId: shipId, availability },
+  if (current.state?.members.some(member => member.id === id)) return current.state;
+  return { version: EXPEDITION_ROSTER_VERSION, ownerCreatedAt: owner, settledRunIds: current.state?.settledRunIds ?? [], members: [
+    ...(current.state?.members ?? []), { id, assignedShipId: null, availability: 'ready' as const },
   ].sort((a, b) => a.id.localeCompare(b.id)) };
+}
+
+/** Assign only an already recruited hunter; moving hull never changes availability. */
+export function assignExpeditionMember(roster: ExpeditionRoster | null | undefined, owner: string, shipId: ShipId, id: ExpeditionMemberId): ExpeditionRoster {
+  if (!owner || !isShipId(shipId) || !TRIO_MEMBERS.some(member => member.id === id)) throw new TypeError('Affectation de triade invalide.');
+  const current = inspectExpeditionRoster(roster, owner).state;
+  if (!current?.members.some(member => member.id === id)) throw new TypeError('Un compagnon recruté est requis avant son affectation.');
+  return { ...current, members: current.members.map(member => member.id === id ? { ...member, assignedShipId: shipId } : member) };
+}
+
+/** Voluntary reserve keeps the agreement and all care/rescue debts, without a hull. */
+export function reserveExpeditionMember(roster: ExpeditionRoster | null | undefined, owner: string, id: ExpeditionMemberId): ExpeditionRoster {
+  const current = inspectExpeditionRoster(roster, owner).state;
+  if (!current?.members.some(member => member.id === id)) throw new TypeError('Un compagnon recruté est requis pour la mise en réserve.');
+  return { ...current, members: current.members.map(member => member.id === id ? { ...member, assignedShipId: null } : member) };
 }
 
 export function expeditionTrioReady(roster: ExpeditionRoster | null | undefined, owner: string, shipId: ShipId): boolean {

@@ -22,7 +22,8 @@ const SHIP = 'classic-predator-spaceship', RUN = 'insertion-test-run';
 const plans = ['pod', 'ship'].flatMap(method => ['solo', 'triad'].map(team => ({ version: 1, method, team })));
 const trioPlan = plans.find(plan => plan.method === 'ship' && plan.team === 'triad');
 function roster() {
-  return p.TRIO_MEMBERS.reduce((state, { id }) => p.assignExpeditionMember(state, OWNER, SHIP, id), null);
+  return p.TRIO_MEMBERS.reduce((state, { id }) =>
+    p.assignExpeditionMember(p.recruitExpeditionMember(state, OWNER, id), OWNER, SHIP, id), null);
 }
 function store() {
   const values = new Map();
@@ -91,10 +92,10 @@ test('every allowed hull has an inspected, bounded ground contact below its exit
 test('recruitment grants no automatic members and both actual assignments are required', () => {
   assert.equal(p.inspectExpeditionRoster(undefined, OWNER).status, 'absent');
   assert.equal(p.expeditionTrioReady(null, OWNER, SHIP), false);
-  const first = p.assignExpeditionMember(null, OWNER, SHIP, 'karhek');
+  const first = p.assignExpeditionMember(p.recruitExpeditionMember(null, OWNER, 'karhek'), OWNER, SHIP, 'karhek');
   assert.equal(first.members.length, 1);
   assert.equal(p.expeditionTrioReady(first, OWNER, SHIP), false);
-  const both = p.assignExpeditionMember(first, OWNER, 'wolf-ship', 'saketh');
+  const both = p.assignExpeditionMember(p.recruitExpeditionMember(first, OWNER, 'saketh'), OWNER, 'wolf-ship', 'saketh');
   assert.equal(p.expeditionTrioReady(both, OWNER, SHIP), false);
   assert.equal(p.expeditionTrioReady(roster(), OWNER, SHIP), true);
   assert.equal(p.expeditionTrioReady(roster(), OTHER, SHIP), false);
@@ -107,7 +108,7 @@ test('roster inspection refuses foreign owners, duplicate identities, future ver
     { ...good, members: [{ ...good.members[0], assignedShipId: 'unknown' }] }, { ...good, bonus: 5 },
     { ...good, settledRunIds: [RUN, RUN] }];
   for (const raw of cases) assert.equal(p.inspectExpeditionRoster(raw, OWNER).status, 'invalid-save');
-  assert.equal(p.inspectExpeditionRoster({ ...good, version: 2 }, OWNER).status, 'future-version');
+  assert.equal(p.inspectExpeditionRoster({ ...good, version: 3 }, OWNER).status, 'future-version');
 });
 
 test('real extraction consequences are bound to the live run and applied only once', () => {
@@ -198,7 +199,7 @@ test('incompatible plan and roster bytes are rejected before they can replace th
   const bad = [
     { ...valid, expeditionRoster: null },
     { ...valid, expeditionRoster: { ...valid.expeditionRoster, ownerCreatedAt: OTHER } },
-    { ...valid, expeditionRoster: { ...valid.expeditionRoster, version: 2 } },
+    { ...valid, expeditionRoster: { ...valid.expeditionRoster, version: 3 } },
     { ...valid, planetArrival: { ...valid.planetArrival, insertion: null } },
     { ...valid, planetArrivalRun: { ...valid.planetArrivalRun, configuration: {
       ...valid.planetArrivalRun.configuration, insertion: p.DEFAULT_PLAN } } },

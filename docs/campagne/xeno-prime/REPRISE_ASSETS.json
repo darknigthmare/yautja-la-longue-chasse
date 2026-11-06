@@ -1,0 +1,1467 @@
+{
+  "schema_version": 2,
+  "pack": "Xeno Prime — Le Berceau enfoui",
+  "asset_namespace": "XENO-BE",
+  "documented_on": "2026-11-06",
+  "source_snapshot_version": "2.1-extension",
+  "source": {
+    "filename": "REPRISE_23_SPRITES.json",
+    "archive_id": "XENO-BE-ARCHIVE-85",
+    "sha256": "2daf5f569fc7bedd5ceed08abf459954f22d6e38a6ab57e7863ec6eca3ad932d"
+  },
+  "existing_sprite_count": 150,
+  "planned_sprite_count": 150,
+  "pending_sprite_count": 0,
+  "status": "23_demandes_initiales_produites_controlees_sans_integration_runtime",
+  "runtime_integrated": false,
+  "human_art_validation": false,
+  "historical_production_stop": {
+    "quota_reset_utc": "2026-09-17T23:04:48Z",
+    "scope": "Événement de production du 17 septembre 2026 ; ne décrit pas une limite actuelle.",
+    "current_quota_status": "23_images_produites_le_2026_11_06"
+  },
+  "relative_paths_base": "filename reste relatif à la racine du pack ; repository_path donne le chemin du PNG versionné depuis la racine Git.",
+  "missing_sprite_ids": [],
+  "missing_asset_keys": [],
+  "generation_order": [],
+  "generation_order_asset_keys": [],
+  "parallel_ready_ids": [],
+  "dependent_ids": [],
+  "instructions": [
+    "Les 23 demandes initiales et les 42 raccords V2.3 ont leur PNG réel ; le catalogue contient 150 sprites et six fonds.",
+    "Conserver les 85 sprites antérieurs et les nouveaux PNG natifs, sans copies renommées comptées comme nouvelle production.",
+    "Le plan, les prompts et les consignes de génération d’origine restent conservés dans les champs historiques ; ils ne décrivent pas des images encore absentes.",
+    "Les variantes sont disponibles séparément. Les compositions V2.1 gardent leurs placements et omissions historiques jusqu’à une révision explicite.",
+    "Intégrer ensuite pivots, échelles, attaches, animations, collisions, VFX, sauvegardes et QA de jeu. La validation artistique humaine reste distincte.",
+    "Le statut et les liens réels de chaque archive sont conservés dans DONNEES_ASSETS.json ; ne pas inventer de lien persistant.",
+    "Les 156 PNG sont versionnés dans art-source/xeno-prime/berceau-enfoui/v2.3 ; DEPOT_PNG.json relie chaque ID à son fichier et à ses empreintes."
+  ],
+  "source_conflicts": [
+    {
+      "asset_key": "XENO-BE-028",
+      "older_summary": "A_PRODUIRE_V2.md indique 025 comme référence de reprise.",
+      "consolidated_request": "REPRISE_23_SPRITES.json et son prompt désignent BG01 comme référence de palette et de matière.",
+      "resolution": "Conserver ici le prompt consolidé et BG01 ; 025 reste un repère secondaire possible. Cette divergence de référence ne crée aucun PNG et ne change pas le concept d’exuvie vide."
+    }
+  ],
+  "items": [
+    {
+      "id": "028",
+      "status": "generated_technical_checked",
+      "production_status": "generated_technical_checked",
+      "name_fr": "Exuvie suspendue",
+      "group": "ruche",
+      "description": "Grande mue vide de chitine, suspendue à des filaments.",
+      "filename": "sprites/ruche/028_exuvie_suspendue.png",
+      "source_filename": "sprites/ruche/028_exuvie_suspendue.png",
+      "tableaux": [
+        1,
+        8
+      ],
+      "reference_ids": [
+        "BG01"
+      ],
+      "references": [
+        {
+          "id": "BG01",
+          "source_path": "fonds/BG01_horizon_bassin.png",
+          "sprite_path": "fonds/BG01_horizon_bassin.png",
+          "status": "disponible",
+          "available_now": true,
+          "role": "palette_matiere_style",
+          "asset_key": "XENO-BE-BG01",
+          "availability_scope": "archives_source"
+        }
+      ],
+      "depends_on": [],
+      "prompt": "Use case: stylized-concept. Create one individual 2D side-scrolling game sprite for Xeno Prime, Le Berceau enfoui. Reference image supplies only painted materials and palette; do not reproduce its landscape. Subject: One empty molted chitin husk hanging from three attached resin filaments joined into one top anchor, elongated segmented insect-like shell, clearly hollow with a split seam and empty cavity, no body inside. Charcoal copper lightweight organic shell, entire dangling ends visible. Detailed hand-painted cinematic alien ecology consistent with a primordial fungal hive; charcoal-black basalt, matte aged copper chitin/resin, extremely rare dim cyan specks. Soft readable upper-left light, full side elevation with minimal perspective. Scale down the COMPLETE silhouette to leave 12% empty margins on EVERY side. Actual transparent RGBA background, including holes; if transparency cannot be returned, use a completely flat pure #FF00FF key background. No ground plane, scenery, shadow outside object, atmospheric halo, vignette, frame, text, characters, grid, spritesheet or extra separate objects. Export just this one complete sprite.",
+      "prompt_provenance": "prompts/terrain_ruche_en_attente.json",
+      "asset_key": "XENO-BE-028",
+      "source_id": "028",
+      "path_scope": "archive_relative",
+      "runtime_integrated": false,
+      "human_art_validation": false,
+      "technical_verified": true,
+      "sha256": "6f0b300c82cb58ec4566a7e4412377919f433802f94829ee602dbc6f7329501d",
+      "reference_asset_keys": [
+        "XENO-BE-BG01"
+      ],
+      "depends_on_asset_keys": [],
+      "historical_status_before_20261106": "non_produit",
+      "width": 1024,
+      "height": 1536,
+      "delivered_on": "2026-11-06",
+      "source_archive_id": "XENO-BE-ARCHIVE-AJOUTS-23",
+      "prompt_submitted": "Use case: background-extraction. Edit this exact suspended empty chitin husk sprite. Remove ONLY the unwanted soft brown haze, glow, aura and shadow surrounding the husk and its three suspension filaments. Keep the entire solid shell, segmented plates, hollow split seam, top anchor, fine resin strands, colors, lighting and position unchanged. Preserve the 1024 x 1536 pixel canvas and whole silhouette. The result must be a crisp isolated game sprite: genuinely transparent alpha 0 everywhere outside the physical shell and physical filaments, and in the structural gaps. Retain opacity on the physical chitin; remove the atmospheric cloud completely. NO brown halo, black matte, checkerboard, background, floor or added object.",
+      "initial_generation_prompt": "Use case: stylized-concept. Create one individual 2D side-scrolling game sprite for Xeno Prime, Le Berceau enfoui. Reference image supplies only painted materials and palette; do not reproduce its landscape. Subject: One empty molted chitin husk hanging from three attached resin filaments joined into one top anchor, elongated segmented insect-like shell, clearly hollow with a split seam and empty cavity, no body inside. Charcoal copper lightweight organic shell, entire dangling ends visible. Detailed hand-painted cinematic alien ecology consistent with a primordial fungal hive; charcoal-black basalt, matte aged copper chitin/resin, extremely rare dim cyan specks. Soft readable upper-left light, full side elevation with minimal perspective. Scale down the COMPLETE silhouette to leave 12% empty margins on EVERY side. Actual transparent RGBA background, including holes. Never use a colored matte or checkerboard. No ground plane, scenery, shadow outside object, atmospheric halo, vignette, frame, text, characters, grid, spritesheet or extra separate objects. Export just this one complete sprite.\nReference role is PALETTE AND MATERIAL ONLY. The output is a single suspended empty chitin molt cutout with three attached suspension filaments, not the environment. Preserve generous margin above the complete top attachment.",
+      "generation_history": [
+        {
+          "prompt": "Use case: stylized-concept. Create one individual 2D side-scrolling game sprite for Xeno Prime, Le Berceau enfoui. Reference image supplies only painted materials and palette; do not reproduce its landscape. Subject: One empty molted chitin husk hanging from three attached resin filaments joined into one top anchor, elongated segmented insect-like shell, clearly hollow with a split seam and empty cavity, no body inside. Charcoal copper lightweight organic shell, entire dangling ends visible. Detailed hand-painted cinematic alien ecology consistent with a primordial fungal hive; charcoal-black basalt, matte aged copper chitin/resin, extremely rare dim cyan specks. Soft readable upper-left light, full side elevation with minimal perspective. Scale down the COMPLETE silhouette to leave 12% empty margins on EVERY side. Actual transparent RGBA background, including holes. Never use a colored matte or checkerboard. No ground plane, scenery, shadow outside object, atmospheric halo, vignette, frame, text, characters, grid, spritesheet or extra separate objects. Export just this one complete sprite.\nReference role is PALETTE AND MATERIAL ONLY. The output is a single suspended empty chitin molt cutout with three attached suspension filaments, not the environment. Preserve generous margin above the complete top attachment.",
+          "reference_filenames": [
+            "BG01_horizon_bassin.png"
+          ],
+          "output_filename": "exec-4c84540a-1acb-4eb0-91a0-c983ac6fe24e.png",
+          "output_sha256": "1a2e09b3cac0f85d144b7e023833543daf3ffc7daa364493ec705544ba34598f",
+          "selected": false
+        },
+        {
+          "prompt": "Use case: background-extraction. Edit this exact suspended empty chitin husk sprite. Remove ONLY the unwanted soft brown haze, glow, aura and shadow surrounding the husk and its three suspension filaments. Keep the entire solid shell, segmented plates, hollow split seam, top anchor, fine resin strands, colors, lighting and position unchanged. Preserve the 1024 x 1536 pixel canvas and whole silhouette. The result must be a crisp isolated game sprite: genuinely transparent alpha 0 everywhere outside the physical shell and physical filaments, and in the structural gaps. Retain opacity on the physical chitin; remove the atmospheric cloud completely. NO brown halo, black matte, checkerboard, background, floor or added object.",
+          "reference_filenames": [
+            "exec-4c84540a-1acb-4eb0-91a0-c983ac6fe24e.png"
+          ],
+          "output_filename": "exec-c70f2a97-6f95-46aa-8675-7d9d28a0f70d.png",
+          "output_sha256": "6f0b300c82cb58ec4566a7e4412377919f433802f94829ee602dbc6f7329501d",
+          "selected": true
+        }
+      ],
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/ruche/028_exuvie_suspendue.png",
+      "repository_blob_sha1": "29c67b24a84b26aed0c5336193861f294a1ab75e"
+    },
+    {
+      "id": "030",
+      "status": "generated_technical_checked",
+      "production_status": "generated_technical_checked",
+      "name_fr": "Vanne tissulaire fermée",
+      "group": "ruche",
+      "description": "Anneau de tissu comprimant un conduit, surface intacte et pulsatile.",
+      "filename": "sprites/ruche/030_vanne_tissulaire.png",
+      "source_filename": "sprites/ruche/030_vanne_tissulaire.png",
+      "tableaux": [
+        9
+      ],
+      "reference_ids": [
+        "032"
+      ],
+      "references": [
+        {
+          "id": "032",
+          "source_path": "sources/ruche/032_conduit_nourricier.png",
+          "sprite_path": "sprites/ruche/032_conduit_nourricier.png",
+          "status": "disponible",
+          "available_now": true,
+          "role": "palette_matiere_style",
+          "asset_key": "XENO-BE-032",
+          "availability_scope": "archives_source"
+        }
+      ],
+      "depends_on": [],
+      "prompt": "Use case: stylized-concept. Create one individual 2D side-scrolling game sprite for Xeno Prime, Le Berceau enfoui. Input image 1 (032, conduit nourricier) is the material and painterly style reference. Match its black/copper ribbed biological conduit language while creating the new closed valve object described below. Subject: One closed tissue valve: a thick muscular-looking but armored chitin collar tightly compressing the middle of a horizontal ribbed feeding conduit. Closed intact ring with overlapping black and copper plates and a restrained warm amber inner seam; two complete tube connector ends. Never human anatomy. Detailed hand-painted cinematic alien ecology consistent with a primordial fungal hive; charcoal-black basalt, matte aged copper chitin/resin, extremely rare dim cyan specks. Soft readable upper-left light, full side elevation with minimal perspective. Scale down the COMPLETE silhouette to leave 12% empty margins on EVERY side. Actual transparent RGBA background, including holes; if transparency cannot be returned, use a completely flat pure #FF00FF key background. No ground plane, scenery, shadow outside object, atmospheric halo, vignette, frame, text, characters, grid, spritesheet or extra separate objects. Export just this one complete sprite.",
+      "prompt_provenance": "prompts/terrain_ruche_en_attente.json",
+      "asset_key": "XENO-BE-030",
+      "source_id": "030",
+      "path_scope": "archive_relative",
+      "runtime_integrated": false,
+      "human_art_validation": false,
+      "technical_verified": true,
+      "sha256": "5cdbd2625c50598a6f1fa7e5b28a8f119bf3a43915721594ff3f8f9edc763439",
+      "reference_asset_keys": [
+        "XENO-BE-032"
+      ],
+      "depends_on_asset_keys": [],
+      "historical_status_before_20261106": "non_produit",
+      "width": 2172,
+      "height": 724,
+      "delivered_on": "2026-11-06",
+      "source_archive_id": "XENO-BE-ARCHIVE-AJOUTS-23",
+      "prompt_submitted": "Use case: stylized-concept. Create one individual 2D side-scrolling game sprite for Xeno Prime, Le Berceau enfoui. Input image 1 (032, conduit nourricier) is the material and painterly style reference. Match its black/copper ribbed biological conduit language while creating the new closed valve object described below. Subject: One closed tissue valve: a thick muscular-looking but armored chitin collar tightly compressing the middle of a horizontal ribbed feeding conduit. Closed intact ring with overlapping black and copper plates and a restrained warm amber inner seam; two complete tube connector ends. Never human anatomy. Detailed hand-painted cinematic alien ecology consistent with a primordial fungal hive; charcoal-black basalt, matte aged copper chitin/resin, extremely rare dim cyan specks. Soft readable upper-left light, full side elevation with minimal perspective. Scale down the COMPLETE silhouette to leave 12% empty margins on EVERY side. Actual transparent RGBA background, including holes. Never use a colored matte or checkerboard. No ground plane, scenery, shadow outside object, atmospheric halo, vignette, frame, text, characters, grid, spritesheet or extra separate objects. Export just this one complete sprite.",
+      "initial_generation_prompt": "Use case: stylized-concept. Create one individual 2D side-scrolling game sprite for Xeno Prime, Le Berceau enfoui. Input image 1 (032, conduit nourricier) is the material and painterly style reference. Match its black/copper ribbed biological conduit language while creating the new closed valve object described below. Subject: One closed tissue valve: a thick muscular-looking but armored chitin collar tightly compressing the middle of a horizontal ribbed feeding conduit. Closed intact ring with overlapping black and copper plates and a restrained warm amber inner seam; two complete tube connector ends. Never human anatomy. Detailed hand-painted cinematic alien ecology consistent with a primordial fungal hive; charcoal-black basalt, matte aged copper chitin/resin, extremely rare dim cyan specks. Soft readable upper-left light, full side elevation with minimal perspective. Scale down the COMPLETE silhouette to leave 12% empty margins on EVERY side. Actual transparent RGBA background, including holes. Never use a colored matte or checkerboard. No ground plane, scenery, shadow outside object, atmospheric halo, vignette, frame, text, characters, grid, spritesheet or extra separate objects. Export just this one complete sprite.",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/ruche/030_vanne_tissulaire.png",
+      "repository_blob_sha1": "81ce7e4f7f19eba83f13bbb8d972d35e8be814c1"
+    },
+    {
+      "id": "031",
+      "status": "generated_technical_checked",
+      "production_status": "generated_technical_checked",
+      "name_fr": "Filaments sensoriels",
+      "group": "ruche",
+      "description": "Touffe de brins dressés sur une membrane basse.",
+      "filename": "sprites/ruche/031_filaments_sensoriels.png",
+      "source_filename": "sprites/ruche/031_filaments_sensoriels.png",
+      "tableaux": [
+        2,
+        5,
+        8
+      ],
+      "reference_ids": [
+        "084"
+      ],
+      "references": [
+        {
+          "id": "084",
+          "source_path": "sources/reactions/084_filaments_alerte.png",
+          "sprite_path": "sprites/reactions/084_filaments_alerte.png",
+          "status": "disponible",
+          "available_now": true,
+          "role": "identite_etat_a_modifier",
+          "asset_key": "XENO-BE-084",
+          "availability_scope": "archives_source"
+        }
+      ],
+      "depends_on": [],
+      "prompt": "Use case: precise-object-edit. Make the dormant calm state of this exact sensory-filament cluster. Preserve its complete base, number of stalks, outline, seven stems, materials, camera, canvas and scale. Change only the state: close the leaf-like tip capsules slightly and turn off all orange internal luminescence; retain at most tiny very dim cyan pinpoints. The stalks remain standing naturally in the same positions. Charcoal and matte copper, no added elements. One full individual 2D painted Xeno Prime sprite. Actual transparent RGBA background, clean holes and complete tips, no atmospheric halo, floor, shadow, text or grid.",
+      "prompt_provenance": "prompts/terrain_ruche_en_attente.json",
+      "asset_key": "XENO-BE-031",
+      "source_id": "031",
+      "path_scope": "archive_relative",
+      "runtime_integrated": false,
+      "human_art_validation": false,
+      "technical_verified": true,
+      "sha256": "d38788b18960fa43d24f8ea546f2bc434de90305d47ac37ec6ed030f08d37c43",
+      "reference_asset_keys": [
+        "XENO-BE-084"
+      ],
+      "depends_on_asset_keys": [],
+      "historical_status_before_20261106": "non_produit",
+      "width": 1254,
+      "height": 1254,
+      "delivered_on": "2026-11-06",
+      "source_archive_id": "XENO-BE-ARCHIVE-AJOUTS-23",
+      "prompt_submitted": "Use case: precise-object-edit. Make the dormant calm state of this exact sensory-filament cluster. Preserve its complete base, number of stalks, outline, seven stems, materials, camera, canvas and scale. Change only the state: close the leaf-like tip capsules slightly and turn off all orange internal luminescence; retain at most tiny very dim cyan pinpoints. The stalks remain standing naturally in the same positions. Charcoal and matte copper, no added elements. One full individual 2D painted Xeno Prime sprite. Actual transparent RGBA background, clean holes and complete tips, no atmospheric halo, floor, shadow, text or grid.\nKeep the original 1254 x 1254 canvas. All seven stalks and the full branching foot remain in their reference positions. The calm state is unmistakable: no glowing amber interiors in the capsules, stalks or base.",
+      "initial_generation_prompt": "Use case: precise-object-edit. Make the dormant calm state of this exact sensory-filament cluster. Preserve its complete base, number of stalks, outline, seven stems, materials, camera, canvas and scale. Change only the state: close the leaf-like tip capsules slightly and turn off all orange internal luminescence; retain at most tiny very dim cyan pinpoints. The stalks remain standing naturally in the same positions. Charcoal and matte copper, no added elements. One full individual 2D painted Xeno Prime sprite. Actual transparent RGBA background, clean holes and complete tips, no atmospheric halo, floor, shadow, text or grid.\nKeep the original 1254 x 1254 canvas. All seven stalks and the full branching foot remain in their reference positions. The calm state is unmistakable: no glowing amber interiors in the capsules, stalks or base.",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/ruche/031_filaments_sensoriels.png",
+      "repository_blob_sha1": "1df5904c4d9f50a6af1ed99afee0ef08d06b14b5"
+    },
+    {
+      "id": "034",
+      "status": "generated_technical_checked",
+      "production_status": "generated_technical_checked",
+      "name_fr": "Passage fermé",
+      "group": "ruche",
+      "description": "Cadre de résine contenant une membrane tendue fermant l’ouverture.",
+      "filename": "sprites/ruche/034_porte_membrane_fermee.png",
+      "source_filename": "sprites/ruche/034_porte_membrane_fermee.png",
+      "tableaux": [
+        3,
+        7,
+        11
+      ],
+      "reference_ids": [
+        "017"
+      ],
+      "references": [
+        {
+          "id": "017",
+          "source_path": "sources/terrain/017_paroi_resine.png",
+          "sprite_path": "sprites/terrain/017_paroi_resine.png",
+          "status": "disponible",
+          "available_now": true,
+          "role": "palette_matiere_style",
+          "asset_key": "XENO-BE-017",
+          "availability_scope": "archives_source"
+        }
+      ],
+      "depends_on": [],
+      "prompt": "Use case: stylized-concept. Create one individual 2D side-scrolling game sprite for Xeno Prime, Le Berceau enfoui. Input image 1 (017, paroi de résine) is the material and painterly style reference. Use its black/copper rooted resin language for the new closed gate described below; do not reproduce a wall panel or environment. Subject: One closed alien passage gate: a heavy irregular oval frame of black and copper rooted resin containing a taut opaque ribbed membrane across the entire opening. Fully sealed center, intact smooth seams, no gap. Broad connected root feet. Whole gate frame. Detailed hand-painted cinematic alien ecology consistent with a primordial fungal hive; charcoal-black basalt, matte aged copper chitin/resin, extremely rare dim cyan specks. Soft readable upper-left light, full side elevation with minimal perspective. Scale down the COMPLETE silhouette to leave 12% empty margins on EVERY side. Actual transparent RGBA background, including holes; if transparency cannot be returned, use a completely flat pure #FF00FF key background. No ground plane, scenery, shadow outside object, atmospheric halo, vignette, frame, text, characters, grid, spritesheet or extra separate objects. Export just this one complete sprite.",
+      "prompt_provenance": "prompts/terrain_ruche_en_attente.json",
+      "asset_key": "XENO-BE-034",
+      "source_id": "034",
+      "path_scope": "archive_relative",
+      "runtime_integrated": false,
+      "human_art_validation": false,
+      "technical_verified": true,
+      "sha256": "a23c2c33fc31c73dbfd714a67924cc0b4e0f6d64c6e72a5ae3ea145a56d60261",
+      "reference_asset_keys": [
+        "XENO-BE-017"
+      ],
+      "depends_on_asset_keys": [],
+      "historical_status_before_20261106": "non_produit",
+      "width": 1312,
+      "height": 1199,
+      "delivered_on": "2026-11-06",
+      "source_archive_id": "XENO-BE-ARCHIVE-AJOUTS-23",
+      "prompt_submitted": "Use case: stylized-concept. Create one individual 2D side-scrolling game sprite for Xeno Prime, Le Berceau enfoui. Input image 1 (017, paroi de résine) is the material and painterly style reference. Use its black/copper rooted resin language for the new closed gate described below; do not reproduce a wall panel or environment. Subject: One closed alien passage gate: a heavy irregular oval frame of black and copper rooted resin containing a taut opaque ribbed membrane across the entire opening. Fully sealed center, intact smooth seams, no gap. Broad connected root feet. Whole gate frame. Detailed hand-painted cinematic alien ecology consistent with a primordial fungal hive; charcoal-black basalt, matte aged copper chitin/resin, extremely rare dim cyan specks. Soft readable upper-left light, full side elevation with minimal perspective. Scale down the COMPLETE silhouette to leave 12% empty margins on EVERY side. Actual transparent RGBA background, including holes. Never use a colored matte or checkerboard. No ground plane, scenery, shadow outside object, atmospheric halo, vignette, frame, text, characters, grid, spritesheet or extra separate objects. Export just this one complete sprite.",
+      "initial_generation_prompt": "Use case: stylized-concept. Create one individual 2D side-scrolling game sprite for Xeno Prime, Le Berceau enfoui. Input image 1 (017, paroi de résine) is the material and painterly style reference. Use its black/copper rooted resin language for the new closed gate described below; do not reproduce a wall panel or environment. Subject: One closed alien passage gate: a heavy irregular oval frame of black and copper rooted resin containing a taut opaque ribbed membrane across the entire opening. Fully sealed center, intact smooth seams, no gap. Broad connected root feet. Whole gate frame. Detailed hand-painted cinematic alien ecology consistent with a primordial fungal hive; charcoal-black basalt, matte aged copper chitin/resin, extremely rare dim cyan specks. Soft readable upper-left light, full side elevation with minimal perspective. Scale down the COMPLETE silhouette to leave 12% empty margins on EVERY side. Actual transparent RGBA background, including holes. Never use a colored matte or checkerboard. No ground plane, scenery, shadow outside object, atmospheric halo, vignette, frame, text, characters, grid, spritesheet or extra separate objects. Export just this one complete sprite.",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/ruche/034_porte_membrane_fermee.png",
+      "repository_blob_sha1": "21911c1adc2286b8a76de0f3d3151ef1f0699662"
+    },
+    {
+      "id": "035",
+      "status": "generated_technical_checked",
+      "production_status": "generated_technical_checked",
+      "name_fr": "Passage sectionné",
+      "group": "ruche",
+      "description": "Même type de cadre avec lambeaux latéraux et centre ouvert transparent.",
+      "filename": "sprites/ruche/035_porte_membrane_ouverte.png",
+      "source_filename": "sprites/ruche/035_porte_membrane_ouverte.png",
+      "tableaux": [
+        3,
+        7,
+        11,
+        12
+      ],
+      "reference_ids": [
+        "034"
+      ],
+      "references": [
+        {
+          "id": "034",
+          "source_path": "sprites/ruche/034_porte_membrane_fermee.png",
+          "sprite_path": "sprites/ruche/034_porte_membrane_fermee.png",
+          "status": "disponible",
+          "available_now": true,
+          "role": "identite_etat_a_modifier",
+          "asset_key": "XENO-BE-034",
+          "availability_scope": "archives_source"
+        }
+      ],
+      "depends_on": [
+        "034"
+      ],
+      "prompt": "Use case: precise-object-edit. Make the OPEN CUT state of this exact sealed membrane gate. Preserve the entire outer black copper resin frame, root feet, original canvas and lighting. Remove the taut central membrane except a few dry torn shreds clinging to the inner side edges; the center is a large clear truly transparent walk-through opening. No fluid, gore, creature or red flesh. Whole complete gate, same scale, no new scenery. Actual transparent RGBA background, including the full gate opening. No floor, shadow, halo, text or extra objects.",
+      "prompt_provenance": "prompts/terrain_ruche_en_attente.json",
+      "asset_key": "XENO-BE-035",
+      "source_id": "035",
+      "path_scope": "archive_relative",
+      "runtime_integrated": false,
+      "human_art_validation": false,
+      "technical_verified": true,
+      "sha256": "71af86d68996d2d1c2084eab48a43001ebb8578f6994b47cf04e73bc07cfb2a9",
+      "reference_asset_keys": [
+        "XENO-BE-034"
+      ],
+      "depends_on_asset_keys": [
+        "XENO-BE-034"
+      ],
+      "historical_status_before_20261106": "non_produit",
+      "width": 1312,
+      "height": 1199,
+      "delivered_on": "2026-11-06",
+      "source_archive_id": "XENO-BE-ARCHIVE-AJOUTS-23",
+      "prompt_submitted": "Use case: precise-object-edit. Make the OPEN CUT state of this exact sealed membrane gate. Preserve the entire outer black copper resin frame, root feet, original canvas and lighting. Remove the taut central membrane except a few dry torn shreds clinging to the inner side edges; the center is a large clear truly transparent walk-through opening. No fluid, gore, creature or red flesh. Whole complete gate, same scale, no new scenery. Actual transparent RGBA background, including the full gate opening. No floor, shadow, halo, text or extra objects.\nFidelity lock: this is the exact same gate as the reference, now opened. Keep its 1312 x 1199 pixel canvas, identical outer frame outline, root positions and scale. Only the center membrane changes.",
+      "initial_generation_prompt": "Use case: precise-object-edit. Make the OPEN CUT state of this exact sealed membrane gate. Preserve the entire outer black copper resin frame, root feet, original canvas and lighting. Remove the taut central membrane except a few dry torn shreds clinging to the inner side edges; the center is a large clear truly transparent walk-through opening. No fluid, gore, creature or red flesh. Whole complete gate, same scale, no new scenery. Actual transparent RGBA background, including the full gate opening. No floor, shadow, halo, text or extra objects.\nFidelity lock: this is the exact same gate as the reference, now opened. Keep its 1312 x 1199 pixel canvas, identical outer frame outline, root positions and scale. Only the center membrane changes.",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/ruche/035_porte_membrane_ouverte.png",
+      "repository_blob_sha1": "262fd8ac46cc4aa7f0f921e4617e1c580534a4c5"
+    },
+    {
+      "id": "036",
+      "status": "generated_technical_checked",
+      "production_status": "generated_technical_checked",
+      "name_fr": "Vanne après drainage",
+      "group": "ruche",
+      "description": "Même type de vanne, gaine sectionnée, conduit affaissé et sans liquide.",
+      "filename": "sprites/ruche/036_vanne_drainee.png",
+      "source_filename": "sprites/ruche/036_vanne_drainee.png",
+      "tableaux": [
+        9,
+        10
+      ],
+      "reference_ids": [
+        "030"
+      ],
+      "references": [
+        {
+          "id": "030",
+          "source_path": "sprites/ruche/030_vanne_tissulaire.png",
+          "sprite_path": "sprites/ruche/030_vanne_tissulaire.png",
+          "status": "disponible",
+          "available_now": true,
+          "role": "identite_etat_a_modifier",
+          "asset_key": "XENO-BE-030",
+          "availability_scope": "archives_source"
+        }
+      ],
+      "depends_on": [
+        "030"
+      ],
+      "prompt": "Use case: precise-object-edit. Make the DRAINED CUT state of this exact closed tissue valve. Preserve its two connector ends, size, original canvas, side view, frame and lighting. Change only its middle: the armored compression collar is split open along a dry seam, the formerly tense conduit collapses into wrinkled inert dark folds and all amber internal light is off. No liquid, no spray, no gore. Same one connected black copper biological pipe object, complete. Actual transparent RGBA background, no floor, shadow, halo, scene, text or grid.",
+      "prompt_provenance": "prompts/terrain_ruche_en_attente.json",
+      "asset_key": "XENO-BE-036",
+      "source_id": "036",
+      "path_scope": "archive_relative",
+      "runtime_integrated": false,
+      "human_art_validation": false,
+      "technical_verified": true,
+      "sha256": "205c4b360f34820c9d791ad06ef033d9813311d61f18f1d6bf0ad4969a78fe65",
+      "reference_asset_keys": [
+        "XENO-BE-030"
+      ],
+      "depends_on_asset_keys": [
+        "XENO-BE-030"
+      ],
+      "historical_status_before_20261106": "non_produit",
+      "width": 2172,
+      "height": 724,
+      "delivered_on": "2026-11-06",
+      "source_archive_id": "XENO-BE-ARCHIVE-AJOUTS-23",
+      "prompt_submitted": "Use case: precise-object-edit. Make the DRAINED CUT state of this exact closed tissue valve. Preserve its two connector ends, size, original canvas, side view, frame and lighting. Change only its middle: the armored compression collar is split open along a dry seam, the formerly tense conduit collapses into wrinkled inert dark folds and all amber internal light is off. No liquid, no spray, no gore. Same one connected black copper biological pipe object, complete. Actual transparent RGBA background, no floor, shadow, halo, scene, text or grid.\nFidelity lock: retain the exact 2172 x 724 pixel canvas, connector locations and black/copper pipe silhouette of asset030. Darken the inner amber seam completely and make the central opened collar and sagging folds visibly readable.",
+      "initial_generation_prompt": "Use case: precise-object-edit. Make the DRAINED CUT state of this exact closed tissue valve. Preserve its two connector ends, size, original canvas, side view, frame and lighting. Change only its middle: the armored compression collar is split open along a dry seam, the formerly tense conduit collapses into wrinkled inert dark folds and all amber internal light is off. No liquid, no spray, no gore. Same one connected black copper biological pipe object, complete. Actual transparent RGBA background, no floor, shadow, halo, scene, text or grid.\nFidelity lock: retain the exact 2172 x 724 pixel canvas, connector locations and black/copper pipe silhouette of asset030. Darken the inner amber seam completely and make the central opened collar and sagging folds visibly readable.",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/ruche/036_vanne_drainee.png",
+      "repository_blob_sha1": "004606a86c6bbffc019316afa0e41bc253e3b8ee"
+    },
+    {
+      "id": "056",
+      "status": "generated_technical_checked",
+      "production_status": "generated_technical_checked",
+      "name_fr": "Nid de guetteur fermé",
+      "group": "ruche",
+      "description": "Capsule de ruche massive et fermée au sol, sans créature visible.",
+      "filename": "sprites/ruche/056_nid_guetteur.png",
+      "source_filename": "sprites/ruche/056_nid_guetteur.png",
+      "tableaux": [],
+      "reference_ids": [
+        "025"
+      ],
+      "references": [
+        {
+          "id": "025",
+          "source_path": "sources/ruche/025_oeuf_ferme.png",
+          "sprite_path": "sprites/ruche/025_oeuf_ferme.png",
+          "status": "disponible",
+          "available_now": true,
+          "role": "palette_matiere_style",
+          "asset_key": "XENO-BE-025",
+          "availability_scope": "archives_source"
+        }
+      ],
+      "depends_on": [],
+      "prompt": "Use case: stylized-concept. Asset type: one independent scenery sprite for the painted 2D side-scrolling sector Xeno Prime, Le Berceau enfoui. Input image is a material and painterly rendering reference. Make an inert, closed environmental object. Dark charcoal chitin, weathered copper ribbing, tiny restrained cyan nodes and subtle amber resin. Detailed painted 2D illustration with a crisp complete silhouette. Transparent alpha outside the object and through structural gaps. If true alpha is unavailable, use only flat vivid magenta #ff00ff instead. No scene, no ground plane, no extra object, no text, no grid, no watermark, no outward glow or cast shadow. Keep generous empty margins and the whole object visible. Primary request: One broad low closed hive capsule resting on its own connected resin foot. Its gently domed charcoal shell has overlapping sealed plates bound by dull copper ribs, with three small sealed cyan sensory nodes inset in the front. It is a solid inert ground nest, heavier and flatter than the reference egg. Every seam is closed; no creature, face, eye, mouth, limb, opening, or silhouette inside. Several short thick resin roots remain attached at the base and establish a horizontal ground contact. Wide landscape canvas; strict side profile, only a slight upper surface visible.",
+      "prompt_provenance": "metadata_v2/completion_environnement_pending.json",
+      "design_constraint": "Capsule de ruche fermée et inerte, sans créature visible; remplace le concept précédent non produit.",
+      "asset_key": "XENO-BE-056",
+      "source_id": "056",
+      "path_scope": "archive_relative",
+      "runtime_integrated": false,
+      "human_art_validation": false,
+      "technical_verified": true,
+      "sha256": "f6cd1888fb5266fc8f3fd98849b9f7c465d6aed1febf6a5a249160af8a31f9a1",
+      "reference_asset_keys": [
+        "XENO-BE-025"
+      ],
+      "depends_on_asset_keys": [],
+      "historical_status_before_20261106": "non_produit",
+      "width": 2172,
+      "height": 724,
+      "delivered_on": "2026-11-06",
+      "source_archive_id": "XENO-BE-ARCHIVE-AJOUTS-23",
+      "prompt_submitted": "Use case: stylized-concept. Asset type: one independent scenery sprite for the painted 2D side-scrolling sector Xeno Prime, Le Berceau enfoui. Input image is a material and painterly rendering reference. Make an inert, closed environmental object. Dark charcoal chitin, weathered copper ribbing, tiny restrained cyan nodes and subtle amber resin. Detailed painted 2D illustration with a crisp complete silhouette. Transparent alpha outside the object and through structural gaps. Use actual transparent RGBA output, never a colored matte. No scene, no ground plane, no extra object, no text, no grid, no watermark, no outward glow or cast shadow. Keep generous empty margins and the whole object visible. Primary request: One broad low closed hive capsule resting on its own connected resin foot. Its gently domed charcoal shell has overlapping sealed plates bound by dull copper ribs, with three small sealed cyan sensory nodes inset in the front. It is a solid inert ground nest, heavier and flatter than the reference egg. Every seam is closed; no creature, face, eye, mouth, limb, opening, or silhouette inside. Several short thick resin roots remain attached at the base and establish a horizontal ground contact. Wide landscape canvas; strict side profile, only a slight upper surface visible.",
+      "initial_generation_prompt": "Use case: stylized-concept. Asset type: one independent scenery sprite for the painted 2D side-scrolling sector Xeno Prime, Le Berceau enfoui. Input image is a material and painterly rendering reference. Make an inert, closed environmental object. Dark charcoal chitin, weathered copper ribbing, tiny restrained cyan nodes and subtle amber resin. Detailed painted 2D illustration with a crisp complete silhouette. Transparent alpha outside the object and through structural gaps. Use actual transparent RGBA output, never a colored matte. No scene, no ground plane, no extra object, no text, no grid, no watermark, no outward glow or cast shadow. Keep generous empty margins and the whole object visible. Primary request: One broad low closed hive capsule resting on its own connected resin foot. Its gently domed charcoal shell has overlapping sealed plates bound by dull copper ribs, with three small sealed cyan sensory nodes inset in the front. It is a solid inert ground nest, heavier and flatter than the reference egg. Every seam is closed; no creature, face, eye, mouth, limb, opening, or silhouette inside. Several short thick resin roots remain attached at the base and establish a horizontal ground contact. Wide landscape canvas; strict side profile, only a slight upper surface visible.",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/ruche/056_nid_guetteur.png",
+      "repository_blob_sha1": "d6aeb7ac8a29c0175ac1be62bb6a3ea119c36dc3"
+    },
+    {
+      "id": "057",
+      "status": "generated_technical_checked",
+      "production_status": "generated_technical_checked",
+      "name_fr": "Cocon mural fermé",
+      "group": "ruche",
+      "description": "Cocon de ruche fermé fixé à un réseau de nervures murales intégré, sans créature visible.",
+      "filename": "sprites/ruche/057_cocon_mural.png",
+      "source_filename": "sprites/ruche/057_cocon_mural.png",
+      "tableaux": [],
+      "reference_ids": [
+        "017"
+      ],
+      "references": [
+        {
+          "id": "017",
+          "source_path": "sources/terrain/017_paroi_resine.png",
+          "sprite_path": "sprites/terrain/017_paroi_resine.png",
+          "status": "disponible",
+          "available_now": true,
+          "role": "palette_matiere_style",
+          "asset_key": "XENO-BE-017",
+          "availability_scope": "archives_source"
+        }
+      ],
+      "depends_on": [],
+      "prompt": "Use case: stylized-concept. Asset type: one independent scenery sprite for the painted 2D side-scrolling sector Xeno Prime, Le Berceau enfoui. Input image is a material and painterly rendering reference. Make an inert, closed environmental object. Dark charcoal chitin, weathered copper ribbing, tiny restrained cyan nodes and subtle amber resin. Detailed painted 2D illustration with a crisp complete silhouette. Transparent alpha outside the object and through structural gaps. If true alpha is unavailable, use only flat vivid magenta #ff00ff instead. No scene, no ground plane, no extra object, no text, no grid, no watermark, no outward glow or cast shadow. Keep generous empty margins and the whole object visible. Primary request: One tall sealed wall cocoon, an inert architectural hive capsule. A vertically elongated dark closed shell has closely spaced copper ribs and four tiny cyan resin nodes. Four thick curved attachment ribs connect it visibly to a small integrated open lattice of hive resin behind it; this lattice is part of the same sprite. Do not add a rectangular wall panel or scenery. Closed opaque shell with no visible creature, face, eye, mouth, limb, opening, or silhouette inside. Distinct from a standing egg: it hangs vertically from its side and upper attachment ribs with a tapered lower end that does not rest on a floor. Portrait canvas; straight-on 2D side-game elevation, shallow relief.",
+      "prompt_provenance": "metadata_v2/completion_environnement_pending.json",
+      "design_constraint": "Capsule de ruche fermée et inerte, sans créature visible; remplace le concept précédent non produit.",
+      "asset_key": "XENO-BE-057",
+      "source_id": "057",
+      "path_scope": "archive_relative",
+      "runtime_integrated": false,
+      "human_art_validation": false,
+      "technical_verified": true,
+      "sha256": "0438e2a3f24b4f5a47f17885fbab2d85c0b5a4e279ff08692850d3e2da54902a",
+      "reference_asset_keys": [
+        "XENO-BE-017"
+      ],
+      "depends_on_asset_keys": [],
+      "historical_status_before_20261106": "non_produit",
+      "width": 1024,
+      "height": 1536,
+      "delivered_on": "2026-11-06",
+      "source_archive_id": "XENO-BE-ARCHIVE-AJOUTS-23",
+      "prompt_submitted": "Use case: stylized-concept. Asset type: one independent scenery sprite for the painted 2D side-scrolling sector Xeno Prime, Le Berceau enfoui. Input image is a material and painterly rendering reference. Make an inert, closed environmental object. Dark charcoal chitin, weathered copper ribbing, tiny restrained cyan nodes and subtle amber resin. Detailed painted 2D illustration with a crisp complete silhouette. Transparent alpha outside the object and through structural gaps. Use actual transparent RGBA output, never a colored matte. No scene, no ground plane, no extra object, no text, no grid, no watermark, no outward glow or cast shadow. Keep generous empty margins and the whole object visible. Primary request: One tall sealed wall cocoon, an inert architectural hive capsule. A vertically elongated dark closed shell has closely spaced copper ribs and four tiny cyan resin nodes. Four thick curved attachment ribs connect it visibly to a small integrated open lattice of hive resin behind it; this lattice is part of the same sprite. Do not add a rectangular wall panel or scenery. Closed opaque shell with no visible creature, face, eye, mouth, limb, opening, or silhouette inside. Distinct from a standing egg: it hangs vertically from its side and upper attachment ribs with a tapered lower end that does not rest on a floor. Portrait canvas; straight-on 2D side-game elevation, shallow relief.",
+      "initial_generation_prompt": "Use case: stylized-concept. Asset type: one independent scenery sprite for the painted 2D side-scrolling sector Xeno Prime, Le Berceau enfoui. Input image is a material and painterly rendering reference. Make an inert, closed environmental object. Dark charcoal chitin, weathered copper ribbing, tiny restrained cyan nodes and subtle amber resin. Detailed painted 2D illustration with a crisp complete silhouette. Transparent alpha outside the object and through structural gaps. Use actual transparent RGBA output, never a colored matte. No scene, no ground plane, no extra object, no text, no grid, no watermark, no outward glow or cast shadow. Keep generous empty margins and the whole object visible. Primary request: One tall sealed wall cocoon, an inert architectural hive capsule. A vertically elongated dark closed shell has closely spaced copper ribs and four tiny cyan resin nodes. Four thick curved attachment ribs connect it visibly to a small integrated open lattice of hive resin behind it; this lattice is part of the same sprite. Do not add a rectangular wall panel or scenery. Closed opaque shell with no visible creature, face, eye, mouth, limb, opening, or silhouette inside. Distinct from a standing egg: it hangs vertically from its side and upper attachment ribs with a tapered lower end that does not rest on a floor. Portrait canvas; straight-on 2D side-game elevation, shallow relief.",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/ruche/057_cocon_mural.png",
+      "repository_blob_sha1": "1f497984ea3a0b01ff2571542c593b02aa9947c0"
+    },
+    {
+      "id": "067",
+      "status": "generated_technical_checked",
+      "production_status": "generated_technical_checked",
+      "name_fr": "Nuage de spores",
+      "group": "effets",
+      "description": "Petit nuage clairsemé de spores cyan et cuivre, opacités progressives.",
+      "filename": "sprites/effets/067_nuage_spores.png",
+      "source_filename": "sprites/effets/067_nuage_spores.png",
+      "tableaux": [
+        1,
+        2,
+        5,
+        9,
+        12
+      ],
+      "reference_ids": [
+        "001"
+      ],
+      "references": [
+        {
+          "id": "001",
+          "source_path": "sources/vegetation/001_calice_geant.png",
+          "sprite_path": "sprites/vegetation/001_calice_geant.png",
+          "status": "disponible",
+          "available_now": true,
+          "role": "palette_matiere_style",
+          "asset_key": "XENO-BE-001",
+          "availability_scope": "archives_source"
+        }
+      ],
+      "depends_on": [],
+      "prompt": "Use case: stylized-concept. ONE isolated 2D game visual effect sprite, realistic delicately painted, matching Xeno Prime black resin biome, muted cyan and restrained amber/copper tones. TRUE TRANSPARENT PNG with alpha fading naturally to0 on edges, not a picture of transparency. No black background, no checkerboard pixels, no scene, no frame, no grid, no text, no label, no other separate effects. Canvas 1536x1024, one complete effect centered well inside with at least12 percent entirely empty transparent margins on all sides. No cast shadow on background, no square vignette. Subject: one SMALL SPARSE CLOUD OF SPORES, loose irregular spread of dozens of tiny soft cyan and copper/amber biological motes with a few softly glowing larger spores. Fine atmospheric particles with progressively lower opacity toward the edge, clear gaps between particles, no solid background cloud and no opaque disk. Tiny irregular floating seed-like forms, not stars or glitter UI. Entire effect fits well inside canvas. Input image is only a palette/material reference. Do not include its physical object in the output. Output exactly one isolated effect on genuine transparent alpha, full asset with all edges fading into empty transparency.",
+      "prompt_provenance": "metadata_v2/completion_effets.json",
+      "asset_key": "XENO-BE-067",
+      "source_id": "067",
+      "path_scope": "archive_relative",
+      "runtime_integrated": false,
+      "human_art_validation": false,
+      "technical_verified": true,
+      "sha256": "d64b7b1e1bbecd3447a826b294f8bafbd9bf3175ed01fa54cd774adccdb40df3",
+      "reference_asset_keys": [
+        "XENO-BE-001"
+      ],
+      "depends_on_asset_keys": [],
+      "historical_status_before_20261106": "non_produit",
+      "width": 1536,
+      "height": 1024,
+      "delivered_on": "2026-11-06",
+      "source_archive_id": "XENO-BE-ARCHIVE-AJOUTS-23",
+      "prompt_submitted": "Use case: stylized-concept. ONE isolated 2D game visual effect sprite, realistic delicately painted, matching Xeno Prime black resin biome, muted cyan and restrained amber/copper tones. TRUE TRANSPARENT PNG with alpha fading naturally to0 on edges, not a picture of transparency. No black background, no checkerboard pixels, no scene, no frame, no grid, no text, no label, no other separate effects. Canvas 1536x1024, one complete effect centered well inside with at least12 percent entirely empty transparent margins on all sides. No cast shadow on background, no square vignette. Subject: one SMALL SPARSE CLOUD OF SPORES, loose irregular spread of dozens of tiny soft cyan and copper/amber biological motes with a few softly glowing larger spores. Fine atmospheric particles with progressively lower opacity toward the edge, clear gaps between particles, no solid background cloud and no opaque disk. Tiny irregular floating seed-like forms, not stars or glitter UI. Entire effect fits well inside canvas. Input image is only a palette/material reference. Do not include its physical object in the output. Output exactly one isolated effect on genuine transparent alpha, full asset with all edges fading into empty transparency. Render only scattered tiny organic seedlike spores, about40–60 motes. Most spores are dim and tiny, just a few larger soft cyan or copper motes. Space BETWEEN particles is completely transparent: no unifying white haze, no smoke, no solid mist blob. No starburst shapes or UI glitter. Entire cluster confined to central65% width and central60% height, generous alpha0 margins.",
+      "initial_generation_prompt": "Use case: stylized-concept. ONE isolated 2D game visual effect sprite, realistic delicately painted, matching Xeno Prime black resin biome, muted cyan and restrained amber/copper tones. TRUE TRANSPARENT PNG with alpha fading naturally to0 on edges, not a picture of transparency. No black background, no checkerboard pixels, no scene, no frame, no grid, no text, no label, no other separate effects. Canvas 1536x1024, one complete effect centered well inside with at least12 percent entirely empty transparent margins on all sides. No cast shadow on background, no square vignette. Subject: one SMALL SPARSE CLOUD OF SPORES, loose irregular spread of dozens of tiny soft cyan and copper/amber biological motes with a few softly glowing larger spores. Fine atmospheric particles with progressively lower opacity toward the edge, clear gaps between particles, no solid background cloud and no opaque disk. Tiny irregular floating seed-like forms, not stars or glitter UI. Entire effect fits well inside canvas. Input image is only a palette/material reference. Do not include its physical object in the output. Output exactly one isolated effect on genuine transparent alpha, full asset with all edges fading into empty transparency.",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/effets/067_nuage_spores.png",
+      "repository_blob_sha1": "b0fb0e1fd00877c4fef42da23d5bc213067b46d0"
+    },
+    {
+      "id": "068",
+      "status": "generated_technical_checked",
+      "production_status": "generated_technical_checked",
+      "name_fr": "Souffle de vapeur",
+      "group": "effets",
+      "description": "Panache de vapeur sortant obliquement d’une source basse invisible.",
+      "filename": "sprites/effets/068_souffle_vapeur.png",
+      "source_filename": "sprites/effets/068_souffle_vapeur.png",
+      "tableaux": [
+        5,
+        7,
+        8
+      ],
+      "reference_ids": [
+        "033"
+      ],
+      "references": [
+        {
+          "id": "033",
+          "source_path": "sources/ruche/033_event_respiratoire.png",
+          "sprite_path": "sprites/ruche/033_event_respiratoire.png",
+          "status": "disponible",
+          "available_now": true,
+          "role": "palette_matiere_style",
+          "asset_key": "XENO-BE-033",
+          "availability_scope": "archives_source"
+        }
+      ],
+      "depends_on": [],
+      "prompt": "Use case: stylized-concept. ONE isolated 2D game visual effect sprite, realistic delicately painted, matching Xeno Prime black resin biome, muted cyan and restrained amber/copper tones. TRUE TRANSPARENT PNG with alpha fading naturally to0 on edges, not a picture of transparency. No black background, no checkerboard pixels, no scene, no frame, no grid, no text, no label, no other separate effects. Canvas 1536x1024, one complete effect centered well inside with at least12 percent entirely empty transparent margins on all sides. No cast shadow on background, no square vignette. Subject: one slender plume of PALE COOL VAPOR rising diagonally toward upper-right from an invisible low source at lower-left, subtle curled wisps, gentle semi-transparent density variations, very soft dissolving edges and a broad transparent surrounding area. It is a small local steam puff, not a full fog background or smoke explosion. No source object, no ground. Input image is only a palette/material reference. Do not include its physical object in the output. Output exactly one isolated effect on genuine transparent alpha, full asset with all edges fading into empty transparency.",
+      "prompt_provenance": "metadata_v2/completion_effets.json",
+      "asset_key": "XENO-BE-068",
+      "source_id": "068",
+      "path_scope": "archive_relative",
+      "runtime_integrated": false,
+      "human_art_validation": false,
+      "technical_verified": true,
+      "sha256": "422211735e2211b118b47d001eb91c1c6ebaf87c8012ee7601aa3d864af7050c",
+      "reference_asset_keys": [
+        "XENO-BE-033"
+      ],
+      "depends_on_asset_keys": [],
+      "historical_status_before_20261106": "non_produit",
+      "width": 1536,
+      "height": 1024,
+      "delivered_on": "2026-11-06",
+      "source_archive_id": "XENO-BE-ARCHIVE-AJOUTS-23",
+      "prompt_submitted": "Use case: precise-object-edit. Edit image 1, the isolated vapor effect, using image 2 only as the established Xeno Prime material/palette reference. Produce the final sprite 068: ONE small slender semi-transparent pale cool gray-cyan steam plume rising diagonally from lower-left to upper-right. Keep the gentle curled vapor direction. Reduce its scale and center it so ALL vapor, including the faint feathered fringes, stays within the central 72% width and central 70% height of a 1536x1024 transparent canvas. Leave at least 15% entirely empty transparent space at top and bottom and 14% left and right. Replace the dense white outer glow with delicate airy translucent wisps and substantial transparent gaps; no white halo, no electric or golden veins. The steam is subtle local respiration, not luminous plasma, an explosion, or a cloud background. Do not include the reference vent, any source object, ground, box, text, checkerboard or background color. Genuine RGBA alpha: empty surroundings alpha0, softly varying partially transparent steam. One fixed vapor pose only.",
+      "initial_generation_prompt": "Use case: stylized-concept. ONE isolated 2D game visual effect sprite, realistic delicately painted, matching Xeno Prime black resin biome, muted cyan and restrained amber/copper tones. TRUE TRANSPARENT PNG with alpha fading naturally to0 on edges, not a picture of transparency. No black background, no checkerboard pixels, no scene, no frame, no grid, no text, no label, no other separate effects. Canvas 1536x1024, one complete effect centered well inside with at least12 percent entirely empty transparent margins on all sides. No cast shadow on background, no square vignette. Subject: one slender plume of PALE COOL VAPOR rising diagonally toward upper-right from an invisible low source at lower-left, subtle curled wisps, gentle semi-transparent density variations, very soft dissolving edges and a broad transparent surrounding area. It is a small local steam puff, not a full fog background or smoke explosion. No source object, no ground. Input image is only a palette/material reference. Do not include its physical object in the output. Output exactly one isolated effect on genuine transparent alpha, full asset with all edges fading into empty transparency.",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/effets/068_souffle_vapeur.png",
+      "repository_blob_sha1": "4fb9e2e686ee756d364a1351acbe2f71b0e3f312"
+    },
+    {
+      "id": "069",
+      "status": "generated_technical_checked",
+      "production_status": "generated_technical_checked",
+      "name_fr": "Pulsation nerveuse",
+      "group": "effets",
+      "description": "Halo organique ambre discret à filaments radiaux autour d’un centre transparent.",
+      "filename": "sprites/effets/069_pulsation_nerveuse.png",
+      "source_filename": "sprites/effets/069_pulsation_nerveuse.png",
+      "tableaux": [
+        7,
+        8,
+        10,
+        12
+      ],
+      "reference_ids": [
+        "063"
+      ],
+      "references": [
+        {
+          "id": "063",
+          "source_path": "sources/personnages/063_bulbe_nerveux.png",
+          "sprite_path": "sprites/personnages/063_bulbe_nerveux.png",
+          "status": "disponible",
+          "available_now": true,
+          "role": "palette_matiere_style",
+          "asset_key": "XENO-BE-063",
+          "availability_scope": "archives_source"
+        }
+      ],
+      "depends_on": [],
+      "prompt": "Use case: stylized-concept. ONE isolated 2D game visual effect sprite, realistic delicately painted, matching Xeno Prime black resin biome, muted cyan and restrained amber/copper tones. TRUE TRANSPARENT PNG with alpha fading naturally to0 on edges, not a picture of transparency. No black background, no checkerboard pixels, no scene, no frame, no grid, no text, no label, no other separate effects. Canvas 1254x1254, one complete effect centered well inside with at least12 percent entirely empty transparent margins on all sides. No cast shadow on background, no square vignette. Subject: one RESTRAINED AMBER NEURAL PULSE, an irregular organic thin halo with delicate short branching filaments radiating around a CLEAR EMPTY TRANSPARENT CENTER. Faint concentric amber glow, sparse ring formed from fine luminous biological strands; no solid bright central disk and no emblem, magic runes, circuitry text or UI. Fully isolated complete circular effect with soft progressive alpha and12 percent clear margin. Input image is only a palette/material reference. Do not include its physical object in the output. Output exactly one isolated effect on genuine transparent alpha, full asset with all edges fading into empty transparency.",
+      "prompt_provenance": "metadata_v2/completion_effets.json",
+      "asset_key": "XENO-BE-069",
+      "source_id": "069",
+      "path_scope": "archive_relative",
+      "runtime_integrated": false,
+      "human_art_validation": false,
+      "technical_verified": true,
+      "sha256": "7997098367eb197e2adb43ff104250da8226bea4c5a3f97a9f3577f6fe8052c6",
+      "reference_asset_keys": [
+        "XENO-BE-063"
+      ],
+      "depends_on_asset_keys": [],
+      "historical_status_before_20261106": "non_produit",
+      "width": 1254,
+      "height": 1254,
+      "delivered_on": "2026-11-06",
+      "source_archive_id": "XENO-BE-ARCHIVE-AJOUTS-23",
+      "prompt_submitted": "Use case: precise-object-edit. Correct image1 into a transparent VFX overlay for Xeno Prime, using image2 only as reference for the amber luminous neural strands. REMOVE the entire thick ivory/beige ring, fog, flesh, membrane and cyan strands from image1. Retain ONLY a sparse irregular circle of THIN WARM AMBER branching light filaments. This is a brief neural flash, not a physical ring or portal. Individual amber-gold filaments are hair-thin, twig-like, with only a few very short forks and a tiny soft halo immediately around each strand. Large transparent gaps between strands. All spaces between the lines, the entire center and the entire surrounding canvas are fully transparent alpha0. No filled band, no continuous tubular surface, no beige or white cloud, no skin, no solid central disk, no membrane, no runes, no symbols. Maintain one organic uneven almost-circular pulse, centered inside central70% of a1254x1254 canvas, fully isolated with15% empty transparent margin. True PNG alpha, softly fading amber filament tips, detailed delicately painted effect. Only one complete effect.",
+      "initial_generation_prompt": "Use case: stylized-concept. ONE isolated 2D game visual effect sprite, realistic delicately painted, matching Xeno Prime black resin biome, muted cyan and restrained amber/copper tones. TRUE TRANSPARENT PNG with alpha fading naturally to0 on edges, not a picture of transparency. No black background, no checkerboard pixels, no scene, no frame, no grid, no text, no label, no other separate effects. Canvas 1254x1254, one complete effect centered well inside with at least12 percent entirely empty transparent margins on all sides. No cast shadow on background, no square vignette. Subject: one RESTRAINED AMBER NEURAL PULSE, an irregular organic thin halo with delicate short branching filaments radiating around a CLEAR EMPTY TRANSPARENT CENTER. Faint concentric amber glow, sparse ring formed from fine luminous biological strands; no solid bright central disk and no emblem, magic runes, circuitry text or UI. Fully isolated complete circular effect with soft progressive alpha and12 percent clear margin. Input image is only a palette/material reference. Do not include its physical object in the output. Output exactly one isolated effect on genuine transparent alpha, full asset with all edges fading into empty transparency.",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/effets/069_pulsation_nerveuse.png",
+      "repository_blob_sha1": "59ca38ec450fa0e0106957662b744a5d7ca78937"
+    },
+    {
+      "id": "070",
+      "status": "generated_technical_checked",
+      "production_status": "generated_technical_checked",
+      "name_fr": "Impact de poussière",
+      "group": "effets",
+      "description": "Éventail bas de poussière, éclats de roche et lignes d’impact naturelles.",
+      "filename": "sprites/effets/070_impact_poussiere.png",
+      "source_filename": "sprites/effets/070_impact_poussiere.png",
+      "tableaux": [
+        3,
+        5,
+        10,
+        12
+      ],
+      "reference_ids": [
+        "013"
+      ],
+      "references": [
+        {
+          "id": "013",
+          "source_path": "sources/terrain/013_corniche_basalte.png",
+          "sprite_path": "sprites/terrain/013_corniche_basalte.png",
+          "status": "disponible",
+          "available_now": true,
+          "role": "palette_matiere_style",
+          "asset_key": "XENO-BE-013",
+          "availability_scope": "archives_source"
+        }
+      ],
+      "depends_on": [],
+      "prompt": "Use case: stylized-concept. ONE isolated 2D game visual effect sprite, realistic delicately painted, matching Xeno Prime black resin biome, muted cyan and restrained amber/copper tones. TRUE TRANSPARENT PNG with alpha fading naturally to0 on edges, not a picture of transparency. No black background, no checkerboard pixels, no scene, no frame, no grid, no text, no label, no other separate effects. Canvas 1536x1024, one complete effect centered well inside with at least12 percent entirely empty transparent margins on all sides. No cast shadow on background, no square vignette. Subject: one LOW FAN-SHAPED DUST IMPACT puff spreading sideways from a small invisible point near the lower center: grey-brown dust, tiny basalt fragments and a few short natural motion streaks. A compact irregular fan, heavier particles near base, fine dust dissolving upward; no floor tile, no weapon, no explosion fire, no environmental backdrop. All thrown fragments inside generous margins. Input image is only a palette/material reference. Do not include its physical object in the output. Output exactly one isolated effect on genuine transparent alpha, full asset with all edges fading into empty transparency.",
+      "prompt_provenance": "metadata_v2/completion_effets.json",
+      "asset_key": "XENO-BE-070",
+      "source_id": "070",
+      "path_scope": "archive_relative",
+      "runtime_integrated": false,
+      "human_art_validation": false,
+      "technical_verified": true,
+      "sha256": "6e377bfc68362650960c109868a700bf4971209a6dc7800667e752ad7dc90cdc",
+      "reference_asset_keys": [
+        "XENO-BE-013"
+      ],
+      "depends_on_asset_keys": [],
+      "historical_status_before_20261106": "non_produit",
+      "width": 1536,
+      "height": 1024,
+      "delivered_on": "2026-11-06",
+      "source_archive_id": "XENO-BE-ARCHIVE-AJOUTS-23",
+      "prompt_submitted": "Use case: stylized-concept. ONE isolated 2D game visual effect sprite, realistic delicately painted, matching Xeno Prime black resin biome, muted cyan and restrained amber/copper tones. TRUE TRANSPARENT PNG with alpha fading naturally to0 on edges, not a picture of transparency. No black background, no checkerboard pixels, no scene, no frame, no grid, no text, no label, no other separate effects. Canvas 1536x1024, one complete effect centered well inside with at least12 percent entirely empty transparent margins on all sides. No cast shadow on background, no square vignette. Subject: one LOW FAN-SHAPED DUST IMPACT puff spreading sideways from a small invisible point near the lower center: grey-brown dust, tiny basalt fragments and a few short natural motion streaks. A compact irregular fan, heavier particles near base, fine dust dissolving upward; no floor tile, no weapon, no explosion fire, no environmental backdrop. All thrown fragments inside generous margins. Input image is only a palette/material reference. Do not include its physical object in the output. Output exactly one isolated effect on genuine transparent alpha, full asset with all edges fading into empty transparency. Physical mineral dust and basalt chips are NOT self-luminous: no amber energy veins, no white glowing halo, no bright fog surrounding the puff. Match the charcoal rock texture of image 1. Keep the low fan inside central70% width and central50% height, with clear transparent space between the larger particles.",
+      "initial_generation_prompt": "Use case: stylized-concept. ONE isolated 2D game visual effect sprite, realistic delicately painted, matching Xeno Prime black resin biome, muted cyan and restrained amber/copper tones. TRUE TRANSPARENT PNG with alpha fading naturally to0 on edges, not a picture of transparency. No black background, no checkerboard pixels, no scene, no frame, no grid, no text, no label, no other separate effects. Canvas 1536x1024, one complete effect centered well inside with at least12 percent entirely empty transparent margins on all sides. No cast shadow on background, no square vignette. Subject: one LOW FAN-SHAPED DUST IMPACT puff spreading sideways from a small invisible point near the lower center: grey-brown dust, tiny basalt fragments and a few short natural motion streaks. A compact irregular fan, heavier particles near base, fine dust dissolving upward; no floor tile, no weapon, no explosion fire, no environmental backdrop. All thrown fragments inside generous margins. Input image is only a palette/material reference. Do not include its physical object in the output. Output exactly one isolated effect on genuine transparent alpha, full asset with all edges fading into empty transparency.",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/effets/070_impact_poussiere.png",
+      "repository_blob_sha1": "c06dc10b57eb85fc86331cc2d563d5502da01aea"
+    },
+    {
+      "id": "071",
+      "status": "generated_technical_checked",
+      "production_status": "generated_technical_checked",
+      "name_fr": "Onde tellurique",
+      "group": "effets",
+      "description": "Crête basse de poussière et résine soulevée vers la gauche, silhouette lisible.",
+      "filename": "sprites/effets/071_onde_sol.png",
+      "source_filename": "sprites/effets/071_onde_sol.png",
+      "tableaux": [
+        12
+      ],
+      "reference_ids": [
+        "013"
+      ],
+      "references": [
+        {
+          "id": "013",
+          "source_path": "sources/terrain/013_corniche_basalte.png",
+          "sprite_path": "sprites/terrain/013_corniche_basalte.png",
+          "status": "disponible",
+          "available_now": true,
+          "role": "palette_matiere_style",
+          "asset_key": "XENO-BE-013",
+          "availability_scope": "archives_source"
+        }
+      ],
+      "depends_on": [],
+      "prompt": "Use case: stylized-concept. ONE isolated 2D game visual effect sprite, realistic delicately painted, matching Xeno Prime black resin biome, muted cyan and restrained amber/copper tones. TRUE TRANSPARENT PNG with alpha fading naturally to0 on edges, not a picture of transparency. No black background, no checkerboard pixels, no scene, no frame, no grid, no text, no label, no other separate effects. Canvas 1536x1024, one complete effect centered well inside with at least12 percent entirely empty transparent margins on all sides. No cast shadow on background, no square vignette. Subject: one LOW TRAVELLING GROUND-WAVE CREST moving toward the LEFT, a compact rising curl of dark dust and tiny wet black-resin shards, with a short tapering trail toward right. Readable side silhouette suggesting a rolling disturbance along a floor, but do not include the floor itself. Restrained copper highlights on resin shards, pale cyan accent only subtle. Whole crest and trail fit inside margins, no giant explosion. Input image is only a palette/material reference. Do not include its physical object in the output. Output exactly one isolated effect on genuine transparent alpha, full asset with all edges fading into empty transparency.",
+      "prompt_provenance": "metadata_v2/completion_effets.json",
+      "asset_key": "XENO-BE-071",
+      "source_id": "071",
+      "path_scope": "archive_relative",
+      "runtime_integrated": false,
+      "human_art_validation": false,
+      "technical_verified": true,
+      "sha256": "85f67ab25023dee2844e1b792fe1c1b12e02acec37c57e9eb642b944ebd69087",
+      "reference_asset_keys": [
+        "XENO-BE-013"
+      ],
+      "depends_on_asset_keys": [],
+      "historical_status_before_20261106": "non_produit",
+      "width": 1536,
+      "height": 1024,
+      "delivered_on": "2026-11-06",
+      "source_archive_id": "XENO-BE-ARCHIVE-AJOUTS-23",
+      "prompt_submitted": "Use case: stylized-concept. ONE isolated 2D game visual effect sprite, realistic delicately painted, matching Xeno Prime black resin biome, muted cyan and restrained amber/copper tones. TRUE TRANSPARENT PNG with alpha fading naturally to0 on edges, not a picture of transparency. No black background, no checkerboard pixels, no scene, no frame, no grid, no text, no label, no other separate effects. Canvas 1536x1024, one complete effect centered well inside with at least12 percent entirely empty transparent margins on all sides. No cast shadow on background, no square vignette. Subject: one LOW TRAVELLING GROUND-WAVE CREST moving toward the LEFT, a compact rising curl of dark dust and tiny wet black-resin shards, with a short tapering trail toward right. Readable side silhouette suggesting a rolling disturbance along a floor, but do not include the floor itself. Restrained copper highlights on resin shards, pale cyan accent only subtle. Whole crest and trail fit inside margins, no giant explosion. Input image is only a palette/material reference. Do not include its physical object in the output. Output exactly one isolated effect on genuine transparent alpha, full asset with all edges fading into empty transparency.",
+      "initial_generation_prompt": "Use case: stylized-concept. ONE isolated 2D game visual effect sprite, realistic delicately painted, matching Xeno Prime black resin biome, muted cyan and restrained amber/copper tones. TRUE TRANSPARENT PNG with alpha fading naturally to0 on edges, not a picture of transparency. No black background, no checkerboard pixels, no scene, no frame, no grid, no text, no label, no other separate effects. Canvas 1536x1024, one complete effect centered well inside with at least12 percent entirely empty transparent margins on all sides. No cast shadow on background, no square vignette. Subject: one LOW TRAVELLING GROUND-WAVE CREST moving toward the LEFT, a compact rising curl of dark dust and tiny wet black-resin shards, with a short tapering trail toward right. Readable side silhouette suggesting a rolling disturbance along a floor, but do not include the floor itself. Restrained copper highlights on resin shards, pale cyan accent only subtle. Whole crest and trail fit inside margins, no giant explosion. Input image is only a palette/material reference. Do not include its physical object in the output. Output exactly one isolated effect on genuine transparent alpha, full asset with all edges fading into empty transparency.",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/effets/071_onde_sol.png",
+      "repository_blob_sha1": "e542240360abc3344ff69e846faed9dc7e5bfbc9"
+    },
+    {
+      "id": "072",
+      "status": "generated_technical_checked",
+      "production_status": "generated_technical_checked",
+      "name_fr": "Voile de brume",
+      "group": "effets",
+      "description": "Bande latérale de brume froide très légère, extrémités progressives.",
+      "filename": "sprites/effets/072_voile_brume.png",
+      "source_filename": "sprites/effets/072_voile_brume.png",
+      "tableaux": [
+        1,
+        2,
+        3,
+        5,
+        7,
+        12
+      ],
+      "reference_ids": [
+        "001"
+      ],
+      "references": [
+        {
+          "id": "001",
+          "source_path": "sources/vegetation/001_calice_geant.png",
+          "sprite_path": "sprites/vegetation/001_calice_geant.png",
+          "status": "disponible",
+          "available_now": true,
+          "role": "palette_matiere_style",
+          "asset_key": "XENO-BE-001",
+          "availability_scope": "archives_source"
+        }
+      ],
+      "depends_on": [],
+      "prompt": "Use case: stylized-concept. ONE isolated 2D game visual effect sprite, realistic delicately painted, matching Xeno Prime black resin biome, muted cyan and restrained amber/copper tones. TRUE TRANSPARENT PNG with alpha fading naturally to0 on edges, not a picture of transparency. No black background, no checkerboard pixels, no scene, no frame, no grid, no text, no label, no other separate effects. Canvas 1536x1024, one complete effect centered well inside with at least12 percent entirely empty transparent margins on all sides. No cast shadow on background, no square vignette. Subject: one very LIGHT HORIZONTAL BAND OF COLD MIST, long low veil of thin pale blue-grey vapor, delicate interwoven curls, center mostly translucent and both ends fading completely to alpha 0. Designed as a small atmospheric overlay in a2D side-scroller, not a landscape or full rectangular image. No physical objects, no source, no landscape, no sky. Keep the mist confined to central 70 percent width and central 25 percent height, all edges airy. Input image is only a palette/material reference. Do not include its physical object in the output. Output exactly one isolated effect on genuine transparent alpha, full asset with all edges fading into empty transparency.",
+      "prompt_provenance": "metadata_v2/completion_effets.json",
+      "asset_key": "XENO-BE-072",
+      "source_id": "072",
+      "path_scope": "archive_relative",
+      "runtime_integrated": false,
+      "human_art_validation": false,
+      "technical_verified": true,
+      "sha256": "a5a0c5aa47cb12f71416bb277c7e8a6a8706dd1b808f8ae816ce10f70edd1c96",
+      "reference_asset_keys": [
+        "XENO-BE-001"
+      ],
+      "depends_on_asset_keys": [],
+      "historical_status_before_20261106": "non_produit",
+      "width": 1536,
+      "height": 1024,
+      "delivered_on": "2026-11-06",
+      "source_archive_id": "XENO-BE-ARCHIVE-AJOUTS-23",
+      "prompt_submitted": "Use case: precise-object-edit. Asset type: one independent transparent PNG atmospheric sprite, 072 Voile de brume, for Xeno Prime — Le Berceau enfoui. The input is the exact existing horizontal mist-band draft to correct. Preserve the same wide canvas, long low placement, outer airy contour, gentle wispy vapor texture and true alpha transparency. Change only the unwanted contents of the mist: REMOVE every orange/copper glowing line, cyan glowing dot, dark branch-like filament, nerve-like structure and solid material from inside the vapor. Replace those lines with softly interwoven, barely visible pale blue-grey water vapor. The result must contain ONLY a very thin cold mist veil, no physical objects, no plant fibres, roots, sparks, glowing energy ribbons or debris. Keep the center mostly translucent and soften all four edges to zero alpha without any hard outline or rectangular patch. No thick opaque cloud, no background, no black or grey square, no floor or sky, no global halo. One single long low mist band occupying the central 70 percent width and central 25 percent height of a 1536x1024 transparent canvas, no text, labels, borders, or additional effects. Retain native soft alpha.",
+      "initial_generation_prompt": "Use case: stylized-concept. ONE isolated 2D game visual effect sprite, realistic delicately painted, matching Xeno Prime black resin biome, muted cyan and restrained amber/copper tones. TRUE TRANSPARENT PNG with alpha fading naturally to0 on edges, not a picture of transparency. No black background, no checkerboard pixels, no scene, no frame, no grid, no text, no label, no other separate effects. Canvas 1536x1024, one complete effect centered well inside with at least12 percent entirely empty transparent margins on all sides. No cast shadow on background, no square vignette. Subject: one very LIGHT HORIZONTAL BAND OF COLD MIST, long low veil of thin pale blue-grey vapor, delicate interwoven curls, center mostly translucent and both ends fading completely to alpha 0. Designed as a small atmospheric overlay in a2D side-scroller, not a landscape or full rectangular image. No physical objects, no source, no landscape, no sky. Keep the mist confined to central 70 percent width and central 25 percent height, all edges airy. Input image is only a palette/material reference. Do not include its physical object in the output. Output exactly one isolated effect on genuine transparent alpha, full asset with all edges fading into empty transparency.",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/effets/072_voile_brume.png",
+      "repository_blob_sha1": "9a8086ba5ea3934d9c0d806c0d54b73fe4ac62c6"
+    },
+    {
+      "id": "079",
+      "status": "generated_technical_checked",
+      "production_status": "generated_technical_checked",
+      "name_fr": "Bouchon de résine brisé",
+      "group": "environnement",
+      "description": "Même obturateur avec ouverture centrale franchissable et fragments de résine à la base.",
+      "filename": "sprites/environnement/079_bouchon_resine_brise.png",
+      "source_filename": "sprites/environnement/079_bouchon_resine_brise.png",
+      "tableaux": [
+        5,
+        8,
+        10
+      ],
+      "reference_ids": [
+        "078"
+      ],
+      "references": [
+        {
+          "id": "078",
+          "source_path": "sources/environnement/078_bouchon_resine_intact.png",
+          "sprite_path": "sprites/environnement/078_bouchon_resine_intact.png",
+          "status": "disponible",
+          "available_now": true,
+          "role": "identite_etat_a_modifier",
+          "asset_key": "XENO-BE-078",
+          "availability_scope": "archives_source"
+        }
+      ],
+      "depends_on": [],
+      "prompt": "Use case: stylized-concept. Asset type: one independent production sprite for a painted 2D side-scrolling game, Xeno Prime, Le Berceau enfoui. Input image: visual/material reference, preserve the pack's painterly rendering and contour definition. Style: detailed hand-painted 2D illustration, dark biomechanical alien hive mixed with lush extraterrestrial fungal flora. Opaque solid object with crisp silhouette; charcoal and matte copper, restrained cyan and amber bioluminescence. Background: genuinely transparent alpha everywhere outside the object and inside any holes. If transparency cannot be encoded, use ONLY perfectly uniform vivid magenta #ff00ff, including holes. No black or gray matte. Keep 10% empty margin on every side. Entire asset visible, no clipped edges. No other scenery, people, text, watermark, grid, checkerboard, duplicate variations, cast shadow outside silhouette, gradients or glow outside object.\nPrimary request: Edit ONLY the intact resin plug reference into its BROKEN OPEN state. Keep the original exact outer silhouette, two thick ribbed side borders, top arch, low base, scale, placement, material and lighting. Remove the central shutter creating a large clearly open traversable center showing the same transparent background all the way through. Leave a few jagged broken inner ribs and three small resin fragments resting at the bottom threshold. No damage gore, no smoke. Keep both side borders structurally connected through top and base. Same canvas and margins as reference.",
+      "prompt_provenance": "metadata_v2/completion_environnement_pending.json",
+      "asset_key": "XENO-BE-079",
+      "source_id": "079",
+      "path_scope": "archive_relative",
+      "runtime_integrated": false,
+      "human_art_validation": false,
+      "technical_verified": true,
+      "sha256": "a838cfda78e24f95b782c246b71384fc3a190dab60cb571ae99947872c7d9448",
+      "reference_asset_keys": [
+        "XENO-BE-078"
+      ],
+      "depends_on_asset_keys": [],
+      "historical_status_before_20261106": "non_produit",
+      "width": 1254,
+      "height": 1254,
+      "delivered_on": "2026-11-06",
+      "source_archive_id": "XENO-BE-ARCHIVE-AJOUTS-23",
+      "prompt_submitted": "Use case: stylized-concept. Asset type: one independent production sprite for a painted 2D side-scrolling game, Xeno Prime, Le Berceau enfoui. Input image: visual/material reference, preserve the pack's painterly rendering and contour definition. Style: detailed hand-painted 2D illustration, dark biomechanical alien hive mixed with lush extraterrestrial fungal flora. Opaque solid object with crisp silhouette; charcoal and matte copper, restrained cyan and amber bioluminescence. Background: genuinely transparent alpha everywhere outside the object and inside any holes. Use real native alpha transparency, including the new central hole; never use a colored matte. No black or gray matte. Keep 10% empty margin on every side. Entire asset visible, no clipped edges. No other scenery, people, text, watermark, grid, checkerboard, duplicate variations, cast shadow outside silhouette, gradients or glow outside object.\nPrimary request: Edit ONLY the intact resin plug reference into its BROKEN OPEN state. Keep the original exact outer silhouette, two thick ribbed side borders, top arch, low base, scale, placement, material and lighting. Remove the central shutter creating a large clearly open traversable center showing the same transparent background all the way through. Leave a few jagged broken inner ribs and three small resin fragments resting at the bottom threshold. No damage gore, no smoke. Keep both side borders structurally connected through top and base. Same canvas and margins as reference.\nFidelity lock: retain the exact 1254 x 1254 canvas and the same plug frame. The center must be an actual alpha-zero passage, with only three small dry fragments on the bottom threshold.",
+      "initial_generation_prompt": "Use case: stylized-concept. Asset type: one independent production sprite for a painted 2D side-scrolling game, Xeno Prime, Le Berceau enfoui. Input image: visual/material reference, preserve the pack's painterly rendering and contour definition. Style: detailed hand-painted 2D illustration, dark biomechanical alien hive mixed with lush extraterrestrial fungal flora. Opaque solid object with crisp silhouette; charcoal and matte copper, restrained cyan and amber bioluminescence. Background: genuinely transparent alpha everywhere outside the object and inside any holes. Use real native alpha transparency, including the new central hole; never use a colored matte. No black or gray matte. Keep 10% empty margin on every side. Entire asset visible, no clipped edges. No other scenery, people, text, watermark, grid, checkerboard, duplicate variations, cast shadow outside silhouette, gradients or glow outside object.\nPrimary request: Edit ONLY the intact resin plug reference into its BROKEN OPEN state. Keep the original exact outer silhouette, two thick ribbed side borders, top arch, low base, scale, placement, material and lighting. Remove the central shutter creating a large clearly open traversable center showing the same transparent background all the way through. Leave a few jagged broken inner ribs and three small resin fragments resting at the bottom threshold. No damage gore, no smoke. Keep both side borders structurally connected through top and base. Same canvas and margins as reference.\nFidelity lock: retain the exact 1254 x 1254 canvas and the same plug frame. The center must be an actual alpha-zero passage, with only three small dry fragments on the bottom threshold.",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/environnement/079_bouchon_resine_brise.png",
+      "repository_blob_sha1": "5876ecb64705bc84015b518bb6bfc177a5ad2b65"
+    },
+    {
+      "id": "097",
+      "status": "generated_technical_checked",
+      "production_status": "generated_technical_checked",
+      "name_fr": "Matriarche en agonie",
+      "group": "boss_actions",
+      "description": "À partir de la même tête vulnérable, montre l’agonie encore vivante : tête plus affaissée dans son berceau de résine, mâchoire entrouverte relâchée, petits nerfs ambre presque éteints. L’attache du crâne et la longue couronne restent intactes et reconnaissables. Quelques fines contractions visibles dans les membranes suffisent, aucune projection. Ne pas produire un squelette ni un cadavre desséché ni le sprite mort. Même tête géante enracinée au sol, même échelle et même direction vers la gauche. AUCUN torse, poitrine, bras ou jambe. Aucun sang ni gore.",
+      "filename": "sprites/boss_actions/097_matriarche_agonie.png",
+      "source_filename": "sprites/boss_actions/097_matriarche_agonie.png",
+      "tableaux": [
+        12
+      ],
+      "reference_ids": [
+        "061"
+      ],
+      "references": [
+        {
+          "id": "061",
+          "source_path": "sources/personnages/061_matriarche_vulnerable.png",
+          "sprite_path": "sprites/personnages/061_matriarche_vulnerable.png",
+          "status": "disponible",
+          "available_now": true,
+          "role": "identite_etat_a_modifier",
+          "asset_key": "XENO-BE-061",
+          "availability_scope": "archives_source"
+        }
+      ],
+      "depends_on": [],
+      "prompt": "Use case: identity-preserve / precise-object-edit. Asset type: one complete standalone 2D game sprite for Xeno Prime — Le Berceau enfoui. Input image 1 is the exact existing vulnerable queen-head sprite to edit; preserve its identity, detailed painterly materials, matte charcoal chitin, oxidized copper, tiny cyan rim details. Same canvas aspect, camera, position, scale, direction to left, all crown points and full basal resin cradle visible. The entire subject is ONLY an enormous grounded head rooted directly in this low cradle: no torso, arms or legs. Change only to a weakened collapsing but still living state: the head sits somewhat lower in its cradle, jaw relaxed slightly open, amber nerve bulb at cheek dimmed to a few weak embers and fine membrane contractions. Crown still fully intact, surface still intact, recognizable same creature. Not dead/dried/skeletal, no blood, exposed flesh or gore, no extra objects or effects. Keep base attachment aligned and avoid zoom/cropping. One coherent independent full sprite, never a sheet. Genuinely transparent native-alpha PNG including all crown holes; no floor, environment, shadow, fog, halo, text, label, border or watermark.",
+      "prompt_provenance": "metadata_v2/completion_boss_last_attempt.json",
+      "asset_key": "XENO-BE-097",
+      "source_id": "097",
+      "path_scope": "archive_relative",
+      "runtime_integrated": false,
+      "human_art_validation": false,
+      "technical_verified": true,
+      "sha256": "5f441afc47743ac6b6e71846f77e860db2586f9582d7aeee7f57cfe90ad3423c",
+      "reference_asset_keys": [
+        "XENO-BE-061"
+      ],
+      "depends_on_asset_keys": [],
+      "historical_status_before_20261106": "non_produit",
+      "width": 1670,
+      "height": 941,
+      "delivered_on": "2026-11-06",
+      "source_archive_id": "XENO-BE-ARCHIVE-AJOUTS-23",
+      "prompt_submitted": "Use case: identity-preserve / precise-object-edit. Asset type: one complete standalone 2D game sprite for Xeno Prime — Le Berceau enfoui. Input image 1 is the exact existing vulnerable queen-head sprite to edit; preserve its identity, detailed painterly materials, matte charcoal chitin, oxidized copper, tiny cyan rim details. Same canvas aspect, camera, position, scale, direction to left, all crown points and full basal resin cradle visible. The entire subject is ONLY an enormous grounded head rooted directly in this low cradle: no torso, arms or legs. Change only to a weakened collapsing but still living state: the head sits somewhat lower in its cradle, jaw relaxed slightly open, amber nerve bulb at cheek dimmed to a few weak embers and fine membrane contractions. Crown still fully intact, surface still intact, recognizable same creature. Not dead/dried/skeletal, no blood, exposed flesh or gore, no extra objects or effects. Keep base attachment aligned and avoid zoom/cropping. One coherent independent full sprite, never a sheet. Genuinely transparent native-alpha PNG including all crown holes; no floor, environment, shadow, fog, halo, text, label, border or watermark.",
+      "initial_generation_prompt": "Use case: identity-preserve / precise-object-edit. Asset type: one complete standalone 2D game sprite for Xeno Prime — Le Berceau enfoui. Input image 1 is the exact existing vulnerable queen-head sprite to edit; preserve its identity, detailed painterly materials, matte charcoal chitin, oxidized copper, tiny cyan rim details. Same canvas aspect, camera, position, scale, direction to left, all crown points and full basal resin cradle visible. The entire subject is ONLY an enormous grounded head rooted directly in this low cradle: no torso, arms or legs. Change only to a weakened collapsing but still living state: the head sits somewhat lower in its cradle, jaw relaxed slightly open, amber nerve bulb at cheek dimmed to a few weak embers and fine membrane contractions. Crown still fully intact, surface still intact, recognizable same creature. Not dead/dried/skeletal, no blood, exposed flesh or gore, no extra objects or effects. Keep base attachment aligned and avoid zoom/cropping. One coherent independent full sprite, never a sheet. Genuinely transparent native-alpha PNG including all crown holes; no floor, environment, shadow, fog, halo, text, label, border or watermark.",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/boss_actions/097_matriarche_agonie.png",
+      "repository_blob_sha1": "a66dcb7d6c7df1d26382d398b39c4628b0aa1f35"
+    },
+    {
+      "id": "098",
+      "status": "generated_technical_checked",
+      "production_status": "generated_technical_checked",
+      "name_fr": "Bulbe nerveux rompu",
+      "group": "boss_actions",
+      "description": "Change uniquement le bulbe nerveux royal en état rompu : la coque d’ambre translucide et de cuivre est fendue en trois grands pans encore attachés à ses nerfs courts; le cœur lumineux est éteint, évidement central noir et mat. Même objet organique entier et cohérent, même longueur de nerfs, même point de vue et même échelle. Aucun sang, aucun fluide, aucune chair, aucun fragment détaché, aucun halo.",
+      "filename": "sprites/boss_actions/098_bulbe_rompu.png",
+      "source_filename": "sprites/boss_actions/098_bulbe_rompu.png",
+      "tableaux": [
+        12
+      ],
+      "reference_ids": [
+        "063"
+      ],
+      "references": [
+        {
+          "id": "063",
+          "source_path": "sources/personnages/063_bulbe_nerveux.png",
+          "sprite_path": "sprites/personnages/063_bulbe_nerveux.png",
+          "status": "disponible",
+          "available_now": true,
+          "role": "identite_etat_a_modifier",
+          "asset_key": "XENO-BE-063",
+          "availability_scope": "archives_source"
+        }
+      ],
+      "depends_on": [],
+      "prompt": "Use case: identity-preserve / precise-object-edit. Asset type: one complete standalone 2D game sprite for Xeno Prime — Le Berceau enfoui. Input image 1 is the reconstructed V2 master sprite to edit and the exact identity/style reference. Detailed painterly game concept art, matte charcoal black chitin, restrained oxidized copper edges, tiny cyan highlights, amber nerves. Preserve the reference camera, scale, lighting direction, material treatment and creature identity. Absolutely no words, labels, numbers, watermark, UI, border or grid. One sprite only, never a sheet. Complete silhouette with at least 10% breathing room on every side. Background genuinely transparent PNG with actual alpha. If native transparency cannot be produced, use a completely uniform flat pure magenta #FF00FF background with no vignette, no drop shadow and no reflected magenta on subject. Crisp clean silhouette, no global glow or haze.\nPrimary request: Change uniquement le bulbe nerveux royal en état rompu : la coque d’ambre translucide et de cuivre est fendue en trois grands pans encore attachés à ses nerfs courts; le cœur lumineux est éteint, évidement central noir et mat. Même objet organique entier et cohérent, même longueur de nerfs, même point de vue et même échelle. Aucun sang, aucun fluide, aucune chair, aucun fragment détaché, aucun halo.",
+      "prompt_provenance": "metadata_v2/completion_boss.json",
+      "asset_key": "XENO-BE-098",
+      "source_id": "098",
+      "path_scope": "archive_relative",
+      "runtime_integrated": false,
+      "human_art_validation": false,
+      "technical_verified": true,
+      "sha256": "c0c1792af1cd52f24b1f6a43bc501636735ddb85154db795a997ae2e1af9df12",
+      "reference_asset_keys": [
+        "XENO-BE-063"
+      ],
+      "depends_on_asset_keys": [],
+      "historical_status_before_20261106": "non_produit",
+      "width": 1671,
+      "height": 941,
+      "delivered_on": "2026-11-06",
+      "source_archive_id": "XENO-BE-ARCHIVE-AJOUTS-23",
+      "prompt_submitted": "Use case: identity-preserve / precise-object-edit. Asset type: one complete standalone 2D game sprite for Xeno Prime — Le Berceau enfoui. Input image 1 is the reconstructed V2 master sprite to edit and the exact identity/style reference. Detailed painterly game concept art, matte charcoal black chitin, restrained oxidized copper edges, tiny cyan highlights, amber nerves. Preserve the reference camera, scale, lighting direction, material treatment and creature identity. Absolutely no words, labels, numbers, watermark, UI, border or grid. One sprite only, never a sheet. Complete silhouette with at least 10% breathing room on every side. Background genuinely transparent PNG with actual alpha. Crisp clean silhouette, no global glow or haze.\nPrimary request: Change uniquement le bulbe nerveux royal en état rompu : la coque d’ambre translucide et de cuivre est fendue en trois grands pans encore attachés à ses nerfs courts; le cœur lumineux est éteint, évidement central noir et mat. Même objet organique entier et cohérent, même longueur de nerfs, même point de vue et même échelle. Aucun sang, aucun fluide, aucune chair, aucun fragment détaché, aucun halo. Preserve exactly the existing left-bulb/right-nerve orientation, attachment positions and the original low horizontal aspect ratio. Open the bulb shell in three attached broken panels, showing an extinguished matte black inner cavity. Actual alpha transparency only.",
+      "initial_generation_prompt": "Use case: identity-preserve / precise-object-edit. Asset type: one complete standalone 2D game sprite for Xeno Prime — Le Berceau enfoui. Input image 1 is the reconstructed V2 master sprite to edit and the exact identity/style reference. Detailed painterly game concept art, matte charcoal black chitin, restrained oxidized copper edges, tiny cyan highlights, amber nerves. Preserve the reference camera, scale, lighting direction, material treatment and creature identity. Absolutely no words, labels, numbers, watermark, UI, border or grid. One sprite only, never a sheet. Complete silhouette with at least 10% breathing room on every side. Background genuinely transparent PNG with actual alpha. Crisp clean silhouette, no global glow or haze.\nPrimary request: Change uniquement le bulbe nerveux royal en état rompu : la coque d’ambre translucide et de cuivre est fendue en trois grands pans encore attachés à ses nerfs courts; le cœur lumineux est éteint, évidement central noir et mat. Même objet organique entier et cohérent, même longueur de nerfs, même point de vue et même échelle. Aucun sang, aucun fluide, aucune chair, aucun fragment détaché, aucun halo. Preserve exactly the existing left-bulb/right-nerve orientation, attachment positions and the original low horizontal aspect ratio. Open the bulb shell in three attached broken panels, showing an extinguished matte black inner cavity. Actual alpha transparency only.",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/boss_actions/098_bulbe_rompu.png",
+      "repository_blob_sha1": "38a0b7ac5296299b7e555ea5f4bc795fcc409d55"
+    },
+    {
+      "id": "102",
+      "status": "generated_technical_checked",
+      "production_status": "generated_technical_checked",
+      "name_fr": "Éclats de chitine",
+      "group": "props_effets",
+      "description": "Petits fragments de carapace noire séparés sur une même toile.",
+      "filename": "sprites/props_effets/102_eclats_chitine.png",
+      "source_filename": "sprites/props_effets/102_eclats_chitine.png",
+      "tableaux": [
+        5,
+        10,
+        12
+      ],
+      "reference_ids": [
+        "054"
+      ],
+      "references": [
+        {
+          "id": "054",
+          "source_path": "sources/accessoires/054_fragment_couronne.png",
+          "sprite_path": "sprites/accessoires/054_fragment_couronne.png",
+          "status": "disponible",
+          "available_now": true,
+          "role": "palette_matiere_style",
+          "asset_key": "XENO-BE-054",
+          "availability_scope": "archives_source"
+        }
+      ],
+      "depends_on": [],
+      "prompt": "Use case: stylized-concept. Input image 1 (054, fragment de couronne royale) is ONLY a material reference for dry black/copper alien chitin; do not reproduce its entire object. Create a NEW independent 2D impact/debris sprite:102 Éclats de chitine. A small loose airborne cluster of SEVEN clearly separated jagged chitin fragments, each with different irregular shape and rotation: dry dark charcoal carapace chips, copper worn edges, slight ribbed ridges and tiny amber resin at a few fractures. These are little shell chips, NOT whole horns, bones, claws, heads or large plates. Natural outward scattering from a center, clearly distinct and not arranged in rows, no overlap so each silhouette is readable. No trails or smoke. Detailed hand-painted dark sci-fi game artwork matching reference material, physically opaque fragments with clear silhouette. Square1254x1254canvas, whole cluster fully inside central70% of image, every individual chip complete with generous pure transparent margins. Actual PNG ALPHA transparency, all exterior gaps fully transparent, no black opaque background, checkerboard, scene, cast shadow, blood, flesh, text, labels, grid, frame or glow aura.",
+      "prompt_provenance": "metadata_v2/completion_props_effets_pending.json",
+      "reference_note": "Référence disponible 054 retenue pour la chitine; 070 n’est pas nécessaire.",
+      "asset_key": "XENO-BE-102",
+      "source_id": "102",
+      "path_scope": "archive_relative",
+      "runtime_integrated": false,
+      "human_art_validation": false,
+      "technical_verified": true,
+      "sha256": "6220f46a4c6583cd0d9eff39f3aa26d6e2e61c47f84f6e5ecf50eaf8f5e6b4d8",
+      "reference_asset_keys": [
+        "XENO-BE-054"
+      ],
+      "depends_on_asset_keys": [],
+      "historical_status_before_20261106": "non_produit",
+      "width": 1254,
+      "height": 1254,
+      "delivered_on": "2026-11-06",
+      "source_archive_id": "XENO-BE-ARCHIVE-AJOUTS-23",
+      "prompt_submitted": "Use case: stylized-concept. Input image 1 (054, fragment de couronne royale) is ONLY a material reference for dry black/copper alien chitin; do not reproduce its entire object. Create a NEW independent 2D impact/debris sprite:102 Éclats de chitine. A small loose airborne cluster of SEVEN clearly separated jagged chitin fragments, each with different irregular shape and rotation: dry dark charcoal carapace chips, copper worn edges, slight ribbed ridges and tiny amber resin at a few fractures. These are little shell chips, NOT whole horns, bones, claws, heads or large plates. Natural outward scattering from a center, clearly distinct and not arranged in rows, no overlap so each silhouette is readable. No trails or smoke. Detailed hand-painted dark sci-fi game artwork matching reference material, physically opaque fragments with clear silhouette. Square1254x1254canvas, whole cluster fully inside central70% of image, every individual chip complete with generous pure transparent margins. Actual PNG ALPHA transparency, all exterior gaps fully transparent, no black opaque background, checkerboard, scene, cast shadow, blood, flesh, text, labels, grid, frame or glow aura.",
+      "initial_generation_prompt": "Use case: stylized-concept. Input image 1 (054, fragment de couronne royale) is ONLY a material reference for dry black/copper alien chitin; do not reproduce its entire object. Create a NEW independent 2D impact/debris sprite:102 Éclats de chitine. A small loose airborne cluster of SEVEN clearly separated jagged chitin fragments, each with different irregular shape and rotation: dry dark charcoal carapace chips, copper worn edges, slight ribbed ridges and tiny amber resin at a few fractures. These are little shell chips, NOT whole horns, bones, claws, heads or large plates. Natural outward scattering from a center, clearly distinct and not arranged in rows, no overlap so each silhouette is readable. No trails or smoke. Detailed hand-painted dark sci-fi game artwork matching reference material, physically opaque fragments with clear silhouette. Square1254x1254canvas, whole cluster fully inside central70% of image, every individual chip complete with generous pure transparent margins. Actual PNG ALPHA transparency, all exterior gaps fully transparent, no black opaque background, checkerboard, scene, cast shadow, blood, flesh, text, labels, grid, frame or glow aura.",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/props_effets/102_eclats_chitine.png",
+      "repository_blob_sha1": "c60298ca8078e9e75d9ea9debbf0eb5d409b721d"
+    },
+    {
+      "id": "104",
+      "status": "generated_technical_checked",
+      "production_status": "generated_technical_checked",
+      "name_fr": "Éclaboussure acide",
+      "group": "props_effets",
+      "description": "Impact liquide vert acide isolé, sans surface.",
+      "filename": "sprites/props_effets/104_acide_eclaboussure.png",
+      "source_filename": "sprites/props_effets/104_acide_eclaboussure.png",
+      "tableaux": [
+        8,
+        9,
+        12
+      ],
+      "reference_ids": [
+        "065"
+      ],
+      "references": [
+        {
+          "id": "065",
+          "source_path": "sources/effets/065_flaque_acide.png",
+          "sprite_path": "sprites/effets/065_flaque_acide.png",
+          "status": "disponible",
+          "available_now": true,
+          "role": "palette_matiere_style",
+          "asset_key": "XENO-BE-065",
+          "availability_scope": "archives_source"
+        }
+      ],
+      "depends_on": [],
+      "prompt": "Use case: stylized-concept. ONE independent transparent2Dgame VFX sprite104 Éclaboussure acide for Xeno Prime — Le Berceau enfoui. One low outward splash crown of corrosive yellow-olive green liquid, as a droplet striking an imaginary horizontal surface: coherent thick central liquid splash with six asymmetrical curved short spouts and several separated spherical droplets, everything fully visible. Green-yellow acidic palette from input reference 065. No actual ground, floor, puddle terrain tile, mouth, body or creature. Side-scroller view with a slight top-plane glimpse, hand-painted detailed liquid, glossy edges, dark translucent inner volumes.1536x1024landscape canvas, effect centered with clean margin. Actual alpha-transparent PNG: all gaps and background alpha zero, preserve gentle translucency of liquid rims. No smoke cloud, halo, shadow outside liquid, scene, text, frame or checkerboard. One fixed impact pose.",
+      "prompt_provenance": "metadata_v2/completion_props_effets_pending.json",
+      "asset_key": "XENO-BE-104",
+      "source_id": "104",
+      "path_scope": "archive_relative",
+      "runtime_integrated": false,
+      "human_art_validation": false,
+      "technical_verified": true,
+      "sha256": "7102c29220cc11ff24da06590377ffd738b78a7c86edd7884c364540e54b2122",
+      "reference_asset_keys": [
+        "XENO-BE-065"
+      ],
+      "depends_on_asset_keys": [],
+      "historical_status_before_20261106": "non_produit",
+      "width": 1536,
+      "height": 1024,
+      "delivered_on": "2026-11-06",
+      "source_archive_id": "XENO-BE-ARCHIVE-AJOUTS-23",
+      "prompt_submitted": "Use case: stylized-concept. ONE independent transparent2Dgame VFX sprite104 Éclaboussure acide for Xeno Prime — Le Berceau enfoui. One low outward splash crown of corrosive yellow-olive green liquid, as a droplet striking an imaginary horizontal surface: coherent thick central liquid splash with six asymmetrical curved short spouts and several separated spherical droplets, everything fully visible. Green-yellow acidic palette from input reference 065. No actual ground, floor, puddle terrain tile, mouth, body or creature. Side-scroller view with a slight top-plane glimpse, hand-painted detailed liquid, glossy edges, dark translucent inner volumes.1536x1024landscape canvas, effect centered with clean margin. Actual alpha-transparent PNG: all gaps and background alpha zero, preserve gentle translucency of liquid rims. No smoke cloud, halo, shadow outside liquid, scene, text, frame or checkerboard. One fixed impact pose.",
+      "initial_generation_prompt": "Use case: stylized-concept. ONE independent transparent2Dgame VFX sprite104 Éclaboussure acide for Xeno Prime — Le Berceau enfoui. One low outward splash crown of corrosive yellow-olive green liquid, as a droplet striking an imaginary horizontal surface: coherent thick central liquid splash with six asymmetrical curved short spouts and several separated spherical droplets, everything fully visible. Green-yellow acidic palette from input reference 065. No actual ground, floor, puddle terrain tile, mouth, body or creature. Side-scroller view with a slight top-plane glimpse, hand-painted detailed liquid, glossy edges, dark translucent inner volumes.1536x1024landscape canvas, effect centered with clean margin. Actual alpha-transparent PNG: all gaps and background alpha zero, preserve gentle translucency of liquid rims. No smoke cloud, halo, shadow outside liquid, scene, text, frame or checkerboard. One fixed impact pose.",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/props_effets/104_acide_eclaboussure.png",
+      "repository_blob_sha1": "cdf4e283d9a6c0144d14427a93068067b6574caa"
+    },
+    {
+      "id": "105",
+      "status": "generated_technical_checked",
+      "production_status": "generated_technical_checked",
+      "name_fr": "Condensation de bouche",
+      "group": "props_effets",
+      "description": "Courte vapeur gris cyan qui se disperse vers la gauche.",
+      "filename": "sprites/props_effets/105_condensation_bouche.png",
+      "source_filename": "sprites/props_effets/105_condensation_bouche.png",
+      "tableaux": [
+        12
+      ],
+      "reference_ids": [
+        "068"
+      ],
+      "references": [
+        {
+          "id": "068",
+          "source_path": "sprites/effets/068_souffle_vapeur.png",
+          "sprite_path": "sprites/effets/068_souffle_vapeur.png",
+          "status": "disponible",
+          "available_now": true,
+          "role": "palette_matiere_style",
+          "asset_key": "XENO-BE-068",
+          "availability_scope": "archives_source"
+        }
+      ],
+      "depends_on": [
+        "068"
+      ],
+      "prompt": "Use case: stylized-concept. ONE independent transparent2Dgame VFX sprite105 Condensation de bouche for Xeno Prime — Le Berceau enfoui. A short soft cool gray-cyan condensation plume expelled from an imaginary source at the RIGHT and dispersing gently to the LEFT. Narrow origin right, widening softly at center-left, three airy curling vapor lobes that dissolve naturally into transparency. Match restrained cyan/gray from input reference 068. NO visible mouth, head, character, tube, floor or background. Detailed softly painted vapor suitable for placement over a grounded alien queen sprite, readable yet subdued, no neon cyan glow. Landscape1672x941canvas, complete plume inside generous transparent margins. Genuine PNG alpha transparency and natural partially transparent wisps, no hard rectangular edge, opaque backdrop, checkerboard, text, symbols or frame. One fixed vapor pose.",
+      "prompt_provenance": "metadata_v2/completion_props_effets_pending.json",
+      "asset_key": "XENO-BE-105",
+      "source_id": "105",
+      "path_scope": "archive_relative",
+      "runtime_integrated": false,
+      "human_art_validation": false,
+      "technical_verified": true,
+      "sha256": "a52d5304831a488cc5be529271b0ef8af7a791dde414c53647f3b8953713a21c",
+      "reference_asset_keys": [
+        "XENO-BE-068"
+      ],
+      "depends_on_asset_keys": [
+        "XENO-BE-068"
+      ],
+      "historical_status_before_20261106": "non_produit",
+      "width": 1672,
+      "height": 941,
+      "delivered_on": "2026-11-06",
+      "source_archive_id": "XENO-BE-ARCHIVE-AJOUTS-23",
+      "prompt_submitted": "Use case: stylized-concept. ONE independent transparent2Dgame VFX sprite105 Condensation de bouche for Xeno Prime — Le Berceau enfoui. A short soft cool gray-cyan condensation plume expelled from an imaginary source at the RIGHT and dispersing gently to the LEFT. Narrow origin right, widening softly at center-left, three airy curling vapor lobes that dissolve naturally into transparency. Match restrained cyan/gray from input reference 068. NO visible mouth, head, character, tube, floor or background. Detailed softly painted vapor suitable for placement over a grounded alien queen sprite, readable yet subdued, no neon cyan glow. Landscape1672x941canvas, complete plume inside generous transparent margins. Genuine PNG alpha transparency and natural partially transparent wisps, no hard rectangular edge, opaque backdrop, checkerboard, text, symbols or frame. One fixed vapor pose. Keep all wisps inside the central 70 percent of the canvas, with at least 15 percent completely transparent margins. This is translucent vapor, with no luminous white surrounding halo.",
+      "initial_generation_prompt": "Use case: stylized-concept. ONE independent transparent2Dgame VFX sprite105 Condensation de bouche for Xeno Prime — Le Berceau enfoui. A short soft cool gray-cyan condensation plume expelled from an imaginary source at the RIGHT and dispersing gently to the LEFT. Narrow origin right, widening softly at center-left, three airy curling vapor lobes that dissolve naturally into transparency. Match restrained cyan/gray from input reference 068. NO visible mouth, head, character, tube, floor or background. Detailed softly painted vapor suitable for placement over a grounded alien queen sprite, readable yet subdued, no neon cyan glow. Landscape1672x941canvas, complete plume inside generous transparent margins. Genuine PNG alpha transparency and natural partially transparent wisps, no hard rectangular edge, opaque backdrop, checkerboard, text, symbols or frame. One fixed vapor pose.",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/props_effets/105_condensation_bouche.png",
+      "repository_blob_sha1": "dbec15c5dc26ae9141d4719ba809fb6fe1e7cc39"
+    },
+    {
+      "id": "106",
+      "status": "generated_technical_checked",
+      "production_status": "generated_technical_checked",
+      "name_fr": "Poussière de chute",
+      "group": "props_effets",
+      "description": "Traînée verticale de poussière avec de petits débris.",
+      "filename": "sprites/props_effets/106_poussiere_chute.png",
+      "source_filename": "sprites/props_effets/106_poussiere_chute.png",
+      "tableaux": [
+        4,
+        7,
+        10,
+        11,
+        12
+      ],
+      "reference_ids": [
+        "070"
+      ],
+      "references": [
+        {
+          "id": "070",
+          "source_path": "sprites/effets/070_impact_poussiere.png",
+          "sprite_path": "sprites/effets/070_impact_poussiere.png",
+          "status": "disponible",
+          "available_now": true,
+          "role": "palette_matiere_style",
+          "asset_key": "XENO-BE-070",
+          "availability_scope": "archives_source"
+        }
+      ],
+      "depends_on": [
+        "070"
+      ],
+      "prompt": "Use case: stylized-concept. ONE independent transparent2Dgame VFX sprite106 Poussière de chute for Xeno Prime — Le Berceau enfoui. A narrow VERTICAL trail of falling smoky gray-brown mineral dust with a few tiny black basalt chips dropping through it. Upper portion sparse, middle elongated soft irregular column, lower portion gently spreads into a light dust puff without showing an impact floor. Dark sci-fi hand-painted detail, no bright fire, no nebula. Match weathered charcoal particles and muted amber flecks of input reference 070. Every small chip is entirely visible. Portrait1024x1536canvas, centered plume within at least12% clear outer margins. Actual PNG alpha transparency, dust progressively transparent and each solid chip opaque. No terrain, falling rock giantobject, creature, visible ground plane, cast shadow, background, text, frame or checkerboard. One fixed falling-debris pose.",
+      "prompt_provenance": "metadata_v2/completion_props_effets_pending.json",
+      "asset_key": "XENO-BE-106",
+      "source_id": "106",
+      "path_scope": "archive_relative",
+      "runtime_integrated": false,
+      "human_art_validation": false,
+      "technical_verified": true,
+      "sha256": "38c566650314dcabfe7d07494e26c9a739358fba98af93b66b282251135094d1",
+      "reference_asset_keys": [
+        "XENO-BE-070"
+      ],
+      "depends_on_asset_keys": [
+        "XENO-BE-070"
+      ],
+      "historical_status_before_20261106": "non_produit",
+      "width": 1024,
+      "height": 1536,
+      "delivered_on": "2026-11-06",
+      "source_archive_id": "XENO-BE-ARCHIVE-AJOUTS-23",
+      "prompt_submitted": "Use case: stylized-concept. ONE independent transparent2Dgame VFX sprite106 Poussière de chute for Xeno Prime — Le Berceau enfoui. A narrow VERTICAL trail of falling smoky gray-brown mineral dust with a few tiny black basalt chips dropping through it. Upper portion sparse, middle elongated soft irregular column, lower portion gently spreads into a light dust puff without showing an impact floor. Dark sci-fi hand-painted detail, no bright fire, no nebula. Match weathered charcoal particles and muted amber flecks of input reference 070. Every small chip is entirely visible. Portrait1024x1536canvas, centered plume within at least12% clear outer margins. Actual PNG alpha transparency, dust progressively transparent and each solid chip opaque. No terrain, falling rock giantobject, creature, visible ground plane, cast shadow, background, text, frame or checkerboard. One fixed falling-debris pose. Image1 is reference for the mineral particles and gray-brown dust ONLY. Change the silhouette to a slim vertical falling trail, not its wide sideways impact. Keep all particles inside the central60% width and central70% height, with no source object or ground. Fine mineral dust, no luminous white halo or electric veins.",
+      "initial_generation_prompt": "Use case: stylized-concept. ONE independent transparent2Dgame VFX sprite106 Poussière de chute for Xeno Prime — Le Berceau enfoui. A narrow VERTICAL trail of falling smoky gray-brown mineral dust with a few tiny black basalt chips dropping through it. Upper portion sparse, middle elongated soft irregular column, lower portion gently spreads into a light dust puff without showing an impact floor. Dark sci-fi hand-painted detail, no bright fire, no nebula. Match weathered charcoal particles and muted amber flecks of input reference 070. Every small chip is entirely visible. Portrait1024x1536canvas, centered plume within at least12% clear outer margins. Actual PNG alpha transparency, dust progressively transparent and each solid chip opaque. No terrain, falling rock giantobject, creature, visible ground plane, cast shadow, background, text, frame or checkerboard. One fixed falling-debris pose.",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/props_effets/106_poussiere_chute.png",
+      "repository_blob_sha1": "26975e1c80f7181d7af307b2bc42a9f4f2c03c60"
+    },
+    {
+      "id": "107",
+      "status": "generated_technical_checked",
+      "production_status": "generated_technical_checked",
+      "name_fr": "Étincelles d’impact",
+      "group": "props_effets",
+      "description": "Brèves étincelles ambre et trois petits fragments noirs.",
+      "filename": "sprites/props_effets/107_etincelles_impact.png",
+      "source_filename": "sprites/props_effets/107_etincelles_impact.png",
+      "tableaux": [
+        10,
+        12
+      ],
+      "reference_ids": [
+        "069"
+      ],
+      "references": [
+        {
+          "id": "069",
+          "source_path": "sprites/effets/069_pulsation_nerveuse.png",
+          "sprite_path": "sprites/effets/069_pulsation_nerveuse.png",
+          "status": "disponible",
+          "available_now": true,
+          "role": "palette_matiere_style",
+          "asset_key": "XENO-BE-069",
+          "availability_scope": "archives_source"
+        }
+      ],
+      "depends_on": [
+        "069"
+      ],
+      "prompt": "Use case: stylized-concept. ONE independent transparent2Dgame VFX sprite107 Étincelles d’impact for Xeno Prime — Le Berceau enfoui. A compact short burst of matte warm amber sparks radiating asymmetrically upward and sideways from a small center, together with EXACTLY THREE separate opaque black chitin fragments. All three black fragments are clearly countable, irregular and distinct from tiny luminous streaks. Sparks thin and brief, warm copper/amber, avoid white explosion, fireball, giant glow cloud or blue energy. Use restrained amber from input reference 069. Detailed hand-painted dark sci-fi effects, fixed impact key pose. Square1254x1254canvas, whole effect contained in center70% with pure transparent margins. True alpha-transparent PNG, graduated alpha along sparks but zero background elsewhere. No object struck, floor, creature, weapon, smoke, labels, text, panel, frame or checkerboard.",
+      "prompt_provenance": "metadata_v2/completion_props_effets_pending.json",
+      "asset_key": "XENO-BE-107",
+      "source_id": "107",
+      "path_scope": "archive_relative",
+      "runtime_integrated": false,
+      "human_art_validation": false,
+      "technical_verified": true,
+      "sha256": "03bbf82d4651112f2e2d8b848562c6a9c22c61d48057ba8f75280c6ae075abf2",
+      "reference_asset_keys": [
+        "XENO-BE-069"
+      ],
+      "depends_on_asset_keys": [
+        "XENO-BE-069"
+      ],
+      "historical_status_before_20261106": "non_produit",
+      "width": 1254,
+      "height": 1254,
+      "delivered_on": "2026-11-06",
+      "source_archive_id": "XENO-BE-ARCHIVE-AJOUTS-23",
+      "prompt_submitted": "Use case: stylized-concept. ONE independent transparent2Dgame VFX sprite107 Étincelles d’impact for Xeno Prime — Le Berceau enfoui. A compact short burst of matte warm amber sparks radiating asymmetrically upward and sideways from a small center, together with EXACTLY THREE separate opaque black chitin fragments. All three black fragments are clearly countable, irregular and distinct from tiny luminous streaks. Sparks thin and brief, warm copper/amber, avoid white explosion, fireball, giant glow cloud or blue energy. Use restrained amber from input reference 069. Detailed hand-painted dark sci-fi effects, fixed impact key pose. Square1254x1254canvas, whole effect contained in center70% with pure transparent margins. True alpha-transparent PNG, graduated alpha along sparks but zero background elsewhere. No object struck, floor, creature, weapon, smoke, labels, text, panel, frame or checkerboard. Reference image 1 supplies the amber filament palette only; do not copy its ring shape. Place exactly three distinct opaque black chitin chips at three clearly separated positions inside the burst. The rest are ONLY thin amber spark streaks with a restrained immediate halo, no pale cloud.",
+      "initial_generation_prompt": "Use case: stylized-concept. ONE independent transparent2Dgame VFX sprite107 Étincelles d’impact for Xeno Prime — Le Berceau enfoui. A compact short burst of matte warm amber sparks radiating asymmetrically upward and sideways from a small center, together with EXACTLY THREE separate opaque black chitin fragments. All three black fragments are clearly countable, irregular and distinct from tiny luminous streaks. Sparks thin and brief, warm copper/amber, avoid white explosion, fireball, giant glow cloud or blue energy. Use restrained amber from input reference 069. Detailed hand-painted dark sci-fi effects, fixed impact key pose. Square1254x1254canvas, whole effect contained in center70% with pure transparent margins. True alpha-transparent PNG, graduated alpha along sparks but zero background elsewhere. No object struck, floor, creature, weapon, smoke, labels, text, panel, frame or checkerboard.",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/props_effets/107_etincelles_impact.png",
+      "repository_blob_sha1": "a9ceab9cc1241e1a722d23c3028b2c181c83e0c1"
+    },
+    {
+      "id": "108",
+      "status": "generated_technical_checked",
+      "production_status": "generated_technical_checked",
+      "name_fr": "Suintement acide",
+      "group": "props_effets",
+      "description": "Trois gouttes détachées et lisibles en suspension.",
+      "filename": "sprites/props_effets/108_suintement_acide.png",
+      "source_filename": "sprites/props_effets/108_suintement_acide.png",
+      "tableaux": [
+        8,
+        9
+      ],
+      "reference_ids": [
+        "066"
+      ],
+      "references": [
+        {
+          "id": "066",
+          "source_path": "sources/effets/066_globule_acide.png",
+          "sprite_path": "sprites/effets/066_globule_acide.png",
+          "status": "disponible",
+          "available_now": true,
+          "role": "palette_matiere_style",
+          "asset_key": "XENO-BE-066",
+          "availability_scope": "archives_source"
+        }
+      ],
+      "depends_on": [],
+      "prompt": "Use case: stylized-concept. ONE independent transparent2Dgame VFX sprite108 Suintement acide for Xeno Prime — Le Berceau enfoui. EXACTLY THREE detached drops of corrosive green-yellow alien acid suspended while falling, separated and clearly countable: one larger elongated teardrop near upper center, one medium rounded drop lower-left, one small round drop still lower-right. Preserve fluid's olive-lime green and glossy pale highlights from input reference 066. No connecting thread, no source nozzle, plant, mouth, creature, puddle, floor or splash. Detailed painted2Dliquid volumes with slightly translucent edges, readable smooth silhouettes. Portrait1024x1536canvas, whole three-dropgroup inside center70%, every droplet complete with generous transparent outer space. Genuine PNG alpha transparency, outside drops alpha zero, no dark rectangle, checkerboard, halo, smoke, extra droplets, text, panel, labels or border.",
+      "prompt_provenance": "metadata_v2/completion_props_effets_pending.json",
+      "asset_key": "XENO-BE-108",
+      "source_id": "108",
+      "path_scope": "archive_relative",
+      "runtime_integrated": false,
+      "human_art_validation": false,
+      "technical_verified": true,
+      "sha256": "bbbad804254e2a0584233ed3670d400549c4f427407dd36a1c3705b0cb85852a",
+      "reference_asset_keys": [
+        "XENO-BE-066"
+      ],
+      "depends_on_asset_keys": [],
+      "historical_status_before_20261106": "non_produit",
+      "width": 1024,
+      "height": 1536,
+      "delivered_on": "2026-11-06",
+      "source_archive_id": "XENO-BE-ARCHIVE-AJOUTS-23",
+      "prompt_submitted": "Use case: stylized-concept. ONE independent transparent2Dgame VFX sprite108 Suintement acide for Xeno Prime — Le Berceau enfoui. EXACTLY THREE detached drops of corrosive green-yellow alien acid suspended while falling, separated and clearly countable: one larger elongated teardrop near upper center, one medium rounded drop lower-left, one small round drop still lower-right. Preserve fluid's olive-lime green and glossy pale highlights from input reference 066. No connecting thread, no source nozzle, plant, mouth, creature, puddle, floor or splash. Detailed painted2Dliquid volumes with slightly translucent edges, readable smooth silhouettes. Portrait1024x1536canvas, whole three-dropgroup inside center70%, every droplet complete with generous transparent outer space. Genuine PNG alpha transparency, outside drops alpha zero, no dark rectangle, checkerboard, halo, smoke, extra droplets, text, panel, labels or border.",
+      "initial_generation_prompt": "Use case: stylized-concept. ONE independent transparent2Dgame VFX sprite108 Suintement acide for Xeno Prime — Le Berceau enfoui. EXACTLY THREE detached drops of corrosive green-yellow alien acid suspended while falling, separated and clearly countable: one larger elongated teardrop near upper center, one medium rounded drop lower-left, one small round drop still lower-right. Preserve fluid's olive-lime green and glossy pale highlights from input reference 066. No connecting thread, no source nozzle, plant, mouth, creature, puddle, floor or splash. Detailed painted2Dliquid volumes with slightly translucent edges, readable smooth silhouettes. Portrait1024x1536canvas, whole three-dropgroup inside center70%, every droplet complete with generous transparent outer space. Genuine PNG alpha transparency, outside drops alpha zero, no dark rectangle, checkerboard, halo, smoke, extra droplets, text, panel, labels or border.",
+      "repository_path": "art-source/xeno-prime/berceau-enfoui/v2.3/sprites/props_effets/108_suintement_acide.png",
+      "repository_blob_sha1": "73164c205f74c2ef914b00dd19d58454fcaeda23"
+    }
+  ],
+  "previous_existing_sprite_count": 85,
+  "completed_sprite_count": 23,
+  "completion_archive_id": "XENO-BE-ARCHIVE-AJOUTS-23",
+  "historical_generation_plan": {
+    "missing_sprite_ids": [
+      "028",
+      "030",
+      "031",
+      "034",
+      "035",
+      "036",
+      "056",
+      "057",
+      "067",
+      "068",
+      "069",
+      "070",
+      "071",
+      "072",
+      "079",
+      "097",
+      "098",
+      "102",
+      "104",
+      "105",
+      "106",
+      "107",
+      "108"
+    ],
+    "missing_asset_keys": [
+      "XENO-BE-028",
+      "XENO-BE-030",
+      "XENO-BE-031",
+      "XENO-BE-034",
+      "XENO-BE-035",
+      "XENO-BE-036",
+      "XENO-BE-056",
+      "XENO-BE-057",
+      "XENO-BE-067",
+      "XENO-BE-068",
+      "XENO-BE-069",
+      "XENO-BE-070",
+      "XENO-BE-071",
+      "XENO-BE-072",
+      "XENO-BE-079",
+      "XENO-BE-097",
+      "XENO-BE-098",
+      "XENO-BE-102",
+      "XENO-BE-104",
+      "XENO-BE-105",
+      "XENO-BE-106",
+      "XENO-BE-107",
+      "XENO-BE-108"
+    ],
+    "generation_order": [
+      "028",
+      "030",
+      "031",
+      "034",
+      "035",
+      "036",
+      "056",
+      "057",
+      "067",
+      "068",
+      "069",
+      "070",
+      "071",
+      "072",
+      "079",
+      "097",
+      "098",
+      "102",
+      "104",
+      "105",
+      "106",
+      "107",
+      "108"
+    ],
+    "generation_order_asset_keys": [
+      "XENO-BE-028",
+      "XENO-BE-030",
+      "XENO-BE-031",
+      "XENO-BE-034",
+      "XENO-BE-035",
+      "XENO-BE-036",
+      "XENO-BE-056",
+      "XENO-BE-057",
+      "XENO-BE-067",
+      "XENO-BE-068",
+      "XENO-BE-069",
+      "XENO-BE-070",
+      "XENO-BE-071",
+      "XENO-BE-072",
+      "XENO-BE-079",
+      "XENO-BE-097",
+      "XENO-BE-098",
+      "XENO-BE-102",
+      "XENO-BE-104",
+      "XENO-BE-105",
+      "XENO-BE-106",
+      "XENO-BE-107",
+      "XENO-BE-108"
+    ],
+    "parallel_ready_ids": [
+      "028",
+      "030",
+      "031",
+      "034",
+      "056",
+      "057",
+      "067",
+      "068",
+      "069",
+      "070",
+      "071",
+      "072",
+      "079",
+      "097",
+      "098",
+      "102",
+      "104",
+      "108"
+    ],
+    "dependent_ids": [
+      "035",
+      "036",
+      "105",
+      "106",
+      "107"
+    ]
+  },
+  "historical_production_instructions": [
+    "Chercher d’abord un asset existant compatible et conserver ses identifiants, sa provenance et sa validation. Une association au registre réel sera documentée lors de l’intégration moteur.",
+    "Les 23 éléments sont des demandes futures: aucun PNG correspondant n’est inclus à ce checkpoint.",
+    "Conserver les 85 sprites existants. Générer exactement une image indépendante par identifiant avec l’outil intégré image_gen.",
+    "Avant chaque génération, inspecter les références locales. Pour une référence a_produire, générer et sauvegarder cette référence d’abord.",
+    "Demander une véritable transparence RGBA, garder la silhouette entière et la palette noir/chitine/cuivre/cyan. Les effets emploient une alpha progressive.",
+    "Préserver l’alpha natif. Le détourage Python du seul fond magenta RGB a déjà été autorisé par l’utilisateur.",
+    "Vérifier la véritable composition RGBA sur gris avant toute correction de halo: certaines prévisualisations montrent les couleurs cachées sous alpha zéro.",
+    "Enregistrer chaque rendu dans source_filename, puis actualiser les métadonnées, le manifeste, les scènes, le catalogue et les archives avec le pipeline récupéré.",
+    "Ne pas utiliser de planche de sprites découpée, de captures de tableaux, de PNG factices ni de copies renommées comme nouveaux sprites."
+  ],
+  "catalogue_v22_counts": {
+    "existing_sprite_count": 108,
+    "planned_sprite_count": 108,
+    "completed_initial_requests": 23
+  },
+  "raccords_v23": {
+    "manifest": "RACCORDS_V23.json",
+    "completed_sprite_count": 42,
+    "pending_sprite_count": 0,
+    "runtime_integrated": false
+  },
+  "repository_delivery": {
+    "repository": "darknigthmare/yautja-la-longue-chasse",
+    "pull_request": 116,
+    "branch": "claude/bible-de-campagne",
+    "asset_root": "art-source/xeno-prime/berceau-enfoui/v2.3",
+    "png_count": 156,
+    "sprite_count": 150,
+    "background_count": 6,
+    "png_total_bytes": 218567012,
+    "manifest": "DEPOT_PNG.json",
+    "files_versioned": true,
+    "source_png_bytes_unchanged": true,
+    "runtime_integrated": false
+  }
+}

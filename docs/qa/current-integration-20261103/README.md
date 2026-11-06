@@ -463,3 +463,60 @@ Le reçu navigateur `browser-34f1387` identifie explicitement le lot précédent
 antérieur au camouflage. Les nouveaux contrôles navigateur doivent qualifier
 le commit publié avec le présent relevé ; la génération de cet inventaire
 ne vaut pas validation du shader, des interactions ou du mix sonore.
+
+## Consolidation des PR #114 et #117 — 6 novembre 2026
+
+Le candidat **1.6.1** rapproche les cinématiques, la triade, le camouflage, les
+capsules et les perspectives de la flotte avec l'intérieur personnel 2,5D de
+#115. Il conserve la bible de #116 et les corrections de rig de #118 présentes
+sur `main`. Les huit salles et les identifiants existants restent en place.
+
+La résolution du test de gant conserve ensemble le contrôle structurel de
+l'effet d'initialisation et les matrices avant-bras/lames de la correction V145.
+L'inventaire courant est recalculé avec `snapshot-runtime-v113.mjs`, puis vérifié
+avec `--check`. Les inventaires historiques et leurs attestations restent datés.
+
+### Raccords de la bible réalisés
+
+- **ALL-02 / QA-C04 :** recrutement, aptitude, affectation et départ en trio sont
+  séparés pour Ka’rhek et Sa’keth. Le recrutement crée une entrée en réserve,
+  sans affectation à une coque. Le registre v2 accepte les anciens registres v1
+  valides en conservant leurs membres, coques, aptitudes et reçus.
+- **QA-C09, portée registre et briefing :** la mise en réserve supprime seulement
+  l'affectation. Elle ne guérit pas, ne rembourse pas et ne recrute pas une
+  seconde fois. Les quartiers personnels et le réaménagement au chantier restent
+  des éléments distincts à produire ; cette correction ne les déclare pas livrés.
+- **QA-C21 :** les ordres Suivre/Tenir gardent le silence face à une patrouille,
+  une suspicion ou une recherche. Le soutien exige un contact hostile actuel ou
+  une attaque dirigée contre le groupe ; perte de contact et retraite le suspendent.
+- **Commandes des pods :** une ancienne touche X personnalisée est conservée.
+  La nouvelle action reçoit une touche libre, ou reste accessible par son bouton
+  sans raccourci si aucune touche n'est disponible. Les conflits explicites
+  restent refusés.
+
+Les tests des capsules passent aussi par les writers/loaders de campagne, le
+sidecar de chasse et l'archive intégrale : compte à rebours, fermeture/reprise,
+écriture refusée, changement de propriétaire de session, destruction unique et
+perte réelle de liaison radio pendant le déplacement. Aucun nouveau changement
+du moteur de capsules n'a été nécessaire pour ces scénarios.
+
+### Qualification du candidat
+
+Le [relevé local](../../../production/qa/evidence/pr-114-117-integration-20261106/local-validation.json)
+conserve les empreintes des sources observées et les journaux : **473/473 tests,
+aucun ignoré**, build Next de production et lint ciblé strict réussis. Le lint
+global relève **0 erreur et 38 avertissements** déjà présents hors de ces
+correctifs ; sa passe optionnelle avec un plafond de zéro avertissement est
+consignée en échec, sans la transformer en réussite.
+
+Chromium local est bloqué par l'environnement. La qualification native doit donc
+être lue dans les runs GitHub Actions de la tête publiée. Le workflow intérieur
+2,5D couvre désormais les PR vers `main` et la branche cinématique, avec checkout
+de la tête réellement soumise. Wolf conserve deux nouvelles captures du
+recrutement en réserve et de l'affectation, avec observations du vrai stockage.
+Les contrôles existants, fenêtres temporelles et rejets d'images restent actifs.
+
+Les générations visuelles et l'égalité des exports ne constituent toujours pas
+une validation artistique humaine ou une certification canonique 1:1. Les
+quartiers conditionnels, autres compagnons, missions et suites de la bible non
+implémentés par ces PR gardent leur statut de production précédent.
