@@ -26,9 +26,9 @@ L’export principal demeure historique et conservé. Pour ce secteur, cette ann
 - Conserver les contraintes V6 de XP-Z12 : trois hauteurs praticables, deux refuges, sorties annoncées et extraction de secours reliée au bassin. La corniche basse du PNG T12 ne suffit pas à les valider ; compléter la géométrie jouable et la composition si nécessaire, sans compter une zone de décor comme refuge fonctionnel.
 - Préserver la profondeur fond/décor/jeu/premier plan/effets, les ajours et les silhouettes utiles. Le premier plan peut masquer une portion du corps, mais jamais cacher une attaque sans télégraphe équivalent.
 - Utiliser les états réellement disponibles : 050→077, 008→081, 009→082, 029→083, 032→085, 033→086, 046→093, 025→026 et 087→088. Les changements de taille ou de forme demandent une collision réévaluée.
-- La variante 079 manque : les bouchons 078 restent intacts dans les illustrations actuelles. Ne pas prétendre que leurs collisions s’ouvrent déjà. Les passages 034/035 et vannes 030/036 sont également à produire.
-- 056/057 sont désormais deux capsules de décor fermées à produire. Ils ne fournissent ni sprites de défenseurs animés, ni spawns ennemis. Les défenseurs V7 mentionnés par M026 gardent leurs identités propres et exigent une vérification d’import distincte.
-- L’état après victoire conserve les routes. Les appendices 041/045 deviennent le pont inerte 043 dans la composition finale ; ils ne restent pas dressés après mort. Le bulbe disparaît en attendant le sprite rompu 098 : c’est une limite d’illustration, pas une règle de destruction validée.
+- La variante 079, les passages 034/035 et les vannes 030/036 sont désormais produits. Les illustrations V2.1 conservent leur géométrie historique, notamment les bouchons 078 intacts ; le raccord des nouvelles variantes et de leurs collisions reste à réaliser.
+- 056/057 sont désormais deux capsules de décor fermées produites comme PNG fixes. Ils ne fournissent ni sprites de défenseurs animés, ni spawns ennemis. Les défenseurs V7 mentionnés par M026 gardent leurs identités propres et exigent une vérification d’import distincte.
+- L’état après victoire conserve les routes. Les appendices 041/045 deviennent le pont inerte 043 dans la composition finale ; ils ne restent pas dressés après mort. Le bulbe disparaît dans le rendu historique V2.1 ; le sprite rompu 098 est maintenant disponible et reste à placer. Ce rendu n’est pas une règle de destruction validée.
 
 ## 3. États de progression à concevoir
 
@@ -62,9 +62,9 @@ La crête et les membres valides doivent atteindre une extraction réelle. Le PN
 
 ## 5. Animation, VFX, son et caméra
 
-Les sept poses de la tête sont **059, 060, 061, 062, 094, 095 et 096**. 097 et 098 restent ouverts. Générer ensuite les raccords nécessaires avec silhouette, pivot et éclairage stables ; ne pas compter ces images fixes comme un cycle fluide déjà livré.
+Les huit poses de la tête sont **059, 060, 061, 062, 094, 095, 096 et 097**. Le bulbe rompu **098** est un organe séparé également produit. Générer ensuite les raccords nécessaires avec silhouette, pivot et éclairage stables ; ne pas compter ces images fixes comme un cycle fluide déjà livré.
 
-Priorités : armement/impact/retrait des tentacules, préparation/souffle/retour de la gueule, exposition du bulbe, mort et prélèvement. Les effets 065/066/103 existent ; spores, vapeur, pulsation, poussières, onde, condensation séparée et projections supplémentaires restent détaillées dans [REPRISE.md](REPRISE.md).
+Priorités : armement/impact/retrait des tentacules, préparation/souffle/retour de la gueule, exposition du bulbe, mort et prélèvement. Les effets 065/066/103 et les nouveaux PNG 067–072, 102 et 104–108 sont disponibles. Leur émission, durée, animation et raccord en scène restent à réaliser ; [REPRISE.md](REPRISE.md) conserve le suivi des images complétées.
 
 Attacher l’effet et son son à l’événement qui le produit : origine de bouche, point de contact au sol, membrane ou attache rompue. La pause fige la même horloge ; une reprise ne rejoue pas tous les impacts. Le marqueur de danger doit rester lisible avec effets réduits, contraste faible et écran étroit.
 

@@ -1,60 +1,54 @@
-# Xeno Prime — illustrations disponibles et preuves techniques
+# Xeno Prime — 108 sprites et six fonds disponibles
 
-Complément documentaire de la bible, PR #116, contrôlé le **5 novembre 2026**. Le secteur **Le Berceau enfoui** dispose de **85 sprites PNG transparents**, **6 fonds opaques** et **25 fichiers de composition pour 12 tableaux**. La cible artistique reste 108 sprites : **23 demandes sont ouvertes** dans [REPRISE.md](REPRISE.md).
+Mise à jour du **6 novembre 2026** : les **23 sprites manquants** du Berceau enfoui ont été générés individuellement à partir des références du projet. Le catalogue contient désormais **108 sprites transparents et six fonds opaques**, soit **114 PNG distincts**. Les 85 sprites et six fonds précédents sont conservés octet pour octet.
 
-## Statut et périmètre
+## Livraisons V2.2
 
-Les 91 PNG du manifeste ont été décodés, mesurés et comparés à leur SHA-256. Ils possèdent 91 empreintes distinctes. Pour les 85 sprites RGBA, le canal alpha comporte réellement des pixels transparents et visibles ; les six fonds sont RGB opaques. Cette vérification technique n’attribue aucune validation artistique humaine, aucune fidélité canonique 1:1, aucun cycle d’animation ni aucun comportement de jeu.
-
-**Statut commun : image source disponible ; contrôle technique effectué ; validation artistique humaine non attestée ; intégration runtime non attestée.** Dans les données documentaires, `technical_verified` vaut `true`, `human_art_validation` et `runtime_integrated` valent `false`. Le contrat de `validated` du registre du jeu demeure réservé à la revue humaine.
-
-Cette PR référence les ressources sources : **les PNG ne sont pas copiés dans `public/`**. Les chemins de cet inventaire sont relatifs à la racine de l’archive consolidée. `source_filename` désigne les sources brutes de l’archive séparée. Les sept ajouts sont déjà compris dans les 85 ; les sources et les compositions ne s’ajoutent pas au total de sprites.
-
-Les clés documentaires **XENO-BE-001 à XENO-BE-108** préservent la numérotation d’origine sans entrer en collision avec les IDs identiques d’autres packs, notamment Warp Universe. Les fonds utilisent **XENO-BE-BG01 à XENO-BE-BG06**. Aucune de ces clés n’est déclarée comme nouvel identifiant runtime.
-
-Données structurées : [DONNEES_ASSETS.json](DONNEES_ASSETS.json), [SCENES_ILLUSTREES.json](SCENES_ILLUSTREES.json) et [COMPOSITION_SOUFFLE.json](COMPOSITION_SOUFFLE.json).
-
-## Archives de livraison
-
-| Archive exacte et téléchargement | Octets | Contenu |
+| Archive téléchargeable | Octets | Contenu |
 | --- | ---: | --- |
-| [Xeno_Prime_V2_Actualise_85_Sprites_12_Tableaux.zip](https://chatgpt.com/library?file_id=libfile_f92f983ef05481919390053c29cc5411&account_id=personal) | 346867734 | Pack consolidé : 85 sprites, 6 fonds, 25 compositions et catalogue |
-| [Xeno_Prime_V2_Ajouts_7_Sprites.zip](https://chatgpt.com/library?file_id=libfile_c9d2fccc70508191ae4dcc3bc4a82e49&account_id=personal) | 10429585 | Sous-ensemble des sept ajouts, déjà inclus dans les 85 |
-| [Xeno_Prime_V2_85_Sources_et_Prompts.zip](https://chatgpt.com/library?file_id=libfile_e41f7de08ca88191b69955c07fa6aeb8&account_id=personal) | 145258155 | Sources sélectionnées, prompts et scripts de composition ; pas 85 assets supplémentaires |
+| `Xeno_Prime_V2_2_Ajouts_23_Sprites.zip` — téléchargement joint à la conversation | 27243421 | 23 sprites nouveaux et leurs prompts |
+| `Xeno_Prime_V2_2_108_Sprites_6_Fonds.zip` — téléchargement joint à la conversation | 166987566 | 108 sprites et six fonds, anciens PNG conservés, catalogue et manifestes |
 
 ```text
-4f50a743700c746d0056dd7781c56cfdf418b12fab3e3ad07511e253de26da68  Xeno_Prime_V2_Actualise_85_Sprites_12_Tableaux.zip
-8c2b97dfa780875cd34ecff806181fed115fd55f469d41e34b6bc4463476534f  Xeno_Prime_V2_Ajouts_7_Sprites.zip
-16e587d91e411b8b264bae7b7a43e453ad25fc7f1636c1fb49d4b763cdc8a1b9  Xeno_Prime_V2_85_Sources_et_Prompts.zip
+329c2136672c7f7c6353ba87126efc65bd031d56bcd05c27b868fff26e86f3bc  Xeno_Prime_V2_2_Ajouts_23_Sprites.zip
+5d2b0e7087f448b791cb72182b1d854978b397bd2a1475c3e853c37119a4795b  Xeno_Prime_V2_2_108_Sprites_6_Fonds.zip
 ```
 
-L’archive consolidée de 346867734 octets a été récupérée et revérifiée pendant cette intégration : SHA-256 identique à la livraison, CRC valide, 136 entrées et 120 PNG. Les 120 PNG se répartissent en 91 ressources du manifeste, 25 compositions et 4 planches/aperçus. Les empreintes du petit ZIP et du ZIP Sources sont conservées depuis leur reçu de livraison vérifié le 17 septembre 2026 ; leurs octets n’ont pas été retéléchargés pendant ce raccord documentaire.
+Chaque ZIP contient un catalogue HTML, un inventaire et les empreintes des PNG. Le pack d’ajouts ne contient que les 23 nouveaux sprites et leurs prompts ; le pack complet réunit les 108 sprites et six fonds. Les anciens tableaux illustrés restent dans leur archive V2.1 distincte, ci-dessous.
 
-## Inventaire des familles
+Les deux ZIP V2.2 sont livrés par téléchargement direct dans la conversation du 6 novembre. Leur enregistrement durable a échoué pendant la préparation de l’envoi ; aucune URL persistante n’est inventée dans cette PR. Les PNG existent et leurs empreintes sont contrôlées ; la publication durable des deux archives reste à reprendre.
 
-| Famille | Sprites livrés |
+**Statut : images sources disponibles et contrôlées techniquement.** Les PNG natifs du générateur sont copiés sans retouche, extraction, rééchantillonnage ni remplacement de l’alpha. La revue par l’assistant compare silhouette, matière, direction, marges et état demandé aux références ; `human_art_validation` et `runtime_integrated` restent `false`. Aucune certification canonique générale ni cycle animé ne découle de ce catalogue.
+
+Cette PR référence les archives et la production ; elle ne copie pas les binaires sous `public/`. Les chemins sont relatifs à la racine des archives. Les IDs **XENO-BE-001 à XENO-BE-108** et **XENO-BE-BG01 à XENO-BE-BG06** restent documentaires, sans nouveaux IDs moteur implicites.
+
+## Familles et états
+
+| Famille | Sprites |
 | --- | ---: |
 | vegetation | 12 |
 | terrain | 12 |
-| ruche | 6 |
+| ruche | 14 |
 | tentacules | 10 |
 | accessoires | 8 |
 | personnages | 8 |
-| effets | 2 |
-| environnement | 7 |
+| effets | 8 |
+| environnement | 8 |
 | reactions | 8 |
-| boss_actions | 8 |
-| props_effets | 4 |
-| Total sprites | **85** |
+| boss_actions | 10 |
+| props_effets | 10 |
+| **Total sprites** | **108** |
 | Fonds opaques séparés | **6** |
 
-Les sept ajouts du dernier lot sont **026, 027, 066, 077, 078, 096 et 103**. Les 78 sprites précédents appartiennent au même snapshot consolidé ; leur continuité de livraison est conservée.
+Les variantes appariées 030→036 et 034→035 utilisent la base générée comme référence ; de même 068→105, 070→106 et 069→107 pour les effets. Les capsules 056/057 sont fermées et passives. Les huit poses de tête sont **059, 060, 061, 062, 094, 095, 096 et 097**. **098 est le bulbe rompu**, un organe séparé, et non une neuvième tête.
 
-## Catalogue exhaustif des 91 ressources du manifeste
+Les sprites ont des dimensions natives variables. Leurs pivots et attaches doivent être définis lors de l’import ; une fidélité visuelle de silhouette ne prouve pas une superposition pixel à pixel ou un raccord animé déjà validé. Les effets sont séparés des objets qui les émettent. Les valeurs RGB masquées par alpha zéro sont conservées : elles ne correspondent pas à un halo visible.
 
-Dimensions en pixels de toile. Les empreintes portent sur les PNG finaux de l’archive consolidée. Le contour `content_bbox_px`, détaillé dans le JSON, est mesuré au-dessus de 16/255 d’alpha afin d’ignorer les pixels presque invisibles. Il sert au placement illustratif et ne définit aucune collision.
+## Inventaire des 114 PNG
 
-| Clé documentaire | Ressource | PNG dans l’archive | Dimensions | Alpha | SHA-256 |
+Le contour `content_bbox_px` du [JSON](DONNEES_ASSETS.json) utilise alpha >16/255 pour le placement illustratif. Il ne définit pas une collision.
+
+| Clé | Ressource | Fichier dans l’archive | Dimensions | Alpha | SHA-256 |
 | --- | --- | --- | --- | --- | --- |
 | `XENO-BE-001` | Calice géant | `sprites/vegetation/001_calice_geant.png` | 1254 × 1254 | RGBA 0–255 | `c7947f23a30b0992def1e847dee8c939da46f7dd94c77e2b103d9611c2b20e07` |
 | `XENO-BE-002` | Calice incliné | `sprites/vegetation/002_calice_incline.png` | 1254 × 1254 | RGBA 0–255 | `41593ed45fd6f9cd5d7480ebb4375dc7ab16fed7d87bb8fb845e824dcdcd6111` |
@@ -83,9 +77,15 @@ Dimensions en pixels de toile. Les empreintes portent sur les PNG finaux de l’
 | `XENO-BE-025` | Œuf fermé | `sprites/ruche/025_oeuf_ferme.png` | 1310 × 1200 | RGBA 0–255 | `939c7ecd81eefdff04863bdb81838541a521b7f5283899ad68c4a4bf3ca58a5f` |
 | `XENO-BE-026` | Œuf ouvert | `sprites/ruche/026_oeuf_ouvert.png` | 1310 × 1200 | RGBA 0–255 | `8c9d4299b6687a38a7f5d847defee38150c76d7c24de955a2a3357b9c8619307` |
 | `XENO-BE-027` | Cocon de proie indigène | `sprites/ruche/027_cocon_proie.png` | 954 × 1649 | RGBA 0–255 | `b9357fbc3d2aee38de6e218144db16de6d5d985dcf8e5a8700c13306c1ea34b9` |
+| `XENO-BE-028` | Exuvie suspendue | `sprites/ruche/028_exuvie_suspendue.png` | 1024 × 1536 | RGBA 0–254 | `6f0b300c82cb58ec4566a7e4412377919f433802f94829ee602dbc6f7329501d` |
 | `XENO-BE-029` | Réservoir acide | `sprites/ruche/029_reservoir_acide.png` | 1199 × 1312 | RGBA 0–255 | `d48f7579098e558c7a375b640bd69475099b3262df302802f76329a792ce226a` |
+| `XENO-BE-030` | Vanne tissulaire fermée | `sprites/ruche/030_vanne_tissulaire.png` | 2172 × 724 | RGBA 0–255 | `5cdbd2625c50598a6f1fa7e5b28a8f119bf3a43915721594ff3f8f9edc763439` |
+| `XENO-BE-031` | Filaments sensoriels | `sprites/ruche/031_filaments_sensoriels.png` | 1254 × 1254 | RGBA 0–255 | `d38788b18960fa43d24f8ea546f2bc434de90305d47ac37ec6ed030f08d37c43` |
 | `XENO-BE-032` | Conduit nourricier | `sprites/ruche/032_conduit_nourricier.png` | 2172 × 724 | RGBA 0–255 | `dd061367cdc91db41e71b30efd9f031f3b59b8483af839f7f6fd6ee309040de4` |
 | `XENO-BE-033` | Évent respiratoire | `sprites/ruche/033_event_respiratoire.png` | 1366 × 1152 | RGBA 0–255 | `bd21ddd96aa8f4e5ea1a58fab4cf62b941eea84c6d382ae11b13c42fad46b699` |
+| `XENO-BE-034` | Passage fermé | `sprites/ruche/034_porte_membrane_fermee.png` | 1312 × 1199 | RGBA 0–255 | `a23c2c33fc31c73dbfd714a67924cc0b4e0f6d64c6e72a5ae3ea145a56d60261` |
+| `XENO-BE-035` | Passage sectionné | `sprites/ruche/035_porte_membrane_ouverte.png` | 1312 × 1199 | RGBA 0–255 | `71af86d68996d2d1c2084eab48a43001ebb8578f6994b47cf04e73bc07cfb2a9` |
+| `XENO-BE-036` | Vanne après drainage | `sprites/ruche/036_vanne_drainee.png` | 2172 × 724 | RGBA 0–255 | `205c4b360f34820c9d791ad06ef033d9813311d61f18f1d6bf0ad4969a78fe65` |
 | `XENO-BE-037` | Tentacule en arche | `sprites/tentacules/037_tentacule_arche.png` | 1536 × 1024 | RGBA 0–255 | `b8332f912e3fd8f2a8a522fa3d5f225a9ae8c27faaff09422175d0ff4e3ade96` |
 | `XENO-BE-038` | Tentacule en balayage | `sprites/tentacules/038_tentacule_balayage.png` | 1774 × 887 | RGBA 0–255 | `64d3296210a3b17057e377ee2fa6501fc1040c60bab14487fd243687c5d0e8ba` |
 | `XENO-BE-039` | Tentacule perforant | `sprites/tentacules/039_tentacule_perforation.png` | 1024 × 1536 | RGBA 0–255 | `08e9381b27da07b9dc5993ed30f6997d9f053d57e2853c7d5fee39a9192f6574` |
@@ -105,6 +105,8 @@ Dimensions en pixels de toile. Les empreintes portent sur les PNG finaux de l’
 | `XENO-BE-053` | Ossements de proie | `sprites/accessoires/053_ossements_proie.png` | 1254 × 1254 | RGBA 0–255 | `00559510a628532999445e50e002b682d3bc4ada15cdf3c4e9e66e3be5308e9f` |
 | `XENO-BE-054` | Fragment de couronne royale | `sprites/accessoires/054_fragment_couronne.png` | 1254 × 1254 | RGBA 0–255 | `698a75b29a8f503bf4ca7de4064baeb586167391917cf0805c68a638f2d70e7d` |
 | `XENO-BE-055` | Chasseur Yautja entier | `sprites/personnages/055_yautja_chasseur.png` | 1536 × 1024 | RGBA 0–254 | `6e93455d611c3182c0ac949273daff63e1cf2dde42ef004a1c353d2c268481de` |
+| `XENO-BE-056` | Nid de guetteur fermé | `sprites/ruche/056_nid_guetteur.png` | 2172 × 724 | RGBA 0–255 | `f6cd1888fb5266fc8f3fd98849b9f7c465d6aed1febf6a5a249160af8a31f9a1` |
+| `XENO-BE-057` | Cocon mural fermé | `sprites/ruche/057_cocon_mural.png` | 1024 × 1536 | RGBA 0–254 | `0438e2a3f24b4f5a47f17885fbab2d85c0b5a4e279ff08692850d3e2da54902a` |
 | `XENO-BE-058` | Facehugger | `sprites/personnages/058_facehugger.png` | 1774 × 887 | RGBA 0–255 | `d15a8ea8590d3eb6e65898aeb35618c4b5e5b0744967158663cbb9277bb2552b` |
 | `XENO-BE-059` | Matriarche intacte | `sprites/personnages/059_matriarche_intacte.png` | 1672 × 941 | RGBA 0–255 | `b70bbde0ababb0cc5e43f0491a279cd5b281203d1c367ff74afc37d8fca2da70` |
 | `XENO-BE-060` | Matriarche préparant le souffle | `sprites/personnages/060_matriarche_souffle.png` | 1672 × 941 | RGBA 0–255 | `4e5c62210dc37c353428be87f60de7d0ed8e483b4be4064bc6872a6c2ff494a2` |
@@ -114,12 +116,19 @@ Dimensions en pixels de toile. Les empreintes portent sur les PNG finaux de l’
 | `XENO-BE-064` | Masse sous la croûte | `sprites/personnages/064_masse_sous_cutanee.png` | 1672 × 941 | RGBA 0–255 | `1328fdf656b221ac1977a2d625ada8db4562b696b271a165960d1c94b9132b7d` |
 | `XENO-BE-065` | Flaque acide | `sprites/effets/065_flaque_acide.png` | 1536 × 1024 | RGBA 0–254 | `2c2db259c6cedca9bfc62cabb05f9265db7996c4b41ae5410ab7031b7ef838ad` |
 | `XENO-BE-066` | Globule acide | `sprites/effets/066_globule_acide.png` | 1536 × 1024 | RGBA 0–254 | `da3ee0aa82e9c3f7636b3e932197a7c696bdcdc33e376cdf51d50c13b588fdec` |
+| `XENO-BE-067` | Nuage de spores | `sprites/effets/067_nuage_spores.png` | 1536 × 1024 | RGBA 0–252 | `d64b7b1e1bbecd3447a826b294f8bafbd9bf3175ed01fa54cd774adccdb40df3` |
+| `XENO-BE-068` | Souffle de vapeur | `sprites/effets/068_souffle_vapeur.png` | 1536 × 1024 | RGBA 0–252 | `422211735e2211b118b47d001eb91c1c6ebaf87c8012ee7601aa3d864af7050c` |
+| `XENO-BE-069` | Pulsation nerveuse | `sprites/effets/069_pulsation_nerveuse.png` | 1254 × 1254 | RGBA 0–249 | `7997098367eb197e2adb43ff104250da8226bea4c5a3f97a9f3577f6fe8052c6` |
+| `XENO-BE-070` | Impact de poussière | `sprites/effets/070_impact_poussiere.png` | 1536 × 1024 | RGBA 0–254 | `6e377bfc68362650960c109868a700bf4971209a6dc7800667e752ad7dc90cdc` |
+| `XENO-BE-071` | Onde tellurique | `sprites/effets/071_onde_sol.png` | 1536 × 1024 | RGBA 0–254 | `85f67ab25023dee2844e1b792fe1c1b12e02acec37c57e9eb642b944ebd69087` |
+| `XENO-BE-072` | Voile de brume | `sprites/effets/072_voile_brume.png` | 1536 × 1024 | RGBA 0–240 | `a5a0c5aa47cb12f71416bb277c7e8a6a8706dd1b808f8ae816ce10f70edd1c96` |
 | `XENO-BE-073` | Tronc creux horizontal | `sprites/environnement/073_tronc_creux_horizontal.png` | 1942 × 809 | RGBA 0–255 | `72841fcadffc2230c6a368c4c148fb12f63de6b4a41f5b0bf6663ec20e9eb852` |
 | `XENO-BE-074` | Racine échelle | `sprites/environnement/074_racine_echelle.png` | 1024 × 1536 | RGBA 0–254 | `1a743277078ad4adcf8b19debb87e7c912631e9abe486a327e9e3c48a82be708` |
 | `XENO-BE-075` | Racines de premier plan | `sprites/environnement/075_racines_premier_plan.png` | 1774 × 887 | RGBA 0–255 | `483dbb6176e3a3e63bc52c36525a92ca8f8ff11c81f41ae7244a59ea5b9d0066` |
 | `XENO-BE-076` | Contrefort vertical | `sprites/environnement/076_contrefort_vertical.png` | 1024 × 1536 | RGBA 0–254 | `d9b23f948f8b382c966450585f1c9e5a9766bb1475aa0ce6548877e639d0fc25` |
 | `XENO-BE-077` | Passerelle déployée | `sprites/environnement/077_passerelle_deployee.png` | 1881 × 836 | RGBA 0–255 | `1677dc3b71fe05cbe7762383ff77b0347043c0e305b69b409a974845749e01f9` |
 | `XENO-BE-078` | Bouchon de résine intact | `sprites/environnement/078_bouchon_resine_intact.png` | 1254 × 1254 | RGBA 0–255 | `7d9b5211026bafbf787904ee691ec132b6681c686c5f63ebcf263b4220d747d3` |
+| `XENO-BE-079` | Bouchon de résine brisé | `sprites/environnement/079_bouchon_resine_brise.png` | 1254 × 1254 | RGBA 0–255 | `a838cfda78e24f95b782c246b71384fc3a190dab60cb571ae99947872c7d9448` |
 | `XENO-BE-080` | Nid fongique de plafond | `sprites/environnement/080_nid_fongique_plafond.png` | 1536 × 1024 | RGBA 0–254 | `782e7cb41d27d7ec132e9efab4dc69439c4ee89ff9176eb46f98b03b2671bf5c` |
 | `XENO-BE-081` | Pont de membrane affaissé | `sprites/reactions/081_pont_membrane_affaisse.png` | 1984 × 793 | RGBA 0–255 | `720502d7b30c746721808e1fd879945527c241706d49ddeb7695bcb1fcb391b5` |
 | `XENO-BE-082` | Poche contractée | `sprites/reactions/082_poche_contractee.png` | 1024 × 1536 | RGBA 0–254 | `9c486e418d8d8968e67f851c231c558ab98bd9f89e12b9bdefa9fd34373b74ff` |
@@ -137,10 +146,18 @@ Dimensions en pixels de toile. Les empreintes portent sur les PNG finaux de l’
 | `XENO-BE-094` | Matriarche en morsure | `sprites/boss_actions/094_matriarche_morsure.png` | 1672 × 941 | RGBA 0–255 | `2509ec3b504bb99c7747d0c0b3143a4ac8037a16c623ad24f2e8b7d4a5f360e4` |
 | `XENO-BE-095` | Matriarche en recul | `sprites/boss_actions/095_matriarche_recul.png` | 1671 × 941 | RGBA 0–255 | `e5460ef5884192340b7f7672938d1f3c0cfed7acabc8e7e0f06c8240814f6b9d` |
 | `XENO-BE-096` | Matriarche au souffle actif | `sprites/boss_actions/096_matriarche_souffle_actif.png` | 1672 × 941 | RGBA 0–255 | `88d4c861e510d390906a4e97bc90d29dae63aa6ef7bfcff2d7b235f720c8053a` |
+| `XENO-BE-097` | Matriarche en agonie | `sprites/boss_actions/097_matriarche_agonie.png` | 1670 × 941 | RGBA 0–255 | `5f441afc47743ac6b6e71846f77e860db2586f9582d7aeee7f57cfe90ad3423c` |
+| `XENO-BE-098` | Bulbe nerveux rompu | `sprites/boss_actions/098_bulbe_rompu.png` | 1671 × 941 | RGBA 0–255 | `c0c1792af1cd52f24b1f6a43bc501636735ddb85154db795a997ae2e1af9df12` |
 | `XENO-BE-099` | Glyphe de repère de chasse | `sprites/props_effets/099_glyphe_repere_chasse.png` | 1254 × 1254 | RGBA 0–255 | `9aa39af8c9246fb40c24286b0d5145c14fd611c2c51ec995a7e8344ea15e1c82` |
 | `XENO-BE-100` | Trophée de couronne sur socle | `sprites/props_effets/100_trophee_couronne_socle.png` | 1254 × 1254 | RGBA 0–255 | `468211d8ae6e1b826deb781ebd52f87e6a81b17add55a28bd5ca7e5c423f8b80` |
 | `XENO-BE-101` | Minerai ambre | `sprites/props_effets/101_minerai_ambre.png` | 1254 × 1254 | RGBA 0–255 | `4609970f3b2b3ed9fd4f81cd54463518dc27f1b14f5fb99e98684044d7d7298b` |
+| `XENO-BE-102` | Éclats de chitine | `sprites/props_effets/102_eclats_chitine.png` | 1254 × 1254 | RGBA 0–255 | `6220f46a4c6583cd0d9eff39f3aa26d6e2e61c47f84f6e5ecf50eaf8f5e6b4d8` |
 | `XENO-BE-103` | Jet acide horizontal | `sprites/props_effets/103_jet_acide_horizontal.png` | 1536 × 1024 | RGBA 0–254 | `6ba4c97fa6ed8a3ef31e7269fd8587d4a5127850009c64bf8619bb0c492c08fe` |
+| `XENO-BE-104` | Éclaboussure acide | `sprites/props_effets/104_acide_eclaboussure.png` | 1536 × 1024 | RGBA 0–254 | `7102c29220cc11ff24da06590377ffd738b78a7c86edd7884c364540e54b2122` |
+| `XENO-BE-105` | Condensation de bouche | `sprites/props_effets/105_condensation_bouche.png` | 1672 × 941 | RGBA 0–253 | `a52d5304831a488cc5be529271b0ef8af7a791dde414c53647f3b8953713a21c` |
+| `XENO-BE-106` | Poussière de chute | `sprites/props_effets/106_poussiere_chute.png` | 1024 × 1536 | RGBA 0–254 | `38c566650314dcabfe7d07494e26c9a739358fba98af93b66b282251135094d1` |
+| `XENO-BE-107` | Étincelles d’impact | `sprites/props_effets/107_etincelles_impact.png` | 1254 × 1254 | RGBA 0–255 | `03bbf82d4651112f2e2d8b848562c6a9c22c61d48057ba8f75280c6ae075abf2` |
+| `XENO-BE-108` | Suintement acide | `sprites/props_effets/108_suintement_acide.png` | 1024 × 1536 | RGBA 0–254 | `bbbad804254e2a0584233ed3670d400549c4f427407dd36a1c3705b0cb85852a` |
 | `XENO-BE-BG01` | Horizon du bassin | `fonds/BG01_horizon_bassin.png` | 1672 × 941 | RGB opaque | `13a49aaeba2e8b40bd358b1591d7ea51b584b74210eb98139b0a0ffbbeeeeff5` |
 | `XENO-BE-BG02` | Forêt profonde | `fonds/BG02_foret_profonde.png` | 1672 × 941 | RGB opaque | `eaf6dee5a388a34e3609e4f1f2ea99719e1660b238617b2f17109e48f7566168` |
 | `XENO-BE-BG03` | Canopée lointaine | `fonds/BG03_canopee_lointaine.png` | 1672 × 941 | RGB opaque | `8d8c2d344bbb1cc62b5c503e47bdcb5cbad4862664aab13b6d81125389a6e048` |
@@ -148,43 +165,16 @@ Dimensions en pixels de toile. Les empreintes portent sur les PNG finaux de l’
 | `XENO-BE-BG05` | Galeries lointaines | `fonds/BG05_galeries_lointaines.png` | 1672 × 941 | RGB opaque | `6eb1f80ba97c791236abb7c0694181d3aa20bdf722f08cc239e3eb8bb61e0432` |
 | `XENO-BE-BG06` | Bassin royal | `fonds/BG06_bassin_royal.png` | 1672 × 941 | RGB opaque | `1f0b12e50097e74269e36fc13ca4a03795008e5549e9d5f8118eb8020df513b9` |
 
-## Douze tableaux et leurs exports
+## Compositions historiques conservées
 
-**25 PNG de composition** = 12 paires avant/après + une illustration du souffle. Il s’agit de **12 lieux distincts**, non de 25 niveaux. Les vues avant/après de 01 et 11 ont les mêmes octets, car aucun changement visuel n’y est dessiné ; les 25 fichiers correspondent donc à 23 empreintes distinctes.
+Les [douze scènes](SCENES_ILLUSTREES.json) conservent **312 placements**, 12 paires avant/après et une [composition de souffle](COMPOSITION_SOUFFLE.json), soit **25 exports et 23 images distinctes**. Les avant/après de T01 et T11 sont identiques. La nouvelle livraison ne recalcule pas ces rendus V2.1 : les variantes désormais disponibles, dont 079 et 098, restent à placer. La tête entière de la reine active demeure réservée à T12.
 
-| Tableau | Lieu | Toile | Avant | Après |
-| --- | --- | --- | --- | --- |
-| 01 | La Lisière des exuvies | 3200 × 1440 | `tableaux/01_lisiere.png` | `tableaux/01_lisiere_apres.png` |
-| 02 | La Forêt des calices noirs | 3200 × 1440 | `tableaux/02_calices.png` | `tableaux/02_calices_apres.png` |
-| 03 | Le Lit de la rivière morte | 3200 × 1440 | `tableaux/03_riviere.png` | `tableaux/03_riviere_apres.png` |
-| 04 | Les Troncs étranglés | 2000 × 2560 | `tableaux/04_troncs.png` | `tableaux/04_troncs_apres.png` |
-| 05 | La Canopée des membranes | 3200 × 1440 | `tableaux/05_canopee.png` | `tableaux/05_canopee_apres.png` |
-| 06 | Le Perchoir abandonné | 3200 × 1440 | `tableaux/06_perchoir.png` | `tableaux/06_perchoir_apres.png` |
-| 07 | La Faille qui respire | 2100 × 2560 | `tableaux/07_faille.png` | `tableaux/07_faille_apres.png` |
-| 08 | Les Galeries sous la peau | 3200 × 1440 | `tableaux/08_galeries.png` | `tableaux/08_galeries_apres.png` |
-| 09 | La Pouponnière de dérivation | 3200 × 1440 | `tableaux/09_pouponniere.png` | `tableaux/09_pouponniere_apres.png` |
-| 10 | Le Nœud des racines | 3200 × 1440 | `tableaux/10_noeud.png` | `tableaux/10_noeud_apres.png` |
-| 11 | La Lèvre silencieuse | 3200 × 1440 | `tableaux/11_levre.png` | `tableaux/11_levre_apres.png` |
-| 12 | Le Bassin de la Matriarche | 3200 × 1440 | `tableaux/12_matriarche.png` | `tableaux/12_matriarche_apres.png` |
+| Archive V2.1 conservée | SHA-256 |
+| --- | --- |
+| [Xeno_Prime_V2_Actualise_85_Sprites_12_Tableaux.zip](https://chatgpt.com/library?file_id=libfile_f92f983ef05481919390053c29cc5411&account_id=personal) | `4f50a743700c746d0056dd7781c56cfdf418b12fab3e3ad07511e253de26da68` |
+| [Xeno_Prime_V2_Ajouts_7_Sprites.zip](https://chatgpt.com/library?file_id=libfile_c9d2fccc70508191ae4dcc3bc4a82e49&account_id=personal) | `8c2b97dfa780875cd34ecff806181fed115fd55f469d41e34b6bc4463476534f` |
+| [Xeno_Prime_V2_85_Sources_et_Prompts.zip](https://chatgpt.com/library?file_id=libfile_e41f7de08ca88191b69955c07fa6aeb8&account_id=personal) | `16e587d91e411b8b264bae7b7a43e453ad25fc7f1636c1fb49d4b763cdc8a1b9` |
 
-L’export supplémentaire est `tableaux/12_matriarche_souffle.png`. Le JSON dédié conserve la géométrie de la tête 096, celle du jet 103 et leurs points d’attache de référence. Le jet s’étend de la gueule vers la gauche ; il reste une composition fixe, sans simulation de projectile ou dégâts.
+Le pack historique de 85 sprites a été récupéré et vérifié le 5 novembre : 346867734 octets, CRC valide, 136 entrées et 120 PNG. Les empreintes des deux autres archives V2.1 proviennent du reçu du 17 septembre. Le lot de sept ajouts est déjà inclus dans les 85 ; les sources et les compositions ne s’ajoutent jamais au nombre de sprites.
 
-Le manifeste de scènes comprend **312 placements avant action** et les remplacements après action. Les valeurs `tableaux` des sprites sont des destinations artistiques prévues ; `composition_usage` dans le JSON distingue les placements réellement présents des seules intentions. **012, 014, 054, 066, 091 et 092** restent disponibles au catalogue sans placement dans ces compositions ni le sélecteur des poses du boss. Leur présence n’est pas une animation manquante déguisée ni un niveau supplémentaire.
-
-## Boss, variantes et limites à conserver
-
-La tête entière de la Matriarche apparaît **uniquement au tableau 12**. Le tableau 09 est la pouponnière avec réservoir ; aucun ancien résumé annonçant une révélation complète à cet endroit ne doit remplacer la composition source.
-
-Les **sept poses de tête livrées** sont 059 repos, 060 préparation du souffle, 061 vulnérabilité, 062 mort, 094 morsure, 095 recul et 096 souffle actif. **097 agonie et 098 bulbe rompu sont absents.** Les toiles et silhouettes de ces poses ne forment pas un cycle d’animation aligné.
-
-Après victoire, les appendices moteurs s’affaissent, le trophée apparaît et la végétation reste présente. Le bulbe 063 est retiré de la composition tant que 098 manque : il n’existe pas de faux sprite de bulbe rompu. Les bouchons 078 restent intacts tant que 079 n’est pas produit. Le Perchoir comporte déjà une passerelle 077 déployée raccordée à la plateforme dans sa vue après action.
-
-056 et 057 sont des **demandes futures de nid fermé et de cocon mural fermé**, sans créature visible. Aucun PNG de ces deux objets n’existe ici, et ils ne doivent pas être comptés comme ennemis livrés. Les bestiaires déjà présents dans le jeu demeurent des chantiers distincts.
-
-## Raccord futur au moteur
-
-- Chercher d’abord l’asset ou le rôle déjà présent dans le registre ; conserver l’identité source et les éventuelles références du jeu. L’association entre clé documentaire et ID runtime doit être explicite.
-- Fixer pivot, échelle, profondeur, ouvertures, empreinte de collision et enveloppe d’usage à partir d’une scène réelle. Les coordonnées JSON sont des pixels d’illustration, sans calibration physique ni collision validée.
-- Préparer les gestes, cycles et états manquants, puis attacher les VFX à la bouche, au sol ou à l’ancrage concerné. Un PNG de jet ne prouve pas un souffle jouable.
-- Vérifier chargement, occlusion, circulation, interactions, sauvegarde et budget de rendu avant de déclarer l’intégration terminée. Les contrôles de cette PR sont documentaires et techniques sur les fichiers sources.
-- Faire tracer la revue artistique humaine avant toute promotion à `validated`.
+Voir [PRODUCTION_20261106.md](PRODUCTION_20261106.md) pour cette livraison et [VERIFICATION.md](VERIFICATION.md) pour le contrôle historique. [REPRISE.md](REPRISE.md) clôt les 23 demandes d’images tout en conservant les travaux d’animation et de jeu.

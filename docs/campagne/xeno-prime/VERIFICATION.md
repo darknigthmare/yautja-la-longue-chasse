@@ -1,5 +1,7 @@
 # Xeno Prime — sources, concordance et vérification
 
+> Historique du contrôle du 5 novembre. La livraison des 23 nouveaux sprites et le passage à 108 sont détaillés dans [PRODUCTION_20261106.md](PRODUCTION_20261106.md). Les chiffres ci-dessous décrivent leur snapshot historique.
+
 Contrôle documentaire du **5 novembre 2026**, pour la [PR #116](https://github.com/darknigthmare/yautja-la-longue-chasse/pull/116), branche `claude/bible-de-campagne`. Révision du dépôt examinée avant cet ajout : **`3eb927af09414713a9db37d136669f6f80538866`**. Les résultats ci-dessous portent sur les sources et les documents ; les 28 critères de jeu de [INTEGRATION_ET_QA.md](INTEGRATION_ET_QA.md) restent ouverts.
 
 ## 1. Sources du raccord de campagne
