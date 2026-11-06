@@ -1,0 +1,72 @@
+name: Mobility HD 31-40 - exact individual PNG import
+on:
+  push:
+    branches: [chatgpt/mobilite-hd-individuels-suite-20261106]
+    paths:
+      - .github/workflows/mobility-hd-31-40-20261106.yml
+      - docs/campagne/mobilite/import_hd_31_40_20261106.py
+permissions:
+  contents: write
+concurrency:
+  group: mobility-hd-31-40-pr120
+  cancel-in-progress: false
+jobs:
+  import-and-verify:
+    if: github.repository == 'darknigthmare/yautja-la-longue-chasse' && github.ref == 'refs/heads/chatgpt/mobilite-hd-individuels-suite-20261106'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 1
+          sparse-checkout: |
+            docs/campagne/mobilite
+            art-source/mobilite
+      - name: Verify the exact importer reviewed against the ten originals
+        run: echo '6db26ed24f6f3d55390173b1da7ca3df357e5e456b0063bcaa6a12b1de6eecb6  docs/campagne/mobilite/import_hd_31_40_20261106.py' | sha256sum --check
+      - name: Import ten native individual PNGs and preserve all previous sources
+        run: python3 docs/campagne/mobilite/import_hd_31_40_20261106.py
+      - name: Read back the entire 108-PNG inventory without writes
+        run: python3 docs/campagne/mobilite/import_hd_31_40_20261106.py --check-only
+      - name: Verify idempotence and limit the commit to ten PNGs and three documents
+        shell: bash
+        run: |
+          set -euo pipefail
+          git add -- art-source/mobilite/vehicules-montures/v0.2-individual-hd art-source/mobilite/INDEX_HD_31_40_20261106.md docs/campagne/mobilite/LIVRAISON_HD_31_40_20261106.md docs/campagne/mobilite/LIVRAISON_HD_31_40_20261106.json
+          python3 docs/campagne/mobilite/import_hd_31_40_20261106.py
+          git diff --exit-code -- art-source/mobilite docs/campagne/mobilite
+          python3 - <<'PY'
+          import json, subprocess
+          from pathlib import Path
+          data=json.loads(Path('docs/campagne/mobilite/LIVRAISON_HD_31_40_20261106.json').read_text())
+          images={e['path'] for e in data['entries'] if e['category']=='individual_hd' and e.get('index') in range(31,41)}
+          docs={'art-source/mobilite/INDEX_HD_31_40_20261106.md','docs/campagne/mobilite/LIVRAISON_HD_31_40_20261106.md','docs/campagne/mobilite/LIVRAISON_HD_31_40_20261106.json'}
+          names=set(filter(None,subprocess.check_output(['git','diff','--cached','--name-only','-z']).decode().split('\0')))
+          assert len(images)==10
+          assert not names or names==images|docs, sorted(names^(images|docs))
+          assert data['png_count']==108 and data['catalogue_individual_hd_count']==40
+          assert data['new_png_bytes']==26167506 and data['total_png_bytes']==151013870
+          statuses=subprocess.check_output(['git','diff','--cached','--name-status'],text=True).splitlines()
+          assert all(s.startswith('A\t') for s in statuses), statuses
+          print(json.dumps({'staged_files':len(names),'added_png':10,'preserved_png':98,'all_png':108,'individual_hd_subjects':40}))
+          PY
+          git diff --cached --check
+      - name: Publish only to the existing PR branch, never force-push
+        shell: bash
+        run: |
+          set -euo pipefail
+          if git diff --cached --quiet; then exit 0; fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -m 'art(mobilite): ajouter les dix PNG individuels HD 31-40 [skip ci]'
+          for attempt in 1 2 3; do
+            if git push origin HEAD:refs/heads/chatgpt/mobilite-hd-individuels-suite-20261106; then
+              git log -1 --format='Published PNG commit: %H'
+              exit 0
+            fi
+            git fetch --no-tags origin chatgpt/mobilite-hd-individuels-suite-20261106
+            git rebase FETCH_HEAD || exit 1
+            python3 docs/campagne/mobilite/import_hd_31_40_20261106.py --check-only
+          done
+          exit 1

@@ -1,0 +1,76 @@
+name: Mobility HD follow-up - native individual sources
+on:
+  push:
+    branches: [chatgpt/mobilite-hd-individuels-suite-20261106]
+    paths:
+      - .github/workflows/mobility-hd-followup-20261106.yml
+      - docs/campagne/mobilite/IMPORT_HD_SUITE_20261106.json
+      - docs/campagne/mobilite/import_hd_suite_20261106.py
+permissions:
+  contents: write
+concurrency:
+  group: mobility-hd-followup-20261106
+  cancel-in-progress: false
+jobs:
+  import-native-png:
+    if: github.repository == 'darknigthmare/yautja-la-longue-chasse' && github.ref == 'refs/heads/chatgpt/mobilite-hd-individuels-suite-20261106'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 1
+          sparse-checkout: |
+            docs/campagne/mobilite
+            art-source/mobilite
+      - name: Import only the eleven native PNGs with fixed SHA-256
+        run: python3 docs/campagne/mobilite/import_hd_suite_20261106.py
+      - name: Read back 98 PNGs and compare the published metadata
+        run: python3 docs/campagne/mobilite/import_hd_suite_20261106.py --check-only
+      - name: Verify idempotence and the exact output boundary
+        shell: bash
+        run: |
+          set -euo pipefail
+          git add -- art-source/mobilite docs/campagne/mobilite/LIVRAISON_HD_SUITE_20261106.md docs/campagne/mobilite/LIVRAISON_HD_SUITE_20261106.json
+          python3 docs/campagne/mobilite/import_hd_suite_20261106.py
+          git diff --exit-code -- art-source/mobilite docs/campagne/mobilite
+          python3 - <<'PY'
+          import json, subprocess
+          from pathlib import Path
+          m=json.loads(Path('docs/campagne/mobilite/LIVRAISON_HD_SUITE_20261106.json').read_text())
+          image_paths={e['path'] for e in m['entries'] if e.get('regenerated_in_this_turn') is False}
+          assert len(image_paths)==11, image_paths
+          expected=image_paths|{
+            'art-source/mobilite/INDEX_HD_SUITE_20261106.md',
+            'docs/campagne/mobilite/LIVRAISON_HD_SUITE_20261106.md',
+            'docs/campagne/mobilite/LIVRAISON_HD_SUITE_20261106.json',
+          }
+          raw=subprocess.check_output(['git','diff','--cached','--name-status','-z']).decode().split('\0')
+          rows=[(raw[i],raw[i+1]) for i in range(0,len(raw)-1,2)]
+          assert all(status=='A' for status,path in rows), rows
+          paths={path for status,path in rows}
+          assert not paths or paths==expected, paths^expected
+          assert m['png_count']==98 and m['catalogue_individual_hd_count']==30
+          assert m['new_png_bytes']==26746681 and m['total_png_bytes']==124846364
+          print(json.dumps({'new_png':11,'new_source_bytes':26746681,'preserved_png':87,'all_png':98,'hd_subjects':30,'staged_files':len(paths)}))
+          PY
+          git diff --cached --check
+      - name: Commit only on the follow-up branch without force
+        shell: bash
+        run: |
+          set -euo pipefail
+          if git diff --cached --quiet; then exit 0; fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -m 'art(mobilite): ajouter dix PNG HD 21-30 et archiver le dernier essai [skip ci]'
+          for attempt in 1 2 3; do
+            if git push origin HEAD:refs/heads/chatgpt/mobilite-hd-individuels-suite-20261106; then
+              git log -1 --format='Published PNG commit: %H'
+              exit 0
+            fi
+            git fetch --no-tags origin chatgpt/mobilite-hd-individuels-suite-20261106
+            git rebase FETCH_HEAD || exit 1
+            python3 docs/campagne/mobilite/import_hd_suite_20261106.py --check-only
+          done
+          exit 1
