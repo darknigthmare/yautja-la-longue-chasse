@@ -1194,6 +1194,239 @@ Source : la bible de campagne d'*Aliens: Tantalus Frontier* (dépôt `darknigthm
 
 **À décider :** rien. Décisions du 6 novembre : 2204 s'atteint par le Warp (époque future) ; le sort de l'Echo-8 est le choix du joueur (emporté pour l'honorer, ce qui colle à « plaque retrouvée, jamais le corps », ou laissé avec une marque gravée). À reporter dans le point ouvert n°5 de la bible *Tantalus* (« le fil Echo-8 est-il conservé ? »).
 
+## Catalogue des variantes d'équipement : prompts d'image
+
+Liste de toutes les variantes de dreads, lames de poignet, ordinateurs de poignet, masques, armures, canons plasma et armes secondaires, avec un prompt détaillé pour la génération d'images OpenAI. Sources : les films, *Predator: Hunting Grounds* (PHG), les comics, les romans et les figurines NECA, croisés avec les catalogues du dépôt. Les variantes sans « (en jeu) » n'existent pas encore dans le jeu.
+
+**Règle de vérité.** La colonne « Statut » distingue trois cas :
+
+- **vérifié** : détail décrit par une source consultée (AvP Central, fiches NECA, catalogue V132 du dépôt) ;
+- **film** : détail visible dans le film, de mémoire, à contrôler sur une image avant validation ;
+- **interprétation** : la source ne décrit pas l'objet, le prompt en donne une version proposée.
+
+Le statut porte sur la variante et son trait principal (nombre de lames, couleur, forme). Les matières et ornements secondaires écrits dans les prompts sont proposés. Aucun prompt n'est certifié 1:1 tant que l'image générée n'a pas été comparée à une référence (règle déjà appliquée dans `art-source`).
+
+### Gabarit commun (à coller avant chaque prompt)
+
+Le gabarit suit les conventions du dépôt : planches enregistrées sur la toile 256 × 384 du rig, générées en 1024 × 1536, fond alpha 0, vue de trois quarts tournée vers la droite, et couches séparées selon la spécification « planches en 3/4 ».
+
+```text
+Produce ONE native RGBA PNG, 1024x1536 portrait, fully transparent background (alpha 0 outside the object: no floor, no cast shadow, no glow, no gradient, no text, no border). The object is a modular equipment layer for a 2D Yautja (Predator) hunter rig drawn on a 256x384 registration canvas scaled x4: keep it at its exact anatomical position and scale on that canvas, as if worn by a standing hunter seen in three-quarter view facing RIGHT (near side = the hunter's right side, far side = left side). Painterly realistic sprite art matching the attached V3 hunter plates: same key light from upper left, warm bounce, crisp 1-2 px dark outline, readable silhouette at 25 % size. Draw ONLY the object, never the body. When asked for layers, output each layer as its own image on the same canvas, same registration.
+```
+
+Joindre à chaque génération les planches V3 de référence (`public/game/assets/v3/actors/yautja/hunter/body/classic/full.webp` et la planche de la pièce remplacée) pour le placement.
+
+### Dreadlocks
+
+Les 8 premiers existent dans le jeu (`dreads/registered/`). Chaque prompt demande des brins arrière et des brins latéraux séparés, comme le rig V145. Source des variantes : [guide des dreadlocks, AvP Central](https://www.avpcentral.com/yautja-dreadlocks-predator-hair-guide).
+
+| ID | Source | Statut | Prompt (à ajouter au gabarit) |
+| --- | --- | --- | --- |
+| DR-01 classic (en jeu) | *Predator* (1987), Jungle Hunter | film | Layer set DREADS: 14-16 thick matte black dreadlocks with a faint bluish sheen, growing from the rear and sides of a bald ridged scalp, shoulder-blade length; separate layers: REAR strands (hang down the back), SIDE strands (2-3 fall in front of the near shoulder). Each strand ends in a slim taper, small bronze collar rings near the roots only. Draw each strand as its own isolated piece with its root collar at the top, for rigging. |
+| DR-02 ringed (en jeu) | Clans classiques | interprétation | Same as DR-01 but each dread carries 3-4 thin copper rings spaced along its length, rings slightly worn, catching the key light. |
+| DR-03 braided (en jeu) | Style tressé générique | vérifié | Long dreads braided together into a ponytail behind the head, a few loose side strands; braid tied with a dark leather cord and a bronze clasp. |
+| DR-04 veteran (en jeu) | Vétérans de clan | interprétation | Thick dark-grey dreads, shoulder length, several with carved bone beads and one broken short strand; scarred root collars. |
+| DR-05 elder (en jeu) | Elder, *AVP* (2004) ; Ancient, *Predator: Homeworld* | vérifié | Very long grey dreadlocks whose ends fade to white, reaching mid-back, heavy and slightly braided; ornate engraved silver-bronze rings near the roots. |
+| DR-06 temple (en jeu) | Gardes du Temple (projet) | interprétation | Medium dreads gathered at the crown by a ceremonial bronze band engraved with Yautja glyphs, the rest hanging evenly at the back. |
+| DR-07 feral (en jeu) | Feral, *Prey* (2022) | vérifié | Thin, sparse, coarse dreads, uneven lengths, some wrapped with sinew and small bone fragments; no metal rings. |
+| DR-08 huntress (en jeu) | Femelles yautja | vérifié | Long dreads (longer than male hunters), finer, braided in two or three long braids with red cord bindings. |
+| DR-09 top-knot | Top-Knot Predator (chef de clan) | vérifié | Part of the dreads tied in a high top knot bound by a bronze clasp, the rest hanging at the sides. |
+| DR-10 mace | Spiked Tail (Rogue Space Tribe, NECA) | vérifié | Unnaturally long dreads reaching the soles, most hanging free, the longest knotted at the end into a heavy spiked mace-like ball. |
+| DR-11 stubs | Stone Heart, Swift Knife (*Concrete Jungle*) | vérifié | Dreadlocks cut almost to stubs, 2-4 cm long, ragged cut ends, root collars intact. |
+| DR-12 albino | Alpha Predator (Kaail) | vérifié | Completely white dreads (not from age), long and thick, ivory-white with faint grey shading. |
+| DR-13 red-tipped | Berserker, *Predators* (2010) | vérifié | Black dreads with red-tipped ends, thick, shoulder length. |
+| DR-14 brown | Falconer, *Predators* (2010) | vérifié | Dark brown dreads, medium length, a few feather-like trophy ornaments. |
+| DR-15 Badlands | Dek, Kwei, Njohrr, *Badlands* (2025) | vérifié | Three variants on separate images: Dek short dreads growing from the top of the forehead (not the sides); Kwei longer, from the top of the head; Njohrr traditional length. |
+| DR-16 cybernetic | Predator Killer suit, *The Predator* (2018) | vérifié | Relatively short metallic cybernetic dreadlocks with ring-like segment decorations, gunmetal grey. |
+| DR-17 thick | Tank (PHG) ; Young Bloods, *AVP* (2004) | vérifié | Very thick heavy dreads, fewer strands (10-12), black-brown, slightly flattened. |
+
+### Lames de poignet
+
+Depuis V145, les lames sont sur l'avant-bras arrière du rig. Source des variantes : [AvP Central, wristblades](https://www.avpcentral.com/predator-wristblade-variants).
+
+| ID | Source | Statut | Prompt (à ajouter au gabarit) |
+| --- | --- | --- | --- |
+| WB-01 regular (en jeu) | City Hunter, *Predator 2* | vérifié | Layers HOUSING + BLADES, on the BACK forearm (top of the wrist, facing outward): compact bronze-gunmetal housing, two straight razor blades, tips visible when retracted; draw retracted and extended states. |
+| WB-02 prehensile | Jungle Hunter, *Predator* (1987) | vérifié | Two serrated blades that can spread apart to grip, subtle red heated glow at the edges in the extended state; boxy dark housing with a small red indicator. |
+| WB-03 extra-long | Young Bloods, *AVP* (2004) | vérifié | Two very long blades with a telescoping segment (extended state twice the retracted length), polished steel, heavy riveted housing. |
+| WB-04 reverse | Celtic, *AVP* (2004) | vérifié | Two extra-long double-edged blades, housing able to point them backward along the forearm: draw forward and reversed states. |
+| WB-05 curved | Feral, *Prey* (2022) | vérifié | Curved, blunter blades of darker forged metal, primitive bound housing with sinew and bone. |
+| WB-06 glass shard | Dek, *Badlands* (2025) | vérifié | Transparent razor-glass shard blades, faceted, catching light, mounted in a scavenged copper housing. |
+| WB-07 scimitar | Chopper, *AVP* (2004) | vérifié | Single long scimitar arm-blade attached to the gauntlet, does not fully retract, curved edge. |
+| WB-08 single | Super Predators, *Predators* (2010) | vérifié | Single short stabbing blade, black metal, angular housing. |
+| WB-09 three-blade | Ahab (*Life and Death*) ; Stone Heart (*Concrete Jungle*) | vérifié | Three fixed Wolverine-like blades; Stone Heart variant smaller, sitting on the knuckles: draw both. |
+| WB-10 dual-arm | Elite, *Aliens vs. Predator* (2010) | vérifié | Two blades per arm: one set for each forearm (front and back), identical design. |
+| WB-11 launcher | Scar, Young Bloods (*AVP*) | vérifié | Blades fired as projectiles: draw housing, blades in flight (no motion blur), and empty housing. |
+| WB-12 harpoon | Assassin, *The Predator* (2018) | vérifié | Single blade attached to a razor-sharp wire, housing with a reel; draw retracted and fired (wire taut). |
+| WB-13 blade claws | Lasershot (NECA) | vérifié | Finger-length blades retracting into cybernetic fingers; draw the cybernetic hand covers only. |
+| WB-14 bionic | Bionic, PHG | vérifié | Single blade with several sharp tips at the end, permanently attached to a bionic arm, partly retractable. |
+| WB-15 subcutaneous | Predator Prince, *Predator vs. Black Panther* (comic) | vérifié | Blades emerging from under the skin of the right forearm, no housing; draw the blades and torn skin edges as a separate layer. |
+| WB-16 Dutch's knife | PHG | vérifié | Handheld knife: single wristblade with a knife handle (not worn). |
+
+### Ordinateurs de poignet (54 modèles du catalogue V132)
+
+Repris de `clanWarGauntletCatalogV132.json` (54 identités, déjà dans le jeu). Depuis V145, l'ordinateur est sur l'avant-bras avant. Le catalogue V132 note pour presque tous les modèles que le brassard individuel n'est pas documenté : seuls Jungle Hunter, City Hunter et Wolf ont une source sur l'objet lui-même. Les autres lignes sont des interprétations, et chaque prompt reprend le brief V132 (en français) après le style de son thème.
+
+**Prompt commun aux 54 modèles** (à ajouter au gabarit, puis le style et le brief de la ligne) :
+
+```text
+Layers SHELL and LID (hinged) of a Yautja wrist computer worn on the FRONT forearm, along the forearm axis, about the forearm's width, between elbow and wrist. Draw the lid closed and open (rotated about its hinge on the forearm side) as separate images, same registration. Style and details:
+```
+
+| ID | Source | Statut | Style et brief |
+| --- | --- | --- | --- |
+| `jungle-hunter` | Jungle Hunter · 1987 | vérifié | Dark gunmetal; rectangular hinged panel, FIVE HORIZONTAL ROWS of red glyph LED cells (correction V133 du dépôt), grooved sides, dark patina. |
+| `city-hunter` | City Hunter · 1990 | vérifié | Worn bronze-copper; more streamlined cover, four red windows, worn urban profile (real left stunt gauntlet of *Predator 2*, foam with copper finish, Propstore). |
+| `greyback` | Greyback / Elder · 1990 | interprétation | Aged patinated metal with engraved panels. Armure patinée ancienne ; reconstitution prudente. |
+| `lost-boar` | Boar · Lost Tribe | interprétation | Hammered bronze. Conserver silhouette générique provisoire. |
+| `lost-shaman` | Shaman · Lost Tribe | interprétation | Aged patinated metal with engraved panels. Rites visuels à distinguer du dispositif canonique. |
+| `lost-guardian` | Guardian · Lost Tribe | interprétation | Worn bronze-copper. Référence accessoires avant modélisation. |
+| `lost-stalker` | Stalker · Lost Tribe | interprétation | Low-profile matte dark metal. Sous-couleurs d'armure à sourcer. |
+| `lost-snake` | Snake · Lost Tribe | interprétation | Low-profile matte dark metal. Caractérisation provisoire. |
+| `lost-warrior` | Warrior · Lost Tribe | interprétation | Hammered bronze. Variante Lost Tribe à documenter. |
+| `lost-scout` | Scout · Lost Tribe | interprétation | Low-profile matte dark metal. Ne pas confondre avec la classe Scout PHG. |
+| `lost-borg` | Lost / Borg · Lost Tribe | interprétation | Worn bronze-copper. Ne pas inventer de spécifications. |
+| `scar` | Scar · AVP 2004 | interprétation | Thick Young Blood plates. Panneaux distinctifs à contrôler. |
+| `celtic` | Celtic · AVP 2004 | interprétation | Thick Young Blood plates. Plastron de poignet imposant. |
+| `chopper` | Chopper · AVP 2004 | interprétation | Thick Young Blood plates. Éviter une copie de Scar. |
+| `avp-elder` | Elder · AVP 2004 | interprétation | Aged patinated metal with engraved panels. Rang d'Ancien, distinct de Greyback. |
+| `wolf` | Wolf · AVP-R 2007 | vérifié | Compact functional cleaner design, Yautja inscriptions that light up (original ADI costume, left arm, Propstore). |
+| `captured-classic` | Captured / Classic · Predators 2010 | interprétation | Dark gunmetal with red glyph LEDs. Proche de la famille 1987 sans réutilisation aveugle. |
+| `berserker-2010` | Mr Black / Berserker · 2010 | interprétation | Heavy angular black metal. Armure lourde atypique. |
+| `falconer-2010` | Falconer · 2010 | interprétation | Low-profile matte dark metal. Lecture de surveillance. |
+| `tracker-2010` | Tracker · 2010 | interprétation | Heavy angular black metal. Motifs de piste et de traque. |
+| `fugitive` | Fugitive · The Predator 2018 | interprétation | Worn bronze-copper. Armure métallique compacte, écran adapté. |
+| `assassin` | Upgrade / Assassin · The Predator 2018 | interprétation | Heavy angular black metal. Concept. |
+| `feral` | Feral · Prey 2022 | interprétation | Primitive metal and bone. Métal et os de la chasse primitive, pas d'écran 1987 collé. |
+| `dek` | Dek · Badlands 2025 | interprétation | Copper filigree, bone and inscriptions ; scanner. |
+| `kwei` | Kwei · Badlands 2025 | interprétation | Copper filigree, bone and inscriptions, distinct de Dek. |
+| `njohrr` | Njohrr · Badlands 2025 | interprétation | Aged patinated metal with engraved panels. Profil de clan supérieur. |
+| `kok-viking` | Chasseur Viking · Killer of Killers | interprétation | Hammered bronze. Formes visibles en animation uniquement. |
+| `kok-ninja` | Chasseur Ninja · Killer of Killers | interprétation | Low-profile matte dark metal. Projection discrète. |
+| `kok-pilot` | Chasseur Pilote · Killer of Killers | interprétation | Worn bronze-copper. Filtre de trajectoires. |
+| `kok-grendel` | Grendel King · Killer of Killers | interprétation | Aged patinated metal with engraved panels. Chef de clan. |
+| `phg-hunter` | Hunter · PHG | interprétation | Dark gunmetal with red glyph LEDs. Variante d'atelier de la classe. |
+| `phg-scout` | Scout · PHG | interprétation | Low-profile matte dark metal. Affichage compact. |
+| `phg-berserker` | Berserker · PHG | interprétation | Heavy angular black metal. Variante lourde. |
+| `phg-alpha` | Alpha · PHG | interprétation | Aged patinated metal with engraved panels. Glyphes propres. |
+| `phg-samurai` | Samurai · PHG | interprétation | Hammered bronze, sans iconographie historique erronée. |
+| `phg-viking` | Viking · PHG | interprétation | Hammered bronze, géométrie PHG. |
+| `phg-valkyrie` | Valkyrie · PHG | interprétation | Hammered bronze, finition froide. |
+| `phg-cleopatra` | Cleopatra · PHG | interprétation | Aged patinated metal, style cérémoniel doré. |
+| `phg-exiled` | Exiled · PHG | interprétation | Low-profile matte dark metal, surface usée par l'exil. |
+| `phg-pirate` | Pirate · PHG | interprétation | Hammered bronze, métal récupéré. |
+| `phg-bionic` | Bionic · PHG | interprétation | Worn bronze-copper, assemblage métal et prothèse. |
+| `phg-emissary` | Emissary · PHG | interprétation | Worn bronze-copper, version PHG distincte du concept de 2018. |
+| `phg-oni` | Oni · PHG | interprétation | Heavy angular black metal, revêtement distinct. |
+| `phg-witch` | Witch · PHG | interprétation | Low-profile matte dark metal, interface rituelle. |
+| `phg-father` | Father · PHG | interprétation | Aged patinated metal, panneaux d'ancien. |
+| `phg-jotun` | Jotun · PHG | interprétation | Heavy angular black metal, grande armure. |
+| `phg-exalted` | Exalted · PHG | interprétation | Aged patinated metal, métaux rares. |
+| `phg-anubis` | Anubis · PHG | interprétation | Hammered bronze, plaques géométriques. |
+| `phg-gladiator` | Gladiator · PHG | interprétation | Heavy angular black metal, blindage renforcé. |
+| `scarface` | Scarface · Concrete Jungle | interprétation | Worn bronze-copper, texture et symétrie à documenter. |
+| `stone-heart` | Stone Heart · Concrete Jungle | interprétation | Heavy angular black metal. |
+| `ahab` | Ahab · comics / NECA | interprétation | Aged patinated metal with engraved panels. |
+| `dark-2010` | Dark · Aliens vs Predator (2010) | interprétation | Low-profile matte dark metal. |
+| `phg-captured` | Captured · PHG | interprétation | Dark gunmetal with red glyph LEDs, même personnage que 2010. |
+
+### Biomasques
+
+Les 14 premiers sont les masques de référence du jeu (`biomaskCatalogueV62.ts`). Sources : [top 10 bio-masks, AvP Central](https://www.avpcentral.com/top-10-predator-bio-masks) et le catalogue du dépôt. Les masques PHG portent les noms des classes et DLC déjà au catalogue V132 ; leur apparence n'a pas été relevée et doit l'être sur captures du jeu avant génération.
+
+**Prompt commun aux masques** (à ajouter au gabarit) : `Biomask only, fitted to the head socket of the rig, three-quarter view facing right, eye lenses and laser emitter on the hunter's LEFT temple (far side), breathing tube ends visible at the jaw sides. Details:`
+
+| ID | Source | Statut | Détails |
+| --- | --- | --- | --- |
+| MK-01 jungle (en jeu) | Jungle Hunter, *Predator* (1987) | film | Smooth dark steel mask, rounded forehead ridge, two triangular eye lenses, three-dot laser emitter, subtle battle scuffs. |
+| MK-02 city (en jeu) | City Hunter, *Predator 2* | film | Bronze-gold mask with angular brow and etched linear tribal markings, slightly wider jaw. |
+| MK-03 scar (en jeu) | Scar, *AVP* (2004) | film | Steel mask with the acid-etched clan mark (forked line) on the forehead, pitted surface. |
+| MK-04 celtic (en jeu) | Celtic, *AVP* (2004) | film | Aggressive styling with heavy battle damage from the Grid Alien. |
+| MK-05 chopper (en jeu) | Chopper, *AVP* (2004) | film | Pronounced brow ornaments, narrow slit profile. |
+| MK-06 wolf (en jeu) | Wolf, *AVP-R* (2007) | vérifié | Simple design, heavy battle damage, small spikes on top, Yautja symbols engraved on the forehead. |
+| MK-07 feral (en jeu) | Feral, *Prey* (2022) | vérifié | Bone mask, ivory with dark cracks, exposed mandibles below. |
+| MK-08 boar (en jeu) | Boar, Lost Tribe (NECA) | interprétation | Broad heavy mask with tusk-like lower ornaments. |
+| MK-09 snake (en jeu) | Snake, Lost Tribe (NECA) | interprétation | Narrow sleek mask, serpentine engraved lines. |
+| MK-10 falconer (en jeu) | Falconer, *Predators* (2010) | film | Bird-like curved mask with a beak-shaped brow. |
+| MK-11 berserker (en jeu) | Berserker, *Predators* (2010) | vérifié | Black mask, one of the few black masks, a trophy jaw from an unknown creature attached under it. |
+| MK-12 fugitive (en jeu) | Fugitive, *The Predator* (2018) | vérifié | Busy design around the mouth, large red eyes, small hidden caster compartment on the right side. |
+| MK-13 dek (en jeu) | Dek, *Badlands* (NECA) | interprétation | Training mask, copper and bone, filigree lines. |
+| MK-14 enforcer (en jeu) | Enforcer, *Bad Blood* (NECA) | interprétation | Large ceremonial mask with a wide crest, ivory and steel. |
+| MK-15 elder | Elder, *AVP* (2004) | film | Ornate ancient mask, gold-bronze inlays, wide flared crown. |
+| MK-16 greyback | Greyback, *Predator 2* | film | Elder mask, aged and patinated, ornate crest. |
+| MK-17 lord | Lord, *Aliens vs. Predator* (2010) | interprétation | Ornate high-rank mask (the source gives no visual detail). |
+| MK-18 ahab | Ahab, *Fire and Stone* / *Life and Death* | vérifié | Partial mask leaving the mouth exposed, deep stab damage through the right eye area. |
+| MK-19 afghanistan | *Predator: Hunters II* (comic) | vérifié | Elegant mask close to the Jungle Hunter, large constantly burning blue eyes; second state with half the structure blown off. |
+| MK-20 golden angel | Greyback, *Predator 1718* (comic) / NECA | vérifié | Two masks on separate images: a bird-like mask with blood-red eyes, and a traditional one close to the 1987 mask. |
+| MK-21 lava planet | Kenner / NECA | vérifié | Scorpion-like blood-red mask (shared with Cracked Tusk). |
+| MK-22 race war | Race War Predator | vérifié | Brownish-gold mask with a double set of rectangular eye slits. |
+| MK-23 → MK-42 PHG | PHG : Hunter, Scout, Berserker, Alpha, Samurai, Viking, Valkyrie, Cleopatra, Exiled, Pirate, Bionic, Emissary, Oni, Witch, Father, Jotun, Exalted, Anubis, Gladiator, Captured | interprétation | One mask per name, from game captures only: describe silhouette, material and markings from the capture, then add `matching the Predator: Hunting Grounds '<name>' mask`. Do not generate from the name alone. |
+
+### Armures
+
+Chaque set suit la spécification « planches en 3/4 » : couches avant et arrière, plastron en perspective. Source : [types d'armure, AvP Central](https://www.avpcentral.com/yautja-armor-types-and-fishnets). Le filet (fishnet) est une couche à part : il ne protège pas et sert contre le froid.
+
+**Prompt commun aux armures** (à ajouter au gabarit) : `Armour set as separate layers on the same canvas: CHEST (three-quarter perspective, near side wider, edge wrapping behind the far flank), NEAR SHOULDER pauldron (dome on the right deltoid, inner rim and strap behind the neck), BELT and loincloth, THIGH, KNEE, GREAVES front leg and back leg (each with a back half-shell). Details:`
+
+| ID | Source | Statut | Détails |
+| --- | --- | --- | --- |
+| AR-01 light (en jeu) | Jungle Hunter / Lost Tribe | vérifié | Minimal plating over vital organs only, dark bronze, integrated with the caster power pack; fishnet bodysuit separate. |
+| AR-02 light feral | Feral, *Prey* | vérifié | Even less armour: shoulders and chest exposed, bone and leather pieces only. |
+| AR-03 medium | *AVP* (2004) | vérifié | Metal plates on both shoulders, the whole chest and the shins, metal shoes, long groin strap; polished steel with engravings. |
+| AR-04 heavy | Top Knot clan | vérifié | Covers most of the body, some arm and leg skin visible, clan colour scheme. |
+| AR-05 armored skin | AvP Central (source non nommée) | vérifié | Chest hardened with harvested alien hide, face unarmoured, organic plates. |
+| AR-06 military | Killer Predator clan | vérifié | Impersonal agile full-body armour, no trophies or ornaments, matte. |
+| AR-07 bone | Alpha ; Feral (*Prey*) | vérifié | Armour made from bones of slain prey, bone necklace. |
+| AR-08 xenomorph | *Splice and Dice* ; *Aliens vs. Predator* (2010) | vérifié | Xenomorph endoskeleton chest armour with a Xenomorph head on the chest; helmet styled after a Xenomorph face. |
+| AR-09 wooden | PHG ; *Predator: Hunters* (comic) | vérifié | Wood with bone and stone pieces, crafted by stranded clan members. |
+| AR-10 organic | *Badlands* | vérifié | Plants, bone, bison fur and shell, with a mask; separate layer for the acid-spitting creature on the shoulder. |
+| AR-11 vacuum suit | *Rage War* (romans) | vérifié | Fully enclosed space suit covering the dreads. |
+| AR-12 predator killer | *The Predator* (2018) | vérifié | Nanotech suit expanding from the wrist gauntlet, wristblades, multiple shoulder cannons, metallic dreads. |
+| AR-13 marvel | *Day of the Hunter* (Marvel) | vérifié | Metallic spiked armour blending Predator Killer and samurai styles. |
+| AR-14 human-style | PHG, comics | vérifié | Four separate sets: Viking, pirate, samurai, golden ceremonial Cleopatra, each covering vital areas. |
+| AR-15 city (en jeu) | City Hunter, *Predator 2* | film | Bronze armour with urban wear, large near-side pauldron, mesh bodysuit. |
+| AR-16 super (en jeu) | Berserker / Tracker, *Predators* | film | Heavy dark armour, larger plates, trophy jaws. |
+
+### Canons plasma
+
+Source : [plasmacaster types, AvP Central](https://www.avpcentral.com/predator-shoulder-cannon-plasmacaster-types). Le rig a 7 pièces (`mount`, `caster-upper`, `caster-lower`, `yoke`, `cannon`, `barrel`, `muzzle`), livrées séparément, plus `laser`.
+
+**Prompt commun aux canons** (à ajouter au gabarit) : `Shoulder cannon as separate layers MOUNT, UPPER ARM, LOWER ARM, YOKE, CANNON, BARREL, MUZZLE on the same canvas, at rest above the shoulder, barrel pointing forward (right). Details:`
+
+| ID | Source | Statut | Détails |
+| --- | --- | --- | --- |
+| PC-01 classic (en jeu) | Jungle Hunter | vérifié | Single caster on the LEFT shoulder (far side), power bulge behind, three-dot laser sight on the mask. |
+| PC-02 city | City Hunter | vérifié | Flat bronze caster with two orifices, slightly smaller than classic. |
+| PC-03 greyback | Greyback | vérifié | Classic design, laser sight built into the cannon. |
+| PC-04 super | Super Predators | vérifié | Three smaller rotating components spinning in opposite directions. |
+| PC-05 young blood | *AVP* (2004) | vérifié | Similar to classic; Scar's is the largest of the three. |
+| PC-06 double | Wolf, *AVP-R* | vérifié | Two casters, the second on an extra armoured arm. |
+| PC-07 pistol | Wolf, *AVP-R* | vérifié | Handheld pistol made from two merged casters (the second forms the grip). |
+| PC-08 fugitive | *The Predator* | vérifié | Advanced nanotech caster on the RIGHT shoulder. |
+| PC-09 mask caster | Fugitive, *The Predator* | vérifié | Tiny caster hidden in a compartment on the right side of the mask, beside the laser. |
+| PC-10 predator killer | *The Predator* | vérifié | At least eight casters: three small per shoulder plus two large extending outward, each with its own laser. |
+| PC-11 heavy | *Aliens vs. Predator: Duel* (comic) | vérifié | Very large handheld plasma cannon with its own scope. |
+| PC-12 organic | *Badlands* | vérifié | Eel-like acid-spitting creature perched on the shoulder (not a caster). |
+| PC-13 PHG shoulder | PHG | vérifié | Smaller, rounder caster based on the classic one. |
+| PC-14 PHG handheld | PHG | vérifié | Pistol-sized handheld caster, no laser sight. |
+
+### Armes et accessoires
+
+| ID | Source | Statut | Prompt (à ajouter au gabarit) |
+| --- | --- | --- | --- |
+| OT-01 combistick (en jeu) | Films | film | Telescopic spear, collapsed and extended states, serrated tips. |
+| OT-02 smart disc (en jeu) | *Predator 2*, *AVP* | film | Serrated throwing disc with a central grip. |
+| OT-03 net gun (en jeu) | Films | film | Net launcher plus the deployed net as a separate layer. |
+| OT-04 speargun | Romans (*Bhrak-chei*) ; Scarface, *Concrete Jungle* (NECA) | vérifié | Compact Yautja speargun with bolts, loaded and empty. |
+| OT-05 glaive | PHG (à vérifier) | interprétation | Long polearm blade. |
+| OT-06 war club | PHG (à vérifier) | interprétation | Heavy bladed war club. |
+| OT-07 bow (en jeu) | PHG ; projet (`yautja-bow`) | interprétation | Recurve Yautja bow and arrows. |
+| OT-08 shield | Feral, *Prey* | vérifié | Folding forearm shield (see the existing PIT Feral sprites). |
+| OT-09 feral launcher | Feral, *Prey* | vérifié | Arm-mounted bolt launcher. |
+| OT-10 medicomp | Films | film | Medical kit case with tools and vials, open. |
+| OT-11 trophies (en jeu) | Films | film | Skull, spine, belt bindings. |
+| OT-12 fishnet (en jeu) | Films | vérifié | Fishnet bodysuit per body part, clipped to each limb silhouette (fixes the floating front-arm net). |
+
 ## Acte I — Youngling (R2-M001 → M006)
 
 L'enfance dans la cour, la cité et les premiers ateliers ; l'acte se termine au rang Unblooded. Aucune fiche n'est jouable telle quelle ; V47 (nurserie) et V48 (dojo, accueil) jouent une enfance différente.
