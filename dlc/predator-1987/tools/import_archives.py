@@ -134,6 +134,8 @@ def revised_pack(original):
     require('sources:data.sources.length,tests:16' in validator, 'Unexpected validator revision')
     validator = validator.replace('sources:data.sources.length,tests:16',
         "sources:data.sources.length,tests:Number(steps.find(s=>s.name==='automated tests').stdout.match(/^# tests (\\d+)$/m)?.[1]??0)")
+    validator = validator.replace("['--test','tests/content.test.mjs'",
+                                  "['--test','--test-reporter=tap','tests/content.test.mjs'")
     files['scripts/validate-pack.mjs'] = validator.encode()
     files['CHECKSUMS.sha256'] = ''.join(
         sha(data) + '  ' + name + '\n'
@@ -153,7 +155,7 @@ def run_tests(files):
         commands = [
             ['node', 'scripts/build.mjs'],
             ['node', '--check', 'src/browser-engine.js'],
-            ['node', '--test', *sorted(str(p.relative_to(work)) for p in (work / 'tests').glob('*.test.mjs'))],
+            ['node', '--test', '--test-reporter=tap', *sorted(str(p.relative_to(work)) for p in (work / 'tests').glob('*.test.mjs'))],
             ['node', 'scripts/validate-pack.mjs'],
         ]
         count = 0
@@ -208,7 +210,7 @@ def main():
                for name, content in sorted(outputs.items())],
         packaging_changes=['Normalize the ZIP-encoded canopee PNG filename without changing its bytes',
             'Correct stale README version and localStorage key; identify historical generator and validation',
-            'Read actual TAP test count instead of the hardcoded 16',
+            'Request TAP explicitly and read actual test count instead of the hardcoded 16',
             'Refresh 32 active-pack checksums; original archives stay byte-identical'],
         source_files_changed=[name for name in sorted(files) if files[name] != original[name]],
         no_new_gameplay=True, host_game_changed=False,
