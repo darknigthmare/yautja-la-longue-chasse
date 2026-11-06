@@ -973,6 +973,65 @@ Un chien blessé se soigne au Chenil des Pisteurs (CITY-28). Il suit la règle d
 
 **Décision :** le joueur a sa première maison à Blooded, dans la communauté de son clan d'origine ; il peut déménager ensuite selon les règles du V6 (une seule résidence active parmi les 20, objets transportés par le joueur, droit d'aménager au deuxième seuil de respect). Avant Blooded, il vit au camp du pack (L-01).
 
+### Combat contre la Reine Mère
+
+**Décision :** trois phases, avec les clans alliés en appui (fin de la phase « Descente » de l'opération). Déroulé *(proposé)* :
+
+| Phase | Déroulé | Alliés |
+| --- | --- | --- |
+| 1. Enchaînée | la Reine Mère est soudée à son trône de résine (écho de la reine enchaînée d'AVP 2004) ; queue, crachats d'acide, vagues de guerriers ; le joueur brûle les attaches de résine | tiennent les entrées de la chambre |
+| 2. Libérée | elle arrache le sac ovigère et poursuit le joueur dans les galeries ; plafonds qui s'effondrent, œufs qui éclosent sur son passage | défendent deux points de repli où le joueur peut se soigner |
+| 3. Duel | chambre de ponte, seul à seule ; elle ne régénère plus mais attaque plus vite ; le coup final se donne à la lance ou à la lame | encerclent la chambre et la regardent, comme un rite |
+
+En coop, les deux invités prennent la place des alliés IA en phases 1 et 2 ; la phase 3 reste un duel de l'hôte *(proposé)*. **Musique :** piste de boss du catalogue, avec le motif de la race du joueur en phase 3.
+
+### Tribunal et sanctions
+
+**Décision :** le procès est joué ; une infraction grave gèle le rang au lieu de le retirer.
+
+- **Procès :** le joueur présente ses preuves (trophées et leur provenance, traces, enregistrements du masque) et appelle des témoins (compagnons, membres du pack). L'accusation présente les siennes. Le juge tranche selon le barème et ce qui a été montré.
+- **Juge :** un Elder du clan pour une affaire interne ; l'Adjudicator pour une affaire entre clans. Au Level 8, c'est le joueur qui juge.
+- **Peines :** blâme (perte d'honneur), épreuve de réparation, gel du rang, exil (voie Bad Blood). Le gel bloque les épreuves de rang jusqu'à ce que l'épreuve de réparation soit faite ; le rang acquis reste.
+
+| Gravité | Perte d'honneur *(proposée)* | Peine possible |
+| --- | --- | --- |
+| blâme | 100 | aucune autre |
+| jugement | 500 à 1 500 | épreuve de réparation, gel du rang |
+| exil immédiat | tout l'honneur du rang en cours | exil, sauf preuve contraire présentée au procès |
+
+Un procès bien mené (preuve d'une contrainte, témoin qui confirme) peut faire descendre la peine d'un cran.
+
+### Langue yautja
+
+**Décision :** mots canon, complétés par un glossaire inventé et cohérent ; clics et voix, sous-titres en français ; glossaire consultable dans le codex du jeu.
+
+**Règles :**
+
+- un mot canon existe pour une notion : on l'emploie (par exemple *Ic'jit* pour Bad Blood, *Chiva* pour une épreuve, *Kehrite* pour l'aire d'entraînement) ;
+- un mot inventé ne doit jamais reprendre un mot canon avec un autre sens ; il est marqué « proposé » dans le glossaire ;
+- deux couches de canon : le vocabulaire classique des romans et de l'univers étendu, et la langue de *Predator: Badlands* (2025), dont plusieurs mots ont été confirmés par Britton Watkins (d'après AvP Central) ; la seconde a une grammaire (pronoms, négation) que le glossaire suit.
+
+**Extrait du vocabulaire canon à utiliser :**
+
+| Mot | Sens | Usage dans le jeu |
+| --- | --- | --- |
+| Kainde Amedha | « viande dure », Xénomorphe | toutes les ruches |
+| Kainde Amedha Chiva | épreuve de la viande dure, chasse de passage | la pyramide (L-04) |
+| Pyode Amedha / Ooman | « viande molle » / humain | proies humaines |
+| Ic'jit | Bad Blood, hors-la-loi | voie Bad Blood |
+| Yin'tekai, Thar'n-dha s'yin'tekai | honneur ; « force et honneur » | jauge d'honneur, salut |
+| Thwei | sang | marque Blooded |
+| Kehrite | aire de combat ou d'entraînement | Cour des Maîtres, The Pit |
+| Cetanu | dieu de la mort, le Black Warrior | Black God, sacrifice |
+| U'darahje | abomination | l'Ancienne déchue |
+| Paya | dieu, guerrier conquérant | prières, crédits |
+| Mei'hswei / Mei-jahdi | frère / sœur | dialogues du pack |
+| Gkaun-yte / N'dhi-ja | bonjour / au revoir | salutations |
+| Yauhwaq yi'ai | tueur de tueurs (*Badlands*) | titre de légende (héritage) |
+| Ngu djei chish | « je ne suis la proie de personne » (*Badlands*) | phrase du départ O1 |
+
+Source : [dictionnaire yautja, AvP Central](https://www.avpcentral.com/yautja-dictionary-vocabulary-of-predators).
+
 ### Arc de guerre des clans *(missions proposées)*
 
 **Décision :** le conflit commence par un terrain de chasse disputé (canon : plusieurs clans se disputent les meilleurs sites, *Aliens vs. Predator: War*), et son déclencheur dépend de la voie de clan.
