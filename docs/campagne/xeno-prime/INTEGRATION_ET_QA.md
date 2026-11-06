@@ -62,9 +62,9 @@ La crête et les membres valides doivent atteindre une extraction réelle. Le PN
 
 ## 5. Animation, VFX, son et caméra
 
-Les huit poses de la tête sont **059, 060, 061, 062, 094, 095, 096 et 097**. Le bulbe rompu **098** est un organe séparé également produit. Générer ensuite les raccords nécessaires avec silhouette, pivot et éclairage stables ; ne pas compter ces images fixes comme un cycle fluide déjà livré.
+Le socle V2.2 réunit huit poses de la tête : **059, 060, 061, 062, 094, 095, 096 et 097**. Le bulbe rompu **098** est un organe séparé également produit. Les 42 raccords V2.3 sont maintenant disponibles : [inventaire et contrôles](RACCORDS_V23.md), [ordres de poses](SEQUENCES_RACCORDS.json). A001–A008, A010 et A037–A042 portent le total à 23 états de tête ; A009/A029 restent des états du bulbe séparé. Caler les pivots, attaches et échelles, puis produire les cycles fluides à partir de ces poses ; aucune animation en jeu n’est déjà validée.
 
-Priorités : armement/impact/retrait des tentacules, préparation/souffle/retour de la gueule, exposition du bulbe, mort et prélèvement. Les effets 065/066/103 et les nouveaux PNG 067–072, 102 et 104–108 sont disponibles. Leur émission, durée, animation et raccord en scène restent à réaliser ; [REPRISE.md](REPRISE.md) conserve le suivi des images complétées.
+Les priorités armement/impact/retrait, préparation/souffle/retour, exposition du bulbe, mort et prélèvement disposent de nouvelles poses clés A001–A042. A021/A022 sont des calques simultanés ; les durées et trajectoires restent à concevoir. Les écarts de ligne de base et de cadrage sont consignés dans RACCORDS_V23.md. Les effets 065/066/103 et les nouveaux PNG 067–072, 102 et 104–108 sont disponibles. Leur émission, durée, animation et raccord en scène restent à réaliser ; [REPRISE.md](REPRISE.md) conserve le suivi des images complétées.
 
 Attacher l’effet et son son à l’événement qui le produit : origine de bouche, point de contact au sol, membrane ou attache rompue. La pause fige la même horloge ; une reprise ne rejoue pas tous les impacts. Le marqueur de danger doit rester lisible avec effets réduits, contraste faible et écran étroit.
 

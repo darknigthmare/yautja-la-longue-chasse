@@ -116,10 +116,12 @@ les ressources effectivement produites et le travail restant.
 | Document | Contenu |
 | --- | --- |
 | [Secteur et boss](xeno-prime/README.md) | Douze tableaux locaux, itinéraire principal, détours, raccourcis, trois balises physiques et Matriarche enracinée révélée au dernier tableau ; progression, extraction et raccords aux autres annexes. |
-| [Catalogue des ressources](xeno-prime/ASSETS.md) · [données](xeno-prime/DONNEES_ASSETS.json) | 108 sprites transparents et six fonds opaques, dont les 23 ajouts du 6 novembre ; dimensions, empreintes et archives téléchargeables. 25 exports de scènes, dont 23 images distinctes, sans les compter comme de nouveaux sprites. |
+| [Catalogue des ressources](xeno-prime/ASSETS.md) · [données](xeno-prime/DONNEES_ASSETS.json) | 150 sprites transparents et six fonds opaques, dont les 23 ajouts V2.2 et les 42 raccords V2.3 ; dimensions, empreintes et archives téléchargeables. 25 exports de scènes, dont 23 images distinctes, sans les compter comme de nouveaux sprites. |
 | [Compositions](xeno-prime/SCENES_ILLUSTREES.json) · [souffle du boss](xeno-prime/COMPOSITION_SOUFFLE.json) | Douze scènes et 312 placements d’origine conservés, états avant/après et démonstration du jet rattaché à la bouche ; données d’illustration, sans collisions ni comportements déjà intégrés. |
-| [Reprise de production](xeno-prime/REPRISE.md) · [prompts et dépendances](xeno-prime/REPRISE_ASSETS.json) | 23 demandes complétées : 108/108 sprites disponibles, prompts et références conservés. Huit poses de tête, dont agonie 097, et bulbe rompu 098 séparé. |
+| [Reprise de production](xeno-prime/REPRISE.md) · [prompts et dépendances](xeno-prime/REPRISE_ASSETS.json) | 23 demandes initiales complétées, puis 42 raccords V2.3 : 150 sprites disponibles. 23 états de tête et quatre états du bulbe ; poses et parties séparées, sans validation d’animation en jeu. |
 | [Contrat d’intégration et QA](xeno-prime/INTEGRATION_ET_QA.md) · [vérification](xeno-prime/VERIFICATION.md) | États de mission, preuve de crête, sauvegardes, compagnons, mobilité, caméra et 28 contrôles de jeu à exécuter ; vérifications documentaires et concordance avec le classeur V6. [Production du 6 novembre](xeno-prime/PRODUCTION_20261106.md). |
+
+Les [42 raccords V2.3](xeno-prime/RACCORDS_V23.md) complètent les attaques, interactions et le prélèvement ; [23 suites de poses](xeno-prime/SEQUENCES_RACCORDS.json) en documentent l’ordre de revue.
 
 ### Concordance avec Xeno Prime et la progression
 

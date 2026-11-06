@@ -1,8 +1,26 @@
-# Xeno Prime — 108 sprites et six fonds disponibles
+# Xeno Prime — 150 sprites et six fonds disponibles
 
-Mise à jour du **6 novembre 2026** : les **23 sprites manquants** du Berceau enfoui ont été générés individuellement à partir des références du projet. Le catalogue contient désormais **108 sprites transparents et six fonds opaques**, soit **114 PNG distincts**. Les 85 sprites et six fonds précédents sont conservés octet pour octet.
+Mise à jour **V2.3 du 6 novembre 2026** : **42 raccords visuels** complètent les 108 sprites déjà livrés. Le catalogue réunit **150 sprites et six fonds**, soit 156 PNG distincts. Le socle V2.2 est conservé à l’octet près.
 
-## Livraisons V2.2
+## Livraison V2.3
+
+| Archive | Octets | PNG |
+| --- | ---: | ---: |
+| `Xeno_Prime_V2_3_Ajouts_42_Raccords.zip` — téléchargement dans la conversation | 49446077 | 42 |
+| `Xeno_Prime_V2_3_150_Sprites_6_Fonds.zip` — téléchargement dans la conversation | 216561227 | 156 |
+
+```text
+8ea785712534ad17bc5b5c88f121e4ab22ed8565c716e50cc73d2b99cbf00de7  Xeno_Prime_V2_3_Ajouts_42_Raccords.zip
+9adc5c12550a46cc06bf4d7cdec7ccbd4d3da41fb3d8dc10aa87b405df041547  Xeno_Prime_V2_3_150_Sprites_6_Fonds.zip
+```
+
+Les résultats d’enregistrement sont indiqués pour chaque archive dans le JSON. Les ZIP sans lien persistant sont disponibles en téléchargement direct dans la conversation.
+
+Voir [RACCORDS_V23.md](RACCORDS_V23.md) et [RACCORDS_V23.json](RACCORDS_V23.json) pour les 42 nouveaux fichiers, références, corrections et limites de calage. Le pack complet inclut le lecteur de 23 suites de poses ; les séquences sont aussi décrites dans [SEQUENCES_RACCORDS.json](SEQUENCES_RACCORDS.json).
+
+Le total comprend 23 états de tête (huit historiques, A001–A008, A010 et A037–A042), quatre états du bulbe (063, 098, A009, A029), et les variantes de preuve A011/A012. Le bulbe et les preuves ne sont pas des poses de tête.
+
+## Historique de livraison V2.2
 
 | Archive téléchargeable | Octets | Contenu |
 | --- | ---: | --- |
@@ -18,11 +36,11 @@ Chaque ZIP contient un catalogue HTML, un inventaire et les empreintes des PNG. 
 
 Les deux ZIP V2.2 sont livrés par téléchargement direct dans la conversation du 6 novembre. Leur enregistrement durable a échoué pendant la préparation de l’envoi ; aucune URL persistante n’est inventée dans cette PR. Les PNG existent et leurs empreintes sont contrôlées ; la publication durable des deux archives reste à reprendre.
 
-**Statut : images sources disponibles et contrôlées techniquement.** Les PNG natifs du générateur sont copiés sans retouche, extraction, rééchantillonnage ni remplacement de l’alpha. La revue par l’assistant compare silhouette, matière, direction, marges et état demandé aux références ; `human_art_validation` et `runtime_integrated` restent `false`. Aucune certification canonique générale ni cycle animé ne découle de ce catalogue.
+**Statut : images sources disponibles et contrôlées techniquement.** Les 42 nouveaux PNG V2.3 sont copiés depuis les sorties natives du générateur sans retouche, extraction, rééchantillonnage ni remplacement de l’alpha. Les 114 PNG du socle V2.2 sont conservés tels qu’ils étaient livrés. La revue par l’assistant compare silhouette, matière, direction, marges et état demandé aux références ; `human_art_validation` et `runtime_integrated` restent `false`. Aucune certification canonique générale ni cycle animé ne découle de ce catalogue.
 
-Cette PR référence les archives et la production ; elle ne copie pas les binaires sous `public/`. Les chemins sont relatifs à la racine des archives. Les IDs **XENO-BE-001 à XENO-BE-108** et **XENO-BE-BG01 à XENO-BE-BG06** restent documentaires, sans nouveaux IDs moteur implicites.
+Cette PR référence les archives et la production ; elle ne copie pas les binaires sous `public/`. Les chemins sont relatifs à la racine des archives. Les IDs **XENO-BE-001 à XENO-BE-108** et **XENO-BE-BG01 à XENO-BE-BG06** restent documentaires, ainsi que l’extension **XENO-BE-A001 à XENO-BE-A042**, sans nouveaux IDs moteur implicites.
 
-## Familles et états
+## Familles du socle V2.2
 
 | Famille | Sprites |
 | --- | ---: |
@@ -40,11 +58,11 @@ Cette PR référence les archives et la production ; elle ne copie pas les binai
 | **Total sprites** | **108** |
 | Fonds opaques séparés | **6** |
 
-Les variantes appariées 030→036 et 034→035 utilisent la base générée comme référence ; de même 068→105, 070→106 et 069→107 pour les effets. Les capsules 056/057 sont fermées et passives. Les huit poses de tête sont **059, 060, 061, 062, 094, 095, 096 et 097**. **098 est le bulbe rompu**, un organe séparé, et non une neuvième tête.
+Les variantes appariées 030→036 et 034→035 utilisent la base générée comme référence ; de même 068→105, 070→106 et 069→107 pour les effets. Les capsules 056/057 sont fermées et passives. Les huit poses de tête du socle V2.2 sont **059, 060, 061, 062, 094, 095, 096 et 097**. **098 est le bulbe rompu**, un organe séparé, et non une neuvième tête.
 
 Les sprites ont des dimensions natives variables. Leurs pivots et attaches doivent être définis lors de l’import ; une fidélité visuelle de silhouette ne prouve pas une superposition pixel à pixel ou un raccord animé déjà validé. Les effets sont séparés des objets qui les émettent. Les valeurs RGB masquées par alpha zéro sont conservées : elles ne correspondent pas à un halo visible.
 
-## Inventaire des 114 PNG
+## Inventaire du socle V2.2 — 114 PNG inchangés
 
 Le contour `content_bbox_px` du [JSON](DONNEES_ASSETS.json) utilise alpha >16/255 pour le placement illustratif. Il ne définit pas une collision.
 

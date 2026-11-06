@@ -9,8 +9,8 @@
     "archive_id": "XENO-BE-ARCHIVE-85",
     "sha256": "2daf5f569fc7bedd5ceed08abf459954f22d6e38a6ab57e7863ec6eca3ad932d"
   },
-  "existing_sprite_count": 108,
-  "planned_sprite_count": 108,
+  "existing_sprite_count": 150,
+  "planned_sprite_count": 150,
   "pending_sprite_count": 0,
   "status": "23_demandes_initiales_produites_controlees_sans_integration_runtime",
   "runtime_integrated": false,
@@ -28,12 +28,12 @@
   "parallel_ready_ids": [],
   "dependent_ids": [],
   "instructions": [
-    "Les 23 demandes initiales ont désormais leur PNG réel, contrôlé et identifié par son SHA-256 ; le catalogue contient 108 sprites et six fonds.",
+    "Les 23 demandes initiales et les 42 raccords V2.3 ont leur PNG réel ; le catalogue contient 150 sprites et six fonds.",
     "Conserver les 85 sprites antérieurs et les nouveaux PNG natifs, sans copies renommées comptées comme nouvelle production.",
     "Le plan, les prompts et les consignes de génération d’origine restent conservés dans les champs historiques ; ils ne décrivent pas des images encore absentes.",
     "Les variantes sont disponibles séparément. Les compositions V2.1 gardent leurs placements et omissions historiques jusqu’à une révision explicite.",
     "Intégrer ensuite pivots, échelles, attaches, animations, collisions, VFX, sauvegardes et QA de jeu. La validation artistique humaine reste distincte.",
-    "Les ZIP sont proposés au téléchargement dans la conversation ; leur enregistrement durable a échoué à la préparation et reste à reprendre sans inventer une URL persistante."
+    "Le statut et les liens réels de chaque archive sont conservés dans DONNEES_ASSETS.json ; ne pas inventer de lien persistant."
   ],
   "source_conflicts": [
     {
@@ -1391,5 +1391,16 @@
     "Vérifier la véritable composition RGBA sur gris avant toute correction de halo: certaines prévisualisations montrent les couleurs cachées sous alpha zéro.",
     "Enregistrer chaque rendu dans source_filename, puis actualiser les métadonnées, le manifeste, les scènes, le catalogue et les archives avec le pipeline récupéré.",
     "Ne pas utiliser de planche de sprites découpée, de captures de tableaux, de PNG factices ni de copies renommées comme nouveaux sprites."
-  ]
+  ],
+  "catalogue_v22_counts": {
+    "existing_sprite_count": 108,
+    "planned_sprite_count": 108,
+    "completed_initial_requests": 23
+  },
+  "raccords_v23": {
+    "manifest": "RACCORDS_V23.json",
+    "completed_sprite_count": 42,
+    "pending_sprite_count": 0,
+    "runtime_integrated": false
+  }
 }

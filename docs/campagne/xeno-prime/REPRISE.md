@@ -1,5 +1,7 @@
 # Xeno Prime — suivi des 23 demandes complétées
 
+**Suite V2.3 :** les 42 raccords A001–A042 sont également produits. Le catalogue atteint **150 sprites + 6 fonds** ; voir [RACCORDS_V23.md](RACCORDS_V23.md). Le tableau des 23 demandes ci-dessous conserve l’historique de complétion V2.2.
+
 **Les 23 demandes d’images ouvertes au 5 novembre sont produites le 6 novembre 2026.** Le catalogue atteint **108/108 sprites et six fonds** ; aucune de ces 23 demandes ne reste `non_produit`. Les PNG indépendants, prompts et mesures figurent dans les [archives](ASSETS.md), le [catalogue](DONNEES_ASSETS.json) et le [suivi structuré](REPRISE_ASSETS.json).
 
 Les ZIP V2.2 sont joints à la conversation ; leur publication durable reste ouverte après échec de préparation de l’enregistrement. Cet état de livraison reste distinct de la production effective des 23 PNG.
@@ -40,7 +42,7 @@ La demande 028 garde BG01 comme référence principale de matière/palette, conf
 
 - Placer les nouvelles ressources dans les compositions et dans le vrai moteur, avec pivots, échelles, attaches, profondeur et collisions adaptés.
 - Raccorder les variantes de passage, drainage et rupture aux événements et aux sauvegardes ; les 25 images V2.1 gardent pour l’instant leur état historique.
-- Produire les transitions et cycles animés, définir les durées et émissions des VFX, réaliser les SFX et qualifier le rendu à l’échelle du jeu.
+- Assembler les poses de raccord V2.3 en cycles animés, caler les attaches et définir les durées et émissions des VFX, réaliser les SFX et qualifier le rendu à l’échelle du jeu.
 - Exécuter les **28 contrôles XBE-Q01 à XBE-Q28** de [INTEGRATION_ET_QA.md](INTEGRATION_ET_QA.md), puis effectuer la revue artistique humaine prévue par le projet.
 
 Les images disponibles ne valent pas validation d’animation, de comportement ou de fidélité canonique générale. Le contrôle technique et la comparaison visuelle par l’assistant sont consignés séparément dans [PRODUCTION_20261106.md](PRODUCTION_20261106.md).

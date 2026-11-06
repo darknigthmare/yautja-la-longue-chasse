@@ -1,6 +1,6 @@
 # Xeno Prime — Le Berceau enfoui
 
-Complément de la [bible de campagne](../README.md), intégré le **5 novembre 2026** à partir du pack d’illustrations V2.1, puis complété le **6 novembre 2026** avec les 23 sprites restants (V2.2). Ce document détaille un secteur de Xeno Prime pour **Yautja : La Longue Chasse**. Il conserve les missions et les autres annexes de la bible.
+Complément de la [bible de campagne](../README.md), intégré le **5 novembre 2026** à partir du pack d’illustrations V2.1, puis complété le **6 novembre 2026** avec les 23 sprites restants (V2.2) puis 42 raccords visuels (V2.3). Ce document détaille un secteur de Xeno Prime pour **Yautja : La Longue Chasse**. Il conserve les missions et les autres annexes de la bible.
 
 ## 1. Place dans la campagne et statut
 
@@ -22,8 +22,9 @@ La victoire, l’extraction de la crête et le retour sont distincts. `queen.fir
 
 | Document | Rôle |
 | --- | --- |
-| [ASSETS.md](ASSETS.md) | Inventaire des 108 sprites et six fonds, poses du boss, archives V2.2 et limites de production. |
+| [ASSETS.md](ASSETS.md) | Inventaire des 150 sprites et six fonds, poses du boss, archives V2.3 et limites de production. |
 | [DONNEES_ASSETS.json](DONNEES_ASSETS.json) | Données vérifiables des fichiers réellement produits, dimensions, alpha et empreintes. |
+| [RACCORDS_V23.md](RACCORDS_V23.md) · [séquences](SEQUENCES_RACCORDS.json) | 42 nouveaux raccords et parties séparées, 23 suites de poses, contrôles et calage restant. |
 | [REPRISE.md](REPRISE.md) · [REPRISE_ASSETS.json](REPRISE_ASSETS.json) | Suivi des 23 sprites désormais produits, prompts, références et dépendances historiques. |
 | [SCENES_ILLUSTREES.json](SCENES_ILLUSTREES.json) | Douze compositions, 312 placements et variantes illustrées avant/après. |
 | [COMPOSITION_SOUFFLE.json](COMPOSITION_SOUFFLE.json) | Placement de la tête 096 et du jet 103 dans l’illustration d’attaque. |
@@ -48,7 +49,7 @@ Les tableaux portent les identifiants locaux **`XENO-BE-T01` à `XENO-BE-T12`**.
 
 Le classeur V6 conserve ses zones globales `XP-Z01` à `XP-Z12`. **`XP-Z09`, Tête de reine géante au sol, reste un vestige inerte et contournable qui ne valide jamais la première reine** (`Xeno Prime!A14:L14`). **`XENO-BE-T09` est la pouponnière locale**, sans identité commune avec XP-Z09. La reine active de `XP-Z12` (`Xeno Prime!A17:L17`) est développée ici comme Matriarche enracinée, vivante jusqu’au combat local T12. Les numéros ne servent jamais de table de correspondance implicite.
 
-Les références de sprites utilisent l’espace `XENO-BE-001` à `XENO-BE-108`, avec conservation du numéro et du nom de fichier du pack. Les fonds utilisent `XENO-BE-BG01` à `XENO-BE-BG06`. Ainsi, le sprite Xeno 097 ne se confond pas avec un ID 097 du Warp ou d’un autre lot.
+Les références de sprites utilisent l’espace `XENO-BE-001` à `XENO-BE-108`, avec conservation du numéro et du nom de fichier du pack. L’extension V2.3 utilise **XENO-BE-A001 à XENO-BE-A042**, sans renumérotation du socle. Les fonds utilisent `XENO-BE-BG01` à `XENO-BE-BG06`. Ainsi, le sprite Xeno 097 ne se confond pas avec un ID 097 du Warp ou d’un autre lot.
 
 L’entrée locale T01 est le rebord fongique du grand bassin enfoui, atteint depuis l’antichambre XP-Z11. Les calices et la canopée des premiers tableaux poussent dans cette dépression ouverte et ses failles ; la descente mène aux tissus internes du même bassin. Ce raccord conserve la progression depuis l’antichambre : T01 ne ramène pas au point d’atterrissage global XP-Z01 et ne recommence pas la traversée de la planète.
 
@@ -71,7 +72,7 @@ Les usages, dangers et objectifs ci-dessous constituent la conception à intégr
 | T09 | **La Pouponnière de dérivation** : détour facultatif | Drainer le réservoir pour réduire une nuisance locale et obtenir une fenêtre de traversée. Le trajet principal reste possible sans ce détour. | Réservoir vidé, œufs ouverts et coques vides disponibles. Les vannes 030/036 sont disponibles et restent à placer. **Aucune tête entière de reine ici ; le vestige global XP-Z09 reste ailleurs.** |
 | T10 | **Le Nœud des racines** : convergence des ancrages | Reconnaître les attaches motrices déjà rencontrées ; libérer un accès et préparer le dernier passage. | Constricteur sectionné et tentacule affaissé disponibles. Le rendu historique garde le bouchon intact ; la variante brisée 079 est disponible séparément. |
 | T11 | **La Lèvre silencieuse** : dernière balise, pause et lecture du bassin | Contraste sonore, observation de la sortie et préparation de l’arène ; aucune apparition anticipée de la tête complète. | Vue avant/après identique : aucune transformation locale n’est fabriquée pour gonfler le contenu. |
-| T12 | **Le Bassin de la Matriarche** : révélation et boss | Tête géante au sol, couronne entière, ancrages et tentacules ; corridor de combat à gauche et corniche basse. | Huit poses de tête disponibles, dont agonie 097, plus bulbe rompu 098 séparé ; état après victoire et souffle illustrés en V2.1. |
+| T12 | **Le Bassin de la Matriarche** : révélation et boss | Tête géante au sol, couronne entière, ancrages et tentacules ; corridor de combat à gauche et corniche basse. | Vingt-trois états de tête disponibles, dont huit historiques et quinze nouveaux ; quatre états du bulbe séparé ; état après victoire et souffle illustrés en V2.1. |
 
 ### Parcours et raccords
 
@@ -107,12 +108,14 @@ Les seuils de PV, durées, dégâts, coûts et résistances restent des paramèt
 
 | Action | Lecture avant danger | Poses / effets utilisables | Travail restant |
 | --- | --- | --- | --- |
-| Balayage bas | Appendice armé, tension du tissu et départ sonore localisé | 089, 038, 043 | Cycle continu, trajectoire, temps d’esquive et retour. |
-| Perforation du sol | Point d’émergence annoncé avant l’impact | 039, 040, 090 | Marque au sol et animation des PNG 070/071 désormais disponibles ; aucune collision invisible. |
-| Capture | Anse ouverte qui se referme, laissant un trajet de sortie | 041, 091 | Saisie, libération, limites avec compagnons et interruption. |
-| Fouet diagonal | Armement en hauteur puis retrait visible | 045, 092 | Ordre de profondeur, espace sûr et raccords des segments. |
-| Morsure | Gueule ouverte et avancée limitée à son ancrage | 059, 094, 095 | Portée, recul et contact ; aucune translation arbitraire du berceau. |
-| Souffle acide | Préparation lisible, puis jet lié à la bouche | 060, 096, 103 ; flaque 065 et globule 066 | Animation et collisions du jet ; raccord des PNG 104, 105 et 108 désormais disponibles. |
+| Balayage bas | Appendice armé, tension du tissu et départ sonore localisé | 089, A013, 038, A014 | Trajectoire, temps d’esquive et cycle en jeu à réaliser. |
+| Perforation du sol | Point d’émergence annoncé avant l’impact | 039, A015, 090, A016 ; pose plantée 040 ; sol A034, A033, 070, 071 | Caler l’attache et la chronologie avertissement/impact/retrait ; aucune collision invisible. |
+| Capture | Anse ouverte qui se referme, laissant un trajet de sortie | 041, A017, 091, A018 | Saisie, libération, compagnons et interruption à réaliser. |
+| Fouet diagonal | Armement en hauteur puis retrait visible | 092, A019, A020, 045 | Profondeur, espace sûr, attaches et cycle en jeu à caler. |
+| Morsure | Gueule ouverte et avancée limitée à son ancrage | 059, A002, 094, A003, 095, A004 | Portée, recul et contact ; aucune translation arbitraire du berceau. |
+| Souffle acide | Préparation lisible, puis jet lié à la bouche | Tête 059, A005, A037, A038, A006 ; jet A030, 103, A031 ; flaque 065 et globule 066 | Animation, raccord bouche/jet et collisions ; contact A032/104, vapeur 105 et résidus 108 disponibles. |
+
+Les parties A021/A022 reprennent la souche et le segment détaché du tentacule sectionné 042. Elles se composent simultanément ; elles ne forment pas deux poses successives du fouet. Le pont inerte 043 est un état de décor après neutralisation, sans rôle de retour vivant dans le balayage. Les anciennes têtes 060/096 restent disponibles pour les compositions historiques ; A037/A038 assurent le cadre commun de la nouvelle suite de souffle.
 
 La version illustrée dirige la gueule et le jet vers la gauche. Le jet 103 doit suivre l’ancre de bouche de la pose active, y compris après changement d’échelle ou miroir complet de la scène. Son pivot ne doit pas être recalé à l’écran indépendamment de la tête. [COMPOSITION_SOUFFLE.json](COMPOSITION_SOUFFLE.json) conserve la démonstration exacte : elle ne fournit pas des ancres universelles pour toutes les poses.
 
@@ -133,4 +136,4 @@ Une défaite sans crête permet de conserver les observations prévues par M026,
 - **Queen Hunt :** cette première preuve peut alimenter la progression ultérieure selon la politique de comptage définie pour ce mode. Ne pas ajouter implicitement une ruche supplémentaire à chaque rechargement, sortie d’arène ou exposition du trophée.
 - **Codex et audio :** découvrir les lieux et la Matriarche au fil du parcours. Le catalogue de production contient les spoilers, le codex joueur ne doit pas tous les afficher à l’arrivée. Réutiliser les intentions MUS-41 pour l’approche, MUS-42 pour le combat et MUS-07 pour la présentation de la crête ; aucun fichier audio de ces morceaux n’est livré dans ce pack.
 
-Les 108 sprites sont des illustrations fixes et poses clés, et les six fonds des images opaques. Les animations, collisions, comportements, transitions, sauvegardes, SFX et qualification en jeu suivent le [plan d’intégration](INTEGRATION_ET_QA.md). Leur état ne passe pas à « terminé » par l’ajout de cette annexe.
+Les 150 sprites sont des illustrations fixes, poses clés et parties séparées, et les six fonds des images opaques. Les animations, collisions, comportements, transitions, sauvegardes, SFX et qualification en jeu suivent le [plan d’intégration](INTEGRATION_ET_QA.md). Leur état ne passe pas à « terminé » par l’ajout de cette annexe.
