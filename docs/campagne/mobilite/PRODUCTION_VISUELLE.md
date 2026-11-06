@@ -1,5 +1,7 @@
 # Production visuelle et sonore — 50 dossiers, aucun asset final livré
 
+> **État du 6 novembre 2026 :** [50 PNG individuels de concepts sont maintenant versionnés](SPRITES_INDIVIDUELS_V0_1.md), au commit `2a754661183321abd4e642936e9d6a5cf6b84ed0`. Ils sont **extraits de la planche existante**, à leur petite résolution native : ni 50 nouvelles générations HD, ni des modèles certifiés 1:1. Le rapport et le manifeste conservent les défauts Kenner/Badlands, d'anatomie et de cadrage. Les objectifs de production ci-dessous restent ouverts. [Contrôle et import réussis](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/42188513162) : 50 empreintes RGBA concordantes, 50 PNG distincts, alpha utile et second passage idempotent. Aucun runtime modifié.
+
 Les 50 briefs individuels sont les champs `art_brief`, `silhouette`, `dimensions`, `abilities` et `unique_animations` du catalogue. Les animations communes et comptes de frames proposés sont conservés intégralement dans [metadata.json](catalogue/metadata.json). Le script d'export restitue **un prompt nommé par identifiant** ; il ne génère ni image ni audio.
 
 ## Instruction commune à chaque prompt
