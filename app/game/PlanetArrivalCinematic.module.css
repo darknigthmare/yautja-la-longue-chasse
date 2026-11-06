@@ -154,6 +154,8 @@
   .missionName { font-size: 10px; }
   .shipIdentity { max-width: 34%; }
   .shipIdentity strong { font-size: 9px; line-height: 1.45; }
+  /* Reserve the two native status lines so optical phase changes do not move the scene. */
+  .shipIdentity .cloakStatus { min-height: 2.8em; }
   .scene { min-height: 236px; aspect-ratio: 4 / 3; }
   .overlay { padding: 10px; }
   .overlayPanel { padding: 12px; }
