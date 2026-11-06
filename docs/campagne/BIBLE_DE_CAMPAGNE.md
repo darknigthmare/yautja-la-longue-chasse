@@ -944,6 +944,35 @@ Les multiplicateurs se cumulent (mêlée sans être repéré : × 1,875). Repèr
 
 Un chien blessé se soigne au Chenil des Pisteurs (CITY-28). Il suit la règle de mort définitive des compagnons. Une mise à mort faite par le chien compte comme faite par le joueur pour le code d'honneur *(proposé)*.
 
+### Montures
+
+**Décision :** les 16 montures du classeur V6 (MOUNT-01 → 16, liées aux régions) servent à traverser le monde natal et les sentiers de frontière ; certaines planètes de chasse ont leur monture locale à apprivoiser ; les montures servent aussi au combat.
+
+- **Traversée :** lien de 0 à 100 avec les seuils du V6 (25 déplacement en main, 50 monté, 75 charge, 100 manœuvre propre au terrain).
+- **Planètes *(proposé)* :** une monture locale par planète de chasse qui s'y prête, apprivoisée sur place ; elle ne quitte pas sa planète sans habitat adapté au navire (règle V6 : « les visites à d'autres biomes demandent un habitat adapté »).
+- **Combat *(proposé)* :** au seuil 75 (charge), charge montée en chasse ; dans l'arc de guerre, unités montées en escarmouche et en phase RTS.
+
+### Trophées : usages
+
+**Décision :** un trophée a les quatre usages, dans le cadre des règles du V6 (un original unique à un seul emplacement, provenance complète, 12 familles TR-F01 → F12, 16 postes d'atelier).
+
+- **Prestige :** exposé à la maison, à la base ou au navire, il monte le respect de la communauté (0 à 100, règle HOME-R02).
+- **Porté :** sur l'armure, bonus et réaction des proies (décidé dans *Équipement et IA*).
+- **Échange :** cédé à un autre clan contre une faveur ou des matériaux ; l'original quitte alors la collection du joueur.
+- **Révélation :** étudié à l'atelier (onglet V6 « Révélations des objets »), il ouvre une piste : quête, époque du Warp ou lieu caché.
+
+*(proposé)* Un même trophée ne fait qu'un usage à la fois : exposé ou porté ; une fois échangé, il ne peut plus être étudié.
+
+### Ancrage du joueur et planète réserve
+
+**Décision :** l'Ancrage du joueur (V6 SPACE-BASE-10, base à aménager) s'obtient à Elite : salle des trophées, atelier, chenil, quai. Il devient ensuite le port d'attache du navire de clan. Plus tard, le joueur acquiert sa propre planète réserve, reliée à l'Ancrage : c'est la réserve de fin de jeu déjà décidée (modèle de la planète-réserve des Super Predators, *Predators*, 2010).
+
+*(proposé)* Acquisition de la planète : à Clan Leader, par une mission de prise de possession (nettoyer une planète découverte, puis y poser les balises de réserve). Le joueur y lâche les proies capturées en chasse ; elle alimente les arènes de Warlord et peut être attaquée par des intrus (humains, Bad Bloods, clans rivaux).
+
+### Résidence
+
+**Décision :** le joueur a sa première maison à Blooded, dans la communauté de son clan d'origine ; il peut déménager ensuite selon les règles du V6 (une seule résidence active parmi les 20, objets transportés par le joueur, droit d'aménager au deuxième seuil de respect). Avant Blooded, il vit au camp du pack (L-01).
+
 ### Arc de guerre des clans *(missions proposées)*
 
 **Décision :** le conflit commence par un terrain de chasse disputé (canon : plusieurs clans se disputent les meilleurs sites, *Aliens vs. Predator: War*), et son déclencheur dépend de la voie de clan.
