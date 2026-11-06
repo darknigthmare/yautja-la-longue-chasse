@@ -1,0 +1,386 @@
+{
+  "schemaVersion": 1,
+  "observedAt": "2026-11-06 15:52:20 UTC",
+  "sourceCommit": "e9287626acb0cc29d250c9cb6d87b36d833f0591",
+  "sourceTree": "a8990ee142223c2f2fb9923f508308eec110bb0d",
+  "mergeCheckout": {
+    "commit": "80836ca389492d67eb4db66ad7660710b06ca253",
+    "tree": "a8990ee142223c2f2fb9923f508308eec110bb0d",
+    "verifiedWith": "GitHub Git Commit API"
+  },
+  "scope": "Second remote CI candidate. This dated review includes failures and jobs still running; it does not qualify any later source commit.",
+  "checks": [
+    {
+      "name": "V124 live PNG and ZIP verification",
+      "jobId": 127984782371,
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/42244348903/job/127984782371"
+    },
+    {
+      "name": "Application audit (application)",
+      "jobId": 127983352593,
+      "status": "in_progress",
+      "conclusion": null,
+      "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/42244348766/job/127983352593"
+    },
+    {
+      "name": "Targeted V94 regressions (not full game QA)",
+      "jobId": 127983352447,
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/42244348766/job/127983352447"
+    },
+    {
+      "name": "Application audit (history)",
+      "jobId": 127983352298,
+      "status": "in_progress",
+      "conclusion": null,
+      "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/42244348766/job/127983352298"
+    },
+    {
+      "name": "Application audit (models)",
+      "jobId": 127983351778,
+      "status": "in_progress",
+      "conclusion": null,
+      "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/42244348766/job/127983351778"
+    },
+    {
+      "name": "CodeRabbit",
+      "jobId": 127982662279,
+      "status": "completed",
+      "conclusion": "skipped",
+      "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/runs/127982662279"
+    },
+    {
+      "name": "gameplay-cloud",
+      "jobId": 127982536317,
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/42244349019/job/127982536317"
+    },
+    {
+      "name": "travel",
+      "jobId": 127982535331,
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/42244348843/job/127982535331"
+    },
+    {
+      "name": "Mounted hunting controls, guide, lifecycle and durable workshop",
+      "jobId": 127982534209,
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/42244349045/job/127982534209"
+    },
+    {
+      "name": "Native rules, types, CPU and reproducible workbook",
+      "jobId": 127982533573,
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/42244349045/job/127982533573"
+    },
+    {
+      "name": "castle-arrival",
+      "jobId": 127982532936,
+      "status": "completed",
+      "conclusion": "failure",
+      "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/42244348664/job/127982532936"
+    },
+    {
+      "name": "domain",
+      "jobId": 127982532847,
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/42244348903/job/127982532847"
+    },
+    {
+      "name": "ship-training",
+      "jobId": 127982532795,
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/42244349089/job/127982532795"
+    },
+    {
+      "name": "docking",
+      "jobId": 127982532518,
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/42244349068/job/127982532518"
+    },
+    {
+      "name": "V113/V114 source cells, native candidate pins and historical preservation",
+      "jobId": 127982532484,
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/42244349050/job/127982532484"
+    },
+    {
+      "name": "Full application TypeScript (planet PR)",
+      "jobId": 127982532396,
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/42244348903/job/127982532396"
+    },
+    {
+      "name": "persistence",
+      "jobId": 127982531872,
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/42244348789/job/127982531872"
+    },
+    {
+      "name": "Full repository typecheck and production frontend build",
+      "jobId": 127982531787,
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/42244348979/job/127982531787"
+    },
+    {
+      "name": "pod-systems",
+      "jobId": 127982531774,
+      "status": "in_progress",
+      "conclusion": null,
+      "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/42244348994/job/127982531774"
+    },
+    {
+      "name": "verify-committed-pack",
+      "jobId": 127982531279,
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/42244348892/job/127982531279"
+    },
+    {
+      "name": "V113 PNG integrity, registration and cosmetic surfaces",
+      "jobId": 127982531146,
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/42244348836/job/127982531146"
+    },
+    {
+      "name": "integration",
+      "jobId": 127982531127,
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/42244348684/job/127982531127"
+    },
+    {
+      "name": "integrity",
+      "jobId": 127982530937,
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/42244348817/job/127982530937"
+    },
+    {
+      "name": "TypeScript and lint on the complete game source",
+      "jobId": 127982530617,
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/42244348817/job/127982530617"
+    },
+    {
+      "name": "spatial",
+      "jobId": 127982530051,
+      "status": "completed",
+      "conclusion": "failure",
+      "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/42244348755/job/127982530051"
+    },
+    {
+      "name": "interior",
+      "jobId": 127982529952,
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/42244348710/job/127982529952"
+    },
+    {
+      "name": "ship-motion",
+      "jobId": 127982529795,
+      "status": "in_progress",
+      "conclusion": null,
+      "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/42244348628/job/127982529795"
+    },
+    {
+      "name": "Single live atlas, preference fallback and projector typecheck",
+      "jobId": 127982529392,
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/42244348622/job/127982529392"
+    },
+    {
+      "name": "Vercel Preview Comments",
+      "jobId": 127982488124,
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/runs/127982488124"
+    }
+  ],
+  "native": {
+    "wolf": {
+      "runId": 42244348664,
+      "jobId": 127982532936,
+      "passed": false,
+      "completedChecks": 21,
+      "failure": {"message":"locator.getAttribute: Timeout 20000ms exceeded.\nCall log:\n  - waiting for locator('details.ship-level-accessibility')\n\n    at openDeparture (/home/runner/work/yautja-la-longue-chasse/yautja-la-longue-chasse/scripts/qa-wolf-arrival-browser.mjs:333:31)\n    at async launchMission (/home/runner/work/yautja-la-longue-chasse/yautja-la-longue-chasse/scripts/qa-wolf-arrival-browser.mjs:337:5)\n    at async file:///home/runner/work/yautja-la-longue-chasse/yautja-la-longue-chasse/scripts/qa-wolf-arrival-browser.mjs:747:5\n    at async check (/home/runner/work/yautja-la-longue-chasse/yautja-la-longue-chasse/scripts/qa-wolf-arrival-browser.mjs:48:11)\n    at async file:///home/runner/work/yautja-la-longue-chasse/yautja-la-longue-chasse/scripts/qa-wolf-arrival-browser.mjs:746:3"},
+      "rosterScreenshotsProduced": false,
+      "correction": "Use the actual 2.5D ship shortcuts disclosure and departure button. Keep all campaign and storage assertions."
+    },
+    "spatial": {
+      "runId": 42244348755,
+      "jobId": 127982530051,
+      "passed": false,
+      "failure": {
+        "check": "desktop: ship-triad real flight, contact and complete disembarkation",
+        "message": "Every final trio PNG crossed completion; all attempts remain rejected and no final visual proof is available."
+      },
+      "errors": [],
+      "consoleErrors": [],
+      "missingAssets": [],
+      "artifact": {
+        "sha256": "97f453d9e82e053db239a6c58c234c54884e0da2d3c0ade15102dbe92ecf483c",
+        "bytes": 33718307,
+        "locallyDownloadedAndHashVerified": true
+      },
+      "finalAttempts": [
+        {
+          "label": "desktop-pod-triad-egress-final-detail",
+          "attempt": 1,
+          "accepted": false,
+          "beforeMs": 61766.20000000001,
+          "afterMs": 62000,
+          "nodeStageMs": {
+            "beforeObservationRpc": 5620.503347999998,
+            "nativeX11CaptureRpc": 173.10336199999438,
+            "afterObservationRpc": 27.83998299999803,
+            "validationAndClip": 4.048992999989423,
+            "completeGeometryRpc": 61.18398299999535,
+            "pngMaterialization": 0.004788999998709187,
+            "nativeRawExportAndPng": 238.38722800000687,
+            "losslessDetailPostprocessing": 47.98581299999205,
+            "pngWrite": 1.369403999997303,
+            "assertionsAndReport": 1.6025190000073053
+          }
+        },
+        {
+          "label": "desktop-pod-triad-egress-final-detail",
+          "attempt": 2,
+          "accepted": true,
+          "beforeMs": 61766.70000000004,
+          "afterMs": 61999.900000000045,
+          "nodeStageMs": {
+            "beforeObservationRpc": 5600.212192000006,
+            "nativeX11CaptureRpc": 180.45608899999934,
+            "afterObservationRpc": 25.85792599999695,
+            "validationAndClip": 3.318450999999186,
+            "completeGeometryRpc": 79.49181599999429,
+            "pngMaterialization": 0.00392699999792967,
+            "nativeRawExportAndPng": 260.0834749999922,
+            "losslessDetailPostprocessing": 23.536284000001615,
+            "pngWrite": 0.41086899999936577,
+            "assertionsAndReport": 0.6422779999993509
+          }
+        },
+        {
+          "label": "desktop-ship-triad-egress-final-detail",
+          "attempt": 1,
+          "accepted": false,
+          "beforeMs": 61782.79999999976,
+          "afterMs": 62000,
+          "nodeStageMs": {
+            "beforeObservationRpc": 4702.083086999992,
+            "nativeX11CaptureRpc": 182.9026989999984,
+            "afterObservationRpc": 48.43538899999112,
+            "validationAndClip": 0.46797299999161623,
+            "completeGeometryRpc": 80.9013060000143,
+            "pngMaterialization": 0.0044590000179596245,
+            "nativeRawExportAndPng": 245.02224700001534,
+            "losslessDetailPostprocessing": 22.884779999993043,
+            "pngWrite": 0.3311380000086501,
+            "assertionsAndReport": 1.1758629999822006
+          }
+        },
+        {
+          "label": "desktop-ship-triad-egress-final-detail",
+          "attempt": 2,
+          "accepted": false,
+          "beforeMs": 61799.4999999998,
+          "afterMs": 62000,
+          "nodeStageMs": {
+            "beforeObservationRpc": 4679.961377,
+            "nativeX11CaptureRpc": 179.26676100000623,
+            "afterObservationRpc": 36.7073720000044,
+            "validationAndClip": 0.35603399999672547,
+            "completeGeometryRpc": 75.0828019999899,
+            "pngMaterialization": 0.004688999993959442,
+            "nativeRawExportAndPng": 245.1052320000017,
+            "losslessDetailPostprocessing": 22.846799000020837,
+            "pngWrite": 0.33030699999653734,
+            "assertionsAndReport": 0.8092499999911524
+          }
+        },
+        {
+          "label": "desktop-ship-triad-egress-final-detail",
+          "attempt": 3,
+          "accepted": false,
+          "beforeMs": 61782.99999999979,
+          "afterMs": 62000,
+          "nodeStageMs": {
+            "beforeObservationRpc": 4639.934985,
+            "nativeX11CaptureRpc": 191.9935889999906,
+            "afterObservationRpc": 35.52283899998292,
+            "validationAndClip": 0.3258479999785777,
+            "completeGeometryRpc": 77.04575900000054,
+            "pngMaterialization": 0.0068829999945592135,
+            "nativeRawExportAndPng": 244.38595300001907,
+            "losslessDetailPostprocessing": 22.64394299997366,
+            "pngWrite": 0.3584689999988768,
+            "assertionsAndReport": 0.7535860000061803
+          }
+        }
+      ],
+      "visualReview": "The rejected ship-triad full native frame shows all three hunters standing at 61/62 seconds. It remains rejected because the after-observation reached 62,000 ms."
+    },
+    "interior": {
+      "runId": 42244348710,
+      "passed": true,
+      "unitTests": 14,
+      "nativeChecks": 17,
+      "artifactId": 13517704175,
+      "sha256": "a5ee04aba9d1c2e10740a07a1e10084113af68f45284b4148aa35387e722f448"
+    },
+    "developerTravel": {
+      "runId": 42244348843,
+      "passed": true,
+      "unitTests": 75,
+      "nativeChecks": 20,
+      "storageChecks": 54,
+      "artifactId": 13518021304,
+      "sha256": "2177664a4c2deaa104b2b43702af96e407d9c4c01de978dde573a61c1962f737",
+      "scope": "Eight destinations and four variants. Natural completion and Skip each deliver one HuntCanvas; isolated sessions do not write campaign storage."
+    },
+    "clanShip": {
+      "runId": 42244349068,
+      "passed": true,
+      "nativeNavigationChecks": 22,
+      "nativeOperationsChecks": 27,
+      "artifactId": 13519095312,
+      "sha256": "fffd9a6ed71c697cb62ab0524fac0c70014ff9eab4ecec8cd95c1aadd37c4a69",
+      "bytes": 23466911,
+      "locallyDownloadedAndHashVerified": true,
+      "inspectedScreenshots": [
+        "qa-clan-ship/interior-conseil-desktop.png",
+        "qa-clan-ship-operations/15-tactical-controls-mobile-320.png"
+      ],
+      "scope": "The first campaign earns four recruits and eight receipts. Six-crew operational coverage uses the declared seeded fixture."
+    }
+  },
+  "reactReview": {
+    "skill": "Vercel React Best Practices",
+    "scope": [
+      "app/game/GameClient.tsx companion callbacks",
+      "app/game/InsertionPlanPanel.tsx recruitment/assignment/reserve controls",
+      "app/game/HuntCanvas.tsx current AI brain handoff"
+    ],
+    "result": "No additional blocker found in changed behavior. Hooks read current save state, guard stale hulls and active sessions, and show success only after the existing durable writer confirms persistence. Actions retain native buttons, disabled states and explicit labels. No dependency or server boundary change."
+  },
+  "humanArtValidation": false
+}

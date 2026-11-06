@@ -556,3 +556,38 @@ conserve les journaux et les empreintes. Ces sous-suites recouvrent en partie le
 comme des tests uniques. Le premier relevé de lint global reste daté de cette
 première passe. Les résultats natifs définitifs doivent être lus sur la dernière
 tête de la PR, et non déduits des seuls succès partiels précédents.
+
+### Deuxième passe native et correction de son instrumentation
+
+La tête `e9287626acb0cc29d250c9cb6d87b36d833f0591` a confirmé les corrections
+d'historique, de lint et d'assets. L'intérieur personnel passe 17 contrôles
+natifs, les voyages isolés 20, le vaisseau de clan 22 contrôles de navigation
+et 27 d'opérations. Les huit destinations de développement livrent chacune un
+seul `HuntCanvas`, aussi bien par Skip qu'à la fin naturelle de l'arrivée.
+Ces nombres décrivent des suites distinctes et ne constituent pas un total
+unique de fonctionnalités ou de tests.
+
+Le [reçu daté de cette passe](../../../production/qa/evidence/pr-114-117-integration-20261106/native-review-e9287626.json)
+conserve aussi ses deux échecs :
+
+- Wolf a franchi ses 472 tests et 21 contrôles du château, puis sa recette a
+  attendu un ancien sélecteur du pont. Le départ utilise désormais le disclosure
+  réel de l'intérieur 2,5D et son bouton accessible. Les vérifications du
+  recrutement en réserve, de l'affectation, de l'énergie et des reprises restent
+  présentes ; les futures captures 28/29 figurent aussi dans le résumé CI.
+- La capture finale du trio en pod est passée au deuxième essai, mais les trois
+  photographies du trio en vaisseau sont restées rejetées : la lecture après
+  copie atteignait 62 000 ms. La fonction d'observation inchangée est maintenant
+  compilée sur la session CDP avant la fenêtre, puis appelée directement avant
+  et après la copie. Cela retire une couche de sérialisation du test. La scène,
+  son horloge, ses pixels, la fenêtre valide et le nombre d'essais restent les
+  mêmes. Une vérification supplémentaire compare les deux transports sur le
+  vrai document déjà en pause pendant les préflights.
+
+Les six tests locaux de protocole passent, dont cinq sur la parité des champs,
+les quatre marqueurs, l'attente du dernier membre et les erreurs. Ils ne
+constituent pas une exécution native. Les 496 assertions antérieures de la
+recette spatiale sont conservées. Le correctif demande une nouvelle passe
+Actions sur la tête publiée avant fusion ; les captures rejetées conservent
+leur statut. La revue React des callbacks et des nouveaux boutons n'a trouvé
+aucun autre blocage dans ces changements.

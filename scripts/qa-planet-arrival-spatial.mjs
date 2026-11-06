@@ -1240,8 +1240,7 @@ function assertCaptureLayout(moment, expected, viewport, label) {
   assert.equal(moment.captureViewport.visualViewport.pageTop, 0);
 }
 
-async function readMoment(target, region, schedule, paint) {
-  return target.evaluate(({ region, schedule, paint }) => {
+function observeMoment({ region, schedule, paint }) {
     const evaluationStartedAtMs = performance.now();
     const nativeCapture = region === 'formation-detail' || region === 'optical-full-viewport';
     const threshold = schedule?.atMs;
@@ -1380,7 +1379,50 @@ async function readMoment(target, region, schedule, paint) {
         attributeFilter: ['data-arrival-elapsed-exact', 'data-arrival-elapsed', 'data-arrival-status', 'data-arrival-hunter-stage', 'data-arrival-hunter-contact'] });
       inspect();
     });
-  }, { region, schedule, paint });
+}
+
+function cdpObservationError(details) {
+  const exception = details.exception;
+  const name = exception?.className ?? 'Error';
+  const description = exception?.description ?? String(exception?.value ?? details.text);
+  const firstLine = description.split('\n')[0];
+  const error = new Error(firstLine.startsWith(name + ': ') ? firstLine.slice(name.length + 2) : firstLine);
+  error.name = name;
+  error.cdpExceptionDetails = details;
+  return error;
+}
+
+async function prepareCdpMomentReader(session) {
+  // Keep the exact same observer as Playwright, but compile it once before the
+  // photographic interval. A direct call then avoids Playwright's per-call
+  // function/argument/result marshalling on the two time-critical reads.
+  const compiled = await session.send('Runtime.evaluate', {
+    expression: `(${observeMoment.toString()})`, objectGroup: 'spatial-moment-observation', returnByValue: false,
+  });
+  if (compiled.exceptionDetails) throw cdpObservationError(compiled.exceptionDetails);
+  if (compiled.result?.type !== 'function' || !compiled.result.objectId) {
+    throw new Error('The native moment observer did not compile to a remote function.');
+  }
+  const objectId = compiled.result.objectId;
+  return {
+    transport: 'cdp-precompiled-observer',
+    read: async options => {
+      const response = await session.send('Runtime.callFunctionOn', {
+        objectId, functionDeclaration: 'function(options) { return this(options); }',
+        arguments: [{ value: options }], awaitPromise: true, returnByValue: true,
+      });
+      if (response.exceptionDetails) throw cdpObservationError(response.exceptionDetails);
+      if (response.result?.type !== 'object' || !response.result.value || Array.isArray(response.result.value)) {
+        throw new Error('The native moment observer returned no observation record.');
+      }
+      return response.result.value;
+    },
+  };
+}
+
+async function readMoment(target, region, schedule, paint, reader) {
+  const options = { region, schedule, paint };
+  return reader ? reader.read(options) : target.evaluate(observeMoment, options);
 }
 
 async function losslessNativeDetailCrop(sourceBytes, clip, viewport) {
@@ -1427,6 +1469,7 @@ async function capturePreparedMoment(label, prepared, target = page, attempt = 1
   const opticalFullViewport = prepared.region === 'optical-full-viewport';
   const nativeCapture = prepared.region === 'formation-detail' || opticalFullViewport;
   const acquisition = { label, attempt, region: prepared.region, schedule: schedule ?? null, before: null,
+    observationTransport: prepared.momentReader?.transport ?? 'playwright-evaluate',
     timings: { clock: 'Node performance.now(); origin differs from browser performance.now()',
       startedAtMs: performance.now(), stages: {} } };
   const startStage = name => {
@@ -1447,6 +1490,7 @@ async function capturePreparedMoment(label, prepared, target = page, attempt = 1
       elapsedBefore: acquisition.before?.elapsedMs ?? null, elapsedAfter: acquisition.after?.elapsedMs ?? null,
       afterStatus: acquisition.after?.status ?? null, measuredAt: acquisition.measuredAt ?? null,
       captureMode: acquisition.captureMode, fromSurface: acquisition.fromSurface,
+      observationTransport: acquisition.observationTransport,
       sourceCapture: acquisition.sourceCapture ?? null,
       nodeStageMs: Object.fromEntries(Object.entries(acquisition.timings.stages).map(([name, stage]) => [name, stage.durationMs ?? null])),
       browserBefore: acquisition.before?.observationTiming ?? null, browserAfter: acquisition.after?.observationTiming ?? null,
@@ -1470,7 +1514,7 @@ async function capturePreparedMoment(label, prepared, target = page, attempt = 1
   startStage('beforeObservationRpc');
   let before;
   try { before = await readMoment(target, prepared.region, schedule,
-    nativeCapture ? prepared.capturePaintPattern : undefined); }
+    nativeCapture ? prepared.capturePaintPattern : undefined, prepared.momentReader); }
   finally { finishStage('beforeObservationRpc'); }
   acquisition.before = before;
   const preparedRoiSource = nativeCapture;
@@ -1591,7 +1635,7 @@ async function capturePreparedMoment(label, prepared, target = page, attempt = 1
   let after, measured;
   try {
     startStage('afterObservationRpc');
-    try { after = await readMoment(target, prepared.region); }
+    try { after = await readMoment(target, prepared.region, undefined, undefined, prepared.momentReader); }
     finally { finishStage('afterObservationRpc'); }
     acquisition.after = after;
     if (preparedRoiSource) validateAndClip();
@@ -1832,7 +1876,21 @@ async function prepareMoment(target = page, region = 'scene', captureAtMs, captu
   const startedAtMs = performance.now();
   await installX11PaintMarkers(target, captureProfile.calibrationPattern);
   prepared.capturePaintPattern = captureProfile.kind === 'validated' ? x11PaintPattern(viewport) : captureProfile.calibrationPattern;
-  const after = await readMoment(target, region);
+  prepared.momentReader = await prepareCdpMomentReader(sessions.captureSession);
+  prepared.roiPreparation.observationTransport = prepared.momentReader.transport;
+  const after = await readMoment(target, region, undefined, undefined, prepared.momentReader);
+  if (after.status === 'paused') {
+    // Qualify transport parity on the actual paused calibration document,
+    // outside all live photographic intervals. Every scene field must agree;
+    // only the observer's own execution timestamps necessarily differ.
+    const reference = await readMoment(target, region);
+    const sceneFields = moment => Object.fromEntries(Object.entries(moment).filter(([key]) => key !== 'observationTiming'));
+    assert.deepEqual(sceneFields(after), sceneFields(reference), 'Direct CDP and Playwright must return identical paused moment fields.');
+    assert.equal(after.observationTiming.boxReads, reference.observationTiming.boxReads);
+    prepared.roiPreparation.observationParity = { passed: true, status: 'paused',
+      referenceTransport: 'playwright-evaluate', transport: prepared.momentReader.transport,
+      fields: Object.keys(sceneFields(after)), boxReads: after.observationTiming.boxReads };
+  }
   assertCaptureLayout(after, prepared.layout, target.viewportSize(), 'ROI configuration');
   assertCaptureProfile(after, captureProfile, target.viewportSize(), 'ROI configuration');
   assertX11Markers(after, captureProfile.calibrationPattern, viewport, 'Full viewport preparation');

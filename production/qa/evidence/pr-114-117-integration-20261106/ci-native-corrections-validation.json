@@ -1,0 +1,59 @@
+{
+  "schemaVersion": 1,
+  "observedAt": "2026-11-06T15:55:07.653271+00:00",
+  "previousPublishedCandidate": "e9287626acb0cc29d250c9cb6d87b36d833f0591",
+  "localImplementationCommit": "cb9ec12130dc616131f1567484b3ac8139b32096",
+  "scope": "Local protocol and source verification after the second native CI pass. No native success is claimed for the corrected source until its own Actions run.",
+  "checks": {
+    "command": [
+      "node",
+      "--test",
+      "tests/planet-arrival-observation.test.mjs",
+      "tests/planet-arrival-x11.test.mjs"
+    ],
+    "tests": 6,
+    "passed": 6,
+    "failed": 0,
+    "skipped": 0,
+    "log": "ci-native-observation-protocol.log",
+    "logSha256": "25616c9302f5b514927f58bae2fc49e50254e39fbd282a911f4545321e5359b9",
+    "syntaxCheck": "passed for both changed browser recipes",
+    "strictLint": "passed for both changed browser recipes and the new observation test"
+  },
+  "spatialContract": {
+    "originalAssertionCallsPreserved": 496,
+    "observationCallbackUnchanged": true,
+    "pausedNativeTransportParityRequired": true,
+    "maximumAttempts": 3,
+    "completionMs": 62000,
+    "afterCompletionStillRejected": true,
+    "runtimeChanged": false
+  },
+  "inputs": [
+    {
+      "path": "scripts/qa-wolf-arrival-browser.mjs",
+      "sha256": "39c90cd031edf3e5c0dd1987a2c2f2e7c17f82d4ae10b46677eec0047dd78e5b"
+    },
+    {
+      "path": "scripts/qa-planet-arrival-spatial.mjs",
+      "sha256": "0e9e478fd5f253389331ac17016216c55d1e8aa5caaa37370b352ba9c3b667f5"
+    },
+    {
+      "path": "tests/planet-arrival-observation.test.mjs",
+      "sha256": "6e1dde7e4779cc3fc0c994de8da900235db664cbb1df5d1ee41e2e203927a333"
+    },
+    {
+      "path": "scripts/qa-planet-arrival-x11.py",
+      "sha256": "93d7dc8628c44f8710bdf21accfd8401eaf5f60737dcb254f6979cf70d2aa285"
+    },
+    {
+      "path": "tests/test_planet_arrival_x11.py",
+      "sha256": "21599993de86094d2080e3e0a18487169bd0f990c5745d63f9feb5a1f47e6e1c"
+    },
+    {
+      "path": "tests/planet-arrival-x11.test.mjs",
+      "sha256": "e97a6fb87e83f85b2ddf3098031d3a62203e3050391e29cac18454f9ef2a6975"
+    }
+  ],
+  "humanArtValidation": false
+}

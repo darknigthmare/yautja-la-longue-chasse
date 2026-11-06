@@ -329,9 +329,9 @@ try {
     await page.locator('[data-campaign-location="deck"]').waitFor();
     const quick = page.getByRole('button', { name: 'Accès rapide aux installations', exact: true });
     if (await quick.getAttribute('aria-expanded') !== 'true') await quick.click();
-    const shortcutDetails = page.locator('details.ship-level-accessibility');
+    const shortcutDetails = page.locator('[data-ship-interior="2.5d"] [data-ship-shortcuts]');
     if (await shortcutDetails.getAttribute('open') === null) await shortcutDetails.locator('summary').click();
-    await page.getByRole('navigation', { name: 'Accès alternatif aux interfaces, la position du chasseur est conservée', exact: true }).getByRole('button', { name: /^DÉPART/ }).click();
+    await shortcutDetails.getByRole('navigation', { name: 'Accès alternatif aux interfaces, la position du chasseur est conservée', exact: true }).getByRole('button', { name: /^DÉPART/ }).click();
   };
   const launchMission = async plan => {
     await openDeparture();
@@ -953,7 +953,7 @@ try {
   // Duplicate compact, existing evidence after the browser has closed so a
   // remote review can inspect CI output without changing any native capture.
   if (process.env.GITHUB_ACTIONS === 'true') {
-    const review = JSON.stringify(Object.fromEntries(["startedAt","finishedAt","sourceCommit","checkoutCommit","workingTreeDirty","headed","assetGateRequired","passed","checks","cloakBriefing","shipTriadHandoff","focusTransitions","viewportTransitions","stationClickAttempts","errors","missingAssets","failure","failureState"]
+    const review = JSON.stringify(Object.fromEntries(["startedAt","finishedAt","sourceCommit","checkoutCommit","workingTreeDirty","headed","assetGateRequired","passed","checks","rosterPreparation","screenshots","cloakBriefing","shipTriadHandoff","focusTransitions","viewportTransitions","stationClickAttempts","errors","missingAssets","failure","failureState"]
       .filter(key => report[key] !== undefined).map(key => [key, report[key]])));
     const chunkSize = 12_000, parts = Math.ceil(review.length / chunkSize);
     for (let part = 0; part < parts; part++) console.log('QA_REVIEW_JSON ' + JSON.stringify({
