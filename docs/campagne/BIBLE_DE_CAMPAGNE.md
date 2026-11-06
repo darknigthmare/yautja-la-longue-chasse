@@ -601,7 +601,59 @@ Sujets peu développés, à traiter dans les prochains lots de questions :
 
 Les Slums de la note deviennent le quartier bas de la cité. Les clans CL11 à CL15 (Flotte des Haltes Lointaines, Pacte des Mandats Liés, Cercle des Noms Rapportés, Foyer des Retours, Ligue des Forges Fermées) vivent sur des navires et dans des communautés alliées hors du monde natal. Chaque clan a ses deux communautés du V6 (CM01 → CM20), qui deviennent ses quartiers de cité.
 
-Les noms yautja ci-dessus sont des propositions, à valider ; aucun n'est un mot de la langue canon.
+Noms yautja des régions validés le 6 novembre 2026. Aucun n'est un mot de la langue canon.
+
+**Noms yautja des 15 clans et des 20 communautés *(proposés, même style que les régions)* :**
+
+| Clan V6 | Nom yautja | Communautés V6 → nom yautja |
+| --- | --- | --- |
+| CL1 Maisons des Braises | Kaar'dhun | CM01 La Cour des Fourneaux → Vhor'akh ; CM02 Le Replat des Veilleurs → Ish'tuun |
+| CL2 Peuple des Citernes | Vhel'quaa | CM03 Les Citernes Hautes → Quaa'tor ; CM04 Le Seuil des Dunes → Dhun'esh |
+| CL3 Gardiens des Hautes Branches | Saal'veth | CM05 Les Branches Entrelacées → Nekh'ra ; CM06 La Couronne des Vigies → Arr'vigh |
+| CL4 Veilleurs des Eaux Calmes | Yra'thol | CM07 Les Pilotis Calmes → Oh'npiir ; CM08 La Confluence des Lanternes → Thuq'lan |
+| CL5 Veilleurs des Crêtes | Krav'esh | CM09 Le Col des Échos → Ekh'ol ; CM10 Les Tours du Vent → Vhen'tar |
+| CL6 Maisons du Rivage | Meq'tarr | CM11 La Jetée des Ossements → Oss'ghaa ; CM12 Les Arches de l'Écume → Ek'umar |
+| CL7 Artisans de la Roche Chaude | Ghur'aval | CM13 Les Forges Souterraines → Unn'drak ; CM14 Le Palier des Sources → Sor'paal |
+| CL8 Maisons du Givre | Ysk'dhaan | CM15 Le Cercle des Feux Bas → Kral'yth ; CM16 La Terrasse de Glace → Gl'ashar |
+| CL9 Conservateurs des Anciennes Pierres | Oth'peyr | CM17 Les Pierres Levées → Peyr'loth ; CM18 La Cour des Cartographes → Ogh'kerat |
+| CL10 Gardiens du Confinement | Zhar'kenn | CM19 Le Seuil du Confinement → Kenn'sul ; CM20 Les Veilles de la Lisière → Lhis'vhar |
+| CL11 Flotte des Haltes Lointaines | Ruun'tal | navires et communautés alliées |
+| CL12 Pacte des Mandats Liés | Ekar'mand | navires et communautés alliées |
+| CL13 Cercle des Noms Rapportés | Raq'nhom | navires et communautés alliées |
+| CL14 Foyer des Retours | Ouhn'rhet | navires et communautés alliées |
+| CL15 Ligue des Forges Fermées | Gholl'ferr | navires et communautés alliées |
+
+### Arc de guerre des clans *(missions proposées)*
+
+**Décision :** le conflit commence par un terrain de chasse disputé (canon : plusieurs clans se disputent les meilleurs sites, *Aliens vs. Predator: War*), et son déclencheur dépend de la voie de clan.
+
+| # | Mission | Déroulé | Forme |
+| --- | --- | --- | --- |
+| G-1 | Le terrain disputé | le clan rival (Super Predators pour un joueur classique, selon la race sinon) pose ses balises sur un monde-terrain du clan ; première rencontre sur place | chasse 2,5D |
+| G-2 | L'étincelle | selon la voie : Défi → les fidèles de l'ancien chef rejoignent le rival ; Succession → un Élite évincé passe à l'ennemi ; Fondation → le clan d'origine attaque le nouveau clan | scène + chasse |
+| G-3 | La parole des Temple Guards | les Temple Guards proposent une médiation ; le joueur peut obtenir une trêve partielle ou la refuser | dialogue + duel limité |
+| G-4 | Le dépôt | raid sur le ravitaillement adverse : phase RTS sur la carte, puis infiltration en 2,5D | RTS + chasse |
+| G-5 | Les murs de la cité | le rival assiège la cité du joueur ; défense des quartiers et des chenils | mêlée 2,5D |
+| G-6 | Le siège | le joueur mène l'assaut sur la cité rivale | RTS + mêlée |
+| G-7 | Le duel des chefs | duel sanctionné dans The Pit entre le joueur et le chef rival | The Pit |
+| G-8 | L'arbitrage des Matriarches | les Matriarches fixent les termes : partage du terrain, exil du vaincu ou alliance ; puis le mode libre s'ouvre | scène + choix |
+
+Musique : MUS-45, MUS-46, MUS-26 (duel), MUS-08 (arbitrage).
+
+### Figures canon en personnages secondaires
+
+**Décision :** les figures canon apparaissent comme alliés, rivaux ou donneurs de missions ; jamais jouées, jamais tuées hors de ce que leur canon montre. *(Rôles proposés.)*
+
+| Figure | Canon | Rôle dans la campagne |
+| --- | --- | --- |
+| Greyback | Ancien de la Lost Tribe ; sur Terre au XVIIIe siècle puis en 1997 (bio NECA) | donne la piste du XVIIIe siècle dans l'arc Warp ; témoin du procès d'Armored Lost |
+| Armored Lost, Spiked Tail, Lasershot | Rogue Space Tribe (bios NECA) | arc Warp, voie Bad Blood, cibles de la voie Enforcer |
+| Viper | chef du Serpent Clan, mercenaires des chasses aux Xénomorphes et des guerres de clans, aide les Enforcers contre immunité (bio NECA) | allié d'Enforcer ; mercenaire possible dans l'arc de guerre |
+| Spartan | chef du clan de Dark, *AVP* (2010) | invité qui observe les rites Elite du joueur |
+| Wolf | Elite Cleaner, *AVP: Requiem* | mentor de la fonction Cleaner |
+| L'Ancien d'AVP 2004 | remet sa lance à Lex | apparaît dans la chronique cinéma et dans les « après-coups » de l'île Bouvet |
+| Machiko Noguchi | humaine acceptée dans un clan (*Hunter's Planet*) | rencontre possible dans une branche Warp |
+| Njohrr, Dek | *Predator: Badlands* | clins d'œil seulement (décision O1) |
 
 Sources : [équipes humaines qui chassent les Predators](https://avpcentral.com/predator-hunter-teams).
 
@@ -1357,7 +1409,7 @@ Le registre ne charge que les paires présentes ; les 336 variantes manquantes (
 
 ## Catalogue musical et prompts Flow Music
 
-La campagne demande 48 pistes : 18 thèmes communs, 19 pistes pour les chasses, 11 pour les actes VI à VIII. Toutes sont à créer : les 7 dossiers `public/audio/music/` sont vides.
+La campagne demande 61 pistes, dont 13 thèmes de race (MUS-60 → MUS-72) et 18 thèmes communs, 19 pistes pour les chasses, 11 pour les actes VI à VIII. Toutes sont à créer : les 7 dossiers `public/audio/music/` sont vides.
 
 **Utilisation dans Flow Music.** Coller le prompt dans la zone de saisie de la session. Flow Music génère avec Lyria 3.5, jusqu'à environ 3 minutes par piste. Pour une boucle de jeu, sélectionner la fin dans Remix → Extend et demander « end on the same chord and groove as bar 1 for a seamless loop ». Pour corriger une partie, utiliser Replace sur la section plutôt que tout régénérer. Générer deux versions et comparer. Les prompts sont en anglais et ne citent aucun artiste ni aucune musique de film. Sources : [aide Flow](https://support.google.com/flow/answer/17084348?hl=en), [guide Flow Music 2026](https://jackrighteous.com/blogs/music-creation-process-guide/google-flow-music-complete-guide-2026).
 
@@ -1657,6 +1709,88 @@ Instrumental ambient for a vast mausoleum of hunting masks and legends. 50 BPM, 
 
 ```text
 Instrumental final epilogue theme for a long hunting saga. 68 BPM, D minor resolving to D major. Begins with a solo low flute playing the childhood variation of the four-note motif, joined by strings, then horns, then a full orchestra and wordless choir restating the main theme. Final minute: quiet again, a single drum heartbeat and the motif on one horn. Bittersweet, proud, complete.
+```
+
+### Thèmes de race
+
+Un motif propre à chaque race, mêlé au motif du clan dans les cérémonies et les combats de boss. Chaque prompt produit le thème seul (1:30) ; il se combine ensuite dans Flow Music avec Remix → Cover sur MUS-06, MUS-07 ou une piste de boss.
+
+**MUS-60 — Yautja classique**
+
+```text
+Instrumental 90-second leitmotif for a classic jungle alien hunter race. 84 BPM, D minor. Deep log drums, breathy wooden flute, low horns, guttural clicking rhythm. A proud stalking melody built on a four-note descending minor motif. Patient, noble, primal.
+```
+
+**MUS-61 — Lost Tribe**
+
+```text
+Instrumental 90-second leitmotif for a nomadic tribe of alien hunters who roam far from home. 88 BPM, A minor. Dusty frame drums, metallic percussion, a weathered cello, distant city-like synth hum. Wandering, veteran, a little urban and gritty.
+```
+
+**MUS-62 — Super Predator**
+
+```text
+Instrumental 90-second leitmotif for a larger, crueler alien hunter race that keeps game preserves and hunting hounds. 96 BPM, C minor. Heavy distorted low brass, snarling growl textures, war drums, barking-like percussive stabs. Arrogant, brutal, dominant.
+```
+
+**MUS-63 — Feral**
+
+```text
+Instrumental 90-second leitmotif for a primitive, bone-masked alien hunter lineage. 100 BPM, E minor. Bone rattles, skin drums, bowed bone-like strings, throat drones, no synths. Raw, wild, ancient.
+```
+
+**MUS-64 — Assassin (hybride)**
+
+```text
+Instrumental 90-second leitmotif for a genetically enhanced hybrid alien killer. 110 BPM, B-flat minor. Cold industrial percussion, glitching synth bass, clinical pulses, sudden heavy impacts. Engineered, unnatural, relentless.
+```
+
+**MUS-65 — Fugitive**
+
+```text
+Instrumental 90-second leitmotif for a hunted alien fugitive on the run from its own kind. 120 BPM, G minor. Running hand drums, tense string ostinato, ticking pulse, breathless woodwind. Desperate, clever, defiant.
+```
+
+**MUS-66 — Hish-Qu-Ten**
+
+```text
+Instrumental 90-second leitmotif for an ancestral, dishonored alien warrior race. 72 BPM, C-sharp Phrygian. Dissonant low choir clusters, scraping metal, uneven drum pattern, a broken version of a noble four-note motif. Ancient, unstable, menacing.
+```
+
+**MUS-67 — Cyborg**
+
+```text
+Instrumental 90-second leitmotif for an alien hunter augmented with cybernetics. 104 BPM, F minor. Mechanical servo rhythms, analog synth arpeggios, tribal drums processed through distortion, a pure synthetic lead. Half flesh, half machine.
+```
+
+**MUS-68 — Exiled**
+
+```text
+Instrumental 90-second leitmotif for alien hunters stranded on a jungle island, crafting weapons from wood, bone and stone. 80 BPM, D Dorian. Wooden percussion, hollow log drums, bamboo-like flutes, ocean surf texture. Resourceful, isolated, enduring.
+```
+
+**MUS-69 — Emissary**
+
+```text
+Instrumental 90-second leitmotif for alien hunters wearing human military-style armor. 92 BPM, E minor. Military snare, low brass in march formation, alien clicking textures over it, radio static. Disciplined, diplomatic, ambiguous.
+```
+
+**MUS-70 — Infected**
+
+```text
+Instrumental 90-second leitmotif for an alien hunter mutated by a black biological substance. 66 BPM, atonal. Wet organic drones, bubbling textures, warped choir, irregular heartbeat, the four-note motif slowly melting out of tune. Body horror, tragic.
+```
+
+**MUS-71 — Four-Armed**
+
+```text
+Instrumental 90-second leitmotif for a rare four-armed hybrid alien warrior lacking discipline. 128 BPM, A minor. Doubled polyrhythmic drums (two patterns at once), frantic strings, roaring brass. Chaotic, overwhelming, unpredictable.
+```
+
+**MUS-72 — Meta (mode bonus)**
+
+```text
+Instrumental 90-second leitmotif for a super-powered alien hunter in a comic-book bonus mode. 140 BPM, E major turning to E minor. Heroic orchestral brass, big cinematic drums, electric energy synths, triumphant choir. Larger than life.
 ```
 
 ## Écarts connus et chantiers ouverts
