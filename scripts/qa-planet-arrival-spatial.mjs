@@ -981,7 +981,7 @@ async function startX11Capture() {
   const browserVersion = await session.send('Browser.getVersion');
   const browserPid = processInfo.processInfo.find(item => item.type === 'browser')?.id;
   report.nativeCapture = { backend: 'x11-xgetimage-software-no-xshm', requestedFlags: x11LaunchArgs,
-    browserVersion, systemInfo, processInfo, browserPid, browserGuards: { passed: false },
+    browserVersion, systemInfo, processInfo, browserPid, browserGuards: { passed: false }, windowPreparations: [],
     mutation: 'Four opaque 4x8 QA paint markers in harness padding, outside the arrival component; final nonce painted synchronously after all before reads.' };
   assert.equal(systemInfo.gpu.featureStatus.gpu_compositing, 'disabled_software');
   for (const flag of x11LaunchArgs) assert.ok(systemInfo.commandLine.split(/\s+/).includes(flag), `The native browser command must include ${flag}.`);
@@ -1107,6 +1107,42 @@ async function exportX11Source(ack, basename, prepared, preserve = () => {}) {
   assert.deepEqual(exported.nativeFormat, ack.format);
   return { bytes, sourceCapture };
 }
+
+async function retainX11CalibrationFailure(calibration, error) {
+  const diagnostic = error.x11Result?.calibrationFailure;
+  if (!diagnostic) return;
+  // The helper retained its last existing root copy. Keep the exact receipt
+  // before re-reading files; this diagnostic can never qualify a profile.
+  calibration.calibrationFailure = diagnostic;
+  const verification = { clock: 'Node performance.now()', startedAtMs: performance.now(),
+    scope: 'Post-error verification of diagnostic files only; no image acquisition or profile selection.',
+    files: [], errors: [], passed: false };
+  calibration.calibrationFailureVerification = verification;
+  for (const role of ['raw', 'png', 'metadata']) {
+    const item = diagnostic.files?.[role];
+    const result = { role, available: !!item };
+    verification.files.push(result);
+    if (!item) {
+      if (role !== 'png') verification.errors.push({ role, message: 'Required diagnostic file was not preserved.' });
+      continue;
+    }
+    try {
+      assert.ok(typeof item.path === 'string' && path.resolve(item.path).startsWith(out + path.sep));
+      result.file = path.relative(out, item.path);
+      assert.equal(result.file, item.file);
+      const bytes = await fs.readFile(item.path);
+      result.bytes = bytes.length; result.sha256 = sha256(bytes);
+      assert.equal(result.bytes, item.bytes); assert.equal(result.sha256, item.sha256);
+      result.matched = true;
+    } catch (verificationError) {
+      result.matched = false;
+      verification.errors.push({ role, message: verificationError.message });
+    }
+  }
+  verification.finishedAtMs = performance.now();
+  verification.passed = verification.errors.length === 0;
+}
+
 async function momentSessions(target) {
   if (!momentCaptureSessions.has(target)) {
     const metricsSession = await target.context().newCDPSession(target);
@@ -1125,8 +1161,56 @@ async function syncMomentViewport(target) {
   sessions.baseline = { width: viewport.width, height: viewport.height,
     screenWidth: viewport.width, screenHeight: viewport.height, deviceScaleFactor: 1,
     mobile: false, screenOrientation: { angle: 0, type: 'landscapePrimary' }, dontSetVisibleSize: false };
-  await sessions.metricsSession.send('Emulation.setDeviceMetricsOverride', sessions.baseline);
-  return sessions;
+  const physicalScreen = report.nativeCapture.helperSetup.screen;
+  assert.deepEqual({ index: physicalScreen.index, width: physicalScreen.width,
+    height: physicalScreen.height, depth: physicalScreen.depth }, { index: 0, width: 1920, height: 1200, depth: 24 });
+  const preparation = { id: `window-preparation-${report.nativeCapture.windowPreparations.length + 1}`,
+    clock: 'Node performance.now()', startedAtMs: performance.now(), passed: false,
+    cssViewport: { ...viewport }, baseline: { ...sessions.baseline }, physicalScreen,
+    idMeaning: 'cdpWindowId is a Chrome protocol window id, not an X11 drawable id.',
+    purpose: 'Explicit native window space before calibration; not a demonstrated cause of any previous calibration failure.',
+    observations: [] };
+  report.nativeCapture.windowPreparations.push(preparation);
+  // Playwright's Linux window insets are an estimate. Prepare actual native
+  // space independently of CSS emulation, outside all final capture brackets.
+  const send = async (operation, params = {}) => {
+    const observation = { operation, params, startedAtMs: performance.now() };
+    preparation.observations.push(observation);
+    try {
+      observation.result = await sessions.metricsSession.send(operation, params);
+      return observation.result;
+    } catch (error) { observation.error = error.message; throw error; }
+    finally { observation.finishedAtMs = performance.now(); }
+  };
+  try {
+    const located = await send('Browser.getWindowForTarget');
+    preparation.cdpWindowId = located.windowId;
+    assert.ok(Number.isSafeInteger(preparation.cdpWindowId) && preparation.cdpWindowId > 0);
+    const windowId = preparation.cdpWindowId;
+    preparation.boundsBefore = (await send('Browser.getWindowBounds', { windowId })).bounds;
+    if (preparation.boundsBefore.windowState !== 'normal') {
+      // Chromium restores instead of setting bounds in this branch. Send the
+      // restore separately, then issue the geometry request below.
+      await send('Browser.setWindowBounds', { windowId, bounds: { windowState: 'normal' } });
+      preparation.boundsAfterRestore = (await send('Browser.getWindowBounds', { windowId })).bounds;
+      assert.equal(preparation.boundsAfterRestore.windowState, 'normal');
+    }
+    preparation.requestedBounds = { left: 0, top: 0, width: physicalScreen.width,
+      height: physicalScreen.height, windowState: 'normal' };
+    await send('Browser.setWindowBounds', { windowId, bounds: preparation.requestedBounds });
+    await send('Emulation.setDeviceMetricsOverride', sessions.baseline);
+    preparation.boundsAfter = (await send('Browser.getWindowBounds', { windowId })).bounds;
+    const actual = preparation.boundsAfter;
+    assert.deepEqual({ left: actual.left, top: actual.top, width: actual.width,
+      height: actual.height, windowState: actual.windowState }, preparation.requestedBounds,
+    'The prepared native Chrome window must occupy the observed private screen, independently of CSS viewport metrics.');
+    preparation.finishedAtMs = performance.now(); preparation.passed = true;
+    sessions.windowPreparation = freezeCaptureData(preparation);
+    return sessions;
+  } catch (error) {
+    preparation.finishedAtMs = performance.now(); preparation.error = error.message;
+    throw error;
+  }
 }
 
 function captureLayout(moment) {
@@ -1398,6 +1482,8 @@ async function capturePreparedMoment(label, prepared, target = page, attempt = 1
     assert.equal(prepared.captureProfile.kind, 'validated', `${label}: final photographs cannot search or select source profiles.`);
     assert.strictEqual(prepared.targetRoi, prepared.captureProfile.targetRoi);
     assert.strictEqual(prepared.sourceRoi, prepared.captureProfile.sourceRoi);
+    assert.strictEqual(prepared.windowPreparation, prepared.sessions.windowPreparation,
+      `${label}: native window preparation cannot change after the final source was prepared.`);
     assert.ok(prepared.roiPreparation.elapsedAfter < schedule.atMs,
       `${label}: the output ROI must be fully prepared before the unchanged final capture threshold.`);
     assert.equal(typeof validateFrame, 'function', `${label}: every final attempt needs the original formation and grounded-hull checks.`);
@@ -1631,6 +1717,11 @@ function assertCaptureProfile(moment, profile, viewport, label) {
   assert.deepEqual(profile.x11Calibration.viewport, { width: viewport.width, height: viewport.height });
   assert.deepEqual(profile.x11Calibration.markers, profile.calibrationPattern.markers);
   assert.equal(profile.x11Calibration.nonce, profile.calibrationPattern.nonce);
+  assert.ok(Object.isFrozen(profile.windowPreparation));
+  assert.equal(profile.windowPreparation.passed, true);
+  assert.deepEqual(profile.windowPreparation.cssViewport, { width: viewport.width, height: viewport.height });
+  assert.deepEqual(profile.windowPreparation.boundsAfter,
+    { left: 0, top: 0, width: 1920, height: 1200, windowState: 'normal' });
   if (profile.kind === 'candidate') {
     assert.equal(moment.status, 'paused', `${label}: an unqualified source can only be examined under the native Pause control.`);
   } else {
@@ -1657,6 +1748,13 @@ async function prepareMoment(target = page, region = 'scene', captureAtMs, captu
   if (before.status === 'playing') assert.ok(Number.isFinite(captureAtMs) && before.elapsedMs < captureAtMs,
     'A native output ROI must be configured before the final capture interval starts.');
   assertCaptureProfile(before, captureProfile, target.viewportSize(), 'ROI preparation');
+  const windowPreparation = sessions.windowPreparation;
+  assert.ok(windowPreparation && Object.isFrozen(windowPreparation) && windowPreparation.passed);
+  assert.equal(windowPreparation.cdpWindowId, captureProfile.windowPreparation.cdpWindowId,
+    'A calibrated X11 profile cannot move to a different Chrome protocol window.');
+  assert.deepEqual(windowPreparation.cssViewport, captureProfile.windowPreparation.cssViewport);
+  assert.deepEqual(windowPreparation.boundsAfter, captureProfile.windowPreparation.boundsAfter);
+  prepared.windowPreparation = windowPreparation;
   prepared.layout = captureLayout(before);
   assertCaptureLayout(before, prepared.layout, target.viewportSize(), 'ROI preparation');
   assert.deepEqual(momentTargetRoi(scene), captureProfile.targetRoi);
@@ -1678,6 +1776,8 @@ async function prepareMoment(target = page, region = 'scene', captureAtMs, captu
     profileId: captureProfile.id, profileKind: captureProfile.kind,
     viewport: captureProfile.viewport, variant: captureProfile.variant,
     calibrationId: captureProfile.x11Calibration.calibrationId,
+    windowPreparationId: windowPreparation.id, calibrationWindowPreparationId: captureProfile.windowPreparation.id,
+    cdpWindowId: windowPreparation.cdpWindowId,
     contextPurpose: 'Full native X11 viewport, no source override; every full pixel and original target pixel must match native CDP under Pause.',
     cssViewport: viewport, layout: prepared.layout };
   const startedAtMs = performance.now();
@@ -1780,7 +1880,7 @@ async function preflightMomentRoi(viewport, variant, target = page) {
         id: `${viewport.id}:${variant.id}:x11-full-viewport`,
         kind: 'candidate', candidateIndex: index + 1,
         viewport: Object.freeze({ id: viewport.id, width: viewport.width, height: viewport.height, dpr: 1 }),
-        variant: calibration.variant, x11Calibration, calibrationPattern });
+        variant: calibration.variant, x11Calibration, calibrationPattern, windowPreparation: sessions.windowPreparation });
       activeCandidate = { id: candidate.id, index: candidate.candidateIndex, sourceRoi: candidate.sourceRoi,
         targetRoi: candidate.targetRoi, x11Calibration,
         accepted: false, images: [], observations: [] };
@@ -1867,6 +1967,7 @@ async function preflightMomentRoi(viewport, variant, target = page) {
     assert.fail('No candidate native source preserved every original target pixel with exact full restoration.');
   } catch (error) {
     calibration.error = error.message;
+    await retainX11CalibrationFailure(calibration, error);
     if (activeCandidate && !activeCandidate.rejection) activeCandidate.error = error.message;
     if (activeCandidate?.captureAck?.token && !activeCandidate.sourceCapture && prepared) {
       try {

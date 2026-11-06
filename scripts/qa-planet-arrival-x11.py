@@ -2,7 +2,8 @@
 """Persistent, read-only X11 acquisition for the native Spatial QA recipe.
 
 JSONL: {id, op: setup|calibrate|capture|export|close, ...}.
-Only export encodes/hashes/writes pixels. Importing this module never opens X11.
+Only export and failed-calibration diagnostics encode/hash/write pixels.
+Importing this module never opens X11.
 A capture is ONE full viewport XGetImage, even when its nonce is rejected.
 See the caller for native before/after gates and the opaque CDP preflight.
 """
@@ -633,6 +634,87 @@ class Helper:
                 "compositorSelectionOwner": 0, "chromiumCompositeWindowAbsent": True,
                 "overlappingWindows": [], "noRecalibration": True}
 
+    def calibration_failure(self, last, viewport, markers, nonce, start, deadline,
+                            rounds, phase, error):
+        """Preserve the existing last root copy; never acquire another image."""
+        failed_at = time.monotonic_ns()
+        basename = f"calibration-failure-{os.getpid()}-{start}"
+        observation = {"afterLastImage": True,
+                       "startedMonotonicNs": str(time.monotonic_ns()), "errors": []}
+        # These are later observations, not simultaneous image metadata. An
+        # absent/partial marker set must not hide the actual physical bounds.
+        for key, read in (("root", lambda: self.x.attributes(self.x.root)),
+                          ("browserWindows", self.browser_windows),
+                          ("compositorSelectionOwner", self.x.compositor_owner)):
+            read_start = time.monotonic_ns()
+            try:
+                observation[key] = read()
+            except Exception as exc:
+                observation["errors"].append({"field": key, "message": str(exc),
+                                               "details": getattr(exc, "details", None)})
+            observation[key + "Timing"] = {
+                "startedMonotonicNs": str(read_start),
+                "finishedMonotonicNs": str(time.monotonic_ns())}
+        observation["finishedMonotonicNs"] = str(time.monotonic_ns())
+        found = last.get("found")
+        result = {"schema": SCHEMA, "kind": "native-x11-calibration-failure",
+                  "diagnosticId": basename, "diagnosticOnly": True, "rejected": True,
+                  "reason": str(error), "errorDetails": getattr(error, "details", None),
+                  "failurePhase": phase, "setupId": self.runtime["setupId"],
+                  "browserPid": self.browser_pid, "nonce": nonce,
+                  "viewport": viewport, "sourceRect": {"x": 0, "y": 0,
+                  "width": last["format"]["width"], "height": last["format"]["height"]},
+                  "nativeFormat": last["format"], "expectedMarkers": markers,
+                  "lastAcquisition": last["copyTiming"],
+                  "matching": {"fullCalibrationImages": rounds,
+                  "startedMonotonicNs": last.get("matchingStartMonotonicNs"),
+                  "finishedMonotonicNs": last.get("matchingEndMonotonicNs"),
+                  "foundByMarker": None if found is None else [
+                      {"id": marker["id"], "matches": locations}
+                      for marker, locations in zip(markers, found)]},
+                  "timings": {"calibrationStartMonotonicNs": str(start),
+                  "deadlineMonotonicNs": str(deadline), "failedMonotonicNs": str(failed_at),
+                  "deadlineExceededAtFailure": failed_at >= deadline,
+                  "elapsedAtFailureMs": milliseconds(start, failed_at)},
+                  "windowObservation": observation, "files": {}, "preservationErrors": [],
+                  "alphaPolicy": ALPHA_POLICY,
+                  "scope": "Last already acquired root image only; not a calibrated viewport or accepted final capture"}
+
+        def write_file(suffix, data):
+            path = self.output / (basename + suffix)
+            # Each failure has its own monotonic identifier. Never replace any
+            # pre-existing evidence if a caller somehow repeats an identifier.
+            with path.open("xb") as stream:
+                stream.write(data)
+            return {"path": str(path), "file": path.name, "bytes": len(data),
+                    "sha256": hashlib.sha256(data).hexdigest()}
+
+        write_start = time.monotonic_ns()
+        try:
+            result["files"]["raw"] = write_file(".raw", last["raw"])
+            rgba, fmt = last.get("rgba"), last["format"]
+            require(rgba is not None, "No completed RGBA conversion for the last calibration image")
+            png = encode_png(rgba, fmt["width"], fmt["height"])
+            decoded = decode_own_png(png, fmt["width"], fmt["height"])
+            require(decoded == rgba, "Diagnostic PNG round trip changed native RGB values")
+            result["files"]["png"] = write_file(".png", png)
+            result["pixelEquality"] = {"matched": True, "rgbaBytes": len(rgba),
+                "width": fmt["width"], "height": fmt["height"],
+                "rgbaSha256": hashlib.sha256(rgba).hexdigest(),
+                "pngDecodedRgbaSha256": hashlib.sha256(decoded).hexdigest(),
+                "scope": "Native RGB permutation and PNG round trip only; no CDP calibration equality"}
+        except Exception as exc:
+            result["preservationErrors"].append({"phase": "raw-png", "message": str(exc),
+                                                  "details": getattr(exc, "details", None)})
+        result["timings"]["beforeMetadataWriteMs"] = milliseconds(write_start, time.monotonic_ns())
+        try:
+            result["files"]["metadata"] = write_file(
+                ".json", (json.dumps(result, indent=2, ensure_ascii=False) + "\n").encode())
+        except Exception as exc:
+            result["preservationErrors"].append({"phase": "metadata", "message": str(exc),
+                                                  "details": getattr(exc, "details", None)})
+        return result
+
     def calibrate(self, req):
         require(self.runtime is not None, "Setup required")
         require(req.get("browserPid") == self.browser_pid, "Calibration browser PID changed")
@@ -641,40 +723,58 @@ class Helper:
         timeout = integer(req.get("timeoutMs", 5000), "timeoutMs", 1, 10000)
         start, rounds = time.monotonic_ns(), 0
         deadline = start + timeout * 1_000_000
-        locations = None
-        while True:
-            raw, fmt, _ = self.x.image(0, 0, *SCREEN[:2]); rounds += 1
-            rgba = native_to_rgba(raw, fmt)
-            found = [find_marker(rgba, *SCREEN[:2], m) for m in markers]
-            require(all(len(f) <= 1 for f in found), "Calibration marker is not unique")
-            if all(len(f) == 1 for f in found):
-                locations = [f[0] for f in found]
-                break
-            require(time.monotonic_ns() < deadline, "Calibration markers did not appear")
-            time.sleep(0.002)
-        origins = {(p["x"] - m["x"], p["y"] - m["y"])
-                   for p, m in zip(locations, markers)}
-        require(len(origins) == 1, "Marker spacing is not exactly viewport scale 1")
-        ox, oy = next(iter(origins)); origin = {"x": ox, "y": oy}
-        region = {**origin, **viewport}
-        candidates = [w for w in self.browser_windows() if contains(w["rootBounds"], region)]
-        require(len(candidates) == 1, "Calibration does not identify one browser window", candidates)
-        window = candidates[0]
-        require(window["depth"] == 24 and window["visualClass"] == 4,
-                "Browser window is not 24-depth TrueColor")
-        require(all(window[k] == fmt[k] for k in ("redMask", "greenMask", "blueMask")),
-                "Browser and root visual RGB masks differ")
-        ident = f"calibration-{len(self.calibrations) + 1:06d}"
-        cal = {"calibrationId": ident, "setupId": self.runtime["setupId"],
-               "viewport": viewport, "origin": origin, "window": window,
-               "format": fmt, "nonce": nonce, "markers": markers,
-               "markerLayout": [list(t) for t in marker_layout(markers)],
-               "markerLocations": locations}
-        cal["guards"] = self.geometry_guard(cal)
-        cal["timings"] = {"fullCalibrationImages": rounds,
-                          "totalMs": milliseconds(start, time.monotonic_ns())}
-        self.calibrations[ident] = cal
-        return cal
+        locations, last, phase = None, None, "acquire"
+        try:
+            while True:
+                phase = "acquire"
+                raw, fmt, copy_timing = self.x.image(0, 0, *SCREEN[:2]); rounds += 1
+                last = {"raw": raw, "format": fmt, "copyTiming": copy_timing}
+                phase = "matching"
+                last["matchingStartMonotonicNs"] = str(time.monotonic_ns())
+                rgba = native_to_rgba(raw, fmt); last["rgba"] = rgba
+                found = [find_marker(rgba, *SCREEN[:2], m) for m in markers]
+                last["found"] = found
+                last["matchingEndMonotonicNs"] = str(time.monotonic_ns())
+                require(all(len(f) <= 1 for f in found), "Calibration marker is not unique")
+                if all(len(f) == 1 for f in found):
+                    locations = [f[0] for f in found]
+                    break
+                require(time.monotonic_ns() < deadline, "Calibration markers did not appear")
+                time.sleep(0.002)
+            phase = "geometry"
+            origins = {(p["x"] - m["x"], p["y"] - m["y"])
+                       for p, m in zip(locations, markers)}
+            require(len(origins) == 1, "Marker spacing is not exactly viewport scale 1")
+            ox, oy = next(iter(origins)); origin = {"x": ox, "y": oy}
+            region = {**origin, **viewport}
+            candidates = [w for w in self.browser_windows() if contains(w["rootBounds"], region)]
+            require(len(candidates) == 1, "Calibration does not identify one browser window", candidates)
+            window = candidates[0]
+            require(window["depth"] == 24 and window["visualClass"] == 4,
+                    "Browser window is not 24-depth TrueColor")
+            require(all(window[k] == fmt[k] for k in ("redMask", "greenMask", "blueMask")),
+                    "Browser and root visual RGB masks differ")
+            ident = f"calibration-{len(self.calibrations) + 1:06d}"
+            cal = {"calibrationId": ident, "setupId": self.runtime["setupId"],
+                   "viewport": viewport, "origin": origin, "window": window,
+                   "format": fmt, "nonce": nonce, "markers": markers,
+                   "markerLayout": [list(t) for t in marker_layout(markers)],
+                   "markerLocations": locations}
+            cal["guards"] = self.geometry_guard(cal)
+            cal["timings"] = {"fullCalibrationImages": rounds,
+                              "totalMs": milliseconds(start, time.monotonic_ns())}
+            self.calibrations[ident] = cal
+            return cal
+        except Exception as exc:
+            if last is None:
+                raise
+            failure = self.calibration_failure(last, viewport, markers, nonce, start,
+                                               deadline, rounds, phase, exc)
+            if isinstance(exc, GuardError):
+                exc.result = {**(exc.result or {}), "calibrationFailure": failure}
+                raise
+            raise GuardError(str(exc), getattr(exc, "details", None),
+                             {"calibrationFailure": failure}) from exc
 
     def capture(self, req):
         require(self.runtime is not None, "Setup required")
