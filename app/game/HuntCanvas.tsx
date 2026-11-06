@@ -265,6 +265,9 @@ import {
   honorRuleEventId,
 } from "./honorRules";
 import type { GameSfxId, GameMusicContext } from "./sound";
+import { chromaticsForPieceV146, lightColorV146, type HunterPieceIdV146 } from "./hunterPiecesV146";
+import { camouflageVisibilityV146, heavyHitPieceV146, missionWearV146, wearFilterV146, type HunterMarkIdV146 } from "./systems/hunterCustomizationV146";
+import { markColorV146, markLayerV146, markStrokesV146 } from "./hunterMarksArtV146";
 import type {
   DifficultyId,
   ExplorationProgress,
@@ -726,6 +729,10 @@ interface InputHub {
 }
 
 interface GameState {
+  /** V146: visual detection multiplier from biome camouflage (solo hunt). */
+  camouflageV146?: number;
+  /** V146: armour pieces cracked by heavy hits during this hunt. */
+  heavyWearHitsV146?: HunterPieceIdV146[];
   ecosystem: CorpseDiscoveryStateV112;
   huntAccessibility?: HuntAccessibilityV112;
   ritualAssistV112?: RitualAssistStateV112;
@@ -1404,7 +1411,12 @@ function makeGameState(
   const bossPatrolRight =
     world.bossArena.x + world.bossArena.width - bossWidth - 30;
 
+  // V146: colours matching the biome lower visual detection a little (solo/coop only).
+  const camouflageV146 = camouflageVisibilityV146(
+    appearance, [mission.palette.ground, mission.palette.platform, mission.palette.haze], "solo");
   const state: GameState = {
+    camouflageV146,
+    heavyWearHitsV146: [],
     ecosystem: createCorpseDiscoveryV112(huntRitesRunIdV77(mission.id, ecologyRunSeed)),
     flayingToolOwned: ownsFieldToolV111(inventory, "flaying-tool"),
     harvestArmorIdV112: loadout.armorId,
@@ -3002,6 +3014,7 @@ function resultFor(
       ]),
     ],
     secondWindUsed: state.secondWindUsed,
+    ...(state.heavyWearHitsV146?.length ? { wearV146: { heavyPieces: [...state.heavyWearHitsV146] } } : {}),
     completedAt: new Date().toISOString(),
   };
 }
@@ -3142,7 +3155,7 @@ function drawFallbackCharacter(
 
 interface RegisteredLayerOptions {
   placement?: HunterLayerPlacement;
-  chromatics?: { appearance: HunterAppearance; channel: ChromaticChannelV113 };
+  chromatics?: { appearance: HunterAppearance; channel: ChromaticChannelV113; piece?: HunterPieceIdV146 };
   decalZone?: YautjaDecalZoneV133;
   clip?: readonly (readonly [number, number, number, number])[];
   alpha?: number;
@@ -3329,8 +3342,14 @@ function drawRegisteredLayer(
 ): boolean {
   if (!image) return false;
   const matrix = relativeBoneMatrix(frame, HUNTER_BIND_FRAME, boneId);
+  // V146: a piece colour replaces the channel colour for this layer only.
+  const layerChromatics = options.chromatics
+    ? options.chromatics.piece
+      ? chromaticsForPieceV146(options.chromatics.appearance, options.chromatics.piece)
+      : options.chromatics.appearance.chromaticsV113
+    : undefined;
   const recolored = options.chromatics ? chromaticCanvasSourceV113(
-    image, options.chromatics.appearance.chromaticsV113, options.chromatics.channel, options.placement, options.filter
+    image, layerChromatics, options.chromatics.channel, options.placement, options.filter
   ) : null;
   // Recolor then paint the decal from a fixed atlas; both passes are source-atop
   // and keep the existing 256x384 authored sprite / bone transform unchanged.
@@ -3429,7 +3448,7 @@ function drawAtomicBodyPart(
     {
       filter: hunterBodyPartColorV62(appearance.bodyMorphId, partId, bodyFilter(appearance)),
       clip: hunterBodyPartClipV62(appearance.bodyMorphId, partId),
-      chromatics: { appearance, channel: "outfit" },
+      chromatics: { appearance, channel: "outfit", piece: "fishnet" },
       alpha:
         appearance.armorStyleId === "feral"
           ? 0.28
@@ -3679,7 +3698,9 @@ function drawHunterLayered(
   const atomicBodyReady = HUNTER_BODY_PART_IDS.every(
     (partId) => assets.hunterBodyParts[partId],
   );
-  const armorTint = armorFilter(appearance);
+  // V146 mission wear: scratches and dirt grow with damage taken this hunt.
+  const armorTint = [armorFilter(appearance), wearFilterV146(missionWearV146(state.damageTaken, player.maxHealth))]
+    .filter(part => part && part !== "none").join(" ") || "none";
 
   context.save();
   context.globalAlpha = alpha;
@@ -3694,7 +3715,7 @@ function drawHunterLayered(
         "head",
         {
           filter: dreadFilter(appearance.dreadTintId),
-          chromatics: { appearance, channel: "dreads" },
+          chromatics: { appearance, channel: "dreads", piece: "dreads" },
           pivot: HUNTER_DREAD_ROOT,
           rotation: strand.angle,
           scaleX: strand.scale,
@@ -3744,7 +3765,7 @@ function drawHunterLayered(
     if (loadout.armorId !== "scout") {
       for (const part of ["thigh-lower", "shin"] as const) {
         const greave: RegisteredLayerOptions = {
-          filter: armorTint === "none" ? "brightness(.72)" : `${armorTint} brightness(.72)`, chromatics: { appearance, channel: "armor" },
+          filter: armorTint === "none" ? "brightness(.72)" : `${armorTint} brightness(.72)`, chromatics: { appearance, channel: "armor", piece: "shin" },
           registration: hunterGreaveMatrixV145(appearance.bodyMorphId, part, "back"),
           clip: part === "shin" ? HUNTER_ARMOR_KEEP_CLIP_V145.shin : undefined,
         };
@@ -3772,7 +3793,7 @@ function drawHunterLayered(
       assets.hunterBodyFull,
       frame,
       "root",
-      { filter: bodyFilter(appearance), chromatics: { appearance, channel: "skin" }, decalZone:"body" },
+      { filter: bodyFilter(appearance), chromatics: { appearance, channel: "skin", piece: "skin" }, decalZone:"body" },
     )
   ) {
     drawFallbackCharacter(
@@ -3792,30 +3813,30 @@ function drawHunterLayered(
     assets.hunterArmor.belt,
     frame,
     "pelvis",
-    { filter: armorTint, chromatics: { appearance, channel: "armor" } },
+    { filter: armorTint, chromatics: { appearance, channel: "armor", piece: "belt" } },
   );
   drawRegisteredLayer(
     context,
     assets.hunterArmor.chest,
     frame,
     "torso",
-    { filter: armorTint, chromatics: { appearance, channel: "armor" }, decalZone:"armor" },
+    { filter: armorTint, chromatics: { appearance, channel: "armor", piece: "chest" }, decalZone:"armor" },
   );
   drawHunterBeltLoadout(context, assets, frame, loadout);
 
   // V145 wrap, first pass: plates behind their limb (and behind the head for
   // the shoulder). The masked second pass is drawn after the front limbs.
   const shoulderPlate: RegisteredLayerOptions = {
-    filter: armorTint, chromatics: { appearance, channel: "armor" },
+    filter: armorTint, chromatics: { appearance, channel: "armor", piece: "shoulder" },
     // Mirrored onto the deltoid, per-morph scale included.
     registration: hunterShoulderPlateMatrixV145(appearance.bodyMorphId),
     clip: HUNTER_ARMOR_KEEP_CLIP_V145[HUNTER_ARMOR_MODULES[appearance.armorStyleId].shoulder],
   };
   const frontLegPlates = loadout.armorId === "scout" ? [] : [
-    { image: assets.hunterArmor.thigh, bone: "legFrontUpper" as const, limb: "thigh-front" as const, options: { filter: armorTint, chromatics: { appearance, channel: "armor" as const } } },
-    { image: assets.hunterArmor.thighLower, bone: "legFrontLower" as const, limb: "shin-front" as const, options: { filter: armorTint, chromatics: { appearance, channel: "armor" as const },
+    { image: assets.hunterArmor.thigh, bone: "legFrontUpper" as const, limb: "thigh-front" as const, options: { filter: armorTint, chromatics: { appearance, channel: "armor" as const, piece: "thigh" as const } } },
+    { image: assets.hunterArmor.thighLower, bone: "legFrontLower" as const, limb: "shin-front" as const, options: { filter: armorTint, chromatics: { appearance, channel: "armor" as const, piece: "shin" as const },
       registration: hunterGreaveMatrixV145(appearance.bodyMorphId, "thigh-lower", "front") } },
-    { image: assets.hunterArmor.shin, bone: "legFrontLower" as const, limb: "shin-front" as const, options: { filter: armorTint, chromatics: { appearance, channel: "armor" as const },
+    { image: assets.hunterArmor.shin, bone: "legFrontLower" as const, limb: "shin-front" as const, options: { filter: armorTint, chromatics: { appearance, channel: "armor" as const, piece: "shin" as const },
       registration: hunterGreaveMatrixV145(appearance.bodyMorphId, "shin", "front"), clip: HUNTER_ARMOR_KEEP_CLIP_V145.shin } },
   ];
   drawRegisteredLayer(context, assets.hunterArmor.shoulder, frame, "armFrontUpper", shoulderPlate);
@@ -3843,7 +3864,7 @@ function drawHunterLayered(
     solveHunterSideDreadsV145(frame, appearance.bodyMorphId, appearance.dreadStyleId, appearance.headStyleId, player.dreadAngles).forEach((strand) => {
       drawRegisteredLayer(context, assets.hunterDreads, frame, "head", {
         filter: dreadFilter(appearance.dreadTintId),
-        chromatics: { appearance, channel: "dreads" },
+        chromatics: { appearance, channel: "dreads", piece: "dreads" },
         pivot: HUNTER_DREAD_ROOT,
         rotation: strand.angle,
         scaleX: strand.scale,
@@ -3860,7 +3881,7 @@ function drawHunterLayered(
       assets.hunterArmor.bracer,
       frame,
       "armFrontLower",
-      { filter: armorTint, chromatics: { appearance, channel: "armor" } },
+      { filter: armorTint, chromatics: { appearance, channel: "armor", piece: "bracer" } },
     );
     for (const plate of frontLegPlates) {
       drawWrappedLayerV145(context, plate.image, assets.hunterBodyParts[plate.limb], frame, plate.bone, plate.options);
@@ -3870,7 +3891,7 @@ function drawHunterLayered(
       assets.hunterArmor.knee,
       frame,
       "legFrontLower",
-      { filter: armorTint, chromatics: { appearance, channel: "armor" } },
+      { filter: armorTint, chromatics: { appearance, channel: "armor", piece: "knee" } },
     );
   }
 
@@ -3949,14 +3970,47 @@ function drawHunterLayered(
           appearance: { ...appearance,
             chromaticsV113: maskChromaticsForAppearanceV131(appearance) },
           channel: "biomask",
+          piece: "biomask",
         },
         decalZone:"biomask",
       },
     );
   }
+  // V146 earned marks: skin marks always, biomask marks only on the worn mask.
+  drawMarksV146(context, frame, appearance, "skin", hunterMaskRigPlacement(appearance.biomaskId ?? "jungle"));
+  if (player.maskOn && appearance.biomaskId) {
+    drawMarksV146(context, frame, appearance, "biomask", hunterMaskRigPlacement(appearance.biomaskId));
+  }
 
   if (state.trophyCarried && state.trophyClaim) {
     drawClaimedTrophyLayers(context, assets, frame, state.trophyClaim);
+  }
+  context.restore();
+}
+
+/** V146: procedural marks in head-bone source space (same paths as the DOM preview). */
+function drawMarksV146(
+  context: CanvasRenderingContext2D,
+  frame: HunterRigFrame,
+  appearance: HunterAppearance,
+  layer: "biomask" | "skin",
+  anchor: { x: number; y: number; width: number; height: number },
+): void {
+  const marks = Object.entries(appearance.marksV146 ?? {}) as [HunterMarkIdV146, { color: string | null }][];
+  const shown = marks.filter(([id]) => markLayerV146(id) === layer);
+  if (!shown.length || typeof Path2D === "undefined") return;
+  context.save();
+  applyAffine(context, relativeBoneMatrix(frame, HUNTER_BIND_FRAME, "head"));
+  context.lineCap = "round";
+  context.lineJoin = "round";
+  context.globalAlpha *= 0.9;
+  for (const [id, value] of shown) {
+    const color = markColorV146(id, value.color);
+    for (const stroke of markStrokesV146(id, anchor)) {
+      const path = new Path2D(stroke.d);
+      if (stroke.fill) { context.fillStyle = color; context.fill(path); }
+      else { context.strokeStyle = color; context.lineWidth = stroke.width; context.stroke(path); }
+    }
   }
   context.restore();
 }
@@ -3983,7 +4037,7 @@ function drawAimAssist(
   const origin = handWeaponId
     ? frame.anchors.handGrip
     : frame.anchors.muzzle;
-  const color = LASER_COLOR_HEX[appearance.laserColorId ?? "crimson"] ?? mission.palette.accent;
+  const color = lightColorV146(appearance, "laser", LASER_COLOR_HEX[appearance.laserColorId ?? "crimson"] ?? mission.palette.accent);
   context.save();
   if (player.maskOn && appearance.biomaskId) {
     context.strokeStyle = `${color}c8`;
@@ -6099,6 +6153,8 @@ function hurtPlayer(
   ) {
     return;
   }
+  const crackedV146 = heavyHitPieceV146(amount, player.maxHealth, state.heavyWearHitsV146?.length ?? 0);
+  if (crackedV146) state.heavyWearHitsV146 = [...(state.heavyWearHitsV146 ?? []), crackedV146];
   player.health -= amount;
   if(state.huntRites?.carryingCorpseId)state.huntRites={...state.huntRites,carryingCorpseId:null};
   player.invulnerability = 0.55;
@@ -8502,6 +8558,7 @@ function updateRegularEnemy(
   const visualContact =
     clamp(1 - targetDistance / visionRange, 0, 1) *
     cloakVisibility *
+    (player.cloaked ? 1 : state.camouflageV146 ?? 1) *
     facingVisibility *
     (1 - coverOcclusion * 0.9);
   const thermalContact =
