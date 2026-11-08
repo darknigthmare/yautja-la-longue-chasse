@@ -1,0 +1,15 @@
+{
+  "command": [
+    "node",
+    "scripts/snapshot-runtime-v113.mjs",
+    "--check",
+    "docs/qa/current-integration-20261103/runtime-inputs.json"
+  ],
+  "startedAt": "2026-11-08T17:58:37.321475+00:00",
+  "completedAt": "2026-11-08T17:58:59.843163+00:00",
+  "durationSeconds": 22.522,
+  "exitCode": -9,
+  "log": "runtime-check.log.gz",
+  "rawSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "gzipSha256": "f61f27bd17de546264aa58f40f3aafaac7021e0ef69c17f6b1b4cd7664a037ec"
+}

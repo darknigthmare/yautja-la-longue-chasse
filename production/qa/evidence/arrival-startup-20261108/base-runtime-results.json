@@ -1,0 +1,31 @@
+[
+  {
+    "command": [
+      "node",
+      "scripts/snapshot-runtime-v113.mjs",
+      "--write",
+      "docs/qa/current-integration-20261103/runtime-inputs.json"
+    ],
+    "exitCode": 0,
+    "durationSeconds": 6.919,
+    "log": "/workspace/scratch/fef9f6ae239f/publication/startup-base-runtime-write.log",
+    "sha256": "224b660a7ca31931c8f468a5d5cfb7e2a29b50becbf181bfeb911baa2d764b72"
+  },
+  {
+    "command": [
+      "node",
+      "scripts/snapshot-runtime-v113.mjs",
+      "--check",
+      "docs/qa/current-integration-20261103/runtime-inputs.json"
+    ],
+    "exitCode": 0,
+    "durationSeconds": 5.581,
+    "log": "/workspace/scratch/fef9f6ae239f/publication/startup-base-runtime-check.log",
+    "sha256": "9ddffefe3cabd400a07e154fcce06c4eb810aeb9208d209f243c2c90b430aec5"
+  },
+  {
+    "manifest": "/workspace/scratch/fef9f6ae239f/publication/ci-runtime/docs/qa/current-integration-20261103/runtime-inputs.json",
+    "bytes": 408687,
+    "sha256": "57d18470342a21d586e34022ac189f5d37a8f043e3f7b1e6554fa3394a583eeb"
+  }
+]

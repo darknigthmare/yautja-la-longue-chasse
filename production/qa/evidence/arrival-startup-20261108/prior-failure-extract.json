@@ -1,0 +1,1007 @@
+{
+  "scope": "Selected original report fields; the full report is identified by its original bytes and SHA-256.",
+  "originalReportBytes": 15373468,
+  "originalReportSha256": "21dc5ff79ae462e7c9127964d1f6edb5fdd2956ad6c9f44023ea06c82e200c81",
+  "schema": 1,
+  "startedAt": "2026-11-08T17:28:03.824Z",
+  "finishedAt": "2026-11-08T17:42:06.338Z",
+  "sourceCommit": "bdc2b4af6d124519ac3539b6b1eef279d7b0bde7",
+  "workingTreeDirty": false,
+  "workingTreeStatus": "",
+  "sourceHashes": {
+    "app/dev/client.tsx": "d0039f33b6b242058828f91a7099902a4ccee3116eda1ec658ff34dfc0971dde",
+    "app/dev/destinations.ts": "0b756432bb3bd2619707ca46bc85023d5f015631d108c68e33d7ace9cb6acb25",
+    "app/dev/session.tsx": "857f9825d7889ea5ba8320ee197a26c702d153263f249c52908e4947349ab6bc",
+    "app/game/HuntCanvas.tsx": "8cb850ed2854a369f9ff11ff7a3c1ab0e62c1b323b01c9ce12ee2cbda93302a5",
+    "app/game/HunterRigPreview.tsx": "98cf20082796c1ab7e788e6e7416e72a45906956f7b29bac57538fcc2fa6fc4a",
+    "app/game/PlanetArrivalCinematic.module.css": "37aa7bb09b144de888c86cdbde731ad18aa7d3b08ab452d01e1b4d11d5380fc3",
+    "app/game/PlanetArrivalCinematic.tsx": "29532812b171fc06d083e937268d164c9b24501d9df3a04a95cf7d5c53d2ed7c",
+    "app/game/hunterRig.ts": "653c03db8a3cc2ad6664725d501ac58866ff58097239aab50e880d019cd14904",
+    "app/game/shipCatalogue.ts": "458d077948c3f3e2f867fdc441e64423808cfb0cea54582b0c61762b1705d396",
+    "app/game/systems/huntInsertion.ts": "1244239e249fdb937422ace051d64e5227db14542f35db1743af34a38fab07e0",
+    "app/game/systems/planetArrival.ts": "ee21998d76714956e10bdebc3b25c36238ee7f0e67940a032fea87eb9b799259",
+    "app/game/systems/planetArrivalArt.ts": "f72ceaa2b6ae8e350ab76a74e61dd11d70fe9a92a95afd5e56df363057277c99",
+    "app/game/systems/planetArrivalAudio.ts": "7ce287c0bda6938fb13d91f849d13730e71b449d8c92f771619552c966ce8992",
+    "app/game/systems/planetArrivalGroundArt.ts": "d0d7f257757c458b8944a8ddd95dc9bea9cc250083899918fc6f5ccaab421e22",
+    "app/game/systems/planetArrivalPodArt.ts": "d056258f7aef9421f8a6c777e6c657c1d3917be7d691bbbfe00a97a56889f5c7",
+    "app/game/systems/planetArrivalPodFlight.ts": "991ee6e31a3b0a25e59c7e89296a69e5073159e7fa98158c777ddb2c0f77d3dd",
+    "app/game/systems/planetArrivalPresentation.ts": "20789a02f321f4533e48408663a81140273b78d74c52f57e60ed4967fce75831",
+    "app/game/systems/planetArrivalRun.ts": "81fde7e75834779c9cde9b57836de6260aa1db24fe3b5671bb36950db2251bd4",
+    "app/game/systems/planetArrivalShipEffects.ts": "ed77b5c8757cc7c6b78e63339564c7107058eb6fa37c97d621347031ce8f63e6",
+    "app/game/systems/planetArrivalShipMotion.ts": "a1b89c7b892e732aac281596ab038ef0961306bfd48e5963facc07e23bf93e0b",
+    "app/game/systems/planetArrivalShipMotionCalibrations.ts": "c6fb47c806fdcccaa0b898fd6b60e5477ce5ba2906196548673968426fd11848",
+    "app/game/systems/planetArrivalSpatial.ts": "bce53ce72cff85bdef9d9351066f70d1920a385d131751bf0bf71da430a7c020",
+    "app/game/systems/planetArrivalVfx.ts": "b576480a7cd167df926b22d0c3d4fcddfda5084388e89d07e86c946235947c6c",
+    "app/game/systems/planetArrivalVfxArt.ts": "65a5c4ccaa2b554dfa95465bcec7c544c9d04982837d3ce2ec2d20dabde7ecab",
+    "app/game/systems/planetInsertion.ts": "d34d3cac8ddf05980d778f8f4028976b22bd846c807dfcf39457b9ec8af76b94",
+    "app/game/systems/shipInsertionEnergy.ts": "00e9a554acee76c3f0e186ad376dc87bf46b4f0bc8b5999815716109080380ca",
+    "app/game/worldScreens.ts": "04854a87a575630fedcc6b0ac641de942c7f04e87e448da0767ef558e930d495",
+    "scripts/qa-planet-arrival-spatial.mjs": "cba2f73bc99a049c9974e521eac2f1d66f1c44c31779b464c5eeaa666b507c90",
+    "scripts/qa-planet-arrival-x11.py": "93d7dc8628c44f8710bdf21accfd8401eaf5f60737dcb254f6979cf70d2aa285"
+  },
+  "checks": [
+    {
+      "name": "desktop: prepared native ROI preserves paused pixels and CSS geometry",
+      "passed": true
+    },
+    {
+      "name": "desktop: ship-triad prepared native ROI preserves paused pixels and CSS geometry",
+      "passed": true
+    },
+    {
+      "name": "desktop: ship-cloaked-triad prepared native ROI preserves paused pixels and CSS geometry",
+      "passed": true
+    },
+    {
+      "name": "desktop: ship-solo real flight, contact and complete disembarkation",
+      "passed": true
+    },
+    {
+      "name": "desktop: pod-triad real flight, contact and complete disembarkation",
+      "passed": true
+    },
+    {
+      "name": "desktop: ship-triad real flight, contact and complete disembarkation",
+      "passed": true
+    },
+    {
+      "name": "desktop: ship-cloaked-triad real flight, contact and complete disembarkation",
+      "passed": true
+    },
+    {
+      "name": "desktop: orbit actual layers, anchors and motion",
+      "passed": true
+    },
+    {
+      "name": "desktop: title actual layers, anchors and motion",
+      "passed": true
+    },
+    {
+      "name": "desktop: carrier actual layers, anchors and motion",
+      "passed": true
+    },
+    {
+      "name": "desktop: release actual layers, anchors and motion",
+      "passed": true
+    },
+    {
+      "name": "desktop: descent actual layers, anchors and motion",
+      "passed": true
+    },
+    {
+      "name": "desktop: atmosphere actual layers, anchors and motion",
+      "passed": true
+    },
+    {
+      "name": "desktop: landing actual layers, anchors and motion",
+      "passed": true
+    },
+    {
+      "name": "desktop: egress actual layers, anchors and motion",
+      "passed": true
+    },
+    {
+      "name": "desktop: Nivalis-K own planet, landscape and grounded emergence",
+      "passed": true
+    },
+    {
+      "name": "desktop: Cinder-12 own planet, landscape and grounded emergence",
+      "passed": true
+    },
+    {
+      "name": "desktop: Naraka-Delta own planet, landscape and grounded emergence",
+      "passed": true
+    },
+    {
+      "name": "desktop: Serekh-9 own planet, landscape and grounded emergence",
+      "passed": true
+    },
+    {
+      "name": "desktop: Pelagos-M own planet, landscape and grounded emergence",
+      "passed": true
+    },
+    {
+      "name": "desktop: Mycora-V own planet, landscape and grounded emergence",
+      "passed": true
+    },
+    {
+      "name": "desktop: Acheron-Sigma own planet, landscape and grounded emergence",
+      "passed": true
+    },
+    {
+      "name": "desktop: avp-predator-mothership source orientation and attached release effect",
+      "passed": true
+    },
+    {
+      "name": "desktop: avpr-scout-ship source orientation and attached release effect",
+      "passed": true
+    },
+    {
+      "name": "desktop: wolf-ship source orientation and attached release effect",
+      "passed": true
+    },
+    {
+      "name": "desktop: fugitive-spaceship source orientation and attached release effect",
+      "passed": true
+    },
+    {
+      "name": "desktop: upgrade-spaceship source orientation and attached release effect",
+      "passed": true
+    },
+    {
+      "name": "desktop: feral-spaceship source orientation and attached release effect",
+      "passed": true
+    },
+    {
+      "name": "desktop: wolf-ship measured hull support and attached exit on the real surface",
+      "passed": true
+    },
+    {
+      "name": "desktop: avpr-scout-ship measured hull support and attached exit on the real surface",
+      "passed": true
+    },
+    {
+      "name": "mobile: prepared native ROI preserves paused pixels and CSS geometry",
+      "passed": true
+    },
+    {
+      "name": "mobile: ship-triad prepared native ROI preserves paused pixels and CSS geometry",
+      "passed": true
+    },
+    {
+      "name": "mobile: ship-cloaked-triad prepared native ROI preserves paused pixels and CSS geometry",
+      "passed": true
+    },
+    {
+      "name": "mobile: ship-solo real flight, contact and complete disembarkation",
+      "passed": true
+    },
+    {
+      "name": "mobile: pod-triad real flight, contact and complete disembarkation",
+      "passed": true
+    },
+    {
+      "name": "mobile: ship-triad real flight, contact and complete disembarkation",
+      "passed": true
+    },
+    {
+      "name": "mobile: ship-cloaked-triad real flight, contact and complete disembarkation",
+      "passed": true
+    },
+    {
+      "name": "mobile: orbit actual layers, anchors and motion",
+      "passed": true
+    },
+    {
+      "name": "mobile: title actual layers, anchors and motion",
+      "passed": true
+    },
+    {
+      "name": "mobile: carrier actual layers, anchors and motion",
+      "passed": true
+    },
+    {
+      "name": "mobile: release actual layers, anchors and motion",
+      "passed": true
+    },
+    {
+      "name": "mobile: descent actual layers, anchors and motion",
+      "passed": true
+    },
+    {
+      "name": "mobile: atmosphere actual layers, anchors and motion",
+      "passed": true
+    },
+    {
+      "name": "mobile: landing actual layers, anchors and motion",
+      "passed": true
+    },
+    {
+      "name": "mobile: egress actual layers, anchors and motion",
+      "passed": true
+    },
+    {
+      "name": "mobile: Nivalis-K own planet, landscape and grounded emergence",
+      "passed": true
+    },
+    {
+      "name": "mobile: Cinder-12 own planet, landscape and grounded emergence",
+      "passed": true
+    },
+    {
+      "name": "mobile: Naraka-Delta own planet, landscape and grounded emergence",
+      "passed": true
+    },
+    {
+      "name": "mobile: Serekh-9 own planet, landscape and grounded emergence",
+      "passed": true
+    },
+    {
+      "name": "mobile: Pelagos-M own planet, landscape and grounded emergence",
+      "passed": true
+    },
+    {
+      "name": "mobile: Mycora-V own planet, landscape and grounded emergence",
+      "passed": true
+    },
+    {
+      "name": "mobile: Acheron-Sigma own planet, landscape and grounded emergence",
+      "passed": true
+    },
+    {
+      "name": "mobile: avp-predator-mothership source orientation and attached release effect",
+      "passed": true
+    },
+    {
+      "name": "mobile: avpr-scout-ship source orientation and attached release effect",
+      "passed": true
+    },
+    {
+      "name": "mobile: wolf-ship source orientation and attached release effect",
+      "passed": true
+    },
+    {
+      "name": "mobile: fugitive-spaceship source orientation and attached release effect",
+      "passed": true
+    },
+    {
+      "name": "mobile: upgrade-spaceship source orientation and attached release effect",
+      "passed": true
+    },
+    {
+      "name": "mobile: feral-spaceship source orientation and attached release effect",
+      "passed": true
+    },
+    {
+      "name": "mobile: wolf-ship measured hull support and attached exit on the real surface",
+      "passed": true
+    },
+    {
+      "name": "mobile: avpr-scout-ship measured hull support and attached exit on the real surface",
+      "passed": true
+    },
+    {
+      "name": "desktop: pod petals stay attached through deployment, pause and reduced motion",
+      "passed": true
+    },
+    {
+      "name": "mobile: pod petals stay attached through deployment, pause and reduced motion",
+      "passed": true
+    },
+    {
+      "name": "Reduced motion preserves sockets, ground contact and the native cut duration",
+      "passed": true
+    },
+    {
+      "name": "Reduced motion preserves every explicit insertion method and complete formation",
+      "passed": true
+    },
+    {
+      "name": "Optical camouflage pauses with the real clock and keeps reduced-motion refraction static",
+      "passed": true
+    },
+    {
+      "name": "Production /dev runs all eight shots naturally, with real resize and exactly one hunt",
+      "passed": false,
+      "message": "locator.waitFor: Timeout 20000ms exceeded.\nCall log:\n  - waiting for locator('[data-arrival-status=\"playing\"]') to be visible\n"
+    }
+  ],
+  "passed": false,
+  "failure": {
+    "check": "Production /dev runs all eight shots naturally, with real resize and exactly one hunt",
+    "message": "locator.waitFor: Timeout 20000ms exceeded.\nCall log:\n  - waiting for locator('[data-arrival-status=\"playing\"]') to be visible\n",
+    "stack": "locator.waitFor: Timeout 20000ms exceeded.\nCall log:\n  - waiting for locator('[data-arrival-status=\"playing\"]') to be visible\n\n    at ready (/home/runner/work/yautja-la-longue-chasse/yautja-la-longue-chasse/scripts/qa-planet-arrival-spatial.mjs:2166:59)\n    at async file:///home/runner/work/yautja-la-longue-chasse/yautja-la-longue-chasse/scripts/qa-planet-arrival-spatial.mjs:2702:5\n    at async check (/home/runner/work/yautja-la-longue-chasse/yautja-la-longue-chasse/scripts/qa-planet-arrival-spatial.mjs:262:9)\n    at async file:///home/runner/work/yautja-la-longue-chasse/yautja-la-longue-chasse/scripts/qa-planet-arrival-spatial.mjs:2684:3",
+    "frame": {
+      "run": "dev-arrival:jungle-vey:2000-01-01T00:00:00.044Z",
+      "shot": "orbit",
+      "status": "paused",
+      "elapsedMs": 0,
+      "imageReadiness": {
+        "budgetMs": 500,
+        "startedAt": 0,
+        "endedAt": 0,
+        "waitedMs": 0,
+        "reason": "ready",
+        "initialInvalidImages": [],
+        "invalidImages": []
+      },
+      "reducedMotion": false,
+      "method": "pod",
+      "team": "solo",
+      "shipCloak": false,
+      "shipViewsUnavailable": 0,
+      "sceneShipCloak": false,
+      "cloakPhase": "off",
+      "cloakHulls": [],
+      "contact": false,
+      "scene": {
+        "x": 1,
+        "y": 346.984375,
+        "width": 1438,
+        "height": 660,
+        "right": 1439,
+        "bottom": 1006.984375
+      },
+      "stage": {
+        "x": 133.3333282470703,
+        "y": 346.984375,
+        "width": 1173.3333740234375,
+        "height": 660,
+        "right": 1306.6667022705078,
+        "bottom": 1006.984375
+      },
+      "stageLayout": {
+        "width": 1280,
+        "height": 720,
+        "transform": "matrix(0.916667, 0, 0, 0.916667, 132.333, 0)"
+      },
+      "camera": {
+        "x": 133.3333282470703,
+        "y": -368.015625,
+        "width": 2640,
+        "height": 1485,
+        "right": 2773.3333282470703,
+        "bottom": 1116.984375
+      },
+      "cameraTransform": "matrix(2.25, 0, 0, 2.25, 0, -780)",
+      "groundScale": 2.06250075,
+      "flightPod": null,
+      "anchors": {
+        "ground-reference": {
+          "x": 133.3333282470703,
+          "y": 918.984375,
+          "width": 0,
+          "height": 0,
+          "right": 133.3333282470703,
+          "bottom": 918.984375,
+          "opacity": 0,
+          "vfxSource": null
+        },
+        "ground-capsule-reference": {
+          "x": 399.39581298828125,
+          "y": 918.984375,
+          "width": 0,
+          "height": 0,
+          "right": 399.39581298828125,
+          "bottom": 918.984375,
+          "opacity": 0,
+          "vfxSource": null
+        },
+        "capsule-threshold": {
+          "x": 397.46221923828125,
+          "y": 836.484375,
+          "width": 0,
+          "height": 0,
+          "right": 397.46221923828125,
+          "bottom": 836.484375,
+          "opacity": 0,
+          "vfxSource": null
+        },
+        "hunter-support": {
+          "x": 397.46221923828125,
+          "y": 836.484375,
+          "width": 0,
+          "height": 0,
+          "right": 397.46221923828125,
+          "bottom": 836.484375,
+          "opacity": 0,
+          "vfxSource": null
+        },
+        "hunter-feet": {
+          "x": 397.44970703125,
+          "y": 836.5084228515625,
+          "width": 0,
+          "height": 0,
+          "right": 397.44970703125,
+          "bottom": 836.5084228515625,
+          "opacity": 0,
+          "vfxSource": null
+        }
+      },
+      "anchorIds": [
+        "ground-reference",
+        "ground-capsule-reference",
+        "capsule-threshold",
+        "hunter-support",
+        "hunter-feet"
+      ],
+      "lights": [],
+      "members": [
+        {
+          "id": "player",
+          "name": "Chasseur",
+          "stage": "hidden",
+          "contact": "threshold",
+          "portal": "clear",
+          "opacity": 0,
+          "x": 335.26141357421875,
+          "y": 658.6409912109375,
+          "width": 124.40167236328125,
+          "height": 186.58984375,
+          "right": 459.6630859375,
+          "bottom": 845.2308349609375,
+          "clip": {
+            "value": "none",
+            "target": null,
+            "parts": 0
+          },
+          "rig": {
+            "preset": "jungle-hunter",
+            "headStyle": "reference",
+            "armor": "hunter",
+            "morph": "classic",
+            "sources": [
+              "/game/assets/v3/actors/yautja/hunter/dreads/registered/classic.webp",
+              "/game/assets/v3/actors/yautja/hunter/dreads/registered/classic.webp",
+              "/game/assets/v3/actors/yautja/hunter/dreads/registered/classic.webp",
+              "/game/assets/v3/actors/yautja/hunter/dreads/registered/classic.webp",
+              "/game/assets/v3/actors/yautja/hunter/dreads/registered/classic.webp",
+              "/game/assets/v3/actors/yautja/hunter/dreads/registered/classic.webp",
+              "/game/assets/v3/actors/yautja/hunter/dreads/registered/classic.webp",
+              "/game/assets/v3/actors/yautja/hunter/trophies/registered/trophy-spine.webp",
+              "/game/assets/v3/actors/yautja/hunter/trophies/registered/trophy-skull.webp",
+              "/game/assets/v3/actors/yautja/hunter/trophies/registered/trophy-bindings.webp",
+              "/game/assets/v3/actors/yautja/hunter/body/classic/parts/thigh-back.webp",
+              "/game/assets/v3/actors/yautja/hunter/body/classic/net/parts/thigh-back.webp",
+              "/game/assets/v3/actors/yautja/hunter/body/classic/parts/shin-back.webp",
+              "/game/assets/v3/actors/yautja/hunter/body/classic/net/parts/shin-back.webp",
+              "/game/assets/v3/actors/yautja/hunter/body/classic/parts/foot-back.webp",
+              "/game/assets/v3/actors/yautja/hunter/body/classic/parts/upper-arm-back.webp",
+              "/game/assets/v3/actors/yautja/hunter/body/classic/net/parts/upper-arm-back.webp",
+              "/game/assets/v3/actors/yautja/hunter/body/classic/parts/lower-arm-back.webp",
+              "/game/assets/v3/actors/yautja/hunter/body/classic/net/parts/lower-arm-back.webp",
+              "/game/assets/v3/actors/yautja/hunter/body/classic/parts/hand-back.webp",
+              "/game/assets/v3/actors/yautja/hunter/body/classic/net/parts/hand-back.webp",
+              "/game/assets/v3/actors/yautja/hunter/body/classic/parts/pelvis.webp",
+              "/game/assets/v3/actors/yautja/hunter/body/classic/net/parts/pelvis.webp",
+              "/game/assets/v3/actors/yautja/hunter/body/classic/parts/torso.webp",
+              "/game/assets/v3/actors/yautja/hunter/body/classic/net/parts/torso.webp",
+              "/game/sprites/v62/heads/classic-head.png",
+              "/game/assets/v3/actors/yautja/hunter/body/classic/parts/thigh-front.webp",
+              "/game/assets/v3/actors/yautja/hunter/body/classic/net/parts/thigh-front.webp",
+              "/game/assets/v3/actors/yautja/hunter/body/classic/parts/shin-front.webp",
+              "/game/assets/v3/actors/yautja/hunter/body/classic/net/parts/shin-front.webp",
+              "/game/assets/v3/actors/yautja/hunter/body/classic/parts/foot-front.webp",
+              "/game/assets/v3/actors/yautja/hunter/body/classic/parts/upper-arm-front.webp",
+              "/game/assets/v3/actors/yautja/hunter/body/classic/net/parts/upper-arm-front.webp",
+              "/game/assets/v3/actors/yautja/hunter/body/classic/parts/lower-arm-front.webp",
+              "/game/assets/v3/actors/yautja/hunter/body/classic/net/parts/lower-arm-front.webp",
+              "/game/assets/v3/actors/yautja/hunter/body/classic/parts/hand-front.webp",
+              "/game/assets/v3/actors/yautja/hunter/body/classic/net/parts/hand-front.webp",
+              "/game/assets/v3/actors/yautja/hunter/armor/registered/chest-classic.webp",
+              "/game/assets/v3/actors/yautja/hunter/armor/registered/shoulder-classic.webp",
+              "/game/assets/v3/actors/yautja/hunter/armor/registered/shoulder-classic.webp",
+              "/game/assets/v3/actors/yautja/hunter/armor/registered/thigh.webp",
+              "/game/assets/v3/actors/yautja/hunter/armor/registered/thigh.webp",
+              "/game/assets/v3/actors/yautja/hunter/armor/registered/thigh-lower.webp",
+              "/game/assets/v3/actors/yautja/hunter/armor/registered/thigh-lower.webp",
+              "/game/assets/v3/actors/yautja/hunter/armor/registered/shin.webp",
+              "/game/assets/v3/actors/yautja/hunter/armor/registered/shin.webp",
+              "/game/assets/v3/actors/yautja/hunter/armor/registered/knee.webp",
+              "/game/assets/v3/actors/yautja/hunter/armor/registered/thigh-lower.webp",
+              "/game/assets/v3/actors/yautja/hunter/armor/registered/thigh-lower.webp",
+              "/game/assets/v3/actors/yautja/hunter/armor/registered/shin.webp",
+              "/game/assets/v3/actors/yautja/hunter/armor/registered/shin.webp",
+              "/game/assets/v3/actors/yautja/hunter/armor/registered/bracer.webp",
+              "/game/assets/v3/actors/yautja/hunter/armor/registered/belt.webp",
+              "/game/assets/v3/actors/yautja/hunter/dreads/registered/classic.webp",
+              "/game/assets/v3/actors/yautja/hunter/dreads/registered/classic.webp",
+              "/game/assets/v3/actors/yautja/hunter/dreads/registered/classic.webp",
+              "/game/assets/v3/actors/yautja/hunter/gear/registered/motion-sensor.webp",
+              "/game/assets/v3/actors/yautja/hunter/gear/registered/audio-decoy.webp",
+              "/game/sprites/v62/masks/jungle.png",
+              "/game/assets/v3/actors/yautja/hunter/equipment/registered/mount.webp",
+              "/game/assets/v3/actors/yautja/hunter/equipment/registered/caster-upper.webp",
+              "/game/assets/v3/actors/yautja/hunter/equipment/registered/caster-lower.webp",
+              "/game/assets/v3/actors/yautja/hunter/equipment/registered/yoke.webp",
+              "/game/assets/v3/actors/yautja/hunter/equipment/registered/cannon.webp",
+              "/game/assets/v3/actors/yautja/hunter/equipment/registered/barrel.webp",
+              "/game/assets/v3/actors/yautja/hunter/equipment/registered/muzzle.webp",
+              "/game/assets/v3/actors/yautja/hunter/equipment/registered/laser.webp",
+              "/game/assets/v139/rig-gauntlets/jungle-hunter/base.svg",
+              "/game/assets/v139/rig-gauntlets/jungle-hunter/lid.svg",
+              "/game/assets/v3/actors/yautja/hunter/weapons/registered/combistick.webp"
+            ]
+          }
+        }
+      ],
+      "flightPods": [],
+      "groundPods": [],
+      "groundShip": null,
+      "hunterStage": "hidden",
+      "hunterContact": "threshold",
+      "hunterPortal": "clear",
+      "hunterClip": {
+        "value": "none",
+        "target": null,
+        "parts": 0
+      },
+      "impactMaterial": null,
+      "vents": [],
+      "debris": [],
+      "planet": "planet-oseris-iv",
+      "ship": "classic-predator-spaceship",
+      "planetImage": null,
+      "groundFrame": "0,0,1672,430",
+      "images": [
+        {
+          "path": "/game/planet-arrival/v1/space.webp",
+          "complete": true,
+          "width": 1672,
+          "height": 941
+        },
+        {
+          "path": "/game/assets/v3/actors/yautja/hunter/dreads/registered/classic.webp",
+          "complete": true,
+          "width": 256,
+          "height": 384
+        },
+        {
+          "path": "/game/assets/v3/actors/yautja/hunter/dreads/registered/classic.webp",
+          "complete": true,
+          "width": 256,
+          "height": 384
+        },
+        {
+          "path": "/game/assets/v3/actors/yautja/hunter/dreads/registered/classic.webp",
+          "complete": true,
+          "width": 256,
+          "height": 384
+        },
+        {
+          "path": "/game/assets/v3/actors/yautja/hunter/dreads/registered/classic.webp",
+          "complete": true,
+          "width": 256,
+          "height": 384
+        },
+        {
+          "path": "/game/assets/v3/actors/yautja/hunter/dreads/registered/classic.webp",
+          "complete": true,
+          "width": 256,
+          "height": 384
+        },
+        {
+          "path": "/game/assets/v3/actors/yautja/hunter/dreads/registered/classic.webp",
+          "complete": true,
+          "width": 256,
+          "height": 384
+        },
+        {
+          "path": "/game/assets/v3/actors/yautja/hunter/dreads/registered/classic.webp",
+          "complete": true,
+          "width": 256,
+          "height": 384
+        },
+        {
+          "path": "/game/assets/v3/actors/yautja/hunter/trophies/registered/trophy-spine.webp",
+          "complete": true,
+          "width": 256,
+          "height": 384
+        },
+        {
+          "path": "/game/assets/v3/actors/yautja/hunter/trophies/registered/trophy-skull.webp",
+          "complete": true,
+          "width": 256,
+          "height": 384
+        },
+        {
+          "path": "/game/assets/v3/actors/yautja/hunter/trophies/registered/trophy-bindings.webp",
+          "complete": true,
+          "width": 256,
+          "height": 384
+        },
+        {
+          "path": "/game/assets/v3/actors/yautja/hunter/body/classic/parts/thigh-back.webp",
+          "complete": true,
+          "width": 256,
+          "height": 384
+        },
+        {
+          "path": "/game/assets/v3/actors/yautja/hunter/body/classic/net/parts/thigh-back.webp",
+          "complete": true,
+          "width": 256,
+          "height": 384
+        },
+        {
+          "path": "/game/assets/v3/actors/yautja/hunter/body/classic/parts/shin-back.webp",
+          "complete": true,
+          "width": 256,
+          "height": 384
+        },
+        {
+          "path": "/game/assets/v3/actors/yautja/hunter/body/classic/net/parts/shin-back.webp",
+          "complete": true,
+          "width": 256,
+          "height": 384
+        },
+        {
+          "path": "/game/assets/v3/actors/yautja/hunter/body/classic/parts/foot-back.webp",
+          "complete": true,
+          "width": 256,
+          "height": 384
+        },
+        {
+          "path": "/game/assets/v3/actors/yautja/hunter/body/classic/parts/upper-arm-back.webp",
+          "complete": true,
+          "width": 256,
+          "height": 384
+        },
+        {
+          "path": "/game/assets/v3/actors/yautja/hunter/body/classic/net/parts/upper-arm-back.webp",
+          "complete": true,
+          "width": 256,
+          "height": 384
+        },
+        {
+          "path": "/game/assets/v3/actors/yautja/hunter/body/classic/parts/lower-arm-back.webp",
+          "complete": true,
+          "width": 256,
+          "height": 384
+        },
+        {
+          "path": "/game/assets/v3/actors/yautja/hunter/body/classic/net/parts/lower-arm-back.webp",
+          "complete": true,
+          "width": 256,
+          "height": 384
+        },
+        {
+          "path": "/game/assets/v3/actors/yautja/hunter/body/classic/parts/hand-back.webp",
+          "complete": true,
+          "width": 256,
+          "height": 384
+        },
+        {
+          "path": "/game/assets/v3/actors/yautja/hunter/body/classic/net/parts/hand-back.webp",
+          "complete": true,
+          "width": 256,
+          "height": 384
+        },
+        {
+          "path": "/game/assets/v3/actors/yautja/hunter/body/classic/parts/pelvis.webp",
+          "complete": true,
+          "width": 256,
+          "height": 384
+        },
+        {
+          "path": "/game/assets/v3/actors/yautja/hunter/body/classic/net/parts/pelvis.webp",
+          "complete": true,
+          "width": 256,
+          "height": 384
+        },
+        {
+          "path": "/game/assets/v3/actors/yautja/hunter/body/classic/parts/torso.webp",
+          "complete": true,
+          "width": 256,
+          "height": 384
+        },
+        {
+          "path": "/game/assets/v3/actors/yautja/hunter/body/classic/net/parts/torso.webp",
+          "complete": true,
+          "width": 256,
+          "height": 384
+        },
+        {
+          "path": "/game/sprites/v62/heads/classic-head.png",
+          "complete": true,
+          "width": 1254,
+          "height": 1254
+        },
+        {
+          "path": "/game/assets/v3/actors/yautja/hunter/body/classic/parts/thigh-front.webp",
+          "complete": true,
+          "width": 256,
+          "height": 384
+        },
+        {
+          "path": "/game/assets/v3/actors/yautja/hunter/body/classic/net/parts/thigh-front.webp",
+          "complete": true,
+          "width": 256,
+          "height": 384
+        },
+        {
+          "path": "/game/assets/v3/actors/yautja/hunter/body/classic/parts/shin-front.webp",
+          "complete": true,
+          "width": 256,
+          "height": 384
+        },
+        {
+          "path": "/game/assets/v3/actors/yautja/hunter/body/classic/net/parts/shin-front.webp",
+          "complete": true,
+          "width": 256,
+          "height": 384
+        },
+        {
+          "path": "/game/assets/v3/actors/yautja/hunter/body/classic/parts/foot-front.webp",
+          "complete": true,
+          "width": 256,
+          "height": 384
+        },
+        {
+          "path": "/game/assets/v3/actors/yautja/hunter/body/classic/parts/upper-arm-front.webp",
+          "complete": true,
+          "width": 256,
+          "height": 384
+        },
+        {
+          "path": "/game/assets/v3/actors/yautja/hunter/body/classic/net/parts/upper-arm-front.webp",
+          "complete": true,
+          "width": 256,
+          "height": 384
+        },
+        {
+          "path": "/game/assets/v3/actors/yautja/hunter/body/classic/parts/lower-arm-front.webp",
+          "complete": true,
+          "width": 256,
+          "height": 384
+        },
+        {
+          "path": "/game/assets/v3/actors/yautja/hunter/body/classic/net/parts/lower-arm-front.webp",
+          "complete": true,
+          "width": 256,
+          "height": 384
+        },
+        {
+          "path": "/game/assets/v3/actors/yautja/hunter/body/classic/parts/hand-front.webp",
+          "complete": true,
+          "width": 256,
+          "height": 384
+        },
+        {
+          "path": "/game/assets/v3/actors/yautja/hunter/body/classic/net/parts/hand-front.webp",
+          "complete": true,
+          "width": 256,
+          "height": 384
+        },
+        {
+          "path": "/game/assets/v3/actors/yautja/hunter/armor/registered/chest-classic.webp",
+          "complete": true,
+          "width": 256,
+          "height": 384
+        },
+        {
+          "path": "/game/assets/v3/actors/yautja/hunter/armor/registered/shoulder-classic.webp",
+          "complete": true,
+          "width": 256,
+          "height": 384
+        },
+        {
+          "path": "/game/assets/v3/actors/yautja/hunter/armor/registered/shoulder-classic.webp",
+          "complete": true,
+          "width": 256,
+          "height": 384
+        },
+        {
+          "path": "/game/assets/v3/actors/yautja/hunter/armor/registered/thigh.webp",
+          "complete": true,
+          "width": 256,
+          "height": 384
+        },
+        {
+          "path": "/game/assets/v3/actors/yautja/hunter/armor/registered/thigh.webp",
+          "complete": true,
+          "width": 256,
+          "height": 384
+        },
+        {
+          "path": "/game/assets/v3/actors/yautja/hunter/armor/registered/thigh-lower.webp",
+          "complete": true,
+          "width": 256,
+          "height": 384
+        },
+        {
+          "path": "/game/assets/v3/actors/yautja/hunter/armor/registered/thigh-lower.webp",
+          "complete": true,
+          "width": 256,
+          "height": 384
+        },
+        {
+          "path": "/game/assets/v3/actors/yautja/hunter/armor/registered/shin.webp",
+          "complete": true,
+          "width": 256,
+          "height": 384
+        },
+        {
+          "path": "/game/assets/v3/actors/yautja/hunter/armor/registered/shin.webp",
+          "complete": true,
+          "width": 256,
+          "height": 384
+        },
+        {
+          "path": "/game/assets/v3/actors/yautja/hunter/armor/registered/knee.webp",
+          "complete": true,
+          "width": 256,
+          "height": 384
+        },
+        {
+          "path": "/game/assets/v3/actors/yautja/hunter/armor/registered/thigh-lower.webp",
+          "complete": true,
+          "width": 256,
+          "height": 384
+        },
+        {
+          "path": "/game/assets/v3/actors/yautja/hunter/armor/registered/thigh-lower.webp",
+          "complete": true,
+          "width": 256,
+          "height": 384
+        },
+        {
+          "path": "/game/assets/v3/actors/yautja/hunter/armor/registered/shin.webp",
+          "complete": true,
+          "width": 256,
+          "height": 384
+        },
+        {
+          "path": "/game/assets/v3/actors/yautja/hunter/armor/registered/shin.webp",
+          "complete": true,
+          "width": 256,
+          "height": 384
+        },
+        {
+          "path": "/game/assets/v3/actors/yautja/hunter/armor/registered/bracer.webp",
+          "complete": true,
+          "width": 256,
+          "height": 384
+        },
+        {
+          "path": "/game/assets/v3/actors/yautja/hunter/armor/registered/belt.webp",
+          "complete": true,
+          "width": 256,
+          "height": 384
+        },
+        {
+          "path": "/game/assets/v3/actors/yautja/hunter/dreads/registered/classic.webp",
+          "complete": true,
+          "width": 256,
+          "height": 384
+        },
+        {
+          "path": "/game/assets/v3/actors/yautja/hunter/dreads/registered/classic.webp",
+          "complete": true,
+          "width": 256,
+          "height": 384
+        },
+        {
+          "path": "/game/assets/v3/actors/yautja/hunter/dreads/registered/classic.webp",
+          "complete": true,
+          "width": 256,
+          "height": 384
+        },
+        {
+          "path": "/game/assets/v3/actors/yautja/hunter/gear/registered/motion-sensor.webp",
+          "complete": true,
+          "width": 256,
+          "height": 384
+        },
+        {
+          "path": "/game/assets/v3/actors/yautja/hunter/gear/registered/audio-decoy.webp",
+          "complete": true,
+          "width": 256,
+          "height": 384
+        },
+        {
+          "path": "/game/sprites/v62/masks/jungle.png",
+          "complete": true,
+          "width": 1254,
+          "height": 1254
+        },
+        {
+          "path": "/game/assets/v3/actors/yautja/hunter/equipment/registered/mount.webp",
+          "complete": true,
+          "width": 256,
+          "height": 384
+        },
+        {
+          "path": "/game/assets/v3/actors/yautja/hunter/equipment/registered/caster-upper.webp",
+          "complete": true,
+          "width": 256,
+          "height": 384
+        },
+        {
+          "path": "/game/assets/v3/actors/yautja/hunter/equipment/registered/caster-lower.webp",
+          "complete": true,
+          "width": 256,
+          "height": 384
+        },
+        {
+          "path": "/game/assets/v3/actors/yautja/hunter/equipment/registered/yoke.webp",
+          "complete": true,
+          "width": 256,
+          "height": 384
+        },
+        {
+          "path": "/game/assets/v3/actors/yautja/hunter/equipment/registered/cannon.webp",
+          "complete": true,
+          "width": 256,
+          "height": 384
+        },
+        {
+          "path": "/game/assets/v3/actors/yautja/hunter/equipment/registered/barrel.webp",
+          "complete": true,
+          "width": 256,
+          "height": 384
+        },
+        {
+          "path": "/game/assets/v3/actors/yautja/hunter/equipment/registered/muzzle.webp",
+          "complete": true,
+          "width": 256,
+          "height": 384
+        },
+        {
+          "path": "/game/assets/v3/actors/yautja/hunter/equipment/registered/laser.webp",
+          "complete": true,
+          "width": 256,
+          "height": 384
+        },
+        {
+          "path": "/game/assets/v139/rig-gauntlets/jungle-hunter/base.svg",
+          "complete": true,
+          "width": 256,
+          "height": 384
+        },
+        {
+          "path": "/game/assets/v139/rig-gauntlets/jungle-hunter/lid.svg",
+          "complete": true,
+          "width": 256,
+          "height": 384
+        },
+        {
+          "path": "/game/assets/v3/actors/yautja/hunter/weapons/registered/combistick.webp",
+          "complete": true,
+          "width": 256,
+          "height": 384
+        }
+      ],
+      "svgImages": [
+        {
+          "path": "/game/backgrounds/jungle-multiscreen-v6.png",
+          "width": 1672,
+          "height": 941
+        }
+      ],
+      "statusText": "Échap : pause · Manette : naviguer et confirmer",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "overflow": {
+        "document": 1440,
+        "body": 1440
+      },
+      "observationTiming": {
+        "clock": "browser performance.now()",
+        "evaluationStartedAtMs": 22020,
+        "readinessStartedAtMs": 22020,
+        "geometryStartedAtMs": 22020.100000000093,
+        "finishedAtMs": 22021.300000000047,
+        "contactObservationMs": 0,
+        "readinessCheckMs": 0.10000000009313226,
+        "geometryMs": 1.1999999999534339,
+        "totalMs": 1.3000000000465661,
+        "boxReads": 9
+      }
+    }
+  },
+  "errors": [],
+  "consoleErrors": [],
+  "missingAssets": []
+}

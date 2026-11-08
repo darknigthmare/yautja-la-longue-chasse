@@ -1,0 +1,69 @@
+{
+  "schema": 137,
+  "scope": "Real browser interactions for a standalone source-art gallery, NOT full game or 1:1 film validation",
+  "chromeChannel": "chrome",
+  "checkedModels": 54,
+  "svgSourcesExpected": 219,
+  "httpSpriteRequests": 35,
+  "results": [
+    {
+      "name": "Desktop gallery mounts real React and source SVG components",
+      "status": "PASS",
+      "detail": "54 catalogue models"
+    },
+    {
+      "name": "Keyboard Enter and pointer operate an actual animated lid",
+      "status": "PASS",
+      "detail": "open/closed state and accessible button"
+    },
+    {
+      "name": "Comparison mode renders two different real source gauntlets",
+      "status": "PASS",
+      "detail": "Jungle Hunter / Wolf"
+    },
+    {
+      "name": "Real 54-model rig source files load with exact lower-arm anchor",
+      "status": "PASS",
+      "detail": "Lost Shaman base/lid 256x384"
+    },
+    {
+      "name": "Original non-canon individual study can be filtered and selected",
+      "status": "PASS",
+      "detail": "Lost Shaman, source provenance retained"
+    },
+    {
+      "name": "Catalog filtering respects declared original sources",
+      "status": "PASS",
+      "detail": "comic and all"
+    },
+    {
+      "name": "Keyboard-adjustable zoom",
+      "status": "PASS",
+      "detail": "105%"
+    },
+    {
+      "name": "Mobile responsive 390px layout without horizontal overflow",
+      "status": "PASS",
+      "detail": {
+        "scrollWidth": 390,
+        "viewport": 390
+      }
+    },
+    {
+      "name": "Motion reduction respected",
+      "status": "PASS",
+      "detail": "CSS lid transition suppressed"
+    }
+  ],
+  "errors": [],
+  "reviewedFilmFrames": 0,
+  "certifiedOneToOne": 0,
+  "saveWrites": 0,
+  "screenshotFiles": [
+    "01-desktop-jungle-open.png",
+    "02-desktop-jungle-closed.png",
+    "03-desktop-jungle-vs-wolf.png",
+    "04-desktop-lost-shaman-original-concept.png",
+    "05-mobile-compare-jungle-orig.png"
+  ]
+}

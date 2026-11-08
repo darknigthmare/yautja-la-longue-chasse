@@ -1,0 +1,33 @@
+{
+  "command": [
+    "node",
+    "--experimental-strip-types",
+    "--test",
+    "--test-reporter=spec",
+    "--test-concurrency=1",
+    "tests/planet-arrival-art.test.mjs",
+    "tests/planet-arrival-audio.test.mjs",
+    "tests/planet-arrival-harness.test.mjs",
+    "tests/planet-arrival-observation.test.mjs",
+    "tests/planet-arrival-pod-flight.test.mjs",
+    "tests/planet-arrival-presentation.test.mjs",
+    "tests/planet-arrival-ship-effects.test.mjs",
+    "tests/planet-arrival-ship-motion.test.mjs",
+    "tests/planet-arrival-spatial.test.mjs",
+    "tests/planet-arrival-startup.test.mjs",
+    "tests/planet-arrival-vfx.test.mjs",
+    "tests/planet-arrival-x11.test.mjs",
+    "tests/planet-arrival.test.mjs",
+    "tests/planet-insertion.test.mjs",
+    "tests/ship-insertion-energy.test.mjs",
+    "tests/hunt-insertion.test.mjs"
+  ],
+  "startedAt": "2026-11-08T17:52:11.370375+00:00",
+  "completedAt": "2026-11-08T17:52:30.115366+00:00",
+  "durationSeconds": 18.745,
+  "exitCode": 1,
+  "log": "regressions.log.gz",
+  "rawBytes": 30148,
+  "rawSha256": "df23f2513a58f37e52de74bcf4aab3c091c9fff1bb44e3908bfd68373b491b11",
+  "gzipSha256": "16a4dc09480e4d4b510df69216dc17c9f1dbfa33e19a8b459e83d7a754e7c1ba"
+}
