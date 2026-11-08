@@ -20,6 +20,7 @@ import ShipLevelScene, { ShipLevelMiniMap } from "./ShipLevelScene";
 import "./ship-level.css";
 import type { HunterAppearance, Loadout } from "./types";
 import ShipPreparationPanelV88, { type ShipPreparationControlledV88 } from "./ShipPreparationPanelV88";
+import type { CompanionResidenceControlled } from "./CompanionResidencePanel";
 import {
   PHYSICAL_SHIP_STATIONS,
   PHYSICAL_SHIP_LADDERS as LADDERS,
@@ -77,6 +78,8 @@ export interface PhysicalShipDeckProps {
   /** The nearby inspection reads this deck's live playerRef. Menu/shortcut
    * activation never creates preparation evidence. */
   preflightV88?: ShipPreparationControlledV88;
+  /** Controlled companion registry, rendered by the current 2.5D interior. */
+  companions?: CompanionResidenceControlled;
   onNotify?: (message: string) => void;
 }
 

@@ -69,11 +69,14 @@ export function parseCompleteArchive(serialized: string): { archive: CompleteArc
       campaign.clanShipDocking.personalShipId !== shipProgression.selectedShipId) return bad("invalid-sidecar");
   if ((campaign.wolfCastle && campaign.wolfCastle.status !== 'departed' &&
        campaign.wolfCastle.personalShipId !== shipProgression.selectedShipId) ||
-      (campaign.planetArrival && campaign.planetArrival.personalShipId !== shipProgression.selectedShipId)) return bad('invalid-sidecar');
+      (campaign.planetArrival && campaign.planetArrival.personalShipId !== shipProgression.selectedShipId) ||
+      (campaign.buriedCradle && ['active', 'suspended'].includes(campaign.buriedCradle.status) &&
+       campaign.buriedCradle.personalShipId !== shipProgression.selectedShipId)) return bad('invalid-sidecar');
   const activeHunt = annex.activeHunt === null ? null : normalizeActiveHuntSave(annex.activeHunt, ACTIVE_HUNT_RUNTIME_REVISION);
   if (annex.activeHunt !== null && !activeHunt) return bad("invalid-sidecar");
   if (activeHunt && !activeCompatible(activeHunt, campaign)) return bad("incompatible-hunt");
   if (activeHunt && ((campaign.wolfCastle && campaign.wolfCastle.status !== 'departed') ||
+      (campaign.buriedCradle && ['active', 'suspended'].includes(campaign.buriedCradle.status)) ||
       (campaign.planetArrival && (campaign.planetArrival.status !== 'complete' ||
         activeHunt.missionId !== campaign.planetArrival.missionId || activeHunt.encounterRun !== campaign.planetArrival.encounterRun)))) return bad('incompatible-hunt');
   if (record(annex.pit) && Number(annex.pit.version) > PIT_SAVE_VERSION) return bad("future-version");

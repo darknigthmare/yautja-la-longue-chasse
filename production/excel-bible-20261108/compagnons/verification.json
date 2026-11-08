@@ -1,0 +1,23 @@
+{
+  "recordedAt": "2026-11-08T09:36:10.240075+00:00",
+  "command": [
+    "node",
+    "--experimental-strip-types",
+    "--test",
+    "--test-concurrency=1",
+    "tests/companion-residence.test.mjs",
+    "tests/clan-ship-operations.test.mjs",
+    "tests/clan-ship-save.test.mjs",
+    "tests/clan-ship-interior.test.mjs"
+  ],
+  "exitCode": 0,
+  "newCompanionTests": 24,
+  "combinedTests": 84,
+  "combinedPassed": 84,
+  "browserInteractionValidated": false,
+  "humanArtValidated": false,
+  "fidelity1to1Certified": false,
+  "renderingEvidence": "Actual React SSR verifies conditional records and source identities; it does not verify pixels or hydration.",
+  "browserLimitation": "Parent reported local Chromium blocked by AF_UNIX policy and automatic approval review rejected escalation; no browser certification.",
+  "testLog": "production/excel-bible-20261108/compagnons/tests-run.txt"
+}

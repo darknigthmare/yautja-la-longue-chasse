@@ -1,0 +1,7 @@
+.quarter { position: absolute; width: 0; height: 0; pointer-events: none; isolation: isolate; }
+.gallery { position: absolute; height: 15px; left: 0; top: -1px; transform: translateX(-50%); background: linear-gradient(#748178,#223332 4px,#0a1516); border: 1px solid #80938a; border-radius: 50% 50% 4px 4px; box-shadow: 0 7px 13px #000a; z-index: -1; }
+.resident { position: absolute; left: 63px; top: -2px; z-index: 2; pointer-events: none; }
+.actorShadow { position: absolute; left: -35px; top: -6px; width: 70px; height: 14px; border-radius: 50%; background: #030b0bd9; filter: blur(2px); }
+.label { position: absolute; left: 0; top: 18px; transform: translateX(-50%); min-width: 170px; max-width: 300px; padding: 5px 10px; text-align: center; background: #0b151ae8; color: #e1eadc; border: 1px solid #658075; border-radius: 5px; font-size: 11px; line-height: 1.4; box-shadow: 0 4px 9px #0006; }
+.label strong { display: block; font-size: 13px; letter-spacing: .025em; }
+.label span { color: #b6c4b4; display: block; white-space: nowrap; }

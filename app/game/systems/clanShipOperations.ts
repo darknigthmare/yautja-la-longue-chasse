@@ -170,6 +170,9 @@ export interface ClanShipOperationsContext {
   ownerCreatedAt: string;
   docking: Pick<ClanShipDockingState, 'ownerCreatedAt' | 'status' | 'roomId'> | null;
   campaign: ClanShipCampaignEvidence;
+  /** Omitted by older campaigns; provided by the residence ledger once a
+   * recruitment has an explicit hull posting, suspension or reserve state. */
+  availableCrewIds?: readonly ClanShipNpcId[];
 }
 type SpaceCommand = Parameters<typeof actClanShipSpaceEncounter>[1];
 export type ClanShipOperationsAction = { expectedRevision: number } & (
@@ -451,7 +454,8 @@ export function actClanShipOperations(state: ClanShipOperationsState, action: Cl
       const evaluated = evaluateClanShipContract(state, action.contractId, context.campaign);
       if (!evaluated.allowed) return refused(state, 'contract-unavailable', evaluated.reason);
       const definition = clanShipContract(action.contractId)!;
-      const roles = state.recruitedNpcIds.map(id => clanShipRecruit(id)!.spaceCrewRole);
+      const roles = state.recruitedNpcIds.filter(id => !context.availableCrewIds || context.availableCrewIds.includes(id))
+        .map(id => clanShipRecruit(id)!.spaceCrewRole);
       return changed(state, { activeContract: { contractId: definition.id, acceptedRevision: state.revision + 1, stepIndex: 0,
         missionEncounterRun: null, baselineCompletions: definition.missionId ? context.campaign.missionProgress[definition.missionId]!.completions : 0 },
         spaceEncounter: definition.spaceKind ? createClanShipSpaceEncounter(definition.spaceKind, roles) : null },

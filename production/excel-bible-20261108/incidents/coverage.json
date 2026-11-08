@@ -1,0 +1,54 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-11-08",
+  "sourceWorkbook": "production/clan-ship-20261104/clan-ship-operations-20261105.xlsx",
+  "sourceSheet": "Opérations",
+  "sourceSpec": "production/clan-ship-20261104/operations-spec.md §12.1–12.2",
+  "browserValidated": false,
+  "humanArtValidated": false,
+  "criteria": [
+    {
+      "id": "OPS-B01",
+      "sourceRow": 58,
+      "status": "runtime-integrated-behavior-tested-browser-pending",
+      "implemented": "Acceptation après ship-seal-check auprès de Garde du Seuil disponible ; témoin physique et lot identifié, deux isolateurs visibles/manipulables, revalidation archive après erreur, mesure de pression au terminal médical, fermeture au hangar. Restriction et états de contrôle persistants. Gratification unique de 25 marques.",
+      "evidence": [
+        "app/game/systems/clanShipIncidents.ts",
+        "app/game/ClanShipIncidentPanel.tsx",
+        "app/game/ClanShipIncidentScene.tsx",
+        "app/game/ClanShipInterior.tsx",
+        "app/game/GameClient.tsx",
+        "tests/clan-ship-incidents.test.mjs",
+        "production/excel-bible-20261108/incidents/verification.json"
+      ],
+      "remaining": "Navigation et affichage réels en navigateur, ajustement de l’échelle/pivot du prop, revue artistique humaine ; réplique contextualisée de confiance et variante future d’extraction non produites. Montant de gratification à équilibrer."
+    },
+    {
+      "id": "OPS-B02",
+      "sourceRow": 59,
+      "status": "runtime-integrated-behavior-tested-browser-pending",
+      "implemented": "Acceptation après ship-armory-audit auprès de Griffe de Fer disponible ; mesures A/B stables et comparables, référence physique aux archives, isolation correcte, composant R-2 identifié/prélevé/installé une fois, test de permutation réessayable, rétablissement progressif de 0 à 1 puis 2 circuits et contrôle à la table. Projection locale modifiée, chemins inchangés. Gratification unique de 30 marques.",
+      "evidence": [
+        "app/game/systems/clanShipIncidents.ts",
+        "app/game/ClanShipIncidentPanel.tsx",
+        "app/game/ClanShipIncidentScene.tsx",
+        "app/game/ClanShipInterior.module.css",
+        "app/game/GameClient.tsx",
+        "tests/clan-ship-incidents.test.mjs",
+        "production/excel-bible-20261108/incidents/verification.json"
+      ],
+      "remaining": "Navigation/affichage mobile et manette en navigateur ; revue artistique ; effet d’interception spatiale non implémenté et non accordé. Montant de gratification à équilibrer."
+    },
+    {
+      "id": "OPS-Q26",
+      "status": "partial-b01-b02-tested",
+      "implemented": "14 scénarios de comportement nouveaux. Contrôleur natif parcourant tous les objets et seuils avec retour au hangar, erreurs et reprise, sauvegarde à chaque étape, relecture stricte du journal, propriétaire/révision/proximité, panne d’écriture, composant unique, récompense unique et fin possible après plafonnement des erreurs. Rendu SSR des deux props et des deux circuits. L’import applique aussi le seuil de 88 événements pour refuser une erreur fabriquée, sans refuser la sortie correcte réservée.",
+      "evidence": [
+        "tests/clan-ship-incidents.test.mjs",
+        "production/excel-bible-20261108/incidents/tests-run.txt",
+        "production/excel-bible-20261108/incidents/verification.json"
+      ],
+      "remaining": "OPS-B03 et OPS-B04 non implémentés. Recette navigateur et validation artistique humaine non effectuées ; la recette globale OPS-Q26 ne doit pas être clôturée entièrement."
+    }
+  ]
+}

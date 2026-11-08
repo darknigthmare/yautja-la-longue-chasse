@@ -222,6 +222,8 @@ export interface BuriedCradleRun {
   rootTrap: CradleRootTrap;
   clockSeconds: number;
   extracted: boolean;
+  /** T07 and T11 consume the two optional checkpoint slots; T01 is the entry. */
+  checkpointBudget?: 0 | 1 | 2;
 }
 export interface CradleInput { move?: -1 | 0 | 1; jumpPressed?: boolean; jumpHeld?: boolean; meleePressed?: boolean; interactPressed?: boolean }
 export interface CradleEvent { type: "door-locked" | "shortcut-opened" | "room-entered" | "drainage-opened" | "root-cut" |
@@ -234,7 +236,17 @@ const BOSS_SEQUENCES: Record<Exclude<CradleBossPhase, "defeated">, readonly Crad
   bulb: ["bite", "sweep", "bite", "pulse", "whips"],
 };
 const checkpointFeet: Record<CradleCheckpointId, WorldPoint> = { "01": point(96), "07": point(96, 312), "11": point(96) };
-export const CRADLE_BOSS_HEAD: Readonly<WorldRect> = { x: 1010, y: 120, width: 880, height: 504 };
+// Every A0xx pose keeps the 059 canvas anchor, so changing poses cannot recrop
+// the head into another position. Its opaque base is on the basin floor.
+const HEAD_SCALE = 880 / 1112;
+export const CRADLE_BOSS_HEAD: Readonly<WorldRect> = {
+  x: 1010 - 284 * HEAD_SCALE, y: 624 - 789 * HEAD_SCALE,
+  width: 1672 * HEAD_SCALE, height: 941 * HEAD_SCALE,
+};
+export const CRADLE_BOSS_MOUTH: Readonly<WorldPoint> = {
+  x: CRADLE_BOSS_HEAD.x + 325 * HEAD_SCALE,
+  y: CRADLE_BOSS_HEAD.y + 650 * HEAD_SCALE,
+};
 export const CRADLE_BOSS_POOL_DURATION = { normal: 8, drained: 3 } as const;
 const ROOT_TRAP_BAND = { x: 704, y: 280, width: 512, height: 344 };
 const overlaps = (a: WorldRect, b: WorldRect) => a.x < b.x + b.width && a.x + a.width > b.x && a.y < b.y + b.height && a.y + a.height > b.y;
@@ -253,11 +265,11 @@ function playerAt(feet: WorldPoint): CradlePlayer {
   return { x: feet.x - 36, y: feet.y - 116, width: 72, height: 116,
     velocityX: 0, velocityY: 0, facing: 1, grounded: true, health: 100, hurtSeconds: 0, meleeSeconds: 0 };
 }
-export function createBuriedCradleRun(saved?: unknown): BuriedCradleRun {
+export function createBuriedCradleRun(saved?: unknown, checkpointBudget: 0 | 1 | 2 = 2): BuriedCradleRun {
   const progress = saved === undefined ? createBuriedCradleProgress() : parseBuriedCradleProgress(saved);
   if (!progress) throw new RangeError("Unsupported or malformed Berceau progress; keep the original save");
   return { progress, roomId: progress.checkpointId, player: playerAt(checkpointFeet[progress.checkpointId]),
-    boss: newBoss(progress.bossDefeated), rootTrap: newRootTrap(), clockSeconds: 0, extracted: false };
+    boss: newBoss(progress.bossDefeated), rootTrap: newRootTrap(), clockSeconds: 0, extracted: false, checkpointBudget };
 }
 function cloneRun(run: BuriedCradleRun): BuriedCradleRun {
   return { ...run, progress: { ...run.progress, visitedRoomIds: [...run.progress.visitedRoomIds], shortcutIds: [...run.progress.shortcutIds] },
@@ -277,6 +289,11 @@ function supportY(run: BuriedCradleRun, x: number): number {
 /** Entry is voluntary. The arena's only temporary seal is removed on KO or victory. */
 function interact(run: BuriedCradleRun, events: CradleEvent[]): void {
   const { player, progress } = run;
+  // Physical retreat points never grant a crown or victory. The basin rescue
+  // remains reachable before victory from its left refuge.
+  if ((run.roomId === "01" || run.roomId === "11" || run.roomId === "12") && nearFeet(player, point(192), 48)) {
+    run.extracted = true; events.push({ type: "extracted", id: "emergency" }); return;
+  }
   if (run.roomId === "09" && nearFeet(player, point(1408)) && !progress.drainageOpened) {
     progress.drainageOpened = true; events.push({ type: "drainage-opened" }); return;
   }
@@ -304,7 +321,8 @@ function interact(run: BuriedCradleRun, events: CradleEvent[]): void {
     }
     run.roomId = destination.roomId; run.player = nextPlayer; run.rootTrap = newRootTrap();
     if (!progress.visitedRoomIds.includes(run.roomId)) progress.visitedRoomIds.push(run.roomId);
-    if (run.roomId === "07" || run.roomId === "11") progress.checkpointId = run.roomId;
+    if (run.roomId === "07" && (run.checkpointBudget ?? 2) >= 1 && progress.checkpointId === "01") progress.checkpointId = "07";
+    if (run.roomId === "11" && (run.checkpointBudget ?? 2) >= 2) progress.checkpointId = "11";
     if (run.roomId === "12") { run.boss = newBoss(progress.bossDefeated); aimBoss(run); }
     events.push({ type: "room-entered", id: run.roomId }); return;
   }
@@ -388,13 +406,14 @@ function stepRootTrap(run: BuriedCradleRun, dt: number, events: CradleEvent[]): 
   else { trap.stage = "waiting"; }
 }
 
-/** Attack rectangles and warnings are shared with an eventual renderer. No hidden offscreen tip. */
+/** Attack rectangles and warnings share the renderer's measured mouth anchor. */
 export function getCradleBossAttackRects(boss: CradleBoss): readonly WorldRect[] {
   switch (boss.attack) {
     case "puncture": return [{ x: boss.targetX - 48, y: 80, width: 96, height: boss.targetFloorY - 80 }];
     case "capture": return [{ x: boss.targetX - 56, y: 492, width: 112, height: 132 }];
     case "sweep": return [{ x: 200, y: 584, width: 1310, height: 40 }];
-    case "breath": return [{ x: 580, y: 568, width: 1050, height: 56 }];
+    case "breath": return [{ x: 288, y: CRADLE_BOSS_MOUTH.y - 44,
+      width: CRADLE_BOSS_MOUTH.x - 288, height: 80 }];
     case "bite": return [{ x: 1336, y: 460, width: 384, height: 164 }];
     case "pulse": return [{ x: 128, y: 594, width: 1560, height: 30 }];
     case "whips": return [{ x: 340, y: 380, width: 200, height: 244 }, { x: 1216, y: 380, width: 200, height: 244 }];
@@ -482,7 +501,10 @@ export function stepBuriedCradle(current: BuriedCradleRun, input: CradleInput, d
       y: Math.max(0, player.y + player.velocityY * dt) };
     // Keep the whole actor in the local camera space above the highest landing.
     if (desired.y === 0 && player.velocityY < 0) player.velocityY = 0;
-    Object.assign(player, resolvePlatformMotion(player, desired, platforms, CRADLE_PHYSICS.floorY));
+    const motion = resolvePlatformMotion(player, desired, platforms, CRADLE_PHYSICS.floorY);
+    // Contact flags belong to this collision query, not to the persisted actor.
+    Object.assign(player, { x: motion.x, y: motion.y, velocityX: motion.velocityX,
+      velocityY: motion.velocityY, grounded: motion.grounded });
     stepRootTrap(run, dt, events); stepBoss(run, dt, events);
     for (const hazard of getCradleEnvironmentHazards(run)) if (hazard.stage === "active" && overlaps(player, hazard)) hurt(run, 10, events);
     if (run.player.health <= 0) { knockout(run, events); break; }

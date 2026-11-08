@@ -1,0 +1,64 @@
+{
+  "formatVersion": 1,
+  "date": "2026-11-08",
+  "tool": "image_gen.imagegen",
+  "basisCommit": "254b4b972af3c32cb078da3744241b2c0ea2f46c",
+  "items": [
+    {
+      "key": "breche",
+      "name": "Brèche",
+      "requiredBy": [
+        "ORG-01",
+        "C2",
+        "QA-C28"
+      ],
+      "references": [
+        "/tmp/yautja-companion-art-20261108/predators-2010-screen-used-hound.jpg"
+      ],
+      "sources": [
+        "https://uk.propstoreauction.com/view-auctions/catalog/id/78/lot/18431/index.html",
+        "https://uk.propstoreauction.com/images/lot/4058/40580_0.jpg"
+      ],
+      "prompt": "prompts/breche.txt",
+      "generationSource": "/workspace/scratch/8f7551517f64/generated_images/exec-7aeedbbe-caf3-444e-9064-c8a9bdcb2112.png",
+      "humanArtValidation": false,
+      "nativeFacing": "left"
+    },
+    {
+      "key": "lance-fendue",
+      "name": "Lance-Fendue",
+      "requiredBy": [
+        "ORG-16",
+        "C2",
+        "QA-C28"
+      ],
+      "references": [
+        "/tmp/yautja-companion-art-20261108/instructor-style-reference.png"
+      ],
+      "sources": [
+        "public/game/homeworld/v84/npcs/instructor/01.png"
+      ],
+      "prompt": "prompts/lance-fendue.txt",
+      "generationSource": "/workspace/scratch/8f7551517f64/generated_images/exec-17d8f882-5587-447b-9028-971321ceedec.png",
+      "humanArtValidation": false,
+      "nativeFacing": "right"
+    },
+    {
+      "key": "opale",
+      "name": "Opale",
+      "requiredBy": [
+        "ORG-13",
+        "C2",
+        "QA-C28"
+      ],
+      "references": [],
+      "sources": [
+        "docs/campagne/CATALOGUE_COMPAGNONS.md#drones-machines-et-synthetiques"
+      ],
+      "prompt": "prompts/opale.txt",
+      "generationSource": "/workspace/scratch/8f7551517f64/generated_images/exec-4fbadd46-fa6f-432c-b41d-471a68e94280.png",
+      "humanArtValidation": false,
+      "nativeFacing": "right"
+    }
+  ]
+}

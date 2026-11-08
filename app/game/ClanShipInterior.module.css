@@ -67,6 +67,9 @@
 .fixtureShadow { position: absolute; transform: translate(-50%, -70%); border-radius: 50%; background: #0009; filter: blur(7px); }
 .holoProjection { position: absolute; left: -280px; top: -370px; width: 560px; height: 280px; fill: none; stroke: #b5ffd1; stroke-width: 1.25; opacity: .64; filter: drop-shadow(0 0 8px #5ceeab); pointer-events: none; }
 .holoProjection text { fill: #d2ffe3; stroke: none; font: 12px monospace; letter-spacing: 3px; }
+.world[data-clan-relay-state='faulted'] .holoProjection { opacity: .23; filter: drop-shadow(0 0 3px #b69c59); stroke: #d0b777; }
+.world[data-clan-relay-state='partial'] .holoProjection { opacity: .42; filter: drop-shadow(0 0 5px #9abd81); }
+.world[data-clan-relay-state='restored'] .holoProjection { opacity: .78; }
 .crewActor { position: absolute; width: 0; height: 0; }
 .crewPlatform { position: absolute; width: 110px; height: 22px; left: -55px; top: -6px; border-radius: 50%; border: 1px solid #6b9286; background: #102628; box-shadow: 0 8px 7px #0008; }
 .crewLabel { position: absolute; width: 200px; min-height: 48px; left: -100px; top: -250px; display: grid; gap: 4px; text-align: center; border: 1px solid #8fbea772; border-radius: 6px; background: #061613eb; color: #e3f3dd; padding: 8px; font: 14px var(--font-ui, Arial, sans-serif); cursor: pointer; }

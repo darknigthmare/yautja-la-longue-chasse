@@ -1,0 +1,15 @@
+{
+  "date": "2026-11-08",
+  "tests": 43,
+  "passed": 43,
+  "failed": 0,
+  "command": "node --experimental-strip-types --test --test-concurrency=1 tests/buriedCradle.test.ts tests/buried-cradle-campaign.test.mjs tests/buried-cradle-snapshot.test.mjs",
+  "runtimeImagesImported": 156,
+  "newImageGenerations": 0,
+  "exactSnapshotImplemented": true,
+  "browserInteractionValidated": false,
+  "humanArtValidated": false,
+  "fieldCompanionsImplemented": false,
+  "testLog": "tests-run.txt",
+  "browserBlock": "Local Chromium AF_UNIX socket denied; shared browser could not access executor localhost; automatic approval rejected expanded execution."
+}

@@ -10,6 +10,9 @@ import type { PhysicalShipStationId } from "./systems/shipLevelLayout";
 import { controlActionShortcut } from "./controlBindingLabels";
 import { DEFAULT_CONTROL_BINDINGS, matchesControlAction } from "./systems/controlBindings";
 import ShipPreparationPanelV88 from "./ShipPreparationPanelV88";
+import CompanionResidencePanel from "./CompanionResidencePanel";
+import CompanionQuartersScene from "./CompanionQuartersScene";
+import type { CompanionResidenceObservation } from "./systems/companionResidence";
 import { SHIP_LEVEL_ART } from "./shipInteriorKit";
 import { SHIP_LEVEL_ART_V22 } from "./shipInteriorV22";
 import { SHIP_INTERIOR_25D_ART, SHIP_INTERIOR_25D_FLOOR } from "./shipInterior25dArt";
@@ -58,7 +61,7 @@ export default function ShipInterior25D(props: PhysicalShipDeckProps) {
     appearance, loadout, trophyDisplays = [], rankLabel = "Chasseur",
     selectedDestination = "Choisis une chasse à la carte galactique",
     suspended = false, showShortcuts = false, autoFocus = true, gamepadEnabled = true,
-    highContrast = false, controlBindings = DEFAULT_CONTROL_BINDINGS, preflightV88,
+    highContrast = false, controlBindings = DEFAULT_CONTROL_BINDINGS, preflightV88, companions,
   } = props;
   const rootRef = useRef<HTMLElement>(null);
   const viewportRef = useRef<HTMLDivElement>(null);
@@ -112,6 +115,12 @@ export default function ShipInterior25D(props: PhysicalShipDeckProps) {
     setWaypoint(null);
     stop();
   }, [stop]);
+  const observeCompanions = useCallback((): CompanionResidenceObservation | null => {
+    if (suspendedRef.current) return null;
+    const current = frameRef.current;
+    const actual = nearbyShipInterior25dInteraction(current.roomId, current.actor);
+    return actual?.type === 'service' ? { site: 'personal', roomId: current.roomId, x: current.actor.x, y: current.actor.y } : null;
+  }, []);
 
   const openService = useCallback((id: PhysicalShipStationId) => {
     if (suspendedRef.current) return;
@@ -211,7 +220,7 @@ export default function ShipInterior25D(props: PhysicalShipDeckProps) {
     const keyboard = (event: KeyboardEvent, pressed: boolean) => {
       if (suspendedRef.current || document.hidden) return;
       if (pressed && (event.defaultPrevented || !(rootRef.current?.contains(document.activeElement)))) return;
-      if (pressed && event.target instanceof HTMLElement && (event.target.isContentEditable || /^(INPUT|SELECT|TEXTAREA|BUTTON)$/.test(event.target.tagName))) return;
+      if (pressed && event.target instanceof HTMLElement && (event.target.isContentEditable || /^(INPUT|SELECT|TEXTAREA|BUTTON|SUMMARY)$/.test(event.target.tagName) || event.target.closest('[data-companion-residence-panel]'))) return;
       const actions = [["hunt.moveLeft", "left"], ["hunt.moveRight", "right"], ["hunt.moveUp", "up"], ["hunt.moveDown", "down"]] as const;
       const direction = actions.find(([action]) => matchesControlAction(action, event, controlBindings))?.[1];
       if (direction) { controlsRef.current[direction] = pressed; event.preventDefault(); }
@@ -239,7 +248,8 @@ export default function ShipInterior25D(props: PhysicalShipDeckProps) {
     const tick = (now: number) => {
       const elapsed = Math.min(.05, Math.max(0, (now - last) / 1000)); last = now;
       const focused = rootRef.current?.contains(document.activeElement);
-      if (suspendedRef.current || document.hidden || !document.hasFocus() || !focused) {
+      const panelFocused = document.activeElement instanceof HTMLElement && !!document.activeElement.closest('[data-companion-residence-panel]');
+      if (suspendedRef.current || document.hidden || !document.hasFocus() || !focused || panelFocused) {
         stop(); request = requestAnimationFrame(tick); return;
       }
       let horizontal = 0, vertical = 0, action = false;
@@ -359,6 +369,7 @@ export default function ShipInterior25D(props: PhysicalShipDeckProps) {
         <div className={styles.floorRim} style={{ top: roomHeight - 26 }} aria-hidden="true" />
         <div className={styles.roomGlyph} aria-hidden="true">{String(ROOM_ORDER.indexOf(frame.roomId) + 1).padStart(2, "0")}</div>
         {room.fixtures.map(fixture => <Fixture key={fixture.id} fixture={fixture} actor={frame.actor} />)}
+        {companions && <CompanionQuartersScene save={companions.save} site="personal" shipId={companions.selectedShipId} roomId={frame.roomId} />}
         {frame.roomId === "trophy-hall" && trophyDisplays.slice(0, 4).map((trophy, index) => <div className={styles.trophy} key={trophy.id} style={{ left: 260 + index * 185, top: 50 }}>
           <img src={trophy.image} alt={trophy.label} draggable={false} /><span>{trophy.label}</span>
         </div>)}
@@ -414,6 +425,8 @@ export default function ShipInterior25D(props: PhysicalShipDeckProps) {
       </div>
     </div>
     <p className={styles.status} role="status" aria-live="polite">{status}</p>
+    {companions && <CompanionResidencePanel controlled={companions} site="personal" suspended={suspended} stationId={serviceNearby}
+      observe={observeCompanions} onNavigate={roomId => { if (ROOM_ORDER.includes(roomId as PhysicalShipStationId)) guideTo(roomId as PhysicalShipStationId); }} />}
     {preflightV88 && <ShipPreparationPanelV88 key={serviceNearby ?? "navigation"} controlled={preflightV88} stationId={serviceNearby} suspended={suspended}
       observe={() => {
         if (suspendedRef.current) return null;

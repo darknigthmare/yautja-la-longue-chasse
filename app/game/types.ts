@@ -661,6 +661,12 @@ export interface GameSettings {
 }
 
 export interface SaveGame {
+  /** Physical PLAN08 expedition, with distinct victory, crest and debrief receipts. */
+  buriedCradle?: import("./systems/buriedCradleCampaign").BuriedCradleCampaign | null;
+  /** Explicit residence, installed quarters and physical presence of recruited companions. */
+  companionResidence?: import("./systems/companionResidence").CompanionResidenceState | null;
+  /** Replayed physical incidents at the existing clan terminals, OPS-B01/B02. */
+  clanShipIncidents?: import("./systems/clanShipIncidents").ClanShipIncidentsState | null;
   /** Null preserves pre-prologue adult campaigns without retroactive narrative proof. */
   prologue: NurseryCampaignProgress | null;
   /** Actual Unblooded exercises and equipment; never the adult starter loadout. */

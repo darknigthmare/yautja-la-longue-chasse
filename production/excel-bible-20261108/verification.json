@@ -1,0 +1,147 @@
+{
+  "asOf": "2026-11-08T10:04:30.030603+00:00",
+  "baseCommit": "254b4b972af3c32cb078da3744241b2c0ea2f46c",
+  "branch": "feat/excel-bible-completion-20261108",
+  "tests": {
+    "command": [
+      "node",
+      "--experimental-strip-types",
+      "--test",
+      "--test-concurrency=1",
+      "tests/buriedCradle.test.ts",
+      "tests/buried-cradle-campaign.test.mjs",
+      "tests/buried-cradle-snapshot.test.mjs",
+      "tests/companion-residence.test.mjs",
+      "tests/clan-ship-incidents.test.mjs",
+      "tests/clan-ship-docking.test.mjs",
+      "tests/clan-ship-save.test.mjs",
+      "tests/clan-ship-interior.test.mjs",
+      "tests/clan-ship-operations.test.mjs",
+      "tests/clan-ship-operations-save.test.mjs",
+      "tests/clan-ship-space-encounter.test.mjs",
+      "tests/planet-insertion.test.mjs",
+      "tests/ship-insertion-energy.test.mjs",
+      "tests/complete-archive.test.mjs",
+      "tests/campaign-slots.test.mjs",
+      "tests/campaign-resume-priority-v94.test.mjs",
+      "tests/game-client-ship-flow.test.mjs",
+      "tests/wolf-arrival-save.test.mjs"
+    ],
+    "exitCode": 0,
+    "passed": 375,
+    "failed": 0,
+    "skipped": 0,
+    "log": "qa/tests-run.txt",
+    "newFeatureSuites": {
+      "cradleModelCampaignSnapshot": 43,
+      "companionResidence": 24,
+      "clanShipIncidents": 14
+    },
+    "countsOverlap": "The feature-suite counts are included in the total of 375 and must not be added again."
+  },
+  "build": {
+    "command": "npm run build:production",
+    "exitCode": 0,
+    "completedAfterFinalImportGuard": true,
+    "staticRoutes": 10,
+    "log": "qa/production-build.txt",
+    "limits": [
+      "Vercel native-origin/static-output stages are skipped outside the exact deployment build root.",
+      "No deployment or browser result is inferred from the build."
+    ],
+    "logNormalization": {
+      "change": "Terminal carriage returns and trailing whitespace removed; output text retained.",
+      "rawOutputSha256": "db99c1bea84c712e41784a5d5d9f745389dad90fb3d936637d970a11ccc0f62e"
+    }
+  },
+  "typecheck": {
+    "command": "npx tsc --noEmit",
+    "exitCode": 0,
+    "log": "qa/typecheck.txt",
+    "finalTypeScriptAlsoPassedInProductionBuild": true
+  },
+  "lint": {
+    "runtimeFiles": 27,
+    "runtimeExitCode": 0,
+    "maxWarnings": 0,
+    "qaFilesExitCode": 0,
+    "finalIncidentGuardExitCode": 0,
+    "logs": [
+      "qa/lint-runtime.txt",
+      "qa/lint-qa.txt",
+      "qa/lint-incident-final.txt"
+    ]
+  },
+  "art": {
+    "existingCradlePngsImportedIdentically": 156,
+    "cradleScenes": 12,
+    "cradleSceneryPlacements": 138,
+    "newGeneratedPngs": 15,
+    "existingCompanionPngImported": 1,
+    "copyAndAlphaChecksPassed": true,
+    "humanArtValidated": false
+  },
+  "independentSnapshotProbe": {
+    "states": 76803,
+    "rejected": 0,
+    "evidence": "berceau/sondage-snapshots-resultat.json",
+    "limitation": "Authored starting states exercise production simulation; this is not a complete browser playthrough."
+  },
+  "browser": {
+    "validated": false,
+    "reason": "Chromium AF_UNIX socket denied; shared browser cannot reach executor localhost; automatic approval rejected expanded execution. No browser certification.",
+    "reproductionScript": "scripts/qa-buried-cradle-browser-20261108.mjs"
+  },
+  "workbookEvidence": "suivi/verification-classeur.json",
+  "sourceSha256": {
+    "app/dev/destinations.ts": "0b756432bb3bd2619707ca46bc85023d5f015631d108c68e33d7ace9cb6acb25",
+    "app/dev/session.tsx": "857f9825d7889ea5ba8320ee197a26c702d153263f249c52908e4947349ab6bc",
+    "app/game/BuriedCradleScene.module.css": "d556096e414cdd5a6f6bea38264ba70404188c593e6d8b12d06aafa4cda6dbe0",
+    "app/game/BuriedCradleScene.tsx": "157bcfbf1d7c55c04bd9c4631fa3555d0d82c7fbbb29433a21937e58b6521836",
+    "app/game/CampaignMainMenu.tsx": "dfa40bb4c0bc7789d4232242e0790750081f233f9c0b00384ebc9df4eff1e311",
+    "app/game/ClanShipHub.tsx": "59392b7b6dd56ba63a47f64e8cd1c97fc57bc0d75f226ced3dfe0a6f8496e36a",
+    "app/game/ClanShipIncidentPanel.module.css": "82125475fe0da306fbd412eee951db423cf5306307311824f5926a444e16011f",
+    "app/game/ClanShipIncidentPanel.tsx": "b93058204369f34dd0e0b26031ed14a6492f42d6bb7eddcc9ade89dc3444e64c",
+    "app/game/ClanShipIncidentScene.module.css": "b149f73b4537ffeed12798ed6ce2ca5a86c3f5b9aed32931f0bafa790c140538",
+    "app/game/ClanShipIncidentScene.tsx": "3994be649cdf8e631601323f5a649a81ec58c8bafd3874159553f0849528fbf5",
+    "app/game/ClanShipInterior.module.css": "7fd90031c2f115a5025f0b7804e5f6f14c9f71df69ffd11d2b08d08bdafe5ad8",
+    "app/game/ClanShipInterior.tsx": "dd1c9a9664ca3413d8326124e8a5b01fe51dc90a2f1e2a6944a010019e126bca",
+    "app/game/ClanShipOperationsPanel.tsx": "5061870449cdefc85c86757c2e1ddff03254d288bbc644620b44866f09d92bdd",
+    "app/game/CompanionQuartersScene.module.css": "cd1dccabd39175a23d791daa78220109b0a000c4e05c97fbc82705aa544edfc3",
+    "app/game/CompanionQuartersScene.tsx": "fc6d46af6d4acdbd9d328313ec61e24307408ae710b46834f1bd2573178f1904",
+    "app/game/CompanionResidencePanel.module.css": "eddc45dc36446629677395d5d6132afc0cafe570c03ba93d5f6d64188f8d5dc5",
+    "app/game/CompanionResidencePanel.tsx": "d32184d49777f62f56b9394691dcdc047d42f5814b70143b68c73a7a0a7a8992",
+    "app/game/GameClient.tsx": "58b179b487b5f616e07af4a23f5edfcd00370a3bd972a030e349e9eac82dc5ad",
+    "app/game/PhysicalShipDeck.tsx": "c39ef5b6cf576fdb252ab45e455118fb9cccaf51d7dfa76464556f3b45dd62c9",
+    "app/game/ShipInterior25D.tsx": "945ba6234ac68d7b49629970490c72c482aef66f21265e94006eb54915128fb0",
+    "app/game/clanShipIncidentArt.ts": "f2557bd61963791ed7f0ccc3cb2c86c319e554fb9b7e0735f9ddd3a949e12972",
+    "app/game/companionPilotArt.ts": "3bc4553f264ad08fc5041dc345688e5693cd691f04bbf8dad715472ad24a7acb",
+    "app/game/companionQuarterArt.ts": "479427304112cc86d9c976a3e0471d084ef645b284bf255711a6d6ba5d4613e3",
+    "app/game/data/buriedCradleArt.json": "91406f6dc1578cbad57ebd5b70739de5a95799b36b4b9116b49783eff6b70e72",
+    "app/game/save.ts": "c49fed5014730a39c13a088b2be16bf2a08d5a13f036280862d4815e674db07e",
+    "app/game/systems/buriedCradle.ts": "c9790d265dfb3810e67cc2d7219b6593778287d2e34ee5e9189d14554bd78a30",
+    "app/game/systems/buriedCradleCampaign.ts": "e3a80541eece61c6391fd3b5cce741eb9984d8cd41f49078e917eb3995c2fcd2",
+    "app/game/systems/buriedCradleSnapshot.ts": "ce150ae7a269ffd7d459901bff37f7e71eacf9f3457bfb0fe3c4798af1054b58",
+    "app/game/systems/campaignSlots.ts": "edb7699993c8e339f760b11333bff131c92ef9b893f24375c28445495638e64a",
+    "app/game/systems/clanShipIncidents.ts": "5b7f69c5f686363f234f4340fe2c8fca5c5249c1c6d8d06573ebc581ee037428",
+    "app/game/systems/clanShipOperations.ts": "c066bdd255db4041f72a808800284a26bcf6c7151034c140d80dc91b4c4c82ee",
+    "app/game/systems/companionResidence.ts": "83432416fb6869c65db49d5d67fa8a46a984227cf9e4831a837ea273c0545767",
+    "app/game/systems/completeArchive.ts": "ede5f95c54bcbd33945b8c9271f42001fd8b7c5d46740cabdda873903444e1e5",
+    "app/game/types.ts": "79a5871a2001bd2b2ff28f7d0e52a5a1480de7b71f2fccf3cfc5fb439ae07edd",
+    "tests/buried-cradle-campaign.test.mjs": "3229f0b7c94845e5136995c0d1df57bcd0f0977e40e7c9fbe4d890516e873430",
+    "tests/buried-cradle-snapshot.test.mjs": "fd0f31c709abdccd020b82dcab0124f9a9da7ef19ab5be12dafaf55b0934c655",
+    "tests/clan-ship-incidents.test.mjs": "c0fb2f2cff9a6baae3b8907eccaadd85ffe0baff3d0f40077f2b5057f2b4a616",
+    "tests/companion-residence.test.mjs": "29bd62596afa382715cd4ae856186804956a4a4074152e27458b1f7360ba2881",
+    "tests/fixtures/clan-ship-browser-assets.json": "f286168ebd563c70d364e69b525846155457f6dbda437726402119e864f2a508",
+    "tests/fixtures/wolf-arrival-browser-assets.json": "adc7a67138d10a488c886bad6b1e90f8e480542b0b7b34cc48e43ed953d56ca9",
+    "tests/game-client-ship-flow.test.mjs": "724f8c16771b2a5fa91762b949b89a00f85e4c3701968b453625b4c5d1cd3081"
+  },
+  "logSha256": {
+    "qa/tests-run.txt": "6e6f12a10477aacfb8576a395854587d9a151709b606a8057011b4cb23f4629d",
+    "qa/production-build.txt": "43abed2049e1d10a74c541a919880d1aa2d6d774b56145f03bbe7052ef5bb38e",
+    "qa/typecheck.txt": "7125f194612fcff2f454c05d848e7cb71facc1967b4d5017e25b34fdee3ba74f",
+    "qa/lint-runtime.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "qa/lint-qa.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "qa/lint-incident-final.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+}

@@ -18,10 +18,12 @@ import type { HomeworldRegionStateV68 } from "../game/systems/homeworldRegionsV6
 import type { HuntPersistencePayload } from "../game/HuntCanvas";
 import type { MissionResult, SaveGame } from "../game/types";
 import { createDevArrival, createDevSave, createMemoryStorage, resolveDevDestination, type DevDestination } from "./destinations";
+import { createBuriedCradleProgress, type BuriedCradleProgress, type CradleRoomId } from '../game/systems/buriedCradle';
 import DevServices, { type DevService } from "./services";
 import styles from "./session.module.css";
 
 const ShipInterior25D = lazy(() => import("../game/ShipInterior25D"));
+const BuriedCradleScene = lazy(() => import('../game/BuriedCradleScene'));
 const ClanShipHub = lazy(() => import("../game/ClanShipHub"));
 const HomeworldHub = lazy(() => import("../game/HomeworldHub"));
 const HomeworldRegionV68 = lazy(() => import("../game/HomeworldRegionV68"));
@@ -81,6 +83,15 @@ export default function DevTravelSession({ destination, onTravel, onExit }: DevT
   }), []);
   const gameFocused = useSyncExternalStore(subscribeFocus, readGameFocus, serverGameFocus);
   const [notice, setNotice] = useState("");
+  const [cradleProgress, setCradleProgress] = useState<BuriedCradleProgress>(() => {
+    const progress = createBuriedCradleProgress();
+    if (destination.kind === 'cradle' && destination.checkpointId !== '01') {
+      progress.checkpointId = destination.checkpointId;
+      progress.visitedRoomIds = Array.from({ length: Number(destination.checkpointId) }, (_, index) => String(index + 1).padStart(2, '0') as CradleRoomId);
+      progress.rootRingCut = destination.checkpointId === '11';
+    }
+    return progress;
+  });
   // This native arrival/run DTO deliberately stays outside SaveGame. Later
   // campaign missions remain locked; a test never invents their prerequisites.
   const [arrivalFixture] = useState(() => destination.kind === "arrival" ? createDevArrival(destination, save) : null);
@@ -374,6 +385,12 @@ export default function DevTravelSession({ destination, onTravel, onExit }: DevT
       <div className={styles.viewport}>
         <div ref={sceneRef} className={styles.scene} hidden={service !== null} inert={service !== null}>
           <Suspense fallback={<div className={styles.loading} role="status">Chargement du lieu…</div>}>
+            {destination.kind === 'cradle' && <BuriedCradleScene progress={cradleProgress} appearance={save.appearance} loadout={save.loadout}
+              difficultyId="young-blood" controlBindings={save.settings.controlBindings} suspended={nativeSceneSuspended}
+              reducedMotion={reducedMotion} highContrast={save.settings.highContrastVision}
+              onCheckpoint={progress => { setCradleProgress(structuredClone(progress)); return true; }}
+              onExtract={progress => { setCradleProgress(structuredClone(progress)); setNotice(progress.crownClaimed ? 'Essai : crête extraite.' : 'Essai : repli sans crête.'); return true; }}
+              onExit={exitSession} onSound={sound => audioRef.current?.playSfx(sound)} />}
             {destination.kind === "ship" && <ShipInterior25D
               appearance={save.appearance}
               loadout={save.loadout}

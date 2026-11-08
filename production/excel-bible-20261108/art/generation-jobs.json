@@ -1,0 +1,206 @@
+{
+  "formatVersion": 1,
+  "tool": "image_gen.imagegen",
+  "mode": "individual-generated-sprites",
+  "date": "2026-11-08",
+  "basisCommit": "254b4b972af3c32cb078da3744241b2c0ea2f46c",
+  "items": [
+    {
+      "key": "hunterAlcove",
+      "slug": "hunter-alcove",
+      "label": "Alcôve de chasseur",
+      "requiredBy": [
+        "ALL-03",
+        "ALL-05",
+        "QA-C28"
+      ],
+      "textReferences": [
+        "docs/campagne/COMPAGNONS_ET_ALLIES_PREMIUM.md#53-familles-de-modules"
+      ],
+      "generationSource": "/workspace/scratch/8f7551517f64/generated_images/exec-52311dc5-782c-46cf-a28d-5a1e64fdaaf7.png",
+      "referenceImages": [
+        "production/ship-interior-25d-20261105/art/source/armory-rack.png"
+      ],
+      "humanArtValidation": false
+    },
+    {
+      "key": "syntheticBay",
+      "slug": "synthetic-bay",
+      "label": "Baie de maintenance synthétique",
+      "requiredBy": [
+        "ALL-03",
+        "ORG-10",
+        "ORG-13",
+        "P-09",
+        "QA-C28"
+      ],
+      "textReferences": [
+        "docs/campagne/COMPAGNONS_ET_ALLIES_PREMIUM.md#53-familles-de-modules",
+        "docs/campagne/CATALOGUE_COMPAGNONS.md#p-09--nyx-17"
+      ],
+      "generationSource": "/workspace/scratch/8f7551517f64/generated_images/exec-869e68e1-af70-4dfc-a863-2aa7f2b2847d.png",
+      "referenceImages": [
+        "production/ship-interior-25d-20261105/art/source/armory-rack.png",
+        "production/excel-bible-20261108/art/sources/hunter-alcove.png"
+      ],
+      "earlierCandidate": "/workspace/scratch/8f7551517f64/generated_images/exec-547f6cb4-726c-4a5e-845f-6978afc51dd5.png",
+      "editPrompt": "prompts/synthetic-bay-alpha-correction.txt",
+      "humanArtValidation": false
+    },
+    {
+      "key": "armoredKennel",
+      "slug": "armored-kennel",
+      "label": "Chenil blindé",
+      "requiredBy": [
+        "ALL-03",
+        "ORG-01",
+        "ORG-02",
+        "P-15",
+        "QA-C28"
+      ],
+      "textReferences": [
+        "docs/campagne/CATALOGUE_COMPAGNONS.md#animaux-et-montures",
+        "docs/campagne/CATALOGUE_COMPAGNONS.md#p-15--rhazor--matriarche-depines"
+      ],
+      "generationSource": "/workspace/scratch/8f7551517f64/generated_images/exec-c0fd5991-6bec-42a4-9921-89aacddaab7b.png",
+      "referenceImages": [
+        "production/ship-interior-25d-20261105/art/source/armory-rack.png",
+        "production/excel-bible-20261108/art/sources/hunter-alcove.png"
+      ],
+      "humanArtValidation": false
+    },
+    {
+      "key": "humanCabin",
+      "slug": "human-cabin",
+      "label": "Cabine humaine adaptée",
+      "requiredBy": [
+        "ALL-03",
+        "QA-C28",
+        "ORG-26"
+      ],
+      "textReferences": [
+        "docs/campagne/COMPAGNONS_ET_ALLIES_PREMIUM.md",
+        "docs/campagne/CATALOGUE_COMPAGNONS.md"
+      ],
+      "generationSource": "/workspace/scratch/8f7551517f64/generated_images/exec-083481d3-5366-4640-a674-0f7c38457372.png",
+      "referenceImages": [
+        "production/excel-bible-20261108/art/sources/hunter-alcove.png"
+      ],
+      "humanArtValidation": false
+    },
+    {
+      "key": "arborealPerch",
+      "slug": "arboreal-perch",
+      "label": "Perchoir arboricole",
+      "requiredBy": [
+        "ALL-03",
+        "QA-C28",
+        "ORG-03"
+      ],
+      "textReferences": [
+        "docs/campagne/COMPAGNONS_ET_ALLIES_PREMIUM.md",
+        "docs/campagne/CATALOGUE_COMPAGNONS.md"
+      ],
+      "generationSource": "/workspace/scratch/8f7551517f64/generated_images/exec-2b17ed53-49c2-45de-9660-c2757bcb8bce.png",
+      "referenceImages": [
+        "production/excel-bible-20261108/art/sources/hunter-alcove.png"
+      ],
+      "humanArtValidation": false
+    },
+    {
+      "key": "amphibianBasin",
+      "slug": "amphibian-basin",
+      "label": "Bassin amphibie",
+      "requiredBy": [
+        "ALL-03",
+        "QA-C28",
+        "ORG-06"
+      ],
+      "textReferences": [
+        "docs/campagne/COMPAGNONS_ET_ALLIES_PREMIUM.md",
+        "docs/campagne/CATALOGUE_COMPAGNONS.md"
+      ],
+      "generationSource": "/workspace/scratch/8f7551517f64/generated_images/exec-9a915d13-8bc3-48c6-a1b7-becb2337aa73.png",
+      "referenceImages": [
+        "production/excel-bible-20261108/art/sources/hunter-alcove.png"
+      ],
+      "humanArtValidation": false
+    },
+    {
+      "key": "darkNest",
+      "slug": "dark-nest",
+      "label": "Refuge sombre",
+      "requiredBy": [
+        "ALL-03",
+        "QA-C28",
+        "ORG-07"
+      ],
+      "textReferences": [
+        "docs/campagne/COMPAGNONS_ET_ALLIES_PREMIUM.md",
+        "docs/campagne/CATALOGUE_COMPAGNONS.md"
+      ],
+      "generationSource": "/workspace/scratch/8f7551517f64/generated_images/exec-a134c2a0-22cc-42ea-81ba-b55c3b5c9a43.png",
+      "referenceImages": [
+        "production/excel-bible-20261108/art/sources/hunter-alcove.png"
+      ],
+      "humanArtValidation": false
+    },
+    {
+      "key": "serekhWorkshop",
+      "slug": "serekh-workshop",
+      "label": "Atelier de Serekh",
+      "requiredBy": [
+        "ALL-03",
+        "QA-C28",
+        "P-12"
+      ],
+      "textReferences": [
+        "docs/campagne/COMPAGNONS_ET_ALLIES_PREMIUM.md",
+        "docs/campagne/CATALOGUE_COMPAGNONS.md"
+      ],
+      "generationSource": "/workspace/scratch/8f7551517f64/generated_images/exec-6c0487ec-9eb8-496c-8494-40931fe7ca08.png",
+      "referenceImages": [
+        "production/excel-bible-20261108/art/sources/hunter-alcove.png"
+      ],
+      "humanArtValidation": false
+    },
+    {
+      "key": "drakelMaintenance",
+      "slug": "drakel-maintenance",
+      "label": "Maintenance de Dra’Kel",
+      "requiredBy": [
+        "ALL-03",
+        "QA-C28",
+        "P-05"
+      ],
+      "textReferences": [
+        "docs/campagne/COMPAGNONS_ET_ALLIES_PREMIUM.md",
+        "docs/campagne/CATALOGUE_COMPAGNONS.md"
+      ],
+      "generationSource": "/workspace/scratch/8f7551517f64/generated_images/exec-2864c577-7b50-45cc-b5db-526794316660.png",
+      "referenceImages": [
+        "production/excel-bible-20261108/art/sources/hunter-alcove.png"
+      ],
+      "humanArtValidation": false
+    },
+    {
+      "key": "ossuaryDock",
+      "slug": "ossuary-dock",
+      "label": "Socle d’Ossuaire",
+      "requiredBy": [
+        "ALL-03",
+        "QA-C28",
+        "P-11"
+      ],
+      "textReferences": [
+        "docs/campagne/COMPAGNONS_ET_ALLIES_PREMIUM.md",
+        "docs/campagne/CATALOGUE_COMPAGNONS.md"
+      ],
+      "generationSource": "/workspace/scratch/8f7551517f64/generated_images/exec-9a0258e1-536c-4bc2-b796-deb2ea1a969b.png",
+      "referenceImages": [
+        "production/excel-bible-20261108/art/sources/hunter-alcove.png"
+      ],
+      "humanArtValidation": false
+    }
+  ]
+}

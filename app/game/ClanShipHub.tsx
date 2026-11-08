@@ -9,6 +9,8 @@ import { CLAN_SHIP_INTERIOR_ROOM_ORDER, CLAN_SHIP_INTERIOR_ROOMS } from "./syste
 import { useMenuGamepad } from "./useMenuGamepad";
 import ClanShipInterior from "./ClanShipInterior";
 import ClanShipOperationsPanel from "./ClanShipOperationsPanel";
+import type { CompanionResidenceControlled } from "./CompanionResidencePanel";
+import type { ClanShipIncidentControlled } from "./ClanShipIncidentPanel";
 import { CLAN_SHIP_ONBOARDING_STEPS, clanShipContract, createClanShipOperations, getClanShipActiveStep, inspectClanShipOperations, type ClanShipNpcId, type ClanShipOperationsAction } from "./systems/clanShipOperations";
 import styles from "./ClanShipHub.module.css";
 
@@ -25,6 +27,8 @@ export interface ClanShipHubProps {
   onService: (service: ClanShipService) => void;
   onExit: () => void;
   onOpenSettings: () => void;
+  companions?: CompanionResidenceControlled;
+  incidents?: ClanShipIncidentControlled;
 }
 
 type Room = { id: ClanShipRoomId; name: string; detail: string; action: string; service?: ClanShipService; number: string };
@@ -48,7 +52,7 @@ const STATUS = {
 } as const;
 const STEPS = ["Approche", "Amarrage", "À bord"];
 
-export default function ClanShipHub({ state, save, selectedShipId, suspended, temporarySession = false, onAction, onOperations, onService, onExit, onOpenSettings }: ClanShipHubProps) {
+export default function ClanShipHub({ state, save, selectedShipId, suspended, temporarySession = false, onAction, onOperations, onService, onExit, onOpenSettings, companions, incidents }: ClanShipHubProps) {
   const rootRef = useRef<HTMLElement>(null);
   const primaryRef = useRef<HTMLButtonElement>(null);
   const [failure, setFailure] = useState<{ signature: string; message: string } | null>(null);
@@ -163,7 +167,7 @@ export default function ClanShipHub({ state, save, selectedShipId, suspended, te
             {onOperations && operations && <div className={styles.operationObjective} data-clan-operation-objective>
               <div><span className={styles.eyebrow}>{operations.mandateAccepted ? 'OPÉRATIONS DU CLAN' : 'ACCUEIL DU BORD'}</span>
                 <strong>{operationStep?.label ?? activeContract?.name ?? (operations.mandateAccepted ? 'Choisir un dossier à la table du conseil' : 'Recevoir le mandat du conseil')}</strong>
-                <p>{operationStep ? CLAN_SHIP_INTERIOR_ROOMS[operationStep.roomId].label : activeContract?.kind === 'field' ? 'Retour au hangar, puis désamarrage avant la chasse.' : `${operations.recruitedNpcIds.length} membres affectés · ${operations.completedContracts.length} dossiers accomplis`}</p>
+                <p>{operationStep ? CLAN_SHIP_INTERIOR_ROOMS[operationStep.roomId].label : activeContract?.kind === 'field' ? 'Retour au hangar, puis désamarrage avant la chasse.' : `${operations.recruitedNpcIds.length} accords de recrutement · ${operations.completedContracts.length} dossiers accomplis`}</p>
               </div>
               <button type="button" disabled={suspended} onClick={() => setTargetRoomId(operationStep?.roomId ?? (activeContract?.kind === 'field' ? 'hangar' : 'conseil'))}>
                 Rejoindre le prochain poste
@@ -172,6 +176,8 @@ export default function ClanShipHub({ state, save, selectedShipId, suspended, te
             <ClanShipInterior
               roomId={state.roomId}
               save={save}
+              companions={companions}
+              incidents={incidents}
               personalShipId={personalId}
               suspended={suspended || operationsOpen}
               onRoomChange={changeInteriorRoom}

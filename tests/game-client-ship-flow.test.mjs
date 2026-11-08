@@ -32,6 +32,7 @@ const dependencies = await build({
     'export { captureHuntGauntletV142, resumeHuntGauntletV142 } from "./app/game/systems/huntGauntletIdentityV142.ts";',
     'export { normalizeHuntAccessibilityV112 } from "./app/game/systems/huntAccessibilityV112.ts";',
     'export { actClanShipOperations, bindClanShipMission, clanShipContract, createClanShipOperations, evaluateClanShipAccess, inspectClanShipOperations, releaseClanShipMissionBinding, settleClanShipMission, CLAN_SHIP_ONBOARDING_STEPS } from "./app/game/systems/clanShipOperations.ts";',
+    'export { actCompanionResidence, bindCompanionResidenceMission, settleCompanionResidenceMission, releaseCompanionResidenceMission, registerCompanionResidenceRecruitment, availableClanResidenceCrew, inspectCompanionResidence } from "./app/game/systems/companionResidence.ts";',
     'export { applyMissionResult as applyRealMissionResult } from "./app/game/save.ts";',
   ].join('\n'), resolveDir: fileURLToPath(new URL('../', import.meta.url)), loader: 'ts' },
   bundle: true, write: false, format: 'iife', globalName: 'ShipFlowDependencies', platform: 'node', logLevel: 'silent',

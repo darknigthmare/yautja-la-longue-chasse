@@ -1,0 +1,1729 @@
+{
+  "asOfDate": "2026-11-08",
+  "baseCommit": "254b4b972af3c32cb078da3744241b2c0ea2f46c",
+  "snapshotState": "État du 8 novembre : livraisons et tests consignés ; navigateur et revue artistique humaine ouverts.",
+  "principle": "Une déclaration historique, une référence de code ou un PNG ne suffit jamais à fermer une exigence. Les phases sont indépendantes et leur portée reste explicite.",
+  "deliveries": [
+    {
+      "id": "SUIVI-01",
+      "domain": "Suivi de production",
+      "title": "Inventaire exhaustif des 108 classeurs d’origine",
+      "criterion": "Lire chaque classeur et chaque feuille ; conserver les empreintes SHA-256, distinguer les suivis de famille et les historiques, détecter les contenus recopiés sans modifier les originaux.",
+      "requirementIds": [
+        "Inventaire des Excel"
+      ],
+      "generated": "Oui",
+      "integrated": "Oui",
+      "behaviorTested": "Oui",
+      "browserTested": "Sans objet",
+      "humanArtReview": "Sans objet",
+      "evidence": [
+        "scripts/audit-excel-bible-20261108.py",
+        "production/excel-bible-20261108/suivi/excel-inventory.json"
+      ],
+      "remaining": "L’inventaire atteste la lecture et la traçabilité des sources ; il ne certifie pas la réalisation du gameplay décrit.",
+      "scope": "Sources et suivi uniquement"
+    },
+    {
+      "id": "SUIVI-02",
+      "domain": "Suivi de production",
+      "title": "Registre Excel, cartes V6, textes de campagne et recettes",
+      "criterion": "Regrouper les observations sans perdre leurs cellules d’origine ; conserver les cartes V6, les 37 textes de campagne, les 73 documents/manifestes inventoriés et les 118 critères annexes ; distinguer données, code et comportement qualifié.",
+      "requirementIds": [
+        "Bible V6",
+        "ALL-01..10",
+        "QA-C01..28",
+        "WU-QA-01..28",
+        "WU-PROD-01..12",
+        "XBE-Q01..28",
+        "MOB-QA-01..12"
+      ],
+      "generated": "Oui",
+      "integrated": "Oui",
+      "behaviorTested": "Oui",
+      "browserTested": "Sans objet",
+      "humanArtReview": "Sans objet",
+      "evidence": [
+        "scripts/build-excel-bible-register-20261108.py",
+        "production/excel-bible-20261108/suivi/excel-open-register.json",
+        "production/excel-bible-20261108/suivi/bible-requirements.json",
+        "production/excel-bible-20261108/suivi/actions-prioritaires.json",
+        "production/excel-bible-20261108/suivi/bible-campagne-revisee.json"
+      ],
+      "remaining": "Les sujets sources se chevauchent ; aucun total de fonctions manquantes ou de taux de jeu terminé n’en est déduit.",
+      "scope": "Sources et suivi uniquement"
+    },
+    {
+      "id": "ART-C01",
+      "domain": "Compagnons",
+      "title": "Dix décors PNG de quartiers et habitats",
+      "criterion": "Produire dix modules individuels, préserver les PNG de génération en copies de jeu identiques et documenter dimensions, transparence, limites visibles et pivot.",
+      "requirementIds": [
+        "ALL-03",
+        "ALL-05",
+        "ALL-10",
+        "QA-C28"
+      ],
+      "generated": "Oui",
+      "integrated": "Partiel",
+      "behaviorTested": "Sans objet",
+      "browserTested": "Non",
+      "humanArtReview": "Non",
+      "evidence": [
+        "production/excel-bible-20261108/art/manifest.json",
+        "app/game/companionQuarterArt.ts",
+        "app/game/CompanionQuartersScene.tsx"
+      ],
+      "remaining": "Dix familles au catalogue ; trois utilisées par les douze définitions de résidence de cette passe. Les sept autres attendent leur raccord propre. Pivot et lisibilité en scène, revue artistique humaine et animations spécifiques ne sont pas attestés par ces PNG. Le navigateur n’est pas certifié ; le rapport compagnons couvre le SSR seulement.",
+      "scope": "10 nouvelles images ; contrôles techniques alpha et copies ; aucun nouveau personnage ou comportement déduit."
+    },
+    {
+      "id": "ART-C02",
+      "domain": "Compagnons",
+      "title": "Trois nouveaux acteurs PNG et import distinct d’Éclisse",
+      "criterion": "Fournir Brèche, Lance-Fendue et Opale comme images individuelles, avec sources et copies de jeu identiques, références, dimensions, limites alpha et pivots ; raccorder le catalogue d’occupants.",
+      "requirementIds": [
+        "ORG-01",
+        "ORG-16",
+        "ORG-13",
+        "ALL-10",
+        "QA-C28"
+      ],
+      "generated": "Oui",
+      "integrated": "Oui",
+      "behaviorTested": "Sans objet",
+      "browserTested": "Non",
+      "humanArtReview": "Non",
+      "evidence": [
+        "production/excel-bible-20261108/art/actors/manifest.json",
+        "app/game/companionPilotArt.ts",
+        "app/game/CompanionQuartersScene.tsx"
+      ],
+      "remaining": "Éclisse est un import existant, pas une quatrième génération. Aucun clip animé nouveau, aucune validation artistique humaine, aucune IA terrain complète produite par ce lot. Pivots physiques et lisibilité en scène à vérifier. Le navigateur n’est pas certifié ; le rapport compagnons couvre le SSR seulement.",
+      "scope": "3 nouveaux PNG acteurs + 1 import existant séparé ; rendu d’occupants conditionnels."
+    },
+    {
+      "id": "COMP-01",
+      "domain": "Compagnons",
+      "title": "Registre de résidence, travaux au quai et transferts uniques",
+      "criterion": "Raccorder recrutement, affectation, installation, disponibilité et présence aux sauvegardes existantes ; réserver/débiter/rembourser une seule fois, préserver les postes historiques et placer les nouvelles recrues en réserve.",
+      "requirementIds": [
+        "ALL-01",
+        "ALL-02",
+        "ALL-03",
+        "ALL-04",
+        "ALL-05",
+        "ALL-09",
+        "QA-C01",
+        "QA-C04",
+        "QA-C05",
+        "QA-C06",
+        "QA-C07",
+        "QA-C08",
+        "QA-C09",
+        "QA-C10",
+        "QA-C11",
+        "QA-C12",
+        "QA-C27"
+      ],
+      "generated": "Oui",
+      "integrated": "Oui",
+      "behaviorTested": "Oui",
+      "browserTested": "Non",
+      "humanArtReview": "Sans objet",
+      "evidence": [
+        "app/game/systems/companionResidence.ts",
+        "app/game/CompanionResidencePanel.tsx",
+        "app/game/CompanionQuartersScene.tsx",
+        "app/game/GameClient.tsx",
+        "production/excel-bible-20261108/compagnons/verification.json",
+        "production/excel-bible-20261108/compagnons/tests-run.txt"
+      ],
+      "remaining": "24 scénarios nouveaux et 84 tests avec régressions réussis. Les composants sont exercés en SSR, sans validation des pixels ni interaction navigateur. Les quartiers occupent des galeries arrière ; aucune nouvelle chambre traversable complète. Catalogue, décès/capture et relations Premium incomplets.",
+      "scope": "12 identités : 2 partenaires existants, 6 recrues clan, 4 pilotes ; 3 familles de modules actuellement utilisées."
+    },
+    {
+      "id": "COMP-02",
+      "domain": "Compagnons",
+      "title": "Quatre accords pilotes liés à une nouvelle chasse et à un consentement",
+      "criterion": "Découvrir puis accepter l’appel, lier une nouvelle tentative réelle à la campagne, contrôler score/scans/retour, effectuer deux préparations aux postes et proposer l’accord explicite sans affectation automatique.",
+      "requirementIds": [
+        "ORG-01",
+        "ORG-10",
+        "ORG-16",
+        "ORG-13",
+        "ALL-01",
+        "ALL-07",
+        "QA-C02",
+        "QA-C04",
+        "QA-C17"
+      ],
+      "generated": "Oui",
+      "integrated": "Oui",
+      "behaviorTested": "Oui",
+      "browserTested": "Non",
+      "humanArtReview": "Sans objet",
+      "evidence": [
+        "app/game/systems/companionResidence.ts",
+        "app/game/CompanionResidencePanel.tsx",
+        "app/game/GameClient.tsx",
+        "tests/companion-residence.test.mjs",
+        "production/excel-bible-20261108/compagnons/verification.json"
+      ],
+      "remaining": "Accords de production pour Brèche, Éclisse, Lance-Fendue et Opale. Les scènes physiques spécifiques de capture/récupération/familiarisation, IA terrain, capacités de combat et arcs Premium restent à produire. Les quatre pilotes ont fieldReady:false.",
+      "scope": "Quatre parcours secondaires utilisant les huit chasses et leurs résultats confirmés, sans nouveau recrutement automatique."
+    },
+    {
+      "id": "ART-OPS01",
+      "domain": "Clan Ship",
+      "title": "Deux props natifs pour le scellé et le relais",
+      "criterion": "Produire deux images individuelles d’isolateur de scellé et de relais à deux circuits avec alpha effectif, dimensions, pivots et copies de jeu identiques aux sources.",
+      "requirementIds": [
+        "OPS-B01",
+        "OPS-B02",
+        "OPS-Q26"
+      ],
+      "generated": "Oui",
+      "integrated": "Oui",
+      "behaviorTested": "Sans objet",
+      "browserTested": "Non",
+      "humanArtReview": "Non",
+      "evidence": [
+        "production/excel-bible-20261108/art/incidents/manifest.json",
+        "app/game/clanShipIncidentArt.ts",
+        "app/game/ClanShipIncidentScene.tsx",
+        "production/excel-bible-20261108/incidents/verification.json"
+      ],
+      "remaining": "Deux props raccordés aux terminaux du hangar et du conseil avec leurs collisions existantes. Sources et copies bit-identiques vérifiées ; les deux ressources sont rendues dans les tests SSR. Échelle, pivot physique, pixels navigateur et revue artistique humaine restent ouverts.",
+      "scope": "2 PNG natifs nouveaux, 876 × 1 796 chacun ; contrôles alpha/hashes distincts de la jouabilité."
+    },
+    {
+      "id": "XBE-01",
+      "domain": "Berceau enfoui",
+      "title": "Douze tableaux, combat et retour de campagne",
+      "criterion": "Raccorder le modèle au départ Blooded après huit chasses, à une scène jouable, aux douze tableaux et leurs liaisons, à la crête physique, à l’extraction et au débrief sans promotion Élite automatique.",
+      "requirementIds": [
+        "R2-M025",
+        "R2-M026",
+        "R2-M027",
+        "L-07",
+        "XBE-Q01..28"
+      ],
+      "generated": "Oui",
+      "integrated": "Oui",
+      "behaviorTested": "Oui",
+      "browserTested": "Non",
+      "humanArtReview": "Sans objet",
+      "evidence": [
+        "app/game/systems/buriedCradle.ts",
+        "app/game/systems/buriedCradleCampaign.ts",
+        "app/game/systems/buriedCradleSnapshot.ts",
+        "app/game/BuriedCradleScene.tsx",
+        "tests/buriedCradle.test.ts",
+        "tests/buried-cradle-campaign.test.mjs",
+        "tests/buried-cradle-snapshot.test.mjs",
+        "production/excel-bible-20261108/berceau/verification.json",
+        "production/excel-bible-20261108/berceau/tests-run.txt"
+      ],
+      "remaining": "43 tests modèle/campagne/snapshot réussis, dont parcours par commandes ordinaires et rendu SSR. La préparation scénarisée de M025, le débrief mentor/soins de M027, les compagnons de terrain, les transports et les blessés restent partiels ou ouverts. Le parcours navigateur réel est non attesté.",
+      "scope": "Simulation et raccord de campagne ; 16 tests modèle, 18 campagne, 9 snapshot. Aucune clôture intégrale de M025–M027."
+    },
+    {
+      "id": "XBE-02",
+      "domain": "Berceau enfoui",
+      "title": "Reprise exacte, créneaux et archives protégées",
+      "criterion": "Conserver position, vitesses, santé, horloges, pièges, anatomie, phase, attaques et nappes acides ; restaurer la sauvegarde exacte via Continuer et les créneaux manuels ; préserver les anciens formats et refuser les états futurs, incohérents, étrangers ou simultanés.",
+      "requirementIds": [
+        "XBE-Q09",
+        "XBE-Q17",
+        "XBE-Q23",
+        "XBE-Q24"
+      ],
+      "generated": "Oui",
+      "integrated": "Oui",
+      "behaviorTested": "Oui",
+      "browserTested": "Non",
+      "humanArtReview": "Sans objet",
+      "evidence": [
+        "app/game/systems/buriedCradleCampaign.ts",
+        "app/game/systems/buriedCradleSnapshot.ts",
+        "app/game/BuriedCradleScene.tsx",
+        "tests/buriedCradle.test.ts",
+        "tests/buried-cradle-campaign.test.mjs",
+        "tests/buried-cradle-snapshot.test.mjs",
+        "production/excel-bible-20261108/berceau/verification.json",
+        "production/excel-bible-20261108/berceau/tests-run.txt",
+        "production/excel-bible-20261108/berceau/sondage-snapshots-resultat.json",
+        "production/excel-bible-20261108/berceau/relecture-independante.md"
+      ],
+      "remaining": "État exact du dernier enregistrement confirmé : changements de progression/combat, pauses/sorties et intervalle de cinq secondes de simulation. Anciennes sauvegardes sans snapshot reprises à la balise ; KO reconstruit la tentative. XBE-Q23 reste partiel sur l’équipe. Commandes et fermeture brutale en navigateur non recettées.",
+      "scope": "9 scénarios de snapshot et tests campagne d’export, archives, quota, confirmation et créneaux ; sondage indépendant de 76 803 états sans rejet, initialisations préparées. Aucun navigateur certifié."
+    },
+    {
+      "id": "XBE-ART",
+      "domain": "Berceau enfoui",
+      "title": "Import intact du pack existant de 156 PNG et raccord visuel",
+      "criterion": "Importer les ressources natives existantes, vérifier leurs empreintes et les douze layouts, puis les utiliser dans la scène avec des ancrages de bouche et de base mesurés.",
+      "requirementIds": [
+        "XBE-Q10",
+        "XBE-Q13",
+        "XBE-Q15",
+        "XBE-Q18",
+        "XBE-Q28"
+      ],
+      "generated": "Oui",
+      "integrated": "Oui",
+      "behaviorTested": "Partiel",
+      "browserTested": "Non",
+      "humanArtReview": "Non",
+      "evidence": [
+        "scripts/import-buried-cradle-runtime.mjs",
+        "app/game/data/buriedCradleArt.json",
+        "app/game/BuriedCradleScene.tsx",
+        "tests/buried-cradle-campaign.test.mjs",
+        "production/excel-bible-20261108/berceau/verification.json",
+        "production/excel-bible-20261108/berceau/tests-run.txt"
+      ],
+      "remaining": "156 imports de ressources existantes, zéro nouvelle génération dans ce lot. Hashes, résolution des layouts et SSR vérifiés. Les pixels, changements de pose, attaches des tentacules, lisibilité et performances de la scène finale attendent navigateur et revue humaine.",
+      "scope": "Copies byte-identiques, catalogue et rendu raccordés ; contrôle artistique humain absent."
+    },
+    {
+      "id": "OPS-01",
+      "domain": "Clan Ship",
+      "title": "Le scellé qui ment",
+      "criterion": "Indices visibles, isolateurs manipulables, erreur avec diagnostic et remise en service progressive.",
+      "requirementIds": [
+        "OPS-B01",
+        "OPS-Q26"
+      ],
+      "generated": "Oui",
+      "integrated": "Oui",
+      "behaviorTested": "Oui",
+      "browserTested": "Non",
+      "humanArtReview": "Non",
+      "evidence": [
+        "app/game/systems/clanShipIncidents.ts",
+        "app/game/ClanShipIncidentPanel.tsx",
+        "app/game/ClanShipIncidentScene.tsx",
+        "app/game/ClanShipInterior.tsx",
+        "app/game/GameClient.tsx",
+        "tests/clan-ship-incidents.test.mjs",
+        "production/excel-bible-20261108/incidents/verification.json",
+        "production/excel-bible-20261108/incidents/coverage.json",
+        "production/excel-bible-20261108/incidents/tests-run.txt"
+      ],
+      "remaining": "Navigation et affichage réels en navigateur, ajustement de l’échelle/pivot du prop, revue artistique humaine; réplique contextualisée de confiance et variante future d’extraction non produites. Montant de gratification à équilibrer. Import et exécution refusent aussi la même erreur au-delà du seuil de journal ; test de régression dédié réussi.",
+      "scope": "Acceptation après ship-seal-check auprès de Garde du Seuil disponible; témoin physique et lot identifié, deux isolateurs visibles/manipulables, revalidation archive après erreur, mesure de pression au terminal médical, fermeture au hangar. Restriction et états de contrôle persistants. Gratification unique de 25 marques. 14 scénarios incidents, 98 tests combinés incluant compagnons et régressions ; mouvement natif et SSR, pas de navigateur certifié."
+    },
+    {
+      "id": "OPS-02",
+      "domain": "Clan Ship",
+      "title": "Une lumière dans le relais",
+      "criterion": "Mesures lisibles, composant unique et rétablissement de deux circuits avec chemin et retour praticables.",
+      "requirementIds": [
+        "OPS-B02",
+        "OPS-Q26"
+      ],
+      "generated": "Oui",
+      "integrated": "Oui",
+      "behaviorTested": "Oui",
+      "browserTested": "Non",
+      "humanArtReview": "Non",
+      "evidence": [
+        "app/game/systems/clanShipIncidents.ts",
+        "app/game/ClanShipIncidentPanel.tsx",
+        "app/game/ClanShipIncidentScene.tsx",
+        "app/game/ClanShipInterior.module.css",
+        "app/game/GameClient.tsx",
+        "tests/clan-ship-incidents.test.mjs",
+        "production/excel-bible-20261108/incidents/verification.json",
+        "production/excel-bible-20261108/incidents/coverage.json",
+        "production/excel-bible-20261108/incidents/tests-run.txt"
+      ],
+      "remaining": "Navigation/affichage mobile et manette en navigateur; revue artistique; effet d’interception spatiale non implémenté et non accordé. Montant de gratification à équilibrer. Import et exécution refusent aussi la même erreur au-delà du seuil de journal ; test de régression dédié réussi.",
+      "scope": "Acceptation après ship-armory-audit auprès de Griffe de Fer disponible; mesures A/B stables et comparables, référence physique aux archives, isolation correcte, composant R-2 identifié/prélevé/installé une fois, test de permutation réessayable, rétablissement progressif de 0 à 1 puis 2 circuits et contrôle à la table. Projection locale modifiée, chemins inchangés. Gratification unique de 30 marques. 14 scénarios incidents, 98 tests combinés incluant compagnons et régressions ; mouvement natif et SSR, pas de navigateur certifié."
+    }
+  ],
+  "criteriaOverrides": {
+    "ALL-01": {
+      "currentStatus": "Modèle et composants testés dans le périmètre annoncé ; navigateur ouvert",
+      "generated": "Oui",
+      "integrated": "Oui",
+      "behaviorTested": "Oui",
+      "browserTested": "Non",
+      "humanArtReview": "Sans objet",
+      "evidence": [
+        "app/game/systems/companionResidence.ts",
+        "tests/companion-residence.test.mjs",
+        "app/game/CompanionResidencePanel.tsx",
+        "app/game/CompanionQuartersScene.tsx",
+        "production/excel-bible-20261108/compagnons/coverage.json",
+        "production/excel-bible-20261108/compagnons/verification.json",
+        "production/excel-bible-20261108/compagnons/tests-run.txt"
+      ],
+      "remaining": "Portée attestée : Aucun recrutement automatique; nouveaux accords pilotes/clan en réserve; anciens accords préservés.\nReste : 12 identités runtime; pas les 44 originaux complets."
+    },
+    "ALL-02": {
+      "currentStatus": "Partiel — périmètre testé limité",
+      "generated": "Oui",
+      "integrated": "Partiel",
+      "behaviorTested": "Partiel",
+      "browserTested": "Non",
+      "humanArtReview": "Sans objet",
+      "evidence": [
+        "app/game/systems/companionResidence.ts",
+        "tests/companion-residence.test.mjs",
+        "app/game/CompanionResidencePanel.tsx",
+        "app/game/CompanionQuartersScene.tsx",
+        "production/excel-bible-20261108/compagnons/coverage.json",
+        "production/excel-bible-20261108/compagnons/verification.json",
+        "production/excel-bible-20261108/compagnons/tests-run.txt"
+      ],
+      "remaining": "Portée attestée : Recrutement, coque, travaux, disponibilité triade, suspension et déploiement séparés.\nReste : Décès, capture, relations Premium et santé terrain des pilotes absents."
+    },
+    "ALL-03": {
+      "currentStatus": "Modèle et composants testés dans le périmètre annoncé ; navigateur ouvert",
+      "generated": "Oui",
+      "integrated": "Oui",
+      "behaviorTested": "Oui",
+      "browserTested": "Non",
+      "humanArtReview": "Sans objet",
+      "evidence": [
+        "app/game/systems/companionResidence.ts",
+        "tests/companion-residence.test.mjs",
+        "app/game/CompanionResidencePanel.tsx",
+        "app/game/CompanionQuartersScene.tsx",
+        "production/excel-bible-20261108/compagnons/coverage.json",
+        "production/excel-bible-20261108/compagnons/verification.json",
+        "production/excel-bible-20261108/compagnons/tests-run.txt"
+      ],
+      "remaining": "Portée attestée : Présence/module/service construits depuis accord et affectation; nouveaux recrutements clan en réserve.\nReste : Postes clan historiques conservés comme accords antérieurs; revue visuelle navigateur restante."
+    },
+    "ALL-04": {
+      "currentStatus": "Modèle et composants testés dans le périmètre annoncé ; navigateur ouvert",
+      "generated": "Oui",
+      "integrated": "Oui",
+      "behaviorTested": "Oui",
+      "browserTested": "Non",
+      "humanArtReview": "Sans objet",
+      "evidence": [
+        "app/game/systems/companionResidence.ts",
+        "tests/companion-residence.test.mjs",
+        "app/game/CompanionResidencePanel.tsx",
+        "app/game/CompanionQuartersScene.tsx",
+        "production/excel-bible-20261108/compagnons/coverage.json",
+        "production/excel-bible-20261108/compagnons/verification.json",
+        "production/excel-bible-20261108/compagnons/tests-run.txt"
+      ],
+      "remaining": "Portée attestée : Bail de mission de la triade conserve module et masque avatar/service.\nReste : Pilotes non déployables."
+    },
+    "ALL-05": {
+      "currentStatus": "Modèle et composants testés dans le périmètre annoncé ; navigateur ouvert",
+      "generated": "Oui",
+      "integrated": "Oui",
+      "behaviorTested": "Oui",
+      "browserTested": "Non",
+      "humanArtReview": "Sans objet",
+      "evidence": [
+        "app/game/systems/companionResidence.ts",
+        "tests/companion-residence.test.mjs",
+        "app/game/CompanionResidencePanel.tsx",
+        "app/game/CompanionQuartersScene.tsx",
+        "production/excel-bible-20261108/compagnons/coverage.json",
+        "production/excel-bible-20261108/compagnons/verification.json",
+        "production/excel-bible-20261108/compagnons/tests-run.txt"
+      ],
+      "remaining": "Portée attestée : Huit salles personnelles et sept salles clan conservées; sockets hors sol traversable.\nReste : Pas de nouvelles chambres parcourables."
+    },
+    "ALL-06": {
+      "currentStatus": "Contrainte préservée ; recette complète ouverte",
+      "generated": "À vérifier",
+      "integrated": "À vérifier",
+      "behaviorTested": "À vérifier",
+      "browserTested": "Non",
+      "humanArtReview": "Sans objet",
+      "evidence": [
+        "docs/campagne/COMPAGNONS_ET_ALLIES_PREMIUM.md",
+        "app/game/systems/companionResidence.ts",
+        "production/excel-bible-20261108/compagnons/coverage.json"
+      ],
+      "remaining": "Portée attestée : Aucune monnaie réelle ni puissance universelle; pas de Premium débloqué par ce lot.\nReste : Arcs Premium ouverts."
+    },
+    "ALL-07": {
+      "currentStatus": "Contrainte préservée ; recette complète ouverte",
+      "generated": "À vérifier",
+      "integrated": "À vérifier",
+      "behaviorTested": "À vérifier",
+      "browserTested": "Non",
+      "humanArtReview": "Sans objet",
+      "evidence": [
+        "docs/campagne/COMPAGNONS_ET_ALLIES_PREMIUM.md",
+        "app/game/systems/companionResidence.ts",
+        "production/excel-bible-20261108/compagnons/coverage.json"
+      ],
+      "remaining": "Portée attestée : Quatre accords signalés adaptations originales; aucune référence d’espèce convertie en allié gratuit.\nReste : Références Héritage non produites."
+    },
+    "ALL-08": {
+      "currentStatus": "Modèle et composants testés dans le périmètre annoncé ; navigateur ouvert",
+      "generated": "Oui",
+      "integrated": "Oui",
+      "behaviorTested": "Oui",
+      "browserTested": "Non",
+      "humanArtReview": "Sans objet",
+      "evidence": [
+        "app/game/systems/companionResidence.ts",
+        "tests/companion-residence.test.mjs",
+        "app/game/CompanionResidencePanel.tsx",
+        "app/game/CompanionQuartersScene.tsx",
+        "production/excel-bible-20261108/compagnons/coverage.json",
+        "production/excel-bible-20261108/compagnons/verification.json",
+        "production/excel-bible-20261108/compagnons/tests-run.txt"
+      ],
+      "remaining": "Portée attestée : Seuls les deux acteurs de triade déjà admissibles ont fieldReady:true.\nReste : Aucun nouveau rite solitaire ni essai L-05 réalisé."
+    },
+    "ALL-09": {
+      "currentStatus": "Partiel — périmètre testé limité",
+      "generated": "Oui",
+      "integrated": "Partiel",
+      "behaviorTested": "Partiel",
+      "browserTested": "Non",
+      "humanArtReview": "Sans objet",
+      "evidence": [
+        "app/game/systems/companionResidence.ts",
+        "tests/companion-residence.test.mjs",
+        "app/game/CompanionResidencePanel.tsx",
+        "app/game/CompanionQuartersScene.tsx",
+        "production/excel-bible-20261108/compagnons/coverage.json",
+        "production/excel-bible-20261108/compagnons/verification.json",
+        "production/excel-bible-20261108/compagnons/tests-run.txt"
+      ],
+      "remaining": "Portée attestée : Réemploi huit identités établies, huit chasses, coques et écrivain de campagne.\nReste : Alias Keth/Serekh restent ouverts."
+    },
+    "ALL-10": {
+      "currentStatus": "Modèle et composants testés dans le périmètre annoncé ; navigateur ouvert",
+      "generated": "Oui",
+      "integrated": "Oui",
+      "behaviorTested": "Oui",
+      "browserTested": "Non",
+      "humanArtReview": "Sans objet",
+      "evidence": [
+        "app/game/systems/companionResidence.ts",
+        "tests/companion-residence.test.mjs",
+        "app/game/CompanionResidencePanel.tsx",
+        "app/game/CompanionQuartersScene.tsx",
+        "production/excel-bible-20261108/compagnons/coverage.json",
+        "production/excel-bible-20261108/compagnons/verification.json",
+        "production/excel-bible-20261108/compagnons/tests-run.txt"
+      ],
+      "remaining": "Portée attestée : Métadonnées statiques et validation humaine false; preuves comportement/SSR séparées du navigateur et art.\nReste : Fidélité1:1 non certifiée."
+    },
+    "QA-C01": {
+      "currentStatus": "Modèle et composants testés dans le périmètre annoncé ; navigateur ouvert",
+      "generated": "Oui",
+      "integrated": "Oui",
+      "behaviorTested": "Oui",
+      "browserTested": "Non",
+      "humanArtReview": "Sans objet",
+      "evidence": [
+        "app/game/systems/companionResidence.ts",
+        "tests/companion-residence.test.mjs",
+        "app/game/CompanionResidencePanel.tsx",
+        "app/game/CompanionQuartersScene.tsx",
+        "production/excel-bible-20261108/compagnons/coverage.json",
+        "production/excel-bible-20261108/compagnons/verification.json",
+        "production/excel-bible-20261108/compagnons/tests-run.txt"
+      ],
+      "remaining": "Portée attestée : Nouvelle campagne/anciens saves sans registre: aucun occupant/habitat; huit salles intactes.\nReste : SSR et géométrie, pas navigateur."
+    },
+    "QA-C02": {
+      "currentStatus": "Modèle et composants testés dans le périmètre annoncé ; navigateur ouvert",
+      "generated": "Oui",
+      "integrated": "Oui",
+      "behaviorTested": "Oui",
+      "browserTested": "Non",
+      "humanArtReview": "Sans objet",
+      "evidence": [
+        "app/game/systems/companionResidence.ts",
+        "tests/companion-residence.test.mjs",
+        "app/game/CompanionResidencePanel.tsx",
+        "app/game/CompanionQuartersScene.tsx",
+        "production/excel-bible-20261108/compagnons/coverage.json",
+        "production/excel-bible-20261108/compagnons/verification.json",
+        "production/excel-bible-20261108/compagnons/tests-run.txt"
+      ],
+      "remaining": "Portée attestée : Découverte des appels sans recrutement ni installation.\nReste : Journal de quatre adaptations, pas scène de rencontre physique dédiée."
+    },
+    "QA-C03": {
+      "currentStatus": "Ouvert — scénario hors de cette passe",
+      "generated": "À vérifier",
+      "integrated": "À vérifier",
+      "behaviorTested": "À vérifier",
+      "browserTested": "Non",
+      "humanArtReview": "Sans objet",
+      "evidence": [
+        "docs/campagne/COMPAGNONS_ET_ALLIES_PREMIUM.md",
+        "app/game/systems/companionResidence.ts",
+        "production/excel-bible-20261108/compagnons/coverage.json"
+      ],
+      "remaining": "Portée attestée : Saar/Vek et participants des rites antérieurs hors changement.\nReste : Pas de nouvelle preuve de ce scénario."
+    },
+    "QA-C04": {
+      "currentStatus": "Modèle et composants testés dans le périmètre annoncé ; navigateur ouvert",
+      "generated": "Oui",
+      "integrated": "Oui",
+      "behaviorTested": "Oui",
+      "browserTested": "Non",
+      "humanArtReview": "Sans objet",
+      "evidence": [
+        "app/game/systems/companionResidence.ts",
+        "tests/companion-residence.test.mjs",
+        "app/game/CompanionResidencePanel.tsx",
+        "app/game/CompanionQuartersScene.tsx",
+        "production/excel-bible-20261108/compagnons/coverage.json",
+        "production/excel-bible-20261108/compagnons/verification.json",
+        "production/excel-bible-20261108/compagnons/tests-run.txt"
+      ],
+      "remaining": "Portée attestée : Quatre pilotes et nouveaux recrutements clan arrivent en réserve.\nReste : Parcours navigateur et contrôle en situation réelle non réalisés dans cette passe."
+    },
+    "QA-C05": {
+      "currentStatus": "Partiel — périmètre testé limité",
+      "generated": "Oui",
+      "integrated": "Partiel",
+      "behaviorTested": "Partiel",
+      "browserTested": "Non",
+      "humanArtReview": "Non",
+      "evidence": [
+        "app/game/systems/companionResidence.ts",
+        "tests/companion-residence.test.mjs",
+        "app/game/CompanionResidencePanel.tsx",
+        "app/game/CompanionQuartersScene.tsx",
+        "production/excel-bible-20261108/compagnons/coverage.json",
+        "production/excel-bible-20261108/compagnons/verification.json",
+        "production/excel-bible-20261108/compagnons/tests-run.txt"
+      ],
+      "remaining": "Portée attestée : Quai réel, réservation/débit unique, module compatible, avatar exact en SSR.\nReste : Placement pixels/contact/caméra à revoir en navigateur."
+    },
+    "QA-C06": {
+      "currentStatus": "Modèle et composants testés dans le périmètre annoncé ; navigateur ouvert",
+      "generated": "Oui",
+      "integrated": "Oui",
+      "behaviorTested": "Oui",
+      "browserTested": "Non",
+      "humanArtReview": "Sans objet",
+      "evidence": [
+        "app/game/systems/companionResidence.ts",
+        "tests/companion-residence.test.mjs",
+        "app/game/CompanionResidencePanel.tsx",
+        "app/game/CompanionQuartersScene.tsx",
+        "production/excel-bible-20261108/compagnons/coverage.json",
+        "production/excel-bible-20261108/compagnons/verification.json",
+        "production/excel-bible-20261108/compagnons/tests-run.txt"
+      ],
+      "remaining": "Portée attestée : Annulation/refund idempotent, refus quota, ancienne affectation conservée.\nReste : Parcours navigateur et contrôle en situation réelle non réalisés dans cette passe."
+    },
+    "QA-C07": {
+      "currentStatus": "Modèle et composants testés dans le périmètre annoncé ; navigateur ouvert",
+      "generated": "Oui",
+      "integrated": "Oui",
+      "behaviorTested": "Oui",
+      "browserTested": "Non",
+      "humanArtReview": "Sans objet",
+      "evidence": [
+        "app/game/systems/companionResidence.ts",
+        "tests/companion-residence.test.mjs",
+        "app/game/CompanionResidencePanel.tsx",
+        "app/game/CompanionQuartersScene.tsx",
+        "production/excel-bible-20261108/compagnons/coverage.json",
+        "production/excel-bible-20261108/compagnons/verification.json",
+        "production/excel-bible-20261108/compagnons/tests-run.txt"
+      ],
+      "remaining": "Portée attestée : Triade déployée: module conservé, avatar et service absents; lease owner/mission/attempt/hull validé.\nReste : Parcours navigateur et contrôle en situation réelle non réalisés dans cette passe."
+    },
+    "QA-C08": {
+      "currentStatus": "Partiel — périmètre testé limité",
+      "generated": "Oui",
+      "integrated": "Partiel",
+      "behaviorTested": "Partiel",
+      "browserTested": "Non",
+      "humanArtReview": "Non",
+      "evidence": [
+        "app/game/systems/companionResidence.ts",
+        "tests/companion-residence.test.mjs",
+        "app/game/CompanionResidencePanel.tsx",
+        "app/game/CompanionQuartersScene.tsx",
+        "production/excel-bible-20261108/compagnons/coverage.json",
+        "production/excel-bible-20261108/compagnons/verification.json",
+        "production/excel-bible-20261108/compagnons/tests-run.txt"
+      ],
+      "remaining": "Portée attestée : Triade blessée en baie médicale, incarnation unique en SSR, services coupés.\nReste : Animation médicale et contacts visuels non validés."
+    },
+    "QA-C09": {
+      "currentStatus": "Modèle et composants testés dans le périmètre annoncé ; navigateur ouvert",
+      "generated": "Oui",
+      "integrated": "Oui",
+      "behaviorTested": "Oui",
+      "browserTested": "Non",
+      "humanArtReview": "Sans objet",
+      "evidence": [
+        "app/game/systems/companionResidence.ts",
+        "tests/companion-residence.test.mjs",
+        "app/game/CompanionResidencePanel.tsx",
+        "app/game/CompanionQuartersScene.tsx",
+        "production/excel-bible-20261108/compagnons/coverage.json",
+        "production/excel-bible-20261108/compagnons/verification.json",
+        "production/excel-bible-20261108/compagnons/tests-run.txt"
+      ],
+      "remaining": "Portée attestée : Réserve retire quartier/avatar/bonus géré et garde recrutement/santé.\nReste : Parcours navigateur et contrôle en situation réelle non réalisés dans cette passe."
+    },
+    "QA-C10": {
+      "currentStatus": "Modèle et composants testés dans le périmètre annoncé ; navigateur ouvert",
+      "generated": "Oui",
+      "integrated": "Oui",
+      "behaviorTested": "Oui",
+      "browserTested": "Non",
+      "humanArtReview": "Sans objet",
+      "evidence": [
+        "app/game/systems/companionResidence.ts",
+        "tests/companion-residence.test.mjs",
+        "app/game/CompanionResidencePanel.tsx",
+        "app/game/CompanionQuartersScene.tsx",
+        "production/excel-bible-20261108/compagnons/coverage.json",
+        "production/excel-bible-20261108/compagnons/verification.json",
+        "production/excel-bible-20261108/compagnons/tests-run.txt"
+      ],
+      "remaining": "Portée attestée : Transfert atomique hôte unique, synchronisation triade, aucun double module pendant travaux.\nReste : Vérification navigateur de toutes coques restante."
+    },
+    "QA-C11": {
+      "currentStatus": "Partiel — périmètre testé limité",
+      "generated": "Oui",
+      "integrated": "Partiel",
+      "behaviorTested": "Partiel",
+      "browserTested": "Non",
+      "humanArtReview": "Sans objet",
+      "evidence": [
+        "app/game/systems/companionResidence.ts",
+        "tests/companion-residence.test.mjs",
+        "app/game/CompanionResidencePanel.tsx",
+        "app/game/CompanionQuartersScene.tsx",
+        "production/excel-bible-20261108/compagnons/coverage.json",
+        "production/excel-bible-20261108/compagnons/verification.json",
+        "production/excel-bible-20261108/compagnons/tests-run.txt"
+      ],
+      "remaining": "Portée attestée : Écriture/import/reload travaux, escrow, présence, réserve, suspension; preuves contacts inspectées.\nReste : Tour complet compte/cloud/continuité mobile à revoir."
+    },
+    "QA-C12": {
+      "currentStatus": "Modèle et composants testés dans le périmètre annoncé ; navigateur ouvert",
+      "generated": "Oui",
+      "integrated": "Oui",
+      "behaviorTested": "Oui",
+      "browserTested": "Non",
+      "humanArtReview": "Sans objet",
+      "evidence": [
+        "app/game/systems/companionResidence.ts",
+        "tests/companion-residence.test.mjs",
+        "app/game/CompanionResidencePanel.tsx",
+        "app/game/CompanionQuartersScene.tsx",
+        "production/excel-bible-20261108/compagnons/coverage.json",
+        "production/excel-bible-20261108/compagnons/verification.json",
+        "production/excel-bible-20261108/compagnons/tests-run.txt"
+      ],
+      "remaining": "Portée attestée : Absent/null préservés, aucune migration catalogue, versions futures/propriétaires étrangers/corruptions refusés.\nReste : Alias du catalogue pas encore introduits."
+    },
+    "QA-C13": {
+      "currentStatus": "Ouvert — scénario hors de cette passe",
+      "generated": "À vérifier",
+      "integrated": "À vérifier",
+      "behaviorTested": "À vérifier",
+      "browserTested": "Non",
+      "humanArtReview": "Sans objet",
+      "evidence": [
+        "docs/campagne/COMPAGNONS_ET_ALLIES_PREMIUM.md",
+        "app/game/systems/companionResidence.ts",
+        "production/excel-bible-20261108/compagnons/coverage.json"
+      ],
+      "remaining": "Portée attestée : Alias Serekh/NeufNids et Keth/TroisClics non introduits.\nReste : Parcours navigateur et contrôle en situation réelle non réalisés dans cette passe."
+    },
+    "QA-C14": {
+      "currentStatus": "Partiel — périmètre testé limité",
+      "generated": "Oui",
+      "integrated": "Partiel",
+      "behaviorTested": "Partiel",
+      "browserTested": "Non",
+      "humanArtReview": "Sans objet",
+      "evidence": [
+        "app/game/systems/companionResidence.ts",
+        "tests/companion-residence.test.mjs",
+        "app/game/CompanionResidencePanel.tsx",
+        "app/game/CompanionQuartersScene.tsx",
+        "production/excel-bible-20261108/compagnons/coverage.json",
+        "production/excel-bible-20261108/compagnons/verification.json",
+        "production/excel-bible-20261108/compagnons/tests-run.txt"
+      ],
+      "remaining": "Portée attestée : Groupe terrain fermé à la triade existante; les quatre pilotes ne peuvent pas se déployer.\nReste : Groupes mixtes animal/robot non produits."
+    },
+    "QA-C15": {
+      "currentStatus": "Ouvert — scénario hors de cette passe",
+      "generated": "À vérifier",
+      "integrated": "À vérifier",
+      "behaviorTested": "À vérifier",
+      "browserTested": "Non",
+      "humanArtReview": "Sans objet",
+      "evidence": [
+        "docs/campagne/COMPAGNONS_ET_ALLIES_PREMIUM.md",
+        "app/game/systems/companionResidence.ts",
+        "production/excel-bible-20261108/compagnons/coverage.json"
+      ],
+      "remaining": "Portée attestée : Maître des bêtes non recruté ni ajouté.\nReste : Parcours navigateur et contrôle en situation réelle non réalisés dans cette passe."
+    },
+    "QA-C16": {
+      "currentStatus": "Contrainte préservée ; recette complète ouverte",
+      "generated": "À vérifier",
+      "integrated": "À vérifier",
+      "behaviorTested": "À vérifier",
+      "browserTested": "Non",
+      "humanArtReview": "Sans objet",
+      "evidence": [
+        "docs/campagne/COMPAGNONS_ET_ALLIES_PREMIUM.md",
+        "app/game/systems/companionResidence.ts",
+        "production/excel-bible-20261108/compagnons/coverage.json"
+      ],
+      "remaining": "Portée attestée : Aucun nouveau compagnon admissible aux rites; aucune puissance accordée.\nReste : L-05 hors tests de ce lot."
+    },
+    "QA-C17": {
+      "currentStatus": "Partiel — périmètre testé limité",
+      "generated": "Oui",
+      "integrated": "Partiel",
+      "behaviorTested": "Partiel",
+      "browserTested": "Non",
+      "humanArtReview": "Sans objet",
+      "evidence": [
+        "app/game/systems/companionResidence.ts",
+        "tests/companion-residence.test.mjs",
+        "app/game/CompanionResidencePanel.tsx",
+        "app/game/CompanionQuartersScene.tsx",
+        "production/excel-bible-20261108/compagnons/coverage.json",
+        "production/excel-bible-20261108/compagnons/verification.json",
+        "production/excel-bible-20261108/compagnons/tests-run.txt"
+      ],
+      "remaining": "Portée attestée : Retrait/échec d’un appel garde la campagne principale et la reconnaissance réessayable.\nReste : Arcs Premium et détours narratifs dédiés non réalisés."
+    },
+    "QA-C18": {
+      "currentStatus": "Ouvert — scénario hors de cette passe",
+      "generated": "À vérifier",
+      "integrated": "À vérifier",
+      "behaviorTested": "À vérifier",
+      "browserTested": "Non",
+      "humanArtReview": "Sans objet",
+      "evidence": [
+        "docs/campagne/COMPAGNONS_ET_ALLIES_PREMIUM.md",
+        "app/game/systems/companionResidence.ts",
+        "production/excel-bible-20261108/compagnons/coverage.json"
+      ],
+      "remaining": "Portée attestée : Conflit Enforcer/criminel non produit.\nReste : Parcours navigateur et contrôle en situation réelle non réalisés dans cette passe."
+    },
+    "QA-C19": {
+      "currentStatus": "Contrainte préservée ; recette complète ouverte",
+      "generated": "À vérifier",
+      "integrated": "À vérifier",
+      "behaviorTested": "À vérifier",
+      "browserTested": "Non",
+      "humanArtReview": "Sans objet",
+      "evidence": [
+        "docs/campagne/COMPAGNONS_ET_ALLIES_PREMIUM.md",
+        "app/game/systems/companionResidence.ts",
+        "production/excel-bible-20261108/compagnons/coverage.json"
+      ],
+      "remaining": "Portée attestée : Aucun héros historique ajouté physiquement.\nReste : Système Chronique Premium non produit."
+    },
+    "QA-C20": {
+      "currentStatus": "Partiel — périmètre testé limité",
+      "generated": "Oui",
+      "integrated": "Partiel",
+      "behaviorTested": "Partiel",
+      "browserTested": "Non",
+      "humanArtReview": "Sans objet",
+      "evidence": [
+        "app/game/systems/companionResidence.ts",
+        "tests/companion-residence.test.mjs",
+        "app/game/CompanionResidencePanel.tsx",
+        "app/game/CompanionQuartersScene.tsx",
+        "production/excel-bible-20261108/compagnons/coverage.json",
+        "production/excel-bible-20261108/compagnons/verification.json",
+        "production/excel-bible-20261108/compagnons/tests-run.txt"
+      ],
+      "remaining": "Portée attestée : Compatibilité de coque et habitat blindé contrôlés; capsules monoplaces refusées.\nReste : Grande monture/carrier spécifique non produit."
+    },
+    "QA-C21": {
+      "currentStatus": "Ouvert — scénario hors de cette passe",
+      "generated": "À vérifier",
+      "integrated": "À vérifier",
+      "behaviorTested": "À vérifier",
+      "browserTested": "Non",
+      "humanArtReview": "Sans objet",
+      "evidence": [
+        "docs/campagne/COMPAGNONS_ET_ALLIES_PREMIUM.md",
+        "app/game/systems/companionResidence.ts",
+        "production/excel-bible-20261108/compagnons/coverage.json"
+      ],
+      "remaining": "Portée attestée : Aucun nouvel ordre terrain furtif ou attente.\nReste : Parcours navigateur et contrôle en situation réelle non réalisés dans cette passe."
+    },
+    "QA-C22": {
+      "currentStatus": "Ouvert — scénario hors de cette passe",
+      "generated": "À vérifier",
+      "integrated": "À vérifier",
+      "behaviorTested": "À vérifier",
+      "browserTested": "Non",
+      "humanArtReview": "Sans objet",
+      "evidence": [
+        "docs/campagne/COMPAGNONS_ET_ALLIES_PREMIUM.md",
+        "app/game/systems/companionResidence.ts",
+        "production/excel-bible-20261108/compagnons/coverage.json"
+      ],
+      "remaining": "Portée attestée : Aucun nouvel acteur suiveur traversant portes/sauts.\nReste : Parcours navigateur et contrôle en situation réelle non réalisés dans cette passe."
+    },
+    "QA-C23": {
+      "currentStatus": "Partiel — périmètre testé limité",
+      "generated": "Oui",
+      "integrated": "Partiel",
+      "behaviorTested": "Partiel",
+      "browserTested": "Non",
+      "humanArtReview": "Sans objet",
+      "evidence": [
+        "app/game/systems/companionResidence.ts",
+        "tests/companion-residence.test.mjs",
+        "app/game/CompanionResidencePanel.tsx",
+        "app/game/CompanionQuartersScene.tsx",
+        "production/excel-bible-20261108/compagnons/coverage.json",
+        "production/excel-bible-20261108/compagnons/verification.json",
+        "production/excel-bible-20261108/compagnons/tests-run.txt"
+      ],
+      "remaining": "Portée attestée : Bail triade branché sur insertion réelle ship/pod, conserve l’absence après retrait de l’arrivée.\nReste : Camouflage/énergie/évacuation nouveaux compagnons hors périmètre."
+    },
+    "QA-C24": {
+      "currentStatus": "Ouvert — scénario hors de cette passe",
+      "generated": "À vérifier",
+      "integrated": "À vérifier",
+      "behaviorTested": "À vérifier",
+      "browserTested": "Non",
+      "humanArtReview": "Sans objet",
+      "evidence": [
+        "docs/campagne/COMPAGNONS_ET_ALLIES_PREMIUM.md",
+        "app/game/systems/companionResidence.ts",
+        "production/excel-bible-20261108/compagnons/coverage.json"
+      ],
+      "remaining": "Portée attestée : Autodestruction/pod inchangé.\nReste : Parcours navigateur et contrôle en situation réelle non réalisés dans cette passe."
+    },
+    "QA-C25": {
+      "currentStatus": "Ouvert — scénario hors de cette passe",
+      "generated": "À vérifier",
+      "integrated": "À vérifier",
+      "behaviorTested": "À vérifier",
+      "browserTested": "Non",
+      "humanArtReview": "Sans objet",
+      "evidence": [
+        "docs/campagne/COMPAGNONS_ET_ALLIES_PREMIUM.md",
+        "app/game/systems/companionResidence.ts",
+        "production/excel-bible-20261108/compagnons/coverage.json"
+      ],
+      "remaining": "Portée attestée : Capacités vide/eau/contamination non produites.\nReste : Parcours navigateur et contrôle en situation réelle non réalisés dans cette passe."
+    },
+    "QA-C26": {
+      "currentStatus": "Partiel — périmètre testé limité",
+      "generated": "Oui",
+      "integrated": "Partiel",
+      "behaviorTested": "Partiel",
+      "browserTested": "Non",
+      "humanArtReview": "Sans objet",
+      "evidence": [
+        "app/game/systems/companionResidence.ts",
+        "tests/companion-residence.test.mjs",
+        "app/game/CompanionResidencePanel.tsx",
+        "app/game/CompanionQuartersScene.tsx",
+        "production/excel-bible-20261108/compagnons/coverage.json",
+        "production/excel-bible-20261108/compagnons/verification.json",
+        "production/excel-bible-20261108/compagnons/tests-run.txt"
+      ],
+      "remaining": "Portée attestée : Suspension/missing/soins triade suppriment les services fantômes et se conservent.\nReste : Rupture narrative, décès et capture non produits."
+    },
+    "QA-C27": {
+      "currentStatus": "Modèle et composants testés dans le périmètre annoncé ; navigateur ouvert",
+      "generated": "Oui",
+      "integrated": "Oui",
+      "behaviorTested": "Oui",
+      "browserTested": "Non",
+      "humanArtReview": "Sans objet",
+      "evidence": [
+        "app/game/systems/companionResidence.ts",
+        "tests/companion-residence.test.mjs",
+        "app/game/CompanionResidencePanel.tsx",
+        "app/game/CompanionQuartersScene.tsx",
+        "production/excel-bible-20261108/compagnons/coverage.json",
+        "production/excel-bible-20261108/compagnons/verification.json",
+        "production/excel-bible-20261108/compagnons/tests-run.txt"
+      ],
+      "remaining": "Portée attestée : Paliers7/13/19 joueurs compris; conflits de réservation/compatibilité refusés; aucune génération d’occupant.\nReste : 12 identités connues maximum dans cette tranche."
+    },
+    "QA-C28": {
+      "currentStatus": "Partiel — périmètre testé limité",
+      "generated": "Oui",
+      "integrated": "Partiel",
+      "behaviorTested": "Partiel",
+      "browserTested": "Non",
+      "humanArtReview": "Non",
+      "evidence": [
+        "app/game/systems/companionResidence.ts",
+        "tests/companion-residence.test.mjs",
+        "app/game/CompanionResidencePanel.tsx",
+        "app/game/CompanionQuartersScene.tsx",
+        "production/excel-bible-20261108/compagnons/coverage.json",
+        "production/excel-bible-20261108/compagnons/verification.json",
+        "production/excel-bible-20261108/compagnons/tests-run.txt"
+      ],
+      "remaining": "Portée attestée : Trois familles de modules et quatre acteurs statiques branchés; pivots/identité/absence contrôlés par métadonnées et SSR.\nReste : Audio, animations, qualité artistique et pixels navigateur restent ouverts."
+    },
+    "XBE-Q01": {
+      "currentStatus": "Modèle et raccord testés dans le périmètre annoncé ; navigateur ouvert",
+      "generated": "Oui",
+      "integrated": "Oui",
+      "behaviorTested": "Oui",
+      "browserTested": "Non",
+      "humanArtReview": "Sans objet",
+      "evidence": [
+        "app/game/systems/buriedCradle.ts",
+        "app/game/systems/buriedCradleCampaign.ts",
+        "app/game/systems/buriedCradleSnapshot.ts",
+        "app/game/BuriedCradleScene.tsx",
+        "tests/buriedCradle.test.ts",
+        "tests/buried-cradle-campaign.test.mjs",
+        "tests/buried-cradle-snapshot.test.mjs",
+        "production/excel-bible-20261108/berceau/verification.json",
+        "production/excel-bible-20261108/berceau/tests-run.txt"
+      ],
+      "remaining": "Portée attestée : Identités PLAN08, XP-Z11/XP-Z12 et T01–T12 conservées ; les huit chasses et le vestige global XP-Z09 ne sont pas renommés.\nReste : Les scènes narratives complètes M025–M027 ne sont pas toutes produites."
+    },
+    "XBE-Q02": {
+      "currentStatus": "Modèle et raccord testés dans le périmètre annoncé ; navigateur ouvert",
+      "generated": "Oui",
+      "integrated": "Oui",
+      "behaviorTested": "Oui",
+      "browserTested": "Non",
+      "humanArtReview": "Sans objet",
+      "evidence": [
+        "app/game/systems/buriedCradle.ts",
+        "app/game/systems/buriedCradleCampaign.ts",
+        "app/game/systems/buriedCradleSnapshot.ts",
+        "app/game/BuriedCradleScene.tsx",
+        "tests/buriedCradle.test.ts",
+        "tests/buried-cradle-campaign.test.mjs",
+        "tests/buried-cradle-snapshot.test.mjs",
+        "production/excel-bible-20261108/berceau/verification.json",
+        "production/excel-bible-20261108/berceau/tests-run.txt"
+      ],
+      "remaining": "Portée attestée : Départ après huit chasses, coque possédée et Blooded reconnu si une chronique existe ; accès sans exigence Élite.\nReste : Compatibilité des anciennes campagnes sans chronique conservée. Parcours utilisateur navigateur restant à éprouver."
+    },
+    "XBE-Q03": {
+      "currentStatus": "Modèle et raccord testés dans le périmètre annoncé ; navigateur ouvert",
+      "generated": "Oui",
+      "integrated": "Oui",
+      "behaviorTested": "Oui",
+      "browserTested": "Non",
+      "humanArtReview": "Sans objet",
+      "evidence": [
+        "app/game/systems/buriedCradle.ts",
+        "app/game/systems/buriedCradleCampaign.ts",
+        "app/game/systems/buriedCradleSnapshot.ts",
+        "app/game/BuriedCradleScene.tsx",
+        "tests/buriedCradle.test.ts",
+        "tests/buried-cradle-campaign.test.mjs",
+        "tests/buried-cradle-snapshot.test.mjs",
+        "production/excel-bible-20261108/berceau/verification.json",
+        "production/excel-bible-20261108/berceau/tests-run.txt"
+      ],
+      "remaining": "Portée attestée : Crête rapportée inscrit une preuve de reine dans la chronique ; aucun rite Élite ni récompense économique implicite.\nReste : Rites L-05/L-06 et reconnaissance finale demeurent séparés."
+    },
+    "XBE-Q04": {
+      "currentStatus": "Modèle et raccord testés dans le périmètre annoncé ; navigateur ouvert",
+      "generated": "Oui",
+      "integrated": "Oui",
+      "behaviorTested": "Oui",
+      "browserTested": "Non",
+      "humanArtReview": "Sans objet",
+      "evidence": [
+        "app/game/systems/buriedCradle.ts",
+        "app/game/systems/buriedCradleCampaign.ts",
+        "app/game/systems/buriedCradleSnapshot.ts",
+        "app/game/BuriedCradleScene.tsx",
+        "tests/buriedCradle.test.ts",
+        "tests/buried-cradle-campaign.test.mjs",
+        "tests/buried-cradle-snapshot.test.mjs",
+        "production/excel-bible-20261108/berceau/verification.json",
+        "production/excel-bible-20261108/berceau/tests-run.txt"
+      ],
+      "remaining": "Portée attestée : Repli, victoire, crête et débrief sont distincts ; aucun trophée de reine pour une sortie sans crête. Les modifications du lieu persistent.\nReste : Le débrief scénarisé complet avec mentor, soins et objets M027 reste partiel."
+    },
+    "XBE-Q05": {
+      "currentStatus": "Modèle et raccord testés dans le périmètre annoncé ; navigateur ouvert",
+      "generated": "Oui",
+      "integrated": "Oui",
+      "behaviorTested": "Oui",
+      "browserTested": "Non",
+      "humanArtReview": "Sans objet",
+      "evidence": [
+        "app/game/systems/buriedCradle.ts",
+        "app/game/systems/buriedCradleCampaign.ts",
+        "app/game/systems/buriedCradleSnapshot.ts",
+        "app/game/BuriedCradleScene.tsx",
+        "tests/buriedCradle.test.ts",
+        "tests/buried-cradle-campaign.test.mjs",
+        "tests/buried-cradle-snapshot.test.mjs",
+        "production/excel-bible-20261108/berceau/verification.json",
+        "production/excel-bible-20261108/berceau/tests-run.txt"
+      ],
+      "remaining": "Portée attestée : Trajet principal testé par déplacements, sauts et interactions ordinaires ; douze layouts et 156 références résolus.\nReste : Parcours physique et lisibilité réelle dans un navigateur non recettés."
+    },
+    "XBE-Q06": {
+      "currentStatus": "Partiel — composantes testées et recette restante",
+      "generated": "Oui",
+      "integrated": "Partiel",
+      "behaviorTested": "Partiel",
+      "browserTested": "Non",
+      "humanArtReview": "Non",
+      "evidence": [
+        "app/game/systems/buriedCradle.ts",
+        "app/game/systems/buriedCradleCampaign.ts",
+        "app/game/systems/buriedCradleSnapshot.ts",
+        "app/game/BuriedCradleScene.tsx",
+        "tests/buriedCradle.test.ts",
+        "tests/buried-cradle-campaign.test.mjs",
+        "tests/buried-cradle-snapshot.test.mjs",
+        "production/excel-bible-20261108/berceau/verification.json",
+        "production/excel-bible-20261108/berceau/tests-run.txt"
+      ],
+      "remaining": "Portée attestée : Retour et extractions physiques T01/T11/T12 testés ; route rocheuse conservée après victoire et modifications locales.\nReste : Relâchement des tissus, attaches et annonces visuelles en situation réelle restent à vérifier."
+    },
+    "XBE-Q07": {
+      "currentStatus": "Modèle et raccord testés dans le périmètre annoncé ; navigateur ouvert",
+      "generated": "Oui",
+      "integrated": "Oui",
+      "behaviorTested": "Oui",
+      "browserTested": "Non",
+      "humanArtReview": "Sans objet",
+      "evidence": [
+        "app/game/systems/buriedCradle.ts",
+        "app/game/systems/buriedCradleCampaign.ts",
+        "app/game/systems/buriedCradleSnapshot.ts",
+        "app/game/BuriedCradleScene.tsx",
+        "tests/buriedCradle.test.ts",
+        "tests/buried-cradle-campaign.test.mjs",
+        "tests/buried-cradle-snapshot.test.mjs",
+        "production/excel-bible-20261108/berceau/verification.json",
+        "production/excel-bible-20261108/berceau/tests-run.txt"
+      ],
+      "remaining": "Portée attestée : Trois raccourcis déployés du bon côté, réversibles après restauration et KO. Retour T11→T10→T07 ne rétrograde plus la balise 11.\nReste : Navigation réelle au clavier, tactile et manette à éprouver en navigateur."
+    },
+    "XBE-Q08": {
+      "currentStatus": "Modèle et raccord testés dans le périmètre annoncé ; navigateur ouvert",
+      "generated": "Oui",
+      "integrated": "Oui",
+      "behaviorTested": "Oui",
+      "browserTested": "Non",
+      "humanArtReview": "Sans objet",
+      "evidence": [
+        "app/game/systems/buriedCradle.ts",
+        "app/game/systems/buriedCradleCampaign.ts",
+        "app/game/systems/buriedCradleSnapshot.ts",
+        "app/game/BuriedCradleScene.tsx",
+        "tests/buriedCradle.test.ts",
+        "tests/buried-cradle-campaign.test.mjs",
+        "tests/buried-cradle-snapshot.test.mjs",
+        "production/excel-bible-20261108/berceau/verification.json",
+        "production/excel-bible-20261108/berceau/tests-run.txt"
+      ],
+      "remaining": "Portée attestée : Trajet principal et victoire par lames ordinaires testés sans T06/T09, drainage ni arme à distance.\nReste : Le parcours de jeu complet n’a pas été exécuté dans le navigateur."
+    },
+    "XBE-Q09": {
+      "currentStatus": "Modèle et raccord testés dans le périmètre annoncé ; navigateur ouvert",
+      "generated": "Oui",
+      "integrated": "Oui",
+      "behaviorTested": "Oui",
+      "browserTested": "Non",
+      "humanArtReview": "Sans objet",
+      "evidence": [
+        "app/game/systems/buriedCradle.ts",
+        "app/game/systems/buriedCradleCampaign.ts",
+        "app/game/systems/buriedCradleSnapshot.ts",
+        "app/game/BuriedCradleScene.tsx",
+        "tests/buriedCradle.test.ts",
+        "tests/buried-cradle-campaign.test.mjs",
+        "tests/buried-cradle-snapshot.test.mjs",
+        "production/excel-bible-20261108/berceau/verification.json",
+        "production/excel-bible-20261108/berceau/tests-run.txt"
+      ],
+      "remaining": "Portée attestée : Budgets intermédiaires 2/1/0/0 figés au départ, données supplémentaires refusées, balises posées sur supports du modèle.\nReste : La reprise exacte conserve le dernier snapshot ; le KO reste soumis aux balises de difficulté."
+    },
+    "XBE-Q10": {
+      "currentStatus": "Partiel — composantes testées et recette restante",
+      "generated": "Oui",
+      "integrated": "Partiel",
+      "behaviorTested": "Partiel",
+      "browserTested": "Non",
+      "humanArtReview": "Non",
+      "evidence": [
+        "app/game/systems/buriedCradle.ts",
+        "app/game/systems/buriedCradleCampaign.ts",
+        "app/game/systems/buriedCradleSnapshot.ts",
+        "app/game/BuriedCradleScene.tsx",
+        "tests/buriedCradle.test.ts",
+        "tests/buried-cradle-campaign.test.mjs",
+        "tests/buried-cradle-snapshot.test.mjs",
+        "production/excel-bible-20261108/berceau/verification.json",
+        "production/excel-bible-20261108/berceau/tests-run.txt"
+      ],
+      "remaining": "Portée attestée : Le rendu SSR contrôle la Matriarche dans T12 et son absence ailleurs ; la pouponnière locale et le vestige global gardent leur identité.\nReste : Cadrage et silhouette réellement visibles dans chaque tableau à valider dans le navigateur."
+    },
+    "XBE-Q11": {
+      "currentStatus": "Partiel — composantes testées et recette restante",
+      "generated": "Oui",
+      "integrated": "Partiel",
+      "behaviorTested": "Partiel",
+      "browserTested": "Non",
+      "humanArtReview": "Non",
+      "evidence": [
+        "app/game/systems/buriedCradle.ts",
+        "app/game/systems/buriedCradleCampaign.ts",
+        "app/game/systems/buriedCradleSnapshot.ts",
+        "app/game/BuriedCradleScene.tsx",
+        "tests/buriedCradle.test.ts",
+        "tests/buried-cradle-campaign.test.mjs",
+        "tests/buried-cradle-snapshot.test.mjs",
+        "production/excel-bible-20261108/berceau/verification.json",
+        "production/excel-bible-20261108/berceau/tests-run.txt"
+      ],
+      "remaining": "Portée attestée : Collisions, portes, appuis, ascension et fenêtres de mêlée sont testés avec la simulation de production.\nReste : Correspondance entre sprites, trois hauteurs, refuges et géométrie perçue reste à inspecter dans la scène."
+    },
+    "XBE-Q12": {
+      "currentStatus": "Partiel — composantes testées et recette restante",
+      "generated": "Oui",
+      "integrated": "Partiel",
+      "behaviorTested": "Partiel",
+      "browserTested": "Non",
+      "humanArtReview": "Non",
+      "evidence": [
+        "app/game/systems/buriedCradle.ts",
+        "app/game/systems/buriedCradleCampaign.ts",
+        "app/game/systems/buriedCradleSnapshot.ts",
+        "app/game/BuriedCradleScene.tsx",
+        "tests/buriedCradle.test.ts",
+        "tests/buried-cradle-campaign.test.mjs",
+        "tests/buried-cradle-snapshot.test.mjs",
+        "production/excel-bible-20261108/berceau/verification.json",
+        "production/excel-bible-20261108/berceau/tests-run.txt"
+      ],
+      "remaining": "Portée attestée : Scène, zoom et supports T04/T07 raccordés ; la simulation garde le joueur dans l’espace caméra.\nReste : Lisibilité dans les deux sens, redimensionnement et écran étroit non recettés en navigateur."
+    },
+    "XBE-Q13": {
+      "currentStatus": "Partiel — composantes testées et recette restante",
+      "generated": "Oui",
+      "integrated": "Partiel",
+      "behaviorTested": "Partiel",
+      "browserTested": "Non",
+      "humanArtReview": "Non",
+      "evidence": [
+        "app/game/systems/buriedCradle.ts",
+        "app/game/systems/buriedCradleCampaign.ts",
+        "app/game/systems/buriedCradleSnapshot.ts",
+        "app/game/BuriedCradleScene.tsx",
+        "tests/buriedCradle.test.ts",
+        "tests/buried-cradle-campaign.test.mjs",
+        "tests/buried-cradle-snapshot.test.mjs",
+        "production/excel-bible-20261108/berceau/verification.json",
+        "production/excel-bible-20261108/berceau/tests-run.txt"
+      ],
+      "remaining": "Portée attestée : États d’attaque et ressources de tentacules sont raccordés au rendu.\nReste : Continuité de chaque attache pendant armement, impact, retrait et section non certifiée ; revue visuelle et artistique ouverte."
+    },
+    "XBE-Q14": {
+      "currentStatus": "Modèle et raccord testés dans le périmètre annoncé ; navigateur ouvert",
+      "generated": "Oui",
+      "integrated": "Oui",
+      "behaviorTested": "Oui",
+      "browserTested": "Non",
+      "humanArtReview": "Sans objet",
+      "evidence": [
+        "app/game/systems/buriedCradle.ts",
+        "app/game/systems/buriedCradleCampaign.ts",
+        "app/game/systems/buriedCradleSnapshot.ts",
+        "app/game/BuriedCradleScene.tsx",
+        "tests/buriedCradle.test.ts",
+        "tests/buried-cradle-campaign.test.mjs",
+        "tests/buried-cradle-snapshot.test.mjs",
+        "production/excel-bible-20261108/berceau/verification.json",
+        "production/excel-bible-20261108/berceau/tests-run.txt"
+      ],
+      "remaining": "Portée attestée : Deux ancrages et deux membranes acceptent seulement les fenêtres de mêlée exposées ; les trois phases sont vaincues par commandes ordinaires.\nReste : Correspondance visuelle des ouvertures et du dommage en navigateur non vérifiée."
+    },
+    "XBE-Q15": {
+      "currentStatus": "Partiel — composantes testées et recette restante",
+      "generated": "Oui",
+      "integrated": "Partiel",
+      "behaviorTested": "Partiel",
+      "browserTested": "Non",
+      "humanArtReview": "Non",
+      "evidence": [
+        "app/game/systems/buriedCradle.ts",
+        "app/game/systems/buriedCradleCampaign.ts",
+        "app/game/systems/buriedCradleSnapshot.ts",
+        "app/game/BuriedCradleScene.tsx",
+        "tests/buriedCradle.test.ts",
+        "tests/buried-cradle-campaign.test.mjs",
+        "tests/buried-cradle-snapshot.test.mjs",
+        "production/excel-bible-20261108/berceau/verification.json",
+        "production/excel-bible-20261108/berceau/tests-run.txt"
+      ],
+      "remaining": "Portée attestée : La base de tête et l’origine du souffle utilisent le même ancrage mesuré sur la ressource 059 ; test dédié réussi.\nReste : Origine perçue dans les différentes poses, échelles et miroirs non certifiée par une revue visuelle."
+    },
+    "XBE-Q16": {
+      "currentStatus": "Partiel — composantes testées et recette restante",
+      "generated": "Oui",
+      "integrated": "Partiel",
+      "behaviorTested": "Partiel",
+      "browserTested": "Non",
+      "humanArtReview": "Non",
+      "evidence": [
+        "app/game/systems/buriedCradle.ts",
+        "app/game/systems/buriedCradleCampaign.ts",
+        "app/game/systems/buriedCradleSnapshot.ts",
+        "app/game/BuriedCradleScene.tsx",
+        "tests/buriedCradle.test.ts",
+        "tests/buried-cradle-campaign.test.mjs",
+        "tests/buried-cradle-snapshot.test.mjs",
+        "production/excel-bible-20261108/berceau/verification.json",
+        "production/excel-bible-20261108/berceau/tests-run.txt"
+      ],
+      "remaining": "Portée attestée : Zones de danger, dégâts et horloges viennent du modèle ; le rendu utilise les mêmes rectangles et états.\nReste : Coïncidence perçue de tous les télégraphes et impacts non recettée dans le navigateur."
+    },
+    "XBE-Q17": {
+      "currentStatus": "Partiel — composantes testées et recette restante",
+      "generated": "Oui",
+      "integrated": "Partiel",
+      "behaviorTested": "Partiel",
+      "browserTested": "Non",
+      "humanArtReview": "Sans objet",
+      "evidence": [
+        "app/game/systems/buriedCradle.ts",
+        "app/game/systems/buriedCradleCampaign.ts",
+        "app/game/systems/buriedCradleSnapshot.ts",
+        "app/game/BuriedCradleScene.tsx",
+        "tests/buriedCradle.test.ts",
+        "tests/buried-cradle-campaign.test.mjs",
+        "tests/buried-cradle-snapshot.test.mjs",
+        "production/excel-bible-20261108/berceau/verification.json",
+        "production/excel-bible-20261108/berceau/tests-run.txt"
+      ],
+      "remaining": "Portée attestée : Snapshots conservent les horloges et phases ; reprise au même prochain pas de simulation testée. Pause neutralise les commandes.\nReste : Ralenti, effets réduits, focus et commandes maintenues sur appareils réels restent à éprouver."
+    },
+    "XBE-Q18": {
+      "currentStatus": "Partiel — composantes testées et recette restante",
+      "generated": "Oui",
+      "integrated": "Partiel",
+      "behaviorTested": "Partiel",
+      "browserTested": "Non",
+      "humanArtReview": "Non",
+      "evidence": [
+        "app/game/systems/buriedCradle.ts",
+        "app/game/systems/buriedCradleCampaign.ts",
+        "app/game/systems/buriedCradleSnapshot.ts",
+        "app/game/BuriedCradleScene.tsx",
+        "tests/buriedCradle.test.ts",
+        "tests/buried-cradle-campaign.test.mjs",
+        "tests/buried-cradle-snapshot.test.mjs",
+        "production/excel-bible-20261108/berceau/verification.json",
+        "production/excel-bible-20261108/berceau/tests-run.txt"
+      ],
+      "remaining": "Portée attestée : Ressources et ancrage de référence sont mesurés ; les changements de pose sont raccordés.\nReste : Couronne, pivot, ajours et échelle dans toutes les poses non certifiés ; revue artistique humaine ouverte."
+    },
+    "XBE-Q19": {
+      "currentStatus": "Partiel — composantes testées et recette restante",
+      "generated": "Oui",
+      "integrated": "Partiel",
+      "behaviorTested": "Partiel",
+      "browserTested": "Non",
+      "humanArtReview": "Non",
+      "evidence": [
+        "app/game/systems/buriedCradle.ts",
+        "app/game/systems/buriedCradleCampaign.ts",
+        "app/game/systems/buriedCradleSnapshot.ts",
+        "app/game/BuriedCradleScene.tsx",
+        "tests/buriedCradle.test.ts",
+        "tests/buried-cradle-campaign.test.mjs",
+        "tests/buried-cradle-snapshot.test.mjs",
+        "production/excel-bible-20261108/berceau/verification.json",
+        "production/excel-bible-20261108/berceau/tests-run.txt"
+      ],
+      "remaining": "Portée attestée : Mort désactive le combat du boss ; tête, forêt, acide et route conservés dans le modèle. Prélèvement limité à un fragment de crête.\nReste : Aspect inerte et praticabilité visuelle du trajet de retour restent à recetter."
+    },
+    "XBE-Q20": {
+      "currentStatus": "Contrainte préservée ; futurs acteurs hors périmètre",
+      "generated": "À vérifier",
+      "integrated": "À vérifier",
+      "behaviorTested": "À vérifier",
+      "browserTested": "Non",
+      "humanArtReview": "Sans objet",
+      "evidence": [
+        "app/game/systems/buriedCradle.ts",
+        "app/game/systems/buriedCradleCampaign.ts",
+        "app/game/systems/buriedCradleSnapshot.ts",
+        "app/game/BuriedCradleScene.tsx",
+        "tests/buriedCradle.test.ts",
+        "tests/buried-cradle-campaign.test.mjs",
+        "tests/buried-cradle-snapshot.test.mjs",
+        "production/excel-bible-20261108/berceau/verification.json",
+        "production/excel-bible-20261108/berceau/tests-run.txt"
+      ],
+      "remaining": "Portée attestée : Le raccord ne crée aucun ennemi animé ni recrutement depuis les silhouettes 056/057.\nReste : La future production des capsules ou acteurs correspondants reste hors de cette passe."
+    },
+    "XBE-Q21": {
+      "currentStatus": "Ouvert — scénario non réalisé ou non mesuré dans cette passe",
+      "generated": "Non",
+      "integrated": "Non",
+      "behaviorTested": "Non",
+      "browserTested": "Non",
+      "humanArtReview": "Sans objet",
+      "evidence": [
+        "docs/campagne/xeno-prime/INTEGRATION_ET_QA.md",
+        "production/excel-bible-20261108/berceau/README.md",
+        "production/excel-bible-20261108/berceau/verification.json"
+      ],
+      "remaining": "Portée attestée : Aucun nouveau groupe de compagnons de terrain n’est ajouté au Berceau.\nReste : Déploiement, non-duplication à bord, obstacles, blessures et reprise de l’équipe dans ce secteur restent à implémenter et recetter."
+    },
+    "XBE-Q22": {
+      "currentStatus": "Ouvert — scénario non réalisé ou non mesuré dans cette passe",
+      "generated": "Non",
+      "integrated": "Non",
+      "behaviorTested": "Non",
+      "browserTested": "Non",
+      "humanArtReview": "Sans objet",
+      "evidence": [
+        "docs/campagne/xeno-prime/INTEGRATION_ET_QA.md",
+        "production/excel-bible-20261108/berceau/README.md",
+        "production/excel-bible-20261108/berceau/verification.json"
+      ],
+      "remaining": "Portée attestée : Aucun transport ou monture n’est amené automatiquement dans l’arène.\nReste : Stationnement physique atteignable et règles de véhicules compatibles restent à produire."
+    },
+    "XBE-Q23": {
+      "currentStatus": "Partiel — composantes testées et recette restante",
+      "generated": "Oui",
+      "integrated": "Partiel",
+      "behaviorTested": "Partiel",
+      "browserTested": "Non",
+      "humanArtReview": "Sans objet",
+      "evidence": [
+        "app/game/systems/buriedCradle.ts",
+        "app/game/systems/buriedCradleCampaign.ts",
+        "app/game/systems/buriedCradleSnapshot.ts",
+        "app/game/BuriedCradleScene.tsx",
+        "tests/buriedCradle.test.ts",
+        "tests/buried-cradle-campaign.test.mjs",
+        "tests/buried-cradle-snapshot.test.mjs",
+        "production/excel-bible-20261108/berceau/verification.json",
+        "production/excel-bible-20261108/berceau/tests-run.txt"
+      ],
+      "remaining": "Portée attestée : Reprise exacte de la salle, position, vitesse, santé, horloges, pièges, phases, anatomie, attaques, pools, raccourcis, drainage et crête. Tests des attaques et archives réussis.\nReste : Équipe de terrain absente du lot ; parcours de sauvegarde/rechargement navigateur non recetté. Snapshot exact du dernier enregistrement confirmé, pas de chaque image avant arrêt brutal."
+    },
+    "XBE-Q24": {
+      "currentStatus": "Modèle et raccord testés dans le périmètre annoncé ; navigateur ouvert",
+      "generated": "Oui",
+      "integrated": "Oui",
+      "behaviorTested": "Oui",
+      "browserTested": "Non",
+      "humanArtReview": "Sans objet",
+      "evidence": [
+        "app/game/systems/buriedCradle.ts",
+        "app/game/systems/buriedCradleCampaign.ts",
+        "app/game/systems/buriedCradleSnapshot.ts",
+        "app/game/BuriedCradleScene.tsx",
+        "tests/buriedCradle.test.ts",
+        "tests/buried-cradle-campaign.test.mjs",
+        "tests/buried-cradle-snapshot.test.mjs",
+        "production/excel-bible-20261108/berceau/verification.json",
+        "production/excel-bible-20261108/berceau/tests-run.txt"
+      ],
+      "remaining": "Portée attestée : Quota, accusé incertain, confirmations répétées, propriétaire, progression monotone, snapshots périmés et archives incohérentes testés sans doublon de preuve ou rang.\nReste : Ressources économiques et nettoyage complet de ruche ne sont pas attribués par cette expédition."
+    },
+    "XBE-Q25": {
+      "currentStatus": "Ouvert — scénario non réalisé ou non mesuré dans cette passe",
+      "generated": "Non",
+      "integrated": "Non",
+      "behaviorTested": "Non",
+      "browserTested": "Non",
+      "humanArtReview": "Sans objet",
+      "evidence": [
+        "docs/campagne/xeno-prime/INTEGRATION_ET_QA.md",
+        "production/excel-bible-20261108/berceau/README.md",
+        "production/excel-bible-20261108/berceau/verification.json"
+      ],
+      "remaining": "Portée attestée : Repli du joueur seul conserve le résultat et les modifications locales.\nReste : Extraction avec allié blessé ou manquant non ajoutée au Berceau."
+    },
+    "XBE-Q26": {
+      "currentStatus": "Modèle et raccord testés dans le périmètre annoncé ; navigateur ouvert",
+      "generated": "Oui",
+      "integrated": "Oui",
+      "behaviorTested": "Oui",
+      "browserTested": "Non",
+      "humanArtReview": "Sans objet",
+      "evidence": [
+        "app/game/systems/buriedCradle.ts",
+        "app/game/systems/buriedCradleCampaign.ts",
+        "app/game/systems/buriedCradleSnapshot.ts",
+        "app/game/BuriedCradleScene.tsx",
+        "tests/buriedCradle.test.ts",
+        "tests/buried-cradle-campaign.test.mjs",
+        "tests/buried-cradle-snapshot.test.mjs",
+        "production/excel-bible-20261108/berceau/verification.json",
+        "production/excel-bible-20261108/berceau/tests-run.txt"
+      ],
+      "remaining": "Portée attestée : Pas de déblocage implicite Warp, héros, Élite, vaisseau, résidence ou monde-ruche final ; la preuve de reine est distincte du rite.\nReste : Les autres branches de campagne conservent leur propre progression et leurs recettes."
+    },
+    "XBE-Q27": {
+      "currentStatus": "Partiel — composantes testées et recette restante",
+      "generated": "Oui",
+      "integrated": "Partiel",
+      "behaviorTested": "Partiel",
+      "browserTested": "Non",
+      "humanArtReview": "Non",
+      "evidence": [
+        "app/game/systems/buriedCradle.ts",
+        "app/game/systems/buriedCradleCampaign.ts",
+        "app/game/systems/buriedCradleSnapshot.ts",
+        "app/game/BuriedCradleScene.tsx",
+        "tests/buriedCradle.test.ts",
+        "tests/buried-cradle-campaign.test.mjs",
+        "tests/buried-cradle-snapshot.test.mjs",
+        "production/excel-bible-20261108/berceau/verification.json",
+        "production/excel-bible-20261108/berceau/tests-run.txt"
+      ],
+      "remaining": "Portée attestée : Commandes clavier, tactile et manette, contraste et effets réduits raccordés ; moteur audio commun réutilisé.\nReste : Son localisé complet, mixage, compréhension sur écran étroit et matériel réel non attestés."
+    },
+    "XBE-Q28": {
+      "currentStatus": "Ouvert — scénario non réalisé ou non mesuré dans cette passe",
+      "generated": "Non",
+      "integrated": "Non",
+      "behaviorTested": "Non",
+      "browserTested": "Non",
+      "humanArtReview": "Non",
+      "evidence": [
+        "docs/campagne/xeno-prime/INTEGRATION_ET_QA.md",
+        "production/excel-bible-20261108/berceau/README.md",
+        "production/excel-bible-20261108/berceau/verification.json"
+      ],
+      "remaining": "Portée attestée : Import vérifie 156 copies et empreintes ; les douze layouts et leurs références sont résolus dans les tests.\nReste : Scène finale navigateur : temps de trame, mémoire, charge, lisibilité et requêtes de ressources non mesurés."
+    }
+  },
+  "sourceOverrides": {
+    "Château et cinématiques:DUNGEON": {
+      "generated": "Oui, preuve antérieure",
+      "integrated": "Oui, preuve antérieure",
+      "tested": "Oui, preuve antérieure",
+      "humanArtReview": "Non attestée",
+      "reconciliation": "Ancienne déclaration dépassée par le mandat royal joué : trois objectifs, sentinelle en trois phases, retour et reçu unique. Preuves du 4 novembre, non réexécutées par cet audit.",
+      "currentEvidence": [
+        "app/game/systems/wolfCastleDungeon.ts",
+        "production/wolf-castle-arrival-20261104/qa/integration-c77c4ea3/wolf/report.json",
+        "production/wolf-castle-arrival-20261104/qa/integration-c77c4ea3/final-integration-result.json"
+      ],
+      "remaining": "La revue artistique humaine reste ouverte. Les 32 contrôles navigateur du rapport attestent leurs parcours précis ; ils ne valident pas toute extension future du château."
+    },
+    "Château et cinématiques:AUDIO": {
+      "generated": "Oui, preuve antérieure",
+      "integrated": "Oui, preuve antérieure",
+      "tested": "Oui, preuve antérieure",
+      "humanArtReview": "Non attestée",
+      "reconciliation": "Ancienne mention « à faire » dépassée par les ambiances et événements dédiés, intégrés et testés ; la qualité du mixage reste à écouter humainement.",
+      "currentEvidence": [
+        "app/game/systems/wolfCastleAudio.ts",
+        "app/game/systems/planetArrivalAudio.ts",
+        "production/wolf-castle-arrival-20261104/qa/audio-tests.log"
+      ],
+      "remaining": "Écoute humaine du mixage et revue artistique à réaliser. Le journal atteste 32 tests de cycle de vie et événements audio, pas une écoute subjective."
+    },
+    "Château et cinématiques:BROWSER": {
+      "generated": "Oui, preuve antérieure",
+      "integrated": "Oui, preuve antérieure",
+      "tested": "Oui, preuve antérieure",
+      "humanArtReview": "Non attestée",
+      "reconciliation": "L’attente navigateur initiale est dépassée par le rapport c77c4ea3 : 32 contrôles passés, aucune exception ni ressource manquante dans le parcours décrit.",
+      "currentEvidence": [
+        "production/wolf-castle-arrival-20261104/qa/integration-c77c4ea3/wolf/report.json"
+      ],
+      "remaining": "Preuve antérieure du 4 novembre conservée ; aucun nouveau parcours complet du château exécuté dans cette passe."
+    },
+    "Clan Ship:OPS-B01": {
+      "generated": "Oui",
+      "integrated": "Oui",
+      "tested": "Oui, modèle et SSR",
+      "humanArtReview": "Non attestée",
+      "reconciliation": "Raccord runtime et sauvegarde testé le 8 novembre. Acceptation après ship-seal-check auprès de Garde du Seuil disponible; témoin physique et lot identifié, deux isolateurs visibles/manipulables, revalidation archive après erreur, mesure de pression au terminal médical, fermeture au hangar. Restriction et états de contrôle persistants. Gratification unique de 25 marques.",
+      "currentEvidence": [
+        "app/game/systems/clanShipIncidents.ts",
+        "app/game/ClanShipIncidentPanel.tsx",
+        "app/game/ClanShipIncidentScene.tsx",
+        "app/game/ClanShipInterior.tsx",
+        "app/game/GameClient.tsx",
+        "tests/clan-ship-incidents.test.mjs",
+        "production/excel-bible-20261108/incidents/verification.json",
+        "production/excel-bible-20261108/incidents/coverage.json",
+        "production/excel-bible-20261108/incidents/tests-run.txt"
+      ],
+      "remaining": "Navigation et affichage réels en navigateur, ajustement de l’échelle/pivot du prop, revue artistique humaine; réplique contextualisée de confiance et variante future d’extraction non produites. Montant de gratification à équilibrer."
+    },
+    "Clan Ship:OPS-B02": {
+      "generated": "Oui",
+      "integrated": "Oui",
+      "tested": "Oui, modèle et SSR",
+      "humanArtReview": "Non attestée",
+      "reconciliation": "Raccord runtime et sauvegarde testé le 8 novembre. Acceptation après ship-armory-audit auprès de Griffe de Fer disponible; mesures A/B stables et comparables, référence physique aux archives, isolation correcte, composant R-2 identifié/prélevé/installé une fois, test de permutation réessayable, rétablissement progressif de 0 à 1 puis 2 circuits et contrôle à la table. Projection locale modifiée, chemins inchangés. Gratification unique de 30 marques.",
+      "currentEvidence": [
+        "app/game/systems/clanShipIncidents.ts",
+        "app/game/ClanShipIncidentPanel.tsx",
+        "app/game/ClanShipIncidentScene.tsx",
+        "app/game/ClanShipInterior.module.css",
+        "app/game/GameClient.tsx",
+        "tests/clan-ship-incidents.test.mjs",
+        "production/excel-bible-20261108/incidents/verification.json",
+        "production/excel-bible-20261108/incidents/coverage.json",
+        "production/excel-bible-20261108/incidents/tests-run.txt"
+      ],
+      "remaining": "Navigation/affichage mobile et manette en navigateur; revue artistique; effet d’interception spatiale non implémenté et non accordé. Montant de gratification à équilibrer."
+    },
+    "Clan Ship:OPS-Q26": {
+      "generated": "Oui",
+      "integrated": "Partiel",
+      "tested": "Partiel",
+      "humanArtReview": "Non attestée",
+      "reconciliation": "Recette partielle B01/B02. 14 scénarios de comportement nouveaux. Contrôleur natif parcourant tous les objets et seuils avec retour au hangar, erreurs et reprise, sauvegarde à chaque étape, relecture stricte du journal, propriétaire/révision/proximité, panne d’écriture, composant unique, récompense unique et fin possible après plafonnement des erreurs. Rendu SSR des deux props et des deux circuits.",
+      "currentEvidence": [
+        "tests/clan-ship-incidents.test.mjs",
+        "production/excel-bible-20261108/incidents/tests-run.txt",
+        "production/excel-bible-20261108/incidents/verification.json",
+        "production/excel-bible-20261108/incidents/coverage.json",
+        "production/excel-bible-20261108/incidents/tests-run.txt"
+      ],
+      "remaining": "OPS-B03 et OPS-B04 non implémentés. Recette navigateur et validation artistique humaine non effectuées; la recette globaleOPS-Q26 ne doit pas être clôturée entièrement. La garde d’import applique également le plafond des erreurs autorisées dans le jeu."
+    }
+  },
+  "limitations": [
+    "Les volumes de sujets Excel, de cartes de bible et de recettes ne s’additionnent pas : ils décrivent des niveaux de détail et des périodes différents.",
+    "Les anciens statuts restent une déclaration datée de leur source ; ils ne remplacent pas la preuve d’un comportement actuel.",
+    "Une référence de code trouvée par identifiant est une aide de navigation. Un fichier de données importé n’est pas une scène jouable.",
+    "Les captures et contrôles techniques d’images ne constituent pas une validation artistique humaine.",
+    "Les essais sur appareils physiques, les sessions humaines et la revue artistique restent ouverts en l’absence de compte rendu explicite.",
+    "Pour cette passe, Chromium local a été bloqué par la politique AF_UNIX, le navigateur partagé n’a pas atteint le serveur local et la revue automatique a refusé l’exécution élargie. Aucun parcours navigateur ni avis artistique humain n’est attesté."
+  ],
+  "campaignOverrides": {
+    "ORG-01": {
+      "currentStatus": "Partiel — accord secondaire, résidence et pose statique raccordés",
+      "currentEvidence": [
+        "app/game/systems/companionResidence.ts",
+        "app/game/companionPilotArt.ts",
+        "production/excel-bible-20261108/compagnons/coverage.json",
+        "production/excel-bible-20261108/compagnons/verification.json"
+      ],
+      "remaining": "Brèche : nouvelle chasse liée, préparations et accord explicite testés dans le modèle. Pas de capacité terrain, IA, animation complète ni scène personnelle entière. Parcours navigateur et revue artistique non attestés."
+    },
+    "ORG-10": {
+      "currentStatus": "Partiel — accord secondaire, résidence et pose statique raccordés",
+      "currentEvidence": [
+        "app/game/systems/companionResidence.ts",
+        "app/game/companionPilotArt.ts",
+        "production/excel-bible-20261108/compagnons/coverage.json",
+        "production/excel-bible-20261108/compagnons/verification.json"
+      ],
+      "remaining": "Éclisse : nouvelle chasse liée, préparations et accord explicite testés dans le modèle. Pas de capacité terrain, IA, animation complète ni scène personnelle entière. Parcours navigateur et revue artistique non attestés."
+    },
+    "ORG-16": {
+      "currentStatus": "Partiel — accord secondaire, résidence et pose statique raccordés",
+      "currentEvidence": [
+        "app/game/systems/companionResidence.ts",
+        "app/game/companionPilotArt.ts",
+        "production/excel-bible-20261108/compagnons/coverage.json",
+        "production/excel-bible-20261108/compagnons/verification.json"
+      ],
+      "remaining": "Lance-Fendue : nouvelle chasse liée, préparations et accord explicite testés dans le modèle. Pas de capacité terrain, IA, animation complète ni scène personnelle entière. Parcours navigateur et revue artistique non attestés."
+    },
+    "ORG-13": {
+      "currentStatus": "Partiel — accord secondaire, résidence et pose statique raccordés",
+      "currentEvidence": [
+        "app/game/systems/companionResidence.ts",
+        "app/game/companionPilotArt.ts",
+        "production/excel-bible-20261108/compagnons/coverage.json",
+        "production/excel-bible-20261108/compagnons/verification.json"
+      ],
+      "remaining": "Opale : nouvelle chasse liée, préparations et accord explicite testés dans le modèle. Pas de capacité terrain, IA, animation complète ni scène personnelle entière. Parcours navigateur et revue artistique non attestés."
+    },
+    "R2-M025": {
+      "currentStatus": "Partiel — raccord Berceau et preuves de simulation du 8 novembre",
+      "currentEvidence": [
+        "app/game/systems/buriedCradle.ts",
+        "app/game/systems/buriedCradleCampaign.ts",
+        "app/game/systems/buriedCradleSnapshot.ts",
+        "app/game/BuriedCradleScene.tsx",
+        "tests/buriedCradle.test.ts",
+        "tests/buried-cradle-campaign.test.mjs",
+        "tests/buried-cradle-snapshot.test.mjs",
+        "production/excel-bible-20261108/berceau/verification.json",
+        "production/excel-bible-20261108/berceau/tests-run.txt"
+      ],
+      "remaining": "Départ préparé, accès Blooded/coque et expédition enregistrés. Base d’approche complète, contenants, inspection de risques et reconnaissance scénarisée restent à produire."
+    },
+    "R2-M026": {
+      "currentStatus": "Partiel — raccord Berceau et preuves de simulation du 8 novembre",
+      "currentEvidence": [
+        "app/game/systems/buriedCradle.ts",
+        "app/game/systems/buriedCradleCampaign.ts",
+        "app/game/systems/buriedCradleSnapshot.ts",
+        "app/game/BuriedCradleScene.tsx",
+        "tests/buriedCradle.test.ts",
+        "tests/buried-cradle-campaign.test.mjs",
+        "tests/buried-cradle-snapshot.test.mjs",
+        "production/excel-bible-20261108/berceau/verification.json",
+        "production/excel-bible-20261108/berceau/tests-run.txt"
+      ],
+      "remaining": "Douze tableaux, reine en trois phases, crête physique et extraction raccordés ; simulation et sauvegardes testées. Défenseurs animés complets, équipe terrain, navigateur et revue artistique restent ouverts."
+    },
+    "R2-M027": {
+      "currentStatus": "Partiel — raccord Berceau et preuves de simulation du 8 novembre",
+      "currentEvidence": [
+        "app/game/systems/buriedCradle.ts",
+        "app/game/systems/buriedCradleCampaign.ts",
+        "app/game/systems/buriedCradleSnapshot.ts",
+        "app/game/BuriedCradleScene.tsx",
+        "tests/buriedCradle.test.ts",
+        "tests/buried-cradle-campaign.test.mjs",
+        "tests/buried-cradle-snapshot.test.mjs",
+        "production/excel-bible-20261108/berceau/verification.json",
+        "production/excel-bible-20261108/berceau/tests-run.txt"
+      ],
+      "remaining": "Retour, débrief idempotent et preuve de reine sans promotion raccordés. Soins scénarisés, mentor en visite, objet inspectable et choix clan/atelier restent partiels."
+    },
+    "L-07": {
+      "currentStatus": "Partiel — raccord Berceau et preuves de simulation du 8 novembre",
+      "currentEvidence": [
+        "app/game/systems/buriedCradle.ts",
+        "app/game/systems/buriedCradleCampaign.ts",
+        "app/game/systems/buriedCradleSnapshot.ts",
+        "app/game/BuriedCradleScene.tsx",
+        "tests/buriedCradle.test.ts",
+        "tests/buried-cradle-campaign.test.mjs",
+        "tests/buried-cradle-snapshot.test.mjs",
+        "production/excel-bible-20261108/berceau/verification.json",
+        "production/excel-bible-20261108/berceau/tests-run.txt"
+      ],
+      "remaining": "Première reine et crête rapportée enregistrent une preuve distincte ; ni rang Élite ni reconnaissance automatique. Rites L-05/L-06 et scène de reconnaissance restent indépendants ; équipe terrain et recette navigateur ouvertes."
+    }
+  },
+  "sharedVerification": {
+    "testsPassed": 375,
+    "testsFailed": 0,
+    "summary": "375 tests communs réussis, dont les suites Berceau (43) et compagnons/incidents avec régressions (98). Ces suites se recoupent et ne sont pas additionnées. Les contrôles TypeScript, lint et build sont détaillés dans le rapport commun. Aucun parcours navigateur ni avis artistique humain attesté.",
+    "reportPath": "production/excel-bible-20261108/verification.json"
+  }
+}
