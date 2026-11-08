@@ -5,6 +5,9 @@ on:
     paths: ['.github/workflows/mobility-workbench-20261108.yml']
 permissions:
   contents: read
+concurrency:
+  group: mobility-workbench-20261108
+  cancel-in-progress: true
 jobs:
   source-context:
     runs-on: ubuntu-latest
@@ -14,7 +17,17 @@ jobs:
         with:
           fetch-depth: 1
           persist-credentials: false
-      - name: Archive tracked source context and existing workbook inventory
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /*
+            !/public/
+            !/art-source/
+            !/production/
+            /production/**/*.xlsx
+            !/assets/
+            !/legacy/
+            !/dlc/
+      - name: Archive tracked source context and workbook inventory
         run: |
           python3 - <<'PY'
           import subprocess, pathlib, zipfile, json
