@@ -11,7 +11,7 @@ concurrency:
 jobs:
   source-context:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 12
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
@@ -21,29 +21,31 @@ jobs:
           sparse-checkout: |
             /*
             !/public/
+            /public/**/*.json
             !/art-source/
             !/production/
-            /production/**/*.xlsx
             !/assets/
             !/legacy/
             !/dlc/
-      - name: Archive tracked source context and workbook inventory
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22.16.0'
+      - name: Install locked packages without lifecycle scripts
+        run: npm ci --ignore-scripts --no-audit --no-fund
+      - name: Archive public manifests and test-only dependencies
         run: |
           python3 - <<'PY'
-          import subprocess, pathlib, zipfile, json
-          files=subprocess.check_output(['git','ls-files','-z']).decode().split('\0')
-          allowed={'.ts','.tsx','.js','.mjs','.cjs','.json','.css','.md','.yml','.yaml','.xlsx','.csv','.html'}
-          selected=[]
-          with zipfile.ZipFile('mobility-source-context.zip','w',zipfile.ZIP_DEFLATED) as z:
-            for f in files:
-              p=pathlib.Path(f)
-              if f and p.is_file() and p.suffix in allowed and p.stat().st_size<20_000_000 and not f.startswith(('public/','art-source/')):
-                z.write(p,f);selected.append(f)
-            z.writestr('MOBILITY_CONTEXT.json',json.dumps({'commit':subprocess.check_output(['git','rev-parse','HEAD']).decode().strip(),'selected':selected,'tracked':files},ensure_ascii=False))
-          print('Source files:',len(selected),'Archive bytes:',pathlib.Path('mobility-source-context.zip').stat().st_size)
+          import pathlib, zipfile
+          roots=['public','node_modules/react','node_modules/react-dom','node_modules/scheduler','node_modules/@types','node_modules/csstype','node_modules/typescript','node_modules/next/dist/docs']
+          with zipfile.ZipFile('mobility-test-context.zip','w',zipfile.ZIP_DEFLATED) as z:
+            for root in roots:
+              for p in pathlib.Path(root).rglob('*'):
+                if p.is_file() and (root!='public' or p.suffix=='.json'):
+                  z.write(p,str(p))
+          print(pathlib.Path('mobility-test-context.zip').stat().st_size)
           PY
       - uses: actions/upload-artifact@v4
         with:
-          name: mobility-source-context
-          path: mobility-source-context.zip
+          name: mobility-test-context
+          path: mobility-test-context.zip
           retention-days: 3
