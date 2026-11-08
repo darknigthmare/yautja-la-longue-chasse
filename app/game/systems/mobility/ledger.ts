@@ -8,12 +8,18 @@ export interface OwnedMobility {
 }
 export interface MobilityRun { id: number; modelId: string; loaned: boolean; course: MobilityCourseState }
 export interface MobilityReport { runId: number; modelId: string; result: 'passed'|'returned'|'recovered'; distance: number; impacts: number; ticks: number }
+/** An earned, owner-bound receipt. Never inferred from a legacy permit or report. */
+export interface MobilityTrainingReward {
+  version: 1; runId: number; status: 'available'|'claimed'; course: MobilityCourseState;
+}
 export interface MobilityLedger {
   version: 1; ownerCreatedAt: string; revision: number; circulationPermit: boolean;
   owned: OwnedMobility[]; active: MobilityRun | null; nextRunId: number; lastReport: MobilityReport | null;
   spentMarks: number; repairCount: number; recoveryDebt: number; recoveryCount: number;
+  trainingReward: MobilityTrainingReward | null;
 }
 export type MobilityOrder =
+  | { type:'claim-training'; rewardRunId:number }
   | { type:'settle-recovery'; expectedCost:number }
   | { type:'buy'; modelId:string; expectedCost:number }
   | { type:'upgrade'; modelId:string; module:MobilityModule; expectedCost:number }
@@ -28,7 +34,7 @@ const record=(v:unknown):v is Record<string,unknown>=>typeof v==='object'&&v!==n
 const finite=(v:unknown,lo:number,hi:number):v is number=>typeof v==='number'&&Number.isFinite(v)&&v>=lo&&v<=hi;
 const integer=(v:unknown,lo=0,hi=1_000_000_000):v is number=>Number.isSafeInteger(v)&&finite(v,lo,hi);
 const keys=(v:object,allowed:readonly string[])=>Object.keys(v).length===allowed.length&&allowed.every(k=>Object.hasOwn(v,k));
-export const createMobilityLedger=(ownerCreatedAt:string):MobilityLedger=>({version:1,ownerCreatedAt,revision:0,circulationPermit:false,owned:[],active:null,nextRunId:1,lastReport:null,spentMarks:0,repairCount:0,recoveryDebt:0,recoveryCount:0});
+export const createMobilityLedger=(ownerCreatedAt:string):MobilityLedger=>({version:1,ownerCreatedAt,revision:0,circulationPermit:false,owned:[],active:null,nextRunId:1,lastReport:null,spentMarks:0,repairCount:0,recoveryDebt:0,recoveryCount:0,trainingReward:null});
 export function inspectMobilityLedger(raw:unknown,owner:string): {status:'absent'|'valid'|'future-version'|'invalid-save';state:MobilityLedger|null} {
   const bad={status:'invalid-save' as const,state:null};
   if(raw===undefined||raw===null)return {status:'absent',state:null};
@@ -37,18 +43,28 @@ export function inspectMobilityLedger(raw:unknown,owner:string): {status:'absent
   // The earlier, unpublished V1 draft had no recovery ledger. Preserve its data.
   if(raw.version===1&&!Object.hasOwn(raw,'recoveryDebt')&&!Object.hasOwn(raw,'recoveryCount'))raw={...raw,recoveryDebt:0,recoveryCount:0};
   if(!record(raw))return bad;
-  if(raw.version!==1||raw.ownerCreatedAt!==owner||!Number.isFinite(Date.parse(owner))||!keys(raw,['version','ownerCreatedAt','revision','circulationPermit','owned','active','nextRunId','lastReport','spentMarks','repairCount','recoveryDebt','recoveryCount'])||
+  // Additive V1 migration: old successful reports never create a reward retroactively.
+  if(raw.version===1&&!Object.hasOwn(raw,'trainingReward'))raw={...raw,trainingReward:null};
+  if(!record(raw))return bad;
+  if(record(raw.trainingReward)&&typeof raw.trainingReward.version==='number'&&raw.trainingReward.version>1)return {status:'future-version',state:null};
+  if(raw.version!==1||raw.ownerCreatedAt!==owner||!Number.isFinite(Date.parse(owner))||!keys(raw,['version','ownerCreatedAt','revision','circulationPermit','owned','active','nextRunId','lastReport','spentMarks','repairCount','recoveryDebt','recoveryCount','trainingReward'])||
      !integer(raw.revision)||typeof raw.circulationPermit!=='boolean'||!Array.isArray(raw.owned)||raw.owned.length>50||!integer(raw.nextRunId,1)||!integer(raw.spentMarks)||!integer(raw.repairCount)||!integer(raw.recoveryDebt)||!integer(raw.recoveryCount))return bad;
+  const reward=raw.trainingReward;
+  if(reward!==null&&(!record(reward)||!keys(reward,['version','runId','status','course'])||reward.version!==1||
+    !integer(reward.runId,1)||reward.runId>=raw.nextRunId||!['available','claimed'].includes(String(reward.status))||
+    !raw.circulationPermit||!validMobilityCourse(reward.course)||!mobilityCoursePassed(reward.course)))return bad;
   const ids=new Set<string>();
   for(const item of raw.owned){
     if(!record(item)||!keys(item,['id','acquiredBy','condition','energy','bond','upgrades','distance'])||typeof item.id!=='string'||ids.has(item.id))return bad;
-    const d=mobilityDefinition(item.id);if(!d||['faction','narrative','insertion','non-pilotable','clan-service','training-loan'].includes(d.acquisitionMode))return bad;
+    const d=mobilityDefinition(item.id);if(!d||['faction','narrative','insertion','non-pilotable','clan-service'].includes(d.acquisitionMode))return bad;
+    if(d.acquisitionMode==='training-loan'&&(item.id!=='scout_grav_sled'||!record(reward)||reward.status!=='claimed'||item.acquiredBy!=='quest'))return bad;
     if(item.acquiredBy!=='purchase'&&item.acquiredBy!=='quest'||item.acquiredBy==='purchase'&&d.acquisitionMode!=='purchase')return bad;
     if(!finite(item.condition,0,100)||!finite(item.energy,0,100)||!finite(item.bond,0,100)||!finite(item.distance,0,1e9)||!record(item.upgrades)||
        !keys(item.upgrades,['drive','armor','cargo','cooling'])||!Object.values(item.upgrades).every(n=>integer(n,0,3)))return bad;
     if(d.kind==='mount'&&Object.values(item.upgrades).some(n=>n!==0)||d.kind==='machine'&&item.bond!==0)return bad;
     ids.add(item.id);
   }
+  if(record(reward)&&((reward.status==='claimed')!==ids.has('scout_grav_sled')))return bad;
   if(raw.active!==null){
     const a=raw.active;
     if(!record(a)||!keys(a,['id','modelId','loaned','course'])||!integer(a.id,1)||a.id>=raw.nextRunId||typeof a.modelId!=='string'||
@@ -88,7 +104,16 @@ export function actMobility(campaign:Pick<SaveGame,'createdAt'|'profile'|'prolog
   const state=structuredClone(old);let marks=campaign.profile.clanMarks;
   const pay=(cost:number)=>{if(!integer(cost)||cost>marks||state.spentMarks+cost>1e9)return false;marks-=cost;state.spentMarks+=cost;return true;};
   let message='Registre confirmé.';
-  if(command.type==='settle-recovery'){
+  if(command.type==='claim-training'){
+    const reward=state.trainingReward;
+    if(state.active||state.recoveryDebt>0)return refuse('Reviens au comptoir et règle les récupérations avant la remise.');
+    if(!reward||reward.status!=='available'||command.rewardRunId!==reward.runId||!state.circulationPermit||
+       mobilityRankIndex(campaign.profile.rankId)<mobilityRankIndex('blooded')||state.owned.some(v=>v.id==='scout_grav_sled'))return refuse('Remise indisponible : parcours réussi, rang Blooded et reçu actuel requis.');
+    // Transfer the inspected hull: no repair/refill, currency, rank or ship berth is granted.
+    state.owned.push({id:'scout_grav_sled',acquiredBy:'quest',condition:reward.course.condition,energy:reward.course.energy,
+      bond:0,upgrades:emptyMobilityLevels(),distance:reward.course.distance});
+    reward.status='claimed';message='Le clan te confie ce Grav-Sled. Son usure et sa réserve restent celles du retour ; aucune place à bord n’est créée.';
+  }else if(command.type==='settle-recovery'){
     if(state.active||state.recoveryDebt===0||command.expectedCost!==state.recoveryDebt||!pay(state.recoveryDebt))return refuse('Dette absente, devis périmé ou marques insuffisantes.');
     state.recoveryDebt=0;message='Remorquage réglé ; le registre de sortie est de nouveau disponible.';
   }else if(command.type==='start'){
@@ -97,6 +122,7 @@ export function actMobility(campaign:Pick<SaveGame,'createdAt'|'profile'|'prolog
     if(state.active||!mobilityDefinition(command.modelId)?.trialEnabled)return refuse('Aire occupée ou modèle non admis sur cette piste.');
     const owned=state.owned.find(v=>v.id===command.modelId);
     if(command.loaned?command.modelId!=='scout_grav_sled':!owned)return refuse('Modèle non possédé ou prêt de formation incompatible.');
+    if(!command.loaned&&(!state.circulationPermit||mobilityRankIndex(campaign.profile.rankId)<mobilityRankIndex(mobilityDefinition(command.modelId)!.minimumRank)))return refuse('Permis et rang du modèle requis pour une sortie personnelle.');
     if(owned&&!command.loaned&&(owned.condition<25||owned.energy<10))return refuse('Répare et recharge cet engin avant de repartir.');
     if(state.nextRunId>=1e9)return refuse('Limite du registre atteinte.');
     state.active={id:state.nextRunId++,modelId:command.modelId,loaned:command.loaned,
@@ -106,7 +132,7 @@ export function actMobility(campaign:Pick<SaveGame,'createdAt'|'profile'|'prolog
     if(!state.active||state.active.id!==command.runId||!Array.isArray(command.inputs)||command.inputs.length<1||command.inputs.length>60||!command.inputs.every(validMobilityInput))return refuse('Séquence de conduite invalide ou périmée.');
     const owned=state.owned.find(v=>v.id===state.active!.modelId);
     const previousDistance=state.active.course.distance;
-    for(const input of command.inputs)state.active.course=stepMobilityCourse(state.active.course,input,state.active.modelId,owned?.upgrades??emptyMobilityLevels());
+    for(const input of command.inputs)state.active.course=stepMobilityCourse(state.active.course,input,state.active.modelId,state.active.loaned?emptyMobilityLevels():owned?.upgrades??emptyMobilityLevels());
     if(!state.active.loaned&&owned){owned.condition=state.active.course.condition;owned.energy=state.active.course.energy;owned.distance+=state.active.course.distance-previousDistance;}
     message='Conduite sauvegardée.';
   }else if(command.type==='return'||command.type==='recover'){
@@ -115,7 +141,12 @@ export function actMobility(campaign:Pick<SaveGame,'createdAt'|'profile'|'prolog
     if(command.type==='return'&&!parkedAtDepot(active.course))return refuse('Reviens au sas du garage et immobilise le véhicule.');
     // Recovery never grants the permit, even when a forged/misplaced stop reaches the button.
     const passed=command.type==='return'&&mobilityCoursePassed(active.course);
-    if(passed&&active.loaned)state.circulationPermit=true;
+    if(passed&&active.loaned){
+      state.circulationPermit=true;
+      // The juvenile supervised initiation never transfers ownership. Adults confirm separately.
+      if(!state.trainingReward&&mobilityRankIndex(campaign.profile.rankId)>=mobilityRankIndex('blooded'))
+        state.trainingReward={version:1,runId:active.id,status:'available',course:structuredClone(active.course)};
+    }
     state.lastReport={runId:active.id,modelId:active.modelId,result:command.type==='recover'?'recovered':passed?'passed':'returned',distance:active.course.distance,impacts:active.course.impacts,ticks:active.course.tick};
     if(command.type==='recover'&&!active.loaned){
       const fee=Math.min(120,20+Math.ceil(active.course.distance/50)+2*active.course.impacts);
@@ -123,7 +154,7 @@ export function actMobility(campaign:Pick<SaveGame,'createdAt'|'profile'|'prolog
       state.recoveryDebt+=fee;state.recoveryCount++;
     }
     state.active=null;
-    message=passed&&active.loaned?'Permis de circulation confirmé. Aucun engin, rang ou honneur n’est accordé.':command.type==='recover'?'Retour de sécurité du clan. Usure et énergie consommée conservées.':'Engin remisé ; état conservé.';
+    message=passed&&active.loaned?'Permis de circulation confirmé. La remise éventuelle du Grav-Sled se confirme séparément aux Forges ; aucun rang ni honneur accordé.':command.type==='recover'?'Retour de sécurité du clan. Usure et énergie consommée conservées.':'Engin remisé ; état conservé.';
   }else{
     if(state.active)return refuse('Remise au garage requise avant toute transaction.');
     if(state.recoveryDebt>0)return refuse('Règle le remorquage avant toute nouvelle transaction d’atelier.');

@@ -78,6 +78,24 @@ try{
  const cost=save.mobilityV1.recoveryDebt,marks=save.profile.clanMarks;await click(`Régler le remorquage · ${cost} marques`);save=await stored();check('recovery settlement debits exact debt',save.mobilityV1.recoveryDebt===0&&save.profile.clanMarks===marks-cost);
  await click('Recharger ·',false);save=await stored();check('recharge does not repair hull',save.mobilityV1.owned[0].energy===100&&save.mobilityV1.owned[0].condition<100);
  await click('Réparer ·',false);check('repair restores hull',(await stored()).mobilityV1.owned[0].condition===100);await shot('garage-maintained.png');
+ // Earned hand-over is explicit; previous permit checks still asserted zero ownership.
+ const reward=(await stored()).mobilityV1.trainingReward;
+ check('successful training leaves an unclaimed hand-over',reward?.status==='available');
+ await click('Recevoir le Grav-Sled du clan');save=await stored();
+ const sled=save.mobilityV1.owned.find(v=>v.id==='scout_grav_sled');
+ check('two individually owned hulls coexist',save.mobilityV1.owned.length===2&&sled?.acquiredBy==='quest');
+ check('hand-over preserves wear and energy',sled.condition===reward.course.condition&&sled.energy===reward.course.energy);
+ const received=JSON.stringify(save.mobilityV1);await page.reload({waitUntil:'networkidle'});await page.locator('[data-mobility-garage]').waitFor();
+ check('hand-over survives reload exactly',JSON.stringify((await stored()).mobilityV1)===received);
+ check('second hand-over is unavailable',await page.getByRole('button',{name:'Recevoir le Grav-Sled du clan',exact:true}).count()===0);
+ await page.locator('[role=listitem]').filter({hasText:'Grav-Sled éclaireur'}).click();
+ await click('Installer · 80 marques');save=await stored();
+ check('personal sled upgrade leaves clan bike untouched',save.mobilityV1.owned.find(v=>v.id==='scout_grav_sled').upgrades.drive===1&&save.mobilityV1.owned.find(v=>v.id==='clan_hoverbike').upgrades.drive===1);
+ const ownedBeforeLoan=JSON.stringify(save.mobilityV1.owned);
+ await click('Prendre le Grav-Sled de formation');await click('Reprendre la conduite');await page.keyboard.down(up);await page.waitForTimeout(700);await page.keyboard.up(up);await click('Pause et enregistrer');await click('Retour de sécurité');await click('Confirmer la récupération');
+ check('another loan does not mutate either personal hull',JSON.stringify((await stored()).mobilityV1.owned)===ownedBeforeLoan);
+ check('loan return cannot renew the claimed reward',(await stored()).mobilityV1.trainingReward.status==='claimed');
+ await shot('garage-earned-fleet.png');
  check('no browser exceptions',report.errors.length===0);report.passed=true;report.browserVersion=browser.version();
 }catch(error){report.failure=String(error);console.error(error);if(page)try{await page.screenshot({path:path.join(out,'failure.png'),fullPage:true});}catch{}}
 finally{if(browser)await browser.close();await new Promise(resolve=>server.close(resolve));fs.writeFileSync(path.join(out,'browser-report.json'),JSON.stringify(report,null,2)+'\n');}

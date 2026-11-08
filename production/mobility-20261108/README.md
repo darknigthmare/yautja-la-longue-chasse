@@ -21,3 +21,8 @@ Vérification reproductible sans modifier le classeur : `python3 scripts/verify-
 ## Reprise V1.1 — état courant
 
 [Reprise détaillée](REPRISE_V1_1.md) : le XLSX comporte 23 feuilles et 779 formules, dont une feuille de qualification distincte. Code `2fa19db1` : 161 tests ciblés + 6 tests QA, 21 contrôles natifs de conduite/atelier et 12 contrôles tactiles/API manette ; TypeScript complet et build frontend diagnostic réussis. Les captures/rapports sont dans [qa/native-2fa19db1](qa/native-2fa19db1/). Les reçus antérieurs, la base de 50 modèles et les 18 chantiers de clôture restent conservés. La manette physique et le parcours campagne complet ne sont pas qualifiés.
+
+
+## Extension V1.2 — remise du Grav-Sled
+
+La formation réussie peut désormais produire un reçu de remise pour un Blooded. Le permis ne donne toujours pas de propriété automatique : une confirmation distincte aux Forges remet le châssis avec son usure et sa réserve. Deux machines peuvent être possédées et entretenues indépendamment ; le prêt ne reçoit jamais leurs modules personnels. Les conclusions V1/V1.1 ci-dessus restent historiques. Voir [la reprise V1.2](REPRISE_V1_2.md) et la feuille `Remise_GravSled_V1_2` du classeur (24 feuilles, 780 formules). Aucune image nouvelle ni certification canonique.

@@ -1,0 +1,97 @@
+{
+  "schema": "yautja-mobility-v12-delivery/1",
+  "base_commit": "cd641cedccb8d8a4332d35f1c2624822350b4c1b",
+  "files": [
+    {
+      "path": "app/game/systems/mobility/ledger.ts",
+      "bytes": 17037,
+      "sha256": "7443e3e8e270c2b50b5c7dd8e632c1aa326e884cebf4d1885c22b5c99a7acb03",
+      "git_blob_sha1": "c24eb8e284a3fa3f2d4cb529a2400cabdb8c43d5",
+      "expected_previous_git_blob": "c37f35e07b6ae5c344ea28f7bb714015f3afeb0b"
+    },
+    {
+      "path": "app/game/systems/mobility/controller.ts",
+      "bytes": 2764,
+      "sha256": "d3fe64b0912453cb3ee0edd15f5529057cf92f83ffc4fb713f6332f1691530b4",
+      "git_blob_sha1": "50d7dedb31e8745ddc42d3b9e91732165b77793e",
+      "expected_previous_git_blob": "2a0a9ca4c8624ae981b5831be3ca672c5de97996"
+    },
+    {
+      "path": "app/game/MobilityGarage.tsx",
+      "bytes": 11379,
+      "sha256": "5d1539c1ee87de5072de14aa263afeb646301328e64d92a14593231fe58df74e",
+      "git_blob_sha1": "560fd3fc67c64f2706e316ce539efa688ca99310",
+      "expected_previous_git_blob": "183f3e1828f102bd3531e74c52fcf069af8b1157"
+    },
+    {
+      "path": "tests/mobility-training-reward.test.mjs",
+      "bytes": 11530,
+      "sha256": "754247c0fb9eafec219ad0e40f0f1bae4b63cc138fdbe109702812f7977a8d76",
+      "git_blob_sha1": "75ae65a090900ad5fb7c268c70ac4782be7841c0",
+      "expected_previous_git_blob": null
+    },
+    {
+      "path": "scripts/qa-mobility-native.mjs",
+      "bytes": 10449,
+      "sha256": "a77bb1c180c811a3a3ab4d90a6a2c0329eb2a10c949f270227e2f2cd22337f61",
+      "git_blob_sha1": "370de3bccfeb1877992de7b5673863ef15aca3d8",
+      "expected_previous_git_blob": "1a87002764261327e88a1293faef002ad43808f4"
+    },
+    {
+      "path": ".github/workflows/mobility-publish-source-20261108.yml",
+      "bytes": 4549,
+      "sha256": "91bbc95e96d26f25b44d520c365c0d42757f6a04b47673add768b1464785df2e",
+      "git_blob_sha1": "891072bee89cefbcfe29ad884e56608105849329",
+      "expected_previous_git_blob": "fe0d4c485fe5799e3d029374ddd3d5d6e1cc8941"
+    },
+    {
+      "path": "production/mobility-20261108/Yautja_Mobilite_Gameplay_20261108.xlsx",
+      "bytes": 351140,
+      "sha256": "7eeb69fa97f276470a06d91e21ca06bd9bcaa61368e9418dc9c9e6d83f2030ad",
+      "git_blob_sha1": "6a8e5bd53539584586d526e2bafbaf6da2d35e30",
+      "expected_previous_git_blob": "39e8f813887f68cbf69a79786f1afab52eeaa362"
+    },
+    {
+      "path": "production/mobility-20261108/workbook-manifest.json",
+      "bytes": 5159,
+      "sha256": "4d3ff63dd2357491fc31bee2f1b5757d8b48c123eb6166d13cffe78d143d621d",
+      "git_blob_sha1": "48db03aa419759d7ca5480f6ee27812515b53ab8",
+      "expected_previous_git_blob": "147e0b6712b6c04ebeb152762963c3d2c9b2e353"
+    },
+    {
+      "path": "scripts/verify-mobility-workbook.py",
+      "bytes": 7772,
+      "sha256": "bc77662f10045abca53a7f40e6d7226793efbb27b1ba23daa6821a25e003f1e5",
+      "git_blob_sha1": "901666f20b7f39abfe15c9f9bf471894abc165f9",
+      "expected_previous_git_blob": "680399d61f3017a8815d6a32adc4254fef2e8026"
+    },
+    {
+      "path": "docs/campagne/mobilite/GAMEPLAY_GARAGE_V1.md",
+      "bytes": 11857,
+      "sha256": "2da321b2914d5c0071594d51321800f1fd376d1269413dd3ce9e820fb49f39c4",
+      "git_blob_sha1": "ef7a83c28abd6a952baa5e4620d730e7f3ac033d",
+      "expected_previous_git_blob": "bb4df423cb4016a572720fa63ac0924ccf1b1026"
+    },
+    {
+      "path": "production/mobility-20261108/README.md",
+      "bytes": 3718,
+      "sha256": "cb94abe524e9cb0cf119ec8b3a432af853b62a7eb98a208864e260f9fa3408ed",
+      "git_blob_sha1": "7c63a14d7f1b445397cfc4ebe7a4d835fba07ec3",
+      "expected_previous_git_blob": "199346e3aedc03c46590a361914d3b7698b2d1eb"
+    },
+    {
+      "path": "production/mobility-20261108/REPRISE_V1_2.md",
+      "bytes": 5344,
+      "sha256": "af2c968a7eafbc07cdb077392f0509383b28ada97850e67fd060fed784bd0a45",
+      "git_blob_sha1": "7711b54c802a6b880fc2e36578de1ca4c65fbcbd",
+      "expected_previous_git_blob": null
+    }
+  ],
+  "local_tests": 192,
+  "new_tests": 33,
+  "expected_ci_tests": 200,
+  "expected_native_checks": 29,
+  "expected_controls_checks": 12,
+  "images_generated": 0,
+  "scope": "Original-game training reward, existing models, closed yard only."
+}

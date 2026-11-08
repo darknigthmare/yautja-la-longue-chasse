@@ -70,3 +70,8 @@ Restent ouverts : quêtes des autres véhicules, dressage / BOND / écuries, cha
 ## Reprise V1.1 et état courant
 
 [Reçu détaillé de la reprise](../../../production/mobility-20261108/REPRISE_V1_1.md) : commandes multitouch indépendantes, manette au neutre et pause sur déconnexion, comparaison de sept stats, raccord /dev informatif et catalogue runtime vérifié. Sur `2fa19db1`, 161 tests ciblés et six tests de guidage QA passent, ainsi que 21 contrôles conduite/atelier et 12 contrôles tactiles/API manette. Le TypeScript complet et le build frontend diagnostic passent dans la CI d’intégration. La feuille `Reprise_V1_1` et la synthèse distinguent ces résultats de la preuve historique ci-dessus. Le parcours complet et les périphériques physiques restent ouverts.
+
+
+## Extension V1.2 — remise du Grav-Sled
+
+La formation réussie peut désormais produire un reçu de remise pour un Blooded. Le permis ne donne toujours pas de propriété automatique : une confirmation distincte aux Forges remet le châssis avec son usure et sa réserve. Deux machines peuvent être possédées et entretenues indépendamment ; le prêt ne reçoit jamais leurs modules personnels. Les conclusions V1/V1.1 ci-dessus restent historiques. Voir [la reprise V1.2](../../../production/mobility-20261108/REPRISE_V1_2.md) et la feuille `Remise_GravSled_V1_2` du classeur (24 feuilles, 780 formules). Aucune image nouvelle ni certification canonique.

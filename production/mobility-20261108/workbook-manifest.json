@@ -1,8 +1,8 @@
 {
   "format": "yautja-mobility-workbook/2",
   "file": "production/mobility-20261108/Yautja_Mobilite_Gameplay_20261108.xlsx",
-  "bytes": 345658,
-  "sha256": "9e63ca5683b9e5e2ae1d6e6e2f96bf00a08a0d1dff3ba4299dcf6f54534c6651",
+  "bytes": 351140,
+  "sha256": "7eeb69fa97f276470a06d91e21ca06bd9bcaa61368e9418dc9c9e6d83f2030ad",
   "sheets": [
     "Livraison",
     "Catalogue",
@@ -26,7 +26,8 @@
     "Reste_a_faire",
     "Provenance",
     "Synthese_V1",
-    "Reprise_V1_1"
+    "Reprise_V1_1",
+    "Remise_GravSled_V1_2"
   ],
   "historical_workbook": "production/homeworld-sectors-20261103/YAUTJA_MARCHE_MONTURES_CHENILS_20261103.xlsx",
   "historical_workbook_sha256": "7ab7d73aec3b7beb94ac930843a3aa125c617a18f785788007830d5e5ab768fb",
@@ -39,7 +40,7 @@
   "native_browser_passed": true,
   "validation_scope": "120 targeted tests, isolated strict TypeScript and 19 native Chromium component checks with actual campaign persistence. Adult rank and test funding are declared fixture inputs. Not a full GameClient/Homeworld journey, hardware gamepad test, production build or art certification.",
   "authoring_tool": "artifact_tool Python",
-  "formula_count": 779,
+  "formula_count": 780,
   "new_sheet_inventory": {
     "Parametres_V1": {
       "data_rows": 36,
@@ -135,6 +136,10 @@
       "data_rows": 20,
       "columns": 8,
       "header_row": 5
+    },
+    "Remise_GravSled_V1_2": {
+      "data_rows": 24,
+      "scope": "Remise explicite du Grav-Sled, reçu, flotte, protections et état de vérification locale."
     }
   },
   "native_browser_checks": 19,
@@ -175,5 +180,6 @@
     "mobility_run": 42498294170,
     "full_build_run": 42498298048,
     "full_build_scope": "Full repository TypeScript and frontend diagnostic build, not a deployment or universal gameplay validation."
-  }
+  },
+  "v1_2_note": "33 nouveaux tests locaux ; preuves CI natives séparées. Anciens tableaux et reçus V1.1 conservés."
 }

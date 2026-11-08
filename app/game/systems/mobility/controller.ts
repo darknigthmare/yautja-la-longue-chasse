@@ -17,7 +17,7 @@ export class MobilityDriveController {
   }
   step(input:MobilityInput): boolean {
     if(this.blocked||this.pending.length>=30||!this.confirmed.active)return false;
-    const active=this.confirmed.active, levels=this.confirmed.owned.find(v=>v.id===active.modelId)?.upgrades??emptyMobilityLevels();
+    const active=this.confirmed.active, levels=active.loaned?emptyMobilityLevels():this.confirmed.owned.find(v=>v.id===active.modelId)?.upgrades??emptyMobilityLevels();
     this.predicted=stepMobilityCourse(this.predicted,input,active.modelId,levels);
     this.pending.push({...input});return true;
   }
