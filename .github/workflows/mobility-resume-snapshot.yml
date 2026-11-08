@@ -1,0 +1,44 @@
+name: Mobility current source snapshot
+on:
+  push:
+    branches: [feat/mobility-garage-gameplay-20261108]
+    paths: [.github/workflows/mobility-resume-snapshot.yml]
+permissions:
+  contents: read
+jobs:
+  snapshot:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          fetch-depth: 1
+          persist-credentials: false
+          sparse-checkout: |
+            app/game
+            tests
+            scripts
+            docs/campagne/mobilite
+            production/mobility-20261108
+            public/game/mobility
+            .github/workflows
+      - name: Archive tracked mobility scope only
+        run: |
+          python3 - <<'PY'
+          import pathlib,subprocess,zipfile,json,hashlib
+          paths=subprocess.check_output(['git','ls-files','-z']).decode().split('\0')
+          chosen={}
+          with zipfile.ZipFile('mobility-current-source.zip','w',zipfile.ZIP_DEFLATED) as z:
+            for name in paths:
+              p=pathlib.Path(name)
+              wanted=name.startswith(('app/game/','docs/campagne/mobilite/','production/mobility-20261108/','public/game/mobility/','tests/mobility/')) or ('mobility' in p.name and name.startswith(('scripts/','tests/','.github/workflows/')))
+              if wanted and p.is_file() and p.stat().st_size<10000000:
+                data=p.read_bytes();z.writestr(name,data);chosen[name]=hashlib.sha256(data).hexdigest()
+            z.writestr('CURRENT_SNAPSHOT.json',json.dumps({'head':subprocess.check_output(['git','rev-parse','HEAD']).decode().strip(),'files':chosen}))
+          print('Files',len(chosen))
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: mobility-current-source
+          path: mobility-current-source.zip
+          retention-days: 3
