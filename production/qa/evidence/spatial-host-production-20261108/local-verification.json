@@ -1,0 +1,176 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-11-08T17:10:57.044326+00:00",
+  "baselineCommit": "5d0c8d9202c15c1b15c2b613a779d0f2877c0406",
+  "qualification": "local-build-http-and-regressions-only",
+  "nativeTimingQualified": false,
+  "failureEvidence": {
+    "commit": "13326b2e0a92007819a51af488ceda4e6fd03ead",
+    "runId": 42501311528,
+    "jobId": 128794459004,
+    "artifactId": 13625634426,
+    "artifactName": "planet-arrival-spatial-13326b2e0a92007819a51af488ceda4e6fd03ead",
+    "archiveBytes": 45680371,
+    "archiveSha256": "6ca4708c5708dcad326fcf1726649883b6ae0107987b56c9b5348edede6bd876",
+    "runUrl": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/42501311528"
+  },
+  "environment": {
+    "node": "v24.22.1",
+    "python": "3.12.14",
+    "vite": "8.1.5",
+    "react": "19.2.8",
+    "reactDom": "19.2.8",
+    "playwrightCore": "1.63.0"
+  },
+  "checks": [
+    {
+      "kind": "regressions",
+      "command": "node --experimental-strip-types --test --test-reporter=spec --test-concurrency=1 tests/planet-arrival-harness.test.mjs tests/planet-arrival-observation.test.mjs tests/planet-arrival-x11.test.mjs tests/planet-arrival-spatial.test.mjs tests/planet-arrival-presentation.test.mjs tests/planet-arrival.test.mjs tests/planet-arrival-audio.test.mjs tests/planet-insertion.test.mjs tests/ship-insertion-energy.test.mjs tests/hunt-insertion.test.mjs",
+      "exitCode": 0,
+      "tests": 152,
+      "passed": 152,
+      "failed": 0,
+      "skipped": 0,
+      "log": "production/qa/evidence/spatial-host-production-20261108/regressions.log.gz"
+    },
+    {
+      "kind": "strict-lint",
+      "command": "node node_modules/eslint/bin/eslint.js scripts/qa-planet-arrival-spatial.mjs tests/planet-arrival-harness.test.mjs --max-warnings=0",
+      "exitCode": 0,
+      "log": "production/qa/evidence/spatial-host-production-20261108/lint.log"
+    },
+    {
+      "kind": "diff-check",
+      "command": "git diff --check",
+      "exitCode": 0,
+      "log": "production/qa/evidence/spatial-host-production-20261108/diff-check.log"
+    },
+    {
+      "kind": "baseline-http-observation",
+      "sourceCommit": "5d0c8d9202c15c1b15c2b613a779d0f2877c0406",
+      "method": "Extract unchanged startHarness from the baseline AST, execute with real Vite createServer in a child with NODE_ENV unset, and inspect the served HTML and transformed host.tsx.",
+      "exitCode": 0,
+      "receipt": "production/qa/evidence/spatial-host-production-20261108/baseline-host.json"
+    },
+    {
+      "kind": "source-invariants",
+      "method": "Compare every preexisting function except startHarness by exact AST source text; compare X11 bytes; require no diff in app, dependencies or workflows.",
+      "preservedFunctions": 39,
+      "exitCode": 0,
+      "receipt": "production/qa/evidence/spatial-host-production-20261108/source-invariants.json"
+    }
+  ],
+  "testedInputs": [
+    {
+      "path": "scripts/qa-planet-arrival-spatial.mjs",
+      "bytes": 203993,
+      "sha256": "cba2f73bc99a049c9974e521eac2f1d66f1c44c31779b464c5eeaa666b507c90"
+    },
+    {
+      "path": "scripts/qa-planet-arrival-x11.py",
+      "bytes": 54688,
+      "sha256": "93d7dc8628c44f8710bdf21accfd8401eaf5f60737dcb254f6979cf70d2aa285"
+    },
+    {
+      "path": "tests/test_planet_arrival_x11.py",
+      "bytes": 6153,
+      "sha256": "21599993de86094d2080e3e0a18487169bd0f990c5745d63f9feb5a1f47e6e1c"
+    },
+    {
+      "path": "package.json",
+      "bytes": 8562,
+      "sha256": "246599abd3ca304b98201bbffbbcaaeef481486a91f3cad637a15c3ee20efbe5"
+    },
+    {
+      "path": "package-lock.json",
+      "bytes": 389978,
+      "sha256": "763dcb2fdfef2e1a7ce196540cca3f4f5617eeb28a36b380d0dc6079410c1892"
+    },
+    {
+      "path": "tests/planet-arrival-harness.test.mjs",
+      "bytes": 5066,
+      "sha256": "eb4914992f802f6cd5955174213c7520b3e82eef44ca8152a399aac7f8a70bdf"
+    },
+    {
+      "path": "tests/planet-arrival-observation.test.mjs",
+      "bytes": 12119,
+      "sha256": "6e1dde7e4779cc3fc0c994de8da900235db664cbb1df5d1ee41e2e203927a333"
+    },
+    {
+      "path": "tests/planet-arrival-x11.test.mjs",
+      "bytes": 733,
+      "sha256": "e97a6fb87e83f85b2ddf3098031d3a62203e3050391e29cac18454f9ef2a6975"
+    },
+    {
+      "path": "tests/planet-arrival-spatial.test.mjs",
+      "bytes": 19749,
+      "sha256": "7e58f26bbb6db61569c84179648b9a3183e58c35dba3ca2795e3e01ddf6ccbfb"
+    },
+    {
+      "path": "tests/planet-arrival-presentation.test.mjs",
+      "bytes": 25789,
+      "sha256": "18334ba0e07ddfb1406091573d30ff3a3747edf409fdd065986dfe18fe8d30a3"
+    },
+    {
+      "path": "tests/planet-arrival.test.mjs",
+      "bytes": 13489,
+      "sha256": "4281deb6bc2cf7e0263fab5f263e655c405d27ff0d89caae70588e9fff304813"
+    },
+    {
+      "path": "tests/planet-arrival-audio.test.mjs",
+      "bytes": 29135,
+      "sha256": "2934f2b79a51455b80935f431ccff18ef82e811cc869bf871352f3f2086dc569"
+    },
+    {
+      "path": "tests/planet-insertion.test.mjs",
+      "bytes": 14296,
+      "sha256": "5336a5675ebcde0195ac6f3c5bdfdb040190d1198b830e766edc5b8c83431902"
+    },
+    {
+      "path": "tests/ship-insertion-energy.test.mjs",
+      "bytes": 12204,
+      "sha256": "b96961ad44aea09508a55a16c1ed1afcc36f999d3eb668a0b7e25f27ce865c80"
+    },
+    {
+      "path": "tests/hunt-insertion.test.mjs",
+      "bytes": 36325,
+      "sha256": "3939b38a63e2be7d0720867f53dfdb4ae69dc8b2018e9fbda064f1c29d1eed32"
+    }
+  ],
+  "receipts": [
+    {
+      "path": "production/qa/evidence/spatial-host-production-20261108/regressions.log.gz",
+      "bytes": 6664,
+      "sha256": "b169f05fe7a6df46c429a2fb19f487a5839feecdd7d55726c537542ea60c05a7",
+      "uncompressedBytes": 16212,
+      "uncompressedSha256": "2fd7494420bb5732f85abfe48e7d71743c41435ae3a52b8688dd8757b29a7a9b",
+      "encoding": "gzip; original log bytes preserved without normalization"
+    },
+    {
+      "path": "production/qa/evidence/spatial-host-production-20261108/lint.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "production/qa/evidence/spatial-host-production-20261108/diff-check.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "production/qa/evidence/spatial-host-production-20261108/baseline-host.json",
+      "bytes": 231,
+      "sha256": "1b83faed664ce8ed028c7d1b4245885e3c517493de6f66082a2ccb542a51cac2"
+    },
+    {
+      "path": "production/qa/evidence/spatial-host-production-20261108/source-invariants.json",
+      "bytes": 5499,
+      "sha256": "bb4f12b783f3f8b4d1a682b9568cc2096ab1449e40136b13a7b8a637bde4cc17"
+    }
+  ],
+  "limits": [
+    "No native Chromium/X11 capture was executed locally; the local browser socket restriction remains in place.",
+    "The production build removes verified development instrumentation, but the cause of the native presentation delay and any timing gain remain unproven until the next complete Spatial run.",
+    "No rejected capture is accepted or relabelled. No timing threshold, retry budget, X11 freshness, geometric assertion or product source changed.",
+    "The full Spatial CI artwork suites and native browser recipe remain required on the publication head."
+  ]
+}
