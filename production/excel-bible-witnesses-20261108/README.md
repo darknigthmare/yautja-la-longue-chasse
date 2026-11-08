@@ -121,6 +121,27 @@ conservés. Son effet sur le délai natif doit être mesuré par la CI de la
 nouvelle tête publiée. Le [diagnostic du banc](../qa/evidence/spatial-host-production-20261108/README.md)
 conserve les échecs antérieurs et les limites de cette correction.
 
+La [correction du focus des gantelets](../qa/evidence/gauntlet-focus-20261108/README.md)
+traite ensuite une promesse non attendue dans une autre recette navigateur :
+les contrôles d'interface réussissaient, puis le focus rejetait à la fermeture.
+L'appel est désormais attendu avant la touche Entrée. Son reçu distingue
+la vérification locale de la future exécution native sur la tête publiée.
+
+La [recette native de l’audience sur `bdc2b4af`](qa/native-c37-bdc/inspection.json)
+a ensuite réussi ses **27 contrôles**, neuf dans chacun des formats 1440 × 1000,
+390 × 844 et 320 × 740. Ses six captures ont été inspectées ; le reçu conserve
+les limites de cadrage mobile, les toasts et la portée des interactions.
+Cette preuve est attachée à cette révision exacte, avec mouvement réduit et
+sélection manuelle des observations. Elle ne valide ni une manette physique,
+ni la lecture automatique de la télémétrie, ni une campagne intégrale.
+
+La [correction commune du démarrage planétaire](../qa/evidence/arrival-startup-20261108/README.md)
+traite ensuite une course entre fin du préchargement et ancien callback
+d’animation. Elle modifie cette scène commune, sans changer les quatorze
+sources applicatives de l’audience. Le relevé courant a donc été régénéré ;
+les gels historiques et les preuves précédentes gardent leurs octets et
+leurs dates. Les contrôles complets restent requis sur la nouvelle tête.
+
 Le complément de suivi se trouve dans
 [Yautja_Audience_C37_20261108.xlsx](suivi/Yautja_Audience_C37_20261108.xlsx).
 Il conserve séparément l’implémentation, les tests de logique, le rendu serveur,
