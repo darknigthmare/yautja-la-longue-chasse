@@ -1,9 +1,12 @@
 import assert from "node:assert/strict";
 import {readFile} from "node:fs/promises";
+import path from "node:path";
 import test from "node:test";
+import {fileURLToPath} from "node:url";
 import vm from "node:vm";
 import ts from "typescript";
 import {build} from "esbuild";
+import {Linter} from "eslint";
 const compiled=await build({stdin:{contents:`export * from "./app/game/save";export * from "./app/game/systems/harvestInventoryV112";`,resolveDir:process.cwd(),loader:"ts"},bundle:true,write:false,platform:"node",format:"esm",logLevel:"silent"});
 const api=await import("data:text/javascript;base64,"+Buffer.from(compiled.outputFiles[0].text).toString("base64"));
 const source=await readFile(new URL("../app/game/GameClient.tsx",import.meta.url),"utf8");
@@ -18,6 +21,61 @@ function callback(name,bindings) {
 }
 const specimen={id:"jungle-vey:0:prey:hide",sourceId:"jungle-vey:0:prey",speciesId:"rifle-soldier",partId:"hide",
   label:"Peau préparée",quality:80,massKg:3,volumeUnits:2,stage:"raw"};
+
+test("the lifecycle browser harness binds its real callbacks and persists extraction before admitting workshop work",async t=>{
+  // Exercise the harness's actual virtual module, including its imports, without
+  // starting Chromium or replacing a production settlement dependency with a stub.
+  const harnessSource=await readFile(new URL("../scripts/qa-hunt-lifecycle-browser-v112.mjs",import.meta.url),"utf8");
+  const harnessAst=ts.createSourceFile("qa-hunt-lifecycle-browser-v112.mjs",harnessSource,ts.ScriptTarget.Latest,true,ts.ScriptKind.JS);
+  let extractor;const loaders=[];
+  function visit(node){
+    if(ts.isFunctionDeclaration(node)&&node.name?.text==="extractCallback")extractor=node;
+    if(ts.isCallExpression(node)&&ts.isPropertyAccessExpression(node.expression)&&node.expression.name.text==="onLoad")loaders.push(node.arguments[1]);
+    ts.forEachChild(node,visit);
+  }
+  visit(harnessAst);assert.ok(extractor);assert.equal(loaders.length,1);
+  const root=fileURLToPath(new URL("../",import.meta.url));
+  const load=vm.runInNewContext(`(()=>{${extractor.getText(harnessAst)};return ${loaders[0].getText(harnessAst)};})()`,
+    {assert,ts,path,root,fs:{readFile}});
+  const generated=await load({path:"hunt-lifecycle-callbacks-v112"});
+  const javascript=ts.transpileModule(generated.contents,{compilerOptions:{target:ts.ScriptTarget.ES2022,module:ts.ModuleKind.ESNext}}).outputText;
+  const diagnostics=new Linter().verify(javascript,{languageOptions:{ecmaVersion:2022,sourceType:"module",globals:{window:"readonly"}},rules:{"no-undef":"error"}});
+  assert.deepEqual(diagnostics.map(item=>item.message),[],"Every runtime identifier in the extracted callbacks must have a harness binding");
+  const compiled=await build({stdin:{...generated,contents:generated.contents+
+    '\nexport {defaultSave,replaceSaveWithStatus,loadSaveWithStatus,SAVE_STORAGE_KEY} from "./save";\n'+
+    'export {MISSION_BY_ID} from "./data";'},bundle:true,write:false,platform:"node",format:"esm",logLevel:"silent"});
+  const runtime=await import("data:text/javascript;base64,"+Buffer.from(compiled.outputFiles[0].text).toString("base64"));
+  const previousWindow=Object.getOwnPropertyDescriptor(globalThis,"window"),bytes=new Map();
+  const storage={getItem:key=>bytes.get(key)??null,setItem:(key,value)=>bytes.set(key,value),removeItem:key=>bytes.delete(key)};
+  Object.defineProperty(globalThis,"window",{configurable:true,value:{localStorage:storage,__huntLifecycleV112:{}}});
+  t.after(()=>{if(previousWindow)Object.defineProperty(globalThis,"window",previousWindow);else delete globalThis.window;});
+  const initial=runtime.defaultSave("2026-11-08T00:00:00.000Z");
+  initial.profile.clanMarks=100;initial.inventory.fieldToolIds=["flaying-tool"];
+  const written=runtime.replaceSaveWithStatus(initial);assert.equal(written.persisted,true);
+  const saveRef={current:written.save},observed={clears:0,toasts:[]};
+  const callbacks=runtime.makeGameClientCallbacksV112({saveRef,sessionAliveRef:{current:true},
+    setSave:value=>{saveRef.current=value;},setScreen:value=>{observed.screen=value;},setToast:value=>observed.toasts.push(value),
+    setSaveFailure:value=>{observed.failure=value;},setLastResult:value=>{observed.result=value;},clearHuntSession:()=>{observed.clears++;}});
+  const mission=runtime.MISSION_BY_ID["jungle-vey"];
+  const result={missionId:mission.id,difficultyId:"hunter",outcome:"success",score:80,kills:1,scans:1,elapsedSeconds:60,
+    completedObjectiveIds:mission.objectives.map(objective=>objective.id),honorEvents:[],trophyQuality:"worthy",secondWindUsed:false,
+    completedAt:"2026-11-08T00:01:00.000Z",specimensV112:[specimen],
+    toolUseIdsV112:["jungle-vey:0:flay:prey","jungle-vey:0:harvest-hide:prey"],harvestEncounterRunV112:0};
+  callbacks.completeMission(result);
+  assert.equal(observed.clears,1);assert.equal(observed.screen,"debrief");assert.equal(observed.failure,null);
+  assert.equal(observed.result,result);assert.deepEqual(observed.toasts,[]);
+  assert.equal(saveRef.current.inventory.harvestV112.specimens[0].id,specimen.id);
+  assert.equal(saveRef.current.inventory.harvestV112.toolCondition,90);
+  assert.deepEqual(runtime.loadSaveWithStatus().save.inventory.harvestV112,saveRef.current.inventory.harvestV112);
+  const committed=storage.getItem(runtime.SAVE_STORAGE_KEY),marks=saveRef.current.profile.clanMarks;
+  callbacks.completeMission(result);assert.equal(observed.clears,1);assert.equal(storage.getItem(runtime.SAVE_STORAGE_KEY),committed);
+  assert.equal(callbacks.performConservationActionV112("start",specimen.id).ok,true);
+  assert.equal(saveRef.current.profile.clanMarks,marks-2);assert.equal(saveRef.current.inventory.harvestV112.jobs.length,1);
+  assert.equal(callbacks.performConservationActionV112("start",specimen.id).ok,false);
+  const reloaded=runtime.loadSaveWithStatus();assert.equal(reloaded.loaded,true);
+  assert.equal(reloaded.save.profile.clanMarks,marks-2);assert.equal(reloaded.save.inventory.harvestV112.jobs.length,1);
+});
+
 function harness(confirm=true){
   const base=api.defaultSave("2026-10-28T00:00:00.000Z");base.profile.clanMarks=100;base.inventory.fieldToolIds=["flaying-tool"];
   base.inventory.harvestV112.specimens=[{...specimen}];

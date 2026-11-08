@@ -7,6 +7,9 @@ on:
       - 'app/game/ClanShipHub*'
       - 'app/game/ClanShipInterior*'
       - 'app/game/ClanShipOperationsPanel*'
+      - 'app/game/ClanShipIncident*'
+      - 'app/game/BuriedCradleReturnPanel*'
+      - 'app/game/ShipInterior25D*'
       - 'app/game/ClanShipSpaceEncounter*'
       - 'app/game/clanShipCrew.ts'
       - 'app/game/GameClient.tsx'
@@ -17,10 +20,16 @@ on:
       - 'app/game/systems/clanShipDocking.ts'
       - 'app/game/systems/clanShipInterior.ts'
       - 'app/game/systems/clanShipOperations.ts'
+      - 'app/game/systems/clanShipIncidents.ts'
+      - 'app/game/systems/clanShipTrophyCase.ts'
+      - 'app/game/systems/buriedCradleCampaign.ts'
+      - 'app/game/systems/buriedCradleReturn.ts'
       - 'app/game/systems/clanShipSpaceEncounter.ts'
       - 'app/game/systems/campaignSlots.ts'
       - 'app/game/systems/completeArchive.ts'
       - 'tests/clan-ship-*.test.mjs'
+      - 'tests/buried-cradle-return.test.mjs'
+      - 'tests/helpers/buried-cradle-return-route.mjs'
       - 'public/game/clan-ship/**'
       - 'tests/fixtures/clan-ship-browser-assets.json'
       - 'scripts/qa-clan-ship-browser.mjs'
@@ -98,22 +107,30 @@ jobs:
           node node_modules/eslint/bin/eslint.js --max-warnings=0
           app/game/ClanShipHub.tsx app/game/ClanShipInterior.tsx
           app/game/ClanShipOperationsPanel.tsx app/game/ClanShipSpaceEncounter.tsx
+          app/game/ClanShipIncidentPanel.tsx app/game/ClanShipIncidentScene.tsx
+          app/game/BuriedCradleReturnPanel.tsx app/game/ShipInterior25D.tsx
           app/game/clanShipCrew.ts
           app/game/GameClient.tsx app/game/ShipHub.tsx
           app/game/CampaignMainMenu.tsx app/game/save.ts app/game/types.ts
           app/game/systems/clanShipDocking.ts app/game/systems/clanShipInterior.ts
           app/game/systems/clanShipOperations.ts app/game/systems/clanShipSpaceEncounter.ts
+          app/game/systems/clanShipIncidents.ts app/game/systems/clanShipTrophyCase.ts
+          app/game/systems/buriedCradleCampaign.ts app/game/systems/buriedCradleReturn.ts
           app/game/systems/campaignSlots.ts
           app/game/systems/completeArchive.ts scripts/qa-clan-ship-browser.mjs scripts/qa-clan-ship-operations.mjs
           tests/clan-ship-docking.test.mjs tests/clan-ship-save.test.mjs
           tests/clan-ship-interior.test.mjs
           tests/clan-ship-operations.test.mjs tests/clan-ship-space-encounter.test.mjs tests/clan-ship-operations-save.test.mjs
+          tests/clan-ship-incidents.test.mjs tests/clan-ship-trophy-case.test.mjs
+          tests/buried-cradle-return.test.mjs tests/helpers/buried-cradle-return-route.mjs
       - name: Interior geometry, docking, saves, archives and campaign regressions
         run: >-
           node --experimental-strip-types --test --test-concurrency=1
           tests/clan-ship-docking.test.mjs tests/clan-ship-save.test.mjs
           tests/clan-ship-interior.test.mjs
           tests/clan-ship-operations.test.mjs tests/clan-ship-space-encounter.test.mjs tests/clan-ship-operations-save.test.mjs
+          tests/clan-ship-incidents.test.mjs tests/clan-ship-trophy-case.test.mjs
+          tests/buried-cradle-return.test.mjs
           tests/complete-archive.test.mjs tests/campaign-slots.test.mjs
           tests/cloud-account-archives-v71.test.mjs
           tests/game-client-ship-flow.test.mjs tests/campaign-resume-priority-v94.test.mjs

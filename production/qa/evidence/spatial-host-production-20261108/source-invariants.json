@@ -1,0 +1,166 @@
+{
+  "baseline": "5d0c8d9202c15c1b15c2b613a779d0f2877c0406",
+  "preservedFunctions": [
+    {
+      "function": "startNativeServer",
+      "sha256": "13e5f12df28bef763cd415a57e5b87e549ec0f137ef3c3e9f967fd65e487574b"
+    },
+    {
+      "function": "observePage",
+      "sha256": "f024a9caf3a5d7e8a76bfebcbc505894edcdfb143e2be4d92672bd3bd2e004e4"
+    },
+    {
+      "function": "check",
+      "sha256": "2749e886aa0b8fb68b5dc8931bace7d642d55df4368e7d623c8091fd88ac7984"
+    },
+    {
+      "function": "readFrame",
+      "sha256": "513c4625ad339002c9df12125ff6291deb030b200133f494ae55f30ea4ee66b9"
+    },
+    {
+      "function": "decodeSceneImages",
+      "sha256": "41fb0744f97f0ef87d014677202ed4588e0f5620274a69c6534d09a5506da94c"
+    },
+    {
+      "function": "assertSpatial",
+      "sha256": "b3633237ae8a154453a7557b941a62b89589cdb7cd57942795a298ecb42acead"
+    },
+    {
+      "function": "capture",
+      "sha256": "993f9f196b9aa28f4fdc791455a5fb3b78be474d9e8cc6aea2295c6ce069b6ca"
+    },
+    {
+      "function": "freezeCaptureData",
+      "sha256": "d290ac46cf591d5e33eb890fdd26ef3fa6e6dfa83b4d31047db3ab541d8161f6"
+    },
+    {
+      "function": "x11PaintPattern",
+      "sha256": "87acbd37a61ecb1c6a9af5564cd64dbe6cac8f522272b2a608a746e9196ee55f"
+    },
+    {
+      "function": "installX11PaintMarkers",
+      "sha256": "0088c3037a403cfb419ec867f666f98ddc2012bc523eaa63fe219c7bdc7d9912"
+    },
+    {
+      "function": "assertX11Markers",
+      "sha256": "627ba45b507f218289249cf960326984879931c4cc8739217cbca4375aade3f6"
+    },
+    {
+      "function": "startX11Capture",
+      "sha256": "01c9526ee76881304db26bf2f5902a3ca5f56019e197460660d2abe2a5a04768"
+    },
+    {
+      "function": "assertX11CaptureAck",
+      "sha256": "346c553c3f757f39aee6459bb4606e852e73bfbce2ee1adb00639dc4f10d57e0"
+    },
+    {
+      "function": "exportX11Source",
+      "sha256": "716a42440ae7ead981322f4d51faf2ac5bc977e35b1fde4a254a588980dadb5f"
+    },
+    {
+      "function": "retainX11CalibrationFailure",
+      "sha256": "af0816098611fa402fb444d3d1d5bed4d6fe4814e545fa219645b874bcad8cd1"
+    },
+    {
+      "function": "momentSessions",
+      "sha256": "721d8e4854f4bc68c11d9965088e3bf0fc59b7045274252a4ec31f5e68093566"
+    },
+    {
+      "function": "syncMomentViewport",
+      "sha256": "352cea5e4271dbe20bc09de5140669be16c61f833e7e2cbacacf66f109e0c354"
+    },
+    {
+      "function": "captureLayout",
+      "sha256": "3824d40a4baec2ddaa77eba43b502b2bf59f8b26c2c4de016ab405835993ec85"
+    },
+    {
+      "function": "assertCaptureLayout",
+      "sha256": "a363c7d4ccbdd0b8bcb7b86c4d580958ff8e522a1ba2849b9b38625a6c0ad7f5"
+    },
+    {
+      "function": "observeMoment",
+      "sha256": "33929ab3ec00f4dc6e836bdc56186886529e02a75d478455191318aebe2a08e8"
+    },
+    {
+      "function": "cdpObservationError",
+      "sha256": "9c6e29b5af379dedf84040019361a843f0cf64ac9f8b63b4eb6744989c4c9898"
+    },
+    {
+      "function": "prepareCdpMomentReader",
+      "sha256": "48f14203a63e8b00f8cd2b861532fcbae91ff3050fa9fabf6cbdfd6e27515ac9"
+    },
+    {
+      "function": "readMoment",
+      "sha256": "e3e3b06a552e04e758950c4868aec87b78815702e090a26a361cac978bcc8764"
+    },
+    {
+      "function": "losslessNativeDetailCrop",
+      "sha256": "4c2699bc454ba462bbe1919778ef686bcd1def522b17c483486feb1808d0c671"
+    },
+    {
+      "function": "captureMoment",
+      "sha256": "7a8bc2fd42533be3340d5342a0cece70e977c4b43ad0d10c7545d23a60379cf1"
+    },
+    {
+      "function": "capturePreparedMoment",
+      "sha256": "67f633ab81d8ca360c51fb7b350cbdbfcb7d48245e7c8afd0892e34de5ee112a"
+    },
+    {
+      "function": "momentTargetRoi",
+      "sha256": "b376a06649541c59edb83fa8231babf6e4b493a40d9790162924025be1c67007"
+    },
+    {
+      "function": "roiCandidates",
+      "sha256": "1103f78e1c316d4f0366a7522d52e2f794471c9d7a72549751fb2a2a3a5c27db"
+    },
+    {
+      "function": "variantCaptureIdentity",
+      "sha256": "6a5055955083e961fe2e0eb909bea5304cab46785cf77a6fce8ed49800f7059b"
+    },
+    {
+      "function": "assertCaptureProfile",
+      "sha256": "a695990571857d5ee5dc1a79f0a4b120369dabd57ff588890928fb2d636ed3e0"
+    },
+    {
+      "function": "prepareMoment",
+      "sha256": "2a3f93a98d0d9d7eb1311724d5470625b16fca9beae3c90d42f99aa260801720"
+    },
+    {
+      "function": "preflightMomentRoi",
+      "sha256": "807a65b5ab854e67a38c96f72dcca12cf7f7cc288595cc201b57141f6f2d0dba"
+    },
+    {
+      "function": "waitElapsed",
+      "sha256": "cc022f400c4138545808be0cdbc8a8690c926acd247dfac9371c6bf9791750af"
+    },
+    {
+      "function": "ready",
+      "sha256": "8d15f3ee8a3e270621cc224c974a39f35d94ee115b01689d8690d525e2f84fb8"
+    },
+    {
+      "function": "openShot",
+      "sha256": "9e00b86009d9b5e00d46a268cffa7a1d9b12e147aba75f7e98f23e822471d585"
+    },
+    {
+      "function": "measureMovement",
+      "sha256": "fe2da5917c272df7aa21c0860af7cc05232313c0b702c5fb8be43975e3fc0697"
+    },
+    {
+      "function": "storageSnapshot",
+      "sha256": "eb3fbceb99a7e2f09b228678671ee3e68902c4ad894a4ff164060208550f2327"
+    },
+    {
+      "function": "assertFinalFormation",
+      "sha256": "f17ee8561c97b0cf1ae43b3184547459005da3486075323aeee93d0d0a287ce8"
+    },
+    {
+      "function": "finalizeCompositionCapture",
+      "sha256": "0e682499a6baeb5de69939e81ae90269a15569e99ca19b25702c08b22252b218"
+    }
+  ],
+  "x11": {
+    "file": "scripts/qa-planet-arrival-x11.py",
+    "sha256": "93d7dc8628c44f8710bdf21accfd8401eaf5f60737dcb254f6979cf70d2aa285"
+  },
+  "productDependenciesWorkflowsUnchanged": true
+}

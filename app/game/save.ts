@@ -36,6 +36,9 @@ import { normalizeShipAcquisitionV89 } from "./systems/shipAcquisitionV89";
 import { inspectClanShipDocking } from "./systems/clanShipDocking";
 import { evaluateClanShipAccess, evaluateClanShipOperationsCampaign, inspectClanShipOperations } from "./systems/clanShipOperations";
 import { inspectWolfCastleVisit } from "./systems/wolfCastle";
+import { inspectBuriedCradleCampaign } from "./systems/buriedCradleCampaign";
+import { inspectCompanionResidence, evaluateCompanionResidenceCampaign } from "./systems/companionResidence";
+import { inspectClanShipIncidents, evaluateClanShipIncidentsCampaign } from "./systems/clanShipIncidents";
 import { inspectPlanetArrival } from "./systems/planetArrival";
 import { inspectPlanetArrivalRun } from "./systems/planetArrivalRun";
 import { expeditionTrioReady, inspectExpeditionRoster } from "./systems/planetInsertion";
@@ -1235,6 +1238,15 @@ export function normalizeSave(value: unknown): SaveGame {
       armorUpgrades,
     ),
     appearance: normalizeAppearance(source.appearance),
+    ...(source.buriedCradle === undefined ? {} : {
+      buriedCradle: inspectBuriedCradleCampaign(source.buriedCradle, validIsoDate(source.createdAt, fallback.createdAt)).state,
+    }),
+    ...(source.companionResidence === undefined ? {} : {
+      companionResidence: inspectCompanionResidence(source.companionResidence, validIsoDate(source.createdAt, fallback.createdAt)).state,
+    }),
+    ...(source.clanShipIncidents === undefined ? {} : {
+      clanShipIncidents: inspectClanShipIncidents(source.clanShipIncidents, validIsoDate(source.createdAt, fallback.createdAt)).state,
+    }),
     missionProgress,
     trophies: normalizeTrophies(source.trophies),
     ...(source.gauntletV134 === undefined ? {} : {
@@ -1492,10 +1504,30 @@ function inspectSavePayload(value: unknown): SaveImportParseResult {
   const arrivalRun = inspectPlanetArrivalRun(value.planetArrivalRun, arrival.state);
   const expedition = inspectExpeditionRoster(value.expeditionRoster, typeof value.createdAt === 'string' ? value.createdAt : '');
   const shipEnergy = inspectShipInsertionEnergy(value.shipInsertionEnergy, typeof value.createdAt === 'string' ? value.createdAt : '');
-  for (const inspection of [castle, arrival, arrivalRun, expedition, shipEnergy]) {
+  const cradle = inspectBuriedCradleCampaign(value.buriedCradle, typeof value.createdAt === 'string' ? value.createdAt : '');
+  const residence = inspectCompanionResidence(value.companionResidence, typeof value.createdAt === 'string' ? value.createdAt : '');
+  const incidents = inspectClanShipIncidents(value.clanShipIncidents, typeof value.createdAt === 'string' ? value.createdAt : '');
+  for (const inspection of [castle, arrival, arrivalRun, expedition, shipEnergy, cradle, residence, incidents]) {
     if (inspection.status === "future-version" || inspection.status === "invalid-save") {
       return { save: null, failure: inspection.status };
     }
+  }
+  if (residence.state && (!isRecord(value.missionProgress) || !isRecord(value.profile) ||
+      !evaluateCompanionResidenceCampaign(residence.state, value as unknown as SaveGame).allowed)) {
+    return { save: null, failure: 'invalid-save' };
+  }
+  if (incidents.state && !evaluateClanShipIncidentsCampaign(incidents.state, value as unknown as SaveGame).allowed) {
+    return { save: null, failure: 'invalid-save' };
+  }
+  if (cradle.state && (!evaluateClanShipAccess(value as unknown as Pick<SaveGame, 'prologue'>).allowed ||
+      !isRecord(value.missionProgress) || MISSIONS.some(mission => {
+        const progress = (value.missionProgress as Record<string, unknown>)[mission.id];
+        return !isRecord(progress) || progress.status !== 'completed';
+      }))) return { save: null, failure: 'invalid-save' };
+  if (cradle.state && ['active', 'suspended'].includes(cradle.state.status) && (arrival.state ||
+      castle.state && castle.state.status !== 'departed' ||
+      isRecord(value.clanShipDocking) && value.clanShipDocking.status !== 'free-flight')) {
+    return { save: null, failure: 'invalid-save' };
   }
   if (arrival.state?.insertion?.shipCloak && !hasShipInsertionDebit(shipEnergy.state, arrival.state.ownerCreatedAt,
       arrival.state.runId, arrival.state.personalShipId)) return { save: null, failure: 'invalid-save' };

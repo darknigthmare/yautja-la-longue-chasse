@@ -100,6 +100,114 @@ test('catalogue has twelve original contracts and six distinct stationed recruit
   assert.equal(rooms.size, 7, 'the concrete work reaches every existing room');
 });
 
+test('earned clan recruits fund actual quarters before lending tactical roles, with no injected marks', () => {
+  const residence = qa.load('app/game/systems/companionResidence.ts');
+  const docking = qa.load('app/game/systems/clanShipDocking.ts');
+  const interior = qa.load('app/game/systems/clanShipInterior.ts');
+  const ship = 'classic-predator-spaceship', host = { kind: 'clan', shipId: 'avp-predator-mothership' };
+  const ids = ['threshold-guard', 'iron-claw', 'black-suture', 'ash-scar'];
+  let save = campaign();
+  assert.equal(save.profile.clanMarks, 0);
+  let berth = docking.createClanShipDockingState(OWNER, ship);
+  for (const type of ['approach', 'dock', 'board']) {
+    const result = docking.actClanShipDocking(berth, { type }, { ownerCreatedAt: OWNER, personalShipId: ship });
+    assert.equal(result.accepted, true); berth = result.state;
+  }
+  save = { ...save, clanShipDocking: berth };
+  const move = roomId => {
+    if (save.clanShipDocking.roomId === roomId) return;
+    const result = docking.actClanShipDocking(save.clanShipDocking, { type: 'move-room', roomId }, { ownerCreatedAt: OWNER, personalShipId: ship });
+    assert.equal(result.accepted, true); save = { ...save, clanShipDocking: result.state };
+  };
+  const perform = (intent, roomId = 'conseil') => {
+    move(roomId);
+    const state = save.clanShipOperations ?? fresh();
+    const result = ops.actClanShipOperations(state, { ...intent, expectedRevision: state.revision }, {
+      ownerCreatedAt: OWNER, docking: save.clanShipDocking, campaign: save, availableCrewIds: residence.availableClanResidenceCrew(save),
+    });
+    assert.equal(result.accepted, true, result.message); assert.equal(result.changed, true);
+    let progressed = { ...save, clanShipOperations: result.state, profile: { ...save.profile, clanMarks: save.profile.clanMarks + result.clanMarksReward } };
+    if (intent.type === 'recruit') {
+      const registered = residence.registerCompanionResidenceRecruitment(save, progressed, intent.npcId);
+      assert.equal(registered.accepted, true, registered.message); assert.equal(registered.changed, true);
+      progressed = { ...progressed, companionResidence: registered.state };
+    }
+    save = progressed;
+  };
+  const member = id => save.companionResidence.members.find(member => member.id === id);
+  const reserve = id => {
+    assert.equal(member(id).assignment, null); assert.equal(member(id).installation, null); assert.equal(member(id).legacyClanPost, false);
+    assert.equal(residence.availableClanResidenceCrew(save).includes(id), false);
+    assert.equal(residence.companionResidencePresence(save, host).some(entry => entry.id === id), false);
+  };
+  const checkpoint = () => {
+    const parsed = saves.parseSaveImport(saves.exportSave(save));
+    assert.equal(parsed.failure, null); assert.ok(parsed.save);
+    assert.deepEqual(parsed.save.clanShipOperations, save.clanShipOperations);
+    assert.deepEqual(parsed.save.companionResidence, save.companionResidence);
+    assert.equal(parsed.save.profile.clanMarks, save.profile.clanMarks);
+    save = parsed.save;
+  };
+  const install = id => {
+    move('hangar');
+    const before = save.profile.clanMarks, cost = residence.companionResidenceDefinition(id).installationCost;
+    assert.equal(cost, 20);
+    for (const type of ['plan-refit', 'fund-refit', 'complete-refit']) {
+      const result = residence.actCompanionResidence({ type, id, ...(type === 'plan-refit' ? { host } : {}),
+        ownerCreatedAt: OWNER, expectedRevision: save.companionResidence.revision }, {
+        save, selectedShipId: ship, ownedShipIds: [ship], active: true, site: 'clan',
+        observation: { site: 'clan', roomId: 'hangar', ...interior.CLAN_SHIP_INTERIOR_ROOMS.hangar.servicePoint },
+      });
+      assert.equal(result.accepted, true, result.message); assert.equal(result.changed, true);
+      save = { ...save, companionResidence: result.state, profile: { ...save.profile, clanMarks: result.clanMarks } };
+      assert.equal(save.profile.clanMarks, before - (type === 'plan-refit' ? 0 : cost));
+      if (type !== 'complete-refit') reserve(id);
+      checkpoint();
+    }
+    assert.deepEqual(member(id).assignment, host); assert.equal(member(id).refit, null);
+    assert.equal(residence.companionUsesLegacyClanPost(save, id), false);
+    assert.equal(residence.companionResidencePresence(save, host).find(entry => entry.id === id)?.serviceAvailable, true);
+  };
+  for (const step of ops.CLAN_SHIP_ONBOARDING_STEPS) perform({ type: 'onboard-step', stepId: step.id }, step.roomId);
+  perform({ type: 'accept-mandate' });
+  for (const id of ids) {
+    const npc = ops.CLAN_SHIP_RECRUITS.find(entry => entry.id === id);
+    for (const contractId of npc.requiredContractIds) {
+      perform({ type: 'accept-contract', contractId });
+      for (const step of ops.clanShipContract(contractId).steps) perform({ type: 'interior-step', stepId: step.id }, step.roomId);
+    }
+    perform({ type: 'recruit', npcId: id }, npc.roomId); reserve(id); checkpoint();
+    assert.equal(save.profile.clanMarks, id === 'threshold-guard' ? 15 : 35);
+    if (id !== 'threshold-guard') install(id);
+    assert.equal(save.profile.clanMarks, 15);
+  }
+  reserve('threshold-guard');
+  assert.deepEqual(residence.availableClanResidenceCrew(save), ids.slice(1));
+  perform({ type: 'accept-contract', contractId: 'space-screening' });
+  assert.deepEqual(save.clanShipOperations.spaceEncounter.crewRoles, ['armorer', 'medic', 'veteran']);
+  for (const type of ['scan', 'manoeuvre', 'brace', 'brace', 'extract']) {
+    perform({ type: 'space-command', command: { type, expectedTurn: save.clanShipOperations.spaceEncounter.turn } });
+  }
+  assert.equal(save.clanShipOperations.spaceEncounter.status, 'victory');
+  assert.equal(save.profile.clanMarks, 60); reserve('threshold-guard'); checkpoint();
+  install('threshold-guard');
+  assert.equal(save.profile.clanMarks, 40);
+  assert.deepEqual(residence.availableClanResidenceCrew(save), ids);
+  assert.equal(new Set(save.companionResidence.members.map(member => member.installation.berth)).size, 4);
+  for (const [contractId, orders] of [
+    ['space-interception', ['scan', 'manoeuvre', 'fire', 'brace', 'brace', 'fire', 'brace', 'fire']],
+    ['space-recovery', ['scan', 'scan', 'manoeuvre', 'brace', 'disrupt', 'brace', 'disrupt', 'brace', 'manoeuvre', 'brace', 'board', 'brace', 'extract']],
+  ]) {
+    perform({ type: 'accept-contract', contractId });
+    assert.deepEqual(save.clanShipOperations.spaceEncounter.crewRoles, ['armorer', 'medic', 'veteran', 'warden']);
+    for (const type of orders) perform({ type: 'space-command', command: { type, expectedTurn: save.clanShipOperations.spaceEncounter.turn } });
+    assert.equal(save.clanShipOperations.spaceEncounter.status, 'victory');
+  }
+  assert.equal(save.profile.clanMarks, 160, '75 + 45 + 65 + 55 rewards minus 80 housing costs');
+  assert.equal(save.clanShipOperations.completedContracts.length, 8);
+  checkpoint();
+});
+
 test('old absent dossiers are distinguishable from protected future or malformed data', () => {
   for (const raw of [undefined, null]) assert.equal(ops.inspectClanShipOperations(raw, OWNER).status, 'absent');
   assert.throws(() => ops.createClanShipOperations(' owner'), TypeError);

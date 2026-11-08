@@ -13,6 +13,7 @@ import {
 import ClanShipSpaceEncounter from './ClanShipSpaceEncounter';
 import HomeworldNpcSpriteV84 from './HomeworldNpcSpriteV84';
 import { CLAN_SHIP_CREW_ART_ROLES, clanShipCrewArtIdentity } from './clanShipCrew';
+import { availableClanResidenceCrew, companionHostLabel } from './systems/companionResidence';
 import { useMenuGamepad } from './useMenuGamepad';
 import styles from './ClanShipOperationsPanel.module.css';
 
@@ -55,6 +56,7 @@ export default function ClanShipOperationsPanel({ state, save, roomId, suspended
   const selectionAccess = selection ? evaluateClanShipContract(state, selection.id, save) : null;
   const atCouncil = roomId === 'conseil';
   const completed = new Set(state.completedContracts.map(receipt => receipt.contractId));
+  const availableCrew = availableClanResidenceCrew(save);
   useMenuGamepad(rootRef, !suspended, 'clan-ship-operations', onClose);
   useEffect(() => {
     const frame = requestAnimationFrame(() => {
@@ -195,23 +197,26 @@ export default function ClanShipOperationsPanel({ state, save, roomId, suspended
         </>}
 
         {tab === 'crew' && <section aria-label="Équipage du Clan Ship">
-          <div className={styles.sectionLead}><h3>Des alliés qui prennent leur place à bord</h3><p>Accomplis leur dossier, puis rencontre-les dans leur salle pour leur proposer une affectation. Leurs compétences sont mobilisées au départ des opérations spatiales.</p></div>
+          <div className={styles.sectionLead}><h3>Les accords du cercle</h3><p>Accomplis leur dossier, puis rencontre-les pour proposer un recrutement. Un nouvel accord ouvre la réserve ; choisis ensuite l’affectation dans le registre des compagnons, au quai. Seuls les membres disponibles au Clan Ship contribuent au départ des opérations spatiales.</p></div>
           <div className={styles.crewGrid}>{CLAN_SHIP_RECRUITS.map(npc => {
             const joined = state.recruitedNpcIds.includes(npc.id);
             const access = evaluateClanShipRecruit(state, npc.id);
+            const residence = save.companionResidence?.members.find(member => member.id === npc.id);
+            const posting = availableCrew.includes(npc.id) ? 'Disponible au Clan Ship' : residence?.relation === 'suspended' ? 'Affectation suspendue'
+              : residence?.assignment ? `Affecté : ${companionHostLabel(residence.assignment)}` : 'Recruté · réserve du réseau';
             return <article key={npc.id} tabIndex={-1} className={styles.crewCard} data-clan-recruit={npc.id} data-clan-recruit-status={joined ? 'recruited' : access.allowed ? 'available' : 'locked'}>
               <div className={styles.portrait} aria-hidden="true"><div><HomeworldNpcSpriteV84 npcId={clanShipCrewArtIdentity(npc.id)} role={CLAN_SHIP_CREW_ART_ROLES[npc.id]} height={150} /></div></div>
               <div><span className={styles.eyebrow}>{npc.role}</span><h4>{npc.name}</h4><p>{npc.summary}</p>
-                <p className={styles.crewEffect}>{npc.effect}</p><small>Poste : {CLAN_SHIP_INTERIOR_ROOMS[npc.roomId].label}</small>
-                {joined ? <p className={styles.joined}>« {npc.joinLine} »</p> : <><p className={styles.availability}>{access.reason}</p>
+                <p className={styles.crewEffect}>Compétence lorsqu’il est affecté et disponible au clan : {npc.effect}</p><small>Poste de rencontre : {CLAN_SHIP_INTERIOR_ROOMS[npc.roomId].label}</small>
+                {joined ? <p className={styles.joined}><strong>{posting}</strong><br />Accord enregistré : « {npc.joinLine} »</p> : <><p className={styles.availability}>{access.reason}</p>
                   {access.allowed && (roomId === npc.roomId ? <button type="button" className={styles.primary} disabled={suspended}
-                    data-clan-recruit-action={npc.id} onClick={() => act({ type: 'recruit', npcId: npc.id, expectedRevision: state.revision })}>Proposer une place dans l’équipage</button>
+                    data-clan-recruit-action={npc.id} onClick={() => act({ type: 'recruit', npcId: npc.id, expectedRevision: state.revision })}>Proposer un accord de recrutement</button>
                     : routeButton(npc.roomId, `Rencontrer ${npc.name}`))}</>}
               </div>
             </article>;
           })}</div>
           {!state.circleConfirmed && state.recruitedNpcIds.length === CLAN_SHIP_RECRUITS.length && <div className={styles.step}>
-            <p>Les six membres ont accepté leur poste. Présente le cercle au conseil après avoir accompli au moins une chasse de clan et une opération spatiale.</p>
+            <p>Les six membres ont conclu leur accord de recrutement. Présente le cercle au conseil après avoir accompli au moins une chasse de clan et une opération spatiale.</p>
             {atCouncil ? <button type="button" disabled={suspended} className={styles.primary} data-clan-confirm-circle
               onClick={() => act({ type: 'confirm-circle', expectedRevision: state.revision })}>Confirmer le cercle du clan</button> : routeButton('conseil')}
           </div>}

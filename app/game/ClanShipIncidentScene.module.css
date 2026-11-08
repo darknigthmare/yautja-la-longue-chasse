@@ -1,0 +1,24 @@
+.incident { position: absolute; inset: 0; pointer-events: none; }
+.prop { position: absolute; width: 0; height: 0; pointer-events: none; }
+.readout { position: absolute; width: 240px; left: -120px; bottom: 225px; background: #111d20ef; border: 1px solid #9b895c; color: #e9e4c8; border-radius: 7px; padding: 10px 12px; font-size: 11px; line-height: 1.5; box-shadow: 0 6px 12px #0009; text-align: center; }
+.readout > strong { display: block; font-size: 14px; color: #fff4cf; }.readout > span { display: block; font-size: 9px; color: #debc82; }.readout > em { display: block; color: #c5d3c3; font-size: 10px; font-style: normal; margin-top: 6px; }
+.lamps { display: grid; grid-template-columns: 1fr 1fr; gap: 7px; margin-top: 8px; }
+.lamps > span { display: grid; gap: 3px; grid-template-columns: 1fr auto; text-align: left; padding: 6px; border: 1px solid #5b6657; border-radius: 4px; font-size: 10px; }
+.lamps small { grid-column: 1/-1; color: #e1dcc4; font-size: 9px; line-height: 1.45; }
+.lamps i { display: block; width: 9px; height: 9px; border: 1px solid #baa977; border-radius: 50%; background: #98733a; }
+.lamps [data-isolated='true'] { border-color: #88adba; }.lamps [data-isolated='true'] i { background: #6ab4c9; }
+.lamps [data-stable='true'] { border-color: #84c28c; }.lamps [data-stable='true'] i { background: #8ec28a; }
+.lamps [data-wrong='true'] { border-color: #c97452; }.lamps [data-wrong='true'] i { background: #d08051; }
+.component { position: absolute; transform: translateX(-50%); width: 185px; padding: 8px; border: 1px solid #8d9875; border-radius: 5px; color: #e4e8cc; background: #152327ed; text-align: center; font-size: 10px; line-height: 1.5; }
+.component strong, .component span { display: block; }.component strong { font-size: 11px; }
+.target { position: absolute; transform: translateX(-50%); width: 265px; display: grid; gap: 5px; pointer-events: auto; }
+.target > button { border: 1px solid #c9bc86; border-radius: 6px; min-height: 44px; padding: 7px 10px; color: #f1edcf; background: #23352ff5; font: inherit; font-size: 11px; cursor: pointer; box-shadow: 0 3px 6px #0008; }
+.target > button:disabled { opacity: .45; cursor: not-allowed; }.target button:focus-visible { outline: 3px solid #fff1b3; outline-offset: 3px; }
+.trophySupport { position: absolute; width: 230px; transform: translate(-50%,-100%); padding: 9px 12px; color: #ece4c9; background: #182523ee; border: 1px solid #b7a477; border-radius: 7px; text-align: center; font-size: 10px; line-height: 1.55; }
+.trophySupport > strong { display: block; font-size: 12px; letter-spacing: .08em; }.trophySupport svg { display: block; width: 180px; max-width: 100%; margin: 5px auto; }
+.trophySupport > span { color: #d9c9a2; }.trophySupport > p { margin: 5px 0 0; color: #dce2c3; }
+.trophyChoices { width: 330px; padding: 8px; background: #13221ff2; border: 1px solid #a2aa80; border-radius: 7px; box-shadow: 0 4px 14px #000b; }
+.trophyChoices > div { max-height: 240px; overflow-y: auto; overscroll-behavior: contain; padding: 3px; }
+.trophyChoices button { border: 1px solid #8b946e; border-radius: 6px; background: #354031; color: #f0eedc; min-height: 44px; padding: 8px 10px; cursor: pointer; }
+.trophyChoices button:disabled { opacity: .4; cursor: not-allowed; }
+.absent { padding: 9px; border: 1px solid #9e8661; border-radius: 5px; background: #1c2522f5; color: #f1d8b8; font-size: 11px; line-height: 1.5; }

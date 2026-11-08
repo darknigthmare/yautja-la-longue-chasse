@@ -1,0 +1,64 @@
+{
+  "formatVersion": 1,
+  "date": "2026-11-08",
+  "tool": "image_gen.imagegen",
+  "basisCommit": "254b4b972af3c32cb078da3744241b2c0ea2f46c",
+  "coordination": "Props requested for existing berth-terminal/council-terminal placements by incident scene implementation; no new collision or wall.",
+  "visualResearchReferences": [
+    "production/ship-interior-25d-20261105/art/source/armory-rack.png",
+    "public/game/clan-ship/props/berth-console-v1.webp"
+  ],
+  "toolInputReferenceImages": [],
+  "items": [
+    {
+      "key": "sealedIsolator",
+      "slug": "sealed-isolator",
+      "label": "Isolateur de compartiment scellé",
+      "requirements": [
+        "OPS-B01"
+      ],
+      "fixture": "berth-terminal",
+      "room": "hangar",
+      "placement": {
+        "x": 1060,
+        "y": 560
+      },
+      "display": {
+        "width": 110,
+        "height": 210
+      },
+      "existingCollision": {
+        "width": 80,
+        "height": 35
+      },
+      "prompt": "prompts/sealed-isolator.txt",
+      "generationSource": "/workspace/scratch/8f7551517f64/generated_images/exec-e722d320-48fe-4d26-853e-b44717ee05a5.png",
+      "humanArtValidation": false
+    },
+    {
+      "key": "twinCircuitRelay",
+      "slug": "twin-circuit-relay",
+      "label": "Relais à deux circuits",
+      "requirements": [
+        "OPS-B02"
+      ],
+      "fixture": "council-terminal",
+      "room": "conseil",
+      "placement": {
+        "x": 350,
+        "y": 550
+      },
+      "display": {
+        "width": 105,
+        "height": 205
+      },
+      "existingCollision": {
+        "width": 80,
+        "height": 30
+      },
+      "prompt": "prompts/twin-circuit-relay.txt",
+      "generationSource": "/workspace/scratch/8f7551517f64/generated_images/exec-dddadd79-ba9c-4700-8a89-4f1ae987ac36.png",
+      "humanArtValidation": false
+    }
+  ]
+}

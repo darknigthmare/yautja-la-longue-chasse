@@ -1,0 +1,139 @@
+{
+  "formatVersion": 1,
+  "date": "2026-11-08",
+  "basisCommit": "254b4b972af3c32cb078da3744241b2c0ea2f46c",
+  "generatedAssets": 2,
+  "plannedAssets": 2,
+  "remainingGenerationKeys": [],
+  "failures": [],
+  "runtimeBytes": 4547428,
+  "pixelEditing": "none; runtime PNG is an exact copy of selected image_gen output",
+  "previousLotDecodedImagesCheckedForDuplicates": 13,
+  "humanArtValidation": false,
+  "assets": [
+    {
+      "key": "sealedIsolator",
+      "label": "Isolateur de compartiment scellé",
+      "src": "/game/clan-ship/incidents-v1/sealed-isolator.png",
+      "sourceWidth": 876,
+      "sourceHeight": 1796,
+      "alphaBounds": {
+        "x": 41,
+        "y": 15,
+        "width": 760,
+        "height": 1760
+      },
+      "pivot": {
+        "x": 421.0,
+        "y": 1774,
+        "method": "visible-bottom-center"
+      },
+      "humanArtValidation": false,
+      "source": "production/excel-bible-20261108/art/incidents/sources/sealed-isolator.png",
+      "runtime": "public/game/clan-ship/incidents-v1/sealed-isolator.png",
+      "sha256": "7467652d6fb5a0aba43e27ec6d300e1cc905d352a3daad9d20be989dff645401",
+      "decodedRgbaSha256": "b325029152ce075daff555bc87222d1686cbd93528e10567d6be9074e1a1995a",
+      "bytes": 2344571,
+      "pngMode": "RGBA",
+      "originalGenerationEquality": true,
+      "alpha": {
+        "threshold": 8,
+        "minimum": 0,
+        "maximum": 255,
+        "fullyTransparentPixels": 446234,
+        "visiblePixels": 1107627,
+        "visibleBorderPixels": 0
+      },
+      "prompt": "prompts/sealed-isolator.txt",
+      "requirements": [
+        "OPS-B01"
+      ],
+      "replacementFixture": "berth-terminal",
+      "room": "hangar",
+      "plannedPlacement": {
+        "x": 1060,
+        "y": 560
+      },
+      "maximumDisplay": {
+        "width": 110,
+        "height": 210
+      },
+      "existingCollision": {
+        "width": 80,
+        "height": 35
+      },
+      "addsCollision": false,
+      "classification": "original-game-adaptation",
+      "nativePoses": 1,
+      "animationClips": 0,
+      "bakedIndicators": "unlit; runtime controls lamps and labels",
+      "generation": "complete",
+      "technicalValidation": "passed",
+      "sceneValidation": "pending",
+      "physicalPivotValidation": "pending",
+      "canonicalFidelity": "not-claimed"
+    },
+    {
+      "key": "twinCircuitRelay",
+      "label": "Relais à deux circuits",
+      "src": "/game/clan-ship/incidents-v1/twin-circuit-relay.png",
+      "sourceWidth": 876,
+      "sourceHeight": 1796,
+      "alphaBounds": {
+        "x": 62,
+        "y": 25,
+        "width": 740,
+        "height": 1743
+      },
+      "pivot": {
+        "x": 432.0,
+        "y": 1767,
+        "method": "visible-bottom-center"
+      },
+      "humanArtValidation": false,
+      "source": "production/excel-bible-20261108/art/incidents/sources/twin-circuit-relay.png",
+      "runtime": "public/game/clan-ship/incidents-v1/twin-circuit-relay.png",
+      "sha256": "5f3af923278cb042a132db51407e284701dc182bb6665be34ef6f458c399c62a",
+      "decodedRgbaSha256": "64ef641a8d8aff0383603cd8e53674a6bd4d1205861074fdeaa4c81ee137a2dc",
+      "bytes": 2202857,
+      "pngMode": "RGBA",
+      "originalGenerationEquality": true,
+      "alpha": {
+        "threshold": 8,
+        "minimum": 0,
+        "maximum": 255,
+        "fullyTransparentPixels": 499963,
+        "visiblePixels": 1058228,
+        "visibleBorderPixels": 0
+      },
+      "prompt": "prompts/twin-circuit-relay.txt",
+      "requirements": [
+        "OPS-B02"
+      ],
+      "replacementFixture": "council-terminal",
+      "room": "conseil",
+      "plannedPlacement": {
+        "x": 350,
+        "y": 550
+      },
+      "maximumDisplay": {
+        "width": 105,
+        "height": 205
+      },
+      "existingCollision": {
+        "width": 80,
+        "height": 30
+      },
+      "addsCollision": false,
+      "classification": "original-game-adaptation",
+      "nativePoses": 1,
+      "animationClips": 0,
+      "bakedIndicators": "unlit; runtime controls lamps and labels",
+      "generation": "complete",
+      "technicalValidation": "passed",
+      "sceneValidation": "pending",
+      "physicalPivotValidation": "pending",
+      "canonicalFidelity": "not-claimed"
+    }
+  ]
+}

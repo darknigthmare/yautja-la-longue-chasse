@@ -1,0 +1,102 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-11-08T17:37:13.441563+00:00",
+  "scope": "One-word ordering fix in the shared V137 browser recipe. Local syntax/lint and runtime snapshot checks ran in the C-37 worktree; the fixed native recipe is not qualified until a new CI run.",
+  "localParent": "2eb59ba0fb36b536349f17fe74ee21bc7af71076",
+  "failure": {
+    "workflowHead": "d68bc7e9deca40e559d046c0d3c7fc9d5583c161",
+    "checkoutMergeCommit": "812174945af0451fbc5fe3ce6afa90761a347b94",
+    "baseCommit": "254b4b972af3c32cb078da3744241b2c0ea2f46c",
+    "runId": 42504679518,
+    "jobId": 128804635727,
+    "nodeVersion": "22.23.4",
+    "exitCode": 1,
+    "error": "locator.focus: Target page, context or browser has been closed",
+    "location": "scripts/qa-gauntlet-browser-v137.mjs:80:55",
+    "uiChecksBeforeProcessFailure": 9,
+    "uiChecksPassed": 9,
+    "pageErrors": [],
+    "qualifiedAsSuccess": false,
+    "jobLog": {
+      "file": "failure-job.log.gz",
+      "rawBytes": 58403,
+      "rawSha256": "d617563dd2fbbfd289ac185799733bea95a19861365735b489834bfb84567bbb",
+      "gzipSha256": "45fcba253de43c4a74e264fea6316a189393f983411f82cb6ea7ce8e7c36a221"
+    },
+    "artifact": {
+      "id": 13627510094,
+      "name": "gauntlet-browser-qa-v137",
+      "archiveBytes": 1722179,
+      "archiveSha256": "cbd6ea645f483cf2a4144e08de0a656766f92777c0ca69ffb4065ad9d59612e8",
+      "copiedManifest": "failure-browser-manifest.json",
+      "manifestSha256": "22247acf05aba5799465bd7da2254309f51139012021f9a85837019fda66fdd3"
+    }
+  },
+  "fix": {
+    "file": "scripts/qa-gauntlet-browser-v137.mjs",
+    "beforeSha256": "05826cacf1f57a539c763f0e4ecaa24ea4cb10dac99a644b795715a312ad92ee",
+    "afterSha256": "c04e34960aa67b77f547bf7d23e5683c3d2de368bdcc035383a03a8c374844bf",
+    "exactChange": "Await the existing focus() call before keyboard.press(Enter).",
+    "onlySourceDeltaIsAwait": true,
+    "assertionsChanged": false,
+    "productSourcesChanged": false,
+    "independentReview": "audit_suite confirmed that focus settles before Enter can change the button label; no promise remains pending until browser.close()."
+  },
+  "checks": {
+    "syntax": {
+      "command": [
+        "node",
+        "--check",
+        "scripts/qa-gauntlet-browser-v137.mjs"
+      ],
+      "exitCode": 0,
+      "durationSeconds": 0.06,
+      "completedAt": "2026-11-08T17:35:58.055515+00:00",
+      "log": "syntax.log.gz",
+      "rawSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "gzipSha256": "f61f27bd17de546264aa58f40f3aafaac7021e0ef69c17f6b1b4cd7664a037ec"
+    },
+    "lint": {
+      "command": [
+        "node",
+        "node_modules/eslint/bin/eslint.js",
+        "scripts/qa-gauntlet-browser-v137.mjs",
+        "--max-warnings=0"
+      ],
+      "exitCode": 0,
+      "durationSeconds": 2.127,
+      "completedAt": "2026-11-08T17:36:00.127703+00:00",
+      "log": "lint.log.gz",
+      "rawSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "gzipSha256": "f61f27bd17de546264aa58f40f3aafaac7021e0ef69c17f6b1b4cd7664a037ec"
+    },
+    "runtime-check": {
+      "command": [
+        "node",
+        "scripts/snapshot-runtime-v113.mjs",
+        "--check",
+        "docs/qa/current-integration-20261103/runtime-inputs.json"
+      ],
+      "exitCode": 0,
+      "durationSeconds": 6.253,
+      "completedAt": "2026-11-08T17:36:04.254357+00:00",
+      "log": "runtime-check.log.gz",
+      "rawSha256": "31add5f4891444c7e7aeccb0a2d22b467d1bf723769f5eed807f3dc683eddc90",
+      "gzipSha256": "2493b7473be2a78b0cfa8d15452a11f4a84e496b17d58049cf0c695a57eb4d93"
+    }
+  },
+  "nativeFixedRecipeExecutedLocally": false,
+  "nativeLimit": "Chromium is unavailable in this local executor because of the previously established Unix socket EPERM. No additional launch attempt or clock/UI manipulation was made.",
+  "runtimeSnapshotChanged": false,
+  "evidenceSha256": {
+    "README.md": "d539b5f787b4be215d83faa82ffcee1488debe774b2aa31b121439de0067ca87",
+    "failure-browser-manifest.json": "22247acf05aba5799465bd7da2254309f51139012021f9a85837019fda66fdd3",
+    "failure-job.log.gz": "45fcba253de43c4a74e264fea6316a189393f983411f82cb6ea7ce8e7c36a221",
+    "lint-result.json": "233d60167a42f84f856d210feb4a1ea60193e525ed076cf4f643b111b2fe36a2",
+    "lint.log.gz": "f61f27bd17de546264aa58f40f3aafaac7021e0ef69c17f6b1b4cd7664a037ec",
+    "runtime-check-result.json": "7957122779a254874c913c57badb5a4286687c0481d2d2690bbbe140874fd4a2",
+    "runtime-check.log.gz": "2493b7473be2a78b0cfa8d15452a11f4a84e496b17d58049cf0c695a57eb4d93",
+    "syntax-result.json": "8d4cc0e9bdc3998f5f926281f3fe5bc8b097278fc06716f9140d95fa4b898115",
+    "syntax.log.gz": "f61f27bd17de546264aa58f40f3aafaac7021e0ef69c17f6b1b4cd7664a037ec"
+  }
+}

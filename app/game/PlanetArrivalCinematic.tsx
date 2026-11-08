@@ -309,16 +309,13 @@ export default function PlanetArrivalCinematic({ state, appearance, loadout, gau
       setFailedAssets([...failures].filter(Boolean));
       setLoading(false);
       lastFrameRef.current = null;
-      const current = timelineRef.current;
-      if (current.status === 'prepared' && !document.hidden && !callbackRef.current.suspended && !callbackRef.current.checkpointBlocked) {
-        checkpoint(startPlanetArrival(current));
-      }
     });
     return () => { cancelled = true; clearTimeout(timeout); for (const image of images) { image.onload = null; image.onerror = null; } };
   }, [sourceKey, checkpoint]);
 
-  // Preloading may finish while the campaign's short autosave owns storage.
-  // Start this new arrival once that write releases; a resumed run stays paused.
+  // Start only after loading=false commits: an older loading RAF must not see
+  // a playing timeline and pause it before its cleanup. A short autosave may
+  // also own storage; wait for its release. A resumed run stays paused.
   useEffect(() => {
     if (!loading && !suspended && !checkpointBlocked && !document.hidden && timelineRef.current.status === 'prepared') {
       checkpoint(startPlanetArrival(timelineRef.current));

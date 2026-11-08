@@ -1,0 +1,159 @@
+{
+  "asOf": "2026-11-08T12:20:22.845628+01:00",
+  "baselineLocalCommit": "04eb4caa217ad114faf1cf63b301b4df67736b2d",
+  "baseMainCommit": "254b4b972af3c32cb078da3744241b2c0ea2f46c",
+  "branch": "feat/excel-bible-completion-20261108",
+  "scope": [
+    "OPS-B03: physical trophy provenance case, four conclusions, two valid inscriptions, sequential dialogue receipts",
+    "R2-M027: physical return care record, examination, clan/workshop decision and hull-bound display"
+  ],
+  "tests": {
+    "command": [
+      "node",
+      "--experimental-strip-types",
+      "--test",
+      "--test-concurrency=1",
+      "tests/buriedCradle.test.ts",
+      "tests/buried-cradle-campaign.test.mjs",
+      "tests/buried-cradle-snapshot.test.mjs",
+      "tests/companion-residence.test.mjs",
+      "tests/clan-ship-incidents.test.mjs",
+      "tests/clan-ship-docking.test.mjs",
+      "tests/clan-ship-save.test.mjs",
+      "tests/clan-ship-interior.test.mjs",
+      "tests/clan-ship-operations.test.mjs",
+      "tests/clan-ship-operations-save.test.mjs",
+      "tests/clan-ship-space-encounter.test.mjs",
+      "tests/planet-insertion.test.mjs",
+      "tests/ship-insertion-energy.test.mjs",
+      "tests/complete-archive.test.mjs",
+      "tests/campaign-slots.test.mjs",
+      "tests/campaign-resume-priority-v94.test.mjs",
+      "tests/game-client-ship-flow.test.mjs",
+      "tests/wolf-arrival-save.test.mjs",
+      "tests/buried-cradle-return.test.mjs",
+      "tests/clan-ship-trophy-case.test.mjs",
+      "tests/ship-interior-25d.test.mjs",
+      "tests/physical-ship-motion.test.mjs",
+      "tests/menu-navigation.test.mjs"
+    ],
+    "exitCode": 0,
+    "passed": 426,
+    "failed": 0,
+    "skipped": 0,
+    "log": "qa/tests-run.txt",
+    "newTests": 23,
+    "newTestsDetail": {
+      "buriedCradleReturn": 10,
+      "contestedTrophy": 13
+    },
+    "subsets": {
+      "cradleModelCampaignSnapshotReturn": 53,
+      "clanIncidentsAndTrophy": 27
+    },
+    "countsOverlap": "The 53/27 feature counts and 23 new tests are included in 426; do not add them again."
+  },
+  "finalPresentationCheck": {
+    "command": "node --experimental-strip-types --test --test-concurrency=1 tests/clan-ship-trophy-case.test.mjs",
+    "exitCode": 0,
+    "passed": 13,
+    "log": "qa/trophy-final-presentation.txt",
+    "reason": "Rerun after the last shared-terminal label offset. Latest offset -110 also found in generated client and server chunks."
+  },
+  "build": {
+    "command": "npm run build:production",
+    "exitCode": 0,
+    "log": "qa/production-build.txt",
+    "typescriptPassed": true,
+    "limits": [
+      "Native-origin and static-output steps correctly skipped outside the Vercel build root.",
+      "No deployed browser result is inferred from this local build."
+    ]
+  },
+  "typecheck": {
+    "command": "node node_modules/typescript/bin/tsc --noEmit",
+    "exitCode": 0,
+    "log": "qa/typecheck.txt",
+    "finalTypeScriptAlsoPassedInProductionBuild": true
+  },
+  "lint": {
+    "command": "node node_modules/eslint/bin/eslint.js --max-warnings=0 <17 modified or new TS/TSX/MJS files>",
+    "exitCode": 0,
+    "files": 17,
+    "log": "qa/lint.txt"
+  },
+  "postBuildCommentOnly": "app/game/types.ts: OPS-B01/B02 comment extended to OPS-B01/B02/B03; type and runtime unchanged.",
+  "browser": {
+    "validated": false,
+    "reason": "Normal Chromium launch fails with process_singleton_posix.cc AF_UNIX EPERM before a page; independent Unix socket probe also fails. No escalation or permissions change.",
+    "evidence": "qa/cradle-resume-20261108/browser-verification.json"
+  },
+  "controller": {
+    "physicalDeviceValidated": false,
+    "codeRoutingProbePassed": true,
+    "evidence": "qa/retour-berceau/input-routing-probe.json"
+  },
+  "humanArtValidated": false,
+  "newGeneratedPngsThisContinuation": 0,
+  "previousUnpublishedLot": {
+    "commit": "04eb4caa217ad114faf1cf63b301b4df67736b2d",
+    "sourceWorkbooks": 108,
+    "generatedArtInPreviousLot": 15,
+    "existingCradlePngs": 156,
+    "existingCompanionPng": 1,
+    "historicalEvidence": "../excel-bible-20261108/verification.json"
+  },
+  "remaining": [
+    "OPS-B04 return-expedition operation",
+    "OPS-Q26 broader recipe",
+    "OPS-B03 simultaneous presentation in front of both witnesses and animated telemetry",
+    "R2-M027 mentor presence, independent crown integrity, acid-cleanup VFX, sound and music transitions",
+    "Browser, real controller and human artistic review"
+  ],
+  "sourceSha256": {
+    "app/game/BuriedCradleReturnPanel.module.css": "19ed212127c1089bc6f62754f5f69e065ae472beeebb3ce8bee192b5dd8b4a19",
+    "app/game/BuriedCradleReturnPanel.tsx": "3f144961fcabcef5b227e7324bff517311cac774e919cdaeea92bb1cc9238793",
+    "app/game/ClanShipIncidentPanel.module.css": "3ee940c9b24c7c15b90ae87258a3142180792dc18c43d5d85e753a1fb7d46e9a",
+    "app/game/ClanShipIncidentPanel.tsx": "41895122826fa9f2835abe2062fe18f087b8808cba053a4719c24f9d6fd4d3ec",
+    "app/game/ClanShipIncidentScene.module.css": "b45122031d73dbae45a26b27cfafa0a4fe1761370f5691ad252913fac0c7ce4a",
+    "app/game/ClanShipIncidentScene.tsx": "9a970ac8b47c026dde35edb6d3944d77bd06847d88274e6a63d8c5ea39e11cd4",
+    "app/game/GameClient.tsx": "4aeb5fa907dc5779d8d298a2412dcef3c531a25f4e06551b818cf98460d4287c",
+    "app/game/PhysicalShipDeck.tsx": "d3efb8a52b7a9b24f8370a9ec2ca4b6a0b56f541b899f72177042027fd17bbff",
+    "app/game/ShipInterior25D.tsx": "36ac222de234e3513a62be0c9b7e279f5d9631d165b8a82353832e03220d9e15",
+    "app/game/systems/buriedCradleCampaign.ts": "c5ad2faa3698056cf5010f486be3929dd56078bb6fefc8d5325962486cb42e7d",
+    "app/game/systems/buriedCradleReturn.ts": "72417d7f1445d9744be357d849cd949ed46e280b49e8359e053dde606459d16a",
+    "app/game/systems/clanShipIncidents.ts": "b612218e1fbf2ea7bc92d7767fbfb7b09eaa0805a13d161b759389821ffa2ce9",
+    "app/game/systems/clanShipTrophyCase.ts": "6399c8c0f6d6eb4c385b194113f0e2f0e2699d4a7972dc44a22979d46b688c8c",
+    "app/game/types.ts": "1ba340e4d427960d6fa2cb0e92742bb07a5ed221adb57bf2105a4c4584d3c606",
+    "tests/buried-cradle-campaign.test.mjs": "6595064e88ac9eb31b9bd94e19423e5baf3afb35a423f62660d5823e960c2e4f",
+    "tests/buried-cradle-return.test.mjs": "4dc09154635e4e5701b5bc6c59a2647d8047e1a6f6590ddad938d5ef586a41b6",
+    "tests/buried-cradle-snapshot.test.mjs": "a8674758709f4e74934ec4193b5839e9e96981611592eec12b0793cc8a8b7f8d",
+    "tests/clan-ship-incidents.test.mjs": "2df0ab68f691ca95c8af85fc0c1f95a647d79f5cd680cb230349a3c9a5fb3314",
+    "tests/clan-ship-trophy-case.test.mjs": "cd50309c842ef400279651c1264020425d83f15d0b2ba537f8198dc706ab4567",
+    "tests/helpers/buried-cradle-return-route.mjs": "3a4fb2b7705bbdc07f6fd09f9c9bb768ac048a7bfd5cb26f9c10352d017dbcf0"
+  },
+  "logSha256": {
+    "qa/cradle-initial/browser-verification.json": "1aaaa2e35d5952c3ad1420e6bdb2bc2867fe6b54e68b3e2ccea362eae3b2a903",
+    "qa/cradle-initial/server.log": "c5b3cde9545733f057eb1706e5f06e4ca487ebb4a899f33786e72b7bd486e381",
+    "qa/cradle-resume-20261108/README.md": "12757ad1183e168efbd1b9adea210b72eff3db62fb3746fdca3d457a44625367",
+    "qa/cradle-resume-20261108/browser-verification.json": "e8de5325fe11426fc58f59eb7545b572fa1cbe3981e4923bc061d7598c0f567e",
+    "qa/cradle-resume-20261108/server.log": "b5d57783450eabfb47b9ef1b95494595bb409c627bb227f48e2a3138b3877a4a",
+    "qa/lint.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "qa/production-build.txt": "444af17d3cb35bec20b56f238c179bbbcb0b77c384fa07d42c6e4f63d2147c4a",
+    "qa/retour-berceau/input-routing-probe.json": "a4fc2670e89c93dc6caf8f2eac5aa999549ffa08bbf54ddbaf12384bc6c6993a",
+    "qa/retour-berceau/lint.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "qa/retour-berceau/relecture-independante.md": "de3ec632667746b8f813d37f37c18067eff7bcde6ba36e027cbdda35739a0756",
+    "qa/retour-berceau/tests-run.txt": "f200ef54e0d79c610d6285fa8a2de95cc6961107d381895a4672027944d78006",
+    "qa/tests-command.json": "b1051afcff5fe6632af85d33644aa576239e2e737555e75590d209056398a020",
+    "qa/tests-run.txt": "08f15c62a05996af9d212de3f30a580e511ff73e147138828b07cd15ffe78c71",
+    "qa/trophy-final-presentation.txt": "505236bb46bbc4582262b1ebfdd95461ca2f7c2a090f9bebd881eaf1a8c30c08",
+    "qa/typecheck.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "postValidationFormattingOnly": {
+    "path": "tests/buried-cradle-return.test.mjs",
+    "change": "Removed one empty line at EOF; all executable source and assertions unchanged.",
+    "previousSha256": "8dd2bbc3e954d272e19e9eceb38acdc6a8ca7c1ef1bbc69260db020f97e72aab",
+    "finalSha256": "4dc09154635e4e5701b5bc6c59a2647d8047e1a6f6590ddad938d5ef586a41b6",
+    "rawBuildLog": "Preserved verbatim, including three compiler progress carriage returns; whitespace check excludes this raw log only."
+  }
+}

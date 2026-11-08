@@ -10,6 +10,11 @@ import type { PhysicalShipStationId } from "./systems/shipLevelLayout";
 import { controlActionShortcut } from "./controlBindingLabels";
 import { DEFAULT_CONTROL_BINDINGS, matchesControlAction } from "./systems/controlBindings";
 import ShipPreparationPanelV88 from "./ShipPreparationPanelV88";
+import CompanionResidencePanel from "./CompanionResidencePanel";
+import CompanionQuartersScene from "./CompanionQuartersScene";
+import BuriedCradleReturnPanel from './BuriedCradleReturnPanel';
+import cradleArt from './data/buriedCradleArt.json';
+import type { CompanionResidenceObservation } from "./systems/companionResidence";
 import { SHIP_LEVEL_ART } from "./shipInteriorKit";
 import { SHIP_LEVEL_ART_V22 } from "./shipInteriorV22";
 import { SHIP_INTERIOR_25D_ART, SHIP_INTERIOR_25D_FLOOR } from "./shipInterior25dArt";
@@ -43,6 +48,10 @@ const FIXTURE_ART = {
   ...SHIP_INTERIOR_25D_ART,
   archiveTerminal: SHIP_LEVEL_ART_V22.archiveTerminal,
 } satisfies Record<ShipInterior25dArtKey, NativeArt>;
+const crownSource = cradleArt.assets['100'];
+const CRADLE_CROWN_ART: NativeArt = { src: crownSource.src, sourceWidth: crownSource.width, sourceHeight: crownSource.height,
+  alphaBounds: { x: crownSource.bounds[0], y: crownSource.bounds[1],
+    width: crownSource.bounds[2] - crownSource.bounds[0], height: crownSource.bounds[3] - crownSource.bounds[1] } };
 
 const freshControls = (): Record<Direction, boolean> => ({ up: false, down: false, left: false, right: false });
 const clamp = (value: number, min: number, max: number) => Math.max(min, Math.min(max, value));
@@ -58,7 +67,7 @@ export default function ShipInterior25D(props: PhysicalShipDeckProps) {
     appearance, loadout, trophyDisplays = [], rankLabel = "Chasseur",
     selectedDestination = "Choisis une chasse à la carte galactique",
     suspended = false, showShortcuts = false, autoFocus = true, gamepadEnabled = true,
-    highContrast = false, controlBindings = DEFAULT_CONTROL_BINDINGS, preflightV88,
+    highContrast = false, controlBindings = DEFAULT_CONTROL_BINDINGS, preflightV88, companions, cradleReturn,
   } = props;
   const rootRef = useRef<HTMLElement>(null);
   const viewportRef = useRef<HTMLDivElement>(null);
@@ -66,7 +75,7 @@ export default function ShipInterior25D(props: PhysicalShipDeckProps) {
   const propsRef = useRef(props);
   const suspendedRef = useRef(suspended);
   const controlsRef = useRef(freshControls());
-  const padRef = useRef({ ready: false, interact: false });
+  const padRef = useRef({ ready: false, interact: false, returnPanel: false });
   const timersRef = useRef(new Set<number>());
   const tapRef = useRef<{ id: number; x: number; y: number; cancelled: boolean } | null>(null);
   const [frame, setFrame] = useState<Frame>(() => ({ roomId: DEFAULT_ROOM, actor: shipInterior25dSpawn(DEFAULT_ROOM), phase: 0, moving: false, path: [] }));
@@ -103,7 +112,7 @@ export default function ShipInterior25D(props: PhysicalShipDeckProps) {
   const notify = useCallback((message: string) => { setStatus(message); propsRef.current.onNotify?.(message); }, []);
   const stop = useCallback(() => {
     controlsRef.current = freshControls();
-    padRef.current = { ready: false, interact: false };
+    padRef.current = { ready: false, interact: false, returnPanel: false };
     const current = frameRef.current;
     if (current.moving || current.path.length) publish({ ...current, moving: false, path: [] });
   }, [publish]);
@@ -112,6 +121,19 @@ export default function ShipInterior25D(props: PhysicalShipDeckProps) {
     setWaypoint(null);
     stop();
   }, [stop]);
+  const focusCradleReturn = useCallback(() => {
+    const panel = rootRef.current?.querySelector<HTMLElement>('[data-cradle-return-panel]');
+    const first = panel?.querySelector<HTMLButtonElement>('[data-cradle-return-action]:not(:disabled)') ??
+      panel?.querySelector<HTMLButtonElement>('[data-cradle-return-guide]:not(:disabled)') ?? panel?.querySelector<HTMLButtonElement>('button:not(:disabled)');
+    if (!first || suspendedRef.current) return;
+    stop(); first.focus({ preventScroll: true }); first.scrollIntoView({ block: 'nearest', behavior: 'auto' });
+  }, [stop]);
+  const observeCompanions = useCallback((): CompanionResidenceObservation | null => {
+    if (suspendedRef.current) return null;
+    const current = frameRef.current;
+    const actual = nearbyShipInterior25dInteraction(current.roomId, current.actor);
+    return actual?.type === 'service' ? { site: 'personal', roomId: current.roomId, x: current.actor.x, y: current.actor.y } : null;
+  }, []);
 
   const openService = useCallback((id: PhysicalShipStationId) => {
     if (suspendedRef.current) return;
@@ -211,7 +233,7 @@ export default function ShipInterior25D(props: PhysicalShipDeckProps) {
     const keyboard = (event: KeyboardEvent, pressed: boolean) => {
       if (suspendedRef.current || document.hidden) return;
       if (pressed && (event.defaultPrevented || !(rootRef.current?.contains(document.activeElement)))) return;
-      if (pressed && event.target instanceof HTMLElement && (event.target.isContentEditable || /^(INPUT|SELECT|TEXTAREA|BUTTON)$/.test(event.target.tagName))) return;
+      if (pressed && event.target instanceof HTMLElement && (event.target.isContentEditable || /^(INPUT|SELECT|TEXTAREA|BUTTON|SUMMARY)$/.test(event.target.tagName) || event.target.closest('[data-companion-residence-panel], [data-cradle-return-panel]'))) return;
       const actions = [["hunt.moveLeft", "left"], ["hunt.moveRight", "right"], ["hunt.moveUp", "up"], ["hunt.moveDown", "down"]] as const;
       const direction = actions.find(([action]) => matchesControlAction(action, event, controlBindings))?.[1];
       if (direction) { controlsRef.current[direction] = pressed; event.preventDefault(); }
@@ -239,10 +261,11 @@ export default function ShipInterior25D(props: PhysicalShipDeckProps) {
     const tick = (now: number) => {
       const elapsed = Math.min(.05, Math.max(0, (now - last) / 1000)); last = now;
       const focused = rootRef.current?.contains(document.activeElement);
-      if (suspendedRef.current || document.hidden || !document.hasFocus() || !focused) {
+      const panelFocused = document.activeElement instanceof HTMLElement && !!document.activeElement.closest('[data-companion-residence-panel], [data-cradle-return-panel]');
+      if (suspendedRef.current || document.hidden || !document.hasFocus() || !focused || panelFocused) {
         stop(); request = requestAnimationFrame(tick); return;
       }
-      let horizontal = 0, vertical = 0, action = false;
+      let horizontal = 0, vertical = 0, action = false, returnPanel = false;
       if (gamepadEnabled) {
         let pad: Gamepad | null | undefined;
         try { pad = Array.from(navigator.getGamepads?.() ?? []).find(Boolean); } catch { /* Keyboard and touch stay available. */ }
@@ -251,12 +274,16 @@ export default function ShipInterior25D(props: PhysicalShipDeckProps) {
           horizontal = Math.abs(x) > .22 ? x : Number(!!pad.buttons[15]?.pressed) - Number(!!pad.buttons[14]?.pressed);
           vertical = Math.abs(y) > .22 ? y : Number(!!pad.buttons[13]?.pressed) - Number(!!pad.buttons[12]?.pressed);
           action = !!pad.buttons[0]?.pressed || !!pad.buttons[2]?.pressed;
+          returnPanel = !!pad.buttons[3]?.pressed;
         }
       }
-      if (!horizontal && !vertical && !action) padRef.current.ready = true;
-      if (!padRef.current.ready) { horizontal = 0; vertical = 0; action = false; }
+      if (!horizontal && !vertical && !action && !returnPanel) padRef.current.ready = true;
+      if (!padRef.current.ready) { horizontal = 0; vertical = 0; action = false; returnPanel = false; }
+      const openedReturn = returnPanel && !padRef.current.returnPanel;
+      padRef.current.returnPanel = returnPanel;
       const justInteracted = action && !padRef.current.interact;
       padRef.current.interact = action;
+      if (openedReturn) { focusCradleReturn(); request = requestAnimationFrame(tick); return; }
       if (justInteracted) { interactRef.current(); request = requestAnimationFrame(tick); return; }
       const held = controlsRef.current;
       const direction = { x: clamp(horizontal + Number(held.right) - Number(held.left), -1, 1), y: clamp(vertical + Number(held.down) - Number(held.up), -1, 1) };
@@ -277,7 +304,7 @@ export default function ShipInterior25D(props: PhysicalShipDeckProps) {
     };
     request = requestAnimationFrame(tick);
     return () => cancelAnimationFrame(request);
-  }, [gamepadEnabled, notify, publish, stop]);
+  }, [focusCradleReturn, gamepadEnabled, notify, publish, stop]);
 
   const touch = (direction: Direction, pressed: boolean) => {
     if (suspendedRef.current) return;
@@ -335,6 +362,9 @@ export default function ShipInterior25D(props: PhysicalShipDeckProps) {
   const actorStyle = { left: actorScreen.x, top: actorScreen.y, zIndex: 20 + Math.round(frame.actor.y) };
   const wall = frame.roomId === "galaxy-map" ? SHIP_LEVEL_ART.wallObservatory : ["trophy-hall", "clan-archives"].includes(frame.roomId) ? SHIP_LEVEL_ART.wallSanctum : SHIP_LEVEL_ART.wallMachinery;
   const stationScreen = pointOnScreen(room.station.approach);
+  const cradleState = cradleReturn?.save.buriedCradle;
+  const cradleInstalled = !!cradleState && ['extracted', 'reported'].includes(cradleState.status) &&
+    cradleState.personalShipId === cradleReturn?.selectedShipId && (cradleState.returnVisit?.revision ?? 0) >= 2;
 
   return <section ref={rootRef} className={styles.interior + " physical-ship-deck"} role="region"
     aria-label="Intérieur du vaisseau Yautja en 2,5D, huit salles reliées sur deux ponts" aria-describedby={helpId}
@@ -358,7 +388,10 @@ export default function ShipInterior25D(props: PhysicalShipDeckProps) {
         <div className={styles.wallLight} style={{ top: WALL_HEIGHT - 4 }} aria-hidden="true" />
         <div className={styles.floorRim} style={{ top: roomHeight - 26 }} aria-hidden="true" />
         <div className={styles.roomGlyph} aria-hidden="true">{String(ROOM_ORDER.indexOf(frame.roomId) + 1).padStart(2, "0")}</div>
-        {room.fixtures.map(fixture => <Fixture key={fixture.id} fixture={fixture} actor={frame.actor} />)}
+        {room.fixtures.map(fixture => <Fixture key={fixture.id} fixture={fixture} actor={frame.actor}
+          artOverride={cradleInstalled && fixture.id === 'trophy-workbench' ? cradleState?.progress.crownClaimed ? CRADLE_CROWN_ART : FIXTURE_ART.archiveTerminal : undefined}
+          label={cradleInstalled && fixture.id === 'trophy-workbench' ? cradleState?.progress.crownClaimed ? 'Crête de la Matriarche rapportée' : 'Relevés du Berceau sans trophée' : undefined} />)}
+        {companions && <CompanionQuartersScene save={companions.save} site="personal" shipId={companions.selectedShipId} roomId={frame.roomId} />}
         {frame.roomId === "trophy-hall" && trophyDisplays.slice(0, 4).map((trophy, index) => <div className={styles.trophy} key={trophy.id} style={{ left: 260 + index * 185, top: 50 }}>
           <img src={trophy.image} alt={trophy.label} draggable={false} /><span>{trophy.label}</span>
         </div>)}
@@ -408,12 +441,23 @@ export default function ShipInterior25D(props: PhysicalShipDeckProps) {
       <div className={styles.context}><strong>{nearby?.type === "service" ? nearby.station.label : "Circulation à bord"}</strong>
         <span>{frame.roomId === "launch-airlock" ? selectedDestination : "Clique au sol pour te déplacer autour des équipements."}</span></div>
       <div className={styles.actions}>
+        {cradleState?.returnVisit && ['extracted', 'reported'].includes(cradleState.status) && <button type="button"
+          disabled={suspended} onClick={focusCradleReturn}>Retour du Berceau · Y / Triangle</button>}
         <button type="button" disabled={suspended || !nearby} className={styles.interact} data-ship-interact onClick={interact}><kbd>{interactionKey} / A</kbd>{interactLabel}</button>
         <div><button type="button" disabled={suspended} data-ship-approach-service onClick={stationRequest}>Rejoindre le poste</button>
           <button type="button" disabled={suspended || (!frame.path.length && !waypoint)} onClick={cancelGuidance}>Arrêter le trajet</button></div>
       </div>
     </div>
     <p className={styles.status} role="status" aria-live="polite">{status}</p>
+    {cradleReturn && <BuriedCradleReturnPanel controlled={cradleReturn} stationId={serviceNearby} suspended={suspended}
+      observe={() => {
+        if (suspendedRef.current) return null;
+        const current = frameRef.current;
+        const actual = nearbyShipInterior25dInteraction(current.roomId, current.actor);
+        return actual?.type === 'service' ? { roomId: current.roomId, x: current.actor.x, y: current.actor.y } : null;
+      }} onNavigate={guideTo} onExit={() => { stop(); rootRef.current?.focus({ preventScroll: true }); }} />}
+    {companions && <CompanionResidencePanel controlled={companions} site="personal" suspended={suspended} stationId={serviceNearby}
+      observe={observeCompanions} onNavigate={roomId => { if (ROOM_ORDER.includes(roomId as PhysicalShipStationId)) guideTo(roomId as PhysicalShipStationId); }} />}
     {preflightV88 && <ShipPreparationPanelV88 key={serviceNearby ?? "navigation"} controlled={preflightV88} stationId={serviceNearby} suspended={suspended}
       observe={() => {
         if (suspendedRef.current) return null;
@@ -436,13 +480,16 @@ function Art({ asset, width, height }: { asset: NativeArt; width: number; height
   </span>;
 }
 
-function Fixture({ fixture, actor }: { fixture: ShipInterior25dFixture; actor: ShipInterior25dActor }) {
+function Fixture({ fixture, actor, artOverride, label }: { fixture: ShipInterior25dFixture; actor: ShipInterior25dActor;
+  artOverride?: NativeArt; label?: string }) {
   const point = pointOnScreen(fixture);
   const actorPoint = pointOnScreen(actor);
-  const occludes = actor.y < fixture.y && Math.abs(actor.x - fixture.x) < fixture.width / 2 + 22 && actorPoint.y > point.y - fixture.height && actorPoint.y - ACTOR_FOOT < point.y;
+  const displayHeight = artOverride === CRADLE_CROWN_ART ? 230 : fixture.height;
+  const occludes = actor.y < fixture.y && Math.abs(actor.x - fixture.x) < fixture.width / 2 + 22 && actorPoint.y > point.y - displayHeight && actorPoint.y - ACTOR_FOOT < point.y;
   return <div className={styles.fixture} data-ship-fixture={fixture.id} data-occluding={occludes} data-fixture-depth={Math.round(fixture.y)}
+    data-cradle-return-object={label ? 'installed' : undefined} role={label ? 'img' : undefined} aria-label={label}
     style={{ left: point.x, top: point.y, zIndex: 20 + Math.round(fixture.y) }}>
     <span className={styles.fixtureShadow} style={{ width: fixture.footprint.width, height: projectShipInterior25d({ x: 0, y: fixture.footprint.depth }).y }} />
-    <div className={styles.fixtureBody} style={{ opacity: occludes ? .28 : 1 }}><Art asset={FIXTURE_ART[fixture.artKey]} width={fixture.width} height={fixture.height} /></div>
+    <div className={styles.fixtureBody} style={{ opacity: occludes ? .28 : 1 }}><Art asset={artOverride ?? FIXTURE_ART[fixture.artKey]} width={fixture.width} height={displayHeight} /></div>
   </div>;
 }

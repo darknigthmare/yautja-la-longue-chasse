@@ -1,0 +1,139 @@
+{
+  "asOfDate": "2026-11-08",
+  "authoringRuntime": "@oai/artifact-tool",
+  "sourceWorkbooksVerifiedUnchanged": 108,
+  "campaignDocumentsAndManifestsVerifiedUnchanged": 73,
+  "sheets": [
+    "Avancement",
+    "Livraison",
+    "Ouverts Excel",
+    "Bible V6",
+    "Bible campagne",
+    "Recettes bible",
+    "Sources",
+    "Méthode"
+  ],
+  "dataRows": {
+    "Livraison": 12,
+    "Ouverts Excel": 8625,
+    "Bible V6": 4304,
+    "Bible campagne": 4257,
+    "Recettes bible": 118,
+    "Sources": 108
+  },
+  "summaryFormulaExpected": [
+    108,
+    2896,
+    824,
+    8625,
+    4304,
+    118,
+    4257
+  ],
+  "summaryFormulaActual": [
+    108,
+    2896,
+    824,
+    8625,
+    4304,
+    118,
+    4257
+  ],
+  "phaseTests": [
+    {
+      "inputs": [
+        "Oui",
+        "Oui",
+        "Oui",
+        "Sans objet",
+        "Sans objet"
+      ],
+      "expected": "Périmètre attesté",
+      "actual": "Périmètre attesté"
+    },
+    {
+      "inputs": [
+        "Oui",
+        "Oui",
+        "Partiel",
+        "Sans objet",
+        "Sans objet"
+      ],
+      "expected": "Partiel",
+      "actual": "Partiel"
+    },
+    {
+      "inputs": [
+        "Oui",
+        "Oui",
+        "Oui",
+        "À vérifier",
+        "Sans objet"
+      ],
+      "expected": "À vérifier",
+      "actual": "À vérifier"
+    },
+    {
+      "inputs": [
+        "Oui",
+        "Oui",
+        "Oui",
+        "Oui",
+        "Non"
+      ],
+      "expected": "Ouvert",
+      "actual": "Ouvert"
+    }
+  ],
+  "formulaScanFile": "production/excel-bible-20261108/suivi/formula-scan.txt",
+  "previewFiles": [
+    "production/excel-bible-20261108/suivi/apercus/01-avancement.png",
+    "production/excel-bible-20261108/suivi/apercus/02-livraison.png",
+    "production/excel-bible-20261108/suivi/apercus/02b-phases-livraison.png",
+    "production/excel-bible-20261108/suivi/apercus/03-ouverts-excel.png",
+    "production/excel-bible-20261108/suivi/apercus/04-bible-v6.png",
+    "production/excel-bible-20261108/suivi/apercus/04b-criteres-bible.png",
+    "production/excel-bible-20261108/suivi/apercus/04c-campagne-revisee.png",
+    "production/excel-bible-20261108/suivi/apercus/05-recettes-bible.png",
+    "production/excel-bible-20261108/suivi/apercus/06-sources.png",
+    "production/excel-bible-20261108/suivi/apercus/07-methode.png"
+  ],
+  "artifactPath": "/workspace/scratch/8f7551517f64/yautja-la-longue-chasse/production/excel-bible-20261108/suivi/Yautja_Suivi_Excel_Bible_20261108.xlsx",
+  "artifactSha256": "4f9ff0954f18b5d6830d3a2d46c0caf035a04b6582c934fc274e096fb5f7face",
+  "limits": [
+    "La vérification des formules et le rendu du classeur ne valident aucun gameplay.",
+    "Les preuves de la passe sont limitées aux critères et fichiers cités dans Livraison."
+  ],
+  "independentExportCheck": {
+    "method": "Read-only ZIP/XML standard library; full IDs and source texts compared against JSON inputs",
+    "checkedCells": 95233,
+    "formulaCellsWithCachedValues": 38,
+    "errorCells": [],
+    "allSourceSubjectCriteriaCompared": 8625,
+    "allBibleCardCriteriaCompared": 4304,
+    "allCampaignBlocksCompared": 4257,
+    "allAnnexCriteriaCompared": 118,
+    "originalWorkbookHashesUnchanged": 108,
+    "campaignDocumentAndManifestHashesUnchanged": 73,
+    "summaryCountsAndDeliveryFormulaCachesVerified": true
+  },
+  "visualReview": {
+    "reviewedPreviewCount": 10,
+    "allEightSheetsSampled": true,
+    "result": "Lisible sur les plages rendues : titres, en-têtes, identifiants, critères, phases et méthode. Aucun défaut de mise en page observé dans ces aperçus.",
+    "scope": "Échantillons de présentation du classeur uniquement ; aucun avis artistique sur le jeu."
+  },
+  "artifactBytes": 2192128,
+  "inputJsonSha256": {
+    "excel-inventory.json": "60a0fca60fa09251e2da6a7384239050760d8aa71cc633d64638d91ada6d5e37",
+    "excel-open-register.json": "92457112eafce0610a089e2fce1dc476c7d6e839724de789351b64726a4553d7",
+    "bible-requirements.json": "d4231553905cbe2eb1817a78bfd5bb3e6659255996ff173f6f5c61b0948bc508",
+    "bible-campagne-revisee.json": "49f7e95fdcb97ddfe5ac4a094fa5e68cd72f15c58f4d6caaa5242ff3b7a23529",
+    "actions-prioritaires.json": "26f366f31ce7ded767693de7d6468e9405c0a63243fea4afeba6a68878bc5448",
+    "register-summary.json": "16caf08abb710c1337a18e972620ffb465d2c218d3a95bce4a16f020d65dda2a",
+    "qualification-courante.json": "d05d31a02cbb815b1af4a5d84e040211519e1924d630e9421586455a390a4f9e"
+  },
+  "commonVerificationReport": "production/excel-bible-20261108/verification.json",
+  "commonVerificationReportSha256": "f038e4d465cf4be97e1d1f463528d5a8ad195fdc4d06a887e5b7b2b22cd4a888",
+  "evidencePackaging": "Build log terminal whitespace normalized and formula scan copied into this delivery; workbook bytes and source inputs remain unchanged."
+}

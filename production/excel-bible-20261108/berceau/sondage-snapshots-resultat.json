@@ -1,0 +1,36 @@
+{
+  "probe": "independent-buried-cradle-snapshot-review",
+  "seedInitial": 447711,
+  "preparedEpisodes": 24,
+  "maximumFramesPerEpisode": 5000,
+  "checkpointBudget": 2,
+  "initialStatePrepared": true,
+  "browserExecuted": false,
+  "hardwareInputExecuted": false,
+  "checked": 76803,
+  "invalid": [],
+  "events": {
+    "extracted": 11,
+    "room-entered": 90,
+    "hurt": 38,
+    "shortcut-opened": 7,
+    "door-locked": 3,
+    "part-cut": 3,
+    "knockout": 3,
+    "drainage-opened": 1,
+    "crown-claimed": 2
+  },
+  "bounds": {
+    "minY": 61.66565233333336,
+    "maxY": 508,
+    "minVY": -704.645,
+    "maxVY": 914.0433333333339
+  },
+  "sourceHashes": {
+    "app/game/systems/buriedCradle.ts": "c9790d265dfb3810e67cc2d7219b6593778287d2e34ee5e9189d14554bd78a30",
+    "app/game/systems/buriedCradleSnapshot.ts": "ce150ae7a269ffd7d459901bff37f7e71eacf9f3457bfb0fe3c4798af1054b58",
+    "app/game/systems/platformCollision.ts": "226a07c2b61d3300205cb986837214fc9bdda043aff09c478b1e50b5a4094d40",
+    "app/game/systems/jumpAssist.ts": "f5ab72e81eddd2c3438deb0e050f39e2c76e08ca0ec34e6fc1ca4925be6118c5",
+    "tests/helpers/homeworld-scene-ssr-v78.mjs": "3f584f4c7d49d5e39abc99488db144091b61d4c54ee6bde0b00c16e613ea935a"
+  }
+}

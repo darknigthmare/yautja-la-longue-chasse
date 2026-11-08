@@ -1,0 +1,528 @@
+{
+  "formatVersion": 1,
+  "date": "2026-11-08",
+  "basisCommit": "254b4b972af3c32cb078da3744241b2c0ea2f46c",
+  "generatedAssets": 10,
+  "plannedAssets": 10,
+  "remainingGenerationKeys": [],
+  "runtimeBytes": 25800496,
+  "pixelEditing": "none; runtime PNG is an exact copy of selected image_gen output",
+  "occupancyContract": "Render module only for a recruited companion assigned to this vessel with installation complete. Occupant is separate and absent while deployed.",
+  "humanArtValidation": false,
+  "failures": [],
+  "assets": [
+    {
+      "key": "hunterAlcove",
+      "label": "Alcôve de chasseur",
+      "src": "/game/companions/quarters-v1/hunter-alcove.png",
+      "sourceWidth": 1920,
+      "sourceHeight": 819,
+      "alphaBounds": {
+        "x": 74,
+        "y": 84,
+        "width": 1773,
+        "height": 697
+      },
+      "pivot": {
+        "x": 960.5,
+        "y": 780,
+        "method": "visible-bottom-center"
+      },
+      "humanArtValidation": false,
+      "source": "production/excel-bible-20261108/art/sources/hunter-alcove.png",
+      "runtime": "public/game/companions/quarters-v1/hunter-alcove.png",
+      "sha256": "394df35db0eee8d07c70c604c3aa884238665b86e4d95f993b0b06df078343d6",
+      "decodedRgbaSha256": "4d7172ef152577e9f1ab1c18b84be2df6dcbae43fd74f0f365d7b68b0ac81208",
+      "bytes": 2336667,
+      "pngMode": "RGBA",
+      "alpha": {
+        "threshold": 8,
+        "minimum": 0,
+        "maximum": 255,
+        "fullyTransparentPixels": 521536,
+        "visiblePixels": 1027954,
+        "visibleBorderPixels": 0
+      },
+      "prompt": "prompts/hunter-alcove.txt",
+      "requirements": [
+        "ALL-03",
+        "ALL-05",
+        "QA-C28"
+      ],
+      "textReferences": [
+        "docs/campagne/COMPAGNONS_ET_ALLIES_PREMIUM.md#53-familles-de-modules"
+      ],
+      "classification": "original-game-adaptation",
+      "nativePoses": 1,
+      "animationClips": 0,
+      "generation": "complete",
+      "technicalValidation": "passed",
+      "sceneValidation": "pending",
+      "physicalPivotValidation": "pending",
+      "canonicalFidelity": "not-claimed"
+    },
+    {
+      "key": "syntheticBay",
+      "label": "Baie de maintenance synthétique",
+      "src": "/game/companions/quarters-v1/synthetic-bay.png",
+      "sourceWidth": 1536,
+      "sourceHeight": 1024,
+      "alphaBounds": {
+        "x": 103,
+        "y": 115,
+        "width": 1335,
+        "height": 852
+      },
+      "pivot": {
+        "x": 770.5,
+        "y": 966,
+        "method": "visible-bottom-center"
+      },
+      "humanArtValidation": false,
+      "source": "production/excel-bible-20261108/art/sources/synthetic-bay.png",
+      "runtime": "public/game/companions/quarters-v1/synthetic-bay.png",
+      "sha256": "e19e2b97b109fc059f5f7e8978b4355ee1df67bd088ac68cff3947efb8de5939",
+      "decodedRgbaSha256": "bdbe24eea2bf14e3e1ce94afb11835f48a4e2c57bc5032481f7831fc7bade026",
+      "bytes": 2677155,
+      "pngMode": "RGBA",
+      "alpha": {
+        "threshold": 8,
+        "minimum": 0,
+        "maximum": 254,
+        "fullyTransparentPixels": 548599,
+        "visiblePixels": 1000706,
+        "visibleBorderPixels": 0
+      },
+      "prompt": "prompts/synthetic-bay.txt",
+      "requirements": [
+        "ALL-03",
+        "ORG-10",
+        "ORG-13",
+        "P-09",
+        "QA-C28"
+      ],
+      "textReferences": [
+        "docs/campagne/COMPAGNONS_ET_ALLIES_PREMIUM.md#53-familles-de-modules",
+        "docs/campagne/CATALOGUE_COMPAGNONS.md#p-09--nyx-17"
+      ],
+      "classification": "original-game-adaptation",
+      "nativePoses": 1,
+      "animationClips": 0,
+      "generation": "complete",
+      "technicalValidation": "passed",
+      "sceneValidation": "pending",
+      "physicalPivotValidation": "pending",
+      "canonicalFidelity": "not-claimed"
+    },
+    {
+      "key": "armoredKennel",
+      "label": "Chenil blindé",
+      "src": "/game/companions/quarters-v1/armored-kennel.png",
+      "sourceWidth": 1774,
+      "sourceHeight": 887,
+      "alphaBounds": {
+        "x": 33,
+        "y": 26,
+        "width": 1707,
+        "height": 839
+      },
+      "pivot": {
+        "x": 886.5,
+        "y": 864,
+        "method": "visible-bottom-center"
+      },
+      "humanArtValidation": false,
+      "source": "production/excel-bible-20261108/art/sources/armored-kennel.png",
+      "runtime": "public/game/companions/quarters-v1/armored-kennel.png",
+      "sha256": "64ddb4295a07cd71548476b6dd666ac0835174cb26850cb0185d8cdf5fccf7b3",
+      "decodedRgbaSha256": "225999c85e12a00347ca3bcf0812c80b0b3c292fe84071f12bfcd090a24807d2",
+      "bytes": 2648764,
+      "pngMode": "RGBA",
+      "alpha": {
+        "threshold": 8,
+        "minimum": 0,
+        "maximum": 255,
+        "fullyTransparentPixels": 364280,
+        "visiblePixels": 1189191,
+        "visibleBorderPixels": 0
+      },
+      "prompt": "prompts/armored-kennel.txt",
+      "requirements": [
+        "ALL-03",
+        "ORG-01",
+        "ORG-02",
+        "P-15",
+        "QA-C28"
+      ],
+      "textReferences": [
+        "docs/campagne/CATALOGUE_COMPAGNONS.md#animaux-et-montures",
+        "docs/campagne/CATALOGUE_COMPAGNONS.md#p-15--rhazor--matriarche-depines"
+      ],
+      "classification": "original-game-adaptation",
+      "nativePoses": 1,
+      "animationClips": 0,
+      "generation": "complete",
+      "technicalValidation": "passed",
+      "sceneValidation": "pending",
+      "physicalPivotValidation": "pending",
+      "canonicalFidelity": "not-claimed"
+    },
+    {
+      "key": "humanCabin",
+      "label": "Cabine humaine adaptée",
+      "src": "/game/companions/quarters-v1/human-cabin.png",
+      "sourceWidth": 1920,
+      "sourceHeight": 819,
+      "alphaBounds": {
+        "x": 67,
+        "y": 82,
+        "width": 1785,
+        "height": 699
+      },
+      "pivot": {
+        "x": 959.5,
+        "y": 780,
+        "method": "visible-bottom-center"
+      },
+      "humanArtValidation": false,
+      "source": "production/excel-bible-20261108/art/sources/human-cabin.png",
+      "runtime": "public/game/companions/quarters-v1/human-cabin.png",
+      "sha256": "91a27d6efb40558429477b98deae1131a297cacdf1bc2acf3826892e2da0b097",
+      "decodedRgbaSha256": "07b192d31c4b06e3185832e831471da872f251c6a63c2d2240203d4787d747a2",
+      "bytes": 2547671,
+      "pngMode": "RGBA",
+      "alpha": {
+        "threshold": 8,
+        "minimum": 0,
+        "maximum": 255,
+        "fullyTransparentPixels": 441151,
+        "visiblePixels": 1103491,
+        "visibleBorderPixels": 0
+      },
+      "prompt": "prompts/human-cabin.txt",
+      "requirements": [
+        "ALL-03",
+        "QA-C28",
+        "ORG-26"
+      ],
+      "textReferences": [
+        "docs/campagne/COMPAGNONS_ET_ALLIES_PREMIUM.md",
+        "docs/campagne/CATALOGUE_COMPAGNONS.md"
+      ],
+      "classification": "original-game-adaptation",
+      "nativePoses": 1,
+      "animationClips": 0,
+      "generation": "complete",
+      "technicalValidation": "passed",
+      "sceneValidation": "pending",
+      "physicalPivotValidation": "pending",
+      "canonicalFidelity": "not-claimed"
+    },
+    {
+      "key": "arborealPerch",
+      "label": "Perchoir arboricole",
+      "src": "/game/companions/quarters-v1/arboreal-perch.png",
+      "sourceWidth": 1024,
+      "sourceHeight": 1536,
+      "alphaBounds": {
+        "x": 92,
+        "y": 54,
+        "width": 866,
+        "height": 1446
+      },
+      "pivot": {
+        "x": 525.0,
+        "y": 1499,
+        "method": "visible-bottom-center"
+      },
+      "humanArtValidation": false,
+      "source": "production/excel-bible-20261108/art/sources/arboreal-perch.png",
+      "runtime": "public/game/companions/quarters-v1/arboreal-perch.png",
+      "sha256": "96319d60cefd8e2f7605a5f30a5f0c778f1ade3e07976c4f73e412a3cd500de1",
+      "decodedRgbaSha256": "88901df64dc5bbf1e8aab93242fb9a617c6978b3eb2f1430c2970d419db2f641",
+      "bytes": 2297666,
+      "pngMode": "RGBA",
+      "alpha": {
+        "threshold": 8,
+        "minimum": 0,
+        "maximum": 254,
+        "fullyTransparentPixels": 940015,
+        "visiblePixels": 585762,
+        "visibleBorderPixels": 0
+      },
+      "prompt": "prompts/arboreal-perch.txt",
+      "requirements": [
+        "ALL-03",
+        "QA-C28",
+        "ORG-03"
+      ],
+      "textReferences": [
+        "docs/campagne/COMPAGNONS_ET_ALLIES_PREMIUM.md",
+        "docs/campagne/CATALOGUE_COMPAGNONS.md"
+      ],
+      "classification": "original-game-adaptation",
+      "nativePoses": 1,
+      "animationClips": 0,
+      "generation": "complete",
+      "technicalValidation": "passed",
+      "sceneValidation": "pending",
+      "physicalPivotValidation": "pending",
+      "canonicalFidelity": "not-claimed"
+    },
+    {
+      "key": "amphibianBasin",
+      "label": "Bassin amphibie",
+      "src": "/game/companions/quarters-v1/amphibian-basin.png",
+      "sourceWidth": 1920,
+      "sourceHeight": 819,
+      "alphaBounds": {
+        "x": 68,
+        "y": 82,
+        "width": 1785,
+        "height": 701
+      },
+      "pivot": {
+        "x": 960.5,
+        "y": 782,
+        "method": "visible-bottom-center"
+      },
+      "humanArtValidation": false,
+      "source": "production/excel-bible-20261108/art/sources/amphibian-basin.png",
+      "runtime": "public/game/companions/quarters-v1/amphibian-basin.png",
+      "sha256": "1f9a0a272285500406812d5c5062e7186a907211d69022dc70ffc474f8c43bf1",
+      "decodedRgbaSha256": "6cbcc9869a85b83c9336eec2ce1db8ca73491593f10665a0003fd43d7bf84d9d",
+      "bytes": 2429473,
+      "pngMode": "RGBA",
+      "alpha": {
+        "threshold": 8,
+        "minimum": 0,
+        "maximum": 255,
+        "fullyTransparentPixels": 495961,
+        "visiblePixels": 1058830,
+        "visibleBorderPixels": 0
+      },
+      "prompt": "prompts/amphibian-basin.txt",
+      "requirements": [
+        "ALL-03",
+        "QA-C28",
+        "ORG-06"
+      ],
+      "textReferences": [
+        "docs/campagne/COMPAGNONS_ET_ALLIES_PREMIUM.md",
+        "docs/campagne/CATALOGUE_COMPAGNONS.md"
+      ],
+      "classification": "original-game-adaptation",
+      "nativePoses": 1,
+      "animationClips": 0,
+      "generation": "complete",
+      "technicalValidation": "passed",
+      "sceneValidation": "pending",
+      "physicalPivotValidation": "pending",
+      "canonicalFidelity": "not-claimed"
+    },
+    {
+      "key": "darkNest",
+      "label": "Refuge sombre",
+      "src": "/game/companions/quarters-v1/dark-nest.png",
+      "sourceWidth": 1536,
+      "sourceHeight": 1024,
+      "alphaBounds": {
+        "x": 33,
+        "y": 73,
+        "width": 1470,
+        "height": 868
+      },
+      "pivot": {
+        "x": 768.0,
+        "y": 940,
+        "method": "visible-bottom-center"
+      },
+      "humanArtValidation": false,
+      "source": "production/excel-bible-20261108/art/sources/dark-nest.png",
+      "runtime": "public/game/companions/quarters-v1/dark-nest.png",
+      "sha256": "fec035adfef6d7a4aad2f9d05f8d6be61f8409d0d90d424948139d2b2cf90bb6",
+      "decodedRgbaSha256": "cc69e202d653c7abeab7a5837cb6864d508b4d9f7b4ec8b7ad1b60abbd6ce843",
+      "bytes": 2621086,
+      "pngMode": "RGBA",
+      "alpha": {
+        "threshold": 8,
+        "minimum": 0,
+        "maximum": 254,
+        "fullyTransparentPixels": 580475,
+        "visiblePixels": 971681,
+        "visibleBorderPixels": 0
+      },
+      "prompt": "prompts/dark-nest.txt",
+      "requirements": [
+        "ALL-03",
+        "QA-C28",
+        "ORG-07"
+      ],
+      "textReferences": [
+        "docs/campagne/COMPAGNONS_ET_ALLIES_PREMIUM.md",
+        "docs/campagne/CATALOGUE_COMPAGNONS.md"
+      ],
+      "classification": "original-game-adaptation",
+      "nativePoses": 1,
+      "animationClips": 0,
+      "generation": "complete",
+      "technicalValidation": "passed",
+      "sceneValidation": "pending",
+      "physicalPivotValidation": "pending",
+      "canonicalFidelity": "not-claimed"
+    },
+    {
+      "key": "serekhWorkshop",
+      "label": "Atelier de Serekh",
+      "src": "/game/companions/quarters-v1/serekh-workshop.png",
+      "sourceWidth": 1536,
+      "sourceHeight": 1024,
+      "alphaBounds": {
+        "x": 46,
+        "y": 61,
+        "width": 1444,
+        "height": 899
+      },
+      "pivot": {
+        "x": 768.0,
+        "y": 959,
+        "method": "visible-bottom-center"
+      },
+      "humanArtValidation": false,
+      "source": "production/excel-bible-20261108/art/sources/serekh-workshop.png",
+      "runtime": "public/game/companions/quarters-v1/serekh-workshop.png",
+      "sha256": "9b0ae440947a21267920fcd72ce9a2a436e43de5d750a740e167ed75bd7f25e5",
+      "decodedRgbaSha256": "cd9111238a29f41aa1fae94c1bc44fb75d318d0c9c08dcb462c170ca61515dbc",
+      "bytes": 2854516,
+      "pngMode": "RGBA",
+      "alpha": {
+        "threshold": 8,
+        "minimum": 0,
+        "maximum": 254,
+        "fullyTransparentPixels": 429627,
+        "visiblePixels": 1127860,
+        "visibleBorderPixels": 0
+      },
+      "prompt": "prompts/serekh-workshop.txt",
+      "requirements": [
+        "ALL-03",
+        "QA-C28",
+        "P-12"
+      ],
+      "textReferences": [
+        "docs/campagne/COMPAGNONS_ET_ALLIES_PREMIUM.md",
+        "docs/campagne/CATALOGUE_COMPAGNONS.md"
+      ],
+      "classification": "original-game-adaptation",
+      "nativePoses": 1,
+      "animationClips": 0,
+      "generation": "complete",
+      "technicalValidation": "passed",
+      "sceneValidation": "pending",
+      "physicalPivotValidation": "pending",
+      "canonicalFidelity": "not-claimed"
+    },
+    {
+      "key": "drakelMaintenance",
+      "label": "Maintenance de Dra’Kel",
+      "src": "/game/companions/quarters-v1/drakel-maintenance.png",
+      "sourceWidth": 1536,
+      "sourceHeight": 1024,
+      "alphaBounds": {
+        "x": 25,
+        "y": 44,
+        "width": 1487,
+        "height": 930
+      },
+      "pivot": {
+        "x": 768.5,
+        "y": 973,
+        "method": "visible-bottom-center"
+      },
+      "humanArtValidation": false,
+      "source": "production/excel-bible-20261108/art/sources/drakel-maintenance.png",
+      "runtime": "public/game/companions/quarters-v1/drakel-maintenance.png",
+      "sha256": "0f26f0f819c5e83b78be48b0cac637c0c2b3b9fa1245039cdfc4e62feb401d2b",
+      "decodedRgbaSha256": "40637dab1dc34859f84bcd0faed09f6ad152a84d541edd7cf19e4b8dc81abf73",
+      "bytes": 2832618,
+      "pngMode": "RGBA",
+      "alpha": {
+        "threshold": 8,
+        "minimum": 0,
+        "maximum": 254,
+        "fullyTransparentPixels": 353505,
+        "visiblePixels": 1197033,
+        "visibleBorderPixels": 0
+      },
+      "prompt": "prompts/drakel-maintenance.txt",
+      "requirements": [
+        "ALL-03",
+        "QA-C28",
+        "P-05"
+      ],
+      "textReferences": [
+        "docs/campagne/COMPAGNONS_ET_ALLIES_PREMIUM.md",
+        "docs/campagne/CATALOGUE_COMPAGNONS.md"
+      ],
+      "classification": "original-game-adaptation",
+      "nativePoses": 1,
+      "animationClips": 0,
+      "generation": "complete",
+      "technicalValidation": "passed",
+      "sceneValidation": "pending",
+      "physicalPivotValidation": "pending",
+      "canonicalFidelity": "not-claimed"
+    },
+    {
+      "key": "ossuaryDock",
+      "label": "Socle d’Ossuaire",
+      "src": "/game/companions/quarters-v1/ossuary-dock.png",
+      "sourceWidth": 1536,
+      "sourceHeight": 1024,
+      "alphaBounds": {
+        "x": 52,
+        "y": 47,
+        "width": 1433,
+        "height": 934
+      },
+      "pivot": {
+        "x": 768.5,
+        "y": 980,
+        "method": "visible-bottom-center"
+      },
+      "humanArtValidation": false,
+      "source": "production/excel-bible-20261108/art/sources/ossuary-dock.png",
+      "runtime": "public/game/companions/quarters-v1/ossuary-dock.png",
+      "sha256": "a30bab2d8256b8689b9cae51ce25ae182311ccc39801826a650c7c337ff998a6",
+      "decodedRgbaSha256": "51847838e6e84a2aecdff60b1c95c5403b2b395c1668ecc0611dd220994194b0",
+      "bytes": 2554880,
+      "pngMode": "RGBA",
+      "alpha": {
+        "threshold": 8,
+        "minimum": 0,
+        "maximum": 254,
+        "fullyTransparentPixels": 621276,
+        "visiblePixels": 937511,
+        "visibleBorderPixels": 0
+      },
+      "prompt": "prompts/ossuary-dock.txt",
+      "requirements": [
+        "ALL-03",
+        "QA-C28",
+        "P-11"
+      ],
+      "textReferences": [
+        "docs/campagne/COMPAGNONS_ET_ALLIES_PREMIUM.md",
+        "docs/campagne/CATALOGUE_COMPAGNONS.md"
+      ],
+      "classification": "original-game-adaptation",
+      "nativePoses": 1,
+      "animationClips": 0,
+      "generation": "complete",
+      "technicalValidation": "passed",
+      "sceneValidation": "pending",
+      "physicalPivotValidation": "pending",
+      "canonicalFidelity": "not-claimed"
+    }
+  ]
+}

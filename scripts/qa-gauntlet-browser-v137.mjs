@@ -77,7 +77,7 @@ try{
   await close.click();
   assert.equal(await page.locator('[data-art-model="jungle-hunter"] svg[data-cover-open="false"]').count(),1);
   await shot(page,"02-desktop-jungle-closed");
-  page.getByRole("button",{name:"Ouvrir les capots"}).focus();
+  await page.getByRole("button",{name:"Ouvrir les capots"}).focus();
   await page.keyboard.press("Enter");
   assert.equal(await page.locator('[data-art-model="jungle-hunter"] svg[data-cover-open="true"]').count(),1);
   pass("Keyboard Enter and pointer operate an actual animated lid","open/closed state and accessible button");

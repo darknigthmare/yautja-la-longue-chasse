@@ -1,0 +1,3693 @@
+{
+  "version": 1,
+  "source": "art-source/xeno-prime/berceau-enfoui/v2.3/MANIFEST_150_SPRITES.json",
+  "artStatus": "generated-unverified",
+  "assets": {
+    "100": {
+      "id": "100",
+      "name": "Trophée de couronne sur socle",
+      "src": "/game/xeno-prime/berceau-v1/sprites/props_effets/100_trophee_couronne_socle.png",
+      "width": 1254,
+      "height": 1254,
+      "bounds": [
+        165,
+        34,
+        1210,
+        1224
+      ],
+      "sha256": "468211d8ae6e1b826deb781ebd52f87e6a81b17add55a28bd5ca7e5c423f8b80"
+    },
+    "101": {
+      "id": "101",
+      "name": "Minerai ambre",
+      "src": "/game/xeno-prime/berceau-v1/sprites/props_effets/101_minerai_ambre.png",
+      "width": 1254,
+      "height": 1254,
+      "bounds": [
+        189,
+        162,
+        1078,
+        1101
+      ],
+      "sha256": "4609970f3b2b3ed9fd4f81cd54463518dc27f1b14f5fb99e98684044d7d7298b"
+    },
+    "102": {
+      "id": "102",
+      "name": "Éclats de chitine",
+      "src": "/game/xeno-prime/berceau-v1/sprites/props_effets/102_eclats_chitine.png",
+      "width": 1254,
+      "height": 1254,
+      "bounds": [
+        98,
+        162,
+        1121,
+        1077
+      ],
+      "sha256": "6220f46a4c6583cd0d9eff39f3aa26d6e2e61c47f84f6e5ecf50eaf8f5e6b4d8"
+    },
+    "103": {
+      "id": "103",
+      "name": "Jet acide horizontal",
+      "src": "/game/xeno-prime/berceau-v1/sprites/props_effets/103_jet_acide_horizontal.png",
+      "width": 1536,
+      "height": 1024,
+      "bounds": [
+        32,
+        218,
+        1505,
+        807
+      ],
+      "sha256": "6ba4c97fa6ed8a3ef31e7269fd8587d4a5127850009c64bf8619bb0c492c08fe"
+    },
+    "104": {
+      "id": "104",
+      "name": "Éclaboussure acide",
+      "src": "/game/xeno-prime/berceau-v1/sprites/props_effets/104_acide_eclaboussure.png",
+      "width": 1536,
+      "height": 1024,
+      "bounds": [
+        149,
+        268,
+        1341,
+        766
+      ],
+      "sha256": "7102c29220cc11ff24da06590377ffd738b78a7c86edd7884c364540e54b2122"
+    },
+    "105": {
+      "id": "105",
+      "name": "Condensation de bouche",
+      "src": "/game/xeno-prime/berceau-v1/sprites/props_effets/105_condensation_bouche.png",
+      "width": 1672,
+      "height": 941,
+      "bounds": [
+        270,
+        212,
+        1379,
+        752
+      ],
+      "sha256": "a52d5304831a488cc5be529271b0ef8af7a791dde414c53647f3b8953713a21c"
+    },
+    "106": {
+      "id": "106",
+      "name": "Poussière de chute",
+      "src": "/game/xeno-prime/berceau-v1/sprites/props_effets/106_poussiere_chute.png",
+      "width": 1024,
+      "height": 1536,
+      "bounds": [
+        332,
+        141,
+        671,
+        1352
+      ],
+      "sha256": "38c566650314dcabfe7d07494e26c9a739358fba98af93b66b282251135094d1"
+    },
+    "107": {
+      "id": "107",
+      "name": "Étincelles d’impact",
+      "src": "/game/xeno-prime/berceau-v1/sprites/props_effets/107_etincelles_impact.png",
+      "width": 1254,
+      "height": 1254,
+      "bounds": [
+        283,
+        261,
+        955,
+        910
+      ],
+      "sha256": "03bbf82d4651112f2e2d8b848562c6a9c22c61d48057ba8f75280c6ae075abf2"
+    },
+    "108": {
+      "id": "108",
+      "name": "Suintement acide",
+      "src": "/game/xeno-prime/berceau-v1/sprites/props_effets/108_suintement_acide.png",
+      "width": 1024,
+      "height": 1536,
+      "bounds": [
+        197,
+        207,
+        732,
+        1251
+      ],
+      "sha256": "bbbad804254e2a0584233ed3670d400549c4f427407dd36a1c3705b0cb85852a"
+    },
+    "001": {
+      "id": "001",
+      "name": "Calice géant",
+      "src": "/game/xeno-prime/berceau-v1/sprites/vegetation/001_calice_geant.png",
+      "width": 1254,
+      "height": 1254,
+      "bounds": [
+        21,
+        14,
+        1236,
+        1245
+      ],
+      "sha256": "c7947f23a30b0992def1e847dee8c939da46f7dd94c77e2b103d9611c2b20e07"
+    },
+    "002": {
+      "id": "002",
+      "name": "Calice incliné",
+      "src": "/game/xeno-prime/berceau-v1/sprites/vegetation/002_calice_incline.png",
+      "width": 1254,
+      "height": 1254,
+      "bounds": [
+        39,
+        29,
+        1239,
+        1228
+      ],
+      "sha256": "41593ed45fd6f9cd5d7480ebb4375dc7ab16fed7d87bb8fb845e824dcdcd6111"
+    },
+    "003": {
+      "id": "003",
+      "name": "Calices juvéniles",
+      "src": "/game/xeno-prime/berceau-v1/sprites/vegetation/003_calices_juveniles.png",
+      "width": 1254,
+      "height": 1254,
+      "bounds": [
+        156,
+        51,
+        1113,
+        1215
+      ],
+      "sha256": "ec08c6532b375111b5f9944471bb581abf6980a22d03c62a5eac225c29978220"
+    },
+    "004": {
+      "id": "004",
+      "name": "Tronc étranglé",
+      "src": "/game/xeno-prime/berceau-v1/sprites/vegetation/004_tronc_etrangle.png",
+      "width": 1024,
+      "height": 1536,
+      "bounds": [
+        27,
+        20,
+        1007,
+        1517
+      ],
+      "sha256": "69f202e222b6a2bb9b06a580f37ef154319c250b8342e2b4658777cd24b2fcd2"
+    },
+    "005": {
+      "id": "005",
+      "name": "Branche praticable",
+      "src": "/game/xeno-prime/berceau-v1/sprites/vegetation/005_branche_praticable.png",
+      "width": 1774,
+      "height": 887,
+      "bounds": [
+        25,
+        31,
+        1745,
+        857
+      ],
+      "sha256": "0f46ce8561f9f0982062844ac9f5d28fe3a1cc6f411cb5c5b6a6f34c3c387469"
+    },
+    "006": {
+      "id": "006",
+      "name": "Arche de racine pétrifiée",
+      "src": "/game/xeno-prime/berceau-v1/sprites/vegetation/006_arche_racine_petrifiee.png",
+      "width": 1536,
+      "height": 1024,
+      "bounds": [
+        22,
+        52,
+        1515,
+        982
+      ],
+      "sha256": "928ced7cffa05eb8571962eea4dd2fe2457cfa6b7f45836559967f86338babda"
+    },
+    "007": {
+      "id": "007",
+      "name": "Liane suspendue",
+      "src": "/game/xeno-prime/berceau-v1/sprites/vegetation/007_liane_suspendue.png",
+      "width": 1024,
+      "height": 1536,
+      "bounds": [
+        371,
+        28,
+        820,
+        1503
+      ],
+      "sha256": "0998651499dc52fc96e62e1d781388d1d3a407720214f961ff505d95b4eea058"
+    },
+    "008": {
+      "id": "008",
+      "name": "Pont de membrane",
+      "src": "/game/xeno-prime/berceau-v1/sprites/vegetation/008_pont_membrane.png",
+      "width": 1983,
+      "height": 793,
+      "bounds": [
+        40,
+        48,
+        1944,
+        760
+      ],
+      "sha256": "bd7da19b9206530db058a6ec931b095106edbfce65669aee6c8fee3add694fc7"
+    },
+    "009": {
+      "id": "009",
+      "name": "Poche suspendue",
+      "src": "/game/xeno-prime/berceau-v1/sprites/vegetation/009_poche_suspendue.png",
+      "width": 1024,
+      "height": 1536,
+      "bounds": [
+        57,
+        43,
+        971,
+        1486
+      ],
+      "sha256": "c588e9846a8e44d133e7c58406a62c55ab49905b70133752cc4ab68e402cceec"
+    },
+    "010": {
+      "id": "010",
+      "name": "Fougères sporifères",
+      "src": "/game/xeno-prime/berceau-v1/sprites/vegetation/010_fougeres_sporiferes.png",
+      "width": 1254,
+      "height": 1254,
+      "bounds": [
+        33,
+        60,
+        1220,
+        1215
+      ],
+      "sha256": "34696139f5b23b48e35e1f4ee70d32847a02c736aa27932198a1353557285178"
+    },
+    "011": {
+      "id": "011",
+      "name": "Coraux fongiques",
+      "src": "/game/xeno-prime/berceau-v1/sprites/vegetation/011_coraux_fongiques.png",
+      "width": 1254,
+      "height": 1254,
+      "bounds": [
+        168,
+        39,
+        1120,
+        1228
+      ],
+      "sha256": "d7aca8a460476c28ff584d8036c4775e057d3414065f922662ccd12495c7c9b4"
+    },
+    "012": {
+      "id": "012",
+      "name": "Silhouette lointaine de canopée",
+      "src": "/game/xeno-prime/berceau-v1/sprites/vegetation/012_silhouette_canopee.png",
+      "width": 1254,
+      "height": 1254,
+      "bounds": [
+        54,
+        85,
+        1200,
+        1205
+      ],
+      "sha256": "d4091ab16f56a3d2baa2b686984fd03a0e35dce99b68ceb05a4382b85df7290f"
+    },
+    "013": {
+      "id": "013",
+      "name": "Corniche de basalte",
+      "src": "/game/xeno-prime/berceau-v1/sprites/terrain/013_corniche_basalte.png",
+      "width": 2041,
+      "height": 770,
+      "bounds": [
+        58,
+        170,
+        1971,
+        704
+      ],
+      "sha256": "f17df84d7bc99c6121378c4d15711204b3ee4f99a11507cf2fcb8abbb1df7a23"
+    },
+    "014": {
+      "id": "014",
+      "name": "Pilier de basalte",
+      "src": "/game/xeno-prime/berceau-v1/sprites/terrain/014_pilier_abri.png",
+      "width": 1196,
+      "height": 1315,
+      "bounds": [
+        62,
+        141,
+        1137,
+        1199
+      ],
+      "sha256": "7bc67e755c4352c393da47fd4f130de32af65ee2e2b0ff8de7dafa38baf6caf2"
+    },
+    "015": {
+      "id": "015",
+      "name": "Arche de caverne",
+      "src": "/game/xeno-prime/berceau-v1/sprites/terrain/015_arche_caverne.png",
+      "width": 1671,
+      "height": 941,
+      "bounds": [
+        50,
+        8,
+        1629,
+        908
+      ],
+      "sha256": "ab6c56dabc3a516903e2ad1a0fc57f9cd8227c5771ea04f0c71af2044b17b950"
+    },
+    "016": {
+      "id": "016",
+      "name": "Bloc de sol en résine",
+      "src": "/game/xeno-prime/berceau-v1/sprites/terrain/016_bloc_sol_resine.png",
+      "width": 2172,
+      "height": 724,
+      "bounds": [
+        113,
+        144,
+        2068,
+        622
+      ],
+      "sha256": "db27cea17c3d5d210ab3e039222a4a0c2ea90d850915332eca97d5c60bee5998"
+    },
+    "017": {
+      "id": "017",
+      "name": "Paroi de résine",
+      "src": "/game/xeno-prime/berceau-v1/sprites/terrain/017_paroi_resine.png",
+      "width": 1034,
+      "height": 1521,
+      "bounds": [
+        83,
+        81,
+        955,
+        1429
+      ],
+      "sha256": "c477fe1d5492346db919ca7e82f2dba9a166ddfb66d17a8f6394132e03d81f93"
+    },
+    "018": {
+      "id": "018",
+      "name": "Colonne de ruche",
+      "src": "/game/xeno-prime/berceau-v1/sprites/terrain/018_colonne_ruche.png",
+      "width": 1024,
+      "height": 1536,
+      "bounds": [
+        75,
+        97,
+        948,
+        1433
+      ],
+      "sha256": "eb8fb6d884e172315139f1a04e2e5e4fbdf6183ed1ca5ddd236cdc7bfaaa1a13"
+    },
+    "019": {
+      "id": "019",
+      "name": "Rampe racinaire",
+      "src": "/game/xeno-prime/berceau-v1/sprites/terrain/019_rampe_racinaire.png",
+      "width": 1672,
+      "height": 941,
+      "bounds": [
+        40,
+        56,
+        1636,
+        864
+      ],
+      "sha256": "b89455ab891bdd0cc9cdb94ffebcbb770c1300222d55ec88bc52df1d8cdb5f13"
+    },
+    "020": {
+      "id": "020",
+      "name": "Appui de basalte",
+      "src": "/game/xeno-prime/berceau-v1/sprites/terrain/020_appui_basalte.png",
+      "width": 1536,
+      "height": 1024,
+      "bounds": [
+        138,
+        275,
+        1397,
+        775
+      ],
+      "sha256": "59b46fd8d636c2c898afc7370a01a796e42bfb7d237488848e6b5cc9ce44b689"
+    },
+    "021": {
+      "id": "021",
+      "name": "Digue de résine",
+      "src": "/game/xeno-prime/berceau-v1/sprites/terrain/021_digue_resine.png",
+      "width": 2048,
+      "height": 768,
+      "bounds": [
+        33,
+        146,
+        2015,
+        620
+      ],
+      "sha256": "1749148bd886a2a98f324fdebbca83f05af98404bcf3ec0c51551a447aa3df01"
+    },
+    "022": {
+      "id": "022",
+      "name": "Paroi de faille stratifiée",
+      "src": "/game/xeno-prime/berceau-v1/sprites/terrain/022_paroi_stratifiee.png",
+      "width": 1325,
+      "height": 1187,
+      "bounds": [
+        87,
+        73,
+        1253,
+        1137
+      ],
+      "sha256": "a715d2a0e03e47cd99072b4368169dbe98973d683a2eace3873381863332029c"
+    },
+    "023": {
+      "id": "023",
+      "name": "Flaque d’eau ordinaire",
+      "src": "/game/xeno-prime/berceau-v1/sprites/terrain/023_flaque_eau.png",
+      "width": 1672,
+      "height": 941,
+      "bounds": [
+        84,
+        375,
+        1591,
+        625
+      ],
+      "sha256": "b856d32f0ad86b6a44d071ba40b6ccd707aeb00f7a25844bc5fdd6b76ff00b0e"
+    },
+    "024": {
+      "id": "024",
+      "name": "Empreinte de couronne",
+      "src": "/game/xeno-prime/berceau-v1/sprites/terrain/024_empreinte_couronne.png",
+      "width": 1672,
+      "height": 941,
+      "bounds": [
+        143,
+        83,
+        1532,
+        865
+      ],
+      "sha256": "a1cd23e0f8739a581080ae7efea68074f589a4a9b214c4275ba4c60b4b01b473"
+    },
+    "025": {
+      "id": "025",
+      "name": "Œuf fermé",
+      "src": "/game/xeno-prime/berceau-v1/sprites/ruche/025_oeuf_ferme.png",
+      "width": 1310,
+      "height": 1200,
+      "bounds": [
+        254,
+        112,
+        1056,
+        1097
+      ],
+      "sha256": "939c7ecd81eefdff04863bdb81838541a521b7f5283899ad68c4a4bf3ca58a5f"
+    },
+    "026": {
+      "id": "026",
+      "name": "Œuf ouvert",
+      "src": "/game/xeno-prime/berceau-v1/sprites/ruche/026_oeuf_ouvert.png",
+      "width": 1310,
+      "height": 1200,
+      "bounds": [
+        216,
+        92,
+        1113,
+        1101
+      ],
+      "sha256": "8c9d4299b6687a38a7f5d847defee38150c76d7c24de955a2a3357b9c8619307"
+    },
+    "027": {
+      "id": "027",
+      "name": "Cocon de proie indigène",
+      "src": "/game/xeno-prime/berceau-v1/sprites/ruche/027_cocon_proie.png",
+      "width": 954,
+      "height": 1649,
+      "bounds": [
+        214,
+        74,
+        743,
+        1548
+      ],
+      "sha256": "b9357fbc3d2aee38de6e218144db16de6d5d985dcf8e5a8700c13306c1ea34b9"
+    },
+    "028": {
+      "id": "028",
+      "name": "Exuvie suspendue",
+      "src": "/game/xeno-prime/berceau-v1/sprites/ruche/028_exuvie_suspendue.png",
+      "width": 1024,
+      "height": 1536,
+      "bounds": [
+        345,
+        110,
+        654,
+        1415
+      ],
+      "sha256": "6f0b300c82cb58ec4566a7e4412377919f433802f94829ee602dbc6f7329501d"
+    },
+    "029": {
+      "id": "029",
+      "name": "Réservoir acide",
+      "src": "/game/xeno-prime/berceau-v1/sprites/ruche/029_reservoir_acide.png",
+      "width": 1199,
+      "height": 1312,
+      "bounds": [
+        67,
+        49,
+        1152,
+        1252
+      ],
+      "sha256": "d48f7579098e558c7a375b640bd69475099b3262df302802f76329a792ce226a"
+    },
+    "030": {
+      "id": "030",
+      "name": "Vanne tissulaire fermée",
+      "src": "/game/xeno-prime/berceau-v1/sprites/ruche/030_vanne_tissulaire.png",
+      "width": 2172,
+      "height": 724,
+      "bounds": [
+        130,
+        169,
+        2042,
+        572
+      ],
+      "sha256": "5cdbd2625c50598a6f1fa7e5b28a8f119bf3a43915721594ff3f8f9edc763439"
+    },
+    "031": {
+      "id": "031",
+      "name": "Filaments sensoriels",
+      "src": "/game/xeno-prime/berceau-v1/sprites/ruche/031_filaments_sensoriels.png",
+      "width": 1254,
+      "height": 1254,
+      "bounds": [
+        92,
+        77,
+        1159,
+        1170
+      ],
+      "sha256": "d38788b18960fa43d24f8ea546f2bc434de90305d47ac37ec6ed030f08d37c43"
+    },
+    "032": {
+      "id": "032",
+      "name": "Conduit nourricier",
+      "src": "/game/xeno-prime/berceau-v1/sprites/ruche/032_conduit_nourricier.png",
+      "width": 2172,
+      "height": 724,
+      "bounds": [
+        65,
+        196,
+        2109,
+        526
+      ],
+      "sha256": "dd061367cdc91db41e71b30efd9f031f3b59b8483af839f7f6fd6ee309040de4"
+    },
+    "033": {
+      "id": "033",
+      "name": "Évent respiratoire",
+      "src": "/game/xeno-prime/berceau-v1/sprites/ruche/033_event_respiratoire.png",
+      "width": 1366,
+      "height": 1152,
+      "bounds": [
+        131,
+        44,
+        1240,
+        1102
+      ],
+      "sha256": "bd21ddd96aa8f4e5ea1a58fab4cf62b941eea84c6d382ae11b13c42fad46b699"
+    },
+    "034": {
+      "id": "034",
+      "name": "Passage fermé",
+      "src": "/game/xeno-prime/berceau-v1/sprites/ruche/034_porte_membrane_fermee.png",
+      "width": 1312,
+      "height": 1199,
+      "bounds": [
+        160,
+        69,
+        1153,
+        1107
+      ],
+      "sha256": "a23c2c33fc31c73dbfd714a67924cc0b4e0f6d64c6e72a5ae3ea145a56d60261"
+    },
+    "035": {
+      "id": "035",
+      "name": "Passage sectionné",
+      "src": "/game/xeno-prime/berceau-v1/sprites/ruche/035_porte_membrane_ouverte.png",
+      "width": 1312,
+      "height": 1199,
+      "bounds": [
+        160,
+        65,
+        1153,
+        1110
+      ],
+      "sha256": "71af86d68996d2d1c2084eab48a43001ebb8578f6994b47cf04e73bc07cfb2a9"
+    },
+    "036": {
+      "id": "036",
+      "name": "Vanne après drainage",
+      "src": "/game/xeno-prime/berceau-v1/sprites/ruche/036_vanne_drainee.png",
+      "width": 2172,
+      "height": 724,
+      "bounds": [
+        126,
+        147,
+        2054,
+        578
+      ],
+      "sha256": "205c4b360f34820c9d791ad06ef033d9813311d61f18f1d6bf0ad4969a78fe65"
+    },
+    "037": {
+      "id": "037",
+      "name": "Tentacule en arche",
+      "src": "/game/xeno-prime/berceau-v1/sprites/tentacules/037_tentacule_arche.png",
+      "width": 1536,
+      "height": 1024,
+      "bounds": [
+        89,
+        41,
+        1512,
+        989
+      ],
+      "sha256": "b8332f912e3fd8f2a8a522fa3d5f225a9ae8c27faaff09422175d0ff4e3ade96"
+    },
+    "038": {
+      "id": "038",
+      "name": "Tentacule en balayage",
+      "src": "/game/xeno-prime/berceau-v1/sprites/tentacules/038_tentacule_balayage.png",
+      "width": 1774,
+      "height": 887,
+      "bounds": [
+        30,
+        208,
+        1753,
+        788
+      ],
+      "sha256": "64d3296210a3b17057e377ee2fa6501fc1040c60bab14487fd243687c5d0e8ba"
+    },
+    "039": {
+      "id": "039",
+      "name": "Tentacule perforant",
+      "src": "/game/xeno-prime/berceau-v1/sprites/tentacules/039_tentacule_perforation.png",
+      "width": 1024,
+      "height": 1536,
+      "bounds": [
+        81,
+        29,
+        1003,
+        1507
+      ],
+      "sha256": "08e9381b27da07b9dc5993ed30f6997d9f053d57e2853c7d5fee39a9192f6574"
+    },
+    "040": {
+      "id": "040",
+      "name": "Tentacule planté",
+      "src": "/game/xeno-prime/berceau-v1/sprites/tentacules/040_tentacule_plante.png",
+      "width": 1536,
+      "height": 1024,
+      "bounds": [
+        18,
+        38,
+        1519,
+        991
+      ],
+      "sha256": "f2144866e4e64736c3f78f3d971991bed70ab84596d8c902f33d1cb88a6383dc"
+    },
+    "041": {
+      "id": "041",
+      "name": "Anse de capture",
+      "src": "/game/xeno-prime/berceau-v1/sprites/tentacules/041_anse_capture.png",
+      "width": 1536,
+      "height": 1024,
+      "bounds": [
+        118,
+        32,
+        1487,
+        988
+      ],
+      "sha256": "166afc58b99e8d0621c285a80e574656003fab5d7e54601b482ec7d341df425f"
+    },
+    "042": {
+      "id": "042",
+      "name": "Tentacule sectionné",
+      "src": "/game/xeno-prime/berceau-v1/sprites/tentacules/042_tentacule_sectionne.png",
+      "width": 1536,
+      "height": 1024,
+      "bounds": [
+        44,
+        246,
+        1511,
+        936
+      ],
+      "sha256": "78328b32e3f5ad26cb227d76bd53ff23f9e6e0585e1afc339a257182fc879be5"
+    },
+    "043": {
+      "id": "043",
+      "name": "Tentacule inerte en pont",
+      "src": "/game/xeno-prime/berceau-v1/sprites/tentacules/043_tentacule_pont_inerte.png",
+      "width": 1983,
+      "height": 793,
+      "bounds": [
+        15,
+        158,
+        1965,
+        705
+      ],
+      "sha256": "5e63f47611044c4d97b1ffea6d1ee983bbf4e99493fe84ac54a939ace19d3786"
+    },
+    "044": {
+      "id": "044",
+      "name": "Constricteur sur pilier",
+      "src": "/game/xeno-prime/berceau-v1/sprites/tentacules/044_constricteur_pilier.png",
+      "width": 1254,
+      "height": 1254,
+      "bounds": [
+        303,
+        20,
+        946,
+        1231
+      ],
+      "sha256": "6c7f6d873bd8d051b7d45a53cb5c3b71b52512c6c83da5a6e3184885c63ba01c"
+    },
+    "045": {
+      "id": "045",
+      "name": "Fouet diagonal",
+      "src": "/game/xeno-prime/berceau-v1/sprites/tentacules/045_fouet_diagonal.png",
+      "width": 1536,
+      "height": 1024,
+      "bounds": [
+        39,
+        47,
+        1501,
+        987
+      ],
+      "sha256": "817cbd0bd2863d2c361b0fa23e5fe93751c30bb30a857bea6800bafe0d42f100"
+    },
+    "046": {
+      "id": "046",
+      "name": "Membrane respiratoire royale",
+      "src": "/game/xeno-prime/berceau-v1/sprites/tentacules/046_membrane_respiratoire.png",
+      "width": 1774,
+      "height": 887,
+      "bounds": [
+        30,
+        96,
+        1749,
+        800
+      ],
+      "sha256": "fc05e7f2dafe893eb3ed3df4eefb2a9e89d06fc59d605f5139502939f87c4ef6"
+    },
+    "047": {
+      "id": "047",
+      "name": "Balise Yautja",
+      "src": "/game/xeno-prime/berceau-v1/sprites/accessoires/047_balise_yautja.png",
+      "width": 1254,
+      "height": 1254,
+      "bounds": [
+        291,
+        14,
+        954,
+        1224
+      ],
+      "sha256": "1bdf15488ef3ce44a56ae2a39300f84f7e20d7d60518417749f4a41d846326a7"
+    },
+    "048": {
+      "id": "048",
+      "name": "Cache de chasseur",
+      "src": "/game/xeno-prime/berceau-v1/sprites/accessoires/048_cache_chasseur.png",
+      "width": 1254,
+      "height": 1254,
+      "bounds": [
+        70,
+        379,
+        1188,
+        945
+      ],
+      "sha256": "1e6bd321a0935eb8614f7be6245f1aa519cda09f20a0f18530d167ea133c2dfe"
+    },
+    "049": {
+      "id": "049",
+      "name": "Perchoir abandonné",
+      "src": "/game/xeno-prime/berceau-v1/sprites/accessoires/049_perchoir_abandonne.png",
+      "width": 1536,
+      "height": 1024,
+      "bounds": [
+        23,
+        87,
+        1514,
+        869
+      ],
+      "sha256": "fa76974cba398fe4046011d0602e9e5a8a7b2e4cebceae09ca6040b99a03f16c"
+    },
+    "050": {
+      "id": "050",
+      "name": "Passerelle effondrée",
+      "src": "/game/xeno-prime/berceau-v1/sprites/accessoires/050_passerelle_tombee.png",
+      "width": 1536,
+      "height": 1024,
+      "bounds": [
+        30,
+        276,
+        1508,
+        750
+      ],
+      "sha256": "750b54fd938bb9447c2ffaeee6ab0353a914d7d243a0c7110dc751471951b9ca"
+    },
+    "051": {
+      "id": "051",
+      "name": "Relevé de chasse gravé",
+      "src": "/game/xeno-prime/berceau-v1/sprites/accessoires/051_stele_chasse.png",
+      "width": 1254,
+      "height": 1254,
+      "bounds": [
+        344,
+        16,
+        910,
+        1215
+      ],
+      "sha256": "d1e6c834b50629811f76865e26322a62bdefb0a7c484bbaf59f6746cb3ba6cee"
+    },
+    "052": {
+      "id": "052",
+      "name": "Support de masque",
+      "src": "/game/xeno-prime/berceau-v1/sprites/accessoires/052_support_masque.png",
+      "width": 1254,
+      "height": 1254,
+      "bounds": [
+        356,
+        23,
+        978,
+        1221
+      ],
+      "sha256": "fbd42635a06fbff425c0f4e0a49893a729d9d8f344a76ff6323abd2cc8d2c966"
+    },
+    "053": {
+      "id": "053",
+      "name": "Ossements de proie",
+      "src": "/game/xeno-prime/berceau-v1/sprites/accessoires/053_ossements_proie.png",
+      "width": 1254,
+      "height": 1254,
+      "bounds": [
+        64,
+        305,
+        1227,
+        960
+      ],
+      "sha256": "00559510a628532999445e50e002b682d3bc4ada15cdf3c4e9e66e3be5308e9f"
+    },
+    "054": {
+      "id": "054",
+      "name": "Fragment de couronne royale",
+      "src": "/game/xeno-prime/berceau-v1/sprites/accessoires/054_fragment_couronne.png",
+      "width": 1254,
+      "height": 1254,
+      "bounds": [
+        94,
+        107,
+        1193,
+        1157
+      ],
+      "sha256": "698a75b29a8f503bf4ca7de4064baeb586167391917cf0805c68a638f2d70e7d"
+    },
+    "055": {
+      "id": "055",
+      "name": "Chasseur Yautja entier",
+      "src": "/game/xeno-prime/berceau-v1/sprites/personnages/055_yautja_chasseur.png",
+      "width": 1536,
+      "height": 1024,
+      "bounds": [
+        515,
+        59,
+        1135,
+        941
+      ],
+      "sha256": "6e93455d611c3182c0ac949273daff63e1cf2dde42ef004a1c353d2c268481de"
+    },
+    "056": {
+      "id": "056",
+      "name": "Nid de guetteur fermé",
+      "src": "/game/xeno-prime/berceau-v1/sprites/ruche/056_nid_guetteur.png",
+      "width": 2172,
+      "height": 724,
+      "bounds": [
+        75,
+        106,
+        2096,
+        618
+      ],
+      "sha256": "f6cd1888fb5266fc8f3fd98849b9f7c465d6aed1febf6a5a249160af8a31f9a1"
+    },
+    "057": {
+      "id": "057",
+      "name": "Cocon mural fermé",
+      "src": "/game/xeno-prime/berceau-v1/sprites/ruche/057_cocon_mural.png",
+      "width": 1024,
+      "height": 1536,
+      "bounds": [
+        76,
+        47,
+        955,
+        1488
+      ],
+      "sha256": "0438e2a3f24b4f5a47f17885fbab2d85c0b5a4e279ff08692850d3e2da54902a"
+    },
+    "058": {
+      "id": "058",
+      "name": "Facehugger",
+      "src": "/game/xeno-prime/berceau-v1/sprites/personnages/058_facehugger.png",
+      "width": 1774,
+      "height": 887,
+      "bounds": [
+        40,
+        143,
+        1740,
+        806
+      ],
+      "sha256": "d15a8ea8590d3eb6e65898aeb35618c4b5e5b0744967158663cbb9277bb2552b"
+    },
+    "059": {
+      "id": "059",
+      "name": "Matriarche intacte",
+      "src": "/game/xeno-prime/berceau-v1/sprites/personnages/059_matriarche_intacte.png",
+      "width": 1672,
+      "height": 941,
+      "bounds": [
+        284,
+        176,
+        1396,
+        789
+      ],
+      "sha256": "b70bbde0ababb0cc5e43f0491a279cd5b281203d1c367ff74afc37d8fca2da70"
+    },
+    "060": {
+      "id": "060",
+      "name": "Matriarche préparant le souffle",
+      "src": "/game/xeno-prime/berceau-v1/sprites/personnages/060_matriarche_souffle.png",
+      "width": 1672,
+      "height": 941,
+      "bounds": [
+        126,
+        65,
+        1595,
+        870
+      ],
+      "sha256": "4e5c62210dc37c353428be87f60de7d0ed8e483b4be4064bc6872a6c2ff494a2"
+    },
+    "061": {
+      "id": "061",
+      "name": "Matriarche vulnérable",
+      "src": "/game/xeno-prime/berceau-v1/sprites/personnages/061_matriarche_vulnerable.png",
+      "width": 1671,
+      "height": 941,
+      "bounds": [
+        188,
+        98,
+        1522,
+        840
+      ],
+      "sha256": "c475a3c2db7cfdf0d1d45ced154aee2018a4d2bb532dec5317039da66d9173ce"
+    },
+    "062": {
+      "id": "062",
+      "name": "Matriarche après victoire",
+      "src": "/game/xeno-prime/berceau-v1/sprites/personnages/062_matriarche_morte.png",
+      "width": 1672,
+      "height": 941,
+      "bounds": [
+        259,
+        248,
+        1460,
+        807
+      ],
+      "sha256": "7e02a2f697f4915cfe8130d818c3edbc7cca23968e95f753a1bd210585afdb73"
+    },
+    "063": {
+      "id": "063",
+      "name": "Bulbe nerveux royal",
+      "src": "/game/xeno-prime/berceau-v1/sprites/personnages/063_bulbe_nerveux.png",
+      "width": 1672,
+      "height": 941,
+      "bounds": [
+        317,
+        194,
+        1419,
+        744
+      ],
+      "sha256": "9ce04105aef126188a5be8b43a11f4d0164ac5391a60d29ed263bd446419e5e8"
+    },
+    "064": {
+      "id": "064",
+      "name": "Masse sous la croûte",
+      "src": "/game/xeno-prime/berceau-v1/sprites/personnages/064_masse_sous_cutanee.png",
+      "width": 1672,
+      "height": 941,
+      "bounds": [
+        5,
+        78,
+        1669,
+        873
+      ],
+      "sha256": "1328fdf656b221ac1977a2d625ada8db4562b696b271a165960d1c94b9132b7d"
+    },
+    "065": {
+      "id": "065",
+      "name": "Flaque acide",
+      "src": "/game/xeno-prime/berceau-v1/sprites/effets/065_flaque_acide.png",
+      "width": 1536,
+      "height": 1024,
+      "bounds": [
+        104,
+        229,
+        1433,
+        758
+      ],
+      "sha256": "2c2db259c6cedca9bfc62cabb05f9265db7996c4b41ae5410ab7031b7ef838ad"
+    },
+    "066": {
+      "id": "066",
+      "name": "Globule acide",
+      "src": "/game/xeno-prime/berceau-v1/sprites/effets/066_globule_acide.png",
+      "width": 1536,
+      "height": 1024,
+      "bounds": [
+        352,
+        318,
+        1243,
+        683
+      ],
+      "sha256": "da3ee0aa82e9c3f7636b3e932197a7c696bdcdc33e376cdf51d50c13b588fdec"
+    },
+    "067": {
+      "id": "067",
+      "name": "Nuage de spores",
+      "src": "/game/xeno-prime/berceau-v1/sprites/effets/067_nuage_spores.png",
+      "width": 1536,
+      "height": 1024,
+      "bounds": [
+        228,
+        272,
+        1308,
+        728
+      ],
+      "sha256": "d64b7b1e1bbecd3447a826b294f8bafbd9bf3175ed01fa54cd774adccdb40df3"
+    },
+    "068": {
+      "id": "068",
+      "name": "Souffle de vapeur",
+      "src": "/game/xeno-prime/berceau-v1/sprites/effets/068_souffle_vapeur.png",
+      "width": 1536,
+      "height": 1024,
+      "bounds": [
+        450,
+        248,
+        1026,
+        774
+      ],
+      "sha256": "422211735e2211b118b47d001eb91c1c6ebaf87c8012ee7601aa3d864af7050c"
+    },
+    "069": {
+      "id": "069",
+      "name": "Pulsation nerveuse",
+      "src": "/game/xeno-prime/berceau-v1/sprites/effets/069_pulsation_nerveuse.png",
+      "width": 1254,
+      "height": 1254,
+      "bounds": [
+        220,
+        250,
+        1032,
+        994
+      ],
+      "sha256": "7997098367eb197e2adb43ff104250da8226bea4c5a3f97a9f3577f6fe8052c6"
+    },
+    "070": {
+      "id": "070",
+      "name": "Impact de poussière",
+      "src": "/game/xeno-prime/berceau-v1/sprites/effets/070_impact_poussiere.png",
+      "width": 1536,
+      "height": 1024,
+      "bounds": [
+        187,
+        341,
+        1348,
+        771
+      ],
+      "sha256": "6e377bfc68362650960c109868a700bf4971209a6dc7800667e752ad7dc90cdc"
+    },
+    "071": {
+      "id": "071",
+      "name": "Onde tellurique",
+      "src": "/game/xeno-prime/berceau-v1/sprites/effets/071_onde_sol.png",
+      "width": 1536,
+      "height": 1024,
+      "bounds": [
+        180,
+        360,
+        1373,
+        719
+      ],
+      "sha256": "85f67ab25023dee2844e1b792fe1c1b12e02acec37c57e9eb642b944ebd69087"
+    },
+    "072": {
+      "id": "072",
+      "name": "Voile de brume",
+      "src": "/game/xeno-prime/berceau-v1/sprites/effets/072_voile_brume.png",
+      "width": 1536,
+      "height": 1024,
+      "bounds": [
+        145,
+        371,
+        1376,
+        635
+      ],
+      "sha256": "a5a0c5aa47cb12f71416bb277c7e8a6a8706dd1b808f8ae816ce10f70edd1c96"
+    },
+    "073": {
+      "id": "073",
+      "name": "Tronc creux horizontal",
+      "src": "/game/xeno-prime/berceau-v1/sprites/environnement/073_tronc_creux_horizontal.png",
+      "width": 1942,
+      "height": 809,
+      "bounds": [
+        17,
+        66,
+        1935,
+        755
+      ],
+      "sha256": "72841fcadffc2230c6a368c4c148fb12f63de6b4a41f5b0bf6663ec20e9eb852"
+    },
+    "074": {
+      "id": "074",
+      "name": "Racine échelle",
+      "src": "/game/xeno-prime/berceau-v1/sprites/environnement/074_racine_echelle.png",
+      "width": 1024,
+      "height": 1536,
+      "bounds": [
+        39,
+        9,
+        991,
+        1529
+      ],
+      "sha256": "1a743277078ad4adcf8b19debb87e7c912631e9abe486a327e9e3c48a82be708"
+    },
+    "075": {
+      "id": "075",
+      "name": "Racines de premier plan",
+      "src": "/game/xeno-prime/berceau-v1/sprites/environnement/075_racines_premier_plan.png",
+      "width": 1774,
+      "height": 887,
+      "bounds": [
+        12,
+        84,
+        1761,
+        762
+      ],
+      "sha256": "483dbb6176e3a3e63bc52c36525a92ca8f8ff11c81f41ae7244a59ea5b9d0066"
+    },
+    "076": {
+      "id": "076",
+      "name": "Contrefort vertical",
+      "src": "/game/xeno-prime/berceau-v1/sprites/environnement/076_contrefort_vertical.png",
+      "width": 1024,
+      "height": 1536,
+      "bounds": [
+        66,
+        19,
+        961,
+        1492
+      ],
+      "sha256": "d9b23f948f8b382c966450585f1c9e5a9766bb1475aa0ce6548877e639d0fc25"
+    },
+    "077": {
+      "id": "077",
+      "name": "Passerelle déployée",
+      "src": "/game/xeno-prime/berceau-v1/sprites/environnement/077_passerelle_deployee.png",
+      "width": 1881,
+      "height": 836,
+      "bounds": [
+        39,
+        159,
+        1840,
+        543
+      ],
+      "sha256": "1677dc3b71fe05cbe7762383ff77b0347043c0e305b69b409a974845749e01f9"
+    },
+    "078": {
+      "id": "078",
+      "name": "Bouchon de résine intact",
+      "src": "/game/xeno-prime/berceau-v1/sprites/environnement/078_bouchon_resine_intact.png",
+      "width": 1254,
+      "height": 1254,
+      "bounds": [
+        166,
+        27,
+        1091,
+        1209
+      ],
+      "sha256": "7d9b5211026bafbf787904ee691ec132b6681c686c5f63ebcf263b4220d747d3"
+    },
+    "079": {
+      "id": "079",
+      "name": "Bouchon de résine brisé",
+      "src": "/game/xeno-prime/berceau-v1/sprites/environnement/079_bouchon_resine_brise.png",
+      "width": 1254,
+      "height": 1254,
+      "bounds": [
+        165,
+        23,
+        1091,
+        1209
+      ],
+      "sha256": "a838cfda78e24f95b782c246b71384fc3a190dab60cb571ae99947872c7d9448"
+    },
+    "080": {
+      "id": "080",
+      "name": "Nid fongique de plafond",
+      "src": "/game/xeno-prime/berceau-v1/sprites/environnement/080_nid_fongique_plafond.png",
+      "width": 1536,
+      "height": 1024,
+      "bounds": [
+        55,
+        46,
+        1493,
+        988
+      ],
+      "sha256": "782e7cb41d27d7ec132e9efab4dc69439c4ee89ff9176eb46f98b03b2671bf5c"
+    },
+    "081": {
+      "id": "081",
+      "name": "Pont de membrane affaissé",
+      "src": "/game/xeno-prime/berceau-v1/sprites/reactions/081_pont_membrane_affaisse.png",
+      "width": 1984,
+      "height": 793,
+      "bounds": [
+        40,
+        46,
+        1948,
+        762
+      ],
+      "sha256": "720502d7b30c746721808e1fd879945527c241706d49ddeb7695bcb1fcb391b5"
+    },
+    "082": {
+      "id": "082",
+      "name": "Poche contractée",
+      "src": "/game/xeno-prime/berceau-v1/sprites/reactions/082_poche_contractee.png",
+      "width": 1024,
+      "height": 1536,
+      "bounds": [
+        57,
+        43,
+        972,
+        1209
+      ],
+      "sha256": "9c486e418d8d8968e67f851c231c558ab98bd9f89e12b9bdefa9fd34373b74ff"
+    },
+    "083": {
+      "id": "083",
+      "name": "Réservoir vidé",
+      "src": "/game/xeno-prime/berceau-v1/sprites/reactions/083_reservoir_vide.png",
+      "width": 1199,
+      "height": 1312,
+      "bounds": [
+        65,
+        50,
+        1152,
+        1252
+      ],
+      "sha256": "34e774f7aa38dfad1000673cb5b1a6405cba9b5378f98df4d00664a93193c2b2"
+    },
+    "084": {
+      "id": "084",
+      "name": "Filaments en alerte",
+      "src": "/game/xeno-prime/berceau-v1/sprites/reactions/084_filaments_alerte.png",
+      "width": 1254,
+      "height": 1254,
+      "bounds": [
+        86,
+        71,
+        1168,
+        1166
+      ],
+      "sha256": "b29c174c3e16978dff1b4beabb590c31bbf0e135ac71391c909f1a2c39ced096"
+    },
+    "085": {
+      "id": "085",
+      "name": "Conduit éteint",
+      "src": "/game/xeno-prime/berceau-v1/sprites/reactions/085_conduit_eteint.png",
+      "width": 2172,
+      "height": 724,
+      "bounds": [
+        63,
+        190,
+        2110,
+        539
+      ],
+      "sha256": "a977500bae6eb53d8c13c716ce706a7c4b3157ea1e0a69d917e3c928d0afdc8e"
+    },
+    "086": {
+      "id": "086",
+      "name": "Évent fermé",
+      "src": "/game/xeno-prime/berceau-v1/sprites/reactions/086_event_ferme.png",
+      "width": 1366,
+      "height": 1151,
+      "bounds": [
+        130,
+        38,
+        1244,
+        1102
+      ],
+      "sha256": "9d8ac92536250b31ce02456d14383d7ee763870de125fe1ba05073d317ec1fca"
+    },
+    "087": {
+      "id": "087",
+      "name": "Œuf en éclosion",
+      "src": "/game/xeno-prime/berceau-v1/sprites/reactions/087_oeuf_eclosion.png",
+      "width": 1254,
+      "height": 1254,
+      "bounds": [
+        192,
+        101,
+        1083,
+        1168
+      ],
+      "sha256": "73dd973cc055573571a1eb84fbc385339c8b6579452262687fb7f82a874052a7"
+    },
+    "088": {
+      "id": "088",
+      "name": "Amas de coques d’œufs",
+      "src": "/game/xeno-prime/berceau-v1/sprites/reactions/088_amas_coques_oeufs.png",
+      "width": 1536,
+      "height": 1024,
+      "bounds": [
+        144,
+        95,
+        1433,
+        952
+      ],
+      "sha256": "e32fa07c498298cb67a46150445d1426034cdf9b0872e0e782250b116750f669"
+    },
+    "089": {
+      "id": "089",
+      "name": "Tentacule en armement",
+      "src": "/game/xeno-prime/berceau-v1/sprites/boss_actions/089_tentacule_armement.png",
+      "width": 1774,
+      "height": 887,
+      "bounds": [
+        177,
+        243,
+        1757,
+        800
+      ],
+      "sha256": "7dc2ce6e06c932dd90ffef859d3a9999f79e3b7363ceb4f1d1878b20fc80753f"
+    },
+    "090": {
+      "id": "090",
+      "name": "Tentacule à l’impact",
+      "src": "/game/xeno-prime/berceau-v1/sprites/boss_actions/090_tentacule_impact.png",
+      "width": 1024,
+      "height": 1536,
+      "bounds": [
+        27,
+        68,
+        1009,
+        1460
+      ],
+      "sha256": "93adc4dca6dd869bdc633c92416bf5edf72b5e909a255e7dc5822a68613230a4"
+    },
+    "091": {
+      "id": "091",
+      "name": "Anse fermée",
+      "src": "/game/xeno-prime/berceau-v1/sprites/boss_actions/091_anse_fermee.png",
+      "width": 1536,
+      "height": 1024,
+      "bounds": [
+        208,
+        33,
+        1496,
+        990
+      ],
+      "sha256": "a240db1b1d47d0233fd20c0aec554ab2d7fe81fe4c0c9f3df1488a5b1c4ad59c"
+    },
+    "092": {
+      "id": "092",
+      "name": "Fouet en retrait",
+      "src": "/game/xeno-prime/berceau-v1/sprites/boss_actions/092_fouet_retrait.png",
+      "width": 1536,
+      "height": 1024,
+      "bounds": [
+        369,
+        57,
+        1493,
+        965
+      ],
+      "sha256": "7d66505b067218899e8481150cc5dec947e035bf009307d74a0afd4001e2a8a0"
+    },
+    "093": {
+      "id": "093",
+      "name": "Membrane déchirée",
+      "src": "/game/xeno-prime/berceau-v1/sprites/boss_actions/093_membrane_dechiree.png",
+      "width": 1774,
+      "height": 887,
+      "bounds": [
+        30,
+        96,
+        1749,
+        801
+      ],
+      "sha256": "24c9039542c5048f346383c7398859e4c7b354c8a5dd8f35b89df44dd24fabf7"
+    },
+    "094": {
+      "id": "094",
+      "name": "Matriarche en morsure",
+      "src": "/game/xeno-prime/berceau-v1/sprites/boss_actions/094_matriarche_morsure.png",
+      "width": 1672,
+      "height": 941,
+      "bounds": [
+        282,
+        170,
+        1414,
+        792
+      ],
+      "sha256": "2509ec3b504bb99c7747d0c0b3143a4ac8037a16c623ad24f2e8b7d4a5f360e4"
+    },
+    "095": {
+      "id": "095",
+      "name": "Matriarche en recul",
+      "src": "/game/xeno-prime/berceau-v1/sprites/boss_actions/095_matriarche_recul.png",
+      "width": 1671,
+      "height": 941,
+      "bounds": [
+        374,
+        159,
+        1429,
+        792
+      ],
+      "sha256": "e5460ef5884192340b7f7672938d1f3c0cfed7acabc8e7e0f06c8240814f6b9d"
+    },
+    "096": {
+      "id": "096",
+      "name": "Matriarche au souffle actif",
+      "src": "/game/xeno-prime/berceau-v1/sprites/boss_actions/096_matriarche_souffle_actif.png",
+      "width": 1672,
+      "height": 941,
+      "bounds": [
+        82,
+        53,
+        1647,
+        885
+      ],
+      "sha256": "88d4c861e510d390906a4e97bc90d29dae63aa6ef7bfcff2d7b235f720c8053a"
+    },
+    "097": {
+      "id": "097",
+      "name": "Matriarche en agonie",
+      "src": "/game/xeno-prime/berceau-v1/sprites/boss_actions/097_matriarche_agonie.png",
+      "width": 1670,
+      "height": 941,
+      "bounds": [
+        182,
+        116,
+        1517,
+        841
+      ],
+      "sha256": "5f441afc47743ac6b6e71846f77e860db2586f9582d7aeee7f57cfe90ad3423c"
+    },
+    "098": {
+      "id": "098",
+      "name": "Bulbe nerveux rompu",
+      "src": "/game/xeno-prime/berceau-v1/sprites/boss_actions/098_bulbe_rompu.png",
+      "width": 1671,
+      "height": 941,
+      "bounds": [
+        314,
+        191,
+        1420,
+        746
+      ],
+      "sha256": "c0c1792af1cd52f24b1f6a43bc501636735ddb85154db795a997ae2e1af9df12"
+    },
+    "099": {
+      "id": "099",
+      "name": "Glyphe de repère de chasse",
+      "src": "/game/xeno-prime/berceau-v1/sprites/props_effets/099_glyphe_repere_chasse.png",
+      "width": 1254,
+      "height": 1254,
+      "bounds": [
+        301,
+        97,
+        974,
+        1189
+      ],
+      "sha256": "9aa39af8c9246fb40c24286b0d5145c14fd611c2c51ec995a7e8344ea15e1c82"
+    },
+    "BG01": {
+      "id": "BG01",
+      "name": "Horizon du bassin",
+      "src": "/game/xeno-prime/berceau-v1/fonds/BG01_horizon_bassin.png",
+      "width": 1672,
+      "height": 941,
+      "bounds": [
+        0,
+        0,
+        1672,
+        941
+      ],
+      "sha256": "13a49aaeba2e8b40bd358b1591d7ea51b584b74210eb98139b0a0ffbbeeeeff5"
+    },
+    "BG02": {
+      "id": "BG02",
+      "name": "Forêt profonde",
+      "src": "/game/xeno-prime/berceau-v1/fonds/BG02_foret_profonde.png",
+      "width": 1672,
+      "height": 941,
+      "bounds": [
+        0,
+        0,
+        1672,
+        941
+      ],
+      "sha256": "eaf6dee5a388a34e3609e4f1f2ea99719e1660b238617b2f17109e48f7566168"
+    },
+    "BG03": {
+      "id": "BG03",
+      "name": "Canopée lointaine",
+      "src": "/game/xeno-prime/berceau-v1/fonds/BG03_canopee_lointaine.png",
+      "width": 1672,
+      "height": 941,
+      "bounds": [
+        0,
+        0,
+        1672,
+        941
+      ],
+      "sha256": "8d8c2d344bbb1cc62b5c503e47bdcb5cbad4862664aab13b6d81125389a6e048"
+    },
+    "BG04": {
+      "id": "BG04",
+      "name": "Faille profonde",
+      "src": "/game/xeno-prime/berceau-v1/fonds/BG04_faille_profonde.png",
+      "width": 1672,
+      "height": 941,
+      "bounds": [
+        0,
+        0,
+        1672,
+        941
+      ],
+      "sha256": "6211a220d542c6f0c6c40b0ee28fb2c941135c9ade441710d06071a061b705b0"
+    },
+    "BG05": {
+      "id": "BG05",
+      "name": "Galeries lointaines",
+      "src": "/game/xeno-prime/berceau-v1/fonds/BG05_galeries_lointaines.png",
+      "width": 1672,
+      "height": 941,
+      "bounds": [
+        0,
+        0,
+        1672,
+        941
+      ],
+      "sha256": "6eb1f80ba97c791236abb7c0694181d3aa20bdf722f08cc239e3eb8bb61e0432"
+    },
+    "BG06": {
+      "id": "BG06",
+      "name": "Bassin royal",
+      "src": "/game/xeno-prime/berceau-v1/fonds/BG06_bassin_royal.png",
+      "width": 1672,
+      "height": 941,
+      "bounds": [
+        0,
+        0,
+        1672,
+        941
+      ],
+      "sha256": "1f0b12e50097e74269e36fc13ca4a03795008e5549e9d5f8118eb8020df513b9"
+    },
+    "A001": {
+      "id": "A001",
+      "name": "Inspiration au repos",
+      "src": "/game/xeno-prime/berceau-v1/sprites/tete_bulbe/A001_059_inspiration.png",
+      "width": 1671,
+      "height": 941,
+      "bounds": [
+        284,
+        174,
+        1394,
+        790
+      ],
+      "sha256": "88223dc32261a0f05fb87a4997cde48d27f8516f8272b7e6c339b27bcc172af6"
+    },
+    "A002": {
+      "id": "A002",
+      "name": "Anticipation de morsure",
+      "src": "/game/xeno-prime/berceau-v1/sprites/tete_bulbe/A002_094_anticipation_morsure.png",
+      "width": 1671,
+      "height": 941,
+      "bounds": [
+        286,
+        174,
+        1399,
+        789
+      ],
+      "sha256": "06fb608594bcc23e549fc813ebaeb76ad4ede582fc3e2c88a26c889d3e92fe29"
+    },
+    "A003": {
+      "id": "A003",
+      "name": "Fermeture de la morsure",
+      "src": "/game/xeno-prime/berceau-v1/sprites/tete_bulbe/A003_094_fermeture_contact.png",
+      "width": 1671,
+      "height": 941,
+      "bounds": [
+        269,
+        169,
+        1394,
+        792
+      ],
+      "sha256": "7698af25ac8f795cbb26395e7d803a98930a30f893fa224c6016e91a07c4ed80"
+    },
+    "A004": {
+      "id": "A004",
+      "name": "Retour au repos après recul",
+      "src": "/game/xeno-prime/berceau-v1/sprites/tete_bulbe/A004_095_retour_repos.png",
+      "width": 1671,
+      "height": 941,
+      "bounds": [
+        283,
+        171,
+        1395,
+        790
+      ],
+      "sha256": "5a67de46db39847c5fcb885670d22847f3b6e84dea64656115f9ed626e1f241f"
+    },
+    "A005": {
+      "id": "A005",
+      "name": "Charge intermédiaire du souffle",
+      "src": "/game/xeno-prime/berceau-v1/sprites/tete_bulbe/A005_060_charge_intermediaire.png",
+      "width": 1671,
+      "height": 941,
+      "bounds": [
+        294,
+        172,
+        1392,
+        790
+      ],
+      "sha256": "c5a3c15bc7482ee52466f8750e05b2a9234b41e699c25937c6c6ae66bb7561d3"
+    },
+    "A006": {
+      "id": "A006",
+      "name": "Fin du souffle",
+      "src": "/game/xeno-prime/berceau-v1/sprites/tete_bulbe/A006_096_fin_souffle.png",
+      "width": 1671,
+      "height": 941,
+      "bounds": [
+        283,
+        172,
+        1396,
+        792
+      ],
+      "sha256": "6b89d0d9a7f22c0aee6ef7c5764b6520705d5bfc8ab1297a8842b0ccdb3e4e01"
+    },
+    "A007": {
+      "id": "A007",
+      "name": "Exposition progressive du bulbe",
+      "src": "/game/xeno-prime/berceau-v1/sprites/tete_bulbe/A007_061_exposition_progressive.png",
+      "width": 1671,
+      "height": 941,
+      "bounds": [
+        284,
+        174,
+        1396,
+        792
+      ],
+      "sha256": "ce7c0ea1dffa55d82045d84797380450884d39ae2df326b15ba1e198c30d9904"
+    },
+    "A008": {
+      "id": "A008",
+      "name": "Affaissement final de la tête",
+      "src": "/game/xeno-prime/berceau-v1/sprites/tete_bulbe/A008_097_affaissement_final.png",
+      "width": 1671,
+      "height": 941,
+      "bounds": [
+        284,
+        224,
+        1381,
+        791
+      ],
+      "sha256": "f54a036b9ae73073e38558b0a6acf491e96f028cb4888c62d0c38b2d68f18538"
+    },
+    "A009": {
+      "id": "A009",
+      "name": "Bulbe nerveux contracté",
+      "src": "/game/xeno-prime/berceau-v1/sprites/tete_bulbe/A009_063_bulbe_contracte.png",
+      "width": 1671,
+      "height": 941,
+      "bounds": [
+        329,
+        191,
+        1420,
+        746
+      ],
+      "sha256": "04eb46093c5c98e39e4acda5f88c0a1143fc1d46563ef4f09d4fa8ccabc5d6e8"
+    },
+    "A010": {
+      "id": "A010",
+      "name": "Tête après prélèvement de la crête",
+      "src": "/game/xeno-prime/berceau-v1/sprites/tete_bulbe/A010_062_crete_prelevee.png",
+      "width": 1671,
+      "height": 941,
+      "bounds": [
+        258,
+        256,
+        1459,
+        807
+      ],
+      "sha256": "cf960c5545dc42417a0901857cde3caafff07cea2b5acef80b2109060afbdf74"
+    },
+    "A011": {
+      "id": "A011",
+      "name": "Crête arrimée pour le transport",
+      "src": "/game/xeno-prime/berceau-v1/sprites/tete_bulbe/A011_054_crete_arrimee_transport.png",
+      "width": 1254,
+      "height": 1254,
+      "bounds": [
+        92,
+        101,
+        1197,
+        1159
+      ],
+      "sha256": "e47bf62c5ef95885dd5c78efb907490bf5d586381d9a5c5d1630784bcb74ba16"
+    },
+    "A012": {
+      "id": "A012",
+      "name": "Crête endommagée",
+      "src": "/game/xeno-prime/berceau-v1/sprites/tete_bulbe/A012_054_crete_endommagee.png",
+      "width": 1254,
+      "height": 1254,
+      "bounds": [
+        92,
+        105,
+        1141,
+        1160
+      ],
+      "sha256": "2886e5300bf15598968fdca563c058f3461a68ef8c6f8b731a17eba615886846"
+    },
+    "A013": {
+      "id": "A013",
+      "name": "Déploiement intermédiaire du balayage",
+      "src": "/game/xeno-prime/berceau-v1/sprites/tentacules/A013_089_balayage_deploiement_intermediaire.png",
+      "width": 1774,
+      "height": 887,
+      "bounds": [
+        85,
+        130,
+        1759,
+        796
+      ],
+      "sha256": "5eede33195ef9f295c187070be0bf16d5d111c17ee00a15b188f9bf31d86536f"
+    },
+    "A014": {
+      "id": "A014",
+      "name": "Retour du balayage",
+      "src": "/game/xeno-prime/berceau-v1/sprites/tentacules/A014_038_balayage_retour.png",
+      "width": 1774,
+      "height": 887,
+      "bounds": [
+        153,
+        150,
+        1757,
+        795
+      ],
+      "sha256": "6ccaac78a76b77ac62894aa2fdaf1b09e6043bce065241a6340d2de71d8c59cb"
+    },
+    "A015": {
+      "id": "A015",
+      "name": "Descente de perforation",
+      "src": "/game/xeno-prime/berceau-v1/sprites/tentacules/A015_039_perforation_descente.png",
+      "width": 1024,
+      "height": 1536,
+      "bounds": [
+        115,
+        233,
+        1004,
+        1489
+      ],
+      "sha256": "370154c38fdb516def9ad51bf75cf420b69ad8f71cf428949a5929e16905f1b2"
+    },
+    "A016": {
+      "id": "A016",
+      "name": "Retrait de perforation",
+      "src": "/game/xeno-prime/berceau-v1/sprites/tentacules/A016_090_perforation_retrait.png",
+      "width": 1024,
+      "height": 1536,
+      "bounds": [
+        27,
+        67,
+        1010,
+        1461
+      ],
+      "sha256": "1506f9b9816bddde467fba17e2ad09dfd7ec151eae2efd7e974fa223fc01b04b"
+    },
+    "A017": {
+      "id": "A017",
+      "name": "Anse à demi refermée",
+      "src": "/game/xeno-prime/berceau-v1/sprites/tentacules/A017_041_anse_fermeture_intermediaire.png",
+      "width": 1536,
+      "height": 1024,
+      "bounds": [
+        173,
+        32,
+        1492,
+        990
+      ],
+      "sha256": "771bbf164c7d528588418f6a842b209b19ec612b908c701a5fc7ecd363a29da2"
+    },
+    "A018": {
+      "id": "A018",
+      "name": "Libération de l’anse",
+      "src": "/game/xeno-prime/berceau-v1/sprites/tentacules/A018_091_anse_liberation.png",
+      "width": 1536,
+      "height": 1024,
+      "bounds": [
+        117,
+        31,
+        1487,
+        988
+      ],
+      "sha256": "3c7da04e4e5ecde52d8110ea804087f863d02846c70f5fec92ad33de16c389f8"
+    },
+    "A019": {
+      "id": "A019",
+      "name": "Armement du fouet diagonal",
+      "src": "/game/xeno-prime/berceau-v1/sprites/tentacules/A019_045_fouet_armement.png",
+      "width": 1536,
+      "height": 1024,
+      "bounds": [
+        573,
+        11,
+        1492,
+        965
+      ],
+      "sha256": "ce17fe5fa92b2293145b1f7f6a8fbbb2040499f3ddcb3454e5169e72e3d019ab"
+    },
+    "A020": {
+      "id": "A020",
+      "name": "Descente intermédiaire du fouet",
+      "src": "/game/xeno-prime/berceau-v1/sprites/tentacules/A020_045_fouet_descente_intermediaire.png",
+      "width": 1536,
+      "height": 1024,
+      "bounds": [
+        143,
+        261,
+        1501,
+        987
+      ],
+      "sha256": "9923eaae64bec57655ff5787fb0277615316fa64e9bf3b8a61347ef59e0be084"
+    },
+    "A021": {
+      "id": "A021",
+      "name": "Souche sectionnée indépendante",
+      "src": "/game/xeno-prime/berceau-v1/sprites/tentacules/A021_042_souche_separee.png",
+      "width": 1536,
+      "height": 1024,
+      "bounds": [
+        937,
+        244,
+        1512,
+        936
+      ],
+      "sha256": "dbb927b491a08b84a95344d201ac1189656080659c1a163ca1b6b89b72157ac4"
+    },
+    "A022": {
+      "id": "A022",
+      "name": "Segment détaché indépendant",
+      "src": "/game/xeno-prime/berceau-v1/sprites/tentacules/A022_042_segment_detache_separe.png",
+      "width": 1536,
+      "height": 1024,
+      "bounds": [
+        45,
+        567,
+        960,
+        920
+      ],
+      "sha256": "1124d4945229138aaeec15aadbed022952204dd4761e3c55f93f4fe05ddd505f"
+    },
+    "A023": {
+      "id": "A023",
+      "name": "Évent entrouvert",
+      "src": "/game/xeno-prime/berceau-v1/sprites/effets_interactions/A023_033_event_entrouvert.png",
+      "width": 1366,
+      "height": 1151,
+      "bounds": [
+        131,
+        37,
+        1244,
+        1103
+      ],
+      "sha256": "7719bdd90d5fbaadec49b7875204fb095a38175f8d6b7fe0eff4252103b73b9d"
+    },
+    "A024": {
+      "id": "A024",
+      "name": "Membrane de passage entrouverte",
+      "src": "/game/xeno-prime/berceau-v1/sprites/effets_interactions/A024_034_membrane_passage_entrouverte.png",
+      "width": 1312,
+      "height": 1199,
+      "bounds": [
+        162,
+        64,
+        1150,
+        1111
+      ],
+      "sha256": "a3e1a02d02c11e6b6fa7f28dcf46cd3254f57585afbcefbd2aa15751ba9f876a"
+    },
+    "A025": {
+      "id": "A025",
+      "name": "Vanne en cours de drainage",
+      "src": "/game/xeno-prime/berceau-v1/sprites/effets_interactions/A025_030_vanne_drainage_intermediaire.png",
+      "width": 2172,
+      "height": 724,
+      "bounds": [
+        126,
+        143,
+        2054,
+        580
+      ],
+      "sha256": "045952d045dd77f05cdc169c8eb28c7a274e33c28080a661c8f6838911fa6532"
+    },
+    "A026": {
+      "id": "A026",
+      "name": "Filaments à demi dressés",
+      "src": "/game/xeno-prime/berceau-v1/sprites/effets_interactions/A026_031_filaments_demi_alerte.png",
+      "width": 1254,
+      "height": 1254,
+      "bounds": [
+        108,
+        76,
+        1161,
+        1172
+      ],
+      "sha256": "9f5cfdaf4e96f8e3c191de3f256a6ff5cad72c0db1e5d3a67cecc8bf33ce6d9c"
+    },
+    "A027": {
+      "id": "A027",
+      "name": "Membrane royale gonflée",
+      "src": "/game/xeno-prime/berceau-v1/sprites/effets_interactions/A027_046_membrane_gonflee.png",
+      "width": 1774,
+      "height": 887,
+      "bounds": [
+        30,
+        95,
+        1749,
+        801
+      ],
+      "sha256": "24baedae5a67a31c4d4d7f35f1d705d8f7d0a2f7f0813892a45e05fa8d04f437"
+    },
+    "A028": {
+      "id": "A028",
+      "name": "Déchirure initiale de la membrane royale",
+      "src": "/game/xeno-prime/berceau-v1/sprites/effets_interactions/A028_093_membrane_dechirure_initiale.png",
+      "width": 1774,
+      "height": 887,
+      "bounds": [
+        29,
+        95,
+        1749,
+        801
+      ],
+      "sha256": "edb5b70e799239aa349bfcff2cf3686adfa61ae49a7d1f04ca3b320be3669dd9"
+    },
+    "A029": {
+      "id": "A029",
+      "name": "Rupture initiale du bulbe",
+      "src": "/game/xeno-prime/berceau-v1/sprites/effets_interactions/A029_063_bulbe_rupture_initiale.png",
+      "width": 1671,
+      "height": 941,
+      "bounds": [
+        317,
+        187,
+        1422,
+        747
+      ],
+      "sha256": "7cfc82b24419c8ee1e2c1075927f926b5fa9682d1196cac53e9903ab2c9628d3"
+    },
+    "A030": {
+      "id": "A030",
+      "name": "Naissance du jet acide",
+      "src": "/game/xeno-prime/berceau-v1/sprites/effets_interactions/A030_103_jet_naissance.png",
+      "width": 1536,
+      "height": 1024,
+      "bounds": [
+        941,
+        433,
+        1505,
+        625
+      ],
+      "sha256": "836b72cbcd848b606ab7f6983fd1b860a4814a38866a61ea5f83bd67047dcf1d"
+    },
+    "A031": {
+      "id": "A031",
+      "name": "Extinction du jet acide",
+      "src": "/game/xeno-prime/berceau-v1/sprites/effets_interactions/A031_103_jet_extinction.png",
+      "width": 1536,
+      "height": 1024,
+      "bounds": [
+        78,
+        412,
+        1487,
+        607
+      ],
+      "sha256": "65fa81058bbfa5754e2130f80a882f85e6812aae1c94893836f6a4e1912441e0"
+    },
+    "A032": {
+      "id": "A032",
+      "name": "Premier contact acide",
+      "src": "/game/xeno-prime/berceau-v1/sprites/effets_interactions/A032_104_acide_premier_contact.png",
+      "width": 1536,
+      "height": 1024,
+      "bounds": [
+        500,
+        535,
+        1038,
+        763
+      ],
+      "sha256": "b25cea4405461a7a3720124949f902a2c6ce1b58118967863bba17c350e38dbd"
+    },
+    "A033": {
+      "id": "A033",
+      "name": "Début de l’impact de poussière",
+      "src": "/game/xeno-prime/berceau-v1/sprites/effets_interactions/A033_070_poussiere_debut_impact.png",
+      "width": 1536,
+      "height": 1024,
+      "bounds": [
+        419,
+        576,
+        1106,
+        794
+      ],
+      "sha256": "be0a9ee1b68d6a905a87fba2c63c3e8b50e66c6fa1048467b300ceb4369feb44"
+    },
+    "A034": {
+      "id": "A034",
+      "name": "Télégraphe de sol fissuré",
+      "src": "/game/xeno-prime/berceau-v1/sprites/effets_interactions/A034_071_telegraphe_sol_fissure.png",
+      "width": 1536,
+      "height": 1024,
+      "bounds": [
+        303,
+        688,
+        1142,
+        809
+      ],
+      "sha256": "e19e5d5abbec158a9a36fa3a10fc543f05f2cc87a74598ad877a11e7e67b6084"
+    },
+    "A035": {
+      "id": "A035",
+      "name": "Amorce de vapeur",
+      "src": "/game/xeno-prime/berceau-v1/sprites/effets_interactions/A035_068_vapeur_amorce.png",
+      "width": 1536,
+      "height": 1024,
+      "bounds": [
+        433,
+        597,
+        674,
+        793
+      ],
+      "sha256": "0c786d81ffed1666393894922ece1a1be3ff82979215a6d5b07565fcf8b023ac"
+    },
+    "A036": {
+      "id": "A036",
+      "name": "Dissipation des spores",
+      "src": "/game/xeno-prime/berceau-v1/sprites/effets_interactions/A036_067_spores_dissipation.png",
+      "width": 1536,
+      "height": 1024,
+      "bounds": [
+        326,
+        278,
+        1264,
+        716
+      ],
+      "sha256": "6dd22337fa0103617d37d23a579b5185e65236a7b549cb24029bfcaced055f7d"
+    },
+    "A037": {
+      "id": "A037",
+      "name": "Préparation complète du souffle au cadre 059",
+      "src": "/game/xeno-prime/berceau-v1/sprites/tete_bulbe/A037_060_preparation_cadre_059.png",
+      "width": 1671,
+      "height": 941,
+      "bounds": [
+        281,
+        172,
+        1397,
+        792
+      ],
+      "sha256": "f74e6e71d6576ad232503a028748b0ea42efe953e24e83ac5bb03ec3675850a7"
+    },
+    "A038": {
+      "id": "A038",
+      "name": "Souffle actif au cadre 059",
+      "src": "/game/xeno-prime/berceau-v1/sprites/tete_bulbe/A038_096_souffle_actif_cadre_059.png",
+      "width": 1671,
+      "height": 941,
+      "bounds": [
+        283,
+        173,
+        1395,
+        790
+      ],
+      "sha256": "277f2a981a3bd01996d9dd5a967fbce1694b01bdb8fd23220a969cdfa88fd818"
+    },
+    "A039": {
+      "id": "A039",
+      "name": "Vulnérabilité complète au cadre 059",
+      "src": "/game/xeno-prime/berceau-v1/sprites/tete_bulbe/A039_061_vulnerable_cadre_059.png",
+      "width": 1671,
+      "height": 941,
+      "bounds": [
+        285,
+        174,
+        1395,
+        790
+      ],
+      "sha256": "5842b38bc29cdfe08f3eb827ac89c0bb09c54cc1c47dcd866a376016dec88419"
+    },
+    "A040": {
+      "id": "A040",
+      "name": "Agonie au cadre 059",
+      "src": "/game/xeno-prime/berceau-v1/sprites/tete_bulbe/A040_097_agonie_cadre_059.png",
+      "width": 1671,
+      "height": 941,
+      "bounds": [
+        285,
+        195,
+        1394,
+        791
+      ],
+      "sha256": "aa7962fe5d9880f39694a7972473afd042f9fa0f971be81f71e2bfde7faf45cf"
+    },
+    "A041": {
+      "id": "A041",
+      "name": "Tête morte au cadre 059",
+      "src": "/game/xeno-prime/berceau-v1/sprites/tete_bulbe/A041_062_morte_cadre_059.png",
+      "width": 1670,
+      "height": 942,
+      "bounds": [
+        284,
+        276,
+        1377,
+        794
+      ],
+      "sha256": "e51f8f82d95fa875010faaee4fa26c64b12560a66a911e732079fe32beb3ac36"
+    },
+    "A042": {
+      "id": "A042",
+      "name": "Tête après prélèvement au cadre 059",
+      "src": "/game/xeno-prime/berceau-v1/sprites/tete_bulbe/A042_062_prelevee_cadre_059.png",
+      "width": 1670,
+      "height": 942,
+      "bounds": [
+        283,
+        272,
+        1378,
+        796
+      ],
+      "sha256": "06b529793903a8f6cd4f38ced08a040b73e659acd0bc7576be85c00a938d1fd6"
+    }
+  },
+  "scenes": [
+    {
+      "id": "01",
+      "title": "La Lisière des exuvies",
+      "description": "Entrée du secteur, coques abandonnées et première balise de chasse. La forêt cache encore la ruche.",
+      "background": "BG01",
+      "width": 3200,
+      "height": 1440,
+      "scenery": [
+        {
+          "id": "001",
+          "x": -127.742,
+          "y": 148.172,
+          "width": 1059.431,
+          "height": 1059.431,
+          "opacity": 0.85,
+          "flip": false,
+          "after": "001"
+        },
+        {
+          "id": "002",
+          "x": 2468.54,
+          "y": 209.407,
+          "width": 1011.567,
+          "height": 1011.567,
+          "opacity": 0.85,
+          "flip": true,
+          "after": "002"
+        },
+        {
+          "id": "006",
+          "x": 1929.892,
+          "y": 277.473,
+          "width": 1403.871,
+          "height": 935.914,
+          "opacity": 0.85,
+          "flip": false,
+          "after": "006"
+        },
+        {
+          "id": "010",
+          "x": 466.655,
+          "y": 698.677,
+          "width": 507.094,
+          "height": 507.094,
+          "opacity": 0.85,
+          "flip": false,
+          "after": "010"
+        },
+        {
+          "id": "003",
+          "x": 2081.536,
+          "y": 656.771,
+          "width": 550.345,
+          "height": 550.345,
+          "opacity": 0.85,
+          "flip": false,
+          "after": "003"
+        },
+        {
+          "id": "053",
+          "x": 1362.39,
+          "y": 915.856,
+          "width": 345.039,
+          "height": 345.039,
+          "opacity": 0.85,
+          "flip": false,
+          "after": "053"
+        },
+        {
+          "id": "088",
+          "x": 1750.954,
+          "y": 987.975,
+          "width": 309.822,
+          "height": 206.548,
+          "opacity": 0.85,
+          "flip": false,
+          "after": "088"
+        },
+        {
+          "id": "099",
+          "x": 655.897,
+          "y": 1015.788,
+          "width": 183.736,
+          "height": 183.736,
+          "opacity": 0.85,
+          "flip": false,
+          "after": "099"
+        },
+        {
+          "id": "075",
+          "x": -125.214,
+          "y": 1128.885,
+          "width": 770.863,
+          "height": 385.432,
+          "opacity": 0.85,
+          "flip": false,
+          "after": "075"
+        },
+        {
+          "id": "075",
+          "x": 2615.06,
+          "y": 1156.312,
+          "width": 730.292,
+          "height": 365.146,
+          "opacity": 0.85,
+          "flip": true,
+          "after": "075"
+        }
+      ]
+    },
+    {
+      "id": "02",
+      "title": "La Forêt des calices noirs",
+      "description": "Les calices ferment la voûte ; des filaments sensoriels bordent un passage entre les troncs.",
+      "background": "BG02",
+      "width": 3200,
+      "height": 1440,
+      "scenery": [
+        {
+          "id": "001",
+          "x": -319.959,
+          "y": 16.694,
+          "width": 1191.86,
+          "height": 1191.86,
+          "opacity": 0.85,
+          "flip": false,
+          "after": "001"
+        },
+        {
+          "id": "002",
+          "x": 2464.607,
+          "y": 85.582,
+          "width": 1138.013,
+          "height": 1138.013,
+          "opacity": 0.85,
+          "flip": true,
+          "after": "002"
+        },
+        {
+          "id": "004",
+          "x": 330.882,
+          "y": 105.838,
+          "width": 725.077,
+          "height": 1087.615,
+          "opacity": 0.85,
+          "flip": false,
+          "after": "004"
+        },
+        {
+          "id": "004",
+          "x": 2139.439,
+          "y": 24.77,
+          "width": 779.8,
+          "height": 1169.699,
+          "opacity": 0.85,
+          "flip": true,
+          "after": "004"
+        },
+        {
+          "id": "018",
+          "x": 1066.313,
+          "y": 815.314,
+          "width": 260.599,
+          "height": 390.898,
+          "opacity": 0.85,
+          "flip": false,
+          "after": "018"
+        },
+        {
+          "id": "073",
+          "x": 1821.58,
+          "y": 816.043,
+          "width": 961.887,
+          "height": 400.704,
+          "opacity": 0.85,
+          "flip": false,
+          "after": "073"
+        },
+        {
+          "id": "084",
+          "x": 1643.507,
+          "y": 946.384,
+          "width": 240.493,
+          "height": 240.493,
+          "opacity": 0.85,
+          "flip": false,
+          "after": "084"
+        },
+        {
+          "id": "025",
+          "x": 2555.533,
+          "y": 891.574,
+          "width": 332.487,
+          "height": 304.569,
+          "opacity": 0.85,
+          "flip": false,
+          "after": "026"
+        },
+        {
+          "id": "048",
+          "x": 1227.739,
+          "y": 554.47,
+          "width": 398.799,
+          "height": 398.799,
+          "opacity": 0.85,
+          "flip": false,
+          "after": "048"
+        },
+        {
+          "id": "010",
+          "x": 5.543,
+          "y": 667.734,
+          "width": 549.351,
+          "height": 549.351,
+          "opacity": 0.85,
+          "flip": false,
+          "after": "010"
+        },
+        {
+          "id": "075",
+          "x": -125.214,
+          "y": 1128.885,
+          "width": 770.863,
+          "height": 385.432,
+          "opacity": 0.85,
+          "flip": false,
+          "after": "075"
+        },
+        {
+          "id": "075",
+          "x": 2615.06,
+          "y": 1156.312,
+          "width": 730.292,
+          "height": 365.146,
+          "opacity": 0.85,
+          "flip": true,
+          "after": "075"
+        }
+      ]
+    },
+    {
+      "id": "03",
+      "title": "Le Lit de la rivière morte",
+      "description": "Le cours d’eau s’est retiré derrière une digue de résine. Un premier tentacule coupe la traversée.",
+      "background": "BG01",
+      "width": 3200,
+      "height": 1440,
+      "scenery": [
+        {
+          "id": "001",
+          "x": -565.353,
+          "y": 289.764,
+          "width": 916.816,
+          "height": 916.816,
+          "opacity": 0.85,
+          "flip": false,
+          "after": "001"
+        },
+        {
+          "id": "002",
+          "x": 2782.775,
+          "y": 342.756,
+          "width": 875.394,
+          "height": 875.394,
+          "opacity": 0.85,
+          "flip": true,
+          "after": "002"
+        },
+        {
+          "id": "021",
+          "x": 1904.183,
+          "y": 912.825,
+          "width": 981.635,
+          "height": 368.113,
+          "opacity": 0.85,
+          "flip": false,
+          "after": "021"
+        },
+        {
+          "id": "023",
+          "x": 638.686,
+          "y": 743.796,
+          "width": 1220.438,
+          "height": 686.861,
+          "opacity": 0.85,
+          "flip": false,
+          "after": "023"
+        },
+        {
+          "id": "053",
+          "x": 460.189,
+          "y": 892.837,
+          "width": 388.169,
+          "height": 388.169,
+          "opacity": 0.85,
+          "flip": false,
+          "after": "053"
+        },
+        {
+          "id": "019",
+          "x": 379.449,
+          "y": 746.09,
+          "width": 859.048,
+          "height": 483.471,
+          "opacity": 0.85,
+          "flip": false,
+          "after": "019"
+        },
+        {
+          "id": "037",
+          "x": 1190.583,
+          "y": 529.74,
+          "width": 1025.439,
+          "height": 683.626,
+          "opacity": 0.85,
+          "flip": false,
+          "after": "043"
+        },
+        {
+          "id": "015",
+          "x": 2656.667,
+          "y": 403.067,
+          "width": 1448.2,
+          "height": 815.533,
+          "opacity": 0.85,
+          "flip": false,
+          "after": "015"
+        },
+        {
+          "id": "003",
+          "x": -56.834,
+          "y": 689.467,
+          "width": 537.241,
+          "height": 537.241,
+          "opacity": 0.85,
+          "flip": false,
+          "after": "003"
+        },
+        {
+          "id": "075",
+          "x": -125.214,
+          "y": 1128.885,
+          "width": 770.863,
+          "height": 385.432,
+          "opacity": 0.85,
+          "flip": false,
+          "after": "075"
+        },
+        {
+          "id": "075",
+          "x": 2615.06,
+          "y": 1156.312,
+          "width": 730.292,
+          "height": 365.146,
+          "opacity": 0.85,
+          "flip": true,
+          "after": "075"
+        }
+      ]
+    },
+    {
+      "id": "04",
+      "title": "Les Troncs étranglés",
+      "description": "Une montée dans deux troncs étranglés, avec des branches reliées et des prises racinaires.",
+      "background": "BG02",
+      "width": 2000,
+      "height": 2560,
+      "scenery": [
+        {
+          "id": "004",
+          "x": 82.124,
+          "y": 181.944,
+          "width": 1436.473,
+          "height": 2154.709,
+          "opacity": 0.85,
+          "flip": false,
+          "after": "004"
+        },
+        {
+          "id": "004",
+          "x": 1203.026,
+          "y": 232.612,
+          "width": 1402.271,
+          "height": 2103.407,
+          "opacity": 0.85,
+          "flip": true,
+          "after": "004"
+        },
+        {
+          "id": "005",
+          "x": 179.826,
+          "y": 2127.384,
+          "width": 721.977,
+          "height": 360.988,
+          "opacity": 0.85,
+          "flip": false,
+          "after": "005"
+        },
+        {
+          "id": "074",
+          "x": 529.224,
+          "y": 2127.513,
+          "width": 282.947,
+          "height": 424.421,
+          "opacity": 0.85,
+          "flip": false,
+          "after": "074"
+        },
+        {
+          "id": "005",
+          "x": 988.663,
+          "y": 1775.942,
+          "width": 804.488,
+          "height": 402.244,
+          "opacity": 0.85,
+          "flip": false,
+          "after": "005"
+        },
+        {
+          "id": "074",
+          "x": 1379.224,
+          "y": 1777.513,
+          "width": 282.947,
+          "height": 424.421,
+          "opacity": 0.85,
+          "flip": false,
+          "after": "074"
+        },
+        {
+          "id": "005",
+          "x": 138.953,
+          "y": 1416.302,
+          "width": 783.86,
+          "height": 391.93,
+          "opacity": 0.85,
+          "flip": false,
+          "after": "005"
+        },
+        {
+          "id": "074",
+          "x": 519.224,
+          "y": 1417.513,
+          "width": 282.947,
+          "height": 424.421,
+          "opacity": 0.85,
+          "flip": false,
+          "after": "074"
+        },
+        {
+          "id": "005",
+          "x": 1029.826,
+          "y": 1057.384,
+          "width": 721.977,
+          "height": 360.988,
+          "opacity": 0.85,
+          "flip": false,
+          "after": "005"
+        },
+        {
+          "id": "074",
+          "x": 1379.224,
+          "y": 1057.513,
+          "width": 282.947,
+          "height": 424.421,
+          "opacity": 0.85,
+          "flip": false,
+          "after": "074"
+        },
+        {
+          "id": "005",
+          "x": 199.244,
+          "y": 696.663,
+          "width": 763.233,
+          "height": 381.616,
+          "opacity": 0.85,
+          "flip": false,
+          "after": "005"
+        },
+        {
+          "id": "074",
+          "x": 569.224,
+          "y": 697.513,
+          "width": 282.947,
+          "height": 424.421,
+          "opacity": 0.85,
+          "flip": false,
+          "after": "074"
+        },
+        {
+          "id": "005",
+          "x": 1079.971,
+          "y": 357.564,
+          "width": 711.663,
+          "height": 355.831,
+          "opacity": 0.85,
+          "flip": false,
+          "after": "005"
+        },
+        {
+          "id": "074",
+          "x": 1424.224,
+          "y": 357.513,
+          "width": 282.947,
+          "height": 424.421,
+          "opacity": 0.85,
+          "flip": false,
+          "after": "074"
+        },
+        {
+          "id": "044",
+          "x": 364.889,
+          "y": 521.082,
+          "width": 559.174,
+          "height": 559.174,
+          "opacity": 0.85,
+          "flip": false,
+          "after": "042"
+        },
+        {
+          "id": "007",
+          "x": 631.173,
+          "y": 293.485,
+          "width": 603.986,
+          "height": 905.98,
+          "opacity": 0.85,
+          "flip": false,
+          "after": "007"
+        },
+        {
+          "id": "075",
+          "x": -125.214,
+          "y": 2248.885,
+          "width": 770.863,
+          "height": 385.432,
+          "opacity": 0.85,
+          "flip": false,
+          "after": "075"
+        },
+        {
+          "id": "075",
+          "x": 1415.06,
+          "y": 2276.312,
+          "width": 730.292,
+          "height": 365.146,
+          "opacity": 0.85,
+          "flip": true,
+          "after": "075"
+        }
+      ]
+    },
+    {
+      "id": "05",
+      "title": "La Canopée des membranes",
+      "description": "Un pont organique suspendu traverse les hautes branches. La végétation cède progressivement aux tissus de la ruche.",
+      "background": "BG03",
+      "width": 3200,
+      "height": 1440,
+      "scenery": [
+        {
+          "id": "001",
+          "x": -398.765,
+          "y": 87.49,
+          "width": 1120.552,
+          "height": 1120.552,
+          "opacity": 0.85,
+          "flip": false,
+          "after": "001"
+        },
+        {
+          "id": "002",
+          "x": 2656.725,
+          "y": 152.257,
+          "width": 1069.927,
+          "height": 1069.927,
+          "opacity": 0.85,
+          "flip": true,
+          "after": "002"
+        },
+        {
+          "id": "018",
+          "x": 227.904,
+          "y": 901.123,
+          "width": 199.281,
+          "height": 298.922,
+          "opacity": 0.85,
+          "flip": false,
+          "after": "018"
+        },
+        {
+          "id": "018",
+          "x": 2857.404,
+          "y": 901.123,
+          "width": 199.281,
+          "height": 298.922,
+          "opacity": 0.85,
+          "flip": false,
+          "after": "018"
+        },
+        {
+          "id": "008",
+          "x": 535.882,
+          "y": 171.765,
+          "width": 2187.132,
+          "height": 874.632,
+          "opacity": 0.85,
+          "flip": false,
+          "after": "081"
+        },
+        {
+          "id": "009",
+          "x": 1351.435,
+          "y": 235.994,
+          "width": 333.527,
+          "height": 500.291,
+          "opacity": 0.85,
+          "flip": false,
+          "after": "082"
+        },
+        {
+          "id": "009",
+          "x": 2178.274,
+          "y": 263.611,
+          "width": 390.298,
+          "height": 585.447,
+          "opacity": 0.85,
+          "flip": false,
+          "after": "082"
+        },
+        {
+          "id": "032",
+          "x": 1518.2,
+          "y": 292.661,
+          "width": 1062.622,
+          "height": 354.207,
+          "opacity": 0.85,
+          "flip": false,
+          "after": "085"
+        },
+        {
+          "id": "007",
+          "x": 583.932,
+          "y": 86.712,
+          "width": 485.966,
+          "height": 728.949,
+          "opacity": 0.85,
+          "flip": false,
+          "after": "007"
+        },
+        {
+          "id": "078",
+          "x": 2671.354,
+          "y": 387.208,
+          "width": 594.112,
+          "height": 594.112,
+          "opacity": 0.85,
+          "flip": false,
+          "after": "078"
+        },
+        {
+          "id": "075",
+          "x": -125.214,
+          "y": 1128.885,
+          "width": 770.863,
+          "height": 385.432,
+          "opacity": 0.85,
+          "flip": false,
+          "after": "075"
+        },
+        {
+          "id": "075",
+          "x": 2615.06,
+          "y": 1156.312,
+          "width": 730.292,
+          "height": 365.146,
+          "opacity": 0.85,
+          "flip": true,
+          "after": "075"
+        }
+      ]
+    },
+    {
+      "id": "06",
+      "title": "Le Perchoir abandonné",
+      "description": "Un ancien poste de chasse offre une halte près d’une passerelle effondrée.",
+      "background": "BG03",
+      "width": 3200,
+      "height": 1440,
+      "scenery": [
+        {
+          "id": "001",
+          "x": -317.23,
+          "y": 178.513,
+          "width": 1028.871,
+          "height": 1028.871,
+          "opacity": 0.85,
+          "flip": false,
+          "after": "001"
+        },
+        {
+          "id": "002",
+          "x": 2769.447,
+          "y": 237.981,
+          "width": 982.387,
+          "height": 982.387,
+          "opacity": 0.85,
+          "flip": true,
+          "after": "002"
+        },
+        {
+          "id": "018",
+          "x": 460.352,
+          "y": 864.588,
+          "width": 268.263,
+          "height": 402.395,
+          "opacity": 0.85,
+          "flip": false,
+          "after": "018"
+        },
+        {
+          "id": "018",
+          "x": 1802.036,
+          "y": 896.766,
+          "width": 245.269,
+          "height": 367.904,
+          "opacity": 0.85,
+          "flip": false,
+          "after": "018"
+        },
+        {
+          "id": "018",
+          "x": 2425.966,
+          "y": 971.849,
+          "width": 191.617,
+          "height": 287.425,
+          "opacity": 0.85,
+          "flip": false,
+          "after": "018"
+        },
+        {
+          "id": "049",
+          "x": 1634.574,
+          "y": 642.17,
+          "width": 1030.181,
+          "height": 686.787,
+          "opacity": 0.85,
+          "flip": false,
+          "after": "049"
+        },
+        {
+          "id": "050",
+          "x": 467.673,
+          "y": 611.813,
+          "width": 1143.166,
+          "height": 762.111,
+          "opacity": 0.85,
+          "flip": false,
+          "after": "077"
+        },
+        {
+          "id": "048",
+          "x": 2421.555,
+          "y": 795.989,
+          "width": 509.576,
+          "height": 509.576,
+          "opacity": 0.85,
+          "flip": false,
+          "after": "048"
+        },
+        {
+          "id": "052",
+          "x": 1826.511,
+          "y": 896.544,
+          "width": 188.414,
+          "height": 188.414,
+          "opacity": 0.85,
+          "flip": false,
+          "after": "052"
+        },
+        {
+          "id": "051",
+          "x": 2543.761,
+          "y": 734.128,
+          "width": 460.183,
+          "height": 460.183,
+          "opacity": 0.85,
+          "flip": false,
+          "after": "051"
+        },
+        {
+          "id": "101",
+          "x": 1304.724,
+          "y": 897.998,
+          "width": 366.749,
+          "height": 366.749,
+          "opacity": 0.85,
+          "flip": false,
+          "after": "101"
+        },
+        {
+          "id": "099",
+          "x": 179.359,
+          "y": 950.458,
+          "width": 252.637,
+          "height": 252.637,
+          "opacity": 0.85,
+          "flip": false,
+          "after": "099"
+        },
+        {
+          "id": "053",
+          "x": 275.236,
+          "y": 838.547,
+          "width": 485.211,
+          "height": 485.211,
+          "opacity": 0.85,
+          "flip": false,
+          "after": "053"
+        },
+        {
+          "id": "073",
+          "x": 611.137,
+          "y": 1256.361,
+          "width": 1012.513,
+          "height": 421.794,
+          "opacity": 0.85,
+          "flip": false,
+          "after": "073"
+        },
+        {
+          "id": "075",
+          "x": -125.214,
+          "y": 1128.885,
+          "width": 770.863,
+          "height": 385.432,
+          "opacity": 0.85,
+          "flip": false,
+          "after": "075"
+        },
+        {
+          "id": "075",
+          "x": 2615.06,
+          "y": 1156.312,
+          "width": 730.292,
+          "height": 365.146,
+          "opacity": 0.85,
+          "flip": true,
+          "after": "075"
+        }
+      ]
+    },
+    {
+      "id": "07",
+      "title": "La Faille qui respire",
+      "description": "Descente dans une faille humide, rythmée par des évents. La masse sous la croûte reste partiellement dissimulée.",
+      "background": "BG04",
+      "width": 2100,
+      "height": 2560,
+      "scenery": [
+        {
+          "id": "022",
+          "x": -496.682,
+          "y": -251.814,
+          "width": 3300.047,
+          "height": 2956.344,
+          "opacity": 0.85,
+          "flip": false,
+          "after": "022"
+        },
+        {
+          "id": "022",
+          "x": 1437.406,
+          "y": -198.383,
+          "width": 3237.782,
+          "height": 2900.564,
+          "opacity": 0.85,
+          "flip": true,
+          "after": "022"
+        },
+        {
+          "id": "076",
+          "x": 240.876,
+          "y": 421.616,
+          "width": 451.867,
+          "height": 677.8,
+          "opacity": 0.85,
+          "flip": false,
+          "after": "076"
+        },
+        {
+          "id": "076",
+          "x": 1519.876,
+          "y": 781.616,
+          "width": 451.867,
+          "height": 677.8,
+          "opacity": 0.85,
+          "flip": false,
+          "after": "076"
+        },
+        {
+          "id": "076",
+          "x": 274.876,
+          "y": 1181.616,
+          "width": 451.867,
+          "height": 677.8,
+          "opacity": 0.85,
+          "flip": false,
+          "after": "076"
+        },
+        {
+          "id": "076",
+          "x": 1516.876,
+          "y": 1611.616,
+          "width": 451.867,
+          "height": 677.8,
+          "opacity": 0.85,
+          "flip": false,
+          "after": "076"
+        },
+        {
+          "id": "076",
+          "x": 264.876,
+          "y": 1981.616,
+          "width": 451.867,
+          "height": 677.8,
+          "opacity": 0.85,
+          "flip": false,
+          "after": "076"
+        },
+        {
+          "id": "074",
+          "x": 1024.855,
+          "y": 374.197,
+          "width": 660.211,
+          "height": 990.316,
+          "opacity": 0.85,
+          "flip": false,
+          "after": "074"
+        },
+        {
+          "id": "033",
+          "x": 1296.664,
+          "y": 1305.444,
+          "width": 451.89,
+          "height": 381.096,
+          "opacity": 0.85,
+          "flip": false,
+          "after": "086"
+        },
+        {
+          "id": "064",
+          "x": 286.244,
+          "y": 1714.201,
+          "width": 1256.01,
+          "height": 706.881,
+          "opacity": 0.85,
+          "flip": false,
+          "after": "064"
+        },
+        {
+          "id": "080",
+          "x": 675.139,
+          "y": 73.408,
+          "width": 694.298,
+          "height": 462.865,
+          "opacity": 0.85,
+          "flip": false,
+          "after": "080"
+        },
+        {
+          "id": "075",
+          "x": -125.214,
+          "y": 2248.885,
+          "width": 770.863,
+          "height": 385.432,
+          "opacity": 0.85,
+          "flip": false,
+          "after": "075"
+        },
+        {
+          "id": "075",
+          "x": 1515.06,
+          "y": 2276.312,
+          "width": 730.292,
+          "height": 365.146,
+          "opacity": 0.85,
+          "flip": true,
+          "after": "075"
+        }
+      ]
+    },
+    {
+      "id": "08",
+      "title": "Les Galeries sous la peau",
+      "description": "La galerie rejoint les conduits nourriciers. Une empreinte ancienne annonce la taille du bassin final.",
+      "background": "BG05",
+      "width": 3200,
+      "height": 1440,
+      "scenery": [
+        {
+          "id": "015",
+          "x": -175.556,
+          "y": -132.089,
+          "width": 2525.067,
+          "height": 1421.956,
+          "opacity": 0.85,
+          "flip": false,
+          "after": "015"
+        },
+        {
+          "id": "018",
+          "x": 2560.846,
+          "y": -262.373,
+          "width": 1080.719,
+          "height": 1621.078,
+          "opacity": 0.85,
+          "flip": false,
+          "after": "018"
+        },
+        {
+          "id": "032",
+          "x": 857.069,
+          "y": 92.593,
+          "width": 1434.54,
+          "height": 478.18,
+          "opacity": 0.85,
+          "flip": false,
+          "after": "085"
+        },
+        {
+          "id": "080",
+          "x": 1637.49,
+          "y": -14.006,
+          "width": 907.928,
+          "height": 605.285,
+          "opacity": 0.85,
+          "flip": false,
+          "after": "080"
+        },
+        {
+          "id": "024",
+          "x": 1291.31,
+          "y": 451.562,
+          "width": 1504.68,
+          "height": 846.832,
+          "opacity": 0.85,
+          "flip": false,
+          "after": "024"
+        },
+        {
+          "id": "027",
+          "x": 2447.246,
+          "y": 351.384,
+          "width": 368.915,
+          "height": 637.673,
+          "opacity": 0.85,
+          "flip": false,
+          "after": "027"
+        },
+        {
+          "id": "078",
+          "x": 2773.096,
+          "y": 474.239,
+          "width": 732.03,
+          "height": 732.03,
+          "opacity": 0.85,
+          "flip": false,
+          "after": "078"
+        },
+        {
+          "id": "023",
+          "x": 1546.556,
+          "y": 951.161,
+          "width": 665.693,
+          "height": 374.652,
+          "opacity": 0.85,
+          "flip": false,
+          "after": "023"
+        },
+        {
+          "id": "075",
+          "x": -125.214,
+          "y": 1128.885,
+          "width": 770.863,
+          "height": 385.432,
+          "opacity": 0.85,
+          "flip": false,
+          "after": "075"
+        },
+        {
+          "id": "075",
+          "x": 2615.06,
+          "y": 1156.312,
+          "width": 730.292,
+          "height": 365.146,
+          "opacity": 0.85,
+          "flip": true,
+          "after": "075"
+        }
+      ]
+    },
+    {
+      "id": "09",
+      "title": "La Pouponnière de dérivation",
+      "description": "Cette dérivation facultative rassemble les œufs de la ruche autour d’un grand réservoir nourricier.",
+      "background": "BG05",
+      "width": 3200,
+      "height": 1440,
+      "scenery": [
+        {
+          "id": "018",
+          "x": -176.909,
+          "y": -189.469,
+          "width": 1050.06,
+          "height": 1575.09,
+          "opacity": 0.85,
+          "flip": false,
+          "after": "018"
+        },
+        {
+          "id": "018",
+          "x": 2632.53,
+          "y": -210.195,
+          "width": 1057.725,
+          "height": 1586.587,
+          "opacity": 0.85,
+          "flip": false,
+          "after": "018"
+        },
+        {
+          "id": "032",
+          "x": 283.219,
+          "y": 159.589,
+          "width": 2231.507,
+          "height": 743.836,
+          "opacity": 0.85,
+          "flip": false,
+          "after": "085"
+        },
+        {
+          "id": "080",
+          "x": 1661.752,
+          "y": -137.065,
+          "width": 1068.15,
+          "height": 712.1,
+          "opacity": 0.85,
+          "flip": false,
+          "after": "080"
+        },
+        {
+          "id": "029",
+          "x": 1497.648,
+          "y": 221.712,
+          "width": 936.874,
+          "height": 1025.17,
+          "opacity": 0.85,
+          "flip": false,
+          "after": "083"
+        },
+        {
+          "id": "025",
+          "x": 212.64,
+          "y": 865.888,
+          "width": 398.985,
+          "height": 365.482,
+          "opacity": 0.85,
+          "flip": false,
+          "after": "026"
+        },
+        {
+          "id": "025",
+          "x": 482.64,
+          "y": 865.888,
+          "width": 398.985,
+          "height": 365.482,
+          "opacity": 0.85,
+          "flip": false,
+          "after": "026"
+        },
+        {
+          "id": "025",
+          "x": 802.64,
+          "y": 865.888,
+          "width": 398.985,
+          "height": 365.482,
+          "opacity": 0.85,
+          "flip": false,
+          "after": "026"
+        },
+        {
+          "id": "087",
+          "x": 1066.813,
+          "y": 937.282,
+          "width": 282.062,
+          "height": 282.062,
+          "opacity": 0.85,
+          "flip": false,
+          "after": "088"
+        },
+        {
+          "id": "058",
+          "x": 854.588,
+          "y": 1120.953,
+          "width": 240.012,
+          "height": 120.006,
+          "opacity": 0.85,
+          "flip": false,
+          "after": "058"
+        },
+        {
+          "id": "101",
+          "x": 2704.724,
+          "y": 927.998,
+          "width": 366.749,
+          "height": 366.749,
+          "opacity": 0.85,
+          "flip": false,
+          "after": "101"
+        },
+        {
+          "id": "075",
+          "x": -125.214,
+          "y": 1128.885,
+          "width": 770.863,
+          "height": 385.432,
+          "opacity": 0.85,
+          "flip": false,
+          "after": "075"
+        },
+        {
+          "id": "075",
+          "x": 2615.06,
+          "y": 1156.312,
+          "width": 730.292,
+          "height": 365.146,
+          "opacity": 0.85,
+          "flip": true,
+          "after": "075"
+        }
+      ]
+    },
+    {
+      "id": "10",
+      "title": "Le Nœud des racines",
+      "description": "Les principaux ancrages moteurs se rejoignent ici, devant le dernier passage vers le bassin.",
+      "background": "BG04",
+      "width": 3200,
+      "height": 1440,
+      "scenery": [
+        {
+          "id": "015",
+          "x": -285.556,
+          "y": -253.689,
+          "width": 2859.267,
+          "height": 1610.156,
+          "opacity": 0.85,
+          "flip": false,
+          "after": "015"
+        },
+        {
+          "id": "022",
+          "x": 2506.532,
+          "y": -203.6,
+          "width": 1880.404,
+          "height": 1684.558,
+          "opacity": 0.85,
+          "flip": false,
+          "after": "022"
+        },
+        {
+          "id": "032",
+          "x": 794.349,
+          "y": 149.658,
+          "width": 1859.589,
+          "height": 619.863,
+          "opacity": 0.85,
+          "flip": false,
+          "after": "085"
+        },
+        {
+          "id": "044",
+          "x": 997.267,
+          "y": 61.338,
+          "width": 1170.124,
+          "height": 1170.124,
+          "opacity": 0.85,
+          "flip": false,
+          "after": "042"
+        },
+        {
+          "id": "018",
+          "x": 332.229,
+          "y": 783.136,
+          "width": 283.593,
+          "height": 425.389,
+          "opacity": 0.85,
+          "flip": false,
+          "after": "018"
+        },
+        {
+          "id": "078",
+          "x": 2705.905,
+          "y": 504.695,
+          "width": 710.812,
+          "height": 710.812,
+          "opacity": 0.85,
+          "flip": false,
+          "after": "078"
+        },
+        {
+          "id": "101",
+          "x": 2431.969,
+          "y": 813.69,
+          "width": 451.384,
+          "height": 451.384,
+          "opacity": 0.85,
+          "flip": false,
+          "after": "101"
+        },
+        {
+          "id": "075",
+          "x": -125.214,
+          "y": 1128.885,
+          "width": 770.863,
+          "height": 385.432,
+          "opacity": 0.85,
+          "flip": false,
+          "after": "075"
+        },
+        {
+          "id": "075",
+          "x": 2615.06,
+          "y": 1156.312,
+          "width": 730.292,
+          "height": 365.146,
+          "opacity": 0.85,
+          "flip": true,
+          "after": "075"
+        }
+      ]
+    },
+    {
+      "id": "11",
+      "title": "La Lèvre silencieuse",
+      "description": "Une halte silencieuse, une dernière balise et une entrée basse précèdent le bassin royal.",
+      "background": "BG05",
+      "width": 3200,
+      "height": 1440,
+      "scenery": [
+        {
+          "id": "015",
+          "x": -138.889,
+          "y": -314.222,
+          "width": 2970.667,
+          "height": 1672.889,
+          "opacity": 0.85,
+          "flip": false,
+          "after": "015"
+        },
+        {
+          "id": "017",
+          "x": 2715.794,
+          "y": -221.936,
+          "width": 1173.605,
+          "height": 1726.358,
+          "opacity": 0.85,
+          "flip": false,
+          "after": "017"
+        },
+        {
+          "id": "086",
+          "x": 1763.346,
+          "y": 739.286,
+          "width": 385.15,
+          "height": 324.53,
+          "opacity": 0.85,
+          "flip": false,
+          "after": "086"
+        },
+        {
+          "id": "015",
+          "x": 2496.667,
+          "y": 241.467,
+          "width": 1782.4,
+          "height": 1003.733,
+          "opacity": 0.85,
+          "flip": false,
+          "after": "015"
+        },
+        {
+          "id": "099",
+          "x": 1122.115,
+          "y": 961.346,
+          "width": 241.154,
+          "height": 241.154,
+          "opacity": 0.85,
+          "flip": false,
+          "after": "099"
+        },
+        {
+          "id": "023",
+          "x": 1710.982,
+          "y": 929.688,
+          "width": 776.642,
+          "height": 437.094,
+          "opacity": 0.85,
+          "flip": false,
+          "after": "023"
+        },
+        {
+          "id": "075",
+          "x": -125.214,
+          "y": 1128.885,
+          "width": 770.863,
+          "height": 385.432,
+          "opacity": 0.85,
+          "flip": false,
+          "after": "075"
+        },
+        {
+          "id": "075",
+          "x": 2615.06,
+          "y": 1156.312,
+          "width": 730.292,
+          "height": 365.146,
+          "opacity": 0.85,
+          "flip": true,
+          "after": "075"
+        }
+      ]
+    },
+    {
+      "id": "12",
+      "title": "Le Bassin de la Matriarche",
+      "description": "La tête géante de la Matriarche repose au sol et commande les tentacules enracinés autour du bassin.",
+      "background": "BG06",
+      "width": 3200,
+      "height": 1440,
+      "scenery": [
+        {
+          "id": "018",
+          "x": -283.189,
+          "y": -360.524,
+          "width": 1272.335,
+          "height": 1908.503,
+          "opacity": 0.85,
+          "flip": false,
+          "after": "018"
+        },
+        {
+          "id": "011",
+          "x": 2702.178,
+          "y": 794.256,
+          "width": 506.241,
+          "height": 506.241,
+          "opacity": 0.85,
+          "flip": false,
+          "after": "011"
+        },
+        {
+          "id": "037",
+          "x": 858.281,
+          "y": -1.466,
+          "width": 1928.101,
+          "height": 1285.401,
+          "opacity": 0.85,
+          "flip": false,
+          "after": "043"
+        },
+        {
+          "id": "046",
+          "x": 2347.609,
+          "y": 549.575,
+          "width": 732.717,
+          "height": 366.358,
+          "opacity": 0.85,
+          "flip": false,
+          "after": "093"
+        },
+        {
+          "id": "075",
+          "x": -125.214,
+          "y": 1128.885,
+          "width": 770.863,
+          "height": 385.432,
+          "opacity": 0.85,
+          "flip": false,
+          "after": "075"
+        },
+        {
+          "id": "075",
+          "x": 2615.06,
+          "y": 1156.312,
+          "width": 730.292,
+          "height": 365.146,
+          "opacity": 0.85,
+          "flip": true,
+          "after": "075"
+        }
+      ]
+    }
+  ]
+}

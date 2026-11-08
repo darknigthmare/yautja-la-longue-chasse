@@ -1,0 +1,532 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-11-08T18:00:03.232329+00:00",
+  "localParent": "302657e46589f881f2dd8eb23d05880077afb5ab",
+  "scope": "Correction commune testée localement dans l’arbre C37. Les contrôles natifs et de compilation devront qualifier chaque nouvelle tête publiée.",
+  "change": {
+    "path": "app/game/PlanetArrivalCinematic.tsx",
+    "beforeBytes": 73154,
+    "beforeSha256": "29532812b171fc06d083e937268d164c9b24501d9df3a04a95cf7d5c53d2ed7c",
+    "afterBytes": 72986,
+    "afterSha256": "a8d856465380ee86678b89ce74dbe5c037764575cd4cb4f7fd5d0e79b6d0851e",
+    "description": "Remove the premature start in the preload Promise; keep the existing guarded effect as sole automatic startup owner.",
+    "unchangedInputs": [
+      {
+        "path": "app/dev/client.tsx",
+        "sha256": "d0039f33b6b242058828f91a7099902a4ccee3116eda1ec658ff34dfc0971dde"
+      },
+      {
+        "path": "app/dev/destinations.ts",
+        "sha256": "0b756432bb3bd2619707ca46bc85023d5f015631d108c68e33d7ace9cb6acb25"
+      },
+      {
+        "path": "app/dev/session.tsx",
+        "sha256": "857f9825d7889ea5ba8320ee197a26c702d153263f249c52908e4947349ab6bc"
+      },
+      {
+        "path": "app/game/HuntCanvas.tsx",
+        "sha256": "8cb850ed2854a369f9ff11ff7a3c1ab0e62c1b323b01c9ce12ee2cbda93302a5"
+      },
+      {
+        "path": "app/game/HunterRigPreview.tsx",
+        "sha256": "98cf20082796c1ab7e788e6e7416e72a45906956f7b29bac57538fcc2fa6fc4a"
+      },
+      {
+        "path": "app/game/PlanetArrivalCinematic.module.css",
+        "sha256": "37aa7bb09b144de888c86cdbde731ad18aa7d3b08ab452d01e1b4d11d5380fc3"
+      },
+      {
+        "path": "app/game/hunterRig.ts",
+        "sha256": "653c03db8a3cc2ad6664725d501ac58866ff58097239aab50e880d019cd14904"
+      },
+      {
+        "path": "app/game/shipCatalogue.ts",
+        "sha256": "458d077948c3f3e2f867fdc441e64423808cfb0cea54582b0c61762b1705d396"
+      },
+      {
+        "path": "app/game/systems/huntInsertion.ts",
+        "sha256": "1244239e249fdb937422ace051d64e5227db14542f35db1743af34a38fab07e0"
+      },
+      {
+        "path": "app/game/systems/planetArrival.ts",
+        "sha256": "ee21998d76714956e10bdebc3b25c36238ee7f0e67940a032fea87eb9b799259"
+      },
+      {
+        "path": "app/game/systems/planetArrivalArt.ts",
+        "sha256": "f72ceaa2b6ae8e350ab76a74e61dd11d70fe9a92a95afd5e56df363057277c99"
+      },
+      {
+        "path": "app/game/systems/planetArrivalAudio.ts",
+        "sha256": "7ce287c0bda6938fb13d91f849d13730e71b449d8c92f771619552c966ce8992"
+      },
+      {
+        "path": "app/game/systems/planetArrivalGroundArt.ts",
+        "sha256": "d0d7f257757c458b8944a8ddd95dc9bea9cc250083899918fc6f5ccaab421e22"
+      },
+      {
+        "path": "app/game/systems/planetArrivalPodArt.ts",
+        "sha256": "d056258f7aef9421f8a6c777e6c657c1d3917be7d691bbbfe00a97a56889f5c7"
+      },
+      {
+        "path": "app/game/systems/planetArrivalPodFlight.ts",
+        "sha256": "991ee6e31a3b0a25e59c7e89296a69e5073159e7fa98158c777ddb2c0f77d3dd"
+      },
+      {
+        "path": "app/game/systems/planetArrivalPresentation.ts",
+        "sha256": "20789a02f321f4533e48408663a81140273b78d74c52f57e60ed4967fce75831"
+      },
+      {
+        "path": "app/game/systems/planetArrivalRun.ts",
+        "sha256": "81fde7e75834779c9cde9b57836de6260aa1db24fe3b5671bb36950db2251bd4"
+      },
+      {
+        "path": "app/game/systems/planetArrivalShipEffects.ts",
+        "sha256": "ed77b5c8757cc7c6b78e63339564c7107058eb6fa37c97d621347031ce8f63e6"
+      },
+      {
+        "path": "app/game/systems/planetArrivalShipMotion.ts",
+        "sha256": "a1b89c7b892e732aac281596ab038ef0961306bfd48e5963facc07e23bf93e0b"
+      },
+      {
+        "path": "app/game/systems/planetArrivalShipMotionCalibrations.ts",
+        "sha256": "c6fb47c806fdcccaa0b898fd6b60e5477ce5ba2906196548673968426fd11848"
+      },
+      {
+        "path": "app/game/systems/planetArrivalSpatial.ts",
+        "sha256": "bce53ce72cff85bdef9d9351066f70d1920a385d131751bf0bf71da430a7c020"
+      },
+      {
+        "path": "app/game/systems/planetArrivalVfx.ts",
+        "sha256": "b576480a7cd167df926b22d0c3d4fcddfda5084388e89d07e86c946235947c6c"
+      },
+      {
+        "path": "app/game/systems/planetArrivalVfxArt.ts",
+        "sha256": "65a5c4ccaa2b554dfa95465bcec7c544c9d04982837d3ce2ec2d20dabde7ecab"
+      },
+      {
+        "path": "app/game/systems/planetInsertion.ts",
+        "sha256": "d34d3cac8ddf05980d778f8f4028976b22bd846c807dfcf39457b9ec8af76b94"
+      },
+      {
+        "path": "app/game/systems/shipInsertionEnergy.ts",
+        "sha256": "00e9a554acee76c3f0e186ad376dc87bf46b4f0bc8b5999815716109080380ca"
+      },
+      {
+        "path": "app/game/worldScreens.ts",
+        "sha256": "04854a87a575630fedcc6b0ac641de942c7f04e87e448da0767ef558e930d495"
+      },
+      {
+        "path": "scripts/qa-planet-arrival-spatial.mjs",
+        "sha256": "cba2f73bc99a049c9974e521eac2f1d66f1c44c31779b464c5eeaa666b507c90"
+      },
+      {
+        "path": "scripts/qa-planet-arrival-x11.py",
+        "sha256": "93d7dc8628c44f8710bdf21accfd8401eaf5f60737dcb254f6979cf70d2aa285"
+      },
+      {
+        "path": ".github/workflows/planet-arrival-spatial.yml",
+        "sha256": "be4d397ce8d9ff44bc7bbf698ce64164582ca9d7688f59e87580e32db49dc56f"
+      },
+      {
+        "path": "package.json",
+        "sha256": "246599abd3ca304b98201bbffbbcaaeef481486a91f3cad637a15c3ee20efbe5"
+      },
+      {
+        "path": "package-lock.json",
+        "sha256": "763dcb2fdfef2e1a7ce196540cca3f4f5617eeb28a36b380d0dc6079410c1892"
+      }
+    ],
+    "testPath": "tests/planet-arrival-startup.test.mjs",
+    "testSha256": "c172ba84d486b3b943aa9faab82068aa6f0f93f6f2b9def16bee821a52e22bc1"
+  },
+  "priorNativeFailure": {
+    "sourceCommit": "bdc2b4af6d124519ac3539b6b1eef279d7b0bde7",
+    "runId": 42504681958,
+    "jobId": 128804644154,
+    "artifactId": 13627188870,
+    "archiveSha256": "9048892c86bb2b1d2f486876127cb265592450b4847d600b13921a0d4f5537e5",
+    "reportBytes": 15373468,
+    "reportSha256": "21dc5ff79ae462e7c9127964d1f6edb5fdd2956ad6c9f44023ea06c82e200c81",
+    "passedChecks": 65,
+    "totalChecks": 66,
+    "failedCheck": "Production /dev runs all eight shots naturally, with real resize and exactly one hunt",
+    "status": "paused",
+    "elapsedMs": 0,
+    "screenshotText": "La fenêtre est inactive.",
+    "screenshotSha256": "e78aed2bfa4b4d1f739b104869652e08a9341fcebcdd6569f4ffcf50ea705eaf",
+    "qualification": "failure retained"
+  },
+  "priorNativeSuccess": {
+    "sourceCommit": "d68bc7e9deca40e559d046c0d3c7fc9d5583c161",
+    "runId": 42504679597,
+    "jobId": 128804636367,
+    "artifactId": 13627542675,
+    "archiveSha256": "e264b4fecaf2bbe5ff731b4efe3158f17b76ec629562fc2ce1c5df2e3f17d434",
+    "reportBytes": 15877556,
+    "reportSha256": "f70a802edbc6fd377a9470826147f3e1d875ea26adffd7f55c6429368c0fce84",
+    "passedChecks": 71,
+    "totalChecks": 71,
+    "sameDeclaredSourceHashesAsFailure": true,
+    "sameDeclaredSourceHashCount": 29,
+    "qualification": "success on this earlier source only"
+  },
+  "reproduction": [
+    {
+      "phase": "before-fix",
+      "command": [
+        "node",
+        "--experimental-strip-types",
+        "--test",
+        "tests/planet-arrival-startup.test.mjs"
+      ],
+      "exitCode": 1,
+      "tests": 8,
+      "passed": 7,
+      "failed": 1,
+      "log": "before-fix.log.gz",
+      "rawSha256": "f1bd38c740cd00dfd3f8e6de0d1ae9f7eb0336a18aed5ed2518e2b7269afa541"
+    },
+    {
+      "phase": "after-fix",
+      "command": [
+        "node",
+        "--experimental-strip-types",
+        "--test",
+        "tests/planet-arrival-startup.test.mjs"
+      ],
+      "exitCode": 0,
+      "tests": 8,
+      "passed": 8,
+      "failed": 0,
+      "log": "after-fix.log.gz",
+      "rawSha256": "3ee7eec9ff48642d2d95b85529b996bb167fdbec16b7e93799a2382ed5edf5ee"
+    }
+  ],
+  "independentReview": {
+    "result": "favorable",
+    "testRerun": "8/8 PASS",
+    "method": "Read the actual effects and test; confirm passive unmount-before-mount order in installed React DOM and Next compiled React DOM.",
+    "limit": "Controlled interleaving of actual source callbacks, not a recorded React DOM event trace of bdc. Actual document.hidden changes were not logged in that native run."
+  },
+  "checks": {
+    "lint": {
+      "command": [
+        "node",
+        "node_modules/eslint/bin/eslint.js",
+        "app/game/PlanetArrivalCinematic.tsx",
+        "tests/planet-arrival-startup.test.mjs",
+        "--max-warnings=0"
+      ],
+      "startedAt": "2026-11-08T17:52:11.356478+00:00",
+      "completedAt": "2026-11-08T17:52:15.362103+00:00",
+      "durationSeconds": 4.006,
+      "exitCode": 0,
+      "log": "lint.log.gz",
+      "rawBytes": 0,
+      "rawSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "gzipSha256": "f61f27bd17de546264aa58f40f3aafaac7021e0ef69c17f6b1b4cd7664a037ec"
+    },
+    "regressions": {
+      "command": [
+        "node",
+        "--experimental-strip-types",
+        "--test",
+        "--test-reporter=spec",
+        "--test-concurrency=1",
+        "tests/planet-arrival-art.test.mjs",
+        "tests/planet-arrival-audio.test.mjs",
+        "tests/planet-arrival-harness.test.mjs",
+        "tests/planet-arrival-observation.test.mjs",
+        "tests/planet-arrival-pod-flight.test.mjs",
+        "tests/planet-arrival-presentation.test.mjs",
+        "tests/planet-arrival-ship-effects.test.mjs",
+        "tests/planet-arrival-ship-motion.test.mjs",
+        "tests/planet-arrival-spatial.test.mjs",
+        "tests/planet-arrival-startup.test.mjs",
+        "tests/planet-arrival-vfx.test.mjs",
+        "tests/planet-arrival-x11.test.mjs",
+        "tests/planet-arrival.test.mjs",
+        "tests/planet-insertion.test.mjs",
+        "tests/ship-insertion-energy.test.mjs",
+        "tests/hunt-insertion.test.mjs"
+      ],
+      "startedAt": "2026-11-08T17:52:11.370375+00:00",
+      "completedAt": "2026-11-08T17:52:30.115366+00:00",
+      "durationSeconds": 18.745,
+      "exitCode": 1,
+      "log": "regressions.log.gz",
+      "rawBytes": 30148,
+      "rawSha256": "df23f2513a58f37e52de74bcf4aab3c091c9fff1bb44e3908bfd68373b491b11",
+      "gzipSha256": "16a4dc09480e4d4b510df69216dc17c9f1dbfa33e19a8b459e83d7a754e7c1ba"
+    },
+    "typecheck": {
+      "command": [
+        "node",
+        "node_modules/typescript/bin/tsc",
+        "--noEmit"
+      ],
+      "startedAt": "2026-11-08T17:52:11.368982+00:00",
+      "completedAt": "2026-11-08T17:52:19.382143+00:00",
+      "durationSeconds": 8.013,
+      "exitCode": -9,
+      "log": "typecheck.log.gz",
+      "rawBytes": 0,
+      "rawSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "gzipSha256": "f61f27bd17de546264aa58f40f3aafaac7021e0ef69c17f6b1b4cd7664a037ec"
+    },
+    "typecheck-serial": {
+      "command": [
+        "node",
+        "--max-old-space-size=3072",
+        "node_modules/typescript/bin/tsc",
+        "--noEmit"
+      ],
+      "startedAt": "2026-11-08T17:53:02.772469+00:00",
+      "completedAt": "2026-11-08T17:53:18.557711+00:00",
+      "durationSeconds": 15.785,
+      "exitCode": -9,
+      "log": "typecheck-serial.log.gz",
+      "rawBytes": 0,
+      "rawSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "gzipSha256": "f61f27bd17de546264aa58f40f3aafaac7021e0ef69c17f6b1b4cd7664a037ec"
+    },
+    "typecheck-bounded": {
+      "command": [
+        "node",
+        "--max-old-space-size=1536",
+        "node_modules/typescript/bin/tsc",
+        "--noEmit"
+      ],
+      "startedAt": "2026-11-08T17:54:28.899821+00:00",
+      "completedAt": "2026-11-08T17:54:33.464022+00:00",
+      "durationSeconds": 4.564,
+      "exitCode": -9,
+      "log": "typecheck-bounded.log.gz",
+      "rawBytes": 0,
+      "rawSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "gzipSha256": "f61f27bd17de546264aa58f40f3aafaac7021e0ef69c17f6b1b4cd7664a037ec"
+    },
+    "runtime-check": {
+      "command": [
+        "node",
+        "scripts/snapshot-runtime-v113.mjs",
+        "--check",
+        "docs/qa/current-integration-20261103/runtime-inputs.json"
+      ],
+      "startedAt": "2026-11-08T17:58:37.321475+00:00",
+      "completedAt": "2026-11-08T17:58:59.843163+00:00",
+      "durationSeconds": 22.522,
+      "exitCode": -9,
+      "log": "runtime-check.log.gz",
+      "rawSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "gzipSha256": "f61f27bd17de546264aa58f40f3aafaac7021e0ef69c17f6b1b4cd7664a037ec"
+    }
+  },
+  "localRegressionSummary": {
+    "tests": 213,
+    "passed": 205,
+    "failed": 8,
+    "reason": "All eight failures are missing image inputs from the sparse checkout. No test was removed or threshold changed.",
+    "missingAssets": 162,
+    "missingBytes": 116374847,
+    "missingAssetsFile": "missing-local-assets.json",
+    "imageBytesDownloaded": 0,
+    "qualification": "incomplete locally; full suite required in CI"
+  },
+  "typecheckQualifiedLocally": false,
+  "newProductionBuildQualifiedLocally": false,
+  "nativeCorrectedRouteExecutedLocally": false,
+  "localExecutionLimits": [
+    "Three TypeScript subprocesses and the final inventory --check were killed by SIGKILL without diagnostics. No TypeScript failure message or precise resource cause was established.",
+    "The official C37 inventory --write completed successfully earlier; an independent byte comparison verifies the sole expected entry delta.",
+    "No additional Chromium launch was attempted after the previously established Unix socket EPERM."
+  ],
+  "runtimeInventories": {
+    "base": {
+      "entries": 2201,
+      "sha256": "57d18470342a21d586e34022ac189f5d37a8f043e3f7b1e6554fa3394a583eeb",
+      "changedEntries": [
+        "app/game/PlanetArrivalCinematic.tsx"
+      ],
+      "byteDelta": -168,
+      "writeAndCheckPassed": true,
+      "results": "base-runtime-results.json",
+      "logs": [
+        {
+          "file": "base-runtime-write.log.gz",
+          "rawSha256": "224b660a7ca31931c8f468a5d5cfb7e2a29b50becbf181bfeb911baa2d764b72",
+          "gzipSha256": "d01575db5ee7fc72b71de5f3944a40f760837ddbfdf586534e35649f355148e9"
+        },
+        {
+          "file": "base-runtime-check.log.gz",
+          "rawSha256": "9ddffefe3cabd400a07e154fcce06c4eb810aeb9208d209f243c2c90b430aec5",
+          "gzipSha256": "1e13b74a6e6f9ef704d17e97d60b591f39e73a9cacc5cc2546b16d2cef65429d"
+        }
+      ]
+    },
+    "c37": {
+      "entries": 2204,
+      "beforeSha256": "42f0ac0a02707af4b77dddd724e956d0bbe6d3393203883d5780d04ab700164e",
+      "afterSha256": "8b6718e9c07a2717adaaa9b8fbe6e299cf5cbacdba26fc5a9c0c9b2ddad614bb",
+      "changedEntries": [
+        "app/game/PlanetArrivalCinematic.tsx"
+      ],
+      "byteDelta": -168,
+      "writePassed": true,
+      "checkCompleted": false,
+      "independentByteComparisonPassed": true
+    },
+    "historicalFreezes": [
+      {
+        "path": "docs/v105-runtime-freeze.json",
+        "sha256": "99f3e3abcce400af08368169239188f9a84cbffa291624bafe8d97989494a382"
+      },
+      {
+        "path": "docs/v106-runtime-freeze.json",
+        "sha256": "5f17fda63e669a842289752295f83cd4b276090d9f897a12fefdb01b9872bfb1"
+      },
+      {
+        "path": "docs/v107-runtime-freeze.json",
+        "sha256": "a64d67df75188003441d85854cbfffd41ae4151dbf7b30f0672c4d46ba502378"
+      },
+      {
+        "path": "docs/v108-runtime-freeze.json",
+        "sha256": "acdd5ba55003bab6c5766d2036cbe76153b1bbfe858a82c855d0b3574cc82727"
+      },
+      {
+        "path": "docs/v109-runtime-freeze.json",
+        "sha256": "b4f097daa655b119051675bd7acc2540a90cb4fd466c69955de6c0858519c4c0"
+      },
+      {
+        "path": "docs/v110-runtime-freeze.json",
+        "sha256": "c54a5e97c199d16584a229f332692f5890874f5494b015657f66cf9659bfe3f1"
+      },
+      {
+        "path": "docs/v111-runtime-freeze.json",
+        "sha256": "8eee8a5f5a043f2a67477bc6bcff97fffb1ee1666864bd7aed60c7a6c21ca138"
+      },
+      {
+        "path": "docs/v112-runtime-freeze.json",
+        "sha256": "c35f8b454ec26d1b05852cabbe4f6ee111d71e7413aef80282582d3ca5ee6a3e"
+      },
+      {
+        "path": "docs/v113-runtime-freeze.json",
+        "sha256": "80f5beb7d633c3ee4851ec70da013344521b37b352ce1238afcd0b94d974e74e"
+      }
+    ]
+  },
+  "requiredPublicationGates": [
+    "TypeScript on the exact head",
+    "Production build on the exact head",
+    "All 213 arrival/insertion regressions",
+    "Complete native Spatial recipe with all acceptance gates unchanged",
+    "All other applicable workflow and deployment gates"
+  ],
+  "evidence": [
+    {
+      "file": "README.md",
+      "bytes": 4693,
+      "sha256": "d3bd5cc8159144291fbbb7892456f3affc26a984ba35952610c3342e8ec58fd9"
+    },
+    {
+      "file": "after-fix.log.gz",
+      "bytes": 416,
+      "sha256": "33bccc90cdc734ea7a3cf648b63a48550b5be53e9634a094351c3768f19968ec"
+    },
+    {
+      "file": "base-runtime-check.log.gz",
+      "bytes": 166,
+      "sha256": "1e13b74a6e6f9ef704d17e97d60b591f39e73a9cacc5cc2546b16d2cef65429d"
+    },
+    {
+      "file": "base-runtime-results.json",
+      "bytes": 1027,
+      "sha256": "1ccca07a08050dcb7b04604978f86ab1cec3b7d5b4125d8e0710a2c9907da3c7"
+    },
+    {
+      "file": "base-runtime-write.log.gz",
+      "bytes": 180,
+      "sha256": "d01575db5ee7fc72b71de5f3944a40f760837ddbfdf586534e35649f355148e9"
+    },
+    {
+      "file": "before-fix.log.gz",
+      "bytes": 754,
+      "sha256": "704039d6611d954f80772f93e9fc9a3f16ad12f597f376f9dcfc5d3412e5728d"
+    },
+    {
+      "file": "lint-result.json",
+      "bytes": 544,
+      "sha256": "afb65fa0d423fa3638775db7246b1035f899ba51738ae4fe1067c7bfa665deda"
+    },
+    {
+      "file": "lint.log.gz",
+      "bytes": 20,
+      "sha256": "f61f27bd17de546264aa58f40f3aafaac7021e0ef69c17f6b1b4cd7664a037ec"
+    },
+    {
+      "file": "missing-local-assets.json",
+      "bytes": 54881,
+      "sha256": "2645b6d3c76b0022d64569086ac7bb0fab1db639c9f401da64783a39bfa3d99a"
+    },
+    {
+      "file": "prior-failure-extract.json",
+      "bytes": 37228,
+      "sha256": "c8d495b20080101de0886acf2f38b49d1c0ea0834963ab21848858d8ad4f96a7"
+    },
+    {
+      "file": "prior-failure.png",
+      "bytes": 125730,
+      "sha256": "e78aed2bfa4b4d1f739b104869652e08a9341fcebcdd6569f4ffcf50ea705eaf"
+    },
+    {
+      "file": "regressions-result.json",
+      "bytes": 1211,
+      "sha256": "a458b578bd4aad2849a011bfd4baa686f9f5b8b7f3127ca40cd98b0312e202f8"
+    },
+    {
+      "file": "regressions.log.gz",
+      "bytes": 10069,
+      "sha256": "16a4dc09480e4d4b510df69216dc17c9f1dbfa33e19a8b459e83d7a754e7c1ba"
+    },
+    {
+      "file": "runtime-check-result.json",
+      "bytes": 505,
+      "sha256": "d62641b394575c5b9b1a7311e9a8af8f89832412539f455942069525cdce5dd7"
+    },
+    {
+      "file": "runtime-check.log.gz",
+      "bytes": 20,
+      "sha256": "f61f27bd17de546264aa58f40f3aafaac7021e0ef69c17f6b1b4cd7664a037ec"
+    },
+    {
+      "file": "typecheck-bounded-result.json",
+      "bytes": 493,
+      "sha256": "6bc140d96a1a6ab375d908dcf63577f386a0d179f96cbda2b4324d47191b2e59"
+    },
+    {
+      "file": "typecheck-bounded.log.gz",
+      "bytes": 20,
+      "sha256": "f61f27bd17de546264aa58f40f3aafaac7021e0ef69c17f6b1b4cd7664a037ec"
+    },
+    {
+      "file": "typecheck-result.json",
+      "bytes": 452,
+      "sha256": "14ac3fbf15f3bae827030c101e66649d74113519d2af83381f1e7c5056bec50f"
+    },
+    {
+      "file": "typecheck-serial-result.json",
+      "bytes": 493,
+      "sha256": "1c7110daa6b0e22ece5ec27e707bdf58c4b33556fe384efd64056f3bb8d8e6c7"
+    },
+    {
+      "file": "typecheck-serial.log.gz",
+      "bytes": 20,
+      "sha256": "f61f27bd17de546264aa58f40f3aafaac7021e0ef69c17f6b1b4cd7664a037ec"
+    },
+    {
+      "file": "typecheck.log.gz",
+      "bytes": 20,
+      "sha256": "f61f27bd17de546264aa58f40f3aafaac7021e0ef69c17f6b1b4cd7664a037ec"
+    }
+  ]
+}

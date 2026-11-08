@@ -1,9 +1,15 @@
 "use client";
 
 /* eslint-disable @next/next/no-img-element -- independent game bitmaps keep their authored alpha and foot anchors */
-import { memo, useEffect, useLayoutEffect, useRef, useState, type CSSProperties, type PointerEvent } from 'react';
+import { memo, useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState, type CSSProperties, type PointerEvent } from 'react';
 import HunterRigPreview from './HunterRigPreview';
 import HomeworldNpcSpriteV84 from './HomeworldNpcSpriteV84';
+import CompanionResidencePanel, { type CompanionResidenceControlled } from './CompanionResidencePanel';
+import CompanionQuartersScene from './CompanionQuartersScene';
+import { companionUsesLegacyClanPost, type CompanionResidenceObservation } from './systems/companionResidence';
+import ClanShipIncidentPanel, { submitClanShipIncident, type ClanShipIncidentControlled } from './ClanShipIncidentPanel';
+import ClanShipIncidentScene from './ClanShipIncidentScene';
+import { clanShipIncidentView, inspectClanShipIncidents, type ClanShipIncidentCommand, type ClanShipIncidentObservation, type ClanShipIncidentTarget } from './systems/clanShipIncidents';
 import { CLAN_SHIP_CREW_ART_ROLES, clanShipCrewArtIdentity } from './clanShipCrew';
 import { CLAN_SHIP_RECRUITS, evaluateClanShipRecruit, type ClanShipNpcId } from './systems/clanShipOperations';
 import { HUNTER_RIG_CANVAS } from './hunterRig';
@@ -47,6 +53,8 @@ export interface ClanShipInteriorProps {
   onTargetCancelled?: () => void;
   personalShipId?: ShipId;
   onOpenSettings?: () => void;
+  companions?: CompanionResidenceControlled;
+  incidents?: ClanShipIncidentControlled;
 }
 
 type Direction = 'up' | 'down' | 'left' | 'right';
@@ -68,14 +76,16 @@ interface Commands {
   cancel: () => void;
   target: (target: ClanShipRoomId | null) => void;
   touch: (direction: Direction, held: boolean) => void;
+  observeCompanions: () => CompanionResidenceObservation | null;
+  observeIncidents: () => ClanShipIncidentObservation | null;
 }
-const emptyCommands = (): Commands => ({ point: () => {}, door: () => {}, service: () => {}, operations: () => {}, interact: () => {}, cancel: () => {}, target: () => {}, touch: () => {} });
+const emptyCommands = (): Commands => ({ point: () => {}, door: () => {}, service: () => {}, operations: () => {}, interact: () => {}, cancel: () => {}, target: () => {}, touch: () => {}, observeCompanions: () => null, observeIncidents: () => null });
 const distance = (a: ClanShipInteriorPoint, b: ClanShipInteriorPoint) => Math.hypot(a.x - b.x, a.y - b.y);
 const MOVE_KEYS: Readonly<Record<string, Direction>> = {
   ArrowUp: 'up', KeyW: 'up', KeyZ: 'up', ArrowDown: 'down', KeyS: 'down',
   ArrowLeft: 'left', KeyA: 'left', KeyQ: 'left', ArrowRight: 'right', KeyD: 'right',
 };
-const INTERACTIVE_TARGET = 'input,textarea,select,[contenteditable="true"]';
+const INTERACTIVE_TARGET = 'input,textarea,select,summary,[data-companion-residence-panel],[data-clan-incident-panel],[contenteditable="true"]';
 
 /** Each accepted room transition creates a new local controller at the paired
  * doorway. Service/settings overlays leave that controller mounted and paused.
@@ -116,6 +126,22 @@ function InteriorRoom(props: ClanShipInteriorProps & {
   const [viewport, setViewport] = useState({ width: 1100, height: 560 });
   const [status, setStatus] = useState('Clique sur le sol pour marcher. Approche d’une installation pour interagir.');
   const [reducedMotion, setReducedMotion] = useState(false);
+  const observeCompanions = useCallback(() => commandsRef.current.observeCompanions(), []);
+  const observeIncidents = useCallback(() => commandsRef.current.observeIncidents(), []);
+  const incidentState = useMemo(() => inspectClanShipIncidents(save.clanShipIncidents, save.createdAt).state, [save.clanShipIncidents, save.createdAt]);
+  const sealIncident = clanShipIncidentView(incidentState, 'sealed-lot');
+  const relayIncident = clanShipIncidentView(incidentState, 'relay-fault');
+  const navigateIncident = useCallback((target: ClanShipIncidentTarget) => {
+    if (latestRef.current.suspended) return;
+    if (target.roomId === roomId) commandsRef.current.point(target);
+    else latestRef.current.onNavigateTarget(target.roomId);
+  }, [roomId]);
+  const actIncident = useCallback((command: ClanShipIncidentCommand) => {
+    const current = latestRef.current;
+    if (!current.incidents || current.suspended) return;
+    const result = submitClanShipIncident(current.incidents, command, commandsRef.current.observeIncidents(), true);
+    setStatus(result.message);
+  }, []);
 
   useLayoutEffect(() => { latestRef.current = props; });
 
@@ -258,6 +284,9 @@ function InteriorRoom(props: ClanShipInteriorProps & {
       },
       service, operations, interact, cancel, target: setTarget,
       touch: (direction, held) => { if (held && active()) touch.add(direction); else touch.delete(direction); },
+      observeCompanions: () => active() && distance(actor, room.servicePoint) <= METRICS.interactionReach
+        ? { site: 'clan', roomId, x: actor.x, y: actor.y } : null,
+      observeIncidents: () => active() ? { roomId, x: actor.x, y: actor.y } : null,
     };
 
     const onKeyDown = (event: KeyboardEvent) => {
@@ -289,6 +318,11 @@ function InteriorRoom(props: ClanShipInteriorProps & {
       if (!active()) {
         if (wasActive) { moving = false; publish(); }
         clearHeld(); wasActive = false; return;
+      }
+      if (document.activeElement instanceof HTMLElement && document.activeElement.closest('[data-companion-residence-panel],[data-clan-incident-panel]')) {
+        clearHeld();
+        if (moving) { moving = false; publish(); }
+        return;
       }
       const seconds = lastFrame === 0 ? 0 : Math.min(METRICS.maxFrameSeconds, Math.max(0, (now - lastFrame) / 1000));
       lastFrame = now; wasActive = true;
@@ -372,7 +406,7 @@ function InteriorRoom(props: ClanShipInteriorProps & {
   const actorFootY = HUNTER_RIG_CANVAS.groundY / HUNTER_RIG_CANVAS.width * actorWidth;
   const marker = presentation.waypoints.at(-1);
   const interactLabel = nearby?.type === 'door' ? `Entrer : ${ROOMS[nearby.point.targetRoomId].label}` : nearby?.type === 'service' ? room.serviceLabel : 'Approche d’une installation';
-  const crew = save.clanShipOperations ? CLAN_SHIP_RECRUITS.filter(npc => npc.roomId === roomId &&
+  const crew = save.clanShipOperations ? CLAN_SHIP_RECRUITS.filter(npc => npc.roomId === roomId && companionUsesLegacyClanPost(save, npc.id) &&
     (save.clanShipOperations!.recruitedNpcIds.includes(npc.id) || evaluateClanShipRecruit(save.clanShipOperations!, npc.id).allowed)) : [];
 
   const pointerWalk = (event: PointerEvent<HTMLDivElement>) => {
@@ -419,11 +453,15 @@ function InteriorRoom(props: ClanShipInteriorProps & {
     </div>
     <div className={styles.viewport} ref={viewportRef} data-interior-viewport>
       <div ref={worldRef} className={styles.world} data-interior-world data-screen-focus tabIndex={suspended ? -1 : 0}
+        data-clan-relay-state={relayIncident.accepted ? relayIncident.completedRevision ? 'restored' : relayIncident.restored.length ? 'partial' : 'faulted' : undefined}
         aria-label="Pont explorable. Flèches ou ZQSD/WASD pour marcher, E pour interagir."
         style={{ width: METRICS.width, height: METRICS.height, transform: `translate(${cameraX}px, ${cameraY}px) scale(${scale})` }}
         onPointerDown={startFloorPointer} onPointerUp={finishFloorPointer}
         onPointerCancel={() => { floorTouchRef.current = null; }}>
-        <RoomScenery roomId={roomId} personalShipId={selectedShipId} />
+        <RoomScenery roomId={roomId} personalShipId={selectedShipId} sealIncident={sealIncident.accepted} relayIncident={relayIncident.accepted} />
+        <ClanShipIncidentScene save={save} roomId={roomId} position={{ roomId, x: actor.x, y: actor.y }}
+          suspended={suspended || !props.incidents} onNavigate={navigateIncident} onAction={actIncident} />
+        <CompanionQuartersScene save={save} site="clan" shipId="avp-predator-mothership" roomId={roomId} />
         {crew.map(npc => {
           const recruited = save.clanShipOperations?.recruitedNpcIds.includes(npc.id) ?? false;
           // Feet stand on the raised service gallery behind the walkable floor;
@@ -502,6 +540,10 @@ function InteriorRoom(props: ClanShipInteriorProps & {
       <p className={styles.keyHelp}><span>Sol : cliquer pour marcher</span><span>Flèches / ZQSD / WASD · E : service · R : dossier du poste</span><span>Manette : stick, A : service · X : dossier · B : hangar · Start : réglages</span></p>
     </div>
     <p className={styles.status} role="status" aria-live="polite">{suspended ? 'Déplacements suspendus pendant la consultation.' : status}</p>
+    {props.companions && <CompanionResidencePanel controlled={props.companions} site="clan" suspended={suspended} stationId={serviceReady ? roomId : null}
+      observe={observeCompanions} onNavigate={target => { if (ROOM_ORDER.includes(target as ClanShipRoomId)) props.onNavigateTarget(target as ClanShipRoomId); }} />}
+    {props.incidents && <ClanShipIncidentPanel controlled={props.incidents} suspended={suspended} position={{ roomId, x: actor.x, y: actor.y }}
+      observe={observeIncidents} onNavigate={navigateIncident} />}
   </section>;
 }
 
@@ -555,7 +597,9 @@ const Fixture = memo(function Fixture({ fixture }: { fixture: ClanShipInteriorFi
   </div>;
 });
 
-const RoomScenery = memo(function RoomScenery({ roomId, personalShipId }: { roomId: ClanShipRoomId; personalShipId: ShipId }) {
+const RoomScenery = memo(function RoomScenery({ roomId, personalShipId, sealIncident = false, relayIncident = false }: {
+  roomId: ClanShipRoomId; personalShipId: ShipId; sealIncident?: boolean; relayIncident?: boolean;
+}) {
   const [backgroundFailed, setBackgroundFailed] = useState(false);
   const [shipFailed, setShipFailed] = useState(false);
   const room = ROOMS[roomId];
@@ -571,7 +615,8 @@ const RoomScenery = memo(function RoomScenery({ roomId, personalShipId }: { room
       <span className={styles.berthLight} aria-hidden="true" />
     </div>}
     {roomId === 'entrainement' && <div className={styles.trainingCircle} aria-hidden="true" />}
-    {room.fixtures.map(fixture => <Fixture key={fixture.id} fixture={fixture} />)}
+    {room.fixtures.filter(fixture => !(sealIncident && fixture.id === 'berth-terminal') && !(relayIncident && fixture.id === 'council-terminal'))
+      .map(fixture => <Fixture key={fixture.id} fixture={fixture} />)}
     <div className={styles.floorEdge} aria-hidden="true" />
   </>;
 });

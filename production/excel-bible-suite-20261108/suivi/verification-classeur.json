@@ -1,0 +1,347 @@
+{
+  "asOfDate": "2026-11-08",
+  "baseCommit": "04eb4caa217ad114faf1cf63b301b4df67736b2d",
+  "authoringRuntime": "@oai/artifact-tool",
+  "qualificationSha256": "9790f6005e5a08b2b67f5edbea9e5880426be01db7ee470924c3b293d7907cb8",
+  "runtimeValidation": {
+    "status": "complete",
+    "runtimeReport": "production/excel-bible-suite-20261108/verification.json",
+    "testsPassed": 426,
+    "testsFailed": 0,
+    "summary": "426 tests réussis, 0 échec ; build de production, TypeScript et lint réussis. Les 13 nouveaux tests B03 et les 10 nouveaux tests R2-M027 sont inclus dans ce total.",
+    "browserReport": "production/excel-bible-suite-20261108/qa/cradle-resume-20261108/browser-verification.json",
+    "browserSummary": "Chromium ne démarre pas : socket Unix refusé (EPERM). Aucun scénario navigateur exécuté et aucune capture produite.",
+    "newTestsIncluded": 23,
+    "buildPassed": true,
+    "lintPassed": true,
+    "physicalControllerValidated": false
+  },
+  "sourceWorkbooksVerifiedUnchanged": 108,
+  "previousFilesVerifiedUnchanged": 92,
+  "rows": [
+    {
+      "id": "OPS-B03",
+      "kind": "Raccord",
+      "criterion": "Comparer marques et télémétrie puis faire une restitution motivée devant deux témoins.",
+      "sourceRefs": [
+        "production/clan-ship-20261104/clan-ship-operations-20261105.xlsx | Opérations!60"
+      ],
+      "expectedPhases": [
+        "Oui",
+        "Partiel",
+        "Oui",
+        "Non",
+        "Non"
+      ]
+    },
+    {
+      "id": "R2-M027",
+      "kind": "Raccord",
+      "criterion": "**Déroulé :** retour à bord, dommages traités, objets ou relevés installés ; un mentor observe. **Choix :** présenter au clan ou analyser seul à l’atelier. **Échec :** un objet trop endommagé reste absent. **Sauvegarde :** `queen.debriefResolved`\n*Production (proposé)* — **Props :** atelier du vaisseau, objets rapportés ou relevés d'échec, poste de soin, mentor en visite. **VFX :** fumée de nettoyage acide sur l'armure. **SFX :** ambiance vaisseau (existe), medicomp (existe), `armor-repair`. **Musique :** MUS-15 puis MUS-02.",
+      "sourceRefs": [
+        "docs/campagne/BIBLE_DE_CAMPAGNE.md:2307–2307",
+        "docs/campagne/BIBLE_DE_CAMPAGNE.md:2309–2309"
+      ],
+      "expectedPhases": [
+        "Oui",
+        "Partiel",
+        "Oui",
+        "Non",
+        "Non"
+      ]
+    },
+    {
+      "id": "OPS-Q26",
+      "kind": "Recette globale",
+      "criterion": "Objets interactifs, espace modifié, échec/reprise et sortie praticable.",
+      "sourceRefs": [
+        "production/clan-ship-20261104/clan-ship-operations-20261105.xlsx | Recette!35"
+      ],
+      "expectedPhases": [
+        "Partiel",
+        "Partiel",
+        "Partiel",
+        "Non",
+        "Non"
+      ]
+    },
+    {
+      "id": "OPS-B04",
+      "kind": "Suite à réaliser",
+      "criterion": "Guider un groupe revenu du hangar aux soins puis présenter son relevé au conseil.",
+      "sourceRefs": [
+        "production/clan-ship-20261104/clan-ship-operations-20261105.xlsx | Opérations!61"
+      ],
+      "expectedPhases": [
+        "Non",
+        "Non",
+        "Non",
+        "Non",
+        "Non"
+      ]
+    }
+  ],
+  "sheets": [
+    "Suite",
+    "Sources"
+  ],
+  "expectedSummary": {
+    "raccords": 2,
+    "tests": 2,
+    "historical": 108,
+    "browser": 0
+  },
+  "actualSummary": {
+    "raccords": 2,
+    "tests": 2,
+    "historical": 108,
+    "browser": 0
+  },
+  "phaseTests": [
+    {
+      "values": [
+        "Oui",
+        "Oui",
+        "Oui",
+        "Sans objet",
+        "Sans objet"
+      ],
+      "expected": "Périmètre attesté",
+      "actual": "Périmètre attesté"
+    },
+    {
+      "values": [
+        "Oui",
+        "Partiel",
+        "Oui",
+        "Sans objet",
+        "Sans objet"
+      ],
+      "expected": "Partiel",
+      "actual": "Partiel"
+    },
+    {
+      "values": [
+        "Oui",
+        "Oui",
+        "À vérifier",
+        "Sans objet",
+        "Sans objet"
+      ],
+      "expected": "À vérifier",
+      "actual": "À vérifier"
+    },
+    {
+      "values": [
+        "Oui",
+        "Oui",
+        "Oui",
+        "Non",
+        "Sans objet"
+      ],
+      "expected": "Ouvert",
+      "actual": "Ouvert"
+    }
+  ],
+  "evidenceFingerprints": [
+    {
+      "path": "app/game/systems/clanShipTrophyCase.ts",
+      "sha256": "6399c8c0f6d6eb4c385b194113f0e2f0e2699d4a7972dc44a22979d46b688c8c",
+      "bytes": 4188
+    },
+    {
+      "path": "app/game/systems/clanShipIncidents.ts",
+      "sha256": "b612218e1fbf2ea7bc92d7767fbfb7b09eaa0805a13d161b759389821ffa2ce9",
+      "bytes": 39663
+    },
+    {
+      "path": "app/game/ClanShipIncidentPanel.tsx",
+      "sha256": "41895122826fa9f2835abe2062fe18f087b8808cba053a4719c24f9d6fd4d3ec",
+      "bytes": 12601
+    },
+    {
+      "path": "app/game/ClanShipIncidentScene.tsx",
+      "sha256": "9a970ac8b47c026dde35edb6d3944d77bd06847d88274e6a63d8c5ea39e11cd4",
+      "bytes": 9161
+    },
+    {
+      "path": "tests/clan-ship-incidents.test.mjs",
+      "sha256": "2df0ab68f691ca95c8af85fc0c1f95a647d79f5cd680cb230349a3c9a5fb3314",
+      "bytes": 22826
+    },
+    {
+      "path": "tests/clan-ship-trophy-case.test.mjs",
+      "sha256": "cd50309c842ef400279651c1264020425d83f15d0b2ba537f8198dc706ab4567",
+      "bytes": 25636
+    },
+    {
+      "path": "production/excel-bible-suite-20261108/trophee/tests-run.txt",
+      "sha256": "3e347711c57f4205b215af4608dd94e1bd936dd298a1fdc92b6c32d3a550176c",
+      "bytes": 3300
+    },
+    {
+      "path": "app/game/ClanShipIncidentPanel.module.css",
+      "sha256": "3ee940c9b24c7c15b90ae87258a3142180792dc18c43d5d85e753a1fb7d46e9a",
+      "bytes": 4411
+    },
+    {
+      "path": "app/game/ClanShipIncidentScene.module.css",
+      "sha256": "b45122031d73dbae45a26b27cfafa0a4fe1761370f5691ad252913fac0c7ce4a",
+      "bytes": 3407
+    },
+    {
+      "path": "production/excel-bible-suite-20261108/trophee/verification.json",
+      "sha256": "f9bd8f9a444cd8a25d41bf5676881ea3f5cc5450a940bd6138913c13a62f92f9",
+      "bytes": 3688
+    },
+    {
+      "path": "production/excel-bible-suite-20261108/verification.json",
+      "sha256": "2851c504b40b8722ddbbde4b17c7fdc4ece689f52748c7f0c833699330d02f9a",
+      "bytes": 8800
+    },
+    {
+      "path": "production/excel-bible-suite-20261108/qa/trophy-final-presentation.txt",
+      "sha256": "505236bb46bbc4582262b1ebfdd95461ca2f7c2a090f9bebd881eaf1a8c30c08",
+      "bytes": 1624
+    },
+    {
+      "path": "app/game/systems/buriedCradleReturn.ts",
+      "sha256": "72417d7f1445d9744be357d849cd949ed46e280b49e8359e053dde606459d16a",
+      "bytes": 5607
+    },
+    {
+      "path": "app/game/systems/buriedCradleCampaign.ts",
+      "sha256": "c5ad2faa3698056cf5010f486be3929dd56078bb6fefc8d5325962486cb42e7d",
+      "bytes": 15366
+    },
+    {
+      "path": "app/game/BuriedCradleReturnPanel.tsx",
+      "sha256": "3f144961fcabcef5b227e7324bff517311cac774e919cdaeea92bb1cc9238793",
+      "bytes": 8976
+    },
+    {
+      "path": "app/game/PhysicalShipDeck.tsx",
+      "sha256": "d3efb8a52b7a9b24f8370a9ec2ca4b6a0b56f541b899f72177042027fd17bbff",
+      "bytes": 26996
+    },
+    {
+      "path": "app/game/ShipInterior25D.tsx",
+      "sha256": "36ac222de234e3513a62be0c9b7e279f5d9631d165b8a82353832e03220d9e15",
+      "bytes": 34888
+    },
+    {
+      "path": "app/game/GameClient.tsx",
+      "sha256": "4aeb5fa907dc5779d8d298a2412dcef3c531a25f4e06551b818cf98460d4287c",
+      "bytes": 360838
+    },
+    {
+      "path": "tests/helpers/buried-cradle-return-route.mjs",
+      "sha256": "3a4fb2b7705bbdc07f6fd09f9c9bb768ac048a7bfd5cb26f9c10352d017dbcf0",
+      "bytes": 2569
+    },
+    {
+      "path": "tests/buried-cradle-return.test.mjs",
+      "sha256": "4dc09154635e4e5701b5bc6c59a2647d8047e1a6f6590ddad938d5ef586a41b6",
+      "bytes": 13314
+    },
+    {
+      "path": "production/excel-bible-suite-20261108/qa/retour-berceau/tests-run.txt",
+      "sha256": "f200ef54e0d79c610d6285fa8a2de95cc6961107d381895a4672027944d78006",
+      "bytes": 5675
+    },
+    {
+      "path": "app/game/BuriedCradleReturnPanel.module.css",
+      "sha256": "19ed212127c1089bc6f62754f5f69e065ae472beeebb3ce8bee192b5dd8b4a19",
+      "bytes": 2115
+    },
+    {
+      "path": "production/excel-bible-suite-20261108/qa/retour-berceau/relecture-independante.md",
+      "sha256": "de3ec632667746b8f813d37f37c18067eff7bcde6ba36e027cbdda35739a0756",
+      "bytes": 4473
+    },
+    {
+      "path": "production/excel-bible-suite-20261108/qa/retour-berceau/input-routing-probe.json",
+      "sha256": "a4fc2670e89c93dc6caf8f2eac5aa999549ffa08bbf54ddbaf12384bc6c6993a",
+      "bytes": 762
+    },
+    {
+      "path": "production/excel-bible-20261108/incidents/coverage.json",
+      "sha256": "498ea30e302874694b39435c6cd83fb6b5ef3092b6b6f63b7845d070e6af45ef",
+      "bytes": 3618
+    },
+    {
+      "path": "production/excel-bible-20261108/incidents/verification.json",
+      "sha256": "d667ff26fd7cb8bd942abb19e6ee9099cd2b54f93728655243c3fc733532f24d",
+      "bytes": 1344
+    },
+    {
+      "path": "production/clan-ship-20261104/operations-spec.md",
+      "sha256": "d1d0a2d1a77a851f33657bdffbd5ec9c365eae2d4ce74bcaaf9020588950a394",
+      "bytes": 58683
+    },
+    {
+      "path": "production/excel-bible-suite-20261108/qa/cradle-resume-20261108/browser-verification.json",
+      "sha256": "e8de5325fe11426fc58f59eb7545b572fa1cbe3981e4923bc061d7598c0f567e",
+      "bytes": 5128
+    }
+  ],
+  "browserStatus": "blocked-before-page-load",
+  "previewFiles": [
+    "production/excel-bible-suite-20261108/suivi/apercus/01-suite.png",
+    "production/excel-bible-suite-20261108/suivi/apercus/02-phases.png",
+    "production/excel-bible-suite-20261108/suivi/apercus/03-preuves-et-sources.png",
+    "production/excel-bible-suite-20261108/suivi/apercus/04-sources.png"
+  ],
+  "artifactPath": "production/excel-bible-suite-20261108/suivi/Yautja_Suite_Excel_Bible_20261108.xlsx",
+  "artifactSha256": "e7d2af52b637ebc1f90c1f85f2e8bec7853b0f0bddf058e258e21505894a0c04",
+  "limits": [
+    "Les formules et aperçus ne valident pas le gameplay.",
+    "La fidélité artistique humaine et le parcours navigateur restent ouverts."
+  ],
+  "independentXmlVerification": {
+    "passed": true,
+    "sourcesUnchanged": 108,
+    "previousFilesUnchanged": 92,
+    "cellsCompared": 856,
+    "qualifiedRows": 4,
+    "summaryCaches": {
+      "B5": 2,
+      "D5": 2,
+      "B6": 108,
+      "D6": 0
+    },
+    "errorCells": 0,
+    "evidenceFingerprintsVerified": 28,
+    "scope": "Classeur, phases et sources. Aucun comportement de jeu ou parcours navigateur ajouté par ce contrôle."
+  },
+  "spreadsheetVisualReview": {
+    "passed": true,
+    "reviewer": "assistant",
+    "scope": "Lisibilité des deux feuilles du classeur uniquement ; aucune revue artistique du jeu.",
+    "previews": [
+      {
+        "path": "production/excel-bible-suite-20261108/suivi/apercus/01-suite.png",
+        "sha256": "2b848831b5c756d15f75d10a35ddba11c67aefcd6b35cda3c1d388458a6daa16"
+      },
+      {
+        "path": "production/excel-bible-suite-20261108/suivi/apercus/02-phases.png",
+        "sha256": "9cf21b52ddd0babe7bfce1fab33471b05bc3742f56246c5d77953cd190bcdac5"
+      },
+      {
+        "path": "production/excel-bible-suite-20261108/suivi/apercus/03-preuves-et-sources.png",
+        "sha256": "fb74719a718340c5f34f77661dd1afc400fe2453905c8c3c3d3dc0f2a9081055"
+      },
+      {
+        "path": "production/excel-bible-suite-20261108/suivi/apercus/04-sources.png",
+        "sha256": "550b07cc8df13c44df5f71b96d42db543bb7c56f176ef071250531335d64d633"
+      }
+    ],
+    "checks": [
+      "Titres, valeurs et textes lisibles sans débordement",
+      "Critères source et références conservés",
+      "Phases partielles et limites visibles",
+      "Quatre aperçus finaux identiques à ceux inspectés"
+    ]
+  },
+  "regenerationReason": "Empreintes actualisées après suppression d’une ligne vide finale dans tests/buried-cradle-return.test.mjs. Contenu du classeur et aperçus inchangés ; rapport commun figé actualisé par le chantier racine."
+}

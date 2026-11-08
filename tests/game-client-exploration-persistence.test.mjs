@@ -22,7 +22,7 @@ function productionFunction(name, environment) {
 }
 const bundled = await build({
   stdin: {
-    contents: 'export * from "./app/game/save"; export * from "./app/game/systems/activeHuntSave"; export * from "./app/game/systems/explorationProgress"; export * from "./app/game/systems/harvestInventoryV112"; export { normalizePlanetInsertionPlan, settleExpeditionOutcome } from "./app/game/systems/planetInsertion"; export { isShipId } from "./app/game/shipCatalogue";',
+    contents: 'export * from "./app/game/save"; export * from "./app/game/systems/activeHuntSave"; export * from "./app/game/systems/explorationProgress"; export * from "./app/game/systems/harvestInventoryV112"; export { normalizePlanetInsertionPlan, settleExpeditionOutcome } from "./app/game/systems/planetInsertion"; export { settleCompanionResidenceMission } from "./app/game/systems/companionResidence"; export { isShipId } from "./app/game/shipCatalogue";',
     resolveDir: process.cwd(), loader: "ts",
   },
   bundle: true, write: false, format: "esm", platform: "node", logLevel: "silent",
@@ -85,6 +85,7 @@ function fixture({ missionId = "jungle-vey", inheritedProgress } = {}) {
     deliverHarvestV112: real.deliverHarvestV112,
     normalizePlanetInsertionPlan: real.normalizePlanetInsertionPlan,
     settleExpeditionOutcome: real.settleExpeditionOutcome,
+    settleCompanionResidenceMission: real.settleCompanionResidenceMission,
     isShipId: real.isShipId,
     ACTIVE_HUNT_SAVE_VERSION: real.ACTIVE_HUNT_SAVE_VERSION,
     ACTIVE_HUNT_RUNTIME_REVISION: real.ACTIVE_HUNT_RUNTIME_REVISION,

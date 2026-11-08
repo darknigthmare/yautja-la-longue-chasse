@@ -1,0 +1,35 @@
+{
+  "date": "2026-11-08T09:59:27.540927+00:00",
+  "command": [
+    "node",
+    "--experimental-strip-types",
+    "--test",
+    "--test-concurrency=1",
+    "tests/clan-ship-incidents.test.mjs",
+    "tests/companion-residence.test.mjs",
+    "tests/clan-ship-operations.test.mjs",
+    "tests/clan-ship-save.test.mjs",
+    "tests/clan-ship-interior.test.mjs"
+  ],
+  "exitCode": 0,
+  "incidentTests": 14,
+  "companionTests": 24,
+  "combinedTests": 98,
+  "combinedPassed": 98,
+  "browserValidated": false,
+  "humanArtValidated": false,
+  "browserLimitation": "Root reported a blocked AF_UNIX Chromium launch and an automatic policy rejection of escalation. No browser certification.",
+  "physicalEvidence": "Actual clan motion/path/door controllers walked all required incident points and returned to hangar in behavior tests.",
+  "renderEvidence": "Actual React SSR with native incident art and two independently restored circuits; no pixel/hydration claim.",
+  "importGuard": "Replay rejects a fault event after the same 88-event bound as the runtime; the remaining successful finish still imports.",
+  "finalLint": {
+    "command": [
+      "node",
+      "--max-old-space-size=2048",
+      "node_modules/eslint/bin/eslint.js",
+      "app/game/systems/clanShipIncidents.ts",
+      "tests/clan-ship-incidents.test.mjs"
+    ],
+    "exitCode": 0
+  }
+}

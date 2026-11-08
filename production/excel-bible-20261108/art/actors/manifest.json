@@ -1,0 +1,181 @@
+{
+  "formatVersion": 1,
+  "date": "2026-11-08",
+  "basisCommit": "254b4b972af3c32cb078da3744241b2c0ea2f46c",
+  "generatedAssets": 3,
+  "plannedAssets": 3,
+  "remainingGenerationKeys": [],
+  "runtimeBytes": 6022521,
+  "pixelEditing": "none; runtime PNG is an exact copy of selected image_gen output",
+  "humanArtValidation": false,
+  "failures": [],
+  "existingImports": [
+    {
+      "key": "eclisse",
+      "runtime": "public/game/companions/actors-v1/eclisse.png",
+      "provenance": "production/excel-bible-20261108/compagnons/eclisse-import.json",
+      "sha256": "556c8bc3ee3b8cfb729f5655d439385ac4919b2a3fe33b65bb647f588def9312",
+      "bytes": 627508,
+      "generatedThisBatch": false
+    }
+  ],
+  "assets": [
+    {
+      "key": "breche",
+      "label": "Brèche",
+      "src": "/game/companions/actors-v1/breche.png",
+      "sourceWidth": 1536,
+      "sourceHeight": 1024,
+      "alphaBounds": {
+        "x": 152,
+        "y": 17,
+        "width": 1216,
+        "height": 969
+      },
+      "pivot": {
+        "x": 760.0,
+        "y": 985,
+        "method": "visible-bottom-center"
+      },
+      "motionStatus": "static-draft",
+      "humanArtValidation": false,
+      "nativeFacing": "left",
+      "source": "production/excel-bible-20261108/art/actors/sources/breche.png",
+      "runtime": "public/game/companions/actors-v1/breche.png",
+      "sha256": "e83c7ae133a4fa7a1318ee4a11f12bf1c1d9f49b5a6c46321d970b0e4470a4fc",
+      "decodedRgbaSha256": "2a7647f50e57c1778aba52404496c6213cdfd67dc7689e22f342991f3f6e9c57",
+      "bytes": 2367954,
+      "pngMode": "RGBA",
+      "alpha": {
+        "threshold": 8,
+        "minimum": 0,
+        "maximum": 254,
+        "fullyTransparentPixels": 968094,
+        "visiblePixels": 520937,
+        "visibleBorderPixels": 0
+      },
+      "prompt": "prompts/breche.txt",
+      "requirements": [
+        "ORG-01",
+        "C2",
+        "QA-C28"
+      ],
+      "references": [
+        "https://uk.propstoreauction.com/view-auctions/catalog/id/78/lot/18431/index.html",
+        "https://uk.propstoreauction.com/images/lot/4058/40580_0.jpg"
+      ],
+      "classification": "original-game-adaptation",
+      "nativePoses": 1,
+      "animationClips": 0,
+      "generation": "complete",
+      "technicalValidation": "passed",
+      "sceneValidation": "pending",
+      "physicalPivotValidation": "pending",
+      "canonicalFidelity": "not-claimed"
+    },
+    {
+      "key": "lance-fendue",
+      "label": "Lance-Fendue",
+      "src": "/game/companions/actors-v1/lance-fendue.png",
+      "sourceWidth": 1024,
+      "sourceHeight": 1536,
+      "alphaBounds": {
+        "x": 208,
+        "y": 13,
+        "width": 717,
+        "height": 1516
+      },
+      "pivot": {
+        "x": 566.5,
+        "y": 1528,
+        "method": "visible-bottom-center"
+      },
+      "motionStatus": "static-draft",
+      "humanArtValidation": false,
+      "nativeFacing": "right",
+      "source": "production/excel-bible-20261108/art/actors/sources/lance-fendue.png",
+      "runtime": "public/game/companions/actors-v1/lance-fendue.png",
+      "sha256": "8855d6465b2c9b3f354ead46df6c81dbb09d1bb3aa1a91e8c696e42a275f6008",
+      "decodedRgbaSha256": "6799a788806f533b505c8b05d1344f7863747f120d1570f09bb7d052b051cc67",
+      "bytes": 2127981,
+      "pngMode": "RGBA",
+      "alpha": {
+        "threshold": 8,
+        "minimum": 0,
+        "maximum": 254,
+        "fullyTransparentPixels": 1042096,
+        "visiblePixels": 503978,
+        "visibleBorderPixels": 0
+      },
+      "prompt": "prompts/lance-fendue.txt",
+      "requirements": [
+        "ORG-16",
+        "C2",
+        "QA-C28"
+      ],
+      "references": [
+        "public/game/homeworld/v84/npcs/instructor/01.png"
+      ],
+      "classification": "original-game-adaptation",
+      "nativePoses": 1,
+      "animationClips": 0,
+      "generation": "complete",
+      "technicalValidation": "passed",
+      "sceneValidation": "pending",
+      "physicalPivotValidation": "pending",
+      "canonicalFidelity": "not-claimed"
+    },
+    {
+      "key": "opale",
+      "label": "Opale",
+      "src": "/game/companions/actors-v1/opale.png",
+      "sourceWidth": 1024,
+      "sourceHeight": 1536,
+      "alphaBounds": {
+        "x": 302,
+        "y": 26,
+        "width": 411,
+        "height": 1495
+      },
+      "pivot": {
+        "x": 507.5,
+        "y": 1520,
+        "method": "visible-bottom-center"
+      },
+      "motionStatus": "static-draft",
+      "humanArtValidation": false,
+      "nativeFacing": "right",
+      "source": "production/excel-bible-20261108/art/actors/sources/opale.png",
+      "runtime": "public/game/companions/actors-v1/opale.png",
+      "sha256": "082646e870eaceff3ce4357e2fe21115d7a577232976b6d4ed2182cd1efde959",
+      "decodedRgbaSha256": "4023e7da7c8f9207fa2062bf6a3ecdff0e8e3559c7ea53d179dce31efe045e37",
+      "bytes": 1526586,
+      "pngMode": "RGBA",
+      "alpha": {
+        "threshold": 8,
+        "minimum": 0,
+        "maximum": 254,
+        "fullyTransparentPixels": 1163803,
+        "visiblePixels": 392073,
+        "visibleBorderPixels": 0
+      },
+      "prompt": "prompts/opale.txt",
+      "requirements": [
+        "ORG-13",
+        "C2",
+        "QA-C28"
+      ],
+      "references": [
+        "docs/campagne/CATALOGUE_COMPAGNONS.md#drones-machines-et-synthetiques"
+      ],
+      "classification": "original-game-adaptation",
+      "nativePoses": 1,
+      "animationClips": 0,
+      "generation": "complete",
+      "technicalValidation": "passed",
+      "sceneValidation": "pending",
+      "physicalPivotValidation": "pending",
+      "canonicalFidelity": "not-claimed"
+    }
+  ]
+}

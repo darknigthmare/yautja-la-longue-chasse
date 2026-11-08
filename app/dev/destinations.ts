@@ -2,6 +2,7 @@ import { ARMORS, GEAR, MISSIONS, WEAPONS } from '../game/data';
 import { defaultSave, RANK_THRESHOLDS } from '../game/save';
 import { DEFAULT_SHIP_ID } from '../game/shipCatalogue';
 import type { MissionId, SaveGame } from '../game/types';
+import type { CradleCheckpointId } from '../game/systems/buriedCradle';
 import { createClanShipDockingState, type ClanShipRoomId } from '../game/systems/clanShipDocking';
 import { CLAN_SHIP_INTERIOR_ROOM_ORDER, CLAN_SHIP_INTERIOR_ROOMS } from '../game/systems/clanShipInterior';
 import type { JsonObject } from '../game/systems/activeHuntSave';
@@ -39,6 +40,7 @@ interface DevDestinationDetails {
 
 export type DevDestination = DevDestinationDetails & (
   | { readonly kind: 'ship' }
+  | { readonly kind: 'cradle'; readonly checkpointId: CradleCheckpointId }
   | { readonly kind: 'clan'; readonly roomId: ClanShipRoomId; readonly status: 'free-flight' | 'aboard' }
   | { readonly kind: 'homeworld'; readonly levelId: HomeworldLevelV77; readonly point: { readonly x: number; readonly y: number } }
   | { readonly kind: 'region'; readonly regionId: HomeworldRegionIdV68 }
@@ -65,6 +67,12 @@ function cityDoorway(id: string, label: string, description: string, buildingId:
 /** Only scenes present on the current main branch are offered. Planned art or
  * unmerged destinations never become a launch button by appearing in a sheet. */
 export const DEV_DESTINATIONS: readonly DevDestination[] = [
+  { id: 'cradle-entry', label: 'Xeno Prime · Lisière du Berceau', category: 'missions', kind: 'cradle', checkpointId: '01',
+    description: 'Parcourir les douze tableaux du Berceau depuis XP-Z11, avec les vrais contrôles et interactions.' },
+  { id: 'cradle-descent', label: 'Xeno Prime · Faille', category: 'missions', kind: 'cradle', checkpointId: '07',
+    description: 'Tester la descente, le réservoir, les racines et les raccourcis du Berceau.' },
+  { id: 'cradle-basin', label: 'Xeno Prime · Avant la Matriarche', category: 'missions', kind: 'cradle', checkpointId: '11',
+    description: 'Entrer physiquement dans l’arène, éviter les attaques, prélever la crête et rejoindre l’extraction.' },
   {
     id: 'ship', label: 'Mon vaisseau', category: 'hubs', kind: 'ship',
     description: 'Intérieur en 2,5D du vaisseau personnel : circulation en profondeur, huit salles et deux ponts.',

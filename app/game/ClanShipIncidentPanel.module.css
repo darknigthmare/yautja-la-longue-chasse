@@ -1,0 +1,39 @@
+.panel { border: 1px solid #6d6242; border-radius: 12px; color: #e6e5d9; background: linear-gradient(130deg,#24251b,#111b1e); margin: 14px 0; overflow: hidden; }
+.panel > summary { cursor: pointer; min-height: 60px; padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; gap: 16px; font-weight: 700; }
+.panel > summary::after { content: '+'; font-size: 24px; color: #cabb85; }
+.panel[open] > summary::after { content: '−'; }
+.panel > summary small { display: block; font-size: 12px; color: #b7b397; font-weight: 400; margin-top: 4px; }
+.panel > summary > span:last-child { margin-left: auto; font-size: 12px; color: #c5c3a9; font-weight: 400; }
+.body { padding: 4px 20px 18px; }
+.lead, .card p { font-size: 13px; line-height: 1.65; color: #c3c5b7; margin: 0; }
+.grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(min(100%,320px),1fr)); gap: 14px; margin-top: 18px; }
+.card { padding: 17px; background: #131e21; border: 1px solid #4c5c56; border-radius: 9px; display: flex; flex-direction: column; gap: 13px; min-width: 0; }
+.eyebrow { font-size: 10px; letter-spacing: .12em; color: #d1c58d; }
+.card h3 { font-size: 19px; color: #eee9d5; margin: 6px 0 10px; }
+.card .note { color: #d9cba8; background: #282b23; border-left: 3px solid #ac9858; padding: 10px; border-radius: 3px; }
+.readings { margin: 0; display: grid; gap: 10px; font-size: 12px; }
+.readings > div { display: grid; grid-template-columns: 120px 1fr; gap: 10px; padding-bottom: 8px; border-bottom: 1px solid #32433e; }
+.readings dt { color: #a4b5a7; }.readings dd { margin: 0; color: #e0e4d4; line-height: 1.55; }
+.circuits { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.circuits > div { display: flex; flex-direction: column; gap: 7px; border: 1px solid #897647; background: #332f22; padding: 13px; border-radius: 6px; }
+.circuits > div[data-circuit-stable='true'] { background: #183a2c; border-color: #6fa479; }
+.circuits strong { color: #e9e5cf; font-size: 14px; }.circuits span { color: #c6c5ab; font-size: 12px; line-height: 1.5; }.circuits em { color: #e0cd8d; font-style: normal; font-size: 11px; }
+.next { display: grid; gap: 10px; border: 1px solid #5e6c51; padding: 13px; border-radius: 7px; background: #1b2b26; }
+.next strong { font-size: 14px; color: #dce4bd; }.next small { color: #c0c8b3; font-size: 11px; line-height: 1.55; }
+.panel button, .branches button { border: 1px solid #8b946e; border-radius: 6px; background: #354031; color: #f0eedc; font: inherit; font-size: 12px; line-height: 1.45; min-height: 44px; padding: 9px 12px; cursor: pointer; }
+.panel button:hover:not(:disabled), .branches button:hover:not(:disabled) { background: #505e3e; border-color: #c7d49d; }
+.panel button:disabled, .branches button:disabled { opacity: .4; cursor: not-allowed; }
+.panel :is(button,summary):focus-visible, .branches button:focus-visible { outline: 3px solid #e1edb3; outline-offset: 3px; }
+.branches { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.conclusions { display: grid; gap: 8px; min-width: 0; }
+.conclusions button { display: grid; gap: 5px; text-align: left; min-width: 0; overflow-wrap: anywhere; }
+.conclusions button strong { color: #f1edcf; font-size: 12px; }.conclusions button span { color: #d0d8c2; font-size: 11px; line-height: 1.55; }
+.evidence { display: grid; gap: 12px; min-width: 0; }
+.chronicle { display: grid; gap: 8px; border: 1px solid #738761; border-radius: 6px; padding: 12px; background: #203026; }
+.chronicle > strong { color: #dce8bd; font-size: 13px; }.chronicle small { color: #b7cab8; font-size: 11px; line-height: 1.6; }
+.chronicle blockquote { margin: 0; padding: 10px 0 0 10px; border-left: 2px solid #9aa56d; color: #e4e5c9; font-size: 12px; line-height: 1.7; }
+.chronicle blockquote small { display: block; margin-bottom: 5px; }
+.card .success { color: #c0e5b9; border: 1px solid #5c7b55; border-radius: 6px; padding: 12px; }
+.card .latest { font-size: 12px; color: #b8c9bb; border-top: 1px solid #37493f; padding-top: 10px; }
+.status { color: #d6d9bd; font-size: 12px; line-height: 1.65; margin: 18px 0 0; }.failure { color: #efbca3; }
+@media(max-width:600px) { .panel > summary { padding: 13px 12px; }.body { padding: 4px 12px 14px; }.card { padding: 13px; }.readings > div { grid-template-columns: 1fr; gap: 4px; }.panel > summary > span:last-child { max-width: 115px; text-align: right; font-size: 11px; } }

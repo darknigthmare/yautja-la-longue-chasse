@@ -1,0 +1,443 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-11-08",
+  "scope": "C1 + accords secondaires C2, 8 identités existantes et 4 pilotes; ce lot ne ferme pas toute la bible compagnons",
+  "browserVerified": false,
+  "humanArtValidated": false,
+  "tests": "24 nouveaux,84 avec régressions ciblées",
+  "source": "docs/campagne/COMPAGNONS_ET_ALLIES_PREMIUM.md",
+  "criteria": [
+    {
+      "id": "ALL-01",
+      "status": "implemented-for-scope",
+      "scope": "Aucun recrutement automatique; nouveaux accords pilotes/clan en réserve; anciens accords préservés.",
+      "limitations": "12 identités runtime; pas les 44 originaux complets.",
+      "evidence": [
+        "app/game/systems/companionResidence.ts",
+        "tests/companion-residence.test.mjs",
+        "app/game/CompanionResidencePanel.tsx",
+        "app/game/CompanionQuartersScene.tsx"
+      ]
+    },
+    {
+      "id": "ALL-02",
+      "status": "partial",
+      "scope": "Recrutement, coque, travaux, disponibilité triade, suspension et déploiement séparés.",
+      "limitations": "Décès, capture, relations Premium et santé terrain des pilotes absents.",
+      "evidence": [
+        "app/game/systems/companionResidence.ts",
+        "tests/companion-residence.test.mjs",
+        "app/game/CompanionResidencePanel.tsx",
+        "app/game/CompanionQuartersScene.tsx"
+      ]
+    },
+    {
+      "id": "ALL-03",
+      "status": "implemented-for-scope",
+      "scope": "Présence/module/service construits depuis accord et affectation; nouveaux recrutements clan en réserve.",
+      "limitations": "Postes clan historiques conservés comme accords antérieurs; revue visuelle navigateur restante.",
+      "evidence": [
+        "app/game/systems/companionResidence.ts",
+        "tests/companion-residence.test.mjs",
+        "app/game/CompanionResidencePanel.tsx",
+        "app/game/CompanionQuartersScene.tsx"
+      ]
+    },
+    {
+      "id": "ALL-04",
+      "status": "implemented-for-scope",
+      "scope": "Bail de mission de la triade conserve module et masque avatar/service.",
+      "limitations": "Pilotes non déployables.",
+      "evidence": [
+        "app/game/systems/companionResidence.ts",
+        "tests/companion-residence.test.mjs",
+        "app/game/CompanionResidencePanel.tsx",
+        "app/game/CompanionQuartersScene.tsx"
+      ]
+    },
+    {
+      "id": "ALL-05",
+      "status": "implemented-for-scope",
+      "scope": "Huit salles personnelles et sept salles clan conservées; sockets hors sol traversable.",
+      "limitations": "Pas de nouvelles chambres parcourables.",
+      "evidence": [
+        "app/game/systems/companionResidence.ts",
+        "tests/companion-residence.test.mjs",
+        "app/game/CompanionResidencePanel.tsx",
+        "app/game/CompanionQuartersScene.tsx"
+      ]
+    },
+    {
+      "id": "ALL-06",
+      "status": "constraint-preserved",
+      "scope": "Aucune monnaie réelle ni puissance universelle; pas de Premium débloqué par ce lot.",
+      "limitations": "Arcs Premium ouverts.",
+      "evidence": [
+        "docs/campagne/COMPAGNONS_ET_ALLIES_PREMIUM.md",
+        "app/game/systems/companionResidence.ts"
+      ]
+    },
+    {
+      "id": "ALL-07",
+      "status": "constraint-preserved",
+      "scope": "Quatre accords signalés adaptations originales; aucune référence d’espèce convertie en allié gratuit.",
+      "limitations": "Références Héritage non produites.",
+      "evidence": [
+        "docs/campagne/COMPAGNONS_ET_ALLIES_PREMIUM.md",
+        "app/game/systems/companionResidence.ts"
+      ]
+    },
+    {
+      "id": "ALL-08",
+      "status": "implemented-for-scope",
+      "scope": "Seuls les deux acteurs de triade déjà admissibles ont fieldReady:true.",
+      "limitations": "Aucun nouveau rite solitaire ni essai L-05 réalisé.",
+      "evidence": [
+        "app/game/systems/companionResidence.ts",
+        "tests/companion-residence.test.mjs",
+        "app/game/CompanionResidencePanel.tsx",
+        "app/game/CompanionQuartersScene.tsx"
+      ]
+    },
+    {
+      "id": "ALL-09",
+      "status": "partial",
+      "scope": "Réemploi huit identités établies, huit chasses, coques et écrivain de campagne.",
+      "limitations": "Alias Keth/Serekh restent ouverts.",
+      "evidence": [
+        "app/game/systems/companionResidence.ts",
+        "tests/companion-residence.test.mjs",
+        "app/game/CompanionResidencePanel.tsx",
+        "app/game/CompanionQuartersScene.tsx"
+      ]
+    },
+    {
+      "id": "ALL-10",
+      "status": "implemented-for-scope",
+      "scope": "Métadonnées statiques et validation humaine false; preuves comportement/SSR séparées du navigateur et art.",
+      "limitations": "Fidélité1:1 non certifiée.",
+      "evidence": [
+        "app/game/systems/companionResidence.ts",
+        "tests/companion-residence.test.mjs",
+        "app/game/CompanionResidencePanel.tsx",
+        "app/game/CompanionQuartersScene.tsx"
+      ]
+    },
+    {
+      "id": "QA-C01",
+      "status": "implemented-for-scope",
+      "scope": "Nouvelle campagne/anciens saves sans registre: aucun occupant/habitat; huit salles intactes.",
+      "limitations": "SSR et géométrie, pas navigateur.",
+      "evidence": [
+        "app/game/systems/companionResidence.ts",
+        "tests/companion-residence.test.mjs",
+        "app/game/CompanionResidencePanel.tsx",
+        "app/game/CompanionQuartersScene.tsx"
+      ]
+    },
+    {
+      "id": "QA-C02",
+      "status": "implemented-for-scope",
+      "scope": "Découverte des appels sans recrutement ni installation.",
+      "limitations": "Journal de quatre adaptations, pas scène de rencontre physique dédiée.",
+      "evidence": [
+        "app/game/systems/companionResidence.ts",
+        "tests/companion-residence.test.mjs",
+        "app/game/CompanionResidencePanel.tsx",
+        "app/game/CompanionQuartersScene.tsx"
+      ]
+    },
+    {
+      "id": "QA-C03",
+      "status": "open",
+      "scope": "Saar/Vek et participants des rites antérieurs hors changement.",
+      "limitations": "Pas de nouvelle preuve de ce scénario.",
+      "evidence": [
+        "docs/campagne/COMPAGNONS_ET_ALLIES_PREMIUM.md",
+        "app/game/systems/companionResidence.ts"
+      ]
+    },
+    {
+      "id": "QA-C04",
+      "status": "implemented-for-scope",
+      "scope": "Quatre pilotes et nouveaux recrutements clan arrivent en réserve.",
+      "limitations": "",
+      "evidence": [
+        "app/game/systems/companionResidence.ts",
+        "tests/companion-residence.test.mjs",
+        "app/game/CompanionResidencePanel.tsx",
+        "app/game/CompanionQuartersScene.tsx"
+      ]
+    },
+    {
+      "id": "QA-C05",
+      "status": "partial",
+      "scope": "Quai réel, réservation/débit unique, module compatible, avatar exact en SSR.",
+      "limitations": "Placement pixels/contact/caméra à revoir en navigateur.",
+      "evidence": [
+        "app/game/systems/companionResidence.ts",
+        "tests/companion-residence.test.mjs",
+        "app/game/CompanionResidencePanel.tsx",
+        "app/game/CompanionQuartersScene.tsx"
+      ]
+    },
+    {
+      "id": "QA-C06",
+      "status": "implemented-for-scope",
+      "scope": "Annulation/refund idempotent, refus quota, ancienne affectation conservée.",
+      "limitations": "",
+      "evidence": [
+        "app/game/systems/companionResidence.ts",
+        "tests/companion-residence.test.mjs",
+        "app/game/CompanionResidencePanel.tsx",
+        "app/game/CompanionQuartersScene.tsx"
+      ]
+    },
+    {
+      "id": "QA-C07",
+      "status": "implemented-for-scope",
+      "scope": "Triade déployée: module conservé, avatar et service absents; lease owner/mission/attempt/hull validé.",
+      "limitations": "",
+      "evidence": [
+        "app/game/systems/companionResidence.ts",
+        "tests/companion-residence.test.mjs",
+        "app/game/CompanionResidencePanel.tsx",
+        "app/game/CompanionQuartersScene.tsx"
+      ]
+    },
+    {
+      "id": "QA-C08",
+      "status": "partial",
+      "scope": "Triade blessée en baie médicale, incarnation unique en SSR, services coupés.",
+      "limitations": "Animation médicale et contacts visuels non validés.",
+      "evidence": [
+        "app/game/systems/companionResidence.ts",
+        "tests/companion-residence.test.mjs",
+        "app/game/CompanionResidencePanel.tsx",
+        "app/game/CompanionQuartersScene.tsx"
+      ]
+    },
+    {
+      "id": "QA-C09",
+      "status": "implemented-for-scope",
+      "scope": "Réserve retire quartier/avatar/bonus géré et garde recrutement/santé.",
+      "limitations": "",
+      "evidence": [
+        "app/game/systems/companionResidence.ts",
+        "tests/companion-residence.test.mjs",
+        "app/game/CompanionResidencePanel.tsx",
+        "app/game/CompanionQuartersScene.tsx"
+      ]
+    },
+    {
+      "id": "QA-C10",
+      "status": "implemented-for-scope",
+      "scope": "Transfert atomique hôte unique, synchronisation triade, aucun double module pendant travaux.",
+      "limitations": "Vérification navigateur de toutes coques restante.",
+      "evidence": [
+        "app/game/systems/companionResidence.ts",
+        "tests/companion-residence.test.mjs",
+        "app/game/CompanionResidencePanel.tsx",
+        "app/game/CompanionQuartersScene.tsx"
+      ]
+    },
+    {
+      "id": "QA-C11",
+      "status": "partial",
+      "scope": "Écriture/import/reload travaux, escrow, présence, réserve, suspension; preuves contacts inspectées.",
+      "limitations": "Tour complet compte/cloud/continuité mobile à revoir.",
+      "evidence": [
+        "app/game/systems/companionResidence.ts",
+        "tests/companion-residence.test.mjs",
+        "app/game/CompanionResidencePanel.tsx",
+        "app/game/CompanionQuartersScene.tsx"
+      ]
+    },
+    {
+      "id": "QA-C12",
+      "status": "implemented-for-scope",
+      "scope": "Absent/null préservés, aucune migration catalogue, versions futures/propriétaires étrangers/corruptions refusés.",
+      "limitations": "Alias du catalogue pas encore introduits.",
+      "evidence": [
+        "app/game/systems/companionResidence.ts",
+        "tests/companion-residence.test.mjs",
+        "app/game/CompanionResidencePanel.tsx",
+        "app/game/CompanionQuartersScene.tsx"
+      ]
+    },
+    {
+      "id": "QA-C13",
+      "status": "open",
+      "scope": "Alias Serekh/NeufNids et Keth/TroisClics non introduits.",
+      "limitations": "",
+      "evidence": [
+        "docs/campagne/COMPAGNONS_ET_ALLIES_PREMIUM.md",
+        "app/game/systems/companionResidence.ts"
+      ]
+    },
+    {
+      "id": "QA-C14",
+      "status": "partial",
+      "scope": "Groupe terrain fermé à la triade existante; les quatre pilotes ne peuvent pas se déployer.",
+      "limitations": "Groupes mixtes animal/robot non produits.",
+      "evidence": [
+        "app/game/systems/companionResidence.ts",
+        "tests/companion-residence.test.mjs",
+        "app/game/CompanionResidencePanel.tsx",
+        "app/game/CompanionQuartersScene.tsx"
+      ]
+    },
+    {
+      "id": "QA-C15",
+      "status": "open",
+      "scope": "Maître des bêtes non recruté ni ajouté.",
+      "limitations": "",
+      "evidence": [
+        "docs/campagne/COMPAGNONS_ET_ALLIES_PREMIUM.md",
+        "app/game/systems/companionResidence.ts"
+      ]
+    },
+    {
+      "id": "QA-C16",
+      "status": "constraint-preserved",
+      "scope": "Aucun nouveau compagnon admissible aux rites; aucune puissance accordée.",
+      "limitations": "L-05 hors tests de ce lot.",
+      "evidence": [
+        "docs/campagne/COMPAGNONS_ET_ALLIES_PREMIUM.md",
+        "app/game/systems/companionResidence.ts"
+      ]
+    },
+    {
+      "id": "QA-C17",
+      "status": "partial",
+      "scope": "Retrait/échec d’un appel garde la campagne principale et la reconnaissance réessayable.",
+      "limitations": "Arcs Premium et détours narratifs dédiés non réalisés.",
+      "evidence": [
+        "app/game/systems/companionResidence.ts",
+        "tests/companion-residence.test.mjs",
+        "app/game/CompanionResidencePanel.tsx",
+        "app/game/CompanionQuartersScene.tsx"
+      ]
+    },
+    {
+      "id": "QA-C18",
+      "status": "open",
+      "scope": "Conflit Enforcer/criminel non produit.",
+      "limitations": "",
+      "evidence": [
+        "docs/campagne/COMPAGNONS_ET_ALLIES_PREMIUM.md",
+        "app/game/systems/companionResidence.ts"
+      ]
+    },
+    {
+      "id": "QA-C19",
+      "status": "constraint-preserved",
+      "scope": "Aucun héros historique ajouté physiquement.",
+      "limitations": "Système Chronique Premium non produit.",
+      "evidence": [
+        "docs/campagne/COMPAGNONS_ET_ALLIES_PREMIUM.md",
+        "app/game/systems/companionResidence.ts"
+      ]
+    },
+    {
+      "id": "QA-C20",
+      "status": "partial",
+      "scope": "Compatibilité de coque et habitat blindé contrôlés; capsules monoplaces refusées.",
+      "limitations": "Grande monture/carrier spécifique non produit.",
+      "evidence": [
+        "app/game/systems/companionResidence.ts",
+        "tests/companion-residence.test.mjs",
+        "app/game/CompanionResidencePanel.tsx",
+        "app/game/CompanionQuartersScene.tsx"
+      ]
+    },
+    {
+      "id": "QA-C21",
+      "status": "open",
+      "scope": "Aucun nouvel ordre terrain furtif ou attente.",
+      "limitations": "",
+      "evidence": [
+        "docs/campagne/COMPAGNONS_ET_ALLIES_PREMIUM.md",
+        "app/game/systems/companionResidence.ts"
+      ]
+    },
+    {
+      "id": "QA-C22",
+      "status": "open",
+      "scope": "Aucun nouvel acteur suiveur traversant portes/sauts.",
+      "limitations": "",
+      "evidence": [
+        "docs/campagne/COMPAGNONS_ET_ALLIES_PREMIUM.md",
+        "app/game/systems/companionResidence.ts"
+      ]
+    },
+    {
+      "id": "QA-C23",
+      "status": "partial",
+      "scope": "Bail triade branché sur insertion réelle ship/pod, conserve l’absence après retrait de l’arrivée.",
+      "limitations": "Camouflage/énergie/évacuation nouveaux compagnons hors périmètre.",
+      "evidence": [
+        "app/game/systems/companionResidence.ts",
+        "tests/companion-residence.test.mjs",
+        "app/game/CompanionResidencePanel.tsx",
+        "app/game/CompanionQuartersScene.tsx"
+      ]
+    },
+    {
+      "id": "QA-C24",
+      "status": "open",
+      "scope": "Autodestruction/pod inchangé.",
+      "limitations": "",
+      "evidence": [
+        "docs/campagne/COMPAGNONS_ET_ALLIES_PREMIUM.md",
+        "app/game/systems/companionResidence.ts"
+      ]
+    },
+    {
+      "id": "QA-C25",
+      "status": "open",
+      "scope": "Capacités vide/eau/contamination non produites.",
+      "limitations": "",
+      "evidence": [
+        "docs/campagne/COMPAGNONS_ET_ALLIES_PREMIUM.md",
+        "app/game/systems/companionResidence.ts"
+      ]
+    },
+    {
+      "id": "QA-C26",
+      "status": "partial",
+      "scope": "Suspension/missing/soins triade suppriment les services fantômes et se conservent.",
+      "limitations": "Rupture narrative, décès et capture non produits.",
+      "evidence": [
+        "app/game/systems/companionResidence.ts",
+        "tests/companion-residence.test.mjs",
+        "app/game/CompanionResidencePanel.tsx",
+        "app/game/CompanionQuartersScene.tsx"
+      ]
+    },
+    {
+      "id": "QA-C27",
+      "status": "implemented-for-scope",
+      "scope": "Paliers7/13/19 joueurs compris; conflits de réservation/compatibilité refusés; aucune génération d’occupant.",
+      "limitations": "12 identités connues maximum dans cette tranche.",
+      "evidence": [
+        "app/game/systems/companionResidence.ts",
+        "tests/companion-residence.test.mjs",
+        "app/game/CompanionResidencePanel.tsx",
+        "app/game/CompanionQuartersScene.tsx"
+      ]
+    },
+    {
+      "id": "QA-C28",
+      "status": "partial",
+      "scope": "Trois familles de modules et quatre acteurs statiques branchés; pivots/identité/absence contrôlés par métadonnées et SSR.",
+      "limitations": "Audio, animations, qualité artistique et pixels navigateur restent ouverts.",
+      "evidence": [
+        "app/game/systems/companionResidence.ts",
+        "tests/companion-residence.test.mjs",
+        "app/game/CompanionResidencePanel.tsx",
+        "app/game/CompanionQuartersScene.tsx"
+      ]
+    }
+  ]
+}

@@ -61,7 +61,12 @@ import { useHomeworldReducedMotionV77 } from "./useHomeworldReducedMotionV77";
 import { campaignWorldResumeV70 } from "./systems/campaignWorldResumeV70";
 import { actClanShipDocking, normalizeClanShipDocking, type ClanShipDockingAction } from "./systems/clanShipDocking";
 import { actClanShipOperations, bindClanShipMission, clanShipContract, createClanShipOperations, evaluateClanShipAccess, inspectClanShipOperations, releaseClanShipMissionBinding, settleClanShipMission, type ClanShipOperationsAction } from "./systems/clanShipOperations";
+import { actClanShipIncident, type ClanShipIncidentAction, type ClanShipIncidentObservation } from './systems/clanShipIncidents';
 import type { ClanShipService } from "./ClanShipHub";
+import { actBuriedCradleCampaign, evaluateBuriedCradleAccess, type CradleCampaignAction } from './systems/buriedCradleCampaign';
+import type { CradleReturnOperation, CradleReturnObservation } from './systems/buriedCradleReturn';
+import { actCompanionResidence, bindCompanionResidenceMission, settleCompanionResidenceMission, releaseCompanionResidenceMission,
+  registerCompanionResidenceRecruitment, availableClanResidenceCrew, type CompanionResidenceAction, type CompanionResidenceObservation } from './systems/companionResidence';
 import { createWolfCastleVisit, inspectWolfCastleVisit, actWolfCastle, applyWolfCastleCheckpoint, type WolfCastleAction, type WolfCastleCheckpoint } from "./systems/wolfCastle";
 import { createPlanetArrival, inspectPlanetArrival, completePlanetArrivalHandoff, type PlanetArrivalState } from "./systems/planetArrival";
 import { inspectPlanetArrivalRun, type PlanetArrivalRun } from "./systems/planetArrivalRun";
@@ -311,6 +316,7 @@ const HuntCanvas = React.lazy(() => import("./HuntCanvas"));
 const PitCanvas = React.lazy(() => import("./PitExperienceV79"));
 const PitNarrativeTrials = React.lazy(() => import("./PitNarrativeTrials"));
 const ShipHub = React.lazy(() => import("./ShipHub"));
+const BuriedCradleScene = React.lazy(() => import('./BuriedCradleScene'));
 const ClanShipHub = React.lazy(() => import("./ClanShipHub"));
 const WolfCastleScene = React.lazy(() => import("./WolfCastleScene"));
 const PlanetArrivalCinematic = React.lazy(() => import("./PlanetArrivalCinematic"));
@@ -331,6 +337,8 @@ const ControlBindingsPanel = React.lazy(
 );
 
 type Screen =
+  | "buried-cradle"
+  | "buried-cradle-briefing"
   | "prologue"
   | "youth-training"
   | "solo-v66"
@@ -1247,6 +1255,11 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
           !soloV68NeedsScene(loadedSave.soloV68) && !soloV67NeedsScene(loadedSave.soloV67) && !soloV66NeedsScene(loadedSave.soloV66)) {
         setHubLocation('deck'); setNewGamePhase(null); setScreen('wolf-castle');
       }
+      if (loadedSave.buriedCradle && ['active', 'suspended'].includes(loadedSave.buriedCradle.status) &&
+          (!worldResume || worldResume === 'homeworld') && entry.location !== 'mission' && entry.location !== 'new-game') {
+        setHubLocation('deck'); setNewGamePhase(null);
+        setScreen(loadedSave.buriedCradle.status === 'active' ? 'buried-cradle' : 'buried-cradle-briefing');
+      }
       setSaveLoadIssue(loaded.failure);
       // Never discard a real hunt merely because its campaign could not be read.
       if (!loaded.loaded && loaded.failure) {
@@ -1393,6 +1406,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
     const ambience: GameAudioBiome | null =
       screen === "mission" && selectedMission
         ? selectedMission.biome
+        : screen === 'buried-cradle' ? 'fungal'
         : screen === "glass-desert-expedition" ? "desert"
         : screen === "homeworld-expedition" ? "volcano"
         : screen === "deck" || (shipStationOpen && hubLocation === "deck") ? "ship"
@@ -1408,6 +1422,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
     const context: GameMusicContext | null = settingsOpen || screen === "planet-arrival" || screen === "prologue" || screen === "youth-training" || screen === "solo-v66" || screen === "solo-v67" || screen === "solo-v68" || screen === "solo-v69" || screen === "solo-v70" || screen === "solo-v90" ? null
       : screen === "title" ? "menu"
       : screen === "mission" ? huntMusicContext
+      : screen === 'buried-cradle' ? 'exploration'
       : screen === "homeworld-region-v68" || screen === "homeworld-passage-v67" || screen === "game-reserve" || screen === "homeworld-expedition" || screen === "glass-desert-expedition" ? "exploration"
       : screen === "map" ? "galaxy"
       : screen === "pit" || screen === "pit-narrative" ? "combat"
@@ -2151,7 +2166,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
 
   // City choices are acknowledged only after durable storage confirms the write.
   // A failed write must not announce a completed investigation or apply a reward.
-  const persistSocialProgress = useCallback((update: Partial<Pick<SaveGame, "inventory" | "profile" | "homeworld" | "justice" | "gameReserveV66" | "homeworldPassageV67" | "homeworldRegionV68" | "shipPreparationV88" | "shipAcquisitionV89" | "gauntletV134" | "clanShipDocking" | "clanShipOperations" | "wolfCastle" | "planetArrival" | "planetArrivalRun" | "expeditionRoster" | "shipInsertionEnergy">>): boolean => {
+  const persistSocialProgress = useCallback((update: Partial<Pick<SaveGame, "prologue" | "buriedCradle" | "companionResidence" | "clanShipIncidents" | "inventory" | "profile" | "homeworld" | "justice" | "gameReserveV66" | "homeworldPassageV67" | "homeworldRegionV68" | "shipPreparationV88" | "shipAcquisitionV89" | "gauntletV134" | "clanShipDocking" | "clanShipOperations" | "wolfCastle" | "planetArrival" | "planetArrivalRun" | "expeditionRoster" | "shipInsertionEnergy">>): boolean => {
     if (!sessionAliveRef.current) return false;
     const current = saveRef.current;
     if (pendingTrophyCommitRef.current) {
@@ -2161,7 +2176,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
       setToast("Termine la sauvegarde du résultat de chasse avant de poursuivre le dossier.");
       return false;
     }
-    const updateSerialized = JSON.stringify({ inventory: update.inventory, profile: update.profile, homeworld: update.homeworld, justice: update.justice, gameReserveV66: update.gameReserveV66, homeworldPassageV67: update.homeworldPassageV67, homeworldRegionV68: update.homeworldRegionV68, shipPreparationV88: update.shipPreparationV88, shipAcquisitionV89: update.shipAcquisitionV89, gauntletV134: update.gauntletV134, clanShipDocking: update.clanShipDocking, clanShipOperations: update.clanShipOperations, wolfCastle: update.wolfCastle, planetArrival: update.planetArrival, planetArrivalRun: update.planetArrivalRun, expeditionRoster: update.expeditionRoster, shipInsertionEnergy: update.shipInsertionEnergy });
+    const updateSerialized = JSON.stringify({ prologue: update.prologue, buriedCradle: update.buriedCradle, companionResidence: update.companionResidence, clanShipIncidents: update.clanShipIncidents, inventory: update.inventory, profile: update.profile, homeworld: update.homeworld, justice: update.justice, gameReserveV66: update.gameReserveV66, homeworldPassageV67: update.homeworldPassageV67, homeworldRegionV68: update.homeworldRegionV68, shipPreparationV88: update.shipPreparationV88, shipAcquisitionV89: update.shipAcquisitionV89, gauntletV134: update.gauntletV134, clanShipDocking: update.clanShipDocking, clanShipOperations: update.clanShipOperations, wolfCastle: update.wolfCastle, planetArrival: update.planetArrival, planetArrivalRun: update.planetArrivalRun, expeditionRoster: update.expeditionRoster, shipInsertionEnergy: update.shipInsertionEnergy });
     const pending = pendingSocialWriteRef.current;
     if (pending) {
       const recovered = reconcileSaveWrite(pending.attempt, current.createdAt);
@@ -2200,6 +2215,48 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
     return true;
   }, [reconcileHuntWrite]);
 
+  const commitCompanionResidence = useCallback((action: CompanionResidenceAction, observation: CompanionResidenceObservation): boolean => {
+    const current = saveRef.current;
+    const active = sessionAliveRef.current && current.createdAt === entry.ownerCreatedAt && gameFocusedV89 &&
+      !settingsOpen && !archiveTransferBusy && !archiveRecoveryIssue && !campaignSaveBusy && !trophyWorkshop &&
+      !activeHuntSessionRef.current && !resumableHunt && !current.planetArrival &&
+      !(current.buriedCradle && ['active', 'suspended'].includes(current.buriedCradle.status)) &&
+      (screen === 'deck' || screen === 'clan-ship');
+    if (!active) return false;
+    const fleet = loadShipProgression(current);
+    const result = actCompanionResidence(action, { save: current, selectedShipId: fleet.selectedShipId,
+      ownedShipIds: fleet.unlockedShipIds, active, site: screen === 'clan-ship' ? 'clan' : 'personal', observation });
+    if (!result.accepted) { setToast(result.message); return false; }
+    if (result.changed && !persistSocialProgress({ companionResidence: result.state,
+        profile: { ...current.profile, clanMarks: result.clanMarks },
+        ...(result.expeditionRoster ? { expeditionRoster: result.expeditionRoster } : {}) })) return false;
+    setToast(result.message); return true;
+  }, [archiveRecoveryIssue, archiveTransferBusy, campaignSaveBusy, entry.ownerCreatedAt, gameFocusedV89, persistSocialProgress,
+    resumableHunt, screen, settingsOpen, trophyWorkshop]);
+
+  const commitClanShipIncident = useCallback((action: ClanShipIncidentAction, observation: ClanShipIncidentObservation): boolean => {
+    const current = saveRef.current;
+    const active = sessionAliveRef.current && current.createdAt === entry.ownerCreatedAt && screen === 'clan-ship' &&
+      current.clanShipDocking?.status === 'aboard' && gameFocusedV89 && !settingsOpen && !trophyWorkshop &&
+      !archiveTransferBusy && !archiveRecoveryIssue && !campaignSaveBusy && !activeHuntSessionRef.current &&
+      !resumableHunt && !current.planetArrival &&
+      !(current.buriedCradle && ['active', 'suspended'].includes(current.buriedCradle.status));
+    if (!active) return false;
+    const result = actClanShipIncident(action, { save: current, active, observation });
+    if (!result.accepted) { setToast(result.message); return false; }
+    const reward = result.clanMarksReward;
+    if (!Number.isSafeInteger(reward) || reward < 0 || reward > 0 && (!result.changed ||
+        !Number.isSafeInteger(current.profile.clanMarks) || current.profile.clanMarks < 0 ||
+        current.profile.clanMarks > Number.MAX_SAFE_INTEGER - reward)) {
+      setToast('Le solde ne permet pas de confirmer cette gratification. Le dossier reste disponible.'); return false;
+    }
+    if (result.changed && (!result.state || !persistSocialProgress({ clanShipIncidents: result.state,
+        ...(reward > 0 ? { profile: { ...current.profile, clanMarks: current.profile.clanMarks + reward } } : {}),
+    }))) return false;
+    setToast(result.message); return true;
+  }, [archiveRecoveryIssue, archiveTransferBusy, campaignSaveBusy, entry.ownerCreatedAt, gameFocusedV89,
+    persistSocialProgress, resumableHunt, screen, settingsOpen, trophyWorkshop]);
+
   const recruitExpeditionHunter = useCallback((id: ExpeditionMemberId) => {
     const current = saveRef.current;
     if (screen !== 'briefing' || settingsOpen || archiveTransferBusy || archiveRecoveryIssue || campaignSaveBusy ||
@@ -2220,6 +2277,9 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
     if (!current.expeditionRoster?.members.some(member => member.id === id)) {
       setToast('Recrute ce compagnon avant de lui proposer une affectation.'); return;
     }
+    if (current.companionResidence?.members.some(member => member.id === id)) {
+      setToast('Gère cette affectation depuis le registre des compagnons au quai.'); return;
+    }
     const roster = assignExpeditionMember(current.expeditionRoster, current.createdAt, shipId, id);
     if (persistSocialProgress({ expeditionRoster: roster })) setToast(`${TRIO_MEMBERS.find(member => member.id === id)?.name} : affectation au vaisseau confirmée.`);
   }, [archiveRecoveryIssue, archiveTransferBusy, campaignSaveBusy, persistSocialProgress, resumableHunt, screen, settingsOpen]);
@@ -2230,6 +2290,9 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
         activeHuntSessionRef.current || resumableHunt || current.planetArrival || !evaluateClanShipAccess(current).allowed) return;
     if (current.expeditionRoster?.members.find(member => member.id === id)?.assignedShipId !== expectedShipId) {
       setToast('L’affectation a changé. Vérifie le dossier du compagnon avant sa mise en réserve.'); return;
+    }
+    if (current.companionResidence?.members.some(member => member.id === id)) {
+      setToast('Gère cette affectation depuis le registre des compagnons au quai.'); return;
     }
     const roster = reserveExpeditionMember(current.expeditionRoster, current.createdAt, id);
     if (persistSocialProgress({ expeditionRoster: roster })) setToast(`${TRIO_MEMBERS.find(member => member.id === id)?.name} : mise en réserve confirmée. Son recrutement et son état sont conservés.`);
@@ -2396,6 +2459,11 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
   const go = useCallback(
     (next: Screen) => {
       if (pendingTrophyCommitRef.current) { setToast("Confirmez la sauvegarde du rite ou exportez son résultat avant de changer de lieu."); return; }
+      const cradle = saveRef.current.buriedCradle;
+      if (cradle && ['active', 'suspended'].includes(cradle.status) && !['buried-cradle', 'buried-cradle-briefing'].includes(next)) {
+        setScreen(cradle.status === 'active' ? 'buried-cradle' : 'buried-cradle-briefing');
+        setToast('Rejoins une balise de repli dans le Berceau pour rentrer physiquement au vaisseau.'); return;
+      }
       const arrival = saveRef.current.planetArrival;
       if (arrival && arrival.status !== 'complete' && next !== 'planet-arrival') {
         setScreen('planet-arrival'); setToast("Termine l’arrivée ou utilise son retour au menu avant de changer de destination."); return;
@@ -2442,6 +2510,38 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
     }
     setSelectedShipId(personalShipId); go("clan-ship");
   }, [archiveRecoveryIssue, archiveTransferBusy, campaignSaveBusy, entry.ownerCreatedAt, gameFocusedV89, go, persistSocialProgress, resumableHunt, settingsOpen]);
+
+  const commitCradleReturn = useCallback((action: { type: CradleReturnOperation; expectedRevision: number }, observation: CradleReturnObservation): boolean => {
+    const current = saveRef.current;
+    if (!sessionAliveRef.current || current.createdAt !== entry.ownerCreatedAt || screen !== 'deck' || !gameFocusedV89 ||
+        settingsOpen || trophyWorkshop || archiveTransferBusy || archiveRecoveryIssue || campaignSaveBusy ||
+        resumableHunt || activeHuntSessionRef.current) return false;
+    const fleet = loadShipProgression(current);
+    const result = actBuriedCradleCampaign(current, action, { personalShipId: fleet.selectedShipId,
+      ownedShipIds: fleet.unlockedShipIds, returnActive: true, returnObservation: observation });
+    if (!result.accepted) { setToast(result.message); return false; }
+    if (result.changed && !persistSocialProgress({ buriedCradle: result.state, prologue: result.prologue })) return false;
+    setToast(result.message); return true;
+  }, [archiveRecoveryIssue, archiveTransferBusy, campaignSaveBusy, entry.ownerCreatedAt, gameFocusedV89,
+    persistSocialProgress, resumableHunt, screen, settingsOpen, trophyWorkshop]);
+
+  const commitCradleAction = useCallback((action: CradleCampaignAction): boolean => {
+    const current = saveRef.current;
+    if (!sessionAliveRef.current || current.createdAt !== entry.ownerCreatedAt || !gameFocusedV89 || settingsOpen ||
+      archiveTransferBusy || archiveRecoveryIssue || campaignSaveBusy || resumableHunt || activeHuntSessionRef.current ||
+      !['buried-cradle', 'buried-cradle-briefing'].includes(screen)) return false;
+    const fleet = loadShipProgression(current);
+    const result = actBuriedCradleCampaign(current, action, { personalShipId: fleet.selectedShipId, ownedShipIds: fleet.unlockedShipIds });
+    if (!result.accepted) { setToast(result.message); return false; }
+    if (result.changed && !persistSocialProgress({ buriedCradle: result.state, prologue: result.prologue })) return false;
+    if (action.type !== 'checkpoint') setToast(result.message);
+    if (action.type === 'depart') { setHubLocation('deck'); setScreen('buried-cradle'); }
+    return true;
+  }, [archiveRecoveryIssue, archiveTransferBusy, campaignSaveBusy, entry.ownerCreatedAt, gameFocusedV89, persistSocialProgress, resumableHunt, screen, settingsOpen]);
+  const leaveCradle = useCallback((): boolean => {
+    if (saveRef.current.buriedCradle?.status === 'active' && !commitCradleAction({ type: 'suspend' })) return false;
+    setHubLocation('deck'); setScreen('buried-cradle-briefing'); return true;
+  }, [commitCradleAction]);
 
   const openWolfCastle = useCallback(() => {
     const current = saveRef.current;
@@ -2525,6 +2625,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
     const state = inspection.state ?? createClanShipOperations(current.createdAt);
     const result = actClanShipOperations(state, action, {
       ownerCreatedAt: current.createdAt, docking: current.clanShipDocking, campaign: current,
+      availableCrewIds: availableClanResidenceCrew(current),
     });
     if (!result.accepted) { setToast(result.message); return false; }
     const reward = result.clanMarksReward;
@@ -2533,13 +2634,17 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
         current.profile.clanMarks > Number.MAX_SAFE_INTEGER - reward))) {
       setToast("Le solde ne permet pas d’enregistrer cette récompense. Le dossier reste disponible."); return false;
     }
+    const recruitment = action.type === 'recruit' && result.changed
+      ? registerCompanionResidenceRecruitment(current, { ...current, clanShipOperations: result.state }, action.npcId) : null;
+    if (recruitment && !recruitment.accepted) { setToast(recruitment.message); return false; }
     if (result.changed && !persistSocialProgress({ clanShipOperations: result.state,
       ...(reward > 0 ? { profile: { ...current.profile, clanMarks: current.profile.clanMarks + reward } } : {}),
+      ...(recruitment?.changed ? { companionResidence: recruitment.state } : {}),
     })) {
       setToast("L’opération attend la confirmation de sauvegarde. Aucune progression supplémentaire n’a été accordée.");
       return false;
     }
-    setToast(result.message);
+    setToast(recruitment?.changed ? recruitment.message : result.message);
     return true;
   }, [archiveRecoveryIssue, archiveTransferBusy, campaignSaveBusy, entry.ownerCreatedAt, gameFocusedV89, persistSocialProgress, resumableHunt, screen, settingsOpen]);
 
@@ -2817,7 +2922,10 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
     const hasArrival = !!(current.planetArrival || current.planetArrivalRun);
     const operations = current.clanShipOperations;
     const needsRelease = releaseContract && !!operations?.activeContract && operations.activeContract.missionEncounterRun !== null;
-    if (!hasArrival && !needsRelease) return true;
+    const residenceRelease = releaseContract && !!current.companionResidence &&
+      (current.companionResidence.contacts.some(contact => contact.encounterRun !== null) ||
+       current.companionResidence.members.some(member => member.deployment));
+    if (!hasArrival && !needsRelease && !residenceRelease) return true;
     const arrival = current.planetArrival;
     if (!expected || current.createdAt !== expected.ownerSaveCreatedAt ||
         (hasArrival && (!arrival || arrival.status !== 'complete' || arrival.ownerCreatedAt !== current.createdAt ||
@@ -2837,8 +2945,13 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
       encounterRun: expected.encounterRun, expectedRevision: operations.revision,
     }) : null;
     if (released && !released.accepted) { setSaveFailure('save-conflict'); setToast(released.message); return false; }
+    const companions = residenceRelease ? releaseCompanionResidenceMission(current, {
+      ownerCreatedAt: current.createdAt, missionId: expected.missionId as MissionId, encounterRun: expected.encounterRun,
+    }) : null;
+    if (companions && !companions.accepted) { setSaveFailure('save-conflict'); setToast(companions.message); return false; }
     return persistSocialProgress({ planetArrival: null, planetArrivalRun: null,
       ...(released?.changed ? { clanShipOperations: released.state } : {}),
+      ...(companions?.changed ? { companionResidence: companions.state } : {}),
     });
   }, [persistSocialProgress, reconcileHuntWrite]);
 
@@ -2978,6 +3091,9 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
     // Resolve an uncertain paid departure before a baseline write can replace
     // the writer's observation of the previous campaign bytes.
     if (pendingSocialWriteRef.current && !persistSocialProgress({})) return;
+    if (saveRef.current.buriedCradle && ['active', 'suspended'].includes(saveRef.current.buriedCradle.status)) {
+      setToast('Termine l’extraction du Berceau avant de préparer une autre chasse.'); return;
+    }
     if (saveRef.current.wolfCastle && saveRef.current.wolfCastle.status !== 'departed') {
       setToast('Rejoins ton vaisseau depuis la baie royale avant de partir en chasse.'); return;
     }
@@ -3046,9 +3162,15 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
       ? bindClanShipMission(operations, { ownerCreatedAt: runtimeSave.createdAt, missionId: selectedMission.id,
         encounterRun: runtimeSave.missionProgress[selectedMission.id].attempts, expectedRevision: operations.revision }) : null;
     if (binding && !binding.accepted) { setToast(binding.message); return; }
+    const companions = bindCompanionResidenceMission(runtimeSave, {
+      ownerCreatedAt: runtimeSave.createdAt, missionId: selectedMission.id,
+      encounterRun: runtimeSave.missionProgress[selectedMission.id].attempts, shipId: personalShipId, insertion: chosenInsertion,
+    });
+    if (!companions.accepted) { setToast(companions.message); return; }
     if (!persistSocialProgress({ planetArrival: arrival, planetArrivalRun: run,
       ...(cloakDebit ? { shipInsertionEnergy: cloakDebit.state } : {}),
       ...(binding?.changed ? { clanShipOperations: binding.state } : {}),
+      ...(companions.changed ? { companionResidence: companions.state } : {}),
     })) {
       setToast('Le départ n’a pas été confirmé dans la campagne. Réessaie depuis le briefing.'); return;
     }
@@ -3309,6 +3431,11 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
         }
         next = { ...next, expeditionRoster: roster };
       }
+      const companions = settleCompanionResidenceMission(current, next, result, session);
+      if (!companions.accepted) {
+        setPendingHuntResult({ result, returnToDeck }); setToast(companions.message); return;
+      }
+      if (companions.changed) next = { ...next, companionResidence: companions.state };
       if (current.clanShipOperations && session) {
         const settlement = settleClanShipMission(current.clanShipOperations, current, next, result, session);
         const reward = settlement.clanMarksReward;
@@ -3934,6 +4061,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
   const campaignLocation: CampaignResumeLocation = screen === "game-reserve" ? "game-reserve" : screen === "youth-training" || screen === "solo-v66" || screen === "solo-v67" || screen === "solo-v68" || screen === "solo-v69" || screen === "solo-v70" || screen === "solo-v90" || soloV90NeedsScene(save.soloV90) || soloV70NeedsScene(save.soloV70) || soloV69NeedsScene(save.soloV69) || soloV68NeedsScene(save.soloV68) || soloV67NeedsScene(save.soloV67) || soloV66NeedsScene(save.soloV66) || youthCampaignNeedsScene(save.youthTraining) ? "youth-training" : screen === "prologue" || save.prologue?.status === "active" ? "prologue" : screen === "mission" || resumableHunt ? "mission"
     : newGamePhase ? "new-game" : save.planetArrival ? "planet-arrival"
     : screen === "wolf-castle" || (save.wolfCastle && save.wolfCastle.status !== 'departed') ? 'wolf-castle'
+    : save.buriedCradle && ['active', 'suspended'].includes(save.buriedCradle.status) ? 'buried-cradle'
     : screen === "clan-ship" || save.clanShipDocking?.status === "aboard" || save.clanShipDocking?.status === "approach" ? "clan-ship" : hubLocation === "homeworld" ? "homeworld" : "deck";
   const checkpointBlockedReason = pendingTrophyCommit ? "Un rite attend sa sauvegarde : réessayez ou exportez son résultat avant de quitter."
     : pendingHuntResult || saveFailure ? "La progression principale attend sa sauvegarde. Réessayez avant de créer un checkpoint."
@@ -4001,7 +4129,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
     return () => document.removeEventListener("keydown", onBack);
   }, [screen, settingsOpen, menuBack]);
   const menuGamepadEnabled = Boolean(archiveRecoveryIssue) || (!trophyWorkshop && (settingsOpen || Boolean(pendingHuntResult) ||
-    !["prologue", "youth-training", "solo-v66", "solo-v67", "solo-v68", "solo-v69", "solo-v70", "solo-v90", "homeworld-region-v68", "homeworld-passage-v67", "game-reserve", "mission", "deck", "ship", "clan-ship", "wolf-castle", "planet-arrival", "map", "medbay", "training", "pit", "pit-narrative", "mausoleum", "homeworld", "homeworld-expedition", "glass-desert-expedition"].includes(screen)));
+    !["prologue", "youth-training", "solo-v66", "solo-v67", "solo-v68", "solo-v69", "solo-v70", "solo-v90", "homeworld-region-v68", "homeworld-passage-v67", "game-reserve", "mission", "deck", "ship", "clan-ship", "wolf-castle", "planet-arrival", "buried-cradle", "map", "medbay", "training", "pit", "pit-narrative", "mausoleum", "homeworld", "homeworld-expedition", "glass-desert-expedition"].includes(screen)));
   const conservationPadButtonsV112=normalizeHuntAccessibilityV112(save.settings.huntAccessibility).gamepadButtons;
   const conservationPadActiveV112=!settingsOpen&&!pendingHuntResult&&!archiveRecoveryIssue&&(screen==="armory"||screen==="trophies");
   useMenuGamepad(gameShellRef, menuGamepadEnabled, `${screen}:${settingsOpen}:${Boolean(pendingHuntResult)}:${Boolean(archiveRecoveryIssue)}`, menuBack,
@@ -4047,7 +4175,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
     : null;
 
   const topBar =
-    screen !== 'wolf-castle' && screen !== 'planet-arrival' &&
+    screen !== 'wolf-castle' && screen !== 'planet-arrival' && screen !== 'buried-cradle' &&
     !newGamePhase && !clanShipVisible && screen !== "prologue" && screen !== "youth-training" && screen !== "solo-v66" && screen !== "solo-v67" && screen !== "solo-v68" && screen !== "solo-v69" && screen !== "solo-v70" && screen !== "solo-v90" && screen !== "homeworld-region-v68" && screen !== "homeworld-passage-v67" && screen !== "game-reserve" && screen !== "ship-acquisition-v89" && screen !== "title" && screen !== "clan-chronicle" && screen !== "mausoleum" && screen !== "mission" && screen !== "pit" && screen !== "pit-narrative" ? (
       <TopBar
         save={save}
@@ -4371,6 +4499,58 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
         </Suspense>
       )}
 
+      {screen === 'buried-cradle-briefing' && <section className="screen panel-screen">
+        <div className="screen-safe">
+          <PanelHeader eyebrow="Xeno Prime · Après les huit chasses" title="Le Berceau enfoui"
+            subtitle="Depuis la lèvre de la ruche, descends vers le bassin de la Matriarche. La reine vaincue et la crête rapportée sont deux preuves distinctes."
+            id="buried-cradle-heading" onBack={() => go('deck')} />
+          <div className="briefing-layout"><article className="panel" style={{ padding: 24 }}>
+            <h3>Préparer l’expédition</h3>
+            <p>Douze lieux reliés, deux détours facultatifs, trois raccourcis et une arène à plusieurs hauteurs. Les balises de repli restent accessibles à pied.</p>
+            <p>Deux reprises intermédiaires en Young Blood, une en Hunter, aucune en Élite ou Elder. La balise d’entrée reste le point de départ.</p>
+            {save.buriedCradle?.status === 'suspended' && <p role="status">L’expédition est suspendue sur Xeno Prime. Reprends l’exploration et rejoins une balise de repli pour rentrer à bord. {save.buriedCradle.snapshot ? 'La position, la santé et le combat enregistrés sont conservés.' : 'Sans relevé de position, la reprise se fait à la balise et la Matriarche vivante retrouve ses défenses.'}</p>}
+            {(() => {
+              const fleet = hydrated ? loadShipProgression(save) : { selectedShipId, unlockedShipIds: [] };
+              const access = evaluateBuriedCradleAccess(save, fleet.selectedShipId, fleet.unlockedShipIds);
+              const state = save.buriedCradle;
+              return <><ul>{access.missing.map(message => <li key={message}>{message}</li>)}</ul>
+                {!state && <button type="button" className="alien-button" disabled={!access.allowed || campaignSaveBusy || settingsOpen}
+                  onClick={() => commitCradleAction({ type: 'prepare' })}>Confirmer l’itinéraire et l’extraction</button>}
+                {state && (['prepared', 'suspended', 'active'].includes(state.status) || state.status === 'reported' && !state.crownDelivered) && <button type="button" className="alien-button"
+                  disabled={!access.allowed || campaignSaveBusy || settingsOpen} onClick={() => commitCradleAction({ type: 'depart' })}>
+                  {state.status === 'prepared' ? 'Rejoindre Xeno Prime' : state.status === 'reported' ? 'Repartir en expédition'
+                    : state.snapshot ? 'Reprendre au point enregistré' : `Reprendre à la balise ${state.progress.checkpointId}`}</button>}
+                {state?.status === 'extracted' && !state.returnVisit && <button type="button" className="alien-button" disabled={campaignSaveBusy || settingsOpen}
+                  onClick={() => commitCradleAction({ type: 'report' })}>Présenter le rapport de chasse</button>}
+                {state?.returnVisit && ['extracted', 'reported'].includes(state.status) && <button type="button" className="alien-button"
+                  disabled={campaignSaveBusy || settingsOpen} onClick={() => go('deck')}>
+                  {state.status === 'reported' ? 'Revoir le trophée ou les relevés à bord' : 'Rejoindre les soins et le débrief à bord'}</button>}
+                {state?.status === 'reported' && <p role="status">{state.crownDelivered ? 'Crête rapportée et preuve de chasse inscrite au dossier.' : 'Repli et observations consignés, sans trophée.'}</p>}
+              </>;
+            })()}
+          </article><article className="panel" style={{ padding: 24 }}>
+            <h3>Relevé d’expédition</h3>
+            <p>Lieux découverts : {save.buriedCradle?.progress.visitedRoomIds.length ?? 0}/12</p>
+            <p>Raccourcis ouverts : {save.buriedCradle?.progress.shortcutIds.length ?? 0}/3</p>
+            <p>Réservoir : {save.buriedCradle?.progress.drainageOpened ? 'drainé' : 'non drainé'}</p>
+            <p>Matriarche : {save.buriedCradle?.progress.bossDefeated ? 'neutralisée' : 'chasse non résolue'}</p>
+            <p>Crête : {save.buriedCradle?.crownDelivered ? 'présentée au débrief' : save.buriedCradle?.progress.crownClaimed ? 'prélevée' : 'non prélevée'}</p>
+            {save.buriedCradle?.crownDelivered && <img src="/game/xeno-prime/berceau-v1/sprites/props_effets/100_trophee_couronne_socle.png"
+              alt="Crête de la Matriarche rapportée" style={{ width: '100%', maxHeight: 270, objectFit: 'contain' }} />}
+          </article></div>
+        </div>
+      </section>}
+      {screen === 'buried-cradle' && save.buriedCradle && <Suspense fallback={<DeferredGameScreen />}>
+        <section className="screen panel-screen"><div className="screen-safe">
+          <BuriedCradleScene key={save.createdAt} progress={save.buriedCradle.progress} snapshot={save.buriedCradle.snapshot} appearance={save.appearance} loadout={save.loadout}
+            difficultyId={save.buriedCradle.difficultyId} controlBindings={save.settings.controlBindings}
+            reducedMotion={reducedMotionV90} highContrast={save.settings.highContrastVision}
+            suspended={settingsOpen || archiveTransferBusy || !!archiveRecoveryIssue || campaignSaveBusy || !gameFocusedV89}
+            onCheckpoint={(progress, snapshot) => commitCradleAction({ type: 'checkpoint', progress, snapshot })}
+            onExtract={(progress, snapshot) => commitCradleAction({ type: 'extract', progress, snapshot })} onExit={leaveCradle} onSound={playGameplaySound} />
+        </div></section>
+      </Suspense>}
+
       {screen === 'wolf-castle' && save.wolfCastle && (
         <Suspense fallback={<DeferredGameScreen />}>
           <section className="screen panel-screen" inert={settingsOpen}>
@@ -4415,6 +4595,8 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
                 suspended={screen !== "clan-ship" || settingsOpen || trophyWorkshop !== null || archiveTransferBusy || !!archiveRecoveryIssue || campaignSaveBusy || !gameFocusedV89}
                 onAction={commitClanShipAction}
                 onOperations={commitClanShipOperations}
+                companions={{ save, selectedShipId, ownedShipIds: loadShipProgression(save).unlockedShipIds, onAction: commitCompanionResidence }}
+                incidents={{ save, onAction: commitClanShipIncident }}
                 onService={openClanShipService}
                 onExit={() => go("deck")}
                 onOpenSettings={() => setSettingsOpen(true)}
@@ -4458,6 +4640,9 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
                 <button type="button" className="ghost-button" onClick={() => { setChronicleReturnScreen("deck"); go("clan-chronicle"); }}>
                   Dossier de campagne
                 </button>
+                <button type="button" className="ghost-button" data-open-buried-cradle
+                  disabled={campaignSaveBusy || archiveTransferBusy || !!archiveRecoveryIssue || !!resumableHunt}
+                  onClick={() => setScreen('buried-cradle-briefing')}>Xeno Prime · Le Berceau enfoui</button>
                 <button type="button" className="ghost-button" onClick={() => go("homeworld")}>
                   Yautja Prime · monde natal
                 </button>
@@ -4479,9 +4664,11 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
               <ShipInterior25D
                 appearance={save.appearance}
                 loadout={save.loadout}
+                cradleReturn={{ save, selectedShipId, onAction: commitCradleReturn }}
                 trophyDisplays={deckTrophyDisplays}
                 rankLabel={RANK_LABELS[save.profile.rankId]}
                 selectedDestination={selectedMission?.planetName}
+                companions={{ save, selectedShipId, ownedShipIds: loadShipProgression(save).unlockedShipIds, onAction: commitCompanionResidence }}
               preflightV88={{ evaluation: shipPreparationEvaluationV88, onInspect: onInspectShipPreparationV88 }}
                 suspended={shipStationOpen || settingsOpen || trophyWorkshop !== null}
                 showShortcuts={quickAccessOpen}

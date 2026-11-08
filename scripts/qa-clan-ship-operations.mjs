@@ -25,6 +25,7 @@ const bundle = await build({
     "export * from './app/game/systems/clanShipDocking.ts';",
     "export * from './app/game/systems/clanShipOperations.ts';",
     "export {isClanShipInteriorWalkable} from './app/game/systems/clanShipInterior.ts';",
+    "export {inspectCompanionResidence,companionResidenceDefinition,companionResidencePresence,availableClanResidenceCrew} from './app/game/systems/companionResidence.ts';",
   ].join('\n'), resolveDir: root },
   bundle: true, platform: 'node', format: 'esm', write: false, logLevel: 'silent',
 });
@@ -32,6 +33,7 @@ const domain = await import('data:text/javascript;base64,' + Buffer.from(bundle.
 const { SAVE_STORAGE_KEY, CLAN_SHIP_CONTRACTS, CLAN_SHIP_RECRUITS, CLAN_SHIP_ONBOARDING_STEPS } = domain;
 const interiorIds = ['ship-seal-check', 'ship-armory-audit', 'ship-triage-route', 'ship-training-circuit'];
 const mainRecruitIds = ['threshold-guard', 'iron-claw', 'black-suture', 'ash-scar'];
+const clanResidenceHost = { kind: 'clan', shipId: 'avp-predator-mothership' };
 const roomRing = ['hangar', 'armurerie', 'entrainement', 'conseil', 'archives', 'trophees', 'soins'];
 const spacePaths = {
   'space-screening': ['scan', 'manoeuvre', 'brace', 'brace', 'extract'],
@@ -75,8 +77,9 @@ function fixtureAction(save, type, values = {}, roomId = 'conseil') {
   return { ...save, clanShipOperations: result.state, profile: { ...save.profile, clanMarks: save.profile.clanMarks + result.clanMarksReward } };
 }
 
-// This second context starts from explicitly synthetic field proofs. It tests
-// rendering, six crew effects and recognition, never claims to play those hunts.
+// This second context is an explicitly synthetic historical save, with field
+// proofs and legacy clan posts predating the residence ledger. It tests backward
+// compatibility, six crew effects and recognition, never claims to play hunts.
 function fixtureFullCrew() {
   let save = fixtureAboard('2026-11-05T10:00:00.000Z', 'QA fixture équipage complet');
   for (const step of CLAN_SHIP_ONBOARDING_STEPS) save = fixtureAction(save, 'onboard-step', { stepId: step.id }, step.roomId);
@@ -119,7 +122,7 @@ const fixtures = [
   { id: 'adult-aboard', filename: 'initial-adult-aboard.json', save: seed,
     disclosure: 'Default adult campaign with boarding prepared by the docking reducer. No operations, rewards, contracts or crew are pre-completed.' },
   { id: 'six-crew-fixture', filename: 'initial-six-crew-fixture.json', save: crewSeed,
-    disclosure: 'Synthetic fixture prepared by production reducers: onboarding, four internal contracts, jungle/ice field results and six recruits. Those field hunts are NOT played by this browser recipe. No spatial victory or circle recognition is seeded.' },
+    disclosure: 'Synthetic historical fixture prepared by production reducers: onboarding, four internal contracts, jungle/ice field results and six legacy clan recruits, without a residence ledger. Those field hunts are NOT played by this browser recipe. No spatial victory or circle recognition is seeded.' },
 ];
 const fixtureDisclosures = [];
 for (const fixture of fixtures) {
@@ -141,7 +144,7 @@ if (process.argv.includes('--fixtures-only')) {
 
 const report = { startedAt: new Date().toISOString(), sourceCommit: process.env.CLAN_OPERATIONS_SOURCE_COMMIT || checkoutCommit,
   checkoutCommit, workingTreeDirty, runtime: 'actual desktop GameClient via Vite', headed, assetGateRequired: true,
-  fixtures: fixtureDisclosures, checks: [], errors: [], missingAssets: [], requestedAssets: [], screenshots: [], commands: [],
+  fixtures: fixtureDisclosures, checks: [], errors: [], missingAssets: [], requestedAssets: [], screenshots: [], commands: [], residenceActions: [],
   walking: { samples: 0, rooms: [], transitions: [] }, contexts: [] };
 const missing = new Set(), requested = new Set();
 let server, browser, page, currentLabel = '';
@@ -174,7 +177,7 @@ try {
             api.refusals += 1;
             throw new DOMException('QA: clan operation reward cannot be stored', 'QuotaExceededError');
           }
-          if (parsed?.clanShipOperations) api.writes.push({ revision: parsed.clanShipOperations.revision, marks: parsed.profile.clanMarks,
+          if (parsed?.clanShipOperations) api.writes.push({ revision: parsed.clanShipOperations.revision, residenceRevision: parsed.companionResidence?.revision ?? null, marks: parsed.profile.clanMarks,
             completed: parsed.clanShipOperations.completedContracts.map(item => item.contractId), turn: parsed.clanShipOperations.spaceEncounter?.turn ?? null });
         }
         return originalSet.call(this, name, value);
@@ -239,6 +242,7 @@ try {
       const current = await stored();
       assert.equal(domain.inspectClanShipDocking(current.clanShipDocking, current.createdAt).status, 'valid');
       if (current.clanShipOperations) assert.equal(domain.inspectClanShipOperations(current.clanShipOperations, current.createdAt).status, 'valid');
+      if (current.companionResidence) assert.equal(domain.inspectCompanionResidence(current.companionResidence, current.createdAt).status, 'valid');
       report.checks.push({ name, context: currentLabel, passed: true, durationMs: Date.now() - started });
       console.log('PASS', currentLabel, name);
     } catch (error) {
@@ -255,6 +259,20 @@ try {
     if (touch) await button.tap(); else await button.click();
     await waitRevision(revision + 1); await frames();
     return stored();
+  };
+  const residenceClick = async (type, id) => {
+    const before = await stored(), revision = before.companionResidence.revision;
+    const button = page.locator(`[data-companion-action="${type}:${id}"]`);
+    assert.equal(await button.isEnabled(), true, `${type}:${id} must be available at the actual dock`);
+    await button.click();
+    await page.waitForFunction(({ key, revision }) => JSON.parse(localStorage.getItem(key))?.companionResidence?.revision === revision,
+      { key: SAVE_STORAGE_KEY, revision: revision + 1 });
+    await frames();
+    const after = await stored();
+    assert.deepEqual(after.clanShipOperations, before.clanShipOperations, 'Housing cannot change a contract, recruit or tactical turn');
+    report.residenceActions.push({ context: currentLabel, type, id, room: (await actor()).room,
+      beforeRevision: revision, afterRevision: after.companionResidence.revision, beforeMarks: before.profile.clanMarks, afterMarks: after.profile.clanMarks });
+    return after;
   };
   const continueCampaign = async () => {
     await page.locator('[data-campaign-menu]').waitFor();
@@ -275,6 +293,18 @@ try {
       await page.waitForFunction(() => document.activeElement?.hasAttribute('data-interior-world'));
     }
   };
+  const residencePanel = () => page.locator('[data-companion-residence-panel][data-companion-site="clan"]');
+  const closeResidence = async () => {
+    if (await residencePanel().evaluate(element => element.open)) {
+      await residencePanel().locator('summary').click();
+      await residencePanel().locator('[data-companion-member]').first().waitFor({ state: 'hidden' });
+    }
+  };
+  const openResidence = async () => {
+    await closePanel();
+    if (!await residencePanel().evaluate(element => element.open)) await residencePanel().locator('summary').click();
+    await residencePanel().getByRole('heading', { name: 'Accords de recrutement', exact: true }).waitFor();
+  };
   const waitRoom = async roomId => {
     await page.waitForFunction(({ key, roomId }) => {
       const visit = JSON.parse(localStorage.getItem(key))?.clanShipDocking;
@@ -284,7 +314,7 @@ try {
     }, { key: SAVE_STORAGE_KEY, roomId }, { timeout: 60_000 });
   };
   const visit = async roomId => {
-    await closePanel(); await collectWalking();
+    await closePanel(); await closeResidence(); await collectWalking();
     const from = (await actor()).room;
     await page.locator(`[data-clan-ship-room-target="${roomId}"]`).click();
     await waitRoom(roomId); await frames();
@@ -297,6 +327,7 @@ try {
     report.walking.transitions.push({ context: currentLabel, from, to: roomId, rooms, samples: samples.length });
   };
   const openPanel = async (tab, touch = false) => {
+    await closeResidence();
     if (!await panel().count()) {
       const control = page.locator('[data-interior-operations]');
       if (await control.getAttribute('data-interior-operations-ready') !== 'true') {
@@ -378,6 +409,69 @@ try {
     assert.equal(await page.locator(`[data-clan-recruit="${id}"]`).getAttribute('data-clan-recruit-status'), 'recruited');
     await page.waitForFunction(id => document.activeElement?.getAttribute('data-clan-recruit') === id, id);
   };
+  const assertReserve = async id => {
+    const save = await stored(), member = save.companionResidence.members.find(member => member.id === id);
+    assert.ok(member, `The native recruitment transaction must register ${id}`);
+    assert.equal(member.assignment, null); assert.equal(member.installation, null); assert.equal(member.refit, null);
+    assert.equal(member.legacyClanPost, false);
+    assert.equal(domain.availableClanResidenceCrew(save).includes(id), false, 'A reserve agreement lends no tactical bonus');
+    await closePanel();
+    assert.equal(await page.locator(`[data-clan-crew="${id}"], [data-companion-avatar="${id}"], [data-companion-module="${id}"]`).count(), 0,
+      'A reserve recruit must not acquire an uninstalled actor or quarter');
+    await openResidence();
+    const card = residencePanel().locator(`[data-companion-member="${id}"]`);
+    assert.match(await card.innerText(), /Réserve du réseau/);
+    assert.match(await card.innerText(), /Aucune installation personnelle/);
+    assert.deepEqual((await stored()).companionResidence, save.companionResidence, 'Reading the reserve changes no assignment');
+  };
+  const showResident = async id => {
+    const save = await stored(), entry = domain.companionResidencePresence(save, clanResidenceHost).find(entry => entry.id === id);
+    assert.ok(entry?.avatarVisible && entry.serviceAvailable && entry.quarterVisible, `${id} must have a real active clan posting`);
+    await visit(CLAN_SHIP_RECRUITS.find(npc => npc.id === id).roomId);
+    assert.equal(await page.locator(`[data-clan-crew="${id}"]`).count(), 0, 'The old post must not retain a second actor after installation or reload');
+    await visit(entry.avatarRoomId);
+    const rendered = page.locator(`[data-companion-avatar="${id}"]`);
+    assert.equal(await rendered.count(), 1, 'Each installed member has one actual resident actor');
+    assert.equal(await rendered.getAttribute('data-companion-actor-location'), 'aboard');
+    const image = rendered.locator('img[data-homeworld-npc-variant-v84]');
+    await image.waitFor({ state: 'visible' });
+    await image.evaluate(image => image.decode());
+    assert.ok(await image.evaluate(image => image.complete && image.naturalWidth > 0));
+    const quarter = page.locator(`[data-companion-module="${id}"]`);
+    assert.equal(await quarter.count(), 1);
+    const art = quarter.locator('img[data-companion-art]');
+    await art.waitFor({ state: 'visible' }); await art.evaluate(image => image.decode());
+    assert.ok(await art.evaluate(image => image.complete && image.naturalWidth > 0));
+    assert.equal(await page.locator(`[data-clan-crew="${id}"]`).count(), 0, 'Managed housing must not duplicate the legacy actor');
+    await openPanel('crew');
+    assert.equal(await page.locator(`[data-clan-recruit="${id}"]`).getAttribute('data-clan-recruit-status'), 'recruited');
+    await closePanel();
+  };
+  const installRecruit = async id => {
+    // Walking to the hangar and opening its dossier approaches the actual service
+    // point. All three residence transactions then use native UI callbacks.
+    await visit('hangar'); await openPanel('crew'); await closePanel(); await openResidence();
+    const before = await stored(), cost = domain.companionResidenceDefinition(id).installationCost;
+    assert.equal(cost, 20); assert.ok(before.profile.clanMarks >= cost, 'Only earned marks may fund the new quarter');
+    await residencePanel().locator(`[data-companion-member="${id}"] select`).selectOption('clan');
+    let after = await residenceClick('plan-refit', id);
+    let member = after.companionResidence.members.find(member => member.id === id);
+    assert.equal(member.refit.stage, 'planned'); assert.deepEqual(member.refit.host, clanResidenceHost);
+    assert.equal(member.refit.reservedMarks, 0); assert.equal(member.installation, null); assert.equal(member.assignment, null);
+    assert.equal(after.profile.clanMarks, before.profile.clanMarks);
+    after = await residenceClick('fund-refit', id);
+    member = after.companionResidence.members.find(member => member.id === id);
+    assert.equal(member.refit.stage, 'funded'); assert.equal(member.refit.reservedMarks, cost);
+    assert.equal(member.installation, null); assert.equal(member.assignment, null);
+    assert.equal(domain.availableClanResidenceCrew(after).includes(id), false, 'Funding alone does not bring a recruit aboard');
+    assert.equal(after.profile.clanMarks, before.profile.clanMarks - cost);
+    after = await residenceClick('complete-refit', id);
+    member = after.companionResidence.members.find(member => member.id === id);
+    assert.equal(member.refit, null); assert.deepEqual(member.assignment, clanResidenceHost);
+    assert.deepEqual(member.installation.host, clanResidenceHost); assert.equal(member.legacyClanPost, false);
+    assert.equal(after.profile.clanMarks, before.profile.clanMarks - cost, 'Confirmation must not charge the supplies twice');
+    await showResident(id); await screenshot(`crew-${id}-installed-quarter.png`);
+  };
   const completeInterior = async id => {
     await visit('conseil'); await acceptContract(id);
     const before = await stored();
@@ -397,9 +491,8 @@ try {
     const recruited = await durableClick(`[data-clan-recruit-action="${npc.id}"]`);
     assert.ok(recruited.clanShipOperations.recruitedNpcIds.includes(npc.id));
     assert.equal(recruited.profile.clanMarks, finished.profile.clanMarks, 'An agreement does not create another currency reward');
-    await closePanel();
-    await page.locator(`[data-clan-crew="${npc.id}"][data-clan-crew-recruited="true"] img`).waitFor({ state: 'visible' });
-    await screenshot(`crew-${npc.id}-at-post.png`);
+    await assertReserve(npc.id);
+    await installRecruit(npc.id);
   };
 
   const primary = await startContext(fixtures[0]);
@@ -491,7 +584,7 @@ try {
     assert.deepEqual(await operations(), before);
     assert.equal(await page.locator('[data-clan-interior-step]').count(), 0, 'The archive step cannot be executed at medical after resuming');
   });
-  await check('Finishing confinement awards once, then the warden explicitly joins at the hangar', async () => {
+  await check('Finishing confinement awards once, then the warden accepts an explicit reserve agreement at the hangar', async () => {
     for (const step of definition('ship-seal-check').steps.slice(2)) {
       await visit(step.roomId); await openPanel('contracts');
       await durableClick(`[data-clan-interior-step="${step.id}"]`);
@@ -509,28 +602,35 @@ try {
     assert.deepEqual(current.clanShipOperations.recruitedNpcIds, ['threshold-guard']);
     assert.equal(current.profile.clanMarks, 15);
     assert.equal(await page.locator('[data-clan-recruit-action="threshold-guard"]').count(), 0);
-    await closePanel(); await screenshot('crew-threshold-guard-at-post.png');
+    await assertReserve('threshold-guard');
+    assert.ok(current.profile.clanMarks < domain.companionResidenceDefinition('threshold-guard').installationCost,
+      'The first receipt alone cannot fund a quarter; no currency may be injected');
+    await screenshot('crew-threshold-guard-in-reserve.png');
   });
-  for (const id of interiorIds.slice(1)) await check(`The complete ${id} circuit awards one receipt and its stationed recruit joins`, () => completeInterior(id));
-  await check('Four earned recruits remain visible at their posts after reload and open their own dossier', async () => {
-    const before = await operations();
-    assert.deepEqual([...before.recruitedNpcIds].sort(), [...mainRecruitIds].sort());
+  for (const id of interiorIds.slice(1)) await check(`The complete ${id} circuit pays once and its recruit moves from reserve into a funded quarter`, () => completeInterior(id));
+  await check('Three installed recruits and the warden reserve persist after reload with the earned housing budget', async () => {
+    const before = await stored();
+    assert.deepEqual([...before.clanShipOperations.recruitedNpcIds].sort(), [...mainRecruitIds].sort());
+    assert.deepEqual(domain.availableClanResidenceCrew(before), mainRecruitIds.slice(1));
+    assert.equal(before.profile.clanMarks, 15, 'The four circuits earn 75 marks and three real quarters cost 60');
     await reload();
-    assert.deepEqual(await operations(), before);
-    for (const id of mainRecruitIds) await showRecruit(id);
-    assert.equal((await stored()).profile.clanMarks, 75);
+    assert.deepEqual(await operations(), before.clanShipOperations);
+    assert.deepEqual((await stored()).companionResidence, before.companionResidence);
+    await assertReserve('threshold-guard');
+    for (const id of mainRecruitIds.slice(1)) await showResident(id);
+    assert.equal((await stored()).profile.clanMarks, 15);
     assert.equal(await page.locator('[data-clan-confirm-circle]').count(), 0);
   });
-  await check('A real escort binds the four earned roles and advances only through actual tactical orders', async () => {
+  await check('A real escort binds only the three installed roles and advances through actual tactical orders', async () => {
     await visit('conseil'); await acceptContract('space-screening');
-    assert.deepEqual((await operations()).spaceEncounter.crewRoles, ['armorer', 'medic', 'veteran', 'warden']);
+    assert.deepEqual((await operations()).spaceEncounter.crewRoles, ['armorer', 'medic', 'veteran']);
     assert.equal(await page.locator('[data-clan-space-order="board"]').isDisabled(), true);
     await spaceOrder('scan'); await spaceOrder('manoeuvre');
     const before = await operations();
     assert.equal(before.spaceEncounter.turn, 2);
     assert.equal(before.spaceEncounter.scanLevel, 1);
     assert.equal(before.spaceEncounter.range, 1);
-    assert.equal((await stored()).profile.clanMarks, 75);
+    assert.equal((await stored()).profile.clanMarks, 15);
     await screenshot('04-escort-turn-two.png');
     await closePanel(); await page.waitForTimeout(350); await openPanel('contracts');
     assert.deepEqual(await operations(), before, 'Closing or reopening the command table consumes no turn');
@@ -559,17 +659,33 @@ try {
     assert.equal(after.clanShipOperations.spaceEncounter.status, 'victory');
     assert.equal(after.clanShipOperations.activeContract, null);
     assert.equal(receiptCount(after, 'space-screening'), 1);
-    assert.equal(after.profile.clanMarks, 120);
+    assert.equal(after.profile.clanMarks, 60);
     await page.locator('[data-clan-contract-card="space-screening"]').click();
     assert.equal(await page.locator('[data-clan-accept-contract="space-screening"]').isDisabled(), true);
     await screenshot('06-escort-reward-confirmed.png');
     const before = await operations();
     await reload(); await openPanel('contracts');
     assert.deepEqual(await operations(), before);
-    assert.equal((await stored()).profile.clanMarks, 120);
+    assert.equal((await stored()).profile.clanMarks, 60);
+  });
+  await check('The earned escort reward funds the warden quarter and all four actual residents survive reload', async () => {
+    await assertReserve('threshold-guard');
+    await installRecruit('threshold-guard');
+    const before = await stored();
+    assert.equal(before.profile.clanMarks, 40, '75 circuit marks plus 45 escort marks minus four 20-mark quarters');
+    assert.deepEqual(domain.availableClanResidenceCrew(before), mainRecruitIds);
+    assert.equal(new Set(before.companionResidence.members.map(member => member.installation.berth)).size, 4,
+      'Each installed recruit owns a distinct actual berth');
+    await reload();
+    assert.deepEqual((await stored()).companionResidence, before.companionResidence);
+    assert.deepEqual(await operations(), before.clanShipOperations);
+    for (const id of mainRecruitIds) await showResident(id);
+    assert.equal((await stored()).profile.clanMarks, 40);
+    await visit('conseil');
   });
   await check('Withdrawing from interception ends the contact without a proof or reward and permits a new departure', async () => {
     await acceptContract('space-interception');
+    assert.deepEqual((await operations()).spaceEncounter.crewRoles, ['armorer', 'medic', 'veteran', 'warden']);
     await spaceOrder('scan');
     const before = await stored();
     const after = await spaceOrder('withdraw');
@@ -600,7 +716,7 @@ try {
     assert.equal(current.clanShipOperations.spaceEncounter.status, 'victory');
     assert.equal(current.clanShipOperations.spaceEncounter.hostileIntegrity, 0);
     assert.equal(receiptCount(current, 'space-interception'), 1);
-    assert.equal(current.profile.clanMarks, 185);
+    assert.equal(current.profile.clanMarks, 105);
     await screenshot('09-interception-completed.png');
   });
   await check('Recovery requires analysis, disabled propulsion and boarding before the final extraction', async () => {
@@ -610,13 +726,13 @@ try {
     assert.equal(current.clanShipOperations.spaceEncounter.objectiveProgress, 2);
     assert.equal(current.clanShipOperations.spaceEncounter.status, 'active');
     assert.equal(receiptCount(current, 'space-recovery'), 0);
-    assert.equal(current.profile.clanMarks, 185);
+    assert.equal(current.profile.clanMarks, 105);
     await screenshot('10-capsule-awaiting-extraction.png');
     await spaceOrder('brace'); current = await spaceOrder('extract');
     assert.equal(current.clanShipOperations.spaceEncounter.status, 'victory');
     assert.equal(current.clanShipOperations.spaceEncounter.objectiveProgress, 3);
     assert.equal(receiptCount(current, 'space-recovery'), 1);
-    assert.equal(current.profile.clanMarks, 240);
+    assert.equal(current.profile.clanMarks, 160);
     await screenshot('11-recovery-completed.png');
   });
   await check('The journal records eight real UI receipts and checkpointing preserves them with four crew', async () => {
@@ -632,7 +748,8 @@ try {
     await page.getByRole('button', { name: 'Sauvegarder et revenir au menu principal', exact: true }).click();
     await continueCampaign();
     assert.deepEqual(await operations(), before.clanShipOperations);
-    assert.equal((await stored()).profile.clanMarks, 240);
+    assert.deepEqual((await stored()).companionResidence, before.companionResidence);
+    assert.equal((await stored()).profile.clanMarks, 160);
   });
   await check('At 390 px the four real recruits and all dossier tabs remain reachable by touch without overflow', async () => {
     await page.setViewportSize({ width: 390, height: 844 }); await frames();
@@ -724,6 +841,7 @@ try {
     const original = await primary.page.evaluate(key => JSON.parse(localStorage.getItem(key)), SAVE_STORAGE_KEY);
     assert.equal(original.createdAt, seed.createdAt);
     assert.deepEqual(original.clanShipOperations, primaryBeforeFixture.clanShipOperations);
+    assert.deepEqual(original.companionResidence, primaryBeforeFixture.companionResidence);
     assert.equal(original.profile.clanMarks, primaryBeforeFixture.profile.clanMarks);
     assert.notEqual(original.createdAt, (await stored()).createdAt);
     assert.equal(original.clanShipOperations.circleConfirmed, false);
@@ -735,6 +853,7 @@ try {
     assert.equal(report.walking.rooms.length, 7, 'Actual interior routes must reach all seven rooms');
     assert.ok(report.walking.samples > 100, 'Collision assertions must include real movement, not only room titles');
     assert.ok(report.commands.length >= 40, 'The spatial scenarios must issue actual commands');
+    assert.equal(report.residenceActions.length, 12, 'All four arrivals require three native housing transactions');
   });
   report.passed = true;
 } catch (error) {
@@ -744,7 +863,8 @@ try {
     report.lastScene = await page.evaluate(key => {
       const scene = document.querySelector('[data-clan-interior]'), table = document.querySelector('[data-clan-operations]');
       const save = JSON.parse(localStorage.getItem(key) || 'null');
-      return { owner: save?.createdAt, docking: save?.clanShipDocking, operations: save?.clanShipOperations, marks: save?.profile?.clanMarks,
+      return { owner: save?.createdAt, docking: save?.clanShipDocking, operations: save?.clanShipOperations,
+        residence: save?.companionResidence, marks: save?.profile?.clanMarks,
         scene: scene ? { ...scene.dataset } : null, table: table ? { ...table.dataset } : null,
         focused: document.activeElement?.outerHTML?.slice(0, 500), hidden: document.hidden, documentFocused: document.hasFocus(),
         diagnostics: window.__clanOperationsQa ? { refusals: window.__clanOperationsQa.refusals,
