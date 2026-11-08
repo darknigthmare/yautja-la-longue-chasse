@@ -1,0 +1,150 @@
+{
+  "schemaVersion": 1,
+  "scope": "Dated failed native execution of C37-07; no retroactive success or artistic qualification.",
+  "github": {
+    "repository": "darknigthmare/yautja-la-longue-chasse",
+    "pullRequest": 130,
+    "runId": 42519093169,
+    "jobId": 128848433973,
+    "jobUrl": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/42519093169/job/128848433973",
+    "headCommit": "5edd59df6a82538dea76fa7512df244cb7c74430",
+    "artifactNameMergeContext": "96bb23ca27e00d040d40078d4fe3d667f576d0d7",
+    "checkoutUsesHead": true,
+    "note": "The artifact name uses a merge context; the workflow checkout and the browser report use the distinct PR head."
+  },
+  "artifact": {
+    "id": 13633495264,
+    "sizeBytes": 29761978,
+    "sha256": "d878ffff52da67c617157165dfa05642700c17269f1cff997b272f0ced24a10e"
+  },
+  "report": {
+    "artifactPath": "qa-clan-trophy-hearing-20261108/browser-verification.json",
+    "sizeBytes": 17730,
+    "sha256": "326a8269319989adf6dcbfe0289f7060c3d769ffdb54a556bbf08fb1c74c7fe2",
+    "startedAt": "2026-11-08T20:30:10.414Z",
+    "checkoutCommit": "5edd59df6a82538dea76fa7512df244cb7c74430",
+    "browserVersion": "156.0.8078.0",
+    "browserExecuted": true,
+    "passed": false,
+    "successfulChecksRecorded": 39,
+    "expectedChecksForCompleteRecipe": 42,
+    "checksByContext": {
+      "1440x1000": 14,
+      "390x844": 14,
+      "320x740": 11
+    },
+    "completedContexts": [
+      {
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "reducedMotion": "reduce",
+        "input": "Mouse; no physical controller"
+      },
+      {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "reducedMotion": "reduce",
+        "input": "Emulated touch; no physical controller"
+      }
+    ],
+    "screenshots": [
+      "1440x1000-witnesses.png",
+      "1440x1000-conclusion.png",
+      "1440x1000-post-ash-scar.png",
+      "1440x1000-post-cold-trace.png",
+      "390x844-witnesses.png",
+      "390x844-conclusion.png",
+      "390x844-post-ash-scar.png",
+      "390x844-post-cold-trace.png",
+      "320x740-witnesses.png",
+      "320x740-conclusion.png"
+    ],
+    "errors": [],
+    "missingAssets": []
+  },
+  "source": {
+    "path": "scripts/qa-clan-trophy-hearing-browser-20261108.mjs",
+    "sha256": "098b0e434b4b2ac731796f06f214d2fc9b79318b2f5c1e7bc264701c50f8c81a",
+    "localEquivalentCommit": "56d97667d65889f0abb761ecbff74546c27998ee",
+    "tree": "3695d43ef54cdd14a5ebe7883f60fbf4331f24e3"
+  },
+  "failure": {
+    "context": "320x740",
+    "assertion": "The complete native witness and label must fit the room and window",
+    "framing": {
+      "ready": true,
+      "fullyFramed": false,
+      "roomId": "entrainement",
+      "witnessId": "ash-scar",
+      "bounds": {
+        "viewport": {
+          "left": 11,
+          "top": 388.421875,
+          "right": 309,
+          "bottom": 740.421875,
+          "width": 298,
+          "height": 352
+        },
+        "world": {
+          "left": -284.3999938964844,
+          "top": 388.421875,
+          "right": 349.1999816894531,
+          "bottom": 740.421875,
+          "width": 633.5999755859375,
+          "height": 352
+        },
+        "sprite": {
+          "left": 197.73321533203125,
+          "top": 524.2168579101562,
+          "right": 254.27322387695312,
+          "bottom": 609.02685546875,
+          "width": 56.540008544921875,
+          "height": 84.80999755859375
+        },
+        "label": {
+          "left": 182,
+          "top": 498.421875,
+          "right": 270.0000305175781,
+          "bottom": 521.3018798828125,
+          "width": 88.00003051757812,
+          "height": 22.8800048828125
+        },
+        "window": {
+          "left": 0,
+          "top": 0,
+          "right": 320,
+          "bottom": 740
+        }
+      },
+      "label": "Balafre de CendreEntretien disponible",
+      "nativeScroll": {
+        "left": 0,
+        "top": 0
+      }
+    },
+    "viewportBottomOverflowPixels": 0.421875,
+    "failureBeforeScreenshot": "320x740-post-ash-scar.png",
+    "nextPostNotReached": "320x740-post-cold-trace.png"
+  },
+  "correction": {
+    "onlyRecipeStatementChanged": true,
+    "before": "await roomViewport.scrollIntoViewIfNeeded();",
+    "after": "await roomViewport.evaluate(viewport => viewport.scrollIntoView({ block: 'center', inline: 'nearest', behavior: 'instant' }));",
+    "newSourceSha256": "c3a75e55c330ea0baee957d2e228fcd02862679c68044e8b8dca5182f7f9c3ba",
+    "exactContainmentAndCaptureAssertionsUnchanged": true,
+    "applicationDataCameraCssAndViewportSizeUnchanged": true,
+    "newNativeExecutionRequired": true
+  },
+  "limits": [
+    "39 successful checks are partial progress; this complete recipe failed.",
+    "The 320px journals, single payment, reopened dossier and empty gallery were verified before the framing failure; neither 320px post screenshot was produced.",
+    "The sprite and label fit the recorded viewport and window, but the viewport itself exceeded the window bottom; this receipt preserves the exact unrounded values.",
+    "This compact receipt selects report evidence and does not claim a fresh visual inspection of the ten PNGs.",
+    "A new commit requires a new native execution; the failed head is not requalified.",
+    "Synthetic prerequisites, historical posts, reduced motion and mouse/emulated touch remain the scenario scope; no autoplay, physical controller or full artistic approval is asserted."
+  ]
+}

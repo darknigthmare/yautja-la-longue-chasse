@@ -44,7 +44,8 @@ const sourceFiles = ['app/game/GameClient.tsx', 'app/game/ClanShipInterior.tsx',
   'app/game/ClanShipIncidentPanel.tsx', 'app/game/ClanShipIncidentPanel.module.css',
   'app/game/ClanShipIncidentScene.tsx', 'app/game/ClanShipIncidentScene.module.css',
   'app/game/ClanShipTrophyTelemetry.tsx', 'app/game/ClanShipTrophyTelemetry.module.css', 'app/game/systems/clanShipIncidents.ts',
-  'app/game/systems/clanShipTrophyHearing.ts', 'app/game/save.ts', 'app/game/types.ts'];
+  'app/game/systems/clanShipTrophyHearing.ts', 'app/game/save.ts', 'app/game/types.ts',
+  'scripts/qa-clan-trophy-hearing-browser-20261108.mjs'];
 async function fingerprints() {
   return Object.fromEntries(await Promise.all(sourceFiles.map(async file => [file, sha256(await fs.readFile(path.join(root, file)))])));
 }
@@ -90,12 +91,16 @@ try {
       await interior().waitFor({ timeout: 90000 });
     };
     const visit = async roomId => {
-      if (await panel().getAttribute('open') !== null) await activate(panel().getByRole('button', { name: 'Reprendre le déplacement · B / Échap', exact: true }));
+      await closeJournal();
       await activate(page.locator(`[data-clan-ship-room-target="${roomId}"]`));
       await waitRoom(roomId);
       await page.waitForFunction(id => document.querySelector(`[data-interior-service="${id}"]`)?.getAttribute('data-interior-ready') === 'true', roomId);
     };
     const panel = () => page.locator('[data-clan-incident-panel]');
+    const closeJournal = async () => {
+      if (await panel().getAttribute('open') !== null) await activate(panel().getByRole('button', { name: 'Reprendre le déplacement · B / Échap', exact: true }));
+      await page.waitForFunction(() => document.querySelector('[data-clan-incident-panel]')?.getAttribute('open') === null);
+    };
     const openJournal = async () => {
       if (await panel().getAttribute('open') === null) await activate(page.locator('[data-interior-incidents]'));
       await panel().locator('[data-clan-incident="contested-trophy"]').waitFor();
@@ -105,6 +110,62 @@ try {
       const filename = `${name}-${label}.png`;
       await page.screenshot({ path: path.join(output, filename), fullPage: true });
       report.screenshots.push(filename);
+    };
+    const captureReturnedWitness = async (witnessId, roomId) => {
+      // The actor anchor is intentionally 0 x 0. Check its real image and label,
+      // not an anchor bounding box or a hidden duplicate in another panel.
+      const actor = page.locator(`[data-clan-crew="${witnessId}"]`);
+      const imageSelector = `img[data-homeworld-npc-identity-v84="clan-ship-crew:${witnessId}"]`;
+      assert.equal(await actor.count(), 1);
+      assert.equal(await page.locator(imageSelector).count(), 1);
+      const sprite = actor.locator(imageSelector);
+      await sprite.waitFor({ state: 'visible' });
+      const decoded = await sprite.evaluate(async image => {
+        await image.decode();
+        return { complete: image.complete, width: image.naturalWidth, height: image.naturalHeight,
+          src: image.getAttribute('src'), nativeSource: image.getAttribute('data-native-source') };
+      });
+      assert.ok(decoded.complete && decoded.width > 0 && decoded.height > 0, 'The returned witness needs decoded native pixels');
+      assert.equal(decoded.src, decoded.nativeSource, 'A fallback cannot stand in for the native witness');
+      const roomViewport = page.locator('[data-interior-viewport]');
+      await page.locator('.toast[role="status"]').waitFor({ state: 'detached' });
+      // Scroll only the page's room viewport; never pan the clipped game world
+      // or change CSS to manufacture a complete actor for the screenshot.
+      await roomViewport.evaluate(viewport => viewport.scrollIntoView({ block: 'center', inline: 'nearest', behavior: 'instant' }));
+      const framing = async () => page.evaluate(({ witnessId, roomId }) => {
+        const scene = document.querySelector('[data-clan-interior]');
+        const viewport = scene?.querySelector('[data-interior-viewport]');
+        const world = scene?.querySelector('[data-interior-world]');
+        const actor = scene?.querySelector(`[data-clan-crew="${witnessId}"]`);
+        const image = actor?.querySelector(`img[data-homeworld-npc-identity-v84="clan-ship-crew:${witnessId}"]`);
+        const label = actor?.querySelector(`[data-clan-crew-talk="${witnessId}"]`);
+        const rect = node => {
+          const { left, top, right, bottom, width, height } = node.getBoundingClientRect();
+          return { left, top, right, bottom, width, height };
+        };
+        const contains = (outer, inner) => inner.width > 0 && inner.height > 0 && inner.left >= outer.left
+          && inner.top >= outer.top && inner.right <= outer.right && inner.bottom <= outer.bottom;
+        if (!viewport || !world || !(image instanceof HTMLImageElement) || !label) return null;
+        const bounds = { viewport: rect(viewport), world: rect(world), sprite: rect(image), label: rect(label),
+          window: { left: 0, top: 0, right: window.innerWidth, bottom: window.innerHeight } };
+        const ready = scene.getAttribute('data-interior-room') === roomId && scene.getAttribute('data-interior-moving') === 'false'
+          && !scene.getAttribute('data-interior-target-room') && !document.querySelector('[data-clan-incident-panel]')?.hasAttribute('open')
+          && image.complete && image.naturalWidth > 0 && image.naturalHeight > 0;
+        const fullyFramed = contains(bounds.window, bounds.viewport) && [bounds.sprite, bounds.label].every(box =>
+          contains(bounds.viewport, box) && contains(bounds.world, box));
+        return { ready, fullyFramed, roomId, witnessId, bounds, label: label.textContent,
+          nativeScroll: { left: viewport.scrollLeft, top: viewport.scrollTop } };
+      }, { witnessId, roomId });
+      const before = await framing();
+      assert.ok(before?.ready && before.fullyFramed, `The complete native witness and label must fit the room and window: ${JSON.stringify(before)}`);
+      assert.deepEqual(before.nativeScroll, { left: 0, top: 0 }, 'The authored camera must retain ownership of the room');
+      const filename = `${name}-post-${witnessId}.png`;
+      await roomViewport.screenshot({ path: path.join(output, filename) });
+      const after = await framing();
+      assert.deepEqual(after, before, 'The returned witness must remain framed and stopped throughout its capture');
+      report.screenshots.push(filename);
+      return { screenshot: filename, decoded, framing: before,
+        visualReviewRequired: 'DOM framing and decoded pixels do not certify occlusion or artistic quality.' };
     };
     await page.goto(origin, { waitUntil: 'networkidle', timeout: 120000 });
     await openCampaign(); await waitRoom('entrainement'); report.browserExecuted = true;
@@ -149,6 +210,38 @@ try {
     assert.equal(saves.parseSaveImport(JSON.stringify(concluded)).failure, null);
     check('Common hearing closes and grants exactly 35 marks');
     await capture('conclusion');
+
+    // This second reload starts from the real browser's concluded save. It must
+    // not reseed a fixture, rewrite a ledger or manufacture a second action.
+    const assertClosedSave = async () => {
+      const current = await read();
+      assert.deepEqual(current.clanShipTrophyHearing, concluded.clanShipTrophyHearing, 'The closed hearing journal must remain intact');
+      assert.deepEqual(current.clanShipIncidents, concluded.clanShipIncidents, 'The incident journal must remain intact after closure');
+      assert.equal(current.profile.clanMarks, marks + 35, 'Reopening or revisiting a closed hearing cannot pay it again');
+    };
+    const assertClosedDossier = async () => {
+      await panel().locator('[data-clan-incident="contested-trophy"][data-incident-complete="true"] [data-trophy-hearing-phase="completed"]').waitFor();
+      assert.equal(await page.locator('[data-incident-action="contested-trophy:acknowledge-provenance"]').count(), 0,
+        'A closed hearing must expose no acknowledgement action, including in the scene');
+      await assertClosedSave();
+    };
+    await page.reload({ waitUntil: 'networkidle' }); await openCampaign();
+    await visit('trophees'); await openJournal(); await assertClosedDossier();
+    check('Closed hearing reload restores both journals and the single 35-mark payment');
+    await closeJournal(); await openJournal(); await assertClosedDossier();
+    check('Reopening the completed dossier offers no new acknowledgement and no new payment');
+    await closeJournal();
+    assert.equal(await interior().getAttribute('data-interior-room'), 'trophees');
+    await page.locator('[data-trophy-plaque="paired-roles"][data-incident-complete="true"]').waitFor();
+    assert.equal(await page.locator('[data-trophy-hearing-witness]').count(), 0);
+    assert.equal(await page.locator('[data-trophy-hearing-projection]').count(), 0);
+    check('Completed gallery retains its verdict without hearing witnesses or projection');
+    for (const [witnessId, roomId] of [['ash-scar', 'entrainement'], ['cold-trace', 'archives']]) {
+      await visit(roomId);
+      const evidence = await captureReturnedWitness(witnessId, roomId);
+      await assertClosedSave();
+      check('Returned witness is drawn at the physically visited legacy post', { witnessId, roomId, ...evidence });
+    }
     assert.equal(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth + 1), true, 'Document must fit the viewport.');
     check('Document has no horizontal overflow');
     report.contexts.push({ viewport, reducedMotion: 'reduce', input: viewport.width < 600 ? 'Emulated touch; no physical controller' : 'Mouse; no physical controller' });
