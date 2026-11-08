@@ -140,3 +140,11 @@ La présente PR ne ferme **aucun** de ces contrôles de gameplay. La validation 
 
 [Inventaire actuel des 87 PNG](DEPOT_COMPLET_SPRITES_20261106.md) : 20 sorties individuelles HD 01–20, 50 concepts V0.1, un essai non retenu et 16 planches archivées séparément. Les anciens reçus restent historiques. Aucun nouveau lot 21–30, aucune animation, intégration moteur ou validation artistique 1:1 ne découle de cet import.
 <!-- mobility-all-sources-20261106:end -->
+
+
+<!-- mobility-gameplay-v1-20261108 -->
+## Garage et gameplay — reprise du 8 novembre 2026
+
+[Comptoir des Forges, boucle de conduite, sauvegardes et limites](GAMEPLAY_GARAGE_V1.md) · [Excel complet (22 feuilles)](../../../production/mobility-20261108/Yautja_Mobilite_Gameplay_20261108.xlsx).
+
+Deux engins dans l’aire fermée, une vente, douze paliers mécaniques et deux convois PNJ. Les cinquante fiches demeurent distinctes du contenu effectivement jouable ; aucune nouvelle image n’est générée par cette passe.

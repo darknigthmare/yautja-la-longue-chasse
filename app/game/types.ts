@@ -661,6 +661,8 @@ export interface GameSettings {
 }
 
 export interface SaveGame {
+  /** Optional owner-bound mobility register; legacy saves receive no property or permit. */
+  mobilityV1?: import("./systems/mobility/ledger").MobilityLedger | null;
   /** Null preserves pre-prologue adult campaigns without retroactive narrative proof. */
   prologue: NurseryCampaignProgress | null;
   /** Actual Unblooded exercises and equipment; never the adult starter loadout. */

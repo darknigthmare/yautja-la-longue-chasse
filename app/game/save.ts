@@ -1,3 +1,4 @@
+import { inspectMobilityLedger } from "./systems/mobility/ledger";
 import {normalizeHomeworldArrivalRecoveryV111} from './systems/homeworldArrivalRecoveryLedgerV111';
 import {normalizeHomeworldArchiveContinuationV111,archiveContinuationActiveV111} from './systems/homeworldArchiveContinuationLedgerV111';
 import {emptyHarvestInventoryV112,normalizeHarvestInventoryV112,deliverHarvestV112} from "./systems/harvestInventoryV112";
@@ -1237,6 +1238,9 @@ export function normalizeSave(value: unknown): SaveGame {
     appearance: normalizeAppearance(source.appearance),
     missionProgress,
     trophies: normalizeTrophies(source.trophies),
+    ...(source.mobilityV1 === undefined ? {} : {
+      mobilityV1: inspectMobilityLedger(source.mobilityV1,validIsoDate(source.createdAt,fallback.createdAt)).state,
+    }),
     ...(source.gauntletV134 === undefined ? {} : {
       gauntletV134: normalizeGauntletCampaignV134(source.gauntletV134,validIsoDate(source.createdAt,fallback.createdAt)),
     }),
@@ -1492,11 +1496,14 @@ function inspectSavePayload(value: unknown): SaveImportParseResult {
   const arrivalRun = inspectPlanetArrivalRun(value.planetArrivalRun, arrival.state);
   const expedition = inspectExpeditionRoster(value.expeditionRoster, typeof value.createdAt === 'string' ? value.createdAt : '');
   const shipEnergy = inspectShipInsertionEnergy(value.shipInsertionEnergy, typeof value.createdAt === 'string' ? value.createdAt : '');
-  for (const inspection of [castle, arrival, arrivalRun, expedition, shipEnergy]) {
+  const mobility = inspectMobilityLedger(value.mobilityV1, typeof value.createdAt === "string" ? value.createdAt : "");
+  for (const inspection of [castle, arrival, arrivalRun, expedition, shipEnergy, mobility]) {
     if (inspection.status === "future-version" || inspection.status === "invalid-save") {
       return { save: null, failure: inspection.status };
     }
   }
+  if (mobility.state && !evaluateClanShipAccess(value as unknown as Pick<SaveGame, "prologue">).allowed)
+    return { save: null, failure: "invalid-save" };
   if (arrival.state?.insertion?.shipCloak && !hasShipInsertionDebit(shipEnergy.state, arrival.state.ownerCreatedAt,
       arrival.state.runId, arrival.state.personalShipId)) return { save: null, failure: 'invalid-save' };
   if (((expedition.state?.members.length ?? 0) > 0 || (shipEnergy.state?.hulls.length ?? 0) > 0 || arrival.state?.insertion?.method === 'ship' ||

@@ -1,0 +1,25 @@
+{
+  "base_commit": "254b4b972af3c32cb078da3744241b2c0ea2f46c",
+  "tests": {
+    "command": "node --test --test-concurrency=1 tests/mobility-core.test.mjs tests/mobility-integration.test.mjs tests/clan-ship-operations-save.test.mjs",
+    "total": 106,
+    "passed": 106,
+    "failed": 0,
+    "skipped": 0
+  },
+  "typescript": {
+    "command": "node node_modules/typescript/bin/tsc -p tests/mobility/tsconfig.json",
+    "exit_code": 0,
+    "scope": "New modules, UI and save contracts. Full GameClient dependency graph not established by this isolated check."
+  },
+  "browser": {
+    "passed": false,
+    "reason": "net::ERR_BLOCKED_BY_ADMINISTRATOR at http://127.0.0.1:4188/",
+    "scope": "Native component test attempted. No browser success or screenshots claimed."
+  },
+  "full_build_passed": false,
+  "full_build_note": "Not executed locally. Full GameClient typecheck timed out without output at 40 seconds. CI qualification remains separate.",
+  "new_images_generated": 0,
+  "human_art_validated": false,
+  "canonical_1_to_1_certified": false
+}
