@@ -1,0 +1,36 @@
+name: Mobility workbench and verification
+on:
+  push:
+    branches: [feat/mobility-garage-gameplay-20261108]
+    paths: ['.github/workflows/mobility-workbench-20261108.yml']
+permissions:
+  contents: read
+jobs:
+  source-context:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          fetch-depth: 1
+          persist-credentials: false
+      - name: Archive tracked source context and existing workbook inventory
+        run: |
+          python3 - <<'PY'
+          import subprocess, pathlib, zipfile, json
+          files=subprocess.check_output(['git','ls-files','-z']).decode().split('\0')
+          allowed={'.ts','.tsx','.js','.mjs','.cjs','.json','.css','.md','.yml','.yaml','.xlsx','.csv','.html'}
+          selected=[]
+          with zipfile.ZipFile('mobility-source-context.zip','w',zipfile.ZIP_DEFLATED) as z:
+            for f in files:
+              p=pathlib.Path(f)
+              if f and p.is_file() and p.suffix in allowed and p.stat().st_size<20_000_000 and not f.startswith(('public/','art-source/')):
+                z.write(p,f);selected.append(f)
+            z.writestr('MOBILITY_CONTEXT.json',json.dumps({'commit':subprocess.check_output(['git','rev-parse','HEAD']).decode().strip(),'selected':selected,'tracked':files},ensure_ascii=False))
+          print('Source files:',len(selected),'Archive bytes:',pathlib.Path('mobility-source-context.zip').stat().st_size)
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: mobility-source-context
+          path: mobility-source-context.zip
+          retention-days: 3
