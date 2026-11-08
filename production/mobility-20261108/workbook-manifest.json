@@ -1,8 +1,8 @@
 {
-  "format": "yautja-mobility-workbook/1",
+  "format": "yautja-mobility-workbook/2",
   "file": "production/mobility-20261108/Yautja_Mobilite_Gameplay_20261108.xlsx",
-  "bytes": 244806,
-  "sha256": "3f82b29967687d031693c85750b92646f787166cb0eaff00693c0ee74dab6600",
+  "bytes": 332203,
+  "sha256": "b87a09ce8a683e7c024600933e0ce69363e62b7d6c9dd2d78b87fc2f7a0e9a89",
   "sheets": [
     "Livraison",
     "Catalogue",
@@ -30,11 +30,129 @@
   "historical_workbook": "production/homeworld-sectors-20261103/YAUTJA_MARCHE_MONTURES_CHENILS_20261103.xlsx",
   "historical_workbook_sha256": "7ab7d73aec3b7beb94ac930843a3aa125c617a18f785788007830d5e5ab768fb",
   "historical_nonempty_cells_preserved": 2428,
-  "historical_note": "Only previously blank Livraison A1:R1 receives a pointer to the new sheets. Original workbook remains unchanged.",
+  "historical_note": "All 2428 nonempty historical cells retain their values/formulas. Only a previously blank title area receives a pointer. The original workbook file is unchanged.",
   "detail_tabs": 17,
   "model_count": 50,
   "individual_hd_sources_in_repo": 40,
   "new_images_generated": 0,
-  "native_browser_passed": false,
-  "validation_scope": "106 local tests and isolated strict TypeScript; no full campaign browser journey or new art certification."
+  "native_browser_passed": true,
+  "validation_scope": "120 targeted tests, isolated strict TypeScript and 19 native Chromium component checks with actual campaign persistence. Adult rank and test funding are declared fixture inputs. Not a full GameClient/Homeworld journey, hardware gamepad test, production build or art certification.",
+  "authoring_tool": "artifact_tool Python",
+  "formula_count": 778,
+  "new_sheet_inventory": {
+    "Parametres_V1": {
+      "data_rows": 36,
+      "columns": 4,
+      "header_row": 5
+    },
+    "Modeles_50": {
+      "data_rows": 50,
+      "columns": 15,
+      "header_row": 5
+    },
+    "Acquisition": {
+      "data_rows": 50,
+      "columns": 11,
+      "header_row": 5
+    },
+    "Stats": {
+      "data_rows": 50,
+      "columns": 22,
+      "header_row": 5
+    },
+    "Modules_machine": {
+      "data_rows": 408,
+      "columns": 12,
+      "header_row": 5
+    },
+    "Sprites_independants": {
+      "data_rows": 906,
+      "columns": 12,
+      "header_row": 5
+    },
+    "Animations": {
+      "data_rows": 1671,
+      "columns": 12,
+      "header_row": 5
+    },
+    "Sons": {
+      "data_rows": 400,
+      "columns": 11,
+      "header_row": 5
+    },
+    "VFX": {
+      "data_rows": 350,
+      "columns": 10,
+      "header_row": 5
+    },
+    "PNJ_Zones": {
+      "data_rows": 50,
+      "columns": 8,
+      "header_row": 5
+    },
+    "Equipements_montures": {
+      "data_rows": 48,
+      "columns": 10,
+      "header_row": 5
+    },
+    "Maintenance": {
+      "data_rows": 50,
+      "columns": 10,
+      "header_row": 5
+    },
+    "Fonctionnement": {
+      "data_rows": 50,
+      "columns": 10,
+      "header_row": 5
+    },
+    "Magasin_Garage": {
+      "data_rows": 15,
+      "columns": 8,
+      "header_row": 5
+    },
+    "QA": {
+      "data_rows": 26,
+      "columns": 8,
+      "header_row": 5
+    },
+    "Reste_a_faire": {
+      "data_rows": 18,
+      "columns": 8,
+      "header_row": 5
+    },
+    "Provenance": {
+      "data_rows": 12,
+      "columns": 5,
+      "header_row": 5
+    },
+    "Synthese_V1": {
+      "data_rows": 0,
+      "columns": 8,
+      "summary": true
+    }
+  },
+  "native_browser_checks": 19,
+  "targeted_tests": 120,
+  "source_commit": "9f42efcf1ac171d5c584c3fbcf0fc574ea8af8a8",
+  "source_check_url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/42482103760",
+  "production_requirements": {
+    "sprites_and_layers": 906,
+    "animations": 1671,
+    "audio_events": 400,
+    "vfx": 350,
+    "machine_upgrade_tiers": 408,
+    "mount_equipment": 48
+  },
+  "production_delivered": {
+    "catalogue_individual_hd_sources": 40,
+    "dedicated_animation_clips": 0,
+    "dedicated_audio": 0,
+    "dedicated_vfx_assets": 0
+  },
+  "runtime_scope": {
+    "driver_models_on_closed_yard": 2,
+    "purchasable_models": 1,
+    "purchasable_upgrade_tiers": 12,
+    "autonomous_carriers_on_yard": 2
+  }
 }

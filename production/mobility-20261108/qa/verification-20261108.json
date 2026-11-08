@@ -1,0 +1,64 @@
+{
+  "schema": "yautja-mobility-verification/2",
+  "source_commit": "9f42efcf1ac171d5c584c3fbcf0fc574ea8af8a8",
+  "workflow_run": 42482103760,
+  "workflow_conclusion": "success",
+  "targeted_tests": {
+    "passed": 120,
+    "failed": 0,
+    "skipped": 0
+  },
+  "strict_typescript": "targeted scope passed",
+  "native_browser": {
+    "passed": 19,
+    "failed": 0,
+    "exceptions": 0,
+    "browser": "153.0.8010.12",
+    "scope": "Actual MobilityGarage component, rules, campaign writer and localStorage; declared adult rank and 10000 clan marks in fixture. Not the entire GameClient-to-Homeworld journey."
+  },
+  "local_browser": {
+    "status": "blocked",
+    "error": "ERR_BLOCKED_BY_ADMINISTRATOR",
+    "bypassed": false
+  },
+  "full_game_build": "not qualified",
+  "hardware_gamepad": "not qualified",
+  "new_image_generation": 0,
+  "files": [
+    {
+      "path": "production/mobility-20261108/qa/native-9f42efcf/browser-report.json",
+      "bytes": 2510,
+      "sha256": "51a845b27ff990446928bd72b213d2006861d297d321e9b67b3523ee238e6756"
+    },
+    {
+      "path": "production/mobility-20261108/qa/native-9f42efcf/garage-desktop.png",
+      "bytes": 617427,
+      "sha256": "addece6867e6a0433072577d406463743d078539a9b44f65504678f9da842dd4"
+    },
+    {
+      "path": "production/mobility-20261108/qa/native-9f42efcf/garage-maintained.png",
+      "bytes": 815194,
+      "sha256": "2fdba87d90ac4dd0b8ff82228b47b7b0773d5492c5ec68031c31474ab7070de3"
+    },
+    {
+      "path": "production/mobility-20261108/qa/native-9f42efcf/garage-mobile.png",
+      "bytes": 347032,
+      "sha256": "8bf7d7d68526eb7860c99e73d54788aad66fa27068ebba22398b4044c8c8bd77"
+    },
+    {
+      "path": "production/mobility-20261108/qa/native-9f42efcf/source-commit.txt",
+      "bytes": 41,
+      "sha256": "fc67fab6ea58a0d6a25e2995088e6b1889add7976b4f7353750dcbc52e104a99"
+    },
+    {
+      "path": "production/mobility-20261108/qa/native-9f42efcf/targeted-tests.tap",
+      "bytes": 22897,
+      "sha256": "7d921d3adb5499862c5ca0ef18557760dd5bad1966467e70d7d4d07a306b9fea"
+    },
+    {
+      "path": "production/mobility-20261108/qa/native-9f42efcf/yard-completed.png",
+      "bytes": 339921,
+      "sha256": "e55b9a76eb1d899773f0767de21e17f7e6c7d3539095a3e417d253cdb7d8f8c1"
+    }
+  ]
+}

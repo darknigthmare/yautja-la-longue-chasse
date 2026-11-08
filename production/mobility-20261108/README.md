@@ -1,0 +1,19 @@
+# Mobilité V1 — livraison de gameplay et suivi de production
+
+[Guide du magasin, du garage et de la piste](../../docs/campagne/mobilite/GAMEPLAY_GARAGE_V1.md) · [Classeur Excel](Yautja_Mobilite_Gameplay_20261108.xlsx) · [Empreintes et périmètre du classeur](workbook-manifest.json).
+
+Le code est raccordé au comptoir `forge-service` des Forges `deep-forge`. Deux modèles peuvent être conduits sur l’aire fermée : Grav-Sled de prêt et moto de clan achetable. Deux Trophy Carriers circulent comme convois. Le catalogue de cinquante modèles ne signifie pas cinquante véhicules jouables.
+
+## Vérification du code publié
+
+Le commit `9f42efcf1ac171d5c584c3fbcf0fc574ea8af8a8` passe 120 tests ciblés, le TypeScript ciblé et 19 contrôles navigateur natifs. [Run d’origine](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/42482103760) · [Rapport et captures conservés](qa/native-9f42efcf/) · [Reçu courant](qa/verification-20261108.json).
+
+La recette utilise le vrai composant, la simulation, le writer et localStorage avec financement/rang de fixture déclarés. Elle ne couvre pas encore le parcours complet GameClient → Homeworld ni la manette matérielle. Les fichiers de vérification locale antérieurs restent des reçus historiques ; le blocage navigateur local n’est pas effacé.
+
+## Lire le classeur
+
+Les quatre feuilles historiques conservent 2 428 valeurs ou formules non vides. Dix-sept feuilles de détail et une synthèse ajoutent : 50 modèles et acquisitions, statistiques calculées, 408 paliers de modules mécaniques, 48 équipements biologiques, 906 exigences de sprites/couches, 1 671 clips, 400 événements sonores et 350 effets, fonctionnement, maintenance, magasin, PNJ et zones, QA, provenance et 18 chantiers ouverts.
+
+Les nombres de besoins ne désignent pas des fichiers livrés. Quarante sources individuelles HD sont connues dans le dépôt ; leurs autres vues et animations ne sont pas inventées. Trois PNG sont réemployés à l’identique dans le moteur. Aucune génération d’image n’a lieu dans cette reprise. Les dix sujets 41–50, la revue artistique 1:1 et le dressage restent ouverts.
+
+Vérification reproductible sans modifier le classeur : `python3 scripts/verify-mobility-workbook.py` depuis la racine du dépôt. Le document est éditable dans Excel ; le vérificateur contrôle la livraison figée et ses résultats calculés, pas les éditions ultérieures de l’utilisateur.
