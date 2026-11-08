@@ -44,16 +44,17 @@ jobs:
             /production/homeworld-sectors-20261103/YAUTJA_MARCHE_MONTURES_CHENILS_20261103.xlsx
             /public/**/*.json
             /public/game/mobility/
-      - name: Import only the reviewed files with prior-blob conflict guards
+      - name: Import reviewed game files only, preserving all workflow files
         run: |
           python3 - <<'PY'
           import hashlib,io,json,subprocess,urllib.request,zipfile
-          from pathlib import Path,PurePosixPath
+          from pathlib import Path
           url='https://d2ol7oe51mr4n9.cloudfront.net/user_3JHwJlNzgmcxQy32tjF7NiVZPuH/f46ce293-00e7-4894-a364-397ac6019c47.zip'
           with urllib.request.urlopen(url,timeout=60) as response:data=response.read(367494)
           assert len(data)==367493 and hashlib.sha256(data).hexdigest()=='400e6d155c33a1acfcab32f8993f0e0df835d2b8a0fc54acb82e0966938eb1a2'
           mp='production/mobility-20261108/qa/delivery-v12.json'
-          allowed={'app/game/systems/mobility/ledger.ts','app/game/systems/mobility/controller.ts','app/game/MobilityGarage.tsx','tests/mobility-training-reward.test.mjs','scripts/qa-mobility-native.mjs','.github/workflows/mobility-publish-source-20261108.yml','production/mobility-20261108/Yautja_Mobilite_Gameplay_20261108.xlsx','production/mobility-20261108/workbook-manifest.json','scripts/verify-mobility-workbook.py','docs/campagne/mobilite/GAMEPLAY_GARAGE_V1.md','production/mobility-20261108/README.md','production/mobility-20261108/REPRISE_V1_2.md'}
+          deferred='.github/workflows/mobility-publish-source-20261108.yml'
+          allowed={'app/game/systems/mobility/ledger.ts','app/game/systems/mobility/controller.ts','app/game/MobilityGarage.tsx','tests/mobility-training-reward.test.mjs','scripts/qa-mobility-native.mjs',deferred,'production/mobility-20261108/Yautja_Mobilite_Gameplay_20261108.xlsx','production/mobility-20261108/workbook-manifest.json','scripts/verify-mobility-workbook.py','docs/campagne/mobilite/GAMEPLAY_GARAGE_V1.md','production/mobility-20261108/README.md','production/mobility-20261108/REPRISE_V1_2.md'}
           blob=lambda b:hashlib.sha1(b'blob '+str(len(b)).encode()+b'\0'+b).hexdigest()
           with zipfile.ZipFile(io.BytesIO(data)) as z:
             assert z.testzip() is None and sum(i.file_size for i in z.infolist())<2_000_000
@@ -65,15 +66,16 @@ jobs:
               p=Path(e['path']);body=z.read(e['path']);old=e['expected_previous_git_blob']
               assert len(body)==e['bytes'] and hashlib.sha256(body).hexdigest()==e['sha256'] and blob(body)==e['git_blob_sha1']
               assert (p.exists() and blob(p.read_bytes())==old) or (not p.exists() and old is None),'Concurrent change: '+str(p)
-              outputs[str(p)]=body
+              # GitHub Actions has contents:write, not permission to alter workflows.
+              # That reviewed configuration is published separately via the connector.
+              if str(p)!=deferred:outputs[str(p)]=body
             assert not Path(mp).exists()
           for name,body in outputs.items():
             p=Path(name);p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(body)
-          workflow='.github/workflows/mobility-publish-v12.yml';Path(workflow).unlink()
-          paths=allowed|{mp,workflow}
+          paths=(allowed-{deferred})|{mp}
           subprocess.run(['git','add','--sparse','--',*sorted(paths)],check=True)
           actual=set(filter(None,subprocess.check_output(['git','diff','--cached','--name-only','-z']).decode().split('\0')))
-          assert actual==paths and len(actual)==14
+          assert actual==paths and len(actual)==12 and not any(p.startswith('.github/') for p in actual)
           subprocess.run(['git','diff','--cached','--check'],check=True)
           PY
       - name: Create local source revision, not yet published
@@ -108,7 +110,7 @@ jobs:
           MOBILITY_QA_COMMIT=$(git rev-parse HEAD) node scripts/qa-mobility-controls-native.mjs
           git diff --exit-code
           git diff --cached --exit-code
-      - name: Preserve verified evidence and publish this branch only
+      - name: Preserve verified evidence and publish game files, never workflows
         run: |
           python3 - <<'PY'
           import hashlib,json,os,subprocess
@@ -124,12 +126,10 @@ jobs:
           records=[]
           for p in paths:
             original=p.read_bytes()
-            # Keep npm's raw log in the artifact. Only terminal empty lines are
-            # normalized for its Git copy, with both fingerprints recorded.
             body=original.rstrip(b'\r\n')+b'\n' if p.name=='typecheck.txt' else original
             (target/p.name).write_bytes(body)
             records.append({'file':p.name,'bytes':len(body),'sha256':hashlib.sha256(body).hexdigest(),'source_sha256':hashlib.sha256(original).hexdigest(),'terminal_newlines_normalized':p.name=='typecheck.txt'})
-          report={'source_commit':source,'delivery_manifest_sha256':'0db35813503c716e2768e38567d77f962bb7433458c8ae97d22c02fe59da2c61','workflow_run':os.environ['GITHUB_RUN_ID'],'tests_passed':200,'native_checks_passed':29,'control_checks_passed':12,'full_typecheck_passed':True,'workbook_sheets':24,'formulas':780,'files':records,'scope':'Actual React component, reducer and writer; adult funding fixture, API gamepad, not full Homeworld journey or physical pad.'}
+          report={'source_commit':source,'delivery_manifest_sha256':'0db35813503c716e2768e38567d77f962bb7433458c8ae97d22c02fe59da2c61','workflow_run':os.environ['GITHUB_RUN_ID'],'tests_passed':200,'native_checks_passed':29,'control_checks_passed':12,'full_typecheck_passed':True,'workbook_sheets':24,'formulas':780,'files':records,'scope':'Actual React component, reducer and writer; adult funding fixture, API gamepad, not full Homeworld journey or physical pad.','workflow_configuration':'Separate authorized connector publication; no workflow modifications by this job.'}
           (target/'RESULT.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n')
           subprocess.run(['git','add','--',str(target)],check=True)
           actual=set(filter(None,subprocess.check_output(['git','diff','--cached','--name-only','-z']).decode().split('\0')))
@@ -137,6 +137,7 @@ jobs:
           subprocess.run(['git','diff','--cached','--check'],check=True)
           PY
           git commit -m 'test(mobilite): preuves natives V1.2, remise et flotte independante [skip ci]'
+          test -z "$(git diff --name-only '${{ github.sha }}' HEAD -- .github/)"
           git push origin HEAD:refs/heads/feat/mobility-garage-gameplay-20261108
           git rev-parse HEAD
       - uses: actions/upload-artifact@v4
