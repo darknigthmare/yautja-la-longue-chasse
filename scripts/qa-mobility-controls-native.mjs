@@ -30,12 +30,14 @@ try{
  const point=async(name,id)=>{const b=page.getByRole('button',{name,exact:true});await b.scrollIntoViewIfNeeded();const r=await b.boundingBox();assert(r);return {id,x:r.x+r.width/2,y:r.y+r.height/2};};
  const forward=await point('Avancer',1),left=await point('Gauche',2);
  const touch=(type,touchPoints)=>client.send('Input.dispatchTouchEvent',{type,touchPoints});
- // CDP expects active contacts on touchMove; touchEnd is only for the final release.
- // https://github.com/ChromeDevTools/devtools-protocol/blob/master/pdl/domains/Input.pdl
+ // Chromium WebTouchEvent releases the listed points. Its synthetic-pointer path
+ // rejects that form and instead diffs the remaining active points on touchMove.
+ // https://github.com/chromium/chromium/blob/main/content/browser/devtools/protocol/input_handler.cc
+ const release=async(point,remaining)=>{try{await touch('touchEnd',[point]);report.touchTransport='WebTouchEvent: listed released IDs';}catch(error){if(!String(error).includes('must not have any touch points'))throw error;await touch('touchMove',remaining);report.touchTransport='SyntheticPointerAction: remaining active IDs';}};
  // Two independent contacts, both processed by React pointer handlers.
  await touch('touchStart',[forward,left]);await page.waitForTimeout(350);const turning=await state();
  check('two native touch contacts accelerate and turn',Number(turning.speed)>5&&Number(turning.heading)<-.05);
- await touch('touchMove',[forward]);await page.waitForTimeout(350);const released=await state();
+ await release(left,[forward]);await page.waitForTimeout(350);const released=await state();
  report.firstTouchObservation={turning,released,events:await page.evaluate(()=>window.__mobilityTouchTrace)};
  check('lifting steering finger preserves forward contact',Number(released.speed)>Number(turning.speed)&&Math.abs(Number(released.heading)-Number(turning.heading))<.2&&report.firstTouchObservation.events.some(e=>e.type==='pointerup'&&e.label==='Gauche'&&e.trusted)&&!report.firstTouchObservation.events.some(e=>e.type==='pointerup'&&e.label==='Avancer'));
  await touch('touchEnd',[]);await click('Pause et enregistrer');
@@ -45,7 +47,7 @@ try{
  const f2=await point('Avancer',1),r2=await point('Reculer',3);
  await touch('touchStart',[f2,r2]);await page.waitForTimeout(200);
  check('opposed simultaneous touches stay neutral from rest',Math.abs(Number((await state()).speed))<.001);
- await touch('touchMove',[f2]);await page.waitForTimeout(300);
+ await release(r2,[f2]);await page.waitForTimeout(300);
  check('lifting reverse restores the still-held forward contact',Number((await state()).speed)>5);
  // Pause while a contact remains physically down. Its eventual release must be harmless.
  await click('Pause et enregistrer');await touch('touchEnd',[]);await click('Reprendre la conduite');await page.waitForTimeout(1100);
