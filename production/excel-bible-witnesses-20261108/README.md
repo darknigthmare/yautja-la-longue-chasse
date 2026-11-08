@@ -113,6 +113,14 @@ suivies dans le [reçu des correctifs CI](qa/ci-fixes/verification.json).
 Ce reçu complète la photographie locale initiale et documente la régénération
 du relevé courant après modification des recettes concernées.
 
+Le [reçu d’intégration du banc spatial](qa/spatial-host/verification.json)
+documente ensuite le passage du seul hôte photographique à Vite/React compilé
+pour la production. Les 152 tests ciblés repassent dans l’arbre de l’audience ;
+les sources du jeu, les critères de capture et l’inventaire courant sont
+conservés. Son effet sur le délai natif doit être mesuré par la CI de la
+nouvelle tête publiée. Le [diagnostic du banc](../qa/evidence/spatial-host-production-20261108/README.md)
+conserve les échecs antérieurs et les limites de cette correction.
+
 Le complément de suivi se trouve dans
 [Yautja_Audience_C37_20261108.xlsx](suivi/Yautja_Audience_C37_20261108.xlsx).
 Il conserve séparément l’implémentation, les tests de logique, le rendu serveur,
