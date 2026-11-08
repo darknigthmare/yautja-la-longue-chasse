@@ -43,6 +43,7 @@ const bundle=await build({absWorkingDir:root,entryPoints:['tests/browser/hunt-li
     'import {normalizePlanetInsertionPlan,settleExpeditionOutcome} from "./systems/planetInsertion";\n'+
     'import {isShipId} from "./shipCatalogue";\n'+
     'import {settleClanShipMission} from "./systems/clanShipOperations";\n'+
+    'import {settleCompanionResidenceMission} from "./systems/companionResidence";\n'+
     'import {deliverHarvestV112,startConservationV112,workConservationV112,repairFieldToolV112,pauseConservationV112,resumeConservationV112,archiveMountedSpecimenV112} from "./systems/harvestInventoryV112";\n'+
     'export function makeGameClientCallbacksV112(h){\n'+
     'const {saveRef,sessionAliveRef,setSave,setScreen,setToast,setSaveFailure,setLastResult,clearHuntSession}=h;\n'+
