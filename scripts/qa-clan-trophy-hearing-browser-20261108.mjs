@@ -131,7 +131,7 @@ try {
       await page.locator('.toast[role="status"]').waitFor({ state: 'detached' });
       // Scroll only the page's room viewport; never pan the clipped game world
       // or change CSS to manufacture a complete actor for the screenshot.
-      await roomViewport.scrollIntoViewIfNeeded();
+      await roomViewport.evaluate(viewport => viewport.scrollIntoView({ block: 'center', inline: 'nearest', behavior: 'instant' }));
       const framing = async () => page.evaluate(({ witnessId, roomId }) => {
         const scene = document.querySelector('[data-clan-interior]');
         const viewport = scene?.querySelector('[data-interior-viewport]');

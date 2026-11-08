@@ -64,3 +64,29 @@ qualifie ni l'autoplay, ni une manette physique, ni une campagne intégrale.
 Le classeur initial et les reçus antérieurs restent inchangés. Ils ne reçoivent
 aucun résultat rétroactif. Ce complément ne clôture pas globalement OPS-B03 ou
 OPS-Q26 et ne reprend pas les chantiers parallèles OPS-B04 ou R2-M027.
+
+## Échec natif conservé et correction du défilement
+
+La première exécution de ce complément sur `5edd59df` a échoué ; le
+[reçu compact](native-5edd59df-failure.json) conserve l'identité de la révision,
+du [run et du job](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/42519093169/job/128848433973),
+les empreintes de l'archive et du rapport ainsi que les rectangles exacts.
+Les formats 1440 et 390 ont chacun terminé leurs 14 contrôles. Le format 320
+en avait terminé 11, dont la reprise après clôture et la réouverture sans gain,
+avant le refus de sa première capture de poste : 39 contrôles réussis, 10 PNG,
+mais une recette globale en échec.
+
+Le sprite et le libellé de Balafre étaient entièrement cadrés. Le viewport de
+scène allait cependant de `388.421875` à `740.421875` dans une fenêtre haute de
+`740` pixels. Son bord inférieur dépassait donc de `0.421875` pixel après
+`scrollIntoViewIfNeeded()`. Le contrôle strict a correctement refusé cette
+capture ; les deux captures de postes à 320 pixels n'ont pas été produites.
+
+La correction centre explicitement le viewport dans la page avec
+`scrollIntoView({ block: 'center', inline: 'nearest', behavior: 'instant' })`.
+Elle crée de vraies marges de cadrage. Elle ne change ni la caméra du jeu, ni
+la taille du viewport, ni les styles, ni les données, ni les comparaisons exactes
+des rectangles. Aucun arrondi, tolérance ou délai arbitraire n'est ajouté.
+
+Cette correction exige une nouvelle exécution native. Elle ne transforme pas
+l'échec de `5edd59df` en réussite et n'étend pas la portée de ses dix images.
