@@ -23,6 +23,9 @@ on:
       - .github/workflows/mobility-publish-source-20261108.yml
 permissions:
   contents: read
+defaults:
+  run:
+    shell: bash
 concurrency:
   group: mobility-validation-${{ github.ref }}
   cancel-in-progress: true
@@ -73,6 +76,8 @@ jobs:
         run: |
           node --test --test-concurrency=1 tests/mobility-core.test.mjs tests/mobility-integration.test.mjs tests/mobility-hardening.test.mjs tests/clan-ship-operations-save.test.mjs | tee outputs/mobility-validation/targeted-tests.tap
           node node_modules/typescript/bin/tsc -p tests/mobility/tsconfig.json
+      - name: Verify the QA driver against unchanged real simulation
+        run: node --test tests/mobility-qa-driver.test.mjs | tee outputs/mobility-validation/qa-driver-tests.tap
       - name: Install native Chromium from the locked package
         run: node node_modules/playwright-core/cli.js install --with-deps chromium
       - name: Exercise the actual garage component and persistent driving course

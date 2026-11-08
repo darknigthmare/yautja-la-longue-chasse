@@ -5,6 +5,7 @@ import path from 'node:path';
 import http from 'node:http';
 import {execFileSync} from 'node:child_process';
 import {chromium} from 'playwright-core';
+import {mobilityQaGuidance} from './mobility-qa-driver.mjs';
 const root=process.cwd(), out=path.join(root,'outputs/qa-mobility-native');
 fs.mkdirSync(out,{recursive:true});
 const report={scope:'Native component with actual reducer, campaign writer and localStorage. Test funding and adult rank are declared fixture inputs; not a complete GameClient/Homeworld journey.',checks:[],errors:[],screenshots:[],passed:false,sourceCommit:process.env.MOBILITY_QA_COMMIT??execFileSync('git',['rev-parse','HEAD'],{encoding:'utf8'}).trim()};
@@ -39,23 +40,19 @@ try{
  const bindings=(await stored()).settings.controlBindings;
  const [up,left,right,brake,interact]=['hunt.moveUp','hunt.moveLeft','hunt.moveRight','hunt.jump','hunt.interact'].map(k=>bindings[k][0]);
  await click('Reprendre la conduite');
- const points=[[820,490],[820,130],[820,24],[140,24],[140,130],[140,490]];
  let stage=0,held=new Set(),samples=0;const started=Date.now();
  while(Date.now()-started<150000){
   const s=await yard.evaluate(e=>Object.fromEntries(['x','y','heading','speed','tick','checkpoint','cargo','paused'].map(k=>[k,e.getAttribute('data-'+k)])));
-  const [x,y,h,speed]=['x','y','heading','speed'].map(k=>Number(s[k]));
-  const [tx,ty]=points[stage],distance=Math.hypot(tx-x,ty-y),error=Math.atan2(Math.sin(Math.atan2(ty-y,tx-x)-h),Math.cos(Math.atan2(ty-y,tx-x)-h));const want=new Set();
-  if(distance<(stage===2||stage===3?13:32)){
-   want.add(brake);
-   if(Math.abs(speed)<5){
-    if(stage===1||stage===5)want.add(interact);
+  const observation=Object.fromEntries(['x','y','heading','speed'].map(k=>[k,Number(s[k])]));
+  const g=mobilityQaGuidance(observation,stage), want=new Set();
+  if(g.throttle)want.add(up);
+  if(g.steer)want.add(g.steer>0?right:left);
+  if(g.brake)want.add(brake);
+  if(g.interact)want.add(interact);
+  if(g.advance){
     if(stage===1){if(Number(s.cargo)===25)stage++;}
     else if(stage===5){if((await stored()).mobilityV1.active.course.cargoDelivered)break;}
     else stage++;
-   }
-  }else{
-   if(Math.abs(error)>.04)want.add(error>0?right:left);
-   if(Math.abs(error)<.4)want.add(up);else if(Math.abs(speed)>12)want.add(brake);
   }
   for(const key of held)if(!want.has(key))await page.keyboard.up(key);
   for(const key of want)if(!held.has(key))await page.keyboard.down(key);
