@@ -25,15 +25,19 @@ try{
  const state=()=>page.locator('[data-mobility-yard]').evaluate(e=>Object.fromEntries(['x','y','speed','heading','tick','paused'].map(k=>[k,e.getAttribute('data-'+k)])));
  const stored=()=>page.evaluate(()=>JSON.parse(localStorage.getItem('yautja-long-hunt.save')));
  await click('Prendre le Grav-Sled de formation');await click('Reprendre la conduite');
+ await page.evaluate(()=>{window.__mobilityTouchTrace=[];for(const type of ['pointerdown','pointerup','pointercancel','lostpointercapture'])document.addEventListener(type,event=>{if(event.pointerType==='touch'&&window.__mobilityTouchTrace.length<100)window.__mobilityTouchTrace.push({type:event.type,id:event.pointerId,label:event.target.closest?.('button')?.getAttribute('aria-label')??'',trusted:event.isTrusted});},true);});
  const client=await context.newCDPSession(page);
  const point=async(name,id)=>{const b=page.getByRole('button',{name,exact:true});await b.scrollIntoViewIfNeeded();const r=await b.boundingBox();assert(r);return {id,x:r.x+r.width/2,y:r.y+r.height/2};};
- const forward=await point('Avancer',1),left=await point('Gauche',2),reverse=await point('Reculer',3);
+ const forward=await point('Avancer',1),left=await point('Gauche',2);
  const touch=(type,touchPoints)=>client.send('Input.dispatchTouchEvent',{type,touchPoints});
+ // CDP expects active contacts on touchMove; touchEnd is only for the final release.
+ // https://github.com/ChromeDevTools/devtools-protocol/blob/master/pdl/domains/Input.pdl
  // Two independent contacts, both processed by React pointer handlers.
  await touch('touchStart',[forward,left]);await page.waitForTimeout(350);const turning=await state();
- check('two physical touch contacts accelerate and turn',Number(turning.speed)>5&&Number(turning.heading)<-.05);
- await touch('touchEnd',[forward]);await page.waitForTimeout(350);const released=await state();
- check('lifting steering finger preserves forward contact',Number(released.speed)>Number(turning.speed)&&Math.abs(Number(released.heading)-Number(turning.heading))<.2);
+ check('two native touch contacts accelerate and turn',Number(turning.speed)>5&&Number(turning.heading)<-.05);
+ await touch('touchMove',[forward]);await page.waitForTimeout(350);const released=await state();
+ report.firstTouchObservation={turning,released,events:await page.evaluate(()=>window.__mobilityTouchTrace)};
+ check('lifting steering finger preserves forward contact',Number(released.speed)>Number(turning.speed)&&Math.abs(Number(released.heading)-Number(turning.heading))<.2&&report.firstTouchObservation.events.some(e=>e.type==='pointerup'&&e.label==='Gauche'&&e.trusted)&&!report.firstTouchObservation.events.some(e=>e.type==='pointerup'&&e.label==='Avancer'));
  await touch('touchEnd',[]);await click('Pause et enregistrer');
  const stable=(await stored()).mobilityV1.active.course.tick;await page.waitForTimeout(150);
  check('pause commits and freezes the real course',(await stored()).mobilityV1.active.course.tick===stable);
@@ -41,7 +45,7 @@ try{
  const f2=await point('Avancer',1),r2=await point('Reculer',3);
  await touch('touchStart',[f2,r2]);await page.waitForTimeout(200);
  check('opposed simultaneous touches stay neutral from rest',Math.abs(Number((await state()).speed))<.001);
- await touch('touchEnd',[f2]);await page.waitForTimeout(300);
+ await touch('touchMove',[f2]);await page.waitForTimeout(300);
  check('lifting reverse restores the still-held forward contact',Number((await state()).speed)>5);
  // Pause while a contact remains physically down. Its eventual release must be harmless.
  await click('Pause et enregistrer');await touch('touchEnd',[]);await click('Reprendre la conduite');await page.waitForTimeout(1100);
