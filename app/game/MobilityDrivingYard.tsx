@@ -3,6 +3,7 @@
 import {useEffect,useRef,useState} from 'react';
 import type {ControlBindings,ControlActionId} from './systems/controlBindings';
 import {matchingControlActions} from './systems/controlBindings';
+import {MobilityHeldControls,MobilityPadGate,type MobilityControl} from './systems/mobility/controls';
 import {controlActionShortcut} from './controlBindingLabels';
 import {mobilityDefinition} from './systems/mobility/catalogue';
 import {COURSE_STEP,COURSE_MAX_TICKS,MOBILITY_YARD,mobilityYardNpcs,parkedAtDepot,type MobilityInput} from './systems/mobility/course';
@@ -10,31 +11,36 @@ import {MobilityDriveController,type MobilityWriter} from './systems/mobility/co
 import type {MobilityLedger} from './systems/mobility/ledger';
 import type {GameSfxId} from './sound';
 import styles from './MobilityGarage.module.css';
-const idle=():MobilityInput=>({throttle:0,steer:0,brake:false,boost:false,interact:false});
+const actionControls:Partial<Record<ControlActionId,MobilityControl>>={
+ 'hunt.moveUp':'forward','hunt.moveDown':'reverse','hunt.moveLeft':'left','hunt.moveRight':'right',
+ 'hunt.jump':'brake','hunt.aim':'boost','hunt.interact':'interact',
+};
 interface Props {state:MobilityLedger;bindings:ControlBindings;suspended:boolean;onCommand:MobilityWriter;onSound?:(id:GameSfxId)=>void}
 export default function MobilityDrivingYard(props:Props){
  const [controller]=useState(()=>new MobilityDriveController(props.state));
- const [course,setCourse]=useState(controller.predicted),[paused,setPaused]=useState(true),[notice,setNotice]=useState(controller.message),[recovery,setRecovery]=useState(false);
- const latest=useRef(props),pauseRef=useRef(true),held=useRef(new Set<ControlActionId>()),touch=useRef(idle()),canvasRef=useRef<SVGSVGElement|null>(null);
+ const [course,setCourse]=useState(controller.predicted),[paused,setPaused]=useState(true),[notice,setNotice]=useState(controller.message),[recovery,setRecovery]=useState(false),[padNeutral,setPadNeutral]=useState(false);
+ const latest=useRef(props),pauseRef=useRef(true),held=useRef(new MobilityHeldControls()),padGate=useRef(new MobilityPadGate()),neutralRef=useRef(false),canvasRef=useRef<SVGSVGElement|null>(null);
  const model=mobilityDefinition(props.state.active!.modelId)!;
  useEffect(()=>{latest.current=props;},[props]);
- const clear=()=>{held.current.clear();touch.current=idle();};
+ const clear=()=>{held.current.clear();padGate.current.reset();neutralRef.current=false;setPadNeutral(false);};
  const flush=()=>{const ok=controller.flush(latest.current.onCommand);setCourse({...controller.predicted});if(!ok){pauseRef.current=true;setPaused(true);setNotice(controller.message);}return ok;};
  const pause=()=>{pauseRef.current=true;setPaused(true);clear();flush();};
  useEffect(()=>{
   let frame=0,last=0,accumulator=0,lastPaint=0;
   const flushNow=()=>{const ok=controller.flush(latest.current.onCommand);if(!ok){pauseRef.current=true;setPaused(true);setNotice(controller.message);}setCourse({...controller.predicted});return ok;};
-  const halt=()=>{pauseRef.current=true;setPaused(true);held.current.clear();touch.current=idle();accumulator=0;flushNow();};
+  const halt=()=>{pauseRef.current=true;setPaused(true);held.current.clear();padGate.current.reset();neutralRef.current=false;setPadNeutral(false);accumulator=0;flushNow();};
   const key=(event:KeyboardEvent,down:boolean)=>{
+   const source=`key:${event.code || event.key}`;
+   // Release even over editable controls or while suspended; otherwise keys stick.
+   if(!down){held.current.release(source);return;}
    if(event.defaultPrevented || latest.current.suspended)return;
    const target=event.target as HTMLElement|null;
-   if(target?.matches('input,textarea,select'))return;
+   if(target?.closest('input,textarea,select,[contenteditable="true"]'))return;
    const actions=matchingControlActions('hunt',event,latest.current.bindings);
-   if(actions.includes('hunt.pause')){if(down&&!event.repeat){event.preventDefault();halt();}return;}
-   if(actions.some(a=>['hunt.moveUp','hunt.moveDown','hunt.moveLeft','hunt.moveRight','hunt.jump','hunt.aim','hunt.interact'].includes(a))){
-    if(down&&pauseRef.current)return;
-    event.preventDefault();for(const action of actions)down?held.current.add(action):held.current.delete(action);
-   }
+   if(actions.includes('hunt.pause')){if(!event.repeat){event.preventDefault();halt();}return;}
+   const controls=actions.map(a=>actionControls[a]).filter((c):c is MobilityControl=>Boolean(c));
+   if(controls.length&&!pauseRef.current){event.preventDefault();held.current.press(source,controls);}
+
   };
   const down=(e:KeyboardEvent)=>key(e,true),up=(e:KeyboardEvent)=>key(e,false);
   const visibility=()=>{if(document.hidden)halt();};
@@ -48,15 +54,11 @@ export default function MobilityDrivingYard(props:Props){
    if(pauseRef.current||controller.blocked){accumulator=0;return;}
    const current=latest.current.state;
    if(current.ownerCreatedAt!==controller.confirmed.ownerCreatedAt||current.revision>controller.confirmed.revision){halt();setNotice('Registre actualisé ailleurs : relis la sortie sauvegardée avant de reprendre.');controller.blocked=true;return;}
-   const pads=navigator.getGamepads?.()??[],pad=Array.from(pads).find(p=>p?.connected&&p.mapping==='standard');
-   const input:MobilityInput={
-    throttle:touch.current.throttle || (held.current.has('hunt.moveUp')?1:held.current.has('hunt.moveDown')?-1:pad&&pad.axes[1]<-.25?1:pad&&pad.axes[1]>.25?-1:0),
-    steer:touch.current.steer || (held.current.has('hunt.moveLeft')?-1:held.current.has('hunt.moveRight')?1:pad&&pad.axes[0]<-.25?-1:pad&&pad.axes[0]>.25?1:0),
-    brake:touch.current.brake||held.current.has('hunt.jump')||Boolean(pad?.buttons[0]?.pressed),
-    boost:touch.current.boost||held.current.has('hunt.aim')||Boolean(pad?.buttons[7]?.pressed),
-    interact:touch.current.interact||held.current.has('hunt.interact')||Boolean(pad?.buttons[2]?.pressed),
-   };
-   if(pad?.buttons[9]?.pressed){halt();return;}
+   let pads:(Gamepad|null)[]=[];try{pads=Array.from(navigator.getGamepads?.()??[]);}catch{/* Unavailable input cannot keep a drive command alive. */}
+   const sample=padGate.current.sample(pads);
+   if(neutralRef.current!==sample.waitingForNeutral){neutralRef.current=sample.waitingForNeutral;setPadNeutral(neutralRef.current);}
+   if(sample.pauseRequested){halt();setNotice('Manette interrompue ou pause demandée : sortie enregistrée.');return;}
+   const input:MobilityInput=held.current.resolve(sample.input);
    accumulator+=elapsed;
    let steps=0;
    while(accumulator>=COURSE_STEP&&steps++<6){
@@ -83,12 +85,12 @@ export default function MobilityDrivingYard(props:Props){
   setNotice(result.message);setRecovery(false);
  };
  const resume=()=>{if(props.suspended||!flush()||controller.predicted.tick>=COURSE_MAX_TICKS)return;clear();pauseRef.current=false;setPaused(false);setNotice('Conduite active · l’usure et la charge sont sauvegardées.');canvasRef.current?.focus();};
- const control=(label:string,field:'throttle'|'steer'|'brake'|'boost'|'interact',value:number|boolean)=>
-  <button key={label} type="button" disabled={props.suspended||paused} aria-label={label}
-   onPointerDown={e=>{e.preventDefault();e.currentTarget.setPointerCapture(e.pointerId);Object.assign(touch.current,{[field]:value});}}
-   onPointerUp={()=>Object.assign(touch.current,{[field]:typeof value==='boolean'?false:0})}
-   onPointerCancel={()=>Object.assign(touch.current,{[field]:typeof value==='boolean'?false:0})}
-   onLostPointerCapture={()=>Object.assign(touch.current,{[field]:typeof value==='boolean'?false:0})}>{label}</button>;
+ const control=(label:string,control:MobilityControl)=>
+  <button key={label} type="button" disabled={props.suspended||paused||controller.blocked} aria-label={label}
+   onPointerDown={e=>{if(paused||pauseRef.current||props.suspended||controller.blocked)return;e.preventDefault();e.currentTarget.setPointerCapture(e.pointerId);held.current.press(`pointer:${e.pointerId}`,[control]);}}
+   onPointerUp={e=>held.current.release(`pointer:${e.pointerId}`)}
+   onPointerCancel={e=>held.current.release(`pointer:${e.pointerId}`)}
+   onLostPointerCapture={e=>held.current.release(`pointer:${e.pointerId}`)}>{label}</button>;
  const npcs=mobilityYardNpcs(course.npcTicks,course);
  return <section className={styles.yard} data-mobility-yard data-run-id={props.state.active!.id} data-x={course.x.toFixed(4)} data-y={course.y.toFixed(4)} data-heading={course.heading.toFixed(5)} data-speed={course.speed.toFixed(3)} data-tick={course.tick} data-paused={paused} data-checkpoint={course.checkpoint} data-cargo={course.cargoKg}>
   <div className={styles.heading}><div><small>AIRE DES CONVOIS · SORTIE ENREGISTRÉE</small><h3>{model.name}{props.state.active!.loaned?' · prêt de formation':''}</h3></div><strong>{paused?'EN PAUSE':'EN CONDUITE'}</strong></div>
@@ -122,8 +124,9 @@ export default function MobilityDrivingYard(props:Props){
   </div>
   {recovery&&<div role="alert" className={styles.notice}><p>Le clan récupère l’engin sans récompense. L’usure et l’énergie consommée restent enregistrées. Un engin personnel entraîne une dette de 20 à 120 marques ; le prêt de formation est récupéré sans frais.</p><button onClick={()=>finish('recover')} disabled={props.suspended}>Confirmer la récupération</button><button onClick={()=>setRecovery(false)}>Annuler</button></div>}
   {controller.blocked&&<div role="alert" className={styles.notice}><p>La séquence non confirmée est conservée. Aucun achat n’est autorisé pendant ce blocage.</p><button onClick={flush} disabled={props.suspended}>Réessayer la même écriture</button></div>}
+  {padNeutral&&<p role="status" className={styles.notice}>Relâche le stick et les boutons de la manette avant de reprendre son contrôle.</p>}
   <p role="status" aria-live="polite">{notice}</p>
-  <details><summary>Commandes clavier, tactile et manette standard</summary><p>Avancer : {controlActionShortcut('hunt.moveUp',props.bindings)} · Reculer : {controlActionShortcut('hunt.moveDown',props.bindings)} · Direction : {controlActionShortcut('hunt.moveLeft',props.bindings)} / {controlActionShortcut('hunt.moveRight',props.bindings)} · Frein : {controlActionShortcut('hunt.jump',props.bindings)} · Boost : {controlActionShortcut('hunt.aim',props.bindings)} · Charger/décharger : {controlActionShortcut('hunt.interact',props.bindings)}. Manette : stick gauche, A frein, RT boost, X chargement, Start pause. Aucun raccourci sauvegardé n’est remplacé.</p></details>
-  <div className={styles.touch} aria-label="Commandes tactiles de conduite">{control('Gauche','steer',-1)}{control('Avancer','throttle',1)}{control('Droite','steer',1)}{control('Reculer','throttle',-1)}{control('Freiner','brake',true)}{control('Boost','boost',true)}{control('Charger / décharger','interact',true)}</div>
+  <details><summary>Commandes clavier, tactile et manette standard</summary><p>Avancer : {controlActionShortcut('hunt.moveUp',props.bindings)} · Reculer : {controlActionShortcut('hunt.moveDown',props.bindings)} · Direction : {controlActionShortcut('hunt.moveLeft',props.bindings)} / {controlActionShortcut('hunt.moveRight',props.bindings)} · Frein : {controlActionShortcut('hunt.jump',props.bindings)} · Boost : {controlActionShortcut('hunt.aim',props.bindings)} · Charger/décharger : {controlActionShortcut('hunt.interact',props.bindings)}. Manette : stick gauche, A frein, RT boost, X chargement, Start pause. Après reconnexion ou reprise, relâcher les commandes de la manette ; sa déconnexion après utilisation met la conduite en pause. Les directions opposées au clavier ou au tactile se neutralisent. Aucun raccourci sauvegardé n’est remplacé.</p></details>
+  <div className={styles.touch} aria-label="Commandes tactiles de conduite">{control('Gauche','left')}{control('Avancer','forward')}{control('Droite','right')}{control('Reculer','reverse')}{control('Freiner','brake')}{control('Boost','boost')}{control('Charger / décharger','interact')}</div>
  </section>;
 }

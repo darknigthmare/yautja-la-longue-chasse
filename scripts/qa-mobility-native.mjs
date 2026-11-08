@@ -64,6 +64,8 @@ try{
  check('three ordered gates and real cargo return',completed.checkpoint===3&&completed.cargoDelivered);await shot('yard-completed.png');await click('Remiser au garage');
  let save=await stored();check('permit awards no property rank or currency',save.mobilityV1.circulationPermit&&save.mobilityV1.owned.length===0&&save.profile.clanMarks===10000&&save.profile.rankId==='blooded');
  await click('Confirmer l’achat · 420 marques');save=await stored();check('purchase debited exactly once',save.profile.clanMarks===9580&&save.mobilityV1.owned.length===1);
+ check('four upgrade previews show the seven actual derived statistics',await page.locator('[data-upgrade-preview]').count()===4&&await page.locator('[data-upgrade-preview] dt').count()===28);
+ await page.setViewportSize({width:390,height:844});check('owned upgrade view has no mobile overflow',await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+2));await shot('garage-upgrades-mobile.png');await page.setViewportSize({width:1440,height:1040});
  await click('Installer · 80 marques');save=await stored();check('drive upgrade persisted',save.profile.clanMarks===9500&&save.mobilityV1.owned[0].upgrades.drive===1);
  const before=JSON.stringify(save.mobilityV1);await page.reload({waitUntil:'networkidle'});await page.locator('[data-mobility-garage]').waitFor();check('reload preserves exact ledger',JSON.stringify((await stored()).mobilityV1)===before);
  await click('Sortir sur l’aire');await click('Reprendre la conduite');await page.keyboard.down(up);await page.waitForTimeout(1300);await page.keyboard.up(up);await click('Pause et enregistrer');
