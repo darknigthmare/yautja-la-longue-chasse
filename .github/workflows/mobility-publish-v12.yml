@@ -1,0 +1,145 @@
+name: Mobility V1.2 earned Grav-Sled and native verification
+on:
+  push:
+    branches: [feat/mobility-garage-gameplay-20261108]
+    paths: [.github/workflows/mobility-publish-v12.yml]
+permissions:
+  contents: write
+concurrency:
+  group: mobility-v12-publication
+  cancel-in-progress: false
+jobs:
+  publish:
+    if: github.repository == 'darknigthmare/yautja-la-longue-chasse' && github.ref == 'refs/heads/feat/mobility-garage-gameplay-20261108'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    defaults:
+      run:
+        shell: bash
+    env:
+      ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
+      NEXT_TELEMETRY_DISABLED: '1'
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 1
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /*
+            !/*/
+            /app/
+            /scripts/
+            /tests/
+            /types/
+            /desktop/
+            /db/
+            /drizzle/
+            /worker/
+            /build/
+            /.openai/hosting.json
+            /.github/workflows/
+            /docs/campagne/mobilite/
+            /production/mobility-20261108/
+            /production/homeworld-sectors-20261103/YAUTJA_MARCHE_MONTURES_CHENILS_20261103.xlsx
+            /public/**/*.json
+            /public/game/mobility/
+      - name: Import only the reviewed files with prior-blob conflict guards
+        run: |
+          python3 - <<'PY'
+          import hashlib,io,json,subprocess,urllib.request,zipfile
+          from pathlib import Path,PurePosixPath
+          url='https://d2ol7oe51mr4n9.cloudfront.net/user_3JHwJlNzgmcxQy32tjF7NiVZPuH/f46ce293-00e7-4894-a364-397ac6019c47.zip'
+          with urllib.request.urlopen(url,timeout=60) as response:data=response.read(367494)
+          assert len(data)==367493 and hashlib.sha256(data).hexdigest()=='400e6d155c33a1acfcab32f8993f0e0df835d2b8a0fc54acb82e0966938eb1a2'
+          mp='production/mobility-20261108/qa/delivery-v12.json'
+          allowed={'app/game/systems/mobility/ledger.ts','app/game/systems/mobility/controller.ts','app/game/MobilityGarage.tsx','tests/mobility-training-reward.test.mjs','scripts/qa-mobility-native.mjs','.github/workflows/mobility-publish-source-20261108.yml','production/mobility-20261108/Yautja_Mobilite_Gameplay_20261108.xlsx','production/mobility-20261108/workbook-manifest.json','scripts/verify-mobility-workbook.py','docs/campagne/mobilite/GAMEPLAY_GARAGE_V1.md','production/mobility-20261108/README.md','production/mobility-20261108/REPRISE_V1_2.md'}
+          blob=lambda b:hashlib.sha1(b'blob '+str(len(b)).encode()+b'\0'+b).hexdigest()
+          with zipfile.ZipFile(io.BytesIO(data)) as z:
+            assert z.testzip() is None and sum(i.file_size for i in z.infolist())<2_000_000
+            raw=z.read(mp);assert hashlib.sha256(raw).hexdigest()=='0db35813503c716e2768e38567d77f962bb7433458c8ae97d22c02fe59da2c61'
+            m=json.loads(raw);assert m['base_commit']=='cd641cedccb8d8a4332d35f1c2624822350b4c1b'
+            assert {e['path'] for e in m['files']}==allowed and set(z.namelist())==allowed|{mp}
+            outputs={mp:raw}
+            for e in m['files']:
+              p=Path(e['path']);body=z.read(e['path']);old=e['expected_previous_git_blob']
+              assert len(body)==e['bytes'] and hashlib.sha256(body).hexdigest()==e['sha256'] and blob(body)==e['git_blob_sha1']
+              assert (p.exists() and blob(p.read_bytes())==old) or (not p.exists() and old is None),'Concurrent change: '+str(p)
+              outputs[str(p)]=body
+            assert not Path(mp).exists()
+          for name,body in outputs.items():
+            p=Path(name);p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(body)
+          workflow='.github/workflows/mobility-publish-v12.yml';Path(workflow).unlink()
+          paths=allowed|{mp,workflow}
+          subprocess.run(['git','add','--sparse','--',*sorted(paths)],check=True)
+          actual=set(filter(None,subprocess.check_output(['git','diff','--cached','--name-only','-z']).decode().split('\0')))
+          assert actual==paths and len(actual)==14
+          subprocess.run(['git','diff','--cached','--check'],check=True)
+          PY
+      - name: Create local source revision, not yet published
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -m 'feat(mobilite): remise gagnee du Grav-Sled, flotte et Excel V1.2'
+          mkdir -p outputs/mobility-v12
+          git rev-parse HEAD > outputs/mobility-v12/source-commit.txt
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22.16.0'
+      - run: npm ci --ignore-scripts --no-audit --no-fund
+      - name: Verify canonical roster, workbook and complete TypeScript graph
+        run: |
+          node scripts/sync-mobility-catalogue.mjs --check | tee outputs/mobility-v12/catalogue-report.json
+          python3 scripts/verify-mobility-workbook.py | tee outputs/mobility-v12/workbook-report.json
+          npm run typecheck | tee outputs/mobility-v12/typecheck.txt
+      - name: Run all 200 regression tests without omissions
+        run: |
+          node --test --test-concurrency=1 tests/mobility-core.test.mjs tests/mobility-integration.test.mjs tests/mobility-hardening.test.mjs tests/mobility-controls-workshop.test.mjs tests/mobility-build-boundary.test.mjs tests/mobility-training-reward.test.mjs tests/mobility-qa-driver.test.mjs tests/clan-ship-operations-save.test.mjs | tee outputs/mobility-v12/tests.tap
+          grep -qx '# tests 200' outputs/mobility-v12/tests.tap
+          grep -qx '# pass 200' outputs/mobility-v12/tests.tap
+          grep -qx '# fail 0' outputs/mobility-v12/tests.tap
+          node node_modules/typescript/bin/tsc -p tests/mobility/tsconfig.json
+      - name: Install locked native browser
+        run: node node_modules/playwright-core/cli.js install --with-deps chromium
+      - name: Exercise earned ownership and controls through the actual component
+        run: |
+          node scripts/build-mobility-browser-fixture.mjs
+          MOBILITY_QA_COMMIT=$(git rev-parse HEAD) node scripts/qa-mobility-native.mjs
+          MOBILITY_QA_COMMIT=$(git rev-parse HEAD) node scripts/qa-mobility-controls-native.mjs
+          git diff --exit-code
+          git diff --cached --exit-code
+      - name: Preserve verified evidence and publish this branch only
+        run: |
+          python3 - <<'PY'
+          import hashlib,json,os,shutil,subprocess
+          from pathlib import Path
+          source=subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip()
+          target=Path('production/mobility-20261108/qa/native-v12');assert not target.exists();target.mkdir()
+          for name,count in [('browser-report.json',29),('controls-browser-report.json',12)]:
+            report=json.loads(Path('outputs/qa-mobility-native',name).read_text())
+            assert report['passed'] and report['sourceCommit']==source and len(report['checks'])==count and all(c['passed'] for c in report['checks'])
+          paths=list(Path('outputs/mobility-v12').glob('*'))+list(Path('outputs/qa-mobility-native').glob('*report.json'))+list(Path('outputs/qa-mobility-native').glob('*.png'))
+          assert len(paths)<=16 and all(p.is_file() and p.stat().st_size<4_000_000 for p in paths)
+          assert len({p.name for p in paths})==len(paths)
+          records=[]
+          for p in paths:
+            shutil.copyfile(p,target/p.name);records.append({'file':p.name,'bytes':p.stat().st_size,'sha256':hashlib.sha256(p.read_bytes()).hexdigest()})
+          report={'source_commit':source,'delivery_manifest_sha256':'0db35813503c716e2768e38567d77f962bb7433458c8ae97d22c02fe59da2c61','workflow_run':os.environ['GITHUB_RUN_ID'],'tests_passed':200,'native_checks_passed':29,'control_checks_passed':12,'full_typecheck_passed':True,'workbook_sheets':24,'formulas':780,'files':records,'scope':'Actual React component, reducer and writer; adult funding fixture, API gamepad, not full Homeworld journey or physical pad.'}
+          (target/'RESULT.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n')
+          subprocess.run(['git','add','--',str(target)],check=True)
+          actual=set(filter(None,subprocess.check_output(['git','diff','--cached','--name-only','-z']).decode().split('\0')))
+          assert all(p.startswith(str(target)+'/') for p in actual)
+          subprocess.run(['git','diff','--cached','--check'],check=True)
+          PY
+          git commit -m 'test(mobilite): preuves natives V1.2, remise et flotte independante [skip ci]'
+          git push origin HEAD:refs/heads/feat/mobility-garage-gameplay-20261108
+          git rev-parse HEAD
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: mobility-v12-publication-evidence
+          path: |
+            outputs/mobility-v12/
+            outputs/qa-mobility-native/*report.json
+            outputs/qa-mobility-native/*.png
+          retention-days: 7
