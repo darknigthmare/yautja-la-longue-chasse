@@ -78,7 +78,7 @@ jobs:
           PY
       - name: Exercise rules, saved transactions, controls and workshop regressions
         run: |
-          node --test --test-concurrency=1 tests/mobility-core.test.mjs tests/mobility-integration.test.mjs tests/mobility-hardening.test.mjs tests/mobility-controls-workshop.test.mjs tests/mobility-build-boundary.test.mjs tests/clan-ship-operations-save.test.mjs | tee outputs/mobility-validation/targeted-tests.tap
+          node --test --test-concurrency=1 tests/mobility-core.test.mjs tests/mobility-integration.test.mjs tests/mobility-hardening.test.mjs tests/mobility-controls-workshop.test.mjs tests/mobility-build-boundary.test.mjs tests/mobility-training-reward.test.mjs tests/clan-ship-operations-save.test.mjs | tee outputs/mobility-validation/targeted-tests.tap
           node node_modules/typescript/bin/tsc -p tests/mobility/tsconfig.json
       - name: Verify the QA driver against unchanged real simulation
         run: node --test tests/mobility-qa-driver.test.mjs | tee outputs/mobility-validation/qa-driver-tests.tap
