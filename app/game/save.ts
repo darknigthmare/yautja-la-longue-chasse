@@ -38,7 +38,8 @@ import { evaluateClanShipAccess, evaluateClanShipOperationsCampaign, inspectClan
 import { inspectWolfCastleVisit } from "./systems/wolfCastle";
 import { inspectBuriedCradleCampaign } from "./systems/buriedCradleCampaign";
 import { inspectCompanionResidence, evaluateCompanionResidenceCampaign } from "./systems/companionResidence";
-import { inspectClanShipIncidents, evaluateClanShipIncidentsCampaign } from "./systems/clanShipIncidents";
+import { inspectClanShipIncidents, evaluateClanShipIncidentsCampaign, evaluateClanShipTrophyHearingCampaign } from "./systems/clanShipIncidents";
+import { inspectClanShipTrophyHearing } from "./systems/clanShipTrophyHearing";
 import { inspectPlanetArrival } from "./systems/planetArrival";
 import { inspectPlanetArrivalRun } from "./systems/planetArrivalRun";
 import { expeditionTrioReady, inspectExpeditionRoster } from "./systems/planetInsertion";
@@ -1247,6 +1248,9 @@ export function normalizeSave(value: unknown): SaveGame {
     ...(source.clanShipIncidents === undefined ? {} : {
       clanShipIncidents: inspectClanShipIncidents(source.clanShipIncidents, validIsoDate(source.createdAt, fallback.createdAt)).state,
     }),
+    ...(source.clanShipTrophyHearing === undefined ? {} : {
+      clanShipTrophyHearing: inspectClanShipTrophyHearing(source.clanShipTrophyHearing, validIsoDate(source.createdAt, fallback.createdAt)).state,
+    }),
     missionProgress,
     trophies: normalizeTrophies(source.trophies),
     ...(source.gauntletV134 === undefined ? {} : {
@@ -1507,7 +1511,8 @@ function inspectSavePayload(value: unknown): SaveImportParseResult {
   const cradle = inspectBuriedCradleCampaign(value.buriedCradle, typeof value.createdAt === 'string' ? value.createdAt : '');
   const residence = inspectCompanionResidence(value.companionResidence, typeof value.createdAt === 'string' ? value.createdAt : '');
   const incidents = inspectClanShipIncidents(value.clanShipIncidents, typeof value.createdAt === 'string' ? value.createdAt : '');
-  for (const inspection of [castle, arrival, arrivalRun, expedition, shipEnergy, cradle, residence, incidents]) {
+  const trophyHearing = inspectClanShipTrophyHearing(value.clanShipTrophyHearing, typeof value.createdAt === 'string' ? value.createdAt : '');
+  for (const inspection of [castle, arrival, arrivalRun, expedition, shipEnergy, cradle, residence, incidents, trophyHearing]) {
     if (inspection.status === "future-version" || inspection.status === "invalid-save") {
       return { save: null, failure: inspection.status };
     }
@@ -1517,6 +1522,9 @@ function inspectSavePayload(value: unknown): SaveImportParseResult {
     return { save: null, failure: 'invalid-save' };
   }
   if (incidents.state && !evaluateClanShipIncidentsCampaign(incidents.state, value as unknown as SaveGame).allowed) {
+    return { save: null, failure: 'invalid-save' };
+  }
+  if (trophyHearing.state && !evaluateClanShipTrophyHearingCampaign(trophyHearing.state, value as unknown as SaveGame).allowed) {
     return { save: null, failure: 'invalid-save' };
   }
   if (cradle.state && (!evaluateClanShipAccess(value as unknown as Pick<SaveGame, 'prologue'>).allowed ||

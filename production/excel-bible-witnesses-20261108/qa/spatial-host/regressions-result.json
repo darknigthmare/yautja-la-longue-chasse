@@ -1,0 +1,33 @@
+{
+  "command": [
+    "node",
+    "--experimental-strip-types",
+    "--test",
+    "--test-reporter=spec",
+    "--test-concurrency=1",
+    "tests/planet-arrival-harness.test.mjs",
+    "tests/planet-arrival-observation.test.mjs",
+    "tests/planet-arrival-x11.test.mjs",
+    "tests/planet-arrival-spatial.test.mjs",
+    "tests/planet-arrival-presentation.test.mjs",
+    "tests/planet-arrival.test.mjs",
+    "tests/planet-arrival-audio.test.mjs",
+    "tests/planet-insertion.test.mjs",
+    "tests/ship-insertion-energy.test.mjs",
+    "tests/hunt-insertion.test.mjs"
+  ],
+  "exitCode": 0,
+  "durationSeconds": 10.036,
+  "completedAt": "2026-11-08T17:13:43.901503+00:00",
+  "log": "regressions.log.gz",
+  "rawBytes": 16214,
+  "rawSha256": "568817b4768a29411b1c756a2400638465afa29ca04cf55805620c37a19f6cc8",
+  "gzipSha256": "a02eb0925373cb46492ed03da0f73c5cd93c810a1321a014f727c09fe069100a",
+  "counts": {
+    "tests": 152,
+    "pass": 152,
+    "fail": 0,
+    "skipped": 0,
+    "cancelled": 0
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "fixtureValidationOnly": true,
+  "browserExecuted": false,
+  "fixtures": [
+    {
+      "id": "adult-aboard",
+      "filename": "initial-adult-aboard.json",
+      "disclosure": "Default adult campaign with boarding prepared by the docking reducer. No operations, rewards, contracts or crew are pre-completed.",
+      "ownerCreatedAt": "2026-11-05T09:00:00.000Z",
+      "sha256": "1de9533c5a12c2c1dc08ccac17e5a6303e1d19203e120d9b1663ee03729e5d0d"
+    },
+    {
+      "id": "six-crew-fixture",
+      "filename": "initial-six-crew-fixture.json",
+      "disclosure": "Synthetic historical fixture prepared by production reducers: onboarding, four internal contracts, jungle/ice field results and six legacy clan recruits, without a residence ledger. Those field hunts are NOT played by this browser recipe. No spatial victory or circle recognition is seeded.",
+      "ownerCreatedAt": "2026-11-05T10:00:00.000Z",
+      "sha256": "720400ecba38dbd0aa4adc6bf3ce55cc011c0b02269b99026e0b5e0b4f32646a"
+    }
+  ],
+  "checkoutCommit": "5d0c8d9202c15c1b15c2b613a779d0f2877c0406",
+  "workingTreeDirty": true
+}

@@ -288,24 +288,25 @@ export function canClanShipInteriorTransition(from: ClanShipRoomId, to: ClanShip
   return !!door && distance(door, point) <= CLAN_SHIP_INTERIOR_METRICS.interactionReach;
 }
 
-export interface ClanShipInteriorPadState { identity: string; ready: boolean; confirm: boolean; operations: boolean; back: boolean; start: boolean }
+export interface ClanShipInteriorPadState { identity: string; ready: boolean; confirm: boolean; operations: boolean; incidents: boolean; back: boolean; start: boolean }
 export interface ClanShipInteriorPadSample {
-  identity: string; x: number; y: number; confirm: boolean; operations?: boolean; back: boolean; start: boolean;
+  identity: string; x: number; y: number; confirm: boolean; operations?: boolean; incidents?: boolean; back: boolean; start: boolean;
 }
-export const freshClanShipInteriorPad = (): ClanShipInteriorPadState => ({ identity: '', ready: false, confirm: false, operations: false, back: false, start: false });
+export const freshClanShipInteriorPad = (): ClanShipInteriorPadState => ({ identity: '', ready: false, confirm: false, operations: false, incidents: false, back: false, start: false });
 
 /** A held pad cannot leak across boarding, doors, services or settings. Every
  * newly-owned input context first observes a complete neutral sample. */
 export function stepClanShipInteriorPad(before: ClanShipInteriorPadState, sample: ClanShipInteriorPadSample | null) {
-  const idle = { x: 0, y: 0, interact: false, operations: false, back: false, settings: false };
+  const idle = { x: 0, y: 0, interact: false, operations: false, incidents: false, back: false, settings: false };
   if (!sample?.identity || !finitePoint(sample)) return { state: freshClanShipInteriorPad(), ...idle };
   const state = before.identity === sample.identity ? before : { ...freshClanShipInteriorPad(), identity: sample.identity };
-  const neutral = Math.abs(sample.x) <= 0.2 && Math.abs(sample.y) <= 0.2 && !sample.confirm && !sample.operations && !sample.back && !sample.start;
-  const next = { identity: sample.identity, ready: state.ready || neutral, confirm: sample.confirm, operations: !!sample.operations, back: sample.back, start: sample.start };
+  const neutral = Math.abs(sample.x) <= 0.2 && Math.abs(sample.y) <= 0.2 && !sample.confirm && !sample.operations && !sample.incidents && !sample.back && !sample.start;
+  const next = { identity: sample.identity, ready: state.ready || neutral, confirm: sample.confirm, operations: !!sample.operations, incidents: !!sample.incidents, back: sample.back, start: sample.start };
   if (!state.ready) return { state: next, ...idle };
   const settings = sample.start && !state.start;
   const back = !settings && sample.back && !state.back;
-  const operations = !settings && !back && !!sample.operations && !state.operations;
+  const incidents = !settings && !back && !!sample.incidents && !state.incidents;
+  const operations = !settings && !back && !incidents && !!sample.operations && !state.operations;
   const axis = (value: number) => Math.abs(value) <= 0.2 ? 0 : Math.sign(value) * Math.min(1, (Math.abs(value) - 0.2) / 0.8);
-  return { state: next, x: axis(sample.x), y: axis(sample.y), settings, back, operations, interact: !settings && !back && !operations && sample.confirm && !state.confirm };
+  return { state: next, x: axis(sample.x), y: axis(sample.y), settings, back, operations, incidents, interact: !settings && !back && !operations && !incidents && sample.confirm && !state.confirm };
 }

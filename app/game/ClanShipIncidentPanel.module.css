@@ -36,4 +36,7 @@
 .card .success { color: #c0e5b9; border: 1px solid #5c7b55; border-radius: 6px; padding: 12px; }
 .card .latest { font-size: 12px; color: #b8c9bb; border-top: 1px solid #37493f; padding-top: 10px; }
 .status { color: #d6d9bd; font-size: 12px; line-height: 1.65; margin: 18px 0 0; }.failure { color: #efbca3; }
+.hearing { display: grid; gap: 8px; padding: 12px; border: 1px solid #718872; border-radius: 6px; background: #1c2e27; min-width: 0; }
+.hearing > strong { color: #e5d6a4; font-size: 13px; }.hearing ul { margin: 0; padding-left: 17px; color: #c6d9c2; font-size: 12px; line-height: 1.8; }
+.hearing p { color: #c5ceb9; font-size: 12px; }
 @media(max-width:600px) { .panel > summary { padding: 13px 12px; }.body { padding: 4px 12px 14px; }.card { padding: 13px; }.readings > div { grid-template-columns: 1fr; gap: 4px; }.panel > summary > span:last-child { max-width: 115px; text-align: right; font-size: 11px; } }

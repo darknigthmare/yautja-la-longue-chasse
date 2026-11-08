@@ -61,7 +61,8 @@ import { useHomeworldReducedMotionV77 } from "./useHomeworldReducedMotionV77";
 import { campaignWorldResumeV70 } from "./systems/campaignWorldResumeV70";
 import { actClanShipDocking, normalizeClanShipDocking, type ClanShipDockingAction } from "./systems/clanShipDocking";
 import { actClanShipOperations, bindClanShipMission, clanShipContract, createClanShipOperations, evaluateClanShipAccess, inspectClanShipOperations, releaseClanShipMissionBinding, settleClanShipMission, type ClanShipOperationsAction } from "./systems/clanShipOperations";
-import { actClanShipIncident, type ClanShipIncidentAction, type ClanShipIncidentObservation } from './systems/clanShipIncidents';
+import { actClanShipIncident, actClanShipTrophyHearing, type ClanShipIncidentAction, type ClanShipIncidentObservation } from './systems/clanShipIncidents';
+import type { ClanShipTrophyHearingAction } from './systems/clanShipTrophyHearing';
 import type { ClanShipService } from "./ClanShipHub";
 import { actBuriedCradleCampaign, evaluateBuriedCradleAccess, type CradleCampaignAction } from './systems/buriedCradleCampaign';
 import type { CradleReturnOperation, CradleReturnObservation } from './systems/buriedCradleReturn';
@@ -2166,7 +2167,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
 
   // City choices are acknowledged only after durable storage confirms the write.
   // A failed write must not announce a completed investigation or apply a reward.
-  const persistSocialProgress = useCallback((update: Partial<Pick<SaveGame, "prologue" | "buriedCradle" | "companionResidence" | "clanShipIncidents" | "inventory" | "profile" | "homeworld" | "justice" | "gameReserveV66" | "homeworldPassageV67" | "homeworldRegionV68" | "shipPreparationV88" | "shipAcquisitionV89" | "gauntletV134" | "clanShipDocking" | "clanShipOperations" | "wolfCastle" | "planetArrival" | "planetArrivalRun" | "expeditionRoster" | "shipInsertionEnergy">>): boolean => {
+  const persistSocialProgress = useCallback((update: Partial<Pick<SaveGame, "prologue" | "buriedCradle" | "companionResidence" | "clanShipIncidents" | "clanShipTrophyHearing" | "inventory" | "profile" | "homeworld" | "justice" | "gameReserveV66" | "homeworldPassageV67" | "homeworldRegionV68" | "shipPreparationV88" | "shipAcquisitionV89" | "gauntletV134" | "clanShipDocking" | "clanShipOperations" | "wolfCastle" | "planetArrival" | "planetArrivalRun" | "expeditionRoster" | "shipInsertionEnergy">>): boolean => {
     if (!sessionAliveRef.current) return false;
     const current = saveRef.current;
     if (pendingTrophyCommitRef.current) {
@@ -2176,7 +2177,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
       setToast("Termine la sauvegarde du résultat de chasse avant de poursuivre le dossier.");
       return false;
     }
-    const updateSerialized = JSON.stringify({ prologue: update.prologue, buriedCradle: update.buriedCradle, companionResidence: update.companionResidence, clanShipIncidents: update.clanShipIncidents, inventory: update.inventory, profile: update.profile, homeworld: update.homeworld, justice: update.justice, gameReserveV66: update.gameReserveV66, homeworldPassageV67: update.homeworldPassageV67, homeworldRegionV68: update.homeworldRegionV68, shipPreparationV88: update.shipPreparationV88, shipAcquisitionV89: update.shipAcquisitionV89, gauntletV134: update.gauntletV134, clanShipDocking: update.clanShipDocking, clanShipOperations: update.clanShipOperations, wolfCastle: update.wolfCastle, planetArrival: update.planetArrival, planetArrivalRun: update.planetArrivalRun, expeditionRoster: update.expeditionRoster, shipInsertionEnergy: update.shipInsertionEnergy });
+    const updateSerialized = JSON.stringify({ prologue: update.prologue, buriedCradle: update.buriedCradle, companionResidence: update.companionResidence, clanShipIncidents: update.clanShipIncidents, clanShipTrophyHearing: update.clanShipTrophyHearing, inventory: update.inventory, profile: update.profile, homeworld: update.homeworld, justice: update.justice, gameReserveV66: update.gameReserveV66, homeworldPassageV67: update.homeworldPassageV67, homeworldRegionV68: update.homeworldRegionV68, shipPreparationV88: update.shipPreparationV88, shipAcquisitionV89: update.shipAcquisitionV89, gauntletV134: update.gauntletV134, clanShipDocking: update.clanShipDocking, clanShipOperations: update.clanShipOperations, wolfCastle: update.wolfCastle, planetArrival: update.planetArrival, planetArrivalRun: update.planetArrivalRun, expeditionRoster: update.expeditionRoster, shipInsertionEnergy: update.shipInsertionEnergy });
     const pending = pendingSocialWriteRef.current;
     if (pending) {
       const recovered = reconcileSaveWrite(pending.attempt, current.createdAt);
@@ -2251,8 +2252,24 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
       setToast('Le solde ne permet pas de confirmer cette gratification. Le dossier reste disponible.'); return false;
     }
     if (result.changed && (!result.state || !persistSocialProgress({ clanShipIncidents: result.state,
+        ...(result.hearingState ? { clanShipTrophyHearing: result.hearingState } : {}),
         ...(reward > 0 ? { profile: { ...current.profile, clanMarks: current.profile.clanMarks + reward } } : {}),
     }))) return false;
+    setToast(result.message); return true;
+  }, [archiveRecoveryIssue, archiveTransferBusy, campaignSaveBusy, entry.ownerCreatedAt, gameFocusedV89,
+    persistSocialProgress, resumableHunt, screen, settingsOpen, trophyWorkshop]);
+
+  const commitClanShipTrophyHearing = useCallback((action: ClanShipTrophyHearingAction, observation: ClanShipIncidentObservation): boolean => {
+    const current = saveRef.current;
+    const active = sessionAliveRef.current && current.createdAt === entry.ownerCreatedAt && screen === 'clan-ship' &&
+      current.clanShipDocking?.status === 'aboard' && gameFocusedV89 && !settingsOpen && !trophyWorkshop &&
+      !archiveTransferBusy && !archiveRecoveryIssue && !campaignSaveBusy && !activeHuntSessionRef.current &&
+      !resumableHunt && !current.planetArrival &&
+      !(current.buriedCradle && ['active', 'suspended'].includes(current.buriedCradle.status));
+    if (!active) return false;
+    const result = actClanShipTrophyHearing(action, { save: current, active, observation });
+    if (!result.accepted) { setToast(result.message); return false; }
+    if (result.changed && (!result.state || !persistSocialProgress({ clanShipTrophyHearing: result.state }))) return false;
     setToast(result.message); return true;
   }, [archiveRecoveryIssue, archiveTransferBusy, campaignSaveBusy, entry.ownerCreatedAt, gameFocusedV89,
     persistSocialProgress, resumableHunt, screen, settingsOpen, trophyWorkshop]);
@@ -4596,7 +4613,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
                 onAction={commitClanShipAction}
                 onOperations={commitClanShipOperations}
                 companions={{ save, selectedShipId, ownedShipIds: loadShipProgression(save).unlockedShipIds, onAction: commitCompanionResidence }}
-                incidents={{ save, onAction: commitClanShipIncident }}
+                incidents={{ save, onAction: commitClanShipIncident, onHearingAction: commitClanShipTrophyHearing }}
                 onService={openClanShipService}
                 onExit={() => go("deck")}
                 onOpenSettings={() => setSettingsOpen(true)}

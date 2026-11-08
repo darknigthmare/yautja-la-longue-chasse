@@ -1,0 +1,422 @@
+{
+  "schemaVersion": 1,
+  "inspectedAt": "2026-11-08T17:44:59.501338+00:00",
+  "repository": "darknigthmare/yautja-la-longue-chasse",
+  "pullRequest": 129,
+  "workflow": {
+    "runId": 42504682012,
+    "jobId": 128804644550,
+    "conclusion": "success",
+    "stepNumber": 12,
+    "stepName": "Present C-37 to both witnesses and restore the hearing",
+    "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/42504682012/job/128804644550"
+  },
+  "sourceCommit": "bdc2b4af6d124519ac3539b6b1eef279d7b0bde7",
+  "checkoutCommit": "bdc2b4af6d124519ac3539b6b1eef279d7b0bde7",
+  "exactCheckoutVerified": true,
+  "qualification": "Native browser checks passed; six captures inspected with the visual limits recorded below.",
+  "functionalPassed": true,
+  "visualInspectionCompleted": true,
+  "artisticReviewComplete": false,
+  "scope": "Actual desktop GameClient and campaign persistence through Vite. The disclosed prerequisite fixture is not a full campaign playthrough.",
+  "archive": {
+    "file": "clan-c37-bdc2b4af.zip",
+    "artifactId": 13627751705,
+    "name": "clan-ship-browser-99275ecab10bae62ce8dcba20bbc536c5fb32d51",
+    "sizeBytes": 26841380,
+    "publishedDigest": "sha256:9cf45c7973bcefcca3480b7dbdc0a3ca8d27a2dcf0a1e081578cf7e850d48233",
+    "sha256": "9cf45c7973bcefcca3480b7dbdc0a3ca8d27a2dcf0a1e081578cf7e850d48233",
+    "digestVerified": true,
+    "entryCount": 49,
+    "uncompressedBytes": 27063685,
+    "safeExtraction": {
+      "absolutePathsRejected": true,
+      "parentTraversalRejected": true,
+      "backslashPathsRejected": true,
+      "duplicateEntriesRejected": true,
+      "symlinksRejected": true,
+      "preexistingFilesNotOverwritten": true,
+      "crcVerifiedOnEveryRead": true
+    },
+    "archivePreserved": true,
+    "downloadCount": 1
+  },
+  "sourceVerification": {
+    "method": "Read 14 app files, the C37 browser recipe and its fixture helper directly from the exact GitHub commit; verify each Git blob SHA-1 and decoded SHA-256; compare the 13 report hashes with the native browser result. All 16 files also match the prior verified source and final local equivalent commit.",
+    "publishedCommit": "bdc2b4af6d124519ac3539b6b1eef279d7b0bde7",
+    "localCommit": "2eb59ba0fb36b536349f17fe74ee21bc7af71076",
+    "expectedReportFiles": 13,
+    "matchedReportFiles": 13,
+    "appFilesVerified": 14,
+    "totalFilesVerified": 16,
+    "allMatched": true,
+    "receipt": "source-verification.json",
+    "receiptSha256": "c97fc88c2df3cb92e8ee72eda4009d24e30fc00c30f6dc42d8ad67a3b385037a",
+    "sources": [
+      {
+        "path": "app/game/ClanShipIncidentPanel.module.css",
+        "size": 4746,
+        "gitBlobSha": "4cffd344edb57da235f0824f704eee9d9065fac5",
+        "sha256": "a556d9c83393b65bedd8bc6aafd55afd86a189ee19dc298b8fb039f7e165f511",
+        "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/bdc2b4af6d124519ac3539b6b1eef279d7b0bde7/app/game/ClanShipIncidentPanel.module.css",
+        "includedInBrowserReport": true,
+        "publishedBytesMatchFinalLocalCommit": true,
+        "unchangedFromPreviouslyInspectedCommit": true
+      },
+      {
+        "path": "app/game/ClanShipIncidentPanel.tsx",
+        "size": 19985,
+        "gitBlobSha": "bde736c33cbb5ed4f1520e54fc8382a335b16252",
+        "sha256": "dd4b577cd711282bf46d7c4d3df297b61f6876d2c7035f5a29138fa742dba69d",
+        "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/bdc2b4af6d124519ac3539b6b1eef279d7b0bde7/app/game/ClanShipIncidentPanel.tsx",
+        "includedInBrowserReport": true,
+        "publishedBytesMatchFinalLocalCommit": true,
+        "unchangedFromPreviouslyInspectedCommit": true
+      },
+      {
+        "path": "app/game/ClanShipIncidentScene.module.css",
+        "size": 4441,
+        "gitBlobSha": "10be9d28f063537107f8d117fae29e94be823b67",
+        "sha256": "db8e61027d6f79965852d482f88fb6910cfc927a00f24ff3777f58a22c6b58a0",
+        "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/bdc2b4af6d124519ac3539b6b1eef279d7b0bde7/app/game/ClanShipIncidentScene.module.css",
+        "includedInBrowserReport": true,
+        "publishedBytesMatchFinalLocalCommit": true,
+        "unchangedFromPreviouslyInspectedCommit": true
+      },
+      {
+        "path": "app/game/ClanShipIncidentScene.tsx",
+        "size": 12163,
+        "gitBlobSha": "e3b7433f288682c0be7beb3d65603d7615edb0d8",
+        "sha256": "115af50a38cf547fbaa2d4813fefe288860a2bee90012eb1c53b1d8548c2a998",
+        "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/bdc2b4af6d124519ac3539b6b1eef279d7b0bde7/app/game/ClanShipIncidentScene.tsx",
+        "includedInBrowserReport": true,
+        "publishedBytesMatchFinalLocalCommit": true,
+        "unchangedFromPreviouslyInspectedCommit": true
+      },
+      {
+        "path": "app/game/ClanShipInterior.tsx",
+        "size": 40517,
+        "gitBlobSha": "e2920ba31358d40ffee8a091c1facae5cf1afd9a",
+        "sha256": "6894668bdb4bf321e04705e02c84d8c8ff12ed85570157cf0a72bc6f0abb85a0",
+        "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/bdc2b4af6d124519ac3539b6b1eef279d7b0bde7/app/game/ClanShipInterior.tsx",
+        "includedInBrowserReport": true,
+        "publishedBytesMatchFinalLocalCommit": true,
+        "unchangedFromPreviouslyInspectedCommit": true
+      },
+      {
+        "path": "app/game/ClanShipTrophyTelemetry.module.css",
+        "size": 2033,
+        "gitBlobSha": "404ff17cd995f97e1f16918c8e5332943fd3ef93",
+        "sha256": "ef6eb3629648e15fd7fb66b29660797e382ef0fc144d5d6c9a225b7fc89e1e6e",
+        "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/bdc2b4af6d124519ac3539b6b1eef279d7b0bde7/app/game/ClanShipTrophyTelemetry.module.css",
+        "includedInBrowserReport": true,
+        "publishedBytesMatchFinalLocalCommit": true,
+        "unchangedFromPreviouslyInspectedCommit": true
+      },
+      {
+        "path": "app/game/ClanShipTrophyTelemetry.tsx",
+        "size": 5897,
+        "gitBlobSha": "c4d630f2640a030bed2033edf079f45d934b3b4b",
+        "sha256": "c488d891d8585eb632160ae2c0cf12e9e276507604e36cf70c108bf5506a6d9f",
+        "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/bdc2b4af6d124519ac3539b6b1eef279d7b0bde7/app/game/ClanShipTrophyTelemetry.tsx",
+        "includedInBrowserReport": true,
+        "publishedBytesMatchFinalLocalCommit": true,
+        "unchangedFromPreviouslyInspectedCommit": true
+      },
+      {
+        "path": "app/game/CompanionQuartersScene.tsx",
+        "size": 7148,
+        "gitBlobSha": "94bd33d1df897d379bf8df40544a803165d2703b",
+        "sha256": "4960d8f09af797af8635d95ccd80c82c2c9f8011e3f933984e477bd150822a01",
+        "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/bdc2b4af6d124519ac3539b6b1eef279d7b0bde7/app/game/CompanionQuartersScene.tsx",
+        "includedInBrowserReport": true,
+        "publishedBytesMatchFinalLocalCommit": true,
+        "unchangedFromPreviouslyInspectedCommit": true
+      },
+      {
+        "path": "app/game/GameClient.tsx",
+        "size": 362372,
+        "gitBlobSha": "4bcb470ec3993c142a734afce4c674f12567d567",
+        "sha256": "916cdf0773a8d26b2e26fde9d3a636aca79d900283ca05dc063c4fe42aedc8df",
+        "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/bdc2b4af6d124519ac3539b6b1eef279d7b0bde7/app/game/GameClient.tsx",
+        "includedInBrowserReport": true,
+        "publishedBytesMatchFinalLocalCommit": true,
+        "unchangedFromPreviouslyInspectedCommit": true
+      },
+      {
+        "path": "app/game/save.ts",
+        "size": 95730,
+        "gitBlobSha": "488e0e67fa22b3d14ab7b855b7a63fa40dab7d7e",
+        "sha256": "17a5e2ccbfe9923a32a4a469ee6e5a3573eee935dbce8e7bc8572381cab75b29",
+        "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/bdc2b4af6d124519ac3539b6b1eef279d7b0bde7/app/game/save.ts",
+        "includedInBrowserReport": true,
+        "publishedBytesMatchFinalLocalCommit": true,
+        "unchangedFromPreviouslyInspectedCommit": true
+      },
+      {
+        "path": "app/game/systems/clanShipIncidents.ts",
+        "size": 44851,
+        "gitBlobSha": "f09c5eebac27f4d24891f51c849601cce9d7dd57",
+        "sha256": "f17a007b246f264881323b823d4f655c597b77a8524fd662a5f0d02454649a00",
+        "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/bdc2b4af6d124519ac3539b6b1eef279d7b0bde7/app/game/systems/clanShipIncidents.ts",
+        "includedInBrowserReport": true,
+        "publishedBytesMatchFinalLocalCommit": true,
+        "unchangedFromPreviouslyInspectedCommit": true
+      },
+      {
+        "path": "app/game/systems/clanShipInterior.ts",
+        "size": 18389,
+        "gitBlobSha": "37825073830f15ab84ac580683f18c414b800360",
+        "sha256": "4f8cbf8512dd88e19d36659d73a560615ce48cb13ae2498304372305cb944096",
+        "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/bdc2b4af6d124519ac3539b6b1eef279d7b0bde7/app/game/systems/clanShipInterior.ts",
+        "includedInBrowserReport": false,
+        "publishedBytesMatchFinalLocalCommit": true,
+        "unchangedFromPreviouslyInspectedCommit": true
+      },
+      {
+        "path": "app/game/systems/clanShipTrophyHearing.ts",
+        "size": 19841,
+        "gitBlobSha": "9ebf99145908bd70177e0900eac3f6ad3ac5daab",
+        "sha256": "43012e17f797eb0d0fc63746e56678fffa05e18c68db230610de34b53b98323b",
+        "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/bdc2b4af6d124519ac3539b6b1eef279d7b0bde7/app/game/systems/clanShipTrophyHearing.ts",
+        "includedInBrowserReport": true,
+        "publishedBytesMatchFinalLocalCommit": true,
+        "unchangedFromPreviouslyInspectedCommit": true
+      },
+      {
+        "path": "app/game/types.ts",
+        "size": 20597,
+        "gitBlobSha": "6e93c4a475c1d3e5b8ac3604f8ec4356a2d5764f",
+        "sha256": "98678751a44f09371f82460907b24cde62ed90886cc1f98014827c25b9e99b29",
+        "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/bdc2b4af6d124519ac3539b6b1eef279d7b0bde7/app/game/types.ts",
+        "includedInBrowserReport": true,
+        "publishedBytesMatchFinalLocalCommit": true,
+        "unchangedFromPreviouslyInspectedCommit": true
+      },
+      {
+        "path": "scripts/qa-clan-trophy-hearing-browser-20261108.mjs",
+        "size": 11483,
+        "gitBlobSha": "edbe128904ff1ec4fe41671e7c0158b24a018820",
+        "sha256": "75e2094498a7af2450f66b8c73e791465da63daf77bc2dd8f4b65c9aaefcfdf7",
+        "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/bdc2b4af6d124519ac3539b6b1eef279d7b0bde7/scripts/qa-clan-trophy-hearing-browser-20261108.mjs",
+        "includedInBrowserReport": false,
+        "publishedBytesMatchFinalLocalCommit": true,
+        "unchangedFromPreviouslyInspectedCommit": true
+      },
+      {
+        "path": "tests/helpers/clan-ship-trophy-hearing-fixture.mjs",
+        "size": 9799,
+        "gitBlobSha": "1457ca40d37158e4d93251d28e5208273b60ef96",
+        "sha256": "0bd4652c6ef45122e49b49fb3d5398968d151422583261b84c34b95db9105772",
+        "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/bdc2b4af6d124519ac3539b6b1eef279d7b0bde7/tests/helpers/clan-ship-trophy-hearing-fixture.mjs",
+        "includedInBrowserReport": false,
+        "publishedBytesMatchFinalLocalCommit": true,
+        "unchangedFromPreviouslyInspectedCommit": true
+      }
+    ]
+  },
+  "browserReport": {
+    "file": "extracted/qa-clan-trophy-hearing-20261108/browser-verification.json",
+    "sha256": "9250d46a05686f4e460ecad02b983a98b153d931853120edc4a1044b93f54920",
+    "browserExecuted": true,
+    "passed": true,
+    "browserVersion": "156.0.8078.0",
+    "checks": 27,
+    "checksPerContext": {
+      "1440x1000": 9,
+      "390x844": 9,
+      "320x740": 9
+    },
+    "errors": [],
+    "missingAssets": [],
+    "assetCheckScope": "HTTP response statuses >= 400 are checked by this C37 recipe; the six captures were visually inspected. This recipe has no per-image decode assertion."
+  },
+  "contexts": [
+    {
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "reducedMotion": "reduce",
+      "input": "Mouse; no physical controller"
+    },
+    {
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "reducedMotion": "reduce",
+      "input": "Emulated touch; no physical controller"
+    },
+    {
+      "viewport": {
+        "width": 320,
+        "height": 740
+      },
+      "reducedMotion": "reduce",
+      "input": "Emulated touch; no physical controller"
+    }
+  ],
+  "fixture": {
+    "file": "extracted/qa-clan-trophy-hearing-20261108/initial-C37-fixture.json",
+    "sha256": "b71bec7b39b769604b29c94b1d9ca6dfc674d6768ed8e95472b0f80add2b4e31",
+    "digestVerified": true,
+    "ownerCreatedAt": "2026-11-08T18:00:00.000Z",
+    "description": "Synthetic adult campaign, 1,000 initial marks, onboarding, training, jungle/ice/ruins field proofs and C-37 evidence prepared through production reducers. Those hunts and earlier observations are NOT browser-played. No invitation, telemetry sample, verdict or 35-mark hearing reward is seeded.",
+    "actualBalanceAtBrowserStart": 5571,
+    "hearingStateAbsentBeforeBrowserActions": true,
+    "prerequisiteHuntsBrowserPlayed": false,
+    "comparisonWithPrevious": "fixture-comparison.json",
+    "comparisonSha256": "36ca4c2639c55f95f38ff4f3fb8a3a554202033a79bead32e255bb3d36b749f3",
+    "onlyNativeUpdatedAtDiffers": true
+  },
+  "verifiedActions": [
+    "Invitation de Balafre de Cendre au poste physique d’entraînement.",
+    "Invitation de Trace Froide au poste physique des archives.",
+    "Un exemplaire DOM de chaque témoin dans la galerie.",
+    "Sélection manuelle puis enregistrement des observations hunt-mark, transfer-seal et return-match.",
+    "Rechargement réel et conservation des invitations et des trois observations.",
+    "Décision commune, restitution et gain vérifié de 35 marques.",
+    "Absence de débordement horizontal du document aux trois largeurs."
+  ],
+  "visualInspection": {
+    "count": 6,
+    "allSixC37CapturesInspected": true,
+    "images": [
+      {
+        "file": "extracted/qa-clan-trophy-hearing-20261108/1440x1000-witnesses.png",
+        "sha256": "131b0f89103c24c2a9b18512b60034cde9ff83df6a10c789beda9ce705e40746",
+        "sizeBytes": 1320967,
+        "width": 1440,
+        "height": 1000,
+        "inspectedWith": "view_image",
+        "result": "inspected",
+        "observation": "Deux témoins entiers et distincts, noms visibles, support C-37 et relecture 0/3 présents dans la galerie. Le chasseur chevauche une partie du cartouche central. Notification de déplacement en bas.",
+        "sameBytesAsPreviousCapture": true,
+        "previousCapture": "../browser-ci/extracted/qa-clan-trophy-hearing-20261108/1440x1000-witnesses.png"
+      },
+      {
+        "file": "extracted/qa-clan-trophy-hearing-20261108/1440x1000-conclusion.png",
+        "sha256": "dd208bf8583cb69a8508ac9f11f6c218afda2cb1c6680cd6f23a8dc7d83dc5c0",
+        "sizeBytes": 228098,
+        "width": 1440,
+        "height": 1000,
+        "inspectedWith": "view_image",
+        "result": "inspected",
+        "observation": "Chronique commune, réponses des deux témoins, invitations confirmées, restitution consignée et bloc « 35 marques déjà attribuées » lisibles. Notification transitoire devant une partie du texte de statut inférieur.",
+        "sameBytesAsPreviousCapture": true,
+        "previousCapture": "../browser-ci/extracted/qa-clan-trophy-hearing-20261108/1440x1000-conclusion.png"
+      },
+      {
+        "file": "extracted/qa-clan-trophy-hearing-20261108/390x844-witnesses.png",
+        "sha256": "e5e81e6dff77ea223e06c540c5dfcdd2862a95d863cdef94f419277a13710d58",
+        "sizeBytes": 227142,
+        "width": 390,
+        "height": 844,
+        "inspectedWith": "view_image",
+        "result": "inspected-with-limitations",
+        "observation": "Les deux témoins sont visibles dans la galerie, avec leurs cartouches et le support central ; la scène et ses légendes sont réduites à petite échelle. Commandes tactiles visibles. La notification recouvre une partie du bouton de reprise du déplacement.",
+        "sameBytesAsPreviousCapture": true,
+        "previousCapture": "../browser-ci/extracted/qa-clan-trophy-hearing-20261108/390x844-witnesses.png"
+      },
+      {
+        "file": "extracted/qa-clan-trophy-hearing-20261108/390x844-conclusion.png",
+        "sha256": "ef76b7d66a79db1952b78e6572edc4267529c6c77753425d0110642d268bf990",
+        "sizeBytes": 109314,
+        "width": 390,
+        "height": 844,
+        "inspectedWith": "view_image",
+        "result": "inspected",
+        "observation": "Réponses communes, invitations, restitution et gain de 35 marques lisibles dans les cartes verticales. Aucun débordement horizontal visible. La notification masque une partie du texte inférieur répété.",
+        "sameBytesAsPreviousCapture": true,
+        "previousCapture": "../browser-ci/extracted/qa-clan-trophy-hearing-20261108/390x844-conclusion.png"
+      },
+      {
+        "file": "extracted/qa-clan-trophy-hearing-20261108/320x740-witnesses.png",
+        "sha256": "37c79e5d189d27d757a20c6dfd9cd1929856f475387ec2fcaa1e33d1c3048a55",
+        "sizeBytes": 128006,
+        "width": 320,
+        "height": 740,
+        "inspectedWith": "view_image",
+        "result": "inspected-with-limitations",
+        "observation": "La position de défilement coupe le haut de la scène et les hauts de corps des témoins. Leurs cartouches et bas de corps sont présents de part et d’autre du support. Cette capture ne constitue pas une vue intégrale des deux acteurs. Commandes tactiles dans la largeur ; notification en bas.",
+        "sameBytesAsPreviousCapture": true,
+        "previousCapture": "../browser-ci/extracted/qa-clan-trophy-hearing-20261108/320x740-witnesses.png"
+      },
+      {
+        "file": "extracted/qa-clan-trophy-hearing-20261108/320x740-conclusion.png",
+        "sha256": "89da3d6718c68e3476fd2f26aedbf1259e2df94830456ae8b5fa67d1cd14486c",
+        "sizeBytes": 84460,
+        "width": 320,
+        "height": 740,
+        "inspectedWith": "view_image",
+        "result": "inspected",
+        "observation": "Le bloc des invitations confirmées et de la restitution commune ainsi que « 35 marques déjà attribuées » sont lisibles, avec retours à la ligne. Pas de débordement horizontal visible. Une notification couvre le statut inférieur.",
+        "sameBytesAsPreviousCapture": true,
+        "previousCapture": "../browser-ci/extracted/qa-clan-trophy-hearing-20261108/320x740-conclusion.png"
+      }
+    ],
+    "findings": [
+      "À 320 px, la capture des témoins est défilée : hauts de corps hors cadre, preuve visuelle de scène complète limitée.",
+      "Les légendes intégrées à la scène sont petites sur les vues mobiles.",
+      "Des notifications transitoires recouvrent le bas de plusieurs captures ; les cartes principales de conclusion restent lisibles."
+    ],
+    "functionalBlockObserved": false,
+    "allSixIdenticalToPrevious": true,
+    "sameVisualLimitsAsPrevious": true
+  },
+  "otherWorkflowResults": {
+    "domainTestCountsInLog": [
+      354
+    ],
+    "nativeRecipes": [
+      {
+        "recipe": "qa-clan-ship",
+        "checks": 22,
+        "passed": true,
+        "browserVersion": "153.0.8010.12",
+        "screenshotsInspectedInThisReceipt": false,
+        "report": "extracted/qa-clan-ship/report.json",
+        "sha256": "5f79dd8c07d6333891a1477cd72918870af86ab8e9ebab2d3609d4f3c5fbe1a6"
+      },
+      {
+        "recipe": "qa-clan-ship-operations",
+        "checks": 28,
+        "passed": true,
+        "browserVersion": "153.0.8010.12",
+        "screenshotsInspectedInThisReceipt": false,
+        "report": "extracted/qa-clan-ship-operations/report.json",
+        "sha256": "bdc3329498a04868e0d188665ab81f0aa29f25eb06bdc9cae8a953d0f0756d0e"
+      }
+    ],
+    "jobLog": "job.log",
+    "jobLogSha256": "6be65e59a76680e3bc29ecd952e4eaada2cf83b1c36cba45930db0f8d1badd35"
+  },
+  "limitations": [
+    "Les trois contextes utilisent reducedMotion: reduce et sélectionnent manuellement les trois observations ; le défilement automatique de la télémétrie n’est pas validé par cette recette.",
+    "Le bureau utilise la souris et les deux tailles mobiles le tactile émulé ; aucune manette physique ni matériel mobile réel n’a été testé.",
+    "Les prérequis de campagne et les preuves de terrain sont une fixture explicitement synthétique, construite avec les reducers de production ; aucune partie intégrale de campagne n’est revendiquée.",
+    "Le rapport atteste les actions et la persistance exécutées par la recette ; les captures sont des états statiques et ne prouvent ni framerate ni qualité d’animation.",
+    "Le navigateur vérifie une seule augmentation de 35 marques au moment de la restitution ; il ne rejoue pas un deuxième acquittement après un rechargement de la clôture.",
+    "Le retour des témoins à leurs postes est indiqué dans la conclusion ; ce scénario ne revient pas photographier chaque poste après clôture.",
+    "Les constats visuels ci-dessus ne constituent pas une validation artistique complète ni une certification de fidélité canonique."
+  ],
+  "sourceChangesMadeDuringInspection": false,
+  "validatedCommitOnly": true,
+  "publicationNote": "This receipt validates bdc2b4af only. A later QA-only V137 focus-await correction is pending publication; this evidence must not be renamed or attributed to that later head.",
+  "observedBrowserVersions": {
+    "C37": "156.0.8078.0",
+    "qa-clan-ship": "153.0.8010.12",
+    "qa-clan-ship-operations": "153.0.8010.12"
+  },
+  "browserVersionAssessment": "Versions are recorded as observed. No anomaly is inferred from the difference alone.",
+  "previousEvidence": {
+    "commit": "348d471974a54fcc6480bad7049ea690a75854e8",
+    "inspection": "../browser-ci/inspection.json",
+    "inspectionSha256": "45a70c3427de1d0edbdaa3a981628946df2fd965772bc467e9d7276669622266",
+    "preservationReceipt": "previous-evidence-preservation.json",
+    "preservationReceiptSha256": "5a841b348b477dde7880789287eb73af6e1cbefdac7051112248e7393b657248",
+    "checkedFiles": 11,
+    "allUnchanged": true
+  }
+}

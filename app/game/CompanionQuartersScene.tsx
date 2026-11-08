@@ -39,9 +39,11 @@ export function companionMedicalSocket(site: 'personal' | 'clan', id: string) {
 const point = (site: 'personal' | 'clan', x: number, y: number) => site === 'personal'
   ? { x, y: 240 + projectShipInterior25d({ x, y }).y } : { x, y };
 const locationLabel = { aboard: 'À bord', medical: 'En soins', mission: 'En mission · retour prévu', missing: 'Absent · quartier conservé', closed: 'Affectation suspendue' };
+const NO_SUPPRESSED_AVATARS: readonly string[] = [];
 
-export default memo(function CompanionQuartersScene({ save, site, shipId, roomId }: {
+export default memo(function CompanionQuartersScene({ save, site, shipId, roomId, suppressedAvatarIds = NO_SUPPRESSED_AVATARS }: {
   save: SaveGame; site: 'personal' | 'clan'; shipId: ShipId; roomId: string;
+  suppressedAvatarIds?: readonly string[];
 }) {
   const entries = useMemo(() => companionResidencePresence(save, site === 'personal'
     ? { kind: 'personal', shipId } : { kind: 'clan', shipId: 'avp-predator-mothership' }), [save, site, shipId]);
@@ -54,7 +56,7 @@ export default memo(function CompanionQuartersScene({ save, site, shipId, roomId
       style={{ left: position.x, top: position.y, zIndex: site === 'personal' ? 30 : 470 }}>
       <span className={styles.gallery} aria-hidden="true" style={{ width: socket.width + 28 }} />
       {art && <NativeBitmap asset={art} width={socket.width} height={socket.height} />}
-      {entry.avatarVisible && entry.avatarRoomId === roomId && <ResidentActor entry={entry} site={site} />}
+      {entry.avatarVisible && entry.avatarRoomId === roomId && !suppressedAvatarIds.includes(entry.id) && <ResidentActor entry={entry} site={site} />}
       <div className={styles.label}><strong>{entry.definition.name}</strong><span>{entry.definition.moduleLabel} · {locationLabel[entry.location]}</span></div>
     </div>;
   })}
@@ -63,7 +65,7 @@ export default memo(function CompanionQuartersScene({ save, site, shipId, roomId
       return <div key={`medical:${entry.id}`} className={styles.quarter} data-companion-medical={entry.id}
         style={{ left: position.x, top: position.y, zIndex: site === 'personal' ? 31 : 471 }}>
         <span className={styles.gallery} style={{ width: 190 }} aria-hidden="true" />
-        <ResidentActor entry={entry} site={site} />
+        {!suppressedAvatarIds.includes(entry.id) && <ResidentActor entry={entry} site={site} />}
         <div className={styles.label}><strong>{entry.definition.name}</strong><span>En soins · services suspendus</span></div>
       </div>;
     })}

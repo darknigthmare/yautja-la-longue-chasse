@@ -2,9 +2,12 @@ import type { SaveGame } from '../types';
 import type { ClanShipRoomId } from './clanShipDocking';
 import { CLAN_SHIP_INTERIOR_METRICS, CLAN_SHIP_INTERIOR_ROOMS, isClanShipInteriorWalkable } from './clanShipInterior';
 import { CLAN_SHIP_RECRUITS, evaluateClanShipAccess, evaluateClanShipRecruit, inspectClanShipOperations, type ClanShipContractId, type ClanShipNpcId } from './clanShipOperations';
-import { availableClanResidenceCrew, companionResidencePresence, companionUsesLegacyClanPost, type CompanionCampaign } from './companionResidence';
+import { availableClanResidenceCrew, type CompanionCampaign } from './companionResidence';
 import { CLAN_SHIP_TROPHY_CASE, clanShipTrophyConclusion, emptyClanShipTrophyCase,
   type ClanShipTrophyCaseView, type ClanShipTrophyConclusion } from './clanShipTrophyCase';
+import { CLAN_SHIP_TROPHY_HEARING_TARGET, clanShipTrophyHearingPresence, clanShipTrophyHearingView, clanShipTrophyWitnessPost,
+  inspectClanShipTrophyHearing, recordClanShipTrophyHearingDecision, reduceClanShipTrophyHearing,
+  type ClanShipTrophyHearingAction, type ClanShipTrophyHearingResult, type ClanShipTrophyHearingState } from './clanShipTrophyHearing';
 
 export const CLAN_SHIP_INCIDENT_VERSION = 2 as const;
 export type ClanShipIncidentId = 'sealed-lot' | 'relay-fault' | 'contested-trophy';
@@ -64,10 +67,12 @@ export type ClanShipIncidentCommand = { type: Exclude<ClanShipIncidentOperation,
   { type: 'isolate' | 'restore-circuit'; incidentId: ClanShipIncidentId; branch: ClanShipIncidentBranch } |
   { type: 'conclude-provenance'; incidentId: 'contested-trophy'; conclusion: ClanShipTrophyConclusion };
 export type ClanShipIncidentAction = ClanShipIncidentCommand & { ownerCreatedAt: string; expectedRevision: number };
-export type ClanShipIncidentCampaign = CompanionCampaign & Pick<SaveGame, 'clanShipIncidents'>;
+export type ClanShipIncidentCampaign = CompanionCampaign & Pick<SaveGame, 'clanShipIncidents' | 'clanShipTrophyHearing'>;
 export interface ClanShipIncidentContext { save: ClanShipIncidentCampaign; active: boolean; observation: ClanShipIncidentObservation | null }
 export interface ClanShipIncidentResult {
   accepted: boolean; changed: boolean; state: ClanShipIncidentsState | null; clanMarksReward: number; message: string;
+  /** Optional meeting receipt shares the exact incident/reward transaction. */
+  hearingState?: ClanShipTrophyHearingState;
 }
 export interface ClanShipIncidentView {
   id: ClanShipIncidentId; accepted: boolean; completedRevision: number | null; witness: boolean; reference: boolean;
@@ -111,15 +116,7 @@ export function clanShipIncidentInterlocutor(id: ClanShipIncidentId, type: ClanS
     : type === 'hear-veteran' || type === 'acknowledge-provenance' ? 'ash-scar' : null;
 }
 export function clanShipIncidentNpcRoom(save: ClanShipIncidentCampaign, npcId: ClanShipNpcId): ClanShipRoomId | null {
-  const operations = inspectClanShipOperations(save.clanShipOperations, save.createdAt).state;
-  if (!operations) return null;
-  const npc = CLAN_SHIP_RECRUITS.find(entry => entry.id === npcId)!;
-  if (companionUsesLegacyClanPost(save, npcId)) return operations.recruitedNpcIds.includes(npcId)
-    ? availableClanResidenceCrew(save).includes(npcId) ? npc.roomId : null
-    : evaluateClanShipRecruit(operations, npcId).allowed ? npc.roomId : null;
-  const resident = companionResidencePresence(save, { kind: 'clan', shipId: 'avp-predator-mothership' })
-    .find(entry => entry.id === npcId && entry.avatarVisible && entry.serviceAvailable);
-  return resident && Object.hasOwn(CLAN_SHIP_INTERIOR_ROOMS, resident.avatarRoomId) ? resident.avatarRoomId as ClanShipRoomId : null;
+  return clanShipTrophyWitnessPost(save, npcId);
 }
 function conversationTarget(target: ClanShipIncidentTarget, roomId: unknown): ClanShipIncidentTarget | null {
   if (typeof roomId !== 'string' || !Object.hasOwn(CLAN_SHIP_INTERIOR_ROOMS, roomId)) return null;
@@ -127,6 +124,13 @@ function conversationTarget(target: ClanShipIncidentTarget, roomId: unknown): Cl
   return { ...target, roomId: room.id, ...room.servicePoint };
 }
 export function evaluateClanShipIncidentPresence(save: ClanShipIncidentCampaign, id: ClanShipIncidentId, type: ClanShipIncidentOperation): { allowed: boolean; reason: string } {
+  if (id === 'contested-trophy' && (type === 'conclude-provenance' || type === 'acknowledge-provenance') && save.clanShipTrophyHearing != null) {
+    const state = inspectClanShipTrophyHearing(save.clanShipTrophyHearing, save.createdAt).state, hearing = clanShipTrophyHearingView(state);
+    if (!state) return { allowed: false, reason: 'Le journal de la restitution doit être récupéré avant de poursuivre.' };
+    if (!hearing.gathered) return { allowed: false, reason: 'Invite physiquement Balafre puis Trace avant de les retrouver à la galerie.' };
+    if (!hearing.ready) return { allowed: false, reason: 'Compare les trois échantillons enregistrés de C-37 devant les deux témoins avant de conclure.' };
+    return clanShipTrophyHearingPresence(save);
+  }
   const npcId = clanShipIncidentInterlocutor(id, type);
   if (!npcId) return { allowed: true, reason: '' };
   const roomId = clanShipIncidentNpcRoom(save, npcId), npc = CLAN_SHIP_RECRUITS.find(entry => entry.id === npcId)!;
@@ -138,6 +142,8 @@ export function evaluateClanShipIncidentPresence(save: ClanShipIncidentCampaign,
 }
 export function clanShipIncidentTarget(id: ClanShipIncidentId, type: ClanShipIncidentOperation, save?: ClanShipIncidentCampaign): ClanShipIncidentTarget | null {
   if (id === 'contested-trophy') {
+    if (save?.clanShipTrophyHearing != null && (type === 'conclude-provenance' || type === 'acknowledge-provenance'))
+      return CLAN_SHIP_TROPHY_HEARING_TARGET;
     const key = ({ accept: 'trophy-briefing', 'examine-trophy': 'trophy-support', 'read-hunt-report': 'trophy-hunt-report',
       'read-transfer-record': 'trophy-transfer-record', 'hear-veteran': 'trophy-veteran', 'conclude-provenance': 'trophy-briefing',
       'acknowledge-provenance': 'trophy-veteran' } as Partial<Record<ClanShipIncidentOperation, ClanShipIncidentTargetId>>)[type];
@@ -376,6 +382,9 @@ export function actClanShipIncident(action: ClanShipIncidentAction, context: Cla
   const state = current ?? createClanShipIncidents(save.createdAt);
   if (action.expectedRevision !== state.revision) return refuse('Le dossier a changé. Relis son état avant cette intervention.');
   if (!evaluateClanShipIncidentsCampaign(state, save).allowed) return refuse('Les preuves et l’accès de la campagne ne correspondent pas à ce dossier.');
+  const hearing = inspectClanShipTrophyHearing(save.clanShipTrophyHearing, save.createdAt);
+  if (hearing.status === 'invalid-save' || hearing.status === 'future-version' || hearing.state &&
+      !evaluateClanShipTrophyHearingCampaign(hearing.state, save).allowed) return refuse('Le journal de la restitution doit être récupéré avant une nouvelle intervention.');
   const docking = save.clanShipDocking, target = clanShipIncidentTarget(action.incidentId, action.type, save);
   if (!docking || docking.ownerCreatedAt !== save.createdAt || docking.status !== 'aboard' || docking.roomId !== observation?.roomId ||
       !target || !clanShipIncidentInReach(observation, target)) return refuse('Approche physiquement l’objet indiqué dans la bonne salle avant de confirmer.');
@@ -408,8 +417,55 @@ export function actClanShipIncident(action: ClanShipIncidentAction, context: Cla
   const next: ClanShipIncidentsState = { ...state, version: CLAN_SHIP_INCIDENT_VERSION, revision: state.revision + 1,
     incidents: run ? state.incidents.map(entry => entry.id === run.id ? { ...entry, events: [...entry.events, event] } : entry)
       : [...state.incidents, { id: action.incidentId, events: [event] }] };
+  const hearingState = hearing.state && action.incidentId === 'contested-trophy' && result.view.trophy?.conclusion &&
+    (action.type === 'conclude-provenance' || action.type === 'acknowledge-provenance')
+    ? recordClanShipTrophyHearingDecision(hearing.state, action.type === 'conclude-provenance' ? 'conclude' : 'acknowledge',
+      result.view.trophy.conclusion, next.revision, observation!) : undefined;
   return { accepted: true, changed: true, state: next, clanMarksReward: reward,
+    ...(hearingState ? { hearingState } : {}),
     message: result.message + (reward ? ` ${reward} marques attribuées une seule fois.` : '') };
+}
+
+const trophyEvidenceReady = (view: ClanShipIncidentView) => !!view.accepted && !!view.trophy &&
+  view.trophy.supportRead && view.trophy.huntReportRead && view.trophy.transferRecordRead && view.trophy.testimonyHeard;
+
+/** Cross-ledger checks live in this adapter, so the pure hearing ledger never
+ * imports the incident reducer. Reassignment after the meeting is legitimate. */
+export function evaluateClanShipTrophyHearingCampaign(state: ClanShipTrophyHearingState, save: ClanShipIncidentCampaign): { allowed: boolean; reason: string } {
+  const refuse = { allowed: false, reason: 'La restitution ne correspond pas aux preuves et aux décisions de cette campagne.' };
+  if (inspectClanShipTrophyHearing(state, save.createdAt).status !== 'valid') return refuse;
+  const incidents = inspectClanShipIncidents(save.clanShipIncidents, save.createdAt).state;
+  if (!incidents || !evaluateClanShipIncidentsCampaign(incidents, save).allowed) return refuse;
+  const run = incidents.incidents.find(entry => entry.id === 'contested-trophy');
+  if (!run) return refuse;
+  for (const event of state.events) {
+    if (event.incidentRevision > incidents.revision) return refuse;
+    const at = clanShipIncidentView({ ...incidents, incidents: [{ ...run, events: run.events.filter(entry => entry.revision <= event.incidentRevision) }] }, 'contested-trophy');
+    if (!trophyEvidenceReady(at)) return refuse;
+    if (event.type === 'invite' || event.type === 'record-sample') {
+      if (at.completedRevision !== null || at.trophy?.conclusion || at.trophy?.reviewRequired) return refuse;
+    } else {
+      const receipt = run.events.find(entry => entry.revision === event.incidentRevision);
+      if (!receipt || receipt.type !== (event.type === 'conclude' ? 'conclude-provenance' : 'acknowledge-provenance') ||
+          at.trophy?.conclusion !== event.conclusion || event.type === 'conclude' && receipt.conclusion !== event.conclusion ||
+          receipt.observation.roomId !== event.observation.roomId || receipt.observation.x !== event.observation.x || receipt.observation.y !== event.observation.y) return refuse;
+    }
+  }
+  const view = clanShipIncidentView(incidents, 'contested-trophy'), hearing = clanShipTrophyHearingView(state);
+  if (!!view.trophy?.conclusion !== hearing.concluded || view.trophy?.conclusion !== hearing.conclusion ||
+      (view.completedRevision !== null) !== hearing.completed) return refuse;
+  return { allowed: true, reason: 'Les invitations, échantillons et réponses correspondent au dossier C-37 conservé.' };
+}
+
+export function actClanShipTrophyHearing(action: ClanShipTrophyHearingAction, context: ClanShipIncidentContext): ClanShipTrophyHearingResult {
+  const { save } = context, inspected = inspectClanShipIncidents(save.clanShipIncidents, save.createdAt);
+  const hearing = inspectClanShipTrophyHearing(save.clanShipTrophyHearing, save.createdAt);
+  if (!inspected.state || inspected.status !== 'valid' || !evaluateClanShipIncidentsCampaign(inspected.state, save).allowed ||
+      hearing.status === 'invalid-save' || hearing.status === 'future-version' || hearing.state && !evaluateClanShipTrophyHearingCampaign(hearing.state, save).allowed)
+    return { accepted: false, changed: false, state: hearing.state, message: 'Le dossier C-37 et son journal doivent être récupérés avant de préparer la restitution.' };
+  const view = clanShipIncidentView(inspected.state, 'contested-trophy');
+  return reduceClanShipTrophyHearing(action, { ...context, incidentRevision: inspected.state.revision,
+    evidenceReady: trophyEvidenceReady(view) && !view.trophy?.reviewRequired, caseConcluded: !!view.trophy?.conclusion, caseCompleted: view.completedRevision !== null });
 }
 
 /** Stable next actions drive world affordances and the accessible panel alike. */

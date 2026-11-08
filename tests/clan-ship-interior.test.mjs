@@ -250,3 +250,26 @@ test('analog dead zone removes jitter, keeps partial travel and clamps over-rang
   const clamped = api.stepClanShipInteriorPad(ready, { ...neutral, x: 10, y: -10 });
   assert.equal(clamped.x, 1); assert.equal(clamped.y, -1);
 });
+
+test('opening the incident dossier requires a released pad after boarding and fires only once while held', () => {
+  const results = padRun([{ ...neutral, incidents: true }, { ...neutral, incidents: true }, neutral,
+    { ...neutral, incidents: true, confirm: true }, { ...neutral, incidents: true, confirm: true }, neutral,
+    { ...neutral, incidents: true }]);
+  for (const result of results.slice(0, 3)) {
+    assert.equal(result.incidents, false); assert.equal(result.interact, false);
+  }
+  assert.equal(results[3].incidents, true); assert.equal(results[3].interact, false);
+  assert.equal(results[4].incidents, false); assert.equal(results[4].interact, false);
+  assert.equal(results[6].incidents, true);
+});
+
+test('returning from the dossier cannot leak held controls into an interaction or a room exit', () => {
+  const held = { ...neutral, incidents: true, back: true, confirm: true, x: 1 };
+  const resumed = padRun([held, held, neutral, { ...neutral, incidents: true, back: true }, neutral,
+    { ...neutral, incidents: true, start: true }]);
+  for (const result of resumed.slice(0, 2)) {
+    assert.equal(result.incidents, false); assert.equal(result.back, false); assert.equal(result.interact, false); assert.equal(result.x, 0);
+  }
+  assert.equal(resumed[3].back, true); assert.equal(resumed[3].incidents, false);
+  assert.equal(resumed[5].settings, true); assert.equal(resumed[5].incidents, false);
+});

@@ -1,0 +1,113 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-11-08T17:14:44.423608+00:00",
+  "scope": "Integrate the production-only spatial test host into the C-37 tree without checkout, source changes to the game, or changes to native capture acceptance. Native timing remains to be measured on the next published head.",
+  "localParent": "7aad8a451bc5b50c00819ed7a1c5460a1e1d6cfc",
+  "originCommit": "9a2e2a14f79c33256cfe6cf9e5f6e2c8c5aee9d8",
+  "originFilesVerified": 9,
+  "originReceipt": "../../../qa/evidence/spatial-host-production-20261108/local-verification.json",
+  "checks": {
+    "regressions": {
+      "command": [
+        "node",
+        "--experimental-strip-types",
+        "--test",
+        "--test-reporter=spec",
+        "--test-concurrency=1",
+        "tests/planet-arrival-harness.test.mjs",
+        "tests/planet-arrival-observation.test.mjs",
+        "tests/planet-arrival-x11.test.mjs",
+        "tests/planet-arrival-spatial.test.mjs",
+        "tests/planet-arrival-presentation.test.mjs",
+        "tests/planet-arrival.test.mjs",
+        "tests/planet-arrival-audio.test.mjs",
+        "tests/planet-insertion.test.mjs",
+        "tests/ship-insertion-energy.test.mjs",
+        "tests/hunt-insertion.test.mjs"
+      ],
+      "exitCode": 0,
+      "durationSeconds": 10.036,
+      "completedAt": "2026-11-08T17:13:43.901503+00:00",
+      "log": "regressions.log.gz",
+      "rawBytes": 16214,
+      "rawSha256": "568817b4768a29411b1c756a2400638465afa29ca04cf55805620c37a19f6cc8",
+      "gzipSha256": "a02eb0925373cb46492ed03da0f73c5cd93c810a1321a014f727c09fe069100a",
+      "counts": {
+        "tests": 152,
+        "pass": 152,
+        "fail": 0,
+        "skipped": 0,
+        "cancelled": 0
+      }
+    },
+    "lint": {
+      "command": [
+        "node",
+        "node_modules/eslint/bin/eslint.js",
+        "scripts/qa-planet-arrival-spatial.mjs",
+        "tests/planet-arrival-harness.test.mjs",
+        "--max-warnings=0"
+      ],
+      "exitCode": 0,
+      "durationSeconds": 1.682,
+      "completedAt": "2026-11-08T17:13:35.546435+00:00",
+      "log": "lint.log.gz",
+      "rawBytes": 0,
+      "rawSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "gzipSha256": "f61f27bd17de546264aa58f40f3aafaac7021e0ef69c17f6b1b4cd7664a037ec"
+    },
+    "runtime-check": {
+      "command": [
+        "node",
+        "scripts/snapshot-runtime-v113.mjs",
+        "--check",
+        "docs/qa/current-integration-20261103/runtime-inputs.json"
+      ],
+      "exitCode": 0,
+      "durationSeconds": 6.86,
+      "completedAt": "2026-11-08T17:13:40.726315+00:00",
+      "log": "runtime-check.log.gz",
+      "rawBytes": 175,
+      "rawSha256": "31add5f4891444c7e7aeccb0a2d22b467d1bf723769f5eed807f3dc683eddc90",
+      "gzipSha256": "2493b7473be2a78b0cfa8d15452a11f4a84e496b17d58049cf0c695a57eb4d93"
+    }
+  },
+  "countingNote": "The 152 targeted Spatial tests overlap the earlier 479-test integration run; totals must not be added.",
+  "applicationSourcesUnchangedFromInitialBuild": {
+    "app/game/ClanShipIncidentPanel.module.css": "a556d9c83393b65bedd8bc6aafd55afd86a189ee19dc298b8fb039f7e165f511",
+    "app/game/ClanShipIncidentPanel.tsx": "dd4b577cd711282bf46d7c4d3df297b61f6876d2c7035f5a29138fa742dba69d",
+    "app/game/ClanShipIncidentScene.module.css": "db8e61027d6f79965852d482f88fb6910cfc927a00f24ff3777f58a22c6b58a0",
+    "app/game/ClanShipIncidentScene.tsx": "115af50a38cf547fbaa2d4813fefe288860a2bee90012eb1c53b1d8548c2a998",
+    "app/game/ClanShipInterior.tsx": "6894668bdb4bf321e04705e02c84d8c8ff12ed85570157cf0a72bc6f0abb85a0",
+    "app/game/ClanShipTrophyTelemetry.module.css": "ef6eb3629648e15fd7fb66b29660797e382ef0fc144d5d6c9a225b7fc89e1e6e",
+    "app/game/ClanShipTrophyTelemetry.tsx": "c488d891d8585eb632160ae2c0cf12e9e276507604e36cf70c108bf5506a6d9f",
+    "app/game/CompanionQuartersScene.tsx": "4960d8f09af797af8635d95ccd80c82c2c9f8011e3f933984e477bd150822a01",
+    "app/game/GameClient.tsx": "916cdf0773a8d26b2e26fde9d3a636aca79d900283ca05dc063c4fe42aedc8df",
+    "app/game/save.ts": "17a5e2ccbfe9923a32a4a469ee6e5a3573eee935dbce8e7bc8572381cab75b29",
+    "app/game/systems/clanShipIncidents.ts": "f17a007b246f264881323b823d4f655c597b77a8524fd662a5f0d02454649a00",
+    "app/game/systems/clanShipInterior.ts": "4f8cbf8512dd88e19d36659d73a560615ce48cb13ae2498304372305cb944096",
+    "app/game/systems/clanShipTrophyHearing.ts": "43012e17f797eb0d0fc63746e56678fffa05e18c68db230610de34b53b98323b",
+    "app/game/types.ts": "98678751a44f09371f82460907b24cde62ed90886cc1f98014827c25b9e99b29"
+  },
+  "currentRuntimeSnapshotSha256": "42f0ac0a02707af4b77dddd724e956d0bbe6d3393203883d5780d04ab700164e",
+  "currentRuntimeSnapshotChanged": false,
+  "workbookSha256": "3915848e84da6cbf8832b11e68d1344d8e521ec50b40e7f3fec5625bc61e1cb4",
+  "workbookChanged": false,
+  "nativeCaptureQualifiedLocally": false,
+  "browserLimit": "Chromium launch is unavailable locally because of the already observed Unix socket EPERM. Build and HTTP checks are not native image evidence.",
+  "nativeGateChanges": false,
+  "historicalReportsModified": false,
+  "sourceSha256": {
+    "scripts/qa-planet-arrival-spatial.mjs": "cba2f73bc99a049c9974e521eac2f1d66f1c44c31779b464c5eeaa666b507c90",
+    "scripts/qa-planet-arrival-x11.py": "93d7dc8628c44f8710bdf21accfd8401eaf5f60737dcb254f6979cf70d2aa285",
+    "tests/planet-arrival-harness.test.mjs": "eb4914992f802f6cd5955174213c7520b3e82eef44ca8152a399aac7f8a70bdf"
+  },
+  "evidenceSha256": {
+    "lint-result.json": "a42bc00ce36e70c2fd5016d4a9f751a7111355bb1ab509d3a25cb2ca04f5a9dc",
+    "lint.log.gz": "f61f27bd17de546264aa58f40f3aafaac7021e0ef69c17f6b1b4cd7664a037ec",
+    "regressions-result.json": "f7ec6e4275c2f749209e24b899293eee2f846495518ce525ae0ef8c9e36d26b6",
+    "regressions.log.gz": "a02eb0925373cb46492ed03da0f73c5cd93c810a1321a014f727c09fe069100a",
+    "runtime-check-result.json": "4bbd814aeff044a7f8710e30b02f2885e8286f2ec9807ef57ce2dabd8ca6937c",
+    "runtime-check.log.gz": "2493b7473be2a78b0cfa8d15452a11f4a84e496b17d58049cf0c695a57eb4d93"
+  }
+}

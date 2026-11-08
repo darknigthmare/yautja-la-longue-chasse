@@ -1,0 +1,25 @@
+{
+  "attempt1": {
+    "command": "npm run build:production",
+    "exitCode": 1,
+    "diagnostic": "Next.js build worker exited with code null and signal SIGKILL",
+    "log": "production-build-attempt-1.txt",
+    "cause": "unknown; cgroup memory counters are unavailable"
+  },
+  "attempt2": {
+    "command": "NODE_OPTIONS=--max-old-space-size=3072 NEXT_TELEMETRY_DISABLED=1 npm run build:production",
+    "change": "Bound the Node heap for the retry after the test processes completed. No source or dependency changes.",
+    "log": "production-build-attempt-2.txt",
+    "status": "all-build-steps-reached",
+    "exitCode": null,
+    "note": "The complete final-step log was retained; a process exit receipt was not retained for this attempt."
+  },
+  "attempt3": {
+    "command": "NODE_OPTIONS=--max-old-space-size=3072 NEXT_TELEMETRY_DISABLED=1 npm run build:production",
+    "exitCode": 0,
+    "elapsedSeconds": 23.744,
+    "log": "production-build.txt",
+    "reason": "Build with all native inputs restored and durable process exit receipt.",
+    "status": "passed"
+  }
+}

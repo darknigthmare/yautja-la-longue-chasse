@@ -1,0 +1,60 @@
+{
+  "head": "44aff718e48a69f6158df7515489c371eed4f94b",
+  "artifactArchiveSha256": "7aeb7b33fb525c7ccc1211cdda2fa1b93757dfb2ef13e984ee81639e7fdc1051",
+  "workflowRun": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/42498745769",
+  "failedCheck": "desktop: ship-cloaked-triad real flight, contact and complete disembarkation",
+  "failure": "Every final trio PNG crossed completion; all attempts remain rejected and no final visual proof is available.",
+  "previousChecksPassed": 6,
+  "errors": [],
+  "consoleErrors": [],
+  "missingAssets": [],
+  "finalWindow": {
+    "standingFromMs": 61750,
+    "completionMs": 62000
+  },
+  "rejectedAttempts": [
+    {
+      "file": "desktop-ship-cloaked-triad-egress-final-detail-rejected-attempt-1.png",
+      "attempt": 1,
+      "accepted": false,
+      "rejection": "Arrival completed during native acquisition; no visual proof accepted.",
+      "elapsedBefore": 61782.89999999977,
+      "elapsedAfter": 62000,
+      "measuredAt": 62000
+    },
+    {
+      "file": "desktop-ship-cloaked-triad-egress-final-detail-rejected-attempt-2.png",
+      "attempt": 2,
+      "accepted": false,
+      "rejection": "Arrival completed during native acquisition; no visual proof accepted.",
+      "elapsedBefore": 61849.69999999981,
+      "elapsedAfter": 62000,
+      "measuredAt": 62000
+    },
+    {
+      "file": "desktop-ship-cloaked-triad-egress-final-detail-rejected-attempt-3.png",
+      "attempt": 3,
+      "accepted": false,
+      "rejection": "Arrival completed during native acquisition; no visual proof accepted.",
+      "elapsedBefore": 61816.09999999974,
+      "elapsedAfter": 62000,
+      "measuredAt": 62000
+    }
+  ],
+  "unchangedSinceMain": "254b4b972af3c32cb078da3744241b2c0ea2f46c",
+  "unchangedFiles": [
+    "scripts/qa-planet-arrival-spatial.mjs",
+    "scripts/qa-planet-arrival-x11.py",
+    "app/game/PlanetArrivalCinematic.tsx",
+    "app/game/PlanetArrivalCinematic.module.css",
+    "app/game/systems/planetArrivalPresentation.ts",
+    "app/game/systems/planetArrivalSpatial.ts",
+    "app/game/systems/planetArrivalShipMotion.ts",
+    "app/game/HunterRigPreview.tsx",
+    "app/game/hunterRig.ts",
+    "package.json",
+    "package-lock.json",
+    ".github/workflows/planet-arrival-spatial.yml"
+  ],
+  "decision": "Keep the failure and rejected evidence. Re-run the unchanged recipe on the corrected candidate. No late image is accepted, no timing boundary is relaxed, and no arrival source change is justified by this failure alone."
+}

@@ -667,6 +667,8 @@ export interface SaveGame {
   companionResidence?: import("./systems/companionResidence").CompanionResidenceState | null;
   /** Replayed physical incidents at the existing clan terminals, OPS-B01/B02/B03. */
   clanShipIncidents?: import("./systems/clanShipIncidents").ClanShipIncidentsState | null;
+  /** Optional C-37 invitations and common hearing; historical incident receipts stay unchanged. */
+  clanShipTrophyHearing?: import("./systems/clanShipTrophyHearing").ClanShipTrophyHearingState | null;
   /** Null preserves pre-prologue adult campaigns without retroactive narrative proof. */
   prologue: NurseryCampaignProgress | null;
   /** Actual Unblooded exercises and equipment; never the adult starter loadout. */
