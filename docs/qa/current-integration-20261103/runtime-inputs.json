@@ -5,8 +5,8 @@
     "bytes": 264999,
     "sha256": "8eee8a5f5a043f2a67477bc6bcff97fffb1ee1666864bd7aed60c7a6c21ca138"
   },
-  "files": 2179,
-  "bytes": 1092739599,
+  "files": 2201,
+  "bytes": 1093112163,
   "entries": [
     {
       "path": ".openai/hosting.json",
@@ -15,8 +15,8 @@
     },
     {
       "path": ".vercelignore",
-      "bytes": 977,
-      "sha256": "ef41967897eb96700366dc5f4f45492341933a38cc86e1f2d43c0c1a69036725"
+      "bytes": 1078,
+      "sha256": "a5a1a1a15baf33073032d44bf32a48f8ad6ea9fc73b1883664907cafab56c5cf"
     },
     {
       "path": "app/chatgpt-auth.ts",
@@ -45,8 +45,8 @@
     },
     {
       "path": "app/dev/destinations.ts",
-      "bytes": 15480,
-      "sha256": "d47184789fe95e9834152964375d961296280ab52d09401fdab6da786853c2a7"
+      "bytes": 16343,
+      "sha256": "0b756432bb3bd2619707ca46bc85023d5f015631d108c68e33d7ace9cb6acb25"
     },
     {
       "path": "app/dev/dev-travel.module.css",
@@ -70,8 +70,8 @@
     },
     {
       "path": "app/dev/session.tsx",
-      "bytes": 29465,
-      "sha256": "3bb2e9d50d71b2e89691e643fc67f7146652567acc8cb596e6c4f46ab6233382"
+      "bytes": 30931,
+      "sha256": "857f9825d7889ea5ba8320ee197a26c702d153263f249c52908e4947349ab6bc"
     },
     {
       "path": "app/dialogues/page.tsx",
@@ -104,6 +104,26 @@
       "sha256": "df463fe45487a3d6a118027bf1668a0ba828a40f522ebaca68d1a3472bdbaa7c"
     },
     {
+      "path": "app/game/BuriedCradleReturnPanel.module.css",
+      "bytes": 2115,
+      "sha256": "19ed212127c1089bc6f62754f5f69e065ae472beeebb3ce8bee192b5dd8b4a19"
+    },
+    {
+      "path": "app/game/BuriedCradleReturnPanel.tsx",
+      "bytes": 8976,
+      "sha256": "3f144961fcabcef5b227e7324bff517311cac774e919cdaeea92bb1cc9238793"
+    },
+    {
+      "path": "app/game/BuriedCradleScene.module.css",
+      "bytes": 3236,
+      "sha256": "d556096e414cdd5a6f6bea38264ba70404188c593e6d8b12d06aafa4cda6dbe0"
+    },
+    {
+      "path": "app/game/BuriedCradleScene.tsx",
+      "bytes": 29571,
+      "sha256": "157bcfbf1d7c55c04bd9c4631fa3555d0d82c7fbbb29433a21937e58b6521836"
+    },
+    {
       "path": "app/game/CampaignFrontEnd.tsx",
       "bytes": 11182,
       "sha256": "8411ac25f91bdc4871a995c5d0957c06cda687db784269c62f6798dabe3af0c2"
@@ -115,8 +135,8 @@
     },
     {
       "path": "app/game/CampaignMainMenu.tsx",
-      "bytes": 41953,
-      "sha256": "512a178b8bb47cfc8582e759f6c7e3fac38f8a5eb629a3032bc755c2184dfb3e"
+      "bytes": 42028,
+      "sha256": "dfa40bb4c0bc7789d4232242e0790750081f233f9c0b00384ebc9df4eff1e311"
     },
     {
       "path": "app/game/CatalogueHunterBrowser.tsx",
@@ -155,18 +175,38 @@
     },
     {
       "path": "app/game/ClanShipHub.tsx",
-      "bytes": 16291,
-      "sha256": "d77dd3fb94577ee0ad2e38fe14bb0af83714152bd3f2418b0777ffa08dda672b"
+      "bytes": 16634,
+      "sha256": "59392b7b6dd56ba63a47f64e8cd1c97fc57bc0d75f226ced3dfe0a6f8496e36a"
+    },
+    {
+      "path": "app/game/ClanShipIncidentPanel.module.css",
+      "bytes": 4411,
+      "sha256": "3ee940c9b24c7c15b90ae87258a3142180792dc18c43d5d85e753a1fb7d46e9a"
+    },
+    {
+      "path": "app/game/ClanShipIncidentPanel.tsx",
+      "bytes": 12601,
+      "sha256": "41895122826fa9f2835abe2062fe18f087b8808cba053a4719c24f9d6fd4d3ec"
+    },
+    {
+      "path": "app/game/ClanShipIncidentScene.module.css",
+      "bytes": 3407,
+      "sha256": "b45122031d73dbae45a26b27cfafa0a4fe1761370f5691ad252913fac0c7ce4a"
+    },
+    {
+      "path": "app/game/ClanShipIncidentScene.tsx",
+      "bytes": 9161,
+      "sha256": "9a970ac8b47c026dde35edb6d3944d77bd06847d88274e6a63d8c5ea39e11cd4"
     },
     {
       "path": "app/game/ClanShipInterior.module.css",
-      "bytes": 12381,
-      "sha256": "be3baff226c7e8575f5eef6a66e81d86a4a4180beb92bee9385d893e2cd3a7bd"
+      "bytes": 12697,
+      "sha256": "7fd90031c2f115a5025f0b7804e5f6f14c9f71df69ffd11d2b08d08bdafe5ad8"
     },
     {
       "path": "app/game/ClanShipInterior.tsx",
-      "bytes": 34572,
-      "sha256": "be082652a8c60f1b8dc89e47542c81903cef060629748c90570f9239b4c83711"
+      "bytes": 38550,
+      "sha256": "dd1c9a9664ca3413d8326124e8a5b01fe51dc90a2f1e2a6944a010019e126bca"
     },
     {
       "path": "app/game/ClanShipOperationsPanel.module.css",
@@ -175,8 +215,8 @@
     },
     {
       "path": "app/game/ClanShipOperationsPanel.tsx",
-      "bytes": 19857,
-      "sha256": "eed9111fe4c3088f7b12a18876f064bca3bbe517575b620c9e8c3807db79c34b"
+      "bytes": 20619,
+      "sha256": "5061870449cdefc85c86757c2e1ddff03254d288bbc644620b44866f09d92bdd"
     },
     {
       "path": "app/game/ClanShipSpaceEncounter.module.css",
@@ -444,6 +484,26 @@
       "sha256": "bd1d548224d0f062bad3d9a34f811265f1cf5209a0d5609b93fdc7dd409f1d14"
     },
     {
+      "path": "app/game/CompanionQuartersScene.module.css",
+      "bytes": 1042,
+      "sha256": "cd1dccabd39175a23d791daa78220109b0a000c4e05c97fbc82705aa544edfc3"
+    },
+    {
+      "path": "app/game/CompanionQuartersScene.tsx",
+      "bytes": 6919,
+      "sha256": "fc6d46af6d4acdbd9d328313ec61e24307408ae710b46834f1bd2573178f1904"
+    },
+    {
+      "path": "app/game/CompanionResidencePanel.module.css",
+      "bytes": 5163,
+      "sha256": "eddc45dc36446629677395d5d6132afc0cafe570c03ba93d5f6d64188f8d5dc5"
+    },
+    {
+      "path": "app/game/CompanionResidencePanel.tsx",
+      "bytes": 18611,
+      "sha256": "d32184d49777f62f56b9394691dcdc047d42f5814b70143b68c73a7a0a7a8992"
+    },
+    {
       "path": "app/game/ConservationPanelV112.module.css",
       "bytes": 1965,
       "sha256": "374da9b461a5bef48d742bf60b7f455e6873e44874ac9514af1cefd5ac0940ce"
@@ -595,8 +655,8 @@
     },
     {
       "path": "app/game/GameClient.tsx",
-      "bytes": 344145,
-      "sha256": "992c07dec64f7b4061b7d06ab2b57fe25fa065e6006b1e78eba9927e66658d64"
+      "bytes": 360838,
+      "sha256": "4aeb5fa907dc5779d8d298a2412dcef3c531a25f4e06551b818cf98460d4287c"
     },
     {
       "path": "app/game/GameReserveEntryV104.module.css",
@@ -1310,8 +1370,8 @@
     },
     {
       "path": "app/game/PhysicalShipDeck.tsx",
-      "bytes": 26584,
-      "sha256": "bf2fae1c7d79088825f48b488985bf2628968b8d402c7bcf89066fcbff4f55cf"
+      "bytes": 26996,
+      "sha256": "d3efb8a52b7a9b24f8370a9ec2ca4b6a0b56f541b899f72177042027fd17bbff"
     },
     {
       "path": "app/game/PilotExplorationMap.tsx",
@@ -1590,8 +1650,8 @@
     },
     {
       "path": "app/game/ShipInterior25D.tsx",
-      "bytes": 30403,
-      "sha256": "2b11c7f06d35fa73424d635e41f452eb7576f611c10e3421a379a259c82d2a6c"
+      "bytes": 34888,
+      "sha256": "36ac222de234e3513a62be0c9b7e279f5d9631d165b8a82353832e03220d9e15"
     },
     {
       "path": "app/game/ShipLevelScene.tsx",
@@ -1734,6 +1794,11 @@
       "sha256": "4ec420a7d38b4c58862937cc6ec57f5ea4d171b458b67d16f5420cb4dbadb2f0"
     },
     {
+      "path": "app/game/clanShipIncidentArt.ts",
+      "bytes": 1042,
+      "sha256": "f2557bd61963791ed7f0ccc3cb2c86c319e554fb9b7e0735f9ddd3a949e12972"
+    },
+    {
       "path": "app/game/clanWarBibleV6Source.json",
       "bytes": 1362699,
       "sha256": "ce27085c44196fefa600407f0bc46cbb74934eb5437126b29d03d35a1e7a751d"
@@ -1742,6 +1807,16 @@
       "path": "app/game/clanWarV85Source.json",
       "bytes": 993059,
       "sha256": "58c77e7f555db2f61c8cf3905c0ae94798db9bdd10f66a5d58efd2cfe5a29114"
+    },
+    {
+      "path": "app/game/companionPilotArt.ts",
+      "bytes": 1762,
+      "sha256": "3bc4553f264ad08fc5041dc345688e5693cd691f04bbf8dad715472ad24a7acb"
+    },
+    {
+      "path": "app/game/companionQuarterArt.ts",
+      "bytes": 3924,
+      "sha256": "479427304112cc86d9c976a3e0471d084ef645b284bf255711a6d6ba5d4613e3"
     },
     {
       "path": "app/game/conceptBiomasksV133.ts",
@@ -1787,6 +1862,11 @@
       "path": "app/game/data/bibleSceneCulturalV86.json",
       "bytes": 19124,
       "sha256": "97f97edc8d7daaabc5accf47b516e59f62ecbdcd52132a21fd73f1275fd6786f"
+    },
+    {
+      "path": "app/game/data/buriedCradleArt.json",
+      "bytes": 93141,
+      "sha256": "91406f6dc1578cbad57ebd5b70739de5a95799b36b4b9116b49783eff6b70e72"
     },
     {
       "path": "app/game/data/campaignTrainingSourceV90.json",
@@ -3180,8 +3260,8 @@
     },
     {
       "path": "app/game/save.ts",
-      "bytes": 92628,
-      "sha256": "eb4858a4a977bf34215e1872832fa5f0993f0deafd7818d22b7941aa8f4871cf"
+      "bytes": 95052,
+      "sha256": "c49fed5014730a39c13a088b2be16bf2a08d5a13f036280862d4815e674db07e"
     },
     {
       "path": "app/game/ship-level.css",
@@ -3275,8 +3355,23 @@
     },
     {
       "path": "app/game/systems/buriedCradle.ts",
-      "bytes": 30050,
-      "sha256": "efb4606b0975d4932c855f4b423ed7e4d53c7c553870f870a6d3f2eeffcfec76"
+      "bytes": 31346,
+      "sha256": "c9790d265dfb3810e67cc2d7219b6593778287d2e34ee5e9189d14554bd78a30"
+    },
+    {
+      "path": "app/game/systems/buriedCradleCampaign.ts",
+      "bytes": 15366,
+      "sha256": "c5ad2faa3698056cf5010f486be3929dd56078bb6fefc8d5325962486cb42e7d"
+    },
+    {
+      "path": "app/game/systems/buriedCradleReturn.ts",
+      "bytes": 5607,
+      "sha256": "72417d7f1445d9744be357d849cd949ed46e280b49e8359e053dde606459d16a"
+    },
+    {
+      "path": "app/game/systems/buriedCradleSnapshot.ts",
+      "bytes": 7952,
+      "sha256": "ce150ae7a269ffd7d459901bff37f7e71eacf9f3457bfb0fe3c4798af1054b58"
     },
     {
       "path": "app/game/systems/campaignResumePriorityV94.ts",
@@ -3285,8 +3380,8 @@
     },
     {
       "path": "app/game/systems/campaignSlots.ts",
-      "bytes": 55439,
-      "sha256": "8618e369d313558b8334025e97cfdd732ec6db84ea69f6dccfabb0d88fc75c00"
+      "bytes": 55793,
+      "sha256": "edb7699993c8e339f760b11333bff131c92ef9b893f24375c28445495638e64a"
     },
     {
       "path": "app/game/systems/campaignSoloV66.ts",
@@ -3364,19 +3459,29 @@
       "sha256": "adcd1bee2a92f8893e8fb31ee1df32a2b009fbaa416db66900a868dac84076cb"
     },
     {
+      "path": "app/game/systems/clanShipIncidents.ts",
+      "bytes": 39663,
+      "sha256": "b612218e1fbf2ea7bc92d7767fbfb7b09eaa0805a13d161b759389821ffa2ce9"
+    },
+    {
       "path": "app/game/systems/clanShipInterior.ts",
       "bytes": 18139,
       "sha256": "2cfab1522c07cfb171527f3f3e2257dbd44be9bb9c50fbcdbff8df55ad44d93d"
     },
     {
       "path": "app/game/systems/clanShipOperations.ts",
-      "bytes": 49521,
-      "sha256": "88b7ce64f121e5f608d754fce8927681d3f705de9f5a66b77d5879c632da3a3b"
+      "bytes": 49811,
+      "sha256": "c066bdd255db4041f72a808800284a26bcf6c7151034c140d80dc91b4c4c82ee"
     },
     {
       "path": "app/game/systems/clanShipSpaceEncounter.ts",
       "bytes": 22676,
       "sha256": "fc83b432bf63fb6ce006ae5b6460c67b389ec4ce113c72d527c9e749a6b0f3a0"
+    },
+    {
+      "path": "app/game/systems/clanShipTrophyCase.ts",
+      "bytes": 4188,
+      "sha256": "6399c8c0f6d6eb4c385b194113f0e2f0e2699d4a7972dc44a22979d46b688c8c"
     },
     {
       "path": "app/game/systems/clanSupplyRouteV109.ts",
@@ -3964,9 +4069,14 @@
       "sha256": "52ae87b7c086a37e6115bd2a9b293c6656572a4fbef3483504474ee46cad9606"
     },
     {
+      "path": "app/game/systems/companionResidence.ts",
+      "bytes": 60010,
+      "sha256": "83432416fb6869c65db49d5d67fa8a46a984227cf9e4831a837ea273c0545767"
+    },
+    {
       "path": "app/game/systems/completeArchive.ts",
-      "bytes": 14808,
-      "sha256": "77841210aaa59bcd2afa4bd5894ae3b1b2cf2518908dff18d83f28b7cd87248a"
+      "bytes": 15088,
+      "sha256": "ede5f95c54bcbd33945b8c9271f42001fd8b7c5d46740cabdda873903444e1e5"
     },
     {
       "path": "app/game/systems/controlBindings.ts",
@@ -5870,8 +5980,8 @@
     },
     {
       "path": "app/game/types.ts",
-      "bytes": 19853,
-      "sha256": "f57a70fb180a0476ca516e7f45d458ed0cb9c6fcd93f2f7e17cf33e0399f31bb"
+      "bytes": 20394,
+      "sha256": "1ba340e4d427960d6fa2cb0e92742bb07a5ed221adb57bf2105a4c4584d3c606"
     },
     {
       "path": "app/game/useGeneratedWarCatalogV102.ts",
@@ -10895,8 +11005,8 @@
     },
     {
       "path": "tsconfig.json",
-      "bytes": 763,
-      "sha256": "68f61c668f5f11f1b5c76f47b10d75b06e29221099922ee260c0795fb5f98271"
+      "bytes": 780,
+      "sha256": "c1f4de03fdbff77c1d1480dd17f5d5d95ea7cb3fd10d63f7fe0e39b949b0762b"
     },
     {
       "path": "vercel.json",
