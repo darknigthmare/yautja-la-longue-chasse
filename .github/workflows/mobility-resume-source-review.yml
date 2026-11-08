@@ -1,0 +1,56 @@
+name: Mobility resume source review
+on:
+  push:
+    branches: [feat/mobility-garage-gameplay-20261108]
+    paths: [.github/workflows/mobility-resume-source-review.yml]
+permissions:
+  contents: read
+jobs:
+  snapshot:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 1
+          persist-credentials: false
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /*
+            !/*/
+            /app/
+            /scripts/
+            /tests/
+            /types/
+            /docs/campagne/mobilite/
+            /production/mobility-20261108/
+            /production/homeworld-sectors-20261103/YAUTJA_MARCHE_MONTURES_CHENILS_20261103.xlsx
+            /public/**/*.json
+            /public/game/mobility/
+            /.github/workflows/
+      - name: Archive current code and the frozen pending bundle without execution
+        run: |
+          python3 - <<'PY'
+          import hashlib,json,subprocess,urllib.request,zipfile
+          from pathlib import Path
+          url='https://d2ol7oe51mr4n9.cloudfront.net/user_3JHwJlNzgmcxQy32tjF7NiVZPuH/3119e5a7-bae6-48a8-bd13-59dc154eded1.zip'
+          with urllib.request.urlopen(url,timeout=45) as response:data=response.read(370946)
+          assert len(data)==370945 and hashlib.sha256(data).hexdigest()=='71b7193848cff478fb8acdf81283d0f5068515e3541443315feb0be1c1386e9f28'
+          Path('pending-v13.zip').write_bytes(data)
+          files=subprocess.check_output(['git','ls-files','-z']).decode().split('\0');records={}
+          with zipfile.ZipFile('mobility-resume-source.zip','w',zipfile.ZIP_DEFLATED) as z:
+            for name in files:
+              p=Path(name)
+              if name and p.is_file() and p.stat().st_size<5_000_000 and not ('/qa/' in name and p.suffix=='.png'):
+                body=p.read_bytes();z.writestr(name,body);records[name]=hashlib.sha256(body).hexdigest()
+            z.writestr('RESUME_SOURCE.json',json.dumps({'head':subprocess.check_output(['git','rev-parse','HEAD']).decode().strip(),'files':records}))
+          print(json.dumps({'tracked_files':len(records),'pending_bytes':len(data),'code_executed':False}))
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: mobility-resume-source-review
+          path: |
+            mobility-resume-source.zip
+            pending-v13.zip
+          retention-days: 3
