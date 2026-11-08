@@ -111,7 +111,7 @@ jobs:
       - name: Preserve verified evidence and publish this branch only
         run: |
           python3 - <<'PY'
-          import hashlib,json,os,shutil,subprocess
+          import hashlib,json,os,subprocess
           from pathlib import Path
           source=subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip()
           target=Path('production/mobility-20261108/qa/native-v12');assert not target.exists();target.mkdir()
@@ -123,7 +123,12 @@ jobs:
           assert len({p.name for p in paths})==len(paths)
           records=[]
           for p in paths:
-            shutil.copyfile(p,target/p.name);records.append({'file':p.name,'bytes':p.stat().st_size,'sha256':hashlib.sha256(p.read_bytes()).hexdigest()})
+            original=p.read_bytes()
+            # Keep npm's raw log in the artifact. Only terminal empty lines are
+            # normalized for its Git copy, with both fingerprints recorded.
+            body=original.rstrip(b'\r\n')+b'\n' if p.name=='typecheck.txt' else original
+            (target/p.name).write_bytes(body)
+            records.append({'file':p.name,'bytes':len(body),'sha256':hashlib.sha256(body).hexdigest(),'source_sha256':hashlib.sha256(original).hexdigest(),'terminal_newlines_normalized':p.name=='typecheck.txt'})
           report={'source_commit':source,'delivery_manifest_sha256':'0db35813503c716e2768e38567d77f962bb7433458c8ae97d22c02fe59da2c61','workflow_run':os.environ['GITHUB_RUN_ID'],'tests_passed':200,'native_checks_passed':29,'control_checks_passed':12,'full_typecheck_passed':True,'workbook_sheets':24,'formulas':780,'files':records,'scope':'Actual React component, reducer and writer; adult funding fixture, API gamepad, not full Homeworld journey or physical pad.'}
           (target/'RESULT.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n')
           subprocess.run(['git','add','--',str(target)],check=True)
