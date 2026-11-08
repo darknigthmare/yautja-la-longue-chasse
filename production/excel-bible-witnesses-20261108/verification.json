@@ -1,0 +1,150 @@
+{
+  "schemaVersion": 1,
+  "asOfUtc": "2026-11-08T16:17:56.333338+00:00",
+  "scope": "OPS-B03: common hearing of C-37 witnesses with ordered recorded telemetry, optional versioned save journal and existing incident reward transaction.",
+  "baseline": {
+    "localCommit": "5d0c8d9202c15c1b15c2b613a779d0f2877c0406",
+    "publishedEquivalentCommit": "ba6ae38a694a490e2eccd75fc151db02d607154b",
+    "publishedBaselineTree": "58f8b2a6807f250972e2af6296206dad5c06faa5",
+    "pullRequest": "https://github.com/darknigthmare/yautja-la-longue-chasse/pull/128",
+    "currentInputsCorrectionCommit": "44aff718e48a69f6158df7515489c371eed4f94b"
+  },
+  "tests": {
+    "exitCode": 0,
+    "total": 448,
+    "passed": 448,
+    "failed": 0,
+    "skipped": 0,
+    "cancelled": 0,
+    "elapsedMilliseconds": 55060.015919,
+    "commandFile": "qa/tests-command.json",
+    "log": "qa/tests-run.txt",
+    "newTestsIncluded": 22,
+    "newTestBreakdown": {
+      "hearingDomainAndSave": 12,
+      "realComponentServerRendering": 8,
+      "interiorControllerEdges": 2
+    },
+    "note": "The 22 new tests and the targeted agent checks are included in the 448, not additional totals."
+  },
+  "lint": {
+    "exitCode": 0,
+    "warningsAllowed": 0,
+    "fileCount": 16,
+    "commandFile": "qa/lint-command.json",
+    "log": "qa/lint.txt"
+  },
+  "typecheck": {
+    "exitCode": 0,
+    "command": "node node_modules/typescript/bin/tsc --noEmit",
+    "log": "qa/typecheck.txt"
+  },
+  "build": {
+    "command": "NODE_OPTIONS=--max-old-space-size=3072 NEXT_TELEMETRY_DISABLED=1 npm run build:production",
+    "exitCode": 0,
+    "elapsedSeconds": 23.744,
+    "log": "qa/production-build.txt",
+    "reason": "Build with all native inputs restored and durable process exit receipt.",
+    "attempts": "qa/build-attempts.json",
+    "pipeline": "scripts/build-production-v94.mjs",
+    "limits": [
+      "The Vercel native-origin and static-output steps correctly skip outside the exact Linux Vercel build root. This local build is not a production deployment receipt."
+    ]
+  },
+  "runtimeInputs": {
+    "report": "qa/runtime-inputs.json",
+    "manifest": "docs/qa/current-integration-20261103/runtime-inputs.json",
+    "manifestSha256": "8773e11a7d6112d962a7eb825b5b6023e5442751367f66c17ea4f61c8905b3f0",
+    "officialWriteExitCode": 0,
+    "officialCheckExitCode": 0,
+    "historicalFreezesUnchanged": true
+  },
+  "browser": {
+    "validated": false,
+    "reason": "Local Chromium fails before a page loads: AF_UNIX socket creation is denied with EPERM. Shared Chrome cannot connect to executor localhost.",
+    "attempts": [
+      "qa/browser/launch-probe.json",
+      "qa/browser/socket-probe.json",
+      "qa/browser/shared-browser-probe.json"
+    ],
+    "recipe": "scripts/qa-clan-trophy-hearing-browser-20261108.mjs",
+    "fixtureDisclosure": "qa/browser/fixture-disclosure.json",
+    "fixturePreparedByProductionReducers": true,
+    "fixtureContainsHearingProgress": false,
+    "fixtureSha256": "c57c06fd338f34cfc93c4590d70c1c7b9ad56bd132d5e385551333703d076492",
+    "futureCiWorkflow": ".github/workflows/clan-ship-docking.yml",
+    "ciReceiptAvailableAtThisReport": false,
+    "serverRenderingTestsPassed": 8,
+    "serverRenderingIsBrowserValidation": false
+  },
+  "controller": {
+    "physicalDeviceValidated": false,
+    "inputModelTestsPassed": true,
+    "note": "Native menu routing and release gating were tested; no physical controller session is claimed."
+  },
+  "humanArtValidated": false,
+  "newRasterAssets": 0,
+  "rendering": {
+    "actorIdentity": "Existing ash-scar and cold-trace native sprites; normal post avatars are suppressed only during the common hearing. Installed quarters are preserved.",
+    "telemetry": "Exact SVG labels B-17 and T-04 reproduce the original case records; playback alone never grants evidence.",
+    "travel": "Announced scene transition after both invitations; no new walking animation is claimed."
+  },
+  "compatibility": {
+    "incidentSchemaVersion": 2,
+    "optionalHearingSchemaVersion": 1,
+    "oldSequentialCaseHistoryPreserved": true,
+    "rewardClanMarks": 35,
+    "rewardOnlyOnce": true,
+    "maximumHearingEvents": 7
+  },
+  "remaining": [
+    "Native browser desktop/mobile recipe and screenshots on the exact published revision.",
+    "Physical controller trial and human artistic review.",
+    "Global OPS-Q26 completion.",
+    "OPS-B04 and R2-M027 are outside this tranche."
+  ],
+  "sourceSha256": {
+    ".github/workflows/clan-ship-docking.yml": "1d0c1940f366c597304dadde0d4559da9c15d53d1e0b0502d2f55ebda2818772",
+    "app/game/ClanShipIncidentPanel.module.css": "a556d9c83393b65bedd8bc6aafd55afd86a189ee19dc298b8fb039f7e165f511",
+    "app/game/ClanShipIncidentPanel.tsx": "dd4b577cd711282bf46d7c4d3df297b61f6876d2c7035f5a29138fa742dba69d",
+    "app/game/ClanShipIncidentScene.module.css": "db8e61027d6f79965852d482f88fb6910cfc927a00f24ff3777f58a22c6b58a0",
+    "app/game/ClanShipIncidentScene.tsx": "115af50a38cf547fbaa2d4813fefe288860a2bee90012eb1c53b1d8548c2a998",
+    "app/game/ClanShipInterior.tsx": "6894668bdb4bf321e04705e02c84d8c8ff12ed85570157cf0a72bc6f0abb85a0",
+    "app/game/ClanShipTrophyTelemetry.module.css": "ef6eb3629648e15fd7fb66b29660797e382ef0fc144d5d6c9a225b7fc89e1e6e",
+    "app/game/ClanShipTrophyTelemetry.tsx": "c488d891d8585eb632160ae2c0cf12e9e276507604e36cf70c108bf5506a6d9f",
+    "app/game/CompanionQuartersScene.tsx": "4960d8f09af797af8635d95ccd80c82c2c9f8011e3f933984e477bd150822a01",
+    "app/game/GameClient.tsx": "916cdf0773a8d26b2e26fde9d3a636aca79d900283ca05dc063c4fe42aedc8df",
+    "app/game/save.ts": "17a5e2ccbfe9923a32a4a469ee6e5a3573eee935dbce8e7bc8572381cab75b29",
+    "app/game/systems/clanShipIncidents.ts": "f17a007b246f264881323b823d4f655c597b77a8524fd662a5f0d02454649a00",
+    "app/game/systems/clanShipInterior.ts": "4f8cbf8512dd88e19d36659d73a560615ce48cb13ae2498304372305cb944096",
+    "app/game/systems/clanShipTrophyHearing.ts": "43012e17f797eb0d0fc63746e56678fffa05e18c68db230610de34b53b98323b",
+    "app/game/types.ts": "98678751a44f09371f82460907b24cde62ed90886cc1f98014827c25b9e99b29",
+    "scripts/build-excel-bible-witnesses-20261108.mjs": "3120e8c8fb5ed0279281a52c0669c89064646ba91b92a0715a1fb8a3dfe7c536",
+    "scripts/qa-clan-trophy-hearing-browser-20261108.mjs": "75e2094498a7af2450f66b8c73e791465da63daf77bc2dd8f4b65c9aaefcfdf7",
+    "tests/clan-ship-interior.test.mjs": "54899c245e1a9f9c22c67e5eb81fd78513ce6c93c7c49ac80f81795060aba241",
+    "tests/clan-ship-trophy-hearing-presentation.test.mjs": "8f590dbecabcdb235270dd09569e8d9a14cf342cd579f0a5e77a7cee5542be8f",
+    "tests/clan-ship-trophy-hearing.test.mjs": "140e3e2e88625f91227cd71b222af95338457bfba1af76dabd3ed2ceb1775f09",
+    "tests/helpers/clan-ship-trophy-hearing-fixture.mjs": "0bd4652c6ef45122e49b49fb3d5398968d151422583261b84c34b95db9105772"
+  },
+  "evidenceSha256": {
+    "qa/browser/README.md": "70b592192403e435d8e7b8b2cb1550a6df7da22f3e0f1b1d9cbe2e2530427cfa",
+    "qa/browser/fixture-disclosure.json": "5be29df5b3f8e8efcfb6372a5096f50c479eb5f296797d2dafc914029844efbb",
+    "qa/browser/initial-C37-fixture.json": "c57c06fd338f34cfc93c4590d70c1c7b9ad56bd132d5e385551333703d076492",
+    "qa/browser/launch-probe.json": "b0941715f9746117bdceb98cb57a1cec07100c387ca9734ef85c02dc2753e50f",
+    "qa/browser/shared-browser-probe.json": "15d0876bc546ca2d2d7ae00cb226fd2d8b0675e2547ccba4dd50578659d3bc1e",
+    "qa/browser/socket-probe.json": "f26aa7c605ea0d902a4201ec0a3f7bc2b6a101605e89ff2b9db172fb5f4feea7",
+    "qa/build-attempts.json": "6420626cf761c5ae7c3c797d32b91644f6b43f88f9613f7383d91a1223a254b1",
+    "qa/build-result.json": "ccb550970d107036941c4f298089280684c879b1f878d954a1452db2463b1456",
+    "qa/lint-command.json": "ec1cb9db2e9dd12703d333a8d1ec1f8ab60bdbfe7c923160b4d7a3b098b7437b",
+    "qa/lint.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "qa/production-build-attempt-1.txt": "a9921d4e7a0e72ab14252ff6bb8932b07c3600f447ef63dd3a0014619b7bd89c",
+    "qa/production-build-attempt-2.txt": "38d1e439b434381a42c93c06565bb1c8e4eaa22b88ae634330b5cb33b4c6aadd",
+    "qa/production-build.txt": "4b3ceb1a74455ba34d67f49cee603887166f472d0d603321ba3317b0979dad6f",
+    "qa/runtime-inputs-check.log": "569d05112e1d77bc7ec2f96aaa34ef554dfd01d1dfc6e27bcef41002635cfec9",
+    "qa/runtime-inputs-write.log": "793beb35bcb5d91dd9d9d0a7a49bb209bf13f777b8114a5cb5555ed568cf1190",
+    "qa/runtime-inputs.json": "aa8b336dd496c77c1899074157d100e30e77c8ced8f8c4d55fa0fa5b83188bcc",
+    "qa/tests-command.json": "7726f663eb5660eafcc527805d0641f87ee73ca88a823c09ae5cb7df7043f37f",
+    "qa/tests-run.txt": "96cc5e084adf624dd863f12fb4a0027a0e976d4dd54412b39faee4af008086b5",
+    "qa/typecheck.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+}

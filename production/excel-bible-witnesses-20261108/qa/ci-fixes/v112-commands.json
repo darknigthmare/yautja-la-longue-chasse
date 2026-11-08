@@ -1,0 +1,27 @@
+{
+  "redAndGreen": [
+    "node",
+    "--experimental-strip-types",
+    "--test",
+    "--test-name-pattern=lifecycle browser harness",
+    "tests/conservation-persistence-ui-v112.test.mjs"
+  ],
+  "regressions": [
+    "node",
+    "--experimental-strip-types",
+    "--test",
+    "--test-reporter=spec",
+    "--test-concurrency=1",
+    "tests/conservation-persistence-ui-v112.test.mjs",
+    "tests/harvest-inventory-v112.test.mjs",
+    "tests/companion-residence.test.mjs",
+    "tests/game-client-ship-flow.test.mjs"
+  ],
+  "lint": [
+    "node",
+    "node_modules/eslint/bin/eslint.js",
+    "scripts/qa-hunt-lifecycle-browser-v112.mjs",
+    "tests/conservation-persistence-ui-v112.test.mjs",
+    "--max-warnings=0"
+  ]
+}

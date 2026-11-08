@@ -1,0 +1,300 @@
+{
+  "version": 1,
+  "asOfDate": "2026-11-08",
+  "baseCommit": "5d0c8d9",
+  "readyForWorkbook": true,
+  "runtimeReport": "production/excel-bible-witnesses-20261108/verification.json",
+  "scope": "Complément OPS-B03 : audience commune C-37. Les critères dérivés ne réécrivent ni OPS-B03 ni OPS-Q26 dans les classeurs historiques.",
+  "phases": [
+    "implementation",
+    "domainTested",
+    "ssrTested",
+    "browserTested",
+    "controllerTested",
+    "humanArtReviewed"
+  ],
+  "sourceReferences": [
+    {
+      "id": "B03",
+      "kind": "Critère source",
+      "path": "production/clan-ship-20261104/clan-ship-operations-20261105.xlsx",
+      "detail": "Opérations!60 · OPS-B03 : comparer marques et télémétrie puis restituer devant deux témoins."
+    },
+    {
+      "id": "Q26",
+      "kind": "Critère source",
+      "path": "production/clan-ship-20261104/clan-ship-operations-20261105.xlsx",
+      "detail": "Recette!35 · OPS-Q26 : objets, espace modifié, échec/reprise et sortie praticable ; périmètre plus large que cette audience."
+    },
+    {
+      "id": "SUIVI-1",
+      "kind": "Ancien suivi",
+      "path": "production/excel-bible-20261108/suivi/Yautja_Suivi_Excel_Bible_20261108.xlsx",
+      "detail": "Suivi consolidé 04eb4ca ; 108 classeurs d'origine."
+    },
+    {
+      "id": "SUIVI-2",
+      "kind": "Ancien suivi",
+      "path": "production/excel-bible-suite-20261108/suivi/Yautja_Suite_Excel_Bible_20261108.xlsx",
+      "detail": "Suite 5d0c8d9 ; C-37 séquentiel et retour du Berceau."
+    },
+    {
+      "id": "DOM",
+      "kind": "Preuve courante",
+      "path": "tests/clan-ship-trophy-hearing.test.mjs",
+      "detail": "12 tests du domaine et des sauvegardes de l'audience."
+    },
+    {
+      "id": "SSR",
+      "kind": "Preuve courante",
+      "path": "tests/clan-ship-trophy-hearing-presentation.test.mjs",
+      "detail": "8 tests React SSR des vrais composants ; aucune validation de pixels, hydratation ou jeu navigateur."
+    },
+    {
+      "id": "INPUT",
+      "kind": "Preuve courante",
+      "path": "tests/clan-ship-interior.test.mjs",
+      "detail": "Routage des entrées ; ne constitue pas un essai avec une manette physique."
+    },
+    {
+      "id": "VERIF",
+      "kind": "Rapport courant",
+      "path": "production/excel-bible-witnesses-20261108/verification.json",
+      "detail": "Résultats finaux de la suite, build, lint et limites de recette."
+    },
+    {
+      "id": "NAV",
+      "kind": "Recette préparée",
+      "path": "scripts/qa-clan-trophy-hearing-browser-20261108.mjs",
+      "detail": "Vrai GameClient, sauvegarde initiale déclarée, invitations, 3 passages, rechargement, conclusion ; navigateur non exécuté localement."
+    },
+    {
+      "id": "BLOCAGE",
+      "kind": "Limite constatée",
+      "path": "production/excel-bible-witnesses-20261108/qa/browser/launch-probe.json",
+      "detail": "Chromium échoue avant page : création socket AF_UNIX refusée (EPERM)."
+    },
+    {
+      "id": "FIXTURE",
+      "kind": "Preuve courante",
+      "path": "production/excel-bible-witnesses-20261108/qa/browser/fixture-disclosure.json",
+      "detail": "Préconditions synthétiques via reducers natifs, import/export valide ; aucune invitation ni récompense d'audience préremplie."
+    },
+    {
+      "id": "ART",
+      "kind": "Source de rendu",
+      "path": "app/game/clanShipCrew.ts",
+      "detail": "Portraits existants instructor/01 et guide/17 ; ellipse annoncée, aucun nouveau cycle de marche."
+    },
+    {
+      "id": "REGRESSION",
+      "kind": "Preuve courante",
+      "path": "tests/clan-ship-trophy-case.test.mjs",
+      "detail": "Parcours séquentiel historique C-37, preuves, erreurs et récompense unique."
+    }
+  ],
+  "rows": [
+    {
+      "id": "C37-01",
+      "sourceKey": "Clan Ship:OPS-B03",
+      "criterion": "Inviter Balafre, puis Trace, en personne après les preuves C-37.",
+      "implementation": "Oui",
+      "domainTested": "Oui",
+      "ssrTested": "Partiel",
+      "browserTested": "À vérifier",
+      "controllerTested": "Sans objet",
+      "humanArtReviewed": "Sans objet",
+      "evidence": [
+        "DOM",
+        "SSR",
+        "NAV"
+      ],
+      "remaining": "Exercer les deux boutons dans le navigateur à portée réelle. Le SSR observe les acteurs et contrôles initiaux."
+    },
+    {
+      "id": "C37-02",
+      "sourceKey": "Clan Ship:OPS-B03",
+      "criterion": "Suivre le poste réel des témoins, sans imposer leur recrutement ni modifier leurs quartiers.",
+      "implementation": "Oui",
+      "domainTested": "Oui",
+      "ssrTested": "Oui",
+      "browserTested": "À vérifier",
+      "controllerTested": "Sans objet",
+      "humanArtReviewed": "Sans objet",
+      "evidence": [
+        "DOM",
+        "SSR"
+      ],
+      "remaining": "Rejouer avec recrues admissibles et résidents relogés sur le Clan Ship."
+    },
+    {
+      "id": "C37-03",
+      "sourceKey": "Clan Ship:OPS-B03",
+      "criterion": "Présenter les deux témoins ensemble à la galerie, sans double avatar ; conserver les modules.",
+      "implementation": "Oui",
+      "domainTested": "Oui",
+      "ssrTested": "Oui",
+      "browserTested": "À vérifier",
+      "controllerTested": "Sans objet",
+      "humanArtReviewed": "Sans objet",
+      "evidence": [
+        "DOM",
+        "SSR",
+        "ART"
+      ],
+      "remaining": "Inspecter cadrage, superposition et lisibilité desktop/mobile. Le rendez-vous est une ellipse annoncée."
+    },
+    {
+      "id": "C37-04",
+      "sourceKey": "Clan Ship:OPS-B03",
+      "criterion": "Consigner trois observations ordonnées : B-17, ajout de T-04, identité du même C-37 au retour.",
+      "implementation": "Oui",
+      "domainTested": "Oui",
+      "ssrTested": "Partiel",
+      "browserTested": "À vérifier",
+      "controllerTested": "Sans objet",
+      "humanArtReviewed": "Sans objet",
+      "evidence": [
+        "DOM",
+        "SSR",
+        "NAV"
+      ],
+      "remaining": "SSR : vue initiale B-17 et contrôles natifs. Exercer les trois vues, lecture/pause, perte de focus et mouvement réduit. Lire seul ne valide pas une preuve."
+    },
+    {
+      "id": "C37-05",
+      "sourceKey": "Clan Ship:OPS-B03",
+      "criterion": "Restituer une conclusion motivée devant les deux témoins et recueillir leurs réponses communes.",
+      "implementation": "Oui",
+      "domainTested": "Oui",
+      "ssrTested": "Partiel",
+      "browserTested": "À vérifier",
+      "controllerTested": "Sans objet",
+      "humanArtReviewed": "Sans objet",
+      "evidence": [
+        "DOM",
+        "SSR",
+        "NAV"
+      ],
+      "remaining": "Jouer les deux conclusions étayées et les renvois aux preuves ; vérifier la lecture des réponses dans le dossier."
+    },
+    {
+      "id": "C37-06",
+      "sourceKey": "Clan Ship:OPS-B03",
+      "criterion": "Conserver invitations, observations et décisions après sauvegarde, import/export et rechargement.",
+      "implementation": "Oui",
+      "domainTested": "Oui",
+      "ssrTested": "Sans objet",
+      "browserTested": "À vérifier",
+      "controllerTested": "Sans objet",
+      "humanArtReviewed": "Sans objet",
+      "evidence": [
+        "DOM",
+        "FIXTURE",
+        "NAV"
+      ],
+      "remaining": "Exécuter le rechargement réel de GameClient. Tests de domaine : données étrangères, futures ou incohérentes refusées."
+    },
+    {
+      "id": "C37-07",
+      "sourceKey": "Clan Ship:OPS-B03",
+      "criterion": "Accorder exactement 35 marques une seule fois à l'acquittement, puis rendre les postes aux témoins.",
+      "implementation": "Oui",
+      "domainTested": "Oui",
+      "ssrTested": "Oui",
+      "browserTested": "À vérifier",
+      "controllerTested": "Sans objet",
+      "humanArtReviewed": "Sans objet",
+      "evidence": [
+        "DOM",
+        "SSR",
+        "NAV"
+      ],
+      "remaining": "Confirmer le solde et la reprise dans le navigateur ; aucune récompense n'est préparée dans la fixture."
+    },
+    {
+      "id": "C37-08",
+      "sourceKey": "Clan Ship:OPS-B03",
+      "criterion": "Refuser l'audience si un témoin est indisponible, en réserve, en soins ou sur une autre coque.",
+      "implementation": "Oui",
+      "domainTested": "Oui",
+      "ssrTested": "Oui",
+      "browserTested": "À vérifier",
+      "controllerTested": "Sans objet",
+      "humanArtReviewed": "Sans objet",
+      "evidence": [
+        "DOM",
+        "SSR"
+      ],
+      "remaining": "Contrôler les messages et la reprise après retour du témoin. Aucun avatar fantôme en galerie dans les rendus SSR."
+    },
+    {
+      "id": "C37-09",
+      "sourceKey": "Clan Ship:OPS-B03",
+      "criterion": "Rendre le dossier accessible au clavier, au tactile et par le routage manette natif.",
+      "implementation": "Oui",
+      "domainTested": "Oui",
+      "ssrTested": "Oui",
+      "browserTested": "À vérifier",
+      "controllerTested": "À vérifier",
+      "humanArtReviewed": "Sans objet",
+      "evidence": [
+        "INPUT",
+        "SSR",
+        "NAV"
+      ],
+      "remaining": "Exercer focus, retour au déplacement, I/Échap, tactile puis une vraie manette. Les libellés SSR ne valident pas ces gestes."
+    },
+    {
+      "id": "C37-10",
+      "sourceKey": "Clan Ship:OPS-B03",
+      "criterion": "Recette native desktop/mobile avec persistance, captures et contrôle des assets.",
+      "implementation": "Oui",
+      "domainTested": "Sans objet",
+      "ssrTested": "Sans objet",
+      "browserTested": "Bloqué",
+      "controllerTested": "Sans objet",
+      "humanArtReviewed": "Sans objet",
+      "evidence": [
+        "NAV",
+        "BLOCAGE",
+        "FIXTURE"
+      ],
+      "remaining": "Exécuter la recette préparée en environnement navigateur fonctionnel ; échec local avant page, aucune capture de jeu validée."
+    },
+    {
+      "id": "C37-11",
+      "sourceKey": "Clan Ship:OPS-B03",
+      "criterion": "Réutiliser les portraits natifs et une télémétrie lisible ; distinguer ellipse et marche animée.",
+      "implementation": "Oui",
+      "domainTested": "Sans objet",
+      "ssrTested": "Oui",
+      "browserTested": "À vérifier",
+      "controllerTested": "Sans objet",
+      "humanArtReviewed": "À vérifier",
+      "evidence": [
+        "ART",
+        "SSR",
+        "NAV"
+      ],
+      "remaining": "Revue artistique humaine des proportions, chevauchements et signes B-17/T-04. Aucun nouveau sprite généré pour cette tranche."
+    },
+    {
+      "id": "C37-12",
+      "sourceKey": "Clan Ship:OPS-Q26",
+      "criterion": "Préserver les incidents antérieurs, les erreurs/reprises et les conclusions C-37 historiques.",
+      "implementation": "Oui",
+      "domainTested": "Oui",
+      "ssrTested": "Sans objet",
+      "browserTested": "À vérifier",
+      "controllerTested": "Sans objet",
+      "humanArtReviewed": "Sans objet",
+      "evidence": [
+        "REGRESSION",
+        "DOM",
+        "VERIF"
+      ],
+      "remaining": "OPS-Q26 reste partielle : recette jouée des incidents, sorties et reprise dans les autres situations encore requise."
+    }
+  ]
+}

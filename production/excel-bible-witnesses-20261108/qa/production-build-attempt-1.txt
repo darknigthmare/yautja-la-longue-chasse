@@ -1,0 +1,14 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> yautja-la-longue-chasse@1.0.0 build:production
+> node scripts/build-production-v94.mjs
+
+[production] audio
+[audio] 40 slots, 22 supplied, 0 ignored
+[production] next
+▲ Next.js 16.3.5 (webpack)
+✓ Running next.config.ts took 75ms
+
+  Creating an optimized production build ...
+Next.js build worker exited with code: null and signal: SIGKILL
+[production] Échec de next; les étapes suivantes ne seront pas exécutées.

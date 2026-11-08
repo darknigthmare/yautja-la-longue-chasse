@@ -1,0 +1,23 @@
+.telemetry { display: grid; gap: 12px; min-width: 0; padding: 14px; border: 1px solid #799484; border-radius: 8px; background: linear-gradient(140deg,#192f2b,#101c21); color: #e7ebd8; }
+.telemetry header { display: grid; gap: 5px; }
+.telemetry header > span { color: #b7cead; letter-spacing: .13em; font-size: 10px; }
+.telemetry header > strong { font-size: 18px; color: #f0e6c5; }
+.telemetry p { margin: 0; font-size: 12px; line-height: 1.6; }
+.steps { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 6px; }
+.telemetry button { min-height: 44px; border: 1px solid #647e6c; border-radius: 5px; color: #e4e9d5; background: #263b32; font: inherit; font-size: 12px; padding: 9px 8px; cursor: pointer; overflow-wrap: anywhere; }
+.telemetry button:disabled { cursor: not-allowed; opacity: .5; }
+.telemetry button:hover:not(:disabled) { border-color: #c0d7a9; background: #3c5140; }
+.telemetry button:focus-visible { outline: 3px solid #f4e3aa; outline-offset: 3px; }
+.steps button { display: grid; gap: 5px; text-align: left; min-width: 0; }
+.steps button[aria-pressed='true'] { border-color: #dcc48d; background: #3c4230; }
+.steps button > span { color: #c9bb8e; font-size: 10px; }
+.steps button > strong { font-size: 11px; }
+.steps button > small { font-size: 10px; color: #b9ceb8; }
+.replay { display: grid; gap: 8px; padding: 10px; border: 1px solid #395b50; border-radius: 5px; background: #0a171b; min-width: 0; }
+.replay svg { display: block; width: 100%; max-width: 400px; margin: auto; }
+.scanline { fill: none; stroke: #37594e; stroke-width: .6; }
+.replay small { color: #acc4bb; font-size: 10px; line-height: 1.6; }
+.transport { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 6px; }
+.telemetry .record { border-color: #a3b87c; background: #3b4930; }
+.telemetry .help { font-size: 11px; color: #c0cbb5; }
+@media(max-width:380px) { .telemetry { padding: 10px; gap: 9px; }.steps { grid-template-columns: 1fr; }.steps button { grid-template-columns: 24px 1fr auto; align-items: center; } }

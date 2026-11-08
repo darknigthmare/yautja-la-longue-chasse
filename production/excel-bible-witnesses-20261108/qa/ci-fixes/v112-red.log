@@ -1,0 +1,32 @@
+✖ the lifecycle browser harness binds its real callbacks and persists extraction before admitting workshop work (311.527606ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 0
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1259.518186
+
+✖ failing tests:
+
+test at tests/conservation-persistence-ui-v112.test.mjs:25:1
+✖ the lifecycle browser harness binds its real callbacks and persists extraction before admitting workshop work (311.527606ms)
+  AssertionError [ERR_ASSERTION]: Every runtime identifier in the extracted callbacks must have a harness binding
+  + actual - expected
+  
+  + [
+  +   "'settleCompanionResidenceMission' is not defined."
+  + ]
+  - []
+  
+      at TestContext.<anonymous> (file:///workspace/scratch/fef9f6ae239f/qa-hunt-fix/tests/conservation-persistence-ui-v112.test.mjs:43:10)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: [ "'settleCompanionResidenceMission' is not defined." ],
+    expected: [],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }

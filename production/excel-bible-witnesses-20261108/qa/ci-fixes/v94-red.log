@@ -1,0 +1,37 @@
+✖ a terminal callback in the same frame retains discoveries even with a legacy result snapshot (104.075294ms)
+✖ ice callbacks in one frame retain inherited traversal but accept only ice discoveries (51.326396ms)
+ℹ tests 2
+ℹ suites 0
+ℹ pass 0
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 785.220596
+
+✖ failing tests:
+
+test at tests/game-client-exploration-persistence.test.mjs:144:1
+✖ a terminal callback in the same frame retains discoveries even with a legacy result snapshot (104.075294ms)
+  ReferenceError [Error]: settleCompanionResidenceMission is not defined
+      at Object.completeMission (evalmachine.<anonymous>:34:24)
+      at TestContext.<anonymous> (file:///workspace/scratch/fef9f6ae239f/qa-hunt-fix/tests/game-client-exploration-persistence.test.mjs:148:17)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.start (node:internal/test_runner/test:1262:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+
+test at tests/game-client-exploration-persistence.test.mjs:294:1
+✖ ice callbacks in one frame retain inherited traversal but accept only ice discoveries (51.326396ms)
+  ReferenceError [Error]: settleCompanionResidenceMission is not defined
+      at Object.completeMission (evalmachine.<anonymous>:34:24)
+      at TestContext.<anonymous> (file:///workspace/scratch/fef9f6ae239f/qa-hunt-fix/tests/game-client-exploration-persistence.test.mjs:306:17)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at node:internal/test_runner/test:1305:31
+      at node:internal/process/task_queues:151:7
+      at AsyncResource.runInAsyncScope (node:async_hooks:227:14)
+      at AsyncResource.runMicrotask (node:internal/process/task_queues:148:8)

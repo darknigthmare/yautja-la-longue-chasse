@@ -22,3 +22,9 @@
 .trophyChoices button { border: 1px solid #8b946e; border-radius: 6px; background: #354031; color: #f0eedc; min-height: 44px; padding: 8px 10px; cursor: pointer; }
 .trophyChoices button:disabled { opacity: .4; cursor: not-allowed; }
 .absent { padding: 9px; border: 1px solid #9e8661; border-radius: 5px; background: #1c2522f5; color: #f1d8b8; font-size: 11px; line-height: 1.5; }
+.meetingWitness { position: absolute; width: 0; height: 0; pointer-events: none; }
+.witnessPlatform { position: absolute; left: -68px; top: -7px; width: 136px; height: 19px; border: 1px solid #859e86; border-radius: 50%; background: #13231ec9; box-shadow: 0 0 16px #9eb58a33; }
+.witnessName { position: absolute; top: 16px; left: -90px; width: 180px; text-align: center; background: #182922ed; border: 1px solid #7d9879; border-radius: 5px; padding: 7px; color: #ede3c4; font-size: 11px; }
+.witnessName strong, .witnessName small { display: block; }.witnessName small { color: #b7c9b7; font-size: 9px; margin-top: 4px; }
+.meetingProjection { position: absolute; width: 300px; transform: translateX(-50%); display: grid; gap: 7px; text-align: center; background: #162e2bf2; border: 1px solid #829b80; border-radius: 7px; color: #d8e4d0; padding: 12px; font-size: 11px; line-height: 1.5; }
+.meetingProjection strong { color: #d8c88c; font-size: 12px; letter-spacing: .1em; }.meetingProjection small { font-size: 10px; color: #bed0b6; }

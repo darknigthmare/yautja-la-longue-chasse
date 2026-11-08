@@ -10,12 +10,19 @@ import {
   type ClanShipIncidentCommand, type ClanShipIncidentObservation, type ClanShipIncidentTarget, type ClanShipIncidentView,
 } from './systems/clanShipIncidents';
 import { CLAN_SHIP_TROPHY_CASE, clanShipTrophyConclusion } from './systems/clanShipTrophyCase';
+import {
+  CLAN_SHIP_TROPHY_WITNESSES, clanShipTrophyHearingNext, clanShipTrophyHearingPresence, clanShipTrophyHearingView,
+  inspectClanShipTrophyHearing, isClanShipTrophyWitnessGathered, type ClanShipTrophyHearingCommand,
+} from './systems/clanShipTrophyHearing';
+import HomeworldNpcSpriteV84 from './HomeworldNpcSpriteV84';
+import { CLAN_SHIP_CREW_ART_ROLES, clanShipCrewArtIdentity } from './clanShipCrew';
 import { ClanShipIncidentActions } from './ClanShipIncidentPanel';
 import styles from './ClanShipIncidentScene.module.css';
 
-export default memo(function ClanShipIncidentScene({ save, roomId, position, suspended, onNavigate, onAction }: {
+export default memo(function ClanShipIncidentScene({ save, roomId, position, suspended, onNavigate, onAction, onHearingAction, onOpenDossier }: {
   save: SaveGame; roomId: ClanShipRoomId; position: ClanShipIncidentObservation; suspended: boolean;
   onNavigate: (target: ClanShipIncidentTarget) => void; onAction: (command: ClanShipIncidentCommand) => void;
+  onHearingAction?: (command: ClanShipTrophyHearingCommand) => void; onOpenDossier?: () => void;
 }) {
   const state = useMemo(() => inspectClanShipIncidents(save.clanShipIncidents, save.createdAt).state, [save.clanShipIncidents, save.createdAt]);
   if (!state) return null;
@@ -23,7 +30,7 @@ export default memo(function ClanShipIncidentScene({ save, roomId, position, sus
     const view = clanShipIncidentView(state, definition.id), variant = clanShipIncidentVariant(save.createdAt, definition.id), next = clanShipIncidentNext(view, save);
     if (!view.accepted) return null;
     if (definition.id === 'contested-trophy') return <TrophyIncidentScene key={definition.id} save={save} view={view} roomId={roomId}
-      position={position} suspended={suspended} onNavigate={onNavigate} onAction={onAction} />;
+      position={position} suspended={suspended} onNavigate={onNavigate} onAction={onAction} onHearingAction={onHearingAction} onOpenDossier={onOpenDossier} />;
     const sealed = definition.id === 'sealed-lot';
     const atProp = roomId === (sealed ? 'hangar' : 'conseil');
     const art = sealed ? CLAN_SHIP_INCIDENT_ART.sealedIsolator : CLAN_SHIP_INCIDENT_ART.twinCircuitRelay;
@@ -61,20 +68,33 @@ export default memo(function ClanShipIncidentScene({ save, roomId, position, sus
 
 /** The authored workbench and catalogue remain the actual support objects.
  * These exact inscription overlays are evidence, not a new trophy asset. */
-function TrophyIncidentScene({ save, view, roomId, position, suspended, onNavigate, onAction }: {
+function TrophyIncidentScene({ save, view, roomId, position, suspended, onNavigate, onAction, onHearingAction, onOpenDossier }: {
   save: SaveGame; view: ClanShipIncidentView; roomId: ClanShipRoomId; position: ClanShipIncidentObservation; suspended: boolean;
   onNavigate: (target: ClanShipIncidentTarget) => void; onAction: (command: ClanShipIncidentCommand) => void;
+  onHearingAction?: (command: ClanShipTrophyHearingCommand) => void; onOpenDossier?: () => void;
 }) {
   const trophy = view.trophy!, next = clanShipIncidentNext(view, save), conclusion = clanShipTrophyConclusion(trophy.conclusion);
-  const near = !!next && clanShipIncidentInReach(position, next.target);
+  const hearingState = inspectClanShipTrophyHearing(save.clanShipTrophyHearing, save.createdAt).state;
+  const hearing = clanShipTrophyHearingView(hearingState);
+  const hearingNext = onHearingAction ? clanShipTrophyHearingNext(save) : null;
+  const target = hearingNext?.target ?? next?.target;
+  const near = !!target && clanShipIncidentInReach(position, target);
   const presence = next ? evaluateClanShipIncidentPresence(save, view.id, next.type) : { allowed: true, reason: '' };
-  const choices = next?.type === 'conclude-provenance';
+  const meetingPresence = hearing.gathered ? clanShipTrophyHearingPresence(save) : null;
+  const choices = !hearingNext && next?.type === 'conclude-provenance' && !hearing.gathered;
   const sharedObject = next && (['sealed-lot', 'relay-fault'] as const).some(id => {
     const otherView = clanShipIncidentView(save.clanShipIncidents, id), other = clanShipIncidentNext(otherView, save);
     return otherView.accepted && other?.target.roomId === next.target.roomId && Math.abs(other.target.x - next.target.x) < 280;
   });
   return <div className={styles.incident} data-clan-incident-world="contested-trophy">
     {roomId === 'trophees' && <>
+      {CLAN_SHIP_TROPHY_WITNESSES.filter(id => isClanShipTrophyWitnessGathered(save, id)).map((id) =>
+        <div key={id} className={styles.meetingWitness} data-trophy-hearing-witness={id} data-companion-motion="static"
+          style={{ left: id === 'ash-scar' ? 620 : 1060, top: 500, zIndex: 500 }}>
+          <span className={styles.witnessPlatform} aria-hidden="true" />
+          <HomeworldNpcSpriteV84 npcId={clanShipCrewArtIdentity(id)} role={CLAN_SHIP_CREW_ART_ROLES[id]} height={190} facing={id === 'ash-scar' ? 1 : -1} />
+          <span className={styles.witnessName}><strong>{id === 'ash-scar' ? 'Balafre de Cendre' : 'Trace Froide'}</strong><small>Témoin du dossier C-37</small></span>
+        </div>)}
       <div className={styles.trophySupport} data-clan-incident-prop="contested-trophy" data-trophy-plaque={trophy.conclusion ?? 'disputed'}
         data-incident-complete={view.completedRevision !== null} style={{ left: 820, top: 580, zIndex: 581 }}>
         <strong>SUPPORT {CLAN_SHIP_TROPHY_CASE.id}</strong>
@@ -92,16 +112,26 @@ function TrophyIncidentScene({ save, view, roomId, position, suspended, onNaviga
       <div className={styles.component} data-trophy-record="transfer" style={{ left: 400, top: 508, zIndex: 566 }}>
         <strong>C-37/02 · TRANSFERT</strong><span>{trophy.transferRecordRead ? 'Portage T-04 · relevé conservé' : 'Registre du retour à comparer'}</span>
       </div>
+      {hearing.gathered && !hearing.completed && <div className={styles.meetingProjection} data-trophy-hearing-projection
+        style={{ left: 820, top: 253, zIndex: 505 }}>
+        <strong>RELECTURE C-37</strong><span>B-17 · prélèvement → T-04 · portage → même objet au retour</span>
+        <small>{hearing.recordedSampleIds.length} / 3 passages consignés · {hearing.ready ? 'Restitution commune prête' : 'Comparer les relevés au support'}</small>
+      </div>}
     </>}
     {roomId === 'archives' && <div className={styles.component} data-trophy-record="hunt" style={{ left: 390, top: 498, zIndex: 556 }}>
       <strong>C-37/01 · CHASSE</strong><span>{trophy.huntReportRead ? 'Prélèvement B-17 · relevé conservé' : 'Rapport antérieur au transfert'}</span>
     </div>}
-    {next?.target.roomId === roomId && <div className={`${styles.target} ${choices ? styles.trophyChoices : ''}`}
-      style={{ left: next.target.x, top: next.target.y + (choices && near ? -280 : sharedObject ? -110 : 10), zIndex: 900 }} data-incident-world-target={next.target.id}>
-      <button type="button" disabled={suspended} data-incident-object-approach={next.target.id} onClick={() => onNavigate(next.target)}>
-        {next.target.label} · {near ? 'à portée' : 'approcher'}</button>
-      {near && <ClanShipIncidentActions view={view} disabled={suspended || !presence.allowed} onAction={onAction} />}
-      {!presence.allowed && <small className={styles.absent}>{presence.reason}</small>}
+    {target?.roomId === roomId && <div className={`${styles.target} ${choices ? styles.trophyChoices : ''}`}
+      style={{ left: target.x, top: target.y + (choices && near ? -280 : sharedObject ? -110 : 10), zIndex: 900 }} data-incident-world-target={target.id}>
+      <button type="button" disabled={suspended} data-incident-object-approach={target.id} onClick={() => onNavigate(target)}>
+        {target.label} · {near ? 'à portée' : 'approcher'}</button>
+      {near && (hearingNext?.command.type === 'invite' ? <button type="button" disabled={suspended}
+        data-trophy-hearing-action={`invite:${hearingNext.command.witnessId}`} onClick={() => onHearingAction?.(hearingNext.command)}>{hearingNext.label}</button>
+        : (hearingNext || hearing.gathered) && !trophy.reviewRequired && onOpenDossier ? <button type="button" disabled={suspended} data-open-trophy-hearing onClick={onOpenDossier}>
+          {hearing.ready ? 'Présenter la conclusion aux témoins' : 'Ouvrir la relecture C-37'}</button>
+          : <ClanShipIncidentActions view={view} disabled={suspended || !presence.allowed} onAction={onAction} />)}
+      {!presence.allowed && !hearingNext && <small className={styles.absent}>{presence.reason}</small>}
+      {meetingPresence && !meetingPresence.allowed && <small className={styles.absent}>{meetingPresence.reason}</small>}
     </div>}
   </div>;
 }

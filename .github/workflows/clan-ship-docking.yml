@@ -8,6 +8,8 @@ on:
       - 'app/game/ClanShipInterior*'
       - 'app/game/ClanShipOperationsPanel*'
       - 'app/game/ClanShipIncident*'
+      - 'app/game/ClanShipTrophyTelemetry*'
+      - 'app/game/CompanionQuartersScene*'
       - 'app/game/BuriedCradleReturnPanel*'
       - 'app/game/ShipInterior25D*'
       - 'app/game/ClanShipSpaceEncounter*'
@@ -22,6 +24,7 @@ on:
       - 'app/game/systems/clanShipOperations.ts'
       - 'app/game/systems/clanShipIncidents.ts'
       - 'app/game/systems/clanShipTrophyCase.ts'
+      - 'app/game/systems/clanShipTrophyHearing.ts'
       - 'app/game/systems/buriedCradleCampaign.ts'
       - 'app/game/systems/buriedCradleReturn.ts'
       - 'app/game/systems/clanShipSpaceEncounter.ts'
@@ -30,10 +33,12 @@ on:
       - 'tests/clan-ship-*.test.mjs'
       - 'tests/buried-cradle-return.test.mjs'
       - 'tests/helpers/buried-cradle-return-route.mjs'
+      - 'tests/helpers/clan-ship-trophy-hearing-fixture.mjs'
       - 'public/game/clan-ship/**'
       - 'tests/fixtures/clan-ship-browser-assets.json'
       - 'scripts/qa-clan-ship-browser.mjs'
       - 'scripts/qa-clan-ship-operations.mjs'
+      - 'scripts/qa-clan-trophy-hearing-browser-20261108.mjs'
       - '.github/workflows/clan-ship-docking.yml'
   workflow_dispatch:
 
@@ -108,6 +113,7 @@ jobs:
           app/game/ClanShipHub.tsx app/game/ClanShipInterior.tsx
           app/game/ClanShipOperationsPanel.tsx app/game/ClanShipSpaceEncounter.tsx
           app/game/ClanShipIncidentPanel.tsx app/game/ClanShipIncidentScene.tsx
+          app/game/ClanShipTrophyTelemetry.tsx app/game/CompanionQuartersScene.tsx
           app/game/BuriedCradleReturnPanel.tsx app/game/ShipInterior25D.tsx
           app/game/clanShipCrew.ts
           app/game/GameClient.tsx app/game/ShipHub.tsx
@@ -115,6 +121,7 @@ jobs:
           app/game/systems/clanShipDocking.ts app/game/systems/clanShipInterior.ts
           app/game/systems/clanShipOperations.ts app/game/systems/clanShipSpaceEncounter.ts
           app/game/systems/clanShipIncidents.ts app/game/systems/clanShipTrophyCase.ts
+          app/game/systems/clanShipTrophyHearing.ts
           app/game/systems/buriedCradleCampaign.ts app/game/systems/buriedCradleReturn.ts
           app/game/systems/campaignSlots.ts
           app/game/systems/completeArchive.ts scripts/qa-clan-ship-browser.mjs scripts/qa-clan-ship-operations.mjs
@@ -122,6 +129,8 @@ jobs:
           tests/clan-ship-interior.test.mjs
           tests/clan-ship-operations.test.mjs tests/clan-ship-space-encounter.test.mjs tests/clan-ship-operations-save.test.mjs
           tests/clan-ship-incidents.test.mjs tests/clan-ship-trophy-case.test.mjs
+          tests/clan-ship-trophy-hearing.test.mjs tests/clan-ship-trophy-hearing-presentation.test.mjs
+          tests/helpers/clan-ship-trophy-hearing-fixture.mjs scripts/qa-clan-trophy-hearing-browser-20261108.mjs
           tests/buried-cradle-return.test.mjs tests/helpers/buried-cradle-return-route.mjs
       - name: Interior geometry, docking, saves, archives and campaign regressions
         run: >-
@@ -130,6 +139,7 @@ jobs:
           tests/clan-ship-interior.test.mjs
           tests/clan-ship-operations.test.mjs tests/clan-ship-space-encounter.test.mjs tests/clan-ship-operations-save.test.mjs
           tests/clan-ship-incidents.test.mjs tests/clan-ship-trophy-case.test.mjs
+          tests/clan-ship-trophy-hearing.test.mjs tests/clan-ship-trophy-hearing-presentation.test.mjs
           tests/buried-cradle-return.test.mjs
           tests/complete-archive.test.mjs tests/campaign-slots.test.mjs
           tests/cloud-account-archives-v71.test.mjs
@@ -141,6 +151,8 @@ jobs:
         run: xvfb-run -a --server-args="-screen 0 1920x1200x24" node scripts/qa-clan-ship-browser.mjs
       - name: Earn the mandate, recruit crew and command the three tactical operations
         run: xvfb-run -a --server-args="-screen 0 1920x1200x24" node scripts/qa-clan-ship-operations.mjs
+      - name: Present C-37 to both witnesses and restore the hearing
+        run: node scripts/qa-clan-trophy-hearing-browser-20261108.mjs
       - name: Upload browser evidence even when a check fails
         if: always()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
@@ -149,5 +161,6 @@ jobs:
           path: |
             outputs/qa-clan-ship/
             outputs/qa-clan-ship-operations/
+            outputs/qa-clan-trophy-hearing-20261108/
           if-no-files-found: warn
           retention-days: 14

@@ -1,0 +1,31 @@
+{
+  "beforeSha256": "8773e11a7d6112d962a7eb825b5b6023e5442751367f66c17ea4f61c8905b3f0",
+  "afterSha256": "42f0ac0a02707af4b77dddd724e956d0bbe6d3393203883d5780d04ab700164e",
+  "historicalFreezesUnchanged": true,
+  "commands": [
+    {
+      "mode": "write",
+      "exitCode": 0,
+      "durationSeconds": 6.047,
+      "command": [
+        "node",
+        "scripts/snapshot-runtime-v113.mjs",
+        "--write",
+        "docs/qa/current-integration-20261103/runtime-inputs.json"
+      ],
+      "log": "runtime-inputs-write.log"
+    },
+    {
+      "mode": "check",
+      "exitCode": 0,
+      "durationSeconds": 5.6,
+      "command": [
+        "node",
+        "scripts/snapshot-runtime-v113.mjs",
+        "--check",
+        "docs/qa/current-integration-20261103/runtime-inputs.json"
+      ],
+      "log": "runtime-inputs-check.log"
+    }
+  ]
+}

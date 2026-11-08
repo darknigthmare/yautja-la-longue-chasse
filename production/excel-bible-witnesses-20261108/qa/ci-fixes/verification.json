@@ -1,0 +1,240 @@
+{
+  "schemaVersion": 1,
+  "asOfUtc": "2026-11-08T16:47:31.183493+00:00",
+  "scope": "Integration of the C-37 hearing with the three native test-recipe corrections discovered by PR #128 checks. No application source changed after the initial hearing build.",
+  "initialFeatureCommit": "ff112b44d83ee137028df2ea43fefee2599ba03a",
+  "localCodeHeadBeforeReceiptCommit": "3e2ba409bd9de1c463d3cf087c784d3f60cd7fba",
+  "publishedCorrectedBase": {
+    "head": "13326b2e0a92007819a51af488ceda4e6fd03ead",
+    "tree": "4b7a752b96d42fe8c12de9625b5b78ecb4c34e60",
+    "pullRequest": "https://github.com/darknigthmare/yautja-la-longue-chasse/pull/128"
+  },
+  "corrections": [
+    {
+      "id": "V112 lifecycle",
+      "originCommit": "0d96eaf330dc684f799d803edd5480fd3e33223a",
+      "localCommit": "2fe65fa",
+      "cause": "Missing native settleCompanionResidenceMission import in the extracted callback browser harness.",
+      "fix": "Import the native function and exercise the exact virtual harness with free-identifier checks and real campaign persistence.",
+      "redCases": 1,
+      "greenCases": 1,
+      "targetedTestsPassed": 131,
+      "logs": [
+        "v112-red.log",
+        "v112-green.log",
+        "v112-regressions.log",
+        "v112-lint.log"
+      ],
+      "assertionsWeakened": false
+    },
+    {
+      "id": "Clan operations residence",
+      "originCommit": "4f6ecb5517c1f49e9db8e65ac973bcf25784f641",
+      "localCommit": "de6135a",
+      "cause": "Native recruitment creates a reserve agreement, while the old browser recipe expected an immediate legacy post actor.",
+      "fix": "Use twelve native planning/funding/refit actions, verify real resident and quarter images, persist housing and pay only from earned rewards. Three installed roles win escort; its reward funds the fourth quarter.",
+      "targetedTestsPassed": 79,
+      "currencyInjected": 0,
+      "initialCircuitMarks": 75,
+      "quarterCosts": 80,
+      "finalMarksAfterEightReceipts": 160,
+      "historicalSixCrewFixtureKeptSeparate": true,
+      "logs": [
+        "clan-residence-regressions.txt",
+        "clan-residence-fixtures.txt",
+        "clan-residence-lint.txt",
+        "clan-residence-syntax.txt"
+      ],
+      "assertionsWeakened": false
+    },
+    {
+      "id": "V94 exploration persistence",
+      "originCommit": "7b9313b148f62b3cd01503a8ef1813714194c948",
+      "localCommit": "3e2ba40",
+      "cause": "The VM callback context omitted the same native companion settlement function.",
+      "fix": "Export and bind the real function. Two additions and one deletion; no assertion or application-source change.",
+      "redCases": 2,
+      "greenCases": 2,
+      "targetedTestsPassed": 213,
+      "logs": [
+        "v94-red.log",
+        "v94-green.log",
+        "v94-persistence-213.log",
+        "v94-lint.log",
+        "v94-diff-check.log"
+      ],
+      "assertionsWeakened": false
+    }
+  ],
+  "integrationTests": {
+    "exitCode": 0,
+    "durationSeconds": 52.557,
+    "counts": {
+      "tests": 479,
+      "pass": 479,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0
+    },
+    "command": "integration-command.json",
+    "log": "integration-tests.log"
+  },
+  "testFiles": 27,
+  "targetedCountsOverlap": true,
+  "countingNote": "The 131, 79 and 213 targeted groups overlap the final 479-test integration run and one another. They must not be added.",
+  "firstIntegrationAttempt": {
+    "result": "integration-result-attempt-1.json",
+    "log": "integration-tests-attempt-1.log",
+    "cause": "One image integrity test stopped at a committed PNG omitted again by sparse checkout after cherry-picks. All other 478 tests passed. Missing native and earlier-lot assets were restored from byte-pinned sources before the complete 479-test rerun."
+  },
+  "lint": {
+    "exitCode": 0,
+    "durationSeconds": 12.069,
+    "fileCount": 21,
+    "command": "lint-command.json",
+    "log": "lint.log"
+  },
+  "runtimeInputs": {
+    "beforeSha256": "8773e11a7d6112d962a7eb825b5b6023e5442751367f66c17ea4f61c8905b3f0",
+    "afterSha256": "42f0ac0a02707af4b77dddd724e956d0bbe6d3393203883d5780d04ab700164e",
+    "historicalFreezesUnchanged": true,
+    "commands": [
+      {
+        "mode": "write",
+        "exitCode": 0,
+        "durationSeconds": 6.047,
+        "command": [
+          "node",
+          "scripts/snapshot-runtime-v113.mjs",
+          "--write",
+          "docs/qa/current-integration-20261103/runtime-inputs.json"
+        ],
+        "log": "runtime-inputs-write.log"
+      },
+      {
+        "mode": "check",
+        "exitCode": 0,
+        "durationSeconds": 5.6,
+        "command": [
+          "node",
+          "scripts/snapshot-runtime-v113.mjs",
+          "--check",
+          "docs/qa/current-integration-20261103/runtime-inputs.json"
+        ],
+        "log": "runtime-inputs-check.log"
+      }
+    ]
+  },
+  "runtimeManifestFiles": 2204,
+  "buildEvidence": {
+    "initialReport": "../../verification.json",
+    "initialReportSha256": "3b0caf5ff9f250eca23156af36be402d9a8670da13b99babf746124bc3f21a16",
+    "initialBuildExitCode": 0,
+    "allChangedApplicationFilesStillMatchInitialBuild": true,
+    "applicationSha256": {
+      "app/game/ClanShipIncidentPanel.module.css": "a556d9c83393b65bedd8bc6aafd55afd86a189ee19dc298b8fb039f7e165f511",
+      "app/game/ClanShipIncidentPanel.tsx": "dd4b577cd711282bf46d7c4d3df297b61f6876d2c7035f5a29138fa742dba69d",
+      "app/game/ClanShipIncidentScene.module.css": "db8e61027d6f79965852d482f88fb6910cfc927a00f24ff3777f58a22c6b58a0",
+      "app/game/ClanShipIncidentScene.tsx": "115af50a38cf547fbaa2d4813fefe288860a2bee90012eb1c53b1d8548c2a998",
+      "app/game/ClanShipInterior.tsx": "6894668bdb4bf321e04705e02c84d8c8ff12ed85570157cf0a72bc6f0abb85a0",
+      "app/game/ClanShipTrophyTelemetry.module.css": "ef6eb3629648e15fd7fb66b29660797e382ef0fc144d5d6c9a225b7fc89e1e6e",
+      "app/game/ClanShipTrophyTelemetry.tsx": "c488d891d8585eb632160ae2c0cf12e9e276507604e36cf70c108bf5506a6d9f",
+      "app/game/CompanionQuartersScene.tsx": "4960d8f09af797af8635d95ccd80c82c2c9f8011e3f933984e477bd150822a01",
+      "app/game/GameClient.tsx": "916cdf0773a8d26b2e26fde9d3a636aca79d900283ca05dc063c4fe42aedc8df",
+      "app/game/save.ts": "17a5e2ccbfe9923a32a4a469ee6e5a3573eee935dbce8e7bc8572381cab75b29",
+      "app/game/systems/clanShipIncidents.ts": "f17a007b246f264881323b823d4f655c597b77a8524fd662a5f0d02454649a00",
+      "app/game/systems/clanShipInterior.ts": "4f8cbf8512dd88e19d36659d73a560615ce48cb13ae2498304372305cb944096",
+      "app/game/systems/clanShipTrophyHearing.ts": "43012e17f797eb0d0fc63746e56678fffa05e18c68db230610de34b53b98323b",
+      "app/game/types.ts": "98678751a44f09371f82460907b24cde62ed90886cc1f98014827c25b9e99b29"
+    },
+    "newBuildExecutedForTestOnlyCorrections": false
+  },
+  "workbook": {
+    "path": "suivi/Yautja_Audience_C37_20261108.xlsx",
+    "sha256": "3915848e84da6cbf8832b11e68d1344d8e521ec50b40e7f3fec5625bc61e1cb4",
+    "unchangedSinceInitialValidation": true,
+    "represents": "Dated local C-37 qualification before the CI recipe corrections; later CI receipts remain separate."
+  },
+  "browser": {
+    "localValidated": false,
+    "c37NativeCiValidatedAtThisReport": false,
+    "observedBaseV112Ci": {
+      "head": "13326b2e0a92007819a51af488ceda4e6fd03ead",
+      "result": "success",
+      "run": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/42501311556",
+      "job": 128794458760,
+      "scope": "The corrected base V112 lifecycle browser recipe; not the later C-37 hearing recipe."
+    }
+  },
+  "spatial": {
+    "diagnostic": "spatial-44aff-diagnostic.json",
+    "sourceUnchanged": true,
+    "rejectedImagesRemainRejected": true,
+    "retryRequestedWithoutGateChanges": true
+  },
+  "sourceSha256": {
+    ".github/workflows/clan-ship-docking.yml": "1d0c1940f366c597304dadde0d4559da9c15d53d1e0b0502d2f55ebda2818772",
+    "app/game/ClanShipIncidentPanel.module.css": "a556d9c83393b65bedd8bc6aafd55afd86a189ee19dc298b8fb039f7e165f511",
+    "app/game/ClanShipIncidentPanel.tsx": "dd4b577cd711282bf46d7c4d3df297b61f6876d2c7035f5a29138fa742dba69d",
+    "app/game/ClanShipIncidentScene.module.css": "db8e61027d6f79965852d482f88fb6910cfc927a00f24ff3777f58a22c6b58a0",
+    "app/game/ClanShipIncidentScene.tsx": "115af50a38cf547fbaa2d4813fefe288860a2bee90012eb1c53b1d8548c2a998",
+    "app/game/ClanShipInterior.tsx": "6894668bdb4bf321e04705e02c84d8c8ff12ed85570157cf0a72bc6f0abb85a0",
+    "app/game/ClanShipTrophyTelemetry.module.css": "ef6eb3629648e15fd7fb66b29660797e382ef0fc144d5d6c9a225b7fc89e1e6e",
+    "app/game/ClanShipTrophyTelemetry.tsx": "c488d891d8585eb632160ae2c0cf12e9e276507604e36cf70c108bf5506a6d9f",
+    "app/game/CompanionQuartersScene.tsx": "4960d8f09af797af8635d95ccd80c82c2c9f8011e3f933984e477bd150822a01",
+    "app/game/GameClient.tsx": "916cdf0773a8d26b2e26fde9d3a636aca79d900283ca05dc063c4fe42aedc8df",
+    "app/game/save.ts": "17a5e2ccbfe9923a32a4a469ee6e5a3573eee935dbce8e7bc8572381cab75b29",
+    "app/game/systems/clanShipIncidents.ts": "f17a007b246f264881323b823d4f655c597b77a8524fd662a5f0d02454649a00",
+    "app/game/systems/clanShipInterior.ts": "4f8cbf8512dd88e19d36659d73a560615ce48cb13ae2498304372305cb944096",
+    "app/game/systems/clanShipTrophyHearing.ts": "43012e17f797eb0d0fc63746e56678fffa05e18c68db230610de34b53b98323b",
+    "app/game/types.ts": "98678751a44f09371f82460907b24cde62ed90886cc1f98014827c25b9e99b29",
+    "scripts/build-excel-bible-witnesses-20261108.mjs": "3120e8c8fb5ed0279281a52c0669c89064646ba91b92a0715a1fb8a3dfe7c536",
+    "scripts/qa-clan-ship-operations.mjs": "e37a128f26f565f3a46301e720963f137c87e4fb2c7eab2f4a9b6e06cd43a406",
+    "scripts/qa-clan-trophy-hearing-browser-20261108.mjs": "75e2094498a7af2450f66b8c73e791465da63daf77bc2dd8f4b65c9aaefcfdf7",
+    "scripts/qa-hunt-lifecycle-browser-v112.mjs": "5bead5a8e564ec931c6393b811ee5af49388f861068b606ab2523355ed741ac1",
+    "tests/clan-ship-interior.test.mjs": "54899c245e1a9f9c22c67e5eb81fd78513ce6c93c7c49ac80f81795060aba241",
+    "tests/clan-ship-operations.test.mjs": "5afa5380f2c6cc51a47cc57cebd48af856312e0c6684e8b04cbe6570c086b775",
+    "tests/clan-ship-trophy-hearing-presentation.test.mjs": "8f590dbecabcdb235270dd09569e8d9a14cf342cd579f0a5e77a7cee5542be8f",
+    "tests/clan-ship-trophy-hearing.test.mjs": "140e3e2e88625f91227cd71b222af95338457bfba1af76dabd3ed2ceb1775f09",
+    "tests/conservation-persistence-ui-v112.test.mjs": "5a33ba8e8acf07f02e2cde5a3d0e2c5da217e5ab6aea92901a3f5d8780a3a065",
+    "tests/game-client-exploration-persistence.test.mjs": "ffde76ba753e0b0a5ec6e9d89c383eef57409068d5deed59d4bc908303ecc8f8",
+    "tests/helpers/clan-ship-trophy-hearing-fixture.mjs": "0bd4652c6ef45122e49b49fb3d5398968d151422583261b84c34b95db9105772"
+  },
+  "evidenceSha256": {
+    "clan-residence-fixtures.txt": "7956badbe76501b2c996597db72090d83cf6e78d2bb8a891c4285a7710702ea9",
+    "clan-residence-lint.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "clan-residence-regressions.txt": "fd47c77f773f9226724a9105905b6048c9aeac450a99150c9e654bab0d8e6f97",
+    "clan-residence-syntax.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "committed-assets-restored.json": "855030470e9648fff519714b94c6188a69f3102ecbf9a1ea9706ec26bb7f3f7a",
+    "integration-command.json": "096482d9a84bf1fd1336630fb3b956b92cf13dbfd40c6f8c16fa9268ba0aed13",
+    "integration-result-attempt-1.json": "ed3ad0664f6ef63b0577bdf510f11821994e530b02018388736200848b1c5331",
+    "integration-result.json": "cea17f9fe7fde4cf46e2a016e0f2cc09d3fccb802a4ef192175eadcdc443e4f9",
+    "integration-tests-attempt-1.log": "67f3b323f4840aed15f9408a858c99e6e67cbdb2f47112e78cb12c1489f0dcb9",
+    "integration-tests.log": "d1df0e1541295dba73aa618108f91ae399136ad47abda6ea74613285ff50fb48",
+    "lint-command.json": "a390b58cdae06d6aeee6891e06e5df4b6811a759703283863be320c2fe82f2ad",
+    "lint-result.json": "185f968b2bce8337914fd0a794d751385ae8b61434e5328ad6fdf7c8a76a5e48",
+    "lint.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "missing-inputs-restored.json": "cdc103669458ee1774edcd4915637a7a867a3702312445f04385bd790336a915",
+    "runtime-inputs-check.log": "31add5f4891444c7e7aeccb0a2d22b467d1bf723769f5eed807f3dc683eddc90",
+    "runtime-inputs-result.json": "d25e41c6d24e039cec4896b27b566339ebaf9dcf855f73d4f02a2b0e0ac83bf3",
+    "runtime-inputs-write-initial-missing-file.log": "4de56aa90563adef89de901cd99389cd18144f38f39952d57c16c9845c1ecd33",
+    "runtime-inputs-write.log": "7e1b05857eb156c26ee04e71e4c4e4f9a3b493f72934d94eb7baf1cb4977522b",
+    "spatial-44aff-diagnostic.json": "afae63e51e53813058d9f86de7ff2881aba68386eb30a424d0dbec3fad850daf",
+    "v112-commands.json": "678c1c29ce773306568961e01e9407f3f181f2f839978ba3925137da1f5b9cda",
+    "v112-green.log": "8b459ca86d23b53e08994c9607926d446e4d15b57ebaac3ba7cbb4c424bb5fba",
+    "v112-lint.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "v112-red.log": "9305266552e3a39100de01a3796e3e15c519a3b03e3739d4dd7a06e762823d18",
+    "v112-regressions.log": "63c9538485e3613f34dcc1f702948e4f61997486763d7316b6e15e1776ed653d",
+    "v94-diff-check.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "v94-green.log": "8dd7f424d7f8d81e04097750285525ed6a50ae8ffbed8040f32feab538151b17",
+    "v94-lint.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "v94-persistence-213.log": "dff5e263650683a1a0d15e23f3e9513bfd42148ec9607d831d44c5f46d7e13b8",
+    "v94-red.log": "01869e60f5141cddf3f9a81897028c7b68ee28b141c2382a122146f3e78da4f2"
+  },
+  "remaining": [
+    "C-37 real GameClient browser path on the final published feature head.",
+    "All applicable CI checks on the exact candidate heads, including the unchanged native Spatial capture recipe.",
+    "Preview deployment readiness; current Vercel candidate was queued at last inspection.",
+    "Physical controller and human artistic review."
+  ]
+}

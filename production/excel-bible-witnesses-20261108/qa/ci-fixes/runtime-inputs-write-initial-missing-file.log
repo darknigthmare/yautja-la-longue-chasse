@@ -1,0 +1,18 @@
+node:internal/fs/promises:1345
+  return new FileHandle(await PromisePrototypeThen(
+                        ^
+
+Error: ENOENT: no such file or directory, open '/workspace/scratch/fef9f6ae239f/yautja-suite/art-source/v109-pit-forward/feral-throw-forward-left-isolated-3-v109.png'
+    at async open (node:internal/fs/promises:1345:25)
+    at async Object.readFile (node:internal/fs/promises:2003:14)
+    at async fingerprintV112 (file:///workspace/scratch/fef9f6ae239f/yautja-suite/scripts/snapshot-runtime-v112.mjs:26:41)
+    at async snapshotRuntimeV112 (file:///workspace/scratch/fef9f6ae239f/yautja-suite/scripts/snapshot-runtime-v112.mjs:91:49)
+    at async snapshotRuntimeV113 (file:///workspace/scratch/fef9f6ae239f/yautja-suite/scripts/snapshot-runtime-v113.mjs:70:20)
+    at async file:///workspace/scratch/fef9f6ae239f/yautja-suite/scripts/snapshot-runtime-v113.mjs:127:44 {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/workspace/scratch/fef9f6ae239f/yautja-suite/art-source/v109-pit-forward/feral-throw-forward-left-isolated-3-v109.png'
+}
+
+Node.js v24.22.1

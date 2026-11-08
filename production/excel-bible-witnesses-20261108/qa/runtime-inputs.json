@@ -1,0 +1,181 @@
+{
+  "phase": "verified",
+  "originalSnapshotSha256": "48567883c0daf10b3123631f0324f9bf42cf6aa7203708f94616813f5d6e826b",
+  "copiedFiles": 640,
+  "copiedBytes": 1025166066,
+  "copiedPathsDigest": "398aecd651239e9b6740fb73e963774028607cc212d2e1790c736aa4a2b749a3",
+  "sourceCheckout": "publication/ci-runtime",
+  "sourceMethod": "Existing native objects materialized by the publication agent; only missing non-application paths copied as regular files and verified against the prior snapshot byte pins.",
+  "copiedRoots": {
+    "art-source": 10,
+    "docs": 1,
+    "public": 629
+  },
+  "existingFilesOverwritten": 0,
+  "downloads": 0,
+  "copySeconds": 1.537,
+  "historicalFreezeSha256Before": {
+    "docs/v105-runtime-freeze.json": "99f3e3abcce400af08368169239188f9a84cbffa291624bafe8d97989494a382",
+    "docs/v106-runtime-freeze.json": "5f17fda63e669a842289752295f83cd4b276090d9f897a12fefdb01b9872bfb1",
+    "docs/v107-runtime-freeze.json": "a64d67df75188003441d85854cbfffd41ae4151dbf7b30f0672c4d46ba502378",
+    "docs/v108-runtime-freeze.json": "acdd5ba55003bab6c5766d2036cbe76153b1bbfe858a82c855d0b3574cc82727",
+    "docs/v109-runtime-freeze.json": "b4f097daa655b119051675bd7acc2540a90cb4fd466c69955de6c0858519c4c0",
+    "docs/v110-runtime-freeze.json": "c54a5e97c199d16584a229f332692f5890874f5494b015657f66cf9659bfe3f1",
+    "docs/v111-runtime-freeze.json": "8eee8a5f5a043f2a67477bc6bcff97fffb1ee1666864bd7aed60c7a6c21ca138",
+    "docs/v112-runtime-freeze.json": "c35f8b454ec26d1b05852cabbe4f6ee111d71e7413aef80282582d3ca5ee6a3e",
+    "docs/v113-runtime-freeze.json": "80f5beb7d633c3ee4851ec70da013344521b37b352ce1238afcd0b94d974e74e"
+  },
+  "verifiedAt": "2026-11-08T16:16:11.691618+00:00",
+  "snapshot": {
+    "path": "docs/qa/current-integration-20261103/runtime-inputs.json",
+    "sha256": "8773e11a7d6112d962a7eb825b5b6023e5442751367f66c17ea4f61c8905b3f0",
+    "manifestBytes": 409214,
+    "inputFiles": 2204,
+    "inputBytes": 1093161738
+  },
+  "baseline": {
+    "path": "docs/v111-runtime-freeze.json",
+    "bytes": 264999,
+    "sha256": "8eee8a5f5a043f2a67477bc6bcff97fffb1ee1666864bd7aed60c7a6c21ca138"
+  },
+  "officialGenerator": {
+    "path": "scripts/snapshot-runtime-v113.mjs",
+    "sha256": "6f624914c5366e40d6a83d6dd2331fb209af0ea5056f1f157a2efa281bd95188"
+  },
+  "commands": {
+    "write": {
+      "command": [
+        "node",
+        "scripts/snapshot-runtime-v113.mjs",
+        "--write",
+        "docs/qa/current-integration-20261103/runtime-inputs.json"
+      ],
+      "exitCode": 0,
+      "receipt": {
+        "status": "SNAPSHOT_WRITTEN",
+        "path": "docs/qa/current-integration-20261103/runtime-inputs.json",
+        "bytes": 409214,
+        "sha256": "8773e11a7d6112d962a7eb825b5b6023e5442751367f66c17ea4f61c8905b3f0"
+      },
+      "log": "production/excel-bible-witnesses-20261108/qa/runtime-inputs-write.log",
+      "logSha256": "793beb35bcb5d91dd9d9d0a7a49bb209bf13f777b8114a5cb5555ed568cf1190"
+    },
+    "check": {
+      "command": [
+        "node",
+        "scripts/snapshot-runtime-v113.mjs",
+        "--check",
+        "docs/qa/current-integration-20261103/runtime-inputs.json"
+      ],
+      "exitCode": 0,
+      "receipt": {
+        "status": "PASS",
+        "path": "docs/qa/current-integration-20261103/runtime-inputs.json",
+        "bytes": 409214,
+        "sha256": "8773e11a7d6112d962a7eb825b5b6023e5442751367f66c17ea4f61c8905b3f0"
+      },
+      "log": "production/excel-bible-witnesses-20261108/qa/runtime-inputs-check.log",
+      "logSha256": "569d05112e1d77bc7ec2f96aaa34ef554dfd01d1dfc6e27bcef41002635cfec9"
+    }
+  },
+  "deltaFromPreviousCommittedSnapshot": {
+    "previousFiles": 2179,
+    "added": [
+      "app/game/BuriedCradleReturnPanel.module.css",
+      "app/game/BuriedCradleReturnPanel.tsx",
+      "app/game/BuriedCradleScene.module.css",
+      "app/game/BuriedCradleScene.tsx",
+      "app/game/ClanShipIncidentPanel.module.css",
+      "app/game/ClanShipIncidentPanel.tsx",
+      "app/game/ClanShipIncidentScene.module.css",
+      "app/game/ClanShipIncidentScene.tsx",
+      "app/game/ClanShipTrophyTelemetry.module.css",
+      "app/game/ClanShipTrophyTelemetry.tsx",
+      "app/game/CompanionQuartersScene.module.css",
+      "app/game/CompanionQuartersScene.tsx",
+      "app/game/CompanionResidencePanel.module.css",
+      "app/game/CompanionResidencePanel.tsx",
+      "app/game/clanShipIncidentArt.ts",
+      "app/game/companionPilotArt.ts",
+      "app/game/companionQuarterArt.ts",
+      "app/game/data/buriedCradleArt.json",
+      "app/game/systems/buriedCradleCampaign.ts",
+      "app/game/systems/buriedCradleReturn.ts",
+      "app/game/systems/buriedCradleSnapshot.ts",
+      "app/game/systems/clanShipIncidents.ts",
+      "app/game/systems/clanShipTrophyCase.ts",
+      "app/game/systems/clanShipTrophyHearing.ts",
+      "app/game/systems/companionResidence.ts"
+    ],
+    "removed": [],
+    "changed": [
+      ".vercelignore",
+      "app/dev/destinations.ts",
+      "app/dev/session.tsx",
+      "app/game/CampaignMainMenu.tsx",
+      "app/game/ClanShipHub.tsx",
+      "app/game/ClanShipInterior.module.css",
+      "app/game/ClanShipInterior.tsx",
+      "app/game/ClanShipOperationsPanel.tsx",
+      "app/game/GameClient.tsx",
+      "app/game/PhysicalShipDeck.tsx",
+      "app/game/ShipInterior25D.tsx",
+      "app/game/save.ts",
+      "app/game/systems/buriedCradle.ts",
+      "app/game/systems/campaignSlots.ts",
+      "app/game/systems/clanShipInterior.ts",
+      "app/game/systems/clanShipOperations.ts",
+      "app/game/systems/completeArchive.ts",
+      "app/game/types.ts",
+      "tsconfig.json"
+    ]
+  },
+  "publicationBaseline": {
+    "snapshotSha256": "5faef173f6a6779abd34398ceabe170baf7070cc7e61264ec9edff83620fade9",
+    "inputFiles": 2201,
+    "allNonApplicationEntriesMatch": true,
+    "nonApplicationEntries": 953,
+    "suiteAdded": [
+      "app/game/ClanShipTrophyTelemetry.module.css",
+      "app/game/ClanShipTrophyTelemetry.tsx",
+      "app/game/systems/clanShipTrophyHearing.ts"
+    ],
+    "suiteChanged": [
+      "app/game/ClanShipIncidentPanel.module.css",
+      "app/game/ClanShipIncidentPanel.tsx",
+      "app/game/ClanShipIncidentScene.module.css",
+      "app/game/ClanShipIncidentScene.tsx",
+      "app/game/ClanShipInterior.tsx",
+      "app/game/CompanionQuartersScene.tsx",
+      "app/game/GameClient.tsx",
+      "app/game/save.ts",
+      "app/game/systems/clanShipIncidents.ts",
+      "app/game/systems/clanShipInterior.ts",
+      "app/game/types.ts"
+    ]
+  },
+  "nativeInputsVerifiedUnchanged": {
+    "count": 746,
+    "prefixes": [
+      "public/",
+      "art-source/",
+      "docs/suivi-production/"
+    ],
+    "method": "All previous native-input entries retain their exact bytes and SHA-256 in the independently regenerated snapshot."
+  },
+  "historicalFreezeSha256After": {
+    "docs/v105-runtime-freeze.json": "99f3e3abcce400af08368169239188f9a84cbffa291624bafe8d97989494a382",
+    "docs/v106-runtime-freeze.json": "5f17fda63e669a842289752295f83cd4b276090d9f897a12fefdb01b9872bfb1",
+    "docs/v107-runtime-freeze.json": "a64d67df75188003441d85854cbfffd41ae4151dbf7b30f0672c4d46ba502378",
+    "docs/v108-runtime-freeze.json": "acdd5ba55003bab6c5766d2036cbe76153b1bbfe858a82c855d0b3574cc82727",
+    "docs/v109-runtime-freeze.json": "b4f097daa655b119051675bd7acc2540a90cb4fd466c69955de6c0858519c4c0",
+    "docs/v110-runtime-freeze.json": "c54a5e97c199d16584a229f332692f5890874f5494b015657f66cf9659bfe3f1",
+    "docs/v111-runtime-freeze.json": "8eee8a5f5a043f2a67477bc6bcff97fffb1ee1666864bd7aed60c7a6c21ca138",
+    "docs/v112-runtime-freeze.json": "c35f8b454ec26d1b05852cabbe4f6ee111d71e7413aef80282582d3ca5ee6a3e",
+    "docs/v113-runtime-freeze.json": "80f5beb7d633c3ee4851ec70da013344521b37b352ce1238afcd0b94d974e74e"
+  },
+  "historicalFreezesUnchanged": true,
+  "inputStorage": "All included inputs are regular files with no symlink resolution; enforced by the official generator.",
+  "newBuildPerformed": false,
+  "historicalFreezesModified": false
+}
