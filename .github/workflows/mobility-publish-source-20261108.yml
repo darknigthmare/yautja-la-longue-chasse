@@ -1,16 +1,33 @@
-name: Mobility source publication and native verification
+name: Mobility gameplay and workbook verification
 on:
   push:
     branches: [feat/mobility-garage-gameplay-20261108]
-    paths: [.github/workflows/mobility-publish-source-20261108.yml]
+    paths:
+      - app/game/**
+      - tests/mobility/**
+      - tests/mobility-*.test.mjs
+      - scripts/*mobility*
+      - docs/campagne/mobilite/**
+      - production/mobility-20261108/**
+      - public/game/mobility/**
+      - .github/workflows/mobility-publish-source-20261108.yml
+  pull_request:
+    paths:
+      - app/game/**
+      - tests/mobility/**
+      - tests/mobility-*.test.mjs
+      - scripts/*mobility*
+      - docs/campagne/mobilite/**
+      - production/mobility-20261108/**
+      - public/game/mobility/**
+      - .github/workflows/mobility-publish-source-20261108.yml
 permissions:
-  contents: write
+  contents: read
 concurrency:
-  group: mobility-publish-20261108
-  cancel-in-progress: false
+  group: mobility-validation-${{ github.ref }}
+  cancel-in-progress: true
 jobs:
-  publish:
-    if: github.repository == 'darknigthmare/yautja-la-longue-chasse'
+  validate:
     runs-on: ubuntu-24.04
     timeout-minutes: 15
     env:
@@ -19,8 +36,8 @@ jobs:
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
-          ref: ${{ github.sha }}
           fetch-depth: 1
+          persist-credentials: false
           sparse-checkout-cone-mode: false
           sparse-checkout: |
             /*
@@ -30,73 +47,47 @@ jobs:
             /tests/
             /docs/campagne/mobilite/
             /production/mobility-20261108/
+            /production/homeworld-sectors-20261103/YAUTJA_MARCHE_MONTURES_CHENILS_20261103.xlsx
             /public/**/*.json
-            /art-source/mobilite/vehicules-montures/v0.2-individual-hd/03_clan_hoverbike__3q_left.png
-            /art-source/mobilite/vehicules-montures/v0.2-individual-hd/05_scout_grav_sled__3q_left.png
-            /art-source/mobilite/vehicules-montures/v0.2-individual-hd/19_trophy_carrier__3q_left.png
-      - name: Apply only the recovered and reviewed source patches
-        run: |
-          python3 - <<'PY'
-          import base64,hashlib,lzma,re,subprocess,json,shutil
-          from pathlib import Path
-          transfer=Path('production/mobility-20261108/transfer')
-          parts=[transfer/f'source.{i:02d}.b64' for i in range(1,5)]
-          batches=[(parts,'42bacb4bd0ccc244fbfca8aa8ff0bb71fc21919b27d354fa18d1ecbbe443648d'),([transfer/'hardening.b64'],'aa084aec2767be2f9bb8d6e2fa19f86645cf5b7ac67485db1b28cdb78f36be61')]
-          paths=set()
-          for files,digest in batches:
-            packed=base64.b64decode(''.join(p.read_text().strip() for p in files),validate=True)
-            assert hashlib.sha256(packed).hexdigest()==digest,'Transfer checksum differs'
-            dec=lzma.LZMADecompressor(memlimit=256*1024*1024)
-            patch=dec.decompress(packed,max_length=2*1024*1024)
-            assert dec.eof and not dec.unused_data
-            names=re.findall(r'^diff --git a/(.*?) b/.*$',patch.decode(),re.M)
-            assert names and all(n.startswith(('app/game/','docs/campagne/mobilite/','production/mobility-20261108/','scripts/','tests/')) and '..' not in Path(n).parts for n in names)
-            subprocess.run(['git','apply','--check','-'],input=patch,check=True)
-            subprocess.run(['git','apply','-'],input=patch,check=True)
-            paths.update(names)
-          assert len(paths)==31,len(paths)
-          manifest=json.loads(Path('production/mobility-20261108/runtime-sprite-manifest.json').read_text())
-          for e in manifest['copied_existing_sources']:
-            source=Path(e['source_path']);target=Path(e['path']);data=source.read_bytes()
-            assert hashlib.sha256(data).hexdigest()==e['sha256'] and len(data)==e['bytes']
-            assert str(target).startswith('public/game/mobility/v1/') and not target.exists()
-            target.parent.mkdir(parents=True,exist_ok=True);target.write_bytes(data);paths.add(str(target))
-          for p in parts+[transfer/'hardening.b64']:
-            p.unlink();paths.add(str(p))
-          subprocess.run(['git','add','--sparse','--',*sorted(paths)],check=True)
-          actual=set(filter(None,subprocess.check_output(['git','diff','--cached','--name-only','-z']).decode().split('\0')))
-          assert actual==paths and len(actual)==39,(len(actual),actual^paths)
-          subprocess.run(['git','diff','--cached','--check'],check=True)
-          Path('/tmp/mobility-publication-paths.json').write_text(json.dumps(sorted(paths)))
-          PY
+            /public/game/mobility/
       - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
         with:
           node-version: '22.16.0'
       - run: npm ci --ignore-scripts --no-audit --no-fund
-      - name: Run actual rules, persistence, controllers and regression tests
+      - name: Verify the actual workbook and preserved historical cells
         run: |
-          mkdir -p outputs/mobility-publication
-          node --test --test-concurrency=1 tests/mobility-core.test.mjs tests/mobility-integration.test.mjs tests/mobility-hardening.test.mjs tests/clan-ship-operations-save.test.mjs | tee outputs/mobility-publication/targeted-tests.tap
+          mkdir -p outputs/mobility-validation
+          python3 scripts/verify-mobility-workbook.py | tee outputs/mobility-validation/workbook-report.json
+      - name: Verify the existing runtime sprite bytes without downloading sources
+        run: |
+          python3 - <<'PY'
+          import hashlib,json
+          from pathlib import Path
+          m=json.loads(Path('production/mobility-20261108/runtime-sprite-manifest.json').read_text())
+          for e in m['copied_existing_sources']:
+            data=Path(e['path']).read_bytes()
+            assert len(data)==e['bytes'] and hashlib.sha256(data).hexdigest()==e['sha256']
+          print('3 existing runtime source copies verified; no new images generated')
+          PY
+      - name: Exercise rules, saved transactions and recovery regressions
+        run: |
+          node --test --test-concurrency=1 tests/mobility-core.test.mjs tests/mobility-integration.test.mjs tests/mobility-hardening.test.mjs tests/clan-ship-operations-save.test.mjs | tee outputs/mobility-validation/targeted-tests.tap
           node node_modules/typescript/bin/tsc -p tests/mobility/tsconfig.json
-      - name: Publish regular source files on this branch only
-        run: |
-          git config user.name 'github-actions[bot]'
-          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git commit -m 'feat(mobilite): garage, magasin, conduite persistante et protections testees [skip ci]'
-          git push origin HEAD:refs/heads/feat/mobility-garage-gameplay-20261108
-          git rev-parse HEAD | tee outputs/mobility-publication/source-commit.txt
-      - name: Install browser from locked Playwright package
+      - name: Install native Chromium from the locked package
         run: node node_modules/playwright-core/cli.js install --with-deps chromium
-      - name: Exercise native shop, permit, purchase, driving, recovery and repair
+      - name: Exercise the actual garage component and persistent driving course
         run: |
           node scripts/build-mobility-browser-fixture.mjs
           MOBILITY_QA_COMMIT=$(git rev-parse HEAD) node scripts/qa-mobility-native.mjs
+          git rev-parse HEAD > outputs/mobility-validation/source-commit.txt
+          git diff --exit-code
+          git diff --cached --exit-code
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: mobility-publication-evidence
+          name: mobility-validation-evidence
           path: |
-            outputs/mobility-publication/
+            outputs/mobility-validation/
             outputs/qa-mobility-native/*report.json
             outputs/qa-mobility-native/*.png
           retention-days: 7
