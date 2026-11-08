@@ -1,0 +1,121 @@
+{
+  "scope": "Native component with actual reducer, campaign writer and localStorage. Test funding and adult rank are declared fixture inputs; not a complete GameClient/Homeworld journey.",
+  "checks": [
+    {
+      "name": "fifty catalogue models",
+      "passed": true
+    },
+    {
+      "name": "purchase gated before permit",
+      "passed": true
+    },
+    {
+      "name": "legacy save grants no vehicle",
+      "passed": true
+    },
+    {
+      "name": "mobile has no horizontal overflow",
+      "passed": true
+    },
+    {
+      "name": "loan recorded and initially paused",
+      "passed": true
+    },
+    {
+      "name": "three ordered gates and real cargo return",
+      "passed": true
+    },
+    {
+      "name": "permit awards no property rank or currency",
+      "passed": true
+    },
+    {
+      "name": "purchase debited exactly once",
+      "passed": true
+    },
+    {
+      "name": "four upgrade previews show the seven actual derived statistics",
+      "passed": true
+    },
+    {
+      "name": "owned upgrade view has no mobile overflow",
+      "passed": true
+    },
+    {
+      "name": "drive upgrade persisted",
+      "passed": true
+    },
+    {
+      "name": "reload preserves exact ledger",
+      "passed": true
+    },
+    {
+      "name": "owned driving consumes reserve and wears hull",
+      "passed": true
+    },
+    {
+      "name": "pause freezes persisted tick",
+      "passed": true
+    },
+    {
+      "name": "active sortie reloads paused at saved tick",
+      "passed": true
+    },
+    {
+      "name": "recovery preserves wear and records debt",
+      "passed": true
+    },
+    {
+      "name": "debt prevents further personal sortie",
+      "passed": true
+    },
+    {
+      "name": "recovery settlement debits exact debt",
+      "passed": true
+    },
+    {
+      "name": "recharge does not repair hull",
+      "passed": true
+    },
+    {
+      "name": "repair restores hull",
+      "passed": true
+    },
+    {
+      "name": "no browser exceptions",
+      "passed": true
+    }
+  ],
+  "errors": [],
+  "screenshots": [
+    "garage-desktop.png",
+    "garage-mobile.png",
+    "yard-completed.png",
+    "garage-upgrades-mobile.png",
+    "garage-maintained.png"
+  ],
+  "passed": true,
+  "sourceCommit": "2fa19db1c3f600323350c8256dd7a1d6e6c0ee71",
+  "course": {
+    "x": 140.14624564332289,
+    "y": 463.17521097030755,
+    "heading": 1.5660603071795873,
+    "speed": 0,
+    "tick": 2852,
+    "energy": 95.22800000001112,
+    "condition": 98.88745395074167,
+    "heat": 0,
+    "distance": 2225.150624034879,
+    "impacts": 0,
+    "hitCooldown": 0,
+    "npcTicks": [
+      2852,
+      2786
+    ],
+    "checkpoint": 3,
+    "cargoKg": 0,
+    "cargoDelivered": true,
+    "overheated": false
+  },
+  "browserVersion": "153.0.8010.12"
+}

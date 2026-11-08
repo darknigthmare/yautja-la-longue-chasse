@@ -4,7 +4,7 @@
 
 Le code est raccordé au comptoir `forge-service` des Forges `deep-forge`. Deux modèles peuvent être conduits sur l’aire fermée : Grav-Sled de prêt et moto de clan achetable. Deux Trophy Carriers circulent comme convois. Le catalogue de cinquante modèles ne signifie pas cinquante véhicules jouables.
 
-## Vérification du code publié
+## Vérification historique du code publié
 
 Le commit `9f42efcf1ac171d5c584c3fbcf0fc574ea8af8a8` passe 120 tests ciblés, le TypeScript ciblé et 19 contrôles navigateur natifs. [Run d’origine](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/42482103760) · [Rapport et captures conservés](qa/native-9f42efcf/) · [Reçu courant](qa/verification-20261108.json).
 
@@ -17,3 +17,7 @@ Les quatre feuilles historiques conservent 2 428 valeurs ou formules non vides. 
 Les nombres de besoins ne désignent pas des fichiers livrés. Quarante sources individuelles HD sont connues dans le dépôt ; leurs autres vues et animations ne sont pas inventées. Trois PNG sont réemployés à l’identique dans le moteur. Aucune génération d’image n’a lieu dans cette reprise. Les dix sujets 41–50, la revue artistique 1:1 et le dressage restent ouverts.
 
 Vérification reproductible sans modifier le classeur : `python3 scripts/verify-mobility-workbook.py` depuis la racine du dépôt. Le document est éditable dans Excel ; le vérificateur contrôle la livraison figée et ses résultats calculés, pas les éditions ultérieures de l’utilisateur.
+
+## Reprise V1.1 — état courant
+
+[Reprise détaillée](REPRISE_V1_1.md) : le XLSX comporte 23 feuilles et 779 formules, dont une feuille de qualification distincte. Code `2fa19db1` : 161 tests ciblés + 6 tests QA, 21 contrôles natifs de conduite/atelier et 12 contrôles tactiles/API manette ; TypeScript complet et build frontend diagnostic réussis. Les captures/rapports sont dans [qa/native-2fa19db1](qa/native-2fa19db1/). Les reçus antérieurs, la base de 50 modèles et les 18 chantiers de clôture restent conservés. La manette physique et le parcours campagne complet ne sont pas qualifiés.

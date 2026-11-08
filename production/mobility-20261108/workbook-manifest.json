@@ -1,8 +1,8 @@
 {
   "format": "yautja-mobility-workbook/2",
   "file": "production/mobility-20261108/Yautja_Mobilite_Gameplay_20261108.xlsx",
-  "bytes": 332203,
-  "sha256": "b87a09ce8a683e7c024600933e0ce69363e62b7d6c9dd2d78b87fc2f7a0e9a89",
+  "bytes": 345658,
+  "sha256": "9e63ca5683b9e5e2ae1d6e6e2f96bf00a08a0d1dff3ba4299dcf6f54534c6651",
   "sheets": [
     "Livraison",
     "Catalogue",
@@ -25,7 +25,8 @@
     "QA",
     "Reste_a_faire",
     "Provenance",
-    "Synthese_V1"
+    "Synthese_V1",
+    "Reprise_V1_1"
   ],
   "historical_workbook": "production/homeworld-sectors-20261103/YAUTJA_MARCHE_MONTURES_CHENILS_20261103.xlsx",
   "historical_workbook_sha256": "7ab7d73aec3b7beb94ac930843a3aa125c617a18f785788007830d5e5ab768fb",
@@ -38,7 +39,7 @@
   "native_browser_passed": true,
   "validation_scope": "120 targeted tests, isolated strict TypeScript and 19 native Chromium component checks with actual campaign persistence. Adult rank and test funding are declared fixture inputs. Not a full GameClient/Homeworld journey, hardware gamepad test, production build or art certification.",
   "authoring_tool": "artifact_tool Python",
-  "formula_count": 778,
+  "formula_count": 779,
   "new_sheet_inventory": {
     "Parametres_V1": {
       "data_rows": 36,
@@ -129,11 +130,16 @@
       "data_rows": 0,
       "columns": 8,
       "summary": true
+    },
+    "Reprise_V1_1": {
+      "data_rows": 20,
+      "columns": 8,
+      "header_row": 5
     }
   },
   "native_browser_checks": 19,
   "targeted_tests": 120,
-  "source_commit": "9f42efcf1ac171d5c584c3fbcf0fc574ea8af8a8",
+  "source_commit": "2fa19db1c3f600323350c8256dd7a1d6e6c0ee71",
   "source_check_url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/42482103760",
   "production_requirements": {
     "sprites_and_layers": 906,
@@ -154,5 +160,20 @@
     "purchasable_models": 1,
     "purchasable_upgrade_tiers": 12,
     "autonomous_carriers_on_yard": 2
+  },
+  "previous_sha256": "b87a09ce8a683e7c024600933e0ce69363e62b7d6c9dd2d78b87fc2f7a0e9a89",
+  "previous_bytes": 332203,
+  "git_blob_sha1": "39e8f813887f68cbf69a79786f1afab52eeaa362",
+  "revision": "V1.1",
+  "qualification": {
+    "targeted_tests": 161,
+    "qa_driver_tests": 6,
+    "native_driving_checks": 21,
+    "native_and_api_controls_checks": 12,
+    "physical_gamepad_tested": false,
+    "full_campaign_journey_tested": false,
+    "mobility_run": 42498294170,
+    "full_build_run": 42498298048,
+    "full_build_scope": "Full repository TypeScript and frontend diagnostic build, not a deployment or universal gameplay validation."
   }
 }

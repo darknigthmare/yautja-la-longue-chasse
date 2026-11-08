@@ -1,0 +1,102 @@
+{
+  "scope": "Real component and writer with Chromium CDP touchscreen input; gamepad snapshots are a declared browser API fixture, not physical hardware.",
+  "sourceCommit": "2fa19db1c3f600323350c8256dd7a1d6e6c0ee71",
+  "checks": [
+    {
+      "name": "two native touch contacts accelerate and turn",
+      "passed": true
+    },
+    {
+      "name": "lifting steering finger preserves forward contact",
+      "passed": true
+    },
+    {
+      "name": "pause commits and freezes the real course",
+      "passed": true
+    },
+    {
+      "name": "opposed simultaneous touches stay neutral from rest",
+      "passed": true
+    },
+    {
+      "name": "lifting reverse restores the still-held forward contact",
+      "passed": true
+    },
+    {
+      "name": "pause clears held contacts instead of latching acceleration",
+      "passed": true
+    },
+    {
+      "name": "new pad held forward cannot launch the vehicle",
+      "passed": true
+    },
+    {
+      "name": "neutral requirement is visible to the player",
+      "passed": true
+    },
+    {
+      "name": "neutral then deliberate pad input moves the vehicle",
+      "passed": true
+    },
+    {
+      "name": "pad disconnect pauses and persists one frozen course",
+      "passed": true
+    },
+    {
+      "name": "reconnected held pad cannot reapply throttle without neutral",
+      "passed": true
+    },
+    {
+      "name": "no browser exception in input scenarios",
+      "passed": true
+    }
+  ],
+  "errors": [],
+  "passed": true,
+  "touchTransport": "WebTouchEvent: listed released IDs",
+  "firstTouchObservation": {
+    "turning": {
+      "x": "144.6023",
+      "y": "486.9403",
+      "speed": "32.333",
+      "heading": "-0.87075",
+      "tick": "28",
+      "paused": "false"
+    },
+    "released": {
+      "x": "153.9585",
+      "y": "474.7609",
+      "speed": "63.050",
+      "heading": "-0.91575",
+      "tick": "47",
+      "paused": "false"
+    },
+    "events": [
+      {
+        "type": "pointerdown",
+        "id": 2,
+        "label": "Avancer",
+        "trusted": true
+      },
+      {
+        "type": "pointerdown",
+        "id": 3,
+        "label": "Gauche",
+        "trusted": true
+      },
+      {
+        "type": "pointerup",
+        "id": 3,
+        "label": "Gauche",
+        "trusted": true
+      },
+      {
+        "type": "lostpointercapture",
+        "id": 3,
+        "label": "Gauche",
+        "trusted": true
+      }
+    ]
+  },
+  "browserVersion": "153.0.8010.12"
+}

@@ -82,7 +82,7 @@ def main() -> None:
     require(path.stat().st_size == manifest['bytes'] and digest(path) == manifest['sha256'], 'Delivered workbook byte/hash mismatch')
     require(digest(historical) == manifest['historical_workbook_sha256'], 'Historical workbook changed')
     old, current = read_book(historical), read_book(path)
-    require(list(current) == manifest['sheets'] and len(current) == 22, 'Sheet names/count changed')
+    require(list(current) == manifest['sheets'] and len(current) == 23, 'Sheet names/count changed')
     preserved = 0
     for name, data in old.items():
         for address, expected in data['cells'].items():
@@ -105,14 +105,18 @@ def main() -> None:
         requirements = [v[1] for key, v in current[name]['cells'].items() if re.fullmatch(r'A\d+', key) and int(key[1:]) >= 6]
         require(len(requirements) == len(set(requirements)), f'Duplicate requirement IDs: {name}')
     counts = {name: len(sheet['formulas']) for name, sheet in current.items()}
-    require(sum(counts.values()) == manifest['formula_count'] == 778, 'Formula count mismatch')
+    require(sum(counts.values()) == manifest['formula_count'] == 779, 'Formula count mismatch')
     require(counts['Stats'] == 350 and counts['Modules_machine'] == 408, 'Stats/upgrade formulas missing')
     expected_summary = {'A7': 50, 'C7': 40, 'E7': 1, 'G7': 2, 'E12': 906, 'G12': 40,
         'E13': 1671, 'G13': 0, 'E14': 400, 'G14': 0, 'E15': 350, 'G15': 0,
-        'G21': 120, 'G22': 19, 'G23': 18}
+        'G21': 167, 'G22': 21, 'G23': 18, 'G24': 12}
     for cell, expected in expected_summary.items():
         require(current['Synthese_V1']['cached'][cell] == expected, f'Incorrect dashboard value: {cell}')
-    print(json.dumps({'passed': True, 'workbook_sha256': manifest['sha256'], 'sheets': 22,
+    require(current['Reprise_V1_1']['cells']['E6'] == ('v', 161), 'Targeted test count mismatch')
+    require(current['Reprise_V1_1']['cells']['E7'] == ('v', 6), 'QA guidance count mismatch')
+    require(current['Reprise_V1_1']['cells']['E8'] == ('v', 21), 'Native course count mismatch')
+    require(current['Reprise_V1_1']['cells']['E9'] == ('v', 12), 'Control checks count mismatch')
+    print(json.dumps({'passed': True, 'workbook_sha256': manifest['sha256'], 'sheets': 23,
         'preserved_historical_cells': preserved, 'formula_count': sum(counts.values()),
         'model_count': 50, 'independent_sprite_requirements': 906, 'animation_requirements': 1671,
         'dedicated_audio_requirements': 400, 'dedicated_vfx_requirements': 350,
