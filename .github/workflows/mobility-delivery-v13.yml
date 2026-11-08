@@ -44,7 +44,7 @@ jobs:
             /production/homeworld-sectors-20261103/YAUTJA_MARCHE_MONTURES_CHENILS_20261103.xlsx
             /public/**/*.json
             /public/game/mobility/
-      - name: Import exact reviewed files, no workflow modification or concurrent overwrite
+      - name: Import reviewed files while preserving the existing historical guide
         run: |
           python3 - <<'PY'
           import hashlib,io,json,subprocess,urllib.request,zipfile
@@ -53,6 +53,7 @@ jobs:
           with urllib.request.urlopen(url,timeout=60) as response:data=response.read(883950)
           assert len(data)==883949 and hashlib.sha256(data).hexdigest()=='5d1e42d5896d15417dc9e328dd564ea7e2d39bd2578ac6ac69d5b3d71ebb84c7'
           mp='production/mobility-20261108/v1.3/qa/delivery-manifest.json'
+          deferred='docs/campagne/mobilite/GAMEPLAY_GARAGE_V1.md'
           allowed=set('''app/game/MobilityDrivingYard.tsx
           app/game/MobilityGarage.module.css
           app/game/MobilityGarage.tsx
@@ -86,7 +87,7 @@ jobs:
           scripts/qa-mobility-native.mjs
           scripts/verify-mobility-production-v13.py
           tests/mobility-transitions-v13.test.mjs'''.split())
-          blob=lambda b:hashlib.sha1(b'blob '+str(len(b)).encode()+b'\0'+b).hexdigest()
+          blob=lambda b:hashlib.sha1(b'blob '+str(len(b)).encode()+bytes([0])+b).hexdigest()
           with zipfile.ZipFile(io.BytesIO(data)) as z:
             assert len(z.infolist())==34 and sum(i.file_size for i in z.infolist())==9099656 and z.testzip() is None
             raw=z.read(mp);assert hashlib.sha256(raw).hexdigest()=='03a2f24db789c19afd1185941812d07b5766278bc619f4818a212d3fd76b7017'
@@ -97,14 +98,18 @@ jobs:
               name=e['path'];p=Path(name);body=z.read(name);old=e['expected_previous_git_blob']
               assert not p.is_absolute() and '..' not in PurePosixPath(name).parts and not name.startswith('.github/')
               assert len(body)==e['bytes'] and hashlib.sha256(body).hexdigest()==e['sha256'] and blob(body)==e['git_blob_sha1']
+              if name==deferred:
+                assert p.is_file()
+                print('Preserved historical guide, separate connector append required:',blob(p.read_bytes()))
+                continue
               assert (p.exists() and blob(p.read_bytes())==old) or (not p.exists() and old is None),'Concurrent change: '+name
               outputs[name]=body
             assert not Path(mp).exists()
           for name,body in outputs.items():
             p=Path(name);p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(body)
           subprocess.run(['git','add','--sparse','--',*sorted(outputs)],check=True)
-          actual=set(filter(None,subprocess.check_output(['git','diff','--cached','--name-only','-z']).decode().split('\0')))
-          assert actual==set(outputs) and len(actual)==34
+          actual=set(filter(None,subprocess.check_output(['git','diff','--cached','--name-only','-z']).decode().split(chr(0))))
+          assert actual==set(outputs) and len(actual)==33 and deferred not in actual
           subprocess.run(['git','diff','--cached','--check'],check=True)
           PY
       - name: Create local source revision, not yet published
@@ -156,13 +161,13 @@ jobs:
           assert len({p.name for p in paths})==len(paths)
           rows=[]
           for p in paths:
-            raw=p.read_bytes();body=raw.rstrip(b'\r\n')+b'\n' if p.name=='typecheck.txt' else raw
+            raw=p.read_bytes();body=raw.rstrip(bytes([13,10]))+bytes([10]) if p.name=='typecheck.txt' else raw
             (target/p.name).write_bytes(body)
             rows.append({'file':p.name,'bytes':len(body),'sha256':hashlib.sha256(body).hexdigest(),'raw_sha256':hashlib.sha256(raw).hexdigest()})
-          result={'source_commit':source,'workflow_run':os.environ['GITHUB_RUN_ID'],'tests_passed':315,'new_tests_included':115,'native_checks_passed':33,'controls_checks_passed':12,'full_typecheck_passed':True,'production_models':50,'scope_points':21,'workbook_sheets':16,'prior_workbook_preserved':True,'rider_png_delivered':0,'files':rows,'scope':'Two yard vehicles; actual React/reducer/storage with declared adult funding fixture. No full Homeworld journey, physical controller or new art certification.'}
-          (target/'RESULT.json').write_text(json.dumps(result,ensure_ascii=False,indent=2)+'\n')
+          result={'source_commit':source,'workflow_run':os.environ['GITHUB_RUN_ID'],'tests_passed':315,'new_tests_included':115,'native_checks_passed':33,'controls_checks_passed':12,'full_typecheck_passed':True,'production_models':50,'scope_points':21,'workbook_sheets':16,'prior_workbook_preserved':True,'rider_png_delivered':0,'deferred_document_append':'docs/campagne/mobilite/GAMEPLAY_GARAGE_V1.md','files':rows,'scope':'Two yard vehicles; actual React/reducer/storage with declared adult funding fixture. No full Homeworld journey, physical controller or new art certification.'}
+          (target/'RESULT.json').write_text(json.dumps(result,ensure_ascii=False,indent=2)+chr(10))
           subprocess.run(['git','add','--',str(target)],check=True)
-          actual=set(filter(None,subprocess.check_output(['git','diff','--cached','--name-only','-z']).decode().split('\0')))
+          actual=set(filter(None,subprocess.check_output(['git','diff','--cached','--name-only','-z']).decode().split(chr(0))))
           assert actual and all(p.startswith(str(target)+'/') for p in actual)
           subprocess.run(['git','diff','--cached','--check'],check=True)
           PY
