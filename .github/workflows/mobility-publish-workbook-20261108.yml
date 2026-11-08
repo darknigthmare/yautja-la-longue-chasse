@@ -1,0 +1,77 @@
+name: Mobility workbook and evidence publication
+on:
+  push:
+    branches: [feat/mobility-garage-gameplay-20261108]
+    paths: [.github/workflows/mobility-publish-workbook-20261108.yml]
+permissions:
+  contents: write
+concurrency:
+  group: mobility-workbook-publication-20261108
+  cancel-in-progress: false
+jobs:
+  publish:
+    if: github.repository == 'darknigthmare/yautja-la-longue-chasse' && github.ref == 'refs/heads/feat/mobility-garage-gameplay-20261108'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 1
+          sparse-checkout: |
+            docs/campagne/mobilite
+            production/mobility-20261108
+            production/homeworld-sectors-20261103
+            scripts
+      - name: Preserve exact local files and reject concurrent overwrites
+        run: |
+          python3 - <<'PY'
+          import hashlib,io,json,subprocess,urllib.request,zipfile
+          from pathlib import Path,PurePosixPath
+          url='https://d2ol7oe51mr4n9.cloudfront.net/user_3JHwJlNzgmcxQy32tjF7NiVZPuH/e352578d-f563-4bff-baed-769610220aaa.zip'
+          with urllib.request.urlopen(url,timeout=60) as response:
+            data=response.read(2421789)
+          assert len(data)==2421788 and hashlib.sha256(data).hexdigest()=='1df045081c1195cf2d0dd91eb8dcdd6a7b366d083c0426d1ca1c1ba42c7b72df'
+          manifest_path='production/mobility-20261108/qa/delivery-files-20261108.json'
+          with zipfile.ZipFile(io.BytesIO(data)) as archive:
+            assert archive.testzip() is None
+            raw=archive.read(manifest_path)
+            assert hashlib.sha256(raw).hexdigest()=='eddf4849a483a408c7bc6be3d99d1d90f9cfb2d412101dc78fabf3b57ef2c5b9'
+            manifest=json.loads(raw)
+            assert manifest['source_commit']=='9f42efcf1ac171d5c584c3fbcf0fc574ea8af8a8'
+            rows=manifest['files'];paths={e['path'] for e in rows}|{manifest_path}
+            assert len(rows)==14 and len(paths)==15 and set(archive.namelist())==paths
+            assert sum(i.file_size for i in archive.infolist())<8_000_000
+            outputs={manifest_path:raw}
+            for entry in rows:
+              name=entry['path'];p=Path(name)
+              assert '..' not in PurePosixPath(name).parts and not p.is_absolute()
+              assert name.startswith('production/mobility-20261108/') or name in ('scripts/verify-mobility-workbook.py','docs/campagne/mobilite/GAMEPLAY_GARAGE_V1.md')
+              body=archive.read(name);old=entry['expected_previous_git_blob']
+              assert len(body)==entry['bytes'] and hashlib.sha256(body).hexdigest()==entry['sha256']
+              assert hashlib.sha1(b'blob '+str(len(body)).encode()+b'\0'+body).hexdigest()==entry['git_blob_sha1']
+              if p.exists():
+                existing=p.read_bytes()
+                existing_sha=hashlib.sha1(b'blob '+str(len(existing)).encode()+b'\0'+existing).hexdigest()
+                assert existing==body or existing_sha==old,'Concurrent change: '+name
+              else:
+                assert old is None,'Missing prior file: '+name
+              outputs[name]=body
+            if Path(manifest_path).exists():assert Path(manifest_path).read_bytes()==raw
+          for name,body in outputs.items():
+            path=Path(name);path.parent.mkdir(parents=True,exist_ok=True);path.write_bytes(body)
+          subprocess.run(['python3','scripts/verify-mobility-workbook.py'],check=True)
+          subprocess.run(['git','add','--sparse','--',*sorted(paths)],check=True)
+          actual=set(filter(None,subprocess.check_output(['git','diff','--cached','--name-only','-z']).decode().split('\0')))
+          assert not actual or actual==paths,(len(actual),actual^paths)
+          subprocess.run(['git','diff','--cached','--check'],check=True)
+          print(json.dumps({'verified_files':15,'xlsx_bytes':332203,'xlsx_sha256':'b87a09ce8a683e7c024600933e0ce69363e62b7d6c9dd2d78b87fc2f7a0e9a89','gameplay_changes':False}))
+          PY
+      - name: Commit verified workbook, scope notes and durable evidence
+        run: |
+          if git diff --cached --quiet; then exit 0; fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -m 'docs(mobilite): Excel 22 feuilles, preuves 120 tests et 19 controles natifs [skip ci]'
+          git push origin HEAD:refs/heads/feat/mobility-garage-gameplay-20261108
+          git rev-parse HEAD
