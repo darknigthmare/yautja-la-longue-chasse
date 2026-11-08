@@ -1,9 +1,9 @@
 /** Original game balancing. Neither prices nor derived units are canon measurements. */
-import first from '../../../../docs/campagne/mobilite/catalogue/01-10.json';
-import second from '../../../../docs/campagne/mobilite/catalogue/11-20.json';
-import third from '../../../../docs/campagne/mobilite/catalogue/21-30.json';
-import fourth from '../../../../docs/campagne/mobilite/catalogue/31-40.json';
-import fifth from '../../../../docs/campagne/mobilite/catalogue/41-50.json';
+import first from './catalogue-source/01-10.json';
+import second from './catalogue-source/11-20.json';
+import third from './catalogue-source/21-30.json';
+import fourth from './catalogue-source/31-40.json';
+import fifth from './catalogue-source/41-50.json';
 export type MobilityRank = 'young-blood' | 'blooded' | 'elite' | 'elder';
 export type MobilityModule = 'drive' | 'armor' | 'cargo' | 'cooling';
 export type MobilityLevels = Record<MobilityModule, number>;
@@ -18,7 +18,7 @@ export interface MobilityDefinition {
   sourcePath: string | null; artValidated: boolean; canonValidated: boolean; npcPolicy: string; productionStatus: string;
 }
 const acquisitionPolicies = ['quest','quest','purchase','craft','training-loan','quest','faction','quest','craft','quest','quest','quest','craft','quest','quest','clan-service','faction','faction','quest','clan-service','quest','quest','insertion','narrative','quest','quest','quest','quest','faction','faction','faction','faction','non-pilotable','faction'];
-/** The five bible files remain the identity/source-stat authority, never a second rewritten roster. */
+/** Byte-identical runtime projection; scripts/sync-mobility-catalogue.mjs verifies the five authoritative bible files. */
 export const MOBILITY_CATALOGUE: readonly MobilityDefinition[] = [...first,...second,...third,...fourth,...fifth].map((item,i)=>{
   const n=i+1, acquisitionMode=acquisitionPolicies[i]??'quest';
   return {...item,index:n,kind:n>=35?'mount':'machine',acquisitionMode,purchasePrice:n===3?420:null,

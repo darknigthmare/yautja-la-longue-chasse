@@ -6,13 +6,14 @@ import { HUNTER_PRESETS, appearanceForPreset } from "../game/hunterLore";
 import { normalizeSave } from "../game/save";
 import type { ShipProgressionState } from "../game/systems/progression";
 import type { SaveGame } from "../game/types";
+import type { HomeworldService } from "../game/systems/homeworld";
 import { DEV_DESTINATIONS } from "./destinations";
 import styles from "./session.module.css";
 
 const ShipHub = lazy(() => import("../game/ShipHub"));
 const HunterRigPreview = lazy(() => import("../game/HunterRigPreview"));
 
-export type DevService = "map" | "airlock" | "armory" | "customization" | "trophies" | "codex" |
+export type DevService = HomeworldService | "map" | "airlock" | "armory" | "customization" | "trophies" | "codex" |
   "medbay" | "training" | "settings" | "clan-war" | "pit" | "justice" | "mausoleum";
 
 interface DevServicesProps {
@@ -29,6 +30,7 @@ interface DevServicesProps {
 }
 
 const TITLES: Record<DevService, string> = {
+  mobility: "Comptoir des convois — campagne",
   map: "Destinations de test", airlock: "Sas — rejoindre un lieu", armory: "Armurerie de test",
   customization: "Apparence du chasseur de test", trophies: "Salle des trophées", codex: "Archives du clan",
   medbay: "Baie médicale", training: "Entraînement", settings: "Paramètres de cet essai",
@@ -139,8 +141,9 @@ export default function DevServices({ service, save, progression, host, onSave, 
       onNotify={onNotify}
     /></Suspense>}
 
-    {["clan-war", "pit", "justice", "mausoleum"].includes(service) && <div className={styles.empty}>
+    {["mobility", "clan-war", "pit", "justice", "mausoleum"].includes(service) && <div className={styles.empty}>
       <h3>Service de campagne</h3>
+      {service === "mobility" && <p data-dev-mobility-readonly>Le prêt, le permis, les achats et l’entretien utilisent le registre de ta campagne. Cet essai ne crée aucun véhicule et ne dépense aucune marque.</p>}
       <p>Tu peux explorer ce lieu dans l’essai. Ce service complet conserve sa progression propre et s’ouvre depuis la campagne.</p>
       <p>Reviens dans le lieu pour continuer sa visite ou choisis un autre point de test avec la barre supérieure.</p>
       <button type="button" onClick={onClose}>Continuer la visite</button>
