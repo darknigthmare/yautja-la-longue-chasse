@@ -7,14 +7,14 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { build } from 'esbuild';
 import react from '@vitejs/plugin-react';
-import { createServer } from 'vite';
+import { build as buildVite, preview } from 'vite';
 import { chromium } from 'playwright-core';
 import sharp from 'sharp';
 
 /**
  * Spatial rendering audit, separate from the campaign transaction suite.
  *
- * The disposable Vite host imports the actual PlanetArrivalCinematic. A valid
+ * The disposable production Vite host imports the actual PlanetArrivalCinematic. A valid
  * paused state starts at a native shot boundary; the normal Resume button and
  * requestAnimationFrame then advance it. No fake clock, source replacement,
  * rescaled or retouched screenshot, fabricated asset or mocked renderer is used.
@@ -161,13 +161,58 @@ async function startHarness() {
         <output data-spatial-host="true" data-spatial-handoff={handoff} data-spatial-exited={exited} /></>;
     }
     createRoot(document.getElementById('root')!).render(<Host />);`);
-  harness = await createServer({
-    configFile: false, root: harnessDir, publicDir: path.join(root, 'public'),
+  // Qualify the delivered React runtime, without the development renderer,
+  // Refresh or on-demand transforms competing with the native capture window.
+  // This changes only the disposable host: component code, native clocks and
+  // every before/X11/after/geometry acceptance gate remain unchanged.
+  const config = {
+    configFile: false, envDir: false, root: harnessDir, publicDir: false, mode: 'production',
     plugins: [react()], logLevel: 'warn',
-    server: { host: '127.0.0.1', port: harnessPort, strictPort: true, fs: { allow: [root] } },
+    define: { 'process.env.NODE_ENV': JSON.stringify('production') },
+    build: { outDir: 'dist', assetsDir: '__spatial_build', copyPublicDir: false },
+    preview: { host: '127.0.0.1', port: harnessPort, strictPort: true },
     resolve: { alias: { '@': root, 'next/link': path.join(root, 'desktop/LocalLink.tsx') } },
-  });
-  await harness.listen();
+  };
+  try {
+    const built = await buildVite(config);
+    const output = Array.isArray(built) ? built.flatMap(bundle => bundle.output) : built.output;
+    assert.ok(Array.isArray(output) && output.length > 0, 'The spatial host requires a completed production build.');
+    const modules = [...new Set(output.filter(item => item.type === 'chunk').flatMap(item => Object.keys(item.modules)))].sort();
+    assert.ok(modules.some(id => id.endsWith('/react/cjs/react.production.js')));
+    assert.ok(modules.some(id => id.endsWith('/react/cjs/react-jsx-runtime.production.js')));
+    assert.ok(modules.some(id => id.endsWith('/react-dom/cjs/react-dom-client.production.js')));
+    assert.ok(!modules.some(id => /react[^/]*\/.*(?:\.development\.js|react-refresh)/.test(id)),
+      'The photographic host must not include a development React runtime or Refresh.');
+    // The host requests artwork only beneath /game. Mount that original tree
+    // after building instead of copying its large binary collection. The link
+    // lives only inside this disposable dist and cannot collide with bundles.
+    const gameSource = path.join(root, 'public/game');
+    assert.ok((await fs.stat(gameSource)).isDirectory());
+    await fs.symlink(gameSource, path.join(harnessDir, 'dist/game'), 'junction');
+    report.harnessBuild = {
+      mode: 'production', server: 'vite-preview', component: 'app/game/PlanetArrivalCinematic.tsx',
+      publicMounts: [{ url: '/game/', source: 'public/game', kind: 'temporary-directory-link' }],
+      runtimeModules: modules.filter(id => /\/(?:react|react-dom)\/cjs\//.test(id)).map(id => path.relative(root, id)),
+      files: output.map(item => {
+        const bytes = Buffer.from(item.type === 'chunk' ? item.code : item.source);
+        return { file: item.fileName, bytes: bytes.length, sha256: sha256(bytes) };
+      }),
+      scope: 'Production build of the same imported sources and fixture. HTTP and bundle checks do not establish native capture timing; the full X11 recipe must qualify this build.',
+    };
+    harness = await preview(config);
+    assert.equal(harness.config.isProduction, true, 'The spatial preview must run in production mode.');
+  } catch (error) {
+    try { await closeHarness(); }
+    catch (cleanupError) { error.harnessCleanupError = cleanupError.message; }
+    throw error;
+  }
+}
+
+async function closeHarness() {
+  const server = harness, directory = harnessDir;
+  harness = null; harnessDir = null;
+  try { if (server) await server.close(); }
+  finally { if (directory) await fs.rm(directory, { recursive: true, force: true }); }
 }
 
 async function startNativeServer() {
@@ -2874,8 +2919,8 @@ try {
   report.finishedAt = new Date().toISOString();
   report.missingAssets = [...missing].sort(); report.requestedAssets = [...requested].sort();
   await fs.writeFile(path.join(out, 'report.json'), JSON.stringify(report, null, 2) + '\n');
-  if (browser) await browser.close();
-  if (harness) await harness.close();
+  try { if (browser) await browser.close(); }
+  finally { await closeHarness(); }
   if (nativeServer && !nativeExit) {
     nativeServer.kill('SIGTERM');
     await new Promise(resolve => {
@@ -2883,12 +2928,11 @@ try {
       nativeServer.once('exit', () => { clearTimeout(timer); resolve(); });
     });
   }
-  if (harnessDir) await fs.rm(harnessDir, { recursive: true, force: true });
   console.log(`Spatial evidence: ${path.relative(root, out)}/report.json`);
   // Duplicate compact, existing evidence after the browser has closed so a
   // remote review can inspect CI output without changing any native capture.
   if (process.env.GITHUB_ACTIONS === 'true') {
-    const review = JSON.stringify(Object.fromEntries(["schema","startedAt","finishedAt","sourceCommit","workingTreeDirty","workingTreeStatus","sourceHashes","browserVersion","browserMode","nativeCapture","scope","timing","passed","checks","captures","rejectedCaptures","captureAttempts","capturePreflights","contactObservations","resizes","ships","insertions","native","errors","consoleErrors","missingAssets","failure"]
+    const review = JSON.stringify(Object.fromEntries(["schema","startedAt","finishedAt","sourceCommit","workingTreeDirty","workingTreeStatus","sourceHashes","browserVersion","browserMode","harnessBuild","nativeCapture","scope","timing","passed","checks","captures","rejectedCaptures","captureAttempts","capturePreflights","contactObservations","resizes","ships","insertions","native","errors","consoleErrors","missingAssets","failure"]
       .filter(key => report[key] !== undefined).map(key => [key, report[key]])));
     const chunkSize = 12_000, parts = Math.ceil(review.length / chunkSize);
     for (let part = 0; part < parts; part++) console.log('QA_REVIEW_JSON ' + JSON.stringify({
