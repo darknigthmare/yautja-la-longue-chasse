@@ -84,12 +84,12 @@ function storage(initial = []) {
   return { values, getItem: key => values.get(key) ?? null, setItem: (key, value) => values.set(key, value), removeItem: key => values.delete(key) };
 }
 
-test('the two incidents reuse named contracts, characters and nine walkable physical interaction points', () => {
-  assert.deepEqual(incidents.CLAN_SHIP_INCIDENTS.map(entry => entry.reference), ['OPS-B01', 'OPS-B02']);
+test('the three incidents reuse named contracts, characters and fourteen walkable physical interaction points', () => {
+  assert.deepEqual(incidents.CLAN_SHIP_INCIDENTS.map(entry => entry.reference), ['OPS-B01', 'OPS-B02', 'OPS-B03']);
   for (const definition of incidents.CLAN_SHIP_INCIDENTS) {
     assert.ok(ops.clanShipContract(definition.prerequisite)); assert.ok(ops.CLAN_SHIP_RECRUITS.some(npc => npc.id === definition.npcId));
   }
-  assert.equal(Object.keys(incidents.CLAN_SHIP_INCIDENT_TARGETS).length, 9);
+  assert.equal(Object.keys(incidents.CLAN_SHIP_INCIDENT_TARGETS).length, 14);
   for (const target of Object.values(incidents.CLAN_SHIP_INCIDENT_TARGETS)) {
     assert.equal(motion.isClanShipInteriorWalkable(target.roomId, target), true, target.id);
     assert.ok(motion.planClanShipInteriorPath(target.roomId, motion.clanShipInteriorSpawn(target.roomId), target), target.id);
@@ -201,7 +201,7 @@ test('the archive rejects forged history, skipped clues, foreign positions, futu
     const invalid = clone(save); mutate(invalid.clanShipIncidents);
     assert.equal(saves.parseSaveImport(JSON.stringify(invalid)).failure, 'invalid-save');
   }
-  const future = clone(save); future.clanShipIncidents.version = 2;
+  const future = clone(save); future.clanShipIncidents.version = incidents.CLAN_SHIP_INCIDENT_VERSION + 1;
   assert.equal(saves.parseSaveImport(JSON.stringify(future)).failure, 'future-version');
   const missing = clone(save); missing.clanShipOperations = null;
   assert.equal(saves.parseSaveImport(JSON.stringify(missing)).failure, 'invalid-save');

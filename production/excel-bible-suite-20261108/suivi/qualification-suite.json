@@ -1,0 +1,118 @@
+{
+  "version": 1,
+  "asOfDate": "2026-11-08",
+  "baseCommit": "04eb4caa217ad114faf1cf63b301b4df67736b2d",
+  "readyForWorkbook": true,
+  "previousRegister": "production/excel-bible-20261108/suivi/excel-open-register.json",
+  "previousWorkbook": "production/excel-bible-20261108/suivi/Yautja_Suivi_Excel_Bible_20261108.xlsx",
+  "principle": "Cette suite qualifie seulement les références ci-dessous. Les 108 classeurs d’origine, le registre consolidé et les preuves de la passe précédente restent intacts.",
+  "rows": [
+    {
+      "id": "OPS-B03",
+      "kind": "Raccord",
+      "sourceKind": "excel",
+      "sourceKey": "Clan Ship:OPS-B03",
+      "title": "La trace du véritable porteur",
+      "implementation": "Dossier original C-37 : examiner les marques B-17 et T-04, comparer les relevés de chasse et de transfert, entendre Balafre de Cendre, puis motiver une conclusion auprès de Trace Froide et la présenter à Balafre. Deux conclusions étayées distinguent la chasse du portage ; les deux erreurs renvoient au relevé pertinent sans effacer les preuves. Les échanges exigent la présence réelle du membre et suivent sa salle d’affectation. La clôture crédite une seule fois 35 marques ; elle ne change ni rang, ni rite, ni collection historique.",
+      "generated": "Oui",
+      "integrated": "Partiel",
+      "behaviorTested": "Oui",
+      "browserTested": "Non",
+      "humanArtReview": "Non",
+      "evidence": [
+        "app/game/systems/clanShipTrophyCase.ts",
+        "app/game/systems/clanShipIncidents.ts",
+        "app/game/ClanShipIncidentPanel.tsx",
+        "app/game/ClanShipIncidentScene.tsx",
+        "tests/clan-ship-incidents.test.mjs",
+        "tests/clan-ship-trophy-case.test.mjs",
+        "production/excel-bible-suite-20261108/trophee/tests-run.txt",
+        "app/game/ClanShipIncidentPanel.module.css",
+        "app/game/ClanShipIncidentScene.module.css",
+        "production/excel-bible-suite-20261108/trophee/verification.json",
+        "production/excel-bible-suite-20261108/verification.json",
+        "production/excel-bible-suite-20261108/qa/trophy-final-presentation.txt"
+      ],
+      "remaining": "La restitution se déroule en deux entretiens successifs ; aucune réunion simultanée des deux membres ni télémétrie animée n’est ajoutée. Ces points restent ouverts pour une lecture stricte du critère Excel. Recette navigateur et revue artistique ouvertes."
+    },
+    {
+      "id": "R2-M027",
+      "kind": "Raccord",
+      "sourceKind": "campaign",
+      "sourceKey": "R2-M027",
+      "title": "Ce que la reine a changé",
+      "implementation": "Parcours de retour dans les salles du vaisseau personnel : contrôle et nettoyage à la baie médicale, examen de la crête réellement prélevée ou des seuls relevés à la galerie, puis dépôt aux archives du clan ou analyse personnelle à l’atelier. Un journal versionné conserve trois opérations et le choix unique. Le contenu reste sur la coque de l’expédition ; les snapshots de terrain et les rites sont conservés.",
+      "generated": "Oui",
+      "integrated": "Partiel",
+      "behaviorTested": "Oui",
+      "browserTested": "Non",
+      "humanArtReview": "Non",
+      "evidence": [
+        "app/game/systems/buriedCradleReturn.ts",
+        "app/game/systems/buriedCradleCampaign.ts",
+        "app/game/BuriedCradleReturnPanel.tsx",
+        "app/game/PhysicalShipDeck.tsx",
+        "app/game/ShipInterior25D.tsx",
+        "app/game/GameClient.tsx",
+        "tests/helpers/buried-cradle-return-route.mjs",
+        "tests/buried-cradle-return.test.mjs",
+        "production/excel-bible-suite-20261108/qa/retour-berceau/tests-run.txt",
+        "app/game/BuriedCradleReturnPanel.module.css",
+        "production/excel-bible-suite-20261108/qa/retour-berceau/relecture-independante.md",
+        "production/excel-bible-suite-20261108/qa/retour-berceau/input-routing-probe.json",
+        "production/excel-bible-suite-20261108/verification.json"
+      ],
+      "remaining": "Mentor physique en visite, VFX de nettoyage, audio dédié et détérioration propre de l’objet restent ouverts. La présentation au clan est un dépôt aux archives personnelles, sans nouveau dialogue de PNJ. La santé du joueur ne prouve pas un dommage de crête. Recette navigateur et revue artistique ouvertes."
+    },
+    {
+      "id": "OPS-Q26",
+      "kind": "Recette globale",
+      "sourceKind": "excel",
+      "sourceKey": "Clan Ship:OPS-Q26",
+      "title": "Incidents intérieurs",
+      "implementation": "La passe précédente couvre B01/B02. Cette suite ajoute le parcours de comparaison et de restitution séquentielle B03 avec 13 nouveaux tests de comportement. Le scénario B04 reste absent.",
+      "generated": "Partiel",
+      "integrated": "Partiel",
+      "behaviorTested": "Partiel",
+      "browserTested": "Non",
+      "humanArtReview": "Non",
+      "evidence": [
+        "production/excel-bible-20261108/incidents/coverage.json",
+        "production/excel-bible-20261108/incidents/verification.json",
+        "production/excel-bible-suite-20261108/trophee/tests-run.txt",
+        "production/excel-bible-suite-20261108/trophee/verification.json"
+      ],
+      "remaining": "Développer B04 avec le déplacement réel du groupe. Exécuter la recette navigateur et la revue artistique. Cette recette globale reste partielle."
+    },
+    {
+      "id": "OPS-B04",
+      "kind": "Suite à réaliser",
+      "sourceKind": "excel",
+      "sourceKey": "Clan Ship:OPS-B04",
+      "title": "Le retour que l’on prépare",
+      "implementation": "Conception conservée. Aucun accompagnement de groupe n’est ajouté par le retour individuel du Berceau.",
+      "generated": "Non",
+      "integrated": "Non",
+      "behaviorTested": "Non",
+      "browserTested": "Non",
+      "humanArtReview": "Non",
+      "evidence": [
+        "production/clan-ship-20261104/operations-spec.md"
+      ],
+      "remaining": "Préparer une voie libre, choisir un poste de transfert, accompagner une équipe visible du hangar aux soins, conserver ses positions sûres à la reprise puis présenter le relevé au conseil."
+    }
+  ],
+  "validation": {
+    "status": "complete",
+    "runtimeReport": "production/excel-bible-suite-20261108/verification.json",
+    "testsPassed": 426,
+    "testsFailed": 0,
+    "summary": "426 tests réussis, 0 échec ; build de production, TypeScript et lint réussis. Les 13 nouveaux tests B03 et les 10 nouveaux tests R2-M027 sont inclus dans ce total.",
+    "browserReport": "production/excel-bible-suite-20261108/qa/cradle-resume-20261108/browser-verification.json",
+    "browserSummary": "Chromium ne démarre pas : socket Unix refusé (EPERM). Aucun scénario navigateur exécuté et aucune capture produite.",
+    "newTestsIncluded": 23,
+    "buildPassed": true,
+    "lintPassed": true,
+    "physicalControllerValidated": false
+  }
+}

@@ -665,7 +665,7 @@ export interface SaveGame {
   buriedCradle?: import("./systems/buriedCradleCampaign").BuriedCradleCampaign | null;
   /** Explicit residence, installed quarters and physical presence of recruited companions. */
   companionResidence?: import("./systems/companionResidence").CompanionResidenceState | null;
-  /** Replayed physical incidents at the existing clan terminals, OPS-B01/B02. */
+  /** Replayed physical incidents at the existing clan terminals, OPS-B01/B02/B03. */
   clanShipIncidents?: import("./systems/clanShipIncidents").ClanShipIncidentsState | null;
   /** Null preserves pre-prologue adult campaigns without retroactive narrative proof. */
   prologue: NurseryCampaignProgress | null;

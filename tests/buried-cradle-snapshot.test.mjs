@@ -1,6 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { homeworldSceneSsrV78 } from './helpers/homeworld-scene-ssr-v78.mjs';
+import { createCradleReturnRoute } from './helpers/buried-cradle-return-route.mjs';
 
 const qa = homeworldSceneSsrV78();
 const model = qa.load('app/game/systems/buriedCradle.ts');
@@ -159,8 +160,7 @@ test('extraction records a terminal snapshot and a later retreat expedition star
   const extracted = campaign.actBuriedCradleCampaign(save, { type: 'extract', progress: run.progress,
     snapshot: snapshots.snapshotBuriedCradleRun(run) }, ctx);
   assert(extracted.accepted, extracted.message); save.buriedCradle = extracted.state;
-  const reported = campaign.actBuriedCradleCampaign(save, { type: 'report' }, ctx);
-  assert(reported.accepted); save.buriedCradle = reported.state;
+  save = createCradleReturnRoute(qa).complete(save, ctx);
   assert(save.buriedCradle.snapshot.run.extracted);
   const departed = campaign.actBuriedCradleCampaign(save, { type: 'depart' }, ctx);
   assert(departed.accepted, departed.message); assert.equal(departed.state.snapshot, null);

@@ -64,6 +64,7 @@ import { actClanShipOperations, bindClanShipMission, clanShipContract, createCla
 import { actClanShipIncident, type ClanShipIncidentAction, type ClanShipIncidentObservation } from './systems/clanShipIncidents';
 import type { ClanShipService } from "./ClanShipHub";
 import { actBuriedCradleCampaign, evaluateBuriedCradleAccess, type CradleCampaignAction } from './systems/buriedCradleCampaign';
+import type { CradleReturnOperation, CradleReturnObservation } from './systems/buriedCradleReturn';
 import { actCompanionResidence, bindCompanionResidenceMission, settleCompanionResidenceMission, releaseCompanionResidenceMission,
   registerCompanionResidenceRecruitment, availableClanResidenceCrew, type CompanionResidenceAction, type CompanionResidenceObservation } from './systems/companionResidence';
 import { createWolfCastleVisit, inspectWolfCastleVisit, actWolfCastle, applyWolfCastleCheckpoint, type WolfCastleAction, type WolfCastleCheckpoint } from "./systems/wolfCastle";
@@ -2510,6 +2511,20 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
     setSelectedShipId(personalShipId); go("clan-ship");
   }, [archiveRecoveryIssue, archiveTransferBusy, campaignSaveBusy, entry.ownerCreatedAt, gameFocusedV89, go, persistSocialProgress, resumableHunt, settingsOpen]);
 
+  const commitCradleReturn = useCallback((action: { type: CradleReturnOperation; expectedRevision: number }, observation: CradleReturnObservation): boolean => {
+    const current = saveRef.current;
+    if (!sessionAliveRef.current || current.createdAt !== entry.ownerCreatedAt || screen !== 'deck' || !gameFocusedV89 ||
+        settingsOpen || trophyWorkshop || archiveTransferBusy || archiveRecoveryIssue || campaignSaveBusy ||
+        resumableHunt || activeHuntSessionRef.current) return false;
+    const fleet = loadShipProgression(current);
+    const result = actBuriedCradleCampaign(current, action, { personalShipId: fleet.selectedShipId,
+      ownedShipIds: fleet.unlockedShipIds, returnActive: true, returnObservation: observation });
+    if (!result.accepted) { setToast(result.message); return false; }
+    if (result.changed && !persistSocialProgress({ buriedCradle: result.state, prologue: result.prologue })) return false;
+    setToast(result.message); return true;
+  }, [archiveRecoveryIssue, archiveTransferBusy, campaignSaveBusy, entry.ownerCreatedAt, gameFocusedV89,
+    persistSocialProgress, resumableHunt, screen, settingsOpen, trophyWorkshop]);
+
   const commitCradleAction = useCallback((action: CradleCampaignAction): boolean => {
     const current = saveRef.current;
     if (!sessionAliveRef.current || current.createdAt !== entry.ownerCreatedAt || !gameFocusedV89 || settingsOpen ||
@@ -4505,8 +4520,11 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
                   disabled={!access.allowed || campaignSaveBusy || settingsOpen} onClick={() => commitCradleAction({ type: 'depart' })}>
                   {state.status === 'prepared' ? 'Rejoindre Xeno Prime' : state.status === 'reported' ? 'Repartir en expédition'
                     : state.snapshot ? 'Reprendre au point enregistré' : `Reprendre à la balise ${state.progress.checkpointId}`}</button>}
-                {state?.status === 'extracted' && <button type="button" className="alien-button" disabled={campaignSaveBusy || settingsOpen}
+                {state?.status === 'extracted' && !state.returnVisit && <button type="button" className="alien-button" disabled={campaignSaveBusy || settingsOpen}
                   onClick={() => commitCradleAction({ type: 'report' })}>Présenter le rapport de chasse</button>}
+                {state?.returnVisit && ['extracted', 'reported'].includes(state.status) && <button type="button" className="alien-button"
+                  disabled={campaignSaveBusy || settingsOpen} onClick={() => go('deck')}>
+                  {state.status === 'reported' ? 'Revoir le trophée ou les relevés à bord' : 'Rejoindre les soins et le débrief à bord'}</button>}
                 {state?.status === 'reported' && <p role="status">{state.crownDelivered ? 'Crête rapportée et preuve de chasse inscrite au dossier.' : 'Repli et observations consignés, sans trophée.'}</p>}
               </>;
             })()}
@@ -4646,6 +4664,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
               <ShipInterior25D
                 appearance={save.appearance}
                 loadout={save.loadout}
+                cradleReturn={{ save, selectedShipId, onAction: commitCradleReturn }}
                 trophyDisplays={deckTrophyDisplays}
                 rankLabel={RANK_LABELS[save.profile.rankId]}
                 selectedDestination={selectedMission?.planetName}

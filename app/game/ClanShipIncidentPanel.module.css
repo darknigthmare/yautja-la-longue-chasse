@@ -25,6 +25,14 @@
 .panel button:disabled, .branches button:disabled { opacity: .4; cursor: not-allowed; }
 .panel :is(button,summary):focus-visible, .branches button:focus-visible { outline: 3px solid #e1edb3; outline-offset: 3px; }
 .branches { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.conclusions { display: grid; gap: 8px; min-width: 0; }
+.conclusions button { display: grid; gap: 5px; text-align: left; min-width: 0; overflow-wrap: anywhere; }
+.conclusions button strong { color: #f1edcf; font-size: 12px; }.conclusions button span { color: #d0d8c2; font-size: 11px; line-height: 1.55; }
+.evidence { display: grid; gap: 12px; min-width: 0; }
+.chronicle { display: grid; gap: 8px; border: 1px solid #738761; border-radius: 6px; padding: 12px; background: #203026; }
+.chronicle > strong { color: #dce8bd; font-size: 13px; }.chronicle small { color: #b7cab8; font-size: 11px; line-height: 1.6; }
+.chronicle blockquote { margin: 0; padding: 10px 0 0 10px; border-left: 2px solid #9aa56d; color: #e4e5c9; font-size: 12px; line-height: 1.7; }
+.chronicle blockquote small { display: block; margin-bottom: 5px; }
 .card .success { color: #c0e5b9; border: 1px solid #5c7b55; border-radius: 6px; padding: 12px; }
 .card .latest { font-size: 12px; color: #b8c9bb; border-top: 1px solid #37493f; padding-top: 10px; }
 .status { color: #d6d9bd; font-size: 12px; line-height: 1.65; margin: 18px 0 0; }.failure { color: #efbca3; }

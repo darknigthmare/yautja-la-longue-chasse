@@ -4,6 +4,8 @@ import { isShipId, type ShipId } from '../shipCatalogue';
 import { getChronicleRank, recordChronicleEvidence } from './clanChronicle';
 import { createBuriedCradleProgress, parseBuriedCradleProgress, type BuriedCradleProgress } from './buriedCradle';
 import { inspectBuriedCradleSnapshot, type BuriedCradleSnapshot } from './buriedCradleSnapshot';
+import { advanceCradleReturnVisit, createCradleReturnVisit, inspectCradleReturnVisit, isCradleReturnOperation,
+  type CradleReturnVisit, type CradleReturnOperation, type CradleReturnObservation } from './buriedCradleReturn';
 
 /** PLAN08 / XP-Z11 -> XP-Z12. XP-Z09 is never a victory source. */
 export const CRADLE_CAMPAIGN_SOURCE = { planetId: 'PLAN08', entryZoneId: 'XP-Z11', zoneId: 'XP-Z12',
@@ -21,6 +23,7 @@ export interface BuriedCradleCampaign {
   outcome: 'unresolved' | 'retreated' | 'victory-without-crown' | 'crown-returned';
   crownDelivered: boolean;
   snapshot?: BuriedCradleSnapshot | null;
+  returnVisit?: CradleReturnVisit | null;
 }
 export interface CradleCampaignInspection {
   status: 'absent' | 'valid' | 'future-version' | 'invalid-save';
@@ -37,7 +40,8 @@ export function inspectBuriedCradleCampaign(value: unknown, owner: string): Crad
   const invalid = (): CradleCampaignInspection => ({ status: 'invalid-save', state: null });
   if (!record(value) || Object.keys(value).sort().join('|') !==
       ['version', 'ownerCreatedAt', 'personalShipId', 'difficultyId', 'status', 'progress', 'outcome', 'crownDelivered',
-        ...(Object.hasOwn(value, 'snapshot') ? ['snapshot'] : [])].sort().join('|') ||
+        ...(Object.hasOwn(value, 'snapshot') ? ['snapshot'] : []),
+        ...(Object.hasOwn(value, 'returnVisit') ? ['returnVisit'] : [])].sort().join('|') ||
       value.version !== 1 || !owner || value.ownerCreatedAt !== owner || !isShipId(value.personalShipId) ||
       typeof value.difficultyId !== 'string' || !Object.hasOwn(CRADLE_CHECKPOINT_BUDGET, value.difficultyId) ||
       typeof value.status !== 'string' || !['prepared', 'active', 'suspended', 'extracted', 'reported'].includes(value.status) ||
@@ -50,6 +54,9 @@ export function inspectBuriedCradleCampaign(value: unknown, owner: string): Crad
   const snapshot = inspectBuriedCradleSnapshot(value.snapshot, progress, budget);
   if (snapshot.status === 'future-version') return { status: 'future-version', state: null };
   if (snapshot.status === 'invalid-save') return invalid();
+  const returnVisit = inspectCradleReturnVisit(value.returnVisit, value.status);
+  if (returnVisit.status === 'future-version') return { status: 'future-version', state: null };
+  if (returnVisit.status === 'invalid-save') return invalid();
   const terminal = value.status === 'extracted' || value.status === 'reported';
   const outcome = progress.crownClaimed ? 'crown-returned' : progress.bossDefeated ? 'victory-without-crown' : 'retreated';
   if ((terminal ? value.outcome !== outcome : value.outcome !== 'unresolved') ||
@@ -60,7 +67,8 @@ export function inspectBuriedCradleCampaign(value: unknown, owner: string): Crad
   return { status: 'valid', state: { version: 1, ownerCreatedAt: owner, personalShipId: value.personalShipId,
     difficultyId: value.difficultyId as DifficultyId, status: value.status as BuriedCradleCampaign['status'],
     progress, outcome: value.outcome as BuriedCradleCampaign['outcome'], crownDelivered: value.crownDelivered,
-    ...(Object.hasOwn(value, 'snapshot') ? { snapshot: snapshot.state } : {}) } };
+    ...(Object.hasOwn(value, 'snapshot') ? { snapshot: snapshot.state } : {}),
+    ...(Object.hasOwn(value, 'returnVisit') ? { returnVisit: returnVisit.state } : {}) } };
 }
 
 export function evaluateBuriedCradleAccess(save: Pick<SaveGame, 'prologue' | 'missionProgress' | 'clanShipDocking' | 'planetArrival' | 'wolfCastle'>,
@@ -78,8 +86,10 @@ export function evaluateBuriedCradleAccess(save: Pick<SaveGame, 'prologue' | 'mi
 }
 
 export type CradleCampaignAction = { type: 'prepare' | 'depart' | 'suspend' | 'report' }
-  | { type: 'checkpoint' | 'extract'; progress: BuriedCradleProgress; snapshot?: BuriedCradleSnapshot };
-export interface CradleCampaignContext { personalShipId: ShipId; ownedShipIds: readonly string[] }
+  | { type: 'checkpoint' | 'extract'; progress: BuriedCradleProgress; snapshot?: BuriedCradleSnapshot }
+  | { type: CradleReturnOperation; expectedRevision: number };
+export interface CradleCampaignContext { personalShipId: ShipId; ownedShipIds: readonly string[];
+  returnActive?: boolean; returnObservation?: CradleReturnObservation | null }
 export interface CradleCampaignResult {
   accepted: boolean; changed: boolean; state: BuriedCradleCampaign | null;
   prologue: SaveGame['prologue']; message: string;
@@ -100,9 +110,11 @@ export function actBuriedCradleCampaign(save: SaveGame, action: CradleCampaignAc
   let prologue = save.prologue;
   const refuse = (message: string): CradleCampaignResult => ({ accepted: false, changed: false, state: original, prologue: save.prologue, message });
   if (inspection.status === 'invalid-save' || inspection.status === 'future-version') return refuse('Dossier d’expédition incompatible. Les données sont conservées.');
-  if (!record(action) || typeof action.type !== 'string' || !['prepare', 'depart', 'suspend', 'report', 'checkpoint', 'extract'].includes(action.type) ||
+  if (!record(action) || typeof action.type !== 'string' ||
+      !['prepare', 'depart', 'suspend', 'report', 'checkpoint', 'extract'].includes(action.type) && !isCradleReturnOperation(action.type) ||
       Object.keys(action).sort().join('|') !== (action.type === 'checkpoint' || action.type === 'extract'
-        ? Object.hasOwn(action, 'snapshot') ? 'progress|snapshot|type' : 'progress|type' : 'type'))
+        ? Object.hasOwn(action, 'snapshot') ? 'progress|snapshot|type' : 'progress|type'
+        : isCradleReturnOperation(action.type) ? 'expectedRevision|type' : 'type'))
     return refuse('Commande d’expédition inconnue.');
   const before = JSON.stringify(state);
   if (action.type === 'prepare' || action.type === 'depart') {
@@ -123,6 +135,7 @@ export function actBuriedCradleCampaign(save: SaveGame, action: CradleCampaignAc
       if (!state || (!['prepared', 'suspended', 'active'].includes(state.status) && !(state.status === 'reported' && !state.crownDelivered))) return refuse('Préparer l’itinéraire et l’extraction avant de repartir.');
       state = { ...clone(state), status: 'active', outcome: 'unresolved',
         ...(state.status === 'reported' ? { snapshot: null } : {}) };
+      if (state.returnVisit) delete state.returnVisit;
     }
   } else {
     if (!state) return refuse('Aucune expédition préparée.');
@@ -142,6 +155,7 @@ export function actBuriedCradleCampaign(save: SaveGame, action: CradleCampaignAc
       if (action.type === 'extract') {
         state.status = 'extracted';
         state.outcome = progress.crownClaimed ? 'crown-returned' : progress.bossDefeated ? 'victory-without-crown' : 'retreated';
+        state.returnVisit = createCradleReturnVisit();
       }
     } else if (action.type === 'suspend') {
       if (state.status !== 'active') return refuse('Aucune exploration à suspendre.');
@@ -149,12 +163,32 @@ export function actBuriedCradleCampaign(save: SaveGame, action: CradleCampaignAc
     } else if (action.type === 'report') {
       if (state.status === 'reported') return { accepted: true, changed: false, state, prologue, message: 'Débrief déjà consigné.' };
       if (state.status !== 'extracted') return refuse('Rejoindre une extraction physique avant le débrief.');
+      if (state.returnVisit) return refuse('Rejoins le poste de soin, puis inspecte ton retour avant de choisir le débrief à bord.');
       state.status = 'reported'; state.crownDelivered = state.progress.crownClaimed;
       if (state.crownDelivered && prologue) {
         const evidence = recordChronicleEvidence(prologue.chronicle,
           { id: 'first-queen-hunt', sourceId: 'chronicle.first-queen.completed' });
         if (evidence.accepted) prologue = { ...prologue, chronicle: evidence.state };
       }
+    } else if (isCradleReturnOperation(action.type) && 'expectedRevision' in action) {
+      if (!context.returnActive || state.personalShipId !== context.personalShipId || !context.ownedShipIds.includes(state.personalShipId) ||
+          save.clanShipDocking && save.clanShipDocking.status !== 'free-flight' || save.planetArrival ||
+          save.wolfCastle && save.wolfCastle.status !== 'departed') return refuse('Ce retour se déroule dans le vaisseau personnel affecté à l’expédition.');
+      if (state.status !== 'extracted' || !state.returnVisit) return refuse('Aucun retour physique en attente de ce débrief.');
+      const result = advanceCradleReturnVisit(state.returnVisit, action.type, action.expectedRevision, context.returnObservation);
+      if (!result.accepted) return refuse(result.message);
+      state.returnVisit = result.state;
+      if (result.state.revision === 3) {
+        state.status = 'reported'; state.crownDelivered = state.progress.crownClaimed;
+        if (state.crownDelivered && prologue) {
+          const evidence = recordChronicleEvidence(prologue.chronicle,
+            { id: 'first-queen-hunt', sourceId: 'chronicle.first-queen.completed' });
+          if (evidence.accepted) prologue = { ...prologue, chronicle: evidence.state };
+        }
+      }
+      const checked = inspectBuriedCradleCampaign(state, save.createdAt);
+      if (!checked.state) return refuse('Le retour ne respecte pas le contrat de reprise.');
+      return { accepted: true, changed: true, state: checked.state, prologue, message: result.message };
     }
   }
   const checked = inspectBuriedCradleCampaign(state, save.createdAt);

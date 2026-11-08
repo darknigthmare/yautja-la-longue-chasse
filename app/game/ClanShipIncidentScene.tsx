@@ -6,9 +6,10 @@ import type { SaveGame } from './types';
 import type { ClanShipRoomId } from './systems/clanShipDocking';
 import { CLAN_SHIP_INCIDENT_ART } from './clanShipIncidentArt';
 import {
-  CLAN_SHIP_INCIDENTS, clanShipIncidentInReach, clanShipIncidentNext, clanShipIncidentVariant, clanShipIncidentView, inspectClanShipIncidents,
-  type ClanShipIncidentCommand, type ClanShipIncidentObservation, type ClanShipIncidentTarget,
+  CLAN_SHIP_INCIDENTS, clanShipIncidentInReach, clanShipIncidentNext, clanShipIncidentVariant, clanShipIncidentView, evaluateClanShipIncidentPresence, inspectClanShipIncidents,
+  type ClanShipIncidentCommand, type ClanShipIncidentObservation, type ClanShipIncidentTarget, type ClanShipIncidentView,
 } from './systems/clanShipIncidents';
+import { CLAN_SHIP_TROPHY_CASE, clanShipTrophyConclusion } from './systems/clanShipTrophyCase';
 import { ClanShipIncidentActions } from './ClanShipIncidentPanel';
 import styles from './ClanShipIncidentScene.module.css';
 
@@ -19,8 +20,10 @@ export default memo(function ClanShipIncidentScene({ save, roomId, position, sus
   const state = useMemo(() => inspectClanShipIncidents(save.clanShipIncidents, save.createdAt).state, [save.clanShipIncidents, save.createdAt]);
   if (!state) return null;
   return <>{CLAN_SHIP_INCIDENTS.map(definition => {
-    const view = clanShipIncidentView(state, definition.id), variant = clanShipIncidentVariant(save.createdAt, definition.id), next = clanShipIncidentNext(view);
+    const view = clanShipIncidentView(state, definition.id), variant = clanShipIncidentVariant(save.createdAt, definition.id), next = clanShipIncidentNext(view, save);
     if (!view.accepted) return null;
+    if (definition.id === 'contested-trophy') return <TrophyIncidentScene key={definition.id} save={save} view={view} roomId={roomId}
+      position={position} suspended={suspended} onNavigate={onNavigate} onAction={onAction} />;
     const sealed = definition.id === 'sealed-lot';
     const atProp = roomId === (sealed ? 'hangar' : 'conseil');
     const art = sealed ? CLAN_SHIP_INCIDENT_ART.sealedIsolator : CLAN_SHIP_INCIDENT_ART.twinCircuitRelay;
@@ -55,3 +58,50 @@ export default memo(function ClanShipIncidentScene({ save, roomId, position, sus
     </div>;
   })}</>;
 });
+
+/** The authored workbench and catalogue remain the actual support objects.
+ * These exact inscription overlays are evidence, not a new trophy asset. */
+function TrophyIncidentScene({ save, view, roomId, position, suspended, onNavigate, onAction }: {
+  save: SaveGame; view: ClanShipIncidentView; roomId: ClanShipRoomId; position: ClanShipIncidentObservation; suspended: boolean;
+  onNavigate: (target: ClanShipIncidentTarget) => void; onAction: (command: ClanShipIncidentCommand) => void;
+}) {
+  const trophy = view.trophy!, next = clanShipIncidentNext(view, save), conclusion = clanShipTrophyConclusion(trophy.conclusion);
+  const near = !!next && clanShipIncidentInReach(position, next.target);
+  const presence = next ? evaluateClanShipIncidentPresence(save, view.id, next.type) : { allowed: true, reason: '' };
+  const choices = next?.type === 'conclude-provenance';
+  const sharedObject = next && (['sealed-lot', 'relay-fault'] as const).some(id => {
+    const otherView = clanShipIncidentView(save.clanShipIncidents, id), other = clanShipIncidentNext(otherView, save);
+    return otherView.accepted && other?.target.roomId === next.target.roomId && Math.abs(other.target.x - next.target.x) < 280;
+  });
+  return <div className={styles.incident} data-clan-incident-world="contested-trophy">
+    {roomId === 'trophees' && <>
+      <div className={styles.trophySupport} data-clan-incident-prop="contested-trophy" data-trophy-plaque={trophy.conclusion ?? 'disputed'}
+        data-incident-complete={view.completedRevision !== null} style={{ left: 820, top: 580, zIndex: 581 }}>
+        <strong>SUPPORT {CLAN_SHIP_TROPHY_CASE.id}</strong>
+        <svg viewBox="0 0 180 58" role="img" aria-label="Strie B-17 sous la ligature de transport T-04">
+          <rect x="5" y="3" width="170" height="50" rx="5" fill="#374140" stroke="#a7aa88" />
+          <path d="M35 14V44M48 14L36 27M48 31L36 44" fill="none" stroke="#e5d9b2" strokeWidth="3" />
+          <text x="58" y="34" fill="#f0e9ca" fontSize="17">B-17</text>
+          <path d="M126 3V53M132 3V53" stroke="#bd8e4d" strokeWidth="4" />
+          <text x="141" y="32" fill="#efd1a1" fontSize="11">T-04</text>
+        </svg>
+        <span>Strie de base · ligature ajoutée</span>
+        {conclusion && 'plaque' in conclusion ? <p>{view.completedRevision ? 'Inscription confirmée' : 'Inscription soumise'} : {conclusion.plaque}</p>
+          : <p>Provenance à confronter aux deux relevés.</p>}
+      </div>
+      <div className={styles.component} data-trophy-record="transfer" style={{ left: 400, top: 508, zIndex: 566 }}>
+        <strong>C-37/02 · TRANSFERT</strong><span>{trophy.transferRecordRead ? 'Portage T-04 · relevé conservé' : 'Registre du retour à comparer'}</span>
+      </div>
+    </>}
+    {roomId === 'archives' && <div className={styles.component} data-trophy-record="hunt" style={{ left: 390, top: 498, zIndex: 556 }}>
+      <strong>C-37/01 · CHASSE</strong><span>{trophy.huntReportRead ? 'Prélèvement B-17 · relevé conservé' : 'Rapport antérieur au transfert'}</span>
+    </div>}
+    {next?.target.roomId === roomId && <div className={`${styles.target} ${choices ? styles.trophyChoices : ''}`}
+      style={{ left: next.target.x, top: next.target.y + (choices && near ? -280 : sharedObject ? -110 : 10), zIndex: 900 }} data-incident-world-target={next.target.id}>
+      <button type="button" disabled={suspended} data-incident-object-approach={next.target.id} onClick={() => onNavigate(next.target)}>
+        {next.target.label} · {near ? 'à portée' : 'approcher'}</button>
+      {near && <ClanShipIncidentActions view={view} disabled={suspended || !presence.allowed} onAction={onAction} />}
+      {!presence.allowed && <small className={styles.absent}>{presence.reason}</small>}
+    </div>}
+  </div>;
+}

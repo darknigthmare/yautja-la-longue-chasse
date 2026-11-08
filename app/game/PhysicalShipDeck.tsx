@@ -21,6 +21,7 @@ import "./ship-level.css";
 import type { HunterAppearance, Loadout } from "./types";
 import ShipPreparationPanelV88, { type ShipPreparationControlledV88 } from "./ShipPreparationPanelV88";
 import type { CompanionResidenceControlled } from "./CompanionResidencePanel";
+import type { BuriedCradleReturnControlled } from "./BuriedCradleReturnPanel";
 import {
   PHYSICAL_SHIP_STATIONS,
   PHYSICAL_SHIP_LADDERS as LADDERS,
@@ -80,6 +81,8 @@ export interface PhysicalShipDeckProps {
   preflightV88?: ShipPreparationControlledV88;
   /** Controlled companion registry, rendered by the current 2.5D interior. */
   companions?: CompanionResidenceControlled;
+  /** Post-expedition interactions use the actual 2.5D room and actor position. */
+  cradleReturn?: BuriedCradleReturnControlled;
   onNotify?: (message: string) => void;
 }
 

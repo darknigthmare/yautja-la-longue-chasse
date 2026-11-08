@@ -1,0 +1,12 @@
+{
+  "workflow": ".github/workflows/clan-ship-docking.yml",
+  "sha256": "49e9e6e27c2987314a1034255800d92f2214b9affc8f5c61c80dc40fbbd0c43f",
+  "yamlParsed": true,
+  "permissionsUnchanged": true,
+  "addedGates": [
+    "clan-ship-incidents",
+    "clan-ship-trophy-case",
+    "buried-cradle-return"
+  ],
+  "note": "Existing read-only CI job; browser scripts are unchanged and do not certify the new scenarios."
+}

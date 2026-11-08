@@ -1,16 +1,20 @@
 import type { SaveGame } from '../types';
 import type { ClanShipRoomId } from './clanShipDocking';
-import { CLAN_SHIP_INTERIOR_METRICS, isClanShipInteriorWalkable } from './clanShipInterior';
-import { evaluateClanShipAccess, evaluateClanShipRecruit, inspectClanShipOperations, type ClanShipContractId, type ClanShipNpcId } from './clanShipOperations';
-import { availableClanResidenceCrew, type CompanionCampaign } from './companionResidence';
+import { CLAN_SHIP_INTERIOR_METRICS, CLAN_SHIP_INTERIOR_ROOMS, isClanShipInteriorWalkable } from './clanShipInterior';
+import { CLAN_SHIP_RECRUITS, evaluateClanShipAccess, evaluateClanShipRecruit, inspectClanShipOperations, type ClanShipContractId, type ClanShipNpcId } from './clanShipOperations';
+import { availableClanResidenceCrew, companionResidencePresence, companionUsesLegacyClanPost, type CompanionCampaign } from './companionResidence';
+import { CLAN_SHIP_TROPHY_CASE, clanShipTrophyConclusion, emptyClanShipTrophyCase,
+  type ClanShipTrophyCaseView, type ClanShipTrophyConclusion } from './clanShipTrophyCase';
 
-export const CLAN_SHIP_INCIDENT_VERSION = 1 as const;
-export type ClanShipIncidentId = 'sealed-lot' | 'relay-fault';
+export const CLAN_SHIP_INCIDENT_VERSION = 2 as const;
+export type ClanShipIncidentId = 'sealed-lot' | 'relay-fault' | 'contested-trophy';
 export type ClanShipIncidentBranch = 'A' | 'B';
 export type ClanShipIncidentOperation = 'accept' | 'inspect-witness' | 'read-reference' | 'isolate' | 'check-pressure' | 'close-lot' |
-  'collect-component' | 'install-component' | 'restore-circuit' | 'verify-signal';
+  'collect-component' | 'install-component' | 'restore-circuit' | 'verify-signal' |
+  'examine-trophy' | 'read-hunt-report' | 'read-transfer-record' | 'hear-veteran' | 'conclude-provenance' | 'acknowledge-provenance';
 export type ClanShipIncidentTargetId = 'hangar-briefing' | 'seal-controls' | 'lot-archive' | 'medical-pressure' |
-  'armory-briefing' | 'relay-controls' | 'relay-archive' | 'relay-component' | 'council-signal';
+  'armory-briefing' | 'relay-controls' | 'relay-archive' | 'relay-component' | 'council-signal' |
+  'trophy-briefing' | 'trophy-support' | 'trophy-hunt-report' | 'trophy-transfer-record' | 'trophy-veteran';
 export interface ClanShipIncidentTarget {
   id: ClanShipIncidentTargetId; roomId: ClanShipRoomId; x: number; y: number; label: string;
 }
@@ -26,6 +30,11 @@ export const CLAN_SHIP_INCIDENT_TARGETS: Readonly<Record<ClanShipIncidentTargetI
   'relay-archive': { id: 'relay-archive', roomId: 'archives', x: 390, y: 620, label: 'Cycle de référence' },
   'relay-component': { id: 'relay-component', roomId: 'armurerie', x: 1010, y: 640, label: 'Casier du composant R-2' },
   'council-signal': { id: 'council-signal', roomId: 'conseil', x: 740, y: 650, label: 'Contrôle de la projection' },
+  'trophy-briefing': { id: 'trophy-briefing', roomId: 'archives', x: 790, y: 645, label: 'Entretien avec Trace Froide' },
+  'trophy-support': { id: 'trophy-support', roomId: 'trophees', x: 830, y: 650, label: 'Support du trophée C-37' },
+  'trophy-hunt-report': { id: 'trophy-hunt-report', roomId: 'archives', x: 390, y: 620, label: 'Relevé de chasse C-37/01' },
+  'trophy-transfer-record': { id: 'trophy-transfer-record', roomId: 'trophees', x: 400, y: 620, label: 'Relevé de transfert C-37/02' },
+  'trophy-veteran': { id: 'trophy-veteran', roomId: 'entrainement', x: 1010, y: 650, label: 'Entretien avec Balafre de Cendre' },
 };
 export const CLAN_SHIP_INCIDENTS = [
   { id: 'sealed-lot' as const, reference: 'OPS-B01', name: 'Le scellé qui ment', npcId: 'threshold-guard' as ClanShipNpcId,
@@ -34,19 +43,26 @@ export const CLAN_SHIP_INCIDENTS = [
   { id: 'relay-fault' as const, reference: 'OPS-B02', name: 'Une lumière dans le relais', npcId: 'iron-claw' as ClanShipNpcId,
     prerequisite: 'ship-armory-audit' as ClanShipContractId, start: 'armory-briefing' as const, reward: 30,
     briefing: 'Griffe de Fer signale un cycle instable dans la projection du conseil. Mesure les deux circuits, compare l’archive et remplace le composant identifié avant une remise en service progressive.' },
+  { id: 'contested-trophy' as const, reference: 'OPS-B03', name: 'La trace du véritable porteur', npcId: 'cold-trace' as ClanShipNpcId,
+    prerequisite: 'field-ruins-memory' as ClanShipContractId, start: 'trophy-briefing' as const, reward: 35,
+    briefing: 'Trace Froide demande de comparer le support C-37, le rapport de chasse et le relevé du retour. Écoute Balafre de Cendre puis motive l’inscription retenue. Ce dossier du clan ne prélève aucun trophée de ta collection.' },
 ] as const;
 export const clanShipIncidentDefinition = (id: unknown) => CLAN_SHIP_INCIDENTS.find(entry => entry.id === id);
 export interface ClanShipIncidentObservation { roomId: ClanShipRoomId; x: number; y: number }
 export interface ClanShipIncidentEvent {
   revision: number; type: ClanShipIncidentOperation; observation: ClanShipIncidentObservation;
   branch?: ClanShipIncidentBranch;
+  conclusion?: ClanShipTrophyConclusion;
+  interlocutor?: 'cold-trace' | 'ash-scar';
 }
 export interface ClanShipIncidentRun { id: ClanShipIncidentId; events: ClanShipIncidentEvent[] }
 export interface ClanShipIncidentsState {
-  version: typeof CLAN_SHIP_INCIDENT_VERSION; ownerCreatedAt: string; revision: number; incidents: ClanShipIncidentRun[];
+  /** V1 is preserved on read and upgraded only by a confirmed intervention. */
+  version: 1 | typeof CLAN_SHIP_INCIDENT_VERSION; ownerCreatedAt: string; revision: number; incidents: ClanShipIncidentRun[];
 }
-export type ClanShipIncidentCommand = { type: Exclude<ClanShipIncidentOperation, 'isolate' | 'restore-circuit'>; incidentId: ClanShipIncidentId } |
-  { type: 'isolate' | 'restore-circuit'; incidentId: ClanShipIncidentId; branch: ClanShipIncidentBranch };
+export type ClanShipIncidentCommand = { type: Exclude<ClanShipIncidentOperation, 'isolate' | 'restore-circuit' | 'conclude-provenance'>; incidentId: ClanShipIncidentId } |
+  { type: 'isolate' | 'restore-circuit'; incidentId: ClanShipIncidentId; branch: ClanShipIncidentBranch } |
+  { type: 'conclude-provenance'; incidentId: 'contested-trophy'; conclusion: ClanShipTrophyConclusion };
 export type ClanShipIncidentAction = ClanShipIncidentCommand & { ownerCreatedAt: string; expectedRevision: number };
 export type ClanShipIncidentCampaign = CompanionCampaign & Pick<SaveGame, 'clanShipIncidents'>;
 export interface ClanShipIncidentContext { save: ClanShipIncidentCampaign; active: boolean; observation: ClanShipIncidentObservation | null }
@@ -58,6 +74,7 @@ export interface ClanShipIncidentView {
   diagnosticCurrent: boolean; chosenBranch: ClanShipIncidentBranch | null; isolatedBranch: ClanShipIncidentBranch | null;
   pressureChecked: boolean; component: 'absent' | 'carried' | 'installed'; restored: ClanShipIncidentBranch[];
   faults: number; lastMessage: string;
+  trophy?: ClanShipTrophyCaseView;
 }
 export interface ClanShipIncidentVariant {
   branch: ClanShipIncidentBranch; other: ClanShipIncidentBranch; lotCode: string;
@@ -70,7 +87,8 @@ const plain = (value: unknown): value is Record<string, unknown> => !!value && t
 const exact = (value: Record<string, unknown>, keys: readonly string[]) => Reflect.ownKeys(value).length === keys.length && keys.every(key => Object.hasOwn(value, key));
 const integer = (value: unknown): value is number => Number.isSafeInteger(value) && Number(value) >= 0 && Number(value) < Number.MAX_SAFE_INTEGER;
 const identity = (value: unknown): value is string => typeof value === 'string' && value.trim() === value && value.length > 0 && value.length <= 160 && !/[\x00-\x1f\x7f]/.test(value);
-const operations: readonly ClanShipIncidentOperation[] = ['accept', 'inspect-witness', 'read-reference', 'isolate', 'check-pressure', 'close-lot', 'collect-component', 'install-component', 'restore-circuit', 'verify-signal'];
+const operations: readonly ClanShipIncidentOperation[] = ['accept', 'inspect-witness', 'read-reference', 'isolate', 'check-pressure', 'close-lot', 'collect-component', 'install-component', 'restore-circuit', 'verify-signal',
+  'examine-trophy', 'read-hunt-report', 'read-transfer-record', 'hear-veteran', 'conclude-provenance', 'acknowledge-provenance'];
 const branch = (value: unknown): value is ClanShipIncidentBranch => value === 'A' || value === 'B';
 const branching = (type: unknown) => type === 'isolate' || type === 'restore-circuit';
 
@@ -82,9 +100,52 @@ export function clanShipIncidentVariant(owner: string, id: ClanShipIncidentId): 
 }
 const emptyView = (id: ClanShipIncidentId): ClanShipIncidentView => ({ id, accepted: false, completedRevision: null,
   witness: false, reference: false, diagnosticCurrent: false, chosenBranch: null, isolatedBranch: null,
-  pressureChecked: false, component: 'absent', restored: [], faults: 0, lastMessage: '' });
+  pressureChecked: false, component: 'absent', restored: [], faults: 0, lastMessage: '',
+  ...(id === 'contested-trophy' ? { trophy: emptyClanShipTrophyCase() } : {}) });
 
-export function clanShipIncidentTarget(id: ClanShipIncidentId, type: ClanShipIncidentOperation): ClanShipIncidentTarget | null {
+/** Dialogues follow the real resident after a refit. Historical events keep the
+ * room of the meeting; a later reassignment never rewrites a recorded witness. */
+export function clanShipIncidentInterlocutor(id: ClanShipIncidentId, type: ClanShipIncidentOperation): 'cold-trace' | 'ash-scar' | null {
+  if (id !== 'contested-trophy') return null;
+  return type === 'accept' || type === 'conclude-provenance' ? 'cold-trace'
+    : type === 'hear-veteran' || type === 'acknowledge-provenance' ? 'ash-scar' : null;
+}
+export function clanShipIncidentNpcRoom(save: ClanShipIncidentCampaign, npcId: ClanShipNpcId): ClanShipRoomId | null {
+  const operations = inspectClanShipOperations(save.clanShipOperations, save.createdAt).state;
+  if (!operations) return null;
+  const npc = CLAN_SHIP_RECRUITS.find(entry => entry.id === npcId)!;
+  if (companionUsesLegacyClanPost(save, npcId)) return operations.recruitedNpcIds.includes(npcId)
+    ? availableClanResidenceCrew(save).includes(npcId) ? npc.roomId : null
+    : evaluateClanShipRecruit(operations, npcId).allowed ? npc.roomId : null;
+  const resident = companionResidencePresence(save, { kind: 'clan', shipId: 'avp-predator-mothership' })
+    .find(entry => entry.id === npcId && entry.avatarVisible && entry.serviceAvailable);
+  return resident && Object.hasOwn(CLAN_SHIP_INTERIOR_ROOMS, resident.avatarRoomId) ? resident.avatarRoomId as ClanShipRoomId : null;
+}
+function conversationTarget(target: ClanShipIncidentTarget, roomId: unknown): ClanShipIncidentTarget | null {
+  if (typeof roomId !== 'string' || !Object.hasOwn(CLAN_SHIP_INTERIOR_ROOMS, roomId)) return null;
+  const room = CLAN_SHIP_INTERIOR_ROOMS[roomId as ClanShipRoomId];
+  return { ...target, roomId: room.id, ...room.servicePoint };
+}
+export function evaluateClanShipIncidentPresence(save: ClanShipIncidentCampaign, id: ClanShipIncidentId, type: ClanShipIncidentOperation): { allowed: boolean; reason: string } {
+  const npcId = clanShipIncidentInterlocutor(id, type);
+  if (!npcId) return { allowed: true, reason: '' };
+  const roomId = clanShipIncidentNpcRoom(save, npcId), npc = CLAN_SHIP_RECRUITS.find(entry => entry.id === npcId)!;
+  if (roomId) return { allowed: true, reason: `${npc.name} est présent : ${CLAN_SHIP_INTERIOR_ROOMS[roomId].label}.` };
+  const operations = inspectClanShipOperations(save.clanShipOperations, save.createdAt).state;
+  const missing = npc.requiredContractIds.filter(contractId => !operations?.completedContracts.some(receipt => receipt.contractId === contractId));
+  return { allowed: false, reason: missing.length ? `${npc.name} attend encore ces dossiers : ${missing.join(', ')}.`
+    : `${npc.name} doit être présent et disponible au Clan Ship pour cet entretien. Sa réserve, son affectation ailleurs ou ses soins ne valent pas un témoignage.` };
+}
+export function clanShipIncidentTarget(id: ClanShipIncidentId, type: ClanShipIncidentOperation, save?: ClanShipIncidentCampaign): ClanShipIncidentTarget | null {
+  if (id === 'contested-trophy') {
+    const key = ({ accept: 'trophy-briefing', 'examine-trophy': 'trophy-support', 'read-hunt-report': 'trophy-hunt-report',
+      'read-transfer-record': 'trophy-transfer-record', 'hear-veteran': 'trophy-veteran', 'conclude-provenance': 'trophy-briefing',
+      'acknowledge-provenance': 'trophy-veteran' } as Partial<Record<ClanShipIncidentOperation, ClanShipIncidentTargetId>>)[type];
+    if (!key) return null;
+    const target = CLAN_SHIP_INCIDENT_TARGETS[key], npcId = clanShipIncidentInterlocutor(id, type);
+    const roomId = save && npcId ? clanShipIncidentNpcRoom(save, npcId) : null;
+    return roomId ? conversationTarget(target, roomId) : target;
+  }
   const key = id === 'sealed-lot'
     ? ({ accept: 'hangar-briefing', 'inspect-witness': 'seal-controls', 'read-reference': 'lot-archive', isolate: 'seal-controls', 'check-pressure': 'medical-pressure', 'close-lot': 'hangar-briefing' } as Partial<Record<ClanShipIncidentOperation, ClanShipIncidentTargetId>>)[type]
     : ({ accept: 'armory-briefing', 'inspect-witness': 'relay-controls', 'read-reference': 'relay-archive', isolate: 'relay-controls', 'collect-component': 'relay-component', 'install-component': 'relay-controls', 'restore-circuit': 'relay-controls', 'verify-signal': 'council-signal' } as Partial<Record<ClanShipIncidentOperation, ClanShipIncidentTargetId>>)[type];
@@ -98,17 +159,66 @@ export function clanShipIncidentInReach(observation: ClanShipIncidentObservation
 type Transition = { accepted: boolean; changed: boolean; view: ClanShipIncidentView; message: string };
 /** Replayed both at the action boundary and while inspecting imported events. */
 function transition(before: ClanShipIncidentView, type: ClanShipIncidentOperation, selected: ClanShipIncidentBranch | undefined,
-  revision: number, variant: ClanShipIncidentVariant): Transition {
+  revision: number, variant: ClanShipIncidentVariant, conclusion?: ClanShipTrophyConclusion): Transition {
   const no = (message: string): Transition => ({ accepted: false, changed: false, view: before, message });
   const same = (message: string): Transition => ({ accepted: true, changed: false, view: before, message });
-  const next = { ...before, restored: [...before.restored] };
+  const next = { ...before, restored: [...before.restored], ...(before.trophy ? { trophy: { ...before.trophy } } : {}) };
   const yes = (message: string): Transition => ({ accepted: true, changed: true, view: { ...next, lastMessage: message }, message });
   if (before.completedRevision !== null) return same('Ce dossier a déjà été contrôlé et sa gratification enregistrée.');
   if (type === 'accept') {
     if (before.accepted) return same('L’incident est déjà suivi. Reprends au prochain objet indiqué.');
-    next.accepted = true; return yes('Intervention acceptée. Le passage et les services historiques restent praticables.');
+    next.accepted = true;
+    return yes(before.id === 'contested-trophy'
+      ? 'Trace Froide : « Sur C-37, la ligature du retour masque une trace plus ancienne. Compare le support et les deux relevés, puis écoute Balafre. Nous conserverons ce qui peut être établi. »'
+      : 'Intervention acceptée. Le passage et les services historiques restent praticables.');
   }
   if (!before.accepted) return no('Accepte d’abord l’intervention au poste indiqué.');
+  if (before.id === 'contested-trophy') {
+    const trophy = next.trophy!;
+    if (type === 'examine-trophy') {
+      if (trophy.supportRead) return same('Le support C-37, sa strie et sa ligature sont déjà relevés.');
+      trophy.supportRead = true; return yes(CLAN_SHIP_TROPHY_CASE.support);
+    }
+    if (!trophy.supportRead) return no('Examine d’abord le support C-37 dans la galerie : une attribution exige la trace de cet objet.');
+    if (type === 'read-hunt-report' || type === 'read-transfer-record') {
+      const hunt = type === 'read-hunt-report', record = hunt ? 'hunt-report' : 'transfer-record';
+      if ((hunt ? trophy.huntReportRead : trophy.transferRecordRead) && trophy.reviewRequired !== record)
+        return same(hunt ? CLAN_SHIP_TROPHY_CASE.huntReport : CLAN_SHIP_TROPHY_CASE.transferRecord);
+      if (hunt) trophy.huntReportRead = true; else trophy.transferRecordRead = true;
+      if (trophy.reviewRequired === record) trophy.reviewRequired = null;
+      return yes(hunt ? CLAN_SHIP_TROPHY_CASE.huntReport : CLAN_SHIP_TROPHY_CASE.transferRecord);
+    }
+    if (!trophy.huntReportRead) return no('Le relevé de chasse C-37/01 manque : il nomme l’auteur du prélèvement et la marque correspondante.');
+    if (!trophy.transferRecordRead) return no('Le relevé de transfert C-37/02 manque : il précise qui a porté le même trophée après la chasse.');
+    if (type === 'hear-veteran') {
+      if (trophy.testimonyHeard) return same(CLAN_SHIP_TROPHY_CASE.testimony);
+      trophy.testimonyHeard = true; return yes(CLAN_SHIP_TROPHY_CASE.testimony);
+    }
+    if (!trophy.testimonyHeard) return no('Écoute Balafre de Cendre avant de confronter son témoignage aux deux relevés.');
+    if (trophy.reviewRequired) return no(trophy.reviewRequired === 'hunt-report'
+      ? 'La proposition reste non étayée. Relis physiquement le relevé C-37/01 avant de présenter une autre conclusion.'
+      : 'La proposition reste non étayée. Relis physiquement le relevé C-37/02 avant de présenter une autre conclusion.');
+    if (type === 'conclude-provenance') {
+      if (trophy.conclusion) return same('La conclusion et ses preuves sont déjà inscrites. Présente-la à Balafre pour recueillir sa réponse.');
+      const choice = clanShipTrophyConclusion(conclusion);
+      if (!choice) return no('Choisis une conclusion et le motif qu’elle conserve.');
+      trophy.proposedConclusion = choice.id;
+      if ('review' in choice) {
+        trophy.reviewRequired = choice.review; next.faults += 1;
+        return yes(choice.refusal);
+      }
+      trophy.conclusion = choice.id; trophy.traceReaction = true;
+      return yes(`${choice.plaque}. ${choice.traceReply} Présente maintenant ce relevé à Balafre de Cendre.`);
+    }
+    if (type === 'acknowledge-provenance') {
+      const choice = clanShipTrophyConclusion(trophy.conclusion);
+      if (!choice || !('veteranReply' in choice) || !trophy.traceReaction)
+        return no('Une conclusion motivée doit d’abord être inscrite avec Trace Froide.');
+      trophy.veteranReaction = true; next.completedRevision = revision;
+      return yes(`${choice.veteranReply} Dossier C-37 clôturé : les preuves, les deux interlocuteurs et l’inscription restent consultables.`);
+    }
+    return no('Cette intervention ne correspond pas au dossier de provenance.');
+  }
   if (type === 'inspect-witness') {
     if (before.witness) return same('Le témoin a déjà été relevé et conservé.');
     next.witness = true;
@@ -189,30 +299,37 @@ export function clanShipIncidentView(state: ClanShipIncidentsState | null | unde
   let view = emptyView(id);
   if (!state) return view;
   const variant = clanShipIncidentVariant(state.ownerCreatedAt, id);
-  for (const event of state.incidents.find(run => run.id === id)?.events ?? []) view = transition(view, event.type, event.branch, event.revision, variant).view;
+  for (const event of state.incidents.find(run => run.id === id)?.events ?? []) view = transition(view, event.type, event.branch, event.revision, variant, event.conclusion).view;
   return view;
 }
 export function inspectClanShipIncidents(raw: unknown, ownerCreatedAt: string): { status: 'absent' | 'valid' | 'future-version' | 'invalid-save'; state: ClanShipIncidentsState | null } {
   if (raw === undefined || raw === null) return { status: 'absent', state: null };
   if (plain(raw) && integer(raw.version) && raw.version > CLAN_SHIP_INCIDENT_VERSION) return { status: 'future-version', state: null };
   const invalid = { status: 'invalid-save' as const, state: null };
-  if (!plain(raw) || !exact(raw, ['version', 'ownerCreatedAt', 'revision', 'incidents']) || raw.version !== CLAN_SHIP_INCIDENT_VERSION ||
-      !identity(ownerCreatedAt) || raw.ownerCreatedAt !== ownerCreatedAt || !integer(raw.revision) || raw.revision > 192 || !Array.isArray(raw.incidents) || raw.incidents.length > 2) return invalid;
+  if (!plain(raw) || !exact(raw, ['version', 'ownerCreatedAt', 'revision', 'incidents']) || raw.version !== 1 && raw.version !== CLAN_SHIP_INCIDENT_VERSION ||
+      !identity(ownerCreatedAt) || raw.ownerCreatedAt !== ownerCreatedAt || !integer(raw.revision) ||
+      raw.revision > (raw.version === 1 ? 192 : 288) || !Array.isArray(raw.incidents) || raw.incidents.length > (raw.version === 1 ? 2 : 3)) return invalid;
   const runs: ClanShipIncidentRun[] = [], revisions: number[] = [];
   for (const entry of raw.incidents) {
-    if (!plain(entry) || !exact(entry, ['id', 'events']) || !clanShipIncidentDefinition(entry.id) || runs.some(run => run.id === entry.id) ||
+    if (!plain(entry) || !exact(entry, ['id', 'events']) || !clanShipIncidentDefinition(entry.id) || raw.version === 1 && entry.id === 'contested-trophy' || runs.some(run => run.id === entry.id) ||
         !Array.isArray(entry.events) || entry.events.length === 0 || entry.events.length > 96) return invalid;
     const id = entry.id as ClanShipIncidentId, variant = clanShipIncidentVariant(ownerCreatedAt, id);
     let view = emptyView(id), previousRevision = 0;
     const events: ClanShipIncidentEvent[] = [];
     for (const event of entry.events) {
-      if (!plain(event) || !exact(event, ['revision', 'type', 'observation', ...(branching(event.type) ? ['branch'] : [])]) ||
+      if (!plain(event)) return invalid;
+      const interlocutor = clanShipIncidentInterlocutor(id, event.type as ClanShipIncidentOperation);
+      if (!exact(event, ['revision', 'type', 'observation', ...(branching(event.type) ? ['branch'] : []),
+          ...(event.type === 'conclude-provenance' ? ['conclusion'] : []), ...(interlocutor ? ['interlocutor'] : [])]) ||
           !integer(event.revision) || event.revision < 1 || event.revision > raw.revision || event.revision <= previousRevision ||
           !operations.includes(event.type as ClanShipIncidentOperation) || branching(event.type) && !branch(event.branch) ||
+          event.type === 'conclude-provenance' && !clanShipTrophyConclusion(event.conclusion) || interlocutor && event.interlocutor !== interlocutor ||
           !plain(event.observation) || !exact(event.observation, ['roomId', 'x', 'y'])) return invalid;
-      const target = clanShipIncidentTarget(id, event.type as ClanShipIncidentOperation);
+      const baseTarget = clanShipIncidentTarget(id, event.type as ClanShipIncidentOperation);
+      const target = baseTarget && interlocutor ? conversationTarget(baseTarget, event.observation.roomId) : baseTarget;
       if (!target || !clanShipIncidentInReach(event.observation as unknown as ClanShipIncidentObservation, target)) return invalid;
-      const result = transition(view, event.type as ClanShipIncidentOperation, event.branch as ClanShipIncidentBranch | undefined, event.revision, variant);
+      const result = transition(view, event.type as ClanShipIncidentOperation, event.branch as ClanShipIncidentBranch | undefined, event.revision, variant,
+        event.conclusion as ClanShipTrophyConclusion | undefined);
       if (!result.accepted || !result.changed || events.length >= 88 && result.view.faults > view.faults) return invalid;
       view = result.view; previousRevision = event.revision; revisions.push(event.revision);
       events.push(JSON.parse(JSON.stringify(event)) as ClanShipIncidentEvent);
@@ -221,7 +338,7 @@ export function inspectClanShipIncidents(raw: unknown, ownerCreatedAt: string): 
     runs.push({ id, events });
   }
   if (revisions.length !== raw.revision || revisions.sort((a, b) => a - b).some((revision, index) => revision !== index + 1)) return invalid;
-  return { status: 'valid', state: { version: CLAN_SHIP_INCIDENT_VERSION, ownerCreatedAt, revision: raw.revision, incidents: runs } };
+  return { status: 'valid', state: { version: raw.version, ownerCreatedAt, revision: raw.revision, incidents: runs } };
 }
 export function evaluateClanShipIncidentsCampaign(state: ClanShipIncidentsState, save: ClanShipIncidentCampaign): { allowed: boolean; reason: string } {
   if (inspectClanShipIncidents(state, save.createdAt).status !== 'valid' || !evaluateClanShipAccess(save).allowed)
@@ -237,6 +354,7 @@ export function evaluateClanShipIncidentOffer(save: ClanShipIncidentCampaign, id
   const operations = inspectClanShipOperations(save.clanShipOperations, save.createdAt).state;
   if (!operations?.completedContracts.some(receipt => receipt.contractId === definition.prerequisite))
     return { allowed: false, reason: `Accomplis d’abord le dossier ${definition.prerequisite}.` };
+  if (id === 'contested-trophy') return evaluateClanShipIncidentPresence(save, id, 'accept');
   const interlocutor = operations.recruitedNpcIds.includes(definition.npcId) ? availableClanResidenceCrew(save).includes(definition.npcId)
     : evaluateClanShipRecruit(operations, definition.npcId).allowed;
   return interlocutor ? { allowed: true, reason: 'L’interlocuteur et le dossier sont disponibles au poste indiqué.' }
@@ -245,8 +363,10 @@ export function evaluateClanShipIncidentOffer(save: ClanShipIncidentCampaign, id
 function validAction(action: unknown): action is ClanShipIncidentAction {
   if (!plain(action) || !identity(action.ownerCreatedAt) || !integer(action.expectedRevision) || !clanShipIncidentDefinition(action.incidentId) ||
       !operations.includes(action.type as ClanShipIncidentOperation)) return false;
-  return exact(action, ['type', 'incidentId', 'ownerCreatedAt', 'expectedRevision', ...(branching(action.type) ? ['branch'] : [])]) &&
-    (!branching(action.type) || branch(action.branch));
+  return exact(action, ['type', 'incidentId', 'ownerCreatedAt', 'expectedRevision', ...(branching(action.type) ? ['branch'] : []),
+    ...(action.type === 'conclude-provenance' ? ['conclusion'] : [])]) &&
+    (!branching(action.type) || branch(action.branch)) &&
+    (action.type !== 'conclude-provenance' || action.incidentId === 'contested-trophy' && !!clanShipTrophyConclusion(action.conclusion));
 }
 export function actClanShipIncident(action: ClanShipIncidentAction, context: ClanShipIncidentContext): ClanShipIncidentResult {
   const { save, observation } = context, inspected = inspectClanShipIncidents(save.clanShipIncidents, save.createdAt), current = inspected.state;
@@ -256,7 +376,7 @@ export function actClanShipIncident(action: ClanShipIncidentAction, context: Cla
   const state = current ?? createClanShipIncidents(save.createdAt);
   if (action.expectedRevision !== state.revision) return refuse('Le dossier a changé. Relis son état avant cette intervention.');
   if (!evaluateClanShipIncidentsCampaign(state, save).allowed) return refuse('Les preuves et l’accès de la campagne ne correspondent pas à ce dossier.');
-  const docking = save.clanShipDocking, target = clanShipIncidentTarget(action.incidentId, action.type);
+  const docking = save.clanShipDocking, target = clanShipIncidentTarget(action.incidentId, action.type, save);
   if (!docking || docking.ownerCreatedAt !== save.createdAt || docking.status !== 'aboard' || docking.roomId !== observation?.roomId ||
       !target || !clanShipIncidentInReach(observation, target)) return refuse('Approche physiquement l’objet indiqué dans la bonne salle avant de confirmer.');
   if (save.clanShipOperations?.spaceEncounter?.status === 'active') return refuse('Termine l’engagement spatial avant cette intervention de maintenance.');
@@ -265,7 +385,12 @@ export function actClanShipIncident(action: ClanShipIncidentAction, context: Cla
     const offer = evaluateClanShipIncidentOffer(save, action.incidentId);
     if (!offer.allowed) return refuse(offer.reason);
   }
-  const result = transition(view, action.type, 'branch' in action ? action.branch : undefined, state.revision + 1, clanShipIncidentVariant(save.createdAt, action.incidentId));
+  if (view.completedRevision === null) {
+    const presence = evaluateClanShipIncidentPresence(save, action.incidentId, action.type);
+    if (!presence.allowed) return refuse(presence.reason);
+  }
+  const result = transition(view, action.type, 'branch' in action ? action.branch : undefined, state.revision + 1,
+    clanShipIncidentVariant(save.createdAt, action.incidentId), 'conclusion' in action ? action.conclusion : undefined);
   if (!result.accepted) return refuse(result.message);
   if (!result.changed) return { accepted: true, changed: false, state: current, clanMarksReward: 0, message: result.message };
   const run = state.incidents.find(entry => entry.id === action.incidentId);
@@ -276,9 +401,11 @@ export function actClanShipIncident(action: ClanShipIncidentAction, context: Cla
   if ((run?.events.length ?? 0) >= 96) return refuse('La limite de journal de cet incident est atteinte ; conserve cette sauvegarde pour récupération.');
   const reward = result.view.completedRevision !== null && view.completedRevision === null ? clanShipIncidentDefinition(action.incidentId)!.reward : 0;
   if (!integer(save.profile.clanMarks) || !integer(save.profile.clanMarks + reward)) return refuse('Le solde de campagne ne peut pas recevoir cette gratification.');
+  const interlocutor = clanShipIncidentInterlocutor(action.incidentId, action.type);
   const event: ClanShipIncidentEvent = { revision: state.revision + 1, type: action.type, observation: { ...observation! },
-    ...('branch' in action ? { branch: action.branch } : {}) };
-  const next: ClanShipIncidentsState = { ...state, revision: state.revision + 1,
+    ...('branch' in action ? { branch: action.branch } : {}), ...('conclusion' in action ? { conclusion: action.conclusion } : {}),
+    ...(interlocutor ? { interlocutor } : {}) };
+  const next: ClanShipIncidentsState = { ...state, version: CLAN_SHIP_INCIDENT_VERSION, revision: state.revision + 1,
     incidents: run ? state.incidents.map(entry => entry.id === run.id ? { ...entry, events: [...entry.events, event] } : entry)
       : [...state.incidents, { id: action.incidentId, events: [event] }] };
   return { accepted: true, changed: true, state: next, clanMarksReward: reward,
@@ -286,11 +413,23 @@ export function actClanShipIncident(action: ClanShipIncidentAction, context: Cla
 }
 
 /** Stable next actions drive world affordances and the accessible panel alike. */
-export function clanShipIncidentNext(view: ClanShipIncidentView): { type: ClanShipIncidentOperation; label: string; target: ClanShipIncidentTarget } | null {
+export function clanShipIncidentNext(view: ClanShipIncidentView, save?: ClanShipIncidentCampaign): { type: ClanShipIncidentOperation; label: string; target: ClanShipIncidentTarget } | null {
   if (view.completedRevision !== null) return null;
+  if (view.id === 'contested-trophy') {
+    const trophy = view.trophy!;
+    const type: ClanShipIncidentOperation = !view.accepted ? 'accept' : !trophy.supportRead ? 'examine-trophy'
+      : !trophy.huntReportRead || trophy.reviewRequired === 'hunt-report' ? 'read-hunt-report'
+        : !trophy.transferRecordRead || trophy.reviewRequired === 'transfer-record' ? 'read-transfer-record'
+          : !trophy.testimonyHeard ? 'hear-veteran' : !trophy.conclusion ? 'conclude-provenance' : 'acknowledge-provenance';
+    const labels = { accept: 'Ouvrir le dossier avec Trace Froide', 'examine-trophy': 'Examiner la strie et la ligature',
+      'read-hunt-report': 'Comparer le relevé de chasse C-37/01', 'read-transfer-record': 'Comparer le transfert C-37/02',
+      'hear-veteran': 'Écouter le témoignage de Balafre', 'conclude-provenance': 'Choisir une conclusion motivée',
+      'acknowledge-provenance': 'Présenter le relevé à Balafre et clore le dossier' };
+    return { type, label: labels[type as keyof typeof labels], target: clanShipIncidentTarget(view.id, type, save)! };
+  }
   const type: ClanShipIncidentOperation = !view.accepted ? 'accept' : !view.witness ? 'inspect-witness' : !view.reference || view.id === 'sealed-lot' && !view.diagnosticCurrent ? 'read-reference'
     : !view.isolatedBranch ? 'isolate' : view.id === 'sealed-lot' ? !view.pressureChecked ? 'check-pressure' : 'close-lot'
       : view.component === 'absent' ? 'collect-component' : view.component === 'carried' ? 'install-component' : view.restored.length < 2 ? 'restore-circuit' : 'verify-signal';
-  const labels: Record<ClanShipIncidentOperation, string> = { accept: 'Accepter l’intervention', 'inspect-witness': 'Relever le témoin', 'read-reference': 'Lire et rapprocher la référence', isolate: 'Choisir l’isolateur', 'check-pressure': 'Mesurer la pression résiduelle', 'close-lot': 'Contrôler la fermeture', 'collect-component': 'Prélever le composant R-2', 'install-component': 'Installer R-2 dans le relais', 'restore-circuit': 'Rétablir les circuits dans l’ordre', 'verify-signal': 'Contrôler le signal du conseil' };
-  return { type, label: labels[type], target: clanShipIncidentTarget(view.id, type)! };
+  const labels = { accept: 'Accepter l’intervention', 'inspect-witness': 'Relever le témoin', 'read-reference': 'Lire et rapprocher la référence', isolate: 'Choisir l’isolateur', 'check-pressure': 'Mesurer la pression résiduelle', 'close-lot': 'Contrôler la fermeture', 'collect-component': 'Prélever le composant R-2', 'install-component': 'Installer R-2 dans le relais', 'restore-circuit': 'Rétablir les circuits dans l’ordre', 'verify-signal': 'Contrôler le signal du conseil' };
+  return { type, label: labels[type as keyof typeof labels], target: clanShipIncidentTarget(view.id, type, save)! };
 }

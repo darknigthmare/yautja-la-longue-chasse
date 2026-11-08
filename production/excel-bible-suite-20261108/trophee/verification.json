@@ -1,0 +1,106 @@
+{
+  "case": "OPS-B03",
+  "name": "La trace du véritable porteur",
+  "verifiedAt": "2026-11-08T12:18:56.260251+01:00",
+  "baseCommit": "04eb4caa217ad114faf1cf63b301b4df67736b2d",
+  "source": {
+    "workbook": "production/clan-ship-20261104/clan-ship-operations-20261105.xlsx",
+    "sheet": "Opérations",
+    "row": 60,
+    "spec": "production/clan-ship-20261104/operations-spec.md#123-la-trace-du-véritable-porteur"
+  },
+  "schema": {
+    "current": 2,
+    "readable": [
+      1,
+      2
+    ],
+    "v1ReadPreservesEventsAndVersion": true,
+    "upgradeAtConfirmedActionOnly": true
+  },
+  "tests": {
+    "command": "node --experimental-strip-types --test --test-concurrency=1 tests/clan-ship-incidents.test.mjs tests/clan-ship-trophy-case.test.mjs",
+    "exitCode": 0,
+    "passed": 27,
+    "failed": 0,
+    "maintenanceRegressionTests": 14,
+    "newB03Tests": 13,
+    "log": "tests-run.txt"
+  },
+  "lint": {
+    "command": "./node_modules/.bin/eslint app/game/systems/clanShipIncidents.ts app/game/systems/clanShipTrophyCase.ts app/game/ClanShipIncidentPanel.tsx app/game/ClanShipIncidentScene.tsx tests/clan-ship-incidents.test.mjs tests/clan-ship-trophy-case.test.mjs",
+    "exitCode": 0,
+    "log": "lint.txt"
+  },
+  "behavior": {
+    "normalActions": 7,
+    "dedicatedPhysicalTargets": 5,
+    "totalIncidentTargets": 14,
+    "conclusionChoices": 4,
+    "supportedConclusions": 2,
+    "reexaminationChoices": 2,
+    "rewardClanMarksOnce": 35,
+    "everyDialogueRequiresCurrentNpcPresence": true,
+    "dialogueTargetsFollowActiveClanResidence": true,
+    "evidenceStoredAcrossReloads": true,
+    "playerTrophyInventoryUnchanged": true,
+    "rankAndRitesUnchanged": true,
+    "chronicle": "case-local archived record, not the prologue rite chronicle"
+  },
+  "validationLimits": {
+    "browserRecipeExecutedForB03": false,
+    "humanArtValidation": false,
+    "canonicalOneToOneCertification": false,
+    "newRasterImages": 0,
+    "serverRenderIsNotBrowserProof": true,
+    "physicalControllerSimulationIsNotOnDeviceInputTest": true,
+    "B04Implemented": false,
+    "OPS-Q26": "partial"
+  },
+  "files": [
+    {
+      "path": "app/game/systems/clanShipIncidents.ts",
+      "sha256": "b612218e1fbf2ea7bc92d7767fbfb7b09eaa0805a13d161b759389821ffa2ce9",
+      "bytes": 39663
+    },
+    {
+      "path": "app/game/systems/clanShipTrophyCase.ts",
+      "sha256": "6399c8c0f6d6eb4c385b194113f0e2f0e2699d4a7972dc44a22979d46b688c8c",
+      "bytes": 4188
+    },
+    {
+      "path": "app/game/ClanShipIncidentPanel.tsx",
+      "sha256": "41895122826fa9f2835abe2062fe18f087b8808cba053a4719c24f9d6fd4d3ec",
+      "bytes": 12601
+    },
+    {
+      "path": "app/game/ClanShipIncidentPanel.module.css",
+      "sha256": "3ee940c9b24c7c15b90ae87258a3142180792dc18c43d5d85e753a1fb7d46e9a",
+      "bytes": 4411
+    },
+    {
+      "path": "app/game/ClanShipIncidentScene.tsx",
+      "sha256": "9a970ac8b47c026dde35edb6d3944d77bd06847d88274e6a63d8c5ea39e11cd4",
+      "bytes": 9161
+    },
+    {
+      "path": "app/game/ClanShipIncidentScene.module.css",
+      "sha256": "b45122031d73dbae45a26b27cfafa0a4fe1761370f5691ad252913fac0c7ce4a",
+      "bytes": 3407
+    },
+    {
+      "path": "tests/clan-ship-incidents.test.mjs",
+      "sha256": "2df0ab68f691ca95c8af85fc0c1f95a647d79f5cd680cb230349a3c9a5fb3314",
+      "bytes": 22826
+    },
+    {
+      "path": "tests/clan-ship-trophy-case.test.mjs",
+      "sha256": "cd50309c842ef400279651c1264020425d83f15d0b2ba537f8198dc706ab4567",
+      "bytes": 25636
+    }
+  ],
+  "proofHashes": {
+    "tests-run.txt": "3e347711c57f4205b215af4608dd94e1bd936dd298a1fdc92b6c32d3a550176c",
+    "lint.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+}

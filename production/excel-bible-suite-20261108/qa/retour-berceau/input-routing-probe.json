@@ -1,0 +1,16 @@
+{
+  "generatedAt": "2026-11-08T11:15:36.766Z",
+  "scope": "Actual scene tick/stop/focus callback extracted from TypeScript, executed with test browser objects; actual menuPadStep. Not a browser or physical-controller test.",
+  "sourceSha256": "36ac222de234e3513a62be0c9b7e279f5d9631d165b8a82353832e03220d9e15",
+  "checks": [
+    "Held A/Y before neutral does not activate",
+    "Y+A opens return panel once without opening generic service",
+    "Focused panel freezes scene input and resets pad arm",
+    "Returning with held A/B does not open a service",
+    "A after neutral activates once; continued hold does not repeat",
+    "Menu confirms once per press and requires neutral on entry"
+  ],
+  "focusCount": 1,
+  "serviceInteractions": 1,
+  "passed": true
+}

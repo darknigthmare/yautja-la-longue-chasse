@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import { createHash } from 'node:crypto';
 import { homeworldSceneSsrV78 } from './helpers/homeworld-scene-ssr-v78.mjs';
+import { createCradleReturnRoute } from './helpers/buried-cradle-return-route.mjs';
 
 const qa = homeworldSceneSsrV78();
 const campaign = qa.load('app/game/systems/buriedCradleCampaign.ts');
@@ -31,6 +32,8 @@ const fresh = (difficultyId = 'hunter') => {
   return save;
 };
 function act(save, type, extra = {}) {
+  if (type === 'report' && save.buriedCradle?.status === 'extracted' && save.buriedCradle.returnVisit)
+    return createCradleReturnRoute(qa).complete(save, context);
   const before = JSON.stringify(save);
   const result = campaign.actBuriedCradleCampaign(save, { type, ...extra }, context);
   assert.equal(result.accepted, true, `${type}: ${result.message}`);
