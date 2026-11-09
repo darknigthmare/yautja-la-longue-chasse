@@ -80,6 +80,10 @@ def main() -> None:
     path = ROOT / manifest['file']
     historical = ROOT / manifest['historical_workbook']
     require(path.stat().st_size == manifest['bytes'] and digest(path) == manifest['sha256'], 'Delivered workbook byte/hash mismatch')
+    workbook_bytes = path.read_bytes()
+    git_blob_sha1 = hashlib.sha1(b'blob ' + str(len(workbook_bytes)).encode('ascii') + b'\0' + workbook_bytes).hexdigest()
+    require(git_blob_sha1 == manifest['git_blob_sha1'], 'Delivered workbook Git blob mismatch')
+    require(manifest['revision'] == 'V1.2', 'Workbook revision mismatch')
     require(digest(historical) == manifest['historical_workbook_sha256'], 'Historical workbook changed')
     old, current = read_book(historical), read_book(path)
     require(list(current) == manifest['sheets'] and len(current) == 24, 'Sheet names/count changed')
