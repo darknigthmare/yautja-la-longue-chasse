@@ -1,0 +1,309 @@
+{
+  "baseline": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+  "version": 1,
+  "contracts": [
+    {
+      "clanMarksReward": 0,
+      "roomId": "hangar",
+      "prerequisiteIds": [],
+      "missionId": null,
+      "minimumScore": 0,
+      "minimumScans": 0,
+      "spaceKind": null,
+      "id": "welcome-aboard",
+      "kind": "onboarding",
+      "steps": [
+        {
+          "id": "berth-register",
+          "roomId": "hangar"
+        },
+        {
+          "id": "medical-baseline",
+          "roomId": "soins"
+        },
+        {
+          "id": "archive-orientation",
+          "roomId": "archives"
+        }
+      ]
+    },
+    {
+      "clanMarksReward": 15,
+      "roomId": "conseil",
+      "prerequisiteIds": [],
+      "missionId": null,
+      "minimumScore": 0,
+      "minimumScans": 0,
+      "spaceKind": null,
+      "id": "ship-seal-check",
+      "kind": "interior",
+      "steps": [
+        {
+          "id": "seal-read",
+          "roomId": "hangar"
+        },
+        {
+          "id": "seal-compare",
+          "roomId": "soins"
+        },
+        {
+          "id": "seal-register",
+          "roomId": "archives"
+        },
+        {
+          "id": "seal-close",
+          "roomId": "hangar"
+        }
+      ]
+    },
+    {
+      "clanMarksReward": 20,
+      "roomId": "conseil",
+      "prerequisiteIds": [],
+      "missionId": null,
+      "minimumScore": 0,
+      "minimumScans": 0,
+      "spaceKind": null,
+      "id": "ship-armory-audit",
+      "kind": "interior",
+      "steps": [
+        {
+          "id": "armory-inventory",
+          "roomId": "armurerie"
+        },
+        {
+          "id": "armory-compare",
+          "roomId": "archives"
+        },
+        {
+          "id": "armory-reconcile",
+          "roomId": "armurerie"
+        }
+      ]
+    },
+    {
+      "clanMarksReward": 20,
+      "roomId": "conseil",
+      "prerequisiteIds": [],
+      "missionId": null,
+      "minimumScore": 0,
+      "minimumScans": 0,
+      "spaceKind": null,
+      "id": "ship-triage-route",
+      "kind": "interior",
+      "steps": [
+        {
+          "id": "triage-prepare",
+          "roomId": "soins"
+        },
+        {
+          "id": "triage-route",
+          "roomId": "hangar"
+        },
+        {
+          "id": "triage-confirm",
+          "roomId": "soins"
+        }
+      ]
+    },
+    {
+      "clanMarksReward": 20,
+      "roomId": "conseil",
+      "prerequisiteIds": [],
+      "missionId": null,
+      "minimumScore": 0,
+      "minimumScans": 0,
+      "spaceKind": null,
+      "id": "ship-training-circuit",
+      "kind": "interior",
+      "steps": [
+        {
+          "id": "training-set",
+          "roomId": "entrainement"
+        },
+        {
+          "id": "training-study",
+          "roomId": "trophees"
+        },
+        {
+          "id": "training-brief",
+          "roomId": "entrainement"
+        }
+      ]
+    },
+    {
+      "clanMarksReward": 40,
+      "roomId": "conseil",
+      "prerequisiteIds": [],
+      "missionId": "jungle-vey",
+      "minimumScore": 50,
+      "minimumScans": 1,
+      "spaceKind": null,
+      "id": "field-jungle-survey",
+      "kind": "field",
+      "steps": []
+    },
+    {
+      "clanMarksReward": 50,
+      "roomId": "conseil",
+      "prerequisiteIds": [],
+      "missionId": "ice-cryostalker",
+      "minimumScore": 50,
+      "minimumScans": 1,
+      "spaceKind": null,
+      "id": "field-ice-route",
+      "kind": "field",
+      "steps": []
+    },
+    {
+      "clanMarksReward": 65,
+      "roomId": "conseil",
+      "prerequisiteIds": [
+        "field-jungle-survey"
+      ],
+      "missionId": "volcano-bad-blood",
+      "minimumScore": 60,
+      "minimumScans": 0,
+      "spaceKind": null,
+      "id": "field-bad-blood",
+      "kind": "field",
+      "steps": []
+    },
+    {
+      "clanMarksReward": 90,
+      "roomId": "conseil",
+      "prerequisiteIds": [
+        "field-ice-route"
+      ],
+      "missionId": "ruins-ancient-guardian",
+      "minimumScore": 60,
+      "minimumScans": 2,
+      "spaceKind": null,
+      "id": "field-ruins-memory",
+      "kind": "field",
+      "steps": []
+    },
+    {
+      "clanMarksReward": 45,
+      "roomId": "conseil",
+      "prerequisiteIds": [],
+      "missionId": null,
+      "minimumScore": 0,
+      "minimumScans": 0,
+      "spaceKind": "escort",
+      "id": "space-screening",
+      "kind": "space",
+      "steps": []
+    },
+    {
+      "clanMarksReward": 65,
+      "roomId": "conseil",
+      "prerequisiteIds": [
+        "space-screening"
+      ],
+      "missionId": null,
+      "minimumScore": 0,
+      "minimumScans": 0,
+      "spaceKind": "interception",
+      "id": "space-interception",
+      "kind": "space",
+      "steps": []
+    },
+    {
+      "clanMarksReward": 55,
+      "roomId": "conseil",
+      "prerequisiteIds": [
+        "space-screening"
+      ],
+      "missionId": null,
+      "minimumScore": 0,
+      "minimumScans": 0,
+      "spaceKind": "recovery",
+      "id": "space-recovery",
+      "kind": "space",
+      "steps": []
+    }
+  ],
+  "onboarding": [
+    {
+      "id": "berth-register",
+      "roomId": "hangar"
+    },
+    {
+      "id": "medical-baseline",
+      "roomId": "soins"
+    },
+    {
+      "id": "archive-orientation",
+      "roomId": "archives"
+    }
+  ],
+  "recruits": [
+    {
+      "id": "ash-scar",
+      "name": "Balafre de Cendre",
+      "role": "Vétéran des exercices",
+      "roomId": "entrainement",
+      "effect": "À l’entraînement ; sa coordination réduit les pertes de la formation pendant les opérations spatiales.",
+      "requiredContractIds": [
+        "ship-training-circuit"
+      ],
+      "spaceCrewRole": "veteran"
+    },
+    {
+      "id": "star-watch",
+      "name": "Veille des Astres",
+      "role": "Navigatrice",
+      "roomId": "conseil",
+      "effect": "Au conseil ; sa première manœuvre place la formation à portée rapprochée.",
+      "requiredContractIds": [
+        "field-ice-route"
+      ],
+      "spaceCrewRole": "navigator"
+    },
+    {
+      "id": "iron-claw",
+      "name": "Griffe de Fer",
+      "role": "Armurier",
+      "roomId": "armurerie",
+      "effect": "À l’armurerie ; sa préparation renforce les tirs et la neutralisation des moteurs.",
+      "requiredContractIds": [
+        "ship-armory-audit"
+      ],
+      "spaceCrewRole": "armorer"
+    },
+    {
+      "id": "cold-trace",
+      "name": "Trace Froide",
+      "role": "Pisteur des archives",
+      "roomId": "archives",
+      "effect": "Aux archives ; il identifie le contact et prépare l’abordage en une seule analyse.",
+      "requiredContractIds": [
+        "field-jungle-survey"
+      ],
+      "spaceCrewRole": "tracker"
+    },
+    {
+      "id": "black-suture",
+      "name": "Suture Noire",
+      "role": "Responsable des soins",
+      "roomId": "soins",
+      "effect": "Aux soins ; son assistance réduit les pertes de la formation pendant les engagements.",
+      "requiredContractIds": [
+        "ship-triage-route"
+      ],
+      "spaceCrewRole": "medic"
+    },
+    {
+      "id": "threshold-guard",
+      "name": "Garde du Seuil",
+      "role": "Responsable du confinement",
+      "roomId": "hangar",
+      "effect": "Au hangar ; il réduit le coût d’abordage et les pertes du transport ou de la capsule.",
+      "requiredContractIds": [
+        "ship-seal-check"
+      ],
+      "spaceCrewRole": "warden"
+    }
+  ]
+}

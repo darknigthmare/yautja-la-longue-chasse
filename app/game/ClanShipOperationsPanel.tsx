@@ -11,6 +11,7 @@ import {
   type ClanShipNpcId, type ClanShipOperationsAction, type ClanShipOperationsState,
 } from './systems/clanShipOperations';
 import ClanShipSpaceEncounter from './ClanShipSpaceEncounter';
+import ClanShipCrewDialogue from './ClanShipCrewDialogue';
 import HomeworldNpcSpriteV84 from './HomeworldNpcSpriteV84';
 import { CLAN_SHIP_CREW_ART_ROLES, clanShipCrewArtIdentity } from './clanShipCrew';
 import { availableClanResidenceCrew, companionHostLabel } from './systems/companionResidence';
@@ -133,7 +134,7 @@ export default function ClanShipOperationsPanel({ state, save, roomId, suspended
       <header className={styles.header}>
         <div><span className={styles.eyebrow}>CLAN SHIP · {atCouncil ? 'TABLE HOLOGRAPHIQUE DE GUERRE' : CLAN_SHIP_INTERIOR_ROOMS[roomId].label}</span>
           <h2 id="clan-operations-title">{atCouncil ? 'Le cercle de commandement' : 'Dossier du poste'}</h2>
-          <p>{PHASES[phase]} <span aria-hidden="true"> / </span> {state.recruitedNpcIds.length} membres affectés <span aria-hidden="true"> / </span> {completed.size} dossiers accomplis</p>
+          <p>{PHASES[phase]} <span aria-hidden="true"> / </span> {state.recruitedNpcIds.length} accords conclus <span aria-hidden="true"> / </span> {completed.size} dossiers accomplis</p>
         </div>
         <button ref={closeRef} type="button" className={styles.close} disabled={suspended} data-clan-operations-close onClick={onClose}>Retour au pont <span aria-hidden="true">×</span></button>
       </header>
@@ -245,6 +246,9 @@ export default function ClanShipOperationsPanel({ state, save, roomId, suspended
                   }}>J’ai entendu</button>
                 {heardDialogue === dialogueKey && <small className={styles.dialogueHeard}>Paroles entendues.</small>}
               </section>}
+              <details><summary>Autres sujets avec {npc.name}</summary>
+              <ClanShipCrewDialogue save={save} npcId={npc.id} roomId={roomId} suspended={suspended} />
+              </details>
             </article>;
           })}</div>
           {!state.circleConfirmed && state.recruitedNpcIds.length === CLAN_SHIP_RECRUITS.length && <div className={styles.step}>

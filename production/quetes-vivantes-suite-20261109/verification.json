@@ -1,0 +1,43 @@
+{
+  "date": "2026-11-09",
+  "baseline": "9dce866a2f9972800e6adfca3e312d38c6aa8540",
+  "qualifiedCodeCommit": "ed9ad613598a48bcff7c5918ee8bf8d49d02e0bc",
+  "run": {"id":42589027077,"job":129065788633,"triggerCommit":"aedad4cf4c0c5893056edbf061adfc10ebb65933","qualificationCheckout":"ed9ad613598a48bcff7c5918ee8bf8d49d02e0bc","conclusion":"success"},
+  "tests": {"passed":213,"failed":0,"skipped":0,"newIncluded":29,"localPassedSeparately":165,"countsMustNotBeAdded":true,"tapSha256":"a594e9562e16e5703bfb86bbc0403e23fe63b842cbc4307f86ce25b44199b1f6"},
+  "typecheck": {"scope":"full project","passed":true},
+  "lint": {"strict":true,"passed":true},
+  "browser": {
+    "executed":true,"passed":true,"checks":169,"screenshots":23,
+    "contexts":[{"name":"1440x1000-shared-crown","completed":true,"checks":43},{"name":"1440x1000-private-crown","completed":true,"checks":8},{"name":"390x844-shared-crown","completed":true,"checks":43},{"name":"390x844-private-crown","completed":true,"checks":8},{"name":"320x740-shared-crown","completed":true,"checks":43},{"name":"320x740-private-crown","completed":true,"checks":8},{"name":"1440x1000-shared-retreat","completed":true,"checks":8},{"name":"1440x1000-shared-no-crown","completed":true,"checks":8}],
+    "errors":[],"missingAssets":[],"browserVersion":"156.0.8078.0","startedAt":"2026-11-09T08:58:12.499Z","finishedAt":"2026-11-09T09:02:33.435Z"
+  },
+  "fixtures": {
+    "browserPlayed":false,"clanMarks":5868,"recruited":[],"ownerCreatedAt":"2026-11-08T18:00:00.000Z",
+    "description":"Adult prerequisites, four successful field contracts and Cradle outcomes prepared by production reducers. No hunt, boss battle, treatment or recruitment is browser-played.",
+    "sha256":{"shared-crown.json":"719d3e6f195a15f9aeb5a8a6a2c8bfaa25d37793fcaa831676f8b3e0d9673db0","shared-retreat.json":"ad5ebc22910310c9c17256646c6f81cf0ba672a6317207db1ca6e19857183f85","shared-no-crown.json":"104b56f75b6ed0219eef4a8ae4398e9909f1609044ca20583da9b1635f2d50c7","private-crown.json":"86fed62e009bbfc80f7df1b7d3f1992754df90b520059ae3883d3408be8e734e"}
+  },
+  "sourceSha256": {
+    "app/game/ClanShipHuntConversation.tsx":"9501d15e753ec445f9aaddf994f8a41fe5c602d7e221b687cead45975590ec7c",
+    "app/game/ClanShipCrewDialogue.tsx":"f77aa725afac32749e5ece96bd3122c3d2ae0e52a47507130934099ec241c3e4",
+    "app/game/ClanShipOperationsPanel.tsx":"6dbcbb0e4965711cc91ea8ab082b17c4647cd6ed68588c85890634ec1daaaed6",
+    "app/game/ClanShipOperationsPanel.module.css":"e24990896673b514fa4d1ca92efbaf4d9580a40667fea3f16358e10229bba4b4",
+    "app/game/systems/clanShipHuntDialogue.ts":"74e38db852605186425b420d982ef9054ef75d395a66da912e5c981b69e44d5c",
+    "app/game/systems/clanShipDialogue.ts":"c50e94b1c69ab90c1b57fce380bfc00d0e9ea9921448fad45dd7fdfde14516fe",
+    "app/game/systems/clanShipOperations.ts":"6894c68f613af82c0e23aa96b4c7cccf0606dded8638d55e519d269f4a4f0746",
+    "app/game/systems/companionResidence.ts":"ed55b78c62e3c7b963a6b71f966fc3fccf126450c24ce561f540a1a563dd7d8e",
+    "app/game/systems/clanShipDocking.ts":"adcd1bee2a92f8893e8fb31ee1df32a2b009fbaa416db66900a868dac84076cb",
+    "app/game/systems/buriedCradleCampaign.ts":"c5ad2faa3698056cf5010f486be3929dd56078bb6fefc8d5325962486cb42e7d",
+    "app/game/systems/buriedCradleReturn.ts":"72417d7f1445d9744be357d849cd949ed46e280b49e8359e053dde606459d16a",
+    "app/game/GameClient.tsx":"916cdf0773a8d26b2e26fde9d3a636aca79d900283ca05dc063c4fe42aedc8df",
+    "app/game/save.ts":"17a5e2ccbfe9923a32a4a469ee6e5a3573eee935dbce8e7bc8572381cab75b29",
+    "tests/helpers/clan-ship-hunt-dialogue-fixture.mjs":"ea654def1346aa19a38483aad66c5ceaeb7f31f458164689cba1686c03c7c489",
+    "scripts/qa-clan-hunt-dialogue-browser-20261109.mjs":"f1933e421e993d73bcb9175f385d79590aa45095dcfd8687ac9d3782c2bdf6ca"
+  },
+  "artifact":{"id":13660553932,"bytes":3470559,"sha256":"07334379e4466a142ced28feeacdcf30d00066b1b43f35c1aa5f2ff128083086","entries":40,"retentionDays":14},
+  "report":{"bytes":73102,"sha256":"3e391034e3d64ba2e9b8b2bfbe4e57a6224eed6271265107e3f8934f325ca2e2"},
+  "visualReview":{"individuallyInspected":["320x740-shared-crown-cold-trace.png","320x740-private-crown-iron-claw.png","390x844-shared-crown-black-suture.png","1440x1000-shared-retreat-iron-claw.png"],"scope":"Selected report line and detail visible in the native scroll region. Whole actor cards and all alternative reports are not simultaneously visible in a scrolled view. Not a claim that all 23 screenshots were visually inspected."},
+  "workbook":{"path":"production/quetes-vivantes-suite-20261109/Yautja_Quetes_Vivantes_Suite_20261109.xlsx","bytes":498931,"sha256":"39c2e6488d6b3362a3d575b0ff07afdb9b6bb2dfb38def857c5a2789143a34c4","gitBlob":"eccc94e8915f07bdb7b12c4ec5eee77d420a13fd","sheets":12,"formulas":5,"publicationRun":42591564474,"historicalSourcesCompared":111,"historicalSourcesChanged":0},
+  "currentInventory":{"entries":2208,"sha256":"c0b1c57f1fe584ad7f1c8eea7763a979ce3ab4be4be4124b7aa9b329829e6173"},
+  "localPriorAttempts":{"initialFailure":"One prose check rejected ancien score; fixed to ancien récit without weakening the assertion.","interruptions":2,"finalLocalTests":165,"noLocalBrowserClaim":true},
+  "limits":["No new quests, escort or autonomous routines delivered","No field hunt or boss fight browser-played; prior states are synthetic production-reducer fixtures","Recruitment prose preserves exact mechanical gates; no new training or repair animations","No physical mobile device or controller test","No new sprite, dedicated sound or VFX","OPS-B04/B06/B07, R2-M027 mentor/crown integrity/audio/VFX and OPS-Q26 stay open","No global production build or deployment claimed for this suite","Canon motifs and original game lore remain separated; no artistic 1:1 certification"]
+}
