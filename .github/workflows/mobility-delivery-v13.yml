@@ -1,5 +1,5 @@
 name: Mobility V1.3 transitions and production delivery
-# Reviewed against source snapshot 6e3c1c0; 315 local tests and both workbook checks passed.
+# Audit Markdown EOF normalization without weakening archive or publication checks.
 on:
   push:
     branches: [feat/mobility-garage-gameplay-20261108]
@@ -63,7 +63,7 @@ jobs:
             m=json.loads(raw);assert m['base_commit']=='fbaf8bb5d7868000d4a6544ceb87985b0cff1650'
             paths={e['path'] for e in m['files']}
             assert len(m['files'])==33 and len(paths)==33 and {guide,old_qa}<=paths and set(z.namelist())==paths|{mp}
-            outputs={mp:raw};preserved={}
+            outputs={mp:raw};preserved={};normalizations={}
             for e in m['files']:
               name=e['path'];p=Path(name);body=z.read(name);old=e['expected_previous_git_blob']
               assert not p.is_absolute() and '..' not in PurePosixPath(name).parts
@@ -74,11 +74,16 @@ jobs:
                 if name==guide:continue
                 p=Path(new_qa);assert not p.exists();outputs[new_qa]=body;continue
               assert (p.exists() and blob(p.read_bytes())==old) or (not p.exists() and old is None),'Concurrent change: '+name
+              if name.endswith('.md') and name.startswith(('docs/campagne/mobilite/','production/mobility-20261108/v1.3/')):
+                normalized=body.rstrip(bytes([13,10]))+bytes([10])
+                if normalized!=body:
+                  normalizations[name]={'archive_sha256':hashlib.sha256(body).hexdigest(),'published_sha256':hashlib.sha256(normalized).hexdigest(),'archive_git_blob':blob(body),'published_git_blob':blob(normalized),'reason':'Only trailing CR/LF normalized to one LF after archive integrity verification.'}
+                  body=normalized
               outputs[name]=body
             assert not Path(mp).exists()
           mapping='production/mobility-20261108/v1.3/qa/publication-map.json'
           assert not Path(mapping).exists()
-          outputs[mapping]=(json.dumps({'archive_manifest_sha256':hashlib.sha256(raw).hexdigest(),'preserved_historical_blobs':preserved,'renamed_without_byte_changes':{old_qa:new_qa},'deferred_guide':guide,'reason':'Preserve exact published V1.2 guide and browser recipe; publish V1.3 recipe as a separate version.'},indent=2)+chr(10)).encode()
+          outputs[mapping]=(json.dumps({'archive_manifest_sha256':hashlib.sha256(raw).hexdigest(),'preserved_historical_blobs':preserved,'markdown_eof_normalizations':normalizations,'renamed_without_byte_changes':{old_qa:new_qa},'deferred_guide':guide,'reason':'Preserve exact published V1.2 guide and browser recipe; publish V1.3 recipe as a separate version.'},indent=2)+chr(10)).encode()
           for name,body in outputs.items():
             p=Path(name);p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(body)
           for name,sha in preserved.items():assert blob(Path(name).read_bytes())==sha
