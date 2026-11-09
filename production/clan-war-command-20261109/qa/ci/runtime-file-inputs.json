@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "selection": "production/clan-war-command-20261109/qa/ci/test-selection.json",
   "selectionSha256": "6c4f96aaf8c590e72a328a2b328ca70b78e8756b51f8ef953d5ab4921eaa9f92",
-  "scope": "Exact successful non-source reads of the 103-file current regression suite. App, scripts, tests, lib, types and configuration source trees are included separately. No full public checkout or art certification.",
+  "scope": "Exact successful non-source reads of the 103-file current regression suite, plus pinned public JSON imports in the application graph compiled by esbuild subprocesses. App, scripts, tests, lib, types and configuration source trees are included separately. No full public checkout or art certification.",
   "files": [
     {
       "path": "docs/campagne/mobilite/catalogue/01-10.json",
@@ -445,9 +445,34 @@
       "sha256": "53f7c0c6d5349c4c88ab585183aa0c398c81ff39c5f224bf1f66dab951ff4536"
     },
     {
+      "path": "public/game/assets/v14/hunter-kit/manifest.json",
+      "bytes": 22588,
+      "sha256": "da981f709c6c5ae3f3a3fa8d2e787e6dbd74abdeda2358a071f1d21b5feb1778"
+    },
+    {
       "path": "public/game/assets/v15/trophies/manifest.json",
       "bytes": 13990,
       "sha256": "45270df58a616cf97b9e078e6ce0222c9ba864493083d88f36d7b2c1068b54b7"
+    },
+    {
+      "path": "public/game/assets/v16/franchise-trophies/manifest.json",
+      "bytes": 193735,
+      "sha256": "13887255bb7d61a7146f4cf67033ec9e875cb5d9694ff10e81536f89828abf1c"
+    },
+    {
+      "path": "public/game/assets/v17/enemy-trophies/manifest.json",
+      "bytes": 354628,
+      "sha256": "5c31fabb80d16a16b08d77276202618a98caf7a7d5f41e5d65117369b821011d"
+    },
+    {
+      "path": "public/game/assets/v18/enemy-trophy-gameplay/manifest.json",
+      "bytes": 479128,
+      "sha256": "d00682b031b5920180f359b17bf1ff6ee30635c096688341003f34bcc4274c90"
+    },
+    {
+      "path": "public/game/assets/v28/sprite-review/manifest.json",
+      "bytes": 86223,
+      "sha256": "554282574e5868945c6444516c711ea414ca9c3d6d83b4f2da54b8eb3d068068"
     },
     {
       "path": "public/game/clan-ship/props/manifest.json",
