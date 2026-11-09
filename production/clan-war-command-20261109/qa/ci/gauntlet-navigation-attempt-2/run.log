@@ -1,0 +1,71 @@
+node:internal/modules/run_main:123
+    triggerUncaughtException(
+    ^
+
+locator.click: Timeout 25000ms exceeded.
+Call log:
+[2m  - waiting for locator('[data-clan-war-v85="free-profile"]').locator('[data-command-open="settings"]')[22m
+[2m    - locator resolved to <button type="button" aria-expanded="false" data-command-open="settings">…</button>[22m
+[2m  - attempting click action[22m
+[2m    2 × waiting for element to be visible, enabled and stable[22m
+[2m      - element is visible, enabled and stable[22m
+[2m      - scrolling into view if needed[22m
+[2m      - done scrolling[22m
+[2m      - <dialog open="" aria-modal="true" aria-labelledby="_r_6_" data-command-overlay="drawer" class="ClanWarCommandOverlay_overlay">…</dialog> from <div data-command-viewport="true" class="ClanWarPanelV85_commandViewport">…</div> subtree intercepts pointer events[22m
+[2m    - retrying click action[22m
+[2m    - waiting 20ms[22m
+[2m    2 × waiting for element to be visible, enabled and stable[22m
+[2m      - element is visible, enabled and stable[22m
+[2m      - scrolling into view if needed[22m
+[2m      - done scrolling[22m
+[2m      - <dialog open="" aria-modal="true" aria-labelledby="_r_6_" data-command-overlay="drawer" class="ClanWarCommandOverlay_overlay">…</dialog> from <div data-command-viewport="true" class="ClanWarPanelV85_commandViewport">…</div> subtree intercepts pointer events[22m
+[2m    - retrying click action[22m
+[2m      - waiting 100ms[22m
+[2m    42 × waiting for element to be visible, enabled and stable[22m
+[2m       - element is visible, enabled and stable[22m
+[2m       - scrolling into view if needed[22m
+[2m       - done scrolling[22m
+[2m       - <dialog open="" aria-modal="true" aria-labelledby="_r_6_" data-command-overlay="drawer" class="ClanWarCommandOverlay_overlay">…</dialog> from <div data-command-viewport="true" class="ClanWarPanelV85_commandViewport">…</div> subtree intercepts pointer events[22m
+[2m     - retrying click action[22m
+[2m       - waiting 500ms[22m
+[2m    - waiting for element to be visible, enabled and stable[22m
+[2m    - element is visible, enabled and stable[22m
+[2m    - scrolling into view if needed[22m
+[2m    - done scrolling[22m
+
+    at openProjection (/tmp/yautja-gauntlet-sparse-20261109/scripts/qa-gauntlet-campaign-v144.mjs:85:59)
+    at /tmp/yautja-gauntlet-sparse-20261109/scripts/qa-gauntlet-campaign-v144.mjs:88:9 {
+  log: [
+    `  - waiting for locator('[data-clan-war-v85="free-profile"]').locator('[data-command-open="settings"]')`,
+    '    - locator resolved to <button type="button" aria-expanded="false" data-command-open="settings">…</button>',
+    '  - attempting click action',
+    '    2 × waiting for element to be visible, enabled and stable',
+    '      - element is visible, enabled and stable',
+    '      - scrolling into view if needed',
+    '      - done scrolling',
+    '      - <dialog open="" aria-modal="true" aria-labelledby="_r_6_" data-command-overlay="drawer" class="ClanWarCommandOverlay_overlay">…</dialog> from <div data-command-viewport="true" class="ClanWarPanelV85_commandViewport">…</div> subtree intercepts pointer events',
+    '    - retrying click action',
+    '    - waiting 20ms',
+    '    2 × waiting for element to be visible, enabled and stable',
+    '      - element is visible, enabled and stable',
+    '      - scrolling into view if needed',
+    '      - done scrolling',
+    '      - <dialog open="" aria-modal="true" aria-labelledby="_r_6_" data-command-overlay="drawer" class="ClanWarCommandOverlay_overlay">…</dialog> from <div data-command-viewport="true" class="ClanWarPanelV85_commandViewport">…</div> subtree intercepts pointer events',
+    '    - retrying click action',
+    '      - waiting 100ms',
+    '    42 × waiting for element to be visible, enabled and stable',
+    '       - element is visible, enabled and stable',
+    '       - scrolling into view if needed',
+    '       - done scrolling',
+    '       - <dialog open="" aria-modal="true" aria-labelledby="_r_6_" data-command-overlay="drawer" class="ClanWarCommandOverlay_overlay">…</dialog> from <div data-command-viewport="true" class="ClanWarPanelV85_commandViewport">…</div> subtree intercepts pointer events',
+    '     - retrying click action',
+    '       - waiting 500ms',
+    '    - waiting for element to be visible, enabled and stable',
+    '    - element is visible, enabled and stable',
+    '    - scrolling into view if needed',
+    '    - done scrolling'
+  ],
+  name: 'TimeoutError'
+}
+
+Node.js v22.23.4

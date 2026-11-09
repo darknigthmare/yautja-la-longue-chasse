@@ -1,0 +1,24 @@
+{
+  "passed": true,
+  "checks": [
+    "V145 materials editor supplies global and region/domain random controls",
+    "V145 global random changes all other regional land sources and keeps locked source",
+    "V145 random content does not change the canonical V115 planet code",
+    "V145 per-region random edits only the selected regional kit entry",
+    "V145 land lock belongs to the first region only",
+    "V145 switching region restores its independent lock state",
+    "V145 an individual locked liquid material cannot be randomized accidentally",
+    "V145 all-solids action preserves every ocean material",
+    "V145 all-solids action preserves first region's land lock",
+    "V145 all-media action never changes continental land textures",
+    "V145 all-media action changes only existing compatible surface slots",
+    "V145 selected land action varies only its compatible terrestrial source",
+    "V145 selected sea action varies only its compatible medium source",
+    "V145 random lock does not block the user's intentional manual texture change",
+    "V145 exports an unchanged, valid V128 regional kit schema",
+    "V145 global regional controls remain usable on mobile",
+    "V145 browser scenario preserves world identity and produces no runtime errors"
+  ],
+  "worldCode": "proc-v115-m9bf-331013100011300111100202030200-0vi1j",
+  "errors": []
+}

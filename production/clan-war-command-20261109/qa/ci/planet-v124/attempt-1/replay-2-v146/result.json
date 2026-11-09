@@ -1,0 +1,20 @@
+{
+  "passed": true,
+  "worldCode": "proc-v115-m9bf-331013100011300111100202030200-0vi1j",
+  "checks": [
+    "V146 creates a real diagnostic for the exact V115 world",
+    "V146 environmental table covers the same true planet regions",
+    "V146 chosen season changes the actual hypothetical solar declination",
+    "V146 opposite solstice alters daylight estimates for real non-equatorial regions",
+    "V146 axial tilt slider drives scientific day/night calculations",
+    "V146 exported environmental sidecar has exact world code, tilt and season",
+    "V146 keeps source gravity and radius separate from inferred physical values",
+    "V146 exported 512x256 PNG uses real regional mask and transparent inland/outer media",
+    "V146 controls remain available on mobile without changing the procedural world",
+    "V146 browser rendered without runtime exceptions",
+    "V149 visible world preflight is tied to this exact planet",
+    "V149 real generated V115 planet is free of blocking structural errors",
+    "V149 exported preflight JSON covers the real atlas geometry without war progress"
+  ],
+  "errors": []
+}

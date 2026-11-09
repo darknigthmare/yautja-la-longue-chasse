@@ -25,6 +25,7 @@ const eslintConfig = defineConfig([
       "docs/qa/v112-integration/pit-whiff-cadence-r6/diagnostic-sources/qa-initial-whiffs.mjs",
       "production/p0p1-20261109/qa/phg/diagnostic-isolation/recipe-used.mjs",
       "production/clan-war-command-20261109/qa/before-native/capture.mjs",
+      "production/clan-war-command-20261109/qa/pr-integration/final-attempt-4/hunt-dialogue-scroll-diagnostic/diagnostic-recipe.mjs",
     ],
     rules: { "@typescript-eslint/no-unused-vars": "off" },
   },

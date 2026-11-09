@@ -1,0 +1,12 @@
+node:internal/modules/run_main:123
+    triggerUncaughtException(
+    ^
+
+browserType.launch: Chromium distribution 'chrome' is not found at /opt/google/chrome/chrome
+Run "npx playwright install chrome"
+    at /tmp/yautja-gauntlet-sparse-20261109/scripts/qa-gauntlet-campaign-v144.mjs:62:26 {
+  log: [],
+  name: 'Error'
+}
+
+Node.js v22.23.4

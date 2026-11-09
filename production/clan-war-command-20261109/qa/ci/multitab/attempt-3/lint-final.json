@@ -1,0 +1,11 @@
+{
+  "command": [
+    "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+    "node_modules/eslint/bin/eslint.js",
+    "scripts/qa-clan-war-v115-multitab-v151.mjs",
+    "--max-warnings=0"
+  ],
+  "exitCode": 0,
+  "recipeSha256": "121fab77bb7e07ea2361ad3daef6a43faeecfc66c1ee8c27fae8c7104025d148",
+  "scope": "Final maintained V151 browser recipe only."
+}

@@ -1,0 +1,52 @@
+TAP version 13
+# Subtest: all native arrivals and explicit insertion variants pause, resume and hand off once without changing a campaign document
+ok 1 - all native arrivals and explicit insertion variants pause, resume and hand off once without changing a campaign document
+  ---
+  duration_ms: 249.088705
+  type: 'test'
+  ...
+# Subtest: natural handoff requires the real end of the native timeline and remains idempotent
+ok 2 - natural handoff requires the real end of the native timeline and remains idempotent
+  ---
+  duration_ms: 21.828209
+  type: 'test'
+  ...
+# Subtest: arrival checkpoints reject another owner, run, mission, ship, preset, encounter or earlier time
+ok 3 - arrival checkpoints reject another owner, run, mission, ship, preset, encounter or earlier time
+  ---
+  duration_ms: 15.860866
+  type: 'test'
+  ...
+# Subtest: a ship or triad session rejects a substituted insertion plan at checkpoint and handoff
+ok 4 - a ship or triad session rejects a substituted insertion plan at checkpoint and handoff
+  ---
+  duration_ms: 86.239708
+  type: 'test'
+  ...
+# Subtest: leaving a presentation invalidates its late handoff even when a reset has the same synthetic owner
+ok 5 - leaving a presentation invalidates its late handoff even when a reset has the same synthetic owner
+  ---
+  duration_ms: 33.869633
+  type: 'test'
+  ...
+# Subtest: Wolf actions and walking checkpoints keep the native revision, menu and departure boundaries
+ok 6 - Wolf actions and walking checkpoints keep the native revision, menu and departure boundaries
+  ---
+  duration_ms: 22.36596
+  type: 'test'
+  ...
+# Subtest: returning from settings or blur resumes the audio owner before native scene effects can request a loop
+ok 7 - returning from settings or blur resumes the audio owner before native scene effects can request a loop
+  ---
+  duration_ms: 15.171448
+  type: 'test'
+  ...
+1..7
+# tests 7
+# suites 0
+# pass 7
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 460.136772

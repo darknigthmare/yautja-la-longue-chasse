@@ -1,0 +1,74 @@
+{
+  "route": "/planet-generator-v103",
+  "checkedAt": "2026-11-09T12:20:41.870Z",
+  "viewport": [
+    1440,
+    1080
+  ],
+  "mobileViewport": [
+    390,
+    844
+  ],
+  "worldSmall": "proc-v103-39kr9p-001013100011311101031-oqmyb",
+  "worldLarge": "proc-v103-7kbn6-543013110011311101031-hprk9",
+  "worldLegacy": "proc-v102-m1ln-1110011-xkz70",
+  "pngResult": {
+    "width": 1024,
+    "height": 512,
+    "changedPixels": 93709,
+    "alphaChanges": 0,
+    "transparent": 430579
+  },
+  "hydrologyHit": "proc-v103-39kr9p-001013100011311101011-0s69x-hydro-1",
+  "checks": [
+    "the editor exposes four independent sections and all 22 lockable recipe fields",
+    "incompatible region counts are explicitly unavailable on an 18-territory front",
+    "the extraterrestrial base preserves seed, both counts and independently locked palettes",
+    "global randomization honors every active lock and leaves the applied world unchanged",
+    "a per-module draw changes only the chosen coastline setting",
+    "the terrestrial base provides independent land and sea textures and retains a locked small format",
+    "all preset and modular changes remain an explicit draft",
+    "the applied small world contains 18 actual map territories and three regional dossiers",
+    "clicking a visible inland basin does not select the territory underneath",
+    "the soil palette visibly changes exported pixels without moving coasts or changing the land alpha",
+    "the exported file records the applied V103 recipe and actual regional descriptions",
+    "the applied large world contains 96 real territories and 12 variable regional dossiers",
+    "a 96-territory fragmented-world export stays below its own import bound and stores hydrology descriptions",
+    "a mismatched version is rejected without replacing the preview",
+    "a V103 JSON round trip restores the exact small-world code and geometry",
+    "the largest tested exported recipe imports unchanged",
+    "a shared code remains directly available even when clipboard permission is unavailable",
+    "opening a front uses the applied small world rather than an edited draft",
+    "the live small front saves exactly 18 territory states",
+    "a real reconnaissance order resolves on a variable generated front",
+    "the live 96-territory front has its own exact archive and leaves the small campaign unchanged",
+    "the picker keeps thirty historical worlds separate from both variable-size discoveries",
+    "reopening the large world after reload resumes its original saved state",
+    "switching back restores the independently advanced small front",
+    "a legacy code renders the exact original V102 coastlines and remains protected from implicit conversion",
+    "the new editor exports a legacy recipe with version 102 and its exact original code",
+    "legacy reopening through the new editor resumes its archive byte for byte and preserves the old catalogue"
+  ],
+  "restoredFrontChecks": [
+    {
+      "planetId": "proc-v103-7kbn6-543013110011311101031-hprk9",
+      "turn": 2,
+      "seed": 12705522,
+      "territories": 96,
+      "archiveSha256": "3d9ab0c0a5e6ebd645e33d0fa6bbbf9dc440ce63b8745faaa4a3ac2de9e7c50c",
+      "exactArchiveAndLiveAtlas": true
+    },
+    {
+      "planetId": "proc-v103-39kr9p-001013100011311101031-oqmyb",
+      "turn": 3,
+      "seed": 197483533,
+      "territories": 18,
+      "archiveSha256": "fad74bd519763a12d38f6afb52e2a0b73e12afd2b1b631e59db8834cfcfdf67c",
+      "exactArchiveAndLiveAtlas": true
+    }
+  ],
+  "errors": [],
+  "consoleErrors": [],
+  "passed": false,
+  "failure": "locator.click: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('[data-clan-war-v85=\"free-profile\"]').getByRole('button', { name: 'Retour', exact: true })\u001b[22m\n\n    at /workspace/yautja-la-longue-chasse/scripts/qa-planet-generator-v103.mjs:303:74"
+}

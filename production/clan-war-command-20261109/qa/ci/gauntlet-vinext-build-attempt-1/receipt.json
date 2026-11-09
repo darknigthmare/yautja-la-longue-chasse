@@ -1,0 +1,69 @@
+{
+  "sourceCommit": "e18602ed22bd1e1e6b80b8b4703c88d4ef6faaa5",
+  "checkout": "/tmp/yautja-gauntlet-sparse-20261109",
+  "command": [
+    "npm",
+    "run",
+    "build"
+  ],
+  "sourceApplicationFiles": 1293,
+  "appMatchesPrimaryBefore": true,
+  "node": "v22.23.4",
+  "dependencies": "Same installed locked packages through per-package symlinks; no npm ci rerun and no alternative framework installed. Vite cache directories stay local.",
+  "sparsePatterns": [
+    "/package.json",
+    "/package-lock.json",
+    "/app/",
+    "/scripts/",
+    "/tests/",
+    "/types/",
+    "/desktop/",
+    "/db/",
+    "/drizzle/",
+    "/worker/",
+    "/drizzle.config.ts",
+    "/next-env.d.ts",
+    "/next.config.ts",
+    "/tsconfig.json",
+    "/proxy.ts",
+    "/vite.config.ts",
+    "/postcss.config.mjs",
+    "/eslint.config.mjs",
+    "/.openai/hosting.json",
+    "/build/sites-vite-plugin.ts",
+    "/public/game/assets/v18/enemy-trophy-gameplay/manifest.json",
+    "/public/game/assets/v17/enemy-trophies/manifest.json",
+    "/public/game/assets/v16/franchise-trophies/manifest.json",
+    "/public/game/assets/v14/hunter-kit/manifest.json",
+    "/public/game/assets/v15/trophies/manifest.json",
+    "/public/game/assets/v28/sprite-review/manifest.json",
+    "/public/game/clan-ship/props/manifest.json",
+    "/public/game/assets/v134/gauntlets/jungle-hunter/",
+    "/public/game/assets/v135/gauntlets/",
+    "/public/game/assets/v136/gauntlets/",
+    "/public/game/assets/v139/rig-gauntlets/",
+    "/public/game/assets/v3/actors/yautja/hunter/"
+  ],
+  "startedAt": "2026-11-09T12:54:10.607030+00:00",
+  "finishedAt": "2026-11-09T12:54:46.350532+00:00",
+  "exitCode": 0,
+  "appSourcesBeforeAfterIdentical": false,
+  "changedAppInputs": [
+    {
+      "path": "app/game/environmentPropAvailabilityData.ts",
+      "before": {
+        "path": "app/game/environmentPropAvailabilityData.ts",
+        "bytes": 29416,
+        "sha256": "6a50908657e45e0cd378b8b60cf0df217c88692c0c23a7198b79f7b9289d173f"
+      },
+      "after": {
+        "path": "app/game/environmentPropAvailabilityData.ts",
+        "bytes": 385,
+        "sha256": "2ad9903b52fb66b11a7a0da4dc0307a409eb5a4d6fc866169f627370b8437583"
+      }
+    }
+  ],
+  "primaryAppStillIdentical": true,
+  "logSha256": "b4c1d3ded41afbf994d1041062ad6231342b37cfb283595609489d562cdf9b68",
+  "scope": "Exact final gauntlet workflow npm run build command, including original prebuild audio and biome generators, in isolated code-only sparse checkout. It is the vinext target, not Next. Root workspace .next was not used or overwritten."
+}

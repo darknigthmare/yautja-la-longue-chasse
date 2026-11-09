@@ -1,0 +1,7 @@
+{
+  "cause": "Absent tutorial is inspected with an invalid/missing campaign owner before the absence check; parseSaveImport returns invalid-save before seeing the future gauntlet schema.",
+  "initialMobilityHypothesisConfirmed": false,
+  "mobilityExplanation": "mobilityV1 is already absent in defaultSave; deleting it has no effect. See the preserved four-scenario fixture-diagnosis.json raw result.",
+  "source": "app/game/systems/trophyTutorialV6.ts:193",
+  "expectedFix": "Absent optional tutorial bypasses only its own owner requirement; every present ledger keeps its original owner validation."
+}

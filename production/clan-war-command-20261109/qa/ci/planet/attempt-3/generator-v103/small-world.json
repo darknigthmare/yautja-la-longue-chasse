@@ -1,0 +1,360 @@
+{
+  "format": "yautja-war-planet",
+  "version": 103,
+  "code": "proc-v103-39kr9p-001013100011311101031-oqmyb",
+  "recipe": {
+    "version": 103,
+    "seed": 197483533,
+    "territoryCount": 18,
+    "regionCount": 3,
+    "landform": "continents",
+    "arrangement": "scattered",
+    "landCoverage": "balanced",
+    "coast": "peninsulas",
+    "territoryStyle": "organic",
+    "regionBalance": "balanced",
+    "landBiome": "temperate",
+    "surface": "water",
+    "biomeDiversity": "varied",
+    "atmosphere": "haze",
+    "hydrology": "mixed",
+    "landVariant": "earthlike",
+    "surfaceVariant": "earthlike",
+    "landScale": "medium",
+    "surfaceScale": "broad",
+    "landContrast": "balanced",
+    "surfaceContrast": "soft",
+    "landPalette": "violet",
+    "surfacePalette": "azure"
+  },
+  "name": "Shaara-39KR9P",
+  "description": "Shaara-39KR9P réunit 5 masses terrestres, des régions équilibrées et 6 bassins ou chenaux intérieurs. Brumes, aérosols et nébulosité modérée.",
+  "environment": {
+    "climate": "Tempéré, précipitations saisonnières",
+    "atmosphere": "Brumes, aérosols et nébulosité modérée",
+    "liquid": "Océans et eaux intérieures : étendues et chenaux séparant ou traversant les terres.",
+    "gravity": 1.04,
+    "dayLengthHours": 16
+  },
+  "landmasses": [
+    {
+      "landmassId": "proc-v103-39kr9p-001013100011311101031-oqmyb-land-1",
+      "name": "Île des Veilleurs 1",
+      "kind": "island",
+      "description": "Île des Veilleurs 1 porte 3 territoires aux cellules irrégulières. Ses contours suivent le profil de péninsules et de golfes."
+    },
+    {
+      "landmassId": "proc-v103-39kr9p-001013100011311101031-oqmyb-land-2",
+      "name": "Île du Levant 2",
+      "kind": "island",
+      "description": "Île du Levant 2 porte 3 territoires aux cellules irrégulières. Ses contours suivent le profil de péninsules et de golfes."
+    },
+    {
+      "landmassId": "proc-v103-39kr9p-001013100011311101031-oqmyb-land-3",
+      "name": "Île des Échos 3",
+      "kind": "island",
+      "description": "Île des Échos 3 porte 3 territoires aux cellules irrégulières. Ses contours suivent le profil de péninsules et de golfes."
+    },
+    {
+      "landmassId": "proc-v103-39kr9p-001013100011311101031-oqmyb-land-4",
+      "name": "Île de la Longue Veille 4",
+      "kind": "island",
+      "description": "Île de la Longue Veille 4 porte 3 territoires aux cellules irrégulières. Ses contours suivent le profil de péninsules et de golfes."
+    },
+    {
+      "landmassId": "proc-v103-39kr9p-001013100011311101031-oqmyb-land-5",
+      "name": "Terres des Ombres 5",
+      "kind": "continent",
+      "description": "Terres des Ombres 5 porte 6 territoires aux cellules irrégulières. Ses contours suivent le profil de péninsules et de golfes."
+    }
+  ],
+  "regions": [
+    {
+      "regionId": "CON-REG01",
+      "biome": "temperate",
+      "climate": "Tempéré, précipitations saisonnières",
+      "features": [
+        "falaises couvertes de mousses",
+        "dorsales de granite"
+      ],
+      "resources": [
+        "Dépôt",
+        "Atelier",
+        "Assemblée",
+        "Passage",
+        "Fort",
+        "Habitat"
+      ],
+      "description": "Marches du Crépuscule : forêts tempérées, falaises couvertes de mousses et dorsales de granite. 6 territoires reliés occupent 2 masses terrestres. Les sites du dossier correspondent aux ressources de ce front."
+    },
+    {
+      "regionId": "CON-REG02",
+      "biome": "mountain",
+      "climate": "Montagnard, gradients d’altitude",
+      "features": [
+        "éboulis",
+        "hautes crêtes"
+      ],
+      "resources": [
+        "Dépôt",
+        "Atelier",
+        "Assemblée",
+        "Passage",
+        "Fort",
+        "Habitat"
+      ],
+      "description": "Dorsale des Brasiers : montagnes, éboulis et hautes crêtes. 6 territoires reliés occupent 2 masses terrestres. Les sites du dossier correspondent aux ressources de ce front."
+    },
+    {
+      "regionId": "CON-REG03",
+      "biome": "jungle",
+      "climate": "Chaud et humide",
+      "features": [
+        "canopée dense",
+        "ravins de racines"
+      ],
+      "resources": [
+        "Atelier",
+        "Assemblée",
+        "Dépôt",
+        "Passage",
+        "Fort",
+        "Habitat"
+      ],
+      "description": "Terrasses des Balises : jungles, canopée dense et ravins de racines. 6 territoires reliés occupent 1 masse terrestre. Les sites du dossier correspondent aux ressources de ce front."
+    }
+  ],
+  "traits": [
+    {
+      "id": "format",
+      "name": "Format stratégique",
+      "description": "18 territoires et 3 régions ; les départs des Haltes et des Forges possèdent chacun une poche contiguë et leurs sources S/M/I."
+    },
+    {
+      "id": "geography",
+      "name": "Terres et traversées",
+      "description": "5 masses terrestres et 8 traversées autorisées forment un front connecté."
+    },
+    {
+      "id": "hydrology",
+      "name": "Bassins et chenaux",
+      "description": "6 milieux intérieurs dessinés dans les terres. Ils ne constituent pas de nouveaux territoires ni une simulation de débit."
+    },
+    {
+      "id": "gravity",
+      "name": "Gravité indicative",
+      "description": "1,04 g. Donnée descriptive ; aucun multiplicateur de déplacement ou de combat n’est appliqué."
+    },
+    {
+      "id": "day",
+      "name": "Durée du jour",
+      "description": "16 heures. Donnée descriptive indépendante des coûts de guerre."
+    }
+  ],
+  "strategicDossier": {
+    "territoryCount": 18,
+    "regionCount": 3,
+    "topology": "continental",
+    "scale": "compact",
+    "headquarters": {
+      "CON-F01": "CON-T01",
+      "CON-F02": "CON-T15"
+    },
+    "headquartersDistance": 8,
+    "headquartersPath": [
+      "CON-T01",
+      "CON-T03",
+      "CON-T08",
+      "CON-T09",
+      "CON-T10",
+      "CON-T12",
+      "CON-T17",
+      "CON-T13",
+      "CON-T15"
+    ],
+    "crossingCount": 8,
+    "chokepointTerritoryIds": [
+      "CON-T02",
+      "CON-T03",
+      "CON-T04",
+      "CON-T08",
+      "CON-T09",
+      "CON-T10",
+      "CON-T12",
+      "CON-T17"
+    ],
+    "regions": [
+      {
+        "regionId": "CON-REG01",
+        "name": "Marches du Crépuscule",
+        "territoryCount": 6,
+        "neighboringRegionIds": [
+          "CON-REG02"
+        ],
+        "borderLinks": 1,
+        "crossingLinks": 3,
+        "income": {
+          "s": 2,
+          "m": 2,
+          "i": 1
+        },
+        "chokepointTerritoryIds": [
+          "CON-T02",
+          "CON-T03",
+          "CON-T04"
+        ],
+        "headquarters": [
+          "CON-F01"
+        ]
+      },
+      {
+        "regionId": "CON-REG02",
+        "name": "Dorsale des Brasiers",
+        "territoryCount": 6,
+        "neighboringRegionIds": [
+          "CON-REG01",
+          "CON-REG03"
+        ],
+        "borderLinks": 2,
+        "crossingLinks": 4,
+        "income": {
+          "s": 2,
+          "m": 2,
+          "i": 1
+        },
+        "chokepointTerritoryIds": [
+          "CON-T08",
+          "CON-T09",
+          "CON-T10",
+          "CON-T12"
+        ],
+        "headquarters": []
+      },
+      {
+        "regionId": "CON-REG03",
+        "name": "Terrasses des Balises",
+        "territoryCount": 6,
+        "neighboringRegionIds": [
+          "CON-REG02"
+        ],
+        "borderLinks": 1,
+        "crossingLinks": 3,
+        "income": {
+          "s": 2,
+          "m": 2,
+          "i": 1
+        },
+        "chokepointTerritoryIds": [
+          "CON-T17"
+        ],
+        "headquarters": [
+          "CON-F02"
+        ]
+      }
+    ]
+  },
+  "materialDossier": {
+    "code": "proc-v103-39kr9p-001013100011311101031-oqmyb",
+    "surface": {
+      "kind": "water",
+      "title": "Océans",
+      "sourceTextureId": "surface-water",
+      "state": "liquid",
+      "substrate": "Eau et sels dissous",
+      "structure": "Houle, courants et écume",
+      "peculiarity": "Les reflets sont indépendants des nuages et des côtes."
+    },
+    "regions": [
+      {
+        "regionId": "CON-REG01",
+        "regionName": "Marches du Crépuscule",
+        "biome": "temperate",
+        "title": "Forêts tempérées",
+        "sourceTextureId": "land-temperate",
+        "substrate": "Terre minérale et humus",
+        "structure": "Versants boisés, alluvions et clairières",
+        "peculiarity": "Lisières et vallées servent de repères aux frontières régionales."
+      },
+      {
+        "regionId": "CON-REG02",
+        "regionName": "Dorsale des Brasiers",
+        "biome": "mountain",
+        "title": "Montagnes",
+        "sourceTextureId": "land-mountain",
+        "substrate": "Roche métamorphique et éboulis",
+        "structure": "Crêtes, ravins et moraines",
+        "peculiarity": "L'altitude apparente ne change pas le graphe des passages."
+      },
+      {
+        "regionId": "CON-REG03",
+        "regionName": "Terrasses des Balises",
+        "biome": "jungle",
+        "title": "Jungles",
+        "sourceTextureId": "land-jungle",
+        "substrate": "Sol ferrugineux et racines",
+        "structure": "Canopées serrées, méandres et escarpements",
+        "peculiarity": "La végétation ne donne aucun camouflage automatique."
+      }
+    ],
+    "rule": "Descriptions et textures uniquement : aucun changement implicite aux déplacements, dégâts, revenus ou routes."
+  },
+  "hydrology": {
+    "coveredFraction": 0.0023716208037221635,
+    "features": [
+      {
+        "id": "proc-v103-39kr9p-001013100011311101031-oqmyb-hydro-1",
+        "kind": "river",
+        "name": "Chenal de la Longue Veille",
+        "description": "Chenal sinueux de océans et eaux intérieures. Les marqueurs restent sur terre et les traversées autorisées sont indiquées par les routes.",
+        "regionIds": [
+          "CON-REG01"
+        ]
+      },
+      {
+        "id": "proc-v103-39kr9p-001013100011311101031-oqmyb-hydro-2",
+        "kind": "lake",
+        "name": "Bassin des Ombres",
+        "description": "Bassin intérieur de océans et eaux intérieures. Les marqueurs restent sur terre et les traversées autorisées sont indiquées par les routes.",
+        "regionIds": [
+          "CON-REG01"
+        ]
+      },
+      {
+        "id": "proc-v103-39kr9p-001013100011311101031-oqmyb-hydro-3",
+        "kind": "river",
+        "name": "Chenal du Crépuscule",
+        "description": "Chenal sinueux de océans et eaux intérieures. Les marqueurs restent sur terre et les traversées autorisées sont indiquées par les routes.",
+        "regionIds": [
+          "CON-REG02"
+        ]
+      },
+      {
+        "id": "proc-v103-39kr9p-001013100011311101031-oqmyb-hydro-4",
+        "kind": "lake",
+        "name": "Bassin des Brasiers",
+        "description": "Bassin intérieur de océans et eaux intérieures. Les marqueurs restent sur terre et les traversées autorisées sont indiquées par les routes.",
+        "regionIds": [
+          "CON-REG02"
+        ]
+      },
+      {
+        "id": "proc-v103-39kr9p-001013100011311101031-oqmyb-hydro-5",
+        "kind": "river",
+        "name": "Chenal des Balises",
+        "description": "Chenal sinueux de océans et eaux intérieures. Les marqueurs restent sur terre et les traversées autorisées sont indiquées par les routes.",
+        "regionIds": [
+          "CON-REG03"
+        ]
+      },
+      {
+        "id": "proc-v103-39kr9p-001013100011311101031-oqmyb-hydro-6",
+        "kind": "lake",
+        "name": "Bassin des Refuges",
+        "description": "Bassin intérieur de océans et eaux intérieures. Les marqueurs restent sur terre et les traversées autorisées sont indiquées par les routes.",
+        "regionIds": [
+          "CON-REG03"
+        ]
+      }
+    ]
+  }
+}

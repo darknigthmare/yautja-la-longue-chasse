@@ -1,0 +1,243 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-11-09T12:20:44.867363+00:00",
+  "passed": true,
+  "sourceCommit": "1aaa388d83b4b95b6c3d568269ea7ba8a0f4e239",
+  "scope": "Two maintained original browser recipes adapted to actual native command drawers. Same 7 campaign and 6 real-panel checks, not new unique Node tests. Sparse source preparation matched the original gauntlet workflow; this local run shares locked dependencies.",
+  "recipes": [
+    {
+      "name": "campaign",
+      "checksPassed": 7,
+      "checksFailed": 0,
+      "rawReport": {
+        "path": "production/clan-war-command-20261109/qa/ci/gauntlet-navigation-attempt-4/real-campaign-gauntlet-evidence.json",
+        "bytes": 1842,
+        "sha256": "a6c87f6938b8584f807008454de5b330a49d7a285f0a8d52c4c875a8595b313c"
+      },
+      "execution": {
+        "path": "production/clan-war-command-20261109/qa/ci/gauntlet-navigation-attempt-4/execution.json",
+        "bytes": 490,
+        "sha256": "e217fadd64199c1619bc6f253b9e2628ed41d47cd8e95468fe694f77c21a0d38"
+      },
+      "script": {
+        "path": "scripts/qa-gauntlet-campaign-v144.mjs",
+        "bytes": 11704,
+        "sha256": "c97cdd974d43868cdf8798b234592cf7e7282a6a006d451203619acc1872359f"
+      },
+      "recipeCopy": {
+        "path": "production/clan-war-command-20261109/qa/ci/gauntlet-navigation-attempt-4/recipe-used.mjs",
+        "bytes": 11704,
+        "sha256": "c97cdd974d43868cdf8798b234592cf7e7282a6a006d451203619acc1872359f"
+      },
+      "fixture": {
+        "path": "tests/browser/gauntlet-campaign-v144.fixture.tsx",
+        "bytes": 4504,
+        "sha256": "e1ba99dff209a79f4b785ff1b1691f8824ac926c333eb7ee6f4f13dc85cbcb4c"
+      },
+      "allAppSourcesUnchanged": true,
+      "sourceBookends": [
+        {
+          "path": "production/clan-war-command-20261109/qa/ci/gauntlet-navigation-attempt-4/source-before.json",
+          "bytes": 187017,
+          "sha256": "26b2aa27c1c34626cc7afb6f196557edf217bd3b5fd837d6213f6f86cf8b8323"
+        },
+        {
+          "path": "production/clan-war-command-20261109/qa/ci/gauntlet-navigation-attempt-4/source-after.json",
+          "bytes": 187017,
+          "sha256": "26b2aa27c1c34626cc7afb6f196557edf217bd3b5fd837d6213f6f86cf8b8323"
+        }
+      ],
+      "originalScreenshotsOpened": [
+        {
+          "path": "production/clan-war-command-20261109/qa/ci/gauntlet-navigation-attempt-4/01-unclaimed-study-ready.png",
+          "bytes": 258480,
+          "sha256": "0d0d83b2fadcd7b1c1d3d3a60fd2f5f626a26972c157332638cccd4ec98ec11b"
+        },
+        {
+          "path": "production/clan-war-command-20261109/qa/ci/gauntlet-navigation-attempt-4/02-study-equipped-shared-atlas.png",
+          "bytes": 527695,
+          "sha256": "fd69eb5c2b91d429306dd70668fefa686a4ebce67c77b5bbcc298d4113f48a40"
+        },
+        {
+          "path": "production/clan-war-command-20261109/qa/ci/gauntlet-navigation-attempt-4/03-reloaded-campaign-preserves-study.png",
+          "bytes": 524599,
+          "sha256": "7831543c1e6366c808147c01ca1808745c94c7aaf968141e415d713256d308b5"
+        }
+      ],
+      "allScreenshots": [
+        {
+          "path": "production/clan-war-command-20261109/qa/ci/gauntlet-navigation-attempt-4/01-unclaimed-study-ready.png",
+          "bytes": 258480,
+          "sha256": "0d0d83b2fadcd7b1c1d3d3a60fd2f5f626a26972c157332638cccd4ec98ec11b"
+        },
+        {
+          "path": "production/clan-war-command-20261109/qa/ci/gauntlet-navigation-attempt-4/02-study-equipped-shared-atlas.png",
+          "bytes": 527695,
+          "sha256": "fd69eb5c2b91d429306dd70668fefa686a4ebce67c77b5bbcc298d4113f48a40"
+        },
+        {
+          "path": "production/clan-war-command-20261109/qa/ci/gauntlet-navigation-attempt-4/03-reloaded-campaign-preserves-study.png",
+          "bytes": 524599,
+          "sha256": "7831543c1e6366c808147c01ca1808745c94c7aaf968141e415d713256d308b5"
+        }
+      ],
+      "scope": "Production ClanWarPanelV85 + V13 SaveGame writer with artificially seeded trophy QA facts; not complete GameClient navigation or actual earned player rewards",
+      "unavailableOptionalAssets": []
+    },
+    {
+      "name": "real-panel",
+      "checksPassed": 6,
+      "checksFailed": 0,
+      "rawReport": {
+        "path": "production/clan-war-command-20261109/qa/ci/war-panel-navigation-attempt-2/real-war-panel-evidence.json",
+        "bytes": 1808,
+        "sha256": "3fc776ff21481f4a4498bbd18356d374f9aee7f0408bd1d15c587c372c529cae"
+      },
+      "execution": {
+        "path": "production/clan-war-command-20261109/qa/ci/war-panel-navigation-attempt-2/execution.json",
+        "bytes": 476,
+        "sha256": "b7d5cc48abace16f6bc06cd411fdfad376e565544ea610a70ff804f283de520d"
+      },
+      "script": {
+        "path": "scripts/qa-real-clan-war-v143.mjs",
+        "bytes": 11595,
+        "sha256": "8ccee65b167619bfdb2d982b06c4c3d97c298ce21c17b368b66b6577fffd973d"
+      },
+      "recipeCopy": {
+        "path": "production/clan-war-command-20261109/qa/ci/war-panel-navigation-attempt-2/recipe-used.mjs",
+        "bytes": 11595,
+        "sha256": "8ccee65b167619bfdb2d982b06c4c3d97c298ce21c17b368b66b6577fffd973d"
+      },
+      "fixture": {
+        "path": "tests/browser/clan-war-v143.fixture.tsx",
+        "bytes": 1124,
+        "sha256": "d7827d37a438c2c427589e5b8bd09594858fea7b673db412257ffe192778870b"
+      },
+      "allAppSourcesUnchanged": true,
+      "sourceBookends": [
+        {
+          "path": "production/clan-war-command-20261109/qa/ci/war-panel-navigation-attempt-2/source-before.json",
+          "bytes": 187017,
+          "sha256": "26b2aa27c1c34626cc7afb6f196557edf217bd3b5fd837d6213f6f86cf8b8323"
+        },
+        {
+          "path": "production/clan-war-command-20261109/qa/ci/war-panel-navigation-attempt-2/source-after.json",
+          "bytes": 187017,
+          "sha256": "26b2aa27c1c34626cc7afb6f196557edf217bd3b5fd837d6213f6f86cf8b8323"
+        }
+      ],
+      "originalScreenshotsOpened": [
+        {
+          "path": "production/clan-war-command-20261109/qa/ci/war-panel-navigation-attempt-2/01-real-korthas-hologram.png",
+          "bytes": 518936,
+          "sha256": "5a85c89ee8dc8231c625c396a549a8aa296fddf221738fb57427d257aa361eeb"
+        },
+        {
+          "path": "production/clan-war-command-20261109/qa/ci/war-panel-navigation-attempt-2/03-real-turn-2-after-double-click.png",
+          "bytes": 431361,
+          "sha256": "1f9b5fe2ce05c69ccae82ad18840fb59c7592753876a33eb98184720b87191fb"
+        },
+        {
+          "path": "production/clan-war-command-20261109/qa/ci/war-panel-navigation-attempt-2/05-real-planet-switch-preserves-korthas.png",
+          "bytes": 517193,
+          "sha256": "21d0ff3e9483985024e8928f14a8ebc37b8768b2e0cefd0cf51c816b9c274499"
+        }
+      ],
+      "allScreenshots": [
+        {
+          "path": "production/clan-war-command-20261109/qa/ci/war-panel-navigation-attempt-2/01-real-korthas-hologram.png",
+          "bytes": 518936,
+          "sha256": "5a85c89ee8dc8231c625c396a549a8aa296fddf221738fb57427d257aa361eeb"
+        },
+        {
+          "path": "production/clan-war-command-20261109/qa/ci/war-panel-navigation-attempt-2/02-real-atlas-not-remounted.png",
+          "bytes": 519225,
+          "sha256": "a71cbfdf4943e76bee7fa6edec51afdb1d6e8ae2fcefce968a2a6598e508e99b"
+        },
+        {
+          "path": "production/clan-war-command-20261109/qa/ci/war-panel-navigation-attempt-2/03-real-turn-2-after-double-click.png",
+          "bytes": 431361,
+          "sha256": "1f9b5fe2ce05c69ccae82ad18840fb59c7592753876a33eb98184720b87191fb"
+        },
+        {
+          "path": "production/clan-war-command-20261109/qa/ci/war-panel-navigation-attempt-2/04-real-reloaded-front-turn-2.png",
+          "bytes": 519673,
+          "sha256": "527ad0b8c0173e9fe1e2a46a43f07a1fd25cc1bd4f75241c16161a5b5eca8470"
+        },
+        {
+          "path": "production/clan-war-command-20261109/qa/ci/war-panel-navigation-attempt-2/05-real-planet-switch-preserves-korthas.png",
+          "bytes": 517193,
+          "sha256": "21d0ff3e9483985024e8928f14a8ebc37b8768b2e0cefd0cf51c816b9c274499"
+        }
+      ],
+      "scope": "Real ClanWarPanelV85 + WarSessionV85 + V95 atlas in a seeded local browser fixture; not full GameClient navigation or 1:1 visual certification",
+      "unavailableOptionalAssets": [
+        "/game/assets/clan-field-20261103/medical-empty.svg",
+        "/game/assets/clan-field-20261103/medical-empty.svg",
+        "/game/assets/clan-field-20261103/medical-empty.svg",
+        "/game/assets/clan-field-20261103/medical-empty.svg"
+      ]
+    }
+  ],
+  "localBrowser": "/usr/bin/chromium 154.0.8037.57",
+  "node": "v22.23.4",
+  "appSourcesCompared": 1293,
+  "coldAppMatchesPrimaryAndAvailableBuildInputs": true,
+  "availableCompiledBuildId": "mdrvYovYvfvhuJqeZXn1D",
+  "productionNextGameplayTested": false,
+  "fullGameClientNavigationTested": false,
+  "actualEarnedPlayerRewardsClaimed": false,
+  "humanArtOrPhysicalControllerQualified": false,
+  "allP0P1Closed": false,
+  "remoteCIRevalidationPending": true,
+  "lint": {
+    "command": [
+      "node",
+      "node_modules/eslint/bin/eslint.js",
+      "--max-warnings=0",
+      "scripts/qa-gauntlet-campaign-v144.mjs",
+      "scripts/qa-real-clan-war-v143.mjs"
+    ],
+    "exitCode": 0
+  },
+  "changes": [
+    "Allow explicit Chromium executable and fresh output folder; default Chrome CI target unchanged.",
+    "Open and close real native Theater and Projection modals by controls/Escape.",
+    "Keep armory study/reward/one-time claim/equipping/reload/second-tab forgery assertions unchanged.",
+    "Keep true same-atlas element identity, rapid duplicate turn=2/revision=1, storage sentinel, reload and independent worlds unchanged.",
+    "Replace obsolete h3 turn labels with exact visible CYCLE01/CYCLE02 readings; durable localStorage turn checks remain."
+  ],
+  "preservedAttempts": [
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/gauntlet-sparse-attempt-1/receipt.json",
+      "bytes": 1597,
+      "sha256": "bc39314376fbae6c538d5580f392e7754ac96020dd3171d4b1eec073f1ea52e0"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/gauntlet-navigation-attempt-1/receipt.json",
+      "bytes": 464,
+      "sha256": "952f5f9c7ed6c3837c9fbefe2b295b3fbc3ed7a3f5e94e10d17d5fce1011ed4a"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/gauntlet-navigation-attempt-2/execution.json",
+      "bytes": 490,
+      "sha256": "5f0e3ef4d48fbe916994de96b525dc1079b88ddd364a13f2fee4787e88d91bff"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/gauntlet-navigation-attempt-3/execution.json",
+      "bytes": 490,
+      "sha256": "01a3979745e768c51f9e5ebf6543ab4da9c8f752f97d86b89184b103f930fe8b"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/war-panel-navigation-attempt-1/execution.json",
+      "bytes": 340,
+      "sha256": "e0ffeb8c4a53a41eca2c92113ade8322544524f34d283927298241c3f74b87cf"
+    }
+  ],
+  "limits": [
+    "Standalone production components and actual V13/WarSession writers with explicit artificial QA prerequisites. No complete campaign, physical controller or earned original relic claim.",
+    "The sparse optional artwork remains outside these checks; one medical-empty SVG was unavailable, disclosed in the raw report.",
+    "Initial local sparse attempt compiled successfully then lacked the Chrome channel; it is a host preparation diagnostic, not the GitHub failure cause. The actual old-navigation failures are preserved separately.",
+    "Earlier successful runs are not added to the current 13 bounded browser checks."
+  ]
+}

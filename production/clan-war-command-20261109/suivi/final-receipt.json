@@ -1,13 +1,40 @@
 {
-  "schemaVersion": 1,
-  "asOf": "2026-11-09T12:02:27.650180+00:00",
+  "schemaVersion": 2,
+  "edition": 2,
+  "asOf": "2026-11-09T12:59:14.312471+00:00",
   "passed": true,
   "allP0P1Closed": false,
-  "scope": "New append-only documentary follow-up with bounded software and browser receipts; not full game completion or native Excel/hardware/human-art approval. Remote merging is outside this workbook receipt.",
+  "scope": "Current second append-only edition with bounded qualifications and unchanged historical source workbooks. The published first edition stays in its actual Git commit; no old native receipt is relabelled. Remote merging is separate from this workbook receipt.",
+  "implementationCommit": "e18602ed22bd1e1e6b80b8b4703c88d4ef6faaa5",
+  "previousPublishedEdition": {
+    "edition": 1,
+    "commit": "1aaa388d83b4b95b6c3d568269ea7ba8a0f4e239",
+    "scope": "Édition publiée historique, conservée dans Git. Ses reçus gardent leur date et leurs builds ; aucune réattribution à la révision2.",
+    "files": [
+      {
+        "path": "production/clan-war-command-20261109/suivi/Yautja_Commandement_P0_P1_20261109.xlsx",
+        "sha256": "afa5817041cd5789a04bb06999ec6b6eeae8cce3760329c7d7af34804ffcb150",
+        "bytes": 25380150,
+        "gitBlob": "be316c97ddb20d63540a90e7299f6a6fa6c05991"
+      },
+      {
+        "path": "production/clan-war-command-20261109/suivi/final-receipt.json",
+        "sha256": "9abfabd2d6d6761f85ec84be3d9268558023667409443a1d4b7e9a9415fb92d6",
+        "bytes": 4124,
+        "gitBlob": "37c1c131f0bce4d8c9b9db979b7b8bd114e72781"
+      },
+      {
+        "path": "production/clan-war-command-20261109/verification.json",
+        "sha256": "e5e7f42ed36061511fd8039db47fb7f7083f10db430eb3334561caebd5d6e272",
+        "bytes": 2037048,
+        "gitBlob": "c7241647ee5a51a3e3f80dfe834bc4877a13bc37"
+      }
+    ]
+  },
   "artifact": {
     "path": "production/clan-war-command-20261109/suivi/Yautja_Commandement_P0_P1_20261109.xlsx",
-    "sha256": "afa5817041cd5789a04bb06999ec6b6eeae8cce3760329c7d7af34804ffcb150",
-    "bytes": 25380150
+    "sha256": "28bf2f777ae5723f50db1efe0d86100c3d4f192360bc9cdc5227ece003737066",
+    "bytes": 25384483
   },
   "counts": {
     "subjects": 2591,
@@ -36,13 +63,14 @@
     },
     "unreconciledSourceObservations": 0
   },
-  "cellsCompared": 60563,
+  "cellsCompared": 60585,
   "sheets": 19,
   "historicalSheetsPreserved": 13,
   "historicalZipPartsByteIdentical": 20,
   "historicalWorkbooksUnchanged": 113,
   "sourceWorkbooksVerified": 119,
   "sourceMarkdownFilesVerified": 6,
+  "historicalPublishedGitObjectsVerified": 3,
   "formulaCachedSubjects": 2591,
   "independentVerifierCommand": "python3 production/clan-war-command-20261109/tools/verify-followup.py --check",
   "byteReproducible": true,
@@ -53,18 +81,18 @@
   "files": [
     {
       "path": "production/clan-war-command-20261109/suivi/Yautja_Commandement_P0_P1_20261109.xlsx",
-      "bytes": 25380150,
-      "sha256": "afa5817041cd5789a04bb06999ec6b6eeae8cce3760329c7d7af34804ffcb150"
+      "bytes": 25384483,
+      "sha256": "28bf2f777ae5723f50db1efe0d86100c3d4f192360bc9cdc5227ece003737066"
     },
     {
       "path": "production/clan-war-command-20261109/suivi/qualification-courante.json",
-      "bytes": 57266,
-      "sha256": "ff2cca4f46c243f4543c7ede0834874041a59cba4396451b9e2d5dba86033e51"
+      "bytes": 60334,
+      "sha256": "54e4c62d0507e856d50e581b7d4e21052aef2565d0307773e9bd1d5d2a4cf1d6"
     },
     {
       "path": "production/clan-war-command-20261109/suivi/registre-priorites.json",
-      "bytes": 11665312,
-      "sha256": "e8fa219a577ca416cc763f8537c702a59eae1928e779b293eb4be84ec33cc6fb"
+      "bytes": 11665192,
+      "sha256": "1236cab2585624405faea9e44db97d6268e99eefaecad694355483ad0309bd19"
     },
     {
       "path": "production/clan-war-command-20261109/suivi/source-inventory.json",
@@ -73,28 +101,28 @@
     },
     {
       "path": "production/clan-war-command-20261109/suivi/CHANGELOG.md",
-      "bytes": 14704,
-      "sha256": "0e18bcbd3fc3118e8748b656f21bfdfb785433ac8844b33d8a9f537808c5ba6a"
+      "bytes": 15806,
+      "sha256": "17a2267c2aa545fcdab0f97c0d4d215022931ccf3c0068da046b458ee1e76955"
     },
     {
       "path": "production/clan-war-command-20261109/suivi/README.md",
-      "bytes": 2785,
-      "sha256": "1c2dc03f7e5d760acfd8ae2442f27f035995f4b276c50ed9f16a391b29e28c55"
+      "bytes": 4083,
+      "sha256": "bfcfbf2895eb2fc8c6c8af8a09bf1b3730e6cd359392b78e156810617c793e8b"
     },
     {
       "path": "production/clan-war-command-20261109/suivi/build-request.json",
-      "bytes": 3113,
-      "sha256": "8c0cc82a689ad757b8d95b19a3fc942b74b7e8c9c08dc531d6b215f35eec9a04"
+      "bytes": 4244,
+      "sha256": "d93d04941d37e3f0d88aad7fd376575e9dbad611ca264126ba1f5349cda99fd6"
     },
     {
       "path": "production/clan-war-command-20261109/suivi/verification-classeur.json",
-      "bytes": 1223,
-      "sha256": "d4dcd1b6b6d2d177294dd1cea354ba0532e9bbe955557e762619891d35e287ea"
+      "bytes": 2186,
+      "sha256": "bc4accc4eb867e50f9e30c722674a3ccb390468b633b687f053e27c1f211b486"
     },
     {
       "path": "production/clan-war-command-20261109/tools/followup.py",
-      "bytes": 30955,
-      "sha256": "6cc8fa271f860cdb46a865563f5bcb4061dd14a2fb555fc0a06e229611646f3f"
+      "bytes": 34047,
+      "sha256": "e8f920e2e84a927d9bd923b0a1f96563cabafed396789b2838de84f86187bc1f"
     },
     {
       "path": "production/clan-war-command-20261109/tools/build-followup.py",
@@ -108,8 +136,8 @@
     },
     {
       "path": "production/clan-war-command-20261109/verification.json",
-      "bytes": 2037048,
-      "sha256": "e5e7f42ed36061511fd8039db47fb7f7083f10db430eb3334561caebd5d6e272"
+      "bytes": 2678352,
+      "sha256": "1e41b982cbce3f4018168eb2425bfd454d4d326fdefebbb46f33ae35ea0d8ba4"
     }
   ]
 }

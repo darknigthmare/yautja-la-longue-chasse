@@ -1,11 +1,18 @@
 # Conseil de guerre dans le vrai Next
 
-Le [reçu actuel, tentative 4](attempt-4/final-receipt.json) atteste **18 contrôles
-réussis**, sept PNG originaux ouverts et le build `mdrvYovYvfvhuJqeZXn1D`.
+Le [reçu actuel, tentative 5](attempt-5/final-receipt.json) atteste **18 contrôles
+réussis**, sept PNG originaux ouverts et le build `-FZ8BLkijX4wYooxQn-in`.
 Les vingt sources ciblées restent identiques avant/après ; les trente scripts
 Next reçus correspondent aux octets du build déclaré. Aucune erreur JS,
 console, requête ou HTTP n’est observée. L’identité repose sur ces fichiers et
 ce build ; un HEAD Git ou le texte du badge de version ne suffit pas.
+
+Cette tentative suit la correction indépendante du helper de compatibilité
+du tutoriel de trophées ancien. Les vingt fichiers ciblés de l’interface sont
+identiques à la tentative 4 ; le vrai parseur de sauvegarde inclut le helper
+corrigé et vérifie ses 204 entrées transitives avant/après. La nouvelle build
+est confirmée par ses propres trente réponses JS, sans réutiliser les octets
+ou les captures de l’ancienne build.
 
 Le pilote ouvre la campagne depuis le menu, parcourt réellement le vaisseau
 jusqu’au conseil puis ouvre la guerre des clans. Les prérequis adultes/à bord
@@ -36,7 +43,8 @@ attendu sa fin, sans modifier les bornes. Les 2 et 3 ont réussi leurs 15 contr�
 d’interaction, mais leurs captures ont montré l’en-tête couvert par la barre
 absolue du jeu. La 3 a reproduit le défaut à défilement revenu en haut, permettant de distinguer
 le problème d’intégration d’un simple cadrage. La 4 teste le vrai correctif CSS
-avec les trois nouveaux contrôles et le retour effectif. **Les répétitions ne
+avec les trois nouveaux contrôles et le retour effectif. La 5 rejoue ces dix-huit
+contrôles sur la build finale après correction de compatibilité. **Les répétitions ne
 sont pas additionnées comme 45 contrôles uniques.** Aucun ancien rapport brut
 n’a été réécrit pour prétendre au nouvel état.
 

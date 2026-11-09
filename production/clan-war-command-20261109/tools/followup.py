@@ -13,6 +13,7 @@ import hashlib
 import importlib.util
 import io
 import json
+import os
 from pathlib import Path
 import re
 import subprocess
@@ -90,6 +91,29 @@ def configuration():
     if data["schemaVersion"] != 1:
         raise ValueError("Unknown qualification schema")
     return data
+
+
+def previous_edition():
+    config = configuration()
+    edition = config.get("edition", 1)
+    if edition == 1:
+        return None
+    previous = config["previousPublishedEdition"]
+    if previous["edition"] != edition - 1 or not re.fullmatch(r"[0-9a-f]{40}", previous["commit"]):
+        raise ValueError("Previous published edition needs its immutable Git identity")
+    git_env = {**os.environ, "GIT_NO_LAZY_FETCH": "1"}
+    for item in previous["files"]:
+        relative = Path(item["path"])
+        if relative.is_absolute() or ".." in relative.parts:
+            raise ValueError("Unsafe historical Git path")
+        reference = previous["commit"] + ":" + item["path"]
+        raw = subprocess.check_output(["git", "show", reference], cwd=ROOT, env=git_env)
+        if digest(raw) != item["sha256"] or len(raw) != item["bytes"]:
+            raise ValueError("Historical published edition differs in Git: " + reference)
+        blob = hashlib.sha1(b"blob " + str(len(raw)).encode() + b"\0" + raw).hexdigest()
+        if blob != item["gitBlob"]:
+            raise ValueError("Historical published Git blob differs: " + reference)
+    return previous
 
 
 def load_module(name, path):
@@ -221,6 +245,7 @@ def register(require_decisions=False):
     dependencies()
     historical_inputs()
     config, inventory = configuration(), verified_inventory()
+    previous_edition()
     previous = read(ROOT / PREVIOUS_REGISTER)
     rows = copy.deepcopy(previous["rows"])
     for row in rows:
@@ -349,6 +374,14 @@ def changelog(data):
              "Les reçus gardent leur build, leur méthode et leurs limites. Une fixture de composant ne vaut pas un parcours GameClient ; une API de manette synthétique ne vaut pas un périphérique physique.", "",
              "| Sujet | État | Portée actuelle | Suite conservée | Reçus |",
              "| --- | --- | --- | --- | --- |"]
+    previous = previous_edition()
+    if previous:
+        first_row = lines.index("## Changements qualifiés dans cette passe")
+        history = ["## Édition publiée précédente", "",
+                   f"Cette révision est l’édition **{config['edition']}**. L’édition {previous['edition']} reste dans le commit Git `{previous['commit']}` ; elle n’est pas réattribuée au nouveau build.", ""]
+        history += [f"- `{item['path']}` : SHA256 `{item['sha256']}`." for item in previous["files"]]
+        history += ["", "Le nouveau build corrige le cas d’un tutoriel optionnel absent avec propriétaire vide. Les recettes courantes de tutoriel et de commandement sont rejouées ; les autres reçus conservent leurs versions et dates.", ""]
+        lines[first_row:first_row] = history
     for key, update in sorted(config.get("updates", {}).items()):
         lines.append("| " + " | ".join(clean(value) for value in [key, update.get("status", "PARTIEL"),
                      update.get("qualificationScope", "Voir registre"), update.get("remaining", "Voir source"),
@@ -408,6 +441,12 @@ def payload():
         {"metric": "Feuilles historiques préservées", "value": 13, "scope": "Baseline SHA78e3de92… intact ; anciennes feuilles et tables conservées à l'octet."},
         {"metric": "Tous les P0/P1 terminés", "value": "Non attesté", "scope": "Voir les suites explicites ; un merge et une compilation ne terminent pas tous les chantiers."},
     ]
+    previous = previous_edition()
+    if previous:
+        summary += [{"metric": "Révision courante du suivi", "value": config["edition"],
+                     "scope": "Révision de compatibilité après le premier CI. Les recettes courantes sont identifiées par leurs vrais builds ; les anciens reçus restent datés."},
+                    {"metric": "Édition publiée antérieure", "value": previous["commit"],
+                     "scope": "\n".join(item["path"] + " — SHA256 " + item["sha256"] for item in previous["files"])}]
     for item in config.get("deliveries", []):
         summary.append({"metric": item["title"], "value": item["status"], "scope": item["scope"]})
     proofs = {item["path"]: item for item in global_proofs}
@@ -420,6 +459,11 @@ def payload():
             proofs[item["path"]] = fingerprint(item["path"])
     for item in verified_inventory()["sources"]:
         proofs[item["path"]] = {**fingerprint(item["path"]), "scope": "Source documentaire intégrée, état distinct d'une preuve de jeu"}
+    if previous:
+        for item in previous["files"]:
+            reference = "git:" + previous["commit"] + ":" + item["path"]
+            proofs[reference] = {**item, "path": reference,
+                                 "scope": "Édition publiée historique vérifiée dans l’objet Git ; aucun fichier courant ni reçu natif réétiqueté."}
     main_cols = columns(("id", "ID", 28), ("priority", "Priorité", 12), ("domain", "Domaine", 30),
                         ("title", "Sujet", 42), ("criterion", "Critère source", 100), ("status", "Qualification", 32),
                         ("sourcesText", "Sources / cellules", 110), ("evidenceText", "Preuves datées / portée", 110), ("remaining", "Suite ouverte", 110))
@@ -439,6 +483,7 @@ def portable(data):
     inputs = [str((FOLLOW / name).relative_to(ROOT)) for name in names]
     inputs += [str((LOT / "tools" / name).relative_to(ROOT)) for name in ["followup.py", "build-followup.py", "verify-followup.py"]]
     return {"previousQualificationCommit": PREVIOUS, "sourceCommit": configuration()["sourceCommit"],
+            "edition": configuration().get("edition", 1), "previousPublishedEdition": previous_edition(),
             "baseline": data["baseline"], "release": RELEASE, "historicalCount": 13,
             "appendedSheets": SHEETS, "workbookPath": str(ARTIFACT.relative_to(ROOT)),
             "inputs": [fingerprint(path) for path in inputs],
@@ -472,5 +517,6 @@ def verify(data):
     if ARTIFACT.read_bytes() != appender.build_workbook(data):
         raise ValueError("Workbook is not byte-reproducible")
     return {"passed": True, "artifact": fingerprint(str(ARTIFACT.relative_to(ROOT))), "cellsCompared": compared,
+            "edition": configuration().get("edition", 1), "previousPublishedEdition": previous_edition(),
             "structure": structure, "historicalWorkbooksUnchanged": 113,
             "scope": "Source hashes, source decisions, cells, preserved original ZIP parts and deterministic reconstruction. No native Excel, new gameplay, physical controller or human art executed by this verifier."}

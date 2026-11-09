@@ -1,0 +1,33 @@
+{
+  "scope": "Independent source-diff review only, not an added browser replay. Both complete diffs read; native dialog opening/Escape and visible cycle labels replace obsolete navigation. No forced DOM visibility or result substitution.",
+  "sources": [
+    {
+      "path": "scripts/qa-gauntlet-campaign-v144.mjs",
+      "sha256": "c97cdd974d43868cdf8798b234592cf7e7282a6a006d451203619acc1872359f",
+      "oldAssertions": 29,
+      "newAssertions": 29,
+      "removedAssertions": [],
+      "addedAssertions": []
+    },
+    {
+      "path": "scripts/qa-real-clan-war-v143.mjs",
+      "sha256": "8ccee65b167619bfdb2d982b06c4c3d97c298ce21c17b368b66b6577fffd973d",
+      "oldAssertions": 23,
+      "newAssertions": 23,
+      "removedAssertions": [
+        "assert.match(await panel.locator('h3').allTextContents().then(x=>x.join(\" \")),/tour 1/)",
+        "assert.match(await panel.locator('h3').allTextContents().then(x=>x.join(\" \")),/tour 2/)"
+      ],
+      "addedAssertions": [
+        "assert.equal(await panel.getByText(\"THÉÂTRE ACTIF · CYCLE 01\",{exact:true}).innerText(),\"THÉÂTRE ACTIF · CYCLE 01\")",
+        "assert.equal(await panel.getByText(\"THÉÂTRE ACTIF · CYCLE 02\",{exact:true}).innerText(),\"THÉÂTRE ACTIF · CYCLE 02\")"
+      ]
+    }
+  ],
+  "findings": [
+    "V144 claim/equip write counts, reload identity, owner-bound forged preference, unchanged war turn and zero-error assertions retained byte-for-byte.",
+    "V143 atlas identity, durable war turn, independent planet sessions, presentation preference and campaign sentinel retained; two obsolete heading regex assertions replaced with exact visible cycle labels.",
+    "Browser executable and output-directory overrides preserve original defaults.",
+    "Behavioral replay evidence remains the separate gauntlet agent receipt."
+  ]
+}

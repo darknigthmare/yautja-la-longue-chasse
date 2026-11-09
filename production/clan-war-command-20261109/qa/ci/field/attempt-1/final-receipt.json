@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-11-09T12:16:18.234779+00:00",
+  "scope": "CI field driver adaptation only: real production Ops + RtsSquads components and real browser storage, original fixture/assets. Not full GameClient, physical gamepad or artistic certification.",
+  "status": "PASS",
+  "browser": "Chromium 154.0.8037.57 built on Debian GNU/Linux 13 (trixie), headless, /usr/bin/chromium",
+  "viewport": {
+    "width": 1280,
+    "height": 850
+  },
+  "baseline": {
+    "exitCode": 1,
+    "status": "FAIL",
+    "cause": "Driver tried to uncheck an invisible checkbox before opening the new Détachement briefing step. Original 30000ms timeout preserved.",
+    "report": "baseline/report.json",
+    "log": "baseline.log"
+  },
+  "replay": {
+    "exitCode": 0,
+    "browserExecuted": true,
+    "checks": 6,
+    "pageErrors": [],
+    "report": "replay/report.json",
+    "log": "replay.log",
+    "unchangedAssertionTail": true
+  },
+  "verification": {
+    "lintExitCode": 0,
+    "regressionExitCode": 0,
+    "testFile": "tests/clan-field-pack-20261103.test.mjs",
+    "testRunnerUnits": 1
+  },
+  "appFilesCompared": 1293,
+  "appBeforeEqualsAfter": true,
+  "appSnapshots": {
+    "before": "c733aa88a04f8215eda1403e87bcfe1e32c4c71ee5506a7821c92a18602b3a6d",
+    "after": "c733aa88a04f8215eda1403e87bcfe1e32c4c71ee5506a7821c92a18602b3a6d"
+  },
+  "recipeSha256": "f953b49a451216c338bb63aa08cb1d8e88f9928390a8df2e0b8566928048a0d3",
+  "screenshots": [
+    {
+      "path": "replay/rts-controls-100-percent.png",
+      "sha256": "9b20ae06123ab9fa5b11f44d97166aa87fcae377ffb7e8e7eb0b8df210d3db70",
+      "openedAndInspected": true
+    },
+    {
+      "path": "replay/stealth-controls.png",
+      "sha256": "50dc3c4c6d4563482bb4fba55eb5b81bef12ce8725d9756c1b8159fa769fc77b",
+      "openedAndInspected": true
+    }
+  ],
+  "limitations": [
+    "Component fixture rather than full Next/GameClient.",
+    "The scene retains declared prototype art and tactical scope.",
+    "This field recipe does not itself test two-tab locks; separate V151 CI driver covers those."
+  ]
+}

@@ -1,0 +1,102 @@
+{
+  "format": "yautja-planet-relief-study",
+  "version": 150,
+  "worldCode": "proc-v115-m9bf-331013100011300111100202030200-0vi1j",
+  "source": "Exact dry-land regional mask V124 and canonical biome distribution",
+  "radiusKm": 6371,
+  "width": 512,
+  "height": 256,
+  "maximumSelectedElevationMeters": 8000,
+  "ruggedness": 0.55,
+  "seed": 1038507,
+  "heightEncoding": {
+    "red": "8 most significant bits",
+    "green": "8 least significant bits",
+    "blue": 0,
+    "alpha": "255 only on dry land; zero sea, lakes, rivers",
+    "decoder": "round(((R * 256 + G) / 65535) * maximumSelectedElevationMeters)"
+  },
+  "landPixels": 18109,
+  "waterPixels": 112963,
+  "highestElevationMeters": 8000,
+  "regions": [
+    {
+      "regionIndex": 1,
+      "biome": "temperate",
+      "landPixels": 2902,
+      "averageElevationMeters": 4427,
+      "maximumElevationMeters": 7514,
+      "regionId": "CON-REG01",
+      "regionName": "Marches des Roches"
+    },
+    {
+      "regionIndex": 2,
+      "biome": "mountain",
+      "landPixels": 1878,
+      "averageElevationMeters": 6021,
+      "maximumElevationMeters": 8000,
+      "regionId": "CON-REG02",
+      "regionName": "Dorsale des Brumes"
+    },
+    {
+      "regionIndex": 3,
+      "biome": "jungle",
+      "landPixels": 2653,
+      "averageElevationMeters": 4183,
+      "maximumElevationMeters": 7045,
+      "regionId": "CON-REG03",
+      "regionName": "Terrasses des Veilleurs"
+    },
+    {
+      "regionIndex": 4,
+      "biome": "swamp",
+      "landPixels": 2182,
+      "averageElevationMeters": 1731,
+      "maximumElevationMeters": 3048,
+      "regionId": "CON-REG04",
+      "regionName": "Caps du Levant"
+    },
+    {
+      "regionIndex": 5,
+      "biome": "tundra",
+      "landPixels": 2392,
+      "averageElevationMeters": 4259,
+      "maximumElevationMeters": 7759,
+      "regionId": "CON-REG05",
+      "regionName": "Plateaux des Échos"
+    },
+    {
+      "regionIndex": 6,
+      "biome": "mountain",
+      "landPixels": 2122,
+      "averageElevationMeters": 5582,
+      "maximumElevationMeters": 8000,
+      "regionId": "CON-REG06",
+      "regionName": "Vallées de la Longue Veille"
+    },
+    {
+      "regionIndex": 7,
+      "biome": "jungle",
+      "landPixels": 2323,
+      "averageElevationMeters": 4110,
+      "maximumElevationMeters": 6901,
+      "regionId": "CON-REG07",
+      "regionName": "Confins des Ombres"
+    },
+    {
+      "regionIndex": 8,
+      "biome": "swamp",
+      "landPixels": 1657,
+      "averageElevationMeters": 1793,
+      "maximumElevationMeters": 3020,
+      "regionId": "CON-REG08",
+      "regionName": "Hauteurs du Crépuscule"
+    }
+  ],
+  "limitations": [
+    "An original procedural altimetry authoring overlay, NOT geological elevations measured from canon.",
+    "No tactical collision, mountain traversal, rainfall, tectonic plate, flooding or combat height effects.",
+    "No changes to the V102/V103/V115 planet codes, hydrology, territories or saved clan wars.",
+    "Spherical ridges use 3D coordinates and longitude periodic distance; relief is bounded, not physically simulated."
+  ]
+}

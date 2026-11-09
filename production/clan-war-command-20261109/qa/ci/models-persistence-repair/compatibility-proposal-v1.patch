@@ -1,0 +1,46 @@
+--- a/app/game/systems/trophyTutorialV6.ts
++++ b/app/game/systems/trophyTutorialV6.ts
+@@ -190,8 +190,8 @@
+  * are not treated as an empty tutorial; their campaign owner decides recovery. */
+ export function inspectTrophyTutorialV6(raw: unknown, owner: string): TrophyTutorialInspectionV6 {
+   const invalid = (reason: string): TrophyTutorialInspectionV6 => ({ status: 'invalid', state: null, reason });
++  if (raw === undefined) return { status: 'absent', state: null, reason: '' };
+   if (!ownerValid(owner)) return invalid('Propriétaire de campagne invalide.');
+-  if (raw === undefined) return { status: 'absent', state: null, reason: '' };
+   if (record(raw) && finite(raw.version) && raw.version > 1) return { status: 'future', state: null, reason: 'Cette version du tutoriel est plus récente. Conserver les données avant reprise.' };
+   if (!record(raw) || raw.version !== 1 || raw.owner !== owner || raw.objectId !== `tutorial-model:${owner}` || !Array.isArray(raw.events) || raw.events.length > 21) return invalid('Journal du modèle incompatible avec cette campagne.');
+   let state = createTrophyTutorialV6(owner);
+--- a/tests/trophy-tutorial-save-v6.test.mjs
++++ b/tests/trophy-tutorial-save-v6.test.mjs
+@@ -70,6 +70,31 @@
+     assert.deepEqual(source.profile, confirmed.profile);
+     assert.deepEqual(source.trophies, confirmed.trophies);
+   }
++});
++
++test('an absent tutorial permits legacy owner diagnostics while every present record still requires a valid owner', () => {
++  for (const owner of ['', 'not-an-iso-owner']) {
++    const absent = tutorial.inspectTrophyTutorialV6(undefined, owner);
++    assert.equal(absent.status, 'absent');
++    assert.equal(absent.state, null);
++    for (const raw of [null, {}, { version: 2 }, recorded()]) {
++      const rejected = tutorial.inspectTrophyTutorialV6(raw, owner);
++      assert.equal(rejected.status, 'invalid');
++      assert.equal(rejected.state, null);
++    }
++  }
++});
++
++test('legacy campaign without an owner retains the future-gauntlet refusal before any import normalization', () => {
++  const legacy = saves.defaultSave(OWNER);
++  delete legacy.createdAt;
++  legacy.gauntletV134.version = 2;
++  assert.equal(Object.hasOwn(legacy, 'trophyTutorialV6'), false);
++  const raw = JSON.stringify(legacy);
++  const parsed = saves.parseSaveImport(raw);
++  assert.equal(parsed.save, null);
++  assert.equal(parsed.failure, 'future-version');
++  assert.equal(JSON.stringify(legacy), raw);
+ });
+ 
+ test('three physically completed gestures survive the actual writer, reload and portable import without rewards', () => {

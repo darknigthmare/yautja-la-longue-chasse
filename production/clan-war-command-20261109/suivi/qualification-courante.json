@@ -2,9 +2,9 @@
   "schemaVersion": 1,
   "asOf": "2026-11-09",
   "readyForWorkbook": true,
-  "status": "Qualification bornée livrée — critères restants explicitement ouverts",
+  "status": "Révision2 qualifiée dans sa portée — autres critères explicitement ouverts",
   "sourceCommit": "b666504c7d7889ea4c8c083aa97c4909aab32560",
-  "scope": "Suite après le commit 697bd87a. Les sources documentaires des cinq PR sont réunies localement et figées au commit b666504c ; leurs octets sont contrôlés dans le checkout courant. Code final de cette passe au commit 6a412eea. L’intégration distante constitue une étape séparée : ce suivi ne la déduit pas de la lecture locale. Critères, dates et méthodes des preuves restent distincts ; aucune clôture globale du jeu.",
+  "scope": "Révision2 après le premier CI de la PR133 : compatibilité du tutoriel optionnel absent et raccords des recettes aux menus. Sources documentaires des cinq PR figées au commitb666504c, code corrigé au commite18602ed ; l’identité testée repose sur les empreintes des1293sources, pas sur le seul commit du build préparé avec des modifications locales. Édition1 publiée au commit1aaa388d conservée dans Git. L’intégration distante reste distincte de ces qualifications ; aucune clôture globale du jeu.",
   "biblePaths": [
     "docs/campagne/BIBLE_DE_CAMPAGNE.md",
     "docs/campagne/mobilite/GAMEPLAY_GARAGE_V1.md",
@@ -237,17 +237,13 @@
       "humanArt": "À vérifier",
       "evidence": [
         {
-          "path": "production/clan-war-command-20261109/qa/trophy-tutorial/native-attempt-2/final-receipt.json",
-          "sha256": "999b920aa49e2baea5b4a98607781298f2c33fa36e908d72acf0d36f4ff49aca",
-          "scope": "Vrai Next, build kS : accès physique au Mausolée, 18 gestes et 21 événements, trois reprises, refus réel de quota avant écriture puis nouvel essai. Vingt contrôles et trois contrôles supplémentaires sur un checkpoint réellement gagné. Prérequis historiques Young Blood déclarés ; aucune campagne actuelle depuis la nurserie."
-        },
-        {
-          "path": "production/clan-war-command-20261109/qa/trophy-tutorial/final-resume-1/final-receipt.json",
-          "sha256": "50e811beb3ff9d439e1f644419af6363b9d43d983e434da7b942aba904f40102",
-          "scope": "Complément Next, build nIt : sept contrôles, quatre PNG ouverts, reprise réelle de la face à 8/18 révision9 vers 9/18 révision12, puis recharge exacte. Leçon et callback identiques au parcours des 18 gestes. Aucune nouvelle exécution intégrale, aucun nouvel essai de quota ou de flotte dans ce complément."
+          "path": "production/clan-war-command-20261109/qa/trophy-tutorial/compat-final/final-receipt.json",
+          "sha256": "7132fb95336a50e64ef5a5200c8c68a516de2b624e108783ae4627743c33d9ed",
+          "scope": "Vrai Next sur le build de compatibilité -FZ : nouveau parcours complet de vingt contrôles et trois contrôles complémentaires séparés, dix-huit gestes,21événements, six transports, trois reprises et vrai refus de quota suivi d’un nouvel essai. Douze PNG inspectés, neuf sources ciblées et1293empreintes applicatives stables. Modèle pédagogique et prérequis historiques Young Blood déclarés ; aucune nurserie, rite actuel, manette physique ou art humain qualifié.",
+          "kind": "boundedReceipt"
         }
       ],
-      "qualificationScope": "TR-M01 à TR-M03 : les 18 gestes de la branche modèle pédagogique autorisée, les 18 répliques, le vrai writer SaveGame, l’accès physique à l’atelier depuis le Mausolée, trois reprises et un refus de quota réversible. Parcours complet sur le build kS, puis complément de reprise sur nIt avec les sources de leçon et callback inchangées. Le prérequis historique Young Blood est une hypothèse déclarée ; aucun rite actuel n’est déduit.",
+      "qualificationScope": "TR-M01 à TR-M03, dix-huit gestes de la branche modèle pédagogique autorisée, dix-huit répliques et vrai writer SaveGame. Nouveau parcours complet sur le build de compatibilité -FZ : accès physique au Mausolée, six transports, trois reprises et refus de quota réversible ; vingt contrôles et trois contrôles complémentaires séparés réussis. Prérequis historique Young Blood déclaré, sans qualification de la nurserie ni du rite actuel. Les anciennes recettes kS et nIt restent des preuves datées de l’édition1.",
       "remaining": "Conserver la portée du modèle pédagogique de TR-M01 à TR-M03. Objets originaux chassés, chaînes avancées, manette physique et art humain restent séparés. Les prérequis historiques Young Blood ne qualifient ni la nurserie ni le rite actuel. BUILD5-02 et BUILD5-11 ne sont pas clôturés par ce tutoriel."
     },
     "Mobilité:MOB-001": {
@@ -384,13 +380,13 @@
           "scope": "Treize contrôles et deux PNG avec un fournisseur navigator.getGamepads synthétique déclaré. Hook de production, DOM, focus et événements cancel natifs. Aucun matériel de manette physique, aucun Next ou parcours de campagne qualifié."
         },
         {
-          "path": "production/clan-war-command-20261109/qa/next/attempt-4/final-receipt.json",
-          "sha256": "7ac004596473caa54ffc3625fa70a405f2c7d985a7a1b9e8b6beb79507e04913",
-          "scope": "Vrai Next, build mdrv : dix-huit contrôles et sept PNG ouverts. Quatorze outils regroupés, focus et Échap, carte et tiroirs aux formats1440/390/320, bandeau libéré du HUD, vrai bouton Quitter retournant au Clan Ship. Sauvegarde entière de10767octets inchangée et revalidée ; trente JS et vingt sources concordants. Départ RTS avec une équipe et119RAV, sans victoire ni grande carte source prétendue. Les quinze contrôles antérieurs sont rejoués, sans addition.",
+          "path": "production/clan-war-command-20261109/qa/next/attempt-5/final-receipt.json",
+          "sha256": "b6bf2f4f6496e4d91fc466502becb0fccd46749c03e7646446c22af5768c670a",
+          "scope": "Vrai Next sur le build de compatibilité -FZ : les mêmes dix-huit contrôles sont rejoués, sept PNG inspectés, bandeau dégagé en1440/390/320, quatorze outils, tiroirs, focus, Échap, lancement RTS et vrai Quitter vers Clan Ship. Sauvegarde entière inchangée et revalidée par la fermeture transitive de204entrées du parseur ; trente JS conformes. Aucune somme avec les anciens dix-huit contrôles ou grande carte RTS complète prétendue.",
           "kind": "boundedReceipt"
         }
       ],
-      "qualificationScope": "Sous-critères de clavier, focus, Échap, navigation des quatorze outils et petits écrans vérifiés dans les reçus versionnés. Le vrai Next mdrv mesure également le titre et Quitter hors du HUD dans trois formats, le retour réel au Clan Ship et la sauvegarde entière inchangée. Les vingt-cinq contrôles de fixture, treize contrôles d’API de manette et dix-huit contrôles Next gardent des portées distinctes.",
+      "qualificationScope": "Sous-critères de clavier, focus, Échap, navigation des quatorze outils et petits écrans vérifiés dans les reçus versionnés. Le vrai Next de compatibilité -FZ mesure également le titre et Quitter hors du HUD dans trois formats, le retour réel au Clan Ship et la sauvegarde entière inchangée. Les vingt-cinq contrôles de fixture, treize contrôles d’API de manette et dix-huit contrôles Next gardent des portées distinctes.",
       "remaining": "La manette physique, le lecteur d’écran et les autres sessions matérielles demandées ne sont pas attestés. Les essais de tiroirs, de clavier et de focus ne certifient pas toutes les boucles, toutes les configurations de contraste ou les périphériques."
     },
     "Guerre des clans:CW144-RTS-012": {
@@ -412,13 +408,13 @@
           "scope": "Composant Operations réel et dialogue partagé sur un hôte esbuild : dix-neuf contrôles et huit PNG. HUD, briefing en trois étapes, tiroirs et contrats d’archiveV2/WebLocks/IDB préservés. Ni GameClient complet, ni campagne, ni manette physique."
         },
         {
-          "path": "production/clan-war-command-20261109/qa/next/attempt-4/final-receipt.json",
-          "sha256": "7ac004596473caa54ffc3625fa70a405f2c7d985a7a1b9e8b6beb79507e04913",
-          "scope": "Vrai Next, build mdrv : dix-huit contrôles et sept PNG ouverts. Quatorze outils regroupés, focus et Échap, carte et tiroirs aux formats1440/390/320, bandeau libéré du HUD, vrai bouton Quitter retournant au Clan Ship. Sauvegarde entière de10767octets inchangée et revalidée ; trente JS et vingt sources concordants. Départ RTS avec une équipe et119RAV, sans victoire ni grande carte source prétendue. Les quinze contrôles antérieurs sont rejoués, sans addition.",
+          "path": "production/clan-war-command-20261109/qa/next/attempt-5/final-receipt.json",
+          "sha256": "b6bf2f4f6496e4d91fc466502becb0fccd46749c03e7646446c22af5768c670a",
+          "scope": "Vrai Next sur le build de compatibilité -FZ : les mêmes dix-huit contrôles sont rejoués, sept PNG inspectés, bandeau dégagé en1440/390/320, quatorze outils, tiroirs, focus, Échap, lancement RTS et vrai Quitter vers Clan Ship. Sauvegarde entière inchangée et revalidée par la fermeture transitive de204entrées du parseur ; trente JS conformes. Aucune somme avec les anciens dix-huit contrôles ou grande carte RTS complète prétendue.",
           "kind": "boundedReceipt"
         }
       ],
-      "qualificationScope": "Interface de commandement modernisée : carte dominante, sous-menus, dossiers contextuels, briefing et HUD regroupés. Le vrai Next mdrv vérifie le bandeau dégagé, la carte, les tiroirs et le retour Quitter dans trois formats. Les portraits et armes n’obtiennent aucune nouvelle certification artistique par ces recettes techniques.",
+      "qualificationScope": "Interface de commandement modernisée : carte dominante, sous-menus, dossiers contextuels, briefing et HUD regroupés. Le vrai Next de compatibilité -FZ vérifie le bandeau dégagé, la carte, les tiroirs et le retour Quitter dans trois formats. Les portraits et armes n’obtiennent aucune nouvelle certification artistique par ces recettes techniques.",
       "remaining": "Portraits, armes et silhouettes fidèles aux œuvres, références par personnage, toutes les animations et revue artistique humaine restent ouverts. Les terrains RTS restent des prototypes ; la présentation ne réalise pas toutes les cartes et cinématiques source."
     },
     "Guerre des clans:BACK152-023": {
@@ -440,13 +436,13 @@
           "scope": "Treize contrôles et deux PNG avec un fournisseur navigator.getGamepads synthétique déclaré. Hook de production, DOM, focus et événements cancel natifs. Aucun matériel de manette physique, aucun Next ou parcours de campagne qualifié."
         },
         {
-          "path": "production/clan-war-command-20261109/qa/next/attempt-4/final-receipt.json",
-          "sha256": "7ac004596473caa54ffc3625fa70a405f2c7d985a7a1b9e8b6beb79507e04913",
-          "scope": "Vrai Next, build mdrv : dix-huit contrôles et sept PNG ouverts. Quatorze outils regroupés, focus et Échap, carte et tiroirs aux formats1440/390/320, bandeau libéré du HUD, vrai bouton Quitter retournant au Clan Ship. Sauvegarde entière de10767octets inchangée et revalidée ; trente JS et vingt sources concordants. Départ RTS avec une équipe et119RAV, sans victoire ni grande carte source prétendue. Les quinze contrôles antérieurs sont rejoués, sans addition.",
+          "path": "production/clan-war-command-20261109/qa/next/attempt-5/final-receipt.json",
+          "sha256": "b6bf2f4f6496e4d91fc466502becb0fccd46749c03e7646446c22af5768c670a",
+          "scope": "Vrai Next sur le build de compatibilité -FZ : les mêmes dix-huit contrôles sont rejoués, sept PNG inspectés, bandeau dégagé en1440/390/320, quatorze outils, tiroirs, focus, Échap, lancement RTS et vrai Quitter vers Clan Ship. Sauvegarde entière inchangée et revalidée par la fermeture transitive de204entrées du parseur ; trente JS conformes. Aucune somme avec les anciens dix-huit contrôles ou grande carte RTS complète prétendue.",
           "kind": "boundedReceipt"
         }
       ],
-      "qualificationScope": "Commandes RTS accessibles dans le nouveau HUD et ses tiroirs, navigation du menu avec une API de manette synthétique contrôlée. Une équipe est réellement lancée dans le vrai Next mdrv avec119RAV sur le protocole canoniqueV2. Aucune victoire complète ou manette physique prétendue.",
+      "qualificationScope": "Commandes RTS accessibles dans le nouveau HUD et ses tiroirs, navigation du menu avec une API de manette synthétique contrôlée. Une équipe est réellement lancée dans le vrai Next de compatibilité -FZ avec119RAV sur le protocole canoniqueV2. Aucune victoire complète ou manette physique prétendue.",
       "remaining": "Manette physique, remapping et parcours RTS complet avec plusieurs escouades restent à qualifier. Un fournisseur de manette synthétique ne vaut pas un essai matériel."
     },
     "Clan Ship:OPS-B05": {
@@ -476,25 +472,25 @@
       "humanArt": "Sans objet",
       "evidence": [
         {
-          "path": "production/clan-war-command-20261109/qa/root/build-ux-final/receipt.json",
-          "sha256": "a5895842700eb89220d131f7fabcf66f7cdb7356d8b9f767acc677fbba1d769c",
-          "scope": "Vrai build de production Next mdrv terminé avec code0. Les1293sources app sont identiques avant et après ; TypeScript vérifié par le build. Aucune exécution desktop ou mise en production distante déduite.",
+          "path": "production/clan-war-command-20261109/qa/root/build-compat-final/receipt.json",
+          "sha256": "e11bb51f4379de1afbcb094d86a0d7bb8871da6783f7d70f6316e044c4526f7f",
+          "scope": "Vrai build Next de production -FZ et TypeScript réussis, code0,1293sources app identiques avant/après. La préparation déclarait des modifications locales à partir de1aaa ; les empreintes réelles, dont le seul helper applicatif modifié, établissent l’identité. Aucun déploiement déduit.",
           "kind": "softwareQualificationReceipt"
         },
         {
-          "path": "production/clan-war-command-20261109/qa/root/lint-final/receipt.json",
-          "sha256": "ebfa4ceabb3c43c878b5ea27a945831d40109c2df927e571239c151b4f53e79b",
-          "scope": "ESLint du dépôt entier selon sa configuration, code0, zéro erreur et zéro avertissement. Les preuves anciennes gelées gardent leurs exceptions de style ciblées ; app/scripts/tests actifs suivent les règles normales. Ce contrôle statique ne joue pas au jeu.",
+          "path": "production/clan-war-command-20261109/qa/root/lint-ci-final/receipt.json",
+          "sha256": "521e89c51c3ab446fcd38b1ae9a282fa12c51f3bdf8cbffeef8e9ab9a8caae79",
+          "scope": "Lint final du dépôt configuré :2852fichiers, code0, zéro erreur et avertissement. Une recette historique gelée supplémentaire garde une exception de liaison inutilisée exactement ciblée ; règles des app/scripts/tests actifs inchangées.",
           "kind": "softwareQualificationReceipt"
         },
         {
-          "path": "production/clan-war-command-20261109/qa/ci/cold-final/results/report.json",
-          "sha256": "55ec5945dc9b7750482cdfe73d66b2c3b5b5a323f06e35ba99d3ce8700f96ad3",
-          "scope": "Exécution réelle Node22 dans le checkout froid final :1198tests réussis sur103fichiers, zéro échec, ignoré, annulé ou todo. La sélection inclut les régressions hors mobilité. Les premières passes et répétitions ne sont pas additionnées ; aucun GitHub Actions distant ou nouveau npmci déduit de ce seul reçu.",
+          "path": "production/clan-war-command-20261109/qa/ci/cold-compat-final/results/report.json",
+          "sha256": "6f54f72bdaf54fb8f9b2a433e290172d78f72abebad10dca8aa18067de90c099",
+          "scope": "Nouveau checkout froid sur les sources corrigées e186 :1198tests réussis sur103fichiers, zéro échec, ignoré, annulé ou todo. Assertions de compatibilité renforcées, nombre de cas inchangé ; les31/213/280contrôles séparés et chevauchants ne sont pas ajoutés à1198. Dépendances verrouillées partagées ; aucun nouveau npmci ou GitHub Actions du head courant déduit.",
           "kind": "softwareQualificationReceipt"
         }
       ],
-      "qualificationScope": "Critère logiciel MOB-002 : vrai build Next de production mdrv avec1293sources inchangées, vérification TypeScript, lint strict du dépôt configuré sans erreur ou avertissement,1198tests uniques réussis sur103fichiers dans un checkout froid final. Les régressions dépassent la mobilité ; aucune répétition des anciennes suites n’est ajoutée.",
+      "qualificationScope": "Critère logiciel MOB-002 sur les sources corrigées e186 : vrai build Next de production -FZ avec1293sources inchangées avant/après et vérification TypeScript, lint strict du dépôt configuré sur2852fichiers sans erreur ni avertissement,1198tests uniques réussis sur103fichiers dans un nouveau checkout froid. Les assertions de compatibilité sont renforcées ; le nombre de cas reste1198 et les essais séparés chevauchants ne sont pas additionnés.",
       "remaining": "Maintenir ce résultat borné aux sources et à la sélection déclarées. Ce critère logiciel ne certifie ni la totalité du gameplay, ni tous les scénarios du dépôt, ni les appareils physiques, l’art humain ou un déploiement. Les autres MOB-003 à MOB-014 gardent leurs admissions propres."
     }
   },
@@ -502,7 +498,7 @@
     {
       "title": "Tutoriel de l’atelier : 18 gestes",
       "status": "QUALIFIE_BORNE",
-      "scope": "Modèle pédagogique TR-M01 à TR-M03. Parcours Next complet sur kS et complément de sept contrôles sur nIt. Prérequis Young Blood historique déclaré ; aucun rite actuel ni objet réel chassé déduit."
+      "scope": "Nouveau parcours complet sur le build de compatibilité -FZ : vingt contrôles et trois complémentaires séparés, dix-huit gestes, six transports, trois reprises, vrai refus de quota. Modèle pédagogique et prérequis historiques déclarés ; aucun rite actuel ou objet réellement chassé déduit."
     },
     {
       "title": "Mobilité MOB-001",
@@ -512,12 +508,12 @@
     {
       "title": "Qualification globale MOB-002",
       "status": "QUALIFIE_BORNE",
-      "scope": "Build Next de production mdrv et TypeScript réussis ; lint strict du dépôt configuré sans erreur ni avertissement ;1198tests sur103fichiers dans un checkout froid réel, avec les régressions hors mobilité. Ni QA intégrale du jeu, ni appareil ou art humain."
+      "scope": "Build Next de production -FZ et TypeScript réussis ; lint final configuré sur2852fichiers sans erreur ni avertissement ; nouvelle passe froide1198/103 sur les sources e186, avec assertions de compatibilité renforcées. Ni QA intégrale du jeu ni matériel ou art humain."
     },
     {
       "title": "Interface de commandement",
       "status": "PARTIEL",
-      "scope": "Dix-huit contrôles Next mdrv, bandeau dégagé et vrai retour Quitter. Fixture25, Operations19 et API de manette13 restent distincts. Aucune manette physique, revue artistique humaine ou grande carte RTS certifiée."
+      "scope": "Dix-huit contrôles rejoués sur le vrai Next de compatibilité -FZ, bandeau dégagé et vrai retour Quitter. Les recettes de fixture25, Operations19 et API de manette13 gardent leurs dates et portées. Aucune manette physique, revue artistique ou grande carte RTS complète."
     },
     {
       "title": "Incidents B01 et B02",
@@ -532,9 +528,9 @@
   ],
   "globalEvidence": [
     {
-      "path": "production/clan-war-command-20261109/qa/next/attempt-4/final-receipt.json",
-      "sha256": "7ac004596473caa54ffc3625fa70a405f2c7d985a7a1b9e8b6beb79507e04913",
-      "scope": "Vrai Next, build mdrv : dix-huit contrôles et sept PNG ouverts. Quatorze outils regroupés, focus et Échap, carte et tiroirs aux formats1440/390/320, bandeau libéré du HUD, vrai bouton Quitter retournant au Clan Ship. Sauvegarde entière de10767octets inchangée et revalidée ; trente JS et vingt sources concordants. Départ RTS avec une équipe et119RAV, sans victoire ni grande carte source prétendue. Les quinze contrôles antérieurs sont rejoués, sans addition.",
+      "path": "production/clan-war-command-20261109/qa/next/attempt-5/final-receipt.json",
+      "sha256": "b6bf2f4f6496e4d91fc466502becb0fccd46749c03e7646446c22af5768c670a",
+      "scope": "Vrai Next sur le build de compatibilité -FZ : les mêmes dix-huit contrôles sont rejoués, sept PNG inspectés, bandeau dégagé en1440/390/320, quatorze outils, tiroirs, focus, Échap, lancement RTS et vrai Quitter vers Clan Ship. Sauvegarde entière inchangée et revalidée par la fermeture transitive de204entrées du parseur ; trente JS conformes. Aucune somme avec les anciens dix-huit contrôles ou grande carte RTS complète prétendue.",
       "kind": "boundedReceipt"
     },
     {
@@ -570,12 +566,14 @@
     {
       "path": "production/clan-war-command-20261109/qa/trophy-tutorial/native-attempt-2/final-receipt.json",
       "sha256": "999b920aa49e2baea5b4a98607781298f2c33fa36e908d72acf0d36f4ff49aca",
-      "scope": "Vrai Next, build kS : accès physique au Mausolée, 18 gestes et 21 événements, trois reprises, refus réel de quota avant écriture puis nouvel essai. Vingt contrôles et trois contrôles supplémentaires sur un checkpoint réellement gagné. Prérequis historiques Young Blood déclarés ; aucune campagne actuelle depuis la nurserie."
+      "scope": "Historique de l’édition1aaa, remplacé pour la qualification actuelle par le nouveau parcours complet compat-final. Vrai Next, build kS : accès physique au Mausolée, 18 gestes et 21 événements, trois reprises, refus réel de quota avant écriture puis nouvel essai. Vingt contrôles et trois contrôles supplémentaires sur un checkpoint réellement gagné. Prérequis historiques Young Blood déclarés ; aucune campagne actuelle depuis la nurserie.",
+      "kind": "historicalReceipt"
     },
     {
       "path": "production/clan-war-command-20261109/qa/trophy-tutorial/final-resume-1/final-receipt.json",
       "sha256": "50e811beb3ff9d439e1f644419af6363b9d43d983e434da7b942aba904f40102",
-      "scope": "Complément Next, build nIt : sept contrôles, quatre PNG ouverts, reprise réelle de la face à 8/18 révision9 vers 9/18 révision12, puis recharge exacte. Leçon et callback identiques au parcours des 18 gestes. Aucune nouvelle exécution intégrale, aucun nouvel essai de quota ou de flotte dans ce complément."
+      "scope": "Historique de l’édition1aaa, remplacé pour la qualification actuelle par le nouveau parcours complet compat-final. Complément Next, build nIt : sept contrôles, quatre PNG ouverts, reprise réelle de la face à 8/18 révision9 vers 9/18 révision12, puis recharge exacte. Leçon et callback identiques au parcours des 18 gestes. Aucune nouvelle exécution intégrale, aucun nouvel essai de quota ou de flotte dans ce complément.",
+      "kind": "historicalReceipt"
     },
     {
       "path": "production/clan-war-command-20261109/qa/mobility/campaign-attempt-2/final-receipt.json",
@@ -583,28 +581,34 @@
       "scope": "MOB-001 P0 dans le vrai Next nIt : 29 contrôles, dix PNG ouverts, marche extérieure, Forges, guichet, 68,398 secondes réelles dans l’aire, trois balises, charge de 25kg, permis, achat, sortie, récupération et retour. Deux vrais refus de quota et Continue retrouvant le mouvement au tick30 sans écraser l’ancien checkpoint révision2. Prérequis adultes historiques déclarés ; aucune nurserie jouée ni qualification globale MOB-002."
     },
     {
-      "path": "production/clan-war-command-20261109/qa/root/build-ux-final/receipt.json",
-      "sha256": "a5895842700eb89220d131f7fabcf66f7cdb7356d8b9f767acc677fbba1d769c",
-      "scope": "Vrai build de production Next mdrv terminé avec code0. Les1293sources app sont identiques avant et après ; TypeScript vérifié par le build. Aucune exécution desktop ou mise en production distante déduite.",
+      "path": "production/clan-war-command-20261109/qa/root/build-compat-final/receipt.json",
+      "sha256": "e11bb51f4379de1afbcb094d86a0d7bb8871da6783f7d70f6316e044c4526f7f",
+      "scope": "Vrai build Next de production -FZ et TypeScript réussis, code0,1293sources app identiques avant/après. La préparation déclarait des modifications locales à partir de1aaa ; les empreintes réelles, dont le seul helper applicatif modifié, établissent l’identité. Aucun déploiement déduit.",
       "kind": "softwareQualificationReceipt"
     },
     {
-      "path": "production/clan-war-command-20261109/qa/root/lint-final/receipt.json",
-      "sha256": "ebfa4ceabb3c43c878b5ea27a945831d40109c2df927e571239c151b4f53e79b",
-      "scope": "ESLint du dépôt entier selon sa configuration, code0, zéro erreur et zéro avertissement. Les preuves anciennes gelées gardent leurs exceptions de style ciblées ; app/scripts/tests actifs suivent les règles normales. Ce contrôle statique ne joue pas au jeu.",
+      "path": "production/clan-war-command-20261109/qa/root/lint-ci-final/receipt.json",
+      "sha256": "521e89c51c3ab446fcd38b1ae9a282fa12c51f3bdf8cbffeef8e9ab9a8caae79",
+      "scope": "Lint final du dépôt configuré :2852fichiers, code0, zéro erreur et avertissement. Une recette historique gelée supplémentaire garde une exception de liaison inutilisée exactement ciblée ; règles des app/scripts/tests actifs inchangées.",
       "kind": "softwareQualificationReceipt"
     },
     {
-      "path": "production/clan-war-command-20261109/qa/ci/cold-final/results/report.json",
-      "sha256": "55ec5945dc9b7750482cdfe73d66b2c3b5b5a323f06e35ba99d3ce8700f96ad3",
-      "scope": "Exécution réelle Node22 dans le checkout froid final :1198tests réussis sur103fichiers, zéro échec, ignoré, annulé ou todo. La sélection inclut les régressions hors mobilité. Les premières passes et répétitions ne sont pas additionnées ; aucun GitHub Actions distant ou nouveau npmci déduit de ce seul reçu.",
+      "path": "production/clan-war-command-20261109/qa/ci/cold-compat-final/results/report.json",
+      "sha256": "6f54f72bdaf54fb8f9b2a433e290172d78f72abebad10dca8aa18067de90c099",
+      "scope": "Nouveau checkout froid sur les sources corrigées e186 :1198tests réussis sur103fichiers, zéro échec, ignoré, annulé ou todo. Assertions de compatibilité renforcées, nombre de cas inchangé ; les31/213/280contrôles séparés et chevauchants ne sont pas ajoutés à1198. Dépendances verrouillées partagées ; aucun nouveau npmci ou GitHub Actions du head courant déduit.",
       "kind": "softwareQualificationReceipt"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/trophy-tutorial/compat-final/final-receipt.json",
+      "sha256": "7132fb95336a50e64ef5a5200c8c68a516de2b624e108783ae4627743c33d9ed",
+      "scope": "Vrai Next sur le build de compatibilité -FZ : nouveau parcours complet de vingt contrôles et trois contrôles complémentaires séparés, dix-huit gestes,21événements, six transports, trois reprises et vrai refus de quota suivi d’un nouvel essai. Douze PNG inspectés, neuf sources ciblées et1293empreintes applicatives stables. Modèle pédagogique et prérequis historiques Young Blood déclarés ; aucune nurserie, rite actuel, manette physique ou art humain qualifié.",
+      "kind": "boundedReceipt"
     },
     {
       "path": "production/clan-war-command-20261109/verification.json",
-      "sha256": "e5e7f42ed36061511fd8039db47fb7f7083f10db430eb3334561caebd5d6e272",
-      "kind": "finalVerification",
-      "scope": "Reçu global final gelé :1198tests uniques réussis sur103fichiers dans le checkout froid, build Next de production et TypeScript réussis, lint strict configuré sans erreur ni avertissement.4541contrôles d’intégrité et3288sources sont distincts des tests de comportement. Les récits Next, Vite et fixtures gardent leurs versions et limites ; aucune clôture globale du jeu ou fusion distante déduite."
+      "sha256": "1e41b982cbce3f4018168eb2425bfd454d4d326fdefebbb46f33ae35ea0d8ba4",
+      "scope": "Globalv2 gelé après les réparations du premier CI : froid1198/103, build Next -FZ, lint2852fichiers sans erreur ni avertissement, UI18 et tutoriel20+3 rejoués. Les autres reçus conservent leurs builds et dates ; seul le helper de tutoriel change et ses liaisons historiques sont précisément bornées. Aucun total de QA complète ou fermeture globale du jeu.",
+      "kind": "finalVerification"
     }
   ],
   "limits": [
@@ -695,7 +699,7 @@
       }
     ]
   },
-  "implementationCommit": "6a412eeabc0c0be0dc9e09b635384f51b96dc377",
+  "implementationCommit": "e18602ed22bd1e1e6b80b8b4703c88d4ef6faaa5",
   "preIntegrationReads": {
     "scope": "Prélectures des PR avant intégration. Les fichiers intégrés ont ensuite été confirmés par l’inventaire épinglé ; ces HEAD ne déclarent pas une fusion distante.",
     "127": {
@@ -716,5 +720,38 @@
         "39c2e6488d6b3362a3d575b0ff07afdb9b6bb2dfb38def857c5a2789143a34c4"
       ]
     }
+  },
+  "edition": 2,
+  "previousPublishedEdition": {
+    "edition": 1,
+    "commit": "1aaa388d83b4b95b6c3d568269ea7ba8a0f4e239",
+    "scope": "Édition publiée historique, conservée dans Git. Ses reçus gardent leur date et leurs builds ; aucune réattribution à la révision2.",
+    "files": [
+      {
+        "path": "production/clan-war-command-20261109/suivi/Yautja_Commandement_P0_P1_20261109.xlsx",
+        "sha256": "afa5817041cd5789a04bb06999ec6b6eeae8cce3760329c7d7af34804ffcb150",
+        "bytes": 25380150,
+        "gitBlob": "be316c97ddb20d63540a90e7299f6a6fa6c05991"
+      },
+      {
+        "path": "production/clan-war-command-20261109/suivi/final-receipt.json",
+        "sha256": "9abfabd2d6d6761f85ec84be3d9268558023667409443a1d4b7e9a9415fb92d6",
+        "bytes": 4124,
+        "gitBlob": "37c1c131f0bce4d8c9b9db979b7b8bd114e72781"
+      },
+      {
+        "path": "production/clan-war-command-20261109/verification.json",
+        "sha256": "e5e7f42ed36061511fd8039db47fb7f7083f10db430eb3334561caebd5d6e272",
+        "bytes": 2037048,
+        "gitBlob": "c7241647ee5a51a3e3f80dfe834bc4877a13bc37"
+      }
+    ]
+  },
+  "applicationCompatibility": {
+    "changedModule": "app/game/systems/trophyTutorialV6.ts",
+    "previousSha256": "65e735198930e048fcafc16ba89c8debeb9303f5d636463b62394520454cb0be",
+    "currentSha256": "749b167facdf4b4eed079d84ea8c35ad2470d5b5ab6aeb8f2e4c20e3c9f8ffc9",
+    "unchangedOtherApplicationFiles": 1292,
+    "scope": "Seule modification applicative après le buildmdrv : traiter l’absence optionnelle du tutoriel avant la validation du propriétaire. Les journaux présents et leurs propriétaires restent soumis aux mêmes gardes. Les anciens reçus conservent leurs identités ; les liaisons bornées de compatibilité sont explicites dans le globalv2."
   }
 }

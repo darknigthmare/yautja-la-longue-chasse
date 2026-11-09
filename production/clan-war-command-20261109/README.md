@@ -2,8 +2,9 @@
 
 Ce lot réunit les sources de cinq PR, poursuit plusieurs critères ouverts des
 Excel et de la bible, et transforme le conseil de guerre en interface de jeu :
-globe au premier plan, sous-menus, tiroirs et briefing modal. Les sources sont
-intégrées localement au commit `6a412eeabc0c0be0dc9e09b635384f51b96dc377`.
+globe au premier plan, sous-menus, tiroirs et briefing modal. Les cinq historiques ont été
+réunis au commit `6a412eeabc0c0be0dc9e09b635384f51b96dc377` ; les correctifs du
+jeu et des parcours CI sont au commit `e18602ed`.
 Ce document atteste les preuves locales de cette préparation. L’état des fusions
 distantes se lit séparément dans les PR GitHub liées ci-dessous. Ce lot ne clôt
 pas tous les P0/P1 et ne constitue pas une certification artistique AAA.
@@ -46,21 +47,21 @@ ci-dessous donnent l’état de fusion distant, indépendamment de cette preuve 
 
 ## Preuves et périmètres
 
-Le build Next de référence actuel est `mdrvYovYvfvhuJqeZXn1D`. Son identité
+Le build Next de référence actuel est `-FZ8BLkijX4wYooxQn-in`. Son identité
 est établie par les fichiers et les octets servis décrits dans chaque reçu,
 pas par le seul texte d'un badge ou le HEAD Git. Les reçus antérieurs gardent
 leur build, leur date et leurs limites.
 
 | Vérification | Résultat établi | Reçu exact |
 | --- | --- | --- |
-| Build de production Next et contrôle TypeScript du build | Code de sortie 0 ; 1 293 sources app inchangées pendant la compilation | [Build courant](qa/root/build-ux-final/receipt.json) |
-| Lint global configuré | 2 803 fichiers, zéro erreur et zéro avertissement | [Reçu](qa/root/lint-final/receipt.json), [détail ESLint](qa/root/lint-final/eslint.json) |
-| Régressions sources | **1 198 réussites sur 103 fichiers uniques**, zéro échec, ignoré ou todo ; dernier succès par fichier | [Bilan sources](qa/ci/final-source-report.json), [sélection exacte](qa/ci/test-selection.json) |
-| Rejeu froid local final | **103 fichiers, 1 198 réussites**, zéro échec, ignoré ou todo ; checkout neuf du commit `1ca0ebbbbd5e3f3947b3cb44dfb1197ee63778a5`, terminé à 11:54:02 UTC | [Rapport final](qa/ci/cold-final/results/report.json), [préparation](qa/ci/cold-final/preparation.json) |
-| Conseil dans le vrai Next/GameClient | 18 contrôles, 7 captures inspectées ; 14 outils, tiroirs, focus, HUD, lancement RTS avec une équipe puis retour au vaisseau ; sauvegarde de campagne de 10 767 octets inchangée | [Tentative 4](qa/next/attempt-4/final-receipt.json), [périmètre détaillé](qa/next/README.md) |
+| Build de production Next et contrôle TypeScript du build | Code de sortie 0 ; 1 293 sources app inchangées pendant la compilation | [Build courant](qa/root/build-compat-final/receipt.json) |
+| Lint global configuré | 2 852 fichiers, zéro erreur et zéro avertissement | [Reçu](qa/root/lint-ci-final/receipt.json), [détail ESLint](qa/root/lint-ci-final/eslint.json) |
+| Première qualification sources, datée `1aaa388d` | **1 198 réussites sur 103 fichiers uniques**, zéro échec, ignoré ou todo ; dernier succès par fichier de cette première édition ; le rejeu froid final ci-dessous qualifie les sources corrigées | [Bilan sources](qa/ci/final-source-report.json), [sélection exacte](qa/ci/test-selection.json) |
+| Rejeu froid local final | **103 fichiers, 1 198 réussites**, zéro échec, ignoré ou todo ; checkout neuf du commit `e18602ed22bd1e1e6b80b8b4703c88d4ef6faaa5`, terminé à `2026-11-09T12:43:02.691Z` | [Rapport final](qa/ci/cold-compat-final/results/report.json), [préparation](qa/ci/cold-compat-final/preparation.json) |
+| Conseil dans le vrai Next/GameClient | 18 contrôles, 7 captures inspectées ; 14 outils, tiroirs, focus, HUD, lancement RTS avec une équipe puis retour au vaisseau ; sauvegarde de campagne de 10 767 octets inchangée | [Tentative 5](qa/next/attempt-5/final-receipt.json), [périmètre détaillé](qa/next/README.md) |
 | Mobilité MOB-001 | 29 contrôles et 68,398 s de conduite sur le build antérieur `nItYejsE7HSH4L0ykJM5K` ; complément de 13 contrôles de notices sur le build actuel | [Parcours](qa/mobility/campaign-attempt-2/final-receipt.json), [complément](qa/mobility/notice-attempt-1/final-receipt.json) |
 | Maintenance OPS-B01/B02 | 6 contrôles, 18 interventions et 18 retours Échap après acquittement ; 7 captures inspectées | [Tentative 5](qa/clan-ship-incidents/native-attempt-5/final-receipt.json) |
-| Tutoriel TR-M01..03 | 20 contrôles sur le parcours physique Next/GameClient, avec écrivain de campagne et trois reprises | [Parcours daté](qa/trophy-tutorial/native-attempt-2/final-receipt.json) |
+| Tutoriel TR-M01..03 | 20 contrôles sur le parcours physique Next/GameClient, avec écrivain de campagne et trois reprises | [Parcours final et complément](qa/trophy-tutorial/compat-final/final-receipt.json) |
 | Fixture de tutoriel maintenu | 18 contrôles rejoués et 9 captures inspectées ; observer publié depuis un effet, ancienne fixture préservée | [Version 2](qa/trophy-tutorial/native-fixture-v2/attempt-1/report.json), [inspection](qa/strict-lint/fixture-v2-visual-review.json) |
 | Dialogues d'équipage et de chasse | 87 contrôles d'équipage et 169 contrôles de contexte de chasse dans le vrai GameClient via Vite ; ces recettes ne constituent pas des parcours Next | [Équipage](qa/pr-integration/final-attempt-4/dialogue/final-receipt.json), [chasse](qa/pr-integration/final-attempt-5/hunt-dialogue/final-receipt.json) |
 | Capsules | 10 contrôles Next sur le build daté `kS-6-0gmSFRZVosfYvnq6`, arrivée naturelle de 62 s et relais unique ; aucune reprise de campagne sur disque revendiquée | [Reçu daté](qa/pr-integration/final-attempt-1/pod/final-receipt.json) |
@@ -149,6 +150,32 @@ déclarés. Le vérificateur Python relit les preuves archivées ; il ne lance p
 le jeu et ne valide pas automatiquement le nouveau dossier `outputs/`.
 Les recettes des autres parcours et leurs limites figurent dans leurs reçus
 et README respectifs.
+
+## Correctifs après la première passe GitHub
+
+La CI de la PR 133 a détecté des accès de pilotes hérités de l’ancienne
+interface, deux checkouts incomplets, des contextes VM incomplets et une vraie
+régression d’import ancien. L’inspection d’un tutoriel **absent** précède désormais
+la validation de son propriétaire ; les données présentes, invalides ou futures
+conservent leurs protections. Le delta applicatif est limité à la permutation
+de deux lignes d’un seul module ; 1 292 autres fichiers app restent identiques.
+Les preuves antérieures conservent leur build et leur portée.
+
+Les [régressions 31/213/280](qa/ci/core-fixes-final-receipt.json), le nouveau
+[tutoriel complet 20 + 3](qa/trophy-tutorial/compat-final/final-receipt.json),
+l’[interface finale 18](qa/next/attempt-5/final-receipt.json) et le
+[rejeu froid 1 198](qa/ci/cold-compat-final/results/report.json) vérifient le
+correctif. Les parcours de pilotes corrigés couvrent aussi les exports de
+planètes, les fronts, le Gauntlet et les courses entre onglets. La [compilation
+Vinext code-only du workflow Gauntlet](qa/ci/gauntlet-vinext-build-attempt-1/receipt.json)
+passe également dans son checkout sparse isolé ; elle conserve ses avertissements
+de ressources absentes et ne remplace pas le build Next de production. Leurs compteurs
+ne sont pas additionnés aux 1 198 cas uniques. La première qualification et
+le premier classeur restent consultables au commit `1aaa388d`.
+
+L’[exception de style supplémentaire](qa/strict-lint/ci-eslint-archive-addendum.json)
+concerne uniquement une recette de diagnostic figée ; ses octets exécutés sont
+préservés et les règles du code actif restent identiques.
 
 ## Ce qui reste ouvert
 

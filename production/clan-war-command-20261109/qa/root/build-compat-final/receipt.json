@@ -1,0 +1,27 @@
+{
+  "exitCode": 0,
+  "appSourceUnchanged": true,
+  "sourceCommit": "1aaa388d83b4b95b6c3d568269ea7ba8a0f4e239",
+  "dirtyAtBuild": [
+    ".github/workflows/clan-war-v127.yml",
+    "app/game/systems/trophyTutorialV6.ts",
+    "scripts/qa-clan-field-20261103.mjs",
+    "scripts/qa-clan-war-v115-multitab-v151.mjs",
+    "scripts/qa-gauntlet-campaign-v144.mjs",
+    "scripts/qa-planet-generator-v102.mjs",
+    "scripts/qa-planet-generator-v103.mjs",
+    "scripts/qa-planet-region-kit-v128.mjs",
+    "scripts/qa-real-clan-war-v143.mjs",
+    "tests/clan-war-lifecycle-v94.test.mjs",
+    "tests/trophy-tutorial-save-v6.test.mjs",
+    "tests/trophy-tutorial-v6.test.mjs",
+    "tests/trophy-workshop-commit-v94.test.mjs"
+  ],
+  "sourceFiles": 1293,
+  "buildId": "-FZ8BLkijX4wYooxQn-in",
+  "applicationDeltaFromPreviousBuild": [
+    "app/game/systems/trophyTutorialV6.ts"
+  ],
+  "unchangedApplicationFilesFromPreviousBuild": 1292,
+  "scope": "Actual full production Next build and TypeScript check. Previous native receipts keep their own build identities; only the absent optional tutorial owner guard changed."
+}

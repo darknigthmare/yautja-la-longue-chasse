@@ -1,0 +1,23 @@
+[V151 PASS] Both real V115 panels initially observe an empty exercise archive
+[V151 PASS] A held lock rejects V115 mission and reset without writing
+[V151 PASS] Simultaneous real panels accept one mission and preserve one archive
+[V151 PASS] Missing Web Locks leaves persistent archive unchanged
+[V151 PASS] Rapid same-tab submissions provide feedback and charge only once
+[V151 PASS] Assault timer waits for lock and resumes after release
+[V151 PASS] Simultaneous due mandate and recruitment both settle without losing either
+[V151 PASS] Tab A commissions Outer Ops from true V6 roster with single RAV charge
+[V151 PASS] Stale tab B disables reset and launch instead of overwriting A
+[V151 PASS] Attempting a stale V115 reset is inert and cannot change another save
+[V151 PASS] Owner tab A resets only its own current V115 archive after confirmation
+[V151 PASS] Stale tab B cannot reset until reloading the authoritative archive
+[V151 PASS] Reloaded tab B can legitimately start a new stealth operation
+[V151 PASS] Tab A becomes stale after B's fresh write and cannot destroy it
+{
+  "checked": 14,
+  "preventedStaleReset": true,
+  "modes": [
+    "outer",
+    "stealth"
+  ],
+  "errors": 0
+}

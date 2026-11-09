@@ -1,0 +1,32 @@
+{
+  "asOf": "2026-11-09T12:37:42.133928+00:00",
+  "command": [
+    "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+    "node_modules/eslint/bin/eslint.js",
+    "app/game/systems/trophyTutorialV6.ts",
+    "tests/trophy-tutorial-v6.test.mjs",
+    "tests/trophy-tutorial-save-v6.test.mjs",
+    "tests/clan-war-lifecycle-v94.test.mjs",
+    "--max-warnings=0"
+  ],
+  "exitCode": 0,
+  "sources": [
+    {
+      "path": "app/game/systems/trophyTutorialV6.ts",
+      "sha256": "749b167facdf4b4eed079d84ea8c35ad2470d5b5ab6aeb8f2e4c20e3c9f8ffc9"
+    },
+    {
+      "path": "tests/trophy-tutorial-v6.test.mjs",
+      "sha256": "ced00a008a724e91abe2d8d7629edc1ab65969ecfd031767d204b1bc859402b7"
+    },
+    {
+      "path": "tests/trophy-tutorial-save-v6.test.mjs",
+      "sha256": "5419e527bdaf6490a5a587f3382f09dbb4a188083d5a4ce9289a8225e46daab6"
+    },
+    {
+      "path": "tests/clan-war-lifecycle-v94.test.mjs",
+      "sha256": "e3ef4c781e72fec516a926fd4043d10fa09b09777f765b805b1a7196f2f50bac"
+    }
+  ],
+  "scope": "Strict lint of the four changed live app/test sources. Global lint and production build remain owned by root."
+}

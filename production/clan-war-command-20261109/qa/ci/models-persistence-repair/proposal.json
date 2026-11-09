@@ -1,0 +1,20 @@
+{
+  "status": "APP_ONLY_PROPOSAL_NOT_APPLIED",
+  "revision": 2,
+  "app": "app/game/systems/trophyTutorialV6.ts",
+  "appSha256Before": "65e735198930e048fcafc16ba89c8debeb9303f5d636463b62394520454cb0be",
+  "appSha256Candidate": "749b167facdf4b4eed079d84ea8c35ad2470d5b5ab6aeb8f2e4c20e3c9f8ffc9",
+  "scope": "Only swap undefined and invalid-owner guards. Two existing test cases strengthened in place; 24+7 test count unchanged. Original campaign-import-slot assertion stays unchanged. Version1 was a never-applied preliminary proposal with two additional test cases; preserved separately and superseded.",
+  "patch": "compatibility-proposal.patch",
+  "patchSha256": "1d2d947a6c3e2fe447188033f5ae63db0876d87c96a7eb566cc0cf3915b95491",
+  "testsAlreadyStrengthened": [
+    {
+      "path": "tests/trophy-tutorial-v6.test.mjs",
+      "sha256": "ced00a008a724e91abe2d8d7629edc1ab65969ecfd031767d204b1bc859402b7"
+    },
+    {
+      "path": "tests/trophy-tutorial-save-v6.test.mjs",
+      "sha256": "5419e527bdaf6490a5a587f3382f09dbb4a188083d5a4ce9289a8225e46daab6"
+    }
+  ]
+}

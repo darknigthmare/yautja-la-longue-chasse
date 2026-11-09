@@ -1,0 +1,47 @@
+{
+  "time": "2026-11-09T12:41:07.948566+00:00",
+  "stopped": [
+    {
+      "pid": 46995,
+      "args": [
+        "/bin/bash",
+        "-c",
+        "NEXT_TELEMETRY_DISABLED=1 /workspace/.cloud-tools/node22/node_modules/node/bin/node node_modules/next/dist/bin/next dev --hostname 127.0.0.1 --port 3156 > /workspace/yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/planet-v124/attempt-1/baseline-next.log 2>&1"
+      ]
+    },
+    {
+      "pid": 46996,
+      "args": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "node_modules/next/dist/bin/next",
+        "dev",
+        "--hostname",
+        "127.0.0.1",
+        "--port",
+        "3156"
+      ]
+    },
+    {
+      "pid": 47008,
+      "args": [
+        "next-server (v16.3.5)"
+      ]
+    },
+    {
+      "pid": 47504,
+      "args": [
+        "node",
+        "/tmp/clan-planet-v124-sparse-20261109/.next/dev/build/chunks/pool_entry-[turbopack-node]_transforms_postcss_ts_0tp-k2v._.js",
+        "35983"
+      ]
+    },
+    {
+      "pid": 47566,
+      "args": [
+        "node",
+        "/tmp/clan-planet-v124-sparse-20261109/.next/dev/build/chunks/pool_entry-[turbopack-node]_transforms_postcss_ts_0tp-k2v._.js",
+        "46243"
+      ]
+    }
+  ]
+}

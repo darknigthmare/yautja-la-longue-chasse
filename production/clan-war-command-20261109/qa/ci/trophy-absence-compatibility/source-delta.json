@@ -1,0 +1,26 @@
+{
+  "exactApplicationEditVerified": true,
+  "beforeCommit": "1aaa388d83b4b95b6c3d568269ea7ba8a0f4e239",
+  "applicationPath": "app/game/systems/trophyTutorialV6.ts",
+  "beforeSha256": "65e735198930e048fcafc16ba89c8debeb9303f5d636463b62394520454cb0be",
+  "afterSha256": "749b167facdf4b4eed079d84ea8c35ad2470d5b5ab6aeb8f2e4c20e3c9f8ffc9",
+  "change": "Move the undefined-only absence return before owner validation. Every present value retains the original validation and rejection order.",
+  "scope": "Exact source delta integrity, not a browser replay. Prior native receipts retain their own builds. Current full tutorial replay and actual legacy import/domain regressions qualify the corrected helper separately.",
+  "files": [
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/trophy-absence-compatibility/before-source.txt",
+      "bytes": 23909,
+      "sha256": "65e735198930e048fcafc16ba89c8debeb9303f5d636463b62394520454cb0be"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/trophy-absence-compatibility/after-source.txt",
+      "bytes": 23909,
+      "sha256": "749b167facdf4b4eed079d84ea8c35ad2470d5b5ab6aeb8f2e4c20e3c9f8ffc9"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/trophy-absence-compatibility/actual.patch",
+      "bytes": 1173,
+      "sha256": "51cd8248b92967052264dbdec8fdbe3e073f6603e795204dd3445d332c056104"
+    }
+  ]
+}

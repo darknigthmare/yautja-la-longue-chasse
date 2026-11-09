@@ -1,0 +1,116 @@
+{
+  "schemaVersion": 1,
+  "derivedFrom": "10-completed.json",
+  "count": 6,
+  "allRequirePositiveWalkedDistance": true,
+  "transports": [
+    {
+      "fromConfirmedGesture": 3,
+      "nextGestureAtDestination": 4,
+      "walkedAtOrigin": 337.59406699226014,
+      "walkedAtDestination": 561.2008647422389,
+      "actualDistance": 223.60679774997897,
+      "walkedDelta": 223.60679774997874,
+      "sourceActor": {
+        "x": 350,
+        "y": 530,
+        "facing": 1
+      },
+      "destinationActor": {
+        "x": 550,
+        "y": 430,
+        "facing": 1
+      }
+    },
+    {
+      "fromConfirmedGesture": 6,
+      "nextGestureAtDestination": 7,
+      "walkedAtOrigin": 561.2008647422389,
+      "walkedAtDestination": 863.2423713283748,
+      "actualDistance": 241.66091947189145,
+      "walkedDelta": 302.04150658613594,
+      "sourceActor": {
+        "x": 550,
+        "y": 430,
+        "facing": 1
+      },
+      "destinationActor": {
+        "x": 770,
+        "y": 530,
+        "facing": 1
+      }
+    },
+    {
+      "fromConfirmedGesture": 8,
+      "nextGestureAtDestination": 9,
+      "walkedAtOrigin": 863.2423713283748,
+      "walkedAtDestination": 1123.036506952106,
+      "actualDistance": 250.48369884532477,
+      "walkedDelta": 259.7941356237312,
+      "sourceActor": {
+        "x": 770,
+        "y": 530,
+        "facing": 1
+      },
+      "destinationActor": {
+        "x": 999.7178283235118,
+        "y": 430.14108583824407,
+        "facing": 1
+      }
+    },
+    {
+      "fromConfirmedGesture": 11,
+      "nextGestureAtDestination": 12,
+      "walkedAtOrigin": 1123.036506952106,
+      "walkedAtDestination": 1244.3533037956922,
+      "actualDistance": 121.31679684358689,
+      "walkedDelta": 121.31679684358619,
+      "sourceActor": {
+        "x": 999.7178283235118,
+        "y": 430.14108583824407,
+        "facing": 1
+      },
+      "destinationActor": {
+        "x": 1019.9589477097494,
+        "y": 549.7573986153072,
+        "facing": 1
+      }
+    },
+    {
+      "fromConfirmedGesture": 14,
+      "nextGestureAtDestination": 15,
+      "walkedAtOrigin": 1244.3533037956922,
+      "walkedAtDestination": 1664.3123215782794,
+      "actualDistance": 419.95901778258303,
+      "walkedDelta": 419.9590177825871,
+      "sourceActor": {
+        "x": 1019.9589477097494,
+        "y": 549.7573986153072,
+        "facing": 1
+      },
+      "destinationActor": {
+        "x": 600,
+        "y": 550,
+        "facing": -1
+      }
+    },
+    {
+      "fromConfirmedGesture": 16,
+      "nextGestureAtDestination": 17,
+      "walkedAtOrigin": 1664.3123215782794,
+      "walkedAtDestination": 2139.7068945384676,
+      "actualDistance": 475.3945729601885,
+      "walkedDelta": 475.39457296018827,
+      "sourceActor": {
+        "x": 600,
+        "y": 550,
+        "facing": -1
+      },
+      "destinationActor": {
+        "x": 140,
+        "y": 430,
+        "facing": -1
+      }
+    }
+  ]
+}

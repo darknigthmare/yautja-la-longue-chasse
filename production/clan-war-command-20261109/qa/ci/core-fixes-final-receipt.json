@@ -1,0 +1,152 @@
+{
+  "asOf": "2026-11-09T12:41:09.849109+00:00",
+  "status": "SOURCES_AND_RECEIPTS_FROZEN",
+  "basePublishedPr": 133,
+  "basePublishedHead": "1aaa388d83b4b95b6c3d568269ea7ba8a0f4e239",
+  "scope": "Six source files only: optional tutorial compatibility, strengthened existing tests and exact sparse-checkout inputs. Root owns Git, production build, final global lint/CI/cold replay and remote merges. No global P0/P1 closure or new remote success claimed.",
+  "sources": [
+    {
+      "path": "app/game/systems/trophyTutorialV6.ts",
+      "bytes": 23909,
+      "sha256": "749b167facdf4b4eed079d84ea8c35ad2470d5b5ab6aeb8f2e4c20e3c9f8ffc9"
+    },
+    {
+      "path": "tests/trophy-tutorial-v6.test.mjs",
+      "bytes": 13372,
+      "sha256": "ced00a008a724e91abe2d8d7629edc1ab65969ecfd031767d204b1bc859402b7"
+    },
+    {
+      "path": "tests/trophy-tutorial-save-v6.test.mjs",
+      "bytes": 8117,
+      "sha256": "5419e527bdaf6490a5a587f3382f09dbb4a188083d5a4ce9289a8225e46daab6"
+    },
+    {
+      "path": "tests/clan-war-lifecycle-v94.test.mjs",
+      "bytes": 5093,
+      "sha256": "e3ef4c781e72fec516a926fd4043d10fa09b09777f765b805b1a7196f2f50bac"
+    },
+    {
+      "path": ".github/workflows/clan-war-v127.yml",
+      "bytes": 4929,
+      "sha256": "d27ff2326ae121096718944b14e1c148569f513e82fc9de8ca70c29021c1ec26"
+    },
+    {
+      "path": ".github/workflows/audit-v94.yml",
+      "bytes": 120229,
+      "sha256": "3cb76b4731849694b02a019550ff307d98625af423edd4377f973e662d3d0f2c"
+    }
+  ],
+  "appDelta": "1\t1\tapp/game/systems/trophyTutorialV6.ts",
+  "applicationFix": "Undefined optional tutorial is absent before owner validation. Every present null/malformed/future/normal ledger still requires a valid campaign owner. No writer, reward, gameplay state or UI behavior altered.",
+  "testCountPolicy": "31 tutorial cases (24 domain plus7 save),213 persistence and280 clan-war cases are unchanged scoped suite counts. Existing assertions strengthened; no new testcase. These replays overlap other evidence and are not added to aggregate unique totals.",
+  "results": {
+    "tutorialRed": {
+      "tests": 31,
+      "pass": 29,
+      "fail": 2
+    },
+    "tutorialGreen": {
+      "tests": 31,
+      "pass": 31,
+      "fail": 0
+    },
+    "persistenceRed": {
+      "tests": 213,
+      "pass": 212,
+      "fail": 1
+    },
+    "persistenceGreen": {
+      "tests": 213,
+      "pass": 213,
+      "fail": 0
+    },
+    "clanWarRed": {
+      "tests": 280,
+      "pass": 275,
+      "fail": 5
+    },
+    "clanWarGreen": {
+      "tests": 280,
+      "pass": 280,
+      "fail": 0
+    },
+    "targetedStrictLint": {
+      "files": 4,
+      "exitCode": 0
+    },
+    "v127Sparse": {
+      "originalStrictTscExit": 2,
+      "candidateStrictTscExit": 0,
+      "workflowAddedLines": 2
+    },
+    "v113Sparse": {
+      "originalSnapshot": "ENOENT",
+      "candidateSnapshot": "PASS",
+      "originalPublishedFreezeSha256": "1a31e3857697c51c56742203a946986b536a99060cfebfbfbd61e45a009ac986",
+      "workflowAddedLines": 10
+    }
+  },
+  "limits": [
+    "No production browser result is attributed to the changed tutorial module by this source/test receipt; the dedicated agent replays the new build separately.",
+    "V113 reproduction proves exact published snapshot fidelity after including10 missing inputs; the subsequent V113 model loop is left to the final CI replay.",
+    "Temporary sparse trees use shared locked node_modules; fresh npm ci is not claimed.",
+    "Initial mobility-field hypothesis was rejected by raw diagnosis. Confirmed cause is the tutorial absence/owner guard order; no expectation was weakened."
+  ],
+  "evidence": [
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/models-persistence-repair/tutorial-red.json",
+      "bytes": 1052,
+      "sha256": "d9cf58a1e35cfa6bfa2de4eb1cd4a0bedb37fdf6390234e110c679a5293cd033"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/models-persistence-repair/tutorial-green.json",
+      "bytes": 1409,
+      "sha256": "a7af23ddf4d0dca005bb82a611035e1f76ebabab3b1fd26f01f01d8bc56bc8eb"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/models-persistence-repair/before.json",
+      "bytes": 3365,
+      "sha256": "75c4256a485fb5e3855722aa1cf56061af8bc423fc26949d555b0175274998a0"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/models-persistence-repair/green.json",
+      "bytes": 3634,
+      "sha256": "347f394c233aa6fefd43cc59c27c636d2993087f5350d40f3f9d48aeab1ebb5d"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/models-persistence-repair/lint-final.json",
+      "bytes": 1134,
+      "sha256": "2cd701a78f261b6a4b54ea91a854633917d123292db3dc65850ab3f518b292f2"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/models-clan-war-repair/before.json",
+      "bytes": 5032,
+      "sha256": "35987289112bfdc6464f87d8dafa9604ee4765799bbb69dba189d578729cf59a"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/models-clan-war-repair/lifecycle-green.json",
+      "bytes": 701,
+      "sha256": "c48ea484240f899b3ebe0d63fde938296eaee4cd178504d24f5eca20e9c5de82"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/models-clan-war-repair/green.json",
+      "bytes": 5606,
+      "sha256": "04176110c19cc291773baf23fc556e967f80f6fab62ca4b947655948dfa24d88"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/v127-sparse-repair/reproduction.json",
+      "bytes": 9370,
+      "sha256": "76014ee0d9ee161a908db2b715b4bfcba646b37d76c344c27054519a4d1f188c"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/v113-sparse-repair/reproduction.json",
+      "bytes": 4192,
+      "sha256": "fd5b916e3bc547bf0e48a5ed8ebb5495bba8f0386bc18e0d69fdae69ed87a699"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/gauntlet-command-followup/independent-review.json",
+      "bytes": 1824,
+      "sha256": "58d2768ee3c36730124fcb95e2b24da3e9fb9a0bbfb75e40401c2551340fab97"
+    }
+  ]
+}

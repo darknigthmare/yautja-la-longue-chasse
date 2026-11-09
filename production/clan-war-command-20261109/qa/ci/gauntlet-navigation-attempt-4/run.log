@@ -1,0 +1,68 @@
+{
+  "schema": 144,
+  "scope": "Production ClanWarPanelV85 + V13 SaveGame writer with artificially seeded trophy QA facts; not complete GameClient navigation or actual earned player rewards",
+  "studyClaimed": "lost-shaman",
+  "unearnedStudy": "lost-boar",
+  "warTurnPreserved": 1,
+  "warAtlasCopies": 1,
+  "passes": [
+    {
+      "check": "Real panel and V13 seeded test campaign mounted",
+      "status": "PASS",
+      "detail": {
+        "study": "lost-shaman",
+        "other": "lost-boar",
+        "initialWar": 1,
+        "simulation": "production",
+        "source": "seeded QA trophy"
+      }
+    },
+    {
+      "check": "Unclaimed other study cannot be equipped",
+      "status": "PASS",
+      "detail": "lost-boar"
+    },
+    {
+      "check": "Real claimed study records one durable V13 archive write",
+      "status": "PASS",
+      "detail": "lost-shaman"
+    },
+    {
+      "check": "Challenge gauntlet equips in real holographic war panel without war mutations",
+      "status": "PASS",
+      "detail": {
+        "model": "lost-shaman",
+        "warTurn": 1
+      }
+    },
+    {
+      "check": "One-time claim and independent unopened study remain protected",
+      "status": "PASS",
+      "detail": {
+        "claimed": "lost-shaman",
+        "locked": "lost-boar"
+      }
+    },
+    {
+      "check": "After reload, archive identity and clan war turn both survive",
+      "status": "PASS",
+      "detail": {
+        "study": "lost-shaman",
+        "warTurn": 1
+      }
+    },
+    {
+      "check": "Second tab local preference cannot fabricate an unearned challenge",
+      "status": "PASS",
+      "detail": {
+        "attempt": "lost-boar",
+        "authoritative": "lost-shaman"
+      }
+    }
+  ],
+  "passCount": 7,
+  "servedStaticAssets": 19,
+  "errors": [],
+  "liveWarGameRulesModified": false,
+  "certifiedFilmOneToOne": 0
+}

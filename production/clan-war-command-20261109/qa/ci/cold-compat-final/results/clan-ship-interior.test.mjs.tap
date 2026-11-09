@@ -1,0 +1,124 @@
+TAP version 13
+# Subtest: all seven durable rooms have an authored physical room and two reciprocal doors
+ok 1 - all seven durable rooms have an authored physical room and two reciprocal doors
+  ---
+  duration_ms: 2.291516
+  type: 'test'
+  ...
+# Subtest: new entry, every reverse doorway spawn, door points and service approaches have full actor clearance
+ok 2 - new entry, every reverse doorway spawn, door points and service approaches have full actor clearance
+  ---
+  duration_ms: 0.686706
+  type: 'test'
+  ...
+# Subtest: shortest interroom routes cover all 49 pairs without invented passages or more than 3 doors
+ok 3 - shortest interroom routes cover all 49 pairs without invented passages or more than 3 doors
+  ---
+  duration_ms: 0.683871
+  type: 'test'
+  ...
+# Subtest: the actual movement controller traverses every room service and both door directions
+ok 4 - the actual movement controller traverses every room service and both door directions
+  ---
+  duration_ms: 105.716705
+  type: 'test'
+  ...
+# Subtest: cross-ship routes walk to each threshold and from the paired spawn, ending within reach of the real service
+ok 5 - cross-ship routes walk to each threshold and from the paired spawn, ending within reach of the real service
+  ---
+  duration_ms: 62.629447
+  type: 'test'
+  ...
+# Subtest: route planner refuses occupied and off-deck targets instead of silently snapping or claiming arrival
+ok 6 - route planner refuses occupied and off-deck targets instead of silently snapping or claiming arrival
+  ---
+  duration_ms: 0.565282
+  type: 'test'
+  ...
+# Subtest: a route across an actual fixture uses clear corners and is followed without cutting through its footprint
+ok 7 - a route across an actual fixture uses clear corners and is followed without cutting through its footprint
+  ---
+  duration_ms: 0.753557
+  type: 'test'
+  ...
+# Subtest: direct movement cannot leave any of the four floor boundaries, including a very long resumed frame
+ok 8 - direct movement cannot leave any of the four floor boundaries, including a very long resumed frame
+  ---
+  duration_ms: 0.606355
+  type: 'test'
+  ...
+# Subtest: manual motion stops at a fixture and can slide along its side without tunnelling
+ok 9 - manual motion stops at a fixture and can slide along its side without tunnelling
+  ---
+  duration_ms: 0.932647
+  type: 'test'
+  ...
+# Subtest: diagonal input cannot move faster than cardinal input and analog input preserves low speed
+ok 10 - diagonal input cannot move faster than cardinal input and analog input preserves low speed
+  ---
+  duration_ms: 0.517952
+  type: 'test'
+  ...
+# Subtest: zero, negative and nonfinite time or inputs cannot move the hunter
+ok 11 - zero, negative and nonfinite time or inputs cannot move the hunter
+  ---
+  duration_ms: 0.295185
+  type: 'test'
+  ...
+# Subtest: service and door interactions require measured physical proximity; a distant or unrelated door never transitions
+ok 12 - service and door interactions require measured physical proximity; a distant or unrelated door never transitions
+  ---
+  duration_ms: 0.320183
+  type: 'test'
+  ...
+# Subtest: paths and actor stepping do not mutate room definitions, caller positions or previous routes
+ok 13 - paths and actor stepping do not mutate room definitions, caller positions or previous routes
+  ---
+  duration_ms: 0.453894
+  type: 'test'
+  ...
+# Subtest: a gamepad held while boarding must become completely neutral before movement or confirmation is admitted
+ok 14 - a gamepad held while boarding must become completely neutral before movement or confirmation is admitted
+  ---
+  duration_ms: 0.391921
+  type: 'test'
+  ...
+# Subtest: confirm, Back and Start fire on edges, with settings then Back taking priority over an ambiguous confirm
+ok 15 - confirm, Back and Start fire on edges, with settings then Back taking priority over an ambiguous confirm
+  ---
+  duration_ms: 0.273563
+  type: 'test'
+  ...
+# Subtest: controller replacement, missing device and every new context reset the neutral gate
+ok 16 - controller replacement, missing device and every new context reset the neutral gate
+  ---
+  duration_ms: 0.22568
+  type: 'test'
+  ...
+# Subtest: analog dead zone removes jitter, keeps partial travel and clamps over-range axes
+ok 17 - analog dead zone removes jitter, keeps partial travel and clamps over-range axes
+  ---
+  duration_ms: 0.173061
+  type: 'test'
+  ...
+# Subtest: opening the incident dossier requires a released pad after boarding and fires only once while held
+ok 18 - opening the incident dossier requires a released pad after boarding and fires only once while held
+  ---
+  duration_ms: 0.174483
+  type: 'test'
+  ...
+# Subtest: returning from the dossier cannot leak held controls into an interaction or a room exit
+ok 19 - returning from the dossier cannot leak held controls into an interaction or a room exit
+  ---
+  duration_ms: 0.143958
+  type: 'test'
+  ...
+1..19
+# tests 19
+# suites 0
+# pass 19
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 194.619426

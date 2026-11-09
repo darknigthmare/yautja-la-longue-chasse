@@ -1,0 +1,247 @@
+{
+  "asOf": "2026-11-09T12:11:43.562285+00:00",
+  "scope": "Exact file list from the original V127 sparse checkout, in a temporary copy. The only candidate addition is the existing export module; no app file, assertion, generated asset, Git ref or dependency is changed.",
+  "pr": 133,
+  "originalPrHead": "1aaa388d83b4b95b6c3d568269ea7ba8a0f4e239",
+  "workflow": ".github/workflows/clan-war-v127.yml",
+  "workflowSha256Before": "75483a44d114b7844c8063ffe152c230c7d3a794f98531ec9343ddd39a5bc349",
+  "failure": {
+    "run": 42614007977,
+    "job": 129149257341,
+    "step": 6,
+    "message": "Cannot find module './systems/clanWarVariantExportV126' or its corresponding type declarations.",
+    "annotationFile": "app/game/ClanWarVariantAtlasV120.tsx",
+    "annotationLine": 11,
+    "logsAccess": "GitHub API job metadata and annotations readable; raw job log redirect to productionresultssa30.blob.core.windows.net returned Forbidden."
+  },
+  "temporaryCheckout": "/tmp/v127-ci-sparse-20261109-ibrvhbgw",
+  "dependencies": "Shared locked primary node_modules, no fresh npm ci claim.",
+  "originalInputs": [
+    {
+      "path": "package.json",
+      "bytes": 8562,
+      "sha256": "246599abd3ca304b98201bbffbbcaaeef481486a91f3cad637a15c3ee20efbe5"
+    },
+    {
+      "path": "package-lock.json",
+      "bytes": 389978,
+      "sha256": "763dcb2fdfef2e1a7ce196540cca3f4f5617eeb28a36b380d0dc6079410c1892"
+    },
+    {
+      "path": "eslint.config.mjs",
+      "bytes": 2944,
+      "sha256": "288b5bfb5a8fef16256590d37726e3e070bae82c07cc4dc8c516a59b43ad2252"
+    },
+    {
+      "path": "tsconfig.json",
+      "bytes": 780,
+      "sha256": "c1f4de03fdbff77c1d1480dd17f5d5d95ea7cb3fd10d63f7fe0e39b949b0762b"
+    },
+    {
+      "path": "tsconfig.clan-war-v126.json",
+      "bytes": 575,
+      "sha256": "41b96cd99da8f3714aece12784d7ee82c0accd8b02a53a5b8ed832d7b7542ed1"
+    },
+    {
+      "path": "tsconfig.clan-war-v127.json",
+      "bytes": 653,
+      "sha256": "3c3df0784296b1d3c2ad915c1f5ca16930691857262376bb5c5898ffe4fa89c3"
+    },
+    {
+      "path": "types/clan-war-v120-css.d.ts",
+      "bytes": 258,
+      "sha256": "8c55e3a1451a8dce764607b62700191fdec821ba444861c74e54a7d669b8d466"
+    },
+    {
+      "path": "app/game/data/clanWarOriginalPlacesV120.json",
+      "bytes": 2514,
+      "sha256": "a29dbb2566a1660263ae3408b32a74d0accf41882b3ccd6b113bbaa9e54b5233"
+    },
+    {
+      "path": "app/game/data/clanWarLoreFramesV120.json",
+      "bytes": 6658,
+      "sha256": "3d218e5b5bde8482c108661c0e44d075d3de163947c720c0a6aa2aec0064de62"
+    },
+    {
+      "path": "app/game/data/clanWarHomageAssaultV120.json",
+      "bytes": 2925,
+      "sha256": "8c4a0435a3f85647098a9b2c2253511acb7565a9aece27b5e764b5922e8e2df0"
+    },
+    {
+      "path": "app/game/data/clanWarHomageOuterV120.json",
+      "bytes": 2815,
+      "sha256": "85b797c0a71235658faab8221739a72c6a5beec5ca5ef07ee027a583fd0977a6"
+    },
+    {
+      "path": "app/game/data/clanWarHomageStealthV120.json",
+      "bytes": 3144,
+      "sha256": "2249cc82a2e8e0d3a9e5c0cd071bb9376c477090ab5130982ec6cb6f1aac467d"
+    },
+    {
+      "path": "app/game/data/clanWarHomageRtsV120.json",
+      "bytes": 2631,
+      "sha256": "934b56537f60e70162621b96427082ed1fdb7dabc794084c446525fa7fe3b1be"
+    },
+    {
+      "path": "app/game/data/earthLandNaturalEarth110mV126.json",
+      "bytes": 124095,
+      "sha256": "d0c8000f3048ad54e7c59bb69268a0324e5f948396e352c5e401aa32114a699d"
+    },
+    {
+      "path": "app/game/data/earthRiversNaturalEarth110mV127.json",
+      "bytes": 26993,
+      "sha256": "768857a911a3f422b37db8f2740d969a2af08ab5e37016767391d18107432ea0"
+    },
+    {
+      "path": "app/game/data/earthLakesNaturalEarth110mV127.json",
+      "bytes": 12403,
+      "sha256": "6bfa0f6708b1a493da5f37eedf11b1f2efe282323c4c21c69d0fa61d60f5b51a"
+    },
+    {
+      "path": "app/game/systems/clanWarVariantAtlasV120.ts",
+      "bytes": 50815,
+      "sha256": "c90e6b3efdfc38988c1a60053898a25edc27d6699713aef8773fefc951eaf0a6"
+    },
+    {
+      "path": "app/game/systems/clanWarEarthV126.ts",
+      "bytes": 10146,
+      "sha256": "696dcfda750d1ee0306380777761d32d007ce6e5ea33f7cc6aa2d6db3bc4c47c"
+    },
+    {
+      "path": "app/game/systems/clanWarWorldClimateV126.ts",
+      "bytes": 20682,
+      "sha256": "429d4d88bdefc0be405754062e7f3bfc5830090e7f1a155f10719ae723ebbd6c"
+    },
+    {
+      "path": "app/game/systems/clanWarEnemyProfilesV126.ts",
+      "bytes": 10183,
+      "sha256": "5592b249a2146d9504bf82b7b4afa405161223d7959b4f6b7c8abafc77b18d42"
+    },
+    {
+      "path": "app/game/systems/clanWarMultiplayerV126.ts",
+      "bytes": 11362,
+      "sha256": "fce90620a9f13abc06cca4196636f30f675293b72c70d33bbcccc8a9e96c3d9b"
+    },
+    {
+      "path": "app/game/systems/clanWarMultiplayerPracticeV127.ts",
+      "bytes": 8659,
+      "sha256": "898fbe99909dc90f14dcda9c9cbe6fc3b9874a9954711ba2b63dbe1436386ba0"
+    },
+    {
+      "path": "app/game/ClanWarGeoAiV126.tsx",
+      "bytes": 12219,
+      "sha256": "9955c7fd6e10db12822830b61f35451524d1ead83569222aa9830528990c5225"
+    },
+    {
+      "path": "app/game/ClanWarVariantAtlasV120.tsx",
+      "bytes": 14207,
+      "sha256": "ea0d64b23cca58b92e89ac7bf4d9c33170f0534ee5be50bdc86bb9d1be41af2e"
+    },
+    {
+      "path": "app/game/ClanWarVariantAtlasV120.module.css",
+      "bytes": 4628,
+      "sha256": "508e28042e4e25d84d4b11e1c87e74f8d99e9d02b9533b4261a097939eb9836f"
+    },
+    {
+      "path": "app/game/ClanWarGeoAiV126.module.css",
+      "bytes": 3061,
+      "sha256": "d93c04581c9d245e102cc59fe9712416c30d102acfcc5a412f8c4a32a12af7ac"
+    },
+    {
+      "path": "app/game/ClanWarMultiplayerPracticeV127.tsx",
+      "bytes": 6423,
+      "sha256": "5f201138b3c87c64bcab1eeaad42d13bd5eae26811929bb72872bb7f710d02bd"
+    },
+    {
+      "path": "app/game/ClanWarMultiplayerPracticeV127.module.css",
+      "bytes": 1780,
+      "sha256": "56e36cf786fc25e73db60fb9f69e74e1896201e25b7b60d53eb18f56051fbb54"
+    },
+    {
+      "path": "app/game/EarthPlanetMapV126.tsx",
+      "bytes": 6540,
+      "sha256": "4f21eb4b75e73636c0ee6e0bdadd4a09247f73635743c611c9e277ad2fbd6153"
+    },
+    {
+      "path": "app/game/EarthPlanetMapV126.module.css",
+      "bytes": 2309,
+      "sha256": "fee9a18b4bc1e6fcc73f0ce31753e1aed3abe5f1804ec57bf6a48a1c28603e7d"
+    },
+    {
+      "path": "app/game/systems/clanWarEarthMetricV127.ts",
+      "bytes": 7516,
+      "sha256": "eb85b5faddb37200ff35ab15de0c501389a3d94b67b3df0c879fb7b3681a89b6"
+    },
+    {
+      "path": "app/game/systems/clanWarEarthHydrologyV127.ts",
+      "bytes": 3229,
+      "sha256": "2b43989bd2f5ce4aa3cd60f5059eb9ffd5dd4ad935f17a2eeba1787512a4b117"
+    },
+    {
+      "path": "app/game/systems/clanWarEncounterDirectorV127.ts",
+      "bytes": 11142,
+      "sha256": "9261543e558acdd66a283d4e413e759d7fe6cd359ad6e18ded401e06170aeeba"
+    },
+    {
+      "path": "tests/clan-war-metric-encounters-v127.test.mjs",
+      "bytes": 7706,
+      "sha256": "5bffdbba1b14f93bc45f5dc17d284d18d5e89d2813927ba36ec0620149351d74"
+    },
+    {
+      "path": "tests/clan-war-multiplayer-practice-v127.test.mjs",
+      "bytes": 5915,
+      "sha256": "2c2660478e8a02bfd53aa73723596f3d3455f6ee3e25a20ed3ae00e57244b50f"
+    },
+    {
+      "path": "scripts/export-clan-war-v127.mjs",
+      "bytes": 2734,
+      "sha256": "76a4ac51a9d100f5253417287e8a8baf47a090f128c1b99899294551e496a326"
+    }
+  ],
+  "addedInput": {
+    "path": "app/game/systems/clanWarVariantExportV126.ts",
+    "bytes": 3598,
+    "sha256": "c0075ff0cef994ea1531512e002ca1f28d92e66f49954c9084a0da60e2ea132a"
+  },
+  "results": [
+    {
+      "phase": "before",
+      "exitCode": 2,
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "/workspace/yautja-la-longue-chasse/node_modules/typescript/bin/tsc",
+        "--noEmit",
+        "--project",
+        "tsconfig.clan-war-v127.json"
+      ],
+      "log": "production/clan-war-command-20261109/qa/ci/v127-sparse-repair/before.log",
+      "logSha256": "e19dbb4c3610ec4d5e675fbff887b5abf9c4877ada696f23b1b9f36e7af813d4"
+    },
+    {
+      "phase": "after",
+      "exitCode": 0,
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "/workspace/yautja-la-longue-chasse/node_modules/typescript/bin/tsc",
+        "--noEmit",
+        "--project",
+        "tsconfig.clan-war-v127.json"
+      ],
+      "log": "production/clan-war-command-20261109/qa/ci/v127-sparse-repair/after.log",
+      "logSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "expectedCandidateEffect": "Same strict TypeScript command fails with the original sparse list and passes after including the existing imported module.",
+  "workflowSha256After": "d27ff2326ae121096718944b14e1c148569f513e82fc9de8ca70c29021c1ec26",
+  "workflowChange": "Only two inclusion lines added: existing export module in pull_request paths and sparse-checkout. No command, assertion, permission or action changed.",
+  "remoteFailureEvidence": [
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/v127-sparse-repair/failure-job.json",
+      "sha256": "02bd93213be9d15ab34fba4837d4350b9ba9eba048d0282c8d0eb20c75adb4c5"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/v127-sparse-repair/failure-annotations.json",
+      "sha256": "9be8db655d36298ef7150ed3e155e1e30903b7e98a5ffbf2d219c70f81f6d25f"
+    }
+  ]
+}

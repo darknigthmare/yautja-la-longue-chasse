@@ -1,0 +1,208 @@
+TAP version 13
+# Subtest: two fingers on same control release independently
+ok 1 - two fingers on same control release independently
+  ---
+  duration_ms: 1.42529
+  type: 'test'
+  ...
+# Subtest: opposed touch directions cancel and releasing one restores the remaining input
+ok 2 - opposed touch directions cancel and releasing one restores the remaining input
+  ---
+  duration_ms: 0.173582
+  type: 'test'
+  ...
+# Subtest: two remapped keyboard aliases do not release each other
+ok 3 - two remapped keyboard aliases do not release each other
+  ---
+  duration_ms: 0.101413
+  type: 'test'
+  ...
+# Subtest: direction fingers coexist with keyboard and clearing neutralizes all controls
+ok 4 - direction fingers coexist with keyboard and clearing neutralizes all controls
+  ---
+  duration_ms: 0.155034
+  type: 'test'
+  ...
+# Subtest: late capture loss for a released finger leaves another pointer untouched
+ok 5 - late capture loss for a released finger leaves another pointer untouched
+  ---
+  duration_ms: 0.172851
+  type: 'test'
+  ...
+# Subtest: opposed digital inputs remain neutral instead of falling through to the gamepad
+ok 6 - opposed digital inputs remain neutral instead of falling through to the gamepad
+  ---
+  duration_ms: 0.122565
+  type: 'test'
+  ...
+# Subtest: malformed controls do not enter the simulation
+ok 7 - malformed controls do not enter the simulation
+  ---
+  duration_ms: 0.133362
+  type: 'test'
+  ...
+# Subtest: new pad requires neutral before a held throttle may move
+ok 8 - new pad requires neutral before a held throttle may move
+  ---
+  duration_ms: 0.407535
+  type: 'test'
+  ...
+# Subtest: resume requires neutral again even when the same pad remains connected
+ok 9 - resume requires neutral again even when the same pad remains connected
+  ---
+  duration_ms: 0.307814
+  type: 'test'
+  ...
+# Subtest: disconnect after use pauses and does not transfer control to another pad
+ok 10 - disconnect after use pauses and does not transfer control to another pad
+  ---
+  duration_ms: 0.369187
+  type: 'test'
+  ...
+# Subtest: unused pad disconnect does not interrupt a keyboard session
+ok 11 - unused pad disconnect does not interrupt a keyboard session
+  ---
+  duration_ms: 0.153311
+  type: 'test'
+  ...
+# Subtest: pad identity replacement in the same slot is treated as a disconnect
+ok 12 - pad identity replacement in the same slot is treated as a disconnect
+  ---
+  duration_ms: 0.137207
+  type: 'test'
+  ...
+# Subtest: non-finite/out-of-range pad sample rejected [null,0]
+ok 13 - non-finite/out-of-range pad sample rejected [null,0]
+  ---
+  duration_ms: 0.091428
+  type: 'test'
+  ...
+# Subtest: non-finite/out-of-range pad sample rejected [0,null]
+ok 14 - non-finite/out-of-range pad sample rejected [0,null]
+  ---
+  duration_ms: 0.050887
+  type: 'test'
+  ...
+# Subtest: non-finite/out-of-range pad sample rejected [2,0]
+ok 15 - non-finite/out-of-range pad sample rejected [2,0]
+  ---
+  duration_ms: 0.042844
+  type: 'test'
+  ...
+# Subtest: non-finite/out-of-range pad sample rejected []
+ok 16 - non-finite/out-of-range pad sample rejected []
+  ---
+  duration_ms: 0.037436
+  type: 'test'
+  ...
+# Subtest: standard brake, boost, interact and pause are kept; deadzone is neutral
+ok 17 - standard brake, boost, interact and pause are kept; deadzone is neutral
+  ---
+  duration_ms: 0.155735
+  type: 'test'
+  ...
+# Subtest: nonstandard mapping does not acquire control
+ok 18 - nonstandard mapping does not acquire control
+  ---
+  duration_ms: 0.091237
+  type: 'test'
+  ...
+# Subtest: control arbitration feeds real motion without inventing positions
+ok 19 - control arbitration feeds real motion without inventing positions
+  ---
+  duration_ms: 1.824222
+  type: 'test'
+  ...
+# Subtest: upgrade drive 1 matches actual purchase and never mutates the quote source
+ok 20 - upgrade drive 1 matches actual purchase and never mutates the quote source
+  ---
+  duration_ms: 1.23272
+  type: 'test'
+  ...
+# Subtest: upgrade drive 2 matches actual purchase and never mutates the quote source
+ok 21 - upgrade drive 2 matches actual purchase and never mutates the quote source
+  ---
+  duration_ms: 0.333513
+  type: 'test'
+  ...
+# Subtest: upgrade drive 3 matches actual purchase and never mutates the quote source
+ok 22 - upgrade drive 3 matches actual purchase and never mutates the quote source
+  ---
+  duration_ms: 0.161644
+  type: 'test'
+  ...
+# Subtest: upgrade armor 1 matches actual purchase and never mutates the quote source
+ok 23 - upgrade armor 1 matches actual purchase and never mutates the quote source
+  ---
+  duration_ms: 0.140081
+  type: 'test'
+  ...
+# Subtest: upgrade armor 2 matches actual purchase and never mutates the quote source
+ok 24 - upgrade armor 2 matches actual purchase and never mutates the quote source
+  ---
+  duration_ms: 0.467736
+  type: 'test'
+  ...
+# Subtest: upgrade armor 3 matches actual purchase and never mutates the quote source
+ok 25 - upgrade armor 3 matches actual purchase and never mutates the quote source
+  ---
+  duration_ms: 0.241474
+  type: 'test'
+  ...
+# Subtest: upgrade cargo 1 matches actual purchase and never mutates the quote source
+ok 26 - upgrade cargo 1 matches actual purchase and never mutates the quote source
+  ---
+  duration_ms: 0.135695
+  type: 'test'
+  ...
+# Subtest: upgrade cargo 2 matches actual purchase and never mutates the quote source
+ok 27 - upgrade cargo 2 matches actual purchase and never mutates the quote source
+  ---
+  duration_ms: 0.116246
+  type: 'test'
+  ...
+# Subtest: upgrade cargo 3 matches actual purchase and never mutates the quote source
+ok 28 - upgrade cargo 3 matches actual purchase and never mutates the quote source
+  ---
+  duration_ms: 0.208325
+  type: 'test'
+  ...
+# Subtest: upgrade cooling 1 matches actual purchase and never mutates the quote source
+ok 29 - upgrade cooling 1 matches actual purchase and never mutates the quote source
+  ---
+  duration_ms: 0.423859
+  type: 'test'
+  ...
+# Subtest: upgrade cooling 2 matches actual purchase and never mutates the quote source
+ok 30 - upgrade cooling 2 matches actual purchase and never mutates the quote source
+  ---
+  duration_ms: 0.151108
+  type: 'test'
+  ...
+# Subtest: upgrade cooling 3 matches actual purchase and never mutates the quote source
+ok 31 - upgrade cooling 3 matches actual purchase and never mutates the quote source
+  ---
+  duration_ms: 0.109375
+  type: 'test'
+  ...
+# Subtest: preview exposes the armor speed penalty and drive consumption cost
+ok 32 - preview exposes the armor speed penalty and drive consumption cost
+  ---
+  duration_ms: 0.121884
+  type: 'test'
+  ...
+# Subtest: no upgrade preview for unknown, unowned, capped, indebted or active vehicle
+ok 33 - no upgrade preview for unknown, unowned, capped, indebted or active vehicle
+  ---
+  duration_ms: 0.540856
+  type: 'test'
+  ...
+1..33
+# tests 33
+# suites 0
+# pass 33
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 30.751926

@@ -1,0 +1,21 @@
+{
+  "passed": true,
+  "checks": [
+    "V150 produces a real elevation map for this exact V115 world",
+    "V150 reports actual dry land pixels and non-land coverage",
+    "V150 elevation summaries use actual region IDs",
+    "V150 preview keeps oceans, lakes and rivers transparent and has varied elevation colours",
+    "V150 RG16 height export is 512x256 with both land and transparent sea",
+    "V150 painted elevation study exports a genuine PNG",
+    "V150 JSON defines exact RG16 metre decoder and same world regions",
+    "V150 adjusting maximum elevation recomputes without changing the procedural war world",
+    "V150 regenerating mountain ridges changes displayed elevation instead of geographic ownership",
+    "V152 reveals a real colour-coded gradient map for actual V150 terrestrial pixels",
+    "V152 slope image contains only real terrestrial pixels and transparent alien media",
+    "V152 route study covers actual links, legal crossings, and no saved war orders",
+    "V152 route study has the exact number of territorial regions",
+    "V150 relief study is usable on mobile without game mutation"
+  ],
+  "world": "proc-v115-m9bf-331013100011300111100202030200-0vi1j",
+  "errors": []
+}

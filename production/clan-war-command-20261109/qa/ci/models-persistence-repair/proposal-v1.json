@@ -1,0 +1,10 @@
+{
+  "status": "PROPOSED_ONLY_NOT_APPLIED",
+  "app": "app/game/systems/trophyTutorialV6.ts",
+  "appSha256Before": "65e735198930e048fcafc16ba89c8debeb9303f5d636463b62394520454cb0be",
+  "test": "tests/trophy-tutorial-save-v6.test.mjs",
+  "testSha256Before": "15339974cb610b2da2b6c03e74a9710f6fdf61f92eae4d8922f60516d1da73c1",
+  "scope": "Move only the absent optional field check before owner validation. Present null, malformed, future or otherwise valid ledgers still reject an invalid owner. Add two behavioral regressions; keep the existing missing-owner/future-gauntlet import assertion unchanged.",
+  "patch": "compatibility-proposal.patch",
+  "patchSha256": "6ab30aee52e1d83495524ead1e151debbb4601a6488d72654c4075fbbb2bfd65"
+}

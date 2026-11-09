@@ -1,0 +1,76 @@
+TAP version 13
+# Subtest: work uses the confirmed operation duration, including worn-tool time, and a saved clock replays exactly
+ok 1 - work uses the confirmed operation duration, including worn-tool time, and a saved clock replays exactly
+  ---
+  duration_ms: 1.552021
+  type: 'test'
+  ...
+# Subtest: no work pose is invented for another action, an airborne/climbing actor, or an invalid operation clock
+ok 2 - no work pose is invented for another action, an airborne/climbing actor, or an invalid operation clock
+  ---
+  duration_ms: 0.266482
+  type: 'test'
+  ...
+# Subtest: all four real work actions are distinct and optional art bounds cannot poison a valid clock
+ok 3 - all four real work actions are distinct and optional art bounds cannot poison a valid clock
+  ---
+  duration_ms: 0.223287
+  type: 'test'
+  ...
+# Subtest: both original feet remain planted through the working pose at real scales and both facings
+ok 4 - both original feet remain planted through the working pose at real scales and both facings
+  ---
+  duration_ms: 9.963681
+  type: 'test'
+  ...
+# Subtest: arm and leg lengths stay original while a far intent point is clamped, without moving the collision data
+ok 5 - arm and leg lengths stay original while a far intent point is clamped, without moving the collision data
+  ---
+  duration_ms: 0.740377
+  type: 'test'
+  ...
+# Subtest: a world-space operation snapshot reconstructs the exact original-body work frame after reload
+ok 6 - a world-space operation snapshot reconstructs the exact original-body work frame after reload
+  ---
+  duration_ms: 0.699535
+  type: 'test'
+  ...
+# Subtest: tool admission refuses distant small bodies and keeps real contact at both facings and three hunter scales
+ok 7 - tool admission refuses distant small bodies and keeps real contact at both facings and three hunter scales
+  ---
+  duration_ms: 243.041114
+  type: 'test'
+  ...
+# Subtest: tool contact check follows an actually moved body and does not override physical appui rules
+ok 8 - tool contact check follows an actually moved body and does not override physical appui rules
+  ---
+  duration_ms: 0.690181
+  type: 'test'
+  ...
+# Subtest: prepared-body parts come only from the species catalogue and its exact corpse harvest identities
+ok 9 - prepared-body parts come only from the species catalogue and its exact corpse harvest identities
+  ---
+  duration_ms: 0.428937
+  type: 'test'
+  ...
+# Subtest: drawn flexible grip is the physics grip at every valid pendulum angle and length
+ok 10 - drawn flexible grip is the physics grip at every valid pendulum angle and length
+  ---
+  duration_ms: 0.867719
+  type: 'test'
+  ...
+# Subtest: stale or invalid suspended state never draws a false moved support; rigid geometry is left to its own renderer
+ok 11 - stale or invalid suspended state never draws a false moved support; rigid geometry is left to its own renderer
+  ---
+  duration_ms: 0.292982
+  type: 'test'
+  ...
+1..11
+# tests 11
+# suites 0
+# pass 11
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 269.025964
