@@ -1,6 +1,7 @@
 name: V113/V114 candidate production and immutable workbooks
 
 on:
+  workflow_dispatch:
   pull_request:
     paths:
       - 'production/**'
