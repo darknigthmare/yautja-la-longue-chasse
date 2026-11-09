@@ -1,0 +1,53 @@
+name: Compagnons - integrite du sprite entier Eclisse
+
+# Import termine. Lecture seule : aucun ZIP distant, auto-commit ou push.
+on:
+  push:
+    branches: ['art/compagnons-individuels-20261106']
+    paths: ['production/compagnons/20261106-eclisse-hd/**', '.github/workflows/compagnons-eclisse-hd-20261106.yml']
+  pull_request:
+    paths: ['production/compagnons/20261106-eclisse-hd/**', '.github/workflows/compagnons-eclisse-hd-20261106.yml']
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          lfs: false
+          persist-credentials: false
+          sparse-checkout: production/compagnons/20261106-eclisse-hd
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install --disable-pip-version-check 'Pillow==12.0.0'
+      - name: Verify exact sources and transparent whole-body PNG
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import hashlib, json
+          from PIL import Image
+          root=Path('production/compagnons/20261106-eclisse-hd')
+          entries=json.loads((root/'FILES.json').read_text())['files']
+          assert len(entries)==8
+          assert {str(p.relative_to(root)) for p in root.rglob('*') if p.is_file()} == {e['path'] for e in entries} | {'FILES.json'}
+          for e in entries:
+              p=root/e['path']; b=p.read_bytes()
+              assert len(b)==e['bytes']
+              assert hashlib.sha256(b).hexdigest()==e['sha256']
+              assert hashlib.sha1(b'blob '+str(len(b)).encode()+b'\0'+b).hexdigest()==e['gitBlobSha']
+          m=json.loads((root/'MANIFEST.json').read_text())
+          assert m['identity']=='eclisse' and m['uniqueWholeBodySprites']==1 and m['frameCount']==1
+          assert all(m[k] is False for k in ['runtimeIntegrated','animationComplete','humanArtValidated','fidelity1to1Certified'])
+          with Image.open(root/m['sprite']['path']) as im:
+              im.load()
+              assert im.mode=='RGBA' and im.size==(1248,832)
+              assert im.getchannel('A').getextrema()==(0,255)
+              assert im.getchannel('A').getbbox()==(262,73,979,766)
+          print('One complete individual PNG: byte integrity, transparency and margins verified. No artistic 1:1 certification inferred.')
+          PY

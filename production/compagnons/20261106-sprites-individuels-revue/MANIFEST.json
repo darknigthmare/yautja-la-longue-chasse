@@ -1,0 +1,1789 @@
+{
+  "schemaVersion": 1,
+  "createdOn": "2026-11-06",
+  "targetRepository": "darknigthmare/yautja-la-longue-chasse",
+  "targetPullRequest": 116,
+  "targetBranch": "claude/bible-de-campagne",
+  "publishedToGitHub": false,
+  "readOnlyConnector": true,
+  "classification": "review_only",
+  "source": {
+    "file": "a_transparent_black_background_sprite_sheet_like_a.png",
+    "sha256": "10affe27779e6d860103fbe253edf79821ee73d4aae7f4673cad334124ee91a8",
+    "generationId": "6e191aeb-2033-4949-92ea-2f4d3d2cc322",
+    "acceptedAsAtlas": false
+  },
+  "counts": {
+    "individualPng": 39,
+    "characters": 10,
+    "acceptedFidelity1to1": 0,
+    "integratedInGame": 0,
+    "publishedToPullRequest": 0
+  },
+  "excluded": [
+    "Serekh : Amengi dans la bible, représenté à tort en Yautja dans plusieurs sorties",
+    "Keth/Trois-Clics : identité et espèce incorrectes dans les sorties",
+    "Korr-Ma : anatomie à six membres non respectée",
+    "Rhazor : morphologie Hell-Hound non démontrée",
+    "Personnages hors catalogue inventés par le générateur",
+    "Tous les encarts, textes, logos et portraits de la planche",
+    "Vue de dos Amara : une silhouette Yautja remplaçait le personnage humain ; fichier écarté après inspection visuelle."
+  ],
+  "assets": [
+    {
+      "id": "kareth.face.draft",
+      "characterId": "kareth",
+      "name": "Ka’Reth — Sept-Cicatrices",
+      "species": "Yautja original",
+      "file": "sprites/kareth/kareth__face__brouillon.png",
+      "width": 80,
+      "height": 96,
+      "sourceRect": [
+        124,
+        120,
+        183,
+        195
+      ],
+      "foregroundSourceBounds": [
+        11,
+        3,
+        51,
+        72
+      ],
+      "sha256": "739e509f80262d8e046da2cd6b8fdc131fcada5596e880d8f91f870e48f936d2",
+      "sourcePixelsResized": false,
+      "frames": 1,
+      "animationReady": false,
+      "humanValidated": false,
+      "loreFidelityValidated": false,
+      "approvedForRuntime": false,
+      "status": "draft_requires_redraw",
+      "reviewIssues": "Lance réparée absente ; silhouette miniature non validée ; cicatrices non vérifiables.",
+      "alphaMin": 0,
+      "alphaMax": 253,
+      "visiblePixels": 2251,
+      "visibleBounds": [
+        20,
+        23,
+        60,
+        92
+      ],
+      "pivotPixels": [
+        40,
+        92
+      ],
+      "pivotKind": "geometric_provisional",
+      "inGameTested": false
+    },
+    {
+      "id": "kareth.profil-droite.draft",
+      "characterId": "kareth",
+      "name": "Ka’Reth — Sept-Cicatrices",
+      "species": "Yautja original",
+      "file": "sprites/kareth/kareth__profil-droite__brouillon.png",
+      "width": 80,
+      "height": 96,
+      "sourceRect": [
+        187,
+        120,
+        245,
+        195
+      ],
+      "foregroundSourceBounds": [
+        9,
+        3,
+        52,
+        72
+      ],
+      "sha256": "17098d3e7828874d5a0441f6e57cc21ad439eae2d1b4c9d299eb8e58e94e2353",
+      "sourcePixelsResized": false,
+      "frames": 1,
+      "animationReady": false,
+      "humanValidated": false,
+      "loreFidelityValidated": false,
+      "approvedForRuntime": false,
+      "status": "draft_requires_redraw",
+      "reviewIssues": "Lance réparée absente ; silhouette miniature non validée ; cicatrices non vérifiables.",
+      "alphaMin": 0,
+      "alphaMax": 252,
+      "visiblePixels": 2293,
+      "visibleBounds": [
+        18,
+        23,
+        61,
+        92
+      ],
+      "pivotPixels": [
+        40,
+        92
+      ],
+      "pivotKind": "geometric_provisional",
+      "inGameTested": false
+    },
+    {
+      "id": "kareth.profil-gauche.draft",
+      "characterId": "kareth",
+      "name": "Ka’Reth — Sept-Cicatrices",
+      "species": "Yautja original",
+      "file": "sprites/kareth/kareth__profil-gauche__brouillon.png",
+      "width": 80,
+      "height": 96,
+      "sourceRect": [
+        247,
+        120,
+        309,
+        195
+      ],
+      "foregroundSourceBounds": [
+        14,
+        3,
+        53,
+        72
+      ],
+      "sha256": "f094833dc35be793db35f7aa04eeb3249895dc94e54aa6550c456f8ea993b01b",
+      "sourcePixelsResized": false,
+      "frames": 1,
+      "animationReady": false,
+      "humanValidated": false,
+      "loreFidelityValidated": false,
+      "approvedForRuntime": false,
+      "status": "draft_requires_redraw",
+      "reviewIssues": "Lance réparée absente ; silhouette miniature non validée ; cicatrices non vérifiables.",
+      "alphaMin": 0,
+      "alphaMax": 251,
+      "visiblePixels": 2015,
+      "visibleBounds": [
+        20,
+        23,
+        59,
+        92
+      ],
+      "pivotPixels": [
+        40,
+        92
+      ],
+      "pivotKind": "geometric_provisional",
+      "inGameTested": false
+    },
+    {
+      "id": "kareth.dos.draft",
+      "characterId": "kareth",
+      "name": "Ka’Reth — Sept-Cicatrices",
+      "species": "Yautja original",
+      "file": "sprites/kareth/kareth__dos__brouillon.png",
+      "width": 80,
+      "height": 96,
+      "sourceRect": [
+        310,
+        120,
+        375,
+        195
+      ],
+      "foregroundSourceBounds": [
+        8,
+        2,
+        51,
+        71
+      ],
+      "sha256": "4df248f4df3a9111cfac407b021c5a3865766409132fe12252c89c3c8e62daed",
+      "sourcePixelsResized": false,
+      "frames": 1,
+      "animationReady": false,
+      "humanValidated": false,
+      "loreFidelityValidated": false,
+      "approvedForRuntime": false,
+      "status": "draft_requires_redraw",
+      "reviewIssues": "Lance réparée absente ; silhouette miniature non validée ; cicatrices non vérifiables.",
+      "alphaMin": 0,
+      "alphaMax": 252,
+      "visiblePixels": 2362,
+      "visibleBounds": [
+        18,
+        23,
+        61,
+        92
+      ],
+      "pivotPixels": [
+        40,
+        92
+      ],
+      "pivotKind": "geometric_provisional",
+      "inGameTested": false
+    },
+    {
+      "id": "syara.face.draft",
+      "characterId": "syara",
+      "name": "Sya’ra — Lame de l’Orage",
+      "species": "Yautja originale",
+      "file": "sprites/syara/syara__face__brouillon.png",
+      "width": 80,
+      "height": 96,
+      "sourceRect": [
+        508,
+        120,
+        567,
+        195
+      ],
+      "foregroundSourceBounds": [
+        9,
+        3,
+        50,
+        72
+      ],
+      "sha256": "7edd49233f95343a68898c6dfb460deaad9651a13e5cc92bf2540c7db6a1db93",
+      "sourcePixelsResized": false,
+      "frames": 1,
+      "animationReady": false,
+      "humanValidated": false,
+      "loreFidelityValidated": false,
+      "approvedForRuntime": false,
+      "status": "draft_requires_redraw",
+      "reviewIssues": "Lame longue, harnais et silhouette propres non établis.",
+      "alphaMin": 0,
+      "alphaMax": 253,
+      "visiblePixels": 2314,
+      "visibleBounds": [
+        19,
+        23,
+        60,
+        92
+      ],
+      "pivotPixels": [
+        40,
+        92
+      ],
+      "pivotKind": "geometric_provisional",
+      "inGameTested": false
+    },
+    {
+      "id": "syara.profil-droite.draft",
+      "characterId": "syara",
+      "name": "Sya’ra — Lame de l’Orage",
+      "species": "Yautja originale",
+      "file": "sprites/syara/syara__profil-droite__brouillon.png",
+      "width": 80,
+      "height": 96,
+      "sourceRect": [
+        571,
+        120,
+        629,
+        195
+      ],
+      "foregroundSourceBounds": [
+        8,
+        2,
+        49,
+        73
+      ],
+      "sha256": "dcc1b30539be084d140e2d76e9986abaca1ba561515ac622e5d986624b9ad3bf",
+      "sourcePixelsResized": false,
+      "frames": 1,
+      "animationReady": false,
+      "humanValidated": false,
+      "loreFidelityValidated": false,
+      "approvedForRuntime": false,
+      "status": "draft_requires_redraw",
+      "reviewIssues": "Lame longue, harnais et silhouette propres non établis.",
+      "alphaMin": 0,
+      "alphaMax": 253,
+      "visiblePixels": 2208,
+      "visibleBounds": [
+        19,
+        21,
+        60,
+        92
+      ],
+      "pivotPixels": [
+        40,
+        92
+      ],
+      "pivotKind": "geometric_provisional",
+      "inGameTested": false
+    },
+    {
+      "id": "syara.profil-gauche.draft",
+      "characterId": "syara",
+      "name": "Sya’ra — Lame de l’Orage",
+      "species": "Yautja originale",
+      "file": "sprites/syara/syara__profil-gauche__brouillon.png",
+      "width": 80,
+      "height": 96,
+      "sourceRect": [
+        631,
+        120,
+        693,
+        195
+      ],
+      "foregroundSourceBounds": [
+        13,
+        3,
+        50,
+        73
+      ],
+      "sha256": "d65e86ab2d56dfaedaaa2c46e4e6663150a591ec92860513d7c6e2430240edc7",
+      "sourcePixelsResized": false,
+      "frames": 1,
+      "animationReady": false,
+      "humanValidated": false,
+      "loreFidelityValidated": false,
+      "approvedForRuntime": false,
+      "status": "draft_requires_redraw",
+      "reviewIssues": "Lame longue, harnais et silhouette propres non établis.",
+      "alphaMin": 0,
+      "alphaMax": 252,
+      "visiblePixels": 2040,
+      "visibleBounds": [
+        21,
+        22,
+        58,
+        92
+      ],
+      "pivotPixels": [
+        40,
+        92
+      ],
+      "pivotKind": "geometric_provisional",
+      "inGameTested": false
+    },
+    {
+      "id": "syara.dos.draft",
+      "characterId": "syara",
+      "name": "Sya’ra — Lame de l’Orage",
+      "species": "Yautja originale",
+      "file": "sprites/syara/syara__dos__brouillon.png",
+      "width": 80,
+      "height": 96,
+      "sourceRect": [
+        694,
+        120,
+        759,
+        195
+      ],
+      "foregroundSourceBounds": [
+        9,
+        2,
+        53,
+        73
+      ],
+      "sha256": "ea4cc38f98e5935937ed8a7ceeb2192d5ceee68c9caa8c9bc13296bbb86bb3b1",
+      "sourcePixelsResized": false,
+      "frames": 1,
+      "animationReady": false,
+      "humanValidated": false,
+      "loreFidelityValidated": false,
+      "approvedForRuntime": false,
+      "status": "draft_requires_redraw",
+      "reviewIssues": "Lame longue, harnais et silhouette propres non établis.",
+      "alphaMin": 0,
+      "alphaMax": 252,
+      "visiblePixels": 2500,
+      "visibleBounds": [
+        18,
+        21,
+        62,
+        92
+      ],
+      "pivotPixels": [
+        40,
+        92
+      ],
+      "pivotKind": "geometric_provisional",
+      "inGameTested": false
+    },
+    {
+      "id": "vorkesh.face.draft",
+      "characterId": "vorkesh",
+      "name": "Vor’Kesh — Juge des Cendres",
+      "species": "Yautja original",
+      "file": "sprites/vorkesh/vorkesh__face__brouillon.png",
+      "width": 80,
+      "height": 96,
+      "sourceRect": [
+        892,
+        120,
+        951,
+        195
+      ],
+      "foregroundSourceBounds": [
+        10,
+        3,
+        51,
+        72
+      ],
+      "sha256": "36d8e83a6fc667dca6dbae2ff13cc5cc9d4f5221fb9e388a803545c1714feb6b",
+      "sourcePixelsResized": false,
+      "frames": 1,
+      "animationReady": false,
+      "humanValidated": false,
+      "loreFidelityValidated": false,
+      "approvedForRuntime": false,
+      "status": "draft_requires_redraw",
+      "reviewIssues": "Équipement de capture et accessoires d’enquête absents.",
+      "alphaMin": 0,
+      "alphaMax": 251,
+      "visiblePixels": 2277,
+      "visibleBounds": [
+        19,
+        23,
+        60,
+        92
+      ],
+      "pivotPixels": [
+        40,
+        92
+      ],
+      "pivotKind": "geometric_provisional",
+      "inGameTested": false
+    },
+    {
+      "id": "vorkesh.profil-droite.draft",
+      "characterId": "vorkesh",
+      "name": "Vor’Kesh — Juge des Cendres",
+      "species": "Yautja original",
+      "file": "sprites/vorkesh/vorkesh__profil-droite__brouillon.png",
+      "width": 80,
+      "height": 96,
+      "sourceRect": [
+        955,
+        120,
+        1013,
+        195
+      ],
+      "foregroundSourceBounds": [
+        9,
+        3,
+        49,
+        73
+      ],
+      "sha256": "6a7cfc6de58b1378c7dcba9de309f5b30c9002eddc2cb1f37b310305797c3cfe",
+      "sourcePixelsResized": false,
+      "frames": 1,
+      "animationReady": false,
+      "humanValidated": false,
+      "loreFidelityValidated": false,
+      "approvedForRuntime": false,
+      "status": "draft_requires_redraw",
+      "reviewIssues": "Équipement de capture et accessoires d’enquête absents.",
+      "alphaMin": 0,
+      "alphaMax": 251,
+      "visiblePixels": 2154,
+      "visibleBounds": [
+        20,
+        22,
+        60,
+        92
+      ],
+      "pivotPixels": [
+        40,
+        92
+      ],
+      "pivotKind": "geometric_provisional",
+      "inGameTested": false
+    },
+    {
+      "id": "vorkesh.profil-gauche.draft",
+      "characterId": "vorkesh",
+      "name": "Vor’Kesh — Juge des Cendres",
+      "species": "Yautja original",
+      "file": "sprites/vorkesh/vorkesh__profil-gauche__brouillon.png",
+      "width": 80,
+      "height": 96,
+      "sourceRect": [
+        1015,
+        120,
+        1077,
+        195
+      ],
+      "foregroundSourceBounds": [
+        16,
+        3,
+        53,
+        73
+      ],
+      "sha256": "8709a0df152db2557293a91f919c857ee62c486455226dbdf81e536341375274",
+      "sourcePixelsResized": false,
+      "frames": 1,
+      "animationReady": false,
+      "humanValidated": false,
+      "loreFidelityValidated": false,
+      "approvedForRuntime": false,
+      "status": "draft_requires_redraw",
+      "reviewIssues": "Équipement de capture et accessoires d’enquête absents.",
+      "alphaMin": 0,
+      "alphaMax": 251,
+      "visiblePixels": 1992,
+      "visibleBounds": [
+        21,
+        22,
+        58,
+        92
+      ],
+      "pivotPixels": [
+        40,
+        92
+      ],
+      "pivotKind": "geometric_provisional",
+      "inGameTested": false
+    },
+    {
+      "id": "vorkesh.dos.draft",
+      "characterId": "vorkesh",
+      "name": "Vor’Kesh — Juge des Cendres",
+      "species": "Yautja original",
+      "file": "sprites/vorkesh/vorkesh__dos__brouillon.png",
+      "width": 80,
+      "height": 96,
+      "sourceRect": [
+        1078,
+        120,
+        1143,
+        195
+      ],
+      "foregroundSourceBounds": [
+        9,
+        3,
+        52,
+        73
+      ],
+      "sha256": "54d34872ae00ea837a4aabb9ab28e5fe6d108ba3d464a2ac3f7116af5dca5d6f",
+      "sourcePixelsResized": false,
+      "frames": 1,
+      "animationReady": false,
+      "humanValidated": false,
+      "loreFidelityValidated": false,
+      "approvedForRuntime": false,
+      "status": "draft_requires_redraw",
+      "reviewIssues": "Équipement de capture et accessoires d’enquête absents.",
+      "alphaMin": 0,
+      "alphaMax": 252,
+      "visiblePixels": 2445,
+      "visibleBounds": [
+        18,
+        22,
+        61,
+        92
+      ],
+      "pivotPixels": [
+        40,
+        92
+      ],
+      "pivotKind": "geometric_provisional",
+      "inGameTested": false
+    },
+    {
+      "id": "omara.face.draft",
+      "characterId": "omara",
+      "name": "O’Mara — Mère de Meute",
+      "species": "Yautja originale",
+      "file": "sprites/omara/omara__face__brouillon.png",
+      "width": 80,
+      "height": 96,
+      "sourceRect": [
+        1276,
+        120,
+        1335,
+        195
+      ],
+      "foregroundSourceBounds": [
+        15,
+        3,
+        57,
+        71
+      ],
+      "sha256": "f3a0cbabccd78e413279f73ad5030c01a9462f786fffffc20eb58529b741c1a2",
+      "sourcePixelsResized": false,
+      "frames": 1,
+      "animationReady": false,
+      "humanValidated": false,
+      "loreFidelityValidated": false,
+      "approvedForRuntime": false,
+      "status": "draft_requires_redraw",
+      "reviewIssues": "Accessoires d’entretien et conduite de meute non représentés.",
+      "alphaMin": 0,
+      "alphaMax": 252,
+      "visiblePixels": 2271,
+      "visibleBounds": [
+        19,
+        24,
+        61,
+        92
+      ],
+      "pivotPixels": [
+        40,
+        92
+      ],
+      "pivotKind": "geometric_provisional",
+      "inGameTested": false
+    },
+    {
+      "id": "omara.profil-droite.draft",
+      "characterId": "omara",
+      "name": "O’Mara — Mère de Meute",
+      "species": "Yautja originale",
+      "file": "sprites/omara/omara__profil-droite__brouillon.png",
+      "width": 80,
+      "height": 96,
+      "sourceRect": [
+        1339,
+        120,
+        1397,
+        195
+      ],
+      "foregroundSourceBounds": [
+        15,
+        3,
+        54,
+        73
+      ],
+      "sha256": "e4d72e0e3229278446875dd0107c44c1cf0138cd8c3632a9b2958f318898f1c9",
+      "sourcePixelsResized": false,
+      "frames": 1,
+      "animationReady": false,
+      "humanValidated": false,
+      "loreFidelityValidated": false,
+      "approvedForRuntime": false,
+      "status": "draft_requires_redraw",
+      "reviewIssues": "Accessoires d’entretien et conduite de meute non représentés.",
+      "alphaMin": 0,
+      "alphaMax": 252,
+      "visiblePixels": 2098,
+      "visibleBounds": [
+        20,
+        22,
+        59,
+        92
+      ],
+      "pivotPixels": [
+        40,
+        92
+      ],
+      "pivotKind": "geometric_provisional",
+      "inGameTested": false
+    },
+    {
+      "id": "omara.profil-gauche.draft",
+      "characterId": "omara",
+      "name": "O’Mara — Mère de Meute",
+      "species": "Yautja originale",
+      "file": "sprites/omara/omara__profil-gauche__brouillon.png",
+      "width": 80,
+      "height": 96,
+      "sourceRect": [
+        1399,
+        120,
+        1461,
+        195
+      ],
+      "foregroundSourceBounds": [
+        19,
+        3,
+        54,
+        73
+      ],
+      "sha256": "2d434ca63f4fd1244d584c9fbaeb3f7b496b024cd9f475dce73b1f2a5dbf7ca8",
+      "sourcePixelsResized": false,
+      "frames": 1,
+      "animationReady": false,
+      "humanValidated": false,
+      "loreFidelityValidated": false,
+      "approvedForRuntime": false,
+      "status": "draft_requires_redraw",
+      "reviewIssues": "Accessoires d’entretien et conduite de meute non représentés.",
+      "alphaMin": 0,
+      "alphaMax": 252,
+      "visiblePixels": 1931,
+      "visibleBounds": [
+        22,
+        22,
+        57,
+        92
+      ],
+      "pivotPixels": [
+        40,
+        92
+      ],
+      "pivotKind": "geometric_provisional",
+      "inGameTested": false
+    },
+    {
+      "id": "omara.dos.draft",
+      "characterId": "omara",
+      "name": "O’Mara — Mère de Meute",
+      "species": "Yautja originale",
+      "file": "sprites/omara/omara__dos__brouillon.png",
+      "width": 80,
+      "height": 96,
+      "sourceRect": [
+        1462,
+        120,
+        1527,
+        195
+      ],
+      "foregroundSourceBounds": [
+        14,
+        3,
+        58,
+        73
+      ],
+      "sha256": "b0fa3cdba245c5a4b0af49fe0367aeb8acc2aca81ee0a9edd0bb801680c5841c",
+      "sourcePixelsResized": false,
+      "frames": 1,
+      "animationReady": false,
+      "humanValidated": false,
+      "loreFidelityValidated": false,
+      "approvedForRuntime": false,
+      "status": "draft_requires_redraw",
+      "reviewIssues": "Accessoires d’entretien et conduite de meute non représentés.",
+      "alphaMin": 0,
+      "alphaMax": 252,
+      "visiblePixels": 2513,
+      "visibleBounds": [
+        18,
+        22,
+        62,
+        92
+      ],
+      "pivotPixels": [
+        40,
+        92
+      ],
+      "pivotKind": "geometric_provisional",
+      "inGameTested": false
+    },
+    {
+      "id": "drakel.face.draft",
+      "characterId": "drakel",
+      "name": "Dra’Kel — Fer-Vivant",
+      "species": "Yautja original",
+      "file": "sprites/drakel/drakel__face__brouillon.png",
+      "width": 80,
+      "height": 96,
+      "sourceRect": [
+        124,
+        235,
+        183,
+        310
+      ],
+      "foregroundSourceBounds": [
+        12,
+        3,
+        52,
+        65
+      ],
+      "sha256": "1e1578b510645e7598247aa6783e42e72096cb8e86dafcd46d37d344f09dd3bc",
+      "sourcePixelsResized": false,
+      "frames": 1,
+      "animationReady": false,
+      "humanValidated": false,
+      "loreFidelityValidated": false,
+      "approvedForRuntime": false,
+      "status": "draft_requires_redraw",
+      "reviewIssues": "Prothèses et mécanique de refroidissement insuffisamment distinctes.",
+      "alphaMin": 0,
+      "alphaMax": 253,
+      "visiblePixels": 2028,
+      "visibleBounds": [
+        20,
+        30,
+        60,
+        92
+      ],
+      "pivotPixels": [
+        40,
+        92
+      ],
+      "pivotKind": "geometric_provisional",
+      "inGameTested": false
+    },
+    {
+      "id": "drakel.profil-droite.draft",
+      "characterId": "drakel",
+      "name": "Dra’Kel — Fer-Vivant",
+      "species": "Yautja original",
+      "file": "sprites/drakel/drakel__profil-droite__brouillon.png",
+      "width": 80,
+      "height": 96,
+      "sourceRect": [
+        187,
+        235,
+        245,
+        310
+      ],
+      "foregroundSourceBounds": [
+        12,
+        3,
+        50,
+        67
+      ],
+      "sha256": "ae5672250328d142ce7ec05452efd77bb05948574b8a4167298f2c900d2ace95",
+      "sourcePixelsResized": false,
+      "frames": 1,
+      "animationReady": false,
+      "humanValidated": false,
+      "loreFidelityValidated": false,
+      "approvedForRuntime": false,
+      "status": "draft_requires_redraw",
+      "reviewIssues": "Prothèses et mécanique de refroidissement insuffisamment distinctes.",
+      "alphaMin": 0,
+      "alphaMax": 253,
+      "visiblePixels": 1843,
+      "visibleBounds": [
+        21,
+        28,
+        59,
+        92
+      ],
+      "pivotPixels": [
+        40,
+        92
+      ],
+      "pivotKind": "geometric_provisional",
+      "inGameTested": false
+    },
+    {
+      "id": "drakel.profil-gauche.draft",
+      "characterId": "drakel",
+      "name": "Dra’Kel — Fer-Vivant",
+      "species": "Yautja original",
+      "file": "sprites/drakel/drakel__profil-gauche__brouillon.png",
+      "width": 80,
+      "height": 96,
+      "sourceRect": [
+        247,
+        235,
+        309,
+        310
+      ],
+      "foregroundSourceBounds": [
+        12,
+        3,
+        50,
+        66
+      ],
+      "sha256": "ec0eef9a3c15a40b09d167497c038c759a16c34e9e66ba955cfa57970aaa2ede",
+      "sourcePixelsResized": false,
+      "frames": 1,
+      "animationReady": false,
+      "humanValidated": false,
+      "loreFidelityValidated": false,
+      "approvedForRuntime": false,
+      "status": "draft_requires_redraw",
+      "reviewIssues": "Prothèses et mécanique de refroidissement insuffisamment distinctes.",
+      "alphaMin": 0,
+      "alphaMax": 252,
+      "visiblePixels": 1979,
+      "visibleBounds": [
+        21,
+        29,
+        59,
+        92
+      ],
+      "pivotPixels": [
+        40,
+        92
+      ],
+      "pivotKind": "geometric_provisional",
+      "inGameTested": false
+    },
+    {
+      "id": "drakel.dos.draft",
+      "characterId": "drakel",
+      "name": "Dra’Kel — Fer-Vivant",
+      "species": "Yautja original",
+      "file": "sprites/drakel/drakel__dos__brouillon.png",
+      "width": 80,
+      "height": 96,
+      "sourceRect": [
+        310,
+        235,
+        375,
+        310
+      ],
+      "foregroundSourceBounds": [
+        9,
+        2,
+        52,
+        68
+      ],
+      "sha256": "11e67f0c35b62f6b47193025a7de984b14c6b7543621b08f31833d0822c03249",
+      "sourcePixelsResized": false,
+      "frames": 1,
+      "animationReady": false,
+      "humanValidated": false,
+      "loreFidelityValidated": false,
+      "approvedForRuntime": false,
+      "status": "draft_requires_redraw",
+      "reviewIssues": "Prothèses et mécanique de refroidissement insuffisamment distinctes.",
+      "alphaMin": 0,
+      "alphaMax": 251,
+      "visiblePixels": 2210,
+      "visibleBounds": [
+        18,
+        26,
+        61,
+        92
+      ],
+      "pivotPixels": [
+        40,
+        92
+      ],
+      "pivotKind": "geometric_provisional",
+      "inGameTested": false
+    },
+    {
+      "id": "mara-velez.face.draft",
+      "characterId": "mara-velez",
+      "name": "Mara Velez — L’Aile de Secours",
+      "species": "Humaine originale",
+      "file": "sprites/mara-velez/mara-velez__face__brouillon.png",
+      "width": 80,
+      "height": 96,
+      "sourceRect": [
+        508,
+        235,
+        567,
+        310
+      ],
+      "foregroundSourceBounds": [
+        11,
+        2,
+        51,
+        66
+      ],
+      "sha256": "8c7ca2f875e28d5b30699dfba9419de660c70a244da55773edc3e57ba798b504",
+      "sourcePixelsResized": false,
+      "frames": 1,
+      "animationReady": false,
+      "humanValidated": false,
+      "loreFidelityValidated": false,
+      "approvedForRuntime": false,
+      "status": "draft_requires_redraw",
+      "reviewIssues": "Tenue et équipement de pilote à établir ; aucun modèle visuel approuvé.",
+      "alphaMin": 0,
+      "alphaMax": 252,
+      "visiblePixels": 1999,
+      "visibleBounds": [
+        20,
+        28,
+        60,
+        92
+      ],
+      "pivotPixels": [
+        40,
+        92
+      ],
+      "pivotKind": "geometric_provisional",
+      "inGameTested": false
+    },
+    {
+      "id": "mara-velez.profil-droite.draft",
+      "characterId": "mara-velez",
+      "name": "Mara Velez — L’Aile de Secours",
+      "species": "Humaine originale",
+      "file": "sprites/mara-velez/mara-velez__profil-droite__brouillon.png",
+      "width": 80,
+      "height": 96,
+      "sourceRect": [
+        571,
+        235,
+        629,
+        310
+      ],
+      "foregroundSourceBounds": [
+        12,
+        2,
+        48,
+        66
+      ],
+      "sha256": "1461acb4c6af97415782a3875f0934616ce4de1685cd77867d4d9464c9cd051a",
+      "sourcePixelsResized": false,
+      "frames": 1,
+      "animationReady": false,
+      "humanValidated": false,
+      "loreFidelityValidated": false,
+      "approvedForRuntime": false,
+      "status": "draft_requires_redraw",
+      "reviewIssues": "Tenue et équipement de pilote à établir ; aucun modèle visuel approuvé.",
+      "alphaMin": 0,
+      "alphaMax": 251,
+      "visiblePixels": 1792,
+      "visibleBounds": [
+        22,
+        28,
+        58,
+        92
+      ],
+      "pivotPixels": [
+        40,
+        92
+      ],
+      "pivotKind": "geometric_provisional",
+      "inGameTested": false
+    },
+    {
+      "id": "mara-velez.profil-gauche.draft",
+      "characterId": "mara-velez",
+      "name": "Mara Velez — L’Aile de Secours",
+      "species": "Humaine originale",
+      "file": "sprites/mara-velez/mara-velez__profil-gauche__brouillon.png",
+      "width": 80,
+      "height": 96,
+      "sourceRect": [
+        631,
+        235,
+        693,
+        310
+      ],
+      "foregroundSourceBounds": [
+        15,
+        2,
+        48,
+        67
+      ],
+      "sha256": "9d70035df7a8c22a858175926a0c70fb229544c26402a471de5d74669d615059",
+      "sourcePixelsResized": false,
+      "frames": 1,
+      "animationReady": false,
+      "humanValidated": false,
+      "loreFidelityValidated": false,
+      "approvedForRuntime": false,
+      "status": "draft_requires_redraw",
+      "reviewIssues": "Tenue et équipement de pilote à établir ; aucun modèle visuel approuvé.",
+      "alphaMin": 0,
+      "alphaMax": 252,
+      "visiblePixels": 1760,
+      "visibleBounds": [
+        23,
+        27,
+        56,
+        92
+      ],
+      "pivotPixels": [
+        40,
+        92
+      ],
+      "pivotKind": "geometric_provisional",
+      "inGameTested": false
+    },
+    {
+      "id": "mara-velez.dos.draft",
+      "characterId": "mara-velez",
+      "name": "Mara Velez — L’Aile de Secours",
+      "species": "Humaine originale",
+      "file": "sprites/mara-velez/mara-velez__dos__brouillon.png",
+      "width": 80,
+      "height": 96,
+      "sourceRect": [
+        694,
+        235,
+        759,
+        310
+      ],
+      "foregroundSourceBounds": [
+        10,
+        3,
+        49,
+        68
+      ],
+      "sha256": "30c734b6c13dcad31bd1839ce39f5468b9eac60d1e077ae4ff211b5227b04278",
+      "sourcePixelsResized": false,
+      "frames": 1,
+      "animationReady": false,
+      "humanValidated": false,
+      "loreFidelityValidated": false,
+      "approvedForRuntime": false,
+      "status": "draft_requires_redraw",
+      "reviewIssues": "Tenue et équipement de pilote à établir ; aucun modèle visuel approuvé.",
+      "alphaMin": 0,
+      "alphaMax": 251,
+      "visiblePixels": 2049,
+      "visibleBounds": [
+        20,
+        27,
+        59,
+        92
+      ],
+      "pivotPixels": [
+        40,
+        92
+      ],
+      "pivotKind": "geometric_provisional",
+      "inGameTested": false
+    },
+    {
+      "id": "amara-okonkwo.face.draft",
+      "characterId": "amara-okonkwo",
+      "name": "Amara Okonkwo — La Main Calme",
+      "species": "Humaine originale",
+      "file": "sprites/amara-okonkwo/amara-okonkwo__face__brouillon.png",
+      "width": 80,
+      "height": 96,
+      "sourceRect": [
+        892,
+        235,
+        951,
+        310
+      ],
+      "foregroundSourceBounds": [
+        16,
+        3,
+        53,
+        65
+      ],
+      "sha256": "ef5734c910e1dd57901b80efe0e9f4032278a5d9df6b67dc8b69e74ed61965d4",
+      "sourcePixelsResized": false,
+      "frames": 1,
+      "animationReady": false,
+      "humanValidated": false,
+      "loreFidelityValidated": false,
+      "approvedForRuntime": false,
+      "status": "draft_requires_redraw",
+      "reviewIssues": "Équipement médical absent ; silhouette proche du brouillon pilote.",
+      "alphaMin": 0,
+      "alphaMax": 254,
+      "visiblePixels": 1877,
+      "visibleBounds": [
+        21,
+        30,
+        58,
+        92
+      ],
+      "pivotPixels": [
+        40,
+        92
+      ],
+      "pivotKind": "geometric_provisional",
+      "inGameTested": false
+    },
+    {
+      "id": "amara-okonkwo.profil-droite.draft",
+      "characterId": "amara-okonkwo",
+      "name": "Amara Okonkwo — La Main Calme",
+      "species": "Humaine originale",
+      "file": "sprites/amara-okonkwo/amara-okonkwo__profil-droite__brouillon.png",
+      "width": 80,
+      "height": 96,
+      "sourceRect": [
+        955,
+        235,
+        1013,
+        310
+      ],
+      "foregroundSourceBounds": [
+        15,
+        3,
+        50,
+        66
+      ],
+      "sha256": "28a22c46aa8da04fcd0f62ab1b6c8d6fa1f6705150c805e8e7b1b8a4a1684eb0",
+      "sourcePixelsResized": false,
+      "frames": 1,
+      "animationReady": false,
+      "humanValidated": false,
+      "loreFidelityValidated": false,
+      "approvedForRuntime": false,
+      "status": "draft_requires_redraw",
+      "reviewIssues": "Équipement médical absent ; silhouette proche du brouillon pilote.",
+      "alphaMin": 0,
+      "alphaMax": 253,
+      "visiblePixels": 1823,
+      "visibleBounds": [
+        22,
+        29,
+        57,
+        92
+      ],
+      "pivotPixels": [
+        40,
+        92
+      ],
+      "pivotKind": "geometric_provisional",
+      "inGameTested": false
+    },
+    {
+      "id": "amara-okonkwo.profil-gauche.draft",
+      "characterId": "amara-okonkwo",
+      "name": "Amara Okonkwo — La Main Calme",
+      "species": "Humaine originale",
+      "file": "sprites/amara-okonkwo/amara-okonkwo__profil-gauche__brouillon.png",
+      "width": 80,
+      "height": 96,
+      "sourceRect": [
+        1015,
+        235,
+        1077,
+        310
+      ],
+      "foregroundSourceBounds": [
+        17,
+        3,
+        50,
+        67
+      ],
+      "sha256": "f0bf5a34a17d1958db6c8d6ae227397dca5dabfb346b8b5727face008c7712cf",
+      "sourcePixelsResized": false,
+      "frames": 1,
+      "animationReady": false,
+      "humanValidated": false,
+      "loreFidelityValidated": false,
+      "approvedForRuntime": false,
+      "status": "draft_requires_redraw",
+      "reviewIssues": "Équipement médical absent ; silhouette proche du brouillon pilote.",
+      "alphaMin": 0,
+      "alphaMax": 252,
+      "visiblePixels": 1668,
+      "visibleBounds": [
+        23,
+        28,
+        56,
+        92
+      ],
+      "pivotPixels": [
+        40,
+        92
+      ],
+      "pivotKind": "geometric_provisional",
+      "inGameTested": false
+    },
+    {
+      "id": "rook-mercer.face.draft",
+      "characterId": "rook-mercer",
+      "name": "Jonah Rook Mercer",
+      "species": "Humain original",
+      "file": "sprites/rook-mercer/rook-mercer__face__brouillon.png",
+      "width": 80,
+      "height": 96,
+      "sourceRect": [
+        1276,
+        235,
+        1335,
+        310
+      ],
+      "foregroundSourceBounds": [
+        15,
+        0,
+        53,
+        65
+      ],
+      "sha256": "b49c62f2161b6ccebea61c804ccacf6ad05141b39806b53399012a14f38cd6df",
+      "sourcePixelsResized": false,
+      "frames": 1,
+      "animationReady": false,
+      "humanValidated": false,
+      "loreFidelityValidated": false,
+      "approvedForRuntime": false,
+      "status": "draft_requires_redraw",
+      "reviewIssues": "Armement, équipements de survie et proportions à établir.",
+      "alphaMin": 0,
+      "alphaMax": 252,
+      "visiblePixels": 2007,
+      "visibleBounds": [
+        21,
+        27,
+        59,
+        92
+      ],
+      "pivotPixels": [
+        40,
+        92
+      ],
+      "pivotKind": "geometric_provisional",
+      "inGameTested": false
+    },
+    {
+      "id": "rook-mercer.profil-droite.draft",
+      "characterId": "rook-mercer",
+      "name": "Jonah Rook Mercer",
+      "species": "Humain original",
+      "file": "sprites/rook-mercer/rook-mercer__profil-droite__brouillon.png",
+      "width": 80,
+      "height": 96,
+      "sourceRect": [
+        1339,
+        235,
+        1397,
+        310
+      ],
+      "foregroundSourceBounds": [
+        13,
+        0,
+        46,
+        66
+      ],
+      "sha256": "b8d3335f1ff128380086aec8ae9f18c7e1b73b05cbfadcca2fb765991ed597ea",
+      "sourcePixelsResized": false,
+      "frames": 1,
+      "animationReady": false,
+      "humanValidated": false,
+      "loreFidelityValidated": false,
+      "approvedForRuntime": false,
+      "status": "draft_requires_redraw",
+      "reviewIssues": "Armement, équipements de survie et proportions à établir.",
+      "alphaMin": 0,
+      "alphaMax": 251,
+      "visiblePixels": 1816,
+      "visibleBounds": [
+        23,
+        26,
+        56,
+        92
+      ],
+      "pivotPixels": [
+        40,
+        92
+      ],
+      "pivotKind": "geometric_provisional",
+      "inGameTested": false
+    },
+    {
+      "id": "rook-mercer.profil-gauche.draft",
+      "characterId": "rook-mercer",
+      "name": "Jonah Rook Mercer",
+      "species": "Humain original",
+      "file": "sprites/rook-mercer/rook-mercer__profil-gauche__brouillon.png",
+      "width": 80,
+      "height": 96,
+      "sourceRect": [
+        1399,
+        235,
+        1461,
+        310
+      ],
+      "foregroundSourceBounds": [
+        18,
+        1,
+        51,
+        66
+      ],
+      "sha256": "59c957d30709b72c78d4f9f08e33d24abb63530f5d29b998bf8b4096247759ff",
+      "sourcePixelsResized": false,
+      "frames": 1,
+      "animationReady": false,
+      "humanValidated": false,
+      "loreFidelityValidated": false,
+      "approvedForRuntime": false,
+      "status": "draft_requires_redraw",
+      "reviewIssues": "Armement, équipements de survie et proportions à établir.",
+      "alphaMin": 0,
+      "alphaMax": 252,
+      "visiblePixels": 1806,
+      "visibleBounds": [
+        23,
+        27,
+        56,
+        92
+      ],
+      "pivotPixels": [
+        40,
+        92
+      ],
+      "pivotKind": "geometric_provisional",
+      "inGameTested": false
+    },
+    {
+      "id": "rook-mercer.dos.draft",
+      "characterId": "rook-mercer",
+      "name": "Jonah Rook Mercer",
+      "species": "Humain original",
+      "file": "sprites/rook-mercer/rook-mercer__dos__brouillon.png",
+      "width": 80,
+      "height": 96,
+      "sourceRect": [
+        1462,
+        235,
+        1527,
+        310
+      ],
+      "foregroundSourceBounds": [
+        12,
+        1,
+        52,
+        67
+      ],
+      "sha256": "bb72cf5f1b5b588fc1b13f098b367b207eea159b3892e14a3b83d8944b2c4369",
+      "sourcePixelsResized": false,
+      "frames": 1,
+      "animationReady": false,
+      "humanValidated": false,
+      "loreFidelityValidated": false,
+      "approvedForRuntime": false,
+      "status": "draft_requires_redraw",
+      "reviewIssues": "Armement, équipements de survie et proportions à établir.",
+      "alphaMin": 0,
+      "alphaMax": 251,
+      "visiblePixels": 2070,
+      "visibleBounds": [
+        20,
+        26,
+        60,
+        92
+      ],
+      "pivotPixels": [
+        40,
+        92
+      ],
+      "pivotKind": "geometric_provisional",
+      "inGameTested": false
+    },
+    {
+      "id": "nyx-17.face.draft",
+      "characterId": "nyx-17",
+      "name": "NYX-17",
+      "species": "Synthétique originale",
+      "file": "sprites/nyx-17/nyx-17__face__brouillon.png",
+      "width": 80,
+      "height": 96,
+      "sourceRect": [
+        124,
+        343,
+        183,
+        418
+      ],
+      "foregroundSourceBounds": [
+        15,
+        2,
+        53,
+        64
+      ],
+      "sha256": "436363f663182f93bc595281982bfdd0b4bdd2ab460d64958f266d5f5a678273",
+      "sourcePixelsResized": false,
+      "frames": 1,
+      "animationReady": false,
+      "humanValidated": false,
+      "loreFidelityValidated": false,
+      "approvedForRuntime": false,
+      "status": "draft_requires_redraw",
+      "reviewIssues": "Aucune référence visuelle approuvée ; aspect générique à revoir.",
+      "alphaMin": 0,
+      "alphaMax": 252,
+      "visiblePixels": 1909,
+      "visibleBounds": [
+        21,
+        30,
+        59,
+        92
+      ],
+      "pivotPixels": [
+        40,
+        92
+      ],
+      "pivotKind": "geometric_provisional",
+      "inGameTested": false
+    },
+    {
+      "id": "nyx-17.profil-droite.draft",
+      "characterId": "nyx-17",
+      "name": "NYX-17",
+      "species": "Synthétique originale",
+      "file": "sprites/nyx-17/nyx-17__profil-droite__brouillon.png",
+      "width": 80,
+      "height": 96,
+      "sourceRect": [
+        187,
+        343,
+        245,
+        418
+      ],
+      "foregroundSourceBounds": [
+        17,
+        1,
+        49,
+        65
+      ],
+      "sha256": "75ea85e2e2a1cb7312c0adaebec72b923533ffcc9a73f92b7af676a0ebf32fd1",
+      "sourcePixelsResized": false,
+      "frames": 1,
+      "animationReady": false,
+      "humanValidated": false,
+      "loreFidelityValidated": false,
+      "approvedForRuntime": false,
+      "status": "draft_requires_redraw",
+      "reviewIssues": "Aucune référence visuelle approuvée ; aspect générique à revoir.",
+      "alphaMin": 0,
+      "alphaMax": 250,
+      "visiblePixels": 1564,
+      "visibleBounds": [
+        24,
+        28,
+        56,
+        92
+      ],
+      "pivotPixels": [
+        40,
+        92
+      ],
+      "pivotKind": "geometric_provisional",
+      "inGameTested": false
+    },
+    {
+      "id": "nyx-17.profil-gauche.draft",
+      "characterId": "nyx-17",
+      "name": "NYX-17",
+      "species": "Synthétique originale",
+      "file": "sprites/nyx-17/nyx-17__profil-gauche__brouillon.png",
+      "width": 80,
+      "height": 96,
+      "sourceRect": [
+        247,
+        343,
+        309,
+        418
+      ],
+      "foregroundSourceBounds": [
+        18,
+        2,
+        47,
+        65
+      ],
+      "sha256": "0112a056f34a5a31442df14e065e8072d03d3ffa44e364e8d65b1e3b69943de9",
+      "sourcePixelsResized": false,
+      "frames": 1,
+      "animationReady": false,
+      "humanValidated": false,
+      "loreFidelityValidated": false,
+      "approvedForRuntime": false,
+      "status": "draft_requires_redraw",
+      "reviewIssues": "Aucune référence visuelle approuvée ; aspect générique à revoir.",
+      "alphaMin": 0,
+      "alphaMax": 251,
+      "visiblePixels": 1434,
+      "visibleBounds": [
+        25,
+        29,
+        54,
+        92
+      ],
+      "pivotPixels": [
+        40,
+        92
+      ],
+      "pivotKind": "geometric_provisional",
+      "inGameTested": false
+    },
+    {
+      "id": "nyx-17.dos.draft",
+      "characterId": "nyx-17",
+      "name": "NYX-17",
+      "species": "Synthétique originale",
+      "file": "sprites/nyx-17/nyx-17__dos__brouillon.png",
+      "width": 80,
+      "height": 96,
+      "sourceRect": [
+        310,
+        343,
+        375,
+        418
+      ],
+      "foregroundSourceBounds": [
+        10,
+        2,
+        46,
+        65
+      ],
+      "sha256": "8321c7ffa2c6ac26dee18d20fa5bee869b289dcfc2b808b7f0dffdb226aa5f86",
+      "sourcePixelsResized": false,
+      "frames": 1,
+      "animationReady": false,
+      "humanValidated": false,
+      "loreFidelityValidated": false,
+      "approvedForRuntime": false,
+      "status": "draft_requires_redraw",
+      "reviewIssues": "Aucune référence visuelle approuvée ; aspect générique à revoir.",
+      "alphaMin": 0,
+      "alphaMax": 253,
+      "visiblePixels": 1808,
+      "visibleBounds": [
+        22,
+        29,
+        58,
+        92
+      ],
+      "pivotPixels": [
+        40,
+        92
+      ],
+      "pivotKind": "geometric_provisional",
+      "inGameTested": false
+    },
+    {
+      "id": "morrigan-9.face.draft",
+      "characterId": "morrigan-9",
+      "name": "MORRIGAN-9",
+      "species": "Synthétique originale",
+      "file": "sprites/morrigan-9/morrigan-9__face__brouillon.png",
+      "width": 80,
+      "height": 96,
+      "sourceRect": [
+        508,
+        343,
+        567,
+        418
+      ],
+      "foregroundSourceBounds": [
+        15,
+        2,
+        53,
+        64
+      ],
+      "sha256": "b951af2ca3877e7d4056362c4a3cef7f1c3d50dd00e8449d155d2c03915de43f",
+      "sourcePixelsResized": false,
+      "frames": 1,
+      "animationReady": false,
+      "humanValidated": false,
+      "loreFidelityValidated": false,
+      "approvedForRuntime": false,
+      "status": "draft_requires_redraw",
+      "reviewIssues": "Apparence proche d’une armure yautja ; identité synthétique et capteurs à préciser.",
+      "alphaMin": 0,
+      "alphaMax": 252,
+      "visiblePixels": 1926,
+      "visibleBounds": [
+        21,
+        30,
+        59,
+        92
+      ],
+      "pivotPixels": [
+        40,
+        92
+      ],
+      "pivotKind": "geometric_provisional",
+      "inGameTested": false
+    },
+    {
+      "id": "morrigan-9.profil-droite.draft",
+      "characterId": "morrigan-9",
+      "name": "MORRIGAN-9",
+      "species": "Synthétique originale",
+      "file": "sprites/morrigan-9/morrigan-9__profil-droite__brouillon.png",
+      "width": 80,
+      "height": 96,
+      "sourceRect": [
+        571,
+        343,
+        629,
+        418
+      ],
+      "foregroundSourceBounds": [
+        15,
+        2,
+        53,
+        65
+      ],
+      "sha256": "cc355199404f644131b88ee81d9c82acf303b40da00f2732dab903dc2db3384d",
+      "sourcePixelsResized": false,
+      "frames": 1,
+      "animationReady": false,
+      "humanValidated": false,
+      "loreFidelityValidated": false,
+      "approvedForRuntime": false,
+      "status": "draft_requires_redraw",
+      "reviewIssues": "Apparence proche d’une armure yautja ; identité synthétique et capteurs à préciser.",
+      "alphaMin": 0,
+      "alphaMax": 254,
+      "visiblePixels": 1893,
+      "visibleBounds": [
+        21,
+        29,
+        59,
+        92
+      ],
+      "pivotPixels": [
+        40,
+        92
+      ],
+      "pivotKind": "geometric_provisional",
+      "inGameTested": false
+    },
+    {
+      "id": "morrigan-9.profil-gauche.draft",
+      "characterId": "morrigan-9",
+      "name": "MORRIGAN-9",
+      "species": "Synthétique originale",
+      "file": "sprites/morrigan-9/morrigan-9__profil-gauche__brouillon.png",
+      "width": 80,
+      "height": 96,
+      "sourceRect": [
+        631,
+        343,
+        693,
+        418
+      ],
+      "foregroundSourceBounds": [
+        22,
+        2,
+        52,
+        66
+      ],
+      "sha256": "bfbe5a167d207123492068f1aa45f098da264921040492a63de3f6ec003672b8",
+      "sourcePixelsResized": false,
+      "frames": 1,
+      "animationReady": false,
+      "humanValidated": false,
+      "loreFidelityValidated": false,
+      "approvedForRuntime": false,
+      "status": "draft_requires_redraw",
+      "reviewIssues": "Apparence proche d’une armure yautja ; identité synthétique et capteurs à préciser.",
+      "alphaMin": 0,
+      "alphaMax": 253,
+      "visiblePixels": 1554,
+      "visibleBounds": [
+        25,
+        28,
+        55,
+        92
+      ],
+      "pivotPixels": [
+        40,
+        92
+      ],
+      "pivotKind": "geometric_provisional",
+      "inGameTested": false
+    },
+    {
+      "id": "morrigan-9.dos.draft",
+      "characterId": "morrigan-9",
+      "name": "MORRIGAN-9",
+      "species": "Synthétique originale",
+      "file": "sprites/morrigan-9/morrigan-9__dos__brouillon.png",
+      "width": 80,
+      "height": 96,
+      "sourceRect": [
+        694,
+        343,
+        759,
+        418
+      ],
+      "foregroundSourceBounds": [
+        12,
+        2,
+        51,
+        65
+      ],
+      "sha256": "857f1bd39dd0232cf2be8da1ade8b52946c98ac45b26d5b1cfdb7e6e8dc828eb",
+      "sourcePixelsResized": false,
+      "frames": 1,
+      "animationReady": false,
+      "humanValidated": false,
+      "loreFidelityValidated": false,
+      "approvedForRuntime": false,
+      "status": "draft_requires_redraw",
+      "reviewIssues": "Apparence proche d’une armure yautja ; identité synthétique et capteurs à préciser.",
+      "alphaMin": 0,
+      "alphaMax": 253,
+      "visiblePixels": 1917,
+      "visibleBounds": [
+        20,
+        29,
+        59,
+        92
+      ],
+      "pivotPixels": [
+        40,
+        92
+      ],
+      "pivotKind": "geometric_provisional",
+      "inGameTested": false
+    }
+  ]
+}
