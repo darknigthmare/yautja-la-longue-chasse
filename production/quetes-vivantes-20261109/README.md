@@ -9,7 +9,7 @@ Le code du lot est dans `84a8ff61e4d08ab8ebd9875b56b01fbb97636fbe`, à partir de
 ### Du contenu jouable, pas seulement des consignes
 
 - Douze opérations du Clan Ship ont leurs résumés, demandes et étapes réécrits. Les trois incidents et les trois issues du retour du Berceau sont également repris. Les identifiants, récompenses, prérequis et actions restent ceux du moteur.
-- Six contacts ont une voix propre : Balafre de Cendre, Veille des Routes, Griffe de Fer, Trace Froide, Suture Noire et Garde du Seuil.
+- Six contacts ont une voix propre : Balafre de Cendre, Veille des Astres, Griffe de Fer, Trace Froide, Suture Noire et Garde du Seuil.
 - Cinquante variantes de répliques alimentent quatre sujets accessibles au vrai poste : prendre des nouvelles, prochaine sortie, accord et dernier affrontement.
 - Les répliques consultent le contrat en cours, les accords existants et le dernier engagement spatial réellement enregistré : victoire, défaite et repli ne sont pas confondus. Aucun mensonge sur une blessure précise ou un trophée non prélevé.
 - Le modèle ne crée aucun événement de progression. Aucun recrutement, quartier, marque, honneur ou trophée n'est accordé en parlant. Réserve, affectation, suspension et audience C37 sont respectées ; aucun personnage absent n'est créé.
@@ -30,7 +30,7 @@ La technologie avancée n'est pas remplacée par un folklore arbitraire. Les mot
 
 Les prérequis de campagne sont préparés par les reducers de production, pas joués dans cette recette : adulte, 1 912 marques et sept contrats accomplis. Aucun recrutement, engagement spatial victorieux ou échange n'est prérempli. L'escorte est ensuite exécutée dans le navigateur.
 
-Trois captures ont été ouvertes individuellement lors de cette passe : Griffe de Fer en 1 440 px, Suture Noire en 390 px et Veille des Routes après escorte en 320 px. Les répliques et quatre commandes y sont lisibles. Une notification existante recouvre une partie du pied du panneau sur les captures mobiles ; elle ne bloque pas les boutons testés. Les 21 PNG sont conservés dans l'archive, mais une revue visuelle exhaustive des 21 images n'est pas revendiquée.
+Trois captures ont été ouvertes individuellement lors de cette passe : Griffe de Fer en 1 440 px, Suture Noire en 390 px et Veille des Astres après escorte en 320 px. Les répliques et quatre commandes y sont lisibles. Une notification existante recouvre une partie du pied du panneau sur les captures mobiles ; elle ne bloque pas les boutons testés. Les 21 PNG sont conservés dans l'archive, mais une revue visuelle exhaustive des 21 images n'est pas revendiquée.
 
 Ce parcours ne qualifie ni toute la campagne, ni un mobile réel, ni une manette physique, ni la fidélité artistique 1:1. Aucun nouveau build global de production n'est annoncé. Les scènes et sprites existants sont réemployés ; aucun nouveau sprite, cycle, son ou VFX dédié n'est livré.
 
