@@ -134,6 +134,13 @@ jobs:
           tests/hunt-catalogue-contract-v112.test.mjs
           tests/hunt-field-guide-v112.test.mjs
           tests/hunt-ground-recovery-v112.test.mjs
+          tests/hunt-skinning-worksite-20261109.test.mjs
+          tests/canopy-navigation-v112.test.mjs
+          tests/hunt-canopy-resume-cooldown-20261109.test.mjs
+          tests/hunt-field-presentation-v112.test.mjs
+          tests/hunt-field-feedback-20261109.test.mjs
+          tests/hunter-rig-origin.test.mjs
+          tests/canopy-grip-presentation-v112.test.mjs
       - name: Load immutable generator baseline for seeded source comparison
         if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
         run: git fetch --no-tags --depth=1 --filter=blob:none origin e1e45fbf85d843c26ac1bf4f816baf46313795b0
@@ -145,6 +152,13 @@ jobs:
           app/game/HuntCanvas.tsx app/game/GameClient.tsx app/game/useMenuGamepad.ts
           app/game/HuntRitesMenuV77.tsx app/game/systems/huntRitesRuntimeV77.ts app/game/systems/ritesOfHuntV77.ts
           scripts/qa-hunt-harvest-preview-browser-20261109.mjs tests/browser/hunt-harvest-preview-20261109.fixture.jsx
+          app/game/HuntCanopyHudV112.tsx app/game/sound.ts
+          app/game/systems/canopyNavigationV112.ts app/game/systems/canopySupportRendererV112.ts
+          app/game/systems/canopyGripPresentationV112.ts tests/canopy-grip-presentation-v112.test.mjs
+          app/game/systems/huntFieldPresentationV112.ts app/game/systems/huntFieldFeedbackV112.ts
+          tests/hunt-skinning-worksite-20261109.test.mjs tests/canopy-navigation-v112.test.mjs
+          tests/hunt-canopy-resume-cooldown-20261109.test.mjs tests/hunt-field-presentation-v112.test.mjs
+          tests/hunt-field-feedback-20261109.test.mjs tests/hunter-rig-origin.test.mjs
           app/game/discoverySignalsV112.ts
           app/game/systems/harvestInventoryV112.ts app/game/PlanetGeneratorV103.tsx
           app/game/systems/clanWarPlanetGeneratorV115.ts app/game/systems/clanWarTextureLibraryV115.ts
@@ -186,6 +200,78 @@ jobs:
           name: hunt-closure-v112-native-${{ github.sha }}
           path: outputs/qa-v112-followup/
           if-no-files-found: warn
+          retention-days: 30
+
+  durable-field:
+    name: Native GameClient skinning, sidecar resume and canopy
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    env:
+      ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
+      NEXT_TELEMETRY_DISABLED: '1'
+      CHROMIUM_EXECUTABLE: /usr/bin/google-chrome
+      SKINNING_CANOPY_QA_OUTPUT: outputs/qa-skinning-canopy-20261109
+    steps:
+      - name: Checkout current application and exact asset index
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+          fetch-depth: 3
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /*
+            !/*/
+            /app/
+            /tests/
+            /scripts/
+            /build/
+            /.openai/hosting.json
+            /public/**/manifest.json
+      - name: Node 22
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+      - name: Materialize and verify the original assets actually used by this recipe
+        run: |
+          node --input-type=module <<'NODE'
+          import assert from 'node:assert/strict';
+          import {execFileSync} from 'node:child_process';
+          import {readFileSync,lstatSync} from 'node:fs';
+          import {createHash} from 'node:crypto';
+          const index=JSON.parse(readFileSync('tests/fixtures/skinning-canopy-browser-assets-20261109.json','utf8'));
+          assert.equal(index.schemaVersion,1);
+          assert.ok(index.assets.length>0);
+          const seen=new Set();
+          for(const asset of index.assets){
+            assert.ok(asset.path.startsWith('public/')&&!asset.path.includes('..')&&!asset.path.includes('\\'));
+            assert.ok(!seen.has(asset.path));seen.add(asset.path);
+            assert.match(asset.gitBlob,/^[a-f0-9]{40}$/);
+            assert.match(asset.sha256,/^[a-f0-9]{64}$/);
+          }
+          execFileSync('git',['sparse-checkout','add','--stdin'],{input:[...seen].sort().map(p=>'/'+p).join('\n')+'\n',stdio:['pipe','inherit','inherit']});
+          let bytes=0;
+          for(const asset of index.assets){
+            const info=lstatSync(asset.path);assert.ok(info.isFile()&&!info.isSymbolicLink());
+            const raw=readFileSync(asset.path);bytes+=raw.length;
+            assert.equal(raw.length,asset.bytes,asset.path);
+            assert.equal(createHash('sha256').update(raw).digest('hex'),asset.sha256,asset.path);
+            assert.equal(execFileSync('git',['hash-object','--',asset.path],{encoding:'utf8'}).trim(),asset.gitBlob,asset.path);
+          }
+          console.log(JSON.stringify({originalAssets:seen.size,bytes,substituteAssets:false}));
+          NODE
+      - name: Install locked dependencies without lifecycle scripts
+        run: npm ci --ignore-scripts --no-audit --no-fund
+      - name: Strict lint of the full GameClient browser recipe
+        run: node node_modules/eslint/bin/eslint.js --max-warnings=0 scripts/qa-skinning-canopy-durable-browser-20261109.mjs tests/browser/skinning-canopy-durable-20261109.fixture.jsx
+      - name: Play field work, durable reloads, extraction, workshop and canopy
+        run: node scripts/qa-skinning-canopy-durable-browser-20261109.mjs
+      - name: Preserve the actual browser report and original captures
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: skinning-canopy-durable-${{ github.sha }}
+          path: outputs/qa-skinning-canopy-20261109/
+          if-no-files-found: error
           retention-days: 30
 
   browser:

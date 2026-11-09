@@ -65,7 +65,8 @@ import { applyExplorationWorld, discoverExplorationRooms, interactWithExploratio
 import { defaultExplorationProgress, normalizeExplorationProgress, mergeExplorationProgress, explorationBonuses, isExplorationMission, explorationForMission } from "./systems/explorationProgress";
 import { OSERIS_VERTICAL_BOUNDS, PILOT_MISSION_ID, targetOserisCameraY } from "./systems/metroidvaniaPilot";
 import { resolvePlatformMotion, overlapsSolidPlatform, type PlatformMotionResult } from "./systems/platformCollision";
-import { attachCanopySwingV112, canopySupportReachableV112, isCanopySwingSnapshotV112, releaseCanopySwingV112, stepCanopySwingV112, type CanopySwingV112 } from "./systems/canopyTraversalV112";
+import { attachCanopySwingV112, canopySupportReachableV112, canopySwingPointV112, isCanopySwingSnapshotV112, releaseCanopySwingV112, stepCanopySwingV112, type CanopySwingV112 } from "./systems/canopyTraversalV112";
+import { solveCanopyGripRigV112 } from "./systems/canopyGripPresentationV112";
 import { canopyNavigationV112, type CanopyNavigationV112 } from "./systems/canopyNavigationV112";
 import { describeHuntFieldWorkV112, solveHuntFieldWorkRigV112, drawHuntFieldWorkV112,
   describePreparedCorpseV112, drawPreparedCorpseV112, huntFieldWorkReachableV112 } from "./systems/huntFieldPresentationV112";
@@ -1146,7 +1147,15 @@ function solvePlayerRigFrame(
       HUNTER_RIG_CANVAS.groundY,
   };
   const fieldWork = currentHuntFieldWorkV112(state, player);
-  return fieldWork ? solveHuntFieldWorkRigV112(rigInput, fieldWork) : solveHunterRig(rigInput);
+  if (fieldWork) return solveHuntFieldWorkRigV112(rigInput, fieldWork);
+  const swing = player.canopySwing;
+  if (player.climbing && swing) {
+    const support = state.world.climbables.find(zone => zone.id === swing.supportId);
+    if (support && canopySupportReachableV112(player, support, state.world.platforms, swing)) {
+      return solveCanopyGripRigV112(rigInput, canopySwingPointV112(swing, support));
+    }
+  }
+  return solveHunterRig(rigInput);
 }
 
 function distance(a: Vec2, b: Vec2): number {
