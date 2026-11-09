@@ -671,6 +671,8 @@ export interface SaveGame {
   clanShipTrophyHearing?: import("./systems/clanShipTrophyHearing").ClanShipTrophyHearingState | null;
   /** Optional physical OPS-B04 return; existing incident/audience journals keep their meaning. */
   clanShipReturnEscort?: import("./systems/clanShipReturnEscort").ClanShipReturnEscortState | null;
+  /** Optional owner-bound mobility register; legacy saves receive no property or permit. */
+  mobilityV1?: import("./systems/mobility/ledger").MobilityLedger | null;
   /** Null preserves pre-prologue adult campaigns without retroactive narrative proof. */
   prologue: NurseryCampaignProgress | null;
   /** Actual Unblooded exercises and equipment; never the adult starter loadout. */

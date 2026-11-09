@@ -1,0 +1,730 @@
+TAP version 13
+# Subtest: old campaigns retain absent or null operations through portable and complete archives
+ok 1 - old campaigns retain absent or null operations through portable and complete archives
+  ---
+  duration_ms: 16.234521
+  type: 'test'
+  ...
+# Subtest: partial welcome, ordered interior work, crew and an active space turn survive reopening and import
+ok 2 - partial welcome, ordered interior work, crew and an active space turn survive reopening and import
+  ---
+  duration_ms: 40.813411
+  type: 'test'
+  ...
+# Subtest: future, foreign and inconsistent operations cannot replace a confirmed campaign or enter an archive
+ok 3 - future, foreign and inconsistent operations cannot replace a confirmed campaign or enter an archive
+  ---
+  duration_ms: 8.648948
+  type: 'test'
+  ...
+# Subtest: a future operations primary remains protected beside an older valid backup
+ok 4 - a future operations primary remains protected beside an older valid backup
+  ---
+  duration_ms: 1.338719
+  type: 'test'
+  ...
+# Subtest: quota failure keeps a contract and its currency together, and a retry pays only once
+ok 5 - quota failure keeps a contract and its currency together, and a retry pays only once
+  ---
+  duration_ms: 2.621435
+  type: 'test'
+  ...
+# Subtest: an uncertain reward write is recovered without recomputing or applying its command again
+ok 6 - an uncertain reward write is recovered without recomputing or applying its command again
+  ---
+  duration_ms: 1.313401
+  type: 'test'
+  ...
+# Subtest: two independent storage views cannot overwrite the same reward or recruitment with stale state
+ok 7 - two independent storage views cannot overwrite the same reward or recruitment with stale state
+  ---
+  duration_ms: 4.369472
+  type: 'test'
+  ...
+# Subtest: save boundaries reject mismatched mission bindings while preserving legacy completion counts
+ok 8 - save boundaries reject mismatched mission bindings while preserving legacy completion counts
+  ---
+  duration_ms: 8.078908
+  type: 'test'
+  ...
+# Subtest: a field mission, its contract receipt and its bonus are one durable reward snapshot
+ok 9 - a field mission, its contract receipt and its bonus are one durable reward snapshot
+  ---
+  duration_ms: 3.724889
+  type: 'test'
+  ...
+# Subtest: manual checkpoints restore the exact space turn and currency before replaying later commands
+ok 10 - manual checkpoints restore the exact space turn and currency before replaying later commands
+  ---
+  duration_ms: 47.907974
+  type: 'test'
+  ...
+# Subtest: replacing a campaign does not transfer an earned crew to its new owner
+ok 11 - replacing a campaign does not transfer an earned crew to its new owner
+  ---
+  duration_ms: 1.498451
+  type: 'test'
+  ...
+# Subtest: catalogue retains exactly the fifty bible identities and all acquisition text
+ok 12 - catalogue retains exactly the fifty bible identities and all acquisition text
+  ---
+  duration_ms: 1.130596
+  type: 'test'
+  ...
+# Subtest: legacy absent register grants no vehicle or permit
+ok 13 - legacy absent register grants no vehicle or permit
+  ---
+  duration_ms: 0.208254
+  type: 'test'
+  ...
+# Subtest: non-sale acquisition is protected: blade_fighter_k93
+ok 14 - non-sale acquisition is protected: blade_fighter_k93
+  ---
+  duration_ms: 0.501457
+  type: 'test'
+  ...
+# Subtest: non-sale acquisition is protected: blade_fighter_viper
+ok 15 - non-sale acquisition is protected: blade_fighter_viper
+  ---
+  duration_ms: 0.08609
+  type: 'test'
+  ...
+# Subtest: non-sale acquisition is protected: hunter_hoverbike
+ok 16 - non-sale acquisition is protected: hunter_hoverbike
+  ---
+  duration_ms: 0.178149
+  type: 'test'
+  ...
+# Subtest: non-sale acquisition is protected: scout_grav_sled
+ok 17 - non-sale acquisition is protected: scout_grav_sled
+  ---
+  duration_ms: 0.060721
+  type: 'test'
+  ...
+# Subtest: non-sale acquisition is protected: hunter_speeder
+ok 18 - non-sale acquisition is protected: hunter_speeder
+  ---
+  duration_ms: 0.088624
+  type: 'test'
+  ...
+# Subtest: non-sale acquisition is protected: thunder_fang_warbike
+ok 19 - non-sale acquisition is protected: thunder_fang_warbike
+  ---
+  duration_ms: 0.050917
+  type: 'test'
+  ...
+# Subtest: non-sale acquisition is protected: sand_skimmer
+ok 20 - non-sale acquisition is protected: sand_skimmer
+  ---
+  duration_ms: 0.231069
+  type: 'test'
+  ...
+# Subtest: non-sale acquisition is protected: swamp_skimmer
+ok 21 - non-sale acquisition is protected: swamp_skimmer
+  ---
+  duration_ms: 0.269646
+  type: 'test'
+  ...
+# Subtest: non-sale acquisition is protected: ice_skimmer
+ok 22 - non-sale acquisition is protected: ice_skimmer
+  ---
+  duration_ms: 0.137067
+  type: 'test'
+  ...
+# Subtest: non-sale acquisition is protected: jungle_strider
+ok 23 - non-sale acquisition is protected: jungle_strider
+  ---
+  duration_ms: 0.055343
+  type: 'test'
+  ...
+# Subtest: non-sale acquisition is protected: cliff_crawler
+ok 24 - non-sale acquisition is protected: cliff_crawler
+  ---
+  duration_ms: 0.035424
+  type: 'test'
+  ...
+# Subtest: non-sale acquisition is protected: burrower_tunnel_rig
+ok 25 - non-sale acquisition is protected: burrower_tunnel_rig
+  ---
+  duration_ms: 0.120632
+  type: 'test'
+  ...
+# Subtest: non-sale acquisition is protected: river_manta
+ok 26 - non-sale acquisition is protected: river_manta
+  ---
+  duration_ms: 0.036615
+  type: 'test'
+  ...
+# Subtest: non-sale acquisition is protected: canopy_glider
+ok 27 - non-sale acquisition is protected: canopy_glider
+  ---
+  duration_ms: 0.027221
+  type: 'test'
+  ...
+# Subtest: non-sale acquisition is protected: hunt_deployment_skiff
+ok 28 - non-sale acquisition is protected: hunt_deployment_skiff
+  ---
+  duration_ms: 0.023396
+  type: 'test'
+  ...
+# Subtest: non-sale acquisition is protected: war_skiff
+ok 29 - non-sale acquisition is protected: war_skiff
+  ---
+  duration_ms: 0.022504
+  type: 'test'
+  ...
+# Subtest: non-sale acquisition is protected: siege_crawler
+ok 30 - non-sale acquisition is protected: siege_crawler
+  ---
+  duration_ms: 0.024037
+  type: 'test'
+  ...
+# Subtest: non-sale acquisition is protected: trophy_carrier
+ok 31 - non-sale acquisition is protected: trophy_carrier
+  ---
+  duration_ms: 0.022675
+  type: 'test'
+  ...
+# Subtest: non-sale acquisition is protected: grand_trophy_hauler
+ok 32 - non-sale acquisition is protected: grand_trophy_hauler
+  ---
+  duration_ms: 0.022955
+  type: 'test'
+  ...
+# Subtest: non-sale acquisition is protected: mobile_forge
+ok 33 - non-sale acquisition is protected: mobile_forge
+  ---
+  duration_ms: 0.032619
+  type: 'test'
+  ...
+# Subtest: non-sale acquisition is protected: medivac_scarab
+ok 34 - non-sale acquisition is protected: medivac_scarab
+  ---
+  duration_ms: 0.023806
+  type: 'test'
+  ...
+# Subtest: non-sale acquisition is protected: drop_spear_capsule
+ok 35 - non-sale acquisition is protected: drop_spear_capsule
+  ---
+  duration_ms: 0.022695
+  type: 'test'
+  ...
+# Subtest: non-sale acquisition is protected: escape_orb
+ok 36 - non-sale acquisition is protected: escape_orb
+  ---
+  duration_ms: 0.022404
+  type: 'test'
+  ...
+# Subtest: non-sale acquisition is protected: blood_runner
+ok 37 - non-sale acquisition is protected: blood_runner
+  ---
+  duration_ms: 0.023575
+  type: 'test'
+  ...
+# Subtest: non-sale acquisition is protected: bone_grinder
+ok 38 - non-sale acquisition is protected: bone_grinder
+  ---
+  duration_ms: 0.023155
+  type: 'test'
+  ...
+# Subtest: non-sale acquisition is protected: scavenger_raider
+ok 39 - non-sale acquisition is protected: scavenger_raider
+  ---
+  duration_ms: 0.022414
+  type: 'test'
+  ...
+# Subtest: non-sale acquisition is protected: trophy_thief_sled
+ok 40 - non-sale acquisition is protected: trophy_thief_sled
+  ---
+  duration_ms: 0.023566
+  type: 'test'
+  ...
+# Subtest: non-sale acquisition is protected: enforcer_pursuit_bike
+ok 41 - non-sale acquisition is protected: enforcer_pursuit_bike
+  ---
+  duration_ms: 0.050066
+  type: 'test'
+  ...
+# Subtest: non-sale acquisition is protected: enforcer_interceptor
+ok 42 - non-sale acquisition is protected: enforcer_interceptor
+  ---
+  duration_ms: 0.029895
+  type: 'test'
+  ...
+# Subtest: non-sale acquisition is protected: enforcer_prison_skiff
+ok 43 - non-sale acquisition is protected: enforcer_prison_skiff
+  ---
+  duration_ms: 0.025167
+  type: 'test'
+  ...
+# Subtest: non-sale acquisition is protected: arbiter_command_chariot
+ok 44 - non-sale acquisition is protected: arbiter_command_chariot
+  ---
+  duration_ms: 0.031358
+  type: 'test'
+  ...
+# Subtest: non-sale acquisition is protected: tracker_drone_sled
+ok 45 - non-sale acquisition is protected: tracker_drone_sled
+  ---
+  duration_ms: 0.023295
+  type: 'test'
+  ...
+# Subtest: non-sale acquisition is protected: barrier_carrier
+ok 46 - non-sale acquisition is protected: barrier_carrier
+  ---
+  duration_ms: 0.021832
+  type: 'test'
+  ...
+# Subtest: non-sale acquisition is protected: kha_rha
+ok 47 - non-sale acquisition is protected: kha_rha
+  ---
+  duration_ms: 0.022835
+  type: 'test'
+  ...
+# Subtest: non-sale acquisition is protected: war_kha_rha
+ok 48 - non-sale acquisition is protected: war_kha_rha
+  ---
+  duration_ms: 0.021713
+  type: 'test'
+  ...
+# Subtest: non-sale acquisition is protected: forest_stalker_mount
+ok 49 - non-sale acquisition is protected: forest_stalker_mount
+  ---
+  duration_ms: 0.049105
+  type: 'test'
+  ...
+# Subtest: non-sale acquisition is protected: sand_mauler
+ok 50 - non-sale acquisition is protected: sand_mauler
+  ---
+  duration_ms: 0.054192
+  type: 'test'
+  ...
+# Subtest: non-sale acquisition is protected: stoneback
+ok 51 - non-sale acquisition is protected: stoneback
+  ---
+  duration_ms: 0.048984
+  type: 'test'
+  ...
+# Subtest: non-sale acquisition is protected: ice_fang
+ok 52 - non-sale acquisition is protected: ice_fang
+  ---
+  duration_ms: 0.050055
+  type: 'test'
+  ...
+# Subtest: non-sale acquisition is protected: swamp_strider_mount
+ok 53 - non-sale acquisition is protected: swamp_strider_mount
+  ---
+  duration_ms: 0.051928
+  type: 'test'
+  ...
+# Subtest: non-sale acquisition is protected: night_stalker_mount
+ok 54 - non-sale acquisition is protected: night_stalker_mount
+  ---
+  duration_ms: 0.047701
+  type: 'test'
+  ...
+# Subtest: non-sale acquisition is protected: blood_beast
+ok 55 - non-sale acquisition is protected: blood_beast
+  ---
+  duration_ms: 0.036615
+  type: 'test'
+  ...
+# Subtest: non-sale acquisition is protected: elder_great_beast
+ok 56 - non-sale acquisition is protected: elder_great_beast
+  ---
+  duration_ms: 0.023646
+  type: 'test'
+  ...
+# Subtest: non-sale acquisition is protected: bone_bison_war_mount
+ok 57 - non-sale acquisition is protected: bone_bison_war_mount
+  ---
+  duration_ms: 0.031628
+  type: 'test'
+  ...
+# Subtest: non-sale acquisition is protected: razorwing
+ok 58 - non-sale acquisition is protected: razorwing
+  ---
+  duration_ms: 0.024017
+  type: 'test'
+  ...
+# Subtest: non-sale acquisition is protected: cliff_leaper
+ok 59 - non-sale acquisition is protected: cliff_leaper
+  ---
+  duration_ms: 0.022354
+  type: 'test'
+  ...
+# Subtest: non-sale acquisition is protected: burrow_wyrm_mount
+ok 60 - non-sale acquisition is protected: burrow_wyrm_mount
+  ---
+  duration_ms: 0.021913
+  type: 'test'
+  ...
+# Subtest: non-sale acquisition is protected: ash_horn
+ok 61 - non-sale acquisition is protected: ash_horn
+  ---
+  duration_ms: 0.022364
+  type: 'test'
+  ...
+# Subtest: non-sale acquisition is protected: storm_runner
+ok 62 - non-sale acquisition is protected: storm_runner
+  ---
+  duration_ms: 0.021894
+  type: 'test'
+  ...
+# Subtest: purchase requires permit, adequate rank and exact price
+ok 63 - purchase requires permit, adequate rank and exact price
+  ---
+  duration_ms: 0.286282
+  type: 'test'
+  ...
+# Subtest: upgrade cap and exact geometric cost: drive
+ok 64 - upgrade cap and exact geometric cost: drive
+  ---
+  duration_ms: 0.253873
+  type: 'test'
+  ...
+# Subtest: upgrade cap and exact geometric cost: armor
+ok 65 - upgrade cap and exact geometric cost: armor
+  ---
+  duration_ms: 0.156396
+  type: 'test'
+  ...
+# Subtest: upgrade cap and exact geometric cost: cargo
+ok 66 - upgrade cap and exact geometric cost: cargo
+  ---
+  duration_ms: 0.114522
+  type: 'test'
+  ...
+# Subtest: upgrade cap and exact geometric cost: cooling
+ok 67 - upgrade cap and exact geometric cost: cooling
+  ---
+  duration_ms: 0.096015
+  type: 'test'
+  ...
+# Subtest: repair and charge are independent; no cost/no-op exploit
+ok 68 - repair and charge are independent; no cost/no-op exploit
+  ---
+  duration_ms: 0.136596
+  type: 'test'
+  ...
+# Subtest: stale revision, foreign owner and changed quote cannot spend marks
+ok 69 - stale revision, foreign owner and changed quote cannot spend marks
+  ---
+  duration_ms: 0.043395
+  type: 'test'
+  ...
+# Subtest: invalid/future ledger rejected without normalization loss 0
+ok 70 - invalid/future ledger rejected without normalization loss 0
+  ---
+  duration_ms: 0.06612
+  type: 'test'
+  ...
+# Subtest: invalid/future ledger rejected without normalization loss 1
+ok 71 - invalid/future ledger rejected without normalization loss 1
+  ---
+  duration_ms: 0.041342
+  type: 'test'
+  ...
+# Subtest: invalid/future ledger rejected without normalization loss 2
+ok 72 - invalid/future ledger rejected without normalization loss 2
+  ---
+  duration_ms: 0.036235
+  type: 'test'
+  ...
+# Subtest: invalid/future ledger rejected without normalization loss 3
+ok 73 - invalid/future ledger rejected without normalization loss 3
+  ---
+  duration_ms: 0.043336
+  type: 'test'
+  ...
+# Subtest: invalid/future ledger rejected without normalization loss 4
+ok 74 - invalid/future ledger rejected without normalization loss 4
+  ---
+  duration_ms: 0.051487
+  type: 'test'
+  ...
+# Subtest: invalid/future ledger rejected without normalization loss 5
+ok 75 - invalid/future ledger rejected without normalization loss 5
+  ---
+  duration_ms: 0.044186
+  type: 'test'
+  ...
+# Subtest: invalid/future ledger rejected without normalization loss 6
+ok 76 - invalid/future ledger rejected without normalization loss 6
+  ---
+  duration_ms: 0.03954
+  type: 'test'
+  ...
+# Subtest: invalid/future ledger rejected without normalization loss 7
+ok 77 - invalid/future ledger rejected without normalization loss 7
+  ---
+  duration_ms: 0.035133
+  type: 'test'
+  ...
+# Subtest: invalid/future ledger rejected without normalization loss 8
+ok 78 - invalid/future ledger rejected without normalization loss 8
+  ---
+  duration_ms: 0.041232
+  type: 'test'
+  ...
+# Subtest: invalid/future ledger rejected without normalization loss 9
+ok 79 - invalid/future ledger rejected without normalization loss 9
+  ---
+  duration_ms: 0.040291
+  type: 'test'
+  ...
+# Subtest: invalid/future ledger rejected without normalization loss 10
+ok 80 - invalid/future ledger rejected without normalization loss 10
+  ---
+  duration_ms: 0.037347
+  type: 'test'
+  ...
+# Subtest: invalid/future ledger rejected without normalization loss 11
+ok 81 - invalid/future ledger rejected without normalization loss 11
+  ---
+  duration_ms: 0.034392
+  type: 'test'
+  ...
+# Subtest: invalid/future ledger rejected without normalization loss 12
+ok 82 - invalid/future ledger rejected without normalization loss 12
+  ---
+  duration_ms: 0.03349
+  type: 'test'
+  ...
+# Subtest: machine upgrades have actual tradeoffs and cargo mass affects handling
+ok 83 - machine upgrades have actual tradeoffs and cargo mass affects handling
+  ---
+  duration_ms: 0.121143
+  type: 'test'
+  ...
+# Subtest: loaner tutorial is actually driven: gates, physical cargo, stop, permit only
+ok 84 - loaner tutorial is actually driven: gates, physical cargo, stop, permit only
+  ---
+  duration_ms: 25.797157
+  type: 'test'
+  ...
+# Subtest: parking at start or recovery never grants permit
+ok 85 - parking at start or recovery never grants permit
+  ---
+  duration_ms: 0.356388
+  type: 'test'
+  ...
+# Subtest: own driving consumes energy, persists damage, blocks garage transactions
+ok 86 - own driving consumes energy, persists damage, blocks garage transactions
+  ---
+  duration_ms: 3.603876
+  type: 'test'
+  ...
+# Subtest: course serialization is lossless and input counts cannot fast-forward
+ok 87 - course serialization is lossless and input counts cannot fast-forward
+  ---
+  duration_ms: 0.414465
+  type: 'test'
+  ...
+# Subtest: fixed timestep clamps motion before obstacles and never tunnels through
+ok 88 - fixed timestep clamps motion before obstacles and never tunnels through
+  ---
+  duration_ms: 1.268604
+  type: 'test'
+  ...
+# Subtest: overheat suppresses boost and power exhaustion does not teleport
+ok 89 - overheat suppresses boost and power exhaustion does not teleport
+  ---
+  duration_ms: 0.082654
+  type: 'test'
+  ...
+# Subtest: NPC logistics remains in its lane and actually yields to nearby driver
+ok 90 - NPC logistics remains in its lane and actually yields to nearby driver
+  ---
+  duration_ms: 0.282637
+  type: 'test'
+  ...
+# Subtest: owned recovery records bounded debt once and keeps wear and energy
+ok 91 - owned recovery records bounded debt once and keeps wear and energy
+  ---
+  duration_ms: 2.751704
+  type: 'test'
+  ...
+# Subtest: debt blocks personal departure and workshop but not training loan
+ok 92 - debt blocks personal departure and workshop but not training loan
+  ---
+  duration_ms: 0.428672
+  type: 'test'
+  ...
+# Subtest: recovery settlement uses exact quote, current revision and one debit
+ok 93 - recovery settlement uses exact quote, current revision and one debit
+  ---
+  duration_ms: 0.293787
+  type: 'test'
+  ...
+# Subtest: insufficient funds cannot erase recovery debt
+ok 94 - insufficient funds cannot erase recovery debt
+  ---
+  duration_ms: 0.148376
+  type: 'test'
+  ...
+# Subtest: loan recovery gives no permit, debt or property
+ok 95 - loan recovery gives no permit, debt or property
+  ---
+  duration_ms: 0.12464
+  type: 'test'
+  ...
+# Subtest: prior draft ledger migrates only absent recovery fields without changing ownership
+ok 96 - prior draft ledger migrates only absent recovery fields without changing ownership
+  ---
+  duration_ms: 0.213424
+  type: 'test'
+  ...
+# Subtest: invalid recovery state rejected: negative debt
+ok 97 - invalid recovery state rejected: negative debt
+  ---
+  duration_ms: 0.168296
+  type: 'test'
+  ...
+# Subtest: invalid recovery state rejected: fractional debt
+ok 98 - invalid recovery state rejected: fractional debt
+  ---
+  duration_ms: 0.161065
+  type: 'test'
+  ...
+# Subtest: invalid recovery state rejected: partial migration
+ok 99 - invalid recovery state rejected: partial migration
+  ---
+  duration_ms: 0.235889
+  type: 'test'
+  ...
+# Subtest: controller rejects accepted but inconsistent receipt: stale revision
+ok 100 - controller rejects accepted but inconsistent receipt: stale revision
+  ---
+  duration_ms: 0.53283
+  type: 'test'
+  ...
+# Subtest: controller rejects accepted but inconsistent receipt: skipped revision
+ok 101 - controller rejects accepted but inconsistent receipt: skipped revision
+  ---
+  duration_ms: 0.22385
+  type: 'test'
+  ...
+# Subtest: controller rejects accepted but inconsistent receipt: wrong model
+ok 102 - controller rejects accepted but inconsistent receipt: wrong model
+  ---
+  duration_ms: 0.135506
+  type: 'test'
+  ...
+# Subtest: controller rejects accepted but inconsistent receipt: wrong position
+ok 103 - controller rejects accepted but inconsistent receipt: wrong position
+  ---
+  duration_ms: 0.126022
+  type: 'test'
+  ...
+# Subtest: cargo cannot be delivered and aboard at once or appear before checkpoint two
+ok 104 - cargo cannot be delivered and aboard at once or appear before checkpoint two
+  ---
+  duration_ms: 0.048785
+  type: 'test'
+  ...
+# Subtest: real campaign writer retains absent/null mobility without free defaults
+ok 105 - real campaign writer retains absent/null mobility without free defaults
+  ---
+  duration_ms: 7.038081
+  type: 'test'
+  ...
+# Subtest: purchase, upgrades and active motion survive the real writer, reload and portable archive
+ok 106 - purchase, upgrades and active motion survive the real writer, reload and portable archive
+  ---
+  duration_ms: 9.008938
+  type: 'test'
+  ...
+# Subtest: import refuses future without overwriting valid bytes
+ok 107 - import refuses future without overwriting valid bytes
+  ---
+  duration_ms: 0.8019
+  type: 'test'
+  ...
+# Subtest: import refuses foreign without overwriting valid bytes
+ok 108 - import refuses foreign without overwriting valid bytes
+  ---
+  duration_ms: 0.599842
+  type: 'test'
+  ...
+# Subtest: import refuses level without overwriting valid bytes
+ok 109 - import refuses level without overwriting valid bytes
+  ---
+  duration_ms: 0.65756
+  type: 'test'
+  ...
+# Subtest: import refuses NaN without overwriting valid bytes
+ok 110 - import refuses NaN without overwriting valid bytes
+  ---
+  duration_ms: 0.574143
+  type: 'test'
+  ...
+# Subtest: failed purchase write preserves primary balance and property
+ok 111 - failed purchase write preserves primary balance and property
+  ---
+  duration_ms: 1.082907
+  type: 'test'
+  ...
+# Subtest: uncertain purchase readback reconciles once without second debit
+ok 112 - uncertain purchase readback reconciles once without second debit
+  ---
+  duration_ms: 1.85466
+  type: 'test'
+  ...
+# Subtest: stale storage cannot overwrite another campaign writer
+ok 113 - stale storage cannot overwrite another campaign writer
+  ---
+  duration_ms: 1.447451
+  type: 'test'
+  ...
+# Subtest: UI controller preserves exact input and revision on failure then retries once
+ok 114 - UI controller preserves exact input and revision on failure then retries once
+  ---
+  duration_ms: 2.48572
+  type: 'test'
+  ...
+# Subtest: thrown write retains buffered sequence
+ok 115 - thrown write retains buffered sequence
+  ---
+  duration_ms: 0.257021
+  type: 'test'
+  ...
+# Subtest: forge access requires owner, physical counter and autonomous hunter
+ok 116 - forge access requires owner, physical counter and autonomous hunter
+  ---
+  duration_ms: 0.226404
+  type: 'test'
+  ...
+# Subtest: garage SSR shows all fifty models, real wallet and source-review status
+ok 117 - garage SSR shows all fifty models, real wallet and source-review status
+  ---
+  duration_ms: 42.427481
+  type: 'test'
+  ...
+# Subtest: garage SSR owned state shows four modules and distinct maintenance operations
+ok 118 - garage SSR owned state shows four modules and distinct maintenance operations
+  ---
+  duration_ms: 3.239335
+  type: 'test'
+  ...
+# Subtest: active course SSR exposes deterministic NPCs and starts paused
+ok 119 - active course SSR exposes deterministic NPCs and starts paused
+  ---
+  duration_ms: 2.235419
+  type: 'test'
+  ...
+# Subtest: live wiring uses one campaign transaction and explicit physical forge guards
+ok 120 - live wiring uses one campaign transaction and explicit physical forge guards
+  ---
+  duration_ms: 1.083437
+  type: 'test'
+  ...
+1..120
+# tests 120
+# suites 0
+# pass 120
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 4920.439964

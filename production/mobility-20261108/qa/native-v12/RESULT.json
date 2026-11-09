@@ -1,0 +1,113 @@
+{
+  "source_commit": "b5ba1086ba532389d9efa74b3df0108dcf6de3e6",
+  "delivery_manifest_sha256": "0db35813503c716e2768e38567d77f962bb7433458c8ae97d22c02fe59da2c61",
+  "workflow_run": "42504476009",
+  "tests_passed": 200,
+  "native_checks_passed": 29,
+  "control_checks_passed": 12,
+  "full_typecheck_passed": true,
+  "workbook_sheets": 24,
+  "formulas": 780,
+  "files": [
+    {
+      "file": "typecheck.txt",
+      "bytes": 58,
+      "sha256": "3da6c4638dd52e4dc6d2221944b3130961cb289e642465fba56c6fd292601f15",
+      "source_sha256": "7e963cd266edc6da8946458eef070015c14509120a807963ef61b9535323931b",
+      "terminal_newlines_normalized": true
+    },
+    {
+      "file": "tests.tap",
+      "bytes": 38346,
+      "sha256": "348a52f3262f25f98d0706009b1fa752b967f4de0c7ed1a18a54382a6a453ed9",
+      "source_sha256": "348a52f3262f25f98d0706009b1fa752b967f4de0c7ed1a18a54382a6a453ed9",
+      "terminal_newlines_normalized": false
+    },
+    {
+      "file": "workbook-report.json",
+      "bytes": 514,
+      "sha256": "65520635d5f85debc17a2f9af0fbb8690f248e3e02617aa6992c1b3afcf84775",
+      "source_sha256": "65520635d5f85debc17a2f9af0fbb8690f248e3e02617aa6992c1b3afcf84775",
+      "terminal_newlines_normalized": false
+    },
+    {
+      "file": "catalogue-report.json",
+      "bytes": 563,
+      "sha256": "65e6ee352861d0aa643a0a7e86d04a92b6119ef820eeb9d2e66bf58ee98f18fd",
+      "source_sha256": "65e6ee352861d0aa643a0a7e86d04a92b6119ef820eeb9d2e66bf58ee98f18fd",
+      "terminal_newlines_normalized": false
+    },
+    {
+      "file": "source-commit.txt",
+      "bytes": 41,
+      "sha256": "a1ec16ad23443d5bf14504391fb0942618747b8579b1c464749afec12e1792bc",
+      "source_sha256": "a1ec16ad23443d5bf14504391fb0942618747b8579b1c464749afec12e1792bc",
+      "terminal_newlines_normalized": false
+    },
+    {
+      "file": "controls-browser-report.json",
+      "bytes": 2444,
+      "sha256": "e3c1d1073f6c0697b192c65a2c7176157adfa5340e2ee99360f17fd1f9fa1c1a",
+      "source_sha256": "e3c1d1073f6c0697b192c65a2c7176157adfa5340e2ee99360f17fd1f9fa1c1a",
+      "terminal_newlines_normalized": false
+    },
+    {
+      "file": "browser-report.json",
+      "bytes": 3524,
+      "sha256": "1962e9b13e3d56a858684622de07daaad10f25c4b5c0eeff294f493fe2428cbb",
+      "source_sha256": "1962e9b13e3d56a858684622de07daaad10f25c4b5c0eeff294f493fe2428cbb",
+      "terminal_newlines_normalized": false
+    },
+    {
+      "file": "garage-desktop.png",
+      "bytes": 666095,
+      "sha256": "2eab4be5d0b6f26cd2802fa79e14807a52b49365b90fef2d9648ccfaa5652713",
+      "source_sha256": "2eab4be5d0b6f26cd2802fa79e14807a52b49365b90fef2d9648ccfaa5652713",
+      "terminal_newlines_normalized": false
+    },
+    {
+      "file": "garage-mobile.png",
+      "bytes": 376073,
+      "sha256": "67a919b4576abd285189d9bdc58517591bf0be9b30367c771e390d2e0b1308b2",
+      "source_sha256": "67a919b4576abd285189d9bdc58517591bf0be9b30367c771e390d2e0b1308b2",
+      "terminal_newlines_normalized": false
+    },
+    {
+      "file": "garage-earned-fleet.png",
+      "bytes": 999603,
+      "sha256": "52d53ddb2adce8d0c5dee1a79c4fd627bde99554f61ce3e1db54255d017ae4ce",
+      "source_sha256": "52d53ddb2adce8d0c5dee1a79c4fd627bde99554f61ce3e1db54255d017ae4ce",
+      "terminal_newlines_normalized": false
+    },
+    {
+      "file": "garage-upgrades-mobile.png",
+      "bytes": 675002,
+      "sha256": "b2d530b18e34e844ba4025bae734f30aea6e1e828b13ac7f9e33cfb41b673971",
+      "source_sha256": "b2d530b18e34e844ba4025bae734f30aea6e1e828b13ac7f9e33cfb41b673971",
+      "terminal_newlines_normalized": false
+    },
+    {
+      "file": "controls-touch-pad.png",
+      "bytes": 326365,
+      "sha256": "fa3d14866045569b2f5ef7b00040a7e93c13f9d75636505c9eefd356304f63d3",
+      "source_sha256": "fa3d14866045569b2f5ef7b00040a7e93c13f9d75636505c9eefd356304f63d3",
+      "terminal_newlines_normalized": false
+    },
+    {
+      "file": "yard-completed.png",
+      "bytes": 342519,
+      "sha256": "a30fb04f0d0a9b862d89cdaa15ac4f0264afc343726281f65b00e4f60545b60b",
+      "source_sha256": "a30fb04f0d0a9b862d89cdaa15ac4f0264afc343726281f65b00e4f60545b60b",
+      "terminal_newlines_normalized": false
+    },
+    {
+      "file": "garage-maintained.png",
+      "bytes": 1065062,
+      "sha256": "c0741e180fdbf389a35c1ee5dd5ab6fb26ba77fd8d5a6a95899f89b3d396df43",
+      "source_sha256": "c0741e180fdbf389a35c1ee5dd5ab6fb26ba77fd8d5a6a95899f89b3d396df43",
+      "terminal_newlines_normalized": false
+    }
+  ],
+  "scope": "Actual React component, reducer and writer; adult funding fixture, API gamepad, not full Homeworld journey or physical pad.",
+  "workflow_configuration": "Separate authorized connector publication; no workflow modifications by this job."
+}
