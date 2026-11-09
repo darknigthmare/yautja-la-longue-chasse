@@ -158,8 +158,9 @@ export function stepClanShipReturnEscort(state: ClanShipReturnEscortState, leade
   for (let index = 0; index < next.actors.length; index++) {
     const actor = next.actors[index], span = distance(actor, leader);
     if (span > 360) continue; // The player can return to the safely waiting group.
-    const trail = index === 0 ? 20 : 45;
-    const target = { x: leader.x + (leader.x <= actor.x ? trail : -trail), y: leader.y + (index === 0 ? -20 : 20) };
+    // Distinct flanks preserve readable feet around the leader. Both are
+    // inside the native 64-unit interaction reach at the authored thresholds.
+    const target = { x: leader.x + (index === 0 ? -40 : 40), y: leader.y - 40 };
     const destination = isClanShipInteriorWalkable(actor.roomId, target) ? target : leader;
     if (distance(actor, destination) < 1) continue;
     const path = planClanShipInteriorPath(actor.roomId, actor, destination);

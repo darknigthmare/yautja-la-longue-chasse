@@ -114,3 +114,35 @@ test('JSON property order never changes the meaning of an accepted return dossie
   const reordered = { ...accepted, actors: accepted.actors.map(actor => ({ facing: actor.facing, y: actor.y, x: actor.x, roomId: actor.roomId, id: actor.id })) };
   assert.equal(escort.inspectClanShipReturnEscort(reordered, OWNER).status, 'valid');
 });
+
+test('separate flanks keep both returnees clear of the leader at the doorway and at either medical destination, including after resume', () => {
+  const assertFormation = (save, leader) => {
+    const actors = save.clanShipReturnEscort.actors;
+    for (const [index, actor] of actors.entries()) {
+      const target = { x: leader.x + (index === 0 ? -40 : 40), y: leader.y - 40 };
+      assert.ok(motion.isClanShipInteriorWalkable(actor.roomId, target), 'authored flank must not fall back onto the leader');
+      assert.ok(motion.isClanShipInteriorWalkable(actor.roomId, actor));
+      assert.ok(Math.hypot(actor.x - target.x, actor.y - target.y) < 1, 'the real controller must reach its distinct flank');
+      const span = Math.hypot(actor.x - leader.x, actor.y - leader.y);
+      assert.ok(span > motion.CLAN_SHIP_INTERIOR_METRICS.actorRadius * 2, 'returnee feet must not overlap the player footprint');
+      assert.ok(span <= motion.CLAN_SHIP_INTERIOR_METRICS.interactionReach, 'spacing must preserve real interaction/door reach');
+    }
+    assert.ok(Math.hypot(actors[0].x - actors[1].x, actors[0].y - actors[1].y) > motion.CLAN_SHIP_INTERIOR_METRICS.actorRadius * 2);
+  };
+  let save = started(), marched = walk(save, motion.CLAN_SHIP_INTERIOR_ROOMS.hangar.servicePoint, { x: 128, y: 635 });
+  save = settle(marched.save, marched.leader);
+  assertFormation(save, marched.leader);
+  assert.ok(save.clanShipReturnEscort.actors.every(actor => motion.canClanShipInteriorTransition('hangar', 'soins', actor)), 'separated returnees must still enter through the actual threshold');
+  for (const post of ['medical-bed', 'medical-terminal']) {
+    const arrival = medicalApproach(post);
+    assertFormation(arrival.save, arrival.leader);
+    const resumed = saves.parseSaveImport(saves.exportSave(arrival.save)).save;
+    assert.ok(resumed);
+    assert.deepEqual(resumed.clanShipReturnEscort, arrival.save.clanShipReturnEscort);
+    assertFormation(resumed, arrival.leader);
+    const stopped = escort.stepClanShipReturnEscort(resumed.clanShipReturnEscort, point('soins', arrival.leader), 1 / 60);
+    assert.deepEqual(stopped.actors, resumed.clanShipReturnEscort.actors, 'resuming cannot collapse settled actors onto the player');
+    const admitted = act(resumed, { type: 'confirm-medical' }, point('soins', arrival.leader));
+    assert.equal(admitted.clanShipReturnEscort.phase, 'at-medical');
+  }
+});
