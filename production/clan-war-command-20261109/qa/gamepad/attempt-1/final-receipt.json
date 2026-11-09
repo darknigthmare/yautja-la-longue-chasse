@@ -1,0 +1,76 @@
+{
+  "schemaVersion": 1,
+  "passed": true,
+  "nativeChecksPassed": 13,
+  "nativeChecksFailed": 0,
+  "originalScreenshotsOpened": 2,
+  "sourceBeforeAfterEqual": true,
+  "sourceSha256": {
+    "app/game/useMenuGamepad.ts": "602879e33e5c0ecd1ceba063e28ce9c7c82e8a36e54d9d87f7f0e2f7d589cd35",
+    "app/game/systems/menuNavigation.ts": "0b51fd81acffe645a799a6247a0192a760b111e813733bfc38dc905a66a140cf",
+    "tests/browser/menu-native-dialog-20261109.fixture.tsx": "60c7bfd0985cb7b2c4ff70fdb163265a6b70e74e946ae2d1c7c7b10314644eb0",
+    "scripts/qa-menu-native-dialog-20261109.mjs": "b5eb3576acd9cce19a96d08e3bcce8657b6ed9811cb3d9075b6dcd82080a52a4"
+  },
+  "domainRegressionTestsPassed": 21,
+  "scope": "Actual production useMenuGamepad hook, React callbacks and browser-native dialog focus/cancel. navigator.getGamepads is a declared synthetic input provider; native RAF, focus, requestClose, cancel and DOM results are not mocked. No gameplay, saves, Next integration or physical-controller qualification.",
+  "physicalControllerTested": false,
+  "nextGameClientTested": false,
+  "fallbackBranchExercised": false,
+  "files": [
+    {
+      "path": "production/clan-war-command-20261109/qa/gamepad/attempt-1/report.browser-run.json",
+      "bytes": 3418,
+      "sha256": "5fce7580d136884ef6f37f5a9224ee894e908ae4615110d2d0a2b9d3dd4c1b61"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/gamepad/attempt-1/report.json",
+      "bytes": 4024,
+      "sha256": "1511fb12a474009a400335880d8702e4ad63d6e5fc7f221cf7d0c01c1986593b"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/gamepad/attempt-1/recipe-used.mjs",
+      "bytes": 9810,
+      "sha256": "b5eb3576acd9cce19a96d08e3bcce8657b6ed9811cb3d9075b6dcd82080a52a4"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/gamepad/attempt-1/screenshot-inspection.json",
+      "bytes": 592,
+      "sha256": "c7a1080b05ba1f867f0475aec0f9359e638ee1b17cb7f3f66e6fe477d972d283"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/gamepad/attempt-1/lint-final.json",
+      "bytes": 797,
+      "sha256": "7cfc4b83ca4a39897fb19aaac00774a0cf20cfe59d02d61cd269781722d58ce0"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/gamepad/attempt-1/lint-final.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/gamepad/attempt-1/01-native-top-layer.png",
+      "bytes": 43863,
+      "sha256": "2682f819d57d7a621fdab4261fcea8d6a678e73678a1546944eeacde183736de"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/gamepad/attempt-1/02-menu-restored.png",
+      "bytes": 30485,
+      "sha256": "4ed338cf970ab5aaf79f0ec87ac347e04a63dcc5de7a4e098df6481381d682f9"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/gamepad/unit-1/report.json",
+      "bytes": 595,
+      "sha256": "4f7a6d13d051f9a084b48e80cb963f9bbf7d4a8122c766d6054d69636c81dacb"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/gamepad/unit-1/menu-disabled-controls-v94.test.mjs.tap",
+      "bytes": 3204,
+      "sha256": "09873701fdb5d5173dd07e05a3bfcebf14d3c42bc4b20d65032ab29a766747b8"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/gamepad/unit-1/menu-navigation.test.mjs.tap",
+      "bytes": 1347,
+      "sha256": "4136579d5d5b7a62afd7fd0b20e8a54a8d36e57ccdd1692fe2de039bc4a41984"
+    }
+  ]
+}

@@ -55,11 +55,18 @@ import { createWarFencePortV94 } from "./systems/clanWarFenceV94";
 import { readWarOperationsArchive, writeWarOperationsArchive, repairWarOperationsArchive,
   adoptWarOperationsLegacyArchive, snapshotWarOperationsLegacyArchive, exportWarOperationsLegacyArchive,
   type WarOperationsArchiveBaseline, type WarOperationsLegacySnapshot } from "./systems/clanWarOperationsArchive";
+import ClanWarCommandOverlay from "./ClanWarCommandOverlay";
 import styles from "./ClanWarOperationsV115.module.css";
 
 const modeLabels: Record<WarMissionModeV115, string> = {
   assault: "Assaut latéral · déploiement AP", outer: "Mandats délégués · rapport différé",
   stealth: "Infiltration et sabotage", rts: "Bataille totale · commandement RTS",
+};
+const modeBriefings: Record<WarMissionModeV115, string> = {
+  assault: "Déployer vos formations sur une ligne de front et tenir votre bastion.",
+  outer: "Confier une route à un détachement et suivre son retour au clan.",
+  stealth: "Approcher sans bruit, neutraliser le relais et rejoindre l’extraction.",
+  rts: "Diriger vos escouades sur le terrain et accomplir l’objectif tactique.",
 };
 const focusLabels: Record<OuterFocusV115, string> = {
   recon: "Reconnaissance", intercept: "Interception", escort: "Protection de passage",
@@ -72,6 +79,7 @@ export default function ClanWarOperationsV115({rules,active=true,persist=false,i
     (initialScenarioId==="W3-RTS03"||initialScenarioId==="W3-RTS04")?"W3-K07":"W3-K02";
   const [world,setWorld]=useState<WarOperationsStateV115>(()=>createWarOperationsV115(rules));
   const worldRef=useRef(world);
+  const fieldRoot=useRef<HTMLElement>(null);
   const councilAudit=useMemo(()=>buildWarCouncilAuditV146(world,null,rules),[world,rules]);
   const knownArchiveBytesRef=useRef<string|null>(null);
   const archiveBaselineRef=useRef<WarOperationsArchiveBaseline|null>(null);
@@ -83,6 +91,8 @@ export default function ClanWarOperationsV115({rules,active=true,persist=false,i
   const activeV115Ref=useRef(active);
   useEffect(()=>{activeV115Ref.current=active;},[active]);
   useEffect(()=>{mountedV115Ref.current=true;return()=>{mountedV115Ref.current=false;};},[]);
+  const [commandPanel,setCommandPanel]=useState<"briefing"|"recruitment"|"medical"|"reports"|"archive"|null>(null);
+  const [briefingStep,setBriefingStep]=useState<"mode"|"target"|"teams">("mode");
   const [hydrated,setHydrated]=useState(false),[blocked,setBlocked]=useState(false);
   const [storageIssue,setStorageIssue]=useState(""),[message,setMessage]=useState("Choisissez votre théâtre, vos équipes, puis le type d'opération.");
   const [mode,setMode]=useState<WarMissionModeV115>(initialScenarioId?"rts":"assault"),[focus,setFocus]=useState<OuterFocusV115>("recon");
@@ -458,7 +468,7 @@ export default function ClanWarOperationsV115({rules,active=true,persist=false,i
     <button type="button" disabled={!active} onClick={()=>{void exportLegacyArchive();}}>Exporter les sources de récupération V115</button>
     <p role="status" aria-live="polite">{message}</p>
   </section>;
-  return <section className={styles.root} data-testid="clan-operations-v115" data-war-campaign-write="none" tabIndex={0}
+  return <section ref={fieldRoot} className={styles.root} data-testid="clan-operations-v115" data-war-campaign-write="none" data-war-operation-active={Boolean(current)} tabIndex={0}
     onKeyDown={event=>{
       const actor=worldRef.current.active?.stealth;
       const command=fieldKeyboardAction({key:event.key,repeat:event.repeat,
@@ -472,28 +482,26 @@ export default function ClanWarOperationsV115({rules,active=true,persist=false,i
       event.preventDefault();event.stopPropagation();
       commit(commandStealthV115(worldRef.current,command,rules));
     }} aria-label="Opérations de clan, exercice V115">
-    <div className={styles.intro}>
-      <div><span className={styles.overline}>CONSEIL DES MANDATS · EXERCICE V115</span><h3>Quatre façons de mener la guerre</h3>
-      <p>Une même équipe identifiable peut être envoyée en assaut latéral, en opération déléguée, en infiltration ou en bataille tactique. Les blessures, l&apos;expérience, les renseignements et les rapports suivent la même archive d&apos;exercice.</p></div>
-      <div>
-        <button type="button" className={styles.reset} disabled={blocked||!hydrated||!active} onClick={reset}>Réinitialiser V115 uniquement</button>
-        {persist&&<button type="button" disabled={!active} onClick={()=>{void exportLegacyArchive();}}>Exporter l’ancienne archive conservée</button>}
+    <header className={styles.intro}>
+      <div><span className={styles.overline}>POSTE DE COMMANDEMENT · OPÉRATIONS</span>
+        <h3>{current ? rules.territories.find(site=>site.id===current.targetId)?.name??current.targetId : "Conseil des mandats"}</h3>
+        <p>{current ? modeLabels[current.mode] : "Préparez votre détachement. Le conseil attend vos ordres."}</p>
       </div>
-    </div>
+      <span className={styles.signalState} data-blocked={blocked}>{blocked?"ARCHIVE VERROUILLÉE":persist?"REGISTRE LOCAL":"EXERCICE EN MÉMOIRE"}</span>
+    </header>
+    <nav className={styles.commandBar} aria-label="Postes de commandement des opérations">
+      <button type="button" className={styles.primaryCommand} disabled={blocked||!active} onClick={()=>{setBriefingStep("mode");setCommandPanel("briefing");}} data-war-command="briefing"><span aria-hidden="true">＋</span> Nouveau mandat</button>
+      <button type="button" onClick={()=>setCommandPanel("recruitment")} data-war-command="recruitment">Renforts <span>{world.pendingRecruits?.length??0}</span></button>
+      <button type="button" onClick={()=>setCommandPanel("medical")} data-war-command="medical">Triage <span>{world.teams.reduce((total,team)=>total+team.members.filter(member=>member.status==="wounded").length,0)}</span></button>
+      <button type="button" onClick={()=>setCommandPanel("reports")} data-war-command="reports">Comptes rendus <span>{world.reports.length}</span></button>
+      <button type="button" onClick={()=>setCommandPanel("archive")} data-war-command="archive">Archives et règles</button>
+    </nav>
     {holographic && <aside className={styles.gauntletRibbon} style={gauntletVars}
       aria-label="Projection tactique du gauntlet équipé" data-testid="clan-operations-gauntlet-v133" data-gauntlet-model={equipped?.id ?? "jungle-hunter"} data-current-mode={mode}>
-      <div><span className={styles.overline}>SIGNAL DU GAUNTLET · LECTURE OPÉRATIONNELLE</span>
-        <h4>{equipped?.name ?? "Jungle Hunter"} · {modeLabels[mode]}</h4>
-        <p>{gauntletReadout}</p>
-      </div>
-      <div className={styles.gauntletRibbonStatus}>
-        <span>Théâtre : {target?.name ?? targetId}</span>
-        <span>{current ? `Mission ${current.id} en cours` : "Aucune mission déployée"}</span>
-        <span>{world.intelIds.includes(targetId) ? "Renseignement déjà obtenu" : "Renseignement non confirmé"}</span>
-      </div>
-      <small>Lecture locale uniquement · les règles, ordres et rapports restent identiques en vue classique.</small>
+      <span className={styles.overline}>SIGNAL DU GAUNTLET · {equipped?.name ?? "Jungle Hunter"}</span>
+      <p>{gauntletReadout}</p>
+      <span className={styles.gauntletRibbonStatus}>{current ? `Mission ${current.id} en cours` : "Aucune mission déployée"}</span>
     </aside>}
-    <p className={styles.disclaimer}>Les unités, passages, coûts RAV et gains d&apos;expérience proviennent de la Bible V6. Les chronomètres, jauges AP, déplacements et IA de ces minijeux sont des paramètres de prototype, sans identité canonique ajoutée. Les victoires n&apos;annexent aucun site V85, ne délivrent aucun trophée et ne modifient pas la chasse principale.</p>
     {storageIssue && <p role="alert" className={styles.warning}>{storageIssue}</p>}
     {archiveRepair && <button type="button" disabled={!active} onClick={repairArchive}>Reprendre l’écriture V115 interrompue</button>}
     <div className={styles.metrics}>
@@ -501,145 +509,30 @@ export default function ClanWarOperationsV115({rules,active=true,persist=false,i
       <div>Vacations simulées<strong>{world.clock}</strong></div>
       <div>Équipes libres<strong>{available.length}/{world.teams.length}</strong></div>
       <div>Rapports enregistrés<strong>{world.reports.length}</strong></div>
-      <div>Dossiers source V146<strong>{councilAudit.total}</strong></div>
+      <div>Dossiers de mission<strong>{councilAudit.total}</strong></div>
     </div>
     <p className={styles.message} role="status" aria-live="polite">{message}</p>
-    <div className={styles.selector}>
-      <fieldset disabled={blocked}>
-        <legend>1. Choisir un mode</legend>
-        <div className={styles.modes}>{(Object.keys(modeLabels) as WarMissionModeV115[]).map(key=>
-          <button key={key} type="button" aria-pressed={mode===key} onClick={()=>setMode(key)}>{modeLabels[key]}</button>)}</div>
-      </fieldset>
-      <fieldset disabled={blocked}>
-        <legend>2. Mandat territorial et renseignements</legend>
-        <label>Territoire de la Bible V6
-          <select value={targetId} onChange={event=>setTargetId(event.target.value)}>
-            {rules.territories.filter(site=>site.id!==world.baseId).map(site=><option key={site.id} value={site.id}>{site.id} · {site.name}</option>)}
-          </select>
-        </label>
-        {target && <><p className={styles.explain}><strong>{target.name}</strong> · {target.region} · défense de terrain {target.terrainDefense} · renseignement {world.intelIds.includes(target.id)?"obtenu":"non confirmé"} · pression d&apos;exercice {world.pressure[target.id]??0}.</p>
-          <details className={styles.brief}><summary>Ordre territorial · Bible V6</summary>
-            <p><strong>Mission :</strong> {target.objective}</p><p><strong>Reconnaissance :</strong> {target.reconnaissance}</p>
-            <p><strong>Contrôle :</strong> {target.control}</p><p><strong>Vie locale :</strong> {target.life}</p><p><strong>Repli :</strong> {target.retreat}</p>
-          </details></>}
-        {mode==="outer" && <label>Consigne du détachement
-          <select value={focus} onChange={event=>setFocus(event.target.value as OuterFocusV115)}>
-            {(Object.keys(focusLabels) as OuterFocusV115[]).map(key=><option value={key} key={key}>{focusLabels[key]}</option>)}
-          </select>
-        </label>}
-        {mode==="outer"&&routeOptions.length>0&&<label>Itinéraire de convoi V6 autorisé
-          <select value={selectedOuterRoute?.id??""} onChange={event=>setOuterRouteChoice(event.target.value)}>
-           {routeOptions.map(path=><option value={path.id} key={path.id}>
-             {path.isPrimary?"Trajet optimal":"Alternative légale"} · {path.cost} coût V6 · {path.passageIds.length} passages
-           </option>)}
-          </select>
-          <small className={styles.path}>Trajet réellement prévu : {selectedOuterRoute?.passageIds.join(" → ")}.
-           Conditions publiques : {selectedOuterRoute?.conditionLabels.join(" / ")}.
-           Les équipes doivent pouvoir traverser chaque passage selon leur PC.</small>
-        </label>}
-        {mode==="rts"&&<div className={styles.sourceScenario}>
-          <label>Objectif RTS
-            <select value={rtsScenarioId} onChange={event=>setRtsScenarioId(event.target.value as "free"|WarSourceRtsScenarioIdV119)}>
-              <option value="free">Escarmouche libre · balise</option>
-              {(["W3-RTS01","W3-RTS02","W3-RTS03","W3-RTS04","W3-RTS05","W3-RTS06"] as const).map(id=>{
-                const source=warSourceRtsScenarioV119(id,rules);
-                return source?<option value={id} key={id}>{id} · {source.title}</option>:null;
-              })}
-            </select>
-          </label>
-          {scenarioBrief&&<div className={styles.brief}><strong>{scenarioBrief.id} · {scenarioBrief.title}</strong>
-            <p>{scenarioBrief.situation}</p><p><strong>Objectif :</strong> {scenarioBrief.completion}</p>
-            <p><strong>Riposte attendue :</strong> {scenarioBrief.enemyPlan}</p>
-            <small>Épreuve fonctionnelle 9 × 6 uniquement ; la carte {scenarioBrief.sourceMapId} complète et son scénario cinématique restent à réaliser.</small>
-          </div>}
-        </div>}
-      </fieldset>
-      <fieldset disabled={blocked}>
-        <legend>3. Affecter jusqu&apos;à {mode==="stealth"?"deux":"quatre"} équipes existantes</legend>
-        <div className={styles.roster}>
-          {world.teams.map(team=>{
-            const unit=rules.units.find(item=>item.id===team.unitId);
-            const engaged=world.assignments[team.id],chosen=selectedIds.includes(team.id);
-            const fit=team.members.filter(member=>member.status==="fit").length;
-            return <label key={team.id} className={styles.team} data-engaged={Boolean(engaged)}>
-              <span><input type="checkbox" checked={chosen} disabled={(!chosen&&Boolean(engaged))||(!chosen&&fit===0)} onChange={event=>setSelectedIds(list=>event.target.checked?[...list,team.id]:list.filter(id=>id!==team.id))}/>
-                <strong>{unit?.name??team.unitId}</strong><small>{team.id} · {unit?.commandPoints} PC · {unit?.upkeepRav} RAV</small></span>
-              <small>{unit?.role} · ATQ {unit?.attack} · DEF {unit?.defense} · MOB {unit?.mobility}</small>
-              <small>{fit}/{team.members.length} aptes · fatigue {team.fatigue} · {engaged?"engagé "+engaged:"disponible"}</small>
-            </label>;
-          })}
-        </div>
-      </fieldset>
-    </div>
-    <div className={styles.launch}>
-      <p>{requestIssue ?? "Ordre admissible : RAV débités une seule fois, détachements immobilisés jusqu'au rapport."}
-        {routePreview && <small className={styles.path}>Passages V6 : {routePreview.passageIds.join(" → ")||"sur place"} · coût de mouvement {routePreview.cost} · {missionPc} PC</small>}</p>
-      <button type="button" disabled={blocked||Boolean(requestIssue)||((mode!=="outer")&&Boolean(current))||(mode==="outer"&&world.outer.length>=3)||(mode==="stealth"&&selectedIds.length>2)} onClick={()=>start(Date.now())}>Lancer : {modeLabels[mode]}</button>
-    </div>
-
-    <section className={styles.reinforcements} aria-label="Registre de recrutement V6">
-      <div><h4>Renforts de clan · catalogue V6 complet</h4>
-        <p>Trente formations sont disponibles depuis les fiches W3-U. Les volontaires arrivent seulement après leur délai de recrutement et avec de nouvelles identités, jamais avec l&apos;expérience d&apos;un vétéran.</p></div>
-      <div className={styles.recruitControls}>
-        <label>Former un nouveau détachement
-          <select value={recruitUnitId} disabled={blocked} onChange={event=>setRecruitUnitId(event.target.value)}>
-            {rules.units.map(unit=><option key={unit.id} value={unit.id}>{unit.id} · {unit.name} · {unit.recruitmentRav} RAV</option>)}
-          </select>
-        </label>
-        <button type="button" disabled={blocked||!recruitUnit||world.rav<recruitUnit.recruitmentRav||
-          world.teams.length+(world.pendingRecruits?.length??0)>=16||(world.pendingRecruits?.length??0)>=4}
-          onClick={()=>commit(queueWarRecruitmentV115(worldRef.current,recruitUnitId,Date.now(),rules))}>
-          Recruter · {recruitUnit?.recruitmentRav??"?"} RAV
-        </button>
-      </div>
-      {recruitUnit&&<p className={styles.explain}>{recruitUnit.name} · {recruitUnit.fullMembers} membre(s) · {recruitUnit.commandPoints} PC ·
-        {recruitUnit.upkeepRav} RAV d&apos;entretien par opération · arrivée après {recruitUnit.delayTurns} tour(s) source
-        ({Math.max(1,recruitUnit.delayTurns)*15} secondes d&apos;exercice).</p>}
-      {(world.pendingRecruits??[]).map(order=><p className={styles.recruitOrder} key={order.id}>
-        {order.id} · {rules.units.find(unit=>unit.id===order.unitId)?.name??order.unitId} · arrivée dans
-        {formatTime(Math.max(0,Math.ceil((order.dueAt-now)/1000)))}
-      </p>)}
-      <p className={styles.explain}>Équipes formées en renfort : {(world.recruitedTeamIds??[]).length}. Coût et délai de base issus de la Bible V6 ; conversion des tours en secondes propre à ce prototype.</p>
-    </section>
-
-    <section className={styles.medicalPanel} aria-label="Relève et récupération des blessés V6">
-      <h4>Triage du clan · récupération des blessures légères</h4>
-      <ClanWarFieldSprite id={(world.pendingTreatments??[]).length?"medical-stocked":"medical-empty"} label="Illustration du poste médical ; aucun soin automatique" size={56}/>
-      <p>Les participants blessés restent identifiés, avec leur expérience antérieure. Leur retour exige une équipe de soigneur de terrain W3-U18 réellement recrutée, disponible, des RAV et 45 secondes de traitement. Ce délai est propre à l&apos;exercice ; aucune blessure majeure ne guérit automatiquement.</p>
-      <div className={styles.medicalControls}>
-        <label>Personne blessée à relever
-          <select value={careMemberId} disabled={blocked} onChange={event=>setCareMemberId(event.target.value)}>
-            <option value="">Choisir un blessé disponible</option>
-            {woundedMembers.map(({member,team})=><option key={member.id} value={member.id}>{team.id} · {member.id} · XP {member.xp}</option>)}
-          </select>
-        </label>
-        <label>Soigneur de terrain recruté
-          <select value={careMedicTeamId} disabled={blocked} onChange={event=>setCareMedicTeamId(event.target.value)}>
-            <option value="">Choisir un soigneur W3-U18 libre</option>
-            {freeMedics.map(team=><option key={team.id} value={team.id}>{team.id} · {team.members.filter(member=>member.status==="fit").length} apte(s)</option>)}
-          </select>
-        </label>
-        <button type="button" disabled={blocked||!carePatient||!careMedic||
-          carePatient.team.id===careMedic.id||world.rav<careFee||(world.pendingTreatments?.length??0)>=2}
-          onClick={()=>commit(queueWarTreatmentV116(worldRef.current,carePatient?.team.id??"",
-            careMemberId,careMedicTeamId,Date.now(),rules))}>Engager les soins · {careFee} RAV</button>
-      </div>
-      <p className={styles.explain}>Un traitement immobilise les deux équipes, bloque les doubles missions et conserve les identités. La guérison exige une échéance réelle et un membre soigneur encore apte.</p>
-      {(world.pendingTreatments??[]).map(order=><div className={styles.treatmentOrder} key={order.id}>
-        <span><strong>{order.id}</strong> · {order.memberId} pris en charge par {order.medicTeamId} ·
-          {formatTime(Math.max(0,Math.ceil((order.dueAt-now)/1000)))} restant</span>
-        <button type="button" disabled={blocked} onClick={()=>commit(cancelWarTreatmentV116(worldRef.current,order.id))}>Interrompre sans remboursement</button>
-      </div>)}
-      {!world.teams.some(team=>team.members.some(member=>member.status==="wounded"))&&<p className={styles.explain}>Aucune blessure légère actuellement enregistrée.</p>}
-      {(world.treatmentReceipts??[]).length>0&&<p className={styles.explain}>{world.treatmentReceipts?.length} traitement(s) validé(s), chacun clôturé une seule fois.</p>}
-    </section>
+    {!current && <section className={styles.standby} aria-label="Choisir la prochaine opération">
+      <div className={styles.standbyHeading}><div><span className={styles.overline}>SALLE DES MANDATS</span><h4>Votre prochain engagement</h4></div><span>{available.length} équipes disponibles</span></div>
+      <div className={styles.modeDeck}>{(Object.keys(modeLabels) as WarMissionModeV115[]).map((key,index)=><button type="button" key={key} disabled={blocked||!active} onClick={()=>{setMode(key);setBriefingStep("target");setCommandPanel("briefing");}} data-war-mode-card={key}>
+        <span className={styles.modeIndex} aria-hidden="true">0{index+1}</span>
+        <svg viewBox="0 0 80 58" aria-hidden="true"><path d={key==="assault"?"M8 45h64M14 45V24h16v21m20 0V16h16v29M30 31h20M40 10v37M35 15l5-5 5 5":key==="outer"?"M8 40h17l14-23h15l17 24M9 40l6-7 6 7M65 33l6 8-8 4M39 17l4-7 5 7M20 49h36":key==="stealth"?"M8 32q32-36 64 0-32 36-64 0Zm24 0a8 8 0 1 0 16 0 8 8 0 1 0-16 0M10 50 70 8": "M10 12h20v15H10zm40 0h20v15H50zM30 40h20v14H30zM20 27v9h20m20-9v9H40v4"}/></svg>
+        <strong>{modeLabels[key]}</strong><small>{modeBriefings[key]}</small><span className={styles.modeLink}>Préparer le mandat <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 13 13 3M4 3h9v9"/></svg></span>
+      </button>)}</div>
+      <p className={styles.standbyFootnote}>Exercices locaux indépendants · la campagne et ses conquêtes restent séparées.</p>
+    </section>}
 
     {current && <section className={styles.battle} aria-label="Mission jouable active" data-mode={current.mode}>
       <div className={styles.battleHeader}><div><span className={styles.overline}>{current.id} · {current.targetId} · action {current.tick}</span>
         <h4>{modeLabels[current.mode]}</h4></div>
         <button type="button" disabled={blocked} onClick={()=>commit(leaveWarOperationV115(worldRef.current,rules))}>Ordonner le repli</button></div>
+      <div className={styles.combatReadout} aria-label="État actuel du champ de bataille">
+        {assault&&<><span>Bastion <strong>{assault.ownBase}</strong></span><span>Déploiement <strong>{Math.floor(assault.ap)} AP</strong></span><span>Front adverse <strong>{assault.rivalBase}</strong></span></>}
+        {stealth&&<><span>Alerte <strong>{stealth.alarm}</strong></span><span>Énergie <strong>{stealth.energy}</strong></span><span>Relais <strong>{stealth.sabotaged?"Neutralisé":"Actif"}</strong></span></>}
+        {rts&&<><span>Escouades <strong>{rts.actors.filter(actor=>actor.side==="ally"&&actor.hp>0).length}</strong></span><span>Tenue <strong>{rts.hold}/{rts.realtime?3:2}</strong></span><span>Commandement <strong>{rts.realtime?"Temps réel":"Alterné"}</strong></span></>}
+      </div>
 
-      {assault && <div>
+      {assault && <div data-war-field-mode="assault">
         <ClanWarFieldSprite id={assault.ownBase<40?"barrier-damaged":"barrier-intact"}
           label="Illustration originale du bastion : aucun nouvel obstacle de collision" size={72}/>
         <p>Vagues régionales : <strong>{assault.wavesIssued??0} / {warAssaultWaveProfileV140(world.active?.targetId??world.baseId,rules).maximumWaves}</strong> · profils d&apos;unités de la Bible V6 : {(assault.rivalRosterIds??[]).join(", ")||"archive V115 à initialiser"}.</p>
@@ -813,7 +706,17 @@ export default function ClanWarOperationsV115({rules,active=true,persist=false,i
         <p className={styles.explain}>Art temporaire schématique : aucun sprite de film ou de Predator: Hunting Grounds n&apos;est faussement déclaré intégré.</p>
       </div>}
 
-      {stealth && <div>
+      {stealth && <div data-war-field-mode="stealth">
+        <div className={styles.grid} style={{gridTemplateColumns:"repeat(9,minmax(0,1fr))"}} role="img" aria-label="Plan d'infiltration : X pisteur, G uniquement si visible, R relais, E extraction et obstacles">
+          {Array.from({length:54},(_,index)=>{
+            const x=index%9,y=Math.floor(index/9),wall=Boolean(missionTerrain?.walls.includes(x+","+y));
+            const mark=stealth.x===x&&stealth.y===y?"X":secondGuardVisible&&stealth.supportGuard?.x===x&&stealth.supportGuard?.y===y?"G₂":
+              guardVisible&&stealth.guardX===x&&y===(stealth.guardY??2)?"G":x===7&&y===1?"R":x===1&&y===4?"E":missionTerrain?.controlPanel.x===x&&missionTerrain.controlPanel.y===y?"⚡":missionTerrain?.poweredDoor.x===x&&missionTerrain.poweredDoor.y===y?(stealth.gridPowered===false?"▣":"◇"):wall?"▥":stealth.decoyTurns&&stealth.decoyX===x&&
+              (stealth.decoyY??2)===y?"♪":
+              missionTerrain?.cover.includes(x+","+y)?"▤":"·";
+            return <span className={styles.cell} data-wall={wall} data-actor={mark==="X"?"ally":mark==="G"||mark==="G₂"?"rival":""} key={index} title={"Case "+x+","+y}>{mark==="R"?<ClanWarFieldSprite id={stealth.sabotaged?"relay-disabled":"relay-active"} label={stealth.sabotaged?"Relais neutralisé":"Relais actif"} size={40}/>:mark==="E"?<ClanWarFieldSprite id="beacon-active" label="Extraction" size={40}/>:mark}</span>;
+          })}
+        </div>
         <p>Clavier lorsque le panneau a le focus : flèches, ZQSD ou WASD ; E : interagir ; Espace : attendre. Une pression = un ordre ; aucun maintien automatique.</p>
         <p>Rejoindre le relais (7,1), le désactiver, puis rejoindre l&apos;extraction (1,4). Alerte <strong>{stealth.alarm}/3</strong> · énergie de camouflage <strong>{stealth.energy}/5</strong> · relais <strong>{stealth.sabotaged?"neutralisé":"actif"}</strong> · diversion <strong>{stealth.decoyUsed?"épuisée": "disponible"}</strong> · leurre <strong>{stealth.decoyTurns??0} tour(s) à la position émise</strong> · couverts utilisés <strong>{(stealth.usedCoverIds??[]).length}/{missionTerrain?.cover.length??0}</strong> · écoutes <strong>{stealth.acousticUsed??0}/2</strong> · circuit <strong>{stealth.gridPowered===false?"coupé":"alimenté"}</strong> · manœuvres <strong>{stealth.gridSwitches??0}/2</strong>.</p>
         <p className={styles.explain}>Terrain régional : {missionTerrain?.title} · {missionTerrain?.ground} · obstacle : {missionTerrain?.wallLabel}.</p>
@@ -857,16 +760,6 @@ export default function ClanWarOperationsV115({rules,active=true,persist=false,i
           Avancer d&apos;une case sur le chemin sûr vers {stealth.sabotaged?"l'extraction":"le relais"}
         </button>
         <p className={styles.explain}>Aide à la navigation V142 : une case à la fois par une vraie entrée du terrain ; la patrouille réagit normalement et ses positions cachées ne sont pas utilisées pour calculer le chemin.</p>
-        <div className={styles.grid} style={{gridTemplateColumns:"repeat(9,minmax(0,1fr))"}} role="img" aria-label="Plan d'infiltration : X pisteur, G uniquement si visible, R relais, E extraction et obstacles">
-          {Array.from({length:54},(_,index)=>{
-            const x=index%9,y=Math.floor(index/9),wall=Boolean(missionTerrain?.walls.includes(x+","+y));
-            const mark=stealth.x===x&&stealth.y===y?"X":secondGuardVisible&&stealth.supportGuard?.x===x&&stealth.supportGuard?.y===y?"G₂":
-              guardVisible&&stealth.guardX===x&&y===(stealth.guardY??2)?"G":x===7&&y===1?"R":x===1&&y===4?"E":missionTerrain?.controlPanel.x===x&&missionTerrain.controlPanel.y===y?"⚡":missionTerrain?.poweredDoor.x===x&&missionTerrain.poweredDoor.y===y?(stealth.gridPowered===false?"▣":"◇"):wall?"▥":stealth.decoyTurns&&stealth.decoyX===x&&
-              (stealth.decoyY??2)===y?"♪":
-              missionTerrain?.cover.includes(x+","+y)?"▤":"·";
-            return <span className={styles.cell} data-wall={wall} data-actor={mark==="X"?"ally":mark==="G"||mark==="G₂"?"rival":""} key={index} title={"Case "+x+","+y}>{mark==="R"?<ClanWarFieldSprite id={stealth.sabotaged?"relay-disabled":"relay-active"} label={stealth.sabotaged?"Relais neutralisé":"Relais actif"} size={40}/>:mark==="E"?<ClanWarFieldSprite id="beacon-active" label="Extraction" size={40}/>:mark}</span>;
-          })}
-        </div>
         <div className={styles.stealthControls}>
          <button type="button"
           disabled={blocked||!missionTerrain||stealth.energy<1||(stealth.gridSwitches??0)>=2||
@@ -907,7 +800,7 @@ export default function ClanWarOperationsV115({rules,active=true,persist=false,i
         </fieldset>
       </div>}
 
-      {rts && <div>
+      {rts && <div data-war-field-mode="rts">
         <p>{rts.scripted?
           (rts.scripted.kind==="cargo-escort"?
             "Mission W3-RTS01 : repérer le guet et escorter une charge portée jusqu'à la sortie (7,4).":
@@ -1125,6 +1018,151 @@ export default function ClanWarOperationsV115({rules,active=true,persist=false,i
       <button type="button" disabled={blocked||!world.outer.some(order=>now>=order.dueAt)}
         onClick={()=>commit(settleWarOuterOpsV115(worldRef.current,Date.now(),rules))}>Recevoir les rapports arrivés</button>
     </section>
+    <ClanWarCommandOverlay open={commandPanel==="briefing"} onClose={()=>setCommandPanel(null)} title="Préparer un mandat" eyebrow="TRANSMISSION DU CONSEIL · DÉPLOIEMENT">
+      <nav className={styles.briefingSteps} aria-label="Étapes de préparation du mandat">
+        {([["mode","01","Mode"],["target","02","Théâtre"],["teams","03","Détachement"]] as const).map(([id,index,label])=><button type="button" key={id} aria-pressed={briefingStep===id} onClick={()=>setBriefingStep(id)} data-war-briefing-step-button={id}><span>{index}</span>{label}</button>)}
+      </nav>
+    <div className={styles.selector} data-war-briefing-step={briefingStep}>
+      <fieldset disabled={blocked} hidden={briefingStep!=="mode"} data-war-briefing-panel="mode">
+        <legend>1. Choisir un mode</legend>
+        <div className={styles.modes}>{(Object.keys(modeLabels) as WarMissionModeV115[]).map(key=>
+          <button key={key} type="button" aria-pressed={mode===key} onClick={()=>setMode(key)}>{modeLabels[key]}</button>)}</div>
+      </fieldset>
+      <fieldset disabled={blocked} hidden={briefingStep!=="target"} data-war-briefing-panel="target">
+        <legend>2. Mandat territorial et renseignements</legend>
+        <label>Territoire de la Bible V6
+          <select value={targetId} onChange={event=>setTargetId(event.target.value)}>
+            {rules.territories.filter(site=>site.id!==world.baseId).map(site=><option key={site.id} value={site.id}>{site.id} · {site.name}</option>)}
+          </select>
+        </label>
+        {target && <><p className={styles.explain}><strong>{target.name}</strong> · {target.region} · défense de terrain {target.terrainDefense} · renseignement {world.intelIds.includes(target.id)?"obtenu":"non confirmé"} · pression d&apos;exercice {world.pressure[target.id]??0}.</p>
+          <details className={styles.brief}><summary>Ordre territorial · Bible V6</summary>
+            <p><strong>Mission :</strong> {target.objective}</p><p><strong>Reconnaissance :</strong> {target.reconnaissance}</p>
+            <p><strong>Contrôle :</strong> {target.control}</p><p><strong>Vie locale :</strong> {target.life}</p><p><strong>Repli :</strong> {target.retreat}</p>
+          </details></>}
+        {mode==="outer" && <label>Consigne du détachement
+          <select value={focus} onChange={event=>setFocus(event.target.value as OuterFocusV115)}>
+            {(Object.keys(focusLabels) as OuterFocusV115[]).map(key=><option value={key} key={key}>{focusLabels[key]}</option>)}
+          </select>
+        </label>}
+        {mode==="outer"&&routeOptions.length>0&&<label>Itinéraire de convoi V6 autorisé
+          <select value={selectedOuterRoute?.id??""} onChange={event=>setOuterRouteChoice(event.target.value)}>
+           {routeOptions.map(path=><option value={path.id} key={path.id}>
+             {path.isPrimary?"Trajet optimal":"Alternative légale"} · {path.cost} coût V6 · {path.passageIds.length} passages
+           </option>)}
+          </select>
+          <small className={styles.path}>Trajet réellement prévu : {selectedOuterRoute?.passageIds.join(" → ")}.
+           Conditions publiques : {selectedOuterRoute?.conditionLabels.join(" / ")}.
+           Les équipes doivent pouvoir traverser chaque passage selon leur PC.</small>
+        </label>}
+        {mode==="rts"&&<div className={styles.sourceScenario}>
+          <label>Objectif RTS
+            <select value={rtsScenarioId} onChange={event=>setRtsScenarioId(event.target.value as "free"|WarSourceRtsScenarioIdV119)}>
+              <option value="free">Escarmouche libre · balise</option>
+              {(["W3-RTS01","W3-RTS02","W3-RTS03","W3-RTS04","W3-RTS05","W3-RTS06"] as const).map(id=>{
+                const source=warSourceRtsScenarioV119(id,rules);
+                return source?<option value={id} key={id}>{id} · {source.title}</option>:null;
+              })}
+            </select>
+          </label>
+          {scenarioBrief&&<div className={styles.brief}><strong>{scenarioBrief.id} · {scenarioBrief.title}</strong>
+            <p>{scenarioBrief.situation}</p><p><strong>Objectif :</strong> {scenarioBrief.completion}</p>
+            <p><strong>Riposte attendue :</strong> {scenarioBrief.enemyPlan}</p>
+            <small>Épreuve fonctionnelle 9 × 6 uniquement ; la carte {scenarioBrief.sourceMapId} complète et son scénario cinématique restent à réaliser.</small>
+          </div>}
+        </div>}
+      </fieldset>
+      <fieldset disabled={blocked} hidden={briefingStep!=="teams"} data-war-briefing-panel="teams">
+        <legend>3. Affecter jusqu&apos;à {mode==="stealth"?"deux":"quatre"} équipes existantes</legend>
+        <div className={styles.roster}>
+          {world.teams.map(team=>{
+            const unit=rules.units.find(item=>item.id===team.unitId);
+            const engaged=world.assignments[team.id],chosen=selectedIds.includes(team.id);
+            const fit=team.members.filter(member=>member.status==="fit").length;
+            return <label key={team.id} className={styles.team} data-engaged={Boolean(engaged)}>
+              <span><input type="checkbox" checked={chosen} disabled={(!chosen&&Boolean(engaged))||(!chosen&&fit===0)} onChange={event=>setSelectedIds(list=>event.target.checked?[...list,team.id]:list.filter(id=>id!==team.id))}/>
+                <strong>{unit?.name??team.unitId}</strong><small>{team.id} · {unit?.commandPoints} PC · {unit?.upkeepRav} RAV</small></span>
+              <small>{unit?.role} · ATQ {unit?.attack} · DEF {unit?.defense} · MOB {unit?.mobility}</small>
+              <small>{fit}/{team.members.length} aptes · fatigue {team.fatigue} · {engaged?"engagé "+engaged:"disponible"}</small>
+            </label>;
+          })}
+        </div>
+      </fieldset>
+    </div>
+
+      <div className={styles.briefingNavigation} hidden={briefingStep==="teams"}>
+        {briefingStep!=="mode"&&<button type="button" onClick={()=>setBriefingStep(briefingStep==="teams"?"target":"mode")}>Étape précédente</button>}
+        {briefingStep!=="teams"&&<button type="button" className={styles.primaryCommand} onClick={()=>setBriefingStep(briefingStep==="mode"?"target":"teams")}>Continuer : {briefingStep==="mode"?"choisir le théâtre":"affecter le détachement"} <span aria-hidden="true">→</span></button>}
+      </div>
+    <div className={styles.launch} hidden={briefingStep!=="teams"}>
+      <p>{requestIssue ?? "Ordre admissible : RAV débités une seule fois, détachements immobilisés jusqu'au rapport."}
+        {routePreview && <small className={styles.path}>Passages V6 : {routePreview.passageIds.join(" → ")||"sur place"} · coût de mouvement {routePreview.cost} · {missionPc} PC</small>}</p>
+      <button type="button" disabled={blocked||Boolean(requestIssue)||((mode!=="outer")&&Boolean(current))||(mode==="outer"&&world.outer.length>=3)||(mode==="stealth"&&selectedIds.length>2)} onClick={()=>{start(Date.now());setCommandPanel(null);window.requestAnimationFrame(()=>fieldRoot.current?.focus({preventScroll:true}));}}>Lancer : {modeLabels[mode]}</button>
+    </div>
+
+    </ClanWarCommandOverlay>
+    <ClanWarCommandOverlay open={commandPanel==="recruitment"} onClose={()=>setCommandPanel(null)} title="Renforts de clan" eyebrow="REGISTRE DES FORMATIONS">
+    <section className={styles.reinforcements} aria-label="Registre de recrutement V6">
+      <div><h4>Renforts de clan · catalogue V6 complet</h4>
+        <p>Trente formations sont disponibles depuis les fiches W3-U. Les volontaires arrivent seulement après leur délai de recrutement et avec de nouvelles identités, jamais avec l&apos;expérience d&apos;un vétéran.</p></div>
+      <div className={styles.recruitControls}>
+        <label>Former un nouveau détachement
+          <select value={recruitUnitId} disabled={blocked} onChange={event=>setRecruitUnitId(event.target.value)}>
+            {rules.units.map(unit=><option key={unit.id} value={unit.id}>{unit.id} · {unit.name} · {unit.recruitmentRav} RAV</option>)}
+          </select>
+        </label>
+        <button type="button" disabled={blocked||!recruitUnit||world.rav<recruitUnit.recruitmentRav||
+          world.teams.length+(world.pendingRecruits?.length??0)>=16||(world.pendingRecruits?.length??0)>=4}
+          onClick={()=>commit(queueWarRecruitmentV115(worldRef.current,recruitUnitId,Date.now(),rules))}>
+          Recruter · {recruitUnit?.recruitmentRav??"?"} RAV
+        </button>
+      </div>
+      {recruitUnit&&<p className={styles.explain}>{recruitUnit.name} · {recruitUnit.fullMembers} membre(s) · {recruitUnit.commandPoints} PC ·
+        {recruitUnit.upkeepRav} RAV d&apos;entretien par opération · arrivée après {recruitUnit.delayTurns} tour(s) source
+        ({Math.max(1,recruitUnit.delayTurns)*15} secondes d&apos;exercice).</p>}
+      {(world.pendingRecruits??[]).map(order=><p className={styles.recruitOrder} key={order.id}>
+        {order.id} · {rules.units.find(unit=>unit.id===order.unitId)?.name??order.unitId} · arrivée dans
+        {formatTime(Math.max(0,Math.ceil((order.dueAt-now)/1000)))}
+      </p>)}
+      <p className={styles.explain}>Équipes formées en renfort : {(world.recruitedTeamIds??[]).length}. Coût et délai de base issus de la Bible V6 ; conversion des tours en secondes propre à ce prototype.</p>
+    </section>
+
+    </ClanWarCommandOverlay>
+    <ClanWarCommandOverlay open={commandPanel==="medical"} onClose={()=>setCommandPanel(null)} title="Triage du clan" eyebrow="POSTE DE SOINS · RELÈVE">
+    <section className={styles.medicalPanel} aria-label="Relève et récupération des blessés V6">
+      <h4>Triage du clan · récupération des blessures légères</h4>
+      <ClanWarFieldSprite id={(world.pendingTreatments??[]).length?"medical-stocked":"medical-empty"} label="Illustration du poste médical ; aucun soin automatique" size={56}/>
+      <p>Les participants blessés restent identifiés, avec leur expérience antérieure. Leur retour exige une équipe de soigneur de terrain W3-U18 réellement recrutée, disponible, des RAV et 45 secondes de traitement. Ce délai est propre à l&apos;exercice ; aucune blessure majeure ne guérit automatiquement.</p>
+      <div className={styles.medicalControls}>
+        <label>Personne blessée à relever
+          <select value={careMemberId} disabled={blocked} onChange={event=>setCareMemberId(event.target.value)}>
+            <option value="">Choisir un blessé disponible</option>
+            {woundedMembers.map(({member,team})=><option key={member.id} value={member.id}>{team.id} · {member.id} · XP {member.xp}</option>)}
+          </select>
+        </label>
+        <label>Soigneur de terrain recruté
+          <select value={careMedicTeamId} disabled={blocked} onChange={event=>setCareMedicTeamId(event.target.value)}>
+            <option value="">Choisir un soigneur W3-U18 libre</option>
+            {freeMedics.map(team=><option key={team.id} value={team.id}>{team.id} · {team.members.filter(member=>member.status==="fit").length} apte(s)</option>)}
+          </select>
+        </label>
+        <button type="button" disabled={blocked||!carePatient||!careMedic||
+          carePatient.team.id===careMedic.id||world.rav<careFee||(world.pendingTreatments?.length??0)>=2}
+          onClick={()=>commit(queueWarTreatmentV116(worldRef.current,carePatient?.team.id??"",
+            careMemberId,careMedicTeamId,Date.now(),rules))}>Engager les soins · {careFee} RAV</button>
+      </div>
+      <p className={styles.explain}>Un traitement immobilise les deux équipes, bloque les doubles missions et conserve les identités. La guérison exige une échéance réelle et un membre soigneur encore apte.</p>
+      {(world.pendingTreatments??[]).map(order=><div className={styles.treatmentOrder} key={order.id}>
+        <span><strong>{order.id}</strong> · {order.memberId} pris en charge par {order.medicTeamId} ·
+          {formatTime(Math.max(0,Math.ceil((order.dueAt-now)/1000)))} restant</span>
+        <button type="button" disabled={blocked} onClick={()=>commit(cancelWarTreatmentV116(worldRef.current,order.id))}>Interrompre sans remboursement</button>
+      </div>)}
+      {!world.teams.some(team=>team.members.some(member=>member.status==="wounded"))&&<p className={styles.explain}>Aucune blessure légère actuellement enregistrée.</p>}
+      {(world.treatmentReceipts??[]).length>0&&<p className={styles.explain}>{world.treatmentReceipts?.length} traitement(s) validé(s), chacun clôturé une seule fois.</p>}
+    </section>
+
+    </ClanWarCommandOverlay>
+    <ClanWarCommandOverlay open={commandPanel==="reports"} onClose={()=>setCommandPanel(null)} title="Comptes rendus" eyebrow="CHRONIQUE DE GUERRE">
     <section className={styles.reports}>
       <h4>Chronique de guerre et conséquences enregistrées</h4>
       <p>Renseignements : {world.intelIds.length} · relais sabotés : {world.weakenedIds.length} · itinéraires escortés : {world.escortedIds.length}. La pression n&apos;est pas une annexion : il faut encore les ordres de conquête et une garnison dans le moteur stratégique.</p>
@@ -1168,5 +1206,14 @@ export default function ClanWarOperationsV115({rules,active=true,persist=false,i
       </li>)}</ol>
       {!world.reports.length && <p>Aucun résultat pour cet exercice.</p>}
     </section>
+    </ClanWarCommandOverlay>
+    <ClanWarCommandOverlay open={commandPanel==="archive"} onClose={()=>setCommandPanel(null)} title="Archives et règles" eyebrow="PROTOCOLE LOCAL · EXERCICE V115" kind="dialog">
+      <p>Une même équipe identifiable peut être envoyée en assaut latéral, en opération déléguée, en infiltration ou en bataille tactique. Les blessures, l&apos;expérience, les renseignements et les rapports suivent la même archive d&apos;exercice.</p>
+      <p className={styles.disclaimer}>Les unités, passages, coûts RAV et gains d&apos;expérience proviennent de la Bible V6. Les chronomètres, jauges AP, déplacements et IA de ces minijeux sont des paramètres de prototype, sans identité canonique ajoutée. Les victoires n&apos;annexent aucun site V85, ne délivrent aucun trophée et ne modifient pas la chasse principale.</p>
+      <div className={styles.archiveActions}>
+        <button type="button" className={styles.reset} disabled={blocked||!hydrated||!active} onClick={reset}>Réinitialiser V115 uniquement</button>
+        {persist&&<button type="button" disabled={!active} onClick={()=>{void exportLegacyArchive();}}>Exporter l’ancienne archive conservée</button>}
+      </div>
+    </ClanWarCommandOverlay>
   </section>;
 }

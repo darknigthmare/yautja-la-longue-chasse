@@ -1,0 +1,17 @@
+{
+  "command": [
+    "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+    "node_modules/eslint/bin/eslint.js",
+    "app/game/useMenuGamepad.ts",
+    "tests/browser/menu-native-dialog-20261109.fixture.tsx",
+    "scripts/qa-menu-native-dialog-20261109.mjs",
+    "--max-warnings=0"
+  ],
+  "exitCode": 0,
+  "sourceSha256": {
+    "app/game/useMenuGamepad.ts": "602879e33e5c0ecd1ceba063e28ce9c7c82e8a36e54d9d87f7f0e2f7d589cd35",
+    "app/game/systems/menuNavigation.ts": "0b51fd81acffe645a799a6247a0192a760b111e813733bfc38dc905a66a140cf",
+    "tests/browser/menu-native-dialog-20261109.fixture.tsx": "60c7bfd0985cb7b2c4ff70fdb163265a6b70e74e946ae2d1c7c7b10314644eb0",
+    "scripts/qa-menu-native-dialog-20261109.mjs": "b5eb3576acd9cce19a96d08e3bcce8657b6ed9811cb3d9075b6dcd82080a52a4"
+  }
+}

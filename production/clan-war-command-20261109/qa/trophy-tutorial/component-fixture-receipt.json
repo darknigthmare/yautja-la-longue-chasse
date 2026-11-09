@@ -1,0 +1,214 @@
+{
+  "schemaVersion": 1,
+  "asOf": "2026-11-09T10:08:44.210224+00:00",
+  "key": "Bible V5/V6 — lots de réalisation:BUILD5-09",
+  "priority": "P1",
+  "passed": true,
+  "admission": "PARTIEL_A_RACCORDER_ET_TESTER_GAMECLIENT",
+  "implemented": "18gestes TR-M01..03 sur modèle pédagogique,septpostes,sixtransports ettroisvuesstablesdugeste9",
+  "domainTests": 24,
+  "componentFixtureChecks": 18,
+  "screenshotsOpened": 9,
+  "gameClientNativeTested": false,
+  "physicalControllerTested": false,
+  "humanArtApproved": false,
+  "fullP0P1Closed": false,
+  "scope": "Actual production component and model with controlled fixture persistence owner. This receipt does not represent a Next GameClient test or all original-trophy missions.",
+  "remaining": [
+    "Raccordement SaveGame/mainwriter et accèsphysiqueatelierHomeworld/Ship par root.",
+    "Recette vrai Next/GameClient avec3reprises avant qualification bornée du tutoriel surmodèle.",
+    "Aucunemission sur originalréel,ledgerglobaldesobjets,chaînesavancées,avisartistique ou padphysique qualifié."
+  ],
+  "files": [
+    {
+      "path": "app/game/TrophyTutorialBay.module.css",
+      "bytes": 7707,
+      "sha256": "e34d15a767f7a37629b768277b38339dfe81bea5112df46803a53d1f4f09bafc"
+    },
+    {
+      "path": "app/game/TrophyTutorialBay.tsx",
+      "bytes": 24792,
+      "sha256": "3bdb164423af2d455a04d5a1fa1ab7cf47d29ceb8095eab94948600a4588f93d"
+    },
+    {
+      "path": "app/game/systems/trophyTutorialV6.ts",
+      "bytes": 23909,
+      "sha256": "65e735198930e048fcafc16ba89c8debeb9303f5d636463b62394520454cb0be"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/trophy-tutorial/README.md",
+      "bytes": 3146,
+      "sha256": "ae1660d2ef8adf5aebf6029de0b22a5ee4acab60b3252e888b4bb6e87088b60b"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/trophy-tutorial/WIRING.md",
+      "bytes": 6339,
+      "sha256": "82b7ab1c4532c41d7cdfd82dd1ae5d0053c7448ada2cbf6188986a8d0c183e7c"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/trophy-tutorial/domain.tap",
+      "bytes": 5475,
+      "sha256": "69dd1c77d0d51f978ac7d742729ab4b553d390f3c6e337b34023559b49fac491"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/trophy-tutorial/fixture.tsx",
+      "bytes": 2581,
+      "sha256": "aea4a68769004f1aececc442e7d312111c9d207d93feb5d4e11726fd36cea439"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/trophy-tutorial/lint-final.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/trophy-tutorial/native-fixture/attempt-2/00-before.json",
+      "bytes": 14014,
+      "sha256": "57fde62869cb1b24752a5004b985a19be0ba01e808245024ba06d16cd8f48ff5"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/trophy-tutorial/native-fixture/attempt-2/00-niche-start.png",
+      "bytes": 709357,
+      "sha256": "41d61c116b429809b23198d9fb3b099eff758b09f5ba008e0a3b927d59ecfef5"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/trophy-tutorial/native-fixture/attempt-2/01-refused-write.png",
+      "bytes": 755996,
+      "sha256": "6cfa8957b0df75a69ca1b78c1dc6200109fd2020e076ec87e754afafa58b24af"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/trophy-tutorial/native-fixture/attempt-2/01-refused.json",
+      "bytes": 14014,
+      "sha256": "57fde62869cb1b24752a5004b985a19be0ba01e808245024ba06d16cd8f48ff5"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/trophy-tutorial/native-fixture/attempt-2/02-observation-frame.png",
+      "bytes": 724988,
+      "sha256": "ca7cdd6c0ba2c07508362b3fffdec403507f461a4b8263a20c05d66e4ce2bce9"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/trophy-tutorial/native-fixture/attempt-2/03-discovery-after-reload.json",
+      "bytes": 16431,
+      "sha256": "2b7d12ea9563b0bd63cfd5a3b1e21e0ad82a0d8bb307df09862b6ce1deb7a4d7"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/trophy-tutorial/native-fixture/attempt-2/03-discovery-before-reload.json",
+      "bytes": 16431,
+      "sha256": "2b7d12ea9563b0bd63cfd5a3b1e21e0ad82a0d8bb307df09862b6ce1deb7a4d7"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/trophy-tutorial/native-fixture/attempt-2/03-discovery.png",
+      "bytes": 705269,
+      "sha256": "25ad40ccd47b72f364517ad74290a6d8c617895431e9879792b7288f9b1fcc8b"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/trophy-tutorial/native-fixture/attempt-2/06-carry-container.png",
+      "bytes": 727252,
+      "sha256": "0b6005a969d881b94436f639665d31a9dd3cff28348e8d5052e824c8f06cf828"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/trophy-tutorial/native-fixture/attempt-2/09-face-320.png",
+      "bytes": 229759,
+      "sha256": "d64a2a74792e96b1c7bbfddf87e83c847d4f8aa0ee9b89a3a0e7afdfacfcf719"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/trophy-tutorial/native-fixture/attempt-2/09-face-390.png",
+      "bytes": 262967,
+      "sha256": "6347be1199310fb1e7fc65da839fdd96549bb526968f6bf212c819c2211d41b9"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/trophy-tutorial/native-fixture/attempt-2/09-face-after-reload.json",
+      "bytes": 19699,
+      "sha256": "04356d6807624347bb3f933d0551718e19069d76a225d955ec929d3d22a7a5e7"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/trophy-tutorial/native-fixture/attempt-2/09-face-before-reload.json",
+      "bytes": 19699,
+      "sha256": "04356d6807624347bb3f933d0551718e19069d76a225d955ec929d3d22a7a5e7"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/trophy-tutorial/native-fixture/attempt-2/16-plaque-after-reload.json",
+      "bytes": 25731,
+      "sha256": "939b0100dc1d2c4808e4b84ed37706169ac3fa37454c3d9eb877da9da5a71e0a"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/trophy-tutorial/native-fixture/attempt-2/16-plaque-before-reload.json",
+      "bytes": 25731,
+      "sha256": "939b0100dc1d2c4808e4b84ed37706169ac3fa37454c3d9eb877da9da5a71e0a"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/trophy-tutorial/native-fixture/attempt-2/16-plaque.png",
+      "bytes": 700760,
+      "sha256": "e0586cf71d8498e4ffdd669b76befcd771483735d04bc6cfca6a5efbe65abcde"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/trophy-tutorial/native-fixture/attempt-2/18-cabinet-complete.png",
+      "bytes": 746768,
+      "sha256": "24cb7d4012a7c7e0d14b179f4cf947d1a6e81954fd9974bf0532c232e140e8ba"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/trophy-tutorial/native-fixture/attempt-2/18-exhibited.json",
+      "bytes": 27039,
+      "sha256": "9d3d54a8d07fb86c3031d25656b0df4efd36a13610477dff81c061fcebc55186"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/trophy-tutorial/native-fixture/attempt-2/18-reloaded.json",
+      "bytes": 27039,
+      "sha256": "9d3d54a8d07fb86c3031d25656b0df4efd36a13610477dff81c061fcebc55186"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/trophy-tutorial/native-fixture/attempt-2/18-remounted.json",
+      "bytes": 27039,
+      "sha256": "9d3d54a8d07fb86c3031d25656b0df4efd36a13610477dff81c061fcebc55186"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/trophy-tutorial/native-fixture/attempt-2/recipe-used.mjs",
+      "bytes": 15319,
+      "sha256": "b9a4f47d10603ffb910a1672a4c52ac55db3fbedf88da6ae27883ea590ff5185"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/trophy-tutorial/native-fixture/attempt-2/report.json",
+      "bytes": 344479,
+      "sha256": "88acc7401fb2b1fdc79465a9ef05205f7454bd3e50b4945aaf55a36e04cc9b5f"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/trophy-tutorial/native-fixture/attempt-2/screenshot-inspection.json",
+      "bytes": 2984,
+      "sha256": "dd2ed3631eacdf7473f95f3646040bbe77ef3033920cc8b98b78fab0b7c0da95"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/trophy-tutorial/run-native-fixture.mjs",
+      "bytes": 15319,
+      "sha256": "b9a4f47d10603ffb910a1672a4c52ac55db3fbedf88da6ae27883ea590ff5185"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/trophy-tutorial/source-checks-final.json",
+      "bytes": 2559,
+      "sha256": "d7d216a90c0138f2767c5c4fc00b608f55674a596e22051c1b3aac3eb3016dc9"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/trophy-tutorial/source-criterion.json",
+      "bytes": 22043,
+      "sha256": "57834ae579c49fa93a8272ccc12e3871f5bb866203bccd18c748404c526d2125"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/trophy-tutorial/types-final.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "public/game/clan-ship/props/trophy-workbench-v1.webp",
+      "bytes": 160024,
+      "sha256": "b3d0241516aa530ebd60a9c74e7aca05115ac1bc97535cbb6274f6b3e9e63aed"
+    },
+    {
+      "path": "public/game/sprites/v33/pit-arenas/trophy-hall/p0-a-archive-depth.png",
+      "bytes": 1809914,
+      "sha256": "7e71f6d54c6980fd806f8d2daf7b7caf5ef442ed34f98becaafdf93abfe9a07f"
+    },
+    {
+      "path": "tests/trophy-tutorial-v6.test.mjs",
+      "bytes": 13058,
+      "sha256": "ead0fefb36f07312502d9db8d53f4ad631560ea0d24b76e2912aa5d2cc89fcef"
+    }
+  ]
+}

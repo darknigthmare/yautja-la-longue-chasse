@@ -15,6 +15,7 @@ import {
   CLAN_SHIP_SPACE_MAX_ENERGY, CLAN_SHIP_SPACE_SCENARIOS,
   type ClanShipSpaceEncounter, type ClanShipSpaceOrder,
 } from './clanShipSpaceEncounter';
+import { clanShipSealTrustReply } from './clanShipMaintenanceDiagnostics';
 
 /** OPS-B05 / operations-spec §13.1. Original dialogue for this clan, not a
  * universal doctrine. This reader owns no progression, clock or seen counter. */
@@ -22,7 +23,7 @@ export const CLAN_SHIP_CREW_DIALOGUE_CONTEXTS = [
   'missing-proof', 'recent-proof', 'agreement', 'operation-return', 'circle-confirmed',
 ] as const;
 export type ClanShipCrewDialogueContext = typeof CLAN_SHIP_CREW_DIALOGUE_CONTEXTS[number];
-export type ClanShipCrewDialogueCampaign = CompanionCampaign & Pick<SaveGame, 'clanShipTrophyHearing'>;
+export type ClanShipCrewDialogueCampaign = CompanionCampaign & Pick<SaveGame, 'clanShipTrophyHearing' | 'clanShipIncidents'>;
 export interface ClanShipCrewDialogueContact {
   roomId: ClanShipRoomId;
   /** Supplied only by the physical crew interaction. ClanShipInterior checks
@@ -165,12 +166,15 @@ export function selectClanShipCrewDialogue(save: ClanShipCrewDialogueCampaign, n
     const returned = state.spaceEncounter && state.spaceEncounter.status !== 'active' ? state.spaceEncounter : null;
     const context: ClanShipCrewDialogueContext = state.circleConfirmed ? 'circle-confirmed' : returned ? 'operation-return'
       : state.recruitedNpcIds.includes(npcId) ? 'agreement' : receipts.length === npc.requiredContractIds.length ? 'recent-proof' : 'missing-proof';
-    const line = context === 'circle-confirmed' ? CIRCLE[npcId] : context === 'operation-return' ? returnLine(npcId, returned!, receipts.length === npc.requiredContractIds.length)
+    const baseLine = context === 'circle-confirmed' ? CIRCLE[npcId] : context === 'operation-return' ? returnLine(npcId, returned!, receipts.length === npc.requiredContractIds.length)
       : context === 'agreement' ? AGREED[npcId] : context === 'recent-proof' ? PROVEN[npcId] : MISSING[npcId];
+    const trust = clanShipSealTrustReply(save, npcId, contact);
+    const line = trust ? `${baseLine} ${trust.line}` : baseLine;
     const facts = receipts.map(proofFacts);
     if (context === 'missing-proof') facts.push(...npc.requiredContractIds.filter(id => !receipts.some(receipt => receipt.contractId === id))
       .map(id => `Preuve attendue : ${clanShipContract(id)!.name}.`));
     if (returned && (context === 'operation-return' || context === 'circle-confirmed')) facts.push(...returnFacts(returned));
+    if (trust) facts.push(trust.fact);
     return { status: 'spoken', context, speakerId: npcId, speakerName: npc.name, line, facts, targetRoomId, reason: 'Entretien au poste disponible.' };
   } catch {
     // Reading refused/hostile data never normalizes it into a fresh success.

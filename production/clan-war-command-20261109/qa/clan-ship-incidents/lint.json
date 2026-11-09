@@ -1,0 +1,18 @@
+{
+  "command": [
+    "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+    "node_modules/eslint/bin/eslint.js",
+    "app/game/systems/clanShipMaintenanceDiagnostics.ts",
+    "app/game/systems/clanShipCrewDialogue.ts",
+    "app/game/ClanShipSpaceEncounter.tsx",
+    "app/game/ClanShipOperationsPanel.tsx",
+    "tests/clan-ship-maintenance-diagnostics.test.mjs",
+    "tests/helpers/clan-ship-maintenance-fixtures-20261109.mjs",
+    "scripts/qa-clan-ship-maintenance-20261109.mjs",
+    "--max-warnings",
+    "0"
+  ],
+  "exitCode": 0,
+  "maxWarnings": 0,
+  "files": 7
+}

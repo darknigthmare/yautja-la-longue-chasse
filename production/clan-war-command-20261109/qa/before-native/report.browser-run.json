@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "url": "http://127.0.0.1:3123",
+  "scope": "Native production GameClient: physical Clan Ship route to council, real War Bible atlas export controls, disclosed initial B05 fixture. No callback, clock, actor or result patched.",
+  "fixture": "production/crew-dialogue-20261109/qa/native/attempt-1/initial-agreement.json",
+  "fixtureFullCampaign": false,
+  "checks": [],
+  "errors": [],
+  "consoleErrors": [],
+  "httpErrors": [],
+  "requestFailures": [
+    {
+      "url": "http://127.0.0.1:3123/",
+      "failure": {
+        "errorText": "net::ERR_CONNECTION_REFUSED"
+      }
+    }
+  ],
+  "servedScripts": [],
+  "screenshots": [],
+  "downloads": [],
+  "physicalGamepad": false,
+  "humanArtReviewed": false,
+  "sourceBefore": {
+    "app/game/ClanWarVariantAtlasV120.tsx": "ea0d64b23cca58b92e89ac7bf4d9c33170f0534ee5be50bdc86bb9d1be41af2e",
+    "app/game/systems/clanWarVariantExportV126.ts": "c0075ff0cef994ea1531512e002ca1f28d92e66f49954c9084a0da60e2ea132a",
+    "app/game/systems/clanWarWorldClimateV126.ts": "429d4d88bdefc0be405754062e7f3bfc5830090e7f1a155f10719ae723ebbd6c",
+    "app/game/systems/clanWarVariantAtlasV120.ts": "c90e6b3efdfc38988c1a60053898a25edc27d6699713aef8773fefc951eaf0a6",
+    "app/game/ClanWarBibleV6Panel.tsx": "f6047efe7e48568cab3fe7c9de3d1d6b5d8d37f25ccfd3117c0ab4ff109c6f57",
+    "app/game/GameClient.tsx": "cb9e7b8c9ed38a5fb5c112905be169246bdef5b136408a3207fb307de32f2972"
+  },
+  "buildIdBefore": "lSBcQd-2LuUCPafGoIZvC",
+  "fixtureSha256": "c29685d009e57a3d5bdc768da63cf69f668988887adaf5628288d4d8ad4b63b4",
+  "browserVersion": "154.0.8037.57",
+  "passed": false,
+  "failure": {
+    "message": "page.goto: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:3123/\nCall log:\n\u001b[2m  - navigating to \"http://127.0.0.1:3123/\", waiting until \"networkidle\"\u001b[22m\n",
+    "stack": "page.goto: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:3123/\nCall log:\n\u001b[2m  - navigating to \"http://127.0.0.1:3123/\", waiting until \"networkidle\"\u001b[22m\n\n    at /workspace/clan-war-command-20261109-before/capture.mjs:50:13"
+  }
+}

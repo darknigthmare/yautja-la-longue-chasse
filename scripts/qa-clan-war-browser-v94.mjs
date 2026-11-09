@@ -9,6 +9,7 @@ import {build} from 'esbuild';
 import {chromium} from 'playwright-core';
 import {reportGithubActionsFailure} from './lib/github-actions-annotation.mjs';
 const root=fileURLToPath(new URL('../',import.meta.url));
+const outputDirectory=path.resolve(root,process.env.CLAN_WAR_BROWSER_OUTPUT||'outputs/qa-audit-v94');
 const compiled=await build({entryPoints:[path.join(root,'tests/browser/clan-war-v94.fixture.tsx')],bundle:true,write:false,outdir:path.join(root,'outputs/qa-clan-war-v94-build'),format:'esm',platform:'browser',jsx:'automatic',logLevel:'silent',define:{'process.env.NODE_ENV':'"production"'},plugins:[{name:'test-static-next-image',setup(b){
  b.onResolve({filter:/^next\/image$/},()=>({path:'image',namespace:'static-test-image'}));
  b.onLoad({filter:/.*/,namespace:'static-test-image'},()=>({contents:`import React from 'react'; export default function Image({unoptimized,priority,fill, ...props}) { return React.createElement('img',props); }`,loader:'js',resolveDir:root}));
@@ -36,15 +37,20 @@ try{
   }
   finally{await ctx.close();}
  }
+ async function openCanyon(page){
+  await page.locator('[data-command-open="archives"]').click();
+  await page.getByRole('dialog',{name:'Archives du conseil',exact:true}).getByRole('button',{name:'Exercice V3 · canyon',exact:true}).click();
+ }
  async function prepare(page){
-  for(const name of ['Exercice V3 · canyon','Grimper à la corniche · observer les signaux','Rejoindre la maintenance par la rampe','Préserver le refuge · réserve propre et détour','Atteindre le poste et transmettre le renseignement','Sceller le manifeste et prendre le commandement'])await page.getByRole('button',{name,exact:true}).click();
+  await openCanyon(page);
+  for(const name of ['Grimper à la corniche · observer les signaux','Rejoindre la maintenance par la rampe','Préserver le refuge · réserve propre et détour','Atteindre le poste et transmettre le renseignement','Sceller le manifeste et prendre le commandement'])await page.getByRole('button',{name,exact:true}).click();
   await page.waitForFunction(()=>JSON.parse(localStorage.getItem(window.__warApiV94.CANYON_STORAGE_KEY_V85)||'null')?.phase==='battle');
  }
  const seconds=page=>page.evaluate(()=>JSON.parse(localStorage.getItem(window.__warApiV94.CANYON_STORAGE_KEY_V85)).seconds);
  await check('played preparation writes the canyon and survives reload without touching campaign bytes',async page=>{
   await page.evaluate(()=>localStorage.setItem('yautja-long-hunt.save','campaign-sentinel'));await prepare(page);
   await page.getByRole('button',{name:'Avancer d’une seconde',exact:true}).click();await page.waitForFunction(()=>JSON.parse(localStorage.getItem(window.__warApiV94.CANYON_STORAGE_KEY_V85)).seconds===1);
-  await page.reload();await page.getByRole('button',{name:'Exercice V3 · canyon',exact:true}).click();assert.equal(await seconds(page),1);assert.equal(await page.evaluate(()=>localStorage.getItem('yautja-long-hunt.save')),'campaign-sentinel');
+  await page.reload();await openCanyon(page);assert.equal(await seconds(page),1);assert.equal(await page.evaluate(()=>localStorage.getItem('yautja-long-hunt.save')),'campaign-sentinel');
  });
  await check('parent suspension and an inert settings overlay stop the actual tactical clock',async page=>{
   await prepare(page);await page.getByRole('button',{name:'Reprendre le temps',exact:true}).click();await page.waitForFunction(()=>JSON.parse(localStorage.getItem(window.__warApiV94.CANYON_STORAGE_KEY_V85)).seconds>=1);
@@ -64,7 +70,7 @@ try{
  });
  await check('a returned formation is replaced by an available selection instead of blocking orders',async page=>{
   await page.evaluate(()=>{const a=window.__warApiV94;let c=a.createCanyonV85();for(const act of ['corniche','maintenance','preserve','poste'])c=a.canyonPreparationV85(c,act);c=a.engageCanyonV85(c,a.CANYON_PRESET_V85);c=a.orderCanyonFormationV85(c,c.formations[0].id,'extract',96,0).state;for(let n=0;n<16;n++)c=a.stepCanyonV85(c);if(!c.formations[0].extraction)throw Error('fixture must have extracted first formation');localStorage.setItem(a.CANYON_STORAGE_KEY_V85,JSON.stringify(c));});
-  await page.reload();await page.getByRole('button',{name:'Exercice V3 · canyon',exact:true}).click();assert.equal(await page.getByRole('button',{name:'Transmettre l’ordre',exact:true}).isEnabled(),true);const expected=await page.evaluate(()=>JSON.parse(localStorage.getItem(window.__warApiV94.CANYON_STORAGE_KEY_V85)).formations.find(f=>!f.extraction).id);assert.equal(await page.getByRole('combobox',{name:/^Formation/}).inputValue(),expected);
+  await page.reload();await openCanyon(page);assert.equal(await page.getByRole('button',{name:'Transmettre l’ordre',exact:true}).isEnabled(),true);const expected=await page.evaluate(()=>JSON.parse(localStorage.getItem(window.__warApiV94.CANYON_STORAGE_KEY_V85)).formations.find(f=>!f.extraction).id);assert.equal(await page.getByRole('combobox',{name:/^Formation/}).inputValue(),expected);
  });
  await check('dropped archive writes show an unconfirmed result and retry saves it without duplicate rewards',async page=>{
   await prepare(page);await page.getByRole('button',{name:'Déclarer le repli',exact:true}).click();await page.waitForFunction(()=>JSON.parse(localStorage.getItem(window.__warApiV94.CANYON_STORAGE_KEY_V85)).phase==='debrief');
@@ -90,5 +96,5 @@ try{
  });
  results.push({name:'No uncaught browser exceptions',status:errors.length?'FAIL':'PASS',errors});
  const report={scope:'Actual free exercise panel/stores, native Web Locks and localStorage; fixture profile and placeholder art; not a played campaign',browser:browser.version(),results};
- await fs.mkdir(path.join(root,'outputs/qa-audit-v94'),{recursive:true});await fs.writeFile(path.join(root,'outputs/qa-audit-v94/clan-war-browser.json'),JSON.stringify(report,null,2));console.log(JSON.stringify(report,null,2));if(results.some(r=>r.status!=='PASS'))process.exitCode=1;
+ await fs.mkdir(outputDirectory,{recursive:true});await fs.writeFile(path.join(outputDirectory,'clan-war-browser.json'),JSON.stringify(report,null,2));console.log(JSON.stringify(report,null,2));if(results.some(r=>r.status!=='PASS'))process.exitCode=1;
 }finally{await browser?.close();await new Promise(resolve=>server.close(resolve));}
