@@ -1,0 +1,28 @@
+name: Badlands v0.2 core
+on:
+  push:
+    branches:
+      - codex/badlands-facing-20261109
+  pull_request:
+    paths:
+      - 'dlc/predator-badlands/**'
+      - '.github/workflows/badlands-v02-core.yml'
+permissions:
+  contents: read
+jobs:
+  core:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+          filter: blob:none
+          sparse-checkout: |
+            /dlc/predator-badlands/
+          sparse-checkout-cone-mode: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Run all reconstructed v0.2 core tests
+        run: node --test dlc/predator-badlands/v0.2.0/tests/test_core.mjs
