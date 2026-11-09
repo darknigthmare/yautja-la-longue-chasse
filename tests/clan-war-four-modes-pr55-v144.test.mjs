@@ -17,7 +17,6 @@ const bundle=await build({stdin:{contents:[
 const api=await import("data:text/javascript;base64,"+
  Buffer.from(bundle.outputFiles[0].text).toString("base64"));
 const rules=api.DEFAULT_WAR_RULES_V6;
-const d=(a,b)=>Math.abs(a.x-b.x)+Math.abs(a.y-b.y);
 const at=p=>p.x+","+p.y;
 function start(mode,num=1){
  const s=api.createWarOperationsV115(rules),ids=s.teams.slice(0,num).map(t=>t.id);

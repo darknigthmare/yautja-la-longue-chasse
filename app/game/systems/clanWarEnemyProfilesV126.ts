@@ -22,7 +22,7 @@ export interface WarAiEncounterV126 {
 }
 const PROFILES:readonly WarAiDoctrineV126[]=["cautious","balanced","aggressive","defensive","reinforcement"];
 interface Archetype {unitId:string;role:WarAiRoleV126;members:number;pc:number;terrain:(climate:string)=>boolean;}
-const always=(_climate:string)=>true;
+const always=()=>true;
 const polar=(c:string)=>c==="polar"||c==="cold-desert"||c==="alpine";
 const marine=(c:string)=>c==="marine"||c==="wetland";
 const vertical=(c:string)=>c==="alpine"||c==="urban"||c==="volcanic";

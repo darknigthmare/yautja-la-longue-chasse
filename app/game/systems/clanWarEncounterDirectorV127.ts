@@ -2,7 +2,7 @@ import {
  CLAN_WAR_COHERENT_VARIANTS_V126,type WarCoherentVariantV126,
 } from "./clanWarWorldClimateV126";
 import {
- createWarAiEncounterV126,type WarAiEncounterV126,type WarAiDetachmentV126,
+ createWarAiEncounterV126,type WarAiDetachmentV126,
 } from "./clanWarEnemyProfilesV126";
 
 export type WarMissionPhaseV127 = "recon"|"engage"|"objective"|"extract";

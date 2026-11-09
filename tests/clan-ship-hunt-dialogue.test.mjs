@@ -144,9 +144,22 @@ test('native parent keeps four original topics and adds one closed, accessible d
   assert.match(html,/hidden="" aria-label="Chasses évoquées/);
   assert.doesNotMatch(html,/data-clan-hunt-report=|data-clan-hunt-line=/);
 });
-test('empty, hidden and paused conversations produce no interactive story', () => {
-  for (const [save,roomId,suspended] of [[at(base,'iron-claw'),'archives',false],[at(base,'iron-claw'),'armurerie',true]])
-    assert.equal(qa.render('app/game/ClanShipHuntConversation.tsx',{save,npcId:'iron-claw',roomId,suspended}),'');
+test('absent, wrong-room, foreign and future contacts render no story controller', () => {
+  const located=at(base,'iron-claw');
+  for (const [save,roomId] of [[located,'archives'],
+    [{...located,clanShipDocking:{...located.clanShipDocking,ownerCreatedAt:'other'}},'armurerie'],
+    [{...located,clanShipDocking:{...located.clanShipDocking,version:999}},'armurerie']])
+    for(const suspended of [false,true])assert.equal(qa.render('app/game/ClanShipHuntConversation.tsx',{save,npcId:'iron-claw',roomId,suspended}),'');
+});
+test('SSR retains a paused story controller hidden and inert without an enabled toggle or live speech', () => {
+  const save=at(base,'iron-claw'),before=JSON.stringify(save);
+  const html=qa.render('app/game/ClanShipHuntConversation.tsx',{save,npcId:'iron-claw',roomId:'armurerie',suspended:true});
+  const root=html.match(/<div[^>]*data-clan-hunt-conversation="iron-claw"[^>]*>/)?.[0];
+  assert.ok(root);assert.match(root,/hidden=""/);assert.match(root,/inert=""/);assert.match(root,/aria-live="off"/);
+  const toggle=html.match(/<button[^>]*data-clan-hunt-toggle[^>]*>/)?.[0];
+  assert.ok(toggle);assert.match(toggle,/disabled=""/);assert.match(toggle,/aria-expanded="false"/);
+  assert.doesNotMatch(html,/aria-live="polite"|data-clan-hunt-report=|data-clan-hunt-line=/);
+  assert.equal(JSON.stringify(save),before);
 });
 test('four recruitment rewrites preserve every non-prose value, branch, location, and numeric threshold', () => {
   const frozen=JSON.parse(fs.readFileSync('tests/fixtures/companion-recruitment-mechanics-19317af4.json','utf8'));

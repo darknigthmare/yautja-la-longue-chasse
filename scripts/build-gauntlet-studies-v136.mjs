@@ -20,7 +20,7 @@ function geom(entry,layer){
  const h=hashId(entry.id),s=h%7,t=(h>>>5)%7,u=(h>>>12)%7,v=(h>>>17)%7;
  const p=P[entry.theme]||P.classic; const [base,trim,light,dark]=p; 
  const accent=light,rx=(h>>>8)%3,corner=(h>>>4)%4;
- const shift=(h%17)-8;const tilt=-(5+(h%8));
+ const tilt=-(5+(h%8));
  const w=198+(h%57);const x=164+s*3;const max=x+w,yy=81+(h%13),hh=105+(h%23);
  const q=x+Math.round(w/2),buttonCount=2+(h%4),panelType=(h>>>3)%4,caporn=(h>>>16)%5;
  if(layer==="01-arm"){

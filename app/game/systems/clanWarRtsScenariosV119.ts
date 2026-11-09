@@ -399,7 +399,7 @@ export function warRtsRivalTargetV120(
             (actor:WarRtsActorV115)=>actor.unitId==="W3-U01":
             objective?.kind==="wind-extraction"?
               (actor:WarRtsActorV115)=>living.every(other=>other.id===actor.id||DIST(other,actor)>2):
-              (_actor:WarRtsActorV115)=>false;
+              ()=>false;
   const selected=visible.find(priority);
   return selected??(visible[0]??[...living].sort(byDistance)[0]);
 }

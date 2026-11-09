@@ -15,7 +15,6 @@ const root=fileURLToPath(new URL("../",import.meta.url));
 const publicRoot=resolve(root,"public");
 const out=resolve(root,"outputs/clan-war-multitab-v144");
 const WAR_KEY="yautja.clan-war.v85.free.v1";
-const PRESENTATION_KEY="yautja.clan-war.presentation.v1";
 const SENTINEL="unrelated-campaign-stays-untouched-v144";
 const THALASSA_KEY="yautja.clan-war.v96.planet.thalassa.free.v1";
 const bundle=await build({

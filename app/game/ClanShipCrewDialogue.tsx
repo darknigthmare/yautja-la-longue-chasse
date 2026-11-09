@@ -13,12 +13,15 @@ export default function ClanShipCrewDialogue({ save, npcId, roomId, suspended }:
   save: SaveGame; npcId: ClanShipNpcId; roomId: ClanShipRoomId; suspended: boolean;
 }) {
   const [topic, setTopic] = useState<ClanShipDialogueTopic>('greeting');
-  const dialogue = clanShipDialogue(save, npcId, roomId, topic, !suspended);
+  // Physical absence closes the interview. A temporary save or focus pause
+  // hides its controls while preserving this topic and the nested report state.
+  const dialogue = clanShipDialogue(save, npcId, roomId, topic, true);
   if (!dialogue?.present) return null;
-  return <section className={styles.conversation} aria-label={`Conversation avec ${dialogue.name}`}
+  return <section className={styles.conversation} hidden={suspended} inert={suspended}
+    aria-label={`Conversation avec ${dialogue.name}`}
     data-clan-dialogue={npcId} data-dialogue-topic={topic} data-dialogue-phase={dialogue.phase}>
     <p className={styles.eyebrow}>À CE POSTE · {dialogue.name}</p>
-    <blockquote aria-live="polite" aria-atomic="true">{dialogue.line}</blockquote>
+    <blockquote aria-live={suspended ? 'off' : 'polite'} aria-atomic="true">{dialogue.line}</blockquote>
     <div className={styles.conversationTopics} role="group" aria-label="Sujets de conversation">
       {CLAN_SHIP_DIALOGUE_TOPICS.map(entry => <button key={entry.id} type="button"
         aria-pressed={entry.id === topic} disabled={suspended} data-clan-dialogue-topic={entry.id}

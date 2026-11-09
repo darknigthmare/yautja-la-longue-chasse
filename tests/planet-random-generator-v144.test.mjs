@@ -22,7 +22,8 @@ const api = await import(pathToFileURL(file));
 const recipe = api.normalizeWarPlanetRecipeV103({
   seed: 14401, territoryCount: 48, regionCount: 8, landform: "continents", surface: "water",
 });
-const { version: originalVersion, ...advanced } = api.DEFAULT_WAR_PLANET_RECIPE_V115;
+const advanced = { ...api.DEFAULT_WAR_PLANET_RECIPE_V115 };
+delete advanced.version;
 const advancedValues = Object.fromEntries(api.PLANET_ADVANCED_FIELDS_V144.map(field=>[field,advanced[field]]));
 const request = (scope, overrides = {}) => ({
   recipe, advanced: advancedValues, advancedEnabled: true,

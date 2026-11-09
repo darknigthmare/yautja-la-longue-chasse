@@ -51,12 +51,8 @@ const server=createServer(async(req,res)=>{
   }catch(e){res.writeHead(404);res.end(String(e));}
 });
 let browser,online=false;
-const errors=[],checks=[],fails=[];
+const errors=[],checks=[];
 function pass(name,detail){checks.push({name,status:"PASS",detail});}
-const initDrawAudit=()=>({
-  // install before React/GameCanvas mounts so all drawImage calls are captured.
-  add:true
-});
 async function installDrawAudit(page){
  await page.addInitScript(()=>{
    window.__drawnGauntletsV142=[];

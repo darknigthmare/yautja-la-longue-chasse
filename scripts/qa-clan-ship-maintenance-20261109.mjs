@@ -45,7 +45,7 @@ const report = { startedAt: new Date().toISOString(), url, browserExecuted: fals
   fixture: { source: 'initial-save.json', sha256: sha(await fs.readFile(path.join(out, 'initial-save.json'))),
     disclosure: 'Adult historical campaign, boarding/welcome/mandate, ship-seal-check, ship-armory-audit and previous space-screening earned through production reducers. Neither incident nor interception is completed or active initially. No field hunt/full campaign claimed.' },
   sourceBefore: await sourceIdentity(), buildIdBefore: (await fs.readFile(path.join(root, '.next/BUILD_ID'), 'utf8')).trim(),
-  checks: [], screenshots: [], commands: [], walking: [], saveChecks: [], escapeChecks: [], servedScripts: [], errors: [], consoleErrors: [], httpErrors: [], requestFailures: [],
+  checks: [], screenshots: [], commands: [], walking: [], saveChecks: [], escapeChecks: [], operationsEscape: null, servedScripts: [], errors: [], consoleErrors: [], httpErrors: [], requestFailures: [],
   physicalController: false, humanArtApproved: false, fullCampaignPlayed: false };
 let browser, page;
 const scriptTasks = [];
@@ -198,8 +198,19 @@ try {
     assert.match(await spoken.innerText(), /confier de nouveau ce seuil/);
     const before = await storedRaw(); await page.locator('[data-clan-crew-dialogue-ack="threshold-guard"]').click(); await frames();
     assert.equal(await storedRaw(), before); report.saveChecks.push({ name: 'trust-read', unchanged: true, sha256: sha(before) });
-    await screenshot('02-guard-trust.png'); await page.keyboard.press('Escape'); await panel().waitFor({ state: 'hidden' });
+    await screenshot('02-guard-trust.png');
+    await page.locator('[data-clan-operations] h2').click();
+    const focused = await page.evaluate(() => ({ tag: document.activeElement?.tagName,
+      insideOperations: !!document.activeElement?.closest('[data-clan-operations]'),
+      operationsInert: document.querySelector('[data-clan-operations]')?.inert,
+      closeDisabled: document.querySelector('[data-clan-operations-close]')?.disabled }));
+    assert.equal(focused.operationsInert, false); assert.equal(focused.closeDisabled, false);
+    const beforeEscape = await storedRaw();
+    await page.keyboard.press('Escape'); await panel().waitFor({ state: 'hidden' });
     assert.equal(await page.locator('#settings-title').isVisible(), false);
+    assert.equal(await storedRaw(), beforeEscape);
+    report.operationsEscape = { afterNativeHeadingClick: true, focused, panelClosed: true, settingsOpened: false,
+      saveUnchanged: true, saveSha256: sha(beforeEscape) };
   });
   await check('B02 physical relay accepts a single component, retries its permutation and restores both circuits on mobile', async () => {
     for (const type of ['accept', 'inspect-witness', 'read-reference']) await incident('relay-fault', type);

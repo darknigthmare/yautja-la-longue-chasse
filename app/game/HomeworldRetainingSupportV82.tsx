@@ -1,4 +1,3 @@
-/* eslint-disable @next/next/no-img-element -- immutable native masonry textures */
 import {memo,useId} from 'react';
 import {HOMEWORLD_NATIVE_CATALOGUE_V81} from './systems/homeworldNativeArchitectureV81';
 import {homeworldRetainingRenderV82,type HomeworldRetainingSupportV82} from './systems/homeworldRetainingAssembliesV82';

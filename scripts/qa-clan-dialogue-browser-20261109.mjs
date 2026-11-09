@@ -33,6 +33,7 @@ const report = {
     clanMarks: initial.profile.clanMarks, completedContracts: initial.clanShipOperations.completedContracts.map(r => r.contractId),
     recruitedNpcIds: initial.clanShipOperations.recruitedNpcIds, operation: initial.clanShipOperations.spaceEncounter },
   sourceSha256: {}, browserExecuted: false, passed: false, checks: [], contexts: [], errors: [], missingAssets: [], screenshots: [], retention: [],
+  focusObservation: 'Default Playwright forced-focus emulation explicitly disabled after navigation; real Chromium target activation, no synthetic lifecycle events.',
 };
 const sourceFiles = ['app/game/ClanShipCrewDialogue.tsx', 'app/game/systems/clanShipDialogue.ts',
   'app/game/ClanShipOperationsPanel.tsx', 'app/game/ClanShipOperationsPanel.module.css', 'app/game/systems/clanShipOperations.ts',
@@ -65,6 +66,10 @@ try {
     }, { key: saves.SAVE_STORAGE_KEY, save: initial });
     const page = await context.newPage();
     activePage = page;
+    // Playwright forces every Chromium page to report focus by default. Remove
+    // that override so an actual second tab can cause the game's native blur.
+    const nativeFocus = await context.newCDPSession(page);
+    await nativeFocus.send('Emulation.setFocusEmulationEnabled', { enabled: false });
     page.on('pageerror', error => report.errors.push({ context: name, message: error.message }));
     page.on('response', response => { if (response.status() >= 400) report.missingAssets.push({ context: name, status: response.status(), url: response.url() }); });
     const click = control => viewport.width < 600 ? control.tap() : control.click();
@@ -73,6 +78,9 @@ try {
     const panel = () => page.locator('[data-clan-operations]');
     const close = async () => { if (await panel().count()) { await click(page.locator('[data-clan-operations-close]')); await panel().waitFor({ state: 'detached' }); } };
     const openCampaign = async () => {
+      // Chromium/Playwright restore this override during a navigation. Apply
+      // the native-focus configuration to the newly committed document too.
+      await nativeFocus.send('Emulation.setFocusEmulationEnabled', { enabled: false });
       await page.locator('[data-campaign-menu]').waitFor({ timeout: 90000 });
       const button = page.locator('[data-menu-section="campaign"]'); if (await button.isVisible()) await click(button);
       await click(page.locator('[data-menu-action="continue"]'));
@@ -115,6 +123,9 @@ try {
     const checkRetention = async id => {
       const conversation = page.locator(`[data-clan-dialogue="${id}"]`);
       await click(conversation.locator('[data-clan-dialogue-topic="work"]'));
+      const stories = conversation.locator(`[data-clan-hunt-conversation="${id}"]`);
+      await click(stories.locator('[data-clan-hunt-toggle]'));
+      await click(stories.locator('[data-clan-hunt-report="field-jungle-survey"]'));
       const before = core(await read());
       await page.evaluate(npcId => {
         const view = document.querySelector(`[data-clan-dialogue="${npcId}"]`);
@@ -123,9 +134,15 @@ try {
         const audit = { startedAt: performance.now(), phase: 'autosave', samples: [] };
         const record = () => {
           const current = document.querySelector(`[data-clan-dialogue="${npcId}"]`);
+          const stories = current?.querySelector('[data-clan-hunt-conversation]');
           const state = { phase: audit.phase, connected: drawer.isConnected,
             sameDrawer: current?.closest('details') === drawer, open: drawer.open,
             topic: current?.getAttribute('data-dialogue-topic') ?? null,
+            crewHidden: current?.hidden ?? null, crewInert: current?.inert ?? null,
+            liveSpeech: current?.querySelector('blockquote')?.getAttribute('aria-live') ?? null,
+            huntPresent: Boolean(stories), huntHidden: stories?.hidden ?? null, huntInert: stories?.inert ?? null,
+            huntOpen: stories?.querySelector('[data-clan-hunt-toggle]')?.getAttribute('aria-expanded') ?? null,
+            huntSelected: stories?.querySelector('[data-clan-hunt-line]')?.getAttribute('data-clan-hunt-line') ?? null,
             busy: Boolean(document.querySelector('[data-clan-operations-close]')?.disabled),
             hidden: document.hidden, focused: document.hasFocus() };
           const previous = audit.samples.at(-1);
@@ -162,12 +179,22 @@ try {
         assert.ok(automatic.elapsedMs >= 30000, 'A natural autosave period must actually elapse.');
         assert.ok(automatic.samples.some(({ state }) => state.busy && state.focused && !state.hidden), 'The real automatic checkpoint must make its controls busy.');
         assert.ok(automatic.samples.every(({ state }) => state.connected && state.open), 'Autosave must preserve the same open drawer.');
+        assert.ok(automatic.samples.every(({ state }) => state.huntPresent && state.huntOpen === 'true' && state.huntSelected === 'field-jungle-survey'),
+          'Autosave must preserve the mounted, open nested report and its actual selection.');
+        assert.ok(automatic.samples.filter(({ state }) => state.busy).every(({ state }) =>
+          state.crewHidden && state.crewInert && state.huntHidden && state.huntInert && state.liveSpeech === 'off'),
+        'Suspended conversations must be hidden, inert and non-announcing.');
         assert.equal(await conversation.getAttribute('data-dialogue-topic'), 'work');
         assert.deepEqual(core(await read()), before);
-        check('Natural autosave retains the same open drawer and selected topic without progression changes');
+        check('Natural autosave retains the open drawer, topic and nested selected report without progression changes');
 
         await page.evaluate(() => { window.__clanDialogueRetention.audit.phase = 'manual-tab-interruption'; });
-        otherPage = await context.newPage(); await otherPage.goto('about:blank'); await otherPage.bringToFront();
+        otherPage = await context.newPage();
+        const otherNativeFocus = await context.newCDPSession(otherPage);
+        await otherPage.goto('about:blank');
+        await nativeFocus.send('Emulation.setFocusEmulationEnabled', { enabled: false });
+        await otherNativeFocus.send('Emulation.setFocusEmulationEnabled', { enabled: false });
+        await otherPage.bringToFront();
         await page.waitForFunction(() => (document.hidden || !document.hasFocus()) &&
           document.querySelector('[data-clan-operations-close]')?.disabled, null, { timeout: 5000 });
         const interrupted = await page.evaluate(() => {
@@ -175,13 +202,19 @@ try {
         });
         assert.ok(interrupted.state.hidden || !interrupted.state.focused, 'The real tab switch must interrupt the original page.');
         assert.ok(interrupted.state.connected && interrupted.state.open);
+        assert.ok(interrupted.state.crewHidden && interrupted.state.crewInert && interrupted.state.huntHidden && interrupted.state.huntInert);
+        assert.equal(interrupted.state.liveSpeech, 'off');
+        assert.equal(interrupted.state.huntOpen, 'true');
+        assert.equal(interrupted.state.huntSelected, 'field-jungle-survey');
         await page.bringToFront();
         await page.waitForFunction(() => !document.hidden && document.hasFocus() &&
           !document.querySelector('[data-clan-operations-close]')?.disabled);
         assert.equal(await conversation.getAttribute('data-dialogue-topic'), 'work');
         assert.equal(await conversation.locator('xpath=ancestor::details[1]').evaluate(element => element.open), true);
+        assert.equal(await stories.locator('[data-clan-hunt-toggle]').getAttribute('aria-expanded'), 'true');
+        assert.equal(await stories.locator('[data-clan-hunt-line]').getAttribute('data-clan-hunt-line'), 'field-jungle-survey');
         assert.deepEqual(core(await read()), before);
-        check('A real tab interruption preserves the open drawer and chosen topic after focus returns');
+        check('A real tab interruption preserves the open drawer, topic and selected nested report after focus returns');
         const manual = await page.evaluate(() => {
           const { audit, record } = window.__clanDialogueRetention; record(); return audit.samples.slice();
         });
@@ -191,6 +224,7 @@ try {
         await otherPage?.close();
         await page.evaluate(() => window.__clanDialogueRetention?.stop());
       }
+      await click(stories.locator('[data-clan-hunt-toggle]'));
       await click(conversation.locator('[data-clan-dialogue-topic="return"]'));
     };
     const capture = async (id, suffix) => {

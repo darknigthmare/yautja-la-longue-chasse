@@ -6,7 +6,7 @@ import { createDefaultShipProgression, SHIP_PROGRESSION_STORAGE_KEY, writeShipPr
 import type { ShipTrainingAcknowledgementV94 } from '../../app/game/systems/shipTrainingAcknowledgementV94';
 const save=defaultSave('2026-10-16T00:00:00.000Z'),base=createDefaultShipProgression(save,save.updatedAt);
 const originalSet=Storage.prototype.setItem;
-const api={ready:false,calls:0,writes:[] as string[],notifications:[] as string[],reply:(_mode:string)=>{},show:(_shown:boolean)=>{},sidecarKey:SHIP_PROGRESSION_STORAGE_KEY};
+const api={ready:false,calls:0,writes:[] as string[],notifications:[] as string[],reply:(_mode:string)=>{void _mode;},show:(_shown:boolean)=>{void _shown;},sidecarKey:SHIP_PROGRESSION_STORAGE_KEY};
 Storage.prototype.setItem=function(key,value){if(key===SHIP_PROGRESSION_STORAGE_KEY)api.writes.push(value);originalSet.call(this,key,value);};
 originalSet.call(localStorage,SAVE_STORAGE_KEY,JSON.stringify(save));originalSet.call(localStorage,SHIP_PROGRESSION_STORAGE_KEY,JSON.stringify(base));
 Object.assign(window,{__ackQa:api});

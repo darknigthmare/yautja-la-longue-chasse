@@ -16,7 +16,7 @@ const outputDir = path.join(path.dirname(root), 'outputs', 'yautja-excel-bible-2
 const deliverableDir = path.join(root, 'production/excel-bible-20261108/suivi');
 await fs.mkdir(outputDir, { recursive: true });
 const read = async name => JSON.parse(await fs.readFile(path.join(deliverableDir, name), 'utf8'));
-const [inventory, excel, bible, campaign, summary, qualification] = await Promise.all([
+const [inventory, excel, bible, campaign, , qualification] = await Promise.all([
   read('excel-inventory.json'), read('excel-open-register.json'), read('bible-requirements.json'),
   read('bible-campagne-revisee.json'),
   read('register-summary.json'), read('qualification-courante.json'),

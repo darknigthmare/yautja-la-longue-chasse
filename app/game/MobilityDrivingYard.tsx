@@ -22,12 +22,12 @@ export default function MobilityDrivingYard(props:Props){
  const model=mobilityDefinition(props.state.active!.modelId)!;
  useEffect(()=>{latest.current=props;},[props]);
  const clear=()=>{held.current.clear();padGate.current.reset();neutralRef.current=false;setPadNeutral(false);};
- const flush=()=>{const ok=controller.flush(latest.current.onCommand);setCourse({...controller.predicted});if(!ok){pauseRef.current=true;setPaused(true);setNotice(controller.message);}return ok;};
- const pause=()=>{pauseRef.current=true;setPaused(true);clear();flush();};
+ const flush=()=>{const ok=controller.flush(latest.current.onCommand);setCourse({...controller.predicted});setNotice(controller.message);if(!ok){pauseRef.current=true;setPaused(true);}return ok;};
+ const pause=()=>{pauseRef.current=true;setPaused(true);clear();if(flush())setNotice('Conduite en pause · dernières commandes enregistrées.');};
  useEffect(()=>{
   let frame=0,last=0,accumulator=0,lastPaint=0;
   const flushNow=()=>{const ok=controller.flush(latest.current.onCommand);if(!ok){pauseRef.current=true;setPaused(true);setNotice(controller.message);}setCourse({...controller.predicted});return ok;};
-  const halt=()=>{pauseRef.current=true;setPaused(true);held.current.clear();padGate.current.reset();neutralRef.current=false;setPadNeutral(false);accumulator=0;flushNow();};
+  const halt=()=>{pauseRef.current=true;setPaused(true);held.current.clear();padGate.current.reset();neutralRef.current=false;setPadNeutral(false);accumulator=0;if(flushNow())setNotice('Conduite en pause · dernières commandes enregistrées.');};
   const key=(event:KeyboardEvent,down:boolean)=>{
    const source=`key:${event.code || event.key}`;
    // Release even over editable controls or while suspended; otherwise keys stick.

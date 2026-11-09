@@ -11,8 +11,8 @@ const base=createDefaultShipProgression(save,save.updatedAt);
 const originalSet=Storage.prototype.setItem,originalGet=Storage.prototype.getItem;
 let fault='none',failRead=false;
 const api={fault(value:string){fault=value;},writes:[] as string[],notifications:[] as string[],adopted:[] as ShipProgressionState[],
-  pause:(_v:boolean)=>{},show:(_v:boolean)=>{},padEnabled:(_v:boolean)=>{},controlled:(_v:boolean)=>{},external:(_v:boolean)=>{},
-  resolve:(_v:number)=>{},reject:()=>{},externalCalls:0,throwNotifications:false,sidecarKey:SHIP_PROGRESSION_STORAGE_KEY,recoveryDB:SHIP_TRAINING_RECOVERY_DB_V94,recoveryStore:SHIP_TRAINING_RECOVERY_STORE_V94,owner:save.createdAt,recovery:()=>createShipTrainingRecoveryPortV94()};
+  pause:(_v:boolean)=>{void _v;},show:(_v:boolean)=>{void _v;},padEnabled:(_v:boolean)=>{void _v;},controlled:(_v:boolean)=>{void _v;},external:(_v:boolean)=>{void _v;},
+  resolve:(_v:number)=>{void _v;},reject:()=>{},externalCalls:0,throwNotifications:false,sidecarKey:SHIP_PROGRESSION_STORAGE_KEY,recoveryDB:SHIP_TRAINING_RECOVERY_DB_V94,recoveryStore:SHIP_TRAINING_RECOVERY_STORE_V94,owner:save.createdAt,recovery:()=>createShipTrainingRecoveryPortV94()};
 Storage.prototype.setItem=function(k,v){if(k===SHIP_PROGRESSION_STORAGE_KEY){api.writes.push(v);if(fault==='drop')return;if(fault==='quota')throw new DOMException('Fixture quota','QuotaExceededError');}
  originalSet.call(this,k,v);if(k===SHIP_PROGRESSION_STORAGE_KEY&&fault==='readback'){fault='none';failRead=true;}};
 Storage.prototype.getItem=function(k){if(k===SHIP_PROGRESSION_STORAGE_KEY&&failRead){failRead=false;throw new DOMException('Fixture readback','SecurityError');}return originalGet.call(this,k);};

@@ -1,5 +1,7 @@
 "use client";
 
+/* eslint-disable @next/next/no-img-element -- original catalogue sprite bytes and explicit alpha geometry */
+
 import { useId, useState } from "react";
 import catalogue from "./data/companionCatalogueV56.json";
 import {

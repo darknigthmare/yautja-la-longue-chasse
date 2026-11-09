@@ -156,11 +156,26 @@ test('SSR renders the actual conversation and four accessible topic controls, bu
   assert.equal((html.match(/data-clan-dialogue-topic=/g) ?? []).length, 4);
   assert.doesNotMatch(html, /data-clan-recruit-action/);
 });
-test('SSR has no speech or topic buttons for absent, wrong-room or paused contacts', () => {
-  for (const [save, roomId, suspended] of [[at(base, 'iron-claw'), 'archives', false],
-    [at(base, 'iron-claw'), 'armurerie', true], [at(recruit(base, 'iron-claw'), 'iron-claw'), 'armurerie', false]]) {
-    assert.equal(qa.render('app/game/ClanShipCrewDialogue.tsx', { save, npcId: 'iron-claw', roomId, suspended }), '');
+test('SSR has no conversation for absent, wrong-room, foreign or future contacts', () => {
+  const located = at(base, 'iron-claw');
+  for (const [save, roomId] of [[located, 'archives'], [at(recruit(base, 'iron-claw'), 'iron-claw'), 'armurerie'],
+    [{ ...located, clanShipOperations: { ...located.clanShipOperations, version: 999 } }, 'armurerie'],
+    [{ ...located, clanShipDocking: { ...located.clanShipDocking, ownerCreatedAt: 'other' } }, 'armurerie']]) {
+    for (const suspended of [false, true]) {
+      assert.equal(qa.render('app/game/ClanShipCrewDialogue.tsx', { save, npcId: 'iron-claw', roomId, suspended }), '');
+    }
   }
+});
+test('SSR retains a paused interview subtree hidden, inert and non-announcing with all four topics disabled', () => {
+  const save = at(base, 'iron-claw'), before = JSON.stringify(save);
+  const html = qa.render('app/game/ClanShipCrewDialogue.tsx', { save, npcId: 'iron-claw', roomId: 'armurerie', suspended: true });
+  const root = html.match(/<section[^>]*data-clan-dialogue="iron-claw"[^>]*>/)?.[0];
+  assert.ok(root); assert.match(root, /hidden=""/); assert.match(root, /inert=""/);
+  const buttons = html.match(/<button[^>]*data-clan-dialogue-topic="[^"]+"[^>]*>/g) ?? [];
+  assert.equal(buttons.length, 4); assert.ok(buttons.every(button => /disabled=""/.test(button)));
+  assert.match(html, /data-clan-hunt-conversation="iron-claw"/);
+  assert.match(html, /aria-live="off"/); assert.doesNotMatch(html, /aria-live="polite"/);
+  assert.equal(JSON.stringify(save), before);
 });
 test('SSR integrates the dialogue into the native operations panel and counts agreements, not assigned bodies', () => {
   const save = at(base, 'iron-claw');

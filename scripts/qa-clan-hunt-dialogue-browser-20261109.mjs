@@ -55,7 +55,7 @@ const report = { startedAt: new Date().toISOString(),
   checkoutCommit: execFileSync('git', ['rev-parse', 'HEAD'], { cwd: root, encoding: 'utf8' }).trim(),
   scope: 'Actual GameClient walking, optional archived hunt conversations, private disclosure and localStorage reload. Synthetic prerequisite hunts are NOT browser-played.',
   fixtures: disclosures, sourceSha256: Object.fromEntries(await Promise.all(sourceFiles.map(async file => [file, sha256(await fs.readFile(path.join(root, file)))]))),
-  browserExecuted: false, passed: false, checks: [], screenshots: [], errors: [], missingAssets: [], contexts: [] };
+  browserExecuted: false, passed: false, checks: [], screenshots: [], errors: [], missingAssets: [], contexts: [], framingAdjustments: [] };
 let browser, server;
 try {
   browser = await chromium.launch({ executablePath: process.env.CHROMIUM_EXECUTABLE ?? (existsSync('/usr/bin/chromium') ? '/usr/bin/chromium' : undefined),
@@ -141,7 +141,7 @@ try {
       const line = view.locator('[data-clan-hunt-line]');
       await page.locator('.toast[role="status"]').waitFor({ state: 'detached' });
       await line.scrollIntoViewIfNeeded();
-      const framed = await line.evaluate(node => {
+      const measureFrame = () => line.evaluate(node => {
         const rect = node.getBoundingClientRect();
         let left = 0, top = 0, right = innerWidth, bottom = innerHeight;
         for (let parent = node.parentElement; parent; parent = parent.parentElement) {
@@ -153,6 +153,24 @@ try {
         return { visible: rect.width > 0 && rect.height > 0 && rect.left >= left && rect.top >= top && rect.right <= right && rect.bottom <= bottom,
           bounds: { left: rect.left, top: rect.top, right: rect.right, bottom: rect.bottom }, clip: { left, top, right, bottom } };
       });
+      let framed = await measureFrame();
+      // Chromium's nearest-scroll rounding can leave a fractional line edge
+      // below the clip. Use an actual wheel gesture inside the scroll panel;
+      // retain the strict complete-rectangle assertion rather than a tolerance.
+      if (!framed.visible && framed.bounds.bottom > framed.clip.bottom
+        && framed.bounds.top >= framed.clip.top
+        && framed.bounds.bottom - framed.bounds.top <= framed.clip.bottom - framed.clip.top) {
+        const before = framed;
+        const x = (before.clip.left + before.clip.right) / 2;
+        const y = (before.clip.top + before.clip.bottom) / 2;
+        const deltaY = Math.ceil(before.bounds.bottom - before.clip.bottom) + 16;
+        await page.mouse.move(x, y);
+        await page.mouse.wheel(0, deltaY);
+        await page.waitForFunction(top => document.querySelector('[data-clan-hunt-line]')?.getBoundingClientRect().top < top,
+          before.bounds.top);
+        framed = await measureFrame();
+        report.framingAdjustments.push({ context: name, npc: npc.id, input: { kind: 'native-wheel', x, y, deltaY }, before, after: framed });
+      }
       assert(framed.visible, JSON.stringify(framed));
       const screenshot = `${name}-${npc.id}.png`;
       await page.screenshot({ path: path.join(output, screenshot) }); report.screenshots.push(screenshot);

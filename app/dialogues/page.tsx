@@ -20,14 +20,14 @@ export default function DialogueArchivePage() {
  const [phase,setPhase]=useState("OUV");
  const [data,setData]=useState<Chunk|null>(null);
  const [error,setError]=useState("");
- const entry=index.scenes.find(x=>x.id===selected);
+ const chunk=index.scenes.find(x=>x.id===selected)?.chunk;
  useEffect(()=>{
    let live=true;
-   if(!entry){return;}
-   loaders[entry.chunk]().then(module=>{if(live){setData(module.default as Chunk);setError("");}})
+   if(chunk===undefined){return;}
+   loaders[chunk]().then(module=>{if(live){setData(module.default as Chunk);setError("");}})
      .catch(()=>{if(live){setData(null);setError("Cette archive ne peut pas être chargée.");}});
    return ()=>{live=false};
- },[entry?.chunk]);
+ },[chunk]);
  const scene=data?.scenes.find(x=>x.id===selected);
  const lines=useMemo(()=>data?.lines.filter(x=>x.scene===selected&&x.phase===phase).sort((a,b)=>a.order-b.order)??[],[data,selected,phase]);
  const choices=data?.choices.filter(x=>x.scene===selected)??[];

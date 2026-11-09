@@ -1,11 +1,16 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import {
+import {homeworldSceneSsrV78} from "./helpers/homeworld-scene-ssr-v78.mjs";
+
+// Use the project's real TypeScript module graph, including extensionless
+// imports resolved by Next. No save or gauntlet function is mocked.
+const source=homeworldSceneSsrV78();
+const {
   SAVE_VERSION,SAVE_STORAGE_KEY,defaultSave,normalizeSave,parseSaveImport,
-  exportSave,loadSaveWithStatus,writeSaveWithStatus,reconcileSaveWrite,
-} from "../app/game/save.ts";
-import {gauntletCampaignEquipV134,gauntletCampaignClaimV134,
-  emptyGauntletCampaignV134,GAUNTLET_STUDIES_V134} from "../app/game/systems/gauntletCampaignV134.ts";
+  exportSave,loadSaveWithStatus,writeSaveWithStatus,
+}=source.load("app/game/save.ts");
+const {gauntletCampaignEquipV134,
+  emptyGauntletCampaignV134,GAUNTLET_STUDIES_V134}=source.load("app/game/systems/gauntletCampaignV134.ts");
 
 const owner="2026-10-31T08:33:00.000Z";
 function makeStorage(){

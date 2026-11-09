@@ -5,7 +5,7 @@ import type { WarRulesV6 } from "./systems/clanWarBibleV6";
 import { warSourceRtsScenarioV119, type WarSourceRtsScenarioIdV119 } from "./systems/clanWarRtsScenariosV119";
 import {
   searchWarMissionDossiersV117, warMissionDossiersV117, warSourceModeLabelV117,
-  type WarMissionSourceKindV117, type WarSourceMissionFilterV117,
+  type WarSourceMissionFilterV117,
 } from "./systems/clanWarMissionDossiersV117";
 import styles from "./ClanWarMissionDossiersV117.module.css";
 

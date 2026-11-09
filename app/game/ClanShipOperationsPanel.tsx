@@ -98,6 +98,21 @@ export default function ClanShipOperationsPanel({ state, save, roomId, suspended
     if (event.shiftKey && document.activeElement === first && last) { event.preventDefault(); last.focus(); }
     else if (!event.shiftKey && document.activeElement === last && first) { event.preventDefault(); first.focus(); }
   };
+  useEffect(() => {
+    if (suspended) return;
+    const onOrphanEscape = (event: globalThis.KeyboardEvent) => {
+      if (event.key !== 'Escape' || event.repeat || event.defaultPrevented ||
+          event.target !== document.body && event.target !== document.documentElement) return;
+      const root = rootRef.current;
+      if (!root || root.closest('[hidden],[inert]') || !root.getClientRects().length ||
+          document.querySelector('dialog[open]:modal')) return;
+      // Clicking readable non-focusable text can leave focus on body. The
+      // visible operations dialog still owns Back; do not affect another modal.
+      event.preventDefault(); event.stopPropagation(); onClose();
+    };
+    document.addEventListener('keydown', onOrphanEscape, true);
+    return () => document.removeEventListener('keydown', onOrphanEscape, true);
+  }, [onClose, suspended]);
   const activeSection = activeContract && <article className={styles.activeContract} data-clan-active-contract={activeContract.id}>
     <span className={styles.eyebrow}>ORDRE EN COURS · {KINDS[activeContract.kind]}</span>
     <h3>{activeContract.name}</h3><p>{activeContract.briefing}</p>
@@ -129,7 +144,7 @@ export default function ClanShipOperationsPanel({ state, save, roomId, suspended
   </article>;
 
   return <div className={styles.backdrop}>
-    <section ref={rootRef} role="dialog" aria-modal="true" aria-labelledby="clan-operations-title"
+    <section ref={rootRef} tabIndex={-1} role="dialog" aria-modal="true" aria-labelledby="clan-operations-title"
       className={styles.terminal} onKeyDown={onKeyDown} inert={suspended} data-clan-operations
       data-clan-operations-room={roomId} data-clan-operations-phase={phase} data-clan-operations-revision={state.revision}>
       <header className={styles.header}>

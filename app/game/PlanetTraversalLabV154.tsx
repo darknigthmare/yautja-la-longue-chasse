@@ -8,7 +8,7 @@ import { warUnitV85 } from "./systems/clanWarV85Data";
 import { analyzePlanetTraverseSectionV155 } from "./systems/clanWarPlanetTraverseSectionV155";
 import {
   PLANET_MOBILITY_PROFILES_V154, buildPlanetTraversalGridV154,
-  preferredTraversalStartV154, isTraversalCellPassableV154,
+  isTraversalCellPassableV154,
   planPlanetTraversalV154, createPlanetTraversalSessionV154,
   commitPlanetTraversalPlanV154, advancePlanetTraversalV154,
   type PlanetTraversalGridV154, type PlanetMobilityUnitIdV154,

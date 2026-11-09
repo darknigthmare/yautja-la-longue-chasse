@@ -78,3 +78,8 @@
 .commandViewport .metrics .stockReadout{display:flex;flex-wrap:wrap;align-items:baseline;gap:3px 9px;margin-top:6px;color:#a6b69d;font-size:11px}.commandViewport .metrics .stockReadout>span{display:inline-flex;align-items:baseline;gap:3px;white-space:nowrap}.commandViewport .metrics .stockReadout strong{display:inline;font-size:13px;margin:0;color:#e0d7ab}
 @media(max-width:760px){.commandViewport .metrics .stockReadout{font-size:9px;gap:2px 5px}.commandViewport .metrics .stockReadout strong{font-size:11px}}
 @media(max-width:420px){.commandViewport .metrics .stockReadout{font-size:8px;gap:2px 4px}.commandViewport .metrics .stockReadout>span{gap:2px}.commandViewport .metrics .stockReadout strong{font-size:10px}}
+
+/* Match globals.css .screen-safe only when hosted under the game's top bar.
+   Standalone council previews and fixtures have no top bar to clear. */
+:global(.screen.panel-screen) > .panel.commandShell[data-clan-war-v85]{padding-top:clamp(74px,8vh,104px)}
+@media(max-width:760px){:global(.screen.panel-screen) > .panel.commandShell[data-clan-war-v85]{padding-top:80px}}
