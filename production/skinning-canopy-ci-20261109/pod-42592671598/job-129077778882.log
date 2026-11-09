@@ -1,0 +1,2603 @@
+﻿2026-11-09T09:20:57.1665316Z Current runner version: '2.338.2'
+2026-11-09T09:20:57.1687935Z ##[group]Runner Image Provisioner
+2026-11-09T09:20:57.1688845Z Hosted Compute Agent
+2026-11-09T09:20:57.1689431Z Version: 20261028.624
+2026-11-09T09:20:57.1690030Z Commit: 54898b74c23fde5556c9b3c3a2290865feef0dfe
+2026-11-09T09:20:57.1690771Z Build Date: 2026-10-28T21:51:42Z
+2026-11-09T09:20:57.1691496Z Worker ID: {6e7119f5-8a09-4484-9d11-cc92bd3b7bc0}
+2026-11-09T09:20:57.1692182Z Region: eastus2
+2026-11-09T09:20:57.1692717Z Cloud: Azure
+2026-11-09T09:20:57.1693662Z ##[endgroup]
+2026-11-09T09:20:57.1695248Z ##[group]Operating System
+2026-11-09T09:20:57.1695847Z Ubuntu
+2026-11-09T09:20:57.1696330Z 24.04.5
+2026-11-09T09:20:57.1696860Z LTS
+2026-11-09T09:20:57.1697350Z ##[endgroup]
+2026-11-09T09:20:57.1697890Z ##[group]Runner Image
+2026-11-09T09:20:57.1698539Z Image: ubuntu-24.04
+2026-11-09T09:20:57.1699050Z Version: 20261101.360.1
+2026-11-09T09:20:57.1700298Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20261101.360/images/ubuntu/Ubuntu2404-Readme.md
+2026-11-09T09:20:57.1701721Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20261101.360
+2026-11-09T09:20:57.1702719Z ##[endgroup]
+2026-11-09T09:20:57.1704019Z ##[group]GITHUB_TOKEN Permissions
+2026-11-09T09:20:57.1706141Z Contents: read
+2026-11-09T09:20:57.1706678Z Metadata: read
+2026-11-09T09:20:57.1707283Z ##[endgroup]
+2026-11-09T09:20:57.1709161Z Secret source: Actions
+2026-11-09T09:20:57.1710071Z Cache mode: write
+2026-11-09T09:20:57.1710714Z Prepare workflow directory
+2026-11-09T09:20:57.2378252Z Prepare all required actions
+2026-11-09T09:20:57.2448022Z Getting action download info
+2026-11-09T09:20:57.4582506Z Download action repository 'actions/checkout@11d5960a326750d5838078e36cf38b85af677262' (SHA:11d5960a326750d5838078e36cf38b85af677262)
+2026-11-09T09:20:57.5698813Z Download action repository 'actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020' (SHA:49933ea5288caeca8642d1e84afbd3f7d6820020)
+2026-11-09T09:20:57.7048171Z Download action repository 'actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02' (SHA:ea165f8d65b6e75b540449e92b4886f43607fa02)
+2026-11-09T09:20:57.9650479Z Complete job name: pod-systems
+2026-11-09T09:20:58.0509127Z ##[group]Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+2026-11-09T09:20:58.0511467Z with:
+2026-11-09T09:20:58.0512119Z   ref: 3a03ca990e3c27761d411ee043eb8fdbbaffa6c3
+2026-11-09T09:20:58.0512884Z   persist-credentials: false
+2026-11-09T09:20:58.0513792Z   filter: blob:none
+2026-11-09T09:20:58.0514477Z   sparse-checkout-cone-mode: false
+2026-11-09T09:20:58.0516644Z   sparse-checkout: /*
+!/*/
+/app/
+/scripts/
+/tests/
+/docs/
+/desktop/
+/build/
+/.openai/hosting.json
+/.github/workflows/pod-systems.yml
+/public/**/manifest.json
+/public/audio/
+/public/game/ship-interior/
+/public/game/planet-arrival/
+/public/game/cinematics/batch-01-20261105/
+
+2026-11-09T09:20:58.0519049Z   repository: darknigthmare/yautja-la-longue-chasse
+2026-11-09T09:20:58.0526816Z   token: ***
+2026-11-09T09:20:58.0527553Z   ssh-strict: true
+2026-11-09T09:20:58.0528124Z   ssh-user: git
+2026-11-09T09:20:58.0528818Z   clean: true
+2026-11-09T09:20:58.0529476Z   fetch-depth: 1
+2026-11-09T09:20:58.0530158Z   fetch-tags: false
+2026-11-09T09:20:58.0530807Z   show-progress: true
+2026-11-09T09:20:58.0532126Z   lfs: false
+2026-11-09T09:20:58.0532709Z   submodules: false
+2026-11-09T09:20:58.0533559Z   set-safe-directory: true
+2026-11-09T09:20:58.0534301Z   allow-unsafe-pr-checkout: false
+2026-11-09T09:20:58.0535334Z env:
+2026-11-09T09:20:58.0535922Z   ELECTRON_SKIP_BINARY_DOWNLOAD: 1
+2026-11-09T09:20:58.0536635Z   NEXT_TELEMETRY_DISABLED: 1
+2026-11-09T09:20:58.0537386Z   POD_SYSTEMS_START_SERVER: 1
+2026-11-09T09:20:58.0538268Z   POD_SYSTEMS_URL: http://127.0.0.1:4199/dev
+2026-11-09T09:20:58.0539262Z   POD_SYSTEMS_SOURCE_COMMIT: 3a03ca990e3c27761d411ee043eb8fdbbaffa6c3
+2026-11-09T09:20:58.0540184Z   POD_SYSTEMS_HEADED: 1
+2026-11-09T09:20:58.0540819Z   POD_SYSTEMS_REQUIRE_CLEAN: 1
+2026-11-09T09:20:58.0541443Z ##[endgroup]
+2026-11-09T09:20:58.3055518Z Syncing repository: darknigthmare/yautja-la-longue-chasse
+2026-11-09T09:20:58.3059100Z ##[group]Getting Git version info
+2026-11-09T09:20:58.3060701Z Working directory is '/home/runner/work/yautja-la-longue-chasse/yautja-la-longue-chasse'
+2026-11-09T09:20:58.3062173Z [command]/usr/bin/git version
+2026-11-09T09:20:58.3150638Z git version 2.56.0
+2026-11-09T09:20:58.3169408Z ##[endgroup]
+2026-11-09T09:20:58.3186198Z Temporarily overriding HOME='/home/runner/work/_temp/32baf210-b555-4d92-8a5d-eabc5ec7b26e' before making global git config changes
+2026-11-09T09:20:58.3188951Z Adding repository directory to the temporary git global config as a safe directory
+2026-11-09T09:20:58.3193670Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/yautja-la-longue-chasse/yautja-la-longue-chasse
+2026-11-09T09:20:58.3242008Z Deleting the contents of '/home/runner/work/yautja-la-longue-chasse/yautja-la-longue-chasse'
+2026-11-09T09:20:58.3245756Z ##[group]Initializing the repository
+2026-11-09T09:20:58.3263382Z [command]/usr/bin/git init /home/runner/work/yautja-la-longue-chasse/yautja-la-longue-chasse
+2026-11-09T09:20:58.3366995Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-11-09T09:20:58.3368251Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2026-11-09T09:20:58.3369528Z hint: to use in all of your new repositories, which will suppress this warning,
+2026-11-09T09:20:58.3370410Z hint: call:
+2026-11-09T09:20:58.3370908Z hint:
+2026-11-09T09:20:58.3371606Z hint: 	git config --global init.defaultBranch <name>
+2026-11-09T09:20:58.3372356Z hint:
+2026-11-09T09:20:58.3373232Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-11-09T09:20:58.3374630Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-11-09T09:20:58.3375515Z hint:
+2026-11-09T09:20:58.3376148Z hint: 	git branch -m <name>
+2026-11-09T09:20:58.3376832Z hint:
+2026-11-09T09:20:58.3377593Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2026-11-09T09:20:58.3390598Z Initialized empty Git repository in /home/runner/work/yautja-la-longue-chasse/yautja-la-longue-chasse/.git/
+2026-11-09T09:20:58.3426089Z [command]/usr/bin/git remote add origin https://github.com/darknigthmare/yautja-la-longue-chasse
+2026-11-09T09:20:58.3448763Z ##[endgroup]
+2026-11-09T09:20:58.3449799Z ##[group]Disabling automatic garbage collection
+2026-11-09T09:20:58.3453530Z [command]/usr/bin/git config --local gc.auto 0
+2026-11-09T09:20:58.3487288Z ##[endgroup]
+2026-11-09T09:20:58.3488386Z ##[group]Setting up auth
+2026-11-09T09:20:58.3496366Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-11-09T09:20:58.3531840Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-11-09T09:20:58.3891317Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-11-09T09:20:58.3919113Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-11-09T09:20:58.4117639Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-11-09T09:20:58.4150523Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-11-09T09:20:58.4339319Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-11-09T09:20:58.4385160Z ##[endgroup]
+2026-11-09T09:20:58.4386285Z ##[group]Fetching the repository
+2026-11-09T09:20:58.4397428Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --filter=blob:none --depth=1 origin 3a03ca990e3c27761d411ee043eb8fdbbaffa6c3
+2026-11-09T09:20:58.7324335Z From https://github.com/darknigthmare/yautja-la-longue-chasse
+2026-11-09T09:20:58.7327436Z  * branch            3a03ca990e3c27761d411ee043eb8fdbbaffa6c3 -> FETCH_HEAD
+2026-11-09T09:20:58.7331825Z ##[endgroup]
+2026-11-09T09:20:58.7334017Z ##[group]Determining the checkout info
+2026-11-09T09:20:58.7336120Z ##[endgroup]
+2026-11-09T09:20:58.7337786Z ##[group]Setting up sparse checkout
+2026-11-09T09:20:58.7339185Z [command]/usr/bin/git config core.sparseCheckout true
+2026-11-09T09:20:58.7371186Z [command]/usr/bin/git rev-parse --git-path info/sparse-checkout
+2026-11-09T09:20:58.7395136Z .git/info/sparse-checkout
+2026-11-09T09:20:58.7402273Z ##[endgroup]
+2026-11-09T09:20:58.7404994Z ##[group]Checking out the ref
+2026-11-09T09:20:58.7407505Z [command]/usr/bin/git checkout --progress --force 3a03ca990e3c27761d411ee043eb8fdbbaffa6c3
+2026-11-09T09:22:20.7585488Z Updating files:   0% (1/8106)
+2026-11-09T09:22:20.7669171Z Updating files:   1% (82/8106)
+2026-11-09T09:22:20.7714458Z Updating files:   2% (163/8106)
+2026-11-09T09:22:20.7824225Z Updating files:   3% (244/8106)
+2026-11-09T09:22:20.8054944Z Updating files:   4% (325/8106)
+2026-11-09T09:22:20.8327572Z Updating files:   5% (406/8106)
+2026-11-09T09:22:20.8595219Z Updating files:   6% (487/8106)
+2026-11-09T09:22:20.8680458Z Updating files:   7% (568/8106)
+2026-11-09T09:22:20.8746651Z Updating files:   8% (649/8106)
+2026-11-09T09:22:20.8753765Z Updating files:   9% (730/8106)
+2026-11-09T09:22:20.8807130Z Updating files:   9% (742/8106)
+2026-11-09T09:22:20.8873043Z Updating files:  10% (811/8106)
+2026-11-09T09:22:20.8919855Z Updating files:  11% (892/8106)
+2026-11-09T09:22:20.8971135Z Updating files:  12% (973/8106)
+2026-11-09T09:22:20.9053963Z Updating files:  13% (1054/8106)
+2026-11-09T09:22:20.9123970Z Updating files:  14% (1135/8106)
+2026-11-09T09:22:20.9188952Z Updating files:  15% (1216/8106)
+2026-11-09T09:22:21.0141201Z Updating files:  16% (1297/8106)
+2026-11-09T09:22:21.0212673Z Updating files:  17% (1379/8106)
+2026-11-09T09:22:21.0944708Z Updating files:  18% (1460/8106)
+2026-11-09T09:22:21.1133574Z Updating files:  19% (1541/8106)
+2026-11-09T09:22:21.1252610Z Updating files:  20% (1622/8106)
+2026-11-09T09:22:21.1375019Z Updating files:  21% (1703/8106)
+2026-11-09T09:22:21.1556526Z Updating files:  22% (1784/8106)
+2026-11-09T09:22:21.1798569Z Updating files:  23% (1865/8106)
+2026-11-09T09:22:21.1946772Z Updating files:  24% (1946/8106)
+2026-11-09T09:22:21.2003680Z Updating files:  25% (2027/8106)
+2026-11-09T09:22:21.3433702Z Updating files:  26% (2108/8106)
+2026-11-09T09:22:21.4094886Z Updating files:  27% (2189/8106)
+2026-11-09T09:22:21.5211828Z Updating files:  28% (2270/8106)
+2026-11-09T09:22:21.6306891Z Updating files:  29% (2351/8106)
+2026-11-09T09:22:21.6462659Z Updating files:  30% (2432/8106)
+2026-11-09T09:22:21.7057667Z Updating files:  31% (2513/8106)
+2026-11-09T09:22:21.7650681Z Updating files:  32% (2594/8106)
+2026-11-09T09:22:21.8270275Z Updating files:  33% (2675/8106)
+2026-11-09T09:22:21.8532304Z Updating files:  34% (2757/8106)
+2026-11-09T09:22:21.8762167Z Updating files:  35% (2838/8106)
+2026-11-09T09:22:21.9410487Z Updating files:  35% (2859/8106)
+2026-11-09T09:22:22.0344713Z Updating files:  36% (2919/8106)
+2026-11-09T09:22:22.1007888Z Updating files:  37% (3000/8106)
+2026-11-09T09:22:22.1668062Z Updating files:  38% (3081/8106)
+2026-11-09T09:22:22.1900118Z Updating files:  39% (3162/8106)
+2026-11-09T09:22:22.2265139Z Updating files:  40% (3243/8106)
+2026-11-09T09:22:22.2459351Z Updating files:  41% (3324/8106)
+2026-11-09T09:22:22.3989820Z Updating files:  42% (3405/8106)
+2026-11-09T09:22:22.4507576Z Updating files:  43% (3486/8106)
+2026-11-09T09:22:22.4566436Z Updating files:  44% (3567/8106)
+2026-11-09T09:22:22.5500362Z Updating files:  45% (3648/8106)
+2026-11-09T09:22:22.6003808Z Updating files:  46% (3729/8106)
+2026-11-09T09:22:22.6640808Z Updating files:  47% (3810/8106)
+2026-11-09T09:22:22.7003974Z Updating files:  48% (3891/8106)
+2026-11-09T09:22:22.7567907Z Updating files:  49% (3972/8106)
+2026-11-09T09:22:22.8066600Z Updating files:  50% (4053/8106)
+2026-11-09T09:22:22.8766670Z Updating files:  51% (4135/8106)
+2026-11-09T09:22:22.9323343Z Updating files:  51% (4176/8106)
+2026-11-09T09:22:22.9700753Z Updating files:  52% (4216/8106)
+2026-11-09T09:22:22.9755266Z Updating files:  53% (4297/8106)
+2026-11-09T09:22:22.9884422Z Updating files:  54% (4378/8106)
+2026-11-09T09:22:22.9918267Z Updating files:  55% (4459/8106)
+2026-11-09T09:22:23.1036048Z Updating files:  56% (4540/8106)
+2026-11-09T09:22:23.1429250Z Updating files:  57% (4621/8106)
+2026-11-09T09:22:23.1928288Z Updating files:  58% (4702/8106)
+2026-11-09T09:22:23.2084206Z Updating files:  59% (4783/8106)
+2026-11-09T09:22:23.2256033Z Updating files:  60% (4864/8106)
+2026-11-09T09:22:23.2280106Z Updating files:  61% (4945/8106)
+2026-11-09T09:22:23.2327599Z Updating files:  62% (5026/8106)
+2026-11-09T09:22:23.2363470Z Updating files:  63% (5107/8106)
+2026-11-09T09:22:23.2422220Z Updating files:  64% (5188/8106)
+2026-11-09T09:22:23.2499391Z Updating files:  65% (5269/8106)
+2026-11-09T09:22:23.2567039Z Updating files:  66% (5350/8106)
+2026-11-09T09:22:23.2691719Z Updating files:  67% (5432/8106)
+2026-11-09T09:22:23.2748885Z Updating files:  68% (5513/8106)
+2026-11-09T09:22:23.2795858Z Updating files:  69% (5594/8106)
+2026-11-09T09:22:23.2915824Z Updating files:  70% (5675/8106)
+2026-11-09T09:22:23.2954215Z Updating files:  71% (5756/8106)
+2026-11-09T09:22:23.2996782Z Updating files:  72% (5837/8106)
+2026-11-09T09:22:23.3164327Z Updating files:  73% (5918/8106)
+2026-11-09T09:22:23.3947101Z Updating files:  74% (5999/8106)
+2026-11-09T09:22:23.4813890Z Updating files:  75% (6080/8106)
+2026-11-09T09:22:23.6566012Z Updating files:  76% (6161/8106)
+2026-11-09T09:22:23.7006522Z Updating files:  77% (6242/8106)
+2026-11-09T09:22:23.7070139Z Updating files:  78% (6323/8106)
+2026-11-09T09:22:23.7119236Z Updating files:  79% (6404/8106)
+2026-11-09T09:22:23.7165947Z Updating files:  80% (6485/8106)
+2026-11-09T09:22:23.7212201Z Updating files:  81% (6566/8106)
+2026-11-09T09:22:23.7289148Z Updating files:  82% (6647/8106)
+2026-11-09T09:22:23.7371826Z Updating files:  83% (6728/8106)
+2026-11-09T09:22:23.7432145Z Updating files:  84% (6810/8106)
+2026-11-09T09:22:23.7492063Z Updating files:  85% (6891/8106)
+2026-11-09T09:22:23.7542724Z Updating files:  86% (6972/8106)
+2026-11-09T09:22:23.7580259Z Updating files:  87% (7053/8106)
+2026-11-09T09:22:23.7635849Z Updating files:  88% (7134/8106)
+2026-11-09T09:22:23.7682583Z Updating files:  89% (7215/8106)
+2026-11-09T09:22:23.8915326Z Updating files:  90% (7296/8106)
+2026-11-09T09:22:23.9935175Z Updating files:  90% (7370/8106)
+2026-11-09T09:22:24.0741115Z Updating files:  91% (7377/8106)
+2026-11-09T09:22:24.0786407Z Updating files:  92% (7458/8106)
+2026-11-09T09:22:24.0838459Z Updating files:  93% (7539/8106)
+2026-11-09T09:22:24.0896190Z Updating files:  94% (7620/8106)
+2026-11-09T09:22:24.0942770Z Updating files:  95% (7701/8106)
+2026-11-09T09:22:24.0999852Z Updating files:  96% (7782/8106)
+2026-11-09T09:22:24.1059143Z Updating files:  97% (7863/8106)
+2026-11-09T09:22:24.1099468Z Updating files:  98% (7944/8106)
+2026-11-09T09:22:24.1134777Z Updating files:  99% (8025/8106)
+2026-11-09T09:22:24.1135822Z Updating files: 100% (8106/8106)
+2026-11-09T09:22:24.1136244Z Updating files: 100% (8106/8106), done.
+2026-11-09T09:22:24.2032926Z Note: switching to '3a03ca990e3c27761d411ee043eb8fdbbaffa6c3'.
+2026-11-09T09:22:24.2033932Z 
+2026-11-09T09:22:24.2034432Z You are in 'detached HEAD' state. You can look around, make experimental
+2026-11-09T09:22:24.2035335Z changes and commit them, and you can discard any commits you make in this
+2026-11-09T09:22:24.2036168Z state without impacting any branches by switching back to a branch.
+2026-11-09T09:22:24.2036671Z 
+2026-11-09T09:22:24.2036989Z If you want to create a new branch to retain commits you create, you may
+2026-11-09T09:22:24.2037696Z do so (now or later) by using -c with the switch command. Example:
+2026-11-09T09:22:24.2038119Z 
+2026-11-09T09:22:24.2038348Z   git switch -c <new-branch-name>
+2026-11-09T09:22:24.2038653Z 
+2026-11-09T09:22:24.2039143Z Or undo this operation with:
+2026-11-09T09:22:24.2039471Z 
+2026-11-09T09:22:24.2039885Z   git switch -
+2026-11-09T09:22:24.2040130Z 
+2026-11-09T09:22:24.2040488Z Turn off this advice by setting config variable advice.detachedHead to false
+2026-11-09T09:22:24.2040869Z 
+2026-11-09T09:22:24.2041294Z HEAD is now at 3a03ca9 Document the completed skinning and canopy qualification with a preserved Excel ledger
+2026-11-09T09:22:24.2186267Z ##[endgroup]
+2026-11-09T09:22:24.2234391Z [command]/usr/bin/git log -1 --format=%H
+2026-11-09T09:22:24.2262671Z 3a03ca990e3c27761d411ee043eb8fdbbaffa6c3
+2026-11-09T09:22:24.2276257Z ##[group]Removing auth
+2026-11-09T09:22:24.2276965Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-11-09T09:22:24.2307347Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-11-09T09:22:24.2540831Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-11-09T09:22:24.2563988Z http.https://github.com/.extraheader
+2026-11-09T09:22:24.2573288Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2026-11-09T09:22:24.2841214Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-11-09T09:22:24.3069684Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-11-09T09:22:24.3099411Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-11-09T09:22:24.3314254Z ##[endgroup]
+2026-11-09T09:22:24.4034772Z ##[group]Run actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+2026-11-09T09:22:24.4035373Z with:
+2026-11-09T09:22:24.4035874Z   node-version: 22
+2026-11-09T09:22:24.4036409Z   cache: npm
+2026-11-09T09:22:24.4036701Z   always-auth: false
+2026-11-09T09:22:24.4037039Z   check-latest: false
+2026-11-09T09:22:24.4039810Z   token: ***
+2026-11-09T09:22:24.4040172Z env:
+2026-11-09T09:22:24.4040506Z   ELECTRON_SKIP_BINARY_DOWNLOAD: 1
+2026-11-09T09:22:24.4040862Z   NEXT_TELEMETRY_DISABLED: 1
+2026-11-09T09:22:24.4041239Z   POD_SYSTEMS_START_SERVER: 1
+2026-11-09T09:22:24.4041611Z   POD_SYSTEMS_URL: http://127.0.0.1:4199/dev
+2026-11-09T09:22:24.4042069Z   POD_SYSTEMS_SOURCE_COMMIT: 3a03ca990e3c27761d411ee043eb8fdbbaffa6c3
+2026-11-09T09:22:24.4042912Z   POD_SYSTEMS_HEADED: 1
+2026-11-09T09:22:24.4043632Z   POD_SYSTEMS_REQUIRE_CLEAN: 1
+2026-11-09T09:22:24.4043966Z ##[endgroup]
+2026-11-09T09:22:24.5572854Z Found in cache @ /opt/hostedtoolcache/node/22.23.4/x64
+2026-11-09T09:22:24.5577198Z (node:2456) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-11-09T09:22:24.5577931Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-11-09T09:22:24.5579909Z ##[group]Environment details
+2026-11-09T09:22:36.3717531Z node: v22.23.4
+2026-11-09T09:22:36.3717932Z npm: 10.9.9
+2026-11-09T09:22:36.3718429Z yarn: 1.22.22
+2026-11-09T09:22:36.3719859Z ##[endgroup]
+2026-11-09T09:22:36.3739308Z [command]/opt/hostedtoolcache/node/22.23.4/x64/bin/npm config get cache
+2026-11-09T09:22:37.2839116Z /home/runner/.npm
+2026-11-09T09:22:37.4166695Z Cache hit for: node-cache-Linux-x64-npm-e165edc746d7ecd72106e098155999883a6d665e4a0aab2b5c70bcdfae6a080b
+2026-11-09T09:22:37.4299945Z (node:2456) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+2026-11-09T09:22:38.4585031Z Received 211231528 of 211231528 (100.0%), 210.7 MBs/sec
+2026-11-09T09:22:38.4587576Z Cache Size: ~201 MB (211231528 B)
+2026-11-09T09:22:38.4690494Z [command]/usr/bin/tar -xf /home/runner/work/_temp/8676a349-175b-498a-860a-e7476dda48ee/cache.tzst -P -C /home/runner/work/yautja-la-longue-chasse/yautja-la-longue-chasse --use-compress-program unzstd
+2026-11-09T09:22:38.7256343Z Cache restored successfully
+2026-11-09T09:22:38.7335356Z Cache restored from key: node-cache-Linux-x64-npm-e165edc746d7ecd72106e098155999883a6d665e4a0aab2b5c70bcdfae6a080b
+2026-11-09T09:22:38.7534358Z ##[group]Run npm ci --ignore-scripts --no-audit --no-fund
+2026-11-09T09:22:38.7535027Z [36;1mnpm ci --ignore-scripts --no-audit --no-fund[0m
+2026-11-09T09:22:38.7741140Z shell: /usr/bin/bash -e {0}
+2026-11-09T09:22:38.7741534Z env:
+2026-11-09T09:22:38.7741941Z   ELECTRON_SKIP_BINARY_DOWNLOAD: 1
+2026-11-09T09:22:38.7742343Z   NEXT_TELEMETRY_DISABLED: 1
+2026-11-09T09:22:38.7743027Z   POD_SYSTEMS_START_SERVER: 1
+2026-11-09T09:22:38.7743736Z   POD_SYSTEMS_URL: http://127.0.0.1:4199/dev
+2026-11-09T09:22:38.7744240Z   POD_SYSTEMS_SOURCE_COMMIT: 3a03ca990e3c27761d411ee043eb8fdbbaffa6c3
+2026-11-09T09:22:38.7744733Z   POD_SYSTEMS_HEADED: 1
+2026-11-09T09:22:38.7745074Z   POD_SYSTEMS_REQUIRE_CLEAN: 1
+2026-11-09T09:22:38.7745387Z ##[endgroup]
+2026-11-09T09:22:47.2566212Z npm warn deprecated @esbuild-kit/esm-loader@2.6.5: Merged into tsx: https://tsx.is
+2026-11-09T09:22:47.3967014Z npm warn deprecated @esbuild-kit/core-utils@3.3.2: Merged into tsx: https://tsx.is
+2026-11-09T09:22:53.4419745Z 
+2026-11-09T09:22:53.4420581Z added 549 packages in 15s
+2026-11-09T09:22:53.5266514Z ##[group]Run node --input-type=module <<'NODE'
+2026-11-09T09:22:53.5267119Z [36;1mnode --input-type=module <<'NODE'[0m
+2026-11-09T09:22:53.5267530Z [36;1mimport assert from 'node:assert/strict';[0m
+2026-11-09T09:22:53.5267980Z [36;1mimport { existsSync, readFileSync } from 'node:fs';[0m
+2026-11-09T09:22:53.5268485Z [36;1mimport { execFileSync } from 'node:child_process';[0m
+2026-11-09T09:22:53.5268912Z [36;1mimport { build } from 'esbuild';[0m
+2026-11-09T09:22:53.5269301Z [36;1mconst compiled = await build({[0m
+2026-11-09T09:22:53.5269790Z [36;1m  stdin: { contents: `export { MISSIONS } from './app/game/data';[0m
+2026-11-09T09:22:53.5270503Z [36;1m    export { createPlanetArrival, planetArrivalAssets, planetArrivalLanding } from './app/game/systems/planetArrival';[0m
+2026-11-09T09:22:53.5271326Z [36;1m    export { createDevArrival, createDevSave, resolveDevDestination } from './app/dev/destinations';[0m
+2026-11-09T09:22:53.5272210Z [36;1m    export { environmentPropRuntimeUrlsForSector } from './app/game/environmentPropRegistry';[0m
+2026-11-09T09:22:53.5272941Z [36;1m    export { getWorldScreenAtX, worldScreensFor } from './app/game/worldScreens';[0m
+2026-11-09T09:22:53.5276096Z [36;1m    export { GAME_RESERVE_V66_ART } from './app/game/gameReserveV66Rendering';[0m
+2026-11-09T09:22:53.5276599Z [36;1m    export { defaultSave } from './app/game/save';[0m
+2026-11-09T09:22:53.5277214Z [36;1m    export { DEFAULT_SHIP_ID, shipProfileAssetPath } from './app/game/shipCatalogue';`,[0m
+2026-11-09T09:22:53.5277786Z [36;1m    resolveDir: process.cwd(), loader: 'ts' },[0m
+2026-11-09T09:22:53.5278316Z [36;1m  bundle: true, platform: 'node', format: 'esm', write: false, logLevel: 'silent',[0m
+2026-11-09T09:22:53.5278776Z [36;1m});[0m
+2026-11-09T09:22:53.5279377Z [36;1mconst api = await import('data:text/javascript;base64,' + Buffer.from(compiled.outputFiles[0].text).toString('base64'));[0m
+2026-11-09T09:22:53.5280259Z [36;1mconst inventory = JSON.parse(readFileSync('docs/qa/current-integration-20261103/runtime-inputs.json', 'utf8'));[0m
+2026-11-09T09:22:53.5280953Z [36;1mconst save = api.defaultSave('2026-11-05T00:00:00.000Z');[0m
+2026-11-09T09:22:53.5281702Z [36;1mconst cinematic = api.MISSIONS.flatMap(mission => Object.values(api.planetArrivalAssets(api.createPlanetArrival({[0m
+2026-11-09T09:22:53.5282493Z [36;1m  ownerCreatedAt: save.createdAt, runId: 'pod-qa:' + mission.id, missionId: mission.id,[0m
+2026-11-09T09:22:53.5283357Z [36;1m  encounterRun: 1, personalShipId: api.DEFAULT_SHIP_ID, hunterPresetId: save.appearance.presetId,[0m
+2026-11-09T09:22:53.5284203Z [36;1m}))).map(asset => 'public' + asset));[0m
+2026-11-09T09:22:53.5284694Z [36;1mconst destination = api.resolveDevDestination('arrival-jungle-vey');[0m
+2026-11-09T09:22:53.5285360Z [36;1mconst arrival = api.createDevArrival(destination, api.createDevSave(destination)).state;[0m
+2026-11-09T09:22:53.5286023Z [36;1m// Include every real sector of this playable level: the operator must[0m
+2026-11-09T09:22:53.5286586Z [36;1m// walk away from all pods, not stay in the first streamed screen.[0m
+2026-11-09T09:22:53.5287179Z [36;1mconst level = api.worldScreensFor(arrival.missionId).screens.flatMap(screen =>[0m
+2026-11-09T09:22:53.5288021Z [36;1m  api.environmentPropRuntimeUrlsForSector(arrival.missionId, screen.id, arrival.encounterRun).map(asset => 'public' + asset));[0m
+2026-11-09T09:22:53.5288894Z [36;1mconst fixtures = ['wolf-arrival-browser-assets.json', 'clan-ship-browser-assets.json'].flatMap(file =>[0m
+2026-11-09T09:22:53.5289565Z [36;1m  JSON.parse(readFileSync('tests/fixtures/' + file, 'utf8')).paths);[0m
+2026-11-09T09:22:53.5290411Z [36;1mconst ships = ['wolf-ship', 'avp-predator-mothership', 'avpr-scout-ship', 'fugitive-spaceship', 'upgrade-spaceship', 'feral-spaceship'][0m
+2026-11-09T09:22:53.5291126Z [36;1m  .map(id => 'public' + api.shipProfileAssetPath(id));[0m
+2026-11-09T09:22:53.5291818Z [36;1mconst paths = [...new Set([...inventory.entries.map(row => row.path), ...cinematic, ...level,[0m
+2026-11-09T09:22:53.5292446Z [36;1m  ...fixtures, ...ships, 'public' + api.GAME_RESERVE_V66_ART.hunter])].sort();[0m
+2026-11-09T09:22:53.5292945Z [36;1mfor (const file of paths) {[0m
+2026-11-09T09:22:53.5293571Z [36;1m  assert.match(file, /^[A-Za-z0-9._/-]+$/);[0m
+2026-11-09T09:22:53.5294069Z [36;1m  assert.ok(file.split('/').every(part => part && part !== '.' && part !== '..'));[0m
+2026-11-09T09:22:53.5294593Z [36;1m}[0m
+2026-11-09T09:22:53.5294965Z [36;1mexecFileSync('git', ['sparse-checkout', 'add', '--stdin'], {[0m
+2026-11-09T09:22:53.5295527Z [36;1m  input: paths.map(file => '/' + file).join('\n') + '\n', stdio: ['pipe', 'inherit', 'inherit'],[0m
+2026-11-09T09:22:53.5296070Z [36;1m});[0m
+2026-11-09T09:22:53.5296611Z [36;1massert.deepEqual(paths.filter(file => !existsSync(file)), [], 'Original runtime sources must be present');[0m
+2026-11-09T09:22:53.5297266Z [36;1mconsole.log('Materialized sources and assets:', paths.length);[0m
+2026-11-09T09:22:53.5297691Z [36;1mNODE[0m
+2026-11-09T09:22:53.5311456Z shell: /usr/bin/bash -e {0}
+2026-11-09T09:22:53.5311793Z env:
+2026-11-09T09:22:53.5312164Z   ELECTRON_SKIP_BINARY_DOWNLOAD: 1
+2026-11-09T09:22:53.5312547Z   NEXT_TELEMETRY_DISABLED: 1
+2026-11-09T09:22:53.5312950Z   POD_SYSTEMS_START_SERVER: 1
+2026-11-09T09:22:53.5315823Z   POD_SYSTEMS_URL: http://127.0.0.1:4199/dev
+2026-11-09T09:22:53.5316271Z   POD_SYSTEMS_SOURCE_COMMIT: 3a03ca990e3c27761d411ee043eb8fdbbaffa6c3
+2026-11-09T09:22:53.5316766Z   POD_SYSTEMS_HEADED: 1
+2026-11-09T09:22:53.5317146Z   POD_SYSTEMS_REQUIRE_CLEAN: 1
+2026-11-09T09:22:53.5317491Z ##[endgroup]
+2026-11-09T09:23:35.1126892Z Materialized sources and assets: 2616
+2026-11-09T09:23:35.1297401Z ##[group]Run mkdir -p outputs/qa-pod-systems
+2026-11-09T09:23:35.1297906Z [36;1mmkdir -p outputs/qa-pod-systems[0m
+2026-11-09T09:23:35.1298560Z [36;1mnode scripts/snapshot-runtime-v113.mjs --check docs/qa/current-integration-20261103/runtime-inputs.json[0m
+2026-11-09T09:23:35.1299400Z [36;1mnode scripts/snapshot-runtime-v113.mjs --write outputs/qa-pod-systems/runtime-inputs.candidate.json[0m
+2026-11-09T09:23:35.1300151Z [36;1mgit diff --exit-code -- docs/qa/current-integration-20261103/runtime-inputs.json[0m
+2026-11-09T09:23:35.1314587Z shell: /usr/bin/bash -e {0}
+2026-11-09T09:23:35.1314969Z env:
+2026-11-09T09:23:35.1315305Z   ELECTRON_SKIP_BINARY_DOWNLOAD: 1
+2026-11-09T09:23:35.1315672Z   NEXT_TELEMETRY_DISABLED: 1
+2026-11-09T09:23:35.1316046Z   POD_SYSTEMS_START_SERVER: 1
+2026-11-09T09:23:35.1316435Z   POD_SYSTEMS_URL: http://127.0.0.1:4199/dev
+2026-11-09T09:23:35.1316939Z   POD_SYSTEMS_SOURCE_COMMIT: 3a03ca990e3c27761d411ee043eb8fdbbaffa6c3
+2026-11-09T09:23:35.1317603Z   POD_SYSTEMS_HEADED: 1
+2026-11-09T09:23:35.1317983Z   POD_SYSTEMS_REQUIRE_CLEAN: 1
+2026-11-09T09:23:35.1318306Z ##[endgroup]
+2026-11-09T09:23:40.8245403Z {"status":"PASS","path":"docs/qa/current-integration-20261103/runtime-inputs.json","bytes":410975,"sha256":"5fd5c2829564ccc5a7498365f4e28ec32b99804957befff1806496a33bb8e83e"}
+2026-11-09T09:23:46.4044080Z {"status":"SNAPSHOT_WRITTEN","path":"outputs/qa-pod-systems/runtime-inputs.candidate.json","bytes":410975,"sha256":"5fd5c2829564ccc5a7498365f4e28ec32b99804957befff1806496a33bb8e83e"}
+2026-11-09T09:23:46.4731323Z ##[group]Run node node_modules/next/dist/bin/next typegen
+2026-11-09T09:23:46.4731864Z [36;1mnode node_modules/next/dist/bin/next typegen[0m
+2026-11-09T09:23:46.4732339Z [36;1mnpm run typecheck[0m
+2026-11-09T09:23:46.4734017Z [36;1mnode node_modules/eslint/bin/eslint.js --max-warnings=0 app/game/HuntCanvas.tsx app/game/PlanetArrivalCinematic.tsx app/game/sound.ts app/game/systems/huntPodRecovery.ts app/game/systems/huntInsertion.ts app/game/systems/controlBindings.ts app/game/systems/planetArrival*.ts scripts/qa-pod-systems.mjs tests/planet-arrival*.test.mjs tests/hunt-pod-recovery.test.mjs tests/pod-audio.test.mjs[0m
+2026-11-09T09:23:46.4749096Z shell: /usr/bin/bash -e {0}
+2026-11-09T09:23:46.4749513Z env:
+2026-11-09T09:23:46.4749805Z   ELECTRON_SKIP_BINARY_DOWNLOAD: 1
+2026-11-09T09:23:46.4750153Z   NEXT_TELEMETRY_DISABLED: 1
+2026-11-09T09:23:46.4750523Z   POD_SYSTEMS_START_SERVER: 1
+2026-11-09T09:23:46.4750865Z   POD_SYSTEMS_URL: http://127.0.0.1:4199/dev
+2026-11-09T09:23:46.4751458Z   POD_SYSTEMS_SOURCE_COMMIT: 3a03ca990e3c27761d411ee043eb8fdbbaffa6c3
+2026-11-09T09:23:46.4751869Z   POD_SYSTEMS_HEADED: 1
+2026-11-09T09:23:46.4752209Z   POD_SYSTEMS_REQUIRE_CLEAN: 1
+2026-11-09T09:23:46.4752549Z ##[endgroup]
+2026-11-09T09:23:46.7524789Z Generating route types...
+2026-11-09T09:23:46.7820858Z ✓ Types generated successfully
+2026-11-09T09:23:46.9009861Z 
+2026-11-09T09:23:46.9011484Z > yautja-la-longue-chasse@1.0.0 typecheck
+2026-11-09T09:23:46.9012125Z > tsc --noEmit
+2026-11-09T09:23:46.9012376Z 
+2026-11-09T09:24:57.5536824Z ##[group]Run node --experimental-strip-types --test --test-concurrency=1 tests/planet-arrival*.test.mjs tests/planet-insertion.test.mjs tests/expedition-roster-assignment.test.mjs tests/ship-insertion-energy.test.mjs tests/hunt-insertion.test.mjs tests/hunt-pod-recovery.test.mjs tests/control-bindings.test.mjs tests/save-v2.test.mjs tests/pod-audio.test.mjs
+2026-11-09T09:24:57.5539428Z [36;1mnode --experimental-strip-types --test --test-concurrency=1 tests/planet-arrival*.test.mjs tests/planet-insertion.test.mjs tests/expedition-roster-assignment.test.mjs tests/ship-insertion-energy.test.mjs tests/hunt-insertion.test.mjs tests/hunt-pod-recovery.test.mjs tests/control-bindings.test.mjs tests/save-v2.test.mjs tests/pod-audio.test.mjs[0m
+2026-11-09T09:24:57.5554535Z shell: /usr/bin/bash -e {0}
+2026-11-09T09:24:57.5554898Z env:
+2026-11-09T09:24:57.5555292Z   ELECTRON_SKIP_BINARY_DOWNLOAD: 1
+2026-11-09T09:24:57.5555707Z   NEXT_TELEMETRY_DISABLED: 1
+2026-11-09T09:24:57.5556204Z   POD_SYSTEMS_START_SERVER: 1
+2026-11-09T09:24:57.5556593Z   POD_SYSTEMS_URL: http://127.0.0.1:4199/dev
+2026-11-09T09:24:57.5557070Z   POD_SYSTEMS_SOURCE_COMMIT: 3a03ca990e3c27761d411ee043eb8fdbbaffa6c3
+2026-11-09T09:24:57.5557599Z   POD_SYSTEMS_HEADED: 1
+2026-11-09T09:24:57.5557913Z   POD_SYSTEMS_REQUIRE_CLEAN: 1
+2026-11-09T09:24:57.5558281Z ##[endgroup]
+2026-11-09T09:24:57.6069888Z TAP version 13
+2026-11-09T09:24:57.9388791Z # Subtest: old command profiles preserve occupied X bindings when pod recovery is introduced
+2026-11-09T09:24:57.9398153Z ok 1 - old command profiles preserve occupied X bindings when pod recovery is introduced
+2026-11-09T09:24:57.9404335Z   ---
+2026-11-09T09:24:57.9405100Z   duration_ms: 9.923543
+2026-11-09T09:24:57.9405860Z   type: 'test'
+2026-11-09T09:24:57.9407225Z   ...
+2026-11-09T09:24:57.9408285Z # Subtest: a fully occupied old keyboard keeps its controls and leaves only the new pod shortcut unassigned
+2026-11-09T09:24:57.9410165Z ok 2 - a fully occupied old keyboard keeps its controls and leaves only the new pod shortcut unassigned
+2026-11-09T09:24:57.9410994Z   ---
+2026-11-09T09:24:57.9411607Z   duration_ms: 6.030773
+2026-11-09T09:24:57.9412203Z   type: 'test'
+2026-11-09T09:24:57.9412700Z   ...
+2026-11-09T09:24:57.9413744Z # Subtest: explicitly conflicting pod keys are still rejected instead of silently remapped
+2026-11-09T09:24:57.9415019Z ok 3 - explicitly conflicting pod keys are still rejected instead of silently remapped
+2026-11-09T09:24:57.9415737Z   ---
+2026-11-09T09:24:57.9416528Z   duration_ms: 0.695116
+2026-11-09T09:24:57.9416996Z   type: 'test'
+2026-11-09T09:24:57.9417410Z   ...
+2026-11-09T09:24:57.9418360Z # Subtest: reclaiming a pod shortcut preserves cloak input and allows a later keyboard assignment
+2026-11-09T09:24:57.9419627Z ok 4 - reclaiming a pod shortcut preserves cloak input and allows a later keyboard assignment
+2026-11-09T09:24:57.9420501Z   ---
+2026-11-09T09:24:57.9421004Z   duration_ms: 1.920864
+2026-11-09T09:24:57.9421519Z   type: 'test'
+2026-11-09T09:24:57.9422016Z   ...
+2026-11-09T09:24:57.9422835Z # Subtest: the AZERTY defaults cover every stable action without contextual conflicts
+2026-11-09T09:24:57.9424173Z ok 5 - the AZERTY defaults cover every stable action without contextual conflicts
+2026-11-09T09:24:57.9424909Z   ---
+2026-11-09T09:24:57.9425317Z   duration_ms: 0.865596
+2026-11-09T09:24:57.9425944Z   type: 'test'
+2026-11-09T09:24:57.9426383Z   ...
+2026-11-09T09:24:57.9427195Z # Subtest: THE PIT exposes complete collision-safe bindings for both local players
+2026-11-09T09:24:57.9428417Z ok 6 - THE PIT exposes complete collision-safe bindings for both local players
+2026-11-09T09:24:57.9429161Z   ---
+2026-11-09T09:24:57.9429648Z   duration_ms: 1.163462
+2026-11-09T09:24:57.9430136Z   type: 'test'
+2026-11-09T09:24:57.9430587Z   ...
+2026-11-09T09:24:57.9431430Z # Subtest: THE PIT input adapter resolves remapped P1 and P2 controls deterministically
+2026-11-09T09:24:57.9454771Z ok 7 - THE PIT input adapter resolves remapped P1 and P2 controls deterministically
+2026-11-09T09:24:57.9456323Z   ---
+2026-11-09T09:24:57.9457154Z   duration_ms: 0.941152
+2026-11-09T09:24:57.9457962Z   type: 'test'
+2026-11-09T09:24:57.9459104Z   ...
+2026-11-09T09:24:57.9460165Z # Subtest: key names normalize to serializable KeyboardEvent codes and duplicates are removed
+2026-11-09T09:24:57.9461302Z ok 8 - key names normalize to serializable KeyboardEvent codes and duplicates are removed
+2026-11-09T09:24:57.9462027Z   ---
+2026-11-09T09:24:57.9462547Z   duration_ms: 0.673607
+2026-11-09T09:24:57.9463011Z   type: 'test'
+2026-11-09T09:24:57.9463605Z   ...
+2026-11-09T09:24:57.9464325Z # Subtest: conflicts are errors only when actions can be active in the same context
+2026-11-09T09:24:57.9465507Z ok 9 - conflicts are errors only when actions can be active in the same context
+2026-11-09T09:24:57.9466129Z   ---
+2026-11-09T09:24:57.9466596Z   duration_ms: 0.691561
+2026-11-09T09:24:57.9467046Z   type: 'test'
+2026-11-09T09:24:57.9467496Z   ...
+2026-11-09T09:24:57.9468355Z # Subtest: rebinding rejects collisions or replaces only safe aliases in the same context
+2026-11-09T09:24:57.9469539Z ok 10 - rebinding rejects collisions or replaces only safe aliases in the same context
+2026-11-09T09:24:57.9470332Z   ---
+2026-11-09T09:24:57.9470815Z   duration_ms: 1.601547
+2026-11-09T09:24:57.9471245Z   type: 'test'
+2026-11-09T09:24:57.9471712Z   ...
+2026-11-09T09:24:57.9472554Z # Subtest: matching helpers prefer physical codes and provide a key-only fallback
+2026-11-09T09:24:57.9473980Z ok 11 - matching helpers prefer physical codes and provide a key-only fallback
+2026-11-09T09:24:57.9474682Z   ---
+2026-11-09T09:24:57.9475167Z   duration_ms: 0.170338
+2026-11-09T09:24:57.9475646Z   type: 'test'
+2026-11-09T09:24:57.9476237Z   ...
+2026-11-09T09:24:57.9477261Z # Subtest: v1 and v2 binding envelopes migrate without losing existing remaps
+2026-11-09T09:24:57.9478365Z ok 12 - v1 and v2 binding envelopes migrate without losing existing remaps
+2026-11-09T09:24:57.9479414Z   ---
+2026-11-09T09:24:57.9479976Z   duration_ms: 1.527117
+2026-11-09T09:24:57.9480416Z   type: 'test'
+2026-11-09T09:24:57.9480890Z   ...
+2026-11-09T09:24:57.9481757Z # Subtest: versioned persistence round-trips and corrupt storage falls back atomically
+2026-11-09T09:24:57.9482931Z ok 13 - versioned persistence round-trips and corrupt storage falls back atomically
+2026-11-09T09:24:57.9483891Z   ---
+2026-11-09T09:24:57.9484373Z   duration_ms: 1.991912
+2026-11-09T09:24:57.9484855Z   type: 'test'
+2026-11-09T09:24:57.9485264Z   ...
+2026-11-09T09:24:58.7027304Z # Subtest: ALL-02: recruitment records an agreement without assigning a ship or enabling a triad
+2026-11-09T09:24:58.7028856Z ok 14 - ALL-02: recruitment records an agreement without assigning a ship or enabling a triad
+2026-11-09T09:24:58.7030005Z   ---
+2026-11-09T09:24:58.7030571Z   duration_ms: 8.586579
+2026-11-09T09:24:58.7031216Z   type: 'test'
+2026-11-09T09:24:58.7031942Z   ...
+2026-11-09T09:24:58.7033461Z # Subtest: QA-C09: reserve removes only assignment and preserves recruitment, injury, rescue and settled receipts
+2026-11-09T09:24:58.7035087Z ok 15 - QA-C09: reserve removes only assignment and preserves recruitment, injury, rescue and settled receipts
+2026-11-09T09:24:58.7036009Z   ---
+2026-11-09T09:24:58.7036498Z   duration_ms: 0.810671
+2026-11-09T09:24:58.7036910Z   type: 'test'
+2026-11-09T09:24:58.7038123Z   ...
+2026-11-09T09:24:58.7038980Z # Subtest: care in reserve keeps the paid two-step rescue and never boards or heals other members
+2026-11-09T09:24:58.7040040Z ok 16 - care in reserve keeps the paid two-step rescue and never boards or heals other members
+2026-11-09T09:24:58.7040835Z   ---
+2026-11-09T09:24:58.7043034Z   duration_ms: 0.496422
+2026-11-09T09:24:58.7043711Z   type: 'test'
+2026-11-09T09:24:58.7044228Z   ...
+2026-11-09T09:24:58.7045175Z # Subtest: v1 migration preserves earned members, hull assignments, availability and settlement history exactly
+2026-11-09T09:24:58.7055020Z ok 17 - v1 migration preserves earned members, hull assignments, availability and settlement history exactly
+2026-11-09T09:24:58.7056815Z   ---
+2026-11-09T09:24:58.7057522Z   duration_ms: 0.424503
+2026-11-09T09:24:58.7058208Z   type: 'test'
+2026-11-09T09:24:58.7058876Z   ...
+2026-11-09T09:24:58.7059817Z # Subtest: new and legacy rosters survive durable reload, portable export and complete archive
+2026-11-09T09:24:58.7061156Z ok 18 - new and legacy rosters survive durable reload, portable export and complete archive
+2026-11-09T09:24:58.7062919Z   ---
+2026-11-09T09:24:58.7064129Z   duration_ms: 49.607171
+2026-11-09T09:24:58.7064831Z   type: 'test'
+2026-11-09T09:24:58.7065347Z   ...
+2026-11-09T09:24:58.7066260Z # Subtest: invalid or future roster data cannot replace the last readable campaign
+2026-11-09T09:24:58.7067514Z ok 19 - invalid or future roster data cannot replace the last readable campaign
+2026-11-09T09:24:58.7068355Z   ---
+2026-11-09T09:24:58.7068842Z   duration_ms: 1.732099
+2026-11-09T09:24:58.7069412Z   type: 'test'
+2026-11-09T09:24:58.7070121Z   ...
+2026-11-09T09:25:00.3120207Z # Subtest: all eight authored worlds have the same safe cinematic-to-hunt centers and distinct companion bodies
+2026-11-09T09:25:00.3122043Z ok 20 - all eight authored worlds have the same safe cinematic-to-hunt centers and distinct companion bodies
+2026-11-09T09:25:00.3123694Z   ---
+2026-11-09T09:25:00.3124427Z   duration_ms: 118.446679
+2026-11-09T09:25:00.3125139Z   type: 'test'
+2026-11-09T09:25:00.3125832Z   ...
+2026-11-09T09:25:00.3126909Z # Subtest: a landed ship hands off the exact final actor facing, and resuming keeps saved facing
+2026-11-09T09:25:00.3128223Z ok 21 - a landed ship hands off the exact final actor facing, and resuming keeps saved facing
+2026-11-09T09:25:00.3129097Z   ---
+2026-11-09T09:25:00.3129752Z   duration_ms: 10.945514
+2026-11-09T09:25:00.3130372Z   type: 'test'
+2026-11-09T09:25:00.3131009Z   ...
+2026-11-09T09:25:00.3131994Z # Subtest: ship patrols are deterministic, bounded, away from spawn, and applied exactly once
+2026-11-09T09:25:00.3134058Z ok 22 - ship patrols are deterministic, bounded, away from spawn, and applied exactly once
+2026-11-09T09:25:00.3135089Z   ---
+2026-11-09T09:25:00.3135648Z   duration_ms: 30.548803
+2026-11-09T09:25:00.3136298Z   type: 'test'
+2026-11-09T09:25:00.3136890Z   ...
+2026-11-09T09:25:00.3138173Z # Subtest: camouflaged approaches reduce real patrol bodies and awareness across the authored worlds without hiding the hunter
+2026-11-09T09:25:00.3139945Z ok 23 - camouflaged approaches reduce real patrol bodies and awareness across the authored worlds without hiding the hunter
+2026-11-09T09:25:00.3144470Z   ---
+2026-11-09T09:25:00.3145233Z   duration_ms: 46.259837
+2026-11-09T09:25:00.3145958Z   type: 'test'
+2026-11-09T09:25:00.3146549Z   ...
+2026-11-09T09:25:00.3147620Z # Subtest: normal and camouflaged arrivals search the landing site and cannot reveal the moved hidden player
+2026-11-09T09:25:00.3149200Z ok 24 - normal and camouflaged arrivals search the landing site and cannot reveal the moved hidden player
+2026-11-09T09:25:00.3150198Z   ---
+2026-11-09T09:25:00.3150797Z   duration_ms: 20.391881
+2026-11-09T09:25:00.3151488Z   type: 'test'
+2026-11-09T09:25:00.3152035Z   ...
+2026-11-09T09:25:00.3153431Z # Subtest: save, retry, and resume preserve the cloaked choice, expired investigation, orders, wounds and live session runId
+2026-11-09T09:25:00.3155090Z ok 25 - save, retry, and resume preserve the cloaked choice, expired investigation, orders, wounds and live session runId
+2026-11-09T09:25:00.3156146Z   ---
+2026-11-09T09:25:00.3156789Z   duration_ms: 25.561461
+2026-11-09T09:25:00.3157383Z   type: 'test'
+2026-11-09T09:25:00.3158068Z   ...
+2026-11-09T09:25:00.3159123Z # Subtest: a valid hunt archive cannot add or remove camouflage from the frozen departure plan
+2026-11-09T09:25:00.3160440Z ok 26 - a valid hunt archive cannot add or remove camouflage from the frozen departure plan
+2026-11-09T09:25:00.3161332Z   ---
+2026-11-09T09:25:00.3161907Z   duration_ms: 19.099535
+2026-11-09T09:25:00.3162540Z   type: 'test'
+2026-11-09T09:25:00.3163418Z   ...
+2026-11-09T09:25:00.3164882Z # Subtest: a checkpoint cannot substitute the frozen departure plan or foreign companion identities
+2026-11-09T09:25:00.3166309Z ok 27 - a checkpoint cannot substitute the frozen departure plan or foreign companion identities
+2026-11-09T09:25:00.3167304Z   ---
+2026-11-09T09:25:00.3167858Z   duration_ms: 3.478481
+2026-11-09T09:25:00.3168444Z   type: 'test'
+2026-11-09T09:25:00.3169029Z   ...
+2026-11-09T09:25:00.3170009Z # Subtest: active archives reject invented boarding, prior evacuation and abandonment outside extraction
+2026-11-09T09:25:00.3171566Z ok 28 - active archives reject invented boarding, prior evacuation and abandonment outside extraction
+2026-11-09T09:25:00.3172629Z   ---
+2026-11-09T09:25:00.3173386Z   duration_ms: 30.369273
+2026-11-09T09:25:00.3174066Z   type: 'test'
+2026-11-09T09:25:00.3174656Z   ...
+2026-11-09T09:25:00.3175721Z # Subtest: legacy insertion decoding remains solo without inventing reinforcements or actors
+2026-11-09T09:25:00.3199034Z ok 29 - legacy insertion decoding remains solo without inventing reinforcements or actors
+2026-11-09T09:25:00.3200198Z   ---
+2026-11-09T09:25:00.3200804Z   duration_ms: 2.251549
+2026-11-09T09:25:00.3201348Z   type: 'test'
+2026-11-09T09:25:00.3201987Z   ...
+2026-11-09T09:25:00.3202848Z # Subtest: follow and hold are independent physical orders; pause freezes the escort
+2026-11-09T09:25:00.3204915Z ok 30 - follow and hold are independent physical orders; pause freezes the escort
+2026-11-09T09:25:00.3205725Z   ---
+2026-11-09T09:25:00.3206328Z   duration_ms: 3.920966
+2026-11-09T09:25:00.3206781Z   type: 'test'
+2026-11-09T09:25:00.3207242Z   ...
+2026-11-09T09:25:00.3208078Z # Subtest: a structural wall stops an escort and produces a blocked status instead of a teleport
+2026-11-09T09:25:00.3209246Z ok 31 - a structural wall stops an escort and produces a blocked status instead of a teleport
+2026-11-09T09:25:00.3210110Z   ---
+2026-11-09T09:25:00.3210523Z   duration_ms: 16.155259
+2026-11-09T09:25:00.3211275Z   type: 'test'
+2026-11-09T09:25:00.3211741Z   ...
+2026-11-09T09:25:00.3212726Z # Subtest: real jungle underpass and timed flora route retain living physical escorts without crossing the cave ceiling
+2026-11-09T09:25:00.3214312Z ok 32 - real jungle underpass and timed flora route retain living physical escorts without crossing the cave ceiling
+2026-11-09T09:25:00.3215189Z   ---
+2026-11-09T09:25:00.3215635Z   duration_ms: 329.02651
+2026-11-09T09:25:00.3216078Z   type: 'test'
+2026-11-09T09:25:00.3216605Z   ...
+2026-11-09T09:25:00.3217517Z # Subtest: a safe short hazard leap follows a continuous ballistic arc and lands without damage or snapping
+2026-11-09T09:25:00.3218865Z ok 33 - a safe short hazard leap follows a continuous ballistic arc and lands without damage or snapping
+2026-11-09T09:25:00.3219781Z   ---
+2026-11-09T09:25:00.3220303Z   duration_ms: 10.669163
+2026-11-09T09:25:00.3220804Z   type: 'test'
+2026-11-09T09:25:00.3221287Z   ...
+2026-11-09T09:25:00.3222054Z # Subtest: the actual ice rift is crossed via its authored starter and cave platforms
+2026-11-09T09:25:00.3223501Z ok 34 - the actual ice rift is crossed via its authored starter and cave platforms
+2026-11-09T09:25:00.3224334Z   ---
+2026-11-09T09:25:00.3224803Z   duration_ms: 234.216549
+2026-11-09T09:25:00.3225244Z   type: 'test'
+2026-11-09T09:25:00.3225718Z   ...
+2026-11-09T09:25:00.3226639Z # Subtest: an escort takes actual mild ash damage on the volcanic route instead of gaining hazard immunity
+2026-11-09T09:25:00.3227981Z ok 35 - an escort takes actual mild ash damage on the volcanic route instead of gaining hazard immunity
+2026-11-09T09:25:00.3228866Z   ---
+2026-11-09T09:25:00.3229288Z   duration_ms: 70.069639
+2026-11-09T09:25:00.3229716Z   type: 'test'
+2026-11-09T09:25:00.3230175Z   ...
+2026-11-09T09:25:00.3230991Z # Subtest: the final live volcano lava is crossed from its intermediate platform to the extraction beacon
+2026-11-09T09:25:00.3232306Z ok 36 - the final live volcano lava is crossed from its intermediate platform to the extraction beacon
+2026-11-09T09:25:00.3233356Z   ---
+2026-11-09T09:25:00.3234251Z   duration_ms: 93.710255
+2026-11-09T09:25:00.3234773Z   type: 'test'
+2026-11-09T09:25:00.3235229Z   ...
+2026-11-09T09:25:00.3236153Z # Subtest: a companion already exposed in lava can escape while taking real damage instead of freezing inside it
+2026-11-09T09:25:00.3237470Z ok 37 - a companion already exposed in lava can escape while taking real damage instead of freezing inside it
+2026-11-09T09:25:00.3238379Z   ---
+2026-11-09T09:25:00.3238785Z   duration_ms: 19.731196
+2026-11-09T09:25:00.3239238Z   type: 'test'
+2026-11-09T09:25:00.3239653Z   ...
+2026-11-09T09:25:00.3240631Z # Subtest: QA-C21 follow and hold remain quiet around unengaged enemies, even with an injured escort and cloaked leader
+2026-11-09T09:25:00.3242110Z ok 38 - QA-C21 follow and hold remain quiet around unengaged enemies, even with an injured escort and cloaked leader
+2026-11-09T09:25:00.3242953Z   ---
+2026-11-09T09:25:00.3243660Z   duration_ms: 16.000155
+2026-11-09T09:25:00.3244155Z   type: 'test'
+2026-11-09T09:25:00.3244550Z   ...
+2026-11-09T09:25:00.3245503Z # Subtest: QA-C21 a fleeting contact stops escort attacks until the enemy really reacquires the group
+2026-11-09T09:25:00.3246638Z ok 39 - QA-C21 a fleeting contact stops escort attacks until the enemy really reacquires the group
+2026-11-09T09:25:00.3247357Z   ---
+2026-11-09T09:25:00.3247869Z   duration_ms: 2.70563
+2026-11-09T09:25:00.3248369Z   type: 'test'
+2026-11-09T09:25:00.3248824Z   ...
+2026-11-09T09:25:00.3249728Z # Subtest: QA-C21 explicit hostile telegraphs defend a live group member without waking nearby uninvolved enemies
+2026-11-09T09:25:00.3251281Z ok 40 - QA-C21 explicit hostile telegraphs defend a live group member without waking nearby uninvolved enemies
+2026-11-09T09:25:00.3252157Z   ---
+2026-11-09T09:25:00.3252702Z   duration_ms: 1.49727
+2026-11-09T09:25:00.3253461Z   type: 'test'
+2026-11-09T09:25:00.3254590Z   ...
+2026-11-09T09:25:00.3255847Z # Subtest: QA-C21 support selects an engaged attacker instead of a nearer patrol and stops against a retreat
+2026-11-09T09:25:00.3266225Z ok 41 - QA-C21 support selects an engaged attacker instead of a nearer patrol and stops against a retreat
+2026-11-09T09:25:00.3274667Z   ---
+2026-11-09T09:25:00.3275348Z   duration_ms: 1.36647
+2026-11-09T09:25:00.3275961Z   type: 'test'
+2026-11-09T09:25:00.3276631Z   ...
+2026-11-09T09:25:00.3277727Z # Subtest: bounded escort combat supports a detected hostile, damages only reachable regular opponents, never an Apex at range
+2026-11-09T09:25:00.3279244Z ok 42 - bounded escort combat supports a detected hostile, damages only reachable regular opponents, never an Apex at range
+2026-11-09T09:25:00.3280209Z   ---
+2026-11-09T09:25:00.3280590Z   duration_ms: 2.39325
+2026-11-09T09:25:00.3281038Z   type: 'test'
+2026-11-09T09:25:00.3281518Z   ...
+2026-11-09T09:25:00.3282278Z # Subtest: walls prevent escort strikes, hostile acquisition and hostile projectiles
+2026-11-09T09:25:00.3283456Z ok 43 - walls prevent escort strikes, hostile acquisition and hostile projectiles
+2026-11-09T09:25:00.3284300Z   ---
+2026-11-09T09:25:00.3284803Z   duration_ms: 2.090287
+2026-11-09T09:25:00.3285339Z   type: 'test'
+2026-11-09T09:25:00.3285790Z   ...
+2026-11-09T09:25:00.3286867Z # Subtest: opaque covers block escort strikes, hostile acquisition and aid; destruction and soft foliage are respected
+2026-11-09T09:25:00.3288348Z ok 44 - opaque covers block escort strikes, hostile acquisition and aid; destruction and soft foliage are respected
+2026-11-09T09:25:00.3289626Z   ---
+2026-11-09T09:25:00.3290233Z   duration_ms: 1.642875
+2026-11-09T09:25:00.3290910Z   type: 'test'
+2026-11-09T09:25:00.3291446Z   ...
+2026-11-09T09:25:00.3292280Z # Subtest: the first actual escort body intercepts a hostile projectile before the player
+2026-11-09T09:25:00.3293558Z ok 45 - the first actual escort body intercepts a hostile projectile before the player
+2026-11-09T09:25:00.3294347Z   ---
+2026-11-09T09:25:00.3294837Z   duration_ms: 1.249582
+2026-11-09T09:25:00.3295425Z   type: 'test'
+2026-11-09T09:25:00.3295913Z   ...
+2026-11-09T09:25:00.3297265Z # Subtest: nearby visible escorts can receive a real telegraphed hostile melee strike
+2026-11-09T09:25:00.3298322Z ok 46 - nearby visible escorts can receive a real telegraphed hostile melee strike
+2026-11-09T09:25:00.3299028Z   ---
+2026-11-09T09:25:00.3299707Z   duration_ms: 5.967476
+2026-11-09T09:25:00.3300394Z   type: 'test'
+2026-11-09T09:25:00.3301005Z   ...
+2026-11-09T09:25:00.3302246Z # Subtest: a hostile telegraph retains its companion target and cancels if that target is downed or occluded
+2026-11-09T09:25:00.3303557Z ok 47 - a hostile telegraph retains its companion target and cancels if that target is downed or occluded
+2026-11-09T09:25:00.3304344Z   ---
+2026-11-09T09:25:00.3304712Z   duration_ms: 7.965194
+2026-11-09T09:25:00.3305135Z   type: 'test'
+2026-11-09T09:25:00.3305480Z   ...
+2026-11-09T09:25:00.3306327Z # Subtest: a downed hunter cannot move or attack; aid requires proximity and spends exactly one real medicomp
+2026-11-09T09:25:00.3307461Z ok 48 - a downed hunter cannot move or attack; aid requires proximity and spends exactly one real medicomp
+2026-11-09T09:25:00.3308107Z   ---
+2026-11-09T09:25:00.3308534Z   duration_ms: 2.867641
+2026-11-09T09:25:00.3308924Z   type: 'test'
+2026-11-09T09:25:00.3309285Z   ...
+2026-11-09T09:25:00.3310159Z # Subtest: extraction never marks a remote companion evacuated; explicit leaving has a distinct persistent consequence
+2026-11-09T09:25:00.3311360Z ok 49 - extraction never marks a remote companion evacuated; explicit leaving has a distinct persistent consequence
+2026-11-09T09:25:00.3312101Z   ---
+2026-11-09T09:25:00.3312518Z   duration_ms: 1.325551
+2026-11-09T09:25:00.3313016Z   type: 'test'
+2026-11-09T09:25:00.3313504Z   ...
+2026-11-09T09:25:00.3314365Z # Subtest: native extraction interaction refuses remote members, then starts their boarding only with the actual ship
+2026-11-09T09:25:00.3315539Z ok 50 - native extraction interaction refuses remote members, then starts their boarding only with the actual ship
+2026-11-09T09:25:00.3316403Z   ---
+2026-11-09T09:25:00.3316865Z   duration_ms: 49.294556
+2026-11-09T09:25:00.3317301Z   type: 'test'
+2026-11-09T09:25:00.3317729Z   ...
+2026-11-09T09:25:02.7172511Z # Subtest: all eight worlds create one or three persistent pod anchors; ship insertion creates none
+2026-11-09T09:25:02.7174323Z ok 51 - all eight worlds create one or three persistent pod anchors; ship insertion creates none
+2026-11-09T09:25:02.7175573Z   ---
+2026-11-09T09:25:02.7176204Z   duration_ms: 2.036621
+2026-11-09T09:25:02.7176935Z   type: 'test'
+2026-11-09T09:25:02.7177446Z   ...
+2026-11-09T09:25:02.7178353Z # Subtest: safety uses the closest part of the body, including exact safe-radius boundaries
+2026-11-09T09:25:02.7179532Z ok 52 - safety uses the closest part of the body, including exact safe-radius boundaries
+2026-11-09T09:25:02.7180230Z   ---
+2026-11-09T09:25:02.7180668Z   duration_ms: 0.427564
+2026-11-09T09:25:02.7181226Z   type: 'test'
+2026-11-09T09:25:02.7181584Z   ...
+2026-11-09T09:25:02.7182385Z # Subtest: arming checks every capsule and every ally, including downed or left-behind hunters
+2026-11-09T09:25:02.7183661Z ok 53 - arming checks every capsule and every ally, including downed or left-behind hunters
+2026-11-09T09:25:02.7184501Z   ---
+2026-11-09T09:25:02.7184922Z   duration_ms: 0.442768
+2026-11-09T09:25:02.7185327Z   type: 'test'
+2026-11-09T09:25:02.7185841Z   ...
+2026-11-09T09:25:02.7186627Z # Subtest: the radio must reach the farthest pod, even when the nearest pod is reachable
+2026-11-09T09:25:02.7214790Z ok 54 - the radio must reach the farthest pod, even when the nearest pod is reachable
+2026-11-09T09:25:02.7274054Z   ---
+2026-11-09T09:25:02.7274761Z   duration_ms: 0.207731
+2026-11-09T09:25:02.7275348Z   type: 'test'
+2026-11-09T09:25:02.7275915Z   ...
+2026-11-09T09:25:02.7276812Z # Subtest: walking across the real radio boundary cancels once and returning does not rearm the pod
+2026-11-09T09:25:02.7278041Z ok 55 - walking across the real radio boundary cancels once and returning does not rearm the pod
+2026-11-09T09:25:02.7278942Z   ---
+2026-11-09T09:25:02.7279793Z   duration_ms: 200.120342
+2026-11-09T09:25:02.7280318Z   type: 'test'
+2026-11-09T09:25:02.7280769Z   ...
+2026-11-09T09:25:02.7281432Z # Subtest: invalid bodies, missing pods and non-operational hunters cannot arm
+2026-11-09T09:25:02.7282468Z ok 56 - invalid bodies, missing pods and non-operational hunters cannot arm
+2026-11-09T09:25:02.7283410Z   ---
+2026-11-09T09:25:02.7283830Z   duration_ms: 0.414909
+2026-11-09T09:25:02.7284264Z   type: 'test'
+2026-11-09T09:25:02.7284834Z   ...
+2026-11-09T09:25:02.7288753Z # Subtest: the countdown requires three active seconds, fires once and stays destroyed
+2026-11-09T09:25:02.7290077Z ok 57 - the countdown requires three active seconds, fires once and stays destroyed
+2026-11-09T09:25:02.7291005Z   ---
+2026-11-09T09:25:02.7291304Z   duration_ms: 1.478807
+2026-11-09T09:25:02.7291638Z   type: 'test'
+2026-11-09T09:25:02.7291948Z   ...
+2026-11-09T09:25:02.7292566Z # Subtest: a second press cancels immediately; a later deliberate press starts a fresh full countdown
+2026-11-09T09:25:02.7293872Z ok 58 - a second press cancels immediately; a later deliberate press starts a fresh full countdown
+2026-11-09T09:25:02.7294644Z   ---
+2026-11-09T09:25:02.7295016Z   duration_ms: 0.211327
+2026-11-09T09:25:02.7295461Z   type: 'test'
+2026-11-09T09:25:02.7295842Z   ...
+2026-11-09T09:25:02.7296478Z # Subtest: the last tick cancels if the player, an ally, or radio link becomes unsafe
+2026-11-09T09:25:02.7297410Z ok 59 - the last tick cancels if the player, an ally, or radio link becomes unsafe
+2026-11-09T09:25:02.7297909Z   ---
+2026-11-09T09:25:02.7298172Z   duration_ms: 0.442609
+2026-11-09T09:25:02.7298555Z   type: 'test'
+2026-11-09T09:25:02.7298834Z   ...
+2026-11-09T09:25:02.7299388Z # Subtest: invalid or stalled time cannot consume a countdown, and a delayed tick is bounded
+2026-11-09T09:25:02.7300091Z ok 60 - invalid or stalled time cannot consume a countdown, and a delayed tick is bounded
+2026-11-09T09:25:02.7300771Z   ---
+2026-11-09T09:25:02.7301139Z   duration_ms: 0.468397
+2026-11-09T09:25:02.7301453Z   type: 'test'
+2026-11-09T09:25:02.7301756Z   ...
+2026-11-09T09:25:02.7302389Z # Subtest: archive validation rejects future versions, impossible phases, malformed timers and duplicate enemy IDs
+2026-11-09T09:25:02.7303638Z ok 61 - archive validation rejects future versions, impossible phases, malformed timers and duplicate enemy IDs
+2026-11-09T09:25:02.7304208Z   ---
+2026-11-09T09:25:02.7304602Z   duration_ms: 0.468182
+2026-11-09T09:25:02.7304973Z   type: 'test'
+2026-11-09T09:25:02.7305337Z   ...
+2026-11-09T09:25:02.7305840Z # Subtest: real keyboard X arms once, ignores auto-repeat, and a fresh press cancels
+2026-11-09T09:25:02.7306498Z ok 62 - real keyboard X arms once, ignores auto-repeat, and a fresh press cancels
+2026-11-09T09:25:02.7306993Z   ---
+2026-11-09T09:25:02.7307294Z   duration_ms: 29.216712
+2026-11-09T09:25:02.7307643Z   type: 'test'
+2026-11-09T09:25:02.7307984Z   ...
+2026-11-09T09:25:02.7308559Z # Subtest: the real simulation freezes the countdown during pause and focus loss and does not queue X
+2026-11-09T09:25:02.7309331Z ok 63 - the real simulation freezes the countdown during pause and focus loss and does not queue X
+2026-11-09T09:25:02.7309880Z   ---
+2026-11-09T09:25:02.7310232Z   duration_ms: 25.824405
+2026-11-09T09:25:02.7310659Z   type: 'test'
+2026-11-09T09:25:02.7310965Z   ...
+2026-11-09T09:25:02.7311667Z # Subtest: the Canvas host aborts an armed pod when an ally returns and emits only one cancellation
+2026-11-09T09:25:02.7312533Z ok 64 - the Canvas host aborts an armed pod when an ally returns and emits only one cancellation
+2026-11-09T09:25:02.7313320Z   ---
+2026-11-09T09:25:02.7313690Z   duration_ms: 27.949521
+2026-11-09T09:25:02.7314097Z   type: 'test'
+2026-11-09T09:25:02.7314457Z   ...
+2026-11-09T09:25:02.7315096Z # Subtest: extraction, ritual, and death stop an armed pod before it can detonate
+2026-11-09T09:25:02.7315850Z ok 65 - extraction, ritual, and death stop an armed pod before it can detonate
+2026-11-09T09:25:02.7316415Z   ---
+2026-11-09T09:25:02.7316899Z   duration_ms: 82.780222
+2026-11-09T09:25:02.7317495Z   type: 'test'
+2026-11-09T09:25:02.7317869Z   ...
+2026-11-09T09:25:02.7318548Z # Subtest: a real paused checkpoint round-trip retains the countdown and its detached pod state
+2026-11-09T09:25:02.7319391Z ok 66 - a real paused checkpoint round-trip retains the countdown and its detached pod state
+2026-11-09T09:25:02.7319946Z   ---
+2026-11-09T09:25:02.7320388Z   duration_ms: 48.693385
+2026-11-09T09:25:02.7320756Z   type: 'test'
+2026-11-09T09:25:02.7321123Z   ...
+2026-11-09T09:25:02.7321861Z # Subtest: campaign storage preserves an interrupted pod countdown and a claimed resume rejects the old session
+2026-11-09T09:25:02.7322800Z ok 67 - campaign storage preserves an interrupted pod countdown and a claimed resume rejects the old session
+2026-11-09T09:25:02.7323765Z   ---
+2026-11-09T09:25:02.7324151Z   duration_ms: 112.070744
+2026-11-09T09:25:02.7324552Z   type: 'test'
+2026-11-09T09:25:02.7324890Z   ...
+2026-11-09T09:25:02.7325643Z # Subtest: complete campaign export and import retain armed and destroyed triad pods through the live decoder
+2026-11-09T09:25:02.7326569Z ok 68 - complete campaign export and import retain armed and destroyed triad pods through the live decoder
+2026-11-09T09:25:02.7327149Z   ---
+2026-11-09T09:25:02.7327544Z   duration_ms: 139.975527
+2026-11-09T09:25:02.7327904Z   type: 'test'
+2026-11-09T09:25:02.7328274Z   ...
+2026-11-09T09:25:02.7328913Z # Subtest: destruction, heard-enemy IDs and expiry survive a real reload without replaying effects
+2026-11-09T09:25:02.7329755Z ok 69 - destruction, heard-enemy IDs and expiry survive a real reload without replaying effects
+2026-11-09T09:25:02.7330337Z   ---
+2026-11-09T09:25:02.7330683Z   duration_ms: 49.875826
+2026-11-09T09:25:02.7331105Z   type: 'test'
+2026-11-09T09:25:02.7331437Z   ...
+2026-11-09T09:25:02.7332057Z # Subtest: older archives without a pod retain their absence and cannot gain a new detonation on resume
+2026-11-09T09:25:02.7333230Z ok 70 - older archives without a pod retain their absence and cannot gain a new detonation on resume
+2026-11-09T09:25:02.7334074Z   ---
+2026-11-09T09:25:02.7334480Z   duration_ms: 40.682251
+2026-11-09T09:25:02.7334844Z   type: 'test'
+2026-11-09T09:25:02.7335207Z   ...
+2026-11-09T09:25:02.7335803Z # Subtest: the real archive rejects a future detonation timestamp or enemies that never existed
+2026-11-09T09:25:02.7336699Z ok 71 - the real archive rejects a future detonation timestamp or enemies that never existed
+2026-11-09T09:25:02.7337254Z   ---
+2026-11-09T09:25:02.7337612Z   duration_ms: 32.669416
+2026-11-09T09:25:02.7338027Z   type: 'test'
+2026-11-09T09:25:02.7338366Z   ...
+2026-11-09T09:25:02.7339091Z # Subtest: detonation creates one noise per pod and directs a listener toward the pod, never the hidden moving hunter
+2026-11-09T09:25:02.7340151Z ok 72 - detonation creates one noise per pod and directs a listener toward the pod, never the hidden moving hunter
+2026-11-09T09:25:02.7340761Z   ---
+2026-11-09T09:25:02.7341127Z   duration_ms: 22.716288
+2026-11-09T09:25:02.7341592Z   type: 'test'
+2026-11-09T09:25:02.7341972Z   ...
+2026-11-09T09:25:02.7342689Z # Subtest: immediate persistence keys change only for phase transitions and retain the original destruction time
+2026-11-09T09:25:02.7343870Z ok 73 - immediate persistence keys change only for phase transitions and retain the original destruction time
+2026-11-09T09:25:02.7344502Z   ---
+2026-11-09T09:25:02.7344883Z   duration_ms: 0.255057
+2026-11-09T09:25:02.7345332Z   type: 'test'
+2026-11-09T09:25:02.7345665Z   ...
+2026-11-09T09:25:05.9384908Z # Subtest: every integrated cinematic part and terrain effect has a real decodable export and source
+2026-11-09T09:25:05.9386860Z ok 74 - every integrated cinematic part and terrain effect has a real decodable export and source
+2026-11-09T09:25:05.9388136Z   ---
+2026-11-09T09:25:05.9388784Z   duration_ms: 550.995081
+2026-11-09T09:25:05.9390086Z   type: 'test'
+2026-11-09T09:25:05.9390559Z   ...
+2026-11-09T09:25:05.9391559Z # Subtest: all eight arrival preload lists include the actual new parts and correct contact material
+2026-11-09T09:25:05.9392469Z ok 75 - all eight arrival preload lists include the actual new parts and correct contact material
+2026-11-09T09:25:05.9392989Z   ---
+2026-11-09T09:25:05.9393477Z   duration_ms: 1.784107
+2026-11-09T09:25:05.9393822Z   type: 'test'
+2026-11-09T09:25:05.9394169Z   ...
+2026-11-09T09:25:05.9405917Z # Subtest: outer and inner hatch exports remain registered to the same rigid panel canvas
+2026-11-09T09:25:05.9406928Z ok 76 - outer and inner hatch exports remain registered to the same rigid panel canvas
+2026-11-09T09:25:05.9407620Z   ---
+2026-11-09T09:25:05.9407949Z   duration_ms: 3.047998
+2026-11-09T09:25:05.9408333Z   type: 'test'
+2026-11-09T09:25:05.9408623Z   ...
+2026-11-09T09:25:07.1531749Z # Subtest: a complete montage plays each authored cue once against the real timeline
+2026-11-09T09:25:07.1532972Z ok 77 - a complete montage plays each authored cue once against the real timeline
+2026-11-09T09:25:07.1534177Z   ---
+2026-11-09T09:25:07.1534656Z   duration_ms: 23.215071
+2026-11-09T09:25:07.1535117Z   type: 'test'
+2026-11-09T09:25:07.1535523Z   ...
+2026-11-09T09:25:07.1536272Z # Subtest: impact waits for the capsule to reach the authored floor contact
+2026-11-09T09:25:07.1537331Z ok 78 - impact waits for the capsule to reach the authored floor contact
+2026-11-09T09:25:07.1537951Z   ---
+2026-11-09T09:25:07.1538422Z   duration_ms: 0.479573
+2026-11-09T09:25:07.1538859Z   type: 'test'
+2026-11-09T09:25:07.1539266Z   ...
+2026-11-09T09:25:07.1540028Z # Subtest: pause clears live sounds and resume cannot replay a reached impact
+2026-11-09T09:25:07.1540946Z ok 79 - pause clears live sounds and resume cannot replay a reached impact
+2026-11-09T09:25:07.1541658Z   ---
+2026-11-09T09:25:07.1542123Z   duration_ms: 0.524816
+2026-11-09T09:25:07.1542558Z   type: 'test'
+2026-11-09T09:25:07.1542957Z   ...
+2026-11-09T09:25:07.1543897Z # Subtest: reloading within a shot preserves consumed sounds while future cues still play
+2026-11-09T09:25:07.1545469Z ok 80 - reloading within a shot preserves consumed sounds while future cues still play
+2026-11-09T09:25:07.1546203Z   ---
+2026-11-09T09:25:07.1546647Z   duration_ms: 1.08586
+2026-11-09T09:25:07.1547075Z   type: 'test'
+2026-11-09T09:25:07.1547437Z   ...
+2026-11-09T09:25:07.1548301Z # Subtest: a blocked checkpoint consumes elapsed cues without deferring a burst on resume
+2026-11-09T09:25:07.1549349Z ok 81 - a blocked checkpoint consumes elapsed cues without deferring a burst on resume
+2026-11-09T09:25:07.1550058Z   ---
+2026-11-09T09:25:07.1550485Z   duration_ms: 0.272822
+2026-11-09T09:25:07.1550919Z   type: 'test'
+2026-11-09T09:25:07.1551386Z   ...
+2026-11-09T09:25:07.1552083Z # Subtest: a large external jump discards stale cues but permits the next timely event
+2026-11-09T09:25:07.1553437Z ok 82 - a large external jump discards stale cues but permits the next timely event
+2026-11-09T09:25:07.1554123Z   ---
+2026-11-09T09:25:07.1554568Z   duration_ms: 0.208155
+2026-11-09T09:25:07.1555019Z   type: 'test'
+2026-11-09T09:25:07.1555416Z   ...
+2026-11-09T09:25:07.1556109Z # Subtest: skip, failed handoff and completion never play or retain scene sounds
+2026-11-09T09:25:07.1557062Z ok 83 - skip, failed handoff and completion never play or retain scene sounds
+2026-11-09T09:25:07.1557760Z   ---
+2026-11-09T09:25:07.1558132Z   duration_ms: 0.541771
+2026-11-09T09:25:07.1558612Z   type: 'test'
+2026-11-09T09:25:07.1558985Z   ...
+2026-11-09T09:25:07.1559684Z # Subtest: switching runs retires the old ambience and gives the new run its own cue timeline
+2026-11-09T09:25:07.1560851Z ok 84 - switching runs retires the old ambience and gives the new run its own cue timeline
+2026-11-09T09:25:07.1561519Z   ---
+2026-11-09T09:25:07.1561912Z   duration_ms: 0.249329
+2026-11-09T09:25:07.1562365Z   type: 'test'
+2026-11-09T09:25:07.1562742Z   ...
+2026-11-09T09:25:07.1563449Z # Subtest: the surface ambience follows every real mission biome
+2026-11-09T09:25:07.1564257Z ok 85 - the surface ambience follows every real mission biome
+2026-11-09T09:25:07.1564843Z   ---
+2026-11-09T09:25:07.1565445Z   duration_ms: 0.856166
+2026-11-09T09:25:07.1565973Z   type: 'test'
+2026-11-09T09:25:07.1566356Z   ...
+2026-11-09T09:25:07.1567052Z # Subtest: disposing an arrival is final even if its old timeline or input fires again
+2026-11-09T09:25:07.1568148Z ok 86 - disposing an arrival is final even if its old timeline or input fires again
+2026-11-09T09:25:07.1568826Z   ---
+2026-11-09T09:25:07.1569284Z   duration_ms: 0.497009
+2026-11-09T09:25:07.1569756Z   type: 'test'
+2026-11-09T09:25:07.1570159Z   ...
+2026-11-09T09:25:07.1570928Z # Subtest: vent hiss starts at the actual emitter event and ends within its visual lifetime
+2026-11-09T09:25:07.1572047Z ok 87 - vent hiss starts at the actual emitter event and ends within its visual lifetime
+2026-11-09T09:25:07.1572792Z   ---
+2026-11-09T09:25:07.1573393Z   duration_ms: 0.499196
+2026-11-09T09:25:07.1573924Z   type: 'test'
+2026-11-09T09:25:07.1574338Z   ...
+2026-11-09T09:25:07.1575077Z # Subtest: every seeded debris sound occurs at its own ballistic ground contact
+2026-11-09T09:25:07.1595052Z ok 88 - every seeded debris sound occurs at its own ballistic ground contact
+2026-11-09T09:25:07.1604381Z   ---
+2026-11-09T09:25:07.1605228Z   duration_ms: 3.646673
+2026-11-09T09:25:07.1605893Z   type: 'test'
+2026-11-09T09:25:07.1606515Z   ...
+2026-11-09T09:25:07.1607369Z # Subtest: hunter touchdown and footsteps follow the visible rig after its descent from the doorway
+2026-11-09T09:25:07.1608698Z ok 89 - hunter touchdown and footsteps follow the visible rig after its descent from the doorway
+2026-11-09T09:25:07.1609468Z   ---
+2026-11-09T09:25:07.1609863Z   duration_ms: 2.632778
+2026-11-09T09:25:07.1610426Z   type: 'test'
+2026-11-09T09:25:07.1610840Z   ...
+2026-11-09T09:25:07.1611604Z # Subtest: the sound material follows the real dry, ice and wet impact artwork
+2026-11-09T09:25:07.1612871Z ok 90 - the sound material follows the real dry, ice and wet impact artwork
+2026-11-09T09:25:07.1614539Z   ---
+2026-11-09T09:25:07.1615040Z   duration_ms: 1.891246
+2026-11-09T09:25:07.1615531Z   type: 'test'
+2026-11-09T09:25:07.1615989Z   ...
+2026-11-09T09:25:07.1616705Z # Subtest: reduced motion omits sounds for hidden movement and never catches them up when restored
+2026-11-09T09:25:07.1617869Z ok 91 - reduced motion omits sounds for hidden movement and never catches them up when restored
+2026-11-09T09:25:07.1618430Z   ---
+2026-11-09T09:25:07.1618743Z   duration_ms: 3.648154
+2026-11-09T09:25:07.1619148Z   type: 'test'
+2026-11-09T09:25:07.1619485Z   ...
+2026-11-09T09:25:07.1620344Z # Subtest: pause during steam or a fragment contact cancels the voice without replaying the consumed event
+2026-11-09T09:25:07.1621259Z ok 92 - pause during steam or a fragment contact cancels the voice without replaying the consumed event
+2026-11-09T09:25:07.1621806Z   ---
+2026-11-09T09:25:07.1622114Z   duration_ms: 0.895194
+2026-11-09T09:25:07.1622457Z   type: 'test'
+2026-11-09T09:25:07.1622806Z   ...
+2026-11-09T09:25:07.1623593Z # Subtest: an external seek across a debris cluster does not burst old contacts into the same frame
+2026-11-09T09:25:07.1624448Z ok 93 - an external seek across a debris cluster does not burst old contacts into the same frame
+2026-11-09T09:25:07.1624952Z   ---
+2026-11-09T09:25:07.1625224Z   duration_ms: 0.356431
+2026-11-09T09:25:07.1625611Z   type: 'test'
+2026-11-09T09:25:07.1625931Z   ...
+2026-11-09T09:25:07.1626524Z # Subtest: a blocked audio unlock consumes a vent cue instead of playing it late when audio becomes available
+2026-11-09T09:25:07.1627390Z ok 94 - a blocked audio unlock consumes a vent cue instead of playing it late when audio becomes available
+2026-11-09T09:25:07.1627919Z   ---
+2026-11-09T09:25:07.1628236Z   duration_ms: 0.319642
+2026-11-09T09:25:07.1628567Z   type: 'test'
+2026-11-09T09:25:07.1628884Z   ...
+2026-11-09T09:25:07.1629497Z # Subtest: ship insertion uses controlled reactor, braking and setdown cues without any capsule mechanism or crash
+2026-11-09T09:25:07.1630556Z ok 95 - ship insertion uses controlled reactor, braking and setdown cues without any capsule mechanism or crash
+2026-11-09T09:25:07.1631140Z   ---
+2026-11-09T09:25:07.1631408Z   duration_ms: 1.410248
+2026-11-09T09:25:07.1631802Z   type: 'test'
+2026-11-09T09:25:07.1632090Z   ...
+2026-11-09T09:25:07.1632608Z # Subtest: trio contacts use each actual body clock and each capsule fragment seed
+2026-11-09T09:25:07.1633550Z ok 96 - trio contacts use each actual body clock and each capsule fragment seed
+2026-11-09T09:25:07.1634045Z   ---
+2026-11-09T09:25:07.1634344Z   duration_ms: 1.043587
+2026-11-09T09:25:07.1634654Z   type: 'test'
+2026-11-09T09:25:07.1635103Z   ...
+2026-11-09T09:25:07.1635831Z # Subtest: level ship exits sound an actual threshold stride instead of a non-existent downward landing
+2026-11-09T09:25:07.1637116Z ok 97 - level ship exits sound an actual threshold stride instead of a non-existent downward landing
+2026-11-09T09:25:07.1637864Z   ---
+2026-11-09T09:25:07.1638156Z   duration_ms: 12.443357
+2026-11-09T09:25:07.1638578Z   type: 'test'
+2026-11-09T09:25:07.1638921Z   ...
+2026-11-09T09:25:07.1639498Z # Subtest: all four method/team combinations play exactly their own timeline once and stop cleanly
+2026-11-09T09:25:07.1640267Z ok 98 - all four method/team combinations play exactly their own timeline once and stop cleanly
+2026-11-09T09:25:07.1640852Z   ---
+2026-11-09T09:25:07.1641158Z   duration_ms: 21.9039
+2026-11-09T09:25:07.1641477Z   type: 'test'
+2026-11-09T09:25:07.1641819Z   ...
+2026-11-09T09:25:07.1642354Z # Subtest: ship/trio pause, reload, external jumps and reduced motion cannot queue a delayed burst
+2026-11-09T09:25:07.1643407Z ok 99 - ship/trio pause, reload, external jumps and reduced motion cannot queue a delayed burst
+2026-11-09T09:25:07.1643982Z   ---
+2026-11-09T09:25:07.1644257Z   duration_ms: 6.327593
+2026-11-09T09:25:07.1644611Z   type: 'test'
+2026-11-09T09:25:07.1644973Z   ...
+2026-11-09T09:25:07.1645572Z # Subtest: only an opted-in ship sounds the optical field, once for the shared hull even with a trio
+2026-11-09T09:25:07.1646493Z ok 100 - only an opted-in ship sounds the optical field, once for the shared hull even with a trio
+2026-11-09T09:25:07.1647043Z   ---
+2026-11-09T09:25:07.1647344Z   duration_ms: 0.69368
+2026-11-09T09:25:07.1647684Z   type: 'test'
+2026-11-09T09:25:07.1648024Z   ...
+2026-11-09T09:25:07.1648560Z # Subtest: cloaked solo and trio play each optical event once and retain the exact audible engine mix
+2026-11-09T09:25:07.1649428Z ok 101 - cloaked solo and trio play each optical event once and retain the exact audible engine mix
+2026-11-09T09:25:07.1650218Z   ---
+2026-11-09T09:25:07.1650686Z   duration_ms: 21.74263
+2026-11-09T09:25:07.1651044Z   type: 'test'
+2026-11-09T09:25:07.1651375Z   ...
+2026-11-09T09:25:07.1651972Z # Subtest: pausing, a blocked checkpoint or a delayed audio unlock cannot repeat either optical transition
+2026-11-09T09:25:07.1652814Z ok 102 - pausing, a blocked checkpoint or a delayed audio unlock cannot repeat either optical transition
+2026-11-09T09:25:07.1654233Z   ---
+2026-11-09T09:25:07.1654542Z   duration_ms: 0.522811
+2026-11-09T09:25:07.1654877Z   type: 'test'
+2026-11-09T09:25:07.1655182Z   ...
+2026-11-09T09:25:07.1655820Z # Subtest: skip, external seeks and a restored landing never replay an already consumed cloak event
+2026-11-09T09:25:07.1656919Z ok 103 - skip, external seeks and a restored landing never replay an already consumed cloak event
+2026-11-09T09:25:07.1657484Z   ---
+2026-11-09T09:25:07.1657755Z   duration_ms: 0.711412
+2026-11-09T09:25:07.1658106Z   type: 'test'
+2026-11-09T09:25:07.1658426Z   ...
+2026-11-09T09:25:08.3107275Z # [33m[plugin builtin:vite-reporter] 
+2026-11-09T09:25:08.3108184Z # (!) Some chunks are larger than 500 kB after minification. Consider:
+2026-11-09T09:25:08.3109224Z # - Using dynamic import() to code-split the application
+2026-11-09T09:25:08.3110506Z # - Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
+2026-11-09T09:25:08.3112105Z # - Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.[39m
+2026-11-09T09:25:08.4455861Z # Subtest: the actual spatial host serves production React and unchanged original artwork, then removes only its temporary build
+2026-11-09T09:25:08.4457324Z ok 104 - the actual spatial host serves production React and unchanged original artwork, then removes only its temporary build
+2026-11-09T09:25:08.4458185Z   ---
+2026-11-09T09:25:08.4458568Z   duration_ms: 607.994051
+2026-11-09T09:25:08.4459180Z   type: 'test'
+2026-11-09T09:25:08.4459579Z   ...
+2026-11-09T09:25:08.9980311Z # Subtest: precompiled CDP uses the exact observer and preserves every normal scene, formation and optical field
+2026-11-09T09:25:08.9981596Z ok 105 - precompiled CDP uses the exact observer and preserves every normal scene, formation and optical field
+2026-11-09T09:25:08.9982526Z   ---
+2026-11-09T09:25:08.9983269Z   duration_ms: 8.834979
+2026-11-09T09:25:08.9983800Z   type: 'test'
+2026-11-09T09:25:08.9984323Z   ...
+2026-11-09T09:25:08.9987058Z # Subtest: the shared observer keeps four fresh paint markers and rejects reused paint through both transports
+2026-11-09T09:25:08.9988423Z ok 106 - the shared observer keeps four fresh paint markers and rejects reused paint through both transports
+2026-11-09T09:25:08.9989268Z   ---
+2026-11-09T09:25:08.9989915Z   duration_ms: 5.386972
+2026-11-09T09:25:08.9990454Z   type: 'test'
+2026-11-09T09:25:08.9990953Z   ...
+2026-11-09T09:25:08.9991738Z # Subtest: both transports await the real third standing member and still expose a completed after-read
+2026-11-09T09:25:08.9992648Z ok 107 - both transports await the real third standing member and still expose a completed after-read
+2026-11-09T09:25:08.9993689Z   ---
+2026-11-09T09:25:08.9994124Z   duration_ms: 2.74092
+2026-11-09T09:25:08.9994655Z   type: 'test'
+2026-11-09T09:25:08.9995036Z   ...
+2026-11-09T09:25:08.9996010Z # Subtest: missing roots and rejected scheduled observations retain their exact error through both transports
+2026-11-09T09:25:08.9997412Z ok 108 - missing roots and rejected scheduled observations retain their exact error through both transports
+2026-11-09T09:25:08.9998039Z   ---
+2026-11-09T09:25:08.9998345Z   duration_ms: 2.145739
+2026-11-09T09:25:08.9998675Z   type: 'test'
+2026-11-09T09:25:08.9998979Z   ...
+2026-11-09T09:25:08.9999577Z # Subtest: CDP compilation and connection failures cannot fall back to a second observation
+2026-11-09T09:25:09.0000308Z ok 109 - CDP compilation and connection failures cannot fall back to a second observation
+2026-11-09T09:25:09.0000846Z   ---
+2026-11-09T09:25:09.0001114Z   duration_ms: 1.212877
+2026-11-09T09:25:09.0001464Z   type: 'test'
+2026-11-09T09:25:09.0001782Z   ...
+2026-11-09T09:25:10.5820667Z # Subtest: the full visible outer petal rims move with their panel instead of leaving floating fragments in space
+2026-11-09T09:25:10.5822827Z ok 110 - the full visible outer petal rims move with their panel instead of leaving floating fragments in space
+2026-11-09T09:25:10.5824102Z   ---
+2026-11-09T09:25:10.5824871Z   duration_ms: 67.404654
+2026-11-09T09:25:10.5826378Z   type: 'test'
+2026-11-09T09:25:10.5826924Z   ...
+2026-11-09T09:25:10.5827952Z # Subtest: vacuum release and descent retain folded panels with no atmospheric heat
+2026-11-09T09:25:10.5828776Z ok 111 - vacuum release and descent retain folded panels with no atmospheric heat
+2026-11-09T09:25:10.5829339Z   ---
+2026-11-09T09:25:10.5829663Z   duration_ms: 394.062445
+2026-11-09T09:25:10.5830002Z   type: 'test'
+2026-11-09T09:25:10.5830357Z   ...
+2026-11-09T09:25:10.5830927Z # Subtest: heat builds before aerodynamic deployment, then cools completely before the surface shot
+2026-11-09T09:25:10.5831766Z ok 112 - heat builds before aerodynamic deployment, then cools completely before the surface shot
+2026-11-09T09:25:10.5832344Z   ---
+2026-11-09T09:25:10.5832624Z   duration_ms: 0.268669
+2026-11-09T09:25:10.5832997Z   type: 'test'
+2026-11-09T09:25:10.5833588Z   ...
+2026-11-09T09:25:10.5834227Z # Subtest: the two rigid panels deploy monotonically in the stratosphere without changing their pivots
+2026-11-09T09:25:10.5835598Z ok 113 - the two rigid panels deploy monotonically in the stratosphere without changing their pivots
+2026-11-09T09:25:10.5836302Z   ---
+2026-11-09T09:25:10.5836660Z   duration_ms: 0.539759
+2026-11-09T09:25:10.5837089Z   type: 'test'
+2026-11-09T09:25:10.5837679Z   ...
+2026-11-09T09:25:10.5838396Z # Subtest: rendering uses the complete independent core behind two registered original panels
+2026-11-09T09:25:10.5839386Z ok 114 - rendering uses the complete independent core behind two registered original panels
+2026-11-09T09:25:10.5840122Z   ---
+2026-11-09T09:25:10.5840523Z   duration_ms: 38.94174
+2026-11-09T09:25:10.5840984Z   type: 'test'
+2026-11-09T09:25:10.5841399Z   ...
+2026-11-09T09:25:10.6672702Z # Subtest: the independent core and nose effects retain their measured canvases and are actually used during atmospheric flight
+2026-11-09T09:25:10.6675065Z ok 115 - the independent core and nose effects retain their measured canvases and are actually used during atmospheric flight
+2026-11-09T09:25:10.6677103Z   ---
+2026-11-09T09:25:10.6681937Z   duration_ms: 16.079864
+2026-11-09T09:25:10.6682765Z   type: 'test'
+2026-11-09T09:25:10.6700449Z   ...
+2026-11-09T09:25:10.6701693Z # Subtest: three pods use their own delayed mechanical and heat state, including both servo cues
+2026-11-09T09:25:10.6703470Z ok 116 - three pods use their own delayed mechanical and heat state, including both servo cues
+2026-11-09T09:25:10.6704388Z   ---
+2026-11-09T09:25:10.6705111Z   duration_ms: 23.816899
+2026-11-09T09:25:10.6705852Z   type: 'test'
+2026-11-09T09:25:10.6706548Z   ...
+2026-11-09T09:25:10.6707739Z # Subtest: reduced motion retains the complete mechanical assembly but suppresses panel travel and flutter
+2026-11-09T09:25:10.6709249Z ok 117 - reduced motion retains the complete mechanical assembly but suppresses panel travel and flutter
+2026-11-09T09:25:10.6710280Z   ---
+2026-11-09T09:25:10.6710966Z   duration_ms: 56.929812
+2026-11-09T09:25:10.6711930Z   type: 'test'
+2026-11-09T09:25:10.6712527Z   ...
+2026-11-09T09:25:10.6714471Z # Subtest: pause freezes the pod assembly and a saved reload replays its native shot with the same mechanical states
+2026-11-09T09:25:10.6716301Z ok 118 - pause freezes the pod assembly and a saved reload replays its native shot with the same mechanical states
+2026-11-09T09:25:10.6717356Z   ---
+2026-11-09T09:25:10.6717947Z   duration_ms: 0.794596
+2026-11-09T09:25:10.6718600Z   type: 'test'
+2026-11-09T09:25:10.6719136Z   ...
+2026-11-09T09:25:10.6719977Z # Subtest: ship insertion does not play pod mechanical cues
+2026-11-09T09:25:10.6720974Z ok 119 - ship insertion does not play pod mechanical cues
+2026-11-09T09:25:10.6721765Z   ---
+2026-11-09T09:25:10.6722381Z   duration_ms: 0.473635
+2026-11-09T09:25:10.6722946Z   type: 'test'
+2026-11-09T09:25:10.6723635Z   ...
+2026-11-09T09:25:12.8192994Z # Subtest: all eight destinations use the raised physical threshold before reaching the unchanged hunt spawn
+2026-11-09T09:25:12.8194853Z ok 120 - all eight destinations use the raised physical threshold before reaching the unchanged hunt spawn
+2026-11-09T09:25:12.8196173Z   ---
+2026-11-09T09:25:12.8202155Z   duration_ms: 1.803905
+2026-11-09T09:25:12.8202859Z   type: 'test'
+2026-11-09T09:25:12.8203649Z   ...
+2026-11-09T09:25:12.8204987Z # Subtest: the hunter clears the opening after the hatch and drops continuously before walking
+2026-11-09T09:25:12.8206124Z ok 121 - the hunter clears the opening after the hatch and drops continuously before walking
+2026-11-09T09:25:12.8207003Z   ---
+2026-11-09T09:25:12.8207497Z   duration_ms: 11.918389
+2026-11-09T09:25:12.8208020Z   type: 'test'
+2026-11-09T09:25:12.8208613Z   ...
+2026-11-09T09:25:12.8209690Z # Subtest: threshold departure, ground arrival and final rest preserve position without a horizontal velocity jump
+2026-11-09T09:25:12.8211924Z ok 122 - threshold departure, ground arrival and final rest preserve position without a horizontal velocity jump
+2026-11-09T09:25:12.8212932Z   ---
+2026-11-09T09:25:12.8213670Z   duration_ms: 0.242688
+2026-11-09T09:25:12.8214340Z   type: 'test'
+2026-11-09T09:25:12.8215298Z   ...
+2026-11-09T09:25:12.8216111Z # Subtest: walking displacement and rig phase close together on the last planted half-stride
+2026-11-09T09:25:12.8217208Z ok 123 - walking displacement and rig phase close together on the last planted half-stride
+2026-11-09T09:25:12.8217955Z   ---
+2026-11-09T09:25:12.8218350Z   duration_ms: 0.620658
+2026-11-09T09:25:12.8218781Z   type: 'test'
+2026-11-09T09:25:12.8219246Z   ...
+2026-11-09T09:25:12.8220198Z # Subtest: the aperture reveals the foreground continuously while the actor leaves its raised threshold
+2026-11-09T09:25:12.8221632Z ok 124 - the aperture reveals the foreground continuously while the actor leaves its raised threshold
+2026-11-09T09:25:12.8222488Z   ---
+2026-11-09T09:25:12.8222901Z   duration_ms: 0.240456
+2026-11-09T09:25:12.8223612Z   type: 'test'
+2026-11-09T09:25:12.8224131Z   ...
+2026-11-09T09:25:12.8225094Z # Subtest: the shared reveal camera keeps the raised threshold and feet in the same coordinate frame
+2026-11-09T09:25:12.8226432Z ok 125 - the shared reveal camera keeps the raised threshold and feet in the same coordinate frame
+2026-11-09T09:25:12.8227312Z   ---
+2026-11-09T09:25:12.8227776Z   duration_ms: 1.055257
+2026-11-09T09:25:12.8228292Z   type: 'test'
+2026-11-09T09:25:12.8228808Z   ...
+2026-11-09T09:25:12.8229629Z # Subtest: reduced motion uses one planted final tableau and never starts a walking clock
+2026-11-09T09:25:12.8230826Z ok 126 - reduced motion uses one planted final tableau and never starts a walking clock
+2026-11-09T09:25:12.8231691Z   ---
+2026-11-09T09:25:12.8232099Z   duration_ms: 0.265261
+2026-11-09T09:25:12.8232580Z   type: 'test'
+2026-11-09T09:25:12.8233037Z   ...
+2026-11-09T09:25:12.8264851Z # Subtest: non-finite time cannot produce an invalid actor transform or trigger a late movement
+2026-11-09T09:25:12.8266337Z ok 127 - non-finite time cannot produce an invalid actor transform or trigger a late movement
+2026-11-09T09:25:12.8275767Z   ---
+2026-11-09T09:25:12.8276567Z   duration_ms: 0.169829
+2026-11-09T09:25:12.8277318Z   type: 'test'
+2026-11-09T09:25:12.8278072Z   ...
+2026-11-09T09:25:12.8279256Z # Subtest: local light directions recover the same world source after hull rotation and reflection
+2026-11-09T09:25:12.8280699Z ok 128 - local light directions recover the same world source after hull rotation and reflection
+2026-11-09T09:25:12.8281606Z   ---
+2026-11-09T09:25:12.8282161Z   duration_ms: 0.805777
+2026-11-09T09:25:12.8282810Z   type: 'test'
+2026-11-09T09:25:12.8283557Z   ...
+2026-11-09T09:25:12.8284558Z # Subtest: every impact fragment settles at its reported sound event and remains on the ground
+2026-11-09T09:25:12.8285876Z ok 129 - every impact fragment settles at its reported sound event and remains on the ground
+2026-11-09T09:25:12.8286745Z   ---
+2026-11-09T09:25:12.8287326Z   duration_ms: 1.968984
+2026-11-09T09:25:12.8287909Z   type: 'test'
+2026-11-09T09:25:12.8288451Z   ...
+2026-11-09T09:25:12.8289590Z # Subtest: the three named hunters have staggered physical exits and reach their exact gameplay formation before handoff
+2026-11-09T09:25:12.8291142Z ok 130 - the three named hunters have staggered physical exits and reach their exact gameplay formation before handoff
+2026-11-09T09:25:12.8292151Z   ---
+2026-11-09T09:25:12.8292762Z   duration_ms: 0.93024
+2026-11-09T09:25:12.8293543Z   type: 'test'
+2026-11-09T09:25:12.8294061Z   ...
+2026-11-09T09:25:12.8295126Z # Subtest: every ship exit supports left and right disembarkation without passing below the floor or reversing its path
+2026-11-09T09:25:12.8296794Z ok 131 - every ship exit supports left and right disembarkation without passing below the floor or reversing its path
+2026-11-09T09:25:12.8297735Z   ---
+2026-11-09T09:25:12.8298221Z   duration_ms: 51.770446
+2026-11-09T09:25:12.8298733Z   type: 'test'
+2026-11-09T09:25:12.8299271Z   ...
+2026-11-09T09:25:12.8300358Z # Subtest: the real ship renderer keeps its selected hull and omits all capsule mechanisms in every flight and surface shot
+2026-11-09T09:25:12.8302299Z ok 132 - the real ship renderer keeps its selected hull and omits all capsule mechanisms in every flight and surface shot
+2026-11-09T09:25:12.8303655Z   ---
+2026-11-09T09:25:12.8304310Z   duration_ms: 574.747678
+2026-11-09T09:25:12.8304999Z   type: 'test'
+2026-11-09T09:25:12.8305649Z   ...
+2026-11-09T09:25:12.8306679Z # Subtest: pod trio renders distinct launches, ground anchors and authored modular companion rigs
+2026-11-09T09:25:12.8308165Z ok 133 - pod trio renders distinct launches, ground anchors and authored modular companion rigs
+2026-11-09T09:25:12.8309165Z   ---
+2026-11-09T09:25:12.8309783Z   duration_ms: 123.507854
+2026-11-09T09:25:12.8310501Z   type: 'test'
+2026-11-09T09:25:12.8311092Z   ...
+2026-11-09T09:25:12.8312046Z # Subtest: optical concealment is opt-in for the ship and is engaged before its visible approach
+2026-11-09T09:25:12.8313750Z ok 134 - optical concealment is opt-in for the ship and is engaged before its visible approach
+2026-11-09T09:25:12.8314806Z   ---
+2026-11-09T09:25:12.8315437Z   duration_ms: 0.466368
+2026-11-09T09:25:12.8316128Z   type: 'test'
+2026-11-09T09:25:12.8316725Z   ...
+2026-11-09T09:25:12.8317803Z # Subtest: the optical field releases continuously and is completely gone before the physical setdown
+2026-11-09T09:25:12.8319368Z ok 135 - the optical field releases continuously and is completely gone before the physical setdown
+2026-11-09T09:25:12.8320358Z   ---
+2026-11-09T09:25:12.8321049Z   duration_ms: 0.36149
+2026-11-09T09:25:12.8321831Z   type: 'test'
+2026-11-09T09:25:12.8322462Z   ...
+2026-11-09T09:25:12.8323811Z # Subtest: the saved arrival clock freezes optical distortion and reduced motion removes its moving field
+2026-11-09T09:25:12.8325336Z ok 136 - the saved arrival clock freezes optical distortion and reduced motion removes its moving field
+2026-11-09T09:25:12.8326357Z   ---
+2026-11-09T09:25:12.8327137Z   duration_ms: 0.449634
+2026-11-09T09:25:12.8327810Z   type: 'test'
+2026-11-09T09:25:12.8328463Z   ...
+2026-11-09T09:25:12.8329968Z # Subtest: the actual cloaked ship keeps its source, transforms and sockets while the alpha-masked field follows the clock
+2026-11-09T09:25:12.8331742Z ok 137 - the actual cloaked ship keeps its source, transforms and sockets while the alpha-masked field follows the clock
+2026-11-09T09:25:12.8332920Z   ---
+2026-11-09T09:25:12.8333675Z   duration_ms: 344.4102
+2026-11-09T09:25:12.8334425Z   type: 'test'
+2026-11-09T09:25:12.8335174Z   ...
+2026-11-09T09:25:13.7069509Z # Subtest: engine sources decode with real transparent margins and their measured light origins are occupied
+2026-11-09T09:25:13.7070992Z ok 138 - engine sources decode with real transparent margins and their measured light origins are occupied
+2026-11-09T09:25:13.7072645Z   ---
+2026-11-09T09:25:13.7216713Z   duration_ms: 110.809024
+2026-11-09T09:25:13.7217124Z   type: 'test'
+2026-11-09T09:25:13.7217393Z   ...
+2026-11-09T09:25:13.7217932Z # Subtest: only inspected visible aft apertures accept the independent engine effects
+2026-11-09T09:25:13.7218734Z ok 139 - only inspected visible aft apertures accept the independent engine effects
+2026-11-09T09:25:13.7219314Z   ---
+2026-11-09T09:25:13.7219581Z   duration_ms: 0.46693
+2026-11-09T09:25:13.7219876Z   type: 'test'
+2026-11-09T09:25:13.7220122Z   ...
+2026-11-09T09:25:13.7220671Z # Subtest: reduced motion removes time modulation while ordinary departure builds thrust
+2026-11-09T09:25:13.7221508Z ok 140 - reduced motion removes time modulation while ordinary departure builds thrust
+2026-11-09T09:25:13.7222011Z   ---
+2026-11-09T09:25:13.7222267Z   duration_ms: 0.933489
+2026-11-09T09:25:13.7222548Z   type: 'test'
+2026-11-09T09:25:13.7222806Z   ...
+2026-11-09T09:25:13.7223584Z # Subtest: optical camouflage attenuates light without changing power, time or source size
+2026-11-09T09:25:13.7224494Z ok 141 - optical camouflage attenuates light without changing power, time or source size
+2026-11-09T09:25:13.7225061Z   ---
+2026-11-09T09:25:13.7225352Z   duration_ms: 0.180874
+2026-11-09T09:25:13.7225673Z   type: 'test'
+2026-11-09T09:25:13.7225927Z   ...
+2026-11-09T09:25:13.7226997Z # Subtest: no thrust is painted outside flight and malformed time cannot create a nonfinite transform
+2026-11-09T09:25:13.7228055Z ok 142 - no thrust is painted outside flight and malformed time cannot create a nonfinite transform
+2026-11-09T09:25:13.7228584Z   ---
+2026-11-09T09:25:13.7228854Z   duration_ms: 0.142222
+2026-11-09T09:25:13.7229115Z   type: 'test'
+2026-11-09T09:25:13.7229349Z   ...
+2026-11-09T09:25:14.9189044Z # Subtest: retained view slots preserve the exact active from/to weights and ordering for every supported family
+2026-11-09T09:25:14.9190434Z ok 143 - retained view slots preserve the exact active from/to weights and ordering for every supported family
+2026-11-09T09:25:14.9191207Z   ---
+2026-11-09T09:25:14.9191560Z   duration_ms: 6.358089
+2026-11-09T09:25:14.9191933Z   type: 'test'
+2026-11-09T09:25:14.9192253Z   ...
+2026-11-09T09:25:14.9193272Z # Subtest: the same keyed shallow slot remains available through its inactive dorsal interval and native return
+2026-11-09T09:25:14.9194695Z ok 144 - the same keyed shallow slot remains available through its inactive dorsal interval and native return
+2026-11-09T09:25:14.9195497Z   ---
+2026-11-09T09:25:14.9195835Z   duration_ms: 0.653839
+2026-11-09T09:25:14.9196205Z   type: 'test'
+2026-11-09T09:25:14.9196525Z   ...
+2026-11-09T09:25:14.9197289Z # Subtest: an unavailable or unsupported family never acquires hidden optional image slots
+2026-11-09T09:25:14.9198490Z ok 145 - an unavailable or unsupported family never acquires hidden optional image slots
+2026-11-09T09:25:14.9199184Z   ---
+2026-11-09T09:25:14.9199498Z   duration_ms: 0.358768
+2026-11-09T09:25:14.9199867Z   type: 'test'
+2026-11-09T09:25:14.9200186Z   ...
+2026-11-09T09:25:14.9201091Z # Subtest: the actual ship paint subtree exposes only participants to geometry, light, engine and optical consumers
+2026-11-09T09:25:14.9202476Z ok 146 - the actual ship paint subtree exposes only participants to geometry, light, engine and optical consumers
+2026-11-09T09:25:14.9203824Z   ---
+2026-11-09T09:25:14.9204144Z   duration_ms: 62.634542
+2026-11-09T09:25:14.9204502Z   type: 'test'
+2026-11-09T09:25:14.9204772Z   ...
+2026-11-09T09:25:14.9205654Z # Subtest: each optional view belongs to this hull and has usable full-canvas geometry, without reusing the inconsistent top image
+2026-11-09T09:25:14.9207022Z ok 147 - each optional view belongs to this hull and has usable full-canvas geometry, without reusing the inconsistent top image
+2026-11-09T09:25:14.9207707Z   ---
+2026-11-09T09:25:14.9207974Z   duration_ms: 0.499387
+2026-11-09T09:25:14.9208297Z   type: 'test'
+2026-11-09T09:25:14.9208572Z   ...
+2026-11-09T09:25:14.9209347Z # Subtest: all three real pod launches keep the exact profile release socket and original world-space launch origin
+2026-11-09T09:25:14.9210628Z ok 148 - all three real pod launches keep the exact profile release socket and original world-space launch origin
+2026-11-09T09:25:14.9211362Z   ---
+2026-11-09T09:25:14.9211676Z   duration_ms: 1.395989
+2026-11-09T09:25:14.9212033Z   type: 'test'
+2026-11-09T09:25:14.9212334Z   ...
+2026-11-09T09:25:14.9213298Z # Subtest: shot labels at23s and31s cannot reset the frame mix, camera attitude or attachment geometry
+2026-11-09T09:25:14.9214389Z ok 149 - shot labels at23s and31s cannot reset the frame mix, camera attitude or attachment geometry
+2026-11-09T09:25:14.9215089Z   ---
+2026-11-09T09:25:14.9215396Z   duration_ms: 0.528381
+2026-11-09T09:25:14.9215745Z   type: 'test'
+2026-11-09T09:25:14.9216059Z   ...
+2026-11-09T09:25:14.9217003Z # Subtest: the original profile is restored before the surface cut and remains unchanged through contact, egress and handoff
+2026-11-09T09:25:14.9218465Z ok 150 - the original profile is restored before the surface cut and remains unchanged through contact, egress and handoff
+2026-11-09T09:25:14.9219301Z   ---
+2026-11-09T09:25:14.9219612Z   duration_ms: 0.336938
+2026-11-09T09:25:14.9219957Z   type: 'test'
+2026-11-09T09:25:14.9220272Z   ...
+2026-11-09T09:25:14.9221581Z # Subtest: reduced motion holds the complete original view without a rotating bank or an opacity blend at every sampled time
+2026-11-09T09:25:14.9223023Z ok 151 - reduced motion holds the complete original view without a rotating bank or an opacity blend at every sampled time
+2026-11-09T09:25:14.9223831Z   ---
+2026-11-09T09:25:14.9224086Z   duration_ms: 5.763327
+2026-11-09T09:25:14.9224382Z   type: 'test'
+2026-11-09T09:25:14.9224662Z   ...
+2026-11-09T09:25:14.9225616Z # Subtest: every unregistered catalogue identity uses only its own calibrated profile, including project-original V12 and canonical V14 hulls
+2026-11-09T09:25:14.9227196Z ok 152 - every unregistered catalogue identity uses only its own calibrated profile, including project-original V12 and canonical V14 hulls
+2026-11-09T09:25:14.9227976Z   ---
+2026-11-09T09:25:14.9228220Z   duration_ms: 2.03859
+2026-11-09T09:25:14.9228534Z   type: 'test'
+2026-11-09T09:25:14.9228892Z   ...
+2026-11-09T09:25:14.9229502Z # Subtest: the approved fleet extension contains all six selected hulls and exactly forty-six views
+2026-11-09T09:25:14.9230373Z ok 153 - the approved fleet extension contains all six selected hulls and exactly forty-six views
+2026-11-09T09:25:14.9231016Z   ---
+2026-11-09T09:25:14.9231298Z   duration_ms: 0.334579
+2026-11-09T09:25:14.9231605Z   type: 'test'
+2026-11-09T09:25:14.9231987Z   ...
+2026-11-09T09:25:14.9232788Z # Subtest: inspected additional families expose exactly their consumed views and never borrow another hull or engine
+2026-11-09T09:25:14.9234178Z ok 154 - inspected additional families expose exactly their consumed views and never borrow another hull or engine
+2026-11-09T09:25:14.9234845Z   ---
+2026-11-09T09:25:14.9235141Z   duration_ms: 0.723528
+2026-11-09T09:25:14.9235472Z   type: 'test'
+2026-11-09T09:25:14.9235733Z   ...
+2026-11-09T09:25:15.1351999Z # Subtest: additional-family calibration dimensions match the actual unresized transparent runtime canvases
+2026-11-09T09:25:15.1366935Z ok 155 - additional-family calibration dimensions match the actual unresized transparent runtime canvases
+2026-11-09T09:25:15.1386130Z   ---
+2026-11-09T09:25:15.1386688Z   duration_ms: 72.57045
+2026-11-09T09:25:15.1387175Z   type: 'test'
+2026-11-09T09:25:15.1387584Z   ...
+2026-11-09T09:25:15.1388520Z # Subtest: additional families preserve launch, landing, unsupported methods and complete-family fallback
+2026-11-09T09:25:15.1389879Z ok 156 - additional families preserve launch, landing, unsupported methods and complete-family fallback
+2026-11-09T09:25:15.1390816Z   ---
+2026-11-09T09:25:15.1391281Z   duration_ms: 8.363665
+2026-11-09T09:25:15.1391769Z   type: 'test'
+2026-11-09T09:25:15.1392187Z   ...
+2026-11-09T09:25:15.1393394Z # Subtest: a failed or still-loading optional frame returns the whole selected hull, without a half-opacity silhouette
+2026-11-09T09:25:15.1394929Z ok 157 - a failed or still-loading optional frame returns the whole selected hull, without a half-opacity silhouette
+2026-11-09T09:25:15.1395824Z   ---
+2026-11-09T09:25:15.1396261Z   duration_ms: 1.108196
+2026-11-09T09:25:15.1396715Z   type: 'test'
+2026-11-09T09:25:15.1397136Z   ...
+2026-11-09T09:25:15.1398253Z # Subtest: one missing intermediate view keeps the entire sequence on its original profile instead of popping to later available angles
+2026-11-09T09:25:15.1399898Z ok 158 - one missing intermediate view keeps the entire sequence on its original profile instead of popping to later available angles
+2026-11-09T09:25:15.1400860Z   ---
+2026-11-09T09:25:15.1401274Z   duration_ms: 34.214498
+2026-11-09T09:25:15.1401741Z   type: 'test'
+2026-11-09T09:25:15.1402156Z   ...
+2026-11-09T09:25:15.1403308Z # Subtest: view changes only blend neighboring camera angles with finite continuous sockets and unchanged aspect ratio
+2026-11-09T09:25:15.1404827Z ok 159 - view changes only blend neighboring camera angles with finite continuous sockets and unchanged aspect ratio
+2026-11-09T09:25:15.1405717Z   ---
+2026-11-09T09:25:15.1406130Z   duration_ms: 22.115648
+2026-11-09T09:25:15.1406603Z   type: 'test'
+2026-11-09T09:25:15.1407029Z   ...
+2026-11-09T09:25:15.1408328Z # Subtest: registration matches a known quarter-turn and uniform resize on a rectangular canvas with an off-center pivot
+2026-11-09T09:25:15.1409843Z ok 160 - registration matches a known quarter-turn and uniform resize on a rectangular canvas with an off-center pivot
+2026-11-09T09:25:15.1410741Z   ---
+2026-11-09T09:25:15.1411150Z   duration_ms: 0.33627
+2026-11-09T09:25:15.1411610Z   type: 'test'
+2026-11-09T09:25:15.1412017Z   ...
+2026-11-09T09:25:15.1413189Z # Subtest: different native canvases preserve every pixel direction and length ratio after the CSS canvas stretch is cancelled
+2026-11-09T09:25:15.1414787Z ok 161 - different native canvases preserve every pixel direction and length ratio after the CSS canvas stretch is cancelled
+2026-11-09T09:25:15.1415703Z   ---
+2026-11-09T09:25:15.1416111Z   duration_ms: 0.472693
+2026-11-09T09:25:15.1416559Z   type: 'test'
+2026-11-09T09:25:15.1416973Z   ...
+2026-11-09T09:25:15.1417982Z # Subtest: additional-family dissolves align the painted axes and stay isotropic through profile-to-native-canvas changes
+2026-11-09T09:25:15.1419414Z ok 162 - additional-family dissolves align the painted axes and stay isotropic through profile-to-native-canvas changes
+2026-11-09T09:25:15.1420274Z   ---
+2026-11-09T09:25:15.1420689Z   duration_ms: 61.096281
+2026-11-09T09:25:15.1421129Z   type: 'test'
+2026-11-09T09:25:15.1421520Z   ...
+2026-11-09T09:25:15.1422626Z # Subtest: every painted view shares the same registered nose and tail throughout a transition, with attachments following the paint
+2026-11-09T09:25:15.1424432Z ok 163 - every painted view shares the same registered nose and tail throughout a transition, with attachments following the paint
+2026-11-09T09:25:15.1425340Z   ---
+2026-11-09T09:25:15.1425784Z   duration_ms: 14.726714
+2026-11-09T09:25:15.1426254Z   type: 'test'
+2026-11-09T09:25:15.1426659Z   ...
+2026-11-09T09:25:15.1427683Z # Subtest: the engine becomes visible only with an inspected rear chamber and stays on that registered chamber as it fades in
+2026-11-09T09:25:15.1429498Z ok 164 - the engine becomes visible only with an inspected rear chamber and stays on that registered chamber as it fades in
+2026-11-09T09:25:15.1430392Z   ---
+2026-11-09T09:25:15.1430807Z   duration_ms: 1.835972
+2026-11-09T09:25:15.1431260Z   type: 'test'
+2026-11-09T09:25:15.1431671Z   ...
+2026-11-09T09:25:15.1432655Z # Subtest: screen-space travel still follows the existing paths while per-view anchors preserve forward orientation
+2026-11-09T09:25:15.1434364Z ok 165 - screen-space travel still follows the existing paths while per-view anchors preserve forward orientation
+2026-11-09T09:25:15.1435259Z   ---
+2026-11-09T09:25:15.1435686Z   duration_ms: 1.067256
+2026-11-09T09:25:15.1436157Z   type: 'test'
+2026-11-09T09:25:15.1436582Z   ...
+2026-11-09T09:25:15.1437527Z # Subtest: pause, replay, rewind and malformed elapsed values cannot introduce a second or accumulating clock
+2026-11-09T09:25:15.1438950Z ok 166 - pause, replay, rewind and malformed elapsed values cannot introduce a second or accumulating clock
+2026-11-09T09:25:15.1439856Z   ---
+2026-11-09T09:25:15.1440402Z   duration_ms: 0.551592
+2026-11-09T09:25:15.1440883Z   type: 'test'
+2026-11-09T09:25:15.1441333Z   ...
+2026-11-09T09:25:16.1965293Z # Subtest: the complete 1280×720 plane remains centered and uniformly scaled in portrait, tablet and widescreen viewports
+2026-11-09T09:25:16.1967034Z ok 167 - the complete 1280×720 plane remains centered and uniformly scaled in portrait, tablet and widescreen viewports
+2026-11-09T09:25:16.1967910Z   ---
+2026-11-09T09:25:16.1968268Z   duration_ms: 1.091847
+2026-11-09T09:25:16.1968658Z   type: 'test'
+2026-11-09T09:25:16.1969014Z   ...
+2026-11-09T09:25:16.1969796Z # Subtest: an unmeasured or invalid viewport cannot create infinite CSS transforms
+2026-11-09T09:25:16.1978727Z ok 168 - an unmeasured or invalid viewport cannot create infinite CSS transforms
+2026-11-09T09:25:16.1979448Z   ---
+2026-11-09T09:25:16.1979782Z   duration_ms: 0.758756
+2026-11-09T09:25:16.1980207Z   type: 'test'
+2026-11-09T09:25:16.1980524Z   ...
+2026-11-09T09:25:16.1981755Z # Subtest: the shared ground camera never reveals pixels outside the available backdrop
+2026-11-09T09:25:16.1982838Z ok 169 - the shared ground camera never reveals pixels outside the available backdrop
+2026-11-09T09:25:16.1983648Z   ---
+2026-11-09T09:25:16.1983979Z   duration_ms: 0.418334
+2026-11-09T09:25:16.1984346Z   type: 'test'
+2026-11-09T09:25:16.1984651Z   ...
+2026-11-09T09:25:16.1985536Z # Subtest: all eight real landing points and actor feet stay on the same projected floor throughout the camera reveal
+2026-11-09T09:25:16.1986907Z ok 170 - all eight real landing points and actor feet stay on the same projected floor throughout the camera reveal
+2026-11-09T09:25:16.1987916Z   ---
+2026-11-09T09:25:16.1988480Z   duration_ms: 487.862504
+2026-11-09T09:25:16.1988821Z   type: 'test'
+2026-11-09T09:25:16.1989147Z   ...
+2026-11-09T09:25:16.1989772Z # Subtest: camera reveal finishes at the unchanged gameplay coordinate frame
+2026-11-09T09:25:16.1990735Z ok 171 - camera reveal finishes at the unchanged gameplay coordinate frame
+2026-11-09T09:25:16.1991336Z   ---
+2026-11-09T09:25:16.1991647Z   duration_ms: 0.41742
+2026-11-09T09:25:16.1992017Z   type: 'test'
+2026-11-09T09:25:16.1992333Z   ...
+2026-11-09T09:25:16.1993042Z # Subtest: pod nose follows the observed path tangent throughout all three flight shots
+2026-11-09T09:25:16.1994270Z ok 172 - pod nose follows the observed path tangent throughout all three flight shots
+2026-11-09T09:25:16.1994936Z   ---
+2026-11-09T09:25:16.1995250Z   duration_ms: 1.071675
+2026-11-09T09:25:16.1995619Z   type: 'test'
+2026-11-09T09:25:16.1995931Z   ...
+2026-11-09T09:25:16.1996766Z # Subtest: the release/descent boundary preserves position, heading, scale and velocity in real seconds
+2026-11-09T09:25:16.1998006Z ok 173 - the release/descent boundary preserves position, heading, scale and velocity in real seconds
+2026-11-09T09:25:16.1998749Z   ---
+2026-11-09T09:25:16.1999068Z   duration_ms: 0.281054
+2026-11-09T09:25:16.1999652Z   type: 'test'
+2026-11-09T09:25:16.1999949Z   ...
+2026-11-09T09:25:16.2000903Z # Subtest: a real carrier socket relocates launch without changing its initial heading or breaking the later shot boundary
+2026-11-09T09:25:16.2002369Z ok 174 - a real carrier socket relocates launch without changing its initial heading or breaking the later shot boundary
+2026-11-09T09:25:16.2003343Z   ---
+2026-11-09T09:25:16.2003666Z   duration_ms: 0.30259
+2026-11-09T09:25:16.2004035Z   type: 'test'
+2026-11-09T09:25:16.2004353Z   ...
+2026-11-09T09:25:16.2005247Z # Subtest: the carrier passes continuously from approach to departure and clears the frame before disappearance
+2026-11-09T09:25:16.2006640Z ok 175 - the carrier passes continuously from approach to departure and clears the frame before disappearance
+2026-11-09T09:25:16.2007421Z   ---
+2026-11-09T09:25:16.2007737Z   duration_ms: 0.444768
+2026-11-09T09:25:16.2008067Z   type: 'test'
+2026-11-09T09:25:16.2008315Z   ...
+2026-11-09T09:25:16.2008828Z # Subtest: local effect sockets share the sprite pivot, rotation and depth scaling
+2026-11-09T09:25:16.2009648Z ok 176 - local effect sockets share the sprite pivot, rotation and depth scaling
+2026-11-09T09:25:16.2010101Z   ---
+2026-11-09T09:25:16.2010377Z   duration_ms: 0.430665
+2026-11-09T09:25:16.2010712Z   type: 'test'
+2026-11-09T09:25:16.2010977Z   ...
+2026-11-09T09:25:16.2011457Z # Subtest: bounded progress and invalid inputs cannot introduce off-timeline positions
+2026-11-09T09:25:16.2012067Z ok 177 - bounded progress and invalid inputs cannot introduce off-timeline positions
+2026-11-09T09:25:16.2012507Z   ---
+2026-11-09T09:25:16.2012785Z   duration_ms: 0.253764
+2026-11-09T09:25:16.2014371Z   type: 'test'
+2026-11-09T09:25:16.2014688Z   ...
+2026-11-09T09:25:16.2015444Z # Subtest: every registered hull resolves the inspected dimensions and pivots of its actual catalogue source
+2026-11-09T09:25:16.2016647Z ok 178 - every registered hull resolves the inspected dimensions and pivots of its actual catalogue source
+2026-11-09T09:25:16.2017349Z   ---
+2026-11-09T09:25:16.2017603Z   duration_ms: 1.139836
+2026-11-09T09:25:16.2018216Z   type: 'test'
+2026-11-09T09:25:16.2018511Z   ...
+2026-11-09T09:25:16.2019354Z # Subtest: every transformed hull socket produces a forward-only downward pod path with a correctly oriented carrier
+2026-11-09T09:25:16.2020648Z ok 179 - every transformed hull socket produces a forward-only downward pod path with a correctly oriented carrier
+2026-11-09T09:25:16.2021387Z   ---
+2026-11-09T09:25:16.2021677Z   duration_ms: 13.683929
+2026-11-09T09:25:16.2022022Z   type: 'test'
+2026-11-09T09:25:16.2022321Z   ...
+2026-11-09T09:25:16.2023607Z # Subtest: all eight campaign globes use their inspected disk bounds without including the surrounding opaque plate
+2026-11-09T09:25:16.2024791Z ok 180 - all eight campaign globes use their inspected disk bounds without including the surrounding opaque plate
+2026-11-09T09:25:16.2025294Z   ---
+2026-11-09T09:25:16.2025510Z   duration_ms: 0.557315
+2026-11-09T09:25:16.2025770Z   type: 'test'
+2026-11-09T09:25:16.2025980Z   ...
+2026-11-09T09:25:16.2026517Z # Subtest: surface insertion keeps the selected ship on one continuous deorbit path instead of releasing a capsule
+2026-11-09T09:25:16.2027301Z ok 181 - surface insertion keeps the selected ship on one continuous deorbit path instead of releasing a capsule
+2026-11-09T09:25:16.2027764Z   ---
+2026-11-09T09:25:16.2027960Z   duration_ms: 0.367781
+2026-11-09T09:25:16.2028186Z   type: 'test'
+2026-11-09T09:25:16.2028390Z   ...
+2026-11-09T09:25:16.2028827Z # Subtest: each companion capsule launches from the real moving carrier socket at its own time
+2026-11-09T09:25:16.2029483Z ok 182 - each companion capsule launches from the real moving carrier socket at its own time
+2026-11-09T09:25:16.2029894Z   ---
+2026-11-09T09:25:16.2030096Z   duration_ms: 16.106651
+2026-11-09T09:25:16.2030325Z   type: 'test'
+2026-11-09T09:25:16.2030522Z   ...
+2026-11-09T09:25:16.2031158Z # Subtest: every admissible ship lands on its inspected alpha contact with its exit and shadow registered after reflection
+2026-11-09T09:25:16.2033484Z ok 183 - every admissible ship lands on its inspected alpha contact with its exit and shadow registered after reflection
+2026-11-09T09:25:16.2034282Z   ---
+2026-11-09T09:25:16.2034497Z   duration_ms: 1.743848
+2026-11-09T09:25:16.2034726Z   type: 'test'
+2026-11-09T09:25:16.2034927Z   ...
+2026-11-09T09:25:16.2035429Z # Subtest: controlled landing loses speed toward contact and reduced motion never shifts the parked hull
+2026-11-09T09:25:16.2036153Z ok 184 - controlled landing loses speed toward contact and reduced motion never shifts the parked hull
+2026-11-09T09:25:16.2036588Z   ---
+2026-11-09T09:25:16.2036791Z   duration_ms: 0.450138
+2026-11-09T09:25:16.2037011Z   type: 'test'
+2026-11-09T09:25:16.2037206Z   ...
+2026-11-09T09:25:17.2448396Z # Subtest: an asset completion between renders cannot let the old loading frame pause a fresh arrival
+2026-11-09T09:25:17.2449700Z ok 185 - an asset completion between renders cannot let the old loading frame pause a fresh arrival
+2026-11-09T09:25:17.2450435Z   ---
+2026-11-09T09:25:17.2450908Z   duration_ms: 23.05072
+2026-11-09T09:25:17.2451271Z   type: 'test'
+2026-11-09T09:25:17.2451562Z   ...
+2026-11-09T09:25:17.2634953Z # Subtest: the committed startup gate respects pause, suspension, visibility and an active storage write
+2026-11-09T09:25:17.2635935Z     # Subtest: paused
+2026-11-09T09:25:17.2636400Z     ok 1 - paused
+2026-11-09T09:25:17.2636793Z       ---
+2026-11-09T09:25:17.2637218Z       duration_ms: 18.426491
+2026-11-09T09:25:17.2637611Z       type: 'test'
+2026-11-09T09:25:17.2637928Z       ...
+2026-11-09T09:25:17.2793580Z     # Subtest: suspended
+2026-11-09T09:25:17.2797563Z     ok 2 - suspended
+2026-11-09T09:25:17.2824147Z       ---
+2026-11-09T09:25:17.2831175Z       duration_ms: 16.985028
+2026-11-09T09:25:17.2831677Z       type: 'test'
+2026-11-09T09:25:17.2832097Z       ...
+2026-11-09T09:25:17.2987144Z     # Subtest: hidden
+2026-11-09T09:25:17.2987716Z     ok 3 - hidden
+2026-11-09T09:25:17.2988179Z       ---
+2026-11-09T09:25:17.2988593Z       duration_ms: 20.080507
+2026-11-09T09:25:17.2989506Z       type: 'test'
+2026-11-09T09:25:17.2989772Z       ...
+2026-11-09T09:25:17.3116712Z     # Subtest: checkpointBlocked
+2026-11-09T09:25:17.3117246Z     ok 4 - checkpointBlocked
+2026-11-09T09:25:17.3117824Z       ---
+2026-11-09T09:25:17.3118242Z       duration_ms: 12.386374
+2026-11-09T09:25:17.3118614Z       type: 'test'
+2026-11-09T09:25:17.3118937Z       ...
+2026-11-09T09:25:17.3119210Z     1..4
+2026-11-09T09:25:17.3119963Z ok 186 - the committed startup gate respects pause, suspension, visibility and an active storage write
+2026-11-09T09:25:17.3120660Z   ---
+2026-11-09T09:25:17.3120889Z   duration_ms: 69.039798
+2026-11-09T09:25:17.3121113Z   type: 'test'
+2026-11-09T09:25:17.3121314Z   ...
+2026-11-09T09:25:17.3247741Z # Subtest: a refused initial checkpoint remains paused with its real error and is not retried automatically
+2026-11-09T09:25:17.3248951Z ok 187 - a refused initial checkpoint remains paused with its real error and is not retried automatically
+2026-11-09T09:25:17.3274215Z   ---
+2026-11-09T09:25:17.3275065Z   duration_ms: 12.892233
+2026-11-09T09:25:17.3275445Z   type: 'test'
+2026-11-09T09:25:17.3275728Z   ...
+2026-11-09T09:25:17.3344182Z # Subtest: actual visibility loss still pauses the committed running sequence
+2026-11-09T09:25:17.3345190Z ok 188 - actual visibility loss still pauses the committed running sequence
+2026-11-09T09:25:17.3345821Z   ---
+2026-11-09T09:25:17.3346147Z   duration_ms: 15.134013
+2026-11-09T09:25:17.3346515Z   type: 'test'
+2026-11-09T09:25:17.3346822Z   ...
+2026-11-09T09:25:18.4557959Z # Subtest: each destination preloads its complete six-part material family and both registered lights
+2026-11-09T09:25:18.4559429Z ok 189 - each destination preloads its complete six-part material family and both registered lights
+2026-11-09T09:25:18.4584201Z   ---
+2026-11-09T09:25:18.4601928Z   duration_ms: 3.219598
+2026-11-09T09:25:18.4602599Z   type: 'test'
+2026-11-09T09:25:18.4608580Z   ...
+2026-11-09T09:25:21.9013409Z # Subtest: calibration is tied to all 50 exact source PNGs and same-size lossless runtime exports
+2026-11-09T09:25:21.9021142Z ok 190 - calibration is tied to all 50 exact source PNGs and same-size lossless runtime exports
+2026-11-09T09:25:21.9021800Z   ---
+2026-11-09T09:25:21.9022219Z   duration_ms: 3441.477597
+2026-11-09T09:25:21.9022655Z   type: 'test'
+2026-11-09T09:25:21.9023036Z   ...
+2026-11-09T09:25:21.9024338Z # Subtest: impact and retombée envelopes overlap once, end before egress, and replay deterministically
+2026-11-09T09:25:21.9085876Z ok 191 - impact and retombée envelopes overlap once, end before egress, and replay deterministically
+2026-11-09T09:25:21.9113797Z   ---
+2026-11-09T09:25:21.9135393Z   duration_ms: 1.080914
+2026-11-09T09:25:21.9135813Z   type: 'test'
+2026-11-09T09:25:21.9136109Z   ...
+2026-11-09T09:25:21.9136599Z # Subtest: the ship washes the actual floor before setdown and stops before disembarkation
+2026-11-09T09:25:21.9137245Z ok 192 - the ship washes the actual floor before setdown and stops before disembarkation
+2026-11-09T09:25:21.9137712Z   ---
+2026-11-09T09:25:21.9137925Z   duration_ms: 0.139748
+2026-11-09T09:25:21.9138154Z   type: 'test'
+2026-11-09T09:25:21.9138362Z   ...
+2026-11-09T09:25:21.9138812Z # Subtest: reduced motion and invalid times cannot spawn transient particles or footprint bursts
+2026-11-09T09:25:21.9139478Z ok 193 - reduced motion and invalid times cannot spawn transient particles or footprint bursts
+2026-11-09T09:25:21.9139904Z   ---
+2026-11-09T09:25:21.9140101Z   duration_ms: 0.389521
+2026-11-09T09:25:21.9140328Z   type: 'test'
+2026-11-09T09:25:21.9140525Z   ...
+2026-11-09T09:25:21.9141016Z # Subtest: every material fragment keeps its audited trajectory, source variant, and sound contact time
+2026-11-09T09:25:21.9141740Z ok 194 - every material fragment keeps its audited trajectory, source variant, and sound contact time
+2026-11-09T09:25:21.9142158Z   ---
+2026-11-09T09:25:21.9142361Z   duration_ms: 7.979623
+2026-11-09T09:25:21.9142594Z   type: 'test'
+2026-11-09T09:25:21.9142790Z   ...
+2026-11-09T09:25:23.3349677Z # Subtest: rotated support encloses the actual significant-alpha pixels for all 16 fragment sources
+2026-11-09T09:25:23.3351151Z ok 195 - rotated support encloses the actual significant-alpha pixels for all 16 fragment sources
+2026-11-09T09:25:23.3351887Z   ---
+2026-11-09T09:25:23.3352212Z   duration_ms: 591.324503
+2026-11-09T09:25:23.3352581Z   type: 'test'
+2026-11-09T09:25:23.3352891Z   ...
+2026-11-09T09:25:23.3353822Z # Subtest: foot plumes stay at their contact location while the actor continues moving in either direction
+2026-11-09T09:25:23.3354930Z ok 196 - foot plumes stay at their contact location while the actor continues moving in either direction
+2026-11-09T09:25:23.3355514Z   ---
+2026-11-09T09:25:23.3355799Z   duration_ms: 1.053865
+2026-11-09T09:25:23.3356147Z   type: 'test'
+2026-11-09T09:25:23.3356425Z   ...
+2026-11-09T09:25:23.3357038Z # Subtest: all trio foot contacts match existing audio cue times, including a level hull threshold
+2026-11-09T09:25:23.3358061Z ok 197 - all trio foot contacts match existing audio cue times, including a level hull threshold
+2026-11-09T09:25:23.3358644Z   ---
+2026-11-09T09:25:23.3358919Z   duration_ms: 2.290522
+2026-11-09T09:25:23.3359232Z   type: 'test'
+2026-11-09T09:25:23.3359520Z   ...
+2026-11-09T09:25:23.3360254Z # Subtest: the real component renders the new material families in each biome and preserves ship/capsule separation
+2026-11-09T09:25:23.3361524Z ok 198 - the real component renders the new material families in each biome and preserves ship/capsule separation
+2026-11-09T09:25:23.3362251Z   ---
+2026-11-09T09:25:23.3362493Z   duration_ms: 810.3867
+2026-11-09T09:25:23.3362781Z   type: 'test'
+2026-11-09T09:25:23.3363275Z   ...
+2026-11-09T09:25:23.3363984Z # Subtest: trio effects use each delayed contact and reduced motion never starts a second clock
+2026-11-09T09:25:23.3364962Z ok 199 - trio effects use each delayed contact and reduced motion never starts a second clock
+2026-11-09T09:25:23.3365699Z   ---
+2026-11-09T09:25:23.3365912Z   duration_ms: 28.804364
+2026-11-09T09:25:23.3366163Z   type: 'test'
+2026-11-09T09:25:23.3366381Z   ...
+2026-11-09T09:25:23.6490895Z # Subtest: the native acquisition protocol requires all four fresh corners and preserves every rejected source
+2026-11-09T09:25:23.6493220Z ok 200 - the native acquisition protocol requires all four fresh corners and preserves every rejected source
+2026-11-09T09:25:23.6493809Z   ---
+2026-11-09T09:25:23.6494043Z   duration_ms: 244.732945
+2026-11-09T09:25:23.6494307Z   type: 'test'
+2026-11-09T09:25:23.6494526Z   ...
+2026-11-09T09:25:25.1076819Z # Subtest: the eight continuous shots last exactly 62 seconds with no gap or overlap
+2026-11-09T09:25:25.1099728Z ok 201 - the eight continuous shots last exactly 62 seconds with no gap or overlap
+2026-11-09T09:25:25.1100589Z   ---
+2026-11-09T09:25:25.1100995Z   duration_ms: 0.966004
+2026-11-09T09:25:25.1101433Z   type: 'test'
+2026-11-09T09:25:25.1101813Z   ...
+2026-11-09T09:25:25.1102536Z # Subtest: each shot starts inclusively and yields to the next at its exact end
+2026-11-09T09:25:25.1103629Z ok 202 - each shot starts inclusively and yields to the next at its exact end
+2026-11-09T09:25:25.1104291Z   ---
+2026-11-09T09:25:25.1104676Z   duration_ms: 0.317735
+2026-11-09T09:25:25.1114132Z   type: 'test'
+2026-11-09T09:25:25.1114550Z   ...
+2026-11-09T09:25:25.1115225Z # Subtest: invalid and out-of-range presentation times stay within the storyboard
+2026-11-09T09:25:25.1116166Z ok 203 - invalid and out-of-range presentation times stay within the storyboard
+2026-11-09T09:25:25.1116761Z   ---
+2026-11-09T09:25:25.1117066Z   duration_ms: 0.121475
+2026-11-09T09:25:25.1117416Z   type: 'test'
+2026-11-09T09:25:25.1117725Z   ...
+2026-11-09T09:25:25.1118429Z # Subtest: all campaign missions resolve their own planet, biome, spawn and encounter seed
+2026-11-09T09:25:25.1119494Z ok 204 - all campaign missions resolve their own planet, biome, spawn and encounter seed
+2026-11-09T09:25:25.1120154Z   ---
+2026-11-09T09:25:25.1120441Z   duration_ms: 1.20495
+2026-11-09T09:25:25.1143596Z   type: 'test'
+2026-11-09T09:25:25.1144314Z   ...
+2026-11-09T09:25:25.1144910Z # Subtest: each owned-catalogue hull keeps its real profile path during arrival
+2026-11-09T09:25:25.1145799Z ok 205 - each owned-catalogue hull keeps its real profile path during arrival
+2026-11-09T09:25:25.1146323Z   ---
+2026-11-09T09:25:25.1146621Z   duration_ms: 1.175022
+2026-11-09T09:25:25.1146940Z   type: 'test'
+2026-11-09T09:25:25.1147216Z   ...
+2026-11-09T09:25:25.1147782Z # Subtest: missing legacy arrival is absent, not a new run invented by normalization
+2026-11-09T09:25:25.1148624Z ok 206 - missing legacy arrival is absent, not a new run invented by normalization
+2026-11-09T09:25:25.1149142Z   ---
+2026-11-09T09:25:25.1149410Z   duration_ms: 0.149372
+2026-11-09T09:25:25.1149731Z   type: 'test'
+2026-11-09T09:25:25.1150001Z   ...
+2026-11-09T09:25:25.1150620Z # Subtest: constructor refuses foreign content identifiers and unbounded identity or seed
+2026-11-09T09:25:25.1151588Z ok 207 - constructor refuses foreign content identifiers and unbounded identity or seed
+2026-11-09T09:25:25.1152133Z   ---
+2026-11-09T09:25:25.1152365Z   duration_ms: 0.636932
+2026-11-09T09:25:25.1152631Z   type: 'test'
+2026-11-09T09:25:25.1152853Z   ...
+2026-11-09T09:25:25.1153603Z # Subtest: future versions are refused without normalizing their data away
+2026-11-09T09:25:25.1154145Z ok 208 - future versions are refused without normalizing their data away
+2026-11-09T09:25:25.1154495Z   ---
+2026-11-09T09:25:25.1154697Z   duration_ms: 0.127213
+2026-11-09T09:25:25.1154922Z   type: 'test'
+2026-11-09T09:25:25.1155126Z   ...
+2026-11-09T09:25:25.1155507Z # Subtest: owner and run checks cannot attach another campaign or run to the montage
+2026-11-09T09:25:25.1156061Z ok 209 - owner and run checks cannot attach another campaign or run to the montage
+2026-11-09T09:25:25.1156419Z   ---
+2026-11-09T09:25:25.1156607Z   duration_ms: 0.29417
+2026-11-09T09:25:25.1156819Z   type: 'test'
+2026-11-09T09:25:25.1157243Z   ...
+2026-11-09T09:25:25.1157630Z # Subtest: inspection rejects swapped destination, title, biome, seed and spawn
+2026-11-09T09:25:25.1158174Z ok 210 - inspection rejects swapped destination, title, biome, seed and spawn
+2026-11-09T09:25:25.1158530Z   ---
+2026-11-09T09:25:25.1158735Z   duration_ms: 0.42201
+2026-11-09T09:25:25.1158953Z   type: 'test'
+2026-11-09T09:25:25.1159145Z   ...
+2026-11-09T09:25:25.1159554Z # Subtest: inspection rejects executable properties, custom prototypes and extra payloads
+2026-11-09T09:25:25.1160157Z ok 211 - inspection rejects executable properties, custom prototypes and extra payloads
+2026-11-09T09:25:25.1160543Z   ---
+2026-11-09T09:25:25.1160736Z   duration_ms: 0.238318
+2026-11-09T09:25:25.1160948Z   type: 'test'
+2026-11-09T09:25:25.1161135Z   ...
+2026-11-09T09:25:25.1161502Z # Subtest: inspection bounds timeline and enforces consistent handoff receipts
+2026-11-09T09:25:25.1162032Z ok 212 - inspection bounds timeline and enforces consistent handoff receipts
+2026-11-09T09:25:25.1162386Z   ---
+2026-11-09T09:25:25.1162578Z   duration_ms: 0.251961
+2026-11-09T09:25:25.1162800Z   type: 'test'
+2026-11-09T09:25:25.1162989Z   ...
+2026-11-09T09:25:25.1164589Z # Subtest: serialization round trip preserves the immutable launch identity
+2026-11-09T09:25:25.1174968Z ok 213 - serialization round trip preserves the immutable launch identity
+2026-11-09T09:25:25.1175593Z   ---
+2026-11-09T09:25:25.1175909Z   duration_ms: 0.716635
+2026-11-09T09:25:25.1176255Z   type: 'test'
+2026-11-09T09:25:25.1176563Z   ...
+2026-11-09T09:25:25.1177368Z # Subtest: active time advances only while playing and does not mutate input state
+2026-11-09T09:25:25.1178325Z ok 214 - active time advances only while playing and does not mutate input state
+2026-11-09T09:25:25.1178922Z   ---
+2026-11-09T09:25:25.1179233Z   duration_ms: 0.143289
+2026-11-09T09:25:25.1179579Z   type: 'test'
+2026-11-09T09:25:25.1179870Z   ...
+2026-11-09T09:25:25.1195206Z # Subtest: bad deltas cannot advance or rewind arrival time
+2026-11-09T09:25:25.1196413Z ok 215 - bad deltas cannot advance or rewind arrival time
+2026-11-09T09:25:25.1197454Z   ---
+2026-11-09T09:25:25.1197988Z   duration_ms: 0.076158
+2026-11-09T09:25:25.1198976Z   type: 'test'
+2026-11-09T09:25:25.1199251Z   ...
+2026-11-09T09:25:25.1199759Z # Subtest: short frame drops are bounded and a long suspension pauses without consuming time
+2026-11-09T09:25:25.1203006Z ok 216 - short frame drops are bounded and a long suspension pauses without consuming time
+2026-11-09T09:25:25.1203896Z   ---
+2026-11-09T09:25:25.1204297Z   duration_ms: 0.066151
+2026-11-09T09:25:25.1204705Z   type: 'test'
+2026-11-09T09:25:25.1205143Z   ...
+2026-11-09T09:25:25.1205927Z # Subtest: reload restarts each current shot paused while retaining the exact run and mission
+2026-11-09T09:25:25.1206831Z ok 217 - reload restarts each current shot paused while retaining the exact run and mission
+2026-11-09T09:25:25.1207368Z   ---
+2026-11-09T09:25:25.1207847Z   duration_ms: 0.153105
+2026-11-09T09:25:25.1208358Z   type: 'test'
+2026-11-09T09:25:25.1208714Z   ...
+2026-11-09T09:25:25.1209462Z # Subtest: natural ending and skipping converge on one handoff state without a gameplay effect
+2026-11-09T09:25:25.1210534Z ok 218 - natural ending and skipping converge on one handoff state without a gameplay effect
+2026-11-09T09:25:25.1211148Z   ---
+2026-11-09T09:25:25.1211447Z   duration_ms: 0.137763
+2026-11-09T09:25:25.1211774Z   type: 'test'
+2026-11-09T09:25:25.1212095Z   ...
+2026-11-09T09:25:25.1212510Z # Subtest: skip is available from all eight shots and before visual preload finishes
+2026-11-09T09:25:25.1213294Z ok 219 - skip is available from all eight shots and before visual preload finishes
+2026-11-09T09:25:25.1213795Z   ---
+2026-11-09T09:25:25.1214005Z   duration_ms: 0.163931
+2026-11-09T09:25:25.1214245Z   type: 'test'
+2026-11-09T09:25:25.1214450Z   ...
+2026-11-09T09:25:25.1214846Z # Subtest: early natural completion is refused and completed arrivals never replay
+2026-11-09T09:25:25.1215439Z ok 220 - early natural completion is refused and completed arrivals never replay
+2026-11-09T09:25:25.1216050Z   ---
+2026-11-09T09:25:25.1216262Z   duration_ms: 0.0756
+2026-11-09T09:25:25.1216509Z   type: 'test'
+2026-11-09T09:25:25.1216724Z   ...
+2026-11-09T09:25:25.1217147Z # Subtest: failed durable handoff can retry the same run, reason and presentation time
+2026-11-09T09:25:25.1217764Z ok 221 - failed durable handoff can retry the same run, reason and presentation time
+2026-11-09T09:25:25.1218158Z   ---
+2026-11-09T09:25:25.1218362Z   duration_ms: 0.100453
+2026-11-09T09:25:25.1218591Z   type: 'test'
+2026-11-09T09:25:25.1218798Z   ...
+2026-11-09T09:25:25.1219123Z # Subtest: only pending handoffs can be acknowledged or failed
+2026-11-09T09:25:25.1219572Z ok 222 - only pending handoffs can be acknowledged or failed
+2026-11-09T09:25:25.1219889Z   ---
+2026-11-09T09:25:25.1220085Z   duration_ms: 0.066129
+2026-11-09T09:25:25.1220314Z   type: 'test'
+2026-11-09T09:25:25.1220513Z   ...
+2026-11-09T09:25:25.1220931Z # Subtest: rendered arrival identifies real destination, hull, selected rig and spawn
+2026-11-09T09:25:25.1221550Z ok 223 - rendered arrival identifies real destination, hull, selected rig and spawn
+2026-11-09T09:25:25.1221934Z   ---
+2026-11-09T09:25:25.1222137Z   duration_ms: 445.702205
+2026-11-09T09:25:25.1222371Z   type: 'test'
+2026-11-09T09:25:25.1222564Z   ...
+2026-11-09T09:25:25.1222957Z # Subtest: reduced-motion view keeps the same elapsed time and mission contract
+2026-11-09T09:25:25.1223810Z ok 224 - reduced-motion view keeps the same elapsed time and mission contract
+2026-11-09T09:25:25.1224179Z   ---
+2026-11-09T09:25:25.1224378Z   duration_ms: 12.49945
+2026-11-09T09:25:25.1224601Z   type: 'test'
+2026-11-09T09:25:25.1224793Z   ...
+2026-11-09T09:25:25.8762229Z # Subtest: legacy absence means solo capsule; explicit malformed choices are refused
+2026-11-09T09:25:25.8763857Z ok 225 - legacy absence means solo capsule; explicit malformed choices are refused
+2026-11-09T09:25:25.8764511Z   ---
+2026-11-09T09:25:25.8765758Z   duration_ms: 1.647435
+2026-11-09T09:25:25.8766112Z   type: 'test'
+2026-11-09T09:25:25.8766877Z   ...
+2026-11-09T09:25:25.8767709Z # Subtest: landing raises both suspicion and actual patrol budget for either party size
+2026-11-09T09:25:25.8769346Z ok 226 - landing raises both suspicion and actual patrol budget for either party size
+2026-11-09T09:25:25.8769980Z   ---
+2026-11-09T09:25:25.8770309Z   duration_ms: 0.261401
+2026-11-09T09:25:25.8770667Z   type: 'test'
+2026-11-09T09:25:25.8771114Z   ...
+2026-11-09T09:25:25.8771913Z # Subtest: individual pods, mother ships and fleet identities cannot land as a personal surface ship
+2026-11-09T09:25:25.8773359Z ok 227 - individual pods, mother ships and fleet identities cannot land as a personal surface ship
+2026-11-09T09:25:25.8774172Z   ---
+2026-11-09T09:25:25.8774597Z   duration_ms: 1.891231
+2026-11-09T09:25:25.8775043Z   type: 'test'
+2026-11-09T09:25:25.8775450Z   ...
+2026-11-09T09:25:25.8776232Z # Subtest: every allowed hull has an inspected, bounded ground contact below its exit
+2026-11-09T09:25:25.8777346Z ok 228 - every allowed hull has an inspected, bounded ground contact below its exit
+2026-11-09T09:25:25.8778033Z   ---
+2026-11-09T09:25:25.8778429Z   duration_ms: 0.399611
+2026-11-09T09:25:25.8778788Z   type: 'test'
+2026-11-09T09:25:25.8779124Z   ...
+2026-11-09T09:25:25.8779817Z # Subtest: recruitment grants no automatic members and both actual assignments are required
+2026-11-09T09:25:25.8780875Z ok 229 - recruitment grants no automatic members and both actual assignments are required
+2026-11-09T09:25:25.8781506Z   ---
+2026-11-09T09:25:25.8781770Z   duration_ms: 7.164019
+2026-11-09T09:25:25.8782103Z   type: 'test'
+2026-11-09T09:25:25.8782393Z   ...
+2026-11-09T09:25:25.8783425Z # Subtest: roster inspection refuses foreign owners, duplicate identities, future versions and invented availability
+2026-11-09T09:25:25.8784777Z ok 230 - roster inspection refuses foreign owners, duplicate identities, future versions and invented availability
+2026-11-09T09:25:25.8785813Z   ---
+2026-11-09T09:25:25.8786125Z   duration_ms: 0.294607
+2026-11-09T09:25:25.8786487Z   type: 'test'
+2026-11-09T09:25:25.8786762Z   ...
+2026-11-09T09:25:25.8787416Z # Subtest: real extraction consequences are bound to the live run and applied only once
+2026-11-09T09:25:25.8788448Z ok 231 - real extraction consequences are bound to the live run and applied only once
+2026-11-09T09:25:25.8789085Z   ---
+2026-11-09T09:25:25.8789417Z   duration_ms: 0.980528
+2026-11-09T09:25:25.8789757Z   type: 'test'
+2026-11-09T09:25:25.8790067Z   ...
+2026-11-09T09:25:25.8790783Z # Subtest: reassigning or recruiting again cannot restore injured or missing companions
+2026-11-09T09:25:25.8791855Z ok 232 - reassigning or recruiting again cannot restore injured or missing companions
+2026-11-09T09:25:25.8792453Z   ---
+2026-11-09T09:25:25.8792743Z   duration_ms: 0.312802
+2026-11-09T09:25:25.8796283Z   type: 'test'
+2026-11-09T09:25:25.8796705Z   ...
+2026-11-09T09:25:25.8797328Z # Subtest: clan care spends real marks and separates rescue from medical recovery
+2026-11-09T09:25:25.8798227Z ok 233 - clan care spends real marks and separates rescue from medical recovery
+2026-11-09T09:25:25.8798747Z   ---
+2026-11-09T09:25:25.8799014Z   duration_ms: 0.70967
+2026-11-09T09:25:25.8799327Z   type: 'test'
+2026-11-09T09:25:25.8799608Z   ...
+2026-11-09T09:25:25.8800171Z # Subtest: all four plans survive durable save, portable export and full archive
+2026-11-09T09:25:25.8800951Z ok 234 - all four plans survive durable save, portable export and full archive
+2026-11-09T09:25:25.8801413Z   ---
+2026-11-09T09:25:25.8801671Z   duration_ms: 54.946347
+2026-11-09T09:25:25.8801993Z   type: 'test'
+2026-11-09T09:25:25.8802264Z   ...
+2026-11-09T09:25:25.8802867Z # Subtest: legacy arrival archives do not gain a team, plan or roster during normalization
+2026-11-09T09:25:25.8804056Z ok 235 - legacy arrival archives do not gain a team, plan or roster during normalization
+2026-11-09T09:25:25.8804671Z   ---
+2026-11-09T09:25:25.8804958Z   duration_ms: 1.768289
+2026-11-09T09:25:25.8805276Z   type: 'test'
+2026-11-09T09:25:25.8805554Z   ...
+2026-11-09T09:25:25.8806371Z # Subtest: skipping or pausing preserves the exact frozen plan and group
+2026-11-09T09:25:25.8807114Z ok 236 - skipping or pausing preserves the exact frozen plan and group
+2026-11-09T09:25:25.8807625Z   ---
+2026-11-09T09:25:25.8807915Z   duration_ms: 0.561105
+2026-11-09T09:25:25.8808236Z   type: 'test'
+2026-11-09T09:25:25.8808517Z   ...
+2026-11-09T09:25:25.8809227Z # Subtest: incompatible plan and roster bytes are rejected before they can replace the campaign
+2026-11-09T09:25:25.8810285Z ok 237 - incompatible plan and roster bytes are rejected before they can replace the campaign
+2026-11-09T09:25:25.8810880Z   ---
+2026-11-09T09:25:25.8811168Z   duration_ms: 2.462722
+2026-11-09T09:25:25.8811488Z   type: 'test'
+2026-11-09T09:25:25.8811765Z   ...
+2026-11-09T09:25:25.8812396Z # Subtest: high honor cannot substitute for the actual Blooded rite in a prologue campaign
+2026-11-09T09:25:25.8813562Z ok 238 - high honor cannot substitute for the actual Blooded rite in a prologue campaign
+2026-11-09T09:25:25.8814153Z   ---
+2026-11-09T09:25:25.8814446Z   duration_ms: 0.976366
+2026-11-09T09:25:25.8814762Z   type: 'test'
+2026-11-09T09:25:25.8815036Z   ...
+2026-11-09T09:25:25.8815702Z # Subtest: campaign triad preserves original identities and uses distinct modular appearances
+2026-11-09T09:25:25.8816748Z ok 239 - campaign triad preserves original identities and uses distinct modular appearances
+2026-11-09T09:25:25.8817377Z   ---
+2026-11-09T09:25:25.8817655Z   duration_ms: 0.246416
+2026-11-09T09:25:25.8817998Z   type: 'test'
+2026-11-09T09:25:25.8818282Z   ...
+2026-11-09T09:25:25.9995113Z # Subtest: remote pod events each dispatch one optional authored sound without a duplicate synthesized voice
+2026-11-09T09:25:26.0024947Z ok 240 - remote pod events each dispatch one optional authored sound without a duplicate synthesized voice
+2026-11-09T09:25:26.0025774Z   ---
+2026-11-09T09:25:26.0026090Z   duration_ms: 2.609643
+2026-11-09T09:25:26.0026931Z   type: 'test'
+2026-11-09T09:25:26.0027221Z   ...
+2026-11-09T09:25:26.0028002Z # Subtest: the pod fallback produces distinct arm, cancel and blast sounds on the existing effects clock
+2026-11-09T09:25:26.0029187Z ok 241 - the pod fallback produces distinct arm, cancel and blast sounds on the existing effects clock
+2026-11-09T09:25:26.0029873Z   ---
+2026-11-09T09:25:26.0030180Z   duration_ms: 0.628399
+2026-11-09T09:25:26.0030532Z   type: 'test'
+2026-11-09T09:25:26.0030878Z   ...
+2026-11-09T09:25:26.0031567Z # Subtest: pod synthesis stays silent when the existing audio transport is not ready
+2026-11-09T09:25:26.0032620Z ok 242 - pod synthesis stays silent when the existing audio transport is not ready
+2026-11-09T09:25:26.0033458Z   ---
+2026-11-09T09:25:26.0033781Z   duration_ms: 0.283144
+2026-11-09T09:25:26.0034143Z   type: 'test'
+2026-11-09T09:25:26.0034935Z   ...
+2026-11-09T09:25:26.8008640Z # Subtest: V62 canonical and renamed original mask selections roundtrip without losing save identity
+2026-11-09T09:25:26.8010309Z ok 243 - V62 canonical and renamed original mask selections roundtrip without losing save identity
+2026-11-09T09:25:26.8011434Z   ---
+2026-11-09T09:25:26.8011953Z   duration_ms: 25.201091
+2026-11-09T09:25:26.8012483Z   type: 'test'
+2026-11-09T09:25:26.8012941Z   ...
+2026-11-09T09:25:26.8014000Z # Subtest: v1 saves migrate to the current schema without losing legacy trophy data
+2026-11-09T09:25:26.8015208Z ok 244 - v1 saves migrate to the current schema without losing legacy trophy data
+2026-11-09T09:25:26.8016016Z   ---
+2026-11-09T09:25:26.8016498Z   duration_ms: 1.771035
+2026-11-09T09:25:26.8017036Z   type: 'test'
+2026-11-09T09:25:26.8017469Z   ...
+2026-11-09T09:25:26.8018204Z # Subtest: keyboard bindings persist custom keys and repair malformed profiles
+2026-11-09T09:25:26.8019302Z ok 245 - keyboard bindings persist custom keys and repair malformed profiles
+2026-11-09T09:25:26.8020024Z   ---
+2026-11-09T09:25:26.8020453Z   duration_ms: 2.143859
+2026-11-09T09:25:26.8020946Z   type: 'test'
+2026-11-09T09:25:26.8021402Z   ...
+2026-11-09T09:25:26.8031243Z # Subtest: campaign load and portable import retain old custom X controls when the pod action is added
+2026-11-09T09:25:26.8032690Z ok 246 - campaign load and portable import retain old custom X controls when the pod action is added
+2026-11-09T09:25:26.8033781Z   ---
+2026-11-09T09:25:26.8034314Z   duration_ms: 6.987161
+2026-11-09T09:25:26.8034834Z   type: 'test'
+2026-11-09T09:25:26.8035290Z   ...
+2026-11-09T09:25:26.8036105Z # Subtest: bestiary discoveries normalize to unique authored V7 and V8 roster ids
+2026-11-09T09:25:26.8037237Z ok 247 - bestiary discoveries normalize to unique authored V7 and V8 roster ids
+2026-11-09T09:25:26.8037970Z   ---
+2026-11-09T09:25:26.8038402Z   duration_ms: 0.869052
+2026-11-09T09:25:26.8038885Z   type: 'test'
+2026-11-09T09:25:26.8039317Z   ...
+2026-11-09T09:25:26.8040124Z # Subtest: legacy saves derive defeated V8 bosses without replacing an explicit discovery list
+2026-11-09T09:25:26.8041403Z ok 248 - legacy saves derive defeated V8 bosses without replacing an explicit discovery list
+2026-11-09T09:25:26.8042231Z   ---
+2026-11-09T09:25:26.8042676Z   duration_ms: 0.889097
+2026-11-09T09:25:26.8043305Z   type: 'test'
+2026-11-09T09:25:26.8043768Z   ...
+2026-11-09T09:25:26.8044592Z # Subtest: mission results persistently merge only valid bestiary discoveries
+2026-11-09T09:25:26.8045627Z ok 249 - mission results persistently merge only valid bestiary discoveries
+2026-11-09T09:25:26.8054554Z   ---
+2026-11-09T09:25:26.8078709Z   duration_ms: 2.35414
+2026-11-09T09:25:26.8094191Z   type: 'test'
+2026-11-09T09:25:26.8094784Z   ...
+2026-11-09T09:25:26.8095444Z # Subtest: v3 completion at Cinder reopens the five-mission V4 campaign extension
+2026-11-09T09:25:26.8097464Z ok 250 - v3 completion at Cinder reopens the five-mission V4 campaign extension
+2026-11-09T09:25:26.8098019Z   ---
+2026-11-09T09:25:26.8098308Z   duration_ms: 0.53312
+2026-11-09T09:25:26.8098641Z   type: 'test'
+2026-11-09T09:25:26.8098922Z   ...
+2026-11-09T09:25:26.8099842Z # Subtest: a current save cannot retain Elder before the extended story is complete
+2026-11-09T09:25:26.8100751Z ok 251 - a current save cannot retain Elder before the extended story is complete
+2026-11-09T09:25:26.8101285Z   ---
+2026-11-09T09:25:26.8101591Z   duration_ms: 0.567728
+2026-11-09T09:25:26.8101931Z   type: 'test'
+2026-11-09T09:25:26.8102269Z   ...
+2026-11-09T09:25:26.8102874Z # Subtest: Elder remains selected when final mission progress proves the unlock
+2026-11-09T09:25:26.8103990Z ok 252 - Elder remains selected when final mission progress proves the unlock
+2026-11-09T09:25:26.8104576Z   ---
+2026-11-09T09:25:26.8104864Z   duration_ms: 0.71116
+2026-11-09T09:25:26.8105201Z   type: 'test'
+2026-11-09T09:25:26.8105500Z   ...
+2026-11-09T09:25:26.8106178Z # Subtest: a corrupted completed status without a completion cannot unlock the campaign
+2026-11-09T09:25:26.8107209Z ok 253 - a corrupted completed status without a completion cannot unlock the campaign
+2026-11-09T09:25:26.8107824Z   ---
+2026-11-09T09:25:26.8108152Z   duration_ms: 0.609189
+2026-11-09T09:25:26.8108502Z   type: 'test'
+2026-11-09T09:25:26.8108820Z   ...
+2026-11-09T09:25:26.8109500Z # Subtest: appearance normalization accepts an unmasked hunter and repairs invalid ids
+2026-11-09T09:25:26.8110494Z ok 254 - appearance normalization accepts an unmasked hunter and repairs invalid ids
+2026-11-09T09:25:26.8111109Z   ---
+2026-11-09T09:25:26.8111410Z   duration_ms: 0.701303
+2026-11-09T09:25:26.8111749Z   type: 'test'
+2026-11-09T09:25:26.8112043Z   ...
+2026-11-09T09:25:26.8112596Z # Subtest: every production hunter preset survives save normalization
+2026-11-09T09:25:26.8113516Z ok 255 - every production hunter preset survives save normalization
+2026-11-09T09:25:26.8113975Z   ---
+2026-11-09T09:25:26.8114236Z   duration_ms: 18.28817
+2026-11-09T09:25:26.8114509Z   type: 'test'
+2026-11-09T09:25:26.8114756Z   ...
+2026-11-09T09:25:26.8115264Z # Subtest: dedicated V14 biomasks survive an exact normalized save round-trip
+2026-11-09T09:25:26.8116058Z ok 256 - dedicated V14 biomasks survive an exact normalized save round-trip
+2026-11-09T09:25:26.8116779Z   ---
+2026-11-09T09:25:26.8117077Z   duration_ms: 2.292819
+2026-11-09T09:25:26.8117434Z   type: 'test'
+2026-11-09T09:25:26.8117713Z   ...
+2026-11-09T09:25:26.8118242Z # Subtest: a legendary id is downgraded to custom after any module changes
+2026-11-09T09:25:26.8119050Z ok 257 - a legendary id is downgraded to custom after any module changes
+2026-11-09T09:25:26.8119568Z   ---
+2026-11-09T09:25:26.8119853Z   duration_ms: 134.436905
+2026-11-09T09:25:26.8120187Z   type: 'test'
+2026-11-09T09:25:26.8120476Z   ...
+2026-11-09T09:25:26.8121125Z # Subtest: legacy v3 legendary saves may omit only the former optional laser color
+2026-11-09T09:25:26.8122103Z ok 258 - legacy v3 legendary saves may omit only the former optional laser color
+2026-11-09T09:25:26.8122703Z   ---
+2026-11-09T09:25:26.8123007Z   duration_ms: 0.709232
+2026-11-09T09:25:26.8123791Z   type: 'test'
+2026-11-09T09:25:26.8124078Z   ...
+2026-11-09T09:25:26.8124704Z # Subtest: every legendary playable kit survives a normalized save round-trip
+2026-11-09T09:25:26.8125581Z ok 259 - every legendary playable kit survives a normalized save round-trip
+2026-11-09T09:25:26.8126150Z   ---
+2026-11-09T09:25:26.8126455Z   duration_ms: 10.051788
+2026-11-09T09:25:26.8126812Z   type: 'test'
+2026-11-09T09:25:26.8127126Z   ...
+2026-11-09T09:25:26.8127714Z # Subtest: Scout loadouts use upgraded capacity and never fall back to Hunter
+2026-11-09T09:25:26.8128568Z ok 260 - Scout loadouts use upgraded capacity and never fall back to Hunter
+2026-11-09T09:25:26.8129125Z   ---
+2026-11-09T09:25:26.8129422Z   duration_ms: 0.608869
+2026-11-09T09:25:26.8129765Z   type: 'test'
+2026-11-09T09:25:26.8130071Z   ...
+2026-11-09T09:25:26.8130636Z # Subtest: a locked mission cannot accept an otherwise complete success
+2026-11-09T09:25:26.8131430Z ok 261 - a locked mission cannot accept an otherwise complete success
+2026-11-09T09:25:26.8131968Z   ---
+2026-11-09T09:25:26.8132272Z   duration_ms: 0.998712
+2026-11-09T09:25:26.8132933Z   type: 'test'
+2026-11-09T09:25:26.8133430Z   ...
+2026-11-09T09:25:26.8133980Z # Subtest: Elder success is rejected before the story is complete
+2026-11-09T09:25:26.8134719Z ok 262 - Elder success is rejected before the story is complete
+2026-11-09T09:25:26.8135223Z   ---
+2026-11-09T09:25:26.8135530Z   duration_ms: 0.901287
+2026-11-09T09:25:26.8135876Z   type: 'test'
+2026-11-09T09:25:26.8136169Z   ...
+2026-11-09T09:25:26.8136743Z # Subtest: success requires every required objective including extraction
+2026-11-09T09:25:26.8137583Z ok 263 - success requires every required objective including extraction
+2026-11-09T09:25:26.8138091Z   ---
+2026-11-09T09:25:26.8138383Z   duration_ms: 1.59245
+2026-11-09T09:25:26.8138727Z   type: 'test'
+2026-11-09T09:25:26.8139020Z   ...
+2026-11-09T09:25:26.8139491Z # Subtest: modern success requires an explicit Apex claim
+2026-11-09T09:25:26.8140163Z ok 264 - modern success requires an explicit Apex claim
+2026-11-09T09:25:26.8140623Z   ---
+2026-11-09T09:25:26.8140925Z   duration_ms: 0.939307
+2026-11-09T09:25:26.8141271Z   type: 'test'
+2026-11-09T09:25:26.8141566Z   ...
+2026-11-09T09:25:26.8142083Z # Subtest: mission claims persist separately and deduplicate only by claim id
+2026-11-09T09:25:26.8142979Z ok 265 - mission claims persist separately and deduplicate only by claim id
+2026-11-09T09:25:26.8143796Z   ---
+2026-11-09T09:25:26.8144101Z   duration_ms: 0.833216
+2026-11-09T09:25:26.8144443Z   type: 'test'
+2026-11-09T09:25:26.8144752Z   ...
+2026-11-09T09:25:26.8145347Z # Subtest: legacy mission results infer a complete claim from trophyQuality
+2026-11-09T09:25:26.8146190Z ok 266 - legacy mission results infer a complete claim from trophyQuality
+2026-11-09T09:25:26.8146738Z   ---
+2026-11-09T09:25:26.8147029Z   duration_ms: 0.564377
+2026-11-09T09:25:26.8147368Z   type: 'test'
+2026-11-09T09:25:26.8147660Z   ...
+2026-11-09T09:25:26.8148201Z # Subtest: perfect replays award renewable but bounded mastery honor
+2026-11-09T09:25:26.8148966Z ok 267 - perfect replays award renewable but bounded mastery honor
+2026-11-09T09:25:26.8149482Z   ---
+2026-11-09T09:25:26.8150019Z   duration_ms: 2.272604
+2026-11-09T09:25:26.8150371Z   type: 'test'
+2026-11-09T09:25:26.8150668Z   ...
+2026-11-09T09:25:26.8151244Z # Subtest: trophy normalization retains the newest 500 unique claim ids
+2026-11-09T09:25:26.8152060Z ok 268 - trophy normalization retains the newest 500 unique claim ids
+2026-11-09T09:25:26.8152584Z   ---
+2026-11-09T09:25:26.8152890Z   duration_ms: 2.461485
+2026-11-09T09:25:26.8153439Z   type: 'test'
+2026-11-09T09:25:26.8153743Z   ...
+2026-11-09T09:25:26.8154238Z # Subtest: trophy workshop progress survives normalization
+2026-11-09T09:25:26.8154904Z ok 269 - trophy workshop progress survives normalization
+2026-11-09T09:25:26.8155355Z   ---
+2026-11-09T09:25:26.8155633Z   duration_ms: 0.427186
+2026-11-09T09:25:26.8155969Z   type: 'test'
+2026-11-09T09:25:26.8156264Z   ...
+2026-11-09T09:25:27.5738587Z # Subtest: legacy plans and campaigns preserve their shape and receive no automatic debit
+2026-11-09T09:25:27.5739997Z ok 270 - legacy plans and campaigns preserve their shape and receive no automatic debit
+2026-11-09T09:25:27.5740807Z   ---
+2026-11-09T09:25:27.5741252Z   duration_ms: 7.831159
+2026-11-09T09:25:27.5741734Z   type: 'test'
+2026-11-09T09:25:27.5742175Z   ...
+2026-11-09T09:25:27.5743222Z # Subtest: optical approach is an explicit ship-only frozen choice, with absent and false equivalent
+2026-11-09T09:25:27.5744493Z ok 271 - optical approach is an explicit ship-only frozen choice, with absent and false equivalent
+2026-11-09T09:25:27.5745625Z   ---
+2026-11-09T09:25:27.5746091Z   duration_ms: 0.422837
+2026-11-09T09:25:27.5746587Z   type: 'test'
+2026-11-09T09:25:27.5747019Z   ...
+2026-11-09T09:25:27.5747923Z # Subtest: camouflage lowers actual presence and awareness but does not erase the arrival or engines
+2026-11-09T09:25:27.5749186Z ok 272 - camouflage lowers actual presence and awareness but does not erase the arrival or engines
+2026-11-09T09:25:27.5749910Z   ---
+2026-11-09T09:25:27.5750811Z   duration_ms: 0.251505
+2026-11-09T09:25:27.5751289Z   type: 'test'
+2026-11-09T09:25:27.5751715Z   ...
+2026-11-09T09:25:27.5752444Z # Subtest: one confirmed approach costs thirty once and keeps a separate hull budget
+2026-11-09T09:25:27.5753674Z ok 273 - one confirmed approach costs thirty once and keeps a separate hull budget
+2026-11-09T09:25:27.5754312Z   ---
+2026-11-09T09:25:27.5754712Z   duration_ms: 0.710926
+2026-11-09T09:25:27.5755166Z   type: 'test'
+2026-11-09T09:25:27.5755535Z   ...
+2026-11-09T09:25:27.5756257Z # Subtest: the safety reserve stops a third cloaked approach before any mutation
+2026-11-09T09:25:27.5757257Z ok 274 - the safety reserve stops a third cloaked approach before any mutation
+2026-11-09T09:25:27.5757928Z   ---
+2026-11-09T09:25:27.5758300Z   duration_ms: 0.316493
+2026-11-09T09:25:27.5758737Z   type: 'test'
+2026-11-09T09:25:27.5759139Z   ...
+2026-11-09T09:25:27.5760046Z # Subtest: paid recharge preserves departure receipts and refuses insufficient funds and stale double clicks
+2026-11-09T09:25:27.5761418Z ok 275 - paid recharge preserves departure receipts and refuses insufficient funds and stale double clicks
+2026-11-09T09:25:27.5762218Z   ---
+2026-11-09T09:25:27.5762624Z   duration_ms: 0.410105
+2026-11-09T09:25:27.5763225Z   type: 'test'
+2026-11-09T09:25:27.5763764Z   ...
+2026-11-09T09:25:27.5764503Z # Subtest: invalid, foreign and future ledgers are rejected rather than refilled
+2026-11-09T09:25:27.5765482Z ok 276 - invalid, foreign and future ledgers are rejected rather than refilled
+2026-11-09T09:25:27.5766111Z   ---
+2026-11-09T09:25:27.5766506Z   duration_ms: 0.606117
+2026-11-09T09:25:27.5766965Z   type: 'test'
+2026-11-09T09:25:27.5767365Z   ...
+2026-11-09T09:25:27.5768143Z # Subtest: ledger receipt identity and owner are required independently of the current reserve
+2026-11-09T09:25:27.5769256Z ok 277 - ledger receipt identity and owner are required independently of the current reserve
+2026-11-09T09:25:27.5769967Z   ---
+2026-11-09T09:25:27.5770369Z   duration_ms: 0.223866
+2026-11-09T09:25:27.5770828Z   type: 'test'
+2026-11-09T09:25:27.5771229Z   ...
+2026-11-09T09:25:27.5772283Z # Subtest: cloaked campaign and frozen arrival round-trip with the paid seventy-unit reserve
+2026-11-09T09:25:27.5773550Z ok 278 - cloaked campaign and frozen arrival round-trip with the paid seventy-unit reserve
+2026-11-09T09:25:27.5774286Z   ---
+2026-11-09T09:25:27.5774686Z   duration_ms: 4.559814
+2026-11-09T09:25:27.5775122Z   type: 'test'
+2026-11-09T09:25:27.5775503Z   ...
+2026-11-09T09:25:27.5776335Z # Subtest: solo and trio cloak budgets survive durable storage, portable export and the complete archive
+2026-11-09T09:25:27.5777528Z ok 279 - solo and trio cloak budgets survive durable storage, portable export and the complete archive
+2026-11-09T09:25:27.5778279Z   ---
+2026-11-09T09:25:27.5778665Z   duration_ms: 35.793224
+2026-11-09T09:25:27.5779116Z   type: 'test'
+2026-11-09T09:25:27.5779504Z   ...
+2026-11-09T09:25:27.5780409Z # Subtest: missing, foreign or substituted energy receipts cannot import a free cloaked arrival
+2026-11-09T09:25:27.5781587Z ok 280 - missing, foreign or substituted energy receipts cannot import a free cloaked arrival
+2026-11-09T09:25:27.5782324Z   ---
+2026-11-09T09:25:27.5782724Z   duration_ms: 3.803146
+2026-11-09T09:25:27.5783293Z   type: 'test'
+2026-11-09T09:25:27.5783707Z   ...
+2026-11-09T09:25:27.5784484Z # Subtest: pause, skipped handoff, completed arrival and reload never spend the cycle twice
+2026-11-09T09:25:27.5785543Z ok 281 - pause, skipped handoff, completed arrival and reload never spend the cycle twice
+2026-11-09T09:25:27.5786244Z   ---
+2026-11-09T09:25:27.5786631Z   duration_ms: 2.792021
+2026-11-09T09:25:27.5787014Z   type: 'test'
+2026-11-09T09:25:27.5787308Z   ...
+2026-11-09T09:25:27.5976568Z 1..281
+2026-11-09T09:25:27.5976940Z # tests 285
+2026-11-09T09:25:27.5977219Z # suites 0
+2026-11-09T09:25:27.5977497Z # pass 285
+2026-11-09T09:25:27.5977767Z # fail 0
+2026-11-09T09:25:27.5978044Z # cancelled 0
+2026-11-09T09:25:27.5978381Z # skipped 0
+2026-11-09T09:25:27.5979025Z # todo 0
+2026-11-09T09:25:27.5979355Z # duration_ms 30007.87223
+2026-11-09T09:25:27.6060274Z ##[group]Run npm run build:production
+2026-11-09T09:25:27.6060629Z [36;1mnpm run build:production[0m
+2026-11-09T09:25:27.6075088Z shell: /usr/bin/bash -e {0}
+2026-11-09T09:25:27.6075354Z env:
+2026-11-09T09:25:27.6075581Z   ELECTRON_SKIP_BINARY_DOWNLOAD: 1
+2026-11-09T09:25:27.6075861Z   NEXT_TELEMETRY_DISABLED: 1
+2026-11-09T09:25:27.6076122Z   POD_SYSTEMS_START_SERVER: 1
+2026-11-09T09:25:27.6076413Z   POD_SYSTEMS_URL: http://127.0.0.1:4199/dev
+2026-11-09T09:25:27.6076797Z   POD_SYSTEMS_SOURCE_COMMIT: 3a03ca990e3c27761d411ee043eb8fdbbaffa6c3
+2026-11-09T09:25:27.6077164Z   POD_SYSTEMS_HEADED: 1
+2026-11-09T09:25:27.6077412Z   POD_SYSTEMS_REQUIRE_CLEAN: 1
+2026-11-09T09:25:27.6077662Z ##[endgroup]
+2026-11-09T09:25:27.6984238Z 
+2026-11-09T09:25:27.6985017Z > yautja-la-longue-chasse@1.0.0 build:production
+2026-11-09T09:25:27.6985491Z > node scripts/build-production-v94.mjs
+2026-11-09T09:25:27.6985730Z 
+2026-11-09T09:25:27.7302290Z [production] audio
+2026-11-09T09:25:27.7804149Z [audio] 44 slots, 22 supplied, 0 ignored
+2026-11-09T09:25:27.7838355Z [production] next
+2026-11-09T09:25:28.1010082Z ▲ Next.js 16.3.5 (webpack)
+2026-11-09T09:25:28.1304885Z ✓ Running next.config.ts took 28ms
+2026-11-09T09:25:28.1305811Z ⚠ No build cache found. Please configure build caching for faster rebuilds. Read more: https://nextjs.org/docs/messages/no-cache
+2026-11-09T09:25:28.1450260Z 
+2026-11-09T09:25:28.1756839Z   Creating an optimized production build ...
+2026-11-09T09:26:06.3833754Z ✓ Compiled successfully in 35.9s
+2026-11-09T09:26:06.3852645Z   Running TypeScript ...
+2026-11-09T09:27:06.6016498Z   Finished TypeScript in 60s ...
+2026-11-09T09:27:06.6033250Z   Collecting page data using 3 workers ...
+2026-11-09T09:27:09.5728049Z   Generating static pages using 3 workers (0/10) ...
+2026-11-09T09:27:11.4721711Z   Generating static pages using 3 workers (2/10) 
+2026-11-09T09:27:11.4722368Z   Generating static pages using 3 workers (4/10) 
+2026-11-09T09:27:11.4722970Z   Generating static pages using 3 workers (7/10) 
+2026-11-09T09:27:11.5808907Z ✓ Generating static pages using 3 workers (10/10) in 2.0s
+2026-11-09T09:27:11.8540306Z   Finalizing page optimization ...
+2026-11-09T09:27:11.8540845Z   Collecting build traces ...
+2026-11-09T09:27:18.1286447Z 
+2026-11-09T09:27:18.1306169Z Route (app)
+2026-11-09T09:27:18.1306823Z ┌ ƒ /
+2026-11-09T09:27:18.1307158Z ├ ƒ /_not-found
+2026-11-09T09:27:18.1307619Z ├ ƒ /clan-war-qa-v92
+2026-11-09T09:27:18.1307981Z ├ ƒ /dev
+2026-11-09T09:27:18.1308302Z ├ ƒ /dialogues
+2026-11-09T09:27:18.1308658Z ├ ƒ /gauntlet-qa-v135
+2026-11-09T09:27:18.1309032Z ├ ƒ /gauntlet-qa-v136
+2026-11-09T09:27:18.1309346Z ├ ƒ /pit-lab
+2026-11-09T09:27:18.1309726Z ├ ƒ /planet-generator-v102
+2026-11-09T09:27:18.1310155Z ├ ƒ /planet-generator-v103
+2026-11-09T09:27:18.1310583Z ├ ƒ /planet-materials-v101
+2026-11-09T09:27:18.1310899Z ├ ƒ /rig-lab
+2026-11-09T09:27:18.1311219Z ├ ƒ /solo-qa-v92
+2026-11-09T09:27:18.1311579Z └ ƒ /visual-qa-v90
+2026-11-09T09:27:18.1311834Z 
+2026-11-09T09:27:18.1311847Z 
+2026-11-09T09:27:18.1312065Z ƒ Proxy (Middleware)
+2026-11-09T09:27:18.1312279Z 
+2026-11-09T09:27:18.1312588Z ƒ  (Dynamic)  server-rendered on demand
+2026-11-09T09:27:18.1312875Z 
+2026-11-09T09:27:18.1702608Z [production] pit-css
+2026-11-09T09:27:18.2954649Z {
+2026-11-09T09:27:18.2955086Z   "status": "PASS",
+2026-11-09T09:27:18.2955666Z   "checkedAt": "2026-11-09T09:27:18.219Z",
+2026-11-09T09:27:18.2956580Z   "nextDir": "/home/runner/work/yautja-la-longue-chasse/yautja-la-longue-chasse/.next",
+2026-11-09T09:27:18.2957635Z   "scope": "Root game route compiled CSS referenced by its webpack client manifest; no source CSS is read.",
+2026-11-09T09:27:18.2958322Z   "files": [
+2026-11-09T09:27:18.2958606Z     {
+2026-11-09T09:27:18.2958957Z       "path": "static/css/999ffce6745f5c61.css",
+2026-11-09T09:27:18.2959265Z       "bytes": 125718,
+2026-11-09T09:27:18.2959663Z       "sha256": "7023c90bcd81bea78711bbc02ce01271a2e1e46af23af741934f35e3fd62251a"
+2026-11-09T09:27:18.2960463Z     },
+2026-11-09T09:27:18.2960666Z     {
+2026-11-09T09:27:18.2961178Z       "path": "static/css/37e68a663ba2fbdb.css",
+2026-11-09T09:27:18.2961466Z       "bytes": 41149,
+2026-11-09T09:27:18.2961864Z       "sha256": "23fc88b418b819ea694fa08041e8e412e5da6cd2858d9c0d36d38851ed910fae"
+2026-11-09T09:27:18.2962244Z     }
+2026-11-09T09:27:18.2962433Z   ],
+2026-11-09T09:27:18.2962639Z   "checks": [
+2026-11-09T09:27:18.2962837Z     {
+2026-11-09T09:27:18.2963257Z       "id": "toast-does-not-intercept-hud",
+2026-11-09T09:27:18.2963586Z       "selector": "toast",
+2026-11-09T09:27:18.2963871Z       "property": "pointer-events",
+2026-11-09T09:27:18.2964148Z       "expected": "none",
+2026-11-09T09:27:18.2964390Z       "status": "PASS",
+2026-11-09T09:27:18.2964635Z       "declarations": [
+2026-11-09T09:27:18.2964896Z         {
+2026-11-09T09:27:18.2965160Z           "file": "static/css/999ffce6745f5c61.css",
+2026-11-09T09:27:18.2965470Z           "selector": ".toast",
+2026-11-09T09:27:18.2965724Z           "value": "none",
+2026-11-09T09:27:18.2965967Z           "important": false,
+2026-11-09T09:27:18.2966241Z           "unconditional": true,
+2026-11-09T09:27:18.2966501Z           "matches": true
+2026-11-09T09:27:18.2966717Z         }
+2026-11-09T09:27:18.2966908Z       ],
+2026-11-09T09:27:18.2967104Z       "resets": []
+2026-11-09T09:27:18.2967305Z     },
+2026-11-09T09:27:18.2967496Z     {
+2026-11-09T09:27:18.2967760Z       "id": "immersive-toast-above-desktop-menu",
+2026-11-09T09:27:18.2968071Z       "selector": "desktop",
+2026-11-09T09:27:18.2968321Z       "property": "bottom",
+2026-11-09T09:27:18.2968694Z       "expected": "max(76px, calc(env(safe-area-inset-bottom) + 64px))",
+2026-11-09T09:27:18.2969054Z       "status": "PASS",
+2026-11-09T09:27:18.2969280Z       "declarations": [
+2026-11-09T09:27:18.2969506Z         {
+2026-11-09T09:27:18.2969765Z           "file": "static/css/999ffce6745f5c61.css",
+2026-11-09T09:27:18.2970176Z           "selector": ".game-shell:has([data-pit-immersive=true])>.toast",
+2026-11-09T09:27:18.2970651Z           "value": "max(76px,calc(env(safe-area-inset-bottom) + 64px))",
+2026-11-09T09:27:18.2971004Z           "important": false,
+2026-11-09T09:27:18.2971272Z           "unconditional": true,
+2026-11-09T09:27:18.2971526Z           "matches": true
+2026-11-09T09:27:18.2971743Z         }
+2026-11-09T09:27:18.2971928Z       ],
+2026-11-09T09:27:18.2972126Z       "resets": []
+2026-11-09T09:27:18.2972328Z     },
+2026-11-09T09:27:18.2972513Z     {
+2026-11-09T09:27:18.2972753Z       "id": "touch-toast-below-health-hud",
+2026-11-09T09:27:18.2973179Z       "selector": "touch",
+2026-11-09T09:27:18.2973539Z       "property": "top",
+2026-11-09T09:27:18.2973896Z       "expected": "max(152px, calc(env(safe-area-inset-top) + 142px))",
+2026-11-09T09:27:18.2974249Z       "status": "PASS",
+2026-11-09T09:27:18.2974482Z       "declarations": [
+2026-11-09T09:27:18.2974695Z         {
+2026-11-09T09:27:18.2974956Z           "file": "static/css/999ffce6745f5c61.css",
+2026-11-09T09:27:18.2975763Z           "selector": ".game-shell:has([data-pit-immersive=true] [aria-label=Commandes\\ tactiles])>.toast,.game-shell:has([data-pit-immersive=true] [data-pit-finisher-hud])>.toast",
+2026-11-09T09:27:18.2976540Z           "value": "max(152px,calc(env(safe-area-inset-top) + 142px))",
+2026-11-09T09:27:18.2976886Z           "important": false,
+2026-11-09T09:27:18.2977154Z           "unconditional": true,
+2026-11-09T09:27:18.2977402Z           "matches": true
+2026-11-09T09:27:18.2977624Z         }
+2026-11-09T09:27:18.2977810Z       ],
+2026-11-09T09:27:18.2978002Z       "resets": []
+2026-11-09T09:27:18.2978200Z     },
+2026-11-09T09:27:18.2978391Z     {
+2026-11-09T09:27:18.2978632Z       "id": "touch-toast-releases-bottom",
+2026-11-09T09:27:18.2978912Z       "selector": "touch",
+2026-11-09T09:27:18.2979154Z       "property": "bottom",
+2026-11-09T09:27:18.2979396Z       "expected": "auto",
+2026-11-09T09:27:18.2979625Z       "status": "PASS",
+2026-11-09T09:27:18.2979855Z       "declarations": [
+2026-11-09T09:27:18.2980220Z         {
+2026-11-09T09:27:18.2980586Z           "file": "static/css/999ffce6745f5c61.css",
+2026-11-09T09:27:18.2981375Z           "selector": ".game-shell:has([data-pit-immersive=true] [aria-label=Commandes\\ tactiles])>.toast,.game-shell:has([data-pit-immersive=true] [data-pit-finisher-hud])>.toast",
+2026-11-09T09:27:18.2982059Z           "value": "auto",
+2026-11-09T09:27:18.2982297Z           "important": false,
+2026-11-09T09:27:18.2982570Z           "unconditional": true,
+2026-11-09T09:27:18.2982826Z           "matches": true
+2026-11-09T09:27:18.2983273Z         }
+2026-11-09T09:27:18.2983491Z       ],
+2026-11-09T09:27:18.2983694Z       "resets": []
+2026-11-09T09:27:18.2983905Z     }
+2026-11-09T09:27:18.2984093Z   ],
+2026-11-09T09:27:18.2984298Z   "errors": [],
+2026-11-09T09:27:18.2984507Z   "limits": [
+2026-11-09T09:27:18.2984985Z     "Verifies these exact compiled selectors and declarations, not the entire CSS cascade or visual layout.",
+2026-11-09T09:27:18.2985758Z     "Does not certify CDN contents, service-worker caches, or the deployed browser; public smoke QA remains required.",
+2026-11-09T09:27:18.2986577Z     "The webpack manifest format is required and fails closed if it changes; equivalent unsupported CSS spellings need review."
+2026-11-09T09:27:18.2987083Z   ]
+2026-11-09T09:27:18.2987280Z }
+2026-11-09T09:27:18.3110014Z [production] native-origin
+2026-11-09T09:27:18.3447347Z {"status":"skipped","reason":"not-exact-linux-vercel-build-root"}
+2026-11-09T09:27:18.3482872Z [production] static-output
+2026-11-09T09:27:18.3789616Z {"status":"skipped","reason":"not-exact-linux-vercel-build-root"}
+2026-11-09T09:27:18.3932876Z ##[group]Run node node_modules/playwright-core/cli.js install --with-deps chromium
+2026-11-09T09:27:18.3934486Z [36;1mnode node_modules/playwright-core/cli.js install --with-deps chromium[0m
+2026-11-09T09:27:18.3947673Z shell: /usr/bin/bash -e {0}
+2026-11-09T09:27:18.3947929Z env:
+2026-11-09T09:27:18.3948150Z   ELECTRON_SKIP_BINARY_DOWNLOAD: 1
+2026-11-09T09:27:18.3948414Z   NEXT_TELEMETRY_DISABLED: 1
+2026-11-09T09:27:18.3948699Z   POD_SYSTEMS_START_SERVER: 1
+2026-11-09T09:27:18.3948990Z   POD_SYSTEMS_URL: http://127.0.0.1:4199/dev
+2026-11-09T09:27:18.3949371Z   POD_SYSTEMS_SOURCE_COMMIT: 3a03ca990e3c27761d411ee043eb8fdbbaffa6c3
+2026-11-09T09:27:18.3949733Z   POD_SYSTEMS_HEADED: 1
+2026-11-09T09:27:18.3949988Z   POD_SYSTEMS_REQUIRE_CLEAN: 1
+2026-11-09T09:27:18.3950230Z ##[endgroup]
+2026-11-09T09:27:18.6905401Z Installing dependencies...
+2026-11-09T09:27:18.6984288Z Switching to root user to install dependencies...
+2026-11-09T09:27:18.9610333Z Get:1 file:/etc/apt/apt-mirrors.txt Mirrorlist [144 B]
+2026-11-09T09:27:18.9943015Z Get:6 https://packages.microsoft.com/ubuntu/24.04/prod noble InRelease [3600 B]
+2026-11-09T09:27:19.1168447Z Hit:2 http://azure.archive.ubuntu.com/ubuntu noble InRelease
+2026-11-09T09:27:19.1191300Z Get:3 http://azure.archive.ubuntu.com/ubuntu noble-updates InRelease [126 kB]
+2026-11-09T09:27:19.1458044Z Get:4 http://azure.archive.ubuntu.com/ubuntu noble-backports InRelease [126 kB]
+2026-11-09T09:27:19.1834357Z Get:5 http://azure.archive.ubuntu.com/ubuntu noble-security InRelease [126 kB]
+2026-11-09T09:27:19.3518461Z Get:7 https://packages.microsoft.com/ubuntu/24.04/prod noble/main arm64 Packages [675 kB]
+2026-11-09T09:27:19.3785684Z Get:8 https://packages.microsoft.com/ubuntu/24.04/prod noble/main amd64 Packages [743 kB]
+2026-11-09T09:27:19.5478523Z Get:9 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 Packages [1425 kB]
+2026-11-09T09:27:19.5547808Z Get:10 http://azure.archive.ubuntu.com/ubuntu noble-updates/main Translation-en [313 kB]
+2026-11-09T09:27:19.5566289Z Get:11 http://azure.archive.ubuntu.com/ubuntu noble-updates/universe amd64 Packages [1711 kB]
+2026-11-09T09:27:19.5646559Z Get:12 http://azure.archive.ubuntu.com/ubuntu noble-updates/universe Translation-en [344 kB]
+2026-11-09T09:27:19.5666066Z Get:13 http://azure.archive.ubuntu.com/ubuntu noble-updates/restricted amd64 Packages [1839 kB]
+2026-11-09T09:27:19.5757320Z Get:14 http://azure.archive.ubuntu.com/ubuntu noble-updates/restricted Translation-en [420 kB]
+2026-11-09T09:27:19.5777316Z Get:15 http://azure.archive.ubuntu.com/ubuntu noble-updates/multiverse amd64 Packages [50.7 kB]
+2026-11-09T09:27:19.5785521Z Get:16 http://azure.archive.ubuntu.com/ubuntu noble-updates/multiverse Translation-en [14.3 kB]
+2026-11-09T09:27:19.6352559Z Get:17 http://azure.archive.ubuntu.com/ubuntu noble-security/main amd64 Packages [1157 kB]
+2026-11-09T09:27:19.6410760Z Get:18 http://azure.archive.ubuntu.com/ubuntu noble-security/main Translation-en [234 kB]
+2026-11-09T09:27:19.6908762Z Get:19 http://azure.archive.ubuntu.com/ubuntu noble-security/universe amd64 Packages [1228 kB]
+2026-11-09T09:27:19.6968484Z Get:20 http://azure.archive.ubuntu.com/ubuntu noble-security/universe Translation-en [248 kB]
+2026-11-09T09:27:19.6984235Z Get:21 http://azure.archive.ubuntu.com/ubuntu noble-security/restricted amd64 Packages [1721 kB]
+2026-11-09T09:27:19.7064130Z Get:22 http://azure.archive.ubuntu.com/ubuntu noble-security/restricted Translation-en [394 kB]
+2026-11-09T09:27:19.7083912Z Get:23 http://azure.archive.ubuntu.com/ubuntu noble-security/multiverse amd64 Packages [45.4 kB]
+2026-11-09T09:27:19.7090612Z Get:24 http://azure.archive.ubuntu.com/ubuntu noble-security/multiverse Translation-en [12.4 kB]
+2026-11-09T09:27:42.6979164Z Fetched 13.0 MB in 2s (7246 kB/s)
+2026-11-09T09:27:43.8067889Z Reading package lists...
+2026-11-09T09:27:43.8456331Z Reading package lists...
+2026-11-09T09:27:44.0716391Z Building dependency tree...
+2026-11-09T09:27:44.0722831Z Reading state information...
+2026-11-09T09:27:44.2441561Z libasound2t64 is already the newest version (1.2.11-1ubuntu0.3).
+2026-11-09T09:27:44.2442359Z libasound2t64 set to manually installed.
+2026-11-09T09:27:44.2443204Z libatk-bridge2.0-0t64 is already the newest version (2.52.0-1build1).
+2026-11-09T09:27:44.2443905Z libatk-bridge2.0-0t64 set to manually installed.
+2026-11-09T09:27:44.2444488Z libatk1.0-0t64 is already the newest version (2.52.0-1build1).
+2026-11-09T09:27:44.2445125Z libatk1.0-0t64 set to manually installed.
+2026-11-09T09:27:44.2445728Z libatspi2.0-0t64 is already the newest version (2.52.0-1build1).
+2026-11-09T09:27:44.2446205Z libatspi2.0-0t64 set to manually installed.
+2026-11-09T09:27:44.2446669Z libcairo2 is already the newest version (1.18.0-3build1).
+2026-11-09T09:27:44.2447132Z libcairo2 set to manually installed.
+2026-11-09T09:27:44.2447626Z libcups2t64 is already the newest version (2.4.7-1.2ubuntu7.14).
+2026-11-09T09:27:44.2448088Z libcups2t64 set to manually installed.
+2026-11-09T09:27:44.2448598Z libdbus-1-3 is already the newest version (1.14.10-4ubuntu4.1).
+2026-11-09T09:27:44.2449067Z libdbus-1-3 set to manually installed.
+2026-11-09T09:27:44.2449548Z libdrm2 is already the newest version (2.4.125-1ubuntu0.1~24.04.2).
+2026-11-09T09:27:44.2450083Z libdrm2 set to manually installed.
+2026-11-09T09:27:44.2450619Z libgbm1 is already the newest version (25.2.8-0ubuntu0.24.04.4).
+2026-11-09T09:27:44.2451012Z libgbm1 set to manually installed.
+2026-11-09T09:27:44.2451425Z libglib2.0-0t64 is already the newest version (2.80.0-6ubuntu3.10).
+2026-11-09T09:27:44.2451827Z libglib2.0-0t64 set to manually installed.
+2026-11-09T09:27:44.2452228Z libnspr4 is already the newest version (2:4.35-1.1build1).
+2026-11-09T09:27:44.2452587Z libnspr4 set to manually installed.
+2026-11-09T09:27:44.2452950Z libnss3 is already the newest version (2:3.98-1ubuntu0.3).
+2026-11-09T09:27:44.2453563Z libnss3 set to manually installed.
+2026-11-09T09:27:44.2453960Z libpango-1.0-0 is already the newest version (1.52.1+ds-1build1).
+2026-11-09T09:27:44.2454357Z libpango-1.0-0 set to manually installed.
+2026-11-09T09:27:44.2454752Z libx11-6 is already the newest version (2:1.8.7-1ubuntu0.1).
+2026-11-09T09:27:44.2455117Z libx11-6 set to manually installed.
+2026-11-09T09:27:44.2455459Z libxcb1 is already the newest version (1.15-1ubuntu2).
+2026-11-09T09:27:44.2455812Z libxcb1 set to manually installed.
+2026-11-09T09:27:44.2456202Z libxcomposite1 is already the newest version (1:0.4.5-1build3).
+2026-11-09T09:27:44.2456868Z libxcomposite1 set to manually installed.
+2026-11-09T09:27:44.2457274Z libxdamage1 is already the newest version (1:1.1.6-1build1).
+2026-11-09T09:27:44.2457666Z libxdamage1 set to manually installed.
+2026-11-09T09:27:44.2458052Z libxext6 is already the newest version (2:1.3.4-1build2).
+2026-11-09T09:27:44.2458411Z libxext6 set to manually installed.
+2026-11-09T09:27:44.2458804Z libxfixes3 is already the newest version (1:6.0.0-2build1).
+2026-11-09T09:27:44.2459179Z libxfixes3 set to manually installed.
+2026-11-09T09:27:44.2459573Z libxkbcommon0 is already the newest version (1.6.0-1build1).
+2026-11-09T09:27:44.2459963Z libxkbcommon0 set to manually installed.
+2026-11-09T09:27:44.2460355Z libxrandr2 is already the newest version (2:1.5.2-2build1).
+2026-11-09T09:27:44.2460732Z libxrandr2 set to manually installed.
+2026-11-09T09:27:44.2461121Z xvfb is already the newest version (2:21.1.12-1ubuntu1.9).
+2026-11-09T09:27:44.2461625Z fonts-noto-color-emoji is already the newest version (2.047-0ubuntu0.24.04.1).
+2026-11-09T09:27:44.2462163Z libfontconfig1 is already the newest version (2.15.0-1.1ubuntu2).
+2026-11-09T09:27:44.2462570Z libfontconfig1 set to manually installed.
+2026-11-09T09:27:44.2462997Z libfreetype6 is already the newest version (2.13.2+dfsg-1ubuntu0.2).
+2026-11-09T09:27:44.2463612Z libfreetype6 set to manually installed.
+2026-11-09T09:27:44.2464009Z fonts-liberation is already the newest version (1:2.1.5-3).
+2026-11-09T09:27:44.2464409Z fonts-liberation set to manually installed.
+2026-11-09T09:27:44.2464794Z The following additional packages will be installed:
+2026-11-09T09:27:44.2465253Z   xfonts-encodings xfonts-utils
+2026-11-09T09:27:44.2465559Z Recommended packages:
+2026-11-09T09:27:44.2465844Z   fonts-ipafont-mincho fonts-tlwg-loma
+2026-11-09T09:27:44.2822469Z The following NEW packages will be installed:
+2026-11-09T09:27:44.2823388Z   fonts-freefont-ttf fonts-ipafont-gothic fonts-tlwg-loma-otf fonts-unifont
+2026-11-09T09:27:44.2830547Z   fonts-wqy-zenhei xfonts-cyrillic xfonts-encodings xfonts-scalable
+2026-11-09T09:27:44.2831267Z   xfonts-utils
+2026-11-09T09:27:44.3020273Z 0 upgraded, 9 newly installed, 0 to remove and 27 not upgraded.
+2026-11-09T09:27:44.3020948Z Need to get 21.1 MB of archives.
+2026-11-09T09:27:44.3021601Z After this operation, 79.5 MB of additional disk space will be used.
+2026-11-09T09:27:44.3022125Z Get:1 file:/etc/apt/apt-mirrors.txt Mirrorlist [144 B]
+2026-11-09T09:27:44.5400202Z Get:2 http://azure.archive.ubuntu.com/ubuntu noble/universe amd64 fonts-ipafont-gothic all 00303-21ubuntu1 [3513 kB]
+2026-11-09T09:27:45.0380762Z Get:3 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 fonts-freefont-ttf all 20211204+svn4273-2 [5641 kB]
+2026-11-09T09:27:45.8791974Z Get:4 http://azure.archive.ubuntu.com/ubuntu noble/universe amd64 fonts-tlwg-loma-otf all 1:0.7.3-1 [107 kB]
+2026-11-09T09:27:45.9139380Z Get:5 http://azure.archive.ubuntu.com/ubuntu noble/universe amd64 fonts-unifont all 1:15.1.01-1build1 [2993 kB]
+2026-11-09T09:27:46.3081025Z Get:6 http://azure.archive.ubuntu.com/ubuntu noble/universe amd64 fonts-wqy-zenhei all 0.9.45-8 [7472 kB]
+2026-11-09T09:27:47.1871075Z Get:7 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 xfonts-encodings all 1:1.0.5-0ubuntu2 [578 kB]
+2026-11-09T09:27:47.2791172Z Get:8 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 xfonts-utils amd64 1:7.7+6build3 [94.4 kB]
+2026-11-09T09:27:47.3107118Z Get:9 http://azure.archive.ubuntu.com/ubuntu noble/universe amd64 xfonts-cyrillic all 1:1.0.5+nmu1 [384 kB]
+2026-11-09T09:27:47.3780232Z Get:10 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 xfonts-scalable all 1:1.0.3-1.3 [304 kB]
+2026-11-09T09:27:47.7108485Z Fetched 21.1 MB in 3s (6747 kB/s)
+2026-11-09T09:27:47.7530023Z Selecting previously unselected package fonts-ipafont-gothic.
+2026-11-09T09:27:47.9067027Z (Reading database ... 
+2026-11-09T09:27:47.9067506Z (Reading database ... 5%
+2026-11-09T09:27:47.9067886Z (Reading database ... 10%
+2026-11-09T09:27:47.9068270Z (Reading database ... 15%
+2026-11-09T09:27:47.9068969Z (Reading database ... 20%
+2026-11-09T09:27:47.9069217Z (Reading database ... 25%
+2026-11-09T09:27:47.9069468Z (Reading database ... 30%
+2026-11-09T09:27:47.9069711Z (Reading database ... 35%
+2026-11-09T09:27:47.9070331Z (Reading database ... 40%
+2026-11-09T09:27:47.9070689Z (Reading database ... 45%
+2026-11-09T09:27:47.9071013Z (Reading database ... 50%
+2026-11-09T09:27:48.0980672Z (Reading database ... 55%
+2026-11-09T09:27:49.2541966Z (Reading database ... 60%
+2026-11-09T09:27:50.4009156Z (Reading database ... 65%
+2026-11-09T09:27:51.4355904Z (Reading database ... 70%
+2026-11-09T09:27:52.2890161Z (Reading database ... 75%
+2026-11-09T09:27:54.5031458Z (Reading database ... 80%
+2026-11-09T09:27:56.9867502Z (Reading database ... 85%
+2026-11-09T09:27:59.7678459Z (Reading database ... 90%
+2026-11-09T09:28:02.7341755Z (Reading database ... 95%
+2026-11-09T09:28:02.7342119Z (Reading database ... 100%
+2026-11-09T09:28:02.7342577Z (Reading database ... 215960 files and directories currently installed.)
+2026-11-09T09:28:02.7390428Z Preparing to unpack .../0-fonts-ipafont-gothic_00303-21ubuntu1_all.deb ...
+2026-11-09T09:28:02.7543226Z Unpacking fonts-ipafont-gothic (00303-21ubuntu1) ...
+2026-11-09T09:28:03.0621843Z Selecting previously unselected package fonts-freefont-ttf.
+2026-11-09T09:28:03.0755993Z Preparing to unpack .../1-fonts-freefont-ttf_20211204+svn4273-2_all.deb ...
+2026-11-09T09:28:03.0766459Z Unpacking fonts-freefont-ttf (20211204+svn4273-2) ...
+2026-11-09T09:28:03.1816617Z Selecting previously unselected package fonts-tlwg-loma-otf.
+2026-11-09T09:28:03.1950629Z Preparing to unpack .../2-fonts-tlwg-loma-otf_1%3a0.7.3-1_all.deb ...
+2026-11-09T09:28:03.1960902Z Unpacking fonts-tlwg-loma-otf (1:0.7.3-1) ...
+2026-11-09T09:28:03.2339320Z Selecting previously unselected package fonts-unifont.
+2026-11-09T09:28:03.2472822Z Preparing to unpack .../3-fonts-unifont_1%3a15.1.01-1build1_all.deb ...
+2026-11-09T09:28:03.2483563Z Unpacking fonts-unifont (1:15.1.01-1build1) ...
+2026-11-09T09:28:03.4561974Z Selecting previously unselected package fonts-wqy-zenhei.
+2026-11-09T09:28:03.4698702Z Preparing to unpack .../4-fonts-wqy-zenhei_0.9.45-8_all.deb ...
+2026-11-09T09:28:03.4793910Z Unpacking fonts-wqy-zenhei (0.9.45-8) ...
+2026-11-09T09:28:04.0854419Z Selecting previously unselected package xfonts-encodings.
+2026-11-09T09:28:04.0989153Z Preparing to unpack .../5-xfonts-encodings_1%3a1.0.5-0ubuntu2_all.deb ...
+2026-11-09T09:28:04.1002166Z Unpacking xfonts-encodings (1:1.0.5-0ubuntu2) ...
+2026-11-09T09:28:04.1272092Z Selecting previously unselected package xfonts-utils.
+2026-11-09T09:28:04.1408837Z Preparing to unpack .../6-xfonts-utils_1%3a7.7+6build3_amd64.deb ...
+2026-11-09T09:28:04.1420315Z Unpacking xfonts-utils (1:7.7+6build3) ...
+2026-11-09T09:28:04.3121005Z Selecting previously unselected package xfonts-cyrillic.
+2026-11-09T09:28:04.3252695Z Preparing to unpack .../7-xfonts-cyrillic_1%3a1.0.5+nmu1_all.deb ...
+2026-11-09T09:28:04.3264212Z Unpacking xfonts-cyrillic (1:1.0.5+nmu1) ...
+2026-11-09T09:28:04.3561729Z Selecting previously unselected package xfonts-scalable.
+2026-11-09T09:28:04.3699015Z Preparing to unpack .../8-xfonts-scalable_1%3a1.0.3-1.3_all.deb ...
+2026-11-09T09:28:04.3711198Z Unpacking xfonts-scalable (1:1.0.3-1.3) ...
+2026-11-09T09:28:04.4200799Z Setting up fonts-wqy-zenhei (0.9.45-8) ...
+2026-11-09T09:28:04.4320255Z Setting up fonts-freefont-ttf (20211204+svn4273-2) ...
+2026-11-09T09:28:04.4344114Z Setting up fonts-tlwg-loma-otf (1:0.7.3-1) ...
+2026-11-09T09:28:04.4364569Z Setting up xfonts-encodings (1:1.0.5-0ubuntu2) ...
+2026-11-09T09:28:04.4384836Z Setting up fonts-ipafont-gothic (00303-21ubuntu1) ...
+2026-11-09T09:28:04.4456021Z update-alternatives: using /usr/share/fonts/opentype/ipafont-gothic/ipag.ttf to provide /usr/share/fonts/truetype/fonts-japanese-gothic.ttf (fonts-japanese-gothic.ttf) in auto mode
+2026-11-09T09:28:04.4474675Z Setting up fonts-unifont (1:15.1.01-1build1) ...
+2026-11-09T09:28:04.4496907Z Setting up xfonts-utils (1:7.7+6build3) ...
+2026-11-09T09:28:04.4540408Z Setting up xfonts-cyrillic (1:1.0.5+nmu1) ...
+2026-11-09T09:28:04.4994999Z Setting up xfonts-scalable (1:1.0.3-1.3) ...
+2026-11-09T09:28:04.5340766Z Processing triggers for man-db (2.12.0-4build2) ...
+2026-11-09T09:28:04.5363809Z Not building database; man-db/auto-update is not 'true'.
+2026-11-09T09:28:04.5379747Z Processing triggers for fontconfig (2.15.0-1.1ubuntu2) ...
+2026-11-09T09:28:07.4733855Z 
+2026-11-09T09:28:07.4734537Z Running kernel seems to be up-to-date.
+2026-11-09T09:28:07.4734900Z 
+2026-11-09T09:28:07.4735113Z No services need to be restarted.
+2026-11-09T09:28:07.4735381Z 
+2026-11-09T09:28:07.4735644Z No containers need to be restarted.
+2026-11-09T09:28:07.4735878Z 
+2026-11-09T09:28:07.4736116Z No user sessions are running outdated binaries.
+2026-11-09T09:28:07.4736432Z 
+2026-11-09T09:28:07.4736804Z No VM guests are running outdated hypervisor (qemu) binaries on this host.
+2026-11-09T09:28:08.4763973Z Downloading Chrome for Testing 153.0.8010.12 (playwright chromium v1243) from https://cdn.playwright.dev/builds/cft/153.0.8010.12/linux64/chrome-linux64.zip
+2026-11-09T09:28:08.8725118Z |                                                                                |   0% of 186.8 MiB
+2026-11-09T09:28:09.0168316Z |■■■■■■■■                                                                        |  10% of 186.8 MiB
+2026-11-09T09:28:09.0869372Z |■■■■■■■■■■■■■■■■                                                                |  20% of 186.8 MiB
+2026-11-09T09:28:09.1328610Z |■■■■■■■■■■■■■■■■■■■■■■■■                                                        |  30% of 186.8 MiB
+2026-11-09T09:28:09.1750827Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                                                |  40% of 186.8 MiB
+2026-11-09T09:28:09.2199426Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                                        |  50% of 186.8 MiB
+2026-11-09T09:28:09.2685764Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                                |  60% of 186.8 MiB
+2026-11-09T09:28:09.3146429Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                        |  70% of 186.8 MiB
+2026-11-09T09:28:09.3590910Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                |  80% of 186.8 MiB
+2026-11-09T09:28:09.4054620Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■        |  90% of 186.8 MiB
+2026-11-09T09:28:09.4520834Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■| 100% of 186.8 MiB
+2026-11-09T09:28:12.3594595Z Chrome for Testing 153.0.8010.12 (playwright chromium v1243) downloaded to /home/runner/.cache/ms-playwright/chromium-1243
+2026-11-09T09:28:12.3597575Z Downloading FFmpeg (playwright ffmpeg v1011) from https://cdn.playwright.dev/dbazure/download/playwright/builds/ffmpeg/1011/ffmpeg-linux.zip
+2026-11-09T09:28:12.7264910Z |                                                                                |   0% of 2.3 MiB
+2026-11-09T09:28:12.7364294Z |■■■■■■■■                                                                        |  10% of 2.3 MiB
+2026-11-09T09:28:12.7418733Z |■■■■■■■■■■■■■■■■                                                                |  20% of 2.3 MiB
+2026-11-09T09:28:12.7454132Z |■■■■■■■■■■■■■■■■■■■■■■■■                                                        |  30% of 2.3 MiB
+2026-11-09T09:28:12.7473902Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                                                |  40% of 2.3 MiB
+2026-11-09T09:28:12.7492513Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                                        |  50% of 2.3 MiB
+2026-11-09T09:28:12.7508350Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                                |  60% of 2.3 MiB
+2026-11-09T09:28:12.7522076Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                        |  70% of 2.3 MiB
+2026-11-09T09:28:12.7542532Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                |  80% of 2.3 MiB
+2026-11-09T09:28:12.7554967Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■        |  90% of 2.3 MiB
+2026-11-09T09:28:12.7564862Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■| 100% of 2.3 MiB
+2026-11-09T09:28:12.8091727Z FFmpeg (playwright ffmpeg v1011) downloaded to /home/runner/.cache/ms-playwright/ffmpeg-1011
+2026-11-09T09:28:12.8094830Z Downloading Chrome Headless Shell 153.0.8010.12 (playwright chromium-headless-shell v1243) from https://cdn.playwright.dev/builds/cft/153.0.8010.12/linux64/chrome-headless-shell-linux64.zip
+2026-11-09T09:28:13.1984401Z |                                                                                |   0% of 114.3 MiB
+2026-11-09T09:28:13.2922232Z |■■■■■■■■                                                                        |  10% of 114.3 MiB
+2026-11-09T09:28:13.3318794Z |■■■■■■■■■■■■■■■■                                                                |  20% of 114.3 MiB
+2026-11-09T09:28:13.3641680Z |■■■■■■■■■■■■■■■■■■■■■■■■                                                        |  30% of 114.3 MiB
+2026-11-09T09:28:13.3986506Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                                                |  40% of 114.3 MiB
+2026-11-09T09:28:13.4241464Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                                        |  50% of 114.3 MiB
+2026-11-09T09:28:13.4507484Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                                |  60% of 114.3 MiB
+2026-11-09T09:28:13.4775335Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                        |  70% of 114.3 MiB
+2026-11-09T09:28:13.5035136Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                |  80% of 114.3 MiB
+2026-11-09T09:28:13.5294175Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■        |  90% of 114.3 MiB
+2026-11-09T09:28:13.5528369Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■| 100% of 114.3 MiB
+2026-11-09T09:28:15.5582788Z Chrome Headless Shell 153.0.8010.12 (playwright chromium-headless-shell v1243) downloaded to /home/runner/.cache/ms-playwright/chromium_headless_shell-1243
+2026-11-09T09:28:15.5728682Z ##[group]Run xvfb-run -a --server-args="-screen 0 1920x1200x24" node scripts/qa-pod-systems.mjs
+2026-11-09T09:28:15.5729723Z [36;1mxvfb-run -a --server-args="-screen 0 1920x1200x24" node scripts/qa-pod-systems.mjs[0m
+2026-11-09T09:28:15.5747381Z shell: /usr/bin/bash -e {0}
+2026-11-09T09:28:15.5747756Z env:
+2026-11-09T09:28:15.5748083Z   ELECTRON_SKIP_BINARY_DOWNLOAD: 1
+2026-11-09T09:28:15.5748477Z   NEXT_TELEMETRY_DISABLED: 1
+2026-11-09T09:28:15.5748853Z   POD_SYSTEMS_START_SERVER: 1
+2026-11-09T09:28:15.5749245Z   POD_SYSTEMS_URL: http://127.0.0.1:4199/dev
+2026-11-09T09:28:15.5749801Z   POD_SYSTEMS_SOURCE_COMMIT: 3a03ca990e3c27761d411ee043eb8fdbbaffa6c3
+2026-11-09T09:28:15.5750302Z   POD_SYSTEMS_HEADED: 1
+2026-11-09T09:28:15.5750634Z   POD_SYSTEMS_REQUIRE_CLEAN: 1
+2026-11-09T09:28:15.5750977Z ##[endgroup]
+2026-11-09T09:28:18.4572337Z AssertionError [ERR_ASSERTION]: The reviewed checkout must be clean.
+2026-11-09T09:28:18.4572856Z 
+2026-11-09T09:28:18.4573175Z true !== false
+2026-11-09T09:28:18.4573480Z 
+2026-11-09T09:28:18.4573922Z     at file:///home/runner/work/yautja-la-longue-chasse/yautja-la-longue-chasse/scripts/qa-pod-systems.mjs:604:61
+2026-11-09T09:28:18.4574763Z     at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+2026-11-09T09:28:18.4584544Z PROGRESS {"at":"2026-11-09T09:28:18.457Z","elapsedWallMs":1.1843000000001211,"check":"setup","phase":"failure","message":"The reviewed checkout must be clean.\n\ntrue !== false\n","progressWriteMs":0.8473799999999301}
+2026-11-09T09:28:18.4636111Z {"passed":false,"checks":0,"failed":0,"captures":0,"missingAssets":0,"report":"/home/runner/work/yautja-la-longue-chasse/yautja-la-longue-chasse/outputs/qa-pod-systems/report.json"}
+2026-11-09T09:28:18.4830274Z ##[error]Process completed with exit code 1.
+2026-11-09T09:28:18.4927468Z ##[group]Run actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+2026-11-09T09:28:18.4927871Z with:
+2026-11-09T09:28:18.4928190Z   name: pod-systems-3a03ca990e3c27761d411ee043eb8fdbbaffa6c3
+2026-11-09T09:28:18.4928599Z   path: outputs/qa-pod-systems/
+2026-11-09T09:28:18.4928870Z   include-hidden-files: false
+2026-11-09T09:28:18.4929123Z   if-no-files-found: warn
+2026-11-09T09:28:18.4929363Z   retention-days: 14
+2026-11-09T09:28:18.4929583Z   compression-level: 6
+2026-11-09T09:28:18.4929806Z   overwrite: false
+2026-11-09T09:28:18.4930011Z env:
+2026-11-09T09:28:18.4930225Z   ELECTRON_SKIP_BINARY_DOWNLOAD: 1
+2026-11-09T09:28:18.4930489Z   NEXT_TELEMETRY_DISABLED: 1
+2026-11-09T09:28:18.4930729Z   POD_SYSTEMS_START_SERVER: 1
+2026-11-09T09:28:18.4931001Z   POD_SYSTEMS_URL: http://127.0.0.1:4199/dev
+2026-11-09T09:28:18.4931373Z   POD_SYSTEMS_SOURCE_COMMIT: 3a03ca990e3c27761d411ee043eb8fdbbaffa6c3
+2026-11-09T09:28:18.4931714Z   POD_SYSTEMS_HEADED: 1
+2026-11-09T09:28:18.4931987Z   POD_SYSTEMS_REQUIRE_CLEAN: 1
+2026-11-09T09:28:18.4932224Z ##[endgroup]
+2026-11-09T09:28:18.6559555Z (node:3901) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-11-09T09:28:18.6560488Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-11-09T09:28:18.6639216Z With the provided path, there will be 3 files uploaded
+2026-11-09T09:28:18.6645053Z Artifact name is valid!
+2026-11-09T09:28:18.6645859Z Root directory input is valid!
+2026-11-09T09:28:18.9048148Z Beginning upload of artifact content to blob storage
+2026-11-09T09:28:18.9358767Z (node:3901) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+2026-11-09T09:28:18.9798814Z Uploaded bytes 121132
+2026-11-09T09:28:18.9965818Z Finished uploading artifact content to blob storage!
+2026-11-09T09:28:18.9966590Z SHA256 digest of uploaded artifact zip is 6ce4cedfa861439765dc0a2f9788c46db6a7c126dce28a671125975b1c750456
+2026-11-09T09:28:18.9968749Z Finalizing artifact upload
+2026-11-09T09:28:19.3784460Z Artifact pod-systems-3a03ca990e3c27761d411ee043eb8fdbbaffa6c3.zip successfully finalized. Artifact ID 13662058403
+2026-11-09T09:28:19.3785635Z Artifact pod-systems-3a03ca990e3c27761d411ee043eb8fdbbaffa6c3 has been successfully uploaded! Final size is 121132 bytes. Artifact ID is 13662058403
+2026-11-09T09:28:19.3790023Z Artifact download URL: https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/42592671598/artifacts/13662058403
+2026-11-09T09:28:19.3980694Z Post job cleanup.
+2026-11-09T09:28:19.4812814Z [command]/usr/bin/git version
+2026-11-09T09:28:19.4864258Z git version 2.56.0
+2026-11-09T09:28:19.4891888Z Temporarily overriding HOME='/home/runner/work/_temp/b7d1b49a-e359-4b3c-9809-b82c9a6d4892' before making global git config changes
+2026-11-09T09:28:19.4893758Z Adding repository directory to the temporary git global config as a safe directory
+2026-11-09T09:28:19.4895380Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/yautja-la-longue-chasse/yautja-la-longue-chasse
+2026-11-09T09:28:19.4934367Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-11-09T09:28:19.4975116Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-11-09T09:28:19.5227672Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-11-09T09:28:19.5262447Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-11-09T09:28:19.5508100Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-11-09T09:28:19.5554798Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-11-09T09:28:19.5919629Z Cleaning up orphan processes
+2026-11-09T09:28:19.6230903Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@11d5960a326750d5838078e36cf38b85af677262, actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020, actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/

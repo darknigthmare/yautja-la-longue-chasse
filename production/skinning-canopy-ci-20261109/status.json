@@ -1,0 +1,63 @@
+{
+  "schemaVersion": 1,
+  "title": "Annexe CI distincte skinning et canopée — 2026-11-09",
+  "createdAt": "2026-11-09T09:52:31.793283+00:00",
+  "branch": "codex/reprise-bible-chasse-20261109",
+  "observedCiCommit": "3a03ca990e3c27761d411ee043eb8fdbbaffa6c3",
+  "correctedCodeCommit": "dab4b7760863a645ca5bcf63934ee2baf820d7f7",
+  "audioManifestCorrectionCommit": "1f9b009b20fa2e3354d4d511380e900e98e0cd4b",
+  "annexCommit": null,
+  "newHeadCiStatus": "EN_ATTENTE",
+  "spatialLatencyStatus": "NON_PROUVEE",
+  "newNativeFinalRepetitionsExecutedLocally": 0,
+  "observedCiFinal": {
+    "workflowCount": 19,
+    "completed": 19,
+    "success": 17,
+    "failure": 2,
+    "failedRuns": [
+      42592671598,
+      42592671826
+    ],
+    "source": "final-ci-snapshot-3a03/commit-3a03ca99-final-workflows.json"
+  },
+  "durableHistoricalCi": {
+    "workflow": 42592671946,
+    "job": 129077780656,
+    "checks": 16,
+    "captures": 17,
+    "passed": true,
+    "reportBasis": "Raw job log plus GitHub metadata; full CI report JSON and PNGs not retrieved",
+    "zipIndependentlyHashed": false,
+    "receipt": "durable-field-3a03/receipt.json"
+  },
+  "localCorrectedSource": {
+    "receipt": "final-local-dab4b776/receipt.json",
+    "testsPassed": 20,
+    "testFiles": 5,
+    "strictLintFiles": 3,
+    "audioSlots": 44,
+    "audioSuppliedFiles": 22,
+    "allFiveCommandsExitCode": 0,
+    "trackedWorkingTreeClean": true,
+    "browserExecuted": false
+  },
+  "preserved": {
+    "files": 404,
+    "originalWorkbooks": 108,
+    "oldPacketFiles": 292,
+    "oldDeliveryDocuments": 4,
+    "remainingV112": 8,
+    "newWorkbooks": 0,
+    "baseline": "preserved-baseline.json",
+    "historicalVerifierContext": "frozen-context-3a03/receipt.json"
+  },
+  "runtimeInventorySha256": "5fd5c2829564ccc5a7498365f4e28ec32b99804957befff1806496a33bb8e83e",
+  "qualificationPolicy": [
+    "This annex is committed before new CI; its final status deliberately remains EN_ATTENTE.",
+    "Later CI verdicts must name their actual commit and workflow/job IDs in the PR; do not reattribute3a03 successes or rewrite this snapshot.",
+    "The CDP acquisition prototype has no locally measured latency gain and awaits actual pinnedChromium153/Xvfb CI.",
+    "Historical frozen source verifier expectations are unchanged; exact3a03 execution passes and newer index repin refusal is expected.",
+    "No artistic, physical-controller, full-campaign or eightRemaining global closure is inferred."
+  ]
+}

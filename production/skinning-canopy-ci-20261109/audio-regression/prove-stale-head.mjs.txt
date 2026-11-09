@@ -1,0 +1,12 @@
+import {execFileSync} from 'node:child_process';
+import assert from 'node:assert/strict';
+import {buildAudioManifest} from '/workspace/yautja-reprise-20261109/scripts/build-audio-manifest.mjs';
+const staleHead='3a03ca990e3c27761d411ee043eb8fdbbaffa6c3';
+const previous=execFileSync('git',['show',staleHead+':public/audio/manifest.json'],{encoding:'utf8'});
+const {manifest}=await buildAudioManifest({write:false});
+const generated=JSON.stringify(manifest,null,2)+'\n';
+assert.throws(()=>assert.equal(previous,generated));
+const before=JSON.parse(previous);
+console.log(JSON.stringify({staleHead,staleHeadRejected:true,write:false,
+  missingSlots:manifest.entries.filter(x=>!before.entries.some(y=>x.category===y.category&&x.id===y.id)).map(x=>x.id),
+  originalAudioFilesStillRequiredByExistingTest:22}));

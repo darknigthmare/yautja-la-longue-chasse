@@ -133,7 +133,7 @@ jobs:
           npm run typecheck
           node node_modules/eslint/bin/eslint.js --max-warnings=0 app/game/HuntCanvas.tsx app/game/PlanetArrivalCinematic.tsx app/game/sound.ts app/game/systems/huntPodRecovery.ts app/game/systems/huntInsertion.ts app/game/systems/controlBindings.ts app/game/systems/planetArrival*.ts scripts/qa-pod-systems.mjs tests/planet-arrival*.test.mjs tests/hunt-pod-recovery.test.mjs tests/pod-audio.test.mjs
       - name: Behavior and save regressions
-        run: node --experimental-strip-types --test --test-concurrency=1 tests/planet-arrival*.test.mjs tests/planet-insertion.test.mjs tests/expedition-roster-assignment.test.mjs tests/ship-insertion-energy.test.mjs tests/hunt-insertion.test.mjs tests/hunt-pod-recovery.test.mjs tests/control-bindings.test.mjs tests/save-v2.test.mjs tests/pod-audio.test.mjs
+        run: node --experimental-strip-types --test --test-concurrency=1 tests/planet-arrival*.test.mjs tests/planet-insertion.test.mjs tests/expedition-roster-assignment.test.mjs tests/ship-insertion-energy.test.mjs tests/hunt-insertion.test.mjs tests/hunt-pod-recovery.test.mjs tests/control-bindings.test.mjs tests/save-v2.test.mjs tests/pod-audio.test.mjs tests/audio-pack-v54.test.mjs
       - name: Build the production application
         run: npm run build:production
       - name: Install pinned Chromium and video dependencies

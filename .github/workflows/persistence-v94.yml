@@ -1,5 +1,6 @@
 name: V94 transactional exercises and trophy confirmation
 on:
+  workflow_dispatch:
   pull_request:
     branches: [main]
     paths: ['app/**', 'scripts/**', 'tests/**', '.github/workflows/persistence-v94.yml']

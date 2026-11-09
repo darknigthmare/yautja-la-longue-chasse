@@ -8,6 +8,10 @@ import { buildAudioManifest } from "../scripts/build-audio-manifest.mjs";
 test("V54 delivered audio decodes as bounded PCM with exact source and manifest fingerprints", async () => {
   const proof = JSON.parse(await fs.readFile("public/audio/provenance-v54.json", "utf8"));
   const inventory = (await buildAudioManifest({ write: false })).manifest;
+  // This real-asset test already requires all 22 original WAVs below. Keep the
+  // exact repository inventory check here rather than in sparse slot fixtures.
+  assert.equal(await fs.readFile("public/audio/manifest.json", "utf8"), JSON.stringify(inventory, null, 2) + "\n",
+    "The tracked audio manifest must already match the read-only builder; refresh it before committing new optional sound IDs.");
   assert.equal(proof.assets.length, 22);
   assert.equal(proof.assets.filter(a => a.kind === "external-cc0-adaptation").length, 19);
   assert.equal(proof.assets.filter(a => a.kind === "original-procedural").length, 3);

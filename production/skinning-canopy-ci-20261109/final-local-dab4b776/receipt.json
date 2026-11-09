@@ -1,0 +1,112 @@
+{
+  "sourceCommit": "dab4b7760863a645ca5bcf63934ee2baf820d7f7",
+  "endedCommit": "dab4b7760863a645ca5bcf63934ee2baf820d7f7",
+  "sourcesBefore": {
+    "scripts/qa-planet-arrival-spatial.mjs": "73ae53a9078547973647ec737c540a17a11fb97552e475d8f06c52847b13b022",
+    "tests/audio-manifest.test.mjs": "8d510a69c6079e8b8bb6fe1c1fd076e93c08e5d0f56ff7629699ca72059e832d",
+    "tests/audio-pack-v54.test.mjs": "a9a590f94b539c51611503ced46f56fa338178b0ba7035481e31a44614ca423a",
+    "tests/pod-audio.test.mjs": "003c111eaaa1d8ab224fc90635e194ab777488e7dc73499953465727ff7aba2d",
+    "tests/planet-arrival-harness.test.mjs": "eb4914992f802f6cd5955174213c7520b3e82eef44ca8152a399aac7f8a70bdf",
+    "tests/planet-arrival-observation.test.mjs": "6e1dde7e4779cc3fc0c994de8da900235db664cbb1df5d1ee41e2e203927a333",
+    "tests/fixtures/skinning-canopy-browser-assets-20261109.json": "f9dc1c6653c2d703acb787308b3b8f7d3232ab9077f087981a98d441e1580ff9",
+    "public/audio/manifest.json": "35aef355056250b8ad9ec220b5d2efe3dd542549e49b5e9150226e2d65d86b78",
+    ".github/workflows/pod-systems.yml": "10e97ed8cf6778ea8ac11a9a90f45b8878525dba80f11e5c164f8f096263cf3b",
+    "docs/qa/current-integration-20261103/runtime-inputs.json": "5fd5c2829564ccc5a7498365f4e28ec32b99804957befff1806496a33bb8e83e"
+  },
+  "sourcesAfter": {
+    "scripts/qa-planet-arrival-spatial.mjs": "73ae53a9078547973647ec737c540a17a11fb97552e475d8f06c52847b13b022",
+    "tests/audio-manifest.test.mjs": "8d510a69c6079e8b8bb6fe1c1fd076e93c08e5d0f56ff7629699ca72059e832d",
+    "tests/audio-pack-v54.test.mjs": "a9a590f94b539c51611503ced46f56fa338178b0ba7035481e31a44614ca423a",
+    "tests/pod-audio.test.mjs": "003c111eaaa1d8ab224fc90635e194ab777488e7dc73499953465727ff7aba2d",
+    "tests/planet-arrival-harness.test.mjs": "eb4914992f802f6cd5955174213c7520b3e82eef44ca8152a399aac7f8a70bdf",
+    "tests/planet-arrival-observation.test.mjs": "6e1dde7e4779cc3fc0c994de8da900235db664cbb1df5d1ee41e2e203927a333",
+    "tests/fixtures/skinning-canopy-browser-assets-20261109.json": "f9dc1c6653c2d703acb787308b3b8f7d3232ab9077f087981a98d441e1580ff9",
+    "public/audio/manifest.json": "35aef355056250b8ad9ec220b5d2efe3dd542549e49b5e9150226e2d65d86b78",
+    ".github/workflows/pod-systems.yml": "10e97ed8cf6778ea8ac11a9a90f45b8878525dba80f11e5c164f8f096263cf3b",
+    "docs/qa/current-integration-20261103/runtime-inputs.json": "5fd5c2829564ccc5a7498365f4e28ec32b99804957befff1806496a33bb8e83e"
+  },
+  "sourceBytesStable": true,
+  "checks": [
+    {
+      "name": "regressions",
+      "command": [
+        "node",
+        "--experimental-strip-types",
+        "--test",
+        "--test-isolation=none",
+        "--test-concurrency=1",
+        "tests/audio-manifest.test.mjs",
+        "tests/audio-pack-v54.test.mjs",
+        "tests/pod-audio.test.mjs",
+        "tests/planet-arrival-harness.test.mjs",
+        "tests/planet-arrival-observation.test.mjs"
+      ],
+      "startedAt": "2026-11-09T09:47:44.536410+00:00",
+      "endedAt": "2026-11-09T09:47:46.700702+00:00",
+      "exitCode": 0,
+      "log": "regressions.log",
+      "bytes": 2710,
+      "sha256": "0b63679630371877af82c886dba772a894111418839e1564cb5558f61f9e67bc"
+    },
+    {
+      "name": "lint",
+      "command": [
+        "node",
+        "node_modules/eslint/bin/eslint.js",
+        "--max-warnings=0",
+        "scripts/qa-planet-arrival-spatial.mjs",
+        "tests/audio-manifest.test.mjs",
+        "tests/audio-pack-v54.test.mjs"
+      ],
+      "startedAt": "2026-11-09T09:47:46.701286+00:00",
+      "endedAt": "2026-11-09T09:47:48.152262+00:00",
+      "exitCode": 0,
+      "log": "lint.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "audio-rebuild",
+      "command": [
+        "node",
+        "scripts/build-audio-manifest.mjs"
+      ],
+      "startedAt": "2026-11-09T09:47:48.152330+00:00",
+      "endedAt": "2026-11-09T09:47:48.202342+00:00",
+      "exitCode": 0,
+      "log": "audio-rebuild.log",
+      "bytes": 41,
+      "sha256": "a4c18180b72836162145f98ff96f7667e3c462ff01c80565192d03b1065f96a5"
+    },
+    {
+      "name": "source-current",
+      "command": [
+        "node",
+        "scripts/check-hunt-integration-source-v112.mjs",
+        "--current"
+      ],
+      "startedAt": "2026-11-09T09:47:48.202594+00:00",
+      "endedAt": "2026-11-09T09:47:49.240478+00:00",
+      "exitCode": 0,
+      "log": "source-current.log",
+      "bytes": 300,
+      "sha256": "8b5d4371632ddaff8d3964a2126ac80178083d827052e6b704a6407940b19d00"
+    },
+    {
+      "name": "runtime-current",
+      "command": [
+        "node",
+        "scripts/snapshot-runtime-v113.mjs",
+        "--check",
+        "docs/qa/current-integration-20261103/runtime-inputs.json"
+      ],
+      "startedAt": "2026-11-09T09:47:49.241446+00:00",
+      "endedAt": "2026-11-09T09:47:53.830342+00:00",
+      "exitCode": 0,
+      "log": "runtime-current.log",
+      "bytes": 175,
+      "sha256": "9e635278b117c0a93494c5ad7be2b7361a63ce62ab14b96261421ce44f026604"
+    }
+  ],
+  "trackedWorkingTreeStatus": ""
+}
