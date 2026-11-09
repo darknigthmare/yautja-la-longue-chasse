@@ -1657,7 +1657,30 @@ async function capturePreparedMoment(label, prepared, target = page, attempt = 1
   // previous acquisition/encode/transport span and unchanged clip.
   const captureStage = preparedRoiSource ? 'nativeX11CaptureRpc' : 'screenshotRpc';
   startStage(captureStage);
-  let screenshot, captureError;
+  let screenshot, captureError, auxiliaryComposition;
+  if (prepared.region === 'formation-detail') {
+    // Request an ordinary full-viewport renderer copy concurrently. It asks
+    // Chromium to present the fresh paint promptly; its pixels never replace
+    // the calibrated X11 source or qualify the final photograph. Do not await
+    // its PNG/transport before the live after-observation.
+    const parameters = { format: 'png', fromSurface: true, captureBeyondViewport: false, optimizeForSpeed: true };
+    acquisition.auxiliaryComposition = {
+      kind: 'native-cdp-full-viewport-composition-request', method: 'Page.captureScreenshot', parameters,
+      evidence: false, pixelsUsed: false,
+      scope: 'Concurrent native renderer read only. Final acceptance still requires the fresh-marker X11 source and unchanged live playing/standing guards.',
+      requestedAtMs: performance.now(),
+    };
+    auxiliaryComposition = prepared.captureSession.send('Page.captureScreenshot', parameters).then(result => {
+      acquisition.auxiliaryComposition.finishedAtMs = performance.now();
+      acquisition.auxiliaryComposition.durationMs = acquisition.auxiliaryComposition.finishedAtMs - acquisition.auxiliaryComposition.requestedAtMs;
+      acquisition.auxiliaryComposition.responseBase64Bytes = result.data?.length ?? 0;
+      acquisition.auxiliaryComposition.status = 'completed';
+    }, error => {
+      acquisition.auxiliaryComposition.finishedAtMs = performance.now();
+      acquisition.auxiliaryComposition.durationMs = acquisition.auxiliaryComposition.finishedAtMs - acquisition.auxiliaryComposition.requestedAtMs;
+      acquisition.auxiliaryComposition.status = 'failed'; acquisition.auxiliaryComposition.error = error.message;
+    });
+  }
   try {
     if (preparedRoiSource) {
       acquisition.captureId = `${label}:attempt-${attempt}:${prepared.capturePaintPattern.nonce}`;
@@ -1691,6 +1714,9 @@ async function capturePreparedMoment(label, prepared, target = page, attempt = 1
     acquisition.invalidImages = measured.images.filter(image => !image.complete || image.width === 0 || image.height === 0);
     acquisition.imageReadiness = measured.imageReadiness;
     acquisition.geometryObservationTiming = measured.observationTiming;
+    // Both live observations and the actual X11 private copy are complete.
+    // Only now wait for the unused auxiliary renderer response, if necessary.
+    await auxiliaryComposition;
     startStage('pngMaterialization');
     const lateCompletion = prepared.region === 'formation-detail' && after.status === 'complete' && after.elapsedMs === 62_000;
     const photographLabel = label + (lateCompletion ? `-rejected-attempt-${attempt}` : '');
@@ -1771,6 +1797,7 @@ async function capturePreparedMoment(label, prepared, target = page, attempt = 1
     finishStage('assertionsAndReport'); finishAcquisition();
     return lateCompletion ? null : { frame: measured, capturedBefore: before, file, attempt };
   } catch (error) {
+    await auxiliaryComposition;
     if (acquisition.timings.activeStage) finishStage(acquisition.timings.activeStage);
     acquisition.timings.failureObservedAtMs = performance.now();
     acquisition.accepted = false; acquisition.rejection = error.message;
