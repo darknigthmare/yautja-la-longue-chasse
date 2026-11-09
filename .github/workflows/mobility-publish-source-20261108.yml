@@ -1,7 +1,7 @@
 name: Mobility gameplay and workbook verification
 on:
   push:
-    branches: [feat/mobility-garage-gameplay-20261108]
+    branches: [main, feat/mobility-garage-gameplay-20261108]
     paths:
       - app/game/**
       - app/dev/**
@@ -48,8 +48,12 @@ jobs:
             /*
             !/*/
             /app/
+            /lib/
             /scripts/
             /tests/
+            /types/
+            /desktop/
+            /build/
             /docs/campagne/mobilite/
             /production/mobility-20261108/
             /production/homeworld-sectors-20261103/YAUTJA_MARCHE_MONTURES_CHENILS_20261103.xlsx
@@ -57,7 +61,7 @@ jobs:
             /public/game/mobility/
       - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
         with:
-          node-version: '22.16.0'
+          node-version: '22'
       - run: npm ci --ignore-scripts --no-audit --no-fund
       - name: Verify canonical bible-to-runtime catalogue projection
         run: node scripts/sync-mobility-catalogue.mjs --check
