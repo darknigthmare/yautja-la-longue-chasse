@@ -1,0 +1,82 @@
+{
+  "schemaVersion": 1,
+  "classification": "COMPLETE_EXISTING_CLAN_SHIP_BROWSER_RECIPE_WITH_ARRIVAL_WAIT_FIX",
+  "observedAt": "2026-11-09T06:08:06.125870+00:00",
+  "sourceBasisCommit": "1edbf69117949df3d3e1591b79fdcc416928862d",
+  "runtimeProductUnchanged": true,
+  "productDiff": [],
+  "frozenDeliveryUnchanged": true,
+  "scriptOverlaySha256": "923b93d6466b3bf87b15061b5820c2118f75a1975651901110e5ac0ca6a1293e",
+  "runtimeSourcesSha256": {
+    "app/game/ClanShipInterior.tsx": "2cbcf5ddfc4ffad9fdb81a632dc950f8d636e20f49f4acbaea5af991cc19e960",
+    "app/game/GameClient.tsx": "3e93e9ca2791224d5653f266df7e4d625d7c88fca075da8a137391fbde39bb19"
+  },
+  "recipeCommand": [
+    "node",
+    "scripts/qa-clan-ship-browser.mjs"
+  ],
+  "recipeEnvironment": {
+    "CHROMIUM_EXECUTABLE": "/usr/bin/chromium",
+    "CLAN_SHIP_HEADLESS": "1",
+    "CLAN_SHIP_QA_OUTPUT": "outputs/qa-clan-ship-ci-fix-20261109",
+    "CLAN_SHIP_SOURCE_COMMIT": "1edbf69117949df3d3e1591b79fdcc416928862d"
+  },
+  "recipeExitCode": 0,
+  "browserVersion": "154.0.8037.57",
+  "browserMode": "headless",
+  "checksPassed": 22,
+  "checksFailed": 0,
+  "walkingSamples": 2601,
+  "walkingRooms": [
+    "hangar",
+    "soins",
+    "trophees",
+    "archives",
+    "conseil",
+    "entrainement",
+    "armurerie"
+  ],
+  "screenshots": 11,
+  "errors": [],
+  "missingAssets": [],
+  "serviceApproaches": [
+    {
+      "roomId": "archives",
+      "before": {
+        "room": "archives",
+        "x": 240,
+        "y": 645,
+        "moving": "false"
+      },
+      "observedAfterPlanning": {
+        "room": "archives",
+        "x": 270.03,
+        "y": 645,
+        "moving": "true"
+      },
+      "arrived": {
+        "room": "archives",
+        "x": 789.99,
+        "y": 645,
+        "moving": "false"
+      }
+    }
+  ],
+  "timeoutMs": 45000,
+  "lint": {
+    "command": [
+      "node",
+      "node_modules/eslint/bin/eslint.js",
+      "scripts/qa-clan-ship-browser.mjs",
+      "--max-warnings",
+      "0"
+    ],
+    "exitCode": 0,
+    "log": "qa-clan-ship-eslint.log"
+  },
+  "limits": [
+    "This run uses the exact published product sources from the source basis commit with a recorded test-script overlay. It is not attributed to a later commit.",
+    "The CI failure and failed sandbox launcher are preserved separately.",
+    "This is automated browser interaction and original screenshot capture, not a physical device or artistic qualification."
+  ]
+}

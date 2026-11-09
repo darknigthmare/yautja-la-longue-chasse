@@ -23,7 +23,7 @@ seed.settings.masterVolume = 0;
 const checkoutCommit = execFileSync('git', ['rev-parse', 'HEAD'], { cwd: root, encoding: 'utf8' }).trim();
 const workingTreeDirty = execFileSync('git', ['status', '--porcelain'], { cwd: root, encoding: 'utf8' }).trim().length > 0;
 const headless = process.env.CLAN_SHIP_HEADLESS !== '0';
-const report = { startedAt: new Date().toISOString(), sourceCommit: process.env.CLAN_SHIP_SOURCE_COMMIT || checkoutCommit, checkoutCommit, workingTreeDirty, runtime: 'actual desktop GameClient via Vite', browserMode: headless ? 'headless' : 'headed', focusTransitions: [], pointerCommands: [], checks: [], errors: [], missingAssets: [], screenshots: [], walking: { samples: 0, rooms: [], transitions: [] } };
+const report = { startedAt: new Date().toISOString(), sourceCommit: process.env.CLAN_SHIP_SOURCE_COMMIT || checkoutCommit, checkoutCommit, workingTreeDirty, runtime: 'actual desktop GameClient via Vite', browserMode: headless ? 'headless' : 'headed', focusTransitions: [], pointerCommands: [], serviceApproaches: [], checks: [], errors: [], missingAssets: [], screenshots: [], walking: { samples: 0, rooms: [], transitions: [] } };
 const roomRing = ['hangar', 'armurerie', 'entrainement', 'conseil', 'archives', 'trophees', 'soins'];
 const missing = new Set();
 const loadedRoomArt = new Set();
@@ -102,6 +102,14 @@ try {
     moving: element.getAttribute('data-interior-moving'),
   }));
   const waitStopped = () => page.waitForFunction(() => document.querySelector('[data-clan-interior]')?.getAttribute('data-interior-moving') === 'false', null, { timeout: 45000 });
+  const waitAtService = roomId => page.waitForFunction(room => {
+    const scene = document.querySelector('[data-clan-interior]');
+    // Planning publishes an idle pose before the first animation-frame step.
+    // The actual service proximity is required as well as the final stop.
+    return scene?.getAttribute('data-interior-room') === room &&
+      scene.getAttribute('data-interior-moving') === 'false' &&
+      scene.querySelector(`[data-interior-service="${room}"]`)?.getAttribute('data-interior-ready') === 'true';
+  }, roomId, { timeout: 45000 });
   const frames = () => page.evaluate(() => new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve))));
   const holdKeyUntilMovement = async (key, axis, direction, start, minimum) => {
     await page.keyboard.down(key);
@@ -381,10 +389,14 @@ try {
     await page.locator('[data-interior-world]').focus();
     await page.keyboard.press('e'); await frames();
     assert.equal(await page.locator('[data-station-screen="codex"]').count(), 0, 'A distant interaction must not open the codex');
+    const approach = { roomId: 'archives', before: await actor(), observedAfterPlanning: null, arrived: null };
+    report.serviceApproaches.push(approach);
     await page.locator('[data-interior-service]').click();
     await page.waitForTimeout(100);
     assert.equal(await page.locator('[data-station-screen="codex"]').count(), 0, 'Approaching a service must not activate it');
-    await waitStopped();
+    approach.observedAfterPlanning = await actor();
+    await waitAtService('archives');
+    approach.arrived = await actor();
     assert.equal(await page.locator('[data-interior-interact]').getAttribute('data-interior-ready'), 'true');
     assert.equal(await page.locator('[data-station-screen="codex"]').count(), 0, 'Arrival still requires confirmation');
     await page.locator('[data-interior-world]').focus();
