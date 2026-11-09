@@ -1,0 +1,234 @@
+{
+  "source": "AST extracted current solvePlayerRigFrame and currentHuntFieldWorkV112, original solveHunterRig; no browser run",
+  "scope": "report snapshots immediately before/after screenshots; exact capture-frame states were not stored",
+  "measurements": [
+    {
+      "snapshot": "beforeRelease",
+      "elapsed": 22.599999999999998,
+      "grip": {
+        "x": 2582.928380708604,
+        "y": 107.64531258135159
+      },
+      "handFront": {
+        "x": 2620.8682059195576,
+        "y": 104.0171261911859
+      },
+      "handBackPivot": {
+        "x": 2531.635949013961,
+        "y": 124.8547548539716
+      },
+      "handBackEquivalent": {
+        "x": 2528.487271424078,
+        "y": 127.8200489695543
+      },
+      "distances": {
+        "front": 38.11291216267124,
+        "backPivot": 54.102481019674485,
+        "backEquivalent": 58.05905931431541
+      },
+      "pose": "climb",
+      "player": {
+        "x": 2546.928380708604,
+        "y": 75.16531258135159,
+        "previousY": 76.32914975170685,
+        "width": 72,
+        "height": 116,
+        "velocityX": 109.69474312198813,
+        "velocityY": -69.6133629186807,
+        "facing": 1,
+        "grounded": false,
+        "aerialBoostUsed": false,
+        "health": 151.84,
+        "maxHealth": 160,
+        "stamina": 81.90000000000103,
+        "maxStamina": 100,
+        "energy": 100,
+        "maxEnergy": 100,
+        "medicomps": 3,
+        "activeWeaponSlot": 1,
+        "weaponAmmo": [
+          1,
+          -1
+        ],
+        "cloaked": false,
+        "maskOn": true,
+        "aiming": false,
+        "aimAngle": 1.8319120948753227,
+        "aimPoint": {
+          "x": 2477.2455833333074,
+          "y": 568.32
+        },
+        "climbing": true,
+        "climbZoneId": "v112-canopy-jungle-vey-0-1-grip",
+        "climbReattachSeconds": 0,
+        "climbGripExhausted": false,
+        "gauntletOpen": 0,
+        "bladeExtension": 0,
+        "dreadAngles": [
+          0.09264735194523635,
+          0.0969342516197219,
+          0.10098833872980832,
+          0.10479827306220275,
+          0.10834919084775464,
+          0.11162146309931933,
+          0.11458915866768726
+        ],
+        "dreadVelocities": [
+          0.05978830912982481,
+          0.06461519409413688,
+          0.06925988216338881,
+          0.07368425251934531,
+          0.07785499396334178,
+          0.08174390069991183,
+          0.08532764881524678
+        ],
+        "attackFlash": 0,
+        "melee": {
+          "phase": "idle",
+          "phaseRemainingSeconds": 0,
+          "comboIndex": 0,
+          "actionSequence": 0,
+          "facing": 1,
+          "buffered": false,
+          "queuedFacing": 1,
+          "hitTargetIds": [],
+          "profile": null,
+          "queuedProfile": null,
+          "actionKind": "light",
+          "lockedTargetId": null,
+          "defensePhase": "neutral",
+          "defenseRemainingSeconds": 0,
+          "defenseCooldownSeconds": 0,
+          "dodgeDirection": 1,
+          "parryConsumed": false
+        },
+        "invulnerability": 0,
+        "meleeCooldown": 0,
+        "weaponCooldown": 0,
+        "weaponChargeSeconds": 0,
+        "scanCooldown": 0,
+        "healCooldown": 0,
+        "canopySwing": {
+          "supportId": "v112-canopy-jungle-vey-0-1-grip",
+          "length": 80.1170030923,
+          "angle": 0.5654799324242895,
+          "angularVelocity": 1.6216163239702241
+        }
+      }
+    },
+    {
+      "snapshot": "final",
+      "elapsed": 26.59999999999977,
+      "grip": {
+        "x": 2779.135369770736,
+        "y": 162.43251361568122
+      },
+      "handFront": {
+        "x": 2819.669893280588,
+        "y": 165.6624564784475
+      },
+      "handBackPivot": {
+        "x": 2730.472609852734,
+        "y": 184.61560447557864
+      },
+      "handBackEquivalent": {
+        "x": 2727.7614265146567,
+        "y": 187.98556362433362
+      },
+      "distances": {
+        "front": 40.663006862103614,
+        "backPivot": 53.48040503713076,
+        "backEquivalent": 57.37804815801542
+      },
+      "pose": "climb",
+      "player": {
+        "x": 2743.135369770736,
+        "y": 129.9525136156812,
+        "previousY": 128.07303334993207,
+        "width": 72,
+        "height": 116,
+        "velocityX": -229.26113201951532,
+        "velocityY": 110.73399880189254,
+        "facing": 1,
+        "grounded": false,
+        "aerialBoostUsed": false,
+        "health": 151.84,
+        "maxHealth": 160,
+        "stamina": 67.68333333333553,
+        "maxStamina": 100,
+        "energy": 100,
+        "maxEnergy": 100,
+        "medicomps": 3,
+        "activeWeaponSlot": 1,
+        "weaponAmmo": [
+          1,
+          -1
+        ],
+        "cloaked": false,
+        "maskOn": true,
+        "aiming": false,
+        "aimAngle": 2.332972119602741,
+        "aimPoint": {
+          "x": 2398.4080833333087,
+          "y": 568.32
+        },
+        "climbing": true,
+        "climbZoneId": "v112-canopy-jungle-vey-0-2-grip",
+        "climbReattachSeconds": 0,
+        "climbGripExhausted": false,
+        "gauntletOpen": 0,
+        "bladeExtension": 0,
+        "dreadAngles": [
+          0.026695037822181678,
+          0.03349299867522912,
+          0.041023922520690634,
+          0.04929562888309009,
+          0.05830906788303608,
+          0.06805631873124783,
+          0.07851801836060979
+        ],
+        "dreadVelocities": [
+          -0.46510302940270304,
+          -0.4852721474098502,
+          -0.5032225665432228,
+          -0.5187144310881018,
+          -0.5314938607412381,
+          -0.5412935775780588,
+          -0.547833808369775
+        ],
+        "attackFlash": 0,
+        "melee": {
+          "phase": "idle",
+          "phaseRemainingSeconds": 0,
+          "comboIndex": 0,
+          "actionSequence": 0,
+          "facing": 1,
+          "buffered": false,
+          "queuedFacing": 1,
+          "hitTargetIds": [],
+          "profile": null,
+          "queuedProfile": null,
+          "actionKind": "light",
+          "lockedTargetId": null,
+          "defensePhase": "neutral",
+          "defenseRemainingSeconds": 0,
+          "defenseCooldownSeconds": 0,
+          "dodgeDirection": 1,
+          "parryConsumed": false
+        },
+        "invulnerability": 0,
+        "meleeCooldown": 0,
+        "weaponCooldown": 0,
+        "weaponChargeSeconds": 0,
+        "scanCooldown": 0,
+        "healCooldown": 0,
+        "canopySwing": {
+          "supportId": "v112-canopy-jungle-vey-0-2-grip",
+          "length": 135.96584993363456,
+          "angle": 0.4499584357335579,
+          "angularVelocity": -1.872551050770483
+        }
+      }
+    }
+  ]
+}

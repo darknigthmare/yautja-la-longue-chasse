@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "classification": "FINAL_IK_PRODUCT_BYTE_COMPARISON_NOT_A_NEW_EXECUTION",
+  "executedCheckout": "ce82e2b742c2243e524e23aee4efe26cd5c6a644",
+  "comparedCommit": "cfa730ba65c03d353eb97acfec56eabc383a499b",
+  "receipts": [
+    {
+      "path": "native-command.json",
+      "sourceFilesMatched": 46,
+      "sha256": "917d2ade6a9dc0e54547ff4c47bb73c156a5d776768abc6c5db31bfe3093bda5"
+    },
+    {
+      "path": "build-command.json",
+      "sourceFilesMatched": 15,
+      "sha256": "fb0828c9884b75fd09c3e5ec80020c8888c6b2b670a4a49de6ee2fd7f82fb8d5"
+    },
+    {
+      "path": "lint-command.json",
+      "sourceFilesMatched": 20,
+      "sha256": "86d435f208273929cd010724b8ce515cfe0b192697f8c737c4c059c35457921a"
+    }
+  ],
+  "scope": "The actual commands ran on ce82e2b with the rear-hand IK overlay. Their recorded bytes match cfa730; no new execution at cfa730 is claimed."
+}

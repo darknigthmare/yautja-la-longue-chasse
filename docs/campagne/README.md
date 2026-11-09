@@ -236,3 +236,12 @@ Les décisions L, les huit chasses, les 108 classeurs sources et les trois lots
 du 8 novembre gardent leur contenu et leurs preuves datées. Le retour personnel
 **R2-M027**, la recette globale **OPS-Q26** et les huit qualifications restantes
 de la chasse ne sont pas déclarés intégralement terminés par ce raccord.
+
+## Raccord de terrain du 9 novembre 2026 : skinning et canopée
+
+L’[avenant de terrain](AVENANT_SKINNING_CANOPEE_20261109.md) et le
+[nouveau suivi](../../production/skinning-canopy-20261109/README.md) détaillent
+le contrat partagé des gestes de dépeçage/prélèvement, la navigation des arbres
+et supports flexibles, les retours procéduraux et la reprise du sidecar réel.
+Les premières passes restent datées ; la qualification finale de cette tranche
+est distincte des huit Restant V112, des anciens classeurs et des essais humains.

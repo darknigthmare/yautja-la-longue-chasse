@@ -1,0 +1,86 @@
+{
+  "schemaVersion": 1,
+  "observedAtUtc": "2026-11-09T07:05:56.623775+00:00",
+  "checkoutCommit": "8a25c5cf206647c3490ac362452c2eb22584f07e",
+  "workingTreeDirty": true,
+  "classification": "BOUNDED_FIELD_PRESENTATION_MODEL_CHECKS_NOT_BROWSER_OR_ART_QUALIFICATION",
+  "command": [
+    "node",
+    "--experimental-strip-types",
+    "--test",
+    "--test-concurrency=1",
+    "tests/hunt-field-presentation-v112.test.mjs"
+  ],
+  "testExitCode": 0,
+  "tests": 11,
+  "lintCommand": [
+    "node",
+    "node_modules/eslint/bin/eslint.js",
+    "app/game/systems/huntFieldPresentationV112.ts",
+    "app/game/systems/canopySupportRendererV112.ts",
+    "tests/hunt-field-presentation-v112.test.mjs",
+    "--max-warnings",
+    "0"
+  ],
+  "lintExitCode": 0,
+  "sandboxNetworkEnabled": true,
+  "overlays": [
+    {
+      "path": "app/game/systems/huntFieldPresentationV112.ts",
+      "bytes": 13406,
+      "sha256": "1883adca617ac9b07be8f63c32c3187052fa5423450561aa846c2938ed8606b6"
+    },
+    {
+      "path": "app/game/systems/canopySupportRendererV112.ts",
+      "bytes": 8445,
+      "sha256": "5e4190994e7493975842481b8423d7c5beebcc557a347ed23705c09f0800cd51"
+    },
+    {
+      "path": "tests/hunt-field-presentation-v112.test.mjs",
+      "bytes": 11313,
+      "sha256": "20d5c0cf8cfc545200db643c908e9a5d17d7ff5510e72b16db9c0e5ff5dc0a21"
+    }
+  ],
+  "probe": {
+    "svg": "contact-probes.svg",
+    "png": "contact-probes.png",
+    "data": "contact-probes.json",
+    "panels": 8,
+    "classification": "PURE_KINEMATIC_PROBES_NOT_GAME_OR_ART_SCREENSHOTS",
+    "svgProduced": true,
+    "jsonProduced": true,
+    "pngProduced": true,
+    "pngRenderer": "Inkscape CLI (not browser screenshot)",
+    "pngCommand": [
+      "inkscape",
+      "/tmp/field-visuals-20261109/contact-probes.svg",
+      "--export-type=png",
+      "--export-filename=/tmp/field-visuals-20261109/contact-probes.png"
+    ],
+    "pngExitCode": 0,
+    "browserAttempts": "file:// denied by managed Chromium; HTTP SVG screenshot timed out. Both browsers closed. Neither attempt is qualified as a screenshot success.",
+    "files": [
+      {
+        "path": "contact-probes.svg",
+        "bytes": 23914,
+        "sha256": "e9954ae8ea4758c4163db88597c812b1b5a809d3211a8f83306c1ce10447a257"
+      },
+      {
+        "path": "contact-probes.json",
+        "bytes": 97455,
+        "sha256": "627611fb91aff510be48bb05a7eec0c6d46a56ad2c734c77aa89b7aa43dfd6fb"
+      },
+      {
+        "path": "contact-probes.png",
+        "bytes": 113531,
+        "sha256": "d2a2aeed9cb1e605833ca8df10d91fe14315150e93cfcbcf65ec2ec2b0b773bc"
+      }
+    ]
+  },
+  "limitations": [
+    "No real game browser, human art approval, physical device or whole campaign validation is attributed to these model checks.",
+    "The optional contact diagram is a technical skeleton diagnostic rendered from actual rig matrices, not a product capture.",
+    "Animation uses the original articulated layers with procedural offsets; no new independently drawn sprite clip is claimed.",
+    "Source files were overlays on the recorded checkout."
+  ]
+}

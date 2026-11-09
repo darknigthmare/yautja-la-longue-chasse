@@ -1,0 +1,178 @@
+#!/usr/bin/env python3
+"""Independently read delivered OOXML, source records and protected history."""
+from hashlib import sha256
+import html
+import json
+from pathlib import Path
+import posixpath
+import re
+import subprocess
+import xml.etree.ElementTree as ET
+from zipfile import ZipFile
+
+HERE = Path(__file__).resolve().parent
+ROOT = HERE.parents[1]
+MAIN = 'http://schemas.openxmlformats.org/spreadsheetml/2006/main'
+REL = 'http://schemas.openxmlformats.org/officeDocument/2006/relationships'
+
+
+def tag(name):
+    return '{' + MAIN + '}' + name
+
+
+def load(path):
+    return json.loads(path.read_text())
+
+
+def git(*args):
+    return subprocess.check_output(['git', *args], cwd=ROOT)
+
+
+def observed(path):
+    target = ROOT / path
+    assert not target.is_symlink(), path
+    if target.is_file():
+        return target.read_bytes()
+    assert git('ls-files', '-t', '--', path).decode().strip() == 'S ' + path, path
+    return git('show', 'HEAD:' + path)
+
+
+def cell_text(cell):
+    assert cell.attrib['t'] == 'inlineStr' and cell.find(tag('is')) is not None
+    return ''.join(cell.find(tag('is')).itertext())
+
+
+def assert_row(cells, row, values):
+    for column, value in values.items():
+        assert cells[column + str(row)] == str(value), (column + str(row), value)
+
+
+def main():
+    data = load(HERE / 'qualification.json')
+    baseline = load(HERE / 'baseline.json')
+    report = load(HERE / 'verification-classeur.json')
+    manifest = load(HERE / 'manifest-final.json')
+    assert data['baseCommit'] == baseline['baseCommit'] == report['baseCommit'] == manifest['baseCommit']
+    assert sha256((HERE / 'qualification.json').read_bytes()).hexdigest() == report['qualificationSha256']
+    assert sha256((HERE / 'baseline.json').read_bytes()).hexdigest() == report['baselineSha256']
+    assert report['newGlobalClosuresClaimed'] == 0 and report['verification']['nativeExcelExecuted'] is False
+    assert report['deliveryChecks'] == data['deliveryChecks']
+    assert report['criteria'] == len(data['criteria'])
+    for item in (report['workbook'], report['companion']):
+        raw = observed(item['path'])
+        assert len(raw) == item['bytes'] and sha256(raw).hexdigest() == item['sha256']
+    cells_checked = links = 0
+    workbook = ROOT / report['workbook']['path']
+    with ZipFile(workbook) as archive:
+        names = archive.namelist()
+        assert len(names) == len(set(names)) and archive.testzip() is None
+        assert not any('vba' in n.lower() or n.endswith('.bin') for n in names)
+        documents = {n: ET.fromstring(archive.read(n)) for n in names if n.endswith(('.xml', '.rels'))}
+        assert not any(n.tag == tag('f') for root in documents.values() for n in root.iter())
+        sheets = list(documents['xl/workbook.xml'].find(tag('sheets')))
+        assert [s.attrib['name'] for s in sheets] == ['Synthese','Criteres','Recettes','Ressources','Preuves','Sources','RestantV112','Continuite','Historique']
+        relationships = {r.attrib['Id']: r.attrib['Target'] for r in documents['xl/_rels/workbook.xml.rels']}
+        parsed = {}
+        for sheet in sheets:
+            filename = posixpath.normpath(posixpath.join('xl', relationships[sheet.attrib['{' + REL + '}id']]))
+            node = documents[filename]
+            rows = list(node.find(tag('sheetData')))
+            assert len(rows) >= 5
+            pane = node.find(tag('sheetViews')).find(tag('sheetView')).find(tag('pane'))
+            assert pane.attrib['state'] == 'frozen' and pane.attrib['xSplit'] == '2' and pane.attrib['ySplit'] == '4'
+            assert node.find(tag('autoFilter')).attrib['ref'].startswith('A4:')
+            values = {}
+            for row in rows:
+                assert float(row.attrib['ht']) >= 32
+                for cell in row:
+                    value = cell_text(cell)
+                    assert len(value) <= 32767
+                    values[cell.attrib['r']] = value
+                    cells_checked += 1
+            parsed[sheet.attrib['name']] = values
+        for filename, node in documents.items():
+            if not filename.endswith('.rels'):
+                continue
+            parent = '' if filename == '_rels/.rels' else posixpath.join(posixpath.dirname(posixpath.dirname(filename)), posixpath.basename(filename)[:-5])
+            for relation in node:
+                target = relation.attrib['Target']
+                if relation.attrib.get('TargetMode') == 'External':
+                    assert target.startswith('https://github.com/darknigthmare/yautja-la-longue-chasse/blob/')
+                    assert not re.search(r'\s', target)
+                    links += 1
+                else:
+                    resolved = target.lstrip('/') if target.startswith('/') else posixpath.normpath(posixpath.join(posixpath.dirname(parent), target))
+                    assert resolved in names, (filename, target)
+        for font in documents['xl/styles.xml'].find(tag('fonts')):
+            assert float(font.find(tag('sz')).attrib['val']) >= 11
+        fields = ['id','domain','title','acceptance','implementation','implementationStatus','resourceStatus','behaviorStatus','browserStatus','physicalStatus','artStatus','qualification']
+        for row, criterion in enumerate(data['criteria'], 5):
+            wanted = dict(zip('ABCDEFGHIJKL', [criterion[k] for k in fields]))
+            wanted['M'] = ' · '.join(criterion['evidence']) or 'En attente'
+            wanted['N'] = criterion['limits']
+            assert_row(parsed['Criteres'], row, wanted)
+        recipe_row = 5
+        for criterion in data['criteria']:
+            for index, scenario in enumerate(criterion['checks'], 1):
+                assert_row(parsed['Recettes'], recipe_row, {'A':criterion['id']+'-'+str(index),'B':criterion['id'],'C':scenario,'D':criterion['behaviorStatus'],'E':criterion['browserStatus'],'F':' · '.join(criterion['evidence']) or 'En attente','G':criterion['limits']})
+                recipe_row += 1
+        for row, asset in enumerate(data.get('assets', []), 5):
+            assert_row(parsed['Ressources'], row, dict(zip('ABCDEFGH', [asset[k] for k in ('id','path','purpose','generatedStatus','integrationStatus','testedStatus','humanReviewStatus','sha256')])))
+        for row, proof in enumerate(data['evidence'], 5):
+            assert_row(parsed['Preuves'], row, dict(zip('ABCDEFGHI', [proof['id'],proof['kind'],proof['result'],proof['scope'],proof['sourceCommit'],proof['executionContext'],' '.join(proof['command']),proof['exitCode'],proof['sha256']])))
+        for row, source in enumerate(report['sourceInputs'], 5):
+            assert_row(parsed['Sources'], row, dict(zip('ABCDEF', [source['id'],source['path'],source['scope'],source.get('reference','EXECUTION'),source['bytes'],source['sha256']])))
+        expected_remaining = next(s['rows'] for s in load(ROOT / 'docs/hunt-mechanics-v112.json')['sheets'] if s['name'] == 'Restant')
+        assert expected_remaining == baseline['remainingV112'] == report['remainingV112']
+        assert len(expected_remaining) == 8
+        for row, item in enumerate(expected_remaining, 5):
+            assert item['status'] == 'NON_QUALIFIE'
+            assert_row(parsed['RestantV112'], row, dict(zip('ABCDE', [item[k] for k in ('id','status','topic','rule','acceptance')])))
+        assert len(baseline['protectedFiles']) == report['protectedEntries']
+        for row, item in enumerate(baseline['protectedFiles'], 5):
+            assert_row(parsed['Historique'], row, {'B':item['scope'],'C':item['path'],'D':item['bytes'],'E':item['sha256'],'F':item['gitBlob'],'G':'OCTETS_CONTROLES_CONTRE_BASELINE'})
+        assert cells_checked == report['verification']['cellsChecked'] and links == report['verification']['hyperlinksChecked']
+    cache = {}
+    for item in baseline['protectedFiles']:
+        if item['path'] not in cache:
+            cache[item['path']] = observed(item['path'])
+        raw = cache[item['path']]
+        assert len(raw) == item['bytes'] and sha256(raw).hexdigest() == item['sha256'], item['path']
+    for item in report['sourceInputs']:
+        raw = git('show', data['baseCommit'] + ':' + item['path']) if item.get('reference') == 'BASE' else observed(item['path'])
+        assert len(raw) == item['bytes'] and sha256(raw).hexdigest() == item['sha256'], item['path']
+    for proof in data['evidence']:
+        if not proof.get('requireCurrentSources'):
+            continue
+        payload = json.loads(observed(proof['path']))
+        if proof['sourceBindingField'] == 'sourcesAfter':
+            assert payload.get('sourceBytesStable') is True and payload['sourcesBefore'] == payload['sourcesAfter']
+        bindings = payload[proof['sourceBindingField']]
+        if isinstance(bindings, dict):
+            bindings = [dict(value, path=path) if isinstance(value,dict) else {'path':path,'sha256':value} for path,value in bindings.items()]
+        assert bindings
+        for binding in bindings:
+            raw = observed(binding['path'])
+            assert sha256(raw).hexdigest() == binding['sha256'], (proof['id'], binding['path'])
+            if 'bytes' in binding:
+                assert len(raw) == binding['bytes']
+    for item in report['linkTargets']:
+        if item['ref'] == data['branch']:
+            assert (ROOT / item['path']).is_file(), item['path']
+        else:
+            entry = git('ls-tree', '-z', item['ref'], '--', item['path']).decode().split('\0')[0]
+            assert entry and entry.split('\t', 1)[1] == item['path'], item
+    assert manifest['fileCount'] == len(manifest['files'])
+    for item in manifest['files'] + manifest.get('deliveryDocuments', []):
+        raw = observed(item['path'])
+        assert len(raw) == item['bytes'] and sha256(raw).hexdigest() == item['sha256'], item['path']
+    actual = {str(p.relative_to(ROOT)) for p in HERE.rglob('*') if p.is_file() and p.name != 'manifest-final.json' and '__pycache__' not in p.parts}
+    assert actual == {item['path'] for item in manifest['files']}
+    companion = (ROOT / report['companion']['path']).read_text()
+    for criterion in data['criteria']:
+        assert html.escape(criterion['id']) in companion and html.escape(criterion['acceptance']) in companion
+    print(json.dumps({'status':'PASS_INDEPENDENT_OOXML_AND_HISTORY','sheets':len(sheets),'criteria':len(data['criteria']),'cellsChecked':cells_checked,'linksChecked':links,'protectedUniqueFiles':len(cache),'originalWorkbooks':108,'frozenDeliveryFiles':baseline['frozenDeliveryFiles'],'remainingV112':8,'deliveryFiles':manifest['fileCount'],'nativeExcelExecuted':False},ensure_ascii=False))
+
+
+if __name__ == '__main__':
+    main()

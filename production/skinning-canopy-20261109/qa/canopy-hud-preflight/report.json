@@ -1,0 +1,123 @@
+{
+  "scope": "Standalone actual HUD component; constructed geometry and actor state; not HuntCanvas, campaign, physical-device or human qualification",
+  "baseCommit": "8a25c5cf206647c3490ac362452c2eb22584f07e",
+  "sourceFiles": {
+    "app/game/HuntCanopyHudV112.tsx": "23d2b6ccf3f1d619aa3dd6831800bedaf981eb94b9910c2c14d4ccd9f715db18",
+    "app/game/HuntCanopyHudV112.module.css": "861f4bb5782d43bcb3967d96fb6dd72c2dee411b25da95a0309ba8072402ccfe",
+    "app/game/systems/canopyNavigationV112.ts": "7ee562ab163521a49f5eaf72a52216a9a8f3e2400ef55eca0d5eb482eab181f1",
+    "app/game/systems/canopyTraversalV112.ts": "82094c0d4dc1dccf18c3e89a381647572bdace86fcc51cb62cf17560ff076d57",
+    "app/game/systems/platformCollision.ts": "226a07c2b61d3300205cb986837214fc9bdda043aff09c478b1e50b5a4094d40",
+    "app/game/controlBindingLabels.ts": "3a4ba284a71fa9f624710cd1d19a2e305953c5325035af05c23b81ad34b0a3a7",
+    "app/game/systems/controlBindings.ts": "b29d8c5022ad5413180cfc5c1d57cdf9936211571bad759c6e00620fa0517993",
+    "app/game/systems/huntAccessibilityV112.ts": "8a5268dc1d2e52451f4e9d1390d59a7f974a45c2c7425238cdf5769ff1edfac8"
+  },
+  "entrySha256": "67c5a3a5965c40618726a38cc3e246b30f0c8a983992062131dc8efb157a26f7",
+  "cssSha256": "0abd3fa04b6949ccbb96447b4d338d6c867486ce886104baa61b9727642cfaaf",
+  "cases": [
+    {
+      "viewport": 390,
+      "requestedMode": "ready",
+      "mode": "resting",
+      "height": 101.1875,
+      "width": 358,
+      "overflow": false,
+      "documentOverflow": false
+    },
+    {
+      "viewport": 390,
+      "requestedMode": "climbing",
+      "mode": "climbing",
+      "height": 101.1875,
+      "width": 358,
+      "overflow": false,
+      "documentOverflow": false
+    },
+    {
+      "viewport": 390,
+      "requestedMode": "swinging",
+      "mode": "swinging",
+      "height": 120.78125,
+      "width": 358,
+      "overflow": false,
+      "documentOverflow": false
+    },
+    {
+      "viewport": 390,
+      "requestedMode": "exhausted",
+      "mode": "exhausted",
+      "height": 101.1875,
+      "width": 358,
+      "overflow": false,
+      "documentOverflow": false
+    },
+    {
+      "viewport": 390,
+      "requestedMode": "cooldown",
+      "mode": "resting",
+      "height": 120.78125,
+      "width": 358,
+      "overflow": false,
+      "documentOverflow": false
+    },
+    {
+      "viewport": 320,
+      "requestedMode": "ready",
+      "mode": "resting",
+      "height": 101.1875,
+      "width": 288,
+      "overflow": false,
+      "documentOverflow": false
+    },
+    {
+      "viewport": 320,
+      "requestedMode": "climbing",
+      "mode": "climbing",
+      "height": 120.78125,
+      "width": 288,
+      "overflow": false,
+      "documentOverflow": false
+    },
+    {
+      "viewport": 320,
+      "requestedMode": "swinging",
+      "mode": "swinging",
+      "height": 120.78125,
+      "width": 288,
+      "overflow": false,
+      "documentOverflow": false
+    },
+    {
+      "viewport": 320,
+      "requestedMode": "exhausted",
+      "mode": "exhausted",
+      "height": 120.78125,
+      "width": 288,
+      "overflow": false,
+      "documentOverflow": false
+    },
+    {
+      "viewport": 320,
+      "requestedMode": "cooldown",
+      "mode": "resting",
+      "height": 120.78125,
+      "width": 288,
+      "overflow": false,
+      "documentOverflow": false
+    }
+  ],
+  "captures": [
+    {
+      "file": "swinging-390.png",
+      "bytes": 33337,
+      "sha256": "bcc95c5b84a3fd0fb4ed67646e51db2a5ed731777346db4527a06cedea3ab5e2"
+    },
+    {
+      "file": "swinging-320.png",
+      "bytes": 30131,
+      "sha256": "bc11cc5cbfaac28d8adbbf527a3481975186873b7a2487aba0061a8d632f4121"
+    }
+  ],
+  "errors": [],
+  "browser": "154.0.8037.57",
+  "passed": true
+}

@@ -1,0 +1,1808 @@
+{
+  "schemaVersion": 1,
+  "title": "Yautja — skinning et canopée : réalisation et qualification du 9 novembre 2026",
+  "releaseState": "QUALIFICATION_BORNEE",
+  "scope": "Travail de terrain, navigation et lisibilité de canopée, ressources consommées par le rendu et reprise du stockage actif. Critères dérivés distincts des clôtures historiques et de la campagne interactive complète.",
+  "baseCommit": "8a25c5cf206647c3490ac362452c2eb22584f07e",
+  "mainBaseCommit": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+  "branch": "codex/reprise-bible-chasse-20261109",
+  "reviewedCodeCommit": "cfa730ba65c03d353eb97acfec56eabc383a499b",
+  "executedProductCommit": "cfa730ba65c03d353eb97acfec56eabc383a499b",
+  "sourceReferences": [
+    {
+      "id": "HUNT-CONTRACT",
+      "path": "docs/hunt-mechanics-v112.md",
+      "line": 15,
+      "reference": "BASE",
+      "scope": "Commandes, gestes distincts, emport, usure et atelier."
+    },
+    {
+      "id": "HUNT-CATALOG",
+      "path": "docs/hunt-mechanics-v112.json",
+      "line": 139,
+      "reference": "BASE",
+      "scope": "Critères et valeurs V112 conservés ; Restant exact."
+    },
+    {
+      "id": "BIBLE-TROPHY",
+      "path": "docs/campagne/BIBLE_DE_CAMPAGNE.md",
+      "line": 955,
+      "reference": "BASE",
+      "scope": "Original unique, provenance et quatre usages."
+    },
+    {
+      "id": "HUNT-RUNTIME",
+      "path": "app/game/HuntCanvas.tsx",
+      "reference": "CODE_REVIEW",
+      "scope": "Vraies entrées, progression, rendu et frontières des rites/canopée."
+    },
+    {
+      "id": "ACTIVE-SAVE",
+      "path": "app/game/systems/activeHuntSave.ts",
+      "reference": "CODE_REVIEW",
+      "scope": "Sidecar actif réel et restauration."
+    },
+    {
+      "id": "NAV-MODEL",
+      "path": "app/game/systems/canopyNavigationV112.ts",
+      "reference": "CODE_REVIEW",
+      "scope": "Modèle pur de navigation et refus géométriques."
+    },
+    {
+      "id": "PREVIOUS-DELIVERY",
+      "path": "production/reprise-chasse-bible-20261109/README.md",
+      "reference": "BASE",
+      "scope": "Livraison précédente gelée, qualification bornée conservée."
+    },
+    {
+      "id": "RITE-MODEL",
+      "path": "app/game/systems/ritesOfHuntV77.ts",
+      "reference": "CODE_REVIEW",
+      "scope": "Admissibilité, stock et machine de rites."
+    },
+    {
+      "id": "RITE-RUNTIME",
+      "path": "app/game/systems/huntRitesRuntimeV77.ts",
+      "reference": "CODE_REVIEW",
+      "scope": "Menu et contexte natif des gestes."
+    },
+    {
+      "id": "RITE-MENU",
+      "path": "app/game/HuntRitesMenuV77.tsx",
+      "reference": "CODE_REVIEW",
+      "scope": "Progression, coûts, stock et refus accessibles."
+    },
+    {
+      "id": "FIELD-PRESENTATION",
+      "path": "app/game/systems/huntFieldPresentationV112.ts",
+      "reference": "CODE_REVIEW",
+      "scope": "Pose IK et effets procéduraux reliés à la vraie opération de terrain."
+    },
+    {
+      "id": "CANOPY-RENDERER",
+      "path": "app/game/systems/canopySupportRendererV112.ts",
+      "reference": "CODE_REVIEW",
+      "scope": "Supports rigides/flexibles et repos, textures conservant la géométrie."
+    },
+    {
+      "id": "QA-DURABLE",
+      "path": "scripts/qa-skinning-canopy-durable-browser-20261109.mjs",
+      "reference": "CODE_REVIEW",
+      "scope": "Recette du vrai GameClient et sidecar ; stockage natif, segment terminal préparé explicitement."
+    },
+    {
+      "id": "QA-DURABLE-FIXTURE",
+      "path": "tests/browser/skinning-canopy-durable-20261109.fixture.jsx",
+      "reference": "CODE_REVIEW",
+      "scope": "Fixture de recette ; toute admission, proie et frontière préparée restent déclarées."
+    },
+    {
+      "id": "CANOPY-HUD",
+      "path": "app/game/HuntCanopyHudV112.tsx",
+      "reference": "CODE_REVIEW",
+      "scope": "HUD et commandes propres au support et aux affectations."
+    },
+    {
+      "id": "CANOPY-HUD-CSS",
+      "path": "app/game/HuntCanopyHudV112.module.css",
+      "reference": "CODE_REVIEW",
+      "scope": "Mise en page compacte et texte de support sur petit écran."
+    },
+    {
+      "id": "FIELD-SOUND-EVENTS",
+      "path": "app/game/systems/huntFieldFeedbackV112.ts",
+      "reference": "CODE_REVIEW",
+      "scope": "Dédoublonnage des événements sonores liés aux rites."
+    },
+    {
+      "id": "FIELD-SOUND-SYNTH",
+      "path": "app/game/sound.ts",
+      "reference": "CODE_REVIEW",
+      "scope": "Signaux procéduraux et réglages audio existants."
+    },
+    {
+      "id": "TEST-SKINNING",
+      "path": "tests/hunt-skinning-worksite-20261109.test.mjs",
+      "reference": "CODE_REVIEW",
+      "scope": "Matrice de worksite, catalogue, horloge et menu React réel."
+    },
+    {
+      "id": "TEST-NAVIGATION",
+      "path": "tests/canopy-navigation-v112.test.mjs",
+      "reference": "CODE_REVIEW",
+      "scope": "Modèle pur de navigation et rendu HUD construit."
+    },
+    {
+      "id": "TEST-PRESENTATION",
+      "path": "tests/hunt-field-presentation-v112.test.mjs",
+      "reference": "CODE_REVIEW",
+      "scope": "Géométrie de pose et rendu procédural avec appels Canvas contrôlés."
+    },
+    {
+      "id": "TEST-SOUND",
+      "path": "tests/hunt-field-feedback-20261109.test.mjs",
+      "reference": "CODE_REVIEW",
+      "scope": "Événements sonores bornés et sans dédoublement."
+    },
+    {
+      "id": "TEST-RESUME",
+      "path": "tests/hunt-canopy-resume-cooldown-20261109.test.mjs",
+      "reference": "CODE_REVIEW",
+      "scope": "Compatibilité de reprise et délai de réattache canopée."
+    },
+    {
+      "id": "GAMECLIENT",
+      "path": "app/game/GameClient.tsx",
+      "reference": "CODE_REVIEW",
+      "scope": "Vrai propriétaire de la campagne, transactions, sidecar et livraison/atelier montés."
+    },
+    {
+      "id": "GROUND-PILOT",
+      "path": "scripts/qa-hunt-ground-admissible-pilot-20261109.mjs",
+      "reference": "CODE_REVIEW",
+      "scope": "Pilote admissible natif limité, acquisition réelle ; aucune clôture globale déduite."
+    },
+    {
+      "id": "BIBLE-AVENANT",
+      "path": "docs/campagne/AVENANT_SKINNING_CANOPEE_20261109.md",
+      "reference": "CURRENT_DELIVERY",
+      "scope": "Raccord additif à la bible et qualification logicielle bornée au point cfa730 ; nouveau document de la livraison."
+    },
+    {
+      "id": "CURRENT-HUNT-DOC",
+      "path": "docs/hunt-mechanics-v112.md",
+      "reference": "CURRENT_DELIVERY",
+      "scope": "Contrat de chasse courant, avec entrée additive du 9 novembre ; ancien texte conservé."
+    },
+    {
+      "id": "CURRENT-BIBLE-INDEX",
+      "path": "docs/campagne/README.md",
+      "reference": "CURRENT_DELIVERY",
+      "scope": "Index courant de la bible, avec lien vers le nouvel avenant."
+    },
+    {
+      "id": "FIELD-GUIDE",
+      "path": "app/game/HuntFieldGuideV112.tsx",
+      "reference": "CODE_REVIEW",
+      "scope": "Guide contextuel compact, préparation détaillée native et onze étapes conservées."
+    },
+    {
+      "id": "FIELD-GUIDE-CSS",
+      "path": "app/game/HuntAccessibilityV112.module.css",
+      "reference": "CODE_REVIEW",
+      "scope": "Compaction du guide et préparation sur petit écran."
+    },
+    {
+      "id": "TEST-GUIDE",
+      "path": "tests/hunt-field-guide-v112.test.mjs",
+      "reference": "CODE_REVIEW",
+      "scope": "Huit assertions antérieures conservées au bon niveau et nouvelle vérification de préparation native."
+    },
+    {
+      "id": "RITE-MENU-CSS",
+      "path": "app/game/HuntRitesMenuV77.module.css",
+      "reference": "CODE_REVIEW",
+      "scope": "Barre mobile de travail et détails compacts, boutons de 44 px."
+    },
+    {
+      "id": "TEST-RIG-ORIGIN",
+      "path": "tests/hunter-rig-origin.test.mjs",
+      "reference": "CODE_REVIEW",
+      "scope": "Vrais appels de rendu du rig et origine des calques, après remplacement du constat de forme de code obsolète."
+    },
+    {
+      "id": "CANOPY-GRIP-PRESENTATION",
+      "path": "app/game/systems/canopyGripPresentationV112.ts",
+      "reference": "CODE_REVIEW",
+      "scope": "Raccord IK de la seule main arrière au brin de liane, sans changement de physique ou des autres ancrages."
+    },
+    {
+      "id": "TEST-CANOPY-GRIP",
+      "path": "tests/canopy-grip-presentation-v112.test.mjs",
+      "reference": "CODE_REVIEW",
+      "scope": "Cinq tests de contact et préservation, 198 postures et deux snapshots voisins."
+    },
+    {
+      "id": "QA-ASSET-MANIFEST",
+      "path": "tests/fixtures/skinning-canopy-browser-assets-20261109.json",
+      "reference": "CODE_REVIEW",
+      "scope": "Ressources originales matérialisées pour la recette native, identités Git et SHA contrôlées."
+    },
+    {
+      "id": "QA-WORKFLOW",
+      "path": ".github/workflows/hunt-closure-v112.yml",
+      "reference": "CODE_REVIEW",
+      "scope": "Job GitHub Actions de la recette complète et conservation de ses artifacts."
+    },
+    {
+      "id": "CURRENT-INTEGRATION-GUIDE",
+      "path": "docs/qa/current-integration-20261103/README.md",
+      "reference": "CURRENT_DELIVERY",
+      "scope": "Entrée additive de raccord courant, postérieure à cfa730 ; son SHA est vérifié comme document de livraison et non comme source code à ce commit."
+    }
+  ],
+  "criteria": [
+    {
+      "id": "SC-H01",
+      "domain": "Skinning",
+      "title": "Même contrat d’emplacement au début",
+      "acceptance": "Préparer, prélever, porter et suspendre utilisent le même contrat du corps réel à portée, de l’appui, de l’approche sans obstacle et des mains disponibles ; le dépôt du corps reste possible et les refus ne consomment rien.",
+      "checks": [
+        "Au sol dégagé : commencer avec le vrai moteur.",
+        "Hors appui, à travers une paroi ou avec mains occupées : refuser sans usure ni stock créé."
+      ],
+      "sourceIds": [
+        "HUNT-CONTRACT",
+        "HUNT-RUNTIME",
+        "RITE-MODEL",
+        "RITE-RUNTIME",
+        "RITE-MENU"
+      ],
+      "implementation": "Contrat de worksite commun dans ritesOfHuntV77 et huntRitesRuntimeV77 ; HuntCanvas injecte appui, escalade, obstacle et contact réel de la pose.",
+      "implementationStatus": "VERIFIE_BORNE",
+      "resourceStatus": "HORS_PORTEE",
+      "behaviorStatus": "VERIFIE_BORNE",
+      "browserStatus": "VERIFIE_BORNE",
+      "physicalStatus": "NON_QUALIFIE",
+      "artStatus": "NON_QUALIFIE",
+      "qualification": "VERIFIE_BORNE",
+      "evidence": [
+        "FINAL-REGRESSIONS-CFA",
+        "FINAL-NATIVE-CFA"
+      ],
+      "limits": "Matrice d’appui, obstacle et mains en tests de logique ; navigateur sur une proie initiale contrôlée. Ni toutes les géométries de campagne ni appareils physiques qualifiés."
+    },
+    {
+      "id": "SC-H02",
+      "domain": "Skinning",
+      "title": "Menu cohérent avec la commande",
+      "acceptance": "La disponibilité et l’explication du menu emploient le même contrat que le début du geste ; une action affichée comme refusée reste inerte.",
+      "checks": [
+        "Comparer raisons du menu et résultat natif pour les mêmes états.",
+        "Vérifier le routage natif de confirmation/annulation et les libellés remappés, sans action de fond issue de la navigation ; distinguer ce routage d’un nouvel essai de polling de manette.",
+        "Une seconde proie tombe plus près pendant le travail : garder la cible de l’opération valide ; sinon conserver la sélection valable avant la cible la plus proche, sans dialogue hors portée."
+      ],
+      "sourceIds": [
+        "HUNT-CONTRACT",
+        "HUNT-RUNTIME",
+        "RITE-MODEL",
+        "RITE-RUNTIME",
+        "RITE-MENU"
+      ],
+      "implementation": "Le snapshot privilégie une opération à portée, puis la sélection valide, puis le plus proche ; disponibilité et motifs sont partagés avec la commande.",
+      "implementationStatus": "VERIFIE_BORNE",
+      "resourceStatus": "VERIFIE_BORNE",
+      "behaviorStatus": "VERIFIE_BORNE",
+      "browserStatus": "PARTIEL",
+      "physicalStatus": "NON_QUALIFIE",
+      "artStatus": "NON_QUALIFIE",
+      "qualification": "VERIFIE_BORNE",
+      "evidence": [
+        "FINAL-REGRESSIONS-CFA",
+        "FINAL-NATIVE-CFA"
+      ],
+      "limits": "Les deux régressions de priorité entre corps sont natives au modèle ; le navigateur joue le menu de la proie contrôlée. Routage extrait et libellés remappés distincts du polling complet de manette."
+    },
+    {
+      "id": "SC-H03",
+      "domain": "Skinning",
+      "title": "Revalidation pendant le travail",
+      "acceptance": "Perte d’appui, éloignement, obstacle ou mains devenues indisponibles interrompent avant confirmation ; les parties restent sur la proie.",
+      "checks": [
+        "Démarrer puis invalider chaque frontière au tick suivant.",
+        "Reprendre avec un appui valable sans dupliquer pièce ni événement."
+      ],
+      "sourceIds": [
+        "HUNT-CONTRACT",
+        "HUNT-RUNTIME",
+        "RITE-MODEL",
+        "RITE-RUNTIME",
+        "RITE-MENU"
+      ],
+      "implementation": "Le moteur revalide le worksite durant le geste ; aucune partie ni usure de geste achevé ne sont créées par une interruption.",
+      "implementationStatus": "VERIFIE_BORNE",
+      "resourceStatus": "HORS_PORTEE",
+      "behaviorStatus": "VERIFIE_BORNE",
+      "browserStatus": "VERIFIE_BORNE",
+      "physicalStatus": "NON_QUALIFIE",
+      "artStatus": "NON_QUALIFIE",
+      "qualification": "VERIFIE_BORNE",
+      "evidence": [
+        "FINAL-REGRESSIONS-CFA",
+        "FINAL-NATIVE-CFA"
+      ],
+      "limits": "Interruption et reprise jouées dans GameClient ; les variantes de perte d’appui, obstacle et mains sont complétées par les tests de logique, sans tous les injecter dans le navigateur."
+    },
+    {
+      "id": "SC-H04",
+      "domain": "Skinning",
+      "title": "Usure seulement au geste confirmé",
+      "acceptance": "Le menu annonce la vraie condition de l’outil et le coût de cinq points ; zéro reste utilisable avec sa durée. L’usure suit chaque geste achevé une seule fois, même après reprise ; début et interruption ne débitent rien.",
+      "checks": [
+        "Interrompre avant le dernier tick puis contrôler outil et stock.",
+        "Terminer, recharger et répéter le reçu : un seul débit et un seul prélèvement."
+      ],
+      "sourceIds": [
+        "HUNT-CONTRACT",
+        "HUNT-CATALOG",
+        "HUNT-RUNTIME",
+        "RITE-MODEL",
+        "RITE-RUNTIME",
+        "RITE-MENU"
+      ],
+      "implementation": "Horloge unique riteOperationSecondsV77 et condition réelle de l’outil ; le débit de cinq points reste attaché à un événement confirmé unique.",
+      "implementationStatus": "VERIFIE_BORNE",
+      "resourceStatus": "HORS_PORTEE",
+      "behaviorStatus": "VERIFIE_BORNE",
+      "browserStatus": "VERIFIE_BORNE",
+      "physicalStatus": "NON_QUALIFIE",
+      "artStatus": "NON_QUALIFIE",
+      "qualification": "VERIFIE_BORNE",
+      "evidence": [
+        "FINAL-REGRESSIONS-CFA",
+        "FINAL-NATIVE-CFA"
+      ],
+      "limits": "Catalogue et horloges des 39 espèces testés en logique ; navigateur avec outil initial à 25/100 et deux gestes confirmés, puis condition à 15/100. Aucune usure artistique ou matérielle réelle."
+    },
+    {
+      "id": "SC-H05",
+      "domain": "Skinning",
+      "title": "Stock, qualité et emport conservés",
+      "acceptance": "Le menu distingue parties déjà prises et stock spécifique restant ; identité et qualité déterministes restent inchangées ; les capacités sont revalidées à l’achèvement.",
+      "checks": [
+        "Sacs aux frontières de masse/volume : refuser avant et au dernier tick.",
+        "Analyse avant prélèvement, reprise après prise et livraison : même identité, qualité et quantité."
+      ],
+      "sourceIds": [
+        "HUNT-CATALOG",
+        "HUNT-RUNTIME",
+        "BIBLE-TROPHY",
+        "RITE-MODEL",
+        "RITE-RUNTIME",
+        "RITE-MENU"
+      ],
+      "implementation": "Le snapshot expose les parties déjà prélevées et restantes, leur identité et leur qualité ; la capacité reste contrôlée par l’admission native au dernier tick.",
+      "implementationStatus": "VERIFIE_BORNE",
+      "resourceStatus": "HORS_PORTEE",
+      "behaviorStatus": "VERIFIE_BORNE",
+      "browserStatus": "VERIFIE_BORNE",
+      "physicalStatus": "NON_QUALIFIE",
+      "artStatus": "NON_QUALIFIE",
+      "qualification": "VERIFIE_BORNE",
+      "evidence": [
+        "FINAL-REGRESSIONS-CFA",
+        "FINAL-NATIVE-CFA"
+      ],
+      "limits": "39 espèces et 56 parties couvertes par le catalogue et les moteurs ; le navigateur joue une seule espèce et conserve ses identités/qualités. Aucune campagne de collecte exhaustive prétendue."
+    },
+    {
+      "id": "SC-H06",
+      "domain": "Skinning",
+      "title": "Progression lisible dans la scène",
+      "acceptance": "Action, avancement et temps total/restant viennent de l’opération réelle, cessent à l’interruption et distinguent préparation et prélèvement ; analyse et suspension ne prennent pas le multiplicateur d’outil.",
+      "checks": [
+        "Observer progression du vrai moteur et fin/interruption sans animation résiduelle.",
+        "Vérifier une proie sans peau admissible et une partie propre à son espèce.",
+        "Pendant le travail mobile, conserver progression et annulation dans une barre compacte ; ouvrir les détails et annuler par les commandes natives sans double action."
+      ],
+      "sourceIds": [
+        "HUNT-CONTRACT",
+        "HUNT-RUNTIME",
+        "RITE-MODEL",
+        "RITE-RUNTIME",
+        "RITE-MENU"
+      ],
+      "implementation": "HuntRitesMenu présente action, avancement et temps ; une barre mobile garde les détails et l’interruption pendant le travail, avec le même routage natif.",
+      "implementationStatus": "VERIFIE_BORNE",
+      "resourceStatus": "VERIFIE_BORNE",
+      "behaviorStatus": "VERIFIE_BORNE",
+      "browserStatus": "VERIFIE_BORNE",
+      "physicalStatus": "NON_QUALIFIE",
+      "artStatus": "NON_QUALIFIE",
+      "qualification": "VERIFIE_BORNE",
+      "evidence": [
+        "FINAL-REGRESSIONS-CFA",
+        "FINAL-NATIVE-CFA",
+        "RITES-COMPACT-COMPONENT"
+      ],
+      "limits": "Barre de 62 px dans la fixture isolée ; 73,25 px dans le vrai GameClient à 320 px, avec acteur visible sous la barre. Détails et routage testés ; aucun contrôleur physique."
+    },
+    {
+      "id": "SC-H07",
+      "domain": "Skinning",
+      "title": "Raisons accessibles associées aux actions",
+      "acceptance": "Chaque action refusée explique son motif à l’écran et via la description ARIA du bouton ; texte et état suivent le même contexte courant.",
+      "checks": [
+        "Parcourir les actions au clavier et vérifier la description du refus.",
+        "Comparer appui, obstacle, mains, outil et stock sur 320/390 px sans action de fond."
+      ],
+      "sourceIds": [
+        "HUNT-CONTRACT",
+        "HUNT-RUNTIME",
+        "RITE-MODEL",
+        "RITE-RUNTIME",
+        "RITE-MENU"
+      ],
+      "implementation": "Descriptions ARIA associées aux boutons, annonce de progression stable et contrôles de 44 px sur le panneau compact.",
+      "implementationStatus": "VERIFIE_BORNE",
+      "resourceStatus": "VERIFIE_BORNE",
+      "behaviorStatus": "VERIFIE_BORNE",
+      "browserStatus": "VERIFIE_BORNE",
+      "physicalStatus": "NON_QUALIFIE",
+      "artStatus": "NON_QUALIFIE",
+      "qualification": "VERIFIE_BORNE",
+      "evidence": [
+        "FINAL-REGRESSIONS-CFA",
+        "FINAL-NATIVE-CFA",
+        "RITES-COMPACT-COMPONENT"
+      ],
+      "limits": "Attributs ARIA, description et routage testés logiciellement ; hauteur minimale de 44 px, boutons actifs Infos 44×44 et Interrompre 82×44. Le bouton de fermeture hors travail reste plus étroit. Aucun lecteur d’écran humain qualifié."
+    },
+    {
+      "id": "SC-T01",
+      "domain": "Canopée",
+      "title": "Support réellement tenu et commandes",
+      "acceptance": "Le HUD nomme le support tenu et donne les commandes propres au rigide ou au flexible ; les instructions suivent les affectations actives.",
+      "checks": [
+        "Arbre rigide : direction et Saut ; pas d’instruction de pompage.",
+        "Liane/corde/chaîne : pompage, longueur et lâcher ; Saut manette remappé."
+      ],
+      "sourceIds": [
+        "HUNT-CONTRACT",
+        "NAV-MODEL",
+        "HUNT-RUNTIME",
+        "CANOPY-HUD"
+      ],
+      "implementation": "canopyNavigationV112 et HuntCanopyHudV112 partagent le support courant et les libellés issus des affectations de commandes.",
+      "implementationStatus": "VERIFIE_BORNE",
+      "resourceStatus": "VERIFIE_BORNE",
+      "behaviorStatus": "VERIFIE_BORNE",
+      "browserStatus": "VERIFIE_BORNE",
+      "physicalStatus": "NON_QUALIFIE",
+      "artStatus": "NON_QUALIFIE",
+      "qualification": "VERIFIE_BORNE",
+      "evidence": [
+        "FINAL-REGRESSIONS-CFA",
+        "FINAL-NATIVE-CFA",
+        "CANOPY-HUD-PREFLIGHT"
+      ],
+      "limits": "Arbre et lianes joués au clavier. Les libellés remappés sont vérifiés dans les composants et le modèle ; pas de nouvelle partie au pad physique ni d’essai complet de polling remappé."
+    },
+    {
+      "id": "SC-T02",
+      "domain": "Canopée",
+      "title": "Prises proches et refus réels",
+      "acceptance": "Les prises proposées utilisent portée, collision/ligne de vue et état du chasseur, avec raisons explicites d’endurance, épuisement, cooldown et verrou d’action.",
+      "checks": [
+        "Prise proche dégagée contre prise masquée ou hors portée.",
+        "Après épuisement, vérifier la réception nécessaire avant une nouvelle prise."
+      ],
+      "sourceIds": [
+        "HUNT-CONTRACT",
+        "NAV-MODEL",
+        "HUNT-RUNTIME",
+        "CANOPY-HUD"
+      ],
+      "implementation": "Le modèle consomme le prédicat physique de portée/ligne de vue et les états d’endurance, d’épuisement, de réattache et de verrou du chasseur.",
+      "implementationStatus": "VERIFIE_BORNE",
+      "resourceStatus": "HORS_PORTEE",
+      "behaviorStatus": "VERIFIE_BORNE",
+      "browserStatus": "VERIFIE_BORNE",
+      "physicalStatus": "NON_QUALIFIE",
+      "artStatus": "NON_QUALIFIE",
+      "qualification": "VERIFIE_BORNE",
+      "evidence": [
+        "FINAL-REGRESSIONS-CFA",
+        "FINAL-NATIVE-CFA",
+        "CANOPY-HUD-PREFLIGHT"
+      ],
+      "limits": "Portée et transition entre prises réellement jouées ; les refus de mur, d’épuisement et de verrou sont complétés par les tests de logique. Aucun parcours exhaustif des niveaux."
+    },
+    {
+      "id": "SC-T03",
+      "domain": "Canopée",
+      "title": "Repère suivant sans promesse fictive",
+      "acceptance": "Le prochain support et sa distance sont des repères géométriques ; aucune trajectoire ou réussite garantie n’est inventée.",
+      "checks": [
+        "Comparer identifiant/coordonnées du repère au vrai blueprint.",
+        "Ne pas proposer de branche décorative ni de prise hors niveau."
+      ],
+      "sourceIds": [
+        "HUNT-CONTRACT",
+        "NAV-MODEL",
+        "CANOPY-HUD"
+      ],
+      "implementation": "Les identifiants et distances des repères viennent des supports du blueprint courant ; aucune prédiction balistique de réussite n’est ajoutée.",
+      "implementationStatus": "VERIFIE_BORNE",
+      "resourceStatus": "VERIFIE_BORNE",
+      "behaviorStatus": "VERIFIE_BORNE",
+      "browserStatus": "VERIFIE_BORNE",
+      "physicalStatus": "NON_QUALIFIE",
+      "artStatus": "NON_QUALIFIE",
+      "qualification": "VERIFIE_BORNE",
+      "evidence": [
+        "FINAL-REGRESSIONS-CFA",
+        "FINAL-NATIVE-CFA",
+        "CANOPY-HUD-PREFLIGHT"
+      ],
+      "limits": "Distance et repère seulement, sans promesse de trajectoire. Une entrée et un transfert de la route jungle sont parcourus ; les 72 traversées historiques ne sont pas réattribuées à cette exécution."
+    },
+    {
+      "id": "SC-T04",
+      "domain": "Canopée",
+      "title": "Vrai repos sous les pieds",
+      "acceptance": "Le modèle identifie un repos réel sous le joueur et distingue appui, récupération et prise, à partir du monde courant.",
+      "checks": [
+        "Poser réellement les pieds sur le repos puis observer la récupération.",
+        "Survoler ou manquer le bord : ne pas annoncer un appui acquis."
+      ],
+      "sourceIds": [
+        "HUNT-CONTRACT",
+        "NAV-MODEL",
+        "HUNT-RUNTIME",
+        "CANOPY-HUD"
+      ],
+      "implementation": "Les appuis sont trouvés dans les vraies plateformes sous le joueur, avec les états de réception/récupération fournis par la simulation.",
+      "implementationStatus": "VERIFIE_BORNE",
+      "resourceStatus": "VERIFIE_BORNE",
+      "behaviorStatus": "VERIFIE_BORNE",
+      "browserStatus": "VERIFIE_BORNE",
+      "physicalStatus": "NON_QUALIFIE",
+      "artStatus": "NON_QUALIFIE",
+      "qualification": "VERIFIE_BORNE",
+      "evidence": [
+        "FINAL-REGRESSIONS-CFA",
+        "FINAL-NATIVE-CFA",
+        "CANOPY-HUD-PREFLIGHT"
+      ],
+      "limits": "Premier repos authoré et récupération observés, puis transfert. L’ensemble des six repos de chaque séquence n’est pas reparcouru dans cette nouvelle recette."
+    },
+    {
+      "id": "SC-T05",
+      "domain": "Canopée",
+      "title": "Présentation compacte et main raccordée à la prise",
+      "acceptance": "HUD et guide restent lisibles à 320 et 390 px avec préparation accessible et onze étapes conservées. Durant le pendule actif, le contact de la main arrière avec la liane est mesuré, sans modifier la physique, le root, les jambes ou les ancrages avant.",
+      "checks": [
+        "Contrôler les commandes et libellés remappés, puis l’ouverture/fermeture au clavier de la préparation détaillée ; tout contrôleur émulé ou callback extrait reste déclaré.",
+        "Captures natives 320,390 et bureau ; commande de reprise conservée.",
+        "Mesurer la main arrière et le brin de liane dans le rendu actif ; préserver les calques et longueurs d’os, le root, les jambes et les ancrages avant. La nouvelle assertion native doit porter sur le nouveau rendu."
+      ],
+      "sourceIds": [
+        "HUNT-CONTRACT",
+        "NAV-MODEL",
+        "HUNT-RUNTIME",
+        "CANOPY-HUD",
+        "CANOPY-HUD-CSS",
+        "FIELD-GUIDE",
+        "FIELD-GUIDE-CSS",
+        "CANOPY-GRIP-PRESENTATION",
+        "TEST-CANOPY-GRIP"
+      ],
+      "implementation": "HUD et guide compacts avec détails natifs, puis raccord IK de la seule main arrière pendant le pendule actif. Les autres matrices et ancrages sont préservés ; l’intégration complète et le contact sont vérifiés dans la dernière recette sur cfa730.",
+      "implementationStatus": "VERIFIE_BORNE",
+      "resourceStatus": "VERIFIE_BORNE",
+      "behaviorStatus": "VERIFIE_BORNE",
+      "browserStatus": "VERIFIE_BORNE",
+      "physicalStatus": "NON_QUALIFIE",
+      "artStatus": "NON_QUALIFIE",
+      "qualification": "VERIFIE_BORNE",
+      "evidence": [
+        "FINAL-REGRESSIONS-CFA",
+        "FINAL-NATIVE-CFA",
+        "CANOPY-HUD-PREFLIGHT",
+        "GUIDE-COMPACT-PREFLIGHT",
+        "RITES-COMPACT-COMPONENT",
+        "CANOPY-REAR-HAND-MODEL"
+      ],
+      "limits": "Guide/HUD isolés avec états construits et menu terrain réel à 320/390 px. Contact arrière : 35 états observés dans deux directions, cinq mesures ciblées voisines des captures 11/13, maximum 9,11e-13 px ; ce n’est pas une assertion sur le pixel précis des PNG. Aucune physique changée ni revue artistique/humaine."
+    },
+    {
+      "id": "SC-T06",
+      "domain": "Canopée",
+      "title": "Repères bornés dans le Canvas",
+      "acceptance": "Le rendu consomme une petite liste bornée du même modèle de navigation ; les repères restent attachés aux vraies coordonnées du monde.",
+      "checks": [
+        "Au plus quatre repères rendus dans une scène dense.",
+        "Monde ou support retiré : ne garder aucun repère fantôme."
+      ],
+      "sourceIds": [
+        "NAV-MODEL",
+        "HUNT-RUNTIME",
+        "CANOPY-HUD"
+      ],
+      "implementation": "HuntCanvas dessine la liste bornée de repères fournie par le même modèle que le HUD, sans inventer de supports.",
+      "implementationStatus": "VERIFIE_BORNE",
+      "resourceStatus": "VERIFIE_BORNE",
+      "behaviorStatus": "VERIFIE_BORNE",
+      "browserStatus": "VERIFIE_BORNE",
+      "physicalStatus": "NON_QUALIFIE",
+      "artStatus": "NON_QUALIFIE",
+      "qualification": "VERIFIE_BORNE",
+      "evidence": [
+        "FINAL-REGRESSIONS-CFA",
+        "FINAL-NATIVE-CFA",
+        "CANOPY-HUD-PREFLIGHT"
+      ],
+      "limits": "Plafond de quatre repères vérifié dans le modèle et rendu réel capturé ; aucun comptage automatisé de chaque pixel ni revue artistique humaine."
+    },
+    {
+      "id": "SC-V01",
+      "domain": "Ressources",
+      "title": "Gestes et effets reliés à l’état réel",
+      "acceptance": "Le travail de préparation/prélèvement possède un retour visuel identifiable consommé dans le vrai rendu ; il suit le corps réel et le temps de simulation.",
+      "checks": [
+        "Comparer pause, blur, interruption et achèvement aux effets visibles.",
+        "Les glyphes seuls ne sont pas comptés comme une animation corporelle complète."
+      ],
+      "sourceIds": [
+        "HUNT-CONTRACT",
+        "HUNT-RUNTIME",
+        "FIELD-PRESENTATION"
+      ],
+      "implementation": "huntFieldPresentationV112 applique une pose procédurale aux calques d’origine et dessine les effets selon l’opération et le temps simulé ; contact et rendu partagent leur géométrie.",
+      "implementationStatus": "VERIFIE_BORNE",
+      "resourceStatus": "VERIFIE_BORNE",
+      "behaviorStatus": "VERIFIE_BORNE",
+      "browserStatus": "VERIFIE_BORNE",
+      "physicalStatus": "NON_QUALIFIE",
+      "artStatus": "NON_QUALIFIE",
+      "qualification": "VERIFIE_BORNE",
+      "evidence": [
+        "FINAL-REGRESSIONS-CFA",
+        "FINAL-NATIVE-CFA",
+        "VISUAL-FROZEN-MODEL"
+      ],
+      "limits": "Pose et effets procéduraux sur les calques d’origine, sans nouvelle clip dessinée. Les sondes Inkscape sont techniques ; les captures natives restent une preuve distincte, sans approbation artistique humaine."
+    },
+    {
+      "id": "SC-V02",
+      "domain": "Ressources",
+      "title": "Supports lisibles et texturés",
+      "acceptance": "Arbre, liane, corde ou chaîne restent distinguables visuellement ; la texture ne change ni collision ni identité du support.",
+      "checks": [
+        "Comparer le rendu aux types réels et aux mêmes points d’ancrage.",
+        "Vérifier défilement, échelle et visibilité avec les sprites originaux."
+      ],
+      "sourceIds": [
+        "HUNT-CONTRACT",
+        "HUNT-RUNTIME",
+        "CANOPY-RENDERER"
+      ],
+      "implementation": "canopySupportRendererV112 réutilise le brin de vine-ladder.webp et dessine corde/chaîne/repos par type réel ; coordonnées et collisions restent inchangées.",
+      "implementationStatus": "VERIFIE_BORNE",
+      "resourceStatus": "VERIFIE_BORNE",
+      "behaviorStatus": "VERIFIE_BORNE",
+      "browserStatus": "PARTIEL",
+      "physicalStatus": "NON_QUALIFIE",
+      "artStatus": "NON_QUALIFIE",
+      "qualification": "VERIFIE_BORNE",
+      "evidence": [
+        "FINAL-REGRESSIONS-CFA",
+        "FINAL-NATIVE-CFA",
+        "VISUAL-FROZEN-MODEL"
+      ],
+      "limits": "Image de liane originale réutilisée. Le navigateur parcourt arbre/lianes de jungle ; corde/chaîne/repos ont aussi des contrôles de rendu procédural, sans parcours navigateur de tous les types ni revue artistique humaine."
+    },
+    {
+      "id": "SC-V03",
+      "domain": "Ressources",
+      "title": "Audio de geste et de traversée",
+      "acceptance": "Les quatre signaux synthétisés de travail, confirmation, prise et lâcher suivent les événements réels et les réglages audio ; pause, rechargement et répétition ne créent pas de boucle ou de succès sonore supplémentaire.",
+      "checks": [
+        "Le travail suit les traits de simulation ; la confirmation n’arrive qu’après un événement unique et confirmé, jamais après interruption ou simple recharge.",
+        "La prise et le lâcher suivent les changements de support ; transport suspendu, volume et fallback audio conservent leur contrat sans double voix."
+      ],
+      "sourceIds": [
+        "HUNT-CONTRACT",
+        "HUNT-RUNTIME",
+        "FIELD-SOUND-EVENTS",
+        "FIELD-SOUND-SYNTH",
+        "TEST-SOUND"
+      ],
+      "implementation": "huntFieldFeedbackV112 borne les signaux de travail et de confirmation, HuntCanvas suit les changements de support, et GameAudio fournit quatre signaux courts sur le transport existant.",
+      "implementationStatus": "VERIFIE_BORNE",
+      "resourceStatus": "VERIFIE_BORNE",
+      "behaviorStatus": "VERIFIE_BORNE",
+      "browserStatus": "PARTIEL",
+      "physicalStatus": "NON_QUALIFIE",
+      "artStatus": "NON_QUALIFIE",
+      "qualification": "VERIFIE_BORNE",
+      "evidence": [
+        "FINAL-REGRESSIONS-CFA",
+        "FINAL-NATIVE-CFA"
+      ],
+      "limits": "La recette navigateur est muette. Déclenchement, durée, transport et absence de double voix sont testés logiciellement ; aucune écoute humaine ou qualification audio matérielle."
+    },
+    {
+      "id": "SC-D01",
+      "domain": "Durabilité",
+      "title": "Restauration du vrai sidecar actif",
+      "acceptance": "Une nouvelle page relit le stockage actif réel, puis le produit restaure le même état de chasse, propriétaire et identités ; un simple objet de fixture en mémoire ne suffit pas.",
+      "checks": [
+        "Enregistrer par le writer actif natif, fermer puis charger un nouveau document.",
+        "Refus d’écriture, état étranger, version future et restauration protégée."
+      ],
+      "sourceIds": [
+        "ACTIVE-SAVE",
+        "HUNT-RUNTIME",
+        "QA-DURABLE",
+        "GAMECLIENT"
+      ],
+      "implementation": "La recette monte GameClient, conserve les callbacks et le writer réels et relit le sidecar dans un nouveau document.",
+      "implementationStatus": "VERIFIE_BORNE",
+      "resourceStatus": "HORS_PORTEE",
+      "behaviorStatus": "VERIFIE_BORNE",
+      "browserStatus": "VERIFIE_BORNE",
+      "physicalStatus": "NON_QUALIFIE",
+      "artStatus": "NON_QUALIFIE",
+      "qualification": "VERIFIE_BORNE",
+      "evidence": [
+        "FINAL-REGRESSIONS-CFA",
+        "FINAL-NATIVE-CFA"
+      ],
+      "limits": "Writer et nouveau document réels, avec campagne admise par la fixture. Les cas étrangers, futurs et refus de stockage sont complétés par les tests natifs, sans synchronisation distante ni cloud revendiqués."
+    },
+    {
+      "id": "SC-D02",
+      "domain": "Durabilité",
+      "title": "Rite après reprise",
+      "acceptance": "L’opération restaurée ne termine pas hors jeu, conserve corps/parties/qualité/progression admissible et ne double ni prélèvement ni usure.",
+      "checks": [
+        "Fermer pendant le geste puis reprendre par les entrées du produit.",
+        "Refuser le checkpoint corrompu et les pièces déjà confirmées."
+      ],
+      "sourceIds": [
+        "ACTIVE-SAVE",
+        "HUNT-CATALOG",
+        "HUNT-RUNTIME",
+        "QA-DURABLE",
+        "GAMECLIENT"
+      ],
+      "implementation": "Les contrôles de propriétaire, identité, pièces et opérations restent natifs ; la recette doit confirmer le même travail après reprise et un seul débit à l’achèvement.",
+      "implementationStatus": "VERIFIE_BORNE",
+      "resourceStatus": "HORS_PORTEE",
+      "behaviorStatus": "VERIFIE_BORNE",
+      "browserStatus": "VERIFIE_BORNE",
+      "physicalStatus": "NON_QUALIFIE",
+      "artStatus": "NON_QUALIFIE",
+      "qualification": "VERIFIE_BORNE",
+      "evidence": [
+        "FINAL-REGRESSIONS-CFA",
+        "FINAL-NATIVE-CFA"
+      ],
+      "limits": "Une opération de préparation en cours est réellement restaurée et achevée une fois ; le stock déposé est aussi repris après reload. La proie initiale contrôlée ne prouve pas un combat de campagne."
+    },
+    {
+      "id": "SC-D03",
+      "domain": "Durabilité",
+      "title": "Pendule après reprise",
+      "acceptance": "Le pendule restauré conserve support, angle, longueur et vitesse bornés ; un support disparu ou obstrué libère le chasseur sans boost ni attache inventée.",
+      "checks": [
+        "Recharger pendant une oscillation sur le même monde.",
+        "Retirer/invalider le support au restore puis vérifier la libération et la réception."
+      ],
+      "sourceIds": [
+        "ACTIVE-SAVE",
+        "HUNT-CONTRACT",
+        "HUNT-RUNTIME",
+        "QA-DURABLE",
+        "GAMECLIENT"
+      ],
+      "implementation": "HuntCanvas préserve le délai de réattache restauré au lieu de l’effacer ; la validation du pendule continue de contrôler support, longueur et géométrie.",
+      "implementationStatus": "VERIFIE_BORNE",
+      "resourceStatus": "HORS_PORTEE",
+      "behaviorStatus": "VERIFIE_BORNE",
+      "browserStatus": "VERIFIE_BORNE",
+      "physicalStatus": "NON_QUALIFIE",
+      "artStatus": "NON_QUALIFIE",
+      "qualification": "VERIFIE_BORNE",
+      "evidence": [
+        "FINAL-REGRESSIONS-CFA",
+        "FINAL-NATIVE-CFA"
+      ],
+      "limits": "Pendule et vol libre après lâcher restaurés, grâce de réattache positive, puis vraie liane suivante sans boost. Support perdu/invalide couvert en logique ; aucune traversée de canopée complète prétendue."
+    },
+    {
+      "id": "SC-Q01",
+      "domain": "Recette",
+      "title": "Chaîne de prise jusqu’à l’atelier",
+      "acceptance": "Un parcours logiciel réel prépare/prélève, dépose/reprend, livre par extraction puis conserve à l’atelier, avec limites de fixture explicites.",
+      "checks": [
+        "Entrées réelles des composants montés, stock final et sauvegarde relue.",
+        "Identifier tout prérequis préparé ; ne pas présenter ce parcours comme huit campagnes sans aide."
+      ],
+      "sourceIds": [
+        "HUNT-CONTRACT",
+        "HUNT-RUNTIME",
+        "ACTIVE-SAVE",
+        "BIBLE-TROPHY",
+        "QA-DURABLE",
+        "GAMECLIENT"
+      ],
+      "implementation": "Un seul parcours GameClient couvre terrain, stockage, dépose/reprise, embarquement, règlement et atelier ; le segment final préparé et les admissions restent déclarés.",
+      "implementationStatus": "VERIFIE_BORNE",
+      "resourceStatus": "HORS_PORTEE",
+      "behaviorStatus": "VERIFIE_BORNE",
+      "browserStatus": "VERIFIE_BORNE",
+      "physicalStatus": "NON_QUALIFIE",
+      "artStatus": "NON_QUALIFIE",
+      "qualification": "VERIFIE_BORNE",
+      "evidence": [
+        "FINAL-REGRESSIONS-CFA",
+        "FINAL-NATIVE-CFA"
+      ],
+      "limits": "Proie initiale créée via damageEnemy et admissions déclarées. Le segment terminal prépare position/prérequis Apex ; le trajet de combat intermédiaire n’est pas joué. GameClient, writer, embarquement, règlement et atelier sont réels."
+    },
+    {
+      "id": "SC-Q02",
+      "domain": "Validation",
+      "title": "Sources finales et contrôles",
+      "acceptance": "Typage, lint, tests pertinents et recettes navigateur se rapportent à leurs vrais octets/commits ; le build et les checks GitHub restent distincts.",
+      "checks": [
+        "Conserver commandes exactes, codes de sortie, versions et empreintes.",
+        "Ne pas attribuer une ancienne exécution à un commit documentaire ultérieur."
+      ],
+      "sourceIds": [
+        "HUNT-RUNTIME",
+        "PREVIOUS-DELIVERY"
+      ],
+      "implementation": "Gates locaux avec commandes, logs et empreintes avant/après ; comparaison postérieure des blobs sans attribuer de nouvelle exécution au commit qui les reçoit.",
+      "implementationStatus": "VERIFIE_BORNE",
+      "resourceStatus": "HORS_PORTEE",
+      "behaviorStatus": "VERIFIE_BORNE",
+      "browserStatus": "HORS_PORTEE",
+      "physicalStatus": "HORS_PORTEE",
+      "artStatus": "HORS_PORTEE",
+      "qualification": "VERIFIE_BORNE",
+      "evidence": [
+        "FINAL-REGRESSIONS-CFA",
+        "FINAL-BUILD-CFA",
+        "FINAL-LINT-CFA",
+        "CURRENT-SOURCE-GATE",
+        "CURRENT-RUNTIME-GATE"
+      ],
+      "limits": "471 tests / 31 fichiers, build/types et lint 20 fichiers ont tourné sur ce82e2b avec une superposition devenue cfa730. Le dernier navigateur tourne réellement sur cfa730. Les futurs résultats GitHub restent distincts et ne sont pas anticipés."
+    },
+    {
+      "id": "SC-Q03",
+      "domain": "Continuité",
+      "title": "Historique et qualifications conservés",
+      "acceptance": "Les 108 classeurs, les 272 fichiers du lot précédent et les huit Restant V112 restent identiques ; le nouveau XLSX et son HTML sont reproductibles.",
+      "checks": [
+        "Contrôler les identités du baseline, ZIP/XML, liens et génération déterministe.",
+        "Aucun statut humain, matériel ou Excel natif ajouté sans exécution correspondante."
+      ],
+      "sourceIds": [
+        "HUNT-CATALOG",
+        "PREVIOUS-DELIVERY"
+      ],
+      "implementation": "Nouveau writer stdlib et lecteur OOXML indépendant ; baseline des 108 originaux et lots précédents, huit Restant identiques, exports séparés des anciennes publications.",
+      "implementationStatus": "VERIFIE_BORNE",
+      "resourceStatus": "VERIFIE_BORNE",
+      "behaviorStatus": "VERIFIE_BORNE",
+      "browserStatus": "HORS_PORTEE",
+      "physicalStatus": "NON_QUALIFIE",
+      "artStatus": "HORS_PORTEE",
+      "qualification": "VERIFIE_BORNE",
+      "evidence": [
+        "DOCUMENT-PRODUCER-FINAL",
+        "DOCUMENT-FIRST-INDEPENDENT"
+      ],
+      "limits": "ZIP/XML, cellules, liens et reproduction stdlib ; aucune ouverture Microsoft Excel native. Les 108 originaux, anciennes preuves et huit Restant gardent leurs identités et qualifications propres."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "SKIN-INITIAL",
+      "kind": "INITIAL_BEHAVIOR",
+      "result": "PASS",
+      "scope": "34 tests du modèle et du vrai menu React en rendu statique ; première passe, intégration globale et navigateur non qualifiés.",
+      "sourceCommit": "8a25c5cf206647c3490ac362452c2eb22584f07e",
+      "executionContext": "Checkout 8a25c5cf modifié, cinq sources et tests superposés et empreintes dans le reçu ; aucune attribution à un futur commit. Les deux passes couvrent les mêmes 34 tests.",
+      "command": [
+        "node",
+        "--test",
+        "--test-concurrency=1",
+        "tests/hunt-skinning-worksite-20261109.test.mjs",
+        "tests/carcass-anatomy-v112.test.mjs",
+        "tests/hunt-rites-v77.test.mjs",
+        "tests/field-tools-rites-v111.test.mjs"
+      ],
+      "exitCode": 0,
+      "path": "production/skinning-canopy-20261109/qa/skinning-model-initial/skinning-worksite-evidence-20261109.json",
+      "sha256": "63a246ecc41ff4fc3664c7c601c72258e6dd777ac5d6e5eb7edb2a0eb224f325"
+    },
+    {
+      "id": "SKIN-INITIAL-EXPLICIT",
+      "kind": "INITIAL_BEHAVIOR",
+      "result": "PASS",
+      "scope": "34 tests du modèle et du vrai menu React en rendu statique ; première passe avec sous-tests explicites.",
+      "sourceCommit": "8a25c5cf206647c3490ac362452c2eb22584f07e",
+      "executionContext": "Checkout 8a25c5cf modifié, mêmes cinq empreintes que la première passe ; les résultats ne s’additionnent pas aux 34 tests précédents.",
+      "command": [
+        "node",
+        "--test",
+        "--test-isolation=none",
+        "--test-concurrency=1",
+        "tests/hunt-skinning-worksite-20261109.test.mjs",
+        "tests/carcass-anatomy-v112.test.mjs",
+        "tests/hunt-rites-v77.test.mjs",
+        "tests/field-tools-rites-v111.test.mjs"
+      ],
+      "exitCode": 0,
+      "path": "production/skinning-canopy-20261109/qa/skinning-model-initial/skinning-worksite-evidence-explicit-isolation-20261109.json",
+      "sha256": "fb5899e79b59ead0410edf4807ccab1abe7b185ddcb5f698ccae297a23431e85"
+    },
+    {
+      "id": "CANOPY-HUD-PREFLIGHT",
+      "kind": "INITIAL_BROWSER",
+      "result": "PASS",
+      "scope": "Vrai composant HUD, dix combinaisons construites à 390 et 320 px ; aucun débordement ni erreur, deux PNG natifs. Aucun parcours HuntCanvas.",
+      "sourceCommit": "8a25c5cf206647c3490ac362452c2eb22584f07e",
+      "executionContext": "Huit empreintes de sources dans le rapport ; première mesure conservée. Checkout 8a25 modifié. Commande exacte et code 0 confirmés par l’auteur via la session 36810 ; aucun journal stdout/stderr fictif.",
+      "command": [
+        "node",
+        "outputs/qa-canopy-hud-compact-20261109/check.mjs"
+      ],
+      "exitCode": 0,
+      "path": "production/skinning-canopy-20261109/qa/canopy-hud-preflight/report.json",
+      "sha256": "73052613ac23a18d6f01d8280ba98f9f2bc98ffb9cbe9cdfd58ea69082226f63"
+    },
+    {
+      "id": "SKIN-FROZEN-MODEL",
+      "kind": "PRIOR_BEHAVIOR",
+      "result": "PASS",
+      "scope": "36 tests du modèle et du vrai menu React statique, dont neuf nouveaux ; contact injecté contrôlé, catalogue et horloge des 39 espèces. La géométrie native du rig et la mise en page navigateur ont des preuves distinctes. Cette passe précède la finition mobile ultérieure du menu ; le nouveau gel possède ses contrôles distincts.",
+      "sourceCommit": "8a25c5cf206647c3490ac362452c2eb22584f07e",
+      "executionContext": "Checkout 8a25 modifié ; cinq empreintes finales et contexte dans le reçu. Le refactor intermédiaire échoué est conservé, les anciennes assertions restent inchangées.",
+      "command": [
+        "node",
+        "--test",
+        "--test-isolation=none",
+        "--test-concurrency=1",
+        "tests/hunt-skinning-worksite-20261109.test.mjs",
+        "tests/carcass-anatomy-v112.test.mjs",
+        "tests/hunt-rites-v77.test.mjs",
+        "tests/field-tools-rites-v111.test.mjs"
+      ],
+      "exitCode": 0,
+      "path": "production/skinning-canopy-20261109/qa/skinning-model-frozen/skinning-worksite-frozen-evidence-20261109.json",
+      "sha256": "59ed30329599db7b331183ed324f2968915be95d49e4189a20803b737e255d0f",
+      "requireCurrentSources": false,
+      "sourceBindingField": "sourceOverlay"
+    },
+    {
+      "id": "VISUAL-FROZEN-MODEL",
+      "kind": "BEHAVIOR",
+      "result": "PASS",
+      "scope": "11 tests des helpers de pose/contact et supports ; huit sondes cinématiques construites. Aucune capture produit ni revue artistique déduite.",
+      "sourceCommit": "8a25c5cf206647c3490ac362452c2eb22584f07e",
+      "executionContext": "Checkout 8a25 modifié avec trois fichiers superposés et leurs empreintes exactes. Les diagrammes techniques et tentatives de rendu sont décrits séparément dans le reçu.",
+      "command": [
+        "node",
+        "--experimental-strip-types",
+        "--test",
+        "--test-concurrency=1",
+        "tests/hunt-field-presentation-v112.test.mjs"
+      ],
+      "exitCode": 0,
+      "path": "production/skinning-canopy-20261109/qa/field-visuals-model/receipt-final.json",
+      "sha256": "6d93ec63eb00676a4b2fd9d7f71bc267d6ff6d9d65117e2de7429fc839951bf3",
+      "requireCurrentSources": true,
+      "sourceBindingField": "overlays"
+    },
+    {
+      "id": "BUILD-NEXT",
+      "kind": "INITIAL_BUILD",
+      "result": "PASS",
+      "scope": "Première construction Next webpack avec types, avant la compaction mobile ultérieure. Le gate final utilise une exécution distincte.",
+      "sourceCommit": "8a25c5cf206647c3490ac362452c2eb22584f07e",
+      "executionContext": "Checkout 8a25 modifié avec superposition documentée. Les empreintes de cette première construction sont postexécution ; aucun relevé préalable ni futur commit inventé.",
+      "command": [
+        "node",
+        "node_modules/next/dist/bin/next",
+        "build",
+        "--webpack"
+      ],
+      "exitCode": 0,
+      "path": "production/skinning-canopy-20261109/qa/build-final-initial/receipt.json",
+      "sha256": "30465e568f00b9410ebc0e11edc5ee6ee9443a2d6e40bce4be6e285c91dce257",
+      "requireCurrentSources": false,
+      "sourceBindingField": "sourceOverlay"
+    },
+    {
+      "id": "GROUND-PILOT-JUNGLE",
+      "kind": "DIAGNOSTIC_NATIVE",
+      "result": "PASS",
+      "scope": "Un pilote Jungle/Hunter terminé par stepGame et les entrées natives, charge acquise de 0,4 kg / un volume et replay exact de 4 301 ticks. Aucun navigateur ni GameClient monté ; REM112-08 reste ouvert.",
+      "sourceCommit": "8a25c5cf206647c3490ac362452c2eb22584f07e",
+      "executionContext": "Campagne archive propriétaire et armure Hunter possédée ; outil acheté pour 120 des 4 597 marques, aucune charge initiale, invulnérabilité ou suppression d’ennemis. Résultat non forcé. Première tentative Fungal morte et erreur du wrapper conservées séparément.",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+        "scripts/qa-hunt-ground-campaign-v112.mjs",
+        "--mission=jungle-vey",
+        "--armor=hunter",
+        "--baseSave=docs/qa/v112-ground-campaign/campaign-origin-save.json",
+        "--harvest=true",
+        "--seconds=180",
+        "--replay=true",
+        "--output=outputs/qa-ground-admissible-pilot-20261109-02"
+      ],
+      "exitCode": 0,
+      "path": "production/skinning-canopy-20261109/qa/ground-pilots/attempt-02/pilot-receipt.json",
+      "sha256": "5783a96e9f5af472a9966f91db903a6fa5d47f77fc2688ad1a4820c0ab09ad8e"
+    },
+    {
+      "id": "GUIDE-COMPACT-PREFLIGHT",
+      "kind": "INITIAL_BROWSER",
+      "result": "PASS",
+      "scope": "Vrai guide isolé : 12 combinaisons construites à 390 et 320 px, Entrée/Espace, commandes remappées, onze étapes et zoom texte à 200 %, deux PNG natifs. Aucun HuntCanvas ni campagne monté.",
+      "sourceCommit": "8a25c5cf206647c3490ac362452c2eb22584f07e",
+      "executionContext": "Commande exacte et codes 0 dans execution-receipt.json ; six empreintes de sources dans le rapport, props construites. Neuf tests et lint avec journaux bruts distincts.",
+      "command": [
+        "node",
+        "outputs/qa-field-guide-compact-20261109/check.mjs"
+      ],
+      "exitCode": 0,
+      "path": "production/skinning-canopy-20261109/qa/field-guide-compact/report.json",
+      "sha256": "7f23704703aed04091b2ab324140a707e2ef72ef261b1a862de2a74b2741b82f",
+      "requireCurrentSources": true,
+      "sourceBindingField": "sourceFiles"
+    },
+    {
+      "id": "FINAL-REGRESSIONS",
+      "kind": "PRIOR_REGRESSION",
+      "result": "PASS",
+      "scope": "464 tests dans 30 fichiers, zéro échec ou ignoré ; empreintes avant/après identiques, rapprochées des blobs produit c23000. Cette passe précède la finition mobile ultérieure du menu ; le nouveau gel possède ses contrôles distincts.",
+      "sourceCommit": "8a25c5cf206647c3490ac362452c2eb22584f07e",
+      "executionContext": "Exécuté sur 8a25 avec superposition gelée ; empreintes avant/après et comparaison ultérieure des octets à c23000 dans commit-byte-comparison.json. Aucune nouvelle exécution attribuée à c23000.",
+      "command": [
+        "node",
+        "--experimental-strip-types",
+        "--test",
+        "--test-isolation=none",
+        "--test-reporter=spec",
+        "--test-concurrency=1",
+        "tests/hunt-skinning-worksite-20261109.test.mjs",
+        "tests/hunt-rites-v77.test.mjs",
+        "tests/field-tools-rites-v111.test.mjs",
+        "tests/carcass-anatomy-v112.test.mjs",
+        "tests/harvest-inventory-v112.test.mjs",
+        "tests/hunt-carcass-runtime-v112.test.mjs",
+        "tests/hunt-catalogue-contract-v112.test.mjs",
+        "tests/hunt-carried-corpse-menu-v112.test.mjs",
+        "tests/hunt-harvest-runtime-v111.test.mjs",
+        "tests/trophy-harvest-v111.test.mjs",
+        "tests/hunt-accessibility-v112.test.mjs",
+        "tests/hunt-field-load-v112.test.mjs",
+        "tests/hunt-field-stash-runtime-v112.test.mjs",
+        "tests/field-stash-v112.test.mjs",
+        "tests/hunt-ground-recovery-v112.test.mjs",
+        "tests/canopy-traversal-v112.test.mjs",
+        "tests/hunt-canopy-runtime-v112.test.mjs",
+        "tests/canopy-navigation-v112.test.mjs",
+        "tests/hunt-canopy-resume-cooldown-20261109.test.mjs",
+        "tests/hunt-field-presentation-v112.test.mjs",
+        "tests/hunt-field-feedback-20261109.test.mjs",
+        "tests/pod-audio.test.mjs",
+        "tests/sound-lifecycle.test.mjs",
+        "tests/hunter-rig-v3.test.mjs",
+        "tests/hunter-rig-origin.test.mjs",
+        "tests/rig-equipment-forearm-fit.test.mjs",
+        "tests/active-hunt-save.test.mjs",
+        "tests/active-hunt-ownership.test.mjs",
+        "tests/hunt-exploration-save-runtime.test.mjs",
+        "tests/hunt-field-guide-v112.test.mjs"
+      ],
+      "exitCode": 0,
+      "path": "production/skinning-canopy-20261109/qa/final-local-c23000/native-command.json",
+      "sha256": "057209dbd2868f0a28989dab41534fc2e3d48491706a7f54fb9fdd25f04c3fcc",
+      "requireCurrentSources": false,
+      "sourceBindingField": "sourcesAfter"
+    },
+    {
+      "id": "FINAL-BUILD",
+      "kind": "PRIOR_BUILD",
+      "result": "PASS",
+      "scope": "Construction Next webpack et TypeScript réussis après compaction du guide ; pas d’empaquetage complet ni déploiement. Cette passe précède la finition mobile ultérieure du menu ; le nouveau gel possède ses contrôles distincts.",
+      "sourceCommit": "8a25c5cf206647c3490ac362452c2eb22584f07e",
+      "executionContext": "Exécuté sur 8a25 avec superposition gelée ; empreintes avant/après et comparaison ultérieure des octets à c23000 dans commit-byte-comparison.json. Aucune nouvelle exécution attribuée à c23000.",
+      "command": [
+        "node",
+        "node_modules/next/dist/bin/next",
+        "build",
+        "--webpack"
+      ],
+      "exitCode": 0,
+      "path": "production/skinning-canopy-20261109/qa/final-local-c23000/build-command.json",
+      "sha256": "b3f4994d3da27ead080a60d1ba6e04135d65ae3416867d9e380934fc6cc9a0a9",
+      "requireCurrentSources": false,
+      "sourceBindingField": "sourcesAfter"
+    },
+    {
+      "id": "FINAL-LINT",
+      "kind": "PRIOR_LINT",
+      "result": "PASS",
+      "scope": "Lint strict des 18 fichiers concernés, sans avertissement. Cette passe précède la finition mobile ultérieure du menu ; le nouveau gel possède ses contrôles distincts.",
+      "sourceCommit": "8a25c5cf206647c3490ac362452c2eb22584f07e",
+      "executionContext": "Commande et empreintes consignées, code de sortie 0 observé ; comparaison ultérieure aux blobs c23000. Le lint ne possède pas le relevé avant/après des deux autres gates, et aucune nouvelle exécution n’est attribuée à c23000.",
+      "command": [
+        "node",
+        "node_modules/eslint/bin/eslint.js",
+        "--max-warnings",
+        "0",
+        "app/game/HuntCanopyHudV112.tsx",
+        "app/game/HuntCanvas.tsx",
+        "app/game/HuntFieldGuideV112.tsx",
+        "app/game/HuntRitesMenuV77.tsx",
+        "app/game/sound.ts",
+        "app/game/systems/canopyNavigationV112.ts",
+        "app/game/systems/canopySupportRendererV112.ts",
+        "app/game/systems/huntFieldFeedbackV112.ts",
+        "app/game/systems/huntFieldPresentationV112.ts",
+        "app/game/systems/huntRitesRuntimeV77.ts",
+        "app/game/systems/ritesOfHuntV77.ts",
+        "tests/canopy-navigation-v112.test.mjs",
+        "tests/hunt-canopy-resume-cooldown-20261109.test.mjs",
+        "tests/hunt-field-feedback-20261109.test.mjs",
+        "tests/hunt-field-guide-v112.test.mjs",
+        "tests/hunt-field-presentation-v112.test.mjs",
+        "tests/hunt-skinning-worksite-20261109.test.mjs",
+        "tests/hunter-rig-origin.test.mjs"
+      ],
+      "exitCode": 0,
+      "path": "production/skinning-canopy-20261109/qa/final-local-c23000/lint-command.json",
+      "sha256": "f480af9f202deb6ba45f366876dd23ee79101dfbf544634eab942a3d0779a156",
+      "requireCurrentSources": false,
+      "sourceBindingField": "sourceSha256"
+    },
+    {
+      "id": "RITES-COMPACT-COMPONENT",
+      "kind": "INITIAL_BROWSER",
+      "result": "PASS",
+      "scope": "Vrai menu/CSS en scène construite de 240 px : travail compact de 62 px à 320 et 390 px, huit captures, boutons de 44 px, détails et annulation par le code natif extrait. Aucun GameClient ou contrôleur physique monté.",
+      "sourceCommit": "c23000fae806c6a777e719432c6fde5e9e2e259c",
+      "executionContext": "Checkout c23000 avec les deux fichiers UI superposés et leurs empreintes ; modèle inchangé. Les 36 tests et le lint consignés appartiennent à cette nouvelle UI, sans être additionnés aux passes précédentes.",
+      "command": [
+        "node",
+        "/tmp/measure-compact-rites-final-20261109.mjs"
+      ],
+      "exitCode": 0,
+      "path": "production/skinning-canopy-20261109/qa/rites-compact-component/receipt.json",
+      "sha256": "29c2abea396d6320861db0694fc67f89fe46242260fd5e0f6bfcec9d484960e6",
+      "requireCurrentSources": true,
+      "sourceBindingField": "sourceFiles"
+    },
+    {
+      "id": "COMPACT-REGRESSIONS-PRIOR",
+      "kind": "PRIOR_REGRESSION",
+      "result": "PASS",
+      "scope": "464 tests réussis avant la correction ultérieure de priorité de cible.",
+      "sourceCommit": "c23000fae806c6a777e719432c6fde5e9e2e259c",
+      "executionContext": "Vrai checkout et superposition conservés dans le reçu ; comparaison ultérieure aux blobs 9c603846. Cette comparaison ne constitue ni une nouvelle exécution à ce commit ni un gate de la future correction de cible.",
+      "command": [
+        "node",
+        "--experimental-strip-types",
+        "--test",
+        "--test-isolation=none",
+        "--test-reporter=spec",
+        "--test-concurrency=1",
+        "tests/hunt-skinning-worksite-20261109.test.mjs",
+        "tests/hunt-rites-v77.test.mjs",
+        "tests/field-tools-rites-v111.test.mjs",
+        "tests/carcass-anatomy-v112.test.mjs",
+        "tests/harvest-inventory-v112.test.mjs",
+        "tests/hunt-carcass-runtime-v112.test.mjs",
+        "tests/hunt-catalogue-contract-v112.test.mjs",
+        "tests/hunt-carried-corpse-menu-v112.test.mjs",
+        "tests/hunt-harvest-runtime-v111.test.mjs",
+        "tests/trophy-harvest-v111.test.mjs",
+        "tests/hunt-accessibility-v112.test.mjs",
+        "tests/hunt-field-load-v112.test.mjs",
+        "tests/hunt-field-stash-runtime-v112.test.mjs",
+        "tests/field-stash-v112.test.mjs",
+        "tests/hunt-ground-recovery-v112.test.mjs",
+        "tests/canopy-traversal-v112.test.mjs",
+        "tests/hunt-canopy-runtime-v112.test.mjs",
+        "tests/canopy-navigation-v112.test.mjs",
+        "tests/hunt-canopy-resume-cooldown-20261109.test.mjs",
+        "tests/hunt-field-presentation-v112.test.mjs",
+        "tests/hunt-field-feedback-20261109.test.mjs",
+        "tests/pod-audio.test.mjs",
+        "tests/sound-lifecycle.test.mjs",
+        "tests/hunter-rig-v3.test.mjs",
+        "tests/hunter-rig-origin.test.mjs",
+        "tests/rig-equipment-forearm-fit.test.mjs",
+        "tests/active-hunt-save.test.mjs",
+        "tests/active-hunt-ownership.test.mjs",
+        "tests/hunt-exploration-save-runtime.test.mjs",
+        "tests/hunt-field-guide-v112.test.mjs"
+      ],
+      "exitCode": 0,
+      "path": "production/skinning-canopy-20261109/qa/local-9c603846-before-target-fix/native-command.json",
+      "sha256": "1383bd760fb2de4e9523f7b206c7369efcd46fd848be2eecf2a11750a14565b0"
+    },
+    {
+      "id": "COMPACT-BUILD-PRIOR",
+      "kind": "PRIOR_BUILD",
+      "result": "PASS",
+      "scope": "Next webpack et types réussis pour le menu compact, avant la correction ultérieure de cible.",
+      "sourceCommit": "c23000fae806c6a777e719432c6fde5e9e2e259c",
+      "executionContext": "Vrai checkout et superposition conservés dans le reçu ; comparaison ultérieure aux blobs 9c603846. Cette comparaison ne constitue ni une nouvelle exécution à ce commit ni un gate de la future correction de cible.",
+      "command": [
+        "node",
+        "node_modules/next/dist/bin/next",
+        "build",
+        "--webpack"
+      ],
+      "exitCode": 0,
+      "path": "production/skinning-canopy-20261109/qa/local-9c603846-before-target-fix/build-command.json",
+      "sha256": "b9e86d254f76f29a72e8d60dba5529a4c1a077e3fb72382a0169be50d0250309"
+    },
+    {
+      "id": "COMPACT-LINT-PRIOR",
+      "kind": "PRIOR_LINT",
+      "result": "PASS",
+      "scope": "Lint strict réussi pour le gel 9c603846, avant la correction ultérieure de cible.",
+      "sourceCommit": "c23000fae806c6a777e719432c6fde5e9e2e259c",
+      "executionContext": "Vrai checkout et superposition conservés dans le reçu ; comparaison ultérieure aux blobs 9c603846. Cette comparaison ne constitue ni une nouvelle exécution à ce commit ni un gate de la future correction de cible.",
+      "command": [
+        "node",
+        "node_modules/eslint/bin/eslint.js",
+        "--max-warnings",
+        "0",
+        "app/game/HuntCanopyHudV112.tsx",
+        "app/game/HuntCanvas.tsx",
+        "app/game/HuntFieldGuideV112.tsx",
+        "app/game/HuntRitesMenuV77.tsx",
+        "app/game/sound.ts",
+        "app/game/systems/canopyNavigationV112.ts",
+        "app/game/systems/canopySupportRendererV112.ts",
+        "app/game/systems/huntFieldFeedbackV112.ts",
+        "app/game/systems/huntFieldPresentationV112.ts",
+        "app/game/systems/huntRitesRuntimeV77.ts",
+        "app/game/systems/ritesOfHuntV77.ts",
+        "tests/canopy-navigation-v112.test.mjs",
+        "tests/hunt-canopy-resume-cooldown-20261109.test.mjs",
+        "tests/hunt-field-feedback-20261109.test.mjs",
+        "tests/hunt-field-guide-v112.test.mjs",
+        "tests/hunt-field-presentation-v112.test.mjs",
+        "tests/hunt-skinning-worksite-20261109.test.mjs",
+        "tests/hunter-rig-origin.test.mjs"
+      ],
+      "exitCode": 0,
+      "path": "production/skinning-canopy-20261109/qa/local-9c603846-before-target-fix/lint-command.json",
+      "sha256": "ea5224810ce19547a57fda8bbdd08c6a9262e41e4a40c3662a824d80df55bf49"
+    },
+    {
+      "id": "FINAL-REGRESSIONS-CE82",
+      "kind": "PRIOR_FINAL_REGRESSION",
+      "result": "PASS",
+      "scope": "466 tests dans 30 fichiers, zéro échec ou ignoré ; menu compact et stabilité de cible inclus. Succès daté du point ce82e2b, avant le raccord ultérieur de la main arrière en pendule ; le nouveau rendu a ses propres gates et recette.",
+      "sourceCommit": "9c603846cc2577221ad1f6587d4afc14af1a199f",
+      "executionContext": "Vrai checkout 9c603846 avec superposition du correctif de cible. Les empreintes consignées et la comparaison ultérieure aux blobs ce82e2b sont dans les reçus ; aucune nouvelle exécution n’est attribuée à ce82e2b.",
+      "command": [
+        "node",
+        "--experimental-strip-types",
+        "--test",
+        "--test-isolation=none",
+        "--test-reporter=spec",
+        "--test-concurrency=1",
+        "tests/hunt-skinning-worksite-20261109.test.mjs",
+        "tests/hunt-rites-v77.test.mjs",
+        "tests/field-tools-rites-v111.test.mjs",
+        "tests/carcass-anatomy-v112.test.mjs",
+        "tests/harvest-inventory-v112.test.mjs",
+        "tests/hunt-carcass-runtime-v112.test.mjs",
+        "tests/hunt-catalogue-contract-v112.test.mjs",
+        "tests/hunt-carried-corpse-menu-v112.test.mjs",
+        "tests/hunt-harvest-runtime-v111.test.mjs",
+        "tests/trophy-harvest-v111.test.mjs",
+        "tests/hunt-accessibility-v112.test.mjs",
+        "tests/hunt-field-load-v112.test.mjs",
+        "tests/hunt-field-stash-runtime-v112.test.mjs",
+        "tests/field-stash-v112.test.mjs",
+        "tests/hunt-ground-recovery-v112.test.mjs",
+        "tests/canopy-traversal-v112.test.mjs",
+        "tests/hunt-canopy-runtime-v112.test.mjs",
+        "tests/canopy-navigation-v112.test.mjs",
+        "tests/hunt-canopy-resume-cooldown-20261109.test.mjs",
+        "tests/hunt-field-presentation-v112.test.mjs",
+        "tests/hunt-field-feedback-20261109.test.mjs",
+        "tests/pod-audio.test.mjs",
+        "tests/sound-lifecycle.test.mjs",
+        "tests/hunter-rig-v3.test.mjs",
+        "tests/hunter-rig-origin.test.mjs",
+        "tests/rig-equipment-forearm-fit.test.mjs",
+        "tests/active-hunt-save.test.mjs",
+        "tests/active-hunt-ownership.test.mjs",
+        "tests/hunt-exploration-save-runtime.test.mjs",
+        "tests/hunt-field-guide-v112.test.mjs"
+      ],
+      "exitCode": 0,
+      "path": "production/skinning-canopy-20261109/qa/final-local-ce82e2b/native-command.json",
+      "sha256": "49ee8b208e107df3a755d9c0a46c39de2a518861850e56b13e1cce5b4de5bcc4",
+      "requireCurrentSources": false,
+      "sourceBindingField": "sourcesAfter"
+    },
+    {
+      "id": "FINAL-BUILD-CE82",
+      "kind": "PRIOR_FINAL_BUILD",
+      "result": "PASS",
+      "scope": "Construction Next webpack et TypeScript réussis pour le produit final ; pas d’empaquetage complet ni déploiement. Succès daté du point ce82e2b, avant le raccord ultérieur de la main arrière en pendule ; le nouveau rendu a ses propres gates et recette.",
+      "sourceCommit": "9c603846cc2577221ad1f6587d4afc14af1a199f",
+      "executionContext": "Vrai checkout 9c603846 avec superposition du correctif de cible. Les empreintes consignées et la comparaison ultérieure aux blobs ce82e2b sont dans les reçus ; aucune nouvelle exécution n’est attribuée à ce82e2b.",
+      "command": [
+        "node",
+        "node_modules/next/dist/bin/next",
+        "build",
+        "--webpack"
+      ],
+      "exitCode": 0,
+      "path": "production/skinning-canopy-20261109/qa/final-local-ce82e2b/build-command.json",
+      "sha256": "008c366bb398719dccd3f7a0e71a2b768109666413df262c390f09b7348247c2",
+      "requireCurrentSources": false,
+      "sourceBindingField": "sourcesAfter"
+    },
+    {
+      "id": "FINAL-LINT-CE82",
+      "kind": "PRIOR_FINAL_LINT",
+      "result": "PASS",
+      "scope": "Lint strict des 18 fichiers concernés, sans avertissement. Succès daté du point ce82e2b, avant le raccord ultérieur de la main arrière en pendule ; le nouveau rendu a ses propres gates et recette.",
+      "sourceCommit": "9c603846cc2577221ad1f6587d4afc14af1a199f",
+      "executionContext": "Vrai checkout 9c603846 avec superposition du correctif de cible. Les empreintes consignées et la comparaison ultérieure aux blobs ce82e2b sont dans les reçus ; aucune nouvelle exécution n’est attribuée à ce82e2b.",
+      "command": [
+        "node",
+        "node_modules/eslint/bin/eslint.js",
+        "--max-warnings",
+        "0",
+        "app/game/HuntCanopyHudV112.tsx",
+        "app/game/HuntCanvas.tsx",
+        "app/game/HuntFieldGuideV112.tsx",
+        "app/game/HuntRitesMenuV77.tsx",
+        "app/game/sound.ts",
+        "app/game/systems/canopyNavigationV112.ts",
+        "app/game/systems/canopySupportRendererV112.ts",
+        "app/game/systems/huntFieldFeedbackV112.ts",
+        "app/game/systems/huntFieldPresentationV112.ts",
+        "app/game/systems/huntRitesRuntimeV77.ts",
+        "app/game/systems/ritesOfHuntV77.ts",
+        "tests/canopy-navigation-v112.test.mjs",
+        "tests/hunt-canopy-resume-cooldown-20261109.test.mjs",
+        "tests/hunt-field-feedback-20261109.test.mjs",
+        "tests/hunt-field-guide-v112.test.mjs",
+        "tests/hunt-field-presentation-v112.test.mjs",
+        "tests/hunt-skinning-worksite-20261109.test.mjs",
+        "tests/hunter-rig-origin.test.mjs"
+      ],
+      "exitCode": 0,
+      "path": "production/skinning-canopy-20261109/qa/final-local-ce82e2b/lint-command.json",
+      "sha256": "5f5a1394f53258ef557db8a90ab737c9ad7f3efb2eff97b4499b364d05d41650",
+      "requireCurrentSources": false,
+      "sourceBindingField": "sourcesAfter"
+    },
+    {
+      "id": "FINAL-NATIVE-BOTH",
+      "kind": "PRIOR_BROWSER",
+      "result": "PASS",
+      "scope": "Vrai GameClient : 16 contrôles réussis et 17 PNG natifs ; terrain, deux reprises de sidecar, livraison, quatre étapes d’atelier et transfert réel vers la liane suivante. Aucune erreur de page ni ressource défaillante collectée ; console non collectée. Succès daté du point ce82e2b, avant le raccord ultérieur de la main arrière en pendule ; le nouveau rendu a ses propres gates et recette.",
+      "sourceCommit": "ce82e2b742c2243e524e23aee4efe26cd5c6a644",
+      "executionContext": "Exécution réelle sur ce82e2b, avec superposition des deux fichiers de recette archivés. SourceHashes des 23 fichiers produit identiques au workspace et au commit ; la proie initiale et le segment terminal sont des fixtures déclarées.",
+      "command": [
+        "node",
+        "scripts/qa-skinning-canopy-durable-browser-20261109.mjs"
+      ],
+      "exitCode": 0,
+      "path": "production/skinning-canopy-20261109/qa/native-09-final/report.json",
+      "sha256": "fb8e89853a0dda0a50ce69294c5f80743328cd591aa3b984f530eb78fb8128c4",
+      "requireCurrentSources": false,
+      "sourceBindingField": "sourceHashes"
+    },
+    {
+      "id": "DOCUMENT-PRODUCER-INPUTS",
+      "kind": "PRIOR_DOCUMENT_PRODUCER",
+      "result": "PASS",
+      "scope": "Baseline de 413 entrées et 108 classeurs, huit Restant exacts ; producteur OOXML/HTML vérifié deux fois en mémoire. Ce reçu ne donne pas le hash ou les comptes du livrable final, contrôlés après export. Ce point précède la désactivation des liens implicites des chemins, remplacés par les URL de source explicites.",
+      "sourceCommit": "ce82e2b742c2243e524e23aee4efe26cd5c6a644",
+      "executionContext": "Exécution réelle du préflight du producteur, sans écrire de XLSX ni HTML. Les six sources de production documentaire sont empreintées ; les résultats finaux de fichiers sont dans verification-classeur.json et le lecteur indépendant post-export.",
+      "command": [
+        "python3",
+        "production/skinning-canopy-20261109/qa/document-inputs/check.py.txt"
+      ],
+      "exitCode": 0,
+      "path": "production/skinning-canopy-20261109/qa/document-inputs/receipt.json",
+      "sha256": "9e486b5ff8e4b1e62f5d790789fce182c507c57ffeb493b7ab8e3bcfd7352efd",
+      "requireCurrentSources": false,
+      "sourceBindingField": "sourceFiles"
+    },
+    {
+      "id": "CANOPY-REAR-HAND-MODEL",
+      "kind": "INITIAL_BEHAVIOR",
+      "result": "PASS",
+      "scope": "Cinq tests et 198 postures mathématiques, avec deux snapshots natifs voisins ; seule la chaîne du bras arrière change, autres matrices et ancrages bit-identiques. Ce reçu ne qualifie pas le prochain rendu navigateur.",
+      "sourceCommit": "ce82e2b742c2243e524e23aee4efe26cd5c6a644",
+      "executionContext": "Checkout ce82e2b avec deux fichiers superposés, leurs empreintes et logs ; mesures avant correction conservées. Les 198 postures ne sont pas 198 tests unitaires supplémentaires.",
+      "command": [
+        "node",
+        "--experimental-strip-types",
+        "--test",
+        "--test-concurrency=1",
+        "tests/canopy-grip-presentation-v112.test.mjs"
+      ],
+      "exitCode": 0,
+      "path": "production/skinning-canopy-20261109/qa/canopy-rear-hand-model/receipt.json",
+      "sha256": "946771de458427fd0b25edd721bb82a97611250efead6aa45fda4be6cc17846a"
+    },
+    {
+      "id": "FINAL-REGRESSIONS-CFA",
+      "kind": "FINAL_REGRESSION",
+      "result": "PASS",
+      "scope": "471 tests dans 31 fichiers, zéro échec ou ignoré ; raccord de main arrière et préservation des ancrages inclus.",
+      "sourceCommit": "ce82e2b742c2243e524e23aee4efe26cd5c6a644",
+      "executionContext": "Vrai checkout ce82e2b avec superposition du raccord IK. Les empreintes avant/après sont stables et comparées ensuite aux blobs cfa730 ; aucune nouvelle exécution n’est attribuée à ce commit.",
+      "command": [
+        "node",
+        "--experimental-strip-types",
+        "--test",
+        "--test-isolation=none",
+        "--test-reporter=spec",
+        "--test-concurrency=1",
+        "tests/hunt-skinning-worksite-20261109.test.mjs",
+        "tests/hunt-rites-v77.test.mjs",
+        "tests/field-tools-rites-v111.test.mjs",
+        "tests/carcass-anatomy-v112.test.mjs",
+        "tests/harvest-inventory-v112.test.mjs",
+        "tests/hunt-carcass-runtime-v112.test.mjs",
+        "tests/hunt-catalogue-contract-v112.test.mjs",
+        "tests/hunt-carried-corpse-menu-v112.test.mjs",
+        "tests/hunt-harvest-runtime-v111.test.mjs",
+        "tests/trophy-harvest-v111.test.mjs",
+        "tests/hunt-accessibility-v112.test.mjs",
+        "tests/hunt-field-load-v112.test.mjs",
+        "tests/hunt-field-stash-runtime-v112.test.mjs",
+        "tests/field-stash-v112.test.mjs",
+        "tests/hunt-ground-recovery-v112.test.mjs",
+        "tests/canopy-traversal-v112.test.mjs",
+        "tests/hunt-canopy-runtime-v112.test.mjs",
+        "tests/canopy-navigation-v112.test.mjs",
+        "tests/hunt-canopy-resume-cooldown-20261109.test.mjs",
+        "tests/hunt-field-presentation-v112.test.mjs",
+        "tests/hunt-field-feedback-20261109.test.mjs",
+        "tests/pod-audio.test.mjs",
+        "tests/sound-lifecycle.test.mjs",
+        "tests/hunter-rig-v3.test.mjs",
+        "tests/hunter-rig-origin.test.mjs",
+        "tests/rig-equipment-forearm-fit.test.mjs",
+        "tests/active-hunt-save.test.mjs",
+        "tests/active-hunt-ownership.test.mjs",
+        "tests/hunt-exploration-save-runtime.test.mjs",
+        "tests/hunt-field-guide-v112.test.mjs",
+        "tests/canopy-grip-presentation-v112.test.mjs"
+      ],
+      "exitCode": 0,
+      "path": "production/skinning-canopy-20261109/qa/final-local-cfa730/native-command.json",
+      "sha256": "917d2ade6a9dc0e54547ff4c47bb73c156a5d776768abc6c5db31bfe3093bda5",
+      "requireCurrentSources": true,
+      "sourceBindingField": "sourcesAfter"
+    },
+    {
+      "id": "FINAL-BUILD-CFA",
+      "kind": "BUILD",
+      "result": "PASS",
+      "scope": "Construction Next webpack et TypeScript réussis pour le dernier produit avec raccord IK ; pas d’empaquetage complet ni déploiement.",
+      "sourceCommit": "ce82e2b742c2243e524e23aee4efe26cd5c6a644",
+      "executionContext": "Vrai checkout ce82e2b avec superposition du raccord IK. Les empreintes avant/après sont stables et comparées ensuite aux blobs cfa730 ; aucune nouvelle exécution n’est attribuée à ce commit.",
+      "command": [
+        "node",
+        "node_modules/next/dist/bin/next",
+        "build",
+        "--webpack"
+      ],
+      "exitCode": 0,
+      "path": "production/skinning-canopy-20261109/qa/final-local-cfa730/build-command.json",
+      "sha256": "fb0828c9884b75fd09c3e5ec80020c8888c6b2b670a4a49de6ee2fd7f82fb8d5",
+      "requireCurrentSources": true,
+      "sourceBindingField": "sourcesAfter"
+    },
+    {
+      "id": "FINAL-LINT-CFA",
+      "kind": "LINT",
+      "result": "PASS",
+      "scope": "Lint strict des 20 fichiers concernés, sans avertissement.",
+      "sourceCommit": "ce82e2b742c2243e524e23aee4efe26cd5c6a644",
+      "executionContext": "Vrai checkout ce82e2b avec superposition du raccord IK. Les empreintes avant/après sont stables et comparées ensuite aux blobs cfa730 ; aucune nouvelle exécution n’est attribuée à ce commit.",
+      "command": [
+        "node",
+        "node_modules/eslint/bin/eslint.js",
+        "--max-warnings",
+        "0",
+        "app/game/HuntCanopyHudV112.tsx",
+        "app/game/HuntCanvas.tsx",
+        "app/game/HuntFieldGuideV112.tsx",
+        "app/game/HuntRitesMenuV77.tsx",
+        "app/game/sound.ts",
+        "app/game/systems/canopyNavigationV112.ts",
+        "app/game/systems/canopySupportRendererV112.ts",
+        "app/game/systems/huntFieldFeedbackV112.ts",
+        "app/game/systems/huntFieldPresentationV112.ts",
+        "app/game/systems/huntRitesRuntimeV77.ts",
+        "app/game/systems/ritesOfHuntV77.ts",
+        "tests/canopy-navigation-v112.test.mjs",
+        "tests/hunt-canopy-resume-cooldown-20261109.test.mjs",
+        "tests/hunt-field-feedback-20261109.test.mjs",
+        "tests/hunt-field-guide-v112.test.mjs",
+        "tests/hunt-field-presentation-v112.test.mjs",
+        "tests/hunt-skinning-worksite-20261109.test.mjs",
+        "tests/hunter-rig-origin.test.mjs",
+        "app/game/systems/canopyGripPresentationV112.ts",
+        "tests/canopy-grip-presentation-v112.test.mjs"
+      ],
+      "exitCode": 0,
+      "path": "production/skinning-canopy-20261109/qa/final-local-cfa730/lint-command.json",
+      "sha256": "86d435f208273929cd010724b8ce515cfe0b192697f8c737c4c059c35457921a",
+      "requireCurrentSources": true,
+      "sourceBindingField": "sourcesAfter"
+    },
+    {
+      "id": "DOCUMENT-PRODUCER-FINAL",
+      "kind": "BEHAVIOR",
+      "result": "PASS",
+      "scope": "Producteur stdlib déterministe en mémoire, uniquement des liens de source explicites ; 413 entrées historiques et huit Restant contrôlés. Le hash et les comptes du XLSX final restent fournis après export par son rapport et le lecteur indépendant.",
+      "sourceCommit": "cfa730ba65c03d353eb97acfec56eabc383a499b",
+      "executionContext": "Préflight réellement exécuté sans export, six sources documentaires empreintées ; aucune attestation anticipée des octets du futur XLSX.",
+      "command": [
+        "python3",
+        "production/skinning-canopy-20261109/qa/document-inputs-final/check.py.txt"
+      ],
+      "exitCode": 0,
+      "path": "production/skinning-canopy-20261109/qa/document-inputs-final/receipt.json",
+      "sha256": "3f84321b4fd3cf1ef209742610f08970174bfb5dabd743abaab093bb3695e99e",
+      "requireCurrentSources": true,
+      "sourceBindingField": "sourceFiles"
+    },
+    {
+      "id": "FINAL-NATIVE-CFA",
+      "kind": "BROWSER",
+      "result": "PASS",
+      "scope": "Vrai GameClient sur cfa730 : 16 contrôles et 17 PNG natifs, avec sidecars, récolte/dépose/reprise, règlement, quatre étapes d’atelier et liane suivante. Contact arrière mesuré sur 35 états, deux directions et cinq points ciblés ; maximum 9,11e-13 px. Aucune assertion pixel précise des PNG ni console collectée.",
+      "sourceCommit": "cfa730ba65c03d353eb97acfec56eabc383a499b",
+      "executionContext": "Exécution réelle sur cfa730, deux fichiers de recette archivés aux mêmes empreintes que ce commit ; 24 sources produit et 289 ressources originales vérifiées. Proie et segment terminal préparés explicitement, recette muette.",
+      "command": [
+        "node",
+        "scripts/qa-skinning-canopy-durable-browser-20261109.mjs"
+      ],
+      "exitCode": 0,
+      "path": "production/skinning-canopy-20261109/qa/native-10-final/report.json",
+      "sha256": "05a53f2397d1fc2c4a7755eb01a2a01af2361840b634e4ec9ccce98b969d6b7a",
+      "requireCurrentSources": true,
+      "sourceBindingField": "sourceHashes"
+    },
+    {
+      "id": "CURRENT-SOURCE-GATE",
+      "kind": "SOURCE_CHECK",
+      "result": "PASS",
+      "scope": "Garde courant des sources réussi sur cfa730 : 3 086 fichiers et 148 412 482 octets ; contrôle d’identité, pas exécution du runtime.",
+      "sourceCommit": "cfa730ba65c03d353eb97acfec56eabc383a499b",
+      "executionContext": "Commande réellement exécutée sur la tête cfa730, journal brut et code observé dans le reçu.",
+      "command": [
+        "node",
+        "scripts/check-hunt-integration-source-v112.mjs",
+        "--current"
+      ],
+      "exitCode": 0,
+      "path": "production/skinning-canopy-20261109/qa/source-gates-cfa730/execution.json",
+      "sha256": "53e59721ce59c54798099a8ae3cb0363bb6b2498ef88728a8e30653af67507c8"
+    },
+    {
+      "id": "CURRENT-RUNTIME-GATE",
+      "kind": "SOURCE_CHECK",
+      "result": "PASS",
+      "scope": "Snapshot runtime courant réussi : 2 214 entrées, 1 093 290 474 octets d’inputs ; aucun inventaire historique réécrit.",
+      "sourceCommit": "cfa730ba65c03d353eb97acfec56eabc383a499b",
+      "executionContext": "Commande réellement exécutée sur la tête cfa730, journal brut et code observé dans le reçu.",
+      "command": [
+        "node",
+        "scripts/snapshot-runtime-v113.mjs",
+        "--check",
+        "docs/qa/current-integration-20261103/runtime-inputs.json"
+      ],
+      "exitCode": 0,
+      "path": "production/skinning-canopy-20261109/qa/source-gates-cfa730/execution.json",
+      "sha256": "53e59721ce59c54798099a8ae3cb0363bb6b2498ef88728a8e30653af67507c8"
+    },
+    {
+      "id": "DOCUMENT-FIRST-INDEPENDENT",
+      "kind": "BEHAVIOR",
+      "result": "PASS",
+      "scope": "Premier candidat réellement exporté et lu indépendamment : neuf feuilles, 22 critères, cellules/liens et 412 fichiers historiques uniques vérifiés. Candidat et données exactes archivés ; le livrable final est régénéré et vérifié séparément.",
+      "sourceCommit": "cfa730ba65c03d353eb97acfec56eabc383a499b",
+      "executionContext": "Commande indépendante exécutée, stdout/stderr réels conservés, code 0. Le premier candidat précède la qualification documentaire ; son hash ne remplace pas celui du livrable final.",
+      "command": [
+        "python3",
+        "production/skinning-canopy-20261109/verify-followup.py"
+      ],
+      "exitCode": 0,
+      "path": "production/skinning-canopy-20261109/qa/document-first-export/receipt.json",
+      "sha256": "243fe77212ff502e6be47f3b9a5bb66ac3d64fa37f1b498d9208fb3ad622b1ea"
+    }
+  ],
+  "deliveryChecks": [
+    {
+      "id": "GATE-TYPES",
+      "title": "Types et build du produit",
+      "status": "PASS",
+      "evidence": [
+        "FINAL-BUILD-CFA"
+      ]
+    },
+    {
+      "id": "GATE-LINT",
+      "title": "Lint strict des fichiers concernés",
+      "status": "PASS",
+      "evidence": [
+        "FINAL-LINT-CFA"
+      ]
+    },
+    {
+      "id": "GATE-TESTS",
+      "title": "Régressions pertinentes",
+      "status": "PASS",
+      "evidence": [
+        "FINAL-REGRESSIONS-CFA"
+      ]
+    },
+    {
+      "id": "GATE-BROWSER",
+      "title": "Recettes navigateur natives",
+      "status": "PASS",
+      "evidence": [
+        "FINAL-NATIVE-CFA"
+      ]
+    },
+    {
+      "id": "GATE-DOCUMENTS",
+      "title": "Préservation et reproduction du suivi",
+      "status": "PASS",
+      "evidence": [
+        "DOCUMENT-PRODUCER-FINAL",
+        "DOCUMENT-FIRST-INDEPENDENT"
+      ]
+    }
+  ],
+  "remainingActions": [
+    {
+      "id": "REM-HUMAN",
+      "status": "NON_QUALIFIE",
+      "title": "Humains et appareils",
+      "detail": "REM112-01 à REM112-05 et REM112-07 demandent des personnes, appareils ou applications identifiés. Aucun résultat n’est déduit de Chromium émulé."
+    },
+    {
+      "id": "REM-CAMPAIGN",
+      "status": "NON_QUALIFIE",
+      "title": "Campagnes et repli chargés",
+      "detail": "REM112-06 et REM112-08 gardent leurs critères exacts. Une recette bornée de cette tranche ne ferme pas huit chasses interactives complètes."
+    },
+    {
+      "id": "REM-BERCEAU",
+      "status": "PARTIEL",
+      "title": "R2-M027",
+      "detail": "Mentor physique, nettoyage VFX/audio et détérioration d’objet du retour Berceau restent un autre chantier ; les effets de dépeçage ne réalisent pas cette scène."
+    }
+  ],
+  "qualificationPolicy": [
+    "Chaque statut qualifié exige une preuve exécutée reliée au critère, avec hash du rapport, source et limite.",
+    "Une preuve de code ou de logique ne qualifie ni pixels, ni compréhension humaine, ni appareil physique.",
+    "Les ressources générées restent distinctes de leur intégration, de leur parcours navigateur et de leur revue artistique humaine.",
+    "Une qualification de cette tranche ne réécrit aucun libellé ou statut des huit Restant V112.",
+    "Les prérequis préparés, entrées émulées, callbacks extraits et frontières non montées sont annoncés dans chaque recette.",
+    "La feuille Recettes liste les scénarios attendus. Ses colonnes Logique/Navigateur portent sur le critère borné ; les rapports et limites précisent les cas effectivement joués et les frontières construites."
+  ],
+  "assets": [
+    {
+      "id": "SC-A01",
+      "path": "public/game/assets/v2/environments/jungle/climbables/vine-ladder.webp",
+      "purpose": "Image originale de liane réutilisée : échantillonnage du brin gauche, répétition sur la longueur sans étirement.",
+      "generatedStatus": "RESSOURCE_ORIGINALE_REUTILISEE",
+      "integrationStatus": "VERIFIE_BORNE",
+      "testedStatus": "IMAGE_ORIGINALE_CHARGEE",
+      "humanReviewStatus": "NON_QUALIFIE",
+      "usedIn": [
+        "app/game/systems/canopySupportRendererV112.ts"
+      ],
+      "sha256": "58e386b94ae0f62e3e8a927731ca60dc006f96728e28532268f6e93630264f85",
+      "evidence": [
+        "FINAL-REGRESSIONS-CFA",
+        "FINAL-NATIVE-CFA"
+      ]
+    },
+    {
+      "id": "SC-A02",
+      "path": "app/game/systems/canopySupportRendererV112.ts",
+      "purpose": "Dessin procédural de corde, chaîne et repos ; le type, la collision et l’ancrage du support restent ceux du monde.",
+      "generatedStatus": "DESSIN_PROCEDURAL_ORIGINAL",
+      "integrationStatus": "VERIFIE_BORNE",
+      "testedStatus": "MODELE_ET_JUNGLE_NATIFS",
+      "humanReviewStatus": "NON_QUALIFIE",
+      "usedIn": [
+        "app/game/HuntCanvas.tsx"
+      ],
+      "sha256": "5e4190994e7493975842481b8423d7c5beebcc557a347ed23705c09f0800cd51",
+      "evidence": [
+        "FINAL-REGRESSIONS-CFA",
+        "FINAL-NATIVE-CFA"
+      ]
+    },
+    {
+      "id": "SC-A03",
+      "path": "app/game/systems/huntFieldPresentationV112.ts",
+      "purpose": "Pose procédurale IK bras/pieds et VFX de travail sur les calques/registrations d’origine ; aucune nouvelle clip dessinée.",
+      "generatedStatus": "POSE_ET_EFFETS_PROCEDURAUX",
+      "integrationStatus": "VERIFIE_BORNE",
+      "testedStatus": "GEOMETRIE_ET_POSE_NATIVE",
+      "humanReviewStatus": "NON_QUALIFIE",
+      "usedIn": [
+        "app/game/HuntCanvas.tsx"
+      ],
+      "sha256": "1883adca617ac9b07be8f63c32c3187052fa5423450561aa846c2938ed8606b6",
+      "evidence": [
+        "FINAL-REGRESSIONS-CFA",
+        "FINAL-NATIVE-CFA"
+      ]
+    },
+    {
+      "id": "SC-A04",
+      "path": "app/game/sound.ts",
+      "purpose": "Quatre signaux synthétisés de travail, confirmation, prise et lâcher, consommés par les événements réels des rites et changements de support ; aucun fichier audio enregistré ni nouvelle écoute humaine.",
+      "generatedStatus": "SONS_PROCEDURAUX_ORIGINAUX",
+      "integrationStatus": "VERIFIE_BORNE",
+      "testedStatus": "PROFILS_ET_TRANSPORT_LOGICIELS",
+      "humanReviewStatus": "NON_QUALIFIE",
+      "usedIn": [
+        "app/game/HuntCanvas.tsx",
+        "app/game/systems/huntFieldFeedbackV112.ts"
+      ],
+      "sha256": "66bff2f3d56c3508dd6f50b7c6e4ab6449feb0bf3e6c0fa0d4e48c7de308ea65",
+      "evidence": [
+        "FINAL-REGRESSIONS-CFA",
+        "FINAL-NATIVE-CFA"
+      ]
+    },
+    {
+      "id": "SC-A05",
+      "path": "app/game/systems/canopyGripPresentationV112.ts",
+      "purpose": "Raccord procédural de la main arrière à la liane pendant le pendule ; mêmes calques, longueurs, root, jambes et ancrages avant. Aucun nouveau sprite ou changement physique.",
+      "generatedStatus": "POSE_PROCEDURALE_ORIGINALE",
+      "integrationStatus": "VERIFIE_BORNE",
+      "testedStatus": "MODELE_ET_ETATS_NATIFS",
+      "humanReviewStatus": "NON_QUALIFIE",
+      "usedIn": [
+        "app/game/HuntCanvas.tsx"
+      ],
+      "sha256": "b4970ee573f97020df36173b3047040e8a2382c950070e68d97ae8fe57bfe061",
+      "evidence": [
+        "FINAL-REGRESSIONS-CFA",
+        "FINAL-NATIVE-CFA"
+      ]
+    }
+  ]
+}

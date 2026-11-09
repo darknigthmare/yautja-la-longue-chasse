@@ -1,0 +1,90 @@
+{
+  "schemaVersion": 1,
+  "classification": "SUCCESSFUL_NEXT_WEBPACK_COMPILE_TYPES_WITH_POST_EXECUTION_SOURCE_FINGERPRINTS",
+  "checkoutCommit": "8a25c5cf206647c3490ac362452c2eb22584f07e",
+  "workingTreeDirty": true,
+  "command": [
+    "node",
+    "node_modules/next/dist/bin/next",
+    "build",
+    "--webpack"
+  ],
+  "cwd": "/workspace/yautja-reprise-20261109",
+  "exitCode": 0,
+  "exitEvidence": "Root observed exec session45533 and its completion poll exit_code0; this receipt transcribes that explicit tool result, not a fabricated shell transcript.",
+  "nodeVersion": "v24.19.0",
+  "nextVersion": "16.3.5",
+  "sourceSnapshotCapturedAtUtc": "2026-11-09T07:10:12.350379+00:00",
+  "sourceFingerprintsCapturedAfterExecution": true,
+  "sourceOverlay": [
+    {
+      "path": "app/game/HuntCanopyHudV112.module.css",
+      "bytes": 991,
+      "sha256": "861f4bb5782d43bcb3967d96fb6dd72c2dee411b25da95a0309ba8072402ccfe"
+    },
+    {
+      "path": "app/game/HuntCanopyHudV112.tsx",
+      "bytes": 4384,
+      "sha256": "23d2b6ccf3f1d619aa3dd6831800bedaf981eb94b9910c2c14d4ccd9f715db18"
+    },
+    {
+      "path": "app/game/HuntCanvas.tsx",
+      "bytes": 471052,
+      "sha256": "8dbdc4c73c273c0407fd37b6340b70954ad0d289ab5a1f7b33af5b7b635bff96"
+    },
+    {
+      "path": "app/game/HuntRitesMenuV77.module.css",
+      "bytes": 1633,
+      "sha256": "c755177e10b2e5f1717e2d3482fa828a0ff7c78f2b89787107ccfbb5960dd9ce"
+    },
+    {
+      "path": "app/game/HuntRitesMenuV77.tsx",
+      "bytes": 8649,
+      "sha256": "b1b3321474897ff72cc24d8769abd277720d3f46d384769d1c9d89e384f76c98"
+    },
+    {
+      "path": "app/game/sound.ts",
+      "bytes": 42640,
+      "sha256": "66bff2f3d56c3508dd6f50b7c6e4ab6449feb0bf3e6c0fa0d4e48c7de308ea65"
+    },
+    {
+      "path": "app/game/systems/canopyNavigationV112.ts",
+      "bytes": 9420,
+      "sha256": "7ee562ab163521a49f5eaf72a52216a9a8f3e2400ef55eca0d5eb482eab181f1"
+    },
+    {
+      "path": "app/game/systems/canopySupportRendererV112.ts",
+      "bytes": 8445,
+      "sha256": "5e4190994e7493975842481b8423d7c5beebcc557a347ed23705c09f0800cd51"
+    },
+    {
+      "path": "app/game/systems/huntFieldFeedbackV112.ts",
+      "bytes": 1408,
+      "sha256": "01c1ca4f169bfa43500a1a0ffdac7fdfd14f473e31343905f677dfc40a4a488b"
+    },
+    {
+      "path": "app/game/systems/huntFieldPresentationV112.ts",
+      "bytes": 13406,
+      "sha256": "1883adca617ac9b07be8f63c32c3187052fa5423450561aa846c2938ed8606b6"
+    },
+    {
+      "path": "app/game/systems/huntRitesRuntimeV77.ts",
+      "bytes": 17137,
+      "sha256": "02dc653895b23fbc04e79b0b21c82d307d2ef92e018987fce1873eb23aec538d"
+    },
+    {
+      "path": "app/game/systems/ritesOfHuntV77.ts",
+      "bytes": 22562,
+      "sha256": "d3bded7f0b9f96b36cf31bf2dcaf78f8343e8b13b97068f0b5f597aed575dd29"
+    }
+  ],
+  "log": {
+    "path": "build.log",
+    "bytes": 957,
+    "sha256": "fef4014bc1882f6ab6d3aa23bc86d7fcb61e2956a5706ad6c2520bf1b5434ba5"
+  },
+  "limits": [
+    "Exact product sources were frozen by their owners; these hashes were captured after the build, not before it.",
+    "This is Next application compilation with types, not full release packaging, deployment or a gameplay/art qualification."
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "schemaVersion": 1,
+  "classification": "ACTUAL_HUD_COMPONENT_BROWSER_PREFLIGHT_WITH_CONSTRUCTED_STATES",
+  "sourceReport": "report.json",
+  "sourceReportSha256": "73052613ac23a18d6f01d8280ba98f9f2bc98ffb9cbe9cdfd58ea69082226f63",
+  "baseCommit": "8a25c5cf206647c3490ac362452c2eb22584f07e",
+  "browserVersion": "154.0.8037.57",
+  "cases": 10,
+  "captures": 2,
+  "browserExecuted": true,
+  "passed": true,
+  "command": [
+    "node",
+    "outputs/qa-canopy-hud-compact-20261109/check.mjs"
+  ],
+  "scope": "Standalone actual HUD component; constructed geometry and actor state; not HuntCanvas, campaign, physical-device or human qualification",
+  "sourceFiles": {
+    "app/game/HuntCanopyHudV112.tsx": "23d2b6ccf3f1d619aa3dd6831800bedaf981eb94b9910c2c14d4ccd9f715db18",
+    "app/game/HuntCanopyHudV112.module.css": "861f4bb5782d43bcb3967d96fb6dd72c2dee411b25da95a0309ba8072402ccfe",
+    "app/game/systems/canopyNavigationV112.ts": "7ee562ab163521a49f5eaf72a52216a9a8f3e2400ef55eca0d5eb482eab181f1",
+    "app/game/systems/canopyTraversalV112.ts": "82094c0d4dc1dccf18c3e89a381647572bdace86fcc51cb62cf17560ff076d57",
+    "app/game/systems/platformCollision.ts": "226a07c2b61d3300205cb986837214fc9bdda043aff09c478b1e50b5a4094d40",
+    "app/game/controlBindingLabels.ts": "3a4ba284a71fa9f624710cd1d19a2e305953c5325035af05c23b81ad34b0a3a7",
+    "app/game/systems/controlBindings.ts": "b29d8c5022ad5413180cfc5c1d57cdf9936211571bad759c6e00620fa0517993",
+    "app/game/systems/huntAccessibilityV112.ts": "8a5268dc1d2e52451f4e9d1390d59a7f974a45c2c7425238cdf5769ff1edfac8"
+  },
+  "copiedScript": "check.mjs.txt",
+  "limits": [
+    "Only the standalone actual HUD is mounted, with constructed geometry and actor states.",
+    "No HuntCanvas motion, gameplay route, campaign, physical device, sound listening or human comprehension result.",
+    "The earlier first measurement is preserved separately. Raw source reports are not rewritten."
+  ],
+  "launcherStatus": "AUTHOR_CONFIRMED_ACTUAL_TOOL_COMPLETION",
+  "cwd": "/workspace/yautja-reprise-20261109",
+  "exitCode": 0,
+  "launcherAttestation": "Owning agent explicitly confirmed exec session36810 completed with exit_code0; no stdout/stderr log file was saved, and none is fabricated.",
+  "environment": {
+    "additionalVariables": {},
+    "sandboxPermissions": "with_additional_permissions",
+    "networkEnabled": true
+  }
+}

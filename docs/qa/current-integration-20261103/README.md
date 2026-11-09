@@ -669,3 +669,27 @@ artistique canonique n’en est déduite. Le
 [nouveau suivi Excel et son avenant](../../../production/reprise-chasse-bible-20261109/README.md)
 conservent les 108 classeurs d’origine, les trois lots du 8 novembre et les
 huit validations restantes V112, sans réécrire leurs anciennes qualifications.
+
+## 9 novembre — Finition du dépeçage et de la canopée
+
+La suite est revue au commit `cfa730ba65c03d353eb97acfec56eabc383a499b`.
+Le relevé courant, régénéré puis vérifié par les commandes officielles, contient
+2 214 entrées et 1 093 290 474 octets. Son JSON de 410 975 octets a pour SHA-256
+`5fd5c2829564ccc5a7498365f4e28ec32b99804957befff1806496a33bb8e83e`.
+Le contrôle `--current` passe sur 3 086 sources à ce point, sans réécrire les
+inventaires historiques ni déclarer une nouvelle exécution de leurs recettes.
+
+Le [nouveau suivi de finition](../../../production/skinning-canopy-20261109/README.md)
+conserve les commandes, empreintes avant/après et vrais points d’exécution :
+471 tests réussis dans 31 fichiers, aucun ignoré, build Next webpack avec
+TypeScript et lint strict de 20 fichiers. Les recettes et le pilote ont aussi
+leur lint distinct. Ces résultats ne sont pas additionnés aux passes antérieures.
+
+La dernière recette monte le vrai GameClient : 16 contrôles et 17 captures,
+reprises du geste, du dépôt, du pendule et du vol via les sidecars réels.
+Elle atteint la liane suivante par les commandes de jeu ; la main arrière
+du rig original rejoint la prise physique. Les 289 ressources utilisées sont
+comparées à leurs blobs Git et à leurs SHA-256. La proie de contrôle initiale
+et le segment terminal préparé sont déclarés ; cette recette ne devient pas
+une campagne complète de huit missions. Les huit Restant V112 et les limites
+humaines, matérielles et artistiques conservent leurs statuts propres.

@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 1,
+  "classification": "ACTUAL_FIRST_EXPORTED_CANDIDATE_INDEPENDENTLY_VERIFIED_BEFORE_DOCUMENT_QUALIFICATION",
+  "command": [
+    "python3",
+    "production/skinning-canopy-20261109/verify-followup.py"
+  ],
+  "exitCode": 0,
+  "checkoutCommit": "cfa730ba65c03d353eb97acfec56eabc383a499b",
+  "result": {
+    "status": "PASS_INDEPENDENT_OOXML_AND_HISTORY",
+    "sheets": 9,
+    "criteria": 22,
+    "cellsChecked": 5096,
+    "linksChecked": 599,
+    "protectedUniqueFiles": 412,
+    "originalWorkbooks": 108,
+    "frozenDeliveryFiles": 272,
+    "remainingV112": 8,
+    "deliveryFiles": 284,
+    "nativeExcelExecuted": false
+  },
+  "files": [
+    {
+      "originalPath": "production/skinning-canopy-20261109/Yautja_Skinning_Canopee_20261109.xlsx",
+      "archivedPath": "production/skinning-canopy-20261109/qa/document-first-export/candidate.xlsx",
+      "bytes": 109710,
+      "sha256": "3d7b24ca7b84a1091cd7e93f4bac0fa338d8ca4e4598813c92c824e514a84656"
+    },
+    {
+      "originalPath": "production/skinning-canopy-20261109/Yautja_Skinning_Canopee_20261109.html",
+      "archivedPath": "production/skinning-canopy-20261109/qa/document-first-export/candidate.html",
+      "bytes": 560630,
+      "sha256": "f018be76102acc725b1192bf63c5ff7bd1f4542a498d055fb38207541b595f6e"
+    },
+    {
+      "originalPath": "production/skinning-canopy-20261109/qualification.json",
+      "archivedPath": "production/skinning-canopy-20261109/qa/document-first-export/qualification-before-document-qualification.json",
+      "bytes": 86542,
+      "sha256": "36fe69a553522124c96f9c880248d6872494bbd1bcea4add17ac8bdd1304b29a"
+    },
+    {
+      "originalPath": "production/skinning-canopy-20261109/verification-classeur.json",
+      "archivedPath": "production/skinning-canopy-20261109/qa/document-first-export/verification-before-document-qualification.json",
+      "bytes": 164343,
+      "sha256": "ea141b278973bb29d2d395656c5df4169b8ea9ca4a1d6de278fbe3dfe25e50e3"
+    }
+  ],
+  "scope": "The first candidate was exported and independently read before SC-Q03 was qualified. Its exact candidate bytes/data/report are archived. The final delivery is regenerated afterwards and checked separately; its SHA and counts may differ.",
+  "nativeExcelExecuted": false
+}

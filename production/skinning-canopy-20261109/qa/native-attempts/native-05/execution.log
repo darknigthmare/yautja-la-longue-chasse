@@ -1,0 +1,10 @@
+PASS field fixture retains the canonical insertion, authored enemies, geometry and hazards
+PASS native menu presents real worn-tool duration and finite stock before field work
+PASS interrupting a native started flay leaves its unique stock and tool-use ledger unchanged
+PASS a real in-progress flay is written, claimed and restored by GameClient in a new document
+PASS resumed native flay completes exactly once and the next physical part is harvested once
+PASS a field deposit survives durable reload and is picked up without another harvest or tool debit
+PASS native field details stay inside 390px and 320px viewports
+PASS declared terminal segment keeps field identity and uses native boarding, settlement and tool wear
+PASS the real station completes conservation while preserving the same delivered identity and quality
+{"passed":false,"classification":"FAILED_ATTEMPT","checks":10,"captures":9,"failure":"locator.waitFor: Timeout 45000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('[data-canopy-hud-v112]') to be visible\u001b[22m\n\n    at /workspace/yautja-reprise-20261109/scripts/qa-skinning-canopy-durable-browser-20261109.mjs:368:50\n    at async check (/workspace/yautja-reprise-20261109/scripts/qa-skinning-canopy-durable-browser-20261109.mjs:93:21)\n    at async canopy (/workspace/yautja-reprise-20261109/scripts/qa-skinning-canopy-durable-browser-20261109.mjs:364:3)\n    at async file:///workspace/yautja-reprise-20261109/scripts/qa-skinning-canopy-durable-browser-20261109.mjs:466:21","report":"/workspace/yautja-reprise-20261109/outputs/qa-skinning-canopy-20261109/native-05/report.json"}

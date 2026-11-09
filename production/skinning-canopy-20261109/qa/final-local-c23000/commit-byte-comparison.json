@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "classification": "POST_EXECUTION_GIT_BYTE_COMPARISON_NOT_A_NEW_EXECUTION",
+  "comparedCommit": "c23000fae806c6a777e719432c6fde5e9e2e259c",
+  "executedCheckout": "8a25c5cf206647c3490ac362452c2eb22584f07e",
+  "receipts": [
+    {
+      "file": "native-command.json",
+      "sourceFilesComparedToCommit": 44,
+      "allMatch": true,
+      "sha256": "057209dbd2868f0a28989dab41534fc2e3d48491706a7f54fb9fdd25f04c3fcc"
+    },
+    {
+      "file": "build-command.json",
+      "sourceFilesComparedToCommit": 14,
+      "allMatch": true,
+      "sha256": "b3f4994d3da27ead080a60d1ba6e04135d65ae3416867d9e380934fc6cc9a0a9"
+    },
+    {
+      "file": "lint-command.json",
+      "sourceFilesComparedToCommit": 18,
+      "allMatch": true,
+      "sha256": "f480af9f202deb6ba45f366876dd23ee79101dfbf544634eab942a3d0779a156"
+    }
+  ],
+  "limits": [
+    "Commands retain their actual8a25checkout with a source overlay; no rerun on c23000 is claimed.",
+    "Native464tests30files, Nextwebpack/types and strict lint18files are separate commands with their original logs.",
+    "Earlier455test attempt and the obsolete-source-regex failure remain preserved separately."
+  ]
+}
