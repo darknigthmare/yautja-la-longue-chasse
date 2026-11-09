@@ -32,7 +32,7 @@ const report = {
     description: 'Synthetic adult campaign and prerequisite hunts/interior preparations produced through production reducers. No recruitment, space victory or conversation is pre-seeded.',
     clanMarks: initial.profile.clanMarks, completedContracts: initial.clanShipOperations.completedContracts.map(r => r.contractId),
     recruitedNpcIds: initial.clanShipOperations.recruitedNpcIds, operation: initial.clanShipOperations.spaceEncounter },
-  sourceSha256: {}, browserExecuted: false, passed: false, checks: [], contexts: [], errors: [], missingAssets: [], screenshots: [],
+  sourceSha256: {}, browserExecuted: false, passed: false, checks: [], contexts: [], errors: [], missingAssets: [], screenshots: [], retention: [],
 };
 const sourceFiles = ['app/game/ClanShipCrewDialogue.tsx', 'app/game/systems/clanShipDialogue.ts',
   'app/game/ClanShipOperationsPanel.tsx', 'app/game/ClanShipOperationsPanel.module.css', 'app/game/systems/clanShipOperations.ts',
@@ -47,7 +47,7 @@ if (process.argv.includes('--fixtures-only')) {
 }
 const core = save => ({ operations: save.clanShipOperations, residence: save.companionResidence,
   incidents: save.clanShipIncidents, hearing: save.clanShipTrophyHearing, profile: save.profile, missions: save.missionProgress });
-let browser, server;
+let browser, server, activePage;
 try {
   browser = await chromium.launch({ executablePath: process.env.CHROMIUM_EXECUTABLE ?? (existsSync('/usr/bin/chromium') ? '/usr/bin/chromium' : undefined),
     headless: true, args: ['--no-sandbox', '--disable-dev-shm-usage'] });
@@ -58,11 +58,13 @@ try {
     const name = `${viewport.width}x${viewport.height}`;
     const context = await browser.newContext({ viewport, hasTouch: viewport.width < 600, reducedMotion: 'reduce' });
     await context.addInitScript(({ key, save }) => {
+      if (!['http:', 'https:'].includes(location.protocol)) return;
       if (!localStorage.getItem('__clanDialogueSeeded')) {
         localStorage.setItem(key, JSON.stringify(save)); localStorage.setItem('__clanDialogueSeeded', 'true');
       }
     }, { key: saves.SAVE_STORAGE_KEY, save: initial });
     const page = await context.newPage();
+    activePage = page;
     page.on('pageerror', error => report.errors.push({ context: name, message: error.message }));
     page.on('response', response => { if (response.status() >= 400) report.missingAssets.push({ context: name, status: response.status(), url: response.url() }); });
     const click = control => viewport.width < 600 ? control.tap() : control.click();
@@ -110,6 +112,87 @@ try {
       await page.waitForFunction(({ key, revision }) => JSON.parse(localStorage.getItem(key))?.clanShipOperations?.revision > revision,
         { key: saves.SAVE_STORAGE_KEY, revision }, { timeout: 20000 });
     };
+    const checkRetention = async id => {
+      const conversation = page.locator(`[data-clan-dialogue="${id}"]`);
+      await click(conversation.locator('[data-clan-dialogue-topic="work"]'));
+      const before = core(await read());
+      await page.evaluate(npcId => {
+        const view = document.querySelector(`[data-clan-dialogue="${npcId}"]`);
+        const drawer = view?.closest('details');
+        if (!drawer?.open) throw new Error('The native optional drawer must already be open.');
+        const audit = { startedAt: performance.now(), phase: 'autosave', samples: [] };
+        const record = () => {
+          const current = document.querySelector(`[data-clan-dialogue="${npcId}"]`);
+          const state = { phase: audit.phase, connected: drawer.isConnected,
+            sameDrawer: current?.closest('details') === drawer, open: drawer.open,
+            topic: current?.getAttribute('data-dialogue-topic') ?? null,
+            busy: Boolean(document.querySelector('[data-clan-operations-close]')?.disabled),
+            hidden: document.hidden, focused: document.hasFocus() };
+          const previous = audit.samples.at(-1);
+          if (!previous || JSON.stringify(previous.state) !== JSON.stringify(state)) {
+            if (audit.samples.length >= 1000) throw new Error('Dialogue retention observation budget exceeded.');
+            audit.samples.push({ elapsedMs: performance.now() - audit.startedAt, state });
+          }
+        };
+        const observer = new MutationObserver(record);
+        observer.observe(document, { subtree: true, childList: true, attributes: true,
+          attributeFilter: ['disabled', 'open', 'data-dialogue-topic'] });
+        document.addEventListener('visibilitychange', record);
+        window.addEventListener('focus', record); window.addEventListener('blur', record);
+        record();
+        window.__clanDialogueRetention = { audit, record, stop: () => {
+          record(); observer.disconnect(); document.removeEventListener('visibilitychange', record);
+          window.removeEventListener('focus', record); window.removeEventListener('blur', record);
+        } };
+      }, id);
+      let otherPage;
+      try {
+        // No input, callback, storage write or virtual clock drives this wait.
+        // Observe an actual busy transition over one natural 30-second autosave interval.
+        await page.waitForFunction(() => {
+          const { audit, record } = window.__clanDialogueRetention; record();
+          const broken = audit.samples.some(({ state }) => !state.connected || !state.open);
+          const observedBusy = audit.samples.some(({ state }) => state.busy && state.focused && !state.hidden);
+          return broken || performance.now() - audit.startedAt >= 31500 && observedBusy && !audit.samples.at(-1).state.busy;
+        }, null, { timeout: 45000 });
+        const automatic = await page.evaluate(() => {
+          const { audit, record } = window.__clanDialogueRetention; record();
+          return { elapsedMs: performance.now() - audit.startedAt, samples: audit.samples.slice() };
+        });
+        assert.ok(automatic.elapsedMs >= 30000, 'A natural autosave period must actually elapse.');
+        assert.ok(automatic.samples.some(({ state }) => state.busy && state.focused && !state.hidden), 'The real automatic checkpoint must make its controls busy.');
+        assert.ok(automatic.samples.every(({ state }) => state.connected && state.open), 'Autosave must preserve the same open drawer.');
+        assert.equal(await conversation.getAttribute('data-dialogue-topic'), 'work');
+        assert.deepEqual(core(await read()), before);
+        check('Natural autosave retains the same open drawer and selected topic without progression changes');
+
+        await page.evaluate(() => { window.__clanDialogueRetention.audit.phase = 'manual-tab-interruption'; });
+        otherPage = await context.newPage(); await otherPage.goto('about:blank'); await otherPage.bringToFront();
+        await page.waitForFunction(() => (document.hidden || !document.hasFocus()) &&
+          document.querySelector('[data-clan-operations-close]')?.disabled, null, { timeout: 5000 });
+        const interrupted = await page.evaluate(() => {
+          const { audit, record } = window.__clanDialogueRetention; record(); return audit.samples.at(-1);
+        });
+        assert.ok(interrupted.state.hidden || !interrupted.state.focused, 'The real tab switch must interrupt the original page.');
+        assert.ok(interrupted.state.connected && interrupted.state.open);
+        await page.bringToFront();
+        await page.waitForFunction(() => !document.hidden && document.hasFocus() &&
+          !document.querySelector('[data-clan-operations-close]')?.disabled);
+        assert.equal(await conversation.getAttribute('data-dialogue-topic'), 'work');
+        assert.equal(await conversation.locator('xpath=ancestor::details[1]').evaluate(element => element.open), true);
+        assert.deepEqual(core(await read()), before);
+        check('A real tab interruption preserves the open drawer and chosen topic after focus returns');
+        const manual = await page.evaluate(() => {
+          const { audit, record } = window.__clanDialogueRetention; record(); return audit.samples.slice();
+        });
+        report.retention.push({ context: name, npcId: id, automatic, interrupted, manual,
+          scope: 'Native autosave and real browser tab interruption, not a Settings-menu pause or synthetic lifecycle event.' });
+      } finally {
+        await otherPage?.close();
+        await page.evaluate(() => window.__clanDialogueRetention?.stop());
+      }
+      await click(conversation.locator('[data-clan-dialogue-topic="return"]'));
+    };
     const capture = async (id, suffix) => {
       const conversation = page.locator(`[data-clan-dialogue="${id}"]`);
       await conversation.scrollIntoViewIfNeeded();
@@ -139,6 +222,7 @@ try {
         assert.deepEqual(core(current), before, 'Reading a topic must not mutate durable campaign data');
         check(`${npc.id}: ${topic.id} reads the real context without campaign writes`);
       }
+      if (npc.id === ops.CLAN_SHIP_RECRUITS[0].id) await checkRetention(npc.id);
       await capture(npc.id, 'before-space'); await close();
     }
     await visit('conseil'); await open('contracts');
@@ -175,6 +259,21 @@ try {
   report.passed = true;
 } catch (error) {
   report.failure = error instanceof Error ? error.stack : String(error); process.exitCode = 1;
+  if (activePage && !activePage.isClosed()) {
+    try {
+      report.failureObservation = await activePage.evaluate(key => ({ url: location.href, hidden: document.hidden,
+        focused: document.hasFocus(), docking: JSON.parse(localStorage.getItem(key) || 'null')?.clanShipDocking,
+        room: document.querySelector('[data-clan-interior]')?.getAttribute('data-interior-room'),
+        closeDisabled: document.querySelector('[data-clan-operations-close]')?.disabled,
+        drawers: Array.from(document.querySelectorAll('[data-clan-recruit] > details'), drawer => ({
+          npcId: drawer.parentElement?.getAttribute('data-clan-recruit'), open: drawer.open,
+          topic: drawer.querySelector('[data-clan-dialogue]')?.getAttribute('data-dialogue-topic') })),
+        retention: window.__clanDialogueRetention?.audit,
+      }), saves.SAVE_STORAGE_KEY);
+      await activePage.screenshot({ path: path.join(out, 'failure.png'), fullPage: true });
+      report.screenshots.push('failure.png');
+    } catch (diagnosticError) { report.failureObservationError = String(diagnosticError); }
+  }
 } finally {
   if (browser) await browser.close(); if (server) await server.close();
   report.completedAt = new Date().toISOString();

@@ -4210,9 +4210,17 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
   }, [checkpointBlockedReason, onMainMenu, saveManagedCheckpoint, screen]);
   useEffect(() => {
     if (!hydrated || !sessionAliveRef.current) return;
-    const timer = window.setInterval(() => { if (!document.hidden) void saveManagedCheckpoint("auto"); }, 30000);
+    const timer = window.setInterval(() => {
+      // Driving already confirms its canonical inputs every 30 frames. A slot
+      // rotation here would suspend the yard while its pending frames flush,
+      // turning an ordinary autosave into a refused drive command. Continue
+      // captures this newer workspace; manual saves and menu exit stay intact.
+      if (!document.hidden && !(screen === "mobility" && saveRef.current.mobilityV1?.active)) {
+        void saveManagedCheckpoint("auto");
+      }
+    }, 30000);
     return () => window.clearInterval(timer);
-  }, [hydrated, saveManagedCheckpoint]);
+  }, [hydrated, saveManagedCheckpoint, screen]);
 
   const menuBack = useCallback(() => {
     if (archiveTransferBusy || archiveRecoveryIssue) return;

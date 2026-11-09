@@ -217,7 +217,10 @@ export default function ClanShipOperationsPanel({ state, save, roomId, suspended
               roomId, focusedNpcId: suspended ? null : crewFocus ?? null,
             });
             const dialogueKey = `${npc.id}:${dialogue.context}:${dialogue.line}:${dialogue.facts.join('|')}`;
-            const optionalDialogue = clanShipDialogue(save, npc.id, roomId, 'greeting', !suspended);
+            // Physical presence does not disappear during an autosave or pause.
+            // Keep the native details and its chosen subject mounted; the child
+            // still suspends speech and input through its suspended prop.
+            const optionalDialogue = clanShipDialogue(save, npc.id, roomId, 'greeting', true);
             return <article key={npc.id} tabIndex={-1} className={styles.crewCard} data-clan-recruit={npc.id} data-clan-recruit-status={joined ? 'recruited' : access.allowed ? 'available' : 'locked'}>
               <div className={styles.portrait} aria-hidden="true"><div><HomeworldNpcSpriteV84 npcId={clanShipCrewArtIdentity(npc.id)} role={CLAN_SHIP_CREW_ART_ROLES[npc.id]} height={150} /></div></div>
               <div><span className={styles.eyebrow}>{npc.role}</span><h4>{npc.name}</h4><p>{npc.summary}</p>

@@ -129,6 +129,8 @@ try{
   check('initial real campaign slot migrated and checkpointed before playing',seeded.migrated&&seeded.checkpointed);
   await page.reload({waitUntil:'networkidle'});
   const stored=()=>page.evaluate(key=>JSON.parse(localStorage.getItem(key)),key);
+  const slotKey=domain.campaignSlotStorageKey(1);
+  const managedSlot=()=>page.evaluate(key=>JSON.parse(localStorage.getItem(key)),slotKey);
   const click=(name,exact=true)=>page.getByRole('button',{name,exact}).click();
   const fittedGarage=()=>page.locator('[data-mobility-garage]').evaluate(element=>{
     const shell=element.getBoundingClientRect(),parent=element.parentElement.getBoundingClientRect();
@@ -190,12 +192,26 @@ try{
   else{
     await click('Prendre le Grav-Sled de formation');let yard=page.locator('[data-mobility-yard]');await yard.waitFor();
     check('actual campaign loan is recorded and starts paused',(await stored()).mobilityV1.active.loaned&&await yard.getAttribute('data-paused')==='true');
+    const slotBeforeTraining=await managedSlot();
     await click('Reprendre la conduite');
+    await page.waitForFunction(()=>document.querySelector('[data-mobility-yard]')?.getAttribute('data-paused')==='false');
     const [forward,turnLeft,turnRight,brake,interact]=['hunt.moveUp','hunt.moveLeft','hunt.moveRight','hunt.jump','hunt.interact'].map(id=>save.settings.controlBindings[id][0]);
-    let stage=0,held=new Set();const begin=Date.now(),route=[];
+    let stage=0,held=new Set();const begin=Date.now(),route=report.trainingRoute=[];
+    const observeDrive=()=>yard.evaluate(element=>({
+      ...Object.fromEntries(['x','y','heading','speed','checkpoint','cargo','tick'].map(name=>[name,Number(element.getAttribute('data-'+name))])),
+      paused:element.getAttribute('data-paused')==='true',
+    }));
+    const requireNativeDrive=async()=>{
+      const observation=await observeDrive();
+      if(observation.paused){
+        report.unexpectedTrainingPause={elapsedMs:Date.now()-begin,observation,campaign:await stored()};
+        throw Error('Native campaign driving paused without a player pause or injected fault.');
+      }
+      return observation;
+    };
     try{
       while(Date.now()-begin<150000){
-        const at=await yard.evaluate(element=>Object.fromEntries(['x','y','heading','speed','checkpoint','cargo','tick'].map(name=>[name,Number(element.getAttribute('data-'+name))])));
+        const at=await requireNativeDrive();
         const guide=mobilityQaGuidance(at,stage),desired=new Set();
         if(guide.throttle)desired.add(forward);if(guide.steer)desired.add(guide.steer>0?turnRight:turnLeft);if(guide.brake)desired.add(brake);if(guide.interact)desired.add(interact);
         if(guide.advance){if(stage===1){if(at.cargo===25)stage++;}else if(stage===5){if((await stored()).mobilityV1.active.course.cargoDelivered)break;}else stage++;}
@@ -204,6 +220,15 @@ try{
         held=desired;if(route.length===0||route.at(-1).tick+30<=at.tick)route.push({stage,...at});await page.waitForTimeout(55);
       }
     }finally{for(const key of held)await page.keyboard.up(key);}
+    // Exercise one real managed-checkpoint interval even if this particular
+    // circuit finishes quickly. At the depot the actual motor keeps ticking
+    // with neutral input; no clock or pause state is changed by the recipe.
+    while(Date.now()-begin<35000){await requireNativeDrive();await page.waitForTimeout(150);}
+    report.nativeTrainingElapsedMs=Date.now()-begin;
+    check('active native driving crosses a natural checkpoint interval without an automatic halt',report.nativeTrainingElapsedMs>=35000&&!(await observeDrive()).paused);
+    const slotAfterTraining=await managedSlot();
+    report.managedSlotDuringTraining={beforeRevision:slotBeforeTraining.revision,afterRevision:slotAfterTraining.revision};
+    check('managed checkpoint work stays deferred while the actual drive owner is active',slotAfterTraining.revision===slotBeforeTraining.revision);
     await click('Pause et enregistrer');disk=await stored();
     check('native training crosses three ordered beacons and returns real cargo',disk.mobilityV1.active.course.checkpoint===3&&disk.mobilityV1.active.course.cargoDelivered,{route});
     await shot('04-training-complete-before-return');await click('Remiser au garage');disk=await stored();
@@ -244,10 +269,16 @@ try{
     const frozen=JSON.stringify(disk.mobilityV1);await page.waitForTimeout(700);
     check('pause after successful retry preserves exact campaign mobility bytes',JSON.stringify((await stored()).mobilityV1)===frozen);
     await shot('07-drive-reconciled');
+    const slotBeforeContinue=await managedSlot(),checkpointBefore=slotBeforeContinue.checkpoints.find(item=>item.id===slotBeforeContinue.lastCheckpointId);
+    report.managedSlotBeforeContinue={revision:slotBeforeContinue.revision,lastCheckpointId:slotBeforeContinue.lastCheckpointId,
+      mobility:checkpointBefore.archive.campaign.mobilityV1??null,liveMobility:disk.mobilityV1};
+    check('ordinary Continue is tested against a managed checkpoint older than the live drive',JSON.stringify(checkpointBefore.archive.campaign.mobilityV1??null)!==frozen);
     await page.reload({waitUntil:'networkidle'});await continueCampaign();
     await page.locator('[data-homeworld-interior-target="point"]').click();await click('Ouvrir le comptoir et le garage');
     yard=page.locator('[data-mobility-yard]');await yard.waitFor();
     check('ordinary Continue and physical counter reopen the exact sortie paused',JSON.stringify((await stored()).mobilityV1)===frozen&&await yard.getAttribute('data-paused')==='true');
+    const continuedSlot=await managedSlot(),continuedCheckpoint=continuedSlot.checkpoints.find(item=>item.id===continuedSlot.lastCheckpointId);
+    check('ordinary Continue transfers the live canonical drive into the managed checkpoint',JSON.stringify(continuedCheckpoint.archive.campaign.mobilityV1)===frozen);
     await page.setViewportSize({width:390,height:844});
     check('native campaign driving controls and wallet fit the 390px station',await fittedGarage()&&await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+2));
     await shot('08-paused-sortie-after-continue-mobile');
@@ -268,7 +299,19 @@ try{
       ['missionProgress','trophies','inventory'].every(field=>JSON.stringify(report.finalSave[field])===JSON.stringify(campaignBaseline[field])));
     report.qualification='PENDING_VISUAL_INSPECTION';report.passed=true;
   }
-}catch(error){report.failure={message:error.message,stack:error.stack};console.error(error);if(page)await shot('failure').catch(()=>{});}
+}catch(error){
+  report.failure={message:error.message,stack:error.stack};console.error(error);
+  if(page){
+    report.failureObservation=await page.evaluate(key=>({
+      campaign:JSON.parse(localStorage.getItem(key)??'null'),
+      nativeYard:document.querySelector('[data-mobility-yard]')?.outerHTML??null,
+      notices:[...document.querySelectorAll('[data-mobility-garage] [role="status"],[data-mobility-garage] [role="alert"]')].map(element=>element.textContent),
+      storageFaults:window.__mobilityWriteFault??null,
+    }),key).catch(observationError=>({readFailure:observationError.message}));
+    await fs.writeFile(path.join(out,'failure-observation.json'),JSON.stringify(report.failureObservation,null,2)+'\n');
+    await shot('failure').catch(()=>{});
+  }
+}
 finally{
   await Promise.allSettled(scriptJobs);report.assets=[...assetPaths].sort();
   report.sourceAfter=await identity();report.sourceBeforeAfterEqual=JSON.stringify(report.sourceBefore)===JSON.stringify(report.sourceAfter);

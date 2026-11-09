@@ -19,6 +19,9 @@ jobs:
     env:
       ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
       NEXT_TELEMETRY_DISABLED: '1'
+      P0P1_CI_SELECTION: production/clan-war-command-20261109/qa/ci/test-selection.json
+      P0P1_CI_MANIFEST: production/clan-war-command-20261109/qa/ci/runtime-file-inputs.json
+      P0P1_CI_OUTPUT: outputs/clan-war-command-coherence-20261109
     steps:
       - name: Checkout current source and portable qualification inputs
         uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
@@ -38,8 +41,8 @@ jobs:
             /desktop/
             /build/
             /.github/workflows/
-            /production/p0p1-20261109/qa/root/test-selection-current.json
-            /production/p0p1-20261109/qa/ci/runtime-file-inputs.json
+            /production/clan-war-command-20261109/qa/ci/test-selection.json
+            /production/clan-war-command-20261109/qa/ci/runtime-file-inputs.json
       - name: Node 22
         uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
         with:
@@ -56,6 +59,6 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: p0-p1-coherence-real-regressions
-          path: outputs/p0p1-coherence-20261109/
+          path: outputs/clan-war-command-coherence-20261109/
           retention-days: 30
           if-no-files-found: warn

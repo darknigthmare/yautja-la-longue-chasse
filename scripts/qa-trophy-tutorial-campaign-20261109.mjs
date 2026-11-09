@@ -25,7 +25,7 @@ const exports = [
   "export {SHIP_PROGRESSION_STORAGE_KEY} from './app/game/systems/progression';",
   "export {HOMEWORLD_BUILDINGS_V77,createHomeworldWorldActorV77} from './app/game/systems/homeworldWorldV77';",
   "export {homeworldBuildingDoorwayV64} from './app/game/systems/homeworldGeometryV64';",
-  "export {homeworldInteriorForBuildingV64,isHomeworldInteriorWalkableV64} from './app/game/systems/homeworldInteriorsV64';",
+  "export {homeworldInteriorForBuildingV64,isHomeworldInteriorWalkableV64,nearestHomeworldInteriorTargetV64} from './app/game/systems/homeworldInteriorsV64';",
   "export {homeworldWalkRouteV77} from './app/game/systems/homeworldNavigationV77';",
   "export {createHomeworldCheckpointV77,resolveHomeworldLocationV77} from './app/game/systems/homeworldLocationV77';",
 ].join('\n');
@@ -138,9 +138,21 @@ async function reachTrophyService() {
     check('The actual Mausoleum door is entered after native exterior movement', report.homeworldWalking.length > 0);
   }
   assert.equal(await hub().getAttribute('data-homeworld-interior-id'), 'trophy-mausoleum');
-  for (const point of indoorPath(await actor(), service)) await walkHomeworld(point, 10);
+  const origin = await actor(), candidates = [];
+  // A service socket may lie inside its real counter footprint. Reach the
+  // source contact from the floor; do not walk into the centre of the prop.
+  for (let x = service.x - 48; x <= service.x + 48; x += 6) for (let y = service.y - 48; y <= service.y + 48; y += 6) {
+    const point = { x, y }, contact = api.nearestHomeworldInteriorTargetV64(room, point);
+    if (Math.hypot(x - service.x, y - service.y) <= 52 && contact?.kind === 'point' && contact.pointId === service.pointId &&
+      [[0, 0], [-8, 0], [8, 0], [0, -8], [0, 8]].every(([dx, dy]) => api.isHomeworldInteriorWalkableV64(room, { x: x + dx, y: y + dy }))) candidates.push(point);
+  }
+  candidates.sort((a, b) => Math.hypot(a.x - origin.x, a.y - origin.y) - Math.hypot(b.x - origin.x, b.y - origin.y));
+  let route = null;
+  for (const candidate of candidates) { try { route = indoorPath(origin, candidate); break; } catch { /* Try another real source contact, never a teleport. */ } }
+  assert.ok(route, 'A reachable floor approach serves the real trophy socket');
+  for (const point of route) await walkHomeworld(point, 7);
   const actual = await actor();
-  assert.ok(Math.hypot(actual.x - service.x, actual.y - service.y) < 20);
+  assert.equal(api.nearestHomeworldInteriorTargetV64(room, actual)?.pointId, 'trophy-service');
   const savePosition = page.getByRole('button', { name: 'Enregistrer la position', exact: true });
   if (await savePosition.count()) await savePosition.click();
   await page.locator('[data-homeworld-viewport]').focus(); await page.keyboard.press('KeyE');
@@ -208,6 +220,12 @@ try {
   });
   await continueToHomeworld(); await shot('00-homeworld-exterior.png'); await reachTrophyService();
   await shot('01-physical-service.png'); await openTutorial(); await atStep(0);
+  const ownReturn = page.getByRole('button', { name: 'Revenir au poste', exact: true });
+  await ownReturn.scrollIntoViewIfNeeded();
+  check('The tutorial HUD return is not covered by the parent game chrome', await ownReturn.evaluate(button => {
+    const box = button.getBoundingClientRect(), target = document.elementFromPoint(box.x + box.width / 2, box.y + box.height / 2);
+    return box.top >= 0 && box.bottom <= innerHeight && target !== null && button.contains(target);
+  }));
   const baseline = await snap('02-before-tutorial');
   check('Young Blood legacy access has no seeded tutorial, rank promotion or trophy claim', baseline.save.profile.rankId === 'young-blood' && !baseline.save.trophyTutorialV6 && baseline.save.trophies.length === 0);
   await shot('02-first-niche.png'); await approach(); await tick('Ouvrir la niche'); await tick('Repérer les deux rails'); await range('Marge latérale', 20);
@@ -244,7 +262,10 @@ try {
   await approach();
   for (const width of [390, 320]) {
     await page.setViewportSize({ width, height: 844 }); await panel().scrollIntoViewIfNeeded();
-    check(`${width}px tutorial controls and guidance remain horizontally contained`, await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth));
+    check(`${width}px tutorial controls and guidance remain horizontally contained`, await panel().evaluate(element => {
+      const controls = [element, ...element.querySelectorAll('button,input')];
+      return document.documentElement.scrollWidth <= innerWidth && controls.every(control => { const rect = control.getBoundingClientRect(); return rect.left >= 0 && rect.right <= innerWidth; });
+    }));
     await shot(`08-face-${width}.png`);
   }
   await page.setViewportSize({ width: 1440, height: 1050 }); await choose('Profil'); await choose('Revers'); await finish(9);

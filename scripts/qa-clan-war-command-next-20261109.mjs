@@ -73,7 +73,8 @@ try{
   const bounds=await globe.boundingBox();assert.ok(bounds.y<700&&Math.min(bounds.y+bounds.height,844)-Math.max(0,bounds.y)>=140,JSON.stringify(bounds));
   const overflow=await war.evaluate(el=>({scroll:el.scrollWidth,client:el.clientWidth}));assert.ok(overflow.scroll<=overflow.client+1,JSON.stringify(overflow));await screenshot(`02-next-front-${width}.png`);
   await war.locator('[data-command-open="territory"]').click();layer=page.getByRole('dialog').filter({has:page.locator('[data-testid="war-order-panel-v98"]')});await layer.waitFor();
-  const modalBounds=await layer.boundingBox();assert.ok(modalBounds.x>=-1&&modalBounds.x+modalBounds.width<=width+1);await screenshot(`03-next-orders-${width}.png`);await page.keyboard.press('Escape');await layer.waitFor({state:'hidden'});
+  await layer.evaluate(element=>Promise.all(element.getAnimations().map(animation=>animation.finished.catch(()=>{}))));
+  const modalBounds=await layer.boundingBox();assert.ok(modalBounds.x>=-1&&modalBounds.x+modalBounds.width<=width+1,JSON.stringify(modalBounds));await screenshot(`03-next-orders-${width}.png`);await page.keyboard.press('Escape');await layer.waitFor({state:'hidden'});
   check(`native-${width}-layout-shows-real-globe-and-usable-territorial-drawer`,{bounds,modalBounds,overflow});
  }
  await page.setViewportSize({width:1440,height:1000});await war.locator('[data-command-section="bible"]').click();

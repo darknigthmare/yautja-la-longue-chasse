@@ -89,7 +89,7 @@ test('SSR: each of six real crew members has all five earned contexts, with one 
   }
 });
 
-test('SSR: remote, unfocused and suspended dossiers never attribute speech and retain routes', () => {
+test('SSR: remote, unfocused and suspended dossiers never attribute contextual B05 speech and retain routes', () => {
   const save = legacyAgreements();
   for (const npc of ops.CLAN_SHIP_RECRUITS) {
     const remoteRoom = npc.roomId === 'hangar' ? 'archives' : 'hangar';
@@ -97,7 +97,14 @@ test('SSR: remote, unfocused and suspended dossiers never attribute speech and r
       const { html } = render(save, npc.id, overrides);
       assert.equal(count(html, 'data-clan-crew-dialogue'), 0);
       assert.equal(count(html, 'data-clan-crew-dialogue-ack'), 0);
-      assert.ok(!html.includes('<blockquote'));
+      // Topic conversations have their own closed native drawer at an occupied
+      // post. The focused B05 response must remain absent from the whole panel.
+      for (const other of ops.CLAN_SHIP_RECRUITS) {
+        const available = dialogue.selectClanShipCrewDialogue(aboard(save, other.roomId), other.id, {
+          roomId: other.roomId, focusedNpcId: other.id,
+        });
+        if (available.line) assert.ok(!html.includes(escape(available.line)), other.id);
+      }
       assert.equal(count(html, 'data-clan-recruit'), 6);
     }
     const { html } = render(save, npc.id, { roomId: remoteRoom });

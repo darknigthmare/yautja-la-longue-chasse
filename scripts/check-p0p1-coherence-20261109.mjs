@@ -9,13 +9,15 @@ import { createHash } from 'node:crypto';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const output = path.resolve(root, process.env.P0P1_CI_OUTPUT || 'outputs/p0p1-coherence-20261109');
-const selectionPath = path.join(root, 'production/p0p1-20261109/qa/root/test-selection-current.json');
+const selectionFile = process.env.P0P1_CI_SELECTION || 'production/p0p1-20261109/qa/root/test-selection-current.json';
+assert.match(selectionFile, /^production\/(?:p0p1-20261109\/qa\/root|clan-war-command-20261109\/qa\/ci)\/[A-Za-z0-9._-]+\.json$/);
+const selectionPath = path.join(root, selectionFile);
 const selection = JSON.parse(fs.readFileSync(selectionPath, 'utf8'));
 assert.ok(Array.isArray(selection) && selection.length > 0);
 assert.equal(new Set(selection).size, selection.length);
 fs.mkdirSync(output, { recursive: true });
 const hash = bytes => createHash('sha256').update(bytes).digest('hex');
-const report = { node: process.version, startedAt: new Date().toISOString(), selectionSha256: hash(fs.readFileSync(selectionPath)), files: [] };
+const report = { node: process.version, startedAt: new Date().toISOString(), selection: selectionFile, selectionSha256: hash(fs.readFileSync(selectionPath)), files: [] };
 for (const file of selection) {
   assert.match(file, /^tests\/[A-Za-z0-9._/-]+\.test\.mjs$/);
   assert.ok(!file.split('/').includes('..'));
