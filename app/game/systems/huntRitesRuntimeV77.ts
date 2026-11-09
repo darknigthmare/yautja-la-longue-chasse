@@ -140,7 +140,14 @@ export function huntRiteMenuSnapshotV77(state:RitesOfHuntV77,actor:{x:number;y:n
     c.flayed===true&&c.erased===false&&c.supportId===null&&c.hangingAt===null&&
     Number.isFinite(c.x)&&Number.isFinite(c.y)&&
     (c.massKg===undefined||typeof c.massKg==="number"&&Number.isFinite(c.massKg)&&c.massKg>=12&&c.massKg<=170)):null;
-  const corpse=(carried?nearestRiteCorpseV77({...state,corpses:[carried]},actor):null)??nearestRiteCorpseV77(state,actor);
+  // A falling neighbour must not steal an open menu or its interrupt button.
+  // Each preferred identity still passes the normal erased-body/reach check.
+  const inReach=(id:string|null|undefined)=>{
+    const candidate=id?state.corpses.find(c=>c.id===id):null;
+    return candidate?nearestRiteCorpseV77({...state,corpses:[candidate]},actor):null;
+  };
+  const corpse=(carried?nearestRiteCorpseV77({...state,corpses:[carried]},actor):null)??
+    inReach(state.operation?.corpseId)??inReach(selectedId)??nearestRiteCorpseV77(state,actor);
   if(!corpse)return null;
   const analysisLockedReason=riteAnalysisLockedReasonV77(state,corpse);
   const flayLockedReason=corpse.flayed?'Dépeçage déjà terminé.':options.flayingToolOwned!==true?'Acheter le Flaying Tool à l’armurerie.':
