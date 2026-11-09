@@ -1,0 +1,7 @@
+Traceback (most recent call last):
+  File "/workspace/yautja-reprise-20261109/production/skinning-canopy-20261109/verify-followup.py", line 181, in <module>
+    main()
+  File "/workspace/yautja-reprise-20261109/production/skinning-canopy-20261109/verify-followup.py", line 146, in main
+    assert len(raw) == item['bytes'] and sha256(raw).hexdigest() == item['sha256'], item['path']
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: tests/fixtures/skinning-canopy-browser-assets-20261109.json

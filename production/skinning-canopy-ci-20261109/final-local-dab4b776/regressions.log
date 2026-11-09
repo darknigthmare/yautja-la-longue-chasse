@@ -1,0 +1,35 @@
+✔ inventory covers every declared effect, biome and music context without requiring audio (8.046112ms)
+✔ a real file wins over the missing marker, empty audio is excluded and URL names are escaped (21.176011ms)
+✔ format ordering, deterministic output and content fingerprints survive adds, replacement and removal (10.443858ms)
+✔ a configurable local public prefix is supported and unsafe prefixes are rejected (3.412709ms)
+[audio] inventory updated: 1 supplied slots
+[audio] inventory updated: 0 supplied slots
+✔ development watcher updates added and deleted audio without rewriting its own manifest forever (811.278922ms)
+✔ V54 delivered audio decodes as bounded PCM with exact source and manifest fingerprints (53.763564ms)
+✔ ship overlap loop has no impulsive boundary compared with its own adjacent samples (78.387879ms)
+✔ scene pause preserves preferences and does not create or resume an unactivated engine (0.715132ms)
+✔ an unactivated score request keeps its context but does not fetch the optional inventory (0.265981ms)
+✔ pause suspends an already activated context; resume preserves mute and bus levels (0.683926ms)
+✔ a late browser suspend cannot override a newer resume (0.284238ms)
+[plugin builtin:vite-reporter] 
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+✔ the actual spatial host serves production React and unchanged original artwork, then removes only its temporary build (645.74752ms)
+✔ precompiled CDP uses the exact observer and preserves every normal scene, formation and optical field (7.085411ms)
+✔ the shared observer keeps four fresh paint markers and rejects reused paint through both transports (2.880557ms)
+✔ both transports await the real third standing member and still expose a completed after-read (2.447279ms)
+✔ missing roots and rejected scheduled observations retain their exact error through both transports (1.879194ms)
+✔ CDP compilation and connection failures cannot fall back to a second observation (1.042904ms)
+✔ remote pod events each dispatch one optional authored sound without a duplicate synthesized voice (0.282476ms)
+✔ the pod fallback produces distinct arm, cancel and blast sounds on the existing effects clock (0.396373ms)
+✔ pod synthesis stays silent when the existing audio transport is not ready (0.182398ms)
+ℹ tests 20
+ℹ suites 0
+ℹ pass 20
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2113.953081
