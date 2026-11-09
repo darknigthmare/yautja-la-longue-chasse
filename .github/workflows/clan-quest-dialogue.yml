@@ -4,12 +4,15 @@ on:
     branches: [main]
     paths:
       - 'app/game/**'
-      - 'scripts/qa-clan-dialogue-browser-20261109.mjs'
+      - 'scripts/qa-clan*dialogue*.mjs'
       - 'tests/clan-ship*.mjs'
       - 'tests/buried-cradle*.mjs'
+      - 'tests/helpers/clan-ship*dialogue*.mjs'
       - 'tests/companion-residence.test.mjs'
       - 'tests/fixtures/clan-quest-mechanics-19317af4.json'
+      - 'tests/fixtures/companion-recruitment-mechanics-19317af4.json'
       - 'production/quetes-vivantes-20261109/**'
+      - 'production/quetes-vivantes-suite-20261109/**'
       - '.github/workflows/clan-quest-dialogue.yml'
       - 'package*.json'
       - 'tsconfig.json'
@@ -40,6 +43,7 @@ jobs:
             /desktop/
             /build/
             /production/quetes-vivantes-20261109/
+            /production/quetes-vivantes-suite-20261109/
             /.openai/hosting.json
             /public/**/manifest.json
       - name: Restore original declared assets without modifying their contents
@@ -66,37 +70,51 @@ jobs:
       - name: Full TypeScript
         run: npm run typecheck
       - name: Strict lint
-        run: node node_modules/eslint/bin/eslint.js --max-warnings=0 app/game/BuriedCradleReturnPanel.tsx app/game/ClanShipOperationsPanel.tsx app/game/ClanShipCrewDialogue.tsx app/game/systems/clanShipDialogue.ts app/game/systems/clanShipOperations.ts app/game/systems/clanShipIncidents.ts app/game/systems/clanShipTrophyCase.ts scripts/qa-clan-dialogue-browser-20261109.mjs tests/clan-ship-dialogue.test.mjs
+        run: >-
+          node node_modules/eslint/bin/eslint.js --max-warnings=0
+          app/game/BuriedCradleReturnPanel.tsx app/game/ClanShipOperationsPanel.tsx
+          app/game/ClanShipCrewDialogue.tsx app/game/ClanShipHuntConversation.tsx
+          app/game/systems/clanShipDialogue.ts app/game/systems/clanShipHuntDialogue.ts
+          app/game/systems/clanShipOperations.ts app/game/systems/clanShipIncidents.ts
+          app/game/systems/clanShipTrophyCase.ts app/game/systems/companionResidence.ts
+          scripts/qa-clan-dialogue-browser-20261109.mjs scripts/qa-clan-hunt-dialogue-browser-20261109.mjs
+          tests/clan-ship-dialogue.test.mjs tests/clan-ship-hunt-dialogue.test.mjs
+          tests/helpers/clan-ship-hunt-dialogue-fixture.mjs
       - name: New and existing regressions
         run: |
           set -euo pipefail
           mkdir -p outputs/qa-clan-dialogue-20261109
-          node --experimental-strip-types --test --test-reporter=tap --test-concurrency=1 tests/clan-ship-dialogue.test.mjs tests/clan-ship-operations.test.mjs tests/clan-ship-operations-save.test.mjs tests/clan-ship-space-encounter.test.mjs tests/clan-ship-incidents.test.mjs tests/clan-ship-trophy-case.test.mjs tests/clan-ship-trophy-hearing.test.mjs tests/clan-ship-trophy-hearing-presentation.test.mjs tests/buried-cradle-return.test.mjs tests/buried-cradle-campaign.test.mjs tests/buried-cradle-snapshot.test.mjs tests/companion-residence.test.mjs | tee outputs/qa-clan-dialogue-20261109/regressions.tap
-      - name: Verify the exact native workbook and its receipt
+          node --experimental-strip-types --test --test-reporter=tap --test-concurrency=1 tests/clan-ship-hunt-dialogue.test.mjs tests/clan-ship-dialogue.test.mjs tests/clan-ship-operations.test.mjs tests/clan-ship-operations-save.test.mjs tests/clan-ship-space-encounter.test.mjs tests/clan-ship-incidents.test.mjs tests/clan-ship-trophy-case.test.mjs tests/clan-ship-trophy-hearing.test.mjs tests/clan-ship-trophy-hearing-presentation.test.mjs tests/buried-cradle-return.test.mjs tests/buried-cradle-campaign.test.mjs tests/buried-cradle-snapshot.test.mjs tests/companion-residence.test.mjs | tee outputs/qa-clan-dialogue-20261109/regressions.tap
+      - name: Verify both native workbooks without replacing historical bytes
         run: |
           python3 - <<'PY'
           import hashlib,json,pathlib,zipfile,xml.etree.ElementTree as ET
-          root=pathlib.Path('production/quetes-vivantes-20261109');meta=json.loads((root/'verification-classeur.json').read_text());file=root/meta['file']
-          raw=file.read_bytes();assert len(raw)==meta['bytes'] and hashlib.sha256(raw).hexdigest()==meta['sha256']
           ns={'s':'http://schemas.openxmlformats.org/spreadsheetml/2006/main'}
-          with zipfile.ZipFile(file) as z:
-            assert z.testzip() is None
-            assert [s.attrib['name'] for s in ET.fromstring(z.read('xl/workbook.xml')).findall('s:sheets/s:sheet',ns)]==meta['sheets']
-            formulas=0
-            for name in z.namelist():
-              if name.startswith('xl/worksheets/') and name.endswith('.xml'):
-                xml=ET.fromstring(z.read(name));formulas+=len(xml.findall('.//s:f',ns));assert not xml.findall('.//s:c[@t="e"]',ns)
-            assert formulas==meta['formulas']==5
-          print('Original XLSX bytes, sheets, formula count and absence of error cells confirmed.')
+          for folder in ['quetes-vivantes-20261109','quetes-vivantes-suite-20261109']:
+            root=pathlib.Path('production')/folder;meta=json.loads((root/'verification-classeur.json').read_text());file=root/meta['file']
+            raw=file.read_bytes();assert len(raw)==meta['bytes'] and hashlib.sha256(raw).hexdigest()==meta['sha256']
+            with zipfile.ZipFile(file) as z:
+              assert z.testzip() is None
+              assert [s.attrib['name'] for s in ET.fromstring(z.read('xl/workbook.xml')).findall('s:sheets/s:sheet',ns)]==meta['sheets']
+              formulas=0
+              for name in z.namelist():
+                if name.startswith('xl/worksheets/') and name.endswith('.xml'):
+                  xml=ET.fromstring(z.read(name));formulas+=len(xml.findall('.//s:f',ns));assert not xml.findall('.//s:c[@t="e"]',ns)
+              assert formulas==meta['formulas']==5
+            print(folder,': exact bytes, sheets, formula count and absence of error cells confirmed.')
           PY
       - name: Install locked Chromium
         run: node node_modules/playwright-core/cli.js install --with-deps chromium
       - name: Native meetings, space orders, return and reload on three viewports
         run: node scripts/qa-clan-dialogue-browser-20261109.mjs
+      - name: Native archived hunts, private returns and reload
+        run: node scripts/qa-clan-hunt-dialogue-browser-20261109.mjs
       - uses: actions/upload-artifact@v4
         if: always()
         with:
           name: clan-dialogue-native-${{ github.event.pull_request.head.sha }}
-          path: outputs/qa-clan-dialogue-20261109/
+          path: |
+            outputs/qa-clan-dialogue-20261109/
+            outputs/qa-clan-hunt-dialogue-20261109/
           retention-days: 14
           if-no-files-found: error
