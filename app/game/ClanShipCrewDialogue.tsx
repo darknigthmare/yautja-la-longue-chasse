@@ -5,6 +5,7 @@ import type { SaveGame } from './types';
 import type { ClanShipRoomId } from './systems/clanShipDocking';
 import type { ClanShipNpcId } from './systems/clanShipOperations';
 import { CLAN_SHIP_DIALOGUE_TOPICS, clanShipDialogue, type ClanShipDialogueTopic } from './systems/clanShipDialogue';
+import ClanShipHuntConversation from './ClanShipHuntConversation';
 import styles from './ClanShipOperationsPanel.module.css';
 
 /** Local topic selection only; no mutation of the campaign or auto-recruitment. */
@@ -24,5 +25,6 @@ export default function ClanShipCrewDialogue({ save, npcId, roomId, suspended }:
         onClick={() => setTopic(entry.id)}>{entry.label}</button>)}
     </div>
     {dialogue.detail && <p className={styles.detail}>{dialogue.detail}</p>}
+    <ClanShipHuntConversation key={`${save.createdAt}:${npcId}`} save={save} npcId={npcId} roomId={roomId} suspended={suspended} />
   </section>;
 }

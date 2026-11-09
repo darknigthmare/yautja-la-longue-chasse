@@ -1,0 +1,186 @@
+[
+  {
+    "id": "breche",
+    "rumour": "Un appel près d’un ancien chenil",
+    "missionId": "jungle-vey",
+    "world": "Oseris-IV",
+    "minimumScans": 1,
+    "minimumScore": 40,
+    "steps": [
+      {
+        "id": "care",
+        "title": "Préparer le retour au calme",
+        "personalRoom": "medical-bay",
+        "clanRoom": "soins",
+        "choices": [
+          {
+            "id": "quiet-care",
+            "label": "Isoler le bruit, examiner puis nourrir",
+            "accepted": true
+          },
+          {
+            "id": "force",
+            "label": "Forcer immédiatement le collier de chasse",
+            "accepted": false
+          }
+        ]
+      },
+      {
+        "id": "recall",
+        "title": "Convenir d’un essai sans proie",
+        "personalRoom": "training-arena",
+        "clanRoom": "entrainement",
+        "choices": [
+          {
+            "id": "recall-stop",
+            "label": "Rappel, arrêt de l’essai, retour au refuge",
+            "accepted": true
+          },
+          {
+            "id": "live-bait",
+            "label": "Utiliser une cible vivante pour accélérer",
+            "accepted": false
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "eclisse",
+    "rumour": "Une unité de commande répond encore",
+    "missionId": "ruins-ancient-guardian",
+    "world": "Acheron-Sigma",
+    "minimumScans": 2,
+    "minimumScore": 40,
+    "steps": [
+      {
+        "id": "isolate",
+        "title": "Isoler la commande de l’atelier",
+        "personalRoom": "appearance-forge",
+        "clanRoom": "armurerie",
+        "choices": [
+          {
+            "id": "isolated-bus",
+            "label": "Isoler le bus avant tout branchement",
+            "accepted": true
+          },
+          {
+            "id": "ship-network",
+            "label": "Brancher directement le réseau du vaisseau",
+            "accepted": false
+          }
+        ]
+      },
+      {
+        "id": "calibrate",
+        "title": "Limiter les droits de maintenance",
+        "personalRoom": "clan-archives",
+        "clanRoom": "archives",
+        "choices": [
+          {
+            "id": "local-tools",
+            "label": "Diagnostic local, outils consignés, arrêt manuel",
+            "accepted": true
+          },
+          {
+            "id": "all-access",
+            "label": "Accès permanent à tous les systèmes",
+            "accepted": false
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "lance-fendue",
+    "rumour": "Un vétéran écoute les rapports de retour",
+    "missionId": "jungle-vey",
+    "world": "Oseris-IV",
+    "minimumScans": 2,
+    "minimumScore": 50,
+    "steps": [
+      {
+        "id": "retreat",
+        "title": "Présenter la priorité d’extraction",
+        "personalRoom": "training-arena",
+        "clanRoom": "entrainement",
+        "choices": [
+          {
+            "id": "bring-back",
+            "label": "Sécuriser le repli et ramener le partenaire",
+            "accepted": true
+          },
+          {
+            "id": "chase-trophy",
+            "label": "Poursuivre la proie sans point de retour",
+            "accepted": false
+          }
+        ]
+      },
+      {
+        "id": "boundaries",
+        "title": "Fixer les limites de l’accord",
+        "personalRoom": "clan-archives",
+        "clanRoom": "archives",
+        "choices": [
+          {
+            "id": "own-rites",
+            "label": "Conserver mes rites solitaires et son autonomie",
+            "accepted": true
+          },
+          {
+            "id": "win-for-me",
+            "label": "Lui confier mes épreuves individuelles",
+            "accepted": false
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "opale",
+    "rumour": "Une expédition cherche la mémoire de son équipe",
+    "missionId": "swamp-hydra",
+    "world": "Naraka-Delta",
+    "minimumScans": 2,
+    "minimumScore": 40,
+    "steps": [
+      {
+        "id": "memory",
+        "title": "Restituer le dossier d’expédition",
+        "personalRoom": "clan-archives",
+        "clanRoom": "archives",
+        "choices": [
+          {
+            "id": "full-report",
+            "label": "Remettre le rapport entier avec ses incertitudes",
+            "accepted": true
+          },
+          {
+            "id": "wipe-memory",
+            "label": "Effacer les souvenirs avant l’activation",
+            "accepted": false
+          }
+        ]
+      },
+      {
+        "id": "autonomy",
+        "title": "Préparer un espace choisi",
+        "personalRoom": "medical-bay",
+        "clanRoom": "soins",
+        "choices": [
+          {
+            "id": "consent",
+            "label": "Garantir son autonomie et un réseau isolable",
+            "accepted": true
+          },
+          {
+            "id": "override",
+            "label": "Exiger une commande d’obéissance permanente",
+            "accepted": false
+          }
+        ]
+      }
+    ]
+  }
+]

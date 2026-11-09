@@ -5,8 +5,8 @@
     "bytes": 264999,
     "sha256": "8eee8a5f5a043f2a67477bc6bcff97fffb1ee1666864bd7aed60c7a6c21ca138"
   },
-  "files": 2206,
-  "bytes": 1093185913,
+  "files": 2208,
+  "bytes": 1093201815,
   "entries": [
     {
       "path": ".openai/hosting.json",
@@ -170,8 +170,8 @@
     },
     {
       "path": "app/game/ClanShipCrewDialogue.tsx",
-      "bytes": 1644,
-      "sha256": "9c1b0590bc5cf742ba1a82f40a483f61c81f334f14c9a515939aac8885ceffb7"
+      "bytes": 1843,
+      "sha256": "f77aa725afac32749e5ece96bd3122c3d2ae0e52a47507130934099ec241c3e4"
     },
     {
       "path": "app/game/ClanShipHub.module.css",
@@ -182,6 +182,11 @@
       "path": "app/game/ClanShipHub.tsx",
       "bytes": 16634,
       "sha256": "59392b7b6dd56ba63a47f64e8cd1c97fc57bc0d75f226ced3dfe0a6f8496e36a"
+    },
+    {
+      "path": "app/game/ClanShipHuntConversation.tsx",
+      "bytes": 2309,
+      "sha256": "9501d15e753ec445f9aaddf994f8a41fe5c602d7e221b687cead45975590ec7c"
     },
     {
       "path": "app/game/ClanShipIncidentPanel.module.css",
@@ -3479,6 +3484,11 @@
       "sha256": "adcd1bee2a92f8893e8fb31ee1df32a2b009fbaa416db66900a868dac84076cb"
     },
     {
+      "path": "app/game/systems/clanShipHuntDialogue.ts",
+      "bytes": 12187,
+      "sha256": "74e38db852605186425b420d982ef9054ef75d395a66da912e5c981b69e44d5c"
+    },
+    {
       "path": "app/game/systems/clanShipIncidents.ts",
       "bytes": 45227,
       "sha256": "c2f52265dd043d1b6402a0353e4d181d7cdbef829a3cca500e6aa80d3d51e65d"
@@ -4095,8 +4105,8 @@
     },
     {
       "path": "app/game/systems/companionResidence.ts",
-      "bytes": 60010,
-      "sha256": "83432416fb6869c65db49d5d67fa8a46a984227cf9e4831a837ea273c0545767"
+      "bytes": 61217,
+      "sha256": "ed55b78c62e3c7b963a6b71f966fc3fccf126450c24ce561f540a1a563dd7d8e"
     },
     {
       "path": "app/game/systems/completeArchive.ts",
