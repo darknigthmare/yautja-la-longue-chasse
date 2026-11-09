@@ -1,0 +1,17 @@
+2026-11-09T05:54:02.3125337Z ##[group]Run node scripts/qa-hunt-harvest-preview-browser-20261109.mjs
+2026-11-09T05:54:02.3125842Z [36;1mnode scripts/qa-hunt-harvest-preview-browser-20261109.mjs[0m
+2026-11-09T05:54:02.3139444Z shell: /usr/bin/bash -e {0}
+2026-11-09T05:54:02.3139704Z env:
+2026-11-09T05:54:02.3139925Z   ELECTRON_SKIP_BINARY_DOWNLOAD: 1
+2026-11-09T05:54:02.3140193Z   NEXT_TELEMETRY_DISABLED: 1
+2026-11-09T05:54:02.3140442Z   AUDIT_CHROME_CHANNEL: chrome
+2026-11-09T05:54:02.3140769Z   HARVEST_PREVIEW_QA_OUTPUT: outputs/qa-harvest-preview-20261109
+2026-11-09T05:54:02.3141334Z   CHROMIUM_EXECUTABLE: /usr/bin/google-chrome
+2026-11-09T05:54:02.3141626Z ##[endgroup]
+2026-11-09T05:54:15.1459386Z {
+2026-11-09T05:54:15.1459832Z   "passed": true,
+2026-11-09T05:54:15.1460232Z   "browserExecuted": true,
+2026-11-09T05:54:15.1460614Z   "checks": 18,
+2026-11-09T05:54:15.1460989Z   "captures": 18,
+2026-11-09T05:54:15.1462211Z   "output": "/home/runner/work/yautja-la-longue-chasse/yautja-la-longue-chasse/outputs/qa-harvest-preview-20261109"
+2026-11-09T05:54:15.1463078Z }

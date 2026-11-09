@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "startedAt": "2026-11-09T07:28:30.767319+00:00",
+  "command": [
+    "node",
+    "scripts/qa-skinning-canopy-durable-browser-20261109.mjs"
+  ],
+  "cwd": "/workspace/yautja-reprise-20261109",
+  "environment": {
+    "CHROMIUM_EXECUTABLE": "/usr/bin/chromium",
+    "SKINNING_CANOPY_QA_OUTPUT": "/workspace/yautja-reprise-20261109/outputs/qa-skinning-canopy-20261109/native-06"
+  },
+  "checkoutCommit": "c23000fae806c6a777e719432c6fde5e9e2e259c",
+  "scriptSha256": "4dbdfb4a5c3ee636acb851a4fbc01da5599a063254a95efe771a32a70a1ff123",
+  "fixtureSha256": "1535eb6a45621a45fda8d29d7bfc449e124166361f749990e75381919a5a5f4a",
+  "exitCode": 1,
+  "finishedAt": "2026-11-09T07:31:57.537660+00:00"
+}

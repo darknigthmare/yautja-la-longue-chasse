@@ -1,0 +1,305 @@
+{
+  "startedAt": "2026-11-09T05:52:34.702Z",
+  "sourceCommit": "1edbf69117949df3d3e1591b79fdcc416928862d",
+  "checkoutCommit": "1edbf69117949df3d3e1591b79fdcc416928862d",
+  "workingTreeDirty": false,
+  "runtime": "actual desktop GameClient via Vite",
+  "browserMode": "headed",
+  "focusTransitions": [],
+  "pointerCommands": [
+    {
+      "viewportWidth": 1440,
+      "room": "hangar",
+      "requested": {
+        "x": 520,
+        "y": 680
+      },
+      "screen": {
+        "x": 521.5277777777778,
+        "y": 918.7763000488281
+      },
+      "worldRect": {
+        "x": 25,
+        "y": 269.4708251953125,
+        "width": 1375,
+        "height": 763.8887939453125
+      },
+      "touch": false,
+      "arrived": {
+        "room": "hangar",
+        "x": 520,
+        "y": 680,
+        "moving": "false"
+      }
+    },
+    {
+      "viewportWidth": 1440,
+      "room": "conseil",
+      "requested": {
+        "x": 450,
+        "y": 560
+      },
+      "screen": {
+        "x": 454.6875,
+        "y": 804.2312744140625
+      },
+      "worldRect": {
+        "x": 25,
+        "y": 269.509033203125,
+        "width": 1375,
+        "height": 763.888916015625
+      },
+      "touch": false,
+      "arrived": {
+        "room": "conseil",
+        "x": 450,
+        "y": 560,
+        "moving": "false"
+      }
+    },
+    {
+      "viewportWidth": 1440,
+      "room": "conseil",
+      "requested": {
+        "x": 620,
+        "y": 540
+      },
+      "screen": {
+        "x": 617.0138888888889,
+        "y": 871.0715515136719
+      },
+      "worldRect": {
+        "x": 25,
+        "y": 355.446533203125,
+        "width": 1375,
+        "height": 763.888916015625
+      },
+      "touch": false
+    },
+    {
+      "viewportWidth": 1440,
+      "room": "conseil",
+      "requested": {
+        "x": 1020,
+        "y": 560
+      },
+      "screen": {
+        "x": 998.9583333333334,
+        "y": 890.1687744140625
+      },
+      "worldRect": {
+        "x": 25,
+        "y": 355.446533203125,
+        "width": 1375,
+        "height": 763.888916015625
+      },
+      "touch": false,
+      "arrived": {
+        "room": "conseil",
+        "x": 1020,
+        "y": 560,
+        "moving": "false"
+      }
+    },
+    {
+      "viewportWidth": 1440,
+      "room": "archives",
+      "requested": {
+        "x": 240,
+        "y": 645
+      },
+      "screen": {
+        "x": 254.16666666666666,
+        "y": 890.1686653137207
+      },
+      "worldRect": {
+        "x": 25,
+        "y": 274.2833251953125,
+        "width": 1375,
+        "height": 763.8887939453125
+      },
+      "touch": false,
+      "arrived": {
+        "room": "archives",
+        "x": 240.03,
+        "y": 645,
+        "moving": "false"
+      }
+    }
+  ],
+  "checks": [
+    {
+      "name": "Legacy campaign migrates through the real main menu to the personal deck",
+      "passed": true
+    },
+    {
+      "name": "A held gamepad confirmation advances only one docking stage",
+      "passed": true
+    },
+    {
+      "name": "Dock and board preserve the selected personal hull",
+      "passed": true
+    },
+    {
+      "name": "Keyboard movement follows the real floor and stops at the wall without crossing a door",
+      "passed": true
+    },
+    {
+      "name": "Gamepad analog movement controls the hunter without selecting an outer menu button",
+      "passed": true
+    },
+    {
+      "name": "Pointer movement follows a collision-safe path across the hangar",
+      "passed": true
+    },
+    {
+      "name": "Choosing a room hands focus to walking and a fresh key interrupts the guided route",
+      "passed": true
+    },
+    {
+      "name": "Retargeting a guided route takes effect immediately and Stop cancels it before a doorway",
+      "passed": true
+    },
+    {
+      "name": "A physical doorway is reached before saving and held confirmation cannot fall through the passage",
+      "passed": true
+    },
+    {
+      "name": "A distant room target walks through adjacent doors instead of teleporting",
+      "passed": true
+    },
+    {
+      "name": "The rendered hunter stops at a real fixture and pointer navigation goes around it",
+      "passed": true
+    },
+    {
+      "name": "The archive service requires walking into reach and a separate interaction",
+      "passed": false,
+      "message": "Expected values to be strictly equal:\n\n'false' !== 'true'\n"
+    }
+  ],
+  "errors": [],
+  "missingAssets": [],
+  "screenshots": [
+    "01-approach-desktop.png",
+    "02-hangar-desktop.png"
+  ],
+  "walking": {
+    "samples": 398,
+    "rooms": [
+      "hangar",
+      "soins",
+      "trophees",
+      "archives",
+      "conseil"
+    ],
+    "transitions": [
+      {
+        "purpose": "soins-to-conseil",
+        "rooms": [
+          "soins",
+          "trophees",
+          "archives",
+          "conseil"
+        ],
+        "samples": 232
+      }
+    ]
+  },
+  "browserVersion": "153.0.8010.12",
+  "passed": false,
+  "failure": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\n'false' !== 'true'\n\n    at file:///home/runner/work/yautja-la-longue-chasse/yautja-la-longue-chasse/scripts/qa-clan-ship-browser.mjs:388:12\n    at async check (file:///home/runner/work/yautja-la-longue-chasse/yautja-la-longue-chasse/scripts/qa-clan-ship-browser.mjs:88:11)\n    at async file:///home/runner/work/yautja-la-longue-chasse/yautja-la-longue-chasse/scripts/qa-clan-ship-browser.mjs:378:3",
+  "lastScene": {
+    "visit": {
+      "version": 1,
+      "ownerCreatedAt": "2026-11-04T10:00:00.000Z",
+      "clanShipId": "avp-clan-mothership",
+      "personalShipId": "classic-predator-spaceship",
+      "status": "aboard",
+      "roomId": "archives"
+    },
+    "scene": {
+      "data-clan-interior": "true",
+      "data-interior-room": "archives",
+      "data-interior-actor-x": "240.03",
+      "data-interior-actor-y": "645.00",
+      "data-interior-moving": "false",
+      "data-interior-suspended": "false",
+      "data-interior-target-room": ""
+    },
+    "documentFocused": true,
+    "hidden": false,
+    "visibilityState": "visible",
+    "activeElement": "<div class=\"_world_n5a0c_38\" data-interior-world=\"true\" data-screen-focus=\"true\" tabindex=\"0\" aria-label=\"Pont explorable. Flèches ou ZQSD/WASD pour marcher, E pour interagir.\" style=\"width: 1440px; height: 800px; transform: translate(0px, -115.685px) scale(0.954861);\"><div class=\"_background_n5a0c_51\" aria-hidden=\"true\"><img alt=\"\" draggable=\"false\" decoding=\"async\" data-interior-background=\"archives\" src=\"/game/clan-ship/interiors/archives-v1.webp\"><div class=\"_backgroundGrade_n5a0c_53\"></div></div><div class=\"_fixture_n5a0c_66\" data-interior-fixture=\"archive-terminal\" style=\"left: 790px; top: 575px; z-index: 575;\"><span class=\"_fixtureShadow_n5a0c_67\" style=\"width: 100px; height: 45px;\"></span><span aria-hidden=\"true\" data-interior-art=\"/game/clan-ship/props/archive-terminal-v1.webp\" style=\"position: absolute; left: -54.0119px; top: -265px; width: 108.024px; height: 265px; pointer-events: none;\"><img alt=\"\" draggable=\"false\" decoding=\"async\" src=\"/game/clan-ship/props/archive-termin",
+    "recentWalking": [
+      {
+        "room": "archives",
+        "x": 375,
+        "y": 645
+      },
+      {
+        "room": "archives",
+        "x": 360,
+        "y": 645
+      },
+      {
+        "room": "archives",
+        "x": 345,
+        "y": 645
+      },
+      {
+        "room": "archives",
+        "x": 330.03,
+        "y": 645
+      },
+      {
+        "room": "archives",
+        "x": 320.01,
+        "y": 645
+      },
+      {
+        "room": "archives",
+        "x": 309.99,
+        "y": 645
+      },
+      {
+        "room": "archives",
+        "x": 295.02,
+        "y": 645
+      },
+      {
+        "room": "archives",
+        "x": 280.02,
+        "y": 645
+      },
+      {
+        "room": "archives",
+        "x": 270,
+        "y": 645
+      },
+      {
+        "room": "archives",
+        "x": 255.03,
+        "y": 645
+      },
+      {
+        "room": "archives",
+        "x": 245.01,
+        "y": 645
+      },
+      {
+        "room": "archives",
+        "x": 240.03,
+        "y": 645
+      }
+    ]
+  },
+  "finishedAt": "2026-11-09T05:53:24.014Z",
+  "loadedRoomArt": [
+    "/game/clan-ship/interiors/archives-v1.webp",
+    "/game/clan-ship/interiors/conseil-v1.webp",
+    "/game/clan-ship/interiors/hangar-v1.webp",
+    "/game/clan-ship/interiors/soins-v1.webp",
+    "/game/clan-ship/interiors/trophees-v1.webp"
+  ]
+}

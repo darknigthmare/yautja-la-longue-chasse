@@ -1,8 +1,37 @@
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
+import { createRequire } from "node:module";
+import { fileURLToPath } from "node:url";
+import { runInNewContext } from "node:vm";
 import test from "node:test";
+import { build } from "esbuild";
 
 const huntCanvasUrl = new URL("../app/game/HuntCanvas.tsx", import.meta.url);
+
+async function nativeRigRuntime(source) {
+  const bundle = await build({
+    stdin: {
+      contents: `${source.replace("export default function HuntCanvas", "function HuntCanvas")}
+export {makeGameState,solvePlayerRigFrame,solveHunterRig,HUNTER_RIG_CANVAS};
+export {transformPoint} from "./hunterRig";
+export {defaultSave} from "./save"; export {MISSION_BY_ID} from "./data";`,
+      resolveDir: fileURLToPath(new URL("../app/game/", import.meta.url)),
+      sourcefile: fileURLToPath(huntCanvasUrl), loader: "tsx",
+    },
+    bundle: true, write: false, format: "cjs", platform: "node", jsx: "automatic",
+    loader: { ".module.css": "empty" }, external: ["react", "react/jsx-runtime", "react-dom"],
+    logLevel: "silent",
+  });
+  const compiled = { exports: {} };
+  runInNewContext(bundle.outputFiles[0].text, {
+    module: compiled, exports: compiled.exports, require: createRequire(import.meta.url),
+  });
+  return compiled.exports;
+}
+
+function nearPoint(actual, expected, message) {
+  assert.ok(Math.hypot(actual.x - expected.x, actual.y - expected.y) < 1e-8, message);
+}
 
 function functionSource(source, name, nextName) {
   const start = source.indexOf(`function ${name}(`);
@@ -16,10 +45,60 @@ test("aim, targeting and projectiles use the active weapon anchor", async () => 
   const source = await readFile(huntCanvasUrl, "utf8");
   assert.match(source, /from ["']\.\/hunterRig["']/);
   assert.match(source, /function solvePlayerRigFrame\(/);
-  assert.match(
-    source,
-    /return solveHunterRig\(\{[\s\S]*?worldX:[\s\S]*?worldY:/,
-  );
+  // Exercise the actual Canvas adapter. Its choice of a working pose must
+  // preserve the canonical world origin, independent of source-code shape.
+  const runtime = await nativeRigRuntime(source);
+  const save = runtime.defaultSave("2026-11-09T00:00:00Z");
+  const mission = runtime.MISSION_BY_ID["jungle-vey"];
+  for (const facing of [-1, 1]) for (const height of [84.48, 116, 153.6]) {
+    const state = runtime.makeGameState(mission, save.loadout, save.inventory,
+      "hunter", save.appearance, false, false, 0, save.exploration);
+    Object.assign(state.player, {
+      x: 2300, y: 270 - height, height, facing, velocityX: 0, velocityY: 0,
+      grounded: true, climbing: false, aiming: true, aimAngle: .2, weaponCooldown: 0,
+    });
+    state.elapsed = 0;
+    const player = state.player;
+    const handAimAngle = -.15;
+    const frame = runtime.solvePlayerRigFrame(state, player, handAimAngle);
+    const expected = runtime.solveHunterRig({
+      pose: "idle", phase: 0, facing, speed: 0, verticalVelocity: 0,
+      aimAngle: player.aimAngle, handAimAngle, recoil: 0, extractionProgress: 0,
+      scale: height / runtime.HUNTER_RIG_CANVAS.height,
+      worldX: player.x + player.width / 2 - runtime.HUNTER_RIG_CANVAS.width / 2,
+      worldY: player.y + height - runtime.HUNTER_RIG_CANVAS.groundY,
+    });
+    nearPoint({ x: frame.bones.root.e, y: frame.bones.root.f },
+      { x: player.x + player.width / 2, y: player.y + height }, "the rig origin is the real collision body's feet");
+    for (const anchor of ["muzzle", "handGrip", "trophyCarry", "maskCenter"])
+      nearPoint(frame.anchors[anchor], expected.anchors[anchor], `${anchor} retains the canonical world registration`);
+
+    // The same adapter selects the new work pose, with the original foot pivots
+    // and equipment anchors. This fixture adds no simulation or collision move.
+    state.huntRites.corpses.push({ id: "rig-work-body", sourceEnemyId: "razorback-grazer",
+      x: player.x + player.width / 2 + facing * 30, y: player.y + height,
+      label: "Rig pose fixture", kind: "beast", worthy: true, protectedPrey: false,
+      defeatedAt: 0, analyzed: true, marked: false, flayed: false, erased: false,
+      supportId: null, hangingAt: null, witnesses: [], integrity: 100, massKg: 70 });
+    state.enemies.push({ id: "rig-work-body", archetype: "razorback-grazer", health: 0,
+      alive: false, active: true, width: 70, height: 40 });
+    state.huntRites.operation = { corpseId: "rig-work-body", action: "flay", elapsed: 1.6,
+      startHealth: player.health, supportId: null, confirmedDishonor: false };
+    const working = runtime.solvePlayerRigFrame(state, player, handAimAngle);
+    const idle = runtime.solveHunterRig({ pose: "idle", phase: 0, facing,
+      scale: height / runtime.HUNTER_RIG_CANVAS.height,
+      worldX: player.x + player.width / 2 - runtime.HUNTER_RIG_CANVAS.width / 2,
+      worldY: player.y + height - runtime.HUNTER_RIG_CANVAS.groundY });
+    for (const foot of ["footFront", "footBack"])
+      nearPoint({ x: working.bones[foot].e, y: working.bones[foot].f },
+        { x: idle.bones[foot].e, y: idle.bones[foot].f }, "working keeps both original feet planted");
+    nearPoint(working.anchors.handGrip, runtime.transformPoint(working.bones.handFront, { x: 6, y: 13 }),
+      "the field tool and hand weapon retain the real hand anchor");
+    nearPoint(working.anchors.muzzle, runtime.transformPoint(working.bones.casterMuzzle, { x: 0, y: 0 }),
+      "the caster retains its own muzzle while working");
+    assert.notEqual(working.anchors.handGrip.y, frame.anchors.handGrip.y, "the actual field pose is selected");
+    assert.equal(player.x, 2300); assert.equal(player.y, 270 - height);
+  }
 
   const aimAssist = functionSource(source, "drawAimAssist", "drawJunglePlatform");
   const weapon = functionSource(source, "playerWeapon", "playerScan");

@@ -11,6 +11,7 @@ import ClanShipInterior from "./ClanShipInterior";
 import ClanShipOperationsPanel from "./ClanShipOperationsPanel";
 import type { CompanionResidenceControlled } from "./CompanionResidencePanel";
 import type { ClanShipIncidentControlled } from "./ClanShipIncidentPanel";
+import type { ClanShipReturnEscortControlled } from "./ClanShipReturnEscortScene";
 import { CLAN_SHIP_ONBOARDING_STEPS, clanShipContract, createClanShipOperations, getClanShipActiveStep, inspectClanShipOperations, type ClanShipNpcId, type ClanShipOperationsAction } from "./systems/clanShipOperations";
 import { ClanShipOperationsAudio } from "./systems/clanShipOperationsAudio";
 import type { SceneAudioPort } from "./systems/sceneAudio";
@@ -32,6 +33,7 @@ export interface ClanShipHubProps {
   companions?: CompanionResidenceControlled;
   incidents?: ClanShipIncidentControlled;
   createSceneAudio?: () => SceneAudioPort | null;
+  returnEscort?: ClanShipReturnEscortControlled;
 }
 
 type Room = { id: ClanShipRoomId; name: string; detail: string; action: string; service?: ClanShipService; number: string };
@@ -55,7 +57,7 @@ const STATUS = {
 } as const;
 const STEPS = ["Approche", "Amarrage", "À bord"];
 
-export default function ClanShipHub({ state, save, selectedShipId, suspended, temporarySession = false, onAction, onOperations, onService, onExit, onOpenSettings, companions, incidents, createSceneAudio }: ClanShipHubProps) {
+export default function ClanShipHub({ state, save, selectedShipId, suspended, temporarySession = false, onAction, onOperations, onService, onExit, onOpenSettings, companions, incidents, returnEscort, createSceneAudio }: ClanShipHubProps) {
   const rootRef = useRef<HTMLElement>(null);
   const primaryRef = useRef<HTMLButtonElement>(null);
   const [failure, setFailure] = useState<{ signature: string; message: string } | null>(null);
@@ -214,6 +216,7 @@ export default function ClanShipHub({ state, save, selectedShipId, suspended, te
               save={save}
               companions={companions}
               incidents={incidents}
+              returnEscort={returnEscort}
               personalShipId={personalId}
               suspended={suspended || operationsOpen}
               onRoomChange={changeInteriorRoom}

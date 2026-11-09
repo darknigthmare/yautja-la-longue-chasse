@@ -3,9 +3,10 @@ import type { WorldBlueprint } from "./worldBlueprints";
 import { anatomyPartsV112, anatomyIntegrityV112, anatomyBodyMassV112, specimenQualityV112, makeAnatomySpecimenV112 } from "./anatomyHarvestV112.ts";
 import { CARCASS_HANG_DROP_V112, carcassFitsSocketV112 } from "./carcassSupportsV112.ts";
 import type { FieldSpecimenV112 } from "./harvestInventoryV112";
+import {TOOL_WEAR_PER_COMPLETION_V112} from "./harvestInventoryV112.ts";
 import type { RiteSupportV77 } from "./ritesOfHuntV77";
-import {createRitesOfHuntV77,normalizeRitesOfHuntV77,nearestRiteCorpseV77,RITE_DURATIONS_V77,
-  type RitesOfHuntV77,type RitePreyProofV77,type RiteLiveContextV77,type HuntRiteActionV77} from './ritesOfHuntV77.ts';
+import {createRitesOfHuntV77,normalizeRitesOfHuntV77,nearestRiteCorpseV77,riteAnalysisLockedReasonV77,ritePhysicalActionLockedReasonV77,riteWorksiteLockedReasonV77,riteOperationSecondsV77,
+  type RitesOfHuntV77,type RitePreyProofV77,type RiteLiveContextV77,type HuntRiteActionV77,type RiteWorksiteTargetV77} from './ritesOfHuntV77.ts';
 
 /** Physical runtime adapters only. No quest, honor, trophy, inventory or rank
  * is granted. Legacy dead actors without the new death proof are not backfilled. */
@@ -18,6 +19,15 @@ export interface RiteRuntimeActorV77 {
 export interface RiteRuntimeOptionsV111 {
   readonly flayingToolOwned:boolean; readonly world?:WorldBlueprint; readonly supports?:readonly RiteSupportV77[];
   readonly maximumSpecimens?:number; readonly toolWorkMultiplier?:number; readonly acceptSpecimen?:(item:FieldSpecimenV112)=>boolean;
+  readonly fieldLoad?:()=>HuntRiteFieldLoadV112;
+  readonly specimenPreview?:(item:FieldSpecimenV112)=>{accepted:boolean;reason:string;projectedLoad:HuntRiteFieldLoadV112};
+  readonly grounded?:boolean; readonly climbing?:boolean; readonly toolCondition?:number;
+  readonly worksiteBlocked?:(corpse:{x:number;y:number})=>boolean;
+  readonly worksiteReachable?:(corpse:RiteWorksiteTargetV77)=>boolean;
+}
+/** Read-only bag facts from the same runtime adapter that accepts the pickup. */
+export interface HuntRiteFieldLoadV112 {
+  massKg:number;volumeUnits:number;capacityMassKg:number;capacityVolumeUnits:number;
 }
 const DEFAULT_RITE_RUNTIME_OPTIONS_V111:RiteRuntimeOptionsV111={flayingToolOwned:false};
 export const huntRitesRunIdV77=(missionId:string,encounterRun:string|number)=>`${missionId}:${encounterRun}`;
@@ -31,7 +41,7 @@ export function riteRuntimeContextV77(state:RitesOfHuntV77,player:{x:number;y:nu
   actors:readonly RiteRuntimeActorV77[],label:(id:string)=>string,suspended:boolean,
   options:RiteRuntimeOptionsV111=DEFAULT_RITE_RUNTIME_OPTIONS_V111):RiteLiveContextV77{
   return {runId:state.runId,missionId:state.missionId,actor:{x:player.x+player.width/2,y:player.y+player.height},
-    health:player.health,suspended,flayingToolOwned:options.flayingToolOwned===true,grounded:player.grounded,climbing:player.climbing,toolWorkMultiplier:options.toolWorkMultiplier,acceptSpecimen:options.acceptSpecimen,supports:options.supports??[],prey:ritePreyProofsV77(actors,label)};
+    health:player.health,suspended,flayingToolOwned:options.flayingToolOwned===true,grounded:player.grounded,climbing:player.climbing,worksiteBlocked:options.worksiteBlocked,worksiteReachable:options.worksiteReachable,toolWorkMultiplier:options.toolWorkMultiplier,acceptSpecimen:options.acceptSpecimen,supports:options.supports??[],prey:ritePreyProofsV77(actors,label)};
 }
 /** A resumed body must be the exact real defeated actor in this checkpoint.
  * Foreign owners, invented corpses/tool actions/witnesses, altered source or
@@ -110,11 +120,16 @@ export function reactToRiteWitnessV77<T extends {mode:string;suspicion:number;mo
 }
 export interface HuntRiteMenuSnapshotV77 {
   corpseId:string;label:string;analyzed:boolean;marked:boolean;flayed:boolean;canFlay:boolean;flayLockedReason:string|null;open:boolean;
-  operation:{action:HuntRiteActionV77;progress:number}|null;witnessCount:number;
+  canAnalyze:boolean;analysisLockedReason:string|null;fieldLoad?:HuntRiteFieldLoadV112;
+  operation:{action:HuntRiteActionV77;progress:number;label?:string;secondsTotal?:number;secondsRemaining?:number;toolWear?:number}|null;witnessCount:number;
   /** Effective real-world duration, including the current field-tool wear. */
   flaySeconds?:number;
   integrity:number;massKg:number;carrying:boolean;canCarry:boolean;canHang:boolean;hangSupportId:string|null;hangReason:string;
-  parts:{action:HuntRiteActionV77;label:string;quality:number;seconds:number;available:boolean;reason:string}[];
+  carryLockedReason?:string|null;worksiteLockedReason?:string|null;
+  tool?:{owned:boolean;condition:number|null;wearPerCompletion:number;conditionAfterCompletion:number|null};
+  stock?:{total:number;remaining:number};
+  parts:{action:HuntRiteActionV77;label:string;quality:number;seconds:number;massKg:number;volumeUnits:number;
+    available:boolean;reason:string;harvested?:boolean;projectedLoad?:HuntRiteFieldLoadV112}[];
 }
 export function huntRiteMenuSnapshotV77(state:RitesOfHuntV77,actor:{x:number;y:number},selectedId:string|null,available:boolean,
   options:RiteRuntimeOptionsV111=DEFAULT_RITE_RUNTIME_OPTIONS_V111):HuntRiteMenuSnapshotV77|null{
@@ -125,27 +140,56 @@ export function huntRiteMenuSnapshotV77(state:RitesOfHuntV77,actor:{x:number;y:n
     c.flayed===true&&c.erased===false&&c.supportId===null&&c.hangingAt===null&&
     Number.isFinite(c.x)&&Number.isFinite(c.y)&&
     (c.massKg===undefined||typeof c.massKg==="number"&&Number.isFinite(c.massKg)&&c.massKg>=12&&c.massKg<=170)):null;
-  const corpse=(carried?nearestRiteCorpseV77({...state,corpses:[carried]},actor):null)??nearestRiteCorpseV77(state,actor);
+  // A falling neighbour must not steal an open menu or its interrupt button.
+  // Each preferred identity still passes the normal erased-body/reach check.
+  const inReach=(id:string|null|undefined)=>{
+    const candidate=id?state.corpses.find(c=>c.id===id):null;
+    return candidate?nearestRiteCorpseV77({...state,corpses:[candidate]},actor):null;
+  };
+  const corpse=(carried?nearestRiteCorpseV77({...state,corpses:[carried]},actor):null)??
+    inReach(state.operation?.corpseId)??inReach(selectedId)??nearestRiteCorpseV77(state,actor);
   if(!corpse)return null;
+  const analysisLockedReason=riteAnalysisLockedReasonV77(state,corpse);
   const flayLockedReason=corpse.flayed?'Dépeçage déjà terminé.':options.flayingToolOwned!==true?'Acheter le Flaying Tool à l’armurerie.':
-    corpse.protectedPrey||!corpse.worthy?'Le Code protège cette proie.':null;
-  const workMultiplier=Math.max(1,Math.min(1.65,options.toolWorkMultiplier??1));
+    corpse.protectedPrey||!corpse.worthy?'Le Code protège cette proie.':ritePhysicalActionLockedReasonV77(state,corpse,'flay',options);
   const carrying=state.carryingCorpseId===corpse.id;
+  const worksiteLockedReason=riteWorksiteLockedReasonV77(corpse,options);
+  const carryLockedReason=state.carryingCorpseId?'Une carcasse est déjà portée.':!corpse.flayed?'Dépecer d’abord la carcasse.':
+    corpse.supportId?'La carcasse est déjà suspendue.':(corpse.massKg??70)>170?'Ce corps dépasse la limite de portage de 170 kg.':
+      ritePhysicalActionLockedReasonV77(state,corpse,'carry',options);
   const support=(options.supports??[]).filter(s=>s.suitable&&s.maximumMass>=(corpse.massKg??70)&&
     Math.hypot(s.x-actor.x,s.y-actor.y)<=180&&corpse.y-s.y>=90&&!state.corpses.some(c=>c.id!==corpse.id&&c.supportId===s.id))
     .sort((a,b)=>Math.hypot(a.x-actor.x,a.y-actor.y)-Math.hypot(b.x-actor.x,b.y-actor.y))[0];
-  const canHang=carrying&&corpse.flayed&&!corpse.supportId&&!!support;
+  const canHang=carrying&&corpse.flayed&&!corpse.supportId&&!!support&&!worksiteLockedReason;
   const parts=anatomyPartsV112(corpse.sourceEnemyId).map(part=>{
     const item=makeAnatomySpecimenV112(state.runId,corpse.id,corpse.sourceEnemyId,part.action,corpse.integrity??100,corpse.analyzed)!;
-    const reason=state.completedEventIds.includes(part.action+':'+corpse.id)?'Déjà prélevé.':!options.flayingToolOwned?'Flaying Tool requis.':
-      part.requiresFlay&&!corpse.flayed?'Dépecer d’abord.':state.carryingCorpseId?'Déposer la carcasse.':options.acceptSpecimen?.(item)!==true?'Emport ou dépôt plein.':'';
+    const harvested=state.completedEventIds.includes(part.action+':'+corpse.id);
+    const preview=harvested?undefined:options.specimenPreview?.(item);
+    const prerequisite=harvested?'Déjà prélevé.':!options.flayingToolOwned?'Flaying Tool requis.':
+      part.requiresFlay&&!corpse.flayed?'Dépecer d’abord.':ritePhysicalActionLockedReasonV77(state,corpse,part.action,options)??'';
+    const reason=prerequisite||(options.acceptSpecimen?.(item)===true?'':
+      preview?.accepted===false&&preview.reason?preview.reason:'Emport ou dépôt plein.');
     return {action:part.action,label:part.label,quality:specimenQualityV112(corpse.integrity??100,part,corpse.analyzed),
-      seconds:part.seconds*workMultiplier,available:reason==='',reason};
+      seconds:riteOperationSecondsV77(part.action,corpse.sourceEnemyId,options.toolWorkMultiplier),massKg:part.massKg,volumeUnits:part.volumeUnits,
+      available:reason==='',reason,harvested,projectedLoad:preview?.projectedLoad};
   });
-  return {flaySeconds:RITE_DURATIONS_V77.flay*workMultiplier,integrity:corpse.integrity??100,massKg:corpse.massKg??70,carrying,canCarry:!state.carryingCorpseId&&corpse.flayed&&!corpse.supportId&&(corpse.massKg??70)<=170,
-    canHang,hangSupportId:canHang?support!.id:null,hangReason:corpse.supportId?'Corps déjà suspendu.':!carrying?'Dépecer puis porter la carcasse jusqu’au crochet.':!support?'Pas de crochet libre et assez solide à portée.':'',
-    parts,corpseId:corpse.id,label:corpse.label,analyzed:corpse.analyzed,marked:corpse.marked,flayed:corpse.flayed,canFlay:flayLockedReason===null,flayLockedReason,open:selectedId===corpse.id,
-    operation:state.operation?.corpseId===corpse.id?{action:state.operation.action,progress:Math.min(1,state.operation.elapsed/RITE_DURATIONS_V77[state.operation.action])}:null,
+  const condition=typeof options.toolCondition==='number'&&Number.isFinite(options.toolCondition)?Math.max(0,Math.min(100,options.toolCondition)):null;
+  const operation=state.operation?.corpseId===corpse.id?state.operation:null;
+  const operationUsesTool=!!operation&&(operation.action==='flay'||operation.action.startsWith('harvest-'));
+  const operationDuration=operation?riteOperationSecondsV77(operation.action,corpse.sourceEnemyId):0;
+  const actualDuration=operation?riteOperationSecondsV77(operation.action,corpse.sourceEnemyId,options.toolWorkMultiplier):0;
+  const operationMultiplier=operationDuration>0?actualDuration/operationDuration:1;
+  const operationLabel=operation?parts.find(part=>part.action===operation.action)?.label??
+    ({analyze:'Analyser la proie',mark:'Marquer la proie',flay:'Dépecer la carcasse',hang:'Suspendre la carcasse',erase:'Effacer la trace'} as Partial<Record<HuntRiteActionV77,string>>)[operation.action]??'Geste rituel':'';
+  return {flaySeconds:riteOperationSecondsV77('flay',corpse.sourceEnemyId,options.toolWorkMultiplier),integrity:corpse.integrity??100,massKg:corpse.massKg??70,carrying,canCarry:carryLockedReason===null,
+    carryLockedReason,worksiteLockedReason,tool:{owned:options.flayingToolOwned===true,condition,wearPerCompletion:TOOL_WEAR_PER_COMPLETION_V112,
+      conditionAfterCompletion:condition===null?null:Math.max(0,condition-TOOL_WEAR_PER_COMPLETION_V112)},stock:{total:parts.length,remaining:parts.filter(part=>!part.harvested).length},
+    canHang,hangSupportId:canHang?support!.id:null,hangReason:corpse.supportId?'Corps déjà suspendu.':!carrying?'Dépecer puis porter la carcasse jusqu’au crochet.':worksiteLockedReason??(!support?'Pas de crochet libre et assez solide à portée.':''),
+    parts,corpseId:corpse.id,label:corpse.label,analyzed:corpse.analyzed,canAnalyze:analysisLockedReason===null,analysisLockedReason,
+    fieldLoad:options.fieldLoad?.(),marked:corpse.marked,flayed:corpse.flayed,canFlay:flayLockedReason===null,flayLockedReason,open:selectedId===corpse.id,
+    operation:operation?{action:operation.action,progress:Math.min(1,operation.elapsed/operationDuration),label:operationLabel,
+      secondsTotal:actualDuration,secondsRemaining:Math.max(0,operationDuration-operation.elapsed)*operationMultiplier,
+      toolWear:operationUsesTool?TOOL_WEAR_PER_COMPLETION_V112:0}:null,
     witnessCount:corpse.witnesses.length};
 }
 export {createRitesOfHuntV77};

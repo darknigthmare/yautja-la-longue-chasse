@@ -1,0 +1,16 @@
+{
+  "status": "PASS_PROVIDED_NATIVE_HASHES_WITH_EXPLICIT_MISSING_ARCHIVES",
+  "declaredCapturesVerified": 44,
+  "sourceCopiesVerified": 22,
+  "sourceCopiesNotProvidedByOriginalAttempt": [
+    {
+      "attempt": "native-01",
+      "source": "HuntCanvas"
+    },
+    {
+      "attempt": "native-02",
+      "source": "HuntCanvas"
+    }
+  ],
+  "meaning": "Missing initial source copies are disclosed; no archive bytes are reconstructed or attributed to the old run."
+}

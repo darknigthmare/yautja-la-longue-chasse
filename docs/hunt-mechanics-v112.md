@@ -81,3 +81,20 @@ node scripts/check-homeworld-history-v112.mjs --check --tests
 Les anciens classeurs et preuves restent inchangés. Les wrappers construisent une copie privée de sources ; seuls les fichiers dont la version courante diffère du freeze sont restaurés depuis le commit Git épinglé, après vérification du SHA256 publié. Les assets, captures et classeurs sont des entrées partagées en lecture et restent soumis à leurs empreintes. Les sources de l'application ne sont jamais redirigées vers cet historique.
 
 Le contrôle V110 vérifie ses 1 386 entrées gelées. Le contrôle Homeworld V111 vérifie ses 1 433 entrées, conserve les identités Git des illustrations historiques et régénère son classeur original. Le wrapper restaure également les préimages exactes de tous les tests originaux avant d'en vérifier l'identité. `node scripts/test-current-v111-v112.mjs` exécute les régressions V111 sur le runtime actuel. Seul `homeworld-excel-followup-v111.test.mjs`, qui vérifie l'état de publication gelé, s'exécute sans modification dans le contexte historique Homeworld. Une réussite historique ne remplace pas les tests du runtime actuel.
+
+## Complément de terrain du 9 novembre 2026
+
+Le [nouvel avenant skinning et canopée](campagne/AVENANT_SKINNING_CANOPEE_20261109.md)
+et le [suivi additif](../production/skinning-canopy-20261109/README.md) prolongent
+ces contrats : même contrôle d’appui/obstacle/mains pour le menu et les gestes,
+horloge partagée, stock et usure expliqués, HUD fondé sur les vrais supports,
+pose et effets procéduraux sur les calques d’origine. La nouvelle recette vise
+le vrai writer et la restauration du sidecar dans GameClient ; les limites
+« checkpoints captés en mémoire » ci-dessus restent celles de leur ancienne
+recette, sans réattribution. Les résultats finaux de cette nouvelle tranche
+sont désormais consignés au point `cfa730ba65c03d353eb97acfec56eabc383a499b` :
+471 tests / 31 fichiers, build/types et lint de 20 fichiers ; vraie recette
+GameClient réussie, 16 contrôles et 17 captures, avec reprise du pendule et du
+vol après lâcher, puis la liane suivante. Le contact de main arrière est mesuré dans les états
+observés, sans assertion du pixel exact des PNG ni revue artistique humaine.
+Les huit Restant gardent leurs textes et leurs propres qualifications.

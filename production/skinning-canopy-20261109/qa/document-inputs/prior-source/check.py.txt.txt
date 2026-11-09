@@ -1,0 +1,54 @@
+"""Executed producer/history preflight. Generates workbook/HTML in memory only."""
+from pathlib import Path
+from hashlib import sha256
+import json
+import runpy
+import subprocess
+import sys
+
+root = Path.cwd()
+directory = Path('production/skinning-canopy-20261109')
+here = root / directory / 'qa/document-inputs'
+command = ['python3', str(directory / 'build-followup.py'), '--check-data']
+process = subprocess.run(command, cwd=root, capture_output=True)
+(here / 'input-check.log').write_bytes(process.stdout + process.stderr)
+assert process.returncode == 0
+observed = json.loads(process.stdout)
+module = runpy.run_path(str(root / directory / 'build-followup.py'), run_name='document_producer_preflight')
+data = json.loads(module['DATA'].read_text())
+baseline = json.loads(module['BASELINE'].read_text())
+history, inputs = module['validate'](data, baseline, True)
+sheets = module['tables'](data, baseline, history, inputs)
+first = module['formatting'].workbook_bytes(data, sheets)
+second = module['formatting'].workbook_bytes(data, sheets)
+assert first == second
+verification = module['formatting'].verify_xlsx(first, sheets)
+html = module['formatting'].companion_html(data, sheets)
+assert html == module['formatting'].companion_html(data, sheets)
+source_paths = [directory / 'build-followup.py', directory / 'verify-followup.py', directory / 'baseline.json', directory / 'qa/document-inputs/check.py.txt', Path('production/reprise-chasse-bible-20261109/build-followup.py'), Path('scripts/build-resume-workbook-20261101.py')]
+receipt = {
+    'schemaVersion': 1,
+    'classification': 'PRODUCER_AND_PROTECTED_INPUT_CHECK_NOT_FINAL_WORKBOOK_BYTE_ATTESTATION',
+    'command': ['python3', str(directory / 'qa/document-inputs/check.py.txt')],
+    'exitCode': 0,
+    'checkoutCommit': subprocess.check_output(['git','rev-parse','HEAD'], cwd=root, text=True).strip(),
+    'pythonVersion': sys.version.split()[0],
+    'sourceFiles': {str(p): sha256((root / p).read_bytes()).hexdigest() for p in source_paths},
+    'inputCommand': command,
+    'inputCommandExitCode': process.returncode,
+    'inputResult': observed,
+    'protectedEntries': len(history),
+    'protectedUniqueFiles': len({r['path'] for r in history}),
+    'originalWorkbooks': 108,
+    'remainingV112': 8,
+    'inMemoryDeterministicRepeats': 2,
+    'inMemoryVerification': verification,
+    'exportsWritten': False,
+    'limits': [
+        'This validates the formatting producer and protected inputs before the final document gate. The final data will add this receipt afterwards.',
+        'It intentionally does not attest the SHA or counts of a later workbook. verification-classeur.json and the independent post-export reader provide those final checks.',
+        'No native Microsoft Excel, browser rendering, print device or human readability session is inferred.'
+    ]
+}
+(here / 'receipt.json').write_text(json.dumps(receipt, ensure_ascii=False, indent=2) + '\n')
+print(json.dumps({'status':'PASS_PRODUCER_AND_HISTORY_NO_EXPORT','protectedEntries':len(history),'originalWorkbooks':108,'remainingV112':8,'repeatExact':True,'nativeExcelExecuted':False}))

@@ -1,0 +1,712 @@
+{
+  "schemaVersion": 1,
+  "startedAt": "2026-11-09T07:05:01.118Z",
+  "sourceCommit": "8a25c5cf206647c3490ac362452c2eb22584f07e",
+  "workingTreeDirty": true,
+  "workingTreeOverlay": [
+    "M app/game/HuntCanvas.tsx",
+    " M app/game/HuntRitesMenuV77.module.css",
+    " M app/game/HuntRitesMenuV77.tsx",
+    " M app/game/sound.ts",
+    " M app/game/systems/huntRitesRuntimeV77.ts",
+    " M app/game/systems/ritesOfHuntV77.ts",
+    "?? app/game/HuntCanopyHudV112.module.css",
+    "?? app/game/HuntCanopyHudV112.tsx",
+    "?? app/game/systems/canopyNavigationV112.ts",
+    "?? app/game/systems/canopySupportRendererV112.ts",
+    "?? app/game/systems/huntFieldFeedbackV112.ts",
+    "?? app/game/systems/huntFieldPresentationV112.ts",
+    "?? production/skinning-canopy-20261109/",
+    "?? scripts/qa-hunt-ground-admissible-pilot-20261109.mjs",
+    "?? scripts/qa-skinning-canopy-durable-browser-20261109.mjs",
+    "?? tests/browser/skinning-canopy-durable-20261109.fixture.jsx",
+    "?? tests/canopy-navigation-v112.test.mjs",
+    "?? tests/hunt-canopy-resume-cooldown-20261109.test.mjs",
+    "?? tests/hunt-field-feedback-20261109.test.mjs",
+    "?? tests/hunt-field-presentation-v112.test.mjs",
+    "?? tests/hunt-skinning-worksite-20261109.test.mjs"
+  ],
+  "classification": "FAILED_ATTEMPT",
+  "browserExecuted": true,
+  "passed": false,
+  "checks": [],
+  "captures": [
+    {
+      "file": "failure.png",
+      "bytes": 1356814,
+      "sha256": "349a02654485a9b80c88ab4fa815028aadfb664478d73af2763e4d94d1150a3d",
+      "width": 1280,
+      "height": 900
+    }
+  ],
+  "errors": [],
+  "cases": {},
+  "sourceHashes": {
+    "app/game/GameClient.tsx": "3e93e9ca2791224d5653f266df7e4d625d7c88fca075da8a137391fbde39bb19",
+    "app/game/HuntCanopyHudV112.tsx": "23d2b6ccf3f1d619aa3dd6831800bedaf981eb94b9910c2c14d4ccd9f715db18",
+    "app/game/HuntCanvas.tsx": "8dbdc4c73c273c0407fd37b6340b70954ad0d289ab5a1f7b33af5b7b635bff96",
+    "app/game/HuntRitesMenuV77.tsx": "b1b3321474897ff72cc24d8769abd277720d3f46d384769d1c9d89e384f76c98",
+    "app/game/fieldStashRenderingV112.ts": "dfae5689dc7a08c433176232190c0f64f2fd5decff2e8f15cd6fa56fba729b8f",
+    "app/game/systems/activeHuntSave.ts": "ed8e5bfbe5d1c3c0c099d765f24fddf90b350529b7bda4fb6d8a55268f7b7d38",
+    "app/game/systems/canopyNavigationV112.ts": "7ee562ab163521a49f5eaf72a52216a9a8f3e2400ef55eca0d5eb482eab181f1",
+    "app/game/systems/canopySupportRendererV112.ts": "5e4190994e7493975842481b8423d7c5beebcc557a347ed23705c09f0800cd51",
+    "app/game/systems/canopyTraversalV112.ts": "82094c0d4dc1dccf18c3e89a381647572bdace86fcc51cb62cf17560ff076d57",
+    "app/game/systems/fieldStashV112.ts": "4bd744bd057c3f11a10fe9b7707d545af851002659a86b25e5a39817c41ee6bf",
+    "app/game/systems/harvestInventoryV112.ts": "a36764dda125def1bec5a6326ee907428ff90d63780f648848f23d1657d359b1",
+    "app/game/systems/huntFieldPresentationV112.ts": "1883adca617ac9b07be8f63c32c3187052fa5423450561aa846c2938ed8606b6",
+    "app/game/systems/huntRitesRuntimeV77.ts": "02dc653895b23fbc04e79b0b21c82d307d2ef92e018987fce1873eb23aec538d",
+    "app/game/systems/ritesOfHuntV77.ts": "d3bded7f0b9f96b36cf31bf2dcaf78f8343e8b13b97068f0b5f597aed575dd29"
+  },
+  "hookSha256": "865cdc4364e16defaa4212a9d0d0c3fb2c492e632d45b3d6ca1d1bf38b8a2951",
+  "bundleSha256": "274029fea4355ada9903b0a664b57a608cc8c0c7183ef28ed1025d1d558cddcf",
+  "admission": {
+    "kind": "Declared production defaultSave with field tool, 100 marks and condition25",
+    "sha256": "3f8afa46d1ec40fdcbc1851db33eb4a404ff1302df52d304219694ef76bfcebf",
+    "save": {
+      "version": 13,
+      "prologue": null,
+      "youthTraining": null,
+      "soloV66": null,
+      "soloV67": null,
+      "soloV68": null,
+      "soloV69": null,
+      "soloV70": null,
+      "homeworldRegionV68": null,
+      "homeworldPassageV67": null,
+      "gameReserveV66": null,
+      "gauntletV134": {
+        "version": 1,
+        "ownerCreatedAt": "2026-11-09T00:00:00.000Z",
+        "equippedId": "jungle-hunter",
+        "claimedStudies": []
+      },
+      "createdAt": "2026-11-09T00:00:00.000Z",
+      "updatedAt": "2026-11-09T00:00:00.000Z",
+      "profile": {
+        "hunterName": "Chasseur sans nom",
+        "rankId": "young-blood",
+        "honor": 0,
+        "clanMarks": 100,
+        "playTimeSeconds": 0
+      },
+      "inventory": {
+        "fieldToolIds": [
+          "flaying-tool"
+        ],
+        "harvestV112": {
+          "version": 1,
+          "specimens": [],
+          "toolCondition": 25,
+          "toolUseIds": [],
+          "jobs": [],
+          "settledEncounterRuns": {},
+          "archive": []
+        },
+        "unlockedWeaponIds": [
+          "wristblades",
+          "combistick",
+          "plasma-caster"
+        ],
+        "unlockedGearIds": [
+          "motion-sensor",
+          "audio-decoy"
+        ],
+        "unlockedArmorIds": [
+          "hunter"
+        ],
+        "weaponUpgrades": {
+          "wristblades": 0,
+          "combistick": 0,
+          "plasma-caster": 0,
+          "smart-disc": 0,
+          "yautja-bow": 0
+        },
+        "gearUpgrades": {
+          "netgun": 0,
+          "motion-sensor": 0,
+          "audio-decoy": 0,
+          "snare": 0
+        },
+        "armorUpgrades": {
+          "scout": 0,
+          "hunter": 0,
+          "berserker": 0
+        }
+      },
+      "loadout": {
+        "armorId": "hunter",
+        "weaponIds": [
+          "combistick",
+          "plasma-caster"
+        ],
+        "gearIds": [
+          "motion-sensor",
+          "audio-decoy"
+        ]
+      },
+      "appearance": {
+        "presetId": "jungle-hunter",
+        "bodyMorphId": "classic",
+        "headStyleId": "reference",
+        "skinId": "ochre-mottle",
+        "biomaskId": "jungle",
+        "dreadStyleId": "classic",
+        "dreadTintId": "obsidian",
+        "armorStyleId": "classic",
+        "armorTintId": "bronze",
+        "trophyAdornmentId": "skull-spine",
+        "laserColorId": "crimson",
+        "chromaticsV113": {
+          "skinHex": null,
+          "dreadHex": null,
+          "outfitHex": null,
+          "armorHex": null,
+          "maskHex": null,
+          "maskOriginId": null,
+          "maskDecalId": null,
+          "faceDecalId": null,
+          "bodyDecalId": null,
+          "armorDecalId": null,
+          "skinMaterialId": null,
+          "dreadMaterialId": null,
+          "outfitMaterialId": null,
+          "armorMaterialId": null,
+          "maskMaterialId": null
+        }
+      },
+      "missionProgress": {
+        "jungle-vey": {
+          "status": "available",
+          "attempts": 0,
+          "completions": 0,
+          "bestScore": 0,
+          "bestTimeSeconds": null,
+          "bestDifficultyId": null,
+          "completedObjectiveIds": [],
+          "lastPlayedAt": null
+        },
+        "ice-cryostalker": {
+          "status": "locked",
+          "attempts": 0,
+          "completions": 0,
+          "bestScore": 0,
+          "bestTimeSeconds": null,
+          "bestDifficultyId": null,
+          "completedObjectiveIds": [],
+          "lastPlayedAt": null
+        },
+        "volcano-bad-blood": {
+          "status": "locked",
+          "attempts": 0,
+          "completions": 0,
+          "bestScore": 0,
+          "bestTimeSeconds": null,
+          "bestDifficultyId": null,
+          "completedObjectiveIds": [],
+          "lastPlayedAt": null
+        },
+        "swamp-hydra": {
+          "status": "locked",
+          "attempts": 0,
+          "completions": 0,
+          "bestScore": 0,
+          "bestTimeSeconds": null,
+          "bestDifficultyId": null,
+          "completedObjectiveIds": [],
+          "lastPlayedAt": null
+        },
+        "desert-sandmaw": {
+          "status": "locked",
+          "attempts": 0,
+          "completions": 0,
+          "bestScore": 0,
+          "bestTimeSeconds": null,
+          "bestDifficultyId": null,
+          "completedObjectiveIds": [],
+          "lastPlayedAt": null
+        },
+        "ocean-leviathan": {
+          "status": "locked",
+          "attempts": 0,
+          "completions": 0,
+          "bestScore": 0,
+          "bestTimeSeconds": null,
+          "bestDifficultyId": null,
+          "completedObjectiveIds": [],
+          "lastPlayedAt": null
+        },
+        "fungal-hivemind": {
+          "status": "locked",
+          "attempts": 0,
+          "completions": 0,
+          "bestScore": 0,
+          "bestTimeSeconds": null,
+          "bestDifficultyId": null,
+          "completedObjectiveIds": [],
+          "lastPlayedAt": null
+        },
+        "ruins-ancient-guardian": {
+          "status": "locked",
+          "attempts": 0,
+          "completions": 0,
+          "bestScore": 0,
+          "bestTimeSeconds": null,
+          "bestDifficultyId": null,
+          "completedObjectiveIds": [],
+          "lastPlayedAt": null
+        }
+      },
+      "trophies": [],
+      "exploration": {
+        "abilityIds": [],
+        "openedGateIds": [],
+        "secretIds": [],
+        "discoveredRoomIds": []
+      },
+      "codex": {
+        "unlockedEntryIds": [
+          "yautja-honor",
+          "biomask",
+          "cloaking-device"
+        ],
+        "scanCounts": {},
+        "discoveredEnemyIds": []
+      },
+      "statistics": {
+        "missionsStarted": 0,
+        "missionsCompleted": 0,
+        "missionsFailed": 0,
+        "totalKills": 0,
+        "totalScans": 0,
+        "secondWindsUsed": 0,
+        "bestHuntStreak": 0,
+        "currentHuntStreak": 0
+      },
+      "settings": {
+        "huntAccessibility": {
+          "version": 1,
+          "ritualTiming": "normal",
+          "ritualConfirm": "press",
+          "gripInput": "hold",
+          "aimInput": "hold",
+          "fieldGuide": true,
+          "largeGlyphs": true,
+          "gamepadButtons": {
+            "jump": 0,
+            "melee": 2,
+            "weapon": 7,
+            "scan": 4,
+            "cloak": 3,
+            "heal": 5,
+            "interact": 1,
+            "weaponNext": 8,
+            "gearOne": 10,
+            "gearTwo": 11,
+            "pause": 9,
+            "aim": 6
+          }
+        },
+        "difficultyId": "hunter",
+        "masterVolume": 0,
+        "musicVolume": 0.65,
+        "effectsVolume": 0.85,
+        "screenShake": false,
+        "reducedGore": true,
+        "highContrastVision": false,
+        "controlBindings": {
+          "hunt.moveLeft": [
+            "KeyQ",
+            "ArrowLeft"
+          ],
+          "hunt.moveRight": [
+            "KeyD",
+            "ArrowRight"
+          ],
+          "hunt.moveUp": [
+            "KeyZ",
+            "ArrowUp"
+          ],
+          "hunt.moveDown": [
+            "KeyS",
+            "ArrowDown"
+          ],
+          "hunt.jump": [
+            "Space"
+          ],
+          "hunt.melee": [
+            "KeyJ"
+          ],
+          "hunt.weaponPrimary": [
+            "KeyK"
+          ],
+          "hunt.selectWeaponOne": [
+            "Digit1",
+            "Numpad1"
+          ],
+          "hunt.selectWeaponTwo": [
+            "Digit2",
+            "Numpad2"
+          ],
+          "hunt.nextWeapon": [
+            "KeyR"
+          ],
+          "hunt.aim": [
+            "ShiftLeft",
+            "ShiftRight"
+          ],
+          "hunt.toggleMask": [
+            "KeyM"
+          ],
+          "hunt.scan": [
+            "KeyV"
+          ],
+          "hunt.toggleCloak": [
+            "KeyC"
+          ],
+          "hunt.heal": [
+            "KeyH"
+          ],
+          "hunt.useGearOne": [
+            "Digit3",
+            "Numpad3"
+          ],
+          "hunt.useGearTwo": [
+            "Digit4",
+            "Numpad4"
+          ],
+          "hunt.interact": [
+            "KeyE"
+          ],
+          "hunt.podSelfDestruct": [
+            "KeyX"
+          ],
+          "hunt.pause": [
+            "Escape"
+          ],
+          "pit.p1MoveLeft": [
+            "KeyQ",
+            "ArrowLeft"
+          ],
+          "pit.p1MoveRight": [
+            "KeyD",
+            "ArrowRight"
+          ],
+          "pit.p1MoveDown": [
+            "KeyS",
+            "ArrowDown"
+          ],
+          "pit.p1Jump": [
+            "Space"
+          ],
+          "pit.p1AttackLight": [
+            "KeyJ"
+          ],
+          "pit.p1AttackMedium": [
+            "KeyK"
+          ],
+          "pit.p1AttackHeavy": [
+            "KeyL"
+          ],
+          "pit.p1AttackTechnique": [
+            "KeyU"
+          ],
+          "pit.p1GuardHigh": [
+            "KeyI"
+          ],
+          "pit.p1GuardLow": [
+            "KeyO"
+          ],
+          "pit.p1Throw": [
+            "KeyP"
+          ],
+          "pit.p1Resource": [
+            "KeyH"
+          ],
+          "pit.p2MoveLeft": [
+            "Numpad4"
+          ],
+          "pit.p2MoveRight": [
+            "Numpad6"
+          ],
+          "pit.p2MoveDown": [
+            "Numpad2"
+          ],
+          "pit.p2Jump": [
+            "Numpad8"
+          ],
+          "pit.p2AttackLight": [
+            "Numpad1"
+          ],
+          "pit.p2AttackMedium": [
+            "Numpad3"
+          ],
+          "pit.p2AttackHeavy": [
+            "Numpad5"
+          ],
+          "pit.p2AttackTechnique": [
+            "Numpad7"
+          ],
+          "pit.p2GuardHigh": [
+            "Numpad9"
+          ],
+          "pit.p2GuardLow": [
+            "Numpad0"
+          ],
+          "pit.p2Throw": [
+            "NumpadEnter"
+          ],
+          "pit.p2Resource": [
+            "NumpadSubtract"
+          ],
+          "pit.pause": [
+            "Escape"
+          ],
+          "galaxy.flyLeft": [
+            "KeyQ",
+            "ArrowLeft"
+          ],
+          "galaxy.flyRight": [
+            "KeyD",
+            "ArrowRight"
+          ],
+          "galaxy.flyUp": [
+            "KeyZ",
+            "ArrowUp"
+          ],
+          "galaxy.flyDown": [
+            "KeyS",
+            "ArrowDown"
+          ],
+          "galaxy.previousTarget": [
+            "PageUp",
+            "KeyR"
+          ],
+          "galaxy.nextTarget": [
+            "PageDown",
+            "KeyE"
+          ],
+          "galaxy.activate": [
+            "Enter",
+            "Space"
+          ],
+          "galaxy.back": [
+            "Escape",
+            "Backspace"
+          ],
+          "galaxy.returnToGalaxy": [
+            "KeyG"
+          ],
+          "shipHub.previousRoom": [
+            "KeyQ",
+            "ArrowLeft"
+          ],
+          "shipHub.nextRoom": [
+            "KeyD",
+            "ArrowRight"
+          ],
+          "shipHub.previousAction": [
+            "ArrowUp"
+          ],
+          "shipHub.nextAction": [
+            "ArrowDown"
+          ],
+          "shipHub.activate": [
+            "Enter",
+            "Space"
+          ],
+          "shipHub.returnToBridge": [
+            "Escape"
+          ],
+          "shipHub.firstRoom": [
+            "Home"
+          ],
+          "shipHub.lastRoom": [
+            "End"
+          ],
+          "training.left": [
+            "KeyQ",
+            "ArrowLeft"
+          ],
+          "training.right": [
+            "KeyD",
+            "ArrowRight"
+          ],
+          "training.primary": [
+            "Space",
+            "KeyJ",
+            "Enter"
+          ],
+          "training.secondary": [
+            "KeyE",
+            "KeyK",
+            "ShiftLeft",
+            "ShiftRight"
+          ],
+          "training.cancel": [
+            "Escape"
+          ],
+          "workshop.left": [
+            "KeyQ",
+            "ArrowLeft"
+          ],
+          "workshop.up": [
+            "KeyZ",
+            "ArrowUp"
+          ],
+          "workshop.down": [
+            "KeyS",
+            "ArrowDown"
+          ],
+          "workshop.right": [
+            "KeyD",
+            "ArrowRight"
+          ],
+          "workshop.confirm": [
+            "Enter",
+            "Space",
+            "KeyE"
+          ],
+          "workshop.restart": [
+            "KeyR"
+          ],
+          "workshop.cancel": [
+            "Escape"
+          ]
+        }
+      },
+      "storyCompleted": false,
+      "homeworld": {
+        "version": 1,
+        "cntlipV77": {
+          "version": 1,
+          "revision": 0,
+          "state": {
+            "version": 1,
+            "knownLore": false,
+            "totalServings": 0,
+            "activeDoses": 0,
+            "worldElapsedMs": 0,
+            "memories": [],
+            "pending": null
+          },
+          "invitedSiteIds": [],
+          "stock": {
+            "clan-common": 0,
+            "market-halt": 0,
+            "pit-rest": 0,
+            "council-gathering": 0
+          }
+        },
+        "contractsV68": {
+          "version": 1,
+          "serial": 0,
+          "entries": []
+        },
+        "sideStoryV66": {
+          "version": 1,
+          "accepted": false,
+          "clues": [],
+          "archiveRead": false,
+          "chronologyVerified": false,
+          "deductionVerified": false,
+          "testimonyHeard": false,
+          "resolution": null,
+          "branchVerified": false,
+          "completed": false
+        },
+        "npcMissionsV66": {
+          "version": 1,
+          "ash": {
+            "accepted": false,
+            "report": null,
+            "delivered": false
+          },
+          "glass": {
+            "accepted": false,
+            "report": null,
+            "delivered": false
+          }
+        },
+        "mausoleum": {
+          "version": 1,
+          "examinedIds": [],
+          "consultedIds": []
+        },
+        "inquiry": {
+          "version": 1,
+          "convoyReviewed": false,
+          "archiveReviewed": false,
+          "approach": null,
+          "followupVerified": false,
+          "audienceFiled": false
+        },
+        "expeditions": {
+          "ash-marches": null,
+          "glass-desert": null
+        },
+        "visitedDistrictIds": [],
+        "evidenceIds": [],
+        "greetedNpcIds": [],
+        "witnessChoice": null,
+        "audienceOutcome": null,
+        "relations": {
+          "first-blood-houses": 0,
+          "forge-circle": 0,
+          "reserve-keepers": 0,
+          "star-navigators": 0,
+          "throne-court": 0,
+          "exile-network": 0
+        }
+      },
+      "justice": {
+        "version": 1,
+        "originChoice": null,
+        "declaration": "recognized",
+        "incidents": [],
+        "evidence": [],
+        "identifications": [],
+        "warrants": [],
+        "pressure": {
+          "homeworld": 0,
+          "clan-core": 0,
+          "frontier": 0,
+          "neutral-station": 0,
+          "renegade-port": 0
+        },
+        "clandestineNotoriety": 0,
+        "detention": null,
+        "intervention": {
+          "stage": "none",
+          "jurisdictionId": null,
+          "remainingBudget": 2,
+          "cooldownTicks": 0
+        }
+      }
+    }
+  },
+  "scope": "Complete production GameClient, its actual campaign front end, admission/claim, active-hunt serializer and localStorage writer. Mounted HuntCanvas uses the native rAF, DOM controls and keyboard listeners. One initial physical prey is created through native damage for field work. A separate declared terminal segment prepares Apex prerequisites and initial position; outcome and settlement are native. Canopy starts at the canonical insertion with original geometry, enemies and hazards.",
+  "limits": [
+    "Automated desktop Chromium, not physical phone/controller or novice comprehension",
+    "No artistic or audio-listening qualification; audio is muted",
+    "No complete campaign or eight-mission ground fallback claim",
+    "The terminal extraction segment has a declared position/prerequisite fixture and does not prove intervening main-route traversal"
+  ],
+  "browserVersion": "154.0.8037.57",
+  "failure": "locator.click: Timeout 45000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('button', { name: /^Continuer/ }).first()\u001b[22m\n\n    at openCampaign (/workspace/yautja-reprise-20261109/scripts/qa-skinning-canopy-durable-browser-20261109.mjs:106:62)\n    at launch (/workspace/yautja-reprise-20261109/scripts/qa-skinning-canopy-durable-browser-20261109.mjs:110:9)\n    at newCase (/workspace/yautja-reprise-20261109/scripts/qa-skinning-canopy-durable-browser-20261109.mjs:169:9)\n    at async field (/workspace/yautja-reprise-20261109/scripts/qa-skinning-canopy-durable-browser-20261109.mjs:173:3)\n    at async file:///workspace/yautja-reprise-20261109/scripts/qa-skinning-canopy-durable-browser-20261109.mjs:460:22",
+  "failureState": null,
+  "failureSidecar": null,
+  "failureText": "CHRONIQUES DU CLAN\n\nv1.6.1\n·\nlocal\nYAUTJA\nLA LONGUE CHASSE\n\nMENU PRINCIPAL\n\nChoisissez votre voie\nCampagne\nReprendre Chasseur sans nom · gérer vos parties\n›\nModes de jeu\nThe Pit · Game Reserve Planet · Guerres des clans\n›\nArchives & chroniques\nCollections visuelles et récits des Grandes Chasses\n›\nSystème\nCompte, synchronisation et affichage\n›\n\nVOTRE CHRONIQUE\n\nChasseur sans nom\n\nVaisseau personnel\n\nPartie 1 · 0 h 00\nDernière sauvegarde : 09/11/2026 07:05\n\nSauvegarde confirmée.\n\nFlèches / directions : naviguer · Entrée / A : choisir · Échap / B : retour\n\n5 parties · 10 sauvegardes manuelles + 2 autos\n\nSauvegardes locales · synchronisation avec un compte connecté.",
+  "assets": [
+    {
+      "url": "/game/prologue/v47/village.png",
+      "status": 200,
+      "origin": "workspace",
+      "gitBlob": "6bba1a10a7a21c7d43488d0a3abcae3a686e8e2c",
+      "matchesHead": true,
+      "bytes": 2846184,
+      "sha256": "6a5dfbd5de1f93271a0fb4b6670ab177934cd0ad606d19aa099f79bb6b9c5c60"
+    }
+  ],
+  "assetFailures": [],
+  "finishedAt": "2026-11-09T07:05:54.139Z"
+}

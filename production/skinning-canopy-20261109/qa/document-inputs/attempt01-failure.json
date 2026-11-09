@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "classification": "FAILED_DOCUMENT_PRODUCER_PREFLIGHT_METADATA_BINDING",
+  "command": [
+    "python3",
+    "production/skinning-canopy-20261109/qa/document-inputs/check.py.txt"
+  ],
+  "exitCodeObserved": 1,
+  "observation": "The actual exec tool reported KeyError: sourceSha256 while reading the final lint receipt. No stderr log file was saved, and none is fabricated.",
+  "cause": "The newest lint receipt correctly records sourcesBefore/sourcesAfter; the new data row still named the older sourceSha256 field.",
+  "correction": "Only the supplemental qualification data sourceBindingField was corrected to sourcesAfter. No game source, test assertion or raw gate receipt changed."
+}

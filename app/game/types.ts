@@ -669,6 +669,8 @@ export interface SaveGame {
   clanShipIncidents?: import("./systems/clanShipIncidents").ClanShipIncidentsState | null;
   /** Optional C-37 invitations and common hearing; historical incident receipts stay unchanged. */
   clanShipTrophyHearing?: import("./systems/clanShipTrophyHearing").ClanShipTrophyHearingState | null;
+  /** Optional physical OPS-B04 return; existing incident/audience journals keep their meaning. */
+  clanShipReturnEscort?: import("./systems/clanShipReturnEscort").ClanShipReturnEscortState | null;
   /** Null preserves pre-prologue adult campaigns without retroactive narrative proof. */
   prologue: NurseryCampaignProgress | null;
   /** Actual Unblooded exercises and equipment; never the adult starter loadout. */

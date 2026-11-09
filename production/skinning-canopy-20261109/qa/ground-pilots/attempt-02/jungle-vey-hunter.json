@@ -1,0 +1,8047 @@
+{
+  "missionId": "jungle-vey",
+  "armorId": "hunter",
+  "success": true,
+  "result": {
+    "missionId": "jungle-vey",
+    "insertionOutcome": {
+      "version": 1,
+      "runId": "jungle-vey:1",
+      "plan": {
+        "version": 1,
+        "method": "pod",
+        "team": "solo"
+      },
+      "members": [],
+      "extracted": [],
+      "leftBehind": [],
+      "injured": []
+    },
+    "exploration": {
+      "abilityIds": [],
+      "openedGateIds": [],
+      "secretIds": [],
+      "discoveredRoomIds": [
+        "jungle-pilot-approach",
+        "jungle-pilot-underpass",
+        "jungle-pilot-module",
+        "jungle-pilot-ravine",
+        "jungle-pilot-river-caves",
+        "jungle-pilot-vey-camp",
+        "jungle-pilot-duel-extraction",
+        "ice-region-approach",
+        "ice-region-shaft",
+        "ice-region-return",
+        "volcano-forge-approach",
+        "volcano-forge-return",
+        "swamp-brood-approach",
+        "swamp-brood-return",
+        "desert-crypt-approach",
+        "desert-crypt-return",
+        "ocean-pressure-approach",
+        "ocean-pressure-return",
+        "fungal-memory-approach",
+        "fungal-memory-return",
+        "ruins-oracle-approach",
+        "ruins-oracle-return"
+      ]
+    },
+    "difficultyId": "hunter",
+    "outcome": "success",
+    "score": 97,
+    "elapsedSeconds": 72,
+    "completedObjectiveIds": [
+      "scan-vanguard",
+      "recover-transponder",
+      "defeat-vey",
+      "extract-jungle-trophy"
+    ],
+    "honorEvents": [
+      {
+        "id": "scan-trace-1",
+        "label": "Signature étudiée",
+        "value": 3,
+        "kind": "scan"
+      },
+      {
+        "id": "honor-rule:restrained-caster",
+        "label": "Code rompu : Puissance mesurée",
+        "value": -10,
+        "kind": "violation"
+      },
+      {
+        "id": "kill-jungle-patrol-0",
+        "label": "Proie neutralisée",
+        "value": 1,
+        "kind": "honorable-kill"
+      },
+      {
+        "id": "scan-trace-2",
+        "label": "Signature étudiée",
+        "value": 3,
+        "kind": "scan"
+      },
+      {
+        "id": "kill-jungle-patrol-3",
+        "label": "Proie neutralisée",
+        "value": 1,
+        "kind": "honorable-kill"
+      },
+      {
+        "id": "kill-jungle-patrol-1",
+        "label": "Proie neutralisée",
+        "value": 1,
+        "kind": "honorable-kill"
+      },
+      {
+        "id": "scan-trace-3",
+        "label": "Signature étudiée",
+        "value": 3,
+        "kind": "scan"
+      },
+      {
+        "id": "objective-scan-vanguard",
+        "label": "Étudier l'avant-garde",
+        "value": 15,
+        "kind": "objective"
+      },
+      {
+        "id": "kill-jungle-patrol-2",
+        "label": "Proie neutralisée",
+        "value": 1,
+        "kind": "honorable-kill"
+      },
+      {
+        "id": "kill-jungle-scouts-1",
+        "label": "Proie neutralisée",
+        "value": 1,
+        "kind": "honorable-kill"
+      },
+      {
+        "id": "recover-technology-1",
+        "label": "Technologie du clan sécurisée",
+        "value": 5,
+        "kind": "objective"
+      },
+      {
+        "id": "objective-recover-transponder",
+        "label": "Reprendre le transpondeur",
+        "value": 25,
+        "kind": "objective"
+      },
+      {
+        "id": "kill-jungle-scouts-2",
+        "label": "Proie neutralisée",
+        "value": 1,
+        "kind": "honorable-kill"
+      },
+      {
+        "id": "kill-vey-guard-1",
+        "label": "Proie neutralisée",
+        "value": 1,
+        "kind": "honorable-kill"
+      },
+      {
+        "id": "kill-jungle-scouts-0",
+        "label": "Mise à mort rapprochée",
+        "value": 3,
+        "kind": "honorable-kill"
+      },
+      {
+        "id": "honor-rule:study-vey",
+        "label": "Code rompu : Connaître sa proie",
+        "value": 0,
+        "kind": "violation"
+      },
+      {
+        "id": "objective-defeat-vey",
+        "label": "Affronter la commandante Vey",
+        "value": 40,
+        "kind": "objective"
+      },
+      {
+        "id": "boss-honorable-kill",
+        "label": "Victoire sur Commandante Vey",
+        "value": 10,
+        "kind": "honorable-kill"
+      },
+      {
+        "id": "trophy-claimed",
+        "label": "Insigne de Vey",
+        "value": 12,
+        "kind": "objective"
+      },
+      {
+        "id": "objective-extract-jungle-trophy",
+        "label": "Quitter la zone de chasse",
+        "value": 10,
+        "kind": "objective"
+      },
+      {
+        "id": "honor-rule:protect-tech",
+        "label": "Code respecté : Ne laisser aucune technologie",
+        "value": 20,
+        "kind": "objective"
+      }
+    ],
+    "trophyQuality": "elite",
+    "trophyClaims": [
+      {
+        "id": "jungle-vey-apex-mw8x9700-r1-6prvunug",
+        "definitionId": "trophy-vey",
+        "targetName": "Commandante Vey",
+        "targetKind": "human",
+        "partId": "insignia",
+        "quality": "elite",
+        "condition": "intact"
+      }
+    ],
+    "specimensV112": [
+      {
+        "id": "jungle-vey:1:jungle-patrol-0:tissue",
+        "sourceId": "jungle-vey:1:jungle-patrol-0",
+        "speciesId": "oseris-iv--needle-frog",
+        "partId": "tissue",
+        "label": "Tissu glandulaire d'aiguillon",
+        "quality": 0,
+        "massKg": 0.4,
+        "volumeUnits": 1,
+        "stage": "raw"
+      }
+    ],
+    "toolUseIdsV112": [
+      "jungle-vey:1:flay:jungle-patrol-0",
+      "jungle-vey:1:harvest-tissue:jungle-patrol-0"
+    ],
+    "harvestEncounterRunV112": 1,
+    "kills": 9,
+    "scans": 3,
+    "discoveredEnemyIds": [],
+    "secondWindUsed": false,
+    "completedAt": "2026-11-09T07:10:31.016Z"
+  },
+  "climbFrames": 0,
+  "swingFrames": 0,
+  "authoredCanopyContactFrames": 0,
+  "maxX": 7988.99999999999,
+  "terminal": {
+    "t": 71.683,
+    "phase": "finished",
+    "x": 7989,
+    "y": 173,
+    "vx": 0,
+    "vy": 0,
+    "health": 137.74,
+    "stamina": 100,
+    "energy": 100,
+    "kills": 8,
+    "boss": {
+      "active": true,
+      "alive": false,
+      "health": 0,
+      "x": 7531.383876401331
+    },
+    "scans": [
+      true,
+      true,
+      true
+    ],
+    "recoveries": [
+      true
+    ],
+    "objectives": [
+      "scan-vanguard",
+      "recover-transponder",
+      "defeat-vey",
+      "extract-jungle-trophy"
+    ],
+    "message": "Objectif accompli : Quitter la zone de chasse",
+    "grounded": false,
+    "climbing": false,
+    "load": {
+      "massKg": 0.4,
+      "volumeUnits": 1,
+      "capacityMassKg": 36,
+      "capacityVolumeUnits": 24,
+      "ratio": 0.041666666666666664,
+      "overloaded": false,
+      "movementMultiplier": 0.9866666666666667,
+      "jumpMultiplier": 0.9933333333333333,
+      "climbStaminaMultiplier": 1.025,
+      "noiseMultiplier": 1.0333333333333334
+    },
+    "energyWeaponsLocked": false,
+    "weaponSlot": 1,
+    "threats": [
+      {
+        "id": "vey-guard-0",
+        "x": 4377.53877293922,
+        "y": 517,
+        "health": 78.89393199999998,
+        "width": 88,
+        "height": 107
+      },
+      {
+        "id": "extraction-jungle-vey-974-0",
+        "x": 7532.0848333333415,
+        "y": 530,
+        "health": 148.5,
+        "width": 66,
+        "height": 94
+      },
+      {
+        "id": "extraction-jungle-vey-975-1",
+        "x": 7650.734666666681,
+        "y": 408,
+        "health": 148.5,
+        "width": 98,
+        "height": 82
+      }
+    ]
+  },
+  "admission": {
+    "missionId": "jungle-vey",
+    "armorId": "hunter",
+    "loadout": {
+      "armorId": "hunter",
+      "weaponIds": [
+        "combistick",
+        "plasma-caster"
+      ],
+      "gearIds": [
+        "motion-sensor",
+        "audio-decoy"
+      ]
+    },
+    "inventory": {
+      "fieldToolIds": [
+        "flaying-tool"
+      ],
+      "harvestV112": {
+        "version": 1,
+        "specimens": [],
+        "toolCondition": 100,
+        "toolUseIds": [],
+        "jobs": [],
+        "settledEncounterRuns": {
+          "jungle-vey": 0,
+          "ice-cryostalker": 0,
+          "volcano-bad-blood": 0,
+          "swamp-hydra": 0,
+          "desert-sandmaw": 0,
+          "ocean-leviathan": 0,
+          "fungal-hivemind": 0,
+          "ruins-ancient-guardian": 0
+        },
+        "archive": []
+      },
+      "unlockedWeaponIds": [
+        "wristblades",
+        "combistick",
+        "plasma-caster",
+        "yautja-bow",
+        "smart-disc"
+      ],
+      "unlockedGearIds": [
+        "motion-sensor",
+        "audio-decoy",
+        "netgun",
+        "snare"
+      ],
+      "unlockedArmorIds": [
+        "hunter",
+        "scout",
+        "berserker"
+      ],
+      "weaponUpgrades": {
+        "wristblades": 0,
+        "combistick": 0,
+        "plasma-caster": 0,
+        "smart-disc": 0,
+        "yautja-bow": 0
+      },
+      "gearUpgrades": {
+        "netgun": 0,
+        "motion-sensor": 0,
+        "audio-decoy": 0,
+        "snare": 0
+      },
+      "armorUpgrades": {
+        "scout": 0,
+        "hunter": 0,
+        "berserker": 0
+      }
+    },
+    "toolOrigin": {
+      "path": "docs/qa/v112-ground-campaign/campaign-origin-save.json",
+      "sha256": "72a1efee04bda609d5d74f3a9fc8e52823da9394476235a9941f759cae3ae897",
+      "missions": null,
+      "balanceBefore": 4597,
+      "spentClanMarks": 120,
+      "balanceAfter": 4477
+    },
+    "baseSaveOrigin": {
+      "path": "docs/qa/v112-ground-campaign/campaign-origin-save.json",
+      "sha256": "72a1efee04bda609d5d74f3a9fc8e52823da9394476235a9941f759cae3ae897",
+      "missionAttempts": {
+        "jungle-vey": 1,
+        "ice-cryostalker": 1,
+        "volcano-bad-blood": 1,
+        "swamp-hydra": 1,
+        "desert-sandmaw": 1,
+        "ocean-leviathan": 1,
+        "fungal-hivemind": 1,
+        "ruins-ancient-guardian": 1
+      }
+    },
+    "exploration": {
+      "abilityIds": [],
+      "openedGateIds": [],
+      "secretIds": [],
+      "discoveredRoomIds": [
+        "jungle-pilot-approach",
+        "jungle-pilot-underpass",
+        "jungle-pilot-module",
+        "jungle-pilot-ravine",
+        "jungle-pilot-river-caves",
+        "jungle-pilot-vey-camp",
+        "jungle-pilot-duel-extraction",
+        "ice-region-approach",
+        "ice-region-shaft",
+        "ice-region-return",
+        "volcano-forge-approach",
+        "volcano-forge-return",
+        "swamp-brood-approach",
+        "swamp-brood-return",
+        "desert-crypt-approach",
+        "desert-crypt-return",
+        "ocean-pressure-approach",
+        "ocean-pressure-return",
+        "fungal-memory-approach",
+        "fungal-memory-return",
+        "ruins-oracle-approach",
+        "ruins-oracle-return"
+      ]
+    },
+    "difficulty": "hunter",
+    "encounterRun": 1,
+    "random": {
+      "algorithm": "xorshift32",
+      "seed": 17965094
+    },
+    "spawn": {
+      "x": 225,
+      "y": 508
+    },
+    "initial": {
+      "t": 0,
+      "phase": "tracking",
+      "x": 225,
+      "y": 508,
+      "vx": 0,
+      "vy": 0,
+      "health": 160,
+      "stamina": 100,
+      "energy": 100,
+      "kills": 0,
+      "boss": {
+        "active": false,
+        "alive": true,
+        "health": 600,
+        "x": 6914.4
+      },
+      "scans": [
+        false,
+        false,
+        false
+      ],
+      "recoveries": [
+        false
+      ],
+      "objectives": [],
+      "message": "La chasse commence. Localise les signatures.",
+      "grounded": true,
+      "climbing": false,
+      "energyWeaponsLocked": false,
+      "weaponSlot": 1,
+      "threats": [
+        {
+          "id": "jungle-patrol-0",
+          "x": 1448.999,
+          "y": 542,
+          "health": 54.45,
+          "width": 98,
+          "height": 82
+        },
+        {
+          "id": "jungle-patrol-1",
+          "x": 2442.5510092417894,
+          "y": 534,
+          "health": 54.45,
+          "width": 98,
+          "height": 90
+        },
+        {
+          "id": "jungle-patrol-2",
+          "x": 3396.8989385484156,
+          "y": 524,
+          "health": 61.04999999999999,
+          "width": 108,
+          "height": 100
+        },
+        {
+          "id": "jungle-patrol-3",
+          "x": 2233.001,
+          "y": 504,
+          "health": 67.65,
+          "width": 84,
+          "height": 120
+        }
+      ]
+    },
+    "world": {
+      "width": 8400,
+      "bossArena": {
+        "x": 6180,
+        "y": 310,
+        "width": 1530,
+        "height": 314
+      },
+      "extraction": {
+        "x": 8025,
+        "y": 624
+      },
+      "platforms": [
+        {
+          "x": 800,
+          "y": 392,
+          "width": 1180,
+          "height": 24,
+          "id": "jungle-pilot-gallery-west",
+          "material": "ruin",
+          "routeId": "canopy",
+          "collision": "solid",
+          "noiseMultiplier": 0.85,
+          "trackPersistence": 0.12
+        },
+        {
+          "x": 2140,
+          "y": 392,
+          "width": 60,
+          "height": 24,
+          "id": "jungle-pilot-gallery-east",
+          "material": "ruin",
+          "routeId": "canopy",
+          "collision": "solid",
+          "noiseMultiplier": 0.85,
+          "trackPersistence": 0.12
+        },
+        {
+          "x": 2200,
+          "y": 0,
+          "width": 28,
+          "height": 416,
+          "id": "jungle-pilot-right-wall",
+          "material": "ruin",
+          "routeId": "canopy",
+          "collision": "solid",
+          "noiseMultiplier": 0.85,
+          "trackPersistence": 0.12
+        },
+        {
+          "x": 1120,
+          "y": -800,
+          "width": 28,
+          "height": 1192,
+          "id": "jungle-resonance-seal",
+          "material": "ruin",
+          "routeId": "canopy",
+          "collision": "solid",
+          "noiseMultiplier": 0.85,
+          "trackPersistence": 0.12
+        },
+        {
+          "x": 1980,
+          "y": 392,
+          "width": 160,
+          "height": 24,
+          "id": "jungle-canopy-hatch",
+          "material": "ruin",
+          "routeId": "canopy",
+          "collision": "solid",
+          "noiseMultiplier": 0.85,
+          "trackPersistence": 0.12
+        },
+        {
+          "id": "jungle-pilot-cave-roof-west",
+          "x": 4000,
+          "y": 400,
+          "width": 520,
+          "height": 34,
+          "material": "stone",
+          "routeId": "flooded-cut",
+          "collision": "solid",
+          "noiseMultiplier": 0.9,
+          "trackPersistence": 0.12
+        },
+        {
+          "id": "jungle-pilot-cave-roof-east",
+          "x": 4590,
+          "y": 400,
+          "width": 480,
+          "height": 34,
+          "material": "root",
+          "routeId": "flooded-cut",
+          "collision": "solid",
+          "noiseMultiplier": 0.76,
+          "trackPersistence": 0.2
+        }
+      ],
+      "hazards": [
+        {
+          "id": "j-mud-west",
+          "x": 1575,
+          "y": 582,
+          "width": 630,
+          "height": 42,
+          "kind": "deep-mud",
+          "routeId": "ground",
+          "damagePerSecond": 0,
+          "movementMultiplier": 0.58,
+          "noisePerSecond": 0.08,
+          "trackMultiplier": 2.4,
+          "revealsCloak": false,
+          "telegraphSeconds": 0,
+          "cycle": null
+        },
+        {
+          "id": "j-flora-center",
+          "x": 4020,
+          "y": 574,
+          "width": 232.5,
+          "height": 50,
+          "kind": "predatory-flora",
+          "routeId": "ground",
+          "damagePerSecond": 9,
+          "movementMultiplier": 0.72,
+          "noisePerSecond": 0.42,
+          "trackMultiplier": 1.1,
+          "revealsCloak": true,
+          "telegraphSeconds": 0.45,
+          "cycle": {
+            "periodSeconds": 4.5,
+            "activeSeconds": 1.4,
+            "phaseSeconds": 0.8
+          }
+        },
+        {
+          "id": "j-flood-pulse",
+          "x": 4815,
+          "y": 570,
+          "width": 915,
+          "height": 54,
+          "kind": "flash-flood",
+          "routeId": "flooded-cut",
+          "damagePerSecond": 6,
+          "movementMultiplier": 0.48,
+          "noisePerSecond": 0.6,
+          "trackMultiplier": 0.2,
+          "revealsCloak": true,
+          "telegraphSeconds": 1.25,
+          "cycle": {
+            "periodSeconds": 12,
+            "activeSeconds": 3.5,
+            "phaseSeconds": 2
+          }
+        }
+      ]
+    },
+    "scanNodes": [
+      {
+        "id": "trace-1",
+        "x": 924,
+        "y": 588,
+        "scanned": false
+      },
+      {
+        "id": "trace-2",
+        "x": 2016,
+        "y": 395,
+        "scanned": false
+      },
+      {
+        "id": "trace-3",
+        "x": 3108,
+        "y": 588,
+        "scanned": false
+      }
+    ],
+    "recoveryNodes": [
+      {
+        "id": "technology-1",
+        "x": 4389.7505,
+        "y": 590,
+        "recovered": false
+      }
+    ]
+  },
+  "events": [
+    {
+      "t": 31.233,
+      "phase": "target",
+      "x": 2671.46,
+      "y": 508,
+      "vx": 296,
+      "vy": 0,
+      "health": 160,
+      "stamina": 100,
+      "energy": 58.1,
+      "kills": 3,
+      "boss": {
+        "active": false,
+        "alive": true,
+        "health": 600,
+        "x": 6914.4
+      },
+      "scans": [
+        true,
+        true,
+        true
+      ],
+      "recoveries": [
+        false
+      ],
+      "objectives": [
+        "scan-vanguard"
+      ],
+      "message": "Commandante Vey peut désormais être pisté.",
+      "grounded": true,
+      "climbing": false,
+      "load": {
+        "massKg": 0.4,
+        "volumeUnits": 1,
+        "capacityMassKg": 36,
+        "capacityVolumeUnits": 24,
+        "ratio": 0.041666666666666664,
+        "overloaded": false,
+        "movementMultiplier": 0.9866666666666667,
+        "jumpMultiplier": 0.9933333333333333,
+        "climbStaminaMultiplier": 1.025,
+        "noiseMultiplier": 1.0333333333333334
+      },
+      "energyWeaponsLocked": false,
+      "weaponSlot": 1,
+      "threats": [
+        {
+          "id": "jungle-patrol-2",
+          "x": 3238.628938548428,
+          "y": 524,
+          "health": 61.04999999999999,
+          "width": 108,
+          "height": 100
+        },
+        {
+          "id": "jungle-scouts-0",
+          "x": 5758.001,
+          "y": 542,
+          "health": 44.55,
+          "width": 98,
+          "height": 82
+        }
+      ]
+    },
+    {
+      "t": 57.567,
+      "phase": "trophy",
+      "x": 7422.57,
+      "y": 508,
+      "vx": 0,
+      "vy": 0,
+      "health": 150.9,
+      "stamina": 92.4,
+      "energy": 10.33,
+      "kills": 8,
+      "boss": {
+        "active": true,
+        "alive": false,
+        "health": 0,
+        "x": 7531.383876401331
+      },
+      "scans": [
+        true,
+        true,
+        true
+      ],
+      "recoveries": [
+        true
+      ],
+      "objectives": [
+        "scan-vanguard",
+        "recover-transponder",
+        "defeat-vey"
+      ],
+      "message": "Commandante Vey est vaincu. Intégrité du trophée 75 %. Réclame le trophée avec [E].",
+      "grounded": true,
+      "climbing": false,
+      "load": {
+        "massKg": 0.4,
+        "volumeUnits": 1,
+        "capacityMassKg": 36,
+        "capacityVolumeUnits": 24,
+        "ratio": 0.041666666666666664,
+        "overloaded": false,
+        "movementMultiplier": 0.9866666666666667,
+        "jumpMultiplier": 0.9933333333333333,
+        "climbStaminaMultiplier": 1.025,
+        "noiseMultiplier": 1.0333333333333334
+      },
+      "energyWeaponsLocked": false,
+      "weaponSlot": 1,
+      "threats": [
+        {
+          "id": "vey-guard-0",
+          "x": 4221.079980005313,
+          "y": 517,
+          "health": 78.89393199999998,
+          "width": 88,
+          "height": 107
+        }
+      ]
+    },
+    {
+      "t": 63.2,
+      "phase": "extraction",
+      "x": 7552.08,
+      "y": 508,
+      "vx": 0,
+      "vy": 0,
+      "health": 150.9,
+      "stamina": 100,
+      "energy": 66.67,
+      "kills": 8,
+      "boss": {
+        "active": true,
+        "alive": false,
+        "health": 0,
+        "x": 7531.383876401331
+      },
+      "scans": [
+        true,
+        true,
+        true
+      ],
+      "recoveries": [
+        true
+      ],
+      "objectives": [
+        "scan-vanguard",
+        "recover-transponder",
+        "defeat-vey"
+      ],
+      "message": "Insigne de Vey : prise récupérée et scellée. Le chasseur célèbre sa victoire ; vaisseau en approche.",
+      "grounded": true,
+      "climbing": false,
+      "load": {
+        "massKg": 0.4,
+        "volumeUnits": 1,
+        "capacityMassKg": 36,
+        "capacityVolumeUnits": 24,
+        "ratio": 0.041666666666666664,
+        "overloaded": false,
+        "movementMultiplier": 0.9866666666666667,
+        "jumpMultiplier": 0.9933333333333333,
+        "climbStaminaMultiplier": 1.025,
+        "noiseMultiplier": 1.0333333333333334
+      },
+      "energyWeaponsLocked": false,
+      "weaponSlot": 1,
+      "threats": [
+        {
+          "id": "vey-guard-0",
+          "x": 4359.088263561662,
+          "y": 517,
+          "health": 78.89393199999998,
+          "width": 88,
+          "height": 107
+        },
+        {
+          "id": "extraction-jungle-vey-974-0",
+          "x": 7462.847833333333,
+          "y": 530,
+          "health": 148.5,
+          "width": 66,
+          "height": 94
+        }
+      ]
+    },
+    {
+      "t": 71.683,
+      "phase": "finished",
+      "x": 7989,
+      "y": 173,
+      "vx": 0,
+      "vy": 0,
+      "health": 137.74,
+      "stamina": 100,
+      "energy": 100,
+      "kills": 8,
+      "boss": {
+        "active": true,
+        "alive": false,
+        "health": 0,
+        "x": 7531.383876401331
+      },
+      "scans": [
+        true,
+        true,
+        true
+      ],
+      "recoveries": [
+        true
+      ],
+      "objectives": [
+        "scan-vanguard",
+        "recover-transponder",
+        "defeat-vey",
+        "extract-jungle-trophy"
+      ],
+      "message": "Objectif accompli : Quitter la zone de chasse",
+      "grounded": false,
+      "climbing": false,
+      "load": {
+        "massKg": 0.4,
+        "volumeUnits": 1,
+        "capacityMassKg": 36,
+        "capacityVolumeUnits": 24,
+        "ratio": 0.041666666666666664,
+        "overloaded": false,
+        "movementMultiplier": 0.9866666666666667,
+        "jumpMultiplier": 0.9933333333333333,
+        "climbStaminaMultiplier": 1.025,
+        "noiseMultiplier": 1.0333333333333334
+      },
+      "energyWeaponsLocked": false,
+      "weaponSlot": 1,
+      "threats": [
+        {
+          "id": "vey-guard-0",
+          "x": 4377.53877293922,
+          "y": 517,
+          "health": 78.89393199999998,
+          "width": 88,
+          "height": 107
+        },
+        {
+          "id": "extraction-jungle-vey-974-0",
+          "x": 7532.0848333333415,
+          "y": 530,
+          "health": 148.5,
+          "width": 66,
+          "height": 94
+        },
+        {
+          "id": "extraction-jungle-vey-975-1",
+          "x": 7650.734666666681,
+          "y": 408,
+          "health": 148.5,
+          "width": 98,
+          "height": 82
+        }
+      ]
+    }
+  ],
+  "traceFrames": 277,
+  "ticksExecuted": 4301,
+  "harvestActions": [
+    {
+      "tick": 1062,
+      "t": 17.700000000000276,
+      "action": "open",
+      "corpseId": "jungle-patrol-0",
+      "sourceEnemyId": "oseris-iv--needle-frog",
+      "operation": null
+    },
+    {
+      "tick": 1063,
+      "t": 17.716666666666942,
+      "action": "flay",
+      "corpseId": "jungle-patrol-0",
+      "sourceEnemyId": "oseris-iv--needle-frog",
+      "operation": {
+        "corpseId": "jungle-patrol-0",
+        "action": "flay",
+        "elapsed": 0,
+        "startHealth": 160,
+        "supportId": null,
+        "confirmedDishonor": false
+      }
+    },
+    {
+      "tick": 1255,
+      "t": 20.91666666666676,
+      "action": "harvest-tissue",
+      "corpseId": "jungle-patrol-0",
+      "sourceEnemyId": "oseris-iv--needle-frog",
+      "operation": {
+        "corpseId": "jungle-patrol-0",
+        "action": "harvest-tissue",
+        "elapsed": 0,
+        "startHealth": 160,
+        "supportId": null,
+        "confirmedDishonor": false
+      }
+    }
+  ],
+  "peakLoadRatio": 0.041666666666666664,
+  "peakSpecimens": [
+    {
+      "id": "jungle-vey:1:jungle-patrol-0:tissue",
+      "sourceId": "jungle-vey:1:jungle-patrol-0",
+      "speciesId": "oseris-iv--needle-frog",
+      "partId": "tissue",
+      "label": "Tissu glandulaire d'aiguillon",
+      "quality": 0,
+      "massKg": 0.4,
+      "volumeUnits": 1,
+      "stage": "raw"
+    }
+  ],
+  "firstLoadAt": {
+    "tick": 1417,
+    "t": 23.633,
+    "phase": "tracking",
+    "x": 1600.13,
+    "y": 508,
+    "vx": 21.57,
+    "vy": 0,
+    "health": 160,
+    "stamina": 100,
+    "energy": 100,
+    "kills": 3,
+    "boss": {
+      "active": false,
+      "alive": true,
+      "health": 600,
+      "x": 6914.4
+    },
+    "scans": [
+      true,
+      true,
+      false
+    ],
+    "recoveries": [
+      false
+    ],
+    "objectives": [],
+    "message": "Geste inscrit dans la trace de cette chasse.",
+    "grounded": true,
+    "climbing": false,
+    "load": {
+      "massKg": 0.4,
+      "volumeUnits": 1,
+      "capacityMassKg": 36,
+      "capacityVolumeUnits": 24,
+      "ratio": 0.041666666666666664,
+      "overloaded": false,
+      "movementMultiplier": 0.9866666666666667,
+      "jumpMultiplier": 0.9933333333333333,
+      "climbStaminaMultiplier": 1.025,
+      "noiseMultiplier": 1.0333333333333334
+    },
+    "energyWeaponsLocked": false,
+    "weaponSlot": 1,
+    "threats": [
+      {
+        "id": "jungle-patrol-2",
+        "x": 3527.203938548405,
+        "y": 524,
+        "health": 61.04999999999999,
+        "width": 108,
+        "height": 100
+      }
+    ]
+  },
+  "replay": {
+    "verified": true,
+    "ticks": 4301,
+    "terminalSha256": "511ac830d14387d179a40119a3cdc43b80f7a2b04ff657fa11a592574404debc"
+  },
+  "samples": [
+    {
+      "t": 0.017,
+      "phase": "tracking",
+      "x": 225.63,
+      "y": 508,
+      "vx": 37.7,
+      "vy": 0,
+      "health": 160,
+      "stamina": 100,
+      "energy": 100,
+      "kills": 0,
+      "boss": {
+        "active": false,
+        "alive": true,
+        "health": 600,
+        "x": 6914.4
+      },
+      "scans": [
+        false,
+        false,
+        false
+      ],
+      "recoveries": [
+        false
+      ],
+      "objectives": [],
+      "message": "La chasse commence. Localise les signatures.",
+      "grounded": true,
+      "climbing": false,
+      "load": {
+        "massKg": 0,
+        "volumeUnits": 0,
+        "capacityMassKg": 36,
+        "capacityVolumeUnits": 24,
+        "ratio": 0,
+        "overloaded": false,
+        "movementMultiplier": 1,
+        "jumpMultiplier": 1,
+        "climbStaminaMultiplier": 1,
+        "noiseMultiplier": 1
+      },
+      "energyWeaponsLocked": false,
+      "weaponSlot": 1,
+      "threats": [
+        {
+          "id": "jungle-patrol-0",
+          "x": 1449.8565,
+          "y": 542,
+          "health": 54.45,
+          "width": 98,
+          "height": 82
+        },
+        {
+          "id": "jungle-patrol-1",
+          "x": 2442.5510092417894,
+          "y": 534,
+          "health": 54.45,
+          "width": 98,
+          "height": 90
+        },
+        {
+          "id": "jungle-patrol-2",
+          "x": 3396.0064385484156,
+          "y": 524,
+          "health": 61.04999999999999,
+          "width": 108,
+          "height": 100
+        },
+        {
+          "id": "jungle-patrol-3",
+          "x": 2232.0735000000004,
+          "y": 504,
+          "health": 67.65,
+          "width": 84,
+          "height": 120
+        }
+      ]
+    },
+    {
+      "t": 1,
+      "phase": "tracking",
+      "x": 388.52,
+      "y": 508,
+      "vx": 174,
+      "vy": 0,
+      "health": 160,
+      "stamina": 100,
+      "energy": 100,
+      "kills": 0,
+      "boss": {
+        "active": false,
+        "alive": true,
+        "health": 600,
+        "x": 6914.4
+      },
+      "scans": [
+        false,
+        false,
+        false
+      ],
+      "recoveries": [
+        false
+      ],
+      "objectives": [],
+      "message": "La chasse commence. Localise les signatures.",
+      "grounded": true,
+      "climbing": false,
+      "load": {
+        "massKg": 0,
+        "volumeUnits": 0,
+        "capacityMassKg": 36,
+        "capacityVolumeUnits": 24,
+        "ratio": 0,
+        "overloaded": false,
+        "movementMultiplier": 1,
+        "jumpMultiplier": 1,
+        "climbStaminaMultiplier": 1,
+        "noiseMultiplier": 1
+      },
+      "energyWeaponsLocked": false,
+      "weaponSlot": 1,
+      "threats": [
+        {
+          "id": "jungle-patrol-0",
+          "x": 1500.4490000000044,
+          "y": 542,
+          "health": 54.45,
+          "width": 98,
+          "height": 82
+        },
+        {
+          "id": "jungle-patrol-1",
+          "x": 2442.5510092417894,
+          "y": 534,
+          "health": 54.45,
+          "width": 98,
+          "height": 90
+        },
+        {
+          "id": "jungle-patrol-2",
+          "x": 3343.34893854842,
+          "y": 524,
+          "health": 61.04999999999999,
+          "width": 108,
+          "height": 100
+        },
+        {
+          "id": "jungle-patrol-3",
+          "x": 2177.3510000000133,
+          "y": 504,
+          "health": 67.65,
+          "width": 84,
+          "height": 120
+        }
+      ]
+    },
+    {
+      "t": 2.017,
+      "phase": "tracking",
+      "x": 641.82,
+      "y": 508,
+      "vx": 299.99,
+      "vy": 0,
+      "health": 160,
+      "stamina": 100,
+      "energy": 97.33,
+      "kills": 0,
+      "boss": {
+        "active": false,
+        "alive": true,
+        "health": 600,
+        "x": 6914.4
+      },
+      "scans": [
+        true,
+        false,
+        false
+      ],
+      "recoveries": [
+        false
+      ],
+      "objectives": [],
+      "message": "1 signature analysée.",
+      "grounded": true,
+      "climbing": false,
+      "load": {
+        "massKg": 0,
+        "volumeUnits": 0,
+        "capacityMassKg": 36,
+        "capacityVolumeUnits": 24,
+        "ratio": 0,
+        "overloaded": false,
+        "movementMultiplier": 1,
+        "jumpMultiplier": 1,
+        "climbStaminaMultiplier": 1,
+        "noiseMultiplier": 1
+      },
+      "energyWeaponsLocked": false,
+      "weaponSlot": 1,
+      "threats": [
+        {
+          "id": "jungle-patrol-0",
+          "x": 1552.7565000000088,
+          "y": 542,
+          "health": 54.45,
+          "width": 98,
+          "height": 82
+        },
+        {
+          "id": "jungle-patrol-1",
+          "x": 2442.5510092417894,
+          "y": 534,
+          "health": 54.45,
+          "width": 98,
+          "height": 90
+        },
+        {
+          "id": "jungle-patrol-2",
+          "x": 3288.9064385484244,
+          "y": 524,
+          "health": 61.04999999999999,
+          "width": 108,
+          "height": 100
+        },
+        {
+          "id": "jungle-patrol-3",
+          "x": 2120.7735000000266,
+          "y": 504,
+          "health": 67.65,
+          "width": 84,
+          "height": 120
+        }
+      ]
+    },
+    {
+      "t": 3.017,
+      "phase": "tracking",
+      "x": 941.82,
+      "y": 508,
+      "vx": 300,
+      "vy": 0,
+      "health": 160,
+      "stamina": 100,
+      "energy": 66.27,
+      "kills": 0,
+      "boss": {
+        "active": false,
+        "alive": true,
+        "health": 600,
+        "x": 6914.4
+      },
+      "scans": [
+        true,
+        false,
+        false
+      ],
+      "recoveries": [
+        false
+      ],
+      "objectives": [],
+      "message": "1 signature analysée.",
+      "grounded": true,
+      "climbing": false,
+      "load": {
+        "massKg": 0,
+        "volumeUnits": 0,
+        "capacityMassKg": 36,
+        "capacityVolumeUnits": 24,
+        "ratio": 0,
+        "overloaded": false,
+        "movementMultiplier": 1,
+        "jumpMultiplier": 1,
+        "climbStaminaMultiplier": 1,
+        "noiseMultiplier": 1
+      },
+      "energyWeaponsLocked": false,
+      "weaponSlot": 1,
+      "threats": [
+        {
+          "id": "jungle-patrol-0",
+          "x": 1604.2065000000132,
+          "y": 542,
+          "health": 54.45,
+          "width": 98,
+          "height": 82
+        },
+        {
+          "id": "jungle-patrol-1",
+          "x": 2442.5510092417894,
+          "y": 534,
+          "health": 54.45,
+          "width": 98,
+          "height": 90
+        },
+        {
+          "id": "jungle-patrol-2",
+          "x": 3235.3564385484287,
+          "y": 524,
+          "health": 61.04999999999999,
+          "width": 108,
+          "height": 100
+        },
+        {
+          "id": "jungle-patrol-3",
+          "x": 2065.1235000000397,
+          "y": 504,
+          "health": 67.65,
+          "width": 84,
+          "height": 120
+        }
+      ]
+    },
+    {
+      "t": 4.017,
+      "phase": "tracking",
+      "x": 1241.82,
+      "y": 508,
+      "vx": 300,
+      "vy": 0,
+      "health": 160,
+      "stamina": 100,
+      "energy": 76.27,
+      "kills": 0,
+      "boss": {
+        "active": false,
+        "alive": true,
+        "health": 600,
+        "x": 6914.4
+      },
+      "scans": [
+        true,
+        false,
+        false
+      ],
+      "recoveries": [
+        false
+      ],
+      "objectives": [],
+      "message": "1 signature analysée.",
+      "grounded": true,
+      "climbing": false,
+      "load": {
+        "massKg": 0,
+        "volumeUnits": 0,
+        "capacityMassKg": 36,
+        "capacityVolumeUnits": 24,
+        "ratio": 0,
+        "overloaded": false,
+        "movementMultiplier": 1,
+        "jumpMultiplier": 1,
+        "climbStaminaMultiplier": 1,
+        "noiseMultiplier": 1
+      },
+      "energyWeaponsLocked": false,
+      "weaponSlot": 1,
+      "threats": [
+        {
+          "id": "jungle-patrol-0",
+          "x": 1621.3565000000146,
+          "y": 542,
+          "health": 54.45,
+          "width": 98,
+          "height": 82
+        },
+        {
+          "id": "jungle-patrol-1",
+          "x": 2442.5510092417894,
+          "y": 534,
+          "health": 54.45,
+          "width": 98,
+          "height": 90
+        },
+        {
+          "id": "jungle-patrol-2",
+          "x": 3233.571438548429,
+          "y": 524,
+          "health": 61.04999999999999,
+          "width": 108,
+          "height": 100
+        },
+        {
+          "id": "jungle-patrol-3",
+          "x": 2078.1085000000367,
+          "y": 504,
+          "health": 67.65,
+          "width": 84,
+          "height": 120
+        }
+      ]
+    },
+    {
+      "t": 5.017,
+      "phase": "tracking",
+      "x": 1533.34,
+      "y": 508,
+      "vx": 196.8,
+      "vy": 0,
+      "health": 160,
+      "stamina": 100,
+      "energy": 51.7,
+      "kills": 1,
+      "boss": {
+        "active": false,
+        "alive": true,
+        "health": 600,
+        "x": 6914.4
+      },
+      "scans": [
+        true,
+        false,
+        false
+      ],
+      "recoveries": [
+        false
+      ],
+      "objectives": [],
+      "message": "Canopée des guetteurs — Scanner la patrouille depuis plusieurs altitudes sans être marqué.",
+      "grounded": true,
+      "climbing": false,
+      "load": {
+        "massKg": 0,
+        "volumeUnits": 0,
+        "capacityMassKg": 36,
+        "capacityVolumeUnits": 24,
+        "ratio": 0,
+        "overloaded": false,
+        "movementMultiplier": 1,
+        "jumpMultiplier": 1,
+        "climbStaminaMultiplier": 1,
+        "noiseMultiplier": 1
+      },
+      "energyWeaponsLocked": false,
+      "weaponSlot": 1,
+      "threats": [
+        {
+          "id": "jungle-patrol-1",
+          "x": 2442.5510092417894,
+          "y": 534,
+          "health": 54.45,
+          "width": 98,
+          "height": 90
+        },
+        {
+          "id": "jungle-patrol-2",
+          "x": 3287.1214385484245,
+          "y": 524,
+          "health": 61.04999999999999,
+          "width": 108,
+          "height": 100
+        },
+        {
+          "id": "jungle-patrol-3",
+          "x": 2116.754333333358,
+          "y": 504,
+          "health": 67.65,
+          "width": 84,
+          "height": 120
+        }
+      ]
+    },
+    {
+      "t": 6.017,
+      "phase": "tracking",
+      "x": 1642.47,
+      "y": 508,
+      "vx": 100.92,
+      "vy": 0,
+      "health": 160,
+      "stamina": 100,
+      "energy": 53.7,
+      "kills": 1,
+      "boss": {
+        "active": false,
+        "alive": true,
+        "health": 600,
+        "x": 6914.4
+      },
+      "scans": [
+        true,
+        true,
+        false
+      ],
+      "recoveries": [
+        false
+      ],
+      "objectives": [],
+      "message": "1 signature analysée.",
+      "grounded": true,
+      "climbing": false,
+      "load": {
+        "massKg": 0,
+        "volumeUnits": 0,
+        "capacityMassKg": 36,
+        "capacityVolumeUnits": 24,
+        "ratio": 0,
+        "overloaded": false,
+        "movementMultiplier": 1,
+        "jumpMultiplier": 1,
+        "climbStaminaMultiplier": 1,
+        "noiseMultiplier": 1
+      },
+      "energyWeaponsLocked": false,
+      "weaponSlot": 1,
+      "threats": [
+        {
+          "id": "jungle-patrol-1",
+          "x": 2442.5510092417894,
+          "y": 534,
+          "health": 54.45,
+          "width": 98,
+          "height": 90
+        },
+        {
+          "id": "jungle-patrol-2",
+          "x": 3340.67143854842,
+          "y": 524,
+          "health": 61.04999999999999,
+          "width": 108,
+          "height": 100
+        },
+        {
+          "id": "jungle-patrol-3",
+          "x": 2070.3793333333506,
+          "y": 504,
+          "health": 67.65,
+          "width": 84,
+          "height": 120
+        }
+      ]
+    },
+    {
+      "t": 7.017,
+      "phase": "tracking",
+      "x": 1759.77,
+      "y": 490.14,
+      "vx": 172.85,
+      "vy": 224.17,
+      "health": 160,
+      "stamina": 100,
+      "energy": 29.13,
+      "kills": 2,
+      "boss": {
+        "active": false,
+        "alive": true,
+        "health": 600,
+        "x": 6914.4
+      },
+      "scans": [
+        true,
+        true,
+        false
+      ],
+      "recoveries": [
+        false
+      ],
+      "objectives": [],
+      "message": "1 signature analysée.",
+      "grounded": false,
+      "climbing": false,
+      "load": {
+        "massKg": 0,
+        "volumeUnits": 0,
+        "capacityMassKg": 36,
+        "capacityVolumeUnits": 24,
+        "ratio": 0,
+        "overloaded": false,
+        "movementMultiplier": 1,
+        "jumpMultiplier": 1,
+        "climbStaminaMultiplier": 1,
+        "noiseMultiplier": 1
+      },
+      "energyWeaponsLocked": false,
+      "weaponSlot": 1,
+      "threats": [
+        {
+          "id": "jungle-patrol-1",
+          "x": 2442.5510092417894,
+          "y": 534,
+          "health": 54.45,
+          "width": 98,
+          "height": 90
+        },
+        {
+          "id": "jungle-patrol-2",
+          "x": 3394.221438548416,
+          "y": 524,
+          "health": 61.04999999999999,
+          "width": 108,
+          "height": 100
+        }
+      ]
+    },
+    {
+      "t": 8.017,
+      "phase": "tracking",
+      "x": 1869.89,
+      "y": 508,
+      "vx": 100.92,
+      "vy": 0,
+      "health": 160,
+      "stamina": 100,
+      "energy": 39.13,
+      "kills": 2,
+      "boss": {
+        "active": false,
+        "alive": true,
+        "health": 600,
+        "x": 6914.4
+      },
+      "scans": [
+        true,
+        true,
+        false
+      ],
+      "recoveries": [
+        false
+      ],
+      "objectives": [],
+      "message": "1 signature analysée.",
+      "grounded": true,
+      "climbing": false,
+      "load": {
+        "massKg": 0,
+        "volumeUnits": 0,
+        "capacityMassKg": 36,
+        "capacityVolumeUnits": 24,
+        "ratio": 0,
+        "overloaded": false,
+        "movementMultiplier": 1,
+        "jumpMultiplier": 1,
+        "climbStaminaMultiplier": 1,
+        "noiseMultiplier": 1
+      },
+      "energyWeaponsLocked": false,
+      "weaponSlot": 1,
+      "threats": [
+        {
+          "id": "jungle-patrol-1",
+          "x": 2442.5510092417894,
+          "y": 534,
+          "health": 54.45,
+          "width": 98,
+          "height": 90
+        },
+        {
+          "id": "jungle-patrol-2",
+          "x": 3447.7714385484114,
+          "y": 524,
+          "health": 61.04999999999999,
+          "width": 108,
+          "height": 100
+        }
+      ]
+    },
+    {
+      "t": 9,
+      "phase": "tracking",
+      "x": 1969.13,
+      "y": 508,
+      "vx": 100.92,
+      "vy": 0,
+      "health": 160,
+      "stamina": 100,
+      "energy": 14.4,
+      "kills": 2,
+      "boss": {
+        "active": false,
+        "alive": true,
+        "health": 600,
+        "x": 6914.4
+      },
+      "scans": [
+        true,
+        true,
+        false
+      ],
+      "recoveries": [
+        false
+      ],
+      "objectives": [],
+      "message": "1 signature analysée.",
+      "grounded": true,
+      "climbing": false,
+      "load": {
+        "massKg": 0,
+        "volumeUnits": 0,
+        "capacityMassKg": 36,
+        "capacityVolumeUnits": 24,
+        "ratio": 0,
+        "overloaded": false,
+        "movementMultiplier": 1,
+        "jumpMultiplier": 1,
+        "climbStaminaMultiplier": 1,
+        "noiseMultiplier": 1
+      },
+      "energyWeaponsLocked": false,
+      "weaponSlot": 1,
+      "threats": [
+        {
+          "id": "jungle-patrol-1",
+          "x": 2442.5510092417894,
+          "y": 534,
+          "health": 54.45,
+          "width": 98,
+          "height": 90
+        },
+        {
+          "id": "jungle-patrol-2",
+          "x": 3500.428938548407,
+          "y": 524,
+          "health": 61.04999999999999,
+          "width": 108,
+          "height": 100
+        }
+      ]
+    },
+    {
+      "t": 10,
+      "phase": "tracking",
+      "x": 2070.05,
+      "y": 508,
+      "vx": 100.92,
+      "vy": 0,
+      "health": 160,
+      "stamina": 100,
+      "energy": 24.4,
+      "kills": 2,
+      "boss": {
+        "active": false,
+        "alive": true,
+        "health": 600,
+        "x": 6914.4
+      },
+      "scans": [
+        true,
+        true,
+        false
+      ],
+      "recoveries": [
+        false
+      ],
+      "objectives": [],
+      "message": "1 signature analysée.",
+      "grounded": true,
+      "climbing": false,
+      "load": {
+        "massKg": 0,
+        "volumeUnits": 0,
+        "capacityMassKg": 36,
+        "capacityVolumeUnits": 24,
+        "ratio": 0,
+        "overloaded": false,
+        "movementMultiplier": 1,
+        "jumpMultiplier": 1,
+        "climbStaminaMultiplier": 1,
+        "noiseMultiplier": 1
+      },
+      "energyWeaponsLocked": false,
+      "weaponSlot": 1,
+      "threats": [
+        {
+          "id": "jungle-patrol-1",
+          "x": 2442.5510092417894,
+          "y": 534,
+          "health": 54.45,
+          "width": 98,
+          "height": 90
+        },
+        {
+          "id": "jungle-patrol-2",
+          "x": 3553.9789385484028,
+          "y": 524,
+          "health": 61.04999999999999,
+          "width": 108,
+          "height": 100
+        }
+      ]
+    },
+    {
+      "t": 11,
+      "phase": "tracking",
+      "x": 2200.68,
+      "y": 508,
+      "vx": 173.92,
+      "vy": 0,
+      "health": 160,
+      "stamina": 100,
+      "energy": 34.4,
+      "kills": 2,
+      "boss": {
+        "active": false,
+        "alive": true,
+        "health": 600,
+        "x": 6914.4
+      },
+      "scans": [
+        true,
+        true,
+        false
+      ],
+      "recoveries": [
+        false
+      ],
+      "objectives": [],
+      "message": "1 signature analysée.",
+      "grounded": true,
+      "climbing": false,
+      "load": {
+        "massKg": 0,
+        "volumeUnits": 0,
+        "capacityMassKg": 36,
+        "capacityVolumeUnits": 24,
+        "ratio": 0,
+        "overloaded": false,
+        "movementMultiplier": 1,
+        "jumpMultiplier": 1,
+        "climbStaminaMultiplier": 1,
+        "noiseMultiplier": 1
+      },
+      "energyWeaponsLocked": false,
+      "weaponSlot": 1,
+      "threats": [
+        {
+          "id": "jungle-patrol-1",
+          "x": 2442.5510092417894,
+          "y": 534,
+          "health": 54.45,
+          "width": 98,
+          "height": 90
+        },
+        {
+          "id": "jungle-patrol-2",
+          "x": 3564.688938548402,
+          "y": 524,
+          "health": 61.04999999999999,
+          "width": 108,
+          "height": 100
+        }
+      ]
+    },
+    {
+      "t": 12,
+      "phase": "tracking",
+      "x": 2176.5,
+      "y": 508,
+      "vx": -196.61,
+      "vy": 0,
+      "health": 160,
+      "stamina": 100,
+      "energy": 8.1,
+      "kills": 3,
+      "boss": {
+        "active": false,
+        "alive": true,
+        "health": 600,
+        "x": 6914.4
+      },
+      "scans": [
+        true,
+        true,
+        false
+      ],
+      "recoveries": [
+        false
+      ],
+      "objectives": [],
+      "message": "Plasmacaster : charge maximale.",
+      "grounded": true,
+      "climbing": false,
+      "load": {
+        "massKg": 0,
+        "volumeUnits": 0,
+        "capacityMassKg": 36,
+        "capacityVolumeUnits": 24,
+        "ratio": 0,
+        "overloaded": false,
+        "movementMultiplier": 1,
+        "jumpMultiplier": 1,
+        "climbStaminaMultiplier": 1,
+        "noiseMultiplier": 1
+      },
+      "energyWeaponsLocked": false,
+      "weaponSlot": 1,
+      "threats": [
+        {
+          "id": "jungle-patrol-2",
+          "x": 3511.1389385484063,
+          "y": 524,
+          "health": 61.04999999999999,
+          "width": 108,
+          "height": 100
+        }
+      ]
+    },
+    {
+      "t": 13,
+      "phase": "tracking",
+      "x": 2066.16,
+      "y": 508,
+      "vx": -100.92,
+      "vy": 0,
+      "health": 160,
+      "stamina": 100,
+      "energy": 18.1,
+      "kills": 3,
+      "boss": {
+        "active": false,
+        "alive": true,
+        "health": 600,
+        "x": 6914.4
+      },
+      "scans": [
+        true,
+        true,
+        false
+      ],
+      "recoveries": [
+        false
+      ],
+      "objectives": [],
+      "message": "Plasmacaster : charge maximale.",
+      "grounded": true,
+      "climbing": false,
+      "load": {
+        "massKg": 0,
+        "volumeUnits": 0,
+        "capacityMassKg": 36,
+        "capacityVolumeUnits": 24,
+        "ratio": 0,
+        "overloaded": false,
+        "movementMultiplier": 1,
+        "jumpMultiplier": 1,
+        "climbStaminaMultiplier": 1,
+        "noiseMultiplier": 1
+      },
+      "energyWeaponsLocked": false,
+      "weaponSlot": 1,
+      "threats": [
+        {
+          "id": "jungle-patrol-2",
+          "x": 3457.5889385484106,
+          "y": 524,
+          "health": 61.04999999999999,
+          "width": 108,
+          "height": 100
+        }
+      ]
+    },
+    {
+      "t": 14,
+      "phase": "tracking",
+      "x": 1965.24,
+      "y": 508,
+      "vx": -100.92,
+      "vy": 0,
+      "health": 160,
+      "stamina": 100,
+      "energy": 28.1,
+      "kills": 3,
+      "boss": {
+        "active": false,
+        "alive": true,
+        "health": 600,
+        "x": 6914.4
+      },
+      "scans": [
+        true,
+        true,
+        false
+      ],
+      "recoveries": [
+        false
+      ],
+      "objectives": [],
+      "message": "Plasmacaster : charge maximale.",
+      "grounded": true,
+      "climbing": false,
+      "load": {
+        "massKg": 0,
+        "volumeUnits": 0,
+        "capacityMassKg": 36,
+        "capacityVolumeUnits": 24,
+        "ratio": 0,
+        "overloaded": false,
+        "movementMultiplier": 1,
+        "jumpMultiplier": 1,
+        "climbStaminaMultiplier": 1,
+        "noiseMultiplier": 1
+      },
+      "energyWeaponsLocked": false,
+      "weaponSlot": 1,
+      "threats": [
+        {
+          "id": "jungle-patrol-2",
+          "x": 3404.038938548415,
+          "y": 524,
+          "health": 61.04999999999999,
+          "width": 108,
+          "height": 100
+        }
+      ]
+    },
+    {
+      "t": 15,
+      "phase": "tracking",
+      "x": 1864.32,
+      "y": 508,
+      "vx": -100.92,
+      "vy": 0,
+      "health": 160,
+      "stamina": 100,
+      "energy": 38.1,
+      "kills": 3,
+      "boss": {
+        "active": false,
+        "alive": true,
+        "health": 600,
+        "x": 6914.4
+      },
+      "scans": [
+        true,
+        true,
+        false
+      ],
+      "recoveries": [
+        false
+      ],
+      "objectives": [],
+      "message": "Plasmacaster : charge maximale.",
+      "grounded": true,
+      "climbing": false,
+      "load": {
+        "massKg": 0,
+        "volumeUnits": 0,
+        "capacityMassKg": 36,
+        "capacityVolumeUnits": 24,
+        "ratio": 0,
+        "overloaded": false,
+        "movementMultiplier": 1,
+        "jumpMultiplier": 1,
+        "climbStaminaMultiplier": 1,
+        "noiseMultiplier": 1
+      },
+      "energyWeaponsLocked": false,
+      "weaponSlot": 1,
+      "threats": [
+        {
+          "id": "jungle-patrol-2",
+          "x": 3350.4889385484194,
+          "y": 524,
+          "health": 61.04999999999999,
+          "width": 108,
+          "height": 100
+        }
+      ]
+    },
+    {
+      "t": 16,
+      "phase": "tracking",
+      "x": 1763.4,
+      "y": 508,
+      "vx": -100.92,
+      "vy": 0,
+      "health": 160,
+      "stamina": 100,
+      "energy": 48.1,
+      "kills": 3,
+      "boss": {
+        "active": false,
+        "alive": true,
+        "health": 600,
+        "x": 6914.4
+      },
+      "scans": [
+        true,
+        true,
+        false
+      ],
+      "recoveries": [
+        false
+      ],
+      "objectives": [],
+      "message": "Plasmacaster : charge maximale.",
+      "grounded": true,
+      "climbing": false,
+      "load": {
+        "massKg": 0,
+        "volumeUnits": 0,
+        "capacityMassKg": 36,
+        "capacityVolumeUnits": 24,
+        "ratio": 0,
+        "overloaded": false,
+        "movementMultiplier": 1,
+        "jumpMultiplier": 1,
+        "climbStaminaMultiplier": 1,
+        "noiseMultiplier": 1
+      },
+      "energyWeaponsLocked": false,
+      "weaponSlot": 1,
+      "threats": [
+        {
+          "id": "jungle-patrol-2",
+          "x": 3296.9389385484237,
+          "y": 524,
+          "health": 61.04999999999999,
+          "width": 108,
+          "height": 100
+        }
+      ]
+    },
+    {
+      "t": 17,
+      "phase": "tracking",
+      "x": 1662.48,
+      "y": 508,
+      "vx": -100.92,
+      "vy": 0,
+      "health": 160,
+      "stamina": 100,
+      "energy": 58.1,
+      "kills": 3,
+      "boss": {
+        "active": false,
+        "alive": true,
+        "health": 600,
+        "x": 6914.4
+      },
+      "scans": [
+        true,
+        true,
+        false
+      ],
+      "recoveries": [
+        false
+      ],
+      "objectives": [],
+      "message": "Plasmacaster : charge maximale.",
+      "grounded": true,
+      "climbing": false,
+      "load": {
+        "massKg": 0,
+        "volumeUnits": 0,
+        "capacityMassKg": 36,
+        "capacityVolumeUnits": 24,
+        "ratio": 0,
+        "overloaded": false,
+        "movementMultiplier": 1,
+        "jumpMultiplier": 1,
+        "climbStaminaMultiplier": 1,
+        "noiseMultiplier": 1
+      },
+      "energyWeaponsLocked": false,
+      "weaponSlot": 1,
+      "threats": [
+        {
+          "id": "jungle-patrol-2",
+          "x": 3243.388938548428,
+          "y": 524,
+          "health": 61.04999999999999,
+          "width": 108,
+          "height": 100
+        }
+      ]
+    },
+    {
+      "t": 18,
+      "phase": "tracking",
+      "x": 1599.77,
+      "y": 508,
+      "vx": -0.01,
+      "vy": 0,
+      "health": 160,
+      "stamina": 100,
+      "energy": 68.1,
+      "kills": 3,
+      "boss": {
+        "active": false,
+        "alive": true,
+        "health": 600,
+        "x": 6914.4
+      },
+      "scans": [
+        true,
+        true,
+        false
+      ],
+      "recoveries": [
+        false
+      ],
+      "objectives": [],
+      "message": "Le geste prend du temps ; la chasse continue autour de toi.",
+      "grounded": true,
+      "climbing": false,
+      "load": {
+        "massKg": 0,
+        "volumeUnits": 0,
+        "capacityMassKg": 36,
+        "capacityVolumeUnits": 24,
+        "ratio": 0,
+        "overloaded": false,
+        "movementMultiplier": 1,
+        "jumpMultiplier": 1,
+        "climbStaminaMultiplier": 1,
+        "noiseMultiplier": 1
+      },
+      "energyWeaponsLocked": false,
+      "weaponSlot": 1,
+      "threats": [
+        {
+          "id": "jungle-patrol-2",
+          "x": 3225.5389385484295,
+          "y": 524,
+          "health": 61.04999999999999,
+          "width": 108,
+          "height": 100
+        }
+      ]
+    },
+    {
+      "t": 19,
+      "phase": "tracking",
+      "x": 1599.77,
+      "y": 508,
+      "vx": 0,
+      "vy": 0,
+      "health": 160,
+      "stamina": 100,
+      "energy": 78.1,
+      "kills": 3,
+      "boss": {
+        "active": false,
+        "alive": true,
+        "health": 600,
+        "x": 6914.4
+      },
+      "scans": [
+        true,
+        true,
+        false
+      ],
+      "recoveries": [
+        false
+      ],
+      "objectives": [],
+      "message": "Le geste prend du temps ; la chasse continue autour de toi.",
+      "grounded": true,
+      "climbing": false,
+      "load": {
+        "massKg": 0,
+        "volumeUnits": 0,
+        "capacityMassKg": 36,
+        "capacityVolumeUnits": 24,
+        "ratio": 0,
+        "overloaded": false,
+        "movementMultiplier": 1,
+        "jumpMultiplier": 1,
+        "climbStaminaMultiplier": 1,
+        "noiseMultiplier": 1
+      },
+      "energyWeaponsLocked": false,
+      "weaponSlot": 1,
+      "threats": [
+        {
+          "id": "jungle-patrol-2",
+          "x": 3279.088938548425,
+          "y": 524,
+          "health": 61.04999999999999,
+          "width": 108,
+          "height": 100
+        }
+      ]
+    },
+    {
+      "t": 20,
+      "phase": "tracking",
+      "x": 1599.77,
+      "y": 508,
+      "vx": 0,
+      "vy": 0,
+      "health": 160,
+      "stamina": 100,
+      "energy": 88.1,
+      "kills": 3,
+      "boss": {
+        "active": false,
+        "alive": true,
+        "health": 600,
+        "x": 6914.4
+      },
+      "scans": [
+        true,
+        true,
+        false
+      ],
+      "recoveries": [
+        false
+      ],
+      "objectives": [],
+      "message": "Le geste prend du temps ; la chasse continue autour de toi.",
+      "grounded": true,
+      "climbing": false,
+      "load": {
+        "massKg": 0,
+        "volumeUnits": 0,
+        "capacityMassKg": 36,
+        "capacityVolumeUnits": 24,
+        "ratio": 0,
+        "overloaded": false,
+        "movementMultiplier": 1,
+        "jumpMultiplier": 1,
+        "climbStaminaMultiplier": 1,
+        "noiseMultiplier": 1
+      },
+      "energyWeaponsLocked": false,
+      "weaponSlot": 1,
+      "threats": [
+        {
+          "id": "jungle-patrol-2",
+          "x": 3332.638938548421,
+          "y": 524,
+          "health": 61.04999999999999,
+          "width": 108,
+          "height": 100
+        }
+      ]
+    },
+    {
+      "t": 21,
+      "phase": "tracking",
+      "x": 1599.77,
+      "y": 508,
+      "vx": 0,
+      "vy": 0,
+      "health": 160,
+      "stamina": 100,
+      "energy": 98.1,
+      "kills": 3,
+      "boss": {
+        "active": false,
+        "alive": true,
+        "health": 600,
+        "x": 6914.4
+      },
+      "scans": [
+        true,
+        true,
+        false
+      ],
+      "recoveries": [
+        false
+      ],
+      "objectives": [],
+      "message": "Le geste prend du temps ; la chasse continue autour de toi.",
+      "grounded": true,
+      "climbing": false,
+      "load": {
+        "massKg": 0,
+        "volumeUnits": 0,
+        "capacityMassKg": 36,
+        "capacityVolumeUnits": 24,
+        "ratio": 0,
+        "overloaded": false,
+        "movementMultiplier": 1,
+        "jumpMultiplier": 1,
+        "climbStaminaMultiplier": 1,
+        "noiseMultiplier": 1
+      },
+      "energyWeaponsLocked": false,
+      "weaponSlot": 1,
+      "threats": [
+        {
+          "id": "jungle-patrol-2",
+          "x": 3386.1889385484164,
+          "y": 524,
+          "health": 61.04999999999999,
+          "width": 108,
+          "height": 100
+        }
+      ]
+    },
+    {
+      "t": 22,
+      "phase": "tracking",
+      "x": 1599.77,
+      "y": 508,
+      "vx": 0,
+      "vy": 0,
+      "health": 160,
+      "stamina": 100,
+      "energy": 100,
+      "kills": 3,
+      "boss": {
+        "active": false,
+        "alive": true,
+        "health": 600,
+        "x": 6914.4
+      },
+      "scans": [
+        true,
+        true,
+        false
+      ],
+      "recoveries": [
+        false
+      ],
+      "objectives": [],
+      "message": "Le geste prend du temps ; la chasse continue autour de toi.",
+      "grounded": true,
+      "climbing": false,
+      "load": {
+        "massKg": 0,
+        "volumeUnits": 0,
+        "capacityMassKg": 36,
+        "capacityVolumeUnits": 24,
+        "ratio": 0,
+        "overloaded": false,
+        "movementMultiplier": 1,
+        "jumpMultiplier": 1,
+        "climbStaminaMultiplier": 1,
+        "noiseMultiplier": 1
+      },
+      "energyWeaponsLocked": false,
+      "weaponSlot": 1,
+      "threats": [
+        {
+          "id": "jungle-patrol-2",
+          "x": 3439.738938548412,
+          "y": 524,
+          "health": 61.04999999999999,
+          "width": 108,
+          "height": 100
+        }
+      ]
+    },
+    {
+      "t": 23.017,
+      "phase": "tracking",
+      "x": 1599.77,
+      "y": 508,
+      "vx": 0,
+      "vy": 0,
+      "health": 160,
+      "stamina": 100,
+      "energy": 100,
+      "kills": 3,
+      "boss": {
+        "active": false,
+        "alive": true,
+        "health": 600,
+        "x": 6914.4
+      },
+      "scans": [
+        true,
+        true,
+        false
+      ],
+      "recoveries": [
+        false
+      ],
+      "objectives": [],
+      "message": "Le geste prend du temps ; la chasse continue autour de toi.",
+      "grounded": true,
+      "climbing": false,
+      "load": {
+        "massKg": 0,
+        "volumeUnits": 0,
+        "capacityMassKg": 36,
+        "capacityVolumeUnits": 24,
+        "ratio": 0,
+        "overloaded": false,
+        "movementMultiplier": 1,
+        "jumpMultiplier": 1,
+        "climbStaminaMultiplier": 1,
+        "noiseMultiplier": 1
+      },
+      "energyWeaponsLocked": false,
+      "weaponSlot": 1,
+      "threats": [
+        {
+          "id": "jungle-patrol-2",
+          "x": 3494.1814385484076,
+          "y": 524,
+          "health": 61.04999999999999,
+          "width": 108,
+          "height": 100
+        }
+      ]
+    },
+    {
+      "t": 24.017,
+      "phase": "tracking",
+      "x": 1633.62,
+      "y": 508,
+      "vx": 99.29,
+      "vy": 0,
+      "health": 160,
+      "stamina": 100,
+      "energy": 100,
+      "kills": 3,
+      "boss": {
+        "active": false,
+        "alive": true,
+        "health": 600,
+        "x": 6914.4
+      },
+      "scans": [
+        true,
+        true,
+        false
+      ],
+      "recoveries": [
+        false
+      ],
+      "objectives": [],
+      "message": "Geste inscrit dans la trace de cette chasse.",
+      "grounded": true,
+      "climbing": false,
+      "load": {
+        "massKg": 0.4,
+        "volumeUnits": 1,
+        "capacityMassKg": 36,
+        "capacityVolumeUnits": 24,
+        "ratio": 0.041666666666666664,
+        "overloaded": false,
+        "movementMultiplier": 0.9866666666666667,
+        "jumpMultiplier": 0.9933333333333333,
+        "climbStaminaMultiplier": 1.025,
+        "noiseMultiplier": 1.0333333333333334
+      },
+      "energyWeaponsLocked": false,
+      "weaponSlot": 1,
+      "threats": [
+        {
+          "id": "jungle-patrol-2",
+          "x": 3547.7314385484033,
+          "y": 524,
+          "health": 61.04999999999999,
+          "width": 108,
+          "height": 100
+        }
+      ]
+    },
+    {
+      "t": 25.017,
+      "phase": "tracking",
+      "x": 1733.17,
+      "y": 508,
+      "vx": 99.57,
+      "vy": 0,
+      "health": 160,
+      "stamina": 100,
+      "energy": 100,
+      "kills": 3,
+      "boss": {
+        "active": false,
+        "alive": true,
+        "health": 600,
+        "x": 6914.4
+      },
+      "scans": [
+        true,
+        true,
+        false
+      ],
+      "recoveries": [
+        false
+      ],
+      "objectives": [],
+      "message": "Geste inscrit dans la trace de cette chasse.",
+      "grounded": true,
+      "climbing": false,
+      "load": {
+        "massKg": 0.4,
+        "volumeUnits": 1,
+        "capacityMassKg": 36,
+        "capacityVolumeUnits": 24,
+        "ratio": 0.041666666666666664,
+        "overloaded": false,
+        "movementMultiplier": 0.9866666666666667,
+        "jumpMultiplier": 0.9933333333333333,
+        "climbStaminaMultiplier": 1.025,
+        "noiseMultiplier": 1.0333333333333334
+      },
+      "energyWeaponsLocked": false,
+      "weaponSlot": 1,
+      "threats": [
+        {
+          "id": "jungle-patrol-2",
+          "x": 3570.9364385484014,
+          "y": 524,
+          "health": 61.04999999999999,
+          "width": 108,
+          "height": 100
+        }
+      ]
+    },
+    {
+      "t": 26.017,
+      "phase": "tracking",
+      "x": 1832.75,
+      "y": 508,
+      "vx": 99.57,
+      "vy": 0,
+      "health": 160,
+      "stamina": 100,
+      "energy": 100,
+      "kills": 3,
+      "boss": {
+        "active": false,
+        "alive": true,
+        "health": 600,
+        "x": 6914.4
+      },
+      "scans": [
+        true,
+        true,
+        false
+      ],
+      "recoveries": [
+        false
+      ],
+      "objectives": [],
+      "message": "Geste inscrit dans la trace de cette chasse.",
+      "grounded": true,
+      "climbing": false,
+      "load": {
+        "massKg": 0.4,
+        "volumeUnits": 1,
+        "capacityMassKg": 36,
+        "capacityVolumeUnits": 24,
+        "ratio": 0.041666666666666664,
+        "overloaded": false,
+        "movementMultiplier": 0.9866666666666667,
+        "jumpMultiplier": 0.9933333333333333,
+        "climbStaminaMultiplier": 1.025,
+        "noiseMultiplier": 1.0333333333333334
+      },
+      "energyWeaponsLocked": false,
+      "weaponSlot": 1,
+      "threats": [
+        {
+          "id": "jungle-patrol-2",
+          "x": 3517.3864385484057,
+          "y": 524,
+          "health": 61.04999999999999,
+          "width": 108,
+          "height": 100
+        }
+      ]
+    },
+    {
+      "t": 27.017,
+      "phase": "tracking",
+      "x": 1932.32,
+      "y": 508,
+      "vx": 99.57,
+      "vy": 0,
+      "health": 160,
+      "stamina": 100,
+      "energy": 100,
+      "kills": 3,
+      "boss": {
+        "active": false,
+        "alive": true,
+        "health": 600,
+        "x": 6914.4
+      },
+      "scans": [
+        true,
+        true,
+        false
+      ],
+      "recoveries": [
+        false
+      ],
+      "objectives": [],
+      "message": "Geste inscrit dans la trace de cette chasse.",
+      "grounded": true,
+      "climbing": false,
+      "load": {
+        "massKg": 0.4,
+        "volumeUnits": 1,
+        "capacityMassKg": 36,
+        "capacityVolumeUnits": 24,
+        "ratio": 0.041666666666666664,
+        "overloaded": false,
+        "movementMultiplier": 0.9866666666666667,
+        "jumpMultiplier": 0.9933333333333333,
+        "climbStaminaMultiplier": 1.025,
+        "noiseMultiplier": 1.0333333333333334
+      },
+      "energyWeaponsLocked": false,
+      "weaponSlot": 1,
+      "threats": [
+        {
+          "id": "jungle-patrol-2",
+          "x": 3463.83643854841,
+          "y": 524,
+          "health": 61.04999999999999,
+          "width": 108,
+          "height": 100
+        }
+      ]
+    },
+    {
+      "t": 28.017,
+      "phase": "tracking",
+      "x": 2031.9,
+      "y": 508,
+      "vx": 99.57,
+      "vy": 0,
+      "health": 160,
+      "stamina": 100,
+      "energy": 100,
+      "kills": 3,
+      "boss": {
+        "active": false,
+        "alive": true,
+        "health": 600,
+        "x": 6914.4
+      },
+      "scans": [
+        true,
+        true,
+        false
+      ],
+      "recoveries": [
+        false
+      ],
+      "objectives": [],
+      "message": "Geste inscrit dans la trace de cette chasse.",
+      "grounded": true,
+      "climbing": false,
+      "load": {
+        "massKg": 0.4,
+        "volumeUnits": 1,
+        "capacityMassKg": 36,
+        "capacityVolumeUnits": 24,
+        "ratio": 0.041666666666666664,
+        "overloaded": false,
+        "movementMultiplier": 0.9866666666666667,
+        "jumpMultiplier": 0.9933333333333333,
+        "climbStaminaMultiplier": 1.025,
+        "noiseMultiplier": 1.0333333333333334
+      },
+      "energyWeaponsLocked": false,
+      "weaponSlot": 1,
+      "threats": [
+        {
+          "id": "jungle-patrol-2",
+          "x": 3410.2864385484145,
+          "y": 524,
+          "health": 61.04999999999999,
+          "width": 108,
+          "height": 100
+        }
+      ]
+    },
+    {
+      "t": 29.017,
+      "phase": "tracking",
+      "x": 2131.47,
+      "y": 508,
+      "vx": 99.57,
+      "vy": 0,
+      "health": 160,
+      "stamina": 100,
+      "energy": 100,
+      "kills": 3,
+      "boss": {
+        "active": false,
+        "alive": true,
+        "health": 600,
+        "x": 6914.4
+      },
+      "scans": [
+        true,
+        true,
+        false
+      ],
+      "recoveries": [
+        false
+      ],
+      "objectives": [],
+      "message": "Geste inscrit dans la trace de cette chasse.",
+      "grounded": true,
+      "climbing": false,
+      "load": {
+        "massKg": 0.4,
+        "volumeUnits": 1,
+        "capacityMassKg": 36,
+        "capacityVolumeUnits": 24,
+        "ratio": 0.041666666666666664,
+        "overloaded": false,
+        "movementMultiplier": 0.9866666666666667,
+        "jumpMultiplier": 0.9933333333333333,
+        "climbStaminaMultiplier": 1.025,
+        "noiseMultiplier": 1.0333333333333334
+      },
+      "energyWeaponsLocked": false,
+      "weaponSlot": 1,
+      "threats": [
+        {
+          "id": "jungle-patrol-2",
+          "x": 3356.736438548419,
+          "y": 524,
+          "health": 61.04999999999999,
+          "width": 108,
+          "height": 100
+        }
+      ]
+    },
+    {
+      "t": 30.017,
+      "phase": "tracking",
+      "x": 2311.36,
+      "y": 508,
+      "vx": 295.54,
+      "vy": 0,
+      "health": 160,
+      "stamina": 100,
+      "energy": 100,
+      "kills": 3,
+      "boss": {
+        "active": false,
+        "alive": true,
+        "health": 600,
+        "x": 6914.4
+      },
+      "scans": [
+        true,
+        true,
+        false
+      ],
+      "recoveries": [
+        false
+      ],
+      "objectives": [],
+      "message": "Geste inscrit dans la trace de cette chasse.",
+      "grounded": true,
+      "climbing": false,
+      "load": {
+        "massKg": 0.4,
+        "volumeUnits": 1,
+        "capacityMassKg": 36,
+        "capacityVolumeUnits": 24,
+        "ratio": 0.041666666666666664,
+        "overloaded": false,
+        "movementMultiplier": 0.9866666666666667,
+        "jumpMultiplier": 0.9933333333333333,
+        "climbStaminaMultiplier": 1.025,
+        "noiseMultiplier": 1.0333333333333334
+      },
+      "energyWeaponsLocked": false,
+      "weaponSlot": 1,
+      "threats": [
+        {
+          "id": "jungle-patrol-2",
+          "x": 3303.186438548423,
+          "y": 524,
+          "health": 61.04999999999999,
+          "width": 108,
+          "height": 100
+        }
+      ]
+    },
+    {
+      "t": 31.017,
+      "phase": "tracking",
+      "x": 2607.33,
+      "y": 508,
+      "vx": 296,
+      "vy": 0,
+      "health": 160,
+      "stamina": 100,
+      "energy": 100,
+      "kills": 3,
+      "boss": {
+        "active": false,
+        "alive": true,
+        "health": 600,
+        "x": 6914.4
+      },
+      "scans": [
+        true,
+        true,
+        false
+      ],
+      "recoveries": [
+        false
+      ],
+      "objectives": [],
+      "message": "Geste inscrit dans la trace de cette chasse.",
+      "grounded": true,
+      "climbing": false,
+      "load": {
+        "massKg": 0.4,
+        "volumeUnits": 1,
+        "capacityMassKg": 36,
+        "capacityVolumeUnits": 24,
+        "ratio": 0.041666666666666664,
+        "overloaded": false,
+        "movementMultiplier": 0.9866666666666667,
+        "jumpMultiplier": 0.9933333333333333,
+        "climbStaminaMultiplier": 1.025,
+        "noiseMultiplier": 1.0333333333333334
+      },
+      "energyWeaponsLocked": false,
+      "weaponSlot": 1,
+      "threats": [
+        {
+          "id": "jungle-patrol-2",
+          "x": 3249.6364385484276,
+          "y": 524,
+          "health": 61.04999999999999,
+          "width": 108,
+          "height": 100
+        }
+      ]
+    },
+    {
+      "t": 32.017,
+      "phase": "target",
+      "x": 2903.33,
+      "y": 508,
+      "vx": 296,
+      "vy": 0,
+      "health": 160,
+      "stamina": 100,
+      "energy": 65.93,
+      "kills": 4,
+      "boss": {
+        "active": false,
+        "alive": true,
+        "health": 600,
+        "x": 6914.4
+      },
+      "scans": [
+        true,
+        true,
+        true
+      ],
+      "recoveries": [
+        false
+      ],
+      "objectives": [
+        "scan-vanguard"
+      ],
+      "message": "Ruines du transpondeur — Isoler le signal volé et ouvrir une route discrète vers l'appareil.",
+      "grounded": true,
+      "climbing": false,
+      "load": {
+        "massKg": 0.4,
+        "volumeUnits": 1,
+        "capacityMassKg": 36,
+        "capacityVolumeUnits": 24,
+        "ratio": 0.041666666666666664,
+        "overloaded": false,
+        "movementMultiplier": 0.9866666666666667,
+        "jumpMultiplier": 0.9933333333333333,
+        "climbStaminaMultiplier": 1.025,
+        "noiseMultiplier": 1.0333333333333334
+      },
+      "energyWeaponsLocked": false,
+      "weaponSlot": 1,
+      "threats": [
+        {
+          "id": "jungle-scouts-0",
+          "x": 5817.879000000016,
+          "y": 573.238595852181,
+          "health": 44.55,
+          "width": 98,
+          "height": 82
+        }
+      ]
+    },
+    {
+      "t": 33.017,
+      "phase": "target",
+      "x": 3199.33,
+      "y": 508,
+      "vx": 296,
+      "vy": 0,
+      "health": 160,
+      "stamina": 100,
+      "energy": 75.93,
+      "kills": 4,
+      "boss": {
+        "active": false,
+        "alive": true,
+        "health": 600,
+        "x": 6914.4
+      },
+      "scans": [
+        true,
+        true,
+        true
+      ],
+      "recoveries": [
+        false
+      ],
+      "objectives": [
+        "scan-vanguard"
+      ],
+      "message": "Ruines du transpondeur — Isoler le signal volé et ouvrir une route discrète vers l'appareil.",
+      "grounded": true,
+      "climbing": false,
+      "load": {
+        "massKg": 0.4,
+        "volumeUnits": 1,
+        "capacityMassKg": 36,
+        "capacityVolumeUnits": 24,
+        "ratio": 0.041666666666666664,
+        "overloaded": false,
+        "movementMultiplier": 0.9866666666666667,
+        "jumpMultiplier": 0.9933333333333333,
+        "climbStaminaMultiplier": 1.025,
+        "noiseMultiplier": 1.0333333333333334
+      },
+      "energyWeaponsLocked": false,
+      "weaponSlot": 1,
+      "threats": [
+        {
+          "id": "jungle-scouts-0",
+          "x": 5894.319000000037,
+          "y": 542,
+          "health": 44.55,
+          "width": 98,
+          "height": 82
+        },
+        {
+          "id": "jungle-scouts-1",
+          "x": 4280.501,
+          "y": 534,
+          "health": 44.55,
+          "width": 98,
+          "height": 90
+        }
+      ]
+    },
+    {
+      "t": 34.017,
+      "phase": "target",
+      "x": 3495.33,
+      "y": 508,
+      "vx": 296,
+      "vy": 0,
+      "health": 160,
+      "stamina": 100,
+      "energy": 85.93,
+      "kills": 4,
+      "boss": {
+        "active": false,
+        "alive": true,
+        "health": 600,
+        "x": 6914.4
+      },
+      "scans": [
+        true,
+        true,
+        true
+      ],
+      "recoveries": [
+        false
+      ],
+      "objectives": [
+        "scan-vanguard"
+      ],
+      "message": "Ruines du transpondeur — Isoler le signal volé et ouvrir une route discrète vers l'appareil.",
+      "grounded": true,
+      "climbing": false,
+      "load": {
+        "massKg": 0.4,
+        "volumeUnits": 1,
+        "capacityMassKg": 36,
+        "capacityVolumeUnits": 24,
+        "ratio": 0.041666666666666664,
+        "overloaded": false,
+        "movementMultiplier": 0.9866666666666667,
+        "jumpMultiplier": 0.9933333333333333,
+        "climbStaminaMultiplier": 1.025,
+        "noiseMultiplier": 1.0333333333333334
+      },
+      "energyWeaponsLocked": false,
+      "weaponSlot": 1,
+      "threats": [
+        {
+          "id": "jungle-scouts-0",
+          "x": 5924.895000000045,
+          "y": 542,
+          "health": 44.55,
+          "width": 98,
+          "height": 82
+        },
+        {
+          "id": "jungle-scouts-1",
+          "x": 4280.501,
+          "y": 534,
+          "health": 44.55,
+          "width": 98,
+          "height": 90
+        },
+        {
+          "id": "jungle-scouts-2",
+          "x": 5819.030499999994,
+          "y": 514,
+          "health": 55.35,
+          "width": 118,
+          "height": 110
+        }
+      ]
+    },
+    {
+      "t": 35.017,
+      "phase": "target",
+      "x": 3791.33,
+      "y": 508,
+      "vx": 296,
+      "vy": 0,
+      "health": 160,
+      "stamina": 100,
+      "energy": 61.37,
+      "kills": 4,
+      "boss": {
+        "active": false,
+        "alive": true,
+        "health": 600,
+        "x": 6914.4
+      },
+      "scans": [
+        true,
+        true,
+        true
+      ],
+      "recoveries": [
+        false
+      ],
+      "objectives": [
+        "scan-vanguard"
+      ],
+      "message": "Ruines du transpondeur — Isoler le signal volé et ouvrir une route discrète vers l'appareil.",
+      "grounded": true,
+      "climbing": false,
+      "load": {
+        "massKg": 0.4,
+        "volumeUnits": 1,
+        "capacityMassKg": 36,
+        "capacityVolumeUnits": 24,
+        "ratio": 0.041666666666666664,
+        "overloaded": false,
+        "movementMultiplier": 0.9866666666666667,
+        "jumpMultiplier": 0.9933333333333333,
+        "climbStaminaMultiplier": 1.025,
+        "noiseMultiplier": 1.0333333333333334
+      },
+      "energyWeaponsLocked": false,
+      "weaponSlot": 1,
+      "threats": [
+        {
+          "id": "jungle-scouts-0",
+          "x": 5848.4550000000245,
+          "y": 542,
+          "health": 44.55,
+          "width": 98,
+          "height": 82
+        },
+        {
+          "id": "jungle-scouts-1",
+          "x": 4280.501,
+          "y": 534,
+          "health": 44.55,
+          "width": 98,
+          "height": 90
+        },
+        {
+          "id": "jungle-scouts-2",
+          "x": 5896.940499999987,
+          "y": 514,
+          "health": 55.35,
+          "width": 118,
+          "height": 110
+        }
+      ]
+    },
+    {
+      "t": 36.017,
+      "phase": "target",
+      "x": 4053.64,
+      "y": 508,
+      "vx": 213.21,
+      "vy": 0,
+      "health": 158.95,
+      "stamina": 100,
+      "energy": 71.37,
+      "kills": 5,
+      "boss": {
+        "active": false,
+        "alive": true,
+        "health": 600,
+        "x": 6914.4
+      },
+      "scans": [
+        true,
+        true,
+        true
+      ],
+      "recoveries": [
+        false
+      ],
+      "objectives": [
+        "scan-vanguard"
+      ],
+      "message": "Impact subi : -1 intégrité",
+      "grounded": true,
+      "climbing": false,
+      "load": {
+        "massKg": 0.4,
+        "volumeUnits": 1,
+        "capacityMassKg": 36,
+        "capacityVolumeUnits": 24,
+        "ratio": 0.041666666666666664,
+        "overloaded": false,
+        "movementMultiplier": 0.9866666666666667,
+        "jumpMultiplier": 0.9933333333333333,
+        "climbStaminaMultiplier": 1.025,
+        "noiseMultiplier": 1.0333333333333334
+      },
+      "energyWeaponsLocked": false,
+      "weaponSlot": 1,
+      "threats": [
+        {
+          "id": "jungle-scouts-0",
+          "x": 5772.015000000004,
+          "y": 542,
+          "health": 44.55,
+          "width": 98,
+          "height": 82
+        },
+        {
+          "id": "jungle-scouts-2",
+          "x": 5920.313499999985,
+          "y": 514,
+          "health": 55.35,
+          "width": 118,
+          "height": 110
+        }
+      ]
+    },
+    {
+      "t": 37.017,
+      "phase": "target",
+      "x": 4296.32,
+      "y": 508,
+      "vx": 295.82,
+      "vy": 0,
+      "health": 150.9,
+      "stamina": 100,
+      "energy": 81.37,
+      "kills": 5,
+      "boss": {
+        "active": false,
+        "alive": true,
+        "health": 600,
+        "x": 6914.4
+      },
+      "scans": [
+        true,
+        true,
+        true
+      ],
+      "recoveries": [
+        true
+      ],
+      "objectives": [
+        "scan-vanguard",
+        "recover-transponder"
+      ],
+      "message": "Objectif accompli : Reprendre le transpondeur",
+      "grounded": true,
+      "climbing": false,
+      "load": {
+        "massKg": 0.4,
+        "volumeUnits": 1,
+        "capacityMassKg": 36,
+        "capacityVolumeUnits": 24,
+        "ratio": 0.041666666666666664,
+        "overloaded": false,
+        "movementMultiplier": 0.9866666666666667,
+        "jumpMultiplier": 0.9933333333333333,
+        "climbStaminaMultiplier": 1.025,
+        "noiseMultiplier": 1.0333333333333334
+      },
+      "energyWeaponsLocked": false,
+      "weaponSlot": 1,
+      "threats": [
+        {
+          "id": "jungle-scouts-0",
+          "x": 5695.574999999983,
+          "y": 542,
+          "health": 44.55,
+          "width": 98,
+          "height": 82
+        },
+        {
+          "id": "jungle-scouts-2",
+          "x": 5842.403499999992,
+          "y": 514,
+          "health": 55.35,
+          "width": 118,
+          "height": 110
+        },
+        {
+          "id": "vey-guard-0",
+          "x": 3750.7517729392193,
+          "y": 517,
+          "health": 166.49999999999997,
+          "width": 88,
+          "height": 107
+        }
+      ]
+    },
+    {
+      "t": 38.017,
+      "phase": "target",
+      "x": 4592.31,
+      "y": 508,
+      "vx": 296,
+      "vy": 0,
+      "health": 150.9,
+      "stamina": 100,
+      "energy": 56.8,
+      "kills": 5,
+      "boss": {
+        "active": false,
+        "alive": true,
+        "health": 600,
+        "x": 6914.4
+      },
+      "scans": [
+        true,
+        true,
+        true
+      ],
+      "recoveries": [
+        true
+      ],
+      "objectives": [
+        "scan-vanguard",
+        "recover-transponder"
+      ],
+      "message": "Objectif accompli : Reprendre le transpondeur",
+      "grounded": true,
+      "climbing": false,
+      "load": {
+        "massKg": 0.4,
+        "volumeUnits": 1,
+        "capacityMassKg": 36,
+        "capacityVolumeUnits": 24,
+        "ratio": 0.041666666666666664,
+        "overloaded": false,
+        "movementMultiplier": 0.9866666666666667,
+        "jumpMultiplier": 0.9933333333333333,
+        "climbStaminaMultiplier": 1.025,
+        "noiseMultiplier": 1.0333333333333334
+      },
+      "energyWeaponsLocked": false,
+      "weaponSlot": 1,
+      "threats": [
+        {
+          "id": "jungle-scouts-0",
+          "x": 5619.134999999963,
+          "y": 575.7957193479057,
+          "health": 44.55,
+          "width": 98,
+          "height": 82
+        },
+        {
+          "id": "jungle-scouts-2",
+          "x": 5764.4935,
+          "y": 514,
+          "health": 55.35,
+          "width": 118,
+          "height": 110
+        },
+        {
+          "id": "vey-guard-0",
+          "x": 3782.8817729392167,
+          "y": 517,
+          "health": 166.49999999999997,
+          "width": 88,
+          "height": 107
+        }
+      ]
+    },
+    {
+      "t": 39.017,
+      "phase": "target",
+      "x": 4814.47,
+      "y": 508,
+      "vx": 183.52,
+      "vy": 0,
+      "health": 150.9,
+      "stamina": 100,
+      "energy": 66.8,
+      "kills": 5,
+      "boss": {
+        "active": true,
+        "alive": true,
+        "health": 600,
+        "x": 6983.75833333333
+      },
+      "scans": [
+        true,
+        true,
+        true
+      ],
+      "recoveries": [
+        true
+      ],
+      "objectives": [
+        "scan-vanguard",
+        "recover-transponder"
+      ],
+      "message": "Cible Apex détectée : Commandante Vey.",
+      "grounded": true,
+      "climbing": false,
+      "load": {
+        "massKg": 0.4,
+        "volumeUnits": 1,
+        "capacityMassKg": 36,
+        "capacityVolumeUnits": 24,
+        "ratio": 0.041666666666666664,
+        "overloaded": false,
+        "movementMultiplier": 0.9866666666666667,
+        "jumpMultiplier": 0.9933333333333333,
+        "climbStaminaMultiplier": 1.025,
+        "noiseMultiplier": 1.0333333333333334
+      },
+      "energyWeaponsLocked": false,
+      "weaponSlot": 1,
+      "threats": [
+        {
+          "id": "jungle-scouts-0",
+          "x": 5593.654999999956,
+          "y": 542,
+          "health": 44.55,
+          "width": 98,
+          "height": 82
+        },
+        {
+          "id": "jungle-scouts-2",
+          "x": 5686.583500000007,
+          "y": 514,
+          "health": 55.35,
+          "width": 118,
+          "height": 110
+        },
+        {
+          "id": "vey-guard-0",
+          "x": 3817.826972939215,
+          "y": 517,
+          "health": 78.89393199999998,
+          "width": 88,
+          "height": 107
+        },
+        {
+          "id": "vey-guard-1",
+          "x": 5734.8673999999955,
+          "y": 535,
+          "health": 166.49999999999997,
+          "width": 106,
+          "height": 89
+        }
+      ]
+    },
+    {
+      "t": 40.017,
+      "phase": "target",
+      "x": 4997.99,
+      "y": 508,
+      "vx": 183.52,
+      "vy": 0,
+      "health": 150.9,
+      "stamina": 100,
+      "energy": 42.23,
+      "kills": 5,
+      "boss": {
+        "active": true,
+        "alive": true,
+        "health": 600,
+        "x": 7062.106171806847
+      },
+      "scans": [
+        true,
+        true,
+        true
+      ],
+      "recoveries": [
+        true
+      ],
+      "objectives": [
+        "scan-vanguard",
+        "recover-transponder"
+      ],
+      "message": "La fusée de Vey révèle ta signature.",
+      "grounded": true,
+      "climbing": false,
+      "load": {
+        "massKg": 0.4,
+        "volumeUnits": 1,
+        "capacityMassKg": 36,
+        "capacityVolumeUnits": 24,
+        "ratio": 0.041666666666666664,
+        "overloaded": false,
+        "movementMultiplier": 0.9866666666666667,
+        "jumpMultiplier": 0.9933333333333333,
+        "climbStaminaMultiplier": 1.025,
+        "noiseMultiplier": 1.0333333333333334
+      },
+      "energyWeaponsLocked": false,
+      "weaponSlot": 1,
+      "threats": [
+        {
+          "id": "jungle-scouts-0",
+          "x": 5670.094999999977,
+          "y": 542,
+          "health": 44.55,
+          "width": 98,
+          "height": 82
+        },
+        {
+          "id": "jungle-scouts-2",
+          "x": 5611.703333333341,
+          "y": 514,
+          "health": 55.35,
+          "width": 118,
+          "height": 110
+        },
+        {
+          "id": "vey-guard-0",
+          "x": 3871.0709729392192,
+          "y": 517,
+          "health": 78.89393199999998,
+          "width": 88,
+          "height": 107
+        },
+        {
+          "id": "vey-guard-1",
+          "x": 5696.311399999988,
+          "y": 535,
+          "health": 166.49999999999997,
+          "width": 106,
+          "height": 89
+        }
+      ]
+    },
+    {
+      "t": 41.017,
+      "phase": "target",
+      "x": 5181.51,
+      "y": 508,
+      "vx": 183.52,
+      "vy": 0,
+      "health": 150.9,
+      "stamina": 100,
+      "energy": 52.23,
+      "kills": 6,
+      "boss": {
+        "active": true,
+        "alive": true,
+        "health": 600,
+        "x": 7121.5742319575
+      },
+      "scans": [
+        true,
+        true,
+        true
+      ],
+      "recoveries": [
+        true
+      ],
+      "objectives": [
+        "scan-vanguard",
+        "recover-transponder"
+      ],
+      "message": "La fusée de Vey révèle ta signature.",
+      "grounded": true,
+      "climbing": false,
+      "load": {
+        "massKg": 0.4,
+        "volumeUnits": 1,
+        "capacityMassKg": 36,
+        "capacityVolumeUnits": 24,
+        "ratio": 0.041666666666666664,
+        "overloaded": false,
+        "movementMultiplier": 0.9866666666666667,
+        "jumpMultiplier": 0.9933333333333333,
+        "climbStaminaMultiplier": 1.025,
+        "noiseMultiplier": 1.0333333333333334
+      },
+      "energyWeaponsLocked": false,
+      "weaponSlot": 1,
+      "threats": [
+        {
+          "id": "jungle-scouts-0",
+          "x": 5746.534999999997,
+          "y": 542,
+          "health": 44.55,
+          "width": 98,
+          "height": 82
+        },
+        {
+          "id": "vey-guard-0",
+          "x": 3924.3149729392235,
+          "y": 517,
+          "health": 78.89393199999998,
+          "width": 88,
+          "height": 107
+        },
+        {
+          "id": "vey-guard-1",
+          "x": 5657.75539999998,
+          "y": 535,
+          "health": 166.49999999999997,
+          "width": 106,
+          "height": 89
+        }
+      ]
+    },
+    {
+      "t": 42.017,
+      "phase": "target",
+      "x": 5379.34,
+      "y": 475.51,
+      "vx": 288.34,
+      "vy": 39.17,
+      "health": 150.9,
+      "stamina": 100,
+      "energy": 27.67,
+      "kills": 6,
+      "boss": {
+        "active": true,
+        "alive": true,
+        "health": 600,
+        "x": 7240.474231957494
+      },
+      "scans": [
+        true,
+        true,
+        true
+      ],
+      "recoveries": [
+        true
+      ],
+      "objectives": [
+        "scan-vanguard",
+        "recover-transponder"
+      ],
+      "message": "La fusée de Vey révèle ta signature.",
+      "grounded": false,
+      "climbing": false,
+      "load": {
+        "massKg": 0.4,
+        "volumeUnits": 1,
+        "capacityMassKg": 36,
+        "capacityVolumeUnits": 24,
+        "ratio": 0.041666666666666664,
+        "overloaded": false,
+        "movementMultiplier": 0.9866666666666667,
+        "jumpMultiplier": 0.9933333333333333,
+        "climbStaminaMultiplier": 1.025,
+        "noiseMultiplier": 1.0333333333333334
+      },
+      "energyWeaponsLocked": false,
+      "weaponSlot": 1,
+      "threats": [
+        {
+          "id": "jungle-scouts-0",
+          "x": 5704.341333333341,
+          "y": 542,
+          "health": 44.55,
+          "width": 98,
+          "height": 82
+        },
+        {
+          "id": "vey-guard-0",
+          "x": 3879.94497293922,
+          "y": 517,
+          "health": 78.89393199999998,
+          "width": 88,
+          "height": 107
+        },
+        {
+          "id": "vey-guard-1",
+          "x": 5643.511099999976,
+          "y": 535,
+          "health": 78.89393199999998,
+          "width": 106,
+          "height": 89
+        }
+      ]
+    },
+    {
+      "t": 43.017,
+      "phase": "target",
+      "x": 5550.59,
+      "y": 481.73,
+      "vx": 246.25,
+      "vy": -176.67,
+      "health": 150.9,
+      "stamina": 99.57,
+      "energy": 37.67,
+      "kills": 6,
+      "boss": {
+        "active": true,
+        "alive": true,
+        "health": 600,
+        "x": 7359.3742319574885
+      },
+      "scans": [
+        true,
+        true,
+        true
+      ],
+      "recoveries": [
+        true
+      ],
+      "objectives": [
+        "scan-vanguard",
+        "recover-transponder"
+      ],
+      "message": "Enchainement de lames 2/3.",
+      "grounded": false,
+      "climbing": false,
+      "load": {
+        "massKg": 0.4,
+        "volumeUnits": 1,
+        "capacityMassKg": 36,
+        "capacityVolumeUnits": 24,
+        "ratio": 0.041666666666666664,
+        "overloaded": false,
+        "movementMultiplier": 0.9866666666666667,
+        "jumpMultiplier": 0.9933333333333333,
+        "climbStaminaMultiplier": 1.025,
+        "noiseMultiplier": 1.0333333333333334
+      },
+      "energyWeaponsLocked": false,
+      "weaponSlot": 1,
+      "threats": [
+        {
+          "id": "jungle-scouts-0",
+          "x": 5640.641333333351,
+          "y": 548.6304565270664,
+          "health": 44.55,
+          "width": 98,
+          "height": 82
+        },
+        {
+          "id": "vey-guard-0",
+          "x": 3924.3149729392235,
+          "y": 517,
+          "health": 78.89393199999998,
+          "width": 88,
+          "height": 107
+        },
+        {
+          "id": "vey-guard-1",
+          "x": 5654.155164556646,
+          "y": 535,
+          "health": 54.25393199999998,
+          "width": 106,
+          "height": 89
+        }
+      ]
+    },
+    {
+      "t": 44.017,
+      "phase": "target",
+      "x": 5781.31,
+      "y": 508,
+      "vx": 214.61,
+      "vy": 0,
+      "health": 150.9,
+      "stamina": 98.8,
+      "energy": 13.1,
+      "kills": 8,
+      "boss": {
+        "active": true,
+        "alive": true,
+        "health": 600,
+        "x": 7478.274231957483
+      },
+      "scans": [
+        true,
+        true,
+        true
+      ],
+      "recoveries": [
+        true
+      ],
+      "objectives": [
+        "scan-vanguard",
+        "recover-transponder"
+      ],
+      "message": "Camp avancé de Vey — Saboter les révélateurs et transformer le camp en terrain de duel.",
+      "grounded": true,
+      "climbing": false,
+      "load": {
+        "massKg": 0.4,
+        "volumeUnits": 1,
+        "capacityMassKg": 36,
+        "capacityVolumeUnits": 24,
+        "ratio": 0.041666666666666664,
+        "overloaded": false,
+        "movementMultiplier": 0.9866666666666667,
+        "jumpMultiplier": 0.9933333333333333,
+        "climbStaminaMultiplier": 1.025,
+        "noiseMultiplier": 1.0333333333333334
+      },
+      "energyWeaponsLocked": false,
+      "weaponSlot": 1,
+      "threats": [
+        {
+          "id": "vey-guard-0",
+          "x": 3977.5589729392277,
+          "y": 517,
+          "health": 78.89393199999998,
+          "width": 88,
+          "height": 107
+        }
+      ]
+    },
+    {
+      "t": 45.017,
+      "phase": "target",
+      "x": 6072.4,
+      "y": 508,
+      "vx": 296,
+      "vy": 0,
+      "health": 150.9,
+      "stamina": 100,
+      "energy": 23.1,
+      "kills": 8,
+      "boss": {
+        "active": true,
+        "alive": true,
+        "health": 600,
+        "x": 7574
+      },
+      "scans": [
+        true,
+        true,
+        true
+      ],
+      "recoveries": [
+        true
+      ],
+      "objectives": [
+        "scan-vanguard",
+        "recover-transponder"
+      ],
+      "message": "Camp avancé de Vey — Saboter les révélateurs et transformer le camp en terrain de duel.",
+      "grounded": true,
+      "climbing": false,
+      "load": {
+        "massKg": 0.4,
+        "volumeUnits": 1,
+        "capacityMassKg": 36,
+        "capacityVolumeUnits": 24,
+        "ratio": 0.041666666666666664,
+        "overloaded": false,
+        "movementMultiplier": 0.9866666666666667,
+        "jumpMultiplier": 0.9933333333333333,
+        "climbStaminaMultiplier": 1.025,
+        "noiseMultiplier": 1.0333333333333334
+      },
+      "energyWeaponsLocked": false,
+      "weaponSlot": 1,
+      "threats": [
+        {
+          "id": "vey-guard-0",
+          "x": 3954.486572939226,
+          "y": 517,
+          "health": 78.89393199999998,
+          "width": 88,
+          "height": 107
+        }
+      ]
+    },
+    {
+      "t": 46.017,
+      "phase": "target",
+      "x": 6368.4,
+      "y": 508,
+      "vx": 296,
+      "vy": 0,
+      "health": 150.9,
+      "stamina": 100,
+      "energy": 33.1,
+      "kills": 8,
+      "boss": {
+        "active": true,
+        "alive": true,
+        "health": 600,
+        "x": 7574
+      },
+      "scans": [
+        true,
+        true,
+        true
+      ],
+      "recoveries": [
+        true
+      ],
+      "objectives": [
+        "scan-vanguard",
+        "recover-transponder"
+      ],
+      "message": "Camp avancé de Vey — Saboter les révélateurs et transformer le camp en terrain de duel.",
+      "grounded": true,
+      "climbing": false,
+      "load": {
+        "massKg": 0.4,
+        "volumeUnits": 1,
+        "capacityMassKg": 36,
+        "capacityVolumeUnits": 24,
+        "ratio": 0.041666666666666664,
+        "overloaded": false,
+        "movementMultiplier": 0.9866666666666667,
+        "jumpMultiplier": 0.9933333333333333,
+        "climbStaminaMultiplier": 1.025,
+        "noiseMultiplier": 1.0333333333333334
+      },
+      "energyWeaponsLocked": false,
+      "weaponSlot": 1,
+      "threats": [
+        {
+          "id": "vey-guard-0",
+          "x": 3977.5589729392277,
+          "y": 517,
+          "health": 78.89393199999998,
+          "width": 88,
+          "height": 107
+        }
+      ]
+    },
+    {
+      "t": 47.017,
+      "phase": "target",
+      "x": 6664.4,
+      "y": 508,
+      "vx": 296,
+      "vy": 0,
+      "health": 150.9,
+      "stamina": 100,
+      "energy": 43.1,
+      "kills": 8,
+      "boss": {
+        "active": true,
+        "alive": true,
+        "health": 600,
+        "x": 7574
+      },
+      "scans": [
+        true,
+        true,
+        true
+      ],
+      "recoveries": [
+        true
+      ],
+      "objectives": [
+        "scan-vanguard",
+        "recover-transponder"
+      ],
+      "message": "La fusée de Vey révèle ta signature.",
+      "grounded": true,
+      "climbing": false,
+      "load": {
+        "massKg": 0.4,
+        "volumeUnits": 1,
+        "capacityMassKg": 36,
+        "capacityVolumeUnits": 24,
+        "ratio": 0.041666666666666664,
+        "overloaded": false,
+        "movementMultiplier": 0.9866666666666667,
+        "jumpMultiplier": 0.9933333333333333,
+        "climbStaminaMultiplier": 1.025,
+        "noiseMultiplier": 1.0333333333333334
+      },
+      "energyWeaponsLocked": false,
+      "weaponSlot": 1,
+      "threats": [
+        {
+          "id": "vey-guard-0",
+          "x": 4030.802972939232,
+          "y": 517,
+          "health": 78.89393199999998,
+          "width": 88,
+          "height": 107
+        }
+      ]
+    },
+    {
+      "t": 48.017,
+      "phase": "target",
+      "x": 6960.4,
+      "y": 508,
+      "vx": 296,
+      "vy": 0,
+      "health": 150.9,
+      "stamina": 100,
+      "energy": 18.53,
+      "kills": 8,
+      "boss": {
+        "active": true,
+        "alive": true,
+        "health": 600,
+        "x": 7574
+      },
+      "scans": [
+        true,
+        true,
+        true
+      ],
+      "recoveries": [
+        true
+      ],
+      "objectives": [
+        "scan-vanguard",
+        "recover-transponder"
+      ],
+      "message": "Clairière de l'orage — Vaincre Vey, accomplir le rite puis tenir la balise d'extraction.",
+      "grounded": true,
+      "climbing": false,
+      "load": {
+        "massKg": 0.4,
+        "volumeUnits": 1,
+        "capacityMassKg": 36,
+        "capacityVolumeUnits": 24,
+        "ratio": 0.041666666666666664,
+        "overloaded": false,
+        "movementMultiplier": 0.9866666666666667,
+        "jumpMultiplier": 0.9933333333333333,
+        "climbStaminaMultiplier": 1.025,
+        "noiseMultiplier": 1.0333333333333334
+      },
+      "energyWeaponsLocked": false,
+      "weaponSlot": 1,
+      "threats": [
+        {
+          "id": "vey-guard-0",
+          "x": 4027.254117895016,
+          "y": 517,
+          "health": 78.89393199999998,
+          "width": 88,
+          "height": 107
+        }
+      ]
+    },
+    {
+      "t": 49.017,
+      "phase": "target",
+      "x": 7256.4,
+      "y": 508,
+      "vx": 296,
+      "vy": 0,
+      "health": 150.9,
+      "stamina": 100,
+      "energy": 28.53,
+      "kills": 8,
+      "boss": {
+        "active": true,
+        "alive": true,
+        "health": 512.393932,
+        "x": 7574
+      },
+      "scans": [
+        true,
+        true,
+        true
+      ],
+      "recoveries": [
+        true
+      ],
+      "objectives": [
+        "scan-vanguard",
+        "recover-transponder"
+      ],
+      "message": "Clairière de l'orage — Vaincre Vey, accomplir le rite puis tenir la balise d'extraction.",
+      "grounded": true,
+      "climbing": false,
+      "load": {
+        "massKg": 0.4,
+        "volumeUnits": 1,
+        "capacityMassKg": 36,
+        "capacityVolumeUnits": 24,
+        "ratio": 0.041666666666666664,
+        "overloaded": false,
+        "movementMultiplier": 0.9866666666666667,
+        "jumpMultiplier": 0.9933333333333333,
+        "climbStaminaMultiplier": 1.025,
+        "noiseMultiplier": 1.0333333333333334
+      },
+      "energyWeaponsLocked": false,
+      "weaponSlot": 1,
+      "threats": [
+        {
+          "id": "vey-guard-0",
+          "x": 4030.8037178950162,
+          "y": 517,
+          "health": 78.89393199999998,
+          "width": 88,
+          "height": 107
+        }
+      ]
+    },
+    {
+      "t": 50.017,
+      "phase": "target",
+      "x": 7422.57,
+      "y": 508,
+      "vx": 0.01,
+      "vy": 0,
+      "health": 150.9,
+      "stamina": 100,
+      "energy": 38.53,
+      "kills": 8,
+      "boss": {
+        "active": true,
+        "alive": true,
+        "health": 512.393932,
+        "x": 7504.206666666652
+      },
+      "scans": [
+        true,
+        true,
+        true
+      ],
+      "recoveries": [
+        true
+      ],
+      "objectives": [
+        "scan-vanguard",
+        "recover-transponder"
+      ],
+      "message": "Clairière de l'orage — Vaincre Vey, accomplir le rite puis tenir la balise d'extraction.",
+      "grounded": true,
+      "climbing": false,
+      "load": {
+        "massKg": 0.4,
+        "volumeUnits": 1,
+        "capacityMassKg": 36,
+        "capacityVolumeUnits": 24,
+        "ratio": 0.041666666666666664,
+        "overloaded": false,
+        "movementMultiplier": 0.9866666666666667,
+        "jumpMultiplier": 0.9933333333333333,
+        "climbStaminaMultiplier": 1.025,
+        "noiseMultiplier": 1.0333333333333334
+      },
+      "energyWeaponsLocked": false,
+      "weaponSlot": 1,
+      "threats": [
+        {
+          "id": "vey-guard-0",
+          "x": 4083.994958902708,
+          "y": 517,
+          "health": 78.89393199999998,
+          "width": 88,
+          "height": 107
+        }
+      ]
+    },
+    {
+      "t": 51.017,
+      "phase": "target",
+      "x": 7422.57,
+      "y": 508,
+      "vx": 0,
+      "vy": 0,
+      "health": 150.9,
+      "stamina": 93.2,
+      "energy": 13.97,
+      "kills": 8,
+      "boss": {
+        "active": true,
+        "alive": true,
+        "health": 378.14786399999997,
+        "x": 7420.357644121058
+      },
+      "scans": [
+        true,
+        true,
+        true
+      ],
+      "recoveries": [
+        true
+      ],
+      "objectives": [
+        "scan-vanguard",
+        "recover-transponder"
+      ],
+      "message": "Enchainement de lames 2/3.",
+      "grounded": true,
+      "climbing": false,
+      "load": {
+        "massKg": 0.4,
+        "volumeUnits": 1,
+        "capacityMassKg": 36,
+        "capacityVolumeUnits": 24,
+        "ratio": 0.041666666666666664,
+        "overloaded": false,
+        "movementMultiplier": 0.9866666666666667,
+        "jumpMultiplier": 0.9933333333333333,
+        "climbStaminaMultiplier": 1.025,
+        "noiseMultiplier": 1.0333333333333334
+      },
+      "energyWeaponsLocked": false,
+      "weaponSlot": 1,
+      "threats": [
+        {
+          "id": "vey-guard-0",
+          "x": 4101.702202714424,
+          "y": 517,
+          "health": 78.89393199999998,
+          "width": 88,
+          "height": 107
+        }
+      ]
+    },
+    {
+      "t": 52.017,
+      "phase": "target",
+      "x": 7422.57,
+      "y": 508,
+      "vx": 0,
+      "vy": 0,
+      "health": 150.9,
+      "stamina": 89.7,
+      "energy": 23.97,
+      "kills": 8,
+      "boss": {
+        "active": true,
+        "alive": true,
+        "health": 325.78786399999996,
+        "x": 7468.150700249207
+      },
+      "scans": [
+        true,
+        true,
+        true
+      ],
+      "recoveries": [
+        true
+      ],
+      "objectives": [
+        "scan-vanguard",
+        "recover-transponder"
+      ],
+      "message": "Enchainement de lames 2/3.",
+      "grounded": true,
+      "climbing": false,
+      "load": {
+        "massKg": 0.4,
+        "volumeUnits": 1,
+        "capacityMassKg": 36,
+        "capacityVolumeUnits": 24,
+        "ratio": 0.041666666666666664,
+        "overloaded": false,
+        "movementMultiplier": 0.9866666666666667,
+        "jumpMultiplier": 0.9933333333333333,
+        "climbStaminaMultiplier": 1.025,
+        "noiseMultiplier": 1.0333333333333334
+      },
+      "energyWeaponsLocked": false,
+      "weaponSlot": 1,
+      "threats": [
+        {
+          "id": "vey-guard-0",
+          "x": 4083.994117427125,
+          "y": 517,
+          "health": 78.89393199999998,
+          "width": 88,
+          "height": 107
+        }
+      ]
+    },
+    {
+      "t": 53.017,
+      "phase": "target",
+      "x": 7422.57,
+      "y": 508,
+      "vx": 0,
+      "vy": 0,
+      "health": 150.9,
+      "stamina": 86.2,
+      "energy": 33.97,
+      "kills": 8,
+      "boss": {
+        "active": true,
+        "alive": true,
+        "health": 248.78786399999996,
+        "x": 7519.282732751916
+      },
+      "scans": [
+        true,
+        true,
+        true
+      ],
+      "recoveries": [
+        true
+      ],
+      "objectives": [
+        "scan-vanguard",
+        "recover-transponder"
+      ],
+      "message": "Enchainement de lames 2/3.",
+      "grounded": true,
+      "climbing": false,
+      "load": {
+        "massKg": 0.4,
+        "volumeUnits": 1,
+        "capacityMassKg": 36,
+        "capacityVolumeUnits": 24,
+        "ratio": 0.041666666666666664,
+        "overloaded": false,
+        "movementMultiplier": 0.9866666666666667,
+        "jumpMultiplier": 0.9933333333333333,
+        "climbStaminaMultiplier": 1.025,
+        "noiseMultiplier": 1.0333333333333334
+      },
+      "energyWeaponsLocked": false,
+      "weaponSlot": 1,
+      "threats": [
+        {
+          "id": "vey-guard-0",
+          "x": 4137.102320194118,
+          "y": 517,
+          "health": 78.89393199999998,
+          "width": 88,
+          "height": 107
+        }
+      ]
+    },
+    {
+      "t": 54.017,
+      "phase": "target",
+      "x": 7422.57,
+      "y": 508,
+      "vx": 0,
+      "vy": 0,
+      "health": 150.9,
+      "stamina": 100,
+      "energy": 43.97,
+      "kills": 8,
+      "boss": {
+        "active": true,
+        "alive": true,
+        "health": 224.14786399999997,
+        "x": 7536.787498370579
+      },
+      "scans": [
+        true,
+        true,
+        true
+      ],
+      "recoveries": [
+        true
+      ],
+      "objectives": [
+        "scan-vanguard",
+        "recover-transponder"
+      ],
+      "message": "Enchainement de lames 2/3.",
+      "grounded": true,
+      "climbing": false,
+      "load": {
+        "massKg": 0.4,
+        "volumeUnits": 1,
+        "capacityMassKg": 36,
+        "capacityVolumeUnits": 24,
+        "ratio": 0.041666666666666664,
+        "overloaded": false,
+        "movementMultiplier": 0.9866666666666667,
+        "jumpMultiplier": 0.9933333333333333,
+        "climbStaminaMultiplier": 1.025,
+        "noiseMultiplier": 1.0333333333333334
+      },
+      "energyWeaponsLocked": false,
+      "weaponSlot": 1,
+      "threats": [
+        {
+          "id": "vey-guard-0",
+          "x": 4175.999840142545,
+          "y": 517,
+          "health": 78.89393199999998,
+          "width": 88,
+          "height": 107
+        }
+      ]
+    },
+    {
+      "t": 55.017,
+      "phase": "target",
+      "x": 7422.57,
+      "y": 508,
+      "vx": 0,
+      "vy": 0,
+      "health": 150.9,
+      "stamina": 94.5,
+      "energy": 19.4,
+      "kills": 8,
+      "boss": {
+        "active": true,
+        "alive": true,
+        "health": 89.90179599999998,
+        "x": 7564.211949351965
+      },
+      "scans": [
+        true,
+        true,
+        true
+      ],
+      "recoveries": [
+        true
+      ],
+      "objectives": [
+        "scan-vanguard",
+        "recover-transponder"
+      ],
+      "message": "Enchainement de lames 3/3.",
+      "grounded": true,
+      "climbing": false,
+      "load": {
+        "massKg": 0.4,
+        "volumeUnits": 1,
+        "capacityMassKg": 36,
+        "capacityVolumeUnits": 24,
+        "ratio": 0.041666666666666664,
+        "overloaded": false,
+        "movementMultiplier": 0.9866666666666667,
+        "jumpMultiplier": 0.9933333333333333,
+        "climbStaminaMultiplier": 1.025,
+        "noiseMultiplier": 1.0333333333333334
+      },
+      "energyWeaponsLocked": false,
+      "weaponSlot": 1,
+      "threats": [
+        {
+          "id": "vey-guard-0",
+          "x": 4137.094267643014,
+          "y": 517,
+          "health": 78.89393199999998,
+          "width": 88,
+          "height": 107
+        }
+      ]
+    },
+    {
+      "t": 56.017,
+      "phase": "target",
+      "x": 7422.57,
+      "y": 490.22,
+      "vx": 0,
+      "vy": 224.17,
+      "health": 150.9,
+      "stamina": 91.5,
+      "energy": 29.4,
+      "kills": 8,
+      "boss": {
+        "active": true,
+        "alive": true,
+        "health": 59.54179599999998,
+        "x": 7542.853400580738
+      },
+      "scans": [
+        true,
+        true,
+        true
+      ],
+      "recoveries": [
+        true
+      ],
+      "objectives": [
+        "scan-vanguard",
+        "recover-transponder"
+      ],
+      "message": "Enchainement de lames 3/3.",
+      "grounded": false,
+      "climbing": false,
+      "load": {
+        "massKg": 0.4,
+        "volumeUnits": 1,
+        "capacityMassKg": 36,
+        "capacityVolumeUnits": 24,
+        "ratio": 0.041666666666666664,
+        "overloaded": false,
+        "movementMultiplier": 0.9866666666666667,
+        "jumpMultiplier": 0.9933333333333333,
+        "climbStaminaMultiplier": 1.025,
+        "noiseMultiplier": 1.0333333333333334
+      },
+      "energyWeaponsLocked": false,
+      "weaponSlot": 1,
+      "threats": [
+        {
+          "id": "vey-guard-0",
+          "x": 4190.155281863777,
+          "y": 517,
+          "health": 78.89393199999998,
+          "width": 88,
+          "height": 107
+        }
+      ]
+    },
+    {
+      "t": 57.017,
+      "phase": "target",
+      "x": 7422.57,
+      "y": 474.86,
+      "vx": 0,
+      "vy": 8.33,
+      "health": 150.9,
+      "stamina": 97.17,
+      "energy": 39.4,
+      "kills": 8,
+      "boss": {
+        "active": true,
+        "alive": true,
+        "health": 37.54179599999998,
+        "x": 7559.872884188699
+      },
+      "scans": [
+        true,
+        true,
+        true
+      ],
+      "recoveries": [
+        true
+      ],
+      "objectives": [
+        "scan-vanguard",
+        "recover-transponder"
+      ],
+      "message": "Enchainement de lames 2/3.",
+      "grounded": false,
+      "climbing": false,
+      "load": {
+        "massKg": 0.4,
+        "volumeUnits": 1,
+        "capacityMassKg": 36,
+        "capacityVolumeUnits": 24,
+        "ratio": 0.041666666666666664,
+        "overloaded": false,
+        "movementMultiplier": 0.9866666666666667,
+        "jumpMultiplier": 0.9933333333333333,
+        "climbStaminaMultiplier": 1.025,
+        "noiseMultiplier": 1.0333333333333334
+      },
+      "energyWeaponsLocked": false,
+      "weaponSlot": 1,
+      "threats": [
+        {
+          "id": "vey-guard-0",
+          "x": 4243.168814248068,
+          "y": 517,
+          "health": 78.89393199999998,
+          "width": 88,
+          "height": 107
+        }
+      ]
+    },
+    {
+      "t": 58.017,
+      "phase": "trophy",
+      "x": 7506.72,
+      "y": 508,
+      "vx": 290.07,
+      "vy": 0,
+      "health": 150.9,
+      "stamina": 100,
+      "energy": 14.83,
+      "kills": 8,
+      "boss": {
+        "active": true,
+        "alive": false,
+        "health": 0,
+        "x": 7531.383876401331
+      },
+      "scans": [
+        true,
+        true,
+        true
+      ],
+      "recoveries": [
+        true
+      ],
+      "objectives": [
+        "scan-vanguard",
+        "recover-transponder",
+        "defeat-vey"
+      ],
+      "message": "Commandante Vey est vaincu. Intégrité du trophée 75 %. Réclame le trophée avec [E].",
+      "grounded": true,
+      "climbing": false,
+      "load": {
+        "massKg": 0.4,
+        "volumeUnits": 1,
+        "capacityMassKg": 36,
+        "capacityVolumeUnits": 24,
+        "ratio": 0.041666666666666664,
+        "overloaded": false,
+        "movementMultiplier": 0.9866666666666667,
+        "jumpMultiplier": 0.9933333333333333,
+        "climbStaminaMultiplier": 1.025,
+        "noiseMultiplier": 1.0333333333333334
+      },
+      "energyWeaponsLocked": false,
+      "weaponSlot": 1,
+      "threats": [
+        {
+          "id": "vey-guard-0",
+          "x": 4197.21066201194,
+          "y": 517,
+          "health": 78.89393199999998,
+          "width": 88,
+          "height": 107
+        }
+      ]
+    },
+    {
+      "t": 59.017,
+      "phase": "trophy",
+      "x": 7552.08,
+      "y": 508,
+      "vx": 0,
+      "vy": 0,
+      "health": 150.9,
+      "stamina": 100,
+      "energy": 24.83,
+      "kills": 8,
+      "boss": {
+        "active": true,
+        "alive": false,
+        "health": 0,
+        "x": 7531.383876401331
+      },
+      "scans": [
+        true,
+        true,
+        true
+      ],
+      "recoveries": [
+        true
+      ],
+      "objectives": [
+        "scan-vanguard",
+        "recover-transponder",
+        "defeat-vey"
+      ],
+      "message": "Rite du trophée : suis la séquence GAUCHE, DROITE, LAMES et VALIDER au rythme du cercle.",
+      "grounded": true,
+      "climbing": false,
+      "load": {
+        "massKg": 0.4,
+        "volumeUnits": 1,
+        "capacityMassKg": 36,
+        "capacityVolumeUnits": 24,
+        "ratio": 0.041666666666666664,
+        "overloaded": false,
+        "movementMultiplier": 0.9866666666666667,
+        "jumpMultiplier": 0.9933333333333333,
+        "climbStaminaMultiplier": 1.025,
+        "noiseMultiplier": 1.0333333333333334
+      },
+      "energyWeaponsLocked": false,
+      "weaponSlot": 1,
+      "threats": [
+        {
+          "id": "vey-guard-0",
+          "x": 4243.186641056627,
+          "y": 517,
+          "health": 78.89393199999998,
+          "width": 88,
+          "height": 107
+        }
+      ]
+    },
+    {
+      "t": 60.017,
+      "phase": "trophy",
+      "x": 7552.08,
+      "y": 508,
+      "vx": 0,
+      "vy": 0,
+      "health": 150.9,
+      "stamina": 100,
+      "energy": 34.83,
+      "kills": 8,
+      "boss": {
+        "active": true,
+        "alive": false,
+        "health": 0,
+        "x": 7531.383876401331
+      },
+      "scans": [
+        true,
+        true,
+        true
+      ],
+      "recoveries": [
+        true
+      ],
+      "objectives": [
+        "scan-vanguard",
+        "recover-transponder",
+        "defeat-vey"
+      ],
+      "message": "Rite du trophée : suis la séquence GAUCHE, DROITE, LAMES et VALIDER au rythme du cercle.",
+      "grounded": true,
+      "climbing": false,
+      "load": {
+        "massKg": 0.4,
+        "volumeUnits": 1,
+        "capacityMassKg": 36,
+        "capacityVolumeUnits": 24,
+        "ratio": 0.041666666666666664,
+        "overloaded": false,
+        "movementMultiplier": 0.9866666666666667,
+        "jumpMultiplier": 0.9933333333333333,
+        "climbStaminaMultiplier": 1.025,
+        "noiseMultiplier": 1.0333333333333334
+      },
+      "energyWeaponsLocked": false,
+      "weaponSlot": 1,
+      "threats": [
+        {
+          "id": "vey-guard-0",
+          "x": 4296.225567837722,
+          "y": 517,
+          "health": 78.89393199999998,
+          "width": 88,
+          "height": 107
+        }
+      ]
+    },
+    {
+      "t": 61.017,
+      "phase": "trophy",
+      "x": 7552.08,
+      "y": 508,
+      "vx": 0,
+      "vy": 0,
+      "health": 150.9,
+      "stamina": 100,
+      "energy": 44.83,
+      "kills": 8,
+      "boss": {
+        "active": true,
+        "alive": false,
+        "health": 0,
+        "x": 7531.383876401331
+      },
+      "scans": [
+        true,
+        true,
+        true
+      ],
+      "recoveries": [
+        true
+      ],
+      "objectives": [
+        "scan-vanguard",
+        "recover-transponder",
+        "defeat-vey"
+      ],
+      "message": "Rite du trophée : suis la séquence GAUCHE, DROITE, LAMES et VALIDER au rythme du cercle.",
+      "grounded": true,
+      "climbing": false,
+      "load": {
+        "massKg": 0.4,
+        "volumeUnits": 1,
+        "capacityMassKg": 36,
+        "capacityVolumeUnits": 24,
+        "ratio": 0.041666666666666664,
+        "overloaded": false,
+        "movementMultiplier": 0.9866666666666667,
+        "jumpMultiplier": 0.9933333333333333,
+        "climbStaminaMultiplier": 1.025,
+        "noiseMultiplier": 1.0333333333333334
+      },
+      "energyWeaponsLocked": false,
+      "weaponSlot": 1,
+      "threats": [
+        {
+          "id": "vey-guard-0",
+          "x": 4271.4609782583,
+          "y": 517,
+          "health": 78.89393199999998,
+          "width": 88,
+          "height": 107
+        }
+      ]
+    },
+    {
+      "t": 62.017,
+      "phase": "trophy",
+      "x": 7552.08,
+      "y": 508,
+      "vx": 0,
+      "vy": 0,
+      "health": 150.9,
+      "stamina": 100,
+      "energy": 54.83,
+      "kills": 8,
+      "boss": {
+        "active": true,
+        "alive": false,
+        "health": 0,
+        "x": 7531.383876401331
+      },
+      "scans": [
+        true,
+        true,
+        true
+      ],
+      "recoveries": [
+        true
+      ],
+      "objectives": [
+        "scan-vanguard",
+        "recover-transponder",
+        "defeat-vey"
+      ],
+      "message": "Rite du trophée : suis la séquence GAUCHE, DROITE, LAMES et VALIDER au rythme du cercle.",
+      "grounded": true,
+      "climbing": false,
+      "load": {
+        "massKg": 0.4,
+        "volumeUnits": 1,
+        "capacityMassKg": 36,
+        "capacityVolumeUnits": 24,
+        "ratio": 0.041666666666666664,
+        "overloaded": false,
+        "movementMultiplier": 0.9866666666666667,
+        "jumpMultiplier": 0.9933333333333333,
+        "climbStaminaMultiplier": 1.025,
+        "noiseMultiplier": 1.0333333333333334
+      },
+      "energyWeaponsLocked": false,
+      "weaponSlot": 1,
+      "threats": [
+        {
+          "id": "vey-guard-0",
+          "x": 4296.236074748996,
+          "y": 517,
+          "health": 78.89393199999998,
+          "width": 88,
+          "height": 107
+        }
+      ]
+    },
+    {
+      "t": 63.017,
+      "phase": "trophy",
+      "x": 7552.08,
+      "y": 508,
+      "vx": 0,
+      "vy": 0,
+      "health": 150.9,
+      "stamina": 100,
+      "energy": 64.83,
+      "kills": 8,
+      "boss": {
+        "active": true,
+        "alive": false,
+        "health": 0,
+        "x": 7531.383876401331
+      },
+      "scans": [
+        true,
+        true,
+        true
+      ],
+      "recoveries": [
+        true
+      ],
+      "objectives": [
+        "scan-vanguard",
+        "recover-transponder",
+        "defeat-vey"
+      ],
+      "message": "Rite du trophée : suis la séquence GAUCHE, DROITE, LAMES et VALIDER au rythme du cercle.",
+      "grounded": true,
+      "climbing": false,
+      "load": {
+        "massKg": 0.4,
+        "volumeUnits": 1,
+        "capacityMassKg": 36,
+        "capacityVolumeUnits": 24,
+        "ratio": 0.041666666666666664,
+        "overloaded": false,
+        "movementMultiplier": 0.9866666666666667,
+        "jumpMultiplier": 0.9933333333333333,
+        "climbStaminaMultiplier": 1.025,
+        "noiseMultiplier": 1.0333333333333334
+      },
+      "energyWeaponsLocked": false,
+      "weaponSlot": 1,
+      "threats": [
+        {
+          "id": "vey-guard-0",
+          "x": 4349.346638855985,
+          "y": 517,
+          "health": 78.89393199999998,
+          "width": 88,
+          "height": 107
+        }
+      ]
+    },
+    {
+      "t": 64.017,
+      "phase": "extraction",
+      "x": 7552.08,
+      "y": 508,
+      "vx": 0,
+      "vy": 0,
+      "health": 150.9,
+      "stamina": 100,
+      "energy": 74.83,
+      "kills": 8,
+      "boss": {
+        "active": true,
+        "alive": false,
+        "health": 0,
+        "x": 7531.383876401331
+      },
+      "scans": [
+        true,
+        true,
+        true
+      ],
+      "recoveries": [
+        true
+      ],
+      "objectives": [
+        "scan-vanguard",
+        "recover-transponder",
+        "defeat-vey"
+      ],
+      "message": "Insigne de Vey : prise récupérée et scellée. Le chasseur célèbre sa victoire ; vaisseau en approche.",
+      "grounded": true,
+      "climbing": false,
+      "load": {
+        "massKg": 0.4,
+        "volumeUnits": 1,
+        "capacityMassKg": 36,
+        "capacityVolumeUnits": 24,
+        "ratio": 0.041666666666666664,
+        "overloaded": false,
+        "movementMultiplier": 0.9866666666666667,
+        "jumpMultiplier": 0.9933333333333333,
+        "climbStaminaMultiplier": 1.025,
+        "noiseMultiplier": 1.0333333333333334
+      },
+      "energyWeaponsLocked": false,
+      "weaponSlot": 1,
+      "threats": [
+        {
+          "id": "vey-guard-0",
+          "x": 4347.570400550153,
+          "y": 517,
+          "health": 78.89393199999998,
+          "width": 88,
+          "height": 107
+        },
+        {
+          "id": "extraction-jungle-vey-974-0",
+          "x": 7398.020833333318,
+          "y": 530,
+          "health": 148.5,
+          "width": 66,
+          "height": 94
+        }
+      ]
+    },
+    {
+      "t": 65.017,
+      "phase": "extraction",
+      "x": 7552.08,
+      "y": 508,
+      "vx": 0,
+      "vy": 0,
+      "health": 150.9,
+      "stamina": 100,
+      "energy": 84.83,
+      "kills": 8,
+      "boss": {
+        "active": true,
+        "alive": false,
+        "health": 0,
+        "x": 7531.383876401331
+      },
+      "scans": [
+        true,
+        true,
+        true
+      ],
+      "recoveries": [
+        true
+      ],
+      "objectives": [
+        "scan-vanguard",
+        "recover-transponder",
+        "defeat-vey"
+      ],
+      "message": "Insigne de Vey : prise récupérée et scellée. Le chasseur célèbre sa victoire ; vaisseau en approche.",
+      "grounded": true,
+      "climbing": false,
+      "load": {
+        "massKg": 0.4,
+        "volumeUnits": 1,
+        "capacityMassKg": 36,
+        "capacityVolumeUnits": 24,
+        "ratio": 0.041666666666666664,
+        "overloaded": false,
+        "movementMultiplier": 0.9866666666666667,
+        "jumpMultiplier": 0.9933333333333333,
+        "climbStaminaMultiplier": 1.025,
+        "noiseMultiplier": 1.0333333333333334
+      },
+      "energyWeaponsLocked": false,
+      "weaponSlot": 1,
+      "threats": [
+        {
+          "id": "vey-guard-0",
+          "x": 4349.347301641908,
+          "y": 517,
+          "health": 78.89393199999998,
+          "width": 88,
+          "height": 107
+        },
+        {
+          "id": "extraction-jungle-vey-974-0",
+          "x": 7397.579833333317,
+          "y": 530,
+          "health": 148.5,
+          "width": 66,
+          "height": 94
+        },
+        {
+          "id": "extraction-jungle-vey-975-1",
+          "x": 7672.4906666666675,
+          "y": 391.41385355951934,
+          "health": 148.5,
+          "width": 98,
+          "height": 82
+        }
+      ]
+    },
+    {
+      "t": 66.017,
+      "phase": "extraction",
+      "x": 7555.06,
+      "y": 508,
+      "vx": 114.37,
+      "vy": 0,
+      "health": 150.9,
+      "stamina": 100,
+      "energy": 94.83,
+      "kills": 8,
+      "boss": {
+        "active": true,
+        "alive": false,
+        "health": 0,
+        "x": 7531.383876401331
+      },
+      "scans": [
+        true,
+        true,
+        true
+      ],
+      "recoveries": [
+        true
+      ],
+      "objectives": [
+        "scan-vanguard",
+        "recover-transponder",
+        "defeat-vey"
+      ],
+      "message": "Insigne de Vey : prise récupérée et scellée. Le chasseur célèbre sa victoire ; vaisseau en approche.",
+      "grounded": true,
+      "climbing": false,
+      "load": {
+        "massKg": 0.4,
+        "volumeUnits": 1,
+        "capacityMassKg": 36,
+        "capacityVolumeUnits": 24,
+        "ratio": 0.041666666666666664,
+        "overloaded": false,
+        "movementMultiplier": 0.9866666666666667,
+        "jumpMultiplier": 0.9933333333333333,
+        "climbStaminaMultiplier": 1.025,
+        "noiseMultiplier": 1.0333333333333334
+      },
+      "energyWeaponsLocked": false,
+      "weaponSlot": 1,
+      "threats": [
+        {
+          "id": "vey-guard-0",
+          "x": 4377.53877293922,
+          "y": 517,
+          "health": 78.89393199999998,
+          "width": 88,
+          "height": 107
+        },
+        {
+          "id": "extraction-jungle-vey-974-0",
+          "x": 7368.709033333309,
+          "y": 530,
+          "health": 148.5,
+          "width": 66,
+          "height": 94
+        },
+        {
+          "id": "extraction-jungle-vey-975-1",
+          "x": 7661.3186666666725,
+          "y": 420.1028162173486,
+          "health": 148.5,
+          "width": 98,
+          "height": 82
+        }
+      ]
+    },
+    {
+      "t": 67.017,
+      "phase": "extraction",
+      "x": 7783.37,
+      "y": 508,
+      "vx": 171.74,
+      "vy": 0,
+      "health": 150.9,
+      "stamina": 100,
+      "energy": 100,
+      "kills": 8,
+      "boss": {
+        "active": true,
+        "alive": false,
+        "health": 0,
+        "x": 7531.383876401331
+      },
+      "scans": [
+        true,
+        true,
+        true
+      ],
+      "recoveries": [
+        true
+      ],
+      "objectives": [
+        "scan-vanguard",
+        "recover-transponder",
+        "defeat-vey"
+      ],
+      "message": "Insigne de Vey : prise récupérée et scellée. Le chasseur célèbre sa victoire ; vaisseau en approche.",
+      "grounded": true,
+      "climbing": false,
+      "load": {
+        "massKg": 0.4,
+        "volumeUnits": 1,
+        "capacityMassKg": 36,
+        "capacityVolumeUnits": 24,
+        "ratio": 0.041666666666666664,
+        "overloaded": false,
+        "movementMultiplier": 0.9866666666666667,
+        "jumpMultiplier": 0.9933333333333333,
+        "climbStaminaMultiplier": 1.025,
+        "noiseMultiplier": 1.0333333333333334
+      },
+      "energyWeaponsLocked": false,
+      "weaponSlot": 1,
+      "threats": [
+        {
+          "id": "vey-guard-0",
+          "x": 4377.53877293922,
+          "y": 517,
+          "health": 78.89393199999998,
+          "width": 88,
+          "height": 107
+        },
+        {
+          "id": "extraction-jungle-vey-974-0",
+          "x": 7396.521433333315,
+          "y": 530,
+          "health": 148.5,
+          "width": 66,
+          "height": 94
+        },
+        {
+          "id": "extraction-jungle-vey-975-1",
+          "x": 7605.038666666685,
+          "y": 419.7798756696466,
+          "health": 148.5,
+          "width": 98,
+          "height": 82
+        }
+      ]
+    },
+    {
+      "t": 68.017,
+      "phase": "extraction",
+      "x": 7982.68,
+      "y": 483.19,
+      "vx": 0,
+      "vy": 0,
+      "health": 137.74,
+      "stamina": 100,
+      "energy": 100,
+      "kills": 8,
+      "boss": {
+        "active": true,
+        "alive": false,
+        "health": 0,
+        "x": 7531.383876401331
+      },
+      "scans": [
+        true,
+        true,
+        true
+      ],
+      "recoveries": [
+        true
+      ],
+      "objectives": [
+        "scan-vanguard",
+        "recover-transponder",
+        "defeat-vey"
+      ],
+      "message": "Faisceau verrouillé. Hissage vers la soute.",
+      "grounded": false,
+      "climbing": false,
+      "load": {
+        "massKg": 0.4,
+        "volumeUnits": 1,
+        "capacityMassKg": 36,
+        "capacityVolumeUnits": 24,
+        "ratio": 0.041666666666666664,
+        "overloaded": false,
+        "movementMultiplier": 0.9866666666666667,
+        "jumpMultiplier": 0.9933333333333333,
+        "climbStaminaMultiplier": 1.025,
+        "noiseMultiplier": 1.0333333333333334
+      },
+      "energyWeaponsLocked": false,
+      "weaponSlot": 1,
+      "threats": [
+        {
+          "id": "vey-guard-0",
+          "x": 4377.53877293922,
+          "y": 517,
+          "health": 78.89393199999998,
+          "width": 88,
+          "height": 107
+        },
+        {
+          "id": "extraction-jungle-vey-974-0",
+          "x": 7447.677433333325,
+          "y": 530,
+          "health": 148.5,
+          "width": 66,
+          "height": 94
+        },
+        {
+          "id": "extraction-jungle-vey-975-1",
+          "x": 7627.886666666683,
+          "y": 408,
+          "health": 148.5,
+          "width": 98,
+          "height": 82
+        }
+      ]
+    },
+    {
+      "t": 69.017,
+      "phase": "extraction",
+      "x": 7989,
+      "y": 280.78,
+      "vx": 0,
+      "vy": 0,
+      "health": 137.74,
+      "stamina": 100,
+      "energy": 100,
+      "kills": 8,
+      "boss": {
+        "active": true,
+        "alive": false,
+        "health": 0,
+        "x": 7531.383876401331
+      },
+      "scans": [
+        true,
+        true,
+        true
+      ],
+      "recoveries": [
+        true
+      ],
+      "objectives": [
+        "scan-vanguard",
+        "recover-transponder",
+        "defeat-vey"
+      ],
+      "message": "Faisceau verrouillé. Hissage vers la soute.",
+      "grounded": false,
+      "climbing": false,
+      "load": {
+        "massKg": 0.4,
+        "volumeUnits": 1,
+        "capacityMassKg": 36,
+        "capacityVolumeUnits": 24,
+        "ratio": 0.041666666666666664,
+        "overloaded": false,
+        "movementMultiplier": 0.9866666666666667,
+        "jumpMultiplier": 0.9933333333333333,
+        "climbStaminaMultiplier": 1.025,
+        "noiseMultiplier": 1.0333333333333334
+      },
+      "energyWeaponsLocked": false,
+      "weaponSlot": 1,
+      "threats": [
+        {
+          "id": "vey-guard-0",
+          "x": 4377.53877293922,
+          "y": 517,
+          "health": 78.89393199999998,
+          "width": 88,
+          "height": 107
+        },
+        {
+          "id": "extraction-jungle-vey-974-0",
+          "x": 7497.128233333335,
+          "y": 530,
+          "health": 148.5,
+          "width": 66,
+          "height": 94
+        },
+        {
+          "id": "extraction-jungle-vey-975-1",
+          "x": 7626.458666666683,
+          "y": 420.44957187148754,
+          "health": 148.5,
+          "width": 98,
+          "height": 82
+        }
+      ]
+    },
+    {
+      "t": 70.017,
+      "phase": "extraction",
+      "x": 7989,
+      "y": 173,
+      "vx": 0,
+      "vy": 0,
+      "health": 137.74,
+      "stamina": 100,
+      "energy": 100,
+      "kills": 8,
+      "boss": {
+        "active": true,
+        "alive": false,
+        "health": 0,
+        "x": 7531.383876401331
+      },
+      "scans": [
+        true,
+        true,
+        true
+      ],
+      "recoveries": [
+        true
+      ],
+      "objectives": [
+        "scan-vanguard",
+        "recover-transponder",
+        "defeat-vey"
+      ],
+      "message": "Faisceau verrouillé. Hissage vers la soute.",
+      "grounded": false,
+      "climbing": false,
+      "load": {
+        "massKg": 0.4,
+        "volumeUnits": 1,
+        "capacityMassKg": 36,
+        "capacityVolumeUnits": 24,
+        "ratio": 0.041666666666666664,
+        "overloaded": false,
+        "movementMultiplier": 0.9866666666666667,
+        "jumpMultiplier": 0.9933333333333333,
+        "climbStaminaMultiplier": 1.025,
+        "noiseMultiplier": 1.0333333333333334
+      },
+      "energyWeaponsLocked": false,
+      "weaponSlot": 1,
+      "threats": [
+        {
+          "id": "vey-guard-0",
+          "x": 4377.53877293922,
+          "y": 517,
+          "health": 78.89393199999998,
+          "width": 88,
+          "height": 107
+        },
+        {
+          "id": "extraction-jungle-vey-974-0",
+          "x": 7447.677433333325,
+          "y": 530,
+          "health": 148.5,
+          "width": 66,
+          "height": 94
+        },
+        {
+          "id": "extraction-jungle-vey-975-1",
+          "x": 7666.4426666666795,
+          "y": 419.4266291798193,
+          "health": 148.5,
+          "width": 98,
+          "height": 82
+        }
+      ]
+    },
+    {
+      "t": 71.017,
+      "phase": "extraction",
+      "x": 7989,
+      "y": 173,
+      "vx": 0,
+      "vy": 0,
+      "health": 137.74,
+      "stamina": 100,
+      "energy": 100,
+      "kills": 8,
+      "boss": {
+        "active": true,
+        "alive": false,
+        "health": 0,
+        "x": 7531.383876401331
+      },
+      "scans": [
+        true,
+        true,
+        true
+      ],
+      "recoveries": [
+        true
+      ],
+      "objectives": [
+        "scan-vanguard",
+        "recover-transponder",
+        "defeat-vey"
+      ],
+      "message": "Faisceau verrouillé. Hissage vers la soute.",
+      "grounded": false,
+      "climbing": false,
+      "load": {
+        "massKg": 0.4,
+        "volumeUnits": 1,
+        "capacityMassKg": 36,
+        "capacityVolumeUnits": 24,
+        "ratio": 0.041666666666666664,
+        "overloaded": false,
+        "movementMultiplier": 0.9866666666666667,
+        "jumpMultiplier": 0.9933333333333333,
+        "climbStaminaMultiplier": 1.025,
+        "noiseMultiplier": 1.0333333333333334
+      },
+      "energyWeaponsLocked": false,
+      "weaponSlot": 1,
+      "threats": [
+        {
+          "id": "vey-guard-0",
+          "x": 4377.53877293922,
+          "y": 517,
+          "health": 78.89393199999998,
+          "width": 88,
+          "height": 107
+        },
+        {
+          "id": "extraction-jungle-vey-974-0",
+          "x": 7498.833433333335,
+          "y": 530,
+          "health": 148.5,
+          "width": 66,
+          "height": 94
+        },
+        {
+          "id": "extraction-jungle-vey-975-1",
+          "x": 7655.0186666666805,
+          "y": 393.7151982257028,
+          "health": 148.5,
+          "width": 98,
+          "height": 82
+        }
+      ]
+    }
+  ],
+  "inputTrace": [
+    {
+      "tick": 0,
+      "held": [
+        "right"
+      ],
+      "pressed": [],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 89,
+      "held": [
+        "right"
+      ],
+      "pressed": [
+        "scan"
+      ],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 90,
+      "held": [
+        "right"
+      ],
+      "pressed": [],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 119,
+      "held": [
+        "aim",
+        "right"
+      ],
+      "pressed": [],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 176,
+      "held": [
+        "aim",
+        "right"
+      ],
+      "pressed": [
+        "weapon"
+      ],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 177,
+      "held": [
+        "aim",
+        "right"
+      ],
+      "pressed": [],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 251,
+      "held": [
+        "aim",
+        "jump",
+        "right"
+      ],
+      "pressed": [
+        "jump"
+      ],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 252,
+      "held": [
+        "aim",
+        "right"
+      ],
+      "pressed": [],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 291,
+      "held": [
+        "aim",
+        "right"
+      ],
+      "pressed": [
+        "weapon"
+      ],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 292,
+      "held": [
+        "aim",
+        "right"
+      ],
+      "pressed": [],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 341,
+      "held": [
+        "aim",
+        "right"
+      ],
+      "pressed": [
+        "scan"
+      ],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 342,
+      "held": [
+        "aim",
+        "right"
+      ],
+      "pressed": [],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 403,
+      "held": [
+        "aim",
+        "jump",
+        "right"
+      ],
+      "pressed": [
+        "jump"
+      ],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 404,
+      "held": [
+        "aim",
+        "right"
+      ],
+      "pressed": [],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 406,
+      "held": [
+        "aim",
+        "right"
+      ],
+      "pressed": [
+        "weapon"
+      ],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 407,
+      "held": [
+        "aim",
+        "right"
+      ],
+      "pressed": [],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 521,
+      "held": [
+        "aim",
+        "right"
+      ],
+      "pressed": [
+        "weapon"
+      ],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 522,
+      "held": [
+        "aim",
+        "right"
+      ],
+      "pressed": [],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 631,
+      "held": [
+        "aim",
+        "jump",
+        "right"
+      ],
+      "pressed": [
+        "jump"
+      ],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 632,
+      "held": [
+        "aim",
+        "right"
+      ],
+      "pressed": [],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 664,
+      "held": [
+        "aim",
+        "right"
+      ],
+      "pressed": [
+        "weapon"
+      ],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 665,
+      "held": [
+        "aim",
+        "right"
+      ],
+      "pressed": [],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 670,
+      "held": [
+        "aim",
+        "right"
+      ],
+      "pressed": [
+        "weapon"
+      ],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 671,
+      "held": [
+        "aim",
+        "right"
+      ],
+      "pressed": [],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 676,
+      "held": [
+        "aim",
+        "right"
+      ],
+      "pressed": [
+        "weapon"
+      ],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 677,
+      "held": [
+        "right"
+      ],
+      "pressed": [
+        "melee"
+      ],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 678,
+      "held": [
+        "right"
+      ],
+      "pressed": [],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 683,
+      "held": [
+        "left"
+      ],
+      "pressed": [],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 1055,
+      "held": [],
+      "pressed": [],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 1062,
+      "held": [],
+      "pressed": [],
+      "pointer": null,
+      "menuAction": "open"
+    },
+    {
+      "tick": 1063,
+      "held": [],
+      "pressed": [],
+      "pointer": null,
+      "menuAction": "flay"
+    },
+    {
+      "tick": 1064,
+      "held": [],
+      "pressed": [],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 1255,
+      "held": [],
+      "pressed": [],
+      "pointer": null,
+      "menuAction": "harvest-tissue"
+    },
+    {
+      "tick": 1256,
+      "held": [],
+      "pressed": [],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 1417,
+      "held": [
+        "right"
+      ],
+      "pressed": [],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 1813,
+      "held": [
+        "aim",
+        "right"
+      ],
+      "pressed": [],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 1870,
+      "held": [
+        "aim",
+        "right"
+      ],
+      "pressed": [
+        "weapon"
+      ],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 1871,
+      "held": [
+        "aim",
+        "right"
+      ],
+      "pressed": [],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 1873,
+      "held": [
+        "aim",
+        "right"
+      ],
+      "pressed": [
+        "scan"
+      ],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 1874,
+      "held": [
+        "aim",
+        "right"
+      ],
+      "pressed": [],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 1903,
+      "held": [
+        "right"
+      ],
+      "pressed": [],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 2014,
+      "held": [
+        "aim",
+        "right"
+      ],
+      "pressed": [],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 2071,
+      "held": [
+        "aim",
+        "right"
+      ],
+      "pressed": [
+        "weapon"
+      ],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 2072,
+      "held": [
+        "aim",
+        "right"
+      ],
+      "pressed": [],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 2109,
+      "held": [
+        "right"
+      ],
+      "pressed": [],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 2214,
+      "held": [
+        "right"
+      ],
+      "pressed": [
+        "interact"
+      ],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 2215,
+      "held": [
+        "aim",
+        "right"
+      ],
+      "pressed": [],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 2272,
+      "held": [
+        "aim",
+        "right"
+      ],
+      "pressed": [
+        "weapon"
+      ],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 2273,
+      "held": [
+        "aim",
+        "right"
+      ],
+      "pressed": [],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 2387,
+      "held": [
+        "aim",
+        "right"
+      ],
+      "pressed": [
+        "weapon"
+      ],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 2388,
+      "held": [
+        "aim",
+        "right"
+      ],
+      "pressed": [],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 2502,
+      "held": [
+        "aim",
+        "right"
+      ],
+      "pressed": [
+        "weapon"
+      ],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 2503,
+      "held": [
+        "aim",
+        "right"
+      ],
+      "pressed": [],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 2509,
+      "held": [
+        "aim",
+        "jump",
+        "right"
+      ],
+      "pressed": [
+        "jump"
+      ],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 2510,
+      "held": [
+        "aim",
+        "right"
+      ],
+      "pressed": [],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 2540,
+      "held": [
+        "right"
+      ],
+      "pressed": [
+        "melee"
+      ],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 2541,
+      "held": [
+        "right"
+      ],
+      "pressed": [],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 2547,
+      "held": [
+        "right"
+      ],
+      "pressed": [
+        "melee"
+      ],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 2548,
+      "held": [
+        "right"
+      ],
+      "pressed": [],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 2554,
+      "held": [
+        "right"
+      ],
+      "pressed": [
+        "melee"
+      ],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 2555,
+      "held": [
+        "right"
+      ],
+      "pressed": [],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 2561,
+      "held": [
+        "right"
+      ],
+      "pressed": [
+        "melee"
+      ],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 2562,
+      "held": [
+        "right"
+      ],
+      "pressed": [],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 2566,
+      "held": [
+        "aim",
+        "right"
+      ],
+      "pressed": [],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 2576,
+      "held": [
+        "aim",
+        "jump",
+        "right"
+      ],
+      "pressed": [
+        "jump"
+      ],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 2577,
+      "held": [
+        "aim",
+        "right"
+      ],
+      "pressed": [],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 2623,
+      "held": [
+        "aim",
+        "right"
+      ],
+      "pressed": [
+        "weapon"
+      ],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 2624,
+      "held": [
+        "right"
+      ],
+      "pressed": [
+        "melee"
+      ],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 2625,
+      "held": [
+        "right"
+      ],
+      "pressed": [],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 2819,
+      "held": [
+        "aim",
+        "right"
+      ],
+      "pressed": [],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 2876,
+      "held": [
+        "aim",
+        "right"
+      ],
+      "pressed": [
+        "weapon"
+      ],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 2877,
+      "held": [
+        "aim",
+        "right"
+      ],
+      "pressed": [],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 2941,
+      "held": [
+        "aim",
+        "jump",
+        "right"
+      ],
+      "pressed": [
+        "jump"
+      ],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 2942,
+      "held": [
+        "aim",
+        "right"
+      ],
+      "pressed": [],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 2967,
+      "held": [
+        "right"
+      ],
+      "pressed": [
+        "melee"
+      ],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 2968,
+      "held": [
+        "right"
+      ],
+      "pressed": [],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 2974,
+      "held": [
+        "right"
+      ],
+      "pressed": [
+        "melee"
+      ],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 2975,
+      "held": [],
+      "pressed": [],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 2980,
+      "held": [
+        "aim"
+      ],
+      "pressed": [],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 3008,
+      "held": [
+        "aim",
+        "jump"
+      ],
+      "pressed": [
+        "jump"
+      ],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 3009,
+      "held": [
+        "aim"
+      ],
+      "pressed": [],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 3037,
+      "held": [
+        "aim"
+      ],
+      "pressed": [
+        "weapon"
+      ],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 3038,
+      "held": [],
+      "pressed": [
+        "melee"
+      ],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 3039,
+      "held": [],
+      "pressed": [],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 3045,
+      "held": [],
+      "pressed": [
+        "melee"
+      ],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 3046,
+      "held": [],
+      "pressed": [],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 3052,
+      "held": [],
+      "pressed": [
+        "melee"
+      ],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 3053,
+      "held": [],
+      "pressed": [],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 3059,
+      "held": [],
+      "pressed": [
+        "melee"
+      ],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 3060,
+      "held": [],
+      "pressed": [],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 3066,
+      "held": [],
+      "pressed": [
+        "melee"
+      ],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 3067,
+      "held": [],
+      "pressed": [],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 3073,
+      "held": [],
+      "pressed": [
+        "melee"
+      ],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 3074,
+      "held": [],
+      "pressed": [],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 3075,
+      "held": [
+        "jump"
+      ],
+      "pressed": [
+        "jump"
+      ],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 3076,
+      "held": [],
+      "pressed": [],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 3080,
+      "held": [],
+      "pressed": [
+        "melee"
+      ],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 3081,
+      "held": [],
+      "pressed": [],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 3087,
+      "held": [],
+      "pressed": [
+        "melee"
+      ],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 3088,
+      "held": [],
+      "pressed": [],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 3094,
+      "held": [],
+      "pressed": [
+        "melee"
+      ],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 3095,
+      "held": [],
+      "pressed": [],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 3101,
+      "held": [],
+      "pressed": [
+        "melee"
+      ],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 3102,
+      "held": [],
+      "pressed": [],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 3108,
+      "held": [],
+      "pressed": [
+        "melee"
+      ],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 3109,
+      "held": [],
+      "pressed": [],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 3115,
+      "held": [],
+      "pressed": [
+        "melee"
+      ],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 3116,
+      "held": [],
+      "pressed": [],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 3122,
+      "held": [],
+      "pressed": [
+        "melee"
+      ],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 3123,
+      "held": [],
+      "pressed": [],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 3129,
+      "held": [],
+      "pressed": [
+        "melee"
+      ],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 3130,
+      "held": [],
+      "pressed": [],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 3136,
+      "held": [],
+      "pressed": [
+        "melee"
+      ],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 3137,
+      "held": [],
+      "pressed": [],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 3142,
+      "held": [
+        "jump"
+      ],
+      "pressed": [
+        "jump"
+      ],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 3143,
+      "held": [],
+      "pressed": [
+        "melee"
+      ],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 3144,
+      "held": [],
+      "pressed": [],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 3150,
+      "held": [],
+      "pressed": [
+        "melee"
+      ],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 3151,
+      "held": [],
+      "pressed": [],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 3157,
+      "held": [],
+      "pressed": [
+        "melee"
+      ],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 3158,
+      "held": [],
+      "pressed": [],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 3164,
+      "held": [],
+      "pressed": [
+        "melee"
+      ],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 3165,
+      "held": [],
+      "pressed": [],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 3171,
+      "held": [],
+      "pressed": [
+        "melee"
+      ],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 3172,
+      "held": [],
+      "pressed": [],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 3178,
+      "held": [],
+      "pressed": [
+        "melee"
+      ],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 3179,
+      "held": [],
+      "pressed": [],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 3185,
+      "held": [],
+      "pressed": [
+        "melee"
+      ],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 3186,
+      "held": [],
+      "pressed": [],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 3188,
+      "held": [
+        "aim"
+      ],
+      "pressed": [],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 3209,
+      "held": [
+        "aim",
+        "jump"
+      ],
+      "pressed": [
+        "jump"
+      ],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 3210,
+      "held": [
+        "aim"
+      ],
+      "pressed": [],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 3245,
+      "held": [
+        "aim"
+      ],
+      "pressed": [
+        "weapon"
+      ],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 3246,
+      "held": [],
+      "pressed": [
+        "melee"
+      ],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 3247,
+      "held": [],
+      "pressed": [],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 3253,
+      "held": [],
+      "pressed": [
+        "melee"
+      ],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 3254,
+      "held": [],
+      "pressed": [],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 3260,
+      "held": [],
+      "pressed": [
+        "melee"
+      ],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 3261,
+      "held": [],
+      "pressed": [],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 3267,
+      "held": [],
+      "pressed": [
+        "melee"
+      ],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 3268,
+      "held": [],
+      "pressed": [],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 3274,
+      "held": [],
+      "pressed": [
+        "melee"
+      ],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 3275,
+      "held": [],
+      "pressed": [],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 3276,
+      "held": [
+        "jump"
+      ],
+      "pressed": [
+        "jump"
+      ],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 3277,
+      "held": [],
+      "pressed": [],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 3281,
+      "held": [],
+      "pressed": [
+        "melee"
+      ],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 3282,
+      "held": [],
+      "pressed": [],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 3288,
+      "held": [],
+      "pressed": [
+        "melee"
+      ],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 3289,
+      "held": [],
+      "pressed": [],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 3295,
+      "held": [],
+      "pressed": [
+        "melee"
+      ],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 3296,
+      "held": [],
+      "pressed": [],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 3302,
+      "held": [],
+      "pressed": [
+        "melee"
+      ],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 3303,
+      "held": [],
+      "pressed": [],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 3309,
+      "held": [],
+      "pressed": [
+        "melee"
+      ],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 3310,
+      "held": [],
+      "pressed": [],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 3316,
+      "held": [],
+      "pressed": [
+        "melee"
+      ],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 3317,
+      "held": [],
+      "pressed": [],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 3323,
+      "held": [],
+      "pressed": [
+        "melee"
+      ],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 3324,
+      "held": [],
+      "pressed": [],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 3330,
+      "held": [],
+      "pressed": [
+        "melee"
+      ],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 3331,
+      "held": [],
+      "pressed": [],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 3337,
+      "held": [],
+      "pressed": [
+        "melee"
+      ],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 3338,
+      "held": [],
+      "pressed": [],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 3343,
+      "held": [
+        "jump"
+      ],
+      "pressed": [
+        "jump"
+      ],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 3344,
+      "held": [],
+      "pressed": [
+        "melee"
+      ],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 3345,
+      "held": [],
+      "pressed": [],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 3351,
+      "held": [],
+      "pressed": [
+        "melee"
+      ],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 3352,
+      "held": [],
+      "pressed": [],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 3358,
+      "held": [],
+      "pressed": [
+        "melee"
+      ],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 3359,
+      "held": [],
+      "pressed": [],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 3365,
+      "held": [],
+      "pressed": [
+        "melee"
+      ],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 3366,
+      "held": [],
+      "pressed": [],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 3372,
+      "held": [],
+      "pressed": [
+        "melee"
+      ],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 3373,
+      "held": [],
+      "pressed": [],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 3379,
+      "held": [],
+      "pressed": [
+        "melee"
+      ],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 3380,
+      "held": [],
+      "pressed": [],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 3386,
+      "held": [],
+      "pressed": [
+        "melee"
+      ],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 3387,
+      "held": [],
+      "pressed": [],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 3393,
+      "held": [],
+      "pressed": [
+        "melee"
+      ],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 3394,
+      "held": [],
+      "pressed": [],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 3395,
+      "held": [
+        "aim"
+      ],
+      "pressed": [],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 3410,
+      "held": [
+        "aim",
+        "jump"
+      ],
+      "pressed": [
+        "jump"
+      ],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 3411,
+      "held": [
+        "aim"
+      ],
+      "pressed": [],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 3452,
+      "held": [
+        "aim"
+      ],
+      "pressed": [
+        "weapon"
+      ],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 3453,
+      "held": [],
+      "pressed": [
+        "melee"
+      ],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 3454,
+      "held": [
+        "right"
+      ],
+      "pressed": [],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 3488,
+      "held": [],
+      "pressed": [],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 3497,
+      "held": [],
+      "pressed": [
+        "interact"
+      ],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 3498,
+      "held": [],
+      "pressed": [],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 3636,
+      "held": [
+        "right"
+      ],
+      "pressed": [
+        "right"
+      ],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 3637,
+      "held": [],
+      "pressed": [],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 3667,
+      "held": [
+        "left"
+      ],
+      "pressed": [
+        "left"
+      ],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 3668,
+      "held": [],
+      "pressed": [],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 3698,
+      "held": [],
+      "pressed": [
+        "interact"
+      ],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 3699,
+      "held": [],
+      "pressed": [],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 3729,
+      "held": [],
+      "pressed": [
+        "melee"
+      ],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 3730,
+      "held": [],
+      "pressed": [],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 3760,
+      "held": [
+        "right"
+      ],
+      "pressed": [
+        "right"
+      ],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 3761,
+      "held": [],
+      "pressed": [],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 3791,
+      "held": [
+        "left"
+      ],
+      "pressed": [
+        "left"
+      ],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 3792,
+      "held": [
+        "right"
+      ],
+      "pressed": [],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 3822,
+      "held": [
+        "right",
+        "jump"
+      ],
+      "pressed": [
+        "jump"
+      ],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 3823,
+      "held": [
+        "right"
+      ],
+      "pressed": [],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 3883,
+      "held": [
+        "right",
+        "jump"
+      ],
+      "pressed": [
+        "jump"
+      ],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 3884,
+      "held": [
+        "right"
+      ],
+      "pressed": [],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 3944,
+      "held": [
+        "right",
+        "jump"
+      ],
+      "pressed": [
+        "jump"
+      ],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 3945,
+      "held": [
+        "right"
+      ],
+      "pressed": [],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 4058,
+      "held": [
+        "right"
+      ],
+      "pressed": [
+        "interact"
+      ],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 4059,
+      "held": [
+        "right"
+      ],
+      "pressed": [],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 4065,
+      "held": [
+        "right"
+      ],
+      "pressed": [
+        "interact"
+      ],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 4066,
+      "held": [
+        "right"
+      ],
+      "pressed": [],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 4072,
+      "held": [],
+      "pressed": [
+        "interact"
+      ],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 4073,
+      "held": [],
+      "pressed": [],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 4079,
+      "held": [],
+      "pressed": [
+        "interact"
+      ],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 4080,
+      "held": [],
+      "pressed": [],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 4086,
+      "held": [],
+      "pressed": [
+        "interact"
+      ],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 4087,
+      "held": [],
+      "pressed": [],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 4093,
+      "held": [],
+      "pressed": [
+        "interact"
+      ],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 4094,
+      "held": [],
+      "pressed": [],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 4100,
+      "held": [],
+      "pressed": [
+        "interact"
+      ],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 4101,
+      "held": [],
+      "pressed": [],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 4107,
+      "held": [],
+      "pressed": [
+        "interact"
+      ],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 4108,
+      "held": [],
+      "pressed": [],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 4114,
+      "held": [],
+      "pressed": [
+        "interact"
+      ],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 4115,
+      "held": [],
+      "pressed": [],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 4121,
+      "held": [],
+      "pressed": [
+        "interact"
+      ],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 4122,
+      "held": [],
+      "pressed": [],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 4128,
+      "held": [],
+      "pressed": [
+        "interact"
+      ],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 4129,
+      "held": [],
+      "pressed": [],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 4135,
+      "held": [],
+      "pressed": [
+        "interact"
+      ],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 4136,
+      "held": [],
+      "pressed": [],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 4142,
+      "held": [],
+      "pressed": [
+        "interact"
+      ],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 4143,
+      "held": [],
+      "pressed": [],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 4149,
+      "held": [],
+      "pressed": [
+        "interact"
+      ],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 4150,
+      "held": [],
+      "pressed": [],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 4156,
+      "held": [],
+      "pressed": [
+        "interact"
+      ],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 4157,
+      "held": [],
+      "pressed": [],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 4163,
+      "held": [],
+      "pressed": [
+        "interact"
+      ],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 4164,
+      "held": [],
+      "pressed": [],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 4170,
+      "held": [],
+      "pressed": [
+        "interact"
+      ],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 4171,
+      "held": [],
+      "pressed": [],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 4177,
+      "held": [],
+      "pressed": [
+        "interact"
+      ],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 4178,
+      "held": [],
+      "pressed": [],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 4184,
+      "held": [],
+      "pressed": [
+        "interact"
+      ],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 4185,
+      "held": [],
+      "pressed": [],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 4191,
+      "held": [],
+      "pressed": [
+        "interact"
+      ],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 4192,
+      "held": [],
+      "pressed": [],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 4198,
+      "held": [],
+      "pressed": [
+        "interact"
+      ],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 4199,
+      "held": [],
+      "pressed": [],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 4205,
+      "held": [],
+      "pressed": [
+        "interact"
+      ],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 4206,
+      "held": [],
+      "pressed": [],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 4212,
+      "held": [],
+      "pressed": [
+        "interact"
+      ],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 4213,
+      "held": [],
+      "pressed": [],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 4219,
+      "held": [],
+      "pressed": [
+        "interact"
+      ],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 4220,
+      "held": [],
+      "pressed": [],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 4226,
+      "held": [],
+      "pressed": [
+        "interact"
+      ],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 4227,
+      "held": [],
+      "pressed": [],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 4233,
+      "held": [],
+      "pressed": [
+        "interact"
+      ],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 4234,
+      "held": [],
+      "pressed": [],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 4240,
+      "held": [],
+      "pressed": [
+        "interact"
+      ],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 4241,
+      "held": [],
+      "pressed": [],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 4247,
+      "held": [],
+      "pressed": [
+        "interact"
+      ],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 4248,
+      "held": [],
+      "pressed": [],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 4254,
+      "held": [],
+      "pressed": [
+        "interact"
+      ],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 4255,
+      "held": [],
+      "pressed": [],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 4261,
+      "held": [],
+      "pressed": [
+        "interact"
+      ],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 4262,
+      "held": [],
+      "pressed": [],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 4268,
+      "held": [],
+      "pressed": [
+        "interact"
+      ],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 4269,
+      "held": [],
+      "pressed": [],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 4275,
+      "held": [],
+      "pressed": [
+        "interact"
+      ],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 4276,
+      "held": [],
+      "pressed": [],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 4282,
+      "held": [],
+      "pressed": [
+        "interact"
+      ],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 4283,
+      "held": [],
+      "pressed": [],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 4289,
+      "held": [],
+      "pressed": [
+        "interact"
+      ],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 4290,
+      "held": [],
+      "pressed": [],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 4296,
+      "held": [],
+      "pressed": [
+        "interact"
+      ],
+      "pointer": null,
+      "menuAction": null
+    },
+    {
+      "tick": 4297,
+      "held": [],
+      "pressed": [],
+      "pointer": null,
+      "menuAction": null
+    }
+  ]
+}

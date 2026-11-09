@@ -631,3 +631,65 @@ reprise de l'écriture. Les accès rapides n'accordent aucune des huit inspectio
 physiques. Le checkout et le commit synthétique affiché par le build ont le même
 arbre Git, vérifié par l'API. Cette preuve datée conserve ses propres sources et
 ne remplace pas les contrôles de la tête finale.
+
+
+## Prélèvements et escorte de retour — 9 novembre 2026
+
+La reprise part de `main` au commit `19317af4f6cf05532a8ba56dbfe8f56fc4b225d9`,
+avec la bible et les suivis du 8 novembre. Le point produit
+`85ca8099d96fffb37fbe6f46b26a76c8eaf73df1` ajoute les informations d’emport avant
+prélèvement, le prérequis commun de l’analyse et le groupe visible OPS-B04.
+Le commit `9200248c37f9e008d20cf6ebc6a684a1d1c5f9dc` conserve exactement cette
+application et ajoute les recettes natives et leurs raccords aux workflows existants.
+
+Le [reçu courant](../../../production/reprise-chasse-bible-20261109/qa/current-runtime-receipt.json)
+consigne `--current` sur ce dernier point : 3 069 sources, 148 144 202 octets.
+Le relevé officiel de ce dossier est régénéré par `snapshot-runtime-v113.mjs
+--write`, puis vérifié par `--check` : 2 207 entrées, 1 093 220 902 octets ;
+JSON de 409 745 octets, SHA-256
+`ba24a582613a6a039a04114b3fe2edb806e5ac15efba551923eb6e0c621f1554`.
+Les documents et attestations historiques gardent leurs identités.
+
+Les [journaux d’intégration finaux](../../../production/reprise-chasse-bible-20261109/qa/integration-final-85ca8099/verification.json)
+conservent 539 tests réussis dans 26 fichiers distincts, aucun ignoré, un build
+applicatif Next webpack avec TypeScript et le lint strict de 21 fichiers.
+Ces commandes sont réellement exécutées sur le point produit `85ca8099` ;
+les résultats des étapes antérieures ne leur sont pas additionnés.
+
+La [recette de prélèvement](../../../production/reprise-chasse-bible-20261109/qa/harvest/README.md)
+qualifie le composant et le callback natif sur 18 contrôles. La
+[recette d’escorte](../../../production/reprise-chasse-bible-20261109/qa/escort/README.md)
+exécute 19 contrôles dans le vrai GameClient : déplacement par les portes,
+arrêts, rechargement et refus d’écriture. Ses acteurs utilisent des sprites
+originaux statiques déplacés, sans prétendre créer des cycles de marche.
+Les prérequis construits, les essais refusés, le guidage intersalles en deux
+étapes et les limites des checkpoints sont déclarés dans les rapports.
+Aucune preuve humaine, appareil physique, performance cible ou fidélité
+artistique canonique n’en est déduite. Le
+[nouveau suivi Excel et son avenant](../../../production/reprise-chasse-bible-20261109/README.md)
+conservent les 108 classeurs d’origine, les trois lots du 8 novembre et les
+huit validations restantes V112, sans réécrire leurs anciennes qualifications.
+
+## 9 novembre — Finition du dépeçage et de la canopée
+
+La suite est revue au commit `cfa730ba65c03d353eb97acfec56eabc383a499b`.
+Le relevé courant, régénéré puis vérifié par les commandes officielles, contient
+2 214 entrées et 1 093 290 474 octets. Son JSON de 410 975 octets a pour SHA-256
+`5fd5c2829564ccc5a7498365f4e28ec32b99804957befff1806496a33bb8e83e`.
+Le contrôle `--current` passe sur 3 086 sources à ce point, sans réécrire les
+inventaires historiques ni déclarer une nouvelle exécution de leurs recettes.
+
+Le [nouveau suivi de finition](../../../production/skinning-canopy-20261109/README.md)
+conserve les commandes, empreintes avant/après et vrais points d’exécution :
+471 tests réussis dans 31 fichiers, aucun ignoré, build Next webpack avec
+TypeScript et lint strict de 20 fichiers. Les recettes et le pilote ont aussi
+leur lint distinct. Ces résultats ne sont pas additionnés aux passes antérieures.
+
+La dernière recette monte le vrai GameClient : 16 contrôles et 17 captures,
+reprises du geste, du dépôt, du pendule et du vol via les sidecars réels.
+Elle atteint la liane suivante par les commandes de jeu ; la main arrière
+du rig original rejoint la prise physique. Les 289 ressources utilisées sont
+comparées à leurs blobs Git et à leurs SHA-256. La proie de contrôle initiale
+et le segment terminal préparé sont déclarés ; cette recette ne devient pas
+une campagne complète de huit missions. Les huit Restant V112 et les limites
+humaines, matérielles et artistiques conservent leurs statuts propres.

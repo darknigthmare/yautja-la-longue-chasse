@@ -1,0 +1,429 @@
+{
+  "schemaVersion": 1,
+  "classification": "COMPLETED_FAILED_NATIVE_ATTEMPTS_NOT_FINAL_QUALIFICATIONS",
+  "attempts": [
+    {
+      "attempt": "native-01",
+      "sourceCommit": "8a25c5cf206647c3490ac362452c2eb22584f07e",
+      "passed": false,
+      "exitCode": 1,
+      "checksPassed": 0,
+      "checksFailed": 0,
+      "failure": "locator.click: Timeout 45000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('button', { name: /^Continuer/ }).first()\u001b[22m\n\n    at openCampaign (/workspace/yautja-reprise-20261109/scripts/qa-skinning-canopy-durable-browser-20261109.mjs:106:62)\n    at launch (/workspace/yautja-reprise-20261109/scripts/qa-skinning-canopy-durable-browser-20261109.mjs:110:9)\n    at newCase (/workspace/yautja-reprise-20261109/scripts/qa-skinning-canopy-durable-browser-20261109.mjs:169:9)\n    at async field (/workspace/yautja-reprise-20261109/scripts/qa-skinning-canopy-durable-browser-20261109.mjs:173:3)\n    at async file:///workspace/yautja-reprise-20261109/scripts/qa-skinning-canopy-durable-browser-20261109.mjs:460:22",
+      "consoleErrors": [],
+      "assetFailures": [],
+      "reportSha256": "91f879d18baa057f5f7dd072b861a6f38ca3592e4ec58fdd00c42ad813246677",
+      "captures": [
+        {
+          "path": "production/skinning-canopy-20261109/qa/native-attempts/native-01/failure.png",
+          "bytes": 1356814,
+          "sha256": "349a02654485a9b80c88ab4fa815028aadfb664478d73af2763e4d94d1150a3d",
+          "width": 1280,
+          "height": 900
+        }
+      ]
+    },
+    {
+      "attempt": "native-02",
+      "sourceCommit": "8a25c5cf206647c3490ac362452c2eb22584f07e",
+      "passed": false,
+      "exitCode": 1,
+      "checksPassed": 0,
+      "checksFailed": 0,
+      "failure": "locator.getAttribute: Timeout 45000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByText('Accès direct aux interfaces · sans déplacement du chasseur', { exact: true }).locator('..')\u001b[22m\n\n    at launch (/workspace/yautja-reprise-20261109/scripts/qa-skinning-canopy-durable-browser-20261109.mjs:118:33)\n    at async newCase (/workspace/yautja-reprise-20261109/scripts/qa-skinning-canopy-durable-browser-20261109.mjs:172:3)\n    at async field (/workspace/yautja-reprise-20261109/scripts/qa-skinning-canopy-durable-browser-20261109.mjs:176:3)\n    at async file:///workspace/yautja-reprise-20261109/scripts/qa-skinning-canopy-durable-browser-20261109.mjs:463:22",
+      "consoleErrors": [],
+      "assetFailures": [],
+      "reportSha256": "ec4bf8f2f1a512fa2e2820d189ac0b16659847084e7a5cce329337a908bbf820",
+      "captures": [
+        {
+          "path": "production/skinning-canopy-20261109/qa/native-attempts/native-02/failure.png",
+          "bytes": 1157687,
+          "sha256": "253c6d2e35f8d3f767fe9f643c08c455f37c367fd8c75210a9c7b39ea11a241a",
+          "width": 1280,
+          "height": 1501
+        }
+      ]
+    },
+    {
+      "attempt": "native-03",
+      "sourceCommit": "8a25c5cf206647c3490ac362452c2eb22584f07e",
+      "passed": false,
+      "exitCode": 1,
+      "checksPassed": 0,
+      "checksFailed": 0,
+      "failure": "locator.click: Timeout 45000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('button', { name: 'Commencer la chasse', exact: true })\u001b[22m\n\n    at launch (/workspace/yautja-reprise-20261109/scripts/qa-skinning-canopy-durable-browser-20261109.mjs:129:74)\n    at async newCase (/workspace/yautja-reprise-20261109/scripts/qa-skinning-canopy-durable-browser-20261109.mjs:172:3)\n    at async field (/workspace/yautja-reprise-20261109/scripts/qa-skinning-canopy-durable-browser-20261109.mjs:176:3)\n    at async file:///workspace/yautja-reprise-20261109/scripts/qa-skinning-canopy-durable-browser-20261109.mjs:463:22",
+      "consoleErrors": [],
+      "assetFailures": [],
+      "reportSha256": "c641a860172ca40b951429c313f3b20ae57a1c28f272e787db45f33829ffeff0",
+      "captures": [
+        {
+          "path": "production/skinning-canopy-20261109/qa/native-attempts/native-03/failure.png",
+          "bytes": 511147,
+          "sha256": "0bda021047adbef7a34263fffedb98fb95d954b9b12108057fd8ae9ccd0264a0",
+          "width": 1280,
+          "height": 995
+        }
+      ]
+    },
+    {
+      "attempt": "native-04",
+      "sourceCommit": "8a25c5cf206647c3490ac362452c2eb22584f07e",
+      "passed": false,
+      "exitCode": 1,
+      "checksPassed": 7,
+      "checksFailed": 1,
+      "failure": "locator.waitFor: Error: strict mode violation: getByRole('button', { name: 'Retour au vaisseau', exact: true }) resolved to 2 elements:\n    1) <button type=\"button\" aria-label=\"Retour au vaisseau\" class=\"brand-lockup ghost-button\">…</button> aka getByLabel('Retour au vaisseau')\n    2) <button type=\"button\" class=\"alien-button\">Retour au vaisseau</button> aka getByText('Retour au vaisseau')\n\nCall log:\n\u001b[2m  - waiting for getByRole('button', { name: 'Retour au vaisseau', exact: true }) to be visible\u001b[22m\n\n    at /workspace/yautja-reprise-20261109/scripts/qa-skinning-canopy-durable-browser-20261109.mjs:299:75\n    at async check (/workspace/yautja-reprise-20261109/scripts/qa-skinning-canopy-durable-browser-20261109.mjs:93:21)\n    at async field (/workspace/yautja-reprise-20261109/scripts/qa-skinning-canopy-durable-browser-20261109.mjs:289:3)\n    at async file:///workspace/yautja-reprise-20261109/scripts/qa-skinning-canopy-durable-browser-20261109.mjs:465:22",
+      "consoleErrors": [],
+      "assetFailures": [],
+      "reportSha256": "633b836d2050508aa55a5ea3ccaf5595eb80b203d1d6018e0d6261be6b78100d",
+      "captures": [
+        {
+          "path": "production/skinning-canopy-20261109/qa/native-attempts/native-04/01-field-before-work.png",
+          "bytes": 1008205,
+          "sha256": "6f0f9dd1eb4d39ffe1610579b99ac150bdc88c4b4dbec624edf52d9a6137751b",
+          "width": 1280,
+          "height": 1494
+        },
+        {
+          "path": "production/skinning-canopy-20261109/qa/native-attempts/native-04/02-restored-flay-paused.png",
+          "bytes": 633258,
+          "sha256": "292e719ce5dc15352d16cdc33e7679e19cc8463d984ad8e546017f2e496e794e",
+          "width": 1280,
+          "height": 1362
+        },
+        {
+          "path": "production/skinning-canopy-20261109/qa/native-attempts/native-04/03-native-harvest-complete.png",
+          "bytes": 984512,
+          "sha256": "aedcdff121eaa40bf29a6af4555365e3a2b269051c854580599e56ebcf6f9e9b",
+          "width": 1280,
+          "height": 1494
+        },
+        {
+          "path": "production/skinning-canopy-20261109/qa/native-attempts/native-04/04-recovered-native-field-pack.png",
+          "bytes": 634612,
+          "sha256": "b76bfaba82bf87bac0fcf765f37bfc316bed3987a33dd3616fafb4eb00d248b8",
+          "width": 1280,
+          "height": 1362
+        },
+        {
+          "path": "production/skinning-canopy-20261109/qa/native-attempts/native-04/05-field-menu-320.png",
+          "bytes": 166704,
+          "sha256": "65fe29ffcdc831a778fafccb83141debce4bfc3a1587faa88e422f054b2a31c1",
+          "width": 320,
+          "height": 1400
+        },
+        {
+          "path": "production/skinning-canopy-20261109/qa/native-attempts/native-04/05-field-menu-390.png",
+          "bytes": 200898,
+          "sha256": "63b76ec53573cf5bae4f3aefa3dd58523d17b363c89817aa7c057bf73e669903",
+          "width": 390,
+          "height": 1353
+        },
+        {
+          "path": "production/skinning-canopy-20261109/qa/native-attempts/native-04/failure.png",
+          "bytes": 605920,
+          "sha256": "49e61746c0c6fbc48d840aad0126491e85f3de4a4fad80dbc7b04ac6f433b8c0",
+          "width": 1280,
+          "height": 917
+        }
+      ]
+    },
+    {
+      "attempt": "native-05",
+      "sourceCommit": "8a25c5cf206647c3490ac362452c2eb22584f07e",
+      "passed": false,
+      "exitCode": 1,
+      "checksPassed": 9,
+      "checksFailed": 1,
+      "failure": "locator.waitFor: Timeout 45000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('[data-canopy-hud-v112]') to be visible\u001b[22m\n\n    at /workspace/yautja-reprise-20261109/scripts/qa-skinning-canopy-durable-browser-20261109.mjs:368:50\n    at async check (/workspace/yautja-reprise-20261109/scripts/qa-skinning-canopy-durable-browser-20261109.mjs:93:21)\n    at async canopy (/workspace/yautja-reprise-20261109/scripts/qa-skinning-canopy-durable-browser-20261109.mjs:364:3)\n    at async file:///workspace/yautja-reprise-20261109/scripts/qa-skinning-canopy-durable-browser-20261109.mjs:466:21",
+      "consoleErrors": [],
+      "assetFailures": [],
+      "reportSha256": "8bb140e2500ed8b50097489540038059f309e23b56bd06b281c4746e617e8fe1",
+      "captures": [
+        {
+          "path": "production/skinning-canopy-20261109/qa/native-attempts/native-05/01-field-before-work.png",
+          "bytes": 1008172,
+          "sha256": "2f22ebddd761f0cd21bbc078cbd16d0d3575546260880b60db83c455e0ceb957",
+          "width": 1280,
+          "height": 1494
+        },
+        {
+          "path": "production/skinning-canopy-20261109/qa/native-attempts/native-05/02-restored-flay-paused.png",
+          "bytes": 633275,
+          "sha256": "161b44696f8aafd231173fd795f9dc352f2d5e6de202f35fff87b41108a99d0e",
+          "width": 1280,
+          "height": 1362
+        },
+        {
+          "path": "production/skinning-canopy-20261109/qa/native-attempts/native-05/03-native-harvest-complete.png",
+          "bytes": 984567,
+          "sha256": "2f8ed4ea4999b048044d6346421faa1c19a92455afcde6022fc39792fa45ab6f",
+          "width": 1280,
+          "height": 1494
+        },
+        {
+          "path": "production/skinning-canopy-20261109/qa/native-attempts/native-05/04-recovered-native-field-pack.png",
+          "bytes": 634553,
+          "sha256": "9df19da79f0f31e48835eef19839fa0392d92e3ee2fe85a8848ad95a642f8a62",
+          "width": 1280,
+          "height": 1362
+        },
+        {
+          "path": "production/skinning-canopy-20261109/qa/native-attempts/native-05/05-field-menu-320.png",
+          "bytes": 166704,
+          "sha256": "65fe29ffcdc831a778fafccb83141debce4bfc3a1587faa88e422f054b2a31c1",
+          "width": 320,
+          "height": 1400
+        },
+        {
+          "path": "production/skinning-canopy-20261109/qa/native-attempts/native-05/05-field-menu-390.png",
+          "bytes": 200914,
+          "sha256": "bef869d9bda5c892573063b340ea6e35d4c83d75f0ec65f4df0cd4ef4cbb733b",
+          "width": 390,
+          "height": 1353
+        },
+        {
+          "path": "production/skinning-canopy-20261109/qa/native-attempts/native-05/06-native-field-settlement.png",
+          "bytes": 606424,
+          "sha256": "6e67d76c8f731a41fb3adb083c14d82d4d3771141c0c10a9819584a472bb49d5",
+          "width": 1280,
+          "height": 917
+        },
+        {
+          "path": "production/skinning-canopy-20261109/qa/native-attempts/native-05/07-native-conserved-part.png",
+          "bytes": 759801,
+          "sha256": "bacd5ab05f962e8efe20018d155cfefcf29aecab97e9cb745abe6d9404d2f958",
+          "width": 1280,
+          "height": 1678
+        },
+        {
+          "path": "production/skinning-canopy-20261109/qa/native-attempts/native-05/failure.png",
+          "bytes": 994053,
+          "sha256": "744cd176c3c7a866d5d8a0ff694f8074056716b965a25b1488feaf2b9bc804c8",
+          "width": 1280,
+          "height": 1362
+        }
+      ]
+    },
+    {
+      "attempt": "native-06",
+      "sourceCommit": "c23000fae806c6a777e719432c6fde5e9e2e259c",
+      "passed": false,
+      "exitCode": 1,
+      "checksPassed": 10,
+      "checksFailed": 0,
+      "failure": "Error: Timed out native canopy stage approach entry tree\n    at until (file:///workspace/yautja-reprise-20261109/scripts/qa-skinning-canopy-durable-browser-20261109.mjs:393:11)\n    at async canopy (file:///workspace/yautja-reprise-20261109/scripts/qa-skinning-canopy-durable-browser-20261109.mjs:405:3)\n    at async file:///workspace/yautja-reprise-20261109/scripts/qa-skinning-canopy-durable-browser-20261109.mjs:513:21",
+      "consoleErrors": [],
+      "assetFailures": [],
+      "reportSha256": "35056307251ad603bbc264448c1659d81f3c1f5358034938bf1ac94f441d7d6d",
+      "captures": [
+        {
+          "path": "production/skinning-canopy-20261109/qa/native-attempts/native-06/01-field-before-work.png",
+          "bytes": 974815,
+          "sha256": "99f146c06139174da7342307b3bf1d4c545dce5a2d6d97c05e65eb96b03b4c4b",
+          "width": 1280,
+          "height": 1399
+        },
+        {
+          "path": "production/skinning-canopy-20261109/qa/native-attempts/native-06/01b-native-active-flay-stroke.png",
+          "bytes": 962037,
+          "sha256": "8344c0ddbd6f27193bb4942b6b2663d154094f23f512919ae75fe5c4300fd01f",
+          "width": 1280,
+          "height": 1399
+        },
+        {
+          "path": "production/skinning-canopy-20261109/qa/native-attempts/native-06/02-restored-flay-paused.png",
+          "bytes": 621620,
+          "sha256": "3d988ee87a2af87f3b7efcd8da8d9f69ce32d3dbf9063b569008ee3aa7be72c4",
+          "width": 1280,
+          "height": 1353
+        },
+        {
+          "path": "production/skinning-canopy-20261109/qa/native-attempts/native-06/03-native-harvest-complete.png",
+          "bytes": 954729,
+          "sha256": "f251404a8b4c63411e4cb768c9a406d614739eb0695d961888dd08aa1fcbff22",
+          "width": 1280,
+          "height": 1399
+        },
+        {
+          "path": "production/skinning-canopy-20261109/qa/native-attempts/native-06/03a-native-active-hide-work.png",
+          "bytes": 967063,
+          "sha256": "8388bc9ab31bfc5c22bcd7743e734b31a4225a6bdb76d539c54efd85d096365a",
+          "width": 1280,
+          "height": 1399
+        },
+        {
+          "path": "production/skinning-canopy-20261109/qa/native-attempts/native-06/04-recovered-native-field-pack.png",
+          "bytes": 622963,
+          "sha256": "2cbbc3887790a57920b072c7d82a12c372f5d97a3789e30e4dab3da1a53c5e13",
+          "width": 1280,
+          "height": 1353
+        },
+        {
+          "path": "production/skinning-canopy-20261109/qa/native-attempts/native-06/05-field-menu-320.png",
+          "bytes": 127690,
+          "sha256": "b070ad0cca0a3b8f0c9265182d3d61ce3eb8639e6d499c0b9049f6a826504805",
+          "width": 320,
+          "height": 994
+        },
+        {
+          "path": "production/skinning-canopy-20261109/qa/native-attempts/native-06/05-field-menu-390.png",
+          "bytes": 164031,
+          "sha256": "e11a8c4f0f745dd3d7d831ca5c23d383e64bdf2af94044237a49d1930da940fd",
+          "width": 390,
+          "height": 1018
+        },
+        {
+          "path": "production/skinning-canopy-20261109/qa/native-attempts/native-06/06-native-field-settlement.png",
+          "bytes": 606134,
+          "sha256": "fcf81edd139037fc0518115cb24d2cbf479efa53c928b1296da4ba9000c65d2c",
+          "width": 1280,
+          "height": 917
+        },
+        {
+          "path": "production/skinning-canopy-20261109/qa/native-attempts/native-06/07-native-conserved-part.png",
+          "bytes": 759801,
+          "sha256": "bacd5ab05f962e8efe20018d155cfefcf29aecab97e9cb745abe6d9404d2f958",
+          "width": 1280,
+          "height": 1678
+        },
+        {
+          "path": "production/skinning-canopy-20261109/qa/native-attempts/native-06/08-canopy-canonical-insertion.png",
+          "bytes": 999227,
+          "sha256": "0af58d1257569c7d922c645eb6b1e1910c918fdcddc0700cd95fcef40d6315cc",
+          "width": 1280,
+          "height": 1353
+        },
+        {
+          "path": "production/skinning-canopy-20261109/qa/native-attempts/native-06/failure.png",
+          "bytes": 994248,
+          "sha256": "bf788a9ebb390896cd5dc551d1dc8eb15f2f95c5cedea42a0a5783317ef44f61",
+          "width": 1280,
+          "height": 1337
+        }
+      ]
+    },
+    {
+      "attempt": "native-07-canopy",
+      "sourceCommit": "c23000fae806c6a777e719432c6fde5e9e2e259c",
+      "passed": false,
+      "exitCode": 1,
+      "checksPassed": 6,
+      "checksFailed": 1,
+      "failure": "Error: Timed out native canopy stage next real vine catch after 5.050 simulated seconds / 18276 wall ms\n    at until (file:///workspace/yautja-reprise-20261109/scripts/qa-skinning-canopy-durable-browser-20261109.mjs:409:11)\n    at async file:///workspace/yautja-reprise-20261109/scripts/qa-skinning-canopy-durable-browser-20261109.mjs:514:18\n    at async check (file:///workspace/yautja-reprise-20261109/scripts/qa-skinning-canopy-durable-browser-20261109.mjs:94:21)\n    at async canopy (file:///workspace/yautja-reprise-20261109/scripts/qa-skinning-canopy-durable-browser-20261109.mjs:513:3)\n    at async file:///workspace/yautja-reprise-20261109/scripts/qa-skinning-canopy-durable-browser-20261109.mjs:529:21",
+      "consoleErrors": [],
+      "assetFailures": [],
+      "reportSha256": "04d59c97bdf3e91da514262ba39dcd914a305214def2a5138c47ad2a5a27db74",
+      "captures": [
+        {
+          "path": "production/skinning-canopy-20261109/qa/native-attempts/native-07-canopy/08-canopy-canonical-insertion.png",
+          "bytes": 999227,
+          "sha256": "0af58d1257569c7d922c645eb6b1e1910c918fdcddc0700cd95fcef40d6315cc",
+          "width": 1280,
+          "height": 1353
+        },
+        {
+          "path": "production/skinning-canopy-20261109/qa/native-attempts/native-07-canopy/08b-native-entry-canopy-hud.png",
+          "bytes": 1033418,
+          "sha256": "7631d93236b175cc25e80e894637b8be67b8e335fec7ccfef515dddae72c960d",
+          "width": 1280,
+          "height": 1458
+        },
+        {
+          "path": "production/skinning-canopy-20261109/qa/native-attempts/native-07-canopy/09-first-native-rest.png",
+          "bytes": 1070621,
+          "sha256": "59f16356e82df6c64f8519e7b8e548745cff5826be297a6233fb5cdce2bb647f",
+          "width": 1280,
+          "height": 1458
+        },
+        {
+          "path": "production/skinning-canopy-20261109/qa/native-attempts/native-07-canopy/10-pendulum-restored-paused.png",
+          "bytes": 641187,
+          "sha256": "36a000e8743a6673dcffb1bc078af59947e27beeec75df578ef8c288cf38451e",
+          "width": 1280,
+          "height": 1337
+        },
+        {
+          "path": "production/skinning-canopy-20261109/qa/native-attempts/native-07-canopy/11-native-pumped-pendulum.png",
+          "bytes": 1089612,
+          "sha256": "7217580ec92b1b428d5190a6fc1c0ab0dcc262260002e760b268ee4827d6f845",
+          "width": 1280,
+          "height": 1458
+        },
+        {
+          "path": "production/skinning-canopy-20261109/qa/native-attempts/native-07-canopy/12-release-grace-restored.png",
+          "bytes": 635441,
+          "sha256": "ec4f7bfe1505302ec2bbfb2df9be108633c9397745d26c6697dd03a1e40d247e",
+          "width": 1280,
+          "height": 1337
+        },
+        {
+          "path": "production/skinning-canopy-20261109/qa/native-attempts/native-07-canopy/failure.png",
+          "bytes": 1091954,
+          "sha256": "66ca1d9e5a446cb10e105da18afcf6339e0740a754727fbf49d897a17c585d0b",
+          "width": 1280,
+          "height": 1458
+        }
+      ]
+    },
+    {
+      "attempt": "native-08-canopy",
+      "sourceCommit": "c23000fae806c6a777e719432c6fde5e9e2e259c",
+      "passed": false,
+      "exitCode": 1,
+      "checksPassed": 5,
+      "checksFailed": 0,
+      "failure": "AssertionError [ERR_ASSERTION]: The original real support must remain held before release\n    at file:///workspace/yautja-reprise-20261109/scripts/qa-skinning-canopy-durable-browser-20261109.mjs:493:12\n    at until (file:///workspace/yautja-reprise-20261109/scripts/qa-skinning-canopy-durable-browser-20261109.mjs:402:16)\n    at async canopy (file:///workspace/yautja-reprise-20261109/scripts/qa-skinning-canopy-durable-browser-20261109.mjs:491:3)\n    at async file:///workspace/yautja-reprise-20261109/scripts/qa-skinning-canopy-durable-browser-20261109.mjs:556:21",
+      "consoleErrors": [],
+      "assetFailures": [],
+      "reportSha256": "93ec9e86a604b9fd4b0ccb89fc8ad9975b8b7ccbecca2c5fb0dbf604ea0b4f7d",
+      "captures": [
+        {
+          "path": "production/skinning-canopy-20261109/qa/native-attempts/native-08-canopy/08-canopy-canonical-insertion.png",
+          "bytes": 999227,
+          "sha256": "0af58d1257569c7d922c645eb6b1e1910c918fdcddc0700cd95fcef40d6315cc",
+          "width": 1280,
+          "height": 1353
+        },
+        {
+          "path": "production/skinning-canopy-20261109/qa/native-attempts/native-08-canopy/08b-native-entry-canopy-hud.png",
+          "bytes": 1035810,
+          "sha256": "c05bd97fc5edeabfeb848a3611dfeb9989ce76ebc5cbd7aed614b3b51f79bbc3",
+          "width": 1280,
+          "height": 1458
+        },
+        {
+          "path": "production/skinning-canopy-20261109/qa/native-attempts/native-08-canopy/09-first-native-rest.png",
+          "bytes": 1070621,
+          "sha256": "59f16356e82df6c64f8519e7b8e548745cff5826be297a6233fb5cdce2bb647f",
+          "width": 1280,
+          "height": 1458
+        },
+        {
+          "path": "production/skinning-canopy-20261109/qa/native-attempts/native-08-canopy/10-pendulum-restored-paused.png",
+          "bytes": 642817,
+          "sha256": "5403784350ac33e637494c3a5d1199b8529810d5b8893cf13a3532a887ebe7d1",
+          "width": 1280,
+          "height": 1337
+        },
+        {
+          "path": "production/skinning-canopy-20261109/qa/native-attempts/native-08-canopy/11-native-pumped-pendulum.png",
+          "bytes": 1085377,
+          "sha256": "5ee1d9d70978a92efc2eab70a3faa3d92788e64c8b170efa6a1ddd3805f61eba",
+          "width": 1280,
+          "height": 1458
+        },
+        {
+          "path": "production/skinning-canopy-20261109/qa/native-attempts/native-08-canopy/failure.png",
+          "bytes": 1044730,
+          "sha256": "b7107badb15336bf69a98664ff76bad46411cdadb04a7a8be573aceb520052f1",
+          "width": 1280,
+          "height": 1458
+        }
+      ]
+    }
+  ],
+  "scope": "Raw reports, commands, logs, native PNGs and source copies retained without relabelling a failure as a pass.",
+  "captureMeaning": "PNG bytes/dimensions checked; this does not claim every image was visually reviewed or artistically validated.",
+  "pathsAreRepositoryRelative": true
+}

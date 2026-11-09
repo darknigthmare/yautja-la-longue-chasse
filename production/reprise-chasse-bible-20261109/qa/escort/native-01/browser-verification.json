@@ -1,0 +1,108 @@
+{
+  "schemaVersion": 1,
+  "startedAt": "2026-11-09T04:44:54.324Z",
+  "checkoutCommit": "ebe17184965307d9c636d45561a19c431802c4ab",
+  "workingTreeDirty": true,
+  "scope": "Actual GameClient, physical interior controller, B04 model and local campaign writer. Constructed prerequisites and interruption fixtures are declared. No full campaign, human understanding, physical device, new walk animation, artistic or target-performance qualification.",
+  "sourceSha256": {
+    "app/game/GameClient.tsx": "3e93e9ca2791224d5653f266df7e4d625d7c88fca075da8a137391fbde39bb19",
+    "app/game/ClanShipHub.tsx": "766ac8283e3937b92e2ed76f67b1459e44901d1ae3dc7072ee1168cafbb9a585",
+    "app/game/ClanShipInterior.tsx": "2cbcf5ddfc4ffad9fdb81a632dc950f8d636e20f49f4acbaea5af991cc19e960",
+    "app/game/ClanShipReturnEscortScene.tsx": "1531c314f7ae61276e3269717e1b3a50e0907bf448605e5c27a11fca9753bbe9",
+    "app/game/ClanShipReturnEscortScene.module.css": "a172f0f62ed7f0a842181aaef9ecf7ae95f0f4e841c6c3c1a2ab5596b431e273",
+    "app/game/systems/clanShipReturnEscort.ts": "40af2e2c7d00bff8235071271f6cdebbae6e9902b67bc3dd45a98ec83e79bb23",
+    "app/game/systems/clanShipInterior.ts": "4f8cbf8512dd88e19d36659d73a560615ce48cb13ae2498304372305cb944096",
+    "app/game/HomeworldNpcSpriteV84.tsx": "e6a069be9e16f09e63c254880e4d8d529757dd0e30386781539df150b13ef8bc",
+    "app/game/save.ts": "cbb36d075302bc3cde590755be350c2a2de9813ce1a1c584007d783a5e1b83ba",
+    "app/game/types.ts": "3a72c34ff6857b74023e23880cdc405d6fc82161867946da529d2d5a03a76855",
+    "tests/helpers/clan-ship-return-escort-fixture.mjs": "15103018589d12c67b3ffd28de55271923f8c530d9cfd06d802d99b57d428b5e",
+    "scripts/qa-clan-return-escort-browser-20261109.mjs": "831521e26fa303d930903756da87545ada4ba56d66dbcf76ff90415226b8fe97"
+  },
+  "fixtures": [
+    {
+      "id": "fresh-return",
+      "file": "initial-return-fixture.json",
+      "sha256": "e0bc2ac00e70c13deac31b7d6aa97548562e53021d9947f476812786c8658435",
+      "ownerCreatedAt": "2026-11-09T12:00:00.000Z",
+      "description": "Synthetic adult campaign. Onboarding, confinement/triage prerequisites and the actual spatial reducers prepare the completed space-recovery receipt. Those prerequisites are NOT browser-played. No B04 acceptance, movement, medical control or report is seeded.",
+      "browserPlayed": false
+    },
+    {
+      "id": "separated-return",
+      "file": "initial-separated-fixture.json",
+      "sha256": "5591322b78e5ba0896f369a149c7222bf45d5aa5226424621d53124d1b00b0e2",
+      "ownerCreatedAt": "2026-11-09T12:00:00.000Z",
+      "description": "Synthetic interruption fixture. The real escort reducer and native path solver prepare a group already across the door in soins, still escorting; the player resumes separately in hangar. Those preparatory moves are NOT browser-played.",
+      "browserPlayed": false
+    },
+    {
+      "id": "outside-return",
+      "file": "initial-outside-fixture.json",
+      "sha256": "0f132ff4a9a11ac61ce85cc334f62d4686b09ed9c892b67b9bc6cd92ced3e2ba",
+      "ownerCreatedAt": "2026-11-09T12:00:00.000Z",
+      "description": "Portable boundary fixture only: the same waiting group remains in soins while the player is in the docked personal ship. Native export/import must preserve the group; this initial version of the browser recipe does not claim a complete outside-ship route.",
+      "browserPlayed": false
+    }
+  ],
+  "browserExecuted": true,
+  "passed": false,
+  "checks": [
+    {
+      "context": "desktop",
+      "name": "a disclosed spatial receipt enables the return dossier without pre-seeding B04",
+      "passed": false,
+      "error": "accept requires a real in-reach action\n\nfalse !== true\n"
+    }
+  ],
+  "errors": [],
+  "consoleErrors": [
+    {
+      "context": "desktop",
+      "message": "Failed to load resource: the server responded with a status of 404 (Not Found)"
+    }
+  ],
+  "missingAssets": [
+    {
+      "context": "desktop",
+      "status": 200,
+      "url": "http://127.0.0.1:4198/game/ships/v12/classic-predator-spaceship.webp"
+    },
+    {
+      "context": "desktop",
+      "status": 200,
+      "url": "http://127.0.0.1:4198/game/ship-interior/v22/archive-terminal.webp"
+    },
+    {
+      "context": "desktop",
+      "status": 200,
+      "url": "http://127.0.0.1:4198/game/ships/v12/classic-predator-spaceship.webp"
+    },
+    {
+      "context": "desktop",
+      "status": 200,
+      "url": "http://127.0.0.1:4198/game/ship-interior/v22/archive-terminal.webp"
+    }
+  ],
+  "captures": [],
+  "contexts": [
+    {
+      "id": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "input": "mouse and keyboard",
+      "fixtureId": "fresh-return",
+      "physicalDevice": false
+    }
+  ],
+  "walking": [],
+  "writes": [],
+  "nativeImages": [],
+  "browserVersion": "154.0.8037.57",
+  "failure": {
+    "context": "desktop",
+    "check": "a disclosed spatial receipt enables the return dossier without pre-seeding B04",
+    "stack": "AssertionError [ERR_ASSERTION]: accept requires a real in-reach action\n\nfalse !== true\n\n    at command (file:///workspace/yautja-reprise-20261109/scripts/qa-clan-return-escort-browser-20261109.mjs:126:101)\n    at async file:///workspace/yautja-reprise-20261109/scripts/qa-clan-return-escort-browser-20261109.mjs:137:181\n    at async check (file:///workspace/yautja-reprise-20261109/scripts/qa-clan-return-escort-browser-20261109.mjs:114:67)\n    at async file:///workspace/yautja-reprise-20261109/scripts/qa-clan-return-escort-browser-20261109.mjs:137:4"
+  }
+}

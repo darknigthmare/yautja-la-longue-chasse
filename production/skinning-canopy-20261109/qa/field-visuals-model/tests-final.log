@@ -1,0 +1,19 @@
+✔ work uses the confirmed operation duration, including worn-tool time, and a saved clock replays exactly (2.540625ms)
+✔ no work pose is invented for another action, an airborne/climbing actor, or an invalid operation clock (0.245441ms)
+✔ all four real work actions are distinct and optional art bounds cannot poison a valid clock (0.297047ms)
+✔ both original feet remain planted through the working pose at real scales and both facings (8.492606ms)
+✔ arm and leg lengths stay original while a far intent point is clamped, without moving the collision data (0.786597ms)
+✔ a world-space operation snapshot reconstructs the exact original-body work frame after reload (0.708982ms)
+✔ tool admission refuses distant small bodies and keeps real contact at both facings and three hunter scales (181.335884ms)
+✔ tool contact check follows an actually moved body and does not override physical appui rules (0.882387ms)
+✔ prepared-body parts come only from the species catalogue and its exact corpse harvest identities (0.370925ms)
+✔ drawn flexible grip is the physics grip at every valid pendulum angle and length (0.658818ms)
+✔ stale or invalid suspended state never draws a false moved support; rigid geometry is left to its own renderer (0.248515ms)
+ℹ tests 11
+ℹ suites 0
+ℹ pass 11
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 282.19898

@@ -1,3 +1,23 @@
-.root{position:absolute;z-index:5;right:14px;top:72px;width:min(340px,calc(100% - 28px));max-height:55%;overflow:auto;box-sizing:border-box;background:#101c19ed;border:1px solid #967c52;padding:12px;color:#f2e4c7;pointer-events:auto;font-size:13px}.root header{display:flex;gap:10px;justify-content:space-between;align-items:center}.root button{min-height:42px;padding:8px;border:1px solid #867953;background:#21322b;color:#f2e4c7;font:inherit;cursor:pointer}.root button:disabled{opacity:.55;cursor:default}.root button:focus-visible{outline:2px solid #edcc87;outline-offset:2px}.actions{display:grid;grid-template-columns:1fr 1fr;gap:6px}.warning{line-height:1.4;color:#e8b38c}.root small{display:block;line-height:1.5;margin-top:9px;color:#c1b497}.root progress{width:100%;height:12px;accent-color:#d4bb76}.root [role=status]>span{display:block;margin-bottom:8px}.root [role=status]>button{width:100%;margin-top:8px}@media(max-width:600px){.root{top:8px;right:8px;padding:9px;width:min(280px,calc(100% - 16px));font-size:11px;max-height:calc(100% - 16px)}}
+.root{position:absolute;z-index:5;right:14px;top:72px;width:min(340px,calc(100% - 28px));max-height:55%;overflow:auto;box-sizing:border-box;background:#101c19ed;border:1px solid #967c52;padding:12px;color:#f2e4c7;pointer-events:auto;font-size:13px}.root header{display:flex;gap:10px;justify-content:space-between;align-items:center}.root button{min-height:44px;padding:8px;border:1px solid #867953;background:#21322b;color:#f2e4c7;font:inherit;cursor:pointer}.root button:disabled{opacity:.55;cursor:default}.root button:focus-visible{outline:2px solid #edcc87;outline-offset:2px}.actions{display:grid;grid-template-columns:1fr 1fr;gap:6px}.warning{line-height:1.4;color:#e8b38c}.root small{display:block;line-height:1.5;margin-top:9px;color:#c1b497}.root progress{width:100%;height:12px;accent-color:#d4bb76}.root [role=status]>span{display:block;margin-bottom:8px}.root [role=status]>button{width:100%;margin-top:8px}@media(max-width:600px){.root{top:8px;right:8px;padding:9px;width:min(280px,calc(100% - 16px));font-size:11px;max-height:calc(100% - 16px)}}
 
 .root button[data-gamepad-focus-v112="true"]{outline:3px solid #ffe08a;outline-offset:2px;background:#3e5542;color:#fff8de}
+.facts{line-height:1.5;padding:8px;background:#1b2b24;border-left:2px solid #967c52}
+.action{display:flex;flex-direction:column;min-width:0}
+.action>button{width:100%;height:auto;flex:1}
+.action>small{margin-top:5px;overflow-wrap:anywhere}
+.root [data-rite-progress-v112]>strong{display:block;margin-bottom:7px}
+.root [data-rite-progress-v112]>span{display:block;margin-bottom:8px}
+.root [data-rite-progress-v112]>button{width:100%;margin-top:8px}
+@media(max-width:600px){
+  .root.workingCompact{display:grid;grid-template-columns:minmax(0,1fr) 44px 82px;align-items:center;gap:6px;padding:8px;overflow:visible;max-height:none}
+  .workingCompact [data-rite-progress-v112]{min-width:0;font-size:11px;line-height:1.25}
+  .workingCompact [data-rite-progress-v112]>strong{margin:0 0 3px;overflow-wrap:anywhere}
+  .workingCompact [data-rite-progress-v112]>span{margin:0 0 3px}
+  .workingCompact progress{display:block;height:8px;margin:0}
+  .workingCompact .workInfo,.workingCompact .workInterrupt{min-width:44px;min-height:44px;padding:5px;font-size:11px}
+  .workingCompact .workInfo{width:44px}
+  .workingCompact .workInterrupt{width:82px}
+  .workDetails{position:absolute;top:calc(100% + 6px);right:0;width:100%;max-height:min(32vh,130px);overflow:auto;box-sizing:border-box;padding:10px;border:1px solid #967c52;background:#101c19fa;font-size:12px;line-height:1.45}
+  .workDetails[hidden]{display:none}
+  .workDetails p{margin:8px 0 0}
+}

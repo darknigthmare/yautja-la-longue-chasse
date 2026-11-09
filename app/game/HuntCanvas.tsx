@@ -38,6 +38,7 @@ import { drawEnvironmentProp } from "./environmentPropDrawing";
 import { ExplorationMap } from "./ExplorationMap";
 import FirstHuntGuide from "./FirstHuntGuide";
 import HuntFieldGuideV112 from "./HuntFieldGuideV112";
+import HuntCanopyHudV112 from "./HuntCanopyHudV112";
 import HuntRitualMeterV112 from "./HuntRitualMeterV112";
 import accessStyles from "./HuntAccessibilityV112.module.css";
 import {normalizeHuntAccessibilityV112,DEFAULT_HUNT_GAMEPAD_V112,stepHoldTogglesV112,stepRitualAssistV112,freshRitualAssistV112,
@@ -47,7 +48,7 @@ import presentationStyles from "./HuntCanvas.module.css";
 import { createHuntAnnouncementQueueV78, enqueueHuntAnnouncementV78, advanceHuntAnnouncementQueueV78,
   type HuntAnnouncementQueueV78, type HuntAnnouncementPriorityV78 } from "./huntAnnouncementQueueV78";
 import HuntRitesMenuV77 from './HuntRitesMenuV77';
-import {createRitesOfHuntV77,registerRitePreyV77,startHuntRiteV77,stepHuntRiteV77,discoverHuntRiteV77,
+import {createRitesOfHuntV77,registerRitePreyV77,startHuntRiteV77,stepHuntRiteV77,discoverHuntRiteV77,riteOperationSecondsV77,
   type RitesOfHuntV77,type HuntRiteActionV77} from './systems/ritesOfHuntV77';
 import {huntRitesRunIdV77,riteRuntimeContextV77,restoreRitesRuntimeV77,followRiteCorpseAnchorsV77,
   riteWitnessCanSeeV77,riteLineOfSightV77,reactToRiteWitnessV77,huntRiteMenuSnapshotV77,type HuntRiteMenuSnapshotV77} from './systems/huntRitesRuntimeV77';
@@ -64,7 +65,12 @@ import { applyExplorationWorld, discoverExplorationRooms, interactWithExploratio
 import { defaultExplorationProgress, normalizeExplorationProgress, mergeExplorationProgress, explorationBonuses, isExplorationMission, explorationForMission } from "./systems/explorationProgress";
 import { OSERIS_VERTICAL_BOUNDS, PILOT_MISSION_ID, targetOserisCameraY } from "./systems/metroidvaniaPilot";
 import { resolvePlatformMotion, overlapsSolidPlatform, type PlatformMotionResult } from "./systems/platformCollision";
-import { attachCanopySwingV112, canopySupportReachableV112, isCanopySwingSnapshotV112, releaseCanopySwingV112, stepCanopySwingV112, type CanopySwingV112 } from "./systems/canopyTraversalV112";
+import { attachCanopySwingV112, canopySupportReachableV112, canopySwingPointV112, isCanopySwingSnapshotV112, releaseCanopySwingV112, stepCanopySwingV112, type CanopySwingV112 } from "./systems/canopyTraversalV112";
+import { solveCanopyGripRigV112 } from "./systems/canopyGripPresentationV112";
+import { canopyNavigationV112, type CanopyNavigationV112 } from "./systems/canopyNavigationV112";
+import { describeHuntFieldWorkV112, solveHuntFieldWorkRigV112, drawHuntFieldWorkV112,
+  describePreparedCorpseV112, drawPreparedCorpseV112, huntFieldWorkReachableV112 } from "./systems/huntFieldPresentationV112";
+import { drawFlexibleCanopySupportV112, drawCanopyRestSurfaceV112, drawCanopyNavigationMarkersV112 } from "./systems/canopySupportRendererV112";
 import { freshJumpAssistState, stepJumpAssist, predictLandingWithinBuffer, type JumpAssistState, type JumpAssistResult } from "./systems/jumpAssist";
 import { discoverWorldScreen, normalizeVisitedScreenIds } from "./systems/explorationMap";
 import {
@@ -74,6 +80,7 @@ import {
   type AffineMatrix,
   type HunterRigBoneId,
   type HunterRigFrame,
+  type HunterRigInput,
   type HunterRigPose,
   type RigPoint,
 } from "./hunterRig";
@@ -266,6 +273,7 @@ import {
   honorRuleEventId,
 } from "./honorRules";
 import type { GameSfxId, GameMusicContext } from "./sound";
+import { huntFieldWorkSoundsV112 } from "./systems/huntFieldFeedbackV112";
 import { shipProfileAssetPath, type ShipId } from "./shipCatalogue";
 import { ARRIVAL_COMPLETION_ART, ARRIVAL_SPRITES, carrierArtForShip } from "./systems/planetArrivalArt";
 import { POD_DESTRUCTION_ART, POD_DESTRUCTION_SPRITES } from "./systems/planetArrivalPodArt";
@@ -855,6 +863,7 @@ interface GameState {
 }
 
 interface UiSnapshot {
+  canopyNavigationV112: CanopyNavigationV112 | null;
   podRecovery: (HuntPodSafety & { phase: 'ready' | 'countdown' | 'destroyed'; remainingSeconds: number; count: number }) | null;
   insertion: {
     method: PlanetInsertionPlan['method']; searchRemaining: number;
@@ -970,6 +979,7 @@ function isHeldKeyboardAction(action: Action): boolean {
 const DEFAULT_HUNT_ACCESSIBILITY_CANVAS_V112 = normalizeHuntAccessibilityV112(undefined);
 
 const EMPTY_UI: UiSnapshot = {
+  canopyNavigationV112: null,
   podRecovery: null,
   insertion: { method: 'pod', team: 'solo', runId: '', shipId: null, searchRemaining: 0, members: [] },
   fieldPackV112:{carried:[],nearby:[],canDrop:false},
@@ -1056,6 +1066,30 @@ function clamp(value: number, minimum: number, maximum: number): number {
  * Collision dimensions remain owned by PlayerState; the rig only resolves
  * visual bones and shared equipment anchors in world coordinates.
  */
+function currentHuntFieldWorkV112(state: GameState, player: PlayerState = state.player) {
+  const operation = state.huntRites?.operation;
+  if (!operation || player !== state.player || state.phase === "dead" || state.phase === "finished") return null;
+  const corpse = state.huntRites.corpses.find(body => body.id === operation.corpseId && !body.erased);
+  const body = corpse && state.enemies.find(enemy => enemy.id === corpse.id && !enemy.alive && enemy.active);
+  if (!corpse || !body) return null;
+  const uses = state.huntRites.completedEventIds.filter(id => id.startsWith("flay:") || id.startsWith("harvest-")).length;
+  const multiplier = flayingToolWorkMultiplierV112(toolConditionAfterUsesV112(state.riteToolInitialConditionV112 ?? 100, uses));
+  const duration = riteOperationSecondsV77(operation.action, corpse.sourceEnemyId, multiplier);
+  const baseDuration = riteOperationSecondsV77(operation.action, corpse.sourceEnemyId);
+  if (baseDuration <= 0 || duration <= 0) return null;
+  return describeHuntFieldWorkV112({ action: operation.action, elapsed: operation.elapsed * duration / baseDuration,
+    duration, player, corpse: { ...corpse, width: body.width, height: body.height } });
+}
+
+function currentCanopyNavigationV112(state: GameState): CanopyNavigationV112 {
+  return canopyNavigationV112({ player: state.player, climbables: state.world.climbables,
+    platforms: state.world.platforms, hazards: state.world.hazards, floorY: state.world.floorY,
+    minimumGripStamina: CLIMB_TRAVERSAL.minimumGripStamina,
+    staminaMultiplier: huntFieldLoadV112(state).climbStaminaMultiplier,
+    actionLocked: state.trophyExtracting || !!state.trophyVictory && !state.trophyVictory.complete ||
+      state.phase === "dead" || state.phase === "finished" });
+}
+
 function solvePlayerRigFrame(
   state: GameState,
   player: PlayerState = state.player,
@@ -1092,7 +1126,7 @@ function solvePlayerRigFrame(
   }
 
   const scale = player.height / HUNTER_RIG_CANVAS.height;
-  return solveHunterRig({
+  const rigInput: HunterRigInput = {
     pose,
     phase,
     facing: player.facing,
@@ -1111,7 +1145,17 @@ function solvePlayerRigFrame(
       player.y +
       player.height -
       HUNTER_RIG_CANVAS.groundY,
-  });
+  };
+  const fieldWork = currentHuntFieldWorkV112(state, player);
+  if (fieldWork) return solveHuntFieldWorkRigV112(rigInput, fieldWork);
+  const swing = player.canopySwing;
+  if (player.climbing && swing) {
+    const support = state.world.climbables.find(zone => zone.id === swing.supportId);
+    if (support && canopySupportReachableV112(player, support, state.world.platforms, swing)) {
+      return solveCanopyGripRigV112(rigInput, canopySwingPointV112(swing, support));
+    }
+  }
+  return solveHunterRig(rigInput);
 }
 
 function distance(a: Vec2, b: Vec2): number {
@@ -2430,7 +2474,9 @@ function restoreCheckpoint(
   player.maxEnergy = state.player.maxEnergy - explorationBonuses(state.exploration).maxEnergy + explorationBonuses(exploration).maxEnergy;
   player.energy = Math.min(player.energy, player.maxEnergy);
   player.aerialBoostUsed = typeof player.aerialBoostUsed === "boolean" ? player.aerialBoostUsed : !player.grounded;
-  player.climbReattachSeconds = 0;
+  // Resuming must preserve the release delay captured with the real motion.
+  // A retry starts from its safe authored checkpoint instead.
+  player.climbReattachSeconds = mode === "retry" ? 0 : (player.climbReattachSeconds ?? 0);
   player.climbGripExhausted = player.climbGripExhausted === true && !player.grounded;
   // A legacy checkpoint may lie inside a newly authored wall. Keep objectives
   // and inventory intact, but explicitly return the hunter to safe insertion.
@@ -3074,6 +3120,7 @@ function snapshot(state: GameState, mission: MissionDefinition): UiSnapshot {
   const fieldItems=carriedFieldSpecimensV112(state.huntRites);
   const actorAt={x:state.player.x+state.player.width/2,y:state.player.y+state.player.height/2};
   return {
+    canopyNavigationV112: currentCanopyNavigationV112(state),
     podRecovery: state.insertion?.podRecovery ? {
       ...huntPodSafety(state.insertion.podRecovery, huntPodAnchors(state.insertion.plan, state.world), podSafetyInput(state)),
       phase: state.insertion.podRecovery.phase, remainingSeconds: state.insertion.podRecovery.remainingSeconds,
@@ -3959,7 +4006,8 @@ function drawHuntCompanions(context: CanvasRenderingContext2D, state: GameState,
     const boarding = member.status === 'boarding' && state.dropShip ? dropShipVisual(state.dropShip, state.world.extraction.x) : null;
     if (boarding && boarding.boardingProgress > .93) continue;
     const player = companionPlayerState(state.player, member);
-    const renderState = { ...state, player, trophyExtracting: false, trophyExtraction: 0, trophyVictory: null, trophyCarried: false };
+    const renderState = { ...state, player, huntRites: { ...state.huntRites, operation: null },
+      trophyExtracting: false, trophyExtraction: 0, trophyVictory: null, trophyCarried: false };
     const definition = TRIO_MEMBERS.find(entry => entry.id === member.id)!;
     const centerX = member.x + member.width / 2;
     context.save();
@@ -3993,6 +4041,7 @@ function drawHunterLayered(
   appearance: HunterAppearance,
   assets: AssetBank,
   alpha: number,
+  reducedMotion = false,
 ): void {
   const player = state.player;
   const hasPlasmaCaster = loadout.weaponIds.includes("plasma-caster");
@@ -4162,7 +4211,8 @@ function drawHunterLayered(
 
   // L'arme secondaire suit la main avant. La main est redessinée ensuite
   // pour que la poignée reste réellement prise dans les doigts.
-  drawHunterHandWeapon(context, state, loadout, assets, frame);
+  const fieldWork = currentHuntFieldWorkV112(state, player);
+  if (!fieldWork) drawHunterHandWeapon(context, state, loadout, assets, frame);
   if (atomicBodyReady) {
     drawAtomicBodyPart(context, assets, frame, appearance, "hand-front");
   }
@@ -4290,6 +4340,7 @@ function drawHunterLayered(
   if (state.trophyCarried && state.trophyClaim) {
     drawClaimedTrophyLayers(context, assets, frame, state.trophyClaim);
   }
+  if (fieldWork) drawHuntFieldWorkV112(context, fieldWork, frame, { reducedMotion });
   context.restore();
 }
 
@@ -4783,18 +4834,7 @@ function drawWorldClimbable(
   encounterRun: number,
   swing: CanopySwingV112 | null = null,
 ): void {
-  if (swing?.supportId === zone.id) {
-    const x = zone.x + zone.width / 2;
-    const gripX = x + Math.sin(swing.angle) * swing.length;
-    const gripY = zone.y + Math.cos(swing.angle) * swing.length;
-    context.save();
-    context.strokeStyle = zone.kind === "vine" ? "#7eae65" : "#cab68c";
-    context.lineWidth = zone.kind === "chain" ? 6 : 4;
-    context.beginPath(); context.moveTo(x, zone.y); context.lineTo(gripX, gripY); context.stroke();
-    context.fillStyle = "#d9eeac"; context.beginPath(); context.arc(x, zone.y, 7, 0, Math.PI * 2); context.fill();
-    context.restore();
-    return;
-  }
+  if (drawFlexibleCanopySupportV112(context, zone, swing, { vine: assets.vineLadder })) return;
   const assignment = environmentGameplayPropForGeometryId(
     mission.id,
     zone.id,
@@ -5019,6 +5059,7 @@ function renderGame(
   assets: AssetBank,
   encounterRun: number,
   deviceScale: number,
+  reducedMotion = false,
 ): void {
   context.setTransform(deviceScale, 0, 0, deviceScale, 0, 0);
   context.clearRect(0, 0, VIEW_WIDTH, VIEW_HEIGHT);
@@ -5254,6 +5295,9 @@ function renderGame(
         8,
       );
     }
+    drawCanopyRestSurfaceV112(context, platform, state.player.grounded &&
+      Math.abs(state.player.y + state.player.height - platform.y) <= 2 &&
+      state.player.x < platform.x + platform.width && state.player.x + state.player.width > platform.x);
   }
 
   if (mission.id === PILOT_MISSION_ID) {
@@ -5888,6 +5932,9 @@ function renderGame(
   }
 
   // Chasseur assemblé en couches indépendantes.
+  if (state.phase !== "dead" && state.phase !== "finished") {
+    drawCanopyNavigationMarkersV112(context, currentCanopyNavigationV112(state).markers);
+  }
   drawHuntCompanions(context, state, assets);
   const hunterAlpha = state.player.cloaked
     ? 0.24 + Math.sin(state.elapsed * 8) * 0.07
@@ -5908,6 +5955,7 @@ function renderGame(
       appearance,
       assets,
       hunterAlpha,
+      reducedMotion,
     );
     drawAimAssist(context, state, mission, loadout, appearance);
   }
@@ -6659,14 +6707,38 @@ function riteRuntimeOptionsV112(state:GameState) {
   const actor={x:state.player.x+state.player.width/2,y:state.player.y+state.player.height};
   const uses=state.huntRites.completedEventIds.filter(id=>id.startsWith('flay:')||id.startsWith('harvest-')).length;
   const carried=state.enemies.find(e=>e.id===state.huntRites.carryingCorpseId);
+  // Evaluate current stock on every preview and completion, never a captured
+  // start-of-gesture capacity. Acceptance keeps the existing three checks.
+  const specimenPreview=(item:import("./systems/harvestInventoryV112").FieldSpecimenV112)=>{
+    const items=carriedFieldSpecimensV112(state.huntRites),armor=state.harvestArmorIdV112??'hunter';
+    const projectedLoad=fieldLoadV112([...items,item],armor);
+    const pickup=tryCarrySpecimenV112(items,item,armor);
+    const depotAvailable=items.length<(state.harvestDepotFreeV112??HARVEST_DEPOT_LIMIT_V112);
+    const fieldAvailable=(state.huntRites.specimensV112??[]).length<64;
+    const accepted=depotAvailable&&fieldAvailable&&pickup.ok;
+    const limitingDimension=projectedLoad.massKg/projectedLoad.capacityMassKg>=projectedLoad.volumeUnits/projectedLoad.capacityVolumeUnits
+      ?'Masse maximale du sac dépassée.':'Volume maximal du sac dépassé.';
+    const reason=!depotAvailable?'Dépôt de campagne plein : ranger des prises montées au vaisseau.':
+      !fieldAvailable?'Registre de terrain plein : 64 prises déjà prélevées dans cette chasse.':
+      !pickup.ok?(projectedLoad.overloaded?limitingDimension+' La partie reste sur la proie.':pickup.reason):'';
+    return {accepted,reason,projectedLoad};
+  };
   return {flayingToolOwned:state.flayingToolOwned,maximumSpecimens:state.harvestDepotFreeV112,world:state.world,
+    grounded:state.player.grounded,climbing:state.player.climbing,
+    toolCondition:toolConditionAfterUsesV112(state.riteToolInitialConditionV112??100,uses),
+    worksiteBlocked:(corpse:{x:number;y:number})=>Boolean(huntStructuralBarrierV94(
+      {x:actor.x,y:actor.y-Math.min(48,state.player.height*.4)},
+      {x:corpse.x,y:corpse.y-12},state.world.platforms)),
+    worksiteReachable:(corpse:{id:string;sourceEnemyId:string;x:number;y:number})=>{
+      const body=state.enemies.find(enemy=>enemy.id===corpse.id&&enemy.archetype===corpse.sourceEnemyId&&
+        !enemy.alive&&enemy.active&&enemy.health===0);
+      return !!body&&huntFieldWorkReachableV112({player:state.player,
+        corpse:{...corpse,width:body.width,height:body.height}});
+    },
     toolWorkMultiplier:flayingToolWorkMultiplierV112(toolConditionAfterUsesV112(state.riteToolInitialConditionV112??100,uses)),
     supports:carcassSupportsForWorldV112(state.world).filter(s=>carcassSupportAccessibleV112(actor,s,state.world)&&(!carried||carcassFitsSocketV112(carried,s,state.world))),
-    acceptSpecimen:(item:import("./systems/harvestInventoryV112").FieldSpecimenV112)=>{
-      const items=carriedFieldSpecimensV112(state.huntRites);
-      return items.length<(state.harvestDepotFreeV112??HARVEST_DEPOT_LIMIT_V112)&&(state.huntRites.specimensV112??[]).length<64&&
-        tryCarrySpecimenV112(items,item,state.harvestArmorIdV112??'hunter').ok;
-    }};
+    fieldLoad:()=>fieldLoadV112(carriedFieldSpecimensV112(state.huntRites),state.harvestArmorIdV112??'hunter'),
+    specimenPreview,acceptSpecimen:(item:import("./systems/harvestInventoryV112").FieldSpecimenV112)=>specimenPreview(item).accepted};
 }
 function syncCarcassTransportV112(state:GameState):void {
   const carriedId=state.huntRites.carryingCorpseId;
@@ -6699,6 +6771,7 @@ function ritePersistenceKeyV77(state:RitesOfHuntV77):string {
   return state.corpses.length+':'+state.completedEventIds.length+':'+state.corpses.reduce((count,c)=>count+c.witnesses.length,0)+':'+(state.carryingCorpseId??'')+':'+state.corpses.map(c=>c.supportId??'').join(',');
 }
 function updateHuntRitesV77(state:GameState,delta:number):void {
+  const feedbackBefore = { operation: state.huntRites.operation, completedEventIds: state.huntRites.completedEventIds };
   syncCarcassTransportV112(state);
   state.huntRites=stepFieldStashesV112(state.huntRites,state.world,delta);
   state.huntRites=followRiteCorpseAnchorsV77(state.huntRites,state.enemies);
@@ -6726,6 +6799,7 @@ function updateHuntRitesV77(state:GameState,delta:number):void {
   }
   const stepped=stepHuntRiteV77(state.huntRites,delta,context);
   state.huntRites={...stepped.state,elapsed:state.elapsed};
+  for (const sound of huntFieldWorkSoundsV112(feedbackBefore, state.huntRites)) queueSound(state, sound);
   syncCarcassTransportV112(state);
   if(!state.huntRites.operation)state.riteOperationDamageStart=null;
   if(stepped.accepted||before&&!state.huntRites.operation)announce(state,stepped.message,2.8);
@@ -6838,18 +6912,8 @@ function drawHuntRiteCorpsesV77(context:CanvasRenderingContext2D,state:GameState
         context.setLineDash([4,4]);context.strokeStyle='#e0d2b2';context.beginPath();context.moveTo(support.x,support.y);
         context.lineTo(support.x+(corpse.x-support.x)*progress,support.y+(corpse.y-18-support.y)*progress);context.stroke();context.setLineDash([]);}
     }
-    if(corpse.flayed){
-      // A readable prepared state respects reduced gore without inventing a new asset.
-      context.strokeStyle='#d9bd83';context.lineWidth=2;context.setLineDash([4,3]);
-      context.strokeRect(corpse.x-22,corpse.y-20,44,18);context.setLineDash([]);
-      context.fillStyle='#d9bd83';context.font='10px sans-serif';context.textAlign='center';
-      context.fillText('PRÉPARÉE',corpse.x,corpse.y-27);
-    }
-    if(state.huntRites.operation?.corpseId===corpse.id&&state.huntRites.operation.action==='flay'){
-      const progress=Math.min(1,state.huntRites.operation.elapsed/3.2);
-      context.fillStyle='#1a2523';context.fillRect(corpse.x-26,corpse.y-42,52,4);
-      context.fillStyle='#d9bd83';context.fillRect(corpse.x-26,corpse.y-42,52*progress,4);
-    }
+    drawPreparedCorpseV112(context, describePreparedCorpseV112(corpse, state.huntRites.completedEventIds),
+      { x: corpse.x - enemy.width / 2, y: corpse.y - Math.min(50, enemy.height), width: enemy.width, height: Math.min(50, enemy.height) });
     if(corpse.marked){context.strokeStyle='#e5c282';context.lineWidth=2;context.beginPath();
       context.moveTo(corpse.x-8,corpse.y-15);context.lineTo(corpse.x,corpse.y-25);context.lineTo(corpse.x+8,corpse.y-15);
       context.moveTo(corpse.x,corpse.y-25);context.lineTo(corpse.x,corpse.y-9);context.stroke();}
@@ -8429,6 +8493,7 @@ function updatePlayer(
     return;
   }
   const actionLocked = state.trophyExtracting || victoryLocked;
+  const previousClimbSupport = player.climbing ? player.climbZoneId : null;
   if (!player.climbing || actionLocked) player.canopySwing = null;
   updatePlayerMeleeCombat(state, mission, delta, actionLocked);
 
@@ -8773,6 +8838,11 @@ function updatePlayer(
     if (boundedX !== player.x) { player.climbing = false; player.climbZoneId = null; }
   }
   player.x = boundedX;
+  const currentClimbSupport = player.climbing ? player.climbZoneId : null;
+  if (currentClimbSupport !== previousClimbSupport) {
+    if (previousClimbSupport) queueSound(state, "canopy-release");
+    if (currentClimbSupport) queueSound(state, "canopy-grab");
+  }
   updateHunterRig(player, delta, state.trophyExtracting);
 
   player.invulnerability = Math.max(0, player.invulnerability - delta);
@@ -10812,6 +10882,7 @@ export default function HuntCanvas({
     let lastUiPush = 0;
     let deviceScale = clamp(window.devicePixelRatio || 1, 1, 2);
     const ecologyRunSeed = encounterRun;
+    const fieldMotionPreference = window.matchMedia("(prefers-reduced-motion: reduce)");
     let game = makeGameState(
       mission,
       loadout,
@@ -11657,7 +11728,7 @@ export default function HuntCanvas({
         }
         navigateHuntDialogWithGamepad(huntDialogRef.current, input.gamepadDialogActions.splice(0));
         input.pressed.clear();
-        renderGame(context, game, mission, loadout, appearance, assets, encounterRun, deviceScale);
+        renderGame(context, game, mission, loadout, appearance, assets, encounterRun, deviceScale, fieldMotionPreference.matches);
         if (time - lastUiPush >= 100) {
           lastUiPush = time;
           setUi(snapshot(game, mission));
@@ -11719,6 +11790,7 @@ export default function HuntCanvas({
         assets,
         encounterRun,
         deviceScale,
+        fieldMotionPreference.matches,
       );
       if (time - lastUiPush >= 100) {
         lastUiPush = time;
@@ -12286,6 +12358,11 @@ export default function HuntCanvas({
           </div>
         ) : null}
       </div>
+
+      {assetsReady && ui.canopyNavigationV112 && !huntDialogOpen && !missionOpeningOpen &&
+        ui.phase !== "dead" && ui.phase !== "finished" && <HuntCanopyHudV112
+          navigation={ui.canopyNavigationV112} bindings={activeBindings}
+          gamepadButtons={activeAccessibility.gamepadButtons} gripInput={activeAccessibility.gripInput}/>}
 
       {/* Bloc : contrôles tactiles et aide clavier/manette. */}
       <div className={presentationStyles.controls}>

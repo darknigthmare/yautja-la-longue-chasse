@@ -1,0 +1,644 @@
+{
+  "schemaVersion": 1,
+  "startedAt": "2026-11-09T05:54:03.064Z",
+  "checkoutCommit": "43b5996543d89cdf0405ae684f67557eb8d4d132",
+  "workingTreeDirty": false,
+  "scope": "Actual React HuntRitesMenu and native HuntCanvas callback, rite state, catalogue and emulated gamepad polling. The fixture omits the world renderer and uses disclosed native source-body and bag boundary initial states. No whole HuntCanvas lifecycle, campaign win, physical device, human comprehension or artistic qualification.",
+  "fixtures": {
+    "source": "One actual makeEnemy/damageEnemy hell-hound body; no foe or objective completion claimed.",
+    "mass": "Five catalogue iron-croc hides (22kg/15volumes) in a disclosed scout bag (24kg/18volumes).",
+    "volume": "Eight catalogue hound hides (19.2kg/24volumes) in a hunter bag (36kg/24volumes).",
+    "depot": "Native adapter with no free depot slot; no stock credited."
+  },
+  "browserExecuted": true,
+  "passed": true,
+  "checks": [
+    {
+      "context": "1120x1000",
+      "name": "catalogue mass, volume and real bag projection are visible before harvesting",
+      "passed": true,
+      "preview": "2,4 kg · 3 volumes. Après la prise : 2,4 / 36 kg · 3 / 24 volumes."
+    },
+    {
+      "context": "1120x1000",
+      "name": "first real harvest locks analysis with a visible accessible reason and preserves assigned quality",
+      "passed": true,
+      "quality": 79,
+      "reason": "Analyse indisponible : Analyse à effectuer avant tout prélèvement irréversible."
+    },
+    {
+      "context": "1120x1000",
+      "name": "native gamepad polling skips unavailable analysis rather than focusing a disabled action",
+      "passed": true,
+      "focused": [
+        {
+          "action": "leave",
+          "disabled": false
+        },
+        {
+          "action": "erase",
+          "disabled": false
+        },
+        {
+          "action": "carry",
+          "disabled": false
+        },
+        {
+          "action": "harvest-tissue",
+          "disabled": false
+        },
+        {
+          "action": null,
+          "disabled": false
+        },
+        {
+          "action": "mark",
+          "disabled": false
+        },
+        {
+          "action": "leave",
+          "disabled": false
+        },
+        {
+          "action": "erase",
+          "disabled": false
+        },
+        {
+          "action": "carry",
+          "disabled": false
+        },
+        {
+          "action": "harvest-tissue",
+          "disabled": false
+        },
+        {
+          "action": null,
+          "disabled": false
+        },
+        {
+          "action": "mark",
+          "disabled": false
+        }
+      ]
+    },
+    {
+      "context": "1120x1000",
+      "name": "mass: exact capacity refusal is visible before click and disabled DOM action cannot change stock",
+      "passed": true,
+      "reason": "Masse maximale du sac dépassée. La partie reste sur la proie.",
+      "load": {
+        "massKg": 22,
+        "volumeUnits": 15,
+        "capacityMassKg": 24,
+        "capacityVolumeUnits": 18,
+        "ratio": 0.9166666666666666,
+        "overloaded": false,
+        "movementMultiplier": 0.7066666666666667,
+        "jumpMultiplier": 0.8533333333333333,
+        "climbStaminaMultiplier": 1.5499999999999998,
+        "noiseMultiplier": 1.7333333333333334
+      },
+      "projection": {
+        "massKg": 24.4,
+        "volumeUnits": 18,
+        "capacityMassKg": 24,
+        "capacityVolumeUnits": 18,
+        "ratio": 1.0166666666666666,
+        "overloaded": true,
+        "movementMultiplier": 0.6799999999999999,
+        "jumpMultiplier": 0.84,
+        "climbStaminaMultiplier": 1.6,
+        "noiseMultiplier": 1.8
+      }
+    },
+    {
+      "context": "1120x1000",
+      "name": "volume: exact capacity refusal is visible before click and disabled DOM action cannot change stock",
+      "passed": true,
+      "reason": "Volume maximal du sac dépassé. La partie reste sur la proie.",
+      "load": {
+        "massKg": 19.2,
+        "volumeUnits": 24,
+        "capacityMassKg": 36,
+        "capacityVolumeUnits": 24,
+        "ratio": 1,
+        "overloaded": false,
+        "movementMultiplier": 0.6799999999999999,
+        "jumpMultiplier": 0.84,
+        "climbStaminaMultiplier": 1.6,
+        "noiseMultiplier": 1.8
+      },
+      "projection": {
+        "massKg": 21.599999999999998,
+        "volumeUnits": 27,
+        "capacityMassKg": 36,
+        "capacityVolumeUnits": 24,
+        "ratio": 1.125,
+        "overloaded": true,
+        "movementMultiplier": 0.6799999999999999,
+        "jumpMultiplier": 0.84,
+        "climbStaminaMultiplier": 1.6,
+        "noiseMultiplier": 1.8
+      }
+    },
+    {
+      "context": "1120x1000",
+      "name": "depot: exact capacity refusal is visible before click and disabled DOM action cannot change stock",
+      "passed": true,
+      "reason": "Dépôt de campagne plein : ranger des prises montées au vaisseau.",
+      "load": {
+        "massKg": 0,
+        "volumeUnits": 0,
+        "capacityMassKg": 36,
+        "capacityVolumeUnits": 24,
+        "ratio": 0,
+        "overloaded": false,
+        "movementMultiplier": 1,
+        "jumpMultiplier": 1,
+        "climbStaminaMultiplier": 1,
+        "noiseMultiplier": 1
+      },
+      "projection": {
+        "massKg": 2.4,
+        "volumeUnits": 3,
+        "capacityMassKg": 36,
+        "capacityVolumeUnits": 24,
+        "ratio": 0.125,
+        "overloaded": false,
+        "movementMultiplier": 0.96,
+        "jumpMultiplier": 0.98,
+        "climbStaminaMultiplier": 1.075,
+        "noiseMultiplier": 1.1
+      }
+    },
+    {
+      "context": "390x844",
+      "name": "catalogue mass, volume and real bag projection are visible before harvesting",
+      "passed": true,
+      "preview": "2,4 kg · 3 volumes. Après la prise : 2,4 / 36 kg · 3 / 24 volumes."
+    },
+    {
+      "context": "390x844",
+      "name": "first real harvest locks analysis with a visible accessible reason and preserves assigned quality",
+      "passed": true,
+      "quality": 79,
+      "reason": "Analyse indisponible : Analyse à effectuer avant tout prélèvement irréversible."
+    },
+    {
+      "context": "390x844",
+      "name": "native gamepad polling skips unavailable analysis rather than focusing a disabled action",
+      "passed": true,
+      "focused": [
+        {
+          "action": "leave",
+          "disabled": false
+        },
+        {
+          "action": "erase",
+          "disabled": false
+        },
+        {
+          "action": "carry",
+          "disabled": false
+        },
+        {
+          "action": "harvest-tissue",
+          "disabled": false
+        },
+        {
+          "action": null,
+          "disabled": false
+        },
+        {
+          "action": "mark",
+          "disabled": false
+        },
+        {
+          "action": "leave",
+          "disabled": false
+        },
+        {
+          "action": "erase",
+          "disabled": false
+        },
+        {
+          "action": "carry",
+          "disabled": false
+        },
+        {
+          "action": "harvest-tissue",
+          "disabled": false
+        },
+        {
+          "action": null,
+          "disabled": false
+        },
+        {
+          "action": "mark",
+          "disabled": false
+        }
+      ]
+    },
+    {
+      "context": "390x844",
+      "name": "mass: exact capacity refusal is visible before click and disabled DOM action cannot change stock",
+      "passed": true,
+      "reason": "Masse maximale du sac dépassée. La partie reste sur la proie.",
+      "load": {
+        "massKg": 22,
+        "volumeUnits": 15,
+        "capacityMassKg": 24,
+        "capacityVolumeUnits": 18,
+        "ratio": 0.9166666666666666,
+        "overloaded": false,
+        "movementMultiplier": 0.7066666666666667,
+        "jumpMultiplier": 0.8533333333333333,
+        "climbStaminaMultiplier": 1.5499999999999998,
+        "noiseMultiplier": 1.7333333333333334
+      },
+      "projection": {
+        "massKg": 24.4,
+        "volumeUnits": 18,
+        "capacityMassKg": 24,
+        "capacityVolumeUnits": 18,
+        "ratio": 1.0166666666666666,
+        "overloaded": true,
+        "movementMultiplier": 0.6799999999999999,
+        "jumpMultiplier": 0.84,
+        "climbStaminaMultiplier": 1.6,
+        "noiseMultiplier": 1.8
+      }
+    },
+    {
+      "context": "390x844",
+      "name": "volume: exact capacity refusal is visible before click and disabled DOM action cannot change stock",
+      "passed": true,
+      "reason": "Volume maximal du sac dépassé. La partie reste sur la proie.",
+      "load": {
+        "massKg": 19.2,
+        "volumeUnits": 24,
+        "capacityMassKg": 36,
+        "capacityVolumeUnits": 24,
+        "ratio": 1,
+        "overloaded": false,
+        "movementMultiplier": 0.6799999999999999,
+        "jumpMultiplier": 0.84,
+        "climbStaminaMultiplier": 1.6,
+        "noiseMultiplier": 1.8
+      },
+      "projection": {
+        "massKg": 21.599999999999998,
+        "volumeUnits": 27,
+        "capacityMassKg": 36,
+        "capacityVolumeUnits": 24,
+        "ratio": 1.125,
+        "overloaded": true,
+        "movementMultiplier": 0.6799999999999999,
+        "jumpMultiplier": 0.84,
+        "climbStaminaMultiplier": 1.6,
+        "noiseMultiplier": 1.8
+      }
+    },
+    {
+      "context": "390x844",
+      "name": "depot: exact capacity refusal is visible before click and disabled DOM action cannot change stock",
+      "passed": true,
+      "reason": "Dépôt de campagne plein : ranger des prises montées au vaisseau.",
+      "load": {
+        "massKg": 0,
+        "volumeUnits": 0,
+        "capacityMassKg": 36,
+        "capacityVolumeUnits": 24,
+        "ratio": 0,
+        "overloaded": false,
+        "movementMultiplier": 1,
+        "jumpMultiplier": 1,
+        "climbStaminaMultiplier": 1,
+        "noiseMultiplier": 1
+      },
+      "projection": {
+        "massKg": 2.4,
+        "volumeUnits": 3,
+        "capacityMassKg": 36,
+        "capacityVolumeUnits": 24,
+        "ratio": 0.125,
+        "overloaded": false,
+        "movementMultiplier": 0.96,
+        "jumpMultiplier": 0.98,
+        "climbStaminaMultiplier": 1.075,
+        "noiseMultiplier": 1.1
+      }
+    },
+    {
+      "context": "320x740",
+      "name": "catalogue mass, volume and real bag projection are visible before harvesting",
+      "passed": true,
+      "preview": "2,4 kg · 3 volumes. Après la prise : 2,4 / 36 kg · 3 / 24 volumes."
+    },
+    {
+      "context": "320x740",
+      "name": "first real harvest locks analysis with a visible accessible reason and preserves assigned quality",
+      "passed": true,
+      "quality": 79,
+      "reason": "Analyse indisponible : Analyse à effectuer avant tout prélèvement irréversible."
+    },
+    {
+      "context": "320x740",
+      "name": "native gamepad polling skips unavailable analysis rather than focusing a disabled action",
+      "passed": true,
+      "focused": [
+        {
+          "action": "leave",
+          "disabled": false
+        },
+        {
+          "action": "erase",
+          "disabled": false
+        },
+        {
+          "action": "carry",
+          "disabled": false
+        },
+        {
+          "action": "harvest-tissue",
+          "disabled": false
+        },
+        {
+          "action": null,
+          "disabled": false
+        },
+        {
+          "action": "mark",
+          "disabled": false
+        },
+        {
+          "action": "leave",
+          "disabled": false
+        },
+        {
+          "action": "erase",
+          "disabled": false
+        },
+        {
+          "action": "carry",
+          "disabled": false
+        },
+        {
+          "action": "harvest-tissue",
+          "disabled": false
+        },
+        {
+          "action": null,
+          "disabled": false
+        },
+        {
+          "action": "mark",
+          "disabled": false
+        }
+      ]
+    },
+    {
+      "context": "320x740",
+      "name": "mass: exact capacity refusal is visible before click and disabled DOM action cannot change stock",
+      "passed": true,
+      "reason": "Masse maximale du sac dépassée. La partie reste sur la proie.",
+      "load": {
+        "massKg": 22,
+        "volumeUnits": 15,
+        "capacityMassKg": 24,
+        "capacityVolumeUnits": 18,
+        "ratio": 0.9166666666666666,
+        "overloaded": false,
+        "movementMultiplier": 0.7066666666666667,
+        "jumpMultiplier": 0.8533333333333333,
+        "climbStaminaMultiplier": 1.5499999999999998,
+        "noiseMultiplier": 1.7333333333333334
+      },
+      "projection": {
+        "massKg": 24.4,
+        "volumeUnits": 18,
+        "capacityMassKg": 24,
+        "capacityVolumeUnits": 18,
+        "ratio": 1.0166666666666666,
+        "overloaded": true,
+        "movementMultiplier": 0.6799999999999999,
+        "jumpMultiplier": 0.84,
+        "climbStaminaMultiplier": 1.6,
+        "noiseMultiplier": 1.8
+      }
+    },
+    {
+      "context": "320x740",
+      "name": "volume: exact capacity refusal is visible before click and disabled DOM action cannot change stock",
+      "passed": true,
+      "reason": "Volume maximal du sac dépassé. La partie reste sur la proie.",
+      "load": {
+        "massKg": 19.2,
+        "volumeUnits": 24,
+        "capacityMassKg": 36,
+        "capacityVolumeUnits": 24,
+        "ratio": 1,
+        "overloaded": false,
+        "movementMultiplier": 0.6799999999999999,
+        "jumpMultiplier": 0.84,
+        "climbStaminaMultiplier": 1.6,
+        "noiseMultiplier": 1.8
+      },
+      "projection": {
+        "massKg": 21.599999999999998,
+        "volumeUnits": 27,
+        "capacityMassKg": 36,
+        "capacityVolumeUnits": 24,
+        "ratio": 1.125,
+        "overloaded": true,
+        "movementMultiplier": 0.6799999999999999,
+        "jumpMultiplier": 0.84,
+        "climbStaminaMultiplier": 1.6,
+        "noiseMultiplier": 1.8
+      }
+    },
+    {
+      "context": "320x740",
+      "name": "depot: exact capacity refusal is visible before click and disabled DOM action cannot change stock",
+      "passed": true,
+      "reason": "Dépôt de campagne plein : ranger des prises montées au vaisseau.",
+      "load": {
+        "massKg": 0,
+        "volumeUnits": 0,
+        "capacityMassKg": 36,
+        "capacityVolumeUnits": 24,
+        "ratio": 0,
+        "overloaded": false,
+        "movementMultiplier": 1,
+        "jumpMultiplier": 1,
+        "climbStaminaMultiplier": 1,
+        "noiseMultiplier": 1
+      },
+      "projection": {
+        "massKg": 2.4,
+        "volumeUnits": 3,
+        "capacityMassKg": 36,
+        "capacityVolumeUnits": 24,
+        "ratio": 0.125,
+        "overloaded": false,
+        "movementMultiplier": 0.96,
+        "jumpMultiplier": 0.98,
+        "climbStaminaMultiplier": 1.075,
+        "noiseMultiplier": 1.1
+      }
+    }
+  ],
+  "errors": [],
+  "consoleErrors": [],
+  "missingAssets": [],
+  "captures": [
+    {
+      "file": "1120x1000-capacity-before-action.png",
+      "bytes": 67252,
+      "sha256": "509f6187ba5cf98484c871fd8321ec7348065ed09580fe2822d11da3aa08a0bf",
+      "nativeFullPage": true
+    },
+    {
+      "file": "1120x1000-available-preview.png",
+      "bytes": 64549,
+      "sha256": "aa6a54f13f4e69ff8ef8222b323e092a9f1b8909c33883560b273f7f7ed8e956",
+      "nativeFullPage": true
+    },
+    {
+      "file": "1120x1000-analysis-locked.png",
+      "bytes": 70267,
+      "sha256": "03ee1437d8755b701975dcb7d590bf0665a0e7e12e8613d0fd8e86d8b927b8e6",
+      "nativeFullPage": true
+    },
+    {
+      "file": "1120x1000-mass-refusal.png",
+      "bytes": 65623,
+      "sha256": "a445eb125edcb6168abbba1a424a4b40d7a8718626593ddb3c32c02f4051ce52",
+      "nativeFullPage": true
+    },
+    {
+      "file": "1120x1000-volume-refusal.png",
+      "bytes": 63925,
+      "sha256": "c9a3cb1dd749d7d14b383b10791c1babe0be91cc334dbc53268a0b571660da4d",
+      "nativeFullPage": true
+    },
+    {
+      "file": "1120x1000-depot-refusal.png",
+      "bytes": 62140,
+      "sha256": "35cf22e8ea3346963bfc7e55e9c1428cc5228bb761a6a83321debd3a4dbc4be1",
+      "nativeFullPage": true
+    },
+    {
+      "file": "390x844-capacity-before-action.png",
+      "bytes": 73868,
+      "sha256": "b91e1a4627f81c0d4d6fe27f113ffd52e1f3340cba841d02d76e079f873a8ee2",
+      "nativeFullPage": true
+    },
+    {
+      "file": "390x844-available-preview.png",
+      "bytes": 73227,
+      "sha256": "43a94c755d16b1dcc1966053450db309fd57024ed4ae38f9de9be55a61861128",
+      "nativeFullPage": true
+    },
+    {
+      "file": "390x844-analysis-locked.png",
+      "bytes": 76387,
+      "sha256": "1fad99391a6c9c16d1dd8001ec801150c74522298aa145eaaf08e7ba45cc429e",
+      "nativeFullPage": true
+    },
+    {
+      "file": "390x844-mass-refusal.png",
+      "bytes": 76602,
+      "sha256": "74631d6ffe2ad1a3ae92d51cc43959a33ad3a1179c5199298d3a91611c004576",
+      "nativeFullPage": true
+    },
+    {
+      "file": "390x844-volume-refusal.png",
+      "bytes": 79525,
+      "sha256": "ba0057456999fd14a1245d1b787709f8f8aef0dcb974cec8721bf4435cc6890c",
+      "nativeFullPage": true
+    },
+    {
+      "file": "390x844-depot-refusal.png",
+      "bytes": 78625,
+      "sha256": "001dad44c7bbdf4f32d6e77d37eeb8baf10cd1dc5047a02f188987770ea2c2f1",
+      "nativeFullPage": true
+    },
+    {
+      "file": "320x740-capacity-before-action.png",
+      "bytes": 73664,
+      "sha256": "44729efd5fe1ae607d2f7dcbb25174d54dc75b141fe900b130ffe984fbdb2eba",
+      "nativeFullPage": true
+    },
+    {
+      "file": "320x740-available-preview.png",
+      "bytes": 73161,
+      "sha256": "4c88897c88382a8ffd223a7b0302966f81a65cd9fb5928ae0260c6f0755b34a9",
+      "nativeFullPage": true
+    },
+    {
+      "file": "320x740-analysis-locked.png",
+      "bytes": 76322,
+      "sha256": "f82300aaa5b1a12edaa77bee953e86301d719b85dec819cbd8305d3f628c136c",
+      "nativeFullPage": true
+    },
+    {
+      "file": "320x740-mass-refusal.png",
+      "bytes": 76019,
+      "sha256": "d9677a19d3a1fa55cd11f482f8e3315d618b696e1085df7fafe5a0e807093e32",
+      "nativeFullPage": true
+    },
+    {
+      "file": "320x740-volume-refusal.png",
+      "bytes": 78932,
+      "sha256": "ed142768e1a4c23a2524a7431412bf2145ea2a33de2890f2bbe39894d6cccf9a",
+      "nativeFullPage": true
+    },
+    {
+      "file": "320x740-depot-refusal.png",
+      "bytes": 77791,
+      "sha256": "96b8d50e9c8793488332369e78cd6b07a73b1b461c179078d83efd54c5e8bed7",
+      "nativeFullPage": true
+    }
+  ],
+  "contexts": [
+    {
+      "viewport": {
+        "width": 1120,
+        "height": 1000
+      },
+      "input": "mouse plus emulated standard gamepad",
+      "physicalDevice": false
+    },
+    {
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "input": "emulated touch plus emulated standard gamepad",
+      "physicalDevice": false
+    },
+    {
+      "viewport": {
+        "width": 320,
+        "height": 740
+      },
+      "input": "emulated touch plus emulated standard gamepad",
+      "physicalDevice": false
+    }
+  ],
+  "sourceSha256": {
+    "app/game/HuntCanvas.tsx": "4d96880d167b6eec4d725315f359bf89bf2ea02d590430d37d694eb211b08fb0",
+    "app/game/HuntRitesMenuV77.tsx": "9bc54a051d67f1b5627f1ce0d201c374e824da04652efcfcbb37deb6a45cd610",
+    "app/game/HuntRitesMenuV77.module.css": "43f77a9cb0f3fa10f40c2b1182735df7a20cfc7d3b5ae86a5ea99f3bd4ac5a93",
+    "app/game/systems/huntRitesRuntimeV77.ts": "fc36cb457e81c27172840fab2f2223775016b9a5dc7dc5eb8e83f5dcbd32f6f7",
+    "app/game/systems/ritesOfHuntV77.ts": "de2b71f6b38a76b6cda7d9c389e345349fc0ed795d5e2e637988c7817318faba",
+    "app/game/systems/anatomyHarvestV112.ts": "cf0e561770ff5f8878ca213997a0d0bc6a10c3dc2269685c3ec6637d177a7527",
+    "app/game/systems/harvestInventoryV112.ts": "a36764dda125def1bec5a6326ee907428ff90d63780f648848f23d1657d359b1",
+    "tests/browser/hunt-harvest-preview-20261109.fixture.jsx": "0ed2c095001fd359f275f3bfffd710bf441b9e39c412c63f21ed9dafa56e4ec8",
+    "scripts/qa-hunt-harvest-preview-browser-20261109.mjs": "04e520628fcd325c78db9512c3a7a697197377fbc89d941852939333f42908f7"
+  },
+  "productionCallbackSha256": "7621a45b0da36becd7de72d21e95605f5af464dc69a88f9d026b05f160dcd4b4",
+  "bundleSha256": "0ddc72b58bdca262a539f683e533025c874ceb8440db74d2d420b468dfbc3f3d",
+  "browserVersion": "156.0.8078.79"
+}

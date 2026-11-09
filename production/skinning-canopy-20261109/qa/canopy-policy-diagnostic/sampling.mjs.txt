@@ -1,0 +1,41 @@
+import {readFile,writeFile} from 'node:fs/promises';
+import {build} from 'esbuild';
+import {runInNewContext} from 'node:vm';
+import {createRequire} from 'node:module';
+import {createHash} from 'node:crypto';
+const root=process.cwd(),source=await readFile('app/game/HuntCanvas.tsx','utf8');
+const bundle=await build({stdin:{contents:source.replace('export default function HuntCanvas','function HuntCanvas')+'\nexport {makeGameState,restoreCheckpoint,stepGame,canopySupportReachableV112,deserializeActiveHuntCheckpoint};export {MISSION_BY_ID} from "./data";export const decodeVm=s=>JSON.parse(s);',resolveDir:root+'/app/game',loader:'tsx'},bundle:true,write:false,format:'cjs',platform:'node',jsx:'automatic',loader:{'.module.css':'empty'},external:['react','react/jsx-runtime','react-dom'],logLevel:'silent'});
+const mod={exports:{}};runInNewContext(bundle.outputFiles[0].text,{module:mod,exports:mod.exports,require:createRequire(import.meta.url)});const api=mod.exports;
+const raw=await readFile('outputs/qa-skinning-canopy-20261109/native-07-canopy/10-pendulum-reload.json','utf8'),all=api.decodeVm(raw),sidecar=all.after.sidecar,cp=api.deserializeActiveHuntCheckpoint(sidecar.snapshot)?.checkpoint,c=sidecar.configuration,mission=api.MISSION_BY_ID[sidecar.missionId];
+if(!cp)throw Error('Native snapshot decoder refused observed checkpoint');
+const report={scope:'Native full stepGame VM from the genuine saved pendulum checkpoint, original enemies/hazards retained; sampled observations/keyboard controls, no product edits. Controller diagnostic, not a browser replay.',sourceSha256:createHash('sha256').update(source).digest('hex'),checkpointSha256:createHash('sha256').update(raw).digest('hex'),cases:[]};
+for(const observationFrames of [3,6])for(const phaseOffset of Array.from({length:observationFrames},(_,i)=>i)){
+const base=api.makeGameState(mission,c.loadout,c.inventory,sidecar.difficultyId,c.appearance,c.visualOptions.reducedGore,c.visualOptions.screenShake,sidecar.encounterRun,cp.exploration,c.insertion,sidecar.runId,c.insertionShipId),state=api.restoreCheckpoint(base,cp,'resume');
+if(state.elapsed!==cp.elapsed||!state.player.canopySwing)throw Error('Observed pendulum did not restore');
+const old=state.world.climbables.find(x=>x.id==='v112-canopy-jungle-vey-0-1-grip'),next=state.world.climbables.find(x=>x.id==='v112-canopy-jungle-vey-0-2-grip');
+const input={keyboardHeld:new Set(),touchHeld:new Set(),gamepadHeld:new Set(),pressed:new Set(['pause']),previousGamepadButtons:[],activeGamepadIndex:null,gamepadNeedsNeutral:true,gamepadDialogActions:[],pointerScreen:null,accessibility:c.visualOptions.huntAccessibility};
+const trace=[];let released=false,caught=false,releaseState=null,catchState=null,failed=false,reason=null;
+for(let frame=0;frame<1800;frame++){
+ const p=state.player,s=p.canopySwing;
+ if(frame>0&&(frame-phaseOffset)%observationFrames===0){
+  input.keyboardHeld.clear();
+  if(!released){
+   if(!s){failed=true;reason='support-lost-before-release';break;}
+   input.keyboardHeld.add(s.angularVelocity>=0?'right':'left');
+   const vx=Math.cos(s.angle)*s.length*s.angularVelocity;
+   if(s.angle>=.15&&s.angle<=.8&&s.angularVelocity>0&&vx>=300){
+    input.keyboardHeld.clear();input.keyboardHeld.add('right');input.keyboardHeld.add('jump');input.pressed.add('jump');released=true;releaseState={elapsed:state.elapsed,player:JSON.parse(JSON.stringify(p)),vx,oldReachable:api.canopySupportReachableV112(p,old,state.world.platforms)};
+   }
+  }else{
+   input.keyboardHeld.add('right');
+   if(!api.canopySupportReachableV112(p,old,state.world.platforms)&&api.canopySupportReachableV112(p,next,state.world.platforms))input.keyboardHeld.add('up');
+  }
+ }
+ api.stepGame(state,mission,c.loadout,c.inventory,c.appearance,sidecar.difficultyId,input,1/60,()=>{});
+ if(released)trace.push({t:state.elapsed,x:state.player.x,y:state.player.y,vx:state.player.velocityX,vy:state.player.velocityY,id:state.player.climbZoneId,climbing:state.player.climbing,grounded:state.player.grounded,keys:[...input.keyboardHeld]});
+ if(released&&state.player.climbing&&state.player.climbZoneId===next.id){caught=true;catchState=JSON.parse(JSON.stringify(state.player));break;}
+ if(state.phase==='dead'||released&&trace.length>180){failed=true;reason=state.phase==='dead'?'dead':'catch-budget';break;}
+}
+report.cases.push({observationSeconds:observationFrames/60,phaseOffsetFrames:phaseOffset,caught,failed,reason,releaseState,catchState,elapsed:state.elapsed,enemyCount:state.enemies.length,hazardCount:state.world.hazards.length,health:state.player.health,invulnerability:state.player.invulnerability,aerialBoostUsed:state.player.aerialBoostUsed,trace});}
+await writeFile('outputs/qa-canopy-policy-diagnostic-20261109/sampling-report.json',JSON.stringify(report,null,2)+'\n');
+console.log(JSON.stringify(report.cases.map(x=>({sample:x.observationSeconds,phaseOffset:x.phaseOffsetFrames,caught:x.caught,failed:x.failed,reason:x.reason,release:x.releaseState&&{t:x.releaseState.elapsed,x:x.releaseState.player.x,y:x.releaseState.player.y,vx:x.releaseState.vx,vy:x.releaseState.player.velocityY,swing:x.releaseState.player.canopySwing,oldReachable:x.releaseState.oldReachable},catch:x.catchState&&{x:x.catchState.x,y:x.catchState.y,stamina:x.catchState.stamina},duration:x.trace.length/60,enemies:x.enemyCount,hazards:x.hazardCount,health:x.health,invulnerability:x.invulnerability,boost:x.aerialBoostUsed}))));

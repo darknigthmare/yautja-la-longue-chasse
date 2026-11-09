@@ -1,0 +1,2683 @@
+{
+  "schemaVersion": 1,
+  "asOfDate": "2026-11-09",
+  "baseCommit": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+  "reviewedCodeCommit": "9200248c37f9e008d20cf6ebc6a684a1d1c5f9dc",
+  "qualificationState": "QUALIFICATION_BORNEE",
+  "deliveryChecks": [
+    {
+      "id": "FINAL-BUILD",
+      "title": "Compilation Next de la livraison finale",
+      "status": "PASS",
+      "scope": "Next webpack applicatif sur 85ca, code 0 ; ni packaging de distribution complet ni déploiement.",
+      "evidence": [
+        "FINAL-INTEGRATION"
+      ]
+    },
+    {
+      "id": "FINAL-REGRESSIONS",
+      "title": "Régressions finales sur les octets livrés",
+      "status": "PASS",
+      "scope": "539/539 assertions dans 26 fichiers distincts, zéro ignoré, sur 85ca ; nombres des sous-suites non additionnés.",
+      "evidence": [
+        "FINAL-INTEGRATION"
+      ]
+    },
+    {
+      "id": "FINAL-TYPES",
+      "title": "TypeScript final",
+      "status": "PASS",
+      "scope": "Vérification TypeScript intégrée au build Next sur 85ca, code 0 observé.",
+      "evidence": [
+        "FINAL-INTEGRATION"
+      ]
+    },
+    {
+      "id": "FINAL-LINT",
+      "title": "ESLint final",
+      "status": "PASS",
+      "scope": "ESLint strict sur 21 fichiers code 0 ; journal vide conservé avec résultat explicite.",
+      "evidence": [
+        "FINAL-INTEGRATION"
+      ]
+    }
+  ],
+  "writerReused": "scripts/build-resume-workbook-20261101.py",
+  "writerSha256": "e45d85361f2bd054f71600ab34f31344568f1167c1ec1990a53ac162c5474a49",
+  "qualificationSha256": "52204cbfcaea514444ce7c1c4bae634147020ea73fce635d019e8dbd1970a3cc",
+  "workbook": {
+    "path": "production/reprise-chasse-bible-20261109/Yautja_Reprise_Chasse_Bible_20261109.xlsx",
+    "bytes": 84885,
+    "sha256": "5658ef76f73c8afb8e95ccd3e8a6f0b049db24886a1a23fce7694bcbb8e62355"
+  },
+  "companion": {
+    "path": "production/reprise-chasse-bible-20261109/Yautja_Reprise_Chasse_Bible_20261109.html",
+    "bytes": 365337,
+    "sha256": "5adcc93d7249c64d4c7763f29bfb25a672654d0fd8e2125faa6c021d6609d4a3"
+  },
+  "verification": {
+    "sheets": 10,
+    "rows": 457,
+    "cellsChecked": 3265,
+    "hyperlinksChecked": 548,
+    "xmlPartsParsed": 25,
+    "formulas": 0,
+    "macros": 0,
+    "fontPt": 11,
+    "frozenRows": 4,
+    "frozenColumns": 2,
+    "nativeExcelExecuted": false
+  },
+  "linkTargets": {
+    "uniqueTargets": 364,
+    "pinnedGitTargets": 342,
+    "branchFilesPresent": 22,
+    "targets": [
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "AGENTS.md",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "app/game/systems/canopyTraversalV112.ts",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "art-source/v6/catalogue/catalogue_yautja_tous_medias.xlsx",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "docs/GAMEDEV_AGENT_GUIDE.md",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "docs/GAMEDEV_AGENT_GUIDE.md",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "docs/THE_PIT_STAGES_V60_SUIVI.xlsx",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "docs/THE_PIT_STAGES_V61_SUIVI.xlsx",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "docs/THE_PIT_V62_SUIVI.xlsx",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "docs/THE_PIT_V63_SUIVI.xlsx",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "docs/YAUTJA_REPRISE_CHANTIERS_20261101.xlsx",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "docs/YAUTJA_V100_SUIVI.xlsx",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "docs/YAUTJA_V104_SUIVI.xlsx",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "docs/YAUTJA_V105_SUIVI.xlsx",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "docs/YAUTJA_V106_SUIVI.xlsx",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "docs/YAUTJA_V107_SUIVI.xlsx",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "docs/YAUTJA_V108_SUIVI.xlsx",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "docs/YAUTJA_V109_SUIVI.xlsx",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "docs/YAUTJA_V110_SUIVI.xlsx",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "docs/YAUTJA_V111_MECANIQUES_CHASSE.xlsx",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "docs/YAUTJA_V111_SUIVI.xlsx",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "docs/YAUTJA_V112_MECANIQUES_CHASSE.xlsx",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "docs/YAUTJA_V112_SUIVI.xlsx",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "docs/YAUTJA_V99_SUIVI.xlsx",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "docs/Yautja_ClanWar_V144_Conflits_Onglets.xlsx",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "docs/Yautja_ClanWar_V145_Multiplanetes.xlsx",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "docs/Yautja_ClanWar_V146_30Planetes_Chrome.xlsx",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "docs/Yautja_ClanWar_V147_Quatre_Modes.xlsx",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "docs/Yautja_ClanWar_V148_Securite_Multionglets.xlsx",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "docs/Yautja_ClanWar_V149_Verrou_Local.xlsx",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "docs/Yautja_ClanWar_V150_Reconciliation_Patrouilles.xlsx",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "docs/Yautja_ClanWar_V151_Quatre_Modes_Verrou.xlsx",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "docs/Yautja_ClanWar_V152_RTS_Deux_Onglets.xlsx",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "docs/Yautja_Gauntlets_V132_Arsenal_Clans.xlsx",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "docs/Yautja_Gauntlets_V133_Arsenal_Clans.xlsx",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "docs/Yautja_Gauntlets_V134_Arsenal_Clans.xlsx",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "docs/Yautja_Gauntlets_V135_Arsenal_Clans.xlsx",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "docs/Yautja_Gauntlets_V136_Arsenal_Clans.xlsx",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "docs/Yautja_Gauntlets_V137_Arsenal_Clans.xlsx",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "docs/Yautja_Gauntlets_V138_Arsenal_Clans.xlsx",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "docs/Yautja_Gauntlets_V139_Arsenal_Clans.xlsx",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "docs/Yautja_Gauntlets_V140_Arsenal_Clans.xlsx",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "docs/Yautja_Gauntlets_V141_Arsenal_Clans.xlsx",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "docs/Yautja_Gauntlets_V142_Arsenal_Clans.xlsx",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "docs/Yautja_Gauntlets_V143_Controle_Tours.xlsx",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "docs/Yautja_Gauntlets_V144_Controle_Campagne.xlsx",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "docs/campagne/AVENANT_EXCEL_BIBLE_20261108.md",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "docs/campagne/AVENANT_EXCEL_BIBLE_20261108.md",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "docs/campagne/BIBLE_DE_CAMPAGNE.md",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "docs/campagne/BIBLE_DE_CAMPAGNE.md",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "docs/campagne/BIBLE_DE_CAMPAGNE.md",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "docs/campagne/BIBLE_DE_CAMPAGNE.md",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "docs/campagne/BIBLE_DE_CAMPAGNE.md",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "docs/clan-war-stealth-last-contact/Suivi_Contact_Patrouille.xlsx",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "docs/clan-war-stealth-perception/Suivi_Perception_Patrouilles.xlsx",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "docs/clan-war-v130/Yautja_Guerres_Clans_Plan_Production_V130_2026-10-30.xlsx",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "docs/clan-war-v133/Yautja_Guerres_Clans_Suivi_Production_V133_2026-10-31.xlsx",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "docs/clan-war-v134/Yautja_Guerres_Clans_Suivi_Production_V134_2026-10-31.xlsx",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "docs/clan-war-v135/Yautja_Guerres_Clans_Suivi_Production_V135_2026-10-31.xlsx",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "docs/clan-war-v136/Yautja_Guerres_Clans_Suivi_Production_V136_2026-10-31.xlsx",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "docs/clan-war-v137/Yautja_Guerres_Clans_Suivi_Production_V137_2026-10-31.xlsx",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "docs/clan-war-v138/Yautja_Guerres_Clans_Suivi_Production_V138_2026-10-31.xlsx",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "docs/clan-war-v139/Yautja_Guerres_Clans_Suivi_Production_V139_2026-10-31.xlsx",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "docs/clan-war-v140/Yautja_Guerres_Clans_Suivi_Production_V140_2026-10-31.xlsx",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "docs/clan-war-v140/Yautja_Guerres_Clans_Suivi_Production_V140_2026-10-31_PR49.xlsx",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "docs/clan-war-v141/Yautja_Guerres_Clans_Suivi_Production_V141_2026-10-31.xlsx",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "docs/clan-war-v142/Yautja_Guerres_Clans_Suivi_Production_V142_2026-10-31.xlsx",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "docs/clan-war-v143/Yautja_Guerres_Clans_Suivi_Production_V143_2026-10-31.xlsx",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "docs/clan-war-v144/Yautja_Guerres_Clans_Avenant_Production_V144_2026-10-31.xlsx",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "docs/clan-war-v144/Yautja_Guerres_Clans_Contrats_Bilans_V144_2026-10-31.xlsx",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "docs/clan-war-v144/Yautja_Guerres_Clans_Suivi_Production_V144_2026-10-31.xlsx",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "docs/clan-war-v144/Yautja_Guerres_Clans_Suivi_Production_V144_2026-10-31_PR55.xlsx",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "docs/clan-war-v144/Yautja_Guerres_Clans_Suivi_Production_V144_2026-10-31_PR57.xlsx",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "docs/clan-war-v145/Yautja_Guerres_Clans_Avenants_Production_V144_V145_2026-11-01.xlsx",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "docs/clan-war-v145/Yautja_Guerres_Clans_Preuves_Transfert_V145_2026-11-01.xlsx",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "docs/clan-war-v146/Yautja_Conseil_V146_Controle_Source_Addendum.xlsx",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "docs/clan-war-v146/Yautja_Guerres_Clans_Avenants_Production_V144_V146_2026-11-01.xlsx",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "docs/clan-war-v146/Yautja_Guerres_Clans_Provenance_V146_2026-11-01.xlsx",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "docs/clan-war-v146/Yautja_OuterOps_Reconciliation_V144_V146.xlsx",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "docs/clan-war-v147/Yautja_Guerres_Clans_Avenants_Production_V144_V147_2026-11-01.xlsx",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "docs/clan-war-v147/Yautja_Guerres_Clans_Source_Conseil_V147_2026-11-01.xlsx",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "docs/clan-war-v152/Yautja_ClanWar_V152_Provenance_QA.xlsx",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "docs/clan-war-v152/Yautja_OuterOps_Inspection_V153.xlsx",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "docs/hunt-mechanics-v112.json",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "docs/hunt-mechanics-v112.md",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "docs/hunt-mechanics-v112.md",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "docs/pr-consolidation-20261103/YAUTJA_CONSOLIDATION_PR_20261103.xlsx",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "docs/production/Yautja_PHG_Backlog_Production_V136.xlsx",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "docs/production/Yautja_PHG_Backlog_Production_V137.xlsx",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "docs/production/Yautja_PHG_Fidelite_1to1_V136.xlsx",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "docs/production/Yautja_PHG_Fidelite_1to1_V137.xlsx",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "docs/production/Yautja_PHG_Implementation_Status_V136.xlsx",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "docs/production/Yautja_PHG_Implementation_Status_V137.xlsx",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "docs/production/Yautja_PHG_Personnalisation_Audit_Production_V133.xlsx",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "docs/production/Yautja_PHG_Personnalisation_Audit_Production_V134.xlsx",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "docs/production/Yautja_PHG_Personnalisation_Audit_Production_V135.xlsx",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "docs/production/Yautja_PHG_Personnalisation_Audit_Production_V136.xlsx",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "docs/production/Yautja_PHG_Personnalisation_Audit_Production_V137.xlsx",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "docs/production/Yautja_PHG_QA_Visual_Morphologies_V138.xlsx",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "docs/production/Yautja_PHG_QA_Visual_Morphologies_V139.xlsx",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "docs/production/Yautja_PHG_QA_Visual_Morphologies_V140.xlsx",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "docs/production/Yautja_PHG_QA_Visual_Morphologies_V141.xlsx",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "docs/qa/v111-homeworld-before-pr21/YAUTJA_V111_SUIVI.xlsx",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "docs/qa/v112-hunt-continuation/first-two-closure-baseline/YAUTJA_V112_MECANIQUES_CHASSE.xlsx",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "docs/qa/v112-hunt/beginner-protocol.md",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "docs/suivi-production/classeurs/Yautja_V5_Bible_Reconstituee_et_Extensions.xlsx",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "docs/suivi-production/classeurs/Yautja_V6_Bible_Cumulative_et_Dialogues.xlsx",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "docs/suivi-production/v611/Yautja_Suivi_Variantes_2026-10-21.xlsx",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "docs/suivi-production/v611/references/Yautja_Suivi_Variantes_2026-10-20.xlsx",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "docs/suivi-production/v612/Yautja_Suivi_Variantes_V612_2026-10-21.xlsx",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "docs/suivi-production/v613/Yautja_Suivi_Variantes_V613_2026-10-22.xlsx",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "docs/suivi-production/v614/Yautja_Suivi_Variantes_V614_2026-10-23.xlsx",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "docs/suivi-production/v615/Yautja_Suivi_Variantes_V615_2026-10-23.xlsx",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/YAUTJA_V113_SUIVI.xlsx",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/YAUTJA_V114_SUIVI.xlsx",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/clan-ship-20261104/clan-ship-operations-20261105.xlsx",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/clan-ship-20261104/operations-spec.md",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/clan-ship-20261104/operations-spec.md",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/clan-ship-20261104/shiphub-reprise-20261104.xlsx",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/excel-bible-20261108/README.md",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/excel-bible-20261108/art/README.md",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/excel-bible-20261108/art/actors/generation-jobs.json",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/excel-bible-20261108/art/actors/manifest.json",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/excel-bible-20261108/art/actors/prompts/breche.txt",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/excel-bible-20261108/art/actors/prompts/lance-fendue.txt",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/excel-bible-20261108/art/actors/prompts/opale.txt",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/excel-bible-20261108/art/actors/sources/breche.png",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/excel-bible-20261108/art/actors/sources/lance-fendue.png",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/excel-bible-20261108/art/actors/sources/opale.png",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/excel-bible-20261108/art/actors/verify-actors.py",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/excel-bible-20261108/art/generation-jobs.json",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/excel-bible-20261108/art/incidents/README.md",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/excel-bible-20261108/art/incidents/generation-jobs.json",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/excel-bible-20261108/art/incidents/manifest.json",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/excel-bible-20261108/art/incidents/prompts/sealed-isolator.txt",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/excel-bible-20261108/art/incidents/prompts/twin-circuit-relay.txt",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/excel-bible-20261108/art/incidents/qa-status.json",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/excel-bible-20261108/art/incidents/sources/sealed-isolator.png",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/excel-bible-20261108/art/incidents/sources/twin-circuit-relay.png",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/excel-bible-20261108/art/incidents/verify-incidents.py",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/excel-bible-20261108/art/manifest.json",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/excel-bible-20261108/art/preview.html",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/excel-bible-20261108/art/prompts/amphibian-basin.txt",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/excel-bible-20261108/art/prompts/arboreal-perch.txt",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/excel-bible-20261108/art/prompts/armored-kennel.txt",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/excel-bible-20261108/art/prompts/dark-nest.txt",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/excel-bible-20261108/art/prompts/drakel-maintenance.txt",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/excel-bible-20261108/art/prompts/human-cabin.txt",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/excel-bible-20261108/art/prompts/hunter-alcove.txt",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/excel-bible-20261108/art/prompts/ossuary-dock.txt",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/excel-bible-20261108/art/prompts/serekh-workshop.txt",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/excel-bible-20261108/art/prompts/synthetic-bay-alpha-correction.txt",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/excel-bible-20261108/art/prompts/synthetic-bay.txt",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/excel-bible-20261108/art/qa-status.json",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/excel-bible-20261108/art/reference-provenance.json",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/excel-bible-20261108/art/render-preview.mjs",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/excel-bible-20261108/art/sources/amphibian-basin.png",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/excel-bible-20261108/art/sources/arboreal-perch.png",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/excel-bible-20261108/art/sources/armored-kennel.png",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/excel-bible-20261108/art/sources/dark-nest.png",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/excel-bible-20261108/art/sources/drakel-maintenance.png",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/excel-bible-20261108/art/sources/human-cabin.png",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/excel-bible-20261108/art/sources/hunter-alcove.png",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/excel-bible-20261108/art/sources/ossuary-dock.png",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/excel-bible-20261108/art/sources/serekh-workshop.png",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/excel-bible-20261108/art/sources/synthetic-bay.png",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/excel-bible-20261108/art/verify-assets.py",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/excel-bible-20261108/berceau/README.md",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/excel-bible-20261108/berceau/relecture-independante.md",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/excel-bible-20261108/berceau/sondage-snapshots-resultat.json",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/excel-bible-20261108/berceau/sonder-snapshots.mjs",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/excel-bible-20261108/berceau/tests-run.txt",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/excel-bible-20261108/berceau/verification.json",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/excel-bible-20261108/compagnons/README.md",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/excel-bible-20261108/compagnons/coverage.json",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/excel-bible-20261108/compagnons/eclisse-import.json",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/excel-bible-20261108/compagnons/tests-run.txt",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/excel-bible-20261108/compagnons/verification.json",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/excel-bible-20261108/incidents/README.md",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/excel-bible-20261108/incidents/coverage.json",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/excel-bible-20261108/incidents/lint-final.txt",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/excel-bible-20261108/incidents/tests-run.txt",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/excel-bible-20261108/incidents/verification.json",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/excel-bible-20261108/qa/lint-incident-final.txt",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/excel-bible-20261108/qa/lint-qa.txt",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/excel-bible-20261108/qa/lint-runtime.txt",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/excel-bible-20261108/qa/production-build.txt",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/excel-bible-20261108/qa/tests-run.txt",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/excel-bible-20261108/qa/typecheck.txt",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/excel-bible-20261108/suivi/README.md",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/excel-bible-20261108/suivi/Yautja_Suivi_Excel_Bible_20261108.xlsx",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/excel-bible-20261108/suivi/actions-prioritaires.json",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/excel-bible-20261108/suivi/apercus/01-avancement.png",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/excel-bible-20261108/suivi/apercus/02-livraison.png",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/excel-bible-20261108/suivi/apercus/02b-phases-livraison.png",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/excel-bible-20261108/suivi/apercus/03-ouverts-excel.png",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/excel-bible-20261108/suivi/apercus/04-bible-v6.png",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/excel-bible-20261108/suivi/apercus/04b-criteres-bible.png",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/excel-bible-20261108/suivi/apercus/04c-campagne-revisee.png",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/excel-bible-20261108/suivi/apercus/05-recettes-bible.png",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/excel-bible-20261108/suivi/apercus/06-sources.png",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/excel-bible-20261108/suivi/apercus/07-methode.png",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/excel-bible-20261108/suivi/bible-campagne-revisee.json",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/excel-bible-20261108/suivi/bible-requirements.json",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/excel-bible-20261108/suivi/excel-inventory.json",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/excel-bible-20261108/suivi/excel-open-register.json",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/excel-bible-20261108/suivi/formula-scan.txt",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/excel-bible-20261108/suivi/qualification-courante.json",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/excel-bible-20261108/suivi/register-summary.json",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/excel-bible-20261108/suivi/verification-classeur.json",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/excel-bible-20261108/verification.json",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/excel-bible-suite-20261108/README.md",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/excel-bible-suite-20261108/qa/ci-scope.json",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/excel-bible-suite-20261108/qa/cradle-initial/browser-verification.json",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/excel-bible-suite-20261108/qa/cradle-initial/server.log",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/excel-bible-suite-20261108/qa/cradle-resume-20261108/README.md",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/excel-bible-suite-20261108/qa/cradle-resume-20261108/browser-verification.json",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/excel-bible-suite-20261108/qa/cradle-resume-20261108/server.log",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/excel-bible-suite-20261108/qa/lint.txt",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/excel-bible-suite-20261108/qa/production-build.txt",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/excel-bible-suite-20261108/qa/retour-berceau/input-routing-probe.json",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/excel-bible-suite-20261108/qa/retour-berceau/lint.txt",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/excel-bible-suite-20261108/qa/retour-berceau/relecture-independante.md",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/excel-bible-suite-20261108/qa/retour-berceau/tests-run.txt",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/excel-bible-suite-20261108/qa/tests-command.json",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/excel-bible-suite-20261108/qa/tests-run.txt",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/excel-bible-suite-20261108/qa/trophy-final-presentation.txt",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/excel-bible-suite-20261108/qa/typecheck.txt",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/excel-bible-suite-20261108/suivi/Yautja_Suite_Excel_Bible_20261108.xlsx",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/excel-bible-suite-20261108/suivi/apercus/01-suite.png",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/excel-bible-suite-20261108/suivi/apercus/02-phases.png",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/excel-bible-suite-20261108/suivi/apercus/03-preuves-et-sources.png",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/excel-bible-suite-20261108/suivi/apercus/04-sources.png",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/excel-bible-suite-20261108/suivi/controle-formules.ndjson",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/excel-bible-suite-20261108/suivi/historique-preserve.json",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/excel-bible-suite-20261108/suivi/inspection-formules.ndjson",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/excel-bible-suite-20261108/suivi/qualification-suite.json",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/excel-bible-suite-20261108/suivi/verification-classeur.json",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/excel-bible-suite-20261108/trophee/README.md",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/excel-bible-suite-20261108/trophee/lint.txt",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/excel-bible-suite-20261108/trophee/tests-run.txt",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/excel-bible-suite-20261108/trophee/verification.json",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/excel-bible-suite-20261108/verification.json",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/excel-bible-witnesses-20261108/README.md",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/excel-bible-witnesses-20261108/README.md",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/excel-bible-witnesses-20261108/qa/browser/README.md",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/excel-bible-witnesses-20261108/qa/browser/fixture-disclosure.json",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/excel-bible-witnesses-20261108/qa/browser/initial-C37-fixture.json",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/excel-bible-witnesses-20261108/qa/browser/launch-probe.json",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/excel-bible-witnesses-20261108/qa/browser/shared-browser-probe.json",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/excel-bible-witnesses-20261108/qa/browser/socket-probe.json",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/excel-bible-witnesses-20261108/qa/build-attempts.json",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/excel-bible-witnesses-20261108/qa/build-result.json",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/excel-bible-witnesses-20261108/qa/ci-fixes/clan-residence-fixtures.txt",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/excel-bible-witnesses-20261108/qa/ci-fixes/clan-residence-lint.txt",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/excel-bible-witnesses-20261108/qa/ci-fixes/clan-residence-regressions.txt",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/excel-bible-witnesses-20261108/qa/ci-fixes/clan-residence-syntax.txt",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/excel-bible-witnesses-20261108/qa/ci-fixes/committed-assets-restored.json",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/excel-bible-witnesses-20261108/qa/ci-fixes/integration-command.json",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/excel-bible-witnesses-20261108/qa/ci-fixes/integration-result-attempt-1.json",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/excel-bible-witnesses-20261108/qa/ci-fixes/integration-result.json",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/excel-bible-witnesses-20261108/qa/ci-fixes/integration-tests-attempt-1.log",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/excel-bible-witnesses-20261108/qa/ci-fixes/integration-tests.log",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/excel-bible-witnesses-20261108/qa/ci-fixes/lint-command.json",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/excel-bible-witnesses-20261108/qa/ci-fixes/lint-result.json",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/excel-bible-witnesses-20261108/qa/ci-fixes/lint.log",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/excel-bible-witnesses-20261108/qa/ci-fixes/missing-inputs-restored.json",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/excel-bible-witnesses-20261108/qa/ci-fixes/runtime-inputs-check.log",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/excel-bible-witnesses-20261108/qa/ci-fixes/runtime-inputs-result.json",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/excel-bible-witnesses-20261108/qa/ci-fixes/runtime-inputs-write-initial-missing-file.log",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/excel-bible-witnesses-20261108/qa/ci-fixes/runtime-inputs-write.log",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/excel-bible-witnesses-20261108/qa/ci-fixes/spatial-44aff-diagnostic.json",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/excel-bible-witnesses-20261108/qa/ci-fixes/v112-commands.json",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/excel-bible-witnesses-20261108/qa/ci-fixes/v112-green.log",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/excel-bible-witnesses-20261108/qa/ci-fixes/v112-lint.log",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/excel-bible-witnesses-20261108/qa/ci-fixes/v112-red.log",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/excel-bible-witnesses-20261108/qa/ci-fixes/v112-regressions.log",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/excel-bible-witnesses-20261108/qa/ci-fixes/v94-diff-check.log",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/excel-bible-witnesses-20261108/qa/ci-fixes/v94-green.log",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/excel-bible-witnesses-20261108/qa/ci-fixes/v94-lint.log",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/excel-bible-witnesses-20261108/qa/ci-fixes/v94-persistence-213.log",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/excel-bible-witnesses-20261108/qa/ci-fixes/v94-red.log",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/excel-bible-witnesses-20261108/qa/ci-fixes/verification.json",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/excel-bible-witnesses-20261108/qa/lint-command.json",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/excel-bible-witnesses-20261108/qa/lint.txt",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/excel-bible-witnesses-20261108/qa/native-c37-bdc/inspection.json",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/excel-bible-witnesses-20261108/qa/post-conclusion-20261108/README.md",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/excel-bible-witnesses-20261108/qa/post-conclusion-20261108/native-5edd59df-failure.json",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/excel-bible-witnesses-20261108/qa/production-build-attempt-1.txt",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/excel-bible-witnesses-20261108/qa/production-build-attempt-2.txt",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/excel-bible-witnesses-20261108/qa/production-build.txt",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/excel-bible-witnesses-20261108/qa/runtime-inputs-check.log",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/excel-bible-witnesses-20261108/qa/runtime-inputs-write.log",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/excel-bible-witnesses-20261108/qa/runtime-inputs.json",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/excel-bible-witnesses-20261108/qa/spatial-host/lint-result.json",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/excel-bible-witnesses-20261108/qa/spatial-host/lint.log.gz",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/excel-bible-witnesses-20261108/qa/spatial-host/regressions-result.json",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/excel-bible-witnesses-20261108/qa/spatial-host/regressions.log.gz",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/excel-bible-witnesses-20261108/qa/spatial-host/runtime-check-result.json",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/excel-bible-witnesses-20261108/qa/spatial-host/runtime-check.log.gz",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/excel-bible-witnesses-20261108/qa/spatial-host/verification.json",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/excel-bible-witnesses-20261108/qa/tests-command.json",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/excel-bible-witnesses-20261108/qa/tests-run.txt",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/excel-bible-witnesses-20261108/qa/typecheck.txt",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/excel-bible-witnesses-20261108/qa/workbook-xml-verification.log",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/excel-bible-witnesses-20261108/suivi/README.md",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/excel-bible-witnesses-20261108/suivi/Yautja_Audience_C37_20261108.xlsx",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/excel-bible-witnesses-20261108/suivi/apercus/01-audience.png",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/excel-bible-witnesses-20261108/suivi/apercus/02-suite-criteres.png",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/excel-bible-witnesses-20261108/suivi/apercus/03-phases.png",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/excel-bible-witnesses-20261108/suivi/apercus/04-sources.png",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/excel-bible-witnesses-20261108/suivi/apercus/05-fin-index.png",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/excel-bible-witnesses-20261108/suivi/controle-formules.ndjson",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/excel-bible-witnesses-20261108/suivi/historique-preserve.json",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/excel-bible-witnesses-20261108/suivi/inspection-formules.ndjson",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/excel-bible-witnesses-20261108/suivi/qualification-audience.json",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/excel-bible-witnesses-20261108/suivi/verification-classeur.json",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/excel-bible-witnesses-20261108/verification.json",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/homeworld-sectors-20261103/YAUTJA_MARCHE_MONTURES_CHENILS_20261103.xlsx",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/homeworld-v160/YAUTJA_HOMEWORLD_PROPS_ECHELLE_TRIBUS_V160.xlsx",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/homeworld-v161/YAUTJA_HOMEWORLD_PROPS_ECHELLE_TRIBUS_V161.xlsx",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/homeworld-v162/YAUTJA_HOMEWORLD_PROPS_ECHELLE_TRIBUS_V162.xlsx",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/ship-interior-25d-20261105/yautja-interieur-25d-v1.6.0.xlsx",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "production/wolf-castle-arrival-20261104/wolf-castle-arrival-20261104.xlsx",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "path": "public/aide/YAUTJA_V112_MECANIQUES_CHASSE.xlsx",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "85ca8099d96fffb37fbe6f46b26a76c8eaf73df1",
+        "path": "AGENTS.md",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "9200248c37f9e008d20cf6ebc6a684a1d1c5f9dc",
+        "path": "app/game/ClanShipHub.tsx",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "9200248c37f9e008d20cf6ebc6a684a1d1c5f9dc",
+        "path": "app/game/ClanShipInterior.tsx",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "9200248c37f9e008d20cf6ebc6a684a1d1c5f9dc",
+        "path": "app/game/ClanShipReturnEscortScene.tsx",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "9200248c37f9e008d20cf6ebc6a684a1d1c5f9dc",
+        "path": "app/game/GameClient.tsx",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "9200248c37f9e008d20cf6ebc6a684a1d1c5f9dc",
+        "path": "app/game/HuntRitesMenuV77.tsx",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "9200248c37f9e008d20cf6ebc6a684a1d1c5f9dc",
+        "path": "app/game/save.ts",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "9200248c37f9e008d20cf6ebc6a684a1d1c5f9dc",
+        "path": "app/game/systems/anatomyHarvestV112.ts",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "9200248c37f9e008d20cf6ebc6a684a1d1c5f9dc",
+        "path": "app/game/systems/clanShipInterior.ts",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "9200248c37f9e008d20cf6ebc6a684a1d1c5f9dc",
+        "path": "app/game/systems/clanShipReturnEscort.ts",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "9200248c37f9e008d20cf6ebc6a684a1d1c5f9dc",
+        "path": "app/game/systems/huntRitesRuntimeV77.ts",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "9200248c37f9e008d20cf6ebc6a684a1d1c5f9dc",
+        "path": "app/game/systems/ritesOfHuntV77.ts",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "9200248c37f9e008d20cf6ebc6a684a1d1c5f9dc",
+        "path": "app/game/types.ts",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "9200248c37f9e008d20cf6ebc6a684a1d1c5f9dc",
+        "path": "scripts/qa-clan-return-escort-browser-20261109.mjs",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "9200248c37f9e008d20cf6ebc6a684a1d1c5f9dc",
+        "path": "scripts/qa-hunt-harvest-preview-browser-20261109.mjs",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "9200248c37f9e008d20cf6ebc6a684a1d1c5f9dc",
+        "path": "tests/browser/hunt-harvest-preview-20261109.fixture.jsx",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "cb5c4a47d1313f031a1a8208a83a8578a1256d94",
+        "path": "AGENTS.md",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      },
+      {
+        "ref": "codex/reprise-bible-chasse-20261109",
+        "path": "docs/campagne/AVENANT_REPRISE_CHASSE_BIBLE_20261109.md",
+        "context": "CURRENT_BRANCH_FILE_PRESENT_PENDING_COMMIT"
+      },
+      {
+        "ref": "codex/reprise-bible-chasse-20261109",
+        "path": "docs/campagne/AVENANT_REPRISE_CHASSE_BIBLE_20261109.md",
+        "context": "CURRENT_BRANCH_FILE_PRESENT_PENDING_COMMIT"
+      },
+      {
+        "ref": "codex/reprise-bible-chasse-20261109",
+        "path": "docs/campagne/README.md",
+        "context": "CURRENT_BRANCH_FILE_PRESENT_PENDING_COMMIT"
+      },
+      {
+        "ref": "codex/reprise-bible-chasse-20261109",
+        "path": "docs/campagne/README.md",
+        "context": "CURRENT_BRANCH_FILE_PRESENT_PENDING_COMMIT"
+      },
+      {
+        "ref": "codex/reprise-bible-chasse-20261109",
+        "path": "production/reprise-chasse-bible-20261109/qa/current-runtime-receipt.json",
+        "context": "CURRENT_BRANCH_FILE_PRESENT_PENDING_COMMIT"
+      },
+      {
+        "ref": "codex/reprise-bible-chasse-20261109",
+        "path": "production/reprise-chasse-bible-20261109/qa/escort-model-final20/receipt.json",
+        "context": "CURRENT_BRANCH_FILE_PRESENT_PENDING_COMMIT"
+      },
+      {
+        "ref": "codex/reprise-bible-chasse-20261109",
+        "path": "production/reprise-chasse-bible-20261109/qa/escort-model-history/receipt.json",
+        "context": "CURRENT_BRANCH_FILE_PRESENT_PENDING_COMMIT"
+      },
+      {
+        "ref": "codex/reprise-bible-chasse-20261109",
+        "path": "production/reprise-chasse-bible-20261109/qa/escort/native-01/browser-verification.json",
+        "context": "CURRENT_BRANCH_FILE_PRESENT_PENDING_COMMIT"
+      },
+      {
+        "ref": "codex/reprise-bible-chasse-20261109",
+        "path": "production/reprise-chasse-bible-20261109/qa/escort/native-02/browser-verification.json",
+        "context": "CURRENT_BRANCH_FILE_PRESENT_PENDING_COMMIT"
+      },
+      {
+        "ref": "codex/reprise-bible-chasse-20261109",
+        "path": "production/reprise-chasse-bible-20261109/qa/escort/native-03/browser-verification.json",
+        "context": "CURRENT_BRANCH_FILE_PRESENT_PENDING_COMMIT"
+      },
+      {
+        "ref": "codex/reprise-bible-chasse-20261109",
+        "path": "production/reprise-chasse-bible-20261109/qa/escort/native-04/browser-verification.json",
+        "context": "CURRENT_BRANCH_FILE_PRESENT_PENDING_COMMIT"
+      },
+      {
+        "ref": "codex/reprise-bible-chasse-20261109",
+        "path": "production/reprise-chasse-bible-20261109/qa/escort/native-04/implementation-source-receipt.json",
+        "context": "CURRENT_BRANCH_FILE_PRESENT_PENDING_COMMIT"
+      },
+      {
+        "ref": "codex/reprise-bible-chasse-20261109",
+        "path": "production/reprise-chasse-bible-20261109/qa/escort/native-05/browser-verification.json",
+        "context": "CURRENT_BRANCH_FILE_PRESENT_PENDING_COMMIT"
+      },
+      {
+        "ref": "codex/reprise-bible-chasse-20261109",
+        "path": "production/reprise-chasse-bible-20261109/qa/escort/native-06/browser-verification.json",
+        "context": "CURRENT_BRANCH_FILE_PRESENT_PENDING_COMMIT"
+      },
+      {
+        "ref": "codex/reprise-bible-chasse-20261109",
+        "path": "production/reprise-chasse-bible-20261109/qa/escort/native-07/browser-verification.json",
+        "context": "CURRENT_BRANCH_FILE_PRESENT_PENDING_COMMIT"
+      },
+      {
+        "ref": "codex/reprise-bible-chasse-20261109",
+        "path": "production/reprise-chasse-bible-20261109/qa/escort/native-07/implementation-source-receipt.json",
+        "context": "CURRENT_BRANCH_FILE_PRESENT_PENDING_COMMIT"
+      },
+      {
+        "ref": "codex/reprise-bible-chasse-20261109",
+        "path": "production/reprise-chasse-bible-20261109/qa/harvest/native-lint-final/browser-verification.json",
+        "context": "CURRENT_BRANCH_FILE_PRESENT_PENDING_COMMIT"
+      },
+      {
+        "ref": "codex/reprise-bible-chasse-20261109",
+        "path": "production/reprise-chasse-bible-20261109/qa/harvest/native-lint-final/implementation-source-receipt.json",
+        "context": "CURRENT_BRANCH_FILE_PRESENT_PENDING_COMMIT"
+      },
+      {
+        "ref": "codex/reprise-bible-chasse-20261109",
+        "path": "production/reprise-chasse-bible-20261109/qa/integration-final-85ca8099/verification.json",
+        "context": "CURRENT_BRANCH_FILE_PRESENT_PENDING_COMMIT"
+      },
+      {
+        "ref": "codex/reprise-bible-chasse-20261109",
+        "path": "production/reprise-chasse-bible-20261109/qa/native-harvest-ebe1718/receipt.json",
+        "context": "CURRENT_BRANCH_FILE_PRESENT_PENDING_COMMIT"
+      },
+      {
+        "ref": "codex/reprise-bible-chasse-20261109",
+        "path": "production/reprise-chasse-bible-20261109/qa/native-resource-integrity.json",
+        "context": "CURRENT_BRANCH_FILE_PRESENT_PENDING_COMMIT"
+      },
+      {
+        "ref": "codex/reprise-bible-chasse-20261109",
+        "path": "production/reprise-chasse-bible-20261109/qa/qa-launchers-eslint.json",
+        "context": "CURRENT_BRANCH_FILE_PRESENT_PENDING_COMMIT"
+      },
+      {
+        "ref": "ebe17184965307d9c636d45561a19c431802c4ab",
+        "path": "AGENTS.md",
+        "context": "PINNED_GIT_OBJECT_PRESENT"
+      }
+    ],
+    "scope": "Pinned refs are resolved in Git. New delivery/index files use the named branch and are checked on disk pending the delivery commit; no HTTP availability is inferred."
+  },
+  "originalWorkbooksVerified": 108,
+  "datedFilesVerified": 198,
+  "remainingV112Unchanged": [
+    {
+      "id": "REM112-01",
+      "status": "NON_QUALIFIE",
+      "topic": "Compréhension débutant",
+      "rule": "Un joueur nouveau comprend prise, repos, épuisement, préparation, prélèvement, extraction et conservation sans explication extérieure.",
+      "source": "docs/qa/v112-hunt/beginner-protocol.md",
+      "acceptance": "Exécuter les 9 tâches du protocole avec 5 nouveaux joueurs ; noter aide, erreurs, temps et explication. Cible 4/5 sans aide pour les tâches essentielles. Aucun participant ni résultat humain n'est consigné ; textes et états logiciels testés ne prouvent pas cette compréhension."
+    },
+    {
+      "id": "REM112-02",
+      "status": "NON_QUALIFIE",
+      "topic": "Téléphone Android physique",
+      "rule": "Commandes tactiles et sorties dans une chasse réelle sur téléphone Android identifié.",
+      "source": "docs/hunt-mechanics-v112.md",
+      "acceptance": "Consigner modèle, OS, navigateur, viewport, version testée, orientation, gestes, perte de focus et reprise ; joindre captures et incidents. Une émulation Chromium ne ferme pas ce critère."
+    },
+    {
+      "id": "REM112-03",
+      "status": "NON_QUALIFIE",
+      "topic": "Téléphone iOS physique",
+      "rule": "Commandes tactiles et sorties dans une chasse réelle sur iPhone identifié.",
+      "source": "docs/hunt-mechanics-v112.md",
+      "acceptance": "Consigner modèle, iOS, Safari, viewport, version, orientation, gestes, perte de focus et reprise ; joindre captures/incidents. Aucun appareil réel utilisé dans cette qualification."
+    },
+    {
+      "id": "REM112-04",
+      "status": "NON_QUALIFIE",
+      "topic": "Manette physique",
+      "rule": "Commande corporelle et atelier, remappage, branchement/rebranchement sur contrôleur identifié.",
+      "source": "docs/hunt-mechanics-v112.md",
+      "acceptance": "Consigner modèle, transport USB/Bluetooth, OS/navigateur, affectations, navigation, confirmation/annulation, reconnexion et absence d'action derrière le menu. Le pad logiciel ne qualifie pas le périphérique."
+    },
+    {
+      "id": "REM112-05",
+      "status": "NON_QUALIFIE",
+      "topic": "Performance matériel cible",
+      "rule": "Coût de trame et mémoire dans le produit avec rendu, illustrations et sons sur matériel cible.",
+      "source": "docs/hunt-mechanics-v112.md",
+      "acceptance": "Consigner CPU/GPU/RAM, OS, navigateur, résolution, version et scène dense ; relever p 50/p 95/p 99/max des trames, pics mémoire et durée. Une mesure Node du CPU de simulation en CI reste distincte."
+    },
+    {
+      "id": "REM112-06",
+      "status": "NON_QUALIFIE",
+      "topic": "Campagne interactive complète",
+      "rule": "Huit chasses avec combat, canopée optionnelle, prélèvements, extraction, sauvegarde/reprise et atelier par les entrées du produit.",
+      "source": "docs/hunt-mechanics-v112.md",
+      "acceptance": "Jouer chaque chasse sans retirer ennemis, téléporter ni forcer un résultat ; conserver armure, charge, profil d'accessibilité, parcours, morts/reprises et stock final. Les scénarios automatisés bornés restent explicitement bornés."
+    },
+    {
+      "id": "REM112-07",
+      "status": "NON_QUALIFIE",
+      "topic": "Application Excel native",
+      "rule": "Ouverture et usage du classeur livré dans Excel, sans alerte de réparation.",
+      "source": "docs/hunt-mechanics-v112.md",
+      "acceptance": "Consigner version Excel/OS et empreinte du XLSX ; essayer filtres, volets gelés, liens et impression. ZIP/XML et reproduction déterministe ne constituent pas une session Excel native."
+    },
+    {
+      "id": "REM112-08",
+      "status": "NON_QUALIFIE",
+      "topic": "Repli terrestre complet",
+      "rule": "Le repli au sol reste praticable dans les huit missions avec armures et charges admissibles, ennemis et objectifs réels.",
+      "source": "app/game/systems/canopyTraversalV112.ts",
+      "acceptance": "Vérifier le parcours intégral jusqu'à l'extraction avec charge/armure déterminées. Les 72 traversées de canopée isolées démontrent les repos et accès, pas toutes les campagnes au sol."
+    }
+  ],
+  "sourceCriteriaUnchanged": [
+    {
+      "key": "Clan Ship:OPS-B03",
+      "id": "OPS-B03",
+      "domain": "Clan Ship",
+      "kind": "Production",
+      "scope": "Déclaration d’un suivi de famille courant",
+      "title": "Trophée contesté",
+      "criterion": "Comparer marques et télémétrie puis faire une restitution motivée devant deux témoins.",
+      "remaining": "Développer puis exercer le critère",
+      "priority": "P2",
+      "sourceStatus": "Prévu ; À développer",
+      "reconciliation": "Déclaration source à rapprocher du runtime courant",
+      "generated": "À rapprocher",
+      "integrated": "À rapprocher",
+      "tested": "À rapprocher",
+      "humanArtReview": "Selon critère",
+      "currentEvidence": [],
+      "sources": [
+        {
+          "path": "production/clan-ship-20261104/clan-ship-operations-20261105.xlsx",
+          "sheet": "Opérations",
+          "row": 60,
+          "rowSha256": "bb0d80c44a5f5223afe091c6f05c36277900b678848a0c89fe5bb5a264d24fe8",
+          "status": {
+            "F": "Prévu",
+            "I": "À développer"
+          },
+          "scope": "SUIVI_ACTIF"
+        }
+      ]
+    },
+    {
+      "key": "Clan Ship:OPS-B04",
+      "id": "OPS-B04",
+      "domain": "Clan Ship",
+      "kind": "Production",
+      "scope": "Déclaration d’un suivi de famille courant",
+      "title": "Retour d’expédition",
+      "criterion": "Guider un groupe revenu du hangar aux soins puis présenter son relevé au conseil.",
+      "remaining": "Développer puis exercer le critère",
+      "priority": "P2",
+      "sourceStatus": "Prévu ; À développer",
+      "reconciliation": "Déclaration source à rapprocher du runtime courant",
+      "generated": "À rapprocher",
+      "integrated": "À rapprocher",
+      "tested": "À rapprocher",
+      "humanArtReview": "Selon critère",
+      "currentEvidence": [],
+      "sources": [
+        {
+          "path": "production/clan-ship-20261104/clan-ship-operations-20261105.xlsx",
+          "sheet": "Opérations",
+          "row": 61,
+          "rowSha256": "6a20e80539c00e09a844ee1dad6c0f3eb487107fc4fc8095fc362faa7f8ffb1f",
+          "status": {
+            "F": "Prévu",
+            "I": "À développer"
+          },
+          "scope": "SUIVI_ACTIF"
+        }
+      ]
+    },
+    {
+      "key": "Clan Ship:OPS-Q26",
+      "id": "OPS-Q26",
+      "domain": "Clan Ship",
+      "kind": "Recette",
+      "scope": "Déclaration d’un suivi de famille courant",
+      "title": "Incidents intérieurs",
+      "criterion": "Objets interactifs, espace modifié, échec/reprise et sortie praticable.",
+      "remaining": "",
+      "priority": "À trier",
+      "sourceStatus": "À développer",
+      "reconciliation": "Déclaration source à rapprocher du runtime courant",
+      "generated": "À rapprocher",
+      "integrated": "À rapprocher",
+      "tested": "À rapprocher",
+      "humanArtReview": "Selon critère",
+      "currentEvidence": [],
+      "sources": [
+        {
+          "path": "production/clan-ship-20261104/clan-ship-operations-20261105.xlsx",
+          "sheet": "Recette",
+          "row": 35,
+          "rowSha256": "0788b2ba81d52d2db4017315ea7a2a2ce2689b492b9f6be6914dd7281fd2c2e6",
+          "status": {
+            "E": "À développer"
+          },
+          "scope": "SUIVI_ACTIF"
+        }
+      ]
+    }
+  ],
+  "newGlobalClosuresClaimed": 0,
+  "sourceInputs": [
+    {
+      "id": "BIBLE-L",
+      "path": "docs/campagne/BIBLE_DE_CAMPAGNE.md",
+      "scope": "§ Campagne révisée lore 1:1 / décisions L ; priorité sur les anciennes fiches.",
+      "line": 125,
+      "reference": "BASE",
+      "bytes": 296222,
+      "sha256": "518f1426bb98944452691a869843cc38984b26e5dbfa6366899988a8d27ef6e1",
+      "gitBlob": "dd1b7fe03ab4de238d4b35a8cfcd38d15c624536",
+      "observation": "WORKTREE"
+    },
+    {
+      "id": "BIBLE-L09",
+      "path": "docs/campagne/BIBLE_DE_CAMPAGNE.md",
+      "scope": "L-09 : navire de clan ; les occupants ne sont pas automatiquement recrutés.",
+      "line": 201,
+      "reference": "BASE",
+      "bytes": 296222,
+      "sha256": "518f1426bb98944452691a869843cc38984b26e5dbfa6366899988a8d27ef6e1",
+      "gitBlob": "dd1b7fe03ab4de238d4b35a8cfcd38d15c624536",
+      "observation": "WORKTREE"
+    },
+    {
+      "id": "BIBLE-TROPHY",
+      "path": "docs/campagne/BIBLE_DE_CAMPAGNE.md",
+      "scope": "Trophée original unique, provenance et usages distincts.",
+      "line": 955,
+      "reference": "BASE",
+      "bytes": 296222,
+      "sha256": "518f1426bb98944452691a869843cc38984b26e5dbfa6366899988a8d27ef6e1",
+      "gitBlob": "dd1b7fe03ab4de238d4b35a8cfcd38d15c624536",
+      "observation": "WORKTREE"
+    },
+    {
+      "id": "BIBLE-R2-M027",
+      "path": "docs/campagne/BIBLE_DE_CAMPAGNE.md",
+      "scope": "Retour du Berceau ; mentor, VFX/audio et dommage d'objet restent distincts.",
+      "line": 2305,
+      "reference": "BASE",
+      "bytes": 296222,
+      "sha256": "518f1426bb98944452691a869843cc38984b26e5dbfa6366899988a8d27ef6e1",
+      "gitBlob": "dd1b7fe03ab4de238d4b35a8cfcd38d15c624536",
+      "observation": "WORKTREE"
+    },
+    {
+      "id": "BIBLE-ANNEXES",
+      "path": "docs/campagne/README.md",
+      "scope": "Concordance L et absence de duplication conservées ; index courant enrichi par le raccord du 9 novembre.",
+      "line": 18,
+      "reference": "CURRENT_INDEX",
+      "bytes": 19280,
+      "sha256": "d9f545177889c9eac50af17fff70c5cb6f6a8673cea4ce6ebe9b2e83859246da",
+      "gitBlob": "df6b1f9a8c23c2066cd7276287147c0cc08afa9c",
+      "observation": "WORKTREE"
+    },
+    {
+      "id": "AVENANT",
+      "path": "docs/campagne/AVENANT_EXCEL_BIBLE_20261108.md",
+      "scope": "Livraison datée et limites de qualification.",
+      "line": 1,
+      "reference": "BASE",
+      "bytes": 23848,
+      "sha256": "354c98f028c1756babb4e227e301c48055a695a539d85b9d56e9b94478f20e43",
+      "gitBlob": "c85311f3914c5e1ca622cbf167d4829d1ddd343b",
+      "observation": "WORKTREE"
+    },
+    {
+      "id": "OPS-SPEC",
+      "path": "production/clan-ship-20261104/operations-spec.md",
+      "scope": "§12.4 : voie libre, poste de transfert, groupe visible, reprise et conseil.",
+      "line": 341,
+      "reference": "BASE",
+      "bytes": 58683,
+      "sha256": "d1d0a2d1a77a851f33657bdffbd5ec9c365eae2d4ce74bcaaf9020588950a394",
+      "gitBlob": "ad742b59345baead33ac9d3f82fbc8d0597740dc",
+      "observation": "WORKTREE"
+    },
+    {
+      "id": "OPS-REGISTER",
+      "path": "production/excel-bible-20261108/suivi/excel-open-register.json",
+      "scope": "Clan Ship:OPS-B04 = Opérations!61 ; OPS-Q26 = Recette!35.",
+      "line": null,
+      "reference": "BASE",
+      "bytes": 10888218,
+      "sha256": "92457112eafce0610a089e2fce1dc476c7d6e839724de789351b64726a4553d7",
+      "gitBlob": "83fa6c0946a9e07031c7ef32c429675693a3a312",
+      "observation": "WORKTREE"
+    },
+    {
+      "id": "HUNT-SPEC",
+      "path": "docs/hunt-mechanics-v112.md",
+      "scope": "Masse, volume, durée et prérequis avant confirmation ; capacités réelles.",
+      "line": 21,
+      "reference": "BASE",
+      "bytes": 15549,
+      "sha256": "a0476d1092bbcdb644f8f159cd14e572156a06de34d7c9b280620c36681572a1",
+      "gitBlob": "5dfbfcfcf7be20f455fea06fbeee882dbefe8fcf",
+      "observation": "WORKTREE"
+    },
+    {
+      "id": "HUNT-CATALOGUE",
+      "path": "app/game/systems/anatomyHarvestV112.ts",
+      "scope": "Données anatomiques du runtime courant.",
+      "line": null,
+      "reference": "CODE_REVIEW",
+      "bytes": 5792,
+      "sha256": "cf0e561770ff5f8878ca213997a0d0bc6a10c3dc2269685c3ec6637d177a7527",
+      "gitBlob": "ad6414b1d29e9300064608f46b860983b3640822",
+      "observation": "WORKTREE"
+    },
+    {
+      "id": "HUNT-RITES",
+      "path": "app/game/systems/ritesOfHuntV77.ts",
+      "scope": "Règle d'analyse et identité des prélèvements existants.",
+      "line": null,
+      "reference": "CODE_REVIEW",
+      "bytes": 19681,
+      "sha256": "de2b71f6b38a76b6cda7d9c389e345349fc0ed795d5e2e637988c7817318faba",
+      "gitBlob": "f0ca5853b81c63bf6e1aac12a42cc4bcb5b48cb9",
+      "observation": "WORKTREE"
+    },
+    {
+      "id": "HUNT-RUNTIME",
+      "path": "app/game/systems/huntRitesRuntimeV77.ts",
+      "scope": "Snapshot et adaptation aux objets/capacités réels.",
+      "line": null,
+      "reference": "CODE_REVIEW",
+      "bytes": 14393,
+      "sha256": "fc36cb457e81c27172840fab2f2223775016b9a5dc7dc5eb8e83f5dcbd32f6f7",
+      "gitBlob": "6376eeb9e722a25047c64ef19646c1f6ac00c51c",
+      "observation": "WORKTREE"
+    },
+    {
+      "id": "HUNT-MENU",
+      "path": "app/game/HuntRitesMenuV77.tsx",
+      "scope": "Composant de prélèvement natif.",
+      "line": null,
+      "reference": "CODE_REVIEW",
+      "bytes": 5920,
+      "sha256": "9bc54a051d67f1b5627f1ce0d201c374e824da04652efcfcbb37deb6a45cd610",
+      "gitBlob": "1f07fb82268cefcd751322edf3658425db2f1961",
+      "observation": "WORKTREE"
+    },
+    {
+      "id": "INTERIOR",
+      "path": "app/game/systems/clanShipInterior.ts",
+      "scope": "Mouvement, collisions, portes et usages du pont existant.",
+      "line": null,
+      "reference": "CODE_REVIEW",
+      "bytes": 18389,
+      "sha256": "4f8cbf8512dd88e19d36659d73a560615ce48cb13ae2498304372305cb944096",
+      "gitBlob": "37825073830f15ab84ac580683f18c414b800360",
+      "observation": "WORKTREE"
+    },
+    {
+      "id": "SAVE",
+      "path": "app/game/save.ts",
+      "scope": "Writer/loader et frontières de sauvegarde de campagne.",
+      "line": null,
+      "reference": "CODE_REVIEW",
+      "bytes": 96394,
+      "sha256": "cbb36d075302bc3cde590755be350c2a2de9813ce1a1c584007d783a5e1b83ba",
+      "gitBlob": "8ce6d5e8df1d868a2d660301206a0eb2fdcb50f8",
+      "observation": "WORKTREE"
+    },
+    {
+      "id": "GAMEDEV",
+      "path": "docs/GAMEDEV_AGENT_GUIDE.md",
+      "scope": "Contrats du projet et distinction des preuves.",
+      "line": 1,
+      "reference": "BASE",
+      "bytes": 18467,
+      "sha256": "a25fc2a1c65366428bc02d629a82e5bf56e24bf7c33958a8a70c1c5e83bb3c0f",
+      "gitBlob": "798581fda6323dcde5263063fc34ca37692dce8e",
+      "observation": "WORKTREE"
+    },
+    {
+      "id": "SUIVI-1",
+      "path": "production/excel-bible-20261108/suivi/Yautja_Suivi_Excel_Bible_20261108.xlsx",
+      "scope": "Suivi consolidé du 8 novembre, 108 originaux.",
+      "line": null,
+      "reference": "BASE",
+      "bytes": 2192128,
+      "sha256": "4f9ff0954f18b5d6830d3a2d46c0caf035a04b6582c934fc274e096fb5f7face",
+      "gitBlob": "f08cfcbdc76057e0f83c4953d4561ac0575c8ecb",
+      "observation": "WORKTREE"
+    },
+    {
+      "id": "SUIVI-2",
+      "path": "production/excel-bible-suite-20261108/suivi/Yautja_Suite_Excel_Bible_20261108.xlsx",
+      "scope": "Suivi historique de suite ; limites de sa date conservées.",
+      "line": null,
+      "reference": "BASE",
+      "bytes": 26500,
+      "sha256": "e7d2af52b637ebc1f90c1f85f2e8bec7853b0f0bddf058e258e21505894a0c04",
+      "gitBlob": "f0cca9511005e9747ac6120cba329ec7c2441f0e",
+      "observation": "WORKTREE"
+    },
+    {
+      "id": "SUIVI-3",
+      "path": "production/excel-bible-witnesses-20261108/suivi/Yautja_Audience_C37_20261108.xlsx",
+      "scope": "Complément d'audience ; photographie locale initiale conservée.",
+      "line": null,
+      "reference": "BASE",
+      "bytes": 22771,
+      "sha256": "3915848e84da6cbf8832b11e68d1344d8e521ec50b40e7f3fec5625bc61e1cb4",
+      "gitBlob": "1cdf802139b152e3c252b6a6cd3361a65e3e40f3",
+      "observation": "WORKTREE"
+    },
+    {
+      "id": "C37-README",
+      "path": "production/excel-bible-witnesses-20261108/README.md",
+      "scope": "Audience déjà raccordée ; lire les preuves ultérieures à la photographie locale.",
+      "line": 93,
+      "reference": "BASE",
+      "bytes": 10213,
+      "sha256": "d00066951dffd70302190c4a100586d3eec76bedf09478c717eb9fc61467a73d",
+      "gitBlob": "3bf41be8d657fa5b4c18d5e695cdd6c0d81910e8",
+      "observation": "WORKTREE"
+    },
+    {
+      "id": "C37-NATIVE",
+      "path": "production/excel-bible-witnesses-20261108/qa/native-c37-bdc/inspection.json",
+      "scope": "27 contrôles et 6 captures sur bdc2b4af ; appareil physique et art humain non qualifiés.",
+      "line": null,
+      "reference": "BASE",
+      "bytes": 22294,
+      "sha256": "75496e663fec012bddd43775052aff339ec8c6ac934b2e67630a265241b998e0",
+      "gitBlob": "e5aa3e0770f01723b68bfe382baa1ee2722952bd",
+      "observation": "WORKTREE"
+    },
+    {
+      "id": "REPRISE-AVENANT",
+      "path": "docs/campagne/AVENANT_REPRISE_CHASSE_BIBLE_20261109.md",
+      "scope": "Raccord de reprise du 9 novembre, jalons et limites distincts des preuves historiques.",
+      "line": 1,
+      "reference": "CURRENT_DELIVERY",
+      "bytes": 10441,
+      "sha256": "6c5168dca908b024bb8addab915fb3e6bcf5aabe4b71375d8728ccc070343c75",
+      "gitBlob": "58e9a2155e5dee9d06270d82db7b1bc5334c1332",
+      "observation": "WORKTREE"
+    },
+    {
+      "id": "ESCORT-MODEL",
+      "path": "app/game/systems/clanShipReturnEscort.ts",
+      "scope": "Modèle de retour, positions des deux membres, contrôle des phases et du reçu.",
+      "line": null,
+      "reference": "CODE_REVIEW",
+      "bytes": 21049,
+      "sha256": "0fac9efb73358b1f744a50e3812062264286c855450461a479cb1b75c3eb76cc",
+      "gitBlob": "a83a34dc12a2e27f45f37a74283877f66804c66c",
+      "observation": "WORKTREE"
+    },
+    {
+      "id": "ESCORT-CLIENT",
+      "path": "app/game/GameClient.tsx",
+      "scope": "Propriétaire de campagne et confirmation/réconciliation des écritures.",
+      "line": null,
+      "reference": "CODE_REVIEW",
+      "bytes": 365531,
+      "sha256": "3e93e9ca2791224d5653f266df7e4d625d7c88fca075da8a137391fbde39bb19",
+      "gitBlob": "1f3fa49f1a12a029ad053749ec39044b08077064",
+      "observation": "WORKTREE"
+    },
+    {
+      "id": "ESCORT-HUB",
+      "path": "app/game/ClanShipHub.tsx",
+      "scope": "Passage des contrôles de retour et navigation existante du navire.",
+      "line": null,
+      "reference": "CODE_REVIEW",
+      "bytes": 16822,
+      "sha256": "766ac8283e3937b92e2ed76f67b1459e44901d1ae3dc7072ee1168cafbb9a585",
+      "gitBlob": "e995b3b365ecec47a7774f2418db316c91eadabb",
+      "observation": "WORKTREE"
+    },
+    {
+      "id": "ESCORT-INTERIOR",
+      "path": "app/game/ClanShipInterior.tsx",
+      "scope": "Boucle de déplacement, pas bornés et checkpoints groupés.",
+      "line": null,
+      "reference": "CODE_REVIEW",
+      "bytes": 48424,
+      "sha256": "2cbcf5ddfc4ffad9fdb81a632dc950f8d636e20f49f4acbaea5af991cc19e960",
+      "gitBlob": "71f96eb618831c9deaf19ee5249e5d7d64749704",
+      "observation": "WORKTREE"
+    },
+    {
+      "id": "ESCORT-SCENE",
+      "path": "app/game/ClanShipReturnEscortScene.tsx",
+      "scope": "Acteurs statiques déplacés, raisons de refus et commandes distinctes du guidage.",
+      "line": null,
+      "reference": "CODE_REVIEW",
+      "bytes": 8294,
+      "sha256": "1531c314f7ae61276e3269717e1b3a50e0907bf448605e5c27a11fca9753bbe9",
+      "gitBlob": "a3c965ef2fb87fb0bfc8e6a162b7ad9290e0c32a",
+      "observation": "WORKTREE"
+    },
+    {
+      "id": "SAVE-TYPES",
+      "path": "app/game/types.ts",
+      "scope": "Bloc optionnel de retour, distinct des registres historiques.",
+      "line": null,
+      "reference": "CODE_REVIEW",
+      "bytes": 20796,
+      "sha256": "3a72c34ff6857b74023e23880cdc405d6fc82161867946da529d2d5a03a76855",
+      "gitBlob": "413a6a0af9dce6419394b2979c30702846864e80",
+      "observation": "WORKTREE"
+    },
+    {
+      "id": "HARVEST-RECIPE",
+      "path": "scripts/qa-hunt-harvest-preview-browser-20261109.mjs",
+      "scope": "Recette de récolte finale ; fichier désormais committé dans le paquet source 9200248.",
+      "line": null,
+      "reference": "CODE_REVIEW",
+      "bytes": 13541,
+      "sha256": "04e520628fcd325c78db9512c3a7a697197377fbc89d941852939333f42908f7",
+      "gitBlob": "cb45db12c7356fef3bc2b2c3675a41114d877f74",
+      "observation": "WORKTREE"
+    },
+    {
+      "id": "ESCORT-RECIPE",
+      "path": "scripts/qa-clan-return-escort-browser-20261109.mjs",
+      "scope": "Recette B04 finale, HMR désactivé et sorties protégées ; paquet source 9200248.",
+      "line": null,
+      "reference": "CODE_REVIEW",
+      "bytes": 29087,
+      "sha256": "cce3618f6f5dbe0ad64dd0bde6aef0ea7e1e3869563a4802ca99848ee7489145",
+      "gitBlob": "81c5471b9d3eddd9adc83b63bc54514f03d1e423",
+      "observation": "WORKTREE"
+    },
+    {
+      "id": "HARVEST-FIXTURE",
+      "path": "tests/browser/hunt-harvest-preview-20261109.fixture.jsx",
+      "scope": "Fixture React explicite du menu, distincte du monde de chasse.",
+      "line": null,
+      "reference": "CODE_REVIEW",
+      "bytes": 5540,
+      "sha256": "0ed2c095001fd359f275f3bfffd710bf441b9e39c412c63f21ed9dafa56e4ec8",
+      "gitBlob": "840e7ac6e7773f9837c62572d23d407530fed728",
+      "observation": "WORKTREE"
+    },
+    {
+      "id": "HARVEST-MODEL",
+      "path": "production/reprise-chasse-bible-20261109/qa/native-harvest-ebe1718/receipt.json",
+      "sha256": "161772d7358bdb9e8990b9e3ee5645d4d6babf34f12dac94fcd0a949fefb8ebb",
+      "sourceCommit": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+      "codeEquivalentCommit": "ebe17184965307d9c636d45561a19c431802c4ab",
+      "kind": "BEHAVIOR",
+      "result": "153/153 PASS, 0 ignoré",
+      "scope": "Six sous-suites : catalogue (39 espèces et 56 parties), prérequis, emport, analyse, portage et accessibilité. Les nombres se recouvrent avec les suites historiques.",
+      "executionContext": "Checkout 19317af4, arbre de travail modifié ; octets rapprochés après exécution au commit logiciel ebe171849. Aucune nouvelle exécution sur ce commit.",
+      "bytes": 3185,
+      "gitBlob": "a58ab03a99a384c0c8955eb03b33e96baa7d4c4b",
+      "observation": "WORKTREE"
+    },
+    {
+      "id": "HARVEST-LINT",
+      "path": "production/reprise-chasse-bible-20261109/qa/native-harvest-ebe1718/receipt.json",
+      "sha256": "161772d7358bdb9e8990b9e3ee5645d4d6babf34f12dac94fcd0a949fefb8ebb",
+      "sourceCommit": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+      "codeEquivalentCommit": "ebe17184965307d9c636d45561a19c431802c4ab",
+      "kind": "LINT",
+      "result": "ESLint strict PASS",
+      "scope": "Quatre sources changées, max-warnings 0 ; code de sortie 0 explicitement observé, journal vide conservé.",
+      "executionContext": "Checkout 19317af4, arbre de travail modifié ; octets rapprochés après exécution au commit logiciel ebe171849. Aucune nouvelle exécution sur ce commit.",
+      "bytes": 3185,
+      "gitBlob": "a58ab03a99a384c0c8955eb03b33e96baa7d4c4b",
+      "observation": "WORKTREE"
+    },
+    {
+      "id": "RESOURCES-IDENTITY",
+      "path": "production/reprise-chasse-bible-20261109/qa/native-resource-integrity.json",
+      "sha256": "161848d812921d85ce5fc9821c5cf13f1847f39537646e636d5588e9098098ad",
+      "sourceCommit": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+      "kind": "SOURCE_IDENTITY",
+      "result": "847 identités Git et 672 empreintes SHA-256 vérifiées",
+      "scope": "847 fichiers matérialisés, 1 150 407 821 octets : parcours présents, imports, symboles de récolte et acteurs du retour. Identité des ressources utilisées ; pas de tout le catalogue ni de revue artistique.",
+      "executionContext": "Ressources originales rapprochées au main 19317af4 ; aucune nouvelle image, animation, revue artistique humaine ou mesure matérielle déduite.",
+      "bytes": 222731,
+      "gitBlob": "c9d75f145d6b6bd4546cd736e28d586c3551fda8",
+      "observation": "WORKTREE"
+    },
+    {
+      "id": "B04-MODEL-JALON",
+      "path": "production/reprise-chasse-bible-20261109/qa/escort-model-history/receipt.json",
+      "sha256": "1b132071cdf3de393ab7f931f2ce502201dbdd8b3155ba2adedee78035bf03aa",
+      "sourceCommit": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+      "kind": "BEHAVIOR_MILESTONE",
+      "result": "19 tests inclus dans 91 PASS, jalon",
+      "scope": "Modèle/sauvegardes et voisins ; six fichiers modèle rapprochés après exécution. Le run de 91 tests ne certifie pas tout l’arbre UI final.",
+      "executionContext": "Checkout 19317af4 modifié, avant cb5. Sources et résultats intermédiaires ; formation finale encore en correction.",
+      "codeEquivalentCommit": "cb5c4a47d1313f031a1a8208a83a8578a1256d94",
+      "bytes": 4516,
+      "gitBlob": "73f75ae4355559f0a8c33162dc4270587e2c996f",
+      "observation": "WORKTREE"
+    },
+    {
+      "id": "B04-UI-JALON",
+      "path": "production/reprise-chasse-bible-20261109/qa/escort-model-history/receipt.json",
+      "sha256": "1b132071cdf3de393ab7f931f2ce502201dbdd8b3155ba2adedee78035bf03aa",
+      "sourceCommit": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+      "kind": "REPORTED_TOOL_RESULT",
+      "result": "39 tests UI PASS rapportés, jalon",
+      "scope": "12 nouveaux cas au sein de 39. L’auteur rapporte son outil exec a59941 ; aucun fichier stdout stable n’a été créé.",
+      "executionContext": "Résultat d’outil explicitement attesté par l’auteur, sans journal fictif ; arbre de travail avant commit.",
+      "bytes": 4516,
+      "gitBlob": "73f75ae4355559f0a8c33162dc4270587e2c996f",
+      "observation": "WORKTREE"
+    },
+    {
+      "id": "B04-BROWSER-JALON-04",
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-04/browser-verification.json",
+      "sha256": "b866ac8ed69d2ccaa788fb6171a83b9d7fc8aa7bbec338cb3b801ed4cf375492",
+      "sourceCommit": "ebe17184965307d9c636d45561a19c431802c4ab",
+      "kind": "BROWSER_MILESTONE",
+      "result": "19 contrôles fonctionnels PASS, jalon",
+      "scope": "25 PNG natives, 3 résolutions et zéro erreur JavaScript/console/asset. Préparations et arrêt séparé sont des fixtures déclarées. La lisibilité finale de formation attend sa correction.",
+      "executionContext": "Checkout ebe171849 modifié. Octets produit rapprochés à cb5 après exécution ; pas de nouveau run sur ce commit.",
+      "codeEquivalentCommit": "cb5c4a47d1313f031a1a8208a83a8578a1256d94",
+      "bytes": 480105,
+      "gitBlob": "06415cb2d1d30e07b09e9fc2f1428b1022c1dad2",
+      "observation": "WORKTREE"
+    },
+    {
+      "id": "B04-IDENTITE-JALON",
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-04/implementation-source-receipt.json",
+      "sha256": "6374b07e85ef3842f6f2691d66302cdaf6534acd810f99d8da00e9b0afb9969c",
+      "sourceCommit": "ebe17184965307d9c636d45561a19c431802c4ab",
+      "kind": "SOURCE_IDENTITY",
+      "result": "10 sources app et fixture identiques à cb5",
+      "scope": "Rapprochement après exécution des sources produit et du helper de prérequis ; le script de recette a évolué depuis native-04.",
+      "executionContext": "Cette comparaison de fichiers ne rejoue pas le navigateur et ne qualifie pas la future formation.",
+      "codeEquivalentCommit": "cb5c4a47d1313f031a1a8208a83a8578a1256d94",
+      "bytes": 4085,
+      "gitBlob": "48b3a406f050873d43f6f98a27156b80661f77dc",
+      "observation": "WORKTREE"
+    },
+    {
+      "id": "B04-ESSAI-01",
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-01/browser-verification.json",
+      "sha256": "3de4cdf35709126007ca9c875aba7380e1df73572484adb37adf94ccad35d74c",
+      "sourceCommit": "ebe17184965307d9c636d45561a19c431802c4ab",
+      "kind": "FAILED_ATTEMPT",
+      "result": "ECHEC_CONSERVE",
+      "scope": "Recette non achevée, gardée dans son état original. Les contrôles partiels de cet essai ne sont pas additionnés au succès native-04.",
+      "executionContext": "Essai antérieur conservé ; aucune requalification en réussite.",
+      "bytes": 5534,
+      "gitBlob": "1d5bc652a6ded7316585ff2e655041b4aa555f9a",
+      "observation": "WORKTREE"
+    },
+    {
+      "id": "B04-ESSAI-02",
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-02/browser-verification.json",
+      "sha256": "3ef7c4ccc8c34ec426d5a04a66ab0823cdaa7cf242601c5fb4b7c517e2c1a422",
+      "sourceCommit": "ebe17184965307d9c636d45561a19c431802c4ab",
+      "kind": "FAILED_ATTEMPT",
+      "result": "ECHEC_CONSERVE",
+      "scope": "Recette non achevée, gardée dans son état original. Les contrôles partiels de cet essai ne sont pas additionnés au succès native-04.",
+      "executionContext": "Essai antérieur conservé ; aucune requalification en réussite.",
+      "bytes": 107660,
+      "gitBlob": "a538aa11aaefd9b5af1f636c39286814812520c8",
+      "observation": "WORKTREE"
+    },
+    {
+      "id": "B04-ESSAI-03",
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-03/browser-verification.json",
+      "sha256": "748bed122f2c976679daa1b64df3266aef18b558885e2a0e9c86db70105e5969",
+      "sourceCommit": "ebe17184965307d9c636d45561a19c431802c4ab",
+      "kind": "FAILED_ATTEMPT",
+      "result": "ECHEC_CONSERVE",
+      "scope": "Recette non achevée, gardée dans son état original. Les contrôles partiels de cet essai ne sont pas additionnés au succès native-04.",
+      "executionContext": "Essai antérieur conservé ; aucune requalification en réussite.",
+      "bytes": 135992,
+      "gitBlob": "0168d60c291348c4a3c696f2875e08f24ce79672",
+      "observation": "WORKTREE"
+    },
+    {
+      "id": "HARVEST-BROWSER",
+      "path": "production/reprise-chasse-bible-20261109/qa/harvest/native-lint-final/browser-verification.json",
+      "sha256": "b7ac7ce0081650f37cda2a3424c9ec951ba0660e8f66235b3664919ba1bb6050",
+      "sourceCommit": "ebe17184965307d9c636d45561a19c431802c4ab",
+      "kind": "BROWSER",
+      "result": "18/18 contrôles PASS au total",
+      "scope": "Six scénarios dans trois résolutions, 18 PNG natives complètes. Vrai menu/callback ; sacs et corps déclarés, monde et campagne entière hors de ce cadre.",
+      "executionContext": "Checkout ebe171849 avec recettes/fixture non committées ; sept sources applicatives identiques au point produit ebe171849.",
+      "codeEquivalentCommit": "ebe17184965307d9c636d45561a19c431802c4ab",
+      "bytes": 20173,
+      "gitBlob": "c5fedbf324f2ee48b5e368268ab85040b20e03f5",
+      "observation": "WORKTREE"
+    },
+    {
+      "id": "HARVEST-IDENTITY",
+      "path": "production/reprise-chasse-bible-20261109/qa/harvest/native-lint-final/implementation-source-receipt.json",
+      "sha256": "7d036370252876b9a33a2003215a457583a2d04516faf5378131bf9e08907f48",
+      "sourceCommit": "ebe17184965307d9c636d45561a19c431802c4ab",
+      "kind": "SOURCE_IDENTITY",
+      "result": "7/7 sources applicatives identiques",
+      "scope": "Rapprochement des sources du dernier lot récolte vers le commit logiciel ebe171849, sans réexécution fictive.",
+      "executionContext": "Les vrais source hashes et le bundle de la recette finale restent dans le rapport.",
+      "codeEquivalentCommit": "ebe17184965307d9c636d45561a19c431802c4ab",
+      "bytes": 2556,
+      "gitBlob": "35ceb0de47381c19d1dc39209d1cb0b239a621ee",
+      "observation": "WORKTREE"
+    },
+    {
+      "id": "B04-MODEL-FINAL20",
+      "path": "production/reprise-chasse-bible-20261109/qa/escort-model-final20/receipt.json",
+      "sha256": "12f0ab5d8320c0125371ef2104113030aa18d1f55fc758b7703e64d915b840ad",
+      "sourceCommit": "cb5c4a47d1313f031a1a8208a83a8578a1256d94",
+      "kind": "BEHAVIOR",
+      "result": "20/20 modèles PASS",
+      "scope": "Modèle/sauvegardes du retour ; un cas de formation supplémentaire et les 19 antérieurs, sans addition aux autres suites.",
+      "executionContext": "Overlay modèle exécuté avant 85ca, puis rapprochement de ses octets. La suite finale de 539 tests est une exécution distincte sur 85ca.",
+      "codeEquivalentCommit": "85ca8099d96fffb37fbe6f46b26a76c8eaf73df1",
+      "bytes": 1564,
+      "gitBlob": "856212ded4d67c741f1ba6e5ea1c88600c54adf0",
+      "observation": "WORKTREE"
+    },
+    {
+      "id": "B04-BROWSER-FINAL07",
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-07/browser-verification.json",
+      "sha256": "39018df79cacba29e26b2f52ae003508fdae1ac406084a033f9dc46c3e7ab4c2",
+      "sourceCommit": "85ca8099d96fffb37fbe6f46b26a76c8eaf73df1",
+      "kind": "BROWSER",
+      "result": "19/19 contrôles PASS,25 PNG",
+      "scope": "Vrai GameClient :19 contrôles, 25 PNG natives, 1 312 observations de marche, 42 écritures observées ; trois résolutions et zéro erreur. Prérequis construits et reprise séparée déclarés.",
+      "executionContext": "Vrai checkout85ca8099 avec recettes et preuves non committées. Sources avant/après stables ; pas de nouvelle exécution sur 9200248.",
+      "codeEquivalentCommit": "85ca8099d96fffb37fbe6f46b26a76c8eaf73df1",
+      "bytes": 499444,
+      "gitBlob": "078e857b17ffa55db11087221bfc067fb1884401",
+      "observation": "WORKTREE"
+    },
+    {
+      "id": "B04-IDENTITE-FINALE",
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-07/implementation-source-receipt.json",
+      "sha256": "3f515877d82df14cef67595a76b429cf2fe5d5956adfc477d519a1108b290b5f",
+      "sourceCommit": "85ca8099d96fffb37fbe6f46b26a76c8eaf73df1",
+      "kind": "SOURCE_IDENTITY",
+      "result": "14 entrées committées identiques à85ca",
+      "scope": "Identité des sources applicatives, styles et fixture committées. La recette possède sa propre empreinte, désormais commitée dans 9200248.",
+      "executionContext": "Les quinze empreintes avant/après sont stables. Le rapprochement est un contrôle de fichiers, sans nouveau run.",
+      "codeEquivalentCommit": "85ca8099d96fffb37fbe6f46b26a76c8eaf73df1",
+      "bytes": 4297,
+      "gitBlob": "385283e2521a4548534636946ebdc0168d57cec2",
+      "observation": "WORKTREE"
+    },
+    {
+      "id": "B04-ESSAI-05",
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-05/browser-verification.json",
+      "sha256": "1accbb7ccdbe9240c1707f1a39afb4911967e4769b17d31f464f256975514747",
+      "sourceCommit": "ebe17184965307d9c636d45561a19c431802c4ab",
+      "kind": "INTERMEDIATE_ATTEMPT",
+      "result": "JALON_FONCTIONNEL_RESERVE_VISUELLE",
+      "scope": "Passe du launcher avant correction de formation ; occlusion d’un équipier repérée ensuite. Pas une qualification finale de visibilité.",
+      "executionContext": "Le reçu et les images conservent leur contexte et ne sont pas requalifiés en réussite finale.",
+      "bytes": 473640,
+      "gitBlob": "5433eefdac8eeab336ca7fac0e816783087de1b0",
+      "observation": "WORKTREE"
+    },
+    {
+      "id": "B04-ESSAI-06",
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-06/browser-verification.json",
+      "sha256": "e429dc810dfcf0e488b7ea19b6b55817c474eaebfdb3020c72e06040a2de0a84",
+      "sourceCommit": "85ca8099d96fffb37fbe6f46b26a76c8eaf73df1",
+      "kind": "FAILED_ATTEMPT",
+      "result": "ECHEC_CONSERVE",
+      "scope": "Formation corrigée, mais rechargement HMR de la scène provoqué par une génération documentaire parallèle. Échec conservé ; native-07 est la nouvelle exécution admise.",
+      "executionContext": "Le reçu et les images conservent leur contexte et ne sont pas requalifiés en réussite finale.",
+      "bytes": 348231,
+      "gitBlob": "e1c70f1856978aafb0d22cd0a7927ab33efb65c4",
+      "observation": "WORKTREE"
+    },
+    {
+      "id": "FINAL-INTEGRATION",
+      "path": "production/reprise-chasse-bible-20261109/qa/integration-final-85ca8099/verification.json",
+      "sha256": "b856ba07c7e77120c28ee8833d13b3c87fb7e47a56a85e2e4215c12764518793",
+      "sourceCommit": "85ca8099d96fffb37fbe6f46b26a76c8eaf73df1",
+      "kind": "FINAL_REGRESSION",
+      "result": "539/539 tests,build/types/lint PASS",
+      "scope": "26 fichiers natifs distincts ; Next webpack et TypeScript intégrés ; ESLint strict sur 21 fichiers. Journaux et trois commandes exactes conservés. Compilation applicative, pas packaging complet ni déploiement.",
+      "executionContext": "Sources produit et 26 fichiers de tests committés sur 85ca. Recettes/workflows/docs non committés à l’exécution, puis paquet source 9200248 à octets identiques.",
+      "codeEquivalentCommit": "9200248c37f9e008d20cf6ebc6a684a1d1c5f9dc",
+      "bytes": 4064,
+      "gitBlob": "82f0ac7ce5c820eeb6e87969e685d8c4c7d65af7",
+      "observation": "WORKTREE"
+    },
+    {
+      "id": "QA-LAUNCHERS-LINT",
+      "path": "production/reprise-chasse-bible-20261109/qa/qa-launchers-eslint.json",
+      "sha256": "5fb6bb78241338ed55dc5c0130fbfbed11e989b83470cd6326081f1ed5c0d985",
+      "sourceCommit": "85ca8099d96fffb37fbe6f46b26a76c8eaf73df1",
+      "kind": "LINT",
+      "result": "ESLint strict trois sources PASS",
+      "scope": "Deux recettes et fixture React nettoyée ; journal vide et code de sortie 0 explicite. Aucun résultat navigateur déduit de ce lint.",
+      "executionContext": "Recettes finales ensuite committées dans 9200248 ; le rapport conserve leurs trois empreintes.",
+      "codeEquivalentCommit": "9200248c37f9e008d20cf6ebc6a684a1d1c5f9dc",
+      "bytes": 1066,
+      "gitBlob": "c5cf7d96ef3eecfbba2fe74c8508e848431bcb74",
+      "observation": "WORKTREE"
+    },
+    {
+      "id": "RUNTIME-CURRENT",
+      "path": "production/reprise-chasse-bible-20261109/qa/current-runtime-receipt.json",
+      "sha256": "854c726df83ea932174c955cd815adfda05def42567948b000735a97f4fb8513",
+      "sourceCommit": "9200248c37f9e008d20cf6ebc6a684a1d1c5f9dc",
+      "kind": "SOURCE_IDENTITY",
+      "result": "Contrôles courants et snapshot officiels PASS",
+      "scope": "Relevé courant : 3 069 sources / 148 144 202 octets. Snapshot officiel : 2 207 entrées / 1 093 220 902 octets. Ces inventaires et ressources se recouvrent ; aucun total de fonctionnalités déduit.",
+      "executionContext": "Contrôles observés sur 9200248. Le prochain commit documentaire ne devient pas rétroactivement ce point source.",
+      "codeEquivalentCommit": "9200248c37f9e008d20cf6ebc6a684a1d1c5f9dc",
+      "bytes": 1440,
+      "gitBlob": "bc146bf7b54248f3956c194aea6170f427c98ea1",
+      "observation": "WORKTREE"
+    }
+  ],
+  "limits": [
+    "Les tests de ce générateur portent sur les sources, OOXML et identité des archives ; ils n’exécutent pas le jeu.",
+    "Aucun usage Microsoft Excel natif, appareil physique ou avis artistique humain déduit.",
+    "Les qualifications courantes dépendent des seuls rapports explicitement reçus dans qualification-reprise.json."
+  ]
+}

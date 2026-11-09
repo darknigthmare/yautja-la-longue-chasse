@@ -1,0 +1,1004 @@
+{
+  "schemaVersion": 1,
+  "asOfDate": "2026-11-09",
+  "baseCommit": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+  "branch": "codex/reprise-bible-chasse-20261109",
+  "reviewedCodeCommit": "9200248c37f9e008d20cf6ebc6a684a1d1c5f9dc",
+  "releaseState": "QUALIFICATION_BORNEE",
+  "title": "Yautja — reprise chasse et bible du 9 novembre 2026",
+  "scope": "Reprise ciblée après 211 commits depuis la fusion de PR62 : prélèvements anatomiques et OPS-B04. Les 108 originaux, les suivis du 8 novembre et les huit qualifications V112 restent conservés.",
+  "qualificationPolicy": [
+    "Implémentation, tests de modèle, navigateur, appareils physiques et revue artistique restent séparés.",
+    "Une occurrence de code ou une recette préparée ne prouve pas son exécution.",
+    "Les statuts EN_ATTENTE restent tels quels jusqu'au rapport effectivement reçu.",
+    "Aucun ancien statut de classeur n'est réécrit ; le nouveau suivi rapproche des preuves datées.",
+    "Les ensembles 108 classeurs, 8 625 sujets, 4 304 cartes, 4 257 blocs et 118 annexes se chevauchent."
+  ],
+  "sourceReferences": [
+    {
+      "id": "BIBLE-L",
+      "path": "docs/campagne/BIBLE_DE_CAMPAGNE.md",
+      "scope": "§ Campagne révisée lore 1:1 / décisions L ; priorité sur les anciennes fiches.",
+      "line": 125,
+      "reference": "BASE"
+    },
+    {
+      "id": "BIBLE-L09",
+      "path": "docs/campagne/BIBLE_DE_CAMPAGNE.md",
+      "scope": "L-09 : navire de clan ; les occupants ne sont pas automatiquement recrutés.",
+      "line": 201,
+      "reference": "BASE"
+    },
+    {
+      "id": "BIBLE-TROPHY",
+      "path": "docs/campagne/BIBLE_DE_CAMPAGNE.md",
+      "scope": "Trophée original unique, provenance et usages distincts.",
+      "line": 955,
+      "reference": "BASE"
+    },
+    {
+      "id": "BIBLE-R2-M027",
+      "path": "docs/campagne/BIBLE_DE_CAMPAGNE.md",
+      "scope": "Retour du Berceau ; mentor, VFX/audio et dommage d'objet restent distincts.",
+      "line": 2305,
+      "reference": "BASE"
+    },
+    {
+      "id": "BIBLE-ANNEXES",
+      "path": "docs/campagne/README.md",
+      "scope": "Concordance L et absence de duplication conservées ; index courant enrichi par le raccord du 9 novembre.",
+      "line": 18,
+      "reference": "CURRENT_INDEX"
+    },
+    {
+      "id": "AVENANT",
+      "path": "docs/campagne/AVENANT_EXCEL_BIBLE_20261108.md",
+      "scope": "Livraison datée et limites de qualification.",
+      "line": 1,
+      "reference": "BASE"
+    },
+    {
+      "id": "OPS-SPEC",
+      "path": "production/clan-ship-20261104/operations-spec.md",
+      "scope": "§12.4 : voie libre, poste de transfert, groupe visible, reprise et conseil.",
+      "line": 341,
+      "reference": "BASE"
+    },
+    {
+      "id": "OPS-REGISTER",
+      "path": "production/excel-bible-20261108/suivi/excel-open-register.json",
+      "scope": "Clan Ship:OPS-B04 = Opérations!61 ; OPS-Q26 = Recette!35.",
+      "line": null,
+      "reference": "BASE"
+    },
+    {
+      "id": "HUNT-SPEC",
+      "path": "docs/hunt-mechanics-v112.md",
+      "scope": "Masse, volume, durée et prérequis avant confirmation ; capacités réelles.",
+      "line": 21,
+      "reference": "BASE"
+    },
+    {
+      "id": "HUNT-CATALOGUE",
+      "path": "app/game/systems/anatomyHarvestV112.ts",
+      "scope": "Données anatomiques du runtime courant.",
+      "line": null,
+      "reference": "CODE_REVIEW"
+    },
+    {
+      "id": "HUNT-RITES",
+      "path": "app/game/systems/ritesOfHuntV77.ts",
+      "scope": "Règle d'analyse et identité des prélèvements existants.",
+      "line": null,
+      "reference": "CODE_REVIEW"
+    },
+    {
+      "id": "HUNT-RUNTIME",
+      "path": "app/game/systems/huntRitesRuntimeV77.ts",
+      "scope": "Snapshot et adaptation aux objets/capacités réels.",
+      "line": null,
+      "reference": "CODE_REVIEW"
+    },
+    {
+      "id": "HUNT-MENU",
+      "path": "app/game/HuntRitesMenuV77.tsx",
+      "scope": "Composant de prélèvement natif.",
+      "line": null,
+      "reference": "CODE_REVIEW"
+    },
+    {
+      "id": "INTERIOR",
+      "path": "app/game/systems/clanShipInterior.ts",
+      "scope": "Mouvement, collisions, portes et usages du pont existant.",
+      "line": null,
+      "reference": "CODE_REVIEW"
+    },
+    {
+      "id": "SAVE",
+      "path": "app/game/save.ts",
+      "scope": "Writer/loader et frontières de sauvegarde de campagne.",
+      "line": null,
+      "reference": "CODE_REVIEW"
+    },
+    {
+      "id": "GAMEDEV",
+      "path": "docs/GAMEDEV_AGENT_GUIDE.md",
+      "scope": "Contrats du projet et distinction des preuves.",
+      "line": 1,
+      "reference": "BASE"
+    },
+    {
+      "id": "SUIVI-1",
+      "path": "production/excel-bible-20261108/suivi/Yautja_Suivi_Excel_Bible_20261108.xlsx",
+      "scope": "Suivi consolidé du 8 novembre, 108 originaux.",
+      "line": null,
+      "reference": "BASE"
+    },
+    {
+      "id": "SUIVI-2",
+      "path": "production/excel-bible-suite-20261108/suivi/Yautja_Suite_Excel_Bible_20261108.xlsx",
+      "scope": "Suivi historique de suite ; limites de sa date conservées.",
+      "line": null,
+      "reference": "BASE"
+    },
+    {
+      "id": "SUIVI-3",
+      "path": "production/excel-bible-witnesses-20261108/suivi/Yautja_Audience_C37_20261108.xlsx",
+      "scope": "Complément d'audience ; photographie locale initiale conservée.",
+      "line": null,
+      "reference": "BASE"
+    },
+    {
+      "id": "C37-README",
+      "path": "production/excel-bible-witnesses-20261108/README.md",
+      "scope": "Audience déjà raccordée ; lire les preuves ultérieures à la photographie locale.",
+      "line": 93,
+      "reference": "BASE"
+    },
+    {
+      "id": "C37-NATIVE",
+      "path": "production/excel-bible-witnesses-20261108/qa/native-c37-bdc/inspection.json",
+      "scope": "27 contrôles et 6 captures sur bdc2b4af ; appareil physique et art humain non qualifiés.",
+      "line": null,
+      "reference": "BASE"
+    },
+    {
+      "id": "REPRISE-AVENANT",
+      "path": "docs/campagne/AVENANT_REPRISE_CHASSE_BIBLE_20261109.md",
+      "scope": "Raccord de reprise du 9 novembre, jalons et limites distincts des preuves historiques.",
+      "line": 1,
+      "reference": "CURRENT_DELIVERY"
+    },
+    {
+      "id": "ESCORT-MODEL",
+      "path": "app/game/systems/clanShipReturnEscort.ts",
+      "scope": "Modèle de retour, positions des deux membres, contrôle des phases et du reçu.",
+      "line": null,
+      "reference": "CODE_REVIEW"
+    },
+    {
+      "id": "ESCORT-CLIENT",
+      "path": "app/game/GameClient.tsx",
+      "scope": "Propriétaire de campagne et confirmation/réconciliation des écritures.",
+      "line": null,
+      "reference": "CODE_REVIEW"
+    },
+    {
+      "id": "ESCORT-HUB",
+      "path": "app/game/ClanShipHub.tsx",
+      "scope": "Passage des contrôles de retour et navigation existante du navire.",
+      "line": null,
+      "reference": "CODE_REVIEW"
+    },
+    {
+      "id": "ESCORT-INTERIOR",
+      "path": "app/game/ClanShipInterior.tsx",
+      "scope": "Boucle de déplacement, pas bornés et checkpoints groupés.",
+      "line": null,
+      "reference": "CODE_REVIEW"
+    },
+    {
+      "id": "ESCORT-SCENE",
+      "path": "app/game/ClanShipReturnEscortScene.tsx",
+      "scope": "Acteurs statiques déplacés, raisons de refus et commandes distinctes du guidage.",
+      "line": null,
+      "reference": "CODE_REVIEW"
+    },
+    {
+      "id": "SAVE-TYPES",
+      "path": "app/game/types.ts",
+      "scope": "Bloc optionnel de retour, distinct des registres historiques.",
+      "line": null,
+      "reference": "CODE_REVIEW"
+    },
+    {
+      "id": "HARVEST-RECIPE",
+      "path": "scripts/qa-hunt-harvest-preview-browser-20261109.mjs",
+      "scope": "Recette de récolte finale ; fichier désormais committé dans le paquet source 9200248.",
+      "line": null,
+      "reference": "CODE_REVIEW"
+    },
+    {
+      "id": "ESCORT-RECIPE",
+      "path": "scripts/qa-clan-return-escort-browser-20261109.mjs",
+      "scope": "Recette B04 finale, HMR désactivé et sorties protégées ; paquet source 9200248.",
+      "line": null,
+      "reference": "CODE_REVIEW"
+    },
+    {
+      "id": "HARVEST-FIXTURE",
+      "path": "tests/browser/hunt-harvest-preview-20261109.fixture.jsx",
+      "scope": "Fixture React explicite du menu, distincte du monde de chasse.",
+      "line": null,
+      "reference": "CODE_REVIEW"
+    }
+  ],
+  "criteria": [
+    {
+      "id": "RPR-H01",
+      "sourceKey": "Hunt V112:prélèvement",
+      "title": "Annoncer l'emport de chaque prise",
+      "kind": "SOFTWARE",
+      "prerequisites": "Carcasse réelle sélectionnée ; espèce et partie encore disponibles.",
+      "implementation": "Masse et volume de chaque partie projetés depuis le catalogue ; durée et qualité conservées.",
+      "checks": [
+        "Comparer les 39 espèces et leurs 56 parties aux données natives.",
+        "Lire les valeurs du vrai composant avant le clic."
+      ],
+      "limits": "39 espèces et 56 parties comparées par les modèles ; navigateur sur une peau de chien de chasse. Les valeurs annoncées ne valent pas acquisition jouée de tout le catalogue.",
+      "sourceIds": [
+        "HUNT-SPEC",
+        "HUNT-CATALOGUE"
+      ],
+      "implementationStatus": "VERIFIE_BORNE",
+      "behaviorStatus": "VERIFIE_BORNE",
+      "browserStatus": "VERIFIE_BORNE",
+      "physicalStatus": "HORS_PORTEE",
+      "artStatus": "HORS_PORTEE",
+      "qualification": "QUALIFIE_LOGICIEL_BORNE",
+      "evidence": [
+        "FINAL-INTEGRATION",
+        "HARVEST-MODEL",
+        "HARVEST-BROWSER",
+        "HARVEST-IDENTITY",
+        "RESOURCES-IDENTITY"
+      ]
+    },
+    {
+      "id": "RPR-H02",
+      "sourceKey": "Hunt V112:charge",
+      "title": "Expliquer le refus d'emport réel",
+      "kind": "SOFTWARE",
+      "prerequisites": "Armure et inventaire courants ; dépôt et registre de terrain existants.",
+      "implementation": "Même diagnostic pour l'affichage et l'acceptation : masse, volume, dépôt et registre de 64 prises.",
+      "checks": [
+        "Distinguer masse seule, volume seul, dépôt saturé et registre saturé.",
+        "Revalider au dernier tick, après modification réelle de l'inventaire."
+      ],
+      "limits": "Navigateur : refus masse, volume et dépôt sur sacs déclarés. Registre de 64 prises et refus au dernier tick : modèles. Capacités inchangées : scout 24 kg / 18 volumes, hunter 36 / 24, berserker 52 / 30.",
+      "sourceIds": [
+        "HUNT-SPEC",
+        "HUNT-RUNTIME"
+      ],
+      "implementationStatus": "VERIFIE_BORNE",
+      "behaviorStatus": "VERIFIE_BORNE",
+      "browserStatus": "VERIFIE_BORNE",
+      "physicalStatus": "HORS_PORTEE",
+      "artStatus": "HORS_PORTEE",
+      "qualification": "QUALIFIE_LOGICIEL_BORNE",
+      "evidence": [
+        "FINAL-INTEGRATION",
+        "HARVEST-MODEL",
+        "HARVEST-BROWSER",
+        "HARVEST-IDENTITY",
+        "RESOURCES-IDENTITY"
+      ]
+    },
+    {
+      "id": "RPR-H03",
+      "sourceKey": "Hunt V112:analyse",
+      "title": "Afficher le vrai verrou d'analyse",
+      "kind": "SOFTWARE",
+      "prerequisites": "Carcasse non analysée ; absence de prélèvement irréversible pour cette source.",
+      "implementation": "Disponibilité et raison communes au moteur et au snapshot, y compris si la prise est déjà déposée.",
+      "checks": [
+        "Analyse permise avant prélèvement.",
+        "Analyse refusée après prélèvement non analysé, même déposé ; qualités antérieures conservées."
+      ],
+      "limits": "Navigateur : première prise sans analyse, qualité 79 conservée. Verrou après dépôt : modèles. Aucun recalcul rétroactif des prises.",
+      "sourceIds": [
+        "HUNT-SPEC",
+        "HUNT-RITES"
+      ],
+      "implementationStatus": "VERIFIE_BORNE",
+      "behaviorStatus": "VERIFIE_BORNE",
+      "browserStatus": "VERIFIE_BORNE",
+      "physicalStatus": "HORS_PORTEE",
+      "artStatus": "HORS_PORTEE",
+      "qualification": "QUALIFIE_LOGICIEL_BORNE",
+      "evidence": [
+        "FINAL-INTEGRATION",
+        "HARVEST-MODEL",
+        "HARVEST-BROWSER",
+        "HARVEST-IDENTITY",
+        "RESOURCES-IDENTITY"
+      ]
+    },
+    {
+      "id": "RPR-H04",
+      "sourceKey": "Hunt V112:interface",
+      "title": "Rendre les refus lisibles avant action",
+      "kind": "SOFTWARE",
+      "prerequisites": "Menu natif ouvert ; bouton présent mais éventuellement désactivé.",
+      "implementation": "Raisons visibles dans le DOM et description accessible ; navigation existante saute l'analyse interdite.",
+      "checks": [
+        "Lire les raisons sur petit viewport.",
+        "Clavier et pad logiciel ne ciblent pas un bouton désactivé."
+      ],
+      "limits": "Trois résolutions, tactile et pad logiciel émulés ; aucune manette/téléphone physique ni compréhension humaine qualifiés.",
+      "sourceIds": [
+        "HUNT-MENU",
+        "HUNT-RUNTIME"
+      ],
+      "implementationStatus": "VERIFIE_BORNE",
+      "behaviorStatus": "VERIFIE_BORNE",
+      "browserStatus": "VERIFIE_BORNE",
+      "physicalStatus": "HORS_PORTEE",
+      "artStatus": "HORS_PORTEE",
+      "qualification": "QUALIFIE_LOGICIEL_BORNE",
+      "evidence": [
+        "FINAL-INTEGRATION",
+        "HARVEST-MODEL",
+        "HARVEST-BROWSER",
+        "HARVEST-IDENTITY",
+        "RESOURCES-IDENTITY"
+      ]
+    },
+    {
+      "id": "RPR-E01",
+      "sourceKey": "Clan Ship:OPS-B04",
+      "title": "Préparer le retour d'expédition",
+      "kind": "SOFTWARE",
+      "prerequisites": "Reçu space-recovery confirmé ; scène active et membres réellement disponibles.",
+      "implementation": "Suture Noire et Garde du Seuil proposent voie libre et poste de transfert.",
+      "checks": [
+        "Prérequis absent, membre indisponible et mauvaise salle refusés.",
+        "Préparation confirmée par le propriétaire de campagne."
+      ],
+      "limits": "Prérequis du reçu spatial préparés par les reducers ; le combat spatial n’est pas joué dans cette recette. Aucune blessure individuelle déduite.",
+      "sourceIds": [
+        "OPS-SPEC",
+        "OPS-REGISTER",
+        "BIBLE-L09",
+        "ESCORT-MODEL",
+        "ESCORT-CLIENT",
+        "ESCORT-INTERIOR",
+        "ESCORT-SCENE"
+      ],
+      "implementationStatus": "VERIFIE_BORNE",
+      "behaviorStatus": "VERIFIE_BORNE",
+      "browserStatus": "VERIFIE_BORNE",
+      "physicalStatus": "HORS_PORTEE",
+      "artStatus": "HORS_PORTEE",
+      "qualification": "QUALIFIE_LOGICIEL_BORNE",
+      "evidence": [
+        "FINAL-INTEGRATION",
+        "B04-MODEL-FINAL20",
+        "B04-BROWSER-FINAL07",
+        "B04-IDENTITE-FINALE",
+        "RESOURCES-IDENTITY"
+      ]
+    },
+    {
+      "id": "RPR-E02",
+      "sourceKey": "Clan Ship:OPS-B04",
+      "title": "Guider un groupe réellement visible",
+      "kind": "SOFTWARE",
+      "prerequisites": "Préparation confirmée ; trajet hangar vers soins admissible.",
+      "implementation": "Acteurs individuels existants se déplacent par le pathing/collision du pont.",
+      "checks": [
+        "Chaque pas conserve une position traversable.",
+        "Le groupe s'arrête si le leader s'éloigne ; aucune traversée d'obstacle."
+      ],
+      "limits": "Deux flancs distincts après correction ; dessins statiques déplacés par le contrôleur. Recouvrements naturels en profondeur conservés, sans nouveau clip ou avis artistique humain.",
+      "sourceIds": [
+        "OPS-SPEC",
+        "INTERIOR",
+        "ESCORT-MODEL",
+        "ESCORT-CLIENT",
+        "ESCORT-INTERIOR",
+        "ESCORT-SCENE"
+      ],
+      "implementationStatus": "VERIFIE_BORNE",
+      "behaviorStatus": "VERIFIE_BORNE",
+      "browserStatus": "VERIFIE_BORNE",
+      "physicalStatus": "HORS_PORTEE",
+      "artStatus": "HORS_PORTEE",
+      "qualification": "QUALIFIE_LOGICIEL_BORNE",
+      "evidence": [
+        "FINAL-INTEGRATION",
+        "B04-MODEL-FINAL20",
+        "B04-BROWSER-FINAL07",
+        "B04-IDENTITE-FINALE",
+        "RESOURCES-IDENTITY"
+      ]
+    },
+    {
+      "id": "RPR-E03",
+      "sourceKey": "Clan Ship:OPS-B04",
+      "title": "Franchir les portes ensemble",
+      "kind": "SOFTWARE",
+      "prerequisites": "Joueur au seuil et tous les membres du groupe réellement parvenus à la porte.",
+      "implementation": "Transition de pièce atomique avec les positions du groupe, sans disparition anticipée.",
+      "checks": [
+        "Seuil refusé pour groupe incomplet ou éloigné.",
+        "Trajet réel hangar→soins, puis chemin du joueur vers le conseil."
+      ],
+      "limits": "Une sélection de salle n'est pas une preuve de déplacement physique.",
+      "sourceIds": [
+        "OPS-SPEC",
+        "INTERIOR",
+        "ESCORT-MODEL",
+        "ESCORT-CLIENT",
+        "ESCORT-INTERIOR",
+        "ESCORT-SCENE"
+      ],
+      "implementationStatus": "VERIFIE_BORNE",
+      "behaviorStatus": "VERIFIE_BORNE",
+      "browserStatus": "VERIFIE_BORNE",
+      "physicalStatus": "HORS_PORTEE",
+      "artStatus": "HORS_PORTEE",
+      "qualification": "QUALIFIE_LOGICIEL_BORNE",
+      "evidence": [
+        "FINAL-INTEGRATION",
+        "B04-MODEL-FINAL20",
+        "B04-BROWSER-FINAL07",
+        "B04-IDENTITE-FINALE",
+        "RESOURCES-IDENTITY"
+      ]
+    },
+    {
+      "id": "RPR-E04",
+      "sourceKey": "Clan Ship:OPS-B04",
+      "title": "Conserver une position sûre à l'arrêt",
+      "kind": "SOFTWARE",
+      "prerequisites": "État confirmé et prochaine destination explicite.",
+      "implementation": "Pause, fermeture et reprise conservent le groupe ; aucun rattrapage hors ligne.",
+      "checks": [
+        "Arrêt et reprise au milieu de chaque salle.",
+        "Import/export et archive complète préservent les positions et la destination."
+      ],
+      "limits": "Reprise jouée hors salle à 320 px et checkpoint confirmé de moins d’une seconde simulée. Cas hors navire : fixture portable seulement, pas un trajet navigateur extérieur complet.",
+      "sourceIds": [
+        "OPS-SPEC",
+        "SAVE",
+        "ESCORT-MODEL",
+        "ESCORT-CLIENT",
+        "ESCORT-INTERIOR",
+        "ESCORT-SCENE"
+      ],
+      "implementationStatus": "VERIFIE_BORNE",
+      "behaviorStatus": "VERIFIE_BORNE",
+      "browserStatus": "VERIFIE_BORNE",
+      "physicalStatus": "HORS_PORTEE",
+      "artStatus": "HORS_PORTEE",
+      "qualification": "QUALIFIE_LOGICIEL_BORNE",
+      "evidence": [
+        "FINAL-INTEGRATION",
+        "B04-MODEL-FINAL20",
+        "B04-BROWSER-FINAL07",
+        "B04-IDENTITE-FINALE",
+        "RESOURCES-IDENTITY"
+      ]
+    },
+    {
+      "id": "RPR-E05",
+      "sourceKey": "Clan Ship:OPS-B04",
+      "title": "Refuser les écritures non confirmées",
+      "kind": "SOFTWARE",
+      "prerequisites": "Owner et révision courants ; opération active autorisée.",
+      "implementation": "Progression affichée gardée à l'état confirmé ; échec ou écriture incertaine gèle l'escorte.",
+      "checks": [
+        "Quota, relecture incertaine, révision périmée et propriétaire étranger.",
+        "Aucun transfert ni relevé validé deux fois ; réconciliation réelle."
+      ],
+      "limits": "Une escorte arrêtée reste importable quand le joueur a quitté le bord.",
+      "sourceIds": [
+        "OPS-SPEC",
+        "SAVE",
+        "ESCORT-MODEL",
+        "ESCORT-CLIENT",
+        "ESCORT-INTERIOR",
+        "ESCORT-SCENE"
+      ],
+      "implementationStatus": "VERIFIE_BORNE",
+      "behaviorStatus": "VERIFIE_BORNE",
+      "browserStatus": "VERIFIE_BORNE",
+      "physicalStatus": "HORS_PORTEE",
+      "artStatus": "HORS_PORTEE",
+      "qualification": "QUALIFIE_LOGICIEL_BORNE",
+      "evidence": [
+        "FINAL-INTEGRATION",
+        "B04-MODEL-FINAL20",
+        "B04-BROWSER-FINAL07",
+        "B04-IDENTITE-FINALE",
+        "RESOURCES-IDENTITY"
+      ]
+    },
+    {
+      "id": "RPR-E06",
+      "sourceKey": "Clan Ship:OPS-B04",
+      "title": "Terminer aux soins puis présenter le relevé",
+      "kind": "SOFTWARE",
+      "prerequisites": "Groupe physiquement arrivé au poste et transfert confirmé.",
+      "implementation": "L'équipe reste aux soins ; le joueur rejoint le conseil et présente le relevé.",
+      "checks": [
+        "Ordre des étapes et proximité réelle au conseil.",
+        "Reprise après transfert et après relevé."
+      ],
+      "limits": "Le transfert ne soigne pas le joueur gratuitement et n'accorde aucune nouvelle monnaie.",
+      "sourceIds": [
+        "OPS-SPEC",
+        "OPS-REGISTER",
+        "ESCORT-MODEL",
+        "ESCORT-CLIENT",
+        "ESCORT-INTERIOR",
+        "ESCORT-SCENE"
+      ],
+      "implementationStatus": "VERIFIE_BORNE",
+      "behaviorStatus": "VERIFIE_BORNE",
+      "browserStatus": "VERIFIE_BORNE",
+      "physicalStatus": "HORS_PORTEE",
+      "artStatus": "HORS_PORTEE",
+      "qualification": "QUALIFIE_LOGICIEL_BORNE",
+      "evidence": [
+        "FINAL-INTEGRATION",
+        "B04-MODEL-FINAL20",
+        "B04-BROWSER-FINAL07",
+        "B04-IDENTITE-FINALE",
+        "RESOURCES-IDENTITY"
+      ]
+    },
+    {
+      "id": "RPR-E07",
+      "sourceKey": "Clan Ship:OPS-Q26",
+      "title": "Préserver les contrats voisins",
+      "kind": "SOFTWARE",
+      "prerequisites": "Registres de recrutement/résidence, C-37 et progression de campagne existants.",
+      "implementation": "Escorte séparée des incidents, de l'audience et des blessures de triade.",
+      "checks": [
+        "Régression C-37, résidence et sauvegardes historiques.",
+        "Pas de changement arbitraire des PV, argent, rangs, occupants ou affectations."
+      ],
+      "limits": "Registres non triviaux et C-37 couverts par les modèles/voisins ; ils ne sont pas préremplis dans les fixtures navigateur B04. OPS-Q26 reste globale et partielle.",
+      "sourceIds": [
+        "OPS-SPEC",
+        "C37-README",
+        "C37-NATIVE",
+        "BIBLE-ANNEXES",
+        "ESCORT-MODEL",
+        "ESCORT-CLIENT",
+        "ESCORT-INTERIOR",
+        "ESCORT-SCENE"
+      ],
+      "implementationStatus": "VERIFIE_BORNE",
+      "behaviorStatus": "VERIFIE_BORNE",
+      "browserStatus": "PARTIEL",
+      "physicalStatus": "HORS_PORTEE",
+      "artStatus": "HORS_PORTEE",
+      "qualification": "PARTIEL_NON_CLOTURE",
+      "evidence": [
+        "FINAL-INTEGRATION",
+        "B04-MODEL-FINAL20",
+        "B04-BROWSER-FINAL07",
+        "B04-IDENTITE-FINALE",
+        "RESOURCES-IDENTITY"
+      ]
+    },
+    {
+      "id": "RPR-E08",
+      "sourceKey": "Clan Ship:OPS-B04",
+      "title": "Qualifier les interactions dans le navigateur",
+      "kind": "SOFTWARE",
+      "prerequisites": "Vrai GameClient avec fixture de prérequis déclarée ; code et assets identifiés.",
+      "implementation": "Préparation, marche, pause/reload, porte, soins et conseil avec captures natives.",
+      "checks": [
+        "Recette réellement exécutée, erreurs console et fichiers manquants relevés.",
+        "Séparer fixture, gestes réels, images et résultats du modèle."
+      ],
+      "limits": "19 contrôles et 25 images sur trois résolutions ; prérequis et état séparé construits explicitement. Aucun humain, appareil physique, campagne entière ou performance cible qualifiés.",
+      "sourceIds": [
+        "OPS-SPEC",
+        "GAMEDEV",
+        "ESCORT-MODEL",
+        "ESCORT-CLIENT",
+        "ESCORT-INTERIOR",
+        "ESCORT-SCENE"
+      ],
+      "implementationStatus": "VERIFIE_BORNE",
+      "behaviorStatus": "VERIFIE_BORNE",
+      "browserStatus": "VERIFIE_BORNE",
+      "physicalStatus": "HORS_PORTEE",
+      "artStatus": "HORS_PORTEE",
+      "qualification": "QUALIFIE_LOGICIEL_BORNE",
+      "evidence": [
+        "FINAL-INTEGRATION",
+        "B04-MODEL-FINAL20",
+        "B04-BROWSER-FINAL07",
+        "B04-IDENTITE-FINALE",
+        "RESOURCES-IDENTITY"
+      ]
+    }
+  ],
+  "currentEvidence": [
+    {
+      "id": "HARVEST-MODEL",
+      "path": "production/reprise-chasse-bible-20261109/qa/native-harvest-ebe1718/receipt.json",
+      "sha256": "161772d7358bdb9e8990b9e3ee5645d4d6babf34f12dac94fcd0a949fefb8ebb",
+      "sourceCommit": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+      "codeEquivalentCommit": "ebe17184965307d9c636d45561a19c431802c4ab",
+      "kind": "BEHAVIOR",
+      "result": "153/153 PASS, 0 ignoré",
+      "scope": "Six sous-suites : catalogue (39 espèces et 56 parties), prérequis, emport, analyse, portage et accessibilité. Les nombres se recouvrent avec les suites historiques.",
+      "executionContext": "Checkout 19317af4, arbre de travail modifié ; octets rapprochés après exécution au commit logiciel ebe171849. Aucune nouvelle exécution sur ce commit."
+    },
+    {
+      "id": "HARVEST-LINT",
+      "path": "production/reprise-chasse-bible-20261109/qa/native-harvest-ebe1718/receipt.json",
+      "sha256": "161772d7358bdb9e8990b9e3ee5645d4d6babf34f12dac94fcd0a949fefb8ebb",
+      "sourceCommit": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+      "codeEquivalentCommit": "ebe17184965307d9c636d45561a19c431802c4ab",
+      "kind": "LINT",
+      "result": "ESLint strict PASS",
+      "scope": "Quatre sources changées, max-warnings 0 ; code de sortie 0 explicitement observé, journal vide conservé.",
+      "executionContext": "Checkout 19317af4, arbre de travail modifié ; octets rapprochés après exécution au commit logiciel ebe171849. Aucune nouvelle exécution sur ce commit."
+    },
+    {
+      "id": "RESOURCES-IDENTITY",
+      "path": "production/reprise-chasse-bible-20261109/qa/native-resource-integrity.json",
+      "sha256": "161848d812921d85ce5fc9821c5cf13f1847f39537646e636d5588e9098098ad",
+      "sourceCommit": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+      "kind": "SOURCE_IDENTITY",
+      "result": "847 identités Git et 672 empreintes SHA-256 vérifiées",
+      "scope": "847 fichiers matérialisés, 1 150 407 821 octets : parcours présents, imports, symboles de récolte et acteurs du retour. Identité des ressources utilisées ; pas de tout le catalogue ni de revue artistique.",
+      "executionContext": "Ressources originales rapprochées au main 19317af4 ; aucune nouvelle image, animation, revue artistique humaine ou mesure matérielle déduite."
+    },
+    {
+      "id": "B04-MODEL-JALON",
+      "path": "production/reprise-chasse-bible-20261109/qa/escort-model-history/receipt.json",
+      "sha256": "1b132071cdf3de393ab7f931f2ce502201dbdd8b3155ba2adedee78035bf03aa",
+      "sourceCommit": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+      "kind": "BEHAVIOR_MILESTONE",
+      "result": "19 tests inclus dans 91 PASS, jalon",
+      "scope": "Modèle/sauvegardes et voisins ; six fichiers modèle rapprochés après exécution. Le run de 91 tests ne certifie pas tout l’arbre UI final.",
+      "executionContext": "Checkout 19317af4 modifié, avant cb5. Sources et résultats intermédiaires ; formation finale encore en correction.",
+      "codeEquivalentCommit": "cb5c4a47d1313f031a1a8208a83a8578a1256d94"
+    },
+    {
+      "id": "B04-UI-JALON",
+      "path": "production/reprise-chasse-bible-20261109/qa/escort-model-history/receipt.json",
+      "sha256": "1b132071cdf3de393ab7f931f2ce502201dbdd8b3155ba2adedee78035bf03aa",
+      "sourceCommit": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+      "kind": "REPORTED_TOOL_RESULT",
+      "result": "39 tests UI PASS rapportés, jalon",
+      "scope": "12 nouveaux cas au sein de 39. L’auteur rapporte son outil exec a59941 ; aucun fichier stdout stable n’a été créé.",
+      "executionContext": "Résultat d’outil explicitement attesté par l’auteur, sans journal fictif ; arbre de travail avant commit."
+    },
+    {
+      "id": "B04-BROWSER-JALON-04",
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-04/browser-verification.json",
+      "sha256": "b866ac8ed69d2ccaa788fb6171a83b9d7fc8aa7bbec338cb3b801ed4cf375492",
+      "sourceCommit": "ebe17184965307d9c636d45561a19c431802c4ab",
+      "kind": "BROWSER_MILESTONE",
+      "result": "19 contrôles fonctionnels PASS, jalon",
+      "scope": "25 PNG natives, 3 résolutions et zéro erreur JavaScript/console/asset. Préparations et arrêt séparé sont des fixtures déclarées. La lisibilité finale de formation attend sa correction.",
+      "executionContext": "Checkout ebe171849 modifié. Octets produit rapprochés à cb5 après exécution ; pas de nouveau run sur ce commit.",
+      "codeEquivalentCommit": "cb5c4a47d1313f031a1a8208a83a8578a1256d94"
+    },
+    {
+      "id": "B04-IDENTITE-JALON",
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-04/implementation-source-receipt.json",
+      "sha256": "6374b07e85ef3842f6f2691d66302cdaf6534acd810f99d8da00e9b0afb9969c",
+      "sourceCommit": "ebe17184965307d9c636d45561a19c431802c4ab",
+      "kind": "SOURCE_IDENTITY",
+      "result": "10 sources app et fixture identiques à cb5",
+      "scope": "Rapprochement après exécution des sources produit et du helper de prérequis ; le script de recette a évolué depuis native-04.",
+      "executionContext": "Cette comparaison de fichiers ne rejoue pas le navigateur et ne qualifie pas la future formation.",
+      "codeEquivalentCommit": "cb5c4a47d1313f031a1a8208a83a8578a1256d94"
+    },
+    {
+      "id": "B04-ESSAI-01",
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-01/browser-verification.json",
+      "sha256": "3de4cdf35709126007ca9c875aba7380e1df73572484adb37adf94ccad35d74c",
+      "sourceCommit": "ebe17184965307d9c636d45561a19c431802c4ab",
+      "kind": "FAILED_ATTEMPT",
+      "result": "ECHEC_CONSERVE",
+      "scope": "Recette non achevée, gardée dans son état original. Les contrôles partiels de cet essai ne sont pas additionnés au succès native-04.",
+      "executionContext": "Essai antérieur conservé ; aucune requalification en réussite."
+    },
+    {
+      "id": "B04-ESSAI-02",
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-02/browser-verification.json",
+      "sha256": "3ef7c4ccc8c34ec426d5a04a66ab0823cdaa7cf242601c5fb4b7c517e2c1a422",
+      "sourceCommit": "ebe17184965307d9c636d45561a19c431802c4ab",
+      "kind": "FAILED_ATTEMPT",
+      "result": "ECHEC_CONSERVE",
+      "scope": "Recette non achevée, gardée dans son état original. Les contrôles partiels de cet essai ne sont pas additionnés au succès native-04.",
+      "executionContext": "Essai antérieur conservé ; aucune requalification en réussite."
+    },
+    {
+      "id": "B04-ESSAI-03",
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-03/browser-verification.json",
+      "sha256": "748bed122f2c976679daa1b64df3266aef18b558885e2a0e9c86db70105e5969",
+      "sourceCommit": "ebe17184965307d9c636d45561a19c431802c4ab",
+      "kind": "FAILED_ATTEMPT",
+      "result": "ECHEC_CONSERVE",
+      "scope": "Recette non achevée, gardée dans son état original. Les contrôles partiels de cet essai ne sont pas additionnés au succès native-04.",
+      "executionContext": "Essai antérieur conservé ; aucune requalification en réussite."
+    },
+    {
+      "id": "HARVEST-BROWSER",
+      "path": "production/reprise-chasse-bible-20261109/qa/harvest/native-lint-final/browser-verification.json",
+      "sha256": "b7ac7ce0081650f37cda2a3424c9ec951ba0660e8f66235b3664919ba1bb6050",
+      "sourceCommit": "ebe17184965307d9c636d45561a19c431802c4ab",
+      "kind": "BROWSER",
+      "result": "18/18 contrôles PASS au total",
+      "scope": "Six scénarios dans trois résolutions, 18 PNG natives complètes. Vrai menu/callback ; sacs et corps déclarés, monde et campagne entière hors de ce cadre.",
+      "executionContext": "Checkout ebe171849 avec recettes/fixture non committées ; sept sources applicatives identiques au point produit ebe171849.",
+      "codeEquivalentCommit": "ebe17184965307d9c636d45561a19c431802c4ab"
+    },
+    {
+      "id": "HARVEST-IDENTITY",
+      "path": "production/reprise-chasse-bible-20261109/qa/harvest/native-lint-final/implementation-source-receipt.json",
+      "sha256": "7d036370252876b9a33a2003215a457583a2d04516faf5378131bf9e08907f48",
+      "sourceCommit": "ebe17184965307d9c636d45561a19c431802c4ab",
+      "kind": "SOURCE_IDENTITY",
+      "result": "7/7 sources applicatives identiques",
+      "scope": "Rapprochement des sources du dernier lot récolte vers le commit logiciel ebe171849, sans réexécution fictive.",
+      "executionContext": "Les vrais source hashes et le bundle de la recette finale restent dans le rapport.",
+      "codeEquivalentCommit": "ebe17184965307d9c636d45561a19c431802c4ab"
+    },
+    {
+      "id": "B04-MODEL-FINAL20",
+      "path": "production/reprise-chasse-bible-20261109/qa/escort-model-final20/receipt.json",
+      "sha256": "12f0ab5d8320c0125371ef2104113030aa18d1f55fc758b7703e64d915b840ad",
+      "sourceCommit": "cb5c4a47d1313f031a1a8208a83a8578a1256d94",
+      "kind": "BEHAVIOR",
+      "result": "20/20 modèles PASS",
+      "scope": "Modèle/sauvegardes du retour ; un cas de formation supplémentaire et les 19 antérieurs, sans addition aux autres suites.",
+      "executionContext": "Overlay modèle exécuté avant 85ca, puis rapprochement de ses octets. La suite finale de 539 tests est une exécution distincte sur 85ca.",
+      "codeEquivalentCommit": "85ca8099d96fffb37fbe6f46b26a76c8eaf73df1"
+    },
+    {
+      "id": "B04-BROWSER-FINAL07",
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-07/browser-verification.json",
+      "sha256": "39018df79cacba29e26b2f52ae003508fdae1ac406084a033f9dc46c3e7ab4c2",
+      "sourceCommit": "85ca8099d96fffb37fbe6f46b26a76c8eaf73df1",
+      "kind": "BROWSER",
+      "result": "19/19 contrôles PASS,25 PNG",
+      "scope": "Vrai GameClient :19 contrôles, 25 PNG natives, 1 312 observations de marche, 42 écritures observées ; trois résolutions et zéro erreur. Prérequis construits et reprise séparée déclarés.",
+      "executionContext": "Vrai checkout85ca8099 avec recettes et preuves non committées. Sources avant/après stables ; pas de nouvelle exécution sur 9200248.",
+      "codeEquivalentCommit": "85ca8099d96fffb37fbe6f46b26a76c8eaf73df1"
+    },
+    {
+      "id": "B04-IDENTITE-FINALE",
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-07/implementation-source-receipt.json",
+      "sha256": "3f515877d82df14cef67595a76b429cf2fe5d5956adfc477d519a1108b290b5f",
+      "sourceCommit": "85ca8099d96fffb37fbe6f46b26a76c8eaf73df1",
+      "kind": "SOURCE_IDENTITY",
+      "result": "14 entrées committées identiques à85ca",
+      "scope": "Identité des sources applicatives, styles et fixture committées. La recette possède sa propre empreinte, désormais commitée dans 9200248.",
+      "executionContext": "Les quinze empreintes avant/après sont stables. Le rapprochement est un contrôle de fichiers, sans nouveau run.",
+      "codeEquivalentCommit": "85ca8099d96fffb37fbe6f46b26a76c8eaf73df1"
+    },
+    {
+      "id": "B04-ESSAI-05",
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-05/browser-verification.json",
+      "sha256": "1accbb7ccdbe9240c1707f1a39afb4911967e4769b17d31f464f256975514747",
+      "sourceCommit": "ebe17184965307d9c636d45561a19c431802c4ab",
+      "kind": "INTERMEDIATE_ATTEMPT",
+      "result": "JALON_FONCTIONNEL_RESERVE_VISUELLE",
+      "scope": "Passe du launcher avant correction de formation ; occlusion d’un équipier repérée ensuite. Pas une qualification finale de visibilité.",
+      "executionContext": "Le reçu et les images conservent leur contexte et ne sont pas requalifiés en réussite finale."
+    },
+    {
+      "id": "B04-ESSAI-06",
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-06/browser-verification.json",
+      "sha256": "e429dc810dfcf0e488b7ea19b6b55817c474eaebfdb3020c72e06040a2de0a84",
+      "sourceCommit": "85ca8099d96fffb37fbe6f46b26a76c8eaf73df1",
+      "kind": "FAILED_ATTEMPT",
+      "result": "ECHEC_CONSERVE",
+      "scope": "Formation corrigée, mais rechargement HMR de la scène provoqué par une génération documentaire parallèle. Échec conservé ; native-07 est la nouvelle exécution admise.",
+      "executionContext": "Le reçu et les images conservent leur contexte et ne sont pas requalifiés en réussite finale."
+    },
+    {
+      "id": "FINAL-INTEGRATION",
+      "path": "production/reprise-chasse-bible-20261109/qa/integration-final-85ca8099/verification.json",
+      "sha256": "b856ba07c7e77120c28ee8833d13b3c87fb7e47a56a85e2e4215c12764518793",
+      "sourceCommit": "85ca8099d96fffb37fbe6f46b26a76c8eaf73df1",
+      "kind": "FINAL_REGRESSION",
+      "result": "539/539 tests,build/types/lint PASS",
+      "scope": "26 fichiers natifs distincts ; Next webpack et TypeScript intégrés ; ESLint strict sur 21 fichiers. Journaux et trois commandes exactes conservés. Compilation applicative, pas packaging complet ni déploiement.",
+      "executionContext": "Sources produit et 26 fichiers de tests committés sur 85ca. Recettes/workflows/docs non committés à l’exécution, puis paquet source 9200248 à octets identiques.",
+      "codeEquivalentCommit": "9200248c37f9e008d20cf6ebc6a684a1d1c5f9dc"
+    },
+    {
+      "id": "QA-LAUNCHERS-LINT",
+      "path": "production/reprise-chasse-bible-20261109/qa/qa-launchers-eslint.json",
+      "sha256": "5fb6bb78241338ed55dc5c0130fbfbed11e989b83470cd6326081f1ed5c0d985",
+      "sourceCommit": "85ca8099d96fffb37fbe6f46b26a76c8eaf73df1",
+      "kind": "LINT",
+      "result": "ESLint strict trois sources PASS",
+      "scope": "Deux recettes et fixture React nettoyée ; journal vide et code de sortie 0 explicite. Aucun résultat navigateur déduit de ce lint.",
+      "executionContext": "Recettes finales ensuite committées dans 9200248 ; le rapport conserve leurs trois empreintes.",
+      "codeEquivalentCommit": "9200248c37f9e008d20cf6ebc6a684a1d1c5f9dc"
+    },
+    {
+      "id": "RUNTIME-CURRENT",
+      "path": "production/reprise-chasse-bible-20261109/qa/current-runtime-receipt.json",
+      "sha256": "854c726df83ea932174c955cd815adfda05def42567948b000735a97f4fb8513",
+      "sourceCommit": "9200248c37f9e008d20cf6ebc6a684a1d1c5f9dc",
+      "kind": "SOURCE_IDENTITY",
+      "result": "Contrôles courants et snapshot officiels PASS",
+      "scope": "Relevé courant : 3 069 sources / 148 144 202 octets. Snapshot officiel : 2 207 entrées / 1 093 220 902 octets. Ces inventaires et ressources se recouvrent ; aucun total de fonctionnalités déduit.",
+      "executionContext": "Contrôles observés sur 9200248. Le prochain commit documentaire ne devient pas rétroactivement ce point source.",
+      "codeEquivalentCommit": "9200248c37f9e008d20cf6ebc6a684a1d1c5f9dc"
+    }
+  ],
+  "continuity": [
+    {
+      "id": "CONT-C37",
+      "status": "INTEGRE_BASE_PREUVE_DATEE",
+      "subject": "Audience C-37 / OPS-B03",
+      "detail": "Audience simultanée déjà présente sur main. La preuve bdc2b4af a 27 contrôles et 6 captures inspectées, sans manette physique ni avis artistique humain. Elle ne devient pas une recette du nouveau code.",
+      "sourceIds": [
+        "C37-README",
+        "C37-NATIVE"
+      ]
+    },
+    {
+      "id": "CONT-R2-M027",
+      "status": "PARTIEL_NON_CLOTURE",
+      "subject": "Retour du Berceau",
+      "detail": "Le retour personnel, contrôle consigné, galerie et choix archives/atelier existent. Mentor physique, VFX de nettoyage, audio dédié et détérioration propre de l'objet restent ouverts.",
+      "sourceIds": [
+        "BIBLE-R2-M027",
+        "SUIVI-2"
+      ]
+    },
+    {
+      "id": "CONT-Q26",
+      "status": "PARTIEL_NON_CLOTURE",
+      "subject": "Recette globale des incidents",
+      "detail": "Le raccord OPS-B04 ne clôture pas à lui seul tous les cas de B01–B04, les périphériques ni la revue artistique.",
+      "sourceIds": [
+        "OPS-REGISTER",
+        "C37-README"
+      ]
+    },
+    {
+      "id": "CONT-HUNT",
+      "status": "HISTORIQUE_CONSERVE",
+      "subject": "Chasse V112",
+      "detail": "22 onglets, quatre décisions de reprise historiques ; huit qualifications Restant conservées NON_QUALIFIE. Les changements courants ne convertissent pas ces anciennes captures en preuves nouvelles.",
+      "sourceIds": [
+        "HUNT-SPEC"
+      ]
+    },
+    {
+      "id": "CONT-LORE",
+      "status": "CONTRAINTE_PRESERVEE",
+      "subject": "Progression et identité",
+      "detail": "Décisions L prioritaires ; original de trophée unique ; pas de second registre, rang, soin, recrue ou blessure accordés par l'escorte.",
+      "sourceIds": [
+        "BIBLE-L",
+        "BIBLE-TROPHY",
+        "BIBLE-ANNEXES"
+      ]
+    },
+    {
+      "id": "CONT-B04",
+      "status": "RACCORD_LOGICIEL_BORNE",
+      "subject": "Retour de groupe OPS-B04",
+      "detail": "Prélèvement informé et retour de groupe livrés dans leur portée logicielle. Formation lisible revue sur 85ca, paquet source 9200248 ; les suites globales, humaines et matérielles restent distinctes.",
+      "sourceIds": [
+        "OPS-SPEC",
+        "REPRISE-AVENANT"
+      ]
+    }
+  ],
+  "remainingActions": [
+    {
+      "id": "NEXT-R2-M027",
+      "priority": "P2",
+      "subject": "Mentor et traitement complet du retour du Berceau",
+      "status": "OUVERT",
+      "sourceIds": [
+        "BIBLE-R2-M027",
+        "SUIVI-2"
+      ]
+    },
+    {
+      "id": "NEXT-Q26",
+      "priority": "P2",
+      "subject": "Recette globale B01–B04 et périphériques",
+      "status": "PARTIEL",
+      "sourceIds": [
+        "OPS-REGISTER",
+        "C37-README"
+      ]
+    },
+    {
+      "id": "NEXT-ART",
+      "priority": "P2",
+      "subject": "Revue artistique humaine et fidélité aux références",
+      "status": "NON_QUALIFIE",
+      "sourceIds": [
+        "GAMEDEV"
+      ]
+    },
+    {
+      "id": "NEXT-CAMPAIGN",
+      "priority": "P2",
+      "subject": "Autres campagnes, mobilité, Warp et annexes",
+      "status": "HORS_TRANCHE_OUVERT",
+      "sourceIds": [
+        "BIBLE-ANNEXES",
+        "AVENANT"
+      ]
+    }
+  ],
+  "deliveryChecks": [
+    {
+      "id": "FINAL-BUILD",
+      "title": "Compilation Next de la livraison finale",
+      "status": "PASS",
+      "scope": "Next webpack applicatif sur 85ca, code 0 ; ni packaging de distribution complet ni déploiement.",
+      "evidence": [
+        "FINAL-INTEGRATION"
+      ]
+    },
+    {
+      "id": "FINAL-REGRESSIONS",
+      "title": "Régressions finales sur les octets livrés",
+      "status": "PASS",
+      "scope": "539/539 assertions dans 26 fichiers distincts, zéro ignoré, sur 85ca ; nombres des sous-suites non additionnés.",
+      "evidence": [
+        "FINAL-INTEGRATION"
+      ]
+    },
+    {
+      "id": "FINAL-TYPES",
+      "title": "TypeScript final",
+      "status": "PASS",
+      "scope": "Vérification TypeScript intégrée au build Next sur 85ca, code 0 observé.",
+      "evidence": [
+        "FINAL-INTEGRATION"
+      ]
+    },
+    {
+      "id": "FINAL-LINT",
+      "title": "ESLint final",
+      "status": "PASS",
+      "scope": "ESLint strict sur 21 fichiers code 0 ; journal vide conservé avec résultat explicite.",
+      "evidence": [
+        "FINAL-INTEGRATION"
+      ]
+    }
+  ],
+  "implementationMilestones": [
+    {
+      "commit": "ebe17184965307d9c636d45561a19c431802c4ab",
+      "scope": "Prélèvement anatomique ; preuves de modèle et navigateur bornées."
+    },
+    {
+      "commit": "cb5c4a47d1313f031a1a8208a83a8578a1256d94",
+      "scope": "Premier B04 logiciel ; 19 contrôles navigateur, build et 538 tests passants. Occlusion repérée ensuite et corrigée par 85ca8099."
+    },
+    {
+      "commit": "85ca8099d96fffb37fbe6f46b26a76c8eaf73df1",
+      "scope": "Formation lisible finale ; modèle 20, navigateur natif 07 et validation finale de 539 tests, avec leurs contextes distincts."
+    }
+  ],
+  "executedProductCommit": "85ca8099d96fffb37fbe6f46b26a76c8eaf73df1"
+}

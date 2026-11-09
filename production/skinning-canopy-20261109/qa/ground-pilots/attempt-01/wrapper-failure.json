@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "classification": "POST_RUN_WRAPPER_ASSERTION_FAILURE_SEPARATE_FROM_NATIVE_RESULT",
+  "observedAt": "2026-11-09T07:09:34.923694+00:00",
+  "wrapperExitCode": 1,
+  "reason": "Historical brief(initial) omits fieldLoadV112 before the first native step; the wrapper incorrectly read its ratio unconditionally.",
+  "nativeCommandExitCode": 0,
+  "nativeOutcome": "CONTROLLER_DIED",
+  "nativeReport": "report.json",
+  "wrapperLog": "/tmp/ground-admissible-pilot-20261109-01.log",
+  "replayVerified": true,
+  "noQualificationClosed": true
+}

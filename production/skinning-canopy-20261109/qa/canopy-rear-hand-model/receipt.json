@@ -1,0 +1,39 @@
+{
+  "classification": "REAR_HAND_VISUAL_IK_NOT_NEW_PHYSICS_OR_ART_REVIEW",
+  "observedAtUtc": "2026-11-09T08:38:14.931566+00:00",
+  "checkoutCommit": "ce82e2b742c2243e524e23aee4efe26cd5c6a644",
+  "workingTreeDirty": true,
+  "command": [
+    "node",
+    "--experimental-strip-types",
+    "--test",
+    "--test-concurrency=1",
+    "tests/canopy-grip-presentation-v112.test.mjs"
+  ],
+  "exitCode": 0,
+  "testsPassed": 5,
+  "postureSamples": 198,
+  "realNeighbourSnapshots": 2,
+  "lintCommand": [
+    "node",
+    "node_modules/eslint/bin/eslint.js",
+    "app/game/systems/canopyGripPresentationV112.ts",
+    "tests/canopy-grip-presentation-v112.test.mjs",
+    "--max-warnings",
+    "0"
+  ],
+  "lintExitCode": 0,
+  "contract": "Only armBackUpper/armBackLower/handBack change; every other native matrix and every front-hand, trophy, muzzle and mask anchor is bit-identical. Arm lengths unchanged; rear palm reaches passed physical grip. No browser claim.",
+  "sourceOverlays": [
+    {
+      "path": "app/game/systems/canopyGripPresentationV112.ts",
+      "sha256": "b4970ee573f97020df36173b3047040e8a2382c950070e68d97ae8fe57bfe061",
+      "bytes": 2862
+    },
+    {
+      "path": "tests/canopy-grip-presentation-v112.test.mjs",
+      "sha256": "616b3014f6b84ce65f29ac3e6571b782732c986e074f1a3797fb7f295444a15a",
+      "bytes": 5845
+    }
+  ]
+}

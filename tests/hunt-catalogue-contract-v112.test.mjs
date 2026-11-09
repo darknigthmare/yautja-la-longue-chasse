@@ -111,6 +111,7 @@ for(const id of species)test("finite anatomy, actual source restore and single c
     assert.equal(f.state.completedEventIds.includes(part.action+":body"),false);
     const preview=api.huntRiteMenuSnapshotV77(f.state,f.context().actor,"body",true,f.options).parts.find(p=>p.action===part.action);
     assert.equal(preview.available,true);assert.equal(preview.seconds,part.seconds);
+    assert.equal(preview.massKg,part.massKg);assert.equal(preview.volumeUnits,part.volumeUnits);
     operate(f,part.action);
     const item=f.state.specimensV112.at(-1);
     assert.equal(item.id,"jungle-vey:0:body:"+part.partId);

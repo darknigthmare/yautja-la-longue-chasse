@@ -1,0 +1,68 @@
+{
+  "observedAt": "2026-11-09T07:24:25.517904+00:00",
+  "cwd": "/workspace/yautja-reprise-20261109",
+  "baseCommit": "8a25c5cf206647c3490ac362452c2eb22584f07e",
+  "qualification": "BOUNDED_COMPONENT_AND_UNIT_PREFLIGHT_NOT_HUNT_CANVAS",
+  "files": {
+    "app/game/HuntFieldGuideV112.tsx": {
+      "bytes": 8062,
+      "sha256": "72df7d105b31c61b134bef0b5af4b38c88d1455ddbd21407053afbaccb1bd4e3"
+    },
+    "app/game/HuntAccessibilityV112.module.css": {
+      "bytes": 2540,
+      "sha256": "9f4814b8e448fca0db6e9a34efa7eedd98f2f866a22982f5f17699cf0d3cadaf"
+    },
+    "tests/hunt-field-guide-v112.test.mjs": {
+      "bytes": 7664,
+      "sha256": "cf43d0f0825ef1c2e45a5a8242b698ba13b7d86b2d8fcb9d838c1b256146fac0"
+    }
+  },
+  "commands": [
+    {
+      "argv": [
+        "node",
+        "outputs/qa-field-guide-compact-20261109/check.mjs"
+      ],
+      "exitCode": 0,
+      "networkEnabled": true,
+      "report": "report.json"
+    },
+    {
+      "argv": [
+        "node",
+        "--test",
+        "--test-isolation=none",
+        "--test-concurrency=1",
+        "tests/hunt-field-guide-v112.test.mjs"
+      ],
+      "exitCode": 0,
+      "log": "unit-tests.log",
+      "passed": 9,
+      "failed": 0,
+      "skipped": 0,
+      "logSha256": "3e04e4cd29c4d599aa80a6b5d9961dce4087bb8fa3da5f20ec00d4e83473409b",
+      "logBytes": 1142
+    },
+    {
+      "argv": [
+        "node",
+        "node_modules/eslint/bin/eslint.js",
+        "app/game/HuntFieldGuideV112.tsx",
+        "tests/hunt-field-guide-v112.test.mjs",
+        "--max-warnings",
+        "0"
+      ],
+      "exitCode": 0,
+      "log": "lint.log",
+      "logSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "logBytes": 0
+    }
+  ],
+  "environmentOverrides": {},
+  "notes": [
+    "Browser launcher used exec_command with_additional_permissions network.enabled=true; Chromium path is /usr/bin/chromium inside check.mjs.",
+    "Constructed props and standalone actual Guide; no full game or human qualification.",
+    "Unit and lint logs are direct stdout/stderr redirections from the recorded commands.",
+    "CSS changes affect only .guide/.preparation selectors; panel/ritual styles remain unchanged."
+  ]
+}
