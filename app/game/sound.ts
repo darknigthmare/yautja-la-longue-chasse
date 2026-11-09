@@ -65,6 +65,10 @@ export type GameSfxId =
   | "objective"
   | "hit"
   | "trophy"
+  | "field-work"
+  | "field-secure"
+  | "canopy-grab"
+  | "canopy-release"
   | "victory"
   | "defeat";
 
@@ -526,6 +530,12 @@ export class GameAudio {
       case "trophy":
         this.trophy();
         break;
+      case "field-work":
+      case "field-secure":
+      case "canopy-grab":
+      case "canopy-release":
+        this.fieldAction(id);
+        break;
       case "victory":
         this.victory();
         break;
@@ -917,6 +927,28 @@ export class GameAudio {
   // -------------------------------------------------------------------------
   // Rituels et fins de mission
   // -------------------------------------------------------------------------
+
+  /** Original short material cues, through the same effects mix and transport.
+   * These are synthesis, not sampled franchise recordings or extra voices that
+   * can continue working while the game is paused. */
+  fieldAction(id: "field-work" | "field-secure" | "canopy-grab" | "canopy-release"): void {
+    if (this.fileAudio.playSfx(id)) return;
+    const now = this.readyTime();
+    if (now === null) return;
+    if (id === "field-work") {
+      this.noise({ at: now, duration: .105, gain: .035, filterType: "bandpass", filterFrequency: 1_500, endFilterFrequency: 650 });
+      this.tone(280, { at: now, duration: .055, endFrequency: 190, gain: .012, type: "triangle", filterFrequency: 1_000 });
+    } else if (id === "field-secure") {
+      this.noise({ at: now, duration: .075, gain: .03, filterType: "lowpass", filterFrequency: 700, endFilterFrequency: 180 });
+      this.tone(350, { at: now + .025, duration: .12, endFrequency: 520, gain: .025, type: "sine" });
+    } else if (id === "canopy-grab") {
+      this.noise({ at: now, duration: .11, gain: .04, filterType: "lowpass", filterFrequency: 850, endFilterFrequency: 250 });
+      this.tone(105, { at: now, duration: .075, endFrequency: 74, gain: .02, type: "triangle" });
+    } else {
+      this.noise({ at: now, duration: .12, gain: .025, filterType: "bandpass", filterFrequency: 600, endFilterFrequency: 1_400 });
+      this.tone(160, { at: now, duration: .065, endFrequency: 250, gain: .012, type: "sine" });
+    }
+  }
 
   trophy(): void {
     if (this.fileAudio.playSfx("trophy")) return;

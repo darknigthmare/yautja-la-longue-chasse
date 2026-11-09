@@ -35,6 +35,7 @@ export interface RiteOperationV77 {
   corpseId:string; action:HuntRiteActionV77; elapsed:number;
   startHealth:number; supportId:string|null; confirmedDishonor:boolean;
 }
+export type RiteWorksiteTargetV77 = Pick<RiteCorpseV77,'id'|'sourceEnemyId'|'x'|'y'>;
 export interface RitesOfHuntV77 {
   version:1; runId:string; missionId:string; elapsed:number;
   corpses:RiteCorpseV77[]; operation:RiteOperationV77|null;
@@ -49,9 +50,21 @@ export interface RiteLiveContextV77 {
   readonly prey:readonly RitePreyProofV77[]; readonly supports:readonly RiteSupportV77[];
   readonly grounded?:boolean; readonly climbing?:boolean; readonly toolWorkMultiplier?:number;
   readonly acceptSpecimen?:(item:FieldSpecimenV112)=>boolean;
+  /** Live collision result supplied by the world owner, never serialized. */
+  readonly worksiteBlocked?:(corpse:RitePointV77)=>boolean;
+  /** Tool contact comes from the same authored anatomy/rig as the renderer. */
+  readonly worksiteReachable?:(corpse:RiteWorksiteTargetV77)=>boolean;
 }
 export interface RiteResultV77 { state:RitesOfHuntV77; accepted:boolean; message:string }
 export const RITE_DURATIONS_V77:Readonly<Record<HuntRiteActionV77,number>>={analyze:1.4,mark:1,flay:3.2,hang:2.5,carry:0,drop:0,'harvest-hide':3.8,'harvest-tissue':2.6,'harvest-bone':3.4,leave:0,erase:1.8};
+/** One clock contract for rules, UI and visual work motion. Anatomy owns its
+ * species-specific duration; only actual tool work is slowed by tool wear. */
+export function riteOperationSecondsV77(action:HuntRiteActionV77,sourceEnemyId:string,toolWorkMultiplier=1):number {
+  const duration=anatomyPartV112(sourceEnemyId,action)?.seconds??RITE_DURATIONS_V77[action];
+  const usesTool=action==='flay'||action.startsWith('harvest-');
+  const multiplier=usesTool&&Number.isFinite(toolWorkMultiplier)?Math.max(1,Math.min(1.65,toolWorkMultiplier)):1;
+  return duration*multiplier;
+}
 const idValid=(v:unknown):v is string=>typeof v==='string'&&v.length>0&&v.length<=128&&!/[\u0000-\u001f]/.test(v);
 const finite=(v:unknown):v is number=>typeof v==='number'&&Number.isFinite(v)&&Math.abs(v)<1e8;
 const point=(v:unknown):v is RitePointV77=>!!v&&typeof v==='object'&&finite((v as RitePointV77).x)&&finite((v as RitePointV77).y);
@@ -87,11 +100,34 @@ export function riteAnalysisLockedReasonV77(state:RitesOfHuntV77,corpse:Pick<Rit
     return 'Analyse à effectuer avant tout prélèvement irréversible.';
   return corpse.analyzed?'Ce geste est déjà inscrit pour cette proie.':null;
 }
+/** Physical preparation, transport and extraction share the same live contract
+ * in the menu, at admission, and on every work tick. Dropping remains possible. */
+export function riteWorksiteLockedReasonV77(corpse:RitePointV77,
+  context:Pick<RiteLiveContextV77,'grounded'|'climbing'|'worksiteBlocked'>):string|null {
+  if(context.climbing===true)return 'Termine l’escalade et rejoins la proie sur un appui stable.';
+  if(context.grounded===false)return 'Rejoins la proie sur un appui stable avant le geste.';
+  if(context.worksiteBlocked?.(corpse)===true)return 'Un obstacle sépare la proie : rejoins son côté du passage.';
+  return null;
+}
+export function ritePhysicalActionLockedReasonV77(state:Pick<RitesOfHuntV77,'carryingCorpseId'>,
+  corpse:RiteWorksiteTargetV77,action:HuntRiteActionV77,
+  context:Pick<RiteLiveContextV77,'grounded'|'climbing'|'worksiteBlocked'|'worksiteReachable'>):string|null {
+  if(!['flay','hang','carry'].includes(action)&&!action.startsWith('harvest-'))return null;
+  const worksite=riteWorksiteLockedReasonV77(corpse,context);
+  if(worksite)return worksite;
+  if((action==='flay'||action.startsWith('harvest-'))&&state.carryingCorpseId)
+    return 'Dépose la carcasse pour libérer tes mains avant le geste.';
+  if((action==='flay'||action.startsWith('harvest-'))&&context.worksiteReachable?.(corpse)===false)
+    return 'Approche davantage la proie pour travailler à portée de l’outil.';
+  return null;
+}
 export function startHuntRiteV77(state:RitesOfHuntV77,corpseId:string,action:HuntRiteActionV77,context:RiteLiveContextV77,
   options:{supportId?:string;confirmDishonor?:boolean}={}):RiteResultV77 {
   const corpse=state.corpses.find(c=>c.id===corpseId),proof=context.prey.find(p=>p.id===corpseId);
   if(!owned(state,context)||state.operation||!HUNT_RITE_ACTIONS_V77.includes(action)||!corpse||corpse.erased||!proof?.defeated||proof.health!==0
     ||distance(corpse,context.actor)>88)return result(state,false,'Approche la proie vaincue et termine le geste précédent.');
+  const physicalReason=ritePhysicalActionLockedReasonV77(state,corpse,action,context);
+  if(physicalReason)return result(state,false,physicalReason);
   if(corpse.supportId&&['hang','carry','flay'].includes(action))return result(state,false,'La proie est suspendue ; aucun second corps ne peut être créé.');
   if(action==='drop'){
     if(state.carryingCorpseId!==corpse.id)return result(state,false,'Aucune carcasse portée.');
@@ -131,15 +167,18 @@ export function stepHuntRiteV77(state:RitesOfHuntV77,delta:number,context:RiteLi
   if(!state.operation)return result(next,false,'Aucun geste en cours.');
   const operation=state.operation,corpse=state.corpses.find(c=>c.id===operation.corpseId),proof=context.prey.find(p=>p.id===operation.corpseId);
   const support=operation.supportId?context.supports.find(s=>s.id===operation.supportId):null;
+  const physicalReason=corpse?ritePhysicalActionLockedReasonV77(state,corpse,operation.action,context):null;
+  if(physicalReason)return result({...next,operation:null},false,'Rite interrompu : '+physicalReason+' Aucun prélèvement ni usure.');
   if(!corpse||corpse.erased||!proof?.defeated||proof.health!==0||context.health<operation.startHealth||distance(corpse,context.actor)>88
     ||(['flay','hang'].includes(operation.action)||operation.action.startsWith('harvest-'))&&(context.grounded===false||context.climbing===true)
     ||(operation.action==='flay'||operation.action.startsWith('harvest-'))&&!context.flayingToolOwned
     ||operation.action==='hang'&&(!support?.suitable||support.maximumMass<(corpse.massKg??70)||state.carryingCorpseId!==corpse.id||
       distance(support,context.actor)>180||state.corpses.some(c=>c.id!==corpse.id&&c.supportId===support.id)))
     return result({...next,operation:null},false,'Rite interrompu : aucune completion, aucune récompense.');
-  const workMultiplier=(operation.action==='flay'||operation.action.startsWith('harvest-'))?Math.max(1,Math.min(1.65,context.toolWorkMultiplier??1)):1;
-  const elapsed=operation.elapsed+delta/workMultiplier;
-  if(elapsed+1e-9<RITE_DURATIONS_V77[operation.action])return result({...next,operation:{...operation,elapsed}},false,'Geste en cours.');
+  const duration=riteOperationSecondsV77(operation.action,corpse.sourceEnemyId);
+  const actualDuration=riteOperationSecondsV77(operation.action,corpse.sourceEnemyId,context.toolWorkMultiplier);
+  const elapsed=operation.elapsed+delta/(actualDuration/duration);
+  if(elapsed+1e-9<duration)return result({...next,operation:{...operation,elapsed}},false,'Geste en cours.');
   const eventId=operation.action+':'+corpse.id;
   if(state.completedEventIds.includes(eventId))return result({...next,operation:null},false,'Geste déjà confirmé.');
   const changed={...corpse,witnesses:[...corpse.witnesses],witnessFear:[...(corpse.witnessFear??corpse.witnesses.map(()=>8))]};
@@ -202,7 +241,7 @@ export function normalizeRitesOfHuntV77(raw:unknown,runId:string,missionId:strin
     if(!expected||Object.keys(expected).some(key=>item[key as keyof FieldSpecimenV112]!==expected[key as keyof FieldSpecimenV112])||part?.requiresFlay&&!corpse?.flayed)return null;
   }
   if(s.operation!==null){const o=s.operation;if(!o||!idValid(o.corpseId)||!s.corpses.some(c=>c.id===o.corpseId)||!HUNT_RITE_ACTIONS_V77.includes(o.action)
-    ||['leave','carry','drop'].includes(o.action)||!finite(o.elapsed)||o.elapsed<0||o.elapsed>=RITE_DURATIONS_V77[o.action]||!finite(o.startHealth)||o.startHealth<=0
+    ||['leave','carry','drop'].includes(o.action)||!finite(o.elapsed)||o.elapsed<0||o.elapsed>=riteOperationSecondsV77(o.action,s.corpses.find(c=>c.id===o.corpseId)!.sourceEnemyId)||!finite(o.startHealth)||o.startHealth<=0
     ||typeof o.confirmedDishonor!=='boolean'||o.supportId!==null&&!idValid(o.supportId)||o.action==='hang'&&!o.supportId||o.action!=='hang'&&o.supportId!==null)return null;}
   return JSON.parse(JSON.stringify(s)) as RitesOfHuntV77;
 }
