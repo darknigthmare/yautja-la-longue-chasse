@@ -9,6 +9,7 @@ on:
       - 'app/game/ClanShipOperationsPanel*'
       - 'app/game/ClanShipIncident*'
       - 'app/game/ClanShipTrophyTelemetry*'
+      - 'app/game/ClanShipReturnEscortScene*'
       - 'app/game/CompanionQuartersScene*'
       - 'app/game/BuriedCradleReturnPanel*'
       - 'app/game/ShipInterior25D*'
@@ -25,6 +26,7 @@ on:
       - 'app/game/systems/clanShipIncidents.ts'
       - 'app/game/systems/clanShipTrophyCase.ts'
       - 'app/game/systems/clanShipTrophyHearing.ts'
+      - 'app/game/systems/clanShipReturnEscort.ts'
       - 'app/game/systems/buriedCradleCampaign.ts'
       - 'app/game/systems/buriedCradleReturn.ts'
       - 'app/game/systems/clanShipSpaceEncounter.ts'
@@ -34,11 +36,13 @@ on:
       - 'tests/buried-cradle-return.test.mjs'
       - 'tests/helpers/buried-cradle-return-route.mjs'
       - 'tests/helpers/clan-ship-trophy-hearing-fixture.mjs'
+      - 'tests/helpers/clan-ship-return-escort-fixture.mjs'
       - 'public/game/clan-ship/**'
       - 'tests/fixtures/clan-ship-browser-assets.json'
       - 'scripts/qa-clan-ship-browser.mjs'
       - 'scripts/qa-clan-ship-operations.mjs'
       - 'scripts/qa-clan-trophy-hearing-browser-20261108.mjs'
+      - 'scripts/qa-clan-return-escort-browser-20261109.mjs'
       - '.github/workflows/clan-ship-docking.yml'
   workflow_dispatch:
 
@@ -114,6 +118,7 @@ jobs:
           app/game/ClanShipOperationsPanel.tsx app/game/ClanShipSpaceEncounter.tsx
           app/game/ClanShipIncidentPanel.tsx app/game/ClanShipIncidentScene.tsx
           app/game/ClanShipTrophyTelemetry.tsx app/game/CompanionQuartersScene.tsx
+          app/game/ClanShipReturnEscortScene.tsx
           app/game/BuriedCradleReturnPanel.tsx app/game/ShipInterior25D.tsx
           app/game/clanShipCrew.ts
           app/game/GameClient.tsx app/game/ShipHub.tsx
@@ -122,6 +127,7 @@ jobs:
           app/game/systems/clanShipOperations.ts app/game/systems/clanShipSpaceEncounter.ts
           app/game/systems/clanShipIncidents.ts app/game/systems/clanShipTrophyCase.ts
           app/game/systems/clanShipTrophyHearing.ts
+          app/game/systems/clanShipReturnEscort.ts
           app/game/systems/buriedCradleCampaign.ts app/game/systems/buriedCradleReturn.ts
           app/game/systems/campaignSlots.ts
           app/game/systems/completeArchive.ts scripts/qa-clan-ship-browser.mjs scripts/qa-clan-ship-operations.mjs
@@ -130,6 +136,8 @@ jobs:
           tests/clan-ship-operations.test.mjs tests/clan-ship-space-encounter.test.mjs tests/clan-ship-operations-save.test.mjs
           tests/clan-ship-incidents.test.mjs tests/clan-ship-trophy-case.test.mjs
           tests/clan-ship-trophy-hearing.test.mjs tests/clan-ship-trophy-hearing-presentation.test.mjs
+          tests/clan-ship-return-escort.test.mjs tests/clan-ship-return-escort-save.test.mjs tests/clan-ship-return-escort-ui.test.mjs
+          tests/helpers/clan-ship-return-escort-fixture.mjs scripts/qa-clan-return-escort-browser-20261109.mjs
           tests/helpers/clan-ship-trophy-hearing-fixture.mjs scripts/qa-clan-trophy-hearing-browser-20261108.mjs
           tests/buried-cradle-return.test.mjs tests/helpers/buried-cradle-return-route.mjs
       - name: Interior geometry, docking, saves, archives and campaign regressions
@@ -140,6 +148,7 @@ jobs:
           tests/clan-ship-operations.test.mjs tests/clan-ship-space-encounter.test.mjs tests/clan-ship-operations-save.test.mjs
           tests/clan-ship-incidents.test.mjs tests/clan-ship-trophy-case.test.mjs
           tests/clan-ship-trophy-hearing.test.mjs tests/clan-ship-trophy-hearing-presentation.test.mjs
+          tests/clan-ship-return-escort.test.mjs tests/clan-ship-return-escort-save.test.mjs tests/clan-ship-return-escort-ui.test.mjs
           tests/buried-cradle-return.test.mjs
           tests/complete-archive.test.mjs tests/campaign-slots.test.mjs
           tests/cloud-account-archives-v71.test.mjs
@@ -153,6 +162,19 @@ jobs:
         run: xvfb-run -a --server-args="-screen 0 1920x1200x24" node scripts/qa-clan-ship-operations.mjs
       - name: Present C-37 to both witnesses and restore the hearing
         run: node scripts/qa-clan-trophy-hearing-browser-20261108.mjs
+      - name: Escort the visible return team and restore its safe checkpoint
+        env:
+          CLAN_RETURN_ESCORT_QA_OUTPUT: outputs/qa-clan-return-escort-20261109
+        run: |
+          xvfb-run -a --server-args="-screen 0 1920x1200x24" node --input-type=module <<'NODE'
+          import { chromium } from 'playwright-core';
+          import { spawnSync } from 'node:child_process';
+          const result = spawnSync(process.execPath, ['scripts/qa-clan-return-escort-browser-20261109.mjs'], {
+            stdio: 'inherit', env: { ...process.env, CHROMIUM_EXECUTABLE: chromium.executablePath() },
+          });
+          if (result.error) throw result.error;
+          process.exitCode = result.status ?? 1;
+          NODE
       - name: Upload browser evidence even when a check fails
         if: always()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
@@ -162,5 +184,6 @@ jobs:
             outputs/qa-clan-ship/
             outputs/qa-clan-ship-operations/
             outputs/qa-clan-trophy-hearing-20261108/
+            outputs/qa-clan-return-escort-20261109/
           if-no-files-found: warn
           retention-days: 14

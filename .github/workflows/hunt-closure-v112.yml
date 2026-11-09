@@ -143,6 +143,8 @@ jobs:
           node node_modules/eslint/bin/eslint.js --max-warnings=0
           app/game/ConservationPanelV112.tsx app/game/HuntFieldGuideV112.tsx
           app/game/HuntCanvas.tsx app/game/GameClient.tsx app/game/useMenuGamepad.ts
+          app/game/HuntRitesMenuV77.tsx app/game/systems/huntRitesRuntimeV77.ts app/game/systems/ritesOfHuntV77.ts
+          scripts/qa-hunt-harvest-preview-browser-20261109.mjs tests/browser/hunt-harvest-preview-20261109.fixture.jsx
           app/game/discoverySignalsV112.ts
           app/game/systems/harvestInventoryV112.ts app/game/PlanetGeneratorV103.tsx
           app/game/systems/clanWarPlanetGeneratorV115.ts app/game/systems/clanWarTextureLibraryV115.ts
@@ -229,6 +231,12 @@ jobs:
       - name: Existing native React and hunting input browser qualification
         if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
         run: node scripts/qa-hunt-mechanics-browser-v112.mjs
+      - name: Preview actual harvest carrying costs and irreversible analysis prerequisites
+        if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
+        env:
+          HARVEST_PREVIEW_QA_OUTPUT: outputs/qa-harvest-preview-20261109
+          CHROMIUM_EXECUTABLE: /usr/bin/google-chrome
+        run: node scripts/qa-hunt-harvest-preview-browser-20261109.mjs
       - name: Mounted hunt lifecycle, extraction bridge, real storage and mapped workshop
         if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
         run: node scripts/qa-hunt-lifecycle-browser-v112.mjs
@@ -248,5 +256,6 @@ jobs:
             outputs/qa-hunt-v112/
             outputs/qa-hunt-lifecycle-v112/
             outputs/qa-v109-atlas-integration/
+            outputs/qa-harvest-preview-20261109/
           if-no-files-found: warn
           retention-days: 30
