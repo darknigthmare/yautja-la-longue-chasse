@@ -661,6 +661,8 @@ export interface GameSettings {
 }
 
 export interface SaveGame {
+  /** Optional pedagogical workshop; never a harvested trophy or promotion. */
+  trophyTutorialV6?: import("./systems/trophyTutorialV6").TrophyTutorialStateV6 | null;
   /** Physical PLAN08 expedition, with distinct victory, crest and debrief receipts. */
   buriedCradle?: import("./systems/buriedCradleCampaign").BuriedCradleCampaign | null;
   /** Explicit residence, installed quarters and physical presence of recruited companions. */

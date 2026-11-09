@@ -1,0 +1,27 @@
+{
+  "exitCode": 0,
+  "files": [
+    "app/game/systems/mobility/workshop.ts",
+    "app/game/systems/mobility/catalogue.ts",
+    "app/game/systems/mobility/controller.ts",
+    "app/game/systems/mobility/course.ts",
+    "app/game/systems/mobility/controls.ts",
+    "app/game/systems/mobility/access.ts",
+    "app/game/systems/mobility/ledger.ts",
+    "app/game/MobilityGarage.tsx",
+    "app/game/MobilityDrivingYard.tsx",
+    "tests/mobility-hardening.test.mjs",
+    "tests/mobility-training-reward.test.mjs",
+    "tests/mobility-core.test.mjs",
+    "tests/mobility-controls-workshop.test.mjs",
+    "tests/mobility-integration.test.mjs",
+    "tests/mobility-qa-driver.test.mjs",
+    "tests/mobility-build-boundary.test.mjs",
+    "scripts/build-mobility-browser-fixture.mjs",
+    "scripts/qa-mobility-native.mjs",
+    "scripts/qa-mobility-controls-native.mjs",
+    "scripts/mobility-qa-driver.mjs",
+    "scripts/sync-mobility-catalogue.mjs"
+  ],
+  "scope": "Mobility source, maintained scripts and regressions only; global strict lint is owned by root."
+}

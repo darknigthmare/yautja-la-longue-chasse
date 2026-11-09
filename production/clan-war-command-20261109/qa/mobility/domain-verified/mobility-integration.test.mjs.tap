@@ -1,0 +1,106 @@
+TAP version 13
+# Subtest: real campaign writer retains absent/null mobility without free defaults
+ok 1 - real campaign writer retains absent/null mobility without free defaults
+  ---
+  duration_ms: 16.464342
+  type: 'test'
+  ...
+# Subtest: purchase, upgrades and active motion survive the real writer, reload and portable archive
+ok 2 - purchase, upgrades and active motion survive the real writer, reload and portable archive
+  ---
+  duration_ms: 18.936626
+  type: 'test'
+  ...
+# Subtest: import refuses future without overwriting valid bytes
+ok 3 - import refuses future without overwriting valid bytes
+  ---
+  duration_ms: 1.615618
+  type: 'test'
+  ...
+# Subtest: import refuses foreign without overwriting valid bytes
+ok 4 - import refuses foreign without overwriting valid bytes
+  ---
+  duration_ms: 1.242575
+  type: 'test'
+  ...
+# Subtest: import refuses level without overwriting valid bytes
+ok 5 - import refuses level without overwriting valid bytes
+  ---
+  duration_ms: 1.319771
+  type: 'test'
+  ...
+# Subtest: import refuses NaN without overwriting valid bytes
+ok 6 - import refuses NaN without overwriting valid bytes
+  ---
+  duration_ms: 0.889832
+  type: 'test'
+  ...
+# Subtest: failed purchase write preserves primary balance and property
+ok 7 - failed purchase write preserves primary balance and property
+  ---
+  duration_ms: 1.55093
+  type: 'test'
+  ...
+# Subtest: uncertain purchase readback reconciles once without second debit
+ok 8 - uncertain purchase readback reconciles once without second debit
+  ---
+  duration_ms: 2.176504
+  type: 'test'
+  ...
+# Subtest: stale storage cannot overwrite another campaign writer
+ok 9 - stale storage cannot overwrite another campaign writer
+  ---
+  duration_ms: 4.638837
+  type: 'test'
+  ...
+# Subtest: UI controller preserves exact input and revision on failure then retries once
+ok 10 - UI controller preserves exact input and revision on failure then retries once
+  ---
+  duration_ms: 1.453342
+  type: 'test'
+  ...
+# Subtest: thrown write retains buffered sequence
+ok 11 - thrown write retains buffered sequence
+  ---
+  duration_ms: 0.753297
+  type: 'test'
+  ...
+# Subtest: forge access requires owner, physical counter and autonomous hunter
+ok 12 - forge access requires owner, physical counter and autonomous hunter
+  ---
+  duration_ms: 0.289487
+  type: 'test'
+  ...
+# Subtest: garage SSR shows all fifty models, real wallet and source-review status
+ok 13 - garage SSR shows all fifty models, real wallet and source-review status
+  ---
+  duration_ms: 120.772836
+  type: 'test'
+  ...
+# Subtest: garage SSR owned state shows four modules and distinct maintenance operations
+ok 14 - garage SSR owned state shows four modules and distinct maintenance operations
+  ---
+  duration_ms: 10.199897
+  type: 'test'
+  ...
+# Subtest: active course SSR exposes deterministic NPCs and starts paused
+ok 15 - active course SSR exposes deterministic NPCs and starts paused
+  ---
+  duration_ms: 3.876298
+  type: 'test'
+  ...
+# Subtest: live wiring uses one campaign transaction and explicit physical forge guards
+ok 16 - live wiring uses one campaign transaction and explicit physical forge guards
+  ---
+  duration_ms: 2.12829
+  type: 'test'
+  ...
+1..16
+# tests 16
+# suites 0
+# pass 16
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 205.141504

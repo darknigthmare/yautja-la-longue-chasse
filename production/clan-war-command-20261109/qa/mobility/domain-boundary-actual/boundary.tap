@@ -1,0 +1,58 @@
+TAP version 13
+# Subtest: runtime preserves canonical bible bytes: 01-10.json
+ok 1 - runtime preserves canonical bible bytes: 01-10.json
+  ---
+  duration_ms: 1.848879
+  type: 'test'
+  ...
+# Subtest: runtime preserves canonical bible bytes: 11-20.json
+ok 2 - runtime preserves canonical bible bytes: 11-20.json
+  ---
+  duration_ms: 0.343168
+  type: 'test'
+  ...
+# Subtest: runtime preserves canonical bible bytes: 21-30.json
+ok 3 - runtime preserves canonical bible bytes: 21-30.json
+  ---
+  duration_ms: 0.348055
+  type: 'test'
+  ...
+# Subtest: runtime preserves canonical bible bytes: 31-40.json
+ok 4 - runtime preserves canonical bible bytes: 31-40.json
+  ---
+  duration_ms: 0.144258
+  type: 'test'
+  ...
+# Subtest: runtime preserves canonical bible bytes: 41-50.json
+ok 5 - runtime preserves canonical bible bytes: 41-50.json
+  ---
+  duration_ms: 0.17293
+  type: 'test'
+  ...
+# Subtest: canonical projection checker is read-only
+ok 6 - canonical projection checker is read-only
+  ---
+  duration_ms: 47.935613
+  type: 'test'
+  ...
+# Subtest: runtime catalogue loads all fifty identities without docs in a sparse build
+ok 7 - runtime catalogue loads all fifty identities without docs in a sparse build
+  ---
+  duration_ms: 105.662674
+  type: 'test'
+  ...
+# Subtest: dev mobility presents a campaign-only notice, no shop and no writes
+ok 8 - dev mobility presents a campaign-only notice, no shop and no writes
+  ---
+  duration_ms: 6543.298941
+  type: 'test'
+  ...
+1..8
+# tests 8
+# suites 0
+# pass 8
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 6710.121396

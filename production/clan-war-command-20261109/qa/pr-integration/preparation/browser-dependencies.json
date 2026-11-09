@@ -1,0 +1,20 @@
+{
+  "ffmpegSource": "/usr/bin/ffmpeg",
+  "version": "ffmpeg version 7.1.5-0+deb13u1 Copyright (c) 2000-2026 the FFmpeg developers",
+  "sha256": "e8a8d46f5225f3062cec7c07fb145d58ae73c603cb740dcd5bad34bfb54e455a",
+  "playwrightCache": "/workspace/.cloud-tools/playwright-system-video",
+  "cacheConvention": "PLAYWRIGHT_BROWSERS_PATH, ffmpeg-1011/ffmpeg-linux",
+  "pinnedPlaywrightFfmpegBinary": false,
+  "officialDownload": "Rejected by domain policy with HTTP403, installer failed before any successful install",
+  "xvfbAvailable": false,
+  "systemPackageInstallerAvailable": false,
+  "sudoAvailable": false,
+  "chromiumVersion": "Chromium 154.0.8037.57 built on Debian GNU/Linux 13 (trixie)",
+  "nativeVideoProbe": {
+    "video": "probe/page@5dd022174cf0161c998ae80c74ddd1cd.webm",
+    "bytes": 4704,
+    "sha256": "68e25509728a123bf4c03471ab8de282f58f229277a52199aa491b73eb1e9daf",
+    "gameplayTested": false
+  },
+  "xvfbBlocker": "No sudo or cloud-agent-packages; configured Debian snapshot endpoint returned CONNECT403. No package configuration or access policy changed."
+}

@@ -1,0 +1,86 @@
+{
+  "asOf": "2026-11-09T10:23:43.460161+00:00",
+  "status": "PARTIEL_PENDING_FINAL_NEXT",
+  "criteria": {
+    "MOB-001": {
+      "sourceWorkbook": "production/mobility-20261108/Yautja_Mobilite_Gameplay_20261108.xlsx",
+      "sheet": "Reste_a_faire",
+      "row": 6,
+      "priority": "P0",
+      "remaining": "Full current Next GameClient native route and declared write-failure recovery require the final integrated build. Probes are not a qualification."
+    },
+    "MOB-002": {
+      "sourceWorkbook": "production/mobility-20261108/Yautja_Mobilite_Gameplay_20261108.xlsx",
+      "sheet": "Reste_a_faire",
+      "row": 7,
+      "priority": "P0",
+      "remaining": "Global build, strict lint and regressions outside mobility owned by root; not claimed by this scoped result."
+    }
+  },
+  "fixes": [
+    "Native button semantics retained inside real list items; aria-pressed no longer attached to role=listitem.",
+    "Garage width and grids respect the real GameClient station instead of viewport width; initial real screenshot showed clipped wallet.",
+    "Next strict lint violations corrected without dropping test cases or disabling rules."
+  ],
+  "tests": {
+    "passed": 189,
+    "failed": 0,
+    "skipped": 0,
+    "todo": 0,
+    "files": 7,
+    "report": "production/clan-war-command-20261109/qa/mobility/domain-verified/report.json",
+    "reportSha256": "35f955170a03addb0c6987c7b61ec690f80114660c97354f55718fa5aedcc142",
+    "scope": "Unique final domain/campaign-writer/SSR suite, not added to root or repeated attempts."
+  },
+  "nativeProbe": {
+    "qualified": false,
+    "gameClientRouteChecks": 7,
+    "source": "production/clan-war-command-20261109/qa/mobility/native-probe-4/report.browser-run.json",
+    "scope": "Intermediate build only; actual exterior-to-forge walk, counter approach, garage opening. One source PNG was subsequently restored. No final completion claimed."
+  },
+  "sourceFiles": [
+    {
+      "path": "app/game/MobilityGarage.tsx",
+      "sha256": "c2503ac079da2d3cb4bbb169aec1aa8fc189f1021af9f807393476ace5f00d76",
+      "bytes": 11417
+    },
+    {
+      "path": "app/game/MobilityGarage.module.css",
+      "sha256": "d6a864090fbb5007ef02372dd4ca0e883bccb5d837222bdbea5b97dbcd78bf03",
+      "bytes": 4283
+    },
+    {
+      "path": "app/game/MobilityDrivingYard.tsx",
+      "sha256": "64c457b5515592140245a9ee550be4e362dc95250277c7a76c20fc0ff939398d",
+      "bytes": 13925
+    },
+    {
+      "path": "app/game/systems/mobility/ledger.ts",
+      "sha256": "db8d7ed2456eabd3942f688faf1bd66df45d3975e9fd55422ff7e3a1799e2a1d",
+      "bytes": 17051
+    },
+    {
+      "path": "tests/mobility-core.test.mjs",
+      "sha256": "2df6b4a4d1ab4c2dbe178d802198147171bd63aca0091459266df3f8ae55abf5",
+      "bytes": 9887
+    },
+    {
+      "path": "tests/mobility-controls-workshop.test.mjs",
+      "sha256": "727e5bf53f370b4d543ffafdc5463fd2caa5bc5c1d439f7c1547421a38c17ad0",
+      "bytes": 7399
+    },
+    {
+      "path": "tests/mobility-training-reward.test.mjs",
+      "sha256": "5ca1964aa613cce9ba5deb8ee6c771539eaaa6d9567bc266a34c1be79052d674",
+      "bytes": 11552
+    },
+    {
+      "path": "scripts/qa-mobility-campaign-20261109.mjs",
+      "sha256": "5556d67a2051c8f03c215804c6514e10fc393854dff359b88b6db4b1a15335fb",
+      "bytes": 22824
+    }
+  ],
+  "noNewArt": true,
+  "physicalControllerTested": false,
+  "humanArtApproved": false
+}

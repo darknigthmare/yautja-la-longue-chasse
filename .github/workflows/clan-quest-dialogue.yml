@@ -109,6 +109,28 @@ jobs:
         run: node scripts/qa-clan-dialogue-browser-20261109.mjs
       - name: Native archived hunts, private returns and reload
         run: node scripts/qa-clan-hunt-dialogue-browser-20261109.mjs
+      - name: Expose the observed failure in readable check annotations
+        if: failure()
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          paths = [Path('outputs/qa-clan-dialogue-20261109/browser-verification.json'), Path('outputs/qa-clan-hunt-dialogue-20261109/browser-verification.json')]
+          found = False
+          for path in paths:
+            if not path.is_file():
+              continue
+            report = json.loads(path.read_text())
+            if report.get('passed') is True:
+              continue
+            found = True
+            failure = report.get('failure') or report.get('errors') or 'Inspect the preserved report for the failed assertion.'
+            message = json.dumps(failure, ensure_ascii=False) if not isinstance(failure, str) else failure
+            message = (str(path) + ': ' + message)[:16000].replace('%', '%25').replace('\r', '%0D').replace('\n', '%0A')
+            print('::error title=Native clan dialogue diagnostic::' + message)
+          if not found:
+            print('::error title=Native clan dialogue diagnostic::No failing native report was produced; inspect the preceding setup or build step.')
+          PY
       - uses: actions/upload-artifact@v4
         if: always()
         with:

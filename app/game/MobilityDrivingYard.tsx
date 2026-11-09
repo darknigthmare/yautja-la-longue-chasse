@@ -1,5 +1,4 @@
 "use client";
-/* eslint-disable @next/next/no-img-element -- existing source sprites are explicitly marked as review art */
 import {useEffect,useRef,useState} from 'react';
 import type {ControlBindings,ControlActionId} from './systems/controlBindings';
 import {matchingControlActions} from './systems/controlBindings';

@@ -37,7 +37,7 @@ test('actual training awards permit and unclaimed receipt, no property or rank',
 test('explicit hand-over transfers the exact inspected hull, no currency or orbital side effect',()=>{
  const s=claim(),v=s.mobilityV1.owned[0],r=earned.mobilityV1.trainingReward;
  assert.equal(v.id,'scout_grav_sled');assert.equal(v.acquiredBy,'quest');assert.equal(v.condition,r.course.condition);assert.equal(v.energy,r.course.energy);assert.equal(v.distance,r.course.distance);assert.deepEqual(v.upgrades,d.emptyMobilityLevels());
- assert.deepEqual(s.profile,earned.profile);const {mobilityV1:a,...rest}=s,{mobilityV1:b,...before}=earned;assert.deepEqual(rest,before);assert.equal(s.mobilityV1.trainingReward.status,'claimed');
+ assert.deepEqual(s.profile,earned.profile);const rest={...s},before={...earned};delete rest.mobilityV1;delete before.mobilityV1;assert.deepEqual(rest,before);assert.equal(s.mobilityV1.trainingReward.status,'claimed');
 });
 test('confirmation is unique even with a fresh ledger revision',()=>{const s=claim();act(s,{type:'claim-training',rewardRunId:1},false);assert.equal(s.mobilityV1.owned.length,1);});
 test('permitted but unearned campaign cannot claim; old report never fabricates a receipt',()=>{

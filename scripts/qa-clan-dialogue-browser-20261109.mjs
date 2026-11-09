@@ -93,6 +93,17 @@ try {
       await click(page.locator('[data-interior-operations]')); await panel().waitFor();
       await click(page.locator(`[data-clan-operations-tab="${tab}"]`));
     };
+    const revealDialogue = async id => {
+      const conversation = page.locator(`[data-clan-dialogue="${id}"]`);
+      const drawer = conversation.locator('xpath=ancestor::details[1]');
+      if (await drawer.count() && !await drawer.evaluate(element => element.open)) {
+        await click(drawer.locator(':scope > summary'));
+        assert.equal(await drawer.evaluate(element => element.open), true,
+          'The optional conversation must open through its native summary control');
+      }
+      await conversation.waitFor({ state: 'visible' });
+      return conversation;
+    };
     const durable = async control => {
       const revision = (await read()).clanShipOperations.revision;
       await click(control);
@@ -103,7 +114,7 @@ try {
       const conversation = page.locator(`[data-clan-dialogue="${id}"]`);
       await conversation.scrollIntoViewIfNeeded();
       const bounds = await conversation.evaluate(node => ({ scroll: node.scrollWidth, width: node.clientWidth,
-        text: node.querySelector('blockquote')?.textContent, buttons: node.querySelectorAll('button').length }));
+        text: node.querySelector('blockquote')?.textContent, buttons: node.querySelectorAll('[data-clan-dialogue-topic]').length }));
       assert.ok(bounds.scroll <= bounds.width, JSON.stringify(bounds)); assert.equal(bounds.buttons, 4); assert.ok(bounds.text);
       const filename = `${name}-${id}-${suffix}.png`;
       await page.screenshot({ path: path.join(out, filename), fullPage: true }); report.screenshots.push(filename);
@@ -115,8 +126,10 @@ try {
       assert.equal(await page.locator(`[data-clan-crew="${npc.id}"]`).count(), 1);
       await click(page.locator(`[data-clan-crew-talk="${npc.id}"]`)); await panel().waitFor();
       assert.equal(await page.locator('[data-clan-operations-tab="crew"]').getAttribute('aria-pressed'), 'true');
-      const before = core(await read()), conversation = page.locator(`[data-clan-dialogue="${npc.id}"]`);
+      const before = core(await read()), conversation = await revealDialogue(npc.id);
       assert.equal(await page.locator('[data-clan-dialogue]').count(), 1, 'Roster cards at other posts must not speak remotely');
+      assert.equal(await page.locator('[data-clan-recruit] > details').count(), 1,
+        'Absent contacts must not expose empty optional-conversation drawers');
       for (const topic of CLAN_SHIP_DIALOGUE_TOPICS) {
         await click(conversation.locator(`[data-clan-dialogue-topic="${topic.id}"]`));
         const current = await read(), expected = clanShipDialogue(current, npc.id, npc.roomId, topic.id);
@@ -139,13 +152,14 @@ try {
     assert.equal(won.profile.clanMarks - beforeSpace.profile.clanMarks, ops.clanShipContract('space-screening').clanMarksReward);
     check('The native tactical controls complete one escort; only its normal reward is granted');
     await click(page.locator('[data-clan-operations-tab="crew"]'));
-    const conversation = page.locator('[data-clan-dialogue="star-watch"]');
+    const conversation = await revealDialogue('star-watch');
     await click(conversation.locator('[data-clan-dialogue-topic="return"]'));
     assert.equal(await conversation.getAttribute('data-dialogue-phase'), 'return-victory');
     assert.deepEqual(core(await read()), core(won));
     await capture('star-watch', 'after-space'); check('The navigator reacts to the browser-played victory without a second reward');
     const beforeReload = core(await read()); await close();
     await page.reload({ waitUntil: 'networkidle' }); await openCampaign(); await visit('conseil'); await open('crew');
+    await revealDialogue('star-watch');
     await click(page.locator('[data-clan-dialogue="star-watch"] [data-clan-dialogue-topic="return"]'));
     assert.equal(await page.locator('[data-clan-dialogue="star-watch"]').getAttribute('data-dialogue-phase'), 'return-victory');
     assert.deepEqual(core(await read()), beforeReload);

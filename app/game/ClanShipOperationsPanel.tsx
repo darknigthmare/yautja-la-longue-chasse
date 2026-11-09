@@ -16,6 +16,7 @@ import HomeworldNpcSpriteV84 from './HomeworldNpcSpriteV84';
 import { CLAN_SHIP_CREW_ART_ROLES, clanShipCrewArtIdentity } from './clanShipCrew';
 import { availableClanResidenceCrew, companionHostLabel } from './systems/companionResidence';
 import { selectClanShipCrewDialogue, type ClanShipCrewDialogueContext } from './systems/clanShipCrewDialogue';
+import { clanShipDialogue } from './systems/clanShipDialogue';
 import { useMenuGamepad } from './useMenuGamepad';
 import styles from './ClanShipOperationsPanel.module.css';
 
@@ -216,6 +217,7 @@ export default function ClanShipOperationsPanel({ state, save, roomId, suspended
               roomId, focusedNpcId: suspended ? null : crewFocus ?? null,
             });
             const dialogueKey = `${npc.id}:${dialogue.context}:${dialogue.line}:${dialogue.facts.join('|')}`;
+            const optionalDialogue = clanShipDialogue(save, npc.id, roomId, 'greeting', !suspended);
             return <article key={npc.id} tabIndex={-1} className={styles.crewCard} data-clan-recruit={npc.id} data-clan-recruit-status={joined ? 'recruited' : access.allowed ? 'available' : 'locked'}>
               <div className={styles.portrait} aria-hidden="true"><div><HomeworldNpcSpriteV84 npcId={clanShipCrewArtIdentity(npc.id)} role={CLAN_SHIP_CREW_ART_ROLES[npc.id]} height={150} /></div></div>
               <div><span className={styles.eyebrow}>{npc.role}</span><h4>{npc.name}</h4><p>{npc.summary}</p>
@@ -246,9 +248,9 @@ export default function ClanShipOperationsPanel({ state, save, roomId, suspended
                   }}>J’ai entendu</button>
                 {heardDialogue === dialogueKey && <small className={styles.dialogueHeard}>Paroles entendues.</small>}
               </section>}
-              <details><summary>Autres sujets avec {npc.name}</summary>
+              {optionalDialogue?.present && <details className={styles.conversationDrawer}><summary>Autres sujets avec {npc.name}</summary>
               <ClanShipCrewDialogue save={save} npcId={npc.id} roomId={roomId} suspended={suspended} />
-              </details>
+              </details>}
             </article>;
           })}</div>
           {!state.circleConfirmed && state.recruitedNpcIds.length === CLAN_SHIP_RECRUITS.length && <div className={styles.step}>

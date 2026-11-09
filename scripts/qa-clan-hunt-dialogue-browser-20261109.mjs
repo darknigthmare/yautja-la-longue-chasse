@@ -106,6 +106,12 @@ try {
       await visit(npc.roomId); await activate(page.locator(`[data-clan-crew-talk="${npc.id}"]`));
       await page.locator('[data-clan-operations]').waitFor();
       const view = page.locator(`[data-clan-hunt-conversation="${npc.id}"]`);
+      const drawer = view.locator('xpath=ancestor::details[1]');
+      if (await drawer.count() && !await drawer.evaluate(element => element.open)) {
+        await activate(drawer.locator(':scope > summary'));
+        assert.equal(await drawer.evaluate(element => element.open), true,
+          'Archived reports must be reached through the native optional-conversation drawer');
+      }
       await view.waitFor(); await activate(view.locator('[data-clan-hunt-toggle]'));
       return view;
     };
@@ -114,6 +120,8 @@ try {
     const contacts = scenario.allContacts ? ops.CLAN_SHIP_RECRUITS : ops.CLAN_SHIP_RECRUITS.filter(npc => npc.id === 'iron-claw');
     for (const npc of contacts) {
       const view = await openContact(npc), before = protectedState(await read());
+      assert.equal(await page.locator('[data-clan-recruit] > details').count(), 1,
+        'Only a contact declared present may expose the optional-conversation drawer');
       const expected = model.clanShipHuntDialogue(await read(), npc.id, npc.roomId);
       assert(expected); assert.equal(await view.locator('[data-clan-hunt-report]').count(), id === 'private-crown' ? 4 : 5);
       assert.equal(await page.locator(`[data-clan-dialogue="${npc.id}"] [data-clan-dialogue-topic]`).count(), 4);

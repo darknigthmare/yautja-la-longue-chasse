@@ -1,0 +1,125 @@
+TAP version 13
+# Subtest: two fingers on same control release independently
+ok 1 - two fingers on same control release independently
+  ---
+  duration_ms: 1.835148
+  type: 'test'
+  ...
+# Subtest: opposed touch directions cancel and releasing one restores the remaining input
+ok 2 - opposed touch directions cancel and releasing one restores the remaining input
+  ---
+  duration_ms: 23.807184
+  type: 'test'
+  ...
+# Subtest: two remapped keyboard aliases do not release each other
+ok 3 - two remapped keyboard aliases do not release each other
+  ---
+  duration_ms: 0.30496
+  type: 'test'
+  ...
+# Subtest: direction fingers coexist with keyboard and clearing neutralizes all controls
+ok 4 - direction fingers coexist with keyboard and clearing neutralizes all controls
+  ---
+  duration_ms: 0.235876
+  type: 'test'
+  ...
+# Subtest: late capture loss for a released finger leaves another pointer untouched
+ok 5 - late capture loss for a released finger leaves another pointer untouched
+  ---
+  duration_ms: 0.302586
+  type: 'test'
+  ...
+# Subtest: opposed digital inputs remain neutral instead of falling through to the gamepad
+ok 6 - opposed digital inputs remain neutral instead of falling through to the gamepad
+  ---
+  duration_ms: 0.1463
+  type: 'test'
+  ...
+# Subtest: malformed controls do not enter the simulation
+ok 7 - malformed controls do not enter the simulation
+  ---
+  duration_ms: 0.189195
+  type: 'test'
+  ...
+# Subtest: new pad requires neutral before a held throttle may move
+ok 8 - new pad requires neutral before a held throttle may move
+  ---
+  duration_ms: 0.547997
+  type: 'test'
+  ...
+# Subtest: resume requires neutral again even when the same pad remains connected
+ok 9 - resume requires neutral again even when the same pad remains connected
+  ---
+  duration_ms: 0.312071
+  type: 'test'
+  ...
+# Subtest: disconnect after use pauses and does not transfer control to another pad
+ok 10 - disconnect after use pauses and does not transfer control to another pad
+  ---
+  duration_ms: 0.656321
+  type: 'test'
+  ...
+# Subtest: unused pad disconnect does not interrupt a keyboard session
+ok 11 - unused pad disconnect does not interrupt a keyboard session
+  ---
+  duration_ms: 1.053975
+  type: 'test'
+  ...
+# Subtest: pad identity replacement in the same slot is treated as a disconnect
+ok 12 - pad identity replacement in the same slot is treated as a disconnect
+  ---
+  duration_ms: 0.158408
+  type: 'test'
+  ...
+# Subtest: non-finite/out-of-range pad sample rejected [null,0]
+ok 13 - non-finite/out-of-range pad sample rejected [null,0]
+  ---
+  duration_ms: 0.169737
+  type: 'test'
+  ...
+# Subtest: non-finite/out-of-range pad sample rejected [0,null]
+ok 14 - non-finite/out-of-range pad sample rejected [0,null]
+  ---
+  duration_ms: 0.064427
+  type: 'test'
+  ...
+# Subtest: non-finite/out-of-range pad sample rejected [2,0]
+ok 15 - non-finite/out-of-range pad sample rejected [2,0]
+  ---
+  duration_ms: 0.049474
+  type: 'test'
+  ...
+# Subtest: non-finite/out-of-range pad sample rejected []
+ok 16 - non-finite/out-of-range pad sample rejected []
+  ---
+  duration_ms: 0.068333
+  type: 'test'
+  ...
+# Subtest: standard brake, boost, interact and pause are kept; deadzone is neutral
+ok 17 - standard brake, boost, interact and pause are kept; deadzone is neutral
+  ---
+  duration_ms: 0.183376
+  type: 'test'
+  ...
+# Subtest: nonstandard mapping does not acquire control
+ok 18 - nonstandard mapping does not acquire control
+  ---
+  duration_ms: 0.092439
+  type: 'test'
+  ...
+# Subtest: control arbitration feeds real motion without inventing positions
+ok 19 - control arbitration feeds real motion without inventing positions
+  ---
+  duration_ms: 2.193819
+  type: 'test'
+  ...
+1..19
+# Error: A resource generated asynchronous activity after the test ended. This activity created the error "ReferenceError: module is not defined in ES module scope" which triggered an uncaughtException event, caught by the test runner.
+# tests 19
+# suites 0
+# pass 19
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 45.254703

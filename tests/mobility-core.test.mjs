@@ -42,9 +42,9 @@ test('purchase requires permit, adequate rank and exact price',()=>{
  const poor=licensed();poor.profile.clanMarks=419;order(poor,{type:'buy',modelId:'clan_hoverbike',expectedCost:420},false);
  const s=bought();assert.equal(s.profile.clanMarks,9580);assert.equal(s.profile.honor,300);assert.equal(s.mobilityV1.owned.length,1);order(s,{type:'buy',modelId:'clan_hoverbike',expectedCost:420},false);
 });
-for(const module of d.MOBILITY_MODULES)test('upgrade cap and exact geometric cost: '+module.id,()=>{
- let s=bought();for(let level=0;level<3;level++){const cost=m.mobilityServiceQuote(s.mobilityV1,'clan_hoverbike','upgrade',module.id);assert.equal(cost,module.price*2**level);s=order(s,{type:'upgrade',modelId:'clan_hoverbike',module:module.id,expectedCost:cost});assert.equal(s.mobilityV1.owned[0].upgrades[module.id],level+1);}
- assert.equal(m.mobilityServiceQuote(s.mobilityV1,'clan_hoverbike','upgrade',module.id),null);order(s,{type:'upgrade',modelId:'clan_hoverbike',module:module.id,expectedCost:0},false);
+for(const upgrade of d.MOBILITY_MODULES)test('upgrade cap and exact geometric cost: '+upgrade.id,()=>{
+ let s=bought();for(let level=0;level<3;level++){const cost=m.mobilityServiceQuote(s.mobilityV1,'clan_hoverbike','upgrade',upgrade.id);assert.equal(cost,upgrade.price*2**level);s=order(s,{type:'upgrade',modelId:'clan_hoverbike',module:upgrade.id,expectedCost:cost});assert.equal(s.mobilityV1.owned[0].upgrades[upgrade.id],level+1);}
+ assert.equal(m.mobilityServiceQuote(s.mobilityV1,'clan_hoverbike','upgrade',upgrade.id),null);order(s,{type:'upgrade',modelId:'clan_hoverbike',module:upgrade.id,expectedCost:0},false);
 });
 test('repair and charge are independent; no cost/no-op exploit',()=>{
  let s=bought();s.mobilityV1.owned[0].condition=50;s.mobilityV1.owned[0].energy=25;

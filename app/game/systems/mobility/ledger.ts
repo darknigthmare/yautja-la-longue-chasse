@@ -168,8 +168,8 @@ export function actMobility(campaign:Pick<SaveGame,'createdAt'|'profile'|'prolog
       message='Moto inscrite au garage des Forges. Aucun embarquement orbital automatique.';
     }else{
       const vehicle=state.owned.find(v=>v.id===d.id);if(!vehicle)return refuse('Véhicule non possédé.');
-      const module=command.type==='upgrade'?command.module:undefined;
-      const cost=mobilityServiceQuote(state,d.id,command.type,module);
+      const upgradeModule=command.type==='upgrade'?command.module:undefined;
+      const cost=mobilityServiceQuote(state,d.id,command.type,upgradeModule);
       if(cost===null||cost!==command.expectedCost||!pay(cost))return refuse('Intervention non applicable, devis périmé ou marques insuffisantes.');
       if(command.type==='upgrade'){vehicle.upgrades[command.module]++;message='Module installé. Masse, consommation et performances recalculées.';}
       if(command.type==='repair'){vehicle.condition=100;state.repairCount++;message='Réparation confirmée ; la recharge reste une opération distincte.';}

@@ -1,0 +1,99 @@
+{
+  "startedAt": "2026-11-09T10:10:38.049723+00:00",
+  "scope": "Unique verified mobility suite. Actual reducers, save writer, archive/reload, input and SSR. Prior attempts are preserved and not added. No full native GameClient or global build qualification.",
+  "node": "v22.23.4",
+  "files": [
+    {
+      "file": "tests/mobility-build-boundary.test.mjs",
+      "sha256": "db97c9fc3dfbdecf35036fb9f382c8afb5b2ffaef5b05d54a12bfdef7d4e2ee7",
+      "sourceUnchanged": true,
+      "exitCode": 0,
+      "log": "production/clan-war-command-20261109/qa/mobility/domain-verified/mobility-build-boundary.test.mjs.tap",
+      "logSha256": "bb498704d241acb4b6acd93f9e7e3643699be9abf98b50b76b44d5f16864bf95",
+      "pass": 8,
+      "fail": 0,
+      "skipped": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/mobility-controls-workshop.test.mjs",
+      "sha256": "727e5bf53f370b4d543ffafdc5463fd2caa5bc5c1d439f7c1547421a38c17ad0",
+      "sourceUnchanged": true,
+      "exitCode": 0,
+      "log": "production/clan-war-command-20261109/qa/mobility/domain-verified/mobility-controls-workshop.test.mjs.tap",
+      "logSha256": "56f9c1678315c34ac2149af54cdc0f44ca09d3062109b26cacd14b24cf4d0612",
+      "pass": 33,
+      "fail": 0,
+      "skipped": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/mobility-core.test.mjs",
+      "sha256": "2df6b4a4d1ab4c2dbe178d802198147171bd63aca0091459266df3f8ae55abf5",
+      "sourceUnchanged": true,
+      "exitCode": 0,
+      "log": "production/clan-war-command-20261109/qa/mobility/domain-verified/mobility-core.test.mjs.tap",
+      "logSha256": "b4598799a42406dd0676e7580998ae6fdab30f04b5b4c3bc43240f67b4923758",
+      "pass": 79,
+      "fail": 0,
+      "skipped": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/mobility-hardening.test.mjs",
+      "sha256": "2b96474e763f8489d0d412dabd80d5342ba02a9421de0b1514ffa9369c8421c7",
+      "sourceUnchanged": true,
+      "exitCode": 0,
+      "log": "production/clan-war-command-20261109/qa/mobility/domain-verified/mobility-hardening.test.mjs.tap",
+      "logSha256": "5026d174e0d91816de8201d6c65c4b07de51bbcb32b5d0e24236479301fbb51c",
+      "pass": 14,
+      "fail": 0,
+      "skipped": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/mobility-integration.test.mjs",
+      "sha256": "f12d82152183f85aa94cdabd808d3e4041d71b7c95822153aff56a1a5b15a01a",
+      "sourceUnchanged": true,
+      "exitCode": 0,
+      "log": "production/clan-war-command-20261109/qa/mobility/domain-verified/mobility-integration.test.mjs.tap",
+      "logSha256": "328eff6ce1f55912db7e39522d89fd2b6cb60695df3858987978953cd44353de",
+      "pass": 16,
+      "fail": 0,
+      "skipped": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/mobility-qa-driver.test.mjs",
+      "sha256": "eff481157b450bb6b7780f2cfa83ae958aa7042e4bae40244f0b66f1184eb49f",
+      "sourceUnchanged": true,
+      "exitCode": 0,
+      "log": "production/clan-war-command-20261109/qa/mobility/domain-verified/mobility-qa-driver.test.mjs.tap",
+      "logSha256": "5d01dd9f95ef3a7e7d2567034821c04a0ff3164d43ae0c27e756c82a9e51cbb2",
+      "pass": 6,
+      "fail": 0,
+      "skipped": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/mobility-training-reward.test.mjs",
+      "sha256": "5ca1964aa613cce9ba5deb8ee6c771539eaaa6d9567bc266a34c1be79052d674",
+      "sourceUnchanged": true,
+      "exitCode": 0,
+      "log": "production/clan-war-command-20261109/qa/mobility/domain-verified/mobility-training-reward.test.mjs.tap",
+      "logSha256": "ee9e09d05598180be369a15366be4706849321deb27489d0e550b76ba834bc3f",
+      "pass": 33,
+      "fail": 0,
+      "skipped": 0,
+      "todo": 0
+    }
+  ],
+  "totals": {
+    "pass": 189,
+    "fail": 0,
+    "skipped": 0,
+    "todo": 0
+  },
+  "passed": true,
+  "finishedAt": "2026-11-09T10:10:54.557689+00:00"
+}

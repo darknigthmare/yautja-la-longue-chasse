@@ -1,4 +1,5 @@
 import { inspectMobilityLedger } from "./systems/mobility/ledger";
+import { inspectTrophyTutorialV6 } from "./systems/trophyTutorialV6";
 import {normalizeHomeworldArrivalRecoveryV111} from './systems/homeworldArrivalRecoveryLedgerV111';
 import {normalizeHomeworldArchiveContinuationV111,archiveContinuationActiveV111} from './systems/homeworldArchiveContinuationLedgerV111';
 import {emptyHarvestInventoryV112,normalizeHarvestInventoryV112,deliverHarvestV112} from "./systems/harvestInventoryV112";
@@ -1241,6 +1242,9 @@ export function normalizeSave(value: unknown): SaveGame {
       armorUpgrades,
     ),
     appearance: normalizeAppearance(source.appearance),
+    ...(source.trophyTutorialV6 === undefined ? {} : {
+      trophyTutorialV6: inspectTrophyTutorialV6(source.trophyTutorialV6, validIsoDate(source.createdAt, fallback.createdAt)).state,
+    }),
     ...(source.buriedCradle === undefined ? {} : {
       buriedCradle: inspectBuriedCradleCampaign(source.buriedCradle, validIsoDate(source.createdAt, fallback.createdAt)).state,
     }),
@@ -1510,6 +1514,9 @@ function inspectSavePayload(value: unknown): SaveImportParseResult {
   if (Number(value.version) > SAVE_VERSION) {
     return { save: null, failure: "future-version" };
   }
+  const tutorial = inspectTrophyTutorialV6(value.trophyTutorialV6, typeof value.createdAt === "string" ? value.createdAt : "");
+  if (tutorial.status === "future") return { save: null, failure: "future-version" };
+  if (tutorial.status === "invalid") return { save: null, failure: "invalid-save" };
   const castle = value.wolfCastle == null ? { status: 'absent' as const, state: null }
     : inspectWolfCastleVisit(value.wolfCastle, typeof value.createdAt === "string" ? value.createdAt : "");
   const arrival = inspectPlanetArrival(value.planetArrival, typeof value.createdAt === "string" ? value.createdAt : "");

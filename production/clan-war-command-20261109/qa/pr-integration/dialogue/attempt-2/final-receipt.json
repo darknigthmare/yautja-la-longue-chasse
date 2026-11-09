@@ -1,0 +1,168 @@
+{
+  "schemaVersion": 1,
+  "asOf": "2026-11-09T10:16:55.051244+00:00",
+  "passed": true,
+  "checksPassed": 81,
+  "checksFailed": 0,
+  "checkoutCommit": "d277c3cfbc9ac7db0651e192a2acadccb0e30cf6",
+  "runtime": "Actual GameClient hosted by Vite on the consolidated source; not a Next production recipe",
+  "viewports": [
+    1440,
+    390,
+    320
+  ],
+  "capturedPngs": 21,
+  "openedPngs": 3,
+  "sourceBeforeAfterEqual": true,
+  "sourceSha256": {
+    "app/game/ClanShipCrewDialogue.tsx": "f77aa725afac32749e5ece96bd3122c3d2ae0e52a47507130934099ec241c3e4",
+    "app/game/systems/clanShipDialogue.ts": "c50e94b1c69ab90c1b57fce380bfc00d0e9ea9921448fad45dd7fdfde14516fe",
+    "app/game/ClanShipOperationsPanel.tsx": "9029b404e74f1570ce50f0bbe4cdcf33722021e934ea35652d585a32dfb6429f",
+    "app/game/ClanShipOperationsPanel.module.css": "7b9c01fda57eaf0badd4ec79ce909d5666abdac71069ffac9a9700f7b541427b",
+    "app/game/systems/clanShipOperations.ts": "6894c68f613af82c0e23aa96b4c7cccf0606dded8638d55e519d269f4a4f0746",
+    "app/game/systems/companionResidence.ts": "ed55b78c62e3c7b963a6b71f966fc3fccf126450c24ce561f540a1a563dd7d8e",
+    "app/game/systems/clanShipTrophyHearing.ts": "43012e17f797eb0d0fc63746e56678fffa05e18c68db230610de34b53b98323b",
+    "app/game/GameClient.tsx": "583bfbb6fac5e78a6fa361fc630355033e9eeebac95009aa14044788db82e0a8",
+    "app/game/save.ts": "958046d60dacddaae9f6fdacdc8aa43a64b85310117fa099270edb1028218a4e",
+    "tests/helpers/clan-ship-trophy-hearing-fixture.mjs": "0bd4652c6ef45122e49b49fb3d5398968d151422583261b84c34b95db9105772",
+    "scripts/qa-clan-dialogue-browser-20261109.mjs": "91c6613f1e1304f2c5cca65edb613a97026794da1d6c1a44e10f7103664df225"
+  },
+  "scope": "Six real posts, native optional drawer opening, four read-only topics, a browser-played space-screening victory, reward conservation, reload, Enter and Escape on three viewport sizes. Declared synthetic prerequisites; no full campaign or physical controller.",
+  "fixes": [
+    "The integrated optional-dialogue details spans the crew card grid; no85px portrait-column confinement.",
+    "The recipe retains exactly four topic buttons, counted by their topic semantics; the separate hunt-report toggle is preserved."
+  ],
+  "notQualified": [
+    "Full Next production source coherence",
+    "All21PNG visual inspection",
+    "Human artistic1:1 approval",
+    "Physical mobile or gamepad"
+  ],
+  "files": [
+    {
+      "path": "production/clan-war-command-20261109/qa/pr-integration/dialogue/attempt-2/browser-verification.json",
+      "bytes": 15777,
+      "sha256": "eff03f75ee8dd9daa98907322d643ce965c8e441371b8bab72ec39659b7cabdb"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/pr-integration/dialogue/attempt-2/recipe-used.mjs",
+      "bytes": 13583,
+      "sha256": "91c6613f1e1304f2c5cca65edb613a97026794da1d6c1a44e10f7103664df225"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/pr-integration/dialogue/attempt-2/source-after.json",
+      "bytes": 1310,
+      "sha256": "e89eec753f1c72d270c5e26791ea09e02dd717ca64209bbb6cefb2fd1fd1d242"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/pr-integration/dialogue/attempt-2/screenshot-inspection.json",
+      "bytes": 935,
+      "sha256": "2a9bccb8dec38864ca14e59e3700a314ebefa67da32f73eb5f1941315d81d68c"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/pr-integration/dialogue/attempt-2/1440x1000-ash-scar-before-space.png",
+      "bytes": 245430,
+      "sha256": "b8d345ef0acf6832ddc39277494746189e25db43e40bc895bbf94c8ca79b5b6c"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/pr-integration/dialogue/attempt-2/1440x1000-star-watch-before-space.png",
+      "bytes": 251770,
+      "sha256": "7767e3ac80acd40b6938c11c012d0045d0d9898e1202c0df6a2628a0207329c7"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/pr-integration/dialogue/attempt-2/1440x1000-iron-claw-before-space.png",
+      "bytes": 247906,
+      "sha256": "4ecb629b43f7d0d30130e15f6592cf190fb8728e9020e7bbb49b6b42fcf4b79a"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/pr-integration/dialogue/attempt-2/1440x1000-cold-trace-before-space.png",
+      "bytes": 251658,
+      "sha256": "ac441b45ab8943617021438a1e647bfcb44be01b1c509c4407cde1fb5e9d4d98"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/pr-integration/dialogue/attempt-2/1440x1000-black-suture-before-space.png",
+      "bytes": 189396,
+      "sha256": "fbc0e638cd32586ddd38c1b39a2e893bdded5b91da7f43057eb05565cfd104e0"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/pr-integration/dialogue/attempt-2/1440x1000-threshold-guard-before-space.png",
+      "bytes": 193196,
+      "sha256": "b608d161a981655349d00b18e5342516eac1df6e3b9a0a23d022b5381e752184"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/pr-integration/dialogue/attempt-2/1440x1000-star-watch-after-space.png",
+      "bytes": 278379,
+      "sha256": "ce6e523e355596aabc904d49c8e4f01da4e0462d532aabb0d20c0eaad0fbf439"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/pr-integration/dialogue/attempt-2/390x844-ash-scar-before-space.png",
+      "bytes": 82687,
+      "sha256": "a9a9aa22fba51920a1829b614ba72c1319cfc971a8bea7cc4f006879746db8c8"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/pr-integration/dialogue/attempt-2/390x844-star-watch-before-space.png",
+      "bytes": 100415,
+      "sha256": "03049cef5c7348ee2b2e955aa9b341ecf4fd1269c2dc1f09ee5a82dae727c905"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/pr-integration/dialogue/attempt-2/390x844-iron-claw-before-space.png",
+      "bytes": 81602,
+      "sha256": "f47dd5470cea3a1a260155ddb218146ae55865e987c6583da5283514446246ab"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/pr-integration/dialogue/attempt-2/390x844-cold-trace-before-space.png",
+      "bytes": 82558,
+      "sha256": "a61ef013bf8cc23d1931bde1ea8d23ff0fb4a664878c82b2a7bece832b3acd8c"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/pr-integration/dialogue/attempt-2/390x844-black-suture-before-space.png",
+      "bytes": 85059,
+      "sha256": "55c1dbdb00ddde12597cab8a6ccf836e689997b7322b26d5f50230ef6f046507"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/pr-integration/dialogue/attempt-2/390x844-threshold-guard-before-space.png",
+      "bytes": 82192,
+      "sha256": "913004ed9c65914fe4da81faaf82e1d3d64f4053fcdf373096a97fa834ddfd85"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/pr-integration/dialogue/attempt-2/390x844-star-watch-after-space.png",
+      "bytes": 98711,
+      "sha256": "b121c3ba2bbf799280dc925fb8080983d7aa950e9458fda99f8ee63557cb9cf1"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/pr-integration/dialogue/attempt-2/320x740-ash-scar-before-space.png",
+      "bytes": 70196,
+      "sha256": "c57a3b80c9b17de9730dd87631aacb33e54a486fb18ee85a1aec5589cff445b2"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/pr-integration/dialogue/attempt-2/320x740-star-watch-before-space.png",
+      "bytes": 77253,
+      "sha256": "93316d5b8fe2411c821c1efdf75b501e3b349260946c21fd4ead9356e2f65f8d"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/pr-integration/dialogue/attempt-2/320x740-iron-claw-before-space.png",
+      "bytes": 69414,
+      "sha256": "f016868518b8bcaed24d5684df00bb3760683648b42848df4375505a4449f70b"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/pr-integration/dialogue/attempt-2/320x740-cold-trace-before-space.png",
+      "bytes": 70204,
+      "sha256": "52734268af54ea21d31187ee250f358864aa9f477b8d7824d3ffb774008ce882"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/pr-integration/dialogue/attempt-2/320x740-black-suture-before-space.png",
+      "bytes": 68582,
+      "sha256": "6b98906ed88b9533393caf7f03f66083904553b1f7fcc6ae791037802d0d86c8"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/pr-integration/dialogue/attempt-2/320x740-threshold-guard-before-space.png",
+      "bytes": 74219,
+      "sha256": "1431c5a7e1d10620fce0462c03306ff5656555cb53773468a98c6e504ec831f9"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/pr-integration/dialogue/attempt-2/320x740-star-watch-after-space.png",
+      "bytes": 82145,
+      "sha256": "c3729830ea241f3333221f89e47ac2ae44ed61677f183acc16bb6030d0786e31"
+    }
+  ]
+}

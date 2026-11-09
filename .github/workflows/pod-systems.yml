@@ -140,6 +140,23 @@ jobs:
         run: node node_modules/playwright-core/cli.js install --with-deps chromium
       - name: Play native pod controls and observe atmospheric panels
         run: xvfb-run -a --server-args="-screen 0 1920x1200x24" node scripts/qa-pod-systems.mjs
+      - name: Expose the observed failure in readable check annotations
+        if: failure()
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          paths = [Path('outputs/qa-pod-systems/report.json'), Path('outputs/qa-pod-systems/report.partial.json')]
+          path = next((candidate for candidate in paths if candidate.is_file()), None)
+          if path:
+            report = json.loads(path.read_text())
+            failure = report.get('failure') or report.get('latestProgress') or report.get('errors') or 'Inspect the preserved report for the failed assertion.'
+            message = json.dumps(failure, ensure_ascii=False) if not isinstance(failure, str) else failure
+          else:
+            message = 'No native pod report was produced; inspect the preceding setup or build step.'
+          message = message[:16000].replace('%', '%25').replace('\r', '%0D').replace('\n', '%0A')
+          print('::error title=Native pod diagnostic::' + message)
+          PY
       - name: Preserve the exact inventory candidate, screenshots and observations
         if: always()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02

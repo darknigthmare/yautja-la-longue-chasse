@@ -1,0 +1,21 @@
+{
+  "qualified": false,
+  "nativeChecksPassed": 9,
+  "nativeChecksFailed": 1,
+  "reason": "Local sparse preparation lacked9registered streamed-sector textures at server startup; all9gameplay checks passed but the strict zero-missing-assets final assertion correctly failed. Existing CI already derives every sector path.",
+  "failedRequestedAssets": [
+    "/game/assets/v19/biome-decor/jungle/clm/clm-field-ladder-03-forked.webp",
+    "/game/assets/v19/biome-decor/jungle/clm/clm-hanging-vine-02-hooked.webp",
+    "/game/assets/v19/biome-decor/jungle/cov/cov-strangler-root-wall-03-pierced.webp",
+    "/game/assets/v19/biome-decor/jungle/haz/haz-spectral-flare-tripwire-05-unstable.webp",
+    "/game/assets/v19/biome-decor/jungle/plt/plt-expedition-deck-02-high-narrow.webp",
+    "/game/assets/v19/biome-decor/jungle/plt/plt-expedition-deck-05-tiered.webp",
+    "/game/assets/v19/biome-decor/jungle/plt/plt-root-bridge-03-forked.webp",
+    "/game/assets/v19/biome-decor/jungle/srf/srf-footprint-mud-04-crater.webp",
+    "/game/assets/v19/biome-decor/jungle/srf/srf-rain-puddle-03-ridge.webp"
+  ],
+  "preparationCorrectedForNextServer": "27additional exact registered level sources copied and hashed in preparation/level-assets-copy.json",
+  "buildId": "jB2Zeqz3rNzTxytdYArH7",
+  "scope": "Diagnostic on intermediate build only; no green Pod qualification claimed",
+  "rawReportSha256": "b5bb3062d58fe2b00a30dab0f866f9910c0afce70d3ecf414be5b3c65e831ed5"
+}
