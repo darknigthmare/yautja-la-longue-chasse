@@ -1,0 +1,70 @@
+TAP version 13
+# Subtest: Assault V143: paid 14-AP stance mitigates actual incoming fire for two exchanges only
+ok 1 - Assault V143: paid 14-AP stance mitigates actual incoming fire for two exchanges only
+  ---
+  duration_ms: 11.08247
+  type: 'test'
+  ...
+# Subtest: Assault V143: fake source, remote base, depleted AP, forged guard until all reject safely
+ok 2 - Assault V143: fake source, remote base, depleted AP, forged guard until all reject safely
+  ---
+  duration_ms: 0.812677
+  type: 'test'
+  ...
+# Subtest: Outer Ops V143: only actual current V6 source-passage incidents can be resolved
+ok 3 - Outer Ops V143: only actual current V6 source-passage incidents can be resolved
+  ---
+  duration_ms: 3.035405
+  type: 'test'
+  ...
+# Subtest: Outer Ops V143: physically delayed detour spends no RAV and freezes route for ten seconds
+ok 4 - Outer Ops V143: physically delayed detour spends no RAV and freezes route for ten seconds
+  ---
+  duration_ms: 1.594068
+  type: 'test'
+  ...
+# Subtest: Outer Ops V143: forged incident, wrong resource cost, recall and second response are rejected
+ok 5 - Outer Ops V143: forged incident, wrong resource cost, recall and second response are rejected
+  ---
+  duration_ms: 1.995785
+  type: 'test'
+  ...
+# Subtest: Stealth V143: a two-tile dash burns two energy and triggers two actual patrol decisions
+ok 6 - Stealth V143: a two-tile dash burns two energy and triggers two actual patrol decisions
+  ---
+  duration_ms: 3.398323
+  type: 'test'
+  ...
+# Subtest: Stealth V143: no unauthorized wall-skipping, cloaked dash, no-energy dash or forged archive
+ok 7 - Stealth V143: no unauthorized wall-skipping, cloaked dash, no-energy dash or forged archive
+  ---
+  duration_ms: 1.995765
+  type: 'test'
+  ...
+# Subtest: RTS V143: three-step march advances physical tiles, enemy turns and preserves RAV
+ok 8 - RTS V143: three-step march advances physical tiles, enemy turns and preserves RAV
+  ---
+  duration_ms: 210.855344
+  type: 'test'
+  ...
+# Subtest: RTS V143: no hidden-objective autopilot, phase bypass, fake squad or new territory control
+ok 9 - RTS V143: no hidden-objective autopilot, phase bypass, fake squad or new territory control
+  ---
+  duration_ms: 2.053622
+  type: 'test'
+  ...
+# Subtest: V143 still preserves all 24 W3 scenarios and the V6 source without a campaign mutation
+ok 10 - V143 still preserves all 24 W3 scenarios and the V6 source without a campaign mutation
+  ---
+  duration_ms: 29.599637
+  type: 'test'
+  ...
+1..10
+# tests 10
+# suites 0
+# pass 10
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 274.694799

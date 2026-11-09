@@ -1,0 +1,57 @@
+[
+  {
+    "path": "scripts/install-phg-runtime-v120.py",
+    "call": "verify_installed",
+    "passed": true,
+    "result": {
+      "installedSelectable": 0,
+      "pending": 149
+    }
+  },
+  {
+    "path": "scripts/verify-phg-official-v141.py",
+    "call": "validate",
+    "passed": true,
+    "result": {
+      "status": "PASS",
+      "source_rows": 23,
+      "class_combinations": 144,
+      "allowed": 63,
+      "blocked": 81,
+      "historic_visual_qa": 1134,
+      "evidence_cases": 40,
+      "geometry_cases": 52,
+      "filter_cases": 18,
+      "official_pixel_certifications": 0
+    }
+  },
+  {
+    "path": "scripts/verify-phg-visual-v139.py",
+    "call": "validate",
+    "passed": true,
+    "result": {
+      "status": "PASS",
+      "historic_cases": 1134,
+      "source_gaps": 40,
+      "geometric_cases": 52,
+      "math_pass": 52,
+      "max_coordinate_error": 0.0,
+      "visual_certified": 0,
+      "phg_uv_1to1_certified": false
+    }
+  },
+  {
+    "path": "scripts/verify-phg-filter-v140.py",
+    "call": "validate",
+    "passed": true,
+    "result": {
+      "status": "PASS",
+      "visual_cases": 1134,
+      "source_gaps": 40,
+      "math_projection": 52,
+      "filter_coverage": 18,
+      "morphologies": 6,
+      "certified_1to1": false
+    }
+  }
+]

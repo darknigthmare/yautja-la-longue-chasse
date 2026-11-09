@@ -1,0 +1,1500 @@
+{
+  "asOf": "2026-11-09",
+  "scope": "READ-ONLY source, exact-binding, source-file SHA and byte-copy review; no app/source/old Excel modifications, no runtime or human art admission.",
+  "sourceRequirements": 107,
+  "catalogueTargets": 97,
+  "counts": {
+    "SOURCE_NOMMEE_PRESENTE": 3,
+    "FAMILLE_SEULE_A_RECONCILIER": 77,
+    "CANDIDAT_EXACT_PRESENT": 17
+  },
+  "appFilesSearched": 1258,
+  "sizePrefilteredPublicFilesHashed": 4,
+  "assets": [
+    {
+      "key": "Homeworld et habitats:target-v81-55-1",
+      "id": "target-v81-55-1",
+      "currentBindingState": "SOURCE_NOMMEE_PRESENTE",
+      "exactSources": [
+        {
+          "path": "public/game/homeworld/v81/basalt-city-foundation.png",
+          "origin": "MAIN_NAMED_SOURCE",
+          "assetId": null,
+          "sha256": "4a0518652fca7f76f50a6a9de388d52fb980bc54eb6e5fa017733d8f98969e73",
+          "bytes": 2613948,
+          "sameBytePublicPaths": [
+            "public/game/homeworld/v81/basalt-city-foundation.png"
+          ],
+          "appLiteralReferences": [
+            {
+              "path": "app/game/data/homeworldNativeArchitectureV81.json",
+              "line": 13662,
+              "text": "\"src\": \"/game/homeworld/v81/basalt-city-foundation.png\","
+            }
+          ],
+          "rgbaAlphaBounds": [
+            0,
+            0,
+            1773,
+            887
+          ],
+          "nativeEmptyMargins": [
+            0,
+            0,
+            1,
+            0
+          ],
+          "scope": "Text/byte reference search, not execution or visual admission"
+        }
+      ],
+      "familyPathsCount": 12,
+      "humanArtValidated": false,
+      "globalClosed": false
+    },
+    {
+      "key": "Homeworld et habitats:target-v81-55-10",
+      "id": "target-v81-55-10",
+      "currentBindingState": "FAMILLE_SEULE_A_RECONCILIER",
+      "exactSources": [],
+      "familyPathsCount": 9,
+      "humanArtValidated": false,
+      "globalClosed": false
+    },
+    {
+      "key": "Homeworld et habitats:target-v81-55-11",
+      "id": "target-v81-55-11",
+      "currentBindingState": "FAMILLE_SEULE_A_RECONCILIER",
+      "exactSources": [],
+      "familyPathsCount": 5,
+      "humanArtValidated": false,
+      "globalClosed": false
+    },
+    {
+      "key": "Homeworld et habitats:target-v81-55-12",
+      "id": "target-v81-55-12",
+      "currentBindingState": "FAMILLE_SEULE_A_RECONCILIER",
+      "exactSources": [],
+      "familyPathsCount": 9,
+      "humanArtValidated": false,
+      "globalClosed": false
+    },
+    {
+      "key": "Homeworld et habitats:target-v81-55-13",
+      "id": "target-v81-55-13",
+      "currentBindingState": "CANDIDAT_EXACT_PRESENT",
+      "exactSources": [
+        {
+          "path": "production/homeworld-v161/originals/HWA160-N02_angle-garde-corps.png",
+          "origin": "V161_CANDIDATE",
+          "assetId": "HWA160-N02",
+          "sha256": "ecf216354c88c47fc8881f6e4e6b103bf80de66a9dddb1edaf9b7e9b94ab9045",
+          "bytes": 1191624,
+          "sameBytePublicPaths": [],
+          "appLiteralReferences": [],
+          "rgbaAlphaBounds": [
+            0,
+            7,
+            1750,
+            887
+          ],
+          "nativeEmptyMargins": [
+            0,
+            7,
+            24,
+            0
+          ],
+          "scope": "Text/byte reference search, not execution or visual admission"
+        }
+      ],
+      "familyPathsCount": 9,
+      "humanArtValidated": false,
+      "globalClosed": false
+    },
+    {
+      "key": "Homeworld et habitats:target-v81-55-14",
+      "id": "target-v81-55-14",
+      "currentBindingState": "FAMILLE_SEULE_A_RECONCILIER",
+      "exactSources": [],
+      "familyPathsCount": 7,
+      "humanArtValidated": false,
+      "globalClosed": false
+    },
+    {
+      "key": "Homeworld et habitats:target-v81-55-15",
+      "id": "target-v81-55-15",
+      "currentBindingState": "FAMILLE_SEULE_A_RECONCILIER",
+      "exactSources": [],
+      "familyPathsCount": 9,
+      "humanArtValidated": false,
+      "globalClosed": false
+    },
+    {
+      "key": "Homeworld et habitats:target-v81-55-16",
+      "id": "target-v81-55-16",
+      "currentBindingState": "FAMILLE_SEULE_A_RECONCILIER",
+      "exactSources": [],
+      "familyPathsCount": 6,
+      "humanArtValidated": false,
+      "globalClosed": false
+    },
+    {
+      "key": "Homeworld et habitats:target-v81-55-17",
+      "id": "target-v81-55-17",
+      "currentBindingState": "CANDIDAT_EXACT_PRESENT",
+      "exactSources": [
+        {
+          "path": "production/homeworld-v162/originals/HWA160-N04_contrefort-courbe-tour.png",
+          "origin": "V162_CANDIDATE",
+          "assetId": "HWA160-N04",
+          "sha256": "25457ffb588ec245a11b6a5ac7142b71af132599c3f2b7afeedc3bba814028b4",
+          "bytes": 1021799,
+          "sameBytePublicPaths": [],
+          "appLiteralReferences": [],
+          "rgbaAlphaBounds": [
+            306,
+            238,
+            706,
+            1346
+          ],
+          "nativeEmptyMargins": [
+            306,
+            238,
+            318,
+            190
+          ],
+          "scope": "Text/byte reference search, not execution or visual admission"
+        }
+      ],
+      "familyPathsCount": 9,
+      "humanArtValidated": false,
+      "globalClosed": false
+    },
+    {
+      "key": "Homeworld et habitats:target-v81-55-18",
+      "id": "target-v81-55-18",
+      "currentBindingState": "FAMILLE_SEULE_A_RECONCILIER",
+      "exactSources": [],
+      "familyPathsCount": 9,
+      "humanArtValidated": false,
+      "globalClosed": false
+    },
+    {
+      "key": "Homeworld et habitats:target-v81-55-19",
+      "id": "target-v81-55-19",
+      "currentBindingState": "FAMILLE_SEULE_A_RECONCILIER",
+      "exactSources": [],
+      "familyPathsCount": 12,
+      "humanArtValidated": false,
+      "globalClosed": false
+    },
+    {
+      "key": "Homeworld et habitats:target-v81-55-2",
+      "id": "target-v81-55-2",
+      "currentBindingState": "FAMILLE_SEULE_A_RECONCILIER",
+      "exactSources": [],
+      "familyPathsCount": 12,
+      "humanArtValidated": false,
+      "globalClosed": false
+    },
+    {
+      "key": "Homeworld et habitats:target-v81-55-20",
+      "id": "target-v81-55-20",
+      "currentBindingState": "FAMILLE_SEULE_A_RECONCILIER",
+      "exactSources": [],
+      "familyPathsCount": 9,
+      "humanArtValidated": false,
+      "globalClosed": false
+    },
+    {
+      "key": "Homeworld et habitats:target-v81-55-21",
+      "id": "target-v81-55-21",
+      "currentBindingState": "CANDIDAT_EXACT_PRESENT",
+      "exactSources": [
+        {
+          "path": "production/homeworld-v161/originals/HWA160-N01_garde-corps-trapezoidal-court.png",
+          "origin": "V161_CANDIDATE",
+          "assetId": "HWA160-N01",
+          "sha256": "05db5ba00124ef243ef3af1601c7715ca49b302ae8f866f641553f58ec623ed6",
+          "bytes": 1206653,
+          "sameBytePublicPaths": [],
+          "appLiteralReferences": [],
+          "rgbaAlphaBounds": [
+            0,
+            21,
+            1768,
+            887
+          ],
+          "nativeEmptyMargins": [
+            0,
+            21,
+            6,
+            0
+          ],
+          "scope": "Text/byte reference search, not execution or visual admission"
+        }
+      ],
+      "familyPathsCount": 12,
+      "humanArtValidated": false,
+      "globalClosed": false
+    },
+    {
+      "key": "Homeworld et habitats:target-v81-55-22",
+      "id": "target-v81-55-22",
+      "currentBindingState": "FAMILLE_SEULE_A_RECONCILIER",
+      "exactSources": [],
+      "familyPathsCount": 9,
+      "humanArtValidated": false,
+      "globalClosed": false
+    },
+    {
+      "key": "Homeworld et habitats:target-v81-55-23",
+      "id": "target-v81-55-23",
+      "currentBindingState": "FAMILLE_SEULE_A_RECONCILIER",
+      "exactSources": [],
+      "familyPathsCount": 9,
+      "humanArtValidated": false,
+      "globalClosed": false
+    },
+    {
+      "key": "Homeworld et habitats:target-v81-55-24",
+      "id": "target-v81-55-24",
+      "currentBindingState": "FAMILLE_SEULE_A_RECONCILIER",
+      "exactSources": [],
+      "familyPathsCount": 12,
+      "humanArtValidated": false,
+      "globalClosed": false
+    },
+    {
+      "key": "Homeworld et habitats:target-v81-55-25",
+      "id": "target-v81-55-25",
+      "currentBindingState": "FAMILLE_SEULE_A_RECONCILIER",
+      "exactSources": [],
+      "familyPathsCount": 9,
+      "humanArtValidated": false,
+      "globalClosed": false
+    },
+    {
+      "key": "Homeworld et habitats:target-v81-55-26",
+      "id": "target-v81-55-26",
+      "currentBindingState": "CANDIDAT_EXACT_PRESENT",
+      "exactSources": [
+        {
+          "path": "production/native-open-20261102/archives/industrial-architecture/target-v81-55-26-balcon-native.png",
+          "origin": "V113_V114_EXACT_CANDIDATE",
+          "assetId": null,
+          "sha256": "e94bc9876855a3ba7ae4efadb12fca22b7663a6e31d538335d7946a4203d6dfd",
+          "bytes": 1120730,
+          "sameBytePublicPaths": [],
+          "appLiteralReferences": [],
+          "rgbaAlphaBounds": [
+            0,
+            52,
+            1382,
+            1109
+          ],
+          "nativeEmptyMargins": [
+            0,
+            52,
+            6,
+            24
+          ],
+          "scope": "Text/byte reference search, not execution or visual admission"
+        }
+      ],
+      "familyPathsCount": 3,
+      "humanArtValidated": false,
+      "globalClosed": false
+    },
+    {
+      "key": "Homeworld et habitats:target-v81-55-27",
+      "id": "target-v81-55-27",
+      "currentBindingState": "FAMILLE_SEULE_A_RECONCILIER",
+      "exactSources": [],
+      "familyPathsCount": 7,
+      "humanArtValidated": false,
+      "globalClosed": false
+    },
+    {
+      "key": "Homeworld et habitats:target-v81-55-28",
+      "id": "target-v81-55-28",
+      "currentBindingState": "FAMILLE_SEULE_A_RECONCILIER",
+      "exactSources": [],
+      "familyPathsCount": 12,
+      "humanArtValidated": false,
+      "globalClosed": false
+    },
+    {
+      "key": "Homeworld et habitats:target-v81-55-29",
+      "id": "target-v81-55-29",
+      "currentBindingState": "FAMILLE_SEULE_A_RECONCILIER",
+      "exactSources": [],
+      "familyPathsCount": 12,
+      "humanArtValidated": false,
+      "globalClosed": false
+    },
+    {
+      "key": "Homeworld et habitats:target-v81-55-3",
+      "id": "target-v81-55-3",
+      "currentBindingState": "FAMILLE_SEULE_A_RECONCILIER",
+      "exactSources": [],
+      "familyPathsCount": 12,
+      "humanArtValidated": false,
+      "globalClosed": false
+    },
+    {
+      "key": "Homeworld et habitats:target-v81-55-30",
+      "id": "target-v81-55-30",
+      "currentBindingState": "FAMILLE_SEULE_A_RECONCILIER",
+      "exactSources": [],
+      "familyPathsCount": 12,
+      "humanArtValidated": false,
+      "globalClosed": false
+    },
+    {
+      "key": "Homeworld et habitats:target-v81-55-31",
+      "id": "target-v81-55-31",
+      "currentBindingState": "FAMILLE_SEULE_A_RECONCILIER",
+      "exactSources": [],
+      "familyPathsCount": 12,
+      "humanArtValidated": false,
+      "globalClosed": false
+    },
+    {
+      "key": "Homeworld et habitats:target-v81-55-32",
+      "id": "target-v81-55-32",
+      "currentBindingState": "FAMILLE_SEULE_A_RECONCILIER",
+      "exactSources": [],
+      "familyPathsCount": 12,
+      "humanArtValidated": false,
+      "globalClosed": false
+    },
+    {
+      "key": "Homeworld et habitats:target-v81-55-33",
+      "id": "target-v81-55-33",
+      "currentBindingState": "CANDIDAT_EXACT_PRESENT",
+      "exactSources": [
+        {
+          "path": "production/homeworld-v161/originals/HWA160-N03_tablier-passerelle-long.png",
+          "origin": "V161_CANDIDATE",
+          "assetId": "HWA160-N03",
+          "sha256": "024febb138e89a9220192ed66a9231ca7bc85314448603db641e61c7301e60bd",
+          "bytes": 1244393,
+          "sameBytePublicPaths": [],
+          "appLiteralReferences": [],
+          "rgbaAlphaBounds": [
+            19,
+            9,
+            2172,
+            724
+          ],
+          "nativeEmptyMargins": [
+            19,
+            9,
+            0,
+            0
+          ],
+          "scope": "Text/byte reference search, not execution or visual admission"
+        }
+      ],
+      "familyPathsCount": 7,
+      "humanArtValidated": false,
+      "globalClosed": false
+    },
+    {
+      "key": "Homeworld et habitats:target-v81-55-34",
+      "id": "target-v81-55-34",
+      "currentBindingState": "FAMILLE_SEULE_A_RECONCILIER",
+      "exactSources": [],
+      "familyPathsCount": 12,
+      "humanArtValidated": false,
+      "globalClosed": false
+    },
+    {
+      "key": "Homeworld et habitats:target-v81-55-35",
+      "id": "target-v81-55-35",
+      "currentBindingState": "FAMILLE_SEULE_A_RECONCILIER",
+      "exactSources": [],
+      "familyPathsCount": 12,
+      "humanArtValidated": false,
+      "globalClosed": false
+    },
+    {
+      "key": "Homeworld et habitats:target-v81-55-36",
+      "id": "target-v81-55-36",
+      "currentBindingState": "FAMILLE_SEULE_A_RECONCILIER",
+      "exactSources": [],
+      "familyPathsCount": 12,
+      "humanArtValidated": false,
+      "globalClosed": false
+    },
+    {
+      "key": "Homeworld et habitats:target-v81-55-37",
+      "id": "target-v81-55-37",
+      "currentBindingState": "FAMILLE_SEULE_A_RECONCILIER",
+      "exactSources": [],
+      "familyPathsCount": 12,
+      "humanArtValidated": false,
+      "globalClosed": false
+    },
+    {
+      "key": "Homeworld et habitats:target-v81-55-38",
+      "id": "target-v81-55-38",
+      "currentBindingState": "FAMILLE_SEULE_A_RECONCILIER",
+      "exactSources": [],
+      "familyPathsCount": 12,
+      "humanArtValidated": false,
+      "globalClosed": false
+    },
+    {
+      "key": "Homeworld et habitats:target-v81-55-39",
+      "id": "target-v81-55-39",
+      "currentBindingState": "FAMILLE_SEULE_A_RECONCILIER",
+      "exactSources": [],
+      "familyPathsCount": 12,
+      "humanArtValidated": false,
+      "globalClosed": false
+    },
+    {
+      "key": "Homeworld et habitats:target-v81-55-4",
+      "id": "target-v81-55-4",
+      "currentBindingState": "FAMILLE_SEULE_A_RECONCILIER",
+      "exactSources": [],
+      "familyPathsCount": 9,
+      "humanArtValidated": false,
+      "globalClosed": false
+    },
+    {
+      "key": "Homeworld et habitats:target-v81-55-40",
+      "id": "target-v81-55-40",
+      "currentBindingState": "SOURCE_NOMMEE_PRESENTE",
+      "exactSources": [
+        {
+          "path": "public/game/homeworld/v82/clan-lift-cabin.png",
+          "origin": "MAIN_NAMED_SOURCE",
+          "assetId": null,
+          "sha256": "ebef20b5b70b8f3d23e81eb85f69ab801c76ae82a88ba0a1aabceae9bac718c9",
+          "bytes": 1405147,
+          "sameBytePublicPaths": [
+            "public/game/homeworld/v82/clan-lift-cabin.png"
+          ],
+          "appLiteralReferences": [
+            {
+              "path": "app/game/data/homeworldLiftCabinArtV82.json",
+              "line": 3,
+              "text": "\"src\":\"/game/homeworld/v82/clan-lift-cabin.png\","
+            }
+          ],
+          "rgbaAlphaBounds": [
+            97,
+            14,
+            1171,
+            1182
+          ],
+          "nativeEmptyMargins": [
+            97,
+            14,
+            83,
+            72
+          ],
+          "scope": "Text/byte reference search, not execution or visual admission"
+        },
+        {
+          "path": "public/game/homeworld/v82/clan-lift-fixed-frame.png",
+          "origin": "MAIN_NAMED_SOURCE",
+          "assetId": null,
+          "sha256": "4beef5304d4a918e7aeb520d8bf4ea0f3411cdd4e114e51a86b1e85563f45042",
+          "bytes": 2116282,
+          "sameBytePublicPaths": [
+            "public/game/homeworld/v82/clan-lift-fixed-frame.png"
+          ],
+          "appLiteralReferences": [],
+          "rgbaAlphaBounds": [
+            49,
+            0,
+            966,
+            1504
+          ],
+          "nativeEmptyMargins": [
+            49,
+            0,
+            58,
+            32
+          ],
+          "scope": "Text/byte reference search, not execution or visual admission"
+        }
+      ],
+      "familyPathsCount": 3,
+      "humanArtValidated": false,
+      "globalClosed": false
+    },
+    {
+      "key": "Homeworld et habitats:target-v81-55-41",
+      "id": "target-v81-55-41",
+      "currentBindingState": "SOURCE_NOMMEE_PRESENTE",
+      "exactSources": [
+        {
+          "path": "public/game/homeworld/v82/clan-lift-gantry-adult.png",
+          "origin": "MAIN_NAMED_SOURCE",
+          "assetId": null,
+          "sha256": "4b3acd547ddd4fe46cfa1c8a441070c8a7e414db093980d4b6dc12b3a9672a0e",
+          "bytes": 2457993,
+          "sameBytePublicPaths": [
+            "public/game/homeworld/v82/clan-lift-gantry-adult.png"
+          ],
+          "appLiteralReferences": [
+            {
+              "path": "app/game/data/homeworldConnectorArtV82.json",
+              "line": 93,
+              "text": "\"src\": \"/game/homeworld/v82/clan-lift-gantry-adult.png\","
+            }
+          ],
+          "rgbaAlphaBounds": [
+            0,
+            29,
+            1010,
+            1482
+          ],
+          "nativeEmptyMargins": [
+            0,
+            29,
+            14,
+            54
+          ],
+          "scope": "Text/byte reference search, not execution or visual admission"
+        },
+        {
+          "path": "public/game/homeworld/v82/clan-lift-fixed-frame.png",
+          "origin": "MAIN_NAMED_SOURCE",
+          "assetId": null,
+          "sha256": "4beef5304d4a918e7aeb520d8bf4ea0f3411cdd4e114e51a86b1e85563f45042",
+          "bytes": 2116282,
+          "sameBytePublicPaths": [
+            "public/game/homeworld/v82/clan-lift-fixed-frame.png"
+          ],
+          "appLiteralReferences": [],
+          "rgbaAlphaBounds": [
+            49,
+            0,
+            966,
+            1504
+          ],
+          "nativeEmptyMargins": [
+            49,
+            0,
+            58,
+            32
+          ],
+          "scope": "Text/byte reference search, not execution or visual admission"
+        }
+      ],
+      "familyPathsCount": 3,
+      "humanArtValidated": false,
+      "globalClosed": false
+    },
+    {
+      "key": "Homeworld et habitats:target-v81-55-42",
+      "id": "target-v81-55-42",
+      "currentBindingState": "CANDIDAT_EXACT_PRESENT",
+      "exactSources": [
+        {
+          "path": "production/native-open-20261102/archives/industrial-architecture/target-v81-55-42-tunnel-native.png",
+          "origin": "V113_V114_EXACT_CANDIDATE",
+          "assetId": null,
+          "sha256": "46cede7494ff64078e67ac3770e8c5541cb5f033c4f381adac05fd20e51cd137",
+          "bytes": 1404685,
+          "sameBytePublicPaths": [],
+          "appLiteralReferences": [],
+          "rgbaAlphaBounds": [
+            0,
+            25,
+            1224,
+            1230
+          ],
+          "nativeEmptyMargins": [
+            0,
+            25,
+            30,
+            24
+          ],
+          "scope": "Text/byte reference search, not execution or visual admission"
+        }
+      ],
+      "familyPathsCount": 3,
+      "humanArtValidated": false,
+      "globalClosed": false
+    },
+    {
+      "key": "Homeworld et habitats:target-v81-55-43",
+      "id": "target-v81-55-43",
+      "currentBindingState": "CANDIDAT_EXACT_PRESENT",
+      "exactSources": [
+        {
+          "path": "production/native-open-20261102/archives/industrial-architecture/target-v81-55-43-entree-tunnel-native.png",
+          "origin": "V113_V114_EXACT_CANDIDATE",
+          "assetId": null,
+          "sha256": "5890107a3cefe673b65e746b9fc209362314d0176df0398df5a69365247d4886",
+          "bytes": 1521732,
+          "sameBytePublicPaths": [],
+          "appLiteralReferences": [],
+          "rgbaAlphaBounds": [
+            0,
+            17,
+            1230,
+            1254
+          ],
+          "nativeEmptyMargins": [
+            0,
+            17,
+            24,
+            0
+          ],
+          "scope": "Text/byte reference search, not execution or visual admission"
+        }
+      ],
+      "familyPathsCount": 2,
+      "humanArtValidated": false,
+      "globalClosed": false
+    },
+    {
+      "key": "Homeworld et habitats:target-v81-55-5",
+      "id": "target-v81-55-5",
+      "currentBindingState": "FAMILLE_SEULE_A_RECONCILIER",
+      "exactSources": [],
+      "familyPathsCount": 9,
+      "humanArtValidated": false,
+      "globalClosed": false
+    },
+    {
+      "key": "Homeworld et habitats:target-v81-55-6",
+      "id": "target-v81-55-6",
+      "currentBindingState": "FAMILLE_SEULE_A_RECONCILIER",
+      "exactSources": [],
+      "familyPathsCount": 9,
+      "humanArtValidated": false,
+      "globalClosed": false
+    },
+    {
+      "key": "Homeworld et habitats:target-v81-55-7",
+      "id": "target-v81-55-7",
+      "currentBindingState": "FAMILLE_SEULE_A_RECONCILIER",
+      "exactSources": [],
+      "familyPathsCount": 9,
+      "humanArtValidated": false,
+      "globalClosed": false
+    },
+    {
+      "key": "Homeworld et habitats:target-v81-55-8",
+      "id": "target-v81-55-8",
+      "currentBindingState": "FAMILLE_SEULE_A_RECONCILIER",
+      "exactSources": [],
+      "familyPathsCount": 9,
+      "humanArtValidated": false,
+      "globalClosed": false
+    },
+    {
+      "key": "Homeworld et habitats:target-v81-55-9",
+      "id": "target-v81-55-9",
+      "currentBindingState": "FAMILLE_SEULE_A_RECONCILIER",
+      "exactSources": [],
+      "familyPathsCount": 9,
+      "humanArtValidated": false,
+      "globalClosed": false
+    },
+    {
+      "key": "Homeworld et habitats:target-v81-56-44",
+      "id": "target-v81-56-44",
+      "currentBindingState": "FAMILLE_SEULE_A_RECONCILIER",
+      "exactSources": [],
+      "familyPathsCount": 12,
+      "humanArtValidated": false,
+      "globalClosed": false
+    },
+    {
+      "key": "Homeworld et habitats:target-v81-56-45",
+      "id": "target-v81-56-45",
+      "currentBindingState": "FAMILLE_SEULE_A_RECONCILIER",
+      "exactSources": [],
+      "familyPathsCount": 12,
+      "humanArtValidated": false,
+      "globalClosed": false
+    },
+    {
+      "key": "Homeworld et habitats:target-v81-56-46",
+      "id": "target-v81-56-46",
+      "currentBindingState": "FAMILLE_SEULE_A_RECONCILIER",
+      "exactSources": [],
+      "familyPathsCount": 12,
+      "humanArtValidated": false,
+      "globalClosed": false
+    },
+    {
+      "key": "Homeworld et habitats:target-v81-56-47",
+      "id": "target-v81-56-47",
+      "currentBindingState": "FAMILLE_SEULE_A_RECONCILIER",
+      "exactSources": [],
+      "familyPathsCount": 12,
+      "humanArtValidated": false,
+      "globalClosed": false
+    },
+    {
+      "key": "Homeworld et habitats:target-v81-56-48",
+      "id": "target-v81-56-48",
+      "currentBindingState": "FAMILLE_SEULE_A_RECONCILIER",
+      "exactSources": [],
+      "familyPathsCount": 12,
+      "humanArtValidated": false,
+      "globalClosed": false
+    },
+    {
+      "key": "Homeworld et habitats:target-v81-56-49",
+      "id": "target-v81-56-49",
+      "currentBindingState": "FAMILLE_SEULE_A_RECONCILIER",
+      "exactSources": [],
+      "familyPathsCount": 12,
+      "humanArtValidated": false,
+      "globalClosed": false
+    },
+    {
+      "key": "Homeworld et habitats:target-v81-56-50",
+      "id": "target-v81-56-50",
+      "currentBindingState": "FAMILLE_SEULE_A_RECONCILIER",
+      "exactSources": [],
+      "familyPathsCount": 12,
+      "humanArtValidated": false,
+      "globalClosed": false
+    },
+    {
+      "key": "Homeworld et habitats:target-v81-56-51",
+      "id": "target-v81-56-51",
+      "currentBindingState": "FAMILLE_SEULE_A_RECONCILIER",
+      "exactSources": [],
+      "familyPathsCount": 12,
+      "humanArtValidated": false,
+      "globalClosed": false
+    },
+    {
+      "key": "Homeworld et habitats:target-v81-56-52",
+      "id": "target-v81-56-52",
+      "currentBindingState": "FAMILLE_SEULE_A_RECONCILIER",
+      "exactSources": [],
+      "familyPathsCount": 12,
+      "humanArtValidated": false,
+      "globalClosed": false
+    },
+    {
+      "key": "Homeworld et habitats:target-v81-56-53",
+      "id": "target-v81-56-53",
+      "currentBindingState": "FAMILLE_SEULE_A_RECONCILIER",
+      "exactSources": [],
+      "familyPathsCount": 12,
+      "humanArtValidated": false,
+      "globalClosed": false
+    },
+    {
+      "key": "Homeworld et habitats:target-v81-56-54",
+      "id": "target-v81-56-54",
+      "currentBindingState": "FAMILLE_SEULE_A_RECONCILIER",
+      "exactSources": [],
+      "familyPathsCount": 12,
+      "humanArtValidated": false,
+      "globalClosed": false
+    },
+    {
+      "key": "Homeworld et habitats:target-v81-56-55",
+      "id": "target-v81-56-55",
+      "currentBindingState": "FAMILLE_SEULE_A_RECONCILIER",
+      "exactSources": [],
+      "familyPathsCount": 12,
+      "humanArtValidated": false,
+      "globalClosed": false
+    },
+    {
+      "key": "Homeworld et habitats:target-v81-56-56",
+      "id": "target-v81-56-56",
+      "currentBindingState": "CANDIDAT_EXACT_PRESENT",
+      "exactSources": [
+        {
+          "path": "production/native-open-20261102/archives/industrial-architecture/target-v81-56-56-sas-hangar-native.png",
+          "origin": "V113_V114_EXACT_CANDIDATE",
+          "assetId": null,
+          "sha256": "592fff20a25c8a3041d6205997444c68e537925e4450ea02185734bdd771aca1",
+          "bytes": 1490856,
+          "sameBytePublicPaths": [],
+          "appLiteralReferences": [],
+          "rgbaAlphaBounds": [
+            0,
+            23,
+            1251,
+            1228
+          ],
+          "nativeEmptyMargins": [
+            0,
+            23,
+            3,
+            26
+          ],
+          "scope": "Text/byte reference search, not execution or visual admission"
+        }
+      ],
+      "familyPathsCount": 2,
+      "humanArtValidated": false,
+      "globalClosed": false
+    },
+    {
+      "key": "Homeworld et habitats:target-v81-56-57",
+      "id": "target-v81-56-57",
+      "currentBindingState": "FAMILLE_SEULE_A_RECONCILIER",
+      "exactSources": [],
+      "familyPathsCount": 12,
+      "humanArtValidated": false,
+      "globalClosed": false
+    },
+    {
+      "key": "Homeworld et habitats:target-v81-56-58",
+      "id": "target-v81-56-58",
+      "currentBindingState": "CANDIDAT_EXACT_PRESENT",
+      "exactSources": [
+        {
+          "path": "production/native-open-20261102/archives/fauna-energy/target-v81-56-58-energy-door-native.png",
+          "origin": "V113_V114_EXACT_CANDIDATE",
+          "assetId": null,
+          "sha256": "fed0391ae37a9f337ad5c7670489471063db40f52389d96498b9987171f3dbe9",
+          "bytes": 1699095,
+          "sameBytePublicPaths": [],
+          "appLiteralReferences": [],
+          "rgbaAlphaBounds": [
+            0,
+            0,
+            1236,
+            1254
+          ],
+          "nativeEmptyMargins": [
+            0,
+            0,
+            18,
+            0
+          ],
+          "scope": "Text/byte reference search, not execution or visual admission"
+        }
+      ],
+      "familyPathsCount": 3,
+      "humanArtValidated": false,
+      "globalClosed": false
+    },
+    {
+      "key": "Homeworld et habitats:target-v81-57-59",
+      "id": "target-v81-57-59",
+      "currentBindingState": "FAMILLE_SEULE_A_RECONCILIER",
+      "exactSources": [],
+      "familyPathsCount": 9,
+      "humanArtValidated": false,
+      "globalClosed": false
+    },
+    {
+      "key": "Homeworld et habitats:target-v81-57-60",
+      "id": "target-v81-57-60",
+      "currentBindingState": "FAMILLE_SEULE_A_RECONCILIER",
+      "exactSources": [],
+      "familyPathsCount": 9,
+      "humanArtValidated": false,
+      "globalClosed": false
+    },
+    {
+      "key": "Homeworld et habitats:target-v81-57-61",
+      "id": "target-v81-57-61",
+      "currentBindingState": "FAMILLE_SEULE_A_RECONCILIER",
+      "exactSources": [],
+      "familyPathsCount": 9,
+      "humanArtValidated": false,
+      "globalClosed": false
+    },
+    {
+      "key": "Homeworld et habitats:target-v81-57-62",
+      "id": "target-v81-57-62",
+      "currentBindingState": "FAMILLE_SEULE_A_RECONCILIER",
+      "exactSources": [],
+      "familyPathsCount": 9,
+      "humanArtValidated": false,
+      "globalClosed": false
+    },
+    {
+      "key": "Homeworld et habitats:target-v81-57-63",
+      "id": "target-v81-57-63",
+      "currentBindingState": "FAMILLE_SEULE_A_RECONCILIER",
+      "exactSources": [],
+      "familyPathsCount": 8,
+      "humanArtValidated": false,
+      "globalClosed": false
+    },
+    {
+      "key": "Homeworld et habitats:target-v81-57-64",
+      "id": "target-v81-57-64",
+      "currentBindingState": "FAMILLE_SEULE_A_RECONCILIER",
+      "exactSources": [],
+      "familyPathsCount": 9,
+      "humanArtValidated": false,
+      "globalClosed": false
+    },
+    {
+      "key": "Homeworld et habitats:target-v81-57-65",
+      "id": "target-v81-57-65",
+      "currentBindingState": "FAMILLE_SEULE_A_RECONCILIER",
+      "exactSources": [],
+      "familyPathsCount": 9,
+      "humanArtValidated": false,
+      "globalClosed": false
+    },
+    {
+      "key": "Homeworld et habitats:target-v81-57-66",
+      "id": "target-v81-57-66",
+      "currentBindingState": "FAMILLE_SEULE_A_RECONCILIER",
+      "exactSources": [],
+      "familyPathsCount": 11,
+      "humanArtValidated": false,
+      "globalClosed": false
+    },
+    {
+      "key": "Homeworld et habitats:target-v81-57-67",
+      "id": "target-v81-57-67",
+      "currentBindingState": "FAMILLE_SEULE_A_RECONCILIER",
+      "exactSources": [],
+      "familyPathsCount": 9,
+      "humanArtValidated": false,
+      "globalClosed": false
+    },
+    {
+      "key": "Homeworld et habitats:target-v81-57-68",
+      "id": "target-v81-57-68",
+      "currentBindingState": "FAMILLE_SEULE_A_RECONCILIER",
+      "exactSources": [],
+      "familyPathsCount": 9,
+      "humanArtValidated": false,
+      "globalClosed": false
+    },
+    {
+      "key": "Homeworld et habitats:target-v81-57-69",
+      "id": "target-v81-57-69",
+      "currentBindingState": "FAMILLE_SEULE_A_RECONCILIER",
+      "exactSources": [],
+      "familyPathsCount": 9,
+      "humanArtValidated": false,
+      "globalClosed": false
+    },
+    {
+      "key": "Homeworld et habitats:target-v81-57-70",
+      "id": "target-v81-57-70",
+      "currentBindingState": "FAMILLE_SEULE_A_RECONCILIER",
+      "exactSources": [],
+      "familyPathsCount": 9,
+      "humanArtValidated": false,
+      "globalClosed": false
+    },
+    {
+      "key": "Homeworld et habitats:target-v81-57-71",
+      "id": "target-v81-57-71",
+      "currentBindingState": "CANDIDAT_EXACT_PRESENT",
+      "exactSources": [
+        {
+          "path": "production/native-open-20261102/archives/fauna-energy/target-v81-57-71-emitter-left-native.png",
+          "origin": "V113_V114_EXACT_CANDIDATE",
+          "assetId": null,
+          "sha256": "6223d55bf97da84de22798a24e39f3c54c3d92d9368c7cb53fb1b5cb0e48bfeb",
+          "bytes": 1034401,
+          "sameBytePublicPaths": [],
+          "appLiteralReferences": [],
+          "rgbaAlphaBounds": [
+            23,
+            19,
+            1240,
+            1254
+          ],
+          "nativeEmptyMargins": [
+            23,
+            19,
+            14,
+            0
+          ],
+          "scope": "Text/byte reference search, not execution or visual admission"
+        }
+      ],
+      "familyPathsCount": 3,
+      "humanArtValidated": false,
+      "globalClosed": false
+    },
+    {
+      "key": "Homeworld et habitats:target-v81-57-72",
+      "id": "target-v81-57-72",
+      "currentBindingState": "CANDIDAT_EXACT_PRESENT",
+      "exactSources": [
+        {
+          "path": "production/native-open-20261102/archives/fauna-energy/target-v81-57-72-emitter-right-native.png",
+          "origin": "V113_V114_EXACT_CANDIDATE",
+          "assetId": null,
+          "sha256": "c3977773ab717e3f3729bca56e27ae28bbd0d29bfd8d4087d6c2684cd6d3836e",
+          "bytes": 1489415,
+          "sameBytePublicPaths": [],
+          "appLiteralReferences": [],
+          "rgbaAlphaBounds": [
+            0,
+            21,
+            1240,
+            1254
+          ],
+          "nativeEmptyMargins": [
+            0,
+            21,
+            14,
+            0
+          ],
+          "scope": "Text/byte reference search, not execution or visual admission"
+        }
+      ],
+      "familyPathsCount": 3,
+      "humanArtValidated": false,
+      "globalClosed": false
+    },
+    {
+      "key": "Homeworld et habitats:target-v81-57-73",
+      "id": "target-v81-57-73",
+      "currentBindingState": "CANDIDAT_EXACT_PRESENT",
+      "exactSources": [
+        {
+          "path": "production/native-open-20261102/archives/fauna-energy/target-v81-57-73-energy-field-native.png",
+          "origin": "V113_V114_EXACT_CANDIDATE",
+          "assetId": null,
+          "sha256": "983e9e47aa434447fe72378c36f4ca30d62350ab247f48d52fdf8f46e267fb96",
+          "bytes": 1020023,
+          "sameBytePublicPaths": [],
+          "appLiteralReferences": [],
+          "rgbaAlphaBounds": [
+            0,
+            0,
+            1254,
+            1254
+          ],
+          "nativeEmptyMargins": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "scope": "Text/byte reference search, not execution or visual admission"
+        }
+      ],
+      "familyPathsCount": 2,
+      "humanArtValidated": false,
+      "globalClosed": false
+    },
+    {
+      "key": "Homeworld et habitats:target-v81-69-242",
+      "id": "target-v81-69-242",
+      "currentBindingState": "FAMILLE_SEULE_A_RECONCILIER",
+      "exactSources": [],
+      "familyPathsCount": 12,
+      "humanArtValidated": false,
+      "globalClosed": false
+    },
+    {
+      "key": "Homeworld et habitats:target-v81-69-243",
+      "id": "target-v81-69-243",
+      "currentBindingState": "CANDIDAT_EXACT_PRESENT",
+      "exactSources": [
+        {
+          "path": "production/homeworld-v162/originals/HWA160-N10_amas-basalte-fracture.png",
+          "origin": "V162_CANDIDATE",
+          "assetId": "HWA160-N10",
+          "sha256": "53b7952334146be838ec87101faa575c0c498d750d8a2be76010c90c32ad1abb",
+          "bytes": 1235540,
+          "sameBytePublicPaths": [],
+          "appLiteralReferences": [],
+          "rgbaAlphaBounds": [
+            263,
+            218,
+            1246,
+            962
+          ],
+          "nativeEmptyMargins": [
+            263,
+            218,
+            290,
+            62
+          ],
+          "scope": "Text/byte reference search, not execution or visual admission"
+        }
+      ],
+      "familyPathsCount": 12,
+      "humanArtValidated": false,
+      "globalClosed": false
+    },
+    {
+      "key": "Homeworld et habitats:target-v81-69-244",
+      "id": "target-v81-69-244",
+      "currentBindingState": "FAMILLE_SEULE_A_RECONCILIER",
+      "exactSources": [],
+      "familyPathsCount": 12,
+      "humanArtValidated": false,
+      "globalClosed": false
+    },
+    {
+      "key": "Homeworld et habitats:target-v81-69-245",
+      "id": "target-v81-69-245",
+      "currentBindingState": "CANDIDAT_EXACT_PRESENT",
+      "exactSources": [
+        {
+          "path": "production/homeworld-v162/originals/HWA160-N05_paroi-falaise-volcanique.png",
+          "origin": "V162_CANDIDATE",
+          "assetId": "HWA160-N05",
+          "sha256": "09a23ca24b96c8860dd3775771e2e66ad51b2e0fdd7276b857e43a8c8ef4c899",
+          "bytes": 2144494,
+          "sameBytePublicPaths": [],
+          "appLiteralReferences": [],
+          "rgbaAlphaBounds": [
+            158,
+            235,
+            1380,
+            1272
+          ],
+          "nativeEmptyMargins": [
+            158,
+            235,
+            156,
+            264
+          ],
+          "scope": "Text/byte reference search, not execution or visual admission"
+        }
+      ],
+      "familyPathsCount": 5,
+      "humanArtValidated": false,
+      "globalClosed": false
+    },
+    {
+      "key": "Homeworld et habitats:target-v81-69-246",
+      "id": "target-v81-69-246",
+      "currentBindingState": "FAMILLE_SEULE_A_RECONCILIER",
+      "exactSources": [],
+      "familyPathsCount": 6,
+      "humanArtValidated": false,
+      "globalClosed": false
+    },
+    {
+      "key": "Homeworld et habitats:target-v81-69-247",
+      "id": "target-v81-69-247",
+      "currentBindingState": "FAMILLE_SEULE_A_RECONCILIER",
+      "exactSources": [],
+      "familyPathsCount": 9,
+      "humanArtValidated": false,
+      "globalClosed": false
+    },
+    {
+      "key": "Homeworld et habitats:target-v81-69-248",
+      "id": "target-v81-69-248",
+      "currentBindingState": "CANDIDAT_EXACT_PRESENT",
+      "exactSources": [
+        {
+          "path": "production/homeworld-v162/originals/HWA160-N08_crevasse-naturelle-ramifiee.png",
+          "origin": "V162_CANDIDATE",
+          "assetId": "HWA160-N08",
+          "sha256": "835865f147f93a17d41a8c695896a50e0ed4a7be19862b2512b95feae55a9549",
+          "bytes": 1481411,
+          "sameBytePublicPaths": [],
+          "appLiteralReferences": [],
+          "rgbaAlphaBounds": [
+            160,
+            475,
+            1206,
+            1105
+          ],
+          "nativeEmptyMargins": [
+            160,
+            475,
+            330,
+            431
+          ],
+          "scope": "Text/byte reference search, not execution or visual admission"
+        }
+      ],
+      "familyPathsCount": 12,
+      "humanArtValidated": false,
+      "globalClosed": false
+    },
+    {
+      "key": "Homeworld et habitats:target-v81-69-249",
+      "id": "target-v81-69-249",
+      "currentBindingState": "FAMILLE_SEULE_A_RECONCILIER",
+      "exactSources": [],
+      "familyPathsCount": 12,
+      "humanArtValidated": false,
+      "globalClosed": false
+    },
+    {
+      "key": "Homeworld et habitats:target-v81-69-250",
+      "id": "target-v81-69-250",
+      "currentBindingState": "CANDIDAT_EXACT_PRESENT",
+      "exactSources": [
+        {
+          "path": "production/homeworld-v162/originals/HWA160-N07_crevasse-naturelle-etroite.png",
+          "origin": "V162_CANDIDATE",
+          "assetId": "HWA160-N07",
+          "sha256": "a4ab4adf597545c0b165290409699578d518528d5a40adde6d364e1f43e863e2",
+          "bytes": 1403255,
+          "sameBytePublicPaths": [],
+          "appLiteralReferences": [],
+          "rgbaAlphaBounds": [
+            270,
+            298,
+            1680,
+            804
+          ],
+          "nativeEmptyMargins": [
+            270,
+            298,
+            240,
+            276
+          ],
+          "scope": "Text/byte reference search, not execution or visual admission"
+        }
+      ],
+      "familyPathsCount": 12,
+      "humanArtValidated": false,
+      "globalClosed": false
+    },
+    {
+      "key": "Homeworld et habitats:target-v81-69-251",
+      "id": "target-v81-69-251",
+      "currentBindingState": "FAMILLE_SEULE_A_RECONCILIER",
+      "exactSources": [],
+      "familyPathsCount": 12,
+      "humanArtValidated": false,
+      "globalClosed": false
+    },
+    {
+      "key": "Homeworld et habitats:target-v81-69-252",
+      "id": "target-v81-69-252",
+      "currentBindingState": "FAMILLE_SEULE_A_RECONCILIER",
+      "exactSources": [],
+      "familyPathsCount": 12,
+      "humanArtValidated": false,
+      "globalClosed": false
+    },
+    {
+      "key": "Homeworld et habitats:target-v81-69-253",
+      "id": "target-v81-69-253",
+      "currentBindingState": "FAMILLE_SEULE_A_RECONCILIER",
+      "exactSources": [],
+      "familyPathsCount": 12,
+      "humanArtValidated": false,
+      "globalClosed": false
+    },
+    {
+      "key": "Homeworld et habitats:target-v81-69-254",
+      "id": "target-v81-69-254",
+      "currentBindingState": "FAMILLE_SEULE_A_RECONCILIER",
+      "exactSources": [],
+      "familyPathsCount": 12,
+      "humanArtValidated": false,
+      "globalClosed": false
+    },
+    {
+      "key": "Homeworld et habitats:target-v81-69-255",
+      "id": "target-v81-69-255",
+      "currentBindingState": "FAMILLE_SEULE_A_RECONCILIER",
+      "exactSources": [],
+      "familyPathsCount": 12,
+      "humanArtValidated": false,
+      "globalClosed": false
+    },
+    {
+      "key": "Homeworld et habitats:target-v81-69-256",
+      "id": "target-v81-69-256",
+      "currentBindingState": "FAMILLE_SEULE_A_RECONCILIER",
+      "exactSources": [],
+      "familyPathsCount": 9,
+      "humanArtValidated": false,
+      "globalClosed": false
+    },
+    {
+      "key": "Homeworld et habitats:target-v81-70-257",
+      "id": "target-v81-70-257",
+      "currentBindingState": "FAMILLE_SEULE_A_RECONCILIER",
+      "exactSources": [],
+      "familyPathsCount": 2,
+      "humanArtValidated": false,
+      "globalClosed": false
+    },
+    {
+      "key": "Homeworld et habitats:target-v81-70-258",
+      "id": "target-v81-70-258",
+      "currentBindingState": "FAMILLE_SEULE_A_RECONCILIER",
+      "exactSources": [],
+      "familyPathsCount": 2,
+      "humanArtValidated": false,
+      "globalClosed": false
+    },
+    {
+      "key": "Homeworld et habitats:target-v81-70-259",
+      "id": "target-v81-70-259",
+      "currentBindingState": "FAMILLE_SEULE_A_RECONCILIER",
+      "exactSources": [],
+      "familyPathsCount": 2,
+      "humanArtValidated": false,
+      "globalClosed": false
+    },
+    {
+      "key": "Homeworld et habitats:target-v81-70-260",
+      "id": "target-v81-70-260",
+      "currentBindingState": "FAMILLE_SEULE_A_RECONCILIER",
+      "exactSources": [],
+      "familyPathsCount": 2,
+      "humanArtValidated": false,
+      "globalClosed": false
+    },
+    {
+      "key": "Homeworld et habitats:target-v81-70-261",
+      "id": "target-v81-70-261",
+      "currentBindingState": "CANDIDAT_EXACT_PRESENT",
+      "exactSources": [
+        {
+          "path": "production/homeworld-v162/originals/HWA160-N09_massif-sombre-premier-plan.png",
+          "origin": "V162_CANDIDATE",
+          "assetId": "HWA160-N09",
+          "sha256": "48a6a95ef6b2cca85875d739eeda3361bed7a34cefa817c850cc9a3d2ea67fb2",
+          "bytes": 903750,
+          "sameBytePublicPaths": [],
+          "appLiteralReferences": [],
+          "rgbaAlphaBounds": [
+            493,
+            315,
+            1069,
+            662
+          ],
+          "nativeEmptyMargins": [
+            493,
+            315,
+            467,
+            362
+          ],
+          "scope": "Text/byte reference search, not execution or visual admission"
+        }
+      ],
+      "familyPathsCount": 3,
+      "humanArtValidated": false,
+      "globalClosed": false
+    },
+    {
+      "key": "Homeworld et habitats:target-v81-70-262",
+      "id": "target-v81-70-262",
+      "currentBindingState": "FAMILLE_SEULE_A_RECONCILIER",
+      "exactSources": [],
+      "familyPathsCount": 2,
+      "humanArtValidated": false,
+      "globalClosed": false
+    },
+    {
+      "key": "Homeworld et habitats:target-v81-70-263",
+      "id": "target-v81-70-263",
+      "currentBindingState": "FAMILLE_SEULE_A_RECONCILIER",
+      "exactSources": [],
+      "familyPathsCount": 2,
+      "humanArtValidated": false,
+      "globalClosed": false
+    },
+    {
+      "key": "Homeworld et habitats:target-v81-70-264",
+      "id": "target-v81-70-264",
+      "currentBindingState": "FAMILLE_SEULE_A_RECONCILIER",
+      "exactSources": [],
+      "familyPathsCount": 2,
+      "humanArtValidated": false,
+      "globalClosed": false
+    },
+    {
+      "key": "Homeworld et habitats:target-v81-70-265",
+      "id": "target-v81-70-265",
+      "currentBindingState": "FAMILLE_SEULE_A_RECONCILIER",
+      "exactSources": [],
+      "familyPathsCount": 2,
+      "humanArtValidated": false,
+      "globalClosed": false
+    }
+  ],
+  "sources": [
+    {
+      "path": "app/game/data/homeworldAssetCatalogueTargetV81.json",
+      "sha256": "9f3fe5bb48ae4bbc7284006c15b17788e721f67822db3893fd1e142efc294e24"
+    },
+    {
+      "path": "production/homeworld-v161/manifest.json",
+      "sha256": "acd917116230824980be6f278c05315e600bdcef51874244e7a887e839c9eaab"
+    },
+    {
+      "path": "production/homeworld-v162/manifest.json",
+      "sha256": "176c98f888c2044e4e1f0af1ed952cd4272d19689783687138110808d61abf79"
+    },
+    {
+      "path": "app/game/HomeworldHub.tsx",
+      "sha256": "1fe63077ed64a1d8e58cfbbff163b5d457702cb8b8d1fec9adb92072f7354e45"
+    },
+    {
+      "path": "app/game/HomeworldBackdropV81.tsx",
+      "sha256": "1213e733a517f03c6edd7fc9a6e7be7880baa3b7623454f74b282aa92a388331"
+    },
+    {
+      "path": "app/game/HomeworldRetainingSupportV82.tsx",
+      "sha256": "e1afcfd8601b7dd832cfd73df65ffabd2383a272521df6090c539e9e27b24f18"
+    },
+    {
+      "path": "app/game/HomeworldWorldSceneV77.tsx",
+      "sha256": "a5a67c966aa81947e2275f96c292f963fb216585040b598fc1cdcc93b133164f"
+    },
+    {
+      "path": "app/game/data/homeworldNativeArchitectureV81.json",
+      "sha256": "6f24ee3298c5962c2f1a9ece431f0353821e43eadc59dbe151271c405b797f90"
+    },
+    {
+      "path": "app/game/data/homeworldConnectorArtV82.json",
+      "sha256": "5972806415cf6113bc5f4ef60b71990ba3327750437006e3dee6d5b3a32f72c6"
+    },
+    {
+      "path": "app/game/data/homeworldLiftCabinArtV82.json",
+      "sha256": "8c71da947b1b65cd7912c2e131532f0f91689ad1da5f63b72a5d040593e88902"
+    },
+    {
+      "path": "app/game/systems/homeworldLiftCabinV82.ts",
+      "sha256": "262a7b603e3ec794976b28ed7383869326e1db107a7dfd37965843b1fbd3fe0a"
+    },
+    {
+      "path": "app/game/systems/homeworldGeometryV64.ts",
+      "sha256": "2ba2b827f2b541e3cc276825de339bcd9a51e9c723bd6116c7a5b0ab419ccbf3"
+    },
+    {
+      "path": "app/game/systems/homeworldWorldV77.ts",
+      "sha256": "c5526500ddf413220e34a10b6c538e3d132d984fc8b83981a5eb1ff493a080ef"
+    }
+  ],
+  "p0Findings": {
+    "QA-004": {
+      "implementedEvidence": "Geometry model adultHeight=100, adultMetres=2.3 and homeworldBuildingDoorwayV64 clearHeight; lift gantry author provenance nominal portal ~120u against 100u actor.",
+      "remaining": "Actual browser comparison of every selected usable door/candidate against the actor, proportions and artist confirmation not performed. Native source metadata explicitly says NOT_GAMEPLAY_QA."
+    },
+    "QA-005": {
+      "implementedEvidence": "Geometry model yaw0,pitch35; V162 Blender-generated candidates list actual cameraPitchDegrees35/cameraYawDegrees0 and sources.",
+      "remaining": "V161 N01–03 cameraMeasured=false/scale NON_MESUREE; 17 exact candidate files not imported; native requested camera is not a measured human-art/camera certification for all sources."
+    },
+    "QA-006": {
+      "implementedEvidence": "Runtime building collisions derive authored support polygon/ground frame and body footprint in homeworldGeometryV64 and homeworldWorldV77, separately from roof alpha. Known existing71anchors/9769segment audit unchanged.",
+      "remaining": "No collision/door/approach implantation or measurement exists for V161/V162 candidates. Existing clean access sample does not admit these absent runtime props."
+    },
+    "QA-007": {
+      "implementedEvidence": "V162 produces independent waterfall PNG N06 separate from cliffs; native .blend sources available. Existing runtime lift uses separate cabin and gantry.",
+      "remaining": "Water/rock, laser/pylon, statue/base target-by-target human inspection and source-independent assets not globally attested. Ten static candidates or one separate waterfall cannot close all composites."
+    }
+  },
+  "importantDistinctions": [
+    "77 family-only rows are unresolved exact identity, not evidence of absence.",
+    "17 exact candidates have source bindings; none may be called runtime-imported without proof.",
+    "Three existing public targets have active code usage (basalt foundation, lift cabin, adult lift gantry).",
+    "clan-lift-fixed-frame.png has no app literal reference; the active gantry is clan-lift-gantry-adult.png.",
+    "N01/02/03 alpha reaches at least one edge; source margins are zero. Do not claim clean native margins or silently pad/scale them.",
+    "V162 camera geometry/alpha facts are a completed production phase, not runtime/human/1:1 admission."
+  ]
+}

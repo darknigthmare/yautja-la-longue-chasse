@@ -1,0 +1,63 @@
+{
+  "allOriginalsOpened": true,
+  "inspector": "Codex agent technical inspection of the original native PNGs",
+  "humanArtApproval": false,
+  "scope": "Render continuity and viewport inspection for the observed T15 workload; not official PHG/UV artistic certification.",
+  "screenshots": [
+    {
+      "filename": "00-viewport-start.png",
+      "sha256": "b06a332614d76cf4300f3161742d2a0dd1fb530caa4e11acf959f3e2c99ce96c",
+      "openedOriginal": true,
+      "observation": "Atelier natif, rig complet et commandes visibles au départ. La campagne de test est explicitement déclarée ; aucune campagne utilisateur n’est manipulée."
+    },
+    {
+      "filename": "00-rig-start.png",
+      "sha256": "2b9167d33a5ab888602ceff86d345080adde620f1e4f5e2e66348a26df089047",
+      "openedOriginal": true,
+      "observation": "Rig Alpha initial entier dans le cadre, tête/équipement/jambes visibles. Les études de matière ne deviennent pas une homologation PHG 1:1."
+    },
+    {
+      "filename": "rig-minute-10.png",
+      "sha256": "c96a7f7ad78ec9a8df7631e3aae629f7dd817f6ed476a2510f7814b2e099b15a",
+      "openedOriginal": true,
+      "observation": "Le rig reste présent et les matières/mask ont changé à dix minutes ; aucune image manquante visible dans cette capture."
+    },
+    {
+      "filename": "rig-minute-20.png",
+      "sha256": "8cc31a23644561fa15bde572a6c325a57aa06b51753d27cd2dadf0ca09157912",
+      "openedOriginal": true,
+      "observation": "Variation claire du masque et surfaces du corps visibles à vingt minutes ; géométrie et cadrage conservés."
+    },
+    {
+      "filename": "rig-minute-30.png",
+      "sha256": "c5f75bce39ad4a3a19ec9193cf510c10157f5bd32c16f0b2ced2f8398fa79205",
+      "openedOriginal": true,
+      "observation": "Le rig reste rendu à trente minutes ; textures différentes et équipement toujours visible."
+    },
+    {
+      "filename": "rig-minute-40.png",
+      "sha256": "e399e9c8081e45d917b2375e000f37be34088ecd6539fbcdc6215d0f142ce577",
+      "openedOriginal": true,
+      "observation": "Rendu toujours actif à quarante minutes, tête et membres dans le cadre, sans écran vide observé."
+    },
+    {
+      "filename": "rig-minute-50.png",
+      "sha256": "6c32c6ca8f8fd2e0c5cae793d559f4c8d4f83ff3c3426b770357911aff83bcf0",
+      "openedOriginal": true,
+      "observation": "Le masque clair et les autres matières sont visibles à cinquante minutes ; continuité de la prévisualisation."
+    },
+    {
+      "filename": "99-rig-end.png",
+      "sha256": "b111df28d3e50cc82573a7de5181c48ad9993c8a35a76f5f78ca9106bda3b376",
+      "openedOriginal": true,
+      "observation": "Rig complet encore rendu après l’heure réelle et 300 validations ; aucune certification d’UV, d’anatomie canonique ou des angles absents n’est déduite."
+    },
+    {
+      "filename": "99-viewport-end.png",
+      "sha256": "fd999d7665704311de9a17f7b22e94ce6311245b9b8af1390056d6ff61e2cb55",
+      "openedOriginal": true,
+      "observation": "Atelier et commandes encore présents au terme de l’essai. Les compteurs d’honneur/marques affichés restent à zéro."
+    }
+  ],
+  "plotOpened": true
+}

@@ -1,0 +1,1613 @@
+{
+  "schemaVersion": 1,
+  "asOf": "2026-11-09T05:56:34.444493+00:00",
+  "baseCommit": "39b601ce1873a1f400d2f545f0fab97691b779e3",
+  "inventory": {
+    "path": "/workspace/p0p1-20261109/inventory/Personnalisation-et-arsenal.json",
+    "sha256": "bc58ae26ce0dd573fd017f9b9f52af427edaca3661e6f63d8533290b58167163",
+    "originalSubjects": 1806,
+    "supplementalSubjects": 5,
+    "subjects": 1811
+  },
+  "sourceFiles": [
+    {
+      "path": "app/game/hunterChromaticsV113.ts",
+      "sha256": "de376a5e48991493ef462cba96446bec2f80670e6265a591df4d5cb09d0be0d4"
+    },
+    {
+      "path": "app/game/hunterMaterialsV113.ts",
+      "sha256": "5349e6cded5287ca3ccded1b2a1935767152e651e7d1388c9595e2dcc81c5531"
+    },
+    {
+      "path": "app/game/hunterVisuals.ts",
+      "sha256": "8e0fc565a56904952d1d39092d9071582422e5289b89fdb13ae7f878c4a85882"
+    },
+    {
+      "path": "app/game/phgBiomaskStudiesV132.ts",
+      "sha256": "e250e4a9d49607b5351e941c3aca4618e82d1072e192bee5f48873efc196141e"
+    },
+    {
+      "path": "app/game/phgBiomaskTintsV131.ts",
+      "sha256": "ccb01eef1230fc2c2d24d3645272f82010a608f3a3c38c27409835b48ca8c4bb"
+    },
+    {
+      "path": "app/game/yautjaDecalsV133.ts",
+      "sha256": "42721b8ece6aec3047b9f9803847bebe0ce6725d005924ab1ced3ec091335f40"
+    },
+    {
+      "path": "app/game/conceptBiomasksV133.ts",
+      "sha256": "0604a2a5d9572c2b5eb448a82150005e4972a7548885e284d525b3ab933c2d60"
+    },
+    {
+      "path": "app/game/data/phgOfficialCosmeticsV141.json",
+      "sha256": "83d25efc2059966fda65aa16fa41e7f21efba1da2068751df6274b49a538c7cb"
+    },
+    {
+      "path": "app/game/data/phgDriveV120Catalog.json",
+      "sha256": "57e2c6adc17e632287600392aabbcd6e477dd5ec39eda33ff4fb24bf54ad5e0f"
+    },
+    {
+      "path": "app/game/data/phgDriveV120Installed.json",
+      "sha256": "cdce8eb35001650de1739e6c275f3f121ed333dcdadb169fd48b982c4e4541eb"
+    },
+    {
+      "path": "app/game/data/driveLatestSpritesV85.json",
+      "sha256": "1d6a02cddccc0c670f0e97d5a54afc69f5c0e6887026049d54aabac318cf788a"
+    },
+    {
+      "path": "app/game/data/phgVisualFidelityQueueV122.json",
+      "sha256": "d12a769aa9678c0037690130765bf3cfca54c12383df1fadfc966a56054e6178"
+    },
+    {
+      "path": "app/game/GameClient.tsx",
+      "sha256": "cb9e7b8c9ed38a5fb5c112905be169246bdef5b136408a3207fb307de32f2972"
+    },
+    {
+      "path": "app/game/HunterRigPreview.tsx",
+      "sha256": "fcfedbad9f84c69a619f66df437dd4560bd2ada8d65e0359e288dcd3ac98fc93"
+    }
+  ],
+  "sourceWorkbooks": [
+    {
+      "path": "docs/production/Yautja_PHG_Backlog_Production_V137.xlsx",
+      "sha256": "6f5cc147fbe428c3c2245307ab1fa65dcca3135f480dd12d383a29446c6ff992"
+    },
+    {
+      "path": "docs/production/Yautja_PHG_Personnalisation_Audit_Production_V137.xlsx",
+      "sha256": "913935157ddd804b82aeb0b0c69a1e99caa9bb8578efb174e10a144b1ea93b7e"
+    },
+    {
+      "path": "docs/production/Yautja_PHG_QA_Visual_Morphologies_V141.xlsx",
+      "sha256": "1d3a4059d23a4c3e090fc52d500ad3b8c06b78ca9c88424c74a971730d1fe6a6"
+    },
+    {
+      "path": "docs/production/Yautja_PHG_Implementation_Status_V137.xlsx",
+      "sha256": "701b3556fef308b9a7cc216b7912f0b7d35a60645755831ac238280b7d670472"
+    },
+    {
+      "path": "docs/Yautja_Gauntlets_V144_Controle_Campagne.xlsx",
+      "sha256": "75ce6597c4a478ca831984d49d02e7864cf7ad64560830898b0ccf031135efe3"
+    },
+    {
+      "path": "docs/production/Yautja_PHG_Fidelite_1to1_V137.xlsx",
+      "sha256": "8fda523dbcb1fe5122a6283df5ee3f9c8e4e1548b1ea44b09332d335824cab73"
+    }
+  ],
+  "method": "Tous les sujets conservés, IDs exacts/alias déclarés, contexte Excel original. Preuves de source/famille distinctes des observations navigateur et approbations artistiques. Aucun non-observé transformé en absent du code.",
+  "counts": {
+    "subjects": 1811,
+    "mapped": 1811,
+    "unmapped": 0,
+    "diagnoses": {
+      "ACCESSOIRE_DISTINCT_A_PRODUIRE_RACCORDER": 20,
+      "PARTIEL_SOURCE_ADMIS_REVUE_OUVERTE": 1464,
+      "REFERENCE_NOMMEE_OBJET_OU_PIXELS_NON_QUALIFIES": 36,
+      "REFERENCE_PHG_ATTRIBUEE_UV_MANQUANTE": 30,
+      "CONTRAT_FAMILLE_PREUVE_BORNEE_CRITERE_OUVERT": 112,
+      "BLOQUE_SOURCE_LOCALE_ADMISSION": 149
+    },
+    "entities": 392,
+    "families": 44,
+    "humanArtReviewClosed": 0,
+    "officialUV1to1Closed": 0
+  },
+  "runtimeAssertions": {
+    "allRegisteredMaterialsAdmitted": true,
+    "allRegisteredDecalsAdmitted": true,
+    "allRegisteredAssetFilesPresent": true,
+    "allSelectedMaskFilesPresent": true,
+    "allAtlasTilesContainVisiblePixels": true,
+    "allPinnedSourceHashesMatch": true,
+    "driveUninstalledRejected": true,
+    "unknownMaskRejected": true,
+    "scopeFilterMatchesEligibility": true
+  },
+  "unmapped": [],
+  "families": [
+    {
+      "family": "149 matières V120 non installées",
+      "entityKeys": [
+        "family:v120"
+      ],
+      "entities": 1,
+      "subjects": 4,
+      "runtimeAdmittedEntities": 0,
+      "localImagePaths": [],
+      "missingLocalImagePaths": [],
+      "diagnoses": {
+        "CONTRAT_FAMILLE_PREUVE_BORNEE_CRITERE_OUVERT": 4
+      },
+      "humanArtReviewClosed": 0,
+      "officialUV1to1Closed": 0
+    },
+    {
+      "family": "26 masques V62/V3 existants",
+      "entityKeys": [
+        "family:existing-masks"
+      ],
+      "entities": 1,
+      "subjects": 1,
+      "runtimeAdmittedEntities": 0,
+      "localImagePaths": [],
+      "missingLocalImagePaths": [],
+      "diagnoses": {
+        "CONTRAT_FAMILLE_PREUVE_BORNEE_CRITERE_OUVERT": 1
+      },
+      "humanArtReviewClosed": 0,
+      "officialUV1to1Closed": 0
+    },
+    {
+      "family": "34 références de fidélité V122",
+      "entityKeys": [
+        "family:references"
+      ],
+      "entities": 1,
+      "subjects": 7,
+      "runtimeAdmittedEntities": 0,
+      "localImagePaths": [],
+      "missingLocalImagePaths": [],
+      "diagnoses": {
+        "CONTRAT_FAMILLE_PREUVE_BORNEE_CRITERE_OUVERT": 7
+      },
+      "humanArtReviewClosed": 0,
+      "officialUV1to1Closed": 0
+    },
+    {
+      "family": "48 decals originaux V133",
+      "entityKeys": [
+        "family:decals"
+      ],
+      "entities": 1,
+      "subjects": 8,
+      "runtimeAdmittedEntities": 0,
+      "localImagePaths": [],
+      "missingLocalImagePaths": [],
+      "diagnoses": {
+        "CONTRAT_FAMILLE_PREUVE_BORNEE_CRITERE_OUVERT": 8
+      },
+      "humanArtReviewClosed": 0,
+      "officialUV1to1Closed": 0
+    },
+    {
+      "family": "Atlas/FPS/mémoire: mesure longue requise",
+      "entityKeys": [
+        "family:soak"
+      ],
+      "entities": 1,
+      "subjects": 3,
+      "runtimeAdmittedEntities": 0,
+      "localImagePaths": [],
+      "missingLocalImagePaths": [],
+      "diagnoses": {
+        "CONTRAT_FAMILLE_PREUVE_BORNEE_CRITERE_OUVERT": 3
+      },
+      "humanArtReviewClosed": 0,
+      "officialUV1to1Closed": 0
+    },
+    {
+      "family": "Contrat canal armor",
+      "entityKeys": [
+        "family:channel-armor"
+      ],
+      "entities": 1,
+      "subjects": 5,
+      "runtimeAdmittedEntities": 0,
+      "localImagePaths": [],
+      "missingLocalImagePaths": [],
+      "diagnoses": {
+        "CONTRAT_FAMILLE_PREUVE_BORNEE_CRITERE_OUVERT": 5
+      },
+      "humanArtReviewClosed": 0,
+      "officialUV1to1Closed": 0
+    },
+    {
+      "family": "Contrat canal biomask",
+      "entityKeys": [
+        "family:channel-biomask"
+      ],
+      "entities": 1,
+      "subjects": 5,
+      "runtimeAdmittedEntities": 0,
+      "localImagePaths": [],
+      "missingLocalImagePaths": [],
+      "diagnoses": {
+        "CONTRAT_FAMILLE_PREUVE_BORNEE_CRITERE_OUVERT": 5
+      },
+      "humanArtReviewClosed": 0,
+      "officialUV1to1Closed": 0
+    },
+    {
+      "family": "Contrat canal dreads",
+      "entityKeys": [
+        "family:channel-dreads"
+      ],
+      "entities": 1,
+      "subjects": 5,
+      "runtimeAdmittedEntities": 0,
+      "localImagePaths": [],
+      "missingLocalImagePaths": [],
+      "diagnoses": {
+        "CONTRAT_FAMILLE_PREUVE_BORNEE_CRITERE_OUVERT": 5
+      },
+      "humanArtReviewClosed": 0,
+      "officialUV1to1Closed": 0
+    },
+    {
+      "family": "Contrat canal outfit",
+      "entityKeys": [
+        "family:channel-outfit"
+      ],
+      "entities": 1,
+      "subjects": 5,
+      "runtimeAdmittedEntities": 0,
+      "localImagePaths": [],
+      "missingLocalImagePaths": [],
+      "diagnoses": {
+        "CONTRAT_FAMILLE_PREUVE_BORNEE_CRITERE_OUVERT": 5
+      },
+      "humanArtReviewClosed": 0,
+      "officialUV1to1Closed": 0
+    },
+    {
+      "family": "Contrat canal skin",
+      "entityKeys": [
+        "family:channel-skin"
+      ],
+      "entities": 1,
+      "subjects": 5,
+      "runtimeAdmittedEntities": 0,
+      "localImagePaths": [],
+      "missingLocalImagePaths": [],
+      "diagnoses": {
+        "CONTRAT_FAMILLE_PREUVE_BORNEE_CRITERE_OUVERT": 5
+      },
+      "humanArtReviewClosed": 0,
+      "officialUV1to1Closed": 0
+    },
+    {
+      "family": "Contrat decal armor",
+      "entityKeys": [
+        "family:decal-armor"
+      ],
+      "entities": 1,
+      "subjects": 5,
+      "runtimeAdmittedEntities": 0,
+      "localImagePaths": [],
+      "missingLocalImagePaths": [],
+      "diagnoses": {
+        "CONTRAT_FAMILLE_PREUVE_BORNEE_CRITERE_OUVERT": 5
+      },
+      "humanArtReviewClosed": 0,
+      "officialUV1to1Closed": 0
+    },
+    {
+      "family": "Contrat decal biomask",
+      "entityKeys": [
+        "family:decal-biomask"
+      ],
+      "entities": 1,
+      "subjects": 5,
+      "runtimeAdmittedEntities": 0,
+      "localImagePaths": [],
+      "missingLocalImagePaths": [],
+      "diagnoses": {
+        "CONTRAT_FAMILLE_PREUVE_BORNEE_CRITERE_OUVERT": 5
+      },
+      "humanArtReviewClosed": 0,
+      "officialUV1to1Closed": 0
+    },
+    {
+      "family": "Contrat decal body",
+      "entityKeys": [
+        "family:decal-body"
+      ],
+      "entities": 1,
+      "subjects": 5,
+      "runtimeAdmittedEntities": 0,
+      "localImagePaths": [],
+      "missingLocalImagePaths": [],
+      "diagnoses": {
+        "CONTRAT_FAMILLE_PREUVE_BORNEE_CRITERE_OUVERT": 5
+      },
+      "humanArtReviewClosed": 0,
+      "officialUV1to1Closed": 0
+    },
+    {
+      "family": "Contrat decal face",
+      "entityKeys": [
+        "family:decal-face"
+      ],
+      "entities": 1,
+      "subjects": 5,
+      "runtimeAdmittedEntities": 0,
+      "localImagePaths": [],
+      "missingLocalImagePaths": [],
+      "diagnoses": {
+        "CONTRAT_FAMILLE_PREUVE_BORNEE_CRITERE_OUVERT": 5
+      },
+      "humanArtReviewClosed": 0,
+      "officialUV1to1Closed": 0
+    },
+    {
+      "family": "Contrat sauvegarde/migration chromatique",
+      "entityKeys": [
+        "family:save"
+      ],
+      "entities": 1,
+      "subjects": 5,
+      "runtimeAdmittedEntities": 0,
+      "localImagePaths": [],
+      "missingLocalImagePaths": [],
+      "diagnoses": {
+        "CONTRAT_FAMILLE_PREUVE_BORNEE_CRITERE_OUVERT": 5
+      },
+      "humanArtReviewClosed": 0,
+      "officialUV1to1Closed": 0
+    },
+    {
+      "family": "Coques conceptuelles V133",
+      "entityKeys": [
+        "mask:concept-v133-glypic",
+        "mask:concept-v133-instinct",
+        "mask:concept-v133-nova",
+        "mask:concept-v133-paroxysm",
+        "mask:concept-v133-requiem",
+        "mask:concept-v133-tyrant",
+        "mask:concept-v133-warlord"
+      ],
+      "entities": 7,
+      "subjects": 133,
+      "runtimeAdmittedEntities": 7,
+      "localImagePaths": [
+        "/game/assets/v133/concept-masks/glypic.webp",
+        "/game/assets/v133/concept-masks/instinct.webp",
+        "/game/assets/v133/concept-masks/nova.webp",
+        "/game/assets/v133/concept-masks/paroxysm.webp",
+        "/game/assets/v133/concept-masks/requiem.webp",
+        "/game/assets/v133/concept-masks/tyrant.webp",
+        "/game/assets/v133/concept-masks/warlord.webp"
+      ],
+      "missingLocalImagePaths": [],
+      "diagnoses": {
+        "PARTIEL_SOURCE_ADMIS_REVUE_OUVERTE": 133
+      },
+      "humanArtReviewClosed": 0,
+      "officialUV1to1Closed": 0
+    },
+    {
+      "family": "Decals originaux V133 / armor",
+      "entityKeys": [
+        "decal:clan-v133-armor-ancient-etch",
+        "decal:clan-v133-armor-blooded-sigil",
+        "decal:clan-v133-armor-bone-paint",
+        "decal:clan-v133-armor-ceremonial-inlay",
+        "decal:clan-v133-armor-hunting-glyph",
+        "decal:clan-v133-armor-ritual-mark",
+        "decal:clan-v133-armor-scorched-line",
+        "decal:clan-v133-armor-serpent-crest",
+        "decal:clan-v133-armor-triple-claw",
+        "decal:clan-v133-armor-victory-mark",
+        "decal:clan-v133-armor-war-scratch",
+        "decal:clan-v133-armor-wounded-mesh"
+      ],
+      "entities": 12,
+      "subjects": 240,
+      "runtimeAdmittedEntities": 12,
+      "localImagePaths": [
+        "/game/assets/v133/decals/decal-atlas.webp"
+      ],
+      "missingLocalImagePaths": [],
+      "diagnoses": {
+        "PARTIEL_SOURCE_ADMIS_REVUE_OUVERTE": 240
+      },
+      "humanArtReviewClosed": 0,
+      "officialUV1to1Closed": 0
+    },
+    {
+      "family": "Decals originaux V133 / biomask",
+      "entityKeys": [
+        "decal:clan-v133-biomask-ancient-etch",
+        "decal:clan-v133-biomask-blooded-sigil",
+        "decal:clan-v133-biomask-bone-paint",
+        "decal:clan-v133-biomask-ceremonial-inlay",
+        "decal:clan-v133-biomask-hunting-glyph",
+        "decal:clan-v133-biomask-ritual-mark",
+        "decal:clan-v133-biomask-scorched-line",
+        "decal:clan-v133-biomask-serpent-crest",
+        "decal:clan-v133-biomask-triple-claw",
+        "decal:clan-v133-biomask-victory-mark",
+        "decal:clan-v133-biomask-war-scratch",
+        "decal:clan-v133-biomask-wounded-mesh"
+      ],
+      "entities": 12,
+      "subjects": 240,
+      "runtimeAdmittedEntities": 12,
+      "localImagePaths": [
+        "/game/assets/v133/decals/decal-atlas.webp"
+      ],
+      "missingLocalImagePaths": [],
+      "diagnoses": {
+        "PARTIEL_SOURCE_ADMIS_REVUE_OUVERTE": 240
+      },
+      "humanArtReviewClosed": 0,
+      "officialUV1to1Closed": 0
+    },
+    {
+      "family": "Decals originaux V133 / body",
+      "entityKeys": [
+        "decal:clan-v133-body-ancient-etch",
+        "decal:clan-v133-body-blooded-sigil",
+        "decal:clan-v133-body-bone-paint",
+        "decal:clan-v133-body-ceremonial-inlay",
+        "decal:clan-v133-body-hunting-glyph",
+        "decal:clan-v133-body-ritual-mark",
+        "decal:clan-v133-body-scorched-line",
+        "decal:clan-v133-body-serpent-crest",
+        "decal:clan-v133-body-triple-claw",
+        "decal:clan-v133-body-victory-mark",
+        "decal:clan-v133-body-war-scratch",
+        "decal:clan-v133-body-wounded-mesh"
+      ],
+      "entities": 12,
+      "subjects": 240,
+      "runtimeAdmittedEntities": 12,
+      "localImagePaths": [
+        "/game/assets/v133/decals/decal-atlas.webp"
+      ],
+      "missingLocalImagePaths": [],
+      "diagnoses": {
+        "PARTIEL_SOURCE_ADMIS_REVUE_OUVERTE": 240
+      },
+      "humanArtReviewClosed": 0,
+      "officialUV1to1Closed": 0
+    },
+    {
+      "family": "Decals originaux V133 / face",
+      "entityKeys": [
+        "decal:clan-v133-face-ancient-etch",
+        "decal:clan-v133-face-blooded-sigil",
+        "decal:clan-v133-face-bone-paint",
+        "decal:clan-v133-face-ceremonial-inlay",
+        "decal:clan-v133-face-hunting-glyph",
+        "decal:clan-v133-face-ritual-mark",
+        "decal:clan-v133-face-scorched-line",
+        "decal:clan-v133-face-serpent-crest",
+        "decal:clan-v133-face-triple-claw",
+        "decal:clan-v133-face-victory-mark",
+        "decal:clan-v133-face-war-scratch",
+        "decal:clan-v133-face-wounded-mesh"
+      ],
+      "entities": 12,
+      "subjects": 240,
+      "runtimeAdmittedEntities": 12,
+      "localImagePaths": [
+        "/game/assets/v133/decals/decal-atlas.webp"
+      ],
+      "missingLocalImagePaths": [],
+      "diagnoses": {
+        "PARTIEL_SOURCE_ADMIS_REVUE_OUVERTE": 240
+      },
+      "humanArtReviewClosed": 0,
+      "officialUV1to1Closed": 0
+    },
+    {
+      "family": "Gauntlets campagne hors admission PHG",
+      "entityKeys": [
+        "family:gauntlets"
+      ],
+      "entities": 1,
+      "subjects": 5,
+      "runtimeAdmittedEntities": 0,
+      "localImagePaths": [],
+      "missingLocalImagePaths": [],
+      "diagnoses": {
+        "CONTRAT_FAMILLE_PREUVE_BORNEE_CRITERE_OUVERT": 5
+      },
+      "humanArtReviewClosed": 0,
+      "officialUV1to1Closed": 0
+    },
+    {
+      "family": "Géométries PHG candidates sans objet sélectionnable",
+      "entityKeys": [
+        "mask-candidate:city-rebreather-phg",
+        "mask-candidate:haze-phg",
+        "mask-candidate:mr-black-phg",
+        "mask-candidate:rival-phg",
+        "mask-candidate:saber-phg",
+        "mask-candidate:tank-phg",
+        "mask-candidate:vex-phg",
+        "mask-candidate:viking-phg",
+        "mask-candidate:wretch-phg"
+      ],
+      "entities": 9,
+      "subjects": 18,
+      "runtimeAdmittedEntities": 0,
+      "localImagePaths": [],
+      "missingLocalImagePaths": [],
+      "diagnoses": {
+        "REFERENCE_NOMMEE_OBJET_OU_PIXELS_NON_QUALIFIES": 18
+      },
+      "humanArtReviewClosed": 0,
+      "officialUV1to1Closed": 0
+    },
+    {
+      "family": "Livraison/CI/merge/droits: critère externe",
+      "entityKeys": [
+        "family:release"
+      ],
+      "entities": 1,
+      "subjects": 2,
+      "runtimeAdmittedEntities": 0,
+      "localImagePaths": [],
+      "missingLocalImagePaths": [],
+      "diagnoses": {
+        "CONTRAT_FAMILLE_PREUVE_BORNEE_CRITERE_OUVERT": 2
+      },
+      "humanArtReviewClosed": 0,
+      "officialUV1to1Closed": 0
+    },
+    {
+      "family": "Masques existants V62/V3",
+      "entityKeys": [
+        "mask:berserker",
+        "mask:boar",
+        "mask:celtic",
+        "mask:chopper",
+        "mask:city",
+        "mask:clan-arete-acier",
+        "mask:clan-carapace-sombre",
+        "mask:clan-cendre-balafree",
+        "mask:clan-cuivre-remparts",
+        "mask:clan-entrelacs-forge",
+        "mask:clan-filigrane-cuivre",
+        "mask:clan-gardien-ivoire",
+        "mask:clan-os-grave",
+        "mask:clan-patine-dunes",
+        "mask:clan-veilleur-cendres",
+        "mask:clan-voile-argent",
+        "mask:dek",
+        "mask:elder",
+        "mask:enforcer",
+        "mask:falconer",
+        "mask:feral",
+        "mask:fugitive",
+        "mask:jungle",
+        "mask:scar",
+        "mask:snake",
+        "mask:wolf"
+      ],
+      "entities": 26,
+      "subjects": 45,
+      "runtimeAdmittedEntities": 26,
+      "localImagePaths": [
+        "/game/assets/v3/actors/yautja/hunter/masks/berserker.webp",
+        "/game/assets/v3/actors/yautja/hunter/masks/celtic.webp",
+        "/game/assets/v3/actors/yautja/hunter/masks/chopper.webp",
+        "/game/assets/v3/actors/yautja/hunter/masks/city.webp",
+        "/game/assets/v3/actors/yautja/hunter/masks/dek.webp",
+        "/game/assets/v3/actors/yautja/hunter/masks/elder.webp",
+        "/game/assets/v3/actors/yautja/hunter/masks/enforcer.webp",
+        "/game/assets/v3/actors/yautja/hunter/masks/feral.webp",
+        "/game/assets/v3/actors/yautja/hunter/masks/fugitive.webp",
+        "/game/assets/v3/actors/yautja/hunter/masks/jungle.webp",
+        "/game/assets/v3/actors/yautja/hunter/masks/registered/berserker.webp",
+        "/game/assets/v3/actors/yautja/hunter/masks/registered/celtic.webp",
+        "/game/assets/v3/actors/yautja/hunter/masks/registered/chopper.webp",
+        "/game/assets/v3/actors/yautja/hunter/masks/registered/city.webp",
+        "/game/assets/v3/actors/yautja/hunter/masks/registered/dek.webp",
+        "/game/assets/v3/actors/yautja/hunter/masks/registered/elder.webp",
+        "/game/assets/v3/actors/yautja/hunter/masks/registered/enforcer.webp",
+        "/game/assets/v3/actors/yautja/hunter/masks/registered/feral.webp",
+        "/game/assets/v3/actors/yautja/hunter/masks/registered/fugitive.webp",
+        "/game/assets/v3/actors/yautja/hunter/masks/registered/jungle.webp",
+        "/game/assets/v3/actors/yautja/hunter/masks/registered/scar.webp",
+        "/game/assets/v3/actors/yautja/hunter/masks/registered/wolf.webp",
+        "/game/assets/v3/actors/yautja/hunter/masks/scar.webp",
+        "/game/assets/v3/actors/yautja/hunter/masks/wolf.webp",
+        "/game/sprites/v62/masks/berserker.png",
+        "/game/sprites/v62/masks/boar.png",
+        "/game/sprites/v62/masks/celtic.png",
+        "/game/sprites/v62/masks/chopper.png",
+        "/game/sprites/v62/masks/city.png",
+        "/game/sprites/v62/masks/dek.png",
+        "/game/sprites/v62/masks/enforcer.png",
+        "/game/sprites/v62/masks/falconer.png",
+        "/game/sprites/v62/masks/feral.png",
+        "/game/sprites/v62/masks/fugitive.png",
+        "/game/sprites/v62/masks/jungle.png",
+        "/game/sprites/v62/masks/scar.png",
+        "/game/sprites/v62/masks/snake.png",
+        "/game/sprites/v62/masks/wolf.png"
+      ],
+      "missingLocalImagePaths": [],
+      "diagnoses": {
+        "PARTIEL_SOURCE_ADMIS_REVUE_OUVERTE": 45
+      },
+      "humanArtReviewClosed": 0,
+      "officialUV1to1Closed": 0
+    },
+    {
+      "family": "Matière admise / armor",
+      "entityKeys": [
+        "material:phg-samurai-red-lacquer",
+        "material:phg-study-v126-father_armor_2026_study",
+        "material:phg-study-v126-oni_armor_2025_study",
+        "material:phg-study-v128-epic-copper",
+        "material:phg-study-v128-playstation-graphite",
+        "material:phg-study-v128-steam-light-metal"
+      ],
+      "entities": 6,
+      "subjects": 12,
+      "runtimeAdmittedEntities": 6,
+      "localImagePaths": [
+        "/game/assets/v113/phg/armor_classe_samurai_laque_rouge_volutes.png",
+        "/game/assets/v126/phg-recent/atlas.webp",
+        "/game/assets/v128/phg-platform/atlas.webp"
+      ],
+      "missingLocalImagePaths": [],
+      "diagnoses": {
+        "PARTIEL_SOURCE_ADMIS_REVUE_OUVERTE": 12
+      },
+      "humanArtReviewClosed": 0,
+      "officialUV1to1Closed": 0
+    },
+    {
+      "family": "Matière admise / biomask",
+      "entityKeys": [
+        "material:phg-study-v131-alpha-ogre-biomask",
+        "material:phg-study-v132-glypic",
+        "material:phg-study-v132-instinct",
+        "material:phg-study-v132-nova",
+        "material:phg-study-v132-paroxysm",
+        "material:phg-study-v132-requiem",
+        "material:phg-study-v132-tyrant",
+        "material:phg-study-v132-warlord"
+      ],
+      "entities": 8,
+      "subjects": 168,
+      "runtimeAdmittedEntities": 8,
+      "localImagePaths": [
+        "/game/assets/v129/phg-patches/atlas.webp",
+        "/game/assets/v132/phg-biomask/atlas.webp"
+      ],
+      "missingLocalImagePaths": [],
+      "diagnoses": {
+        "PARTIEL_SOURCE_ADMIS_REVUE_OUVERTE": 168
+      },
+      "humanArtReviewClosed": 0,
+      "officialUV1to1Closed": 0
+    },
+    {
+      "family": "Matière admise / dreads",
+      "entityKeys": [
+        "material:phg-dread_anubis_gris_motif_ecaille",
+        "material:phg-dread_exalted_noir_annele_fin",
+        "material:phg-study-v128-exiled-marbled-bronze",
+        "material:phg-study-v129-tank_predlock_surface"
+      ],
+      "entities": 4,
+      "subjects": 8,
+      "runtimeAdmittedEntities": 4,
+      "localImagePaths": [
+        "/game/assets/v128/phg-platform/atlas.webp",
+        "/game/assets/v129/phg-patches/atlas.webp",
+        "/game/imports/v85/drive-latest/dread_anubis_gris_motif_ecaille.png",
+        "/game/imports/v85/drive-latest/dread_exalted_noir_annele_fin.png"
+      ],
+      "missingLocalImagePaths": [],
+      "diagnoses": {
+        "PARTIEL_SOURCE_ADMIS_REVUE_OUVERTE": 8
+      },
+      "humanArtReviewClosed": 0,
+      "officialUV1to1Closed": 0
+    },
+    {
+      "family": "Matière admise / outfit",
+      "entityKeys": [
+        "material:phg-armor_classe_alpha_ceinture_ivoire_cannelee",
+        "material:phg-armor_classe_alpha_fibres_brun_noir",
+        "material:phg-armor_classe_anubis_etoffe_claire",
+        "material:phg-armor_classe_avp_cuir_noir",
+        "material:phg-armor_classe_bionic_etoffe_gris",
+        "material:phg-armor_classe_cleopatra_etoffe_ivoire_ocre",
+        "material:phg-armor_classe_emissary_toile_brune",
+        "material:phg-armor_classe_exiled_fibres_brun_sombre",
+        "material:phg-armor_classe_father_etoffe_bleu_ardoise",
+        "material:phg-armor_classe_father_tissu_gris_prune",
+        "material:phg-armor_classe_gladiator_cuir_grave",
+        "material:phg-armor_classe_gladiator_etoffe_bordeaux",
+        "material:phg-armor_classe_jotun_sangle_brun_grave",
+        "material:phg-armor_classe_oni_tissu_anthracite",
+        "material:phg-armor_classe_pirate_cuir_brun_sombre",
+        "material:phg-armor_classe_pirate_etoffe_vert_sauge",
+        "material:phg-armor_classe_samurai_tressage_brun",
+        "material:phg-armor_classe_valkyrie_entrelacs_cuivres",
+        "material:phg-armor_classe_viking_fourrure_gris_taupe",
+        "material:phg-armor_classe_witch_etoffe_taupe_usee",
+        "material:phg-armor_classe_wolf_cuir_brun_sangles",
+        "material:phg-armor_classe_wolf_tablier_gris_brun",
+        "material:phg-armor_epic_promo_2020",
+        "material:phg-armor_filet_epais_brun_losanges",
+        "material:phg-armor_playstation_promo_2019",
+        "material:phg-fine-net",
+        "material:phg-study-v126-witch_outfit_2025_study"
+      ],
+      "entities": 27,
+      "subjects": 54,
+      "runtimeAdmittedEntities": 27,
+      "localImagePaths": [
+        "/game/assets/v113/phg/armor_filet_fin_noir_losanges.png",
+        "/game/assets/v126/phg-recent/atlas.webp",
+        "/game/imports/v85/drive-latest/armor_classe_alpha_ceinture_ivoire_cannelee.png",
+        "/game/imports/v85/drive-latest/armor_classe_alpha_fibres_brun_noir.png",
+        "/game/imports/v85/drive-latest/armor_classe_anubis_etoffe_claire.png",
+        "/game/imports/v85/drive-latest/armor_classe_avp_cuir_noir.png",
+        "/game/imports/v85/drive-latest/armor_classe_bionic_etoffe_gris.png",
+        "/game/imports/v85/drive-latest/armor_classe_cleopatra_etoffe_ivoire_ocre.png",
+        "/game/imports/v85/drive-latest/armor_classe_emissary_toile_brune.png",
+        "/game/imports/v85/drive-latest/armor_classe_exiled_fibres_brun_sombre.png",
+        "/game/imports/v85/drive-latest/armor_classe_father_etoffe_bleu_ardoise.png",
+        "/game/imports/v85/drive-latest/armor_classe_father_tissu_gris_prune.png",
+        "/game/imports/v85/drive-latest/armor_classe_gladiator_cuir_grave.png",
+        "/game/imports/v85/drive-latest/armor_classe_gladiator_etoffe_bordeaux.png",
+        "/game/imports/v85/drive-latest/armor_classe_jotun_sangle_brun_grave.png",
+        "/game/imports/v85/drive-latest/armor_classe_oni_tissu_anthracite.png",
+        "/game/imports/v85/drive-latest/armor_classe_pirate_cuir_brun_sombre.png",
+        "/game/imports/v85/drive-latest/armor_classe_pirate_etoffe_vert_sauge.png",
+        "/game/imports/v85/drive-latest/armor_classe_samurai_tressage_brun.png",
+        "/game/imports/v85/drive-latest/armor_classe_valkyrie_entrelacs_cuivres.png",
+        "/game/imports/v85/drive-latest/armor_classe_viking_fourrure_gris_taupe.png",
+        "/game/imports/v85/drive-latest/armor_classe_witch_etoffe_taupe_usee.png",
+        "/game/imports/v85/drive-latest/armor_classe_wolf_cuir_brun_sangles.png",
+        "/game/imports/v85/drive-latest/armor_classe_wolf_tablier_gris_brun.png",
+        "/game/imports/v85/drive-latest/armor_epic_promo_2020.png",
+        "/game/imports/v85/drive-latest/armor_filet_epais_brun_losanges.png",
+        "/game/imports/v85/drive-latest/armor_playstation_promo_2019.png"
+      ],
+      "missingLocalImagePaths": [],
+      "diagnoses": {
+        "PARTIEL_SOURCE_ADMIS_REVUE_OUVERTE": 54
+      },
+      "humanArtReviewClosed": 0,
+      "officialUV1to1Closed": 0
+    },
+    {
+      "family": "Matière admise / skin",
+      "entityKeys": [
+        "material:phg-shatter-demon-study",
+        "material:phg-skin_classe_captured_base_observee",
+        "material:phg-skin_classe_cityhunter97_sector_provisoire",
+        "material:phg-skin_classe_cityhunter97_tract_provisoire",
+        "material:phg-skin_classe_cityhunter97_ward_provisoire",
+        "material:phg-skin_classe_cleopatra_base_observee",
+        "material:phg-skin_classe_exiled_base_observee",
+        "material:phg-skin_classe_samurai_base_observee",
+        "material:phg-skin_classe_valkyrie_base_observee",
+        "material:phg-skin_classe_viking_base_observee",
+        "material:phg-skin_default_epic_exclusive",
+        "material:phg-skin_default_ps_exclusive",
+        "material:phg-skin_shatter_demon_revision_mrblack",
+        "material:phg-study-v125-city97_sector",
+        "material:phg-study-v125-city97_tract",
+        "material:phg-study-v125-city97_ward",
+        "material:phg-study-v125-elder_ancient",
+        "material:phg-study-v125-elder_primeval",
+        "material:phg-study-v125-elder_relic",
+        "material:phg-study-v125-elder_stoic",
+        "material:phg-study-v125-feral_post_3_6_default",
+        "material:phg-study-v125-jungle87_badland",
+        "material:phg-study-v125-jungle87_quagmire",
+        "material:phg-study-v125-jungle87_undergrowth",
+        "material:phg-study-v125-jungle87_wasteland",
+        "material:phg-study-v126-jotun_skin_2026_study",
+        "material:phg-study-v127-aurora",
+        "material:phg-study-v127-slice",
+        "material:phg-study-v127-terror",
+        "material:phg-study-v127-virus",
+        "material:phg-study-v129-gator_waves_skin",
+        "material:phg-study-v129-mottle_dread_skin"
+      ],
+      "entities": 32,
+      "subjects": 84,
+      "runtimeAdmittedEntities": 32,
+      "localImagePaths": [
+        "/game/assets/v113/phg/skin_shatter_demon_provisoire.png",
+        "/game/assets/v125/phg-studies/atlas.webp",
+        "/game/assets/v126/phg-recent/atlas.webp",
+        "/game/assets/v127/phg-historical/atlas.webp",
+        "/game/assets/v129/phg-patches/atlas.webp",
+        "/game/imports/v85/drive-latest/skin_classe_captured_base_observee.png",
+        "/game/imports/v85/drive-latest/skin_classe_cityhunter97_sector_provisoire.png",
+        "/game/imports/v85/drive-latest/skin_classe_cityhunter97_tract_provisoire.png",
+        "/game/imports/v85/drive-latest/skin_classe_cityhunter97_ward_provisoire.png",
+        "/game/imports/v85/drive-latest/skin_classe_cleopatra_base_observee.png",
+        "/game/imports/v85/drive-latest/skin_classe_exiled_base_observee.png",
+        "/game/imports/v85/drive-latest/skin_classe_samurai_base_observee.png",
+        "/game/imports/v85/drive-latest/skin_classe_valkyrie_base_observee.png",
+        "/game/imports/v85/drive-latest/skin_classe_viking_base_observee.png",
+        "/game/imports/v85/drive-latest/skin_default_epic_exclusive.png",
+        "/game/imports/v85/drive-latest/skin_default_ps_exclusive.png",
+        "/game/imports/v85/drive-latest/skin_shatter_demon_revision_mrblack.png"
+      ],
+      "missingLocalImagePaths": [],
+      "diagnoses": {
+        "PARTIEL_SOURCE_ADMIS_REVUE_OUVERTE": 84
+      },
+      "humanArtReviewClosed": 0,
+      "officialUV1to1Closed": 0
+    },
+    {
+      "family": "Matières/teintes: rendu et persistance",
+      "entityKeys": [
+        "family:all-materials"
+      ],
+      "entities": 1,
+      "subjects": 0,
+      "runtimeAdmittedEntities": 0,
+      "localImagePaths": [],
+      "missingLocalImagePaths": [],
+      "diagnoses": {},
+      "humanArtReviewClosed": 0,
+      "officialUV1to1Closed": 0
+    },
+    {
+      "family": "Neuf géométries PHG candidates",
+      "entityKeys": [
+        "family:candidates"
+      ],
+      "entities": 1,
+      "subjects": 2,
+      "runtimeAdmittedEntities": 0,
+      "localImagePaths": [],
+      "missingLocalImagePaths": [],
+      "diagnoses": {
+        "CONTRAT_FAMILLE_PREUVE_BORNEE_CRITERE_OUVERT": 2
+      },
+      "humanArtReviewClosed": 0,
+      "officialUV1to1Closed": 0
+    },
+    {
+      "family": "Noms, Warpaints, Scars et séparation canonique",
+      "entityKeys": [
+        "family:official"
+      ],
+      "entities": 1,
+      "subjects": 6,
+      "runtimeAdmittedEntities": 0,
+      "localImagePaths": [],
+      "missingLocalImagePaths": [],
+      "diagnoses": {
+        "CONTRAT_FAMILLE_PREUVE_BORNEE_CRITERE_OUVERT": 6
+      },
+      "humanArtReviewClosed": 0,
+      "officialUV1to1Closed": 0
+    },
+    {
+      "family": "PNG source V85 hors registre chromatique",
+      "entityKeys": [
+        "native-source:anneau_ligature_fil_rouge_observe_2022",
+        "native-source:armor_classe_father_masque_beige_strie",
+        "native-source:armor_classe_samurai_laque_rouge_volutes",
+        "native-source:armor_filet_fin_noir_losanges",
+        "native-source:skin_shatter_demon_provisoire"
+      ],
+      "entities": 5,
+      "subjects": 0,
+      "runtimeAdmittedEntities": 0,
+      "localImagePaths": [
+        "/game/imports/v85/drive-latest/anneau_ligature_fil_rouge_observe_2022.png",
+        "/game/imports/v85/drive-latest/armor_classe_father_masque_beige_strie.png",
+        "/game/imports/v85/drive-latest/armor_classe_samurai_laque_rouge_volutes.png",
+        "/game/imports/v85/drive-latest/armor_filet_fin_noir_losanges.png",
+        "/game/imports/v85/drive-latest/skin_shatter_demon_provisoire.png"
+      ],
+      "missingLocalImagePaths": [],
+      "diagnoses": {},
+      "humanArtReviewClosed": 0,
+      "officialUV1to1Closed": 0
+    },
+    {
+      "family": "Parcours réels à rapprocher des captures du run courant",
+      "entityKeys": [
+        "family:browser"
+      ],
+      "entities": 1,
+      "subjects": 12,
+      "runtimeAdmittedEntities": 0,
+      "localImagePaths": [],
+      "missingLocalImagePaths": [],
+      "diagnoses": {
+        "CONTRAT_FAMILLE_PREUVE_BORNEE_CRITERE_OUVERT": 12
+      },
+      "humanArtReviewClosed": 0,
+      "officialUV1to1Closed": 0
+    },
+    {
+      "family": "Référence visuelle PHG non attribuée",
+      "entityKeys": [
+        "reference-gap:armure_v2_epic_exclusive_pending",
+        "reference-gap:armure_v2_ogre_pending",
+        "reference-gap:armure_v2_playstation_themed_pending",
+        "reference-gap:dread_exiled_tint_patch239_unidentified",
+        "reference-gap:skin_classe_captured_base_observee",
+        "reference-gap:skin_classe_cityhunter97_sector",
+        "reference-gap:skin_classe_cityhunter97_tract",
+        "reference-gap:skin_classe_cityhunter97_ward",
+        "reference-gap:skin_classe_cleopatra_base_observee",
+        "reference-gap:skin_classe_elder_ancient",
+        "reference-gap:skin_classe_elder_primeval",
+        "reference-gap:skin_classe_elder_relic",
+        "reference-gap:skin_classe_elder_stoic",
+        "reference-gap:skin_classe_exiled_base_observee",
+        "reference-gap:skin_classe_feral_default_apres_3_6_0",
+        "reference-gap:skin_classe_junglehunter87_badland",
+        "reference-gap:skin_classe_junglehunter87_quagmire",
+        "reference-gap:skin_classe_junglehunter87_undergrowth",
+        "reference-gap:skin_classe_junglehunter87_wasteland",
+        "reference-gap:skin_classe_samurai_base_observee",
+        "reference-gap:skin_classe_valkyrie_base_observee",
+        "reference-gap:skin_classe_viking_base_observee",
+        "reference-gap:skin_classic_slice",
+        "reference-gap:skin_default_epic_exclusive",
+        "reference-gap:skin_default_ps_exclusive",
+        "reference-gap:skin_default_terror",
+        "reference-gap:skin_gator_virus",
+        "reference-gap:skin_mottle_ash",
+        "reference-gap:skin_mottle_dread",
+        "reference-gap:skin_mottle_grape",
+        "reference-gap:skin_raptor_putrid",
+        "reference-gap:skin_shatter_bleak",
+        "reference-gap:skin_shatter_demon",
+        "reference-gap:skin_unassigned_aurora"
+      ],
+      "entities": 34,
+      "subjects": 50,
+      "runtimeAdmittedEntities": 0,
+      "localImagePaths": [],
+      "missingLocalImagePaths": [],
+      "diagnoses": {
+        "PARTIEL_SOURCE_ADMIS_REVUE_OUVERTE": 20,
+        "REFERENCE_PHG_ATTRIBUEE_UV_MANQUANTE": 30
+      },
+      "humanArtReviewClosed": 0,
+      "officialUV1to1Closed": 0
+    },
+    {
+      "family": "Référence/correctif officiel PHG",
+      "entityKeys": [
+        "official-gap:phg-mask-bone",
+        "official-gap:phg-mask-haze",
+        "official-gap:phg-mask-pirate-warpaint",
+        "official-gap:phg-mask-rival",
+        "official-gap:phg-mask-scar-bugs",
+        "official-gap:phg-mask-wretch"
+      ],
+      "entities": 6,
+      "subjects": 18,
+      "runtimeAdmittedEntities": 0,
+      "localImagePaths": [],
+      "missingLocalImagePaths": [],
+      "diagnoses": {
+        "REFERENCE_NOMMEE_OBJET_OU_PIXELS_NON_QUALIFIES": 18
+      },
+      "humanArtReviewClosed": 0,
+      "officialUV1to1Closed": 0
+    },
+    {
+      "family": "Sept coques conceptuelles V133",
+      "entityKeys": [
+        "family:concept"
+      ],
+      "entities": 1,
+      "subjects": 4,
+      "runtimeAdmittedEntities": 0,
+      "localImagePaths": [],
+      "missingLocalImagePaths": [],
+      "diagnoses": {
+        "CONTRAT_FAMILLE_PREUVE_BORNEE_CRITERE_OUVERT": 4
+      },
+      "humanArtReviewClosed": 0,
+      "officialUV1to1Closed": 0
+    },
+    {
+      "family": "Sept finitions biomask V132",
+      "entityKeys": [
+        "family:v132"
+      ],
+      "entities": 1,
+      "subjects": 4,
+      "runtimeAdmittedEntities": 0,
+      "localImagePaths": [],
+      "missingLocalImagePaths": [],
+      "diagnoses": {
+        "CONTRAT_FAMILLE_PREUVE_BORNEE_CRITERE_OUVERT": 4
+      },
+      "humanArtReviewClosed": 0,
+      "officialUV1to1Closed": 0
+    },
+    {
+      "family": "Six anneaux V120 indépendants",
+      "entityKeys": [
+        "family:rings"
+      ],
+      "entities": 1,
+      "subjects": 4,
+      "runtimeAdmittedEntities": 0,
+      "localImagePaths": [],
+      "missingLocalImagePaths": [],
+      "diagnoses": {
+        "CONTRAT_FAMILLE_PREUVE_BORNEE_CRITERE_OUVERT": 4
+      },
+      "humanArtReviewClosed": 0,
+      "officialUV1to1Closed": 0
+    },
+    {
+      "family": "V120 accessoire séparé",
+      "entityKeys": [
+        "drive-source:anneau_argent_brosse",
+        "drive-source:anneau_bronze_vieilli",
+        "drive-source:anneau_brun_rouge_mat",
+        "drive-source:anneau_ivoire_mat",
+        "drive-source:anneau_or_satine",
+        "drive-source:anneau_rouge_emaille",
+        "drive-source:armor_classe_feral_os_masque_2024"
+      ],
+      "entities": 7,
+      "subjects": 20,
+      "runtimeAdmittedEntities": 0,
+      "localImagePaths": [],
+      "missingLocalImagePaths": [
+        "/game/assets/v120/phg-drive/armor/armor_classe_feral_os_masque_2024.webp",
+        "/game/assets/v120/phg-drive/previews/anneau_argent_brosse.webp",
+        "/game/assets/v120/phg-drive/previews/anneau_bronze_vieilli.webp",
+        "/game/assets/v120/phg-drive/previews/anneau_brun_rouge_mat.webp",
+        "/game/assets/v120/phg-drive/previews/anneau_ivoire_mat.webp",
+        "/game/assets/v120/phg-drive/previews/anneau_or_satine.webp",
+        "/game/assets/v120/phg-drive/previews/anneau_rouge_emaille.webp",
+        "/game/assets/v120/phg-drive/previews/armor_classe_feral_os_masque_2024.webp",
+        "/game/assets/v120/phg-drive/rings/anneau_argent_brosse.webp",
+        "/game/assets/v120/phg-drive/rings/anneau_bronze_vieilli.webp",
+        "/game/assets/v120/phg-drive/rings/anneau_brun_rouge_mat.webp",
+        "/game/assets/v120/phg-drive/rings/anneau_ivoire_mat.webp",
+        "/game/assets/v120/phg-drive/rings/anneau_or_satine.webp",
+        "/game/assets/v120/phg-drive/rings/anneau_rouge_emaille.webp"
+      ],
+      "diagnoses": {
+        "ACCESSOIRE_DISTINCT_A_PRODUIRE_RACCORDER": 20
+      },
+      "humanArtReviewClosed": 0,
+      "officialUV1to1Closed": 0
+    },
+    {
+      "family": "V120 candidat / armor",
+      "entityKeys": [
+        "drive-source:armor_classe_alpha",
+        "drive-source:armor_classe_alpha_chitine_base",
+        "drive-source:armor_classe_amazon_os",
+        "drive-source:armor_classe_anubis",
+        "drive-source:armor_classe_avp_metal",
+        "drive-source:armor_classe_bionic",
+        "drive-source:armor_classe_captured",
+        "drive-source:armor_classe_city_hunter",
+        "drive-source:armor_classe_cleopatra_metal",
+        "drive-source:armor_classe_elder",
+        "drive-source:armor_classe_emissary",
+        "drive-source:armor_classe_exalted",
+        "drive-source:armor_classe_exiled",
+        "drive-source:armor_classe_falconer",
+        "drive-source:armor_classe_father",
+        "drive-source:armor_classe_gladiator",
+        "drive-source:armor_classe_jotun",
+        "drive-source:armor_classe_jungle_hunter87",
+        "drive-source:armor_classe_mr_black",
+        "drive-source:armor_classe_oni",
+        "drive-source:armor_classe_pirate",
+        "drive-source:armor_classe_samurai",
+        "drive-source:armor_classe_valkyrie",
+        "drive-source:armor_classe_viking_metal",
+        "drive-source:armor_classe_witch_os",
+        "drive-source:armor_classe_wolf",
+        "drive-source:armure_01_gunmetal",
+        "drive-source:armure_02_bronze",
+        "drive-source:armure_03_golden",
+        "drive-source:armure_04_platinum",
+        "drive-source:armure_05_obsidian",
+        "drive-source:armure_06_crimson",
+        "drive-source:armure_07_sage",
+        "drive-source:armure_08_olive",
+        "drive-source:armure_09_vanadium",
+        "drive-source:armure_10_marine",
+        "drive-source:armure_v2_glyphic_scout_2020",
+        "drive-source:armure_v2_instinct_2021",
+        "drive-source:armure_v2_nova_2021",
+        "drive-source:armure_v2_obsidian_motif_2020",
+        "drive-source:armure_v2_paroxysm_alpha_2022",
+        "drive-source:armure_v2_paroxysm_samurai_2020",
+        "drive-source:armure_v2_requiem_hunter_2021",
+        "drive-source:armure_v2_steam_blanc_bug_2021_2022",
+        "drive-source:armure_v2_steam_camouflage_2021",
+        "drive-source:armure_v2_systemic_geometrique",
+        "drive-source:armure_v2_tyrant_alpha_2022",
+        "drive-source:armure_v2_warlord_avant_2022",
+        "drive-source:armure_v2_warlord_mai_2022"
+      ],
+      "entities": 49,
+      "subjects": 49,
+      "runtimeAdmittedEntities": 0,
+      "localImagePaths": [],
+      "missingLocalImagePaths": [
+        "/game/assets/v120/phg-drive/armor/armor_classe_alpha.webp",
+        "/game/assets/v120/phg-drive/armor/armor_classe_alpha_chitine_base.webp",
+        "/game/assets/v120/phg-drive/armor/armor_classe_amazon_os.webp",
+        "/game/assets/v120/phg-drive/armor/armor_classe_anubis.webp",
+        "/game/assets/v120/phg-drive/armor/armor_classe_avp_metal.webp",
+        "/game/assets/v120/phg-drive/armor/armor_classe_bionic.webp",
+        "/game/assets/v120/phg-drive/armor/armor_classe_captured.webp",
+        "/game/assets/v120/phg-drive/armor/armor_classe_city_hunter.webp",
+        "/game/assets/v120/phg-drive/armor/armor_classe_cleopatra_metal.webp",
+        "/game/assets/v120/phg-drive/armor/armor_classe_elder.webp",
+        "/game/assets/v120/phg-drive/armor/armor_classe_emissary.webp",
+        "/game/assets/v120/phg-drive/armor/armor_classe_exalted.webp",
+        "/game/assets/v120/phg-drive/armor/armor_classe_exiled.webp",
+        "/game/assets/v120/phg-drive/armor/armor_classe_falconer.webp",
+        "/game/assets/v120/phg-drive/armor/armor_classe_father.webp",
+        "/game/assets/v120/phg-drive/armor/armor_classe_gladiator.webp",
+        "/game/assets/v120/phg-drive/armor/armor_classe_jotun.webp",
+        "/game/assets/v120/phg-drive/armor/armor_classe_jungle_hunter87.webp",
+        "/game/assets/v120/phg-drive/armor/armor_classe_mr_black.webp",
+        "/game/assets/v120/phg-drive/armor/armor_classe_oni.webp",
+        "/game/assets/v120/phg-drive/armor/armor_classe_pirate.webp",
+        "/game/assets/v120/phg-drive/armor/armor_classe_samurai.webp",
+        "/game/assets/v120/phg-drive/armor/armor_classe_valkyrie.webp",
+        "/game/assets/v120/phg-drive/armor/armor_classe_viking_metal.webp",
+        "/game/assets/v120/phg-drive/armor/armor_classe_witch_os.webp",
+        "/game/assets/v120/phg-drive/armor/armor_classe_wolf.webp",
+        "/game/assets/v120/phg-drive/armor/armure_01_gunmetal.webp",
+        "/game/assets/v120/phg-drive/armor/armure_02_bronze.webp",
+        "/game/assets/v120/phg-drive/armor/armure_03_golden.webp",
+        "/game/assets/v120/phg-drive/armor/armure_04_platinum.webp",
+        "/game/assets/v120/phg-drive/armor/armure_05_obsidian.webp",
+        "/game/assets/v120/phg-drive/armor/armure_06_crimson.webp",
+        "/game/assets/v120/phg-drive/armor/armure_07_sage.webp",
+        "/game/assets/v120/phg-drive/armor/armure_08_olive.webp",
+        "/game/assets/v120/phg-drive/armor/armure_09_vanadium.webp",
+        "/game/assets/v120/phg-drive/armor/armure_10_marine.webp",
+        "/game/assets/v120/phg-drive/armor/armure_v2_glyphic_scout_2020.webp",
+        "/game/assets/v120/phg-drive/armor/armure_v2_instinct_2021.webp",
+        "/game/assets/v120/phg-drive/armor/armure_v2_nova_2021.webp",
+        "/game/assets/v120/phg-drive/armor/armure_v2_obsidian_motif_2020.webp",
+        "/game/assets/v120/phg-drive/armor/armure_v2_paroxysm_alpha_2022.webp",
+        "/game/assets/v120/phg-drive/armor/armure_v2_paroxysm_samurai_2020.webp",
+        "/game/assets/v120/phg-drive/armor/armure_v2_requiem_hunter_2021.webp",
+        "/game/assets/v120/phg-drive/armor/armure_v2_steam_blanc_bug_2021_2022.webp",
+        "/game/assets/v120/phg-drive/armor/armure_v2_steam_camouflage_2021.webp",
+        "/game/assets/v120/phg-drive/armor/armure_v2_systemic_geometrique.webp",
+        "/game/assets/v120/phg-drive/armor/armure_v2_tyrant_alpha_2022.webp",
+        "/game/assets/v120/phg-drive/armor/armure_v2_warlord_avant_2022.webp",
+        "/game/assets/v120/phg-drive/armor/armure_v2_warlord_mai_2022.webp",
+        "/game/assets/v120/phg-drive/previews/armor_classe_alpha.webp",
+        "/game/assets/v120/phg-drive/previews/armor_classe_alpha_chitine_base.webp",
+        "/game/assets/v120/phg-drive/previews/armor_classe_amazon_os.webp",
+        "/game/assets/v120/phg-drive/previews/armor_classe_anubis.webp",
+        "/game/assets/v120/phg-drive/previews/armor_classe_avp_metal.webp",
+        "/game/assets/v120/phg-drive/previews/armor_classe_bionic.webp",
+        "/game/assets/v120/phg-drive/previews/armor_classe_captured.webp",
+        "/game/assets/v120/phg-drive/previews/armor_classe_city_hunter.webp",
+        "/game/assets/v120/phg-drive/previews/armor_classe_cleopatra_metal.webp",
+        "/game/assets/v120/phg-drive/previews/armor_classe_elder.webp",
+        "/game/assets/v120/phg-drive/previews/armor_classe_emissary.webp",
+        "/game/assets/v120/phg-drive/previews/armor_classe_exalted.webp",
+        "/game/assets/v120/phg-drive/previews/armor_classe_exiled.webp",
+        "/game/assets/v120/phg-drive/previews/armor_classe_falconer.webp",
+        "/game/assets/v120/phg-drive/previews/armor_classe_father.webp",
+        "/game/assets/v120/phg-drive/previews/armor_classe_gladiator.webp",
+        "/game/assets/v120/phg-drive/previews/armor_classe_jotun.webp",
+        "/game/assets/v120/phg-drive/previews/armor_classe_jungle_hunter87.webp",
+        "/game/assets/v120/phg-drive/previews/armor_classe_mr_black.webp",
+        "/game/assets/v120/phg-drive/previews/armor_classe_oni.webp",
+        "/game/assets/v120/phg-drive/previews/armor_classe_pirate.webp",
+        "/game/assets/v120/phg-drive/previews/armor_classe_samurai.webp",
+        "/game/assets/v120/phg-drive/previews/armor_classe_valkyrie.webp",
+        "/game/assets/v120/phg-drive/previews/armor_classe_viking_metal.webp",
+        "/game/assets/v120/phg-drive/previews/armor_classe_witch_os.webp",
+        "/game/assets/v120/phg-drive/previews/armor_classe_wolf.webp",
+        "/game/assets/v120/phg-drive/previews/armure_01_gunmetal.webp",
+        "/game/assets/v120/phg-drive/previews/armure_02_bronze.webp",
+        "/game/assets/v120/phg-drive/previews/armure_03_golden.webp",
+        "/game/assets/v120/phg-drive/previews/armure_04_platinum.webp",
+        "/game/assets/v120/phg-drive/previews/armure_05_obsidian.webp",
+        "/game/assets/v120/phg-drive/previews/armure_06_crimson.webp",
+        "/game/assets/v120/phg-drive/previews/armure_07_sage.webp",
+        "/game/assets/v120/phg-drive/previews/armure_08_olive.webp",
+        "/game/assets/v120/phg-drive/previews/armure_09_vanadium.webp",
+        "/game/assets/v120/phg-drive/previews/armure_10_marine.webp",
+        "/game/assets/v120/phg-drive/previews/armure_v2_glyphic_scout_2020.webp",
+        "/game/assets/v120/phg-drive/previews/armure_v2_instinct_2021.webp",
+        "/game/assets/v120/phg-drive/previews/armure_v2_nova_2021.webp",
+        "/game/assets/v120/phg-drive/previews/armure_v2_obsidian_motif_2020.webp",
+        "/game/assets/v120/phg-drive/previews/armure_v2_paroxysm_alpha_2022.webp",
+        "/game/assets/v120/phg-drive/previews/armure_v2_paroxysm_samurai_2020.webp",
+        "/game/assets/v120/phg-drive/previews/armure_v2_requiem_hunter_2021.webp",
+        "/game/assets/v120/phg-drive/previews/armure_v2_steam_blanc_bug_2021_2022.webp",
+        "/game/assets/v120/phg-drive/previews/armure_v2_steam_camouflage_2021.webp",
+        "/game/assets/v120/phg-drive/previews/armure_v2_systemic_geometrique.webp",
+        "/game/assets/v120/phg-drive/previews/armure_v2_tyrant_alpha_2022.webp",
+        "/game/assets/v120/phg-drive/previews/armure_v2_warlord_avant_2022.webp",
+        "/game/assets/v120/phg-drive/previews/armure_v2_warlord_mai_2022.webp"
+      ],
+      "diagnoses": {
+        "BLOQUE_SOURCE_LOCALE_ADMISSION": 49
+      },
+      "humanArtReviewClosed": 0,
+      "officialUV1to1Closed": 0
+    },
+    {
+      "family": "V120 candidat / dreads",
+      "entityKeys": [
+        "drive-source:dread_alpha_ashen",
+        "drive-source:dread_alpha_hematic",
+        "drive-source:dread_alpha_ivoire",
+        "drive-source:dread_alpha_mire",
+        "drive-source:dread_alpha_primordial",
+        "drive-source:dread_annele_gris_noir",
+        "drive-source:dread_bleu_gris_annele_noir",
+        "drive-source:dread_brun",
+        "drive-source:dread_default_charbon",
+        "drive-source:dread_elder_gris_uni",
+        "drive-source:dread_marbre_gris_noir",
+        "drive-source:dread_marbre_orange_noir",
+        "drive-source:dread_marbre_vert_noir",
+        "drive-source:dread_rouge_mouchete_noir",
+        "drive-source:dread_vert"
+      ],
+      "entities": 15,
+      "subjects": 15,
+      "runtimeAdmittedEntities": 0,
+      "localImagePaths": [],
+      "missingLocalImagePaths": [
+        "/game/assets/v120/phg-drive/dreads/dread_alpha_ashen.webp",
+        "/game/assets/v120/phg-drive/dreads/dread_alpha_hematic.webp",
+        "/game/assets/v120/phg-drive/dreads/dread_alpha_ivoire.webp",
+        "/game/assets/v120/phg-drive/dreads/dread_alpha_mire.webp",
+        "/game/assets/v120/phg-drive/dreads/dread_alpha_primordial.webp",
+        "/game/assets/v120/phg-drive/dreads/dread_annele_gris_noir.webp",
+        "/game/assets/v120/phg-drive/dreads/dread_bleu_gris_annele_noir.webp",
+        "/game/assets/v120/phg-drive/dreads/dread_brun.webp",
+        "/game/assets/v120/phg-drive/dreads/dread_default_charbon.webp",
+        "/game/assets/v120/phg-drive/dreads/dread_elder_gris_uni.webp",
+        "/game/assets/v120/phg-drive/dreads/dread_marbre_gris_noir.webp",
+        "/game/assets/v120/phg-drive/dreads/dread_marbre_orange_noir.webp",
+        "/game/assets/v120/phg-drive/dreads/dread_marbre_vert_noir.webp",
+        "/game/assets/v120/phg-drive/dreads/dread_rouge_mouchete_noir.webp",
+        "/game/assets/v120/phg-drive/dreads/dread_vert.webp",
+        "/game/assets/v120/phg-drive/previews/dread_alpha_ashen.webp",
+        "/game/assets/v120/phg-drive/previews/dread_alpha_hematic.webp",
+        "/game/assets/v120/phg-drive/previews/dread_alpha_ivoire.webp",
+        "/game/assets/v120/phg-drive/previews/dread_alpha_mire.webp",
+        "/game/assets/v120/phg-drive/previews/dread_alpha_primordial.webp",
+        "/game/assets/v120/phg-drive/previews/dread_annele_gris_noir.webp",
+        "/game/assets/v120/phg-drive/previews/dread_bleu_gris_annele_noir.webp",
+        "/game/assets/v120/phg-drive/previews/dread_brun.webp",
+        "/game/assets/v120/phg-drive/previews/dread_default_charbon.webp",
+        "/game/assets/v120/phg-drive/previews/dread_elder_gris_uni.webp",
+        "/game/assets/v120/phg-drive/previews/dread_marbre_gris_noir.webp",
+        "/game/assets/v120/phg-drive/previews/dread_marbre_orange_noir.webp",
+        "/game/assets/v120/phg-drive/previews/dread_marbre_vert_noir.webp",
+        "/game/assets/v120/phg-drive/previews/dread_rouge_mouchete_noir.webp",
+        "/game/assets/v120/phg-drive/previews/dread_vert.webp"
+      ],
+      "diagnoses": {
+        "BLOQUE_SOURCE_LOCALE_ADMISSION": 15
+      },
+      "humanArtReviewClosed": 0,
+      "officialUV1to1Closed": 0
+    },
+    {
+      "family": "V120 candidat / outfit",
+      "entityKeys": [
+        "drive-source:armor_classe_amazon_fibres",
+        "drive-source:armor_classe_cleopatra_turquoise",
+        "drive-source:armor_classe_exalted_tissu",
+        "drive-source:armor_classe_viking_maille",
+        "drive-source:armor_classe_witch_plumes"
+      ],
+      "entities": 5,
+      "subjects": 5,
+      "runtimeAdmittedEntities": 0,
+      "localImagePaths": [],
+      "missingLocalImagePaths": [
+        "/game/assets/v120/phg-drive/armor/armor_classe_amazon_fibres.webp",
+        "/game/assets/v120/phg-drive/armor/armor_classe_cleopatra_turquoise.webp",
+        "/game/assets/v120/phg-drive/armor/armor_classe_exalted_tissu.webp",
+        "/game/assets/v120/phg-drive/armor/armor_classe_viking_maille.webp",
+        "/game/assets/v120/phg-drive/armor/armor_classe_witch_plumes.webp",
+        "/game/assets/v120/phg-drive/previews/armor_classe_amazon_fibres.webp",
+        "/game/assets/v120/phg-drive/previews/armor_classe_cleopatra_turquoise.webp",
+        "/game/assets/v120/phg-drive/previews/armor_classe_exalted_tissu.webp",
+        "/game/assets/v120/phg-drive/previews/armor_classe_viking_maille.webp",
+        "/game/assets/v120/phg-drive/previews/armor_classe_witch_plumes.webp"
+      ],
+      "diagnoses": {
+        "BLOQUE_SOURCE_LOCALE_ADMISSION": 5
+      },
+      "humanArtReviewClosed": 0,
+      "officialUV1to1Closed": 0
+    },
+    {
+      "family": "V120 candidat / skin",
+      "entityKeys": [
+        "drive-source:skin_classe_alpha_default",
+        "drive-source:skin_classe_alpha_swatch02",
+        "drive-source:skin_classe_alpha_swatch03",
+        "drive-source:skin_classe_alpha_swatch04",
+        "drive-source:skin_classe_alpha_swatch05",
+        "drive-source:skin_classe_amazon_base_rendu_officiel",
+        "drive-source:skin_classe_anubis_base_rendu_officiel",
+        "drive-source:skin_classe_bionic_base_rendu_officiel",
+        "drive-source:skin_classe_celtic_base_rendu_officiel",
+        "drive-source:skin_classe_chopper_base_rendu_officiel",
+        "drive-source:skin_classe_cityhunter97_base_observee",
+        "drive-source:skin_classe_cityhunter97_dominion",
+        "drive-source:skin_classe_elder_base_observee",
+        "drive-source:skin_classe_emissary_base_rendu_officiel",
+        "drive-source:skin_classe_exalted_base_rendu_officiel",
+        "drive-source:skin_classe_falconer_base_observee",
+        "drive-source:skin_classe_father_base_rendu_officiel_2026",
+        "drive-source:skin_classe_feral_reference_2024_avant_3_6_0",
+        "drive-source:skin_classe_gladiator_base_rendu_officiel",
+        "drive-source:skin_classe_jotun_base_rendu_officiel",
+        "drive-source:skin_classe_junglehunter87_base_observee",
+        "drive-source:skin_classe_mr_black_base_observee",
+        "drive-source:skin_classe_oni_base_rendu_officiel",
+        "drive-source:skin_classe_pirate_base_rendu_officiel",
+        "drive-source:skin_classe_scar_base_rendu_officiel",
+        "drive-source:skin_classe_witch_base_marquee_rendu_officiel",
+        "drive-source:skin_classe_wolf_base_rendu_officiel",
+        "drive-source:skin_classic_base",
+        "drive-source:skin_classic_blood",
+        "drive-source:skin_classic_swatch02",
+        "drive-source:skin_classic_swatch03",
+        "drive-source:skin_classic_swatch04",
+        "drive-source:skin_classic_swatch05",
+        "drive-source:skin_classic_swatch07",
+        "drive-source:skin_classic_swatch08",
+        "drive-source:skin_default_steam_exclusive",
+        "drive-source:skin_default_swatch01",
+        "drive-source:skin_default_swatch02",
+        "drive-source:skin_default_swatch03",
+        "drive-source:skin_default_swatch04",
+        "drive-source:skin_default_swatch05",
+        "drive-source:skin_default_swatch06",
+        "drive-source:skin_default_swatch07",
+        "drive-source:skin_default_swatch08",
+        "drive-source:skin_default_swatch09",
+        "drive-source:skin_default_swatch10",
+        "drive-source:skin_default_swatch11",
+        "drive-source:skin_gator_swatch01",
+        "drive-source:skin_gator_swatch02",
+        "drive-source:skin_gator_swatch03",
+        "drive-source:skin_gator_swatch04",
+        "drive-source:skin_gator_swatch05",
+        "drive-source:skin_gator_swatch06",
+        "drive-source:skin_gator_swatch07",
+        "drive-source:skin_gator_swatch08",
+        "drive-source:skin_mottle_swatch01",
+        "drive-source:skin_mottle_swatch02",
+        "drive-source:skin_mottle_swatch03",
+        "drive-source:skin_mottle_swatch04",
+        "drive-source:skin_mottle_swatch05",
+        "drive-source:skin_mottle_swatch06",
+        "drive-source:skin_mottle_swatch07",
+        "drive-source:skin_mottle_swatch08",
+        "drive-source:skin_raptor_fierce",
+        "drive-source:skin_raptor_nuke",
+        "drive-source:skin_raptor_swatch01",
+        "drive-source:skin_raptor_swatch02",
+        "drive-source:skin_raptor_swatch04",
+        "drive-source:skin_raptor_swatch05",
+        "drive-source:skin_raptor_swatch07",
+        "drive-source:skin_raptor_swatch08",
+        "drive-source:skin_shatter_swatch01",
+        "drive-source:skin_shatter_swatch02",
+        "drive-source:skin_shatter_swatch03",
+        "drive-source:skin_shatter_swatch04",
+        "drive-source:skin_shatter_swatch05",
+        "drive-source:skin_shatter_swatch06",
+        "drive-source:skin_shatter_swatch07",
+        "drive-source:skin_shatter_swatch08",
+        "drive-source:skin_shatter_tsunami"
+      ],
+      "entities": 80,
+      "subjects": 80,
+      "runtimeAdmittedEntities": 0,
+      "localImagePaths": [],
+      "missingLocalImagePaths": [
+        "/game/assets/v120/phg-drive/previews/skin_classe_alpha_default.webp",
+        "/game/assets/v120/phg-drive/previews/skin_classe_alpha_swatch02.webp",
+        "/game/assets/v120/phg-drive/previews/skin_classe_alpha_swatch03.webp",
+        "/game/assets/v120/phg-drive/previews/skin_classe_alpha_swatch04.webp",
+        "/game/assets/v120/phg-drive/previews/skin_classe_alpha_swatch05.webp",
+        "/game/assets/v120/phg-drive/previews/skin_classe_amazon_base_rendu_officiel.webp",
+        "/game/assets/v120/phg-drive/previews/skin_classe_anubis_base_rendu_officiel.webp",
+        "/game/assets/v120/phg-drive/previews/skin_classe_bionic_base_rendu_officiel.webp",
+        "/game/assets/v120/phg-drive/previews/skin_classe_celtic_base_rendu_officiel.webp",
+        "/game/assets/v120/phg-drive/previews/skin_classe_chopper_base_rendu_officiel.webp",
+        "/game/assets/v120/phg-drive/previews/skin_classe_cityhunter97_base_observee.webp",
+        "/game/assets/v120/phg-drive/previews/skin_classe_cityhunter97_dominion.webp",
+        "/game/assets/v120/phg-drive/previews/skin_classe_elder_base_observee.webp",
+        "/game/assets/v120/phg-drive/previews/skin_classe_emissary_base_rendu_officiel.webp",
+        "/game/assets/v120/phg-drive/previews/skin_classe_exalted_base_rendu_officiel.webp",
+        "/game/assets/v120/phg-drive/previews/skin_classe_falconer_base_observee.webp",
+        "/game/assets/v120/phg-drive/previews/skin_classe_father_base_rendu_officiel_2026.webp",
+        "/game/assets/v120/phg-drive/previews/skin_classe_feral_reference_2024_avant_3_6_0.webp",
+        "/game/assets/v120/phg-drive/previews/skin_classe_gladiator_base_rendu_officiel.webp",
+        "/game/assets/v120/phg-drive/previews/skin_classe_jotun_base_rendu_officiel.webp",
+        "/game/assets/v120/phg-drive/previews/skin_classe_junglehunter87_base_observee.webp",
+        "/game/assets/v120/phg-drive/previews/skin_classe_mr_black_base_observee.webp",
+        "/game/assets/v120/phg-drive/previews/skin_classe_oni_base_rendu_officiel.webp",
+        "/game/assets/v120/phg-drive/previews/skin_classe_pirate_base_rendu_officiel.webp",
+        "/game/assets/v120/phg-drive/previews/skin_classe_scar_base_rendu_officiel.webp",
+        "/game/assets/v120/phg-drive/previews/skin_classe_witch_base_marquee_rendu_officiel.webp",
+        "/game/assets/v120/phg-drive/previews/skin_classe_wolf_base_rendu_officiel.webp",
+        "/game/assets/v120/phg-drive/previews/skin_classic_base.webp",
+        "/game/assets/v120/phg-drive/previews/skin_classic_blood.webp",
+        "/game/assets/v120/phg-drive/previews/skin_classic_swatch02.webp",
+        "/game/assets/v120/phg-drive/previews/skin_classic_swatch03.webp",
+        "/game/assets/v120/phg-drive/previews/skin_classic_swatch04.webp",
+        "/game/assets/v120/phg-drive/previews/skin_classic_swatch05.webp",
+        "/game/assets/v120/phg-drive/previews/skin_classic_swatch07.webp",
+        "/game/assets/v120/phg-drive/previews/skin_classic_swatch08.webp",
+        "/game/assets/v120/phg-drive/previews/skin_default_steam_exclusive.webp",
+        "/game/assets/v120/phg-drive/previews/skin_default_swatch01.webp",
+        "/game/assets/v120/phg-drive/previews/skin_default_swatch02.webp",
+        "/game/assets/v120/phg-drive/previews/skin_default_swatch03.webp",
+        "/game/assets/v120/phg-drive/previews/skin_default_swatch04.webp",
+        "/game/assets/v120/phg-drive/previews/skin_default_swatch05.webp",
+        "/game/assets/v120/phg-drive/previews/skin_default_swatch06.webp",
+        "/game/assets/v120/phg-drive/previews/skin_default_swatch07.webp",
+        "/game/assets/v120/phg-drive/previews/skin_default_swatch08.webp",
+        "/game/assets/v120/phg-drive/previews/skin_default_swatch09.webp",
+        "/game/assets/v120/phg-drive/previews/skin_default_swatch10.webp",
+        "/game/assets/v120/phg-drive/previews/skin_default_swatch11.webp",
+        "/game/assets/v120/phg-drive/previews/skin_gator_swatch01.webp",
+        "/game/assets/v120/phg-drive/previews/skin_gator_swatch02.webp",
+        "/game/assets/v120/phg-drive/previews/skin_gator_swatch03.webp",
+        "/game/assets/v120/phg-drive/previews/skin_gator_swatch04.webp",
+        "/game/assets/v120/phg-drive/previews/skin_gator_swatch05.webp",
+        "/game/assets/v120/phg-drive/previews/skin_gator_swatch06.webp",
+        "/game/assets/v120/phg-drive/previews/skin_gator_swatch07.webp",
+        "/game/assets/v120/phg-drive/previews/skin_gator_swatch08.webp",
+        "/game/assets/v120/phg-drive/previews/skin_mottle_swatch01.webp",
+        "/game/assets/v120/phg-drive/previews/skin_mottle_swatch02.webp",
+        "/game/assets/v120/phg-drive/previews/skin_mottle_swatch03.webp",
+        "/game/assets/v120/phg-drive/previews/skin_mottle_swatch04.webp",
+        "/game/assets/v120/phg-drive/previews/skin_mottle_swatch05.webp",
+        "/game/assets/v120/phg-drive/previews/skin_mottle_swatch06.webp",
+        "/game/assets/v120/phg-drive/previews/skin_mottle_swatch07.webp",
+        "/game/assets/v120/phg-drive/previews/skin_mottle_swatch08.webp",
+        "/game/assets/v120/phg-drive/previews/skin_raptor_fierce.webp",
+        "/game/assets/v120/phg-drive/previews/skin_raptor_nuke.webp",
+        "/game/assets/v120/phg-drive/previews/skin_raptor_swatch01.webp",
+        "/game/assets/v120/phg-drive/previews/skin_raptor_swatch02.webp",
+        "/game/assets/v120/phg-drive/previews/skin_raptor_swatch04.webp",
+        "/game/assets/v120/phg-drive/previews/skin_raptor_swatch05.webp",
+        "/game/assets/v120/phg-drive/previews/skin_raptor_swatch07.webp",
+        "/game/assets/v120/phg-drive/previews/skin_raptor_swatch08.webp",
+        "/game/assets/v120/phg-drive/previews/skin_shatter_swatch01.webp",
+        "/game/assets/v120/phg-drive/previews/skin_shatter_swatch02.webp",
+        "/game/assets/v120/phg-drive/previews/skin_shatter_swatch03.webp",
+        "/game/assets/v120/phg-drive/previews/skin_shatter_swatch04.webp",
+        "/game/assets/v120/phg-drive/previews/skin_shatter_swatch05.webp",
+        "/game/assets/v120/phg-drive/previews/skin_shatter_swatch06.webp",
+        "/game/assets/v120/phg-drive/previews/skin_shatter_swatch07.webp",
+        "/game/assets/v120/phg-drive/previews/skin_shatter_swatch08.webp",
+        "/game/assets/v120/phg-drive/previews/skin_shatter_tsunami.webp",
+        "/game/assets/v120/phg-drive/skin/skin_classe_alpha_default.webp",
+        "/game/assets/v120/phg-drive/skin/skin_classe_alpha_swatch02.webp",
+        "/game/assets/v120/phg-drive/skin/skin_classe_alpha_swatch03.webp",
+        "/game/assets/v120/phg-drive/skin/skin_classe_alpha_swatch04.webp",
+        "/game/assets/v120/phg-drive/skin/skin_classe_alpha_swatch05.webp",
+        "/game/assets/v120/phg-drive/skin/skin_classe_amazon_base_rendu_officiel.webp",
+        "/game/assets/v120/phg-drive/skin/skin_classe_anubis_base_rendu_officiel.webp",
+        "/game/assets/v120/phg-drive/skin/skin_classe_bionic_base_rendu_officiel.webp",
+        "/game/assets/v120/phg-drive/skin/skin_classe_celtic_base_rendu_officiel.webp",
+        "/game/assets/v120/phg-drive/skin/skin_classe_chopper_base_rendu_officiel.webp",
+        "/game/assets/v120/phg-drive/skin/skin_classe_cityhunter97_base_observee.webp",
+        "/game/assets/v120/phg-drive/skin/skin_classe_cityhunter97_dominion.webp",
+        "/game/assets/v120/phg-drive/skin/skin_classe_elder_base_observee.webp",
+        "/game/assets/v120/phg-drive/skin/skin_classe_emissary_base_rendu_officiel.webp",
+        "/game/assets/v120/phg-drive/skin/skin_classe_exalted_base_rendu_officiel.webp",
+        "/game/assets/v120/phg-drive/skin/skin_classe_falconer_base_observee.webp",
+        "/game/assets/v120/phg-drive/skin/skin_classe_father_base_rendu_officiel_2026.webp",
+        "/game/assets/v120/phg-drive/skin/skin_classe_feral_reference_2024_avant_3_6_0.webp",
+        "/game/assets/v120/phg-drive/skin/skin_classe_gladiator_base_rendu_officiel.webp",
+        "/game/assets/v120/phg-drive/skin/skin_classe_jotun_base_rendu_officiel.webp",
+        "/game/assets/v120/phg-drive/skin/skin_classe_junglehunter87_base_observee.webp",
+        "/game/assets/v120/phg-drive/skin/skin_classe_mr_black_base_observee.webp",
+        "/game/assets/v120/phg-drive/skin/skin_classe_oni_base_rendu_officiel.webp",
+        "/game/assets/v120/phg-drive/skin/skin_classe_pirate_base_rendu_officiel.webp",
+        "/game/assets/v120/phg-drive/skin/skin_classe_scar_base_rendu_officiel.webp",
+        "/game/assets/v120/phg-drive/skin/skin_classe_witch_base_marquee_rendu_officiel.webp",
+        "/game/assets/v120/phg-drive/skin/skin_classe_wolf_base_rendu_officiel.webp",
+        "/game/assets/v120/phg-drive/skin/skin_classic_base.webp",
+        "/game/assets/v120/phg-drive/skin/skin_classic_blood.webp",
+        "/game/assets/v120/phg-drive/skin/skin_classic_swatch02.webp",
+        "/game/assets/v120/phg-drive/skin/skin_classic_swatch03.webp",
+        "/game/assets/v120/phg-drive/skin/skin_classic_swatch04.webp",
+        "/game/assets/v120/phg-drive/skin/skin_classic_swatch05.webp",
+        "/game/assets/v120/phg-drive/skin/skin_classic_swatch07.webp",
+        "/game/assets/v120/phg-drive/skin/skin_classic_swatch08.webp",
+        "/game/assets/v120/phg-drive/skin/skin_default_steam_exclusive.webp",
+        "/game/assets/v120/phg-drive/skin/skin_default_swatch01.webp",
+        "/game/assets/v120/phg-drive/skin/skin_default_swatch02.webp",
+        "/game/assets/v120/phg-drive/skin/skin_default_swatch03.webp",
+        "/game/assets/v120/phg-drive/skin/skin_default_swatch04.webp",
+        "/game/assets/v120/phg-drive/skin/skin_default_swatch05.webp",
+        "/game/assets/v120/phg-drive/skin/skin_default_swatch06.webp",
+        "/game/assets/v120/phg-drive/skin/skin_default_swatch07.webp",
+        "/game/assets/v120/phg-drive/skin/skin_default_swatch08.webp",
+        "/game/assets/v120/phg-drive/skin/skin_default_swatch09.webp",
+        "/game/assets/v120/phg-drive/skin/skin_default_swatch10.webp",
+        "/game/assets/v120/phg-drive/skin/skin_default_swatch11.webp",
+        "/game/assets/v120/phg-drive/skin/skin_gator_swatch01.webp",
+        "/game/assets/v120/phg-drive/skin/skin_gator_swatch02.webp",
+        "/game/assets/v120/phg-drive/skin/skin_gator_swatch03.webp",
+        "/game/assets/v120/phg-drive/skin/skin_gator_swatch04.webp",
+        "/game/assets/v120/phg-drive/skin/skin_gator_swatch05.webp",
+        "/game/assets/v120/phg-drive/skin/skin_gator_swatch06.webp",
+        "/game/assets/v120/phg-drive/skin/skin_gator_swatch07.webp",
+        "/game/assets/v120/phg-drive/skin/skin_gator_swatch08.webp",
+        "/game/assets/v120/phg-drive/skin/skin_mottle_swatch01.webp",
+        "/game/assets/v120/phg-drive/skin/skin_mottle_swatch02.webp",
+        "/game/assets/v120/phg-drive/skin/skin_mottle_swatch03.webp",
+        "/game/assets/v120/phg-drive/skin/skin_mottle_swatch04.webp",
+        "/game/assets/v120/phg-drive/skin/skin_mottle_swatch05.webp",
+        "/game/assets/v120/phg-drive/skin/skin_mottle_swatch06.webp",
+        "/game/assets/v120/phg-drive/skin/skin_mottle_swatch07.webp",
+        "/game/assets/v120/phg-drive/skin/skin_mottle_swatch08.webp",
+        "/game/assets/v120/phg-drive/skin/skin_raptor_fierce.webp",
+        "/game/assets/v120/phg-drive/skin/skin_raptor_nuke.webp",
+        "/game/assets/v120/phg-drive/skin/skin_raptor_swatch01.webp",
+        "/game/assets/v120/phg-drive/skin/skin_raptor_swatch02.webp",
+        "/game/assets/v120/phg-drive/skin/skin_raptor_swatch04.webp",
+        "/game/assets/v120/phg-drive/skin/skin_raptor_swatch05.webp",
+        "/game/assets/v120/phg-drive/skin/skin_raptor_swatch07.webp",
+        "/game/assets/v120/phg-drive/skin/skin_raptor_swatch08.webp",
+        "/game/assets/v120/phg-drive/skin/skin_shatter_swatch01.webp",
+        "/game/assets/v120/phg-drive/skin/skin_shatter_swatch02.webp",
+        "/game/assets/v120/phg-drive/skin/skin_shatter_swatch03.webp",
+        "/game/assets/v120/phg-drive/skin/skin_shatter_swatch04.webp",
+        "/game/assets/v120/phg-drive/skin/skin_shatter_swatch05.webp",
+        "/game/assets/v120/phg-drive/skin/skin_shatter_swatch06.webp",
+        "/game/assets/v120/phg-drive/skin/skin_shatter_swatch07.webp",
+        "/game/assets/v120/phg-drive/skin/skin_shatter_swatch08.webp",
+        "/game/assets/v120/phg-drive/skin/skin_shatter_tsunami.webp"
+      ],
+      "diagnoses": {
+        "BLOQUE_SOURCE_LOCALE_ADMISSION": 80
+      },
+      "humanArtReviewClosed": 0,
+      "officialUV1to1Closed": 0
+    }
+  ]
+}

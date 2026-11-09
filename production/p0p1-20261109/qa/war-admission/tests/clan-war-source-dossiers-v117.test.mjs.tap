@@ -1,0 +1,40 @@
+TAP version 13
+# Subtest: 108 source-authored scenes, 12 campaigns, 12 maps, 15 doctrines, 18 accords are read verbatim
+ok 1 - 108 source-authored scenes, 12 campaigns, 12 maps, 15 doctrines, 18 accords are read verbatim
+  ---
+  duration_ms: 0.925696
+  type: 'test'
+  ...
+# Subtest: every W3-N, W3-RTS and W5-LM source cell survives into a dossier without invented narratives
+ok 2 - every W3-N, W3-RTS and W5-LM source cell survives into a dossier without invented narratives
+  ---
+  duration_ms: 1.661165
+  type: 'test'
+  ...
+# Subtest: all twelve linked campaign chapters are present, references validated, with no roster fabrication
+ok 3 - all twelve linked campaign chapters are present, references validated, with no roster fabrication
+  ---
+  duration_ms: 1.006337
+  type: 'test'
+  ...
+# Subtest: search respects accents, original mode, ID, title and class and never mutates source Bible
+ok 4 - search respects accents, original mode, ID, title and class and never mutates source Bible
+  ---
+  duration_ms: 17.949173
+  type: 'test'
+  ...
+# Subtest: alternate validated private rules keep caller-owned copies, not a global singleton
+ok 5 - alternate validated private rules keep caller-owned copies, not a global singleton
+  ---
+  duration_ms: 4.618645
+  type: 'test'
+  ...
+1..5
+# tests 5
+# suites 0
+# pass 5
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 35.229652

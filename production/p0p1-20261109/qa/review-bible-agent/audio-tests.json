@@ -1,0 +1,34 @@
+[
+  {
+    "command": [
+      "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+      "--experimental-strip-types",
+      "tests/clan-ship-operations-audio.test.mjs"
+    ],
+    "exitCode": 0,
+    "sourceSha256": "3fd98fc509db59da70d2e2252cd7e53ac81c27a4045336eda126f77ff6769994",
+    "passed": [
+      "18"
+    ],
+    "failed": [
+      "0"
+    ],
+    "log": "/workspace/p0p1-20261109/review/clan-ship-operations-audio.test.mjs.tap"
+  },
+  {
+    "command": [
+      "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+      "--experimental-strip-types",
+      "tests/scene-audio.test.mjs"
+    ],
+    "exitCode": 0,
+    "sourceSha256": "c1c77f051afef16e3ef7df9eef070a49bd29e795aae8e36cfc22011966f7479f",
+    "passed": [
+      "10"
+    ],
+    "failed": [
+      "0"
+    ],
+    "log": "/workspace/p0p1-20261109/review/scene-audio.test.mjs.tap"
+  }
+]

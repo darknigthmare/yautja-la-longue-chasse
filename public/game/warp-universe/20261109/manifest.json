@@ -1,0 +1,131 @@
+{
+  "schemaVersion": 1,
+  "asOf": "2026-11-09",
+  "scope": "WARP P0 experimental bay; no campaign unlock, no film certification",
+  "assets": [
+    {
+      "id": 199,
+      "path": "public/game/warp-universe/20261109/199_module_baie_warp_fond.png",
+      "src": "/game/warp-universe/20261109/199_module_baie_warp_fond.png",
+      "source": "docs/campagne/warp-universe/lot-06-20261106/module/199_module_baie_warp_fond.png",
+      "origin": "existing-source-candidate",
+      "width": 1672,
+      "height": 941,
+      "bytes": 2874040,
+      "sha256": "c5b88e5939bb4eaaad016da06377802e0ff8cf7d127f48c4ca438bfcb47d17ad",
+      "mode": "RGB",
+      "alphaRange": null,
+      "alphaBounds": [
+        0,
+        0,
+        1672,
+        941
+      ],
+      "centerAlpha": 255,
+      "artisticValidated": false,
+      "animationFrames": 1
+    },
+    {
+      "id": 201,
+      "path": "public/game/warp-universe/20261109/201_module_archiviste_yautja.png",
+      "src": "/game/warp-universe/20261109/201_module_archiviste_yautja.png",
+      "source": "docs/campagne/warp-universe/lot-06-20261106/module/201_module_archiviste_yautja.png",
+      "origin": "existing-source-candidate",
+      "width": 1024,
+      "height": 1536,
+      "bytes": 2514865,
+      "sha256": "84c87998fcde4c031781a4ea2c13c46dbf96649ad5cc018e12d4f1050fa7b6d9",
+      "mode": "RGBA",
+      "alphaRange": [
+        0,
+        254
+      ],
+      "alphaBounds": [
+        55,
+        0,
+        1008,
+        1528
+      ],
+      "centerAlpha": 252,
+      "artisticValidated": false,
+      "animationFrames": 1
+    },
+    {
+      "id": 203,
+      "path": "public/game/warp-universe/20261109/203_module_memoire_avatar.png",
+      "src": "/game/warp-universe/20261109/203_module_memoire_avatar.png",
+      "source": "docs/campagne/warp-universe/lot-06-20261106/module/203_module_memoire_avatar.png",
+      "origin": "existing-source-candidate",
+      "width": 1086,
+      "height": 1448,
+      "bytes": 2468644,
+      "sha256": "1bb83c64ec652d0bc6b43c24a8e47840f6ad12454ca44f412f2fb14a3de441fd",
+      "mode": "RGBA",
+      "alphaRange": [
+        0,
+        255
+      ],
+      "alphaBounds": [
+        0,
+        0,
+        1085,
+        1424
+      ],
+      "centerAlpha": 252,
+      "artisticValidated": false,
+      "animationFrames": 1
+    },
+    {
+      "id": 200,
+      "path": "public/game/warp-universe/20261109/200_module_salle_avatar_fond.png",
+      "src": "/game/warp-universe/20261109/200_module_salle_avatar_fond.png",
+      "source": "/workspace/generated_images/exec-3bed408b-5ee2-4161-9a0d-56a533ecda07.png",
+      "origin": "image_gen-original-20261109",
+      "width": 1672,
+      "height": 941,
+      "bytes": 2447227,
+      "sha256": "13719336fdcaca91941eaac942e3b06dbb31efd2ce8fe3bd5bbd6d43bf84c752",
+      "mode": "RGB",
+      "alphaRange": null,
+      "alphaBounds": [
+        0,
+        0,
+        1672,
+        941
+      ],
+      "centerAlpha": 255,
+      "artisticValidated": false,
+      "animationFrames": 1
+    },
+    {
+      "id": 202,
+      "path": "public/game/warp-universe/20261109/202_module_sas_decontamination.png",
+      "src": "/game/warp-universe/20261109/202_module_sas_decontamination.png",
+      "source": "/workspace/generated_images/exec-b7de0a37-50fe-464a-8586-519ab4929cb1.png",
+      "origin": "image_gen-original-20261109",
+      "width": 1312,
+      "height": 1199,
+      "bytes": 1659675,
+      "sha256": "deefa94a2392a5ace06988cda718684283ebebae382d335d846a16ceaedf7cb6",
+      "mode": "RGBA",
+      "alphaRange": [
+        0,
+        255
+      ],
+      "alphaBounds": [
+        0,
+        0,
+        1312,
+        1185
+      ],
+      "centerAlpha": 0,
+      "artisticValidated": false,
+      "animationFrames": 1
+    }
+  ],
+  "knownLimitations": [
+    "199 is original source candidate with painted pylons/consoles; modular-empty-background acceptance remains open.",
+    "201 and203 are original project concepts, not film-certified identities.",
+    "200 and202 generated and technically inspected; human artistic validation remains open."
+  ]
+}

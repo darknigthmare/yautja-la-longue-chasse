@@ -1,0 +1,1085 @@
+{
+  "schemaVersion": 1,
+  "asOf": "2026-11-09",
+  "baseCommit": "39b601ce1873a1f400d2f545f0fab97691b779e3",
+  "requirements": [
+    "OPS-B15",
+    "OPS-F44",
+    "OPS-Q23"
+  ],
+  "scope": "Reference preparation and provenance; no primary-frame or human-art qualification.",
+  "assetCount": 30,
+  "nativeCapturesOpened": 4,
+  "newBrowserRuns": 0,
+  "newRasterAssets": 0,
+  "humanArtApproval": false,
+  "primaryReferencesNewlyInspected": 0,
+  "referencePolicy": "Prior citations from references.md retained with their limits. Every page/timecode is nullable and remains absent without inspection.",
+  "fetchLimit": {
+    "command": "curl --location --fail --silent --show-error --max-time 20",
+    "targets": [
+      "https://www.avpgalaxy.net/wordpress/wp-content/uploads/2020/11/avp2004-bluray-154.jpg",
+      "https://www.avpgalaxy.net/wordpress/wp-content/uploads/2020/11/avp2004-bluray-155.jpg",
+      "https://www.awn.com/vfxworld/alien-vs-predator-battle-merge-practical-effects-and-cgi"
+    ],
+    "exitCode": 22,
+    "curlReportedError": "The requested URL returned error: 403",
+    "imagesDownloaded": 0
+  },
+  "requirementsState": {
+    "OPS-F44": "Provenance separated and documented; no visual approval inferred.",
+    "OPS-B15": "Partial: current-render annotations and shape/proportion metadata prepared; primary frames/pages and human comparison remain.",
+    "OPS-Q23": "Human comparison and art approval remain open."
+  },
+  "references": [
+    {
+      "id": "REF-OPS-01",
+      "work": "Alien vs. Predator (2004)",
+      "kind": "official-film-synopsis",
+      "url": "https://www.20thcenturystudios.com/movies/alien-vs-predator",
+      "supports": "Rite initiatique de la pyramide et coopération avec Lex.",
+      "doesNotEstablish": "Plan intérieur, mandat ou seuil chiffré de progression."
+    },
+    {
+      "id": "REF-OPS-02",
+      "work": "Alien vs. Predator (2004) / objet ADI d'exposition",
+      "kind": "production-object-notice",
+      "url": "https://propstoreauction.com/lot-details/index/catalog/489/lot/185392/13-Elder-Predator-Ian-Whyte-Display-Bio-Mask-AVP-ALIEN-VS-PREDATOR-2004",
+      "supports": "Provenance ADI du masque exposé et rappel de la reconnaissance de Lex.",
+      "doesNotEstablish": "Cet exemplaire redécoré comme masque filmé ou un commandement de Lex."
+    },
+    {
+      "id": "REF-OPS-04",
+      "work": "The Predator (2018)",
+      "kind": "vfx-vendor-account",
+      "url": "https://www.rsp.com.au/our-work/filmography/the-predator/",
+      "supports": "Poursuite de deux appareils et intérieur/extérieur d'une coque accidentée.",
+      "doesNotEstablish": "Armement, boucliers, proportions ou plan du Clan Ship AVP 2004."
+    },
+    {
+      "id": "REF-OPS-05",
+      "work": "Plusieurs films, sections distinctes",
+      "kind": "secondary-illustrated-index",
+      "url": "https://www.avpgalaxy.net/predator/spacecrafts/",
+      "supports": "Pistes d'images de vaisseaux, passerelle, projection de pyramide et capsules.",
+      "doesNotEstablish": "Mesures canoniques de notre table, sept pièces ou effectifs."
+    },
+    {
+      "id": "REF-OPS-06",
+      "work": "Aliens vs. Predator: The Essential Comics Volume 1",
+      "kind": "publisher-bibliography",
+      "url": "https://digital.darkhorse.com/books/9bb496a44e944fcda26662b44db247be/aliens-vs-predator-the-essential-comics-volume-1",
+      "supports": "Identification éditoriale du corpus de Machiko.",
+      "doesNotEstablish": "Aucune page ou géométrie précise de vie à bord sans lecture des planches."
+    },
+    {
+      "id": "REF-OPS-07",
+      "work": "Aliens/Predator: War",
+      "kind": "secondary-comics-index",
+      "url": "https://www.comics.org/issue/552792/",
+      "supports": "Synopsis indexé de vie de Machiko à bord et reine captive.",
+      "doesNotEstablish": "Pages non consultées, protocole d'intégration ou loi universelle des clans."
+    },
+    {
+      "id": "REF-OPS-08",
+      "work": "Aliens vs. Predator: Three World War",
+      "kind": "distributor-synopsis",
+      "url": "https://www.g-mart.com/static/f104197.html",
+      "supports": "Conflit de clans et alliance circonstancielle avec des humains dans cette œuvre.",
+      "doesNotEstablish": "Doctrine de tous les clans ou contrôle standard des Xénomorphes."
+    },
+    {
+      "id": "REF-OPS-09",
+      "work": "Alien vs. Predator (2004)",
+      "kind": "vfx-vendor-account",
+      "url": "https://www.mpcvfx.com/en/filmography/alien-vs-predator/",
+      "supports": "Travail du prestataire sur les vaisseaux et environnements spatiaux.",
+      "doesNotEstablish": "Plan complet, mobilier mesuré ou amarrage personnel."
+    },
+    {
+      "id": "REF-OPS-10",
+      "work": "Alien vs. Predator (2004)",
+      "kind": "production-interview",
+      "url": "https://www.awn.com/vfxworld/alien-vs-predator-battle-merge-practical-effects-and-cgi",
+      "supports": "Témoignages sur le vaisseau mère et la projection tridimensionnelle de la station baleinière.",
+      "doesNotEstablish": "Grande table militaire de notre jeu, menus et proportions."
+    }
+  ],
+  "inputFingerprints": [
+    {
+      "path": "production/clan-ship-20261104/references.md",
+      "bytes": 13118,
+      "sha256": "a7011754f32c4f7c8ea0687405cf8c39534105618d2acef300a4c007f96bdaff"
+    },
+    {
+      "path": "production/clan-ship-20261104/qa-operations/asset-audit.json",
+      "bytes": 58148,
+      "sha256": "5692da7b005ea3a34801d9d7eab3a9309924ebb0962a11a9d77219448529e323"
+    },
+    {
+      "path": "public/game/clan-ship/manifest.json",
+      "bytes": 5129,
+      "sha256": "67099604abbc9539e6e25a4dc37c953cb89e9184832a9fdc6228feba80ed0e5d"
+    },
+    {
+      "path": "public/game/clan-ship/props/manifest.json",
+      "bytes": 7359,
+      "sha256": "a00424abd463b6285b07e34e2547030c4c50279caa180eb92990473ca9a64790"
+    },
+    {
+      "path": "public/game/clan-ship/incidents-v1/manifest.json",
+      "bytes": 4238,
+      "sha256": "f99665bdc10e57a9050d014cabfcd050a3033dd1f31d50dd402e67f3ad69ce9d"
+    },
+    {
+      "path": "art-source/v14/ships/ship-reference-sources.json",
+      "bytes": 7659,
+      "sha256": "8aa7da96eb034c5e638cda928d8cde9b0f14ea142d3a6a141830fba2caa185f7"
+    },
+    {
+      "path": "art-source/v14/ships/ship-asset-manifest.json",
+      "bytes": 9739,
+      "sha256": "fa453a5e2290b1b08795f29ffb14d384b57f5c285224895c4da0fbab9044b79a"
+    },
+    {
+      "path": "app/game/data/homeworldNpcVariantsV84.json",
+      "bytes": 550770,
+      "sha256": "a61de4c3c0b52aa19a485209b4b94beceec54c46bfc3d7f39053e351efe1c0f7"
+    }
+  ],
+  "assets": [
+    {
+      "id": "room-hangar",
+      "category": "room-background",
+      "path": "public/game/clan-ship/interiors/hangar-v1.webp",
+      "bytes": 244498,
+      "sha256": "1bf116bf19693f5828d5a63695ecea335c0c5208e2fc1e360df9a7282a861907",
+      "origin": "original-game-adaptation",
+      "referenceIds": [],
+      "primaryPage": null,
+      "primaryTimecode": null,
+      "primaryLocatorStatus": "not-inspected; no locator invented",
+      "facts": {
+        "width": 1440,
+        "height": 800,
+        "metadataSource": "historical-decoding-receipt; current bytes identical"
+      },
+      "observedOrDeclared": "Sept décors générés pour un parcours latéral jouable, voûtes bronze et éclairages turquoise/ambre. Leur plan n'est pas un relevé filmique.",
+      "comparisonRemaining": "Portes, hauteurs, alcôves, texture, palette et disposition des pièces : comparer une référence précise avant toute approbation.",
+      "newHumanArtApproval": false
+    },
+    {
+      "id": "room-armurerie",
+      "category": "room-background",
+      "path": "public/game/clan-ship/interiors/armurerie-v1.webp",
+      "bytes": 210174,
+      "sha256": "a11bb2ea4c9427b661c177691cd0b53df1c5ad15bde5afbfadceadcd4d58abe3",
+      "origin": "original-game-adaptation",
+      "referenceIds": [],
+      "primaryPage": null,
+      "primaryTimecode": null,
+      "primaryLocatorStatus": "not-inspected; no locator invented",
+      "facts": {
+        "width": 1440,
+        "height": 800,
+        "metadataSource": "historical-decoding-receipt; current bytes identical"
+      },
+      "observedOrDeclared": "Sept décors générés pour un parcours latéral jouable, voûtes bronze et éclairages turquoise/ambre. Leur plan n'est pas un relevé filmique.",
+      "comparisonRemaining": "Portes, hauteurs, alcôves, texture, palette et disposition des pièces : comparer une référence précise avant toute approbation.",
+      "newHumanArtApproval": false
+    },
+    {
+      "id": "room-entrainement",
+      "category": "room-background",
+      "path": "public/game/clan-ship/interiors/entrainement-v1.webp",
+      "bytes": 227810,
+      "sha256": "aad83f111beef4da543368d926b83410813ab76388c40da5b6474c316e4c233d",
+      "origin": "original-game-adaptation",
+      "referenceIds": [],
+      "primaryPage": null,
+      "primaryTimecode": null,
+      "primaryLocatorStatus": "not-inspected; no locator invented",
+      "facts": {
+        "width": 1440,
+        "height": 800,
+        "metadataSource": "historical-decoding-receipt; current bytes identical"
+      },
+      "observedOrDeclared": "Sept décors générés pour un parcours latéral jouable, voûtes bronze et éclairages turquoise/ambre. Leur plan n'est pas un relevé filmique.",
+      "comparisonRemaining": "Portes, hauteurs, alcôves, texture, palette et disposition des pièces : comparer une référence précise avant toute approbation.",
+      "newHumanArtApproval": false
+    },
+    {
+      "id": "room-conseil",
+      "category": "room-background",
+      "path": "public/game/clan-ship/interiors/conseil-v1.webp",
+      "bytes": 253562,
+      "sha256": "87751d973c97ad2910c34dd02bf7286419d76e8fa7b75b5bf31806d5a06947d1",
+      "origin": "original-game-adaptation",
+      "referenceIds": [],
+      "primaryPage": null,
+      "primaryTimecode": null,
+      "primaryLocatorStatus": "not-inspected; no locator invented",
+      "facts": {
+        "width": 1440,
+        "height": 800,
+        "metadataSource": "historical-decoding-receipt; current bytes identical"
+      },
+      "observedOrDeclared": "Sept décors générés pour un parcours latéral jouable, voûtes bronze et éclairages turquoise/ambre. Leur plan n'est pas un relevé filmique.",
+      "comparisonRemaining": "Portes, hauteurs, alcôves, texture, palette et disposition des pièces : comparer une référence précise avant toute approbation.",
+      "newHumanArtApproval": false
+    },
+    {
+      "id": "room-archives",
+      "category": "room-background",
+      "path": "public/game/clan-ship/interiors/archives-v1.webp",
+      "bytes": 269652,
+      "sha256": "49ebe43415f47dd338034964f8533c12585eef0e69c6441c28c9d14019d042fb",
+      "origin": "original-game-adaptation",
+      "referenceIds": [],
+      "primaryPage": null,
+      "primaryTimecode": null,
+      "primaryLocatorStatus": "not-inspected; no locator invented",
+      "facts": {
+        "width": 1440,
+        "height": 800,
+        "metadataSource": "historical-decoding-receipt; current bytes identical"
+      },
+      "observedOrDeclared": "Sept décors générés pour un parcours latéral jouable, voûtes bronze et éclairages turquoise/ambre. Leur plan n'est pas un relevé filmique.",
+      "comparisonRemaining": "Portes, hauteurs, alcôves, texture, palette et disposition des pièces : comparer une référence précise avant toute approbation.",
+      "newHumanArtApproval": false
+    },
+    {
+      "id": "room-trophees",
+      "category": "room-background",
+      "path": "public/game/clan-ship/interiors/trophees-v1.webp",
+      "bytes": 234882,
+      "sha256": "85ee3c53ec09468bf56732d92faf2f7c456c562a18256529ea8ed33aaaba407e",
+      "origin": "original-game-adaptation",
+      "referenceIds": [],
+      "primaryPage": null,
+      "primaryTimecode": null,
+      "primaryLocatorStatus": "not-inspected; no locator invented",
+      "facts": {
+        "width": 1440,
+        "height": 800,
+        "metadataSource": "historical-decoding-receipt; current bytes identical"
+      },
+      "observedOrDeclared": "Sept décors générés pour un parcours latéral jouable, voûtes bronze et éclairages turquoise/ambre. Leur plan n'est pas un relevé filmique.",
+      "comparisonRemaining": "Portes, hauteurs, alcôves, texture, palette et disposition des pièces : comparer une référence précise avant toute approbation.",
+      "newHumanArtApproval": false
+    },
+    {
+      "id": "room-soins",
+      "category": "room-background",
+      "path": "public/game/clan-ship/interiors/soins-v1.webp",
+      "bytes": 220874,
+      "sha256": "7143eee60290235d76a1fa054e85d5b8f3db2950401861aea55953a0e8866c4d",
+      "origin": "original-game-adaptation",
+      "referenceIds": [],
+      "primaryPage": null,
+      "primaryTimecode": null,
+      "primaryLocatorStatus": "not-inspected; no locator invented",
+      "facts": {
+        "width": 1440,
+        "height": 800,
+        "metadataSource": "historical-decoding-receipt; current bytes identical"
+      },
+      "observedOrDeclared": "Sept décors générés pour un parcours latéral jouable, voûtes bronze et éclairages turquoise/ambre. Leur plan n'est pas un relevé filmique.",
+      "comparisonRemaining": "Portes, hauteurs, alcôves, texture, palette et disposition des pièces : comparer une référence précise avant toute approbation.",
+      "newHumanArtApproval": false
+    },
+    {
+      "id": "council-table",
+      "category": "clan-prop",
+      "path": "public/game/clan-ship/props/council-table-v1.webp",
+      "bytes": 144870,
+      "sha256": "ad9f1452c0dac3b460923b9e2d301d98a94c344be37f7f48a5c270147244fc7a",
+      "origin": "original-game-adaptation",
+      "referenceIds": [
+        "REF-OPS-05",
+        "REF-OPS-09",
+        "REF-OPS-10"
+      ],
+      "primaryPage": null,
+      "primaryTimecode": null,
+      "primaryLocatorStatus": "not-inspected; no locator invented",
+      "facts": {
+        "width": 1024,
+        "height": 614,
+        "metadataSource": "historical-decoding-receipt; current bytes identical",
+        "pivot": {
+          "x": 512.5,
+          "y": 473
+        },
+        "alphaBounds": {
+          "x": 34,
+          "y": 122,
+          "width": 957,
+          "height": 351
+        },
+        "visibleAspectRatio": 2.726496,
+        "runtimeUsage": {
+          "roomId": "conseil",
+          "maximumVisibleWidth": 560,
+          "maximumVisibleHeight": 325,
+          "footprint": {
+            "width": 500,
+            "depth": 65
+          },
+          "units": "game-world-units; never metres"
+        }
+      },
+      "observedOrDeclared": "Plateau circulaire sur pieds, reliefs bronze ; projection géométrique SVG indépendante. Le thème holographique a un appui documentaire, la grande table et ses menus restent originaux.",
+      "comparisonRemaining": "Comparer silhouette, proportions, nombre de pièces et matériaux au même angle ; le rôle ne prouve pas l'identité filmique.",
+      "newHumanArtApproval": false
+    },
+    {
+      "id": "armory-rack",
+      "category": "clan-prop",
+      "path": "public/game/clan-ship/props/armory-rack-v1.webp",
+      "bytes": 213156,
+      "sha256": "e94a37c54d70030760792c91ce31c916a50fee656dbc663c7120820fda2148ae",
+      "origin": "original-game-adaptation",
+      "referenceIds": [],
+      "primaryPage": null,
+      "primaryTimecode": null,
+      "primaryLocatorStatus": "not-inspected; no locator invented",
+      "facts": {
+        "width": 1024,
+        "height": 614,
+        "metadataSource": "historical-decoding-receipt; current bytes identical",
+        "pivot": {
+          "x": 512,
+          "y": 589
+        },
+        "alphaBounds": {
+          "x": 59,
+          "y": 14,
+          "width": 906,
+          "height": 575
+        },
+        "visibleAspectRatio": 1.575652
+      },
+      "observedOrDeclared": "Objet individuel créé pour la fonction de jeu, avec pivot et empreinte propres.",
+      "comparisonRemaining": "Comparer silhouette, proportions, nombre de pièces et matériaux au même angle ; le rôle ne prouve pas l'identité filmique.",
+      "newHumanArtApproval": false
+    },
+    {
+      "id": "medical-bed",
+      "category": "clan-prop",
+      "path": "public/game/clan-ship/props/medical-bed-v1.webp",
+      "bytes": 137336,
+      "sha256": "b291617187af6d05b33fd8740621ede91d1856b9058db85ca0cc17847026de0f",
+      "origin": "original-game-adaptation",
+      "referenceIds": [],
+      "primaryPage": null,
+      "primaryTimecode": null,
+      "primaryLocatorStatus": "not-inspected; no locator invented",
+      "facts": {
+        "width": 1024,
+        "height": 538,
+        "metadataSource": "historical-decoding-receipt; current bytes identical",
+        "pivot": {
+          "x": 512.5,
+          "y": 434
+        },
+        "alphaBounds": {
+          "x": 24,
+          "y": 101,
+          "width": 977,
+          "height": 333
+        },
+        "visibleAspectRatio": 2.933934
+      },
+      "observedOrDeclared": "Objet individuel créé pour la fonction de jeu, avec pivot et empreinte propres.",
+      "comparisonRemaining": "Comparer silhouette, proportions, nombre de pièces et matériaux au même angle ; le rôle ne prouve pas l'identité filmique.",
+      "newHumanArtApproval": false
+    },
+    {
+      "id": "archive-terminal",
+      "category": "clan-prop",
+      "path": "public/game/clan-ship/props/archive-terminal-v1.webp",
+      "bytes": 144098,
+      "sha256": "a8f2e997c3b1c5023f703dfa8f8b5c678387a14f66a7943e9ab7cef406bb767b",
+      "origin": "original-game-adaptation",
+      "referenceIds": [],
+      "primaryPage": null,
+      "primaryTimecode": null,
+      "primaryLocatorStatus": "not-inspected; no locator invented",
+      "facts": {
+        "width": 533,
+        "height": 1024,
+        "metadataSource": "historical-decoding-receipt; current bytes identical",
+        "pivot": {
+          "x": 267.5,
+          "y": 998
+        },
+        "alphaBounds": {
+          "x": 70,
+          "y": 29,
+          "width": 395,
+          "height": 969
+        },
+        "visibleAspectRatio": 0.407637
+      },
+      "observedOrDeclared": "Objet individuel créé pour la fonction de jeu, avec pivot et empreinte propres.",
+      "comparisonRemaining": "Comparer silhouette, proportions, nombre de pièces et matériaux au même angle ; le rôle ne prouve pas l'identité filmique.",
+      "newHumanArtApproval": false
+    },
+    {
+      "id": "training-station",
+      "category": "clan-prop",
+      "path": "public/game/clan-ship/props/training-station-v1.webp",
+      "bytes": 177044,
+      "sha256": "32e7ed6b4d3b612f1317cbd3265d71fa030c5bb1efb81f5b63ceb6f72a13f037",
+      "origin": "original-game-adaptation",
+      "referenceIds": [],
+      "primaryPage": null,
+      "primaryTimecode": null,
+      "primaryLocatorStatus": "not-inspected; no locator invented",
+      "facts": {
+        "width": 683,
+        "height": 1024,
+        "metadataSource": "historical-decoding-receipt; current bytes identical",
+        "pivot": {
+          "x": 342,
+          "y": 960
+        },
+        "alphaBounds": {
+          "x": 39,
+          "y": 68,
+          "width": 606,
+          "height": 892
+        },
+        "visibleAspectRatio": 0.679372
+      },
+      "observedOrDeclared": "Objet individuel créé pour la fonction de jeu, avec pivot et empreinte propres.",
+      "comparisonRemaining": "Comparer silhouette, proportions, nombre de pièces et matériaux au même angle ; le rôle ne prouve pas l'identité filmique.",
+      "newHumanArtApproval": false
+    },
+    {
+      "id": "berth-console",
+      "category": "clan-prop",
+      "path": "public/game/clan-ship/props/berth-console-v1.webp",
+      "bytes": 174630,
+      "sha256": "b60d71e8c511164faf71bb215ed1ed84047f7b1852b1bf44a51498b0265418f7",
+      "origin": "original-game-adaptation",
+      "referenceIds": [],
+      "primaryPage": null,
+      "primaryTimecode": null,
+      "primaryLocatorStatus": "not-inspected; no locator invented",
+      "facts": {
+        "width": 1024,
+        "height": 614,
+        "metadataSource": "historical-decoding-receipt; current bytes identical",
+        "pivot": {
+          "x": 514.5,
+          "y": 546
+        },
+        "alphaBounds": {
+          "x": 34,
+          "y": 93,
+          "width": 961,
+          "height": 453
+        },
+        "visibleAspectRatio": 2.121413
+      },
+      "observedOrDeclared": "Objet individuel créé pour la fonction de jeu, avec pivot et empreinte propres.",
+      "comparisonRemaining": "Comparer silhouette, proportions, nombre de pièces et matériaux au même angle ; le rôle ne prouve pas l'identité filmique.",
+      "newHumanArtApproval": false
+    },
+    {
+      "id": "trophy-workbench",
+      "category": "clan-prop",
+      "path": "public/game/clan-ship/props/trophy-workbench-v1.webp",
+      "bytes": 160024,
+      "sha256": "b3d0241516aa530ebd60a9c74e7aca05115ac1bc97535cbb6274f6b3e9e63aed",
+      "origin": "original-game-adaptation",
+      "referenceIds": [],
+      "primaryPage": null,
+      "primaryTimecode": null,
+      "primaryLocatorStatus": "not-inspected; no locator invented",
+      "facts": {
+        "width": 1024,
+        "height": 603,
+        "metadataSource": "historical-decoding-receipt; current bytes identical",
+        "pivot": {
+          "x": 511.5,
+          "y": 544
+        },
+        "alphaBounds": {
+          "x": 52,
+          "y": 25,
+          "width": 919,
+          "height": 519
+        },
+        "visibleAspectRatio": 1.770713
+      },
+      "observedOrDeclared": "Objet individuel créé pour la fonction de jeu, avec pivot et empreinte propres.",
+      "comparisonRemaining": "Comparer silhouette, proportions, nombre de pièces et matériaux au même angle ; le rôle ne prouve pas l'identité filmique.",
+      "newHumanArtApproval": false
+    },
+    {
+      "id": "armory-forge",
+      "category": "clan-prop",
+      "path": "public/game/clan-ship/props/armory-forge-v1.webp",
+      "bytes": 217542,
+      "sha256": "d4d2f985ecede36d12d5138047a215e2b524133dbbf5aaa14c505cba9198588e",
+      "origin": "original-game-adaptation",
+      "referenceIds": [],
+      "primaryPage": null,
+      "primaryTimecode": null,
+      "primaryLocatorStatus": "not-inspected; no locator invented",
+      "facts": {
+        "width": 683,
+        "height": 1024,
+        "metadataSource": "historical-decoding-receipt; current bytes identical",
+        "pivot": {
+          "x": 342,
+          "y": 957
+        },
+        "alphaBounds": {
+          "x": 29,
+          "y": 72,
+          "width": 626,
+          "height": 885
+        },
+        "visibleAspectRatio": 0.707345
+      },
+      "observedOrDeclared": "Objet individuel créé pour la fonction de jeu, avec pivot et empreinte propres.",
+      "comparisonRemaining": "Comparer silhouette, proportions, nombre de pièces et matériaux au même angle ; le rôle ne prouve pas l'identité filmique.",
+      "newHumanArtApproval": false
+    },
+    {
+      "id": "ash-scar",
+      "category": "crew-sprite",
+      "path": "public/game/homeworld/v84/npcs/instructor/01.png",
+      "bytes": 2140901,
+      "sha256": "474f1a3dca5c80ac69224f20c69942e3a85d41d390bf320c3a28eb2b345ca4c6",
+      "origin": "original-game-character",
+      "referenceIds": [],
+      "primaryPage": null,
+      "primaryTimecode": null,
+      "primaryLocatorStatus": "not-inspected; no locator invented",
+      "facts": {
+        "width": 1024,
+        "height": 1536,
+        "metadataSource": "historical-decoding-receipt; current bytes identical",
+        "variantId": "instructor-01",
+        "pivot": {
+          "x": 512,
+          "y": 1525
+        },
+        "alphaBounds": {
+          "x": 239,
+          "y": 11,
+          "width": 698,
+          "height": 1514
+        },
+        "motionStatus": "single-pose-static"
+      },
+      "observedOrDeclared": "Personne et surnom originaux, réemploi d'un dessin individuel V84 au rôle attribué.",
+      "comparisonRemaining": "Aucun personnage canonique n'est identifié par ce réemploi. Anatomie, masque, équipement et geste de rôle restent des comparaisons distinctes.",
+      "newHumanArtApproval": false
+    },
+    {
+      "id": "star-watch",
+      "category": "crew-sprite",
+      "path": "public/game/homeworld/v84/npcs/dock-officer/13.png",
+      "bytes": 2214699,
+      "sha256": "f141467282af538a58072f16ee80479dfd0bac71131d8acaf4cc4bf5b023093d",
+      "origin": "original-game-character",
+      "referenceIds": [],
+      "primaryPage": null,
+      "primaryTimecode": null,
+      "primaryLocatorStatus": "not-inspected; no locator invented",
+      "facts": {
+        "width": 1024,
+        "height": 1536,
+        "metadataSource": "historical-decoding-receipt; current bytes identical",
+        "variantId": "dock-officer-13",
+        "pivot": {
+          "x": 512,
+          "y": 1495
+        },
+        "alphaBounds": {
+          "x": 171,
+          "y": 20,
+          "width": 732,
+          "height": 1475
+        },
+        "motionStatus": "single-pose-static"
+      },
+      "observedOrDeclared": "Personne et surnom originaux, réemploi d'un dessin individuel V84 au rôle attribué.",
+      "comparisonRemaining": "Aucun personnage canonique n'est identifié par ce réemploi. Anatomie, masque, équipement et geste de rôle restent des comparaisons distinctes.",
+      "newHumanArtApproval": false
+    },
+    {
+      "id": "iron-claw",
+      "category": "crew-sprite",
+      "path": "public/game/homeworld/v84/npcs/forge-master/05.png",
+      "bytes": 2226217,
+      "sha256": "dd06e20ec327d1303b8bf5da63572c8604ab68b3ba30172762e0f54b0717061a",
+      "origin": "original-game-character",
+      "referenceIds": [],
+      "primaryPage": null,
+      "primaryTimecode": null,
+      "primaryLocatorStatus": "not-inspected; no locator invented",
+      "facts": {
+        "width": 1024,
+        "height": 1536,
+        "metadataSource": "historical-decoding-receipt; current bytes identical",
+        "variantId": "forge-master-05",
+        "pivot": {
+          "x": 512,
+          "y": 1479
+        },
+        "alphaBounds": {
+          "x": 208,
+          "y": 44,
+          "width": 741,
+          "height": 1435
+        },
+        "motionStatus": "single-pose-static"
+      },
+      "observedOrDeclared": "Personne et surnom originaux, réemploi d'un dessin individuel V84 au rôle attribué.",
+      "comparisonRemaining": "Aucun personnage canonique n'est identifié par ce réemploi. Anatomie, masque, équipement et geste de rôle restent des comparaisons distinctes.",
+      "newHumanArtApproval": false
+    },
+    {
+      "id": "cold-trace",
+      "category": "crew-sprite",
+      "path": "public/game/homeworld/v84/npcs/guide/17.png",
+      "bytes": 2162015,
+      "sha256": "376d3c7fae52e7e58c8f9aaa681b3b0371124775a9397e1b62dedbca713164eb",
+      "origin": "original-game-character",
+      "referenceIds": [],
+      "primaryPage": null,
+      "primaryTimecode": null,
+      "primaryLocatorStatus": "not-inspected; no locator invented",
+      "facts": {
+        "width": 1024,
+        "height": 1536,
+        "metadataSource": "historical-decoding-receipt; current bytes identical",
+        "variantId": "guide-17",
+        "pivot": {
+          "x": 512,
+          "y": 1457
+        },
+        "alphaBounds": {
+          "x": 217,
+          "y": 20,
+          "width": 625,
+          "height": 1437
+        },
+        "motionStatus": "single-pose-static"
+      },
+      "observedOrDeclared": "Personne et surnom originaux, réemploi d'un dessin individuel V84 au rôle attribué.",
+      "comparisonRemaining": "Aucun personnage canonique n'est identifié par ce réemploi. Anatomie, masque, équipement et geste de rôle restent des comparaisons distinctes.",
+      "newHumanArtApproval": false
+    },
+    {
+      "id": "black-suture",
+      "category": "crew-sprite",
+      "path": "public/game/homeworld/v84/npcs/healer/07.png",
+      "bytes": 2322347,
+      "sha256": "dc792af1b9c348796e5f65e1d8e1374e201b17d0b5e592809e2ce235bf3742f8",
+      "origin": "original-game-character",
+      "referenceIds": [],
+      "primaryPage": null,
+      "primaryTimecode": null,
+      "primaryLocatorStatus": "not-inspected; no locator invented",
+      "facts": {
+        "width": 1024,
+        "height": 1536,
+        "metadataSource": "historical-decoding-receipt; current bytes identical",
+        "variantId": "healer-07",
+        "pivot": {
+          "x": 512,
+          "y": 1525
+        },
+        "alphaBounds": {
+          "x": 164,
+          "y": 11,
+          "width": 757,
+          "height": 1514
+        },
+        "motionStatus": "single-pose-static"
+      },
+      "observedOrDeclared": "Personne et surnom originaux, réemploi d'un dessin individuel V84 au rôle attribué.",
+      "comparisonRemaining": "Aucun personnage canonique n'est identifié par ce réemploi. Anatomie, masque, équipement et geste de rôle restent des comparaisons distinctes.",
+      "newHumanArtApproval": false
+    },
+    {
+      "id": "threshold-guard",
+      "category": "crew-sprite",
+      "path": "public/game/homeworld/v84/npcs/guard/10.png",
+      "bytes": 2297091,
+      "sha256": "5be9a2dfc5f4ffb49119ccbff675b96884f5e84684638f2c3a7adbe968f69e8e",
+      "origin": "original-game-character",
+      "referenceIds": [],
+      "primaryPage": null,
+      "primaryTimecode": null,
+      "primaryLocatorStatus": "not-inspected; no locator invented",
+      "facts": {
+        "width": 1024,
+        "height": 1536,
+        "metadataSource": "historical-decoding-receipt; current bytes identical",
+        "variantId": "guard-10",
+        "pivot": {
+          "x": 512,
+          "y": 1527
+        },
+        "alphaBounds": {
+          "x": 241,
+          "y": 7,
+          "width": 580,
+          "height": 1520
+        },
+        "motionStatus": "single-pose-static"
+      },
+      "observedOrDeclared": "Personne et surnom originaux, réemploi d'un dessin individuel V84 au rôle attribué.",
+      "comparisonRemaining": "Aucun personnage canonique n'est identifié par ce réemploi. Anatomie, masque, équipement et geste de rôle restent des comparaisons distinctes.",
+      "newHumanArtApproval": false
+    },
+    {
+      "id": "shared-navigation-console",
+      "category": "shared-prop",
+      "path": "public/game/ship-interior/v21/console-navigation.webp",
+      "bytes": 126112,
+      "sha256": "64091fd62bc94577fe85fe152bd64dba7cea9933eafc5a148042d1e763adbb2a",
+      "origin": "original-game-adaptation",
+      "referenceIds": [],
+      "primaryPage": null,
+      "primaryTimecode": null,
+      "primaryLocatorStatus": "not-inspected; no locator invented",
+      "facts": {
+        "width": 1536,
+        "height": 1024,
+        "metadataSource": "historical-decoding-receipt; current bytes identical"
+      },
+      "observedOrDeclared": "Objet partagé des kits V21/V22, réemployé sans nouvelle attribution canonique.",
+      "comparisonRemaining": "Ne pas certifier porte, console ou râtelier AVP par la seule présence du kit dans le dépôt.",
+      "newHumanArtApproval": false
+    },
+    {
+      "id": "shared-archive-terminal",
+      "category": "shared-prop",
+      "path": "public/game/ship-interior/v22/archive-terminal.webp",
+      "bytes": 153362,
+      "sha256": "b05026ffcb7e52fa1b4792cfda820e8ae6e7ed072359ac3e02762bacd5a34ef6",
+      "origin": "original-game-adaptation",
+      "referenceIds": [],
+      "primaryPage": null,
+      "primaryTimecode": null,
+      "primaryLocatorStatus": "not-inspected; no locator invented",
+      "facts": {
+        "width": 1024,
+        "height": 1536,
+        "metadataSource": "historical-decoding-receipt; current bytes identical"
+      },
+      "observedOrDeclared": "Objet partagé des kits V21/V22, réemployé sans nouvelle attribution canonique.",
+      "comparisonRemaining": "Ne pas certifier porte, console ou râtelier AVP par la seule présence du kit dans le dépôt.",
+      "newHumanArtApproval": false
+    },
+    {
+      "id": "shared-armory-rack",
+      "category": "shared-prop",
+      "path": "public/game/ship-interior/v22/armory-rack.webp",
+      "bytes": 169014,
+      "sha256": "b4a7f41b836e3d8db98311e87bce348b54b4831024d84141aab41dbc0e295d2f",
+      "origin": "original-game-adaptation",
+      "referenceIds": [],
+      "primaryPage": null,
+      "primaryTimecode": null,
+      "primaryLocatorStatus": "not-inspected; no locator invented",
+      "facts": {
+        "width": 1536,
+        "height": 1024,
+        "metadataSource": "historical-decoding-receipt; current bytes identical"
+      },
+      "observedOrDeclared": "Objet partagé des kits V21/V22, réemployé sans nouvelle attribution canonique.",
+      "comparisonRemaining": "Ne pas certifier porte, console ou râtelier AVP par la seule présence du kit dans le dépôt.",
+      "newHumanArtApproval": false
+    },
+    {
+      "id": "shared-door-frame",
+      "category": "shared-prop",
+      "path": "public/game/ship-interior/v21/door-frame.webp",
+      "bytes": 72468,
+      "sha256": "7ad88ed29fb78b84cab555bc110793ed600e0024249410937903361a183934ab",
+      "origin": "original-game-adaptation",
+      "referenceIds": [],
+      "primaryPage": null,
+      "primaryTimecode": null,
+      "primaryLocatorStatus": "not-inspected; no locator invented",
+      "facts": {
+        "width": 1023,
+        "height": 1537,
+        "metadataSource": "historical-decoding-receipt; current bytes identical"
+      },
+      "observedOrDeclared": "Objet partagé des kits V21/V22, réemployé sans nouvelle attribution canonique.",
+      "comparisonRemaining": "Ne pas certifier porte, console ou râtelier AVP par la seule présence du kit dans le dépôt.",
+      "newHumanArtApproval": false
+    },
+    {
+      "id": "shared-door-leaf",
+      "category": "shared-prop",
+      "path": "public/game/ship-interior/v21/door-leaf.webp",
+      "bytes": 122512,
+      "sha256": "a8aadccce21c3109be1b306a02fa19a6fb2216313e51aa9521c662e22c80e0b1",
+      "origin": "original-game-adaptation",
+      "referenceIds": [],
+      "primaryPage": null,
+      "primaryTimecode": null,
+      "primaryLocatorStatus": "not-inspected; no locator invented",
+      "facts": {
+        "width": 941,
+        "height": 1672,
+        "metadataSource": "historical-decoding-receipt; current bytes identical"
+      },
+      "observedOrDeclared": "Objet partagé des kits V21/V22, réemployé sans nouvelle attribution canonique.",
+      "comparisonRemaining": "Ne pas certifier porte, console ou râtelier AVP par la seule présence du kit dans le dépôt.",
+      "newHumanArtApproval": false
+    },
+    {
+      "id": "shared-mothership",
+      "category": "ship-profile",
+      "path": "public/game/ships/v14/avp-predator-mothership.webp",
+      "bytes": 89754,
+      "sha256": "7bd67240d2ef6f4df2717219420aeea9083a1a5395e994c98cb0bcc4c824c907",
+      "origin": "film-identity-project-render",
+      "referenceIds": [
+        "REF-OPS-05",
+        "REF-OPS-09"
+      ],
+      "primaryPage": null,
+      "primaryTimecode": null,
+      "primaryLocatorStatus": "not-inspected; no locator invented",
+      "facts": {
+        "width": 1774,
+        "height": 887,
+        "metadataSource": "historical-decoding-receipt; current bytes identical",
+        "historicalCatalogueStatus": "V14 reference-locked / manualInspection accepted; not re-awarded by this dossier",
+        "supportingImageUrls": [
+          "https://www.avpcentral.com/images/predator-spaceships/predator-mothership.webp",
+          "https://www.avpgalaxy.net/wordpress/wp-content/uploads/2020/11/avp2004-bluray-154.jpg",
+          "https://www.avpgalaxy.net/wordpress/wp-content/uploads/2020/11/avp2004-bluray-155.jpg"
+        ],
+        "visualLocks": [
+          "immense broad carrier",
+          "bulbous armored center",
+          "long sweeping lateral extensions",
+          "dark silver and charcoal layered Yautja paneling",
+          "underbody docking geometry"
+        ],
+        "forbiddenMixes": [
+          "AVPR scout ship",
+          "Predators 2010 ship",
+          "The Predator 2018 ships",
+          "Prey 2022 ship"
+        ]
+      },
+      "observedOrDeclared": "Identité d'appareil conservée dans le catalogue ; le rendu reste un fichier du projet.",
+      "comparisonRemaining": "Comparer la même incarnation et le même angle ; les qualifications historiques du catalogue ne s'étendent pas au plan intérieur.",
+      "newHumanArtApproval": false
+    },
+    {
+      "id": "shared-personal-classic",
+      "category": "ship-profile",
+      "path": "public/game/ships/v12/classic-predator-spaceship.webp",
+      "bytes": 154650,
+      "sha256": "bb374f95f28dad53ce8ed745dde6f6a18c4f9038e0181b1714eec2f6c5991f7a",
+      "origin": "film-identity-project-render",
+      "referenceIds": [],
+      "primaryPage": null,
+      "primaryTimecode": null,
+      "primaryLocatorStatus": "not-inspected; no locator invented",
+      "facts": {
+        "width": 1536,
+        "height": 1024,
+        "metadataSource": "historical-decoding-receipt; current bytes identical"
+      },
+      "observedOrDeclared": "Identité d'appareil conservée dans le catalogue ; le rendu reste un fichier du projet.",
+      "comparisonRemaining": "Comparer la même incarnation et le même angle ; les qualifications historiques du catalogue ne s'étendent pas au plan intérieur.",
+      "newHumanArtApproval": false
+    },
+    {
+      "id": "sealedIsolator",
+      "category": "incident-prop",
+      "path": "public/game/clan-ship/incidents-v1/sealed-isolator.png",
+      "bytes": 2344571,
+      "sha256": "7467652d6fb5a0aba43e27ec6d300e1cc905d352a3daad9d20be989dff645401",
+      "origin": "original-game-adaptation",
+      "referenceIds": [],
+      "primaryPage": null,
+      "primaryTimecode": null,
+      "primaryLocatorStatus": "original-project-object",
+      "facts": {
+        "width": 876,
+        "height": 1796,
+        "pivot": {
+          "x": 421.0,
+          "y": 1774,
+          "method": "visible-bottom-center"
+        },
+        "alphaBounds": {
+          "x": 41,
+          "y": 15,
+          "width": 760,
+          "height": 1760
+        }
+      },
+      "observedOrDeclared": "Objet d'incident original : commandes et indicateurs appartiennent aux opérations du projet.",
+      "comparisonRemaining": "Aucun isolateur ou relais de film précis n'est revendiqué ; conserver les proportions de son propre module.",
+      "newHumanArtApproval": false
+    },
+    {
+      "id": "twinCircuitRelay",
+      "category": "incident-prop",
+      "path": "public/game/clan-ship/incidents-v1/twin-circuit-relay.png",
+      "bytes": 2202857,
+      "sha256": "5f3af923278cb042a132db51407e284701dc182bb6665be34ef6f458c399c62a",
+      "origin": "original-game-adaptation",
+      "referenceIds": [],
+      "primaryPage": null,
+      "primaryTimecode": null,
+      "primaryLocatorStatus": "original-project-object",
+      "facts": {
+        "width": 876,
+        "height": 1796,
+        "pivot": {
+          "x": 432.0,
+          "y": 1767,
+          "method": "visible-bottom-center"
+        },
+        "alphaBounds": {
+          "x": 62,
+          "y": 25,
+          "width": 740,
+          "height": 1743
+        }
+      },
+      "observedOrDeclared": "Objet d'incident original : commandes et indicateurs appartiennent aux opérations du projet.",
+      "comparisonRemaining": "Aucun isolateur ou relais de film précis n'est revendiqué ; conserver les proportions de son propre module.",
+      "newHumanArtApproval": false
+    }
+  ],
+  "captures": [
+    {
+      "id": "approach",
+      "path": "production/clan-ship-20261104/qa-interior/run-41818690041/01-approach-desktop.png",
+      "bytes": 639450,
+      "sha256": "d5b5b8bdd4235316250b7b1fcb94d6efd2b11629dfc9dfcf84d04c3d692eaaa7",
+      "sourceCommit": "22fad968311d252310fe2fde281f71564a401a64",
+      "width": 1440,
+      "height": 1000,
+      "inspectedThisPass": true,
+      "scope": "Existing native capture opened; not a new browser execution or film frame.",
+      "annotations": [
+        {
+          "text": "Profil du vaisseau collectif ; vue de trois quarts",
+          "rectPixels": [
+            136,
+            396,
+            550,
+            173
+          ]
+        },
+        {
+          "text": "Vaisseau personnel affiché séparément ; échelle de carte UI",
+          "rectPixels": [
+            98,
+            695,
+            90,
+            40
+          ]
+        }
+      ]
+    },
+    {
+      "id": "council",
+      "path": "production/clan-ship-20261104/qa-operations/browser-final/captures/02-council-massive-table.png",
+      "bytes": 1409249,
+      "sha256": "849beb64656f4260a9bd58b550c17dde27251eec1fc3b047f9bcd19730cbbf01",
+      "sourceCommit": "1137faaf80051b37fa2205af73414bed099024a9",
+      "width": 1440,
+      "height": 1000,
+      "inspectedThisPass": true,
+      "scope": "Existing native capture opened; not a new browser execution or film frame.",
+      "annotations": [
+        {
+          "text": "Table collective et son support : création de jeu",
+          "rectPixels": [
+            454,
+            680,
+            540,
+            185
+          ]
+        },
+        {
+          "text": "Projection SVG ; géométrie et inscription originales",
+          "rectPixels": [
+            480,
+            527,
+            481,
+            239
+          ]
+        }
+      ]
+    },
+    {
+      "id": "armory",
+      "path": "production/clan-ship-20261104/qa-interior/run-41818690041/interior-armurerie-desktop.png",
+      "bytes": 1329144,
+      "sha256": "f68000dfec36533eac6f9460db428ff9812050b30d8832a4354099ed278d2387",
+      "sourceCommit": "22fad968311d252310fe2fde281f71564a401a64",
+      "width": 1440,
+      "height": 1000,
+      "inspectedThisPass": true,
+      "scope": "Existing native capture opened; not a new browser execution or film frame.",
+      "annotations": [
+        {
+          "text": "Râtelier et armes dessinées : adaptation fonctionnelle",
+          "rectPixels": [
+            510,
+            408,
+            300,
+            215
+          ]
+        },
+        {
+          "text": "Forge verticale : proportions propres au prop",
+          "rectPixels": [
+            910,
+            408,
+            150,
+            242
+          ]
+        }
+      ]
+    },
+    {
+      "id": "medical",
+      "path": "production/clan-ship-20261104/qa-interior/run-41818690041/interior-soins-desktop.png",
+      "bytes": 1306677,
+      "sha256": "2c3397df3d2e83187e29c38fcdde95e8e46d5bae8f62b2effaa1870b5488c87e",
+      "sourceCommit": "22fad968311d252310fe2fde281f71564a401a64",
+      "width": 1440,
+      "height": 1000,
+      "inspectedThisPass": true,
+      "scope": "Existing native capture opened; not a new browser execution or film frame.",
+      "annotations": [
+        {
+          "text": "Lit médical individuel ; chambres vitrées dans le fond",
+          "rectPixels": [
+            568,
+            635,
+            310,
+            120
+          ]
+        }
+      ]
+    }
+  ]
+}

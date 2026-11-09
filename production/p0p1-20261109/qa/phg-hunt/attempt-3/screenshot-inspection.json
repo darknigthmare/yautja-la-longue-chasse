@@ -1,0 +1,97 @@
+{
+  "inspectedAt": "2026-11-09T06:04:22.874694+00:00",
+  "method": "Every listed unmodified PNG was opened with view_image; agent technical observation, not independent human artistic approval.",
+  "scope": "One actual offered Canvas view and the native customization view; no fabricated front/profile/back view.",
+  "files": [
+    {
+      "filename": "01-native-ringed-coiffage.png",
+      "sha256": "6a0fe373e6c20aaca78c2f99d3fa23855800c5d8fd2de6430a1dd3bb862f9664",
+      "opened": true,
+      "observation": "Native Annelées tile is active; the full preview uses the ringed bitmap and collar/scalp attachment."
+    },
+    {
+      "filename": "02-hunt-mask-on.png",
+      "sha256": "370e92ef057650e6def597220e2fd9054d170fad765ceb0d73ef51de5b9762c7",
+      "opened": true,
+      "observation": "Actual HuntCanvas at insertion; skull-shaped mask is present, no laser while not aiming."
+    },
+    {
+      "filename": "03-mask-on-caster-aim.png",
+      "sha256": "74b412fcb32dc01cb72c608373513d3a85ae6e322090ae1db7d9bdf9954371b0",
+      "opened": true,
+      "observation": "Actual native aim: mask shell and three laser beams are present."
+    },
+    {
+      "filename": "04-mask-off-caster-aim.png",
+      "sha256": "e9027982410a0a2bd201476c74cdb0373f381f8526e299f4b91cae76e20a1fd5",
+      "opened": true,
+      "observation": "Actual native M removal: exposed head, no mask shell or three beams; manual reticle remains."
+    },
+    {
+      "filename": "05-mask-restored.png",
+      "sha256": "9ec767908f07606b9213fa8e3eec3bb7e3ff3f7740db25a40ef25354a1ffbf59",
+      "opened": true,
+      "observation": "Native second M restores the mask shell on the same equipped appearance."
+    },
+    {
+      "filename": "06-dreads-motion-1.png",
+      "sha256": "1ca239fd9e79bce27b62aa80a37ba69f49246aeb46090226d762e104456d6137",
+      "opened": true,
+      "observation": "Native right movement; hair follows the scalp at actual canvas scale."
+    },
+    {
+      "filename": "06-dreads-motion-2.png",
+      "sha256": "ca1168e9bb5e076ee944d491cb62cdbd570b5b1c5a29cd8ed17a1f8771e121cf",
+      "opened": true,
+      "observation": "Native left-facing turn; hair remains connected, no independent floating rings observed at offered scale."
+    },
+    {
+      "filename": "06-dreads-motion-3.png",
+      "sha256": "2bab41f2b41fe37e8ad1d9913c4e52d297e242d2c1572ab6d162738f946ca776",
+      "opened": true,
+      "observation": "Native right-facing turn; connected ringed hair silhouette at offered scale."
+    },
+    {
+      "filename": "07-ringed-native-aim.png",
+      "sha256": "5a3406bd763ee1e610178b673756acc9efb398ccb10434f333d0cbcebcb45de1",
+      "opened": true,
+      "observation": "Native aim after movement; connected hair, worn mask, three beams and visible green track marks."
+    },
+    {
+      "filename": "08-native-pause.png",
+      "sha256": "93e5bdd37e61923c426212670957db4504a68041d855b21293c2475bca22967b",
+      "opened": true,
+      "observation": "Real pause dialog offers resume/suspend/abandon; no result was issued."
+    },
+    {
+      "filename": "09-post-resume-mask-off.png",
+      "sha256": "52c531910665b3c90544c32332f25239540c29e08c67b11a9bc475c4bf5a0cc6",
+      "opened": true,
+      "observation": "Native resumed hunt then M removal; exposed head and the earlier green track marks are absent."
+    },
+    {
+      "filename": "10-native-suspended-return.png",
+      "sha256": "e927adb65d26e2d8a554fd5d8add20c58a7f67c9d1d2b486cccbcafaca58682d",
+      "opened": true,
+      "observation": "Native suspension returns to landing and advertises the resumable hunt."
+    },
+    {
+      "filename": "11-native-reload-suspended.png",
+      "sha256": "ae795f7eb4712827f27d60b402c21965edda62c0f4f64ad9e0c6d4d3edcd443b",
+      "opened": true,
+      "observation": "After actual reload, campaign menu identifies the campaign as a suspended hunt."
+    },
+    {
+      "filename": "12-durable-resumed-still-unmasked.png",
+      "sha256": "51326cb9c59944737290e6f82b6681815289b75bd4d4f4f88878411ea0a46844",
+      "opened": true,
+      "observation": "Actual native resumed checkpoint after reload: head remains unmasked."
+    },
+    {
+      "filename": "13-durable-resumed-mask-on-again.png",
+      "sha256": "e66e3f8bd712a98d916f9159ab3946dcfccfc28391d6f8993417c95451c1b9c8",
+      "opened": true,
+      "observation": "Actual M after durable resume restores mask; raw native state independently records maskOn=true."
+    }
+  ]
+}

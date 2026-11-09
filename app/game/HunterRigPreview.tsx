@@ -671,8 +671,10 @@ export function HunterRigPreview({
         return <span key={`${slot.id}-${slot.bone}`}>
           {registeredLayer(hunterArmorPath(slot.id), matrix, slot.z, `armor-${slot.id}${slot.shade ? "-far" : ""}`,
             filter, undefined, undefined, clipPath)}
+          {/* Pigment/material must share the plate's source-space keep region;
+              the full alpha also contains stray pixels intentionally clipped above. */}
           <ChromaticSurfaceV113 appearance={appearance} channel="armor" maskPath={hunterArmorPath(slot.id)}
-            style={{ ...fullCanvasImage, zIndex: slot.z, transform: cssMatrix(matrix) }} />
+            style={{ ...fullCanvasImage, zIndex: slot.z, transform: cssMatrix(matrix), clipPath }} />
           {slot.wrap && limb && <span aria-hidden="true" data-rig-armor-wrap={slot.id}
             style={{ ...fullCanvasImage, zIndex: slot.wrap.wrapZ, transform: cssMatrix(boneMatrix(slot.bone)),
               maskImage: `url("${limb}")`, WebkitMaskImage: `url("${limb}")`, maskSize: "100% 100%", WebkitMaskSize: "100% 100%",
@@ -680,7 +682,7 @@ export function HunterRigPreview({
             <img alt="" draggable={false} src={hunterArmorPath(slot.id)}
               style={{ ...fullCanvasImage, filter, clipPath, transform: slot.fit ? cssMatrix(slot.fit) : undefined }} />
             <ChromaticSurfaceV113 appearance={appearance} channel="armor" maskPath={hunterArmorPath(slot.id)}
-              style={{ ...fullCanvasImage, transform: slot.fit ? cssMatrix(slot.fit) : undefined }} />
+              style={{ ...fullCanvasImage, transform: slot.fit ? cssMatrix(slot.fit) : undefined, clipPath }} />
           </span>}
           {slot.id === armorFamily.chest && <DecalSurfaceV133 appearance={appearance} zone="armor"
             maskPath={hunterArmorPath(slot.id)}

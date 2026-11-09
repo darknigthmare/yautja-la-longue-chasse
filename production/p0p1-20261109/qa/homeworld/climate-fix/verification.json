@@ -1,0 +1,76 @@
+{
+  "schemaVersion": 1,
+  "asOf": "2026-11-09",
+  "baseCommit": "39b601ce1873a1f400d2f545f0fab97691b779e3",
+  "reason": "Native final-build inspection exposed PontNormandie as alpine due to lexical substring and matching NormANDie. Same defect affects Grand urban names.",
+  "change": "Replace mountain cue and with andes; add col-space so genuine mountain passes retain their alpine interpretation instead of depending accidentally on GrAND.",
+  "criteria": [
+    "BACK144-006",
+    "BACK144-018"
+  ],
+  "scope": "Lexical classification correction. No verified climate/altitude/GPS observation, lore admission, source catalog rewrite, receipt, saved terrain or live war state created.",
+  "sourceSha256": {
+    "app/game/systems/clanWarWorldClimateV126.ts": "4e7f9ed98e4dba7322fb6bac76abfc7c1b51cbc98790eb7314e4a34263f490c2",
+    "tests/clan-war-climate-place-tokens.test.mjs": "875ab39260aee3a5ddc1fa010e21b6bbdb7f01bb623b32c2b1364f058deed29a"
+  },
+  "tests": [
+    {
+      "file": "tests/clan-war-climate-place-tokens.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/clan-war-climate-place-tokens.test.mjs"
+      ],
+      "log": "production/p0p1-20261109/qa/homeworld/climate-fix/climate-after.tap",
+      "logSha256": "dfbe08817a75ce7fe698ab422c16e4f813e6f30645a5a1162709b2cfbe89648c",
+      "tests": 2,
+      "pass": 2,
+      "fail": 0,
+      "skipped": 0
+    },
+    {
+      "file": "tests/clan-war-variant-export-coherence.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/clan-war-variant-export-coherence.test.mjs"
+      ],
+      "log": "production/p0p1-20261109/qa/homeworld/climate-fix/exports-after-climate.tap",
+      "logSha256": "a510832f53631f7629a119c7b0e7a79700b60cbe5411d46db4931dc40dd9588f",
+      "tests": 5,
+      "pass": 5,
+      "fail": 0,
+      "skipped": 0
+    },
+    {
+      "file": "tests/clan-war-geo-ai-multiplayer-v126.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/clan-war-geo-ai-multiplayer-v126.test.mjs"
+      ],
+      "log": "production/p0p1-20261109/qa/homeworld/climate-fix/geo-after-climate.tap",
+      "logSha256": "113599d53d93ec6215b2adb3304dc97ace857b2235f393e5bf93824b72dd94fe",
+      "tests": 7,
+      "pass": 7,
+      "fail": 0,
+      "skipped": 0
+    }
+  ],
+  "testsPassed": 14,
+  "testsFailed": 0,
+  "newTests": 2,
+  "notAdditive": "Twelve export/geography tests repeat earlier suites after the new climate correction; they must not be counted twice in a unique overall test total.",
+  "initialReproduction": {
+    "log": "production/p0p1-20261109/qa/homeworld/climate-fix/climate-before.tap",
+    "passed": 1,
+    "failed": 1
+  },
+  "lint": {
+    "exitCode": 0,
+    "maxWarnings": 0,
+    "log": "production/p0p1-20261109/qa/homeworld/climate-fix/climate-lint.log"
+  },
+  "preFixBrowserReceipt": "production/p0p1-20261109/qa/homeworld/native-exports/attempt-2/final-receipt.json",
+  "postFixBrowserExecuted": false
+}

@@ -62,6 +62,8 @@ interface HuntObservation {
 
 /** A separate owner for the production scenes. It neither loads a campaign nor
  * imports its write/slot services. Reset/travel unmounts the whole owner. */
+const WarpModuleBay = lazy(() => import("../game/WarpModuleBay"));
+
 export default function DevTravelSession({ destination, onTravel, onExit }: DevTravelSessionProps) {
   const [save, setSave] = useState(() => createDevSave(destination));
   const saveRef = useRef(save);
@@ -391,6 +393,7 @@ export default function DevTravelSession({ destination, onTravel, onExit }: DevT
               onCheckpoint={progress => { setCradleProgress(structuredClone(progress)); return true; }}
               onExtract={progress => { setCradleProgress(structuredClone(progress)); setNotice(progress.crownClaimed ? 'Essai : crête extraite.' : 'Essai : repli sans crête.'); return true; }}
               onExit={exitSession} onSound={sound => audioRef.current?.playSfx(sound)} />}
+            {destination.kind === "warp" && <WarpModuleBay save={save} onExit={exitSession} suspended={service !== null} />}
             {destination.kind === "ship" && <ShipInterior25D
               appearance={save.appearance}
               loadout={save.loadout}
@@ -410,6 +413,7 @@ export default function DevTravelSession({ destination, onTravel, onExit }: DevT
               onNotify={setNotice}
             />}
             {destination.kind === "clan" && save.clanShipDocking && <ClanShipHub
+              createSceneAudio={createSceneAudio}
               state={save.clanShipDocking}
               save={save}
               selectedShipId={selectedShipId}

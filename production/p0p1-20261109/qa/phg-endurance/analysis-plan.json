@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "recordedBeforeFirstFull77MaterialCycleAt": "2026-11-09T06:04:40.773558+00:00",
+  "criterion": "T15 Tests_Parcours!A19:F19",
+  "minimumRealVisibleAndMonotonicSeconds": 3600,
+  "distinctNativeMaterialIdsRequired": 77,
+  "gpuCounter": "CDP memory-infra, GPU process allocator gpu.attrs.size; hexadecimal scalar bytes, not summed with its shared_images children",
+  "warmBaseline": "First completed full77-material cycle, correlated by monotonic trace timestamp to the native sample. One-time texture warming is not called a leak.",
+  "growthToleranceBytes": {
+    "gpuAllocator": 16777216,
+    "gpuProcessRss": 67108864
+  },
+  "boundedObservedCriterion": [
+    "nativeRunPassed and requestedNativeDurationCompleted",
+    "all77IDs actually selected and committed",
+    "source,material-assets,compiled-JS/CSS identities unchanged",
+    "GPU process PID stable in sampled intervals",
+    "atleast3directGPUallocationdumpsat/afterwarmbaseline",
+    "endingGPUallocator and medianoflast3dumps <= warmbaseline and medianoffirst3postwarmdumps plus16MiB",
+    "endingGPUprocessRSS <= warmRSS plus64MiB when procmetricsavailable"
+  ],
+  "reportedWithoutPassTargets": [
+    "RAFmeanFPS,windowp95frameMS,longtasks,JSheap,DOMcount,CPUtime,allocationtrend"
+  ],
+  "notClaimed": [
+    "physicalGPUorVRAMmeasurementsifbackendisSwiftShader",
+    "universalabsenceofleaksbeyondthisduration/backend",
+    "PHGofficialUV/art1:1",
+    "otherdevices/gameplaymodes",
+    "forcedGCormockedtime"
+  ]
+}

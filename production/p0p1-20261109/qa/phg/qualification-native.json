@@ -1,0 +1,195 @@
+{
+  "asOf": "2026-11-09",
+  "scope": "Native customization, isolated armor-clip regression, and actual hunt T04/T13 technical checks; no global 1:1 artistic or 60-minute soak qualification.",
+  "currentAttempt": "attempt-3",
+  "rows": [
+    {
+      "key": "Personnalisation et arsenal:T01",
+      "id": "T01",
+      "browserTested": "Oui, périmètre technique décrit",
+      "coverage": "Alpha : lignée conservée après peau personnalisée et sélection Ogre",
+      "remaining": "Couverture technique du critère de lignée ; classe initiale déclarée dans la fixture, pas un nouveau chapitre de création de campagne.",
+      "humanArtReview": "Non attestée",
+      "sourceWorkbook": "docs/production/Yautja_PHG_Implementation_Status_V137.xlsx",
+      "sheet": "Tests_Parcours",
+      "sourceRow": 5,
+      "evidence": [
+        "production/p0p1-20261109/qa/phg/attempt-3/report.json",
+        "production/p0p1-20261109/qa/phg/attempt-3/screenshot-inspection.json",
+        "production/p0p1-20261109/qa/phg/attempt-3/final-receipt.json"
+      ]
+    },
+    {
+      "key": "Personnalisation et arsenal:T02",
+      "id": "T02",
+      "browserTested": "Oui, périmètre technique décrit",
+      "coverage": "Samurai : Requiem et Nova restent tous deux sélectionnables après personnalisation",
+      "remaining": "Deux choix natifs confirmés et rechargés ; couleurs exactes et UV officiels non certifiés.",
+      "humanArtReview": "Non attestée",
+      "sourceWorkbook": "docs/production/Yautja_PHG_Implementation_Status_V137.xlsx",
+      "sheet": "Tests_Parcours",
+      "sourceRow": 6,
+      "evidence": [
+        "production/p0p1-20261109/qa/phg/attempt-3/report.json",
+        "production/p0p1-20261109/qa/phg/attempt-3/screenshot-inspection.json",
+        "production/p0p1-20261109/qa/phg/attempt-3/final-receipt.json"
+      ]
+    },
+    {
+      "key": "Personnalisation et arsenal:T03",
+      "id": "T03",
+      "browserTested": "Oui, périmètre technique décrit",
+      "coverage": "Biomask Alpha → City : Ogre indisponible et non rendu, finition nettoyée à la validation",
+      "remaining": "Aucune géométrie City ne reçoit la texture réservée Alpha ; changement et recharge réels.",
+      "humanArtReview": "Non attestée",
+      "sourceWorkbook": "docs/production/Yautja_PHG_Implementation_Status_V137.xlsx",
+      "sheet": "Tests_Parcours",
+      "sourceRow": 7,
+      "evidence": [
+        "production/p0p1-20261109/qa/phg/attempt-3/report.json",
+        "production/p0p1-20261109/qa/phg/attempt-3/screenshot-inspection.json",
+        "production/p0p1-20261109/qa/phg/attempt-3/final-receipt.json"
+      ]
+    },
+    {
+      "key": "Personnalisation et arsenal:T04",
+      "id": "T04",
+      "browserTested": "Oui, périmètre technique décrit",
+      "coverage": "Activer/retirer le biomask en vraie chasse jungle-vey : coque/Ogre/decal et laser conditionnés au port, pause/reprise, suspension, recharge et reprise réelle du checkpoint sans masque.",
+      "remaining": "Critère technique natif recetté sur Alpha/Ogre déclaré en fixture. Visée manuelle maintenue ; aucune conformité artistique/UV PHG exhaustive attestée.",
+      "humanArtReview": "Non attestée",
+      "sourceWorkbook": "docs/production/Yautja_PHG_Implementation_Status_V137.xlsx",
+      "sheet": "Tests_Parcours",
+      "sourceRow": 8,
+      "evidence": [
+        "production/p0p1-20261109/qa/phg/attempt-3/report.json",
+        "production/p0p1-20261109/qa/phg/attempt-3/screenshot-inspection.json",
+        "production/p0p1-20261109/qa/phg/attempt-3/final-receipt.json",
+        "production/p0p1-20261109/qa/phg-hunt/attempt-3/report.json",
+        "production/p0p1-20261109/qa/phg-hunt/attempt-3/screenshot-inspection.json",
+        "production/p0p1-20261109/qa/phg-hunt/attempt-3/final-receipt.json",
+        "production/p0p1-20261109/qa/phg-hunt/renderer-contracts.json"
+      ]
+    },
+    {
+      "key": "Personnalisation et arsenal:T05",
+      "id": "T05",
+      "browserTested": "Oui, périmètre technique décrit",
+      "coverage": "Choix et persistance du decal visage, propriétaire alpha de tête distinct",
+      "remaining": "Le propriétaire réel est celui de la tête ; une comparaison exhaustive PHG et trois angles ne sont pas attestés.",
+      "humanArtReview": "Non attestée",
+      "sourceWorkbook": "docs/production/Yautja_PHG_Implementation_Status_V137.xlsx",
+      "sheet": "Tests_Parcours",
+      "sourceRow": 9,
+      "evidence": [
+        "production/p0p1-20261109/qa/phg/attempt-3/report.json",
+        "production/p0p1-20261109/qa/phg/attempt-3/screenshot-inspection.json",
+        "production/p0p1-20261109/qa/phg/attempt-3/final-receipt.json"
+      ]
+    },
+    {
+      "key": "Personnalisation et arsenal:T06",
+      "id": "T06",
+      "browserTested": "Oui, périmètre technique décrit",
+      "coverage": "Choix et persistance du decal corps, propriétaire de torse et transform de bone",
+      "remaining": "Parcours et DOM techniques réels ; l’ajustement artistique exhaustif sur toute animation reste ouvert.",
+      "humanArtReview": "Non attestée",
+      "sourceWorkbook": "docs/production/Yautja_PHG_Implementation_Status_V137.xlsx",
+      "sheet": "Tests_Parcours",
+      "sourceRow": 10,
+      "evidence": [
+        "production/p0p1-20261109/qa/phg/attempt-3/report.json",
+        "production/p0p1-20261109/qa/phg/attempt-3/screenshot-inspection.json",
+        "production/p0p1-20261109/qa/phg/attempt-3/final-receipt.json"
+      ]
+    },
+    {
+      "key": "Personnalisation et arsenal:T07",
+      "id": "T07",
+      "browserTested": "Oui, périmètre technique décrit",
+      "coverage": "Choix et persistance du decal armure, propriétaire de plastron distinct",
+      "remaining": "Le bug distinct de teinte des jambières a été reproduit, corrigé puis recetté ; cela ne certifie pas tous les pixels des motifs PHG.",
+      "humanArtReview": "Non attestée",
+      "sourceWorkbook": "docs/production/Yautja_PHG_Implementation_Status_V137.xlsx",
+      "sheet": "Tests_Parcours",
+      "sourceRow": 11,
+      "evidence": [
+        "production/p0p1-20261109/qa/phg/attempt-3/report.json",
+        "production/p0p1-20261109/qa/phg/attempt-3/screenshot-inspection.json",
+        "production/p0p1-20261109/qa/phg/attempt-3/final-receipt.json"
+      ]
+    },
+    {
+      "key": "Personnalisation et arsenal:T08",
+      "id": "T08",
+      "browserTested": "Oui, périmètre technique décrit",
+      "coverage": "Choix et persistance du decal biomask, absent lors du retrait réel",
+      "remaining": "Clip de la coque courante et retrait recettés ; contrôle artistique complet yeux/cou et autres angles encore ouvert.",
+      "humanArtReview": "Non attestée",
+      "sourceWorkbook": "docs/production/Yautja_PHG_Implementation_Status_V137.xlsx",
+      "sheet": "Tests_Parcours",
+      "sourceRow": 12,
+      "evidence": [
+        "production/p0p1-20261109/qa/phg/attempt-3/report.json",
+        "production/p0p1-20261109/qa/phg/attempt-3/screenshot-inspection.json",
+        "production/p0p1-20261109/qa/phg/attempt-3/final-receipt.json"
+      ]
+    },
+    {
+      "key": "Personnalisation et arsenal:T14",
+      "id": "T14",
+      "browserTested": "Oui, périmètre technique décrit",
+      "coverage": "Six morphologies réelles, quatre propriétaires alpha et transformations ; régression des fragments corrigée",
+      "remaining": "La matrice native utilise l’orientation effectivement offerte. Le zéro-débordement global et les UV1:1 ne sont pas certifiés par deux ROI.",
+      "humanArtReview": "Non attestée",
+      "sourceWorkbook": "docs/production/Yautja_PHG_Implementation_Status_V137.xlsx",
+      "sheet": "Tests_Parcours",
+      "sourceRow": 18,
+      "evidence": [
+        "production/p0p1-20261109/qa/phg/attempt-3/report.json",
+        "production/p0p1-20261109/qa/phg/attempt-3/screenshot-inspection.json",
+        "production/p0p1-20261109/qa/phg/attempt-3/final-receipt.json"
+      ]
+    },
+    {
+      "key": "Personnalisation et arsenal:T16",
+      "id": "T16",
+      "browserTested": "Oui, périmètre technique décrit",
+      "coverage": "Scar sélectionné dans les archives ; decal original ajouté sans remplacer ses sources corps/tête",
+      "remaining": "Partiel : pas de sélecteur indépendant d’effet Scar/Warpaint PHG. Le decal visage est occulté par le masque porté ; aucun effet visuel ou canonique supplémentaire inventé.",
+      "humanArtReview": "Non attestée",
+      "sourceWorkbook": "docs/production/Yautja_PHG_Implementation_Status_V137.xlsx",
+      "sheet": "Tests_Parcours",
+      "sourceRow": 20,
+      "evidence": [
+        "production/p0p1-20261109/qa/phg/attempt-3/report.json",
+        "production/p0p1-20261109/qa/phg/attempt-3/screenshot-inspection.json",
+        "production/p0p1-20261109/qa/phg/attempt-3/final-receipt.json"
+      ]
+    },
+    {
+      "key": "Personnalisation et arsenal:T13",
+      "id": "T13",
+      "browserTested": "Oui, périmètre technique décrit",
+      "coverage": "Coiffage Annelées natif puis vraie chasse : mouvements droite/gauche, visée, sept ressorts bornés, anneaux portés par le bitmap de chaque mèche et attache observée ; pause exactement figée.",
+      "remaining": "Couvre Annelées et la morphologie classic Alpha sur les gestes échantillonnés ; revue artistique humaine exhaustive, autres coiffures/morphologies/animations non attestées. Cette ligne ne demande pas de manette physique.",
+      "humanArtReview": "Non attestée",
+      "sourceWorkbook": "docs/production/Yautja_PHG_Implementation_Status_V137.xlsx",
+      "sheet": "Tests_Parcours",
+      "sourceRow": 17,
+      "evidence": [
+        "production/p0p1-20261109/qa/phg-hunt/attempt-3/report.json",
+        "production/p0p1-20261109/qa/phg-hunt/attempt-3/screenshot-inspection.json",
+        "production/p0p1-20261109/qa/phg-hunt/attempt-3/final-receipt.json",
+        "production/p0p1-20261109/qa/phg-hunt/renderer-contracts.json"
+      ]
+    }
+  ],
+  "explicitlyNotClosed": [
+    "T15 long60-minute session",
+    "PHG1:1 visual backlog",
+    "unavailable face/profile/back views",
+    "T13 exhaustive human art review across all hairstyles, morphologies and animations"
+  ],
+  "huntAttempt": "../phg-hunt/attempt-3"
+}

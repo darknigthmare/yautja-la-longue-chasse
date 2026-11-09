@@ -62,7 +62,7 @@ assert.ok(found,`No reachable PR #57 second guard after exploring ${seen.size} s
 const genuineRuntimeSave=JSON.stringify(found);
 assert.ok(api.readWarOperationsV115(genuineRuntimeSave,rules));
 assert.ok(prior);
-const legacyRaw=JSON.stringify(prior),storage="yautja.clan-war.v115.operations.free.v1";
+const legacyRaw=JSON.stringify(prior),storage="yautja.clan-war.v115.operations.fenced.v2";
 const server=await createServer({configFile:false,publicDir:false,define:{"process.env":"{}"},esbuild:{jsx:"automatic"},server:{host:"127.0.0.1",port:0,strictPort:false},appType:"spa"});
 let browser;
 try{
@@ -91,7 +91,7 @@ try{
   await other.goto(origin+"/tests/browser/stealth-reconciliation.html");
   await other.getByText("Rejoindre le relais",{exact:false}).waitFor();
   await other.evaluate(()=>{window.qaStealthLockHeld=false;void navigator.locks.request(
-   "yautja.clan-war.v115.operations.free.v1.write",()=>{window.qaStealthLockHeld=true;
+   "yautja.clan-war.v115.operations.fenced.v2.write",()=>{window.qaStealthLockHeld=true;
     return new Promise(resolve=>{window.qaReleaseStealthLock=resolve;});});});
   await other.waitForFunction(()=>window.qaStealthLockHeld===true);
   await first.page.getByLabel("Règle de renfort :").selectOption(mode);
@@ -100,7 +100,7 @@ try{
   assert.equal(await first.page.getByLabel("Règle de renfort :").inputValue(),"");
   await other.evaluate(()=>window.qaReleaseStealthLock());
   await other.waitForFunction(async()=>!(await navigator.locks.query()).held.some(
-   lock=>lock.name==="yautja.clan-war.v115.operations.free.v1.write"));
+   lock=>lock.name==="yautja.clan-war.v115.operations.fenced.v2.write"));
   await other.close();
  }
  await first.page.getByLabel("Règle de renfort :").selectOption(mode);

@@ -1,0 +1,64 @@
+TAP version 13
+# Subtest: signal and late recall remain readable with original outbound deadline
+ok 1 - signal and late recall remain readable with original outbound deadline
+  ---
+  duration_ms: 4.922775
+  type: 'test'
+  ...
+# Subtest: late recall retains valid signal after forced pace, halt and incident detour
+ok 2 - late recall retains valid signal after forced pace, halt and incident detour
+  ---
+  duration_ms: 2.584674
+  type: 'test'
+  ...
+# Subtest: inspect actual public source passage once, pay one RAV, preserve team and defer benefit
+ok 3 - inspect actual public source passage once, pay one RAV, preserve team and defer benefit
+  ---
+  duration_ms: 2.143467
+  type: 'test'
+  ...
+# Subtest: new inspections refuse a paused convoi and can resume on same passage after pause
+ok 4 - new inspections refuse a paused convoi and can resume on same passage after pause
+  ---
+  duration_ms: 0.779657
+  type: 'test'
+  ...
+# Subtest: inspection and forced pace coexist without moving passage instantly or losing save
+ok 5 - inspection and forced pace coexist without moving passage instantly or losing save
+  ---
+  duration_ms: 1.043335
+  type: 'test'
+  ...
+# Subtest: new inspection is blocked throughout a real passage detour
+ok 6 - new inspection is blocked throughout a real passage detour
+  ---
+  duration_ms: 0.629701
+  type: 'test'
+  ...
+# Subtest: bulletin, inspected passage and late recall survive a complete save roundtrip
+ok 7 - bulletin, inspected passage and late recall survive a complete save roundtrip
+  ---
+  duration_ms: 0.724013
+  type: 'test'
+  ...
+# Subtest: real PR55 runtime archives, including prior inspection while halted, remain readable
+ok 8 - real PR55 runtime archives, including prior inspection while halted, remain readable
+  ---
+  duration_ms: 1.591784
+  type: 'test'
+  ...
+# Subtest: falsified inspection cannot become saved public source evidence
+ok 9 - falsified inspection cannot become saved public source evidence
+  ---
+  duration_ms: 0.829703
+  type: 'test'
+  ...
+1..9
+# tests 9
+# suites 0
+# pass 9
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 23.105738

@@ -1,0 +1,106 @@
+TAP version 13
+# Subtest: old saves without a visit, including explicit null, start in their existing personal hull
+ok 1 - old saves without a visit, including explicit null, start in their existing personal hull
+  ---
+  duration_ms: 1.609769
+  type: 'test'
+  ...
+# Subtest: constructor requires bounded owner identity and a real catalogue hull
+ok 2 - constructor requires bounded owner identity and a real catalogue hull
+  ---
+  duration_ms: 0.599505
+  type: 'test'
+  ...
+# Subtest: approach, dock, entry, return and undock preserve two distinct ship identities
+ok 3 - approach, dock, entry, return and undock preserve two distinct ship identities
+  ---
+  duration_ms: 0.506393
+  type: 'test'
+  ...
+# Subtest: the hunter must return to their docked personal ship before undocking
+ok 4 - the hunter must return to their docked personal ship before undocking
+  ---
+  duration_ms: 0.389057
+  type: 'test'
+  ...
+# Subtest: no command skips a docking stage; duplicate commands cannot advance twice
+ok 5 - no command skips a docking stage; duplicate commands cannot advance twice
+  ---
+  duration_ms: 0.421816
+  type: 'test'
+  ...
+# Subtest: each clan room round-trips as the exact occupied room; boarding starts in the hangar
+ok 6 - each clan room round-trips as the exact occupied room; boarding starts in the hangar
+  ---
+  duration_ms: 0.35745
+  type: 'test'
+  ...
+# Subtest: a serialized checkpoint resumes every docking stage without a movement or write
+ok 7 - a serialized checkpoint resumes every docking stage without a movement or write
+  ---
+  duration_ms: 0.196416
+  type: 'test'
+  ...
+# Subtest: room navigation exists only aboard and rejects invented rooms
+ok 8 - room navigation exists only aboard and rejects invented rooms
+  ---
+  duration_ms: 0.241444
+  type: 'test'
+  ...
+# Subtest: hull selection is locked through approach and the full docking visit
+ok 9 - hull selection is locked through approach and the full docking visit
+  ---
+  duration_ms: 0.358711
+  type: 'test'
+  ...
+# Subtest: a personal AVP hull remains an independent identity from the AVP clan destination
+ok 10 - a personal AVP hull remains an independent identity from the AVP clan destination
+  ---
+  duration_ms: 0.329597
+  type: 'test'
+  ...
+# Subtest: only free flight reconciles a fleet change; an engaged personal hull cannot be replaced
+ok 11 - only free flight reconciles a fleet change; an engaged personal hull cannot be replaced
+  ---
+  duration_ms: 0.23247
+  type: 'test'
+  ...
+# Subtest: another campaign cannot act on or adopt an existing visit
+ok 12 - another campaign cannot act on or adopt an existing visit
+  ---
+  duration_ms: 0.175765
+  type: 'test'
+  ...
+# Subtest: malformed snapshots are rejected without coercion, resetting or dropping unknown data
+ok 13 - malformed snapshots are rejected without coercion, resetting or dropping unknown data
+  ---
+  duration_ms: 0.369418
+  type: 'test'
+  ...
+# Subtest: future schemas expose a protectable diagnostic and never become a fresh visit
+ok 14 - future schemas expose a protectable diagnostic and never become a fresh visit
+  ---
+  duration_ms: 0.151489
+  type: 'test'
+  ...
+# Subtest: invalid command/context payloads are refused before any state transition
+ok 15 - invalid command/context payloads are refused before any state transition
+  ---
+  duration_ms: 0.204438
+  type: 'test'
+  ...
+# Subtest: replaying the same input history is deterministic and does not mutate prior checkpoints
+ok 16 - replaying the same input history is deterministic and does not mutate prior checkpoints
+  ---
+  duration_ms: 0.270729
+  type: 'test'
+  ...
+1..16
+# tests 16
+# suites 0
+# pass 16
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 18.616181

@@ -4605,6 +4605,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
           <section className="screen panel-screen" hidden={screen !== "clan-ship"} style={screen !== "clan-ship" ? { display: "none" } : undefined} inert={screen !== "clan-ship" || settingsOpen || trophyWorkshop !== null}>
             <div className="screen-safe">
               <ClanShipHub
+                createSceneAudio={createSceneAudio}
                 key={save.createdAt}
                 state={clanShipState}
                 save={save}

@@ -1,0 +1,139 @@
+{
+  "baseCommit": "39b601ce1873a1f400d2f545f0fab97691b779e3",
+  "baseline": {
+    "path": "production/crew-dialogue-20261109/suivi/Yautja_Dialogues_Equipage_20261109.xlsx",
+    "sha256": "5d9a9b26952612437bba9d7e7397b2d5b918b0999765a650429213497b34e4fb"
+  },
+  "release": "V202611091",
+  "summary": "SyntheseV202611091",
+  "historicalCount": 7,
+  "appendedSheets": [
+    "SyntheseV202611091",
+    "PrioritesV202611091",
+    "VerifieesV202611091",
+    "BlocagesV202611091",
+    "CriteresV202611091",
+    "SourcesV202611091"
+  ],
+  "workbookPath": "production/p0p1-20261109/suivi/Yautja_Priorites_P0_P1_20261109.xlsx",
+  "inputs": [
+    {
+      "path": "production/p0p1-20261109/suivi/registre-priorites.json",
+      "sha256": "43664b15dc0e915bf93049a2c0f1664a2f2c776600d84236926521532acaedff",
+      "bytes": 9318419
+    },
+    {
+      "path": "production/p0p1-20261109/suivi/registre-priorites.md",
+      "sha256": "d01fc11ae7cc415595b4cbda3210150e3ce662505623c130ab89b2d14833e952",
+      "bytes": 2478888
+    },
+    {
+      "path": "production/p0p1-20261109/suivi/actions-restantes.json",
+      "sha256": "e3546b710e24eb99560241dcbeaf5c6f6261cb44e441b720c0a7013c4308a6f2",
+      "bytes": 1095363
+    },
+    {
+      "path": "production/p0p1-20261109/suivi/qualification-courante.json",
+      "sha256": "078e62b69a9d7bebc113500364f58554637a565ab3ce615f2c28475beaae8d97",
+      "bytes": 5869597
+    },
+    {
+      "path": "production/p0p1-20261109/suivi/historique-preserve.json",
+      "sha256": "20dd082b7c0af095b14dbb7d4fc8771e30b051320a3e7801efd8ece6582fcc0e",
+      "bytes": 29555
+    },
+    {
+      "path": "production/p0p1-20261109/inventory/classeurs.json",
+      "sha256": "a06fd3725b5f1c8aa040592ea714957498cd54fc037d930cc134972fac4f5dbc",
+      "bytes": 34036
+    },
+    {
+      "path": "production/p0p1-20261109/inventory/supplement-observations.json",
+      "sha256": "9099ddad36d7f33874eceec4804dec4a8f26589d2fcae8b222fc0ed5e96b5c8e",
+      "bytes": 490253
+    },
+    {
+      "path": "production/p0p1-20261109/inventory/warp-priority-requests.json",
+      "sha256": "e6b1935b45da25b2538c0693444cba927776228244d0569ad10b96c0ce14fe95",
+      "bytes": 9004
+    },
+    {
+      "path": "production/p0p1-20261109/inventory/phg-source-manipulations.json",
+      "sha256": "7c28ec9d44d21f5cde4f1c95edfde5840a408f5840c9a2202a05977259908128",
+      "bytes": 4451
+    },
+    {
+      "path": "production/p0p1-20261109/tools/tracker.py",
+      "sha256": "6ac69832eac0ebb1bb0a73e61aea459c4d268eeabbe349b02ddd7058c5e92656",
+      "bytes": 31210
+    },
+    {
+      "path": "production/p0p1-20261109/tools/build-tracker.py",
+      "sha256": "72eba227c5fcef85f4d7d6ca19587c489e7426cd3473f5cdb5f058da41b9f63c",
+      "bytes": 1701
+    },
+    {
+      "path": "production/p0p1-20261109/tools/verify-tracker.py",
+      "sha256": "30fa869e1baf44fd6fedb80a6329f20f32d90ce0b81a507bd73a40edf43dbaa2",
+      "bytes": 562
+    },
+    {
+      "path": "production/p0p1-20261109/tools/audit-priorities.py",
+      "sha256": "d481f98cabd40973ffd85d68d9cfa3ec50aa7527dde870d9c9f87c1008327bd4",
+      "bytes": 1705
+    },
+    {
+      "path": "production/p0p1-20261109/tools/import-admission.py",
+      "sha256": "4c903a9995d43830247eef1354cb8d4e36a59cdc8da9961f4598cb79617c894a",
+      "bytes": 6761
+    },
+    {
+      "path": "scripts/lib/excel_followup_append.py",
+      "sha256": "321eada2b760f5a6ec6b9d273b2abc189a829f07a67c3805a690983408160e34",
+      "bytes": 10186
+    },
+    {
+      "path": "scripts/build-excel-followup-v100.py",
+      "sha256": "91491b98d2576e8f3ce89067ba782629ac05675ae0541343256576749e1f8ab1",
+      "bytes": 18054
+    }
+  ],
+  "sheets": [
+    {
+      "name": "SyntheseV202611091",
+      "rows": 12,
+      "columns": 3,
+      "sha256": "ae2f6cef426ceab3a5db8ee3ec31eb4199c10f486cee76f14abf406d6941fc75"
+    },
+    {
+      "name": "PrioritesV202611091",
+      "rows": 2577,
+      "columns": 12,
+      "sha256": "1104a3fcecf3d17f486933dac2de5759e5aa8a6713ff4cf5e9ebfe07f18b4b73"
+    },
+    {
+      "name": "VerifieesV202611091",
+      "rows": 625,
+      "columns": 12,
+      "sha256": "285320c849e4b28bc38999c9b80ed33c3231c2ec42efdd0c8901664583fd8948"
+    },
+    {
+      "name": "BlocagesV202611091",
+      "rows": 2547,
+      "columns": 6,
+      "sha256": "f59887d33ffaf2cb7047060ff6a9e6a68dd8ca4752a56d2c548632f495ac487d"
+    },
+    {
+      "name": "CriteresV202611091",
+      "rows": 2577,
+      "columns": 9,
+      "sha256": "ebb2ae7d8b05e294378722b6f19bb4ca4a2212fd7367e22a9b339e7f053b3fa3"
+    },
+    {
+      "name": "SourcesV202611091",
+      "rows": 163,
+      "columns": 4,
+      "sha256": "5f49cd7fc15da9f30c1a91eff5f125a3d8b7d3130ca09d1af43a482560b09d83"
+    }
+  ]
+}

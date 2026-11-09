@@ -1,0 +1,92 @@
+{
+  "openedOriginalPngs": 12,
+  "allOpened": true,
+  "scopePassed": true,
+  "humanArtOneToOneApproved": false,
+  "items": [
+    {
+      "file": "01-native-rts-committed.png",
+      "sha256": "1b672a5409ec102388a0cf1aaf81564b4aed7692d5eb506fb51e71d3968daa4e",
+      "opened": true,
+      "scopePassed": true,
+      "observed": "Mission W115-OPS-0001, action0, simulation temps réel et grille9x6 complète visibles."
+    },
+    {
+      "file": "02-native-lock-frozen.png",
+      "sha256": "1b672a5409ec102388a0cf1aaf81564b4aed7692d5eb506fb51e71d3968daa4e",
+      "opened": true,
+      "scopePassed": true,
+      "observed": "Même mission, action0 et mêmes positions visibles pendant le verrou natif ; gel confirmé séparément par octets miroir/IDB inchangés."
+    },
+    {
+      "file": "03-native-stale-tab-blocked.png",
+      "sha256": "45433e99f83f46319a149247639f6bcb574e3fafc48c098016f933c99601ab42",
+      "opened": true,
+      "scopePassed": true,
+      "observed": "Alerte conflit canonique et commandes bloquées visibles ; export de récupération reste accessible en lecture seule."
+    },
+    {
+      "file": "04-native-reloaded-alternating.png",
+      "sha256": "4fa9769ccd183be3c20bba25b9b85ff684ebc00ec64f0ff9c00db045c7412fd0",
+      "opened": true,
+      "scopePassed": true,
+      "observed": "Après recharge :119RAV,1vacation,7/8équipes, mode RTS retenu ; le contrôle de vitesse est exercé séparément plus bas."
+    },
+    {
+      "file": "10-actual-old-client-before-adoption.png",
+      "sha256": "33923be45ee49bac8c32d22ccfffbea869b1e422ebe42b523106d1911fa167e7",
+      "opened": true,
+      "scopePassed": true,
+      "observed": "Ancien vrai composant39b601ce : mandatW115-OPS-0001 actif en alterné, action1 et grille complète visibles."
+    },
+    {
+      "file": "11-native-explicit-adoption-preview.png",
+      "sha256": "7d7c2bfc355c176f7d2dd75bdc6cca28b4db14e1bcd155c0f0a34aab6196026c",
+      "opened": true,
+      "scopePassed": true,
+      "observed": "Écran de lecture seule avant adoption : provenance ancienne,119RAV,mandat1,choix explicite adopter/exporter et absence de fusion automatique annoncés."
+    },
+    {
+      "file": "12-native-canonical-continues-after-old-write.png",
+      "sha256": "5ecf163f7c5aecf8398bbd40468e41c796134070b86dbb1c318b330a641579d0",
+      "opened": true,
+      "scopePassed": true,
+      "observed": "Même mandat dans le nouveau registre : action2 en alterné, grille et commandes restent utilisables après écriture de l’ancien client."
+    },
+    {
+      "file": "05-native-interrupted-write.png",
+      "sha256": "46be8373947a186d02864bf0d9545b4636eccea196803d6a9cc05344c4a7fe53",
+      "opened": true,
+      "scopePassed": true,
+      "observed": "Alerte d’écriture non confirmée et bouton de reprise visibles ; ancienne présentation120RAV conservée en attendant confirmation."
+    },
+    {
+      "file": "06-native-recovery-awaits-confirmation.png",
+      "sha256": "0e0a984e4f14c36edd475969ddde6cc4dbd3ca154d0fb1704ae8ff9b9e583262",
+      "opened": true,
+      "scopePassed": true,
+      "observed": "Après recharge : intention durable retrouvée, bouton explicite et119RAV à l’état prévu, autres commandes bloquées."
+    },
+    {
+      "file": "09-native-recovery-mobile-390.png",
+      "sha256": "6217e4c9d76fec2b533c913ce7fc24e6f40e05967dccd8ba0001301cff4291b0",
+      "opened": true,
+      "scopePassed": true,
+      "observed": "Alerte de récupération et bouton de reprise lisibles à390px,119RAV et7/8équipes ; commandes de modes désactivées."
+    },
+    {
+      "file": "07-native-repaired-mission.png",
+      "sha256": "87f674a1dd4a8e309351dba60cf6a3636f1d896d2d55a55ba4e7fe9f4bb98e4b",
+      "opened": true,
+      "scopePassed": true,
+      "observed": "Même mission W115-OPS-0001, action0 et grille9x6 complète après réparation puis passage natif en alterné."
+    },
+    {
+      "file": "08-native-repaired-mobile-390.png",
+      "sha256": "02cde51a872f461111d6905b6b7a974ad61c8a6fc6ef4a1e54e4b278bb015d80",
+      "opened": true,
+      "scopePassed": true,
+      "observed": "Archive canonique restaurée à390px :119RAV,7/8équipes, commandes de réinitialisation/export lisibles ; pas de qualification de grille mobile complète."
+    }
+  ]
+}

@@ -1,0 +1,52 @@
+TAP version 13
+# Subtest: the V120 mission atlas has EXACTLY 100 variants per mode and family, 1200 total
+ok 1 - the V120 mission atlas has EXACTLY 100 variants per mode and family, 1200 total
+  ---
+  duration_ms: 6.960923
+  type: 'test'
+  ...
+# Subtest: biomes, hazards, objectives, topology and climate are NOT recycled as renamed clones
+ok 2 - biomes, hazards, objectives, topology and climate are NOT recycled as renamed clones
+  ---
+  duration_ms: 2.245829
+  type: 'test'
+  ...
+# Subtest: 400 distinct real-world inspiration names appear in the homage quarter, never a fictional canon claim
+ok 3 - 400 distinct real-world inspiration names appear in the homage quarter, never a fictional canon claim
+  ---
+  duration_ms: 0.358351
+  type: 'test'
+  ...
+# Subtest: all 400 original and 400 lore-context scenarios remain explicitly invented, continuity bounded
+ok 4 - all 400 original and 400 lore-context scenarios remain explicitly invented, continuity bounded
+  ---
+  duration_ms: 1.404189
+  type: 'test'
+  ...
+# Subtest: all 1200 are honest design specs with success, failure, extraction, hazard/power outage and no hidden annexation
+ok 5 - all 1200 are honest design specs with success, failure, extraction, hazard/power outage and no hidden annexation
+  ---
+  duration_ms: 2.015321
+  type: 'test'
+  ...
+# Subtest: normalized accent-friendly search and family filtering do not mutate the source
+ok 6 - normalized accent-friendly search and family filtering do not mutate the source
+  ---
+  duration_ms: 41.395984
+  type: 'test'
+  ...
+# Subtest: seeded V120 mission draw exhausts 100 proposals without repetition, independent of mode and context
+ok 7 - seeded V120 mission draw exhausts 100 proposals without repetition, independent of mode and context
+  ---
+  duration_ms: 7.430542
+  type: 'test'
+  ...
+1..7
+# tests 7
+# suites 0
+# pass 7
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 75.880437

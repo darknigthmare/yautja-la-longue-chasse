@@ -11,7 +11,7 @@ import {build} from "esbuild";
 import {chromium} from "playwright-core";
 const root=fileURLToPath(new URL("../",import.meta.url));
 const out=resolve(root,"outputs/clan-war-v115-multitab-v148");
-const key="yautja.clan-war.v115.operations.free.v1";
+const key="yautja.clan-war.v115.operations.fenced.v2";
 const sentinel="v148-unrelated-hunter-campaign";
 const bundle=await build({absWorkingDir:root,
   entryPoints:["tests/browser/clan-war-v147-four-modes.fixture.tsx"],
@@ -84,7 +84,7 @@ try{
   // A lock held in another real tab must prevent both an operation and reset.
   await b.evaluate(()=>{
     window.lockHeldV149=false;
-    void navigator.locks.request("yautja.clan-war.v115.operations.free.v1.write",()=>{
+    void navigator.locks.request("yautja.clan-war.v115.operations.fenced.v2.write",()=>{
       window.lockHeldV149=true;
       return new Promise(resolve=>{window.releaseV149=resolve;});
     });
@@ -173,7 +173,7 @@ try{
   // then release it and check that the timer advances from the saved state.
   await op(a).getByRole("button",{name:/^Lancer :/}).click();
   await a.waitForFunction(key=>{const raw=localStorage.getItem(key);return raw&&JSON.parse(raw).active?.mode==="assault";},key);
-  await b.evaluate(()=>{window.timerLockHeld=false;void navigator.locks.request("yautja.clan-war.v115.operations.free.v1.write",()=>{
+  await b.evaluate(()=>{window.timerLockHeld=false;void navigator.locks.request("yautja.clan-war.v115.operations.fenced.v2.write",()=>{
     window.timerLockHeld=true;return new Promise(resolve=>{window.releaseTimerLock=resolve;});
   });});
   await b.waitForFunction(()=>window.timerLockHeld===true);
@@ -197,7 +197,7 @@ try{
     return state.active?.mode==="rts"&&state.active.rts?.realtime===true;
   },key);
   await b.evaluate(()=>{window.rtsTimerLockHeldV149=false;
-    void navigator.locks.request("yautja.clan-war.v115.operations.free.v1.write",()=>{
+    void navigator.locks.request("yautja.clan-war.v115.operations.fenced.v2.write",()=>{
       window.rtsTimerLockHeldV149=true;
       return new Promise(resolve=>{window.releaseRtsTimerLockV149=resolve;});
     });

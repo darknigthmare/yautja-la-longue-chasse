@@ -51,6 +51,10 @@ import {auditWarOperationsDebriefsV144} from "./systems/clanWarDebriefV144";
 import {buildWarCouncilAuditV147} from "./systems/clanWarCouncilReviewV147";
 import ClanWarFieldSprite from "./ClanWarFieldSprite";
 import {fieldKeyboardAction,fieldKeyboardTargetBlocked} from "./systems/clanWarFieldControls";
+import { createWarFencePortV94 } from "./systems/clanWarFenceV94";
+import { readWarOperationsArchive, writeWarOperationsArchive, repairWarOperationsArchive,
+  adoptWarOperationsLegacyArchive, snapshotWarOperationsLegacyArchive, exportWarOperationsLegacyArchive,
+  type WarOperationsArchiveBaseline, type WarOperationsLegacySnapshot } from "./systems/clanWarOperationsArchive";
 import styles from "./ClanWarOperationsV115.module.css";
 
 const modeLabels: Record<WarMissionModeV115, string> = {
@@ -70,6 +74,10 @@ export default function ClanWarOperationsV115({rules,active=true,persist=false,i
   const worldRef=useRef(world);
   const councilAudit=useMemo(()=>buildWarCouncilAuditV146(world,null,rules),[world,rules]);
   const knownArchiveBytesRef=useRef<string|null>(null);
+  const archiveBaselineRef=useRef<WarOperationsArchiveBaseline|null>(null);
+  const archiveFence=useMemo(()=>createWarFencePortV94(),[]);
+  const [archiveRepair,setArchiveRepair]=useState(false);
+  const [legacyReview,setLegacyReview]=useState<{snapshot:WarOperationsLegacySnapshot;available:boolean;reason:string}|null>(null);
   const writingV115Ref=useRef(false);
   const mountedV115Ref=useRef(false);
   const activeV115Ref=useRef(active);
@@ -94,20 +102,37 @@ export default function ClanWarOperationsV115({rules,active=true,persist=false,i
   useEffect(()=>{
     // Loading an external browser archive is an asynchronous subscription
     // event, never a cascading synchronous render during effect setup.
-    const ticket=window.setTimeout(()=>{
+    let cancelled=false;
+    const ticket=window.setTimeout(async()=>{
       let current=createWarOperationsV115(rules),lock=false,issue="";
+      archiveBaselineRef.current=null;
+      setLegacyReview(null);
       if(persist) {
         try {
-          const raw=window.localStorage.getItem(WAR_OPERATIONS_STORAGE_V115);
-          knownArchiveBytesRef.current=raw;
-          if(raw) {
-            const parsed=readWarOperationsV115(raw,rules);
-          knownArchiveBytesRef.current=raw;
-            if(parsed) current=parsed;
-            else {lock=true;issue="Archive V115 illisible ou incompatible : octets conservés, aucune réécriture autorisée.";}
+          const loaded=await readWarOperationsArchive(window.localStorage,rules,archiveFence);
+          if(cancelled)return;
+          if(loaded.status==="ready"||loaded.status==="recovery"){
+            archiveBaselineRef.current=loaded.baseline;
+            knownArchiveBytesRef.current=loaded.baseline.raw;
+            if(loaded.state)current=loaded.state;
+            if(loaded.status==="recovery"){
+              lock=true;issue="Écriture V115 interrompue : intention durable retrouvée. Confirmez sa reprise avant de poursuivre l’exercice.";
+            }
+            setArchiveRepair(loaded.status==="recovery");
+          }else if(loaded.status==="legacy-available"||loaded.status==="legacy-blocked"){
+            archiveBaselineRef.current=loaded.baseline;knownArchiveBytesRef.current=null;
+            if(loaded.state)current=loaded.state;
+            lock=true;issue=loaded.reason;setArchiveRepair(false);
+            setLegacyReview({snapshot:loaded.legacy,available:loaded.status==="legacy-available",reason:loaded.reason});
+          }else{
+            lock=true;setArchiveRepair(false);
+            issue=loaded.status==="conflict"?"Archive V115 et registre transactionnel en conflit : octets conservés, aucune écriture. Rechargez pour relire l’archive.":
+              loaded.status==="incompatible"?"Archive V115 illisible ou incompatible : octets conservés, aucune réécriture autorisée.":
+              "Vérification transactionnelle V115 indisponible : archive conservée en lecture seule. Rechargez pour réessayer.";
           }
         } catch {lock=true;issue="Stockage indisponible : archive existante préservée. Les opérations sont verrouillées.";}
       }
+      if(cancelled)return;
       worldRef.current=current;setWorld(current);setBlocked(lock);setStorageIssue(issue);
       // Restore the actual persisted mission rather than defaulting to Assault.
       const resumedMode:WarMissionModeV115=current.active?.mode ??
@@ -145,8 +170,8 @@ export default function ClanWarOperationsV115({rules,active=true,persist=false,i
         rules.territories[1]?.id??"");
       setHydrated(true);setNow(Date.now());
     },0);
-    return ()=>window.clearTimeout(ticket);
-  },[rules,persist,defaultSource,initialScenarioId,sourcePilotSiteId]);
+    return ()=>{cancelled=true;window.clearTimeout(ticket);};
+  },[rules,persist,defaultSource,initialScenarioId,sourcePilotSiteId,archiveFence]);
 
   /** V148: a stale tab must never overwrite another tab's V115 archive,
    * including through reset, or after a dropped background storage event.
@@ -195,8 +220,8 @@ export default function ClanWarOperationsV115({rules,active=true,persist=false,i
 
   // All cooperating V115 writers, including timers and reset, use one origin-wide
   // lock. Never fall back to an unsafe read-then-write when Web Locks is absent.
-  function writeV115(operation:()=>void) {
-    if(!persist){operation();return;}
+  function writeV115(operation:()=>void|Promise<void>) {
+    if(!persist){void operation();return;}
     if(writingV115Ref.current){setMessage("Une écriture V115 est en cours ; réessayez.");return;}
     if(typeof navigator.locks?.request!=="function"){
       setBlocked(true);
@@ -204,31 +229,111 @@ export default function ClanWarOperationsV115({rules,active=true,persist=false,i
       return;
     }
     writingV115Ref.current=true;
-    void navigator.locks.request("yautja.clan-war.v115.operations.free.v1.write", {mode:"exclusive",ifAvailable:true}, lock=>{
+    void navigator.locks.request(`${WAR_OPERATIONS_STORAGE_V115}.write`, {mode:"exclusive",ifAvailable:true}, async lock=>{
       if(!mountedV115Ref.current||!activeV115Ref.current)return;
       if(!lock){setMessage("Une autre écriture V115 est en cours ; réessayez.");return;}
-      operation();
+      await operation();
     }).catch(()=>{
       if(mountedV115Ref.current){setBlocked(true);setStorageIssue("Verrouillage V115 indisponible : archive conservée sans écriture.");}
     }).finally(()=>{writingV115Ref.current=false;});
   }
 
+  async function persistWorld(next:WarOperationsStateV115):Promise<boolean> {
+    if(!persist)return true;
+    const baseline=archiveBaselineRef.current;
+    if(!baseline){setBlocked(true);return false;}
+    const result=await writeWarOperationsArchive(window.localStorage,rules,archiveFence,baseline,next);
+    if(!mountedV115Ref.current)return false;
+    if(result.status==="committed"){
+      archiveBaselineRef.current=result.baseline;knownArchiveBytesRef.current=result.baseline.raw;
+      return true;
+    }
+    setBlocked(true);
+    if(result.status==="recovery"){
+      archiveBaselineRef.current=result.baseline;
+      try{
+        const raw=window.localStorage.getItem(WAR_OPERATIONS_STORAGE_V115);
+        if(raw===result.baseline.fence?.before||raw===result.baseline.fence?.after)knownArchiveBytesRef.current=raw;
+      }catch{ /* The durable intent remains available after reload. */ }
+      setArchiveRepair(true);
+      setStorageIssue("Écriture V115 non confirmée : intention durable conservée. Reprenez cette écriture avant tout nouvel ordre.");
+    }else{
+      setArchiveRepair(false);
+      setStorageIssue(result.status==="conflict"?"Front V115 modifié dans une autre session : aucune réussite annoncée. Rechargez pour relire l’archive.":
+        "Archive ou registre V115 indisponible ou incompatible : aucune réussite annoncée. Octets conservés ; rechargez pour réessayer.");
+    }
+    return false;
+  }
+
+  function repairArchive() {
+    if(!active||!hydrated||!archiveRepair)return;
+    writeV115(async()=>{
+      const baseline=archiveBaselineRef.current;if(!baseline)return;
+      const result=await repairWarOperationsArchive(window.localStorage,rules,archiveFence,baseline);
+      if(!mountedV115Ref.current)return;
+      if(result.status!=="committed"){
+        if(result.status==="recovery")archiveBaselineRef.current=result.baseline;
+        else setArchiveRepair(false);
+        setStorageIssue(result.status==="conflict"?"Une autre session a modifié l’archive : reprise refusée, octets conservés. Rechargez.":
+          "Reprise non confirmée : intention conservée. Réessayez ou rechargez lorsque le stockage est disponible.");
+        return;
+      }
+      const restored=readWarOperationsV115(result.baseline.raw!,rules);
+      if(!restored)return;
+      archiveBaselineRef.current=result.baseline;knownArchiveBytesRef.current=result.baseline.raw;
+      worldRef.current=restored;setWorld(restored);setBlocked(false);setArchiveRepair(false);setStorageIssue("");
+      setMode(restored.active?.mode??(restored.outer.length?"outer":"assault"));
+      setMessage("Écriture V115 reprise et confirmée, sans rejouer l’ordre ni débiter une seconde fois.");
+    });
+  }
+
+  function adoptLegacyArchive() {
+    if(!active||!hydrated||!legacyReview?.available)return;
+    const snapshot=legacyReview.snapshot;
+    writeV115(async()=>{
+      const baseline=archiveBaselineRef.current;if(!baseline)return;
+      const result=await adoptWarOperationsLegacyArchive(window.localStorage,rules,archiveFence,baseline,snapshot);
+      if(!mountedV115Ref.current)return;
+      if(result.status!=="committed"){
+        if(result.status==="recovery"){
+          archiveBaselineRef.current=result.baseline;
+          knownArchiveBytesRef.current=window.localStorage.getItem(WAR_OPERATIONS_STORAGE_V115);
+          setLegacyReview(null);setArchiveRepair(true);
+          setStorageIssue("Adoption V115 non confirmée : intention isolée conservée. Confirmez sa reprise avant tout ordre.");
+        }else{
+          setLegacyReview(previous=>previous?{...previous,available:false,reason:"L’archive ou son registre a changé : adoption refusée sans remplacer les versions. Exportez les sources puis rechargez pour les relire."}:null);
+        }
+        setBlocked(true);return;
+      }
+      const restored=readWarOperationsV115(result.baseline.raw!,rules);if(!restored)return;
+      archiveBaselineRef.current=result.baseline;knownArchiveBytesRef.current=result.baseline.raw;
+      worldRef.current=restored;setWorld(restored);setBlocked(false);setArchiveRepair(false);setLegacyReview(null);setStorageIssue("");
+      setMode(restored.active?.mode??(restored.outer.length?"outer":"assault"));
+      setMessage("Archive adoptée dans le registre isolé, sans rejouer de mandat ni débiter de RAV. L’ancienne version reste conservée séparément.");
+    });
+  }
+
+  async function exportLegacyArchive() {
+    if(!persist||!active)return;
+    try{
+      const snapshot=await snapshotWarOperationsLegacyArchive(window.localStorage,archiveFence);
+      if(snapshot.raw===null&&snapshot.fence===null&&!snapshot.fenceFailure){
+        if(mountedV115Ref.current)setMessage("Aucune ancienne archive à exporter.");return;
+      }
+      const bytes=exportWarOperationsLegacyArchive(snapshot),url=URL.createObjectURL(new Blob([bytes],{type:"application/json"}));
+      const link=document.createElement("a");link.href=url;link.download="yautja-v115-ancienne-archive-recovery.json";link.click();
+      window.setTimeout(()=>URL.revokeObjectURL(url),1000);
+      if(mountedV115Ref.current)setMessage("Sources de récupération exportées séparément, sans modifier ni fusionner les exercices.");
+    }catch{if(mountedV115Ref.current)setMessage("Export indisponible : les octets d’origine restent conservés. Réessayez après rétablissement du stockage.");}
+  }
+
   function commit(update:WarOperationsUpdateV115) {
     if(!update.accepted){setMessage(update.message);return;}
     if(blocked||!hydrated||!active||!verifyOwnV115ArchiveV148())return;
-    writeV115(()=>{
+    writeV115(async()=>{
       if(!verifyOwnV115ArchiveV148())return;
-      if(persist) {
-        try {
-          const updatedBytes=JSON.stringify(update.state);
-          window.localStorage.setItem(WAR_OPERATIONS_STORAGE_V115,updatedBytes);
-          knownArchiveBytesRef.current=updatedBytes;
-        } catch {
-          setBlocked(true);
-          setStorageIssue("Échec de sauvegarde : l'ancienne archive n'a pas été remplacée. Réessayez avec un espace de stockage disponible.");
-          return;
-        }
-      }
+      if(!await persistWorld(update.state))return;
+      if(!mountedV115Ref.current)return;
       worldRef.current=update.state;setWorld(update.state);setMessage(update.message);
     });
   }
@@ -329,20 +434,10 @@ export default function ClanWarOperationsV115({rules,active=true,persist=false,i
     if(!window.confirm("Remplacer uniquement les mandats d'exercice V115 ? Les archives V3, V6 et la campagne ne seront pas modifiées."))return;
     // Recheck after confirmation, then again inside the shared lock.
     if(!verifyOwnV115ArchiveV148())return;
-    writeV115(()=>{
+    writeV115(async()=>{
     if(!verifyOwnV115ArchiveV148())return;
     const next=createWarOperationsV115(rules);
-    if(persist) {
-      try {
-        const encoded=JSON.stringify(next);
-        window.localStorage.setItem(WAR_OPERATIONS_STORAGE_V115,encoded);
-        knownArchiveBytesRef.current=encoded;
-      } catch {
-        setBlocked(true);
-        setStorageIssue("Impossible de remplacer l'archive V115 ; aucun changement local appliqué.");
-        return;
-      }
-    }
+    if(!await persistWorld(next)||!mountedV115Ref.current)return;
     worldRef.current=next;setWorld(next);setBlocked(false);setStorageIssue("");setHydrated(true);
     setMode(initialScenarioId?"rts":"assault");
     setSelectedIds([]);setRtsSelectedId("");
@@ -352,6 +447,17 @@ export default function ClanWarOperationsV115({rules,active=true,persist=false,i
   }
 
   if(!hydrated) return <section className={styles.root} role="status">Lecture des mandats V115 et de leur archive…</section>;
+  if(legacyReview)return <section className={styles.root} data-testid="clan-operations-v115" data-war-campaign-write="none"
+    data-war-archive-state={legacyReview.available?"legacy-available":"legacy-blocked"} aria-label="Opérations de clan, exercice V115">
+    <h3>Ancienne archive V115 à examiner</h3>
+    <p role="alert" className={styles.warning}>{legacyReview.reason}</p>
+    {legacyReview.available&&<p>Version présentée : exercice {world.serial} · {world.rav} RAV · {world.reports.length} rapport(s)
+      {world.active?` · mandat ${world.active.id} en cours`:" · aucun mandat actif"}.</p>}
+    <p>Le registre isolé est utilisé par les clients actuels. Adopter conserve la version montrée ; les changements futurs d’une ancienne session restent dans son ancienne archive et ne sont pas fusionnés automatiquement.</p>
+    {legacyReview.available&&<button type="button" disabled={!active} onClick={adoptLegacyArchive}>Adopter cette archive dans le registre isolé</button>}
+    <button type="button" disabled={!active} onClick={()=>{void exportLegacyArchive();}}>Exporter les sources de récupération V115</button>
+    <p role="status" aria-live="polite">{message}</p>
+  </section>;
   return <section className={styles.root} data-testid="clan-operations-v115" data-war-campaign-write="none" tabIndex={0}
     onKeyDown={event=>{
       const actor=worldRef.current.active?.stealth;
@@ -369,7 +475,10 @@ export default function ClanWarOperationsV115({rules,active=true,persist=false,i
     <div className={styles.intro}>
       <div><span className={styles.overline}>CONSEIL DES MANDATS · EXERCICE V115</span><h3>Quatre façons de mener la guerre</h3>
       <p>Une même équipe identifiable peut être envoyée en assaut latéral, en opération déléguée, en infiltration ou en bataille tactique. Les blessures, l&apos;expérience, les renseignements et les rapports suivent la même archive d&apos;exercice.</p></div>
-      <button type="button" className={styles.reset} disabled={blocked||!hydrated||!active} onClick={reset}>Réinitialiser V115 uniquement</button>
+      <div>
+        <button type="button" className={styles.reset} disabled={blocked||!hydrated||!active} onClick={reset}>Réinitialiser V115 uniquement</button>
+        {persist&&<button type="button" disabled={!active} onClick={()=>{void exportLegacyArchive();}}>Exporter l’ancienne archive conservée</button>}
+      </div>
     </div>
     {holographic && <aside className={styles.gauntletRibbon} style={gauntletVars}
       aria-label="Projection tactique du gauntlet équipé" data-testid="clan-operations-gauntlet-v133" data-gauntlet-model={equipped?.id ?? "jungle-hunter"} data-current-mode={mode}>
@@ -386,6 +495,7 @@ export default function ClanWarOperationsV115({rules,active=true,persist=false,i
     </aside>}
     <p className={styles.disclaimer}>Les unités, passages, coûts RAV et gains d&apos;expérience proviennent de la Bible V6. Les chronomètres, jauges AP, déplacements et IA de ces minijeux sont des paramètres de prototype, sans identité canonique ajoutée. Les victoires n&apos;annexent aucun site V85, ne délivrent aucun trophée et ne modifient pas la chasse principale.</p>
     {storageIssue && <p role="alert" className={styles.warning}>{storageIssue}</p>}
+    {archiveRepair && <button type="button" disabled={!active} onClick={repairArchive}>Reprendre l’écriture V115 interrompue</button>}
     <div className={styles.metrics}>
       <div>RAV de l&apos;exercice<strong>{world.rav}</strong></div>
       <div>Vacations simulées<strong>{world.clock}</strong></div>

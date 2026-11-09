@@ -1,0 +1,46 @@
+TAP version 13
+# Subtest: local two-player simulation has disjoint teams, no campaign writes and fixed exercise map
+ok 1 - local two-player simulation has disjoint teams, no campaign writes and fixed exercise map
+  ---
+  duration_ms: 1.878383
+  type: 'test'
+  ...
+# Subtest: signed principal and owned unit are required and replays cannot move twice
+ok 2 - signed principal and owned unit are required and replays cannot move twice
+  ---
+  duration_ms: 0.573945
+  type: 'test'
+  ...
+# Subtest: rival visibility is distance-limited; spectator cannot reveal other clan's units
+ok 3 - rival visibility is distance-limited; spectator cannot reveal other clan's units
+  ---
+  duration_ms: 0.427485
+  type: 'test'
+  ...
+# Subtest: server alone resolves damage; the client cannot attack without a valid visible target
+ok 4 - server alone resolves damage; the client cannot attack without a valid visible target
+  ---
+  duration_ms: 0.281204
+  type: 'test'
+  ...
+# Subtest: capture needs actual occupation through three distinct authoritative ticks
+ok 5 - capture needs actual occupation through three distinct authoritative ticks
+  ---
+  duration_ms: 0.623501
+  type: 'test'
+  ...
+# Subtest: blocked squares, illegal orders, occupied zones and out-of-range commands do not mutate the match
+ok 6 - blocked squares, illegal orders, occupied zones and out-of-range commands do not mutate the match
+  ---
+  duration_ms: 0.205831
+  type: 'test'
+  ...
+1..6
+# tests 6
+# suites 0
+# pass 6
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 10.411971

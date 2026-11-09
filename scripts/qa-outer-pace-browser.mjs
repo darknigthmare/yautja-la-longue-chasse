@@ -12,7 +12,7 @@ const site=rules.territories.find(t=>t.id!==base.baseId&&!api.warMissionEligible
 assert.ok(site);
 const started=api.beginWarOperationV115(base,"outer",site.id,[team.id],rules,Date.now());
 assert.equal(started.accepted,true,started.message);
-const storage="yautja.clan-war.v115.operations.free.v1",raw=JSON.stringify(started.state);
+const storage="yautja.clan-war.v115.operations.fenced.v2",raw=JSON.stringify(started.state);
 const server=await createServer({configFile:false,publicDir:false,define:{"process.env":"{}"},
  esbuild:{jsx:"automatic"},server:{host:"127.0.0.1",port:0},appType:"spa"});
 let browser;
@@ -36,7 +36,7 @@ try{
  await other.goto(`http://127.0.0.1:${address.port}/tests/browser/outer-pace.html`);
  await other.getByRole("button",{name:/^Marche forcée/}).waitFor();
  await other.evaluate(()=>{window.qaOuterLockHeld=false;void navigator.locks.request(
-  "yautja.clan-war.v115.operations.free.v1.write",()=>{window.qaOuterLockHeld=true;
+  "yautja.clan-war.v115.operations.fenced.v2.write",()=>{window.qaOuterLockHeld=true;
    return new Promise(resolve=>{window.qaReleaseOuterLock=resolve;});});});
  await other.waitForFunction(()=>window.qaOuterLockHeld===true);
  await button.click();
@@ -45,7 +45,7 @@ try{
   "a held lock must not spend RAV or mutate a paced order");
  await other.evaluate(()=>window.qaReleaseOuterLock());
  await other.waitForFunction(async()=>!(await navigator.locks.query()).held.some(
-  lock=>lock.name==="yautja.clan-war.v115.operations.free.v1.write"));
+  lock=>lock.name==="yautja.clan-war.v115.operations.fenced.v2.write"));
  await button.click();
  await page.waitForFunction(key=>{const s=localStorage.getItem(key);return s&&JSON.parse(s).outer[0]?.forcedPace;},storage);
  const saved=JSON.parse(await page.evaluate(key=>localStorage.getItem(key),storage));

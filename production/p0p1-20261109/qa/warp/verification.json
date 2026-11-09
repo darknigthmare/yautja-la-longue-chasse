@@ -1,0 +1,82 @@
+{
+  "schemaVersion": 1,
+  "asOf": "2026-11-09",
+  "baseCommit": "39b601ce1873a1f400d2f545f0fab97691b779e3",
+  "scope": "WARP P0 spatial pilot in isolated /dev memory plus source candidates for open image briefs",
+  "implementation": {
+    "module": "app/game/WarpModuleBay.tsx",
+    "domain": "app/game/systems/warpModuleBay.ts",
+    "entry": "/dev?lieu=warp-module",
+    "rooms": [
+      "bay",
+      "synchronization"
+    ],
+    "saveWrites": false,
+    "campaignUnlocks": false,
+    "rewardsGranted": false,
+    "newAssetsP0": [
+      200,
+      202
+    ],
+    "reusedOriginalAssets": [
+      199,
+      201,
+      203
+    ]
+  },
+  "tests": {
+    "command": [
+      "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+      "--experimental-strip-types",
+      "tests/warp-module-bay.test.mjs"
+    ],
+    "passed": 10,
+    "failed": 0,
+    "skipped": 0,
+    "report": "production/p0p1-20261109/qa/warp/tests.tap",
+    "scope": "Pure movement, collision and two-way spatial loop, proximity refusals, dry bench ordering, bounded clock, actual React SSR and original-asset byte identity. Not browser gameplay."
+  },
+  "lint": {
+    "command": [
+      "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+      "node_modules/eslint/bin/eslint.js",
+      "--max-warnings=0",
+      "app/game/WarpModuleBay.tsx",
+      "app/game/systems/warpModuleBay.ts",
+      "tests/warp-module-bay.test.mjs"
+    ],
+    "exitCode": 0,
+    "report": "production/p0p1-20261109/qa/warp/lint.txt"
+  },
+  "browser": {
+    "ownership": "root current production build",
+    "result": "See root receipt, not claimed by domain/SSR tests."
+  },
+  "newP1SourceCandidates": 17,
+  "allNewImages": 19,
+  "allSourceCandidatesIncludingReused": 22,
+  "openImageRequestsWithoutCandidate": [
+    97,
+    208,
+    209,
+    210
+  ],
+  "sourceSha256": {
+    "app/game/WarpModuleBay.tsx": "9809a3938b5c7f67db0e0340920a5f4bb6b594c244cf933d9988bfaf6c581230",
+    "app/game/WarpModuleBay.module.css": "e30ae6fb1dca1f9a1819dda0f35be2e969421248c2a028f2d6936c1969856c63",
+    "app/game/systems/warpModuleBay.ts": "329a14a555c29dd465438cdc37d5a8c553b869d73aa3d08682544c3ad1df4403",
+    "tests/warp-module-bay.test.mjs": "b6d183fb1e20868060104df6e6194bbe52a0740596026c8e26be8ccdbb5e4a29",
+    "public/game/warp-universe/20261109/manifest.json": "92d88a4ac0288a45263e669d9fd716e4826f39bc24acb2e7c736cac8e043891b"
+  },
+  "artisticValidated": false,
+  "physicalControllerValidated": false,
+  "campaignWarpImplemented": false,
+  "newAnimations": 0,
+  "remaining": [
+    "WARP-M030..M033 real campaign progression, inventory restoration, durable transit and return remain unimplemented; no new ranks or appointments are granted.",
+    "Source199 does not yet meet empty modular background requirement; no duplicate separate portal props are overlaid in this pilot.",
+    "097: no delivered image after two service output moderation failures; no incorrect caste reused.",
+    "208,209,210: primary scene/phase/vessel references still required.",
+    "17 P1 candidates are source-only and do not establish epoch gameplay, moving mechanism states, collisions, AI or film fidelity."
+  ]
+}

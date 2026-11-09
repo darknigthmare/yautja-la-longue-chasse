@@ -1,0 +1,196 @@
+{
+  "schemaVersion": 1,
+  "sourceKey": "Personnalisation et arsenal:T15",
+  "passed": true,
+  "qualification": "QUALIFIE_BORNE",
+  "scope": "60 minutes réelles et visibles sur le vrai Next/GameClient desktop, 77 matières admissibles à Alpha, 300 commits natifs, allocations GPU mesurées et bornées sur SwANGLE logiciel seulement. Le dépôt a depuis évolué sur cinq fichiers Guerre des clans, explicitement listés ; les sources PHG testées restent inchangées.",
+  "buildId": "RYl37_8hN58IOB8jDpRj1",
+  "realSeconds": 3600.0028699410004,
+  "visibleSeconds": 3600.003900000006,
+  "materialIds": 77,
+  "nativeCommits": 300,
+  "minimumSelectionsPerMaterial": 3,
+  "gpuMemoryDumps": 13,
+  "gpuBackend": "ANGLE Vulkan SwiftShader / SwANGLE software",
+  "gpuAllocatorGrowthBytes": -10797056,
+  "gpuProcessRssGrowthBytes": -9428992,
+  "screenshotsOpened": 9,
+  "plotOpened": true,
+  "physicalGpuOrVramQualified": false,
+  "sourceBeforeAfterEqual": true,
+  "buildBeforeAfterEqual": true,
+  "materialAssetsBeforeAfterEqual": true,
+  "traceCompressedWithoutChangingOriginalBytes": true,
+  "files": [
+    {
+      "path": "production/p0p1-20261109/qa/phg-endurance/attempt-1/report.browser-run.json",
+      "bytes": 1142613,
+      "sha256": "b4615d76609f4d1e173410ffcf38269b67dcd95b5c96f8b6dff9587ca0accf92"
+    },
+    {
+      "path": "production/p0p1-20261109/qa/phg-endurance/attempt-1/report.json",
+      "bytes": 1143839,
+      "sha256": "f39bfa03604909dbb7a213af947a2635197c82b5c28f201ff8a31640d14ce138"
+    },
+    {
+      "path": "production/p0p1-20261109/qa/phg-endurance/attempt-1/memory-analysis.json",
+      "bytes": 30478,
+      "sha256": "32f05db19ef168b7a82f022f2a8b47a60dfc1afa2e07ea135c12604e7dd75015"
+    },
+    {
+      "path": "production/p0p1-20261109/qa/phg-endurance/attempt-1/memory-trace.json.gz",
+      "bytes": 5775502,
+      "sha256": "8ae21a779986fea680573d6c40d8b75c4f155791005b917a36e7a73ce3568f93"
+    },
+    {
+      "path": "production/p0p1-20261109/qa/phg-endurance/attempt-1/gpu-counters.csv",
+      "bytes": 1532,
+      "sha256": "9860363cf2e86e69b38d927b7663dbf3f376425147109bb7385053441c82a146"
+    },
+    {
+      "path": "production/p0p1-20261109/qa/phg-endurance/attempt-1/native-metrics.csv",
+      "bytes": 4943,
+      "sha256": "be69fc4332647114bc28572f2913318cc4c67bfd621530eea2b7ad4565118ac2"
+    },
+    {
+      "path": "production/p0p1-20261109/qa/phg-endurance/attempt-1/memory-and-frame-time.png",
+      "bytes": 236713,
+      "sha256": "367a6543f097bc31b3605737a6a31d49b9de6f2e8e5bed2eae45cd9ef9d09368"
+    },
+    {
+      "path": "production/p0p1-20261109/qa/phg-endurance/attempt-1/memory-and-frame-time.svg",
+      "bytes": 93829,
+      "sha256": "1c1c77026fe37f2f763ce3d2bcc47afcc27e0c928e136ff04a01689c487e57d9"
+    },
+    {
+      "path": "production/p0p1-20261109/qa/phg-endurance/attempt-1/screenshot-inspection.json",
+      "bytes": 3153,
+      "sha256": "729cf9c3dcedf7010aa932749a3431410628dae9775084f5766a9fb8364ab592"
+    },
+    {
+      "path": "production/p0p1-20261109/qa/phg-endurance/attempt-1/recipe-used.mjs",
+      "bytes": 23046,
+      "sha256": "7aabaadbfdd234b15f424290b43c424c26b3663a3f77b04defd4631f1ed4cd6c"
+    },
+    {
+      "path": "production/p0p1-20261109/qa/phg-endurance/attempt-1/before-save.json",
+      "bytes": 7750,
+      "sha256": "2f6adcbf10aec03de920d7b687cbdb9e3e7902d66fec1bd13d6e4d9672ef0af4"
+    },
+    {
+      "path": "production/p0p1-20261109/qa/phg-endurance/attempt-1/after-save.json",
+      "bytes": 8227,
+      "sha256": "b62b6d1ca1f9a9317b812a156fb1af6f78d9d395584d961c6212251bd1cf2fa4"
+    },
+    {
+      "path": "production/p0p1-20261109/qa/phg-endurance/attempt-1/initial-fixture.json",
+      "bytes": 12193,
+      "sha256": "9f7e461afc93f5655daab0d7a314e7210a78af5d3efab97b6b2ca60aba175a09"
+    },
+    {
+      "path": "production/p0p1-20261109/qa/phg-endurance/attempt-1/native-options.json",
+      "bytes": 3255,
+      "sha256": "5b42b28ab098c828097ce26be38eb6e2e4f0ba838d5b3870d75ba702ebd2cd74"
+    },
+    {
+      "path": "production/p0p1-20261109/qa/phg-endurance/attempt-1/selections.ndjson",
+      "bytes": 84402,
+      "sha256": "c8cbf7a0248b2224b5e24e1ac940abf86573044faa2db1fa6e424bb70efdeff7"
+    },
+    {
+      "path": "production/p0p1-20261109/qa/phg-endurance/attempt-1/samples.ndjson",
+      "bytes": 178470,
+      "sha256": "109f0a5a399eaeecad118c857f5f79549143a173f8ba83fd16f701453c368e6f"
+    },
+    {
+      "path": "production/p0p1-20261109/qa/phg-endurance/analysis-plan.json",
+      "bytes": 1504,
+      "sha256": "7d0cebd09ada4001fcf260223fffdec6aaefce1404c492a10cd7efa5c37bd13d"
+    },
+    {
+      "path": "production/p0p1-20261109/qa/phg-endurance/runtime-copy-manifest.json",
+      "bytes": 285371,
+      "sha256": "dadf7d796cea4727335a4c31a707634f706c0b4958fdd8e6275dec21f0526c11"
+    },
+    {
+      "path": "production/p0p1-20261109/qa/phg-endurance/runtime-config-dependencies.json",
+      "bytes": 875,
+      "sha256": "7c196ed2c47f25166279c19f833776b7d78b8f0fbf44e63b040eb6214a925feb"
+    },
+    {
+      "path": "production/p0p1-20261109/qa/phg-endurance/source-criterion.json",
+      "bytes": 513,
+      "sha256": "e7b3743f9ed33c9cc1b03f39f3d20bb4cd9b7f7baca957376b95f5ee8bfaedc0"
+    },
+    {
+      "path": "production/p0p1-20261109/qa/phg-endurance/qualification-t15.json",
+      "bytes": 2494,
+      "sha256": "96018a2fd5230f7ea61e95aa019f9fd2b6f4323bbdbc3136a804e4c648fcb3a0"
+    },
+    {
+      "path": "production/p0p1-20261109/qa/phg-endurance/README.md",
+      "bytes": 5957,
+      "sha256": "3be4e6cf25d4fbd1450f3bd8006959b3b11835e44d12f16279b2510976c30e6f"
+    },
+    {
+      "path": "production/p0p1-20261109/qa/phg-endurance/analyze.py",
+      "bytes": 16124,
+      "sha256": "c8455401d2a18cd16023338de5f58bf437b483dab2ba688120ae54cf76536ec0"
+    },
+    {
+      "path": "production/p0p1-20261109/qa/phg-endurance/verify.py",
+      "bytes": 3370,
+      "sha256": "975bfaaaeac773f1f4dfa33f2f896ca8676d70d77c34e97e66219cd109407ab2"
+    },
+    {
+      "path": "scripts/qa-phg-endurance-p0p1-20261109.mjs",
+      "bytes": 23046,
+      "sha256": "7aabaadbfdd234b15f424290b43c424c26b3663a3f77b04defd4631f1ed4cd6c"
+    },
+    {
+      "path": "production/p0p1-20261109/qa/phg-endurance/attempt-1/00-viewport-start.png",
+      "bytes": 740858,
+      "sha256": "b06a332614d76cf4300f3161742d2a0dd1fb530caa4e11acf959f3e2c99ce96c"
+    },
+    {
+      "path": "production/p0p1-20261109/qa/phg-endurance/attempt-1/00-rig-start.png",
+      "bytes": 215047,
+      "sha256": "2b9167d33a5ab888602ceff86d345080adde620f1e4f5e2e66348a26df089047"
+    },
+    {
+      "path": "production/p0p1-20261109/qa/phg-endurance/attempt-1/rig-minute-10.png",
+      "bytes": 198386,
+      "sha256": "c96a7f7ad78ec9a8df7631e3aae629f7dd817f6ed476a2510f7814b2e099b15a"
+    },
+    {
+      "path": "production/p0p1-20261109/qa/phg-endurance/attempt-1/rig-minute-20.png",
+      "bytes": 202072,
+      "sha256": "8cc31a23644561fa15bde572a6c325a57aa06b51753d27cd2dadf0ca09157912"
+    },
+    {
+      "path": "production/p0p1-20261109/qa/phg-endurance/attempt-1/rig-minute-30.png",
+      "bytes": 198822,
+      "sha256": "c5f75bce39ad4a3a19ec9193cf510c10157f5bd32c16f0b2ced2f8398fa79205"
+    },
+    {
+      "path": "production/p0p1-20261109/qa/phg-endurance/attempt-1/rig-minute-40.png",
+      "bytes": 198150,
+      "sha256": "e399e9c8081e45d917b2375e000f37be34088ecd6539fbcdc6215d0f142ce577"
+    },
+    {
+      "path": "production/p0p1-20261109/qa/phg-endurance/attempt-1/rig-minute-50.png",
+      "bytes": 200420,
+      "sha256": "6c32c6ca8f8fd2e0c5cae793d559f4c8d4f83ff3c3426b770357911aff83bcf0"
+    },
+    {
+      "path": "production/p0p1-20261109/qa/phg-endurance/attempt-1/99-rig-end.png",
+      "bytes": 200088,
+      "sha256": "b111df28d3e50cc82573a7de5181c48ad9993c8a35a76f5f78ca9106bda3b376"
+    },
+    {
+      "path": "production/p0p1-20261109/qa/phg-endurance/attempt-1/99-viewport-end.png",
+      "bytes": 723716,
+      "sha256": "fd999d7665704311de9a17f7b22e94ce6311245b9b8af1390056d6ff61e2cb55"
+    }
+  ]
+}

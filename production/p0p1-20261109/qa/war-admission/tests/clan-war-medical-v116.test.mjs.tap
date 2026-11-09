@@ -1,0 +1,34 @@
+TAP version 13
+# Subtest: wounded exercise members cannot heal without a recruited source W3-U18 medic
+ok 1 - wounded exercise members cannot heal without a recruited source W3-U18 medic
+  ---
+  duration_ms: 3.148348
+  type: 'test'
+  ...
+# Subtest: care reserves the real patient team and paid medic; due date is not immediate
+ok 2 - care reserves the real patient team and paid medic; due date is not immediate
+  ---
+  duration_ms: 1.174231
+  type: 'test'
+  ...
+# Subtest: abort does not refund supplies or invent recovery, and never harms another team
+ok 3 - abort does not refund supplies or invent recovery, and never harms another team
+  ---
+  duration_ms: 0.420695
+  type: 'test'
+  ...
+# Subtest: corrupt care archives and forged early recovery dates preserve the archive
+ok 4 - corrupt care archives and forged early recovery dates preserve the archive
+  ---
+  duration_ms: 1.674024
+  type: 'test'
+  ...
+1..4
+# tests 4
+# suites 0
+# pass 4
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 12.889547

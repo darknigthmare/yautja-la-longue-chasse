@@ -1,0 +1,2219 @@
+[
+  {
+    "path": "app/game/systems/clanWarOperationsV115.ts",
+    "sha256": "159fd3ad1b06646705b8d1978d24bfd449c34c0d78b11ab8f875f24c0724d905",
+    "symbols": [
+      {
+        "symbol": "WAR_OPERATIONS_STORAGE_V115",
+        "line": 24
+      },
+      {
+        "symbol": "WarMissionModeV115",
+        "line": 25
+      },
+      {
+        "symbol": "WarMissionOutcomeV115",
+        "line": 26
+      },
+      {
+        "symbol": "OuterFocusV115",
+        "line": 27
+      },
+      {
+        "symbol": "WarMissionActorV115",
+        "line": 29
+      },
+      {
+        "symbol": "WarRtsActorV115",
+        "line": 30
+      },
+      {
+        "symbol": "WarAssaultV115",
+        "line": 31
+      },
+      {
+        "symbol": "WarStealthV115",
+        "line": 55
+      },
+      {
+        "symbol": "WarRtsOrderV115",
+        "line": 74
+      },
+      {
+        "symbol": "WarRtsV115",
+        "line": 75
+      },
+      {
+        "symbol": "WarPlayableMissionV115",
+        "line": 81
+      },
+      {
+        "symbol": "WarOuterMissionV115",
+        "line": 85
+      },
+      {
+        "symbol": "WarMissionReportV115",
+        "line": 110
+      },
+      {
+        "symbol": "WarRecruitmentV115",
+        "line": 116
+      },
+      {
+        "symbol": "WarTreatmentV116",
+        "line": 123
+      },
+      {
+        "symbol": "WarOperationsStateV115",
+        "line": 127
+      },
+      {
+        "symbol": "WarOperationsUpdateV115",
+        "line": 137
+      },
+      {
+        "symbol": "createWarOperationsV115",
+        "line": 167
+      },
+      {
+        "symbol": "queueWarRecruitmentV115",
+        "line": 181
+      },
+      {
+        "symbol": "settleWarRecruitmentsV115",
+        "line": 203
+      },
+      {
+        "symbol": "queueWarTreatmentV116",
+        "line": 221
+      },
+      {
+        "symbol": "settleWarTreatmentsV116",
+        "line": 251
+      },
+      {
+        "symbol": "cancelWarTreatmentV116",
+        "line": 280
+      },
+      {
+        "symbol": "warMissionEligibleV115",
+        "line": 292
+      },
+      {
+        "symbol": "beginWarOperationV115",
+        "line": 313
+      },
+      {
+        "symbol": "leaveWarOperationV115",
+        "line": 426
+      },
+      {
+        "symbol": "deployAssaultUnitV115",
+        "line": 432
+      },
+      {
+        "symbol": "upgradeWarAssaultApV117",
+        "line": 444
+      },
+      {
+        "symbol": "issueWarAssaultSpecialV117",
+        "line": 458
+      },
+      {
+        "symbol": "WarAssaultWaveProfileV140",
+        "line": 487
+      },
+      {
+        "symbol": "warAssaultWaveProfileV140",
+        "line": 490
+      },
+      {
+        "symbol": "stepAssaultV115",
+        "line": 517
+      },
+      {
+        "symbol": "StealthCommandV115",
+        "line": 570
+      },
+      {
+        "symbol": "commandStealthV115",
+        "line": 571
+      },
+      {
+        "symbol": "commandRtsV115",
+        "line": 794
+      },
+      {
+        "symbol": "holdWarRtsAlternatingV119",
+        "line": 824
+      },
+      {
+        "symbol": "WAR_RTS_COVER_V115",
+        "line": 839
+      },
+      {
+        "symbol": "toggleWarRtsRealtimeV115",
+        "line": 841
+      },
+      {
+        "symbol": "issueWarRtsRealtimeOrderV115",
+        "line": 848
+      },
+      {
+        "symbol": "stepWarRtsRealtimeV115",
+        "line": 867
+      },
+      {
+        "symbol": "WarOuterResolutionV115",
+        "line": 942
+      },
+      {
+        "symbol": "simulateWarOuterMissionV115",
+        "line": 946
+      },
+      {
+        "symbol": "recallWarOuterMissionV116",
+        "line": 1025
+      },
+      {
+        "symbol": "settleWarOuterOpsV115",
+        "line": 1045
+      },
+      {
+        "symbol": "settleWarDueEventsV151",
+        "line": 1079
+      },
+      {
+        "symbol": "warOuterSecondsRemainingV115",
+        "line": 1105
+      },
+      {
+        "symbol": "readWarOperationsV115",
+        "line": 1108
+      }
+    ]
+  },
+  {
+    "path": "app/game/systems/clanWarFocusV142.ts",
+    "sha256": "80727be7457337bfa240a8751cadf20df967f5bc9887b5c53ae463db66737caa",
+    "symbols": [
+      {
+        "symbol": "issueWarAssaultFocusV142",
+        "line": 9
+      }
+    ]
+  },
+  {
+    "path": "app/game/systems/clanWarAssaultContactV141.ts",
+    "sha256": "28c5b44a3851d66e9626ab8ad7060672ff8dff7d932bbca598916eb29acb1fbd",
+    "symbols": [
+      {
+        "symbol": "WarAssaultContactV141",
+        "line": 8
+      },
+      {
+        "symbol": "warAssaultContactV141",
+        "line": 18
+      }
+    ]
+  },
+  {
+    "path": "app/game/systems/clanWarBraceV143.ts",
+    "sha256": "c55337aef114d11dd0a00376b019dbdd4ce12b1ccdb46571d62dd8e28be555cd",
+    "symbols": [
+      {
+        "symbol": "commandWarAssaultBraceV143",
+        "line": 9
+      }
+    ]
+  },
+  {
+    "path": "app/game/systems/clanWarBaseScreenV144.ts",
+    "sha256": "7b85a1ac98d6fadf56bb17b1257f4376888fa33d347a3f1c8ed6faf5f5df5093",
+    "symbols": [
+      {
+        "symbol": "commandWarAssaultBaseScreenV144",
+        "line": 7
+      }
+    ]
+  },
+  {
+    "path": "app/game/systems/clanWarOpenBacklogV140.ts",
+    "sha256": "f467e704396734bb025ebba85c900e31cd46c057f30ad0a5ccecbebe435b248b",
+    "symbols": [
+      {
+        "symbol": "WarAssaultWaveV140",
+        "line": 9
+      },
+      {
+        "symbol": "planWarAssaultWavesV140",
+        "line": 14
+      },
+      {
+        "symbol": "WarOuterIncidentV140",
+        "line": 50
+      },
+      {
+        "symbol": "planWarOuterIncidentsV140",
+        "line": 53
+      }
+    ]
+  },
+  {
+    "path": "app/game/systems/clanWarRegroupV144.ts",
+    "sha256": "f5096d1df4a0e2398205a15a03dcef75bceaddf1f9b0871abc01fdb13189d4ff",
+    "symbols": [
+      {
+        "symbol": "commandWarAssaultRegroupV144",
+        "line": 8
+      }
+    ]
+  },
+  {
+    "path": "app/game/systems/clanWarAssaultRegroupV144.ts",
+    "sha256": "97336107ff69d0432b2727ade91e5243bc7265b1037333fbf29f2471d727c288",
+    "symbols": [
+      {
+        "symbol": "regroupWarAssaultV144",
+        "line": 9
+      }
+    ]
+  },
+  {
+    "path": "app/game/systems/clanWarInterposeV145.ts",
+    "sha256": "68122d891231f1ce726c216996a51478bc2a6a95cb2caf925f5fdf2b72b7b4bb",
+    "symbols": [
+      {
+        "symbol": "commandWarAssaultInterposeV145",
+        "line": 8
+      }
+    ]
+  },
+  {
+    "path": "app/game/systems/clanWarBibleV6.ts",
+    "sha256": "66de0c9d66d9f9fffa65fd1037b9f1b428cdbe7545211c08a9afe77162833dab",
+    "symbols": [
+      {
+        "symbol": "WarWorkbookV6",
+        "line": 5
+      },
+      {
+        "symbol": "WAR_BIBLE_V6",
+        "line": 6
+      },
+      {
+        "symbol": "WAR_BIBLE_ENTRIES_V6",
+        "line": 7
+      },
+      {
+        "symbol": "WAR_BIBLE_SECTIONS_V6",
+        "line": 8
+      },
+      {
+        "symbol": "WAR_PARAMETERS_V6",
+        "line": 11
+      },
+      {
+        "symbol": "WarUnitDefinitionV6",
+        "line": 12
+      },
+      {
+        "symbol": "WAR_UNITS_V6",
+        "line": 20
+      },
+      {
+        "symbol": "WarSpecializationV6",
+        "line": 21
+      },
+      {
+        "symbol": "WAR_SPECIALIZATIONS_V6",
+        "line": 23
+      },
+      {
+        "symbol": "WarTeamHypothesisV6",
+        "line": 24
+      },
+      {
+        "symbol": "estimateWarTeamV6",
+        "line": 25
+      },
+      {
+        "symbol": "warTeamTierV6",
+        "line": 44
+      },
+      {
+        "symbol": "WarPersonV6",
+        "line": 45
+      },
+      {
+        "symbol": "WarTeamStateV6",
+        "line": 46
+      },
+      {
+        "symbol": "WarResultReceiptV6",
+        "line": 47
+      },
+      {
+        "symbol": "createWarTeamV6",
+        "line": 48
+      },
+      {
+        "symbol": "warTeamExperienceV6",
+        "line": 53
+      },
+      {
+        "symbol": "applyWarResultV6",
+        "line": 58
+      },
+      {
+        "symbol": "selectWarSpecializationV6",
+        "line": 67
+      },
+      {
+        "symbol": "WarTerritoryV6",
+        "line": 72
+      },
+      {
+        "symbol": "WAR_TERRITORIES_V6",
+        "line": 74
+      },
+      {
+        "symbol": "WarPassageV6",
+        "line": 75
+      },
+      {
+        "symbol": "WAR_PASSAGES_V6",
+        "line": 77
+      },
+      {
+        "symbol": "WarRulesV6",
+        "line": 78
+      },
+      {
+        "symbol": "createWarRulesV6",
+        "line": 89
+      },
+      {
+        "symbol": "DEFAULT_WAR_RULES_V6",
+        "line": 98
+      },
+      {
+        "symbol": "WAR_PRIVATE_IMPORT_MAX_BYTES_V6",
+        "line": 99
+      },
+      {
+        "symbol": "WAR_BIBLE_SOURCE_SHA_V6",
+        "line": 100
+      },
+      {
+        "symbol": "parsePrivateWarRulesV6",
+        "line": 109
+      },
+      {
+        "symbol": "planWarRouteV6",
+        "line": 167
+      }
+    ]
+  },
+  {
+    "path": "app/game/systems/clanWarWorksV6.ts",
+    "sha256": "6570904149af46580e72ca42f9820c0ac2e79b63985b4799def43cb33123cf88",
+    "symbols": [
+      {
+        "symbol": "WarWorkDefinitionV6",
+        "line": 12
+      },
+      {
+        "symbol": "warWorksDefinitionsV6",
+        "line": 24
+      },
+      {
+        "symbol": "WarWorksTeamV6",
+        "line": 52
+      },
+      {
+        "symbol": "WarWorkOrderV6",
+        "line": 56
+      },
+      {
+        "symbol": "WarRecruitOrderV6",
+        "line": 61
+      },
+      {
+        "symbol": "WarRavLotV87",
+        "line": 65
+      },
+      {
+        "symbol": "WarRavTransferV87",
+        "line": 70
+      },
+      {
+        "symbol": "WarPatientV88",
+        "line": 75
+      },
+      {
+        "symbol": "WarExtractionV88",
+        "line": 81
+      },
+      {
+        "symbol": "WarInfrastructureV88",
+        "line": 85
+      },
+      {
+        "symbol": "WarTerrainProfileV89",
+        "line": 95
+      },
+      {
+        "symbol": "WarTerrainTargetV89",
+        "line": 96
+      },
+      {
+        "symbol": "WarBridgeTransitV89",
+        "line": 97
+      },
+      {
+        "symbol": "WarTerrainV89",
+        "line": 104
+      },
+      {
+        "symbol": "WarWorksSessionV6",
+        "line": 114
+      },
+      {
+        "symbol": "WarWorksActionV6",
+        "line": 137
+      },
+      {
+        "symbol": "WarWorksTransitionV6",
+        "line": 167
+      },
+      {
+        "symbol": "WAR_RAV_CARRIER_LIMIT_V87",
+        "line": 173
+      },
+      {
+        "symbol": "warWorksDepotV87",
+        "line": 174
+      },
+      {
+        "symbol": "warWorksCarriedRavV87",
+        "line": 175
+      },
+      {
+        "symbol": "warWorksCacheRavV87",
+        "line": 176
+      },
+      {
+        "symbol": "warWorksGuardV88",
+        "line": 179
+      },
+      {
+        "symbol": "warKitSiteV88",
+        "line": 188
+      },
+      {
+        "symbol": "warBridgeActiveV89",
+        "line": 206
+      },
+      {
+        "symbol": "warBridgeMemberSiteV89",
+        "line": 207
+      },
+      {
+        "symbol": "WAR_TERRAIN_GEOMETRY_V89",
+        "line": 213
+      },
+      {
+        "symbol": "warTerrainRayBlockedV89",
+        "line": 220
+      },
+      {
+        "symbol": "evaluateWarTerrainV89",
+        "line": 241
+      },
+      {
+        "symbol": "warExtractionAvailableV88",
+        "line": 262
+      },
+      {
+        "symbol": "warWorksSupplyPreviewV87",
+        "line": 323
+      },
+      {
+        "symbol": "warWorksCommandPointsV6",
+        "line": 330
+      },
+      {
+        "symbol": "warWorksUpkeepV6",
+        "line": 333
+      },
+      {
+        "symbol": "createWarWorksV6",
+        "line": 339
+      },
+      {
+        "symbol": "createWarWorksRegionalV90",
+        "line": 353
+      },
+      {
+        "symbol": "applyWarWorksV6",
+        "line": 748
+      },
+      {
+        "symbol": "warWorkOccupiedV6",
+        "line": 1158
+      },
+      {
+        "symbol": "estimateWarWorksTeamV6",
+        "line": 1163
+      },
+      {
+        "symbol": "exportWarWorksV87",
+        "line": 1177
+      },
+      {
+        "symbol": "importWarWorksV87",
+        "line": 1182
+      }
+    ]
+  },
+  {
+    "path": "app/game/systems/clanWarOuterChoicesV142.ts",
+    "sha256": "353dc15a3c5955a9aab23e3f3fb5a37da6472ae5fd7dadad34ebcce9bfcb10cb",
+    "symbols": [
+      {
+        "symbol": "WarOuterRouteChoiceV142",
+        "line": 6
+      },
+      {
+        "symbol": "warOuterRouteChoicesV142",
+        "line": 10
+      },
+      {
+        "symbol": "warOuterRouteIsAuthorizedV142",
+        "line": 42
+      }
+    ]
+  },
+  {
+    "path": "app/game/systems/clanWarOuterRerouteV144.ts",
+    "sha256": "2387004179b82d2f129f2dc8351eb8bb8a75ae7519941335a6e40e95f82f9237",
+    "symbols": [
+      {
+        "symbol": "commandWarOuterRerouteV144",
+        "line": 9
+      }
+    ]
+  },
+  {
+    "path": "app/game/systems/clanWarOperationsArchive.ts",
+    "sha256": "d0583368ba5bdf306ae671f9a25f50230e8ff28241eb3eb3f73084af633def99",
+    "symbols": [
+      {
+        "symbol": "WarOperationsArchiveBaseline",
+        "line": 6
+      },
+      {
+        "symbol": "WarOperationsArchiveRead",
+        "line": 10
+      },
+      {
+        "symbol": "WarOperationsArchiveWrite",
+        "line": 15
+      },
+      {
+        "symbol": "readWarOperationsArchive",
+        "line": 31
+      },
+      {
+        "symbol": "writeWarOperationsArchive",
+        "line": 77
+      },
+      {
+        "symbol": "repairWarOperationsArchive",
+        "line": 93
+      }
+    ]
+  },
+  {
+    "path": "app/game/systems/clanWarOuterWeightedProgressV141.ts",
+    "sha256": "f515d116839e1619147458e70ee185ff2d748e62f4412f77c1afa32938dcfb34",
+    "symbols": [
+      {
+        "symbol": "WarOuterProgressV141",
+        "line": 8
+      },
+      {
+        "symbol": "warOuterWeightedProgressV141",
+        "line": 42
+      }
+    ]
+  },
+  {
+    "path": "app/game/systems/clanWarOuterRouteProgressV140.ts",
+    "sha256": "8fcb1b0a8986825e1c7060f1bec0e7f8046e7585038bdc2c0d31df035e5fd4c2",
+    "symbols": [
+      {
+        "symbol": "WarOuterRouteProgressV140",
+        "line": 6
+      },
+      {
+        "symbol": "warOuterRouteProgressV140",
+        "line": 47
+      }
+    ]
+  },
+  {
+    "path": "app/game/systems/clanWarOuterIncidentV143.ts",
+    "sha256": "bebf471fa164dd7f3810d543a5229ade50acfb2d084cf3e085fe3aaa502aed19",
+    "symbols": [
+      {
+        "symbol": "WarOuterIncidentVisibleV143",
+        "line": 8
+      },
+      {
+        "symbol": "WarOuterIncidentDecisionV143",
+        "line": 12
+      },
+      {
+        "symbol": "warOuterIncidentV143",
+        "line": 14
+      },
+      {
+        "symbol": "commandWarOuterIncidentV143",
+        "line": 34
+      }
+    ]
+  },
+  {
+    "path": "app/game/systems/clanWarOuterPaceV144.ts",
+    "sha256": "882bcfcedf18c93f40de431e960598051bcdfe09a6e98b621a7bdc73903a6f59",
+    "symbols": [
+      {
+        "symbol": "commandWarOuterPaceV144",
+        "line": 9
+      }
+    ]
+  },
+  {
+    "path": "app/game/systems/clanWarOuterInspectionV144.ts",
+    "sha256": "97e898ce1947c6abf8b1879b729c12dbee283dacb59af81c85d7d34677b3a198",
+    "symbols": [
+      {
+        "symbol": "inspectWarOuterPassageV144",
+        "line": 12
+      }
+    ]
+  },
+  {
+    "path": "app/game/systems/clanWarTravelLedgerV145.ts",
+    "sha256": "218d1007d6c17743fd5be8cd7e82068f89473d9c8e7e7e1e304d4a7c37b39e4b",
+    "symbols": [
+      {
+        "symbol": "warOuterTravelLedgerV145",
+        "line": 8
+      }
+    ]
+  },
+  {
+    "path": "app/game/systems/clanWarDebriefV144.ts",
+    "sha256": "67d24b3597e45acb0c87d429408f9576f54390f50b40be813c2635f05a7d0b2c",
+    "symbols": [
+      {
+        "symbol": "WarDebriefV144",
+        "line": 11
+      },
+      {
+        "symbol": "WarDebriefAuditV144",
+        "line": 34
+      },
+      {
+        "symbol": "auditWarOperationsDebriefsV144",
+        "line": 60
+      },
+      {
+        "symbol": "auditWarRtsDebriefV144",
+        "line": 91
+      },
+      {
+        "symbol": "collectWarDebriefsV144",
+        "line": 141
+      }
+    ]
+  },
+  {
+    "path": "app/game/systems/clanWarMedicalV92.ts",
+    "sha256": "cc5ef8df8e9584a67082bfa7b31f5b966a55a13626a6cf91b7ddb436e3c87f54",
+    "symbols": [
+      {
+        "symbol": "WAR_MEDICAL_BALANCE_V92",
+        "line": 6
+      },
+      {
+        "symbol": "WarMedicalTreatmentV92",
+        "line": 7
+      },
+      {
+        "symbol": "WarMedicalV92",
+        "line": 11
+      },
+      {
+        "symbol": "WarMedicalActionV92",
+        "line": 16
+      },
+      {
+        "symbol": "warMedicalRulesKeyV92",
+        "line": 22
+      },
+      {
+        "symbol": "warMedicalAvailableV92",
+        "line": 24
+      },
+      {
+        "symbol": "warMedicalTeamLockedV92",
+        "line": 32
+      },
+      {
+        "symbol": "warMedicalPatientLockedV92",
+        "line": 33
+      },
+      {
+        "symbol": "warMedicalStockV92",
+        "line": 34
+      },
+      {
+        "symbol": "validWarMedicalV92",
+        "line": 41
+      },
+      {
+        "symbol": "applyWarMedicalV92",
+        "line": 109
+      }
+    ]
+  },
+  {
+    "path": "app/game/systems/clanWarConvoyRouteV105.ts",
+    "sha256": "68ff12a17b74e5859aaa51a9a75872041bb4abf5c9f4d4b70d2c63fa57fd7b03",
+    "symbols": [
+      {
+        "symbol": "WAR_CONVOY_ROUTE_CONTRACT_V105",
+        "line": 4
+      },
+      {
+        "symbol": "WarConvoyDraftV105",
+        "line": 12
+      },
+      {
+        "symbol": "warConvoyPathV105",
+        "line": 17
+      },
+      {
+        "symbol": "warConvoyLegDraftV105",
+        "line": 34
+      },
+      {
+        "symbol": "warConvoyRouteIssueV105",
+        "line": 40
+      },
+      {
+        "symbol": "planWarConvoyV105",
+        "line": 55
+      },
+      {
+        "symbol": "queueWarConvoyLegV105",
+        "line": 67
+      },
+      {
+        "symbol": "removeWarConvoyV105",
+        "line": 83
+      },
+      {
+        "symbol": "WAR_FRONT_ARCHIVE_FORMAT_V105",
+        "line": 90
+      },
+      {
+        "symbol": "exportWarFrontV105",
+        "line": 92
+      },
+      {
+        "symbol": "readWarFrontV105",
+        "line": 98
+      }
+    ]
+  },
+  {
+    "path": "app/game/systems/clanWarMissionTerrainV116.ts",
+    "sha256": "a130f1526fdb01f3a423fd6bc9fefdbbbaff8de7898413cf3af83b38a55b12b7",
+    "symbols": [
+      {
+        "symbol": "WarMissionTerrainV116",
+        "line": 8
+      },
+      {
+        "symbol": "warMissionTerrainV116",
+        "line": 76
+      },
+      {
+        "symbol": "warTerrainCellBlockedV116",
+        "line": 102
+      },
+      {
+        "symbol": "warTerrainPathLengthV116",
+        "line": 106
+      },
+      {
+        "symbol": "warTerrainLineOfSightV116",
+        "line": 130
+      }
+    ]
+  },
+  {
+    "path": "app/game/systems/clanWarStealthPathV142.ts",
+    "sha256": "b7c895111caf3f959ae1d1268177de210d71e5d00de700e2c7d884f362049315",
+    "symbols": [
+      {
+        "symbol": "WarStealthGoalV142",
+        "line": 7
+      },
+      {
+        "symbol": "WarStealthStepV142",
+        "line": 8
+      },
+      {
+        "symbol": "planWarStealthStepV142",
+        "line": 18
+      },
+      {
+        "symbol": "commandWarStealthStepV142",
+        "line": 43
+      }
+    ]
+  },
+  {
+    "path": "app/game/systems/clanWarStealthPatrolV140.ts",
+    "sha256": "0c0f61b8d5c0bbdf06755e5d16bf8fba43eb4c0427e0716d42b61dc5bdd98ca8",
+    "symbols": [
+      {
+        "symbol": "WarStealthPatrolPositionV140",
+        "line": 5
+      },
+      {
+        "symbol": "warStealthPatrolSpawnV140",
+        "line": 8
+      },
+      {
+        "symbol": "warStealthPatrolStepV140",
+        "line": 23
+      }
+    ]
+  },
+  {
+    "path": "app/game/systems/clanWarStealthGuardPlacement.ts",
+    "sha256": "8a80a64f6367d49ad48d2a3803c24a50166efcab67955d2613101b7b998c8946",
+    "symbols": [
+      {
+        "symbol": "chooseStealthSupportGuard",
+        "line": 4
+      }
+    ]
+  },
+  {
+    "path": "app/game/systems/clanWarStealthReinforcementV144.ts",
+    "sha256": "7f1157a3f1c36864b9371fb66b7d5139729755277397b08746cba3e986114569",
+    "symbols": [
+      {
+        "symbol": "setStealthReinforcementMode",
+        "line": 8
+      },
+      {
+        "symbol": "commandWarStealthAlertReinforcementV144",
+        "line": 24
+      },
+      {
+        "symbol": "warStealthReinforcementV144",
+        "line": 57
+      },
+      {
+        "symbol": "warStealthSecondGuardStepV144",
+        "line": 76
+      }
+    ]
+  },
+  {
+    "path": "app/game/systems/clanWarStealthDecoyV141.ts",
+    "sha256": "fc362f5f296989ab0c7d83f8c18fc0880d38f910ab5ba4c42732e9aa6729f969",
+    "symbols": [
+      {
+        "symbol": "WarStealthDecoyPointV141",
+        "line": 8
+      },
+      {
+        "symbol": "warStealthDecoyPatrolV141",
+        "line": 15
+      }
+    ]
+  },
+  {
+    "path": "app/game/systems/clanWarStealthDashV143.ts",
+    "sha256": "96b9383909239fb701b46148208495d1e067ab46da98e6f24329b6e473ecc524",
+    "symbols": [
+      {
+        "symbol": "WarStealthDashDirectionV143",
+        "line": 6
+      },
+      {
+        "symbol": "commandWarStealthDashV143",
+        "line": 13
+      }
+    ]
+  },
+  {
+    "path": "app/game/systems/clanWarSourceMapsV128.ts",
+    "sha256": "1d3156b9ea7e876a099a7d418cf688b191cd3a1ea0525c8785839cb0872c40b9",
+    "symbols": [
+      {
+        "symbol": "WarTileKindV128",
+        "line": 9
+      },
+      {
+        "symbol": "WarMissionMapActionV128",
+        "line": 10
+      },
+      {
+        "symbol": "WarMissionMapOutcomeV128",
+        "line": 11
+      },
+      {
+        "symbol": "WarMapPointV128",
+        "line": 12
+      },
+      {
+        "symbol": "WarMapLandmarkV128",
+        "line": 13
+      },
+      {
+        "symbol": "WarMapTileV128",
+        "line": 18
+      },
+      {
+        "symbol": "WarSourceMapV128",
+        "line": 23
+      },
+      {
+        "symbol": "WarMapActorV128",
+        "line": 38
+      },
+      {
+        "symbol": "WarMapPlayerV128",
+        "line": 42
+      },
+      {
+        "symbol": "WarMapReportV128",
+        "line": 45
+      },
+      {
+        "symbol": "WarMapPracticeV128",
+        "line": 50
+      },
+      {
+        "symbol": "WarMapUpdateV128",
+        "line": 56
+      },
+      {
+        "symbol": "createWarSourceMapV128",
+        "line": 140
+      },
+      {
+        "symbol": "warMapTileV128",
+        "line": 234
+      },
+      {
+        "symbol": "warMapWalkableV128",
+        "line": 238
+      },
+      {
+        "symbol": "warMapFindPathV128",
+        "line": 243
+      },
+      {
+        "symbol": "warMapLineOfSightV128",
+        "line": 263
+      },
+      {
+        "symbol": "createWarMapPracticeV128",
+        "line": 294
+      },
+      {
+        "symbol": "commandWarMapPracticeV128",
+        "line": 343
+      },
+      {
+        "symbol": "auditWarSourceMapsV128",
+        "line": 423
+      }
+    ]
+  },
+  {
+    "path": "app/game/systems/clanWarRtsSquadsV133.ts",
+    "sha256": "7bf0ab64357998b03548642cc82fe091ee280c0423718fed565e03df025d9f66",
+    "symbols": [
+      {
+        "symbol": "WarRtsSquadsPhaseV133",
+        "line": 18
+      },
+      {
+        "symbol": "WarRtsSquadV133",
+        "line": 19
+      },
+      {
+        "symbol": "WarRtsEscortV133",
+        "line": 25
+      },
+      {
+        "symbol": "WarRtsIntelV133",
+        "line": 29
+      },
+      {
+        "symbol": "WarRtsHoldV133",
+        "line": 30
+      },
+      {
+        "symbol": "WarRtsOverwatchV136",
+        "line": 31
+      },
+      {
+        "symbol": "WarRtsBraceV137",
+        "line": 32
+      },
+      {
+        "symbol": "WarRtsTriageV138",
+        "line": 33
+      },
+      {
+        "symbol": "WarRtsSquadsReceiptV133",
+        "line": 36
+      },
+      {
+        "symbol": "WarRtsSquadsStateV133",
+        "line": 43
+      },
+      {
+        "symbol": "WarRtsSquadOrderV133",
+        "line": 65
+      },
+      {
+        "symbol": "WarRtsSquadsUpdateV133",
+        "line": 69
+      },
+      {
+        "symbol": "createWarRtsSquadsV133",
+        "line": 108
+      },
+      {
+        "symbol": "draftWarRtsSquadV133",
+        "line": 138
+      },
+      {
+        "symbol": "removeWarRtsSquadV133",
+        "line": 148
+      },
+      {
+        "symbol": "launchWarRtsSquadsV133",
+        "line": 155
+      },
+      {
+        "symbol": "visibleWarRtsEnemiesV133",
+        "line": 170
+      },
+      {
+        "symbol": "warRtsEnvironmentalWindowV140",
+        "line": 181
+      },
+      {
+        "symbol": "commandWarRtsSquadsV133",
+        "line": 349
+      },
+      {
+        "symbol": "evacuateWarRtsSquadV139",
+        "line": 447
+      },
+      {
+        "symbol": "commandWarRtsSwapV144",
+        "line": 474
+      },
+      {
+        "symbol": "commandWarRtsReliefV144",
+        "line": 510
+      },
+      {
+        "symbol": "commandWarRtsMedicV138",
+        "line": 540
+      },
+      {
+        "symbol": "commandWarRtsBraceV137",
+        "line": 576
+      },
+      {
+        "symbol": "commandWarRtsOverwatchV136",
+        "line": 601
+      },
+      {
+        "symbol": "commandWarRtsPostHandoverV145",
+        "line": 622
+      },
+      {
+        "symbol": "commandWarRtsCrossfireV144",
+        "line": 651
+      },
+      {
+        "symbol": "commandWarRtsSuppressV135",
+        "line": 684
+      },
+      {
+        "symbol": "WarRtsRallyStepV134",
+        "line": 711
+      },
+      {
+        "symbol": "WarRtsRallyPlanV134",
+        "line": 714
+      },
+      {
+        "symbol": "planWarRtsRallyV134",
+        "line": 719
+      },
+      {
+        "symbol": "commandWarRtsRallyV134",
+        "line": 794
+      },
+      {
+        "symbol": "planWarRtsTrafficV140",
+        "line": 825
+      },
+      {
+        "symbol": "commandWarRtsTrafficV140",
+        "line": 895
+      },
+      {
+        "symbol": "auditWarRtsSquadsV133",
+        "line": 923
+      }
+    ]
+  },
+  {
+    "path": "app/game/ClanWarRtsSquadsV133.tsx",
+    "sha256": "93f478c8c2a18722d65fbce93382864056c6d2fe633704680f76155aac3c727f",
+    "symbols": [
+      {
+        "symbol": "ClanWarRtsSquadsV133",
+        "line": 30
+      }
+    ]
+  },
+  {
+    "path": "app/game/systems/clanWarRtsSourceMissionsV129.ts",
+    "sha256": "2d13a421a514fa2d754e3323ed48e4a726273d81ab3ba2862d89bc9d433b58d5",
+    "symbols": [
+      {
+        "symbol": "WarRtsMissionIdV129",
+        "line": 18
+      },
+      {
+        "symbol": "WarRtsStepKindV129",
+        "line": 23
+      },
+      {
+        "symbol": "WarRtsEscortKindV129",
+        "line": 26
+      },
+      {
+        "symbol": "WarRtsTaskSpecV129",
+        "line": 27
+      },
+      {
+        "symbol": "WAR_SOURCE_RTS_IDS_V129",
+        "line": 197
+      },
+      {
+        "symbol": "WarRtsTaskV129",
+        "line": 206
+      },
+      {
+        "symbol": "WarRtsMissionV129",
+        "line": 210
+      },
+      {
+        "symbol": "WarRtsTrackedEntityV129",
+        "line": 224
+      },
+      {
+        "symbol": "WarRtsMissionStateV129",
+        "line": 229
+      },
+      {
+        "symbol": "WarRtsMissionUpdateV129",
+        "line": 235
+      },
+      {
+        "symbol": "buildWarRtsMissionV129",
+        "line": 247
+      },
+      {
+        "symbol": "createWarRtsMissionStateV129",
+        "line": 318
+      },
+      {
+        "symbol": "commandWarRtsSourceMissionV129",
+        "line": 436
+      },
+      {
+        "symbol": "auditWarRtsSourceMissionsV129",
+        "line": 490
+      }
+    ]
+  },
+  {
+    "path": "tests/clan-war-council-v147-victories.test.mjs",
+    "sha256": "477259cd486734fde5c22c110bb316fe517425a0bfc8cb6c009c26de81bd45ac",
+    "symbols": []
+  },
+  {
+    "path": "app/game/systems/clanWarRtsWaypointV142.ts",
+    "sha256": "674061959c707d7230aff7b81204fc26634a5ca1deb00accff574f084ea941de",
+    "symbols": [
+      {
+        "symbol": "WarRtsWaypointV142",
+        "line": 8
+      },
+      {
+        "symbol": "WarRtsWaypointPlanV142",
+        "line": 9
+      },
+      {
+        "symbol": "planWarRtsWaypointV142",
+        "line": 21
+      },
+      {
+        "symbol": "commandWarRtsWaypointV142",
+        "line": 62
+      }
+    ]
+  },
+  {
+    "path": "app/game/systems/clanWarRtsMarchV143.ts",
+    "sha256": "d9eb35ba5e1512af7d6a5a129c0721aeea0369aa99e58d208a857899f071bf85",
+    "symbols": [
+      {
+        "symbol": "commandWarRtsMarchV143",
+        "line": 10
+      }
+    ]
+  },
+  {
+    "path": "app/game/systems/clanWarV85.ts",
+    "sha256": "b8d785eb51b064e3c40b873719d6759b661e014826c58ce3f169e4f68136b945",
+    "symbols": [
+      {
+        "symbol": "WarBudgetV85",
+        "line": 9
+      },
+      {
+        "symbol": "WarCombatantV85",
+        "line": 10
+      },
+      {
+        "symbol": "WarTerritoryStateV85",
+        "line": 14
+      },
+      {
+        "symbol": "WarOrderKindV85",
+        "line": 15
+      },
+      {
+        "symbol": "WarOrderV85",
+        "line": 16
+      },
+      {
+        "symbol": "WarObservationV85",
+        "line": 20
+      },
+      {
+        "symbol": "WarReportV85",
+        "line": 21
+      },
+      {
+        "symbol": "WarSimulationV85",
+        "line": 22
+      },
+      {
+        "symbol": "WarUpdateV85",
+        "line": 32
+      },
+      {
+        "symbol": "WAR_STORAGE_KEY_V85",
+        "line": 33
+      },
+      {
+        "symbol": "warTerritoriesForSimulationV96",
+        "line": 35
+      },
+      {
+        "symbol": "warTerritoryForSimulationV96",
+        "line": 38
+      },
+      {
+        "symbol": "warPlanetStorageKeyV96",
+        "line": 41
+      },
+      {
+        "symbol": "WAR_PLANET_STORAGE_KEYS_V96",
+        "line": 45
+      },
+      {
+        "symbol": "warPlanetIdForStorageKeyV96",
+        "line": 46
+      },
+      {
+        "symbol": "validWarPlanetArchiveRawV96",
+        "line": 57
+      },
+      {
+        "symbol": "warBudgetV85",
+        "line": 76
+      },
+      {
+        "symbol": "warFitCombatantsV85",
+        "line": 80
+      },
+      {
+        "symbol": "warGarrisonV85",
+        "line": 83
+      },
+      {
+        "symbol": "WarGarrisonDraftV99",
+        "line": 86
+      },
+      {
+        "symbol": "warGarrisonIssueV99",
+        "line": 91
+      },
+      {
+        "symbol": "changeWarGarrisonV99",
+        "line": 107
+      },
+      {
+        "symbol": "warHeadquartersV103",
+        "line": 117
+      },
+      {
+        "symbol": "warSuppliedV85",
+        "line": 123
+      },
+      {
+        "symbol": "warUpkeepV85",
+        "line": 137
+      },
+      {
+        "symbol": "createWarSimulationV85",
+        "line": 158
+      },
+      {
+        "symbol": "warXpGainV85",
+        "line": 204
+      },
+      {
+        "symbol": "warVeterancyV85",
+        "line": 212
+      },
+      {
+        "symbol": "warOrderCostV85",
+        "line": 217
+      },
+      {
+        "symbol": "warOrderSlotV85",
+        "line": 226
+      },
+      {
+        "symbol": "warOrderIssueV85",
+        "line": 229
+      },
+      {
+        "symbol": "warOrderRevisionIssueV106",
+        "line": 258
+      },
+      {
+        "symbol": "queueWarOrderV85",
+        "line": 262
+      },
+      {
+        "symbol": "cancelWarOrderV85",
+        "line": 271
+      },
+      {
+        "symbol": "warObjectiveCorridorV96",
+        "line": 402
+      },
+      {
+        "symbol": "advanceWarTurnV85",
+        "line": 442
+      },
+      {
+        "symbol": "readWarSimulationV85",
+        "line": 483
+      }
+    ]
+  },
+  {
+    "path": "app/game/systems/clanWarProvenanceGateV152.ts",
+    "sha256": "c1a951086f150f79fe4761d3d0bed5b523eace8af0f15101fe2508ba37168877",
+    "symbols": [
+      {
+        "symbol": "WarGeographyStatusV152",
+        "line": 15
+      },
+      {
+        "symbol": "WarTerritoryProvenanceV152",
+        "line": 17
+      },
+      {
+        "symbol": "WarRosterProvenanceV152",
+        "line": 24
+      },
+      {
+        "symbol": "WarDossierProvenanceV152",
+        "line": 29
+      },
+      {
+        "symbol": "WarProvenanceGateV152",
+        "line": 42
+      },
+      {
+        "symbol": "compareWarTerritoriesV152",
+        "line": 71
+      },
+      {
+        "symbol": "compareWarPersonIdentitiesV152",
+        "line": 88
+      },
+      {
+        "symbol": "reviewWarProvenanceV152",
+        "line": 98
+      }
+    ]
+  },
+  {
+    "path": "app/game/systems/clanWarSourceAuditV146.ts",
+    "sha256": "7635064ce369954c1820a7fc2ccf21d1c013bfb74aca7c921f9d24e584207128",
+    "symbols": [
+      {
+        "symbol": "WarSourceTerritoryAuditV146",
+        "line": 14
+      },
+      {
+        "symbol": "WarSourceRosterAuditV146",
+        "line": 21
+      },
+      {
+        "symbol": "WarSourceProofV146",
+        "line": 28
+      },
+      {
+        "symbol": "WarSourceAuditV146",
+        "line": 42
+      },
+      {
+        "symbol": "warSourceReceiptFingerprintV146",
+        "line": 61
+      },
+      {
+        "symbol": "auditWarTerritorySourcesV146",
+        "line": 76
+      },
+      {
+        "symbol": "auditWarRosterSourcesV146",
+        "line": 94
+      },
+      {
+        "symbol": "inspectWarSourcesV146",
+        "line": 104
+      }
+    ]
+  },
+  {
+    "path": "app/game/systems/clanWarCouncilAuditV146.ts",
+    "sha256": "04aee3aaef29abacd53b0a81dbdbeba0897f356840047853f40ff586474842b5",
+    "symbols": [
+      {
+        "symbol": "WarCouncilModeV146",
+        "line": 18
+      },
+      {
+        "symbol": "WarCouncilDossierV146",
+        "line": 19
+      },
+      {
+        "symbol": "WarCouncilAuditV146",
+        "line": 35
+      },
+      {
+        "symbol": "buildWarCouncilAuditV146",
+        "line": 199
+      }
+    ]
+  },
+  {
+    "path": "app/game/systems/clanWarCouncilReviewV147.ts",
+    "sha256": "deba151a21eb426cd7bee98bf6ecb9fdb982cb25fd9b570ba1c5008d534dcc2c",
+    "symbols": [
+      {
+        "symbol": "WarCouncilModeV147",
+        "line": 18
+      },
+      {
+        "symbol": "WarCouncilDossierV147",
+        "line": 19
+      },
+      {
+        "symbol": "WarCouncilAuditV147",
+        "line": 35
+      },
+      {
+        "symbol": "buildWarCouncilAuditV147",
+        "line": 198
+      },
+      {
+        "symbol": "isWarRtsSourceConsistentV147",
+        "line": 267
+      }
+    ]
+  },
+  {
+    "path": "app/game/systems/clanWarFenceV94.ts",
+    "sha256": "e5ffdfac79946a9b5f5ccdf072ef3309427b4acf942f63803182e1050e95591c",
+    "symbols": [
+      {
+        "symbol": "WAR_FENCE_DATABASE_V94",
+        "line": 7
+      },
+      {
+        "symbol": "WAR_FENCE_STORE_V94",
+        "line": 8
+      },
+      {
+        "symbol": "WarFenceRecordV94",
+        "line": 15
+      },
+      {
+        "symbol": "WarFencePortV94",
+        "line": 18
+      },
+      {
+        "symbol": "validWarFenceV94",
+        "line": 26
+      },
+      {
+        "symbol": "createWarFencePortV94",
+        "line": 40
+      }
+    ]
+  },
+  {
+    "path": "app/game/ClanWarOperationsV115.tsx",
+    "sha256": "4dc4e08732fe40e3356792ee6aca53cdca7b1ba4eec7655790b6dfd549d72aec",
+    "symbols": [
+      {
+        "symbol": "ClanWarOperationsV115",
+        "line": 69
+      }
+    ]
+  },
+  {
+    "path": "app/game/systems/clanWarWorldClimateV126.ts",
+    "sha256": "4e7f9ed98e4dba7322fb6bac76abfc7c1b51cbc98790eb7314e4a34263f490c2",
+    "symbols": [
+      {
+        "symbol": "WorldKindV126",
+        "line": 9
+      },
+      {
+        "symbol": "ClimateV126",
+        "line": 10
+      },
+      {
+        "symbol": "LocationAccuracyV126",
+        "line": 13
+      },
+      {
+        "symbol": "WarWorldLocationV126",
+        "line": 14
+      },
+      {
+        "symbol": "WarClimateV126",
+        "line": 21
+      },
+      {
+        "symbol": "WarCoherentVariantV126",
+        "line": 30
+      },
+      {
+        "symbol": "coherentClanWarVariantV126",
+        "line": 269
+      },
+      {
+        "symbol": "CLAN_WAR_COHERENT_VARIANTS_V126",
+        "line": 279
+      },
+      {
+        "symbol": "auditClanWarWorldsV126",
+        "line": 281
+      }
+    ]
+  },
+  {
+    "path": "app/game/systems/clanWarVariantExportV126.ts",
+    "sha256": "c0075ff0cef994ea1531512e002ca1f28d92e66f49954c9084a0da60e2ea132a",
+    "symbols": [
+      {
+        "symbol": "WarVariantExportFiltersV126",
+        "line": 4
+      },
+      {
+        "symbol": "clanWarVariantExportV126",
+        "line": 13
+      },
+      {
+        "symbol": "clanWarVariantCsvV126",
+        "line": 58
+      }
+    ]
+  },
+  {
+    "path": "app/game/ClanWarVariantAtlasV120.tsx",
+    "sha256": "ea0d64b23cca58b92e89ac7bf4d9c33170f0534ee5be50bdc86bb9d1be41af2e",
+    "symbols": [
+      {
+        "symbol": "ClanWarVariantAtlasV120",
+        "line": 22
+      },
+      {
+        "symbol": "ClanWarVariantDetailV126",
+        "line": 125
+      }
+    ]
+  },
+  {
+    "path": "app/game/systems/clanWarPlanetsV96.ts",
+    "sha256": "f6dbb2066663dd7c3156f2230e07389274334c4a969c4fcc2f5c87688caf8f33",
+    "symbols": [
+      {
+        "symbol": "WarPlanetSurfaceKindV96",
+        "line": 9
+      },
+      {
+        "symbol": "WarPlanetLandBiomeV96",
+        "line": 10
+      },
+      {
+        "symbol": "WarPlanetSurfaceV96",
+        "line": 11
+      },
+      {
+        "symbol": "WarPlanetV96",
+        "line": 19
+      },
+      {
+        "symbol": "warPlanetCoastDistanceV96",
+        "line": 209
+      },
+      {
+        "symbol": "warPlanetLandFractionV96",
+        "line": 241
+      },
+      {
+        "symbol": "DEFAULT_WAR_PLANET_ID_V96",
+        "line": 289
+      },
+      {
+        "symbol": "WAR_PLANETS_V96",
+        "line": 292
+      },
+      {
+        "symbol": "warPlanetV96",
+        "line": 294
+      }
+    ]
+  },
+  {
+    "path": "app/game/systems/clanWarPlanetGeneratorV115.ts",
+    "sha256": "084f05c7e28c7d411710e015d3740797a0d1b34673443318947902d813fe6953",
+    "symbols": [
+      {
+        "symbol": "WarPlanetRecipeV115",
+        "line": 12
+      },
+      {
+        "symbol": "WarPlanetProceduralV115",
+        "line": 21
+      },
+      {
+        "symbol": "GeneratedWarPlanetV115",
+        "line": 40
+      },
+      {
+        "symbol": "baseWarPlanetRecipeV103FromV115",
+        "line": 48
+      },
+      {
+        "symbol": "DEFAULT_WAR_PLANET_RECIPE_V115",
+        "line": 59
+      },
+      {
+        "symbol": "validateWarPlanetRecipeV115",
+        "line": 63
+      },
+      {
+        "symbol": "normalizeWarPlanetRecipeV115",
+        "line": 74
+      },
+      {
+        "symbol": "projectWarPlanetRecipeV103FromV115",
+        "line": 82
+      },
+      {
+        "symbol": "encodeWarPlanetV115",
+        "line": 90
+      },
+      {
+        "symbol": "parseWarPlanetV115",
+        "line": 104
+      },
+      {
+        "symbol": "describeWarPlanetV115",
+        "line": 123
+      },
+      {
+        "symbol": "generateWarPlanetV115",
+        "line": 133
+      },
+      {
+        "symbol": "generatedWarPlanetV115",
+        "line": 184
+      }
+    ]
+  },
+  {
+    "path": "app/game/systems/clanWarPlanetGeographyV103.ts",
+    "sha256": "f5da31947cf5c84575d98097783bf7d00c7549b4ec17dc3fcf268f7ac390fcb8",
+    "symbols": [
+      {
+        "symbol": "WarPlanetShapeSelectionV115",
+        "line": 5
+      },
+      {
+        "symbol": "sphericalPolygonAreaV103",
+        "line": 259
+      },
+      {
+        "symbol": "generatedPlanetGeographyV103",
+        "line": 357
+      }
+    ]
+  },
+  {
+    "path": "app/game/systems/clanWarVariantAtlasV120.ts",
+    "sha256": "c90e6b3efdfc38988c1a60053898a25edc27d6699713aef8773fefc951eaf0a6",
+    "symbols": [
+      {
+        "symbol": "ClanWarVariantModeV120",
+        "line": 15
+      },
+      {
+        "symbol": "ClanWarVariantFamilyV120",
+        "line": 16
+      },
+      {
+        "symbol": "ClanWarVariantStatusV120",
+        "line": 17
+      },
+      {
+        "symbol": "ClanWarVariantV120",
+        "line": 18
+      },
+      {
+        "symbol": "WAR_V120_FAMILIES",
+        "line": 309
+      },
+      {
+        "symbol": "WAR_V120_MODES",
+        "line": 310
+      },
+      {
+        "symbol": "createClanWarVariantAtlasV120",
+        "line": 433
+      },
+      {
+        "symbol": "CLAN_WAR_VARIANT_ATLAS_V120",
+        "line": 439
+      },
+      {
+        "symbol": "searchClanWarVariantsV120",
+        "line": 440
+      },
+      {
+        "symbol": "drawUnseenClanWarVariantV120",
+        "line": 454
+      },
+      {
+        "symbol": "clanWarVariantCountsV120",
+        "line": 467
+      }
+    ]
+  },
+  {
+    "path": "app/game/systems/clanWarViewV131.ts",
+    "sha256": "eb384e364f6dcb08dccc22fc73f0435529a6feee2e9fb949f29ea1ad4543845e",
+    "symbols": [
+      {
+        "symbol": "WAR_PRESENTATION_KEY_V131",
+        "line": 2
+      },
+      {
+        "symbol": "ClanWarPresentationV131",
+        "line": 3
+      },
+      {
+        "symbol": "DEFAULT_WAR_PRESENTATION_V131",
+        "line": 4
+      },
+      {
+        "symbol": "parseClanWarPresentationV131",
+        "line": 7
+      }
+    ]
+  },
+  {
+    "path": "app/game/systems/clanWarMultiplayerV126.ts",
+    "sha256": "fce90620a9f13abc06cca4196636f30f675293b72c70d33bbcccc8a9e96c3d9b",
+    "symbols": [
+      {
+        "symbol": "WarMultiplayerModeV126",
+        "line": 2
+      },
+      {
+        "symbol": "WarLobbyStageV126",
+        "line": 3
+      },
+      {
+        "symbol": "WarLobbySideV126",
+        "line": 4
+      },
+      {
+        "symbol": "WarLobbyRoleV126",
+        "line": 5
+      },
+      {
+        "symbol": "WarMultiplayerCommandKindV126",
+        "line": 6
+      },
+      {
+        "symbol": "WarMultiplayerMemberV126",
+        "line": 7
+      },
+      {
+        "symbol": "WarLobbyV126",
+        "line": 11
+      },
+      {
+        "symbol": "WarClientCommandV126",
+        "line": 18
+      },
+      {
+        "symbol": "WarAcceptedCommandV126",
+        "line": 23
+      },
+      {
+        "symbol": "WarLobbyChangeV126",
+        "line": 26
+      },
+      {
+        "symbol": "createWarMultiplayerLobbyV126",
+        "line": 41
+      },
+      {
+        "symbol": "joinWarMultiplayerLobbyV126",
+        "line": 59
+      },
+      {
+        "symbol": "setWarMultiplayerLoadoutV126",
+        "line": 77
+      },
+      {
+        "symbol": "setWarMultiplayerReadyV126",
+        "line": 90
+      },
+      {
+        "symbol": "startWarMultiplayerLobbyV126",
+        "line": 98
+      },
+      {
+        "symbol": "acceptWarMultiplayerCommandV126",
+        "line": 116
+      },
+      {
+        "symbol": "advanceWarMultiplayerServerTickV126",
+        "line": 146
+      },
+      {
+        "symbol": "visibleWarMultiplayerStateV126",
+        "line": 151
+      },
+      {
+        "symbol": "WAR_MULTIPLAYER_DEPLOYMENT_GATES_V126",
+        "line": 167
+      }
+    ]
+  },
+  {
+    "path": "app/game/systems/clanWarMultiplayerPracticeV127.ts",
+    "sha256": "898fbe99909dc90f14dcda9c9cbe6fc3b9874a9954711ba2b63dbe1436386ba0",
+    "symbols": [
+      {
+        "symbol": "WarMatchFighterV127",
+        "line": 13
+      },
+      {
+        "symbol": "WarMultiplayerPracticeV127",
+        "line": 17
+      },
+      {
+        "symbol": "WarMatchActionResultV127",
+        "line": 23
+      },
+      {
+        "symbol": "createWarMultiplayerPracticeV127",
+        "line": 59
+      },
+      {
+        "symbol": "applyWarMultiplayerPracticeCommandV127",
+        "line": 85
+      },
+      {
+        "symbol": "stepWarMultiplayerPracticeV127",
+        "line": 129
+      },
+      {
+        "symbol": "viewWarMultiplayerPracticeV127",
+        "line": 142
+      }
+    ]
+  },
+  {
+    "path": "db/schema.ts",
+    "sha256": "13ddacbf0be50e054d450a6c642b7fdc1aa943fd6b99084711e07e58b600390d",
+    "symbols": []
+  },
+  {
+    "path": "app/game/ClanWarFieldSprite.tsx",
+    "sha256": "f901fa7846b5255e6d4c9e77ee03fa8e6f392948e21c44f8f699c2b5c5d15077",
+    "symbols": [
+      {
+        "symbol": "FIELD_SPRITE_IDS",
+        "line": 2
+      },
+      {
+        "symbol": "FieldSpriteId",
+        "line": 7
+      },
+      {
+        "symbol": "fieldSpriteUrl",
+        "line": 8
+      },
+      {
+        "symbol": "ClanWarFieldSprite",
+        "line": 12
+      }
+    ]
+  },
+  {
+    "path": "app/game/systems/clanWarGauntletCatalogV132.ts",
+    "sha256": "6092d66c8745dc1137fa03880ff47ded0e62527f765b143d66bc879543de96a4",
+    "symbols": [
+      {
+        "symbol": "GauntletEvidenceV132",
+        "line": 5
+      },
+      {
+        "symbol": "GauntletReadoutV132",
+        "line": 7
+      },
+      {
+        "symbol": "HunterRankV132",
+        "line": 8
+      },
+      {
+        "symbol": "GauntletUnlockV132",
+        "line": 9
+      },
+      {
+        "symbol": "GauntletThemeV132",
+        "line": 10
+      },
+      {
+        "symbol": "GauntletDefinitionV132",
+        "line": 12
+      },
+      {
+        "symbol": "GauntletPaletteV132",
+        "line": 27
+      },
+      {
+        "symbol": "GAUNTLET_CATALOG_V132",
+        "line": 38
+      },
+      {
+        "symbol": "DEFAULT_GAUNTLET_ID_V132",
+        "line": 39
+      },
+      {
+        "symbol": "GAUNTLET_STORAGE_PREFIX_V132",
+        "line": 40
+      },
+      {
+        "symbol": "GAUNTLET_UNLOCK_SOURCE_V132",
+        "line": 41
+      },
+      {
+        "symbol": "GAUNTLET_PALETTES_V132",
+        "line": 42
+      },
+      {
+        "symbol": "GAUNTLET_EVIDENCE_LABELS_V132",
+        "line": 55
+      },
+      {
+        "symbol": "GAUNTLET_READOUT_LABELS_V132",
+        "line": 62
+      },
+      {
+        "symbol": "gauntletByIdV132",
+        "line": 66
+      },
+      {
+        "symbol": "gauntletUnlockedV132",
+        "line": 69
+      },
+      {
+        "symbol": "gauntletUnlockLabelV132",
+        "line": 82
+      },
+      {
+        "symbol": "normalizeGauntletV132",
+        "line": 88
+      },
+      {
+        "symbol": "gauntletStorageKeyV132",
+        "line": 91
+      },
+      {
+        "symbol": "parseGauntletPreferenceV132",
+        "line": 94
+      },
+      {
+        "symbol": "serializeGauntletPreferenceV132",
+        "line": 104
+      },
+      {
+        "symbol": "gauntletCatalogIntegrityV132",
+        "line": 109
+      }
+    ]
+  },
+  {
+    "path": "app/game/data/clanWarGauntletCatalogV132.json",
+    "sha256": "575a678a1d3f9e954b976638922d9b29b40036a029c04bc767113b2d1ffcfcd6",
+    "symbols": []
+  },
+  {
+    "path": "app/game/systems/clanWarFieldControls.ts",
+    "sha256": "1349b9d83008a2f3287c0119ef4a2e0298ad6c19e3c5ce5de2ed9df261b739cf",
+    "symbols": [
+      {
+        "symbol": "FieldAction",
+        "line": 2
+      },
+      {
+        "symbol": "FieldKey",
+        "line": 3
+      },
+      {
+        "symbol": "fieldKeyboardAction",
+        "line": 13
+      },
+      {
+        "symbol": "fieldKeyboardTargetBlocked",
+        "line": 17
+      }
+    ]
+  },
+  {
+    "path": "app/game/systems/clanWarMissionDossiersV117.ts",
+    "sha256": "a8ad715f80d79f277b7fa5fba2358dce97de959ff5972679d6467ff1094a8a4b",
+    "symbols": [
+      {
+        "symbol": "WarMissionSourceKindV117",
+        "line": 9
+      },
+      {
+        "symbol": "WarMissionPlayabilityV117",
+        "line": 10
+      },
+      {
+        "symbol": "WarSourceMissionV117",
+        "line": 11
+      },
+      {
+        "symbol": "WarSourceCampaignV117",
+        "line": 33
+      },
+      {
+        "symbol": "WarSourceMapV117",
+        "line": 38
+      },
+      {
+        "symbol": "WarSourceDoctrineV117",
+        "line": 43
+      },
+      {
+        "symbol": "WarSourceDiplomacyV117",
+        "line": 47
+      },
+      {
+        "symbol": "WarMissionDossierCatalogueV117",
+        "line": 51
+      },
+      {
+        "symbol": "warMissionDossiersV117",
+        "line": 128
+      },
+      {
+        "symbol": "WarSourceMissionFilterV117",
+        "line": 163
+      },
+      {
+        "symbol": "searchWarMissionDossiersV117",
+        "line": 164
+      },
+      {
+        "symbol": "warSourceModeLabelV117",
+        "line": 173
+      },
+      {
+        "symbol": "warSourceMissionForIdV117",
+        "line": 176
+      },
+      {
+        "symbol": "WAR_SOURCE_SUPPORTED_MODES_V117",
+        "line": 179
+      }
+    ]
+  }
+]

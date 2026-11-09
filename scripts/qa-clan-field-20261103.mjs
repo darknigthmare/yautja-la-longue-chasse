@@ -11,7 +11,7 @@ import {chromium} from "playwright-core";
 
 const root=fileURLToPath(new URL("../",import.meta.url));
 const out=resolve(root,"outputs/clan-field-20261103");
-const key="yautja.clan-war.v115.operations.free.v1";
+const key="yautja.clan-war.v115.operations.fenced.v2";
 const bundle=await build({absWorkingDir:root,
   entryPoints:["tests/browser/clan-field-20261103.fixture.tsx"],bundle:true,
   platform:"browser",format:"iife",jsx:"automatic",write:false,

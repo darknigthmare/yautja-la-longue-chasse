@@ -1,0 +1,69 @@
+{
+  "schemaVersion": 1,
+  "release": "V113",
+  "step": 16,
+  "method": "Actual homeworldCivicWalkableV80 with the native hunter body sampled every 16 units; 4-neighbour flood fill from the spacecraft spawn through connectors; anchors judged at their in-game interaction radius. Geometry evidence only.",
+  "connectorsReached": [
+    "acropolis-stair",
+    "clan-lift",
+    "council-stair",
+    "industrial-ramp",
+    "lower-gallery-stair",
+    "service-ramp",
+    "slum-slope"
+  ],
+  "reachedArea": {
+    "0": 13830912,
+    "+1": 4770560,
+    "+2": 1498880,
+    "-1A": 6022400,
+    "-1B": 2171136,
+    "-1C": 3136256
+  },
+  "anchors": 71,
+  "unreachableAnchors": [],
+  "blockedAnchorCentres": [],
+  "residentVerticesInSolids": [],
+  "enclosedPockets": [
+    {
+      "levelId": "0",
+      "area": 9984,
+      "box": {
+        "left": 3600,
+        "top": 2336,
+        "right": 3712,
+        "bottom": 2480
+      }
+    },
+    {
+      "levelId": "-1B",
+      "area": 8192,
+      "box": {
+        "left": 3472,
+        "top": 2592,
+        "right": 3680,
+        "bottom": 2656
+      }
+    },
+    {
+      "levelId": "0",
+      "area": 5888,
+      "box": {
+        "left": 6800,
+        "top": 3600,
+        "right": 6944,
+        "bottom": 3696
+      }
+    },
+    {
+      "levelId": "0",
+      "area": 4608,
+      "box": {
+        "left": 1424,
+        "top": 3328,
+        "right": 1616,
+        "bottom": 3392
+      }
+    }
+  ]
+}

@@ -1,0 +1,114 @@
+{
+  "schemaVersion": 1,
+  "asOf": "2026-11-09",
+  "baseCommit": "39b601ce1873a1f400d2f545f0fab97691b779e3",
+  "passed": true,
+  "artifact": {
+    "path": "production/p0p1-20261109/suivi/Yautja_Priorites_P0_P1_20261109.xlsx",
+    "sha256": "78e3de92a382bbd9d309cc1b4459a0c8e3216c0a7617efac9935458a918e7feb",
+    "bytes": 13911417
+  },
+  "subjects": {
+    "subjects": 2577,
+    "priorities": {
+      "P0": 773,
+      "P1": 1804
+    },
+    "domains": {
+      "Clan Ship": 22,
+      "Guerre des clans": 588,
+      "Homeworld et habitats": 107,
+      "Personnalisation et arsenal": 1811,
+      "Planètes et tribus": 2,
+      "Warp Universe": 26,
+      "Bible V5/V6 — lots de réalisation": 12,
+      "The Pit": 9
+    },
+    "statuses": {
+      "QUALIFIE_BORNE": 29,
+      "PARTIEL": 1958,
+      "OUVERT": 589,
+      "QUALIFIE_BORNE_ANTERIEUR": 1
+    },
+    "originalRegistered": 2514,
+    "extraXlsx": 35,
+    "warp": 26,
+    "planetsTribes": 2
+  },
+  "unreconciled": 0,
+  "sourceWorkbooksUnchanged": 112,
+  "cellsCompared": 77587,
+  "sheetCount": 13,
+  "originalSheetPartsPreserved": 7,
+  "oldZipPartsByteIdentical": 14,
+  "xmlPartsParsed": 24,
+  "formulaCache": 2577,
+  "deterministicBytesVerified": true,
+  "nativeExcelExecuted": false,
+  "humanArtApproval": false,
+  "globalP0P1Closed": false,
+  "sourceScope": "29new bounded qualifications plus1prior,1958partial,589open. Counts describe documentary subjects and may overlap in implementation scope.",
+  "files": [
+    {
+      "path": "production/p0p1-20261109/suivi/verification-classeur.json",
+      "bytes": 1306,
+      "sha256": "75826cea4bd0748e5576c01e1a2ca09cd8745edd47fadcb1998f9607f3a55116"
+    },
+    {
+      "path": "production/p0p1-20261109/suivi/registre-priorites.json",
+      "bytes": 9318419,
+      "sha256": "43664b15dc0e915bf93049a2c0f1664a2f2c776600d84236926521532acaedff"
+    },
+    {
+      "path": "production/p0p1-20261109/suivi/registre-priorites.md",
+      "bytes": 2478888,
+      "sha256": "d01fc11ae7cc415595b4cbda3210150e3ce662505623c130ab89b2d14833e952"
+    },
+    {
+      "path": "production/p0p1-20261109/suivi/actions-restantes.json",
+      "bytes": 1095363,
+      "sha256": "e3546b710e24eb99560241dcbeaf5c6f6261cb44e441b720c0a7013c4308a6f2"
+    },
+    {
+      "path": "production/p0p1-20261109/suivi/qualification-courante.json",
+      "bytes": 5869597,
+      "sha256": "078e62b69a9d7bebc113500364f58554637a565ab3ce615f2c28475beaae8d97"
+    },
+    {
+      "path": "production/p0p1-20261109/suivi/historique-preserve.json",
+      "bytes": 29555,
+      "sha256": "20dd082b7c0af095b14dbb7d4fc8771e30b051320a3e7801efd8ece6582fcc0e"
+    },
+    {
+      "path": "production/p0p1-20261109/suivi/build-request.json",
+      "bytes": 4681,
+      "sha256": "6f9e12c81c777bb99deec94471219d1f41232f467c1387510b0238764c541e7f"
+    },
+    {
+      "path": "production/p0p1-20261109/verification.json",
+      "bytes": 17001,
+      "sha256": "b9b94e59ba2ca077e6050ef47a9fa98deb15eb58c3f9da137f8f009e7651b0cf"
+    }
+  ],
+  "appendDependenciesUnchanged": {
+    "scripts/lib/excel_followup_append.py": "321eada2b760f5a6ec6b9d273b2abc189a829f07a67c3805a690983408160e34",
+    "scripts/build-excel-followup-v100.py": "91491b98d2576e8f3ce89067ba782629ac05675ae0541343256576749e1f8ab1"
+  },
+  "commands": [
+    [
+      "python3",
+      "production/p0p1-20261109/tools/build-tracker.py",
+      "--ready-check"
+    ],
+    [
+      "python3",
+      "production/p0p1-20261109/tools/build-tracker.py",
+      "--build"
+    ],
+    [
+      "python3",
+      "production/p0p1-20261109/tools/verify-tracker.py",
+      "--check"
+    ]
+  ]
+}

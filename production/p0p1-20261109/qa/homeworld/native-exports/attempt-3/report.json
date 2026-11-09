@@ -1,0 +1,390 @@
+{
+  "schemaVersion": 1,
+  "url": "http://127.0.0.1:3122",
+  "scope": "Native production GameClient: physical Clan Ship route to council, real War Bible atlas export controls, disclosed initial B05 fixture. No callback, clock, actor or result patched.",
+  "fixture": "production/crew-dialogue-20261109/qa/native/attempt-1/initial-agreement.json",
+  "fixtureFullCampaign": false,
+  "checks": [
+    {
+      "name": "native-council-to-war-bible-atlas",
+      "passed": true
+    },
+    {
+      "name": "current-detail-desert",
+      "passed": true,
+      "matchesExport": true,
+      "historicalTitlePreserved": true
+    },
+    {
+      "name": "native-download-desert",
+      "passed": true,
+      "sourceId": "CW120-R-HO-001",
+      "worldId": "earth",
+      "climate": "hot-desert",
+      "weather": "brume sèche",
+      "sourcePreserved": true
+    },
+    {
+      "name": "current-detail-indoor",
+      "passed": true,
+      "matchesExport": true,
+      "historicalTitlePreserved": true
+    },
+    {
+      "name": "native-download-indoor",
+      "passed": true,
+      "sourceId": "CW120-S-HO-001",
+      "worldId": "earth",
+      "climate": "temperate",
+      "weather": "pas de météo extérieure à l'intérieur",
+      "sourcePreserved": true
+    },
+    {
+      "name": "current-detail-corridor",
+      "passed": true,
+      "matchesExport": true,
+      "historicalTitlePreserved": true
+    },
+    {
+      "name": "native-download-corridor",
+      "passed": true,
+      "sourceId": "CW120-O-HO-024",
+      "worldId": "earth",
+      "climate": "temperate",
+      "weather": "météo variable selon secteurs parcourus",
+      "sourcePreserved": true
+    },
+    {
+      "name": "mobile-320-native-download",
+      "passed": true
+    },
+    {
+      "name": "export-controls-preserve-raw-campaign-save",
+      "passed": true,
+      "sha256": "5de0dbd2c488aa804779700c111020d6e44881afeb1ba7b5b9b9db95bb680caa"
+    },
+    {
+      "name": "served-next-javascript-matches-production-build",
+      "passed": true,
+      "scripts": 30
+    },
+    {
+      "name": "no-browser-console-http-request-errors",
+      "passed": true
+    },
+    {
+      "name": "source-and-build-identity-unchanged",
+      "passed": true
+    }
+  ],
+  "errors": [],
+  "consoleErrors": [],
+  "httpErrors": [],
+  "requestFailures": [],
+  "servedScripts": [
+    {
+      "pathname": "/_next/static/chunks/webpack-098f5c63d610ae9f.js",
+      "bytes": 8667,
+      "sha256": "ec3b450356b3220db7ade613166ea68951fcde08dcff79fe14a649dbd4851712",
+      "builtSha256": "ec3b450356b3220db7ade613166ea68951fcde08dcff79fe14a649dbd4851712",
+      "matches": true
+    },
+    {
+      "pathname": "/_next/static/chunks/main-app-340bf771475649a8.js",
+      "bytes": 529,
+      "sha256": "1f59bd0febb680992cf62bec6702ba6126f8a586d2512eb6d3ca2ceaa90a6591",
+      "builtSha256": "1f59bd0febb680992cf62bec6702ba6126f8a586d2512eb6d3ca2ceaa90a6591",
+      "matches": true
+    },
+    {
+      "pathname": "/_next/static/chunks/5151-2b5acbc4e490de14.js",
+      "bytes": 16901,
+      "sha256": "c2e643722a4b205b07050fbb8c6babf6c51fd7529addeab761a50a368dc334aa",
+      "builtSha256": "c2e643722a4b205b07050fbb8c6babf6c51fd7529addeab761a50a368dc334aa",
+      "matches": true
+    },
+    {
+      "pathname": "/_next/static/chunks/app/error-ea2342cfe5895ddb.js",
+      "bytes": 1186,
+      "sha256": "221f1f0ae4706ec1e8ac9408031604a32ea527ed3c7c5e96174ecd053a1d2946",
+      "builtSha256": "221f1f0ae4706ec1e8ac9408031604a32ea527ed3c7c5e96174ecd053a1d2946",
+      "matches": true
+    },
+    {
+      "pathname": "/_next/static/chunks/859-7d1b8ebba0d03e8a.js",
+      "bytes": 26360,
+      "sha256": "28109f27ffbf185097ffe013563b270eeed22bf69c782ad73585983215921303",
+      "builtSha256": "28109f27ffbf185097ffe013563b270eeed22bf69c782ad73585983215921303",
+      "matches": true
+    },
+    {
+      "pathname": "/_next/static/chunks/4bd1b696-8a4ab4fdf0ae305a.js",
+      "bytes": 201060,
+      "sha256": "5cf2fcfae6b221476479e25b2883f9052b18a7eb97bd3d069f3cc44112852610",
+      "builtSha256": "5cf2fcfae6b221476479e25b2883f9052b18a7eb97bd3d069f3cc44112852610",
+      "matches": true
+    },
+    {
+      "pathname": "/_next/static/chunks/6087-daabd7b2ca1dcffd.js",
+      "bytes": 28221,
+      "sha256": "fb998de1e16d514d69993ee81cb719b83d0957b70d2025dd76950816d17a4a85",
+      "builtSha256": "fb998de1e16d514d69993ee81cb719b83d0957b70d2025dd76950816d17a4a85",
+      "matches": true
+    },
+    {
+      "pathname": "/_next/static/chunks/3794-6cecce02b123eb1f.js",
+      "bytes": 241388,
+      "sha256": "d39ac559f4774cc2556428ce8bf697328ddc72aba734108f6297f05b75038e42",
+      "builtSha256": "d39ac559f4774cc2556428ce8bf697328ddc72aba734108f6297f05b75038e42",
+      "matches": true
+    },
+    {
+      "pathname": "/_next/static/chunks/8482-97fd3178822a871b.js",
+      "bytes": 150540,
+      "sha256": "d9724ac22f8f550d967c5d2bafca42c7bd12f85cfcc0f30e589e053af48d0b58",
+      "builtSha256": "d9724ac22f8f550d967c5d2bafca42c7bd12f85cfcc0f30e589e053af48d0b58",
+      "matches": true
+    },
+    {
+      "pathname": "/_next/static/chunks/49-2d3614459171c485.js",
+      "bytes": 33589,
+      "sha256": "39bf730dd33009bfc90647f8f85fdabeaab75990e91b8f11aa5f31dcc1200801",
+      "builtSha256": "39bf730dd33009bfc90647f8f85fdabeaab75990e91b8f11aa5f31dcc1200801",
+      "matches": true
+    },
+    {
+      "pathname": "/_next/static/chunks/7178-91125a118647fb13.js",
+      "bytes": 6412,
+      "sha256": "b2fe01cbc67ed6a2935bc9b02d17a27edc70e088f33f556862ae6f63b954fa60",
+      "builtSha256": "b2fe01cbc67ed6a2935bc9b02d17a27edc70e088f33f556862ae6f63b954fa60",
+      "matches": true
+    },
+    {
+      "pathname": "/_next/static/chunks/3013-d7dd1404155871c3.js",
+      "bytes": 27389,
+      "sha256": "fda4314f014cf5578752b6e663b34e789e28fadc9ecb75548736c0a431b3065d",
+      "builtSha256": "fda4314f014cf5578752b6e663b34e789e28fadc9ecb75548736c0a431b3065d",
+      "matches": true
+    },
+    {
+      "pathname": "/_next/static/chunks/7555-ca61a4345fd1de7e.js",
+      "bytes": 32867,
+      "sha256": "5a5e038b162460797617e6d5e4556e317f4be08f07a4d6b790d3596d0bd7af4e",
+      "builtSha256": "5a5e038b162460797617e6d5e4556e317f4be08f07a4d6b790d3596d0bd7af4e",
+      "matches": true
+    },
+    {
+      "pathname": "/_next/static/chunks/8997-0d461eb6cf3c2898.js",
+      "bytes": 11669,
+      "sha256": "418166960b900807211415b4ec0e24301c5e3978e3baf19a215b22a8529b410d",
+      "builtSha256": "418166960b900807211415b4ec0e24301c5e3978e3baf19a215b22a8529b410d",
+      "matches": true
+    },
+    {
+      "pathname": "/_next/static/chunks/2887-5349be72c36ef2d1.js",
+      "bytes": 337971,
+      "sha256": "1ed8d6e4dbce20598baf969254df8019b2f395dda65369d5413114ec2bc4ff71",
+      "builtSha256": "1ed8d6e4dbce20598baf969254df8019b2f395dda65369d5413114ec2bc4ff71",
+      "matches": true
+    },
+    {
+      "pathname": "/_next/static/chunks/9372-5a69314ee210bcac.js",
+      "bytes": 462211,
+      "sha256": "dc6270d3d5c5458d8e5b7c053a8d411a5e95bcc4cd0ba1484b18946d32ba847c",
+      "builtSha256": "dc6270d3d5c5458d8e5b7c053a8d411a5e95bcc4cd0ba1484b18946d32ba847c",
+      "matches": true
+    },
+    {
+      "pathname": "/_next/static/chunks/9548-15f6d72975d5f216.js",
+      "bytes": 338894,
+      "sha256": "bb05d83cd91258101f96b9c62c33f37ad5d5caf27f4669ff9bc6a9d5f8bfbf02",
+      "builtSha256": "bb05d83cd91258101f96b9c62c33f37ad5d5caf27f4669ff9bc6a9d5f8bfbf02",
+      "matches": true
+    },
+    {
+      "pathname": "/_next/static/chunks/4292-05a48fc0a4977f3a.js",
+      "bytes": 891386,
+      "sha256": "7cbfb37df9357c4d73936f5c764318015417cce4a880fd2a4b24079241053fb1",
+      "builtSha256": "7cbfb37df9357c4d73936f5c764318015417cce4a880fd2a4b24079241053fb1",
+      "matches": true
+    },
+    {
+      "pathname": "/_next/static/chunks/app/page-36499de9eb945742.js",
+      "bytes": 662604,
+      "sha256": "0148d5077fc13a1063a5738f6bb36e2c671b1bc86787d33fdd79b90a4c9f90d9",
+      "builtSha256": "0148d5077fc13a1063a5738f6bb36e2c671b1bc86787d33fdd79b90a4c9f90d9",
+      "matches": true
+    },
+    {
+      "pathname": "/_next/static/chunks/84-b773dabbd6c85016.js",
+      "bytes": 2691383,
+      "sha256": "d4e4ed4655ef37a24c740bf1133f7b0933fddd4d9df4cedc1978d89423c4e907",
+      "builtSha256": "d4e4ed4655ef37a24c740bf1133f7b0933fddd4d9df4cedc1978d89423c4e907",
+      "matches": true
+    },
+    {
+      "pathname": "/_next/static/chunks/3663.bb3c0876d49d8928.js",
+      "bytes": 22887,
+      "sha256": "596eb72b970dbe6bd3330e844bfa67c53ec9f62c40b999119b0a98b52df5066d",
+      "builtSha256": "596eb72b970dbe6bd3330e844bfa67c53ec9f62c40b999119b0a98b52df5066d",
+      "matches": true
+    },
+    {
+      "pathname": "/_next/static/chunks/378.f166874834cfd1d6.js",
+      "bytes": 119902,
+      "sha256": "f875fbeabf8c7ba34566b6abbbc3677f2e8e94f958b546165463daa8c35cecb9",
+      "builtSha256": "f875fbeabf8c7ba34566b6abbbc3677f2e8e94f958b546165463daa8c35cecb9",
+      "matches": true
+    },
+    {
+      "pathname": "/_next/static/chunks/6191-731e57ae014ed88a.js",
+      "bytes": 475443,
+      "sha256": "94651958af7690f2247779cdf1e917b6fef71ef3920c229739d2784bcf20461c",
+      "builtSha256": "94651958af7690f2247779cdf1e917b6fef71ef3920c229739d2784bcf20461c",
+      "matches": true
+    },
+    {
+      "pathname": "/_next/static/chunks/5772-ddd18c0d4b7715e5.js",
+      "bytes": 15717,
+      "sha256": "57650f80c624bc13bdf76a7fc29504847558e468de88ba3b24154959e944a740",
+      "builtSha256": "57650f80c624bc13bdf76a7fc29504847558e468de88ba3b24154959e944a740",
+      "matches": true
+    },
+    {
+      "pathname": "/_next/static/chunks/5803-29960c7239e27d59.js",
+      "bytes": 40619,
+      "sha256": "ba8f4c297e8b179f38c325390023d17b77d4cde4ffc86c7d4565fb3db830bc2f",
+      "builtSha256": "ba8f4c297e8b179f38c325390023d17b77d4cde4ffc86c7d4565fb3db830bc2f",
+      "matches": true
+    },
+    {
+      "pathname": "/_next/static/chunks/5565-f5ae51d2a45d54a0.js",
+      "bytes": 19811,
+      "sha256": "6d7db7f88c45be52e830d3945dfeac13df1e4af1edbe6969227d85df6a6201d0",
+      "builtSha256": "6d7db7f88c45be52e830d3945dfeac13df1e4af1edbe6969227d85df6a6201d0",
+      "matches": true
+    },
+    {
+      "pathname": "/_next/static/chunks/416-f053d1c82c5a6894.js",
+      "bytes": 1572901,
+      "sha256": "324ad430dd476d291da7007e3c42643a747fb75688bce57791855677948c7ec3",
+      "builtSha256": "324ad430dd476d291da7007e3c42643a747fb75688bce57791855677948c7ec3",
+      "matches": true
+    },
+    {
+      "pathname": "/_next/static/chunks/2633-6295565558c846d5.js",
+      "bytes": 1224230,
+      "sha256": "c2bfc3d56381e4ca8c7bff5a11d167b15f16dc59fe302f93d04999e16cabfb31",
+      "builtSha256": "c2bfc3d56381e4ca8c7bff5a11d167b15f16dc59fe302f93d04999e16cabfb31",
+      "matches": true
+    },
+    {
+      "pathname": "/_next/static/chunks/7271-9ba3435c1c5d3a5d.js",
+      "bytes": 1244320,
+      "sha256": "c29bc8c2bbbc1fc5d854ad4d9203bc785dad1392c3185dce5ba6042afb506fe5",
+      "builtSha256": "c29bc8c2bbbc1fc5d854ad4d9203bc785dad1392c3185dce5ba6042afb506fe5",
+      "matches": true
+    },
+    {
+      "pathname": "/_next/static/chunks/1073-d0f5d5656604a1a8.js",
+      "bytes": 4383037,
+      "sha256": "fe7c71a841855ffc356154276af54cd0f1f843a1ebcb43897db4cd033e0a7866",
+      "builtSha256": "fe7c71a841855ffc356154276af54cd0f1f843a1ebcb43897db4cd033e0a7866",
+      "matches": true
+    }
+  ],
+  "screenshots": [
+    {
+      "filename": "desert-desktop.png",
+      "sha256": "85234a981dfeb4c7f2b40801e16b06e35d512d20aaea05c015ab11923349d993",
+      "opened": true
+    },
+    {
+      "filename": "indoor-desktop.png",
+      "sha256": "fd16db31126a2f6ef908a0b454e30f27dda4cc27dd080cb2c1104dee5190867a",
+      "opened": true
+    },
+    {
+      "filename": "corridor-desktop.png",
+      "sha256": "1310337fa951efe55445a93089efc8dfa91f5756773f4d16278a0c8e4ef36943",
+      "opened": true
+    },
+    {
+      "filename": "atlas-mobile-320.png",
+      "sha256": "6d2ff3fed91510991cb7fcc7ac152e0be05e3e627053cd06e358277fe8457747",
+      "opened": true
+    }
+  ],
+  "downloads": [
+    {
+      "filename": "desert.json",
+      "downloadName": "Yautja_Guerre_Clans_V126_all_all_1.json",
+      "sha256": "38b9b9319a6ba1279484deb48a94606b3f062e9fcbf8388333708645e83495ee",
+      "bytes": 7107
+    },
+    {
+      "filename": "desert.csv",
+      "downloadName": "Yautja_Guerre_Clans_V126_all_all_1.csv",
+      "sha256": "da30a06f7936e1a6d66974e8c39a1958520f65fea2c82229556af46e550992a9",
+      "bytes": 2445
+    },
+    {
+      "filename": "indoor.json",
+      "downloadName": "Yautja_Guerre_Clans_V126_all_all_1.json",
+      "sha256": "fa379b8737dd9cd59835acab40d6d8e9a69ca72e2f311ce498af3717143d1e4b",
+      "bytes": 7489
+    },
+    {
+      "filename": "indoor.csv",
+      "downloadName": "Yautja_Guerre_Clans_V126_all_all_1.csv",
+      "sha256": "ca2a645ce912532d8047f216a5b6be9de95a73feaa3b74ebfcca727082012054",
+      "bytes": 2580
+    },
+    {
+      "filename": "corridor.json",
+      "downloadName": "Yautja_Guerre_Clans_V126_all_all_1.json",
+      "sha256": "1aeeedec82c4350dce1d8fe703ef611371d7014163c3a226e6b460baf466f995",
+      "bytes": 7382
+    },
+    {
+      "filename": "corridor.csv",
+      "downloadName": "Yautja_Guerre_Clans_V126_all_all_1.csv",
+      "sha256": "6b632b046206b3e16e93f901ddf18f460cb412312fc1372028432ee1b2d26bd3",
+      "bytes": 2578
+    }
+  ],
+  "physicalGamepad": false,
+  "humanArtReviewed": false,
+  "sourceBefore": {
+    "app/game/ClanWarVariantAtlasV120.tsx": "ea0d64b23cca58b92e89ac7bf4d9c33170f0534ee5be50bdc86bb9d1be41af2e",
+    "app/game/systems/clanWarVariantExportV126.ts": "c0075ff0cef994ea1531512e002ca1f28d92e66f49954c9084a0da60e2ea132a",
+    "app/game/systems/clanWarWorldClimateV126.ts": "4e7f9ed98e4dba7322fb6bac76abfc7c1b51cbc98790eb7314e4a34263f490c2",
+    "app/game/systems/clanWarVariantAtlasV120.ts": "c90e6b3efdfc38988c1a60053898a25edc27d6699713aef8773fefc951eaf0a6",
+    "app/game/ClanWarBibleV6Panel.tsx": "f6047efe7e48568cab3fe7c9de3d1d6b5d8d37f25ccfd3117c0ab4ff109c6f57",
+    "app/game/GameClient.tsx": "cb9e7b8c9ed38a5fb5c112905be169246bdef5b136408a3207fb307de32f2972"
+  },
+  "buildIdBefore": "RYl37_8hN58IOB8jDpRj1",
+  "fixtureSha256": "c29685d009e57a3d5bdc768da63cf69f668988887adaf5628288d4d8ad4b63b4",
+  "browserVersion": "154.0.8037.57",
+  "sourceAfter": {
+    "app/game/ClanWarVariantAtlasV120.tsx": "ea0d64b23cca58b92e89ac7bf4d9c33170f0534ee5be50bdc86bb9d1be41af2e",
+    "app/game/systems/clanWarVariantExportV126.ts": "c0075ff0cef994ea1531512e002ca1f28d92e66f49954c9084a0da60e2ea132a",
+    "app/game/systems/clanWarWorldClimateV126.ts": "4e7f9ed98e4dba7322fb6bac76abfc7c1b51cbc98790eb7314e4a34263f490c2",
+    "app/game/systems/clanWarVariantAtlasV120.ts": "c90e6b3efdfc38988c1a60053898a25edc27d6699713aef8773fefc951eaf0a6",
+    "app/game/ClanWarBibleV6Panel.tsx": "f6047efe7e48568cab3fe7c9de3d1d6b5d8d37f25ccfd3117c0ab4ff109c6f57",
+    "app/game/GameClient.tsx": "cb9e7b8c9ed38a5fb5c112905be169246bdef5b136408a3207fb307de32f2972"
+  },
+  "buildIdAfter": "RYl37_8hN58IOB8jDpRj1",
+  "passed": true,
+  "screenshotInspection": {
+    "path": "production/p0p1-20261109/qa/homeworld/native-exports/attempt-3/screenshot-inspection.json",
+    "sha256": "3e1519d1cd9b396732f704bd547ae5c5250f4a5d5051eb57888ea4d3a002e9bc",
+    "allOpened": true,
+    "count": 4
+  },
+  "mobileDownload": {
+    "filename": "indoor-mobile.json",
+    "sha256": "fa379b8737dd9cd59835acab40d6d8e9a69ca72e2f311ce498af3717143d1e4b",
+    "bytes": 7489
+  }
+}

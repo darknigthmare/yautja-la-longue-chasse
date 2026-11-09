@@ -1,0 +1,34 @@
+TAP version 13
+# Subtest: Outer Ops recalls require an authorized ongoing mission, not an instant team release
+ok 1 - Outer Ops recalls require an authorized ongoing mission, not an instant team release
+  ---
+  duration_ms: 5.482741
+  type: 'test'
+  ...
+# Subtest: due recalls end exactly once as safe withdrawals without XP, wounds or territory rewards
+ok 2 - due recalls end exactly once as safe withdrawals without XP, wounds or territory rewards
+  ---
+  duration_ms: 1.189895
+  type: 'test'
+  ...
+# Subtest: forged recall deadlines, foreign rules and impossible timestamps preserve archive protection
+ok 3 - forged recall deadlines, foreign rules and impossible timestamps preserve archive protection
+  ---
+  duration_ms: 3.298176
+  type: 'test'
+  ...
+# Subtest: voluntary immediate withdrawal does not wound or level a dormant combat team
+ok 4 - voluntary immediate withdrawal does not wound or level a dormant combat team
+  ---
+  duration_ms: 0.928751
+  type: 'test'
+  ...
+1..4
+# tests 4
+# suites 0
+# pass 4
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 17.335181

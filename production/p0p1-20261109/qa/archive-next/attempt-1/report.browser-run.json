@@ -1,0 +1,521 @@
+{
+  "schemaVersion": 1,
+  "url": "http://127.0.0.1:3123",
+  "startedAt": "2026-11-09T06:50:31.591Z",
+  "scope": "Actual Next GameClient → physical council route → War Bible V6 default rules → persisted V115 adoption, canonical orders and reload. No reducer/clock/DOM/storage reads patched.",
+  "fixture": {
+    "campaign": "production/crew-dialogue-20261109/qa/native/attempt-1/initial-agreement.json",
+    "campaignFileSha256": "c29685d009e57a3d5bdc768da63cf69f668988887adaf5628288d4d8ad4b63b4",
+    "campaignSeedSha256": "92a37b2a80cafac77f87860cc8a6d3d81d774b1e59df1c966d48d85dff28aed4",
+    "fullCampaignPlayed": false,
+    "legacyCheckpointSource": "production/p0p1-20261109/qa/archive/attempt-3/legacy-migration-native.json",
+    "legacyArtifactSha256": "26c2d4c50285008f096330170186cb2a13cdb1a875fa9572b16fcde700626966",
+    "legacyBeforeSha256": "1f71734568e82ab41b9aa4f00793db38de1fe3ff40f75250f61a0927e9a19f89",
+    "legacyAfterSha256": "600c385d56403e970fd75a07976b4380e466411f45ae48b277e02b4d424b2631",
+    "legacyProvenance": "Exact raw checkpoints produced by actual pre-migration UI/model39b601ce (two pinned files, current shared dependencies) in archive/attempt-3. They are seeded/replayed here; this Next recipe does not execute the old bundle.",
+    "secondaryWriter": "A second real same-origin page writes only the captured legacyAfter bytes via native localStorage.setItem. This is disclosed external-write fixture, not a fresh old-UI gameplay action."
+  },
+  "canonicalKey": "yautja.clan-war.v115.operations.fenced.v2",
+  "legacyKey": "yautja.clan-war.v115.operations.free.v1",
+  "checks": [
+    {
+      "name": "fresh-origin-has-captured-old-checkpoint-and-no-canonical-archive-or-fence",
+      "passed": true,
+      "legacySha256": "1f71734568e82ab41b9aa4f00793db38de1fe3ff40f75250f61a0927e9a19f89",
+      "serial": 1,
+      "tick": 1,
+      "rav": 119
+    },
+    {
+      "name": "native-council-to-default-war-bible-persisted-operations",
+      "passed": true,
+      "sourceSha": "87ad5d1a6eaf49f2908a4457ef3f97b8f34db481a24bbc121d2e924559b19183",
+      "privateRulesImported": false
+    },
+    {
+      "name": "legacy-is-readonly-until-explicit-adoption-with-same-mission-and-rav",
+      "passed": true,
+      "canonicalAbsent": true,
+      "mission": "W115-OPS-0001",
+      "rav": 119
+    },
+    {
+      "name": "pre-adoption-recovery-is-real-download-of-exact-old-checkpoint",
+      "passed": true
+    },
+    {
+      "name": "explicit-next-adoption-commits-identical-bytes-to-real-fenced-v2",
+      "passed": true,
+      "token": "da981b24-1ef4-4923-8b69-2154784b1fee",
+      "canonicalSha256": "1f71734568e82ab41b9aa4f00793db38de1fe3ff40f75250f61a0927e9a19f89",
+      "rav": 119,
+      "mission": "W115-OPS-0001",
+      "legacyUnchanged": true,
+      "campaignUnchanged": true
+    },
+    {
+      "name": "legacy-recovery-export-stays-available-after-adoption",
+      "passed": true
+    },
+    {
+      "name": "disclosed-second-page-old-byte-replay-cannot-change-canonical-archive-or-fence",
+      "passed": true,
+      "secondaryWrite": "Native localStorage.setItem replay of captured old-client legacyAfter, not execution of old bundle",
+      "legacySha256": "600c385d56403e970fd75a07976b4380e466411f45ae48b277e02b4d424b2631",
+      "canonicalSha256": "1f71734568e82ab41b9aa4f00793db38de1fe3ff40f75250f61a0927e9a19f89",
+      "canonicalWebLockWasHeld": true
+    }
+  ],
+  "errors": [],
+  "consoleErrors": [],
+  "httpErrors": [],
+  "requestFailures": [],
+  "servedScripts": [
+    {
+      "page": "NEXT",
+      "pathname": "/_next/static/chunks/webpack-de8faae05a3f223f.js",
+      "bytes": 8667,
+      "sha256": "37130b359ddcb8641ab2ffacca650ad42bf6f225cd72c918841e37a287eb8cb5",
+      "builtSha256": "37130b359ddcb8641ab2ffacca650ad42bf6f225cd72c918841e37a287eb8cb5",
+      "matches": true
+    },
+    {
+      "page": "NEXT",
+      "pathname": "/_next/static/chunks/app/error-ea2342cfe5895ddb.js",
+      "bytes": 1186,
+      "sha256": "221f1f0ae4706ec1e8ac9408031604a32ea527ed3c7c5e96174ecd053a1d2946",
+      "builtSha256": "221f1f0ae4706ec1e8ac9408031604a32ea527ed3c7c5e96174ecd053a1d2946",
+      "matches": true
+    },
+    {
+      "page": "NEXT",
+      "pathname": "/_next/static/chunks/main-app-340bf771475649a8.js",
+      "bytes": 529,
+      "sha256": "1f59bd0febb680992cf62bec6702ba6126f8a586d2512eb6d3ca2ceaa90a6591",
+      "builtSha256": "1f59bd0febb680992cf62bec6702ba6126f8a586d2512eb6d3ca2ceaa90a6591",
+      "matches": true
+    },
+    {
+      "page": "NEXT",
+      "pathname": "/_next/static/chunks/5151-2b5acbc4e490de14.js",
+      "bytes": 16901,
+      "sha256": "c2e643722a4b205b07050fbb8c6babf6c51fd7529addeab761a50a368dc334aa",
+      "builtSha256": "c2e643722a4b205b07050fbb8c6babf6c51fd7529addeab761a50a368dc334aa",
+      "matches": true
+    },
+    {
+      "page": "NEXT",
+      "pathname": "/_next/static/chunks/859-7d1b8ebba0d03e8a.js",
+      "bytes": 26360,
+      "sha256": "28109f27ffbf185097ffe013563b270eeed22bf69c782ad73585983215921303",
+      "builtSha256": "28109f27ffbf185097ffe013563b270eeed22bf69c782ad73585983215921303",
+      "matches": true
+    },
+    {
+      "page": "NEXT",
+      "pathname": "/_next/static/chunks/6087-daabd7b2ca1dcffd.js",
+      "bytes": 28221,
+      "sha256": "fb998de1e16d514d69993ee81cb719b83d0957b70d2025dd76950816d17a4a85",
+      "builtSha256": "fb998de1e16d514d69993ee81cb719b83d0957b70d2025dd76950816d17a4a85",
+      "matches": true
+    },
+    {
+      "page": "NEXT",
+      "pathname": "/_next/static/chunks/4bd1b696-8a4ab4fdf0ae305a.js",
+      "bytes": 201060,
+      "sha256": "5cf2fcfae6b221476479e25b2883f9052b18a7eb97bd3d069f3cc44112852610",
+      "builtSha256": "5cf2fcfae6b221476479e25b2883f9052b18a7eb97bd3d069f3cc44112852610",
+      "matches": true
+    },
+    {
+      "page": "NEXT",
+      "pathname": "/_next/static/chunks/3794-6cecce02b123eb1f.js",
+      "bytes": 241388,
+      "sha256": "d39ac559f4774cc2556428ce8bf697328ddc72aba734108f6297f05b75038e42",
+      "builtSha256": "d39ac559f4774cc2556428ce8bf697328ddc72aba734108f6297f05b75038e42",
+      "matches": true
+    },
+    {
+      "page": "NEXT",
+      "pathname": "/_next/static/chunks/3013-d7dd1404155871c3.js",
+      "bytes": 27389,
+      "sha256": "fda4314f014cf5578752b6e663b34e789e28fadc9ecb75548736c0a431b3065d",
+      "builtSha256": "fda4314f014cf5578752b6e663b34e789e28fadc9ecb75548736c0a431b3065d",
+      "matches": true
+    },
+    {
+      "page": "NEXT",
+      "pathname": "/_next/static/chunks/49-2d3614459171c485.js",
+      "bytes": 33589,
+      "sha256": "39bf730dd33009bfc90647f8f85fdabeaab75990e91b8f11aa5f31dcc1200801",
+      "builtSha256": "39bf730dd33009bfc90647f8f85fdabeaab75990e91b8f11aa5f31dcc1200801",
+      "matches": true
+    },
+    {
+      "page": "NEXT",
+      "pathname": "/_next/static/chunks/8482-97fd3178822a871b.js",
+      "bytes": 150540,
+      "sha256": "d9724ac22f8f550d967c5d2bafca42c7bd12f85cfcc0f30e589e053af48d0b58",
+      "builtSha256": "d9724ac22f8f550d967c5d2bafca42c7bd12f85cfcc0f30e589e053af48d0b58",
+      "matches": true
+    },
+    {
+      "page": "NEXT",
+      "pathname": "/_next/static/chunks/7555-ca61a4345fd1de7e.js",
+      "bytes": 32867,
+      "sha256": "5a5e038b162460797617e6d5e4556e317f4be08f07a4d6b790d3596d0bd7af4e",
+      "builtSha256": "5a5e038b162460797617e6d5e4556e317f4be08f07a4d6b790d3596d0bd7af4e",
+      "matches": true
+    },
+    {
+      "page": "NEXT",
+      "pathname": "/_next/static/chunks/8997-0d461eb6cf3c2898.js",
+      "bytes": 11669,
+      "sha256": "418166960b900807211415b4ec0e24301c5e3978e3baf19a215b22a8529b410d",
+      "builtSha256": "418166960b900807211415b4ec0e24301c5e3978e3baf19a215b22a8529b410d",
+      "matches": true
+    },
+    {
+      "page": "NEXT",
+      "pathname": "/_next/static/chunks/7178-91125a118647fb13.js",
+      "bytes": 6412,
+      "sha256": "b2fe01cbc67ed6a2935bc9b02d17a27edc70e088f33f556862ae6f63b954fa60",
+      "builtSha256": "b2fe01cbc67ed6a2935bc9b02d17a27edc70e088f33f556862ae6f63b954fa60",
+      "matches": true
+    },
+    {
+      "page": "NEXT",
+      "pathname": "/_next/static/chunks/2887-5349be72c36ef2d1.js",
+      "bytes": 337971,
+      "sha256": "1ed8d6e4dbce20598baf969254df8019b2f395dda65369d5413114ec2bc4ff71",
+      "builtSha256": "1ed8d6e4dbce20598baf969254df8019b2f395dda65369d5413114ec2bc4ff71",
+      "matches": true
+    },
+    {
+      "page": "NEXT",
+      "pathname": "/_next/static/chunks/9372-5a69314ee210bcac.js",
+      "bytes": 462211,
+      "sha256": "dc6270d3d5c5458d8e5b7c053a8d411a5e95bcc4cd0ba1484b18946d32ba847c",
+      "builtSha256": "dc6270d3d5c5458d8e5b7c053a8d411a5e95bcc4cd0ba1484b18946d32ba847c",
+      "matches": true
+    },
+    {
+      "page": "NEXT",
+      "pathname": "/_next/static/chunks/9548-15f6d72975d5f216.js",
+      "bytes": 338894,
+      "sha256": "bb05d83cd91258101f96b9c62c33f37ad5d5caf27f4669ff9bc6a9d5f8bfbf02",
+      "builtSha256": "bb05d83cd91258101f96b9c62c33f37ad5d5caf27f4669ff9bc6a9d5f8bfbf02",
+      "matches": true
+    },
+    {
+      "page": "NEXT",
+      "pathname": "/_next/static/chunks/app/page-36499de9eb945742.js",
+      "bytes": 662604,
+      "sha256": "0148d5077fc13a1063a5738f6bb36e2c671b1bc86787d33fdd79b90a4c9f90d9",
+      "builtSha256": "0148d5077fc13a1063a5738f6bb36e2c671b1bc86787d33fdd79b90a4c9f90d9",
+      "matches": true
+    },
+    {
+      "page": "NEXT",
+      "pathname": "/_next/static/chunks/4292-05a48fc0a4977f3a.js",
+      "bytes": 891386,
+      "sha256": "7cbfb37df9357c4d73936f5c764318015417cce4a880fd2a4b24079241053fb1",
+      "builtSha256": "7cbfb37df9357c4d73936f5c764318015417cce4a880fd2a4b24079241053fb1",
+      "matches": true
+    },
+    {
+      "page": "NEXT",
+      "pathname": "/_next/static/chunks/84-b773dabbd6c85016.js",
+      "bytes": 2691383,
+      "sha256": "d4e4ed4655ef37a24c740bf1133f7b0933fddd4d9df4cedc1978d89423c4e907",
+      "builtSha256": "d4e4ed4655ef37a24c740bf1133f7b0933fddd4d9df4cedc1978d89423c4e907",
+      "matches": true
+    },
+    {
+      "page": "NEXT",
+      "pathname": "/_next/static/chunks/3663.bb3c0876d49d8928.js",
+      "bytes": 22887,
+      "sha256": "596eb72b970dbe6bd3330e844bfa67c53ec9f62c40b999119b0a98b52df5066d",
+      "builtSha256": "596eb72b970dbe6bd3330e844bfa67c53ec9f62c40b999119b0a98b52df5066d",
+      "matches": true
+    },
+    {
+      "page": "NEXT",
+      "pathname": "/_next/static/chunks/378.f166874834cfd1d6.js",
+      "bytes": 119902,
+      "sha256": "f875fbeabf8c7ba34566b6abbbc3677f2e8e94f958b546165463daa8c35cecb9",
+      "builtSha256": "f875fbeabf8c7ba34566b6abbbc3677f2e8e94f958b546165463daa8c35cecb9",
+      "matches": true
+    },
+    {
+      "page": "NEXT",
+      "pathname": "/_next/static/chunks/6191-731e57ae014ed88a.js",
+      "bytes": 475443,
+      "sha256": "94651958af7690f2247779cdf1e917b6fef71ef3920c229739d2784bcf20461c",
+      "builtSha256": "94651958af7690f2247779cdf1e917b6fef71ef3920c229739d2784bcf20461c",
+      "matches": true
+    },
+    {
+      "page": "NEXT",
+      "pathname": "/_next/static/chunks/5772-ddd18c0d4b7715e5.js",
+      "bytes": 15717,
+      "sha256": "57650f80c624bc13bdf76a7fc29504847558e468de88ba3b24154959e944a740",
+      "builtSha256": "57650f80c624bc13bdf76a7fc29504847558e468de88ba3b24154959e944a740",
+      "matches": true
+    },
+    {
+      "page": "NEXT",
+      "pathname": "/_next/static/chunks/5803-29960c7239e27d59.js",
+      "bytes": 40619,
+      "sha256": "ba8f4c297e8b179f38c325390023d17b77d4cde4ffc86c7d4565fb3db830bc2f",
+      "builtSha256": "ba8f4c297e8b179f38c325390023d17b77d4cde4ffc86c7d4565fb3db830bc2f",
+      "matches": true
+    },
+    {
+      "page": "NEXT",
+      "pathname": "/_next/static/chunks/5565-f5ae51d2a45d54a0.js",
+      "bytes": 19811,
+      "sha256": "6d7db7f88c45be52e830d3945dfeac13df1e4af1edbe6969227d85df6a6201d0",
+      "builtSha256": "6d7db7f88c45be52e830d3945dfeac13df1e4af1edbe6969227d85df6a6201d0",
+      "matches": true
+    },
+    {
+      "page": "NEXT",
+      "pathname": "/_next/static/chunks/416-f053d1c82c5a6894.js",
+      "bytes": 1572901,
+      "sha256": "324ad430dd476d291da7007e3c42643a747fb75688bce57791855677948c7ec3",
+      "builtSha256": "324ad430dd476d291da7007e3c42643a747fb75688bce57791855677948c7ec3",
+      "matches": true
+    },
+    {
+      "page": "NEXT",
+      "pathname": "/_next/static/chunks/2633-6295565558c846d5.js",
+      "bytes": 1224230,
+      "sha256": "c2bfc3d56381e4ca8c7bff5a11d167b15f16dc59fe302f93d04999e16cabfb31",
+      "builtSha256": "c2bfc3d56381e4ca8c7bff5a11d167b15f16dc59fe302f93d04999e16cabfb31",
+      "matches": true
+    },
+    {
+      "page": "NEXT",
+      "pathname": "/_next/static/chunks/7271-26f38e9110713427.js",
+      "bytes": 1250402,
+      "sha256": "bd45551c8ac226c484ec904761fc8858c2261e468d996eb1aea1c71df124a125",
+      "builtSha256": "bd45551c8ac226c484ec904761fc8858c2261e468d996eb1aea1c71df124a125",
+      "matches": true
+    },
+    {
+      "page": "NEXT",
+      "pathname": "/_next/static/chunks/1073-d0f5d5656604a1a8.js",
+      "bytes": 4383037,
+      "sha256": "fe7c71a841855ffc356154276af54cd0f1f843a1ebcb43897db4cd033e0a7866",
+      "builtSha256": "fe7c71a841855ffc356154276af54cd0f1f843a1ebcb43897db4cd033e0a7866",
+      "matches": true
+    },
+    {
+      "page": "EXTERNAL-LEGACY-REPLAY",
+      "pathname": "/_next/static/chunks/webpack-de8faae05a3f223f.js",
+      "bytes": 8667,
+      "sha256": "37130b359ddcb8641ab2ffacca650ad42bf6f225cd72c918841e37a287eb8cb5",
+      "builtSha256": "37130b359ddcb8641ab2ffacca650ad42bf6f225cd72c918841e37a287eb8cb5",
+      "matches": true
+    },
+    {
+      "page": "EXTERNAL-LEGACY-REPLAY",
+      "pathname": "/_next/static/chunks/4bd1b696-8a4ab4fdf0ae305a.js",
+      "bytes": 201060,
+      "sha256": "5cf2fcfae6b221476479e25b2883f9052b18a7eb97bd3d069f3cc44112852610",
+      "builtSha256": "5cf2fcfae6b221476479e25b2883f9052b18a7eb97bd3d069f3cc44112852610",
+      "matches": true
+    },
+    {
+      "page": "EXTERNAL-LEGACY-REPLAY",
+      "pathname": "/_next/static/chunks/main-app-340bf771475649a8.js",
+      "bytes": 529,
+      "sha256": "1f59bd0febb680992cf62bec6702ba6126f8a586d2512eb6d3ca2ceaa90a6591",
+      "builtSha256": "1f59bd0febb680992cf62bec6702ba6126f8a586d2512eb6d3ca2ceaa90a6591",
+      "matches": true
+    },
+    {
+      "page": "EXTERNAL-LEGACY-REPLAY",
+      "pathname": "/_next/static/chunks/app/error-ea2342cfe5895ddb.js",
+      "bytes": 1186,
+      "sha256": "221f1f0ae4706ec1e8ac9408031604a32ea527ed3c7c5e96174ecd053a1d2946",
+      "builtSha256": "221f1f0ae4706ec1e8ac9408031604a32ea527ed3c7c5e96174ecd053a1d2946",
+      "matches": true
+    },
+    {
+      "page": "EXTERNAL-LEGACY-REPLAY",
+      "pathname": "/_next/static/chunks/6087-daabd7b2ca1dcffd.js",
+      "bytes": 28221,
+      "sha256": "fb998de1e16d514d69993ee81cb719b83d0957b70d2025dd76950816d17a4a85",
+      "builtSha256": "fb998de1e16d514d69993ee81cb719b83d0957b70d2025dd76950816d17a4a85",
+      "matches": true
+    },
+    {
+      "page": "EXTERNAL-LEGACY-REPLAY",
+      "pathname": "/_next/static/chunks/5151-2b5acbc4e490de14.js",
+      "bytes": 16901,
+      "sha256": "c2e643722a4b205b07050fbb8c6babf6c51fd7529addeab761a50a368dc334aa",
+      "builtSha256": "c2e643722a4b205b07050fbb8c6babf6c51fd7529addeab761a50a368dc334aa",
+      "matches": true
+    },
+    {
+      "page": "EXTERNAL-LEGACY-REPLAY",
+      "pathname": "/_next/static/chunks/859-7d1b8ebba0d03e8a.js",
+      "bytes": 26360,
+      "sha256": "28109f27ffbf185097ffe013563b270eeed22bf69c782ad73585983215921303",
+      "builtSha256": "28109f27ffbf185097ffe013563b270eeed22bf69c782ad73585983215921303",
+      "matches": true
+    },
+    {
+      "page": "EXTERNAL-LEGACY-REPLAY",
+      "pathname": "/_next/static/chunks/8482-97fd3178822a871b.js",
+      "bytes": 150540,
+      "sha256": "d9724ac22f8f550d967c5d2bafca42c7bd12f85cfcc0f30e589e053af48d0b58",
+      "builtSha256": "d9724ac22f8f550d967c5d2bafca42c7bd12f85cfcc0f30e589e053af48d0b58",
+      "matches": true
+    },
+    {
+      "page": "EXTERNAL-LEGACY-REPLAY",
+      "pathname": "/_next/static/chunks/49-2d3614459171c485.js",
+      "bytes": 33589,
+      "sha256": "39bf730dd33009bfc90647f8f85fdabeaab75990e91b8f11aa5f31dcc1200801",
+      "builtSha256": "39bf730dd33009bfc90647f8f85fdabeaab75990e91b8f11aa5f31dcc1200801",
+      "matches": true
+    },
+    {
+      "page": "EXTERNAL-LEGACY-REPLAY",
+      "pathname": "/_next/static/chunks/3013-d7dd1404155871c3.js",
+      "bytes": 27389,
+      "sha256": "fda4314f014cf5578752b6e663b34e789e28fadc9ecb75548736c0a431b3065d",
+      "builtSha256": "fda4314f014cf5578752b6e663b34e789e28fadc9ecb75548736c0a431b3065d",
+      "matches": true
+    },
+    {
+      "page": "EXTERNAL-LEGACY-REPLAY",
+      "pathname": "/_next/static/chunks/3794-6cecce02b123eb1f.js",
+      "bytes": 241388,
+      "sha256": "d39ac559f4774cc2556428ce8bf697328ddc72aba734108f6297f05b75038e42",
+      "builtSha256": "d39ac559f4774cc2556428ce8bf697328ddc72aba734108f6297f05b75038e42",
+      "matches": true
+    },
+    {
+      "page": "EXTERNAL-LEGACY-REPLAY",
+      "pathname": "/_next/static/chunks/2887-5349be72c36ef2d1.js",
+      "bytes": 337971,
+      "sha256": "1ed8d6e4dbce20598baf969254df8019b2f395dda65369d5413114ec2bc4ff71",
+      "builtSha256": "1ed8d6e4dbce20598baf969254df8019b2f395dda65369d5413114ec2bc4ff71",
+      "matches": true
+    },
+    {
+      "page": "EXTERNAL-LEGACY-REPLAY",
+      "pathname": "/_next/static/chunks/7178-91125a118647fb13.js",
+      "bytes": 6412,
+      "sha256": "b2fe01cbc67ed6a2935bc9b02d17a27edc70e088f33f556862ae6f63b954fa60",
+      "builtSha256": "b2fe01cbc67ed6a2935bc9b02d17a27edc70e088f33f556862ae6f63b954fa60",
+      "matches": true
+    },
+    {
+      "page": "EXTERNAL-LEGACY-REPLAY",
+      "pathname": "/_next/static/chunks/7555-ca61a4345fd1de7e.js",
+      "bytes": 32867,
+      "sha256": "5a5e038b162460797617e6d5e4556e317f4be08f07a4d6b790d3596d0bd7af4e",
+      "builtSha256": "5a5e038b162460797617e6d5e4556e317f4be08f07a4d6b790d3596d0bd7af4e",
+      "matches": true
+    },
+    {
+      "page": "EXTERNAL-LEGACY-REPLAY",
+      "pathname": "/_next/static/chunks/8997-0d461eb6cf3c2898.js",
+      "bytes": 11669,
+      "sha256": "418166960b900807211415b4ec0e24301c5e3978e3baf19a215b22a8529b410d",
+      "builtSha256": "418166960b900807211415b4ec0e24301c5e3978e3baf19a215b22a8529b410d",
+      "matches": true
+    },
+    {
+      "page": "EXTERNAL-LEGACY-REPLAY",
+      "pathname": "/_next/static/chunks/9372-5a69314ee210bcac.js",
+      "bytes": 462211,
+      "sha256": "dc6270d3d5c5458d8e5b7c053a8d411a5e95bcc4cd0ba1484b18946d32ba847c",
+      "builtSha256": "dc6270d3d5c5458d8e5b7c053a8d411a5e95bcc4cd0ba1484b18946d32ba847c",
+      "matches": true
+    },
+    {
+      "page": "EXTERNAL-LEGACY-REPLAY",
+      "pathname": "/_next/static/chunks/9548-15f6d72975d5f216.js",
+      "bytes": 338894,
+      "sha256": "bb05d83cd91258101f96b9c62c33f37ad5d5caf27f4669ff9bc6a9d5f8bfbf02",
+      "builtSha256": "bb05d83cd91258101f96b9c62c33f37ad5d5caf27f4669ff9bc6a9d5f8bfbf02",
+      "matches": true
+    },
+    {
+      "page": "EXTERNAL-LEGACY-REPLAY",
+      "pathname": "/_next/static/chunks/4292-05a48fc0a4977f3a.js",
+      "bytes": 891386,
+      "sha256": "7cbfb37df9357c4d73936f5c764318015417cce4a880fd2a4b24079241053fb1",
+      "builtSha256": "7cbfb37df9357c4d73936f5c764318015417cce4a880fd2a4b24079241053fb1",
+      "matches": true
+    },
+    {
+      "page": "EXTERNAL-LEGACY-REPLAY",
+      "pathname": "/_next/static/chunks/app/page-36499de9eb945742.js",
+      "bytes": 662604,
+      "sha256": "0148d5077fc13a1063a5738f6bb36e2c671b1bc86787d33fdd79b90a4c9f90d9",
+      "builtSha256": "0148d5077fc13a1063a5738f6bb36e2c671b1bc86787d33fdd79b90a4c9f90d9",
+      "matches": true
+    },
+    {
+      "page": "EXTERNAL-LEGACY-REPLAY",
+      "pathname": "/_next/static/chunks/84-b773dabbd6c85016.js",
+      "bytes": 2691383,
+      "sha256": "d4e4ed4655ef37a24c740bf1133f7b0933fddd4d9df4cedc1978d89423c4e907",
+      "builtSha256": "d4e4ed4655ef37a24c740bf1133f7b0933fddd4d9df4cedc1978d89423c4e907",
+      "matches": true
+    }
+  ],
+  "downloads": [
+    {
+      "file": "recovery-before-adoption.json",
+      "suggestedFilename": "yautja-v115-ancienne-archive-recovery.json",
+      "bytes": 4765,
+      "sha256": "21b7425b6551de5f63ce1a2e375b9cc10ef1091de1c2406bb9e6c5d99820d13c"
+    },
+    {
+      "file": "recovery-after-adoption.json",
+      "suggestedFilename": "yautja-v115-ancienne-archive-recovery.json",
+      "bytes": 4765,
+      "sha256": "21b7425b6551de5f63ce1a2e375b9cc10ef1091de1c2406bb9e6c5d99820d13c"
+    }
+  ],
+  "screenshots": [
+    {
+      "file": "01-native-next-legacy-preview.png",
+      "sha256": "5bba42041bd88df6324c3110494034aed369c6b452db710eea02a81dcfff711f",
+      "opened": false
+    },
+    {
+      "file": "02-native-next-adopted-mission.png",
+      "sha256": "b6226733e26bb397872509d74e2028620859889a5a8619d74a6a2a4b1609120a",
+      "opened": false
+    }
+  ],
+  "physicalController": false,
+  "humanArtReviewed": false,
+  "sourceBefore": {
+    "app/game/GameClient.tsx": "cb9e7b8c9ed38a5fb5c112905be169246bdef5b136408a3207fb307de32f2972",
+    "app/game/ClanWarBibleV6Panel.tsx": "f6047efe7e48568cab3fe7c9de3d1d6b5d8d37f25ccfd3117c0ab4ff109c6f57",
+    "app/game/ClanWarOperationsV115.tsx": "820e700818808b3d552cb26ee7e6d8fb74f1311411cb2f4d99962f5086fc5abb",
+    "app/game/systems/clanWarOperationsV115.ts": "c10c4c95994e517246812a89e4af6fc5264eb73f31b846ff586ea47a715d049b",
+    "app/game/systems/clanWarOperationsArchive.ts": "70c08ad2f6b6136a6c5d0f35d432e4a8c3c379a59defb2fd8a6d5ad269e01814",
+    "app/game/systems/clanWarFenceV94.ts": "959724666965ddb46b4a0ce28973145d365d35b7af67d0331590b1fbcf9a6092",
+    "app/game/systems/clanWarBibleV6.ts": "66de0c9d66d9f9fffa65fd1037b9f1b428cdbe7545211c08a9afe77162833dab",
+    "app/game/clanWarBibleV6Source.json": "ce27085c44196fefa600407f0bc46cbb74934eb5437126b29d03d35a1e7a751d"
+  },
+  "buildIdBefore": "lSBcQd-2LuUCPafGoIZvC",
+  "browserVersion": "154.0.8037.57",
+  "passed": false,
+  "failure": {
+    "message": "Expected values to be strictly equal:\n\n1 !== 2\n",
+    "stack": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\n1 !== 2\n\n    at file:///workspace/p0p1-20261109/homeworld/qa-next-legacy-adoption.mjs:98:102"
+  },
+  "endedAt": "2026-11-09T06:50:54.284Z"
+}

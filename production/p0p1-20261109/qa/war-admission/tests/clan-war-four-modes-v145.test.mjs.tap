@@ -1,0 +1,76 @@
+TAP version 13
+# Subtest: V145 assault: guardian receives one actual damage point from his nearby protected ally; total damage conserved
+ok 1 - V145 assault: guardian receives one actual damage point from his nearby protected ally; total damage conserved
+  ---
+  duration_ms: 11.084075
+  type: 'test'
+  ...
+# Subtest: V145 assault: real paid interposition persists for two ticks, expires and rejects duplicate
+ok 2 - V145 assault: real paid interposition persists for two ticks, expires and rejects duplicate
+  ---
+  duration_ms: 3.275292
+  type: 'test'
+  ...
+# Subtest: V145 assault: no free damage-redirection from far, duplicate, down or counterfeit squads
+ok 3 - V145 assault: no free damage-redirection from far, duplicate, down or counterfeit squads
+  ---
+  duration_ms: 0.93482
+  type: 'test'
+  ...
+# Subtest: V145 Outer Ops: a V144 legal reroute consumes FIVE seconds without entering a source passage
+ok 4 - V145 Outer Ops: a V144 legal reroute consumes FIVE seconds without entering a source passage
+  ---
+  duration_ms: 36.272941
+  type: 'test'
+  ...
+# Subtest: V145 Outer Ops: source passage and delayed return dates survive weighted route and unique settlement
+ok 5 - V145 Outer Ops: source passage and delayed return dates survive weighted route and unique settlement
+  ---
+  duration_ms: 22.574994
+  type: 'test'
+  ...
+# Subtest: V145 stealth: second guard blocks silent sabotage when primary is far from physical relay
+ok 6 - V145 stealth: second guard blocks silent sabotage when primary is far from physical relay
+  ---
+  duration_ms: 1.700075
+  type: 'test'
+  ...
+# Subtest: V145 stealth: acoustic listening recognizes physically nearby secondary patrol, never cheats original guard
+ok 7 - V145 stealth: acoustic listening recognizes physically nearby secondary patrol, never cheats original guard
+  ---
+  duration_ms: 3.518258
+  type: 'test'
+  ...
+# Subtest: V145 stealth: two guards never merge into the same solid tile on a regular reaction
+ok 8 - V145 stealth: two guards never merge into the same solid tile on a regular reaction
+  ---
+  duration_ms: 3.06907
+  type: 'test'
+  ...
+# Subtest: V145 RTS: an actual W3 post can be physically transferred and its existing hold progress preserved
+ok 9 - V145 RTS: an actual W3 post can be physically transferred and its existing hold progress preserved
+  ---
+  duration_ms: 7.415099
+  type: 'test'
+  ...
+# Subtest: V145 RTS: same, distant, down, twice-relieved or missing holder cannot claim a free hold
+ok 10 - V145 RTS: same, distant, down, twice-relieved or missing holder cannot claim a free hold
+  ---
+  duration_ms: 3.497357
+  type: 'test'
+  ...
+# Subtest: V145 source boundaries: 24 RTS briefs, 72 goals, and untouched V85 results
+ok 11 - V145 source boundaries: 24 RTS briefs, 72 goals, and untouched V85 results
+  ---
+  duration_ms: 40.523124
+  type: 'test'
+  ...
+1..11
+# tests 11
+# suites 0
+# pass 11
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 143.29238

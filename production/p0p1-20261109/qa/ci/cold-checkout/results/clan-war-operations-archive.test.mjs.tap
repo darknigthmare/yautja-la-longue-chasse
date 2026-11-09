@@ -1,0 +1,88 @@
+TAP version 13
+# Subtest: legacy V115 is adopted read-only; empty archives never write defaults or campaign bytes
+ok 1 - legacy V115 is adopted read-only; empty archives never write defaults or campaign bytes
+  ---
+  duration_ms: 3.00292
+  type: 'test'
+  ...
+# Subtest: RAV and mission identity are confirmed together after a durable intent and exact readback
+ok 2 - RAV and mission identity are confirmed together after a durable intent and exact readback
+  ---
+  duration_ms: 1.722238
+  type: 'test'
+  ...
+# Subtest: two renderers with stale localStorage caches cannot both commit the same fenced predecessor
+ok 3 - two renderers with stale localStorage caches cannot both commit the same fenced predecessor
+  ---
+  duration_ms: 1.380462
+  type: 'test'
+  ...
+# Subtest: silent mirror-write failure keeps an intent and explicit repair resumes without charging twice
+ok 4 - silent mirror-write failure keeps an intent and explicit repair resumes without charging twice
+  ---
+  duration_ms: 1.368384
+  type: 'test'
+  ...
+# Subtest: a setter that persists then throws is acknowledged only after successful readback and fence confirmation
+ok 5 - a setter that persists then throws is acknowledged only after successful readback and fence confirmation
+  ---
+  duration_ms: 0.561517
+  type: 'test'
+  ...
+# Subtest: crash after mirror but before confirmation is read-only on reload, then repair does not rewrite or replay
+ok 6 - crash after mirror but before confirmation is read-only on reload, then repair does not rewrite or replay
+  ---
+  duration_ms: 0.732455
+  type: 'test'
+  ...
+# Subtest: a newer or foreign mirror is never overwritten by repair or reset
+ok 7 - a newer or foreign mirror is never overwritten by repair or reset
+  ---
+  duration_ms: 0.65629
+  type: 'test'
+  ...
+# Subtest: malformed and future V115 archives and intents are retained without writes
+ok 8 - malformed and future V115 archives and intents are retained without writes
+  ---
+  duration_ms: 0.36471
+  type: 'test'
+  ...
+# Subtest: denied IDB or denied storage fails closed instead of falling back to an unsafe mirror
+ok 9 - denied IDB or denied storage fails closed instead of falling back to an unsafe mirror
+  ---
+  duration_ms: 0.433173
+  type: 'test'
+  ...
+# Subtest: an invalid next state never reserves an intent or writes an archive
+ok 10 - an invalid next state never reserves an intent or writes an archive
+  ---
+  duration_ms: 0.388857
+  type: 'test'
+  ...
+# Subtest: changes while hydration yields are detected before adopting or announcing an archive
+ok 11 - changes while hydration yields are detected before adopting or announcing an archive
+  ---
+  duration_ms: 0.339482
+  type: 'test'
+  ...
+# Subtest: a foreign write after intent reservation or during confirmation never receives success
+ok 12 - a foreign write after intent reservation or during confirmation never receives success
+  ---
+  duration_ms: 0.738955
+  type: 'test'
+  ...
+# Subtest: repair refuses a superseded transaction token even when the visible mirror is unchanged
+ok 13 - repair refuses a superseded transaction token even when the visible mirror is unchanged
+  ---
+  duration_ms: 0.436869
+  type: 'test'
+  ...
+1..13
+# tests 13
+# suites 0
+# pass 13
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 23.883421

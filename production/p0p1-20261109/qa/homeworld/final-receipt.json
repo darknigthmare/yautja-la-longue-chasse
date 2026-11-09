@@ -1,0 +1,123 @@
+{
+  "schemaVersion": 1,
+  "asOf": "2026-11-09",
+  "baseCommit": "39b601ce1873a1f400d2f545f0fab97691b779e3",
+  "testsPassed": 147,
+  "testsFailed": 0,
+  "newTestsIncluded": 13,
+  "sourceSha256": {
+    "app/game/systems/clanWarOuterWeightedProgressV141.ts": "f515d116839e1619147458e70ee185ff2d748e62f4412f77c1afa32938dcfb34",
+    "app/game/systems/clanWarVariantExportV126.ts": "c0075ff0cef994ea1531512e002ca1f28d92e66f49954c9084a0da60e2ea132a",
+    "app/game/ClanWarVariantAtlasV120.tsx": "d8308aedae8b88db5fc5bc46e6d939c7bf36e53249f053cd06eba763fbd51b9e",
+    "tests/clan-war-outer-recall-continuity.test.mjs": "de850bd81e95583cfea0666ff39f53d4dda4fe3a5bf435b95dd96e2fc179e424",
+    "tests/clan-war-variant-export-coherence.test.mjs": "669d56c06c2014380281d06def20ba1d6ae659ed896f9dd51c7e6469a0c528bd"
+  },
+  "verificationPath": "production/p0p1-20261109/qa/homeworld/verification.json",
+  "artifacts": {
+    "production/p0p1-20261109/qa/homeworld/30-planets.tap": {
+      "sha256": "8481bad099398afdb9cad7bcef83749ec7691230d5032bc4888917c96163038e",
+      "bytes": 851
+    },
+    "production/p0p1-20261109/qa/homeworld/README.md": {
+      "sha256": "b14dbf1d97c9d90c00528910837c001262de9fe270ec1d1af12a79aa47b68859",
+      "bytes": 2936
+    },
+    "production/p0p1-20261109/qa/homeworld/access-before.json": {
+      "sha256": "bb986d438147345f539df27565599ae629c8a55dcde450de3f4733851961b5a6",
+      "bytes": 1429
+    },
+    "production/p0p1-20261109/qa/homeworld/access-before.log": {
+      "sha256": "fc1a0e53ee77f5353b1176d7ac0b1dff74f69c31b174e165b065bf49780860b6",
+      "bytes": 121
+    },
+    "production/p0p1-20261109/qa/homeworld/clan-war-four-modes-pr55-v144.test.mjs.tap": {
+      "sha256": "a129e479e561431ab5a22ee476f5e6cfcdde4366c6218633fbff4458e3cabc93",
+      "bytes": 2364
+    },
+    "production/p0p1-20261109/qa/homeworld/clan-war-four-modes-pr57-v144.test.mjs.tap": {
+      "sha256": "5220bc6481a7e0e974826b702963c5e1ae7d3ba0e8d39d8ba0fd546f4ec704bc",
+      "bytes": 2265
+    },
+    "production/p0p1-20261109/qa/homeworld/clan-war-four-modes-v140.test.mjs.tap": {
+      "sha256": "bca3b39e12e7460348d1a14ebca25a742920d4a8a11004f563b78d33cba73447",
+      "bytes": 2568
+    },
+    "production/p0p1-20261109/qa/homeworld/clan-war-four-modes-v141.test.mjs.tap": {
+      "sha256": "104d3904eff8ffa1022e6401862c62d1581224f38f6572691e18f859466a35cb",
+      "bytes": 2695
+    },
+    "production/p0p1-20261109/qa/homeworld/clan-war-four-modes-v145.test.mjs.tap": {
+      "sha256": "0c2cf6ffba3cc3eabb3ba6e972463c7c0e35cf3ead8aeaafdf986e1a9ba3d8f0",
+      "bytes": 2945
+    },
+    "production/p0p1-20261109/qa/homeworld/clan-war-geo-ai-multiplayer-v126.test.mjs.tap": {
+      "sha256": "484597b5b9612dba6b5d177516424e7b263818ed4e80f35d2dc76b6b87f081eb",
+      "bytes": 1875
+    },
+    "production/p0p1-20261109/qa/homeworld/clan-war-outer-inspection-reconcile.test.mjs.tap": {
+      "sha256": "46dc53f6c564f902a594cbe5ef8e818da2287a4ee06c51c823633999c7331a01",
+      "bytes": 2110
+    },
+    "production/p0p1-20261109/qa/homeworld/clan-war-outer-pace-reconcile.test.mjs.tap": {
+      "sha256": "a684732b391c128eb019b9e9e32868a0f21ae921169652a0cbb96558d100382c",
+      "bytes": 1287
+    },
+    "production/p0p1-20261109/qa/homeworld/clan-war-outer-recall-continuity.test.mjs.tap": {
+      "sha256": "d6a064bcf9b319bc777878e63cf1c0a5631ef8a746a7ad8a648bc2eed4a5076e",
+      "bytes": 2034
+    },
+    "production/p0p1-20261109/qa/homeworld/clan-war-outer-recall-v116.test.mjs.tap": {
+      "sha256": "e884e417f500ad47a40912d41de103bddbf38377b84f9addd6f97074c9085392",
+      "bytes": 1082
+    },
+    "production/p0p1-20261109/qa/homeworld/clan-war-production-v130.test.mjs.tap": {
+      "sha256": "f19e0fbf15e11b781f4da1d020894fa3bbf094b6354ff5ee9ebc2ead54868950",
+      "bytes": 1025
+    },
+    "production/p0p1-20261109/qa/homeworld/clan-war-source-maps-v128.test.mjs.tap": {
+      "sha256": "b413c370e98353d9c39535fc6705f9381dc879cea9315dda4d5f59c9f155249c",
+      "bytes": 3528
+    },
+    "production/p0p1-20261109/qa/homeworld/clan-war-variant-export-coherence.test.mjs.tap": {
+      "sha256": "cf48f66caaa31920c241a2304073b9743e67717f866f1dd1a990807acc3ad5dc",
+      "bytes": 1504
+    },
+    "production/p0p1-20261109/qa/homeworld/clan-war-variants-v120.test.mjs.tap": {
+      "sha256": "e9db485f32dd22542a657a7aaf4de3751e69cad2621f38a69f8417936b4f5b2e",
+      "bytes": 1913
+    },
+    "production/p0p1-20261109/qa/homeworld/export-regressions.json": {
+      "sha256": "60d517b850d4ed63ea824f2ed83963ac947fe6d023c490f79f94d18d0412f63d",
+      "bytes": 2020
+    },
+    "production/p0p1-20261109/qa/homeworld/lint-final.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "production/p0p1-20261109/qa/homeworld/npc-segments-before.json": {
+      "sha256": "fc1fe5875657e5a3c0c2e2d769b1bef226ff23c6706fecb2c96df945406bded4",
+      "bytes": 40
+    },
+    "production/p0p1-20261109/qa/homeworld/planet-level-design.tap": {
+      "sha256": "f16e27be4a0448a626c9fefe1eddb40ce59dc63d4075e47764e0683d3dc2392e",
+      "bytes": 7192
+    },
+    "production/p0p1-20261109/qa/homeworld/recall-continuity-before.tap": {
+      "sha256": "0ac59c1642c942e2c599006f29e734822a0aa6a5451cbe6f72e47327ff1ce42d",
+      "bytes": 10338
+    },
+    "production/p0p1-20261109/qa/homeworld/regressions.json": {
+      "sha256": "b9ee8574bdc16e0ccc01e2af0e39bd328186b76ef8024cc76b9ee346b184f0b1",
+      "bytes": 4554
+    },
+    "production/p0p1-20261109/qa/homeworld/verification.json": {
+      "sha256": "23613df4285d5ca1243d19cad7816250eabdd8272747c84b78fcfaf1182d5037",
+      "bytes": 15883
+    }
+  },
+  "scope": "Weighted recall continuity and V126 catalog exports, plus existing Homeworld/planet/source-map checks. No native browser or human art validation at this receipt.",
+  "browserExecuted": false,
+  "physicalControllerTested": false,
+  "humanArtReviewed": false,
+  "globalP0P1Closed": false
+}

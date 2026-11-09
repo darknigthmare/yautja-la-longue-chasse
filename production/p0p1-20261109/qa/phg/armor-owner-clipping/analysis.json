@@ -1,0 +1,299 @@
+{
+  "bug": "Armor pigment/material overlays ignored the existing source-space keep clip, restoring detached alpha from the shared shin plate on both legs.",
+  "causality": "Native baseline has no fragments; setting armorHex=#556677 alone introduces them before every decal/material action. Native diagnostic and DOM are separate preserved inputs.",
+  "asset": {
+    "path": "public/game/assets/v3/actors/yautja/hunter/armor/registered/shin.webp",
+    "sha256": "c12b24910d71f9430cccc9ed8fa6883202c76144779c858cb3121424bfc1d599",
+    "dimensions": [
+      256,
+      384
+    ],
+    "analysisMethod": "4-neighbor connected alpha components with alpha>=8; read-only, no image pixels changed.",
+    "components": [
+      {
+        "pixels": 1078,
+        "sourceBoundsExclusive": [
+          163,
+          283,
+          188,
+          342
+        ]
+      },
+      {
+        "pixels": 44,
+        "sourceBoundsExclusive": [
+          212,
+          307,
+          215,
+          329
+        ]
+      }
+    ]
+  },
+  "clip": {
+    "sourceKeepRect": [
+      0,
+      0,
+      200,
+      384
+    ],
+    "css": "inset(0% 21.875% 0% 0%)",
+    "nativeImageClipPresent": true,
+    "oldNormalAndWrapOverlayClips": "none"
+  },
+  "nativeDom": {
+    "path": "production/p0p1-20261109/qa/phg/diagnostic-isolation/01-armor-pigment-only-dom.json",
+    "sha256": "e21482305bffc35f0d18b543c31c34d92b9755f8d997d295bff4b04751470a44",
+    "rig": {
+      "data": {
+        "hunterRig": "",
+        "rigVersion": "3",
+        "preset": "custom",
+        "bodyMorph": "classic",
+        "headStyle": "reference",
+        "armor": "hunter",
+        "armorStyle": "avp",
+        "gauntletEquipped": "jungle-hunter",
+        "gauntletVisualValidation": "individual-v139-rig-blockout-not-film-approved",
+        "gauntletRigRegistration": "back-lower-arm-256x384",
+        "mask": "celtic",
+        "aiming": "false",
+        "pose": "idle"
+      },
+      "width": 317.3125,
+      "height": 475.96875
+    },
+    "shinLayers": [
+      {
+        "tag": "IMG",
+        "data": {
+          "rigSlot": "armor-shin"
+        },
+        "src": "http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/armor/registered/shin.webp",
+        "mask": "none",
+        "clip": "inset(0% 21.875% 0% 0%)",
+        "transform": "matrix(1.18, 0, 0, 1.05, -39.0443, -19.3362)",
+        "zIndex": "39",
+        "background": "none",
+        "color": "rgba(0, 0, 0, 0)",
+        "opacity": "1",
+        "position": "absolute",
+        "bbox": {
+          "x": -39.0443115234375,
+          "y": -19.33624267578125,
+          "width": 374.4287109375,
+          "height": 499.7672119140625
+        },
+        "style": "position: absolute; inset: 0px; width: 100%; height: 100%; object-fit: fill; transform-origin: 0px 0px; pointer-events: none; user-select: none; z-index: 39; filter: sepia(0.48) saturate(1.22) hue-rotate(346deg) brightness(1.02) drop-shadow(rgba(0, 0, 0, 0.6) 0px 1px 1px); clip-path: inset(0% 21.875% 0% 0%); transform: translate(-12.3047%, -4.0625%) matrix(1.18, 0, 0, 1.05, 0, 0);",
+        "ancestors": [
+          {
+            "data": {},
+            "clip": "none",
+            "transform": "none"
+          }
+        ]
+      },
+      {
+        "tag": "SPAN",
+        "data": {
+          "chromaticChannel": "armor"
+        },
+        "src": null,
+        "mask": "url(\"http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/armor/registered/shin.webp\")",
+        "clip": "none",
+        "transform": "matrix(1.18, 0, 0, 1.05, -39.0443, -19.3362)",
+        "zIndex": "39",
+        "background": "none",
+        "color": "rgb(85, 102, 119)",
+        "opacity": "0.78",
+        "position": "absolute",
+        "bbox": {
+          "x": -39.0443115234375,
+          "y": -19.33624267578125,
+          "width": 374.4287109375,
+          "height": 499.7672119140625
+        },
+        "style": "position: absolute; inset: 0px; width: 100%; height: 100%; pointer-events: none; user-select: none; background-color: rgb(85, 102, 119); background-image: none; background-position: center center; background-repeat: no-repeat; background-size: cover; mask-image: url(\"/game/assets/v3/actors/yautja/hunter/armor/registered/shin.webp\"); mask-repeat: no-repeat; mask-size: 100% 100%; mix-blend-mode: color; opacity: 0.78; object-fit: fill; transform-origin: 0px 0px; z-index: 39; transform: translate(-12.3047%, -4.0625%) matrix(1.18, 0, 0, 1.05, 0, 0);",
+        "ancestors": [
+          {
+            "data": {},
+            "clip": "none",
+            "transform": "none"
+          }
+        ]
+      },
+      {
+        "tag": "SPAN",
+        "data": {
+          "chromaticChannel": "armor"
+        },
+        "src": null,
+        "mask": "url(\"http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/armor/registered/shin.webp\")",
+        "clip": "none",
+        "transform": "matrix(1.18, 0, 0, 1.05, -39.0443, -19.3362)",
+        "zIndex": "auto",
+        "background": "none",
+        "color": "rgb(85, 102, 119)",
+        "opacity": "0.78",
+        "position": "absolute",
+        "bbox": {
+          "x": -39.0443115234375,
+          "y": -19.33624267578125,
+          "width": 374.4287109375,
+          "height": 499.7672119140625
+        },
+        "style": "position: absolute; inset: 0px; width: 100%; height: 100%; pointer-events: none; user-select: none; background-color: rgb(85, 102, 119); background-image: none; background-position: center center; background-repeat: no-repeat; background-size: cover; mask-image: url(\"/game/assets/v3/actors/yautja/hunter/armor/registered/shin.webp\"); mask-repeat: no-repeat; mask-size: 100% 100%; mix-blend-mode: color; opacity: 0.78; object-fit: fill; transform-origin: 0px 0px; transform: translate(-12.3047%, -4.0625%) matrix(1.18, 0, 0, 1.05, 0, 0);",
+        "ancestors": [
+          {
+            "data": {
+              "rigArmorWrap": "shin"
+            },
+            "clip": "none",
+            "transform": "matrix(1, 0, 0, 1, 0, 0)"
+          },
+          {
+            "data": {},
+            "clip": "none",
+            "transform": "none"
+          }
+        ]
+      },
+      {
+        "tag": "IMG",
+        "data": {
+          "rigSlot": "armor-shin-far"
+        },
+        "src": "http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/armor/registered/shin.webp",
+        "mask": "none",
+        "clip": "inset(0% 21.875% 0% 0%)",
+        "transform": "matrix(1.18, 0, 0, 1.05, -156.177, -14.3782)",
+        "zIndex": "21",
+        "background": "none",
+        "color": "rgba(0, 0, 0, 0)",
+        "opacity": "1",
+        "position": "absolute",
+        "bbox": {
+          "x": -156.17724609375,
+          "y": -14.37823486328125,
+          "width": 374.42877197265625,
+          "height": 499.7672119140625
+        },
+        "style": "position: absolute; inset: 0px; width: 100%; height: 100%; object-fit: fill; transform-origin: 0px 0px; pointer-events: none; user-select: none; z-index: 21; filter: sepia(0.48) saturate(1.22) hue-rotate(346deg) brightness(1.02) drop-shadow(rgba(0, 0, 0, 0.6) 0px 1px 1px) brightness(0.72); clip-path: inset(0% 21.875% 0% 0%); transform: translate(-49.2188%, -3.02083%) matrix(1.18, 0, 0, 1.05, 0, 0);",
+        "ancestors": [
+          {
+            "data": {},
+            "clip": "none",
+            "transform": "none"
+          }
+        ]
+      },
+      {
+        "tag": "SPAN",
+        "data": {
+          "chromaticChannel": "armor"
+        },
+        "src": null,
+        "mask": "url(\"http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/armor/registered/shin.webp\")",
+        "clip": "none",
+        "transform": "matrix(1.18, 0, 0, 1.05, -156.177, -14.3782)",
+        "zIndex": "21",
+        "background": "none",
+        "color": "rgb(85, 102, 119)",
+        "opacity": "0.78",
+        "position": "absolute",
+        "bbox": {
+          "x": -156.17724609375,
+          "y": -14.37823486328125,
+          "width": 374.42877197265625,
+          "height": 499.7672119140625
+        },
+        "style": "position: absolute; inset: 0px; width: 100%; height: 100%; pointer-events: none; user-select: none; background-color: rgb(85, 102, 119); background-image: none; background-position: center center; background-repeat: no-repeat; background-size: cover; mask-image: url(\"/game/assets/v3/actors/yautja/hunter/armor/registered/shin.webp\"); mask-repeat: no-repeat; mask-size: 100% 100%; mix-blend-mode: color; opacity: 0.78; object-fit: fill; transform-origin: 0px 0px; z-index: 21; transform: translate(-49.2188%, -3.02083%) matrix(1.18, 0, 0, 1.05, 0, 0);",
+        "ancestors": [
+          {
+            "data": {},
+            "clip": "none",
+            "transform": "none"
+          }
+        ]
+      },
+      {
+        "tag": "SPAN",
+        "data": {
+          "chromaticChannel": "armor"
+        },
+        "src": null,
+        "mask": "url(\"http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/armor/registered/shin.webp\")",
+        "clip": "none",
+        "transform": "matrix(1.18, 0, 0, 1.05, -156.177, -14.3782)",
+        "zIndex": "auto",
+        "background": "none",
+        "color": "rgb(85, 102, 119)",
+        "opacity": "0.78",
+        "position": "absolute",
+        "bbox": {
+          "x": -156.17724609375,
+          "y": -14.37823486328125,
+          "width": 374.42877197265625,
+          "height": 499.7672119140625
+        },
+        "style": "position: absolute; inset: 0px; width: 100%; height: 100%; pointer-events: none; user-select: none; background-color: rgb(85, 102, 119); background-image: none; background-position: center center; background-repeat: no-repeat; background-size: cover; mask-image: url(\"/game/assets/v3/actors/yautja/hunter/armor/registered/shin.webp\"); mask-repeat: no-repeat; mask-size: 100% 100%; mix-blend-mode: color; opacity: 0.78; object-fit: fill; transform-origin: 0px 0px; transform: translate(-49.2188%, -3.02083%) matrix(1.18, 0, 0, 1.05, 0, 0);",
+        "ancestors": [
+          {
+            "data": {
+              "rigArmorWrap": "shin"
+            },
+            "clip": "none",
+            "transform": "matrix(1, 0, 0, 1, 0, 0)"
+          },
+          {
+            "data": {},
+            "clip": "none",
+            "transform": "none"
+          }
+        ]
+      }
+    ]
+  },
+  "predictedDetachedComponentCentres": [
+    {
+      "slot": "armor-shin",
+      "sourceComponentCentre": [
+        213.5,
+        318
+      ],
+      "rigCssPixelCentre": [
+        273.2234270507812,
+        394.5335021484375
+      ]
+    },
+    {
+      "slot": "armor-shin-far",
+      "sourceComponentCentre": [
+        213.5,
+        318
+      ],
+      "rigCssPixelCentre": [
+        156.09072705078123,
+        399.4915021484375
+      ]
+    }
+  ],
+  "fix": {
+    "path": "app/game/HunterRigPreview.tsx",
+    "scope": "Pass the same existing clipPath to both armor ChromaticSurfaceV113 styles, ordinary and limb-wrapped; no coordinate, transform, asset or save change.",
+    "sha256": "fcfedbad9f84c69a619f66df437dd4560bd2ada8d65e0359e288dcd3ac98fc93"
+  },
+  "otherOwners": {
+    "armorDecal": "Chest only; no shin decal owner. Chest modules have no keep clip.",
+    "HuntCanvas": "Existing drawRegisteredLayer applies options.clip after composing recolor/decal, before drawImage; wrap reuses the same options. Unchanged.",
+    "Homeworld": "Existing ordinary and wrapped plate layers already pass clipPath to ChromaticSurfaceV113. Unchanged.",
+    "PIT": "Both shin layers already use their retained alpha rectangles. Unchanged."
+  },
+  "verification": {
+    "newSsrTests": 5,
+    "matrixRendersIncluded": 72,
+    "lintExitCode": 0,
+    "nativeAfterBuild": "Owned by root/PHG agent; this analysis makes no post-fix native rendering claim.",
+    "humanArtOneToOneApproved": false
+  }
+}

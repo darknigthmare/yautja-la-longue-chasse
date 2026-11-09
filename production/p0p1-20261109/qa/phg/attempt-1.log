@@ -1,0 +1,20 @@
+PASS T01 Alpha lineage survives skin customization and durable Ogre selection
+PASS alpha T05 native face decal persists with its actual masked owner
+PASS alpha T06 native body decal persists with its actual masked owner
+PASS alpha T07 native armor decal persists with its actual masked owner
+PASS alpha T08 native biomask decal persists with its actual masked owner
+PASS alpha durable reload restores the committed palette and all four real controls
+PASS alpha T04 preview removal hides both the biomask pigment and decal without writing equipment
+PASS alpha T04 durable biomask removal survives reload and has no worn-mask layers
+PASS T03 Alpha-to-City rejects Ogre on actual geometry, clears the unavailable finish on confirmation and reloads cleanly
+AssertionError [ERR_ASSERTION]: Expected "actual" to be strictly unequal to:
+
+'none'
+    at file:///workspace/yautja-la-longue-chasse/scripts/qa-phg-p0p1-20261109.mjs:224:18 {
+  generatedMessage: true,
+  code: 'ERR_ASSERTION',
+  actual: 'none',
+  expected: 'none',
+  operator: 'notStrictEqual',
+  diff: 'simple'
+}

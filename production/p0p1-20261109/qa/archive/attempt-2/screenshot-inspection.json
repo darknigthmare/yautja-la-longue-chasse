@@ -1,0 +1,72 @@
+{
+  "openedOriginalPngs": 9,
+  "allOpened": true,
+  "scopePassed": true,
+  "humanArtOneToOneApproved": false,
+  "mobileWholeGameClaim": false,
+  "items": [
+    {
+      "file": "01-native-rts-committed.png",
+      "sha256": "1b672a5409ec102388a0cf1aaf81564b4aed7692d5eb506fb51e71d3968daa4e",
+      "opened": true,
+      "observed": "Mission W115-OPS-0001, action0, simulation temps réel et grille9x6 complète visibles.",
+      "scopePassed": true
+    },
+    {
+      "file": "02-native-lock-frozen.png",
+      "sha256": "1b672a5409ec102388a0cf1aaf81564b4aed7692d5eb506fb51e71d3968daa4e",
+      "opened": true,
+      "observed": "Même mission, action0 et mêmes positions visibles pendant le verrou natif ; gel confirmé séparément par octets miroir/IDB inchangés.",
+      "scopePassed": true
+    },
+    {
+      "file": "03-native-stale-tab-blocked.png",
+      "sha256": "c1141075f26ed1c4cef8be901ebbd3f1432069670bcf58520192491396f0288f",
+      "opened": true,
+      "observed": "Alerte d’onglet périmé visible, réinitialisation et modes désactivés.",
+      "scopePassed": true
+    },
+    {
+      "file": "04-native-reloaded-alternating.png",
+      "sha256": "783387da61510fde6ba458f7cd8f9fd13c291376df1c70af523758f23da2bb7c",
+      "opened": true,
+      "observed": "Après recharge :119RAV,1vacation,7/8équipes, mode RTS retenu ; le contrôle de vitesse est exercé séparément plus bas.",
+      "scopePassed": true
+    },
+    {
+      "file": "05-native-interrupted-write.png",
+      "sha256": "7a1130279920ccc01e37aa3785a8ac7b097e9413e4960c8aeded29b914f48d60",
+      "opened": true,
+      "observed": "Alerte d’écriture non confirmée et bouton de reprise visibles ; ancienne présentation120RAV conservée en attendant confirmation.",
+      "scopePassed": true
+    },
+    {
+      "file": "06-native-recovery-awaits-confirmation.png",
+      "sha256": "22d47f271b031a432e3432d26f8a1a04f090f97437e8730647fd9a60d6d74741",
+      "opened": true,
+      "observed": "Après recharge : intention durable retrouvée, bouton explicite et119RAV à l’état prévu, autres commandes bloquées.",
+      "scopePassed": true
+    },
+    {
+      "file": "09-native-recovery-mobile-390.png",
+      "sha256": "0781daa26286e2d3ad198167f197dd1fced2e88b32d876773fae364b7032595b",
+      "opened": true,
+      "observed": "Alerte de récupération et bouton de reprise lisibles à390px,119RAV et7/8équipes ; commandes de modes désactivées.",
+      "scopePassed": true
+    },
+    {
+      "file": "07-native-repaired-mission.png",
+      "sha256": "87f674a1dd4a8e309351dba60cf6a3636f1d896d2d55a55ba4e7fe9f4bb98e4b",
+      "opened": true,
+      "observed": "Même mission W115-OPS-0001, action0 et grille9x6 complète après réparation puis passage natif en alterné.",
+      "scopePassed": true
+    },
+    {
+      "file": "08-native-repaired-mobile-390.png",
+      "sha256": "c3bf2e1735d0c654720ac364c0b5fa695e046b8e4e4b7b72c2f70c4806be98a0",
+      "opened": true,
+      "observed": "Présentation et métriques119RAV/7sur8 après seconde recharge lisibles à390px ; aucune qualification de grille mobile complète.",
+      "scopePassed": true
+    }
+  ]
+}

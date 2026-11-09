@@ -1,0 +1,64 @@
+TAP version 13
+# Subtest: Assault V137: actual living team withdraws beside its home base, 10 AP and no duplicated dispatch
+ok 1 - Assault V137: actual living team withdraws beside its home base, 10 AP and no duplicated dispatch
+  ---
+  duration_ms: 10.430575
+  type: 'test'
+  ...
+# Subtest: Assault V137: remote, down, not deployed, no AP or forged extraction cannot pass
+ok 2 - Assault V137: remote, down, not deployed, no AP or forged extraction cannot pass
+  ---
+  duration_ms: 0.814649
+  type: 'test'
+  ...
+# Subtest: Outer Ops V137: reconnaissance halt delays resolution and gives only a modest documented bonus
+ok 3 - Outer Ops V137: reconnaissance halt delays resolution and gives only a modest documented bonus
+  ---
+  duration_ms: 2.61196
+  type: 'test'
+  ...
+# Subtest: Outer Ops V137: halt respects original midpoint, recalls, previous supplies and workbook source pinning
+ok 4 - Outer Ops V137: halt respects original midpoint, recalls, previous supplies and workbook source pinning
+  ---
+  duration_ms: 3.751214
+  type: 'test'
+  ...
+# Subtest: Stealth V137: protected one-tile movement into a real adjacent W3 cover uses one energy
+ok 5 - Stealth V137: protected one-tile movement into a real adjacent W3 cover uses one energy
+  ---
+  duration_ms: 8.168843
+  type: 'test'
+  ...
+# Subtest: Stealth V137: energy, actual cover, usage cap and adjacent guard prevent free concealment
+ok 6 - Stealth V137: energy, actual cover, usage cap and adjacent guard prevent free concealment
+  ---
+  duration_ms: 1.486002
+  type: 'test'
+  ...
+# Subtest: RTS V137: actual cover stance reduces damage for two ticks and then expires
+ok 7 - RTS V137: actual cover stance reduces damage for two ticks and then expires
+  ---
+  duration_ms: 7.188885
+  type: 'test'
+  ...
+# Subtest: RTS V137: no cover, inactive team, overwatch conflict and movement cannot preserve bonus
+ok 8 - RTS V137: no cover, inactive team, overwatch conflict and movement cannot preserve bonus
+  ---
+  duration_ms: 7.904284
+  type: 'test'
+  ...
+# Subtest: Source preservation: 24 scripts, 12 physical maps and no mutation of V85 territories
+ok 9 - Source preservation: 24 scripts, 12 physical maps and no mutation of V85 territories
+  ---
+  duration_ms: 45.692019
+  type: 'test'
+  ...
+1..9
+# tests 9
+# suites 0
+# pass 9
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 96.649525

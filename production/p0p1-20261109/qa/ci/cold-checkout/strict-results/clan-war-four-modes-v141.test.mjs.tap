@@ -1,0 +1,70 @@
+TAP version 13
+# Subtest: Assault V141: simultaneous combat does not let the array's first fighter kill before a riposte
+ok 1 - Assault V141: simultaneous combat does not let the array's first fighter kill before a riposte
+  ---
+  duration_ms: 7.203107
+  type: 'test'
+  ...
+# Subtest: Assault V141: movement never crosses a living rival, stays in side boundaries, and respects hold
+ok 2 - Assault V141: movement never crosses a living rival, stays in side boundaries, and respects hold
+  ---
+  duration_ms: 0.477821
+  type: 'test'
+  ...
+# Subtest: Assault V141: source V140 regional waves and V115 receipt still function after synchronous exchange
+ok 3 - Assault V141: source V140 regional waves and V115 receipt still function after synchronous exchange
+  ---
+  duration_ms: 3.114257
+  type: 'test'
+  ...
+# Subtest: Outer Ops V141: source movementCost rather than equal passage slots controls segment position
+ok 4 - Outer Ops V141: source movementCost rather than equal passage slots controls segment position
+  ---
+  duration_ms: 0.643141
+  type: 'test'
+  ...
+# Subtest: Outer Ops V141: recall reverses only reached passages; earlier halt costs real time
+ok 5 - Outer Ops V141: recall reverses only reached passages; earlier halt costs real time
+  ---
+  duration_ms: 0.435356
+  type: 'test'
+  ...
+# Subtest: Outer Ops V141: actual V115 routes remain sourced, no reveal of opponents, and no double settlement
+ok 6 - Outer Ops V141: actual V115 routes remain sourced, no reveal of opponents, and no double settlement
+  ---
+  duration_ms: 1.653906
+  type: 'test'
+  ...
+# Subtest: Stealth V141: source guard always follows a physical one-step route toward a real 2D decoy
+ok 7 - Stealth V141: source guard always follows a physical one-step route toward a real 2D decoy
+  ---
+  duration_ms: 27.000481
+  type: 'test'
+  ...
+# Subtest: Stealth V141: decoy saves exact emitted Y while archived older decoy without Y still loads
+ok 8 - Stealth V141: decoy saves exact emitted Y while archived older decoy without Y still loads
+  ---
+  duration_ms: 1.951714
+  type: 'test'
+  ...
+# Subtest: RTS V141: enemy planning avoids next-turn active hazard cells instead of deliberately entering them
+ok 9 - RTS V141: enemy planning avoids next-turn active hazard cells instead of deliberately entering them
+  ---
+  duration_ms: 6.287996
+  type: 'test'
+  ...
+# Subtest: RTS V141: regular source hazards still damage both factions; 24 maps keep their 72 tasks
+ok 10 - RTS V141: regular source hazards still damage both factions; 24 maps keep their 72 tasks
+  ---
+  duration_ms: 38.591056
+  type: 'test'
+  ...
+1..10
+# tests 10
+# suites 0
+# pass 10
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 95.534859

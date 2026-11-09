@@ -1,0 +1,61 @@
+name: P0 P1 current gameplay coherence
+
+on:
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: p0-p1-coherence-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  regressions:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    env:
+      ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
+      NEXT_TELEMETRY_DISABLED: '1'
+    steps:
+      - name: Checkout current source and portable qualification inputs
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          persist-credentials: false
+          filter: blob:none
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /*
+            !/*/
+            /app/
+            /lib/
+            /types/
+            /scripts/
+            /tests/
+            /desktop/
+            /build/
+            /.github/workflows/
+            /production/p0p1-20261109/qa/root/test-selection-current.json
+            /production/p0p1-20261109/qa/ci/runtime-file-inputs.json
+      - name: Node 22
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+          cache: npm
+      - name: Include only the actual pinned asset and workbook inputs
+        run: node scripts/include-p0p1-ci-inputs-20261109.mjs --include
+      - name: Install locked dependencies
+        run: npm ci --ignore-scripts --no-audit --no-fund
+      - name: Run actual domain, SSR, save and compatibility cases
+        run: node scripts/check-p0p1-coherence-20261109.mjs
+      - name: Preserve individual TAP results and source fingerprints
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: p0-p1-coherence-real-regressions
+          path: outputs/p0p1-coherence-20261109/
+          retention-days: 30
+          if-no-files-found: warn

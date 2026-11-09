@@ -1,0 +1,61 @@
+{
+  "scope": "Read-only comparison of the SAME two isolated native regions before/after the owner-clip fix. PNGs remain unmodified. No whole-character UV or unavailable-angle qualification.",
+  "buildId": "RYl37_8hN58IOB8jDpRj1",
+  "size": [
+    318,
+    477
+  ],
+  "comparisonPolicy": "Preserve exact changed-pixel counts; separately count differences above1 of255 per RGBA channel to distinguish the removed fragments from observed one-level background compositor rounding. Maximum final difference is1, never silently called byte-identical.",
+  "regions": [
+    {
+      "id": "between-legs",
+      "rectPixels": [
+        151,
+        388,
+        12,
+        29
+      ],
+      "beforeFix": {
+        "exactChangedPixels": 214,
+        "changedPixelsAboveOne8BitLevel": 124,
+        "maximumChannelDifference": 85
+      },
+      "afterFix": {
+        "exactChangedPixels": 44,
+        "changedPixelsAboveOne8BitLevel": 0,
+        "maximumChannelDifference": 1
+      }
+    },
+    {
+      "id": "right-of-shin",
+      "rectPixels": [
+        267,
+        382,
+        14,
+        35
+      ],
+      "beforeFix": {
+        "exactChangedPixels": 200,
+        "changedPixelsAboveOne8BitLevel": 125,
+        "maximumChannelDifference": 86
+      },
+      "afterFix": {
+        "exactChangedPixels": 5,
+        "changedPixelsAboveOne8BitLevel": 0,
+        "maximumChannelDifference": 1
+      }
+    }
+  ],
+  "beforeFixReport": "../diagnostic-isolation/fragment-pixel-difference.json",
+  "images": [
+    {
+      "file": "samurai-native-no-chromatics.png",
+      "sha256": "99bd5df4680275f2c5737edd6ba3d8ae7066cd575ddb6fc7db41894a4560b362"
+    },
+    {
+      "file": "samurai-armor-pigment-only.png",
+      "sha256": "b0d0b74efab22b6aa1914a533b29b0625b0421024c30877cf744077abee65e67"
+    }
+  ],
+  "passed": true
+}

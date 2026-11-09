@@ -1,0 +1,34 @@
+TAP version 13
+# Subtest: V141 patch 2.19 separates two armor colors, eight mask tints and Waves Gator skin
+ok 1 - V141 patch 2.19 separates two armor colors, eight mask tints and Waves Gator skin
+  ---
+  duration_ms: 1.879636
+  type: 'test'
+  ...
+# Subtest: V141 official 3 masks and 6 warpaints are not filled with invented PHG art
+ok 2 - V141 official 3 masks and 6 warpaints are not filled with invented PHG art
+  ---
+  duration_ms: 0.404059
+  type: 'test'
+  ...
+# Subtest: V141 class restrictions honor real V133 catalog class hints, never arbitrary prefix
+ok 3 - V141 class restrictions honor real V133 catalog class hints, never arbitrary prefix
+  ---
+  duration_ms: 0.35814
+  type: 'test'
+  ...
+# Subtest: V141 forge warns armor shader Nova/Requiem is not the same as the mask tile
+ok 4 - V141 forge warns armor shader Nova/Requiem is not the same as the mask tile
+  ---
+  duration_ms: 0.262436
+  type: 'test'
+  ...
+1..4
+# tests 4
+# suites 0
+# pass 4
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 13.465684

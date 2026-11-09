@@ -1,0 +1,94 @@
+TAP version 13
+# Subtest: S01/S06/S08 read the attested price, upkeep, delays and operators without modifying the original eight definitions
+ok 1 - S01/S06/S08 read the attested price, upkeep, delays and operators without modifying the original eight definitions
+  ---
+  duration_ms: 25.953947
+  type: 'test'
+  ...
+# Subtest: local attested workbook has the exact embedded source SHA256
+ok 2 - local attested workbook has the exact embedded source SHA256 # SKIP Local source workbook is absent from this checkout
+  ---
+  duration_ms: 0.115314
+  type: 'test'
+  ...
+# Subtest: an elevated occupied watch sees over a low screen, preserves a dated record and cannot see through opaque rock
+ok 3 - an elevated occupied watch sees over a low screen, preserves a dated record and cannot see through opaque rock
+  ---
+  duration_ms: 24.54964
+  type: 'test'
+  ...
+# Subtest: a commissioned watch loses its effect when real local upkeep stock is exhausted
+ok 4 - a commissioned watch loses its effect when real local upkeep stock is exhausted
+  ---
+  duration_ms: 18.593398
+  type: 'test'
+  ...
+# Subtest: platform orientation changes its actual arc and directional cover, while the below-platform blind spot stays
+ok 5 - platform orientation changes its actual arc and directional cover, while the below-platform blind spot stays
+  ---
+  duration_ms: 17.932963
+  type: 'test'
+  ...
+# Subtest: the bridge requires exactly three physically transported pieces and does not build through wait or the generic work action
+ok 6 - the bridge requires exactly three physically transported pieces and does not build through wait or the generic work action
+  ---
+  duration_ms: 83.704754
+  type: 'test'
+  ...
+# Subtest: an injured anchor crew cannot load a component, and a bridge cannot carry the team's RAV lot
+ok 7 - an injured anchor crew cannot load a component, and a bridge cannot carry the team's RAV lot
+  ---
+  duration_ms: 140.861514
+  type: 'test'
+  ...
+# Subtest: individual crossing preserves half-crossed positions, blocks other front orders and charges a single completed global passage
+ok 8 - individual crossing preserves half-crossed positions, blocks other front orders and charges a single completed global passage
+  ---
+  duration_ms: 101.241644
+  type: 'test'
+  ...
+# Subtest: the individual return keeps every member and cannot be replaced by a reset or a whole-party teleport
+ok 9 - the individual return keeps every member and cannot be replaced by a reset or a whole-party teleport
+  ---
+  duration_ms: 90.572144
+  type: 'test'
+  ...
+# Subtest: arrival at the depleted remote cache is rationed even while the bridge's source depot can pay
+ok 10 - arrival at the depleted remote cache is rationed even while the bridge's source depot can pay
+  ---
+  duration_ms: 77.697916
+  type: 'test'
+  ...
+# Subtest: strict optional checkpoint schema rejects foreign ownership, copied components and unrecorded bridge jumps
+ok 11 - strict optional checkpoint schema rejects foreign ownership, copied components and unrecorded bridge jumps
+  ---
+  duration_ms: 97.529971
+  type: 'test'
+  ...
+# Subtest: three real played V88 checkpoint files keep their bytes, historical turns and absent V89 extension
+ok 12 - three real played V88 checkpoint files keep their bytes, historical turns and absent V89 extension # SKIP Local played V88 files are absent from this checkout
+  ---
+  duration_ms: 0.088884
+  type: 'test'
+  ...
+# Subtest: the actual panel displays native terrain props, blocked rays, dated sight records and unchanged XP
+ok 13 - the actual panel displays native terrain props, blocked rays, dated sight records and unchanged XP
+  ---
+  duration_ms: 62.809244
+  type: 'test'
+  ...
+# Subtest: the actual panel builds three anchors on real shores and resumes a half-crossed member without moving the rest
+ok 14 - the actual panel builds three anchors on real shores and resumes a half-crossed member without moving the rest
+  ---
+  duration_ms: 130.456769
+  type: 'test'
+  ...
+1..14
+# tests 14
+# suites 0
+# pass 12
+# fail 0
+# cancelled 0
+# skipped 2
+# todo 0
+# duration_ms 1024.37833

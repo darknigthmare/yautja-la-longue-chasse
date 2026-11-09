@@ -1,0 +1,777 @@
+{
+  "before": [
+    {
+      "path": "app/game/ClanWarFieldSprite.tsx",
+      "bytes": 1035,
+      "sha256": "f901fa7846b5255e6d4c9e77ee03fa8e6f392948e21c44f8f699c2b5c5d15077"
+    },
+    {
+      "path": "app/game/ClanWarOperationsV115.module.css",
+      "bytes": 9183,
+      "sha256": "3d6b542ca8e1121cac4809df552b36b0d1962a4553eb2e805495eb798a3906d2"
+    },
+    {
+      "path": "app/game/ClanWarOperationsV115.tsx",
+      "bytes": 92658,
+      "sha256": "820e700818808b3d552cb26ee7e6d8fb74f1311411cb2f4d99962f5086fc5abb"
+    },
+    {
+      "path": "app/game/clanWarBibleV6Source.json",
+      "bytes": 1362699,
+      "sha256": "ce27085c44196fefa600407f0bc46cbb74934eb5437126b29d03d35a1e7a751d"
+    },
+    {
+      "path": "app/game/clanWarV85Source.json",
+      "bytes": 993059,
+      "sha256": "58c77e7f555db2f61c8cf3905c0ae94798db9bdd10f66a5d58efd2cfe5a29114"
+    },
+    {
+      "path": "app/game/data/clanWarGauntletCatalogV132.json",
+      "bytes": 29320,
+      "sha256": "575a678a1d3f9e954b976638922d9b29b40036a029c04bc767113b2d1ffcfcd6"
+    },
+    {
+      "path": "app/game/systems/clanWarAssaultContactV141.ts",
+      "bytes": 5993,
+      "sha256": "28c5b44a3851d66e9626ab8ad7060672ff8dff7d932bbca598916eb29acb1fbd"
+    },
+    {
+      "path": "app/game/systems/clanWarAssaultRegroupV144.ts",
+      "bytes": 2976,
+      "sha256": "97336107ff69d0432b2727ade91e5243bc7265b1037333fbf29f2471d727c288"
+    },
+    {
+      "path": "app/game/systems/clanWarBaseScreenV144.ts",
+      "bytes": 1888,
+      "sha256": "7b85a1ac98d6fadf56bb17b1257f4376888fa33d347a3f1c8ed6faf5f5df5093"
+    },
+    {
+      "path": "app/game/systems/clanWarBattleModelV106.ts",
+      "bytes": 509,
+      "sha256": "26e90066fbbdafed1fd7785e9bd81f30fd6901cd73b7f2fc4bcba4476d83668b"
+    },
+    {
+      "path": "app/game/systems/clanWarBibleV6.ts",
+      "bytes": 22223,
+      "sha256": "66de0c9d66d9f9fffa65fd1037b9f1b428cdbe7545211c08a9afe77162833dab"
+    },
+    {
+      "path": "app/game/systems/clanWarBraceV143.ts",
+      "bytes": 1926,
+      "sha256": "c55337aef114d11dd0a00376b019dbdd4ce12b1ccdb46571d62dd8e28be555cd"
+    },
+    {
+      "path": "app/game/systems/clanWarCoastlinesV97.ts",
+      "bytes": 52458,
+      "sha256": "5efa5417b7c7754f10d6d264d77bdb5f24288bfa688ecc900a45ab710749cd64"
+    },
+    {
+      "path": "app/game/systems/clanWarConvoyStateV105.ts",
+      "bytes": 4226,
+      "sha256": "9eac951640be9908af0f342d088e62a2ea2d0a285f98193a9b907b9070c06afd"
+    },
+    {
+      "path": "app/game/systems/clanWarCouncilAuditV146.ts",
+      "bytes": 13321,
+      "sha256": "04aee3aaef29abacd53b0a81dbdbeba0897f356840047853f40ff586474842b5"
+    },
+    {
+      "path": "app/game/systems/clanWarCouncilReviewV147.ts",
+      "bytes": 13931,
+      "sha256": "deba151a21eb426cd7bee98bf6ecb9fdb982cb25fd9b570ba1c5008d534dcc2c"
+    },
+    {
+      "path": "app/game/systems/clanWarDebriefV144.ts",
+      "bytes": 7010,
+      "sha256": "67d24b3597e45acb0c87d429408f9576f54390f50b40be813c2635f05a7d0b2c"
+    },
+    {
+      "path": "app/game/systems/clanWarDeploymentV103.ts",
+      "bytes": 3013,
+      "sha256": "91a664151e2fe4560913fb3b42a834ce63625382dd7c757470e84c2f98f34434"
+    },
+    {
+      "path": "app/game/systems/clanWarEvacuationV100.ts",
+      "bytes": 4357,
+      "sha256": "ad67e727acfe2b80f125ea34d544082e0b802dae78e0259dcf840a97ca64c56d"
+    },
+    {
+      "path": "app/game/systems/clanWarFenceV94.ts",
+      "bytes": 5835,
+      "sha256": "959724666965ddb46b4a0ce28973145d365d35b7af67d0331590b1fbcf9a6092"
+    },
+    {
+      "path": "app/game/systems/clanWarFieldControls.ts",
+      "bytes": 1045,
+      "sha256": "1349b9d83008a2f3287c0119ef4a2e0298ad6c19e3c5ce5de2ed9df261b739cf"
+    },
+    {
+      "path": "app/game/systems/clanWarFocusV142.ts",
+      "bytes": 2422,
+      "sha256": "80727be7457337bfa240a8751cadf20df967f5bc9887b5c53ae463db66737caa"
+    },
+    {
+      "path": "app/game/systems/clanWarGauntletCatalogV132.ts",
+      "bytes": 7982,
+      "sha256": "6092d66c8745dc1137fa03880ff47ded0e62527f765b143d66bc879543de96a4"
+    },
+    {
+      "path": "app/game/systems/clanWarInterposeV145.ts",
+      "bytes": 2777,
+      "sha256": "68122d891231f1ce726c216996a51478bc2a6a95cb2caf925f5fdf2b72b7b4bb"
+    },
+    {
+      "path": "app/game/systems/clanWarMissionTerrainV116.ts",
+      "bytes": 6508,
+      "sha256": "a130f1526fdb01f3a423fd6bc9fefdbbbaff8de7898413cf3af83b38a55b12b7"
+    },
+    {
+      "path": "app/game/systems/clanWarOpenBacklogV140.ts",
+      "bytes": 3347,
+      "sha256": "f467e704396734bb025ebba85c900e31cd46c057f30ad0a5ccecbebe435b248b"
+    },
+    {
+      "path": "app/game/systems/clanWarOperationsArchive.ts",
+      "bytes": 11482,
+      "sha256": "70c08ad2f6b6136a6c5d0f35d432e4a8c3c379a59defb2fd8a6d5ad269e01814"
+    },
+    {
+      "path": "app/game/systems/clanWarOperationsV115.ts",
+      "bytes": 103845,
+      "sha256": "c10c4c95994e517246812a89e4af6fc5264eb73f31b846ff586ea47a715d049b"
+    },
+    {
+      "path": "app/game/systems/clanWarOuterChoicesV142.ts",
+      "bytes": 2094,
+      "sha256": "353dc15a3c5955a9aab23e3f3fb5a37da6472ae5fd7dadad34ebcce9bfcb10cb"
+    },
+    {
+      "path": "app/game/systems/clanWarOuterIncidentV143.ts",
+      "bytes": 3622,
+      "sha256": "bebf471fa164dd7f3810d543a5229ade50acfb2d084cf3e085fe3aaa502aed19"
+    },
+    {
+      "path": "app/game/systems/clanWarOuterInspectionV144.ts",
+      "bytes": 2574,
+      "sha256": "97e898ce1947c6abf8b1879b729c12dbee283dacb59af81c85d7d34677b3a198"
+    },
+    {
+      "path": "app/game/systems/clanWarOuterPaceV144.ts",
+      "bytes": 2177,
+      "sha256": "882bcfcedf18c93f40de431e960598051bcdfe09a6e98b621a7bdc73903a6f59"
+    },
+    {
+      "path": "app/game/systems/clanWarOuterRerouteV144.ts",
+      "bytes": 3455,
+      "sha256": "2387004179b82d2f129f2dc8351eb8bb8a75ae7519941335a6e40e95f82f9237"
+    },
+    {
+      "path": "app/game/systems/clanWarOuterRouteProgressV140.ts",
+      "bytes": 3986,
+      "sha256": "8fcb1b0a8986825e1c7060f1bec0e7f8046e7585038bdc2c0d31df035e5fd4c2"
+    },
+    {
+      "path": "app/game/systems/clanWarOuterWeightedProgressV141.ts",
+      "bytes": 4174,
+      "sha256": "f515d116839e1619147458e70ee185ff2d748e62f4412f77c1afa32938dcfb34"
+    },
+    {
+      "path": "app/game/systems/clanWarParallelModesV135.ts",
+      "bytes": 4115,
+      "sha256": "3d0bec9b86b2294403d65edfa71260c5ba6a9e0d9840dd88204ef930741f3b8e"
+    },
+    {
+      "path": "app/game/systems/clanWarParallelModesV136.ts",
+      "bytes": 3980,
+      "sha256": "85f2212565bc41e0f4835de7a8b188a317175b8eb9f87069e8d43aa1d6fb091a"
+    },
+    {
+      "path": "app/game/systems/clanWarParallelModesV137.ts",
+      "bytes": 3886,
+      "sha256": "31a2c082abdd5423867b3b88de283d9429e9e063a92be62866a0b20fa75e1d25"
+    },
+    {
+      "path": "app/game/systems/clanWarParallelModesV138.ts",
+      "bytes": 6389,
+      "sha256": "d6315b92bf40ad11c9097e0015d78dd6b3c473527cb9e3c608e1c3bbdd69dc22"
+    },
+    {
+      "path": "app/game/systems/clanWarParallelModesV139.ts",
+      "bytes": 2452,
+      "sha256": "16038038264776cf5087496e5534d8f6a59f738cabff569412a78330e48f50c0"
+    },
+    {
+      "path": "app/game/systems/clanWarPlanetGeneratorV102.ts",
+      "bytes": 22584,
+      "sha256": "be410dd6586c18c849b38b8f6219c0b70a99603e672577a5ca742a072c282b29"
+    },
+    {
+      "path": "app/game/systems/clanWarPlanetGeneratorV103.ts",
+      "bytes": 24434,
+      "sha256": "6ec59749c2c9ee43472ca88d21cb738cc9bbc209c6673a713c7c6725f7cb7bb2"
+    },
+    {
+      "path": "app/game/systems/clanWarPlanetGeneratorV115.ts",
+      "bytes": 11074,
+      "sha256": "084f05c7e28c7d411710e015d3740797a0d1b34673443318947902d813fe6953"
+    },
+    {
+      "path": "app/game/systems/clanWarPlanetGeographyV102.ts",
+      "bytes": 13824,
+      "sha256": "fa93c792c8e0683c71e770cc27e897f311edcd0637eb114af00a43e28204750c"
+    },
+    {
+      "path": "app/game/systems/clanWarPlanetGeographyV103.ts",
+      "bytes": 32173,
+      "sha256": "f5da31947cf5c84575d98097783bf7d00c7549b4ec17dc3fcf268f7ac390fcb8"
+    },
+    {
+      "path": "app/game/systems/clanWarPlanetsV96.ts",
+      "bytes": 41791,
+      "sha256": "f6dbb2066663dd7c3156f2230e07389274334c4a969c4fcc2f5c87688caf8f33"
+    },
+    {
+      "path": "app/game/systems/clanWarProceduralV103.ts",
+      "bytes": 3327,
+      "sha256": "d9c1ed8d312b131671a48b4a4a3bf9743051bab0b30c7df5137cb7de7b7bb322"
+    },
+    {
+      "path": "app/game/systems/clanWarRegroupV144.ts",
+      "bytes": 3052,
+      "sha256": "f5096d1df4a0e2398205a15a03dcef75bceaddf1f9b0871abc01fdb13189d4ff"
+    },
+    {
+      "path": "app/game/systems/clanWarRtsScenariosV119.ts",
+      "bytes": 30489,
+      "sha256": "6a40b3658ed73d0bf91fcac66d9547b60886cce2ab4d948101f67e985ae9e7db"
+    },
+    {
+      "path": "app/game/systems/clanWarRtsSourceMissionsV129.ts",
+      "bytes": 28185,
+      "sha256": "2d13a421a514fa2d754e3323ed48e4a726273d81ab3ba2862d89bc9d433b58d5"
+    },
+    {
+      "path": "app/game/systems/clanWarShapeAtlasV115.ts",
+      "bytes": 4648,
+      "sha256": "234e53759ebc4acd2c86529776e56524a4e526df57d4529335fea2ab899e77c7"
+    },
+    {
+      "path": "app/game/systems/clanWarSourceMapsV128.ts",
+      "bytes": 24449,
+      "sha256": "1d3156b9ea7e876a099a7d418cf688b191cd3a1ea0525c8785839cb0872c40b9"
+    },
+    {
+      "path": "app/game/systems/clanWarStealthDashV143.ts",
+      "bytes": 2470,
+      "sha256": "96b9383909239fb701b46148208495d1e067ab46da98e6f24329b6e473ecc524"
+    },
+    {
+      "path": "app/game/systems/clanWarStealthDecoyV141.ts",
+      "bytes": 2787,
+      "sha256": "fc362f5f296989ab0c7d83f8c18fc0880d38f910ab5ba4c42732e9aa6729f969"
+    },
+    {
+      "path": "app/game/systems/clanWarStealthGuardPlacement.ts",
+      "bytes": 817,
+      "sha256": "8a80a64f6367d49ad48d2a3803c24a50166efcab67955d2613101b7b998c8946"
+    },
+    {
+      "path": "app/game/systems/clanWarStealthPathV142.ts",
+      "bytes": 2499,
+      "sha256": "b7c895111caf3f959ae1d1268177de210d71e5d00de700e2c7d884f362049315"
+    },
+    {
+      "path": "app/game/systems/clanWarStealthPatrolV140.ts",
+      "bytes": 3185,
+      "sha256": "0c0f61b8d5c0bbdf06755e5d16bf8fba43eb4c0427e0716d42b61dc5bdd98ca8"
+    },
+    {
+      "path": "app/game/systems/clanWarStealthReinforcementV144.ts",
+      "bytes": 4730,
+      "sha256": "7f1157a3f1c36864b9371fb66b7d5139729755277397b08746cba3e986114569"
+    },
+    {
+      "path": "app/game/systems/clanWarTacticalNavigationV118.ts",
+      "bytes": 1884,
+      "sha256": "0633f354a9659e9edcee5868b1f7cc5cb28a47d46176279671687a096284e59c"
+    },
+    {
+      "path": "app/game/systems/clanWarTextureLibraryV115.ts",
+      "bytes": 8521,
+      "sha256": "72c86a1d87fb417db563f420df888192edf85d1fbbee6a98da4277191a1e3e6e"
+    },
+    {
+      "path": "app/game/systems/clanWarTravelLedgerV145.ts",
+      "bytes": 1608,
+      "sha256": "218d1007d6c17743fd5be8cd7e82068f89473d9c8e7e7e1e304d4a7c37b39e4b"
+    },
+    {
+      "path": "app/game/systems/clanWarV85.ts",
+      "bytes": 45841,
+      "sha256": "b8d785eb51b064e3c40b873719d6759b661e014826c58ce3f169e4f68136b945"
+    },
+    {
+      "path": "app/game/systems/clanWarV85Data.ts",
+      "bytes": 4985,
+      "sha256": "ea974feaf3715447736ebde591a542198822dba11a76049568b852330a8c29aa"
+    },
+    {
+      "path": "app/game/systems/planetMaterialProfilesV103.ts",
+      "bytes": 4806,
+      "sha256": "1208340900995e1ab03c33a317b1249bfa5d5cc1d2dd3006e008f28eae089943"
+    },
+    {
+      "path": "node_modules/react-dom/cjs/react-dom-client.development.js",
+      "bytes": 1065698,
+      "sha256": "261c3275492d8f0b1f9b76f78268882316c8435217c39c78c65853bdcd89d500"
+    },
+    {
+      "path": "node_modules/react-dom/cjs/react-dom.development.js",
+      "bytes": 17673,
+      "sha256": "07d30cb25cb9bdf68b9dc7c9467b8f29d9c7ffe0f65c6ade9924e16ac207061b"
+    },
+    {
+      "path": "node_modules/react-dom/client.js",
+      "bytes": 1373,
+      "sha256": "00e348ab3d6bc2eef908345d0bc4e008c95bcfecec060dfda5c4967953761396"
+    },
+    {
+      "path": "node_modules/react-dom/index.js",
+      "bytes": 1359,
+      "sha256": "ba1a3e33489f868371561777607e3ee5091df0f7ea3f1a10f789d6b86e4c1505"
+    },
+    {
+      "path": "node_modules/react/cjs/react-jsx-runtime.development.js",
+      "bytes": 12452,
+      "sha256": "dd50fd0db2fba44e0eee66243a45c81cfa3774cf41e4e6c0c080a601815c694d"
+    },
+    {
+      "path": "node_modules/react/cjs/react.development.js",
+      "bytes": 47219,
+      "sha256": "e7a035fea0b35de567a563966fdb5e05c01f01f8ff776770d3a44794990ba3d7"
+    },
+    {
+      "path": "node_modules/react/index.js",
+      "bytes": 186,
+      "sha256": "60caffdecbdc5db3bc4ec4e83df9488345ccb271d07533b9210bf5750918d97e"
+    },
+    {
+      "path": "node_modules/react/jsx-runtime.js",
+      "bytes": 210,
+      "sha256": "b392951a77d0a2e6a6bd017e49d768481ae5b63c4109c6c31f622cf7b2433edc"
+    },
+    {
+      "path": "node_modules/scheduler/cjs/scheduler.development.js",
+      "bytes": 12144,
+      "sha256": "646eb671c8585382baff16daf92fe16a4cdd10dcf1a363c58b2ae1f6bf3a2b8d"
+    },
+    {
+      "path": "node_modules/scheduler/index.js",
+      "bytes": 194,
+      "sha256": "145965504d60007bc25486ab930b0367867dcd5d579ccd343c148d69349a7cfb"
+    },
+    {
+      "path": "package-lock.json",
+      "bytes": 389978,
+      "sha256": "763dcb2fdfef2e1a7ce196540cca3f4f5617eeb28a36b380d0dc6079410c1892"
+    },
+    {
+      "path": "scripts/qa-clan-war-operations-archive-20261109.mjs",
+      "bytes": 35517,
+      "sha256": "4187efb3c3c5a2cf111a061838f3b4d70b2d5cc345598189e1578832385507fe"
+    },
+    {
+      "path": "tests/browser/clan-war-v151-four-modes.fixture.tsx",
+      "bytes": 1226,
+      "sha256": "6add79f15896a245334eb662f24784a6df6c3dfa49c6922446c08e271fd32f1d"
+    }
+  ],
+  "after": [
+    {
+      "path": "app/game/ClanWarFieldSprite.tsx",
+      "bytes": 1035,
+      "sha256": "f901fa7846b5255e6d4c9e77ee03fa8e6f392948e21c44f8f699c2b5c5d15077"
+    },
+    {
+      "path": "app/game/ClanWarOperationsV115.module.css",
+      "bytes": 9183,
+      "sha256": "3d6b542ca8e1121cac4809df552b36b0d1962a4553eb2e805495eb798a3906d2"
+    },
+    {
+      "path": "app/game/ClanWarOperationsV115.tsx",
+      "bytes": 92658,
+      "sha256": "820e700818808b3d552cb26ee7e6d8fb74f1311411cb2f4d99962f5086fc5abb"
+    },
+    {
+      "path": "app/game/clanWarBibleV6Source.json",
+      "bytes": 1362699,
+      "sha256": "ce27085c44196fefa600407f0bc46cbb74934eb5437126b29d03d35a1e7a751d"
+    },
+    {
+      "path": "app/game/clanWarV85Source.json",
+      "bytes": 993059,
+      "sha256": "58c77e7f555db2f61c8cf3905c0ae94798db9bdd10f66a5d58efd2cfe5a29114"
+    },
+    {
+      "path": "app/game/data/clanWarGauntletCatalogV132.json",
+      "bytes": 29320,
+      "sha256": "575a678a1d3f9e954b976638922d9b29b40036a029c04bc767113b2d1ffcfcd6"
+    },
+    {
+      "path": "app/game/systems/clanWarAssaultContactV141.ts",
+      "bytes": 5993,
+      "sha256": "28c5b44a3851d66e9626ab8ad7060672ff8dff7d932bbca598916eb29acb1fbd"
+    },
+    {
+      "path": "app/game/systems/clanWarAssaultRegroupV144.ts",
+      "bytes": 2976,
+      "sha256": "97336107ff69d0432b2727ade91e5243bc7265b1037333fbf29f2471d727c288"
+    },
+    {
+      "path": "app/game/systems/clanWarBaseScreenV144.ts",
+      "bytes": 1888,
+      "sha256": "7b85a1ac98d6fadf56bb17b1257f4376888fa33d347a3f1c8ed6faf5f5df5093"
+    },
+    {
+      "path": "app/game/systems/clanWarBattleModelV106.ts",
+      "bytes": 509,
+      "sha256": "26e90066fbbdafed1fd7785e9bd81f30fd6901cd73b7f2fc4bcba4476d83668b"
+    },
+    {
+      "path": "app/game/systems/clanWarBibleV6.ts",
+      "bytes": 22223,
+      "sha256": "66de0c9d66d9f9fffa65fd1037b9f1b428cdbe7545211c08a9afe77162833dab"
+    },
+    {
+      "path": "app/game/systems/clanWarBraceV143.ts",
+      "bytes": 1926,
+      "sha256": "c55337aef114d11dd0a00376b019dbdd4ce12b1ccdb46571d62dd8e28be555cd"
+    },
+    {
+      "path": "app/game/systems/clanWarCoastlinesV97.ts",
+      "bytes": 52458,
+      "sha256": "5efa5417b7c7754f10d6d264d77bdb5f24288bfa688ecc900a45ab710749cd64"
+    },
+    {
+      "path": "app/game/systems/clanWarConvoyStateV105.ts",
+      "bytes": 4226,
+      "sha256": "9eac951640be9908af0f342d088e62a2ea2d0a285f98193a9b907b9070c06afd"
+    },
+    {
+      "path": "app/game/systems/clanWarCouncilAuditV146.ts",
+      "bytes": 13321,
+      "sha256": "04aee3aaef29abacd53b0a81dbdbeba0897f356840047853f40ff586474842b5"
+    },
+    {
+      "path": "app/game/systems/clanWarCouncilReviewV147.ts",
+      "bytes": 13931,
+      "sha256": "deba151a21eb426cd7bee98bf6ecb9fdb982cb25fd9b570ba1c5008d534dcc2c"
+    },
+    {
+      "path": "app/game/systems/clanWarDebriefV144.ts",
+      "bytes": 7010,
+      "sha256": "67d24b3597e45acb0c87d429408f9576f54390f50b40be813c2635f05a7d0b2c"
+    },
+    {
+      "path": "app/game/systems/clanWarDeploymentV103.ts",
+      "bytes": 3013,
+      "sha256": "91a664151e2fe4560913fb3b42a834ce63625382dd7c757470e84c2f98f34434"
+    },
+    {
+      "path": "app/game/systems/clanWarEvacuationV100.ts",
+      "bytes": 4357,
+      "sha256": "ad67e727acfe2b80f125ea34d544082e0b802dae78e0259dcf840a97ca64c56d"
+    },
+    {
+      "path": "app/game/systems/clanWarFenceV94.ts",
+      "bytes": 5835,
+      "sha256": "959724666965ddb46b4a0ce28973145d365d35b7af67d0331590b1fbcf9a6092"
+    },
+    {
+      "path": "app/game/systems/clanWarFieldControls.ts",
+      "bytes": 1045,
+      "sha256": "1349b9d83008a2f3287c0119ef4a2e0298ad6c19e3c5ce5de2ed9df261b739cf"
+    },
+    {
+      "path": "app/game/systems/clanWarFocusV142.ts",
+      "bytes": 2422,
+      "sha256": "80727be7457337bfa240a8751cadf20df967f5bc9887b5c53ae463db66737caa"
+    },
+    {
+      "path": "app/game/systems/clanWarGauntletCatalogV132.ts",
+      "bytes": 7982,
+      "sha256": "6092d66c8745dc1137fa03880ff47ded0e62527f765b143d66bc879543de96a4"
+    },
+    {
+      "path": "app/game/systems/clanWarInterposeV145.ts",
+      "bytes": 2777,
+      "sha256": "68122d891231f1ce726c216996a51478bc2a6a95cb2caf925f5fdf2b72b7b4bb"
+    },
+    {
+      "path": "app/game/systems/clanWarMissionTerrainV116.ts",
+      "bytes": 6508,
+      "sha256": "a130f1526fdb01f3a423fd6bc9fefdbbbaff8de7898413cf3af83b38a55b12b7"
+    },
+    {
+      "path": "app/game/systems/clanWarOpenBacklogV140.ts",
+      "bytes": 3347,
+      "sha256": "f467e704396734bb025ebba85c900e31cd46c057f30ad0a5ccecbebe435b248b"
+    },
+    {
+      "path": "app/game/systems/clanWarOperationsArchive.ts",
+      "bytes": 11482,
+      "sha256": "70c08ad2f6b6136a6c5d0f35d432e4a8c3c379a59defb2fd8a6d5ad269e01814"
+    },
+    {
+      "path": "app/game/systems/clanWarOperationsV115.ts",
+      "bytes": 103845,
+      "sha256": "c10c4c95994e517246812a89e4af6fc5264eb73f31b846ff586ea47a715d049b"
+    },
+    {
+      "path": "app/game/systems/clanWarOuterChoicesV142.ts",
+      "bytes": 2094,
+      "sha256": "353dc15a3c5955a9aab23e3f3fb5a37da6472ae5fd7dadad34ebcce9bfcb10cb"
+    },
+    {
+      "path": "app/game/systems/clanWarOuterIncidentV143.ts",
+      "bytes": 3622,
+      "sha256": "bebf471fa164dd7f3810d543a5229ade50acfb2d084cf3e085fe3aaa502aed19"
+    },
+    {
+      "path": "app/game/systems/clanWarOuterInspectionV144.ts",
+      "bytes": 2574,
+      "sha256": "97e898ce1947c6abf8b1879b729c12dbee283dacb59af81c85d7d34677b3a198"
+    },
+    {
+      "path": "app/game/systems/clanWarOuterPaceV144.ts",
+      "bytes": 2177,
+      "sha256": "882bcfcedf18c93f40de431e960598051bcdfe09a6e98b621a7bdc73903a6f59"
+    },
+    {
+      "path": "app/game/systems/clanWarOuterRerouteV144.ts",
+      "bytes": 3455,
+      "sha256": "2387004179b82d2f129f2dc8351eb8bb8a75ae7519941335a6e40e95f82f9237"
+    },
+    {
+      "path": "app/game/systems/clanWarOuterRouteProgressV140.ts",
+      "bytes": 3986,
+      "sha256": "8fcb1b0a8986825e1c7060f1bec0e7f8046e7585038bdc2c0d31df035e5fd4c2"
+    },
+    {
+      "path": "app/game/systems/clanWarOuterWeightedProgressV141.ts",
+      "bytes": 4174,
+      "sha256": "f515d116839e1619147458e70ee185ff2d748e62f4412f77c1afa32938dcfb34"
+    },
+    {
+      "path": "app/game/systems/clanWarParallelModesV135.ts",
+      "bytes": 4115,
+      "sha256": "3d0bec9b86b2294403d65edfa71260c5ba6a9e0d9840dd88204ef930741f3b8e"
+    },
+    {
+      "path": "app/game/systems/clanWarParallelModesV136.ts",
+      "bytes": 3980,
+      "sha256": "85f2212565bc41e0f4835de7a8b188a317175b8eb9f87069e8d43aa1d6fb091a"
+    },
+    {
+      "path": "app/game/systems/clanWarParallelModesV137.ts",
+      "bytes": 3886,
+      "sha256": "31a2c082abdd5423867b3b88de283d9429e9e063a92be62866a0b20fa75e1d25"
+    },
+    {
+      "path": "app/game/systems/clanWarParallelModesV138.ts",
+      "bytes": 6389,
+      "sha256": "d6315b92bf40ad11c9097e0015d78dd6b3c473527cb9e3c608e1c3bbdd69dc22"
+    },
+    {
+      "path": "app/game/systems/clanWarParallelModesV139.ts",
+      "bytes": 2452,
+      "sha256": "16038038264776cf5087496e5534d8f6a59f738cabff569412a78330e48f50c0"
+    },
+    {
+      "path": "app/game/systems/clanWarPlanetGeneratorV102.ts",
+      "bytes": 22584,
+      "sha256": "be410dd6586c18c849b38b8f6219c0b70a99603e672577a5ca742a072c282b29"
+    },
+    {
+      "path": "app/game/systems/clanWarPlanetGeneratorV103.ts",
+      "bytes": 24434,
+      "sha256": "6ec59749c2c9ee43472ca88d21cb738cc9bbc209c6673a713c7c6725f7cb7bb2"
+    },
+    {
+      "path": "app/game/systems/clanWarPlanetGeneratorV115.ts",
+      "bytes": 11074,
+      "sha256": "084f05c7e28c7d411710e015d3740797a0d1b34673443318947902d813fe6953"
+    },
+    {
+      "path": "app/game/systems/clanWarPlanetGeographyV102.ts",
+      "bytes": 13824,
+      "sha256": "fa93c792c8e0683c71e770cc27e897f311edcd0637eb114af00a43e28204750c"
+    },
+    {
+      "path": "app/game/systems/clanWarPlanetGeographyV103.ts",
+      "bytes": 32173,
+      "sha256": "f5da31947cf5c84575d98097783bf7d00c7549b4ec17dc3fcf268f7ac390fcb8"
+    },
+    {
+      "path": "app/game/systems/clanWarPlanetsV96.ts",
+      "bytes": 41791,
+      "sha256": "f6dbb2066663dd7c3156f2230e07389274334c4a969c4fcc2f5c87688caf8f33"
+    },
+    {
+      "path": "app/game/systems/clanWarProceduralV103.ts",
+      "bytes": 3327,
+      "sha256": "d9c1ed8d312b131671a48b4a4a3bf9743051bab0b30c7df5137cb7de7b7bb322"
+    },
+    {
+      "path": "app/game/systems/clanWarRegroupV144.ts",
+      "bytes": 3052,
+      "sha256": "f5096d1df4a0e2398205a15a03dcef75bceaddf1f9b0871abc01fdb13189d4ff"
+    },
+    {
+      "path": "app/game/systems/clanWarRtsScenariosV119.ts",
+      "bytes": 30489,
+      "sha256": "6a40b3658ed73d0bf91fcac66d9547b60886cce2ab4d948101f67e985ae9e7db"
+    },
+    {
+      "path": "app/game/systems/clanWarRtsSourceMissionsV129.ts",
+      "bytes": 28185,
+      "sha256": "2d13a421a514fa2d754e3323ed48e4a726273d81ab3ba2862d89bc9d433b58d5"
+    },
+    {
+      "path": "app/game/systems/clanWarShapeAtlasV115.ts",
+      "bytes": 4648,
+      "sha256": "234e53759ebc4acd2c86529776e56524a4e526df57d4529335fea2ab899e77c7"
+    },
+    {
+      "path": "app/game/systems/clanWarSourceMapsV128.ts",
+      "bytes": 24449,
+      "sha256": "1d3156b9ea7e876a099a7d418cf688b191cd3a1ea0525c8785839cb0872c40b9"
+    },
+    {
+      "path": "app/game/systems/clanWarStealthDashV143.ts",
+      "bytes": 2470,
+      "sha256": "96b9383909239fb701b46148208495d1e067ab46da98e6f24329b6e473ecc524"
+    },
+    {
+      "path": "app/game/systems/clanWarStealthDecoyV141.ts",
+      "bytes": 2787,
+      "sha256": "fc362f5f296989ab0c7d83f8c18fc0880d38f910ab5ba4c42732e9aa6729f969"
+    },
+    {
+      "path": "app/game/systems/clanWarStealthGuardPlacement.ts",
+      "bytes": 817,
+      "sha256": "8a80a64f6367d49ad48d2a3803c24a50166efcab67955d2613101b7b998c8946"
+    },
+    {
+      "path": "app/game/systems/clanWarStealthPathV142.ts",
+      "bytes": 2499,
+      "sha256": "b7c895111caf3f959ae1d1268177de210d71e5d00de700e2c7d884f362049315"
+    },
+    {
+      "path": "app/game/systems/clanWarStealthPatrolV140.ts",
+      "bytes": 3185,
+      "sha256": "0c0f61b8d5c0bbdf06755e5d16bf8fba43eb4c0427e0716d42b61dc5bdd98ca8"
+    },
+    {
+      "path": "app/game/systems/clanWarStealthReinforcementV144.ts",
+      "bytes": 4730,
+      "sha256": "7f1157a3f1c36864b9371fb66b7d5139729755277397b08746cba3e986114569"
+    },
+    {
+      "path": "app/game/systems/clanWarTacticalNavigationV118.ts",
+      "bytes": 1884,
+      "sha256": "0633f354a9659e9edcee5868b1f7cc5cb28a47d46176279671687a096284e59c"
+    },
+    {
+      "path": "app/game/systems/clanWarTextureLibraryV115.ts",
+      "bytes": 8521,
+      "sha256": "72c86a1d87fb417db563f420df888192edf85d1fbbee6a98da4277191a1e3e6e"
+    },
+    {
+      "path": "app/game/systems/clanWarTravelLedgerV145.ts",
+      "bytes": 1608,
+      "sha256": "218d1007d6c17743fd5be8cd7e82068f89473d9c8e7e7e1e304d4a7c37b39e4b"
+    },
+    {
+      "path": "app/game/systems/clanWarV85.ts",
+      "bytes": 45841,
+      "sha256": "b8d785eb51b064e3c40b873719d6759b661e014826c58ce3f169e4f68136b945"
+    },
+    {
+      "path": "app/game/systems/clanWarV85Data.ts",
+      "bytes": 4985,
+      "sha256": "ea974feaf3715447736ebde591a542198822dba11a76049568b852330a8c29aa"
+    },
+    {
+      "path": "app/game/systems/planetMaterialProfilesV103.ts",
+      "bytes": 4806,
+      "sha256": "1208340900995e1ab03c33a317b1249bfa5d5cc1d2dd3006e008f28eae089943"
+    },
+    {
+      "path": "node_modules/react-dom/cjs/react-dom-client.development.js",
+      "bytes": 1065698,
+      "sha256": "261c3275492d8f0b1f9b76f78268882316c8435217c39c78c65853bdcd89d500"
+    },
+    {
+      "path": "node_modules/react-dom/cjs/react-dom.development.js",
+      "bytes": 17673,
+      "sha256": "07d30cb25cb9bdf68b9dc7c9467b8f29d9c7ffe0f65c6ade9924e16ac207061b"
+    },
+    {
+      "path": "node_modules/react-dom/client.js",
+      "bytes": 1373,
+      "sha256": "00e348ab3d6bc2eef908345d0bc4e008c95bcfecec060dfda5c4967953761396"
+    },
+    {
+      "path": "node_modules/react-dom/index.js",
+      "bytes": 1359,
+      "sha256": "ba1a3e33489f868371561777607e3ee5091df0f7ea3f1a10f789d6b86e4c1505"
+    },
+    {
+      "path": "node_modules/react/cjs/react-jsx-runtime.development.js",
+      "bytes": 12452,
+      "sha256": "dd50fd0db2fba44e0eee66243a45c81cfa3774cf41e4e6c0c080a601815c694d"
+    },
+    {
+      "path": "node_modules/react/cjs/react.development.js",
+      "bytes": 47219,
+      "sha256": "e7a035fea0b35de567a563966fdb5e05c01f01f8ff776770d3a44794990ba3d7"
+    },
+    {
+      "path": "node_modules/react/index.js",
+      "bytes": 186,
+      "sha256": "60caffdecbdc5db3bc4ec4e83df9488345ccb271d07533b9210bf5750918d97e"
+    },
+    {
+      "path": "node_modules/react/jsx-runtime.js",
+      "bytes": 210,
+      "sha256": "b392951a77d0a2e6a6bd017e49d768481ae5b63c4109c6c31f622cf7b2433edc"
+    },
+    {
+      "path": "node_modules/scheduler/cjs/scheduler.development.js",
+      "bytes": 12144,
+      "sha256": "646eb671c8585382baff16daf92fe16a4cdd10dcf1a363c58b2ae1f6bf3a2b8d"
+    },
+    {
+      "path": "node_modules/scheduler/index.js",
+      "bytes": 194,
+      "sha256": "145965504d60007bc25486ab930b0367867dcd5d579ccd343c148d69349a7cfb"
+    },
+    {
+      "path": "package-lock.json",
+      "bytes": 389978,
+      "sha256": "763dcb2fdfef2e1a7ce196540cca3f4f5617eeb28a36b380d0dc6079410c1892"
+    },
+    {
+      "path": "scripts/qa-clan-war-operations-archive-20261109.mjs",
+      "bytes": 35517,
+      "sha256": "4187efb3c3c5a2cf111a061838f3b4d70b2d5cc345598189e1578832385507fe"
+    },
+    {
+      "path": "tests/browser/clan-war-v151-four-modes.fixture.tsx",
+      "bytes": 1226,
+      "sha256": "6add79f15896a245334eb662f24784a6df6c3dfa49c6922446c08e271fd32f1d"
+    }
+  ],
+  "equal": true
+}

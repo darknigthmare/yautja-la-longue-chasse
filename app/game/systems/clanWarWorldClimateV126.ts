@@ -37,7 +37,6 @@ export interface WarCoherentVariantV126 {
 const norm=(s:string)=>s.normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase();
 const N=(s:string)=>norm(s).replace(/\s+/g," ");
 const includesAny=(s:string,parts:readonly string[])=>parts.some(p=>s.includes(p));
-const ALIEN_TERRITORIES=25;
 const EARTH_REFERENCE_POINTS:Readonly<Record<string,{lat:number;lon:number;precision:"landmark-approx"|"regional-approx"}>>={
  "cite de carcassonne":{lat:43.2061,lon:2.3632,precision:"landmark-approx"},
  "viaduc de millau":{lat:44.078,lon:3.022,precision:"landmark-approx"},
@@ -126,7 +125,7 @@ const hotWords=["desert","erg","sossusvlei","atacama","sahara","gobi","namib","k
  "mer morte","jaisalmer","aride","sables"];
 const forestWords=["jungle","tropical","canop","amazon","rainforest","mangrove","serengeti",
  "okavango","congo","marais","fong","foret","delta","spores","tourbe"];
-const mountainWords=["gunnison","himal","alp","toubkal","and","canyon","everest","annapurna",
+const mountainWords=["gunnison","himal","alp","toubkal","andes","col ","canyon","everest","annapurna",
  "cordill","picos","galibier","mont","sommet","highlands","sisteron","pyr","verdon"];
 const marineWords=["littoral","atoll","lagon","lagune","récif","recif","baie","port","ocean",
  "mer ","ile ","île ","fjord","shore","archipel","bouvet"];

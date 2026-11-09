@@ -1,0 +1,10 @@
+locator.click: Timeout 30000ms exceeded.
+Call log:
+[2m  - waiting for getByRole('button', { name: /Personnaliser le chasseur/ })[22m
+
+    at /workspace/yautja-la-longue-chasse/scripts/qa-phg-p0p1-20261109.mjs:56:75 {
+  log: [
+    "  - waiting for getByRole('button', { name: /Personnaliser le chasseur/ })"
+  ],
+  name: 'TimeoutError'
+}

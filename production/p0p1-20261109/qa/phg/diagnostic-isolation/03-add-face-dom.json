@@ -1,0 +1,2334 @@
+{
+  "rig": {
+    "data": {
+      "hunterRig": "",
+      "rigVersion": "3",
+      "preset": "custom",
+      "bodyMorph": "classic",
+      "headStyle": "reference",
+      "armor": "hunter",
+      "armorStyle": "avp",
+      "gauntletEquipped": "jungle-hunter",
+      "gauntletVisualValidation": "individual-v139-rig-blockout-not-film-approved",
+      "gauntletRigRegistration": "back-lower-arm-256x384",
+      "mask": "celtic",
+      "aiming": "false",
+      "pose": "idle"
+    },
+    "width": 317.3125,
+    "height": 475.96875
+  },
+  "layers": [
+    {
+      "tag": "SPAN",
+      "data": {
+        "rigSlot": "dread-0",
+        "dreadCollisions": "0"
+      },
+      "src": null,
+      "mask": "none",
+      "clip": "none",
+      "transform": "matrix(0.815903, 0.081863, -0.081863, 0.815903, -13.8255, 0.259908)",
+      "zIndex": "4",
+      "background": "none",
+      "color": "rgba(0, 0, 0, 0)",
+      "opacity": "1",
+      "position": "absolute",
+      "bbox": {
+        "x": -52.789703369140625,
+        "y": 0.259918212890625,
+        "width": 297.8604431152344,
+        "height": 414.3204650878906
+      },
+      "style": "position: absolute; inset: 0px; width: 100%; height: 100%; object-fit: fill; transform-origin: 0px 0px; pointer-events: none; user-select: none; z-index: 4; transform: translate(-4.35706%, 0.054606%) matrix(0.815903, 0.081863, -0.081863, 0.815903, 0, 0);",
+      "ancestors": []
+    },
+    {
+      "tag": "SPAN",
+      "data": {
+        "rigSlot": "dread-1",
+        "dreadCollisions": "0"
+      },
+      "src": null,
+      "mask": "none",
+      "clip": "none",
+      "transform": "matrix(0.89674, 0.076539, -0.076539, 0.89674, -25.9583, -8.06285)",
+      "zIndex": "5",
+      "background": "none",
+      "color": "rgba(0, 0, 0, 0)",
+      "opacity": "1",
+      "position": "absolute",
+      "bbox": {
+        "x": -62.388519287109375,
+        "y": -8.0628662109375,
+        "width": 320.9770202636719,
+        "height": 451.1070556640625
+      },
+      "style": "position: absolute; inset: 0px; width: 100%; height: 100%; object-fit: fill; transform-origin: 0px 0px; pointer-events: none; user-select: none; z-index: 5; transform: translate(-8.18069%, -1.69399%) matrix(0.89674, 0.076539, -0.076539, 0.89674, 0, 0);",
+      "ancestors": []
+    },
+    {
+      "tag": "SPAN",
+      "data": {
+        "rigSlot": "dread-2",
+        "dreadCollisions": "0"
+      },
+      "src": null,
+      "mask": "none",
+      "clip": "none",
+      "transform": "matrix(0.978444, 0.055211, -0.055211, 0.978444, -39.0981, -12.3556)",
+      "zIndex": "6",
+      "background": "none",
+      "color": "rgba(0, 0, 0, 0)",
+      "opacity": "1",
+      "position": "absolute",
+      "bbox": {
+        "x": -65.37677001953125,
+        "y": -12.355621337890625,
+        "width": 336.751220703125,
+        "height": 483.2279357910156
+      },
+      "style": "position: absolute; inset: 0px; width: 100%; height: 100%; object-fit: fill; transform-origin: 0px 0px; pointer-events: none; user-select: none; z-index: 6; transform: translate(-12.3216%, -2.59589%) matrix(0.978444, 0.055211, -0.055211, 0.978444, 0, 0);",
+      "ancestors": []
+    },
+    {
+      "tag": "SPAN",
+      "data": {
+        "rigSlot": "dread-3",
+        "dreadCollisions": "0"
+      },
+      "src": null,
+      "mask": "none",
+      "clip": "none",
+      "transform": "matrix(1.01974, 0.022989, -0.022989, 1.01974, -45.6563, -11.3244)",
+      "zIndex": "7",
+      "background": "none",
+      "color": "rgba(0, 0, 0, 0)",
+      "opacity": "1",
+      "position": "absolute",
+      "bbox": {
+        "x": -56.598388671875,
+        "y": -11.324462890625,
+        "width": 334.51861572265625,
+        "height": 492.6595458984375
+      },
+      "style": "position: absolute; inset: 0px; width: 100%; height: 100%; object-fit: fill; transform-origin: 0px 0px; pointer-events: none; user-select: none; z-index: 7; transform: translate(-14.3884%, -2.37924%) matrix(1.01974, 0.022989, -0.022989, 1.01974, 0, 0);",
+      "ancestors": []
+    },
+    {
+      "tag": "SPAN",
+      "data": {
+        "rigSlot": "dread-4",
+        "dreadCollisions": "0"
+      },
+      "src": null,
+      "mask": "none",
+      "clip": "none",
+      "transform": "matrix(0.958968, 0.044506, -0.044506, 0.958968, -31.2585, -9.42027)",
+      "zIndex": "8",
+      "background": "none",
+      "color": "rgba(0, 0, 0, 0)",
+      "opacity": "1",
+      "position": "absolute",
+      "bbox": {
+        "x": -52.441986083984375,
+        "y": -9.420257568359375,
+        "width": 325.4760437011719,
+        "height": 470.5611267089844
+      },
+      "style": "position: absolute; inset: 0px; width: 100%; height: 100%; object-fit: fill; transform-origin: 0px 0px; pointer-events: none; user-select: none; z-index: 8; transform: translate(-9.85102%, -1.97918%) matrix(0.958968, 0.044506, -0.044506, 0.958968, 0, 0);",
+      "ancestors": []
+    },
+    {
+      "tag": "SPAN",
+      "data": {
+        "rigSlot": "dread-5",
+        "dreadCollisions": "0"
+      },
+      "src": null,
+      "mask": "none",
+      "clip": "none",
+      "transform": "matrix(0.7574, 0.06281, -0.06281, 0.7574, 6.68417, 4.27621)",
+      "zIndex": "9",
+      "background": "none",
+      "color": "rgba(0, 0, 0, 0)",
+      "opacity": "1",
+      "position": "absolute",
+      "bbox": {
+        "x": -23.21142578125,
+        "y": 4.276214599609375,
+        "width": 270.22808837890625,
+        "height": 380.4291076660156
+      },
+      "style": "position: absolute; inset: 0px; width: 100%; height: 100%; object-fit: fill; transform-origin: 0px 0px; pointer-events: none; user-select: none; z-index: 9; transform: translate(2.10649%, 0.898422%) matrix(0.7574, 0.06281, -0.06281, 0.7574, 0, 0);",
+      "ancestors": []
+    },
+    {
+      "tag": "SPAN",
+      "data": {
+        "rigSlot": "dread-6",
+        "dreadCollisions": "0"
+      },
+      "src": null,
+      "mask": "none",
+      "clip": "none",
+      "transform": "matrix(0.633287, 0.092456, -0.092456, 0.633287, 31.5028, 10.5945)",
+      "zIndex": "10",
+      "background": "none",
+      "color": "rgba(0, 0, 0, 0)",
+      "opacity": "1",
+      "position": "absolute",
+      "bbox": {
+        "x": -12.50341796875,
+        "y": 10.59454345703125,
+        "width": 244.9560546875,
+        "height": 330.76226806640625
+      },
+      "style": "position: absolute; inset: 0px; width: 100%; height: 100%; object-fit: fill; transform-origin: 0px 0px; pointer-events: none; user-select: none; z-index: 10; transform: translate(9.92799%, 2.22589%) matrix(0.633287, 0.092456, -0.092456, 0.633287, 0, 0);",
+      "ancestors": []
+    },
+    {
+      "tag": "IMG",
+      "data": {
+        "rigSlot": "body-thigh-back"
+      },
+      "src": "http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/body/classic/parts/thigh-back.webp",
+      "mask": "none",
+      "clip": "none",
+      "transform": "matrix(1, 0, 0, 1, 0, 0)",
+      "zIndex": "20",
+      "background": "none",
+      "color": "rgba(0, 0, 0, 0)",
+      "opacity": "1",
+      "position": "absolute",
+      "bbox": {
+        "x": 0,
+        "y": 0,
+        "width": 317.3125,
+        "height": 475.96875
+      },
+      "style": "position: absolute; inset: 0px; width: 100%; height: 100%; object-fit: fill; transform-origin: 0px 0px; pointer-events: none; user-select: none; z-index: 20; filter: none; transform: translate(0%, 0%) matrix(1, 0, 0, 1, 0, 0);",
+      "ancestors": []
+    },
+    {
+      "tag": "IMG",
+      "data": {
+        "rigSlot": "net-thigh-back"
+      },
+      "src": "http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/body/classic/net/parts/thigh-back.webp",
+      "mask": "none",
+      "clip": "none",
+      "transform": "matrix(1, 0, 0, 1, 0, 0)",
+      "zIndex": "21",
+      "background": "none",
+      "color": "rgba(0, 0, 0, 0)",
+      "opacity": "0.9",
+      "position": "absolute",
+      "bbox": {
+        "x": 0,
+        "y": 0,
+        "width": 317.3125,
+        "height": 475.96875
+      },
+      "style": "position: absolute; inset: 0px; width: 100%; height: 100%; object-fit: fill; transform-origin: 0px 0px; pointer-events: none; user-select: none; z-index: 21; opacity: 0.9; filter: none; transform: translate(0%, 0%) matrix(1, 0, 0, 1, 0, 0);",
+      "ancestors": []
+    },
+    {
+      "tag": "IMG",
+      "data": {
+        "rigSlot": "body-shin-back"
+      },
+      "src": "http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/body/classic/parts/shin-back.webp",
+      "mask": "none",
+      "clip": "none",
+      "transform": "matrix(1, 0, 0, 1, 0, 0)",
+      "zIndex": "22",
+      "background": "none",
+      "color": "rgba(0, 0, 0, 0)",
+      "opacity": "1",
+      "position": "absolute",
+      "bbox": {
+        "x": 0,
+        "y": 0,
+        "width": 317.3125,
+        "height": 475.96875
+      },
+      "style": "position: absolute; inset: 0px; width: 100%; height: 100%; object-fit: fill; transform-origin: 0px 0px; pointer-events: none; user-select: none; z-index: 22; filter: none; transform: translate(0%, 0%) matrix(1, 0, 0, 1, 0, 0);",
+      "ancestors": []
+    },
+    {
+      "tag": "IMG",
+      "data": {
+        "rigSlot": "net-shin-back"
+      },
+      "src": "http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/body/classic/net/parts/shin-back.webp",
+      "mask": "none",
+      "clip": "none",
+      "transform": "matrix(1, 0, 0, 1, 0, 0)",
+      "zIndex": "23",
+      "background": "none",
+      "color": "rgba(0, 0, 0, 0)",
+      "opacity": "0.9",
+      "position": "absolute",
+      "bbox": {
+        "x": 0,
+        "y": 0,
+        "width": 317.3125,
+        "height": 475.96875
+      },
+      "style": "position: absolute; inset: 0px; width: 100%; height: 100%; object-fit: fill; transform-origin: 0px 0px; pointer-events: none; user-select: none; z-index: 23; opacity: 0.9; filter: none; transform: translate(0%, 0%) matrix(1, 0, 0, 1, 0, 0);",
+      "ancestors": []
+    },
+    {
+      "tag": "IMG",
+      "data": {
+        "rigSlot": "body-foot-back"
+      },
+      "src": "http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/body/classic/parts/foot-back.webp",
+      "mask": "none",
+      "clip": "none",
+      "transform": "matrix(1, 0, 0, 1, 0, 0)",
+      "zIndex": "24",
+      "background": "none",
+      "color": "rgba(0, 0, 0, 0)",
+      "opacity": "1",
+      "position": "absolute",
+      "bbox": {
+        "x": 0,
+        "y": 0,
+        "width": 317.3125,
+        "height": 475.96875
+      },
+      "style": "position: absolute; inset: 0px; width: 100%; height: 100%; object-fit: fill; transform-origin: 0px 0px; pointer-events: none; user-select: none; z-index: 24; filter: none; transform: translate(0%, 0%) matrix(1, 0, 0, 1, 0, 0);",
+      "ancestors": []
+    },
+    {
+      "tag": "IMG",
+      "data": {
+        "rigSlot": "body-upper-arm-back"
+      },
+      "src": "http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/body/classic/parts/upper-arm-back.webp",
+      "mask": "none",
+      "clip": "none",
+      "transform": "matrix(1, 0, 0, 1, 0, 0)",
+      "zIndex": "26",
+      "background": "none",
+      "color": "rgba(0, 0, 0, 0)",
+      "opacity": "1",
+      "position": "absolute",
+      "bbox": {
+        "x": 0,
+        "y": 0,
+        "width": 317.3125,
+        "height": 475.96875
+      },
+      "style": "position: absolute; inset: 0px; width: 100%; height: 100%; object-fit: fill; transform-origin: 0px 0px; pointer-events: none; user-select: none; z-index: 26; filter: none; transform: translate(0%, 0%) matrix(1, 0, 0, 1, 0, 0);",
+      "ancestors": []
+    },
+    {
+      "tag": "IMG",
+      "data": {
+        "rigSlot": "net-upper-arm-back"
+      },
+      "src": "http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/body/classic/net/parts/upper-arm-back.webp",
+      "mask": "none",
+      "clip": "none",
+      "transform": "matrix(1, 0, 0, 1, 0, 0)",
+      "zIndex": "27",
+      "background": "none",
+      "color": "rgba(0, 0, 0, 0)",
+      "opacity": "0.9",
+      "position": "absolute",
+      "bbox": {
+        "x": 0,
+        "y": 0,
+        "width": 317.3125,
+        "height": 475.96875
+      },
+      "style": "position: absolute; inset: 0px; width: 100%; height: 100%; object-fit: fill; transform-origin: 0px 0px; pointer-events: none; user-select: none; z-index: 27; opacity: 0.9; filter: none; transform: translate(0%, 0%) matrix(1, 0, 0, 1, 0, 0);",
+      "ancestors": []
+    },
+    {
+      "tag": "IMG",
+      "data": {
+        "rigSlot": "body-lower-arm-back"
+      },
+      "src": "http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/body/classic/parts/lower-arm-back.webp",
+      "mask": "none",
+      "clip": "none",
+      "transform": "matrix(1, 0, 0, 1, 0, 0)",
+      "zIndex": "28",
+      "background": "none",
+      "color": "rgba(0, 0, 0, 0)",
+      "opacity": "1",
+      "position": "absolute",
+      "bbox": {
+        "x": 0,
+        "y": 0,
+        "width": 317.3125,
+        "height": 475.96875
+      },
+      "style": "position: absolute; inset: 0px; width: 100%; height: 100%; object-fit: fill; transform-origin: 0px 0px; pointer-events: none; user-select: none; z-index: 28; filter: none; transform: translate(0%, 0%) matrix(1, 0, 0, 1, 0, 0);",
+      "ancestors": []
+    },
+    {
+      "tag": "IMG",
+      "data": {
+        "rigSlot": "net-lower-arm-back"
+      },
+      "src": "http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/body/classic/net/parts/lower-arm-back.webp",
+      "mask": "none",
+      "clip": "none",
+      "transform": "matrix(1, 0, 0, 1, 0, 0)",
+      "zIndex": "29",
+      "background": "none",
+      "color": "rgba(0, 0, 0, 0)",
+      "opacity": "0.9",
+      "position": "absolute",
+      "bbox": {
+        "x": 0,
+        "y": 0,
+        "width": 317.3125,
+        "height": 475.96875
+      },
+      "style": "position: absolute; inset: 0px; width: 100%; height: 100%; object-fit: fill; transform-origin: 0px 0px; pointer-events: none; user-select: none; z-index: 29; opacity: 0.9; filter: none; transform: translate(0%, 0%) matrix(1, 0, 0, 1, 0, 0);",
+      "ancestors": []
+    },
+    {
+      "tag": "IMG",
+      "data": {
+        "rigSlot": "body-hand-back"
+      },
+      "src": "http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/body/classic/parts/hand-back.webp",
+      "mask": "none",
+      "clip": "none",
+      "transform": "matrix(1, 0, 0, 1, 0, 0)",
+      "zIndex": "30",
+      "background": "none",
+      "color": "rgba(0, 0, 0, 0)",
+      "opacity": "1",
+      "position": "absolute",
+      "bbox": {
+        "x": 0,
+        "y": 0,
+        "width": 317.3125,
+        "height": 475.96875
+      },
+      "style": "position: absolute; inset: 0px; width: 100%; height: 100%; object-fit: fill; transform-origin: 0px 0px; pointer-events: none; user-select: none; z-index: 30; filter: none; transform: translate(0%, 0%) matrix(1, 0, 0, 1, 0, 0);",
+      "ancestors": []
+    },
+    {
+      "tag": "IMG",
+      "data": {
+        "rigSlot": "net-hand-back"
+      },
+      "src": "http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/body/classic/net/parts/hand-back.webp",
+      "mask": "none",
+      "clip": "none",
+      "transform": "matrix(1, 0, 0, 1, 0, 0)",
+      "zIndex": "31",
+      "background": "none",
+      "color": "rgba(0, 0, 0, 0)",
+      "opacity": "0.9",
+      "position": "absolute",
+      "bbox": {
+        "x": 0,
+        "y": 0,
+        "width": 317.3125,
+        "height": 475.96875
+      },
+      "style": "position: absolute; inset: 0px; width: 100%; height: 100%; object-fit: fill; transform-origin: 0px 0px; pointer-events: none; user-select: none; z-index: 31; opacity: 0.9; filter: none; transform: translate(0%, 0%) matrix(1, 0, 0, 1, 0, 0);",
+      "ancestors": []
+    },
+    {
+      "tag": "IMG",
+      "data": {
+        "rigSlot": "body-pelvis"
+      },
+      "src": "http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/body/classic/parts/pelvis.webp",
+      "mask": "none",
+      "clip": "none",
+      "transform": "matrix(1, 0, 0, 1, 0, 0)",
+      "zIndex": "32",
+      "background": "none",
+      "color": "rgba(0, 0, 0, 0)",
+      "opacity": "1",
+      "position": "absolute",
+      "bbox": {
+        "x": 0,
+        "y": 0,
+        "width": 317.3125,
+        "height": 475.96875
+      },
+      "style": "position: absolute; inset: 0px; width: 100%; height: 100%; object-fit: fill; transform-origin: 0px 0px; pointer-events: none; user-select: none; z-index: 32; filter: none; transform: translate(0%, 0%) matrix(1, 0, 0, 1, 0, 0);",
+      "ancestors": []
+    },
+    {
+      "tag": "IMG",
+      "data": {
+        "rigSlot": "net-pelvis"
+      },
+      "src": "http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/body/classic/net/parts/pelvis.webp",
+      "mask": "none",
+      "clip": "none",
+      "transform": "matrix(1, 0, 0, 1, 0, 0)",
+      "zIndex": "33",
+      "background": "none",
+      "color": "rgba(0, 0, 0, 0)",
+      "opacity": "0.9",
+      "position": "absolute",
+      "bbox": {
+        "x": 0,
+        "y": 0,
+        "width": 317.3125,
+        "height": 475.96875
+      },
+      "style": "position: absolute; inset: 0px; width: 100%; height: 100%; object-fit: fill; transform-origin: 0px 0px; pointer-events: none; user-select: none; z-index: 33; opacity: 0.9; filter: none; transform: translate(0%, 0%) matrix(1, 0, 0, 1, 0, 0);",
+      "ancestors": []
+    },
+    {
+      "tag": "IMG",
+      "data": {
+        "rigSlot": "body-torso"
+      },
+      "src": "http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/body/classic/parts/torso.webp",
+      "mask": "none",
+      "clip": "none",
+      "transform": "matrix(1, 0, 0, 1, 0, 0)",
+      "zIndex": "34",
+      "background": "none",
+      "color": "rgba(0, 0, 0, 0)",
+      "opacity": "1",
+      "position": "absolute",
+      "bbox": {
+        "x": 0,
+        "y": 0,
+        "width": 317.3125,
+        "height": 475.96875
+      },
+      "style": "position: absolute; inset: 0px; width: 100%; height: 100%; object-fit: fill; transform-origin: 0px 0px; pointer-events: none; user-select: none; z-index: 34; filter: none; transform: translate(0%, 0%) matrix(1, 0, 0, 1, 0, 0);",
+      "ancestors": []
+    },
+    {
+      "tag": "IMG",
+      "data": {
+        "rigSlot": "net-torso"
+      },
+      "src": "http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/body/classic/net/parts/torso.webp",
+      "mask": "none",
+      "clip": "none",
+      "transform": "matrix(1, 0, 0, 1, 0, 0)",
+      "zIndex": "35",
+      "background": "none",
+      "color": "rgba(0, 0, 0, 0)",
+      "opacity": "0.9",
+      "position": "absolute",
+      "bbox": {
+        "x": 0,
+        "y": 0,
+        "width": 317.3125,
+        "height": 475.96875
+      },
+      "style": "position: absolute; inset: 0px; width: 100%; height: 100%; object-fit: fill; transform-origin: 0px 0px; pointer-events: none; user-select: none; z-index: 35; opacity: 0.9; filter: none; transform: translate(0%, 0%) matrix(1, 0, 0, 1, 0, 0);",
+      "ancestors": []
+    },
+    {
+      "tag": "SPAN",
+      "data": {
+        "rigPlacement": "body-head"
+      },
+      "src": null,
+      "mask": "none",
+      "clip": "none",
+      "transform": "matrix(1, 0, 0, 1, 0, 0)",
+      "zIndex": "36",
+      "background": "none",
+      "color": "rgba(0, 0, 0, 0)",
+      "opacity": "1",
+      "position": "absolute",
+      "bbox": {
+        "x": 0,
+        "y": 0,
+        "width": 317.3125,
+        "height": 475.96875
+      },
+      "style": "position: absolute; inset: 0px; width: 100%; height: 100%; object-fit: fill; transform-origin: 0px 0px; pointer-events: none; user-select: none; z-index: 36; transform: translate(0%, 0%) matrix(1, 0, 0, 1, 0, 0);",
+      "ancestors": []
+    },
+    {
+      "tag": "IMG",
+      "data": {
+        "rigSlot": "body-head"
+      },
+      "src": "http://127.0.0.1:3121/game/sprites/v62/heads/classic-head.png",
+      "mask": "none",
+      "clip": "none",
+      "transform": "none",
+      "zIndex": "auto",
+      "background": "none",
+      "color": "rgba(0, 0, 0, 0)",
+      "opacity": "1",
+      "position": "absolute",
+      "bbox": {
+        "x": 110.109375,
+        "y": 14.15625,
+        "width": 120.203125,
+        "height": 120.203125
+      },
+      "style": "position: absolute; left: 34.7022%; top: 2.97548%; width: 37.886%; height: 25.2573%; object-fit: fill; pointer-events: none; user-select: none; filter: none;",
+      "ancestors": [
+        {
+          "data": {
+            "rigPlacement": "body-head"
+          },
+          "clip": "none",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        }
+      ]
+    },
+    {
+      "tag": "SPAN",
+      "data": {
+        "yautjaDecalZone": "face",
+        "yautjaDecalId": "clan-v133-face-hunting-glyph"
+      },
+      "src": null,
+      "mask": "none",
+      "clip": "none",
+      "transform": "matrix(1, 0, 0, 1, 0, 0)",
+      "zIndex": "37",
+      "background": "none",
+      "color": "rgba(0, 0, 0, 0)",
+      "opacity": "1",
+      "position": "absolute",
+      "bbox": {
+        "x": 0,
+        "y": 0,
+        "width": 317.3125,
+        "height": 475.96875
+      },
+      "style": "position: absolute; inset: 0px; width: 100%; height: 100%; object-fit: fill; transform-origin: 0px 0px; pointer-events: none; user-select: none; z-index: 37; transform: translate(0%, 0%) matrix(1, 0, 0, 1, 0, 0);",
+      "ancestors": []
+    },
+    {
+      "tag": "SPAN",
+      "data": {
+        "decalMaskOwnerV139": "true"
+      },
+      "src": null,
+      "mask": "url(\"http://127.0.0.1:3121/game/sprites/v62/heads/classic-head.png\")",
+      "clip": "none",
+      "transform": "none",
+      "zIndex": "auto",
+      "background": "none",
+      "color": "rgba(0, 0, 0, 0)",
+      "opacity": "1",
+      "position": "absolute",
+      "bbox": {
+        "x": 110.109375,
+        "y": 14.15625,
+        "width": 120.203125,
+        "height": 120.203125
+      },
+      "style": "position: absolute; left: 34.7022%; top: 2.97548%; width: 37.886%; height: 25.2573%; mask-image: url(\"/game/sprites/v62/heads/classic-head.png\"); mask-size: 100% 100%; mask-position: 0px 0px; mask-repeat: no-repeat; pointer-events: none;",
+      "ancestors": [
+        {
+          "data": {
+            "yautjaDecalZone": "face",
+            "yautjaDecalId": "clan-v133-face-hunting-glyph"
+          },
+          "clip": "none",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        }
+      ]
+    },
+    {
+      "tag": "IMG",
+      "data": {
+        "rigSlot": "body-thigh-front"
+      },
+      "src": "http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/body/classic/parts/thigh-front.webp",
+      "mask": "none",
+      "clip": "none",
+      "transform": "matrix(1, 0, 0, 1, 0, 0)",
+      "zIndex": "38",
+      "background": "none",
+      "color": "rgba(0, 0, 0, 0)",
+      "opacity": "1",
+      "position": "absolute",
+      "bbox": {
+        "x": 0,
+        "y": 0,
+        "width": 317.3125,
+        "height": 475.96875
+      },
+      "style": "position: absolute; inset: 0px; width: 100%; height: 100%; object-fit: fill; transform-origin: 0px 0px; pointer-events: none; user-select: none; z-index: 38; filter: none; transform: translate(0%, 0%) matrix(1, 0, 0, 1, 0, 0);",
+      "ancestors": []
+    },
+    {
+      "tag": "IMG",
+      "data": {
+        "rigSlot": "net-thigh-front"
+      },
+      "src": "http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/body/classic/net/parts/thigh-front.webp",
+      "mask": "none",
+      "clip": "none",
+      "transform": "matrix(1, 0, 0, 1, 0, 0)",
+      "zIndex": "39",
+      "background": "none",
+      "color": "rgba(0, 0, 0, 0)",
+      "opacity": "0.9",
+      "position": "absolute",
+      "bbox": {
+        "x": 0,
+        "y": 0,
+        "width": 317.3125,
+        "height": 475.96875
+      },
+      "style": "position: absolute; inset: 0px; width: 100%; height: 100%; object-fit: fill; transform-origin: 0px 0px; pointer-events: none; user-select: none; z-index: 39; opacity: 0.9; filter: none; transform: translate(0%, 0%) matrix(1, 0, 0, 1, 0, 0);",
+      "ancestors": []
+    },
+    {
+      "tag": "IMG",
+      "data": {
+        "rigSlot": "body-shin-front"
+      },
+      "src": "http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/body/classic/parts/shin-front.webp",
+      "mask": "none",
+      "clip": "none",
+      "transform": "matrix(1, 0, 0, 1, 0, 0)",
+      "zIndex": "40",
+      "background": "none",
+      "color": "rgba(0, 0, 0, 0)",
+      "opacity": "1",
+      "position": "absolute",
+      "bbox": {
+        "x": 0,
+        "y": 0,
+        "width": 317.3125,
+        "height": 475.96875
+      },
+      "style": "position: absolute; inset: 0px; width: 100%; height: 100%; object-fit: fill; transform-origin: 0px 0px; pointer-events: none; user-select: none; z-index: 40; filter: none; transform: translate(0%, 0%) matrix(1, 0, 0, 1, 0, 0);",
+      "ancestors": []
+    },
+    {
+      "tag": "IMG",
+      "data": {
+        "rigSlot": "net-shin-front"
+      },
+      "src": "http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/body/classic/net/parts/shin-front.webp",
+      "mask": "none",
+      "clip": "none",
+      "transform": "matrix(1, 0, 0, 1, 0, 0)",
+      "zIndex": "41",
+      "background": "none",
+      "color": "rgba(0, 0, 0, 0)",
+      "opacity": "0.9",
+      "position": "absolute",
+      "bbox": {
+        "x": 0,
+        "y": 0,
+        "width": 317.3125,
+        "height": 475.96875
+      },
+      "style": "position: absolute; inset: 0px; width: 100%; height: 100%; object-fit: fill; transform-origin: 0px 0px; pointer-events: none; user-select: none; z-index: 41; opacity: 0.9; filter: none; transform: translate(0%, 0%) matrix(1, 0, 0, 1, 0, 0);",
+      "ancestors": []
+    },
+    {
+      "tag": "IMG",
+      "data": {
+        "rigSlot": "body-foot-front"
+      },
+      "src": "http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/body/classic/parts/foot-front.webp",
+      "mask": "none",
+      "clip": "none",
+      "transform": "matrix(1, 0, 0, 1, 0, 0)",
+      "zIndex": "42",
+      "background": "none",
+      "color": "rgba(0, 0, 0, 0)",
+      "opacity": "1",
+      "position": "absolute",
+      "bbox": {
+        "x": 0,
+        "y": 0,
+        "width": 317.3125,
+        "height": 475.96875
+      },
+      "style": "position: absolute; inset: 0px; width: 100%; height: 100%; object-fit: fill; transform-origin: 0px 0px; pointer-events: none; user-select: none; z-index: 42; filter: none; transform: translate(0%, 0%) matrix(1, 0, 0, 1, 0, 0);",
+      "ancestors": []
+    },
+    {
+      "tag": "IMG",
+      "data": {
+        "rigSlot": "body-upper-arm-front"
+      },
+      "src": "http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/body/classic/parts/upper-arm-front.webp",
+      "mask": "none",
+      "clip": "none",
+      "transform": "matrix(1, 0, 0, 1, 0, 0)",
+      "zIndex": "44",
+      "background": "none",
+      "color": "rgba(0, 0, 0, 0)",
+      "opacity": "1",
+      "position": "absolute",
+      "bbox": {
+        "x": 0,
+        "y": 0,
+        "width": 317.3125,
+        "height": 475.96875
+      },
+      "style": "position: absolute; inset: 0px; width: 100%; height: 100%; object-fit: fill; transform-origin: 0px 0px; pointer-events: none; user-select: none; z-index: 44; filter: none; transform: translate(0%, 0%) matrix(1, 0, 0, 1, 0, 0);",
+      "ancestors": []
+    },
+    {
+      "tag": "IMG",
+      "data": {
+        "rigSlot": "net-upper-arm-front"
+      },
+      "src": "http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/body/classic/net/parts/upper-arm-front.webp",
+      "mask": "none",
+      "clip": "none",
+      "transform": "matrix(1, 0, 0, 1, 0, 0)",
+      "zIndex": "45",
+      "background": "none",
+      "color": "rgba(0, 0, 0, 0)",
+      "opacity": "0.9",
+      "position": "absolute",
+      "bbox": {
+        "x": 0,
+        "y": 0,
+        "width": 317.3125,
+        "height": 475.96875
+      },
+      "style": "position: absolute; inset: 0px; width: 100%; height: 100%; object-fit: fill; transform-origin: 0px 0px; pointer-events: none; user-select: none; z-index: 45; opacity: 0.9; filter: none; transform: translate(0%, 0%) matrix(1, 0, 0, 1, 0, 0);",
+      "ancestors": []
+    },
+    {
+      "tag": "IMG",
+      "data": {
+        "rigSlot": "body-lower-arm-front"
+      },
+      "src": "http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/body/classic/parts/lower-arm-front.webp",
+      "mask": "none",
+      "clip": "none",
+      "transform": "matrix(1, 0, 0, 1, 0, 0)",
+      "zIndex": "46",
+      "background": "none",
+      "color": "rgba(0, 0, 0, 0)",
+      "opacity": "1",
+      "position": "absolute",
+      "bbox": {
+        "x": 0,
+        "y": 0,
+        "width": 317.3125,
+        "height": 475.96875
+      },
+      "style": "position: absolute; inset: 0px; width: 100%; height: 100%; object-fit: fill; transform-origin: 0px 0px; pointer-events: none; user-select: none; z-index: 46; filter: none; transform: translate(0%, 0%) matrix(1, 0, 0, 1, 0, 0);",
+      "ancestors": []
+    },
+    {
+      "tag": "IMG",
+      "data": {
+        "rigSlot": "net-lower-arm-front"
+      },
+      "src": "http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/body/classic/net/parts/lower-arm-front.webp",
+      "mask": "none",
+      "clip": "none",
+      "transform": "matrix(1, 0, 0, 1, 0, 0)",
+      "zIndex": "47",
+      "background": "none",
+      "color": "rgba(0, 0, 0, 0)",
+      "opacity": "0.9",
+      "position": "absolute",
+      "bbox": {
+        "x": 0,
+        "y": 0,
+        "width": 317.3125,
+        "height": 475.96875
+      },
+      "style": "position: absolute; inset: 0px; width: 100%; height: 100%; object-fit: fill; transform-origin: 0px 0px; pointer-events: none; user-select: none; z-index: 47; opacity: 0.9; filter: none; transform: translate(0%, 0%) matrix(1, 0, 0, 1, 0, 0);",
+      "ancestors": []
+    },
+    {
+      "tag": "IMG",
+      "data": {
+        "rigSlot": "body-hand-front"
+      },
+      "src": "http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/body/classic/parts/hand-front.webp",
+      "mask": "none",
+      "clip": "none",
+      "transform": "matrix(1, 0, 0, 1, 0, 0)",
+      "zIndex": "48",
+      "background": "none",
+      "color": "rgba(0, 0, 0, 0)",
+      "opacity": "1",
+      "position": "absolute",
+      "bbox": {
+        "x": 0,
+        "y": 0,
+        "width": 317.3125,
+        "height": 475.96875
+      },
+      "style": "position: absolute; inset: 0px; width: 100%; height: 100%; object-fit: fill; transform-origin: 0px 0px; pointer-events: none; user-select: none; z-index: 48; filter: none; transform: translate(0%, 0%) matrix(1, 0, 0, 1, 0, 0);",
+      "ancestors": []
+    },
+    {
+      "tag": "IMG",
+      "data": {
+        "rigSlot": "net-hand-front"
+      },
+      "src": "http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/body/classic/net/parts/hand-front.webp",
+      "mask": "none",
+      "clip": "none",
+      "transform": "matrix(1, 0, 0, 1, 0, 0)",
+      "zIndex": "49",
+      "background": "none",
+      "color": "rgba(0, 0, 0, 0)",
+      "opacity": "0.9",
+      "position": "absolute",
+      "bbox": {
+        "x": 0,
+        "y": 0,
+        "width": 317.3125,
+        "height": 475.96875
+      },
+      "style": "position: absolute; inset: 0px; width: 100%; height: 100%; object-fit: fill; transform-origin: 0px 0px; pointer-events: none; user-select: none; z-index: 49; opacity: 0.9; filter: none; transform: translate(0%, 0%) matrix(1, 0, 0, 1, 0, 0);",
+      "ancestors": []
+    },
+    {
+      "tag": "IMG",
+      "data": {
+        "rigSlot": "armor-chest-avp"
+      },
+      "src": "http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/armor/registered/chest-avp.webp",
+      "mask": "none",
+      "clip": "none",
+      "transform": "matrix(1, 0, 0, 1, 0, 0)",
+      "zIndex": "35",
+      "background": "none",
+      "color": "rgba(0, 0, 0, 0)",
+      "opacity": "1",
+      "position": "absolute",
+      "bbox": {
+        "x": 0,
+        "y": 0,
+        "width": 317.3125,
+        "height": 475.96875
+      },
+      "style": "position: absolute; inset: 0px; width: 100%; height: 100%; object-fit: fill; transform-origin: 0px 0px; pointer-events: none; user-select: none; z-index: 35; filter: sepia(0.48) saturate(1.22) hue-rotate(346deg) brightness(1.02) drop-shadow(rgba(0, 0, 0, 0.6) 0px 1px 1px); transform: translate(0%, 0%) matrix(1, 0, 0, 1, 0, 0);",
+      "ancestors": [
+        {
+          "data": {},
+          "clip": "none",
+          "transform": "none"
+        }
+      ]
+    },
+    {
+      "tag": "SPAN",
+      "data": {
+        "chromaticChannel": "armor"
+      },
+      "src": null,
+      "mask": "url(\"http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/armor/registered/chest-avp.webp\")",
+      "clip": "none",
+      "transform": "matrix(1, 0, 0, 1, 0, 0)",
+      "zIndex": "35",
+      "background": "none",
+      "color": "rgb(85, 102, 119)",
+      "opacity": "0.78",
+      "position": "absolute",
+      "bbox": {
+        "x": 0,
+        "y": 0,
+        "width": 317.3125,
+        "height": 475.96875
+      },
+      "style": "position: absolute; inset: 0px; width: 100%; height: 100%; pointer-events: none; user-select: none; background-color: rgb(85, 102, 119); background-image: none; background-position: center center; background-repeat: no-repeat; background-size: cover; mask-image: url(\"/game/assets/v3/actors/yautja/hunter/armor/registered/chest-avp.webp\"); mask-repeat: no-repeat; mask-size: 100% 100%; mix-blend-mode: color; opacity: 0.78; object-fit: fill; transform-origin: 0px 0px; z-index: 35; transform: translate(0%, 0%) matrix(1, 0, 0, 1, 0, 0);",
+      "ancestors": [
+        {
+          "data": {},
+          "clip": "none",
+          "transform": "none"
+        }
+      ]
+    },
+    {
+      "tag": "IMG",
+      "data": {
+        "rigSlot": "armor-shoulder-avp"
+      },
+      "src": "http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/armor/registered/shoulder-avp.webp",
+      "mask": "none",
+      "clip": "inset(0% 0% 65.625%)",
+      "transform": "matrix(-1, 0, 0, 1, 401.599, -2.479)",
+      "zIndex": "35",
+      "background": "none",
+      "color": "rgba(0, 0, 0, 0)",
+      "opacity": "1",
+      "position": "absolute",
+      "bbox": {
+        "x": 84.2861328125,
+        "y": -2.47900390625,
+        "width": 317.3125,
+        "height": 475.96875
+      },
+      "style": "position: absolute; inset: 0px; width: 100%; height: 100%; object-fit: fill; transform-origin: 0px 0px; pointer-events: none; user-select: none; z-index: 35; filter: sepia(0.48) saturate(1.22) hue-rotate(346deg) brightness(1.02) drop-shadow(rgba(0, 0, 0, 0.6) 0px 1px 1px); clip-path: inset(0% 0% 65.625%); transform: translate(126.562%, -0.520833%) matrix(-1, 0, 0, 1, 0, 0);",
+      "ancestors": [
+        {
+          "data": {},
+          "clip": "none",
+          "transform": "none"
+        }
+      ]
+    },
+    {
+      "tag": "SPAN",
+      "data": {
+        "chromaticChannel": "armor"
+      },
+      "src": null,
+      "mask": "url(\"http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/armor/registered/shoulder-avp.webp\")",
+      "clip": "none",
+      "transform": "matrix(-1, 0, 0, 1, 401.599, -2.479)",
+      "zIndex": "35",
+      "background": "none",
+      "color": "rgb(85, 102, 119)",
+      "opacity": "0.78",
+      "position": "absolute",
+      "bbox": {
+        "x": 84.2861328125,
+        "y": -2.47900390625,
+        "width": 317.3125,
+        "height": 475.96875
+      },
+      "style": "position: absolute; inset: 0px; width: 100%; height: 100%; pointer-events: none; user-select: none; background-color: rgb(85, 102, 119); background-image: none; background-position: center center; background-repeat: no-repeat; background-size: cover; mask-image: url(\"/game/assets/v3/actors/yautja/hunter/armor/registered/shoulder-avp.webp\"); mask-repeat: no-repeat; mask-size: 100% 100%; mix-blend-mode: color; opacity: 0.78; object-fit: fill; transform-origin: 0px 0px; z-index: 35; transform: translate(126.562%, -0.520833%) matrix(-1, 0, 0, 1, 0, 0);",
+      "ancestors": [
+        {
+          "data": {},
+          "clip": "none",
+          "transform": "none"
+        }
+      ]
+    },
+    {
+      "tag": "SPAN",
+      "data": {
+        "rigArmorWrap": "shoulder-avp"
+      },
+      "src": null,
+      "mask": "url(\"http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/body/classic/parts/upper-arm-front.webp\")",
+      "clip": "none",
+      "transform": "matrix(1, 0, 0, 1, 0, 0)",
+      "zIndex": "45",
+      "background": "none",
+      "color": "rgba(0, 0, 0, 0)",
+      "opacity": "1",
+      "position": "absolute",
+      "bbox": {
+        "x": 0,
+        "y": 0,
+        "width": 317.3125,
+        "height": 475.96875
+      },
+      "style": "position: absolute; inset: 0px; width: 100%; height: 100%; object-fit: fill; transform-origin: 0px 0px; pointer-events: none; user-select: none; z-index: 45; transform: translate(0%, 0%) matrix(1, 0, 0, 1, 0, 0); mask-image: url(\"/game/assets/v3/actors/yautja/hunter/body/classic/parts/upper-arm-front.webp\"); mask-size: 100% 100%; mask-repeat: no-repeat;",
+      "ancestors": [
+        {
+          "data": {},
+          "clip": "none",
+          "transform": "none"
+        }
+      ]
+    },
+    {
+      "tag": "SPAN",
+      "data": {
+        "chromaticChannel": "armor"
+      },
+      "src": null,
+      "mask": "url(\"http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/armor/registered/shoulder-avp.webp\")",
+      "clip": "none",
+      "transform": "matrix(-1, 0, 0, 1, 401.599, -2.479)",
+      "zIndex": "auto",
+      "background": "none",
+      "color": "rgb(85, 102, 119)",
+      "opacity": "0.78",
+      "position": "absolute",
+      "bbox": {
+        "x": 84.2861328125,
+        "y": -2.47900390625,
+        "width": 317.3125,
+        "height": 475.96875
+      },
+      "style": "position: absolute; inset: 0px; width: 100%; height: 100%; pointer-events: none; user-select: none; background-color: rgb(85, 102, 119); background-image: none; background-position: center center; background-repeat: no-repeat; background-size: cover; mask-image: url(\"/game/assets/v3/actors/yautja/hunter/armor/registered/shoulder-avp.webp\"); mask-repeat: no-repeat; mask-size: 100% 100%; mix-blend-mode: color; opacity: 0.78; object-fit: fill; transform-origin: 0px 0px; transform: translate(126.562%, -0.520833%) matrix(-1, 0, 0, 1, 0, 0);",
+      "ancestors": [
+        {
+          "data": {
+            "rigArmorWrap": "shoulder-avp"
+          },
+          "clip": "none",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "data": {},
+          "clip": "none",
+          "transform": "none"
+        }
+      ]
+    },
+    {
+      "tag": "IMG",
+      "data": {
+        "rigSlot": "armor-thigh"
+      },
+      "src": "http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/armor/registered/thigh.webp",
+      "mask": "none",
+      "clip": "none",
+      "transform": "matrix(1, 0, 0, 1, 0, 0)",
+      "zIndex": "37",
+      "background": "none",
+      "color": "rgba(0, 0, 0, 0)",
+      "opacity": "1",
+      "position": "absolute",
+      "bbox": {
+        "x": 0,
+        "y": 0,
+        "width": 317.3125,
+        "height": 475.96875
+      },
+      "style": "position: absolute; inset: 0px; width: 100%; height: 100%; object-fit: fill; transform-origin: 0px 0px; pointer-events: none; user-select: none; z-index: 37; filter: sepia(0.48) saturate(1.22) hue-rotate(346deg) brightness(1.02) drop-shadow(rgba(0, 0, 0, 0.6) 0px 1px 1px); transform: translate(0%, 0%) matrix(1, 0, 0, 1, 0, 0);",
+      "ancestors": [
+        {
+          "data": {},
+          "clip": "none",
+          "transform": "none"
+        }
+      ]
+    },
+    {
+      "tag": "SPAN",
+      "data": {
+        "chromaticChannel": "armor"
+      },
+      "src": null,
+      "mask": "url(\"http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/armor/registered/thigh.webp\")",
+      "clip": "none",
+      "transform": "matrix(1, 0, 0, 1, 0, 0)",
+      "zIndex": "37",
+      "background": "none",
+      "color": "rgb(85, 102, 119)",
+      "opacity": "0.78",
+      "position": "absolute",
+      "bbox": {
+        "x": 0,
+        "y": 0,
+        "width": 317.3125,
+        "height": 475.96875
+      },
+      "style": "position: absolute; inset: 0px; width: 100%; height: 100%; pointer-events: none; user-select: none; background-color: rgb(85, 102, 119); background-image: none; background-position: center center; background-repeat: no-repeat; background-size: cover; mask-image: url(\"/game/assets/v3/actors/yautja/hunter/armor/registered/thigh.webp\"); mask-repeat: no-repeat; mask-size: 100% 100%; mix-blend-mode: color; opacity: 0.78; object-fit: fill; transform-origin: 0px 0px; z-index: 37; transform: translate(0%, 0%) matrix(1, 0, 0, 1, 0, 0);",
+      "ancestors": [
+        {
+          "data": {},
+          "clip": "none",
+          "transform": "none"
+        }
+      ]
+    },
+    {
+      "tag": "SPAN",
+      "data": {
+        "rigArmorWrap": "thigh"
+      },
+      "src": null,
+      "mask": "url(\"http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/body/classic/parts/thigh-front.webp\")",
+      "clip": "none",
+      "transform": "matrix(1, 0, 0, 1, 0, 0)",
+      "zIndex": "39",
+      "background": "none",
+      "color": "rgba(0, 0, 0, 0)",
+      "opacity": "1",
+      "position": "absolute",
+      "bbox": {
+        "x": 0,
+        "y": 0,
+        "width": 317.3125,
+        "height": 475.96875
+      },
+      "style": "position: absolute; inset: 0px; width: 100%; height: 100%; object-fit: fill; transform-origin: 0px 0px; pointer-events: none; user-select: none; z-index: 39; transform: translate(0%, 0%) matrix(1, 0, 0, 1, 0, 0); mask-image: url(\"/game/assets/v3/actors/yautja/hunter/body/classic/parts/thigh-front.webp\"); mask-size: 100% 100%; mask-repeat: no-repeat;",
+      "ancestors": [
+        {
+          "data": {},
+          "clip": "none",
+          "transform": "none"
+        }
+      ]
+    },
+    {
+      "tag": "SPAN",
+      "data": {
+        "chromaticChannel": "armor"
+      },
+      "src": null,
+      "mask": "url(\"http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/armor/registered/thigh.webp\")",
+      "clip": "none",
+      "transform": "none",
+      "zIndex": "auto",
+      "background": "none",
+      "color": "rgb(85, 102, 119)",
+      "opacity": "0.78",
+      "position": "absolute",
+      "bbox": {
+        "x": 0,
+        "y": 0,
+        "width": 317.3125,
+        "height": 475.96875
+      },
+      "style": "position: absolute; inset: 0px; width: 100%; height: 100%; pointer-events: none; user-select: none; background-color: rgb(85, 102, 119); background-image: none; background-position: center center; background-repeat: no-repeat; background-size: cover; mask-image: url(\"/game/assets/v3/actors/yautja/hunter/armor/registered/thigh.webp\"); mask-repeat: no-repeat; mask-size: 100% 100%; mix-blend-mode: color; opacity: 0.78; object-fit: fill; transform-origin: 0px 0px;",
+      "ancestors": [
+        {
+          "data": {
+            "rigArmorWrap": "thigh"
+          },
+          "clip": "none",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "data": {},
+          "clip": "none",
+          "transform": "none"
+        }
+      ]
+    },
+    {
+      "tag": "IMG",
+      "data": {
+        "rigSlot": "armor-thigh-lower"
+      },
+      "src": "http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/armor/registered/thigh-lower.webp",
+      "mask": "none",
+      "clip": "none",
+      "transform": "matrix(1, 0, 0, 1, 18.5925, 4.95801)",
+      "zIndex": "39",
+      "background": "none",
+      "color": "rgba(0, 0, 0, 0)",
+      "opacity": "1",
+      "position": "absolute",
+      "bbox": {
+        "x": 18.592529296875,
+        "y": 4.9580078125,
+        "width": 317.3125,
+        "height": 475.96875
+      },
+      "style": "position: absolute; inset: 0px; width: 100%; height: 100%; object-fit: fill; transform-origin: 0px 0px; pointer-events: none; user-select: none; z-index: 39; filter: sepia(0.48) saturate(1.22) hue-rotate(346deg) brightness(1.02) drop-shadow(rgba(0, 0, 0, 0.6) 0px 1px 1px); transform: translate(5.85938%, 1.04167%) matrix(1, 0, 0, 1, 0, 0);",
+      "ancestors": [
+        {
+          "data": {},
+          "clip": "none",
+          "transform": "none"
+        }
+      ]
+    },
+    {
+      "tag": "SPAN",
+      "data": {
+        "chromaticChannel": "armor"
+      },
+      "src": null,
+      "mask": "url(\"http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/armor/registered/thigh-lower.webp\")",
+      "clip": "none",
+      "transform": "matrix(1, 0, 0, 1, 18.5925, 4.95801)",
+      "zIndex": "39",
+      "background": "none",
+      "color": "rgb(85, 102, 119)",
+      "opacity": "0.78",
+      "position": "absolute",
+      "bbox": {
+        "x": 18.592529296875,
+        "y": 4.9580078125,
+        "width": 317.3125,
+        "height": 475.96875
+      },
+      "style": "position: absolute; inset: 0px; width: 100%; height: 100%; pointer-events: none; user-select: none; background-color: rgb(85, 102, 119); background-image: none; background-position: center center; background-repeat: no-repeat; background-size: cover; mask-image: url(\"/game/assets/v3/actors/yautja/hunter/armor/registered/thigh-lower.webp\"); mask-repeat: no-repeat; mask-size: 100% 100%; mix-blend-mode: color; opacity: 0.78; object-fit: fill; transform-origin: 0px 0px; z-index: 39; transform: translate(5.85938%, 1.04167%) matrix(1, 0, 0, 1, 0, 0);",
+      "ancestors": [
+        {
+          "data": {},
+          "clip": "none",
+          "transform": "none"
+        }
+      ]
+    },
+    {
+      "tag": "SPAN",
+      "data": {
+        "rigArmorWrap": "thigh-lower"
+      },
+      "src": null,
+      "mask": "url(\"http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/body/classic/parts/shin-front.webp\")",
+      "clip": "none",
+      "transform": "matrix(1, 0, 0, 1, 0, 0)",
+      "zIndex": "41",
+      "background": "none",
+      "color": "rgba(0, 0, 0, 0)",
+      "opacity": "1",
+      "position": "absolute",
+      "bbox": {
+        "x": 0,
+        "y": 0,
+        "width": 317.3125,
+        "height": 475.96875
+      },
+      "style": "position: absolute; inset: 0px; width: 100%; height: 100%; object-fit: fill; transform-origin: 0px 0px; pointer-events: none; user-select: none; z-index: 41; transform: translate(0%, 0%) matrix(1, 0, 0, 1, 0, 0); mask-image: url(\"/game/assets/v3/actors/yautja/hunter/body/classic/parts/shin-front.webp\"); mask-size: 100% 100%; mask-repeat: no-repeat;",
+      "ancestors": [
+        {
+          "data": {},
+          "clip": "none",
+          "transform": "none"
+        }
+      ]
+    },
+    {
+      "tag": "SPAN",
+      "data": {
+        "chromaticChannel": "armor"
+      },
+      "src": null,
+      "mask": "url(\"http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/armor/registered/thigh-lower.webp\")",
+      "clip": "none",
+      "transform": "matrix(1, 0, 0, 1, 18.5925, 4.95801)",
+      "zIndex": "auto",
+      "background": "none",
+      "color": "rgb(85, 102, 119)",
+      "opacity": "0.78",
+      "position": "absolute",
+      "bbox": {
+        "x": 18.592529296875,
+        "y": 4.9580078125,
+        "width": 317.3125,
+        "height": 475.96875
+      },
+      "style": "position: absolute; inset: 0px; width: 100%; height: 100%; pointer-events: none; user-select: none; background-color: rgb(85, 102, 119); background-image: none; background-position: center center; background-repeat: no-repeat; background-size: cover; mask-image: url(\"/game/assets/v3/actors/yautja/hunter/armor/registered/thigh-lower.webp\"); mask-repeat: no-repeat; mask-size: 100% 100%; mix-blend-mode: color; opacity: 0.78; object-fit: fill; transform-origin: 0px 0px; transform: translate(5.85938%, 1.04167%) matrix(1, 0, 0, 1, 0, 0);",
+      "ancestors": [
+        {
+          "data": {
+            "rigArmorWrap": "thigh-lower"
+          },
+          "clip": "none",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "data": {},
+          "clip": "none",
+          "transform": "none"
+        }
+      ]
+    },
+    {
+      "tag": "IMG",
+      "data": {
+        "rigSlot": "armor-shin"
+      },
+      "src": "http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/armor/registered/shin.webp",
+      "mask": "none",
+      "clip": "inset(0% 21.875% 0% 0%)",
+      "transform": "matrix(1.18, 0, 0, 1.05, -39.0443, -19.3362)",
+      "zIndex": "39",
+      "background": "none",
+      "color": "rgba(0, 0, 0, 0)",
+      "opacity": "1",
+      "position": "absolute",
+      "bbox": {
+        "x": -39.0443115234375,
+        "y": -19.33624267578125,
+        "width": 374.4287109375,
+        "height": 499.7672119140625
+      },
+      "style": "position: absolute; inset: 0px; width: 100%; height: 100%; object-fit: fill; transform-origin: 0px 0px; pointer-events: none; user-select: none; z-index: 39; filter: sepia(0.48) saturate(1.22) hue-rotate(346deg) brightness(1.02) drop-shadow(rgba(0, 0, 0, 0.6) 0px 1px 1px); clip-path: inset(0% 21.875% 0% 0%); transform: translate(-12.3047%, -4.0625%) matrix(1.18, 0, 0, 1.05, 0, 0);",
+      "ancestors": [
+        {
+          "data": {},
+          "clip": "none",
+          "transform": "none"
+        }
+      ]
+    },
+    {
+      "tag": "SPAN",
+      "data": {
+        "chromaticChannel": "armor"
+      },
+      "src": null,
+      "mask": "url(\"http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/armor/registered/shin.webp\")",
+      "clip": "none",
+      "transform": "matrix(1.18, 0, 0, 1.05, -39.0443, -19.3362)",
+      "zIndex": "39",
+      "background": "none",
+      "color": "rgb(85, 102, 119)",
+      "opacity": "0.78",
+      "position": "absolute",
+      "bbox": {
+        "x": -39.0443115234375,
+        "y": -19.33624267578125,
+        "width": 374.4287109375,
+        "height": 499.7672119140625
+      },
+      "style": "position: absolute; inset: 0px; width: 100%; height: 100%; pointer-events: none; user-select: none; background-color: rgb(85, 102, 119); background-image: none; background-position: center center; background-repeat: no-repeat; background-size: cover; mask-image: url(\"/game/assets/v3/actors/yautja/hunter/armor/registered/shin.webp\"); mask-repeat: no-repeat; mask-size: 100% 100%; mix-blend-mode: color; opacity: 0.78; object-fit: fill; transform-origin: 0px 0px; z-index: 39; transform: translate(-12.3047%, -4.0625%) matrix(1.18, 0, 0, 1.05, 0, 0);",
+      "ancestors": [
+        {
+          "data": {},
+          "clip": "none",
+          "transform": "none"
+        }
+      ]
+    },
+    {
+      "tag": "SPAN",
+      "data": {
+        "rigArmorWrap": "shin"
+      },
+      "src": null,
+      "mask": "url(\"http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/body/classic/parts/shin-front.webp\")",
+      "clip": "none",
+      "transform": "matrix(1, 0, 0, 1, 0, 0)",
+      "zIndex": "41",
+      "background": "none",
+      "color": "rgba(0, 0, 0, 0)",
+      "opacity": "1",
+      "position": "absolute",
+      "bbox": {
+        "x": 0,
+        "y": 0,
+        "width": 317.3125,
+        "height": 475.96875
+      },
+      "style": "position: absolute; inset: 0px; width: 100%; height: 100%; object-fit: fill; transform-origin: 0px 0px; pointer-events: none; user-select: none; z-index: 41; transform: translate(0%, 0%) matrix(1, 0, 0, 1, 0, 0); mask-image: url(\"/game/assets/v3/actors/yautja/hunter/body/classic/parts/shin-front.webp\"); mask-size: 100% 100%; mask-repeat: no-repeat;",
+      "ancestors": [
+        {
+          "data": {},
+          "clip": "none",
+          "transform": "none"
+        }
+      ]
+    },
+    {
+      "tag": "SPAN",
+      "data": {
+        "chromaticChannel": "armor"
+      },
+      "src": null,
+      "mask": "url(\"http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/armor/registered/shin.webp\")",
+      "clip": "none",
+      "transform": "matrix(1.18, 0, 0, 1.05, -39.0443, -19.3362)",
+      "zIndex": "auto",
+      "background": "none",
+      "color": "rgb(85, 102, 119)",
+      "opacity": "0.78",
+      "position": "absolute",
+      "bbox": {
+        "x": -39.0443115234375,
+        "y": -19.33624267578125,
+        "width": 374.4287109375,
+        "height": 499.7672119140625
+      },
+      "style": "position: absolute; inset: 0px; width: 100%; height: 100%; pointer-events: none; user-select: none; background-color: rgb(85, 102, 119); background-image: none; background-position: center center; background-repeat: no-repeat; background-size: cover; mask-image: url(\"/game/assets/v3/actors/yautja/hunter/armor/registered/shin.webp\"); mask-repeat: no-repeat; mask-size: 100% 100%; mix-blend-mode: color; opacity: 0.78; object-fit: fill; transform-origin: 0px 0px; transform: translate(-12.3047%, -4.0625%) matrix(1.18, 0, 0, 1.05, 0, 0);",
+      "ancestors": [
+        {
+          "data": {
+            "rigArmorWrap": "shin"
+          },
+          "clip": "none",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "data": {},
+          "clip": "none",
+          "transform": "none"
+        }
+      ]
+    },
+    {
+      "tag": "IMG",
+      "data": {
+        "rigSlot": "armor-knee"
+      },
+      "src": "http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/armor/registered/knee.webp",
+      "mask": "none",
+      "clip": "none",
+      "transform": "matrix(1, 0, 0, 1, 0, 0)",
+      "zIndex": "41",
+      "background": "none",
+      "color": "rgba(0, 0, 0, 0)",
+      "opacity": "1",
+      "position": "absolute",
+      "bbox": {
+        "x": 0,
+        "y": 0,
+        "width": 317.3125,
+        "height": 475.96875
+      },
+      "style": "position: absolute; inset: 0px; width: 100%; height: 100%; object-fit: fill; transform-origin: 0px 0px; pointer-events: none; user-select: none; z-index: 41; filter: sepia(0.48) saturate(1.22) hue-rotate(346deg) brightness(1.02) drop-shadow(rgba(0, 0, 0, 0.6) 0px 1px 1px); transform: translate(0%, 0%) matrix(1, 0, 0, 1, 0, 0);",
+      "ancestors": [
+        {
+          "data": {},
+          "clip": "none",
+          "transform": "none"
+        }
+      ]
+    },
+    {
+      "tag": "SPAN",
+      "data": {
+        "chromaticChannel": "armor"
+      },
+      "src": null,
+      "mask": "url(\"http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/armor/registered/knee.webp\")",
+      "clip": "none",
+      "transform": "matrix(1, 0, 0, 1, 0, 0)",
+      "zIndex": "41",
+      "background": "none",
+      "color": "rgb(85, 102, 119)",
+      "opacity": "0.78",
+      "position": "absolute",
+      "bbox": {
+        "x": 0,
+        "y": 0,
+        "width": 317.3125,
+        "height": 475.96875
+      },
+      "style": "position: absolute; inset: 0px; width: 100%; height: 100%; pointer-events: none; user-select: none; background-color: rgb(85, 102, 119); background-image: none; background-position: center center; background-repeat: no-repeat; background-size: cover; mask-image: url(\"/game/assets/v3/actors/yautja/hunter/armor/registered/knee.webp\"); mask-repeat: no-repeat; mask-size: 100% 100%; mix-blend-mode: color; opacity: 0.78; object-fit: fill; transform-origin: 0px 0px; z-index: 41; transform: translate(0%, 0%) matrix(1, 0, 0, 1, 0, 0);",
+      "ancestors": [
+        {
+          "data": {},
+          "clip": "none",
+          "transform": "none"
+        }
+      ]
+    },
+    {
+      "tag": "IMG",
+      "data": {
+        "rigSlot": "armor-thigh-lower-far"
+      },
+      "src": "http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/armor/registered/thigh-lower.webp",
+      "mask": "none",
+      "clip": "none",
+      "transform": "matrix(1, 0, 0, 1, -98.5404, 9.91601)",
+      "zIndex": "21",
+      "background": "none",
+      "color": "rgba(0, 0, 0, 0)",
+      "opacity": "1",
+      "position": "absolute",
+      "bbox": {
+        "x": -98.5404052734375,
+        "y": 9.916015625,
+        "width": 317.3125,
+        "height": 475.96875
+      },
+      "style": "position: absolute; inset: 0px; width: 100%; height: 100%; object-fit: fill; transform-origin: 0px 0px; pointer-events: none; user-select: none; z-index: 21; filter: sepia(0.48) saturate(1.22) hue-rotate(346deg) brightness(1.02) drop-shadow(rgba(0, 0, 0, 0.6) 0px 1px 1px) brightness(0.72); transform: translate(-31.0547%, 2.08333%) matrix(1, 0, 0, 1, 0, 0);",
+      "ancestors": [
+        {
+          "data": {},
+          "clip": "none",
+          "transform": "none"
+        }
+      ]
+    },
+    {
+      "tag": "SPAN",
+      "data": {
+        "chromaticChannel": "armor"
+      },
+      "src": null,
+      "mask": "url(\"http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/armor/registered/thigh-lower.webp\")",
+      "clip": "none",
+      "transform": "matrix(1, 0, 0, 1, -98.5404, 9.91601)",
+      "zIndex": "21",
+      "background": "none",
+      "color": "rgb(85, 102, 119)",
+      "opacity": "0.78",
+      "position": "absolute",
+      "bbox": {
+        "x": -98.5404052734375,
+        "y": 9.916015625,
+        "width": 317.3125,
+        "height": 475.96875
+      },
+      "style": "position: absolute; inset: 0px; width: 100%; height: 100%; pointer-events: none; user-select: none; background-color: rgb(85, 102, 119); background-image: none; background-position: center center; background-repeat: no-repeat; background-size: cover; mask-image: url(\"/game/assets/v3/actors/yautja/hunter/armor/registered/thigh-lower.webp\"); mask-repeat: no-repeat; mask-size: 100% 100%; mix-blend-mode: color; opacity: 0.78; object-fit: fill; transform-origin: 0px 0px; z-index: 21; transform: translate(-31.0547%, 2.08333%) matrix(1, 0, 0, 1, 0, 0);",
+      "ancestors": [
+        {
+          "data": {},
+          "clip": "none",
+          "transform": "none"
+        }
+      ]
+    },
+    {
+      "tag": "SPAN",
+      "data": {
+        "rigArmorWrap": "thigh-lower"
+      },
+      "src": null,
+      "mask": "url(\"http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/body/classic/parts/shin-back.webp\")",
+      "clip": "none",
+      "transform": "matrix(1, 0, 0, 1, 0, 0)",
+      "zIndex": "23",
+      "background": "none",
+      "color": "rgba(0, 0, 0, 0)",
+      "opacity": "1",
+      "position": "absolute",
+      "bbox": {
+        "x": 0,
+        "y": 0,
+        "width": 317.3125,
+        "height": 475.96875
+      },
+      "style": "position: absolute; inset: 0px; width: 100%; height: 100%; object-fit: fill; transform-origin: 0px 0px; pointer-events: none; user-select: none; z-index: 23; transform: translate(0%, 0%) matrix(1, 0, 0, 1, 0, 0); mask-image: url(\"/game/assets/v3/actors/yautja/hunter/body/classic/parts/shin-back.webp\"); mask-size: 100% 100%; mask-repeat: no-repeat;",
+      "ancestors": [
+        {
+          "data": {},
+          "clip": "none",
+          "transform": "none"
+        }
+      ]
+    },
+    {
+      "tag": "SPAN",
+      "data": {
+        "chromaticChannel": "armor"
+      },
+      "src": null,
+      "mask": "url(\"http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/armor/registered/thigh-lower.webp\")",
+      "clip": "none",
+      "transform": "matrix(1, 0, 0, 1, -98.5404, 9.91601)",
+      "zIndex": "auto",
+      "background": "none",
+      "color": "rgb(85, 102, 119)",
+      "opacity": "0.78",
+      "position": "absolute",
+      "bbox": {
+        "x": -98.5404052734375,
+        "y": 9.916015625,
+        "width": 317.3125,
+        "height": 475.96875
+      },
+      "style": "position: absolute; inset: 0px; width: 100%; height: 100%; pointer-events: none; user-select: none; background-color: rgb(85, 102, 119); background-image: none; background-position: center center; background-repeat: no-repeat; background-size: cover; mask-image: url(\"/game/assets/v3/actors/yautja/hunter/armor/registered/thigh-lower.webp\"); mask-repeat: no-repeat; mask-size: 100% 100%; mix-blend-mode: color; opacity: 0.78; object-fit: fill; transform-origin: 0px 0px; transform: translate(-31.0547%, 2.08333%) matrix(1, 0, 0, 1, 0, 0);",
+      "ancestors": [
+        {
+          "data": {
+            "rigArmorWrap": "thigh-lower"
+          },
+          "clip": "none",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "data": {},
+          "clip": "none",
+          "transform": "none"
+        }
+      ]
+    },
+    {
+      "tag": "IMG",
+      "data": {
+        "rigSlot": "armor-shin-far"
+      },
+      "src": "http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/armor/registered/shin.webp",
+      "mask": "none",
+      "clip": "inset(0% 21.875% 0% 0%)",
+      "transform": "matrix(1.18, 0, 0, 1.05, -156.177, -14.3782)",
+      "zIndex": "21",
+      "background": "none",
+      "color": "rgba(0, 0, 0, 0)",
+      "opacity": "1",
+      "position": "absolute",
+      "bbox": {
+        "x": -156.17724609375,
+        "y": -14.37823486328125,
+        "width": 374.42877197265625,
+        "height": 499.7672119140625
+      },
+      "style": "position: absolute; inset: 0px; width: 100%; height: 100%; object-fit: fill; transform-origin: 0px 0px; pointer-events: none; user-select: none; z-index: 21; filter: sepia(0.48) saturate(1.22) hue-rotate(346deg) brightness(1.02) drop-shadow(rgba(0, 0, 0, 0.6) 0px 1px 1px) brightness(0.72); clip-path: inset(0% 21.875% 0% 0%); transform: translate(-49.2188%, -3.02083%) matrix(1.18, 0, 0, 1.05, 0, 0);",
+      "ancestors": [
+        {
+          "data": {},
+          "clip": "none",
+          "transform": "none"
+        }
+      ]
+    },
+    {
+      "tag": "SPAN",
+      "data": {
+        "chromaticChannel": "armor"
+      },
+      "src": null,
+      "mask": "url(\"http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/armor/registered/shin.webp\")",
+      "clip": "none",
+      "transform": "matrix(1.18, 0, 0, 1.05, -156.177, -14.3782)",
+      "zIndex": "21",
+      "background": "none",
+      "color": "rgb(85, 102, 119)",
+      "opacity": "0.78",
+      "position": "absolute",
+      "bbox": {
+        "x": -156.17724609375,
+        "y": -14.37823486328125,
+        "width": 374.42877197265625,
+        "height": 499.7672119140625
+      },
+      "style": "position: absolute; inset: 0px; width: 100%; height: 100%; pointer-events: none; user-select: none; background-color: rgb(85, 102, 119); background-image: none; background-position: center center; background-repeat: no-repeat; background-size: cover; mask-image: url(\"/game/assets/v3/actors/yautja/hunter/armor/registered/shin.webp\"); mask-repeat: no-repeat; mask-size: 100% 100%; mix-blend-mode: color; opacity: 0.78; object-fit: fill; transform-origin: 0px 0px; z-index: 21; transform: translate(-49.2188%, -3.02083%) matrix(1.18, 0, 0, 1.05, 0, 0);",
+      "ancestors": [
+        {
+          "data": {},
+          "clip": "none",
+          "transform": "none"
+        }
+      ]
+    },
+    {
+      "tag": "SPAN",
+      "data": {
+        "rigArmorWrap": "shin"
+      },
+      "src": null,
+      "mask": "url(\"http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/body/classic/parts/shin-back.webp\")",
+      "clip": "none",
+      "transform": "matrix(1, 0, 0, 1, 0, 0)",
+      "zIndex": "23",
+      "background": "none",
+      "color": "rgba(0, 0, 0, 0)",
+      "opacity": "1",
+      "position": "absolute",
+      "bbox": {
+        "x": 0,
+        "y": 0,
+        "width": 317.3125,
+        "height": 475.96875
+      },
+      "style": "position: absolute; inset: 0px; width: 100%; height: 100%; object-fit: fill; transform-origin: 0px 0px; pointer-events: none; user-select: none; z-index: 23; transform: translate(0%, 0%) matrix(1, 0, 0, 1, 0, 0); mask-image: url(\"/game/assets/v3/actors/yautja/hunter/body/classic/parts/shin-back.webp\"); mask-size: 100% 100%; mask-repeat: no-repeat;",
+      "ancestors": [
+        {
+          "data": {},
+          "clip": "none",
+          "transform": "none"
+        }
+      ]
+    },
+    {
+      "tag": "SPAN",
+      "data": {
+        "chromaticChannel": "armor"
+      },
+      "src": null,
+      "mask": "url(\"http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/armor/registered/shin.webp\")",
+      "clip": "none",
+      "transform": "matrix(1.18, 0, 0, 1.05, -156.177, -14.3782)",
+      "zIndex": "auto",
+      "background": "none",
+      "color": "rgb(85, 102, 119)",
+      "opacity": "0.78",
+      "position": "absolute",
+      "bbox": {
+        "x": -156.17724609375,
+        "y": -14.37823486328125,
+        "width": 374.42877197265625,
+        "height": 499.7672119140625
+      },
+      "style": "position: absolute; inset: 0px; width: 100%; height: 100%; pointer-events: none; user-select: none; background-color: rgb(85, 102, 119); background-image: none; background-position: center center; background-repeat: no-repeat; background-size: cover; mask-image: url(\"/game/assets/v3/actors/yautja/hunter/armor/registered/shin.webp\"); mask-repeat: no-repeat; mask-size: 100% 100%; mix-blend-mode: color; opacity: 0.78; object-fit: fill; transform-origin: 0px 0px; transform: translate(-49.2188%, -3.02083%) matrix(1.18, 0, 0, 1.05, 0, 0);",
+      "ancestors": [
+        {
+          "data": {
+            "rigArmorWrap": "shin"
+          },
+          "clip": "none",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "data": {},
+          "clip": "none",
+          "transform": "none"
+        }
+      ]
+    },
+    {
+      "tag": "IMG",
+      "data": {
+        "rigSlot": "armor-bracer"
+      },
+      "src": "http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/armor/registered/bracer.webp",
+      "mask": "none",
+      "clip": "none",
+      "transform": "matrix(1, 0, 0, 1, 0, 0)",
+      "zIndex": "47",
+      "background": "none",
+      "color": "rgba(0, 0, 0, 0)",
+      "opacity": "1",
+      "position": "absolute",
+      "bbox": {
+        "x": 0,
+        "y": 0,
+        "width": 317.3125,
+        "height": 475.96875
+      },
+      "style": "position: absolute; inset: 0px; width: 100%; height: 100%; object-fit: fill; transform-origin: 0px 0px; pointer-events: none; user-select: none; z-index: 47; filter: sepia(0.48) saturate(1.22) hue-rotate(346deg) brightness(1.02) drop-shadow(rgba(0, 0, 0, 0.6) 0px 1px 1px); transform: translate(0%, 0%) matrix(1, 0, 0, 1, 0, 0);",
+      "ancestors": [
+        {
+          "data": {},
+          "clip": "none",
+          "transform": "none"
+        }
+      ]
+    },
+    {
+      "tag": "SPAN",
+      "data": {
+        "chromaticChannel": "armor"
+      },
+      "src": null,
+      "mask": "url(\"http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/armor/registered/bracer.webp\")",
+      "clip": "none",
+      "transform": "matrix(1, 0, 0, 1, 0, 0)",
+      "zIndex": "47",
+      "background": "none",
+      "color": "rgb(85, 102, 119)",
+      "opacity": "0.78",
+      "position": "absolute",
+      "bbox": {
+        "x": 0,
+        "y": 0,
+        "width": 317.3125,
+        "height": 475.96875
+      },
+      "style": "position: absolute; inset: 0px; width: 100%; height: 100%; pointer-events: none; user-select: none; background-color: rgb(85, 102, 119); background-image: none; background-position: center center; background-repeat: no-repeat; background-size: cover; mask-image: url(\"/game/assets/v3/actors/yautja/hunter/armor/registered/bracer.webp\"); mask-repeat: no-repeat; mask-size: 100% 100%; mix-blend-mode: color; opacity: 0.78; object-fit: fill; transform-origin: 0px 0px; z-index: 47; transform: translate(0%, 0%) matrix(1, 0, 0, 1, 0, 0);",
+      "ancestors": [
+        {
+          "data": {},
+          "clip": "none",
+          "transform": "none"
+        }
+      ]
+    },
+    {
+      "tag": "IMG",
+      "data": {
+        "rigSlot": "armor-belt"
+      },
+      "src": "http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/armor/registered/belt.webp",
+      "mask": "none",
+      "clip": "none",
+      "transform": "matrix(1, 0, 0, 1, 0, 0)",
+      "zIndex": "39",
+      "background": "none",
+      "color": "rgba(0, 0, 0, 0)",
+      "opacity": "1",
+      "position": "absolute",
+      "bbox": {
+        "x": 0,
+        "y": 0,
+        "width": 317.3125,
+        "height": 475.96875
+      },
+      "style": "position: absolute; inset: 0px; width: 100%; height: 100%; object-fit: fill; transform-origin: 0px 0px; pointer-events: none; user-select: none; z-index: 39; filter: sepia(0.48) saturate(1.22) hue-rotate(346deg) brightness(1.02) drop-shadow(rgba(0, 0, 0, 0.6) 0px 1px 1px); transform: translate(0%, 0%) matrix(1, 0, 0, 1, 0, 0);",
+      "ancestors": [
+        {
+          "data": {},
+          "clip": "none",
+          "transform": "none"
+        }
+      ]
+    },
+    {
+      "tag": "SPAN",
+      "data": {
+        "chromaticChannel": "armor"
+      },
+      "src": null,
+      "mask": "url(\"http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/armor/registered/belt.webp\")",
+      "clip": "none",
+      "transform": "matrix(1, 0, 0, 1, 0, 0)",
+      "zIndex": "39",
+      "background": "none",
+      "color": "rgb(85, 102, 119)",
+      "opacity": "0.78",
+      "position": "absolute",
+      "bbox": {
+        "x": 0,
+        "y": 0,
+        "width": 317.3125,
+        "height": 475.96875
+      },
+      "style": "position: absolute; inset: 0px; width: 100%; height: 100%; pointer-events: none; user-select: none; background-color: rgb(85, 102, 119); background-image: none; background-position: center center; background-repeat: no-repeat; background-size: cover; mask-image: url(\"/game/assets/v3/actors/yautja/hunter/armor/registered/belt.webp\"); mask-repeat: no-repeat; mask-size: 100% 100%; mix-blend-mode: color; opacity: 0.78; object-fit: fill; transform-origin: 0px 0px; z-index: 39; transform: translate(0%, 0%) matrix(1, 0, 0, 1, 0, 0);",
+      "ancestors": [
+        {
+          "data": {},
+          "clip": "none",
+          "transform": "none"
+        }
+      ]
+    },
+    {
+      "tag": "SPAN",
+      "data": {
+        "rigSlot": "dread-side-0"
+      },
+      "src": null,
+      "mask": "none",
+      "clip": "none",
+      "transform": "matrix(0.527943, -0.186753, 0.186753, 0.527943, 37.7724, 65.6987)",
+      "zIndex": "66",
+      "background": "none",
+      "color": "rgba(0, 0, 0, 0)",
+      "opacity": "1",
+      "position": "absolute",
+      "bbox": {
+        "x": 37.772369384765625,
+        "y": 6.43963623046875,
+        "width": 256.4115295410156,
+        "height": 310.54339599609375
+      },
+      "style": "position: absolute; inset: 0px; width: 100%; height: 100%; object-fit: fill; transform-origin: 0px 0px; pointer-events: none; user-select: none; z-index: 66; transform: translate(11.9038%, 13.8032%) matrix(0.527943, -0.186753, 0.186753, 0.527943, 0, 0);",
+      "ancestors": []
+    },
+    {
+      "tag": "SPAN",
+      "data": {
+        "rigSlot": "dread-side-1"
+      },
+      "src": null,
+      "mask": "none",
+      "clip": "none",
+      "transform": "matrix(0.432024, -0.209178, 0.209178, 0.432024, 58.5366, 83.4623)",
+      "zIndex": "66",
+      "background": "none",
+      "color": "rgba(0, 0, 0, 0)",
+      "opacity": "1",
+      "position": "absolute",
+      "bbox": {
+        "x": 58.53662109375,
+        "y": 17.0875244140625,
+        "width": 236.6488037109375,
+        "height": 272.00469970703125
+      },
+      "style": "position: absolute; inset: 0px; width: 100%; height: 100%; object-fit: fill; transform-origin: 0px 0px; pointer-events: none; user-select: none; z-index: 66; transform: translate(18.4476%, 17.5353%) matrix(0.432024, -0.209178, 0.209178, 0.432024, 0, 0);",
+      "ancestors": []
+    },
+    {
+      "tag": "IMG",
+      "data": {
+        "rigSlot": "gear-motion-sensor"
+      },
+      "src": "http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/gear/registered/motion-sensor.webp",
+      "mask": "none",
+      "clip": "none",
+      "transform": "matrix(1, 0, 0, 1, -29.748, 6.19751)",
+      "zIndex": "53",
+      "background": "none",
+      "color": "rgba(0, 0, 0, 0)",
+      "opacity": "1",
+      "position": "absolute",
+      "bbox": {
+        "x": -29.748046875,
+        "y": 6.197509765625,
+        "width": 317.3125,
+        "height": 475.96875
+      },
+      "style": "position: absolute; inset: 0px; width: 100%; height: 100%; object-fit: fill; transform-origin: 0px 0px; pointer-events: none; user-select: none; z-index: 53; filter: drop-shadow(rgba(0, 0, 0, 0.85) 0px 2px 2px); transform: translate(-9.375%, 1.30208%) matrix(1, 0, 0, 1, 0, 0);",
+      "ancestors": [
+        {
+          "data": {},
+          "clip": "none",
+          "transform": "none"
+        }
+      ]
+    },
+    {
+      "tag": "IMG",
+      "data": {
+        "rigSlot": "gear-audio-decoy"
+      },
+      "src": "http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/gear/registered/audio-decoy.webp",
+      "mask": "none",
+      "clip": "none",
+      "transform": "matrix(1, 0, 0, 1, 29.748, 8.67651)",
+      "zIndex": "54",
+      "background": "none",
+      "color": "rgba(0, 0, 0, 0)",
+      "opacity": "1",
+      "position": "absolute",
+      "bbox": {
+        "x": 29.748046875,
+        "y": 8.676513671875,
+        "width": 317.3125,
+        "height": 475.96875
+      },
+      "style": "position: absolute; inset: 0px; width: 100%; height: 100%; object-fit: fill; transform-origin: 0px 0px; pointer-events: none; user-select: none; z-index: 54; filter: drop-shadow(rgba(0, 0, 0, 0.85) 0px 2px 2px); transform: translate(9.375%, 1.82292%) matrix(1, 0, 0, 1, 0, 0);",
+      "ancestors": [
+        {
+          "data": {},
+          "clip": "none",
+          "transform": "none"
+        }
+      ]
+    },
+    {
+      "tag": "SPAN",
+      "data": {
+        "rigPlacement": "mask-celtic"
+      },
+      "src": null,
+      "mask": "none",
+      "clip": "none",
+      "transform": "matrix(1, 0, 0, 1, 0, 0)",
+      "zIndex": "70",
+      "background": "none",
+      "color": "rgba(0, 0, 0, 0)",
+      "opacity": "1",
+      "position": "absolute",
+      "bbox": {
+        "x": 0,
+        "y": 0,
+        "width": 317.3125,
+        "height": 475.96875
+      },
+      "style": "position: absolute; inset: 0px; width: 100%; height: 100%; object-fit: fill; transform-origin: 0px 0px; pointer-events: none; user-select: none; z-index: 70; transform: translate(0%, 0%) matrix(1, 0, 0, 1, 0, 0);",
+      "ancestors": []
+    },
+    {
+      "tag": "IMG",
+      "data": {
+        "rigSlot": "mask-celtic"
+      },
+      "src": "http://127.0.0.1:3121/game/sprites/v62/masks/celtic.png",
+      "mask": "none",
+      "clip": "none",
+      "transform": "none",
+      "zIndex": "auto",
+      "background": "none",
+      "color": "rgba(0, 0, 0, 0)",
+      "opacity": "1",
+      "position": "absolute",
+      "bbox": {
+        "x": 136.890625,
+        "y": 27.046875,
+        "width": 96.5,
+        "height": 96.5
+      },
+      "style": "position: absolute; left: 43.145%; top: 5.68325%; width: 30.4125%; height: 20.275%; object-fit: fill; pointer-events: none; user-select: none; filter: drop-shadow(rgba(0, 0, 0, 0.9) 0px 2px 2px);",
+      "ancestors": [
+        {
+          "data": {
+            "rigPlacement": "mask-celtic"
+          },
+          "clip": "none",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        }
+      ]
+    },
+    {
+      "tag": "SPAN",
+      "data": {
+        "chromaticChannel": "biomask"
+      },
+      "src": null,
+      "mask": "none",
+      "clip": "none",
+      "transform": "none",
+      "zIndex": "auto",
+      "background": "none",
+      "color": "rgba(0, 0, 0, 0)",
+      "opacity": "1",
+      "position": "absolute",
+      "bbox": {
+        "x": 0,
+        "y": 0,
+        "width": 317.3125,
+        "height": 475.96875
+      },
+      "style": "position: absolute; inset: 0px; width: 100%; height: 100%; object-fit: fill; transform-origin: 0px 0px; pointer-events: none; user-select: none;",
+      "ancestors": [
+        {
+          "data": {
+            "rigBiomaskPigmentV131": "true"
+          },
+          "clip": "none",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        }
+      ]
+    },
+    {
+      "tag": "IMG",
+      "data": {
+        "rigSlot": "caster-mount"
+      },
+      "src": "http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/equipment/registered/mount.webp",
+      "mask": "none",
+      "clip": "none",
+      "transform": "matrix(1, 0, 0, 1, 0, 0)",
+      "zIndex": "56",
+      "background": "none",
+      "color": "rgba(0, 0, 0, 0)",
+      "opacity": "1",
+      "position": "absolute",
+      "bbox": {
+        "x": 0,
+        "y": 0,
+        "width": 317.3125,
+        "height": 475.96875
+      },
+      "style": "position: absolute; inset: 0px; width: 100%; height: 100%; object-fit: fill; transform-origin: 0px 0px; pointer-events: none; user-select: none; z-index: 56; transform: translate(0%, 0%) matrix(1, 0, 0, 1, 0, 0);",
+      "ancestors": []
+    },
+    {
+      "tag": "IMG",
+      "data": {
+        "rigSlot": "caster-upper-arm"
+      },
+      "src": "http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/equipment/registered/caster-upper.webp",
+      "mask": "none",
+      "clip": "none",
+      "transform": "matrix(1, 0, 0, 1, 0, 0)",
+      "zIndex": "57",
+      "background": "none",
+      "color": "rgba(0, 0, 0, 0)",
+      "opacity": "1",
+      "position": "absolute",
+      "bbox": {
+        "x": 0,
+        "y": 0,
+        "width": 317.3125,
+        "height": 475.96875
+      },
+      "style": "position: absolute; inset: 0px; width: 100%; height: 100%; object-fit: fill; transform-origin: 0px 0px; pointer-events: none; user-select: none; z-index: 57; transform: translate(0%, 0%) matrix(1, 0, 0, 1, 0, 0);",
+      "ancestors": []
+    },
+    {
+      "tag": "IMG",
+      "data": {
+        "rigSlot": "caster-lower-arm"
+      },
+      "src": "http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/equipment/registered/caster-lower.webp",
+      "mask": "none",
+      "clip": "none",
+      "transform": "matrix(1, 0, 0, 1, 0, 0)",
+      "zIndex": "58",
+      "background": "none",
+      "color": "rgba(0, 0, 0, 0)",
+      "opacity": "1",
+      "position": "absolute",
+      "bbox": {
+        "x": 0,
+        "y": 0,
+        "width": 317.3125,
+        "height": 475.96875
+      },
+      "style": "position: absolute; inset: 0px; width: 100%; height: 100%; object-fit: fill; transform-origin: 0px 0px; pointer-events: none; user-select: none; z-index: 58; transform: translate(0%, 0%) matrix(1, 0, 0, 1, 0, 0);",
+      "ancestors": []
+    },
+    {
+      "tag": "IMG",
+      "data": {
+        "rigSlot": "caster-yoke"
+      },
+      "src": "http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/equipment/registered/yoke.webp",
+      "mask": "none",
+      "clip": "none",
+      "transform": "matrix(1, 0, 0, 1, 0, 0)",
+      "zIndex": "59",
+      "background": "none",
+      "color": "rgba(0, 0, 0, 0)",
+      "opacity": "1",
+      "position": "absolute",
+      "bbox": {
+        "x": 0,
+        "y": 0,
+        "width": 317.3125,
+        "height": 475.96875
+      },
+      "style": "position: absolute; inset: 0px; width: 100%; height: 100%; object-fit: fill; transform-origin: 0px 0px; pointer-events: none; user-select: none; z-index: 59; transform: translate(0%, 0%) matrix(1, 0, 0, 1, 0, 0);",
+      "ancestors": []
+    },
+    {
+      "tag": "IMG",
+      "data": {
+        "rigSlot": "caster-cannon"
+      },
+      "src": "http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/equipment/registered/cannon.webp",
+      "mask": "none",
+      "clip": "none",
+      "transform": "matrix(1, 0, 0, 1, 0, 0)",
+      "zIndex": "60",
+      "background": "none",
+      "color": "rgba(0, 0, 0, 0)",
+      "opacity": "1",
+      "position": "absolute",
+      "bbox": {
+        "x": 0,
+        "y": 0,
+        "width": 317.3125,
+        "height": 475.96875
+      },
+      "style": "position: absolute; inset: 0px; width: 100%; height: 100%; object-fit: fill; transform-origin: 0px 0px; pointer-events: none; user-select: none; z-index: 60; transform: translate(0%, 0%) matrix(1, 0, 0, 1, 0, 0);",
+      "ancestors": []
+    },
+    {
+      "tag": "IMG",
+      "data": {
+        "rigSlot": "caster-barrel"
+      },
+      "src": "http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/equipment/registered/barrel.webp",
+      "mask": "none",
+      "clip": "none",
+      "transform": "matrix(1, 0, 0, 1, 0, 0)",
+      "zIndex": "61",
+      "background": "none",
+      "color": "rgba(0, 0, 0, 0)",
+      "opacity": "1",
+      "position": "absolute",
+      "bbox": {
+        "x": 0,
+        "y": 0,
+        "width": 317.3125,
+        "height": 475.96875
+      },
+      "style": "position: absolute; inset: 0px; width: 100%; height: 100%; object-fit: fill; transform-origin: 0px 0px; pointer-events: none; user-select: none; z-index: 61; transform: translate(0%, 0%) matrix(1, 0, 0, 1, 0, 0);",
+      "ancestors": []
+    },
+    {
+      "tag": "IMG",
+      "data": {
+        "rigSlot": "caster-muzzle"
+      },
+      "src": "http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/equipment/registered/muzzle.webp",
+      "mask": "none",
+      "clip": "none",
+      "transform": "matrix(1, 0, 0, 1, 0, 0)",
+      "zIndex": "62",
+      "background": "none",
+      "color": "rgba(0, 0, 0, 0)",
+      "opacity": "1",
+      "position": "absolute",
+      "bbox": {
+        "x": 0,
+        "y": 0,
+        "width": 317.3125,
+        "height": 475.96875
+      },
+      "style": "position: absolute; inset: 0px; width: 100%; height: 100%; object-fit: fill; transform-origin: 0px 0px; pointer-events: none; user-select: none; z-index: 62; transform: translate(0%, 0%) matrix(1, 0, 0, 1, 0, 0);",
+      "ancestors": []
+    },
+    {
+      "tag": "IMG",
+      "data": {
+        "rigSlot": "caster-laser-emitter"
+      },
+      "src": "http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/equipment/registered/laser.webp",
+      "mask": "none",
+      "clip": "none",
+      "transform": "matrix(1, 0, 0, 1, 0, 0)",
+      "zIndex": "63",
+      "background": "none",
+      "color": "rgba(0, 0, 0, 0)",
+      "opacity": "1",
+      "position": "absolute",
+      "bbox": {
+        "x": 0,
+        "y": 0,
+        "width": 317.3125,
+        "height": 475.96875
+      },
+      "style": "position: absolute; inset: 0px; width: 100%; height: 100%; object-fit: fill; transform-origin: 0px 0px; pointer-events: none; user-select: none; z-index: 63; transform: translate(0%, 0%) matrix(1, 0, 0, 1, 0, 0);",
+      "ancestors": []
+    },
+    {
+      "tag": "IMG",
+      "data": {
+        "rigSlot": "gauntlet-base"
+      },
+      "src": "http://127.0.0.1:3121/game/assets/v139/rig-gauntlets/jungle-hunter/base.svg",
+      "mask": "none",
+      "clip": "none",
+      "transform": "matrix(0.420104, -0.286328, 0.286328, 0.420104, 145.697, 146.977)",
+      "zIndex": "47",
+      "background": "none",
+      "color": "rgba(0, 0, 0, 0)",
+      "opacity": "1",
+      "position": "absolute",
+      "bbox": {
+        "x": 145.69677734375,
+        "y": 56.12164306640625,
+        "width": 269.58740234375,
+        "height": 290.81182861328125
+      },
+      "style": "position: absolute; inset: 0px; width: 100%; height: 100%; object-fit: fill; transform-origin: 0px 0px; pointer-events: none; user-select: none; z-index: 47; transform: translate(45.9159%, 30.8796%) matrix(0.420104, -0.286328, 0.286328, 0.420104, 0, 0);",
+      "ancestors": []
+    },
+    {
+      "tag": "IMG",
+      "data": {
+        "rigSlot": "gauntlet-lid"
+      },
+      "src": "http://127.0.0.1:3121/game/assets/v139/rig-gauntlets/jungle-hunter/lid.svg",
+      "mask": "none",
+      "clip": "none",
+      "transform": "matrix(0.420104, -0.286328, 0.286328, 0.420104, 145.697, 146.977)",
+      "zIndex": "47",
+      "background": "none",
+      "color": "rgba(0, 0, 0, 0)",
+      "opacity": "1",
+      "position": "absolute",
+      "bbox": {
+        "x": 145.69677734375,
+        "y": 56.12164306640625,
+        "width": 269.58740234375,
+        "height": 290.81182861328125
+      },
+      "style": "position: absolute; inset: 0px; width: 100%; height: 100%; object-fit: fill; transform-origin: 0px 0px; pointer-events: none; user-select: none; z-index: 47; transform: translate(45.9159%, 30.8796%) matrix(0.420104, -0.286328, 0.286328, 0.420104, 0, 0);",
+      "ancestors": []
+    },
+    {
+      "tag": "IMG",
+      "data": {
+        "rigSlot": "blade-housing"
+      },
+      "src": "http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/equipment/registered/blade-housing.webp",
+      "mask": "none",
+      "clip": "none",
+      "transform": "matrix(-0.141421, 0.989949, 0.989949, 0.141421, -163.711, -32.7847)",
+      "zIndex": "31",
+      "background": "none",
+      "color": "rgba(0, 0, 0, 0)",
+      "opacity": "1",
+      "position": "absolute",
+      "bbox": {
+        "x": -208.58547973632812,
+        "y": -32.784698486328125,
+        "width": 516.0594482421875,
+        "height": 381.4351501464844
+      },
+      "style": "position: absolute; inset: 0px; width: 100%; height: 100%; object-fit: fill; transform-origin: 0px 0px; pointer-events: none; user-select: none; z-index: 31; transform: translate(-51.5929%, -6.888%) matrix(-0.141421, 0.989949, 0.989949, 0.141421, 0, 0);",
+      "ancestors": []
+    },
+    {
+      "tag": "IMG",
+      "data": {
+        "rigSlot": "wristblades"
+      },
+      "src": "http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/equipment/registered/blades.webp",
+      "mask": "none",
+      "clip": "none",
+      "transform": "matrix(-0.141421, 0.989949, 0.989949, 0.141421, -155.647, -89.2287)",
+      "zIndex": "31",
+      "background": "none",
+      "color": "rgba(0, 0, 0, 0)",
+      "opacity": "0",
+      "position": "absolute",
+      "bbox": {
+        "x": -200.5220489501953,
+        "y": -89.22872924804688,
+        "width": 516.0593872070312,
+        "height": 381.4351501464844
+      },
+      "style": "position: absolute; inset: 0px; width: 100%; height: 100%; object-fit: fill; transform-origin: 0px 0px; pointer-events: none; user-select: none; z-index: 31; opacity: 0; transform: translate(-49.0518%, -18.7468%) matrix(-0.141421, 0.989949, 0.989949, 0.141421, 0, 0);",
+      "ancestors": []
+    }
+  ]
+}

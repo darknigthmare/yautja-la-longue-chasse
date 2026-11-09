@@ -29,7 +29,11 @@ test("V127 committed atlas matches known original-study SHA, without claiming of
    assert.equal(getChromaticMaterialV113("skin",m.id)?.src,m.src);
    assert.equal(getChromaticMaterialV113("dreads",m.id),null);
  }
- assert.equal(new Set(PHG_CHROMATIC_MATERIALS_V113.map(m=>m.id)).size,69);
+ // Later V128/V129 registrations must not invalidate the historical V127
+ // atlas proof. Pin its exact members and retain global ID uniqueness.
+ assert.deepEqual(PHG_CHROMATIC_MATERIALS_V113.filter(m=>m.id.startsWith("phg-study-v127-")).map(m=>m.id),
+   PHG_HISTORICAL_STUDIES_V127.map(m=>m.id));
+ assert.equal(new Set(PHG_CHROMATIC_MATERIALS_V113.map(m=>m.id)).size,PHG_CHROMATIC_MATERIALS_V113.length);
 });
 test("V127 classes and historical unlocks match the relevant official patches",()=>{
  assert.equal(PHG_CLASS_PATTERN_EVIDENCE_V127.length,5);

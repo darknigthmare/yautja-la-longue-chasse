@@ -1,0 +1,56 @@
+{
+  "allOriginalPngsOpened": true,
+  "opened": 8,
+  "visualQualificationComplete": false,
+  "reason": "Cette première exécution a réussi ses12 contrôles fonctionnels, mais quatre captures ne cadrent pas leur état pertinent. Une seconde recette conserve cette première preuve et corrige le cadrage.",
+  "items": [
+    {
+      "file": "01-native-rts-committed.png",
+      "sha256": "a8a513289fca3caf3c3a9d6588f052dce18110b05ae886555747900e31370c09",
+      "opened": true,
+      "observation": "Cadrage insuffisant : la capture reste sur le catalogue sous le bouton de lancement ; la mission RTS n’est pas visible."
+    },
+    {
+      "file": "02-native-lock-frozen.png",
+      "sha256": "a8a513289fca3caf3c3a9d6588f052dce18110b05ae886555747900e31370c09",
+      "opened": true,
+      "observation": "Cadrage insuffisant : même portion de catalogue ; le gel du tick est attesté par les octets/IDB, pas par cette image."
+    },
+    {
+      "file": "03-native-stale-tab-blocked.png",
+      "sha256": "c1141075f26ed1c4cef8be901ebbd3f1432069670bcf58520192491396f0288f",
+      "opened": true,
+      "observation": "Alerte d’onglet périmé et réinitialisation désactivée visibles."
+    },
+    {
+      "file": "04-native-reloaded-alternating.png",
+      "sha256": "783387da61510fde6ba458f7cd8f9fd13c291376df1c70af523758f23da2bb7c",
+      "opened": true,
+      "observation": "Archive relue :119 RAV,1 vacation,7/8 équipes ; contrôle de vitesse situé plus bas."
+    },
+    {
+      "file": "05-native-interrupted-write.png",
+      "sha256": "12edbc674312e5374b3d882ccc5164e7733e299405bf55f56b43f8a1fe763c35",
+      "opened": true,
+      "observation": "Cadrage insuffisant : alerte et bouton de reprise hors écran."
+    },
+    {
+      "file": "06-native-recovery-awaits-confirmation.png",
+      "sha256": "30532ca0b306a171bcfc813e73a6ba21b7caf954f1709e1fd930ed71229d03b6",
+      "opened": true,
+      "observation": "Cadrage insuffisant : alerte et bouton de reprise hors écran."
+    },
+    {
+      "file": "07-native-repaired-mission.png",
+      "sha256": "a8f24e9341f143d48348e371c0618898b0d8ff5a601cde103c29ccfa4f94dc9e",
+      "opened": true,
+      "observation": "Mission RTS restaurée visible ; dernière ligne de grille située plus bas."
+    },
+    {
+      "file": "08-native-repaired-mobile-390.png",
+      "sha256": "c3bf2e1735d0c654720ac364c0b5fa695e046b8e4e4b7b72c2f70c4806be98a0",
+      "opened": true,
+      "observation": "Présentation et métriques de l’archive restaurée visibles à390px ; aucun avis sur la grille mobile complète."
+    }
+  ]
+}

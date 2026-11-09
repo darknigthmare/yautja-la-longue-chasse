@@ -1,0 +1,52 @@
+{
+  "scope": "Read-only PNG pixel comparison of two already captured native frames. No image edited. Rectangles cover the two detached shin regions diagnosed separately. Not a whole-character UV or zero-overflow test.",
+  "images": [
+    {
+      "file": "00-native.png",
+      "sha256": "99bd5df4680275f2c5737edd6ba3d8ae7066cd575ddb6fc7db41894a4560b362"
+    },
+    {
+      "file": "01-armor-pigment-only.png",
+      "sha256": "aed677c0b2a49575c1411438104be52b009eab18421f3dc41df201fdbd3e4316"
+    }
+  ],
+  "size": [
+    318,
+    477
+  ],
+  "regions": [
+    {
+      "id": "between-legs",
+      "rectPixels": [
+        151,
+        388,
+        12,
+        29
+      ],
+      "changedPixels": 214,
+      "changedBounds": {
+        "x": 151,
+        "y": 388,
+        "width": 12,
+        "height": 27
+      }
+    },
+    {
+      "id": "right-of-shin",
+      "rectPixels": [
+        267,
+        382,
+        14,
+        35
+      ],
+      "changedPixels": 200,
+      "changedBounds": {
+        "x": 267,
+        "y": 382,
+        "width": 10,
+        "height": 35
+      }
+    }
+  ],
+  "diagnosis": "Fragments appear on the sole armor-color change before any mask finish or decal."
+}

@@ -1,0 +1,22 @@
+TAP version 13
+# Subtest: V150 V115 contact and Outer Ops forced pace coexist without overwriting mission contexts
+ok 1 - V150 V115 contact and Outer Ops forced pace coexist without overwriting mission contexts
+  ---
+  duration_ms: 4.279015
+  type: 'test'
+  ...
+# Subtest: V150 source guards still bind persistent V115 writes to Web Lock and do not trust a stale reset
+ok 2 - V150 source guards still bind persistent V115 writes to Web Lock and do not trust a stale reset
+  ---
+  duration_ms: 3.568071
+  type: 'test'
+  ...
+1..2
+# tests 2
+# suites 0
+# pass 2
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 14.050874

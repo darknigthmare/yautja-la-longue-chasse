@@ -1,0 +1,844 @@
+{
+  "schemaVersion": 1,
+  "asOf": "2026-11-09",
+  "baseCommit": "39b601ce1873a1f400d2f545f0fab97691b779e3",
+  "scope": "Rapprochement des12lotsBUILD5 P1 de la BibleV6, lecture seule du runtime.",
+  "counts": {
+    "rows": 12,
+    "closed": 0,
+    "partial": 10,
+    "open": 2
+  },
+  "rows": [
+    {
+      "sheetHash": "f3b575c09dc0c8973abaa7873dcdad1585ce47830958f16e944d0f586f479f18",
+      "row": 6,
+      "priorityCells": {
+        "G": "P1 — boucle complète jouable"
+      },
+      "priorities": [
+        "P1"
+      ],
+      "headers": {
+        "A": "Identifiant",
+        "B": "Titre",
+        "C": "References",
+        "D": "Travail",
+        "E": "Acceptation",
+        "F": "Dependances",
+        "G": "Priorite",
+        "H": "Livrable attendu",
+        "I": "Statut",
+        "J": "Provenance"
+      },
+      "headerRow": 5,
+      "states": {
+        "I": "À implémenter. Le présent classeur livre la conception et les données de référence."
+      },
+      "ids": [],
+      "cells": {
+        "A": "BUILD5-01",
+        "B": "État commun",
+        "C": "STATE5-01..08",
+        "D": "Poser les jalons de campagne et les résultats distincts.",
+        "E": "Créer, reprendre et conclure un rite sans double promotion.",
+        "F": "Aucune, point de départ de la tranche",
+        "G": "P1 — boucle complète jouable",
+        "H": "Scène, interactions, données, sauvegarde et contrôle d’acceptation ensemble. Une interface seule ne termine pas le lot.",
+        "I": "À implémenter. Le présent classeur livre la conception et les données de référence.",
+        "J": "Extension V5"
+      },
+      "rowSha256": "b1b6655e58afa93cd83eae4791df2c8706ee80b2e0e46f0a33b0bdac9e65bf07",
+      "sources": [
+        {
+          "path": "docs/suivi-production/classeurs/Yautja_V5_Bible_Reconstituee_et_Extensions.xlsx",
+          "sheet": "V5 Lots de réalisation",
+          "scope": "HISTORIQUE"
+        },
+        {
+          "path": "docs/suivi-production/classeurs/Yautja_V6_Bible_Cumulative_et_Dialogues.xlsx",
+          "sheet": "V5 Lots de réalisation",
+          "scope": "SOURCE_BIBLE"
+        }
+      ],
+      "authoritativeSources": [
+        {
+          "path": "docs/suivi-production/classeurs/Yautja_V6_Bible_Cumulative_et_Dialogues.xlsx",
+          "sheet": "V5 Lots de réalisation",
+          "scope": "SOURCE_BIBLE"
+        }
+      ],
+      "id": "BUILD5-01",
+      "currentAuditStatus": "Partiel",
+      "currentAuditNote": "Fondation de chronique et campagnes de jeunesse sauvegardées, preuves et rites distincts. La chaîne courante reste sept rangs et Adjutant-fonction; elle ne réalise pas la nouvelle échelle entière L01–L10.",
+      "codeEvidence": [
+        "app/game/systems/clanChronicle.ts",
+        "app/game/systems/campaignSoloV68.ts",
+        "app/game/systems/campaignSoloV90.ts"
+      ],
+      "remaining": "Vrais L02/L03/L04, nouveaux rangs et migration compatible; aucune promotion par simple formulaire.",
+      "auditMethod": "Lecture de source; aucun nouveau test ni parcours de jeu revendiqué."
+    },
+    {
+      "sheetHash": "f3b575c09dc0c8973abaa7873dcdad1585ce47830958f16e944d0f586f479f18",
+      "row": 7,
+      "priorityCells": {
+        "G": "P1 — boucle complète jouable"
+      },
+      "priorities": [
+        "P1"
+      ],
+      "headers": {
+        "A": "Identifiant",
+        "B": "Titre",
+        "C": "References",
+        "D": "Travail",
+        "E": "Acceptation",
+        "F": "Dependances",
+        "G": "Priorite",
+        "H": "Livrable attendu",
+        "I": "Statut",
+        "J": "Provenance"
+      },
+      "headerRow": 5,
+      "states": {
+        "I": "À implémenter. Le présent classeur livre la conception et les données de référence."
+      },
+      "ids": [],
+      "cells": {
+        "A": "BUILD5-02",
+        "B": "Identité des objets",
+        "C": "STATE5-31..37",
+        "D": "Associer propriétaire, emplacement et transaction de transfert.",
+        "E": "Déplacer un trophée entre deux lieux sans duplication.",
+        "F": "BUILD5-01",
+        "G": "P1 — boucle complète jouable",
+        "H": "Scène, interactions, données, sauvegarde et contrôle d’acceptation ensemble. Une interface seule ne termine pas le lot.",
+        "I": "À implémenter. Le présent classeur livre la conception et les données de référence.",
+        "J": "Extension V5"
+      },
+      "rowSha256": "40cf87e4e5efcd165d34aacfcad4372771edb4cf3b47256bc6360dc045a08b94",
+      "sources": [
+        {
+          "path": "docs/suivi-production/classeurs/Yautja_V5_Bible_Reconstituee_et_Extensions.xlsx",
+          "sheet": "V5 Lots de réalisation",
+          "scope": "HISTORIQUE"
+        },
+        {
+          "path": "docs/suivi-production/classeurs/Yautja_V6_Bible_Cumulative_et_Dialogues.xlsx",
+          "sheet": "V5 Lots de réalisation",
+          "scope": "SOURCE_BIBLE"
+        }
+      ],
+      "authoritativeSources": [
+        {
+          "path": "docs/suivi-production/classeurs/Yautja_V6_Bible_Cumulative_et_Dialogues.xlsx",
+          "sheet": "V5 Lots de réalisation",
+          "scope": "SOURCE_BIBLE"
+        }
+      ],
+      "id": "BUILD5-02",
+      "currentAuditStatus": "Partiel",
+      "currentAuditNote": "Les trophées ont leurs identifiants et C-37 conserve chasse et portage distincts. Aucun déplacement universel de trophée entre toutes les résidences ne découle de C-37.",
+      "codeEvidence": [
+        "app/game/types.ts",
+        "app/game/systems/clanShipTrophyCase.ts",
+        "app/game/systems/clanShipTrophyHearing.ts"
+      ],
+      "remaining": "Faire le transfert physique et transactionnel aux lieux définis par STATE5-31..37.",
+      "auditMethod": "Lecture de source; aucun nouveau test ni parcours de jeu revendiqué."
+    },
+    {
+      "sheetHash": "f3b575c09dc0c8973abaa7873dcdad1585ce47830958f16e944d0f586f479f18",
+      "row": 8,
+      "priorityCells": {
+        "G": "P1 — boucle complète jouable"
+      },
+      "priorities": [
+        "P1"
+      ],
+      "headers": {
+        "A": "Identifiant",
+        "B": "Titre",
+        "C": "References",
+        "D": "Travail",
+        "E": "Acceptation",
+        "F": "Dependances",
+        "G": "Priorite",
+        "H": "Livrable attendu",
+        "I": "Statut",
+        "J": "Provenance"
+      },
+      "headerRow": 5,
+      "states": {
+        "I": "À implémenter. Le présent classeur livre la conception et les données de référence."
+      },
+      "ids": [],
+      "cells": {
+        "A": "BUILD5-03",
+        "B": "Cité traversable",
+        "C": "LD5-001..072",
+        "D": "Appliquer passages, seuils, occlusion et liaisons de niveaux.",
+        "E": "Parcourir les 36 lieux avec leurs gabarits autorisés.",
+        "F": "BUILD5-01",
+        "G": "P1 — boucle complète jouable",
+        "H": "Scène, interactions, données, sauvegarde et contrôle d’acceptation ensemble. Une interface seule ne termine pas le lot.",
+        "I": "À implémenter. Le présent classeur livre la conception et les données de référence.",
+        "J": "Extension V5"
+      },
+      "rowSha256": "04bd42e0865881f671946816c66cd8b97dd18eac893d16c80fcd7fad5b835f00",
+      "sources": [
+        {
+          "path": "docs/suivi-production/classeurs/Yautja_V5_Bible_Reconstituee_et_Extensions.xlsx",
+          "sheet": "V5 Lots de réalisation",
+          "scope": "HISTORIQUE"
+        },
+        {
+          "path": "docs/suivi-production/classeurs/Yautja_V6_Bible_Cumulative_et_Dialogues.xlsx",
+          "sheet": "V5 Lots de réalisation",
+          "scope": "SOURCE_BIBLE"
+        }
+      ],
+      "authoritativeSources": [
+        {
+          "path": "docs/suivi-production/classeurs/Yautja_V6_Bible_Cumulative_et_Dialogues.xlsx",
+          "sheet": "V5 Lots de réalisation",
+          "scope": "SOURCE_BIBLE"
+        }
+      ],
+      "id": "BUILD5-03",
+      "currentAuditStatus": "Partiel",
+      "currentAuditNote": "Cité, niveaux et nombreux intérieurs réels existent. Cela ne prouve pas le parcours des36 lieux et72gabaritsV5.",
+      "codeEvidence": [
+        "app/game/systems/homeworldWorldCodexV77.ts",
+        "app/game/systems/homeworldPublicPlacesV112.ts",
+        "app/game/HomeworldWorldSceneV77.tsx"
+      ],
+      "remaining": "Concordance lieu V5↔objet courant et parcours complet, aller et retour, avec gabarit autorisé.",
+      "auditMethod": "Lecture de source; aucun nouveau test ni parcours de jeu revendiqué."
+    },
+    {
+      "sheetHash": "f3b575c09dc0c8973abaa7873dcdad1585ce47830958f16e944d0f586f479f18",
+      "row": 9,
+      "priorityCells": {
+        "G": "P1 — boucle complète jouable"
+      },
+      "priorities": [
+        "P1"
+      ],
+      "headers": {
+        "A": "Identifiant",
+        "B": "Titre",
+        "C": "References",
+        "D": "Travail",
+        "E": "Acceptation",
+        "F": "Dependances",
+        "G": "Priorite",
+        "H": "Livrable attendu",
+        "I": "Statut",
+        "J": "Provenance"
+      },
+      "headerRow": 5,
+      "states": {
+        "I": "À implémenter. Le présent classeur livre la conception et les données de référence."
+      },
+      "ids": [],
+      "cells": {
+        "A": "BUILD5-04",
+        "B": "Prologue raconté",
+        "C": "PRO5-S01..12",
+        "D": "Relier cinématique, motivation du combat, cohorte et arrivée en ville.",
+        "E": "Une nouvelle partie comprend le prochain objectif dans la scène.",
+        "F": "État commun et modules utilisés par cette tranche. Prendre les objets et trajets depuis leur propriétaire de données.",
+        "G": "P1 — boucle complète jouable",
+        "H": "Scène, interactions, données, sauvegarde et contrôle d’acceptation ensemble. Une interface seule ne termine pas le lot.",
+        "I": "À implémenter. Le présent classeur livre la conception et les données de référence.",
+        "J": "Extension V5"
+      },
+      "rowSha256": "35a897bfda64e00b3d9cc520be14d7a3a732357e812a3b7e5787cf1934c2efbd",
+      "sources": [
+        {
+          "path": "docs/suivi-production/classeurs/Yautja_V5_Bible_Reconstituee_et_Extensions.xlsx",
+          "sheet": "V5 Lots de réalisation",
+          "scope": "HISTORIQUE"
+        },
+        {
+          "path": "docs/suivi-production/classeurs/Yautja_V6_Bible_Cumulative_et_Dialogues.xlsx",
+          "sheet": "V5 Lots de réalisation",
+          "scope": "SOURCE_BIBLE"
+        }
+      ],
+      "authoritativeSources": [
+        {
+          "path": "docs/suivi-production/classeurs/Yautja_V6_Bible_Cumulative_et_Dialogues.xlsx",
+          "sheet": "V5 Lots de réalisation",
+          "scope": "SOURCE_BIBLE"
+        }
+      ],
+      "id": "BUILD5-04",
+      "currentAuditStatus": "Partiel",
+      "currentAuditNote": "Nurserie, formation, continuité et prochain objectif existent. Les12 scènes PRO5 ne sont pas automatiquement ce même prologue.",
+      "codeEvidence": [
+        "app/game/systems/nurseryCampaign.ts",
+        "app/game/systems/nurseryContinuityV72.ts",
+        "app/game/NurseryPrologueScreen.tsx",
+        "app/game/systems/campaignWelcomeV69.ts"
+      ],
+      "remaining": "Mapper PRO5-S01..12 à la chaîne jouée puis produire les scènes manquantes.",
+      "auditMethod": "Lecture de source; aucun nouveau test ni parcours de jeu revendiqué."
+    },
+    {
+      "sheetHash": "f3b575c09dc0c8973abaa7873dcdad1585ce47830958f16e944d0f586f479f18",
+      "row": 10,
+      "priorityCells": {
+        "G": "P1 — boucle complète jouable"
+      },
+      "priorities": [
+        "P1"
+      ],
+      "headers": {
+        "A": "Identifiant",
+        "B": "Titre",
+        "C": "References",
+        "D": "Travail",
+        "E": "Acceptation",
+        "F": "Dependances",
+        "G": "Priorite",
+        "H": "Livrable attendu",
+        "I": "Statut",
+        "J": "Provenance"
+      },
+      "headerRow": 5,
+      "states": {
+        "I": "À implémenter. Le présent classeur livre la conception et les données de référence."
+      },
+      "ids": [],
+      "cells": {
+        "A": "BUILD5-05",
+        "B": "Origines actives",
+        "C": "O1..O6 et transitionsV5",
+        "D": "Lire les drapeaux communs et écrire les relations de voie.",
+        "E": "Deux origines jouent le même jalon avec des réactions différentes.",
+        "F": "État commun et modules utilisés par cette tranche. Prendre les objets et trajets depuis leur propriétaire de données.",
+        "G": "P1 — boucle complète jouable",
+        "H": "Scène, interactions, données, sauvegarde et contrôle d’acceptation ensemble. Une interface seule ne termine pas le lot.",
+        "I": "À implémenter. Le présent classeur livre la conception et les données de référence.",
+        "J": "Extension V5"
+      },
+      "rowSha256": "e118c0aa72daf741424703962c7f7afbe08cb6d9eab90b14ed2abccab806e0e7",
+      "sources": [
+        {
+          "path": "docs/suivi-production/classeurs/Yautja_V5_Bible_Reconstituee_et_Extensions.xlsx",
+          "sheet": "V5 Lots de réalisation",
+          "scope": "HISTORIQUE"
+        },
+        {
+          "path": "docs/suivi-production/classeurs/Yautja_V6_Bible_Cumulative_et_Dialogues.xlsx",
+          "sheet": "V5 Lots de réalisation",
+          "scope": "SOURCE_BIBLE"
+        }
+      ],
+      "authoritativeSources": [
+        {
+          "path": "docs/suivi-production/classeurs/Yautja_V6_Bible_Cumulative_et_Dialogues.xlsx",
+          "sheet": "V5 Lots de réalisation",
+          "scope": "SOURCE_BIBLE"
+        }
+      ],
+      "id": "BUILD5-05",
+      "currentAuditStatus": "Ouvert",
+      "currentAuditNote": "Les six origines O1..O6 sont décrites dans la bible. Aucun raccord explicite de leurs drapeaux et réactions n’a été identifié dans les modules parcourus.",
+      "codeEvidence": [
+        "docs/campagne/BIBLE_DE_CAMPAGNE.md",
+        "app/game/GameClient.tsx"
+      ],
+      "remaining": "Deux origines au même jalon, réactions et relations persistantes distinctes, sans changer les rites communs.",
+      "auditMethod": "Lecture de source; aucun nouveau test ni parcours de jeu revendiqué."
+    },
+    {
+      "sheetHash": "f3b575c09dc0c8973abaa7873dcdad1585ce47830958f16e944d0f586f479f18",
+      "row": 11,
+      "priorityCells": {
+        "G": "P1 — boucle complète jouable"
+      },
+      "priorities": [
+        "P1"
+      ],
+      "headers": {
+        "A": "Identifiant",
+        "B": "Titre",
+        "C": "References",
+        "D": "Travail",
+        "E": "Acceptation",
+        "F": "Dependances",
+        "G": "Priorite",
+        "H": "Livrable attendu",
+        "I": "Statut",
+        "J": "Provenance"
+      },
+      "headerRow": 5,
+      "states": {
+        "I": "À implémenter. Le présent classeur livre la conception et les données de référence."
+      },
+      "ids": [],
+      "cells": {
+        "A": "BUILD5-06",
+        "B": "Respect des communautés",
+        "C": "CM01..20",
+        "D": "Gagner le respect par résultat local identifié.",
+        "E": "Une récompense déjà perçue ne se répète pas à la revisite.",
+        "F": "État commun et modules utilisés par cette tranche. Prendre les objets et trajets depuis leur propriétaire de données.",
+        "G": "P1 — boucle complète jouable",
+        "H": "Scène, interactions, données, sauvegarde et contrôle d’acceptation ensemble. Une interface seule ne termine pas le lot.",
+        "I": "À implémenter. Le présent classeur livre la conception et les données de référence.",
+        "J": "Extension V5"
+      },
+      "rowSha256": "8273d52eb82e134d317b8366b6a04de20f0f45698cfd0d31d3275d3d9d033768",
+      "sources": [
+        {
+          "path": "docs/suivi-production/classeurs/Yautja_V5_Bible_Reconstituee_et_Extensions.xlsx",
+          "sheet": "V5 Lots de réalisation",
+          "scope": "HISTORIQUE"
+        },
+        {
+          "path": "docs/suivi-production/classeurs/Yautja_V6_Bible_Cumulative_et_Dialogues.xlsx",
+          "sheet": "V5 Lots de réalisation",
+          "scope": "SOURCE_BIBLE"
+        }
+      ],
+      "authoritativeSources": [
+        {
+          "path": "docs/suivi-production/classeurs/Yautja_V6_Bible_Cumulative_et_Dialogues.xlsx",
+          "sheet": "V5 Lots de réalisation",
+          "scope": "SOURCE_BIBLE"
+        }
+      ],
+      "id": "BUILD5-06",
+      "currentAuditStatus": "Partiel",
+      "currentAuditNote": "Des organisations, missions locales, observations et reçus idempotents sont déjà sauvegardés; ils ne couvrent pas automatiquement les20CM.",
+      "codeEvidence": [
+        "app/game/systems/homeworld.ts",
+        "app/game/systems/homeworldRegionsV68.ts"
+      ],
+      "remaining": "Concordance CM01..20, résultats identifiés, respect non répétable et recette complète.",
+      "auditMethod": "Lecture de source; aucun nouveau test ni parcours de jeu revendiqué."
+    },
+    {
+      "sheetHash": "f3b575c09dc0c8973abaa7873dcdad1585ce47830958f16e944d0f586f479f18",
+      "row": 12,
+      "priorityCells": {
+        "G": "P1 — boucle complète jouable"
+      },
+      "priorities": [
+        "P1"
+      ],
+      "headers": {
+        "A": "Identifiant",
+        "B": "Titre",
+        "C": "References",
+        "D": "Travail",
+        "E": "Acceptation",
+        "F": "Dependances",
+        "G": "Priorite",
+        "H": "Livrable attendu",
+        "I": "Statut",
+        "J": "Provenance"
+      },
+      "headerRow": 5,
+      "states": {
+        "I": "À implémenter. Le présent classeur livre la conception et les données de référence."
+      },
+      "ids": [],
+      "cells": {
+        "A": "BUILD5-07",
+        "B": "Première résidence",
+        "C": "HOME-CM07",
+        "D": "Implémenter mission,40/60/80, déménagement et trois pièces.",
+        "E": "Habiter puis changer de maison avec un objet unique.",
+        "F": "État commun et modules utilisés par cette tranche. Prendre les objets et trajets depuis leur propriétaire de données.",
+        "G": "P1 — boucle complète jouable",
+        "H": "Scène, interactions, données, sauvegarde et contrôle d’acceptation ensemble. Une interface seule ne termine pas le lot.",
+        "I": "À implémenter. Le présent classeur livre la conception et les données de référence.",
+        "J": "Extension V5"
+      },
+      "rowSha256": "d27de908267192c27f17e399c5cd009bf59371e6aca947b2ca85005b3b45012f",
+      "sources": [
+        {
+          "path": "docs/suivi-production/classeurs/Yautja_V5_Bible_Reconstituee_et_Extensions.xlsx",
+          "sheet": "V5 Lots de réalisation",
+          "scope": "HISTORIQUE"
+        },
+        {
+          "path": "docs/suivi-production/classeurs/Yautja_V6_Bible_Cumulative_et_Dialogues.xlsx",
+          "sheet": "V5 Lots de réalisation",
+          "scope": "SOURCE_BIBLE"
+        }
+      ],
+      "authoritativeSources": [
+        {
+          "path": "docs/suivi-production/classeurs/Yautja_V6_Bible_Cumulative_et_Dialogues.xlsx",
+          "sheet": "V5 Lots de réalisation",
+          "scope": "SOURCE_BIBLE"
+        }
+      ],
+      "id": "BUILD5-07",
+      "currentAuditStatus": "Ouvert",
+      "currentAuditNote": "Les résidencesV64 fournissent implantation et art; les quartiers de compagnons sont un autre système. Aucun contrat HOME-CM07 de mission/40-60-80/déménagement trois pièces n’est démontré.",
+      "codeEvidence": [
+        "app/game/data/homeworldResidencesV64.json",
+        "app/game/systems/companionResidence.ts"
+      ],
+      "remaining": "Mission de résidence, trois pièces jouables, objet unique et transaction de déménagement.",
+      "auditMethod": "Lecture de source; aucun nouveau test ni parcours de jeu revendiqué."
+    },
+    {
+      "sheetHash": "f3b575c09dc0c8973abaa7873dcdad1585ce47830958f16e944d0f586f479f18",
+      "row": 13,
+      "priorityCells": {
+        "G": "P1 — boucle complète jouable"
+      },
+      "priorities": [
+        "P1"
+      ],
+      "headers": {
+        "A": "Identifiant",
+        "B": "Titre",
+        "C": "References",
+        "D": "Travail",
+        "E": "Acceptation",
+        "F": "Dependances",
+        "G": "Priorite",
+        "H": "Livrable attendu",
+        "I": "Statut",
+        "J": "Provenance"
+      },
+      "headerRow": 5,
+      "states": {
+        "I": "À implémenter. Le présent classeur livre la conception et les données de référence."
+      },
+      "ids": [],
+      "cells": {
+        "A": "BUILD5-08",
+        "B": "Vie domestique",
+        "C": "Scènes maisonsV5",
+        "D": "Ajouter visites, état des pièces et rappels narratifs.",
+        "E": "Un invité arrive et repart par une route réelle.",
+        "F": "État commun et modules utilisés par cette tranche. Prendre les objets et trajets depuis leur propriétaire de données.",
+        "G": "P1 — boucle complète jouable",
+        "H": "Scène, interactions, données, sauvegarde et contrôle d’acceptation ensemble. Une interface seule ne termine pas le lot.",
+        "I": "À implémenter. Le présent classeur livre la conception et les données de référence.",
+        "J": "Extension V5"
+      },
+      "rowSha256": "6cc7f5f6ab744a078ccb44d6b7fa417e1f6c2e28422676cc3c008c0895aee054",
+      "sources": [
+        {
+          "path": "docs/suivi-production/classeurs/Yautja_V5_Bible_Reconstituee_et_Extensions.xlsx",
+          "sheet": "V5 Lots de réalisation",
+          "scope": "HISTORIQUE"
+        },
+        {
+          "path": "docs/suivi-production/classeurs/Yautja_V6_Bible_Cumulative_et_Dialogues.xlsx",
+          "sheet": "V5 Lots de réalisation",
+          "scope": "SOURCE_BIBLE"
+        }
+      ],
+      "authoritativeSources": [
+        {
+          "path": "docs/suivi-production/classeurs/Yautja_V6_Bible_Cumulative_et_Dialogues.xlsx",
+          "sheet": "V5 Lots de réalisation",
+          "scope": "SOURCE_BIBLE"
+        }
+      ],
+      "id": "BUILD5-08",
+      "currentAuditStatus": "Partiel",
+      "currentAuditNote": "Vie ambiante, résidents et contacts existent. Les routines publiques ne prouvent pas une visite dans une maison personnelle possédée.",
+      "codeEvidence": [
+        "app/game/systems/homeworldVillageLifeV69.ts",
+        "app/game/systems/homeworldResidentContactsV110.ts"
+      ],
+      "remaining": "Invitation domestique liée à HOME-CM07, trajet réel d’arrivée/départ et état des pièces sauvegardé.",
+      "auditMethod": "Lecture de source; aucun nouveau test ni parcours de jeu revendiqué."
+    },
+    {
+      "sheetHash": "f3b575c09dc0c8973abaa7873dcdad1585ce47830958f16e944d0f586f479f18",
+      "row": 14,
+      "priorityCells": {
+        "G": "P1 — boucle complète jouable"
+      },
+      "priorities": [
+        "P1"
+      ],
+      "headers": {
+        "A": "Identifiant",
+        "B": "Titre",
+        "C": "References",
+        "D": "Travail",
+        "E": "Acceptation",
+        "F": "Dependances",
+        "G": "Priorite",
+        "H": "Livrable attendu",
+        "I": "Statut",
+        "J": "Provenance"
+      },
+      "headerRow": 5,
+      "states": {
+        "I": "À implémenter. Le présent classeur livre la conception et les données de référence."
+      },
+      "ids": [],
+      "cells": {
+        "A": "BUILD5-09",
+        "B": "Atelier de trophées",
+        "C": "TR-M01..03",
+        "D": "Créer les 18 étapes du tutoriel avec reprise de poste.",
+        "E": "Interrompre puis reprendre aux trois moments clés.",
+        "F": "État commun et modules utilisés par cette tranche. Prendre les objets et trajets depuis leur propriétaire de données.",
+        "G": "P1 — boucle complète jouable",
+        "H": "Scène, interactions, données, sauvegarde et contrôle d’acceptation ensemble. Une interface seule ne termine pas le lot.",
+        "I": "À implémenter. Le présent classeur livre la conception et les données de référence.",
+        "J": "Extension V5"
+      },
+      "rowSha256": "d28299f21e5ba046f68ee16c62ea953c0b621e083e62915292f16a5421575f0d",
+      "sources": [
+        {
+          "path": "docs/suivi-production/classeurs/Yautja_V5_Bible_Reconstituee_et_Extensions.xlsx",
+          "sheet": "V5 Lots de réalisation",
+          "scope": "HISTORIQUE"
+        },
+        {
+          "path": "docs/suivi-production/classeurs/Yautja_V6_Bible_Cumulative_et_Dialogues.xlsx",
+          "sheet": "V5 Lots de réalisation",
+          "scope": "SOURCE_BIBLE"
+        }
+      ],
+      "authoritativeSources": [
+        {
+          "path": "docs/suivi-production/classeurs/Yautja_V6_Bible_Cumulative_et_Dialogues.xlsx",
+          "sheet": "V5 Lots de réalisation",
+          "scope": "SOURCE_BIBLE"
+        }
+      ],
+      "id": "BUILD5-09",
+      "currentAuditStatus": "Partiel",
+      "currentAuditNote": "Atelier déterministe avec4actions, reprise et écriture confirmée existe. Ses6/7/5/8signaux ne sont pas le tutorielTR-M01..03de18étapes.",
+      "codeEvidence": [
+        "app/game/systems/trophyWorkshop.ts",
+        "app/game/systems/trophyWorkshopRecoveryV94.ts",
+        "app/game/useTrophyWorkshopRuntimeV94.ts"
+      ],
+      "remaining": "Tutoriel source18étapes, trois interruptions aux moments décrits puis reprise au poste.",
+      "auditMethod": "Lecture de source; aucun nouveau test ni parcours de jeu revendiqué."
+    },
+    {
+      "sheetHash": "f3b575c09dc0c8973abaa7873dcdad1585ce47830958f16e944d0f586f479f18",
+      "row": 15,
+      "priorityCells": {
+        "G": "P1 — boucle complète jouable"
+      },
+      "priorities": [
+        "P1"
+      ],
+      "headers": {
+        "A": "Identifiant",
+        "B": "Titre",
+        "C": "References",
+        "D": "Travail",
+        "E": "Acceptation",
+        "F": "Dependances",
+        "G": "Priorite",
+        "H": "Livrable attendu",
+        "I": "Statut",
+        "J": "Provenance"
+      },
+      "headerRow": 5,
+      "states": {
+        "I": "À implémenter. Le présent classeur livre la conception et les données de référence."
+      },
+      "ids": [],
+      "cells": {
+        "A": "BUILD5-10",
+        "B": "Histoires d’objets",
+        "C": "Histoires et révélations",
+        "D": "Lier marques matérielles, preuves et récit d’exposition.",
+        "E": "Une plaque ne déclare pas un indice jamais observé.",
+        "F": "État commun et modules utilisés par cette tranche. Prendre les objets et trajets depuis leur propriétaire de données.",
+        "G": "P1 — boucle complète jouable",
+        "H": "Scène, interactions, données, sauvegarde et contrôle d’acceptation ensemble. Une interface seule ne termine pas le lot.",
+        "I": "À implémenter. Le présent classeur livre la conception et les données de référence.",
+        "J": "Extension V5"
+      },
+      "rowSha256": "7d950e2da95a6701eb591575f61feed7719a2c218ff2fd74b04330ce9eac4c19",
+      "sources": [
+        {
+          "path": "docs/suivi-production/classeurs/Yautja_V5_Bible_Reconstituee_et_Extensions.xlsx",
+          "sheet": "V5 Lots de réalisation",
+          "scope": "HISTORIQUE"
+        },
+        {
+          "path": "docs/suivi-production/classeurs/Yautja_V6_Bible_Cumulative_et_Dialogues.xlsx",
+          "sheet": "V5 Lots de réalisation",
+          "scope": "SOURCE_BIBLE"
+        }
+      ],
+      "authoritativeSources": [
+        {
+          "path": "docs/suivi-production/classeurs/Yautja_V6_Bible_Cumulative_et_Dialogues.xlsx",
+          "sheet": "V5 Lots de réalisation",
+          "scope": "SOURCE_BIBLE"
+        }
+      ],
+      "id": "BUILD5-10",
+      "currentAuditStatus": "Partiel",
+      "currentAuditNote": "C-37 et plaques des archives lient des indices réellement observés aux conclusions. Ce périmètre local ne ferme pas toutes les histoires V5.",
+      "codeEvidence": [
+        "app/game/systems/clanShipTrophyHearing.ts",
+        "app/game/systems/homeworldArchivePlaqueV109.ts"
+      ],
+      "remaining": "Mapper chaque histoire/révélationV5 et empêcher toute plaque d’anticiper une observation absente.",
+      "auditMethod": "Lecture de source; aucun nouveau test ni parcours de jeu revendiqué."
+    },
+    {
+      "sheetHash": "f3b575c09dc0c8973abaa7873dcdad1585ce47830958f16e944d0f586f479f18",
+      "row": 16,
+      "priorityCells": {
+        "G": "P1 — boucle complète jouable"
+      },
+      "priorities": [
+        "P1"
+      ],
+      "headers": {
+        "A": "Identifiant",
+        "B": "Titre",
+        "C": "References",
+        "D": "Travail",
+        "E": "Acceptation",
+        "F": "Dependances",
+        "G": "Priorite",
+        "H": "Livrable attendu",
+        "I": "Statut",
+        "J": "Provenance"
+      },
+      "headerRow": 5,
+      "states": {
+        "I": "À implémenter. Le présent classeur livre la conception et les données de référence."
+      },
+      "ids": [],
+      "cells": {
+        "A": "BUILD5-11",
+        "B": "Chaînes avancées",
+        "C": "GestesV5 de trophées",
+        "D": "Ajouter six énigmes complètes à huit manipulations.",
+        "E": "Accomplir chaque chaîne au clavier et à la manette.",
+        "F": "État commun et modules utilisés par cette tranche. Prendre les objets et trajets depuis leur propriétaire de données.",
+        "G": "P1 — boucle complète jouable",
+        "H": "Scène, interactions, données, sauvegarde et contrôle d’acceptation ensemble. Une interface seule ne termine pas le lot.",
+        "I": "À implémenter. Le présent classeur livre la conception et les données de référence.",
+        "J": "Extension V5"
+      },
+      "rowSha256": "cc214b774e4e85f8697dd2f0ff95fcf79260d757c22a0358b8b17b0861102fd1",
+      "sources": [
+        {
+          "path": "docs/suivi-production/classeurs/Yautja_V5_Bible_Reconstituee_et_Extensions.xlsx",
+          "sheet": "V5 Lots de réalisation",
+          "scope": "HISTORIQUE"
+        },
+        {
+          "path": "docs/suivi-production/classeurs/Yautja_V6_Bible_Cumulative_et_Dialogues.xlsx",
+          "sheet": "V5 Lots de réalisation",
+          "scope": "SOURCE_BIBLE"
+        }
+      ],
+      "authoritativeSources": [
+        {
+          "path": "docs/suivi-production/classeurs/Yautja_V6_Bible_Cumulative_et_Dialogues.xlsx",
+          "sheet": "V5 Lots de réalisation",
+          "scope": "SOURCE_BIBLE"
+        }
+      ],
+      "id": "BUILD5-11",
+      "currentAuditStatus": "Partiel",
+      "currentAuditNote": "Le rite d’atelier comporte8signaux; il ne représente pas6énigmes physiques de8manipulations.",
+      "codeEvidence": [
+        "app/game/systems/trophyWorkshop.ts",
+        "app/game/TrophyWorkshop.tsx"
+      ],
+      "remaining": "Les six chaînes source et leurs objets/erreurs/reprises, clavier et manette.",
+      "auditMethod": "Lecture de source; aucun nouveau test ni parcours de jeu revendiqué."
+    },
+    {
+      "sheetHash": "f3b575c09dc0c8973abaa7873dcdad1585ce47830958f16e944d0f586f479f18",
+      "row": 17,
+      "priorityCells": {
+        "G": "P1 — boucle complète jouable"
+      },
+      "priorities": [
+        "P1"
+      ],
+      "headers": {
+        "A": "Identifiant",
+        "B": "Titre",
+        "C": "References",
+        "D": "Travail",
+        "E": "Acceptation",
+        "F": "Dependances",
+        "G": "Priorite",
+        "H": "Livrable attendu",
+        "I": "Statut",
+        "J": "Provenance"
+      },
+      "headerRow": 5,
+      "states": {
+        "I": "À implémenter. Le présent classeur livre la conception et les données de référence."
+      },
+      "ids": [],
+      "cells": {
+        "A": "BUILD5-12",
+        "B": "Vaisseau personnel",
+        "C": "Huit salles PSR",
+        "D": "Conserver équipement, pièces et point d’amarrage.",
+        "E": "Partir, atterrir et revenir avec le même manifeste.",
+        "F": "État commun et modules utilisés par cette tranche. Prendre les objets et trajets depuis leur propriétaire de données.",
+        "G": "P1 — boucle complète jouable",
+        "H": "Scène, interactions, données, sauvegarde et contrôle d’acceptation ensemble. Une interface seule ne termine pas le lot.",
+        "I": "À implémenter. Le présent classeur livre la conception et les données de référence.",
+        "J": "Extension V5"
+      },
+      "rowSha256": "62c9e686fe3f509e247923d889dfe0e18b48299d37aec5f9d814b2e91420ea9e",
+      "sources": [
+        {
+          "path": "docs/suivi-production/classeurs/Yautja_V5_Bible_Reconstituee_et_Extensions.xlsx",
+          "sheet": "V5 Lots de réalisation",
+          "scope": "HISTORIQUE"
+        },
+        {
+          "path": "docs/suivi-production/classeurs/Yautja_V6_Bible_Cumulative_et_Dialogues.xlsx",
+          "sheet": "V5 Lots de réalisation",
+          "scope": "SOURCE_BIBLE"
+        }
+      ],
+      "authoritativeSources": [
+        {
+          "path": "docs/suivi-production/classeurs/Yautja_V6_Bible_Cumulative_et_Dialogues.xlsx",
+          "sheet": "V5 Lots de réalisation",
+          "scope": "SOURCE_BIBLE"
+        }
+      ],
+      "id": "BUILD5-12",
+      "currentAuditStatus": "Partiel",
+      "currentAuditNote": "Vaisseau, acquisition, huit salles, manifeste et aller-retour possèdent des systèmes réels. Les preuves de chaque périmètre doivent rester distinctes et la bouclePSR complète reste à rapprocher.",
+      "codeEvidence": [
+        "app/game/systems/shipInterior25d.ts",
+        "app/game/systems/shipAcquisitionV89.ts",
+        "app/game/systems/shipCampaignOperationsV87.ts",
+        "app/game/systems/shipOperationsV85.ts"
+      ],
+      "remaining": "Concordance des huitPSR, état des pièces, équipements et même manifeste après partir/atterrir/revenir.",
+      "auditMethod": "Lecture de source; aucun nouveau test ni parcours de jeu revendiqué."
+    }
+  ],
+  "bibleCorrections": [
+    "Ordre Blooded→vaisseau et8chasses→Quatza-Rij solitaire→Elite.",
+    "Quatza-RijtriadeL02 et marqueYoungBloodL03 séparés de la reine/pyramideBloodedL04.",
+    "Comblement ancien ne renomme plus la reine en Quatza-Rij."
+  ],
+  "priorityPolicy": "P1 explicitement dans celluleG; aucune attributionP0/P1 inventée aux68cartes nonpriorisées."
+}

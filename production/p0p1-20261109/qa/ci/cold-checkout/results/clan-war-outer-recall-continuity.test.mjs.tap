@@ -1,0 +1,58 @@
+TAP version 13
+# Subtest: a recall turns around at the reached position inside the first weighted passage
+ok 1 - a recall turns around at the reached position inside the first weighted passage
+  ---
+  duration_ms: 1.642598
+  type: 'test'
+  ...
+# Subtest: a recall retraces a partial second passage before the complete first one
+ok 2 - a recall retraces a partial second passage before the complete first one
+  ---
+  duration_ms: 0.56959
+  type: 'test'
+  ...
+# Subtest: an exact junction never adds an untouched passage to the return itinerary
+ok 3 - an exact junction never adds an untouched passage to the return itinerary
+  ---
+  duration_ms: 0.163657
+  type: 'test'
+  ...
+# Subtest: a recall at departure invents no travelled passage while retaining its existing return deadline
+ok 4 - a recall at departure invents no travelled passage while retaining its existing return deadline
+  ---
+  duration_ms: 0.906688
+  type: 'test'
+  ...
+# Subtest: historical observations before the recall still show the original outbound position
+ok 5 - historical observations before the recall still show the original outbound position
+  ---
+  duration_ms: 0.983994
+  type: 'test'
+  ...
+# Subtest: a halted or accelerated outward trip keeps its actual point at the moment of recall
+ok 6 - a halted or accelerated outward trip keeps its actual point at the moment of recall
+  ---
+  duration_ms: 2.96305
+  type: 'test'
+  ...
+# Subtest: original PR55 and PR57 recalled archives remain unchanged, readable and settle once
+ok 7 - original PR55 and PR57 recalled archives remain unchanged, readable and settle once
+  ---
+  duration_ms: 3.713202
+  type: 'test'
+  ...
+# Subtest: an actual authorized reroute returns through its reached passages and never through the replaced itinerary
+ok 8 - an actual authorized reroute returns through its reached passages and never through the replaced itinerary
+  ---
+  duration_ms: 39.477174
+  type: 'test'
+  ...
+1..8
+# tests 8
+# suites 0
+# pass 8
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 64.355917

@@ -1,0 +1,64 @@
+TAP version 13
+# Subtest: Assault V144: two source teams regroup physically against 10 AP, no cloning or turn farming
+ok 1 - Assault V144: two source teams regroup physically against 10 AP, no cloning or turn farming
+  ---
+  duration_ms: 11.093238
+  type: 'test'
+  ...
+# Subtest: Assault V144: enemy block, low AP, inactive group, forged order all fail immutably
+ok 2 - Assault V144: enemy block, low AP, inactive group, forged order all fail immutably
+  ---
+  duration_ms: 0.659595
+  type: 'test'
+  ...
+# Subtest: Outer Ops V144: one physical passage inspection spends one RAV and adds exactly +2 at final report
+ok 3 - Outer Ops V144: one physical passage inspection spends one RAV and adds exactly +2 at final report
+  ---
+  duration_ms: 3.006376
+  type: 'test'
+  ...
+# Subtest: Outer Ops V144: duplicate check, recall, forged passage, low RAV and off-route time reject
+ok 4 - Outer Ops V144: duplicate check, recall, forged passage, low RAV and off-route time reject
+  ---
+  duration_ms: 0.930935
+  type: 'test'
+  ...
+# Subtest: Stealth V144: guard follows last genuinely observed location, never unseen current player
+ok 5 - Stealth V144: guard follows last genuinely observed location, never unseen current player
+  ---
+  duration_ms: 5.121829
+  type: 'test'
+  ...
+# Subtest: Stealth V144: bad investigation records fail and legacy archives without field remain readable
+ok 6 - Stealth V144: bad investigation records fail and legacy archives without field remain readable
+  ---
+  duration_ms: 1.599834
+  type: 'test'
+  ...
+# Subtest: RTS V144: active adjacent replacement retains real objective progress and consumes one enemy turn
+ok 7 - RTS V144: active adjacent replacement retains real objective progress and consumes one enemy turn
+  ---
+  duration_ms: 7.156378
+  type: 'test'
+  ...
+# Subtest: RTS V144: no remote handoff, missing task, duplicate use, KO or unpowered bypass
+ok 8 - RTS V144: no remote handoff, missing task, duplicate use, KO or unpowered bypass
+  ---
+  duration_ms: 2.429987
+  type: 'test'
+  ...
+# Subtest: V144 source boundaries: W3 scenario catalog and V85 campaign nonmutation preserved
+ok 9 - V144 source boundaries: W3 scenario catalog and V85 campaign nonmutation preserved
+  ---
+  duration_ms: 48.086453
+  type: 'test'
+  ...
+1..9
+# tests 9
+# suites 0
+# pass 9
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 88.875167

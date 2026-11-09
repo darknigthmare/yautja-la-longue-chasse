@@ -1,0 +1,14 @@
+{
+  "startedAt": "2026-11-09T05:15:55.033Z",
+  "url": "http://127.0.0.1:3120",
+  "fixture": "Initial adult defaultSave and selected class only; no palette or decal reward/result seeded.",
+  "scope": "Native Next GameClient controls and durable campaign palette; no official PHG pixel comparison, three-angle art approval, physical controller or long soak claim.",
+  "checks": [],
+  "errors": [],
+  "screenshots": [],
+  "browserVersion": "154.0.8037.57",
+  "buildId": "PUL1NfHFyDlOk1yK5kC_k",
+  "passed": false,
+  "failure": "locator.click: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('button', { name: /Personnaliser le chasseur/ })\u001b[22m\n\n    at /workspace/yautja-la-longue-chasse/scripts/qa-phg-p0p1-20261109.mjs:56:75",
+  "finishedAt": "2026-11-09T05:16:27.479Z"
+}
