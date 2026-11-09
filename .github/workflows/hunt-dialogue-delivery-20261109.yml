@@ -1,4 +1,4 @@
-name: Deliver reviewed hunt conversations 20261109
+name: Deliver reviewed follow-up workbook 20261109
 on:
   push:
     branches: [feat/quetes-vivantes-bible-20261109]
@@ -9,13 +9,10 @@ concurrency:
   group: hunt-dialogue-delivery-20261109
   cancel-in-progress: false
 jobs:
-  delivery:
+  workbook:
     if: github.ref == 'refs/heads/feat/quetes-vivantes-bible-20261109'
     runs-on: ubuntu-24.04
-    timeout-minutes: 35
-    env:
-      ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
-      NEXT_TELEMETRY_DISABLED: '1'
+    timeout-minutes: 8
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
@@ -24,110 +21,97 @@ jobs:
           filter: blob:none
           sparse-checkout-cone-mode: false
           sparse-checkout: |
-            /*
-            !/*/
-            /app/
-            /scripts/
-            /tests/
-            /docs/
-            /desktop/
-            /build/
-            /.openai/hosting.json
-            /public/**/manifest.json
-      - name: Check exact source bytes and materialize nine reviewed native paths
+            /production/quetes-vivantes-20261109/
+            /production/quetes-vivantes-suite-20261109/
+      - name: Reconstruct exact artifact_tool package members and verify workbook bytes
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
           set -euo pipefail
-          mkdir -p "$RUNNER_TEMP/hunt-dialogue-receipts"
           python3 - <<'PY'
-          import base64,hashlib,json,lzma,os,pathlib,subprocess,urllib.request
-          root=pathlib.Path.cwd(); out=pathlib.Path(os.environ['RUNNER_TEMP'])/'hunt-dialogue-receipts'
-          ids=['48684cedbfbe7589635b4c585ee2d32aa1ea3a1b','d4f5532303847ca659e2f5eb722b31d876735c8f','f0a3bb02fefebc8dc40c2b2b86cdc3e43cab9f71']
+          import base64,hashlib,io,json,lzma,os,pathlib,re,urllib.request,zipfile,xml.etree.ElementTree as ET
+          root=pathlib.Path.cwd()
+          ids=['b6fa3e23c65530b150b242f1458dc837a094ece1','2ca530aa254d4ea7fd9ac8fef2f47f5fb8e7f270']
+          def gitsha(raw):return hashlib.sha1(b'blob '+str(len(raw)).encode()+b'\0'+raw).hexdigest()
           parts=[]
-          for sha in ids:
+          for index,sha in enumerate(ids):
             req=urllib.request.Request('https://api.github.com/repos/darknigthmare/yautja-la-longue-chasse/git/blobs/'+sha,headers={'Authorization':'Bearer '+os.environ['GH_TOKEN'],'Accept':'application/vnd.github+json'})
             with urllib.request.urlopen(req,timeout=60) as response:data=json.load(response)
-            raw=base64.b64decode(data['content']);assert hashlib.sha1(b'blob '+str(len(raw)).encode()+b'\0'+raw).hexdigest()==sha
+            raw=base64.b64decode(data['content']);assert gitsha(raw)==sha
+            if index==0:
+              # Repair the one known duplicated transport character, not workbook data.
+              assert raw.count(b'R0lsgxII7k7sNd')==1
+              raw=raw.replace(b'R0lsgxII7k7sNd',b'R0lsgxI7k7sNd',1)
+              assert len(raw)==12000 and gitsha(raw)=='fe52e66822f4caa8809ae180c55c5d72e0bd9af2'
             parts.append(raw)
           packed=base64.b64decode(b''.join(parts),validate=True)
-          assert hashlib.sha256(packed).hexdigest()=='fee090065ec5442f7557e004b88e2535c56c2a0e2de2e9662484318dd314fcf5'
-          data=json.loads(lzma.decompress(packed));assert data['baseline']=='9dce866a2f9972800e6adfca3e312d38c6aa8540'
-          allowed={'app/game/ClanShipHuntConversation.tsx','app/game/systems/clanShipHuntDialogue.ts','tests/helpers/clan-ship-hunt-dialogue-fixture.mjs','tests/clan-ship-hunt-dialogue.test.mjs','tests/fixtures/companion-recruitment-mechanics-19317af4.json','scripts/qa-clan-hunt-dialogue-browser-20261109.mjs','docs/campagne/QUETES_RETOURS_ET_ACCORDS_20261109.md','app/game/ClanShipCrewDialogue.tsx','app/game/systems/companionResidence.ts'}
-          assert set(data['files'])==allowed
-          for name,item in data['files'].items():
-            p=root/name;assert all(not q.is_symlink() for q in [p,*p.parents])
-            old=hashlib.sha256(p.read_bytes()).hexdigest() if p.is_file() else None
-            assert old==item['before'],name+' changed since review; refusing to overwrite'
-          for name,item in data['files'].items():
-            if 'patch' in item:
-              assert name=='app/game/systems/companionResidence.ts'
-              patch=out/'companion-prose.patch';patch.write_text(item['patch'])
-              subprocess.run(['git','apply','--check',str(patch)],check=True);subprocess.run(['git','apply',str(patch)],check=True)
+          assert hashlib.sha256(packed).hexdigest()=='4b89e949101a8d33a5c5efd8aa754e15dd7d7d531f288874c545d7a97c242d3c'
+          payload=json.loads(lzma.decompress(packed))
+          original='production/quetes-vivantes-20261109/Yautja_Quetes_Vivantes_Bible_20261109.xlsx'
+          target='production/quetes-vivantes-suite-20261109/Yautja_Quetes_Vivantes_Suite_20261109.xlsx'
+          receipt='production/quetes-vivantes-suite-20261109/verification-classeur.json'
+          assert payload['original']==original and payload['target']==target
+          old=(root/original).read_bytes()
+          assert hashlib.sha256(old).hexdigest()==payload['originalSha256']=='5344019af67069a48268ae866498b4552fdad83ae996cbe002868cfefde2931c'
+          for name in [target,receipt]:
+            p=root/name;assert not p.exists() and all(not q.is_symlink() for q in [p,*p.parents]),name
+          with zipfile.ZipFile(io.BytesIO(old)) as z:members={p:z.read(p) for p in z.namelist()}
+          delta=payload['delta'];assert len(set(delta['paths']))==len(delta['paths'])
+          assert set(delta['members']).issubset(delta['paths'])
+          result={}
+          for name in delta['paths']:
+            path=pathlib.PurePosixPath(name);assert not path.is_absolute() and '..' not in path.parts
+            item=delta['members'].get(name)
+            if item is None:raw=members[name]
+            elif 'new' in item:raw=item['new'].encode('utf-8')
             else:
-              p=root/name;p.parent.mkdir(parents=True,exist_ok=True);p.write_text(item['content'])
-            assert hashlib.sha256((root/name).read_bytes()).hexdigest()==item['sha256'],name
-          (out/'source-files.json').write_text(json.dumps({k:{'before':v['before'],'sha256':v['sha256']} for k,v in data['files'].items()},indent=2)+'\n')
-          (out/'paths.txt').write_text('\n'.join(sorted(allowed))+'\n')
-          print('Nine exact native source paths restored; original mechanics, saves and art preserved.')
+              before=members[name];assert hashlib.sha256(before).hexdigest()==item['oldSha256']
+              tokens=re.findall(r'<[^>]+>|[^<]+',before.decode('utf-8'));assert ''.join(tokens).encode()==before
+              chunks=[]
+              for op in item['copy']:
+                if isinstance(op,list):
+                  assert len(op)==2 and all(type(i) is int for i in op) and 0<=op[0]<=op[1]<=len(tokens)
+                  chunks.append(''.join(tokens[op[0]:op[1]]))
+                else:assert isinstance(op,str);chunks.append(op)
+              raw=''.join(chunks).encode('utf-8')
+            if item:assert hashlib.sha256(raw).hexdigest()==item['sha256']
+            result[name]=raw
+          output=io.BytesIO()
+          with zipfile.ZipFile(output,'w') as z:
+            for name,raw in sorted(result.items()):
+              info=zipfile.ZipInfo(name,date_time=(1980,1,1,0,0,0));info.compress_type=zipfile.ZIP_STORED;info.create_system=3;info.external_attr=0o600<<16
+              z.writestr(info,raw)
+          raw=output.getvalue();digest=hashlib.sha256(raw).hexdigest()
+          assert digest==payload['targetSha256']=='39c2e6488d6b3362a3d575b0ff07afdb9b6bb2dfb38def857c5a2789143a34c4'
+          assert len(raw)==payload['targetBytes']==498931
+          meta=payload['receipt'];assert meta['sha256']==digest and meta['bytes']==len(raw)
+          ns={'s':'http://schemas.openxmlformats.org/spreadsheetml/2006/main'}
+          with zipfile.ZipFile(io.BytesIO(raw)) as z:
+            assert z.testzip() is None
+            assert [s.attrib['name'] for s in ET.fromstring(z.read('xl/workbook.xml')).findall('s:sheets/s:sheet',ns)]==meta['sheets']
+            assert len(meta['sheets'])==12
+            formulas=0
+            for name in z.namelist():
+              if name.startswith('xl/worksheets/') and name.endswith('.xml'):
+                xml=ET.fromstring(z.read(name));assert not xml.findall('.//s:c[@t="e"]',ns)
+                for c in xml.findall('.//s:c',ns):
+                  if c.find('s:f',ns) is not None:formulas+=1;assert c.find('s:v',ns) is not None
+            assert formulas==meta['formulas']==5
+          (root/target).parent.mkdir(parents=True,exist_ok=True);(root/target).write_bytes(raw)
+          (root/receipt).write_text(json.dumps(meta,ensure_ascii=False,indent=2)+'\n')
+          assert (root/original).read_bytes()==old
+          print(json.dumps({'file':target,'bytes':len(raw),'sha256':digest,'gitBlob':gitsha(raw),'sheets':12,'formulas':5,'originalPreserved':True}))
           PY
-      - name: Materialize unchanged original assets for the official inventory and recipes
-        run: |
-          python3 - <<'PY'
-          import json,pathlib,subprocess
-          root=pathlib.Path.cwd()
-          files={x['path'] for x in json.loads((root/'docs/qa/current-integration-20261103/runtime-inputs.json').read_text())['entries']}
-          files.update(json.loads((root/'tests/fixtures/clan-ship-browser-assets.json').read_text())['paths'])
-          files.update('public'+x['src'] for x in json.loads((root/'app/game/data/buriedCradleArt.json').read_text())['assets'].values())
-          files.update(['public/game/prologue/v47/village.png','public/game/prologue/v47/arena.png','public/game/ships/v14/avp-predator-mothership.webp','public/game/ships/v12/classic-predator-spaceship.webp','public/game/ships/v13/classic-predator-spaceship-top.webp','public/game/backgrounds/ship-hub-v4.webp'])
-          for name in files:
-            p=pathlib.PurePosixPath(name);assert not p.is_absolute() and '..' not in p.parts
-          subprocess.run(['git','sparse-checkout','add','--stdin'],input='\n'.join('/'+p for p in sorted(files))+'\n',text=True,check=True)
-          assert all((root/p).is_file() for p in files)
-          PY
-      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
-        with:
-          node-version: '22'
-          cache: npm
-      - run: npm ci --ignore-scripts --no-audit --no-fund
-      - name: Official current inventory, full TypeScript and strict lint
-        run: |
-          set -euo pipefail
-          node scripts/snapshot-runtime-v113.mjs --write docs/qa/current-integration-20261103/runtime-inputs.json 2>&1 | tee "$RUNNER_TEMP/hunt-dialogue-receipts/runtime-write.txt"
-          node scripts/snapshot-runtime-v113.mjs --check docs/qa/current-integration-20261103/runtime-inputs.json 2>&1 | tee "$RUNNER_TEMP/hunt-dialogue-receipts/runtime-check.txt"
-          npm run typecheck 2>&1 | tee "$RUNNER_TEMP/hunt-dialogue-receipts/typecheck.txt"
-          node node_modules/eslint/bin/eslint.js --max-warnings=0 app/game/ClanShipHuntConversation.tsx app/game/ClanShipCrewDialogue.tsx app/game/systems/clanShipHuntDialogue.ts app/game/systems/companionResidence.ts tests/helpers/clan-ship-hunt-dialogue-fixture.mjs tests/clan-ship-hunt-dialogue.test.mjs scripts/qa-clan-hunt-dialogue-browser-20261109.mjs 2>&1 | tee "$RUNNER_TEMP/hunt-dialogue-receipts/lint.txt"
-      - name: Existing and new regressions with original Cradle assets
-        run: |
-          set -euo pipefail
-          node --experimental-strip-types --test --test-reporter=tap --test-concurrency=1 tests/clan-ship-hunt-dialogue.test.mjs tests/clan-ship-dialogue.test.mjs tests/clan-ship-operations.test.mjs tests/clan-ship-operations-save.test.mjs tests/clan-ship-space-encounter.test.mjs tests/clan-ship-incidents.test.mjs tests/clan-ship-trophy-case.test.mjs tests/clan-ship-trophy-hearing.test.mjs tests/clan-ship-trophy-hearing-presentation.test.mjs tests/buried-cradle-return.test.mjs tests/buried-cradle-campaign.test.mjs tests/buried-cradle-snapshot.test.mjs tests/companion-residence.test.mjs 2>&1 | tee "$RUNNER_TEMP/hunt-dialogue-receipts/tests.txt"
-      - name: Commit only reviewed native files and current inventory to the isolated feature branch
+      - name: Commit only the new workbook and receipt, without changing main
         run: |
           set -euo pipefail
           test "$GITHUB_REF_NAME" = feat/quetes-vivantes-bible-20261109
           test "$(git ls-remote origin refs/heads/feat/quetes-vivantes-bible-20261109 | cut -f1)" = "$GITHUB_SHA"
-          git diff --check
-          mapfile -t paths < "$RUNNER_TEMP/hunt-dialogue-receipts/paths.txt"
-          git add -- "${paths[@]}" docs/qa/current-integration-20261103/runtime-inputs.json
-          test "$(git diff --cached --name-only | wc -l)" -eq 10
+          git add -- production/quetes-vivantes-suite-20261109/Yautja_Quetes_Vivantes_Suite_20261109.xlsx production/quetes-vivantes-suite-20261109/verification-classeur.json
+          test "$(git diff --cached --name-only | wc -l)" -eq 2
+          git diff --cached --check
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git commit -m 'feat: quatre chasses racontees, confidentialite du Berceau et accords incarnes'
+          git commit -m 'docs: douze feuilles pour les retours de chasse, accords et preuves natives'
           git push origin HEAD:refs/heads/feat/quetes-vivantes-bible-20261109
-          git rev-parse HEAD | tee "$RUNNER_TEMP/hunt-dialogue-receipts/published-head.txt"
-          cp docs/qa/current-integration-20261103/runtime-inputs.json "$RUNNER_TEMP/hunt-dialogue-receipts/runtime-inputs.json"
-      - name: Install locked Chromium
-        run: node node_modules/playwright-core/cli.js install --with-deps chromium
-      - name: Native archived hunts, private returns and reload
-        run: |
-          set -euo pipefail
-          node scripts/qa-clan-hunt-dialogue-browser-20261109.mjs 2>&1 | tee "$RUNNER_TEMP/hunt-dialogue-receipts/browser-run.txt"
-      - uses: actions/upload-artifact@v4
-        if: always()
-        with:
-          name: hunt-dialogue-native-20261109
-          path: |
-            ${{ runner.temp }}/hunt-dialogue-receipts/
-            outputs/qa-clan-hunt-dialogue-20261109/
-          retention-days: 14
-          if-no-files-found: error
+          git rev-parse HEAD
