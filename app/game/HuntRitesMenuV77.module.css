@@ -8,3 +8,16 @@
 .root [data-rite-progress-v112]>strong{display:block;margin-bottom:7px}
 .root [data-rite-progress-v112]>span{display:block;margin-bottom:8px}
 .root [data-rite-progress-v112]>button{width:100%;margin-top:8px}
+@media(max-width:600px){
+  .root.workingCompact{display:grid;grid-template-columns:minmax(0,1fr) 44px 82px;align-items:center;gap:6px;padding:8px;overflow:visible;max-height:none}
+  .workingCompact [data-rite-progress-v112]{min-width:0;font-size:11px;line-height:1.25}
+  .workingCompact [data-rite-progress-v112]>strong{margin:0 0 3px;overflow-wrap:anywhere}
+  .workingCompact [data-rite-progress-v112]>span{margin:0 0 3px}
+  .workingCompact progress{display:block;height:8px;margin:0}
+  .workingCompact .workInfo,.workingCompact .workInterrupt{min-width:44px;min-height:44px;padding:5px;font-size:11px}
+  .workingCompact .workInfo{width:44px}
+  .workingCompact .workInterrupt{width:82px}
+  .workDetails{position:absolute;top:calc(100% + 6px);right:0;width:100%;max-height:min(32vh,130px);overflow:auto;box-sizing:border-box;padding:10px;border:1px solid #967c52;background:#101c19fa;font-size:12px;line-height:1.45}
+  .workDetails[hidden]{display:none}
+  .workDetails p{margin:8px 0 0}
+}

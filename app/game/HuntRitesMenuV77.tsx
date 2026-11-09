@@ -1,18 +1,57 @@
 'use client';
-import {useId} from 'react';
+import {useId,useState,useSyncExternalStore} from 'react';
 import type {HuntRiteMenuSnapshotV77} from './systems/huntRitesRuntimeV77';
 import type {HuntRiteActionV77} from './systems/ritesOfHuntV77';
 import styles from './HuntRitesMenuV77.module.css';
 import {DEFAULT_HUNT_GAMEPAD_V112,HUNT_GAMEPAD_LABELS_V112,type HuntGamepadButtonsV112} from './systems/huntAccessibilityV112';
 const quantity=(value:number)=>value.toLocaleString('fr-FR',{maximumFractionDigits:2});
+const mobileQuery='(max-width: 600px)';
+const mobileSnapshot=()=>typeof window!=='undefined'&&typeof window.matchMedia==='function'&&window.matchMedia(mobileQuery).matches;
+const serverMobileSnapshot=()=>false;
+const subscribeMobile=(listener:()=>void)=>{
+  if(typeof window==='undefined'||typeof window.matchMedia!=='function')return ()=>{};
+  const media=window.matchMedia(mobileQuery);media.addEventListener('change',listener);
+  return ()=>media.removeEventListener('change',listener);
+};
+function CompactRiteWorkV77({menu,operation,onClose,descriptionId}:{menu:HuntRiteMenuSnapshotV77;
+  operation:NonNullable<HuntRiteMenuSnapshotV77['operation']>;onClose():void;descriptionId:string}){
+  const [detailsOpen,setDetailsOpen]=useState(false);
+  return <section className={styles.root+' '+styles.workingCompact} data-hunt-rites-v77 data-corpse-id={menu.corpseId}
+    data-rite-open-v112="true" data-rite-working-v112="true" data-rite-compact-v112="true" aria-label="Rites sur la proie vaincue">
+    <div role="group" aria-label="Geste en cours" data-rite-progress-v112>
+      <strong role="status">{operation.label??'Geste en cours'}</strong>
+      <span aria-live="off">{Math.round(operation.progress*100)} %
+        {operation.secondsRemaining!==undefined&&<> · {quantity(operation.secondsRemaining)} s restantes</>}</span>
+      <progress aria-live="off" aria-label={operation.label??'Progression du geste'} max={1} value={operation.progress}/>
+    </div>
+    <button type="button" className={styles.workInfo} aria-expanded={detailsOpen} aria-controls={descriptionId+'-work-details'}
+      onClick={()=>setDetailsOpen(open=>!open)}>Infos</button>
+    <button type="button" className={styles.workInterrupt} aria-label="Interrompre le geste" data-rite-action-v112="interrupt" onClick={onClose}>Interrompre</button>
+    <div className={styles.workDetails} id={descriptionId+'-work-details'} hidden={!detailsOpen} data-rite-work-details-v112>
+      <strong>{menu.label} · intégrité {menu.integrity}/100</strong>
+      <p>La chasse continue. Dégâts, action ou éloignement interrompent le geste. Interrompre laisse la partie sur le corps, sans usure de l’outil.</p>
+      {operation.secondsTotal!==undefined&&<p>Durée totale : {quantity(operation.secondsTotal)} s.
+        {' '}{operation.toolWear?`Usure de ${operation.toolWear} points seulement à la fin.`:'Ce geste n’use pas le Flaying Tool.'}</p>}
+      {menu.tool&&<p data-rite-tool-preview-v112>Flaying Tool : {menu.tool.owned?'acquis':'à acquérir'}.
+        {menu.tool.condition!==null&&<> État : {quantity(menu.tool.condition)}/100 ; après confirmation : {quantity(operation.toolWear?menu.tool.conditionAfterCompletion??0:menu.tool.condition)}/100.</>}</p>}
+      {menu.stock&&<p data-rite-stock-v112>Parties encore sur cette proie : {menu.stock.remaining} / {menu.stock.total}. Chaque partie est unique.</p>}
+      {menu.fieldLoad&&<p data-harvest-capacity-v112>Sac : {quantity(menu.fieldLoad.massKg)} / {quantity(menu.fieldLoad.capacityMassKg)} kg
+        {' · '}{quantity(menu.fieldLoad.volumeUnits)} / {quantity(menu.fieldLoad.capacityVolumeUnits)} volumes.</p>}
+      <p>{menu.witnessCount} témoin{menu.witnessCount===1?'':'s'}. Le dépeçage prépare la peau ; le prélèvement et le trophée principal restent distincts.</p>
+    </div>
+  </section>;
+}
 export default function HuntRitesMenuV77({menu,onOpen,onClose,onAction,gamepadButtons=DEFAULT_HUNT_GAMEPAD_V112}:{menu:HuntRiteMenuSnapshotV77|null;gamepadButtons?:HuntGamepadButtonsV112;
   onOpen():void;onClose():void;onAction(action:HuntRiteActionV77):void}){
   const descriptionId=useId();
+  const mobile=useSyncExternalStore(subscribeMobile,mobileSnapshot,serverMobileSnapshot);
   if(!menu)return null;
   const analysisReason=!menu.analyzed?menu.analysisLockedReason:null;
   const carryReason=!menu.carrying?menu.carryLockedReason:null;
   const operation=menu.operation;
-  return <section className={styles.root} data-hunt-rites-v77 data-corpse-id={menu.corpseId} data-rite-open-v112={menu.open?"true":"false"} aria-label="Rites sur la proie vaincue">
+  if(mobile&&menu.open&&operation)return <CompactRiteWorkV77 key={menu.corpseId+':'+operation.action} menu={menu}
+    operation={operation} onClose={onClose} descriptionId={descriptionId}/>;
+  return <section className={styles.root} data-hunt-rites-v77 data-corpse-id={menu.corpseId} data-rite-open-v112={menu.open?"true":"false"} data-rite-working-v112={operation?'true':'false'} aria-label="Rites sur la proie vaincue">
     <small>Manette : Bas + {HUNT_GAMEPAD_LABELS_V112[gamepadButtons.interact]} pour examiner. Haut/Bas pour choisir, {HUNT_GAMEPAD_LABELS_V112[gamepadButtons.jump]} pour activer, {HUNT_GAMEPAD_LABELS_V112[gamepadButtons.interact]} pour fermer. La chasse continue.</small>
     {!menu.open?<button type="button" onClick={onOpen}>Examiner la proie vaincue</button>:<>
       <header><strong>{menu.label}</strong><button type="button" onClick={onClose} aria-label="Fermer le menu rituel">×</button></header>
