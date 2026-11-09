@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import {build} from "esbuild";
-const compiled=await build({stdin:{contents:`export * from "./app/game/systems/anatomyHarvestV112"; export * from "./app/game/systems/carcassSupportsV112"; export * from "./app/game/systems/ritesOfHuntV77"; export * from "./app/game/systems/huntRitesRuntimeV77";`,resolveDir:process.cwd(),loader:"ts"},bundle:true,write:false,platform:"node",format:"esm",logLevel:"silent"});
+const compiled=await build({stdin:{contents:`export * from "./app/game/systems/anatomyHarvestV112"; export * from "./app/game/systems/carcassSupportsV112"; export * from "./app/game/systems/ritesOfHuntV77"; export * from "./app/game/systems/huntRitesRuntimeV77"; export * from "./app/game/systems/fieldStashV112";`,resolveDir:process.cwd(),loader:"ts"},bundle:true,write:false,platform:"node",format:"esm",logLevel:"silent"});
 const a=await import("data:text/javascript;base64,"+Buffer.from(compiled.outputFiles[0].text).toString("base64"));
 function scene(species="hell-hound-stalker"){
   const label=id=>id,player={x:100,y:540,width:40,height:60,health:100,grounded:true,climbing:false};
@@ -57,6 +57,34 @@ test("skin requires preparation; a full or changed pack never consumes a part",(
   for(let i=0;i<100&&f.state.operation;i++)f.state=a.stepHuntRiteV77(f.state,.05,f.context()).state;
   assert.equal(f.state.specimensV112.length,0);
   assert.equal(f.state.completedEventIds.includes("harvest-hide:body"),false);
+});
+test("the analysis preview shares the command prerequisite before and after irreversible extraction or deposit",()=>{
+  const f=scene("xeno-drone");
+  let menu=a.huntRiteMenuSnapshotV77(f.state,f.context().actor,"body",true,f.options);
+  assert.equal(menu.canAnalyze,true);assert.equal(menu.analysisLockedReason,null);
+  act(f,"harvest-bone");
+  const item=structuredClone(f.state.specimensV112[0]),before=JSON.stringify(f.state);
+  menu=a.huntRiteMenuSnapshotV77(f.state,f.context().actor,"body",true,f.options);
+  assert.equal(menu.analyzed,false);assert.equal(menu.canAnalyze,false);
+  const refused=a.startHuntRiteV77(f.state,"body","analyze",f.context());
+  assert.equal(refused.accepted,false);assert.equal(refused.message,menu.analysisLockedReason);
+  assert.equal(JSON.stringify(f.state),before,"preview and refused command preserve exact state and awarded quality");
+  const deposited=a.moveFieldSpecimenV112(f.state,"drop",item.id,f.player,{width:3000,floorY:600,platforms:[]},"hunter",
+    {suspended:false,operationActive:false});
+  assert.equal(deposited.accepted,true);f.state=deposited.state;
+  assert.equal(a.carriedFieldSpecimensV112(f.state).length,0);
+  menu=a.huntRiteMenuSnapshotV77(f.state,f.context().actor,"body",true,f.options);
+  assert.equal(menu.canAnalyze,false,"depositing the original part does not permit a quality upgrade");
+  assert.equal(a.startHuntRiteV77(f.state,"body","analyze",f.context()).message,menu.analysisLockedReason);
+  assert.deepEqual(f.state.specimensV112,[item]);assert.equal(item.quality,88);
+});
+test("completed analysis remains unavailable without blocking analysis of another corpse",()=>{
+  const f=scene();act(f,"analyze");
+  const menu=a.huntRiteMenuSnapshotV77(f.state,f.context().actor,"body",true,f.options);
+  assert.equal(menu.analyzed,true);assert.equal(menu.canAnalyze,false);
+  assert.equal(a.startHuntRiteV77(f.state,"body","analyze",f.context()).message,menu.analysisLockedReason);
+  const other=scene();other.state.specimensV112=[a.makeAnatomySpecimenV112(other.state.runId,"another-body","xeno-drone","harvest-bone",100,false)];
+  assert.equal(a.huntRiteMenuSnapshotV77(other.state,other.context().actor,"body",true,other.options).canAnalyze,true);
 });
 test("damage, lost tool, source or footing interrupt anatomy without a specimen",()=>{
   for(const change of [f=>{f.player.health=99},f=>{f.options.flayingToolOwned=false},f=>{f.actors[0].alive=true},f=>{f.player.grounded=false}]){

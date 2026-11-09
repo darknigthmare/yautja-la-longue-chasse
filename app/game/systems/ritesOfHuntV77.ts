@@ -80,6 +80,13 @@ export function nearestRiteCorpseV77(state:RitesOfHuntV77,actor:RitePointV77):Ri
   if(!point(actor))return null;
   return state.corpses.filter(c=>!c.erased&&distance(c,actor)<=88).sort((a,b)=>distance(a,actor)-distance(b,actor))[0]??null;
 }
+/** One prerequisite for the command and its preview. Depositing a specimen does
+ * not undo its irreversible extraction or permit a later quality upgrade. */
+export function riteAnalysisLockedReasonV77(state:RitesOfHuntV77,corpse:Pick<RiteCorpseV77,'id'|'analyzed'>):string|null {
+  if((state.specimensV112??[]).some(item=>item.sourceId===state.runId+':'+corpse.id))
+    return 'Analyse à effectuer avant tout prélèvement irréversible.';
+  return corpse.analyzed?'Ce geste est déjà inscrit pour cette proie.':null;
+}
 export function startHuntRiteV77(state:RitesOfHuntV77,corpseId:string,action:HuntRiteActionV77,context:RiteLiveContextV77,
   options:{supportId?:string;confirmDishonor?:boolean}={}):RiteResultV77 {
   const corpse=state.corpses.find(c=>c.id===corpseId),proof=context.prey.find(p=>p.id===corpseId);
@@ -96,8 +103,9 @@ export function startHuntRiteV77(state:RitesOfHuntV77,corpseId:string,action:Hun
     return result({...state,carryingCorpseId:corpse.id},true,'Carcasse saisie. Marche au sol jusqu’au crochet ; dépose-la avant combat ou escalade.');
   }
   if(action==='leave')return result(state.carryingCorpseId===corpse.id?{...state,carryingCorpseId:null}:state,true,'La proie reste sur place ; aucune récompense ajoutée.');
-  if(action==='analyze'&&(state.specimensV112??[]).some(item=>item.sourceId===state.runId+':'+corpse.id))return result(state,false,'Analyse à effectuer avant tout prélèvement irréversible.');
-  if(action==='analyze'&&corpse.analyzed||action==='mark'&&corpse.marked||action==='flay'&&corpse.flayed)
+  const analysisLockedReason=action==='analyze'?riteAnalysisLockedReasonV77(state,corpse):null;
+  if(analysisLockedReason)return result(state,false,analysisLockedReason);
+  if(action==='mark'&&corpse.marked||action==='flay'&&corpse.flayed)
     return result(state,false,'Ce geste est déjà inscrit pour cette proie.');
   if(action==='flay'&&!context.flayingToolOwned)return result(state,false,'Le Flaying Tool acquis est nécessaire ; les lames de poignet ne le remplacent pas.');
   if((action==='flay'||action==='hang')&&(corpse.protectedPrey||!corpse.worthy)&&!options.confirmDishonor)

@@ -6659,14 +6659,27 @@ function riteRuntimeOptionsV112(state:GameState) {
   const actor={x:state.player.x+state.player.width/2,y:state.player.y+state.player.height};
   const uses=state.huntRites.completedEventIds.filter(id=>id.startsWith('flay:')||id.startsWith('harvest-')).length;
   const carried=state.enemies.find(e=>e.id===state.huntRites.carryingCorpseId);
+  // Evaluate current stock on every preview and completion, never a captured
+  // start-of-gesture capacity. Acceptance keeps the existing three checks.
+  const specimenPreview=(item:import("./systems/harvestInventoryV112").FieldSpecimenV112)=>{
+    const items=carriedFieldSpecimensV112(state.huntRites),armor=state.harvestArmorIdV112??'hunter';
+    const projectedLoad=fieldLoadV112([...items,item],armor);
+    const pickup=tryCarrySpecimenV112(items,item,armor);
+    const depotAvailable=items.length<(state.harvestDepotFreeV112??HARVEST_DEPOT_LIMIT_V112);
+    const fieldAvailable=(state.huntRites.specimensV112??[]).length<64;
+    const accepted=depotAvailable&&fieldAvailable&&pickup.ok;
+    const limitingDimension=projectedLoad.massKg/projectedLoad.capacityMassKg>=projectedLoad.volumeUnits/projectedLoad.capacityVolumeUnits
+      ?'Masse maximale du sac dépassée.':'Volume maximal du sac dépassé.';
+    const reason=!depotAvailable?'Dépôt de campagne plein : ranger des prises montées au vaisseau.':
+      !fieldAvailable?'Registre de terrain plein : 64 prises déjà prélevées dans cette chasse.':
+      !pickup.ok?(projectedLoad.overloaded?limitingDimension+' La partie reste sur la proie.':pickup.reason):'';
+    return {accepted,reason,projectedLoad};
+  };
   return {flayingToolOwned:state.flayingToolOwned,maximumSpecimens:state.harvestDepotFreeV112,world:state.world,
     toolWorkMultiplier:flayingToolWorkMultiplierV112(toolConditionAfterUsesV112(state.riteToolInitialConditionV112??100,uses)),
     supports:carcassSupportsForWorldV112(state.world).filter(s=>carcassSupportAccessibleV112(actor,s,state.world)&&(!carried||carcassFitsSocketV112(carried,s,state.world))),
-    acceptSpecimen:(item:import("./systems/harvestInventoryV112").FieldSpecimenV112)=>{
-      const items=carriedFieldSpecimensV112(state.huntRites);
-      return items.length<(state.harvestDepotFreeV112??HARVEST_DEPOT_LIMIT_V112)&&(state.huntRites.specimensV112??[]).length<64&&
-        tryCarrySpecimenV112(items,item,state.harvestArmorIdV112??'hunter').ok;
-    }};
+    fieldLoad:()=>fieldLoadV112(carriedFieldSpecimensV112(state.huntRites),state.harvestArmorIdV112??'hunter'),
+    specimenPreview,acceptSpecimen:(item:import("./systems/harvestInventoryV112").FieldSpecimenV112)=>specimenPreview(item).accepted};
 }
 function syncCarcassTransportV112(state:GameState):void {
   const carriedId=state.huntRites.carryingCorpseId;
