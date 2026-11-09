@@ -57,7 +57,7 @@
       ammo.loaded--;
     }
     p.cooldown = w.cooldown;
-    const target = s.enemies.filter(e => e.hp > 0 && e.depth === p.depth && Math.abs(e.x - p.x) <= w.range)
+    const target = s.enemies.filter(e => e.hp > 0 && e.depth === p.depth && (e.x - p.x) * p.facing >= 0 && Math.abs(e.x - p.x) <= w.range)
       .sort((a, b) => Math.abs(a.x - p.x) - Math.abs(b.x - p.x))[0];
     s.shots.push({x: p.x, end: target ? target.x : p.x + p.facing * w.range, depth: p.depth, ttl: 0.12});
     if (target) {

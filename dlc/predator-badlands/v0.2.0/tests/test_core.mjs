@@ -59,3 +59,26 @@ for(const c of D.campaigns)for(const spec of c.scenes)test(`Objective + exit: ${
 });
 
 test('Completion freezes the remaining combat tick',()=>{const s=play('predator','pred_den'),e=s.enemies[0];s.player.x=e.x-40;s.player.depth=e.depth;s.player.hp=1;e.hp=e.maxHp*.43;e.windup=.01;G.step(s,.05,{fire:true});assert.equal(s.phase,'outcome');assert.equal(s.player.hp,1);});
+
+test('Attacks respect the facing direction on the current depth plane',()=>{
+  for (const facing of [-1, 1]) for (const targetAhead of [false, true]) {
+    const s=play('predator');
+    const target=s.enemies[0];
+    s.player.depth=target.depth;
+    s.player.facing=facing;
+    s.player.x=target.x+(targetAhead ? -facing : facing)*50;
+    const before=target.hp;
+    assert.equal(G.attack(s),true);
+    assert.equal(target.hp<before,targetAhead);
+    assert.equal(Math.sign(s.shots[0].end-s.shots[0].x),facing);
+  }
+});
+test('A closer enemy behind cannot shield a target in front',()=>{
+  const s=play('predator','pred_spike_field'), [behind,ahead]=s.enemies;
+  s.player.x=500;s.player.depth=1;s.player.facing=1;
+  behind.x=470;behind.depth=1;ahead.x=560;ahead.depth=1;
+  const beforeBehind=behind.hp,beforeAhead=ahead.hp;
+  assert.equal(G.attack(s),true);
+  assert.equal(behind.hp,beforeBehind);
+  assert.ok(ahead.hp<beforeAhead);
+});
