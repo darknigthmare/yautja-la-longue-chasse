@@ -65,12 +65,12 @@ export default function BuriedCradleReturnPanel({ controlled, stationId, suspend
     }}
     data-return-revision={visit.revision} data-return-choice={choice ?? 'pending'} data-return-hull={state.personalShipId}>
     <header className={styles.header}><div><p className={styles.eyebrow}>RETOUR DE XENO PRIME</p>
-      <h3 id={titleId}>Ce que la reine a changé</h3></div><span className={styles.badge}>{choice ? 'Débrief consigné' : `${visit.revision} / 3 étapes`}</span>
+      <h3 id={titleId}>Ce que la reine a changé</h3></div><span className={styles.badge}>{choice ? 'Retour consigné' : `${visit.revision} / 3 étapes`}</span>
       {onExit && <button type="button" disabled={suspended} onClick={() => { setFocused(false); onExit(); }}>Reprendre le déplacement · B / Échap</button>}</header>
     {!correctHull && <p className={styles.notice}>Le contenu de cette expédition est à bord de {shipForId(state.personalShipId).name}. Reprends cette coque pour poursuivre le retour.</p>}
-    <p className={styles.intro}>{crown ? 'La crête prélevée attend les soins, l’examen et ton choix de débrief.' :
-      state.progress.bossDefeated ? 'La Matriarche est vaincue. Tu es revenu sans crête ; seuls les relevés sont installés.' :
-      'Tu es revenu sans trophée. Les découvertes du Berceau sont conservées pour préparer une nouvelle sortie.'}</p>
+    <p className={styles.intro}>{crown ? 'La crête est revenue avec toi. Avant de l’exposer, passe aux soins et examine ce que tu as retiré de la ruche.' :
+      state.progress.bossDefeated ? 'La Matriarche est tombée, mais tu es revenu sans sa crête. Tu peux raconter l’affrontement et conserver tes relevés ; le support restera vide.' :
+      'La ruche garde encore sa Matriarche. Tu es revenu avec ce que tu as appris de ses passages et de ses défenses. Reprends ces relevés avant d’y retourner.'}</p>
     <div className={styles.steps}>
       <article className={styles.step} data-return-step="care"><span className={styles.number}>01</span><h4>Soins de retour</h4>
         <p>{visit.revision >= 1 ? 'Nettoyage de l’équipement et contrôle des blessures consignés au poste de soin.' :
@@ -80,7 +80,7 @@ export default function BuriedCradleReturnPanel({ controlled, stationId, suspend
           {stepButton('treat-return', visit.revision >= 1 ? 'Soins effectués' : 'Effectuer les soins et le nettoyage', visit.revision === 0)}</>}
       </article>
       <article className={styles.step} data-return-step="inspection"><span className={styles.number}>02</span><h4>{crown ? 'Examiner la crête' : 'Installer les relevés'}</h4>
-        <p>{examined ? crown ? 'La crête est installée sur le support de l’atelier. Son origine est reliée à l’expédition.' :
+        <p>{examined ? crown ? 'La crête repose sur le support. Les relevés de cette expédition restent à côté : ils racontent comment tu l’as obtenue.' :
           'Les relevés d’expédition sont installés. Le support de trophée reste vide.' : 'Rejoins la galerie des trophées et examine ce qui a réellement été rapporté.'}</p>
         {examined && correctHull && crown && <img className={styles.crown} src="/game/xeno-prime/berceau-v1/sprites/props_effets/100_trophee_couronne_socle.png" alt="Crête de la Matriarche sur son support" width={1254} height={1254} />}
         {examined && <dl className={styles.readings}><div><dt>Lieux relevés</dt><dd>{state.progress.visitedRoomIds.length} / 12</dd></div>
@@ -90,15 +90,15 @@ export default function BuriedCradleReturnPanel({ controlled, stationId, suspend
         {!choice && <><button type="button" data-cradle-return-guide="trophy-hall" disabled={!correctHull || suspended} onClick={() => navigate('trophy-hall')}>Guider vers l’atelier</button>
           {stepButton('inspect-return', examined ? 'Examen effectué' : crown ? 'Installer et examiner la crête' : 'Installer et examiner les relevés', visit.revision === 1)}</>}
       </article>
-      <article className={styles.step} data-return-step="debrief"><span className={styles.number}>03</span><h4>Choisir le débrief</h4>
-        {choice ? <p className={styles.receipt}>{choice === 'clan' ? 'Présentation au clan déposée aux archives.' : 'Analyse personnelle conservée à l’atelier.'} {state.crownDelivered ? 'La preuve de chasse de reine est inscrite au dossier.' : 'Les observations sont consignées, sans preuve de trophée.'}</p> : <>
-          <p>Présente le retour aux archives du clan, ou conserve l’analyse à l’atelier. Le choix est enregistré une seule fois ; il ne remplace pas les rites de rang.</p>
+      <article className={styles.step} data-return-step="debrief"><span className={styles.number}>03</span><h4>Donner une suite à la chasse</h4>
+        {choice ? <p className={styles.receipt}>{choice === 'clan' ? 'Ton récit attend aux archives du clan.' : 'Tu as gardé les relevés près de l’établi pour les étudier seul.'} {state.crownDelivered ? 'La crête demeure liée à cette chasse de reine.' : 'Le récit est conservé. Aucun trophée n’a été ajouté.'}</p> : <>
+          <p>Tu peux laisser ton récit aux archives du clan ou reprendre seul l’affrontement à l’atelier. Montrer une prise et comprendre ce qu’elle t’a coûté ne sont pas le même choix. Ni l’un ni l’autre ne te dispense des rites.</p>
           <button type="button" data-cradle-return-guide="clan-archives" disabled={!correctHull || suspended} onClick={() => navigate('clan-archives')}>Guider vers les archives</button>
           {stepButton('present-clan', 'Présenter au clan', examined)}
           {stepButton('analyze-workshop', 'Analyser seul à l’atelier', examined)}
         </>}
       </article>
     </div>
-    <p className={styles.status} role="status" aria-live="polite">{feedback || (choice ? 'Ce reçu reste consultable après une reprise.' : 'Le guidage prépare le trajet. Confirme chaque porte, puis l’intervention au poste.')} <span>Manette : Y / Triangle ouvre ce dossier ; stick ou croix directionnelle pour choisir, A / Croix pour confirmer.</span></p>
+    <p className={styles.status} role="status" aria-live="polite">{feedback || (choice ? 'Ton choix et les relevés sont conservés après rechargement.' : 'Le guidage prépare le trajet. Confirme chaque porte, puis l’intervention au poste.')} <span>Manette : Y / Triangle ouvre ce dossier ; stick ou croix directionnelle pour choisir, A / Croix pour confirmer.</span></p>
   </section>;
 }

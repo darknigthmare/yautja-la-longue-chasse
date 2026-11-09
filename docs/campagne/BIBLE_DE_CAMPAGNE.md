@@ -4,6 +4,8 @@ Nov 5, 2026 · @darknigthmare
 
 ## Mode d'emploi
 
+**Avenant du 9 novembre 2026 :** [Quêtes et voix du clan](QUETES_VIVANTES_20261109.md) précise la réécriture des opérations, les conversations contextuelles OPS-B05 et leurs limites. Les fiches historiques et leurs états de production sont conservés ci-dessous.
+
 Cette bible fusionne la « Campagne commune » du classeur V6 (60 fiches R2-M001 → R2-M060) et les 8 chasses de « La Longue Chasse », insérées à R2-M024. Chaque fiche sépare ce qui est écrit dans le projet de ce qui reste à produire.
 
 **Sources lues dans le dépôt** (`main`, commit du 5 novembre 2026) :

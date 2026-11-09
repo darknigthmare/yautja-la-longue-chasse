@@ -5,8 +5,8 @@
     "bytes": 264999,
     "sha256": "8eee8a5f5a043f2a67477bc6bcff97fffb1ee1666864bd7aed60c7a6c21ca138"
   },
-  "files": 2204,
-  "bytes": 1093166757,
+  "files": 2206,
+  "bytes": 1093185913,
   "entries": [
     {
       "path": ".openai/hosting.json",
@@ -110,8 +110,8 @@
     },
     {
       "path": "app/game/BuriedCradleReturnPanel.tsx",
-      "bytes": 8976,
-      "sha256": "3f144961fcabcef5b227e7324bff517311cac774e919cdaeea92bb1cc9238793"
+      "bytes": 9261,
+      "sha256": "0c26b0c5aa690c0edb6a803dff75fb5a95eb029f7e967dee23c4e2f6ffe9e6e2"
     },
     {
       "path": "app/game/BuriedCradleScene.module.css",
@@ -169,6 +169,11 @@
       "sha256": "d260f79df82016080b0ffc9d9302b754e94c0e142824864078104be3339df049"
     },
     {
+      "path": "app/game/ClanShipCrewDialogue.tsx",
+      "bytes": 1644,
+      "sha256": "9c1b0590bc5cf742ba1a82f40a483f61c81f334f14c9a515939aac8885ceffb7"
+    },
+    {
       "path": "app/game/ClanShipHub.module.css",
       "bytes": 10357,
       "sha256": "dce81e3bc9b5eca6c1c74798099fd1bd26567de2974a2aad169c38ee5229d89c"
@@ -210,13 +215,13 @@
     },
     {
       "path": "app/game/ClanShipOperationsPanel.module.css",
-      "bytes": 8826,
-      "sha256": "2f21cf66851e43f490033e077b2d3f714255c6d803de5c23c565ab3a8013872d"
+      "bytes": 10049,
+      "sha256": "e24990896673b514fa4d1ca92efbaf4d9580a40667fea3f16358e10229bba4b4"
     },
     {
       "path": "app/game/ClanShipOperationsPanel.tsx",
-      "bytes": 20619,
-      "sha256": "5061870449cdefc85c86757c2e1ddff03254d288bbc644620b44866f09d92bdd"
+      "bytes": 20780,
+      "sha256": "6dbcbb0e4965711cc91ea8ab082b17c4647cd6ed68588c85890634ec1daaaed6"
     },
     {
       "path": "app/game/ClanShipSpaceEncounter.module.css",
@@ -3464,14 +3469,19 @@
       "sha256": "164c846a0cb9c44e826309b0ffd8e4d31a5d2fefc22f17f477de6588578a44dd"
     },
     {
+      "path": "app/game/systems/clanShipDialogue.ts",
+      "bytes": 12819,
+      "sha256": "c50e94b1c69ab90c1b57fce380bfc00d0e9ea9921448fad45dd7fdfde14516fe"
+    },
+    {
       "path": "app/game/systems/clanShipDocking.ts",
       "bytes": 11213,
       "sha256": "adcd1bee2a92f8893e8fb31ee1df32a2b009fbaa416db66900a868dac84076cb"
     },
     {
       "path": "app/game/systems/clanShipIncidents.ts",
-      "bytes": 44851,
-      "sha256": "f17a007b246f264881323b823d4f655c597b77a8524fd662a5f0d02454649a00"
+      "bytes": 45227,
+      "sha256": "c2f52265dd043d1b6402a0353e4d181d7cdbef829a3cca500e6aa80d3d51e65d"
     },
     {
       "path": "app/game/systems/clanShipInterior.ts",
@@ -3480,8 +3490,8 @@
     },
     {
       "path": "app/game/systems/clanShipOperations.ts",
-      "bytes": 49811,
-      "sha256": "c066bdd255db4041f72a808800284a26bcf6c7151034c140d80dc91b4c4c82ee"
+      "bytes": 52371,
+      "sha256": "6894c68f613af82c0e23aa96b4c7cccf0606dded8638d55e519d269f4a4f0746"
     },
     {
       "path": "app/game/systems/clanShipSpaceEncounter.ts",
@@ -3490,8 +3500,8 @@
     },
     {
       "path": "app/game/systems/clanShipTrophyCase.ts",
-      "bytes": 4188,
-      "sha256": "6399c8c0f6d6eb4c385b194113f0e2f0e2699d4a7972dc44a22979d46b688c8c"
+      "bytes": 4276,
+      "sha256": "9531adfa477208423320f40efe39ccd541b4cc58b1fe9c1d244006e7abc34c00"
     },
     {
       "path": "app/game/systems/clanShipTrophyHearing.ts",
