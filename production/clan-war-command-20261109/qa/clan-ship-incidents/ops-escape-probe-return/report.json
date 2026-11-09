@@ -1,0 +1,176 @@
+{
+  "scope": "Focused read-only keyboard diagnosis in the actual Next GameClient. Completed B01 is a declared reducer-built fixture, not a newly browser-played incident.",
+  "retainedVictory": true,
+  "buildId": "nItYejsE7HSH4L0ykJM5K",
+  "fixtureSha256": "7927731402c214dcfaa7a8ad002a2d17114cecf5e1ad338e475812c22c596e17",
+  "stages": [
+    {
+      "name": "panel-open",
+      "documentHasFocus": true,
+      "activeTag": "ARTICLE",
+      "activeMarkup": "<article tabindex=\"-1\" class=\"ClanShipOperationsPanel_crewCard__v2B31\" data-clan-recruit=\"threshold-guard\" data-clan-recruit-status=\"available\"><div class=\"ClanShipOperationsPanel_portrait__jyBGf\" aria-hidden=\"true\"><div><img data-homeworld-npc-variant-v84=\"guard-10\" data-homeworld-npc-identity-v84=\"clan-ship-crew:threshold-guard\" data-homeworld-npc-role-v84=\"guard\" data-native-source=\"/game/homeworld/v84/npcs/guard/10.png\" data-native-clip=\"idle",
+      "focusedInsideOperations": true,
+      "operationsVisible": true,
+      "operationsInert": false,
+      "closeDisabled": false,
+      "settingsVisible": false
+    },
+    {
+      "name": "ack-clicked",
+      "documentHasFocus": true,
+      "activeTag": "BUTTON",
+      "activeMarkup": "<button type=\"button\" class=\"ClanShipOperationsPanel_secondary__ZtYyM\" aria-describedby=\"clan-crew-dialogue-threshold-guard\" data-clan-crew-dialogue-ack=\"threshold-guard\">J’ai entendu</button>",
+      "focusedInsideOperations": true,
+      "operationsVisible": true,
+      "operationsInert": false,
+      "closeDisabled": false,
+      "settingsVisible": false
+    },
+    {
+      "name": "toast-hidden",
+      "documentHasFocus": true,
+      "activeTag": "BUTTON",
+      "activeMarkup": "<button type=\"button\" class=\"ClanShipOperationsPanel_secondary__ZtYyM\" aria-describedby=\"clan-crew-dialogue-threshold-guard\" data-clan-crew-dialogue-ack=\"threshold-guard\">J’ai entendu</button>",
+      "focusedInsideOperations": true,
+      "operationsVisible": true,
+      "operationsInert": false,
+      "closeDisabled": false,
+      "settingsVisible": false
+    },
+    {
+      "name": "screenshot-taken",
+      "documentHasFocus": true,
+      "activeTag": "BUTTON",
+      "activeMarkup": "<button type=\"button\" class=\"ClanShipOperationsPanel_secondary__ZtYyM\" aria-describedby=\"clan-crew-dialogue-threshold-guard\" data-clan-crew-dialogue-ack=\"threshold-guard\">J’ai entendu</button>",
+      "focusedInsideOperations": true,
+      "operationsVisible": true,
+      "operationsInert": false,
+      "closeDisabled": false,
+      "settingsVisible": false
+    },
+    {
+      "name": "escape-sent",
+      "documentHasFocus": true,
+      "activeTag": "DIV",
+      "activeMarkup": "<div class=\"ClanShipInterior_world__jCaEg\" data-interior-world=\"true\" data-screen-focus=\"true\" tabindex=\"0\" aria-label=\"Pont explorable. Flèches ou ZQSD/WASD pour marcher, E pour interagir.\" style=\"width: 1440px; height: 800px; transform: translate(0px, -127.146px) scale(0.965278);\"><div class=\"ClanShipInterior_background__ed2dD\" aria-hidden=\"true\"><img alt=\"\" draggable=\"false\" decoding=\"async\" data-interior-background=\"hangar\" src=\"/game/clan-sh",
+      "focusedInsideOperations": false,
+      "operationsVisible": false,
+      "settingsVisible": false
+    },
+    {
+      "name": "plain-heading-clicked",
+      "documentHasFocus": true,
+      "activeTag": "BODY",
+      "activeMarkup": "<body><div hidden=\"\"><!--$--><!--/$--></div><!--$--><div><main class=\"game-shell\" data-game-shell=\"yautja-long-hunt\" data-high-contrast=\"false\" aria-label=\"Yautja : La Longue Chasse\" data-game-content-version=\"V112\" data-campaign-session=\"1\" data-campaign-location=\"clan-ship\" data-campaign-owner=\"2026-11-09T18:00:00.000Z\"><div></div><section class=\"screen panel-screen\"><div class=\"screen-safe\"><section class=\"ClanShipHub_hub__Xgxu5 ClanShipHub_hu",
+      "focusedInsideOperations": false,
+      "operationsVisible": true,
+      "operationsInert": false,
+      "closeDisabled": false,
+      "settingsVisible": false
+    },
+    {
+      "name": "escape-after-plain-heading",
+      "documentHasFocus": true,
+      "activeTag": "BODY",
+      "activeMarkup": "<body><div hidden=\"\"><!--$--><!--/$--></div><!--$--><div><main class=\"game-shell\" data-game-shell=\"yautja-long-hunt\" data-high-contrast=\"false\" aria-label=\"Yautja : La Longue Chasse\" data-game-content-version=\"V112\" data-campaign-session=\"1\" data-campaign-location=\"clan-ship\" data-campaign-owner=\"2026-11-09T18:00:00.000Z\"><div></div><section class=\"screen panel-screen\"><div class=\"screen-safe\"><section class=\"ClanShipHub_hub__Xgxu5 ClanShipHub_hu",
+      "focusedInsideOperations": false,
+      "operationsVisible": true,
+      "operationsInert": false,
+      "closeDisabled": false,
+      "settingsVisible": false
+    }
+  ],
+  "keyEvents": [
+    {
+      "name": "window",
+      "capture": true,
+      "key": "Escape",
+      "repeat": false,
+      "code": "Escape",
+      "defaultPrevented": false,
+      "target": "BUTTON",
+      "insidePanel": true
+    },
+    {
+      "name": "document",
+      "capture": true,
+      "key": "Escape",
+      "repeat": false,
+      "code": "Escape",
+      "defaultPrevented": false,
+      "target": "BUTTON",
+      "insidePanel": true
+    },
+    {
+      "name": "panel",
+      "capture": true,
+      "key": "Escape",
+      "repeat": false,
+      "code": "Escape",
+      "defaultPrevented": false,
+      "target": "BUTTON",
+      "insidePanel": true
+    },
+    {
+      "name": "panel",
+      "capture": false,
+      "key": "Escape",
+      "repeat": false,
+      "code": "Escape",
+      "defaultPrevented": false,
+      "target": "BUTTON",
+      "insidePanel": true
+    },
+    {
+      "name": "document",
+      "capture": false,
+      "key": "Escape",
+      "repeat": false,
+      "code": "Escape",
+      "defaultPrevented": true,
+      "target": "BUTTON",
+      "insidePanel": true
+    },
+    {
+      "name": "window",
+      "capture": true,
+      "key": "Escape",
+      "repeat": false,
+      "code": "Escape",
+      "defaultPrevented": false,
+      "target": "BODY",
+      "insidePanel": false
+    },
+    {
+      "name": "document",
+      "capture": true,
+      "key": "Escape",
+      "repeat": false,
+      "code": "Escape",
+      "defaultPrevented": false,
+      "target": "BODY",
+      "insidePanel": false
+    },
+    {
+      "name": "document",
+      "capture": false,
+      "key": "Escape",
+      "repeat": false,
+      "code": "Escape",
+      "defaultPrevented": false,
+      "target": "BODY",
+      "insidePanel": false
+    },
+    {
+      "name": "window",
+      "capture": false,
+      "key": "Escape",
+      "repeat": false,
+      "code": "Escape",
+      "defaultPrevented": false,
+      "target": "BODY",
+      "insidePanel": false
+    }
+  ],
+  "errors": []
+}

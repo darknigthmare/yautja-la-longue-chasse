@@ -1,0 +1,64 @@
+TAP version 13
+# Subtest: a grounded beginner sees the currently assigned grip action and a ground fallback before opening help
+ok 1 - a grounded beginner sees the currently assigned grip action and a ground fallback before opening help
+  ---
+  duration_ms: 9.275902
+  type: 'test'
+  ...
+# Subtest: an airborne exhausted grip takes priority over a nearby corpse and the trophy objective
+ok 2 - an airborne exhausted grip takes priority over a nearby corpse and the trophy objective
+  ---
+  duration_ms: 2.776678
+  type: 'test'
+  ...
+# Subtest: in-flight and attached help offer appropriate movement recovery without a remote corpse interaction
+ok 3 - in-flight and attached help offer appropriate movement recovery without a remote corpse interaction
+  ---
+  duration_ms: 1.618891
+  type: 'test'
+  ...
+# Subtest: keyboard and controller remaps reach both immediate objective cues and the full help
+ok 4 - keyboard and controller remaps reach both immediate objective cues and the full help
+  ---
+  duration_ms: 1.217577
+  type: 'test'
+  ...
+# Subtest: nearby-body help exposes pointer and keyboard access separately from direct trophy collection
+ok 5 - nearby-body help exposes pointer and keyboard access separately from direct trophy collection
+  ---
+  duration_ms: 1.523608
+  type: 'test'
+  ...
+# Subtest: closed preparation exposes actual critical tool and pack states while keeping all detailed guidance
+ok 6 - closed preparation exposes actual critical tool and pack states while keeping all detailed guidance
+  ---
+  duration_ms: 1.65703
+  type: 'test'
+  ...
+# Subtest: actual missing tool, worn tool, and both capacity dimensions are visible before a body gesture
+ok 7 - actual missing tool, worn tool, and both capacity dimensions are visible before a body gesture
+  ---
+  duration_ms: 2.653353
+  type: 'test'
+  ...
+# Subtest: the body-to-workshop sequence names irreversible stock, carrying limits, dropped items and four manual stages
+ok 8 - the body-to-workshop sequence names irreversible stock, carrying limits, dropped items and four manual stages
+  ---
+  duration_ms: 0.801129
+  type: 'test'
+  ...
+# Subtest: expanded help keeps native disclosure and distinct cancellation, preparation and extraction semantics
+ok 9 - expanded help keeps native disclosure and distinct cancellation, preparation and extraction semantics
+  ---
+  duration_ms: 0.871295
+  type: 'test'
+  ...
+1..9
+# tests 9
+# suites 0
+# pass 9
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 31.539826

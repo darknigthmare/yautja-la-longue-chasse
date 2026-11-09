@@ -1,0 +1,156 @@
+{
+  "startedAt": "2026-11-09T11:11:10.939Z",
+  "checkoutCommit": "b666504c7d7889ea4c8c083aa97c4909aab32560",
+  "scope": "Native GameClient on three viewport sizes, earned clan contacts, four read-only dialogue topics, one browser-played escort and reload. Not a full campaign, physical controller, native mobile or art certification.",
+  "fixture": {
+    "file": "initial-dialogue-fixture.json",
+    "sha256": "83a4da664433de4b68711d9edc694d153e9374c055ec7497290266f10c2fedd6",
+    "browserPlayed": false,
+    "description": "Synthetic adult campaign and prerequisite hunts/interior preparations produced through production reducers. No recruitment, space victory or conversation is pre-seeded.",
+    "clanMarks": 1912,
+    "completedContracts": [
+      "welcome-aboard",
+      "ship-training-circuit",
+      "field-jungle-survey",
+      "field-ice-route",
+      "ship-seal-check",
+      "ship-armory-audit",
+      "ship-triage-route"
+    ],
+    "recruitedNpcIds": [],
+    "operation": null
+  },
+  "sourceSha256": {
+    "app/game/ClanShipCrewDialogue.tsx": "f77aa725afac32749e5ece96bd3122c3d2ae0e52a47507130934099ec241c3e4",
+    "app/game/systems/clanShipDialogue.ts": "c50e94b1c69ab90c1b57fce380bfc00d0e9ea9921448fad45dd7fdfde14516fe",
+    "app/game/ClanShipOperationsPanel.tsx": "bd3aa8b425b65d5d5ec3a2c6b2d160f479fef8c33d6c1695d272dc230613b90b",
+    "app/game/ClanShipOperationsPanel.module.css": "7b9c01fda57eaf0badd4ec79ce909d5666abdac71069ffac9a9700f7b541427b",
+    "app/game/systems/clanShipOperations.ts": "6894c68f613af82c0e23aa96b4c7cccf0606dded8638d55e519d269f4a4f0746",
+    "app/game/systems/companionResidence.ts": "ed55b78c62e3c7b963a6b71f966fc3fccf126450c24ce561f540a1a563dd7d8e",
+    "app/game/systems/clanShipTrophyHearing.ts": "43012e17f797eb0d0fc63746e56678fffa05e18c68db230610de34b53b98323b",
+    "app/game/GameClient.tsx": "a38ec53a9ded4d6a8f0044c92e8fff71c199acd4d53aa1f4ceabbf53f4152343",
+    "app/game/save.ts": "86bc5391515bdb37038484951d6ee1de96fa6e32534352ea70bff05325e8e240",
+    "tests/helpers/clan-ship-trophy-hearing-fixture.mjs": "0bd4652c6ef45122e49b49fb3d5398968d151422583261b84c34b95db9105772",
+    "scripts/qa-clan-dialogue-browser-20261109.mjs": "547adb68d3e148699c64555e2a57f2820da01c53760f7b42b4132ed83a8db97d"
+  },
+  "browserExecuted": true,
+  "passed": false,
+  "checks": [
+    {
+      "context": "1440x1000",
+      "label": "ash-scar: greeting reads the real context without campaign writes",
+      "passed": true
+    },
+    {
+      "context": "1440x1000",
+      "label": "ash-scar: work reads the real context without campaign writes",
+      "passed": true
+    },
+    {
+      "context": "1440x1000",
+      "label": "ash-scar: agreement reads the real context without campaign writes",
+      "passed": true
+    },
+    {
+      "context": "1440x1000",
+      "label": "ash-scar: return reads the real context without campaign writes",
+      "passed": true
+    },
+    {
+      "context": "1440x1000",
+      "label": "Natural autosave retains the same open drawer and selected topic without progression changes",
+      "passed": true
+    }
+  ],
+  "contexts": [],
+  "errors": [],
+  "missingAssets": [],
+  "screenshots": [
+    "failure.png"
+  ],
+  "retention": [],
+  "focusObservation": "Default Playwright forced-focus emulation explicitly disabled; real Chromium target activation, no synthetic lifecycle events.",
+  "browserVersion": "154.0.8037.57",
+  "failure": "page.waitForFunction: Timeout 5000ms exceeded.\n    at checkRetention (/workspace/yautja-la-longue-chasse/scripts/qa-clan-dialogue-browser-20261109.mjs:179:20)\n    at async file:///workspace/yautja-la-longue-chasse/scripts/qa-clan-dialogue-browser-20261109.mjs:233:52",
+  "failureObservation": {
+    "url": "http://127.0.0.1:4194/",
+    "hidden": false,
+    "focused": true,
+    "docking": {
+      "version": 1,
+      "ownerCreatedAt": "2026-11-08T18:00:00.000Z",
+      "clanShipId": "avp-clan-mothership",
+      "personalShipId": "classic-predator-spaceship",
+      "status": "aboard",
+      "roomId": "entrainement"
+    },
+    "room": "entrainement",
+    "closeDisabled": false,
+    "drawers": [
+      {
+        "npcId": "ash-scar",
+        "open": true,
+        "topic": "work"
+      }
+    ],
+    "retention": {
+      "startedAt": 19497.5,
+      "phase": "manual-tab-interruption",
+      "samples": [
+        {
+          "elapsedMs": 0.30000000074505806,
+          "state": {
+            "phase": "autosave",
+            "connected": true,
+            "sameDrawer": true,
+            "open": true,
+            "topic": "work",
+            "busy": false,
+            "hidden": false,
+            "focused": true
+          }
+        },
+        {
+          "elapsedMs": 18122,
+          "state": {
+            "phase": "autosave",
+            "connected": true,
+            "sameDrawer": false,
+            "open": true,
+            "topic": null,
+            "busy": true,
+            "hidden": false,
+            "focused": true
+          }
+        },
+        {
+          "elapsedMs": 18194.200000000186,
+          "state": {
+            "phase": "autosave",
+            "connected": true,
+            "sameDrawer": true,
+            "open": true,
+            "topic": "work",
+            "busy": false,
+            "hidden": false,
+            "focused": true
+          }
+        },
+        {
+          "elapsedMs": 36654.800000000745,
+          "state": {
+            "phase": "manual-tab-interruption",
+            "connected": true,
+            "sameDrawer": true,
+            "open": true,
+            "topic": "work",
+            "busy": false,
+            "hidden": false,
+            "focused": true
+          }
+        }
+      ]
+    }
+  },
+  "completedAt": "2026-11-09T11:12:08.689Z"
+}

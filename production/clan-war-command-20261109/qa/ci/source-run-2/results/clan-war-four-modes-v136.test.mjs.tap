@@ -1,0 +1,76 @@
+TAP version 13
+# Subtest: Assault — V136 line hold has real deployed team, 15 AP cost and exactly three stationary ticks
+ok 1 - Assault — V136 line hold has real deployed team, 15 AP cost and exactly three stationary ticks
+  ---
+  duration_ms: 14.068433
+  type: 'test'
+  ...
+# Subtest: Assault — no distant fortification, free standing unit or invented AP
+ok 2 - Assault — no distant fortification, free standing unit or invented AP
+  ---
+  duration_ms: 0.5898
+  type: 'test'
+  ...
+# Subtest: Outer Ops — paid support preserves one true route/team and boosts only its final calculation
+ok 3 - Outer Ops — paid support preserves one true route/team and boosts only its final calculation
+  ---
+  duration_ms: 2.807325
+  type: 'test'
+  ...
+# Subtest: Outer Ops — support refuses expired time, no RAV, recall; no invalid archive replay
+ok 4 - Outer Ops — support refuses expired time, no RAV, recall; no invalid archive replay
+  ---
+  duration_ms: 1.787596
+  type: 'test'
+  ...
+# Subtest: Stealth — each mapped W3 region has physical cover reached by a legal source-ground path
+ok 5 - Stealth — each mapped W3 region has physical cover reached by a legal source-ground path
+  ---
+  duration_ms: 31.275088
+  type: 'test'
+  ...
+# Subtest: Stealth — hide occurs ON an unused authored cover and reduces alert only when physically unseen
+ok 6 - Stealth — hide occurs ON an unused authored cover and reduces alert only when physically unseen
+  ---
+  duration_ms: 4.383933
+  type: 'test'
+  ...
+# Subtest: Stealth — cover cannot make the hunter disappear in an adjacent guard's face
+ok 7 - Stealth — cover cannot make the hunter disappear in an adjacent guard's face
+  ---
+  duration_ms: 2.085606
+  type: 'test'
+  ...
+# Subtest: RTS — two-tick overwatch never fires unseen, and never consumes unused RAV
+ok 8 - RTS — two-tick overwatch never fires unseen, and never consumes unused RAV
+  ---
+  duration_ms: 14.692875
+  type: 'test'
+  ...
+# Subtest: RTS — one real enemy enters LOS and watch fires once after the AI response
+ok 9 - RTS — one real enemy enters LOS and watch fires once after the AI response
+  ---
+  duration_ms: 2.367251
+  type: 'test'
+  ...
+# Subtest: RTS — moving squad cancels its watch; no duplicate orders or free simultaneous fire
+ok 10 - RTS — moving squad cancels its watch; no duplicate orders or free simultaneous fire
+  ---
+  duration_ms: 2.623457
+  type: 'test'
+  ...
+# Subtest: Every V136 route remains scoped to the original planet, V6 units and V85 non-mutation
+ok 11 - Every V136 route remains scoped to the original planet, V6 units and V85 non-mutation
+  ---
+  duration_ms: 69.852127
+  type: 'test'
+  ...
+1..11
+# tests 11
+# suites 0
+# pass 11
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 160.019686

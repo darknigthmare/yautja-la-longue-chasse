@@ -1,0 +1,40 @@
+TAP version 13
+# Subtest: the registered back palm holds the physical body grip through both facings, three scales and every climb phase
+ok 1 - the registered back palm holds the physical body grip through both facings, three scales and every climb phase
+  ---
+  duration_ms: 79.909272
+  type: 'test'
+  ...
+# Subtest: native09 real pumped pendulum and next-vine snapshots retain aim/body/legs while closing the recorded rear-hand gap
+ok 2 - native09 real pumped pendulum and next-vine snapshots retain aim/body/legs while closing the recorded rear-hand gap
+  ---
+  duration_ms: 0.91487
+  type: 'test'
+  ...
+# Subtest: climbing weapon aim and authored front-hand offsets stay bit-identical when the back hand holds
+ok 3 - climbing weapon aim and authored front-hand offsets stay bit-identical when the back hand holds
+  ---
+  duration_ms: 4.489963
+  type: 'test'
+  ...
+# Subtest: a missing/invalid/remote attachment or a different native pose never fabricates a rear-hand grasp
+ok 4 - a missing/invalid/remote attachment or a different native pose never fabricates a rear-hand grasp
+  ---
+  duration_ms: 3.00296
+  type: 'test'
+  ...
+# Subtest: reloading the same physical grasp and simulation phase reconstructs the same back arm without a separate animation clock
+ok 5 - reloading the same physical grasp and simulation phase reconstructs the same back arm without a separate animation clock
+  ---
+  duration_ms: 0.818395
+  type: 'test'
+  ...
+1..5
+# tests 5
+# suites 0
+# pass 5
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 97.177761

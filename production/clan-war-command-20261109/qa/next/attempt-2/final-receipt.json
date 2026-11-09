@@ -1,0 +1,113 @@
+{
+  "schemaVersion": 1,
+  "passed": true,
+  "buildId": "kS-6-0gmSFRZVosfYvnq6",
+  "sourceCommitAtBuild": "8eaea6be2fd5e87241629e3b0ab175552fdc1968",
+  "browserVersion": "154.0.8037.57",
+  "nativeChecksPassed": 15,
+  "nativeChecksFailed": 0,
+  "originalScreenshotsOpened": 7,
+  "sourceBeforeAfterEqual": true,
+  "selectedSourceFiles": 20,
+  "servedScriptResponses": 30,
+  "servedUniqueScripts": 30,
+  "servedScriptsMatchActualBuild": true,
+  "campaignBeforeAfterBytesIdentical": true,
+  "campaignBytes": 10767,
+  "campaignSha256": "dc9e9d25e4de5c8c0d64c31141f403b49a4c2371e9274cc742450972e8067cb0",
+  "officialSaveParserPassedBothCaptures": true,
+  "nativeFreshRtsMissionId": "W115-OPS-0001",
+  "nativeFreshRtsTeams": 1,
+  "nativeFreshRtsRav": 119,
+  "scope": "Actual final production Next/GameClient; played Clan Ship route to council, grouped fourteen tools, focus/Escape hierarchy, desktop/mobile map and native single-team RTS launch through V2 archive. Only historical B05 adult/aboard prerequisites are seeded, disclosed in the raw report. No game callbacks, clocks, actor coordinates or outcomes patched.",
+  "fullCampaignPlayed": false,
+  "nativeRtsVictoryClaimed": false,
+  "physicalControllerTested": false,
+  "humanArtCertification": false,
+  "globalP0P1Closed": false,
+  "captureLimits": [
+    "The driver scrolls the war section to block:start; the existing fixed global HUD overlaps the council header in the viewport PNGs. The technical capture does not certify every header state or global artistic fidelity.",
+    "The RTS terrain is the existing9×6prototype; exposing its controls does not complete full source maps or cinematics."
+  ],
+  "previousAttempt": {
+    "path": "production/clan-war-command-20261109/qa/next/attempt-1/report.browser-run.json",
+    "scope": "Preserved failed QA measurement during0.18s entrance animation. Only the driver now waits for native element animations before unchanged geometry bounds; no app adjustment."
+  },
+  "files": [
+    {
+      "path": "production/clan-war-command-20261109/qa/next/attempt-2/report.browser-run.json",
+      "bytes": 18236,
+      "sha256": "47bff410fbf8ae7206f628120268c4166672d5d03814f4bb3787ef3c2840343a"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/next/attempt-2/report.json",
+      "bytes": 18802,
+      "sha256": "1e5a1359880b167712ee8130200e034cf0a7c141c059502814c603696f753e43"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/next/attempt-2/recipe-used.mjs",
+      "bytes": 14089,
+      "sha256": "37500cc457e8a98659edd28158db772f26987c5bd219852378e3b9999392896b"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/next/attempt-2/screenshot-inspection.json",
+      "bytes": 3049,
+      "sha256": "2e9cf037463bdcce54d4dbb860b3ebe507a6467ff87d7633ae497ada0488cf6e"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/next/attempt-2/save-validation.json",
+      "bytes": 1940,
+      "sha256": "358660b17730fcbef89b0ff89a2266eb860d4ef74461d044e289cc3ae136dbb9"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/next/attempt-2/campaign-before.json",
+      "bytes": 10767,
+      "sha256": "dc9e9d25e4de5c8c0d64c31141f403b49a4c2371e9274cc742450972e8067cb0"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/next/attempt-2/campaign-after.json",
+      "bytes": 10767,
+      "sha256": "dc9e9d25e4de5c8c0d64c31141f403b49a4c2371e9274cc742450972e8067cb0"
+    },
+    {
+      "path": "scripts/qa-clan-war-command-next-20261109.mjs",
+      "bytes": 14089,
+      "sha256": "37500cc457e8a98659edd28158db772f26987c5bd219852378e3b9999392896b"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/next/attempt-2/01-next-front-desktop.png",
+      "bytes": 571789,
+      "sha256": "99d4830fc50a1d738cf767514134d4b08ec9a1262b398d500db08ac766c36a4e"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/next/attempt-2/02-next-front-390.png",
+      "bytes": 219557,
+      "sha256": "deee0f90c3d99d08b7944aa6a56416b7f9a4dd326aa80f059f86bd1c7ad74aa8"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/next/attempt-2/03-next-orders-390.png",
+      "bytes": 144762,
+      "sha256": "5e49eca67b8bbc41d395af78f8b760ca3f41061c4cea7af6d5cd0b81d58a74ab"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/next/attempt-2/02-next-front-320.png",
+      "bytes": 185096,
+      "sha256": "85877d0177e712ed72a5aa9db80a5a62ce5fd47c11dcdc05e6df7483b931c608"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/next/attempt-2/03-next-orders-320.png",
+      "bytes": 123495,
+      "sha256": "c16dccc443e3d9661bc8e62fa3250a8dc433e14b214ca1f4486be306eba88aa3"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/next/attempt-2/04-next-mandates-desktop.png",
+      "bytes": 438968,
+      "sha256": "4f22a5f9829142b7d9bba7795d9094c4a882ba2046d205d123e8416f61b65d9c"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/next/attempt-2/05-next-rts-active.png",
+      "bytes": 108941,
+      "sha256": "91d933105be2900fd5c4b5911d83b093a2de8240180a163dc160858dd6bcc8ad"
+    }
+  ]
+}

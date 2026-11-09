@@ -1,0 +1,26 @@
+{
+  "inspectedAt": "2026-11-09T11:38:41.410367+00:00",
+  "method": "Opened original PNG files at their original screenshot dimensions with view_image; no generated reconstruction or montage used.",
+  "inspected": [
+    {
+      "file": "1440x1000-ash-scar-before-space.png",
+      "sha256": "52edb24eb7e6697f2e7cc7743b7a47aff2a49254149aa8ce9d9dfd1e92f4c904",
+      "observation": "The open optional conversation occupies the full width of its crew card, with four readable topic buttons and a separate Hunt disclosure. Contextual B05 testimony remains above the optional conversation."
+    },
+    {
+      "file": "390x844-black-suture-before-space.png",
+      "sha256": "55c1dbdb00ddde12597cab8a6ccf836e689997b7322b26d5f50230ef6f046507",
+      "observation": "The open Suture Noire conversation is readable in one narrow column; four topic buttons wrap vertically. A transient movement notification appears near the fixed footer."
+    },
+    {
+      "file": "320x740-star-watch-after-space.png",
+      "sha256": "c3729830ea241f3333221f89e47ac2ae44ed61677f183acc16bb6030d0786e31",
+      "observation": "The return topic visibly acknowledges the played escort victory. Text and buttons remain in the narrow card; a transient operation completion notification overlays the lower viewport."
+    }
+  ],
+  "limits": [
+    "Only these three of the 21 original PNG files were opened for visual inspection.",
+    "Screenshots are taken after the retention assertions, after closing the nested Hunt report; retention itself is established by passive DOM observations recorded in the browser report.",
+    "No claim of final character art, 1:1 visual fidelity, absence of transient notification overlap, physical mobile/controller operation, or frame rate."
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "reason": "Fresh sparse checkout exposed JSON imports compiled by esbuild outside the Node fs read tracer. Assertions and test selection unchanged.",
+  "added": [
+    {
+      "path": "public/game/assets/v18/enemy-trophy-gameplay/manifest.json",
+      "importer": "app/game/enemyTrophyGameplayV18.ts"
+    },
+    {
+      "path": "public/game/assets/v17/enemy-trophies/manifest.json",
+      "importer": "app/game/enemyTrophyVisualRegistry.ts"
+    },
+    {
+      "path": "public/game/assets/v16/franchise-trophies/manifest.json",
+      "importer": "app/game/franchiseTrophyRegistry.ts"
+    },
+    {
+      "path": "public/game/assets/v14/hunter-kit/manifest.json",
+      "importer": "app/game/hunterKitRegistry.ts"
+    },
+    {
+      "path": "public/game/assets/v28/sprite-review/manifest.json",
+      "importer": "app/pit-lab/PitAnimationLab.tsx"
+    }
+  ],
+  "files": 145,
+  "bytes": 201281912
+}

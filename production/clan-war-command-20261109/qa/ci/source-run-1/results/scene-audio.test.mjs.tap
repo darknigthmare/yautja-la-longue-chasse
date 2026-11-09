@@ -1,0 +1,70 @@
+TAP version 13
+# Subtest: repeated frame requests keep one ambience and every source routes through the effects bus
+ok 1 - repeated frame requests keep one ambience and every source routes through the effects bus
+  ---
+  duration_ms: 4.918379
+  type: 'test'
+  ...
+# Subtest: changing ambience retires the old loop once and natural endings disconnect every owned node
+ok 2 - changing ambience retires the old loop once and natural endings disconnect every owned node
+  ---
+  duration_ms: 2.387372
+  type: 'test'
+  ...
+# Subtest: pause immediately cancels short, delayed, live and fading voices
+ok 3 - pause immediately cancels short, delayed, live and fading voices
+  ---
+  duration_ms: 1.439812
+  type: 'test'
+  ...
+# Subtest: short sounds release their graph after normal completion without touching the ambience
+ok 4 - short sounds release their graph after normal completion without touching the ambience
+  ---
+  duration_ms: 1.340222
+  type: 'test'
+  ...
+# Subtest: a delayed autoplay unlock cannot resurrect a scene after pause or disposal
+ok 5 - a delayed autoplay unlock cannot resurrect a scene after pause or disposal
+  ---
+  duration_ms: 4.524425
+  type: 'test'
+  ...
+# Subtest: out-of-order unlocks permit only the latest ambience and never queue a blocked impact
+ok 6 - out-of-order unlocks permit only the latest ambience and never queue a blocked impact
+  ---
+  duration_ms: 0.7025
+  type: 'test'
+  ...
+# Subtest: duplicate pending unlocks still create a single persistent voice
+ok 7 - duplicate pending unlocks still create a single persistent voice
+  ---
+  duration_ms: 1.864112
+  type: 'test'
+  ...
+# Subtest: zero-gain layers allocate no sources and authored values stay bounded before scheduling
+ok 8 - zero-gain layers allocate no sources and authored values stay bounded before scheduling
+  ---
+  duration_ms: 0.57066
+  type: 'test'
+  ...
+# Subtest: scene sounds obey master/effects zero and mute without changing the player mix
+ok 9 - scene sounds obey master/effects zero and mute without changing the player mix
+  ---
+  duration_ms: 5.394618
+  type: 'test'
+  ...
+# Subtest: the owning engine pauses all scene voices and disposal releases every scene exactly once
+ok 10 - the owning engine pauses all scene voices and disposal releases every scene exactly once
+  ---
+  duration_ms: 6.300183
+  type: 'test'
+  ...
+1..10
+# tests 10
+# suites 0
+# pass 10
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 41.33946

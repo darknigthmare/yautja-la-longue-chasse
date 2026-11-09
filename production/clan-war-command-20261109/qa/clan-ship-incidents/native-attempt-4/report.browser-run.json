@@ -1,0 +1,6584 @@
+{
+  "startedAt": "2026-11-09T11:02:37.035Z",
+  "url": "http://127.0.0.1:3153",
+  "browserExecuted": true,
+  "passed": false,
+  "recipe": "scripts/qa-clan-ship-maintenance-20261109.mjs",
+  "recipeSha256": "2f0463d1874db5893295060430080051236a8335dbb5d3e781427b8d250ce569",
+  "scope": "Actual Next/GameClient, physical incident controls, resident reply and manual tactical order. No DOM markup, reducer, clock or result callback patched. Original controls are scrolled into view only to frame screenshots.",
+  "fixture": {
+    "source": "initial-save.json",
+    "sha256": "79bf10e01c39b026c733e4c83a69ad4582afaabd396dda96e49349cf53aecb78",
+    "disclosure": "Adult historical campaign, boarding/welcome/mandate, ship-seal-check, ship-armory-audit and previous space-screening earned through production reducers. Neither incident nor interception is completed or active initially. No field hunt/full campaign claimed."
+  },
+  "sourceBefore": {
+    "app/game/systems/clanShipMaintenanceDiagnostics.ts": "6fb73c72b7f11c424430f2739e76dd01993374967ac939fa3cf1c3bd5345f804",
+    "app/game/systems/clanShipCrewDialogue.ts": "70fe3a2eb0edd8e09721990ff16d8a6c1a07c7219d7c2891b04a8bd3827de58c",
+    "app/game/systems/clanShipIncidents.ts": "c2f52265dd043d1b6402a0353e4d181d7cdbef829a3cca500e6aa80d3d51e65d",
+    "app/game/systems/clanShipOperations.ts": "6894c68f613af82c0e23aa96b4c7cccf0606dded8638d55e519d269f4a4f0746",
+    "app/game/systems/clanShipSpaceEncounter.ts": "fc83b432bf63fb6ce006ae5b6460c67b389ec4ce113c72d527c9e749a6b0f3a0",
+    "app/game/ClanShipSpaceEncounter.tsx": "650f84cb12bed1d1e1d05079b96a9ed91e16e4803ef67047274772ff612cc43e",
+    "app/game/ClanShipSpaceEncounter.module.css": "85a54980581464dfb771dcadb157406b22367cd99f7d03cf585ef7ec93424cd0",
+    "app/game/ClanShipOperationsPanel.tsx": "bd3aa8b425b65d5d5ec3a2c6b2d160f479fef8c33d6c1695d272dc230613b90b",
+    "app/game/ClanShipIncidentPanel.tsx": "613ff7bc7ab296f75eb88afd084f3c39ecb0d3cc6bfcc3ab69680bfc492820cd",
+    "app/game/ClanShipIncidentScene.tsx": "115af50a38cf547fbaa2d4813fefe288860a2bee90012eb1c53b1d8548c2a998",
+    "app/game/GameClient.tsx": "a38ec53a9ded4d6a8f0044c92e8fff71c199acd4d53aa1f4ceabbf53f4152343"
+  },
+  "buildIdBefore": "nItYejsE7HSH4L0ykJM5K",
+  "checks": [
+    {
+      "name": "B01 physical clues, wrong isolator and archive revalidation preserve a safe route",
+      "passed": true
+    }
+  ],
+  "screenshots": [
+    {
+      "filename": "01-seal-revalidated.png",
+      "sha256": "4fd7ebc20858bd6af6310b11cf4fbaa818064854515b8a7615876aaaa4b4658c",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "framedOriginalControl": "[data-clan-incident=\"sealed-lot\"]",
+      "inspected": false
+    },
+    {
+      "filename": "02-guard-trust.png",
+      "sha256": "3a86b1ccde2d9cb283f21a2f268445ffe1f1c39228712052f4e123af776d8013",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "framedOriginalControl": null,
+      "inspected": false
+    }
+  ],
+  "commands": [
+    {
+      "id": "sealed-lot",
+      "type": "accept",
+      "branch": null,
+      "revision": 1,
+      "completed": null,
+      "rewardDelta": 0
+    },
+    {
+      "id": "sealed-lot",
+      "type": "inspect-witness",
+      "branch": null,
+      "revision": 2,
+      "completed": null,
+      "rewardDelta": 0
+    },
+    {
+      "id": "sealed-lot",
+      "type": "read-reference",
+      "branch": null,
+      "revision": 3,
+      "completed": null,
+      "rewardDelta": 0
+    },
+    {
+      "id": "sealed-lot",
+      "type": "isolate",
+      "branch": "A",
+      "revision": 4,
+      "completed": null,
+      "rewardDelta": 0
+    },
+    {
+      "id": "sealed-lot",
+      "type": "read-reference",
+      "branch": null,
+      "revision": 5,
+      "completed": null,
+      "rewardDelta": 0
+    },
+    {
+      "id": "sealed-lot",
+      "type": "isolate",
+      "branch": "B",
+      "revision": 6,
+      "completed": null,
+      "rewardDelta": 0
+    },
+    {
+      "id": "sealed-lot",
+      "type": "check-pressure",
+      "branch": null,
+      "revision": 7,
+      "completed": null,
+      "rewardDelta": 0
+    },
+    {
+      "id": "sealed-lot",
+      "type": "close-lot",
+      "branch": null,
+      "revision": 8,
+      "completed": 8,
+      "rewardDelta": 25
+    }
+  ],
+  "walking": [
+    {
+      "roomId": "hangar",
+      "x": 240,
+      "y": 645
+    },
+    {
+      "roomId": "hangar",
+      "x": 245.01,
+      "y": 645.04
+    },
+    {
+      "roomId": "hangar",
+      "x": 259.98,
+      "y": 645.17
+    },
+    {
+      "roomId": "hangar",
+      "x": 275.01,
+      "y": 645.3
+    },
+    {
+      "roomId": "hangar",
+      "x": 290.01,
+      "y": 645.43
+    },
+    {
+      "roomId": "hangar",
+      "x": 304.98,
+      "y": 645.56
+    },
+    {
+      "roomId": "hangar",
+      "x": 315,
+      "y": 645.65
+    },
+    {
+      "roomId": "hangar",
+      "x": 330,
+      "y": 645.78
+    },
+    {
+      "roomId": "hangar",
+      "x": 345,
+      "y": 645.91
+    },
+    {
+      "roomId": "hangar",
+      "x": 360,
+      "y": 646.03
+    },
+    {
+      "roomId": "hangar",
+      "x": 374.99,
+      "y": 646.16
+    },
+    {
+      "roomId": "hangar",
+      "x": 389.99,
+      "y": 646.29
+    },
+    {
+      "roomId": "hangar",
+      "x": 400.01,
+      "y": 646.38
+    },
+    {
+      "roomId": "hangar",
+      "x": 414.98,
+      "y": 646.51
+    },
+    {
+      "roomId": "hangar",
+      "x": 425,
+      "y": 646.59
+    },
+    {
+      "roomId": "hangar",
+      "x": 440,
+      "y": 646.72
+    },
+    {
+      "roomId": "hangar",
+      "x": 455,
+      "y": 646.85
+    },
+    {
+      "roomId": "hangar",
+      "x": 469.97,
+      "y": 646.98
+    },
+    {
+      "roomId": "hangar",
+      "x": 479.99,
+      "y": 647.07
+    },
+    {
+      "roomId": "hangar",
+      "x": 494.99,
+      "y": 647.2
+    },
+    {
+      "roomId": "hangar",
+      "x": 509.99,
+      "y": 647.33
+    },
+    {
+      "roomId": "hangar",
+      "x": 529.97,
+      "y": 647.5
+    },
+    {
+      "roomId": "hangar",
+      "x": 549.98,
+      "y": 647.67
+    },
+    {
+      "roomId": "hangar",
+      "x": 560,
+      "y": 647.76
+    },
+    {
+      "roomId": "hangar",
+      "x": 575,
+      "y": 647.89
+    },
+    {
+      "roomId": "hangar",
+      "x": 590,
+      "y": 648.02
+    },
+    {
+      "roomId": "hangar",
+      "x": 604.97,
+      "y": 648.15
+    },
+    {
+      "roomId": "hangar",
+      "x": 619.97,
+      "y": 648.28
+    },
+    {
+      "roomId": "hangar",
+      "x": 629.99,
+      "y": 648.36
+    },
+    {
+      "roomId": "hangar",
+      "x": 644.98,
+      "y": 648.49
+    },
+    {
+      "roomId": "hangar",
+      "x": 659.98,
+      "y": 648.62
+    },
+    {
+      "roomId": "hangar",
+      "x": 674.95,
+      "y": 648.75
+    },
+    {
+      "roomId": "hangar",
+      "x": 684.97,
+      "y": 648.84
+    },
+    {
+      "roomId": "hangar",
+      "x": 699.97,
+      "y": 648.97
+    },
+    {
+      "roomId": "hangar",
+      "x": 714.97,
+      "y": 649.09
+    },
+    {
+      "roomId": "hangar",
+      "x": 734.95,
+      "y": 649.27
+    },
+    {
+      "roomId": "hangar",
+      "x": 744.97,
+      "y": 649.35
+    },
+    {
+      "roomId": "hangar",
+      "x": 759.94,
+      "y": 649.48
+    },
+    {
+      "roomId": "hangar",
+      "x": 769.96,
+      "y": 649.57
+    },
+    {
+      "roomId": "hangar",
+      "x": 784.96,
+      "y": 649.7
+    },
+    {
+      "roomId": "hangar",
+      "x": 794.98,
+      "y": 649.78
+    },
+    {
+      "roomId": "hangar",
+      "x": 809.95,
+      "y": 649.91
+    },
+    {
+      "roomId": "hangar",
+      "x": 819.97,
+      "y": 650
+    },
+    {
+      "roomId": "hangar",
+      "x": 829.88,
+      "y": 648.76
+    },
+    {
+      "roomId": "hangar",
+      "x": 839.82,
+      "y": 647.52
+    },
+    {
+      "roomId": "hangar",
+      "x": 844.8,
+      "y": 646.9
+    },
+    {
+      "roomId": "hangar",
+      "x": 859.65,
+      "y": 645.04
+    },
+    {
+      "roomId": "hangar",
+      "x": 869.59,
+      "y": 643.8
+    },
+    {
+      "roomId": "hangar",
+      "x": 884.45,
+      "y": 641.94
+    },
+    {
+      "roomId": "hangar",
+      "x": 894.39,
+      "y": 640.7
+    },
+    {
+      "roomId": "hangar",
+      "x": 909.27,
+      "y": 638.84
+    },
+    {
+      "roomId": "hangar",
+      "x": 919.22,
+      "y": 637.6
+    },
+    {
+      "roomId": "hangar",
+      "x": 934.07,
+      "y": 635.74
+    },
+    {
+      "roomId": "hangar",
+      "x": 948.95,
+      "y": 633.88
+    },
+    {
+      "roomId": "hangar",
+      "x": 963.84,
+      "y": 632.02
+    },
+    {
+      "roomId": "hangar",
+      "x": 978.72,
+      "y": 630.16
+    },
+    {
+      "roomId": "hangar",
+      "x": 993.61,
+      "y": 628.3
+    },
+    {
+      "roomId": "hangar",
+      "x": 1008.49,
+      "y": 626.44
+    },
+    {
+      "roomId": "hangar",
+      "x": 1023.38,
+      "y": 624.58
+    },
+    {
+      "roomId": "hangar",
+      "x": 1033.32,
+      "y": 623.33
+    },
+    {
+      "roomId": "hangar",
+      "x": 1048.17,
+      "y": 621.48
+    },
+    {
+      "roomId": "hangar",
+      "x": 1058.12,
+      "y": 620.24
+    },
+    {
+      "roomId": "hangar",
+      "x": 1060,
+      "y": 620
+    },
+    {
+      "roomId": "hangar",
+      "x": 1054.99,
+      "y": 620.08
+    },
+    {
+      "roomId": "hangar",
+      "x": 1039.99,
+      "y": 620.32
+    },
+    {
+      "roomId": "hangar",
+      "x": 1024.99,
+      "y": 620.56
+    },
+    {
+      "roomId": "hangar",
+      "x": 1010,
+      "y": 620.8
+    },
+    {
+      "roomId": "hangar",
+      "x": 999.98,
+      "y": 620.97
+    },
+    {
+      "roomId": "hangar",
+      "x": 985.01,
+      "y": 621.21
+    },
+    {
+      "roomId": "hangar",
+      "x": 974.99,
+      "y": 621.37
+    },
+    {
+      "roomId": "hangar",
+      "x": 959.99,
+      "y": 621.61
+    },
+    {
+      "roomId": "hangar",
+      "x": 945.02,
+      "y": 621.85
+    },
+    {
+      "roomId": "hangar",
+      "x": 930,
+      "y": 622.09
+    },
+    {
+      "roomId": "hangar",
+      "x": 915,
+      "y": 622.33
+    },
+    {
+      "roomId": "hangar",
+      "x": 895.02,
+      "y": 622.66
+    },
+    {
+      "roomId": "hangar",
+      "x": 885,
+      "y": 622.82
+    },
+    {
+      "roomId": "hangar",
+      "x": 870.03,
+      "y": 623.06
+    },
+    {
+      "roomId": "hangar",
+      "x": 855.01,
+      "y": 623.3
+    },
+    {
+      "roomId": "hangar",
+      "x": 840.04,
+      "y": 623.54
+    },
+    {
+      "roomId": "hangar",
+      "x": 830.02,
+      "y": 623.7
+    },
+    {
+      "roomId": "hangar",
+      "x": 815.02,
+      "y": 623.94
+    },
+    {
+      "roomId": "hangar",
+      "x": 800.02,
+      "y": 624.18
+    },
+    {
+      "roomId": "hangar",
+      "x": 785.06,
+      "y": 624.43
+    },
+    {
+      "roomId": "hangar",
+      "x": 775.04,
+      "y": 624.59
+    },
+    {
+      "roomId": "hangar",
+      "x": 760.04,
+      "y": 624.83
+    },
+    {
+      "roomId": "hangar",
+      "x": 750.02,
+      "y": 624.99
+    },
+    {
+      "roomId": "hangar",
+      "x": 735.05,
+      "y": 625.23
+    },
+    {
+      "roomId": "hangar",
+      "x": 720.05,
+      "y": 625.47
+    },
+    {
+      "roomId": "hangar",
+      "x": 710.04,
+      "y": 625.63
+    },
+    {
+      "roomId": "hangar",
+      "x": 695.04,
+      "y": 625.87
+    },
+    {
+      "roomId": "hangar",
+      "x": 680.07,
+      "y": 626.11
+    },
+    {
+      "roomId": "hangar",
+      "x": 670.05,
+      "y": 626.28
+    },
+    {
+      "roomId": "hangar",
+      "x": 655.05,
+      "y": 626.52
+    },
+    {
+      "roomId": "hangar",
+      "x": 640.05,
+      "y": 626.76
+    },
+    {
+      "roomId": "hangar",
+      "x": 625.06,
+      "y": 627
+    },
+    {
+      "roomId": "hangar",
+      "x": 610.06,
+      "y": 627.24
+    },
+    {
+      "roomId": "hangar",
+      "x": 595.06,
+      "y": 627.48
+    },
+    {
+      "roomId": "hangar",
+      "x": 580.06,
+      "y": 627.72
+    },
+    {
+      "roomId": "hangar",
+      "x": 565.06,
+      "y": 627.97
+    },
+    {
+      "roomId": "hangar",
+      "x": 550.07,
+      "y": 628.21
+    },
+    {
+      "roomId": "hangar",
+      "x": 535.07,
+      "y": 628.45
+    },
+    {
+      "roomId": "hangar",
+      "x": 520.07,
+      "y": 628.69
+    },
+    {
+      "roomId": "hangar",
+      "x": 505.07,
+      "y": 628.93
+    },
+    {
+      "roomId": "hangar",
+      "x": 490.07,
+      "y": 629.17
+    },
+    {
+      "roomId": "hangar",
+      "x": 475.08,
+      "y": 629.41
+    },
+    {
+      "roomId": "hangar",
+      "x": 460.08,
+      "y": 629.66
+    },
+    {
+      "roomId": "hangar",
+      "x": 445.08,
+      "y": 629.9
+    },
+    {
+      "roomId": "hangar",
+      "x": 430.08,
+      "y": 630.14
+    },
+    {
+      "roomId": "hangar",
+      "x": 415.08,
+      "y": 630.38
+    },
+    {
+      "roomId": "hangar",
+      "x": 400.12,
+      "y": 630.62
+    },
+    {
+      "roomId": "hangar",
+      "x": 390.1,
+      "y": 630.78
+    },
+    {
+      "roomId": "hangar",
+      "x": 375.13,
+      "y": 631.02
+    },
+    {
+      "roomId": "hangar",
+      "x": 355.09,
+      "y": 631.35
+    },
+    {
+      "roomId": "hangar",
+      "x": 340.12,
+      "y": 631.59
+    },
+    {
+      "roomId": "hangar",
+      "x": 325.1,
+      "y": 631.83
+    },
+    {
+      "roomId": "hangar",
+      "x": 305.12,
+      "y": 632.15
+    },
+    {
+      "roomId": "hangar",
+      "x": 290.12,
+      "y": 632.39
+    },
+    {
+      "roomId": "hangar",
+      "x": 280.1,
+      "y": 632.55
+    },
+    {
+      "roomId": "hangar",
+      "x": 255.14,
+      "y": 632.95
+    },
+    {
+      "roomId": "hangar",
+      "x": 240.15,
+      "y": 633.2
+    },
+    {
+      "roomId": "hangar",
+      "x": 225.15,
+      "y": 633.44
+    },
+    {
+      "roomId": "hangar",
+      "x": 205.14,
+      "y": 633.76
+    },
+    {
+      "roomId": "hangar",
+      "x": 190.14,
+      "y": 634
+    },
+    {
+      "roomId": "hangar",
+      "x": 170.17,
+      "y": 634.32
+    },
+    {
+      "roomId": "hangar",
+      "x": 155.17,
+      "y": 634.56
+    },
+    {
+      "roomId": "hangar",
+      "x": 140.17,
+      "y": 634.8
+    },
+    {
+      "roomId": "soins",
+      "x": 1200,
+      "y": 645
+    },
+    {
+      "roomId": "soins",
+      "x": 1195.02,
+      "y": 644.95
+    },
+    {
+      "roomId": "soins",
+      "x": 1180.02,
+      "y": 644.81
+    },
+    {
+      "roomId": "soins",
+      "x": 1165.02,
+      "y": 644.67
+    },
+    {
+      "roomId": "soins",
+      "x": 1155,
+      "y": 644.58
+    },
+    {
+      "roomId": "soins",
+      "x": 1140,
+      "y": 644.44
+    },
+    {
+      "roomId": "soins",
+      "x": 1125,
+      "y": 644.3
+    },
+    {
+      "roomId": "soins",
+      "x": 1100.01,
+      "y": 644.07
+    },
+    {
+      "roomId": "soins",
+      "x": 1089.99,
+      "y": 643.97
+    },
+    {
+      "roomId": "soins",
+      "x": 1070.05,
+      "y": 643.79
+    },
+    {
+      "roomId": "soins",
+      "x": 1055.05,
+      "y": 643.65
+    },
+    {
+      "roomId": "soins",
+      "x": 1040.05,
+      "y": 643.51
+    },
+    {
+      "roomId": "soins",
+      "x": 1030.03,
+      "y": 643.41
+    },
+    {
+      "roomId": "soins",
+      "x": 1015.03,
+      "y": 643.27
+    },
+    {
+      "roomId": "soins",
+      "x": 1000.03,
+      "y": 643.13
+    },
+    {
+      "roomId": "soins",
+      "x": 980.02,
+      "y": 642.95
+    },
+    {
+      "roomId": "soins",
+      "x": 965.02,
+      "y": 642.81
+    },
+    {
+      "roomId": "soins",
+      "x": 950.02,
+      "y": 642.67
+    },
+    {
+      "roomId": "soins",
+      "x": 940,
+      "y": 642.57
+    },
+    {
+      "roomId": "soins",
+      "x": 915.01,
+      "y": 642.34
+    },
+    {
+      "roomId": "soins",
+      "x": 895,
+      "y": 642.15
+    },
+    {
+      "roomId": "soins",
+      "x": 884.98,
+      "y": 642.06
+    },
+    {
+      "roomId": "soins",
+      "x": 864.97,
+      "y": 641.87
+    },
+    {
+      "roomId": "soins",
+      "x": 839.99,
+      "y": 641.64
+    },
+    {
+      "roomId": "soins",
+      "x": 824.99,
+      "y": 641.5
+    },
+    {
+      "roomId": "soins",
+      "x": 809.99,
+      "y": 641.36
+    },
+    {
+      "roomId": "soins",
+      "x": 785,
+      "y": 641.13
+    },
+    {
+      "roomId": "soins",
+      "x": 770,
+      "y": 640.99
+    },
+    {
+      "roomId": "soins",
+      "x": 759.98,
+      "y": 640.9
+    },
+    {
+      "roomId": "soins",
+      "x": 734.99,
+      "y": 640.66
+    },
+    {
+      "roomId": "soins",
+      "x": 710,
+      "y": 640.43
+    },
+    {
+      "roomId": "soins",
+      "x": 689.99,
+      "y": 640.24
+    },
+    {
+      "roomId": "soins",
+      "x": 670.01,
+      "y": 640.06
+    },
+    {
+      "roomId": "soins",
+      "x": 650,
+      "y": 639.87
+    },
+    {
+      "roomId": "soins",
+      "x": 635,
+      "y": 639.73
+    },
+    {
+      "roomId": "soins",
+      "x": 624.99,
+      "y": 639.64
+    },
+    {
+      "roomId": "soins",
+      "x": 609.99,
+      "y": 639.5
+    },
+    {
+      "roomId": "soins",
+      "x": 594.99,
+      "y": 639.36
+    },
+    {
+      "roomId": "soins",
+      "x": 575.01,
+      "y": 639.17
+    },
+    {
+      "roomId": "soins",
+      "x": 550.02,
+      "y": 638.94
+    },
+    {
+      "roomId": "soins",
+      "x": 540,
+      "y": 638.84
+    },
+    {
+      "roomId": "soins",
+      "x": 520.02,
+      "y": 638.66
+    },
+    {
+      "roomId": "soins",
+      "x": 510,
+      "y": 638.56
+    },
+    {
+      "roomId": "soins",
+      "x": 490.02,
+      "y": 638.38
+    },
+    {
+      "roomId": "soins",
+      "x": 480,
+      "y": 638.28
+    },
+    {
+      "roomId": "soins",
+      "x": 465,
+      "y": 638.14
+    },
+    {
+      "roomId": "soins",
+      "x": 450,
+      "y": 638
+    },
+    {
+      "roomId": "soins",
+      "x": 430.02,
+      "y": 637.82
+    },
+    {
+      "roomId": "soins",
+      "x": 410.01,
+      "y": 637.63
+    },
+    {
+      "roomId": "soins",
+      "x": 395.02,
+      "y": 637.49
+    },
+    {
+      "roomId": "soins",
+      "x": 375.04,
+      "y": 637.3
+    },
+    {
+      "roomId": "soins",
+      "x": 355,
+      "y": 637.12
+    },
+    {
+      "roomId": "soins",
+      "x": 340,
+      "y": 636.98
+    },
+    {
+      "roomId": "soins",
+      "x": 319.99,
+      "y": 636.79
+    },
+    {
+      "roomId": "soins",
+      "x": 304.99,
+      "y": 636.65
+    },
+    {
+      "roomId": "soins",
+      "x": 289.99,
+      "y": 636.51
+    },
+    {
+      "roomId": "soins",
+      "x": 274.99,
+      "y": 636.37
+    },
+    {
+      "roomId": "soins",
+      "x": 259.99,
+      "y": 636.23
+    },
+    {
+      "roomId": "soins",
+      "x": 244.99,
+      "y": 636.09
+    },
+    {
+      "roomId": "soins",
+      "x": 229.99,
+      "y": 635.95
+    },
+    {
+      "roomId": "soins",
+      "x": 214.99,
+      "y": 635.81
+    },
+    {
+      "roomId": "soins",
+      "x": 199.96,
+      "y": 635.67
+    },
+    {
+      "roomId": "soins",
+      "x": 184.96,
+      "y": 635.53
+    },
+    {
+      "roomId": "soins",
+      "x": 164.99,
+      "y": 635.35
+    },
+    {
+      "roomId": "soins",
+      "x": 154.97,
+      "y": 635.25
+    },
+    {
+      "roomId": "soins",
+      "x": 139.97,
+      "y": 635.11
+    },
+    {
+      "roomId": "trophees",
+      "x": 1200,
+      "y": 645
+    },
+    {
+      "roomId": "trophees",
+      "x": 1195.02,
+      "y": 644.95
+    },
+    {
+      "roomId": "trophees",
+      "x": 1180.02,
+      "y": 644.81
+    },
+    {
+      "roomId": "trophees",
+      "x": 1170,
+      "y": 644.72
+    },
+    {
+      "roomId": "trophees",
+      "x": 1155,
+      "y": 644.58
+    },
+    {
+      "roomId": "trophees",
+      "x": 1140,
+      "y": 644.44
+    },
+    {
+      "roomId": "trophees",
+      "x": 1125,
+      "y": 644.3
+    },
+    {
+      "roomId": "trophees",
+      "x": 1100.01,
+      "y": 644.07
+    },
+    {
+      "roomId": "trophees",
+      "x": 1089.99,
+      "y": 643.97
+    },
+    {
+      "roomId": "trophees",
+      "x": 1075,
+      "y": 643.83
+    },
+    {
+      "roomId": "trophees",
+      "x": 1060,
+      "y": 643.69
+    },
+    {
+      "roomId": "trophees",
+      "x": 1045.03,
+      "y": 643.55
+    },
+    {
+      "roomId": "trophees",
+      "x": 1025.02,
+      "y": 643.37
+    },
+    {
+      "roomId": "trophees",
+      "x": 1015,
+      "y": 643.27
+    },
+    {
+      "roomId": "trophees",
+      "x": 994.99,
+      "y": 643.09
+    },
+    {
+      "roomId": "trophees",
+      "x": 979.99,
+      "y": 642.95
+    },
+    {
+      "roomId": "trophees",
+      "x": 964.99,
+      "y": 642.81
+    },
+    {
+      "roomId": "trophees",
+      "x": 954.97,
+      "y": 642.71
+    },
+    {
+      "roomId": "trophees",
+      "x": 939.97,
+      "y": 642.57
+    },
+    {
+      "roomId": "trophees",
+      "x": 924.97,
+      "y": 642.43
+    },
+    {
+      "roomId": "trophees",
+      "x": 904.96,
+      "y": 642.25
+    },
+    {
+      "roomId": "trophees",
+      "x": 889.96,
+      "y": 642.11
+    },
+    {
+      "roomId": "trophees",
+      "x": 874.96,
+      "y": 641.97
+    },
+    {
+      "roomId": "trophees",
+      "x": 859.96,
+      "y": 641.83
+    },
+    {
+      "roomId": "trophees",
+      "x": 844.97,
+      "y": 641.69
+    },
+    {
+      "roomId": "trophees",
+      "x": 829.97,
+      "y": 641.55
+    },
+    {
+      "roomId": "trophees",
+      "x": 814.97,
+      "y": 641.41
+    },
+    {
+      "roomId": "trophees",
+      "x": 799.97,
+      "y": 641.27
+    },
+    {
+      "roomId": "trophees",
+      "x": 774.98,
+      "y": 641.04
+    },
+    {
+      "roomId": "trophees",
+      "x": 754.97,
+      "y": 640.85
+    },
+    {
+      "roomId": "trophees",
+      "x": 734.99,
+      "y": 640.66
+    },
+    {
+      "roomId": "trophees",
+      "x": 719.99,
+      "y": 640.52
+    },
+    {
+      "roomId": "trophees",
+      "x": 699.98,
+      "y": 640.34
+    },
+    {
+      "roomId": "trophees",
+      "x": 685.01,
+      "y": 640.2
+    },
+    {
+      "roomId": "trophees",
+      "x": 674.99,
+      "y": 640.1
+    },
+    {
+      "roomId": "trophees",
+      "x": 654.98,
+      "y": 639.92
+    },
+    {
+      "roomId": "trophees",
+      "x": 639.98,
+      "y": 639.78
+    },
+    {
+      "roomId": "trophees",
+      "x": 620.01,
+      "y": 639.59
+    },
+    {
+      "roomId": "trophees",
+      "x": 605.01,
+      "y": 639.45
+    },
+    {
+      "roomId": "trophees",
+      "x": 590.01,
+      "y": 639.31
+    },
+    {
+      "roomId": "trophees",
+      "x": 570,
+      "y": 639.12
+    },
+    {
+      "roomId": "trophees",
+      "x": 545.01,
+      "y": 638.89
+    },
+    {
+      "roomId": "trophees",
+      "x": 530.01,
+      "y": 638.75
+    },
+    {
+      "roomId": "trophees",
+      "x": 515.04,
+      "y": 638.61
+    },
+    {
+      "roomId": "trophees",
+      "x": 500.04,
+      "y": 638.47
+    },
+    {
+      "roomId": "trophees",
+      "x": 485.04,
+      "y": 638.33
+    },
+    {
+      "roomId": "trophees",
+      "x": 470.04,
+      "y": 638.19
+    },
+    {
+      "roomId": "trophees",
+      "x": 450.06,
+      "y": 638
+    },
+    {
+      "roomId": "trophees",
+      "x": 435.06,
+      "y": 637.86
+    },
+    {
+      "roomId": "trophees",
+      "x": 420.06,
+      "y": 637.72
+    },
+    {
+      "roomId": "trophees",
+      "x": 405.06,
+      "y": 637.58
+    },
+    {
+      "roomId": "trophees",
+      "x": 390.07,
+      "y": 637.44
+    },
+    {
+      "roomId": "trophees",
+      "x": 365.08,
+      "y": 637.21
+    },
+    {
+      "roomId": "trophees",
+      "x": 350.08,
+      "y": 637.07
+    },
+    {
+      "roomId": "trophees",
+      "x": 335.08,
+      "y": 636.93
+    },
+    {
+      "roomId": "trophees",
+      "x": 320.08,
+      "y": 636.79
+    },
+    {
+      "roomId": "trophees",
+      "x": 295.09,
+      "y": 636.56
+    },
+    {
+      "roomId": "trophees",
+      "x": 280.09,
+      "y": 636.42
+    },
+    {
+      "roomId": "trophees",
+      "x": 265.09,
+      "y": 636.28
+    },
+    {
+      "roomId": "trophees",
+      "x": 250.09,
+      "y": 636.14
+    },
+    {
+      "roomId": "trophees",
+      "x": 225.1,
+      "y": 635.91
+    },
+    {
+      "roomId": "trophees",
+      "x": 200.11,
+      "y": 635.67
+    },
+    {
+      "roomId": "trophees",
+      "x": 185.11,
+      "y": 635.53
+    },
+    {
+      "roomId": "trophees",
+      "x": 175.09,
+      "y": 635.44
+    },
+    {
+      "roomId": "trophees",
+      "x": 160.1,
+      "y": 635.3
+    },
+    {
+      "roomId": "trophees",
+      "x": 145.1,
+      "y": 635.16
+    },
+    {
+      "roomId": "archives",
+      "x": 1200,
+      "y": 645
+    },
+    {
+      "roomId": "archives",
+      "x": 1185,
+      "y": 645
+    },
+    {
+      "roomId": "archives",
+      "x": 1164.99,
+      "y": 645
+    },
+    {
+      "roomId": "archives",
+      "x": 1149.99,
+      "y": 645
+    },
+    {
+      "roomId": "archives",
+      "x": 1134.99,
+      "y": 645
+    },
+    {
+      "roomId": "archives",
+      "x": 1119.99,
+      "y": 645
+    },
+    {
+      "roomId": "archives",
+      "x": 1109.97,
+      "y": 645
+    },
+    {
+      "roomId": "archives",
+      "x": 1094.97,
+      "y": 645
+    },
+    {
+      "roomId": "archives",
+      "x": 1069.98,
+      "y": 645
+    },
+    {
+      "roomId": "archives",
+      "x": 1050,
+      "y": 645
+    },
+    {
+      "roomId": "archives",
+      "x": 1039.98,
+      "y": 645
+    },
+    {
+      "roomId": "archives",
+      "x": 1024.98,
+      "y": 645
+    },
+    {
+      "roomId": "archives",
+      "x": 1014.96,
+      "y": 645
+    },
+    {
+      "roomId": "archives",
+      "x": 999.99,
+      "y": 645
+    },
+    {
+      "roomId": "archives",
+      "x": 989.97,
+      "y": 645
+    },
+    {
+      "roomId": "archives",
+      "x": 974.97,
+      "y": 645
+    },
+    {
+      "roomId": "archives",
+      "x": 959.97,
+      "y": 645
+    },
+    {
+      "roomId": "archives",
+      "x": 949.95,
+      "y": 645
+    },
+    {
+      "roomId": "archives",
+      "x": 934.98,
+      "y": 645
+    },
+    {
+      "roomId": "archives",
+      "x": 919.98,
+      "y": 645
+    },
+    {
+      "roomId": "archives",
+      "x": 909.96,
+      "y": 645
+    },
+    {
+      "roomId": "archives",
+      "x": 894.96,
+      "y": 645
+    },
+    {
+      "roomId": "archives",
+      "x": 879.96,
+      "y": 645
+    },
+    {
+      "roomId": "archives",
+      "x": 864.99,
+      "y": 645
+    },
+    {
+      "roomId": "archives",
+      "x": 854.97,
+      "y": 645
+    },
+    {
+      "roomId": "archives",
+      "x": 834.96,
+      "y": 645
+    },
+    {
+      "roomId": "archives",
+      "x": 819.96,
+      "y": 645
+    },
+    {
+      "roomId": "archives",
+      "x": 804.96,
+      "y": 645
+    },
+    {
+      "roomId": "archives",
+      "x": 790,
+      "y": 645
+    },
+    {
+      "roomId": "archives",
+      "x": 795.01,
+      "y": 644.9
+    },
+    {
+      "roomId": "archives",
+      "x": 809.98,
+      "y": 644.62
+    },
+    {
+      "roomId": "archives",
+      "x": 825,
+      "y": 644.33
+    },
+    {
+      "roomId": "archives",
+      "x": 840,
+      "y": 644.04
+    },
+    {
+      "roomId": "archives",
+      "x": 855,
+      "y": 643.75
+    },
+    {
+      "roomId": "archives",
+      "x": 874.97,
+      "y": 643.37
+    },
+    {
+      "roomId": "archives",
+      "x": 890,
+      "y": 643.08
+    },
+    {
+      "roomId": "archives",
+      "x": 904.97,
+      "y": 642.8
+    },
+    {
+      "roomId": "archives",
+      "x": 924.98,
+      "y": 642.41
+    },
+    {
+      "roomId": "archives",
+      "x": 944.95,
+      "y": 642.03
+    },
+    {
+      "roomId": "archives",
+      "x": 954.97,
+      "y": 641.84
+    },
+    {
+      "roomId": "archives",
+      "x": 969.97,
+      "y": 641.55
+    },
+    {
+      "roomId": "archives",
+      "x": 984.96,
+      "y": 641.27
+    },
+    {
+      "roomId": "archives",
+      "x": 999.96,
+      "y": 640.98
+    },
+    {
+      "roomId": "archives",
+      "x": 1014.96,
+      "y": 640.69
+    },
+    {
+      "roomId": "archives",
+      "x": 1029.93,
+      "y": 640.4
+    },
+    {
+      "roomId": "archives",
+      "x": 1039.94,
+      "y": 640.21
+    },
+    {
+      "roomId": "archives",
+      "x": 1054.94,
+      "y": 639.92
+    },
+    {
+      "roomId": "archives",
+      "x": 1069.94,
+      "y": 639.64
+    },
+    {
+      "roomId": "archives",
+      "x": 1084.94,
+      "y": 639.35
+    },
+    {
+      "roomId": "archives",
+      "x": 1104.94,
+      "y": 638.97
+    },
+    {
+      "roomId": "archives",
+      "x": 1119.91,
+      "y": 638.68
+    },
+    {
+      "roomId": "archives",
+      "x": 1134.94,
+      "y": 638.39
+    },
+    {
+      "roomId": "archives",
+      "x": 1149.9,
+      "y": 638.11
+    },
+    {
+      "roomId": "archives",
+      "x": 1159.92,
+      "y": 637.91
+    },
+    {
+      "roomId": "archives",
+      "x": 1174.92,
+      "y": 637.63
+    },
+    {
+      "roomId": "archives",
+      "x": 1189.92,
+      "y": 637.34
+    },
+    {
+      "roomId": "archives",
+      "x": 1204.88,
+      "y": 637.05
+    },
+    {
+      "roomId": "archives",
+      "x": 1214.9,
+      "y": 636.86
+    },
+    {
+      "roomId": "archives",
+      "x": 1229.9,
+      "y": 636.57
+    },
+    {
+      "roomId": "archives",
+      "x": 1239.92,
+      "y": 636.38
+    },
+    {
+      "roomId": "archives",
+      "x": 1254.88,
+      "y": 636.09
+    },
+    {
+      "roomId": "archives",
+      "x": 1264.9,
+      "y": 635.9
+    },
+    {
+      "roomId": "archives",
+      "x": 1279.9,
+      "y": 635.61
+    },
+    {
+      "roomId": "archives",
+      "x": 1294.87,
+      "y": 635.33
+    },
+    {
+      "roomId": "archives",
+      "x": 1304.89,
+      "y": 635.14
+    },
+    {
+      "roomId": "trophees",
+      "x": 240,
+      "y": 645
+    },
+    {
+      "roomId": "trophees",
+      "x": 244.98,
+      "y": 644.95
+    },
+    {
+      "roomId": "trophees",
+      "x": 259.98,
+      "y": 644.81
+    },
+    {
+      "roomId": "trophees",
+      "x": 279.96,
+      "y": 644.63
+    },
+    {
+      "roomId": "trophees",
+      "x": 289.98,
+      "y": 644.53
+    },
+    {
+      "roomId": "trophees",
+      "x": 300,
+      "y": 644.44
+    },
+    {
+      "roomId": "trophees",
+      "x": 315,
+      "y": 644.3
+    },
+    {
+      "roomId": "trophees",
+      "x": 330,
+      "y": 644.16
+    },
+    {
+      "roomId": "trophees",
+      "x": 340.02,
+      "y": 644.07
+    },
+    {
+      "roomId": "trophees",
+      "x": 354.98,
+      "y": 643.93
+    },
+    {
+      "roomId": "trophees",
+      "x": 369.98,
+      "y": 643.79
+    },
+    {
+      "roomId": "trophees",
+      "x": 385.01,
+      "y": 643.65
+    },
+    {
+      "roomId": "trophees",
+      "x": 410,
+      "y": 643.41
+    },
+    {
+      "roomId": "trophees",
+      "x": 425,
+      "y": 643.27
+    },
+    {
+      "roomId": "trophees",
+      "x": 449.99,
+      "y": 643.04
+    },
+    {
+      "roomId": "trophees",
+      "x": 464.96,
+      "y": 642.9
+    },
+    {
+      "roomId": "trophees",
+      "x": 479.96,
+      "y": 642.76
+    },
+    {
+      "roomId": "trophees",
+      "x": 489.98,
+      "y": 642.67
+    },
+    {
+      "roomId": "trophees",
+      "x": 509.96,
+      "y": 642.48
+    },
+    {
+      "roomId": "trophees",
+      "x": 529.97,
+      "y": 642.3
+    },
+    {
+      "roomId": "trophees",
+      "x": 549.95,
+      "y": 642.11
+    },
+    {
+      "roomId": "trophees",
+      "x": 564.95,
+      "y": 641.97
+    },
+    {
+      "roomId": "trophees",
+      "x": 584.95,
+      "y": 641.78
+    },
+    {
+      "roomId": "trophees",
+      "x": 599.95,
+      "y": 641.64
+    },
+    {
+      "roomId": "trophees",
+      "x": 619.93,
+      "y": 641.46
+    },
+    {
+      "roomId": "trophees",
+      "x": 634.96,
+      "y": 641.32
+    },
+    {
+      "roomId": "trophees",
+      "x": 649.93,
+      "y": 641.18
+    },
+    {
+      "roomId": "trophees",
+      "x": 664.93,
+      "y": 641.04
+    },
+    {
+      "roomId": "trophees",
+      "x": 679.93,
+      "y": 640.9
+    },
+    {
+      "roomId": "trophees",
+      "x": 689.95,
+      "y": 640.8
+    },
+    {
+      "roomId": "trophees",
+      "x": 709.96,
+      "y": 640.62
+    },
+    {
+      "roomId": "trophees",
+      "x": 724.96,
+      "y": 640.48
+    },
+    {
+      "roomId": "trophees",
+      "x": 739.96,
+      "y": 640.34
+    },
+    {
+      "roomId": "trophees",
+      "x": 749.98,
+      "y": 640.24
+    },
+    {
+      "roomId": "trophees",
+      "x": 769.99,
+      "y": 640.06
+    },
+    {
+      "roomId": "trophees",
+      "x": 784.96,
+      "y": 639.92
+    },
+    {
+      "roomId": "trophees",
+      "x": 799.96,
+      "y": 639.78
+    },
+    {
+      "roomId": "trophees",
+      "x": 819.96,
+      "y": 639.59
+    },
+    {
+      "roomId": "trophees",
+      "x": 829.98,
+      "y": 639.5
+    },
+    {
+      "roomId": "trophees",
+      "x": 849.96,
+      "y": 639.31
+    },
+    {
+      "roomId": "trophees",
+      "x": 864.93,
+      "y": 639.17
+    },
+    {
+      "roomId": "trophees",
+      "x": 874.95,
+      "y": 639.08
+    },
+    {
+      "roomId": "trophees",
+      "x": 884.97,
+      "y": 638.98
+    },
+    {
+      "roomId": "trophees",
+      "x": 909.93,
+      "y": 638.75
+    },
+    {
+      "roomId": "trophees",
+      "x": 924.96,
+      "y": 638.61
+    },
+    {
+      "roomId": "trophees",
+      "x": 939.93,
+      "y": 638.47
+    },
+    {
+      "roomId": "trophees",
+      "x": 949.95,
+      "y": 638.38
+    },
+    {
+      "roomId": "trophees",
+      "x": 974.94,
+      "y": 638.14
+    },
+    {
+      "roomId": "trophees",
+      "x": 989.94,
+      "y": 638
+    },
+    {
+      "roomId": "trophees",
+      "x": 1009.92,
+      "y": 637.82
+    },
+    {
+      "roomId": "trophees",
+      "x": 1019.94,
+      "y": 637.72
+    },
+    {
+      "roomId": "trophees",
+      "x": 1039.95,
+      "y": 637.54
+    },
+    {
+      "roomId": "trophees",
+      "x": 1049.96,
+      "y": 637.44
+    },
+    {
+      "roomId": "trophees",
+      "x": 1064.93,
+      "y": 637.3
+    },
+    {
+      "roomId": "trophees",
+      "x": 1074.95,
+      "y": 637.21
+    },
+    {
+      "roomId": "trophees",
+      "x": 1099.94,
+      "y": 636.98
+    },
+    {
+      "roomId": "trophees",
+      "x": 1114.94,
+      "y": 636.84
+    },
+    {
+      "roomId": "trophees",
+      "x": 1129.94,
+      "y": 636.7
+    },
+    {
+      "roomId": "trophees",
+      "x": 1144.94,
+      "y": 636.56
+    },
+    {
+      "roomId": "trophees",
+      "x": 1159.94,
+      "y": 636.42
+    },
+    {
+      "roomId": "trophees",
+      "x": 1169.96,
+      "y": 636.33
+    },
+    {
+      "roomId": "trophees",
+      "x": 1189.94,
+      "y": 636.14
+    },
+    {
+      "roomId": "trophees",
+      "x": 1199.96,
+      "y": 636.05
+    },
+    {
+      "roomId": "trophees",
+      "x": 1214.96,
+      "y": 635.91
+    },
+    {
+      "roomId": "trophees",
+      "x": 1229.96,
+      "y": 635.77
+    },
+    {
+      "roomId": "trophees",
+      "x": 1244.96,
+      "y": 635.63
+    },
+    {
+      "roomId": "trophees",
+      "x": 1259.93,
+      "y": 635.49
+    },
+    {
+      "roomId": "trophees",
+      "x": 1269.95,
+      "y": 635.39
+    },
+    {
+      "roomId": "trophees",
+      "x": 1289.95,
+      "y": 635.21
+    },
+    {
+      "roomId": "trophees",
+      "x": 1304.98,
+      "y": 635.07
+    },
+    {
+      "roomId": "soins",
+      "x": 240,
+      "y": 645
+    },
+    {
+      "roomId": "soins",
+      "x": 250.02,
+      "y": 644.91
+    },
+    {
+      "roomId": "soins",
+      "x": 270,
+      "y": 644.72
+    },
+    {
+      "roomId": "soins",
+      "x": 285,
+      "y": 644.58
+    },
+    {
+      "roomId": "soins",
+      "x": 305.01,
+      "y": 644.39
+    },
+    {
+      "roomId": "soins",
+      "x": 315.03,
+      "y": 644.3
+    },
+    {
+      "roomId": "soins",
+      "x": 339.99,
+      "y": 644.07
+    },
+    {
+      "roomId": "soins",
+      "x": 350.01,
+      "y": 643.97
+    },
+    {
+      "roomId": "soins",
+      "x": 364.97,
+      "y": 643.83
+    },
+    {
+      "roomId": "soins",
+      "x": 379.97,
+      "y": 643.69
+    },
+    {
+      "roomId": "soins",
+      "x": 394.97,
+      "y": 643.55
+    },
+    {
+      "roomId": "soins",
+      "x": 414.98,
+      "y": 643.37
+    },
+    {
+      "roomId": "soins",
+      "x": 429.95,
+      "y": 643.23
+    },
+    {
+      "roomId": "soins",
+      "x": 439.97,
+      "y": 643.13
+    },
+    {
+      "roomId": "soins",
+      "x": 459.95,
+      "y": 642.95
+    },
+    {
+      "roomId": "soins",
+      "x": 474.95,
+      "y": 642.81
+    },
+    {
+      "roomId": "soins",
+      "x": 489.95,
+      "y": 642.67
+    },
+    {
+      "roomId": "soins",
+      "x": 504.92,
+      "y": 642.53
+    },
+    {
+      "roomId": "soins",
+      "x": 514.94,
+      "y": 642.44
+    },
+    {
+      "roomId": "soins",
+      "x": 529.91,
+      "y": 642.3
+    },
+    {
+      "roomId": "soins",
+      "x": 539.93,
+      "y": 642.2
+    },
+    {
+      "roomId": "soins",
+      "x": 554.93,
+      "y": 642.06
+    },
+    {
+      "roomId": "soins",
+      "x": 569.93,
+      "y": 641.92
+    },
+    {
+      "roomId": "soins",
+      "x": 584.92,
+      "y": 641.78
+    },
+    {
+      "roomId": "soins",
+      "x": 599.92,
+      "y": 641.64
+    },
+    {
+      "roomId": "soins",
+      "x": 614.92,
+      "y": 641.5
+    },
+    {
+      "roomId": "soins",
+      "x": 629.92,
+      "y": 641.36
+    },
+    {
+      "roomId": "soins",
+      "x": 649.93,
+      "y": 641.18
+    },
+    {
+      "roomId": "soins",
+      "x": 664.9,
+      "y": 641.04
+    },
+    {
+      "roomId": "soins",
+      "x": 674.92,
+      "y": 640.94
+    },
+    {
+      "roomId": "soins",
+      "x": 694.9,
+      "y": 640.76
+    },
+    {
+      "roomId": "soins",
+      "x": 704.92,
+      "y": 640.66
+    },
+    {
+      "roomId": "soins",
+      "x": 729.91,
+      "y": 640.43
+    },
+    {
+      "roomId": "soins",
+      "x": 749.89,
+      "y": 640.24
+    },
+    {
+      "roomId": "soins",
+      "x": 764.89,
+      "y": 640.1
+    },
+    {
+      "roomId": "soins",
+      "x": 774.91,
+      "y": 640.01
+    },
+    {
+      "roomId": "soins",
+      "x": 799.9,
+      "y": 639.78
+    },
+    {
+      "roomId": "soins",
+      "x": 819.9,
+      "y": 639.59
+    },
+    {
+      "roomId": "soins",
+      "x": 834.9,
+      "y": 639.45
+    },
+    {
+      "roomId": "soins",
+      "x": 854.91,
+      "y": 639.26
+    },
+    {
+      "roomId": "soins",
+      "x": 874.89,
+      "y": 639.08
+    },
+    {
+      "roomId": "soins",
+      "x": 889.89,
+      "y": 638.94
+    },
+    {
+      "roomId": "soins",
+      "x": 904.86,
+      "y": 638.8
+    },
+    {
+      "roomId": "soins",
+      "x": 914.88,
+      "y": 638.7
+    },
+    {
+      "roomId": "soins",
+      "x": 934.89,
+      "y": 638.52
+    },
+    {
+      "roomId": "soins",
+      "x": 949.89,
+      "y": 638.38
+    },
+    {
+      "roomId": "soins",
+      "x": 969.87,
+      "y": 638.19
+    },
+    {
+      "roomId": "soins",
+      "x": 984.9,
+      "y": 638.05
+    },
+    {
+      "roomId": "soins",
+      "x": 999.9,
+      "y": 637.91
+    },
+    {
+      "roomId": "soins",
+      "x": 1014.87,
+      "y": 637.77
+    },
+    {
+      "roomId": "soins",
+      "x": 1029.87,
+      "y": 637.63
+    },
+    {
+      "roomId": "soins",
+      "x": 1044.83,
+      "y": 637.49
+    },
+    {
+      "roomId": "soins",
+      "x": 1059.83,
+      "y": 637.35
+    },
+    {
+      "roomId": "soins",
+      "x": 1074.83,
+      "y": 637.21
+    },
+    {
+      "roomId": "soins",
+      "x": 1089.83,
+      "y": 637.07
+    },
+    {
+      "roomId": "soins",
+      "x": 1104.8,
+      "y": 636.93
+    },
+    {
+      "roomId": "soins",
+      "x": 1114.82,
+      "y": 636.84
+    },
+    {
+      "roomId": "soins",
+      "x": 1134.8,
+      "y": 636.65
+    },
+    {
+      "roomId": "soins",
+      "x": 1144.82,
+      "y": 636.56
+    },
+    {
+      "roomId": "soins",
+      "x": 1164.8,
+      "y": 636.37
+    },
+    {
+      "roomId": "soins",
+      "x": 1179.8,
+      "y": 636.23
+    },
+    {
+      "roomId": "soins",
+      "x": 1199.78,
+      "y": 636.05
+    },
+    {
+      "roomId": "soins",
+      "x": 1209.8,
+      "y": 635.95
+    },
+    {
+      "roomId": "soins",
+      "x": 1219.82,
+      "y": 635.86
+    },
+    {
+      "roomId": "soins",
+      "x": 1234.79,
+      "y": 635.72
+    },
+    {
+      "roomId": "soins",
+      "x": 1249.79,
+      "y": 635.58
+    },
+    {
+      "roomId": "soins",
+      "x": 1264.79,
+      "y": 635.44
+    },
+    {
+      "roomId": "soins",
+      "x": 1279.78,
+      "y": 635.3
+    },
+    {
+      "roomId": "soins",
+      "x": 1299.76,
+      "y": 635.11
+    },
+    {
+      "roomId": "hangar",
+      "x": 240,
+      "y": 645
+    },
+    {
+      "roomId": "hangar",
+      "x": 245.01,
+      "y": 645.04
+    },
+    {
+      "roomId": "hangar",
+      "x": 270,
+      "y": 645.26
+    },
+    {
+      "roomId": "hangar",
+      "x": 294.99,
+      "y": 645.47
+    },
+    {
+      "roomId": "hangar",
+      "x": 319.98,
+      "y": 645.69
+    },
+    {
+      "roomId": "hangar",
+      "x": 334.98,
+      "y": 645.82
+    },
+    {
+      "roomId": "hangar",
+      "x": 354.99,
+      "y": 645.99
+    },
+    {
+      "roomId": "hangar",
+      "x": 374.96,
+      "y": 646.16
+    },
+    {
+      "roomId": "hangar",
+      "x": 394.97,
+      "y": 646.34
+    },
+    {
+      "roomId": "hangar",
+      "x": 404.99,
+      "y": 646.42
+    },
+    {
+      "roomId": "hangar",
+      "x": 419.99,
+      "y": 646.55
+    },
+    {
+      "roomId": "hangar",
+      "x": 434.96,
+      "y": 646.68
+    },
+    {
+      "roomId": "hangar",
+      "x": 454.97,
+      "y": 646.85
+    },
+    {
+      "roomId": "hangar",
+      "x": 464.99,
+      "y": 646.94
+    },
+    {
+      "roomId": "hangar",
+      "x": 470,
+      "y": 646.98
+    },
+    {
+      "roomId": "hangar",
+      "x": 484.97,
+      "y": 647.11
+    },
+    {
+      "roomId": "hangar",
+      "x": 504.98,
+      "y": 647.28
+    },
+    {
+      "roomId": "hangar",
+      "x": 515,
+      "y": 647.37
+    },
+    {
+      "roomId": "hangar",
+      "x": 530.03,
+      "y": 647.5
+    },
+    {
+      "roomId": "hangar",
+      "x": 549.98,
+      "y": 647.67
+    },
+    {
+      "roomId": "hangar",
+      "x": 560,
+      "y": 647.76
+    },
+    {
+      "roomId": "hangar",
+      "x": 575,
+      "y": 647.89
+    },
+    {
+      "roomId": "hangar",
+      "x": 594.98,
+      "y": 648.06
+    },
+    {
+      "roomId": "hangar",
+      "x": 605,
+      "y": 648.15
+    },
+    {
+      "roomId": "hangar",
+      "x": 629.99,
+      "y": 648.36
+    },
+    {
+      "roomId": "hangar",
+      "x": 649.96,
+      "y": 648.53
+    },
+    {
+      "roomId": "hangar",
+      "x": 664.96,
+      "y": 648.66
+    },
+    {
+      "roomId": "hangar",
+      "x": 674.98,
+      "y": 648.75
+    },
+    {
+      "roomId": "hangar",
+      "x": 699.97,
+      "y": 648.97
+    },
+    {
+      "roomId": "hangar",
+      "x": 719.95,
+      "y": 649.14
+    },
+    {
+      "roomId": "hangar",
+      "x": 729.97,
+      "y": 649.22
+    },
+    {
+      "roomId": "hangar",
+      "x": 749.95,
+      "y": 649.4
+    },
+    {
+      "roomId": "hangar",
+      "x": 774.94,
+      "y": 649.61
+    },
+    {
+      "roomId": "hangar",
+      "x": 789.91,
+      "y": 649.74
+    },
+    {
+      "roomId": "hangar",
+      "x": 799.93,
+      "y": 649.83
+    },
+    {
+      "roomId": "hangar",
+      "x": 814.93,
+      "y": 649.96
+    },
+    {
+      "roomId": "hangar",
+      "x": 820,
+      "y": 650
+    },
+    {
+      "roomId": "hangar",
+      "x": 824.97,
+      "y": 649.38
+    },
+    {
+      "roomId": "hangar",
+      "x": 839.86,
+      "y": 647.52
+    },
+    {
+      "roomId": "hangar",
+      "x": 854.74,
+      "y": 645.66
+    },
+    {
+      "roomId": "hangar",
+      "x": 869.59,
+      "y": 643.8
+    },
+    {
+      "roomId": "hangar",
+      "x": 879.54,
+      "y": 642.56
+    },
+    {
+      "roomId": "hangar",
+      "x": 889.48,
+      "y": 641.32
+    },
+    {
+      "roomId": "hangar",
+      "x": 904.33,
+      "y": 639.46
+    },
+    {
+      "roomId": "hangar",
+      "x": 914.28,
+      "y": 638.22
+    },
+    {
+      "roomId": "hangar",
+      "x": 929.16,
+      "y": 636.35
+    },
+    {
+      "roomId": "hangar",
+      "x": 944.01,
+      "y": 634.5
+    },
+    {
+      "roomId": "hangar",
+      "x": 953.96,
+      "y": 633.26
+    },
+    {
+      "roomId": "hangar",
+      "x": 968.84,
+      "y": 631.39
+    },
+    {
+      "roomId": "hangar",
+      "x": 983.73,
+      "y": 629.53
+    },
+    {
+      "roomId": "hangar",
+      "x": 998.61,
+      "y": 627.67
+    },
+    {
+      "roomId": "hangar",
+      "x": 1013.46,
+      "y": 625.82
+    },
+    {
+      "roomId": "hangar",
+      "x": 1023.41,
+      "y": 624.57
+    },
+    {
+      "roomId": "hangar",
+      "x": 1038.29,
+      "y": 622.71
+    },
+    {
+      "roomId": "hangar",
+      "x": 1053.18,
+      "y": 620.85
+    },
+    {
+      "roomId": "hangar",
+      "x": 1060,
+      "y": 620
+    },
+    {
+      "roomId": "hangar",
+      "x": 1055.02,
+      "y": 620.08
+    },
+    {
+      "roomId": "hangar",
+      "x": 1045,
+      "y": 620.24
+    },
+    {
+      "roomId": "hangar",
+      "x": 1030,
+      "y": 620.48
+    },
+    {
+      "roomId": "hangar",
+      "x": 1015.01,
+      "y": 620.72
+    },
+    {
+      "roomId": "hangar",
+      "x": 1000.04,
+      "y": 620.97
+    },
+    {
+      "roomId": "hangar",
+      "x": 990.02,
+      "y": 621.13
+    },
+    {
+      "roomId": "hangar",
+      "x": 975.02,
+      "y": 621.37
+    },
+    {
+      "roomId": "hangar",
+      "x": 955.04,
+      "y": 621.69
+    },
+    {
+      "roomId": "hangar",
+      "x": 945.02,
+      "y": 621.85
+    },
+    {
+      "roomId": "hangar",
+      "x": 930.03,
+      "y": 622.09
+    },
+    {
+      "roomId": "hangar",
+      "x": 915.03,
+      "y": 622.33
+    },
+    {
+      "roomId": "hangar",
+      "x": 900.03,
+      "y": 622.57
+    },
+    {
+      "roomId": "hangar",
+      "x": 885.03,
+      "y": 622.82
+    },
+    {
+      "roomId": "hangar",
+      "x": 875.01,
+      "y": 622.98
+    },
+    {
+      "roomId": "hangar",
+      "x": 860.05,
+      "y": 623.22
+    },
+    {
+      "roomId": "hangar",
+      "x": 850.03,
+      "y": 623.38
+    },
+    {
+      "roomId": "hangar",
+      "x": 835.06,
+      "y": 623.62
+    },
+    {
+      "roomId": "hangar",
+      "x": 825.04,
+      "y": 623.78
+    },
+    {
+      "roomId": "hangar",
+      "x": 810.07,
+      "y": 624.02
+    },
+    {
+      "roomId": "hangar",
+      "x": 800.05,
+      "y": 624.18
+    },
+    {
+      "roomId": "hangar",
+      "x": 785.06,
+      "y": 624.43
+    },
+    {
+      "roomId": "hangar",
+      "x": 770.06,
+      "y": 624.67
+    },
+    {
+      "roomId": "hangar",
+      "x": 755.06,
+      "y": 624.91
+    },
+    {
+      "roomId": "hangar",
+      "x": 740.06,
+      "y": 625.15
+    },
+    {
+      "roomId": "hangar",
+      "x": 725.06,
+      "y": 625.39
+    },
+    {
+      "roomId": "hangar",
+      "x": 705.09,
+      "y": 625.71
+    },
+    {
+      "roomId": "hangar",
+      "x": 695.07,
+      "y": 625.87
+    },
+    {
+      "roomId": "hangar",
+      "x": 680.07,
+      "y": 626.11
+    },
+    {
+      "roomId": "hangar",
+      "x": 665.1,
+      "y": 626.36
+    },
+    {
+      "roomId": "hangar",
+      "x": 655.08,
+      "y": 626.52
+    },
+    {
+      "roomId": "hangar",
+      "x": 640.08,
+      "y": 626.76
+    },
+    {
+      "roomId": "hangar",
+      "x": 630.07,
+      "y": 626.92
+    },
+    {
+      "roomId": "hangar",
+      "x": 615.1,
+      "y": 627.16
+    },
+    {
+      "roomId": "hangar",
+      "x": 605.08,
+      "y": 627.32
+    },
+    {
+      "roomId": "hangar",
+      "x": 590.08,
+      "y": 627.56
+    },
+    {
+      "roomId": "hangar",
+      "x": 575.08,
+      "y": 627.8
+    },
+    {
+      "roomId": "hangar",
+      "x": 560.08,
+      "y": 628.05
+    },
+    {
+      "roomId": "hangar",
+      "x": 545.12,
+      "y": 628.29
+    },
+    {
+      "roomId": "hangar",
+      "x": 535.1,
+      "y": 628.45
+    },
+    {
+      "roomId": "hangar",
+      "x": 520.1,
+      "y": 628.69
+    },
+    {
+      "roomId": "hangar",
+      "x": 505.1,
+      "y": 628.93
+    },
+    {
+      "roomId": "hangar",
+      "x": 490.1,
+      "y": 629.17
+    },
+    {
+      "roomId": "hangar",
+      "x": 475.11,
+      "y": 629.41
+    },
+    {
+      "roomId": "hangar",
+      "x": 460.11,
+      "y": 629.65
+    },
+    {
+      "roomId": "hangar",
+      "x": 445.11,
+      "y": 629.9
+    },
+    {
+      "roomId": "hangar",
+      "x": 430.11,
+      "y": 630.14
+    },
+    {
+      "roomId": "hangar",
+      "x": 415.11,
+      "y": 630.38
+    },
+    {
+      "roomId": "hangar",
+      "x": 400.15,
+      "y": 630.62
+    },
+    {
+      "roomId": "hangar",
+      "x": 390.13,
+      "y": 630.78
+    },
+    {
+      "roomId": "hangar",
+      "x": 380.11,
+      "y": 630.94
+    },
+    {
+      "roomId": "hangar",
+      "x": 365.11,
+      "y": 631.18
+    },
+    {
+      "roomId": "hangar",
+      "x": 350.14,
+      "y": 631.42
+    },
+    {
+      "roomId": "hangar",
+      "x": 340.12,
+      "y": 631.59
+    },
+    {
+      "roomId": "hangar",
+      "x": 325.16,
+      "y": 631.83
+    },
+    {
+      "roomId": "hangar",
+      "x": 315.14,
+      "y": 631.99
+    },
+    {
+      "roomId": "hangar",
+      "x": 300.14,
+      "y": 632.23
+    },
+    {
+      "roomId": "hangar",
+      "x": 290.12,
+      "y": 632.39
+    },
+    {
+      "roomId": "hangar",
+      "x": 275.15,
+      "y": 632.63
+    },
+    {
+      "roomId": "hangar",
+      "x": 265.13,
+      "y": 632.79
+    },
+    {
+      "roomId": "hangar",
+      "x": 250.13,
+      "y": 633.03
+    },
+    {
+      "roomId": "hangar",
+      "x": 235.14,
+      "y": 633.28
+    },
+    {
+      "roomId": "hangar",
+      "x": 220.17,
+      "y": 633.52
+    },
+    {
+      "roomId": "hangar",
+      "x": 210.15,
+      "y": 633.68
+    },
+    {
+      "roomId": "hangar",
+      "x": 195.15,
+      "y": 633.92
+    },
+    {
+      "roomId": "hangar",
+      "x": 180.15,
+      "y": 634.16
+    },
+    {
+      "roomId": "hangar",
+      "x": 170.14,
+      "y": 634.32
+    },
+    {
+      "roomId": "hangar",
+      "x": 155.17,
+      "y": 634.56
+    },
+    {
+      "roomId": "hangar",
+      "x": 135.16,
+      "y": 634.88
+    },
+    {
+      "roomId": "soins",
+      "x": 1200,
+      "y": 645
+    },
+    {
+      "roomId": "soins",
+      "x": 1194.99,
+      "y": 644.95
+    },
+    {
+      "roomId": "soins",
+      "x": 1175.01,
+      "y": 644.77
+    },
+    {
+      "roomId": "soins",
+      "x": 1164.99,
+      "y": 644.67
+    },
+    {
+      "roomId": "soins",
+      "x": 1149.99,
+      "y": 644.53
+    },
+    {
+      "roomId": "soins",
+      "x": 1125.03,
+      "y": 644.3
+    },
+    {
+      "roomId": "soins",
+      "x": 1115.01,
+      "y": 644.21
+    },
+    {
+      "roomId": "soins",
+      "x": 1090.02,
+      "y": 643.97
+    },
+    {
+      "roomId": "soins",
+      "x": 1080.01,
+      "y": 643.88
+    },
+    {
+      "roomId": "soins",
+      "x": 1060.03,
+      "y": 643.69
+    },
+    {
+      "roomId": "soins",
+      "x": 1045.03,
+      "y": 643.55
+    },
+    {
+      "roomId": "soins",
+      "x": 1020.04,
+      "y": 643.32
+    },
+    {
+      "roomId": "soins",
+      "x": 1005.04,
+      "y": 643.18
+    },
+    {
+      "roomId": "soins",
+      "x": 985.06,
+      "y": 642.99
+    },
+    {
+      "roomId": "soins",
+      "x": 970.06,
+      "y": 642.86
+    },
+    {
+      "roomId": "soins",
+      "x": 950.08,
+      "y": 642.67
+    },
+    {
+      "roomId": "soins",
+      "x": 935.08,
+      "y": 642.53
+    },
+    {
+      "roomId": "soins",
+      "x": 920.08,
+      "y": 642.39
+    },
+    {
+      "roomId": "soins",
+      "x": 905.08,
+      "y": 642.25
+    },
+    {
+      "roomId": "soins",
+      "x": 890.08,
+      "y": 642.11
+    },
+    {
+      "roomId": "soins",
+      "x": 875.08,
+      "y": 641.97
+    },
+    {
+      "roomId": "soins",
+      "x": 860.08,
+      "y": 641.83
+    },
+    {
+      "roomId": "soins",
+      "x": 845.09,
+      "y": 641.69
+    },
+    {
+      "roomId": "soins",
+      "x": 830.09,
+      "y": 641.55
+    },
+    {
+      "roomId": "soins",
+      "x": 815.09,
+      "y": 641.41
+    },
+    {
+      "roomId": "soins",
+      "x": 800.12,
+      "y": 641.27
+    },
+    {
+      "roomId": "soins",
+      "x": 785.12,
+      "y": 641.13
+    },
+    {
+      "roomId": "soins",
+      "x": 770.12,
+      "y": 640.99
+    },
+    {
+      "roomId": "soins",
+      "x": 755.12,
+      "y": 640.85
+    },
+    {
+      "roomId": "soins",
+      "x": 740.12,
+      "y": 640.71
+    },
+    {
+      "roomId": "soins",
+      "x": 720.14,
+      "y": 640.52
+    },
+    {
+      "roomId": "soins",
+      "x": 705.14,
+      "y": 640.38
+    },
+    {
+      "roomId": "soins",
+      "x": 690.14,
+      "y": 640.24
+    },
+    {
+      "roomId": "soins",
+      "x": 670.13,
+      "y": 640.06
+    },
+    {
+      "roomId": "soins",
+      "x": 655.13,
+      "y": 639.92
+    },
+    {
+      "roomId": "soins",
+      "x": 640.13,
+      "y": 639.78
+    },
+    {
+      "roomId": "soins",
+      "x": 625.14,
+      "y": 639.64
+    },
+    {
+      "roomId": "soins",
+      "x": 610.14,
+      "y": 639.5
+    },
+    {
+      "roomId": "soins",
+      "x": 590.13,
+      "y": 639.31
+    },
+    {
+      "roomId": "soins",
+      "x": 580.11,
+      "y": 639.22
+    },
+    {
+      "roomId": "soins",
+      "x": 565.11,
+      "y": 639.08
+    },
+    {
+      "roomId": "soins",
+      "x": 550.11,
+      "y": 638.94
+    },
+    {
+      "roomId": "soins",
+      "x": 530.1,
+      "y": 638.75
+    },
+    {
+      "roomId": "soins",
+      "x": 515.1,
+      "y": 638.61
+    },
+    {
+      "roomId": "soins",
+      "x": 490.11,
+      "y": 638.38
+    },
+    {
+      "roomId": "soins",
+      "x": 475.11,
+      "y": 638.24
+    },
+    {
+      "roomId": "soins",
+      "x": 460.11,
+      "y": 638.1
+    },
+    {
+      "roomId": "soins",
+      "x": 445.11,
+      "y": 637.96
+    },
+    {
+      "roomId": "soins",
+      "x": 430.14,
+      "y": 637.82
+    },
+    {
+      "roomId": "soins",
+      "x": 415.14,
+      "y": 637.68
+    },
+    {
+      "roomId": "soins",
+      "x": 400.14,
+      "y": 637.54
+    },
+    {
+      "roomId": "soins",
+      "x": 385.15,
+      "y": 637.4
+    },
+    {
+      "roomId": "soins",
+      "x": 365.14,
+      "y": 637.21
+    },
+    {
+      "roomId": "soins",
+      "x": 340.15,
+      "y": 636.98
+    },
+    {
+      "roomId": "soins",
+      "x": 325.15,
+      "y": 636.84
+    },
+    {
+      "roomId": "soins",
+      "x": 310.12,
+      "y": 636.7
+    },
+    {
+      "roomId": "soins",
+      "x": 295.12,
+      "y": 636.56
+    },
+    {
+      "roomId": "soins",
+      "x": 285.1,
+      "y": 636.47
+    },
+    {
+      "roomId": "soins",
+      "x": 260.11,
+      "y": 636.23
+    },
+    {
+      "roomId": "soins",
+      "x": 245.14,
+      "y": 636.09
+    },
+    {
+      "roomId": "soins",
+      "x": 235.12,
+      "y": 636
+    },
+    {
+      "roomId": "soins",
+      "x": 220.12,
+      "y": 635.86
+    },
+    {
+      "roomId": "soins",
+      "x": 205.12,
+      "y": 635.72
+    },
+    {
+      "roomId": "soins",
+      "x": 190.15,
+      "y": 635.58
+    },
+    {
+      "roomId": "soins",
+      "x": 180.13,
+      "y": 635.49
+    },
+    {
+      "roomId": "soins",
+      "x": 165.14,
+      "y": 635.35
+    },
+    {
+      "roomId": "soins",
+      "x": 150.14,
+      "y": 635.21
+    },
+    {
+      "roomId": "soins",
+      "x": 135.14,
+      "y": 635.07
+    },
+    {
+      "roomId": "trophees",
+      "x": 1200,
+      "y": 645
+    },
+    {
+      "roomId": "trophees",
+      "x": 1185,
+      "y": 644.86
+    },
+    {
+      "roomId": "trophees",
+      "x": 1165.02,
+      "y": 644.67
+    },
+    {
+      "roomId": "trophees",
+      "x": 1150.02,
+      "y": 644.53
+    },
+    {
+      "roomId": "trophees",
+      "x": 1135.02,
+      "y": 644.39
+    },
+    {
+      "roomId": "trophees",
+      "x": 1120.02,
+      "y": 644.25
+    },
+    {
+      "roomId": "trophees",
+      "x": 1105.02,
+      "y": 644.11
+    },
+    {
+      "roomId": "trophees",
+      "x": 1090.02,
+      "y": 643.97
+    },
+    {
+      "roomId": "trophees",
+      "x": 1075.03,
+      "y": 643.83
+    },
+    {
+      "roomId": "trophees",
+      "x": 1060.03,
+      "y": 643.69
+    },
+    {
+      "roomId": "trophees",
+      "x": 1045.03,
+      "y": 643.55
+    },
+    {
+      "roomId": "trophees",
+      "x": 1030.03,
+      "y": 643.41
+    },
+    {
+      "roomId": "trophees",
+      "x": 1010.02,
+      "y": 643.23
+    },
+    {
+      "roomId": "trophees",
+      "x": 995.02,
+      "y": 643.09
+    },
+    {
+      "roomId": "trophees",
+      "x": 980.02,
+      "y": 642.95
+    },
+    {
+      "roomId": "trophees",
+      "x": 955.03,
+      "y": 642.71
+    },
+    {
+      "roomId": "trophees",
+      "x": 930.04,
+      "y": 642.48
+    },
+    {
+      "roomId": "trophees",
+      "x": 915.04,
+      "y": 642.34
+    },
+    {
+      "roomId": "trophees",
+      "x": 895.06,
+      "y": 642.16
+    },
+    {
+      "roomId": "trophees",
+      "x": 870.07,
+      "y": 641.92
+    },
+    {
+      "roomId": "trophees",
+      "x": 855.08,
+      "y": 641.78
+    },
+    {
+      "roomId": "trophees",
+      "x": 840.08,
+      "y": 641.64
+    },
+    {
+      "roomId": "trophees",
+      "x": 820.1,
+      "y": 641.46
+    },
+    {
+      "roomId": "trophees",
+      "x": 800.09,
+      "y": 641.27
+    },
+    {
+      "roomId": "trophees",
+      "x": 785.09,
+      "y": 641.13
+    },
+    {
+      "roomId": "trophees",
+      "x": 770.09,
+      "y": 640.99
+    },
+    {
+      "roomId": "trophees",
+      "x": 745.1,
+      "y": 640.76
+    },
+    {
+      "roomId": "trophees",
+      "x": 730.1,
+      "y": 640.62
+    },
+    {
+      "roomId": "trophees",
+      "x": 710.09,
+      "y": 640.43
+    },
+    {
+      "roomId": "trophees",
+      "x": 695.09,
+      "y": 640.29
+    },
+    {
+      "roomId": "trophees",
+      "x": 680.09,
+      "y": 640.15
+    },
+    {
+      "roomId": "trophees",
+      "x": 655.1,
+      "y": 639.92
+    },
+    {
+      "roomId": "trophees",
+      "x": 640.1,
+      "y": 639.78
+    },
+    {
+      "roomId": "trophees",
+      "x": 620.1,
+      "y": 639.59
+    },
+    {
+      "roomId": "trophees",
+      "x": 605.1,
+      "y": 639.45
+    },
+    {
+      "roomId": "trophees",
+      "x": 590.1,
+      "y": 639.31
+    },
+    {
+      "roomId": "trophees",
+      "x": 575.1,
+      "y": 639.17
+    },
+    {
+      "roomId": "trophees",
+      "x": 555.12,
+      "y": 638.98
+    },
+    {
+      "roomId": "trophees",
+      "x": 540.12,
+      "y": 638.84
+    },
+    {
+      "roomId": "trophees",
+      "x": 520.14,
+      "y": 638.66
+    },
+    {
+      "roomId": "trophees",
+      "x": 505.14,
+      "y": 638.52
+    },
+    {
+      "roomId": "trophees",
+      "x": 485.16,
+      "y": 638.33
+    },
+    {
+      "roomId": "trophees",
+      "x": 470.16,
+      "y": 638.19
+    },
+    {
+      "roomId": "trophees",
+      "x": 450.15,
+      "y": 638.01
+    },
+    {
+      "roomId": "trophees",
+      "x": 435.15,
+      "y": 637.87
+    },
+    {
+      "roomId": "trophees",
+      "x": 425.13,
+      "y": 637.77
+    },
+    {
+      "roomId": "trophees",
+      "x": 410.13,
+      "y": 637.63
+    },
+    {
+      "roomId": "trophees",
+      "x": 400.11,
+      "y": 637.54
+    },
+    {
+      "roomId": "trophees",
+      "x": 380.14,
+      "y": 637.35
+    },
+    {
+      "roomId": "trophees",
+      "x": 365.14,
+      "y": 637.21
+    },
+    {
+      "roomId": "trophees",
+      "x": 355.12,
+      "y": 637.12
+    },
+    {
+      "roomId": "trophees",
+      "x": 340.12,
+      "y": 636.98
+    },
+    {
+      "roomId": "trophees",
+      "x": 320.14,
+      "y": 636.79
+    },
+    {
+      "roomId": "trophees",
+      "x": 310.12,
+      "y": 636.7
+    },
+    {
+      "roomId": "trophees",
+      "x": 295.12,
+      "y": 636.56
+    },
+    {
+      "roomId": "trophees",
+      "x": 285.1,
+      "y": 636.47
+    },
+    {
+      "roomId": "trophees",
+      "x": 260.14,
+      "y": 636.23
+    },
+    {
+      "roomId": "trophees",
+      "x": 245.14,
+      "y": 636.09
+    },
+    {
+      "roomId": "trophees",
+      "x": 230.14,
+      "y": 635.95
+    },
+    {
+      "roomId": "trophees",
+      "x": 215.14,
+      "y": 635.81
+    },
+    {
+      "roomId": "trophees",
+      "x": 200.17,
+      "y": 635.67
+    },
+    {
+      "roomId": "trophees",
+      "x": 185.17,
+      "y": 635.53
+    },
+    {
+      "roomId": "trophees",
+      "x": 160.19,
+      "y": 635.3
+    },
+    {
+      "roomId": "trophees",
+      "x": 145.19,
+      "y": 635.16
+    },
+    {
+      "roomId": "trophees",
+      "x": 130.22,
+      "y": 635.02
+    },
+    {
+      "roomId": "archives",
+      "x": 1200,
+      "y": 645
+    },
+    {
+      "roomId": "archives",
+      "x": 1189.98,
+      "y": 645
+    },
+    {
+      "roomId": "archives",
+      "x": 1170,
+      "y": 645
+    },
+    {
+      "roomId": "archives",
+      "x": 1155,
+      "y": 645
+    },
+    {
+      "roomId": "archives",
+      "x": 1140,
+      "y": 645
+    },
+    {
+      "roomId": "archives",
+      "x": 1119.99,
+      "y": 645
+    },
+    {
+      "roomId": "archives",
+      "x": 1104.99,
+      "y": 645
+    },
+    {
+      "roomId": "archives",
+      "x": 1089.99,
+      "y": 645
+    },
+    {
+      "roomId": "archives",
+      "x": 1069.98,
+      "y": 645
+    },
+    {
+      "roomId": "archives",
+      "x": 1059.96,
+      "y": 645
+    },
+    {
+      "roomId": "archives",
+      "x": 1039.98,
+      "y": 645
+    },
+    {
+      "roomId": "archives",
+      "x": 1029.96,
+      "y": 645
+    },
+    {
+      "roomId": "archives",
+      "x": 1004.97,
+      "y": 645
+    },
+    {
+      "roomId": "archives",
+      "x": 989.97,
+      "y": 645
+    },
+    {
+      "roomId": "archives",
+      "x": 974.97,
+      "y": 645
+    },
+    {
+      "roomId": "archives",
+      "x": 960,
+      "y": 645
+    },
+    {
+      "roomId": "archives",
+      "x": 949.98,
+      "y": 645
+    },
+    {
+      "roomId": "archives",
+      "x": 930,
+      "y": 645
+    },
+    {
+      "roomId": "archives",
+      "x": 915.03,
+      "y": 645
+    },
+    {
+      "roomId": "archives",
+      "x": 895.02,
+      "y": 645
+    },
+    {
+      "roomId": "archives",
+      "x": 880.02,
+      "y": 645
+    },
+    {
+      "roomId": "archives",
+      "x": 860.01,
+      "y": 645
+    },
+    {
+      "roomId": "archives",
+      "x": 845.01,
+      "y": 645
+    },
+    {
+      "roomId": "archives",
+      "x": 830.04,
+      "y": 645
+    },
+    {
+      "roomId": "archives",
+      "x": 820.02,
+      "y": 645
+    },
+    {
+      "roomId": "archives",
+      "x": 805.02,
+      "y": 645
+    },
+    {
+      "roomId": "archives",
+      "x": 790.02,
+      "y": 645
+    },
+    {
+      "roomId": "archives",
+      "x": 240,
+      "y": 645
+    },
+    {
+      "roomId": "archives",
+      "x": 249.99,
+      "y": 644.91
+    },
+    {
+      "roomId": "archives",
+      "x": 265.02,
+      "y": 644.77
+    },
+    {
+      "roomId": "archives",
+      "x": 279.99,
+      "y": 644.63
+    },
+    {
+      "roomId": "archives",
+      "x": 300,
+      "y": 644.44
+    },
+    {
+      "roomId": "archives",
+      "x": 315,
+      "y": 644.3
+    },
+    {
+      "roomId": "archives",
+      "x": 330,
+      "y": 644.16
+    },
+    {
+      "roomId": "archives",
+      "x": 340.02,
+      "y": 644.07
+    },
+    {
+      "roomId": "archives",
+      "x": 354.98,
+      "y": 643.93
+    },
+    {
+      "roomId": "archives",
+      "x": 370.01,
+      "y": 643.79
+    },
+    {
+      "roomId": "archives",
+      "x": 384.98,
+      "y": 643.65
+    },
+    {
+      "roomId": "archives",
+      "x": 400.01,
+      "y": 643.51
+    },
+    {
+      "roomId": "archives",
+      "x": 419.99,
+      "y": 643.32
+    },
+    {
+      "roomId": "archives",
+      "x": 434.99,
+      "y": 643.18
+    },
+    {
+      "roomId": "archives",
+      "x": 449.99,
+      "y": 643.04
+    },
+    {
+      "roomId": "archives",
+      "x": 460.01,
+      "y": 642.95
+    },
+    {
+      "roomId": "archives",
+      "x": 474.98,
+      "y": 642.81
+    },
+    {
+      "roomId": "archives",
+      "x": 485,
+      "y": 642.71
+    },
+    {
+      "roomId": "archives",
+      "x": 499.97,
+      "y": 642.57
+    },
+    {
+      "roomId": "archives",
+      "x": 509.99,
+      "y": 642.48
+    },
+    {
+      "roomId": "archives",
+      "x": 524.96,
+      "y": 642.34
+    },
+    {
+      "roomId": "archives",
+      "x": 534.98,
+      "y": 642.25
+    },
+    {
+      "roomId": "archives",
+      "x": 549.98,
+      "y": 642.11
+    },
+    {
+      "roomId": "archives",
+      "x": 564.98,
+      "y": 641.97
+    },
+    {
+      "roomId": "archives",
+      "x": 575,
+      "y": 641.88
+    },
+    {
+      "roomId": "archives",
+      "x": 589.99,
+      "y": 641.74
+    },
+    {
+      "roomId": "archives",
+      "x": 604.99,
+      "y": 641.6
+    },
+    {
+      "roomId": "archives",
+      "x": 619.96,
+      "y": 641.46
+    },
+    {
+      "roomId": "archives",
+      "x": 629.98,
+      "y": 641.36
+    },
+    {
+      "roomId": "archives",
+      "x": 644.95,
+      "y": 641.22
+    },
+    {
+      "roomId": "archives",
+      "x": 654.97,
+      "y": 641.13
+    },
+    {
+      "roomId": "archives",
+      "x": 669.97,
+      "y": 640.99
+    },
+    {
+      "roomId": "archives",
+      "x": 689.98,
+      "y": 640.8
+    },
+    {
+      "roomId": "archives",
+      "x": 709.96,
+      "y": 640.62
+    },
+    {
+      "roomId": "archives",
+      "x": 724.96,
+      "y": 640.48
+    },
+    {
+      "roomId": "archives",
+      "x": 734.98,
+      "y": 640.38
+    },
+    {
+      "roomId": "archives",
+      "x": 749.95,
+      "y": 640.24
+    },
+    {
+      "roomId": "archives",
+      "x": 764.98,
+      "y": 640.1
+    },
+    {
+      "roomId": "archives",
+      "x": 779.98,
+      "y": 639.96
+    },
+    {
+      "roomId": "archives",
+      "x": 794.98,
+      "y": 639.82
+    },
+    {
+      "roomId": "archives",
+      "x": 814.95,
+      "y": 639.64
+    },
+    {
+      "roomId": "archives",
+      "x": 829.95,
+      "y": 639.5
+    },
+    {
+      "roomId": "archives",
+      "x": 839.97,
+      "y": 639.4
+    },
+    {
+      "roomId": "archives",
+      "x": 854.94,
+      "y": 639.26
+    },
+    {
+      "roomId": "archives",
+      "x": 874.95,
+      "y": 639.08
+    },
+    {
+      "roomId": "archives",
+      "x": 889.92,
+      "y": 638.94
+    },
+    {
+      "roomId": "archives",
+      "x": 899.97,
+      "y": 638.84
+    },
+    {
+      "roomId": "archives",
+      "x": 914.94,
+      "y": 638.7
+    },
+    {
+      "roomId": "archives",
+      "x": 929.94,
+      "y": 638.56
+    },
+    {
+      "roomId": "archives",
+      "x": 944.94,
+      "y": 638.42
+    },
+    {
+      "roomId": "archives",
+      "x": 959.97,
+      "y": 638.28
+    },
+    {
+      "roomId": "archives",
+      "x": 974.94,
+      "y": 638.14
+    },
+    {
+      "roomId": "archives",
+      "x": 989.94,
+      "y": 638
+    },
+    {
+      "roomId": "archives",
+      "x": 1004.94,
+      "y": 637.86
+    },
+    {
+      "roomId": "archives",
+      "x": 1019.94,
+      "y": 637.72
+    },
+    {
+      "roomId": "archives",
+      "x": 1034.94,
+      "y": 637.58
+    },
+    {
+      "roomId": "archives",
+      "x": 1049.93,
+      "y": 637.44
+    },
+    {
+      "roomId": "archives",
+      "x": 1064.93,
+      "y": 637.3
+    },
+    {
+      "roomId": "archives",
+      "x": 1074.95,
+      "y": 637.21
+    },
+    {
+      "roomId": "archives",
+      "x": 1089.92,
+      "y": 637.07
+    },
+    {
+      "roomId": "archives",
+      "x": 1104.95,
+      "y": 636.93
+    },
+    {
+      "roomId": "archives",
+      "x": 1119.92,
+      "y": 636.79
+    },
+    {
+      "roomId": "archives",
+      "x": 1129.94,
+      "y": 636.7
+    },
+    {
+      "roomId": "archives",
+      "x": 1144.94,
+      "y": 636.56
+    },
+    {
+      "roomId": "archives",
+      "x": 1159.91,
+      "y": 636.42
+    },
+    {
+      "roomId": "archives",
+      "x": 1169.93,
+      "y": 636.33
+    },
+    {
+      "roomId": "archives",
+      "x": 1184.93,
+      "y": 636.19
+    },
+    {
+      "roomId": "archives",
+      "x": 1204.91,
+      "y": 636
+    },
+    {
+      "roomId": "archives",
+      "x": 1219.94,
+      "y": 635.86
+    },
+    {
+      "roomId": "archives",
+      "x": 1234.94,
+      "y": 635.72
+    },
+    {
+      "roomId": "archives",
+      "x": 1249.94,
+      "y": 635.58
+    },
+    {
+      "roomId": "archives",
+      "x": 1264.94,
+      "y": 635.44
+    },
+    {
+      "roomId": "archives",
+      "x": 1284.91,
+      "y": 635.25
+    },
+    {
+      "roomId": "archives",
+      "x": 1299.91,
+      "y": 635.11
+    },
+    {
+      "roomId": "trophees",
+      "x": 240,
+      "y": 645
+    },
+    {
+      "roomId": "trophees",
+      "x": 244.98,
+      "y": 644.95
+    },
+    {
+      "roomId": "trophees",
+      "x": 259.98,
+      "y": 644.81
+    },
+    {
+      "roomId": "trophees",
+      "x": 274.95,
+      "y": 644.67
+    },
+    {
+      "roomId": "trophees",
+      "x": 289.95,
+      "y": 644.53
+    },
+    {
+      "roomId": "trophees",
+      "x": 309.96,
+      "y": 644.35
+    },
+    {
+      "roomId": "trophees",
+      "x": 324.96,
+      "y": 644.21
+    },
+    {
+      "roomId": "trophees",
+      "x": 334.98,
+      "y": 644.11
+    },
+    {
+      "roomId": "trophees",
+      "x": 354.95,
+      "y": 643.93
+    },
+    {
+      "roomId": "trophees",
+      "x": 379.94,
+      "y": 643.69
+    },
+    {
+      "roomId": "trophees",
+      "x": 399.95,
+      "y": 643.51
+    },
+    {
+      "roomId": "trophees",
+      "x": 419.96,
+      "y": 643.32
+    },
+    {
+      "roomId": "trophees",
+      "x": 434.96,
+      "y": 643.18
+    },
+    {
+      "roomId": "trophees",
+      "x": 454.94,
+      "y": 642.99
+    },
+    {
+      "roomId": "trophees",
+      "x": 469.94,
+      "y": 642.86
+    },
+    {
+      "roomId": "trophees",
+      "x": 489.92,
+      "y": 642.67
+    },
+    {
+      "roomId": "trophees",
+      "x": 504.92,
+      "y": 642.53
+    },
+    {
+      "roomId": "trophees",
+      "x": 514.94,
+      "y": 642.44
+    },
+    {
+      "roomId": "trophees",
+      "x": 529.94,
+      "y": 642.3
+    },
+    {
+      "roomId": "trophees",
+      "x": 549.95,
+      "y": 642.11
+    },
+    {
+      "roomId": "trophees",
+      "x": 569.93,
+      "y": 641.92
+    },
+    {
+      "roomId": "trophees",
+      "x": 594.91,
+      "y": 641.69
+    },
+    {
+      "roomId": "trophees",
+      "x": 604.93,
+      "y": 641.6
+    },
+    {
+      "roomId": "trophees",
+      "x": 624.91,
+      "y": 641.41
+    },
+    {
+      "roomId": "trophees",
+      "x": 639.91,
+      "y": 641.27
+    },
+    {
+      "roomId": "trophees",
+      "x": 654.91,
+      "y": 641.13
+    },
+    {
+      "roomId": "trophees",
+      "x": 674.89,
+      "y": 640.94
+    },
+    {
+      "roomId": "trophees",
+      "x": 684.91,
+      "y": 640.85
+    },
+    {
+      "roomId": "trophees",
+      "x": 704.89,
+      "y": 640.66
+    },
+    {
+      "roomId": "trophees",
+      "x": 714.91,
+      "y": 640.57
+    },
+    {
+      "roomId": "trophees",
+      "x": 739.9,
+      "y": 640.34
+    },
+    {
+      "roomId": "trophees",
+      "x": 749.92,
+      "y": 640.24
+    },
+    {
+      "roomId": "trophees",
+      "x": 764.92,
+      "y": 640.1
+    },
+    {
+      "roomId": "trophees",
+      "x": 779.92,
+      "y": 639.96
+    },
+    {
+      "roomId": "trophees",
+      "x": 799.9,
+      "y": 639.78
+    },
+    {
+      "roomId": "trophees",
+      "x": 814.89,
+      "y": 639.64
+    },
+    {
+      "roomId": "trophees",
+      "x": 829.89,
+      "y": 639.5
+    },
+    {
+      "roomId": "trophees",
+      "x": 844.89,
+      "y": 639.36
+    },
+    {
+      "roomId": "trophees",
+      "x": 859.89,
+      "y": 639.22
+    },
+    {
+      "roomId": "trophees",
+      "x": 874.89,
+      "y": 639.08
+    },
+    {
+      "roomId": "trophees",
+      "x": 884.91,
+      "y": 638.98
+    },
+    {
+      "roomId": "trophees",
+      "x": 909.9,
+      "y": 638.75
+    },
+    {
+      "roomId": "trophees",
+      "x": 924.9,
+      "y": 638.61
+    },
+    {
+      "roomId": "trophees",
+      "x": 939.87,
+      "y": 638.47
+    },
+    {
+      "roomId": "trophees",
+      "x": 959.88,
+      "y": 638.28
+    },
+    {
+      "roomId": "trophees",
+      "x": 974.88,
+      "y": 638.14
+    },
+    {
+      "roomId": "trophees",
+      "x": 994.89,
+      "y": 637.96
+    },
+    {
+      "roomId": "trophees",
+      "x": 1009.89,
+      "y": 637.82
+    },
+    {
+      "roomId": "trophees",
+      "x": 1024.89,
+      "y": 637.68
+    },
+    {
+      "roomId": "trophees",
+      "x": 1034.91,
+      "y": 637.58
+    },
+    {
+      "roomId": "trophees",
+      "x": 1049.87,
+      "y": 637.45
+    },
+    {
+      "roomId": "trophees",
+      "x": 1064.87,
+      "y": 637.31
+    },
+    {
+      "roomId": "trophees",
+      "x": 1079.87,
+      "y": 637.17
+    },
+    {
+      "roomId": "trophees",
+      "x": 1094.87,
+      "y": 637.03
+    },
+    {
+      "roomId": "trophees",
+      "x": 1109.87,
+      "y": 636.89
+    },
+    {
+      "roomId": "trophees",
+      "x": 1124.87,
+      "y": 636.75
+    },
+    {
+      "roomId": "trophees",
+      "x": 1139.87,
+      "y": 636.61
+    },
+    {
+      "roomId": "trophees",
+      "x": 1154.87,
+      "y": 636.47
+    },
+    {
+      "roomId": "trophees",
+      "x": 1169.87,
+      "y": 636.33
+    },
+    {
+      "roomId": "trophees",
+      "x": 1184.87,
+      "y": 636.19
+    },
+    {
+      "roomId": "trophees",
+      "x": 1194.89,
+      "y": 636.09
+    },
+    {
+      "roomId": "trophees",
+      "x": 1209.89,
+      "y": 635.95
+    },
+    {
+      "roomId": "trophees",
+      "x": 1224.89,
+      "y": 635.81
+    },
+    {
+      "roomId": "trophees",
+      "x": 1239.89,
+      "y": 635.67
+    },
+    {
+      "roomId": "trophees",
+      "x": 1254.89,
+      "y": 635.53
+    },
+    {
+      "roomId": "trophees",
+      "x": 1269.89,
+      "y": 635.39
+    },
+    {
+      "roomId": "trophees",
+      "x": 1284.88,
+      "y": 635.25
+    },
+    {
+      "roomId": "trophees",
+      "x": 1299.88,
+      "y": 635.11
+    },
+    {
+      "roomId": "soins",
+      "x": 240,
+      "y": 645
+    },
+    {
+      "roomId": "soins",
+      "x": 255,
+      "y": 644.86
+    },
+    {
+      "roomId": "soins",
+      "x": 270,
+      "y": 644.72
+    },
+    {
+      "roomId": "soins",
+      "x": 285,
+      "y": 644.58
+    },
+    {
+      "roomId": "soins",
+      "x": 309.99,
+      "y": 644.35
+    },
+    {
+      "roomId": "soins",
+      "x": 330,
+      "y": 644.16
+    },
+    {
+      "roomId": "soins",
+      "x": 345,
+      "y": 644.02
+    },
+    {
+      "roomId": "soins",
+      "x": 359.96,
+      "y": 643.88
+    },
+    {
+      "roomId": "soins",
+      "x": 374.96,
+      "y": 643.74
+    },
+    {
+      "roomId": "soins",
+      "x": 389.96,
+      "y": 643.6
+    },
+    {
+      "roomId": "soins",
+      "x": 404.96,
+      "y": 643.46
+    },
+    {
+      "roomId": "soins",
+      "x": 414.98,
+      "y": 643.37
+    },
+    {
+      "roomId": "soins",
+      "x": 429.98,
+      "y": 643.23
+    },
+    {
+      "roomId": "soins",
+      "x": 444.98,
+      "y": 643.09
+    },
+    {
+      "roomId": "soins",
+      "x": 459.98,
+      "y": 642.95
+    },
+    {
+      "roomId": "soins",
+      "x": 474.98,
+      "y": 642.81
+    },
+    {
+      "roomId": "soins",
+      "x": 489.98,
+      "y": 642.67
+    },
+    {
+      "roomId": "soins",
+      "x": 509.99,
+      "y": 642.48
+    },
+    {
+      "roomId": "soins",
+      "x": 534.98,
+      "y": 642.25
+    },
+    {
+      "roomId": "soins",
+      "x": 549.98,
+      "y": 642.11
+    },
+    {
+      "roomId": "soins",
+      "x": 569.99,
+      "y": 641.92
+    },
+    {
+      "roomId": "soins",
+      "x": 584.95,
+      "y": 641.78
+    },
+    {
+      "roomId": "soins",
+      "x": 594.97,
+      "y": 641.69
+    },
+    {
+      "roomId": "soins",
+      "x": 609.97,
+      "y": 641.55
+    },
+    {
+      "roomId": "soins",
+      "x": 624.97,
+      "y": 641.41
+    },
+    {
+      "roomId": "soins",
+      "x": 639.97,
+      "y": 641.27
+    },
+    {
+      "roomId": "soins",
+      "x": 654.97,
+      "y": 641.13
+    },
+    {
+      "roomId": "soins",
+      "x": 674.98,
+      "y": 640.94
+    },
+    {
+      "roomId": "soins",
+      "x": 694.96,
+      "y": 640.76
+    },
+    {
+      "roomId": "soins",
+      "x": 705.01,
+      "y": 640.66
+    },
+    {
+      "roomId": "soins",
+      "x": 720.01,
+      "y": 640.52
+    },
+    {
+      "roomId": "soins",
+      "x": 735.01,
+      "y": 640.38
+    },
+    {
+      "roomId": "soins",
+      "x": 749.98,
+      "y": 640.24
+    },
+    {
+      "roomId": "soins",
+      "x": 770.02,
+      "y": 640.06
+    },
+    {
+      "roomId": "soins",
+      "x": 785.02,
+      "y": 639.92
+    },
+    {
+      "roomId": "soins",
+      "x": 795.04,
+      "y": 639.82
+    },
+    {
+      "roomId": "soins",
+      "x": 810.01,
+      "y": 639.68
+    },
+    {
+      "roomId": "soins",
+      "x": 825,
+      "y": 639.54
+    },
+    {
+      "roomId": "soins",
+      "x": 844.98,
+      "y": 639.36
+    },
+    {
+      "roomId": "soins",
+      "x": 859.98,
+      "y": 639.22
+    },
+    {
+      "roomId": "soins",
+      "x": 874.95,
+      "y": 639.08
+    },
+    {
+      "roomId": "soins",
+      "x": 889.95,
+      "y": 638.94
+    },
+    {
+      "roomId": "soins",
+      "x": 909.96,
+      "y": 638.75
+    },
+    {
+      "roomId": "soins",
+      "x": 924.96,
+      "y": 638.61
+    },
+    {
+      "roomId": "soins",
+      "x": 939.96,
+      "y": 638.47
+    },
+    {
+      "roomId": "soins",
+      "x": 954.96,
+      "y": 638.33
+    },
+    {
+      "roomId": "soins",
+      "x": 964.98,
+      "y": 638.24
+    },
+    {
+      "roomId": "soins",
+      "x": 979.95,
+      "y": 638.1
+    },
+    {
+      "roomId": "soins",
+      "x": 989.97,
+      "y": 638
+    },
+    {
+      "roomId": "soins",
+      "x": 1004.97,
+      "y": 637.86
+    },
+    {
+      "roomId": "soins",
+      "x": 1019.97,
+      "y": 637.72
+    },
+    {
+      "roomId": "soins",
+      "x": 1034.97,
+      "y": 637.58
+    },
+    {
+      "roomId": "soins",
+      "x": 1049.96,
+      "y": 637.44
+    },
+    {
+      "roomId": "soins",
+      "x": 1064.96,
+      "y": 637.3
+    },
+    {
+      "roomId": "soins",
+      "x": 1079.96,
+      "y": 637.16
+    },
+    {
+      "roomId": "soins",
+      "x": 1094.96,
+      "y": 637.02
+    },
+    {
+      "roomId": "soins",
+      "x": 1109.96,
+      "y": 636.88
+    },
+    {
+      "roomId": "soins",
+      "x": 1124.96,
+      "y": 636.74
+    },
+    {
+      "roomId": "soins",
+      "x": 1139.96,
+      "y": 636.6
+    },
+    {
+      "roomId": "soins",
+      "x": 1150.01,
+      "y": 636.51
+    },
+    {
+      "roomId": "soins",
+      "x": 1169.96,
+      "y": 636.33
+    },
+    {
+      "roomId": "soins",
+      "x": 1184.96,
+      "y": 636.19
+    },
+    {
+      "roomId": "soins",
+      "x": 1194.98,
+      "y": 636.09
+    },
+    {
+      "roomId": "soins",
+      "x": 1214.99,
+      "y": 635.9
+    },
+    {
+      "roomId": "soins",
+      "x": 1229.99,
+      "y": 635.77
+    },
+    {
+      "roomId": "soins",
+      "x": 1244.99,
+      "y": 635.63
+    },
+    {
+      "roomId": "soins",
+      "x": 1259.99,
+      "y": 635.49
+    },
+    {
+      "roomId": "soins",
+      "x": 1274.95,
+      "y": 635.35
+    },
+    {
+      "roomId": "soins",
+      "x": 1294.96,
+      "y": 635.16
+    },
+    {
+      "roomId": "soins",
+      "x": 1309.93,
+      "y": 635.02
+    },
+    {
+      "roomId": "hangar",
+      "x": 240,
+      "y": 645
+    },
+    {
+      "roomId": "hangar",
+      "x": 254.97,
+      "y": 645.13
+    },
+    {
+      "roomId": "hangar",
+      "x": 274.98,
+      "y": 645.3
+    },
+    {
+      "roomId": "hangar",
+      "x": 289.98,
+      "y": 645.43
+    },
+    {
+      "roomId": "hangar",
+      "x": 314.97,
+      "y": 645.65
+    },
+    {
+      "roomId": "hangar",
+      "x": 334.98,
+      "y": 645.82
+    },
+    {
+      "roomId": "hangar",
+      "x": 359.97,
+      "y": 646.03
+    },
+    {
+      "roomId": "hangar",
+      "x": 369.99,
+      "y": 646.12
+    },
+    {
+      "roomId": "hangar",
+      "x": 389.99,
+      "y": 646.29
+    },
+    {
+      "roomId": "hangar",
+      "x": 404.99,
+      "y": 646.42
+    },
+    {
+      "roomId": "hangar",
+      "x": 415.01,
+      "y": 646.51
+    },
+    {
+      "roomId": "hangar",
+      "x": 440,
+      "y": 646.72
+    },
+    {
+      "roomId": "hangar",
+      "x": 455,
+      "y": 646.85
+    },
+    {
+      "roomId": "hangar",
+      "x": 470,
+      "y": 646.98
+    },
+    {
+      "roomId": "hangar",
+      "x": 489.98,
+      "y": 647.16
+    },
+    {
+      "roomId": "hangar",
+      "x": 504.98,
+      "y": 647.28
+    },
+    {
+      "roomId": "hangar",
+      "x": 529.97,
+      "y": 647.5
+    },
+    {
+      "roomId": "hangar",
+      "x": 544.97,
+      "y": 647.63
+    },
+    {
+      "roomId": "hangar",
+      "x": 564.95,
+      "y": 647.8
+    },
+    {
+      "roomId": "hangar",
+      "x": 574.97,
+      "y": 647.89
+    },
+    {
+      "roomId": "hangar",
+      "x": 594.95,
+      "y": 648.06
+    },
+    {
+      "roomId": "hangar",
+      "x": 609.95,
+      "y": 648.19
+    },
+    {
+      "roomId": "hangar",
+      "x": 619.97,
+      "y": 648.28
+    },
+    {
+      "roomId": "hangar",
+      "x": 639.95,
+      "y": 648.45
+    },
+    {
+      "roomId": "hangar",
+      "x": 654.97,
+      "y": 648.58
+    },
+    {
+      "roomId": "hangar",
+      "x": 669.97,
+      "y": 648.71
+    },
+    {
+      "roomId": "hangar",
+      "x": 694.96,
+      "y": 648.92
+    },
+    {
+      "roomId": "hangar",
+      "x": 704.98,
+      "y": 649.01
+    },
+    {
+      "roomId": "hangar",
+      "x": 719.98,
+      "y": 649.14
+    },
+    {
+      "roomId": "hangar",
+      "x": 734.98,
+      "y": 649.27
+    },
+    {
+      "roomId": "hangar",
+      "x": 759.97,
+      "y": 649.48
+    },
+    {
+      "roomId": "hangar",
+      "x": 774.97,
+      "y": 649.61
+    },
+    {
+      "roomId": "hangar",
+      "x": 799.96,
+      "y": 649.83
+    },
+    {
+      "roomId": "hangar",
+      "x": 814.96,
+      "y": 649.96
+    },
+    {
+      "roomId": "hangar",
+      "x": 820,
+      "y": 650
+    },
+    {
+      "roomId": "hangar",
+      "x": 829.94,
+      "y": 648.76
+    },
+    {
+      "roomId": "hangar",
+      "x": 844.83,
+      "y": 646.9
+    },
+    {
+      "roomId": "hangar",
+      "x": 859.68,
+      "y": 645.04
+    },
+    {
+      "roomId": "hangar",
+      "x": 869.62,
+      "y": 643.8
+    },
+    {
+      "roomId": "hangar",
+      "x": 884.48,
+      "y": 641.94
+    },
+    {
+      "roomId": "hangar",
+      "x": 894.42,
+      "y": 640.7
+    },
+    {
+      "roomId": "hangar",
+      "x": 909.31,
+      "y": 638.84
+    },
+    {
+      "roomId": "hangar",
+      "x": 924.16,
+      "y": 636.98
+    },
+    {
+      "roomId": "hangar",
+      "x": 939.04,
+      "y": 635.12
+    },
+    {
+      "roomId": "hangar",
+      "x": 948.99,
+      "y": 633.88
+    },
+    {
+      "roomId": "hangar",
+      "x": 958.93,
+      "y": 632.63
+    },
+    {
+      "roomId": "hangar",
+      "x": 973.78,
+      "y": 630.78
+    },
+    {
+      "roomId": "hangar",
+      "x": 983.73,
+      "y": 629.53
+    },
+    {
+      "roomId": "hangar",
+      "x": 998.61,
+      "y": 627.67
+    },
+    {
+      "roomId": "hangar",
+      "x": 1018.47,
+      "y": 625.19
+    },
+    {
+      "roomId": "hangar",
+      "x": 1033.35,
+      "y": 623.33
+    },
+    {
+      "roomId": "hangar",
+      "x": 1043.29,
+      "y": 622.09
+    },
+    {
+      "roomId": "hangar",
+      "x": 1058.18,
+      "y": 620.23
+    },
+    {
+      "roomId": "hangar",
+      "x": 1060,
+      "y": 620
+    },
+    {
+      "roomId": "hangar",
+      "x": 1049.98,
+      "y": 620.16
+    },
+    {
+      "roomId": "hangar",
+      "x": 1034.98,
+      "y": 620.4
+    },
+    {
+      "roomId": "hangar",
+      "x": 1015.01,
+      "y": 620.72
+    },
+    {
+      "roomId": "hangar",
+      "x": 1004.99,
+      "y": 620.89
+    },
+    {
+      "roomId": "hangar",
+      "x": 990.02,
+      "y": 621.13
+    },
+    {
+      "roomId": "hangar",
+      "x": 980,
+      "y": 621.29
+    },
+    {
+      "roomId": "hangar",
+      "x": 965,
+      "y": 621.53
+    },
+    {
+      "roomId": "hangar",
+      "x": 950,
+      "y": 621.77
+    },
+    {
+      "roomId": "hangar",
+      "x": 935.01,
+      "y": 622.01
+    },
+    {
+      "roomId": "hangar",
+      "x": 920.01,
+      "y": 622.25
+    },
+    {
+      "roomId": "hangar",
+      "x": 909.99,
+      "y": 622.41
+    },
+    {
+      "roomId": "hangar",
+      "x": 895.02,
+      "y": 622.66
+    },
+    {
+      "roomId": "hangar",
+      "x": 880.02,
+      "y": 622.9
+    },
+    {
+      "roomId": "hangar",
+      "x": 865.03,
+      "y": 623.14
+    },
+    {
+      "roomId": "hangar",
+      "x": 850.03,
+      "y": 623.38
+    },
+    {
+      "roomId": "hangar",
+      "x": 835.03,
+      "y": 623.62
+    },
+    {
+      "roomId": "hangar",
+      "x": 825.01,
+      "y": 623.78
+    },
+    {
+      "roomId": "hangar",
+      "x": 810.04,
+      "y": 624.02
+    },
+    {
+      "roomId": "hangar",
+      "x": 795.04,
+      "y": 624.26
+    },
+    {
+      "roomId": "hangar",
+      "x": 785.03,
+      "y": 624.43
+    },
+    {
+      "roomId": "hangar",
+      "x": 770.03,
+      "y": 624.67
+    },
+    {
+      "roomId": "hangar",
+      "x": 755.06,
+      "y": 624.91
+    },
+    {
+      "roomId": "hangar",
+      "x": 745.04,
+      "y": 625.07
+    },
+    {
+      "roomId": "hangar",
+      "x": 735.02,
+      "y": 625.23
+    },
+    {
+      "roomId": "hangar",
+      "x": 720.05,
+      "y": 625.47
+    },
+    {
+      "roomId": "hangar",
+      "x": 710.04,
+      "y": 625.63
+    },
+    {
+      "roomId": "hangar",
+      "x": 690.06,
+      "y": 625.95
+    },
+    {
+      "roomId": "hangar",
+      "x": 675.06,
+      "y": 626.2
+    },
+    {
+      "roomId": "hangar",
+      "x": 655.05,
+      "y": 626.52
+    },
+    {
+      "roomId": "hangar",
+      "x": 635.08,
+      "y": 626.84
+    },
+    {
+      "roomId": "hangar",
+      "x": 625.06,
+      "y": 627
+    },
+    {
+      "roomId": "hangar",
+      "x": 610.09,
+      "y": 627.24
+    },
+    {
+      "roomId": "hangar",
+      "x": 600.07,
+      "y": 627.4
+    },
+    {
+      "roomId": "hangar",
+      "x": 590.05,
+      "y": 627.56
+    },
+    {
+      "roomId": "hangar",
+      "x": 575.05,
+      "y": 627.8
+    },
+    {
+      "roomId": "hangar",
+      "x": 560.05,
+      "y": 628.05
+    },
+    {
+      "roomId": "hangar",
+      "x": 545.06,
+      "y": 628.29
+    },
+    {
+      "roomId": "hangar",
+      "x": 530.09,
+      "y": 628.53
+    },
+    {
+      "roomId": "hangar",
+      "x": 520.07,
+      "y": 628.69
+    },
+    {
+      "roomId": "hangar",
+      "x": 505.07,
+      "y": 628.93
+    },
+    {
+      "roomId": "hangar",
+      "x": 490.07,
+      "y": 629.17
+    },
+    {
+      "roomId": "hangar",
+      "x": 470.1,
+      "y": 629.49
+    },
+    {
+      "roomId": "hangar",
+      "x": 460.08,
+      "y": 629.66
+    },
+    {
+      "roomId": "hangar",
+      "x": 445.08,
+      "y": 629.9
+    },
+    {
+      "roomId": "hangar",
+      "x": 430.08,
+      "y": 630.14
+    },
+    {
+      "roomId": "hangar",
+      "x": 415.11,
+      "y": 630.38
+    },
+    {
+      "roomId": "hangar",
+      "x": 400.12,
+      "y": 630.62
+    },
+    {
+      "roomId": "hangar",
+      "x": 390.1,
+      "y": 630.78
+    },
+    {
+      "roomId": "hangar",
+      "x": 375.1,
+      "y": 631.02
+    },
+    {
+      "roomId": "hangar",
+      "x": 360.1,
+      "y": 631.26
+    },
+    {
+      "roomId": "hangar",
+      "x": 345.13,
+      "y": 631.51
+    },
+    {
+      "roomId": "hangar",
+      "x": 330.13,
+      "y": 631.75
+    },
+    {
+      "roomId": "hangar",
+      "x": 320.12,
+      "y": 631.91
+    },
+    {
+      "roomId": "hangar",
+      "x": 305.15,
+      "y": 632.15
+    },
+    {
+      "roomId": "hangar",
+      "x": 295.1,
+      "y": 632.31
+    },
+    {
+      "roomId": "hangar",
+      "x": 280.13,
+      "y": 632.55
+    },
+    {
+      "roomId": "hangar",
+      "x": 265.13,
+      "y": 632.79
+    },
+    {
+      "roomId": "hangar",
+      "x": 250.13,
+      "y": 633.03
+    },
+    {
+      "roomId": "hangar",
+      "x": 235.14,
+      "y": 633.28
+    },
+    {
+      "roomId": "hangar",
+      "x": 225.12,
+      "y": 633.44
+    },
+    {
+      "roomId": "hangar",
+      "x": 210.15,
+      "y": 633.68
+    },
+    {
+      "roomId": "hangar",
+      "x": 195.12,
+      "y": 633.92
+    },
+    {
+      "roomId": "hangar",
+      "x": 180.15,
+      "y": 634.16
+    },
+    {
+      "roomId": "hangar",
+      "x": 170.14,
+      "y": 634.32
+    },
+    {
+      "roomId": "hangar",
+      "x": 155.14,
+      "y": 634.56
+    },
+    {
+      "roomId": "hangar",
+      "x": 140.17,
+      "y": 634.8
+    },
+    {
+      "roomId": "hangar",
+      "x": 130.15,
+      "y": 634.97
+    },
+    {
+      "roomId": "soins",
+      "x": 1200,
+      "y": 645
+    },
+    {
+      "roomId": "soins",
+      "x": 1194.99,
+      "y": 645.11
+    },
+    {
+      "roomId": "soins",
+      "x": 1180.02,
+      "y": 645.43
+    },
+    {
+      "roomId": "soins",
+      "x": 1165.03,
+      "y": 645.76
+    },
+    {
+      "roomId": "soins",
+      "x": 1145.05,
+      "y": 646.19
+    },
+    {
+      "roomId": "soins",
+      "x": 1135.04,
+      "y": 646.41
+    },
+    {
+      "roomId": "soins",
+      "x": 1115.03,
+      "y": 646.85
+    },
+    {
+      "roomId": "soins",
+      "x": 1095.02,
+      "y": 647.28
+    },
+    {
+      "roomId": "soins",
+      "x": 1080.03,
+      "y": 647.61
+    },
+    {
+      "roomId": "soins",
+      "x": 1065.03,
+      "y": 647.93
+    },
+    {
+      "roomId": "soins",
+      "x": 1050.04,
+      "y": 648.26
+    },
+    {
+      "roomId": "soins",
+      "x": 1035.07,
+      "y": 648.59
+    },
+    {
+      "roomId": "soins",
+      "x": 1025.05,
+      "y": 648.8
+    },
+    {
+      "roomId": "soins",
+      "x": 1000.07,
+      "y": 649.35
+    },
+    {
+      "roomId": "soins",
+      "x": 990.05,
+      "y": 649.56
+    },
+    {
+      "roomId": "soins",
+      "x": 970.07,
+      "y": 650
+    },
+    {
+      "roomId": "soins",
+      "x": 960.06,
+      "y": 650.22
+    },
+    {
+      "roomId": "soins",
+      "x": 945.09,
+      "y": 650.54
+    },
+    {
+      "roomId": "soins",
+      "x": 930.09,
+      "y": 650.87
+    },
+    {
+      "roomId": "soins",
+      "x": 910.12,
+      "y": 651.3
+    },
+    {
+      "roomId": "soins",
+      "x": 895.12,
+      "y": 651.63
+    },
+    {
+      "roomId": "soins",
+      "x": 880.13,
+      "y": 651.95
+    },
+    {
+      "roomId": "soins",
+      "x": 865.13,
+      "y": 652.28
+    },
+    {
+      "roomId": "soins",
+      "x": 840.15,
+      "y": 652.82
+    },
+    {
+      "roomId": "soins",
+      "x": 830.13,
+      "y": 653.04
+    },
+    {
+      "roomId": "soins",
+      "x": 805.14,
+      "y": 653.58
+    },
+    {
+      "roomId": "soins",
+      "x": 790.15,
+      "y": 653.91
+    },
+    {
+      "roomId": "soins",
+      "x": 775.18,
+      "y": 654.24
+    },
+    {
+      "roomId": "soins",
+      "x": 765.16,
+      "y": 654.45
+    },
+    {
+      "roomId": "soins",
+      "x": 755.15,
+      "y": 654.67
+    },
+    {
+      "roomId": "soins",
+      "x": 740,
+      "y": 655
+    },
+    {
+      "roomId": "soins",
+      "x": 744.97,
+      "y": 654.4
+    },
+    {
+      "roomId": "soins",
+      "x": 759.87,
+      "y": 652.6
+    },
+    {
+      "roomId": "soins",
+      "x": 779.7,
+      "y": 650.21
+    },
+    {
+      "roomId": "soins",
+      "x": 789.65,
+      "y": 649.01
+    },
+    {
+      "roomId": "soins",
+      "x": 804.54,
+      "y": 647.21
+    },
+    {
+      "roomId": "soins",
+      "x": 819.43,
+      "y": 645.41
+    },
+    {
+      "roomId": "soins",
+      "x": 834.33,
+      "y": 643.62
+    },
+    {
+      "roomId": "soins",
+      "x": 849.22,
+      "y": 641.82
+    },
+    {
+      "roomId": "soins",
+      "x": 864.11,
+      "y": 640.02
+    },
+    {
+      "roomId": "soins",
+      "x": 878.97,
+      "y": 638.23
+    },
+    {
+      "roomId": "soins",
+      "x": 888.92,
+      "y": 637.03
+    },
+    {
+      "roomId": "soins",
+      "x": 898.87,
+      "y": 635.83
+    },
+    {
+      "roomId": "soins",
+      "x": 913.76,
+      "y": 634.03
+    },
+    {
+      "roomId": "soins",
+      "x": 928.62,
+      "y": 632.24
+    },
+    {
+      "roomId": "soins",
+      "x": 938.57,
+      "y": 631.03
+    },
+    {
+      "roomId": "soins",
+      "x": 953.46,
+      "y": 629.24
+    },
+    {
+      "roomId": "soins",
+      "x": 968.35,
+      "y": 627.44
+    },
+    {
+      "roomId": "soins",
+      "x": 983.24,
+      "y": 625.64
+    },
+    {
+      "roomId": "soins",
+      "x": 998.11,
+      "y": 623.85
+    },
+    {
+      "roomId": "soins",
+      "x": 1008.05,
+      "y": 622.65
+    },
+    {
+      "roomId": "soins",
+      "x": 1022.95,
+      "y": 620.85
+    },
+    {
+      "roomId": "soins",
+      "x": 1030,
+      "y": 620
+    },
+    {
+      "roomId": "soins",
+      "x": 1035,
+      "y": 620.27
+    },
+    {
+      "roomId": "soins",
+      "x": 1049.95,
+      "y": 621.06
+    },
+    {
+      "roomId": "soins",
+      "x": 1064.96,
+      "y": 621.86
+    },
+    {
+      "roomId": "soins",
+      "x": 1079.91,
+      "y": 622.65
+    },
+    {
+      "roomId": "soins",
+      "x": 1089.92,
+      "y": 623.19
+    },
+    {
+      "roomId": "soins",
+      "x": 1104.89,
+      "y": 623.98
+    },
+    {
+      "roomId": "soins",
+      "x": 1119.87,
+      "y": 624.78
+    },
+    {
+      "roomId": "soins",
+      "x": 1134.85,
+      "y": 625.58
+    },
+    {
+      "roomId": "soins",
+      "x": 1149.83,
+      "y": 626.37
+    },
+    {
+      "roomId": "soins",
+      "x": 1164.81,
+      "y": 627.17
+    },
+    {
+      "roomId": "soins",
+      "x": 1179.76,
+      "y": 627.97
+    },
+    {
+      "roomId": "soins",
+      "x": 1189.76,
+      "y": 628.5
+    },
+    {
+      "roomId": "soins",
+      "x": 1204.74,
+      "y": 629.29
+    },
+    {
+      "roomId": "soins",
+      "x": 1219.72,
+      "y": 630.09
+    },
+    {
+      "roomId": "soins",
+      "x": 1234.7,
+      "y": 630.89
+    },
+    {
+      "roomId": "soins",
+      "x": 1249.65,
+      "y": 631.68
+    },
+    {
+      "roomId": "soins",
+      "x": 1259.66,
+      "y": 632.22
+    },
+    {
+      "roomId": "soins",
+      "x": 1274.63,
+      "y": 633.01
+    },
+    {
+      "roomId": "soins",
+      "x": 1284.64,
+      "y": 633.54
+    },
+    {
+      "roomId": "soins",
+      "x": 1299.59,
+      "y": 634.34
+    },
+    {
+      "roomId": "soins",
+      "x": 1309.59,
+      "y": 634.87
+    },
+    {
+      "roomId": "hangar",
+      "x": 240,
+      "y": 645
+    },
+    {
+      "roomId": "hangar",
+      "x": 245.01,
+      "y": 645.04
+    },
+    {
+      "roomId": "hangar",
+      "x": 264.99,
+      "y": 645.22
+    },
+    {
+      "roomId": "hangar",
+      "x": 279.99,
+      "y": 645.34
+    },
+    {
+      "roomId": "hangar",
+      "x": 294.99,
+      "y": 645.47
+    },
+    {
+      "roomId": "hangar",
+      "x": 309.96,
+      "y": 645.6
+    },
+    {
+      "roomId": "hangar",
+      "x": 329.97,
+      "y": 645.78
+    },
+    {
+      "roomId": "hangar",
+      "x": 344.97,
+      "y": 645.9
+    },
+    {
+      "roomId": "hangar",
+      "x": 359.97,
+      "y": 646.03
+    },
+    {
+      "roomId": "hangar",
+      "x": 374.96,
+      "y": 646.16
+    },
+    {
+      "roomId": "hangar",
+      "x": 389.96,
+      "y": 646.29
+    },
+    {
+      "roomId": "hangar",
+      "x": 409.94,
+      "y": 646.47
+    },
+    {
+      "roomId": "hangar",
+      "x": 419.96,
+      "y": 646.55
+    },
+    {
+      "roomId": "hangar",
+      "x": 434.96,
+      "y": 646.68
+    },
+    {
+      "roomId": "hangar",
+      "x": 449.93,
+      "y": 646.81
+    },
+    {
+      "roomId": "hangar",
+      "x": 464.96,
+      "y": 646.94
+    },
+    {
+      "roomId": "hangar",
+      "x": 479.96,
+      "y": 647.07
+    },
+    {
+      "roomId": "hangar",
+      "x": 494.96,
+      "y": 647.2
+    },
+    {
+      "roomId": "hangar",
+      "x": 509.96,
+      "y": 647.33
+    },
+    {
+      "roomId": "hangar",
+      "x": 534.92,
+      "y": 647.54
+    },
+    {
+      "roomId": "hangar",
+      "x": 549.89,
+      "y": 647.67
+    },
+    {
+      "roomId": "hangar",
+      "x": 559.91,
+      "y": 647.76
+    },
+    {
+      "roomId": "hangar",
+      "x": 579.92,
+      "y": 647.93
+    },
+    {
+      "roomId": "hangar",
+      "x": 594.92,
+      "y": 648.06
+    },
+    {
+      "roomId": "hangar",
+      "x": 614.9,
+      "y": 648.23
+    },
+    {
+      "roomId": "hangar",
+      "x": 639.89,
+      "y": 648.45
+    },
+    {
+      "roomId": "hangar",
+      "x": 649.9,
+      "y": 648.53
+    },
+    {
+      "roomId": "hangar",
+      "x": 664.9,
+      "y": 648.66
+    },
+    {
+      "roomId": "hangar",
+      "x": 679.87,
+      "y": 648.79
+    },
+    {
+      "roomId": "hangar",
+      "x": 694.87,
+      "y": 648.92
+    },
+    {
+      "roomId": "hangar",
+      "x": 709.87,
+      "y": 649.05
+    },
+    {
+      "roomId": "hangar",
+      "x": 724.84,
+      "y": 649.18
+    },
+    {
+      "roomId": "hangar",
+      "x": 739.84,
+      "y": 649.31
+    },
+    {
+      "roomId": "hangar",
+      "x": 764.83,
+      "y": 649.52
+    },
+    {
+      "roomId": "hangar",
+      "x": 779.83,
+      "y": 649.65
+    },
+    {
+      "roomId": "hangar",
+      "x": 794.8,
+      "y": 649.78
+    },
+    {
+      "roomId": "hangar",
+      "x": 804.82,
+      "y": 649.87
+    },
+    {
+      "roomId": "hangar",
+      "x": 820,
+      "y": 650
+    }
+  ],
+  "saveChecks": [
+    {
+      "name": "trust-read",
+      "unchanged": true,
+      "sha256": "388ce161c3cf60a31e48bdc084492a59408d05d8f460d51fb224f50fc6806359"
+    }
+  ],
+  "escapeChecks": [
+    {
+      "acknowledgement": {
+        "id": "sealed-lot",
+        "type": "accept",
+        "branch": null,
+        "revision": 1
+      },
+      "focused": {
+        "tag": "BUTTON",
+        "action": null,
+        "guide": "seal-controls",
+        "returnControl": false
+      },
+      "dossierClosed": true,
+      "settingsOpened": false,
+      "saveUnchanged": true,
+      "saveSha256": "8f31abe480a32f8a82d4393a2fd5fc84508ba11f0f06826e45d4ac404acc9127"
+    },
+    {
+      "acknowledgement": {
+        "id": "sealed-lot",
+        "type": "inspect-witness",
+        "branch": null,
+        "revision": 2
+      },
+      "focused": {
+        "tag": "BUTTON",
+        "action": null,
+        "guide": "lot-archive",
+        "returnControl": false
+      },
+      "dossierClosed": true,
+      "settingsOpened": false,
+      "saveUnchanged": true,
+      "saveSha256": "ac853d312d335609fc6d816ee2616a13734c23c7a185a43dcd825f4a5500765e"
+    },
+    {
+      "acknowledgement": {
+        "id": "sealed-lot",
+        "type": "read-reference",
+        "branch": null,
+        "revision": 3
+      },
+      "focused": {
+        "tag": "BUTTON",
+        "action": null,
+        "guide": "seal-controls",
+        "returnControl": false
+      },
+      "dossierClosed": true,
+      "settingsOpened": false,
+      "saveUnchanged": true,
+      "saveSha256": "08d06884e60d9d484637897f548cabac8b2c9a6079672fdae175375e5ae774b8"
+    },
+    {
+      "acknowledgement": {
+        "id": "sealed-lot",
+        "type": "isolate",
+        "branch": "A",
+        "revision": 4
+      },
+      "focused": {
+        "tag": "BUTTON",
+        "action": null,
+        "guide": "lot-archive",
+        "returnControl": false
+      },
+      "dossierClosed": true,
+      "settingsOpened": false,
+      "saveUnchanged": true,
+      "saveSha256": "2bd089b1a566f761a0229f98a13b1fbdb05977ba2e72b5fa5c00f22a4326b613"
+    },
+    {
+      "acknowledgement": {
+        "id": "sealed-lot",
+        "type": "read-reference",
+        "branch": null,
+        "revision": 5
+      },
+      "focused": {
+        "tag": "BUTTON",
+        "action": null,
+        "guide": "seal-controls",
+        "returnControl": false
+      },
+      "dossierClosed": true,
+      "settingsOpened": false,
+      "saveUnchanged": true,
+      "saveSha256": "4cda91e61ebbec2b3468ba3737a361ae96e27b8f825cca5808ccd721b87ca698"
+    },
+    {
+      "acknowledgement": null,
+      "focused": {
+        "tag": "SUMMARY",
+        "action": null,
+        "guide": null,
+        "returnControl": false
+      },
+      "dossierClosed": true,
+      "settingsOpened": false,
+      "saveUnchanged": true,
+      "saveSha256": "4cda91e61ebbec2b3468ba3737a361ae96e27b8f825cca5808ccd721b87ca698"
+    },
+    {
+      "acknowledgement": {
+        "id": "sealed-lot",
+        "type": "isolate",
+        "branch": "B",
+        "revision": 6
+      },
+      "focused": {
+        "tag": "BUTTON",
+        "action": null,
+        "guide": "medical-pressure",
+        "returnControl": false
+      },
+      "dossierClosed": true,
+      "settingsOpened": false,
+      "saveUnchanged": true,
+      "saveSha256": "857847dfb285c1c8554ff2651d6f1d1429e12d156e460f5536e1adbeffc6e0aa"
+    },
+    {
+      "acknowledgement": {
+        "id": "sealed-lot",
+        "type": "check-pressure",
+        "branch": null,
+        "revision": 7
+      },
+      "focused": {
+        "tag": "BUTTON",
+        "action": null,
+        "guide": "hangar-briefing",
+        "returnControl": false
+      },
+      "dossierClosed": true,
+      "settingsOpened": false,
+      "saveUnchanged": true,
+      "saveSha256": "4243d5f120a336fa8300f01e88f9e2077c75043ae86d9f5be7236b12c4e98385"
+    },
+    {
+      "acknowledgement": {
+        "id": "sealed-lot",
+        "type": "close-lot",
+        "branch": null,
+        "revision": 8
+      },
+      "focused": {
+        "tag": "BUTTON",
+        "action": null,
+        "guide": null,
+        "returnControl": true
+      },
+      "dossierClosed": true,
+      "settingsOpened": false,
+      "saveUnchanged": true,
+      "saveSha256": "388ce161c3cf60a31e48bdc084492a59408d05d8f460d51fb224f50fc6806359"
+    }
+  ],
+  "servedScripts": [
+    {
+      "pathname": "/_next/static/chunks/webpack-6a12bbe05b2ab53d.js",
+      "bytes": 8781,
+      "sha256": "64f034b5b3e8c43831cb6bd44a31defa73189a8b011535ffb677724b4857e8f4",
+      "buildSha256": "64f034b5b3e8c43831cb6bd44a31defa73189a8b011535ffb677724b4857e8f4",
+      "matches": true
+    },
+    {
+      "pathname": "/_next/static/chunks/main-app-340bf771475649a8.js",
+      "bytes": 529,
+      "sha256": "1f59bd0febb680992cf62bec6702ba6126f8a586d2512eb6d3ca2ceaa90a6591",
+      "buildSha256": "1f59bd0febb680992cf62bec6702ba6126f8a586d2512eb6d3ca2ceaa90a6591",
+      "matches": true
+    },
+    {
+      "pathname": "/_next/static/chunks/app/error-ea2342cfe5895ddb.js",
+      "bytes": 1186,
+      "sha256": "221f1f0ae4706ec1e8ac9408031604a32ea527ed3c7c5e96174ecd053a1d2946",
+      "buildSha256": "221f1f0ae4706ec1e8ac9408031604a32ea527ed3c7c5e96174ecd053a1d2946",
+      "matches": true
+    },
+    {
+      "pathname": "/_next/static/chunks/6087-daabd7b2ca1dcffd.js",
+      "bytes": 28221,
+      "sha256": "fb998de1e16d514d69993ee81cb719b83d0957b70d2025dd76950816d17a4a85",
+      "buildSha256": "fb998de1e16d514d69993ee81cb719b83d0957b70d2025dd76950816d17a4a85",
+      "matches": true
+    },
+    {
+      "pathname": "/_next/static/chunks/3794-6cecce02b123eb1f.js",
+      "bytes": 241388,
+      "sha256": "d39ac559f4774cc2556428ce8bf697328ddc72aba734108f6297f05b75038e42",
+      "buildSha256": "d39ac559f4774cc2556428ce8bf697328ddc72aba734108f6297f05b75038e42",
+      "matches": true
+    },
+    {
+      "pathname": "/_next/static/chunks/5151-2b5acbc4e490de14.js",
+      "bytes": 16901,
+      "sha256": "c2e643722a4b205b07050fbb8c6babf6c51fd7529addeab761a50a368dc334aa",
+      "buildSha256": "c2e643722a4b205b07050fbb8c6babf6c51fd7529addeab761a50a368dc334aa",
+      "matches": true
+    },
+    {
+      "pathname": "/_next/static/chunks/859-7d1b8ebba0d03e8a.js",
+      "bytes": 26360,
+      "sha256": "28109f27ffbf185097ffe013563b270eeed22bf69c782ad73585983215921303",
+      "buildSha256": "28109f27ffbf185097ffe013563b270eeed22bf69c782ad73585983215921303",
+      "matches": true
+    },
+    {
+      "pathname": "/_next/static/chunks/4bd1b696-8a4ab4fdf0ae305a.js",
+      "bytes": 201060,
+      "sha256": "5cf2fcfae6b221476479e25b2883f9052b18a7eb97bd3d069f3cc44112852610",
+      "buildSha256": "5cf2fcfae6b221476479e25b2883f9052b18a7eb97bd3d069f3cc44112852610",
+      "matches": true
+    },
+    {
+      "pathname": "/_next/static/chunks/49-2d3614459171c485.js",
+      "bytes": 33589,
+      "sha256": "39bf730dd33009bfc90647f8f85fdabeaab75990e91b8f11aa5f31dcc1200801",
+      "buildSha256": "39bf730dd33009bfc90647f8f85fdabeaab75990e91b8f11aa5f31dcc1200801",
+      "matches": true
+    },
+    {
+      "pathname": "/_next/static/chunks/8482-97fd3178822a871b.js",
+      "bytes": 150540,
+      "sha256": "d9724ac22f8f550d967c5d2bafca42c7bd12f85cfcc0f30e589e053af48d0b58",
+      "buildSha256": "d9724ac22f8f550d967c5d2bafca42c7bd12f85cfcc0f30e589e053af48d0b58",
+      "matches": true
+    },
+    {
+      "pathname": "/_next/static/chunks/3013-d7dd1404155871c3.js",
+      "bytes": 27389,
+      "sha256": "fda4314f014cf5578752b6e663b34e789e28fadc9ecb75548736c0a431b3065d",
+      "buildSha256": "fda4314f014cf5578752b6e663b34e789e28fadc9ecb75548736c0a431b3065d",
+      "matches": true
+    },
+    {
+      "pathname": "/_next/static/chunks/7178-91125a118647fb13.js",
+      "bytes": 6412,
+      "sha256": "b2fe01cbc67ed6a2935bc9b02d17a27edc70e088f33f556862ae6f63b954fa60",
+      "buildSha256": "b2fe01cbc67ed6a2935bc9b02d17a27edc70e088f33f556862ae6f63b954fa60",
+      "matches": true
+    },
+    {
+      "pathname": "/_next/static/chunks/7555-de0a1466f913dee5.js",
+      "bytes": 33874,
+      "sha256": "bc8d802ff1f469f19d4deac531094ca63fd5b4795b4df5c984258b7fd213c335",
+      "buildSha256": "bc8d802ff1f469f19d4deac531094ca63fd5b4795b4df5c984258b7fd213c335",
+      "matches": true
+    },
+    {
+      "pathname": "/_next/static/chunks/8997-0d461eb6cf3c2898.js",
+      "bytes": 11669,
+      "sha256": "418166960b900807211415b4ec0e24301c5e3978e3baf19a215b22a8529b410d",
+      "buildSha256": "418166960b900807211415b4ec0e24301c5e3978e3baf19a215b22a8529b410d",
+      "matches": true
+    },
+    {
+      "pathname": "/_next/static/chunks/2887-5349be72c36ef2d1.js",
+      "bytes": 337971,
+      "sha256": "1ed8d6e4dbce20598baf969254df8019b2f395dda65369d5413114ec2bc4ff71",
+      "buildSha256": "1ed8d6e4dbce20598baf969254df8019b2f395dda65369d5413114ec2bc4ff71",
+      "matches": true
+    },
+    {
+      "pathname": "/_next/static/chunks/9548-15f6d72975d5f216.js",
+      "bytes": 338894,
+      "sha256": "bb05d83cd91258101f96b9c62c33f37ad5d5caf27f4669ff9bc6a9d5f8bfbf02",
+      "buildSha256": "bb05d83cd91258101f96b9c62c33f37ad5d5caf27f4669ff9bc6a9d5f8bfbf02",
+      "matches": true
+    },
+    {
+      "pathname": "/_next/static/chunks/9372-5a69314ee210bcac.js",
+      "bytes": 462211,
+      "sha256": "dc6270d3d5c5458d8e5b7c053a8d411a5e95bcc4cd0ba1484b18946d32ba847c",
+      "buildSha256": "dc6270d3d5c5458d8e5b7c053a8d411a5e95bcc4cd0ba1484b18946d32ba847c",
+      "matches": true
+    },
+    {
+      "pathname": "/_next/static/chunks/4292-68018d71f488e6b1.js",
+      "bytes": 1015178,
+      "sha256": "ae429f04c182d3e73845dca81bbbc1554554649506d8e695f1d42bda7c382013",
+      "buildSha256": "ae429f04c182d3e73845dca81bbbc1554554649506d8e695f1d42bda7c382013",
+      "matches": true
+    },
+    {
+      "pathname": "/_next/static/chunks/app/page-6f685a7036f61c35.js",
+      "bytes": 668049,
+      "sha256": "b70e79926291526747cd2ec85499ddb26259f4d4dc021669bc189b7a42e0dcb9",
+      "buildSha256": "b70e79926291526747cd2ec85499ddb26259f4d4dc021669bc189b7a42e0dcb9",
+      "matches": true
+    },
+    {
+      "pathname": "/_next/static/chunks/84-b773dabbd6c85016.js",
+      "bytes": 2691383,
+      "sha256": "d4e4ed4655ef37a24c740bf1133f7b0933fddd4d9df4cedc1978d89423c4e907",
+      "buildSha256": "d4e4ed4655ef37a24c740bf1133f7b0933fddd4d9df4cedc1978d89423c4e907",
+      "matches": true
+    },
+    {
+      "pathname": "/_next/static/chunks/3663.bb3c0876d49d8928.js",
+      "bytes": 22887,
+      "sha256": "596eb72b970dbe6bd3330e844bfa67c53ec9f62c40b999119b0a98b52df5066d",
+      "buildSha256": "596eb72b970dbe6bd3330e844bfa67c53ec9f62c40b999119b0a98b52df5066d",
+      "matches": true
+    },
+    {
+      "pathname": "/_next/static/chunks/7562.c728effb74775c93.js",
+      "bytes": 156291,
+      "sha256": "d93e2c20f21ddf365b0f18309c7d6498407886358e4afb571003d1b73106360a",
+      "buildSha256": "d93e2c20f21ddf365b0f18309c7d6498407886358e4afb571003d1b73106360a",
+      "matches": true
+    },
+    {
+      "pathname": "/_next/static/chunks/6191-731e57ae014ed88a.js",
+      "bytes": 475443,
+      "sha256": "94651958af7690f2247779cdf1e917b6fef71ef3920c229739d2784bcf20461c",
+      "buildSha256": "94651958af7690f2247779cdf1e917b6fef71ef3920c229739d2784bcf20461c",
+      "matches": true
+    },
+    {
+      "pathname": "/_next/static/chunks/4292-68018d71f488e6b1.js",
+      "bytes": 1015178,
+      "sha256": "ae429f04c182d3e73845dca81bbbc1554554649506d8e695f1d42bda7c382013",
+      "buildSha256": "ae429f04c182d3e73845dca81bbbc1554554649506d8e695f1d42bda7c382013",
+      "matches": true
+    },
+    {
+      "pathname": "/_next/static/chunks/app/page-6f685a7036f61c35.js",
+      "bytes": 668049,
+      "sha256": "b70e79926291526747cd2ec85499ddb26259f4d4dc021669bc189b7a42e0dcb9",
+      "buildSha256": "b70e79926291526747cd2ec85499ddb26259f4d4dc021669bc189b7a42e0dcb9",
+      "matches": true
+    },
+    {
+      "pathname": "/_next/static/chunks/webpack-6a12bbe05b2ab53d.js",
+      "bytes": 8781,
+      "sha256": "64f034b5b3e8c43831cb6bd44a31defa73189a8b011535ffb677724b4857e8f4",
+      "buildSha256": "64f034b5b3e8c43831cb6bd44a31defa73189a8b011535ffb677724b4857e8f4",
+      "matches": true
+    },
+    {
+      "pathname": "/_next/static/chunks/84-b773dabbd6c85016.js",
+      "bytes": 2691383,
+      "sha256": "d4e4ed4655ef37a24c740bf1133f7b0933fddd4d9df4cedc1978d89423c4e907",
+      "buildSha256": "d4e4ed4655ef37a24c740bf1133f7b0933fddd4d9df4cedc1978d89423c4e907",
+      "matches": true
+    },
+    {
+      "pathname": "/_next/static/chunks/app/error-ea2342cfe5895ddb.js",
+      "bytes": 1186,
+      "sha256": "221f1f0ae4706ec1e8ac9408031604a32ea527ed3c7c5e96174ecd053a1d2946",
+      "buildSha256": "221f1f0ae4706ec1e8ac9408031604a32ea527ed3c7c5e96174ecd053a1d2946",
+      "matches": true
+    },
+    {
+      "pathname": "/_next/static/chunks/main-app-340bf771475649a8.js",
+      "bytes": 529,
+      "sha256": "1f59bd0febb680992cf62bec6702ba6126f8a586d2512eb6d3ca2ceaa90a6591",
+      "buildSha256": "1f59bd0febb680992cf62bec6702ba6126f8a586d2512eb6d3ca2ceaa90a6591",
+      "matches": true
+    },
+    {
+      "pathname": "/_next/static/chunks/5151-2b5acbc4e490de14.js",
+      "bytes": 16901,
+      "sha256": "c2e643722a4b205b07050fbb8c6babf6c51fd7529addeab761a50a368dc334aa",
+      "buildSha256": "c2e643722a4b205b07050fbb8c6babf6c51fd7529addeab761a50a368dc334aa",
+      "matches": true
+    },
+    {
+      "pathname": "/_next/static/chunks/859-7d1b8ebba0d03e8a.js",
+      "bytes": 26360,
+      "sha256": "28109f27ffbf185097ffe013563b270eeed22bf69c782ad73585983215921303",
+      "buildSha256": "28109f27ffbf185097ffe013563b270eeed22bf69c782ad73585983215921303",
+      "matches": true
+    },
+    {
+      "pathname": "/_next/static/chunks/6087-daabd7b2ca1dcffd.js",
+      "bytes": 28221,
+      "sha256": "fb998de1e16d514d69993ee81cb719b83d0957b70d2025dd76950816d17a4a85",
+      "buildSha256": "fb998de1e16d514d69993ee81cb719b83d0957b70d2025dd76950816d17a4a85",
+      "matches": true
+    },
+    {
+      "pathname": "/_next/static/chunks/49-2d3614459171c485.js",
+      "bytes": 33589,
+      "sha256": "39bf730dd33009bfc90647f8f85fdabeaab75990e91b8f11aa5f31dcc1200801",
+      "buildSha256": "39bf730dd33009bfc90647f8f85fdabeaab75990e91b8f11aa5f31dcc1200801",
+      "matches": true
+    },
+    {
+      "pathname": "/_next/static/chunks/7178-91125a118647fb13.js",
+      "bytes": 6412,
+      "sha256": "b2fe01cbc67ed6a2935bc9b02d17a27edc70e088f33f556862ae6f63b954fa60",
+      "buildSha256": "b2fe01cbc67ed6a2935bc9b02d17a27edc70e088f33f556862ae6f63b954fa60",
+      "matches": true
+    },
+    {
+      "pathname": "/_next/static/chunks/3013-d7dd1404155871c3.js",
+      "bytes": 27389,
+      "sha256": "fda4314f014cf5578752b6e663b34e789e28fadc9ecb75548736c0a431b3065d",
+      "buildSha256": "fda4314f014cf5578752b6e663b34e789e28fadc9ecb75548736c0a431b3065d",
+      "matches": true
+    },
+    {
+      "pathname": "/_next/static/chunks/4bd1b696-8a4ab4fdf0ae305a.js",
+      "bytes": 201060,
+      "sha256": "5cf2fcfae6b221476479e25b2883f9052b18a7eb97bd3d069f3cc44112852610",
+      "buildSha256": "5cf2fcfae6b221476479e25b2883f9052b18a7eb97bd3d069f3cc44112852610",
+      "matches": true
+    },
+    {
+      "pathname": "/_next/static/chunks/7555-de0a1466f913dee5.js",
+      "bytes": 33874,
+      "sha256": "bc8d802ff1f469f19d4deac531094ca63fd5b4795b4df5c984258b7fd213c335",
+      "buildSha256": "bc8d802ff1f469f19d4deac531094ca63fd5b4795b4df5c984258b7fd213c335",
+      "matches": true
+    },
+    {
+      "pathname": "/_next/static/chunks/8997-0d461eb6cf3c2898.js",
+      "bytes": 11669,
+      "sha256": "418166960b900807211415b4ec0e24301c5e3978e3baf19a215b22a8529b410d",
+      "buildSha256": "418166960b900807211415b4ec0e24301c5e3978e3baf19a215b22a8529b410d",
+      "matches": true
+    },
+    {
+      "pathname": "/_next/static/chunks/3794-6cecce02b123eb1f.js",
+      "bytes": 241388,
+      "sha256": "d39ac559f4774cc2556428ce8bf697328ddc72aba734108f6297f05b75038e42",
+      "buildSha256": "d39ac559f4774cc2556428ce8bf697328ddc72aba734108f6297f05b75038e42",
+      "matches": true
+    },
+    {
+      "pathname": "/_next/static/chunks/2887-5349be72c36ef2d1.js",
+      "bytes": 337971,
+      "sha256": "1ed8d6e4dbce20598baf969254df8019b2f395dda65369d5413114ec2bc4ff71",
+      "buildSha256": "1ed8d6e4dbce20598baf969254df8019b2f395dda65369d5413114ec2bc4ff71",
+      "matches": true
+    },
+    {
+      "pathname": "/_next/static/chunks/9548-15f6d72975d5f216.js",
+      "bytes": 338894,
+      "sha256": "bb05d83cd91258101f96b9c62c33f37ad5d5caf27f4669ff9bc6a9d5f8bfbf02",
+      "buildSha256": "bb05d83cd91258101f96b9c62c33f37ad5d5caf27f4669ff9bc6a9d5f8bfbf02",
+      "matches": true
+    },
+    {
+      "pathname": "/_next/static/chunks/8482-97fd3178822a871b.js",
+      "bytes": 150540,
+      "sha256": "d9724ac22f8f550d967c5d2bafca42c7bd12f85cfcc0f30e589e053af48d0b58",
+      "buildSha256": "d9724ac22f8f550d967c5d2bafca42c7bd12f85cfcc0f30e589e053af48d0b58",
+      "matches": true
+    },
+    {
+      "pathname": "/_next/static/chunks/9372-5a69314ee210bcac.js",
+      "bytes": 462211,
+      "sha256": "dc6270d3d5c5458d8e5b7c053a8d411a5e95bcc4cd0ba1484b18946d32ba847c",
+      "buildSha256": "dc6270d3d5c5458d8e5b7c053a8d411a5e95bcc4cd0ba1484b18946d32ba847c",
+      "matches": true
+    },
+    {
+      "pathname": "/_next/static/chunks/3663.bb3c0876d49d8928.js",
+      "bytes": 22887,
+      "sha256": "596eb72b970dbe6bd3330e844bfa67c53ec9f62c40b999119b0a98b52df5066d",
+      "buildSha256": "596eb72b970dbe6bd3330e844bfa67c53ec9f62c40b999119b0a98b52df5066d",
+      "matches": true
+    },
+    {
+      "pathname": "/_next/static/chunks/7562.c728effb74775c93.js",
+      "bytes": 156291,
+      "sha256": "d93e2c20f21ddf365b0f18309c7d6498407886358e4afb571003d1b73106360a",
+      "buildSha256": "d93e2c20f21ddf365b0f18309c7d6498407886358e4afb571003d1b73106360a",
+      "matches": true
+    },
+    {
+      "pathname": "/_next/static/chunks/6191-731e57ae014ed88a.js",
+      "bytes": 475443,
+      "sha256": "94651958af7690f2247779cdf1e917b6fef71ef3920c229739d2784bcf20461c",
+      "buildSha256": "94651958af7690f2247779cdf1e917b6fef71ef3920c229739d2784bcf20461c",
+      "matches": true
+    }
+  ],
+  "errors": [
+    {
+      "message": "locator.waitFor: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('[data-clan-operations]') to be hidden\u001b[22m\n\u001b[2m    63 × locator resolved to visible <section role=\"dialog\" aria-modal=\"true\" data-clan-operations=\"true\" data-clan-operations-room=\"hangar\" data-clan-operations-revision=\"19\" aria-labelledby=\"clan-operations-title\" data-clan-operations-phase=\"operations\" class=\"ClanShipOperationsPanel_terminal__xIGv7\">…</section>\u001b[22m\n",
+      "stack": "locator.waitFor: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('[data-clan-operations]') to be hidden\u001b[22m\n\u001b[2m    63 × locator resolved to visible <section role=\"dialog\" aria-modal=\"true\" data-clan-operations=\"true\" data-clan-operations-room=\"hangar\" data-clan-operations-revision=\"19\" aria-labelledby=\"clan-operations-title\" data-clan-operations-phase=\"operations\" class=\"ClanShipOperationsPanel_terminal__xIGv7\">…</section>\u001b[22m\n\n    at /workspace/yautja-la-longue-chasse/scripts/qa-clan-ship-maintenance-20261109.mjs:201:96\n    at async check (/workspace/yautja-la-longue-chasse/scripts/qa-clan-ship-maintenance-20261109.mjs:105:5)\n    at async file:///workspace/yautja-la-longue-chasse/scripts/qa-clan-ship-maintenance-20261109.mjs:192:3"
+    }
+  ],
+  "consoleErrors": [],
+  "httpErrors": [],
+  "requestFailures": [],
+  "physicalController": false,
+  "humanArtApproved": false,
+  "fullCampaignPlayed": false,
+  "browserVersion": "154.0.8037.57",
+  "failureScreenshotSha256": "3a86b1ccde2d9cb283f21a2f268445ffe1f1c39228712052f4e123af776d8013",
+  "finishedAt": "2026-11-09T11:04:33.205Z"
+}

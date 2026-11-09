@@ -1,0 +1,294 @@
+{
+  "createdAt": "2026-11-09T11:48:25.315530+00:00",
+  "passed": true,
+  "checks": 169,
+  "contexts": [
+    {
+      "name": "1440x1000-shared-crown",
+      "completed": true,
+      "checks": 43
+    },
+    {
+      "name": "1440x1000-private-crown",
+      "completed": true,
+      "checks": 8
+    },
+    {
+      "name": "390x844-shared-crown",
+      "completed": true,
+      "checks": 43
+    },
+    {
+      "name": "390x844-private-crown",
+      "completed": true,
+      "checks": 8
+    },
+    {
+      "name": "320x740-shared-crown",
+      "completed": true,
+      "checks": 43
+    },
+    {
+      "name": "320x740-private-crown",
+      "completed": true,
+      "checks": 8
+    },
+    {
+      "name": "1440x1000-shared-retreat",
+      "completed": true,
+      "checks": 8
+    },
+    {
+      "name": "1440x1000-shared-no-crown",
+      "completed": true,
+      "checks": 8
+    }
+  ],
+  "screenshotCount": 23,
+  "visuallyInspectedOriginals": 6,
+  "errors": [],
+  "missingAssets": [],
+  "browserVersion": "154.0.8037.57",
+  "execution": {
+    "application": "Actual GameClient via Vite",
+    "productionNextGameplayTested": false,
+    "availableNextBuildId": "mdrvYovYvfvhuJqeZXn1D",
+    "availableNextUrl": "http://127.0.0.1:3154",
+    "availableNextBuildIdentityIsInformational": true,
+    "script": "scripts/qa-clan-hunt-dialogue-browser-20261109.mjs",
+    "scriptSha256": "bc26abaf8c5ad8820bde43fce32aa11816cf6cd80064dea64d12869f24fc28ee",
+    "copiedRecipeSha256": "bc26abaf8c5ad8820bde43fce32aa11816cf6cd80064dea64d12869f24fc28ee",
+    "startedAt": "2026-11-09T11:43:28.277Z",
+    "completedAt": "2026-11-09T11:47:19.458Z",
+    "checkoutCommitAtRecipeStart": "b666504c7d7889ea4c8c083aa97c4909aab32560",
+    "headAtBookend": "6a412eeabc0c0be0dc9e09b635384f51b96dc377"
+  },
+  "sourceBookend": {
+    "before": "../source-before.json",
+    "beforeSha256": "75ed41a1434f36328f64f74df6733813d4e2d22ee19b6be5a336f4c4de2e6bb3",
+    "after": "source-after.json",
+    "afterSha256": "2245e671680e6b8249d5d51981a54678fc31c2ac60122e8842e964f52fe9525e",
+    "appFiles": 1293,
+    "appBytesIdentical": true,
+    "changedPaths": [],
+    "recipeTargetSourceCount": 15,
+    "recipeTargetSourcesEqual": true
+  },
+  "fixtures": [
+    {
+      "id": "shared-crown",
+      "file": "shared-crown.json",
+      "sha256": "1b0f1d27158ca4713d6ad94b6abc0245aab13f50cc73d1935e670811976e18cf",
+      "browserPlayed": false,
+      "description": "Adult campaign, prerequisite quests, four successful field contracts and Cradle extraction/return prepared through production reducers. No hunt, boss battle, medical treatment or recruitment is played by this browser recipe.",
+      "clanMarks": 5868,
+      "recruited": [],
+      "outcome": "crown-returned",
+      "ownerCreatedAt": "2026-11-08T18:00:00.000Z"
+    },
+    {
+      "id": "shared-retreat",
+      "file": "shared-retreat.json",
+      "sha256": "843ab32dc6ec5b78ae4422cdd6e151145370f1646909a4f1e95bfc629d989d01",
+      "browserPlayed": false,
+      "description": "Adult campaign, prerequisite quests, four successful field contracts and Cradle extraction/return prepared through production reducers. No hunt, boss battle, medical treatment or recruitment is played by this browser recipe.",
+      "clanMarks": 5868,
+      "recruited": [],
+      "outcome": "retreated",
+      "ownerCreatedAt": "2026-11-08T18:00:00.000Z"
+    },
+    {
+      "id": "shared-no-crown",
+      "file": "shared-no-crown.json",
+      "sha256": "4a61149e97215f5de5ce6488acc310cd03bffc982605d3bccb05adb076551892",
+      "browserPlayed": false,
+      "description": "Adult campaign, prerequisite quests, four successful field contracts and Cradle extraction/return prepared through production reducers. No hunt, boss battle, medical treatment or recruitment is played by this browser recipe.",
+      "clanMarks": 5868,
+      "recruited": [],
+      "outcome": "victory-without-crown",
+      "ownerCreatedAt": "2026-11-08T18:00:00.000Z"
+    },
+    {
+      "id": "private-crown",
+      "file": "private-crown.json",
+      "sha256": "cb7cad3a695e94856416f29a591a43ab73e0017782d7ecbd9b3d5ba121e60050",
+      "browserPlayed": false,
+      "description": "Adult campaign, prerequisite quests, four successful field contracts and Cradle extraction/return prepared through production reducers. No hunt, boss battle, medical treatment or recruitment is played by this browser recipe.",
+      "clanMarks": 5868,
+      "recruited": [],
+      "outcome": "crown-returned",
+      "ownerCreatedAt": "2026-11-08T18:00:00.000Z"
+    }
+  ],
+  "framingAdjustments": [
+    {
+      "context": "320x740-shared-crown",
+      "npc": "threshold-guard",
+      "input": {
+        "kind": "native-wheel",
+        "x": 160,
+        "y": 429.6875,
+        "deltaY": 17
+      },
+      "before": {
+        "visible": false,
+        "bounds": {
+          "left": 42.59375,
+          "top": 527.46875,
+          "right": 279.40625,
+          "bottom": 677.9375
+        },
+        "clip": {
+          "left": 0,
+          "top": 181.75,
+          "right": 320,
+          "bottom": 677.625
+        }
+      },
+      "after": {
+        "visible": true,
+        "bounds": {
+          "left": 42.59375,
+          "top": 510.46875,
+          "right": 279.40625,
+          "bottom": 660.9375
+        },
+        "clip": {
+          "left": 0,
+          "top": 181.75,
+          "right": 320,
+          "bottom": 677.625
+        }
+      }
+    }
+  ],
+  "framingPolicy": "Complete line rectangle must be strictly inside all ancestor clips with no tolerance. If nearest-scroll leaves a lower edge outside, a native wheel inside the panel moves the content and the exact same predicate is measured again. Time limits and assertions are unchanged.",
+  "evidence": {
+    "browserReport": "browser-verification.json",
+    "browserReportSha256": "71fcf5a50a0609f6f0db27fdb78534bc1a111df56ce604eb5952e04734607ce7",
+    "inspection": "screenshot-inspection.json",
+    "inspectionSha256": "77aa1f7aea1680a12f27ce4c7e8ef4938bf996338299bca941705a0576de959c",
+    "independentReview": "independent-review.json",
+    "independentReviewSha256": "1804b9102e15a16fe92709f8653ab880494da5c3f871b6e0705ab573b178c575",
+    "fixtureDisclosureSha256": "fe9885d283ebc38d2ade0da3ea99e59c6a5e56fe50f310175ca98634a987f1a7",
+    "screenshots": [
+      {
+        "file": "1440x1000-shared-crown-ash-scar.png",
+        "sha256": "d0f22630e9a4c66dd1c8dd4bb89cab1f33ca02396ea13b73c26e7a8785d42f27"
+      },
+      {
+        "file": "1440x1000-shared-crown-star-watch.png",
+        "sha256": "b9da214116f709d85fb5e60efa3026abe4b12822e33e12a8ed58f57377ddf91d"
+      },
+      {
+        "file": "1440x1000-shared-crown-iron-claw.png",
+        "sha256": "85478f78a7ea6cde1fd669a0d2ff2b2952d5995d483badba77934f40158e7d75"
+      },
+      {
+        "file": "1440x1000-shared-crown-cold-trace.png",
+        "sha256": "2e13cc79c7a70d04962b2772bdc126d9e3b7fde10c31174343c57246457af207"
+      },
+      {
+        "file": "1440x1000-shared-crown-black-suture.png",
+        "sha256": "a50e20dae84864979b88eb486f023a64d9723b56de5e384ee765ee6becb5ca39"
+      },
+      {
+        "file": "1440x1000-shared-crown-threshold-guard.png",
+        "sha256": "08323a74e1468e00533f74f9ebe9e141ef0fd2ac3f9dc6938069313b091b2072"
+      },
+      {
+        "file": "1440x1000-private-crown-iron-claw.png",
+        "sha256": "6ae29c1b98b3480a4c644b226e1900381ebd9491c8f5d51180a4958cfa113b1e"
+      },
+      {
+        "file": "390x844-shared-crown-ash-scar.png",
+        "sha256": "077ba7540afbd97c4e079bd3540cee080356bf59d985884fb538abc1b19c4882"
+      },
+      {
+        "file": "390x844-shared-crown-star-watch.png",
+        "sha256": "bac14281a3dad60d6306fb0b5a1a5d0b5c3914c2411633c94a553cabd7686cf6"
+      },
+      {
+        "file": "390x844-shared-crown-iron-claw.png",
+        "sha256": "0417feee356de2926e7efed58c875f1e31001505494fc052d642ccc9c19ed099"
+      },
+      {
+        "file": "390x844-shared-crown-cold-trace.png",
+        "sha256": "549ff554a54557eeb1a999bdd054f91a04a08e6ca185c9ff147576a3f20fc294"
+      },
+      {
+        "file": "390x844-shared-crown-black-suture.png",
+        "sha256": "d3a4b56ef89b14521b31417698c27cf12016bc94e5bbfd352f3305a778271a70"
+      },
+      {
+        "file": "390x844-shared-crown-threshold-guard.png",
+        "sha256": "2ef49cc8318d1cf347cdee9889a4f149768a5278f7384e71f5b440de81333a40"
+      },
+      {
+        "file": "390x844-private-crown-iron-claw.png",
+        "sha256": "85f2e71619af618cab27eda64c6fb5653c10d8b3d7f86f34d84c9ab97026ea0a"
+      },
+      {
+        "file": "320x740-shared-crown-ash-scar.png",
+        "sha256": "8165da855ce1635659643761131e42991f8bd459c260fc69bbc866e388a1b1c9"
+      },
+      {
+        "file": "320x740-shared-crown-star-watch.png",
+        "sha256": "3d8c129d4a5204852800a56c0c7e0245ebb01f16e7477a7cc0a3cae7af0faf54"
+      },
+      {
+        "file": "320x740-shared-crown-iron-claw.png",
+        "sha256": "f05f9205592db37835365aed6b6d5003fde06a9122e20401cd95e7fabfd791d9"
+      },
+      {
+        "file": "320x740-shared-crown-cold-trace.png",
+        "sha256": "a60babbe3b4b7fbfe979cace9164f67f4dad3b233406789dbaf2535de544ccc6"
+      },
+      {
+        "file": "320x740-shared-crown-black-suture.png",
+        "sha256": "0a933a85f5583cd7fcdf118058998a000ca42a8b86c5015278006090bc400cd0"
+      },
+      {
+        "file": "320x740-shared-crown-threshold-guard.png",
+        "sha256": "e9f963b9629ac789146c5c96a1d4322d6bb8de75dd1af6563d79bdce17dfa1b2"
+      },
+      {
+        "file": "320x740-private-crown-iron-claw.png",
+        "sha256": "0743494d48d4302cea038b88c48df92acda3ebe5bd3a2eb1caa4c003496f4b26"
+      },
+      {
+        "file": "1440x1000-shared-retreat-iron-claw.png",
+        "sha256": "fcbc33e36980676b29d4a56ab640e06cd05011c31b241282d6d0da8352ed1f73"
+      },
+      {
+        "file": "1440x1000-shared-no-crown-iron-claw.png",
+        "sha256": "22a4743f532b4a8b8664fc613c4ef89ee096213372f0f15698c37884d1cd5b3d"
+      }
+    ]
+  },
+  "coverage": [
+    "Optional Hunt reports reached through actual walking between ship stations, real contact input and real disclosure clicks/taps. Four original crew topics remain available.",
+    "All six contacts are exercised with shared returned crown at1440/390/320; private workshop disclosure is checked at all three viewports; shared retreat and victory without crown are exercised at1440.",
+    "Each report matches its archived proof exactly; profile, trophies, mission progress, operations, residence, Cradle, incidents and trophy-hearing progression remain unchanged by conversations.",
+    "Reload preserves source reports, privacy and all protected progression values.",
+    "One lower fractional clipping case is framed through actual wheel input; no geometry tolerance, DOM-scroll mutation or application edit was introduced."
+  ],
+  "validation": {
+    "canonicalDriverStrictEslint": "exit0, --max-warnings=0",
+    "independentDiffReview": "No weakening detected; static review only."
+  },
+  "historicalFailure": {
+    "path": "../../final-attempt-4/hunt-dialogue/failed-receipt.json",
+    "sha256": "3a17c6e70d43b719ef9bba37d13d4f624e6bef957e8d64d01382866e6b7d138c",
+    "passed": false,
+    "checksCompleted": 143,
+    "countedAsPassingEvidence": false
+  },
+  "limitations": [
+    "The four campaign fixtures use production reducers to prepare adult status, prerequisite quests, four successful field contracts, recruitment and Cradle extraction/return. No Hunt, boss battle, medical treatment or recruitment is actually played by this recipe.",
+    "This recipe is Vite GameClient gameplay, not Next production gameplay. The unchanged app source matches the available final production build; that equality does not turn this into a Next browser replay.",
+    "Clicks and taps activate contacts and choices. The recovery scroll at320px uses an actual Chromium wheel, not a physical mobile gesture.",
+    "This replay covers the same169 existing cases, not169 newly unique tests. Targeted8-check diagnosis and failed143-check attempt are not added to the passing-case count.",
+    "No whole campaign, 1:1 lore/art certification, physical device/controller, screen reader or frame-rate claim."
+  ]
+}

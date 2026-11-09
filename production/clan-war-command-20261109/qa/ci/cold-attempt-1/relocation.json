@@ -1,0 +1,530 @@
+{
+  "reason": "The failed first cold run was generated under cold-final. Its complete directory was renamed cold-attempt-1 before the new checkout replay. Raw report and logs remain byte-identical; this maps the original paths to their archived location.",
+  "rawReportSha256": "6e5bb92de67beced2e26396b4dedb39e173575a5121d718369838b1b8b2fee7a",
+  "passed": false,
+  "totals": {
+    "tests": 1154,
+    "pass": 1153,
+    "fail": 1,
+    "skipped": 0,
+    "cancelled": 0,
+    "todo": 0
+  },
+  "logLocations": [
+    {
+      "recordedLog": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/audio-manifest.test.mjs.tap",
+      "archivedLog": "production/clan-war-command-20261109/qa/ci/cold-attempt-1/results/audio-manifest.test.mjs.tap",
+      "sha256": "fdd88a5c0b0a9aa6d6110c214e8a2820d38bf58ba36369cb2c640a055bd228b7"
+    },
+    {
+      "recordedLog": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/audio-pack-v54.test.mjs.tap",
+      "archivedLog": "production/clan-war-command-20261109/qa/ci/cold-attempt-1/results/audio-pack-v54.test.mjs.tap",
+      "sha256": "e4ea38847e4e541f241c5d5a89fdbc4e1803fd90d6220f496acaaa8b571496b4"
+    },
+    {
+      "recordedLog": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/canopy-grip-presentation-v112.test.mjs.tap",
+      "archivedLog": "production/clan-war-command-20261109/qa/ci/cold-attempt-1/results/canopy-grip-presentation-v112.test.mjs.tap",
+      "sha256": "5585692221729178b7fdc811141a132472817d1cca632777306ce9516d6ee971"
+    },
+    {
+      "recordedLog": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/canopy-navigation-v112.test.mjs.tap",
+      "archivedLog": "production/clan-war-command-20261109/qa/ci/cold-attempt-1/results/canopy-navigation-v112.test.mjs.tap",
+      "sha256": "4e2964b77121e94e7666ebd20a1841c7b1d3c70c005dee9fba4a8599a554b96c"
+    },
+    {
+      "recordedLog": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/canopy-traversal-v112.test.mjs.tap",
+      "archivedLog": "production/clan-war-command-20261109/qa/ci/cold-attempt-1/results/canopy-traversal-v112.test.mjs.tap",
+      "sha256": "120ff0cc8962f65bf216d392036978feb20f4a840ffdc52553803ed07482d2ba"
+    },
+    {
+      "recordedLog": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/carcass-anatomy-v112.test.mjs.tap",
+      "archivedLog": "production/clan-war-command-20261109/qa/ci/cold-attempt-1/results/carcass-anatomy-v112.test.mjs.tap",
+      "sha256": "267a832bda9e1439f9641a691f091cce8ac23df63cf2ce9033dd4f91ea18ec86"
+    },
+    {
+      "recordedLog": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/clan-field-pack-20261103.test.mjs.tap",
+      "archivedLog": "production/clan-war-command-20261109/qa/ci/cold-attempt-1/results/clan-field-pack-20261103.test.mjs.tap",
+      "sha256": "687e255cd39bd568e62502b344dd19bac371f933b02d3dad44b131a462929951"
+    },
+    {
+      "recordedLog": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/clan-ship-crew-dialogue-ui.test.mjs.tap",
+      "archivedLog": "production/clan-war-command-20261109/qa/ci/cold-attempt-1/results/clan-ship-crew-dialogue-ui.test.mjs.tap",
+      "sha256": "478ad66247c2b072e3761ab6701528e5cb321760e23c38e50064c6e7321b332b"
+    },
+    {
+      "recordedLog": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/clan-ship-crew-dialogue.test.mjs.tap",
+      "archivedLog": "production/clan-war-command-20261109/qa/ci/cold-attempt-1/results/clan-ship-crew-dialogue.test.mjs.tap",
+      "sha256": "e83acaf55588f143df5877cade42103ce02e1937f42b4a17a2174f49649ee633"
+    },
+    {
+      "recordedLog": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/clan-ship-dialogue.test.mjs.tap",
+      "archivedLog": "production/clan-war-command-20261109/qa/ci/cold-attempt-1/results/clan-ship-dialogue.test.mjs.tap",
+      "sha256": "9e6f0c83df373169c96adb57d6420c0aa7f37621e8dcc6fad7ce5030871d99d2"
+    },
+    {
+      "recordedLog": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/clan-ship-docking.test.mjs.tap",
+      "archivedLog": "production/clan-war-command-20261109/qa/ci/cold-attempt-1/results/clan-ship-docking.test.mjs.tap",
+      "sha256": "6137e5b8a64994dc862d1bd245a017cd76b1e2f929680cbd7157fffa0e59548b"
+    },
+    {
+      "recordedLog": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/clan-ship-hunt-dialogue.test.mjs.tap",
+      "archivedLog": "production/clan-war-command-20261109/qa/ci/cold-attempt-1/results/clan-ship-hunt-dialogue.test.mjs.tap",
+      "sha256": "5aa384e5be4fe3711442d2f271c704ad67d1cf373dc6866b9e128fc8740290ea"
+    },
+    {
+      "recordedLog": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/clan-ship-incidents.test.mjs.tap",
+      "archivedLog": "production/clan-war-command-20261109/qa/ci/cold-attempt-1/results/clan-ship-incidents.test.mjs.tap",
+      "sha256": "6f1dd92de353325da17bdd0f91af045999cc104e820d1666252982c1ca27b706"
+    },
+    {
+      "recordedLog": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/clan-ship-interior.test.mjs.tap",
+      "archivedLog": "production/clan-war-command-20261109/qa/ci/cold-attempt-1/results/clan-ship-interior.test.mjs.tap",
+      "sha256": "eb61de1e716a54be03c06cc641553f6c144fbceb7b1f3df7b25127ccfb4a160c"
+    },
+    {
+      "recordedLog": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/clan-ship-maintenance-diagnostics.test.mjs.tap",
+      "archivedLog": "production/clan-war-command-20261109/qa/ci/cold-attempt-1/results/clan-ship-maintenance-diagnostics.test.mjs.tap",
+      "sha256": "314431cd51575e5a586ec8a51cf38f395e5984388082671270c6aef4d5c57faa"
+    },
+    {
+      "recordedLog": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/clan-ship-operations-audio.test.mjs.tap",
+      "archivedLog": "production/clan-war-command-20261109/qa/ci/cold-attempt-1/results/clan-ship-operations-audio.test.mjs.tap",
+      "sha256": "01e854bebb233116ed87233366d90b9c097006493824ab6eccd87a320ff4b2f3"
+    },
+    {
+      "recordedLog": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/clan-ship-operations-save.test.mjs.tap",
+      "archivedLog": "production/clan-war-command-20261109/qa/ci/cold-attempt-1/results/clan-ship-operations-save.test.mjs.tap",
+      "sha256": "f86673dbb7a9e05094424cdfb8747f47489e6ba36c296a4753619b6299e31242"
+    },
+    {
+      "recordedLog": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/clan-ship-operations.test.mjs.tap",
+      "archivedLog": "production/clan-war-command-20261109/qa/ci/cold-attempt-1/results/clan-ship-operations.test.mjs.tap",
+      "sha256": "09fe58d874bf70fffb89095fe37e1ef425aa3ea2fc8865ba425de567d80636cb"
+    },
+    {
+      "recordedLog": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/clan-ship-return-escort-save.test.mjs.tap",
+      "archivedLog": "production/clan-war-command-20261109/qa/ci/cold-attempt-1/results/clan-ship-return-escort-save.test.mjs.tap",
+      "sha256": "429b32928888aa7ac89e70ff84424c73781f046ccf7d7a3d1e8268dc33231816"
+    },
+    {
+      "recordedLog": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/clan-ship-return-escort-ui.test.mjs.tap",
+      "archivedLog": "production/clan-war-command-20261109/qa/ci/cold-attempt-1/results/clan-ship-return-escort-ui.test.mjs.tap",
+      "sha256": "e0ea4319c4aedf44bf1c1e1027cdaa12323bc547e033156302983ebc083c0deb"
+    },
+    {
+      "recordedLog": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/clan-ship-return-escort.test.mjs.tap",
+      "archivedLog": "production/clan-war-command-20261109/qa/ci/cold-attempt-1/results/clan-ship-return-escort.test.mjs.tap",
+      "sha256": "8543c59f3e85d5ef9b11decea9ff5ee3128c93c66cce1ca7540eb23a03e0ffa8"
+    },
+    {
+      "recordedLog": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/clan-ship-save.test.mjs.tap",
+      "archivedLog": "production/clan-war-command-20261109/qa/ci/cold-attempt-1/results/clan-ship-save.test.mjs.tap",
+      "sha256": "9d17a7293cd7a83f9c6ffa6c218ee208e4dbd5a7cb72223824d8faa3a4f5cdfc"
+    },
+    {
+      "recordedLog": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/clan-ship-space-encounter.test.mjs.tap",
+      "archivedLog": "production/clan-war-command-20261109/qa/ci/cold-attempt-1/results/clan-ship-space-encounter.test.mjs.tap",
+      "sha256": "e2095614bb05ffb4d41e0a9252b34d3ba98d03bf3ac6fda726e1774f8ac3a4ec"
+    },
+    {
+      "recordedLog": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/clan-ship-trophy-case.test.mjs.tap",
+      "archivedLog": "production/clan-war-command-20261109/qa/ci/cold-attempt-1/results/clan-ship-trophy-case.test.mjs.tap",
+      "sha256": "0bfe51d25506b98823605720da35da527d5a8902e495d9f5150c5c161ef33614"
+    },
+    {
+      "recordedLog": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/clan-ship-trophy-hearing-presentation.test.mjs.tap",
+      "archivedLog": "production/clan-war-command-20261109/qa/ci/cold-attempt-1/results/clan-ship-trophy-hearing-presentation.test.mjs.tap",
+      "sha256": "94b529c83d19bc4186e975e9cc18b361064e991cfdb449e8a5c3c9833398bd26"
+    },
+    {
+      "recordedLog": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/clan-ship-trophy-hearing.test.mjs.tap",
+      "archivedLog": "production/clan-war-command-20261109/qa/ci/cold-attempt-1/results/clan-ship-trophy-hearing.test.mjs.tap",
+      "sha256": "5dfffc3e22af9b5c341db4fa5c7d31333a1da8dda45149f022b19e2692bd2e4b"
+    },
+    {
+      "recordedLog": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/clan-war-climate-place-tokens.test.mjs.tap",
+      "archivedLog": "production/clan-war-command-20261109/qa/ci/cold-attempt-1/results/clan-war-climate-place-tokens.test.mjs.tap",
+      "sha256": "cd8561db7a72b7b806ec8600641664c6d18fbb663ade655da4f5e05470c28a26"
+    },
+    {
+      "recordedLog": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/clan-war-due-events-v151.test.mjs.tap",
+      "archivedLog": "production/clan-war-command-20261109/qa/ci/cold-attempt-1/results/clan-war-due-events-v151.test.mjs.tap",
+      "sha256": "40a1cf74bf8366e025be4cc46459877cf7a20dfa7c1b4b1716e0d70332d352ff"
+    },
+    {
+      "recordedLog": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/clan-war-fence-v94.test.mjs.tap",
+      "archivedLog": "production/clan-war-command-20261109/qa/ci/cold-attempt-1/results/clan-war-fence-v94.test.mjs.tap",
+      "sha256": "670d8a12c0a6cc45e4a6af726b2e37d3a0b9786524f082685da25575d94729f6"
+    },
+    {
+      "recordedLog": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/clan-war-four-modes-pr55-v144.test.mjs.tap",
+      "archivedLog": "production/clan-war-command-20261109/qa/ci/cold-attempt-1/results/clan-war-four-modes-pr55-v144.test.mjs.tap",
+      "sha256": "140f5ffa3508a77cb0537b6e60a10e77d16c89bc896eb95811be048e22ce97fd"
+    },
+    {
+      "recordedLog": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/clan-war-four-modes-pr57-v144.test.mjs.tap",
+      "archivedLog": "production/clan-war-command-20261109/qa/ci/cold-attempt-1/results/clan-war-four-modes-pr57-v144.test.mjs.tap",
+      "sha256": "0205cf2a54ae49557cb518dcb1dfd842f54c1b2d22dd8b7c405efc94ea53bcee"
+    },
+    {
+      "recordedLog": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/clan-war-four-modes-v135.test.mjs.tap",
+      "archivedLog": "production/clan-war-command-20261109/qa/ci/cold-attempt-1/results/clan-war-four-modes-v135.test.mjs.tap",
+      "sha256": "868d8e95870b0d1ce51d5cf6b474e15b818b53e2b7af77933136405f11e5cdfe"
+    },
+    {
+      "recordedLog": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/clan-war-four-modes-v136.test.mjs.tap",
+      "archivedLog": "production/clan-war-command-20261109/qa/ci/cold-attempt-1/results/clan-war-four-modes-v136.test.mjs.tap",
+      "sha256": "076191a9e2755bf669ee979e7bb14f827bedec7432eb8eee8c57c82db54ad970"
+    },
+    {
+      "recordedLog": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/clan-war-four-modes-v137.test.mjs.tap",
+      "archivedLog": "production/clan-war-command-20261109/qa/ci/cold-attempt-1/results/clan-war-four-modes-v137.test.mjs.tap",
+      "sha256": "3e2a8f52553c1fed29079a14ff2b35994e6c26228e129a3ee6c073d6547582e5"
+    },
+    {
+      "recordedLog": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/clan-war-four-modes-v138.test.mjs.tap",
+      "archivedLog": "production/clan-war-command-20261109/qa/ci/cold-attempt-1/results/clan-war-four-modes-v138.test.mjs.tap",
+      "sha256": "19442a4604e9dfb9f24ce755fbb2757e6173668db47f5063ffcc1ba755e6a2f6"
+    },
+    {
+      "recordedLog": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/clan-war-four-modes-v139.test.mjs.tap",
+      "archivedLog": "production/clan-war-command-20261109/qa/ci/cold-attempt-1/results/clan-war-four-modes-v139.test.mjs.tap",
+      "sha256": "f5d35de98a3d4d8c87f0759b49345604ed3eff88ac65f6e1a4fc2daf6b578ea6"
+    },
+    {
+      "recordedLog": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/clan-war-four-modes-v140.test.mjs.tap",
+      "archivedLog": "production/clan-war-command-20261109/qa/ci/cold-attempt-1/results/clan-war-four-modes-v140.test.mjs.tap",
+      "sha256": "0e075ed15c138d5d5d835e911d9fa246117601381a7a487163a8f4d9d4647562"
+    },
+    {
+      "recordedLog": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/clan-war-four-modes-v141.test.mjs.tap",
+      "archivedLog": "production/clan-war-command-20261109/qa/ci/cold-attempt-1/results/clan-war-four-modes-v141.test.mjs.tap",
+      "sha256": "efb843c1ffa1cb6ded3bfb724e5f57c9267a1c3f94de3ea1437cdd0bc9598461"
+    },
+    {
+      "recordedLog": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/clan-war-four-modes-v142.test.mjs.tap",
+      "archivedLog": "production/clan-war-command-20261109/qa/ci/cold-attempt-1/results/clan-war-four-modes-v142.test.mjs.tap",
+      "sha256": "d86a8a4379ca2c39a1a22371c0dc89471408e196bfad01896ebdf59e645df2e0"
+    },
+    {
+      "recordedLog": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/clan-war-four-modes-v143.test.mjs.tap",
+      "archivedLog": "production/clan-war-command-20261109/qa/ci/cold-attempt-1/results/clan-war-four-modes-v143.test.mjs.tap",
+      "sha256": "0bce3777ef16b9ffe40f9aaca0438b37ddac147a6b3838cd60aa29b5ddf3d135"
+    },
+    {
+      "recordedLog": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/clan-war-four-modes-v144.test.mjs.tap",
+      "archivedLog": "production/clan-war-command-20261109/qa/ci/cold-attempt-1/results/clan-war-four-modes-v144.test.mjs.tap",
+      "sha256": "1a274f5cd6255d6377376da5c37dbce295201fc3ecb8103994626a203ffbf4c7"
+    },
+    {
+      "recordedLog": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/clan-war-four-modes-v145.test.mjs.tap",
+      "archivedLog": "production/clan-war-command-20261109/qa/ci/cold-attempt-1/results/clan-war-four-modes-v145.test.mjs.tap",
+      "sha256": "5799559be79e06f0370bcef31a901aeef2b9c0c0496df316339bc70a4a2b2594"
+    },
+    {
+      "recordedLog": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/clan-war-four-modes-v147.test.mjs.tap",
+      "archivedLog": "production/clan-war-command-20261109/qa/ci/cold-attempt-1/results/clan-war-four-modes-v147.test.mjs.tap",
+      "sha256": "b0164b3ebe12cdf8b4c0d8cba5e6425b14afeaec3a22477fe76950ee5f0dd643"
+    },
+    {
+      "recordedLog": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/clan-war-gauntlets-v133.test.mjs.tap",
+      "archivedLog": "production/clan-war-command-20261109/qa/ci/cold-attempt-1/results/clan-war-gauntlets-v133.test.mjs.tap",
+      "sha256": "659837781ca9c1cc54b50fff175c34ad7422acf64d25aa42f226c16cc2b15fff"
+    },
+    {
+      "recordedLog": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/clan-war-integrated-last-contact-v150.test.mjs.tap",
+      "archivedLog": "production/clan-war-command-20261109/qa/ci/cold-attempt-1/results/clan-war-integrated-last-contact-v150.test.mjs.tap",
+      "sha256": "22e81bef0bca3e479d3e841173a02e45f3864c7c90e353ad796e80cd3b18f3e9"
+    },
+    {
+      "recordedLog": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/clan-war-operations-archive.test.mjs.tap",
+      "archivedLog": "production/clan-war-command-20261109/qa/ci/cold-attempt-1/results/clan-war-operations-archive.test.mjs.tap",
+      "sha256": "23b313b35c2e2fd0311ef3cf593f5a1e062766d5dfa39441e2aed756d5d33d8c"
+    },
+    {
+      "recordedLog": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/clan-war-operations-v115.test.mjs.tap",
+      "archivedLog": "production/clan-war-command-20261109/qa/ci/cold-attempt-1/results/clan-war-operations-v115.test.mjs.tap",
+      "sha256": "c48afe60c773ae40f0ba5e41fd51015a4c135796e233eb5e3d2fd751a15917a8"
+    },
+    {
+      "recordedLog": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/clan-war-outer-inspection-reconcile.test.mjs.tap",
+      "archivedLog": "production/clan-war-command-20261109/qa/ci/cold-attempt-1/results/clan-war-outer-inspection-reconcile.test.mjs.tap",
+      "sha256": "47b1abd268060fb4c7290083f7db9071532df8a805c2beca6137ba03a4adba3d"
+    },
+    {
+      "recordedLog": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/clan-war-outer-pace-reconcile.test.mjs.tap",
+      "archivedLog": "production/clan-war-command-20261109/qa/ci/cold-attempt-1/results/clan-war-outer-pace-reconcile.test.mjs.tap",
+      "sha256": "a9028d56cb05c9b2df9de56c00207142493f4b44af53cc8c9456c1d562c2db83"
+    },
+    {
+      "recordedLog": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/clan-war-outer-recall-continuity.test.mjs.tap",
+      "archivedLog": "production/clan-war-command-20261109/qa/ci/cold-attempt-1/results/clan-war-outer-recall-continuity.test.mjs.tap",
+      "sha256": "214746f6a2dfd384b4debeff6b9d04c0c815427313df01768072583346a77ace"
+    },
+    {
+      "recordedLog": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/clan-war-outer-recall-v116.test.mjs.tap",
+      "archivedLog": "production/clan-war-command-20261109/qa/ci/cold-attempt-1/results/clan-war-outer-recall-v116.test.mjs.tap",
+      "sha256": "319c8c4b050da5bba9a075e695ecafcfdb6971f68c4608553bf2ac749a9bca70"
+    },
+    {
+      "recordedLog": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/clan-war-planets-engine-v96.test.mjs.tap",
+      "archivedLog": "production/clan-war-command-20261109/qa/ci/cold-attempt-1/results/clan-war-planets-engine-v96.test.mjs.tap",
+      "sha256": "1f9e8229dc756a37dc3a597d4d295d5b4ec29dd5395b5204dbecef8336598dc8"
+    },
+    {
+      "recordedLog": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/clan-war-production-v152.test.mjs.tap",
+      "archivedLog": "production/clan-war-command-20261109/qa/ci/cold-attempt-1/results/clan-war-production-v152.test.mjs.tap",
+      "sha256": "3fb04e98883ed060bdcf1fdcee7e0b0b1357b64a170e1ee2e7f4aee1057e8644"
+    },
+    {
+      "recordedLog": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/clan-war-provenance-gate-v152.test.mjs.tap",
+      "archivedLog": "production/clan-war-command-20261109/qa/ci/cold-attempt-1/results/clan-war-provenance-gate-v152.test.mjs.tap",
+      "sha256": "39a53477a704df487052383e18489330c7c1a4b356300b7c9cd8370b06a6dcd3"
+    },
+    {
+      "recordedLog": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/clan-war-rts-web-lock-v152.test.mjs.tap",
+      "archivedLog": "production/clan-war-command-20261109/qa/ci/cold-attempt-1/results/clan-war-rts-web-lock-v152.test.mjs.tap",
+      "sha256": "63757de2b2c054fa85da804f1fb6b3519bdfb300cc7216c5bbc9bbd733be6bfa"
+    },
+    {
+      "recordedLog": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/clan-war-session-v85.test.mjs.tap",
+      "archivedLog": "production/clan-war-command-20261109/qa/ci/cold-attempt-1/results/clan-war-session-v85.test.mjs.tap",
+      "sha256": "5a0361fe6395c0b6394da0bb5d52d1ee92adada03893526e93e0ee76f2e7b47b"
+    },
+    {
+      "recordedLog": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/clan-war-v115-multitab-v148.test.mjs.tap",
+      "archivedLog": "production/clan-war-command-20261109/qa/ci/cold-attempt-1/results/clan-war-v115-multitab-v148.test.mjs.tap",
+      "sha256": "27d5c45b15a377753411aee9e9a34fac54db7edb9a4270528a30c1ee241cb55e"
+    },
+    {
+      "recordedLog": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/clan-war-v115-multitab-v151.test.mjs.tap",
+      "archivedLog": "production/clan-war-command-20261109/qa/ci/cold-attempt-1/results/clan-war-v115-multitab-v151.test.mjs.tap",
+      "sha256": "bc6d22b3abd8bc9f35ce1d915b5c633c4de0c4947e1a5745f4e65934e959c51e"
+    },
+    {
+      "recordedLog": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/clan-war-variant-export-coherence.test.mjs.tap",
+      "archivedLog": "production/clan-war-command-20261109/qa/ci/cold-attempt-1/results/clan-war-variant-export-coherence.test.mjs.tap",
+      "sha256": "f8fa3dcd513264dc2a3c3d55ac311d86ac39d5477a61379eebc427abdda71404"
+    },
+    {
+      "recordedLog": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/clan-war-variants-v120.test.mjs.tap",
+      "archivedLog": "production/clan-war-command-20261109/qa/ci/cold-attempt-1/results/clan-war-variants-v120.test.mjs.tap",
+      "sha256": "8debd2080ca7d4c65b2e95a7fc6903069397a5939c4cb1bf0451a73698e3b161"
+    },
+    {
+      "recordedLog": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/companion-residence.test.mjs.tap",
+      "archivedLog": "production/clan-war-command-20261109/qa/ci/cold-attempt-1/results/companion-residence.test.mjs.tap",
+      "sha256": "92bfdb85df11d9329813909d8f9a7acb0947d08e28765912f02c8d21135851d7"
+    },
+    {
+      "recordedLog": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/decal-placement-parity-v139.test.mjs.tap",
+      "archivedLog": "production/clan-war-command-20261109/qa/ci/cold-attempt-1/results/decal-placement-parity-v139.test.mjs.tap",
+      "sha256": "f57c25280958dda9cd8a8ccb354906c58de841957c59b31dfb21ed6402ebe002"
+    },
+    {
+      "recordedLog": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/dev-travel-destinations.test.mjs.tap",
+      "archivedLog": "production/clan-war-command-20261109/qa/ci/cold-attempt-1/results/dev-travel-destinations.test.mjs.tap",
+      "sha256": "cc14a4c46323ffb0d78c79b0af846f13e9e92d5e767a59fa84d56c695efe1ae5"
+    },
+    {
+      "recordedLog": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/dev-travel-session.test.mjs.tap",
+      "archivedLog": "production/clan-war-command-20261109/qa/ci/cold-attempt-1/results/dev-travel-session.test.mjs.tap",
+      "sha256": "d0d7b4872fc63fd9eee4541fb1777f01ae4b2fc0fa749490cd39d6d86fc006be"
+    },
+    {
+      "recordedLog": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/gauntlet-save-roundtrip-v136.test.mjs.tap",
+      "archivedLog": "production/clan-war-command-20261109/qa/ci/cold-attempt-1/results/gauntlet-save-roundtrip-v136.test.mjs.tap",
+      "sha256": "67f632c0052ab603ab9a4f64c8d4e964cab8183f7929e9a294f0c1767316aef8"
+    },
+    {
+      "recordedLog": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/hunt-canopy-resume-cooldown-20261109.test.mjs.tap",
+      "archivedLog": "production/clan-war-command-20261109/qa/ci/cold-attempt-1/results/hunt-canopy-resume-cooldown-20261109.test.mjs.tap",
+      "sha256": "01a12e85ca4ea722c7144585db6ca067c70033e809b1f37961102581a5f748b1"
+    },
+    {
+      "recordedLog": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/hunt-carcass-runtime-v112.test.mjs.tap",
+      "archivedLog": "production/clan-war-command-20261109/qa/ci/cold-attempt-1/results/hunt-carcass-runtime-v112.test.mjs.tap",
+      "sha256": "01a12e85ca4ea722c7144585db6ca067c70033e809b1f37961102581a5f748b1"
+    },
+    {
+      "recordedLog": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/hunt-carried-corpse-menu-v112.test.mjs.tap",
+      "archivedLog": "production/clan-war-command-20261109/qa/ci/cold-attempt-1/results/hunt-carried-corpse-menu-v112.test.mjs.tap",
+      "sha256": "01a12e85ca4ea722c7144585db6ca067c70033e809b1f37961102581a5f748b1"
+    },
+    {
+      "recordedLog": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/hunt-catalogue-contract-v112.test.mjs.tap",
+      "archivedLog": "production/clan-war-command-20261109/qa/ci/cold-attempt-1/results/hunt-catalogue-contract-v112.test.mjs.tap",
+      "sha256": "8cfb638d4be7558ffb3350d4d1c092234d3a4b5ae9235ba738918b866864c01c"
+    },
+    {
+      "recordedLog": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/hunt-field-feedback-20261109.test.mjs.tap",
+      "archivedLog": "production/clan-war-command-20261109/qa/ci/cold-attempt-1/results/hunt-field-feedback-20261109.test.mjs.tap",
+      "sha256": "91bf22761cf79f25e9c740ddc16f7b10c119eaa2448bbd6d48404bc92b32a4cd"
+    },
+    {
+      "recordedLog": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/hunt-field-guide-v112.test.mjs.tap",
+      "archivedLog": "production/clan-war-command-20261109/qa/ci/cold-attempt-1/results/hunt-field-guide-v112.test.mjs.tap",
+      "sha256": "750ae6bf957573d315c4327e34e7022263c7b039d34ff5785908ef27ae8ef55c"
+    },
+    {
+      "recordedLog": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/hunt-field-presentation-v112.test.mjs.tap",
+      "archivedLog": "production/clan-war-command-20261109/qa/ci/cold-attempt-1/results/hunt-field-presentation-v112.test.mjs.tap",
+      "sha256": "c0b7fae60582fa0c9f1ca9abebc409a9f88c0dfd320c000916940b7f1917da96"
+    },
+    {
+      "recordedLog": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/hunt-skinning-worksite-20261109.test.mjs.tap",
+      "archivedLog": "production/clan-war-command-20261109/qa/ci/cold-attempt-1/results/hunt-skinning-worksite-20261109.test.mjs.tap",
+      "sha256": "42d2a8ea1ee339be26c8900429737df1cc66c35216ba37a956442bdd9c6dc200"
+    },
+    {
+      "recordedLog": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/hunter-armor-chromatic-clipping.test.mjs.tap",
+      "archivedLog": "production/clan-war-command-20261109/qa/ci/cold-attempt-1/results/hunter-armor-chromatic-clipping.test.mjs.tap",
+      "sha256": "f31351482f7195130aeecab4aabe43eda204239b4b82f510ed83cc16c5a5c153"
+    },
+    {
+      "recordedLog": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/hunter-chromatics-native-v114.test.mjs.tap",
+      "archivedLog": "production/clan-war-command-20261109/qa/ci/cold-attempt-1/results/hunter-chromatics-native-v114.test.mjs.tap",
+      "sha256": "f2d9c808c29f80f7b9080f76d897c61f0db90bb5b2846142de565b1c33afe2a5"
+    },
+    {
+      "recordedLog": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/hunter-chromatics-v113.test.mjs.tap",
+      "archivedLog": "production/clan-war-command-20261109/qa/ci/cold-attempt-1/results/hunter-chromatics-v113.test.mjs.tap",
+      "sha256": "48cdbb0b9bdd4eafc58e973c46c4667f532ffffb5d2d507877f23aeecaf441f8"
+    },
+    {
+      "recordedLog": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/hunter-rig-origin.test.mjs.tap",
+      "archivedLog": "production/clan-war-command-20261109/qa/ci/cold-attempt-1/results/hunter-rig-origin.test.mjs.tap",
+      "sha256": "5e0c6606b7a18271781e6d642bf1212367746875b2edf04585a60ac0deb00180"
+    },
+    {
+      "recordedLog": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/mobility-build-boundary.test.mjs.tap",
+      "archivedLog": "production/clan-war-command-20261109/qa/ci/cold-attempt-1/results/mobility-build-boundary.test.mjs.tap",
+      "sha256": "8cea1317a15d380579e04fb7f48eab45cb2777c0ea87c46c2d156b7dc6b9be7c"
+    },
+    {
+      "recordedLog": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/mobility-controls-workshop.test.mjs.tap",
+      "archivedLog": "production/clan-war-command-20261109/qa/ci/cold-attempt-1/results/mobility-controls-workshop.test.mjs.tap",
+      "sha256": "2d282e0e58f44c708aa4ff766212856958d8c01e4e76de4bee751968568f9aa7"
+    },
+    {
+      "recordedLog": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/mobility-core.test.mjs.tap",
+      "archivedLog": "production/clan-war-command-20261109/qa/ci/cold-attempt-1/results/mobility-core.test.mjs.tap",
+      "sha256": "d3ba9ee8e15db7ad0e06d437a8db37fb1574a073e1c797dc34d92f9a4d33383f"
+    },
+    {
+      "recordedLog": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/mobility-hardening.test.mjs.tap",
+      "archivedLog": "production/clan-war-command-20261109/qa/ci/cold-attempt-1/results/mobility-hardening.test.mjs.tap",
+      "sha256": "336c4db4f9148529a9c010c3d1e242938d00f5b98cc1711f7c7aa698f349fae2"
+    },
+    {
+      "recordedLog": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/mobility-integration.test.mjs.tap",
+      "archivedLog": "production/clan-war-command-20261109/qa/ci/cold-attempt-1/results/mobility-integration.test.mjs.tap",
+      "sha256": "6da29dfa63cf464fa565511b6b9b6c9a046ea1db20c41c7ac422c9df50147af0"
+    },
+    {
+      "recordedLog": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/mobility-qa-driver.test.mjs.tap",
+      "archivedLog": "production/clan-war-command-20261109/qa/ci/cold-attempt-1/results/mobility-qa-driver.test.mjs.tap",
+      "sha256": "d0fce73540ba5a1c4fc4a8de585f54a14cf53c7e98a1e0c498edcc4838acedaf"
+    },
+    {
+      "recordedLog": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/mobility-training-reward.test.mjs.tap",
+      "archivedLog": "production/clan-war-command-20261109/qa/ci/cold-attempt-1/results/mobility-training-reward.test.mjs.tap",
+      "sha256": "b6345a0d0c7b0ac47b3f50a48d0d6c152c3f62d45ecfb30ddeb3b272f76aea06"
+    },
+    {
+      "recordedLog": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/phg-atlas-runtime-v125.test.mjs.tap",
+      "archivedLog": "production/clan-war-command-20261109/qa/ci/cold-attempt-1/results/phg-atlas-runtime-v125.test.mjs.tap",
+      "sha256": "c2f88c6aa68f17ad9e450853e89f39f25e336c860d273cb6da5e0dc60510c1a3"
+    },
+    {
+      "recordedLog": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/phg-biomask-v131.test.mjs.tap",
+      "archivedLog": "production/clan-war-command-20261109/qa/ci/cold-attempt-1/results/phg-biomask-v131.test.mjs.tap",
+      "sha256": "889bd26495e80a3dcf88554fa3be6cbf948e087b274b8814852d2f825fbd274e"
+    },
+    {
+      "recordedLog": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/phg-biomask-v132.test.mjs.tap",
+      "archivedLog": "production/clan-war-command-20261109/qa/ci/cold-attempt-1/results/phg-biomask-v132.test.mjs.tap",
+      "sha256": "ba559cd9cd10256ae2673718a3b28e275afdd8131a0b799daba258f9bf249f0f"
+    },
+    {
+      "recordedLog": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/phg-historical-v127.test.mjs.tap",
+      "archivedLog": "production/clan-war-command-20261109/qa/ci/cold-attempt-1/results/phg-historical-v127.test.mjs.tap",
+      "sha256": "d26692b46e50a780cc9838d016239f355133b45a73f8a953be8da54421171332"
+    },
+    {
+      "recordedLog": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/phg-official-cosmetics-v141.test.mjs.tap",
+      "archivedLog": "production/clan-war-command-20261109/qa/ci/cold-attempt-1/results/phg-official-cosmetics-v141.test.mjs.tap",
+      "sha256": "4784d5bbe6fd427016c622c4cf7a621e075efc0bf8704deb921d2a59b0852d04"
+    },
+    {
+      "recordedLog": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/phg-patches-v129.test.mjs.tap",
+      "archivedLog": "production/clan-war-command-20261109/qa/ci/cold-attempt-1/results/phg-patches-v129.test.mjs.tap",
+      "sha256": "7a797c71c861982b5788318a384be88fa4c450a549c689c0fa97169d9d8c6954"
+    },
+    {
+      "recordedLog": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/phg-platform-v128.test.mjs.tap",
+      "archivedLog": "production/clan-war-command-20261109/qa/ci/cold-attempt-1/results/phg-platform-v128.test.mjs.tap",
+      "sha256": "0a71315de14d51c2d1b690bdb642b6264958650ee3c04c0198148e34e15cedac"
+    },
+    {
+      "recordedLog": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/phg-recent-materials-v126.test.mjs.tap",
+      "archivedLog": "production/clan-war-command-20261109/qa/ci/cold-attempt-1/results/phg-recent-materials-v126.test.mjs.tap",
+      "sha256": "6a43582bad9f52238388705eed7c52174ab834359a78799f918e7556dac3a863"
+    },
+    {
+      "recordedLog": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/phg-reference-catalog-v130.test.mjs.tap",
+      "archivedLog": "production/clan-war-command-20261109/qa/ci/cold-attempt-1/results/phg-reference-catalog-v130.test.mjs.tap",
+      "sha256": "7bfe7de606648c1a4f92134be4f0cbf48d6e9549a319aa4496f0b673b6dccbcd"
+    },
+    {
+      "recordedLog": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/phg-video-evidence-v123.test.mjs.tap",
+      "archivedLog": "production/clan-war-command-20261109/qa/ci/cold-attempt-1/results/phg-video-evidence-v123.test.mjs.tap",
+      "sha256": "6454e64fa3dced993c810fad08c37ed7b8eed1b1b569d62b6cf7645776227f4c"
+    },
+    {
+      "recordedLog": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/phg-visual-studies-v122.test.mjs.tap",
+      "archivedLog": "production/clan-war-command-20261109/qa/ci/cold-attempt-1/results/phg-visual-studies-v122.test.mjs.tap",
+      "sha256": "b9dd2953997d2a26a571c8db42d9fef1844131b4e90faca75728b7631e586653"
+    },
+    {
+      "recordedLog": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/planet-generator-persistence-v102.test.mjs.tap",
+      "archivedLog": "production/clan-war-command-20261109/qa/ci/cold-attempt-1/results/planet-generator-persistence-v102.test.mjs.tap",
+      "sha256": "e08ca151f9a793495cf906940b376ce6943b5d60f2cae9bcb67efd868b9c8657"
+    },
+    {
+      "recordedLog": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/planet-random-generator-v144.test.mjs.tap",
+      "archivedLog": "production/clan-war-command-20261109/qa/ci/cold-attempt-1/results/planet-random-generator-v144.test.mjs.tap",
+      "sha256": "4ae19a6737330b62b657f4b9e8216533d6aad2faf9a367a635fae9f236487eae"
+    },
+    {
+      "recordedLog": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/planet-terrain-slope-v152.test.mjs.tap",
+      "archivedLog": "production/clan-war-command-20261109/qa/ci/cold-attempt-1/results/planet-terrain-slope-v152.test.mjs.tap",
+      "sha256": "77a99b1f352dca52c427a0249575ded22e6000e3db7113111bf634159150c0f7"
+    },
+    {
+      "recordedLog": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/scene-audio.test.mjs.tap",
+      "archivedLog": "production/clan-war-command-20261109/qa/ci/cold-attempt-1/results/scene-audio.test.mjs.tap",
+      "sha256": "d516ab1bae3c59477c07c91ec2982a27ec768cc942561aa31f85bc4ad481ca30"
+    },
+    {
+      "recordedLog": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/trophy-tutorial-save-v6.test.mjs.tap",
+      "archivedLog": "production/clan-war-command-20261109/qa/ci/cold-attempt-1/results/trophy-tutorial-save-v6.test.mjs.tap",
+      "sha256": "3ec13f71e8261acfbf8a11531b16c36eed6222720f5dff0da880321f6a40bd45"
+    },
+    {
+      "recordedLog": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/trophy-tutorial-v6.test.mjs.tap",
+      "archivedLog": "production/clan-war-command-20261109/qa/ci/cold-attempt-1/results/trophy-tutorial-v6.test.mjs.tap",
+      "sha256": "6ac336fbf0a4fa4660f55f8c0f75581c392f4deb40ebb2bf38a084b15ec80456"
+    },
+    {
+      "recordedLog": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/warp-module-bay.test.mjs.tap",
+      "archivedLog": "production/clan-war-command-20261109/qa/ci/cold-attempt-1/results/warp-module-bay.test.mjs.tap",
+      "sha256": "60130cdfcade5d7f09de8b889df58f3d5ba2ca1c69c9e6f7e35c8ffb53599958"
+    },
+    {
+      "recordedLog": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/yautja-decals-v133.test.mjs.tap",
+      "archivedLog": "production/clan-war-command-20261109/qa/ci/cold-attempt-1/results/yautja-decals-v133.test.mjs.tap",
+      "sha256": "3ba3815950c353859f03a13a65019c8434ac35c11740d8b2086cd05b3504f9b3"
+    }
+  ]
+}

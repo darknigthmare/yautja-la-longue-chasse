@@ -1,0 +1,42 @@
+TAP version 13
+# Subtest: inventory covers every declared effect, biome and music context without requiring audio
+ok 1 - inventory covers every declared effect, biome and music context without requiring audio
+  ---
+  duration_ms: 8.511732
+  type: 'test'
+  ...
+# Subtest: a real file wins over the missing marker, empty audio is excluded and URL names are escaped
+ok 2 - a real file wins over the missing marker, empty audio is excluded and URL names are escaped
+  ---
+  duration_ms: 7.799387
+  type: 'test'
+  ...
+# Subtest: format ordering, deterministic output and content fingerprints survive adds, replacement and removal
+ok 3 - format ordering, deterministic output and content fingerprints survive adds, replacement and removal
+  ---
+  duration_ms: 18.250205
+  type: 'test'
+  ...
+# Subtest: a configurable local public prefix is supported and unsafe prefixes are rejected
+ok 4 - a configurable local public prefix is supported and unsafe prefixes are rejected
+  ---
+  duration_ms: 3.45977
+  type: 'test'
+  ...
+[audio] inventory updated: 1 supplied slots
+[audio] inventory updated: 0 supplied slots
+# Subtest: development watcher updates added and deleted audio without rewriting its own manifest forever
+ok 5 - development watcher updates added and deleted audio without rewriting its own manifest forever
+  ---
+  duration_ms: 814.556692
+  type: 'test'
+  ...
+1..5
+# tests 5
+# suites 0
+# pass 5
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 857.83048

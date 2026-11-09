@@ -1,0 +1,220 @@
+{
+  "schemaVersion": 1,
+  "asOf": "2026-11-09T11:10:52.250558+00:00",
+  "criterion": "MOB-001",
+  "priority": "P0",
+  "qualification": "QUALIFIE_BORNE",
+  "passed": true,
+  "sourceWorkbook": "production/mobility-20261108/Yautja_Mobilite_Gameplay_20261108.xlsx",
+  "sourceSheet": "Reste_a_faire",
+  "sourceRow": 6,
+  "buildId": "nItYejsE7HSH4L0ykJM5K",
+  "nativeChecksPassed": 29,
+  "nativeChecksFailed": 0,
+  "nativeTrainingSeconds": 68.398,
+  "nativeTrainingResult": "Three ordered beacons, actual 25kg cargo returned and parked; permit earned, hand-over remains explicitly unclaimed.",
+  "managedCheckpointRevisionBeforeAfter": {
+    "beforeRevision": 2,
+    "afterRevision": 2
+  },
+  "continuity": "Live owned movement at tick30 is restored by ordinary Continue despite an older managed checkpoint, then copied into that managed checkpoint.",
+  "faultInjection": "Two declared real Storage.setItem quota refusals: purchase and owned movement. The real campaign writer, reducer and commands otherwise run unchanged.",
+  "nativeDomOrClockPatched": false,
+  "gameCallbackInvokedByQa": false,
+  "fullCampaignFromNurseryPlayed": false,
+  "fixtureDisclosure": "Initial historical adult campaign at a supported exterior forge checkpoint; no permit, mobility ledger, property or mobility result seeded. Initial slot is built through real production migration/checkpoint APIs.",
+  "actualActorPlayed": "Native exterior walk, forge door, interior counter approach, training and owned sortie, recovery and physical return.",
+  "profilePreservedExceptExplicitPurchaseAndTime": true,
+  "unrelatedMissionsTrophiesInventoryPreserved": true,
+  "finalMarks": 9580,
+  "finalOwnedVehicles": 1,
+  "finalRecoveryCount": 1,
+  "sourceBeforeAfterEqual": true,
+  "servedJsResponsesCompared": 82,
+  "servedUniqueJsFiles": 31,
+  "servedCssResponsesCompared": 12,
+  "servedUniqueCssFiles": 5,
+  "allServedJsCssMatchBuiltFiles": true,
+  "runtimeErrors": 0,
+  "consoleErrors": 0,
+  "httpErrors": 0,
+  "requestFailures": 0,
+  "screenshotsOpened": 10,
+  "viewports": [
+    {
+      "width": 1440,
+      "height": 1000
+    },
+    {
+      "width": 390,
+      "height": 844
+    },
+    {
+      "width": 320,
+      "height": 780
+    }
+  ],
+  "physicalControllerTested": false,
+  "humanArtApproved": false,
+  "sourceIdentityObserved": {
+    "buildId": "nItYejsE7HSH4L0ykJM5K",
+    "sources": [
+      {
+        "file": "app/game/GameClient.tsx",
+        "sha256": "a38ec53a9ded4d6a8f0044c92e8fff71c199acd4d53aa1f4ceabbf53f4152343"
+      },
+      {
+        "file": "app/game/HomeworldHub.tsx",
+        "sha256": "6fd223d741945bfc0f8010053fae3e34751ccfccbc47504b33c8c4dd2935b409"
+      },
+      {
+        "file": "app/game/MobilityGarage.tsx",
+        "sha256": "c2503ac079da2d3cb4bbb169aec1aa8fc189f1021af9f807393476ace5f00d76"
+      },
+      {
+        "file": "app/game/MobilityGarage.module.css",
+        "sha256": "d6a864090fbb5007ef02372dd4ca0e883bccb5d837222bdbea5b97dbcd78bf03"
+      },
+      {
+        "file": "app/game/MobilityDrivingYard.tsx",
+        "sha256": "64c457b5515592140245a9ee550be4e362dc95250277c7a76c20fc0ff939398d"
+      },
+      {
+        "file": "app/game/save.ts",
+        "sha256": "86bc5391515bdb37038484951d6ee1de96fa6e32534352ea70bff05325e8e240"
+      },
+      {
+        "file": "app/game/types.ts",
+        "sha256": "cfe5a038505d33dcca949f09156d3833d1e269e8e4ed74764b7e4d3fa7fd3946"
+      },
+      {
+        "file": "app/game/systems/mobility/access.ts",
+        "sha256": "6ebd5adb3d07b3ea92fe6e2295e7ea25d130308a8e42770d18df788c44b0fc88"
+      },
+      {
+        "file": "app/game/systems/mobility/catalogue.ts",
+        "sha256": "33840ee3172cb6c087c4ff7e9786c4319cd1cf432ef53d3eae7e9b588b9f955f"
+      },
+      {
+        "file": "app/game/systems/mobility/controller.ts",
+        "sha256": "d3fe64b0912453cb3ee0edd15f5529057cf92f83ffc4fb713f6332f1691530b4"
+      },
+      {
+        "file": "app/game/systems/mobility/controls.ts",
+        "sha256": "949eee61c903b18130ed5c19d6a6b9bd321337a9874ec4e38a54cf207bc6350c"
+      },
+      {
+        "file": "app/game/systems/mobility/course.ts",
+        "sha256": "9ea4a712ec0d1992b8a1b76a8026ae77ebb93351ad93222446b2c888888eee99"
+      },
+      {
+        "file": "app/game/systems/mobility/ledger.ts",
+        "sha256": "db8d7ed2456eabd3942f688faf1bd66df45d3975e9fd55422ff7e3a1799e2a1d"
+      },
+      {
+        "file": "app/game/systems/mobility/workshop.ts",
+        "sha256": "0d8acc38e0ad8cd6ecec1addf7a04b6ac678d9bdb628c9cae8aaaf49317a2662"
+      },
+      {
+        "file": "scripts/qa-mobility-campaign-20261109.mjs",
+        "sha256": "944101a34b897416f8604d2328c3986c34627185be29a61b2c176d96c5fc9a55"
+      },
+      {
+        "file": "scripts/mobility-qa-driver.mjs",
+        "sha256": "d866f7c99ba27a6cb48ab192e0958fb5c5fab6c62bfa7b614f76bcd54dc8fd49"
+      }
+    ]
+  },
+  "remainingUI": [
+    "Secondary status text can retain an earlier active/failure message after manual pause or a successful retry; durable state and controls are correct."
+  ],
+  "MOB002GlobalQualificationOwnedByRoot": true,
+  "MOB002ClosedByThisReceipt": false,
+  "files": [
+    {
+      "path": "production/clan-war-command-20261109/qa/mobility/campaign-attempt-2/report.browser-run.json",
+      "bytes": 123476,
+      "sha256": "3e4cbeb33b5eae53efe61f20dfbb13ab3cc295494c04bace7700f1c102773f80"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/mobility/campaign-attempt-2/report.json",
+      "bytes": 123724,
+      "sha256": "1db3d8725bfcc6fb4a99e768587278cb99332b270b60f90a5722f6d1a49d4637"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/mobility/campaign-attempt-2/screenshot-inspection.json",
+      "bytes": 4020,
+      "sha256": "31429289a76915adab4923797d896c78d990108468ef9e7d9a35a59e8d256389"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/mobility/campaign-attempt-2/recipe-used.mjs",
+      "bytes": 27270,
+      "sha256": "944101a34b897416f8604d2328c3986c34627185be29a61b2c176d96c5fc9a55"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/mobility/campaign-attempt-2/initial-save.json",
+      "bytes": 12946,
+      "sha256": "d943857e6377bf9bf1506071f8578a1734882e100c3638fb9eb50e5c4aaeada3"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/mobility/campaign-attempt-2/fixture-disclosure.json",
+      "bytes": 824,
+      "sha256": "ce56a280912915d694cc1f2ae0002774b271bb6ea17acdfd4550d77f0e57f3fd"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/mobility/campaign-attempt-2/final-save.json",
+      "bytes": 14523,
+      "sha256": "ead3b25a4e04303b58a55f49a7d3b93eeccd0b52c9ca21416ad51c7d5d89893b"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/mobility/campaign-attempt-2/01-exterior-before-forge.png",
+      "bytes": 1801932,
+      "sha256": "3ad808a59b71032344e82975dd78f0530f43fdef4cfe0ddb9832ab9756a6998c"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/mobility/campaign-attempt-2/02-physical-forge-counter.png",
+      "bytes": 428606,
+      "sha256": "33f5233feb20c9c54589b1e68df34c62c5ede0938af49a2210b2109e9df8389e"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/mobility/campaign-attempt-2/03-campaign-garage.png",
+      "bytes": 453633,
+      "sha256": "e445720cdd2d4aa524be761c86a603f7b6973c7fc8c03334a249dfa1506ed07a"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/mobility/campaign-attempt-2/04-training-complete-before-return.png",
+      "bytes": 208536,
+      "sha256": "98d13f57ba9ed80677ec8db3209a023446125d830ddd548e56ca3721fdc086e5"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/mobility/campaign-attempt-2/05-purchase-refused.png",
+      "bytes": 474847,
+      "sha256": "0ddf4ce1380d30b27f2e59f051052134d12ab0cd2628d0d96991ee9ef47cb86d"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/mobility/campaign-attempt-2/06-drive-write-refused.png",
+      "bytes": 211290,
+      "sha256": "9b3ff6092332952e32e48de0c04e2cd0aebfd01e4d27b3c6c3eb2530f42582ca"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/mobility/campaign-attempt-2/07-drive-reconciled.png",
+      "bytes": 214558,
+      "sha256": "e64b2b04d894a335c10e4cba9eed2437c17314aad8050e73f5794729354407af"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/mobility/campaign-attempt-2/08-paused-sortie-after-continue-mobile.png",
+      "bytes": 105355,
+      "sha256": "ace3fefeeee75f59a0944e700e309a177446ff5641002c2519c8112dd5540227"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/mobility/campaign-attempt-2/08b-paused-sortie-after-continue-320.png",
+      "bytes": 89068,
+      "sha256": "cbf1ef3be8409133e111e1d98ae6fbe173e9978b77e31e22184156cd719a22b4"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/mobility/campaign-attempt-2/09-returned-to-physical-forge.png",
+      "bytes": 205607,
+      "sha256": "e7221dbd15cf172dd9a2c68272918f9afa0597e17b41cc8c27a6435e3895d7ba"
+    }
+  ]
+}

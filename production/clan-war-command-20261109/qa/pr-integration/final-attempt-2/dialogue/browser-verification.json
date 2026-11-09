@@ -1,0 +1,155 @@
+{
+  "startedAt": "2026-11-09T11:05:22.958Z",
+  "checkoutCommit": "0745036f39e5fded95c65796461d625002b33215",
+  "scope": "Native GameClient on three viewport sizes, earned clan contacts, four read-only dialogue topics, one browser-played escort and reload. Not a full campaign, physical controller, native mobile or art certification.",
+  "fixture": {
+    "file": "initial-dialogue-fixture.json",
+    "sha256": "0cc3257cd2fdd8b35cae748edf19db307244a2ecf13323b3125b8c4e1bb9f58f",
+    "browserPlayed": false,
+    "description": "Synthetic adult campaign and prerequisite hunts/interior preparations produced through production reducers. No recruitment, space victory or conversation is pre-seeded.",
+    "clanMarks": 1912,
+    "completedContracts": [
+      "welcome-aboard",
+      "ship-training-circuit",
+      "field-jungle-survey",
+      "field-ice-route",
+      "ship-seal-check",
+      "ship-armory-audit",
+      "ship-triage-route"
+    ],
+    "recruitedNpcIds": [],
+    "operation": null
+  },
+  "sourceSha256": {
+    "app/game/ClanShipCrewDialogue.tsx": "f77aa725afac32749e5ece96bd3122c3d2ae0e52a47507130934099ec241c3e4",
+    "app/game/systems/clanShipDialogue.ts": "c50e94b1c69ab90c1b57fce380bfc00d0e9ea9921448fad45dd7fdfde14516fe",
+    "app/game/ClanShipOperationsPanel.tsx": "bd3aa8b425b65d5d5ec3a2c6b2d160f479fef8c33d6c1695d272dc230613b90b",
+    "app/game/ClanShipOperationsPanel.module.css": "7b9c01fda57eaf0badd4ec79ce909d5666abdac71069ffac9a9700f7b541427b",
+    "app/game/systems/clanShipOperations.ts": "6894c68f613af82c0e23aa96b4c7cccf0606dded8638d55e519d269f4a4f0746",
+    "app/game/systems/companionResidence.ts": "ed55b78c62e3c7b963a6b71f966fc3fccf126450c24ce561f540a1a563dd7d8e",
+    "app/game/systems/clanShipTrophyHearing.ts": "43012e17f797eb0d0fc63746e56678fffa05e18c68db230610de34b53b98323b",
+    "app/game/GameClient.tsx": "a38ec53a9ded4d6a8f0044c92e8fff71c199acd4d53aa1f4ceabbf53f4152343",
+    "app/game/save.ts": "86bc5391515bdb37038484951d6ee1de96fa6e32534352ea70bff05325e8e240",
+    "tests/helpers/clan-ship-trophy-hearing-fixture.mjs": "0bd4652c6ef45122e49b49fb3d5398968d151422583261b84c34b95db9105772",
+    "scripts/qa-clan-dialogue-browser-20261109.mjs": "849cd2fdb38bb60f483d1355e6482a30be1a3f131ec94cd74bf6b5164645ac04"
+  },
+  "browserExecuted": true,
+  "passed": false,
+  "checks": [
+    {
+      "context": "1440x1000",
+      "label": "ash-scar: greeting reads the real context without campaign writes",
+      "passed": true
+    },
+    {
+      "context": "1440x1000",
+      "label": "ash-scar: work reads the real context without campaign writes",
+      "passed": true
+    },
+    {
+      "context": "1440x1000",
+      "label": "ash-scar: agreement reads the real context without campaign writes",
+      "passed": true
+    },
+    {
+      "context": "1440x1000",
+      "label": "ash-scar: return reads the real context without campaign writes",
+      "passed": true
+    },
+    {
+      "context": "1440x1000",
+      "label": "Natural autosave retains the same open drawer and selected topic without progression changes",
+      "passed": true
+    }
+  ],
+  "contexts": [],
+  "errors": [],
+  "missingAssets": [],
+  "screenshots": [
+    "failure.png"
+  ],
+  "retention": [],
+  "browserVersion": "154.0.8037.57",
+  "failure": "page.waitForFunction: Timeout 5000ms exceeded.\n    at checkRetention (/workspace/yautja-la-longue-chasse/scripts/qa-clan-dialogue-browser-20261109.mjs:171:20)\n    at async file:///workspace/yautja-la-longue-chasse/scripts/qa-clan-dialogue-browser-20261109.mjs:225:52",
+  "failureObservation": {
+    "url": "http://127.0.0.1:4194/",
+    "hidden": false,
+    "focused": true,
+    "docking": {
+      "version": 1,
+      "ownerCreatedAt": "2026-11-08T18:00:00.000Z",
+      "clanShipId": "avp-clan-mothership",
+      "personalShipId": "classic-predator-spaceship",
+      "status": "aboard",
+      "roomId": "entrainement"
+    },
+    "room": "entrainement",
+    "closeDisabled": false,
+    "drawers": [
+      {
+        "npcId": "ash-scar",
+        "open": true,
+        "topic": "work"
+      }
+    ],
+    "retention": {
+      "startedAt": 23223,
+      "phase": "manual-tab-interruption",
+      "samples": [
+        {
+          "elapsedMs": 2,
+          "state": {
+            "phase": "autosave",
+            "connected": true,
+            "sameDrawer": true,
+            "open": true,
+            "topic": "work",
+            "busy": false,
+            "hidden": false,
+            "focused": true
+          }
+        },
+        {
+          "elapsedMs": 15707.800000000745,
+          "state": {
+            "phase": "autosave",
+            "connected": true,
+            "sameDrawer": false,
+            "open": true,
+            "topic": null,
+            "busy": true,
+            "hidden": false,
+            "focused": true
+          }
+        },
+        {
+          "elapsedMs": 15780.800000000745,
+          "state": {
+            "phase": "autosave",
+            "connected": true,
+            "sameDrawer": true,
+            "open": true,
+            "topic": "work",
+            "busy": false,
+            "hidden": false,
+            "focused": true
+          }
+        },
+        {
+          "elapsedMs": 36623.40000000037,
+          "state": {
+            "phase": "manual-tab-interruption",
+            "connected": true,
+            "sameDrawer": true,
+            "open": true,
+            "topic": "work",
+            "busy": false,
+            "hidden": false,
+            "focused": true
+          }
+        }
+      ]
+    }
+  },
+  "completedAt": "2026-11-09T11:06:24.167Z"
+}

@@ -1,0 +1,83 @@
+{
+  "asOf": "2026-11-09T11:10:52.245711+00:00",
+  "allOriginalsOpened": true,
+  "screenshotsOpened": 10,
+  "scope": "Original native viewport PNGs inspected for the exact tested scenes, wallet bounds and recovery states. Not canonical human art approval or complete mobile usability certification.",
+  "screenshots": [
+    {
+      "filename": "01-exterior-before-forge.png",
+      "sha256": "3ad808a59b71032344e82975dd78f0530f43fdef4cfe0ddb9832ab9756a6998c",
+      "bytes": 1801932,
+      "originalOpened": true,
+      "observation": "Actual hunter outside the forge, supported ground, existing door and city silhouettes visible."
+    },
+    {
+      "filename": "02-physical-forge-counter.png",
+      "sha256": "33f5233feb20c9c54589b1e68df34c62c5ede0938af49a2210b2109e9df8389e",
+      "bytes": 428606,
+      "originalOpened": true,
+      "observation": "Real forge conversation exposes the convoy counter after native walking; existing quest panel remains separate."
+    },
+    {
+      "filename": "03-campaign-garage.png",
+      "sha256": "e445720cdd2d4aa524be761c86a603f7b6973c7fc8c03334a249dfa1506ed07a",
+      "bytes": 453633,
+      "originalOpened": true,
+      "observation": "Desktop wallet and owned count fully fit the actual GameClient station; catalogue and static review preview remain visible."
+    },
+    {
+      "filename": "04-training-complete-before-return.png",
+      "sha256": "98d13f57ba9ed80677ec8db3209a023446125d830ddd548e56ca3721fdc086e5",
+      "bytes": 208536,
+      "originalOpened": true,
+      "observation": "Three native beacons completed and cargo returned at depot before explicit garage return; no awarded vehicle yet."
+    },
+    {
+      "filename": "05-purchase-refused.png",
+      "sha256": "0ddf4ce1380d30b27f2e59f051052134d12ab0cd2628d0d96991ee9ef47cb86d",
+      "bytes": 474847,
+      "originalOpened": true,
+      "observation": "Declared quota failure leaves the purchase action available and displays the real campaign warning; no debit or possession announced."
+    },
+    {
+      "filename": "06-drive-write-refused.png",
+      "sha256": "9b3ff6092332952e32e48de0c04e2cd0aebfd01e4d27b3c6c3eb2530f42582ca",
+      "bytes": 211290,
+      "originalOpened": true,
+      "observation": "Actual failed drive write pauses and retains the unconfirmed sequence; retry and campaign warning are visible."
+    },
+    {
+      "filename": "07-drive-reconciled.png",
+      "sha256": "e64b2b04d894a335c10e4cba9eed2437c17314aad8050e73f5794729354407af",
+      "bytes": 214558,
+      "originalOpened": true,
+      "observation": "Retry clears the blocked action state and enables resume; secondary notice text still retains the prior failure wording (remaining UI issue)."
+    },
+    {
+      "filename": "08-paused-sortie-after-continue-mobile.png",
+      "sha256": "ace3fefeeee75f59a0944e700e309a177446ff5641002c2519c8112dd5540227",
+      "bytes": 105355,
+      "originalOpened": true,
+      "observation": "390px header, wallet, ownership, paused state and metrics fit; lower controls are covered by native bounds checks, not all visible in this viewport crop."
+    },
+    {
+      "filename": "08b-paused-sortie-after-continue-320.png",
+      "sha256": "cbf1ef3be8409133e111e1d98ae6fbe173e9978b77e31e22184156cd719a22b4",
+      "bytes": 89068,
+      "originalOpened": true,
+      "observation": "320px wallet and metrics wrap within the station; no claim of full tablet or physical touch/controller certification."
+    },
+    {
+      "filename": "09-returned-to-physical-forge.png",
+      "sha256": "e7221dbd15cf172dd9a2c68272918f9afa0597e17b41cc8c27a6435e3895d7ba",
+      "bytes": 205607,
+      "originalOpened": true,
+      "observation": "The same physical counter is restored after owned recovery, with existing quest text retained."
+    }
+  ],
+  "remaining": [
+    "Secondary status text can retain an earlier active/failure message after manual pause or a successful retry; durable state and controls are correct."
+  ],
+  "humanArtApproved": false,
+  "physicalControllerTested": false
+}

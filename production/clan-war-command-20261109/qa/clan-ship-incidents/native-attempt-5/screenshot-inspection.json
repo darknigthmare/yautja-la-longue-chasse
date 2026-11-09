@@ -1,0 +1,73 @@
+{
+  "schemaVersion": 1,
+  "allOriginalsOpened": true,
+  "originalPngsOpened": 7,
+  "boundedReadabilityPassed": true,
+  "humanArtApproved": false,
+  "scope": "Actual original viewport PNGs opened individually. Technical readability and state comparison only; not a human canonical-art approval or a claim that every vertically scrollable option fits one viewport.",
+  "screenshots": [
+    {
+      "filename": "01-seal-revalidated.png",
+      "sha256": "4fd7ebc20858bd6af6310b11cf4fbaa818064854515b8a7615876aaaa4b4658c",
+      "width": 1440,
+      "height": 1000,
+      "originalOpened": true,
+      "boundedReadabilityPassed": true,
+      "observed": "1440px native incident card: lot K-50, wrong isolator A, revalidated branch B, pending pressure and safe return guide are readable. Original B01/B02/B03 cards stay distinct."
+    },
+    {
+      "filename": "02-guard-trust.png",
+      "sha256": "3a86b1ccde2d9cb283f21a2f268445ffe1f1c39228712052f4e123af776d8013",
+      "width": 1440,
+      "height": 1000,
+      "originalOpened": true,
+      "boundedReadabilityPassed": true,
+      "observed": "1440px focused guard conversation: retained spatial return, earned trust sentence, lot closure fact and read-only acknowledgement are clearly readable. No recruitment is claimed."
+    },
+    {
+      "filename": "03-relay-one-circuit-390.png",
+      "sha256": "f5a90b3d7a91cbc56f237687a3f5bb128139acb10c0e15ec452d1800cf26ba33",
+      "width": 390,
+      "height": 844,
+      "originalOpened": true,
+      "boundedReadabilityPassed": true,
+      "observed": "390px native incident card: circuit A isolated, circuit B stable, R-2 installed,1/2 circuits, retry count and next action are readable. Labels distinguish circuit state beyond color."
+    },
+    {
+      "filename": "04-relay-completed-390.png",
+      "sha256": "bef14e02ef337da1edf97818baf31b6c3b87783ade16b3fd4afd69c06a489ccf",
+      "width": 390,
+      "height": 844,
+      "originalOpened": true,
+      "boundedReadabilityPassed": true,
+      "observed": "390px native incident card: both circuits stable, R-2 still installed,2/2 circuits and the single30-mark acknowledgement are readable. No duplicated component or reward displayed."
+    },
+    {
+      "filename": "05-interception-diagnostic-390.png",
+      "sha256": "b90348bf41e18defe1e1456e2d5d16664585a9795bc9da93fd9c7a201352a242",
+      "width": 390,
+      "height": 844,
+      "originalOpened": true,
+      "boundedReadabilityPassed": true,
+      "observed": "390px real tactical diagnostic: calibrated branch/reference and two-order alternatives are readable without horizontal overlap. The list scrolls vertically; the third action lies below this viewport."
+    },
+    {
+      "filename": "06-interception-diagnostic-320.png",
+      "sha256": "077a92bcdac07c6d08f15487aa43af91f00911bda3e5661e2f01356e766fe66c",
+      "width": 320,
+      "height": 780,
+      "originalOpened": true,
+      "boundedReadabilityPassed": true,
+      "observed": "320px real tactical diagnostic: description, paired orders, projected formation/energy and first manual-order control wrap legibly. Remaining alternatives require vertical scrolling."
+    },
+    {
+      "filename": "07-one-order-reloaded.png",
+      "sha256": "2f988d12fc6520daf14d223cb840c37a586c81b4e67a533ac4bcbc1cd69a1d83",
+      "width": 320,
+      "height": 780,
+      "originalOpened": true,
+      "boundedReadabilityPassed": true,
+      "observed": "320px resumed diagnostic: alternatives are recalculated after the sole committed scan, including the manoeuvre/fire projection. The one-turn saved state is asserted separately; the frame does not imply two orders were sent."
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "reportSha256": "94a485e115cc3de35967f8ae60bc55aeda21f0b9f4e2c53f1169b6bfa16b4080",
+  "nativeB01ActionsAcknowledged": 8,
+  "incidentEscapeAfterAcknowledgementPassed": 8,
+  "otherDossierEscapeReadPassed": 1,
+  "failure": "Optional Escape from guard OperationsPanel did not close it after the read-only acknowledgement and screenshot. Focus at that exact original keypress was not recorded.",
+  "independentReproduction": "ops-escape-probe-return/report.json establishes a real keyboard ownership defect: native click on plain heading leaves focus on BODY; Escape is not handled although modal is active, not inert and close enabled. From the focused acknowledgement button, Escape works.",
+  "appChangedByThisAnalysis": false,
+  "globalCriterionClosed": false
+}

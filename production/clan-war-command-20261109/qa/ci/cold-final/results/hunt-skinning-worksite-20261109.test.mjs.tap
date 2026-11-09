@@ -1,0 +1,64 @@
+TAP version 13
+# Subtest: preview and admission share live footing, climb and collision refusals for each physical action
+ok 1 - preview and admission share live footing, climb and collision refusals for each physical action
+  ---
+  duration_ms: 15.00756
+  type: 'test'
+  ...
+# Subtest: a changed worksite cancels a partly executed physical gesture without extraction or paid use
+ok 2 - a changed worksite cancels a partly executed physical gesture without extraction or paid use
+  ---
+  duration_ms: 11.548723
+  type: 'test'
+  ...
+# Subtest: preparation and extraction require free hands, while dropping remains possible at a blocked airborne worksite
+ok 3 - preparation and extraction require free hands, while dropping remains possible at a blocked airborne worksite
+  ---
+  duration_ms: 2.539331
+  type: 'test'
+  ...
+# Subtest: tool contact gates preparation and extraction without reducing analysis or transport reach
+ok 4 - tool contact gates preparation and extraction without reducing analysis or transport reach
+  ---
+  duration_ms: 7.042474
+  type: 'test'
+  ...
+# Subtest: tool preview and remaining operation time follow actual sharp, worn and blunt work duration
+ok 5 - tool preview and remaining operation time follow actual sharp, worn and blunt work duration
+  ---
+  duration_ms: 13.876694
+  type: 'test'
+  ...
+# Subtest: analysis and suspension timers never inherit the worn-tool multiplier or consume tool uses
+ok 6 - analysis and suspension timers never inherit the worn-tool multiplier or consume tool uses
+  ---
+  duration_ms: 3.760944
+  type: 'test'
+  ...
+# Subtest: every species part shares its catalogue work clock across preview, saved progress and actual completion
+ok 7 - every species part shares its catalogue work clock across preview, saved progress and actual completion
+  ---
+  duration_ms: 162.602398
+  type: 'test'
+  ...
+# Subtest: finite anatomical stock is tied to irreversible source receipts and survives serialization
+ok 8 - finite anatomical stock is tied to irreversible source receipts and survives serialization
+  ---
+  duration_ms: 4.916748
+  type: 'test'
+  ...
+# Subtest: the actual menu exposes physical refusals, tool cost, stock and a named progress control
+ok 9 - the actual menu exposes physical refusals, tool cost, stock and a named progress control
+  ---
+  duration_ms: 22.317838
+  type: 'test'
+  ...
+1..9
+# tests 9
+# suites 0
+# pass 9
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 252.806007

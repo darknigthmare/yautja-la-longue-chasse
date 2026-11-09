@@ -1,0 +1,132 @@
+{
+  "startedAt": "2026-11-09T10:40:27.672Z",
+  "checkoutCommit": "8eaea6be2fd5e87241629e3b0ab175552fdc1968",
+  "scope": "Native GameClient on three viewport sizes, earned clan contacts, four read-only dialogue topics, one browser-played escort and reload. Not a full campaign, physical controller, native mobile or art certification.",
+  "fixture": {
+    "file": "initial-dialogue-fixture.json",
+    "sha256": "a104dfb445e00b39da8f566ad27dafc05346660513185ae01309751c738e76a5",
+    "browserPlayed": false,
+    "description": "Synthetic adult campaign and prerequisite hunts/interior preparations produced through production reducers. No recruitment, space victory or conversation is pre-seeded.",
+    "clanMarks": 1912,
+    "completedContracts": [
+      "welcome-aboard",
+      "ship-training-circuit",
+      "field-jungle-survey",
+      "field-ice-route",
+      "ship-seal-check",
+      "ship-armory-audit",
+      "ship-triage-route"
+    ],
+    "recruitedNpcIds": [],
+    "operation": null
+  },
+  "sourceSha256": {
+    "app/game/ClanShipCrewDialogue.tsx": "f77aa725afac32749e5ece96bd3122c3d2ae0e52a47507130934099ec241c3e4",
+    "app/game/systems/clanShipDialogue.ts": "c50e94b1c69ab90c1b57fce380bfc00d0e9ea9921448fad45dd7fdfde14516fe",
+    "app/game/ClanShipOperationsPanel.tsx": "43d993bb9aded4f8aa4fdd31c99a55c7969ff4c81a3013aa97f7bdde118b3d89",
+    "app/game/ClanShipOperationsPanel.module.css": "7b9c01fda57eaf0badd4ec79ce909d5666abdac71069ffac9a9700f7b541427b",
+    "app/game/systems/clanShipOperations.ts": "6894c68f613af82c0e23aa96b4c7cccf0606dded8638d55e519d269f4a4f0746",
+    "app/game/systems/companionResidence.ts": "ed55b78c62e3c7b963a6b71f966fc3fccf126450c24ce561f540a1a563dd7d8e",
+    "app/game/systems/clanShipTrophyHearing.ts": "43012e17f797eb0d0fc63746e56678fffa05e18c68db230610de34b53b98323b",
+    "app/game/GameClient.tsx": "05d35cd1499f46ceafb061234a4eb3acd6cb62d5294f0a2d49cda77cdc0e7208",
+    "app/game/save.ts": "86bc5391515bdb37038484951d6ee1de96fa6e32534352ea70bff05325e8e240",
+    "tests/helpers/clan-ship-trophy-hearing-fixture.mjs": "0bd4652c6ef45122e49b49fb3d5398968d151422583261b84c34b95db9105772",
+    "scripts/qa-clan-dialogue-browser-20261109.mjs": "a8285d79c9fd7a17314fd5976b502b67c771c4ee3fb95a6380c8eca463b78abd"
+  },
+  "browserExecuted": true,
+  "passed": false,
+  "checks": [
+    {
+      "context": "1440x1000",
+      "label": "ash-scar: greeting reads the real context without campaign writes",
+      "passed": true
+    },
+    {
+      "context": "1440x1000",
+      "label": "ash-scar: work reads the real context without campaign writes",
+      "passed": true
+    },
+    {
+      "context": "1440x1000",
+      "label": "ash-scar: agreement reads the real context without campaign writes",
+      "passed": true
+    },
+    {
+      "context": "1440x1000",
+      "label": "ash-scar: return reads the real context without campaign writes",
+      "passed": true
+    },
+    {
+      "context": "1440x1000",
+      "label": "star-watch: greeting reads the real context without campaign writes",
+      "passed": true
+    },
+    {
+      "context": "1440x1000",
+      "label": "star-watch: work reads the real context without campaign writes",
+      "passed": true
+    },
+    {
+      "context": "1440x1000",
+      "label": "star-watch: agreement reads the real context without campaign writes",
+      "passed": true
+    },
+    {
+      "context": "1440x1000",
+      "label": "star-watch: return reads the real context without campaign writes",
+      "passed": true
+    },
+    {
+      "context": "1440x1000",
+      "label": "iron-claw: greeting reads the real context without campaign writes",
+      "passed": true
+    },
+    {
+      "context": "1440x1000",
+      "label": "iron-claw: work reads the real context without campaign writes",
+      "passed": true
+    },
+    {
+      "context": "1440x1000",
+      "label": "iron-claw: agreement reads the real context without campaign writes",
+      "passed": true
+    },
+    {
+      "context": "1440x1000",
+      "label": "iron-claw: return reads the real context without campaign writes",
+      "passed": true
+    },
+    {
+      "context": "1440x1000",
+      "label": "cold-trace: greeting reads the real context without campaign writes",
+      "passed": true
+    },
+    {
+      "context": "1440x1000",
+      "label": "cold-trace: work reads the real context without campaign writes",
+      "passed": true
+    },
+    {
+      "context": "1440x1000",
+      "label": "cold-trace: agreement reads the real context without campaign writes",
+      "passed": true
+    },
+    {
+      "context": "1440x1000",
+      "label": "cold-trace: return reads the real context without campaign writes",
+      "passed": true
+    }
+  ],
+  "contexts": [],
+  "errors": [],
+  "missingAssets": [],
+  "screenshots": [
+    "1440x1000-ash-scar-before-space.png",
+    "1440x1000-star-watch-before-space.png",
+    "1440x1000-iron-claw-before-space.png",
+    "1440x1000-cold-trace-before-space.png"
+  ],
+  "browserVersion": "154.0.8037.57",
+  "failure": "locator.click: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('[data-clan-dialogue=\"black-suture\"]').locator('[data-clan-dialogue-topic=\"greeting\"]')\u001b[22m\n\u001b[2m    - locator resolved to <button type=\"button\" aria-pressed=\"true\" data-clan-dialogue-topic=\"greeting\">Prendre des nouvelles</button>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    - waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m    - element is not stable\u001b[22m\n\u001b[2m  - retrying click action\u001b[22m\n\u001b[2m    - waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m  - element was detached from the DOM, retrying\u001b[22m\n\u001b[2m    - locator resolved to <button type=\"button\" aria-pressed=\"true\" data-clan-dialogue-topic=\"greeting\">Prendre des nouvelles</button>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    54 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m       - element is not visible\u001b[22m\n\u001b[2m     - retrying click action\u001b[22m\n\u001b[2m       - waiting 500ms\u001b[22m\n\n    at click (/workspace/yautja-la-longue-chasse/scripts/qa-clan-dialogue-browser-20261109.mjs:68:77)\n    at /workspace/yautja-la-longue-chasse/scripts/qa-clan-dialogue-browser-20261109.mjs:134:15",
+  "completedAt": "2026-11-09T10:43:13.463Z"
+}

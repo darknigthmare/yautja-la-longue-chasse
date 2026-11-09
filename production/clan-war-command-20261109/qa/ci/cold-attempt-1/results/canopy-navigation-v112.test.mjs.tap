@@ -1,0 +1,82 @@
+TAP version 13
+# Subtest: a nearby real tree is ready exactly when the native support predicate admits it
+ok 1 - a nearby real tree is ready exactly when the native support predicate admits it
+  ---
+  duration_ms: 2.283135
+  type: 'test'
+  ...
+# Subtest: an actual intervening wall is shown as an obstacle and never as a ready grasp
+ok 2 - an actual intervening wall is shown as an obstacle and never as a ready grasp
+  ---
+  duration_ms: 0.401747
+  type: 'test'
+  ...
+# Subtest: grip threshold, action lock, release cooldown and airborne exhaustion use distinct refusals
+ok 3 - grip threshold, action lock, release cooldown and airborne exhaustion use distinct refusals
+  ---
+  duration_ms: 0.715239
+  type: 'test'
+  ...
+# Subtest: a legitimate pendulum retains its exact grasp, current charge drain and flexible controls
+ok 4 - a legitimate pendulum retains its exact grasp, current charge drain and flexible controls
+  ---
+  duration_ms: 0.513615
+  type: 'test'
+  ...
+# Subtest: only a genuine grounded contact is described as recovering on an appui
+ok 5 - only a genuine grounded contact is described as recovering on an appui
+  ---
+  duration_ms: 0.319481
+  type: 'test'
+  ...
+# Subtest: rest landmarks exclude undersized, embedded and damaging reception spaces
+ok 6 - rest landmarks exclude undersized, embedded and damaging reception spaces
+  ---
+  duration_ms: 0.282616
+  type: 'test'
+  ...
+# Subtest: a grounded hazard contact remains visibly dangerous rather than a safe rest claim
+ok 7 - a grounded hazard contact remains visibly dangerous rather than a safe rest claim
+  ---
+  duration_ms: 0.151839
+  type: 'test'
+  ...
+# Subtest: directional landmarks are bounded, deduplicated and never imply a successful jump
+ok 8 - directional landmarks are bounded, deduplicated and never imply a successful jump
+  ---
+  duration_ms: 0.686666
+  type: 'test'
+  ...
+# Subtest: the floor alone never opens a permanent navigation HUD far from climbable geometry
+ok 9 - the floor alone never opens a permanent navigation HUD far from climbable geometry
+  ---
+  duration_ms: 2.995929
+  type: 'test'
+  ...
+# Subtest: navigation is deterministic and leaves all eight real mission geometries unchanged
+ok 10 - navigation is deterministic and leaves all eight real mission geometries unchanged
+  ---
+  duration_ms: 2.202032
+  type: 'test'
+  ...
+# Subtest: an invalid threshold fails explicitly and non-finite stamina never grants a grasp
+ok 11 - an invalid threshold fails explicitly and non-finite stamina never grants a grasp
+  ---
+  duration_ms: 0.498532
+  type: 'test'
+  ...
+# Subtest: the actual HUD uses remapped keyboard and pad actions in its current swing cue
+ok 12 - the actual HUD uses remapped keyboard and pad actions in its current swing cue
+  ---
+  duration_ms: 4.229099
+  type: 'test'
+  ...
+1..12
+# tests 12
+# suites 0
+# pass 12
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 25.819329

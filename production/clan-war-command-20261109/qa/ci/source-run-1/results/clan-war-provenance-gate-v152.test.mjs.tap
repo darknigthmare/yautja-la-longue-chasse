@@ -1,0 +1,70 @@
+TAP version 13
+# Subtest: V152: no source requires explicit read and produces no secret information or V85 write
+ok 1 - V152: no source requires explicit read and produces no secret information or V85 write
+  ---
+  duration_ms: 5.334427
+  type: 'test'
+  ...
+# Subtest: V152: exact W3-K vs CON-T comparison never silently joins matching suffixes
+ok 2 - V152: exact W3-K vs CON-T comparison never silently joins matching suffixes
+  ---
+  duration_ms: 0.653796
+  type: 'test'
+  ...
+# Subtest: V152: even matching ID, name and region is a candidate, NOT authoritative sovereignty
+ok 3 - V152: even matching ID, name and region is a candidate, NOT authoritative sovereignty
+  ---
+  duration_ms: 0.374646
+  type: 'test'
+  ...
+# Subtest: V152: all four completed V115 game modes are documentary, not a live campaign result
+ok 4 - V152: all four completed V115 game modes are documentary, not a live campaign result
+  ---
+  duration_ms: 11.344123
+  type: 'test'
+  ...
+# Subtest: V152: identical person IDs are a collision warning, not authorization to transfer a casualty
+ok 5 - V152: identical person IDs are a collision warning, not authorization to transfer a casualty
+  ---
+  duration_ms: 0.913979
+  type: 'test'
+  ...
+# Subtest: V152: malformed foreign archive, source SHA tampering and oversized payload all reject
+ok 6 - V152: malformed foreign archive, source SHA tampering and oversized payload all reject
+  ---
+  duration_ms: 1.304598
+  type: 'test'
+  ...
+# Subtest: V152: a Korthas practice debrief cannot enter a different strategic planet
+ok 7 - V152: a Korthas practice debrief cannot enter a different strategic planet
+  ---
+  duration_ms: 0.730763
+  type: 'test'
+  ...
+# Subtest: V152: actual W133 source study stays on its planet and cannot become Korthas sovereignty
+ok 8 - V152: actual W133 source study stays on its planet and cannot become Korthas sovereignty
+  ---
+  duration_ms: 15.24642
+  type: 'test'
+  ...
+# Subtest: V152: modifying the map along with its receipt does not qualify as source-checked
+ok 9 - V152: modifying the map along with its receipt does not qualify as source-checked
+  ---
+  duration_ms: 3.621993
+  type: 'test'
+  ...
+# Subtest: V152: all 24 W3 missions and 72 source tasks remain available
+ok 10 - V152: all 24 W3 missions and 72 source tasks remain available
+  ---
+  duration_ms: 40.892697
+  type: 'test'
+  ...
+1..10
+# tests 10
+# suites 0
+# pass 10
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 90.729106

@@ -5,7 +5,7 @@ import json
 import sys
 
 sys.dont_write_bytecode = True
-from followup import ARTIFACT, FOLLOW, INVENTORY, REQUEST, configuration, freeze_inventory, load_module, payload, portable, register, verify
+from followup import ARTIFACT, FOLLOW, INVENTORY, REQUEST, changelog, configuration, freeze_inventory, load_module, payload, portable, register, verify
 
 parser = argparse.ArgumentParser(description=__doc__)
 mode = parser.add_mutually_exclusive_group(required=True)
@@ -24,6 +24,7 @@ if args.inventory:
 elif args.register:
     data = register()
     (FOLLOW / "registre-priorites.json").write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n")
+    (FOLLOW / "CHANGELOG.md").write_text(changelog(data))
     print(json.dumps(data["counts"], ensure_ascii=False))
 elif args.ready_check and configuration()["readyForWorkbook"] is not True:
     print(json.dumps({"ready": False, "artifactGenerated": False, "scope": "Integrated sources, reconciliations and final receipts are pending."}))

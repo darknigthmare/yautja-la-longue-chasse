@@ -1,0 +1,133 @@
+{
+  "schemaVersion": 1,
+  "asOf": "2026-11-09T10:56:51.055212+00:00",
+  "passed": true,
+  "checksPassed": 10,
+  "checksFailed": 0,
+  "buildId": "kS-6-0gmSFRZVosfYvnq6",
+  "sourceCommit": "8eaea6be2fd5e87241629e3b0ab175552fdc1968",
+  "runtime": "Actual production Next3152/dev, native arrival followed by HuntCanvas; disposable trial, not campaign persistence",
+  "targetSourcesBeforeAfterEqual": true,
+  "targetSourceCount": 16,
+  "sourceSha256": {
+    ".github/workflows/pod-systems.yml": "4070ad9da8c1e483af2c95047cb73bacb67095e2e55686751d6388e8b925b7e5",
+    "app/dev/destinations.ts": "9aaafd77cd9a6c6408a2a2224a39b1edcb9b45ae7fcb4db13504179df673fb4c",
+    "app/dev/session.tsx": "117fb92177a32e1daaab109635a9f607131495ae0f07f28c84752402b7462ddb",
+    "app/game/HuntCanvas.tsx": "f4e1d0736352256b284b4d717747add3cda055e85b62d0abcff5bb1eed7caca3",
+    "app/game/PlanetArrivalCinematic.module.css": "37aa7bb09b144de888c86cdbde731ad18aa7d3b08ab452d01e1b4d11d5380fc3",
+    "app/game/PlanetArrivalCinematic.tsx": "a8d856465380ee86678b89ce74dbe5c037764575cd4cb4f7fd5d0e79b6d0851e",
+    "app/game/sound.ts": "66bff2f3d56c3508dd6f50b7c6e4ab6449feb0bf3e6c0fa0d4e48c7de308ea65",
+    "app/game/systems/controlBindings.ts": "b29d8c5022ad5413180cfc5c1d57cdf9936211571bad759c6e00620fa0517993",
+    "app/game/systems/huntInsertion.ts": "1244239e249fdb937422ace051d64e5227db14542f35db1743af34a38fab07e0",
+    "app/game/systems/huntPodRecovery.ts": "a6be60b6bf1eb155c2878fa90b54d6cc2ca93a86d5ecfba17a7541b81ba02332",
+    "app/game/systems/planetArrival.ts": "ee21998d76714956e10bdebc3b25c36238ee7f0e67940a032fea87eb9b799259",
+    "app/game/systems/planetArrivalPodArt.ts": "d056258f7aef9421f8a6c777e6c657c1d3917be7d691bbbfe00a97a56889f5c7",
+    "app/game/systems/planetArrivalPodFlight.ts": "991ee6e31a3b0a25e59c7e89296a69e5073159e7fa98158c777ddb2c0f77d3dd",
+    "app/game/systems/planetInsertion.ts": "d34d3cac8ddf05980d778f8f4028976b22bd846c807dfcf39457b9ec8af76b94",
+    "app/game/systems/worldBlueprints.ts": "2afc002b8d94aec6e18a6567f3127b5113a7d7b886ddcc147981f5c9e0a94f78",
+    "scripts/qa-pod-systems.mjs": "00ee2fd344bd0dfa734e46c659a3c076000160b77dc04e26b63e0132bbee0e9e"
+  },
+  "allAppSourcesBeforeAfterEqual": false,
+  "broaderAppChanges": [
+    "app/game/ClanShipIncidentPanel.tsx",
+    "app/game/ClanShipOperationsPanel.tsx",
+    "app/game/GameClient.tsx"
+  ],
+  "broaderAppChangeScope": "Three unrelated source fixes were made after startup, while the original Next build stayed immutable. This receipt does not certify those changed ClanShip/GameClient components.",
+  "nativeLifetime": "Natural62second game arrival, no accelerated or substituted clock; pauses and runtime load extend wall time.",
+  "scope": "Three shutters closed/heated/opening/deployed, exact single handoff to3pods, unsafe-player/companion interlocks, native ground movement and orders, arming/cancellation, exact countdown across pause and two in-memory restores, one destruction/non-rearm, reset/reload isolation, single-pod and ship exclusions.",
+  "storageWrites": 0,
+  "databaseOpens": 0,
+  "missingAssets": 0,
+  "runtimeErrors": 0,
+  "consoleErrors": 0,
+  "captures": 8,
+  "capturesOpened": 8,
+  "videoFiles": 1,
+  "physicalController": false,
+  "humanArtApproved": false,
+  "physicalPerformanceQualified": false,
+  "campaignDiskResumeQualified": false,
+  "files": [
+    {
+      "path": "production/clan-war-command-20261109/qa/pr-integration/final-attempt-1/pod/report.json",
+      "bytes": 803562,
+      "sha256": "836676ddbe19550c36a899163a80d9f1cfdff8512fe05e5abc11b5a0a53a0e4f"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/pr-integration/final-attempt-1/pod/report.partial.json",
+      "bytes": 105991,
+      "sha256": "8290f19d34aab43e627e1965c2b812dbc5cccc21add24294c476ecb833a90b56"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/pr-integration/final-attempt-1/pod/recipe-used.mjs",
+      "bytes": 51958,
+      "sha256": "00ee2fd344bd0dfa734e46c659a3c076000160b77dc04e26b63e0132bbee0e9e"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/pr-integration/final-attempt-1/pod/source-after.json",
+      "bytes": 2259,
+      "sha256": "cb32d95e7ddb5080be756bd3b0f4f727ebe9990083fe0e5cc7f1910c116b090b"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/pr-integration/final-attempt-1/pod/screenshot-inspection.json",
+      "bytes": 1133,
+      "sha256": "dcd3063e7164b7e16d422d88576a8544d460bb7227400b90d705498bbe3379fe"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/pr-integration/final-attempt-1/pod/01-space-shutters-closed.png",
+      "bytes": 168214,
+      "sha256": "3a4b23e8d46266bdd1b15ada78fcbafb3ec48005cab25dac84e7f9b725d2813f"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/pr-integration/final-attempt-1/pod/02-atmosphere-shutters-open.png",
+      "bytes": 223934,
+      "sha256": "2fa219623b0389a7a9779c858500bfef2493fb82e0e20a81f08ad13baca695d8"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/pr-integration/final-attempt-1/pod/03-triad-capsules-on-ground.png",
+      "bytes": 1160740,
+      "sha256": "4a9e89104cc14bb3605d0130ffd40351a62618bef8e49c66cbed5604b0e51839"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/pr-integration/final-attempt-1/pod/04-ally-safety-interlock.png",
+      "bytes": 260601,
+      "sha256": "6fb629ec36fdfb2f768abc1c1e4a76097146df03b45c6f86693ab91e5cf7d729"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/pr-integration/final-attempt-1/pod/05-countdown-paused.png",
+      "bytes": 383706,
+      "sha256": "9e800ae003d10b43ef059fca45f3d7d7083a0e403ee2db17c3fd4fafb2c896b4"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/pr-integration/final-attempt-1/pod/06-countdown-restored.png",
+      "bytes": 383706,
+      "sha256": "9e800ae003d10b43ef059fca45f3d7d7083a0e403ee2db17c3fd4fafb2c896b4"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/pr-integration/final-attempt-1/pod/07-destruction-native.png",
+      "bytes": 1038705,
+      "sha256": "68c49b98dde8672a01f61db93ec76c8d66adfeb851435ac31ca7134c0f275503"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/pr-integration/final-attempt-1/pod/08-direct-solo-pod.png",
+      "bytes": 1140674,
+      "sha256": "9af031775f2ff47ac30222af4bdf9824c5fae616d020d6e409db2c35fa0def10"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/pr-integration/final-attempt-1/pod/video/page@c1408c153b522695f1d9c9bbadda3301.webm",
+      "bytes": 56307792,
+      "sha256": "d0997202715b81db169e5b10f5eaecf33109f055b4c6908cded9e2b608ff2868"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/pr-integration/final-attempt-1/browser-dependencies.json",
+      "bytes": 1078,
+      "sha256": "e43c723bd2493393cb6b1f2ef42e85f822f2590c43fe033f4def4a12355dd4bb"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/pr-integration/final-attempt-1/source-before.json",
+      "bytes": 225634,
+      "sha256": "362b85c640ab3e00ec581706abc18d2279fa71c5baf4e87f1b897278a2dc910c"
+    }
+  ]
+}

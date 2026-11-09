@@ -1,0 +1,33 @@
+{
+  "at": "2026-11-09T10:54:47.276970+00:00",
+  "targetSourceBeforeAfterEqual": true,
+  "targetSourceChanges": [],
+  "targetSourceSha256": {
+    ".github/workflows/pod-systems.yml": "4070ad9da8c1e483af2c95047cb73bacb67095e2e55686751d6388e8b925b7e5",
+    "app/dev/destinations.ts": "9aaafd77cd9a6c6408a2a2224a39b1edcb9b45ae7fcb4db13504179df673fb4c",
+    "app/dev/session.tsx": "117fb92177a32e1daaab109635a9f607131495ae0f07f28c84752402b7462ddb",
+    "app/game/HuntCanvas.tsx": "f4e1d0736352256b284b4d717747add3cda055e85b62d0abcff5bb1eed7caca3",
+    "app/game/PlanetArrivalCinematic.module.css": "37aa7bb09b144de888c86cdbde731ad18aa7d3b08ab452d01e1b4d11d5380fc3",
+    "app/game/PlanetArrivalCinematic.tsx": "a8d856465380ee86678b89ce74dbe5c037764575cd4cb4f7fd5d0e79b6d0851e",
+    "app/game/sound.ts": "66bff2f3d56c3508dd6f50b7c6e4ab6449feb0bf3e6c0fa0d4e48c7de308ea65",
+    "app/game/systems/controlBindings.ts": "b29d8c5022ad5413180cfc5c1d57cdf9936211571bad759c6e00620fa0517993",
+    "app/game/systems/huntInsertion.ts": "1244239e249fdb937422ace051d64e5227db14542f35db1743af34a38fab07e0",
+    "app/game/systems/huntPodRecovery.ts": "a6be60b6bf1eb155c2878fa90b54d6cc2ca93a86d5ecfba17a7541b81ba02332",
+    "app/game/systems/planetArrival.ts": "ee21998d76714956e10bdebc3b25c36238ee7f0e67940a032fea87eb9b799259",
+    "app/game/systems/planetArrivalPodArt.ts": "d056258f7aef9421f8a6c777e6c657c1d3917be7d691bbbfe00a97a56889f5c7",
+    "app/game/systems/planetArrivalPodFlight.ts": "991ee6e31a3b0a25e59c7e89296a69e5073159e7fa98158c777ddb2c0f77d3dd",
+    "app/game/systems/planetInsertion.ts": "d34d3cac8ddf05980d778f8f4028976b22bd846c807dfcf39457b9ec8af76b94",
+    "app/game/systems/worldBlueprints.ts": "2afc002b8d94aec6e18a6567f3127b5113a7d7b886ddcc147981f5c9e0a94f78",
+    "scripts/qa-pod-systems.mjs": "00ee2fd344bd0dfa734e46c659a3c076000160b77dc04e26b63e0132bbee0e9e"
+  },
+  "allAppSourceBeforeAfterEqual": false,
+  "appSourceChanges": [
+    "app/game/ClanShipIncidentPanel.tsx",
+    "app/game/ClanShipOperationsPanel.tsx",
+    "app/game/GameClient.tsx"
+  ],
+  "buildId": "kS-6-0gmSFRZVosfYvnq6",
+  "scriptChangesOutsidePod": [
+    "scripts/qa-clan-dialogue-browser-20261109.mjs: new regression test prepared after its16-check failure; no Pod source changed."
+  ]
+}

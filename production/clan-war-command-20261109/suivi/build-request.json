@@ -1,0 +1,94 @@
+{
+  "previousQualificationCommit": "697bd87a7d29f42fc39e4d53603eda3020385301",
+  "sourceCommit": "b666504c7d7889ea4c8c083aa97c4909aab32560",
+  "baseline": {
+    "path": "production/p0p1-20261109/suivi/Yautja_Priorites_P0_P1_20261109.xlsx",
+    "sha256": "78e3de92a382bbd9d309cc1b4459a0c8e3216c0a7617efac9935458a918e7feb"
+  },
+  "release": "V202611092",
+  "historicalCount": 13,
+  "appendedSheets": [
+    "SyntheseV202611092",
+    "PrioritesV202611092",
+    "VerifieesV202611092",
+    "BlocagesV202611092",
+    "CriteresV202611092",
+    "SourcesV202611092"
+  ],
+  "workbookPath": "production/clan-war-command-20261109/suivi/Yautja_Commandement_P0_P1_20261109.xlsx",
+  "inputs": [
+    {
+      "path": "production/clan-war-command-20261109/suivi/qualification-courante.json",
+      "sha256": "ff2cca4f46c243f4543c7ede0834874041a59cba4396451b9e2d5dba86033e51",
+      "bytes": 57266
+    },
+    {
+      "path": "production/clan-war-command-20261109/suivi/source-inventory.json",
+      "sha256": "862c6199c348efd4bb06ea9ce4e024fcb80465a575aeefd72c421f6d8923c9a0",
+      "bytes": 666165
+    },
+    {
+      "path": "production/clan-war-command-20261109/suivi/registre-priorites.json",
+      "sha256": "e8fa219a577ca416cc763f8537c702a59eae1928e779b293eb4be84ec33cc6fb",
+      "bytes": 11665312
+    },
+    {
+      "path": "production/clan-war-command-20261109/suivi/CHANGELOG.md",
+      "sha256": "0e18bcbd3fc3118e8748b656f21bfdfb785433ac8844b33d8a9f537808c5ba6a",
+      "bytes": 14704
+    },
+    {
+      "path": "production/clan-war-command-20261109/tools/followup.py",
+      "sha256": "6cc8fa271f860cdb46a865563f5bcb4061dd14a2fb555fc0a06e229611646f3f",
+      "bytes": 30955
+    },
+    {
+      "path": "production/clan-war-command-20261109/tools/build-followup.py",
+      "sha256": "b8927da676a2f40f53307cd693d19405591e51fbac564b68127dc7730794dc9d",
+      "bytes": 1978
+    },
+    {
+      "path": "production/clan-war-command-20261109/tools/verify-followup.py",
+      "sha256": "6d32f5194b7d51ec027d683dd210729793f52c5e3f52b9cf954275adc5f7d756",
+      "bytes": 552
+    }
+  ],
+  "sheets": [
+    {
+      "name": "SyntheseV202611092",
+      "rows": 12,
+      "columns": 3,
+      "sha256": "3c8b5a6f59bfaae75f96e4286f657d5111509c3ae17e7cb2739c014bc2e52899"
+    },
+    {
+      "name": "PrioritesV202611092",
+      "rows": 2591,
+      "columns": 9,
+      "sha256": "81c5e0c4b638f6d24cd2b9b64a2afa66da7df07e5f631f376ff1bd7903b3ef51"
+    },
+    {
+      "name": "VerifieesV202611092",
+      "rows": 38,
+      "columns": 9,
+      "sha256": "6633cd0a36b17ae9ffad689caa0ad4196ac0871b4e2903cf6a99e1d246722f36"
+    },
+    {
+      "name": "BlocagesV202611092",
+      "rows": 2559,
+      "columns": 5,
+      "sha256": "2ac745aa548b0e7e7778c9aefaee8405b14e28625e3635b49e5892f546e5b234"
+    },
+    {
+      "name": "CriteresV202611092",
+      "rows": 2591,
+      "columns": 9,
+      "sha256": "bebf74f8bdbfa394a9da436ad905315ef791c66ec8e9b7bbb0e1b9362ffb6049"
+    },
+    {
+      "name": "SourcesV202611092",
+      "rows": 188,
+      "columns": 4,
+      "sha256": "78c89d3bece77c3af848f29f34a3c9c2531358caddd7e5ddd602c3f10f72613f"
+    }
+  ]
+}

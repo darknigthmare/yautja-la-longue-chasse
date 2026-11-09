@@ -1,0 +1,130 @@
+TAP version 13
+# Subtest: three independently constructed encounters start without granting a victory or advancing a clock
+ok 1 - three independently constructed encounters start without granting a victory or advancing a clock
+  ---
+  duration_ms: 2.201401
+  type: 'test'
+  ...
+# Subtest: only known scenarios and unique known crew roles can start a sortie
+ok 2 - only known scenarios and unique known crew roles can start a sortie
+  ---
+  duration_ms: 2.111896
+  type: 'test'
+  ...
+# Subtest: each mission can be won through different actual objectives without any recruited bonus
+ok 3 - each mission can be won through different actual objectives without any recruited bonus
+  ---
+  duration_ms: 2.312839
+  type: 'test'
+  ...
+# Subtest: interception also supports a non-destructive boarding victory
+ok 4 - interception also supports a non-destructive boarding victory
+  ---
+  duration_ms: 1.853646
+  type: 'test'
+  ...
+# Subtest: an escort needs identification, coverage and explicit extraction; destruction alone is insufficient
+ok 5 - an escort needs identification, coverage and explicit extraction; destruction alone is insufficient
+  ---
+  duration_ms: 0.983493
+  type: 'test'
+  ...
+# Subtest: recovery requires a close, analysed, weakened contact and the capsule must still be extracted
+ok 6 - recovery requires a close, analysed, weakened contact and the capsule must still be extracted
+  ---
+  duration_ms: 0.697662
+  type: 'test'
+  ...
+# Subtest: energy and known-target checks refuse a command without triggering an enemy response
+ok 7 - energy and known-target checks refuse a command without triggering an enemy response
+  ---
+  duration_ms: 0.460845
+  type: 'test'
+  ...
+# Subtest: the forecast is deterministic and defensive choices really reduce the next losses
+ok 8 - the forecast is deterministic and defensive choices really reduce the next losses
+  ---
+  duration_ms: 0.335997
+  type: 'test'
+  ...
+# Subtest: each of the six crew roles changes an explicit tactical effect
+ok 9 - each of the six crew roles changes an explicit tactical effect
+  ---
+  duration_ms: 0.831123
+  type: 'test'
+  ...
+# Subtest: the complete recruited crew supports a shorter recovery route but cannot bypass its objectives
+ok 10 - the complete recruited crew supports a shorter recovery route but cannot bypass its objectives
+  ---
+  duration_ms: 1.038016
+  type: 'test'
+  ...
+# Subtest: serialized checkpoints at every turn resume exactly the same branch and enemy response
+ok 11 - serialized checkpoints at every turn resume exactly the same branch and enemy response
+  ---
+  duration_ms: 2.152537
+  type: 'test'
+  ...
+# Subtest: stale double inputs, malformed intentions and commands after terminal outcomes never advance a turn
+ok 12 - stale double inputs, malformed intentions and commands after terminal outcomes never advance a turn
+  ---
+  duration_ms: 1.720436
+  type: 'test'
+  ...
+# Subtest: withdrawing returns a distinct no-victory result and cannot manufacture progress
+ok 13 - withdrawing returns a distinct no-victory result and cannot manufacture progress
+  ---
+  duration_ms: 0.214633
+  type: 'test'
+  ...
+# Subtest: poor repeated orders can lose the formation, while even a safe crew cannot stall beyond 16 turns
+ok 14 - poor repeated orders can lose the formation, while even a safe crew cannot stall beyond 16 turns
+  ---
+  duration_ms: 1.578952
+  type: 'test'
+  ...
+# Subtest: missing data is distinguished from unsupported or corrupt saved encounters
+ok 15 - missing data is distinguished from unsupported or corrupt saved encounters
+  ---
+  duration_ms: 0.288585
+  type: 'test'
+  ...
+# Subtest: replay rejects forged rewards, restored health, edited crew order and impossible or oversized journals
+ok 16 - replay rejects forged rewards, restored health, edited crew order and impossible or oversized journals
+  ---
+  duration_ms: 0.673046
+  type: 'test'
+  ...
+# Subtest: accepted actions do not mutate frozen source snapshots and reports are a bounded read-only projection
+ok 17 - accepted actions do not mutate frozen source snapshots and reports are a bounded read-only projection
+  ---
+  duration_ms: 0.965437
+  type: 'test'
+  ...
+# Subtest: tactical previews expose capped energy, crew protection and objective progress without issuing an order
+ok 18 - tactical previews expose capped energy, crew protection and objective progress without issuing an order
+  ---
+  duration_ms: 0.288345
+  type: 'test'
+  ...
+# Subtest: previews distinguish a finishing order, a doomed order, retreat and unavailable commands
+ok 19 - previews distinguish a finishing order, a doomed order, retreat and unavailable commands
+  ---
+  duration_ms: 1.281793
+  type: 'test'
+  ...
+# Subtest: SSR presents the actual objectives, accessible commands and suspension state; it is not a browser proof
+ok 20 - SSR presents the actual objectives, accessible commands and suspension state; it is not a browser proof
+  ---
+  duration_ms: 635.829779
+  type: 'test'
+  ...
+1..20
+# tests 20
+# suites 0
+# pass 20
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 673.803184

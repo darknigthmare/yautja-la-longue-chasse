@@ -1,0 +1,14 @@
+{
+  "at": "2026-11-09T11:48:25.315383+00:00",
+  "reviewer": "/root/pr_integration_review/pr131_metadata_review",
+  "scope": "Read-only independent review of the canonical Hunt driver diff only. No browser execution by reviewer.",
+  "target": "scripts/qa-clan-hunt-dialogue-browser-20261109.mjs",
+  "targetSha256": "bc26abaf8c5ad8820bde43fce32aa11816cf6cd80064dea64d12869f24fc28ee",
+  "findings": [
+    "No weakening of the complete-rectangle visibility formula or final assert(framed.visible).",
+    "Existing time limits unchanged. No tolerance introduced.",
+    "Recovery requires a frameable lower overflow, sends real mouse.move/mouse.wheel input, waits for actual geometry movement, remeasures and records before/after.",
+    "No forced DOM scroll, fixture/progression mutation or gameplay shortcut introduced."
+  ],
+  "limit": "Narrow-viewport wheel proof is not a touchscreen-swipe proof."
+}

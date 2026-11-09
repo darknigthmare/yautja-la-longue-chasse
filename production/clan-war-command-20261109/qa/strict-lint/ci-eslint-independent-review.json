@@ -1,0 +1,303 @@
+{
+  "asOf": "2026-11-09T11:53:22.551887+00:00",
+  "scope": "Read-only independent review of the new P0/P1 workflow, effective ESLint configurations and the already completed unique source-test receipts. No build, global lint or test suite rerun; no workflow or application mutation.",
+  "sourceCommit": "6a412eeabc0c0be0dc9e09b635384f51b96dc377",
+  "workflow": {
+    "path": ".github/workflows/p0-p1-coherence-20261109.yml",
+    "sha256": "90f6eef29d30244a482d7c5d497d7f8f109ff9e4a0220a0e72a8e362ffa71d61",
+    "permissions": {
+      "contents": "read"
+    },
+    "jobs": [
+      {
+        "name": "regressions",
+        "effectivePermissions": {
+          "contents": "read"
+        },
+        "jobOverride": false,
+        "persistCredentials": false,
+        "actions": [
+          "actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+          "actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020",
+          "actions/upload-artifact@v4"
+        ]
+      }
+    ],
+    "uploadArtifactPinnedBy": "v4 tag, not an immutable SHA",
+    "reviewedWorkflowCount": 83,
+    "allRepositoryWorkflowsReadOnlyClaimed": false,
+    "historicalWriteWorkflows": [
+      {
+        "path": ".github/workflows/mobility-all-sources-20261106.yml",
+        "sha256": "013618dcca061a3a83bf45ae5434ce453fdd22d9da7813a05c07f8391433ad4b",
+        "workflowPermissions": {
+          "contents": "write"
+        },
+        "jobPermissions": {},
+        "hasCommitCommand": true,
+        "hasPushCommand": true
+      },
+      {
+        "path": ".github/workflows/mobility-concepts-v01.yml",
+        "sha256": "4a558006389550dcffb1423a4c21418f6ee7dbf10a602fb68bc145156d6cbfbc",
+        "workflowPermissions": {
+          "contents": "write"
+        },
+        "jobPermissions": {},
+        "hasCommitCommand": true,
+        "hasPushCommand": true
+      },
+      {
+        "path": ".github/workflows/mobility-hd-31-40-20261106.yml",
+        "sha256": "78e3a7ee319a08f3fe353e6ef91292e36fd0bb99450f0017fefb56c7dbffd0ce",
+        "workflowPermissions": {
+          "contents": "write"
+        },
+        "jobPermissions": {},
+        "hasCommitCommand": true,
+        "hasPushCommand": true
+      },
+      {
+        "path": ".github/workflows/mobility-hd-followup-20261106.yml",
+        "sha256": "8593f99555afadc970feb45dd578e8e170e4b7b129aa2798eb9f3af0547a16f8",
+        "workflowPermissions": {
+          "contents": "write"
+        },
+        "jobPermissions": {},
+        "hasCommitCommand": true,
+        "hasPushCommand": true
+      },
+      {
+        "path": ".github/workflows/mobility-individual-hd-01-08.yml",
+        "sha256": "fa22b3fd086533fdb338a7b858e378a9db9989737c2c19454412033cb52623b1",
+        "workflowPermissions": {
+          "contents": "read"
+        },
+        "jobPermissions": {
+          "import": {
+            "contents": "write"
+          }
+        },
+        "hasCommitCommand": true,
+        "hasPushCommand": true
+      }
+    ]
+  },
+  "eslint": {
+    "config": "eslint.config.mjs",
+    "sha256": "288b5bfb5a8fef16256590d37726e3e070bae82c07cc4dc8c516a59b43ad2252",
+    "matchesGlobalLintReceipt": true,
+    "globalLintReceipt": "production/clan-war-command-20261109/qa/root/lint-final/receipt.json",
+    "scope": "Normal rules remain enabled for app/scripts/tests. Nine exact frozen files disable unused bindings only; one exact original fixture disables react-hooks/refs. The pre-existing docs/qa/**/*.mjs CommonJS exception and historical/generated ignores remain explicit in config. Warning severity is made strict by --max-warnings=0.",
+    "effectiveConfigurations": [
+      {
+        "path": "app/game/GameClient.tsx",
+        "ignored": false,
+        "rules": {
+          "@typescript-eslint/no-unused-vars": [
+            1
+          ],
+          "react-hooks/refs": [
+            2
+          ],
+          "react-hooks/exhaustive-deps": [
+            1
+          ],
+          "@next/next/no-assign-module-variable": [
+            2
+          ]
+        }
+      },
+      {
+        "path": "tests/browser/trophy-tutorial-v6.fixture.tsx",
+        "ignored": false,
+        "rules": {
+          "@typescript-eslint/no-unused-vars": [
+            1
+          ],
+          "react-hooks/refs": [
+            2
+          ],
+          "react-hooks/exhaustive-deps": [
+            1
+          ],
+          "@next/next/no-assign-module-variable": [
+            2
+          ]
+        }
+      },
+      {
+        "path": "scripts/qa-trophy-tutorial-fixture-v2-20261109.mjs",
+        "ignored": false,
+        "rules": {
+          "@typescript-eslint/no-unused-vars": [
+            1
+          ],
+          "react-hooks/refs": [
+            2
+          ],
+          "react-hooks/exhaustive-deps": [
+            1
+          ],
+          "@next/next/no-assign-module-variable": [
+            2
+          ]
+        }
+      },
+      {
+        "path": "tests/planet-random-generator-v144.test.mjs",
+        "ignored": false,
+        "rules": {
+          "@typescript-eslint/no-unused-vars": [
+            1
+          ],
+          "react-hooks/refs": [
+            2
+          ],
+          "react-hooks/exhaustive-deps": [
+            1
+          ],
+          "@next/next/no-assign-module-variable": [
+            2
+          ]
+        }
+      },
+      {
+        "path": "docs/qa/gamedev-navigation-performance-20261029/fixture-build-run.mjs",
+        "ignored": false,
+        "rules": {
+          "@typescript-eslint/no-unused-vars": [
+            0
+          ],
+          "react-hooks/refs": [
+            2
+          ],
+          "react-hooks/exhaustive-deps": [
+            1
+          ],
+          "@next/next/no-assign-module-variable": [
+            0
+          ]
+        }
+      },
+      {
+        "path": "docs/qa/example-live.mjs",
+        "ignored": false,
+        "rules": {
+          "@typescript-eslint/no-unused-vars": [
+            1
+          ],
+          "react-hooks/refs": [
+            2
+          ],
+          "react-hooks/exhaustive-deps": [
+            1
+          ],
+          "@next/next/no-assign-module-variable": [
+            0
+          ]
+        }
+      },
+      {
+        "path": "production/clan-war-command-20261109/qa/trophy-tutorial/fixture.tsx",
+        "ignored": false,
+        "rules": {
+          "@typescript-eslint/no-unused-vars": [
+            1
+          ],
+          "react-hooks/refs": [
+            0
+          ],
+          "react-hooks/exhaustive-deps": [
+            1
+          ],
+          "@next/next/no-assign-module-variable": [
+            2
+          ]
+        }
+      },
+      {
+        "path": "production/clan-war-command-20261109/qa/trophy-tutorial/run-native-fixture.mjs",
+        "ignored": false,
+        "rules": {
+          "@typescript-eslint/no-unused-vars": [
+            1
+          ],
+          "react-hooks/refs": [
+            2
+          ],
+          "react-hooks/exhaustive-deps": [
+            1
+          ],
+          "@next/next/no-assign-module-variable": [
+            2
+          ]
+        }
+      },
+      {
+        "path": "public/game/assets/v27/sprite-review/review.js",
+        "ignored": true,
+        "rules": null
+      },
+      {
+        "path": "public/game/assets/v28/sprite-review/review.js",
+        "ignored": true,
+        "rules": null
+      },
+      {
+        "path": "public/game/assets/v33/production-review/review.js",
+        "ignored": true,
+        "rules": null
+      },
+      {
+        "path": "public/game/assets/v34/production-review/review.js",
+        "ignored": true,
+        "rules": null
+      },
+      {
+        "path": "public/game/assets/v34/vehicle-assembly-review/review.js",
+        "ignored": true,
+        "rules": null
+      },
+      {
+        "path": "scripts/build-known-yautja-sprite-preview-v27.mjs",
+        "ignored": false,
+        "rules": {
+          "@typescript-eslint/no-unused-vars": [
+            1
+          ],
+          "react-hooks/refs": [
+            2
+          ],
+          "react-hooks/exhaustive-deps": [
+            1
+          ],
+          "@next/next/no-assign-module-variable": [
+            2
+          ]
+        }
+      }
+    ]
+  },
+  "sourceTests": {
+    "report": "production/clan-war-command-20261109/qa/ci/final-source-report.json",
+    "sha256": "e36c4abfe4c7d14d115d5f7cfc9b86a9970849ba08707db1e89f9c1fe2c962af",
+    "files": 103,
+    "uniqueFiles": 103,
+    "casesPassed": 1198,
+    "allRecordedTestSourceHashesCurrent": true,
+    "countsNotAddedToColdOrBrowserChecks": true
+  },
+  "integratedPrHeads": {
+    "heads": [
+      "4949352",
+      "d632311",
+      "79e13f1",
+      "169ee30",
+      "353a264"
+    ],
+    "allAncestorsOfSourceCommit": true,
+    "remoteMergeClaimed": false
+  },
+  "coldReplay": "Reviewed independently by the root agent; this receipt does not assign a success to any cold attempt."
+}

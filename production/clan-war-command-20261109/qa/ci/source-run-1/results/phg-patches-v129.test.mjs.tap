@@ -1,0 +1,28 @@
+TAP version 13
+# Subtest: V129 verifies 409912-byte WebP atlas, 3 save-safe IDs and no fake game UVs
+ok 1 - V129 verifies 409912-byte WebP atlas, 3 save-safe IDs and no fake game UVs
+  ---
+  duration_ms: 2.610599
+  type: 'test'
+  ...
+# Subtest: V129 official type constraints: Mottle Dread is skin, Ogre mask never armor
+ok 2 - V129 official type constraints: Mottle Dread is skin, Ogre mask never armor
+  ---
+  duration_ms: 0.151068
+  type: 'test'
+  ...
+# Subtest: V129 CSS masks and hunting Canvas isolate 3 atlas quadrants
+ok 3 - V129 CSS masks and hunting Canvas isolate 3 atlas quadrants
+  ---
+  duration_ms: 1.02776
+  type: 'test'
+  ...
+1..3
+# tests 3
+# suites 0
+# pass 3
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 10.052004

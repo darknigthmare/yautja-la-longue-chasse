@@ -1,0 +1,58 @@
+TAP version 13
+# Subtest: migration: old appearance without chromatics remains neutral
+ok 1 - migration: old appearance without chromatics remains neutral
+  ---
+  duration_ms: 1.499181
+  type: 'test'
+  ...
+# Subtest: colors are canonical hexadecimal strings; invalid values cannot enter CSS
+ok 2 - colors are canonical hexadecimal strings; invalid values cannot enter CSS
+  ---
+  duration_ms: 0.252831
+  type: 'test'
+  ...
+# Subtest: unregistered IDs, wrong channels and drive-only materials never resolve
+ok 3 - unregistered IDs, wrong channels and drive-only materials never resolve
+  ---
+  duration_ms: 0.293152
+  type: 'test'
+  ...
+# Subtest: every activated material resolves to committed PNG or V125/V126 atlas WebP
+ok 4 - every activated material resolves to committed PNG or V125/V126 atlas WebP
+  ---
+  duration_ms: 1.833816
+  type: 'test'
+  ...
+# Subtest: masked overlay keeps inherited sprite silhouette and does not fabricate one
+ok 5 - masked overlay keeps inherited sprite silhouette and does not fabricate one
+  ---
+  duration_ms: 0.331851
+  type: 'test'
+  ...
+# Subtest: selected texture is whitelisted, never interpolated from save data
+ok 6 - selected texture is whitelisted, never interpolated from save data
+  ---
+  duration_ms: 0.173972
+  type: 'test'
+  ...
+# Subtest: V115 has five unique, accessible preset colors for each lore-friendly workshop
+ok 7 - V115 has five unique, accessible preset colors for each lore-friendly workshop
+  ---
+  duration_ms: 0.275104
+  type: 'test'
+  ...
+# Subtest: V115 choosing a preset only changes its cosmetic channel; no PHG material is invented
+ok 8 - V115 choosing a preset only changes its cosmetic channel; no PHG material is invented
+  ---
+  duration_ms: 0.13951
+  type: 'test'
+  ...
+1..8
+# tests 8
+# suites 0
+# pass 8
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 15.177384

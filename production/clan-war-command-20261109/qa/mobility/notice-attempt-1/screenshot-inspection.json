@@ -1,0 +1,30 @@
+{
+  "asOf": "2026-11-09T11:33:07.623734+00:00",
+  "allOriginalsOpened": true,
+  "screenshotsOpened": 3,
+  "scope": "Three original desktop native notice/recovery PNGs opened. No new full end-to-end, mobile, physical-controller or canonical art qualification.",
+  "screenshots": [
+    {
+      "filename": "01-pause-confirmed.png",
+      "sha256": "252a5e96ae33d94fad923946b667f0b3594c7d95ef1048f0365e629d7a38787c",
+      "bytes": 210859,
+      "originalOpened": true,
+      "observation": "Real manual pause shows the paused/recorded notice; resume remains explicit and touch controls stay inactive while paused."
+    },
+    {
+      "filename": "02-refused-write.png",
+      "sha256": "5fef086176ae21b466552404fd1a9d68f1de3c870ec600ac3a4e23378a1521d9",
+      "bytes": 211944,
+      "originalOpened": true,
+      "observation": "The actual quota refusal keeps the unconfirmed sequence and honest warning; other drive actions are blocked pending retry."
+    },
+    {
+      "filename": "03-retry-acknowledged.png",
+      "sha256": "31b615e962768126172b5e6e16cedd906b2c2f3215c7392f5a2d7bd3f254a36d",
+      "bytes": 207571,
+      "originalOpened": true,
+      "observation": "Actual acknowledgement replaces the stale failure notice with Conduite sauvegardée.; the failure alert is removed and explicit resume is enabled."
+    }
+  ],
+  "humanArtApproved": false
+}

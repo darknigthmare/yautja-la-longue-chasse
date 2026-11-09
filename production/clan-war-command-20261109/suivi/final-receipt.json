@@ -1,0 +1,115 @@
+{
+  "schemaVersion": 1,
+  "asOf": "2026-11-09T12:02:27.650180+00:00",
+  "passed": true,
+  "allP0P1Closed": false,
+  "scope": "New append-only documentary follow-up with bounded software and browser receipts; not full game completion or native Excel/hardware/human-art approval. Remote merging is outside this workbook receipt.",
+  "artifact": {
+    "path": "production/clan-war-command-20261109/suivi/Yautja_Commandement_P0_P1_20261109.xlsx",
+    "sha256": "afa5817041cd5789a04bb06999ec6b6eeae8cce3760329c7d7af34804ffcb150",
+    "bytes": 25380150
+  },
+  "counts": {
+    "subjects": 2591,
+    "previousSubjects": 2577,
+    "addedSubjects": 14,
+    "priorities": {
+      "P0": 775,
+      "P1": 1816
+    },
+    "statuses": {
+      "QUALIFIE_BORNE_ANTERIEUR": 29,
+      "PARTIEL": 1963,
+      "OUVERT": 596,
+      "QUALIFIE_BORNE": 3
+    },
+    "domains": {
+      "Clan Ship": 22,
+      "Guerre des clans": 588,
+      "Homeworld et habitats": 107,
+      "Mobilité": 14,
+      "Personnalisation et arsenal": 1811,
+      "Planètes et tribus": 2,
+      "Warp Universe": 26,
+      "Bible V5/V6 — lots de réalisation": 12,
+      "The Pit": 9
+    },
+    "unreconciledSourceObservations": 0
+  },
+  "cellsCompared": 60563,
+  "sheets": 19,
+  "historicalSheetsPreserved": 13,
+  "historicalZipPartsByteIdentical": 20,
+  "historicalWorkbooksUnchanged": 113,
+  "sourceWorkbooksVerified": 119,
+  "sourceMarkdownFilesVerified": 6,
+  "formulaCachedSubjects": 2591,
+  "independentVerifierCommand": "python3 production/clan-war-command-20261109/tools/verify-followup.py --check",
+  "byteReproducible": true,
+  "historicalT15Reexecuted": false,
+  "physicalControllerTested": false,
+  "humanArtApproved": false,
+  "nativeExcelTested": false,
+  "files": [
+    {
+      "path": "production/clan-war-command-20261109/suivi/Yautja_Commandement_P0_P1_20261109.xlsx",
+      "bytes": 25380150,
+      "sha256": "afa5817041cd5789a04bb06999ec6b6eeae8cce3760329c7d7af34804ffcb150"
+    },
+    {
+      "path": "production/clan-war-command-20261109/suivi/qualification-courante.json",
+      "bytes": 57266,
+      "sha256": "ff2cca4f46c243f4543c7ede0834874041a59cba4396451b9e2d5dba86033e51"
+    },
+    {
+      "path": "production/clan-war-command-20261109/suivi/registre-priorites.json",
+      "bytes": 11665312,
+      "sha256": "e8fa219a577ca416cc763f8537c702a59eae1928e779b293eb4be84ec33cc6fb"
+    },
+    {
+      "path": "production/clan-war-command-20261109/suivi/source-inventory.json",
+      "bytes": 666165,
+      "sha256": "862c6199c348efd4bb06ea9ce4e024fcb80465a575aeefd72c421f6d8923c9a0"
+    },
+    {
+      "path": "production/clan-war-command-20261109/suivi/CHANGELOG.md",
+      "bytes": 14704,
+      "sha256": "0e18bcbd3fc3118e8748b656f21bfdfb785433ac8844b33d8a9f537808c5ba6a"
+    },
+    {
+      "path": "production/clan-war-command-20261109/suivi/README.md",
+      "bytes": 2785,
+      "sha256": "1c2dc03f7e5d760acfd8ae2442f27f035995f4b276c50ed9f16a391b29e28c55"
+    },
+    {
+      "path": "production/clan-war-command-20261109/suivi/build-request.json",
+      "bytes": 3113,
+      "sha256": "8c0cc82a689ad757b8d95b19a3fc942b74b7e8c9c08dc531d6b215f35eec9a04"
+    },
+    {
+      "path": "production/clan-war-command-20261109/suivi/verification-classeur.json",
+      "bytes": 1223,
+      "sha256": "d4dcd1b6b6d2d177294dd1cea354ba0532e9bbe955557e762619891d35e287ea"
+    },
+    {
+      "path": "production/clan-war-command-20261109/tools/followup.py",
+      "bytes": 30955,
+      "sha256": "6cc8fa271f860cdb46a865563f5bcb4061dd14a2fb555fc0a06e229611646f3f"
+    },
+    {
+      "path": "production/clan-war-command-20261109/tools/build-followup.py",
+      "bytes": 1978,
+      "sha256": "b8927da676a2f40f53307cd693d19405591e51fbac564b68127dc7730794dc9d"
+    },
+    {
+      "path": "production/clan-war-command-20261109/tools/verify-followup.py",
+      "bytes": 552,
+      "sha256": "6d32f5194b7d51ec027d683dd210729793f52c5e3f52b9cf954275adc5f7d756"
+    },
+    {
+      "path": "production/clan-war-command-20261109/verification.json",
+      "bytes": 2037048,
+      "sha256": "e5e7f42ed36061511fd8039db47fb7f7083f10db430eb3334561caebd5d6e272"
+    }
+  ]
+}

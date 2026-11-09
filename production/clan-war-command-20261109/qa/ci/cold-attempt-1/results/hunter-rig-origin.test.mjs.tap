@@ -1,0 +1,51 @@
+TAP version 13
+# Subtest: aim, targeting and projectiles use the active weapon anchor
+not ok 1 - aim, targeting and projectiles use the active weapon anchor
+  ---
+  duration_ms: 122.792345
+  type: 'test'
+  location: '/workspace/clan-war-ci-cold-20261109-final/tests/hunter-rig-origin.test.mjs:44:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Build failed with 1 error:
+    app/game/enemyTrophyGameplayV18.ts:1:44: ERROR: Could not resolve "../../public/game/assets/v18/enemy-trophy-gameplay/manifest.json"
+  code: 'ERR_TEST_FAILURE'
+  stack: |-
+    failureErrorWithLog (/workspace/yautja-la-longue-chasse/node_modules/esbuild/lib/main.js:1748:15)
+    /workspace/yautja-la-longue-chasse/node_modules/esbuild/lib/main.js:1207:25
+    /workspace/yautja-la-longue-chasse/node_modules/esbuild/lib/main.js:1159:52
+    buildResponseToResult (/workspace/yautja-la-longue-chasse/node_modules/esbuild/lib/main.js:1205:7)
+    /workspace/yautja-la-longue-chasse/node_modules/esbuild/lib/main.js:1232:16
+    responseCallbacks.<computed> (/workspace/yautja-la-longue-chasse/node_modules/esbuild/lib/main.js:884:9)
+    handleIncomingPacket (/workspace/yautja-la-longue-chasse/node_modules/esbuild/lib/main.js:939:12)
+    Socket.readFromStdout (/workspace/yautja-la-longue-chasse/node_modules/esbuild/lib/main.js:862:7)
+    Socket.emit (node:events:519:28)
+    addChunk (node:internal/streams/readable:561:12)
+  ...
+# Subtest: Canvas renders registered V3 atoms through rig-relative matrices
+ok 2 - Canvas renders registered V3 atoms through rig-relative matrices
+  ---
+  duration_ms: 4.106144
+  type: 'test'
+  ...
+# Subtest: selected loadout and extracted trophy use registered atomic layers
+ok 3 - selected loadout and extracted trophy use registered atomic layers
+  ---
+  duration_ms: 3.915237
+  type: 'test'
+  ...
+# Subtest: runtime keeps seven dreads and hides launched hand ammunition
+ok 4 - runtime keeps seven dreads and hides launched hand ammunition
+  ---
+  duration_ms: 2.103663
+  type: 'test'
+  ...
+1..4
+# tests 4
+# suites 0
+# pass 3
+# fail 1
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 137.664871

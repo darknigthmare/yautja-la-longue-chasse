@@ -1,0 +1,430 @@
+{
+  "schemaVersion": 1,
+  "url": "http://127.0.0.1:3152",
+  "scope": "Actual production Next GameClient, played route to council and new command layers. Historical B05 adult/aboard prerequisites declared; no game callback, clock, actor or outcome patched. Read-only UI plus one explicitly launched fresh V115 operation; not a full campaign or physical-pad/art certification.",
+  "fixture": "production/crew-dialogue-20261109/qa/native/attempt-1/initial-agreement.json",
+  "fixtureFullCampaign": false,
+  "checks": [
+    {
+      "name": "actual-council-route-opens-command-shell-with-real-globe-in-first-desktop-screen",
+      "passed": true,
+      "bounds": {
+        "x": 210,
+        "y": 356.90625,
+        "width": 1204,
+        "height": 420
+      }
+    },
+    {
+      "name": "native-archives-drawer-closes-before-GameClient-Escape-and-restores-focus",
+      "passed": true
+    },
+    {
+      "name": "native-settings-drawer-closes-before-GameClient-Escape-and-restores-focus",
+      "passed": true
+    },
+    {
+      "name": "native-help-drawer-closes-before-GameClient-Escape-and-restores-focus",
+      "passed": true
+    },
+    {
+      "name": "actual-map-controls-remain-accessible-in-native-display-drawer",
+      "passed": true
+    },
+    {
+      "name": "native-intelligence-hands-back-to-the-actual-map",
+      "passed": true
+    },
+    {
+      "name": "native-390-layout-shows-real-globe-and-usable-territorial-drawer",
+      "passed": true,
+      "bounds": {
+        "x": 12,
+        "y": 458.96875,
+        "width": 366,
+        "height": 300
+      },
+      "modalBounds": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 844
+      },
+      "overflow": {
+        "scroll": 388,
+        "client": 388
+      }
+    },
+    {
+      "name": "native-320-layout-shows-real-globe-and-usable-territorial-drawer",
+      "passed": true,
+      "bounds": {
+        "x": 12,
+        "y": 491.453125,
+        "width": 296,
+        "height": 300
+      },
+      "modalBounds": {
+        "x": 0,
+        "y": 0,
+        "width": 320,
+        "height": 844
+      },
+      "overflow": {
+        "scroll": 318,
+        "client": 318
+      }
+    },
+    {
+      "name": "all-fourteen-tools-remain-accessible-through-four-native-council-submenus",
+      "passed": true
+    },
+    {
+      "name": "actual-native-briefing-cancellation-has-no-RAV-debit-or-archive-initialization",
+      "passed": true
+    },
+    {
+      "name": "actual-Next-RTS-launched-from-briefing-with-one-source-team-and-single-RAV-debit",
+      "passed": true,
+      "missionId": "W115-OPS-0001",
+      "rav": 119
+    },
+    {
+      "name": "new-command-UI-and-independent-operation-preserve-raw-campaign-save",
+      "passed": true,
+      "sha256": "dc9e9d25e4de5c8c0d64c31141f403b49a4c2371e9274cc742450972e8067cb0"
+    },
+    {
+      "name": "served-Next-javascript-bytes-match-the-declared-production-build",
+      "passed": true,
+      "responses": 30,
+      "uniqueScripts": 30
+    },
+    {
+      "name": "no-uncaught-console-network-or-resource-errors",
+      "passed": true
+    },
+    {
+      "name": "target-source-and-actual-build-identities-stay-unchanged",
+      "passed": true
+    }
+  ],
+  "errors": [],
+  "consoleErrors": [],
+  "httpErrors": [],
+  "requestFailures": [],
+  "servedScripts": [
+    {
+      "pathname": "/_next/static/chunks/webpack-8d3a176fb763e3d6.js",
+      "bytes": 8781,
+      "sha256": "7cf5442a9a66c2a3814d84d87f20579b2bdc9d38d5747bc6d2fe3bc05d792c7e",
+      "builtSha256": "7cf5442a9a66c2a3814d84d87f20579b2bdc9d38d5747bc6d2fe3bc05d792c7e",
+      "matches": true
+    },
+    {
+      "pathname": "/_next/static/chunks/main-app-340bf771475649a8.js",
+      "bytes": 529,
+      "sha256": "1f59bd0febb680992cf62bec6702ba6126f8a586d2512eb6d3ca2ceaa90a6591",
+      "builtSha256": "1f59bd0febb680992cf62bec6702ba6126f8a586d2512eb6d3ca2ceaa90a6591",
+      "matches": true
+    },
+    {
+      "pathname": "/_next/static/chunks/app/error-ea2342cfe5895ddb.js",
+      "bytes": 1186,
+      "sha256": "221f1f0ae4706ec1e8ac9408031604a32ea527ed3c7c5e96174ecd053a1d2946",
+      "builtSha256": "221f1f0ae4706ec1e8ac9408031604a32ea527ed3c7c5e96174ecd053a1d2946",
+      "matches": true
+    },
+    {
+      "pathname": "/_next/static/chunks/6087-daabd7b2ca1dcffd.js",
+      "bytes": 28221,
+      "sha256": "fb998de1e16d514d69993ee81cb719b83d0957b70d2025dd76950816d17a4a85",
+      "builtSha256": "fb998de1e16d514d69993ee81cb719b83d0957b70d2025dd76950816d17a4a85",
+      "matches": true
+    },
+    {
+      "pathname": "/_next/static/chunks/5151-2b5acbc4e490de14.js",
+      "bytes": 16901,
+      "sha256": "c2e643722a4b205b07050fbb8c6babf6c51fd7529addeab761a50a368dc334aa",
+      "builtSha256": "c2e643722a4b205b07050fbb8c6babf6c51fd7529addeab761a50a368dc334aa",
+      "matches": true
+    },
+    {
+      "pathname": "/_next/static/chunks/859-7d1b8ebba0d03e8a.js",
+      "bytes": 26360,
+      "sha256": "28109f27ffbf185097ffe013563b270eeed22bf69c782ad73585983215921303",
+      "builtSha256": "28109f27ffbf185097ffe013563b270eeed22bf69c782ad73585983215921303",
+      "matches": true
+    },
+    {
+      "pathname": "/_next/static/chunks/8482-97fd3178822a871b.js",
+      "bytes": 150540,
+      "sha256": "d9724ac22f8f550d967c5d2bafca42c7bd12f85cfcc0f30e589e053af48d0b58",
+      "builtSha256": "d9724ac22f8f550d967c5d2bafca42c7bd12f85cfcc0f30e589e053af48d0b58",
+      "matches": true
+    },
+    {
+      "pathname": "/_next/static/chunks/3794-6cecce02b123eb1f.js",
+      "bytes": 241388,
+      "sha256": "d39ac559f4774cc2556428ce8bf697328ddc72aba734108f6297f05b75038e42",
+      "builtSha256": "d39ac559f4774cc2556428ce8bf697328ddc72aba734108f6297f05b75038e42",
+      "matches": true
+    },
+    {
+      "pathname": "/_next/static/chunks/7178-91125a118647fb13.js",
+      "bytes": 6412,
+      "sha256": "b2fe01cbc67ed6a2935bc9b02d17a27edc70e088f33f556862ae6f63b954fa60",
+      "builtSha256": "b2fe01cbc67ed6a2935bc9b02d17a27edc70e088f33f556862ae6f63b954fa60",
+      "matches": true
+    },
+    {
+      "pathname": "/_next/static/chunks/4bd1b696-8a4ab4fdf0ae305a.js",
+      "bytes": 201060,
+      "sha256": "5cf2fcfae6b221476479e25b2883f9052b18a7eb97bd3d069f3cc44112852610",
+      "builtSha256": "5cf2fcfae6b221476479e25b2883f9052b18a7eb97bd3d069f3cc44112852610",
+      "matches": true
+    },
+    {
+      "pathname": "/_next/static/chunks/3013-d7dd1404155871c3.js",
+      "bytes": 27389,
+      "sha256": "fda4314f014cf5578752b6e663b34e789e28fadc9ecb75548736c0a431b3065d",
+      "builtSha256": "fda4314f014cf5578752b6e663b34e789e28fadc9ecb75548736c0a431b3065d",
+      "matches": true
+    },
+    {
+      "pathname": "/_next/static/chunks/49-2d3614459171c485.js",
+      "bytes": 33589,
+      "sha256": "39bf730dd33009bfc90647f8f85fdabeaab75990e91b8f11aa5f31dcc1200801",
+      "builtSha256": "39bf730dd33009bfc90647f8f85fdabeaab75990e91b8f11aa5f31dcc1200801",
+      "matches": true
+    },
+    {
+      "pathname": "/_next/static/chunks/7555-de0a1466f913dee5.js",
+      "bytes": 33874,
+      "sha256": "bc8d802ff1f469f19d4deac531094ca63fd5b4795b4df5c984258b7fd213c335",
+      "builtSha256": "bc8d802ff1f469f19d4deac531094ca63fd5b4795b4df5c984258b7fd213c335",
+      "matches": true
+    },
+    {
+      "pathname": "/_next/static/chunks/8997-0d461eb6cf3c2898.js",
+      "bytes": 11669,
+      "sha256": "418166960b900807211415b4ec0e24301c5e3978e3baf19a215b22a8529b410d",
+      "builtSha256": "418166960b900807211415b4ec0e24301c5e3978e3baf19a215b22a8529b410d",
+      "matches": true
+    },
+    {
+      "pathname": "/_next/static/chunks/2887-5349be72c36ef2d1.js",
+      "bytes": 337971,
+      "sha256": "1ed8d6e4dbce20598baf969254df8019b2f395dda65369d5413114ec2bc4ff71",
+      "builtSha256": "1ed8d6e4dbce20598baf969254df8019b2f395dda65369d5413114ec2bc4ff71",
+      "matches": true
+    },
+    {
+      "pathname": "/_next/static/chunks/9548-15f6d72975d5f216.js",
+      "bytes": 338894,
+      "sha256": "bb05d83cd91258101f96b9c62c33f37ad5d5caf27f4669ff9bc6a9d5f8bfbf02",
+      "builtSha256": "bb05d83cd91258101f96b9c62c33f37ad5d5caf27f4669ff9bc6a9d5f8bfbf02",
+      "matches": true
+    },
+    {
+      "pathname": "/_next/static/chunks/9372-5a69314ee210bcac.js",
+      "bytes": 462211,
+      "sha256": "dc6270d3d5c5458d8e5b7c053a8d411a5e95bcc4cd0ba1484b18946d32ba847c",
+      "builtSha256": "dc6270d3d5c5458d8e5b7c053a8d411a5e95bcc4cd0ba1484b18946d32ba847c",
+      "matches": true
+    },
+    {
+      "pathname": "/_next/static/chunks/4292-68018d71f488e6b1.js",
+      "bytes": 1015178,
+      "sha256": "ae429f04c182d3e73845dca81bbbc1554554649506d8e695f1d42bda7c382013",
+      "builtSha256": "ae429f04c182d3e73845dca81bbbc1554554649506d8e695f1d42bda7c382013",
+      "matches": true
+    },
+    {
+      "pathname": "/_next/static/chunks/app/page-4a5ba92d50aa5a22.js",
+      "bytes": 668000,
+      "sha256": "fec957089276f133ed67c308fb1dfec346f6813d452f1ae5f842a7b82fa923a7",
+      "builtSha256": "fec957089276f133ed67c308fb1dfec346f6813d452f1ae5f842a7b82fa923a7",
+      "matches": true
+    },
+    {
+      "pathname": "/_next/static/chunks/84-b773dabbd6c85016.js",
+      "bytes": 2691383,
+      "sha256": "d4e4ed4655ef37a24c740bf1133f7b0933fddd4d9df4cedc1978d89423c4e907",
+      "builtSha256": "d4e4ed4655ef37a24c740bf1133f7b0933fddd4d9df4cedc1978d89423c4e907",
+      "matches": true
+    },
+    {
+      "pathname": "/_next/static/chunks/3663.bb3c0876d49d8928.js",
+      "bytes": 22887,
+      "sha256": "596eb72b970dbe6bd3330e844bfa67c53ec9f62c40b999119b0a98b52df5066d",
+      "builtSha256": "596eb72b970dbe6bd3330e844bfa67c53ec9f62c40b999119b0a98b52df5066d",
+      "matches": true
+    },
+    {
+      "pathname": "/_next/static/chunks/7562.a7c266f799a22ad5.js",
+      "bytes": 155126,
+      "sha256": "609d4aa9e1cb9423c7cf3b9697465c65093dc7d5b446f64d3c190809b9516099",
+      "builtSha256": "609d4aa9e1cb9423c7cf3b9697465c65093dc7d5b446f64d3c190809b9516099",
+      "matches": true
+    },
+    {
+      "pathname": "/_next/static/chunks/6191-731e57ae014ed88a.js",
+      "bytes": 475443,
+      "sha256": "94651958af7690f2247779cdf1e917b6fef71ef3920c229739d2784bcf20461c",
+      "builtSha256": "94651958af7690f2247779cdf1e917b6fef71ef3920c229739d2784bcf20461c",
+      "matches": true
+    },
+    {
+      "pathname": "/_next/static/chunks/5772-ddd18c0d4b7715e5.js",
+      "bytes": 15717,
+      "sha256": "57650f80c624bc13bdf76a7fc29504847558e468de88ba3b24154959e944a740",
+      "builtSha256": "57650f80c624bc13bdf76a7fc29504847558e468de88ba3b24154959e944a740",
+      "matches": true
+    },
+    {
+      "pathname": "/_next/static/chunks/5803-29960c7239e27d59.js",
+      "bytes": 40619,
+      "sha256": "ba8f4c297e8b179f38c325390023d17b77d4cde4ffc86c7d4565fb3db830bc2f",
+      "builtSha256": "ba8f4c297e8b179f38c325390023d17b77d4cde4ffc86c7d4565fb3db830bc2f",
+      "matches": true
+    },
+    {
+      "pathname": "/_next/static/chunks/5565-f5ae51d2a45d54a0.js",
+      "bytes": 19811,
+      "sha256": "6d7db7f88c45be52e830d3945dfeac13df1e4af1edbe6969227d85df6a6201d0",
+      "builtSha256": "6d7db7f88c45be52e830d3945dfeac13df1e4af1edbe6969227d85df6a6201d0",
+      "matches": true
+    },
+    {
+      "pathname": "/_next/static/chunks/416-b771d477a44b3be2.js",
+      "bytes": 1574546,
+      "sha256": "092baf8edf5e984cf47776b7a121e992f452a685f5cfe0959eccb6387483b8f1",
+      "builtSha256": "092baf8edf5e984cf47776b7a121e992f452a685f5cfe0959eccb6387483b8f1",
+      "matches": true
+    },
+    {
+      "pathname": "/_next/static/chunks/2633-6295565558c846d5.js",
+      "bytes": 1224230,
+      "sha256": "c2bfc3d56381e4ca8c7bff5a11d167b15f16dc59fe302f93d04999e16cabfb31",
+      "builtSha256": "c2bfc3d56381e4ca8c7bff5a11d167b15f16dc59fe302f93d04999e16cabfb31",
+      "matches": true
+    },
+    {
+      "pathname": "/_next/static/chunks/7271-1d69bce3ce24753a.js",
+      "bytes": 1270452,
+      "sha256": "a2e7f3c0203299d12803a253763fdeca72db1874a3b4fb44484013a7cc62c2cd",
+      "builtSha256": "a2e7f3c0203299d12803a253763fdeca72db1874a3b4fb44484013a7cc62c2cd",
+      "matches": true
+    },
+    {
+      "pathname": "/_next/static/chunks/1073-d0f5d5656604a1a8.js",
+      "bytes": 4383037,
+      "sha256": "fe7c71a841855ffc356154276af54cd0f1f843a1ebcb43897db4cd033e0a7866",
+      "builtSha256": "fe7c71a841855ffc356154276af54cd0f1f843a1ebcb43897db4cd033e0a7866",
+      "matches": true
+    }
+  ],
+  "screenshots": [
+    {
+      "filename": "01-next-front-desktop.png",
+      "sha256": "99d4830fc50a1d738cf767514134d4b08ec9a1262b398d500db08ac766c36a4e",
+      "opened": false
+    },
+    {
+      "filename": "02-next-front-390.png",
+      "sha256": "deee0f90c3d99d08b7944aa6a56416b7f9a4dd326aa80f059f86bd1c7ad74aa8",
+      "opened": false
+    },
+    {
+      "filename": "03-next-orders-390.png",
+      "sha256": "5e49eca67b8bbc41d395af78f8b760ca3f41061c4cea7af6d5cd0b81d58a74ab",
+      "opened": false
+    },
+    {
+      "filename": "02-next-front-320.png",
+      "sha256": "85877d0177e712ed72a5aa9db80a5a62ce5fd47c11dcdc05e6df7483b931c608",
+      "opened": false
+    },
+    {
+      "filename": "03-next-orders-320.png",
+      "sha256": "c16dccc443e3d9661bc8e62fa3250a8dc433e14b214ca1f4486be306eba88aa3",
+      "opened": false
+    },
+    {
+      "filename": "04-next-mandates-desktop.png",
+      "sha256": "4f22a5f9829142b7d9bba7795d9094c4a882ba2046d205d123e8416f61b65d9c",
+      "opened": false
+    },
+    {
+      "filename": "05-next-rts-active.png",
+      "sha256": "91d933105be2900fd5c4b5911d83b093a2de8240180a163dc160858dd6bcc8ad",
+      "opened": false
+    }
+  ],
+  "downloads": [],
+  "physicalGamepad": false,
+  "humanArtReviewed": false,
+  "recipe": {
+    "path": "scripts/qa-clan-war-command-next-20261109.mjs",
+    "sha256": "37500cc457e8a98659edd28158db772f26987c5bd219852378e3b9999392896b"
+  },
+  "sourceBefore": {
+    "app/game/ClanWarPanelV85.tsx": "fe9d75c32fa10a34c032d74e2239f11ede13ce13c9db2f050b9724545586c216",
+    "app/game/ClanWarPanelV85.module.css": "54eb00ff09c13c863a1b7385df9200d570e0b30cd4f9233dc3d92a3caf17a2c6",
+    "app/game/ClanWarBibleV6Panel.tsx": "eb3bd605b0d365d521326e2486b4ad86e87e43935f8ab5d06e61401f79b5dc99",
+    "app/game/ClanWarCommandOverlay.tsx": "63c97a4f1f77a10219be5e5e18836859d65a6a1463d4b50f6f786d3f83631cd4",
+    "app/game/ClanWarCommandOverlay.module.css": "7115541b23bec445c3e3a946255dd3a5bb0f08353e303b3fb4281e4fe5fff22e",
+    "app/game/ClanWarAtlasV95.tsx": "e1abcad9fb45df381687063634dea0955a859ac59cffae5263665d7359476af9",
+    "app/game/ClanWarAtlasV95.module.css": "115b7646d0c031b0e00c355e4251ee9991897ac1ef234b262b9105355644af6c",
+    "app/game/ClanWarGauntletV131.tsx": "3587055b23394898e5e08d7e0fe6b7a9a0a9231a4a460a24d3f1a47e41072566",
+    "app/game/ClanWarGauntletV131.module.css": "a632428c117411c256575dfe132331b2bfac7034b46f14114d32fe0c2dc52ea5",
+    "app/game/ClanWarOperationsV115.tsx": "d8ec15757f23cbd0e468fa3720c2a9989b2d4d810b6e93a5fb5453cadcfbd11f",
+    "app/game/ClanWarOperationsV115.module.css": "072f60b66297fce0a33ca144bd96de708f5c2a724b8d4cd4f9e4a6d958ac2727",
+    "app/game/useMenuGamepad.ts": "602879e33e5c0ecd1ceba063e28ce9c7c82e8a36e54d9d87f7f0e2f7d589cd35",
+    "app/game/GameClient.tsx": "05d35cd1499f46ceafb061234a4eb3acd6cb62d5294f0a2d49cda77cdc0e7208",
+    "app/game/ClanShipHub.tsx": "044cda5b20fad88c7cf7e228c2c25bac0abd5ec96249ae8df3a07114916d5cba",
+    "app/game/ClanShipOperationsPanel.tsx": "43d993bb9aded4f8aa4fdd31c99a55c7969ff4c81a3013aa97f7bdde118b3d89",
+    "app/game/systems/clanWarOperationsArchive.ts": "70c08ad2f6b6136a6c5d0f35d432e4a8c3c379a59defb2fd8a6d5ad269e01814",
+    "app/game/systems/clanWarOperationsV115.ts": "c10c4c95994e517246812a89e4af6fc5264eb73f31b846ff586ea47a715d049b",
+    "app/game/systems/clanWarFenceV94.ts": "959724666965ddb46b4a0ce28973145d365d35b7af67d0331590b1fbcf9a6092",
+    "package.json": "246599abd3ca304b98201bbffbbcaaeef481486a91f3cad637a15c3ee20efbe5",
+    "package-lock.json": "763dcb2fdfef2e1a7ce196540cca3f4f5617eeb28a36b380d0dc6079410c1892"
+  },
+  "buildIdBefore": "kS-6-0gmSFRZVosfYvnq6",
+  "fixtureSha256": "c29685d009e57a3d5bdc768da63cf69f668988887adaf5628288d4d8ad4b63b4",
+  "browserVersion": "154.0.8037.57",
+  "sourceAfter": {
+    "app/game/ClanWarPanelV85.tsx": "fe9d75c32fa10a34c032d74e2239f11ede13ce13c9db2f050b9724545586c216",
+    "app/game/ClanWarPanelV85.module.css": "54eb00ff09c13c863a1b7385df9200d570e0b30cd4f9233dc3d92a3caf17a2c6",
+    "app/game/ClanWarBibleV6Panel.tsx": "eb3bd605b0d365d521326e2486b4ad86e87e43935f8ab5d06e61401f79b5dc99",
+    "app/game/ClanWarCommandOverlay.tsx": "63c97a4f1f77a10219be5e5e18836859d65a6a1463d4b50f6f786d3f83631cd4",
+    "app/game/ClanWarCommandOverlay.module.css": "7115541b23bec445c3e3a946255dd3a5bb0f08353e303b3fb4281e4fe5fff22e",
+    "app/game/ClanWarAtlasV95.tsx": "e1abcad9fb45df381687063634dea0955a859ac59cffae5263665d7359476af9",
+    "app/game/ClanWarAtlasV95.module.css": "115b7646d0c031b0e00c355e4251ee9991897ac1ef234b262b9105355644af6c",
+    "app/game/ClanWarGauntletV131.tsx": "3587055b23394898e5e08d7e0fe6b7a9a0a9231a4a460a24d3f1a47e41072566",
+    "app/game/ClanWarGauntletV131.module.css": "a632428c117411c256575dfe132331b2bfac7034b46f14114d32fe0c2dc52ea5",
+    "app/game/ClanWarOperationsV115.tsx": "d8ec15757f23cbd0e468fa3720c2a9989b2d4d810b6e93a5fb5453cadcfbd11f",
+    "app/game/ClanWarOperationsV115.module.css": "072f60b66297fce0a33ca144bd96de708f5c2a724b8d4cd4f9e4a6d958ac2727",
+    "app/game/useMenuGamepad.ts": "602879e33e5c0ecd1ceba063e28ce9c7c82e8a36e54d9d87f7f0e2f7d589cd35",
+    "app/game/GameClient.tsx": "05d35cd1499f46ceafb061234a4eb3acd6cb62d5294f0a2d49cda77cdc0e7208",
+    "app/game/ClanShipHub.tsx": "044cda5b20fad88c7cf7e228c2c25bac0abd5ec96249ae8df3a07114916d5cba",
+    "app/game/ClanShipOperationsPanel.tsx": "43d993bb9aded4f8aa4fdd31c99a55c7969ff4c81a3013aa97f7bdde118b3d89",
+    "app/game/systems/clanWarOperationsArchive.ts": "70c08ad2f6b6136a6c5d0f35d432e4a8c3c379a59defb2fd8a6d5ad269e01814",
+    "app/game/systems/clanWarOperationsV115.ts": "c10c4c95994e517246812a89e4af6fc5264eb73f31b846ff586ea47a715d049b",
+    "app/game/systems/clanWarFenceV94.ts": "959724666965ddb46b4a0ce28973145d365d35b7af67d0331590b1fbcf9a6092",
+    "package.json": "246599abd3ca304b98201bbffbbcaaeef481486a91f3cad637a15c3ee20efbe5",
+    "package-lock.json": "763dcb2fdfef2e1a7ce196540cca3f4f5617eeb28a36b380d0dc6079410c1892"
+  },
+  "buildIdAfter": "kS-6-0gmSFRZVosfYvnq6",
+  "passed": true,
+  "rawBrowserReport": {
+    "path": "report.browser-run.json",
+    "sha256": "47bff410fbf8ae7206f628120268c4166672d5d03814f4bb3787ef3c2840343a"
+  },
+  "screenshotInspection": "screenshot-inspection.json",
+  "screenshotsOpened": 7,
+  "saveValidation": "save-validation.json",
+  "inspectionScope": "Original native production PNGs opened at actual capture size. Technical composition/readability inspection, including declared global-HUD/scroll alignment; no artistic AAA/canonical or physical-pad certification.",
+  "finalizedAt": "2026-11-09T10:46:38.233795+00:00"
+}

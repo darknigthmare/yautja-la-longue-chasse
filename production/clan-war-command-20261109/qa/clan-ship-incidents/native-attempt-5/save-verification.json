@@ -1,0 +1,66 @@
+{
+  "passed": true,
+  "scope": "Actual final SaveGame import and production domain readers only; no new browser action is performed by this verifier.",
+  "node": "v22.23.4",
+  "initialIncidentAbsent": true,
+  "finalIncidentRevision": 18,
+  "marksBefore": 280,
+  "marksAfter": 335,
+  "marksDelta": 55,
+  "incidentCampaignValid": true,
+  "operationsCampaignValid": true,
+  "sealedLot": {
+    "id": "sealed-lot",
+    "accepted": true,
+    "completedRevision": 8,
+    "witness": true,
+    "reference": true,
+    "diagnosticCurrent": true,
+    "chosenBranch": "B",
+    "isolatedBranch": "B",
+    "pressureChecked": true,
+    "component": "absent",
+    "restored": [],
+    "faults": 1,
+    "lastMessage": "Fermeture vérifiée. La restriction du lot est levée et le dossier de Garde du Seuil est conservé."
+  },
+  "relay": {
+    "id": "relay-fault",
+    "accepted": true,
+    "completedRevision": 18,
+    "witness": true,
+    "reference": true,
+    "diagnosticCurrent": true,
+    "chosenBranch": "A",
+    "isolatedBranch": "A",
+    "pressureChecked": false,
+    "component": "installed",
+    "restored": [
+      "B",
+      "A"
+    ],
+    "faults": 1,
+    "lastMessage": "Signal stable contrôlé au conseil. Les deux circuits, le composant et le dossier de Griffe de Fer sont enregistrés."
+  },
+  "interception": {
+    "version": 1,
+    "kind": "interception",
+    "status": "active",
+    "turn": 1,
+    "crewRoles": [],
+    "formationIntegrity": 92,
+    "energy": 4,
+    "hostileIntegrity": 100,
+    "hostileDrive": 100,
+    "range": 0,
+    "scanLevel": 1,
+    "assetIntegrity": 100,
+    "objectiveProgress": 0,
+    "history": [
+      "scan"
+    ]
+  },
+  "sourceSha256": {
+    "app/game/save.ts": "86bc5391515bdb37038484951d6ee1de96fa6e32534352ea70bff05325e8e240"
+  }
+}

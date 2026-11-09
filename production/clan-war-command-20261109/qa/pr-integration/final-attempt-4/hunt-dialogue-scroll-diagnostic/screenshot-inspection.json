@@ -1,0 +1,16 @@
+{
+  "at": "2026-11-09T11:43:46.910669+00:00",
+  "method": "Both original PNG screenshots opened with view_image.",
+  "inspected": [
+    {
+      "file": "native-before-wheel.png",
+      "sha256": "10649343272c4f786d3f1ba83ad4e037bbc87c0eec1e53782bb40422d420c28d"
+    },
+    {
+      "file": "native-after-wheel.png",
+      "sha256": "c55b0ed6d9dbb608e4a7a2802d3c21be8765d640456c5a03674187149007b4d5"
+    }
+  ],
+  "observation": "The native wheel moves the Garde du Seuil shared Cradle report upward within the same panel; its entire selected line and privacy note become visible above the footer. No app/CSS, fixture, text, assertion or timing limit changed. Fractional0.3125px clipping is diagnosed through exact DOM rectangles, rather than a visual pixel claim.",
+  "scope": "One targeted existing case, not a replacement full Hunt QA pass."
+}

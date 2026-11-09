@@ -8,6 +8,7 @@ from __future__ import annotations
 
 from collections import Counter
 import copy
+from functools import lru_cache
 import hashlib
 import importlib.util
 import io
@@ -59,7 +60,8 @@ def packed(value):
     return json.dumps(value, ensure_ascii=False, sort_keys=True, separators=(",", ":")).encode()
 
 
-def fingerprint(path):
+@lru_cache(maxsize=None)
+def _fingerprint(path):
     relative = Path(path)
     if relative.is_absolute() or ".." in relative.parts:
         raise ValueError("Unsafe input path: " + str(path))
@@ -68,6 +70,12 @@ def fingerprint(path):
         raise ValueError("Missing regular input: " + str(path))
     raw = file.read_bytes()
     return {"path": str(relative), "sha256": digest(raw), "bytes": len(raw)}
+
+
+def fingerprint(path):
+    # Inputs are frozen for one invocation. Return copies so the inventory may
+    # attach source metadata without altering a cached evidence fingerprint.
+    return dict(_fingerprint(str(path)))
 
 
 def pinned(path, expected):
@@ -140,6 +148,7 @@ def freeze_inventory(source_commit):
             raise ValueError("Workbook differs from reviewed integrated commit: " + path)
         decoded = decoder.read_workbook(io.BytesIO(raw))
         item.update(gitBlob=tree[path][1], historical=path in old,
+                    sourceKind="CAPSULE_QA_DATEE" if "/qa/" in path else "CLASSEUR_DOCUMENTAIRE",
                     sheets=[{k: sheet[k] for k in ["name", "rowCount", "cellCount", "contentSha256"]} for sheet in decoded])
         sources.append(item)
         for sheet in decoded:
@@ -179,6 +188,10 @@ def freeze_inventory(source_commit):
     return {"schemaVersion": 1, "sourceCommit": commit, "previousQualificationCommit": PREVIOUS,
             "scope": "Source observations only. Exact historical priority rows are not counted twice; novel prose still needs an explicit reconciliation before it becomes a subject.",
             "counts": {"workbooks": len(paths), "historicalWorkbooks": len(old), "additionalWorkbooks": len(set(paths) - old),
+                       "additionalFollowupWorkbooks": sum(path not in old and "/qa/" not in path for path in paths),
+                       "additionalQaCapsuleWorkbooks": sum(path not in old and "/qa/" in path for path in paths),
+                       "novelXlsxPriorityObservations": sum(item["kind"] == "xlsx" for item in observations),
+                       "novelBiblePriorityObservations": sum(item["kind"] == "markdown" for item in observations),
                        "novelPriorityObservations": len(observations), "historicalPriorityRowCopiesInNewWorkbooks": sum(sha in old_rows for sha in workbook_rows)},
             "sources": sources, "observations": observations}
 
@@ -212,13 +225,15 @@ def register(require_decisions=False):
     rows = copy.deepcopy(previous["rows"])
     for row in rows:
         row["previousQualification"] = {"commit": PREVIOUS, "status": row["status"],
-                                        "scope": row["qualificationScope"], **{p: row[p] for p in PHASES}}
+                                        "scope": row["qualificationScope"],
+                                        "sourceRegister": {"path": PREVIOUS_REGISTER, "sha256": PREVIOUS_REGISTER_SHA, "key": row["key"]},
+                                        **{p: row[p] for p in PHASES}}
         if row["status"] in {"QUALIFIE_BORNE", "QUALIFIE_BORNE_ANTERIEUR"}:
             row["status"] = "QUALIFIE_BORNE_ANTERIEUR"
         for phase in PHASES:
             if row[phase] != "Sans objet":
                 row[phase] = "Antérieur"
-        row["qualificationScope"] = "Résultat daté conservé au commit697bd87a ; aucune requalification automatique : " + row["qualificationScope"]
+        row["qualificationScope"] = "Résultat daté conservé au commit 697bd87a ; aucune requalification automatique : " + row["qualificationScope"]
     by_key = {row["key"]: row for row in rows}
     observations = {item["key"]: item for item in inventory["observations"]}
     additions = {row["key"]: row for row in config.get("additions", [])}
@@ -257,6 +272,23 @@ def register(require_decisions=False):
     for observation_key, decision in decisions.items():
         if decision["disposition"] == "LINK_EXISTING":
             by_key[decision["key"]].setdefault("additionalSourceRefs", []).extend(observations[observation_key]["sourceRefs"])
+    source_paths = {item["path"] for item in inventory["sources"]}
+    linked_sheets = {}
+    for key, references in config.get("sourceLinks", {}).items():
+        if key not in by_key:
+            raise ValueError("Additional source links an unknown subject: " + key)
+        for reference in references:
+            path = reference["path"]
+            if path not in source_paths or not path.endswith(".xlsx"):
+                raise ValueError("Additional source is outside the reviewed workbook inventory: " + path)
+            if path not in linked_sheets:
+                decoder = load_module("command_followup_link_decoder", "scripts/audit-excel-bible-20261108.py")
+                linked_sheets[path] = {sheet["name"]: {row["row"]: row["cells"] for row in sheet["rows"]}
+                                       for sheet in decoder.read_workbook(ROOT / path)}
+            cells = linked_sheets[path][reference["sheet"]][reference["row"]]
+            if cells.get("A") != by_key[key]["id"] or digest(packed(cells)) != reference["rowSha256"]:
+                raise ValueError("Additional source row identity or bytes differ: " + key)
+            by_key[key].setdefault("additionalSourceRefs", []).append(reference)
     allowed = {"status", *PHASES, "remaining", "qualificationScope", "evidence", "generationState"}
     for key, update in config.get("updates", {}).items():
         if key not in by_key or set(update) - allowed:
@@ -291,6 +323,49 @@ def proof_text(row):
     return "\n".join(item["path"] + " — " + item.get("scope", "Preuve datée") for item in row.get("evidence", []))
 
 
+def changelog(data):
+    config, inventory = configuration(), verified_inventory()
+    counts = data["counts"]
+    states = counts["statuses"]
+
+    def clean(value):
+        return str(value).replace("|", "\\|").replace("\n", "<br>")
+
+    lines = ["# Suite des priorités et du commandement — 9 novembre 2026", "", config["scope"], "",
+             "L’ensemble des P0/P1 n’est pas déclaré terminé. Les sujets représentent des exigences documentaires ; leur nombre n’est ni un nombre de bugs ni un taux de complétion du jeu.", "",
+             f"Le registre comprend **{counts['subjects']} sujets** : {counts['priorities']['P0']} P0 et {counts['priorities']['P1']} P1. "
+             f"Il conserve {states.get('QUALIFIE_BORNE_ANTERIEUR', 0)} qualifications antérieures, "
+             f"{states.get('QUALIFIE_BORNE', 0)} nouvelles qualifications bornées, "
+             f"{states.get('PARTIEL', 0)} partiels et {states.get('OUVERT', 0)} ouverts.", "",
+             f"Les sources du commit `{inventory['sourceCommit']}` comprennent {inventory['counts']['workbooks']} XLSX : "
+             f"{inventory['counts']['historicalWorkbooks']} historiques protégés, "
+             f"{inventory['counts']['additionalFollowupWorkbooks']} nouveaux suivis et "
+             f"{inventory['counts']['additionalQaCapsuleWorkbooks']} capsule QA datée. "
+             f"Les {len(config.get('biblePaths', []))} Markdown de la bible et de ses avenants sont lus dans ce même arbre intégré.", "",
+             f"Les {counts['addedSubjects']} nouvelles priorités explicites sont rapprochées. "
+             f"Observations source restant sans rapprochement : {counts['unreconciledSourceObservations']}. "
+             "Aucune priorité n’est inventée pour les autres critères non priorisés ni pour la demande d’interface.", "",
+             "## Changements qualifiés dans cette passe", "",
+             "Les reçus gardent leur build, leur méthode et leurs limites. Une fixture de composant ne vaut pas un parcours GameClient ; une API de manette synthétique ne vaut pas un périphérique physique.", "",
+             "| Sujet | État | Portée actuelle | Suite conservée | Reçus |",
+             "| --- | --- | --- | --- | --- |"]
+    for key, update in sorted(config.get("updates", {}).items()):
+        lines.append("| " + " | ".join(clean(value) for value in [key, update.get("status", "PARTIEL"),
+                     update.get("qualificationScope", "Voir registre"), update.get("remaining", "Voir source"),
+                     "\n".join(item["path"] for item in update.get("evidence", []))]) + " |")
+    lines += ["", "## Nouvelles priorités source", "",
+              "| ID | Priorité | Sujet | Critère source |", "| --- | --- | --- | --- |"]
+    for row in config.get("additions", []):
+        lines.append("| " + " | ".join(clean(row[key]) for key in ["id", "priority", "title", "criterion"]) + " |")
+    release_state = ("Le classeur est exporté après vérification des reçus globaux du lot."
+                     if config["readyForWorkbook"] is True else
+                     "La qualification finale du lot et l’export attendent les vrais reçus globaux.")
+    lines += ["", "## Conservation", "",
+              "Les 113 anciens classeurs, les qualifications de la passe précédente et les outils XML d’append restent inchangés. Le prochain classeur ajoute six feuilles aux treize existantes ; la vérification compare leurs cellules et préserve les anciennes pièces ZIP.", "",
+              release_state + " Aucun déploiement, art humain, appareil physique, nouvelle endurance de soixante minutes ou campagne complète n’est inféré de ce suivi.", ""]
+    return "\n".join(lines)
+
+
 def columns(*entries):
     return [{"key": key, "label": label, "width": width} for key, label, width in entries]
 
@@ -307,11 +382,15 @@ def payload():
     expected_register = json.dumps(data, ensure_ascii=False, indent=2) + "\n"
     if (FOLLOW / "registre-priorites.json").read_text() != expected_register:
         raise ValueError("Regenerate the current register before export")
+    if (FOLLOW / "CHANGELOG.md").read_text() != changelog(data):
+        raise ValueError("Regenerate the current changelog before export")
     global_proofs = evidence(config.get("globalEvidence", []))
     final = [item for item in global_proofs if item.get("kind") == "finalVerification"]
     if len(final) != 1:
         raise ValueError("Exactly one pinned final current verification receipt is required")
     receipt = read(ROOT / final[0]["path"])
+    if receipt.get("allP0P1Closed") is not False:
+        raise ValueError("The final receipt must preserve the real unfinished global scope")
     passed = receipt.get("passed") is True or (receipt.get("tests", {}).get("failed") == 0 and
              all(receipt.get(phase, {}).get("exitCode") == 0 for phase in ["build", "lint"]))
     if not passed:
@@ -356,7 +435,7 @@ def payload():
 
 
 def portable(data):
-    names = ["qualification-courante.json", "source-inventory.json", "registre-priorites.json"]
+    names = ["qualification-courante.json", "source-inventory.json", "registre-priorites.json", "CHANGELOG.md"]
     inputs = [str((FOLLOW / name).relative_to(ROOT)) for name in names]
     inputs += [str((LOT / "tools" / name).relative_to(ROOT)) for name in ["followup.py", "build-followup.py", "verify-followup.py"]]
     return {"previousQualificationCommit": PREVIOUS, "sourceCommit": configuration()["sourceCommit"],

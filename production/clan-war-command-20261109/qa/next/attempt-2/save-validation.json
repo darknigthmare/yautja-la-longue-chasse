@@ -1,0 +1,57 @@
+{
+  "passed": true,
+  "method": "Actual current parseSaveImport bundled with esbuild and called read-only on both original campaign JSON captures; no browser state or gameplay changed.",
+  "bytesIdentical": true,
+  "sourceBefore": {
+    "app/game/save.ts": "86bc5391515bdb37038484951d6ee1de96fa6e32534352ea70bff05325e8e240",
+    "app/game/types.ts": "cfe5a038505d33dcca949f09156d3833d1e269e8e4ed74764b7e4d3fa7fd3946",
+    "package-lock.json": "763dcb2fdfef2e1a7ce196540cca3f4f5617eeb28a36b380d0dc6079410c1892"
+  },
+  "sourceAfter": {
+    "app/game/save.ts": "86bc5391515bdb37038484951d6ee1de96fa6e32534352ea70bff05325e8e240",
+    "app/game/types.ts": "cfe5a038505d33dcca949f09156d3833d1e269e8e4ed74764b7e4d3fa7fd3946",
+    "package-lock.json": "763dcb2fdfef2e1a7ce196540cca3f4f5617eeb28a36b380d0dc6079410c1892"
+  },
+  "checks": [
+    {
+      "name": "before",
+      "passed": true,
+      "bytes": 10767,
+      "sha256": "dc9e9d25e4de5c8c0d64c31141f403b49a4c2371e9274cc742450972e8067cb0",
+      "failure": null,
+      "ownerCreatedAt": "2026-11-09T09:00:00.000Z",
+      "rank": "blooded",
+      "missionProgressKeys": [
+        "jungle-vey",
+        "ice-cryostalker",
+        "volcano-bad-blood",
+        "swamp-hydra",
+        "desert-sandmaw",
+        "ocean-leviathan",
+        "fungal-hivemind",
+        "ruins-ancient-guardian"
+      ],
+      "sameOwnerAfterParse": true
+    },
+    {
+      "name": "after",
+      "passed": true,
+      "bytes": 10767,
+      "sha256": "dc9e9d25e4de5c8c0d64c31141f403b49a4c2371e9274cc742450972e8067cb0",
+      "failure": null,
+      "ownerCreatedAt": "2026-11-09T09:00:00.000Z",
+      "rank": "blooded",
+      "missionProgressKeys": [
+        "jungle-vey",
+        "ice-cryostalker",
+        "volcano-bad-blood",
+        "swamp-hydra",
+        "desert-sandmaw",
+        "ocean-leviathan",
+        "fungal-hivemind",
+        "ruins-ancient-guardian"
+      ],
+      "sameOwnerAfterParse": true
+    }
+  ]
+}

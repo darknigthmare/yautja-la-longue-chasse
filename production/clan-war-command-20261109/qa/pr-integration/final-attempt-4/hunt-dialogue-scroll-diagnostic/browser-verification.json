@@ -1,0 +1,188 @@
+{
+  "startedAt": "2026-11-09T11:42:02.139Z",
+  "checkoutCommit": "b666504c7d7889ea4c8c083aa97c4909aab32560",
+  "scope": "Actual GameClient walking, optional archived hunt conversations, private disclosure and localStorage reload. Synthetic prerequisite hunts are NOT browser-played.",
+  "fixtures": [
+    {
+      "id": "shared-crown",
+      "file": "shared-crown.json",
+      "sha256": "072eddadd1cf57f10b32c0f43b0cd8ed3c56ab06c0ba831cb4445a9fd1d4af7d",
+      "browserPlayed": false,
+      "description": "Adult campaign, prerequisite quests, four successful field contracts and Cradle extraction/return prepared through production reducers. No hunt, boss battle, medical treatment or recruitment is played by this browser recipe.",
+      "clanMarks": 5868,
+      "recruited": [],
+      "outcome": "crown-returned",
+      "ownerCreatedAt": "2026-11-08T18:00:00.000Z"
+    },
+    {
+      "id": "shared-retreat",
+      "file": "shared-retreat.json",
+      "sha256": "4bd4d588582fcd47dc98bd52e3819369c8dbdac48492cd173d1c36eaebf5978a",
+      "browserPlayed": false,
+      "description": "Adult campaign, prerequisite quests, four successful field contracts and Cradle extraction/return prepared through production reducers. No hunt, boss battle, medical treatment or recruitment is played by this browser recipe.",
+      "clanMarks": 5868,
+      "recruited": [],
+      "outcome": "retreated",
+      "ownerCreatedAt": "2026-11-08T18:00:00.000Z"
+    },
+    {
+      "id": "shared-no-crown",
+      "file": "shared-no-crown.json",
+      "sha256": "1c83d0edf89a33e6b409127ae7aea8bc5420d1068e57e387a4c8196c2ef7a631",
+      "browserPlayed": false,
+      "description": "Adult campaign, prerequisite quests, four successful field contracts and Cradle extraction/return prepared through production reducers. No hunt, boss battle, medical treatment or recruitment is played by this browser recipe.",
+      "clanMarks": 5868,
+      "recruited": [],
+      "outcome": "victory-without-crown",
+      "ownerCreatedAt": "2026-11-08T18:00:00.000Z"
+    },
+    {
+      "id": "private-crown",
+      "file": "private-crown.json",
+      "sha256": "3201547d145180814e0ec50f4351195f6c42406f463dedfdb3e28fa546208811",
+      "browserPlayed": false,
+      "description": "Adult campaign, prerequisite quests, four successful field contracts and Cradle extraction/return prepared through production reducers. No hunt, boss battle, medical treatment or recruitment is played by this browser recipe.",
+      "clanMarks": 5868,
+      "recruited": [],
+      "outcome": "crown-returned",
+      "ownerCreatedAt": "2026-11-08T18:00:00.000Z"
+    }
+  ],
+  "sourceSha256": {
+    "app/game/ClanShipHuntConversation.tsx": "4674b33cc4d3f6bc59dbb744f00ebb430c94da86c5ef9c2f9b1b8fe10380cdc4",
+    "app/game/ClanShipCrewDialogue.tsx": "9ebecd74b869153d13f2c809a327ec1ab927fc7763c05fcb40dce7f5e822496f",
+    "app/game/ClanShipOperationsPanel.tsx": "4304de4ec0adbd2c5e4ed04c3cc9af3f696676341b927e9ccf253888fdc82194",
+    "app/game/ClanShipOperationsPanel.module.css": "7b9c01fda57eaf0badd4ec79ce909d5666abdac71069ffac9a9700f7b541427b",
+    "app/game/systems/clanShipHuntDialogue.ts": "74e38db852605186425b420d982ef9054ef75d395a66da912e5c981b69e44d5c",
+    "app/game/systems/clanShipDialogue.ts": "c50e94b1c69ab90c1b57fce380bfc00d0e9ea9921448fad45dd7fdfde14516fe",
+    "app/game/systems/clanShipOperations.ts": "6894c68f613af82c0e23aa96b4c7cccf0606dded8638d55e519d269f4a4f0746",
+    "app/game/systems/companionResidence.ts": "ed55b78c62e3c7b963a6b71f966fc3fccf126450c24ce561f540a1a563dd7d8e",
+    "app/game/systems/clanShipDocking.ts": "adcd1bee2a92f8893e8fb31ee1df32a2b009fbaa416db66900a868dac84076cb",
+    "app/game/systems/buriedCradleCampaign.ts": "c5ad2faa3698056cf5010f486be3929dd56078bb6fefc8d5325962486cb42e7d",
+    "app/game/systems/buriedCradleReturn.ts": "72417d7f1445d9744be357d849cd949ed46e280b49e8359e053dde606459d16a",
+    "app/game/GameClient.tsx": "a38ec53a9ded4d6a8f0044c92e8fff71c199acd4d53aa1f4ceabbf53f4152343",
+    "app/game/save.ts": "86bc5391515bdb37038484951d6ee1de96fa6e32534352ea70bff05325e8e240",
+    "tests/helpers/clan-ship-hunt-dialogue-fixture.mjs": "ea654def1346aa19a38483aad66c5ceaeb7f31f458164689cba1686c03c7c489",
+    "scripts/qa-clan-hunt-dialogue-browser-20261109.mjs": "a1fe12e2db4711ebe9a8533ed82d9a24398bef480e15299b20a01144cba2a169"
+  },
+  "browserExecuted": true,
+  "passed": true,
+  "checks": [
+    {
+      "context": "320x740-shared-crown",
+      "label": "Native contact keeps four original topics and exposes only available archived reports",
+      "passed": true,
+      "npc": "threshold-guard",
+      "options": 5
+    },
+    {
+      "context": "320x740-shared-crown",
+      "label": "Selected native line matches its archived proof without changing progression",
+      "passed": true,
+      "npc": "threshold-guard",
+      "reportId": "field-bad-blood",
+      "source": {
+        "kind": "field",
+        "missionId": "volcano-bad-blood",
+        "encounterRun": 1,
+        "completedAt": "2026-11-09T08:00:00.000Z",
+        "revision": 33
+      }
+    },
+    {
+      "context": "320x740-shared-crown",
+      "label": "Selected native line matches its archived proof without changing progression",
+      "passed": true,
+      "npc": "threshold-guard",
+      "reportId": "field-ruins-memory",
+      "source": {
+        "kind": "field",
+        "missionId": "ruins-ancient-guardian",
+        "encounterRun": 0,
+        "completedAt": "2026-11-08T19:00:00.000Z",
+        "revision": 17
+      }
+    },
+    {
+      "context": "320x740-shared-crown",
+      "label": "Selected native line matches its archived proof without changing progression",
+      "passed": true,
+      "npc": "threshold-guard",
+      "reportId": "field-ice-route",
+      "source": {
+        "kind": "field",
+        "missionId": "ice-cryostalker",
+        "encounterRun": 0,
+        "completedAt": "2026-11-08T19:00:00.000Z",
+        "revision": 14
+      }
+    },
+    {
+      "context": "320x740-shared-crown",
+      "label": "Selected native line matches its archived proof without changing progression",
+      "passed": true,
+      "npc": "threshold-guard",
+      "reportId": "field-jungle-survey",
+      "source": {
+        "kind": "field",
+        "missionId": "jungle-vey",
+        "encounterRun": 0,
+        "completedAt": "2026-11-08T19:00:00.000Z",
+        "revision": 11
+      }
+    },
+    {
+      "context": "320x740-shared-crown",
+      "label": "Selected native line matches its archived proof without changing progression",
+      "passed": true,
+      "npc": "threshold-guard",
+      "reportId": "buried-cradle",
+      "source": {
+        "kind": "cradle",
+        "outcome": "crown-returned",
+        "revision": 3
+      }
+    },
+    {
+      "context": "320x740-shared-crown",
+      "label": "Complete selected dialogue is inside the native scroll viewport",
+      "passed": true,
+      "npc": "threshold-guard",
+      "screenshot": "320x740-shared-crown-threshold-guard.png",
+      "framed": {
+        "visible": true,
+        "bounds": {
+          "left": 42.59375,
+          "top": 447.46875,
+          "right": 279.40625,
+          "bottom": 597.9375
+        },
+        "clip": {
+          "left": 0,
+          "top": 181.75,
+          "right": 320,
+          "bottom": 677.625
+        }
+      }
+    },
+    {
+      "context": "320x740-shared-crown",
+      "label": "Reload preserves source reports, privacy and all progression values",
+      "passed": true
+    }
+  ],
+  "screenshots": [
+    "320x740-shared-crown-threshold-guard.png"
+  ],
+  "errors": [],
+  "missingAssets": [],
+  "contexts": [
+    {
+      "name": "320x740-shared-crown",
+      "completed": true,
+      "checks": 8
+    }
+  ],
+  "browserVersion": "154.0.8037.57",
+  "finishedAt": "2026-11-09T11:42:23.675Z"
+}

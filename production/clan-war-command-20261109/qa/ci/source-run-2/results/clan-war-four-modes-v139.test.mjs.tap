@@ -1,0 +1,70 @@
+TAP version 13
+# Subtest: assault: controlled return advances only back toward real bastion, spends AP, retains member identity
+ok 1 - assault: controlled return advances only back toward real bastion, spends AP, retains member identity
+  ---
+  duration_ms: 9.842056
+  type: 'test'
+  ...
+# Subtest: assault: a rear enemy is never crossed and forbidden orders preserve exactly same state
+ok 2 - assault: a rear enemy is never crossed and forbidden orders preserve exactly same state
+  ---
+  duration_ms: 0.871695
+  type: 'test'
+  ...
+# Subtest: Outer Ops: dispatch freezes intel, sabotage, escort and pressure instead of retroactive cross-mode bonuses
+ok 3 - Outer Ops: dispatch freezes intel, sabotage, escort and pressure instead of retroactive cross-mode bonuses
+  ---
+  duration_ms: 2.60484
+  type: 'test'
+  ...
+# Subtest: Outer Ops: a new mandate captures what is already known; old archive without snapshot still parses
+ok 4 - Outer Ops: a new mandate captures what is already known; old archive without snapshot still parses
+  ---
+  duration_ms: 1.872385
+  type: 'test'
+  ...
+# Subtest: stealth: quiet relay sabotage consumes exactly two energy and avoids automatic alarm if guard is far
+ok 5 - stealth: quiet relay sabotage consumes exactly two energy and avoids automatic alarm if guard is far
+  ---
+  duration_ms: 2.770279
+  type: 'test'
+  ...
+# Subtest: stealth: no remote, close-guard, invisible-resource or forged silent action
+ok 6 - stealth: no remote, close-guard, invisible-resource or forged silent action
+  ---
+  duration_ms: 1.348495
+  type: 'test'
+  ...
+# Subtest: RTS: an actual living squad may leave at real exit but another must remain
+ok 7 - RTS: an actual living squad may leave at real exit but another must remain
+  ---
+  duration_ms: 6.070557
+  type: 'test'
+  ...
+# Subtest: RTS: completed objectives grant a unique receipt including evacuated allies, never free victory
+ok 8 - RTS: completed objectives grant a unique receipt including evacuated allies, never free victory
+  ---
+  duration_ms: 52.612116
+  type: 'test'
+  ...
+# Subtest: RTS: no remote evacuation, last team, holding or abandoning tracked physical cargo
+ok 9 - RTS: no remote evacuation, last team, holding or abandoning tracked physical cargo
+  ---
+  duration_ms: 2.28046
+  type: 'test'
+  ...
+# Subtest: source: all 24 W3 scripts, 72 physical objectives and no V85 mutation remain
+ok 10 - source: all 24 W3 scripts, 72 physical objectives and no V85 mutation remain
+  ---
+  duration_ms: 50.614172
+  type: 'test'
+  ...
+1..10
+# tests 10
+# suites 0
+# pass 10
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 144.37436

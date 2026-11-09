@@ -1,0 +1,206 @@
+{
+  "createdAt": "2026-11-09T11:38:41.412345+00:00",
+  "passed": true,
+  "checks": 87,
+  "contexts": [
+    {
+      "name": "1440x1000",
+      "completed": true,
+      "checks": 29
+    },
+    {
+      "name": "390x844",
+      "completed": true,
+      "checks": 29
+    },
+    {
+      "name": "320x740",
+      "completed": true,
+      "checks": 29
+    }
+  ],
+  "screenshotCount": 21,
+  "visuallyInspectedOriginals": 3,
+  "errors": [],
+  "missingAssets": [],
+  "browserVersion": "154.0.8037.57",
+  "execution": {
+    "application": "Actual GameClient via Vite",
+    "productionNextGameplayTested": false,
+    "availableNextBuildId": "mdrvYovYvfvhuJqeZXn1D",
+    "availableNextUrl": "http://127.0.0.1:3154",
+    "availableNextBuildIdentityIsInformational": true,
+    "script": "scripts/qa-clan-dialogue-browser-20261109.mjs",
+    "scriptSha256": "a16f9376f02ff138942c99a81e04ed43e562d879191a12708f765ab8728bf6cc",
+    "copiedRecipeSha256": "a16f9376f02ff138942c99a81e04ed43e562d879191a12708f765ab8728bf6cc",
+    "startedAt": "2026-11-09T11:30:06.740Z",
+    "completedAt": "2026-11-09T11:35:40.837Z",
+    "checkoutCommitAtRecipeStart": "b666504c7d7889ea4c8c083aa97c4909aab32560",
+    "headAtBookend": "b666504c7d7889ea4c8c083aa97c4909aab32560"
+  },
+  "sourceBookend": {
+    "before": "../source-before.json",
+    "beforeSha256": "5983da32498b092bcd90db6206488af591d4d9529362b84720380d854959956c",
+    "after": "source-after.json",
+    "afterSha256": "92deaebecdce32f93f70823a48f33f22ee99e03c578841c8da0dbe31d25387ed",
+    "appFiles": 1293,
+    "appBytesIdentical": true,
+    "changedPaths": [],
+    "recipeTargetSourceCount": 11,
+    "recipeTargetSourcesEqualAtReceipt": true
+  },
+  "fixture": {
+    "file": "initial-dialogue-fixture.json",
+    "sha256": "1921ce439d0c77fa5fc062cb68ea266df68c017aaa4cac3aa47d50ee89cef6d4",
+    "browserPlayed": false,
+    "description": "Synthetic adult campaign and prerequisite hunts/interior preparations produced through production reducers. No recruitment, space victory or conversation is pre-seeded.",
+    "clanMarks": 1912,
+    "completedContracts": [
+      "welcome-aboard",
+      "ship-training-circuit",
+      "field-jungle-survey",
+      "field-ice-route",
+      "ship-seal-check",
+      "ship-armory-audit",
+      "ship-triage-route"
+    ],
+    "recruitedNpcIds": [],
+    "operation": null
+  },
+  "retention": [
+    {
+      "context": "1440x1000",
+      "automaticElapsedMs": 31504.699999999255,
+      "busyObserved": true,
+      "sameOpenDrawerThroughout": true,
+      "nestedReportRetained": true,
+      "realFocusLossObserved": true,
+      "pausedCrewHiddenInertSilent": true,
+      "pausedHuntHiddenInert": true
+    },
+    {
+      "context": "390x844",
+      "automaticElapsedMs": 31516.199999999255,
+      "busyObserved": true,
+      "sameOpenDrawerThroughout": true,
+      "nestedReportRetained": true,
+      "realFocusLossObserved": true,
+      "pausedCrewHiddenInertSilent": true,
+      "pausedHuntHiddenInert": true
+    },
+    {
+      "context": "320x740",
+      "automaticElapsedMs": 31515.599999999627,
+      "busyObserved": true,
+      "sameOpenDrawerThroughout": true,
+      "nestedReportRetained": true,
+      "realFocusLossObserved": true,
+      "pausedCrewHiddenInertSilent": true,
+      "pausedHuntHiddenInert": true
+    }
+  ],
+  "focusPolicy": "Default Playwright forced-focus emulation explicitly disabled after navigation; real Chromium target activation, no synthetic lifecycle events.",
+  "evidence": {
+    "browserReport": "browser-verification.json",
+    "browserReportSha256": "e842486d0d95f1dc05dfe5df1d03bf59e47ef668691ebd2529f3691aaf48f05f",
+    "inspection": "screenshot-inspection.json",
+    "inspectionSha256": "903cac95b5115701c83d7e07f87f4585754ab70feac15f57797ea9302e83321b",
+    "screenshots": [
+      {
+        "file": "1440x1000-ash-scar-before-space.png",
+        "sha256": "52edb24eb7e6697f2e7cc7743b7a47aff2a49254149aa8ce9d9dfd1e92f4c904"
+      },
+      {
+        "file": "1440x1000-star-watch-before-space.png",
+        "sha256": "bb24543cdfea3777974a2af6d274cce993fc7a9e8be96fe44de9b5e772eac891"
+      },
+      {
+        "file": "1440x1000-iron-claw-before-space.png",
+        "sha256": "f1baada99ed70f83ce9a779778311797afb2540e2072b65804412d3195e722cc"
+      },
+      {
+        "file": "1440x1000-cold-trace-before-space.png",
+        "sha256": "c00f19c74d362b03238e78cdf99b84f0e7bffe621f47bf559787632700284b09"
+      },
+      {
+        "file": "1440x1000-black-suture-before-space.png",
+        "sha256": "a49e231b39c6d32a363d0a8425a8dd94bcc2b4af29bb46dc9b74373e8928bf11"
+      },
+      {
+        "file": "1440x1000-threshold-guard-before-space.png",
+        "sha256": "95e9ff29f38b1ec066731cb2930ce8482dbb7489cc9eada8fd8c66a3e055acee"
+      },
+      {
+        "file": "1440x1000-star-watch-after-space.png",
+        "sha256": "731f29f477bf6b9ea32ce84fc7948539e1cf7d4f9277b6d53643a263fffe138a"
+      },
+      {
+        "file": "390x844-ash-scar-before-space.png",
+        "sha256": "972c063be0ca3ad3c0504ad9134aac46ef00d802c34d44179d010be1bf1d9344"
+      },
+      {
+        "file": "390x844-star-watch-before-space.png",
+        "sha256": "c77eda7d64bb72faad9e7e7862784ce8b0ef173e2ceeafa16435c581c2705e87"
+      },
+      {
+        "file": "390x844-iron-claw-before-space.png",
+        "sha256": "f47dd5470cea3a1a260155ddb218146ae55865e987c6583da5283514446246ab"
+      },
+      {
+        "file": "390x844-cold-trace-before-space.png",
+        "sha256": "2c55ced0ddef71eadd5bd1ddde047fb316c7af67aa92410f581727273de17799"
+      },
+      {
+        "file": "390x844-black-suture-before-space.png",
+        "sha256": "55c1dbdb00ddde12597cab8a6ccf836e689997b7322b26d5f50230ef6f046507"
+      },
+      {
+        "file": "390x844-threshold-guard-before-space.png",
+        "sha256": "7e55fd4543cf2fef825e468077d53ff672d0d55eb3e8d1c16be7dcb73db652eb"
+      },
+      {
+        "file": "390x844-star-watch-after-space.png",
+        "sha256": "815f5d05d65871dc6a408987a127c6e13772c83c15b6da5b20e4e569cf1fffe7"
+      },
+      {
+        "file": "320x740-ash-scar-before-space.png",
+        "sha256": "41e60fbf3d797623677ee01045168c45b593e34e8120d5da1fdb2f9bc9227290"
+      },
+      {
+        "file": "320x740-star-watch-before-space.png",
+        "sha256": "93316d5b8fe2411c821c1efdf75b501e3b349260946c21fd4ead9356e2f65f8d"
+      },
+      {
+        "file": "320x740-iron-claw-before-space.png",
+        "sha256": "59a05e634cb01c05fb2018ba23373554dfd51387e6748fec96c49acd551732f7"
+      },
+      {
+        "file": "320x740-cold-trace-before-space.png",
+        "sha256": "0a35efdedf1471f8a30190a5b398ddd108ad1a0952afab252d3c9ce4baa7cb83"
+      },
+      {
+        "file": "320x740-black-suture-before-space.png",
+        "sha256": "37a93325d9ca2c642890a89f3149e32a1465641f0dbdb3d11389efb3b4a7e2e3"
+      },
+      {
+        "file": "320x740-threshold-guard-before-space.png",
+        "sha256": "399e166b66c71da426b6c8e602f9352c72749b72beaeeb90e44201d98fed6ff8"
+      },
+      {
+        "file": "320x740-star-watch-after-space.png",
+        "sha256": "c3729830ea241f3333221f89e47ac2ae44ed61677f183acc16bb6030d0786e31"
+      }
+    ]
+  },
+  "coverage": [
+    "Original 81 checks preserved: six crew contacts, four read-only topics, three viewports, real UI disclosure/input, native browser escort victory/reward, reload/keyboard/Escape.",
+    "Six additional checks: natural autosave with an observed busy transition and genuine browser target focus loss/recovery at each viewport. Open drawer, topic work and selected field-jungle-survey report are retained; paused controls are hidden/inert/disabled and live speech is off.",
+    "Absent or remote crew optional drawers stay absent; no empty conversation disclosures are accepted."
+  ],
+  "limitations": [
+    "Initial adult campaign and earned Hunt/interior prerequisites are synthetic production-reducer fixtures; recruitment, space victory and conversations are not pre-seeded. Only the escort is actually played by this recipe.",
+    "The browser focus check uses actual Chromium target activation after removing Playwright forced-focus emulation after navigation. No synthetic lifecycle events are dispatched. It does not test physical device switching, document-hidden lifecycle, or the Settings pause menu.",
+    "This run uses Vite GameClient and is not native Next production gameplay, a complete campaign, art approval, accessibility certification or a frame-rate test.",
+    "Earlier failing attempts remain unchanged and are not counted as passing evidence."
+  ]
+}
